@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitca0da9d6ec1eaccd1d96d21f5b6cf192
+class ComposerStaticInit47b8cd72b20e011f845fe6c58759d56a
 {
     public static $files = array (
         '241d2bc730dc592f76425fee315639b6' => __DIR__ . '/..' . '/globalcitizen/php-iban/oophp-iban.php',
@@ -641,9 +641,9 @@ class ComposerStaticInitca0da9d6ec1eaccd1d96d21f5b6cf192
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitca0da9d6ec1eaccd1d96d21f5b6cf192::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitca0da9d6ec1eaccd1d96d21f5b6cf192::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitca0da9d6ec1eaccd1d96d21f5b6cf192::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit47b8cd72b20e011f845fe6c58759d56a::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit47b8cd72b20e011f845fe6c58759d56a::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit47b8cd72b20e011f845fe6c58759d56a::$classMap;
 
         }, null, ClassLoader::class);
     }

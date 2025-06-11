@@ -177,6 +177,10 @@ class WC_GZD_Settings_Germanized extends WC_Settings_Page {
 	public function add_body_classes( $classes ) {
 		if ( $this->is_active() ) {
 			$classes = $classes . ' wc-gzd-settings';
+
+			if ( \Vendidero\Germanized\PluginsHelper::compare_versions( \Vendidero\Germanized\PluginsHelper::get_plugin_version( 'woocommerce' ), '9.9.0', '>=' ) ) {
+				$classes = $classes . ' wc-gzd-settings-modern-nav';
+			}
 		}
 
 		return $classes;
@@ -199,7 +203,7 @@ class WC_GZD_Settings_Germanized extends WC_Settings_Page {
 		include_once __DIR__ . '/class-wc-gzd-settings-tab-revocation-generator.php';
 		include_once __DIR__ . '/class-wc-gzd-settings-tab-trusted-shops.php';
 
-		if ( class_exists( '\Vendidero\Shiptastic\Package' ) && \Vendidero\Shiptastic\Package::has_dependencies() ) {
+		if ( class_exists( '\Vendidero\Shiptastic\Package' ) && \Vendidero\Germanized\Packages::load_shipping_package() ) {
 			include_once __DIR__ . '/class-wc-gzd-settings-tab-shiptastic.php';
 		}
 

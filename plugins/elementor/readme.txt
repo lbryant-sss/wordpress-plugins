@@ -1,11 +1,11 @@
 === Elementor Website Builder - More Than Just a Page Builder ===
 Contributors: elemntor
 Tags: page builder, editor, landing page, drag-and-drop, elementor,
-Requires at least: 6.5
-Tested up to: 6.7
+Requires at least: 6.6
+Tested up to: 6.8
 Requires PHP: 7.4
 Stable tag: 3.29.2
-Beta tag: 3.29.0-beta4
+Beta tag: 3.30.0-beta1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 

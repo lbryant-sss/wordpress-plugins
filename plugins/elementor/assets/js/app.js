@@ -1,4 +1,4 @@
-/*! elementor - v3.29.0 - 04-06-2025 */
+/*! elementor - v3.30.0 - 10-06-2025 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -206,6 +206,16 @@
 /*!**************************************************************************************!*\
   !*** ../app/modules/import-export/assets/js/pages/export/export-kit/export-kit.scss ***!
   \**************************************************************************************/
+/***/ (() => {
+
+
+
+/***/ }),
+
+/***/ "../app/modules/import-export/assets/js/pages/export/export-plugins/components/export-plugins-footer/export-plugins-footer.scss":
+/*!**************************************************************************************************************************************!*\
+  !*** ../app/modules/import-export/assets/js/pages/export/export-plugins/components/export-plugins-footer/export-plugins-footer.scss ***!
+  \**************************************************************************************************************************************/
 /***/ (() => {
 
 
@@ -2685,6 +2695,53 @@ DataTable.defaultProps = {
 
 /***/ }),
 
+/***/ "../app/assets/js/molecules/elementor-loading.js":
+/*!*******************************************************!*\
+  !*** ../app/assets/js/molecules/elementor-loading.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+/* provided dependency */ var PropTypes = __webpack_require__(/*! prop-types */ "../node_modules/prop-types/index.js");
+/* provided dependency */ var __ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n")["__"];
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = ElementorLoading;
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+function ElementorLoading(props) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "elementor-loading"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "elementor-loader-wrapper"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "elementor-loader"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "elementor-loader-boxes"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "elementor-loader-box"
+  }), /*#__PURE__*/_react.default.createElement("div", {
+    className: "elementor-loader-box"
+  }), /*#__PURE__*/_react.default.createElement("div", {
+    className: "elementor-loader-box"
+  }), /*#__PURE__*/_react.default.createElement("div", {
+    className: "elementor-loader-box"
+  }))), /*#__PURE__*/_react.default.createElement("div", {
+    className: "elementor-loading-title"
+  }, props.loadingText)));
+}
+ElementorLoading.propTypes = {
+  loadingText: PropTypes.string
+};
+ElementorLoading.defaultProps = {
+  loadingText: __('Loading', 'elementor')
+};
+
+/***/ }),
+
 /***/ "../app/assets/js/molecules/go-pro-button.js":
 /*!***************************************************!*\
   !*** ../app/assets/js/molecules/go-pro-button.js ***!
@@ -3742,11 +3799,11 @@ __webpack_require__(/*! ./text-field.scss */ "../app/assets/js/ui/atoms/text-fie
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { (0, _defineProperty2.default)(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function TextField(props) {
-  var classNameBase = 'eps-text-field',
-    classes = [classNameBase, props.className, (0, _defineProperty2.default)({}, classNameBase + '--outlined', 'outlined' === props.variant)],
-    validProps = _objectSpread(_objectSpread({}, props), {}, {
-      className: (0, _utils.arrayToClassName)(classes)
-    });
+  var classNameBase = 'eps-text-field';
+  var classes = [classNameBase, props.className, (0, _defineProperty2.default)({}, classNameBase + '--outlined', 'outlined' === props.variant), (0, _defineProperty2.default)({}, classNameBase + '--standard', 'standard' === props.variant)];
+  var validProps = _objectSpread(_objectSpread({}, props), {}, {
+    className: (0, _utils.arrayToClassName)(classes)
+  });
   if (validProps.multiline) {
     delete validProps.multiline;
     return /*#__PURE__*/_react.default.createElement("textarea", validProps);
@@ -5735,6 +5792,62 @@ var _default = exports["default"] = {
 
 /***/ }),
 
+/***/ "../app/assets/js/utils/cloud-kits.js":
+/*!********************************************!*\
+  !*** ../app/assets/js/utils/cloud-kits.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.fetchCloudKitsEligibility = fetchCloudKitsEligibility;
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ "../node_modules/@babel/runtime/regenerator/index.js"));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ "../node_modules/@babel/runtime/helpers/asyncToGenerator.js"));
+/**
+ * Fetch cloud kits availability from WordPress backend
+ *
+ * @return {Promise<boolean>} Whether cloud kits should be available
+ */
+function fetchCloudKitsEligibility() {
+  return _fetchCloudKitsEligibility.apply(this, arguments);
+}
+function _fetchCloudKitsEligibility() {
+  _fetchCloudKitsEligibility = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee() {
+    var _elementorCommon;
+    var isCloudKitsExperimentActive, response;
+    return _regenerator.default.wrap(function _callee$(_context) {
+      while (1) switch (_context.prev = _context.next) {
+        case 0:
+          isCloudKitsExperimentActive = (_elementorCommon = elementorCommon) === null || _elementorCommon === void 0 || (_elementorCommon = _elementorCommon.config) === null || _elementorCommon === void 0 || (_elementorCommon = _elementorCommon.experimentalFeatures) === null || _elementorCommon === void 0 ? void 0 : _elementorCommon['cloud-library'];
+          if (isCloudKitsExperimentActive) {
+            _context.next = 3;
+            break;
+          }
+          return _context.abrupt("return", false);
+        case 3:
+          _context.next = 5;
+          return $e.data.get('cloud-kits/eligibility', {}, {
+            refresh: true
+          });
+        case 5:
+          response = _context.sent;
+          return _context.abrupt("return", response === null || response === void 0 ? void 0 : response.data);
+        case 7:
+        case "end":
+          return _context.stop();
+      }
+    }, _callee);
+  }));
+  return _fetchCloudKitsEligibility.apply(this, arguments);
+}
+
+/***/ }),
+
 /***/ "../app/assets/js/utils/utils.js":
 /*!***************************************!*\
   !*** ../app/assets/js/utils/utils.js ***!
@@ -5825,7 +5938,8 @@ function ExportContextProvider(props) {
       plugins: [],
       kitInfo: {
         title: null,
-        description: null
+        description: null,
+        source: null
       }
     },
     _useReducer = (0, _react.useReducer)(_exportContextReducer.reducer, initialState),
@@ -5892,6 +6006,12 @@ var reducer = exports.reducer = function reducer(state, _ref) {
       return _objectSpread(_objectSpread({}, state), {}, {
         kitInfo: _objectSpread(_objectSpread({}, state.kitInfo), {}, {
           description: payload
+        })
+      });
+    case 'SET_KIT_SAVE_SOURCE':
+      return _objectSpread(_objectSpread({}, state), {}, {
+        kitInfo: _objectSpread(_objectSpread({}, state.kitInfo), {}, {
+          source: payload
         })
       });
     default:
@@ -5985,6 +6105,10 @@ var reducer = exports.reducer = function reducer(state, _ref) {
     case 'SET_FILE':
       return _objectSpread(_objectSpread({}, state), {}, {
         file: payload
+      });
+    case 'SET_KIT_SOURCE':
+      return _objectSpread(_objectSpread({}, state), {}, {
+        source: payload
       });
     case 'ADD_OVERRIDE_CONDITION':
       return _reducerUtils.ReducerUtils.updateArray(state, 'overrideConditions', payload, 'add');
@@ -6221,6 +6345,100 @@ function Export() {
 
 /***/ }),
 
+/***/ "../app/modules/import-export/assets/js/hooks/use-cloud-kits-eligibility.js":
+/*!**********************************************************************************!*\
+  !*** ../app/modules/import-export/assets/js/hooks/use-cloud-kits-eligibility.js ***!
+  \**********************************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = useCloudKitsEligibility;
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ "../node_modules/@babel/runtime/regenerator/index.js"));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ "../node_modules/@babel/runtime/helpers/asyncToGenerator.js"));
+var _slicedToArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "../node_modules/@babel/runtime/helpers/slicedToArray.js"));
+var _react = __webpack_require__(/*! react */ "react");
+var _cloudKits = __webpack_require__(/*! elementor-app/utils/cloud-kits.js */ "../app/assets/js/utils/cloud-kits.js");
+/**
+ * Hook to check if cloud kits should be available
+ *
+ * @return {Object} Query result with availability status
+ */
+function useCloudKitsEligibility() {
+  var _useState = (0, _react.useState)(false),
+    _useState2 = (0, _slicedToArray2.default)(_useState, 2),
+    data = _useState2[0],
+    setData = _useState2[1];
+  var _useState3 = (0, _react.useState)(true),
+    _useState4 = (0, _slicedToArray2.default)(_useState3, 2),
+    isLoading = _useState4[0],
+    setIsLoading = _useState4[1];
+  var _useState5 = (0, _react.useState)(null),
+    _useState6 = (0, _slicedToArray2.default)(_useState5, 2),
+    error = _useState6[0],
+    setError = _useState6[1];
+  (0, _react.useEffect)(function () {
+    var isMounted = true;
+    var checkEligibility = /*#__PURE__*/function () {
+      var _ref = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee() {
+        var result;
+        return _regenerator.default.wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              setIsLoading(true);
+              setError(null);
+              _context.prev = 2;
+              _context.next = 5;
+              return (0, _cloudKits.fetchCloudKitsEligibility)();
+            case 5:
+              result = _context.sent;
+              if (isMounted) {
+                setData(result);
+              }
+              _context.next = 12;
+              break;
+            case 9:
+              _context.prev = 9;
+              _context.t0 = _context["catch"](2);
+              if (isMounted) {
+                setError(_context.t0);
+                setData(false);
+              }
+            case 12:
+              _context.prev = 12;
+              if (isMounted) {
+                setIsLoading(false);
+              }
+              return _context.finish(12);
+            case 15:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee, null, [[2, 9, 12, 15]]);
+      }));
+      return function checkEligibility() {
+        return _ref.apply(this, arguments);
+      };
+    }();
+    checkEligibility();
+    return function () {
+      isMounted = false;
+    };
+  }, []);
+  return {
+    data: data,
+    isLoading: isLoading,
+    error: error
+  };
+}
+
+/***/ }),
+
 /***/ "../app/modules/import-export/assets/js/hooks/use-kit.js":
 /*!***************************************************************!*\
   !*** ../app/modules/import-export/assets/js/hooks/use-kit.js ***!
@@ -6234,6 +6452,7 @@ var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/inte
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
+exports.KIT_SOURCE_MAP = void 0;
 exports["default"] = useKit;
 var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ "../node_modules/@babel/runtime/regenerator/index.js"));
 var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ "../node_modules/@babel/runtime/helpers/asyncToGenerator.js"));
@@ -6246,6 +6465,10 @@ function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) 
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { (0, _defineProperty2.default)(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+var KIT_SOURCE_MAP = exports.KIT_SOURCE_MAP = {
+  CLOUD: 'cloud',
+  FILE: 'file'
+};
 var KIT_STATUS_MAP = Object.freeze({
     INITIAL: 'initial',
     UPLOADED: 'uploaded',
@@ -6274,11 +6497,15 @@ function useKit() {
     uploadKit = function uploadKit(_ref) {
       var kitId = _ref.kitId,
         file = _ref.file,
-        kitLibraryNonce = _ref.kitLibraryNonce;
+        kitLibraryNonce = _ref.kitLibraryNonce,
+        source = _ref.source;
       setAjax({
-        data: _objectSpread({
+        data: _objectSpread(_objectSpread({
           action: UPLOAD_KIT_KEY,
-          e_import_file: file,
+          source: source
+        }, file ? {
+          e_import_file: file
+        } : null), {}, {
           kit_id: kitId
         }, kitLibraryNonce ? {
           e_kit_library_nonce: kitLibraryNonce
@@ -6451,7 +6678,8 @@ function useKit() {
       var include = _ref7.include,
         kitInfo = _ref7.kitInfo,
         plugins = _ref7.plugins,
-        selectedCustomPostTypes = _ref7.selectedCustomPostTypes;
+        selectedCustomPostTypes = _ref7.selectedCustomPostTypes,
+        screenShotBlob = _ref7.screenShotBlob;
       setAjax({
         data: {
           action: EXPORT_KIT_KEY,
@@ -6459,7 +6687,8 @@ function useKit() {
             include: include,
             kitInfo: kitInfo,
             plugins: plugins,
-            selectedCustomPostTypes: selectedCustomPostTypes
+            selectedCustomPostTypes: selectedCustomPostTypes,
+            screenShotBlob: screenShotBlob
           })
         }
       });
@@ -6471,12 +6700,12 @@ function useKit() {
     if ('initial' !== ajaxState.status) {
       var newState = {};
       if ('success' === ajaxState.status) {
-        var _ajaxState$response;
-        if ((_ajaxState$response = ajaxState.response) !== null && _ajaxState$response !== void 0 && _ajaxState$response.file) {
+        var _ajaxState$response, _ajaxState$response2;
+        if ((_ajaxState$response = ajaxState.response) !== null && _ajaxState$response !== void 0 && _ajaxState$response.file || (_ajaxState$response2 = ajaxState.response) !== null && _ajaxState$response2 !== void 0 && _ajaxState$response2.kit) {
           newState.status = KIT_STATUS_MAP.EXPORTED;
         } else {
-          var _ajaxState$response2;
-          newState.status = (_ajaxState$response2 = ajaxState.response) !== null && _ajaxState$response2 !== void 0 && _ajaxState$response2.manifest ? KIT_STATUS_MAP.UPLOADED : KIT_STATUS_MAP.IMPORTED;
+          var _ajaxState$response3;
+          newState.status = (_ajaxState$response3 = ajaxState.response) !== null && _ajaxState$response3 !== void 0 && _ajaxState$response3.manifest ? KIT_STATUS_MAP.UPLOADED : KIT_STATUS_MAP.IMPORTED;
         }
       } else if ('error' === ajaxState.status) {
         newState.status = KIT_STATUS_MAP.ERROR;
@@ -6821,55 +7050,84 @@ exports["default"] = ExportComplete;
 var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "react"));
 var _router = __webpack_require__(/*! @reach/router */ "../node_modules/@reach/router/es/index.js");
 var _exportContextProvider = __webpack_require__(/*! ../../../context/export-context/export-context-provider */ "../app/modules/import-export/assets/js/context/export-context/export-context-provider.js");
+var _useKit = __webpack_require__(/*! ../../../hooks/use-kit */ "../app/modules/import-export/assets/js/hooks/use-kit.js");
 var _layout = _interopRequireDefault(__webpack_require__(/*! ../../../templates/layout */ "../app/modules/import-export/assets/js/templates/layout.js"));
 var _actionsFooter = _interopRequireDefault(__webpack_require__(/*! ../../../shared/actions-footer/actions-footer */ "../app/modules/import-export/assets/js/shared/actions-footer/actions-footer.js"));
 var _wizardStep = _interopRequireDefault(__webpack_require__(/*! ../../../ui/wizard-step/wizard-step */ "../app/modules/import-export/assets/js/ui/wizard-step/wizard-step.js"));
 var _kitData = _interopRequireDefault(__webpack_require__(/*! ../../../shared/kit-data/kit-data */ "../app/modules/import-export/assets/js/shared/kit-data/kit-data.js"));
 var _inlineLink = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/molecules/inline-link */ "../app/assets/js/ui/molecules/inline-link.js"));
+var _button = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/molecules/button */ "../app/assets/js/ui/molecules/button.js"));
 var _dashboardButton = _interopRequireDefault(__webpack_require__(/*! elementor-app/molecules/dashboard-button */ "../app/assets/js/molecules/dashboard-button.js"));
 __webpack_require__(/*! ./export-complete.scss */ "../app/modules/import-export/assets/js/pages/export/export-complete/export-complete.scss");
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+var INVALID_FILENAME_CHARS = /[<>:"/\\|?*]/g;
 function ExportComplete() {
   var _exportContext$data;
-  var exportContext = (0, _react.useContext)(_exportContextProvider.ExportContext),
-    navigate = (0, _router.useNavigate)(),
+  var exportContext = (0, _react.useContext)(_exportContextProvider.ExportContext);
+  var isSavedToCloud = _useKit.KIT_SOURCE_MAP.CLOUD === exportContext.data.kitInfo.source;
+  var navigate = (0, _router.useNavigate)(),
     downloadLink = (0, _react.useRef)(null),
     getFooter = function getFooter() {
-      return /*#__PURE__*/_react.default.createElement(_actionsFooter.default, null, /*#__PURE__*/_react.default.createElement(_dashboardButton.default, {
+      return /*#__PURE__*/_react.default.createElement(_actionsFooter.default, null, isSavedToCloud ? /*#__PURE__*/_react.default.createElement(_button.default, {
+        text: __('Open library', 'elementor'),
+        variant: "contained",
+        color: "primary",
+        url: "/kit-library/cloud"
+      }) : /*#__PURE__*/_react.default.createElement(_dashboardButton.default, {
         text: __('Close', 'elementor')
       }));
     },
     downloadFile = function downloadFile() {
       if (!downloadLink.current) {
+        var _exportContext$data$k;
         var link = document.createElement('a');
+        var defaultKitName = 'elementor-kit';
+        var kitName = ((_exportContext$data$k = exportContext.data.kitInfo) === null || _exportContext$data$k === void 0 ? void 0 : _exportContext$data$k.title) || defaultKitName;
+        var sanitizedKitName = kitName.replace(INVALID_FILENAME_CHARS, '').trim();
+        var fileName = sanitizedKitName || defaultKitName;
         link.href = 'data:text/plain;base64,' + exportContext.data.exportedData.file;
-        link.download = 'elementor-kit.zip';
+        link.download = fileName + '.zip';
         downloadLink.current = link;
       }
       downloadLink.current.click();
-    },
-    getDownloadLink = function getDownloadLink() {
-      return /*#__PURE__*/_react.default.createElement(_inlineLink.default, {
-        onClick: downloadFile,
-        italic: true
-      }, __('Click here', 'elementor'));
     };
+  var getDownloadLink = function getDownloadLink() {
+    return /*#__PURE__*/_react.default.createElement(_inlineLink.default, {
+      onClick: downloadFile,
+      italic: true
+    }, __('Click here', 'elementor'));
+  };
+  var getLearnMoreAboutKitsLink = function getLearnMoreAboutKitsLink() {
+    return /*#__PURE__*/_react.default.createElement(_inlineLink.default, {
+      italic: true
+    }, __('Click here', 'elementor'));
+  };
   (0, _react.useEffect)(function () {
-    if (exportContext.data.exportedData) {
-      downloadFile();
-    } else {
-      navigate('/export');
+    if (!exportContext.data.exportedData) {
+      return navigate('/export');
     }
-  }, [exportContext.data.downloadUrl]);
+    if (!isSavedToCloud) {
+      downloadFile();
+    }
+  }, [exportContext.data.downloadUrl, isSavedToCloud]);
+  var heading = (0, _react.useMemo)(function () {
+    return isSavedToCloud ? __('Your kit is now saved to your cloud!', 'elementor') : __('Your export is ready', 'elementor');
+  }, [isSavedToCloud]);
+  var description = (0, _react.useMemo)(function () {
+    return isSavedToCloud ? __('You\'ve imported and applied the following to your site:', 'elementor') : __('Now you can import this kit and use it on other sites.', 'elementor');
+  }, [isSavedToCloud]);
+  var getNotice = function getNotice() {
+    return isSavedToCloud ? /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, __('Learn more about building your site with Elementor Kits', 'elementor'), " ", getLearnMoreAboutKitsLink()) : /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, __('Download not working?', 'elementor'), " ", getDownloadLink(), " ", __('to download', 'elementor'));
+  };
   return /*#__PURE__*/_react.default.createElement(_layout.default, {
     type: "export",
     footer: getFooter()
   }, /*#__PURE__*/_react.default.createElement(_wizardStep.default, {
     image: elementorAppConfig.assets_url + 'images/go-pro.svg',
-    heading: __('Your export is ready!', 'elementor'),
-    description: __('Now you can import this kit and use it on other sites.', 'elementor'),
-    notice: /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, __('Download not working?', 'elementor'), " ", getDownloadLink(), " ", __('to download', 'elementor'))
+    heading: heading,
+    description: description,
+    notice: getNotice()
   }, /*#__PURE__*/_react.default.createElement(_kitData.default, {
     data: (_exportContext$data = exportContext.data) === null || _exportContext$data === void 0 || (_exportContext$data = _exportContext$data.exportedData) === null || _exportContext$data === void 0 ? void 0 : _exportContext$data.manifest
   })));
@@ -6896,57 +7154,27 @@ exports["default"] = KitDescription;
 var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "react"));
 var _exportContextProvider = __webpack_require__(/*! ../../../../../../../context/export-context/export-context-provider */ "../app/modules/import-export/assets/js/context/export-context/export-context-provider.js");
 var _textField = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/atoms/text-field */ "../app/assets/js/ui/atoms/text-field.js"));
+var _grid = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/grid/grid */ "../app/assets/js/ui/grid/grid.js"));
+var _text = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/atoms/text */ "../app/assets/js/ui/atoms/text.js"));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 function KitDescription() {
   var exportContext = (0, _react.useContext)(_exportContextProvider.ExportContext);
-  return /*#__PURE__*/_react.default.createElement(_textField.default, {
-    variant: "outlined"
-    // eslint-disable-next-line @wordpress/i18n-ellipsis
-    ,
-    placeholder: __('Say something about the style and content of these files...', 'elementor'),
-    multiline: true,
-    rows: 5,
+  return /*#__PURE__*/_react.default.createElement(_grid.default, {
+    container: true,
+    direction: "column"
+  }, /*#__PURE__*/_react.default.createElement(_text.default, {
+    tag: "span",
+    variant: "xs"
+  }, __('Description (Optional)', 'elementor')), /*#__PURE__*/_react.default.createElement(_textField.default, {
+    placeholder: __('Type description here...', 'elementor'),
     onChange: function onChange(event) {
       exportContext.dispatch({
         type: 'SET_KIT_DESCRIPTION',
         payload: event.target.value
       });
     }
-  });
-}
-
-/***/ }),
-
-/***/ "../app/modules/import-export/assets/js/pages/export/export-kit/components/kit-information/components/kit-info-modal/kit-info-modal.js":
-/*!*********************************************************************************************************************************************!*\
-  !*** ../app/modules/import-export/assets/js/pages/export/export-kit/components/kit-information/components/kit-info-modal/kit-info-modal.js ***!
-  \*********************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-"use strict";
-/* provided dependency */ var __ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n")["__"];
-
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
-Object.defineProperty(exports, "__esModule", ({
-  value: true
-}));
-exports["default"] = KitInfoModal;
-var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
-var _extends2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/extends */ "../node_modules/@babel/runtime/helpers/extends.js"));
-var _modal = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/modal/modal */ "../app/assets/js/ui/modal/modal.js"));
-var _heading = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/atoms/heading */ "../app/assets/js/ui/atoms/heading.js"));
-var _text = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/atoms/text */ "../app/assets/js/ui/atoms/text.js"));
-function KitInfoModal(props) {
-  return /*#__PURE__*/_react.default.createElement(_modal.default, (0, _extends2.default)({}, props, {
-    className: "e-app-export-kit-info-modal",
-    title: __('Website Kit Information', 'elementor')
-  }), /*#__PURE__*/_react.default.createElement(_modal.default.Section, null, /*#__PURE__*/_react.default.createElement(_heading.default, {
-    className: "e-app-export-kit-info-modal__heading",
-    variant: "h2",
-    tag: "h3"
-  }, __('What is kit information?', 'elementor')), /*#__PURE__*/_react.default.createElement(_text.default, null, __('These are the details you’ll use to quickly find and apply this kit in the future, even as your collection grows.', 'elementor'))));
+  }));
 }
 
 /***/ }),
@@ -6968,22 +7196,58 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports["default"] = KitName;
 var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "react"));
+var _slicedToArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "../node_modules/@babel/runtime/helpers/slicedToArray.js"));
 var _exportContextProvider = __webpack_require__(/*! ../../../../../../../context/export-context/export-context-provider */ "../app/modules/import-export/assets/js/context/export-context/export-context-provider.js");
 var _textField = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/atoms/text-field */ "../app/assets/js/ui/atoms/text-field.js"));
+var _grid = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/grid/grid */ "../app/assets/js/ui/grid/grid.js"));
+var _text = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/atoms/text */ "../app/assets/js/ui/atoms/text.js"));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 function KitName() {
+  var _exportContext$data$k;
   var exportContext = (0, _react.useContext)(_exportContextProvider.ExportContext);
-  return /*#__PURE__*/_react.default.createElement(_textField.default, {
-    variant: "outlined",
-    placeholder: __('Elementor Kit', 'elementor'),
-    onChange: function onChange(event) {
-      exportContext.dispatch({
-        type: 'SET_KIT_TITLE',
-        payload: event.target.value
-      });
+  var _useState = (0, _react.useState)(null),
+    _useState2 = (0, _slicedToArray2.default)(_useState, 2),
+    error = _useState2[0],
+    setError = _useState2[1];
+  var validateKitName = function validateKitName(value) {
+    if (!value || 0 === value.trim().length) {
+      return __('Must add a kit name', 'elementor');
     }
-  });
+    return null;
+  };
+  var handleChange = function handleChange(event) {
+    var value = event.target.value;
+    exportContext.dispatch({
+      type: 'SET_KIT_TITLE',
+      payload: value
+    });
+    validateAndShowError(value);
+  };
+  var validateAndShowError = function validateAndShowError(value) {
+    var validationError = validateKitName(value);
+    setError(validationError);
+    return validationError;
+  };
+  return /*#__PURE__*/_react.default.createElement(_grid.default, {
+    container: true,
+    direction: "column"
+  }, /*#__PURE__*/_react.default.createElement(_text.default, {
+    tag: "span",
+    variant: "xs"
+  }, __('Kit name', 'elementor')), /*#__PURE__*/_react.default.createElement(_textField.default, {
+    placeholder: __('Type kit name here...', 'elementor'),
+    onChange: handleChange,
+    onBlur: handleChange,
+    className: error ? 'e-app-export-kit-information__field--error' : '',
+    title: error || '',
+    value: ((_exportContext$data$k = exportContext.data.kitInfo) === null || _exportContext$data$k === void 0 ? void 0 : _exportContext$data$k.title) || ''
+  }), /*#__PURE__*/_react.default.createElement("div", {
+    className: "e-app-export-kit-information__error-container"
+  }, error && /*#__PURE__*/_react.default.createElement(_text.default, {
+    variant: "xs",
+    className: "e-app-export-kit-information__validation-error"
+  }, error)));
 }
 
 /***/ }),
@@ -6995,82 +7259,36 @@ function KitName() {
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
-/* provided dependency */ var __ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n")["__"];
 
 
 var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
-var _typeof = __webpack_require__(/*! @babel/runtime/helpers/typeof */ "../node_modules/@babel/runtime/helpers/typeof.js");
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = KitInformation;
-var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "react"));
-var _slicedToArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "../node_modules/@babel/runtime/helpers/slicedToArray.js"));
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
 var _kitName = _interopRequireDefault(__webpack_require__(/*! ./components/kit-name/kit-name */ "../app/modules/import-export/assets/js/pages/export/export-kit/components/kit-information/components/kit-name/kit-name.js"));
 var _kitDescription = _interopRequireDefault(__webpack_require__(/*! ./components/kit-description/kit-description */ "../app/modules/import-export/assets/js/pages/export/export-kit/components/kit-information/components/kit-description/kit-description.js"));
-var _kitInfoModal = _interopRequireDefault(__webpack_require__(/*! ./components/kit-info-modal/kit-info-modal */ "../app/modules/import-export/assets/js/pages/export/export-kit/components/kit-information/components/kit-info-modal/kit-info-modal.js"));
-var _panel = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/panel/panel */ "../app/assets/js/ui/panel/panel.js"));
 var _grid = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/grid/grid */ "../app/assets/js/ui/grid/grid.js"));
-var _heading = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/atoms/heading */ "../app/assets/js/ui/atoms/heading.js"));
-var _button = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/molecules/button */ "../app/assets/js/ui/molecules/button.js"));
-function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
-var kitInfoTitle = __('Kit Information', 'elementor');
+var _box = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/atoms/box */ "../app/assets/js/ui/atoms/box.js"));
+var _list = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/molecules/list */ "../app/assets/js/ui/molecules/list.js"));
 function KitInformation() {
-  var _useState = (0, _react.useState)(false),
-    _useState2 = (0, _slicedToArray2.default)(_useState, 2),
-    showKitInfoModal = _useState2[0],
-    setShowKitInfoModal = _useState2[1];
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_panel.default, {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_box.default, null, /*#__PURE__*/_react.default.createElement(_list.default, {
+    padding: "24 40",
+    separated: true,
     className: "e-app-export-kit-information"
-  }, /*#__PURE__*/_react.default.createElement(_panel.default.Header, null, /*#__PURE__*/_react.default.createElement(_panel.default.Headline, null, kitInfoTitle, /*#__PURE__*/_react.default.createElement(_button.default, {
-    className: "e-app-export-kit-info-modal__icon",
-    icon: "eicon-info-circle",
-    color: "secondary",
-    hideText: true,
-    text: kitInfoTitle,
-    onClick: function onClick(event) {
-      event.stopPropagation();
-      setShowKitInfoModal(function (prevState) {
-        return !prevState;
-      });
-    }
-  }))), /*#__PURE__*/_react.default.createElement(_panel.default.Body, null, /*#__PURE__*/_react.default.createElement(_grid.default, {
+  }, /*#__PURE__*/_react.default.createElement(_list.default.Item, null, /*#__PURE__*/_react.default.createElement(_grid.default, {
     container: true,
-    spacing: 20
+    noWrap: true,
+    direction: "column",
+    className: "e-app-export-kit-information__content"
   }, /*#__PURE__*/_react.default.createElement(_grid.default, {
     item: true,
-    md: 4
-  }, /*#__PURE__*/_react.default.createElement(_grid.default, {
-    container: true,
-    direction: "column"
-  }, /*#__PURE__*/_react.default.createElement(_grid.default, {
-    className: "e-app-export-kit-information__field-header",
-    container: true,
-    alignItems: "center"
-  }, /*#__PURE__*/_react.default.createElement(_heading.default, {
-    className: "e-app-export-kit-information__label",
-    variant: "h6",
-    tag: "h4"
-  }, __('Kit Name', 'elementor'))), /*#__PURE__*/_react.default.createElement(_grid.default, {
-    item: true
-  }, /*#__PURE__*/_react.default.createElement(_kitName.default, null)))), /*#__PURE__*/_react.default.createElement(_grid.default, {
+    container: true
+  }, /*#__PURE__*/_react.default.createElement(_kitName.default, null)), /*#__PURE__*/_react.default.createElement(_grid.default, {
     item: true,
-    md: 4
-  }, /*#__PURE__*/_react.default.createElement(_grid.default, {
-    className: "e-app-export-kit-information__field-header",
-    container: true,
-    alignItems: "center"
-  }, /*#__PURE__*/_react.default.createElement(_heading.default, {
-    className: "e-app-export-kit-information__label",
-    variant: "h6",
-    tag: "h4"
-  }, __('Kit Description', 'elementor'))), /*#__PURE__*/_react.default.createElement(_grid.default, {
-    item: true
-  }, /*#__PURE__*/_react.default.createElement(_kitDescription.default, null)))))), /*#__PURE__*/_react.default.createElement(_kitInfoModal.default, {
-    show: showKitInfoModal,
-    setShow: setShowKitInfoModal
-  }));
+    container: true
+  }, /*#__PURE__*/_react.default.createElement(_kitDescription.default, null)))))));
 }
 
 /***/ }),
@@ -7102,6 +7320,7 @@ var _kitInformation = _interopRequireDefault(__webpack_require__(/*! ./component
 var _actionsFooter = _interopRequireDefault(__webpack_require__(/*! ../../../shared/actions-footer/actions-footer */ "../app/modules/import-export/assets/js/shared/actions-footer/actions-footer.js"));
 var _inlineLink = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/molecules/inline-link */ "../app/assets/js/ui/molecules/inline-link.js"));
 var _button = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/molecules/button */ "../app/assets/js/ui/molecules/button.js"));
+var _grid = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/grid/grid */ "../app/assets/js/ui/grid/grid.js"));
 var _kitContentData = _interopRequireDefault(__webpack_require__(/*! ../../../shared/kit-content-data/kit-content-data */ "../app/modules/import-export/assets/js/shared/kit-content-data/kit-content-data.js"));
 __webpack_require__(/*! ./export-kit.scss */ "../app/modules/import-export/assets/js/pages/export/export-kit/export-kit.scss");
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
@@ -7113,8 +7332,8 @@ function ExportKit() {
       return /*#__PURE__*/_react.default.createElement(_actionsFooter.default, null, /*#__PURE__*/_react.default.createElement(_button.default, {
         variant: "contained",
         text: __('Next', 'elementor'),
-        color: "primary",
-        url: "/export/plugins"
+        color: exportContext.data.kitInfo.title ? 'primary' : 'disabled',
+        url: exportContext.data.kitInfo.title ? '/export/plugins' : ''
       }));
     },
     getLearnMoreLink = function getLearnMoreLink() {
@@ -7144,9 +7363,13 @@ function ExportKit() {
     description: [__('Choose which Elementor components - templates, content and site settings - to include in your kit file.', 'elementor'), /*#__PURE__*/_react.default.createElement(_react.default.Fragment, {
       key: "description-secondary-line"
     }, __('By default, all of your components will be exported.', 'elementor'), " ", getLearnMoreLink())]
-  }), /*#__PURE__*/_react.default.createElement(_kitContent.default, {
+  }), /*#__PURE__*/_react.default.createElement(_grid.default, {
+    container: true,
+    direction: "column",
+    className: "e-app-export-kit__content"
+  }, /*#__PURE__*/_react.default.createElement(_kitInformation.default, null), /*#__PURE__*/_react.default.createElement(_kitContent.default, {
     contentData: _kitContentData.default
-  }), /*#__PURE__*/_react.default.createElement(_kitInformation.default, null)));
+  }))));
 }
 
 /***/ }),
@@ -7163,24 +7386,57 @@ function ExportKit() {
 
 
 var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+var _typeof = __webpack_require__(/*! @babel/runtime/helpers/typeof */ "../node_modules/@babel/runtime/helpers/typeof.js");
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports["default"] = ExportPluginsFooter;
-var _react = _interopRequireDefault(__webpack_require__(/*! react */ "react"));
+var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "react"));
+var _exportContextProvider = __webpack_require__(/*! ../../../../../context/export-context/export-context-provider */ "../app/modules/import-export/assets/js/context/export-context/export-context-provider.js");
+var _useKit = __webpack_require__(/*! ../../../../../hooks/use-kit */ "../app/modules/import-export/assets/js/hooks/use-kit.js");
+var _useCloudKitsEligibility = _interopRequireDefault(__webpack_require__(/*! ../../../../../hooks/use-cloud-kits-eligibility */ "../app/modules/import-export/assets/js/hooks/use-cloud-kits-eligibility.js"));
 var _actionsFooter = _interopRequireDefault(__webpack_require__(/*! ../../../../../shared/actions-footer/actions-footer */ "../app/modules/import-export/assets/js/shared/actions-footer/actions-footer.js"));
 var _button = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/molecules/button */ "../app/assets/js/ui/molecules/button.js"));
+__webpack_require__(/*! ./export-plugins-footer.scss */ "../app/modules/import-export/assets/js/pages/export/export-plugins/components/export-plugins-footer/export-plugins-footer.scss");
+function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 function ExportPluginsFooter(_ref) {
   var isKitReady = _ref.isKitReady;
-  return /*#__PURE__*/_react.default.createElement(_actionsFooter.default, null, /*#__PURE__*/_react.default.createElement(_button.default, {
+  var exportContext = (0, _react.useContext)(_exportContextProvider.ExportContext);
+  var _useCloudKitsEligibil = (0, _useCloudKitsEligibility.default)(),
+    _useCloudKitsEligibil2 = _useCloudKitsEligibil.data,
+    isCloudKitsEligible = _useCloudKitsEligibil2 === void 0 ? false : _useCloudKitsEligibil2,
+    isCheckingEligibility = _useCloudKitsEligibil.isLoading;
+  return /*#__PURE__*/_react.default.createElement(_actionsFooter.default, {
+    className: "e-app-export-actions-container"
+  }, /*#__PURE__*/_react.default.createElement(_button.default, {
     text: __('Back', 'elementor'),
     variant: "contained",
     url: "/export"
+  }), isCloudKitsEligible && /*#__PURE__*/_react.default.createElement(_button.default, {
+    text: __('Add Kit to Cloud', 'elementor'),
+    variant: "outlined",
+    color: "secondary",
+    url: "/export/process",
+    onClick: function onClick() {
+      exportContext.dispatch({
+        type: 'SET_KIT_SAVE_SOURCE',
+        payload: _useKit.KIT_SOURCE_MAP.CLOUD
+      });
+    }
   }), /*#__PURE__*/_react.default.createElement(_button.default, {
-    text: __('Create Kit', 'elementor'),
+    text: __('Export as Zip', 'elementor'),
     variant: "contained",
-    color: isKitReady ? 'primary' : 'disabled',
-    url: isKitReady ? '/export/process' : ''
+    color: isKitReady && !isCheckingEligibility ? 'primary' : 'disabled',
+    url: isKitReady && !isCheckingEligibility ? '/export/process' : '',
+    hideText: isCheckingEligibility,
+    icon: isCheckingEligibility ? 'eicon-loading eicon-animation-spin' : '',
+    onClick: function onClick() {
+      exportContext.dispatch({
+        type: 'SET_KIT_SAVE_SOURCE',
+        payload: _useKit.KIT_SOURCE_MAP.FILE
+      });
+    }
   }));
 }
 ExportPluginsFooter.propTypes = {
@@ -7357,14 +7613,16 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports["default"] = ExportProcess;
 var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "react"));
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ "../node_modules/@babel/runtime/regenerator/index.js"));
 var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ "../node_modules/@babel/runtime/helpers/toConsumableArray.js"));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ "../node_modules/@babel/runtime/helpers/asyncToGenerator.js"));
 var _slicedToArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "../node_modules/@babel/runtime/helpers/slicedToArray.js"));
 var _router = __webpack_require__(/*! @reach/router */ "../node_modules/@reach/router/es/index.js");
 var _sharedContextProvider = __webpack_require__(/*! ../../../context/shared-context/shared-context-provider */ "../app/modules/import-export/assets/js/context/shared-context/shared-context-provider.js");
 var _exportContextProvider = __webpack_require__(/*! ../../../context/export-context/export-context-provider */ "../app/modules/import-export/assets/js/context/export-context/export-context-provider.js");
 var _layout = _interopRequireDefault(__webpack_require__(/*! ../../../templates/layout */ "../app/modules/import-export/assets/js/templates/layout.js"));
 var _fileProcess = _interopRequireDefault(__webpack_require__(/*! ../../../shared/file-process/file-process */ "../app/modules/import-export/assets/js/shared/file-process/file-process.js"));
-var _useKit2 = _interopRequireDefault(__webpack_require__(/*! ../../../hooks/use-kit */ "../app/modules/import-export/assets/js/hooks/use-kit.js"));
+var _useKit2 = _interopRequireWildcard(__webpack_require__(/*! ../../../hooks/use-kit */ "../app/modules/import-export/assets/js/hooks/use-kit.js"));
 var _useExportPluginsData2 = _interopRequireDefault(__webpack_require__(/*! ./hooks/use-export-plugins-data */ "../app/modules/import-export/assets/js/pages/export/export-process/hooks/use-export-plugins-data.js"));
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -7394,23 +7652,69 @@ function ExportProcess() {
       });
       navigate('export');
     },
-    exportKit = function exportKit() {
-      var _sharedContext$data = sharedContext.data,
-        includes = _sharedContext$data.includes,
-        selectedCustomPostTypes = _sharedContext$data.selectedCustomPostTypes;
-
-      /*
-      	Adding the plugins just before the export process begins for not mixing the kit-content selection with the plugins.
-      	The plugins must be added to the includes items, otherwise they will not be exported.
-      	The plugins should always be added in order to include the Core plugin data in the kit.
-       */
-      kitActions.export({
-        include: [].concat((0, _toConsumableArray2.default)(includes), ['plugins']),
-        kitInfo: kitInfo,
-        plugins: pluginsData,
-        selectedCustomPostTypes: selectedCustomPostTypes
+    generateScreenshot = function generateScreenshot() {
+      return new Promise(function (resolve) {
+        var iframe = document.createElement('iframe');
+        iframe.style = 'visibility: hidden;';
+        iframe.width = '1200';
+        iframe.height = '1000';
+        var _messageHandler = function messageHandler(event) {
+          if ('kit-screenshot-done' === event.data.name) {
+            window.removeEventListener('message', _messageHandler);
+            document.body.removeChild(iframe);
+            resolve(event.data.imageUrl || null);
+            window.removeEventListener('message', _messageHandler);
+          }
+        };
+        window.addEventListener('message', _messageHandler);
+        var previewUrl = new URL(window.location.origin);
+        previewUrl.searchParams.set('kit_thumbnail', '1');
+        previewUrl.searchParams.set('nonce', elementorAppConfig['import-export'].kitPreviewNonce);
+        document.body.appendChild(iframe);
+        iframe.src = previewUrl.toString();
       });
-    };
+    },
+    exportKit = /*#__PURE__*/function () {
+      var _ref2 = (0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee() {
+        var _elementorCommon;
+        var _sharedContext$data, includes, selectedCustomPostTypes, kitData, isCloudKitFeatureActive, scr;
+        return _regenerator.default.wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              _sharedContext$data = sharedContext.data, includes = _sharedContext$data.includes, selectedCustomPostTypes = _sharedContext$data.selectedCustomPostTypes;
+              /*
+              	Adding the plugins just before the export process begins for not mixing the kit-content selection with the plugins.
+              	The plugins must be added to the includes items, otherwise they will not be exported.
+              	The plugins should always be added in order to include the Core plugin data in the kit.
+               */
+              kitData = {
+                include: [].concat((0, _toConsumableArray2.default)(includes), ['plugins']),
+                kitInfo: kitInfo,
+                plugins: pluginsData,
+                selectedCustomPostTypes: selectedCustomPostTypes
+              };
+              isCloudKitFeatureActive = (_elementorCommon = elementorCommon) === null || _elementorCommon === void 0 || (_elementorCommon = _elementorCommon.config) === null || _elementorCommon === void 0 || (_elementorCommon = _elementorCommon.experimentalFeatures) === null || _elementorCommon === void 0 ? void 0 : _elementorCommon['cloud-library'];
+              if (!(isCloudKitFeatureActive && _useKit2.KIT_SOURCE_MAP.CLOUD === exportContext.data.kitInfo.source)) {
+                _context.next = 8;
+                break;
+              }
+              _context.next = 6;
+              return generateScreenshot();
+            case 6:
+              scr = _context.sent;
+              kitData.screenShotBlob = scr;
+            case 8:
+              kitActions.export(kitData);
+            case 9:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee);
+      }));
+      return function exportKit() {
+        return _ref2.apply(this, arguments);
+      };
+    }();
 
   // On load.
   (0, _react.useEffect)(function () {
@@ -8182,6 +8486,7 @@ var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "react"));
 var _slicedToArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "../node_modules/@babel/runtime/helpers/slicedToArray.js"));
 var _router = __webpack_require__(/*! @reach/router */ "../node_modules/@reach/router/es/index.js");
 var _hooks = __webpack_require__(/*! @elementor/hooks */ "@elementor/hooks");
+var _useQueryParams = _interopRequireDefault(__webpack_require__(/*! elementor-app/hooks/use-query-params */ "../app/assets/js/hooks/use-query-params.js"));
 var _sharedContextProvider = __webpack_require__(/*! ../../../context/shared-context/shared-context-provider */ "../app/modules/import-export/assets/js/context/shared-context/shared-context-provider.js");
 var _importContextProvider = __webpack_require__(/*! ../../../context/import-context/import-context-provider */ "../app/modules/import-export/assets/js/context/import-context/import-context-provider.js");
 var _layout = _interopRequireDefault(__webpack_require__(/*! ../../../templates/layout */ "../app/modules/import-export/assets/js/templates/layout.js"));
@@ -8191,11 +8496,12 @@ var _inlineLink = _interopRequireDefault(__webpack_require__(/*! elementor-app/u
 var _notice = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/molecules/notice */ "../app/assets/js/ui/molecules/notice.js"));
 var _dropZone = _interopRequireDefault(__webpack_require__(/*! elementor-app/organisms/drop-zone */ "../app/assets/js/organisms/drop-zone.js"));
 var _button = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/molecules/button */ "../app/assets/js/ui/molecules/button.js"));
+var _elementorLoading = _interopRequireDefault(__webpack_require__(/*! elementor-app/molecules/elementor-loading */ "../app/assets/js/molecules/elementor-loading.js"));
 var _appsEventTracking = __webpack_require__(/*! elementor-app/event-track/apps-event-tracking */ "../app/assets/js/event-track/apps-event-tracking.js");
-var _dialog = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/dialog/dialog */ "../app/assets/js/ui/dialog/dialog.js"));
-var _useKit2 = _interopRequireDefault(__webpack_require__(/*! ../../../hooks/use-kit */ "../app/modules/import-export/assets/js/hooks/use-kit.js"));
-__webpack_require__(/*! ./import-kit.scss */ "../app/modules/import-export/assets/js/pages/import/import-kit/import-kit.scss");
 var _checkbox = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/atoms/checkbox */ "../app/assets/js/ui/atoms/checkbox.js"));
+var _dialog = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/dialog/dialog */ "../app/assets/js/ui/dialog/dialog.js"));
+var _useKit2 = _interopRequireWildcard(__webpack_require__(/*! ../../../hooks/use-kit */ "../app/modules/import-export/assets/js/hooks/use-kit.js"));
+__webpack_require__(/*! ./import-kit.scss */ "../app/modules/import-export/assets/js/pages/import/import-kit/import-kit.scss");
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 function ImportKit() {
@@ -8278,12 +8584,20 @@ function ImportKit() {
     uploadFile = _useConfirmAction.runAction,
     dialog = _useConfirmAction.dialog,
     checkbox = _useConfirmAction.checkbox;
+  var _useQueryParams$getAl = (0, _useQueryParams.default)().getAll(),
+    source = _useQueryParams$getAl.source,
+    kitId = _useQueryParams$getAl.kit_id;
+  var isLoadingKitFromCloud = _useKit2.KIT_SOURCE_MAP.CLOUD === source;
 
   // On load.
   (0, _react.useEffect)(function () {
     sharedContext.dispatch({
       type: 'SET_INCLUDES',
       payload: []
+    });
+    importContext.dispatch({
+      type: 'SET_KIT_SOURCE',
+      payload: source
     });
     sharedContext.dispatch({
       type: 'SET_CURRENT_PAGE_NAME',
@@ -8307,6 +8621,12 @@ function ImportKit() {
         type: 'SET_UPLOADED_DATA',
         payload: kitState.data
       });
+      if (_useKit2.KIT_SOURCE_MAP.CLOUD === source && kitState.data.file_url) {
+        importContext.dispatch({
+          type: 'SET_FILE',
+          payload: kitState.data.file_url
+        });
+      }
     } else if ('error' === kitState.status) {
       setErrorType(kitState.data);
     }
@@ -8319,15 +8639,25 @@ function ImportKit() {
       navigate(url);
     }
   }, [importContext.data.uploadedData]);
+
+  // Trigger import kit from Cloud Library
+  (0, _react.useEffect)(function () {
+    if (_useKit2.KIT_SOURCE_MAP.CLOUD === source && kitId) {
+      kitActions.upload({
+        source: source,
+        kitId: kitId
+      });
+    }
+  }, [source, kitId]);
   return /*#__PURE__*/_react.default.createElement(_layout.default, {
     type: "import"
   }, /*#__PURE__*/_react.default.createElement("section", {
     className: "e-app-import"
-  }, 'kit-library' === referrer && /*#__PURE__*/_react.default.createElement(_button.default, {
+  }, isLoadingKitFromCloud ? /*#__PURE__*/_react.default.createElement(_elementorLoading.default, null) : /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, 'kit-library' === referrer && /*#__PURE__*/_react.default.createElement(_button.default, {
     className: "e-app-import__back-to-library",
     icon: "eicon-chevron-left",
     text: __('Back to Kit Library', 'elementor'),
-    url: "/kit-library"
+    url: isLoading ? '' : "/kit-library".concat(isLoadingKitFromCloud ? '/cloud' : '')
   }), /*#__PURE__*/_react.default.createElement(_pageHeader.default, {
     heading: __('Import a Website Kit', 'elementor'),
     description: [__('Upload a file with templates, site settings, content, etc., and apply them to your site automatically.', 'elementor'), getLearnMoreLink()]
@@ -8349,18 +8679,6 @@ function ImportKit() {
       return setErrorType('general');
     },
     isLoading: isLoading
-  }), errorType && /*#__PURE__*/_react.default.createElement(_processFailedDialog.default, {
-    errorType: errorType,
-    onApprove: resetImportProcess,
-    onModalClose: function onModalClose(event) {
-      return eventTracking('kit-library/modal-close', event, 'load', null, 'error');
-    },
-    onError: function onError() {
-      return eventTracking('kit-library/modal-open', null, 'load', errorType, 'error');
-    },
-    onLearnMore: function onLearnMore() {
-      return eventTracking('kit-library/seek-more-info', null, 'click', null, 'error');
-    }
   }), dialog.isOpen && /*#__PURE__*/_react.default.createElement(_dialog.default, {
     title: __('Warning: JSON or ZIP files may be unsafe', 'elementor'),
     text: __('Uploading JSON or ZIP files from unknown sources can be harmful and put your site at risk. For maximum safety, upload only JSON or ZIP files from trusted sources.', 'elementor'),
@@ -8384,7 +8702,19 @@ function ImportKit() {
     onChange: function onChange(event) {
       return checkbox.setIsChecked(!!event.target.checked);
     }
-  }), __('Do not show this message again', 'elementor')))));
+  }), __('Do not show this message again', 'elementor')))), errorType && /*#__PURE__*/_react.default.createElement(_processFailedDialog.default, {
+    errorType: errorType,
+    onApprove: resetImportProcess,
+    onModalClose: function onModalClose(event) {
+      return eventTracking('kit-library/modal-close', event, 'load', null, 'error');
+    },
+    onError: function onError() {
+      return eventTracking('kit-library/modal-open', null, 'load', errorType, 'error');
+    },
+    onLearnMore: function onLearnMore() {
+      return eventTracking('kit-library/seek-more-info', null, 'click', null, 'error');
+    }
+  })));
 }
 
 /***/ }),
@@ -9845,11 +10175,13 @@ var _wizardFooter = _interopRequireDefault(__webpack_require__(/*! elementor-app
 function ActionsFooter(props) {
   return /*#__PURE__*/_react.default.createElement(_wizardFooter.default, {
     separator: true,
-    justify: "end"
+    justify: "end",
+    className: props.className
   }, props.children);
 }
 ActionsFooter.propTypes = {
-  children: PropTypes.any
+  children: PropTypes.any,
+  className: PropTypes.string
 };
 
 /***/ }),
@@ -11099,6 +11431,7 @@ var _dialog = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/di
 var _useQueryParams = _interopRequireDefault(__webpack_require__(/*! elementor-app/hooks/use-query-params */ "../app/assets/js/hooks/use-query-params.js"));
 var _useAction = _interopRequireDefault(__webpack_require__(/*! elementor-app/hooks/use-action */ "../app/assets/js/hooks/use-action.js"));
 var _inlineLink = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/molecules/inline-link */ "../app/assets/js/ui/molecules/inline-link.js"));
+var _useKit = __webpack_require__(/*! ../../hooks/use-kit */ "../app/modules/import-export/assets/js/hooks/use-kit.js");
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 var messagesContent = {
@@ -11147,6 +11480,14 @@ var messagesContent = {
   'domdocument-missing': {
     title: __('Unable to download the Kit', 'elementor'),
     text: __('This download requires the \'DOMDocument\' PHP extension, which we couldn’t detect on your server. Enable this extension, or get in touch with your hosting service for support, and then give the download another go.', 'elementor')
+  },
+  'insufficient-quota': {
+    title: __('Couldn’t Export the Kit', 'elementor'),
+    text: __('The export failed because it will pass the maximum kits you can export.', 'elementor')
+  },
+  'failed-to-fetch-quota': {
+    title: __('Couldn’t fetch quota', 'elementor'),
+    text: __('Failed to fetch quota.', 'elementor')
   }
 };
 function ProcessFailedDialog(_ref) {
@@ -11162,6 +11503,7 @@ function ProcessFailedDialog(_ref) {
     navigate = (0, _router.useNavigate)(),
     _useQueryParams$getAl = (0, _useQueryParams.default)().getAll(),
     referrer = _useQueryParams$getAl.referrer,
+    source = _useQueryParams$getAl.source,
     error = 'string' === typeof errorType && messagesContent[errorType] ? errorType : 'general',
     _messagesContent$erro = messagesContent[error],
     title = _messagesContent$erro.title,
@@ -11181,11 +11523,12 @@ function ProcessFailedDialog(_ref) {
       onLearnMore === null || onLearnMore === void 0 || onLearnMore();
     },
     handleOnDismiss = function handleOnDismiss(event) {
+      var isLoadingKitFromCloud = _useKit.KIT_SOURCE_MAP.CLOUD === source;
       if ('general' === error && onDismiss) {
         onDismiss();
       } else if ('kit-library' === referrer) {
         onModalClose === null || onModalClose === void 0 || onModalClose(event);
-        navigate('/kit-library');
+        navigate("/kit-library".concat(isLoadingKitFromCloud ? '/cloud' : ''));
       } else {
         action.backToDashboard();
       }
@@ -11593,6 +11936,133 @@ WizardStep.defaultProps = {
 
 /***/ }),
 
+/***/ "../app/modules/kit-library/assets/js/data/cloud-kits/commands-data/eligibility.js":
+/*!*****************************************************************************************!*\
+  !*** ../app/modules/kit-library/assets/js/data/cloud-kits/commands-data/eligibility.js ***!
+  \*****************************************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports.Eligibility = void 0;
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "../node_modules/@babel/runtime/helpers/classCallCheck.js"));
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ "../node_modules/@babel/runtime/helpers/createClass.js"));
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "../node_modules/@babel/runtime/helpers/possibleConstructorReturn.js"));
+var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "../node_modules/@babel/runtime/helpers/getPrototypeOf.js"));
+var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ "../node_modules/@babel/runtime/helpers/inherits.js"));
+function _callSuper(t, o, e) { return o = (0, _getPrototypeOf2.default)(o), (0, _possibleConstructorReturn2.default)(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], (0, _getPrototypeOf2.default)(t).constructor) : o.apply(t, e)); }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+var Eligibility = exports.Eligibility = /*#__PURE__*/function (_$e$modules$CommandDa) {
+  function Eligibility() {
+    (0, _classCallCheck2.default)(this, Eligibility);
+    return _callSuper(this, Eligibility, arguments);
+  }
+  (0, _inherits2.default)(Eligibility, _$e$modules$CommandDa);
+  return (0, _createClass2.default)(Eligibility, null, [{
+    key: "getEndpointFormat",
+    value: function getEndpointFormat() {
+      return 'cloud-kits/eligibility';
+    }
+  }]);
+}($e.modules.CommandData);
+
+/***/ }),
+
+/***/ "../app/modules/kit-library/assets/js/data/cloud-kits/commands-data/index.js":
+/*!***********************************************************************************!*\
+  !*** ../app/modules/kit-library/assets/js/data/cloud-kits/commands-data/index.js ***!
+  \***********************************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+Object.defineProperty(exports, "Eligibility", ({
+  enumerable: true,
+  get: function get() {
+    return _eligibility.Eligibility;
+  }
+}));
+exports.Index = void 0;
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "../node_modules/@babel/runtime/helpers/classCallCheck.js"));
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ "../node_modules/@babel/runtime/helpers/createClass.js"));
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "../node_modules/@babel/runtime/helpers/possibleConstructorReturn.js"));
+var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "../node_modules/@babel/runtime/helpers/getPrototypeOf.js"));
+var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ "../node_modules/@babel/runtime/helpers/inherits.js"));
+var _eligibility = __webpack_require__(/*! ./eligibility */ "../app/modules/kit-library/assets/js/data/cloud-kits/commands-data/eligibility.js");
+function _callSuper(t, o, e) { return o = (0, _getPrototypeOf2.default)(o), (0, _possibleConstructorReturn2.default)(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], (0, _getPrototypeOf2.default)(t).constructor) : o.apply(t, e)); }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+var Index = exports.Index = /*#__PURE__*/function (_$e$modules$CommandDa) {
+  function Index() {
+    (0, _classCallCheck2.default)(this, Index);
+    return _callSuper(this, Index, arguments);
+  }
+  (0, _inherits2.default)(Index, _$e$modules$CommandDa);
+  return (0, _createClass2.default)(Index, null, [{
+    key: "getEndpointFormat",
+    value: function getEndpointFormat() {
+      return 'cloud-kits/{id}';
+    }
+  }]);
+}($e.modules.CommandData);
+
+/***/ }),
+
+/***/ "../app/modules/kit-library/assets/js/data/cloud-kits/component.js":
+/*!*************************************************************************!*\
+  !*** ../app/modules/kit-library/assets/js/data/cloud-kits/component.js ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
+var _typeof = __webpack_require__(/*! @babel/runtime/helpers/typeof */ "../node_modules/@babel/runtime/helpers/typeof.js");
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+exports["default"] = void 0;
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "../node_modules/@babel/runtime/helpers/classCallCheck.js"));
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ "../node_modules/@babel/runtime/helpers/createClass.js"));
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "../node_modules/@babel/runtime/helpers/possibleConstructorReturn.js"));
+var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "../node_modules/@babel/runtime/helpers/getPrototypeOf.js"));
+var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ "../node_modules/@babel/runtime/helpers/inherits.js"));
+var commandsData = _interopRequireWildcard(__webpack_require__(/*! ./commands-data */ "../app/modules/kit-library/assets/js/data/cloud-kits/commands-data/index.js"));
+function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _callSuper(t, o, e) { return o = (0, _getPrototypeOf2.default)(o), (0, _possibleConstructorReturn2.default)(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], (0, _getPrototypeOf2.default)(t).constructor) : o.apply(t, e)); }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+var Component = exports["default"] = /*#__PURE__*/function (_$e$modules$Component) {
+  function Component() {
+    (0, _classCallCheck2.default)(this, Component);
+    return _callSuper(this, Component, arguments);
+  }
+  (0, _inherits2.default)(Component, _$e$modules$Component);
+  return (0, _createClass2.default)(Component, [{
+    key: "getNamespace",
+    value: function getNamespace() {
+      return 'cloud-kits';
+    }
+  }, {
+    key: "defaultData",
+    value: function defaultData() {
+      return this.importCommands(commandsData);
+    }
+  }]);
+}($e.modules.ComponentBase);
+
+/***/ }),
+
 /***/ "../app/modules/kit-library/assets/js/data/kits/commands-data/download-link.js":
 /*!*************************************************************************************!*\
   !*** ../app/modules/kit-library/assets/js/data/kits/commands-data/download-link.js ***!
@@ -11893,7 +12363,7 @@ var EComponent = exports["default"] = /*#__PURE__*/function (_$e$modules$Compone
   }, {
     key: "defaultCommands",
     value: function defaultCommands() {
-      var trackingCommands = ['apply-kit', 'approve-import', 'approve-selection', 'back-to-library', 'browse', 'change-sort-direction', 'change-sort-type', 'change-sort-value', 'check', 'check-item', 'check-out-kit', 'checking-a-checkbox', 'check-kits-on-theme-forest', 'checkbox-filtration', 'collapse', 'choose-file', 'choose-site-parts-to-import', 'clear-filter', 'close', 'drop', 'enable', 'expand', 'file-upload', 'filter', 'filter-selection', 'favorite-icon', 'go-back', 'go-back-to-view-kits', 'kit-free-search', 'kit-is-live-load', 'kit-import', 'logo', 'mark-as-favorite', 'modal-close', 'modal-load', 'modal-open', 'modal-error', 'open-site-area', 'refetch', 'responsive-controls', 'see-it-live', 'seek-more-info', 'sidebar-tag-filter', 'skip', 'select-organizing-category', 'top-bar-change-view', 'uncheck', 'unchecking-a-checkbox', 'view-demo-page', 'view-demo-part', 'view-overview-page'].reduce(function (allCommands, command) {
+      var trackingCommands = ['apply-kit', 'approve-import', 'approve-selection', 'back-to-library', 'browse', 'change-sort-direction', 'change-sort-type', 'change-sort-value', 'check', 'check-item', 'check-out-kit', 'checking-a-checkbox', 'check-kits-on-theme-forest', 'checkbox-filtration', 'collapse', 'choose-file', 'choose-site-parts-to-import', 'clear-filter', 'close', 'drop', 'enable', 'expand', 'file-upload', 'filter', 'filter-selection', 'favorite-icon', 'go-back', 'go-back-to-view-kits', 'kit-free-search', 'kit-is-live-load', 'kit-import', 'logo', 'mark-as-favorite', 'modal-close', 'modal-load', 'modal-open', 'modal-error', 'open-site-area', 'refetch', 'responsive-controls', 'see-it-live', 'seek-more-info', 'sidebar-tag-filter', 'skip', 'select-organizing-category', 'top-bar-change-view', 'uncheck', 'unchecking-a-checkbox', 'view-demo-page', 'view-demo-part', 'view-overview-page', 'cloud-import', 'cloud-delete'].reduce(function (allCommands, command) {
         return _objectSpread(_objectSpread({}, allCommands), {}, (0, _defineProperty2.default)({}, command, function () {}));
       }, {});
       return _objectSpread({}, trackingCommands);
@@ -11924,6 +12394,7 @@ var _component = _interopRequireDefault(__webpack_require__(/*! ./data/kits/comp
 var _router = _interopRequireDefault(__webpack_require__(/*! @elementor/router */ "@elementor/router"));
 var _component2 = _interopRequireDefault(__webpack_require__(/*! ./data/taxonomies/component */ "../app/modules/kit-library/assets/js/data/taxonomies/component.js"));
 var _eComponent = _interopRequireDefault(__webpack_require__(/*! ./e-component */ "../app/modules/kit-library/assets/js/e-component.js"));
+var _component3 = _interopRequireDefault(__webpack_require__(/*! ./data/cloud-kits/component */ "../app/modules/kit-library/assets/js/data/cloud-kits/component.js"));
 var KitLibrary = exports["default"] = /*#__PURE__*/function () {
   function KitLibrary() {
     (0, _classCallCheck2.default)(this, KitLibrary);
@@ -11933,6 +12404,7 @@ var KitLibrary = exports["default"] = /*#__PURE__*/function () {
     $e.components.register(new _component.default());
     $e.components.register(new _component2.default());
     $e.components.register(new _eComponent.default());
+    $e.components.register(new _component3.default());
     _router.default.addRoute({
       path: '/kit-library/*',
       component: React.lazy(function () {
@@ -16482,8 +16954,8 @@ function __disposeResources(env) {
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
 /******/ 			if (chunkId === "vendors-node_modules_react-query_devtools_index_js") return "56a155a8adcef506ce8a.bundle.js";
-/******/ 			if (chunkId === "kit-library") return "" + chunkId + ".b0f0ab89c95fe1f6fde3.bundle.js";
-/******/ 			if (chunkId === "onboarding") return "" + chunkId + ".16755744e5ca197ffd37.bundle.js";
+/******/ 			if (chunkId === "kit-library") return "" + chunkId + ".208fd2e8cdac52e66fcb.bundle.js";
+/******/ 			if (chunkId === "onboarding") return "" + chunkId + ".bb53949526c949ea5365.bundle.js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

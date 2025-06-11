@@ -6,6 +6,8 @@
 
 /*! @elementor/editor-props */
 
+/*! @elementor/editor-responsive */
+
 /*! @elementor/editor-ui */
 
 /*! @elementor/editor-v1-adapters */
@@ -97,6 +99,10 @@
 /*!*************************************************!*\
   !*** external ["elementorV2","editorElements"] ***!
   \*************************************************/
+
+/*!***************************************************!*\
+  !*** external ["elementorV2","editorResponsive"] ***!
+  \***************************************************/
 
 /*!***************************************************!*\
   !*** external ["elementorV2","editorV1Adapters"] ***!

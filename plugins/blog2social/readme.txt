@@ -6,7 +6,7 @@ Donate link: https://paypal.me/adenion
 Requires at least: 6.2
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 8.4.4
+Stable tag: 8.4.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,7 +49,7 @@ To benefit from all the advanced features for automatic sharing and scheduling y
 * **Ravelry** - Post to your Ravelry account (from Smart)
 * **Youtube** - Publish your videos on your Youtube channel (add-on)
 * **Vimeo** - Publish your videos on your Vimeo channel (add-on)
-* **TikTok** - Share your videos on TikTok (add-on) and photo posts or carousels with multiple images (from Smart)
+* **TikTok** - Share your videos on TikTok (add-on) and photo posts or carousels with multiple images (from Pro)
 * **Mastodon** - Post to your Mastodon account (from Pro)
 * **Discord** - Post to your Discord servers (from Smart)
 * **HumHub** - Post to your profile and space (add-on)
@@ -274,6 +274,8 @@ To get started with the basics of Blog2Social and maybe find some useful tips an
 
 
 == Changelog ==
+= 8.4.5 =
+Usability Optimization
 = 8.4.4 =
 Bugfix: post add/update nonce verification
 = 8.4.3 =
@@ -360,6 +362,8 @@ Bugfix: Autoposting
 Publish and share videos
 
 == Upgrade Notice ==
+= 8.4.5 =
+Usability Optimization
 = 8.4.4 =
 Bugfix: post add/update nonce verification
 = 8.4.3 =

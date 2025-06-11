@@ -473,12 +473,7 @@ li.payment_method_stripe_promptpay label:first-of-type img {
   width: 84px;
 }
 
-li.payment_method_stripe_affirm label[for="payment_method_stripe_affirm"] {
-  display: flex;
-  align-items: center;
-}
-
-#wc-stripe-affirm-message-container .StripeElement {
+#wc-stripe-affirm-message-container.StripeElement {
   width: 100%;
 }
 

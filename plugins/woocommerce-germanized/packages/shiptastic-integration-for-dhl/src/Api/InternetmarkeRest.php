@@ -42,7 +42,10 @@ class InternetmarkeRest extends \Vendidero\Shiptastic\API\REST {
 		if ( 401 === $code ) {
 			$error->add( 401, sprintf( _x( 'Your Internetmarke <a href="%s">API credentials</a> seem to be invalid or the API access has not yet been approved.', 'dhl', 'woocommerce-germanized' ), esc_url( Package::get_deutsche_post_shipping_provider()->get_edit_link() ) ) );
 		} elseif ( isset( $body['description'] ) ) {
-			$error->add( $code, wp_kses_post( wp_unslash( $body['description'] ) ) );
+			$title         = isset( $body['title'] ) ? wp_kses_post( wp_unslash( $body['title'] ) ) . ': ' : '';
+			$error_message = $title . wp_kses_post( wp_unslash( $body['description'] ) );
+
+			$error->add( $code, $error_message );
 		}
 
 		if ( $error->has_errors() ) {
@@ -137,9 +140,11 @@ class InternetmarkeRest extends \Vendidero\Shiptastic\API\REST {
 			throw new \Exception( esc_html( sprintf( _x( 'Could not fetch shipment %d.', 'dhl', 'woocommerce-germanized' ), $label->get_shipment_id() ) ) );
 		}
 
+		$has_contact_name = $shipment->get_sender_first_name() || $shipment->get_sender_last_name();
+
 		$sender = array(
-			'name'           => wc_shiptastic_substring( $shipment->get_sender_first_name() . ' ' . $shipment->get_sender_last_name(), 0, 50 ),
-			'additionalName' => wc_shiptastic_substring( $shipment->get_sender_company(), 0, 40 ),
+			'name'           => wc_shiptastic_substring( ( $has_contact_name ? ( $shipment->get_sender_first_name() . ' ' . $shipment->get_sender_last_name() ) : $shipment->get_sender_company() ), 0, 50 ),
+			'additionalName' => wc_shiptastic_substring( ( $has_contact_name ? $shipment->get_sender_company() : '' ), 0, 40 ),
 			'addressLine1'   => wc_shiptastic_substring( $shipment->get_sender_address_1(), 0, 50 ),
 			'addressLine2'   => wc_shiptastic_substring( $shipment->get_sender_address_2(), 0, 60 ),
 			'postalCode'     => $shipment->get_sender_postcode(),
@@ -279,7 +284,6 @@ class InternetmarkeRest extends \Vendidero\Shiptastic\API\REST {
 		$response = $this->post( 'app/retoure', $this->clean_request( $request ) );
 
 		if ( $response->is_error() ) {
-			Package::log( 'Error while cancelling label: ' . wc_print_r( $response->get_error()->get_error_messages(), true ) );
 			throw new \Exception( wp_kses_post( implode( "\n", $response->get_error()->get_error_messages() ) ), absint( $response->get_code() ) );
 		}
 

@@ -248,16 +248,16 @@ class WC_GZD_Emails {
 	}
 
 	public function checkout_block_payment_context_confirmation_callback( $context, $payment_result ) {
+		wc_gzd_remove_all_hooks( 'woocommerce_rest_checkout_process_payment_with_context', 1005 );
+
 		$order = $context->order;
 		$this->confirm_order( $order );
-
-		wc_gzd_remove_all_hooks( 'woocommerce_rest_checkout_process_payment_with_context', 1005 );
 	}
 
 	public function checkout_block_no_payment_context_confirmation_callback( $redirect, $order ) {
-		$this->confirm_order( $order );
-
 		wc_gzd_remove_all_hooks( 'woocommerce_get_checkout_order_received_url', 1005 );
+
+		$this->confirm_order( $order );
 
 		return $redirect;
 	}
@@ -453,13 +453,15 @@ class WC_GZD_Emails {
 		$mails = $mailer->get_emails();
 
 		foreach ( $mails as $mail ) {
-			$mail->form_fields['bcc'] = array(
-				'title'       => __( 'BCC recipients', 'woocommerce-germanized' ),
-				'type'        => 'text',
-				'description' => __( 'Enter blind-copy recipients (comma separated) for this email.', 'woocommerce-germanized' ),
-				'placeholder' => '',
-				'default'     => '',
-			);
+			if ( $mail && isset( $mail->form_fields ) ) {
+				$mail->form_fields['bcc'] = array(
+					'title'       => __( 'BCC recipients', 'woocommerce-germanized' ),
+					'type'        => 'text',
+					'description' => __( 'Enter blind-copy recipients (comma separated) for this email.', 'woocommerce-germanized' ),
+					'placeholder' => '',
+					'default'     => '',
+				);
+			}
 		}
 	}
 
@@ -589,13 +591,33 @@ class WC_GZD_Emails {
 	}
 
 	public function print_processing_email_text( $order ) {
+		$email_improvements_enabled = false;
+
+		if ( class_exists( 'Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
+			$email_improvements_enabled = Automattic\WooCommerce\Utilities\FeaturesUtil::feature_is_enabled( 'email_improvements' );
+		}
+
+		/**
+		 * In case email improvements are enabled, Woo adds a separate div to the summary of the email.
+		 * In this case, empty p-tags (leftovers of the gettext strings that Germanized removes) cause additional spacing.
+		 */
+		if ( $email_improvements_enabled ) {
+			echo '<div style="margin-top: -32px;">';
+		}
+
 		echo wp_kses_post( wpautop( wptexturize( $this->get_processing_email_text( $order ) ) ) );
+
+		if ( $email_improvements_enabled ) {
+			echo '</div>';
+		}
 	}
 
 	public function replace_processing_email_text( $translated, $original, $domain ) {
 		if ( 'woocommerce' === $domain ) {
 			$search = array(
 				'Just to let you know &mdash; we\'ve received your order #%s, and it is now being processed:',
+				'Just to let you know &mdash; we’ve received your order, and it is now being processed.',
+				'Here’s a reminder of what you’ve ordered:',
 				'Just to let you know &mdash; your payment has been confirmed, and order #%s is now being processed:',
 				'Your order has been received and is now being processed. Your order details are shown below for your reference:',
 			);

@@ -204,6 +204,30 @@ jQuery(document).ready(function() {
                     <p class="submit"><button type="submit" name="footer_submit" id="footer_submit" class="wp-maintenance-button wp-maintenance-button-primary"><?php esc_html_e('Save', 'wp-maintenance'); ?></button></p>
                 </form>
             </div>
+            
+            <div class="wp-maintenance-module-options-block">
+                <div class="wp-maintenance-settings-section-header">
+                    <h3 class="wp-maintenance-settings-section-title" id="module-import_export"><?php esc_html_e('Export / Import Settings', 'wp-maintenance'); ?></h3>
+                </div>
+                <div class="wp-maintenance-setting-row">
+                    <label class="wp-maintenance-setting-row-title"><?php esc_html_e('Export Settings', 'wp-maintenance'); ?></label>
+                    <form method="post">
+                        <input type="hidden" name="wpm_action" value="export_settings" />
+                        <?php wp_nonce_field( 'go_export_nonce', 'wpm_export_nonce' ); ?>
+                        <?php submit_button( __( 'Export', 'wp-maintenance' ), 'wp-maintenance-button wp-maintenance-button-secondary', 'submit', false ); ?>
+                    </form>
+                </div>
+                
+                <div class="wp-maintenance-setting-row">
+                    <label class="wp-maintenance-setting-row-title"><?php esc_html_e('Import the plugin settings from a .json file. This file can be obtained by exporting the settings on another site using the form above', 'wp-maintenance'); ?></label>
+                    <form method="post" enctype="multipart/form-data" id="import-form">
+                        <input type="hidden" name="wpm_action" value="import_settings" />
+                        <input type="file" name="wpm_import_file" id="wpm_import_file" onchange="validateImportForm()"/>                            
+                        <?php wp_nonce_field( 'go_import_nonce', 'wpm_import_nonce' ); ?>
+                        <p><?php submit_button( __( 'Import', 'wp-maintenance' ), 'wp-maintenance-button wp-maintenance-button-secondary', 'submit', false, array('id' => 'import-submit', 'disabled' => 'disabled') ); ?></p>
+                    </form>
+                </div>
+            </div>
 
          </div>
     </div>    
@@ -229,4 +253,16 @@ jQuery(document).ready(function() {
         );
         var editor = wp.codeEditor.initialize( $('#headercode'), editorSettings );
     });
+</script>
+<script type="text/javascript">
+function validateImportForm() {
+    var fileInput = document.getElementById('wpm_import_file');
+    var submitButton = document.getElementById('import-submit');
+    
+    if (fileInput.files.length > 0) {
+        submitButton.disabled = false;
+    } else {
+        submitButton.disabled = true;
+    }
+}
 </script>

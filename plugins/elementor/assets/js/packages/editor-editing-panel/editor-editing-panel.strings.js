@@ -1,12 +1,4 @@
 __( 'Clear', 'elementor' );
-__( 'Style origin', 'elementor' );
-/* translators: %s: Label of the inheritance item */
-__( 'Inheritance item: %s', 'elementor' );
-__( 'Style origin', 'elementor' );
-__( 'Style origin', 'elementor' );
-__( 'This is the final value', 'elementor' );
-__( 'This value is overridden by another style', 'elementor' );
-__( 'This has value from another style', 'elementor' );
 __( 'Style edited', 'elementor' );
 __( 'Style edited', 'elementor' );
 __( 'Layout', 'elementor' );
@@ -26,7 +18,18 @@ __( 'Show more', 'elementor' );
 __( 'Linear Gradient', 'elementor' );
 __( 'Radial Gradient', 'elementor' );
 __( 'Base', 'elementor' );
-__( 'Inherited from base styles', 'elementor' );
+__( 'Has effective styles', 'elementor' );
+__( 'Has overridden styles', 'elementor' );
+__( 'Has styles', 'elementor' );
+__( 'Style origin', 'elementor' );
+/* translators: %s: Label of the inheritance item */
+__( 'Inheritance item: %s', 'elementor' );
+__( 'Style origin', 'elementor' );
+__( 'Style origin', 'elementor' );
+__( 'This is the final value', 'elementor' );
+__( 'This value is overridden by another style', 'elementor' );
+__( 'This has value from another style', 'elementor' );
+__( 'Dynamic tags', 'elementor' );
 __( 'Search dynamic tags…', 'elementor' );
 __( 'Sorry, nothing matched', 'elementor' );
 __( 'Try something else.', 'elementor' );
@@ -36,7 +39,6 @@ __( 'You’ll need Elementor Pro to use this feature.', 'elementor' );
 __( 'Remove dynamic value', 'elementor' );
 __( 'Dynamic tags', 'elementor' );
 __( 'Settings', 'elementor' );
-__( 'Dynamic tags', 'elementor' );
 /* translators: %s is the class name. */
 __( `class %s applied`, 'elementor' );
 /* translators: %s is the class name. */
@@ -69,6 +71,7 @@ __(
 				);
 __( 'Rename', 'elementor' );
 __( 'Open CSS Class Menu', 'elementor' );
+__( 'Inherited from base styles', 'elementor' );
 __( 'Word spacing', 'elementor' );
 __( 'None', 'elementor' );
 __( 'Capitalize', 'elementor' );

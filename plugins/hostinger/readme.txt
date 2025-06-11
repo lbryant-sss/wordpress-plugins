@@ -3,7 +3,7 @@ Tags: hostinger, tools, maintenance, security, redirects, https, xml-rpc
 Requires at least: 5.5
 Tested up to: 6.8
 Requires PHP: 8.0
-Stable tag: 3.0.37
+Stable tag: 3.0.38
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 

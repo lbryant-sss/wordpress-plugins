@@ -61,9 +61,15 @@ function wpa_add_honeypot_field(){
 	    'form.uwp-login-form',                 // USER WP LOGIN FORM
 	    '.et_pb_login_form form',			   // For Elementor login form
 	    'form.eael-login-form',				   // essential-addons login form
+	    'form.user-registration-form-login',   // User Registration & Membership for WordPress
+
 	    'form#lostpasswordform',			   // Lost Password Form
 	    'form.lost_reset_password',            // Tutor Password Form
+	    'form.ur_lost_reset_password',    	   // User Registration & Membership for WordPress	    
+
 	    
+	    //Registration Forms
+	    'form.register',            		   // User Registration & Membership for WordPress
 
 	    // Comment forms
 	    'form#commentform',                    // WP Comment with ID

@@ -47,7 +47,12 @@ class PRG_Post_Item {
 
         $postTypes = " ";
         if (!empty($this->searchPostType)) {
-            $postTypes .= " `post_type` LIKE '%" . $this->searchPostType . "%' ";
+         
+            $postTypes .=  $wpdb->prepare(
+                " `post_type` LIKE %s ",
+                '%' . $wpdb->esc_like($this->searchPostType) . '%'
+            );
+        
         } else {
             $post_types = get_post_types(array('public' => true));
             if (is_array($post_types) && !empty($post_types)) {

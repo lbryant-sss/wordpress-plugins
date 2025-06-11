@@ -1,4 +1,4 @@
-/*! elementor - v3.29.0 - 04-06-2025 */
+/*! elementor - v3.30.0 - 10-06-2025 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -5023,21 +5023,35 @@ __webpack_require__(/*! ./popover.scss */ "../app/assets/js/ui/molecules/popover
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 
 function Popover(props) {
+  var getArrowPositionClass = function getArrowPositionClass() {
+    switch (props.arrowPosition) {
+      case 'start':
+        return 'eps-popover--arrow-start';
+      case 'end':
+        return 'eps-popover--arrow-end';
+      case 'none':
+        return 'eps-popover--arrow-none';
+      default:
+        return 'eps-popover--arrow-center';
+    }
+  };
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
     className: "eps-popover__background",
     onClick: props.closeFunction
   }), /*#__PURE__*/_react.default.createElement("ul", {
-    className: "eps-popover ".concat(props.className),
+    className: "eps-popover ".concat(getArrowPositionClass(), " ").concat(props.className),
     onClick: props.closeFunction
   }, props.children));
 }
 Popover.propTypes = {
   children: PropTypes.any.isRequired,
   className: PropTypes.string,
-  closeFunction: PropTypes.func
+  closeFunction: PropTypes.func,
+  arrowPosition: PropTypes.oneOf(['start', 'center', 'end', 'none'])
 };
 Popover.defaultProps = {
-  className: ''
+  className: '',
+  arrowPosition: 'center'
 };
 
 /***/ }),

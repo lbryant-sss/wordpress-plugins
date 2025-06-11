@@ -1,10 +1,12 @@
 === ActiveCampaign - Forms, Site Tracking, Live Chat ===
 Contributors: activecampaign
-Tags: activecampaign, active campaign, email-marketing, newsletter, marketing-automation, subscribe, forms, emails, automation, live-chat, customer-messaging, customer-experience-automation
+Tags: activecampaign, marketing automation, email marketing, AI agent, business growth
 Requires at least: 2.0
 Requires PHP: 5.4
-Tested up to: 6.5
+Tested up to: 6.8
 Stable tag: trunk
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Add ActiveCampaign contact forms and live chat to any post, page, or sidebar. Also enable ActiveCampaign site tracking for your WordPress blog.
 
@@ -112,6 +114,9 @@ You can report security bugs through ActiveCampaign's security disclosure form h
 
 
 == Changelog ==
+= 8.1.18 =
+* Update supported versions of WordPress
+
 = 8.1.17 =
 * Security fix to address XSS vulnerability with API URL and API Key verification
 

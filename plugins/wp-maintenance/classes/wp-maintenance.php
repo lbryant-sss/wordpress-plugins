@@ -31,7 +31,9 @@ class WP_maintenance {
             add_filter( 'plugin_action_links_wp-maintenance/wp-maintenance.php', array( &$this, 'wpm_plugin_action_links'), 10, 3 );
             add_action( 'admin_head', array( &$this, 'wpm_admin_head') );
             add_action( 'admin_bar_menu', array( &$this, 'wpm_add_menu_admin_bar'), 999 );
-            add_action( 'admin_footer', array( &$this, 'wpm_print_footer_scripts') );   
+            add_action( 'admin_footer', array( &$this, 'wpm_print_footer_scripts') );
+            add_action( 'admin_init', array( &$this, 'wpm_process_settings_import') );
+            add_action( 'admin_init', array( &$this, 'wpm_process_settings_export') );     
         }
         // disabled XMLRPC
         add_filter('xmlrpc_enabled', '__return_false');
@@ -295,6 +297,7 @@ class WP_maintenance {
             delete_option('wp_maintenance_settings_countdown');
             delete_option('wp_maintenance_settings_seo');
             delete_option('wp_maintenance_settings_socialnetworks');
+            delete_option('wp_maintenance_list_socialnetworks');
             delete_option('wp_maintenance_settings_footer');
             delete_option('wp_maintenance_settings_options');
             delete_option('wp_maintenance_limit'); 
@@ -624,6 +627,149 @@ class WP_maintenance {
         }
     }
 
+    /**
+     * Process a settings export that generates a .json file of the erident settings
+     */
+    function wpm_process_settings_export() {
+
+        if(empty($_POST['wpm_action']) || 'export_settings'!=$_POST['wpm_action'])
+            return;
+
+        if(!wp_verify_nonce($_POST['wpm_export_nonce'], 'go_export_nonce'))
+            return;
+
+        if(!current_user_can('manage_options'))
+            return;
+
+        $settingsJson = array(           
+            'active' => get_option('wp_maintenance_active'),
+            'settings' => get_option('wp_maintenance_settings'),
+            'settings_colors' => get_option('wp_maintenance_settings_colors'),
+            'settings_countdown' => get_option('wp_maintenance_settings_countdown'),
+            'settings_picture' => get_option('wp_maintenance_settings_picture'),
+            'settings_seo' => get_option('wp_maintenance_settings_seo'),
+            'settings_socialnetworks' => get_option('wp_maintenance_settings_socialnetworks'),
+            'list_socialnetworks' => get_option('wp_maintenance_list_socialnetworks'),
+            'settings_footer' => get_option('wp_maintenance_settings_footer'),
+            'settings_options' => get_option('wp_maintenance_settings_options'),
+            'limit' => get_option('wp_maintenance_limit'),
+            'social_options' => get_option('wp_maintenance_social_options'),
+            'ipaddresses' => get_option('wp_maintenance_ipaddresses')
+        );
+        
+        ignore_user_abort(true);
+
+        nocache_headers();
+        header('Content-Type: application/json; charset=utf-8');
+        header('Content-Disposition: attachment; filename=wp-maintenance-'.parse_url(get_site_url(), PHP_URL_HOST).'-'.gmdate('m-d-Y').'.json');
+        header("Expires: 0");
+
+        echo json_encode($settingsJson);
+        exit;
+    }
+
+    static function wpm_admin_url( $page, $module = '' ) {
+    
+        $module = $module ? '&module=' . $module : '';
+        $page   = str_replace( '&', '_', $page );
+        $url    = 'admin.php?page=wp-maintenance-' . $page . $module;
+    
+        return is_multisite() ? network_admin_url( $url ) : admin_url( $url );
+    }
+
+    /**
+     * Process a settings import from a json file
+     */
+    function wpm_process_settings_import() {
+
+        if(empty($_POST['wpm_action']) || 'import_settings'!=$_POST['wpm_action'])
+            return;
+
+        if(!wp_verify_nonce( $_POST['wpm_import_nonce'], 'go_import_nonce'))
+            return;
+
+        if(!current_user_can('manage_options'))
+            return;
+
+        // Vérification de la taille maximale (2MB)
+        $max_size = 2 * 1024 * 1024;
+        if ($_FILES['wpm_import_file']['size'] > $max_size) {
+            wp_die(esc_html__('Le fichier est trop volumineux. Taille maximale autorisée : 2MB', 'wp-maintenance'));
+        }
+
+        $extension = strtolower(pathinfo($_FILES['wpm_import_file']['name'], PATHINFO_EXTENSION));
+        if($extension != 'json') {
+            wp_die( esc_html__( 'Please upload a valid .json file', 'send-pdf-for-contact-form-7' ) );
+        }
+
+        // Vérification du type MIME
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        $mime_type = finfo_file($finfo, $_FILES['wpm_import_file']['tmp_name']);
+        finfo_close($finfo);
+
+        if ($mime_type !== 'application/json') {
+            wp_die(esc_html__('Type de fichier non autorisé. Seuls les fichiers JSON sont acceptés.', 'wp-maintenance'));
+        }
+
+        $import_file = $_FILES['wpm_import_file']['tmp_name'];
+        if(empty($import_file)) {
+            wp_die( esc_html__( 'Please upload a file to import', 'wp-maintenance' ) );
+        }
+
+        $import = ! empty( $_FILES['wpm_import_file'] ) && is_array( $_FILES['wpm_import_file'] ) && isset( $_FILES['wpm_import_file']['type'], $_FILES['wpm_import_file']['name'] ) ? $_FILES['wpm_import_file'] : array();
+
+        $_post_action    = isset($_POST['wpm_action']) ? $_POST['wpm_action'] : '';
+        $_POST['action'] = 'wp_handle_sideload';
+        $file            = wp_handle_sideload( $import, array( 'mimes' => array( 'json' => 'application/json' ) ) );
+        $_POST['action'] = $_post_action;
+        if ( ! isset( $file['file'] ) ) {
+            return;
+        }
+        $filesystem      = wpm_get_filesystem();
+        $settings        = $filesystem->get_contents( $file['file'] );
+
+        // Vérification que le contenu est un JSON valide
+        $importTabSettings = json_decode($settings, true);
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            wp_die(esc_html__('Le fichier JSON est invalide.', 'wp-maintenance'));
+        }
+
+        // Liste des options autorisées
+        $allowedOptions = [
+            'active',
+            'settings',
+            'settings_colors',
+            'settings_countdown',
+            'settings_picture',
+            'settings_seo',
+            'settings_socialnetworks',
+            'list_socialnetworks',
+            'settings_footer',
+            'settings_options',
+            'limit',
+            'social_options',
+            'ipaddresses'
+        ];
+
+        if( isset($importTabSettings) ) {
+            foreach($importTabSettings as $tabName => $tabValue) {
+                // Vérification que l'option est autorisée
+                if (!in_array($tabName, $allowedOptions)) {
+                    continue;
+                }
+
+                if($tabName == 'active') {
+                    update_option('wp_maintenance_active', sanitize_text_field($tabValue));
+                } else {
+                    $updateSetting = wpm_update_settings($tabValue, 'wp_maintenance_'.$tabName);
+                }
+            }
+
+            echo '<div id="message" class="updated fade"><p><strong>'.__('New settings imported successfully!', 'wp-maintenance').'</strong></p></div>';
+        }
+
+    }
+
     /* Check le Mode Maintenance si on doit l'activer ou non */
     function wpm_check_active() {
 
@@ -667,8 +813,8 @@ class WP_maintenance {
         if( current_user_can('administrator') == true ) {
             $statusActive = 0;
         }
-        /* Mode Preview */
-        if( isset($_GET['wpmpreview']) && $_GET['wpmpreview']=='true' ) {// phpcs:ignore
+        /* Mode Preview - SÉCURISÉ : Seulement pour les administrateurs */
+        if( isset($_GET['wpmpreview']) && $_GET['wpmpreview']=='true' && current_user_can('manage_options') ) {// phpcs:ignore
             $statusActive = 1;
         }
 
@@ -713,9 +859,22 @@ class WP_maintenance {
             $urlTpl = '';
         }
 
+        // SÉCURITÉ : Validation supplémentaire du chemin de template
         if( isset($paramsOptions['pageperso']) && $paramsOptions['pageperso']==1 && $urlTpl !== '' ) {
-            include_once( $urlTpl );
-            die();
+            // Vérification que le fichier est bien dans un répertoire de thème autorisé
+            $allowed_dirs = [get_stylesheet_directory(), get_template_directory()];
+            $is_safe = false;
+            foreach($allowed_dirs as $allowed_dir) {
+                if (strpos(realpath($urlTpl), realpath($allowed_dir)) === 0) {
+                    $is_safe = true;
+                    break;
+                }
+            }
+            
+            if ($is_safe && is_readable($urlTpl)) {
+                include_once( $urlTpl );
+                die();
+            }
         }  
         
         /* Si on désactive le mode maintenance en fin de compte à rebours */
