@@ -558,11 +558,11 @@ class FileManager
             wp_die();
         }
 
-        $root_folder_path =  filter_var($_POST['root_folder_path'], FILTER_SANITIZE_STRING) ? str_replace("\\\\", "/", trim($_POST['root_folder_path'])) : '';
-        $root_folder_url =  filter_var($_POST['root_folder_url'], FILTER_SANITIZE_STRING) ? str_replace("\\\\", "/", trim($_POST['root_folder_url'])) : site_url();
-        $list_user_alow_access = filter_var($_POST['list_user_alow_access'], FILTER_SANITIZE_STRING) ? explode(',',$_POST['list_user_alow_access']) : array();
-        $upload_max_size = filter_var($_POST['upload_max_size'], FILTER_SANITIZE_STRING) ? sanitize_text_field(trim($_POST['upload_max_size'])) : 0;
-        $fm_locale = filter_var($_POST['fm_locale'], FILTER_SANITIZE_STRING) ? sanitize_text_field($_POST['fm_locale']) : 'en';
+        $root_folder_path = !empty($_POST['root_folder_path']) ? str_replace("\\\\", "/", trim(sanitize_text_field($_POST['root_folder_path']))) : '';
+        $root_folder_url = !empty($_POST['root_folder_url']) ? str_replace("\\\\", "/", trim(sanitize_url($_POST['root_folder_url']))) : site_url();
+        $list_user_alow_access = !empty($_POST['list_user_alow_access']) ? explode(',', sanitize_text_field($_POST['list_user_alow_access'])) : array();
+        $upload_max_size = !empty($_POST['upload_max_size']) ? sanitize_text_field(trim($_POST['upload_max_size'])) : 0;
+        $fm_locale = !empty($_POST['fm_locale']) ? sanitize_text_field($_POST['fm_locale']) : 'en';
         $enable_htaccess =  isset($_POST['enable_htaccess']) && $_POST['enable_htaccess'] == 'true' ? 1 : 0;
         $enable_trash = isset($_POST['enable_trash']) && $_POST['enable_trash'] == 'true' ? 1 : 0;
         //save options
@@ -590,13 +590,13 @@ class FileManager
         if(! $_POST['njt_fs_list_user_restrictions']) wp_die();
 
         $njt_fs_list_user_restrictions = sanitize_text_field($_POST['njt_fs_list_user_restrictions']);
-        $list_user_restrictions_alow_access = filter_var($_POST['list_user_restrictions_alow_access'], FILTER_SANITIZE_STRING) ? explode(',', $_POST['list_user_restrictions_alow_access']) : array();
-        $private_folder_access = filter_var($_POST['private_folder_access'], FILTER_SANITIZE_STRING) ? str_replace("\\\\", "/", trim($_POST['private_folder_access'])) : '';
-        $private_url_folder_access = filter_var($_POST['private_url_folder_access'], FILTER_SANITIZE_STRING) ? str_replace("\\\\", "/", trim($_POST['private_url_folder_access'])) : '';
-        $hide_paths = filter_var($_POST['hide_paths'], FILTER_SANITIZE_STRING) ? explode('|', preg_replace('/\s+/', '', $_POST['hide_paths'])) : array();
-        $lock_files =  filter_var($_POST['lock_files'], FILTER_SANITIZE_STRING) ? explode('|', preg_replace('/\s+/', '', $_POST['lock_files'])) : array();
+        $list_user_restrictions_alow_access = !empty($_POST['list_user_restrictions_alow_access']) ? explode(',', sanitize_text_field($_POST['list_user_restrictions_alow_access'])) : array();
+        $private_folder_access = !empty($_POST['private_folder_access']) ? str_replace("\\\\", "/", trim(sanitize_text_field($_POST['private_folder_access']))) : '';
+        $private_url_folder_access = !empty($_POST['private_url_folder_access']) ? str_replace("\\\\", "/", trim(sanitize_text_field($_POST['private_url_folder_access']))) : '';
+        $hide_paths = !empty($_POST['hide_paths']) ? explode('|', preg_replace('/\s+/', '', sanitize_text_field($_POST['hide_paths']))) : array();
+        $lock_files = !empty($_POST['lock_files']) ? explode('|', preg_replace('/\s+/', '', sanitize_text_field($_POST['lock_files']))) : array();
 
-        $can_upload_mime = filter_var($_POST['can_upload_mime'], FILTER_SANITIZE_STRING) ? explode(',', preg_replace('/\s+/', '', $_POST['can_upload_mime'])) : array();
+        $can_upload_mime = !empty($_POST['can_upload_mime']) ? explode(',', preg_replace('/\s+/', '', sanitize_text_field($_POST['can_upload_mime']))) : array();
 
         $can_upload_mime = array_filter($can_upload_mime, function($item) {
             $helper = new \FileManagerHelper();

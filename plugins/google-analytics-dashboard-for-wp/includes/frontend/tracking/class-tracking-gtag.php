@@ -212,6 +212,9 @@ class ExactMetrics_Tracking_Gtag extends ExactMetrics_Tracking_Abstract {
 				var em_no_track_reason = <?php echo $reason ? "'" . esc_js( $reason ) . "'" : "''"; ?>;
 				<?php do_action( 'exactmetrics_tracking_gtag_frontend_output_after_em_track_user' ); ?>
 				var ExactMetricsDefaultLocations = <?php echo $this->get_default_locations(); // phpcs:ignore -- JSON ?>;
+				<?php if ( $this->is_utm_stripped_server() ) : ?>
+				ExactMetricsDefaultLocations.page_location = window.location.href;
+				<?php endif; ?>
 				if ( typeof ExactMetricsPrivacyGuardFilter === 'function' ) {
 					var ExactMetricsLocations = (typeof ExactMetricsExcludeQuery === 'object') ? ExactMetricsPrivacyGuardFilter( ExactMetricsExcludeQuery ) : ExactMetricsPrivacyGuardFilter( ExactMetricsDefaultLocations );
 				} else {
@@ -479,5 +482,21 @@ class ExactMetrics_Tracking_Gtag extends ExactMetrics_Tracking_Abstract {
 		}
 
 		return wp_json_encode( $urls );
+	}
+
+	/**
+	 * Check the server is among them who stripped utm parameters.
+	 * For this kind of server we will get page URL from JS.
+	 *
+	 * @return bool
+	 */
+	private function is_utm_stripped_server() {
+
+		// Is WP Engine server.
+		if ( isset( $_SERVER['IS_WPE'] ) && $_SERVER['IS_WPE'] ) {
+			return true;
+		}
+
+		return false;
 	}
 }

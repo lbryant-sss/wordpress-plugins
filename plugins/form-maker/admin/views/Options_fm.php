@@ -81,18 +81,18 @@ class FMViewOptions_fm extends FMAdminView {
           <div class="wd-box-content">
             <span class="wd-group">
               <label class="wd-label" for="public_key"><?php _e('Site key', WDFMInstance(self::PLUGIN)->prefix); ?></label>
-              <input id="public_key" name="public_key" value="<?php echo $public_key; ?>" type="text" />
+              <input id="public_key" name="public_key" value="<?php echo esc_attr($public_key); ?>" type="text" />
             </span>
             <span class="wd-group">
               <label class="wd-label" for="private_key"><?php _e('Secret key', WDFMInstance(self::PLUGIN)->prefix); ?></label>
-              <input id="private_key" name="private_key" value="<?php echo $private_key; ?>" type="text" />
+              <input id="private_key" name="private_key" value="<?php echo esc_attr($private_key); ?>" type="text" />
               <p class="description">
                 <?php echo sprintf(__('%s for your site from ReCaptcha website and copy the provided here.', WDFMInstance(self::PLUGIN)->prefix), '<a href="https://www.google.com/recaptcha/intro/index.html" target="_blank">' . __('Get ReCaptcha Site and Secret Keys', WDFMInstance(self::PLUGIN)->prefix) . '</a>'); ?>
               </p>
             </span>
             <span class="wd-group">
               <label class="wd-label" for="recaptcha_score"><?php _e('Minimum ReCaptcha v3 Score to allow submission', WDFMInstance(self::PLUGIN)->prefix); ?></label>
-              <input id="recaptcha_score" name="recaptcha_score" value="<?php echo $recaptcha_score == '' ? 0.5 : $recaptcha_score; ?>" type="number" max="1" min="0" step="0.1" />
+              <input id="recaptcha_score" name="recaptcha_score" value="<?php echo esc_attr($recaptcha_score === '' ? 0.5 : $recaptcha_score); ?>" type="number" max="1" min="0" step="0.1" />
               <p class="description">
                 <?php echo sprintf(__('ReCaptcha v3 returns a score based on the user interactions with your forms. Scores range from 0.0 to 1.0, with 0.0 indicating abusive traffic and 1.0 indicating good traffic. %sVisit%s ReCaptcha admin to review verification statistics.', WDFMInstance(self::PLUGIN)->prefix), '<a href="https://www.google.com/recaptcha/admin/" target="_blank">', '</a>'); ?>
               </p>
@@ -109,7 +109,7 @@ class FMViewOptions_fm extends FMAdminView {
           <div class="wd-box-content">
             <span class="wd-group">
               <label class="wd-label" for="map_key"><?php _e('Map API Key', WDFMInstance(self::PLUGIN)->prefix); ?></label>
-              <input id="map_key" name="map_key" value="<?php echo $map_key; ?>" type="text" />
+              <input id="map_key" name="map_key" value="<?php echo esc_attr($map_key); ?>" type="text" />
               <p class="description">
                 <?php echo _e('Get', WDFMInstance(self::PLUGIN)->prefix); ?>
                 <a href="https://console.developers.google.com/flows/enableapi?apiid=maps_backend&keyType=CLIENT_SIDE&reusekey=true" target="_blank"><?php _e('Google Map API key', WDFMInstance(self::PLUGIN)->prefix); ?></a>
@@ -127,7 +127,7 @@ class FMViewOptions_fm extends FMAdminView {
           <div class="wd-box-content">
             <span class="wd-group">
               <label class="wd-label" for="csv_delimiter"><?php _e('CSV Delimiter', WDFMInstance(self::PLUGIN)->prefix); ?></label>
-              <input id="csv_delimiter" name="csv_delimiter" value="<?php echo $csv_delimiter; ?>" type="text" />
+              <input id="csv_delimiter" name="csv_delimiter" value="<?php echo esc_attr($csv_delimiter); ?>" type="text" />
               <p class="description"><?php _e('This option sets the symbol, which will be used to separate the values in CSV file of form submissions.', WDFMInstance(self::PLUGIN)->prefix); ?></p>
             </span>
             <span class="wd-group">

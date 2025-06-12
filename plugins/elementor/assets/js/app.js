@@ -1,4 +1,4 @@
-/*! elementor - v3.30.0 - 10-06-2025 */
+/*! elementor - v3.30.0 - 11-06-2025 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -6050,6 +6050,7 @@ function ImportContextProvider(props) {
       file: null,
       uploadedData: null,
       importedData: null,
+      source: '',
       plugins: [],
       requiredPlugins: [],
       importedPlugins: [],
@@ -7075,7 +7076,7 @@ function ExportComplete() {
         color: "primary",
         url: "/kit-library/cloud"
       }) : /*#__PURE__*/_react.default.createElement(_dashboardButton.default, {
-        text: __('Close', 'elementor')
+        text: __('Done', 'elementor')
       }));
     },
     downloadFile = function downloadFile() {
@@ -7096,12 +7097,19 @@ function ExportComplete() {
     return /*#__PURE__*/_react.default.createElement(_inlineLink.default, {
       onClick: downloadFile,
       italic: true
-    }, __('Click here', 'elementor'));
+    }, __('Download manually', 'elementor'));
   };
-  var getLearnMoreAboutKitsLink = function getLearnMoreAboutKitsLink() {
+  var getShowMeHowLink = function getShowMeHowLink() {
     return /*#__PURE__*/_react.default.createElement(_inlineLink.default, {
+      url: "https://go.elementor.com/app-what-are-kits",
       italic: true
-    }, __('Click here', 'elementor'));
+    }, __('Show me how', 'elementor'));
+  };
+  var getTakeMeThereLink = function getTakeMeThereLink() {
+    return /*#__PURE__*/_react.default.createElement(_inlineLink.default, {
+      url: "/kit-library/cloud",
+      italic: true
+    }, __('Take me there', 'elementor'));
   };
   (0, _react.useEffect)(function () {
     if (!exportContext.data.exportedData) {
@@ -7112,13 +7120,13 @@ function ExportComplete() {
     }
   }, [exportContext.data.downloadUrl, isSavedToCloud]);
   var heading = (0, _react.useMemo)(function () {
-    return isSavedToCloud ? __('Your kit is now saved to your cloud!', 'elementor') : __('Your export is ready', 'elementor');
+    return isSavedToCloud ? __('Your website template is now saved to the library!', 'elementor') : __('Your .zip file is ready', 'elementor');
   }, [isSavedToCloud]);
   var description = (0, _react.useMemo)(function () {
-    return isSavedToCloud ? __('You\'ve imported and applied the following to your site:', 'elementor') : __('Now you can import this kit and use it on other sites.', 'elementor');
+    return isSavedToCloud ? /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, __('You can find it in the My Website Templates tab.', 'elementor'), " ", getTakeMeThereLink()) : __('Once the download is complete, you can upload it to be used for other sites.', 'elementor');
   }, [isSavedToCloud]);
   var getNotice = function getNotice() {
-    return isSavedToCloud ? /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, __('Learn more about building your site with Elementor Kits', 'elementor'), " ", getLearnMoreAboutKitsLink()) : /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, __('Download not working?', 'elementor'), " ", getDownloadLink(), " ", __('to download', 'elementor'));
+    return isSavedToCloud ? /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, __('Build sites faster with Website Templates.', 'elementor'), " ", getShowMeHowLink()) : /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, __('Is the automatic download not starting?', 'elementor'), " ", getDownloadLink());
   };
   return /*#__PURE__*/_react.default.createElement(_layout.default, {
     type: "export",
@@ -7235,8 +7243,8 @@ function KitName() {
   }, /*#__PURE__*/_react.default.createElement(_text.default, {
     tag: "span",
     variant: "xs"
-  }, __('Kit name', 'elementor')), /*#__PURE__*/_react.default.createElement(_textField.default, {
-    placeholder: __('Type kit name here...', 'elementor'),
+  }, __('Name', 'elementor')), /*#__PURE__*/_react.default.createElement(_textField.default, {
+    placeholder: __('Type name here...', 'elementor'),
     onChange: handleChange,
     onBlur: handleChange,
     className: error ? 'e-app-export-kit-information__field--error' : '',
@@ -7359,10 +7367,10 @@ function ExportKit() {
   }, /*#__PURE__*/_react.default.createElement("section", {
     className: "e-app-export-kit"
   }, /*#__PURE__*/_react.default.createElement(_pageHeader.default, {
-    heading: __('Export a Website Kit', 'elementor'),
-    description: [__('Choose which Elementor components - templates, content and site settings - to include in your kit file.', 'elementor'), /*#__PURE__*/_react.default.createElement(_react.default.Fragment, {
+    heading: __('Select which items to export', 'elementor'),
+    description: [__('You can export the content, site settings, and templates as a Website Template to be reused in the future.', 'elementor'), /*#__PURE__*/_react.default.createElement(_react.default.Fragment, {
       key: "description-secondary-line"
-    }, __('By default, all of your components will be exported.', 'elementor'), " ", getLearnMoreLink())]
+    }, __('Uncheck the items you don\'t want to include.', 'elementor'), " ", getLearnMoreLink())]
   }), /*#__PURE__*/_react.default.createElement(_grid.default, {
     container: true,
     direction: "column",
@@ -7414,7 +7422,7 @@ function ExportPluginsFooter(_ref) {
     variant: "contained",
     url: "/export"
   }), isCloudKitsEligible && /*#__PURE__*/_react.default.createElement(_button.default, {
-    text: __('Add Kit to Cloud', 'elementor'),
+    text: __('Upload to Cloud', 'elementor'),
     variant: "outlined",
     color: "secondary",
     url: "/export/process",
@@ -7425,7 +7433,7 @@ function ExportPluginsFooter(_ref) {
       });
     }
   }), /*#__PURE__*/_react.default.createElement(_button.default, {
-    text: __('Export as Zip', 'elementor'),
+    text: __('Export as .zip', 'elementor'),
     variant: "contained",
     color: isKitReady && !isCheckingEligibility ? 'primary' : 'disabled',
     url: isKitReady && !isCheckingEligibility ? '/export/process' : '',
@@ -7535,6 +7543,7 @@ var _sharedContextProvider = __webpack_require__(/*! ../../../context/shared-con
 var _exportContextProvider = __webpack_require__(/*! ../../../context/export-context/export-context-provider */ "../app/modules/import-export/assets/js/context/export-context/export-context-provider.js");
 var _layout = _interopRequireDefault(__webpack_require__(/*! ../../../templates/layout */ "../app/modules/import-export/assets/js/templates/layout.js"));
 var _pageHeader = _interopRequireDefault(__webpack_require__(/*! ../../../ui/page-header/page-header */ "../app/modules/import-export/assets/js/ui/page-header/page-header.js"));
+var _inlineLink = _interopRequireDefault(__webpack_require__(/*! elementor-app/ui/molecules/inline-link */ "../app/assets/js/ui/molecules/inline-link.js"));
 var _exportPluginsSelection = _interopRequireDefault(__webpack_require__(/*! ./components/export-plugins-selection/export-plugins-selection */ "../app/modules/import-export/assets/js/pages/export/export-plugins/components/export-plugins-selection/export-plugins-selection.js"));
 var _exportPluginsFooter = _interopRequireDefault(__webpack_require__(/*! ./components/export-plugins-footer/export-plugins-footer */ "../app/modules/import-export/assets/js/pages/export/export-plugins/components/export-plugins-footer/export-plugins-footer.js"));
 __webpack_require__(/*! ./export-plugins.scss */ "../app/modules/import-export/assets/js/pages/export/export-plugins/export-plugins.scss");
@@ -7557,7 +7566,13 @@ function ExportPlugins() {
         type: 'SET_PLUGINS',
         payload: selectedPlugins
       });
-    }, []);
+    }, []),
+    getLearnMoreLink = function getLearnMoreLink() {
+      return /*#__PURE__*/_react.default.createElement(_inlineLink.default, {
+        url: "https://go.elementor.com/app-what-are-kits",
+        italic: true
+      }, __('Learn More', 'elementor'));
+    };
 
   // On load.
   (0, _react.useEffect)(function () {
@@ -7588,8 +7603,10 @@ function ExportPlugins() {
   }, /*#__PURE__*/_react.default.createElement("section", {
     className: "e-app-export-plugins"
   }, /*#__PURE__*/_react.default.createElement(_pageHeader.default, {
-    heading: __('Export your site as a Website Kit', 'elementor'),
-    description: __('Select which of these plugins are required for this kit work.', 'elementor')
+    heading: __('Select which plugins to export', 'elementor'),
+    description: [__('Your Website Template may not work as expected if key plugins are missing.', 'elementor'), /*#__PURE__*/_react.default.createElement(_react.default.Fragment, {
+      key: "description-secondary-line"
+    }, __('By default, we’ll include everything in your file. Uncheck the items you don\'t want.', 'elementor'), " ", getLearnMoreLink())]
   }), /*#__PURE__*/_react.default.createElement(_exportPluginsSelection.default, {
     onSelect: handleOnSelect
   })));
@@ -7965,14 +7982,14 @@ function ImportCompleteFooter(_ref) {
       }
     };
   return /*#__PURE__*/_react.default.createElement(_actionsFooter.default, null, seeItLiveUrl && /*#__PURE__*/_react.default.createElement(_button.default, {
-    text: __('See it live', 'elementor'),
+    text: __('See It Live', 'elementor'),
     variant: "contained",
     onClick: function onClick() {
       eventTracking('kit-library/see-it-live');
       window.open(seeItLiveUrl, '_blank');
     }
   }), /*#__PURE__*/_react.default.createElement(_button.default, {
-    text: __('Close', 'elementor'),
+    text: __('Got It', 'elementor'),
     variant: "contained",
     color: "primary",
     onClick: function onClick() {
@@ -8154,15 +8171,15 @@ function ImportComplete() {
     })
   }, /*#__PURE__*/_react.default.createElement(_wizardStep.default, {
     image: elementorAppConfig.assets_url + 'images/kit-is-live.svg',
-    heading: __('Your kit is now live on your site!', 'elementor'),
-    description: __('You’ve imported and applied the following to your site:', 'elementor'),
+    heading: __('We applied your template and your site is online!', 'elementor'),
+    description: __('You\'ve imported and applied the following to your site:', 'elementor'),
     notice: /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_inlineLink.default, {
       url: "https://go.elementor.com/app-what-are-kits",
       italic: true,
       onClick: function onClick() {
         return eventTracking('kit-library/seek-more-info', 'kit is live', 'click', 'app_header');
       }
-    }, __('Click here', 'elementor')), " ", __('to learn more about building your site with Elementor Kits', 'elementor'))
+    }, __('Click here', 'elementor')), " ", __('to learn more about building your site with Elementor Website Templates', 'elementor'))
   }, !!failedPlugins.length && /*#__PURE__*/_react.default.createElement(_failedPluginsNotice.default, {
     failedPlugins: failedPlugins
   }), isProInstalledDuringProcess && /*#__PURE__*/_react.default.createElement(_connectProNotice.default, null), /*#__PURE__*/_react.default.createElement(_kitData.default, {
@@ -8411,7 +8428,7 @@ function ImportContent() {
     className: "e-app-import-content"
   }, /*#__PURE__*/_react.default.createElement(_pageHeader.default, {
     heading: __('Select which parts you want to apply', 'elementor'),
-    description: [__('These are the templates, content and site settings that come with your kit.', 'elementor'), __("All items are already selected by default. Uncheck the ones you don't want.", 'elementor')]
+    description: __("All items are already selected by default. Uncheck the ones you don't want.", 'elementor')
   }), /*#__PURE__*/_react.default.createElement(_importContentDisplay.default, {
     manifest: uploadedData === null || uploadedData === void 0 ? void 0 : uploadedData.manifest,
     hasPro: isProInstalledDuringProcess,
@@ -8587,7 +8604,7 @@ function ImportKit() {
   var _useQueryParams$getAl = (0, _useQueryParams.default)().getAll(),
     source = _useQueryParams$getAl.source,
     kitId = _useQueryParams$getAl.kit_id;
-  var isLoadingKitFromCloud = _useKit2.KIT_SOURCE_MAP.CLOUD === source;
+  var isLoadingKitFromCloud = [importContext.data.source, source].includes(_useKit2.KIT_SOURCE_MAP.CLOUD);
 
   // On load.
   (0, _react.useEffect)(function () {
@@ -8656,20 +8673,20 @@ function ImportKit() {
   }, isLoadingKitFromCloud ? /*#__PURE__*/_react.default.createElement(_elementorLoading.default, null) : /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, 'kit-library' === referrer && /*#__PURE__*/_react.default.createElement(_button.default, {
     className: "e-app-import__back-to-library",
     icon: "eicon-chevron-left",
-    text: __('Back to Kit Library', 'elementor'),
+    text: __('Back to Website Templates', 'elementor'),
     url: isLoading ? '' : "/kit-library".concat(isLoadingKitFromCloud ? '/cloud' : '')
   }), /*#__PURE__*/_react.default.createElement(_pageHeader.default, {
-    heading: __('Import a Website Kit', 'elementor'),
-    description: [__('Upload a file with templates, site settings, content, etc., and apply them to your site automatically.', 'elementor'), getLearnMoreLink()]
+    heading: __('Import a Website Template', 'elementor'),
+    description: /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, __('Upload a .zip file with style, site settings, content, etc. Then, we’ll apply them to your site.', 'elementor'), ' ', getLearnMoreLink())
   }), /*#__PURE__*/_react.default.createElement(_notice.default, {
-    label: __('Important:', 'elementor'),
+    label: __('Heads up!', 'elementor'),
     color: "warning",
     className: "e-app-import__notice"
-  }, __('We recommend that you backup your site before importing a kit file.', 'elementor')), /*#__PURE__*/_react.default.createElement(_dropZone.default, {
+  }, __('Before applying a new template, we recommend backing up your site so you can roll back any undesired changes.', 'elementor')), /*#__PURE__*/_react.default.createElement(_dropZone.default, {
     className: "e-app-import__drop-zone",
-    heading: __('Upload Files to Your Library', 'elementor'),
-    text: __('Drag & drop the .zip file with your Kit', 'elementor'),
-    secondaryText: __('Or', 'elementor'),
+    heading: __('Choose a file to import', 'elementor'),
+    text: __('Drag & drop the .zip file with your website template', 'elementor'),
+    secondaryText: 'Or',
     filetypes: ['zip'],
     onFileChoose: function onFileChoose() {
       return eventTracking('kit-library/choose-file');
@@ -8678,7 +8695,8 @@ function ImportKit() {
     onError: function onError() {
       return setErrorType('general');
     },
-    isLoading: isLoading
+    isLoading: isLoading,
+    buttonText: __('Import from files')
   }), dialog.isOpen && /*#__PURE__*/_react.default.createElement(_dialog.default, {
     title: __('Warning: JSON or ZIP files may be unsafe', 'elementor'),
     text: __('Uploading JSON or ZIP files from unknown sources can be harmful and put your site at risk. For maximum safety, upload only JSON or ZIP files from trusted sources.', 'elementor'),
@@ -9488,8 +9506,8 @@ function ImportPlugins() {
   }, !importPluginsData && /*#__PURE__*/_react.default.createElement(_loader.default, {
     absoluteCenter: true
   }), /*#__PURE__*/_react.default.createElement(_pageHeader.default, {
-    heading: __('Select the plugins you want to import', 'elementor'),
-    description: __('These are the plugins that powers up your kit. You can deselect them, but it can impact the functionality of your site.', 'elementor')
+    heading: __('Select which plugins to include', 'elementor'),
+    description: __('All items are already selected by default. Uncheck the ones you don\'t want.', 'elementor')
   }), !!(minVersionMissing !== null && minVersionMissing !== void 0 && minVersionMissing.length) && /*#__PURE__*/_react.default.createElement(_notice.default, {
     label: __(' Recommended:', 'elementor'),
     className: "e-app-import-plugins__versions-notice",
@@ -10352,7 +10370,7 @@ function FileProcess(props) {
     icon: "eicon-loading eicon-animation-spin"
     // eslint-disable-next-line @wordpress/i18n-ellipsis
     ,
-    heading: __('Setting up your kit...', 'elementor'),
+    heading: __('Setting up your website template...', 'elementor'),
     description: /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, __('This usually takes a few moments.', 'elementor'), /*#__PURE__*/_react.default.createElement("br", null), __("Don't close this window until the process is finished.", 'elementor')),
     info: props.info
   }, !!props.errorType && /*#__PURE__*/_react.default.createElement(_processFailedDialog.default, {
@@ -10435,13 +10453,13 @@ function ImportInfoModal(props) {
     });
   };
   return /*#__PURE__*/_react.default.createElement(_infoModal.default, (0, _extends2.default)({}, props, {
-    title: __('Import a Website Kit', 'elementor')
-  }), /*#__PURE__*/_react.default.createElement(_infoModal.default.Section, null, /*#__PURE__*/_react.default.createElement(_infoModal.default.Heading, null, __('What’s a Website Kit?', 'elementor')), /*#__PURE__*/_react.default.createElement(_infoModal.default.Text, null, /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, __('A Website Kit is a .zip file that contains all the parts of a complete site. It’s an easy way to get a site up and running quickly.', 'elementor'), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_inlineLink.default, {
+    title: __('Import a Website Template', 'elementor')
+  }), /*#__PURE__*/_react.default.createElement(_infoModal.default.Section, null, /*#__PURE__*/_react.default.createElement(_infoModal.default.Heading, null, __('What’s a Website Template?', 'elementor')), /*#__PURE__*/_react.default.createElement(_infoModal.default.Text, null, /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, __('A Website Template is a .zip file that contains all the parts of a complete site. It’s an easy way to get a site up and running quickly.', 'elementor'), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_inlineLink.default, {
     url: "https://go.elementor.com/app-what-are-kits",
     onClick: function onClick() {
-      return eventTracking('Learn more about website kits');
+      return eventTracking('Learn more about website templates');
     }
-  }, __(' Learn more about Website Kits', 'elementor'))))), /*#__PURE__*/_react.default.createElement(_infoModal.default.Section, null, /*#__PURE__*/_react.default.createElement(_infoModal.default.Heading, null, __('How does importing work?', 'elementor')), /*#__PURE__*/_react.default.createElement(_infoModal.default.Text, null, /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, __('Start by uploading the file and selecting the parts and plugins you want to apply. If there are any overlaps between the kit and your current design, you’ll be able to choose which imported parts you want to apply or ignore. Once the file is ready, the kit will be applied to your site and you’ll be able to see it live.', 'elementor'), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_inlineLink.default, {
+  }, __(' Learn more about Website Templates', 'elementor'))))), /*#__PURE__*/_react.default.createElement(_infoModal.default.Section, null, /*#__PURE__*/_react.default.createElement(_infoModal.default.Heading, null, __('How does importing work?', 'elementor')), /*#__PURE__*/_react.default.createElement(_infoModal.default.Text, null, /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, __('Start by uploading the file and selecting the parts and plugins you want to apply. If there are any overlaps between the kit and your current design, you’ll be able to choose which imported parts you want to apply or ignore. Once the file is ready, the kit will be applied to your site and you’ll be able to see it live.', 'elementor'), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement("br", null), /*#__PURE__*/_react.default.createElement(_inlineLink.default, {
     url: "https://go.elementor.com/app-import-kit",
     onClick: function onClick() {
       return eventTracking('learn more');
@@ -16954,8 +16972,8 @@ function __disposeResources(env) {
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
 /******/ 			if (chunkId === "vendors-node_modules_react-query_devtools_index_js") return "56a155a8adcef506ce8a.bundle.js";
-/******/ 			if (chunkId === "kit-library") return "" + chunkId + ".208fd2e8cdac52e66fcb.bundle.js";
-/******/ 			if (chunkId === "onboarding") return "" + chunkId + ".bb53949526c949ea5365.bundle.js";
+/******/ 			if (chunkId === "kit-library") return "" + chunkId + ".a203c9722b94b9d66669.bundle.js";
+/******/ 			if (chunkId === "onboarding") return "" + chunkId + ".7c597804d183da3658ed.bundle.js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

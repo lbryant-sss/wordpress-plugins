@@ -62,7 +62,6 @@ add_action('init', function () {
 		require_once EXACTMETRICS_PLUGIN_DIR . 'lite/includes/admin/welcome.php';
 
 		// Load the ExactMetrics Connect class.
-		require_once EXACTMETRICS_PLUGIN_DIR . 'lite/includes/admin/connect.php';
 
 		if ( isset( $_GET['page'] ) && 'exactmetrics-onboarding' === $_GET['page'] ) { // phpcs:ignore -- CSRF ok, input var ok.
 			// Only load the Onboarding wizard if the required parameter is present.
@@ -99,6 +98,7 @@ add_action('init', function () {
 	require_once EXACTMETRICS_PLUGIN_DIR . 'lite/includes/popular-posts/class-popular-posts-ajax.php';
 // Lite Gutenberg blocks.
 	require_once EXACTMETRICS_PLUGIN_DIR . 'lite/includes/gutenberg/frontend.php';
+	require_once EXACTMETRICS_PLUGIN_DIR . 'includes/connect.php';
 
 	// Run hook to load ExactMetrics addons.
 	do_action( 'exactmetrics_load_plugins' ); // the updater class for each addon needs to be instantiated via `exactmetrics_updater`

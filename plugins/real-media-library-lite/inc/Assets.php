@@ -93,7 +93,7 @@ class Assets
         \wp_localize_script($handle, RML_OPT_PREFIX . 'Opts', $this->localizeScript($type));
         // Add inline-style to avoid flickering effect
         if ($this->isScreenBase('upload') || $this->isScreenBase(self::MLA_SCREEN_BASE)) {
-            \wp_add_inline_style($handle, '#wpbody { display: none; }');
+            \wp_add_inline_style($handle, '#wpbody { opacity: 0; }');
         }
         /**
          * This action is fired when RML has enqueued scripts and styles.

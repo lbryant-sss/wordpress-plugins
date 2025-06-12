@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit1e7b70905b0d305f23ad4adf3bce5d8a
+class ComposerStaticInitfa1cfc2945129dff3b16a1bcfdec302f
 {
     public static $prefixLengthsPsr4 = array (
         'C' => 
@@ -28,15 +28,16 @@ class ComposerStaticInit1e7b70905b0d305f23ad4adf3bce5d8a
         'C4WP\\Methods\\Captcha' => __DIR__ . '/../..' . '/includes/methods/class-captcha.php',
         'C4WP\\Methods\\Cloudflare' => __DIR__ . '/../..' . '/includes/methods/class-cloudflare.php',
         'C4WP\\Methods\\HCaptcha' => __DIR__ . '/../..' . '/includes/methods/class-hcaptcha.php',
+        'C4WP\\PluginUpdatedNotice' => __DIR__ . '/../..' . '/admin/admin-notices/class-plugin-updated-notice.php',
         'C4WP_Settings' => __DIR__ . '/../..' . '/admin/class-c4wp-settings.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit1e7b70905b0d305f23ad4adf3bce5d8a::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit1e7b70905b0d305f23ad4adf3bce5d8a::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit1e7b70905b0d305f23ad4adf3bce5d8a::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitfa1cfc2945129dff3b16a1bcfdec302f::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitfa1cfc2945129dff3b16a1bcfdec302f::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitfa1cfc2945129dff3b16a1bcfdec302f::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -994,6 +994,56 @@ function exactmetrics_get_country_list( $translated = false ) {
 function exactmetrics_get_api_url() {
 	return apply_filters( 'exactmetrics_get_api_url', 'api.exactmetrics.com/v2/' );
 }
+/**
+ * Defines the new dynamic onboarding URL.
+ *
+ * @since 9.5.0
+ * @return string
+ */
+function exactmetrics_get_onboarding_url() {
+	$base_url = apply_filters( 'exactmetrics_get_onboarding_url', 'https://connect.exactmetrics.com' );
+
+	$auth       = ExactMetrics()->api_auth;
+	$is_network = is_network_admin();
+	$params = array(
+		'tt'                => $auth->get_tt(),
+		'sitei'             => $auth->get_sitei(),
+		'site_url'          => get_site_url(),
+		'onboarding_key'    => exactmetrics_get_onboarding_key(),
+		'triggered_by'      => get_current_user_id(),
+		'rest_url'          => rest_url( 'exactmetrics/v1' ),
+		'return_url'        => $is_network ? network_admin_url( 'admin.php?page=exactmetrics_settings' ) : admin_url( 'admin.php?page=exactmetrics_settings' ),
+		'is_network'        => $is_network ? 1 : 0,
+		'can_install'       => exactmetrics_can_install_plugins() ? 1 : 0,
+	);
+
+	// Apply args filter for backwards compatibility.
+	$request_args = apply_filters( 'exactmetrics_auth_request_body', $params );
+	return add_query_arg( $request_args, $base_url );
+}
+
+/**
+ * Gets the onboarding key from the transient if it exists, otherwise generates a new one and stores it in the transient
+ *
+ * @since 9.5.0
+ * @return string The onboarding key
+ */
+function exactmetrics_get_onboarding_key() {
+	$key = get_transient( 'exactmetrics_onboarding_key' );
+	if ( empty( $key ) ) {
+		$key = wp_generate_password( 32, false );
+		set_transient( 'exactmetrics_onboarding_key', $key, 30 * MINUTE_IN_SECONDS );
+	}
+	return $key;
+}
+/**
+ * Clears the onboarding key
+ *
+ * @since 9.5.0
+ */
+function exactmetrics_clear_onboarding_key() {
+	delete_transient( 'exactmetrics_onboarding_key' );
+}
 
 function exactmetrics_get_licensing_url() {
 	$licensing_website = apply_filters( 'exactmetrics_get_licensing_url', 'https://www.exactmetrics.com' );
@@ -1012,8 +1062,10 @@ function exactmetrics_get_licensing_url() {
  * @since 6.0.0
  */
 function exactmetrics_perform_remote_request( $action, $body = array(), $headers = array(), $return_format = 'json' ) {
-
-	$key = is_network_admin() ? ExactMetrics()->license->get_network_license_key() : ExactMetrics()->license->get_site_license_key();
+	$key = '';
+	if ( class_exists( 'ExactMetrics' ) && ExactMetrics() && isset( ExactMetrics()->license ) ) {
+		$key = is_network_admin() ? ExactMetrics()->license->get_network_license_key() : ExactMetrics()->license->get_site_license_key();
+	}
 
 	// Build the body of the request.
 	$query_params = wp_parse_args(
@@ -1030,6 +1082,7 @@ function exactmetrics_perform_remote_request( $action, $body = array(), $headers
 	$args = [
 		'headers' => $headers,
 	];
+	// echo add_query_arg( $query_params, exactmetrics_get_licensing_url() ); die;
 	// Perform the query and retrieve the response.
 	$response      = wp_remote_get( add_query_arg( $query_params, exactmetrics_get_licensing_url() ), $args );
 	$response_code = wp_remote_retrieve_response_code( $response );
@@ -2132,12 +2185,17 @@ function exactmetrics_get_english_speaking_countries() {
  *
  * @return bool
  */
-function exactmetrics_can_install_plugins() {
-
+function exactmetrics_can_install_plugins( $user_id = null ) {
+	if ( empty( $user_id ) ) {
+		$user_id = get_current_user_id();
+	}
 	if ( ! current_user_can( 'install_plugins' ) ) {
 		return false;
 	}
-
+	
+	if ( ! user_can( $user_id, 'install_plugins' ) ) {
+		return false;
+	}
 	// Determine whether file modifications are allowed.
 	if ( function_exists( 'wp_is_file_mod_allowed' ) && ! wp_is_file_mod_allowed( 'exactmetrics_can_install' ) ) {
 		return false;

@@ -1,4 +1,4 @@
-/*! elementor - v3.30.0 - 10-06-2025 */
+/*! elementor - v3.30.0 - 11-06-2025 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -267,7 +267,7 @@ var Admin = /*#__PURE__*/function () {
       elementorCommon.dialogsManager.createWidget('confirm', {
         headerMessage: __('Are you sure?', 'elementor'),
         // Translators: %s is the name of the active Kit
-        message: __('Removing %s will permanently delete changes made to the Kit\'s content and site settings', 'elementor').replace('%s', this.activeKitName),
+        message: __('Removing %s will permanently delete changes made to the Websites Template\'s content and site settings', 'elementor').replace('%s', this.activeKitName),
         strings: {
           confirm: __('Delete', 'elementor'),
           cancel: __('Cancel', 'elementor')

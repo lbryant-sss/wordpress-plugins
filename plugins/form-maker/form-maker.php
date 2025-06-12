@@ -3,7 +3,7 @@
  * Plugin Name: Form Maker
  * Plugin URI: https://10web.io/plugins/wordpress-form-maker/?utm_source=form_maker&utm_medium=free_plugin
  * Description: This plugin is a modern and advanced tool for easy and fast creating of a WordPress Form. The backend interface is intuitive and user friendly which allows users far from scripting and programming to create WordPress Forms.
- * Version: 1.15.33
+ * Version: 1.15.34
  * Author: 10Web Form Builder Team
  * Author URI: https://10web.io/plugins/?utm_source=form_maker&utm_medium=free_plugin 
  * License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
@@ -26,8 +26,8 @@ final class WDFM {
   public $plugin_url = '';
   public $front_urls = array();
   public $main_file = '';
-  public $plugin_version = '1.15.33';
-  public $db_version = '2.15.33';
+  public $plugin_version = '1.15.34';
+  public $db_version = '2.15.34';
   public $menu_postfix = '_fm';
   public $plugin_postfix = '';
   public $handle_prefix = 'fm';
@@ -519,10 +519,10 @@ final class WDFM {
     $submissions_page = add_submenu_page($parent_slug, __('Submissions', $this->prefix), __('Submissions', $this->prefix), 'manage_options', 'submissions' . $this->menu_postfix, array($this, 'form_maker'));
     add_action('load-' . $submissions_page, array($this, 'submissions_per_page'));
 
-    add_submenu_page(null, __('Blocked IPs', $this->prefix), __('Blocked IPs', $this->prefix), 'manage_options', 'blocked_ips' . $this->menu_postfix, array($this, 'form_maker'));
+    add_submenu_page('', __('Blocked IPs', $this->prefix), __('Blocked IPs', $this->prefix), 'manage_options', 'blocked_ips' . $this->menu_postfix, array($this, 'form_maker'));
     add_submenu_page($parent_slug, __('Themes', $this->prefix), __('Themes', $this->prefix), 'manage_options', 'themes' . $this->menu_postfix, array($this, 'form_maker'));
     add_submenu_page($parent_slug, __('Options', $this->prefix), __('Options', $this->prefix), 'manage_options', 'options' . $this->menu_postfix, array($this, 'form_maker'));
-    add_submenu_page(null, __('Uninstall', $this->prefix), __('Uninstall', $this->prefix), 'manage_options', 'uninstall' . $this->menu_postfix, array($this, 'form_maker'));
+    add_submenu_page('', __('Uninstall', $this->prefix), __('Uninstall', $this->prefix), 'manage_options', 'uninstall' . $this->menu_postfix, array($this, 'form_maker'));
 
     if ( current_user_can('manage_options') && $this->is_free ) {
       /* Custom link to wordpress.org*/

@@ -4,7 +4,7 @@ Donate link: https://ninjateam.org/wordpress-media-library-folders/
 Tags: file manager, wordpress file manager, wp file manager, files, download plugin
 Requires at least: 3.0
 Tested up to: 6.8
-Stable tag: 1.8.8
+Stable tag: 1.8.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -104,16 +104,19 @@ Otherwise, feel free to reach us at [Ninja Team Support Center](https://ninjatea
 
 
 == Screenshots ==
-1. File manager UI theme
+1. WP file manager for WordPress directory
 2. Filester general settings
 3. Filester user role restriction settings
 4. Top free file manager plugins comparison chart
 
 == Changelog ==
 
+= Jun 11, 2025 - Version 1.8.9 =
+- Fixed: Patchstack security report
+
 = May 15, 2025 - Version 1.8.8 =
 - Improved: Prevent abuse via modified .htaccess file
-- Fixed: A critical vulnerability that allowed authenticated users to upload arbitrary files due to missing file type validation
+- Fixed: A vulnerability due to missing file type validation
 
 = Dec 17, 2024 - Version 1.8.7 =
 - Fixed: Security (CVE ID: CVE-2024-8066)

@@ -135,7 +135,7 @@ function exactmetrics_ajax_activate_addon() {
 	// Activate the addon.
 	if ( isset( $_POST['plugin'] ) ) {
 		$plugin = esc_attr( $_POST['plugin'] );
-
+		
 		if ( isset( $_POST['isnetwork'] ) && $_POST['isnetwork'] ) {
 			$activate = activate_plugin( $plugin, null, true );
 		} else {
@@ -163,6 +163,7 @@ function exactmetrics_ajax_activate_addon() {
 	echo json_encode( true );
 	wp_die();
 }
+
 add_action( 'wp_ajax_exactmetrics_deactivate_addon', 'exactmetrics_ajax_deactivate_addon' );
 /**
  * Deactivates a ExactMetrics addon.

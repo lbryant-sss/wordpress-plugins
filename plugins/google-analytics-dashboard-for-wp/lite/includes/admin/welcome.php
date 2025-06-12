@@ -140,7 +140,6 @@ class ExactMetrics_Welcome {
 				'assets'               => plugins_url( $version_path . '/assets/vue', EXACTMETRICS_PLUGIN_FILE ),
 				'roles'                => exactmetrics_get_roles(),
 				'roles_manage_options' => exactmetrics_get_manage_options_roles(),
-				'wizard_url'           => is_network_admin() ? network_admin_url( 'index.php?page=exactmetrics-onboarding' ) : admin_url( 'index.php?page=exactmetrics-onboarding' ),
 				'shareasale_id'        => exactmetrics_get_shareasale_id(),
 				'shareasale_url'       => exactmetrics_get_shareasale_url( exactmetrics_get_shareasale_id(), '' ),
 				// Used to add notices for future deprecations.

@@ -139,15 +139,15 @@ class ExactMetrics_Dashboard_Widget {
 			// Translators: Wizrd Link tag starts with url and Wizard link tag ends.
 			$message = sprintf(
 				esc_html__( 'Your website analytics dashboard is not currently configured. Please use our %1$ssetup wizard%2$s to get started.', 'google-analytics-dashboard-for-wp' ),
-				'<a href="' . esc_url( $url ) . '">',
+				'<a class="exactmetrics-setup-wizard-link">',
 				'</a>'
 			);
 			?>
 			<h2><?php echo $message; // phpcs:ignore ?></h2>
 			<?php if ( current_user_can( 'exactmetrics_save_settings' ) ) { ?>
 				<p><?php esc_html_e( 'To see your website stats, please connect ExactMetrics to Google Analytics.', 'google-analytics-dashboard-for-wp' ); ?></p>
-				<a href="<?php echo esc_url( $url ); ?>"
-				   class="mi-dw-btn-large"><?php esc_html_e( 'Setup Website Analytics', 'google-analytics-dashboard-for-wp' ); ?></a>
+				<a class="mi-dw-btn-large exactmetrics-setup-wizard-link"><?php esc_html_e( 'Setup Website Analytics', 'google-analytics-dashboard-for-wp' ); ?></a>
+				<p><?php esc_html_e( 'Note: You will be transfered to ExactMetrics.com to complete the setup wizard.', 'google-analytics-dashboard-for-wp' ); ?></p>
 			<?php } else { ?>
 				<p><?php esc_html_e( 'To see your website stats, please ask your site administrator to connect ExactMetrics to Google Analytics.', 'google-analytics-dashboard-for-wp' ); ?></p>
 			<?php } ?>

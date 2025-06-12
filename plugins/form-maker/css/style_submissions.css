@@ -38,6 +38,7 @@
 }
 .submissions tbody tr {
   border-bottom: solid 1px #ddd !important;
+  display:table-row!important
 }
 .submissions td {
   padding: 10px 4px;

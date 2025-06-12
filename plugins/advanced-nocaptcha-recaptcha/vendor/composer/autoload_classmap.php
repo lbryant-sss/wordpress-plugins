@@ -12,5 +12,6 @@ return array(
     'C4WP\\Methods\\Captcha' => $baseDir . '/includes/methods/class-captcha.php',
     'C4WP\\Methods\\Cloudflare' => $baseDir . '/includes/methods/class-cloudflare.php',
     'C4WP\\Methods\\HCaptcha' => $baseDir . '/includes/methods/class-hcaptcha.php',
+    'C4WP\\PluginUpdatedNotice' => $baseDir . '/admin/admin-notices/class-plugin-updated-notice.php',
     'C4WP_Settings' => $baseDir . '/admin/class-c4wp-settings.php',
 );

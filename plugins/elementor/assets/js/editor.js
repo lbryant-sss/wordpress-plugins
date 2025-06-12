@@ -1,4 +1,4 @@
-/*! elementor - v3.30.0 - 10-06-2025 */
+/*! elementor - v3.30.0 - 11-06-2025 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -50585,8 +50585,12 @@ var DivBlockView = BaseElementView.extend({
     this.addSectionView = addSectionView;
   },
   getClasses: function getClasses() {
-    var _this$options;
-    return ((_this$options = this.options) === null || _this$options === void 0 || (_this$options = _this$options.model) === null || _this$options === void 0 || (_this$options = _this$options.getSetting('classes')) === null || _this$options === void 0 ? void 0 : _this$options.value) || [];
+    var _window, _window$get, _this$options;
+    var transformer = (_window = window) === null || _window === void 0 || (_window = _window.elementorV2) === null || _window === void 0 || (_window = _window.editorCanvas) === null || _window === void 0 || (_window = _window.settingsTransformersRegistry) === null || _window === void 0 || (_window$get = _window.get) === null || _window$get === void 0 ? void 0 : _window$get.call(_window, 'classes');
+    if (!transformer) {
+      return [];
+    }
+    return transformer(((_this$options = this.options) === null || _this$options === void 0 || (_this$options = _this$options.model) === null || _this$options === void 0 || (_this$options = _this$options.getSetting('classes')) === null || _this$options === void 0 ? void 0 : _this$options.value) || []);
   },
   getClassString: function getClassString() {
     var classes = this.getClasses();

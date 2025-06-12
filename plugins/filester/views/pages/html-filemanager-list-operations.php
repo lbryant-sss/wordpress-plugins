@@ -19,8 +19,8 @@ $listOperations = array(
 
 <?php foreach($listOperations as $key => $listOperation) { ?>
 <span class="list-col4-item">
-  <input type="checkbox" class="fm-list-user-restrictions-item" id="<?php echo $key; ?>" name="<?php echo $key; ?>"
-    value="<?php echo $key; ?>">
-  <label for="<?php echo $key; ?>"><?php echo $listOperation; ?></label>
+  <input type="checkbox" class="fm-list-user-restrictions-item" id="<?php echo esc_attr($key); ?>" name="<?php echo esc_attr($key); ?>"
+    value="<?php echo esc_attr($key); ?>">
+  <label for="<?php echo esc_attr($key); ?>"><?php echo esc_html($listOperation); ?></label>
 </span>
 <?php } ?>

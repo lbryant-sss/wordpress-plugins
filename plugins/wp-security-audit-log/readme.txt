@@ -251,7 +251,7 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 	 * ID 10905 - Changed the status of the Auto Blocker in the Banner settings
 	 * ID 10911 - Activated a new API key and connected the site to a Termly account
 
- * **New activity log event IDs for WooCommerce
+ * **New activity log event IDs for WooCommerce**
 	 * ID 9169 - Changed the status of the Manage Stock store setting
 	 * ID 9170 - Changed the value of the Hold stock (minutes)
 	 * ID 9171 - Changed the status of the low stock notification
@@ -263,7 +263,7 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 	 * ID 9177 - Changed the Out of stock threshold setting
 	 * ID 9178 - Changed the status of a Woocommerce webhook
 
-* **New activity log event IDs for MainWP**
+ * **New activity log event IDs for MainWP**
 	 * ID 7718 - A new client was created
 	 * ID 7719 - Changed the email address of the client
 	 * ID 7720 - Changed the status of the client

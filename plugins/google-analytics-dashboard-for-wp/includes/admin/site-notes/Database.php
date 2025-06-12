@@ -52,17 +52,22 @@ class ExactMetrics_Site_Notes_DB_Base
 		}
 
 		$categories = array(
-			__('Website Updates', 'google-analytics-dashboard-for-wp'),
-			__('Blog Post', 'google-analytics-dashboard-for-wp'),
-			__('Promotion', 'google-analytics-dashboard-for-wp'),
+			array(
+				'name' => __('Website Updates', 'google-analytics-dashboard-for-wp'),
+				'background_color' => '#F072B2'
+			),
+			array(
+				'name' => __('Blog Post', 'google-analytics-dashboard-for-wp'),
+				'background_color' => '#8D87E5'
+			),
+			array(
+				'name' => __('Promotion', 'google-analytics-dashboard-for-wp'),
+				'background_color' => '#1EC185'
+			),
 		);
 
 		foreach ($categories as $category) {
-			$this->create_category(
-				array(
-					'name' => $category,
-				)
-			);
+			$this->create_category( $category );
 		}
 
 		update_option('exactmetrics_sitenotes_installed', time());

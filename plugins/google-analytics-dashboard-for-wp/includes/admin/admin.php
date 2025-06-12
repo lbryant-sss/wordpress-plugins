@@ -519,8 +519,9 @@ function exactmetrics_admin_setup_notices()
 		$urlone       = is_network_admin() ? network_admin_url( 'admin.php?page=exactmetrics-onboarding' ) : admin_url( 'admin.php?page=exactmetrics-onboarding' );
 		$secondary    = esc_html__( 'Learn More', 'google-analytics-dashboard-for-wp' );
 		$urltwo       = $submenu_base . '#/about/getting-started';
+		$disclaimer   = __( 'Note: You will be transfered to ExactMetrics.com to complete the setup wizard.', 'google-analytics-dashboard-for-wp' );
 		$message      = esc_html__( 'ExactMetrics, the WordPress Analytics plugin, helps you easily connect your website to Google Analytics, so that you can see how people find and use your website. Over 1 million smart website owners use ExactMetrics to grow faster.', 'google-analytics-dashboard-for-wp' );
-		echo '<div class="notice notice-info"><p style="font-weight:700">' . $title . '</p><p>' . $message . '</p><p><a href="' . $urlone . '" class="button-primary">' . $primary . '</a>&nbsp;&nbsp;&nbsp;<a href="' . $urltwo . '" class="button-secondary">' . $secondary . '</a></p></div>'; // phpcs:ignore -- All escaped above
+		echo '<div class="notice notice-info"><p style="font-weight:700">' . $title . '</p><p>' . $message . '</p><p><a class="button-primary exactmetrics-setup-wizard-link">' . $primary . '</a>&nbsp;&nbsp;&nbsp;<a href="' . $urltwo . '" class="button-secondary">' . $secondary . '</a></p><p class="exactmetrics-disclaimer-note">' . $disclaimer . '</p></div>'; // phpcs:ignore -- All escaped above
 
 		return;
 	}

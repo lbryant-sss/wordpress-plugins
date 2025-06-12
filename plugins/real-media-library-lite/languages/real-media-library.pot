@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: n/a\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.11.0\n"
+"X-Generator: WP-CLI 2.12.0\n"
 
 #. Plugin Name of the plugin
 #: index.php
@@ -76,15 +76,15 @@ msgstr ""
 msgid "The given folder was not found."
 msgstr ""
 
-#: inc/Assets.php:220
+#: inc/Assets.php:216
 msgid "https://devowl.io/"
 msgstr ""
 
-#: inc/Assets.php:222
+#: inc/Assets.php:218
 msgid "Complementary Plugins"
 msgstr ""
 
-#: inc/Assets.php:240
+#: inc/Assets.php:236
 msgid ""
 "\n"
 "\n"
@@ -121,6 +121,7 @@ msgstr ""
 
 #. translators:
 #: inc/attachment/CustomField.php:154
+#, php-format
 msgid "For this file is %d shortcut available in the following folder:"
 msgid_plural "For this file are %d shortcuts available in the following folders:"
 msgstr[0] ""
@@ -247,11 +248,13 @@ msgstr ""
 
 #. translators:
 #: inc/exception/FolderAlreadyExistsException.php:30
+#, php-format
 msgid "'%s' already exists in this folder."
 msgstr ""
 
 #. translators:
 #: inc/exception/OnlyInProVersionException.php:22
+#, php-format
 msgid "This functionality is not available in the free version (%s)."
 msgstr ""
 
@@ -273,6 +276,7 @@ msgstr ""
 
 #. translators:
 #: inc/folder/Creatable.php:375
+#, php-format
 msgid "'%s' is not a valid folder name."
 msgstr ""
 
@@ -401,6 +405,7 @@ msgstr ""
 
 #. translators:
 #: inc/overrides/pro/folder/Creatable.php:107
+#, php-format
 msgid "The parent %d does not exist."
 msgstr ""
 
@@ -966,7 +971,7 @@ msgid "Dismiss"
 msgstr ""
 
 #: inc/view/Lang.php:189
-msgid "Real Media Library creates a virtual folder structure. The URLs of uploads do not change when you move the file. Learn more about <a href=\"https://devowl.io/knowledge-base/how-can-i-physically-reflect-the-virtual-folder-structure-to-my-file-system/\" target=\"_blank\">how to automatically move files to physical folders.</a>"
+msgid "Real Media Library creates a virtual folder structure. The URLs of uploads do not change when you move the file. Learn more about <a href=\"https://devowl.io/knowledge-base/real-media-library-physical-folder-structur/\" target=\"_blank\">how to automatically move files to physical folders.</a>"
 msgstr ""
 
 #: inc/view/Lang.php:193

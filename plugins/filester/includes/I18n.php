@@ -22,7 +22,7 @@ class I18n {
 
   public function loadPluginTextdomain() {
     load_plugin_textdomain(
-      NJT_FS_BN_DOMAIN,
+      'filester',
       false,
       NJT_FS_BN_PLUGIN_URL . 'i18n/languages/'
     );

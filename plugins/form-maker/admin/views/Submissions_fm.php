@@ -752,7 +752,7 @@ class  FMViewSubmissions_fm extends FMAdminView {
 											?>
 											<td id="<?php echo $sorted_labels_id[$h]; ?>_fc" class="<?php echo $sorted_labels_id[$h]; ?>_fc sub-align" <?php echo $styleStr; ?> data-colname="<?php echo !empty($label_name_ids[$sorted_labels_id[$h]]) ? $label_name_ids[$sorted_labels_id[$h]] : ''; ?>" <?php echo ($savedb == 2 &&  $sorted_label_types[$h] == "type_paypal_payment_status") ? $check_payment_status : ""; ?> style="width:<?php echo $status_column_width; ?>; max-width:<?php echo $status_column_width; ?>;">
 												<?php if ( $sorted_label_types[$h] == 'type_signature' ) { ?>
-													<img src="<?php echo $textdata['text']; ?>" style="width:50px; border: 1px solid #ddd;"/>
+													<img src="<?php echo esc_url($element_value); ?>" style="width:50px; border: 1px solid #ddd;"/>
 												<?php
 												}
 												elseif ( $sorted_label_types[$h] == 'type_hidden' ) {

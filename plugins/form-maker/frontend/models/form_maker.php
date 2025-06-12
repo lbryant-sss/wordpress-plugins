@@ -2431,7 +2431,7 @@ class FMModelForm_maker {
                     $indexfile = fopen($upload_dir[ 'basedir' ] . '/' . $destination . "/signatures/index.html", "w");
                     fclose($indexfile);
                     $htaccessfile = fopen($upload_dir[ 'basedir' ] . '/' . $destination . "/signatures/.htaccess", "w");
-                    fwrite($htaccessfile, "deny from all");
+                    fwrite($htaccessfile, '<FilesMatch "\.(?!jpe?g$|png$|gif$|webp$).*$">' . PHP_EOL . 'Deny from all' . PHP_EOL . '</FilesMatch>');
                     fclose($htaccessfile);
                 }
             } else {
@@ -2446,9 +2446,11 @@ class FMModelForm_maker {
                         /* Create empty index.html/htaccess files */
                         $indexfile = fopen($dirTmp."/index.html", "w");
                         fclose($indexfile);
-                        $htaccessfile = fopen($dirTmp . "/.htaccess", "w");
-                        fwrite($htaccessfile, "deny from all");
-                        fclose($htaccessfile);
+                        if( $dir === 'signature' ) {
+                            $htaccessfile = fopen($dirTmp . "/.htaccess", "w");
+                            fwrite($htaccessfile, '<FilesMatch "\.(?!jpe?g$|png$|gif$|webp$).*$">' . PHP_EOL . 'Deny from all' . PHP_EOL . '</FilesMatch>');
+                            fclose($htaccessfile);
+                        }
                     }
                   }
                 }
@@ -2690,7 +2692,7 @@ class FMModelForm_maker {
 
           $this->set_submission_total( $total_field_subm_data );
 
-          $total = $total + ($total * $tax) / 100;
+          $total = floatval($total) + (floatval($total) * floatval($tax)) / 100;
           if ( isset( $paypal[ 'shipping' ] ) ) {
             $total = $total + $paypal[ 'shipping' ];
           }
