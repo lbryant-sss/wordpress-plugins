@@ -10,7 +10,7 @@
  *
  * @package  : OMGF
  * @author   : Daan van den Bergh
- * @copyright: © 2017 - 2024 Daan van den Bergh
+ * @copyright: © 2017 - 2025 Daan van den Bergh
  * @url      : https://daan.dev
  * * * * * * * * * * * * * * * * * * * */
 
@@ -121,6 +121,7 @@ class Helper {
 	/**
 	 * Method to retrieve OMGF's settings from database.
 	 * WARNING: DO NOT ATTEMPT TO RETRIEVE WP CORE SETTINGS USING THIS METHOD. IT WILL FAIL.
+	 *
 	 * @filter omgf_setting_{$name}
 	 * @since  v5.6.0
 	 *

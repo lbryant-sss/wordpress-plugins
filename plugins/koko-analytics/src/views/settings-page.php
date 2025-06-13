@@ -1,4 +1,8 @@
-<?php defined('ABSPATH') or exit;
+<?php
+
+use KokoAnalytics\Endpoint_Installer;
+
+ defined('ABSPATH') or exit;
 /**
  * @var \KokoAnalytics\Admin $this
  * @var array $settings
@@ -27,10 +31,19 @@ $public_dashboard_url = add_query_arg(['koko-analytics-dashboard' => 1], home_ur
             <?php } ?>
 
             <?php if (isset($_GET['endpoint-installed'])) { ?>
-                <div class="notice notice-<?php echo $_GET['endpoint-installed'] ? 'success' : 'warning'; ?> is-dismissible">
-                    <p><?php echo $_GET['endpoint-installed'] ? esc_html__('Successfully installed optimized endpoint.', 'koko-analytics') : esc_html__('Unable to install optimized endpoint. Please create the file manually and then try again.', 'koko-analytics'); ?></p>
+                <?php if ((int) $_GET['endpoint-installed']) { ?>
+                    <div class="notice notice-success is-dismissible">
+                        <p><?php esc_html_e('Successfully installed optimized endpoint.', 'koko-analytics'); ?></p>
+                    </div>
+                <?php } else { ?>
+                <div class="notice notice-warning is-dismissible">
+                    <p>
+                        <?php esc_html_e('Unable to install optimized endpoint: ', 'koko-analytics'); ?>
+                        <?php echo esc_html($_GET['endpoint-installed']); ?>
+                    </p>
                 </div>
-            <?php } ?>
+                <?php } ?>
+            <?php } // end if endpoint-installed ?>
 
             <?php if (class_exists('Jetpack')) { ?>
                 <div class="notice notice-info is-dismissible"><p><?php printf(__('We noticed you have Jetpack enabled. Do you want to <a href="%1$s">import your historical statistics data from JetPack stats into Koko Analytics</a>?', 'koko-analytics'), esc_attr(add_query_arg(['tab' => 'jetpack_importer']))); ?></p></div>
@@ -39,6 +52,35 @@ $public_dashboard_url = add_query_arg(['koko-analytics-dashboard' => 1], home_ur
             <form method="POST" action="<?php echo esc_attr(add_query_arg(['koko_analytics_action' => 'save_settings'])); ?>">
                 <?php wp_nonce_field('koko_analytics_save_settings'); ?>
                 <?php wp_referer_field(); ?>
+
+                 <div class="ka-margin-m">
+                    <fieldset>
+                        <legend class="ka-settings--label"><?php esc_html_e('Which method should the plugin use to detect returning visitors and unique pageviews?', 'koko-analytics'); ?></legend>
+
+                        <ul>
+                            <li>
+                                <label class="ka-setings--cb-label">
+                                    <input type="radio" name="koko_analytics_settings[tracking_method]" value="cookie" <?php checked($settings['tracking_method'], 'cookie'); ?>>
+                                    <strong><?php esc_html_e('Cookie', 'koko-analytics'); ?>: </strong> <?php esc_html_e('most accurate and privacy-friendly, but may require a cookie policy and/or consent.', 'koko-analytics'); ?>
+                                </label>
+
+                            </li>
+                            <li>
+                                <label class="ka-setings--cb-label">
+                                <input type="radio" name="koko_analytics_settings[tracking_method]" value="fingerprint" <?php checked($settings['tracking_method'], 'fingerprint'); ?>>
+                                <strong><?php esc_html_e('Cookieless', 'koko-analytics'); ?>: </strong> <?php esc_html_e('slightly less accurate and private, but does not require a cookie policy or consent.', 'koko-analytics'); ?>
+                            </label>
+                            </li>
+                            <li><label class="ka-setings--cb-label">
+                                <input type="radio" name="koko_analytics_settings[tracking_method]" value="none" <?php checked($settings['tracking_method'], 'none'); ?>>
+                                <strong><?php esc_html_e('None', 'koko-analytics'); ?>: </strong> <?php esc_html_e('if you don\'t care about unique pageviews.', 'koko-analytics'); ?>
+                            </label>
+                            </li>
+                        </ul>
+
+                        <p class="description"><?php echo sprintf(wp_kses(__('For some more information about how each of these methods work, read this article on <a href="%1$s">cookie vs. cookieless tracking</a>.', 'koko-analytics'), ['a' => ['href' => true]]), 'https://www.kokoanalytics.com/kb/cookie-vs-cookieless-tracking-methods'); ?></p>
+                    </fieldset>
+                </div>
 
                 <div class="ka-margin-m">
                     <label for="ka-exclude-user-roles" class="ka-settings--label"><?php esc_html_e('Exclude pageviews from these user roles', 'koko-analytics'); ?></label>
@@ -77,16 +119,6 @@ $public_dashboard_url = add_query_arg(['koko-analytics-dashboard' => 1], home_ur
 
                 <div class="ka-margin-m">
                     <fieldset>
-                        <legend class="ka-settings--label"><?php esc_html_e('Use cookie to determine unique visitors and pageviews?', 'koko-analytics'); ?></legend>
-                        <label class="ka-setings--cb-label"><input type="radio" name="koko_analytics_settings[use_cookie]" value="1" <?php checked($settings['use_cookie'], 1); ?>><?php esc_html_e('Yes', 'koko-analytics'); ?></label>
-                        <label class="ka-setings--cb-label"><input type="radio" name="koko_analytics_settings[use_cookie]" value="0" <?php checked($settings['use_cookie'], 0); ?>> <?php esc_html_e('No', 'koko-analytics'); ?></label>
-                    </fieldset>
-                    <p class="description">
-                        <?php esc_html_e('Set to "no" if you do not want to use a cookie. Without the use of a cookie, Koko Analytics can not reliably detect returning visitors.', 'koko-analytics'); ?>
-                    </p>
-                </div>
-                <div class="ka-margin-m">
-                    <fieldset>
                         <legend class="ka-settings--label"><?php esc_html_e('Should your dashboard be publicly accessible?', 'koko-analytics'); ?></legend>
                         <label class="ka-setings--cb-label"><input type="radio" name="koko_analytics_settings[is_dashboard_public]" value="1" <?php checked($settings['is_dashboard_public'], 1); ?>><?php esc_html_e('Yes', 'koko-analytics'); ?></label>
                         <label class="ka-setings--cb-label"><input type="radio" name="koko_analytics_settings[is_dashboard_public]" value="0" <?php checked($settings['is_dashboard_public'], 0); ?>> <?php esc_html_e('No', 'koko-analytics'); ?></label>
@@ -122,11 +154,11 @@ $public_dashboard_url = add_query_arg(['koko-analytics-dashboard' => 1], home_ur
 
             <?php do_action('koko_analytics_show_settings_sections'); ?>
 
-            <?php if ($endpoint_installer->is_eligibile()) { ?>
+            <?php if (Endpoint_Installer::is_eligibile()) { ?>
                 <div class="ka-margin-l">
                     <h2><?php esc_html_e('Performance', 'koko-analytics'); ?></h2>
                     <?php if ($using_custom_endpoint) { ?>
-                        <p><?php esc_html_e('The plugin is currently using an optimized tracking endpoint. Great!', 'koko-analytics'); ?></p>
+                        <p><span style="color: green;">✓</span> <?php esc_html_e('The plugin is currently using an optimized tracking endpoint. Great!', 'koko-analytics'); ?></p>
                     <?php } else { ?>
                         <p><?php esc_html_e('The plugin is currently not using an optimized tracking endpoint.', 'koko-analytics'); ?></p>
                         <form method="POST" action="">
@@ -134,8 +166,8 @@ $public_dashboard_url = add_query_arg(['koko-analytics-dashboard' => 1], home_ur
                             <input type="hidden" name="koko_analytics_action" value="install_optimized_endpoint">
                             <input type="submit" value="<?php esc_attr_e('Create optimized endpoint file', 'koko-analytics'); ?>" class="button button-secondary">
                         </form>
-                        <p><?php printf(esc_html__('To use one, create the file %s with the following file contents: ', 'koko-analytics'), '<code>' . $endpoint_installer->get_file_name() . '</code>'); ?></p>
-                        <textarea readonly="readonly" class="widefat" rows="18" onfocus="this.select();" spellcheck="false"><?php echo esc_html($endpoint_installer->get_file_contents()); ?></textarea>
+                        <p><?php printf(esc_html__('To use one, create the file %s with the following file contents: ', 'koko-analytics'), '<code>' . Endpoint_Installer::get_file_name() . '</code>'); ?></p>
+                        <textarea readonly="readonly" class="widefat" rows="18" onfocus="this.select();" spellcheck="false"><?php echo esc_html(Endpoint_Installer::get_file_contents()); ?></textarea>
                         <p><?php esc_html_e('Please note that this is entirely optional and only recommended for high-traffic websites.', 'koko-analytics'); ?></p>
                     <?php } ?>
                 </div>
@@ -207,7 +239,8 @@ $public_dashboard_url = add_query_arg(['koko-analytics-dashboard' => 1], home_ur
             <div>
                 <div class="ka-pro-cta ka-margin-m">
                     <h2><?php esc_html_e('Upgrade to Koko Analytics Pro', 'koko-analytics'); ?></h2>
-                    <p><?php printf(esc_html__('You are currently using the free version of Koko Analytics. There is a paid add-on called %1$sKoko Analytics Pro%2$s which adds several powerful features:', 'koko-analytics'), '<a href="https://www.kokoanalytics.com/pricing/" target="_blank">', '</a>'); ?></p>
+                    <p><?php esc_html_e('You are currently using the free version of Koko Analytics. There is a premium version of this plugin which adds several powerful features.', 'koko-analytics'); ?></p>
+                    <h4><?php esc_html_e('Premium features', ' koko-analytics'); ?></h4>
                     <ul class="ul-square">
                         <li><a href="https://www.kokoanalytics.com/features/custom-event-tracking/"><?php esc_html_e('Event Tracking', 'koko-analytics'); ?></a></li>
                         <li><a href="https://www.kokoanalytics.com/features/email-reports/"><?php esc_html_e('Email Reports', 'koko-analytics'); ?></a></li>
@@ -215,8 +248,9 @@ $public_dashboard_url = add_query_arg(['koko-analytics-dashboard' => 1], home_ur
                         <li><a href="https://www.kokoanalytics.com/features/csv-export/"><?php esc_html_e('CSV Export', 'koko-analytics'); ?></a></li>
                         <li><a href="https://www.kokoanalytics.com/features/admin-bar/"><?php esc_html_e('Admin Bar', 'koko-analytics'); ?></a></li>
                     </ul>
-                    <p><a class="button" href="https://www.kokoanalytics.com/pricing/" target="_blank"><?php esc_html_e('View pricing', 'koko-analytics'); ?></a></p>
-                    <p><?php esc_html_e('By purchasing Koko Analytics Pro you get immediate access to these features while simultaneously supporting further development and maintenance of this free plugin.', 'koko-analytics'); ?></p>
+                    <p><?php esc_html_e('You can unlock all these benefits for a small yearly fee.', 'koko-analytics'); ?>
+                    <a class="" href="https://www.kokoanalytics.com/pricing/" target="_blank"><?php esc_html_e('Take a look at Koko Analytics Pro now.', 'koko-analytics'); ?></a></p>
+
                 </div>
             </div>
             <?php } // end if defined KOKO_ANALYTICS_PRO ?>

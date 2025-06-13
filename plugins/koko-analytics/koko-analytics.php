@@ -3,8 +3,8 @@
 /*
 Plugin Name: Koko Analytics
 Plugin URI: https://www.kokoanalytics.com/#utm_source=wp-plugin&utm_medium=koko-analytics&utm_campaign=plugins-page
-Version: 1.7.4
-Description: Privacy-friendly analytics for your WordPress site.
+Version: 1.8.0
+Description: Privacy-friendly and efficient statistics for your WordPress site.
 Author: ibericode
 Author URI: https://www.ibericode.com/
 Author Email: support@kokoanalytics.com
@@ -34,7 +34,7 @@ phpcs:disable PSR1.Files.SideEffects
 
 namespace KokoAnalytics;
 
-\define('KOKO_ANALYTICS_VERSION', '1.7.4');
+\define('KOKO_ANALYTICS_VERSION', '1.8.0');
 \define('KOKO_ANALYTICS_PLUGIN_FILE', __FILE__);
 \define('KOKO_ANALYTICS_PLUGIN_DIR', __DIR__);
 
@@ -85,6 +85,9 @@ add_action('rest_api_init', [Rest::class, 'register_routes'], 10, 0);
 // pruner
 add_action('koko_analytics_prune_data', [Pruner::class, 'run'], 10, 0);
 
+// fingerprinting
+add_action('koko_analytics_rotate_fingerprint_seed', [Fingerprinter::class, 'run_daily_maintenance'], 10, 0);
+
 // WP CLI command
 if (\class_exists('WP_CLI')) {
     \WP_CLI::add_command('koko-analytics', Command::class);
@@ -113,7 +116,6 @@ add_action('wp', function () {
 
 // register most viewed posts widget
 add_action('widgets_init', [Widget_Most_Viewed_Posts::class, 'register'], 10, 0);
-add_action('koko_analytics_test_custom_endpoint', [Endpoint_Installer::class, 'verify'], 10, 0);
 
 if (\is_admin()) {
     new Admin();
@@ -130,8 +132,9 @@ add_filter('upgrader_process_complete', function () {
 register_activation_hook(__FILE__, function () {
     Aggregator::setup_scheduled_event();
     Pruner::setup_scheduled_event();
+    Fingerprinter::setup_scheduled_event();
+    Endpoint_Installer::install();
     Plugin::setup_capabilities();
-    Plugin::install_optimized_endpoint();
     Plugin::create_and_protect_uploads_dir();
 });
 
@@ -139,5 +142,6 @@ register_activation_hook(__FILE__, function () {
 register_deactivation_hook(__FILE__, function () {
     Aggregator::clear_scheduled_event();
     Pruner::clear_scheduled_event();
-    Plugin::remove_optimized_endpoint();
+    Fingerprinter::clear_scheduled_event();
+    Endpoint_Installer::uninstall();
 });

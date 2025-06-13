@@ -15,7 +15,7 @@ use WP_Post;
 function get_settings(): array
 {
     $default_settings = [
-        'use_cookie' => 1,
+        'tracking_method' => 'cookie',
         'exclude_user_roles' => [],
         'exclude_ip_addresses' => [],
         'prune_data_after_months' => 10 * 12, // 10 years
@@ -146,7 +146,7 @@ function using_custom_endpoint(): bool
     }
 
     /** @see Endpoint_Installer::get_file_name() */
-    return \is_file(\rtrim(ABSPATH, '/') . '/koko-analytics-collect.php') && (bool) get_option('koko_analytics_use_custom_endpoint', false);
+    return \is_file(\rtrim(ABSPATH, '/') . '/koko-analytics-collect.php') && get_option('koko_analytics_use_custom_endpoint', 0);
 }
 
 function create_local_datetime(string $timestr): \DateTimeImmutable
@@ -179,32 +179,6 @@ function get_page_title($post): string
     }
 
     return $title;
-}
-
-
-
-/**
- * Return's client IP for current request, even if behind a reverse proxy
- */
-function get_client_ip(): string
-{
-    $ips = $_SERVER['HTTP_X_FORWARDED_FOR'] ?? '';
-
-    // X-Forwarded-For sometimes contains a comma-separated list of IP addresses
-    // @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For
-    $ips = \array_map('trim', \explode(',', $ips));
-
-    // Always add REMOTE_ADDR to list of ips
-    $ips[] = $_SERVER['REMOTE_ADDR'] ?? '';
-
-    // return first valid IP address from list
-    foreach ($ips as $ip) {
-        if (\filter_var($ip, FILTER_VALIDATE_IP)) {
-            return $ip;
-        }
-    }
-
-    return '';
 }
 
 function is_request_excluded(): bool

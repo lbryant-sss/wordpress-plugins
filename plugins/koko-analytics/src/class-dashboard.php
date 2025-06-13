@@ -21,7 +21,7 @@ class Dashboard
         $settings   = get_settings();
         $stats = new Stats();
         $items_per_page = (int) apply_filters('koko_analytics_items_per_page', 20);
-        $dateFormat = get_option('date_format');
+        $dateFormat = get_option('date_format', 'Y-m-d');
         $dashboard_url = remove_query_arg(['start_date', 'end_date', 'view', 'posts', 'referrers']);
 
         // parse query params
@@ -53,6 +53,8 @@ class Dashboard
         $posts_limit = isset($_GET['posts']['limit']) ? absint($_GET['posts']['limit']) : $items_per_page;
         $referrers_limit = isset($_GET['referrers']['limit']) ? absint($_GET['referrers']['limit']) : $items_per_page;
 
+        [$total_start_date, $total_end_date] = $stats->get_total_date_range();
+
         // calculate next and previous dates for datepicker component and comparison
         $nextDates = $this->get_next_period($dateStart, $dateEnd, 1);
         $prevDates = $this->get_next_period($dateStart, $dateEnd, -1);
@@ -77,7 +79,7 @@ class Dashboard
         require __DIR__ . '/views/dashboard-page.php';
     }
 
-    private function get_next_period(\DateTimeImmutable $dateStart, \DateTimeImmutable $dateEnd, int $dir = 1): array
+    public function get_next_period(\DateTimeImmutable $dateStart, \DateTimeImmutable $dateEnd, int $dir = 1): array
     {
         $now = new \DateTimeImmutable('now', wp_timezone());
         $modifier = $dir > 0 ? "+" : "-";
@@ -89,7 +91,7 @@ class Dashboard
             $periodEnd = $dateEnd->setDate((int) $dateStart->format('Y'), (int) $dateEnd->format('m') + ($dir * $diffInMonths), 5);
             $periodEnd = $periodEnd->setDate((int) $periodEnd->format('Y'), (int) $periodEnd->format('m'), (int) $periodEnd->format('t'));
         } else {
-            $diffInDays = 1 + ((int) $dateEnd->format('Y') - (int) $dateStart->format('Y')) * 365 + ((int) $dateEnd->format('z') - (int) $dateStart->format('z')) ;
+            $diffInDays = $dateEnd->diff($dateStart)->days + 1;
             $periodStart = $dateStart->modify("{$modifier}{$diffInDays} days");
             $periodEnd = $dateEnd->modify("{$modifier}{$diffInDays} days");
         }
@@ -101,6 +103,7 @@ class Dashboard
         } else {
             $compareEnd = $periodEnd;
         }
+
 
         return [ $periodStart, $periodEnd, $compareEnd ];
     }
@@ -118,6 +121,7 @@ class Dashboard
             'last_month' => __('Last month', 'koko-analytics'),
             'this_year' => __('This year', 'koko-analytics'),
             'last_year' => __('Last year', 'koko-analytics'),
+            'all_time' => __('All time', 'koko-analytics'),
         ];
     }
 
@@ -198,6 +202,8 @@ class Dashboard
                     $now->setDate((int) $now->format('Y') - 1, 1, 1),
                     $now->setDate((int) $now->format('Y') - 1, 12, 31),
                 ];
+            case 'all_time':
+                return (new Stats())->get_total_date_range();
         }
     }
 

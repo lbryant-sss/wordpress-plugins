@@ -4,7 +4,7 @@ Donate link: https://wordpress.org/support/plugin/koko-analytics/reviews/#new-po
 Tags: analytics, statistics, stats, analytics alternative
 Requires at least: 6.0
 Tested up to: 6.8
-Stable tag: 1.7.4
+Stable tag: 1.8.0
 License: GPL-3.0-or-later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Requires PHP: 7.4
@@ -34,7 +34,7 @@ You can view a [live demo here](https://www.kokoanalytics.com/?koko-analytics-da
 - **No personal data** or anything visitor specific is tracked.
 - **No cookies**: There is an option to not use any cookies.
 - **Fast**: Handles hundreds of concurrent pageviews without breaking a sweat.
-- **Lightweight**: Adds less than 850 bytes of data to your pages. A year worth of data will take up less than 10 MB of storage.
+**Lightweight**: Only 500 bytes (!) of JavaScript is added to your pages. In your database, a full year worth of data will take up less than 10 MB of storage.
 - **GDPR Compliant** by design.
 - **Metrics**: All the essentials: total pageviews, unique pageviews and referral URL's.
 - **Referrer spam:** Built-in blocklist to filter out referrer spam.
@@ -79,22 +79,20 @@ You can view your dashboard by going to **WP Admin > Dashboard > Analytics**.
 Yes, absolutely. Koko Analytics only stores aggregated counts. Nothing visitor specific is tracked.
 
 #### Does this use any external services?
-No external servives are used. All data lives on your server alone.
+No.
 
 ### Does Koko Analytics set any cookies?
-By default yes, but you can disable it.
+By default yes, but you can disable the use of cookies entirely from the plugin's settings page by choosing a different tracking method.
 
-Koko Analytics sets a single cookie named `_koko_analytics_pages_viewed` with a lifetime of `6 hours`. This cookie is used to reliably detect unique pageviews and returning visitors without having to store any personal information on your server.
-
-You can disable the use of cookies from the plugin's settings page.
+If using cookie-based tracking, Koko Analytics sets a single cookie named `_koko_analytics_pages_viewed` with a lifetime of at most `24 hours`. This cookie is used to accurately detect unique pageviews and returning visitors without having to store any personal information on your server.
 
 [https://www.kokoanalytics.com/kb/does-koko-analytics-use-cookies/](https://www.kokoanalytics.com/kb/does-koko-analytics-use-cookies/)
 
-### Will this slow down my website?
+### Will Koko Analytics slow down my website?
 No, the plugin is built in such a way that it never slows down your website for your visitors.
 
-- It only adds a single script of less than 800 bytes to your pages.
-- All heavy lifting (like aggregating the statistics) is done in a background process.
+- It only adds a single script of less than 500 bytes to your pages.
+- All data processing is done in a separate background process.
 - Everything lives on your server, so the plugin doesn't add any additional DNS look-ups and can benefit from your server's cache policy.
 
 [https://www.kokoanalytics.com/kb/will-koko-analytics-slow-down-my-website/](https://www.kokoanalytics.com/kb/will-koko-analytics-slow-down-my-website/)
@@ -106,7 +104,6 @@ Yes, see [github.com/ibericode/koko-analytics](https://github.com/ibericode/koko
 Have a look at the [Koko Analytics knowledge base](https://www.kokoanalytics.com/kb/).
 
 ### How to show number of visits to a page?
-
 You can use the `[koko_analytics_counter]` shortcode to show the number of visitors to the current page.
 
 It takes 3 optional arguments:
@@ -122,12 +119,7 @@ Example use with arguments:
 `
 
 ### Why are category and tag archives not tracked?
-
-Koko Analytics is currently only able to track things that have an internal post ID, which is every (custom) post type. This is so that Koko Analytics does not have to store pathnames, which would take up a lot of storage space or an additional pre-processing step to normalize the data.
-
-### How can I help fund Koko Analytics?
-You can [purchase Koko Analytics Pro](https://www.kokoanalytics.com/pricing/) to help fund the plugin.
-
+Koko Analytics is currently only able to track posts, pages and other post types. This is so that Koko Analytics does not have to store URL's or post titles, which would take up a lot of storage space.
 
 
 == Screenshots ==
@@ -141,6 +133,16 @@ You can [purchase Koko Analytics Pro](https://www.kokoanalytics.com/pricing/) to
 
 
 == Changelog ==
+
+### 1.8.0 - Jun 12, 2025
+
+- Added a new tracking method: [cookieless tracking](https://www.kokoanalytics.com/kb/cookie-vs-cookieless-tracking-methods).
+- If using cookie-based tracking, the cookie lifetime has been changed to expire at midnight (so a maximum of 24 hours).
+- Simplified client-side tracking script so it's now smaller than 500 bytes.
+- Excluded IP addresses now work properly with the optimized endpoint.
+- Added new dashboard date preset for "all time".
+- Fixed chart issue where bars would be invisible if viewing a large amount of data on a small screen.
+
 
 ### 1.7.4 - May 14, 2025
 
@@ -766,17 +768,5 @@ If your WordPress root directory is not writable, go to the Koko Analytics setti
 - Fix referrer URL's table missing the AUTO_INCREMENT statement.
 - Change dropdown to number input in most viewed posts widget.
 - Show notice on dashboard page if an issue with WP Cron is detected.
-- Improved y-axes in chart when maximum value is lower than 10.
-- Use colors from admin scheme in chart tooltip.
-
-
-#### 1.0.7 - Jan 30, 2020
-
-- Aggregate certain referrers, e.g. google.com/search becomes google.com.
-- Use WordPress color scheme (from user profile) for colors in chart.
-- Show more labels on the chart's x-axes (wide screens only).
-- Show number of pageviews in the last hour.
-- Show day of week to chart tooltip.
-- Use Paul Heckbert's loose labels (nice numbers) algorithm for labels on y-axes.
-- All colors now ...
+- Improved y-axes ...
 

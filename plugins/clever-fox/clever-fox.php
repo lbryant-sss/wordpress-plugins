@@ -2,7 +2,7 @@
 /**
 * Plugin Name: Clever Fox
 * Description: Clever Fox plugin to enhance the functionality of free themes made by Nayra Themes. More than 60000+ trusted websites with Nayra Themes. It provides intuitive features to your website. 45+ Themes compatible with Clever Fox. See below free themes listed here. Avril, Gradiant, Flavita, Fiona Blog, MetaSoft, Conceptly & ColorPress is one of highest installations themes in our collections. Visit our website and find theme as you need. https://www.nayrathemes.com/themes/
-* Version: 26.2.81
+* Version: 26.2.82
 * Author: nayrathemes
 * Author URI: https://nayrathemes.com
 * Requires:	4.6 or higher

@@ -3,6 +3,7 @@
 require __DIR__ . '/src/functions.php';
 require __DIR__ . '/src/global-functions.php';
 require __DIR__ . '/src/collect-functions.php';
+require __DIR__ . '/src/backwards-compat.php';
 
 spl_autoload_register(function ($class) {
     static $classmap = [
@@ -20,6 +21,7 @@ spl_autoload_register(function ($class) {
         'KokoAnalytics\\Data_Exporter' => '/src/class-data-exporter.php',
         'KokoAnalytics\\Data_Importer' => '/src/class-data-importer.php',
         'KokoAnalytics\\Endpoint_Installer' => '/src/class-endpoint-installer.php',
+        'KokoAnalytics\\Fingerprinter' => '/src/class-fingerprinter.php',
         'KokoAnalytics\\Fmt' => '/src/class-fmt.php',
         'KokoAnalytics\\Jetpack_Importer' => '/src/class-jetpack-importer.php',
         'KokoAnalytics\\Migrations' => '/src/class-migrations.php',

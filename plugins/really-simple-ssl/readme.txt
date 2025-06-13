@@ -6,7 +6,7 @@ Requires at least: 5.9
 License: GPL2
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 9.3.5
+Stable tag: 9.4.0
 
 Easily improve site security with WordPress Hardening, Two-Factor Authentication (2FA), Login Protection, Vulnerability Detection and SSL certificate.
 

@@ -3,8 +3,9 @@ Contributors: IntellyWP, Data443
 Tags: track google ad, profit google ad, map google ads, deliver content by ad, UTM management
 Requires at least: 2.7
 Tested up to: 6.8
-Stable tag: 2.4.0
 Requires PHP: 5.6
+Stable tag: trunk
+License: MIT
 
 A plugin to manage ALL of your tracking code and conversion pixels. Compatible with Facebook Ads, Google Adwords, WooCommerce, Easy Digital Downloads, ..
 
@@ -66,6 +67,10 @@ For documentation click here: [https://intellywp.com/docs/category/tracking-code
 > Feel free to reach us by email for any problem you have with our plugins.
 > Describe the steps to reproduce the bug and we will be happy to help!<br>
 > To report a bug use the form at http://intellywp.com/report-a-bug/
+
+= How can I report security bugs? =
+
+You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team helps validate, triage and handle any security vulnerabilities. [Report a security vulnerability.]( https://patchstack.com/database/vdp/9e5fbdba-1b65-4d91-9d46-9849cf43373a )
 
 = Do you have a video that show me the plugin working? =
 

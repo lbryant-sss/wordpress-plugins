@@ -10,7 +10,7 @@
 *
 * @package  : OMGF
 * @author   : Daan van den Bergh
-* @copyright: © 2024 Daan van den Bergh
+* @copyright: © 2025 Daan van den Bergh
 * @url      : https://daan.dev
 * * * * * * * * * * * * * * * * * * * */
 
@@ -92,9 +92,8 @@ class Advanced extends Builder {
 	}
 
 	public function do_promo_dtap() {
-		$this->do_checkbox(
-			__( 'Developer Mode (Pro)', 'host-webfonts-local' ),
-			'dtap', ! empty( OMGF::get_option( 'dtap', 'on' ) ),
+		$description = apply_filters(
+			'omgf_developer_mode_description',
 			sprintf(
 				__(
 					'Enable this option (on all instances) if you\'re planning to use %s in a (variation of a) Development > Testing > Acceptance/Staging > Production workflow. %s',
@@ -102,7 +101,13 @@ class Advanced extends Builder {
 				),
 				apply_filters( 'omgf_settings_page_title', 'OMGF' ),
 				$this->promo
-			), ! defined( 'OMGF_PRO_ACTIVE' ),
+			)
+		);
+
+		$this->do_checkbox(
+			__( 'Developer Mode (Pro)', 'host-webfonts-local' ),
+			'dtap', ! empty( OMGF::get_option( 'dtap', 'on' ) ),
+			$description, ! defined( 'OMGF_PRO_ACTIVE' ),
 			'task-manager-row'
 		);
 	}
@@ -199,16 +204,24 @@ class Advanced extends Builder {
 	}
 
 	public function do_disable_admin_bar_menu() {
+		$checked     = ! empty( OMGF::get_option( Settings::OMGF_ADV_SETTING_DISABLE_ADMIN_BAR_MENU ) );
+		$description = sprintf(
+			__(
+				'This disables the %s admin bar menu item and stops the Google Fonts checker from running in the frontend.',
+				'host-webfonts-local'
+			),
+			apply_filters( 'omgf_settings_page_title', 'OMGF' )
+		);
+
+		if ( $checked && OMGF::get_option( 'google_fonts_checker' ) && get_transient( 'omgf_pro_run_google_fonts_checker' ) ) {
+			$description .= ' ' . __( 'This setting will resume functioning once the Google Fonts checker has finished running.', 'host-webfonts-local' );
+		}
+
 		$this->do_checkbox(
 			__( 'Disable Admin Bar Menu', 'host-webfonts-local' ),
-			Settings::OMGF_ADV_SETTING_DISABLE_ADMIN_BAR_MENU, ! empty( OMGF::get_option( Settings::OMGF_ADV_SETTING_DISABLE_ADMIN_BAR_MENU ) ),
-			sprintf(
-				__(
-					'This disables the admin bar menu item. When issues are found the menu item will still appear to notify you and will be disabled again once the issues are resolved.',
-					'host-webfonts-local'
-				),
-				apply_filters( 'omgf_settings_page_title', 'OMGF' )
-			)
+			Settings::OMGF_ADV_SETTING_DISABLE_ADMIN_BAR_MENU,
+			$checked,
+			$description
 		);
 	}
 

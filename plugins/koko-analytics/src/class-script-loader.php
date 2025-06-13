@@ -66,19 +66,17 @@ class Script_Loader
 
     private static function get_tracker_url(): string
     {
+        // People can create their own endpoint and define it through this constant
         if (\defined('KOKO_ANALYTICS_CUSTOM_ENDPOINT') && KOKO_ANALYTICS_CUSTOM_ENDPOINT) {
+            // custom custom endpoint
             return site_url(KOKO_ANALYTICS_CUSTOM_ENDPOINT);
+        } elseif (using_custom_endpoint()) {
+            // default custom endpoint
+            return site_url('/koko-analytics-collect.php');
         }
 
-        // We should use site_url() here because we place the file in ABSPATH and other plugins may be filtering home_url (eg multilingual plugin)
-        // In any case: what we use here should match what we test when creating the optimized endpoint file.
-        return using_custom_endpoint() ? site_url('/koko-analytics-collect.php') : admin_url('admin-ajax.php?action=koko_analytics_collect');
-    }
-
-    private static function get_cookie_path(): string
-    {
-        $home_url = home_url();
-        return \parse_url($home_url, PHP_URL_PATH) ?? '/';
+        // default URL (which includes WordPress)
+        return admin_url('admin-ajax.php?action=koko_analytics_collect');
     }
 
     public static function print_js_object()
@@ -87,16 +85,20 @@ class Script_Loader
         $script_config = [
             // the URL of the tracking endpoint
             'url'   => self::get_tracker_url(),
+
+            // root URL of site
             'site_url' => get_home_url(),
 
             // ID of the current post (or -1 in case of non-singular type)
             'post_id'       => self::get_post_id(),
 
-            // wether to set a cookie
-            'use_cookie'    => (int) $settings['use_cookie'],
+            // tracking method to use (passed to endpoint)
+            'method' => $settings['tracking_method'],
 
-            // path to store the cookie in (will be subdirectory if website root is in subdirectory)
-            'cookie_path' => self::get_cookie_path(),
+            // for backwards compatibility with older versions
+            // some users set this value from other client-side scripts, ie cookie consent banners
+            // if true, takes priority of the method property defined above
+            'use_cookie' => $settings['tracking_method'] === 'cookie',
         ];
         $data = 'window.koko_analytics = ' . \json_encode($script_config) . ';';
         wp_print_inline_script_tag($data);
@@ -107,11 +109,8 @@ class Script_Loader
         $settings     = get_settings();
         $post_id      = self::get_post_id();
         $tracker_url  = self::get_tracker_url();
-        $posts_viewed = isset($_COOKIE['_koko_analytics_pages_viewed']) ? explode(',', $_COOKIE['_koko_analytics_pages_viewed']) : [];
         $data         = [
-            'sc' => $settings['use_cookie'], // inform tracker endpoint to set cookie server-side
-            'nv' => $posts_viewed === [] ? 1 : 0,
-            'up' => ! in_array($post_id, $posts_viewed) ? 1 : 0,
+            'm' => $settings['tracking_method'][0],
             'p' => $post_id,
         ];
         $url          = add_query_arg($data, $tracker_url);

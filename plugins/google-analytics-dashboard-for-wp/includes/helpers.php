@@ -2189,10 +2189,6 @@ function exactmetrics_can_install_plugins( $user_id = null ) {
 	if ( empty( $user_id ) ) {
 		$user_id = get_current_user_id();
 	}
-	if ( ! current_user_can( 'install_plugins' ) ) {
-		return false;
-	}
-	
 	if ( ! user_can( $user_id, 'install_plugins' ) ) {
 		return false;
 	}
@@ -2200,7 +2196,6 @@ function exactmetrics_can_install_plugins( $user_id = null ) {
 	if ( function_exists( 'wp_is_file_mod_allowed' ) && ! wp_is_file_mod_allowed( 'exactmetrics_can_install' ) ) {
 		return false;
 	}
-
 	return true;
 }
 

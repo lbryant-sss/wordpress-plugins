@@ -5,6 +5,7 @@ Requires at least: 3.6
 Tested up to: 6.8
 Requires PHP: 5.6
 Stable tag: trunk
+License: MIT
 
 Inline Related Posts AUTOMATICALLY inserts related posts INSIDE your content, capturing immediately the reader's attention.
 
@@ -104,6 +105,11 @@ Absolutely Not! Inline Related Posts is built with lightweight code so you wonâ€
 == Changelog ==
 
 For detailed release notes, see our documentation here: [https://intellywp.com/docs/](https://data443.atlassian.net/servicedesk/customer/portal/17/article/858652673).
+
+= 3.9.0 =
+*Release Date - 2025-6-12*
+
+* Do additional sanitization of inputs (RDU-1629)
 
 = 3.8.0 =
 *Release Date - 2024-7-3*

@@ -12,9 +12,7 @@ class Admin_Actions
 {
     public static function install_optimized_endpoint(): void
     {
-        $installer = new Endpoint_Installer();
-        $success = $installer->install();
-        wp_safe_redirect(add_query_arg(['endpoint-installed' => (int) $success], wp_get_referer()));
+        wp_safe_redirect(add_query_arg([ 'endpoint-installed' => Endpoint_Installer::install() ], wp_get_referer()));
         exit;
     }
 
@@ -99,17 +97,30 @@ class Admin_Actions
         $posted                        = $_POST['koko_analytics_settings'];
         $settings                            = get_settings();
 
+        // get rid of deprecated setting keys
+        unset($settings['use_cookie']);
+
         $settings['exclude_ip_addresses']    = array_filter(array_map('trim', explode(PHP_EOL, str_replace(',', PHP_EOL, strip_tags($posted['exclude_ip_addresses'])))), function ($value) {
             return $value !== '';
         });
         $settings['exclude_user_roles']      = $posted['exclude_user_roles'] ?? [];
         $settings['prune_data_after_months'] = abs((int) $posted['prune_data_after_months']);
-        $settings['use_cookie']              = (int) $posted['use_cookie'];
         $settings['is_dashboard_public']     = (int) $posted['is_dashboard_public'];
         $settings['default_view']            = trim($posted['default_view']);
+        $settings['tracking_method'] = in_array($posted['tracking_method'], ['cookie', 'fingerprint', 'none']) ? $posted['tracking_method'] : 'cookie';
 
         $settings = apply_filters('koko_analytics_sanitize_settings', $settings, $posted);
         update_option('koko_analytics_settings', $settings, true);
+
+        // maybe create sessions directory & initial seed file
+        if ($settings['tracking_method'] === 'fingerprint') {
+            Fingerprinter::create_storage_dir();
+            Fingerprinter::setup_scheduled_event();
+        }
+
+        // Re-create optimized endpoint to ensure its contents are up-to-date
+        Endpoint_Installer::install();
+
         wp_safe_redirect(add_query_arg(['settings-updated' => true], wp_get_referer()));
         exit;
     }

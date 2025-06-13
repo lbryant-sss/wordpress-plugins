@@ -1991,7 +1991,7 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 		$tree = ameMenu::remove_missing_items($tree);
 		//TODO: What would happen if we kept missing items?
 
-		//Lets merge in the unused items.
+		//Let's merge in the unused items.
 		$max_menu_position = !empty($positions_by_template) ? max($positions_by_template) : 100;
 		$new_grant_access = $this->get_new_menu_grant_access();
 		foreach ($this->item_templates as $template_id => $template){
@@ -2006,7 +2006,13 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 			$entry['defaults'] = $template['defaults'];
 			$entry['unused'] = true; //Note that this item is unused
 
-			$entry['grant_access'] = $new_grant_access;
+			//Set new item permissions.
+			//Exception: The top-level "Profile" menu that only exists for non-admin users shouldn't be
+			//hidden. It gets flagged as new/unused because it doesn't exist for admin users (they have
+			//"Users -> Profile" instead).
+			if ( $template_id !== '>profile.php' ) {
+				$entry['grant_access'] = $new_grant_access;
+			}
 
 			if ($this->options['unused_item_position'] === 'relative') {
 

@@ -10,7 +10,7 @@
  *
  * @package  : OMGF
  * @author   : Daan van den Bergh
- * @copyright: © 2017 - 2024 Daan van den Bergh
+ * @copyright: © 2017 - 2025 Daan van den Bergh
  * @url      : https://daan.dev
  * * * * * * * * * * * * * * * * * * * */
 
@@ -92,15 +92,21 @@ class Filters {
 	}
 
 	/**
-	 * Don't load frontend assets if the admin bar menu is disabled.
+	 * Don't load frontend assets if the Disable Admin Bar Menu option is enabled.
+	 *
+	 * @filter omgf_do_not_load_frontend_assets
+	 * @see    Frontend\Actions::maybe_add_frontend_assets()
 	 *
 	 * @since  v6.0.1
-	 * @filter omgf_do_not_load_frontend_assets
 	 *
 	 * @return bool
 	 */
-	public function maybe_load_frontend_assets() {
-		return ! empty( Helper::get_option( Settings::OMGF_ADV_SETTING_DISABLE_ADMIN_BAR_MENU ) );
+	public function maybe_load_frontend_assets( $value ) {
+		if ( Helper::get_option( Settings::OMGF_ADV_SETTING_DISABLE_ADMIN_BAR_MENU ) ) {
+			return true; // Don't load.
+		}
+
+		return $value;
 	}
 
 	/**

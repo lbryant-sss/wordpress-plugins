@@ -10,21 +10,23 @@ namespace KokoAnalytics;
 
 class Endpoint_Installer
 {
-    public function get_file_name(): string
+    public static function get_file_name(): string
     {
         return rtrim(ABSPATH, '/') . '/koko-analytics-collect.php';
     }
 
-    public function get_file_contents(): string
+    public static function get_file_contents(): string
     {
+        $settings = get_settings();
         $upload_dir = get_upload_dir();
 
         // make path relative to ABSPATH again
         if (str_starts_with($upload_dir, ABSPATH)) {
             $upload_dir = ltrim(substr($upload_dir, strlen(ABSPATH)), '/');
         }
-
+        $wp_timezone_string = wp_timezone_string();
         $functions_filename = KOKO_ANALYTICS_PLUGIN_DIR . '/src/collect-functions.php';
+        $excluded_ip_addresses_string = var_export($settings['exclude_ip_addresses'], true);
 
         // make path relative to ABSPATH again
         if (str_starts_with($functions_filename, ABSPATH)) {
@@ -43,9 +45,15 @@ class Endpoint_Installer
 
 // path to pageviews.php file in uploads directory
 define('KOKO_ANALYTICS_UPLOAD_DIR', '$upload_dir');
+define('KOKO_ANALYTICS_TIMEZONE', '$wp_timezone_string');
 
 // path to functions.php file in Koko Analytics plugin directory
 require '$functions_filename';
+
+// check if IP address is on list of addresses to ignore
+if (!isset(\$_GET['test']) && in_array(KokoAnalytics\get_client_ip(), $excluded_ip_addresses_string)) {
+    exit;
+}
 
 // function call to collect the request data
 KokoAnalytics\collect_request();
@@ -53,61 +61,43 @@ KokoAnalytics\collect_request();
 EOT;
     }
 
-    public static function verify(): bool
+    /**
+     * @return string|bool
+     */
+    public static function install()
     {
-        $works = self::verify_internal();
-        update_option('koko_analytics_use_custom_endpoint', $works, true);
-        return $works;
-    }
-
-    private static function verify_internal(): bool
-    {
-        $tracker_url = site_url('/koko-analytics-collect.php?nv=1&p=0&up=1&test=1');
-        $response    = wp_remote_get($tracker_url);
-        if (is_wp_error($response)) {
-            return false;
+        // do nothing if site is not eligible for the use of a custom endpoint (ie multisite)
+        if (!self::is_eligibile()) {
+            return;
         }
 
-        $status  = wp_remote_retrieve_response_code($response);
-        $headers = wp_remote_retrieve_headers($response);
+        $file_name = self::get_file_name();
 
-        return $status == 200
-            && isset($headers['Content-Type'])
-            && str_contains($headers['Content-Type'], 'text/plain');
-    }
+        // attempt to overwrite file with latest contents to ensure it's up-to-date
+        file_put_contents($file_name, self::get_file_contents());
 
-    public function install(): bool
-    {
-        /* If we made it this far we ideally want to use the custom endpoint file */
-        /* Therefore we schedule a recurring health check event to periodically re-attempt and re-test */
-        if (! wp_next_scheduled('koko_analytics_test_custom_endpoint')) {
-            wp_schedule_event(time() + HOUR_IN_SECONDS, 'hourly', 'koko_analytics_test_custom_endpoint');
+        // Check if file exists
+        // Note that we're not checking whether we were able to write to the file
+        // To allow for users manually creating the file with the correct contents
+        $exists = is_file($file_name);
+        update_option('koko_analytics_use_custom_endpoint', $exists, true);
+
+        if (! $exists) {
+            return __('Error creating file', 'koko-analytics');
         }
 
-        $file_name = $this->get_file_name();
-
-        /* Attempt to put the file into place if it does not exist already */
-        if (! is_file($file_name)) {
-            $created = file_put_contents($file_name, $this->get_file_contents());
-            if (! $created) {
-                return false;
-            }
-        }
-
-        /* Send an HTTP request to the custom endpoint to see if it's working properly */
-        $works = self::verify();
-        if (! $works) {
-            if (isset($created) && $created) {
-                unlink($file_name);
-            }
-            return false;
-        }
-
-        /* All looks good! Custom endpoint file exists and returns the correct response */
         return true;
     }
 
-    public function is_eligibile(): bool
+    public static function uninstall(): void
+    {
+        $file_name = self::get_file_name();
+        if (is_file($file_name)) {
+            unlink($file_name);
+        }
+    }
+
+    public static function is_eligibile(): bool
     {
         /* Do nothing if running Multisite (because Multisite has separate uploads directory per site) */
         if (is_multisite()) {

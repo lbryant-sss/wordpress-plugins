@@ -4,13 +4,13 @@
  * Plugin Name: Advanced Shipment Tracking for WooCommerce 
  * Plugin URI: https://www.zorem.com/products/woocommerce-advanced-shipment-tracking/ 
  * Description: Add shipment tracking information to your WooCommerce orders and provide customers with an easy way to track their orders. Shipment tracking Info will appear in customers accounts (in the order panel) and in WooCommerce order complete email. 
- * Version: 3.8.2
+ * Version: 3.8.3
  * Author: zorem
  * Author URI: https://www.zorem.com 
  * License: GPL-2.0+
  * License URI: 
  * Text Domain: woo-advanced-shipment-tracking 
- * WC tested up to: 9.8.5
+ * WC tested up to: 9.9.3
  * Requires Plugins: woocommerce
 */
 
@@ -21,7 +21,7 @@ class Zorem_Woocommerce_Advanced_Shipment_Tracking {
 	 *
 	 * @var string
 	 */
-	public $version = '3.8.2';
+	public $version = '3.8.3';
 	public $plugin_file;
 	public $plugin_path;
 	public $table;
@@ -413,8 +413,8 @@ class Zorem_Woocommerce_Advanced_Shipment_Tracking {
 			wp_enqueue_script( 'jquery-blockui', WC()->plugin_url() . '/assets/js/jquery-blockui/jquery.blockUI' . $suffix . '.js', array( 'jquery' ), '2.70', true );
 		}
 
-		$ps_count = wc_orders_count( 'partial-shipped' );
-		$delivered_count = wc_orders_count( 'delivered' );
+		$ps_count       = array_key_exists( 'wc-partial-shipped', wc_get_order_statuses() ) ? wc_orders_count( 'partial-shipped' ) : 0;
+		$delivered_count = array_key_exists( 'wc-delivered', wc_get_order_statuses() ) ? wc_orders_count( 'delivered' ) : 0;
 
 		$order_statuses = wc_get_order_statuses();
 

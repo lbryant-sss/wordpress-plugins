@@ -3,8 +3,8 @@ Tags: widgets, blocks, contact form, blog, slider
 Requires at least: 4.2
 Tested up to: 6.8
 Requires PHP: 7.0.0
-Stable tag: 1.68.5
-Build time: 2025-06-02T21:07:27+01:00
+Stable tag: 1.69.0
+Build time: 2025-06-12T16:19:04+01:00
 License: GPLv3 or later
 Contributors: gpriday, braam-genis, alexgso
 Donate link: https://siteorigin.com/downloads/premium/
@@ -108,6 +108,13 @@ SiteOrigin Premium includes access to our professional email support service, pe
 The Widgets Bundle global interface is available at Plugins > SiteOrigin Widgets. Widgets can be enabled or disabled as needed. If a widget offers global settings, you can access those via the Settings button next to each applicable widget.
 
 == Changelog ==
+
+= 1.69.0 - 12 June 2025 =
+* Hero: Added image alt support for improved accessibility.
+* Layout Slider: Added image alt support and improved background image settings by hiding the settings until a background has been added.
+* Slider: Added image alt support and improved URL handling with validation before setup.
+* Widget Block: Replaced block editor bundle icon with Scalable Vector Graphics (SVG) implementation and updated to use inline SVG for default icon.
+* General: Added new `sow_get_allowed_esc_url_protocols` helper function for enhanced URL protocol handling.
 
 = 1.68.5 - 02 June 2025 =
 * Blog: Fixed JavaScript (JS) and Cascading Style Sheets (CSS) not outputting in Block Editor preview.

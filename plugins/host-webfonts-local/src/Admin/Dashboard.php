@@ -10,7 +10,7 @@
  *
  * @package  : OMGF
  * @author   : Daan van den Bergh
- * @copyright: © 2017 - 2024 Daan van den Bergh
+ * @copyright: © 2017 - 2025 Daan van den Bergh
  * @url      : https://daan.dev
  * * * * * * * * * * * * * * * * * * * */
 
@@ -35,9 +35,12 @@ class Dashboard {
 	 */
 	const PLUGINS_ADDTNL_CONF = [
 		'autoptimize',
+		'borlabs-cookie',
 		'essential-grid',
 		'perfmatters',
+		'real-cookie-banner',
 		'thrive-visual-editor',
+		'trustmary',
 		'wp-optimize',
 	];
 

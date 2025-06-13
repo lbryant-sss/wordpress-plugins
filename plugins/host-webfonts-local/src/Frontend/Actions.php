@@ -10,7 +10,7 @@
  *
  * @package  : OMGF
  * @author   : Daan van den Bergh
- * @copyright: © 2017 - 2024 Daan van den Bergh
+ * @copyright: © 2017 - 2025 Daan van den Bergh
  * @url      : https://daan.dev
  * * * * * * * * * * * * * * * * * * * */
 
@@ -45,11 +45,8 @@ class Actions {
 	 * @return void
 	 */
 	public function add_admin_bar_item( \WP_Admin_Bar $admin_bar ) {
-		/**
-		 * Display only in frontend, for logged in admins, unless Disable Quick Access is enabled and no issues are found.
-		 */
 		if ( ! $this->should_display_menu() ) {
-			return; // @codeCoverageIgnore
+			return;
 		}
 
 		$admin_bar->add_menu(
@@ -94,31 +91,28 @@ class Actions {
 	/**
 	 * Top adminbar menu should be displayed when:
 	 *
-	 * - We're not running tests
 	 * - User is an administrator
 	 * - This is not an admin screen i.e., we're in the frontend
-	 * - Disable Quick Access is disabled, or
-	 * - Disable Quick Access is enabled, and there are warnings to display.
+	 * - Disable Quick Access is disabled.
 	 *
 	 * @return bool
 	 */
 	private function should_display_menu() {
-		$warnings              = Dashboard::get_warnings();
-		$doing_tests           = defined( 'DAAN_DOING_TESTS' );
 		$is_admin_user         = current_user_can( 'manage_options' );
 		$is_admin_screen       = is_admin();
 		$quick_access_disabled = ! empty( OMGF::get_option( Settings::OMGF_ADV_SETTING_DISABLE_ADMIN_BAR_MENU ) );
-		$has_warnings          = ! empty( $warnings );
 
-		return $doing_tests || ( $is_admin_user && ! $is_admin_screen && ( ! $quick_access_disabled || $has_warnings ) );
+		return $is_admin_user && ! $is_admin_screen && ! $quick_access_disabled;
 	}
 
 	/**
-	 * This script is only loaded for logged in administrators, unless Enable Google Fonts checker is enabled.
+	 * These scripts are only loaded for logged-in administrators unless:
+	 * - The Disable Admin Bar Menu option is enabled.
+	 * - The Enable Google Fonts checker option is enabled.
+	 * - OMGF shouldn't run.
+	 * - The current request directly points to a PHP file (some plugin's preview pages do that)
 	 *
 	 * @return void
-	 *
-	 * @codeCoverageIgnore we don't want to test core functions.
 	 */
 	public function maybe_add_frontend_assets() {
 		if ( apply_filters( 'omgf_do_not_load_frontend_assets', ! current_user_can( 'manage_options' ) ) ) {
@@ -141,8 +135,8 @@ class Actions {
 				'info_box_alert_text'  => __( 'Google Fonts were found on this page. Click here for more information.', 'host-webfonts-local' ),
 				'info_box_notice_text' => __( 'There are potential issues in your configuration that require your attention.', 'host-webfonts-local' ),
 				'info_box_admin_url'   => admin_url( 'options-general.php?page=' . Settings::OMGF_ADMIN_PAGE ),
-				'ajax_url'             => admin_url( 'admin-ajax.php' ),
-				'nonce'                => wp_create_nonce( 'omgf_frontend_nonce' ),
+				'api_url'              => get_rest_url( null, 'omgf/v1/adminbar-menu/status' ),
+				'nonce'                => wp_create_nonce( 'wp_rest' ),
 			]
 		);
 		wp_enqueue_script( self::FRONTEND_ASSET_HANDLE );

@@ -414,6 +414,10 @@ h1.ka-logo,
   font-weight: bold;
   font-size: 1.1em;
 }
+a.ka-datepicker--quicknav-next.disabled,
+a.ka-datepicker--quicknav-prev.disabled {
+  cursor: not-allowed;
+}
 a.ka-datepicker--quicknav-prev,
 a.ka-datepicker--quicknav-next {
   color: white;
@@ -520,10 +524,9 @@ a.ka-datepicker--quicknav-next {
 
 /* upgrade to pro */
 .ka-pro-cta {
-  background: white;
   border: 1px solid #ddd;
+  background: #fcf8e3;
   padding: 2em;
-  background-size: 32px 32px;
 }
 .ka-pro-cta h2:before {
   content: "";
@@ -538,6 +541,7 @@ a.ka-datepicker--quicknav-next {
 }
 .ka-pro-cta > *:first-child { margin-top: 0; }
 .ka-pro-cta > *:last-child { margin-bottom: 0; }
+
 
 @view-transition {
  navigation: auto;

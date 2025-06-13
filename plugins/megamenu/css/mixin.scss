@@ -342,3 +342,42 @@
         }
     }
 }
+
+
+@mixin keyboard {
+    &.mega-keyboard-navigation {
+        .mega-menu-toggle:focus,
+        .mega-toggle-block:focus,
+        .mega-toggle-block a:focus,
+        .mega-toggle-block .mega-search input[type=text]:focus,
+        .mega-toggle-block button.mega-toggle-animated:focus,
+        #{$menu} a:focus,
+        #{$menu} span:focus,
+        #{$menu} input:focus,
+        #{$menu} li.mega-menu-item a.mega-menu-link:focus,
+        #{$menu} form.mega-search-open:has(input[type=text]:focus),
+        #{$menu} + button.mega-close:focus {
+            outline-style: solid;
+            outline-width: $keyboard_highlight_width;
+            outline-color: $keyboard_highlight_color;
+            outline-offset: $keyboard_highlight_offset;
+        }
+
+        .mega-toggle-block button.mega-toggle-animated:focus {
+            outline-offset: 2px;
+        }
+
+        > li.mega-menu-item > a.mega-menu-link:focus {
+            @include background($menu_item_background_hover_from, $menu_item_background_hover_to);
+            color: $menu_item_link_color_hover;
+            font-weight: $menu_item_link_weight_hover;
+            text-decoration: $menu_item_link_text_decoration_hover;
+            border-color: $menu_item_border_color_hover;
+
+            @include mobile {
+                color: $mobile_menu_item_link_color_hover;
+                @include background($mobile_menu_item_background_hover_from, $mobile_menu_item_background_hover_to);
+            }
+        }
+    }
+}
