@@ -3,16 +3,16 @@
  * Plugin Name: Simple Banner
  * Plugin URI: https://github.com/rpetersen29/simple-banner
  * Description: Display a simple banner at the top or bottom of your website. Now with multi-banner support
- * Version: 3.0.7
+ * Version: 3.0.8
  * Author: Ryan Petersen
  * Author URI: http://rpetersen29.github.io/
  * License: GPLv3
  *
  * @package Simple Banner
- * @version 3.0.7
+ * @version 3.0.8
  * @author Ryan Petersen <rpetersen.dev@gmail.com>
  */
-define ('SB_VERSION', '3.0.7');
+define ('SB_VERSION', '3.0.8');
 
 register_activation_hook( __FILE__, 'simple_banner_activate' );
 function simple_banner_activate() {
@@ -627,11 +627,11 @@ function simple_banner_settings_page() {
 		<form class="simple-banner-settings-form" method="post" action="options.php">
 			<?php settings_fields( 'simple-banner-settings-group' ); ?>
 
-			<div style="margin-bottom:10px;">
-				<h3 style="margin-bottom:0.2em;">Multi-banner support <span style="color: limegreen;">EXPERIMENTAL</span></h3>
+			<div style="display:flex;flex-direction: column;margin: 10px 0;padding: 0 10px 10px 10px;border: 2px solid gold;border-radius: 10px;background-color: #fafafa;">
+				<h3 style="margin-bottom:0.2em;">Multi-banner support</h3>
 				<div style="margin-bottom:1em;">Display up to 5 banners on your site.</div>
 
-				<div style="display:flex;align-items:center;gap:5px;padding: 10px;border: 2px solid gold;border-radius: 10px;background-color: #fafafa;">
+				<div style="display:flex;align-items:center;gap:5px;padding: 10px;">
 					<span style="font-size: 14px;font-weight: bold;">Select Banner</span>
 	                <!-- Put select box here -->
 	                <select id="banner_selector">

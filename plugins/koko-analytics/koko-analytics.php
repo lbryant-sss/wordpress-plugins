@@ -3,7 +3,7 @@
 /*
 Plugin Name: Koko Analytics
 Plugin URI: https://www.kokoanalytics.com/#utm_source=wp-plugin&utm_medium=koko-analytics&utm_campaign=plugins-page
-Version: 1.8.0
+Version: 1.8.2
 Description: Privacy-friendly and efficient statistics for your WordPress site.
 Author: ibericode
 Author URI: https://www.ibericode.com/
@@ -34,7 +34,7 @@ phpcs:disable PSR1.Files.SideEffects
 
 namespace KokoAnalytics;
 
-\define('KOKO_ANALYTICS_VERSION', '1.8.0');
+\define('KOKO_ANALYTICS_VERSION', '1.8.2');
 \define('KOKO_ANALYTICS_PLUGIN_FILE', __FILE__);
 \define('KOKO_ANALYTICS_PLUGIN_DIR', __DIR__);
 
@@ -87,6 +87,9 @@ add_action('koko_analytics_prune_data', [Pruner::class, 'run'], 10, 0);
 
 // fingerprinting
 add_action('koko_analytics_rotate_fingerprint_seed', [Fingerprinter::class, 'run_daily_maintenance'], 10, 0);
+
+// optimized endpoint
+add_action('koko_analytics_test_custom_endpoint', [Endpoint_Installer::class, 'test'], 10, 0);
 
 // WP CLI command
 if (\class_exists('WP_CLI')) {

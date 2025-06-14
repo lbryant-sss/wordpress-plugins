@@ -99,7 +99,7 @@ class Tt4b_Pixel_Class {
 		);
 
 		// events API track
-		$mapi->mapi_post( 'event/track/', $fields['access_token'], $params, 'v1.3' );
+		$mapi->mapi_post( 'event/track/', $fields['access_token'], $params, 'v1.3', false );
 
 		// js pixel track
 		self::enqueue_event( $event, $fields['pixel_code'], $properties, $event_id, $user );
@@ -180,7 +180,7 @@ class Tt4b_Pixel_Class {
 			'data'            => $data,
 		);
 		// events API track
-		$mapi->mapi_post( 'event/track/', $fields['access_token'], $params, 'v1.3' );
+		$mapi->mapi_post( 'event/track/', $fields['access_token'], $params, 'v1.3', false );
 
 		// js pixel track
 		self::enqueue_event( $event, $fields['pixel_code'], $properties, $event_id, $user );
@@ -269,7 +269,7 @@ class Tt4b_Pixel_Class {
 		);
 
 		// events API track
-		$mapi->mapi_post( 'event/track/', $fields['access_token'], $params, 'v1.3' );
+		$mapi->mapi_post( 'event/track/', $fields['access_token'], $params, 'v1.3', false );
 
 		// js pixel track
 		self::enqueue_event( $event, $fields['pixel_code'], $properties, $event_id, $user );
@@ -350,7 +350,7 @@ class Tt4b_Pixel_Class {
 		);
 
 		// events API track
-		$mapi->mapi_post( 'event/track/', $fields['access_token'], $params, 'v1.3' );
+		$mapi->mapi_post( 'event/track/', $fields['access_token'], $params, 'v1.3', false );
 
 		// js pixel track
 		self::enqueue_event( $event, $fields['pixel_code'], $properties, $event_id, $user );
@@ -922,7 +922,7 @@ class Tt4b_Pixel_Class {
 		);
 
 		// events API track
-		$mapi->mapi_post( 'event/track/', $fields['access_token'], $params, 'v1.3' );
+		$mapi->mapi_post( 'event/track/', $fields['access_token'], $params, 'v1.3', false );
 
 		// js pixel track
 		self::enqueue_event( $event, $fields['pixel_code'], array(), $event_id, $user );

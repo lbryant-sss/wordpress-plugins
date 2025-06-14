@@ -24,7 +24,7 @@ class Tiktokforbusiness {
 	 *
 	 * @var string[]
 	 */
-	private static $current_tiktok_for_woocommerce_version = '1.3.1';
+	private static $current_tiktok_for_woocommerce_version = '1.3.3';
 
 	/**
 	 * Whether WooCommerce has been loaded.
@@ -224,18 +224,7 @@ class Tiktokforbusiness {
 		add_option( 'tt4b_product_delete_queue', array() );
 		add_option( 'tt4b_product_restore_queue', array() );
 		add_option( 'tt4b_last_product_sync_time', 1 );
-		$cleaned_redirect = preg_replace( '/[^A-Za-z0-9\-]/', '', admin_url() );
-		$smb_id           = $external_business_id . $cleaned_redirect;
-		$app_rsp          = $mapi->create_open_source_app( $smb_id, 'PROD', admin_url() );
-		if ( false !== $app_rsp ) {
-			$open_source_app_rsp = json_decode( $app_rsp, true );
-			$secret              = $open_source_app_rsp['data']['app_secret'];
-			$app_id              = $open_source_app_rsp['data']['app_id'];
-			$external_data_key   = $open_source_app_rsp['data']['external_data_key'];
-			update_option( 'tt4b_app_id', $app_id );
-			update_option( 'tt4b_secret', $secret );
-			update_option( 'tt4b_external_data_key', $external_data_key );
-		}
+
 	}
 
 	/**

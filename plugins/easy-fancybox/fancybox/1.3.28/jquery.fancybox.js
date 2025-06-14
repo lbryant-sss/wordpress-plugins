@@ -98,7 +98,7 @@
 		}
 
 		if (title === '' && selectedOpts.orig) {
-			title = selectedOpts.orig.attr('title') || (selectedOpts.titleFromAlt ? DOMPurify.sanitize(selectedOpts.orig.attr('alt')) : '');
+			title = DOMPurify.sanitize(selectedOpts.orig.attr('title')) || (selectedOpts.titleFromAlt ? DOMPurify.sanitize(selectedOpts.orig.attr('alt')) : '');
 		}
 
 		href = selectedOpts.href || (obj.nodeName ? $(obj).attr('href') : obj.href) || null;

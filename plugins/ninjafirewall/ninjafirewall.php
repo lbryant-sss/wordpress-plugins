@@ -3,7 +3,7 @@
 Plugin Name: NinjaFirewall (WP Edition)
 Plugin URI: https://nintechnet.com/
 Description: A true Web Application Firewall to protect and secure WordPress.
-Version: 4.7.4
+Version: 4.7.5
 Author: The Ninja Technologies Network
 Author URI: https://nintechnet.com/
 License: GPLv3 or later
@@ -11,7 +11,7 @@ Network: true
 Text Domain: ninjafirewall
 Domain Path: /languages
 */
-define('NFW_ENGINE_VERSION', '4.7.4');
+define('NFW_ENGINE_VERSION', '4.7.5');
 /*
  +=====================================================================+
  |    _   _ _        _       _____ _                        _ _        |
@@ -29,25 +29,6 @@ if (! defined('ABSPATH') ) {
 }
 
 /* ------------------------------------------------------------------ */
-
-function nfw_load_txtdomain() {
-
-	if ( defined('NFW_NOI18N') ) { return; }
-
-	unload_textdomain('ninjafirewall');
-	$nf_locale = ['fr_FR'];
-	$this_user_locale = get_user_locale();
-	if ( in_array( $this_user_locale, $nf_locale ) ) {
-		if ( file_exists( __DIR__ ."/languages/ninjafirewall-{$this_user_locale}.mo") ) {
-			load_textdomain('ninjafirewall', __DIR__ ."/languages/ninjafirewall-{$this_user_locale}.mo");
-		}
-	} elseif ( file_exists( WP_LANG_DIR ."/plugins/ninjafirewall-{$this_user_locale}.mo") ) {
-		load_textdomain('ninjafirewall', WP_LANG_DIR ."/plugins/ninjafirewall-{$this_user_locale}.mo");
-	}
-}
-add_action('plugins_loaded','nfw_load_txtdomain');
-
-/* ------------------------------------------------------------------ */
 define('NFW_NULL_BYTE', 2);
 define('NFW_SCAN_BOTS', 531);
 define('NFW_ASCII_CTRL', 500);
@@ -59,8 +40,8 @@ define('NFW_DEFAULT_MSG', '<br /><br /><br /><br /><center>' .
 	sprintf('Sorry %s, your request cannot be processed.', '<b>%%REM_ADDRESS%%</b>') .
 	'<br />' . 'For security reasons, it was blocked and logged.' .
 	'<br /><br />%%NINJA_LOGO%%<br /><br />' .
-	'If you believe this was an error please contact the<br />webmaster and enclose the following incident ID:' .
-	'<br /><br />[ <b>#%%NUM_INCIDENT%%</b> ]</center>'
+	'If you believe this was an error please contact the<br />webmaster and enclose the '.
+	'following incident ID:' .' <br /><br />[ <b>#%%NUM_INCIDENT%%</b> ]</center>'
 );
 
 /**

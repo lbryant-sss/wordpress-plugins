@@ -1309,18 +1309,30 @@ function nfw_flatten( $glue, $pieces ) {
 
 function nfw_check_b64( $key, $string ) {
 
-	if ( defined('NFW_STATUS') || strlen($string) < 4 ) { return; }
+	if ( defined('NFW_STATUS') || strlen( $string ) < 4 ) {
+		return;
+	}
 
-	$decoded = base64_decode($string);
-	if ( strlen($decoded) < 4 ) { return; }
+	$whitelist = [
+		'fpd_print_order' // Fancy Product Designer
+	];
+	if ( in_array( $key, $whitelist ) ) {
+		return;
+	}
 
-	if ( preg_match( '`\b(?:\$?_(COOKIE|ENV|FILES|(?:GE|POS|REQUES)T|SE(RVER|SSION))|HTTP_(?:(?:POST|GET)_VARS|RAW_POST_DATA)|GLOBALS)\s*[=\[)]|\b(?i:array_map|assert|base64_(?:de|en)code|chmod|curl_exec|(?:ex|im)plode|error_reporting|eval|file(?:_get_contents)?|f(?:open|write|close)|fsockopen|function_exists|gzinflate|md5|move_uploaded_file|ob_start|passthru|[ep]reg_replace|phpinfo|stripslashes|strrev|(?:shell_)?exec|substr|system|unlink)\s*\(|[\s;]echo\s*[\'"]|<(?i:applet|embed|i?frame(?:set)?|marquee|object|script)\b|\W\$\{\s*[\'"]\w+[\'"]|<\?(?i:php|=)\s|(?i:(?:\b|\d)select\b.+?from\b.+?(?:\b|\d)where|(?:\b|\d)insert\b.+?into\b|(?:\b|\d)union\b.+?(?:\b|\d)select\b|(?:\b|\d)update\b.+?(?:\b|\d)set\b)|^.{0,25}[;{}]?\b[OC]:\d+:"[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*":\d+:{.*?}`', $decoded) ) {
+	$decoded = base64_decode( $string );
+	if ( strlen($decoded) < 4 ) {
+		return;
+	}
+
+	if ( preg_match( '`\b(?:\$?_(COOKIE|ENV|FILES|(?:GE|POS|REQUES)T|SE(RVER|SSION))|HTTP_(?:(?:POST|GET)_VARS|RAW_POST_DATA)|GLOBALS)\s*[=\[)]|\b(?i:array_map|assert|base64_(?:de|en)code|chmod|curl_exec|(?:ex|im)plode|error_reporting|eval|file(?:_get_contents)?|f(?:open|write|close)|fsockopen|function_exists|gzinflate|md5|move_uploaded_file|ob_start|passthru|[ep]reg_replace|phpinfo|stripslashes|strrev|(?:shell_)?exec|substr|system|unlink)\s*\(|[\s;]echo\s*[\'"]|<(?i:applet|embed|i?frame(?:set)?|marquee|object|script)\b|\W\$\{\s*[\'"]\w+[\'"]|<\?(?i:php|=)\s|(?i:(?:\b|\d)select\b.+?from\b.+?(?:\b|\d)where|(?:\b|\d)insert\b.+?into\b|(?:\b|\d)union\b.+?(?:\b|\d)select\b|(?:\b|\d)update\b.+?(?:\b|\d)set\b)|^.{0,25}[;{}]?\b[OC]:\d+:"[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*":\d+:{.*?}`', $decoded ) ) {
+		// JetPack
 		if ( $key === 'args' && ! defined('NFW_WPWAF') &&
 			preg_match( '/^{"query":"SELECT/', $decoded ) &&
 			strpos($_SERVER['SCRIPT_NAME'], '/jetpack-temp/jp-helper-') !== FALSE ) {
 			return;
 		}
-		nfw_log('BASE64-encoded injection', 'POST:' . $key . ' = ' . $string, '3', 0);
+		nfw_log('BASE64-encoded injection', 'POST:' . $key . ' = ' . $string, '3', 0 );
 		nfw_block();
 	}
 }

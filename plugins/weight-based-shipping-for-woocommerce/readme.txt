@@ -5,7 +5,7 @@ Requires PHP: 7.2
 Requires at least: 4.6
 Tested up to: 6.8
 WC requires at least: 5.0
-WC tested up to: 9.8
+WC tested up to: 9.9
 
 
 Weight Based Shipping is a flexible and widely-used solution to calculate shipping costs based on the total cart weight and value.
@@ -38,6 +38,10 @@ Like the plugin? Leave a [review](https://wordpress.org/support/plugin/weight-ba
 
 
 == Changelog ==
+
+= 6.7.0 =
+* Fixed the Save button position for RTL locales.
+* Tested with WooCommerce 9.9.
 
 = 6.6.2 =
 * Tested with WordPress 6.8.

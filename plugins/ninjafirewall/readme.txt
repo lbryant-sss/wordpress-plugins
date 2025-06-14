@@ -3,7 +3,7 @@ Contributors: nintechnet, bruandet
 Tags: security, firewall, malware, virus, protection
 Requires at least: 4.9
 Tested up to: 6.8
-Stable tag: 4.7.4
+Stable tag: 4.7.5
 Requires PHP: 7.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -207,6 +207,14 @@ WordPress Sicherheit Plugin.
 == Changelog ==
 
 Need more security? Take the time to explore our supercharged Premium edition: [NinjaFirewall WP+ Edition](https://nintechnet.com/ninjafirewall/wp-edition/?comparison)
+
+= 4.7.5 (June 13, 2025) =
+
+* Several small fixes and adjustments under the hood.
+* WP+ Edition (Premium): The firewall log can now be sorted in ascending (oldest entries first) or descending (newest entries first) order. See "NinjaFirewall > Logs > Log Options > Sorting".
+* WP+ Edition (Premium): Added Square and Airwallex webhook IP addresses to the "Access Control > IP address > External Services" section.
+* WP+ Edition (Premium): When saving an IP address to the whitelist or blacklist in the "IP Access Control" settings page, NinjaFirewall will reject non-conform CIDR values and display a warning.
+* WP+ Edition (Premium): Updated geolocation database.
 
 = 4.7.4 =
 

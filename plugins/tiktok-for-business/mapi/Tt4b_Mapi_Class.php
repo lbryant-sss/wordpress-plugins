@@ -71,12 +71,14 @@ class Tt4b_Mapi_Class {
 	 * @param string $access_token The MAPI issued access token
 	 * @param array  $params       Whichever params to be included with the post
 	 * @param string $version      The MAPI version used
+	 * @param bool   $blocking     Whether the request should be synchronous
 	 *
 	 * @return string
 	 */
-	public function mapi_post( $endpoint, $access_token, $params, $version ) {
+	public function mapi_post( $endpoint, $access_token, $params, $version, $blocking = true ) {
 		$url  = $this->mapi_url . $version . '/' . $endpoint;
 		$args = array(
+			'blocking'    => $blocking,
 			'method'      => 'POST',
 			'data_format' => 'body',
 			'headers'     => array(
@@ -85,9 +87,11 @@ class Tt4b_Mapi_Class {
 			),
 			'body'        => json_encode( $params ),
 		);
-		$this->logger->log_request( $url, $args );
 		$response = wp_remote_post( $url, $args );
-		$this->logger->log_response( __METHOD__, $response );
+		if ($blocking) {
+			$this->logger->log_request( $url, $args );
+			$this->logger->log_response( __METHOD__, $response );
+		}
 		$body = wp_remote_retrieve_body( $response );
 		return $body;
 	}
@@ -168,10 +172,11 @@ class Tt4b_Mapi_Class {
 	 * @param string $version       The version
 	 * @param array  $params        The body of the request
 	 * @param int    $tbp_api_type  Which url to use based on the TBPApi abstract class
+	 * @param bool   $blocking      Whether the request should be synchronous
 	 *
 	 * @return string
 	 */
-	public function tbp_post( $external_data, $endpoint, $version, $params, $tbp_api_type ) {
+	public function tbp_post( $external_data, $endpoint, $version, $params, $tbp_api_type, $blocking = true ) {
 		// posts to TBP
 		switch ( $tbp_api_type ) {
 			case TBPApi::PLUGIN:
@@ -184,6 +189,7 @@ class Tt4b_Mapi_Class {
 		$base_url = $domain . $version . '/' . $endpoint;
 		$url      = $base_url . '?external_data=' . $external_data;
 		$args     = array(
+			'blocking'    => $blocking,
 			'method'      => 'POST',
 			'data_format' => 'body',
 			'headers'     => array(
@@ -191,9 +197,11 @@ class Tt4b_Mapi_Class {
 			),
 			'body'        => json_encode( $params ),
 		);
-		$this->logger->log_request( $url, $args );
 		$response = wp_remote_post( $url, $args );
-		$this->logger->log_response( __METHOD__, $response );
+		if ($blocking) {
+			$this->logger->log_request( $url, $args );
+			$this->logger->log_response( __METHOD__, $response );
+		}
 		return wp_remote_retrieve_body( $response );
 	}
 

@@ -73,7 +73,7 @@ function extract_event_data(array $raw): array
     $event_name = \substr($event_name, 0, 100);
     $event_param = \substr($event_param, 0, 185);
 
-    $event_hash = \hash("xxh64", "{$event_name}-{$event_param}");
+    $event_hash = \hash(PHP_VERSION_ID >= 80100 ? "xxh64" : "sha1", "{$event_name}-{$event_param}");
     [$unused, $unique_event] = determine_uniqueness('', $event_hash);
 
     return [
@@ -102,7 +102,7 @@ function collect_request()
     $data = isset($_POST['e']) ? extract_event_data($_POST) : extract_pageview_data($_POST);
     if (!empty($data)) {
         // store data in buffer file
-        $success = collect_in_file($data);
+        $success = isset($_POST['test']) ? test_collect_in_file() : collect_in_file($data);
 
         // set OK headers & prevent caching
         if (!$success) {
@@ -178,6 +178,21 @@ function collect_in_file(array $data): bool
     return (bool) \file_put_contents($filename, $content, FILE_APPEND);
 }
 
+function test_collect_in_file(): bool
+{
+    $filename = get_buffer_filename();
+    if (\is_file($filename)) {
+        return \is_writable($filename);
+    }
+
+    $directory = \dirname($filename);
+    if (! \is_dir($directory)) {
+        \mkdir($directory, 0755, true);
+    }
+
+    return \is_writable($directory);
+}
+
 function get_site_timezone(): \DateTimeZone
 {
     if (defined('KOKO_ANALYTICS_TIMEZONE')) {
@@ -196,14 +211,17 @@ function get_site_timezone(): \DateTimeZone
  */
 function get_client_ip(): string
 {
-    $ips = $_SERVER['HTTP_X_FORWARDED_FOR'] ?? '';
-
     // X-Forwarded-For sometimes contains a comma-separated list of IP addresses
     // @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For
-    $ips = \array_map('trim', \explode(',', $ips));
+    $ips = empty($_SERVER['HTTP_X_FORWARDED_FOR']) ? [] : \array_map('trim', \explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']));
 
     // Always add REMOTE_ADDR to list of ips
-    $ips[] = $_SERVER['REMOTE_ADDR'] ?? '';
+    if (!empty($_SERVER['REMOTE_ADDR'])) {
+        $ips[] = $_SERVER['REMOTE_ADDR'];
+    }
+    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+        $ips[] = $_SERVER['HTTP_CLIENT_IP'];
+    }
 
     // return first valid IP address from list
     foreach ($ips as $ip) {
@@ -261,7 +279,7 @@ function determine_uniqueness_fingerprint(string $type, $thing): array
     $seed_value = \file_get_contents(get_upload_dir() . '/sessions/.daily_seed');
     $user_agent = $_SERVER['HTTP_USER_AGENT'];
     $ip_address = get_client_ip();
-    $visitor_id = \hash("xxh64", "{$seed_value}-{$user_agent}-{$ip_address}", false);
+    $visitor_id = \hash(PHP_VERSION_ID >= 80100 ? "xxh64" : "sha1", "{$seed_value}-{$user_agent}-{$ip_address}", false);
     $session_file = get_upload_dir() . "/sessions/{$visitor_id}";
     $time_midnight = (new \DateTimeImmutable('today, midnight', get_site_timezone()))->getTimestamp();
     $things = [];

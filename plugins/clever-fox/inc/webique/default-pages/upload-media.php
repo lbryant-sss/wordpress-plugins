@@ -1,8 +1,13 @@
 <?php
 $theme = wp_get_theme(); // gets the current theme
 
-$file = CLEVERFOX_PLUGIN_URL .'inc/webique/images/logo.png';
-$ImagePath = CLEVERFOX_PLUGIN_URL .'inc/webique/images';
+if($theme->name =='Websy') {
+$file = CLEVERFOX_PLUGIN_URL .'inc/websy/images/logo.png';
+$ImagePath = CLEVERFOX_PLUGIN_URL .'inc/websy/images';
+} else {
+	$file = CLEVERFOX_PLUGIN_URL .'inc/webique/images/logo.png';
+	$ImagePath = CLEVERFOX_PLUGIN_URL .'inc/webique/images';
+}
 
 $images = array(
 $ImagePath. '/logo.png',
