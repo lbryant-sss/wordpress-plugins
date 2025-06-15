@@ -109,8 +109,8 @@ class User extends Actor {
 	public function __construct(
 		$userLogin,
 		$roles = [],
-		SuperAdmin $superAdmin = null,
-		LoggedInUser $loggedInUser = null
+		?SuperAdmin $superAdmin = null,
+		?LoggedInUser $loggedInUser = null
 	) {
 		$this->actorId = self::USER_PREFIX . $userLogin;
 		$this->roles = $roles;

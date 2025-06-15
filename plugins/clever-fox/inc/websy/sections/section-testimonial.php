@@ -1,11 +1,9 @@
-<?php  
+<?php 
+	$testimonial_hs 				= get_theme_mod('testimonial_hs','1');
 	$testimonial_ttl 				= get_theme_mod('testimonial_ttl','Our <span class="primary-color">Testimonial</span>');
 	$testimonial_desc				= get_theme_mod('testimonial_desc','Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'); 
 	$testimonial_contents			= get_theme_mod('testimonial_contents',websy_get_testimonial_default());
-	$testimonial_animation_speed	= get_theme_mod('testimonial_animation_speed','9000');
-	$testimonial_autoplay			= get_theme_mod('testimonial_autoplay','true');
-	$testimonial_loop				= get_theme_mod('testimonial_loop','false');
-	$settings=array('testimonial_animation_speed'=>$testimonial_animation_speed,'testimonial_autoplay'=>$testimonial_autoplay,'testimonial_loop'=>$testimonial_loop );
+	if($testimonial_hs=='1'){	
 ?>	
 <section id="testimonial-section" class="testimonial-section av-py-default testimonial-home">
 	<div class="av-container">
@@ -103,3 +101,4 @@
 		</div>
 	</div>	
 </section>
+<?php } ?>

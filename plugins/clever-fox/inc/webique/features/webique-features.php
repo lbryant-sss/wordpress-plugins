@@ -12,6 +12,23 @@ $selective_refresh =  'refresh';
 		)
 	);
 
+	$wp_customize->add_setting( 
+		'features_hs' , 
+			array(
+			'default' => '1',
+			'capability'     => 'edit_theme_options',
+			'sanitize_callback' => 'webique_sanitize_checkbox',
+		) 
+	);
+	
+	$wp_customize->add_control(
+	'features_hs', 
+		array(
+			'label'	      => esc_html__( 'Hide/Show', 'clever-fox' ),
+			'section'     => 'features_setting',
+			'type'        => 'checkbox'
+		) 
+	);
 	
 	// Features content Section // 
 	

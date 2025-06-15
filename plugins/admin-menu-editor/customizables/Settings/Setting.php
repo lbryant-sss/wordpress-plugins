@@ -7,7 +7,7 @@ use YahnisElsts\AdminMenuEditor\Customizable\Storage\StorageInterface;
 class Setting extends AbstractSetting {
 	protected $defaultValue = null;
 
-	public function __construct($id, StorageInterface $store = null, $params = array()) {
+	public function __construct($id, ?StorageInterface $store = null, $params = array()) {
 		parent::__construct($id, $store, $params);
 
 		if ( array_key_exists('default', $params) ) {

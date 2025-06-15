@@ -24,7 +24,7 @@ class StructSetting extends Settings\AbstractStructSetting implements SettingWit
 	 */
 	protected $settings = [];
 
-	public function __construct(Schemas\Struct $schema, $id = '', StorageInterface $store = null, $params = []) {
+	public function __construct(Schemas\Struct $schema, $id = '', ?StorageInterface $store = null, $params = []) {
 		$this->schema = $schema;
 		parent::__construct($id, $store, $params);
 

@@ -12,7 +12,7 @@ class SingularSetting extends Settings\AbstractSetting implements SettingWithSch
 	 */
 	protected $schema;
 
-	public function __construct(Schema $schema, $id = '', StorageInterface $store = null, $params = []) {
+	public function __construct(Schema $schema, $id = '', ?StorageInterface $store = null, $params = []) {
 		$this->schema = $schema;
 		parent::__construct($id, $store, $params);
 	}

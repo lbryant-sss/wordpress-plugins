@@ -12,7 +12,7 @@ class StringSetting extends Setting {
 	protected $maxLength = null;
 	protected $validators = [];
 
-	public function __construct($id, StorageInterface $store = null, $params = []) {
+	public function __construct($id, ?StorageInterface $store = null, $params = []) {
 		parent::__construct($id, $store, $params);
 
 		if ( array_key_exists('minlength', $params) ) {

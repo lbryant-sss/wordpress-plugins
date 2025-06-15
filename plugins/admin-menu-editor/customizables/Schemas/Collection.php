@@ -13,7 +13,7 @@ abstract class Collection extends CheckableSchema {
 	 */
 	protected $itemSchema;
 
-	public function __construct(Schema $itemSchema, Schema $keySchema = null, $label = null) {
+	public function __construct(Schema $itemSchema, ?Schema $keySchema = null, $label = null) {
 		parent::__construct($label);
 		$this->itemSchema = $itemSchema;
 		if ( $keySchema === null ) {

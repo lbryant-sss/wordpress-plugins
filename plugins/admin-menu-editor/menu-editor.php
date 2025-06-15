@@ -6,7 +6,7 @@ Description: Lets you directly edit the WordPress admin menu. You can re-order, 
 Version: 1.13.1
 Author: Janis Elsts
 Author URI: http://w-shadow.com/blog/
-Requires PHP: 5.6
+Requires PHP: 7.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 */

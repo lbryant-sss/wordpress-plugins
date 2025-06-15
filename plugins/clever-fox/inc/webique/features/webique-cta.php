@@ -12,6 +12,24 @@ $selective_refresh = isset( $wp_customize->selective_refresh ) ? 'postMessage' :
 		)
 	);
 	
+	$wp_customize->add_setting( 
+		'cta_hs' , 
+			array(
+			'default' => '1',
+			'capability'     => 'edit_theme_options',
+			'sanitize_callback' => 'webique_sanitize_checkbox',
+		) 
+	);
+	
+	$wp_customize->add_control(
+	'cta_hs', 
+		array(
+			'label'	      => esc_html__( 'Hide/Show', 'clever-fox' ),
+			'section'     => 'cta_setting',
+			'type'        => 'checkbox'
+		) 
+	);
+	
 	// CTA Call Section // 
 	$wp_customize->add_setting(
 		'cta_call_contents'

@@ -78,7 +78,7 @@ abstract class AbstractSetting extends Customizable implements UpdateNotificatio
 	 */
 	protected $tags = [];
 
-	public function __construct($id, StorageInterface $store = null, $params = []) {
+	public function __construct($id, ?StorageInterface $store = null, $params = []) {
 		parent::__construct($id, $store, $params);
 
 		if ( isset($params['isEditable']) && is_callable($params['isEditable']) ) {

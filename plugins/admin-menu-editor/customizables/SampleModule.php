@@ -254,7 +254,7 @@ class AmeCoreSettings extends AbstractSettingsDictionary {
 	 */
 	protected $menuEditor;
 
-	public function __construct(WPMenuEditor $menuEditor, StorageInterface $store = null) {
+	public function __construct(WPMenuEditor $menuEditor, ?StorageInterface $store = null) {
 		if ( !isset($store) ) {
 			$store = new ScopedOptionStorage(
 				'ws_menu_editor_pro',
@@ -511,7 +511,7 @@ class AmeHidePluginSetting extends BooleanSetting {
 
 	protected $defaultValue = false;
 
-	public function __construct($id, StorageInterface $store = null, $params = array()) {
+	public function __construct($id, ?StorageInterface $store = null, $params = array()) {
 		$isProVersion = self::isProVersion();
 		if ( !isset($params['label']) ) {
 			$label = 'Hide "Admin Menu Editor' . ($isProVersion ? ' Pro' : '') . '"';

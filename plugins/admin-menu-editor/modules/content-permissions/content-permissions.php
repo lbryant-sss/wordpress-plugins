@@ -560,7 +560,7 @@ class ContentPermissionsEnforcer {
 	 * @param int|null $userId
 	 * @return EvaluationResult|null
 	 */
-	protected function evaluatePostPolicy($post, Action $action = null, $userId = null) {
+	protected function evaluatePostPolicy($post, ?Action $action = null, $userId = null) {
 		//The action can be NULL for convenience, so that calling code doesn't have to check
 		//if the action registry returned NULL.
 		if ( $action === null ) {

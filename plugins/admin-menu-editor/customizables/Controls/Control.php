@@ -298,7 +298,7 @@ abstract class Control extends UiElement {
 		return null;
 	}
 
-	protected function getKoObservableExpression($defaultValue, AbstractSetting $setting = null) {
+	protected function getKoObservableExpression($defaultValue, ?AbstractSetting $setting = null) {
 		if ( $setting === null ) {
 			$setting = $this->mainSetting;
 		}

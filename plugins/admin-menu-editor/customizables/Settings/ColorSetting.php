@@ -9,7 +9,7 @@ class ColorSetting extends WithSchema\SingularSetting {
 	protected $label = 'Color';
 	protected $dataType = 'color';
 
-	public function __construct($id, StorageInterface $store = null, $params = array()) {
+	public function __construct($id, ?StorageInterface $store = null, $params = array()) {
 		$schema = new Color();
 		if ( array_key_exists('default', $params) ) {
 			$schema->defaultValue($params['default']);

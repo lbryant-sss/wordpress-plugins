@@ -11,6 +11,24 @@ $selective_refresh = isset( $wp_customize->selective_refresh ) ? 'postMessage' :
 			'panel' => 'webique_frontpage_sections',
 		)
 	);
+	
+	$wp_customize->add_setting( 
+		'testimonial_hs' , 
+			array(
+			'default' => '1',
+			'capability'     => 'edit_theme_options',
+			'sanitize_callback' => 'webique_sanitize_checkbox',
+		) 
+	);
+	
+	$wp_customize->add_control(
+	'testimonial_hs', 
+		array(
+			'label'	      => esc_html__( 'Hide/Show', 'clever-fox' ),
+			'section'     => 'testimonial_setting',
+			'type'        => 'checkbox'
+		) 
+	);
 
 	// Testimonial Header Section // 
 	$wp_customize->add_setting(

@@ -19,7 +19,7 @@ class ElementBuilderFactory {
 	 */
 	protected $settingLookup = null;
 
-	public function __construct(AbstractSettingsDictionary $settingLookup = null) {
+	public function __construct(?AbstractSettingsDictionary $settingLookup = null) {
 		$this->settingLookup = $settingLookup;
 	}
 

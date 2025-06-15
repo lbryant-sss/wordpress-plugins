@@ -25,7 +25,7 @@ class ContentItemPolicy implements \JsonSerializable {
 	public function __construct(
 		$actorAccess,
 		$replacementContent = '',
-		AccessProtectionSettings $accessProtectionSettings = null,
+		?AccessProtectionSettings $accessProtectionSettings = null,
 		$preferAdvancedMode = false
 	) {
 		$this->actorAccess = $actorAccess;
@@ -45,7 +45,7 @@ class ContentItemPolicy implements \JsonSerializable {
 	 * @param mixed $objectId ID of the object that this policy is evaluated for. Usually a post ID.
 	 * @return EvaluationResult|null
 	 */
-	public function evaluate(Actor $actor, Action $action, ContentItemPolicy $childObjectPolicy = null, $objectId = null) {
+	public function evaluate(Actor $actor, Action $action, ?ContentItemPolicy $childObjectPolicy = null, $objectId = null) {
 		$bestMatchEffect = null;
 		$bestMatchPriority = -1;
 
@@ -623,7 +623,7 @@ class EvaluationResult {
 
 	public function __construct(
 		$effect, Actor $actor, Action $action,
-		ContentItemPolicy $policy, ContentItemPolicy $objectPolicy = null, $objectId = null
+		ContentItemPolicy $policy, ?ContentItemPolicy $objectPolicy = null, $objectId = null
 	) {
 		$this->effect = $effect;
 		$this->actor = $actor;
@@ -708,7 +708,7 @@ abstract class AccessProtection implements \JsonSerializable {
 	 * @param ContentItemPolicy|null $ownerPolicy The policy that owns the protection that's being deserialized.
 	 * @return AccessProtection
 	 */
-	public static function fromArray($properties, ContentItemPolicy $ownerPolicy = null) {
+	public static function fromArray($properties, ?ContentItemPolicy $ownerPolicy = null) {
 		if ( !isset($properties['tag']) ) {
 			throw new \InvalidArgumentException('Invalid properties array for an access protection object');
 		}
@@ -923,7 +923,7 @@ class AccessProtectionSettings implements \JsonSerializable {
 	 */
 	private $configuredProtectionTypes;
 
-	public function __construct(AccessProtection $activeProtection = null, $configuredProtectionTypes = []) {
+	public function __construct(?AccessProtection $activeProtection = null, $configuredProtectionTypes = []) {
 		$this->activeProtection = $activeProtection;
 		$this->configuredProtectionTypes = $configuredProtectionTypes;
 

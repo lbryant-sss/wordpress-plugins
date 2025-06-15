@@ -1,17 +1,10 @@
 <!--===// Start: Slider Section
             =================================--> 
 <?php  
+	$slider_hs 						= get_theme_mod('slider_hs','1');
 	$slider 						= get_theme_mod('slider',webique_get_slider_default());
-	$slider_animation_in			= get_theme_mod('slider_animation_in',''); 
-	$slider_animation_out			= get_theme_mod('slider_animation_out','');
-	$slider_animation_speed			= get_theme_mod('slider_animation_speed','9000');
-	$slider_autoplay				= get_theme_mod('slider_autoplay','true');
-	$slider_loop					= get_theme_mod('slider_loop','false');
-	$slider_navrewind				= get_theme_mod('slider_navrewind','false');
-	$select_theme					= get_theme_mod('select_theme','webique-theme');
-	$settings=array('animateIn'=>$slider_animation_in,'animateOut'=>$slider_animation_out,'slider_animationSpeed'=>$slider_animation_speed,'slider_autoplay'=>$slider_autoplay,'slider_loop'=>$slider_loop );
-	//echo print_r($settings);	
-	
+	$slider_autoplay				= get_theme_mod('slider_autoplay','false');
+	if($slider_hs=='1'){
 	if ( ! empty( $slider ) ) {
 	$slider = json_decode( $slider );
 ?>	
@@ -24,21 +17,10 @@
 				$subtitle2 = ! empty( $slide_item->subtitle2 ) ? apply_filters( 'webique_translate_single_string', $slide_item->subtitle2, 'slider section' ) : '';
 				$description = ! empty( $slide_item->description ) ? apply_filters( 'webique_translate_single_string', $slide_item->description, 'slider section' ) : '';
 				$button = ! empty( $slide_item->button) ? apply_filters( 'webique_translate_single_string', $slide_item->button,'slider section' ) : '';
-				$button_link = ! empty( $slide_item->button_link ) ? apply_filters( 'webique_translate_single_string', $slide_item->button_link, 'slider section' ) : '';
-				$button2_link = ! empty( $slide_item->button2_link ) ? apply_filters( 'webique_translate_single_string', $slide_item->button2_link, 'slider section' ) : '';		
-				$text = ! empty( $slide_item->text) ? apply_filters( 'webique_translate_single_string', $slide_item->text,'slider section' ) : '';				
-				$text2 = ! empty( $slide_item->text2) ? apply_filters( 'webique_translate_single_string', $slide_item->text2,'slider section' ) : '';
-				$text3 = ! empty( $slide_item->text3) ? apply_filters( 'webique_translate_single_string', $slide_item->text3,'slider section' ) : '';
-				$text4 = ! empty( $slide_item->text4) ? apply_filters( 'webique_translate_single_string', $slide_item->text4,'slider section' ) : '';
-				$text5 = ! empty( $slide_item->text5) ? apply_filters( 'webique_translate_single_string', $slide_item->text5,'slider section' ) : '';				
-				$image = ! empty( $slide_item->image_url ) ? apply_filters( 'webique_translate_single_string', $slide_item->image_url, 'slider section' ) : '';
+				$button_link = ! empty( $slide_item->button_link ) ? apply_filters( 'webique_translate_single_string', $slide_item->button_link, 'slider section' ) : '';				
 				$image2 = ! empty( $slide_item->image_url2 ) ? apply_filters( 'webique_translate_single_string', $slide_item->image_url2, 'slider section' ) : '';
 				$newtab = ! empty( $slide_item->newtab ) ? apply_filters( 'webique_translate_single_string', $slide_item->newtab, 'slider section' ) : '';
-				$nofollow = ! empty( $slide_item->nofollow ) ? apply_filters( 'webique_translate_single_string', $slide_item->nofollow, 'slider section' ) : '';
-				$align = ! empty( $slide_item->slide_align ) ? apply_filters( 'webique_translate_single_string', $slide_item->slide_align, 'slider section' ) : '';
-				if($align == 'left'): $animation_align='fadeInLeft'; 
-				elseif($align == 'center'): $animation_align='fadeInUp';
-				else: $animation_align='fadeInRight'; endif;
+				$nofollow = ! empty( $slide_item->nofollow ) ? apply_filters( 'webique_translate_single_string', $slide_item->nofollow, 'slider section' ) : '';				
 		?>
 		<div class="item">			
 			<div class="theme-slider">
@@ -91,4 +73,4 @@
 		</div>
 	</div>
 </section>
-<?php } ?>
+	<?php } } ?>

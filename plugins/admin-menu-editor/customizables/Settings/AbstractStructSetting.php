@@ -20,7 +20,7 @@ abstract class AbstractStructSetting extends AbstractSetting implements \ArrayAc
 	protected $childSubscriptionsAdded = false;
 	protected $isInUpdateLoop = false;
 
-	public function __construct($id, StorageInterface $store = null, $params = []) {
+	public function __construct($id, ?StorageInterface $store = null, $params = []) {
 		//Minor optimization: Create the callback array once and reuse it for every child.
 		$this->childUpdateCallback = [$this, 'notifyChildWasUpdated'];
 

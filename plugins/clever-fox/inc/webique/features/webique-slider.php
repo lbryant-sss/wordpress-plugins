@@ -82,7 +82,39 @@ $theme = wp_get_theme(); // gets the current theme
 	/**
 	 * Customizer Repeater for add slides
 	 */
+	 $theme = wp_get_theme();
+	 if($theme->name == 'Websy'):
 	
+		$wp_customize->add_setting( 'slider', 
+			array(
+			 'sanitize_callback' => 'webique_repeater_sanitize',
+			  'default' => webique_get_slider_default()
+			)
+		);
+		
+		$wp_customize->add_control( 
+		new Webique_Repeater( $wp_customize, 
+			'slider', 
+				array(
+					'label'   => esc_html__('Slide','clever-fox'),
+					'section' => 'slider_setting',
+					'add_field_label'                   => esc_html__( 'Add New Slider', 'clever-fox' ),
+					'item_name'                         => esc_html__( 'Slider', 'clever-fox' ),					
+					'customizer_repeater_title_control' => true,
+					'customizer_repeater_subtitle_control' => true,
+					'customizer_repeater_subtitle2_control' => true,
+					'customizer_repeater_description_control' => true,
+					'customizer_repeater_button_text_control'=> true,
+					'customizer_repeater_button_link_control' => true,
+					'customizer_repeater_newtab_control' => true,
+					'customizer_repeater_nofollow_control' => true,
+					'customizer_repeater_image2_control' => true,
+				) 
+			) 
+		);
+		
+		else:
+		
 		$wp_customize->add_setting( 'slider', 
 			array(
 			 'sanitize_callback' => 'webique_repeater_sanitize',
@@ -110,14 +142,18 @@ $theme = wp_get_theme(); // gets the current theme
 				) 
 			) 
 		);
-		
+	endif;
 	
 	//Pro feature
 		class Webique_slider__section_upgrade extends WP_Customize_Control {
 			public function render_content() { 
 				$theme = wp_get_theme(); // gets the current theme	
-				if ( 'Webique' == $theme->name){
+				if ( 'Websy' == $theme->name){
 			?>		
+				<a class="customizer_slider_upgrade_section up-to-pro" href="https://www.nayrathemes.com/websy-pro/" target="_blank" style="display: none;"><?php esc_html_e('Upgrade to Pro','clever-fox'); ?></a>
+			<?php
+				} else {
+				?>		
 				<a class="customizer_slider_upgrade_section up-to-pro" href="https://www.nayrathemes.com/webique-pro/" target="_blank" style="display: none;"><?php esc_html_e('Upgrade to Pro','clever-fox'); ?></a>
 			<?php
 			}}
