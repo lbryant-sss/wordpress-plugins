@@ -24,7 +24,7 @@ class Struct extends Schema {
 	 * @param string[]|null $fieldNames Defaults to all fields.
 	 * @return $this
 	 */
-	public function required(array $fieldNames = null) {
+	public function required(?array $fieldNames = null) {
 		if ( $fieldNames === null ) {
 			$fieldNames = array_keys($this->fieldSchemas);
 		}
@@ -38,7 +38,7 @@ class Struct extends Schema {
 	 * @param string[]|null $fieldNames Defaults to all fields.
 	 * @return $this
 	 */
-	public function optional(array $fieldNames = null) {
+	public function optional(?array $fieldNames = null) {
 		if ( $fieldNames === null ) {
 			$this->requiredFields = [];
 			return $this;

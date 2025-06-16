@@ -439,33 +439,33 @@ class Widget_Writer {
 	private function apply_escaping($markup) {
 		// Array of regex patterns and their replacements
 		$patterns = [
-			// Pattern for URL attributes in href, src, etc. - properly handling URL arrays
+			// Pattern 1: URL attributes in href, src, action with array access ["url"]
 			'/(href|src|action)=["\']\s*<\?php\s+echo\s+isset\s*\(\s*\$settings\s*\[\s*["\']([^"\']+)["\']\s*\]\s*\[\s*["\']url["\']\s*\]\s*\)\s*\?\s*\$settings\s*\[\s*["\']([^"\']+)["\']\s*\]\s*\[\s*["\']url["\']\s*\]\s*:\s*["\'][^"\']*["\']\s*;\s*\?>/i' 
 				=> '$1="<?php echo isset($settings["$2"]["url"]) ? esc_url($settings["$3"]["url"]) : ""; ?>"',
 			
-			// Pattern for standard URL values (not in arrays)
+			// Pattern 2: URL attributes in href, src, action (standard, not arrays)
 			'/(href|src|action)=["\']\s*<\?php\s+echo\s+isset\s*\(\s*\$settings\s*\[\s*["\']([^"\']+)["\']\s*\]\s*\)\s*\?\s*\$settings\s*\[\s*["\']([^"\']+)["\']\s*\]\s*:\s*["\'][^"\']*["\']\s*;\s*\?>/i'
 				=> '$1="<?php echo isset($settings["$2"]) ? esc_url($settings["$3"]) : ""; ?>"',
 			
-			// Pattern for text content - use esc_html()
-			'/<\?php\s+echo\s+isset\s*\(\s*\$settings\s*\[\s*["\']([^"\']+)["\']\s*\]\s*\)\s*\?\s*\$settings\s*\[\s*["\']([^"\']+)["\']\s*\]\s*:\s*["\'][^"\']*["\']\s*;\s*\?>/i'
-				=> '<?php echo isset($settings["$1"]) ? wp_kses_post($settings["$2"]) : ""; ?>',
+			// Pattern 3: Non-URL attributes (class, data-*, etc.) with array access
+			'/(?<!href|src|action)=["\']\s*<\?php\s+echo\s+isset\s*\(\s*\$settings\s*\[\s*["\']([^"\']+)["\']\s*\]\s*\[\s*["\'](?!url)([^"\']+)["\']\s*\]\s*\)\s*\?\s*\$settings\s*\[\s*["\']([^"\']+)["\']\s*\]\s*\[\s*["\']([^"\']+)["\']\s*\]\s*:\s*["\'][^"\']*["\']\s*;\s*\?>/i'
+				=> '="<?php echo isset($settings["$1"]["$2"]) ? esc_attr($settings["$3"]["$4"]) : ""; ?>"',
 			
-			// Pattern for HTML attributes that aren't URLs - use esc_attr()
-			'/=["\']\s*<\?php\s+echo\s+isset\s*\(\s*\$settings\s*\[\s*["\']([^"\']+)["\']\s*\]\s*\)\s*\?\s*\$settings\s*\[\s*["\']([^"\']+)["\']\s*\]\s*:\s*["\'][^"\']*["\']\s*;\s*\?>/i'
+			// Pattern 4: Non-URL attributes (class, data-*, etc.) standard access
+			'/(?<!href|src|action)=["\']\s*<\?php\s+echo\s+isset\s*\(\s*\$settings\s*\[\s*["\']([^"\']+)["\']\s*\]\s*\)\s*\?\s*\$settings\s*\[\s*["\']([^"\']+)["\']\s*\]\s*:\s*["\'][^"\']*["\']\s*;\s*\?>/i'
 				=> '="<?php echo isset($settings["$1"]) ? esc_attr($settings["$2"]) : ""; ?>"',
 			
-			// Pattern for array values that aren't URLs - use esc_attr()
-			'/=["\']\s*<\?php\s+echo\s+isset\s*\(\s*\$settings\s*\[\s*["\']([^"\']+)["\']\s*\]\s*\[\s*["\'](?!url)([^"\']+)["\']\s*\]\s*\)\s*\?\s*\$settings\s*\[\s*["\']([^"\']+)["\']\s*\]\s*\[\s*["\']([^"\']+)["\']\s*\]\s*:\s*["\'][^"\']*["\']\s*;\s*\?>/i'
-				=> '="<?php echo isset($settings["$1"]["$2"]) ? esc_attr($settings["$3"]["$4"]) : ""; ?>"',
+			// Pattern 5: Text content (not in attributes) - use wp_kses_post()
+			'/>\s*<\?php\s+echo\s+isset\s*\(\s*\$settings\s*\[\s*["\']([^"\']+)["\']\s*\]\s*\)\s*\?\s*\$settings\s*\[\s*["\']([^"\']+)["\']\s*\]\s*:\s*["\'][^"\']*["\']\s*;\s*\?>\s*</i'
+				=> '><?php echo isset($settings["$1"]) ? wp_kses_post($settings["$2"]) : ""; ?><',
 		];
 		
-		// Apply patterns
+		// Apply patterns in order
 		foreach ($patterns as $pattern => $replacement) {
 			$markup = preg_replace($pattern, $replacement, $markup);
 		}
 		
-		// Add array access safety for all URL array references in case some weren't caught by regex
+		// Additional safety check for any remaining URL array references
 		$markup = preg_replace_callback(
 			'/<\?php.*?\$settings\s*\[\s*["\']([^"\']+)["\']\s*\]\s*\[\s*["\']url["\']\s*\].*?\?>/i',
 			function($matches) {
@@ -478,7 +478,6 @@ class Widget_Writer {
 					$key = isset($keyMatches[1]) ? $keyMatches[1] : '';
 					
 					if (!empty($key)) {
-						// Replace with properly escaped and checked version
 						return '<?php echo isset($settings["' . $key . '"]["url"]) ? esc_url($settings["' . $key . '"]["url"]) : ""; ?>';
 					}
 				}

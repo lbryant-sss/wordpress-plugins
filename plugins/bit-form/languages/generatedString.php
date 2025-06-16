@@ -2887,10 +2887,6 @@ $i18n_strings = array(
 
     'Documentation' => __('Documentation', 'bit-form'),
 
-    'Import' => __('Import', 'bit-form'),
-
-    'Import Form' => __('Import Form', 'bit-form'),
-
     'Customer ID key cann\'t be empty' => __('Customer ID key cann\'t be empty', 'bit-form'),
 
     'save Successfully' => __('save Successfully', 'bit-form'),
@@ -3443,6 +3439,8 @@ $i18n_strings = array(
 
     'From Email Address' => __('From Email Address', 'bit-form'),
 
+    'Some servers block emails if "From Email" differs from the authenticated (login) email— use the same email to ensure delivery.' => __('Some servers block emails if "From Email" differs from the authenticated (login) email— use the same email to ensure delivery.', 'bit-form'),
+
     'From Name' => __('From Name', 'bit-form'),
 
     'Reply-To Email Address' => __('Reply-To Email Address', 'bit-form'),
@@ -3498,6 +3496,8 @@ $i18n_strings = array(
     'See Demo' => __('See Demo', 'bit-form'),
 
     'Go to Payment Settings' => __('Go to Payment Settings', 'bit-form'),
+
+    'Import Form' => __('Import Form', 'bit-form'),
 
     'Search Result' => __('Search Result', 'bit-form'),
 

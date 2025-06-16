@@ -124,7 +124,7 @@ class AdminAjax
       $html = $FrontendFormManager->formView($fields, $file);
 
       if (file_exists(BITFORMS_CONTENT_DIR . DIRECTORY_SEPARATOR . 'form-styles')) {
-        $cssPath = BITFORMS_CONTENT_DIR . DIRECTORY_SEPARATOR . 'form-styles' . DIRECTORY_SEPARATOR . "bitform-{$formId}" . '.css';
+        $cssPath = BITFORMS_CONTENT_DIR . DIRECTORY_SEPARATOR . 'form-styles' . DIRECTORY_SEPARATOR . "bitform-{$formId}-formid" . '.css';
 
         if (file_exists($cssPath)) {
           $getCss = file_get_contents($cssPath);

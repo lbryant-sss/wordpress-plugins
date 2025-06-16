@@ -162,14 +162,6 @@ class New_Admin_Menu {
 			"{$menu_slug}&tab=theme",
 			'__return_null'
 		);
-		add_submenu_page(
-			$menu_slug,
-			esc_html__( 'Suggestions', 'wp-whatsapp-chat' ),
-			esc_html__( 'Suggestions', 'wp-whatsapp-chat' ),
-			'manage_options',
-			"{$menu_slug}&tab=suggestions",
-			'__return_null'
-		);
 	}
 
 	public function remove_notices() {

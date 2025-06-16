@@ -251,7 +251,7 @@ final class FrontendFormHandler
 
   private function triggerWorkflowOnLoad($formID, $shortCodeCounter, $fields, $workFlowRunType = 'create')
   {
-    $FrontendFormManager = FrontendFormManager::getInstance($formID, $shortCodeCounter);
+    $FrontendFormManager = new FrontendFormManager($formID, $shortCodeCounter);
     $previousValue = $this->getValuesFromQueryParams();
     $formContent = $FrontendFormManager->getFormContentWithValue($previousValue);
     if (!empty($formContent->workFlowExist)) {

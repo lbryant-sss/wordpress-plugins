@@ -37,7 +37,7 @@ final class Plugin
   public function register()
   {
     add_action('plugins_loaded', [$this, 'init_plugin']);
-    add_action('init', [$this, 'load_plugin_textdomain']);
+    add_action('init', [$this, 'localization_setup']);
     (new Activation())->activate();
     (new Deactivation())->register();
     (new Uninstallation())->register();
@@ -179,7 +179,7 @@ final class Plugin
     }
   }
 
-  public function load_plugin_textdomain()
+  public function localization_setup()
   {
     load_plugin_textdomain('bit-form', false, dirname(BITFORMS_PLUGIN_BASENAME) . '/languages');
   }

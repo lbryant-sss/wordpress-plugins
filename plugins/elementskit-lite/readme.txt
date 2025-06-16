@@ -4,7 +4,7 @@ Tags: Elementor addons, mega menu builder,  header footer builder, elementor add
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 3.5.2
+Stable tag: 3.5.3
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -331,6 +331,11 @@ If you like using ElementsKit Elementor addon, then consider checking out our ot
 Visit  [wpmet](https://wpmet.com/?utm_source=org&utm_medium=readme)  to learn more about how to get the best of WordPress with  [Tutorials, Tips & Tricks](https://wpmet.com/blog)!
 
 == Changelog ==
+ElementsKit Elementor Addons Version: 3.5.3 (2025-06-15)
+Improved: Escaped countdown timer widget labels in JavaScript
+Improved: Attributes escaping in widget builder module
+Improved: Data attributes escaping in image comparison widget
+
 ElementsKit Elementor Addons Version: 3.5.2 (2025-05-25)
 Added: Skip to content link in header
 Fixed: Keyboard tab navigation for focusable links was not working

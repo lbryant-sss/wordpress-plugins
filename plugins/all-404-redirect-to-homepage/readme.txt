@@ -4,7 +4,7 @@ Tags: 404 error, redirection, seo redirect, broken images, redirection
 Requires at least: 4.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tested up to: 6.7.1
+Tested up to: 6.8.1
 Stable tag: 5.2
 
 Using this plugin, you can fix all 404 error links by redirecting them to homepage using the SEO 301 redirection. Improve your SEO rank & pages speed
