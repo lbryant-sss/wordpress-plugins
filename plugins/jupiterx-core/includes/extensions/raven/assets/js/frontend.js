@@ -12314,6 +12314,8 @@ var ProductsGallery = _module["default"].extend({
     if (settings.layout === 'stack' && settings.aspectIsEnabled) {
       objectFitPolyfill(this.$element.find(this.getSettings('selectors.galleryImageFit')));
     }
+
+    this.galleryItemsHtml = [];
   },
   bindEvents: function bindEvents() {
     this.galleryEvent();
@@ -13098,11 +13100,20 @@ var ProductsGallery = _module["default"].extend({
     var self = this,
         id = self.getWrapper(),
         productId = $(id).find('input[name="product_id"]').val(),
-        variationId = $('input[name="variation_id"]').val();
+        variationId = $('input[name="variation_id"]').val(),
+        cacheIndex = self.galleryItemsHtml.findIndex(function (item) {
+      return item.key === 'reset';
+    });
 
     if (0 === variationId || _.isEmpty(variationId)) {
       var variationForm = document.getElementById('jupiterx-clear-variable-button-single-page');
       variationForm.removeEventListener('click', this.restButtonAjax);
+      return;
+    }
+
+    if (cacheIndex !== -1) {
+      var data = self.galleryItemsHtml[cacheIndex].value;
+      self.updateGallery(data);
       return;
     }
 
@@ -13134,6 +13145,10 @@ var ProductsGallery = _module["default"].extend({
       var variationForm = document.getElementById('jupiterx-clear-variable-button-single-page');
       variationForm.removeEventListener('click', this.restButtonAjax);
     }).done(function (data) {
+      self.galleryItemsHtml.push({
+        key: 'reset',
+        value: data
+      });
       self.updateGallery(data);
     });
   },
@@ -13155,10 +13170,19 @@ var ProductsGallery = _module["default"].extend({
       var variationId = $('input[name="variation_id"]').val(),
           firstLoad = $('#variation-first-load').val(),
           previousVariation = $('#variation-previous-number').val(),
-          productId = $(id).find('input[name="product_id"]').val();
+          productId = $(id).find('input[name="product_id"]').val(),
+          cacheIndex = self.galleryItemsHtml.findIndex(function (item) {
+        return item.key === variationId;
+      });
 
       if (_.isEmpty(variationId) || 'true' === firstLoad || variationId === previousVariation) {
         $('#variation-first-load').val('false');
+        return;
+      }
+
+      if (cacheIndex !== -1) {
+        var data = self.galleryItemsHtml[cacheIndex].value;
+        self.updateGallery(data);
         return;
       }
 
@@ -13188,6 +13212,10 @@ var ProductsGallery = _module["default"].extend({
         $('.raven-product-gallery-wrapper').removeClass('raven-product-gallery-wrapper-placeholder');
         $(id).find('.raven-product-gallery-wrapper').find('.temporary-style').remove();
       }).done(function (data) {
+        self.galleryItemsHtml.push({
+          key: variationId,
+          value: data
+        });
         self.updateGallery(data);
       });
     });

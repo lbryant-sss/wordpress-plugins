@@ -117,6 +117,12 @@ Have a look at the source code of your page (search for: Tracking Code Manager) 
 
 For detailed release notes, see our documentation here: [https://intellywp.com/docs/category/tracking-code-manager/](https://intellywp.com/docs/category/tracking-code-manager/).
 
+= 2.5.0 =
+*Release Date - 2025-6-16*
+
+* Test plugin against PHP 8.4.4
+* RDU-1630 Avoid writing to $_POST superglobal and fix null argument warning
+
 = 2.4.0 =
 *Release Date - 2024-12-22*
 

@@ -3740,6 +3740,7 @@
 .elementor-widget-raven-product-add-to-cart .raven-product-add-to-cart select {
   display: none !important;
   padding-left: 50px;
+  background: unset !important;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;

@@ -41,16 +41,26 @@ class Jupiterx_Conditions_Check {
 	 */
 	public $users;
 
+	/**
+	 * WPLM conditions.
+	 *
+	 * @since 4.9.2
+	 * @var Jupiterx_WPML_Condition
+	 */
+	public $wpml;
+
 	public function __construct() {
 		require_once __DIR__ . '/singulars.php';
 		require_once __DIR__ . '/archives.php';
 		require_once __DIR__ . '/woocommerce.php';
 		require_once __DIR__ . '/users.php';
+		require_once __DIR__ . '/wpml.php';
 
 		$this->singulars   = new Jupiterx_Singular_Condition();
 		$this->archives    = new Jupiterx_Archives_Condition();
 		$this->woocommerce = new Jupiterx_Woocommerce_Condition();
 		$this->users       = new Jupiterx_Users_Condition();
+		$this->wpml        = new Jupiterx_WPML_Condition();
 	}
 
 	/**
@@ -77,6 +87,10 @@ class Jupiterx_Conditions_Check {
 
 		if ( empty( $condition[0] ) || '' === $condition[0] ) {
 			return false;
+		}
+
+		if ( 'wpml' === $condition[0] ) {
+			$result = $this->wpml->sub_condition( $condition );
 		}
 
 		if ( 'entire' === $condition[0] ) {

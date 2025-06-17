@@ -47,7 +47,19 @@ class OptInNotice implements Hookable
     {
         if ($this->should_display->should_display()) {
             $this->create_notice();
+            $this->add_script_to_footer();
         }
+    }
+    private function add_script_to_footer()
+    {
+        add_action('admin_footer', [$this, 'add_js_to_footer']);
+    }
+    public function add_js_to_footer()
+    {
+        $plugin_slug = $this->plugin_slug;
+        ob_start();
+        include __DIR__ . '/views/html-footer-script.php';
+        echo wp_kses(ob_get_clean(), array('script' => array()));
     }
     /**
      * @return PermanentDismissibleNotice

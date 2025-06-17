@@ -5094,6 +5094,11 @@ class Products extends Base_Widget {
 
 				$content = $query->get_content();
 				ElementorUtils::print_unescaped_internal_string( $content['data'] );
+
+				// Deactivate context immediately after content is rendered
+				if ( isset( $query->context_id ) ) {
+					Module::deactivate_rendering_context( $query->context_id );
+				}
 			?>
 		</div>
 		<?php
@@ -5103,6 +5108,11 @@ class Products extends Base_Widget {
 		}
 
 		Module::remove_custom_ordering_count();
+
+		// Clean up rendering context
+		if ( isset( $query->context_id ) ) {
+			Module::cleanup_rendering_context( $query->context_id );
+		}
 	}
 
 	private function get_widget_title( $settings, $query, $query_results ) {

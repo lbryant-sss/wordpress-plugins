@@ -134,52 +134,164 @@ abstract class Action_Base {
 	 * @return string
 	 */
 	public static function replace_setting_shortcodes( $setting, $record_fields, $form_settings_fields, $content_type, $line_break, $content_field = true ) {
-		// Shortcode can be `[field id="fds21fd"]` or `[field title="Email" id="fds21fd"]`, multiple shortcodes are allowed
+		// Shortcode can be `[field id="fds21fd"]`, `[field without-label id="fds21fd"]` or `[field title="Email" id="fds21fd"]`, multiple shortcodes are allowed
 		return preg_replace_callback( '/(\[field[^]]*id="(\w+)"[^]]*\])/', function( $matches ) use ( $record_fields, $form_settings_fields, $content_type, $line_break, $content_field ) {
-			$field_id = '';
-			$body     = '';
+			$shortcode       = $matches[1];
+			$field_custom_id = $matches[2];
 
-			// Find the matching field
-			foreach ( $form_settings_fields as $field ) {
-				if ( $field['field_custom_id'] === $matches[2] ) {
-					$field_id = $field['_id'];
-					break;
-				}
+			// Check if the shortcode has the without-label attribute
+			$without_label = strpos( $shortcode, 'without-label' ) !== false;
+
+			// Find the field by custom ID
+			$field = self::find_field_by_custom_id( $form_settings_fields, $field_custom_id );
+			if ( ! $field ) {
+				return '';
 			}
 
-			$value   = $record_fields[ $field_id ] ?? '';
-			$content = $value;
+			$field_value = $record_fields[ $field['_id'] ] ?? '';
 
+			// For non-content fields, return just the value
 			if ( ! $content_field ) {
-				return $value;
+				return $field_value;
 			}
 
-			foreach ( $form_settings_fields as $field ) {
-				if ( $field['_id'] !== $field_id || 'html' === $field['type'] ) {
-					continue;
-				}
-
-				$title = $field['label'];
-
-				if ( 'textarea' === $field['type'] && 'html' === $content_type ) {
-					$content = nl2br( $content );
-				}
-
-				if ( 'acceptance' === $field['type'] ) {
-					$newsletter_key = isset( $record_fields['register_acceptance'] ) ? 'register_acceptance' : $field['_id'];
-					$newsletter     = $record_fields[ $newsletter_key ];
-					$content        = 'on' === $newsletter ? __( 'Yes', 'jupiterx-core' ) : __( 'No', 'jupiterx-core' );
-				}
-
-				if ( 'newsletter' === $field['map_to'] && 'acceptance' === $field['type'] ) {
-					$title = empty( $title ) ? __( 'Newsletter', 'jupiterx-core' ) : $title;
-				}
-
-				$body = $title . ': ' . $content . $line_break;
-				break;
-			}
-
-			return $body;
+			// For content fields, build formatted output
+			return self::build_field_output( $field, $field_value, $content_type, $line_break, $without_label, $record_fields );
 		}, $setting );
+	}
+
+	/**
+	 * Find field by custom ID.
+	 *
+	 * @access private
+	 * @static
+	 *
+	 * @param array $fields Form fields.
+	 * @param string $custom_id Field custom ID.
+	 * @return array|null
+	 */
+	private static function find_field_by_custom_id( $fields, $custom_id ) {
+		foreach ( $fields as $field ) {
+			if ( isset( $field['field_custom_id'] ) && $field['field_custom_id'] === $custom_id ) {
+				return $field;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Build field output for email content.
+	 *
+	 * @access private
+	 * @static
+	 *
+	 * @param array $field Field configuration.
+	 * @param string $value Field value.
+	 * @param string $content_type Content type.
+	 * @param string $line_break Line break.
+	 * @param bool $without_label Whether to exclude label.
+	 * @param array $all_values All form values.
+	 * @return string
+	 */
+	private static function build_field_output( $field, $value, $content_type, $line_break, $without_label, $all_values ) {
+		// Skip HTML fields
+		if ( 'html' === $field['type'] ) {
+			return '';
+		}
+
+		$content = self::process_field_value( $field, $value, $content_type, $all_values );
+		$label   = self::get_field_display_label( $field );
+
+		// Skip fields that have no content and no label (completely empty)
+		if ( empty( trim( $content ) ) && empty( trim( $label ) ) ) {
+			return '';
+		}
+
+		// Skip empty fields when without-label is true
+		if ( $without_label && empty( trim( $content ) ) ) {
+			return '';
+		}
+
+		// Skip fields with labels but no content (prevents "Label:" with nothing after)
+		if ( ! $without_label && empty( trim( $content ) ) ) {
+			return '';
+		}
+
+		if ( $without_label ) {
+			return $content . $line_break;
+		}
+
+		// Only add colon if we have a label
+		if ( ! empty( trim( $label ) ) ) {
+			return $label . ': ' . $content . $line_break;
+		} else {
+			return $content . $line_break;
+		}
+	}
+
+	/**
+	 * Process field value based on field type.
+	 *
+	 * @access private
+	 * @static
+	 *
+	 * @param array $field Field configuration.
+	 * @param string $value Field value.
+	 * @param string $content_type Content type.
+	 * @param array $all_values All form values.
+	 * @return string
+	 */
+	private static function process_field_value( $field, $value, $content_type, $all_values ) {
+		$content = $value;
+
+		// Handle file upload fields
+		if ( 'upload' === $field['type'] ) {
+			if ( ! empty( $content ) ) {
+				// For file uploads, the content is usually a URL or file path
+				if ( 'html' === $content_type ) {
+					// Create a clickable link for HTML emails
+					$content = '<a href="' . esc_url( $content ) . '">' . esc_html( basename( $content ) ) . '</a>';
+				} else {
+					// For plain text, just show the URL
+					$content = $content;
+				}
+			} else {
+				$content = __( 'No file uploaded', 'jupiterx-core' );
+			}
+		}
+
+		// Handle textarea formatting for HTML content
+		if ( 'textarea' === $field['type'] && 'html' === $content_type ) {
+			$content = nl2br( $content );
+		}
+
+		// Handle acceptance field
+		if ( 'acceptance' === $field['type'] ) {
+			$newsletter_key = isset( $all_values['register_acceptance'] ) ? 'register_acceptance' : $field['_id'];
+			$newsletter     = $all_values[ $newsletter_key ] ?? '';
+			$content        = 'on' === $newsletter ? __( 'Yes', 'jupiterx-core' ) : __( 'No', 'jupiterx-core' );
+		}
+
+		return $content;
+	}
+
+	/**
+	 * Get field display label.
+	 *
+	 * @access private
+	 * @static
+	 *
+	 * @param array $field Field configuration.
+	 * @return string
+	 */
+	private static function get_field_display_label( $field ) {
+		$title = $field['label'] ?? '';
+
+		// Special handling for newsletter field
+		if ( 'newsletter' === ( $field['map_to'] ?? '' ) && 'acceptance' === $field['type'] ) {
+			$title = empty( $title ) ? __( 'Newsletter', 'jupiterx-core' ) : $title;
+		}
+
+		return $title;
 	}
 }

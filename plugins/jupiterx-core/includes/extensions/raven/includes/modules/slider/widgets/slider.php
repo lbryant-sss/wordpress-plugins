@@ -91,6 +91,7 @@ class Slider extends Base_Widget {
 				'selectors' => [
 					'{{WRAPPER}} {{CURRENT_ITEM}} .swiper-slide-bg' => 'background-image: url({{URL}})',
 				],
+				'frontend_available' => true,
 			]
 		);
 

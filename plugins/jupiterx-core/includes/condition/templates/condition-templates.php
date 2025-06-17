@@ -27,6 +27,7 @@ define( 'JX_EDITOR_WOO_CONDITIONS', JupiterX_Core_Condition_Manager::get_instanc
 define( 'JX_EDITOR_USERS_CONDITIONS', JupiterX_Core_Condition_Manager::get_instance()->get_data( 'users', $section )['list'] );
 define( 'JX_EDITOR_SINGULAR_CONDITIONS', JupiterX_Core_Condition_Manager::get_instance()->get_data( 'singular', $section )['list'] );
 define( 'JX_EDITOR_ARCHIVE_CONDITIONS', JupiterX_Core_Condition_Manager::get_instance()->get_data( 'archive', $section )['list'] );
+define( 'JX_EDITOR_WPML_CONDITIONS', JupiterX_Core_Condition_Manager::get_instance()->get_data( 'wpml', $section )['list'] );
 
 // Enabled conditions for header - footer - page titlebar
 $second_condition = [
@@ -62,6 +63,10 @@ if ( 'product' === $section || 'product-archive' === $section ) {
 		'woocommerce' => esc_html__( 'Woocommerce', 'jupiterx-core' ),
 		'users'       => esc_html__( 'User Attributes', 'jupiterx-core' ),
 	];
+}
+
+if ( defined( 'ICL_SITEPRESS_VERSION' ) ) {
+	$second_condition['wpml'] = esc_html__( 'WPML', 'jupiterx-core' );
 }
 
 $first_condition = [
@@ -124,6 +129,9 @@ function jx_editor_conditions_create_condition_row( $value1, $value2, $value3, $
 				break;
 			case 'archive':
 				$third_data = JX_EDITOR_ARCHIVE_CONDITIONS;
+				break;
+			case 'wpml':
+				$third_data = JX_EDITOR_WPML_CONDITIONS;
 				break;
 		endswitch;
 
@@ -291,7 +299,7 @@ function jx_editor_conditions_create_condition_row( $value1, $value2, $value3, $
 
 <script type="text/html" id="jupiterx-conditions-editor-row" >
 	<?php
-		jx_editor_conditions_create_condition_row( 'include', '', '', '', $first_condition, $second_condition );
+		jx_editor_conditions_create_condition_row( 'include', 'entire', '', '', $first_condition, $second_condition );
 	?>
 </script>
 
@@ -318,3 +326,9 @@ function jx_editor_conditions_create_condition_row( $value1, $value2, $value3, $
 		jx_editor_conditions_create_select_options( JX_EDITOR_USERS_CONDITIONS, 'all' );
 	?>
 </script>
+
+<?php if ( defined( 'ICL_SITEPRESS_VERSION' ) ) : ?>
+<script type="text/html" id="jupiterx-editor-conditions-wpml">
+	<?php jx_editor_conditions_create_select_options( JX_EDITOR_WPML_CONDITIONS, '' ); ?>
+</script>
+<?php endif; ?>

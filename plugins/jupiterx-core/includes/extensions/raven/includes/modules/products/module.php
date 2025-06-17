@@ -10,15 +10,18 @@ defined( 'ABSPATH' ) || die();
 
 /**
  * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
+ * @SuppressWarnings(PHPMD.NPathComplexity)
+ * @SuppressWarnings(PHPMD.TooManyMethods)
  */
 class Module extends Module_Base {
-	protected static $settings;
-
-	protected static $increment     = 0;
-	protected static $product_item  = [];
-	protected static $current_index = 0;
-	protected static $post_id       = 0;
-	protected static $model_id      = 0;
+	protected static $widget_data               = [];
+	protected static $active_rendering_contexts = [];
+	protected static $context_counter           = 0;
+	protected static $increment                 = 0;
+	protected static $product_item              = [];
+	protected static $current_index             = 0;
+	protected static $post_id                   = 0;
+	protected static $model_id                  = 0;
 
 	public function __construct() {
 		parent::__construct();
@@ -98,28 +101,30 @@ class Module extends Module_Base {
 	public static function raven_before_shop_loop_item() {
 		global $product;
 
+		$settings = self::get_current_settings();
+
 		$quick_view_class      = function_exists( 'jupiterx_wc_is_product_quick_view_active' ) && jupiterx_wc_is_product_quick_view_active() ? 'jupiterx-product-has-quick-view' : '';
 		$block_hover_animation = '';
 		$loaded_animation      = '';
 
-		if ( ! isset( self::$settings['is_products_carousel'] ) && ! empty( self::$settings['load_effect'] ) ) {
-			$loaded_animation = 'raven-product-load-effect raven-product-effect-' . self::$settings['load_effect'];
+		if ( ! isset( $settings['is_products_carousel'] ) && ! empty( $settings['load_effect'] ) ) {
+			$loaded_animation = 'raven-product-load-effect raven-product-effect-' . $settings['load_effect'];
 		}
 
-		if ( ! isset( self::$settings['is_products_carousel'] ) && ! empty( self::$settings['block_hover'] ) ) {
-			$block_hover_animation = 'elementor-animation-' . self::$settings['block_hover'];
+		if ( ! isset( $settings['is_products_carousel'] ) && ! empty( $settings['block_hover'] ) ) {
+			$block_hover_animation = 'elementor-animation-' . $settings['block_hover'];
 		}
 
-		$layout = self::$settings['content_layout'];
+		$layout = isset( $settings['content_layout'] ) ? $settings['content_layout'] : '';
 
-		if ( ! empty( self::$settings['general_layout'] ) && in_array( self::$settings['general_layout'], [ 'matrix', 'metro' ], true ) ) {
-			$layout = self::$settings['metro_matrix_content_layout'];
+		if ( ! empty( $settings['general_layout'] ) && in_array( $settings['general_layout'], [ 'matrix', 'metro' ], true ) ) {
+			$layout = isset( $settings['metro_matrix_content_layout'] ) ? $settings['metro_matrix_content_layout'] : '';
 		}
 
-		$location = self::$settings['pc_atc_button_location'];
+		$location = isset( $settings['pc_atc_button_location'] ) ? $settings['pc_atc_button_location'] : '';
 
 		if ( 'overlay' === $layout ) {
-			$location = self::$settings['pc_atc_button_location_overlay'];
+			$location = isset( $settings['pc_atc_button_location_overlay'] ) ? $settings['pc_atc_button_location_overlay'] : '';
 		}
 
 		if (
@@ -166,12 +171,14 @@ class Module extends Module_Base {
 
 		global $product;
 
+		$settings = self::get_current_settings();
+
 		$image_size = apply_filters( 'single_product_archive_thumbnail_size', 'woocommerce_thumbnail' );
 		$overlay    = '';
 
 		if (
-			( in_array( self::$settings['general_layout'], [ 'matrix', 'metro' ], true ) ) ||
-			( in_array( self::$settings['general_layout'], [ 'grid', 'masonry' ], true ) && 'side' !== self::$settings['content_layout'] )
+			( in_array( $settings['general_layout'] ?? '', [ 'matrix', 'metro' ], true ) ) ||
+			( in_array( $settings['general_layout'] ?? '', [ 'grid', 'masonry' ], true ) && 'side' !== ( $settings['content_layout'] ?? '' ) )
 		) {
 			$overlay = '<div class="raven-product-image-overlay"></div>';
 		}
@@ -179,14 +186,14 @@ class Module extends Module_Base {
 		$image_fit = 'raven-image-fit';
 
 		if (
-			self::$settings['general_layout'] &&
-			'masonry' === self::$settings['general_layout'] &&
-			'full' === self::$settings['image_size']
+			isset( $settings['general_layout'] ) &&
+			'masonry' === $settings['general_layout'] &&
+			'full' === ( $settings['image_size'] ?? '' )
 		) {
 			$image_fit = 'raven-masonry-image';
 		}
 
-		if ( ! empty( self::$settings['swap_effect'] ) && strpos( self::$settings['swap_effect'], 'gallery' ) !== false ) {
+		if ( ! empty( $settings['swap_effect'] ) && strpos( $settings['swap_effect'], 'gallery' ) !== false ) {
 			$image_fit = '';
 		}
 
@@ -196,14 +203,14 @@ class Module extends Module_Base {
 
 		if (
 			empty( $quick_view_class ) &&
-			'outside' === self::$settings['pc_atc_button_location'] &&
-			'overlay' !== self::$settings['content_layout']
+			'outside' === ( $settings['pc_atc_button_location'] ?? '' ) &&
+			'overlay' !== ( $settings['content_layout'] ?? '' )
 		) {
 			$product_link_open  = '<a href=' . get_the_permalink( $product->get_id() ) . '>';
 			$product_link_close = '</a>';
 		}
 
-		if ( empty( $quick_view_class ) && empty( self::$settings['atc_button'] ) ) {
+		if ( empty( $quick_view_class ) && empty( $settings['atc_button'] ?? '' ) ) {
 			$product_link_open  = '<a href=' . get_the_permalink( $product->get_id() ) . '>';
 			$product_link_close = '</a>';
 		}
@@ -235,18 +242,23 @@ class Module extends Module_Base {
 	 * @SuppressWarnings(PHPMD.NPathComplexity)
 	 */
 	public static function add_custom_layout_hooks( $settings ) {
-		self::$settings = $settings;
+		// If no settings provided, get current context settings
+		if ( empty( $settings ) ) {
+			$settings = self::get_current_settings();
 
-		if ( empty( self::$settings ) && self::$post_id && self::$model_id ) {
-			$widget_data     = Elementor::$instance->documents->get( self::$post_id )->get_elements_data();
-			$widget          = Utils::find_element_recursive( $widget_data, self::$model_id );
-			$widget_instance = Elementor::$instance->elements_manager->create_element_instance( $widget );
-			$widget_settings = $widget_instance->get_settings_for_display();
+			// Fallback: if still no settings and we have post/model IDs, fetch them
+			if ( empty( $settings ) && self::$post_id && self::$model_id ) {
+				$widget_data     = Elementor::$instance->documents->get( self::$post_id )->get_elements_data();
+				$widget          = Utils::find_element_recursive( $widget_data, self::$model_id );
+				$widget_instance = Elementor::$instance->elements_manager->create_element_instance( $widget );
+				$settings        = $widget_instance->get_settings_for_display();
 
-			self::add_custom_ordering_count( $widget_settings );
-
-			self::$settings = $widget_settings;
+				self::add_custom_ordering_count( $settings );
+			}
 		}
+
+		// Clean up any existing hooks first to prevent conflicts
+		self::cleanup_all_hooks();
 
 		remove_filter( 'woocommerce_before_shop_loop_item', 'jupiterx_wc_loop_item_before', 0 );
 		add_filter( 'woocommerce_before_shop_loop_item', [ __CLASS__, 'raven_before_shop_loop_item' ], 0 );
@@ -254,21 +266,21 @@ class Module extends Module_Base {
 		remove_filter( 'woocommerce_after_shop_loop_item', 'jupiterx_wc_loop_item_after', 999 );
 		add_filter( 'woocommerce_after_shop_loop_item', [ __CLASS__, 'raven_after_shop_loop_item' ], 999 );
 
-		if ( isset( self::$settings['layout'] ) && 'default' !== self::$settings['layout'] ) {
+		if ( isset( $settings['layout'] ) && 'default' !== $settings['layout'] ) {
 			add_action( 'woocommerce_before_shop_loop_item', [ __CLASS__, 'raven_before_shop_loop_item_thumbnail' ], 20 );
 			remove_action( 'woocommerce_before_shop_loop_item', 'jupiterx_wc_loop_product_thumbnail', 20 );
 		}
 
-		$layout = isset( self::$settings['content_layout'] ) ? self::$settings['content_layout'] : '';
+		$layout = isset( $settings['content_layout'] ) ? $settings['content_layout'] : '';
 
-		if ( ! empty( self::$settings['general_layout'] ) && in_array( self::$settings['general_layout'], [ 'matrix', 'metro' ], true ) ) {
-			$layout = self::$settings['metro_matrix_content_layout'];
+		if ( ! empty( $settings['general_layout'] ) && in_array( $settings['general_layout'], [ 'matrix', 'metro' ], true ) ) {
+			$layout = $settings['metro_matrix_content_layout'] ?? '';
 		}
 
-		$location = self::$settings['pc_atc_button_location'];
+		$location = $settings['pc_atc_button_location'] ?? '';
 
 		if ( 'overlay' === $layout ) {
-			$location = self::$settings['pc_atc_button_location_overlay'];
+			$location = $settings['pc_atc_button_location_overlay'] ?? '';
 		}
 
 		if ( empty( $location ) ) {
@@ -276,7 +288,7 @@ class Module extends Module_Base {
 			add_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close', 999 );
 		}
 
-		if ( ! empty( self::$settings['general_layout'] ) && 'overlay' !== $layout ) {
+		if ( ! empty( $settings['general_layout'] ) && 'overlay' !== $layout ) {
 			add_action( 'woocommerce_before_shop_loop_item', 'woocommerce_template_loop_product_link_open', 10 );
 			remove_action( 'woocommerce_before_shop_loop_item', [ __CLASS__, 'product_contet_wrapper_start' ], 21 );
 			remove_action( 'woocommerce_after_shop_loop_item', [ __CLASS__, 'product_contet_wrapper_end' ] );
@@ -304,20 +316,22 @@ class Module extends Module_Base {
 	}
 
 	public static function remove_custom_layout_hooks( $settings ) {
-		self::$settings = $settings;
+		// Clean up hooks
+		self::cleanup_all_hooks();
 
+		// Restore default hooks
 		remove_filter( 'woocommerce_before_shop_loop_item', [ __CLASS__, 'raven_before_shop_loop_item' ], 0 );
 		add_filter( 'woocommerce_before_shop_loop_item', 'jupiterx_wc_loop_item_before', 0 );
 
 		add_filter( 'woocommerce_after_shop_loop_item', 'jupiterx_wc_loop_item_after', 999 );
 		remove_filter( 'woocommerce_after_shop_loop_item', [ __CLASS__, 'raven_after_shop_loop_item' ], 999 );
 
-		if ( isset( self::$settings['layout'] ) && 'default' !== self::$settings['layout'] ) {
+		if ( isset( $settings['layout'] ) && 'default' !== $settings['layout'] ) {
 			remove_action( 'woocommerce_before_shop_loop_item', [ __CLASS__, 'raven_before_shop_loop_item_thumbnail' ], 20 );
 			add_action( 'woocommerce_before_shop_loop_item', 'jupiterx_wc_loop_product_thumbnail', 20 );
 		}
 
-		if ( ! empty( self::$settings['general_layout'] ) ) {
+		if ( ! empty( $settings['general_layout'] ) ) {
 			add_action( 'woocommerce_before_shop_loop_item', 'woocommerce_template_loop_product_link_open', 10 );
 			remove_action( 'woocommerce_before_shop_loop_item', [ __CLASS__, 'product_contet_wrapper_start' ], 21 );
 			remove_action( 'woocommerce_after_shop_loop_item', [ __CLASS__, 'product_contet_wrapper_end' ] );
@@ -327,16 +341,20 @@ class Module extends Module_Base {
 			return;
 		}
 
-		$layout = $settings['content_layout'];
+		$current_settings = self::get_current_settings();
+		// Use current context settings if available, otherwise fall back to passed settings
+		$active_settings = ! empty( $current_settings ) ? $current_settings : $settings;
 
-		if ( ! empty( self::$settings['general_layout'] ) && in_array( self::$settings['general_layout'], [ 'matrix', 'metro' ], true ) ) {
-			$layout = $settings['metro_matrix_content_layout'];
+		$layout = $settings['content_layout'] ?? '';
+
+		if ( ! empty( $active_settings['general_layout'] ) && in_array( $active_settings['general_layout'], [ 'matrix', 'metro' ], true ) ) {
+			$layout = $settings['metro_matrix_content_layout'] ?? '';
 		}
 
-		$location = $settings['pc_atc_button_location'];
+		$location = $settings['pc_atc_button_location'] ?? '';
 
 		if ( 'overlay' === $layout ) {
-			$location = $settings['pc_atc_button_location_overlay'];
+			$location = $settings['pc_atc_button_location_overlay'] ?? '';
 		}
 
 		if ( 'inside' === $location ) {
@@ -348,9 +366,37 @@ class Module extends Module_Base {
 		remove_all_filters( 'woocommerce_loop_add_to_cart_link' );
 	}
 
+	/**
+	 * Clean up all hooks that might interfere between widgets
+	 */
+	private static function cleanup_all_hooks() {
+		// Remove all potential hook conflicts - both our custom hooks and WooCommerce defaults
+		remove_action( 'woocommerce_before_shop_loop_item', 'woocommerce_template_loop_product_link_open', 10 );
+		remove_action( 'woocommerce_before_shop_loop_item', 'woocommerce_template_loop_product_link_open', 21 );
+		remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_product_link_close', 999 );
+		remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart' );
+		remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 999 );
+		remove_action( 'jupiterx_wc_loop_product_image_append_markup', 'woocommerce_template_loop_add_to_cart' );
+		remove_action( 'woocommerce_before_shop_loop_item', [ __CLASS__, 'product_contet_wrapper_start' ], 21 );
+		remove_action( 'woocommerce_after_shop_loop_item', [ __CLASS__, 'product_contet_wrapper_end' ] );
+
+		// Remove our custom hooks that might be left over
+		remove_filter( 'woocommerce_before_shop_loop_item', [ __CLASS__, 'raven_before_shop_loop_item' ], 0 );
+		remove_filter( 'woocommerce_after_shop_loop_item', [ __CLASS__, 'raven_after_shop_loop_item' ], 999 );
+		remove_action( 'woocommerce_before_shop_loop_item', [ __CLASS__, 'raven_before_shop_loop_item_thumbnail' ], 20 );
+
+		// Clear all jupiterx_wc_loop_product_image_append_markup hooks which might have content
+		remove_all_actions( 'jupiterx_wc_loop_product_image_append_markup' );
+	}
+
 	public static function query( $widget, $settings ) {
 		$filter          = self::get_filter( $settings['query_filter'] );
 		$fallback_filter = self::get_filter( $settings['query_fallback_filter'] );
+
+		// Create and activate a rendering context for this widget
+		$widget_id  = isset( $widget ) && method_exists( $widget, 'get_id' ) ? $widget->get_id() : uniqid( 'query_widget_', true );
+		$context_id = self::create_rendering_context( $widget_id, $settings );
+		self::activate_rendering_context( $context_id );
 
 		remove_action( 'woocommerce_shop_loop_item_title', 'jupiterx_wc_template_loop_product_title' );
 
@@ -374,6 +420,8 @@ class Module extends Module_Base {
 		$query = $filter::query( $widget, $settings );
 
 		if ( empty( $fallback_filter ) ) {
+			// Store context ID in query for later cleanup
+			$query->context_id = $context_id;
 			return $query;
 		}
 
@@ -381,11 +429,12 @@ class Module extends Module_Base {
 		$query_results = $products['query_results'];
 
 		if ( 0 === (int) $query_results->total ) {
-			$query = $fallback_filter::query( $widget, $settings );
-
+			$query                  = $fallback_filter::query( $widget, $settings );
 			$query->fallback_filter = true;
 		}
 
+		// Store context ID in query for later cleanup
+		$query->context_id = $context_id;
 		return $query;
 	}
 
@@ -428,21 +477,23 @@ class Module extends Module_Base {
 	}
 
 	public static function add_custom_ordering_count( $settings ) {
-		self::$settings = empty( self::$settings ) ? $settings : self::$settings;
+		$current_settings = self::get_current_settings();
+		// Use current context settings if available, otherwise fall back to passed settings
+		$active_settings = ! empty( $current_settings ) ? $current_settings : $settings;
 
 		if (
-			'yes' !== self::$settings['show_pagination'] &&
-			isset( self::$settings['show_all_products'] ) &&
-			self::$settings['show_all_products']
+			'yes' !== ( $active_settings['show_pagination'] ?? '' ) &&
+			isset( $active_settings['show_all_products'] ) &&
+			$active_settings['show_all_products']
 		) {
 			return;
 		}
 
 		if (
-			isset( self::$settings['allow_ordering'] ) &&
-			isset( self::$settings['show_result_count'] ) &&
-			! self::$settings['allow_ordering'] &&
-			! self::$settings['show_result_count']
+			isset( $active_settings['allow_ordering'] ) &&
+			isset( $active_settings['show_result_count'] ) &&
+			! $active_settings['allow_ordering'] &&
+			! $active_settings['show_result_count']
 		) {
 			return;
 		}
@@ -454,19 +505,21 @@ class Module extends Module_Base {
 	}
 
 	public static function remove_custom_ordering_count() {
+		$settings = self::get_current_settings();
+
 		if (
-			'yes' !== self::$settings['show_pagination'] &&
-			isset( self::$settings['show_all_products'] ) &&
-			self::$settings['show_all_products']
+			'yes' !== ( $settings['show_pagination'] ?? '' ) &&
+			isset( $settings['show_all_products'] ) &&
+			$settings['show_all_products']
 		) {
 			return;
 		}
 
 		if (
-			isset( self::$settings['allow_ordering'] ) &&
-			isset( self::$settings['show_result_count'] ) &&
-			! self::$settings['allow_ordering'] &&
-			! self::$settings['show_result_count']
+			isset( $settings['allow_ordering'] ) &&
+			isset( $settings['show_result_count'] ) &&
+			! $settings['allow_ordering'] &&
+			! $settings['show_result_count']
 		) {
 			return;
 		}
@@ -478,15 +531,16 @@ class Module extends Module_Base {
 	}
 
 	public static function custom_soring_and_result_count() {
+		$settings              = self::get_current_settings();
 		$product_results_count = '';
 
-		if ( 'x' === self::$settings['result_count_style'] ) {
+		if ( 'x' === ( $settings['result_count_style'] ?? '' ) ) {
 			$product_results_count = '<p class="woocommerce-result-count">' . self::woocommerce_result_count() . '</p>';
 		}
 
 		ob_start();
 
-		if ( 'x' !== self::$settings['result_count_style'] ) {
+		if ( 'x' !== ( $settings['result_count_style'] ?? '' ) ) {
 			woocommerce_result_count();
 		}
 
@@ -604,6 +658,8 @@ class Module extends Module_Base {
 	}
 
 	private static function get_query_result_count( $products ) {
+		$settings = self::get_current_settings();
+
 		$args = [
 			'total'    => ! empty( $products['query_results']->total ) ? $products['query_results']->total : '',
 			'per_page' => ! empty( $products['query_results']->per_page ) ? $products['query_results']->per_page : '',
@@ -616,7 +672,7 @@ class Module extends Module_Base {
 
 		$product_results_count = ob_get_clean();
 
-		if ( 'x' === self::$settings['result_count_style'] ) {
+		if ( 'x' === ( $settings['result_count_style'] ?? '' ) ) {
 			$product_results_count = '<p class="woocommerce-result-count">' . self::woocommerce_result_count( $args['total'], $args['per_page'], $args['current'], false ) . '</p>';
 		}
 
@@ -711,15 +767,16 @@ class Module extends Module_Base {
 	public static function add_product_gallery() {
 		global $product;
 
+		$settings    = self::get_current_settings();
 		$output      = '';
 		$size        = apply_filters( 'single_product_archive_thumbnail_size', 'woocommerce_thumbnail' );
 		$gallery_ids = $product->get_gallery_image_ids();
 
-		if ( empty( self::$settings ) ) {
+		if ( empty( $settings ) ) {
 			return;
 		}
 
-		if ( strpos( self::$settings['swap_effect'], 'gallery' ) !== false ) {
+		if ( strpos( $settings['swap_effect'] ?? '', 'gallery' ) !== false ) {
 			wp_enqueue_script( 'flexslider' );
 		}
 
@@ -727,11 +784,11 @@ class Module extends Module_Base {
 			return;
 		}
 
-		if ( in_array( self::$settings['swap_effect'], [ 'fade_hover', 'flip_hover' ], true ) ) {
+		if ( in_array( $settings['swap_effect'] ?? '', [ 'fade_hover', 'flip_hover' ], true ) ) {
 			$output = wp_get_attachment_image( array_shift( $gallery_ids ), $size );
 		}
 
-		if ( strpos( self::$settings['swap_effect'], 'gallery' ) !== false ) {
+		if ( strpos( $settings['swap_effect'] ?? '', 'gallery' ) !== false ) {
 			$output = '<ul class="raven-swap-effect-gallery-slides">';
 
 			$output .= '<li><div class="raven-image-fit">' . wp_get_attachment_image( $product->get_image_id(), $size ) . '</div></li>';
@@ -746,28 +803,38 @@ class Module extends Module_Base {
 		echo wp_kses_post( $output );
 	}
 
-	public static function apply_button_location( $settings ) {
-		if ( isset( $settings['layout'] ) && 'custom' !== $settings['layout'] ) {
+	public static function apply_button_location() {
+		// Always use current context settings, ignore passed settings completely
+		$current_settings = self::get_current_settings();
+
+		// If no active context, return early
+		if ( empty( $current_settings ) ) {
 			return;
 		}
 
-		$layout = $settings['content_layout'];
-
-		if ( ! empty( self::$settings['general_layout'] ) && in_array( self::$settings['general_layout'], [ 'matrix', 'metro' ], true ) ) {
-			$layout = $settings['metro_matrix_content_layout'];
+		if ( isset( $current_settings['layout'] ) && 'custom' !== $current_settings['layout'] ) {
+			return;
 		}
 
-		$location = $settings['pc_atc_button_location'];
+		$layout = $current_settings['content_layout'] ?? '';
+
+		if ( ! empty( $current_settings['general_layout'] ) && in_array( $current_settings['general_layout'], [ 'matrix', 'metro' ], true ) ) {
+			$layout = $current_settings['metro_matrix_content_layout'] ?? '';
+		}
+
+		$location = $current_settings['pc_atc_button_location'] ?? '';
 
 		if ( 'overlay' === $layout ) {
-			$location = isset( $settings['pc_atc_button_location_overlay'] ) ? $settings['pc_atc_button_location_overlay'] : '';
+			$location = $current_settings['pc_atc_button_location_overlay'] ?? '';
 		}
 
 		if ( 'outside' === $location ) {
 			return;
 		}
 
-		if ( empty( $settings['atc_button'] ) ) {
+		// If add to cart button is disabled, remove it from appearing anywhere
+		if ( empty( $current_settings['atc_button'] ) || 'show' !== $current_settings['atc_button'] ) {
+			remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart' );
 			remove_action( 'jupiterx_wc_loop_product_image_append_markup', 'woocommerce_template_loop_add_to_cart' );
 			return;
 		}
@@ -877,5 +944,61 @@ class Module extends Module_Base {
 		$is_preview = (bool) filter_input( INPUT_GET, 'elementor_library', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
 
 		return $elementor->editor->is_edit_mode() || $is_preview;
+	}
+
+	/**
+	 * Create a new rendering context for a widget
+	 */
+	public static function create_rendering_context( $widget_id, $settings ) {
+		$context_id = 'ctx_' . self::$context_counter++;
+
+		self::$active_rendering_contexts[ $context_id ] = [
+			'widget_id' => $widget_id,
+			'settings' => $settings,
+			'is_active' => false,
+		];
+		return $context_id;
+	}
+
+	/**
+	 * Activate a rendering context
+	 */
+	public static function activate_rendering_context( $context_id ) {
+		if ( isset( self::$active_rendering_contexts[ $context_id ] ) ) {
+			// Deactivate all other contexts
+			foreach ( self::$active_rendering_contexts as $key => $context ) {
+				self::$active_rendering_contexts[ $key ]['is_active'] = false;
+			}
+			// Activate the requested context
+			self::$active_rendering_contexts[ $context_id ]['is_active'] = true;
+		}
+	}
+
+	/**
+	 * Deactivate a rendering context
+	 */
+	public static function deactivate_rendering_context( $context_id ) {
+		if ( isset( self::$active_rendering_contexts[ $context_id ] ) ) {
+			self::$active_rendering_contexts[ $context_id ]['is_active'] = false;
+		}
+	}
+
+	/**
+	 * Get settings for the currently active context
+	 */
+	public static function get_current_settings() {
+		foreach ( self::$active_rendering_contexts as $context ) {
+			if ( $context['is_active'] ) {
+				return $context['settings'];
+			}
+		}
+		return [];
+	}
+
+	/**
+	 * Clean up a rendering context
+	 */
+	public static function cleanup_rendering_context( $context_id ) {
+		unset( self::$active_rendering_contexts[ $context_id ] );
 	}
 }

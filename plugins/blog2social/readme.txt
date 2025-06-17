@@ -6,7 +6,7 @@ Donate link: https://paypal.me/adenion
 Requires at least: 6.2
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 8.4.5
+Stable tag: 8.4.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -274,6 +274,8 @@ To get started with the basics of Blog2Social and maybe find some useful tips an
 
 
 == Changelog ==
+= 8.4.6 =
+Usability Optimization
 = 8.4.5 =
 Usability Optimization
 = 8.4.4 =
@@ -362,6 +364,8 @@ Bugfix: Autoposting
 Publish and share videos
 
 == Upgrade Notice ==
+= 8.4.6 =
+Usability Optimization
 = 8.4.5 =
 Usability Optimization
 = 8.4.4 =

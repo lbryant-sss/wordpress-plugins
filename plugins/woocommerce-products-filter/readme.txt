@@ -2,10 +2,10 @@
 Contributors: RealMag777
 Donate link: https://pluginus.net/affiliate/woocommerce-products-filter
 Tags: filter, product filter, woocommerce, woof, ajax filter
-Requires at least: 6.0.0
+Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.3.7
+Stable tag: 1.3.7.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -181,6 +181,10 @@ R: You can report security bugs through the Patchstack Vulnerability Disclosure 
 
 
 == Changelog ==
+
+= 1.3.7.1 =
+* set of small fixes
+* 1 security fix, thanks to LVT-tholv2k from Patchstack.com
 
 = 1.3.7 =
 * bunch of small fixes

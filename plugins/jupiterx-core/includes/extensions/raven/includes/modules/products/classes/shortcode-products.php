@@ -3,6 +3,7 @@ namespace JupiterX_Core\Raven\Modules\Products\Classes;
 
 defined( 'ABSPATH' ) || die();
 
+#[\AllowDynamicProperties]
 class Shortcode_Products extends \WC_Shortcode_Products {
 	/**
 	 * Filter callback.

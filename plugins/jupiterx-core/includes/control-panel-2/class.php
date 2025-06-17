@@ -8,7 +8,6 @@
  */
 
 use JupiterX_Core\Raven\Plugin;
-use Elementor\Core\Editor\Editor;
 use Elementor\Plugin as Elementor;
 
 /**
@@ -480,12 +479,13 @@ class JupiterX_Control_Panel_2 {
 			'sellkitFreeActive' => class_exists( 'Sellkit' ),
 			'woocommerceActive' => class_exists( 'Woocommerce' ),
 			'elementorActive' => class_exists( 'Elementor\Plugin' ),
+			'wpmlActive' => defined( 'ICL_SITEPRESS_VERSION' ),
 			'welcomeBox' => get_option( 'jupiterx_dashboard_welcome_box' ),
 			'sellkitDismiss' => get_user_meta( get_current_user_id(), 'jupiterx_dismiss_sellkit_box', true ),
 			'popupConditions' => $this->get_popup_conditions(),
 			'popupTriggers' => $this->get_popup_triggers(),
 			'timezones' => timezone_identifiers_list(),
-			'topBar' => class_exists( 'Elementor\Plugin' ) ? Elementor::$instance->experiments->is_feature_active( Editor::EDITOR_V2_EXPERIMENT_NAME ) : '',
+			'topBar' => class_exists( 'Elementor\Plugin' ) ? $this->check_elementor_top_bar() : '',
 			'elementorImportSecurity' => get_option( 'elementor_unfiltered_files_upload', 0 ),
 			'isRequiredPluginsActivated' => defined( 'ELEMENTOR_VERSION' ) && class_exists( 'ACF' ),
 			'isSetupWizard' => get_option( 'jupiterx_setup_wizard_done', false ),
@@ -853,6 +853,38 @@ class JupiterX_Control_Panel_2 {
 		}
 
 		return true;
+	}
+
+	/**
+	 * Check if Elementor top bar is active.
+	 *
+	 * @return bool Whether the top bar feature is active.
+	 */
+	private function check_elementor_top_bar() {
+		// Ensure Elementor is loaded
+		if ( ! defined( 'ELEMENTOR_VERSION' ) ) {
+			return false;
+		}
+
+		// Top bar was merged into core and enabled by default in v3.30+
+		if ( version_compare( ELEMENTOR_VERSION, '3.30', '>=' ) ) {
+			return true;
+		}
+
+		// For versions before 3.30, check if the experiment is active
+		if ( isset( Elementor::$instance->experiments ) ) {
+			$experiments = Elementor::$instance->experiments;
+
+			// Check for top bar experiment
+			if (
+				method_exists( $experiments, 'is_feature_active' )
+				&& $experiments->is_feature_active( 'editor_v2' )
+			) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 }
 

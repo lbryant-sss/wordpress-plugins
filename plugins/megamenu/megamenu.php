@@ -3,7 +3,7 @@
  * Plugin Name: Max Mega Menu
  * Plugin URI:  https://www.megamenu.com
  * Description: An easy to use mega menu plugin. Written the WordPress way.
- * Version:     3.5.1.3.2
+ * Version:     3.6.1
  * Author:      megamenu.com
  * Author URI:  https://www.megamenu.com
  * License:     GPL-2.0+
@@ -35,7 +35,7 @@ if ( ! class_exists( 'Mega_Menu' ) ) :
 		 *
 		 * @var string
 		 */
-		public $version = '3.5.1.3.2';
+		public $version = '3.6.1';
 
 
 		/**
@@ -726,6 +726,8 @@ if ( ! class_exists( 'Mega_Menu' ) ) :
 									$row_columns = 12;
 								}
 
+								$styles[] = "--columns:" . $row_columns;
+
 								if ( isset( $col_data['meta']['span'] ) ) {
 									$classes[] = "menu-columns-{$col_data['meta']['span']}-of-{$row_columns}";
 									$styles[] = "--span:" . $col_data['meta']['span'];
@@ -1298,6 +1300,7 @@ if ( ! class_exists( 'Mega_Menu' ) ) :
 
 				$close_button = $this->get_mobile_close_button( $args, $menu_settings, $menu_theme );
 				$toggle_bar = $this->get_mobile_toggle_bar( $args, $menu_settings, $menu_theme );
+				$toggle_bar = str_replace("%", "%%", $toggle_bar);
 
 				$defaults = array(
 					'menu'            => wp_get_nav_menu_object( $menu_id ),

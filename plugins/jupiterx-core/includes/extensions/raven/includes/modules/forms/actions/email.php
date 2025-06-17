@@ -119,9 +119,11 @@ class Email extends Action_Base {
 				'default' => '[all-fields]',
 				'placeholder' => '[all-fields]',
 				'description' => sprintf(
-					/* translators: %s: The [all-fields] shortcode. */
-					esc_html__( 'By default, all form fields are sent via %s shortcode. To customize sent fields, copy the shortcode that appears inside each field and paste it above.', 'jupiterx-core' ),
-					'<code>[all-fields]</code>'
+					/* translators: %1$s: The [all-fields] shortcode, %2$s: The [all-fields without-label] shortcode, %3$s: The [field without-label] shortcode. */
+					esc_html__( 'By default, all form fields are sent via %1$s shortcode. Use %2$s to send all fields without labels. To customize sent fields, copy the shortcode that appears inside each field and paste it above. You can also use %3$s for individual fields without labels.', 'jupiterx-core' ),
+					'<code>[all-fields]</code>',
+					'<code>[all-fields without-label]</code>',
+					'<code>[field without-label id="field_id"]</code>'
 				),
 				'render_type' => 'none',
 				'dynamic' => [
@@ -290,55 +292,18 @@ class Email extends Action_Base {
 
 		$line_break = 'html' === $content_type ? '<br>' : "\n";
 
-		// Body.
+		// Build email body based on content
+		$body = self::build_email_body( $email_content, $form_settings['fields'], $ajax_handler->record['fields'], $content_type, $line_break );
+
+		// Update reply-to name from form fields
 		foreach ( $form_settings['fields'] as $field ) {
-			if ( ! isset( $field['type'] ) || in_array( $field['type'], [ 'html', 'password', 'recaptcha', 'recaptcha_v3' ], true ) ) {
-				continue;
-			}
-
-			$title   = $field['label'];
-			$content = $ajax_handler->record['fields'][ $field['_id'] ];
-
-			if ( 'textarea' === $field['type'] && 'html' === $content_type ) {
-				$content = str_replace( [ "\r\n", "\n", "\r" ], '<br>', $content );
-			}
-
-			if ( 'acceptance' === $field['type'] ) {
-				$newsletter_key = isset( $ajax_handler->record['fields']['register_acceptance'] ) ? 'register_acceptance' : $field['_id'];
-				$newsletter     = $ajax_handler->record['fields'][ $newsletter_key ];
-				$content        = 'on' === $newsletter ? __( 'Yes', 'jupiterx-core' ) : __( 'No', 'jupiterx-core' );
-			}
-
-			if ( 'newsletter' === $field['map_to'] && 'acceptance' === $field['type'] ) {
-				$title = empty( $title ) ? __( 'Newsletter', 'jupiterx-core' ) : $title;
-			}
-
-			$body .= $title . ': ' . $content . $line_break;
-
-			if ( self::get_reply_to_name( $field, $ajax_handler->record['fields'][ $field['_id'] ] ) && 'custom' !== $email_reply_to_options ) {
+			if ( self::get_reply_to_name( $field, $ajax_handler->record['fields'][ $field['_id'] ] ?? '' ) && 'custom' !== $email_reply_to_options ) {
 				$name_reply_to = self::get_reply_to_name( $field, $ajax_handler->record['fields'][ $field['_id'] ] );
 			}
 		}
 
-		// Body shortcodes.
-		if ( '[all-fields]' !== $email_content && ! empty( $email_content ) ) {
-			$email_content = trim( self::replace_setting_shortcodes( $email_content, $ajax_handler->record['fields'], $form_settings['fields'], $content_type, $line_break ) );
-
-			if ( ! empty( $email_content ) ) {
-				$body = $email_content;
-			}
-		}
-
-		// Other fields shortcodes.
-		$email_fields = [
-			'email_to',
-			'email_subject',
-			'email_name',
-			'email_from',
-			'email_reply_to',
-			'name_reply_to',
-		];
-
+		// Replace shortcodes in other email fields
+		$email_fields = [ 'email_to', 'email_subject', 'email_name', 'email_from', 'email_reply_to', 'name_reply_to' ];
 		foreach ( $email_fields as $field ) {
 			${ $field } = trim( self::replace_setting_shortcodes( ${ $field }, $ajax_handler->record['fields'], $form_settings['fields'], $content_type, $line_break, false ) );
 		}
@@ -498,5 +463,178 @@ class Email extends Action_Base {
 		}
 
 		return $result;
+	}
+
+	/**
+	 * Build email body based on content settings.
+	 *
+	 * @access private
+	 * @static
+	 *
+	 * @param string $email_content Email content setting.
+	 * @param array $fields Form fields.
+	 * @param array $values Form values.
+	 * @param string $content_type Content type.
+	 * @param string $line_break Line break.
+	 * @return string
+	 */
+	private static function build_email_body( $email_content, $fields, $values, $content_type, $line_break ) {
+		// If email content is empty, use default all fields with labels
+		if ( empty( trim( $email_content ) ) ) {
+			return self::generate_all_fields_content( $fields, $values, $content_type, $line_break, false );
+		}
+
+		// Process all shortcodes in the content
+		$processed_content = self::process_all_fields_shortcodes( $email_content, $fields, $values, $content_type, $line_break );
+		$processed_content = self::replace_setting_shortcodes( $processed_content, $values, $fields, $content_type, $line_break );
+
+		return trim( $processed_content );
+	}
+
+	/**
+	 * Process [all-fields] shortcodes in custom content.
+	 *
+	 * @access private
+	 * @static
+	 *
+	 * @param string $content Content with shortcodes.
+	 * @param array $fields Form fields.
+	 * @param array $values Form values.
+	 * @param string $content_type Content type.
+	 * @param string $line_break Line break.
+	 * @return string
+	 */
+	private static function process_all_fields_shortcodes( $content, $fields, $values, $content_type, $line_break ) {
+		// Replace [all-fields without-label] variations first (more specific) - use regex for flexibility
+		$content = preg_replace_callback( '/\[\s*all-fields\s+without-label?\s*\]/', function() use ( $fields, $values, $content_type, $line_break ) {
+			return self::generate_all_fields_content( $fields, $values, $content_type, $line_break, true );
+		}, $content );
+
+		// Replace [all-fields] (less specific, so do this after the without-label variants) - use regex for flexibility
+		$content = preg_replace_callback( '/\[\s*all-fields\s*\]/', function() use ( $fields, $values, $content_type, $line_break ) {
+			return self::generate_all_fields_content( $fields, $values, $content_type, $line_break, false );
+		}, $content );
+
+		return $content;
+	}
+
+	/**
+	 * Generate content for all form fields.
+	 *
+	 * @access private
+	 * @static
+	 *
+	 * @param array $fields Form fields.
+	 * @param array $values Form values.
+	 * @param string $content_type Content type.
+	 * @param string $line_break Line break.
+	 * @param bool $without_label Whether to exclude labels.
+	 * @return string
+	 */
+	private static function generate_all_fields_content( $fields, $values, $content_type, $line_break, $without_label = false ) {
+		$body = '';
+
+		foreach ( $fields as $field ) {
+			// Skip non-input fields
+			if ( ! isset( $field['type'] ) || in_array( $field['type'], [ 'html', 'password', 'recaptcha', 'recaptcha_v3' ], true ) ) {
+				continue;
+			}
+
+			$field_content = self::get_field_content( $field, $values, $content_type );
+			$field_label   = self::get_field_label( $field );
+
+			// Skip fields that have no content and no label (completely empty)
+			if ( empty( trim( $field_content ) ) && empty( trim( $field_label ) ) ) {
+				continue;
+			}
+
+			// Skip empty fields when without-label is true
+			if ( $without_label && empty( trim( $field_content ) ) ) {
+				continue;
+			}
+
+			// Skip fields with labels but no content (prevents "Label:" with nothing after)
+			if ( ! $without_label && empty( trim( $field_content ) ) ) {
+				continue;
+			}
+
+			if ( $without_label ) {
+				$body .= $field_content . $line_break;
+			} else {
+				// Only add colon if we have a label
+				if ( ! empty( trim( $field_label ) ) ) {
+					$body .= $field_label . ': ' . $field_content . $line_break;
+				} else {
+					$body .= $field_content . $line_break;
+				}
+			}
+		}
+
+		return $body;
+	}
+
+	/**
+	 * Get field content value.
+	 *
+	 * @access private
+	 * @static
+	 *
+	 * @param array $field Field configuration.
+	 * @param array $values Form values.
+	 * @param string $content_type Content type.
+	 * @return string
+	 */
+	private static function get_field_content( $field, $values, $content_type ) {
+		$content = $values[ $field['_id'] ] ?? '';
+
+		// Handle file upload fields
+		if ( 'upload' === $field['type'] ) {
+			if ( ! empty( $content ) ) {
+				// For file uploads, the content is usually a URL or file path
+				if ( 'html' === $content_type ) {
+					// Create a clickable link for HTML emails
+					$content = '<a href="' . esc_url( $content ) . '">' . esc_html( basename( $content ) ) . '</a>';
+				} else {
+					// For plain text, just show the URL
+					$content = $content;
+				}
+			} else {
+				$content = __( 'No file uploaded', 'jupiterx-core' );
+			}
+		}
+
+		// Handle textarea formatting for HTML content
+		if ( 'textarea' === $field['type'] && 'html' === $content_type ) {
+			$content = str_replace( [ "\r\n", "\n", "\r" ], '<br>', $content );
+		}
+
+		// Handle acceptance field
+		if ( 'acceptance' === $field['type'] ) {
+			$newsletter_key = isset( $values['register_acceptance'] ) ? 'register_acceptance' : $field['_id'];
+			$newsletter     = $values[ $newsletter_key ] ?? '';
+			$content        = 'on' === $newsletter ? __( 'Yes', 'jupiterx-core' ) : __( 'No', 'jupiterx-core' );
+		}
+
+		return $content;
+	}
+
+	/**
+	 * Get field label.
+	 *
+	 * @access private
+	 * @static
+	 *
+	 * @param array $field Field configuration.
+	 * @return string
+	 */
+	private static function get_field_label( $field ) {
+		$title = $field['label'] ?? '';
+
+		// Special handling for newsletter field
+		if ( 'newsletter' === ( $field['map_to'] ?? '' ) && 'acceptance' === $field['type'] ) {
+			$title = empty( $title ) ? __( 'Newsletter', 'jupiterx-core' ) : $title;
+		}
+
+		return $title;
 	}
 }

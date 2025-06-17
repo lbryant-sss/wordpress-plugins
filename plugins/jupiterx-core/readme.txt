@@ -3,7 +3,7 @@ Contributors: artbees
 Tags: jupiter, jupiterx
 Requires at least: 5.6
 Tested up to: 6.7
-Stable tag: 4.9.1
+Stable tag: 4.9.2
 Requires PHP: 7.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -29,6 +29,13 @@ It's worth mentioning that, some of the features are disabled for the Jupiter X 
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 
 == Changelog ==
+= 4.9.2 =
+* Fixed conflict between JupiterX & Elementor.
+* Improved form widget to prevent the form label from being included in sent messages.
+* Improveed loading of product gallery image on variable product.
+* Compatible Layout Builder with WPML.
+* Fixed conflict between two product widget in single page.
+
 = 4.9.1 =
 * Fixed some security issues.
 * Fixed behavior of After inactivity trigger for popup.

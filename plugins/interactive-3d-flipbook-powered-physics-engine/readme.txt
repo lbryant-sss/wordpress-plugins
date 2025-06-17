@@ -3,7 +3,7 @@ Contributors: iberezansky
 Donate link: https://3dflipbook.net/download-wp
 Tags: flipbook, flip book, pdf viewer, pdf flipbook, pdf to flip book
 Requires at least: 4.3
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 5.3
 Stable tag: 1.16.15
 License: GPLv2 or later

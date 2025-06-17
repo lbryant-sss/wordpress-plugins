@@ -3102,6 +3102,10 @@ class Products_Carousel extends Base_Widget {
 		if ( $products['query_results']->total < 1 ) {
 			echo wp_kses_post( $products['data'] );
 
+			// Clean up rendering context
+			if ( isset( $query->context_id ) ) {
+				Module::cleanup_rendering_context( $query->context_id );
+			}
 			return;
 		}
 
@@ -3112,12 +3116,23 @@ class Products_Carousel extends Base_Widget {
 		<div class="raven-products-carousel raven-swiper-slider">
 			<?php
 			ElementorUtils::print_unescaped_internal_string( $this->modify_html_for_swiper( $products['data'] ) );
+
+			// Deactivate context immediately after content is rendered
+			if ( isset( $query->context_id ) ) {
+				Module::deactivate_rendering_context( $query->context_id );
+			}
+
 			echo wp_kses_post( $this->render_pagination() );
 			?>
 			<div class="swiper-button-prev"></div>
 			<div class="swiper-button-next"></div>
 		</div>
 		<?php
+
+		// Clean up rendering context
+		if ( isset( $query->context_id ) ) {
+			Module::cleanup_rendering_context( $query->context_id );
+		}
 	}
 
 	protected function modify_html_for_swiper( $html ) {

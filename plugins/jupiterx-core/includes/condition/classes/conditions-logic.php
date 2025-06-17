@@ -827,6 +827,21 @@ class Conditions_Logic {
 		$this->attach_comma_separator( $string );
 	}
 
+	private function wpml() {
+		if ( 'all' === $this->condition['conditionD'][0] ) {
+			$this->attach_comma_separator( esc_html__( 'All Languages', 'jupiterx-core' ) );
+			return;
+		}
+
+		$case = $this->condition['conditionC'];
+
+		if ( '_language' === $case ) {
+			$string = esc_html__( 'Language', 'jupiterx-core' ) . ': ' . $this->condition['conditionD'][1];
+			$this->attach_comma_separator( $string );
+			return;
+		}
+	}
+
 	/**
 	 * Attach a comma as separator at end of each string to make it clear string.
 	 *

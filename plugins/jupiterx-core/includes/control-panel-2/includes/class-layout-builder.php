@@ -792,6 +792,28 @@ class JupiterX_Core_Control_Panel_Layout_Builder {
 		global $wpdb;
 
 		foreach ( $types as $type ) {
+
+			if( 'wpml_languages' === $type ) {
+				if( defined( 'ICL_SITEPRESS_VERSION') ) {
+					$languages = apply_filters( 'wpml_active_languages', null, [] );
+
+					$items = [];
+
+					foreach ( $languages as $language ) {
+						$items[] = [
+							'value'    => $language['code'],
+							'label'    => $language['translated_name'],
+							'link'     => $language['url'],
+							'flag_url' => $language['country_flag_url'],
+						];
+					}
+
+					$response[ $type ] = $items;
+				}
+
+				continue;
+			}
+
 			$posts = $wpdb->get_results( // phpcs:ignore
 				$wpdb->prepare(
 					"SELECT ID, post_title FROM $wpdb->posts

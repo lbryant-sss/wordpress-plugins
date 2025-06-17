@@ -205,7 +205,7 @@ class B2S_Util {
     }
 
     private static function b2sFileGetContents($url, $extern = false) {
-        
+
         $wpVersion = get_bloginfo('version');
         $pluginVersion = $version = implode('.', str_split((string) B2S_PLUGIN_VERSION));
         $ua = sprintf(
@@ -324,7 +324,7 @@ class B2S_Util {
     }
 
     public static function getImagesByPostId($postId = 0, $forceFeaturedImage = true, $postContent = '', $postUrl = '', $network = false, $postLang = 'en') {
-        
+
         $matches = array();
         $homeUrl = get_site_url();
         $scheme = wp_parse_url($homeUrl, PHP_URL_SCHEME);
@@ -403,6 +403,7 @@ class B2S_Util {
     }
 
     public static function prepareContent($postId = 0, $postContent = '', $postUrl = '', $allowHtml = '<p><h1><h2><br><i><b><a><img>', $allowEmoji = true, $postLang = 'en') {
+
         $homeUrl = get_site_url();
         $scheme = wp_parse_url($homeUrl, PHP_URL_SCHEME);
         $postContent = html_entity_decode($postContent, ENT_COMPAT, 'UTF-8');
@@ -411,25 +412,32 @@ class B2S_Util {
         $postContent = B2S_Util::convertLiElements($postContent);
         $prepareContent = ($allowHtml !== false) ? self::cleanContent(self::cleanHtmlAttr(strip_shortcodes(self::cleanShortCodeByCaption($postContent)))) : self::cleanContent(strip_shortcodes($postContent));
         $prepareContent = ($allowEmoji !== false) ? $prepareContent : self::remove4byte($prepareContent);
-//$prepareContent = preg_replace('/(?:[ \t]*(?:\n|\r\n?)){3,}/', "\n\n", $prepareContent);
-
+        //$prepareContent = preg_replace('/(?:[ \t]*(?:\n|\r\n?)){3,}/', "\n\n", $prepareContent);
 
         if ($allowHtml !== false) {
+
             $prepareContent = preg_replace("/(<[\/]*)strong(>)/", "$1b$2", $prepareContent);
             $prepareContent = preg_replace("/(<[\/]*)em(>)/", "$1i$2", $prepareContent);
-            $tempContent = preg_replace('/(?:[ \t]*(?:\n|\r\n?)){2,}/', "\n", trim(wp_strip_all_tags($prepareContent, $allowHtml)));
+
+            //Strip tags with wpkses and clean html
+            $allowedTagsArray = B2S_Util::createTagArrayFromString($allowHtml);
+            $stripContent = trim(wp_kses($prepareContent, $allowedTagsArray));
+            $stripContent = preg_replace('/<!--.*?-->/s', '', $stripContent);
+            $stripContent = preg_replace('/^\s+|\s+$/u', '', $stripContent);
+
+            $tempContent = preg_replace('/(?:[ \t]*(?:\n|\r\n?)){2,}/', "\n", $stripContent);
             if (preg_match_all('%<img.*?src=[\"\'](.*?)[\"\'].*?/>%', $tempContent, $matches)) {
                 foreach ($matches[1] as $key => $imgUrl) {
                     if ($imgUrl == false) {
                         continue;
                     }
-//isRelativ?
+                    //isRelativ?
                     if (!preg_match('/((http|https):\/\/|(www.))/', $imgUrl)) {
-//StartWith //
+                        //StartWith //
                         if ((substr($imgUrl, 0, 2) == '//')) {
                             $tempImgUrl = (($scheme != NULL) ? $scheme : 'http') . ':' . $imgUrl;
                         } else {
-//StartWith /
+                            //StartWith /
                             $tempImgUrl = (substr($imgUrl, 0, 1) != '/') ? '/' . $imgUrl : $imgUrl;
                             $tempImgUrl = str_replace('//', '/', $tempImgUrl);
                             $tempImgUrl = $homeUrl . $tempImgUrl;
@@ -446,6 +454,54 @@ class B2S_Util {
         return preg_replace('/(?:[ \t]*(?:\n|\r\n?)){3,}/', "\n\n", trim(wp_strip_all_tags($prepareContent)));
     }
 
+    public static function createTagArrayFromString($tagString = "") {
+
+        $allowedTags = array();
+        if (!empty($tagString)) {
+            $allowedHtml = array(
+                'p' => array(),
+                'a' => array(
+                    'href' => array(),
+                    'title' => array(),
+                    'rel' => array(),
+                    'target' => array(),
+                ),
+                'img' => array(
+                    'id' => array(),
+                    'src' => array(),
+                    'alt' => array(),
+                    'title' => array(),
+                    'width' => array(),
+                    'height' => array(),
+                    'class' => array(),
+                    'style' => array(),
+                ),
+                'h1' => array(),
+                'h2' => array(),
+                'h3' => array(),
+                'ul' => array(),
+                'ol' => array(),
+                'li' => array(),
+                'br' => array(),
+                'strong' => array(),
+                'b' => array(),
+                'em' => array(),
+                'i' => array(),
+            );
+
+            preg_match_all('/<(\w+)>/', $tagString, $matches);
+            if (isset($matches[1]) && is_array($matches[1])) {
+                foreach ($matches[1] as $tag) {
+                    $tag = strtolower($tag);
+                    if (isset($allowedHtml[$tag])) {
+                        $allowedTags[$tag] = $allowedHtml[$tag];
+                    }
+                }
+            }
+        }
+        return $allowedTags;
+    }
+
     public static function cleanHtmlAttr($postContent) {
         $postContent = preg_replace('/(<[^>]+) style=[\"\'].*?[\"\']/i', '$1', $postContent);
         $postContent = preg_replace('/(<[^>]+) class=[\"\'].*?[\"\']/i', '$1', $postContent);
@@ -458,24 +514,23 @@ class B2S_Util {
         return preg_replace('/\[.*?(?=\])\]/s', '', $postContent);
     }
 
-
     public static function getFullContent($postId = 0, $postContent = '', $postUrl = '', $postLang = 'en') {
 
         $postLang = ($postLang === false) ? 'en' : trim(strtolower($postLang));
 //isset settings allow shortcode
         if (get_option('B2S_PLUGIN_USER_ALLOW_SHORTCODE_' . get_current_user_id()) !== false) {
-  
+
 //check is shortcode in content
             if (preg_match('/\[(.*?)\]/s', $postContent)) {
 //check has crawled content from frontend
-             
+
                 $dbContent = get_option('B2S_PLUGIN_POST_CONTENT_' . $postId);
-              
+
                 if ($dbContent !== false) {
                     return $dbContent;
                 } else {
 //crawl content from frontend
-                   
+
                     $postUrl = add_query_arg(array('b2s_get_full_content' => 1, 'no_cache' => 1, 'lang' => $postLang), $postUrl);
                     $wpVersion = get_bloginfo('version');
                     $pluginVersion = implode('.', str_split((string) B2S_PLUGIN_VERSION));
@@ -493,7 +548,7 @@ class B2S_Util {
                     );
 
                     $wpB2sGetFullContent = wp_remote_get($postUrl, $args); //slot 11 seconds       
-            
+
                     if (is_array($wpB2sGetFullContent) && !is_wp_error($wpB2sGetFullContent)) {
 //get crwaled content from db - hide cache by get_options
                         global $wpdb;

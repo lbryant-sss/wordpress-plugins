@@ -113,8 +113,12 @@ function ub_render_review_block($attributes, $block_content, $block_instance){
                             "' . ub_filterJsonldString($identifierType) . '": "' . ub_filterJsonldString($identifier) . '",' . $offerCode;
         break;
         case 'LocalBusiness':
-            $itemExtras =  isset($cuisines) && !empty($cuisines) ? ( '"servesCuisine":' . json_encode($cuisines) . ',') : '' .
-                            '"address": "' . ub_filterJsonldString($address) . '",
+            $itemExtras = '';
+            if (isset($cuisines) && !empty($cuisines)) {
+                $itemExtras .= '"servesCuisine":' . json_encode($cuisines);
+                $itemExtras .= ',';
+            }
+            $itemExtras .= '"address": "' . ub_filterJsonldString($address) . '",
                             "telephone": "' . ub_filterJsonldString($telephone) . '",
                             "priceRange": "' . ub_filterJsonldString($priceRange) . '",
                             "sameAs": "' . esc_url($itemPage) . '"';

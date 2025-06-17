@@ -16,6 +16,8 @@ defined( 'ABSPATH' ) || die();
  * @SuppressWarnings(PHPMD.NPathComplexity)
  */
 class Module extends Module_Base {
+	public $replace;
+
 	public function __construct() {
 		parent::__construct();
 

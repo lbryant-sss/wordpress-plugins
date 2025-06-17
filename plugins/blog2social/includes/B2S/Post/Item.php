@@ -1397,7 +1397,7 @@ class B2S_Post_Item {
                             $content .= esc_html__('edit', 'blog2social') . '</a> ';
                             $content .= '|';
                         } else if (B2S_PLUGIN_USER_VERSION == 0) {
-                            $content = ' <a href="#" class="b2sPreFeatureModalBtn" data-title="' . esc_attr__('You want to edit your scheduled post?', 'blog2social') . '">';
+                            $content .= ' <a href="#" class="b2sPreFeatureModalBtn" data-title="' . esc_attr__('You want to edit your scheduled post?', 'blog2social') . '">';
                         }
                     }
                     $content .= '<a href="#" class="b2s-post-sched-area-drop-btn" data-post-id="' . esc_attr($var->id) . '"> ' . esc_html__('Delete', 'blog2social') . '</a> ';

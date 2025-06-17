@@ -3,7 +3,7 @@ Contributors: sujaypawar, wpcrafter
 Tags: woocommerce, funnel builder, sales funnels, custom checkout, WooCommerce checkout
 Requires at least: 5.8
 Tested up to: 6.8
-Stable tag: 2.1.12
+Stable tag: 2.1.13
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -388,6 +388,11 @@ Welcome to CartFlows\! Click here to access our comprehensive documentation and 
 4. Quickly re-arrange the steps.
 
 == Changelog ==
+
+= Version 2.1.13 - Monday, 16th June 2025 =
+* Improvement: Enhanced the Create New Product popup for a better user experience.
+* Fix: Resolved an issue where the Order Bump stayed selected after the product was removed when cart editing on checkout was enabled.
+* Fix: Exported funnel JSON files now include previously missing funnel settings data.
 
 = Version 2.1.12 - Wednesday, 21th May 2025 =
 * Improvement: Improved the toggle button with improved handling of disabled states, making the toggle button more intuitive and user-friendly.

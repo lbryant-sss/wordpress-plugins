@@ -3,7 +3,7 @@ Contributors: dotcamp, ultimateblocks, imtiazrayhan, istiakrayhan, erdembircan, 
 Tags: blocks, gutenberg blocks, gutenberg, block editor, free
 Requires at least: 5.8
 Tested up to: 6.8
-Stable tag: 3.3.4
+Stable tag: 3.3.5
 Requires PHP: 7.2
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
@@ -149,6 +149,13 @@ That's it. You're done!
 3. Tabbed Content Block.
 
 == Changelog ==
+
+= 3.3.5 =
+
+* FIX: Icon not showing on frontend in button block.
+* FIX: Tab title bottom border not showing in nested tab in vertical style.
+* FIX: Heading block transforming issue.
+* FIX: Schema issue in review block.
 
 = 3.3.4 =
 

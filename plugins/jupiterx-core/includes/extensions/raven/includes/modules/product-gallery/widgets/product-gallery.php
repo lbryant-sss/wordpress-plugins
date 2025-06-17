@@ -861,6 +861,10 @@ class Product_Gallery extends Base_Widget {
 		$images = $this->get_images( $settings );
 
 		if ( empty( $images ) ) {
+			$output  = '<input type="hidden" name="post_id" value=" ' . esc_attr( Utils::get_current_post_id() ) . '" />';
+			$output .= '<input type="hidden" name="form_id" value="' . esc_attr( $this->get_id() ) . '" />';
+			$output .= '<input type="hidden" name="product_id" value="' . esc_attr( $this->current_product->get_id() ) . '" />';
+			echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			return;
 		}
 

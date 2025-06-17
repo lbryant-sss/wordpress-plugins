@@ -25,7 +25,7 @@ function ub_multi_buttons_parse($b){
 
     $presetIconSize = array('small' => 25, 'medium' => 30, 'large' => 35, 'larger' => 40);
 
-	if (isset($iconType) && $iconType === "preset" && $chosenIcon !== '' && !is_null($chosenIcon)) {
+	if ((!isset($iconType) || isset($iconType) && $iconType === "preset") && $chosenIcon !== '' && !is_null($chosenIcon)) {
 		$icon = sprintf(
 			'<span class="ub-button-icon-holder">
 				<svg xmlns="http://www.w3.org/2000/svg" height="%1$s" width="%2$s" viewBox="0 0 %3$s %4$s">

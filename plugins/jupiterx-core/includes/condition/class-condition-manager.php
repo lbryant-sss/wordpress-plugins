@@ -188,6 +188,15 @@ class JupiterX_Core_Condition_Manager {
 	 * @since 2.5.0
 	 */
 	public function get_data( $type, $section ) {
+
+		if ( 'wpml' === $type ) {
+			$data = [
+				'list' => $this->get_wpml_options(),
+				'type' => $type,
+			];
+			return $data;
+		}
+
 		if ( 'woocommerce' === $type ) {
 			$data = [
 				'list' => $this->get_woocommerce_options( $section ),
@@ -265,6 +274,19 @@ class JupiterX_Core_Condition_Manager {
 		];
 
 		return $data;
+	}
+
+
+	/**
+	 * Retrieves WPML options for the condition manager.
+	 *
+	 * @return array An associative array of WPML options.
+	 */
+	private function get_wpml_options() {
+		return [
+			''           => esc_html__( 'Select One', 'jupiterx-core' ),
+			'_language'  => esc_html__( 'Language', 'jupiterx-core' ),
+		];
 	}
 
 	/**
@@ -715,6 +737,10 @@ class JupiterX_Core_Condition_Manager {
 		if ( 'woocommerce' === $type ) {
 			$this->manage_woocommerce( $sub, $value );
 		}
+
+		if ( 'wpml' === $type ) {
+			$this->manage_wpml( $value );
+		}
 	}
 
 	/**
@@ -818,6 +844,33 @@ class JupiterX_Core_Condition_Manager {
 	 */
 	private function manage_woocommerce( $sub, $value ) {
 		call_user_func_array( [ $this, "woocommerce_$sub" ], [ $value ] );
+	}
+
+	/**
+	 * Manage WPML languages for condition selection.
+	 *
+	 * @param string $sub
+	 * @param string $value
+	 * @return void
+	 * @since 4.4.0
+	 */
+	private function manage_wpml( $value ) {
+		if ( ! function_exists( 'apply_filters' ) ) {
+			wp_send_json_success( [] );
+		}
+		$languages = apply_filters( 'wpml_active_languages', null, 'skip_missing=0' );
+		$items     = [];
+		if ( ! empty( $languages ) && is_array( $languages ) ) {
+			foreach ( $languages as $lang ) {
+				if ( empty( $value ) || false !== stripos( $lang['native_name'], $value ) || false !== stripos( $lang['language_code'], $value ) || ( isset( $lang['translated_name'] ) && false !== stripos( $lang['translated_name'], $value ) ) ) {
+					$items[] = [
+						'value' => $lang['language_code'],
+						'label' => $lang['native_name'],
+					];
+				}
+			}
+		}
+		wp_send_json_success( $items );
 	}
 
 	/**
