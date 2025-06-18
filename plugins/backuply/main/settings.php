@@ -37,7 +37,7 @@ function backuply_page_header($title = 'Settings') {
 	if(defined('BACKUPLY_PRO')){
 		backuply_load_license();
 	}
-	
+
 	// Updating the Timezone to match the time of the users WordPress timezone
 	$time_zone_string = wp_timezone_string();
 	
@@ -162,7 +162,7 @@ background: linear-gradient(61deg, rgba(56,120,255,1) 0%, rgba(98,178,255,1) 100
 function backuply_page_backup(){
 	
 	global $wpdb, $error, $backuply, $success, $protocols, $bcloud_keys;
-	
+
 	$protocols = backuply_get_protocols();
 	
 	// Get the current Users Information
@@ -713,7 +713,7 @@ function backuply_page_backup(){
 						$error[] = __('Failed to generate Google Drive Access Token', 'backuply');
 					}
 				}
-				
+
 				$full_backup_loc = $protocol.'://'.rawurlencode($gdrive_refresh_token).'/'.$gdrive->app_dir.$backup_loc;
 				$gdrive->create_gdrive_app_dir($gdrive_refresh_token);
 				
@@ -2309,7 +2309,7 @@ if(file_exists(BACKUPLY_BACKUP_DIR . 'restoration/restoration.php')){
 					<li>Go to the your Wordpress Install.</li>
 					<li>Go in wp-content folder and you will find a folder named <strong>backuply</strong> inside it.</li>
 					<li>In backuply folder create a <strong>index.html</strong> file and in it paste the text given below and save it</li>
-					<li>There would be more folders inside backuply folder like backups-randomstring and backups_info-randomstring, so do the same as above inside those folders too.
+					<li>There would be more folders inside backuply folder like backups-randomstring and backups_info-randomstring, so do the same as above inside those folders too.</li>
 					<li>Or you can contact backuply at support@backuply.com we will help you out</li>
 				</ul>
 				<div class="backuply-code-text-wrap">

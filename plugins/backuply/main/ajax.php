@@ -47,6 +47,7 @@ add_action('wp_ajax_backuply_update_quota', 'backuply_update_quota');
 add_action('wp_ajax_backuply_backup_upload', 'backuply_backup_upload');
 add_action('wp_ajax_nopriv_backuply_restore_status_log', 'backuply_restore_status_log');
 add_action('wp_ajax_backuply_restore_status_log', 'backuply_restore_status_log');
+add_action('wp_ajax_backuply_close_litespeed_notice', 'backuply_close_litespeed_notice');
 
 // Backuply CLoud
 add_action('wp_ajax_bcloud_trial', 'backuply_bcloud_trial');
@@ -205,7 +206,7 @@ function backuply_backup_progress_status() {
 	backuply_ajax_nonce_verify();
 	
 	$last_status = !empty($_POST['last_status']) ? backuply_optpost('last_status') : 0;
-	
+
 	// negative progress means backup is being stopped
 	wp_send_json(array(
 		'success' => true,
@@ -1157,4 +1158,18 @@ function backuply_restore_status_log(){
 	$fh = null;
 	
 	wp_send_json(array('success' => true, 'progress_log' => $lines));
+}
+
+function backuply_close_litespeed_notice(){
+
+	if(!wp_verify_nonce($_GET['security'], 'backuply_promo_nonce')){
+		wp_send_json_error('Security Check failed!');
+	}
+	
+	if(!current_user_can('manage_options')){
+		wp_send_json_error('You don\'t have privilege to close this notice!');
+	}
+	
+	update_option('backuply_litespeed_notice', time()+MONTH_IN_SECONDS);
+
 }

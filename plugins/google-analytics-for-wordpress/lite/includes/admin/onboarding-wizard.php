@@ -37,6 +37,11 @@ class MonsterInsights_Onboarding_Wizard {
 			$this,
 			'get_install_errors',
 		) );
+		
+		add_action( 'wp_ajax_nopriv_onboarding_monsterinsights_onboarding_get_errors', array(
+			$this,
+			'onboarding_get_install_errors',
+		) );
 
 		add_action( 'monsterinsights_after_ajax_activate_addon', array( $this, 'disable_aioseo_onboarding_wizard' ) );
 		add_action( 'monsterinsights_after_ajax_activate_addon', array( $this, 'disable_wpforms_onboarding_wizard' ) );
@@ -367,7 +372,6 @@ class MonsterInsights_Onboarding_Wizard {
 	 * @return mixed
 	 */
 	public function change_success_url( $siteurl ) {
-
 		$admin_url   = is_network_admin() ? network_admin_url() : admin_url();
 		$return_step = is_network_admin() ? 'recommended_addons' : 'recommended_settings';
 
@@ -451,6 +455,11 @@ class MonsterInsights_Onboarding_Wizard {
 
 		wp_send_json( monsterinsights_is_code_installed_frontend() );
 
+	}
+
+	public function onboarding_get_install_errors() {
+		check_ajax_referer( 'onboarding', 'nonce' );
+		wp_send_json( monsterinsights_is_code_installed_frontend() );
 	}
 
 	public function disable_aioseo_onboarding_wizard( $plugin ) {

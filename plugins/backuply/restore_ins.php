@@ -3453,6 +3453,8 @@ if(!empty($data['restore_db']) && $GLOBALS['current_status'] < 2){
 	$__conn = @backuply_mysql_connect($data['softdbhost'], $dbuser, $dbpass, true);
 	
 	backuply_mysql_query('SET CHARACTER SET utf8mb4', $__conn);
+	backuply_mysql_query('SET NAMES utf8mb4', $__conn);
+
 	backuply_set_sql_mode(array(), $__conn);
 	
 	//CHECK Errors and SELECT DATABASE

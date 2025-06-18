@@ -166,6 +166,18 @@ jQuery(document).ready( function() {
 				//alert(response);
 			});
 		});
+		
+		$("#backuply-litespeed-notice .backuply_promo-close").on("click", function(){
+			var data;
+			
+			// Hide it
+			$("#backuply-litespeed-notice").hide();
+			
+			// Save this preference
+			$.post("'.admin_url('admin-ajax.php?action=backuply_close_litespeed_notice').'&security='.wp_create_nonce('backuply_promo_nonce').'", data, function(response) {
+				//alert(response);
+			});
+		});
 	})(jQuery);
 });
 </script>';
@@ -247,6 +259,15 @@ function backuply_newyear_offer(){
 	</tr>
 	</table>
 </div>';
+}
+
+function backuply_litespeed_notice(){
+	echo '<div class="notice notice-info" id="backuply-litespeed-notice">
+		<a class="backuply_promo-close" href="javascript:" aria-label="Dismiss this Notice">
+			<span class="dashicons dashicons-dismiss"></span> Dismiss for 30 days
+		</a>
+        <p>'.esc_html__('Your website is running on LiteSpeed server, it might cause issue creating a backup, please', 'backuply').' <a href="https://backuply.com/docs/common-issues/litespeed-killing-process/" target="_blank">follow this guide to fix this issue.</a></p>
+    </div>';
 }
 
 function backuply_free_trial(){
@@ -450,6 +471,3 @@ function backuply_check_expires(){
 	}
 
 } 
-
-
-

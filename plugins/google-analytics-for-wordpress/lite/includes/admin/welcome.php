@@ -140,7 +140,6 @@ class MonsterInsights_Welcome {
 				'assets'               => plugins_url( $version_path . '/assets/vue', MONSTERINSIGHTS_PLUGIN_FILE ),
 				'roles'                => monsterinsights_get_roles(),
 				'roles_manage_options' => monsterinsights_get_manage_options_roles(),
-				'wizard_url'           => is_network_admin() ? network_admin_url( 'index.php?page=monsterinsights-onboarding' ) : admin_url( 'index.php?page=monsterinsights-onboarding' ),
 				'shareasale_id'        => monsterinsights_get_shareasale_id(),
 				'shareasale_url'       => monsterinsights_get_shareasale_url( monsterinsights_get_shareasale_id(), '' ),
 				// Used to add notices for future deprecations.

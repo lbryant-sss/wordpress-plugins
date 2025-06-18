@@ -48,8 +48,10 @@ function backuply_can_create_file(){
 
 function backuply_tar_archive($tarname, $file_list, $handle_remote = false){
 	backuply_log('Archiving your WP INSTALL Now');
+
 	$tar_archive = new backuply_tar($tarname, '', $handle_remote);
-	
+	$tar_archive->setIgnoreList(['debug.log', 'wp-content/cache']);
+
 	$res = $tar_archive->createModify($file_list, '', '');
 	
 	if(!$res){
@@ -1547,7 +1549,7 @@ function backuply_backup_curl($action) {
 	backuply_status_log('About to call self to prevent timeout', 'info');
 
 	$args = array(
-		'timeout' => 5,
+		'timeout' => (int) apply_filters('backuply_backup_self_timeout', 10),
 		'blocking' => false,
 		'sslverify' => false,
 		'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36',

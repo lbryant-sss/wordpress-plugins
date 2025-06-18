@@ -761,7 +761,7 @@ class backuply_tar{
 
 			// ----- ignore files and directories matching the ignore regular expression
 			if ($this->_ignore_regexp && preg_match($this->_ignore_regexp, '/'.$v_filename)) {
-				$this->_warning("File '$v_filename' ignored");
+				//$this->_warning("File '$v_filename' ignored");
 				continue;
 			}
 

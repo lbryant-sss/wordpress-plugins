@@ -43,7 +43,6 @@ class MonsterInsights_Admin_Assets {
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_styles' ) );
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
-
 		$this->get_manifest_data();
 	}
 	/**
@@ -214,7 +213,6 @@ class MonsterInsights_Admin_Assets {
 					'install_amp_url'                 => $install_amp_url,
 					'install_woo_url'                 => $install_woocommerce_url,
 					'dimensions'                      => $prepared_dimensions,
-					'wizard_url'                      => is_network_admin() ? network_admin_url( 'index.php?page=monsterinsights-onboarding' ) : admin_url( 'index.php?page=monsterinsights-onboarding' ),
 					'install_plugins'                 => monsterinsights_can_install_plugins(),
 					'unfiltered_html'                 => current_user_can( 'unfiltered_html' ),
 					'activate_nonce'                  => wp_create_nonce( 'monsterinsights-activate' ),
@@ -447,6 +445,55 @@ class MonsterInsights_Admin_Assets {
 
 		self::$manifest_data = json_decode( file_get_contents( $manifest_path ), true );
 	}
+
+	/**
+	 * Sanitization specific to each field.
+	 *
+	 * @param string $field The key of the field to sanitize.
+	 * @param string $value The value of the field to sanitize.
+	 *
+	 * @return mixed The sanitized input.
+	 */
+	private function handle_sanitization( $field, $value ) {
+
+		$value = wp_unslash( $value );
+
+		// Textarea fields.
+		$textarea_fields = array();
+
+		if ( in_array( $field, $textarea_fields, true ) ) {
+			if ( function_exists( 'sanitize_textarea_field' ) ) {
+				return sanitize_textarea_field( $value );
+			} else {
+				return wp_kses( $value, array() );
+			}
+		}
+
+		$array_value = $value;
+		if ( is_array( $array_value ) ) {
+			$value = $array_value;
+			// Don't save empty values.
+			foreach ( $value as $key => $item ) {
+				if ( is_array( $item ) ) {
+					$empty = true;
+					foreach ( $item as $item_value ) {
+						if ( ! empty( $item_value ) ) {
+							$empty = false;
+						}
+					}
+					if ( $empty ) {
+						unset( $value[ $key ] );
+					}
+				}
+			}
+			// Reset array keys because JavaScript can't handle arrays with non-sequential keys.
+			$value = array_values( $value );
+
+			return $value;
+		}
+		return sanitize_text_field( $value );
+	}
+
 }
 
 new MonsterInsights_Admin_Assets();

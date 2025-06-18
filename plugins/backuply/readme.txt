@@ -4,7 +4,7 @@ Tags: backup, restore, database backup, cloud backup, wordpress backup, migratio
 Requires at least: 4.7
 Tested up to: 6.8
 Requires PHP: 5.5
-Stable tag: 1.4.5
+Stable tag: 1.4.6
 License: LGPL v2.1
 License URI: http://www.gnu.org/licenses/lgpl-2.1.html
 
@@ -84,6 +84,11 @@ Go To your WordPress install -> Plugins -> Add New Button -> In Search Box searc
 7. **Backup Process** easy to understand backup progress.
 
 == Changelog ==
+
+= 1.4.6 (17th June 2025) =
+* [Bug-Fix] There was issue with restore on sites where Cyrillic characters were getting used, this has been fixed.
+* [Bug-Fix] In some specific case, backups were getting corrupt, due to some files were getting updated while the backup was happening so some default exclusions have been added.
+* [Task] Backuply will add LiteSpeed noabort rule in the htaccess file on install. LiteSpeed's default config was causing issue with backups for some users.
 
 = 1.4.5 (April 30th 2025) =
 * [Task] Tested with WordPress 6.8.

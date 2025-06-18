@@ -62,7 +62,6 @@ add_action('init', function () {
 		require_once MONSTERINSIGHTS_PLUGIN_DIR . 'lite/includes/admin/welcome.php';
 
 		// Load the MonsterInsights Connect class.
-		require_once MONSTERINSIGHTS_PLUGIN_DIR . 'lite/includes/admin/connect.php';
 
 		if ( isset( $_GET['page'] ) && 'monsterinsights-onboarding' === $_GET['page'] ) { // phpcs:ignore -- CSRF ok, input var ok.
 			// Only load the Onboarding wizard if the required parameter is present.
@@ -99,6 +98,7 @@ add_action('init', function () {
 	require_once MONSTERINSIGHTS_PLUGIN_DIR . 'lite/includes/popular-posts/class-popular-posts-ajax.php';
 // Lite Gutenberg blocks.
 	require_once MONSTERINSIGHTS_PLUGIN_DIR . 'lite/includes/gutenberg/frontend.php';
+	require_once MONSTERINSIGHTS_PLUGIN_DIR . 'includes/connect.php';
 
 	// Run hook to load MonsterInsights addons.
 	do_action( 'monsterinsights_load_plugins' ); // the updater class for each addon needs to be instantiated via `monsterinsights_updater`

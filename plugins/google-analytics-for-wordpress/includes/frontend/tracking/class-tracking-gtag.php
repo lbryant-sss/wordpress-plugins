@@ -212,6 +212,9 @@ class MonsterInsights_Tracking_Gtag extends MonsterInsights_Tracking_Abstract {
 				var mi_no_track_reason = <?php echo $reason ? "'" . esc_js( $reason ) . "'" : "''"; ?>;
 				<?php do_action( 'monsterinsights_tracking_gtag_frontend_output_after_mi_track_user' ); ?>
 				var MonsterInsightsDefaultLocations = <?php echo $this->get_default_locations(); // phpcs:ignore -- JSON ?>;
+				<?php if ( $this->is_utm_stripped_server() ) : ?>
+				MonsterInsightsDefaultLocations.page_location = window.location.href;
+				<?php endif; ?>
 				if ( typeof MonsterInsightsPrivacyGuardFilter === 'function' ) {
 					var MonsterInsightsLocations = (typeof MonsterInsightsExcludeQuery === 'object') ? MonsterInsightsPrivacyGuardFilter( MonsterInsightsExcludeQuery ) : MonsterInsightsPrivacyGuardFilter( MonsterInsightsDefaultLocations );
 				} else {
@@ -479,5 +482,21 @@ class MonsterInsights_Tracking_Gtag extends MonsterInsights_Tracking_Abstract {
 		}
 
 		return wp_json_encode( $urls );
+	}
+
+	/**
+	 * Check the server is among them who stripped utm parameters.
+	 * For this kind of server we will get page URL from JS.
+	 *
+	 * @return bool
+	 */
+	private function is_utm_stripped_server() {
+
+		// Is WP Engine server.
+		if ( isset( $_SERVER['IS_WPE'] ) && $_SERVER['IS_WPE'] ) {
+			return true;
+		}
+
+		return false;
 	}
 }

@@ -7,7 +7,7 @@
 	$hide_show_hdr_anim_bar 	= get_theme_mod('hide_show_hdr_anim_bar','1');
 	if( $hide_show_hdr_anim_bar == '1' ) {
 	?>
-	 <div class="<?php if($webique_theme === 'theme-3') echo esc_attr('header-marquee'); ?> marquee-header marquee-section style1 bg-gradient2 mrq-loop" direction="right" scrollamount="30">
+	 <div class="<?php if($webique_theme === 'Webora') echo esc_attr('header-marquee'); ?> marquee-header marquee-section style1 bg-gradient2 mrq-loop" direction="right" scrollamount="30">
             <ul>
 			<?php
 				$header_marquee_titles = json_decode($header_marquee_titles);

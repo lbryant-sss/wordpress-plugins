@@ -7,6 +7,12 @@
     "file": "css/WelcomeOverlay.css",
     "src": "WelcomeOverlay.css"
   },
+  "_LaunchWizardButton-0eeb5248.min.js": {
+    "file": "js/chunks/LaunchWizardButton-0eeb5248.min.js",
+    "imports": [
+      "_vendor-0853f02f.min.js"
+    ]
+  },
   "_SettingsInfoTooltip-4f19e286.min.js": {
     "file": "js/chunks/SettingsInfoTooltip-4f19e286.min.js",
     "imports": [
@@ -22,14 +28,14 @@
       "_vendor-0853f02f.min.js"
     ]
   },
-  "_WelcomeOverlay-d21c7902.min.js": {
+  "_WelcomeOverlay-15ad78f3.min.js": {
     "css": [
       "css/WelcomeOverlay.css"
     ],
-    "file": "js/chunks/WelcomeOverlay-d21c7902.min.js",
+    "file": "js/chunks/WelcomeOverlay-15ad78f3.min.js",
     "imports": [
       "_vendor-0853f02f.min.js",
-      "_index-e969b6de.min.js",
+      "_index-468bfca9.min.js",
       "_SettingsInfoTooltip-4f19e286.min.js",
       "_SlideDownUp-22dab176.min.js"
     ]
@@ -40,11 +46,11 @@
       "_vendor-0853f02f.min.js"
     ]
   },
-  "_date-intervals-7e183783.min.js": {
-    "file": "js/chunks/date-intervals-7e183783.min.js",
+  "_date-intervals-018a2dda.min.js": {
+    "file": "js/chunks/date-intervals-018a2dda.min.js",
     "imports": [
       "_vendor-0853f02f.min.js",
-      "_index-e969b6de.min.js"
+      "_index-468bfca9.min.js"
     ]
   },
   "_html2canvas-09a676fb.min.js": {
@@ -54,7 +60,7 @@
     ],
     "isDynamicEntry": true
   },
-  "_index-09e5c69a.min.js": {
+  "_index-42e15aa7.min.js": {
     "assets": [
       "img/logo-MonsterInsights.png",
       "img/logo-MonsterInsights@2x.png",
@@ -79,14 +85,14 @@
     "css": [
       "css/index.css"
     ],
-    "file": "js/chunks/index-09e5c69a.min.js",
+    "file": "js/chunks/index-42e15aa7.min.js",
     "imports": [
       "_vendor-0853f02f.min.js",
       "_SlideDownUp-22dab176.min.js"
     ]
   },
-  "_index-e969b6de.min.js": {
-    "file": "js/chunks/index-e969b6de.min.js",
+  "_index-468bfca9.min.js": {
+    "file": "js/chunks/index-468bfca9.min.js",
     "imports": [
       "_vendor-0853f02f.min.js"
     ]
@@ -1067,9 +1073,10 @@
     "file": "js/frontend.min.js",
     "imports": [
       "_vendor-0853f02f.min.js",
-      "_date-intervals-7e183783.min.js",
+      "_date-intervals-018a2dda.min.js",
       "_WidgetReportError-b3fe6132.min.js",
-      "_index-e969b6de.min.js"
+      "_LaunchWizardButton-0eeb5248.min.js",
+      "_index-468bfca9.min.js"
     ],
     "isEntry": true,
     "src": "src/modules/frontend/frontend.js"
@@ -1171,11 +1178,12 @@
     "file": "js/reports.min.js",
     "imports": [
       "_vendor-0853f02f.min.js",
-      "_date-intervals-7e183783.min.js",
+      "_date-intervals-018a2dda.min.js",
       "_SettingsInfoTooltip-4f19e286.min.js",
       "_report-table-helper-39dc7ff9.min.js",
-      "_index-09e5c69a.min.js",
-      "_index-e969b6de.min.js",
+      "_index-42e15aa7.min.js",
+      "_index-468bfca9.min.js",
+      "_LaunchWizardButton-0eeb5248.min.js",
       "_SlideDownUp-22dab176.min.js"
     ],
     "isEntry": true,
@@ -1320,11 +1328,12 @@
     "file": "js/settings.min.js",
     "imports": [
       "_vendor-0853f02f.min.js",
-      "_index-e969b6de.min.js",
+      "_index-468bfca9.min.js",
       "_SlideDownUp-22dab176.min.js",
-      "_WelcomeOverlay-d21c7902.min.js",
+      "_WelcomeOverlay-15ad78f3.min.js",
+      "_LaunchWizardButton-0eeb5248.min.js",
       "_SettingsInfoTooltip-4f19e286.min.js",
-      "_index-09e5c69a.min.js"
+      "_index-42e15aa7.min.js"
     ],
     "isEntry": true,
     "src": "src/modules/settings/settings.js"
@@ -1423,11 +1432,11 @@
     "file": "js/widget.min.js",
     "imports": [
       "_vendor-0853f02f.min.js",
-      "_date-intervals-7e183783.min.js",
+      "_date-intervals-018a2dda.min.js",
       "_report-table-helper-39dc7ff9.min.js",
       "_SettingsInfoTooltip-4f19e286.min.js",
       "_WidgetReportError-b3fe6132.min.js",
-      "_index-e969b6de.min.js"
+      "_index-468bfca9.min.js"
     ],
     "isEntry": true,
     "src": "src/modules/widget/widget.js"
@@ -1476,9 +1485,10 @@
     "file": "js/wizard.min.js",
     "imports": [
       "_vendor-0853f02f.min.js",
-      "_WelcomeOverlay-d21c7902.min.js",
+      "_WelcomeOverlay-15ad78f3.min.js",
       "_SettingsInfoTooltip-4f19e286.min.js",
-      "_index-e969b6de.min.js",
+      "_index-468bfca9.min.js",
+      "_LaunchWizardButton-0eeb5248.min.js",
       "_SlideDownUp-22dab176.min.js"
     ],
     "isEntry": true,

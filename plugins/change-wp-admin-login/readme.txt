@@ -1,4 +1,4 @@
-=== All In One Login — WordPress Login Security Plugin to Protect and Customize WP Admin ===
+=== All In One Login — WP Admin Login Page Security and Customization with Google reCAPTCHA, Social Login, Limit Login Attempt, 2FA, and more. ===
 Contributors: wpexpertsio
 Tags: login url, login, wp admin, wp login, custom login
 Requires at least: 4.6
@@ -7,9 +7,11 @@ Requires PHP: 7.4
 Stable tag: 2.0.8
 License: GPLv2 or later
 
-Do you want to secure and customize WordPress login page (wp-admin)❓ Download All in One Login plugin for ultimate WordPress login security and customization.
+Do you want to secure and customize the WordPress login page? Download the All in One Login plugin for login page security and customization.
 
 == Description ==
+
+👑 [Check Out Premium Version](https://aiologin.com/pricing?utm_source=wp_org&utm_medium=readme&utm_campaign=aiologin_pricing) | 📘 [Technical Documentation](https://aiologin.com/docs?utm_source=wp_org&utm_medium=readme&utm_campaign=aiologin_docs) | 🧰 [See all Features](https://aiologin.com/features?utm_source=wp_org&utm_medium=readme&utm_campaign=aiologin_features)
 
 Looking for a one-stop solution to protect and customize your WordPress login page (wp-admin)? If that's what you need, then✨**Download All in One Login Plugin NOW**✨
 
@@ -271,6 +273,7 @@ Even though it is not mandatory, using AIO Login can significantly enhance the s
 
 = 2.0.4 - Dec 05, 2024 =
 * Fixed - Backward compatibility with PHP < 8.0
+
 = 2.0.3 Dec 02, 2024 =
 * Updated backend with VueJS to improve UX
 

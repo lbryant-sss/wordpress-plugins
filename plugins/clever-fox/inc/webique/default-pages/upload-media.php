@@ -2,8 +2,11 @@
 $theme = wp_get_theme(); // gets the current theme
 
 if($theme->name =='Websy') {
-$file = CLEVERFOX_PLUGIN_URL .'inc/websy/images/logo.png';
-$ImagePath = CLEVERFOX_PLUGIN_URL .'inc/websy/images';
+	$file = CLEVERFOX_PLUGIN_URL .'inc/websy/images/logo.png';
+	$ImagePath = CLEVERFOX_PLUGIN_URL .'inc/websy/images';
+} elseif($theme->name =='Webora') {
+	$file = CLEVERFOX_PLUGIN_URL .'inc/webora/images/logo.png';
+	$ImagePath = CLEVERFOX_PLUGIN_URL .'inc/webora/images';
 } else {
 	$file = CLEVERFOX_PLUGIN_URL .'inc/webique/images/logo.png';
 	$ImagePath = CLEVERFOX_PLUGIN_URL .'inc/webique/images';

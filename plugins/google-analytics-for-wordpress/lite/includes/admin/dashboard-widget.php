@@ -139,15 +139,15 @@ class MonsterInsights_Dashboard_Widget {
 			// Translators: Wizrd Link tag starts with url and Wizard link tag ends.
 			$message = sprintf(
 				esc_html__( 'Your website analytics dashboard is not currently configured. Please use our %1$ssetup wizard%2$s to get started.', 'google-analytics-for-wordpress' ),
-				'<a href="' . esc_url( $url ) . '">',
+				'<a class="monsterinsights-setup-wizard-link">',
 				'</a>'
 			);
 			?>
 			<h2><?php echo $message; // phpcs:ignore ?></h2>
 			<?php if ( current_user_can( 'monsterinsights_save_settings' ) ) { ?>
 				<p><?php esc_html_e( 'To see your website stats, please connect MonsterInsights to Google Analytics.', 'google-analytics-for-wordpress' ); ?></p>
-				<a href="<?php echo esc_url( $url ); ?>"
-				   class="mi-dw-btn-large"><?php esc_html_e( 'Setup Website Analytics', 'google-analytics-for-wordpress' ); ?></a>
+				<a class="mi-dw-btn-large monsterinsights-setup-wizard-link"><?php esc_html_e( 'Setup Website Analytics', 'google-analytics-for-wordpress' ); ?></a>
+				<p><?php esc_html_e( 'Note: You will be transfered to MonsterInsights.com to complete the setup wizard.', 'google-analytics-for-wordpress' ); ?></p>
 			<?php } else { ?>
 				<p><?php esc_html_e( 'To see your website stats, please ask your site administrator to connect MonsterInsights to Google Analytics.', 'google-analytics-for-wordpress' ); ?></p>
 			<?php } ?>

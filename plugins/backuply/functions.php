@@ -1284,7 +1284,7 @@ function backuply_sync_local_backups(){
 
 	$backup_info_name = '';
 	$backup_file_name = '';
-	
+
 	foreach($backups as $backup){
 		if(in_array($backup, ['.', '..', 'index.html', 'index.php', 'tmp'])){
 			continue;
@@ -1313,7 +1313,7 @@ function backuply_create_info_file($backup_info_name, $backup_file_name){
 
 	$backup_path = $backups_dir . '/' .$backup_file_name;
 	backuply_untar_archive($backup_path, $backups_dir .'/tmp/', array($backup_info_name));
-	
+
 	$archived_info = $backups_dir .'/tmp/' .$backup_info_name;
 	
 	if(!file_exists($archived_info)){
@@ -1939,4 +1939,33 @@ function backuply_verify_status_log(){
 	}
 
 	return false;
+}
+
+// LiteSpeed kills long running processes, and backups need to run long
+// So we have to prevent the default behaviour of LiteSpeed by using noabort rule.
+function backuply_add_litespeed_noabort(){
+
+	if(!extension_loaded('litespeed')){
+		return;
+	}
+
+	$htaccess_file = ABSPATH .'.htaccess';
+
+	if(!file_exists($htaccess_file) || !is_writable($htaccess_file)){
+		return;
+	}
+
+	$rules = file_get_contents($htaccess_file);
+
+	if(!preg_match('/noabort/i', $rules)){
+		$rules .= "\n". "\n";
+		$rules .= '# BEGIN LiteSpeed'."\n";
+		$rules .= '<IfModule Litespeed>'."\n";
+		$rules .= 'SetEnv noabort 1'."\n";
+		$rules .= '</IfModule>'."\n";
+		$rules .= '# END LiteSpeed'."\n";
+
+		file_put_contents($htaccess_file, $rules);
+	}
+	
 }

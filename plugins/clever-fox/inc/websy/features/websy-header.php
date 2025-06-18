@@ -1,6 +1,13 @@
 <?php
 function websy_lite_header_settings( $wp_customize ) {
 $selective_refresh = isset( $wp_customize->selective_refresh ) ? 'postMessage' : 'refresh';	
+$theme = wp_get_theme();
+if($theme -> name == 'Webora') :
+$section = 'header_navigation';
+else:
+$section = 'above_header';
+endif;
+
     // Button
 	$wp_customize->add_setting(
 		'hdr_nav_btn2'
@@ -16,7 +23,7 @@ $selective_refresh = isset( $wp_customize->selective_refresh ) ? 'postMessage' :
 		array(
 			'type' => 'hidden',
 			'label' => __('Button','clever-fox'),
-			'section' => 'above_header',
+			'section' =>$section,
 		)
 	);
 	
@@ -35,12 +42,13 @@ $selective_refresh = isset( $wp_customize->selective_refresh ) ? 'postMessage' :
 	'hide_show_nav_btn2', 
 		array(
 			'label'	      => esc_html__( 'Hide/Show', 'clever-fox' ),
-			'section'     => 'above_header',
+			'section'     =>$section,
 			'type'        => 'checkbox'
 		) 
 	);	
 
 	// icon // 
+	if($theme->name == 'websy'):
 	$wp_customize->add_setting(
     	'nav_btn2_icon',
     	array(
@@ -55,10 +63,11 @@ $selective_refresh = isset( $wp_customize->selective_refresh ) ? 'postMessage' :
 		'nav_btn2_icon',
 		array(
 		    'label'   		=> __('Icon','gradiant'),
-		    'section' 		=> 'above_header',
+		    'section' 		=>$section,
 			'iconset' => 'fa',
 		))  
 	);
+	endif;
 		
 	// Button Label // 
 	$wp_customize->add_setting(
@@ -75,7 +84,7 @@ $selective_refresh = isset( $wp_customize->selective_refresh ) ? 'postMessage' :
 		'nav_btn2_lbl',
 		array(
 		    'label'   		=> __('Button Label','clever-fox'),
-		    'section' 		=> 'above_header',
+		    'section' 		=>$section,
 			'type'		 =>	'text'
 		)  
 	);
@@ -94,7 +103,7 @@ $selective_refresh = isset( $wp_customize->selective_refresh ) ? 'postMessage' :
 		'nav_btn2_link',
 		array(
 		    'label'   		=> __('Button Link','clever-fox'),
-		    'section' 		=> 'above_header',
+		    'section' 		=>$section,
 			'type'		 =>	'text'
 		)  
 	);	
