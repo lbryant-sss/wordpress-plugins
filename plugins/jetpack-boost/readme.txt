@@ -5,7 +5,7 @@ Tags: performance, speed, web vitals, critical css, cache
 Requires at least: 6.7
 Tested up to: 6.8
 Requires PHP: 7.2
-Stable tag: 4.0.0
+Stable tag: 4.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -183,7 +183,7 @@ If you run into compatibility issues, please do let us know. You can drop us a l
 2. Jetpack Boost Speed Improvement
 
 == Changelog ==
-### 4.1.0-beta - 2025-06-11
+### 4.1.0 - 2025-06-18
 #### Added
 - LCP Optimization: New Largest Contentful Paint (LCP) optimization feature to improve loading performance of Cornerstone pages.
 

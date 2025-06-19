@@ -4,7 +4,7 @@ Donate link: https://1.envato.market/WP-WhatsApp
 Tags: whatsapp, whatsapp chat, woocommerce whatsapp, click to chat, whatsapp business
 Requires at least: 3.0
 Tested up to: 6.8
-Stable tag: 3.7.2
+Stable tag: 3.7.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -135,6 +135,9 @@ Definitely yes! The pro version comes with cutting-edge features and performance
 3. WhatsApp Gutenberg Block Demo
 
 == Changelog ==
+
+= Jun 18, 2025 - Version 3.7.3 =
+- Fixed: Error "Always available online" option when switching from Free version to Pro version
 
 = Apr 4, 2025 - Version 3.7.2 =
 - Fixed: Small UI bugs

@@ -853,5 +853,10 @@ jQuery(document).ready(function($){
 		$('.xoo-wsc-admin-popup').remove();
 		$('img.xoo-wsc-patimg[data-pattern="'+$('select[name="xoo-wsc-sy-options[scb-playout]"]').val()+'"]').addClass('xoo-wsc-patactive');
 	});
+
+
+	if( !xoo_wsc_admin_params.hasMenu ){
+		$('.xoo-ass-general-sh_bk').hide();
+	}
 	
 })

@@ -81,10 +81,10 @@ use NTA_WhatsApp\Helper;
 									<?php endif ?>
 								</td>
 								<td width="100">
-									<select class="njt-wa-pro" name="daysOfWeekWorking[<?php echo esc_attr( $dayKey ); ?>][workHours][<?php echo esc_attr( $i ); ?>][startTime]" class="start-time"><?php echo esc_html( Helper::buildTimeSelector( $workHour['startTime'] ) ); ?></select>
+									<select class="njt-wa-pro" name="daysOfWeekWorking[<?php echo esc_attr( $dayKey ); ?>][workHours][<?php echo esc_attr( $i ); ?>][startTime]" class="start-time"><?php echo ( Helper::buildTimeSelector( $workHour['startTime'] ) ); ?></select>
 								</td>
 								<td width="100">
-									<select class="njt-wa-pro" name="daysOfWeekWorking[<?php echo esc_attr( $dayKey ); ?>][workHours][<?php echo esc_attr( $i ); ?>][endTime]" class="end-time"><?php echo esc_html( Helper::buildTimeSelector( $workHour['endTime'] ) ); ?></select>
+									<select class="njt-wa-pro" name="daysOfWeekWorking[<?php echo esc_attr( $dayKey ); ?>][workHours][<?php echo esc_attr( $i ); ?>][endTime]" class="end-time"><?php echo ( Helper::buildTimeSelector( $workHour['endTime'] ) ); ?></select>
 								</td>
 								<?php if ( 0 === $i ) : ?>
 									<td><a href="javascript:;" class="add-custom-time">Add</a></td>

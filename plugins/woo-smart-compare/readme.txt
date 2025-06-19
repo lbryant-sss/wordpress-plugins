@@ -3,8 +3,8 @@ Contributors: wpclever
 Donate link: https://wpclever.net
 Tags: woocommerce, wpc, compare, comparison
 Tested up to: 6.8
-Version: 6.4.5
-Stable tag: 6.4.5
+Version: 6.4.6
+Stable tag: 6.4.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -85,6 +85,10 @@ Example:
 `echo do_shortcode('[woosc id="99"]');`
 
 == Changelog ==
+
+= 6.4.6 =
+* Fixed: Minor CSS/JS issue in the backend
+* Updated: Compatible with WP 6.8 & Woo 9.9
 
 = 6.4.5 =
 * Updated: Optimized the code

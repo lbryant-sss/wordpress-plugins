@@ -1176,19 +1176,6 @@ function htmega_custom_class_modify_litespeed_excludes($current_excludes) {
 }
 add_filter('litespeed_media_lazy_img_parent_cls_excludes', 'htmega_custom_class_modify_litespeed_excludes');
 /**
- * Summary of htmega_custom_class_modify_litespeed_excludes
- * @param mixed $current_excludes
- * @return mixed
- */
-function htmega_custom_class_modify_wp_rocket_excludes($current_excludes) {
-    // image comparison widget support in rocket cache
-    $current_excludes[] = 'no-lazy-htmega';
-    $current_excludes[] = 'magnifier-large';
-    return $current_excludes;
-}
-add_filter('rocket_maybe_disable_iframes_lazyload_helper', 'htmega_custom_class_modify_wp_rocket_excludes');
-
-/**
  * Get template content by id
  * @since 2.6.6
  * @param [type] $template_id

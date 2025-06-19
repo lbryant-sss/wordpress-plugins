@@ -3,7 +3,7 @@
 Plugin Name: WPC Smart Compare for WooCommerce
 Plugin URI: https://wpclever.net/
 Description: Smart products compare for WooCommerce.
-Version: 6.4.5
+Version: 6.4.6
 Author: WPClever
 Author URI: https://wpclever.net
 Text Domain: woo-smart-compare
@@ -12,14 +12,14 @@ Requires Plugins: woocommerce
 Requires at least: 4.0
 Tested up to: 6.8
 WC requires at least: 3.0
-WC tested up to: 9.8
+WC tested up to: 9.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 defined( 'ABSPATH' ) || exit;
 
-! defined( 'WOOSC_VERSION' ) && define( 'WOOSC_VERSION', '6.4.5' );
+! defined( 'WOOSC_VERSION' ) && define( 'WOOSC_VERSION', '6.4.6' );
 ! defined( 'WOOSC_LITE' ) && define( 'WOOSC_LITE', __FILE__ );
 ! defined( 'WOOSC_FILE' ) && define( 'WOOSC_FILE', __FILE__ );
 ! defined( 'WOOSC_URI' ) && define( 'WOOSC_URI', plugin_dir_url( __FILE__ ) );
@@ -402,19 +402,27 @@ if ( ! function_exists( 'woosc_init' ) ) {
 					$active_tab = sanitize_key( $_GET['tab'] ?? 'settings' );
 					?>
                     <div class="wpclever_settings_page wrap">
-                        <h1 class="wpclever_settings_page_title"><?php echo esc_html__( 'WPC Smart Compare', 'woo-smart-compare' ) . ' ' . esc_html( WOOSC_VERSION ) . ' ' . ( defined( 'WOOSC_PREMIUM' ) ? '<span class="premium" style="display: none">' . esc_html__( 'Premium', 'woo-smart-compare' ) . '</span>' : '' ); ?></h1>
-                        <div class="wpclever_settings_page_desc about-text">
-                            <p>
-								<?php printf( /* translators: stars */ esc_html__( 'Thank you for using our plugin! If you are satisfied, please reward it a full five-star %s rating.', 'woo-smart-compare' ), '<span style="color:#ffb900">&#9733;&#9733;&#9733;&#9733;&#9733;</span>' ); ?>
-                                <br/>
-                                <a href="<?php echo esc_url( WOOSC_REVIEWS ); ?>"
-                                   target="_blank"><?php esc_html_e( 'Reviews', 'woo-smart-compare' ); ?></a> |
-                                <a href="<?php echo esc_url( WOOSC_CHANGELOG ); ?>"
-                                   target="_blank"><?php esc_html_e( 'Changelog', 'woo-smart-compare' ); ?></a> |
-                                <a href="<?php echo esc_url( WOOSC_DISCUSSION ); ?>"
-                                   target="_blank"><?php esc_html_e( 'Discussion', 'woo-smart-compare' ); ?></a>
-                            </p>
+                        <div class="wpclever_settings_page_header">
+                            <a class="wpclever_settings_page_header_logo" href="https://wpclever.net/"
+                               target="_blank" title="Visit wpclever.net"></a>
+                            <div class="wpclever_settings_page_header_text">
+                                <div class="wpclever_settings_page_title"><?php echo esc_html__( 'WPC Smart Compare', 'woo-smart-compare' ) . ' ' . esc_html( WOOSC_VERSION ) . ' ' . ( defined( 'WOOSC_PREMIUM' ) ? '<span class="premium" style="display: none">' . esc_html__( 'Premium', 'woo-smart-compare' ) . '</span>' : '' ); ?></div>
+                                <div class="wpclever_settings_page_desc about-text">
+                                    <p>
+										<?php printf( /* translators: stars */ esc_html__( 'Thank you for using our plugin! If you are satisfied, please reward it a full five-star %s rating.', 'woo-smart-compare' ), '<span style="color:#ffb900">&#9733;&#9733;&#9733;&#9733;&#9733;</span>' ); ?>
+                                        <br/>
+                                        <a href="<?php echo esc_url( WOOSC_REVIEWS ); ?>"
+                                           target="_blank"><?php esc_html_e( 'Reviews', 'woo-smart-compare' ); ?></a> |
+                                        <a href="<?php echo esc_url( WOOSC_CHANGELOG ); ?>"
+                                           target="_blank"><?php esc_html_e( 'Changelog', 'woo-smart-compare' ); ?></a>
+                                        |
+                                        <a href="<?php echo esc_url( WOOSC_DISCUSSION ); ?>"
+                                           target="_blank"><?php esc_html_e( 'Discussion', 'woo-smart-compare' ); ?></a>
+                                    </p>
+                                </div>
+                            </div>
                         </div>
+                        <h2></h2>
 						<?php if ( isset( $_GET['settings-updated'] ) && $_GET['settings-updated'] ) {
 							flush_rewrite_rules();
 							?>
@@ -2617,9 +2625,10 @@ if ( ! function_exists( 'woosc_init' ) ) {
 					$output = $product_name = $product_image = '';
 
 					$attrs = shortcode_atts( [
-						'id'   => null,
-						'text' => null,
-						'type' => self::get_setting( 'button_type', 'button' )
+						'id'         => null,
+						'text'       => null,
+						'text_added' => null,
+						'type'       => self::get_setting( 'button_type', 'button' )
 					], $attrs );
 
 					if ( ! $attrs['id'] ) {
@@ -2650,31 +2659,44 @@ if ( ! function_exists( 'woosc_init' ) ) {
 						}
 
 						// button class
-						$class = 'woosc-btn woosc-btn-' . esc_attr( $attrs['id'] ) . ' ' . self::get_setting( 'button_class' );
+						$button_class = 'woosc-btn woosc-btn-' . esc_attr( $attrs['id'] ) . ' ' . self::get_setting( 'button_class' );
 
 						// button text
-						$text = $attrs['text'] ?: self::localization( 'button', esc_html__( 'Compare', 'woo-smart-compare' ) );
+						$text       = $attrs['text'] ?: self::localization( 'button', esc_html__( 'Compare', 'woo-smart-compare' ) );
+						$text_added = $attrs['text_added'] ?: self::localization( 'button_added', esc_html__( 'Compare', 'woo-smart-compare' ) );
 
 						if ( ( $button_icon = self::get_setting( 'button_icon', 'no' ) ) !== 'no' ) {
-							$class .= ' woosc-btn-has-icon';
-							$icon  = apply_filters( 'woosc_button_normal_icon', self::get_setting( 'button_normal_icon', 'woosc-icon-1' ) );
+							$button_class .= ' woosc-btn-has-icon';
+							$icon         = apply_filters( 'woosc_button_normal_icon', self::get_setting( 'button_normal_icon', 'woosc-icon-1' ) );
 
 							if ( $button_icon === 'left' ) {
-								$class .= ' woosc-btn-icon-text';
-								$text  = '<span class="woosc-btn-icon ' . esc_attr( $icon ) . '"></span><span class="woosc-btn-text">' . esc_html( $text ) . '</span>';
+								$button_class .= ' woosc-btn-icon-text';
+								$button_text  = '<span class="woosc-btn-icon ' . esc_attr( $icon ) . '"></span><span class="woosc-btn-text">' . esc_html( $text ) . '</span>';
 							} elseif ( $button_icon === 'right' ) {
-								$class .= ' woosc-btn-text-icon';
-								$text  = '<span class="woosc-btn-text">' . esc_html( $text ) . '</span><span class="woosc-btn-icon ' . esc_attr( $icon ) . '"></span>';
+								$button_class .= ' woosc-btn-text-icon';
+								$button_text  = '<span class="woosc-btn-text">' . esc_html( $text ) . '</span><span class="woosc-btn-icon ' . esc_attr( $icon ) . '"></span>';
 							} else {
-								$class .= ' woosc-btn-icon-only';
-								$text  = '<span class="woosc-btn-icon ' . esc_attr( $icon ) . '"></span>';
+								$button_class .= ' woosc-btn-icon-only';
+								$button_text  = '<span class="woosc-btn-icon ' . esc_attr( $icon ) . '"></span>';
 							}
+						} else {
+							$button_text = $text;
 						}
 
+						$button_class = apply_filters( 'woosc_button_class', $button_class, $attrs );
+						$button_attrs = apply_filters( 'woosc_button_attrs', [
+							'text'          => $text,
+							'text_added'    => $text_added,
+							'id'            => $attrs['id'],
+							'product_id'    => $attrs['id'],
+							'product_name'  => $product_name,
+							'product_image' => $product_image,
+						], $attrs );
+
 						if ( $attrs['type'] === 'link' ) {
-							$output = '<a href="' . esc_url( '?add-to-compare=' . $attrs['id'] ) . '" class="' . esc_attr( $class ) . '" data-id="' . esc_attr( $attrs['id'] ) . '" data-product_name="' . esc_attr( $product_name ) . '" data-product_image="' . esc_attr( $product_image ) . '" rel="' . esc_attr( apply_filters( 'woosc_button_rel', 'nofollow' ) ) . '">' . $text . '</a>';
+							$output = '<a href="' . esc_url( '?add-to-compare=' . $attrs['id'] ) . '" class="' . esc_attr( $button_class ) . '" rel="' . esc_attr( apply_filters( 'woosc_button_rel', 'nofollow' ) ) . '" ' . self::data_attributes( $button_attrs ) . '>' . $button_text . '</a>';
 						} else {
-							$output = '<button class="' . esc_attr( $class ) . '" data-id="' . esc_attr( $attrs['id'] ) . '" data-product_name="' . esc_attr( $product_name ) . '" data-product_image="' . esc_attr( $product_image ) . '">' . $text . '</button>';
+							$output = '<button class="' . esc_attr( $button_class ) . '" ' . self::data_attributes( $button_attrs ) . '>' . $button_text . '</button>';
 						}
 					}
 
@@ -3475,6 +3497,16 @@ if ( ! function_exists( 'woosc_init' ) ) {
 					}
 
 					return apply_filters( 'woosc_generate_key', $key );
+				}
+
+				public static function data_attributes( $attrs ) {
+					$attrs_arr = [];
+
+					foreach ( $attrs as $key => $attr ) {
+						$attrs_arr[] = esc_attr( 'data-' . sanitize_title( $key ) ) . '="' . esc_attr( $attr ) . '"';
+					}
+
+					return implode( ' ', $attrs_arr );
 				}
 			}
 

@@ -289,3 +289,21 @@ $theme = wp_get_theme(); // gets the current theme
 }
 
 add_action( 'customize_register', 'webique_slider_setting' );
+
+function webique_slider_partials( $wp_customize ){	
+	// Slider controls
+	$wp_customize->selective_refresh->add_partial(
+		'slider', array(
+			'selector' => '#slider-section .theme-content.text-left',
+			'container_inclusive' => true,
+			'render_callback' => 'slider_callback',
+			'fallback_refresh' => true,
+		)
+	);
+}
+
+add_action( 'customize_register', 'webique_slider_partials' );
+
+function slider_callback() {
+	return get_theme_mod( 'slider' );
+}

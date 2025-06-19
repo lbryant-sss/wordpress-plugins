@@ -19295,3 +19295,23 @@ justify-content: center;
 		opacity: 1;	
 	}
 }
+
+  /* small mobile :320px. */
+  @media (max-width: 767px) {
+    .htmega-testimonial-style-12 .testimonal {
+        align-items: start;
+        flex-direction: column;
+        gap: 30px;
+    }
+    .htmega-testimonial-style-12 .testimonal .content{
+        padding-left: 0;
+    }
+    .htmega-testimonial-style-3 .testimonal img{
+        float: none;
+    }
+    .htmega-testimonial-style-3 .testimonal .content{
+        padding-left: 0;
+        padding-top: 15px;
+    }
+
+}

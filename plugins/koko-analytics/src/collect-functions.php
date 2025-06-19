@@ -37,7 +37,7 @@ function extract_pageview_data(array $raw): array
         return [];
     }
 
-    [$new_visitor, $unique_pageview] = determine_uniqueness('pageview', $post_id);
+    [$new_visitor, $unique_pageview] = determine_uniqueness($raw, 'pageview', $post_id);
 
     // limit referrer URL to 255 chars
     $referrer_url = \substr($referrer_url, 0, 255);
@@ -74,7 +74,7 @@ function extract_event_data(array $raw): array
     $event_param = \substr($event_param, 0, 185);
 
     $event_hash = \hash(PHP_VERSION_ID >= 80100 ? "xxh64" : "sha1", "{$event_name}-{$event_param}");
-    [$unused, $unique_event] = determine_uniqueness('', $event_hash);
+    [$unused, $unique_event] = determine_uniqueness($raw, '', $event_hash);
 
     return [
         'e',                   // type indicator
@@ -99,10 +99,11 @@ function collect_request()
         return;
     }
 
-    $data = isset($_POST['e']) ? extract_event_data($_POST) : extract_pageview_data($_POST);
+    $request_params = array_merge($_GET, $_POST);
+    $data = isset($request_params['e']) ? extract_event_data($request_params) : extract_pageview_data($request_params);
     if (!empty($data)) {
         // store data in buffer file
-        $success = isset($_POST['test']) ? test_collect_in_file() : collect_in_file($data);
+        $success = isset($request_params['test']) ? test_collect_in_file() : collect_in_file($data);
 
         // set OK headers & prevent caching
         if (!$success) {
@@ -195,11 +196,11 @@ function test_collect_in_file(): bool
 
 function get_site_timezone(): \DateTimeZone
 {
-    if (defined('KOKO_ANALYTICS_TIMEZONE')) {
+    if (\defined('KOKO_ANALYTICS_TIMEZONE')) {
         return new \DateTimeZone(KOKO_ANALYTICS_TIMEZONE);
     }
 
-    if (function_exists('wp_timezone')) {
+    if (\function_exists('wp_timezone')) {
         return wp_timezone();
     }
 
@@ -215,12 +216,11 @@ function get_client_ip(): string
     // @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-For
     $ips = empty($_SERVER['HTTP_X_FORWARDED_FOR']) ? [] : \array_map('trim', \explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']));
 
-    // Always add REMOTE_ADDR to list of ips
-    if (!empty($_SERVER['REMOTE_ADDR'])) {
-        $ips[] = $_SERVER['REMOTE_ADDR'];
-    }
-    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-        $ips[] = $_SERVER['HTTP_CLIENT_IP'];
+    // Always add REMOTE_ADDR and HTTP_CLIENT_IP to list of ip addresses, if set
+    foreach (['REMOTE_ADDR', 'HTTP_CLIENT_IP'] as $key) {
+        if (!empty($_SERVER[$key])) {
+            $ips[] = $_SERVER[$key];
+        }
     }
 
     // return first valid IP address from list
@@ -239,10 +239,10 @@ function get_client_ip(): string
  * @param int|string $thing
  * @return array [bool, bool]
  */
-function determine_uniqueness(string $type, $thing): array
+function determine_uniqueness(array $request_params, string $type, $thing): array
 {
     // determine uniqueness based on specified tracking method
-    switch ($_POST['m'] ?? 'n') {
+    switch ($request_params['m'] ?? 'n') {
         case 'c':
             return determine_uniqueness_cookie($type, $thing);
             break;
@@ -260,14 +260,18 @@ function determine_uniqueness_cookie(string $type, $thing): array
 {
     $things = isset($_COOKIE['_koko_analytics_pages_viewed']) ? \explode('-', $_COOKIE['_koko_analytics_pages_viewed']) : [];
     $unique_type = $type && !in_array($type[0], $things);
-    $unique_thing =  $unique_type ? true : !in_array($thing, $things);
+
+    // we need to check for the special value -1 here, which is used for things that don't have a post ID
+    $unique_thing =  $unique_type ? true : $thing !== -1 && !in_array($thing, $things);
 
     if ($unique_type) {
         $things[] = $type[0];
     }
+    if ($unique_thing && $thing !== -1) {
+        $things[] = $thing;
+    }
 
     if ($unique_type || $unique_thing) {
-        $things[] = $thing;
         \setcookie('_koko_analytics_pages_viewed', \join('-', $things), (new DateTimeImmutable('tomorrow, midnight', get_site_timezone()))->getTimestamp(), '/', "", false, true);
     }
 
@@ -281,14 +285,14 @@ function determine_uniqueness_fingerprint(string $type, $thing): array
     $ip_address = get_client_ip();
     $visitor_id = \hash(PHP_VERSION_ID >= 80100 ? "xxh64" : "sha1", "{$seed_value}-{$user_agent}-{$ip_address}", false);
     $session_file = get_upload_dir() . "/sessions/{$visitor_id}";
-    $time_midnight = (new \DateTimeImmutable('today, midnight', get_site_timezone()))->getTimestamp();
     $things = [];
 
     // only read file if it exists and is not from before today
     // this is to protect against a cronjob that didn't run on time
     if (\is_file($session_file)) {
-        if (filemtime($session_file) < $time_midnight) {
-            unlink($session_file);
+        $time_midnight = (new \DateTimeImmutable('today, midnight', get_site_timezone()))->getTimestamp();
+        if (\filemtime($session_file) < $time_midnight) {
+            \unlink($session_file);
         } else {
             $things = \file($session_file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
         }
@@ -298,10 +302,18 @@ function determine_uniqueness_fingerprint(string $type, $thing): array
     $unique_type = $type && ! \in_array($type[0], $things);
 
     // check if page id or event hash is in session file
-    $unique_thing = $unique_type ? true : ! \in_array($thing, $things);
+    $unique_thing = $unique_type ? true : $thing !== -1 && ! \in_array($thing, $things);
 
-    if ($unique_type || $unique_thing) {
-        \file_put_contents($session_file, $unique_type ? "{$type[0]}\n{$thing}\n" : "{$thing}\n", FILE_APPEND);
+    // build string to append to session file
+    $append = "";
+    if ($unique_type) {
+        $append .= "{$type[0]}\n";
+    }
+    if ($unique_thing && $thing !== -1) {
+        $append .= "{$thing}\n";
+    }
+    if ($append !== '') {
+        \file_put_contents($session_file, $append, FILE_APPEND);
     }
 
     return [$unique_type, $unique_thing];

@@ -218,8 +218,8 @@
 
         @for $cols from 1 through 6 {
             li.mega-menu-item.mega-menu-megamenu ul.mega-sub-menu li.mega-#{$cols}-columns > ul.mega-sub-menu {
-                display: block;
-                columns: $cols;
+                display: grid;
+                grid-template-columns: repeat($cols, minmax(0, 1fr));
             }
         }
 

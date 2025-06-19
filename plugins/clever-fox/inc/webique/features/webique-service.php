@@ -278,7 +278,7 @@ add_action( 'customize_register', 'webique_service_setting' );
 function webique_home_service_section_partials( $wp_customize ){	
 	// service title
 	$wp_customize->selective_refresh->add_partial( 'service_title', array(
-		'selector'            => '.service-home .heading-default h3',
+		'selector'            => '.service-home .heading-default h1',
 		'settings'            => 'service_title',
 		'render_callback'  => 'webique_service_title_render_callback',
 	

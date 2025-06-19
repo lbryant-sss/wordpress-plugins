@@ -1173,7 +1173,14 @@ class HTMega_Elementor_Widget_Pricing_Table extends Widget_Base
                 'separator' => 'before',
             ]
         );
-
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'pricing_price_border',
+                'label' => esc_html__('Border', 'htmega-addons'),
+                'selector' => '{{WRAPPER}} .htmega-pricing-heading',
+            ]
+        );
         $this->add_responsive_control(
             'pricing_price_radius',
             [
@@ -2232,6 +2239,29 @@ class HTMega_Elementor_Widget_Pricing_Table extends Widget_Base
                 'type' => Controls_Manager::DIMENSIONS,
                 'selectors' => [
                     '{{WRAPPER}} .htmega-pricing-footer a.price_btn , {{WRAPPER}} .htmega-pricing-panel .htmega-pricing-footer a.price_btn , {{WRAPPER}} .htmega-pricing-style-5 .htmega-pricing-body a.price_btn span , {{WRAPPER}} .htmega-pricing-style-5 .htmega-pricing-body a.price_btn' => 'border-radius: {{TOP}}px {{RIGHT}}px {{BOTTOM}}px {{LEFT}}px;',
+                ],
+            ]
+        );
+        // width
+        $this->add_responsive_control(
+            'pricing_footer_width',
+            [
+                'label' => esc_html__('Width', 'htmega-addons'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px', '%', 'em'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 500,
+                        'step' => 1,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .htmega-pricing-footer a.price_btn, {{WRAPPER}} .htmega-pricing-panel .htmega-pricing-footer a.price_btn, {{WRAPPER}} .htmega-pricing-style-5 .htmega-pricing-body a.price_btn span, {{WRAPPER}} .htmega-pricing-style-5 .htmega-pricing-body a.price_btn' => 'width: {{SIZE}}{{UNIT}}; display:inline-block;text-align:center;',
                 ],
             ]
         );

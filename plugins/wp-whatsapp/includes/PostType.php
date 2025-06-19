@@ -185,10 +185,18 @@ class PostType {
 			'predefinedText'    => wp_kses_post( str_replace( '&', '%26', $_POST['predefinedText'] ) ),
 			'willBeBackText'    => sanitize_text_field( $_POST['willBeBackText'] ),
 			'dayOffsText'       => sanitize_text_field( $_POST['dayOffsText'] ),
-			'isAlwaysAvailable' => 'ON',
+			'isAlwaysAvailable' => isset( $_POST['isAlwaysAvailable'] ) ? 'ON' : 'OFF',
 		);
 
-		$daysOfWeekWorking = isset( $_POST['daysOfWeekWorking'] ) ? $_POST['daysOfWeekWorking'] : array( 'sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday' );
+		$daysOfWeekWorking = isset( $_POST['daysOfWeekWorking'] ) ? $_POST['daysOfWeekWorking'] : array(
+			'sunday'    => array(),
+			'monday'    => array(),
+			'tuesday'   => array(),
+			'wednesday' => array(),
+			'thursday'  => array(),
+			'friday'    => array(),
+			'saturday'  => array(),
+		);
 
 		$new_account['daysOfWeekWorking'] = array_map(
 			function ( $day ) {
@@ -242,6 +250,22 @@ class PostType {
 			$meta['nta_wa_widget_position'] = get_post_meta( $post->ID, 'nta_wa_widget_position', true );
 			$meta['nta_wa_wc_show']         = get_post_meta( $post->ID, 'nta_wa_wc_show', true );
 			$meta['nta_wa_wc_position']     = get_post_meta( $post->ID, 'nta_wa_wc_position', true );
+
+			foreach ( $daysOfWeek as $dayKey ) {
+				if ( isset( $meta['daysOfWeekWorking'][ $dayKey ] ) ) {
+					continue;
+				}
+
+				$meta['daysOfWeekWorking'][ $dayKey ] = array(
+					'isWorkingOnDay' => 'OFF',
+					'workHours'      => array(
+						array(
+							'startTime' => '08:00',
+							'endTime'   => '17:30',
+						),
+					),
+				);
+			}
 		}
 		require NTA_WHATSAPP_PLUGIN_DIR . 'views/meta-accounts.php';
 	}

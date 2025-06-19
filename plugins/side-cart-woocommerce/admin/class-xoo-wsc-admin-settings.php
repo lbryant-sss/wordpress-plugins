@@ -105,7 +105,8 @@ class Xoo_Wsc_Admin_Settings{
 		wp_localize_script( 'xoo-wsc-admin-js', 'xoo_wsc_admin_params', array(
 			'adminurl'  => admin_url().'admin-ajax.php',
 			'nonce' 	=> wp_create_nonce('xoo-wsc-nonce'),
-			'isMobile' 	=> wp_is_mobile() ? 'yes' : 'no'
+			'isMobile' 	=> wp_is_mobile() ? 'yes' : 'no',
+			'hasMenu' 	=> !empty( wp_get_nav_menus() )
 		) );
 
 	}

@@ -98,6 +98,14 @@ if ( ! class_exists( 'HTMega_Trial' ) ) {
             if ( $this->is_pro_installed() || ! $this->is_capable_user() ) {
                 return;
             }
+            // Reset trail content a priodic time
+            $get_preodic_time = get_transient( $this->prefix . '_htiop_preodic_reset_data' );
+
+            if ( ! $get_preodic_time ) {
+                delete_transient( $this->prefix . '_htiop_data' );
+                update_option( $this->prefix . '_htiop_data', 'no' );
+                set_transient( $this->prefix . '_htiop_preodic_reset_data', true, DAY_IN_SECONDS * 7 );
+            }
 
             $this->set_offer();
             $this->show_offer();

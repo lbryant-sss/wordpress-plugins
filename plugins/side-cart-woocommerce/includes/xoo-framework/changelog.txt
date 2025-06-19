@@ -1,3 +1,6 @@
+== 1.6.1 == 18-06-2025
+* Added new image setting
+
 == 1.5 == 02-05-2025
 * Added sections navigation
 

@@ -43,17 +43,15 @@
     });
 
     // quick view
-    $(document).on('click touch', '.woosc_table .woosq-btn, .woosc_table .woosq-link',
-        function (e) {
-            e.preventDefault();
-            woosc_close();
-        });
+    $(document).on('click touch', '.woosc_table .woosq-btn, .woosc_table .woosq-link', function (e) {
+        e.preventDefault();
+        woosc_close();
+    });
 
-    $(document).on('click touch', '.woosc-sidebar .woosq-btn, .woosc-sidebar .woosq-link',
-        function (e) {
-            e.preventDefault();
-            woosc_close_sidebar();
-        });
+    $(document).on('click touch', '.woosc-sidebar .woosq-btn, .woosc-sidebar .woosq-link', function (e) {
+        e.preventDefault();
+        woosc_close_sidebar();
+    });
 
     // settings
     $(document).on('click touch', '.woosc-table-settings', function (e) {
@@ -177,11 +175,19 @@
         if (woosc_vars.variations === 'yes') {
             var product_id = $(e['target']).attr('data-product_id');
 
-            $('.woosc-btn-' + product_id).removeClass('woosc-btn-added woosc-added').attr('data-id', t.variation_id);
+            $('.woosc-btn-' + product_id).each(function () {
+                let $btn = $(this);
+                let text = $btn.data('text') !== undefined && $btn.data('text') !== '' ? $btn.data('text') : woosc_vars.button_text;
 
-            $('.woosc-btn-' + product_id + ':not(.woosc-btn-has-icon)').html(woosc_vars.button_text);
-            $('.woosc-btn-has-icon.woosc-btn-' + product_id).find('.woosc-btn-icon').removeClass(woosc_vars.button_added_icon).addClass(woosc_vars.button_normal_icon);
-            $('.woosc-btn-has-icon.woosc-btn-' + product_id).find('.woosc-btn-text').html(woosc_vars.button_text);
+                $btn.removeClass('woosc-btn-added woosc-added').attr('data-id', t.variation_id);
+
+                if ($btn.hasClass('woosc-btn-has-icon')) {
+                    $btn.find('.woosc-btn-icon').removeClass(woosc_vars.button_added_icon).addClass(woosc_vars.button_normal_icon);
+                    $btn.find('.woosc-btn-text').html(text);
+                } else {
+                    $btn.html(text);
+                }
+            });
         }
     });
 
@@ -190,11 +196,19 @@
         if (woosc_vars.variations === 'yes') {
             var product_id = $(e['target']).attr('data-product_id');
 
-            $('.woosc-btn-' + product_id).removeClass('woosc-btn-added woosc-added').attr('data-id', product_id);
+            $('.woosc-btn-' + product_id).each(function () {
+                let $btn = $(this);
+                let text = $btn.data('text') !== undefined && $btn.data('text') !== '' ? $btn.data('text') : woosc_vars.button_text;
 
-            $('.woosc-btn-' + product_id + ':not(.woosc-btn-has-icon)').html(woosc_vars.button_text);
-            $('.woosc-btn-has-icon.woosc-btn-' + product_id).find('.woosc-btn-icon').removeClass(woosc_vars.button_added_icon).addClass(woosc_vars.button_normal_icon);
-            $('.woosc-btn-has-icon.woosc-btn-' + product_id).find('.woosc-btn-text').html(woosc_vars.button_text);
+                $btn.removeClass('woosc-btn-added woosc-added').attr('data-id', product_id);
+
+                if ($btn.hasClass('woosc-btn-has-icon')) {
+                    $btn.find('.woosc-btn-icon').removeClass(woosc_vars.button_added_icon).addClass(woosc_vars.button_normal_icon);
+                    $btn.find('.woosc-btn-text').html(text);
+                } else {
+                    $btn.html(text);
+                }
+            });
         }
     });
 
@@ -227,8 +241,6 @@
             id = product_id;
         }
 
-        $this.addClass('');
-
         if ($this.hasClass('woosc-btn-added woosc-added')) {
             if (woosc_vars.click_again === 'yes') {
                 // remove
@@ -239,8 +251,7 @@
                         theme: 'woosc',
                         position: woosc_vars.message_position,
                         image: product_image,
-                        text: woosc_vars.message_removed.replace('{name}',
-                            '<strong>' + product_name + '</strong>'),
+                        text: woosc_vars.message_removed.replace('{name}', '<strong>' + product_name + '</strong>'),
                     });
                 }
             } else {
@@ -249,8 +260,7 @@
                         theme: 'woosc',
                         position: woosc_vars.message_position,
                         image: product_image,
-                        text: woosc_vars.message_exists.replace('{name}',
-                            '<strong>' + product_name + '</strong>'),
+                        text: woosc_vars.message_exists.replace('{name}', '<strong>' + product_name + '</strong>'),
                     });
                 }
             }
@@ -263,8 +273,7 @@
                     theme: 'woosc',
                     position: woosc_vars.message_position,
                     image: product_image,
-                    text: woosc_vars.message_added.replace('{name}',
-                        '<strong>' + product_name + '</strong>'),
+                    text: woosc_vars.message_added.replace('{name}', '<strong>' + product_name + '</strong>'),
                 });
             }
         }
@@ -282,8 +291,7 @@
             woosc_open_table();
         }
 
-        if ((woosc_vars.button_action === 'show_message') ||
-            (woosc_vars.button_action === 'none')) {
+        if ((woosc_vars.button_action === 'show_message') || (woosc_vars.button_action === 'none')) {
             // load bar again
             if ($('.woosc-bar').hasClass('woosc-bar-open')) {
                 woosc_load_data('bar');
@@ -297,17 +305,15 @@
     });
 
     // remove on popup
-    $(document).on('click touch',
-        '#woosc-area .woosc-bar-item-remove, #woosc-area .woosc-remove',
-        function (e) {
-            e.preventDefault();
-            var product_id = $(this).attr('data-id');
+    $(document).on('click touch', '#woosc-area .woosc-bar-item-remove, #woosc-area .woosc-remove', function (e) {
+        e.preventDefault();
+        var product_id = $(this).attr('data-id');
 
-            $(this).parent().addClass('removing');
-            woosc_remove_product(product_id);
-            woosc_load_data('table');
-            woosc_check_buttons();
-        });
+        $(this).parent().addClass('removing');
+        woosc_remove_product(product_id);
+        woosc_load_data('table');
+        woosc_check_buttons();
+    });
 
     // remove on page
     $(document).on('click touch', '.woosc-page .woosc-remove', function (e) {
@@ -353,20 +359,7 @@
 
     // close
     $(document).on('click touch', function (e) {
-        if (((woosc_vars.click_outside === 'yes') ||
-                ((woosc_vars.click_outside === 'yes_empty') &&
-                    (parseInt($('.woosc-bar').attr('data-count')) === 0))) &&
-            ($(e.target).closest('.wpc_compare_count').length === 0) &&
-            ($(e.target).closest('.woosc-popup').length === 0) &&
-            ($(e.target).closest('.woosc-btn').length === 0) &&
-            ($(e.target).closest('.woosc-table').length === 0) &&
-            ($(e.target).closest('.woosc-bar').length === 0) &&
-            ($(e.target).closest('.woosc-menu-item a').length === 0) &&
-            ($(e.target).closest('.woosc-link a').length === 0) &&
-            ($(e.target).closest('.woosc-menu a').length === 0) &&
-            ($(e.target).closest('.woosc-sidebar-btn').length === 0) &&
-            ((woosc_vars.open_button === '') ||
-                ($(e.target).closest(woosc_vars.open_button).length === 0))) {
+        if (((woosc_vars.click_outside === 'yes') || ((woosc_vars.click_outside === 'yes_empty') && (parseInt($('.woosc-bar').attr('data-count')) === 0))) && ($(e.target).closest('.wpc_compare_count').length === 0) && ($(e.target).closest('.woosc-popup').length === 0) && ($(e.target).closest('.woosc-btn').length === 0) && ($(e.target).closest('.woosc-table').length === 0) && ($(e.target).closest('.woosc-bar').length === 0) && ($(e.target).closest('.woosc-menu-item a').length === 0) && ($(e.target).closest('.woosc-link a').length === 0) && ($(e.target).closest('.woosc-menu a').length === 0) && ($(e.target).closest('.woosc-sidebar-btn').length === 0) && ((woosc_vars.open_button === '') || ($(e.target).closest(woosc_vars.open_button).length === 0))) {
             woosc_close();
         }
     });
@@ -378,10 +371,9 @@
         }
     });
 
-    $(document).on('click touch', '.woosc-sidebar-close, .woosc-sidebar-continue',
-        function (e) {
-            woosc_close_sidebar();
-        });
+    $(document).on('click touch', '.woosc-sidebar-close, .woosc-sidebar-continue', function (e) {
+        woosc_close_sidebar();
+    });
 
     // let compare
     $(document).on('click touch', '.woosc-sidebar-btn', function (e) {
@@ -435,31 +427,30 @@
     }
 
     // menu item
-    $(document).on('click touch', '.woosc-menu-item a, .woosc-menu a, .woosc-link a',
-        function (e) {
-            if (woosc_vars.menu_action === 'open_popup') {
-                e.preventDefault();
+    $(document).on('click touch', '.woosc-menu-item a, .woosc-menu a, .woosc-link a', function (e) {
+        if (woosc_vars.menu_action === 'open_popup') {
+            e.preventDefault();
 
-                // open compare popup
-                if (!$('.woosc-table-items').hasClass('woosc-table-items-loaded')) {
-                    woosc_load_data('table');
-                }
-
-                woosc_open_bar();
-                woosc_open_table();
+            // open compare popup
+            if (!$('.woosc-table-items').hasClass('woosc-table-items-loaded')) {
+                woosc_load_data('table');
             }
 
-            if (woosc_vars.menu_action === 'open_sidebar') {
-                e.preventDefault();
+            woosc_open_bar();
+            woosc_open_table();
+        }
 
-                // open sidebar
-                if (!$('.woosc-sidebar-items').hasClass('woosc-sidebar-items-loaded')) {
-                    woosc_load_data('sidebar');
-                }
+        if (woosc_vars.menu_action === 'open_sidebar') {
+            e.preventDefault();
 
-                woosc_open_sidebar();
+            // open sidebar
+            if (!$('.woosc-sidebar-items').hasClass('woosc-sidebar-items-loaded')) {
+                woosc_load_data('sidebar');
             }
-        });
+
+            woosc_open_sidebar();
+        }
+    });
 
     function woosc_search() {
         $('.woosc-search-result').html('').addClass('woosc-loading');
@@ -467,9 +458,7 @@
         woosc_timer = null;
 
         var data = {
-            action: 'woosc_search',
-            keyword: $('#woosc_search_input').val(),
-            nonce: woosc_vars.nonce,
+            action: 'woosc_search', keyword: $('#woosc_search_input').val(), nonce: woosc_vars.nonce,
         };
 
         $.post(woosc_vars.wc_ajax_url.toString().replace('%%endpoint%%', 'woosc_search'), data, function (response) {
@@ -612,11 +601,19 @@
             $('.woosc-btn[data-id="' + product_id + '"]').removeClass('woosc-btn-adding woosc-adding');
             alert(limit_notice);
         } else {
-            $('.woosc-btn[data-id="' + product_id + '"]').removeClass('woosc-btn-adding woosc-adding').addClass('woosc-btn-added woosc-added');
+            $('.woosc-btn[data-id="' + product_id + '"]').each(function () {
+                let $btn = $(this);
+                let text_added = $btn.data('text_added') !== undefined && $btn.data('text_added') !== '' ? $btn.data('text_added') : woosc_vars.button_text_added;
 
-            $('.woosc-btn[data-id="' + product_id + '"]:not(.woosc-btn-has-icon)').html(woosc_vars.button_text_added);
-            $('.woosc-btn-has-icon[data-id="' + product_id + '"]').find('.woosc-btn-icon').removeClass(woosc_vars.button_normal_icon).addClass(woosc_vars.button_added_icon);
-            $('.woosc-btn-has-icon[data-id="' + product_id + '"]').find('.woosc-btn-text').html(woosc_vars.button_text_added);
+                $btn.removeClass('woosc-btn-adding woosc-adding').addClass('woosc-btn-added woosc-added');
+
+                if ($btn.hasClass('woosc-btn-has-icon')) {
+                    $btn.find('.woosc-btn-icon').removeClass(woosc_vars.button_normal_icon).addClass(woosc_vars.button_added_icon);
+                    $btn.find('.woosc-btn-text').html(text_added);
+                } else {
+                    $btn.html(text_added);
+                }
+            });
         }
     }
 
@@ -626,11 +623,11 @@
 
         if (product_id !== 'all') {
             // remove one
-            if (woosc_get_cookie(cookie_products) != '') {
+            if (woosc_get_cookie(cookie_products) !== '') {
                 var products = woosc_get_cookie(cookie_products).split(',');
 
                 products = $.grep(products, function (value) {
-                    return value != product_id;
+                    return value !== product_id;
                 });
 
                 var products_str = products.join();
@@ -639,23 +636,39 @@
                 count = products.length;
             }
 
-            $('.woosc-btn[data-id="' + product_id + '"]').removeClass('woosc-btn-added woosc-added');
+            $('.woosc-btn[data-id="' + product_id + '"]').each(function () {
+                let $btn = $(this);
+                let text = $btn.data('text') !== undefined && $btn.data('text') !== '' ? $btn.data('text') : woosc_vars.button_text;
 
-            $('.woosc-btn[data-id="' + product_id + '"]:not(.woosc-btn-has-icon)').html(woosc_vars.button_text);
-            $('.woosc-btn-has-icon[data-id="' + product_id + '"]').find('.woosc-btn-icon').removeClass(woosc_vars.button_added_icon).addClass(woosc_vars.button_normal_icon);
-            $('.woosc-btn-has-icon[data-id="' + product_id + '"]').find('.woosc-btn-text').html(woosc_vars.button_text);
+                $btn.removeClass('woosc-btn-added woosc-added');
+
+                if ($btn.hasClass('woosc-btn-has-icon')) {
+                    $btn.find('.woosc-btn-icon').removeClass(woosc_vars.button_added_icon).addClass(woosc_vars.button_normal_icon);
+                    $btn.find('.woosc-btn-text').html(text);
+                } else {
+                    $btn.html(text);
+                }
+            });
         } else {
             // remove all
-            if (woosc_get_cookie(cookie_products) != '') {
+            if (woosc_get_cookie(cookie_products) !== '') {
                 woosc_set_cookie(cookie_products, '', 7);
                 count = 0;
             }
 
-            $('.woosc-btn').removeClass('woosc-btn-added woosc-added');
+            $('.woosc-btn').each(function () {
+                let $btn = $(this);
+                let text = $btn.data('text') !== undefined && $btn.data('text') !== '' ? $btn.data('text') : woosc_vars.button_text;
 
-            $('.woosc-btn:not(.woosc-btn-has-icon)').html(woosc_vars.button_text);
-            $('.woosc-btn-has-icon').find('.woosc-btn-icon').removeClass(woosc_vars.button_added_icon).addClass(woosc_vars.button_normal_icon);
-            $('.woosc-btn-has-icon').find('.woosc-btn-text').html(woosc_vars.button_text);
+                $btn.removeClass('woosc-btn-added woosc-added');
+
+                if ($btn.hasClass('woosc-btn-has-icon')) {
+                    $btn.find('.woosc-btn-icon').removeClass(woosc_vars.button_added_icon).addClass(woosc_vars.button_normal_icon);
+                    $btn.find('.woosc-btn-text').html(text);
+                } else {
+                    $btn.html(text);
+                }
+            });
         }
 
         woosc_change_count(count);
@@ -665,19 +678,37 @@
     function woosc_check_buttons() {
         var cookie_products = woosc_get_cookie_products();
 
-        if (woosc_get_cookie(cookie_products) != '') {
+        if (woosc_get_cookie(cookie_products) !== '') {
             var products = woosc_get_cookie(cookie_products).split(',');
 
-            $('.woosc-btn').removeClass('woosc-btn-added woosc-added');
-            $('.woosc-btn:not(.woosc-btn-has-icon)').html(woosc_vars.button_text);
-            $('.woosc-btn.woosc-btn-has-icon').find('.woosc-btn-icon').removeClass(woosc_vars.button_added_icon).addClass(woosc_vars.button_normal_icon);
-            $('.woosc-btn.woosc-btn-has-icon').find('.woosc-btn-text').html(woosc_vars.button_text);
+            $('.woosc-btn').each(function () {
+                let $btn = $(this);
+                let text = $btn.data('text') !== undefined && $btn.data('text') !== '' ? $btn.data('text') : woosc_vars.button_text;
 
-            products.forEach(function (entry) {
-                $('.woosc-btn-' + entry).addClass('woosc-btn-added woosc-added');
-                $('.woosc-btn-' + entry + ':not(.woosc-btn-has-icon)').html(woosc_vars.button_text_added);
-                $('.woosc-btn-has-icon.woosc-btn-' + entry).find('.woosc-btn-icon').removeClass(woosc_vars.button_normal_icon).addClass(woosc_vars.button_added_icon);
-                $('.woosc-btn-has-icon.woosc-btn-' + entry).find('.woosc-btn-text').html(woosc_vars.button_text_added);
+                $btn.removeClass('woosc-btn-added woosc-added');
+
+                if ($btn.hasClass('woosc-btn-has-icon')) {
+                    $btn.find('.woosc-btn-icon').removeClass(woosc_vars.button_added_icon).addClass(woosc_vars.button_normal_icon);
+                    $btn.find('.woosc-btn-text').html(text);
+                } else {
+                    $btn.html(text);
+                }
+            });
+
+            products.forEach(function (product_id) {
+                $('.woosc-btn[data-id="' + product_id + '"]').each(function () {
+                    let $btn = $(this);
+                    let text_added = $btn.data('text_added') !== undefined && $btn.data('text_added') !== '' ? $btn.data('text_added') : woosc_vars.button_text_added;
+
+                    $btn.addClass('woosc-btn-added woosc-added');
+
+                    if ($btn.hasClass('woosc-btn-has-icon')) {
+                        $btn.find('.woosc-btn-icon').removeClass(woosc_vars.button_normal_icon).addClass(woosc_vars.button_added_icon);
+                        $btn.find('.woosc-btn-text').html(text_added);
+                    } else {
+                        $btn.html(text_added);
+                    }
+                });
             });
         }
     }
@@ -708,8 +739,7 @@
                 $('.woosc-table-items').html(response.table).addClass('woosc-table-items-loaded');
 
                 if ($(window).width() >= 768) {
-                    if ((woosc_vars.freeze_column === 'yes') &&
-                        (woosc_vars.freeze_row === 'yes')) {
+                    if ((woosc_vars.freeze_column === 'yes') && (woosc_vars.freeze_row === 'yes')) {
                         // freeze row and column
                         $('#woosc_table').tableHeadFixer({'head': true, left: 1});
                     } else if (woosc_vars.freeze_column === 'yes') {
@@ -750,8 +780,7 @@
                 $(document.body).trigger('woosc_sidebar_loaded');
             }
 
-            if (get_data === 'bar' || get_data === 'table' || get_data ===
-                'sidebar') {
+            if (get_data === 'bar' || get_data === 'table' || get_data === 'sidebar') {
                 // load bar filter
                 $('.woosc-bar-filter').html(response.filter);
                 woosc_filter();
@@ -953,9 +982,7 @@
             if ($(this).hasClass('menu-item-type-woosc')) {
                 $(this).find('.woosc-menu-item-inner').attr('data-count', count);
             } else {
-                $(this).addClass('menu-item-type-woosc').find('a').wrapInner(
-                    '<span class="woosc-menu-item-inner" data-count="' + count +
-                    '"></span>');
+                $(this).addClass('menu-item-type-woosc').find('a').wrapInner('<span class="woosc-menu-item-inner" data-count="' + count + '"></span>');
             }
         });
 
@@ -1045,8 +1072,6 @@
     }
 
     function woosc_get_cookie_products() {
-        return woosc_vars.user_id !== ''
-            ? 'woosc_products_' + woosc_vars.user_id
-            : 'woosc_products';
+        return woosc_vars.user_id !== '' ? 'woosc_products_' + woosc_vars.user_id : 'woosc_products';
     }
 })(jQuery);

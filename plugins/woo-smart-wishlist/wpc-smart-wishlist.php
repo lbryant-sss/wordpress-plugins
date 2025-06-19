@@ -3,23 +3,23 @@
 Plugin Name: WPC Smart Wishlist for WooCommerce
 Plugin URI: https://wpclever.net/
 Description: WPC Smart Wishlist is a simple but powerful tool that can help your customer save products for buy later.
-Version: 4.9.9
+Version: 5.0.0
 Author: WPClever
 Author URI: https://wpclever.net
 Text Domain: woo-smart-wishlist
 Domain Path: /languages/
 Requires Plugins: woocommerce
 Requires at least: 4.0
-Tested up to: 6.7
+Tested up to: 6.8
 WC requires at least: 3.0
-WC tested up to: 9.7
+WC tested up to: 9.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 defined( 'ABSPATH' ) || exit;
 
-! defined( 'WOOSW_VERSION' ) && define( 'WOOSW_VERSION', '4.9.9' );
+! defined( 'WOOSW_VERSION' ) && define( 'WOOSW_VERSION', '5.0.0' );
 ! defined( 'WOOSW_LITE' ) && define( 'WOOSW_LITE', __FILE__ );
 ! defined( 'WOOSW_FILE' ) && define( 'WOOSW_FILE', __FILE__ );
 ! defined( 'WOOSW_URI' ) && define( 'WOOSW_URI', plugin_dir_url( __FILE__ ) );
@@ -913,19 +913,27 @@ if ( ! function_exists( 'woosw_init' ) ) {
 					$active_tab = sanitize_key( $_GET['tab'] ?? 'settings' );
 					?>
                     <div class="wpclever_settings_page wrap">
-                        <h1 class="wpclever_settings_page_title"><?php echo esc_html__( 'WPC Smart Wishlist', 'woo-smart-wishlist' ) . ' ' . esc_html( WOOSW_VERSION ) . ' ' . ( defined( 'WOOSW_PREMIUM' ) ? '<span class="premium" style="display: none">' . esc_html__( 'Premium', 'woo-smart-wishlist' ) . '</span>' : '' ); ?></h1>
-                        <div class="wpclever_settings_page_desc about-text">
-                            <p>
-								<?php printf( /* translators: stars */ esc_html__( 'Thank you for using our plugin! If you are satisfied, please reward it a full five-star %s rating.', 'woo-smart-wishlist' ), '<span style="color:#ffb900">&#9733;&#9733;&#9733;&#9733;&#9733;</span>' ); ?>
-                                <br/>
-                                <a href="<?php echo esc_url( WOOSW_REVIEWS ); ?>"
-                                   target="_blank"><?php esc_html_e( 'Reviews', 'woo-smart-wishlist' ); ?></a> |
-                                <a href="<?php echo esc_url( WOOSW_CHANGELOG ); ?>"
-                                   target="_blank"><?php esc_html_e( 'Changelog', 'woo-smart-wishlist' ); ?></a> |
-                                <a href="<?php echo esc_url( WOOSW_DISCUSSION ); ?>"
-                                   target="_blank"><?php esc_html_e( 'Discussion', 'woo-smart-wishlist' ); ?></a>
-                            </p>
+                        <div class="wpclever_settings_page_header">
+                            <a class="wpclever_settings_page_header_logo" href="https://wpclever.net/"
+                               target="_blank" title="Visit wpclever.net"></a>
+                            <div class="wpclever_settings_page_header_text">
+                                <div class="wpclever_settings_page_title"><?php echo esc_html__( 'WPC Smart Wishlist', 'woo-smart-wishlist' ) . ' ' . esc_html( WOOSW_VERSION ) . ' ' . ( defined( 'WOOSW_PREMIUM' ) ? '<span class="premium" style="display: none">' . esc_html__( 'Premium', 'woo-smart-wishlist' ) . '</span>' : '' ); ?></div>
+                                <div class="wpclever_settings_page_desc about-text">
+                                    <p>
+										<?php printf( /* translators: stars */ esc_html__( 'Thank you for using our plugin! If you are satisfied, please reward it a full five-star %s rating.', 'woo-smart-wishlist' ), '<span style="color:#ffb900">&#9733;&#9733;&#9733;&#9733;&#9733;</span>' ); ?>
+                                        <br/>
+                                        <a href="<?php echo esc_url( WOOSW_REVIEWS ); ?>"
+                                           target="_blank"><?php esc_html_e( 'Reviews', 'woo-smart-wishlist' ); ?></a> |
+                                        <a href="<?php echo esc_url( WOOSW_CHANGELOG ); ?>"
+                                           target="_blank"><?php esc_html_e( 'Changelog', 'woo-smart-wishlist' ); ?></a>
+                                        |
+                                        <a href="<?php echo esc_url( WOOSW_DISCUSSION ); ?>"
+                                           target="_blank"><?php esc_html_e( 'Discussion', 'woo-smart-wishlist' ); ?></a>
+                                    </p>
+                                </div>
+                            </div>
                         </div>
+                        <h2></h2>
 						<?php if ( isset( $_GET['settings-updated'] ) && $_GET['settings-updated'] ) { ?>
                             <div class="notice notice-success is-dismissible">
                                 <p><?php esc_html_e( 'Settings updated.', 'woo-smart-wishlist' ); ?></p>

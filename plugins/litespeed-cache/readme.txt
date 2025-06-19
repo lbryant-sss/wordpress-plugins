@@ -4,7 +4,7 @@ Tags: caching, optimize, performance, pagespeed, seo, image optimize, object cac
 Requires at least: 5.3
 Requires PHP: 7.2
 Tested up to: 6.8
-Stable tag: 7.1
+Stable tag: 7.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -254,6 +254,25 @@ The vast majority of plugins and themes are compatible with LiteSpeed Cache. The
 You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/litespeed-cache)
 
 == Changelog ==
+
+= 7.2 - Jun 18 2025 =
+* 🌱**CDN** New option: Cloudflare Clear on purge all. (PR#828)
+* **Core** Used `site_url` instead of `home_url` to fix the content folder parsing and QUIC.cloud calls.
+* 🐞**Cloud** Fixed a bug where we tried to sync QUIC.cloud usage while debug mode was ON, even when QC was not activated.
+* **Cloud** Stored request timestamp in static files along w/ database to prevent duplicate requests when database is down.
+* **Cache** Dropped `Cache PHP Resources` option.
+* **Cache** Added verification to prevent admin pages from caching even if the site is set to be globally cacheable.
+* **Image Optimize** Disable image pull cron if there have been no image notifications.
+* **Crawler** Non-role simulator crawler will now use DNS resolve to hit original server instead of CDN nodes.
+* **Media** Resolved an issue where deleting an image from grid mode neglected to also remove the optimized versions of the image. (PR#844, Zsombor Franczia #841)
+* **Media** Allowed filter `litespeed_next_gen_format` to manipulate the value of next gen format. (Zsombor Franczia #853)
+* **3rd** Elementor: Clear all caches on regenerate CSS & Data. (PR#806)
+* **Config** `Purge All On Upgrade` now defaults to OFF.
+* **GUI** Showed `Disable all features` message on all WP-Admin pages for Admin-level users when enabled.
+* **Misc** Used PHPCS w/ WordPress core and security coding standards to reformat cache menu code. (Viktor Szépe #696)
+* **Misc** Replaced use of `SHOW TABLES` with `DESCRIBE` to prevent database halt in very large WP Multisite installations. (Boone Gorges PR#834, PR#850)
+* **Misc** Replaced constants with WordPress functions to check whether AJAX or CRON is running.
+* **API** Added action `litespeed_save_conf` to provide a trigger for configuration updates.
 
 = 7.1 - Apr 24 2025 =
 * 🌱**Page Optimize** Added allowlist support for CCSS.

@@ -3,7 +3,7 @@ Contributors: hasthemes, htplugins, devitemsllc, tarekht, zenaulislam, aslamhasi
 Tags: elementor, elementor addons, elementor widgets, elementor templates, addons, elementor slider, elementor page builder, mega menu, addons for elementor, post grid, elements, header footer builder
 Requires at least: 5.0
 Tested up to: 6.8
-Stable tag: 2.8.8
+Stable tag: 2.8.9
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -528,6 +528,16 @@ Visit [HasThemes](https://hasthemes.com/) for more details about HTML, Shopify a
 
 
 == Changelog ==
+= Version 2.8.9 - Date: 2025-06-18 =
+* Added: [Sapruin - Home Service Template Kit](https://library.wphtmega.com/sapruin-home-service-template/).
+* Added: [Sinza - Business Template Kit](https://library.wphtmega.com/sinza-business-template/).
+* Added: [Trimva - Hair Salon Template Kit](https://library.wphtmega.com/trimva-hair-salon-template/).
+* Added: [Axiona - AI Template Kit](https://library.wphtmega.com/axiona-ai-template/).
+* Added: Option to add a border to the Pricing Header in the Pricing Table widget.
+* Added: Option to set the width of the Pricing Footer in the Pricing Table widget.
+* Fixed: Issue with the WP Rocket plugin Media loading notice.
+* Fixed: A few minor issues.
+* Tested: Compatibility with the latest version of Elementor.
 
 = Version 2.8.8 - Date: 2025-05-26 =
 * Added: [Seavia – Yacht Boat Rental Template Kit](https://library.wphtmega.com/seavia-yacht-boat-rental-template/).
