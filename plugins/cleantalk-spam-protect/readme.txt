@@ -4,7 +4,7 @@ Tags: spam, antispam, anti-spam, comments, firewall
 Requires at least: 4.7
 Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 6.57.2
+Stable tag: 6.58
 License: GPLv2
 
 Spam protection, anti-spam, firewall, premium plugin. No spam comments & users, no spam contact form & WooCommerce anti-spam.
@@ -90,7 +90,7 @@ Plugin extends Contact Form by WPForms to provide spam protection. It filters sp
 = WooCommerce spam filter =
 Anti-spam by CleanTalk filters spam registrations and spam reviews for WooCommerce. The plugin is fully compatible with WooCommerce 2.1 and higher.
 
-= Spam filter for theme contact forms = 
+= Spam filter for theme contact forms =
 The plugin blocks spam emails via any theme (built-in ones included) contact forms. The plugin filters spam emails silently (without any error notices on WordPress frontend) in AJAX forms as well.
 
 = bbPress spam filter =
@@ -350,7 +350,7 @@ CleanTalk is fully compatible with CloudFlare. Service doesn't filter CloudFlare
 Yes, it is. CleanTalk works with any CDN system, i.e. CloudFlare, MaxCDN, Akamai.
 
 = Can I use CleanTalk functionality in my plugins? =
-Yes, you can. Follow this guide <a href="https://cleantalk.org/help/api-check-message">https://cleantalk.org/help/api-check-message</a> 
+Yes, you can. Follow this guide <a href="https://cleantalk.org/help/api-check-message">https://cleantalk.org/help/api-check-message</a>
 
 = I see two loads of script cleantalk_nocache.js. Why do you use it twice? =
 This script is used for AJAX JavaScript checking. Different themes use different mechanisms of loading, so we use two methods for loading our script. If you absolutely know what you are doing, you can switch one of the methods off by defining constants in your wp-config.php file:
@@ -430,6 +430,16 @@ Yes, it is. Please read this article,
 8. Prevent any other spamers, from any other forms, for example from WPForms.
 
 == Changelog ==
+
+= 6.58 18.06.2025 =
+* Upd. Settings. Updated hosting license flow.
+* Upd. Remote Calls. Debug call improved - show alt. sessions status.
+* Mod. AJAXService. Separating hack connections into a separate class, editing no_priv, renaming the function to AJAXService.
+* Fix. Encoder. Encoding content by hooks fixed.
+* Fix. Honeypot. Remove label for the Wave validator compatibility.
+* Fix. Honeypot. Aria attribute added for label tag.
+* Fix. Integration. WP Forms integration protection fixed.
+* Fix. Integration. Forminator protection improved.
 
 = 6.57.2 09.06.2025 =
 * Fix. Integration. WP Forms integration protection fixed.

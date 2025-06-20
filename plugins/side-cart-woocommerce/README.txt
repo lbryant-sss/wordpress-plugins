@@ -123,8 +123,6 @@ You can use any third party plugin such as Loco Translate for hassle free transl
 5. Save Location: Your wordpress directory/wp-content/languages/
 
 == Screenshots ==
-1. Card Layout
-2. Card Layout - Pro
 3. Row Layout
 4. Row Layout - Pro
 5. Floating Basket

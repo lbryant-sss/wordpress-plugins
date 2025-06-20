@@ -210,6 +210,13 @@ class HMWP_Models_Compatibility_Others extends HMWP_Models_Compatibility_Abstrac
             return $redirect;
         }, PHP_INT_MAX, 2);
 
+        // Prevent Kadence from loading the script rules in frontend
+        if ( HMWP_Classes_Tools::isPluginActive( 'kadence-blocks/kadence-blocks.php' ) || HMWP_Classes_Tools::isPluginActive( 'kadence-blocks-pro/kadence-blocks-pro.php' ) ) {
+            add_filter( 'hmwp_buffer', function( $buffer ) {
+                return preg_replace('/<script type="speculationrules">.*?<\/script>/s', '', $buffer);
+            } );
+        }
+
 	}
 
 
