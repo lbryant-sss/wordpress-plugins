@@ -81,9 +81,7 @@ if ( ! class_exists( 'CR_Reviews' ) ) :
 					add_action( 'wp_enqueue_scripts', array( $this, 'cr_style_2' ), 11 );
 				}
 			}
-			if( 'yes' === $this->ivole_reviews_histogram || 'yes' === get_option( 'ivole_reviews_shortcode', 'no' ) ) {
-				add_action( 'init', array( $this, 'add_query_var' ), 20 );
-			}
+			add_action( 'init', array( $this, 'add_query_var' ), 20 );
 			if (
 				'yes' === $this->ivole_reviews_histogram ||
 				'yes' === $this->ivole_ajax_reviews ||
@@ -1467,7 +1465,7 @@ if ( ! class_exists( 'CR_Reviews' ) ) :
 		);
 		if( check_ajax_referer( 'cr-upload-images-frontend', 'cr_nonce', false ) ) {
 			// check captcha
-			if( self::is_captcha_enabled() ) {
+			if ( self::is_captcha_enabled() && ! is_user_logged_in() ) {
 				$captcha_is_wrong = true;
 				if( isset( $_POST['cr_captcha'] ) && $_POST['cr_captcha'] ) {
 					if( $this->ping_captcha( strval( $_POST['cr_captcha'] ) ) ) {

@@ -495,6 +495,7 @@ if (! class_exists('CR_All_Reviews')) :
 			}
 			$return .= wp_list_comments( apply_filters('ivole_product_review_list_args', array(
 				'callback' => array( 'CR_Reviews', 'callback_comments' ),
+				'max_depth' => 5,
 				'page'  => 1,
 				'per_page' => $per_page,
 				'reverse_top_level' => false,
@@ -603,6 +604,7 @@ if (! class_exists('CR_All_Reviews')) :
 			}
 			$html .= wp_list_comments( apply_filters( 'ivole_product_review_list_args', array(
 				'callback' => array( 'CR_Reviews', 'callback_comments' ),
+				'max_depth' => 5,
 				'page'  => 1,
 				'per_page' => $per_page,
 				'reverse_top_level' => false,

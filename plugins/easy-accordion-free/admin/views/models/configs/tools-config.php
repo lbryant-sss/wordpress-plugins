@@ -34,7 +34,7 @@ SP_EAP::createOptions(
 		'show_all_options'        => false,
 		'show_search'             => false,
 		'show_footer'             => false,
-		'show_buttons'            => false, // Custom show button option added for hide save button in tools page.
+		'show_buttons'            => false,
 		'framework_title'         => __( 'Tools', 'easy-accordion-free' ),
 		'framework_class'         => 'sp-eap-options eap_tools',
 		'theme'                   => 'light',

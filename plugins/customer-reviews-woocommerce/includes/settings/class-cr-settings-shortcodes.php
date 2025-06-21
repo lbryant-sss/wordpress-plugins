@@ -41,7 +41,8 @@ if ( ! class_exists( 'CR_Shortcodes_Settings' ) ):
 
 		public function display() {
 			$this->init_settings();
-
+			global $hide_save_button;
+			$hide_save_button = true;
 			WC_Admin_Settings::output_fields( $this->settings );
 		}
 
@@ -57,13 +58,6 @@ if ( ! class_exists( 'CR_Shortcodes_Settings' ) ):
 					'type'  => 'title',
 					'desc'  => __( 'The plugin provides several shortcodes and Gutenberg blocks that you can use to display reviews in various places on your website. You can find the list of available shortcodes and their parameters below.', 'customer-reviews-woocommerce' ),
 					'id'    => 'cr_options_shortcodes'
-				),
-				array(
-					'title'   => __( 'Reviews Shortcodes', 'customer-reviews-woocommerce' ),
-					'desc'    => __( 'Enable shortcodes and Gutenberg blocks', 'customer-reviews-woocommerce' ),
-					'id'      => 'ivole_reviews_shortcode',
-					'default' => 'no',
-					'type'    => 'checkbox'
 				),
 				array(
 					'id'      => 'ivole_reviews_shortcode_desc',

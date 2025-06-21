@@ -1957,15 +1957,15 @@ function walkMenuTree(containerNode, callback) {
  */
 function updateActorAccessUi(containerNode) {
 	//Update the permissions checkbox & UI
-	var menuItem = containerNode.data('menu_item');
+	const menuItem = containerNode.data('menu_item');
 	if (actorSelectorWidget.selectedActor !== null) {
-		var hasAccess = actorCanAccessMenu(menuItem, actorSelectorWidget.selectedActor);
-		var hasCustomPermissions = actorHasCustomPermissions(menuItem, actorSelectorWidget.selectedActor);
+		let hasAccess = actorCanAccessMenu(menuItem, actorSelectorWidget.selectedActor);
+		const hasCustomPermissions = actorHasCustomPermissions(menuItem, actorSelectorWidget.selectedActor);
 
-		var isOverrideActive = !hasAccess && getFieldValue(menuItem, 'restrict_access_to_items', false);
+		let isOverrideActive = !hasAccess && getFieldValue(menuItem, 'restrict_access_to_items', false);
 
 		//Check if the parent menu has the "hide all submenus if this is hidden" override in effect.
-		var currentChild = containerNode, parentNode, parentItem;
+		let currentChild = containerNode, parentNode, parentItem;
 		do {
 			parentNode = getParentMenuNode(currentChild);
 			parentItem = parentNode.data('menu_item');
@@ -1981,23 +1981,23 @@ function updateActorAccessUi(containerNode) {
 			currentChild = parentNode;
 		} while (parentNode.length > 0);
 
-		var checkbox = containerNode.find('.ws_actor_access_checkbox');
-		checkbox.prop('checked', hasAccess);
+		const checkbox = containerNode.find('.ws_actor_access_checkbox');
+		checkbox.prop('checked', !!hasAccess);
 
 		//Display the checkbox in an indeterminate state if the actual menu permissions are unknown
 		//because it uses meta capabilities.
-		var isIndeterminate = (hasAccess === null);
+		let isIndeterminate = (hasAccess === null);
 		//Also show it as indeterminate if some items of this menu are hidden and some are visible,
 		//or if their permissions don't match this menu's permissions.
-		var submenuItems = getSubmenuItemNodes(containerNode);
+		const submenuItems = getSubmenuItemNodes(containerNode);
 		if ((submenuItems.length > 0) && !isOverrideActive)  {
-			var differentPermissions = false;
+			let differentPermissions = false;
 			submenuItems.each(function() {
-				var item = $(this).data('menu_item');
+				const item = $(this).data('menu_item');
 				if ( !item ) { //Skip placeholder items created by drag & drop operations.
 					return true;
 				}
-				var hasSubmenuAccess = actorCanAccessMenu(item, actorSelectorWidget.selectedActor);
+				const hasSubmenuAccess = actorCanAccessMenu(item, actorSelectorWidget.selectedActor);
 				if (hasSubmenuAccess !== hasAccess) {
 					differentPermissions = true;
 					return false;
@@ -2034,11 +2034,11 @@ function updateActorAccessUi(containerNode) {
 		setMenuFlag(containerNode, 'custom_actor_permissions', false);
 		setMenuFlag(containerNode, 'uncertain_meta_cap', false);
 
-		var currentUserActor = 'user:' + wsEditorData.currentUserLogin;
-		var otherActors = _(wsEditorData.actors).keys().without(currentUserActor, 'special:super_admin').value(),
-			hiddenFromCurrentUser = ! actorCanAccessMenu(menuItem, currentUserActor),
+		const currentUserActor = 'user:' + wsEditorData.currentUserLogin;
+		const otherActors = _(wsEditorData.actors).keys().without(currentUserActor, 'special:super_admin').value(),
+			hiddenFromCurrentUser = !actorCanAccessMenu(menuItem, currentUserActor),
 			hasAccessToThisItem = _.curry(actorCanAccessMenu, 2)(menuItem),
-			hiddenFromOthers = _.every(otherActors, function(actorId) {
+			hiddenFromOthers = _.every(otherActors, function (actorId) {
 				return (hasAccessToThisItem(actorId) === false);
 			}),
 			visibleForSuperAdmin = AmeActors.isMultisite && actorCanAccessMenu(menuItem, 'special:super_admin');
@@ -2657,7 +2657,7 @@ function readAllFields(container){
  Flag manipulation
  ***************************************************************************/
 
-var item_flags = {
+const item_flags = {
 	'custom': 'This is a custom menu item',
 	'unused': 'This item was added since the last time you saved menu settings.',
 	'hidden': 'Cosmetically hidden',
@@ -2670,14 +2670,14 @@ function setMenuFlag(item, flag, state, title) {
 	title = title || item_flags[flag];
 	item = $(item);
 
-	var item_class = 'ws_' + flag;
-	var img_class = 'ws_' + flag + '_flag';
+	const item_class = 'ws_' + flag;
+	const img_class = 'ws_' + flag + '_flag';
 
 	item.toggleClass(item_class, state);
 	if (state) {
 		//Add the flag image.
-		var flag_container = item.find('.ws_flag_container');
-		var image = flag_container.find('.' + img_class);
+		const flag_container = item.find('.ws_flag_container');
+		let image = flag_container.find('.' + img_class);
 		if (image.length === 0) {
 			image = $('<div></div>').addClass('ws_flag').addClass(img_class);
 			flag_container.append(image);
@@ -2704,7 +2704,7 @@ function menuHasFlag(item, flag){
  * @returns {boolean}
  */
 function itemHasHiddenFlag(menuItem, actor) {
-	var isHidden = false,
+	let isHidden = false,
 		userActors,
 		userPrefix = 'user:',
 		userLogin;
@@ -2722,7 +2722,7 @@ function itemHasHiddenFlag(menuItem, actor) {
 			//Otherwise the item is hidden only if it is hidden from all of the user's roles.
 			userLogin = actorSelectorWidget.selectedActor.substr(userPrefix.length);
 			userActors = AmeCapabilityManager.getGroupActorsFor(userLogin);
-			for (var i = 0; i < userActors.length; i++) {
+			for (let i = 0; i < userActors.length; i++) {
 				if (menuItem.hidden_from_actor.hasOwnProperty(userActors[i]) && menuItem.hidden_from_actor[userActors[i]]) {
 					isHidden = true;
 				} else {
@@ -2806,8 +2806,8 @@ function actorCanAccessMenu(menuItem, actor) {
 
 	//By default, any actor that has the required cap has access to the menu.
 	//Users can override this on a per-menu basis.
-	var requiredCap = getFieldValue(menuItem, 'access_level', '< Error: access_level is missing! >');
-	var actorHasAccess;
+	const requiredCap = getFieldValue(menuItem, 'access_level', '< Error: access_level is missing! >');
+	let actorHasAccess;
 	if (menuItem.grant_access.hasOwnProperty(actor)) {
 		actorHasAccess = menuItem.grant_access[actor];
 	} else {

@@ -295,6 +295,7 @@ if (! class_exists('CR_Ajax_Reviews')) :
 						'woocommerce_product_review_list_args',
 						array(
 							'callback' => array( 'CR_Reviews', 'callback_comments' ),
+							'max_depth' => 5,
 							'reverse_top_level' => false,
 							'per_page' => self::$per_page,
 							'page' => $page,
@@ -374,6 +375,7 @@ if (! class_exists('CR_Ajax_Reviews')) :
 							'woocommerce_product_review_list_args',
 							array(
 								'callback' => array( 'CR_Reviews', 'callback_comments' ),
+								'max_depth' => 5,
 								'reverse_top_level' => false,
 								'per_page' => self::$per_page,
 								'page' => 1,
@@ -443,6 +445,7 @@ if (! class_exists('CR_Ajax_Reviews')) :
 							'woocommerce_product_review_list_args',
 							array(
 								'callback' => array( 'CR_Reviews', 'callback_comments' ),
+								'max_depth' => 5,
 								'reverse_top_level' => false,
 								'per_page' => self::$per_page,
 								'page' => 1,

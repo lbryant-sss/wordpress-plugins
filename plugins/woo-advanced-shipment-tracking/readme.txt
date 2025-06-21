@@ -4,7 +4,7 @@ Tags: WooCommerce, delivery, shipping, shipment tracking, tracking
 Requires at least: 5.3
 Tested up to: 6.8.1
 Requires PHP: 7.2
-Stable tag: 3.8.3
+Stable tag: 3.8.4
 License: GPLv2 
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -124,6 +124,11 @@ Yes, if you use external shipping services that work with the WooCommerce REST A
 3. Select default shipping carriers from setting page and add tracking number in order page.
 
 == Changelog ==
+
+= 3.8.4 =
+* Dev - Tested with WooCommerce 9.9.4
+* Dev - Updated shipped date format to use hyphens (e.g., dd-mm-YYYY) for clarity.
+* Fix - Resolved issue where "Enable Carriers" button did not open the sidebar on the Shipping Carriers page.
 
 = 3.8.3 =
 * Dev - Tested with WooCommerce 9.9.3

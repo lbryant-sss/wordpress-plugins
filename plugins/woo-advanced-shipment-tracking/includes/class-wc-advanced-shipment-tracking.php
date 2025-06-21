@@ -511,9 +511,9 @@ class WC_Advanced_Shipment_Tracking_Actions {
 			WC()->add_inline_js( $js );
 		}
 		
-		wp_enqueue_style( 'ast_styles', wc_advanced_shipment_tracking()->plugin_dir_url() . 'assets/css/admin.css', array(), time() );
-		wp_enqueue_style( 'ast_slideout_styles', wc_advanced_shipment_tracking()->plugin_dir_url() . 'assets/css/slideout.css', array(), time() );				
-		wp_enqueue_script( 'woocommerce-advanced-shipment-tracking-js', wc_advanced_shipment_tracking()->plugin_dir_url() . 'assets/js/admin.js', array(), time() );
+		wp_enqueue_style( 'ast_styles', wc_advanced_shipment_tracking()->plugin_dir_url() . 'assets/css/admin.css', array(), wc_advanced_shipment_tracking()->version );
+		wp_enqueue_style( 'ast_slideout_styles', wc_advanced_shipment_tracking()->plugin_dir_url() . 'assets/css/slideout.css', array(), wc_advanced_shipment_tracking()->version );				
+		wp_enqueue_script( 'woocommerce-advanced-shipment-tracking-js', wc_advanced_shipment_tracking()->plugin_dir_url() . 'assets/js/admin.js', array(), wc_advanced_shipment_tracking()->version );
 		wp_localize_script(
 			'woocommerce-advanced-shipment-tracking-js',
 			'ast_orders_params',

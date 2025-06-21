@@ -7,7 +7,7 @@
 				$integrations = $ast_integration->integrations_settings_options();
 				foreach ( $integrations as $integrations_id => $array ) {
 				?>
-				<div class="grid-item">
+				<div class="grid-item integration-popup-content">
 					<div class="grid-top">
 						<div class="grid-provider-img">
 							<img class="provider-thumb" src="<?php echo esc_url( wc_advanced_shipment_tracking()->plugin_dir_url() . 'assets/images/' . $array['img'] ); ?>">
@@ -49,7 +49,7 @@
 					<a href="https://www.zorem.com/product/woocommerce-advanced-shipment-tracking/?utm_source=wp-admin&utm_medium=integration&utm_campaign=upgrad-now" class="button-primary btn_ast2" target="_blank">UPGRADE NOW</a>
 				`;
 
-				$('.grid-item').click(function(e){
+				$('#integrations_content .integration-popup-content').click(function(e){
 					e.stopPropagation();
 					$('.integration_modal_content').html(staticContent);
 					$('.integration_modal_overlay').fadeIn();

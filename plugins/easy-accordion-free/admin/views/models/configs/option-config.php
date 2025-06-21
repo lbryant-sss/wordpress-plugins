@@ -10,7 +10,7 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-	die; } // Cannot access directly.
+	die; }
 
 //
 // Set a unique slug-like ID.
@@ -48,7 +48,7 @@ SP_EAP::createSection(
 	$prefix,
 	array(
 		'title'  => __( 'Advanced Controls', 'easy-accordion-free' ),
-		'icon'   => 'fa fa-wrench',
+		'icon'   => 'eap-icon-advanced',
 		'fields' => array(
 			array(
 				'id'         => 'eap_data_remove',
@@ -76,7 +76,7 @@ SP_EAP::createSection(
 	$prefix,
 	array(
 		'title'  => __( 'WooCommerce FAQs', 'easy-accordion-free' ),
-		'icon'   => 'fa fa-shopping-cart',
+		'icon'   => 'eap-icon-product-cart',
 		'fields' => array(
 			array(
 				'id'         => 'eap_woo_faq',
@@ -186,7 +186,8 @@ SP_EAP::createSection(
 				),
 			),
 			array(
-				'type'       => 'notice', /* translators: 1: start link tag, 2: close tag. */
+				'type'       => 'notice',
+				/* translators: 1: start link tag, 2: close tag. */
 				'content'    => sprintf( __( 'Want to add %1$sWooCommerce Product FAQs Tab%2$s product page to Increase Sales & Reduce Returns?', 'easy-accordion-free' ), '<a href="https://easyaccordion.io/product/ninja-t-shirt/#product-56" target="_blank"><b>', '</b></a>' ) . ' <a href="https://easyaccordion.io/pricing/?ref=1" target="_blank"><b>' . __( 'Upgrade to Pro!', 'easy-accordion-free' ) . '</b></a>',
 				'dependency' => array( 'eap_woo_faq', '==', 'true' ),
 			),
@@ -201,8 +202,8 @@ SP_EAP::createSection(
 	$prefix,
 	array(
 		'id'     => 'custom_css_section',
-		'title'  => __( 'Custom CSS & JS', 'easy-accordion-free' ),
-		'icon'   => 'fa fa-file-code-o',
+		'title'  => __( 'Additional CSS & JS', 'easy-accordion-free' ),
+		'icon'   => 'eap-icon-code',
 		'fields' => array(
 			array(
 				'id'       => 'ea_custom_css',
@@ -233,7 +234,7 @@ SP_EAP::createSection(
 	$prefix,
 	array(
 		'title'  => __( 'License Key', 'easy-accordion-free' ),
-		'icon'   => 'fa fa-key',
+		'icon'   => 'eap-icon-key-01',
 		'fields' => array(
 			array(
 				'id'   => 'license_key',
