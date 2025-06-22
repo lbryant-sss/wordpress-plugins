@@ -88,7 +88,7 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 	private $virtual_caps_for_this_call = array();
 
 	public $disable_virtual_caps = false;
-	public $virtual_cap_mode = 3; //self::ALL_VIRTUAL_CAPS
+	public $virtual_cap_mode = self::ALL_VIRTUAL_CAPS;
 
 	/**
 	 * @var array<string,true|string> An index of URLs relative to /wp-admin/. Any menus that match the index will be ignored.
@@ -1213,7 +1213,7 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 	 *
 	 * @param array $roles
 	 * @param array $users
-	 * @return array [capability => true]
+	 * @return array [capability => string[]]
 	 */
 	private function detect_meta_caps($roles, $users) {
 		if ( !$this->current_user_can_edit_menu() || !is_super_admin() ) {
@@ -1243,7 +1243,29 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 		//that's probably a non-meta cap that isn't enabled for *anyone*.
 		$suspectedMetaCaps = array_filter(array_keys($suspectedMetaCaps), 'current_user_can');
 
-		return array_fill_keys($suspectedMetaCaps, true);
+		//Attempt to map meta caps to real capabilities.
+		$result = [];
+		$currentUserId = get_current_user_id();
+		foreach ($suspectedMetaCaps as $metaCap) {
+			$caps = map_meta_cap($metaCap, $currentUserId);
+			if ( is_array($caps) ) {
+				//Discard the "do_not_allow" cap and the meta cap itself (the latter matters
+				//for "view_site_health_checks" which is granted via a different filter).
+				$caps = array_filter($caps, function ($cap) use ($metaCap) {
+					return ($cap !== 'do_not_allow') && ($cap !== $metaCap);
+				});
+
+				//"view_site_health_checks" is essentially a meta cap, but it's granted via
+				//the "user_has_cap" filter, so it doesn't show up in the "map_meta_cap()" results.
+				/** @see wp_maybe_grant_site_health_caps() */
+				if ( empty($caps) && ($metaCap === 'view_site_health_checks') && !is_multisite() ) {
+					$caps = ['install_plugins'];
+				}
+				$result[$metaCap] = $caps;
+			}
+		}
+
+		return $result;
 	}
 
 	/**

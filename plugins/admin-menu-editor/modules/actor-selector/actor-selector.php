@@ -10,7 +10,7 @@ class ameActorSelector extends ameModule {
 
 		add_filter('admin_menu_editor-base_scripts', array($this, 'addBaseScript'), 11);
 		add_action('wp_ajax_' . self::ajaxUpdateAction, array($this, 'ajaxSetVisibleUsers'));
-		add_action('admin_menu_editor-users_to_load', array($this, 'addVisibleUsersToLoginList'));
+		add_filter('admin_menu_editor-users_to_load', array($this, 'addVisibleUsersToLoginList'));
 	}
 
 	public function addBaseScript($baseDeps) {

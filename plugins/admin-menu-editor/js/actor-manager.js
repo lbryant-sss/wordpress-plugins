@@ -312,6 +312,40 @@ class AmeActorManager {
         }
         return capability;
     }
+    /**
+     * Check if an actor might have a suspected meta capability.
+     *
+     * Returns NULL if the capability is not a detected meta capability, or if the actor ID is invalid.
+     */
+    maybeHasMetaCap(actorId, metaCapability) {
+        //Is this a meta capability?
+        if (!this.suspectedMetaCaps.hasOwnProperty(metaCapability)) {
+            return null;
+        }
+        const actor = this.getActor(actorId);
+        if (actor === null) {
+            return null;
+        }
+        //For some actors like the current user, we might already know whether they have
+        //the meta capability. The plugin checks that when opening the menu editor.
+        const hasOwnCap = actor.hasOwnCap(metaCapability);
+        if (hasOwnCap !== null) {
+            return { prediction: hasOwnCap };
+        }
+        const mappedCaps = this.suspectedMetaCaps[metaCapability];
+        //If we don't know what capabilities this meta capability maps to, we can't predict
+        //whether the actor has it or not.
+        if (mappedCaps.length < 1) {
+            return { prediction: null };
+        }
+        //The actor needs to have all the mapped capabilities to have the meta capability.
+        for (const cap of mappedCaps) {
+            if (this.actorHasCap(actorId, cap) !== true) {
+                return { prediction: false };
+            }
+        }
+        return { prediction: true };
+    }
     /* -------------------------------
      * Roles
      * ------------------------------- */

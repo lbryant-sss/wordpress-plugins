@@ -1981,8 +1981,23 @@ function updateActorAccessUi(containerNode) {
 			currentChild = parentNode;
 		} while (parentNode.length > 0);
 
+		//For better UX, try to predict the visible/hidden state even when we can't determine
+		//it reliably for items that use meta capabilities.
+		let predictedHasAccess = !!hasAccess;
+		let isUncertainMetaCap = false;
+
+		//Check meta capabilities.
+		if (hasAccess === null) {
+			const requiredCap = getFieldValue(menuItem, 'access_level', '< Error: access_level is missing! [2] >');
+			const result = AmeCapabilityManager.maybeHasMetaCap(actorSelectorWidget.selectedActor, requiredCap);
+			if (result !== null) {
+				predictedHasAccess = !!result.prediction;
+				isUncertainMetaCap = true;
+			}
+		}
+
 		const checkbox = containerNode.find('.ws_actor_access_checkbox');
-		checkbox.prop('checked', !!hasAccess);
+		checkbox.prop('checked', predictedHasAccess);
 
 		//Display the checkbox in an indeterminate state if the actual menu permissions are unknown
 		//because it uses meta capabilities.
@@ -2011,12 +2026,12 @@ function updateActorAccessUi(containerNode) {
 		}
 		checkbox.prop('indeterminate', isIndeterminate);
 
-		if (isIndeterminate && (hasAccess === null)) {
+		if (isUncertainMetaCap) {
 			setMenuFlag(
 				containerNode,
 				'uncertain_meta_cap',
 				true,
-				"This item might be visible.\n"
+				"This item might " + (predictedHasAccess ? 'not ' : '') + "be visible.\n"
 				+ "The plugin cannot reliably detect if \"" + actorSelectorWidget.selectedDisplayName
 				+ "\" has the \"" + getFieldValue(menuItem, 'access_level', '[No capability]')
 				+ "\" capability. If you need to hide the item, try checking and then unchecking it."
@@ -2025,7 +2040,7 @@ function updateActorAccessUi(containerNode) {
 			setMenuFlag(containerNode, 'uncertain_meta_cap', false);
 		}
 
-		containerNode.toggleClass('ws_is_hidden_for_actor', !hasAccess);
+		containerNode.toggleClass('ws_is_hidden_for_actor', !predictedHasAccess);
 		containerNode.toggleClass('ws_has_custom_permissions_for_actor', hasCustomPermissions);
 		setMenuFlag(containerNode, 'custom_actor_permissions', hasCustomPermissions);
 		setMenuFlag(containerNode, 'hidden_from_others', false);

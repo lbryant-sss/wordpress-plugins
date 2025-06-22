@@ -1,4 +1,4 @@
-﻿=== WP Booking Calendar ===
+﻿=== Booking Calendar ===
 Contributors: wpdevelop, oplugins
 Donate link: https://wpbookingcalendar.com/buy/
 Tags: booking calendar, bookings, booking, appointments, events

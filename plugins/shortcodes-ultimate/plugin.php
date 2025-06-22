@@ -8,6 +8,8 @@ call_user_func( function () {
     if ( did_action( 'plugins_loaded' ) ) {
         return;
     }
-    $plugin = new Shortcodes_Ultimate(SU_PLUGIN_FILE, SU_PLUGIN_VERSION, 'shortcodes-ultimate-');
-    do_action( 'su/ready', $plugin );
+    add_action( 'init', function () {
+        $plugin = new Shortcodes_Ultimate(SU_PLUGIN_FILE, SU_PLUGIN_VERSION, 'shortcodes-ultimate-');
+        do_action( 'su/ready', $plugin );
+    }, 1 );
 } );
