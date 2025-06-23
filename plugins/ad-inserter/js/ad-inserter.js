@@ -1,4 +1,4 @@
-var javascript_version = "2.8.3"
+var javascript_version = "2.8.4"
 var ignore_key = true;
 var start = 1;
 var end = 16;

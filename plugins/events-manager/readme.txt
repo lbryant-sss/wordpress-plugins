@@ -164,7 +164,8 @@ See our [FAQ](http://wp-events-plugin.com/documentation/faq/) page for helps wit
 18. Grid view for displaying your upcoming events at a glance
 
 == Changelog ==
-== 7.0.1 ==
+
+= 7.0.1 =
 * Added recurring events functionality, which now hosts one page for all events of that recurrence type.
 * Added recurrence booking form picker including a calendar and dropdown selection.
 * Added support for true timezone-relative calendar and recurrence selection listings via the `calendar_timezone` attribute.

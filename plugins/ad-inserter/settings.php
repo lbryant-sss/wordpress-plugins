@@ -3771,6 +3771,8 @@ function generate_settings_form (){
     replace_blocked_image ('ai-je-2',       'je-2.gif',             'block');
     replace_blocked_image ('ai-ha-1',       'ha-1.png',             'block');
     replace_blocked_image ('ai-ha-2',       'ha-2.png',             'block');
+    replace_blocked_image ('ai-lhk-25',     'lhk-25.jpg',           'block');
+    replace_blocked_image ('ai-lhk-72',     'lhk-72.jpg',           'block');
     replace_blocked_image ('ai-pro-1',      'icon-256x256.jpg',     'block');
     replace_blocked_image ('ai-pro-2',      'ai-charts-250.png',    'block');
     replace_blocked_image ('ai-pro-3',      'ai-countries-250.png', 'block');
@@ -5882,7 +5884,7 @@ function sidebar_addense_alternative () { ?>
 
 <?php
 
-  switch (rand (1, 8)) {
+  switch (rand (1, 12)) {
     case 1:
     case 2:
     case 3:
@@ -5928,22 +5930,22 @@ function sidebar_addense_alternative () { ?>
 <?php
       break;
 
-//    case 9:
-//    case 10:
-//    case 11:
-//    case 12:
+    case 9:
+    case 10:
+    case 11:
+    case 12:
 ?>
-<!--      <div class="ai-form header ai-rounded">-->
-<!--        <div style="float: left;">-->
-<!--          <h2 style="display: inline-block; margin: 5px 0;"><?php _e ('Try Infolinks Ads with Adsense or Media.net ads', 'ad-inserter'); ?></h2>-->
-<!--        </div>-->
-<!--        <div style="clear: both;"></div>-->
-<!--      </div>-->
-<!--      <div class="ai-form ai-rounded" style="height: 90px; padding: 8px 4px 8px 12px;">-->
-<!--        <a href='https://www.infolinks.com/publishers/?kid=3114832&loc=2' class="clear-link" title="<?php _e ('Use Infolinks ads with Adsense to earn more', 'ad-inserter'); ?>" target="_blank"><img id="ai-info-1" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>info-1.jpg" /></a>-->
-<!--      </div>-->
+      <div class="ai-form header ai-rounded">
+        <div style="float: left;">
+          <h2 style="display: inline-block; margin: 5px 0;"><?php _e ('Need ADX?', 'ad-inserter'); ?></h2>
+        </div>
+        <div style="clear: both;"></div>
+      </div>
+      <div class="ai-form ai-rounded" style="height: 90px; padding: 8px 4px 8px 12px;">
+        <a href='https://lhkmedia.io/servicerequest' class="clear-link" title="<?php _e ('Need ADX?', 'ad-inserter'); ?>" target="_blank"><img id="ai-lhk-72" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>lhk-72.jpg" /></a>
+      </div>
 <?php
-//      break;
+      break;
 
 //    case 9:
 //    case 10:
@@ -6172,7 +6174,8 @@ function sidebar_pro () {
 <?php   break; case 1: ?>
             <a href="https://www.ezoic.com/?utm_source=ad-inserter&utm_medium=ads&utm_campaign=ad-inserter-ads&utm_term=adinserter&utm_content=ezoic&loc=2" class="clear-link" title="<?php _e ('Looking for AdSense alternative?', 'ad-inserter'); ?>" target="_blank"><img id="ai-ez-5" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>ez-5.png" /></a>
 <?php   break; case 2: ?>
-            <a href='https://adinserter.pro/documentation/ad-blocking-detection' class="clear-link" title="<?php _e ('Ad blocking detection and content protection', 'ad-inserter'); ?>" target="_blank"><img id="ai-adb" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>ai-adb.png" /></a>
+<!--            <a href='https://adinserter.pro/documentation/ad-blocking-detection' class="clear-link" title="<?php _e ('Ad blocking detection and content protection', 'ad-inserter'); ?>" target="_blank"><img id="ai-adb" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>ai-adb.png" /></a>-->
+            <a href='https://lhkmedia.io/servicerequest' class="clear-link" title="<?php _e ('Need ADX?', 'ad-inserter'); ?>" target="_blank"><img id="ai-lhk-25" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>lhk-25.jpg" /></a>
 <?php   break; case 3: ?>
             <a href='https://adinserter.pro/documentation/code-preview' class="clear-link" title="<?php _e ('Code preview with visual CSS editor', 'ad-inserter'); ?>" target="_blank"><img id="ai-preview" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>ai-preview-250.png" /></a>
 <!--            <a href='https://publisher.dotaudiences.com/?utm_source=adinserter&utm_medium=ads&utm_campaign=adinserter' class="clear-link" title="<?php _e ('Grow Revenue Today', 'ad-inserter'); ?>" target="_blank"><img id="ai-je-1" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>je-1.gif" /></a>-->
@@ -6188,7 +6191,8 @@ function sidebar_pro () {
 <?php   break;
         case 1:
         ?>
-            <a href="https://adinserter.pro/documentation/amp-pages" class="clear-link" title="<?php _e ('Insert ads on AMP pages', 'ad-inserter'); ?>" target="_blank"><img id="ai-amp" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>ai-amp.png" /></a>
+<!--            <a href="https://adinserter.pro/documentation/amp-pages" class="clear-link" title="<?php _e ('Insert ads on AMP pages', 'ad-inserter'); ?>" target="_blank"><img id="ai-amp" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>ai-amp.png" /></a>-->
+            <a href='https://lhkmedia.io/servicerequest' class="clear-link" title="<?php _e ('Need ADX?', 'ad-inserter'); ?>" target="_blank"><img id="ai-lhk-25" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>lhk-25.jpg" /></a>
 <?php   break;
         case 2:
         ?>
@@ -6205,7 +6209,8 @@ function sidebar_pro () {
           <div class="ai-image-left">
 <?php switch ($version) {
         case 0: ?>
-            <a href="https://adinserter.pro/documentation/black-and-white-lists#geo-targeting" class="clear-link" title="Geotargeting - black/white-list countries" target="_blank"><img id="ai-pro-3" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>ai-countries-250.png" /></a>
+<!--            <a href="https://adinserter.pro/documentation/black-and-white-lists#geo-targeting" class="clear-link" title="Geotargeting - black/white-list countries" target="_blank"><img id="ai-pro-3" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>ai-countries-250.png" /></a>-->
+            <a href='https://lhkmedia.io/servicerequest' class="clear-link" title="<?php _e ('Need ADX?', 'ad-inserter'); ?>" target="_blank"><img id="ai-lhk-25" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>lhk-25.jpg" /></a>
 <?php   break; case 1: ?>
             <a href="https://adinserter.pro/documentation/black-and-white-lists#geo-targeting" class="clear-link" title="Geotargeting - black/white-list countries" target="_blank"><img id="ai-pro-3" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>ai-countries-250.png" /></a>
 <!--            <a href='https://publisher.dotaudiences.com/?utm_source=adinserter&utm_medium=ads&utm_campaign=adinserter' class="clear-link" title="<?php _e ('Grow Revenue Today', 'ad-inserter'); ?>" target="_blank"><img id="ai-je-1" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>je-1.gif" /></a>-->
@@ -6238,7 +6243,8 @@ function sidebar_pro () {
 <?php   break;
         case 3:
 ?>
-            <a href="https://adinserter.pro/documentation/ad-impression-and-click-tracking" class="clear-link" title="<?php _e ('A/B testing - Track ad impressions and clicks', 'ad-inserter'); ?>" target="_blank"><img id="ai-pro-2" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>ai-charts-250.png" /></a>
+<!--            <a href="https://adinserter.pro/documentation/ad-impression-and-click-tracking" class="clear-link" title="<?php _e ('A/B testing - Track ad impressions and clicks', 'ad-inserter'); ?>" target="_blank"><img id="ai-pro-2" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>ai-charts-250.png" /></a>-->
+            <a href='https://lhkmedia.io/servicerequest' class="clear-link" title="<?php _e ('Need ADX?', 'ad-inserter'); ?>" target="_blank"><img id="ai-lhk-25" src="<?php echo AD_INSERTER_PLUGIN_IMAGES_URL; ?>lhk-25.jpg" /></a>
 <?php   break;
       } ?>
           </div>

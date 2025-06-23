@@ -405,7 +405,7 @@ class WP_Members_Shortcodes {
 
 				// Adds optional wrapper.
 				if ( isset( $sanitized_atts['wrap_id'] ) || isset( $sanitized_atts['wrap_class'] ) ) {
-					$tag = ( isset( $sanitized_atts['wrap_tag'] ) ) ? $sanitized_atts['wrap_tag'] : 'div';
+					$tag = 'div';
 					$wrapper  = '<' . esc_attr( $tag );
 					$wrapper .= ( isset( $sanitized_atts['wrap_id']    ) ) ? ' id="'    . esc_attr( $sanitized_atts['wrap_id'] )    . '"' : '';
 					$wrapper .= ( isset( $sanitized_atts['wrap_class'] ) ) ? ' class="' . esc_attr( $sanitized_atts['wrap_class'] ) . '"' : '';
