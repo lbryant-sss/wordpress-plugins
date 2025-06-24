@@ -431,9 +431,10 @@
             :customersNoShowCount="customersNoShowCount"
             :packageServices="packageServices"
             :packageCustomer="packageCustomer"
+            :have-duplicate="packageCustomer.count > 0 && appointment && packageServices.map(packageService => packageService.id).indexOf(appointment.serviceId) !== -1"
             @sortBookings="sortBookings"
             @saveCallback="(response) => {appointment.id ? saveAppointmentCallback(response, true) : saveAppointmentCallback(response)}"
-            @duplicateCallback="duplicateAppointmentCallback"
+            @duplicateCallback="duplicateAppointmentCallback(appointment)"
             @closeDialog="closeDialogAppointment"
             @showDialogNewCustomer="showDialogNewCustomer()"
             @editPayment="editPayment"
@@ -1195,7 +1196,8 @@ export default {
         bookingPrice += allPayments.filter(p => p.wcOrderId && p.wcItemTaxValue).reduce((partialSum, a) => partialSum + a.wcItemTaxValue, 0)
 
         let paidAmount = allPayments.filter(p => p.status !== 'pending' && p.status !== 'refunded').reduce((partialSum, a) => partialSum + a.amount, 0)
-        if (paidAmount >= bookingPrice.toFixed(2)) {
+
+        if (Math.round(paidAmount * 100) / 100 >= Math.round(bookingPrice * 100) / 100) {
           return 'paid'
         } else if (paidAmount > 0) {
           return 'partiallyPaid'

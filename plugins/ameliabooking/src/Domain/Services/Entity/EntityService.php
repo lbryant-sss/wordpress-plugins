@@ -10,10 +10,8 @@ use AmeliaBooking\Domain\Entity\Booking\Appointment\Appointment;
 use AmeliaBooking\Domain\Entity\Booking\SlotsEntities;
 use AmeliaBooking\Domain\Entity\User\Provider;
 use AmeliaBooking\Domain\Factory\Booking\SlotsEntitiesFactory;
-use AmeliaBooking\Domain\Services\DateTime\DateTimeService;
 use AmeliaBooking\Domain\Services\Resource\AbstractResourceService;
 use AmeliaBooking\Domain\Services\User\ProviderService;
-use AmeliaBooking\Domain\ValueObjects\DateTime\DateTimeValue;
 use AmeliaBooking\Domain\ValueObjects\Duration;
 
 /**
@@ -150,7 +148,7 @@ class EntityService
      * @param Collection    $appointments
      * @param array         $props
      *
-     * @return array
+     * @return void
      * @throws InvalidArgumentException
      */
     public function filterSlotsAppointments($slotsEntities, $appointments, $props)
@@ -165,7 +163,8 @@ class EntityService
 
         /** @var Appointment $appointment */
         foreach ($appointments->getItems() as $index => $appointment) {
-            if (!in_array($appointment->getProviderId()->getValue(), $providersIds) ||
+            if (
+                !in_array($appointment->getProviderId()->getValue(), $providersIds) ||
                 (
                     $props['excludeAppointmentId'] && $index === $props['excludeAppointmentId']
                 )
@@ -173,11 +172,6 @@ class EntityService
                 $appointments->deleteItem($index);
             }
         }
-
-        $continuousAppointments = [];
-        $continuousAppointmentsProviders = [];
-
-        $lastIndex = null;
 
         /** @var Appointment $appointment */
         foreach ($appointments->getItems() as $index => $appointment) {
@@ -191,8 +185,6 @@ class EntityService
 
             $appointment->setService($providerService);
         }
-
-        return [$continuousAppointments, $continuousAppointmentsProviders];
     }
 
     /**

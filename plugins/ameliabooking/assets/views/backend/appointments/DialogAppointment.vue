@@ -164,7 +164,7 @@
                           :popper-class="'am-dropdown-cabinet'"
                           :no-data-text="$root.labels.choose_a_group_service"
                           @change="handlePersonsChange"
-                          :disabled="packageCustomer !== null || booking.packageCustomerService !== null"
+                          :disabled="packageCustomer !== null || ('packageCustomerService' in booking && booking.packageCustomerService !== null)"
                         >
                           <el-option
                             v-for="n in appointment.providerServiceMaxAdditonalCapacity"
@@ -1439,6 +1439,10 @@
                 if ('rescheduleBookingUnavailable' in e.response.data.data && e.response.data.data.rescheduleBookingUnavailable === true) {
                   $this.notify($this.$root.labels.error, $this.$root.labels.booking_reschedule_exception, 'error')
                 }
+
+                if ('customerAlreadyBooked' in e.response.data.data && e.response.data.data.customerAlreadyBooked === true) {
+                  $this.notify($this.$root.labels.error, $this.$root.labels.customer_already_booked_app, 'error')
+                }
               }, 200)
             }
           })
@@ -1547,13 +1551,13 @@
       },
 
       setCategory () {
-        this.appointment.categoryId = this.options.entities.services.filter(
+        this.appointment.categoryId = this.options.entities.services.find(
           service => service.id === this.appointment.serviceId
-        )[0].categoryId
+        ).categoryId
       },
 
       setLocation () {
-        this.appointment.locationId = this.appointment.locationId ? this.appointment.locationId : this.options.entities.employees.filter(employee => this.appointment.providerId === employee.id)[0].locationId
+        this.appointment.locationId = this.appointment.locationId ? this.appointment.locationId : this.options.entities.employees.find(employee => this.appointment.providerId === employee.id).locationId
       },
 
       closeDialog () {

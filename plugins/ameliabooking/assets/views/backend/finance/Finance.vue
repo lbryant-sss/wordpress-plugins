@@ -2147,7 +2147,7 @@ export default {
         }
 
         let paidAmount = amountData.paid
-        if (paidAmount >= bookingPrice.toFixed(2)) {
+        if (Math.round(paidAmount * 100) / 100 >= Math.round(bookingPrice * 100) / 100) {
           return {status: 'paid', total: bookingPrice}
         } else if (paidAmount > 0) {
           return {status: 'partiallyPaid', total: bookingPrice}

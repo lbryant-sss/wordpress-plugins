@@ -309,7 +309,7 @@
               filterable
               allow-create
               default-first-option
-              :no-data-text="$root.labels.create"
+              :no-data-text="$root.labels.enter_email_then_press_enter_to_add"
               @change="emailsChanged"
           >
             <el-option

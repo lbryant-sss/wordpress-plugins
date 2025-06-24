@@ -215,4 +215,28 @@ class Install {
         }
     }
 
+    /**
+     * Check if index should be rebuilt based on plugin version changes
+     *
+     * If both saved and current plugin versions are within the specified ranges,
+     * then we do not rebuild the index.
+     *
+     * @param string $savedPluginVersion
+     * @param string $currentPluginVersion
+     *
+     * @return bool
+     */
+    public static function shouldRebuildIndex_premium_only( $savedPluginVersion, $currentPluginVersion ) {
+        $versionsWithoutIndexChanges = [[
+            'min' => '1.30.1.2',
+            'max' => '1.30.1.5',
+        ]];
+        foreach ( $versionsWithoutIndexChanges as $versionRange ) {
+            if ( version_compare( $savedPluginVersion, $versionRange['min'], '>=' ) && version_compare( $savedPluginVersion, $versionRange['max'], '<=' ) && version_compare( $currentPluginVersion, $versionRange['min'], '>=' ) && version_compare( $currentPluginVersion, $versionRange['max'], '<=' ) ) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

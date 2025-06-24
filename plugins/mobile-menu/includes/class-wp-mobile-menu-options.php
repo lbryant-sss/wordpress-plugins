@@ -249,6 +249,17 @@ class WP_Mobile_Menu_Options {
                 'custom' => $custom_html,
                 'class'  => 'general-options',
             ) );
+            // Enable/Disable Svg icons.
+            $general_tab->createOption( array(
+                'name'     => __( 'Use SVG Icons (for better performance)', 'mobile-menu' ),
+                'id'       => 'enabled_svg_icons',
+                'type'     => 'enable',
+                'default'  => false,
+                'desc'     => '',
+                'enabled'  => __( 'SVG Icons (faster)', 'mobile-menu' ),
+                'disabled' => __( 'WebFont Icons (slower)', 'mobile-menu' ),
+                'class'    => 'general-options font-options',
+            ) );
             // Enable/Disable Naked Header.
             $general_tab->createOption( array(
                 'name'     => __( 'Header Style', 'mobile-menu' ),

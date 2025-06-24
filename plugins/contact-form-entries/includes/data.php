@@ -521,6 +521,9 @@ public function get_lead_detail($lead_id){
   $detail=array();
 if(is_array($detail_arr)){
   foreach($detail_arr as $v){
+      if(!empty($v['value'])){
+     $v['value']=maybe_unserialize($v['value']);     
+      }
  $detail[$v['name']]=$v;     
   }  
 }

@@ -555,6 +555,14 @@ function rescheduleBooking () {
         }, 500)
       }
 
+      if ('data' in error.response && 'data' in error.response.data && 'customerAlreadyBooked' in error.response.data.data) {
+        alertVisibility.value = true
+        alertMessage.value = props.labels.customer_already_booked_app
+        setTimeout(function () {
+          useScrollTo(rescheduleRef.value, alertContainer.value.$el, 0, 300)
+        }, 500)
+      }
+
       if ('data' in error.response && 'data' in error.response.data && 'cancelBookingUnavailable' in error.response.data.data) {
         alertVisibility.value = true
         alertMessage.value = props.labels.booking_cancel_exception

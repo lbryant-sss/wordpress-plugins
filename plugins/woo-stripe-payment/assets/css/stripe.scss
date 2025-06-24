@@ -1282,6 +1282,27 @@ input.stripe-link-icon-container {
   display: flex;
 }
 
+li.banner_payment_method_stripe_link_checkout,
+li.payment_method_stripe_link_checkout {
+  iframe {
+    max-width: calc(100% + 8px);
+  }
+}
+
+li {
+  &.payment_method_stripe_link_checkout {
+
+    &.StripeElement {
+      width: 100%;
+      min-height: 1px;
+
+      iframe {
+        max-width: calc(100% + 8px);
+      }
+    }
+  }
+}
+
 div.product .wc-stripe-bnpl-product-message {
   margin-bottom: 0.8em;
 }

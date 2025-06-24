@@ -202,23 +202,19 @@ export default {
        isValidEmail: true,
        blogPosts: [],
        changelog: {
-         version: '8.3.1',
+         version: '8.3.2',
          starter: {
            feature: [
-             'Implemented option "Allow admin to book over an existing appointment"'
            ],
            improvement: [
-             'WCAG compliance for frontend forms',
-             'Updated CustomerBookingRepository so that it accepts couponId directly'
            ],
            translations: [
            ],
            bugfix: [
-             'Fixed issue with customers resetting password when employee panel disabled',
-             'Fixed issue with phone country code when creating customers in the Employee panel',
-             'Fixed issue with payment status when service/appointment has more than one extras',
-             'Fixed issue with Amelia Popup',
-             'Fixed issue with payment status in CSV files of attendees',
+             'Fixed issue with certain slots being shown as \'Booked\' on the backend when they are available',
+             'Fixed issue with customers booking the same appointment when rescheduling',
+             'Fixed issue with dates for the “Event closes on” option',
+             'Fixed issue with \'Notify customers\' option when changing status in the edit appointment dialog',
            ],
            other: [
              'Other small bug fixes and stability improvements'
@@ -226,22 +222,18 @@ export default {
          },
          basic: {
            feature: [
-             'Social (Facebook and Google) Login/Signup including for frontend forms',
-             'Customer Custom Fields - save data related to specific customer'
            ],
            improvement: [
-             'Updated Outlook SMTP Integration to Support Modern Authentication',
-             'Updated logic to automatically assign tax to new services, events, or packages when the \'All services/events/packages\' option is selected'
+             'Enhanced and updated Stripe integration for improved performance and reliability',
+             'Added VAT number display on invoices'
            ],
            translations: [
-             'Updated French translation'
            ],
            bugfix: [
-             'Fixed issue with recurring appointments and extras on invoices',
-             'Fixed issue with events filters on the booking forms and recurring events',
-             'Fixed issue with tooltips in Outlook/Apple Integrations - event title and description',
-             'Fixed issue with Invoices and event with tickets when 100% coupon is used',
-             'Fixed issue with Mollie and cache / cacheRepository when booking events with coupons'
+             'Fixed conflict with Divi theme in connection to Google Maps Api key',
+             'Fixed issue with Outlook and Locations from custom fields',
+             'Fixed issue with payment status when WooCommerce has included taxes',
+             'Fixed issue with description format on the new WooCommerce blocks'
            ],
            other: [
            ]
@@ -254,9 +246,8 @@ export default {
            translations: [
            ],
            bugfix: [
-             'Fixed issue with services order in packages on the Customer panel',
-             "Fixed issue with Extras info on Cart when price isn't multiplied",
-             'Fixed issue with expanded info on the Cart step'
+             'Fixed issue with duplicating appointments on the Manage packages page',
+             'Fixed issue with Stripe Connect and 3D secure'
            ],
            other: [
            ]

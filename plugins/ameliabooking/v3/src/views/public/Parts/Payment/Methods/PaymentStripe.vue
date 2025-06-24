@@ -129,10 +129,6 @@ let supportsExpressCheckout = ref(false)
 let paymentRequestAvailable = ref(false)
 
 async function initializeExpressCheckout() {
-  if (!stripeObject) return
-
-  supportsExpressCheckout.value = true
-
   let checkoutPaymentData = null
 
   await httpClient.post(
@@ -149,6 +145,18 @@ async function initializeExpressCheckout() {
   }).catch(e => {
     emits('payment-error', e.message)
   })
+
+  stripePaymentInit(
+    checkoutPaymentData?.transfers?.accounts &&
+    Object.keys(checkoutPaymentData.transfers.accounts).length === 1 &&
+    checkoutPaymentData?.transfers?.method === 'direct'
+      ? Object.keys(checkoutPaymentData.transfers.accounts)[0]
+      : null
+  )
+
+  if (!stripeObject) return
+
+  supportsExpressCheckout.value = true
 
   const totalPriceParts = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -271,9 +279,13 @@ let address = null
 let amColors = inject('amColors')
 let amFonts = inject('amFonts')
 
-function stripePaymentInit () {
+function stripePaymentInit (accountId) {
   const options = {
     locale: localLanguage.value.replace('_', '-')
+  }
+
+  if (accountId) {
+    options.stripeAccount = accountId
   }
 
   stripeObject = Stripe(
@@ -470,7 +482,6 @@ watchEffect(() => {
 }, {flush: 'post'})
 
 onMounted(() => {
-  stripePaymentInit()
   initializeExpressCheckout()
 })
 

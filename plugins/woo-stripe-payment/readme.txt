@@ -4,7 +4,7 @@ Tags: stripe, klarna, credit card, apple pay, google pay
 Requires at least: 3.0.1
 Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 3.3.88
+Stable tag: 3.3.89
 Copyright: Payment Plugins
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -63,6 +63,11 @@ If your site is not loading over https, then Stripe won't render the Payment Req
 9. Stripe Link for high conversion
 
 == Changelog ==
+= 3.3.89 - 06/23/25 =
+* Added - Link Express Checkout gateway for the product, cart and checkout page. This feature has replaced the Link popup functionality. It can be enabled on the new "Link Checkout" settings page.
+* Fixed - Javascript error on Admin Order Details page when customer associated with order was changed.  [https://wordpress.org/support/topic/errors-in-admin-order-page-when-selecting-a-customer/](https://wordpress.org/support/topic/errors-in-admin-order-page-when-selecting-a-customer/)
+* Updated - Moved the Link enabled/disabled option for cards from the Advanced Settings page to the Credit Card Settings page now that there is a new Link Express Checkout gateway.
+* Removed - The Link popup feature has been replaced with our new Link Express Checkout feature, which offers a faster, more reliable one-click checkout experience similar to Apple Pay and Google Pay. This enhancement provides better conversion rates and a smoother path for your customers to complete their purchases.
 = 3.3.88 - 06/10/35 =
 * Fixed - WooCommerce 9.9.3 unexpectedly changed the operand type of the WC_Shipping_Rate $cost property, resulting in a possible PHP error. This change resolves that. [https://wordpress.org/support/topic/fatal-error-with-woocommerce-9-9-3/](https://wordpress.org/support/topic/fatal-error-with-woocommerce-9-9-3/)
 = 3.3.87 - 06/01/25 =

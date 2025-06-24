@@ -1098,6 +1098,10 @@
                       $this.notify($this.$root.labels.error, $this.$root.labels.time_slot_unavailable, 'error')
                     }
 
+                    if ('customerAlreadyBooked' in e.response.data.data && e.response.data.data.customerAlreadyBooked === true) {
+                      $this.notify($this.$root.labels.error, $this.$root.labels.customer_already_booked_app, 'error')
+                    }
+
                     if ('rescheduleBookingUnavailable' in e.response.data.data && e.response.data.data.rescheduleBookingUnavailable === true) {
                       $this.notify($this.$root.labels.error, $this.$root.labels.booking_reschedule_exception, 'error')
                     }

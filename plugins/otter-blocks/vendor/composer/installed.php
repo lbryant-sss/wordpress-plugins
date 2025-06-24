@@ -1,8 +1,8 @@
 <?php return array(
     'root' => array(
         'name' => 'codeinwp/otter-blocks',
-        'pretty_version' => '3.0.12',
-        'version' => '3.0.12.0',
+        'pretty_version' => '3.1.0',
+        'version' => '3.1.0.0',
         'reference' => null,
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
@@ -11,8 +11,8 @@
     ),
     'versions' => array(
         'codeinwp/otter-blocks' => array(
-            'pretty_version' => '3.0.12',
-            'version' => '3.0.12.0',
+            'pretty_version' => '3.1.0',
+            'version' => '3.1.0.0',
             'reference' => null,
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
@@ -29,9 +29,9 @@
             'dev_requirement' => false,
         ),
         'enshrined/svg-sanitize' => array(
-            'pretty_version' => '0.19.0',
-            'version' => '0.19.0.0',
-            'reference' => 'e95cd17be68e45f523cbfb0fe50cdd891b0cf20e',
+            'pretty_version' => '0.21.0',
+            'version' => '0.21.0.0',
+            'reference' => '5e477468fac5c5ce933dce53af3e8e4e58dcccc9',
             'type' => 'library',
             'install_path' => __DIR__ . '/../enshrined/svg-sanitize',
             'aliases' => array(),
@@ -47,9 +47,9 @@
             'dev_requirement' => false,
         ),
         'sabberworm/php-css-parser' => array(
-            'pretty_version' => 'v8.6.0',
-            'version' => '8.6.0.0',
-            'reference' => 'd2fb94a9641be84d79c7548c6d39bbebba6e9a70',
+            'pretty_version' => 'v8.8.0',
+            'version' => '8.8.0.0',
+            'reference' => '3de493bdddfd1f051249af725c7e0d2c38fed740',
             'type' => 'library',
             'install_path' => __DIR__ . '/../sabberworm/php-css-parser',
             'aliases' => array(),
@@ -74,9 +74,9 @@
             'dev_requirement' => false,
         ),
         'wptt/webfont-loader' => array(
-            'pretty_version' => 'v1.1.2',
-            'version' => '1.1.2.0',
-            'reference' => '780e564bf0554c419ef447c2b5b768b497ecee40',
+            'pretty_version' => 'v1.1.4',
+            'version' => '1.1.4.0',
+            'reference' => 'd5a7150f4e1a90c566e2e64aeae0876743be48b9',
             'type' => 'package',
             'install_path' => __DIR__ . '/../wptt/webfont-loader',
             'aliases' => array(),

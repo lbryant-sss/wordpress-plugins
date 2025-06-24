@@ -197,10 +197,10 @@ class WP_Mobile_Menu_Core {
         $icon,
         $icon_new,
         $hamburger_animation,
-        $close_icon
+        $close_icon,
+        $color
     ) {
         $menu_content = '';
-        //$menu_text    = '';
         if ( '' !== $menu_text ) {
             $menu_text = '<span class="' . $type . '-menu-icon-text">' . __( $menu_text, 'mobile-menu' ) . '</span>';
         }
@@ -226,7 +226,27 @@ class WP_Mobile_Menu_Core {
                 $menu_content .= '<img src="' . $icon_image . '" alt="' . __( ucfirst( $type ) . ' Menu Icon', 'mobile-menu' ) . '">';
                 break;
             case 'icon':
-                $menu_content .= '<i class="mob-icon-' . $icon_font . ' mob-menu-icon"></i>' . $this->mobmenu_close_button( $close_icon );
+                $icon_is_svg = $this->plugin_settings->getOption( 'enabled_svg_icons' );
+                if ( $icon_is_svg ) {
+                    $svg_icon = plugin_dir_url( __FILE__ ) . 'svg/' . $icon_font . '_mobmenu.svg';
+                    $loader = new SVGLoader(plugin_dir_path( __DIR__ ) . '/includes/svg');
+                    try {
+                        // With multiple options
+                        $menu_content .= $loader->loadWithOptions( $icon_font . '_mobmenu.svg', [
+                            'color'        => $color,
+                            'width'        => '32px',
+                            'height'       => '32px',
+                            'class'        => $icon_font,
+                            'margin-left'  => '.2em',
+                            'margin-right' => '.2em',
+                        ] );
+                        $menu_content .= $this->mobmenu_close_button( $close_icon );
+                    } catch ( Exception $e ) {
+                        echo "Error: " . $e->getMessage();
+                    }
+                } else {
+                    $menu_content .= '<i class="mob-icon-' . $icon_font . ' mob-menu-icon"></i>' . $this->mobmenu_close_button( $close_icon );
+                }
                 break;
             case 'animated-icon':
                 $menu_content .= '<button class="hamburger hamburger ' . $hamburger_animation . '" type="button" aria-label="Menu" aria-controls="navigation"><span class="hamburger-box"><span class="hamburger-inner"></span></span></button>';
@@ -302,6 +322,7 @@ class WP_Mobile_Menu_Core {
             $icon = $plugin_settings->getOption( 'left_menu_icon' );
             $icon_new = $plugin_settings->getOption( 'left_menu_icon_new' );
             $animation = $plugin_settings->getOption( 'left_menu_icon_animation' );
+            $color = $plugin_settings->getOption( 'left_menu_icon_color' );
             $left_menu_content = $this->load_mobile_menu_html(
                 'left',
                 $menu_text,
@@ -312,7 +333,8 @@ class WP_Mobile_Menu_Core {
                 $icon,
                 $icon_new,
                 $animation,
-                $close_icon
+                $close_icon,
+                $color
             );
         }
         if ( !$plugin_settings->getOption( 'disabled_logo_text' ) ) {
@@ -329,6 +351,7 @@ class WP_Mobile_Menu_Core {
             $icon = $plugin_settings->getOption( 'right_menu_icon' );
             $icon_new = $plugin_settings->getOption( 'right_menu_icon_new' );
             $animation = $plugin_settings->getOption( 'right_menu_icon_animation' );
+            $color = $plugin_settings->getOption( 'right_menu_icon_color' );
             $right_menu_content = $this->load_mobile_menu_html(
                 'right',
                 $menu_text,
@@ -339,7 +362,8 @@ class WP_Mobile_Menu_Core {
                 $icon,
                 $icon_new,
                 $animation,
-                $close_icon
+                $close_icon,
+                $color
             );
         }
         $language_selector = '';
@@ -796,7 +820,25 @@ class WP_Mobile_Menu_Core {
      * @since 2.7
      */
     public function mobmenu_close_button( $icon ) {
-        $close_button = apply_filters( 'mm_close_button_filter', '<i class="mob-icon-' . $icon . ' mob-cancel-button"></i>' );
+        $icon_is_svg = $this->plugin_settings->getOption( 'enabled_svg_icons' );
+        if ( $icon_is_svg ) {
+            $color = $this->plugin_settings->getOption( 'left_panel_cancel_button_color' );
+            $svg_icon = plugin_dir_url( __FILE__ ) . 'svg/' . $icon . '_mobmenu.svg';
+            $loader = new SVGLoader(plugin_dir_path( __DIR__ ) . '/includes/svg');
+            try {
+                // With multiple options
+                $close_button = $loader->loadWithOptions( $icon . '_mobmenu.svg', [
+                    'color'        => $color,
+                    'class'        => $icon . ' mob-cancel-button',
+                    'margin-left'  => '.2em',
+                    'margin-right' => '.2em',
+                ] );
+            } catch ( Exception $e ) {
+                echo "Error: " . $e->getMessage();
+            }
+        } else {
+            $close_button = apply_filters( 'mm_close_button_filter', '<i class="mob-icon-' . $icon . ' mob-cancel-button"></i>' );
+        }
         return $close_button;
     }
 

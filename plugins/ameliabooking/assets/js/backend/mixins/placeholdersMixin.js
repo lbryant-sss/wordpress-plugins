@@ -28,6 +28,10 @@ export default {
           {
             value: '%company_email%',
             label: this.$root.labels.ph_company_email
+          },
+          {
+            value: '%company_vat_number%',
+            label: this.$root.labels.ph_company_vat_number
           }
         ],
 

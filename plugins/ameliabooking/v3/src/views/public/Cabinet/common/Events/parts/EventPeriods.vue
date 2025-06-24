@@ -147,7 +147,7 @@
             v-model="periodsFormData.bookingOpensDate"
             :format="momentDateFormat()"
             :lang="localLanguage"
-            :disabled-date="isInPast"
+            :disabled-date="isInPeriod"
           />
         </el-form-item>
         <!-- /Opens Date -->
@@ -213,7 +213,7 @@
             v-model="periodsFormData.bookingClosesDate"
             :format="momentDateFormat()"
             :lang="localLanguage"
-            :disabled-date="isInPast"
+            :disabled-date="isInPeriod"
           />
         </el-form-item>
         <!-- /Closes Date -->
@@ -311,6 +311,14 @@ let localLanguage = inject('localLanguage')
 
 let minDate = ref(moment())
 
+function isInPeriod (value) {
+  let validEnds = periodsFormData.value.periods
+    .map(item => item.endDate)
+    .filter(end => end instanceof Date && !isNaN(end))
+
+  return moment(value) < minDate.value || moment(value) > moment(new Date(Math.max(...validEnds)))
+}
+
 function isDisabledStartDate(value, endDate) {
   const isBeforeToday = moment(value) < minDate.value
   const isAfterEndDate = endDate ? moment(value) > moment(endDate) : false
@@ -319,10 +327,6 @@ function isDisabledStartDate(value, endDate) {
 
 function isDisabledEndDate(value, startDate) {
   if (startDate) return moment(value) < moment(startDate)
-  return moment(value) < minDate.value
-}
-
-function isInPast(value) {
   return moment(value) < minDate.value
 }
 

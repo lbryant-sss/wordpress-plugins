@@ -87,6 +87,15 @@
           </el-input>
         </el-form-item>
 
+        <!-- VAT number -->
+        <el-form-item :label="$root.labels.vat_number + ':'" prop="vat">
+          <el-input
+              v-model="settings.vat"
+              placeholder=""
+          >
+          </el-input>
+        </el-form-item>
+
       </el-form>
 
 

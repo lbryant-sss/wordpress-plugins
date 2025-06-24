@@ -391,7 +391,7 @@
                         :tint-color='isCabinet ? $root.settings.customization.primaryColor : "#1A84EE"'
                         :input-props='{class: "el-input__inner", readOnly: "readonly"}'
                         :formats="vCalendarFormats"
-                        :available-dates="{start: getNowDate()}"
+                        :available-dates="{start: getNowDate(), end: getMaxEndPeriod()}"
                         @dayclick="changeBookingStartsDate"
                       >
                       </v-date-picker>
@@ -452,7 +452,7 @@
                         :tint-color='isCabinet ? $root.settings.customization.primaryColor : "#1A84EE"'
                         :input-props='{class: "el-input__inner", readOnly: "readonly"}'
                         :formats="vCalendarFormats"
-                        :available-dates="{start: getNowDate()}"
+                        :available-dates="{start: getNowDate(), end: getMaxEndPeriod()}"
                         @dayclick="changeBookingEndsDate"
                       >
                       </v-date-picker>
@@ -2240,6 +2240,14 @@
             resolve(true)
           }
         })
+      },
+
+      getMaxEndPeriod () {
+        let validEnds = this.event.periods
+          .map(item => item.range && item.range.end)
+          .filter(end => end instanceof Date && !isNaN(end))
+
+        return validEnds.length > 0 ? new Date(Math.max(...validEnds)) : null
       },
 
       calculateMinDate () {

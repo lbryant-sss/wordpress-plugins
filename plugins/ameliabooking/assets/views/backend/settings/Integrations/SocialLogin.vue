@@ -154,7 +154,7 @@ export default {
     },
 
     redirectToDocumentation () {
-      window.open('https://wpamelia.com/configuring-social-login/', '_blank')
+      window.open('https://wpamelia.com/social-login-google-facebook/', '_blank')
     },
 
     validate() {

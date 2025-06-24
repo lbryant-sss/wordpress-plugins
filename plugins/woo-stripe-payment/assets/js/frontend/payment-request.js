@@ -1,9 +1,13 @@
 (function ($, wc_stripe) {
 
+    if (typeof wc_stripe_payment_request_params === 'undefined') {
+        return;
+    }
+
     var PaymentRequest;
 
     // Product page functionality
-    if ($(document.body).is('.single-product')) {
+    if ($(document.body).is('.single-product') || wc_stripe_payment_request_params.page === 'product') {
         /**
          * [PaymentRequest description]
          */
@@ -126,7 +130,7 @@
     }
 
     // Cart page functionality
-    if ($(document.body).is('.woocommerce-cart')) {
+    if ($(document.body).is('.woocommerce-cart') || wc_stripe_payment_request_params.page === 'cart') {
         /**
          * [PaymentRequest description]
          */
@@ -180,7 +184,7 @@
     }
 
     // Checkout page functionality
-    if ($(document.body).is('.woocommerce-checkout')) {
+    if ($(document.body).is('.woocommerce-checkout') || wc_stripe_payment_request_params.page === 'checkout') {
         /**
          * [PaymentRequest description]
          */
@@ -284,10 +288,12 @@
         }
     }
 
-    var gateway = new PaymentRequest();
+    if (typeof PaymentRequest === 'function') {
+        var gateway = new PaymentRequest();
 
-    if ($(document.body).is('.single-product')) {
-        wc_stripe.product_gateways.push(gateway);
+        if ($(document.body).is('.single-product') || wc_stripe_payment_request_params.page === 'product') {
+            wc_stripe.product_gateways.push(gateway);
+        }
     }
 
 }(jQuery, window.wc_stripe))

@@ -1098,7 +1098,7 @@ abstract class WC_Payment_Gateway_Stripe extends WC_Payment_Gateway {
 	 * @param [] $data
 	 */
 	public function get_update_shipping_address_response( $data ) {
-		return apply_filters( 'wc_stripe_update_shipping_address_response', $data );
+		return $data;
 	}
 
 	/**

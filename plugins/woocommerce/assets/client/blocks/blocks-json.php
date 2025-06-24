@@ -380,7 +380,7 @@ return array(
 	'add-to-cart-form' => array(
 		'name' => 'woocommerce/add-to-cart-form',
 		'title' => 'Add to Cart with Options',
-		'description' => 'Display a button so the customer can add a product to their cart. Options will also be displayed depending on product type. e.g. quantity, variation.',
+		'description' => 'Display a button that lets customers add a product to their cart. Use the added options to optimize for different product types.',
 		'category' => 'woocommerce-product-elements',
 		'attributes' => array(
 			'quantitySelectorStyle' => array(
@@ -410,8 +410,8 @@ return array(
 	),
 	'add-to-cart-with-options' => array(
 		'name' => 'woocommerce/add-to-cart-with-options',
-		'title' => 'Add to Cart with Options (Experimental)',
-		'description' => 'Create an "Add To Cart" composition by using blocks',
+		'title' => 'Add to Cart + Options (Beta)',
+		'description' => 'Use blocks to create an "Add to cart" area that\'s customized for different product types, such as variable and grouped. ',
 		'category' => 'woocommerce-product-elements',
 		'attributes' => array(
 			'isDescendantOfAddToCartWithOptions' => array(
@@ -435,30 +435,9 @@ return array(
 		'style' => 'file:../woocommerce/add-to-cart-with-options-style.css',
 		'editorStyle' => 'file:../woocommerce/add-to-cart-with-options-editor.css'
 	),
-	'add-to-cart-with-options-grouped-product-selector' => array(
-		'name' => 'woocommerce/add-to-cart-with-options-grouped-product-selector',
-		'title' => 'Grouped Product Selector (Experimental)',
-		'description' => 'Display a group of products that can be added to the cart.',
-		'category' => 'woocommerce-product-elements',
-		'keywords' => array(
-			'WooCommerce'
-		),
-		'usesContext' => array(
-			'postId'
-		),
-		'ancestor' => array(
-			'woocommerce/add-to-cart-with-options'
-		),
-		'textdomain' => 'woocommerce',
-		'apiVersion' => 3,
-		'supports' => array(
-			'interactivity' => true
-		),
-		'$schema' => 'https://schemas.wp.org/trunk/block.json'
-	),
-	'add-to-cart-with-options-grouped-product-selector-item' => array(
-		'name' => 'woocommerce/add-to-cart-with-options-grouped-product-selector-item',
-		'title' => 'Grouped Product Selector Item Template (Experimental)',
+	'add-to-cart-with-options-grouped-product-item' => array(
+		'name' => 'woocommerce/add-to-cart-with-options-grouped-product-item',
+		'title' => 'Grouped Product: Template (Beta)',
 		'description' => 'A list item template that represents a child product within the Grouped Product Selector block.',
 		'category' => 'woocommerce-product-elements',
 		'keywords' => array(
@@ -477,12 +456,67 @@ return array(
 			'inserter' => false,
 			'interactivity' => true
 		),
-		'style' => 'file:../woocommerce/add-to-cart-with-options-grouped-product-selector-item-style.css'
+		'style' => 'file:../woocommerce/add-to-cart-with-options-grouped-product-item-style.css'
 	),
-	'add-to-cart-with-options-grouped-product-selector-item-cta' => array(
-		'name' => 'woocommerce/add-to-cart-with-options-grouped-product-selector-item-cta',
-		'title' => 'Grouped Product Selector Item CTA (Experimental)',
-		'description' => 'A CTA for a child product within the Grouped Product Selector block. Depending on the product type and properties, this might be a button, a checkbox or a link.',
+	'add-to-cart-with-options-grouped-product-item-label' => array(
+		'name' => 'woocommerce/add-to-cart-with-options-grouped-product-item-label',
+		'title' => 'Grouped Product: Item Label (Beta)',
+		'description' => 'Display the product title as a label or paragraph.',
+		'category' => 'woocommerce-product-elements',
+		'keywords' => array(
+			'WooCommerce'
+		),
+		'ancestor' => array(
+			'woocommerce/add-to-cart-with-options-grouped-product-item'
+		),
+		'textdomain' => 'woocommerce',
+		'apiVersion' => 3,
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'supports' => array(
+			'color' => array(
+				'text' => true,
+				'background' => true,
+				'gradients' => true,
+				'__experimentalDefaultControls' => array(
+					'background' => true,
+					'text' => true
+				)
+			),
+			'html' => false,
+			'layout' => array(
+				'selfStretch' => true
+			),
+			'spacing' => array(
+				'margin' => true,
+				'padding' => true,
+				'blockGap' => true
+			),
+			'typography' => array(
+				'fontSize' => true,
+				'lineHeight' => true,
+				'__experimentalFontFamily' => true,
+				'__experimentalFontWeight' => true,
+				'__experimentalFontStyle' => true,
+				'__experimentalTextTransform' => true,
+				'__experimentalTextDecoration' => true,
+				'__experimentalLetterSpacing' => true,
+				'textAlign' => true,
+				'__experimentalDefaultControls' => array(
+					'fontSize' => true,
+					'fontWeight' => true,
+					'fontStyle' => true
+				)
+			)
+		),
+		'usesContext' => array(
+			'postId',
+			'postType'
+		)
+	),
+	'add-to-cart-with-options-grouped-product-item-selector' => array(
+		'name' => 'woocommerce/add-to-cart-with-options-grouped-product-item-selector',
+		'title' => 'Grouped Product: Item Selector (Beta)',
+		'description' => 'Add a way of selecting a child product within the Grouped Product block. Depending on the type of product and its properties, this might be a button, a checkbox, or a link.',
 		'category' => 'woocommerce-product-elements',
 		'keywords' => array(
 			'WooCommerce'
@@ -491,7 +525,7 @@ return array(
 			'postId'
 		),
 		'ancestor' => array(
-			'woocommerce/add-to-cart-with-options-grouped-product-selector-item'
+			'woocommerce/add-to-cart-with-options-grouped-product-item'
 		),
 		'textdomain' => 'woocommerce',
 		'apiVersion' => 3,
@@ -500,12 +534,33 @@ return array(
 			'inserter' => false,
 			'interactivity' => true
 		),
-		'style' => 'file:../woocommerce/add-to-cart-with-options-grouped-product-selector-item-cta-style.css'
+		'style' => 'file:../woocommerce/add-to-cart-with-options-grouped-product-item-selector-style.css'
+	),
+	'add-to-cart-with-options-grouped-product-selector' => array(
+		'name' => 'woocommerce/add-to-cart-with-options-grouped-product-selector',
+		'title' => 'Grouped Product Selector (Beta)',
+		'description' => 'Display a group of products that can be added to the cart.',
+		'category' => 'woocommerce-product-elements',
+		'keywords' => array(
+			'WooCommerce'
+		),
+		'usesContext' => array(
+			'postId'
+		),
+		'ancestor' => array(
+			'woocommerce/add-to-cart-with-options'
+		),
+		'textdomain' => 'woocommerce',
+		'apiVersion' => 3,
+		'supports' => array(
+			'interactivity' => true
+		),
+		'$schema' => 'https://schemas.wp.org/trunk/block.json'
 	),
 	'add-to-cart-with-options-quantity-selector' => array(
 		'name' => 'woocommerce/add-to-cart-with-options-quantity-selector',
-		'title' => 'Quantity Selector (Experimental)',
-		'description' => 'Display an input field with stepper to select the number of products to add to cart.',
+		'title' => 'Product Quantity (Beta)',
+		'description' => 'Display an input field customers can use to select the number of products to add to their cart. ',
 		'category' => 'woocommerce-product-elements',
 		'keywords' => array(
 			'WooCommerce'
@@ -526,8 +581,8 @@ return array(
 	),
 	'add-to-cart-with-options-variation-selector' => array(
 		'name' => 'woocommerce/add-to-cart-with-options-variation-selector',
-		'title' => 'Variation Selector (Experimental)',
-		'description' => 'Display a dropdown to select a variation to add to cart.',
+		'title' => 'Variation Selector (Beta)',
+		'description' => 'Display any product variations available to select from and add to cart.',
 		'category' => 'woocommerce-product-elements',
 		'keywords' => array(
 			'WooCommerce'
@@ -545,16 +600,38 @@ return array(
 		),
 		'$schema' => 'https://schemas.wp.org/trunk/block.json'
 	),
+	'add-to-cart-with-options-variation-selector-attribute' => array(
+		'name' => 'woocommerce/add-to-cart-with-options-variation-selector-attribute',
+		'title' => 'Variation Selector: Template (Beta)',
+		'description' => 'A template for attribute name and options that will be applied to all variable products with attributes.',
+		'category' => 'woocommerce-product-elements',
+		'keywords' => array(
+			'WooCommerce'
+		),
+		'usesContext' => array(
+			'postId'
+		),
+		'ancestor' => array(
+			'woocommerce/add-to-cart-with-options-variation-selector'
+		),
+		'textdomain' => 'woocommerce',
+		'apiVersion' => 3,
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'supports' => array(
+			'inserter' => false,
+			'interactivity' => true
+		)
+	),
 	'add-to-cart-with-options-variation-selector-attribute-name' => array(
 		'name' => 'woocommerce/add-to-cart-with-options-variation-selector-attribute-name',
-		'title' => 'Variation Selector Attribute Name (Experimental)',
-		'description' => 'The name of a given variable product attribute.',
+		'title' => 'Variation Selector: Attribute Name (Beta)',
+		'description' => 'Format the name of an attribute associated with a variable product.',
 		'category' => 'woocommerce-product-elements',
 		'keywords' => array(
 			'WooCommerce'
 		),
 		'ancestor' => array(
-			'woocommerce/add-to-cart-with-options-variation-selector-item'
+			'woocommerce/add-to-cart-with-options-variation-selector-attribute'
 		),
 		'textdomain' => 'woocommerce',
 		'apiVersion' => 3,
@@ -611,18 +688,19 @@ return array(
 			'woocommerce/attributeId',
 			'woocommerce/attributeName',
 			'woocommerce/attributeTerms'
-		)
+		),
+		'style' => 'file:../woocommerce/add-to-cart-with-options-variation-selector-attribute-name-style.css'
 	),
 	'add-to-cart-with-options-variation-selector-attribute-options' => array(
 		'name' => 'woocommerce/add-to-cart-with-options-variation-selector-attribute-options',
-		'title' => 'Variation Selector Attribute Options (Experimental)',
-		'description' => 'The attribute options of a given variable product attribute.',
+		'title' => 'Variation Selector: Attribute Options (Beta)',
+		'description' => 'Display the attribute options associated with a variable product.',
 		'category' => 'woocommerce-product-elements',
 		'keywords' => array(
 			'WooCommerce'
 		),
 		'ancestor' => array(
-			'woocommerce/add-to-cart-with-options-variation-selector-item'
+			'woocommerce/add-to-cart-with-options-variation-selector-attribute'
 		),
 		'attributes' => array(
 			'style' => array(
@@ -648,28 +726,6 @@ return array(
 		),
 		'viewScriptModule' => 'woocommerce/add-to-cart-with-options-variation-selector-attribute-options',
 		'style' => 'file:../woocommerce/add-to-cart-with-options-variation-selector-attribute-options-style.css'
-	),
-	'add-to-cart-with-options-variation-selector-item' => array(
-		'name' => 'woocommerce/add-to-cart-with-options-variation-selector-item',
-		'title' => 'Variation Selector Item Template (Experimental)',
-		'description' => 'A list item template that represents an attribute within the Variation Selector block.',
-		'category' => 'woocommerce-product-elements',
-		'keywords' => array(
-			'WooCommerce'
-		),
-		'usesContext' => array(
-			'postId'
-		),
-		'ancestor' => array(
-			'woocommerce/add-to-cart-with-options-variation-selector'
-		),
-		'textdomain' => 'woocommerce',
-		'apiVersion' => 3,
-		'$schema' => 'https://schemas.wp.org/trunk/block.json',
-		'supports' => array(
-			'inserter' => false,
-			'interactivity' => true
-		)
 	),
 	'all-products' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
@@ -3235,9 +3291,6 @@ return array(
 			'woocommerce/product-filter-rating'
 		),
 		'supports' => array(
-			'color' => array(
-				'enableContrastChecker' => false
-			),
 			'interactivity' => true
 		),
 		'usesContext' => array(
@@ -3267,6 +3320,14 @@ return array(
 			'customOptionElement' => array(
 				'type' => 'string',
 				'default' => ''
+			),
+			'labelElement' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'customLabelElement' => array(
+				'type' => 'string',
+				'default' => ''
 			)
 		),
 		'viewScriptModule' => 'woocommerce/product-filter-checkbox-list',
@@ -3292,8 +3353,7 @@ return array(
 			'interactivity' => true
 		),
 		'usesContext' => array(
-			'filterData',
-			'showCounts'
+			'filterData'
 		),
 		'attributes' => array(
 			'chipText' => array(
@@ -3718,17 +3778,12 @@ return array(
 		),
 		'providesContext' => array(
 			'hoverZoom' => 'hoverZoom',
-			'fullScreenOnClick' => 'fullScreenOnClick',
-			'cropImages' => 'cropImages'
+			'fullScreenOnClick' => 'fullScreenOnClick'
 		),
 		'ancestor' => array(
 			'woocommerce/single-product'
 		),
 		'attributes' => array(
-			'cropImages' => array(
-				'type' => 'boolean',
-				'default' => false
-			),
 			'hoverZoom' => array(
 				'type' => 'boolean',
 				'default' => true
@@ -3758,17 +3813,22 @@ return array(
 		'usesContext' => array(
 			'postId',
 			'hoverZoom',
-			'fullScreenOnClick',
-			'cropImages'
+			'fullScreenOnClick'
 		),
 		'supports' => array(
 			'interactivity' => true
+		),
+		'allowedBlocks' => array(
+			'woocommerce/product-image',
+			'woocommerce/product-sale-badge',
+			'woocommerce/product-gallery-large-image-next-previous'
 		),
 		'textdomain' => 'woocommerce',
 		'ancestor' => array(
 			'woocommerce/product-gallery'
 		),
-		'viewScriptModule' => 'woocommerce/product-gallery-large-image'
+		'viewScriptModule' => 'woocommerce/product-gallery-large-image',
+		'editorStyle' => 'file:../woocommerce/product-gallery-large-image-editor.css'
 	),
 	'product-gallery-large-image-next-previous' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
@@ -3829,8 +3889,7 @@ return array(
 			'WooCommerce'
 		),
 		'usesContext' => array(
-			'postId',
-			'cropImages'
+			'postId'
 		),
 		'textdomain' => 'woocommerce',
 		'ancestor' => array(
@@ -3840,6 +3899,10 @@ return array(
 			'thumbnailSize' => array(
 				'type' => 'string',
 				'default' => '25%'
+			),
+			'aspectRatio' => array(
+				'type' => 'string',
+				'default' => '1'
 			)
 		),
 		'supports' => array(
@@ -3928,9 +3991,10 @@ return array(
 			'core/post-template'
 		),
 		'usesContext' => array(
+			'imageId',
+			'postId',
 			'query',
-			'queryId',
-			'postId'
+			'queryId'
 		),
 		'keywords' => array(
 			'WooCommerce'
@@ -4221,9 +4285,7 @@ return array(
 		'apiVersion' => 3,
 		'supports' => array(
 			'html' => false,
-			'interactivity' => array(
-				'clientNavigation' => true
-			),
+			'interactivity' => true,
 			'color' => array(
 				'text' => true,
 				'background' => true,
@@ -5150,6 +5212,10 @@ return array(
 				'type' => 'boolean',
 				'default' => false
 			),
+			'isDescendentOfSingleProductBlock' => array(
+				'type' => 'boolean',
+				'default' => false
+			),
 			'isDescendentOfSingleProductTemplate' => array(
 				'type' => 'boolean',
 				'default' => false
@@ -5190,7 +5256,6 @@ return array(
 			'__experimentalSelector' => '.wc-block-components-product-sale-badge'
 		),
 		'ancestor' => array(
-			'woocommerce/all-products',
 			'woocommerce/single-product',
 			'woocommerce/product-template',
 			'core/post-template',
@@ -6030,9 +6095,7 @@ return array(
 			'WooCommerce'
 		),
 		'supports' => array(
-			'interactivity' => array(
-				'clientNavigation' => true
-			),
+			'interactivity' => true,
 			'align' => array(
 				'wide',
 				'full'

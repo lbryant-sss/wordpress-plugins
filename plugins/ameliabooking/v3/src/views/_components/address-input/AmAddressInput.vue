@@ -97,7 +97,7 @@ let model = computed({
 let isFocus = ref(false)
 
 function googleMapsLoaded () {
-  return window.google && store.state.settings.general.gMapApiKey
+  return window.google && window.google.maps?.places && store.state.settings.general.gMapApiKey
 }
 
 function setAddressCF (val) {

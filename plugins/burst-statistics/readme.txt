@@ -97,11 +97,15 @@ Absolutely! Both free and premium plugin can be managed with composer. Read the 
 We value your feedback. You can [submit a support request on the WordPress forums](https://wordpress.org/support/plugin/burst-statistics/), and we will respond promptly.
 
 == Change log ==
+= 2.1.0 =
+* Fix: type mismatch when browser key is not in the user agent data.
+* New: Onboarding wizard for new users.
+
 = 2.0.9 =
 * Fix: incorrect "best device" conversion rate on the goals block.
 * Fix: when running tasks validation, summary warning call caused an error, due to wrong call.
 * Improvement: allow null value in admin_enqueue_scripts to prevent Visual Composer causing fatal error.
-* Improvement: changed plugin_url value to use site_url instead of get_plugin_url() to prevent mixed content. 
+* Improvement: changed plugin_url value to use site_url instead of get_plugin_url() to prevent mixed content.
 
 = 2.0.8 =
 * Fix: filtering by referrer not working.
@@ -110,7 +114,7 @@ We value your feedback. You can [submit a support request on the WordPress forum
 = 2.0.7 =
 * Fix: in some cases a php warning could be shown on the endpoint.
 * Improvement: drop option for administrators to send an email report by adding a query variable.
-* Improvement: improved efficiency of burst_find_wordpress_base_path() function
+* Improvement: improved efficiency of burst_find_wordpress_base_path() function.
 
 = 2.0.6 =
 * Improvement: optimized database upgrade.
@@ -133,6 +137,22 @@ We value your feedback. You can [submit a support request on the WordPress forum
 = 1.7.6 =
 * Fix: translations not loading correctly
 * Fix: when using the reset button, a fatal error occurred
+
+= 1.7.5 =
+* Fix: Resolved an issue where plain permalinks were not working correctly.
+* Fix: Goals were not saving the start date properly, this has been corrected.
+* Fix: Fixed the goals ID/class toggle issue for better consistency.
+* Improvement: Added a new filter for customizing datatable output.
+* Improvement: Enhanced `get_website_url()` for improved reliability.
+* Security: Applied `unslash()` to `verify_nonce` to enhance security measures.
+
+= 1.7.4 =
+* Improvement: Limit live update requests to enhance system performance.
+* Improvement: Added an option to exclude bounces, allowing users to adjust settings more easily.
+* Fix: This addresses the issue with sorting by 0 in WordPress.
+* Fix: Prevent duplication of burst post meta when Yoast Duplicate Post is used. props @dariuserdt
+* Fix: Corrects the behavior of the burst_admin_url() function when it receives a path, ensuring it is properly handled.
+* Fix: Prevent burst tracking from causing server spikes when Complianz clears cookies without consent for stats.
 
 = 1.7.3 =
 * November 18, 2024

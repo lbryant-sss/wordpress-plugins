@@ -737,6 +737,24 @@ echo $plugin_settings->getOption( 'left_icon_font_size' );
 ?>px;
 		float: left;
 	}
+	.mobmenul-container svg {
+			width: <?php 
+echo $plugin_settings->getOption( 'left_icon_font_size' );
+?>px;
+	        margin-right: .2em;
+	        margin-left: .2em;
+			padding-top: 2px;
+			float:left;
+	}
+	.show-panel svg.mob-cancel-button {
+		width: <?php 
+echo $plugin_settings->getOption( 'close_icon_font_size' );
+?>px;
+		padding: 4px;
+        margin: 6px;
+	}
+	
+
 	.left-menu-icon-text {
 		float: left;
 		line-height: <?php 
@@ -768,6 +786,15 @@ echo $plugin_settings->getOption( 'right_icon_font_size' );
 echo $plugin_settings->getOption( 'right_icon_font_size' );
 ?>px;
 		float: right;
+	}
+	.mobmenur-container svg {
+			width: <?php 
+echo $plugin_settings->getOption( 'right_icon_font_size' );
+?>px;
+	        margin-right: .2em;
+	        margin-left: .2em;
+			padding-top: 2px;
+			float: left;
 	}
 	<?php 
 echo $default_elements;

@@ -3,15 +3,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-06 15:40+0200\n"
-"PO-Revision-Date: 2025-05-21 14:27+0200\n"
+"POT-Creation-Date: 2025-06-16 10:27+0200\n"
+"PO-Revision-Date: 2025-06-03 10:08+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: vi_VN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.5\n"
 "X-Poedit-KeywordsList: __;_e;gettext;gettext_noop;_\n"
 "X-Poedit-Basepath: ../../src/Infrastructure/WP/Translations\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -34,7 +34,7 @@ msgid "All Services"
 msgstr "Tất cả Dịch vụ"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:28
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:639
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:641
 msgid "Appointment"
 msgstr "Lịch hẹn"
 
@@ -81,13 +81,13 @@ msgid ""
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:38
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1570
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1572
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:220
 msgid "Close"
 msgstr "Đóng"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:39
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1187
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1189
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:94
 msgid "Closed"
 msgstr "Đã đóng"
@@ -111,7 +111,7 @@ msgid "Coupon code"
 msgstr "Mã giảm giá"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:44
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:634
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:636
 msgid "Customer"
 msgstr "Khách hàng"
 
@@ -160,7 +160,7 @@ msgid "Years"
 msgstr "Năm"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:56
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1402
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1404
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:196
 msgid "Date"
 msgstr "Ngày"
@@ -175,7 +175,7 @@ msgid "Description"
 msgstr "Mô tả"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:59
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1223
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1225
 msgid "Details"
 msgstr "Chi tiết"
 
@@ -184,7 +184,7 @@ msgid "Disabled"
 msgstr "Tắt"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:61
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1294
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1296
 msgid "Duration"
 msgstr "Thời lượng"
 
@@ -197,14 +197,14 @@ msgid "Edit"
 msgstr "Chỉnh sửa"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:64
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:959
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:961
 msgid "example@mail.com"
 msgstr "example@mail.com"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:65
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:370
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:636
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1405
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:638
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1407
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:199
 msgid "Employee"
 msgstr "Nhân viên"
@@ -258,8 +258,8 @@ msgid "Error"
 msgstr "Lỗi"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:76
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:640
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1572
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:642
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1574
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:192
 msgid "Event"
 msgstr "Sự kiện"
@@ -274,7 +274,7 @@ msgid "Export"
 msgstr "Xuất"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:79
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:641
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:643
 msgid "Extra"
 msgstr "Thêm"
 
@@ -408,8 +408,8 @@ msgid "Lite vs Premium"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:108
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:638
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1406
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:640
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1408
 msgid "Location"
 msgstr "Địa điểm"
 
@@ -440,12 +440,12 @@ msgid "Please enter name"
 msgstr "Vui lòng nhập tên"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:115
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:863
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:865
 msgid "Name Ascending"
 msgstr "Tên (Tăng dần)"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:116
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:864
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:866
 msgid "Name Descending"
 msgstr "Tên (Giảm dần)"
 
@@ -479,7 +479,7 @@ msgid "No-show"
 msgstr "Không xuất hiện"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:124
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:950
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:952
 msgid "Note"
 msgstr "Ghi chú"
 
@@ -509,7 +509,7 @@ msgid "Opened"
 msgstr "Đã mở"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:131
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1346
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1348
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:130
 msgid "Open"
 msgstr "Mở"
@@ -531,11 +531,11 @@ msgid "Partially Paid"
 msgstr "Thanh toán một phần"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:136
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:635
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1388
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1398
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1556
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1577
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:637
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1390
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1400
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1558
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1579
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:195
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:222
 msgid "Payment"
@@ -568,8 +568,8 @@ msgid "Pending"
 msgstr "Đang chờ xử lý"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:142
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1337
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1484
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1339
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1486
 msgid "Phone"
 msgstr "Điện thoại"
 
@@ -582,7 +582,7 @@ msgid "Resources"
 msgstr "Nguồn lực"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:145
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1292
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1294
 msgid "Save"
 msgstr "Lưu"
 
@@ -601,11 +601,11 @@ msgstr "Vui lòng chọn giờ"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:149
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:372
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1362
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1367
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1364
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1369
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1404
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1534
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1371
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1406
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1536
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:178
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:181
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:198
@@ -615,8 +615,8 @@ msgstr "Dịch vụ"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:150
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:373
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1390
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1535
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1392
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1537
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:189
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:260
 msgid "Services"
@@ -635,12 +635,12 @@ msgid "Social Login"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:154
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1194
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1196
 msgid "Status"
 msgstr "Trạng thái"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:155
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:683
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:685
 msgid "Status:"
 msgstr "Trạng thái:"
 
@@ -674,7 +674,7 @@ msgid "Tomorrow"
 msgstr "Ngày mai"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:163
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1269
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1271
 msgid "Total"
 msgstr "Tổng cộng"
 
@@ -798,7 +798,7 @@ msgstr ""
 "tất."
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:202
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1283
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1285
 msgid "Address"
 msgstr "Địa chỉ"
 
@@ -957,7 +957,7 @@ msgid "Use these settings to manage frontend bookings"
 msgstr "Sử dụng các cài đặt này để quản lý đặt hẹn trước mặt"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:232
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:841
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:843
 msgid "Maximum Capacity"
 msgstr "Sức Chứa Tối Đa"
 
@@ -1107,8 +1107,8 @@ msgid "Set Coupons to be case insensitive"
 msgstr "Đặt mã giảm giá không phân biệt chữ hoa chữ thường"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:262
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1267
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1651
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1269
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1653
 msgid "Calendar"
 msgstr "Lịch"
 
@@ -1137,7 +1137,7 @@ msgid "Comma-Dot"
 msgstr "Dấu Chấm Phẩy (Chấm Thập phân)"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:268
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:633
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:635
 msgid "Company"
 msgstr "Công ty"
 
@@ -1718,7 +1718,7 @@ msgstr ""
 "báo email hoặc thông qua Bảng điều khiển Khách hàng của họ."
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:405
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1062
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1064
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:188
 msgid "Payments"
 msgstr "Thanh toán"
@@ -1764,7 +1764,7 @@ msgid "Purchase code"
 msgstr "Mã mua hàng"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:415
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:488
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:489
 #, fuzzy
 msgid "Provider Details"
 msgstr "Chi tiết Dịch vụ"
@@ -1966,7 +1966,7 @@ msgid "Set MetaData and Description"
 msgstr "Thiết lập MetaData và Mô tả"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:456
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:707
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:709
 msgid "Settings"
 msgstr "Cài đặt"
 
@@ -2087,71 +2087,75 @@ msgid "View Activation Settings"
 msgstr "Xem Cài đặt Kích hoạt"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:481
-msgid "View Appointments and Events Settings"
+msgid "VAT number"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:482
+msgid "View Appointments and Events Settings"
+msgstr ""
+
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:483
 msgid "View Company Settings"
 msgstr "Xem Cài đặt Công ty"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:483
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:484
 msgid "View General Settings"
 msgstr "Xem Cài đặt Chung"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:484
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:485
 msgid "View Integrations Settings"
 msgstr "Xem Cài đặt Tích hợp"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:485
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:486
 msgid "View Labels Settings"
 msgstr "Xem Cài đặt Nhãn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:486
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:487
 msgid "View Notifications Settings"
 msgstr "Xem Cài đặt Thông báo"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:487
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:488
 msgid "View Payments Settings"
 msgstr "Xem Cài đặt Thanh toán"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:489
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:490
 msgid "View Roles Settings"
 msgstr "Xem Cài đặt Vai trò"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:490
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:491
 #, fuzzy
 msgid "View API keys Settings"
 msgstr "Xem Cài đặt Vai trò"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:491
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:492
 msgid "Website"
 msgstr "Website"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:492
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:493
 msgid "Web Hooks"
 msgstr "Web Hooks (Kéo/Thả web)"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:493
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:494
 msgid "WP Mail"
 msgstr "WP Mail (Email WordPress)"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:494
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:495
 msgid "Hide Currency Symbol on the booking form"
 msgstr "Ẩn Ký hiệu Tiền tệ trên biểu mẫu đặt lịch"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:495
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:496
 msgid "Custom Currency Symbol"
 msgstr "Ký hiệu Tiền tệ Tùy chỉnh"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:496
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:497
 msgid "Your API key"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:497
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:498
 msgid "Booking Time Slots will depend on the service duration"
 msgstr "Khung thời gian Đặt hẹn sẽ phụ thuộc vào thời lượng dịch vụ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:498
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:499
 msgid ""
 "When this option is deactivated, the booking will be<br/>determined based on "
 "the Default Time Slot Step"
@@ -2159,204 +2163,204 @@ msgstr ""
 "Khi tùy chọn này được vô hiệu hóa, đặt hẹn sẽ được<br/>xác định dựa trên "
 "Bước Chọn Khung Thời Gian Mặc Định"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:510
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:511
 msgid "Amelia SMS"
 msgstr "Amelia SMS"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:511
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:512
 msgid "Balance:"
 msgstr "Số dư:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:512
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:513
 msgid "Your balance has been recharged"
 msgstr "Số dư của bạn đã được nạp thêm"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:513
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:514
 msgid "Carrier:"
 msgstr "Nhà mạng:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:514
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:515
 msgid "Change Alpha Sender ID"
 msgstr "Thay đổi Alpha Sender ID"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:515
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:516
 msgid "Change Password"
 msgstr "Thay đổi Mật khẩu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:516
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:517
 msgid "Cost:"
 msgstr "Chi phí:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:517
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:518
 msgid "Create New Notification"
 msgstr "Tạo Thông báo Mới"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:518
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:519
 msgid "Current Password:"
 msgstr "Mật khẩu Hiện tại:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:519
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:520
 msgid "Please enter current password"
 msgstr "Vui lòng nhập mật khẩu hiện tại"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:520
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:645
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:521
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:647
 msgid "Appointment Approved"
 msgstr "Cuộc hẹn đã được chấp nhận"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:521
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:646
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:522
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:648
 msgid "Appointment Canceled"
 msgstr "Cuộc hẹn đã bị hủy"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:522
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:523
 msgid "Appointment Follow Up"
 msgstr "Theo dõi sau Cuộc hẹn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:523
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:647
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:524
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:649
 msgid "Appointment Next Day Reminder"
 msgstr "Nhắc nhở Cuộc hẹn ngày mai"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:524
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:653
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:525
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:655
 msgid "Appointment Pending"
 msgstr "Cuộc hẹn đang chờ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:525
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:654
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:526
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:656
 msgid "Appointment Rejected"
 msgstr "Cuộc hẹn bị từ chối"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:526
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:655
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:527
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:657
 msgid "Appointment Rescheduled"
 msgstr "Cuộc hẹn đã được đặt lại"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:527
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:528
 msgid "Customer Panel Access"
 msgstr "Truy cập Bảng điều khiển Khách hàng"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:528
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:648
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:529
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:650
 msgid "Appointment Details Changed"
 msgstr "Chi tiết Cuộc hẹn đã thay đổi"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:529
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:530
 msgid "Birthday Greeting"
 msgstr "Lời chúc Sinh nhật"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:530
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:656
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:531
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:658
 msgid "Event Booked"
 msgstr "Sự kiện đã được đặt"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:531
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:657
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:532
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:659
 msgid "Event Canceled By Attendee"
 msgstr "Sự kiện bị hủy bởi người tham dự"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:532
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:533
 msgid "Event Follow Up"
 msgstr "Theo dõi sau Sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:533
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:658
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:534
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:660
 msgid "Event Next Day Reminder"
 msgstr "Nhắc nhở Sự kiện ngày mai"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:534
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:659
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:535
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:661
 msgid "Event Canceled By Admin"
 msgstr "Sự kiện bị hủy bởi Quản trị viên"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:535
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:660
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:536
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:662
 msgid "Event Rescheduled"
 msgstr "Sự kiện đã được đặt lại"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:536
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:661
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:537
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:663
 msgid "Event Details Changed"
 msgstr "Chi tiết Sự kiện đã thay đổi"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:537
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:539
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:538
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:540
 msgid "Other"
 msgstr "Khác"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:538
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:662
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:539
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:664
 msgid "Event Waiting List"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:540
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:632
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:541
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:634
 #, fuzzy
 msgid "Cart Purchase"
 msgstr "Ngày Mua"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:541
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:542
 msgid "Booking Invoice"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:542
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:649
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:543
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:651
 msgid "Package Canceled"
 msgstr "Gói đã hủy"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:543
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:650
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:544
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:652
 msgid "Package Purchased"
 msgstr "Gói đã mua"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:544
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:545
 msgid "Customize SMS"
 msgstr "Tùy chỉnh SMS"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:545
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:546
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:104
 msgid "Date:"
 msgstr "Ngày:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:546
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:547
 msgid "Don't have an account?"
 msgstr "Chưa có tài khoản?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:547
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:548
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:106
 msgid "Email:"
 msgstr "Email:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:548
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:549
 msgid "Email Notifications"
 msgstr "Thông báo qua Email"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:549
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:550
 msgid "Please enter password"
 msgstr "Vui lòng nhập mật khẩu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:550
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:551
 msgid "Please enter recipient phone"
 msgstr "Vui lòng nhập số điện thoại người nhận"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:551
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:552
 msgid "Forgot Password?"
 msgstr "Quên mật khẩu?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:552
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:553
 msgid "You have entered an incorrect email"
 msgstr "Bạn đã nhập một email không chính xác"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:553
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:554
 msgid "You have entered an incorrect password"
 msgstr "Bạn đã nhập mật khẩu không chính xác"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:554
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:555
 msgid "Insert email placeholders"
 msgstr "Chèn dấu chỗ email"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:555
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:556
 msgid ""
 "Choose one of the placeholders from the lists below, click on it to copy and "
 "then paste into the template."
@@ -2364,258 +2368,262 @@ msgstr ""
 "Chọn một trong các dấu chỗ từ danh sách dưới đây, nhấp vào nó để sao chép và "
 "sau đó dán vào mẫu."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:556
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:557
 msgid "Logout"
 msgstr "Đăng xuất"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:557
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:558
 msgid "Message:"
 msgstr "Tin nhắn:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:558
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:559
 msgid "messages"
 msgstr "tin nhắn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:559
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:560
 msgid "New Password:"
 msgstr "Mật khẩu mới:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:560
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:561
 msgid "Please enter new password"
 msgstr "Vui lòng nhập mật khẩu mới"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:561
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:562
 msgid "Notification has been saved"
 msgstr "Thông báo đã được lưu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:562
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:563
 msgid "Notification Template"
 msgstr "Mẫu thông báo"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:563
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:564
 msgid "Notifications"
 msgstr "Thông báo"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:564
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:565
 msgid "Password:"
 msgstr "Mật khẩu:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:565
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:566
 msgid "Payment History"
 msgstr "Lịch sử thanh toán"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:566
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:567
 msgid "Date of the appointment"
 msgstr "Ngày của cuộc hẹn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:567
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:568
 msgid "Date & Time of the appointment"
 msgstr "Ngày & Giờ của cuộc hẹn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:568
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:569
 msgid "Duration of the appointment"
 msgstr "Thời lượng của cuộc hẹn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:569
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:570
 msgid "End time of the appointment"
 msgstr "Thời gian Kết thúc của cuộc hẹn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:570
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:571
 msgid "Id of the appointment"
 msgstr "ID của cuộc hẹn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:571
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:572
 msgid "Payment due amount"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:572
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:573
 msgid "Appointment notes"
 msgstr "Ghi chú cuộc hẹn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:573
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:574
 msgid "Appointment price"
 msgstr "Giá cuộc hẹn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:574
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:575
 msgid "Payment type"
 msgstr "Loại thanh toán"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:575
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:576
 msgid "Status of the appointment"
 msgstr "Trạng thái của cuộc hẹn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:576
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:577
 msgid "Start time of the appointment"
 msgstr "Thời gian bắt đầu của cuộc hẹn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:577
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:578
 msgid "Attendee code"
 msgstr "Mã tham dự viên"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:578
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:579
 msgid "Booked Customer (full name, email, phone)"
 msgstr "Khách hàng đã đặt (họ và tên đầy đủ, email, điện thoại)"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:579
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1193
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:580
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1195
 msgid "Number of people"
 msgstr "Số người"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:580
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:581
 #, fuzzy
 msgid "Category ID"
 msgstr "Thể loại"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:581
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:582
 msgid "Category name"
 msgstr "Tên danh mục"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:582
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:583
 msgid "Company address"
 msgstr "Địa chỉ công ty"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:583
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:584
 msgid "Company name"
 msgstr "Tên công ty"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:584
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:585
 msgid "Company phone"
 msgstr "Điện thoại công ty"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:585
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:586
 msgid "Company website"
 msgstr "Trang web công ty"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:586
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:587
 msgid "Company email"
 msgstr "Email công ty"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:587
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:588
+msgid "Company VAT number"
+msgstr ""
+
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:589
 msgid "Customer email"
 msgstr "Email khách hàng"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:588
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:590
 msgid "Customer first name"
 msgstr "Tên khách hàng đầu tiên"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:589
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:591
 msgid "Customer full name"
 msgstr "Họ và tên đầy đủ của khách hàng"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:590
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:592
 msgid "Customer last name"
 msgstr "Tên khách hàng cuối cùng"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:591
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:593
 msgid "Customer note"
 msgstr "Ghi chú của khách hàng"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:592
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:594
 msgid "Customer phone"
 msgstr "Điện thoại của khách hàng"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:593
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:595
 msgid "Employee description"
 msgstr "Mô tả nhân viên"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:594
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:596
 #, fuzzy
 msgid "Employee ID"
 msgstr "Nhân viên"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:595
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:597
 msgid "Employee email"
 msgstr "Email nhân viên"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:596
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:598
 msgid "Employee first name"
 msgstr "Tên nhân viên đầu tiên"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:597
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:599
 msgid "Employee full name"
 msgstr "Họ và tên đầy đủ của nhân viên"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:598
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:600
 msgid "Employee last name"
 msgstr "Tên nhân viên cuối cùng"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:599
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:601
 msgid "Employee name, email & phone"
 msgstr "Tên, email & điện thoại của nhân viên"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:600
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:602
 msgid "Employee note"
 msgstr "Ghi chú của nhân viên"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:601
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:603
 msgid "Employee phone"
 msgstr "Điện thoại của nhân viên"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:602
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:604
 msgid "Event description"
 msgstr "Mô tả sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:603
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1345
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:605
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1347
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:236
 msgid "Event Location"
 msgstr "Địa điểm sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:604
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:606
 msgid "End date of the event"
 msgstr "Ngày kết thúc của sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:605
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:607
 msgid "End date & time of the event"
 msgstr "Ngày & giờ kết thúc của sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:606
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:608
 msgid "End time of the event"
 msgstr "Thời gian kết thúc của sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:607
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1573
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:609
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1575
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:194
 msgid "Event ID"
 msgstr "ID Sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:608
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:610
 msgid "Event name"
 msgstr "Tên sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:609
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:611
 msgid "Date period of the event"
 msgstr "Khoảng thời gian của sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:610
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:612
 msgid "Date & Time period of the event"
 msgstr "Ngày & giờ của sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:611
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:613
 msgid "Event price"
 msgstr "Giá sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:612
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:614
 msgid "Booking price"
 msgstr "Giá đặt lịch"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:613
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:615
 msgid "Start date of the event"
 msgstr "Ngày bắt đầu của sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:614
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:616
 msgid "Start date & time of the event"
 msgstr "Ngày & giờ bắt đầu của sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:615
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:617
 msgid "Start time of the event"
 msgstr "Thời gian bắt đầu của sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:616
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:618
 msgid "Group event details"
 msgstr "Chi tiết về sự kiện nhóm"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:617
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:619
 msgid ""
 "Set what details you want to send to your customers/employees about their "
 "recurring appointments."
@@ -2623,38 +2631,38 @@ msgstr ""
 "Thiết lập thông tin bạn muốn gửi đến khách hàng/nhân viên của mình về các "
 "cuộc hẹn định kỳ của họ."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:618
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:620
 msgid "Service description"
 msgstr "Mô tả Dịch vụ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:619
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:621
 msgid "Service duration"
 msgstr "Thời lượng Dịch vụ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:620
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:622
 #, fuzzy
 msgid "Service ID"
 msgstr "Dịch vụ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:621
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1340
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:623
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1342
 msgid "Service name"
 msgstr "Tên Dịch vụ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:622
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:624
 msgid "Service price"
 msgstr "Giá Dịch vụ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:623
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:625
 msgid "Time Zone"
 msgstr "Múi giờ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:624
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:626
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:131
 msgid "Phone:"
 msgstr "Số điện thoại:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:625
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:627
 msgid ""
 "Effective September 30th, SMS providers will implement charges for failed "
 "message deliveries. To help minimize the occurrence of failed messages, "
@@ -2680,114 +2688,114 @@ msgid ""
 "help minimize costs."
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:637
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1113
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1368
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:639
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1115
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1370
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:180
 msgid "Category"
 msgstr "Thể loại"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:642
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:644
 msgid "Placeholder Copied"
 msgstr "Chỗ trống đã được sao chép"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:643
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:847
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:917
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1249
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:645
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:849
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:919
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1251
 msgid "Price"
 msgstr "Giá"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:644
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1186
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:646
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1188
 msgid "Pricing"
 msgstr "Giá cả"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:651
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:653
 msgid "Employee Panel Access"
 msgstr "Truy cập Bảng quản trị Nhân viên"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:652
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:654
 msgid "Employee Panel Recovery"
 msgstr "Khôi phục Bảng quản trị Nhân viên"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:663
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:665
 msgid "Queued"
 msgstr "Đang chờ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:664
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:666
 msgid "Please enter new password again"
 msgstr "Vui lòng nhập mật khẩu mới lần nữa"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:665
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:667
 msgid "Recharge"
 msgstr "Nạp tiền"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:666
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:668
 msgid "Recharge Balance"
 msgstr "Nạp lại Số dư"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:667
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:669
 msgid "Recipient Email"
 msgstr "Email Người nhận"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:668
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:670
 msgid "Refresh"
 msgstr "Làm mới"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:669
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:671
 msgid "Requires Scheduling Setup"
 msgstr "Yêu cầu Cài đặt Lịch trình"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:670
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:672
 msgid "Re-type New Password:"
 msgstr "Nhập lại Mật khẩu mới:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:671
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:673
 msgid "Security"
 msgstr "Bảo mật"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:672
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:674
 msgid "Segments:"
 msgstr "Đoạn:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:673
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:675
 msgid "Send"
 msgstr "Gửi"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:674
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:676
 msgid "Send Recovery Email"
 msgstr "Gửi Email Khôi phục"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:675
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:677
 msgid "Send Test Email"
 msgstr "Gửi Email Thử nghiệm"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:676
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:678
 msgid "Send Test SMS"
 msgstr "Gửi SMS Thử nghiệm"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:677
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:679
 msgid "Alpha Sender ID:"
 msgstr "ID Người gửi Alpha:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:678
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:680
 msgid "Sign In"
 msgstr "Đăng Nhập"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:679
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:681
 msgid "Sign Up"
 msgstr "Đăng Ký"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:680
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:682
 msgid "SMS History"
 msgstr "Lịch sử SMS"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:681
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:683
 msgid "SMS Notifications"
 msgstr "Thông báo SMS"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:682
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:684
 msgid ""
 "If you are from a country where VAT or GST applies, a VAT/GST charge will be "
 "added to the transaction."
@@ -2795,19 +2803,19 @@ msgstr ""
 "Nếu bạn đến từ một quốc gia nơi áp dụng VAT hoặc GST, một khoản phí VAT/GST "
 "sẽ được thêm vào giao dịch."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:684
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:686
 msgid "Subject"
 msgstr "Chủ đề"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:685
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:687
 msgid "Email has not been sent"
 msgstr "Email không được gửi đi"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:686
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:688
 msgid "Email has been sent"
 msgstr "Email đã được gửi đi"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:687
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:689
 msgid ""
 "To be able to send test email please configure \"Sender Email\" in "
 "Notification Settings."
@@ -2815,52 +2823,52 @@ msgstr ""
 "Để có thể gửi email thử nghiệm, vui lòng cấu hình \"Email Người Gửi\" trong "
 "Cài đặt Thông báo."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:688
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:690
 msgid "To be able to send test SMS please recharge your balance."
 msgstr "Để có thể gửi SMS thử nghiệm, vui lòng nạp tiền vào tài khoản của bạn."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:689
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:691
 msgid "Text:"
 msgstr "Văn bản:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:690
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1224
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:692
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1226
 msgid "Time:"
 msgstr "Thời gian:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:691
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:693
 msgid "To Customer"
 msgstr "Đến Khách hàng"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:692
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:694
 msgid "To Employee"
 msgstr "Đến Nhân viên"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:693
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:695
 msgid "User:"
 msgstr "Người Dùng:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:694
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:696
 msgid "User Profile"
 msgstr "Hồ Sơ Người Dùng"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:695
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:697
 msgid "View pricing for:"
 msgstr "Xem giá cho:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:696
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:698
 msgid "View Profile"
 msgstr "Xem Hồ sơ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:697
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:699
 msgid "Permanent access token"
 msgstr "Mã thông báo cố định"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:698
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:700
 msgid "Enable Auto-reply message"
 msgstr "Bật tin nhắn Trả lời tự động"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:699
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:701
 msgid ""
 "Messages sent through WhatsApp are without a reply option, so we advise "
 "setting the “Auto-Reply” message"
@@ -2868,71 +2876,71 @@ msgstr ""
 "Tin nhắn được gửi qua WhatsApp không có tùy chọn trả lời, vì vậy chúng tôi "
 "khuyên bạn nên đặt \"Tin nhắn Trả lời Tự động\""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:700
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:702
 msgid "WhatsApp Webhook Verify Token"
 msgstr "Mã xác nhận Webhook WhatsApp"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:701
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:703
 msgid "WhatsApp Auto-reply message"
 msgstr "Tin nhắn Trả lời Tự động WhatsApp"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:702
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:704
 msgid "WhatsApp Business Account ID"
 msgstr "ID Tài Khoản Doanh Nghiệp WhatsApp"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:703
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:705
 msgid "Default language"
 msgstr "Ngôn ngữ mặc định"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:704
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:706
 msgid "WhatsApp Notifications"
 msgstr "Thông báo WhatsApp"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:705
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:707
 msgid "Enable WhatsApp Notifications"
 msgstr "Bật Thông báo WhatsApp"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:706
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:708
 msgid "Phone number ID"
 msgstr "ID Số Điện thoại"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:708
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:710
 msgid "WhatsApp Webhook Callback URL"
 msgstr "URL Gọi lại Webhook WhatsApp"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:720
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:722
 msgid "# of appointments"
 msgstr "# cuộc hẹn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:721
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:723
 msgid "Sum of payments"
 msgstr "Tổng số tiền thanh toán"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:722
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:724
 msgid "# of Hours in appointment"
 msgstr "# Giờ trong cuộc hẹn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:723
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:725
 #, fuzzy, php-format
 msgid "% of load"
 msgstr "% tải"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:724
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:726
 msgid "Approved Appointments"
 msgstr "Cuộc hẹn đã được xác nhận"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:725
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:727
 msgid ""
 "Indicates the number of approved appointments<br/>for a chosen date range."
 msgstr ""
 "Cho biết số lượng cuộc hẹn đã được xác nhận<br/>trong khoảng thời gian đã "
 "chọn."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:726
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:728
 msgid "Interests / Conversions"
 msgstr "Sở thích / Chuyển đổi"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:727
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:729
 msgid ""
 "Shows the number of views for the employee/service/location<br/>vs. the "
 "number of times they were booked during<br/>the selected date range."
@@ -2940,7 +2948,7 @@ msgstr ""
 "Hiển thị số lượng xem của nhân viên/dịch vụ/địa điểm<br/>so với số lần họ "
 "được đặt lịch trong<br/>khoảng thời gian đã chọn."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:728
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:730
 msgid ""
 "Indicates the number of new and returning customers<br/>for the selected "
 "date range."
@@ -2948,37 +2956,37 @@ msgstr ""
 "Cho biết số lượng khách hàng mới và quay lại<br/>trong khoảng thời gian đã "
 "chọn."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:729
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:731
 msgid "Dashboard"
 msgstr "Bảng Điều Khiển"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:730
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:732
 #, fuzzy
 msgid "Grab Yours"
 msgstr "Giờ Nghỉ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:731
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:733
 msgid "New"
 msgstr "Mới"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:732
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:734
 msgid "You don't have any upcoming appointments yet"
 msgstr "Bạn chưa có bất kỳ cuộc hẹn sắp tới nào"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:733
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:735
 msgid "Don't show again"
 msgstr "Không hiển thị lại"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:734
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:973
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:736
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:975
 msgid "Pending Appointments"
 msgstr "Cuộc hẹn đang chờ xử lý"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:735
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:737
 msgid "Percentage of Load"
 msgstr "Tỉ lệ Tải"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:736
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:738
 msgid ""
 "Indicates the percentage of occupied time against available time for "
 "appointments<br/>in the chosen date range."
@@ -2986,213 +2994,213 @@ msgstr ""
 "Cho biết tỷ lệ thời gian đã chiếm đóng so với thời gian khả dụng cho cuộc "
 "hẹn<br/>trong khoảng thời gian đã chọn."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:737
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:739
 msgid "Returning"
 msgstr "Quay lại"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:738
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:740
 msgid "Revenue"
 msgstr "Doanh thu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:739
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:741
 msgid ""
 "Shows the total income for paid appointments<br/>in the chosen date range."
 msgstr ""
 "Hiển thị tổng thu nhập từ các cuộc hẹn có phí<br/>trong khoảng thời gian đã "
 "chọn."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:740
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1146
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1250
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:742
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1148
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1252
 msgid "Time"
 msgstr "Thời gian"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:741
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:743
 msgid "Views"
 msgstr "Lượt xem"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:742
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:744
 msgid "Hello"
 msgstr "Xin chào"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:743
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:745
 msgid "You have"
 msgstr "Bạn có"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:744
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:746
 msgid "and"
 msgstr "và"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:745
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:747
 msgid "for today"
 msgstr "cho hôm nay"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:746
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:748
 msgid "Upcoming appointments"
 msgstr "Cuộc hẹn sắp tới"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:758
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:763
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:760
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:765
 msgid "Add Day Off"
 msgstr "Thêm Ngày Nghỉ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:759
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:761
 msgid "Add Special Day"
 msgstr "Thêm Ngày đặc biệt"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:760
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:762
 msgid "Add Period"
 msgstr "Thêm Kỳ nghỉ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:761
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:763
 msgid "Apply to All Days"
 msgstr "Áp dụng cho Tất cả các Ngày"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:762
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:764
 msgid "Breaks"
 msgstr "Thời gian Nghỉ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:764
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:766
 msgid "Day Off name"
 msgstr "Tên Ngày Nghỉ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:765
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:767
 msgid "Repeat Yearly"
 msgstr "Lặp Lại Hằng Năm"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:766
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:768
 msgid "Days Off"
 msgstr "Ngày Nghỉ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:767
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:769
 msgid "Once Off"
 msgstr "Một lần"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:768
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:770
 msgid "Repeat Every Year"
 msgstr "Lặp lại mỗi năm"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:769
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:771
 msgid "Save Special Day"
 msgstr "Lưu Ngày Đặc Biệt"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:770
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:772
 msgid "Please enter date"
 msgstr "Vui lòng nhập ngày"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:771
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:773
 msgid "Please enter end time"
 msgstr "Vui lòng nhập thời gian kết thúc"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:772
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:774
 msgid "Please enter start time"
 msgstr "Vui lòng nhập thời gian bắt đầu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:773
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:775
 msgid "Work Hours"
 msgstr "Giờ Làm Việc"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:774
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:776
 msgid "Break Hours"
 msgstr "Giờ Nghỉ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:786
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:788
 msgid "Hide"
 msgstr "Ẩn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:787
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1631
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:789
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1633
 msgid "Show"
 msgstr "Hiển thị"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:788
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:790
 msgid "Block"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:789
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:791
 msgid "Unblock"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:801
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:803
 msgid "Add Location"
 msgstr "Thêm Địa Điểm"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:802
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:804
 msgid "Search Locations..."
 msgstr "Tìm Kiếm Địa Điểm..."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:814
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:816
 msgid "Add Category"
 msgstr "Thêm Danh Mục"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:815
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1282
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:817
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1284
 msgid "Add Extra"
 msgstr "Thêm Bổ Sung"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:816
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:818
 msgid "Add Image"
 msgstr "Thêm Hình Ảnh"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:817
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:819
 msgid "Add Package"
 msgstr "Thêm Gói"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:818
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:820
 msgid "Add Service"
 msgstr "Thêm Dịch Vụ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:819
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:821
 msgid "Add Resource"
 msgstr "Thêm Nguồn Lực"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:820
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1491
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:822
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1493
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:248
 msgid "Categories"
 msgstr "Danh Mục"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:821
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:823
 msgid "Categories positions has been saved"
 msgstr "Vị trí danh mục đã được lưu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:822
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:824
 msgid "Category has been deleted"
 msgstr "Danh mục đã bị xóa"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:823
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:825
 msgid "Category has been duplicated"
 msgstr "Danh mục đã được nhân đôi"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:824
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:826
 msgid "Category has been saved"
 msgstr "Danh mục đã được lưu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:825
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:827
 msgid "Start by clicking the Add Category button"
 msgstr "Bắt đầu bằng cách nhấp vào nút Thêm Danh Mục"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:826
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:828
 msgid "Start by clicking the Add Package button"
 msgstr "Bắt đầu bằng cách nhấp vào nút Thêm Gói"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:827
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:829
 msgid "Start by clicking the Add Resource button"
 msgstr "Bắt đầu bằng cách nhấp vào nút Thêm Nguồn Lực"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:828
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:830
 msgid "Start by clicking the Add Service button"
 msgstr "Bắt đầu bằng cách nhấp vào nút Thêm Dịch Vụ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:829
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:831
 msgid "Are you sure you want to delete this service?"
 msgstr "Bạn có chắc chắn muốn xóa dịch vụ này không?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:830
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:832
 msgid "Are you sure you want to duplicate this service?"
 msgstr "Bạn có chắc chắn muốn nhân đôi dịch vụ này không?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:831
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:833
 msgid ""
 "You will change a setting which is also set for each employee separately. Do "
 "you want to update it for all employees?"
@@ -3200,86 +3208,86 @@ msgstr ""
 "Bạn sẽ thay đổi một cài đặt cũng được đặt cho mỗi nhân viên một cách riêng "
 "lẻ. Bạn có muốn cập nhật nó cho tất cả nhân viên không?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:832
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:834
 msgid "Are you sure you want to hide this service?"
 msgstr "Bạn có chắc chắn muốn ẩn dịch vụ này không?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:833
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:835
 msgid "Are you sure you want to show this service?"
 msgstr "Bạn có chắc chắn muốn hiển thị dịch vụ này không?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:834
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:836
 #, fuzzy
 msgid "Are you sure you want to delete this category?"
 msgstr "Bạn có chắc chắn muốn xóa danh mục này không"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:835
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:837
 #, fuzzy
 msgid "Are you sure you want to duplicate this category?"
 msgstr "Bạn có chắc chắn muốn nhân đôi địa điểm này không?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:836
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:838
 msgid "Duration & Pricing "
 msgstr "Thời lượng & Giá cả"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:837
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:839
 msgid "Edit Service"
 msgstr "Chỉnh sửa Dịch Vụ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:838
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:840
 #, fuzzy
 msgid "Edit Category"
 msgstr "Thêm Danh Mục"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:839
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:841
 msgid "Gallery"
 msgstr "Bộ sưu tập"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:840
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:842
 msgid "Hex"
 msgstr "Màu Hex"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:842
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:844
 msgid "Here you can set the maximum number of people<br/>per one appointment."
 msgstr "Ở đây, bạn có thể đặt số lượng người tối đa<br/>mỗi cuộc hẹn."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:843
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:845
 msgid "Minimum Capacity"
 msgstr "Sức Chứa Tối Thiểu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:844
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:846
 msgid ""
 "Here you can set the minimum number of people<br/>per one booking of this "
 "service."
 msgstr ""
 "Ở đây, bạn có thể đặt số lượng người tối thiểu<br/>mỗi lần đặt dịch vụ này."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:845
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:847
 msgid "New Category"
 msgstr "Danh Mục Mới"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:846
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:848
 msgid "New Service"
 msgstr "Dịch Vụ Mới"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:848
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1461
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:850
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1463
 msgid "+more"
 msgstr "(Cộng) thêm "
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:849
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:851
 msgid "Please select duration"
 msgstr "Vui lòng chọn thời lượng"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:850
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:852
 msgid "Please select category"
 msgstr "Vui lòng chọn danh mục"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:851
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:853
 msgid "Buffer Time After"
 msgstr "Thời gian đệm Sau"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:852
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:854
 msgid ""
 "Time after the appointment (rest, clean up, etc.),<br/>when another booking "
 "for same service and<br/>employee cannot be made."
@@ -3287,11 +3295,11 @@ msgstr ""
 "Thời gian sau cuộc hẹn (nghỉ, dọn dẹp, v.v.), khi không thể đặt cuộc hẹn "
 "khác cho cùng một dịch vụ và nhân viên."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:853
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:855
 msgid "Buffer Time Before"
 msgstr "Thời gian đệm Trước"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:854
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:856
 msgid ""
 "Time needed to prepare for the appointment, when<br/>another booking for "
 "same service and employee<br/>cannot be made."
@@ -3299,51 +3307,51 @@ msgstr ""
 "Thời gian cần để chuẩn bị cho cuộc hẹn, khi không thể đặt cuộc hẹn khác cho "
 "cùng một dịch vụ và nhân viên."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:855
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:857
 msgid "Service has been deleted"
 msgstr "Dịch vụ đã bị xóa"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:856
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:858
 msgid "Service is hidden"
 msgstr "Dịch vụ đã bị ẩn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:857
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:859
 msgid "Service has been saved"
 msgstr "Dịch vụ đã được lưu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:858
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:860
 msgid "Service is visible"
 msgstr "Dịch vụ có thể nhìn thấy"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:859
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:861
 msgid "Services positions has been saved"
 msgstr "Vị trí Dịch vụ đã được lưu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:860
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:862
 msgid "Unable to save services positions"
 msgstr "Không thể lưu vị trí Dịch vụ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:861
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:863
 msgid "Sort Services:"
 msgstr "Sắp xếp Dịch vụ:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:862
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:864
 msgid "Custom"
 msgstr "Tùy chỉnh"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:865
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:867
 msgid "Price Ascending"
 msgstr "Giá tăng dần"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:866
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:868
 msgid "Price Descending"
 msgstr "Giá giảm dần"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:867
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:869
 msgid "Show service on site"
 msgstr "Hiển thị dịch vụ trên trang web"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:868
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:870
 msgid ""
 "If this option is disabled, service will be available for booking from back-"
 "end pages only."
@@ -3351,11 +3359,11 @@ msgstr ""
 "Nếu tùy chọn này bị tắt, dịch vụ sẽ chỉ có sẵn để đặt lịch từ các trang quản "
 "lý."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:869
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:871
 msgid "Set recurring appointment"
 msgstr "Đặt cuộc hẹn định kỳ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:870
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:872
 msgid ""
 "If this option is disabled, your customers won't be able to book recurring "
 "appointments at the same time."
@@ -3363,66 +3371,66 @@ msgstr ""
 "Nếu tùy chọn này bị tắt, khách hàng của bạn sẽ không thể đặt lịch các cuộc "
 "hẹn định kỳ cùng một lúc."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:871
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:919
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:873
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:921
 msgid "Provider has appointments for this service"
 msgstr "Nhà cung cấp có cuộc hẹn cho dịch vụ này"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:883
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:885
 msgid "Create New"
 msgstr "Tạo Mới"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:884
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1335
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1483
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:886
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1337
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1485
 msgid "Email"
 msgstr "Email"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:885
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1380
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:887
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1382
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:110
 msgid "Please enter first name"
 msgstr "Vui lòng nhập tên "
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:886
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1382
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:888
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1384
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:111
 msgid "Please enter last name"
 msgstr "Vui lòng nhập họ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:887
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1332
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1481
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:889
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1334
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1483
 msgid "First Name"
 msgstr "Tên"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:888
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1333
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1482
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:890
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1335
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1484
 msgid "Last Name"
 msgstr "Họ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:889
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:891
 msgid "Female"
 msgstr "Nữ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:890
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:892
 msgid "Male"
 msgstr "Nam"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:891
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:893
 msgid "Notification Language"
 msgstr "Ngôn ngữ Thông báo"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:892
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:894
 msgid "Select or Create New"
 msgstr "Chọn hoặc Tạo Mới"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:893
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:895
 msgid "WordPress User"
 msgstr "Người Dùng WordPress"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:894
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:896
 msgid ""
 "Here you can map a WordPress user to the customer if<br/>you want to give "
 "customers access to the list of their<br/>appointments in the back-end of "
@@ -3432,7 +3440,7 @@ msgstr ""
 "muốn cung cấp quyền truy cập cho khách hàng vào danh sách các cuộc hẹn của "
 "họ <br/>trong bảng quản trị nội bộ của plugin."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:895
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:897
 msgid ""
 "Here you can map a WordPress user to the employee if<br/>you want to give "
 "employee access to the list of their<br/>appointments in the back-end of the "
@@ -3442,7 +3450,7 @@ msgstr ""
 "cung cấp quyền truy cập cho nhân viên vào danh sách các cuộc hẹn của họ <br/"
 ">  trong bảng quản trị nội bộ của plugin"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:896
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:898
 msgid ""
 "This is the language in which the customer will receive notifications for "
 "bookings made on the admin/employee panel. It is preselected if the customer "
@@ -3454,32 +3462,32 @@ msgstr ""
 "khách hàng đã đặt lịch trên một trang trong ngôn ngữ có sẵn trong thông báo "
 "Amelia, hoặc nó có thể được đặt ở đây."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:908
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:910
 msgid "Assigned Services"
 msgstr "Dịch vụ Đã Phân Công"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:909
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:911
 msgid "Capacity"
 msgstr "Sức Chứa"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:910
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:912
 #, fuzzy
 msgid "Provider Settings"
 msgstr "Cài đặt Vai trò"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:911
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:913
 msgid "Employee has been saved"
 msgstr "Nhân Viên đã được lưu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:912
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:914
 msgid "Employee Panel Password"
 msgstr "Mật khẩu Bảng Nhân Viên"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:913
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:915
 msgid "Applied for all assigned services"
 msgstr "Áp dụng cho tất cả các dịch vụ đã được gán"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:914
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:916
 msgid ""
 "Select only specific services for this period.<br/>If no services are "
 "selected, then all assigned services for this employee<br/>will be available "
@@ -3489,103 +3497,103 @@ msgstr ""
 "vụ nào được chọn, thì tất cả các dịch vụ được gán cho nhân viên này<br/>sẽ "
 "có sẵn để đặt lịch trong khoảng thời gian này."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:915
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:917
 msgid "Select specific services for each period."
 msgstr "Chọn các dịch vụ cụ thể cho mỗi khoảng thời gian."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:916
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:918
 msgid "Reflect On"
 msgstr "Phản ánh trên"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:918
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:920
 msgid "Special Days"
 msgstr "Những Ngày Đặc Biệt"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:920
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:922
 msgid "Timezone"
 msgstr "Múi giờ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:942
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:944
 msgid "Add Customer"
 msgstr "Thêm Khách hàng"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:943
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:945
 msgid "Are you sure you want to delete this customer?"
 msgstr "Bạn có chắc chắn muốn xóa khách hàng này không?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:944
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:946
 #, fuzzy
 msgid "Are you sure you want to block this customer?"
 msgstr "Bạn có chắc chắn muốn xóa khách hàng này không?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:945
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:947
 #, fuzzy
 msgid "Are you sure you want to unblock this customer?"
 msgstr "Bạn có chắc chắn muốn xóa khách hàng này không?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:946
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:948
 msgid "Customer Activity"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:947
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:949
 msgid "Customer has been deleted"
 msgstr "Khách hàng đã bị xóa"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:948
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:950
 #, fuzzy
 msgid "Customer has been blocked"
 msgstr "Khách hàng đã bị xóa"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:949
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:951
 #, fuzzy
 msgid "Customer has been unblocked"
 msgstr "Khách hàng đã bị xóa"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:951
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:953
 msgid "Customer has been saved"
 msgstr "Khách hàng đã được lưu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:952
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:954
 msgid "Customers"
 msgstr "Khách hàng"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:953
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:955
 msgid "Customers have been deleted"
 msgstr "Khách hàng đã bị xóa"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:954
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:956
 msgid "customers"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:955
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:957
 msgid "Search Customers..."
 msgstr "Tìm Kiếm Khách Hàng..."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:956
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:958
 msgid "Created On"
 msgstr "Được Tạo Vào"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:957
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:959
 msgid "Date of Birth"
 msgstr "Ngày Sinh"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:958
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:960
 msgid "Edit Customer"
 msgstr "Sửa Khách Hàng"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:960
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:962
 msgid "Events Booked"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:961
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:963
 msgid "You can use this option to export customers in CSV file."
 msgstr "Bạn có thể sử dụng tùy chọn này để xuất khách hàng dưới dạng tệp CSV."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:962
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:964
 msgid "Gender"
 msgstr "Giới tính"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:963
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:965
 msgid ""
 "<ul><li>No first row with column names</li><li><b>First</b> and <b>Last "
 "name</b> are two separate fields</li><li><b>Date of birth</b> in the same "
@@ -3599,7 +3607,7 @@ msgstr ""
 "các ngày nên được bọc trong dấu ngoặc kép)</li><li><b>Điện thoại</b> có mã "
 "quốc gia</li><li><b>Giới tính</b> ở dạng Nam hoặc Nữ</li></ul>"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:964
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:966
 msgid ""
 "Valid <b>First</b> and <b>Last name</b> are required fields. <br>If invalid, "
 "other values will be skipped and not imported.<br>If multiple customers have "
@@ -3609,91 +3617,91 @@ msgstr ""
 "các giá trị khác sẽ được bỏ qua và không được nhập.<br>Nếu nhiều khách hàng "
 "có cùng địa chỉ email, chỉ có khách hàng đầu tiên sẽ được nhập."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:965
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:967
 msgid "customers have been imported successfully to your customer list"
 msgstr "khách hàng đã được nhập thành công vào danh sách khách hàng của bạn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:966
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:968
 msgid "You can use this option to import customers from a CSV file."
 msgstr "Bạn có thể sử dụng tùy chọn này để nhập khách hàng từ một tệp CSV."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:967
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:969
 msgid "Imported customers from file:"
 msgstr "Khách hàng được nhập từ tệp:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:968
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:970
 msgid "Last Appointment"
 msgstr "Lần Hẹn Cuối Cùng"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:969
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:971
 msgid "Last Appointment Ascending"
 msgstr "Cuộc Hẹn Cuối Cùng Tăng Dần"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:970
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:972
 msgid "Last Appointment Descending"
 msgstr "Cuộc Hẹn Cuối Cùng Giảm Dần"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:971
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:973
 msgid "New Customer"
 msgstr "Khách Hàng Mới"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:972
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:974
 msgid "You don't have any customers here yet..."
 msgstr "Bạn chưa có bất kỳ khách hàng nào ở đây..."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:974
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:976
 msgid "Required fields are: <b>First Name</b> and <b>Last Name</b>."
 msgstr "Các trường bắt buộc là: <b>Họ</b> và <b>Tên</b>."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:975
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:977
 msgid "Select Date of Birth"
 msgstr "Chọn Ngày Sinh"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:976
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:978
 msgid "Total Appointments"
 msgstr "Tổng số cuộc hẹn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:977
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:979
 msgid "Upload Customers .csv file"
 msgstr "Tải lên tệp .csv của Khách hàng"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:978
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:980
 msgid "View Appointments"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:979
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:981
 msgid "View Events"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:991
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:993
 msgid "Drag and drop or choose from <em>files</em>"
 msgstr "Kéo và thả hoặc chọn từ <em>tệp</em>"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:992
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:994
 msgid "Import customer data"
 msgstr "Nhập dữ liệu khách hàng"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:993
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:995
 msgid "Import rules"
 msgstr "Quy tắc nhập"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:994
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:996
 msgid "Import successful"
 msgstr "Nhập thành công"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:995
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:997
 msgid "Please map corresponding data to columns."
 msgstr "Vui lòng ánh xạ dữ liệu tương ứng vào các cột."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:996
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:998
 msgid "Some records have a wrong format"
 msgstr "Một số bản ghi có định dạng sai"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1008
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1010
 msgid "Welcome to wpAmelia"
 msgstr "Chào mừng bạn đến với wpAmelia"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1009
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1011
 msgid ""
 "Congratulations! You are about to use the most powerful WordPress booking "
 "plugin - Amelia is designed to make the process of bookings representation "
@@ -3703,19 +3711,19 @@ msgstr ""
 "được thiết kế để làm cho quá trình biểu diễn và tương tác đặt lịch nhanh "
 "chóng, dễ dàng và hiệu quả."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1010
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1012
 msgid "Discover Amelia"
 msgstr "Khám phá Amelia"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1011
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1013
 msgid "News Blog"
 msgstr "Blog Tin tức"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1012
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1014
 msgid "Keep up to date!"
 msgstr "Luôn cập nhật!"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1013
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1015
 msgid ""
 "Never miss notifications about new cool features, promotions, giveaways or "
 "freebies!"
@@ -3723,101 +3731,101 @@ msgstr ""
 "Không bao giờ bỏ lỡ thông báo về các tính năng mới, khuyến mãi, quà tặng "
 "hoặc đồ miễn phí!"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1014
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1016
 msgid "Enter your email"
 msgstr "Nhập địa chỉ email của bạn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1015
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1017
 msgid "Subscribe"
 msgstr "Đăng ký"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1016
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1018
 msgid "Take a look at how our clients use Amelia"
 msgstr "Hãy xem cách khách hàng của chúng tôi sử dụng Amelia"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1017
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1019
 msgid "Read Success Stories"
 msgstr "Đọc Những Câu Chuyện Thành Công"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1018
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1020
 msgid "Have questions?"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1019
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1021
 msgid "Our Support team will answer any of your questions"
 msgstr "Đội Ngũ Hỗ Trợ của chúng tôi sẽ giải đáp mọi thắc mắc của bạn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1020
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1022
 msgid "Contact our support"
 msgstr "Liên hệ với chúng tôi"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1021
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1023
 msgid "Most used Premium features"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1022
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1024
 #, fuzzy
 msgid "Online Payments"
 msgstr "Chờ thanh toán"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1023
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1025
 #, fuzzy
 msgid "Packages of services"
 msgstr "Danh sách Dịch vụ Gói"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1024
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1026
 #, fuzzy
 msgid "Google Calendar Sync"
 msgstr "Lịch Google"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1025
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1027
 #, fuzzy
 msgid "Zoom/Google Meet"
 msgstr "Google Meet Link"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1026
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1028
 #, fuzzy
 msgid "Custom Service Duration"
 msgstr "Thời Lượng Dịch Vụ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1038
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1040
 msgid "Amelia Plans Comparison"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1039
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1041
 msgid ""
 "Upgrade to any of our three premium versions and unlock a world of exclusive "
 "features and benefits, tailored to enhance your experience and maximize the "
 "value you get from our product."
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1040
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1042
 msgid "Upgrade now"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1041
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1043
 msgid "Support is only available through forum"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1053
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1055
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:80
 msgid "Amount"
 msgstr "Số Tiền"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1054
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1056
 msgid "Booking Start"
 msgstr "Bắt Đầu Đặt Lịch"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1055
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1120
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1057
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1122
 msgid "Customer Email"
 msgstr "Email Khách Hàng"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1056
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1058
 msgid "Employee Email"
 msgstr "Email Nhân Viên"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1057
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1059
 msgid ""
 "You can use this option to export payments in CSV file<br/>for the selected "
 "date range."
@@ -3825,174 +3833,174 @@ msgstr ""
 "Bạn có thể sử dụng tùy chọn này để xuất thanh toán ra tệp CSV<br/>cho khoảng "
 "thời gian ngày đã chọn."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1058
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1060
 msgid "Method"
 msgstr "Phương Thức"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1059
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1061
 msgid "You don't have any payments here yet"
 msgstr "Bạn chưa có thanh toán nào ở đây"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1060
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1062
 msgid "Payment date"
 msgstr "Ngày Thanh Toán"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1061
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1063
 #, fuzzy
 msgid "Payment created"
 msgstr "Ngày Thanh Toán"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1063
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1065
 msgid "payments"
 msgstr "thanh toán"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1064
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1066
 msgid "Rate"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1076
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1078
 msgid "Appointment Date"
 msgstr "Ngày Đặt Hẹn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1077
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1079
 msgid "Appointment Info"
 msgstr "Thông Tin Đặt Hẹn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1078
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1080
 msgid "Event Date"
 msgstr "Ngày Sự Kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1079
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1081
 msgid "Are you sure you want to delete this payment?"
 msgstr "Bạn có chắc chắn muốn xóa thanh toán này không?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1080
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1082
 msgid "Discount"
 msgstr "Giảm giá"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1081
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1083
 msgid "Due"
 msgstr "Đến Hạn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1082
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1084
 msgid "Enter new payment amount"
 msgstr "Nhập số tiền thanh toán mới"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1083
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1085
 msgid "Finance"
 msgstr "Tài Chính"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1084
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1086
 msgid "Payment has been deleted"
 msgstr "Thanh toán đã bị xóa"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1085
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1087
 msgid "Payment Details"
 msgstr "Chi Tiết Thanh Toán"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1086
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1088
 msgid "Payment has been saved"
 msgstr "Thanh toán đã được lưu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1087
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1089
 msgid "Payments have been deleted"
 msgstr "Thanh toán đã bị xóa"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1088
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1090
 msgid "Payment Type"
 msgstr "Loại Thanh Toán"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1089
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1353
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1091
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1355
 msgid "Service Price"
 msgstr "Giá Dịch Vụ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1090
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1393
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1092
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1395
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:277
 msgid "Subtotal"
 msgstr "Tổng Tiền"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1091
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1093
 msgid "Total Price"
 msgstr "Tổng Giá Tiền"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1092
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1094
 msgid "Bookings Price"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1093
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1351
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1095
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1353
 msgid "Event Price"
 msgstr "Giá Sự Kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1105
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1107
 msgid "Appointment has been deleted"
 msgstr "Đặt Hẹn đã bị xóa"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1106
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1108
 msgid "Appointment has been saved"
 msgstr "Đặt hẹn đã được lưu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1107
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1109
 msgid "Cancel Appointment"
 msgstr "Hủy Đặt Hẹn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1108
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1265
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1110
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1267
 msgid "Appointment has been rescheduled"
 msgstr "Cuộc hẹn đã được sắp xếp lại"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1109
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1111
 msgid "Appointment status has been changed to "
 msgstr "Trạng thái đặt hẹn đã được thay đổi thành"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1110
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1112
 msgid "Appointments have been deleted"
 msgstr "Đặt hẹn đã bị xóa"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1111
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1113
 msgid "Search for Customers, Employees, Services..."
 msgstr "Tìm kiếm Khách hàng, Nhân viên, Dịch vụ..."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1112
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1114
 msgid "Assigned to"
 msgstr "Được Gán Cho"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1114
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1116
 msgid "Change group status"
 msgstr "Thay đổi trạng thái nhóm"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1115
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1117
 msgid "Are you sure you want to delete this appointment?"
 msgstr "Bạn có chắc chắn muốn xóa cuộc hẹn này không?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1116
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1118
 msgid "Are you sure you want to delete these appointments?"
 msgstr "Bạn có chắc chắn muốn xóa những cuộc hẹn này không?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1117
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1119
 msgid "Are you sure you want to duplicate this appointment?"
 msgstr "Bạn có chắc chắn muốn nhân bản cuộc hẹn này không?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1118
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1120
 msgid "Create Customer"
 msgstr "Tạo Khách Hàng"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1119
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1298
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1121
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1300
 msgid "Custom Fields"
 msgstr "Trường Tùy chỉnh"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1121
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1123
 msgid "Customer Phone"
 msgstr "Số Điện Thoại Khách Hàng"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1122
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1124
 msgid "Customer(s)"
 msgstr "Khách Hàng"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1123
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1125
 msgid ""
 "Here you can define the number of people that are coming<br/>with this "
 "customer. The number you can choose depends<br/>on the service and employee "
@@ -4001,19 +4009,19 @@ msgstr ""
 "Ở đây, bạn có thể xác định số người đang đến<br/>với khách hàng này. Số "
 "lượng bạn có thể chọn<br/>phụ thuộc vào dịch vụ và sức chứa của nhân viên."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1124
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1126
 msgid "Edit Payment Details"
 msgstr "Chỉnh Sửa Thông Tin Thanh Toán"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1125
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1127
 msgid "Edit Appointment"
 msgstr "Chỉnh Sửa Cuộc Hẹn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1126
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1128
 msgid "End Time"
 msgstr "Thời Gian Kết Thúc"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1127
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1129
 msgid ""
 "You can use this option to export appointments in CSV file<br/>for the "
 "selected date range."
@@ -4021,7 +4029,7 @@ msgstr ""
 "Bạn có thể sử dụng tùy chọn này để xuất cuộc hẹn dưới dạng tệp CSV<br/>cho "
 "khoảng thời gian đã chọn."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1128
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1130
 msgid ""
 "You can use this option to export attendees in CSV file<br/>for the selected "
 "event."
@@ -4029,15 +4037,15 @@ msgstr ""
 "Bạn có thể sử dụng tùy chọn này để xuất danh sách tham dự viên dưới dạng tệp "
 "CSV<br/>cho sự kiện đã chọn."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1129
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1131
 msgid "New Appointment"
 msgstr "Cuộc Hẹn Mới"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1130
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1132
 msgid "Notify the attendee(s)"
 msgstr "Thông báo cho người tham dự"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1131
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1133
 msgid ""
 "Check this checkbox if you want your attendee(s) to<br/>receive an email "
 "about the event’s updated information."
@@ -4045,11 +4053,11 @@ msgstr ""
 "Đánh dấu ô này nếu bạn muốn người tham dự<br/>nhận email về thông tin cập "
 "nhật của sự kiện."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1132
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1134
 msgid "Notify the customer(s)"
 msgstr "Thông báo cho khách hàng"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1133
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1135
 msgid ""
 "Check this checkbox if you want your customer(s) to<br/>receive an email "
 "about the scheduled appointment."
@@ -4057,7 +4065,7 @@ msgstr ""
 "Đánh dấu ô này nếu bạn muốn khách hàng của bạn<br/>nhận email về cuộc hẹn đã "
 "đặt."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1134
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1136
 #, fuzzy
 msgid ""
 "By continuing, you will set the appointment to a time slot that already has "
@@ -4066,309 +4074,309 @@ msgstr ""
 "Bằng cách đặt lịch vào đoạn thời gian này, bạn sẽ đặt cuộc hẹn trong một gói "
 "ngoài ra nếu có!"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1135
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1137
 msgid "Schedule"
 msgstr "Lịch trình"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1136
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1138
 msgid "Select Customer(s)"
 msgstr "Chọn Khách Hàng(s)"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1137
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1139
 msgid "Please select at least one customer"
 msgstr "Vui lòng chọn ít nhất một khách hàng"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1138
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1140
 msgid "Maximum number of places is"
 msgstr "Số lượng tối đa là"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1139
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1141
 #, fuzzy
 msgid "Select Extra"
 msgstr "Các mục extra đã chọn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1140
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1313
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1625
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1142
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1315
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1627
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:276
 msgid "Select Service"
 msgstr "Chọn Dịch vụ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1141
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1304
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1143
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1306
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:179
 msgid "Please select service"
 msgstr "Vui lòng chọn dịch vụ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1142
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1144
 msgid "Select Service Category"
 msgstr "Chọn Danh Mục Dịch Vụ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1143
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1145
 msgid "Selected Customers"
 msgstr "Khách hàng Đã Chọn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1144
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1146
 msgid "This service does not have any extras"
 msgstr "Dịch vụ này không có bất kỳ mục phụ trợ nào"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1145
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1147
 msgid "Start Time"
 msgstr "lịch hẹn không khả dụng"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1147
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1149
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:139
 msgid "Time slot is unavailable"
 msgstr "Khoảng thời gian không khả dụng"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1148
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1150
 msgid "Appointment can't be canceled"
 msgstr "Cuộc hẹn không thể hủy bỏ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1149
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1151
 msgid "Appointment can't be rescheduled"
 msgstr "Cuộc hẹn không thể được sắp xếp lại"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1150
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1246
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1152
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1248
 msgid "Booking status has been changed to "
 msgstr "Trạng thái lịch hẹn đã được thay đổi thành"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1151
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1153
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1163
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1165
 msgid "Deposit Payment"
 msgstr "Thanh toán đặt cọc"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1164
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1166
 msgid "Custom Pricing"
 msgstr "Giá Tùy chỉnh"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1165
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1167
 msgid "Custom Duration and Pricing"
 msgstr "Thời gian và Giá Tùy chỉnh"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1177
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1179
 msgid "Are you sure you want to delete selected attendee?"
 msgstr "Bạn có chắc muốn xóa người tham dự đã chọn không?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1178
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1180
 msgid "Are you sure you want to delete selected attendees?"
 msgstr "Bạn có chắc muốn xóa những người tham dự đã chọn không?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1179
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1181
 msgid "Are you sure you want to delete this event?"
 msgstr "Bạn có chắc muốn xóa sự kiện này không?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1180
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1182
 msgid "Are you sure you want to duplicate this event?"
 msgstr "Bạn có chắc muốn nhân bản sự kiện này không?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1181
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1183
 msgid "Are you sure you want to cancel this event?"
 msgstr "Bạn có chắc chắn muốn hủy sự kiện này không?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1182
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1184
 msgid "Are you sure you want to open this event?"
 msgstr "Bạn có chắc chắn muốn mở sự kiện này không?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1183
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1185
 msgid "Please cancel the event first before deleting it."
 msgstr "Vui lòng hủy sự kiện trước khi xóa nó."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1184
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1299
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1186
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1301
 msgid "Customize"
 msgstr "Tùy chỉnh"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1185
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1187
 #, fuzzy
 msgid "Customer is already added to this event"
 msgstr "Khách hàng đã đặt lịch này trước đó"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1188
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1347
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1190
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1349
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:98
 msgid "Full"
 msgstr "Toàn bộ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1189
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1349
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1191
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1351
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:99
 msgid "Upcoming"
 msgstr "Sắp diễn ra"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1190
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1192
 msgid "Edit Event"
 msgstr "Chỉnh sửa Sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1191
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1193
 msgid "Attendees"
 msgstr "Người tham dự"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1192
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1194
 msgid "Add Attendee"
 msgstr "Thêm Người tham dự"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1195
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1197
 msgid "Number of tickets"
 msgstr "Số vé"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1196
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1198
 msgid "Edit Attendee"
 msgstr "Chỉnh sửa Người tham dự"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1197
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1199
 msgid "The price will multiply by the number of people/spots"
 msgstr "Giá sẽ nhân với số người/chỗ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1198
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1200
 msgid "Attendee has been saved"
 msgstr "Người tham dự đã được lưu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1199
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1201
 msgid "Remove Attendee"
 msgstr "Xóa Người tham dự"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1200
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1202
 msgid "Find Attendees"
 msgstr "Tìm Người tham dự"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1201
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1203
 msgid "Attendee have been deleted"
 msgstr "Người tham dự đã được xóa"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1202
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1204
 msgid "Attendees have been deleted"
 msgstr "Người tham dự đã được xóa"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1203
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1205
 msgid "Allow the same customer to book more than once"
 msgstr "Cho phép cùng một khách hàng đặt nhiều lần"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1204
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1206
 msgid "Allow bringing more people"
 msgstr "Cho phép mang theo nhiều người"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1205
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1207
 msgid "Cancel Event"
 msgstr "Hủy Sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1206
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1208
 msgid "Close Event after certain minimum is reached"
 msgstr "Đóng Sự kiện sau một số tối thiểu nhất đã đạt được"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1207
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1209
 msgid "Minimum of attendees"
 msgstr "Tối thiểu người tham dự"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1208
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1210
 msgid "Minimum of bookings"
 msgstr "Tối thiểu số lịch hẹn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1209
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1211
 msgid "One spot is equal to one attendee."
 msgstr "Một chỗ tương đương với một người tham dự."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1210
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1212
 msgid "One booking can have multiple attendees/spots in it."
 msgstr "Một lịch hẹn có thể có nhiều người tham dự/chỗ trong đó."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1211
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1213
 msgid "Set Minimum"
 msgstr "Đặt Tối thiểu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1212
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1214
 msgid "Custom Address"
 msgstr "Địa chỉ Tùy chỉnh"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1213
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1215
 msgid "Delete Event"
 msgstr "Xóa Sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1214
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1216
 msgid "Event has been deleted"
 msgstr "Sự kiện đã bị xóa"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1215
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1217
 msgid "Duplicate Event"
 msgstr "Nhân bản Sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1216
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1218
 msgid "Name:"
 msgstr "Tên:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1217
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1219
 msgid "Booking closes:"
 msgstr "Đóng lịch hẹn:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1218
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1220
 msgid "Booking opens:"
 msgstr "Mở lịch hẹn:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1219
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1221
 msgid "Closes on:"
 msgstr "Đóng cửa vào ngày:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1220
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1222
 msgid "Opens on:"
 msgstr "Mở cửa vào ngày:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1221
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1223
 msgid "Booking closes when event starts"
 msgstr "Đóng lịch hẹn khi sự kiện bắt đầu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1222
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1224
 msgid "Booking opens immediately"
 msgstr "Mở lịch hẹn ngay lập tức"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1225
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1227
 msgid "Open Event"
 msgstr "Mở Sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1226
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1228
 msgid "Recurring:"
 msgstr "Định kỳ:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1227
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1229
 msgid "This is a recurring event"
 msgstr "Đây là một sự kiện lặp lại"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1228
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1230
 msgid "Event has been opened"
 msgstr "Sự kiện đã được mở"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1229
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1231
 msgid "Event has been canceled"
 msgstr "Sự kiện đã được hủy"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1230
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1232
 msgid "Event has been saved"
 msgstr "Sự kiện đã được lưu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1231
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1233
 msgid "Search Events..."
 msgstr "Tìm kiếm Sự kiện..."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1232
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1234
 msgid "Maximum allowed spots"
 msgstr "Số lượng chỗ tối đa cho phép"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1233
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1235
 msgid "Select Address"
 msgstr "Chọn Địa chỉ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1234
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1236
 msgid "Staff"
 msgstr "Nhân viên"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1235
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1237
 msgid "Organizer"
 msgstr "Người tổ chức"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1236
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1238
 msgid ""
 "Here you can choose the employee that will be added as Organizer of the "
 "Google/Outlook Event. <br>Other employees chosen under the Staff option will "
@@ -4378,465 +4386,465 @@ msgstr ""
 "Outlook. <br> Nhân viên khác được chọn dưới tùy chọn Nhân viên sẽ được thêm "
 "làm khách mời."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1237
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1239
 msgid "Dates:"
 msgstr "Ngày:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1238
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1240
 msgid "Tags"
 msgstr "Thẻ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1239
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1241
 msgid "Select or Create Tag"
 msgstr "Chọn hoặc Tạo thẻ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1240
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1242
 msgid "Enter Event Name"
 msgstr "Nhập Tên Sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1241
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1243
 msgid "Event Gallery:"
 msgstr "Bộ sưu tập Sự kiện:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1242
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1244
 msgid "Event Colors:"
 msgstr "Màu Sự kiện:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1243
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1245
 msgid "Preset Colors"
 msgstr "Màu trước định"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1244
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1246
 msgid "Custom Color"
 msgstr "Màu Tùy chỉnh"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1245
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1247
 msgid "Show event on site"
 msgstr "Hiển thị sự kiện trên trang web"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1247
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1249
 msgid "There are no attendees yet..."
 msgstr "Chưa có người tham dự nào..."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1248
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1250
 msgid "New Event"
 msgstr "Sự kiện mới"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1251
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1253
 msgid "Maximum capacity is reached"
 msgstr "Sức chứa tối đa đã đạt được"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1263
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1265
 msgid "This will change the time of the appointment. Continue?"
 msgstr "Điều này sẽ thay đổi thời gian của cuộc hẹn. Tiếp tục?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1264
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1266
 msgid "Appointment can't be moved in past time period"
 msgstr "Cuộc hẹn không thể được di chuyển trong khoảng thời gian đã qua"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1266
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1268
 msgid "Appointment can't be moved out of employee working hours"
 msgstr "Cuộc hẹn không thể được di chuyển ra khỏi giờ làm việc của nhân viên"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1268
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1270
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:100
 msgid "Confirm"
 msgstr "Xác nhận"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1281
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1283
 msgid "Add Custom Field"
 msgstr "Thêm Trường Tùy chỉnh"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1284
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1286
 msgid "Are you sure you want to reset your form settings?"
 msgstr "Bạn có chắc chắn muốn đặt lại cài đặt biểu mẫu của bạn không?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1285
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1287
 msgid "Your current changes will be lost."
 msgstr "Những thay đổi hiện tại của bạn sẽ bị mất."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1286
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1288
 msgid "Yes, Reset"
 msgstr "Có, Đặt lại"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1287
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1289
 msgid "No, Cancel"
 msgstr "Không, Hủy bỏ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1288
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1290
 msgid "Reset Form"
 msgstr "Đặt lại Biểu mẫu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1289
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1291
 msgid "Available in package"
 msgstr "Có sẵn trong gói"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1290
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1292
 msgid "Bringing Anyone with You?"
 msgstr "Mang Theo Ai Đó?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1291
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1293
 msgid "Buttons"
 msgstr "Nút"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1293
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1295
 msgid "Default Label"
 msgstr "Nhãn Mặc định"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1295
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1297
 msgid "Checkbox"
 msgstr "Hộp kiểm"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1296
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1298
 msgid "Start by clicking the Add Custom Field button"
 msgstr "Bắt đầu bằng cách nhấp vào nút Thêm Trường Tùy chỉnh"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1297
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1299
 msgid "Text Content"
 msgstr "Nội dung Văn bản"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1300
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1302
 msgid "Font"
 msgstr "Phông chữ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1301
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1303
 msgid "You don't have any custom fields here yet..."
 msgstr "Bạn chưa có trường tùy chỉnh nào ở đây..."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1302
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1304
 msgid "Options"
 msgstr "Tùy chọn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1303
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1305
 msgid "Pick date & time"
 msgstr "Chọn ngày & giờ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1305
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1307
 msgid "Primary Color"
 msgstr "Màu Chính"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1306
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1308
 msgid "Success Color"
 msgstr "Màu Thành công"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1307
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1309
 msgid "Warning Color"
 msgstr "Màu Cảnh báo"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1308
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1310
 msgid "Error Color"
 msgstr "Màu Lỗi"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1309
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1311
 msgid "Radio Buttons"
 msgstr "Nút Tùy chọn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1310
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1312
 msgid "Reset"
 msgstr "Đặt lại"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1311
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1313
 msgid "Selectbox"
 msgstr "Hộp chọn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1312
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1314
 msgid "Steps"
 msgstr "Bước"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1314
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1475
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1316
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1477
 msgid "Text"
 msgstr "Văn bản"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1315
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1317
 msgid "Text Area"
 msgstr "Khu vực văn bản"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1316
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1318
 msgid "Text Color"
 msgstr "Màu Văn bản"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1317
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1319
 msgid "Placeholder Color"
 msgstr "Màu Dấu giữ chỗ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1318
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1320
 msgid "Text Color on Background"
 msgstr "Màu Văn bản trên Nền"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1319
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1321
 msgid "Attachment"
 msgstr "Đính kèm"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1320
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1322
 msgid "Date Picker"
 msgstr "Chọn ngày"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1321
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1323
 msgid "Preview"
 msgstr "Xem trước"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1322
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1415
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1324
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1417
 msgid "Background Color"
 msgstr "Màu Nền"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1323
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1325
 msgid "Background Gradient Color 1"
 msgstr "Màu Nền Gradient 1"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1324
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1326
 msgid "Background Gradient Color 2"
 msgstr "Màu Nền Gradient Nền "
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1325
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1327
 msgid "Background Gradient Angle"
 msgstr "Màu nền Gradient Angle"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1326
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1328
 msgid "Input Color"
 msgstr "Màu Đầu vào"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1327
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1329
 msgid "Input Text Color"
 msgstr "Màu Văn bản Đầu vào"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1328
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1330
 msgid "Dropdown Color"
 msgstr "Chọn màu "
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1329
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1331
 msgid "Dropdown Text Color"
 msgstr "Chọn màu văn bản"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1330
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1332
 msgid "Image Color"
 msgstr "Màu Hình ảnh"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1331
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1333
 msgid "Repeat this appointment"
 msgstr "Lặp lại cuộc hẹn này"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1334
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1336
 msgid "Last Name Input Field"
 msgstr "Điền Họ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1336
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1338
 msgid "Email Input Field"
 msgstr "Điền Email"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1338
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1340
 msgid "Phone Input Field"
 msgstr "Điền Điện thoại"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1339
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1509
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1341
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1511
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:258
 msgid "Go Back"
 msgstr "Quay lại"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1341
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1343
 msgid "Display Field:"
 msgstr "Hiển thị Trường:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1342
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1344
 #, fuzzy
 msgid "Filterable Field:"
 msgstr "Hiển thị Trường:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1343
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1345
 msgid "Mandatory Field:"
 msgstr "Trường Bắt buộc:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1344
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1346
 msgid "Event Type"
 msgstr "Loại Sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1348
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1350
 msgid "From"
 msgstr "Từ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1350
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1537
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1352
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1539
 msgid "Free"
 msgstr "Miễn phí"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1352
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1354
 msgid "Service Badge"
 msgstr "Huy hiệu Dịch vụ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1354
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1356
 msgid "Package Name"
 msgstr "Tên Gói"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1355
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1357
 msgid "Congratulations!"
 msgstr "Chúc mừng!"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1356
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1358
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:79
 msgid "Add to Calendar"
 msgstr "Thêm vào Lịch"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1357
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1359
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:116
 msgid "Finish"
 msgstr "Hoàn thành"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1358
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1360
 msgid "Step By Step Booking Form"
 msgstr "Biểu mẫu Đặt Hẹn Từng Bước"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1359
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1361
 msgid "Event Status"
 msgstr "Tình trạng Sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1360
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1362
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:216
 msgid "Filters"
 msgstr "Bộ Lọc"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1361
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1363
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:213
 msgid "Book event"
 msgstr "Đặt sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1363
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1365
 msgid "Form"
 msgstr "Biểu mẫu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1364
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1366
 msgid "Form Flow"
 msgstr "Dòng Biểu mẫu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1365
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1367
 msgid "Use Global Colors"
 msgstr "Sử dụng Màu Sắc Toàn cầu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1366
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1452
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1368
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1454
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:177
 msgid "Service Selection"
 msgstr "Chọn Dịch vụ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1370
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1372
 msgid "No matching data"
 msgstr "Không có dữ liệu khớp"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1372
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1374
 msgid "Bringing Anyone With You"
 msgstr "Mang theo ai đó cùng bạn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1373
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1375
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:200
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:235
 msgid "Show more"
 msgstr "Xem thêm"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1374
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1376
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:201
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:234
 msgid "Show less"
 msgstr "Ẩn bớt"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1376
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1378
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:182
 msgid "Date & Time"
 msgstr "Ngày & Giờ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1377
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1379
 msgid "All slots are selected"
 msgstr "Tất cả các khe đã được chọn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1378
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1571
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1380
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1573
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:183
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:223
 msgid "Your Information"
 msgstr "Thông tin của bạn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1379
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1381
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:184
 msgid "Enter first name"
 msgstr "Nhập tên"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1381
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1383
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:185
 msgid "Enter last name"
 msgstr "Nhập họ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1383
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1385
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:186
 msgid "Enter email"
 msgstr "Nhập email"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1384
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1386
 msgid "Please enter valid email"
 msgstr "Vui lòng nhập email hợp lệ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1385
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1387
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:187
 msgid "Enter phone"
 msgstr "Nhập số điện thoại"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1386
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1388
 msgid "Please enter phone"
 msgstr "Vui lòng nhập số điện thoại"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1389
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1391
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:173
 msgid "Summary"
 msgstr "Tóm lược"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1391
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1393
 msgid "Service Subtotal"
 msgstr "Tổng cộng dịch vụ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1392
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1394
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:191
 msgid "people"
 msgstr "mọi người"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1394
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1397
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1396
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1399
 msgid "Total Amount"
 msgstr "Tổng số tiền"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1395
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1397
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:169
 msgid "The payment will be done on-site."
 msgstr "Thanh toán sẽ được thực hiện tại hiện trường."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1396
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1398
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:193
 msgid "Appointment ID"
 msgstr "ID Đặt Hẹn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1399
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1401
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:175
 msgid "Your Name"
 msgstr "Tên của bạn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1400
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1402
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:166
 msgid "Email Address"
 msgstr "Địa chỉ email"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1401
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1403
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:170
 msgid "Phone Number"
 msgstr "Số điện thoại"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1403
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1405
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:197
 msgid "Local Time"
 msgstr "Thời gian địa phương"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1407
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1409
 msgid "Choose a Form"
 msgstr "Chọn một biểu mẫu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1408
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1410
 msgid ""
 "Choose a form you want to customize. The Step-by-Step 2.0 form is the new "
 "and improved version which provides you with better design and user "
@@ -4846,460 +4854,460 @@ msgstr ""
 "phiên bản mới và nâng cấp mang lại thiết kế và trải nghiệm người dùng tốt "
 "hơn, cũng như tốc độ hoạt động tốt hơn."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1409
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1411
 msgid "Step-by-Step Booking Form 2.0"
 msgstr "Biểu mẫu Đặt hẹn Bước theo Bước 2.0"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1410
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1412
 msgid "Booking Forms 1.0"
 msgstr "Biểu mẫu Đặt hẹn 1.0"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1411
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1413
 msgid ""
 "Use the upgraded Step-by-Step Booking Form 2.0 for a simplified, direct "
 "booking process on your page. Customize its design and labels to enhance "
 "user experience and meet your business needs."
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1412
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1414
 msgid ""
 "The original booking forms—Step-by-Step, Catalog, Event List, and Event "
 "Calendar—feature basic customization and label changes, serving as the "
 "foundation for our newer versions."
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1413
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1415
 msgid "Primary and state colors"
 msgstr "Màu chủ đạo "
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1414
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1464
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1416
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1466
 msgid "Sidebar"
 msgstr "Thanh bên"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1416
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1418
 msgid "Content"
 msgstr "Nội dung"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1417
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1419
 msgid "Heading Text Color"
 msgstr "Màu chữ Tiêu đề"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1418
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1420
 msgid "Content Text Color"
 msgstr "Màu chữ Nội dung"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1419
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1421
 msgid "Input Fields"
 msgstr "Trường nhập"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1420
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1422
 msgid "Border Color"
 msgstr "Màu đường viền"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1421
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1423
 msgid "Dropdowns"
 msgstr "Các trình đơn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1422
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1424
 msgid "Init Cell"
 msgstr "Ô khởi tạo"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1423
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1425
 msgid "Init Cell Text"
 msgstr "Văn bản Ô khởi tạo"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1424
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1426
 msgid "Cell Selected Background"
 msgstr "Màu nền của ô đã được chọn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1425
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1427
 msgid "Cell Selected Text"
 msgstr "Màu chữ trong ô đã được chọn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1426
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1428
 msgid "Cell Disabled Background"
 msgstr "Màu nền của ô vô hiệu hóa"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1427
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1429
 msgid "Cell Disabled Text"
 msgstr "Màu chữ trong ô vô hiệu hóa"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1428
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1430
 msgid "Primary Button Background Color"
 msgstr "Màu nền của nút chính"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1429
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1431
 msgid "Primary Button Text Color"
 msgstr "Màu chữ trong nút chính"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1430
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1432
 msgid "Secondary Button Background Color"
 msgstr "Màu nền của nút phụ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1431
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1433
 msgid "Secondary Button Text Color"
 msgstr "Màu chữ trong nút phụ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1432
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1434
 #, fuzzy
 msgid "Danger Button Background Color"
 msgstr "Màu nền của nút chính"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1433
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1435
 #, fuzzy
 msgid "Danger Button Text Color"
 msgstr "Màu chữ trong nút chính"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1434
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1436
 msgid "Layout & Inputs"
 msgstr "Bố cục và cài đặt ô nhập"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1435
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1437
 msgid "Colors"
 msgstr "Màu sắc"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1436
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1438
 msgid "Fonts"
 msgstr "Phông chữ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1437
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1439
 msgid "Order"
 msgstr "Đơn Hàng"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1438
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1440
 msgid "Step Title"
 msgstr "Tiêu đề các bước"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1439
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1441
 msgid "Footer Buttons"
 msgstr "Nút chân trang"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1440
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1442
 msgid "Step Content"
 msgstr "Nội dung bước"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1441
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1485
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1443
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1487
 msgid "Finish Button Type"
 msgstr "Loại nút hoàn thành"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1442
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1486
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1444
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1488
 msgid "Panel Button Type"
 msgstr "Loại nút bảng điều khiển"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1443
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1445
 msgid "Summary Segment"
 msgstr "Đoạn tóm tắt"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1444
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1446
 msgid "Payment Segment"
 msgstr "Đoạn thanh toán"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1445
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1447
 msgid "Heading Title"
 msgstr "Tiêu đề"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1446
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1448
 msgid "Sub Steps"
 msgstr "Các bước phụ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1447
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1449
 #, fuzzy
 msgid "Step Popups"
 msgstr "Bước"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1450
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1452
 msgid "Fonts and colors"
 msgstr "Phông chữ và màu sắc"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1451
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1453
 msgid "Set up Sidebar visibility and its content"
 msgstr "Thiết lập hiển thị và nội dung "
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1453
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1455
 msgid "Set up Services, Locations, Employees selection options"
 msgstr "Thiết lập lựa chọn dịch vụ, địa điểm, và nhân viên"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1454
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1456
 msgid "Date & Time Selection"
 msgstr "Chọn thời gian và ngày"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1455
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1457
 msgid "Set up Calendar layout and Recurring popup options"
 msgstr "Thiết lập giao diện lịch và cửa sổ hiển thị "
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1456
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1458
 msgid "Customer Information"
 msgstr "Thông tin khách hàng"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1457
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1555
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1459
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1557
 msgid "Field order, mandatory fields, labels and display options"
 msgstr "Thứ tự trường, trường bắt buộc, nhãn và tùy chọn hiển thị"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1458
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1460
 msgid "Payment Summary"
 msgstr "Tổng kết thanh toán"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1459
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1557
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1461
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1559
 msgid "Set up labels and buttons"
 msgstr "Thiết lập nhãn và nút"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1460
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1559
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1462
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1561
 msgid "Set up button types and labels"
 msgstr "Thiết lập loại nút và nhãn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1463
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1465
 msgid "Global Settings"
 msgstr "Cài đặt toàn cầu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1465
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1467
 msgid "Section"
 msgstr "Phần"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1466
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1468
 msgid "Field Order"
 msgstr "Thứ tự trường"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1467
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1558
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1578
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1469
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1560
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1580
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:101
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:221
 msgid "Congratulations"
 msgstr "Chúc mừng"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1469
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1471
 msgid "Footer"
 msgstr "Footer"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1470
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1472
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:167
 msgid "Get in Touch"
 msgstr "Liên hệ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1471
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1473
 msgid "Collapse Menu"
 msgstr "Thu gọn Menu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1473
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1475
 msgid "Filled"
 msgstr "Đã điền"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1474
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1476
 msgid "Plain"
 msgstr "Thường"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1477
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1479
 msgid "Continue Button Type"
 msgstr "Loại Nút Tiếp Theo"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1478
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1480
 msgid "Calendar Slot End Time"
 msgstr "Giờ Kết thúc Khe cắm Lịch"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1479
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1481
 msgid "Show Busy Time Slots"
 msgstr "Hiển thị Khe cắm Thời gian Bận rộn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1480
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1482
 msgid "Calendar Time Zone"
 msgstr "Múi giờ Lịch"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1487
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1489
 msgid "Sidebar Visibility"
 msgstr "Hiển thị Thanh bên"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1488
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1490
 msgid "Publish Form"
 msgstr "Xuất bản Biểu mẫu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1490
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1492
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:253
 msgid "View All"
 msgstr "Xem Tất cả"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1492
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1494
 msgid "Set up categories cards"
 msgstr "Thiết lập thẻ danh mục"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1493
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1495
 msgid "Cards"
 msgstr "Thẻ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1494
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1496
 msgid "Card Button Type"
 msgstr "Loại Nút "
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1495
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1497
 msgid "Services Overview"
 msgstr "Tổng quan về Dịch vụ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1496
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1498
 msgid "Set up Services view"
 msgstr "Cài đặt xem Dịch vụ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1497
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1499
 msgid "Service Details"
 msgstr "Chi tiết Dịch vụ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1498
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1500
 msgid "Set up Service detailed view"
 msgstr "Cài đặt xem chi tiết Dịch vụ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1499
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1501
 msgid "Booking Form"
 msgstr "Biểu mẫu Đặt lịch"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1500
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1502
 msgid "Set options, colors and labels for booking form"
 msgstr "Thiết lập tùy chọn, màu sắc và nhãn cho biểu mẫu đặt lịch"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1502
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1504
 msgid "Catalog Booking Form 2.0"
 msgstr "Biểu mẫu Đặt lịch Catalog 2.0"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1503
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1505
 msgid ""
 " Discover the modernized Catalog Booking Form 2.0 that showcases services in "
 "stylish card layouts. Easily add categories and adjust the appearance to "
 "reflect your brand."
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1506
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1508
 msgid "Total Number of Services"
 msgstr "Tổng Số Dịch Vụ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1507
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1509
 msgid "Back Button"
 msgstr "Nút Quay Lại"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1508
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1510
 msgid "“Back” Button Type"
 msgstr "  Loại Nút “Nút Quay Lại” "
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1510
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1512
 msgid "“Book Now” Button Type"
 msgstr " Loại Nút “Đặt Ngay” "
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1513
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1515
 msgid "Main Category Button"
 msgstr "Nút Chính Danh Mục"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1514
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1516
 msgid "Category Card Side Color"
 msgstr "Màu Sắc Bên Cạnh Thẻ Danh Mục"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1515
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1517
 #, fuzzy
 msgid "Category Color"
 msgstr "Màu Sắc Bên Cạnh Thẻ Danh Mục"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1519
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1521
 msgid "Filter Menu Button Type"
 msgstr "Loại Nút Menu Bộ Lọc"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1520
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1522
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1524
 msgid "Categories Sidebar"
 msgstr "Thanh Bên Danh Mục"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1521
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1523
 msgid "Filters Block"
 msgstr "Khối Bộ Lọc"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1523
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1525
 msgid "Page Header"
 msgstr "Tiêu Đề Trang"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1524
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1526
 msgid "Main Content"
 msgstr "Nội dung Chính"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1525
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1527
 msgid "Service Category"
 msgstr "Danh Mục Dịch Vụ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1526
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1528
 msgid "Service Duration"
 msgstr "Thời Lượng Dịch Vụ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1527
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1539
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1529
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1541
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:256
 msgid "About Service"
 msgstr "Về Dịch Vụ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1528
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1530
 msgid "“Search” option"
 msgstr "Tùy chọn “Tìm kiếm”"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1529
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1531
 #, fuzzy
 msgid "Card Color"
 msgstr "Màu đường viền"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1530
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1532
 #, fuzzy
 msgid "Page Scroll Visibility"
 msgstr "Hiển thị Thanh bên"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1532
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1534
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:254
 msgid "Search"
 msgstr "Tìm kiếm"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1533
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1535
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:272
 msgid "Available"
 msgstr "Có Sẵn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1536
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1538
 msgid "No results"
 msgstr "Không có kết quả"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1538
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1540
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:255
 msgid "Book Now"
 msgstr "Đặt Ngay"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1540
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1542
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:257
 msgid "View all photos"
 msgstr "Xem tất cả ảnh"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1542
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1544
 msgid "Support Heading:"
 msgstr "Tiêu đề hỗ trợ:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1543
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1545
 msgid "Company Phone:"
 msgstr "Số điện thoại công ty:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1544
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1546
 msgid "Company Email:"
 msgstr "Email công ty:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1547
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1549
 msgid "Event List Booking Form 2.0"
 msgstr "Danh sách Biểu mẫu Đặt lịch Sự kiện 2.0"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1548
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1550
 msgid ""
 "The Event List Booking Form 2.0 offers an intuitive and fast booking "
 "experience, with a design that stands out. Customers can effortlessly browse "
 "and book from a list of events."
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1550
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1552
 msgid "Events List"
 msgstr "Danh sách Sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1551
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1553
 msgid ""
 "Set up Location, Images, Filters, Capacity, Price, and Status visibility "
 "options"
@@ -5307,400 +5315,400 @@ msgstr ""
 "Thiết lập các tùy chọn hiển thị Địa điểm, Hình ảnh, Bộ lọc, Sức chứa, Giá và "
 "Trạng thái"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1552
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1575
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1554
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1577
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:115
 msgid "Event Info"
 msgstr "Thông Tin Sự Kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1553
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1555
 msgid "Set up Staff, Location, Gallery and other Event information visibility"
 msgstr "Thiết lập nhân viên, Địa điểm, Bộ sưu tập và thông tin Sự kiện khác"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1554
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1556
 msgid "Customer Info"
 msgstr "Thông tin Khách hàng"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1561
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1563
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:225
 msgid "Events Available"
 msgstr "Sự kiện có sẵn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1562
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1564
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:226
 msgid "Event Available"
 msgstr "Sự kiện có sẵn"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1563
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1565
 msgid "Page"
 msgstr "Trang"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1564
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1566
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:227
 msgid "Search for Events"
 msgstr "Tìm kiếm Sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1565
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1567
 msgid "Begins"
 msgstr "Bắt đầu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1566
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1568
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:228
 msgid "slot left"
 msgstr "khung giờ còn lại"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1567
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1569
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:229
 msgid "slots left"
 msgstr "khung giờ còn lại"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1568
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1570
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:230
 msgid "Learn more"
 msgstr "Tìm hiểu thêm"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1569
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1571
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:231
 msgid "Read more"
 msgstr "Đọc thêm"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1574
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1576
 msgid "About"
 msgstr "Về"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1576
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1578
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:232
 msgid "Timetable"
 msgstr "Lịch trình"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1579
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1581
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:224
 msgid "About Event"
 msgstr "Về Sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1580
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1582
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:217
 msgid "Event Starts"
 msgstr "Bắt đầu Sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1581
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1583
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:218
 msgid "Event Ends"
 msgstr "Kết thúc Sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1582
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1584
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:219
 msgid "at"
 msgstr "lúc"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1583
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1585
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:233
 msgid "How many attendees do you want to book event for?"
 msgstr "Bạn muốn đặt sự kiện cho bao nhiêu người tham dự?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1586
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1588
 msgid "Step Filters"
 msgstr "Bộ lọc bước"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1587
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1589
 msgid "Event Card"
 msgstr "Thẻ Sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1588
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1590
 msgid "Step Pagination"
 msgstr "Phân trang bước"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1589
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1591
 msgid "Event Slots Capacity"
 msgstr "Sức chứa Khe Sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1590
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1592
 msgid "Filters Button Type"
 msgstr "Loại Nút Bộ lọc"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1591
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1593
 msgid "Read More Button Type"
 msgstr "Loại Nút Đọc thêm"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1592
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1594
 msgid "Learn More Button Type"
 msgstr "Loại Nút Tìm hiểu thêm"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1593
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1595
 msgid "Event Tab Image"
 msgstr "Hình ảnh Tab Sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1594
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1596
 msgid "Step Header"
 msgstr "Tiêu đề Bước"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1595
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1597
 msgid "Step Info Tab"
 msgstr "Tab Thông tin Bước"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1596
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1598
 msgid "Booking Event Button"
 msgstr "Nút Đặt Sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1597
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1599
 msgid "Finish Button"
 msgstr "Nút Hoàn tất"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1598
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1600
 msgid "Close Event Button"
 msgstr "Nút Đóng Sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1599
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1601
 msgid "Event Gallery"
 msgstr "Bộ sưu tập Sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1600
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1602
 msgid "Event Description"
 msgstr "Mô tả Sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1602
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1604
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:190
 msgid "person"
 msgstr "người"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1603
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1605
 msgid "Event Employees"
 msgstr "Nhân viên Sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1613
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1615
 msgid "Catalog"
 msgstr "Danh mục"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1614
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1616
 msgid "Choose Category"
 msgstr "Chọn Danh mục"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1615
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1617
 msgid "Choose Service"
 msgstr "Chọn Dịch vụ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1616
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1618
 msgid "Choose Package"
 msgstr "Chọn Gói"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1617
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1619
 msgid "Preselect Booking Parameters"
 msgstr "Chọn Trước các Tham số Đặt trước"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1618
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1620
 msgid "Skip Categories step"
 msgstr "Bỏ qua bước Danh mục"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1619
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1621
 msgid "Insert Amelia Booking Shortcode"
 msgstr "Chèn Mã rút gọn Đặt lịch Amelia"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1620
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1622
 msgid "Select Catalog View"
 msgstr "Chọn Chế độ Xem Khoản mục"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1621
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1623
 msgid "Select Category"
 msgstr "Chọn Danh mục"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1622
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1624
 msgid "Select Employee"
 msgstr "Chọn Nhân viên"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1623
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1625
 msgid "Select Location"
 msgstr "Chọn Địa điểm"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1624
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1626
 msgid "Select Package"
 msgstr "Chọn Gói"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1626
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1628
 msgid "Select Event"
 msgstr "Chọn Sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1627
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1629
 #, fuzzy
 msgid "Select Events"
 msgstr "Chọn Sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1628
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1630
 msgid "Select Tag"
 msgstr "Chọn Thẻ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1629
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1631
 #, fuzzy
 msgid "Select Tags"
 msgstr "Chọn Thẻ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1630
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1632
 msgid "Select View"
 msgstr "Chọn Chế độ Xem"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1632
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1634
 msgid "Show All"
 msgstr "Hiện tất cả"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1633
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1635
 msgid "Load booking form manually"
 msgstr "Tải biểu mẫu đặt lịch hẹn  thủ công"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1634
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1636
 msgid ""
 "Add element (button, link...) ID, that will manually load amelia shortcode "
 "content"
 msgstr ""
 "Thêm yếu tố (nút, liên kết...) ID, sẽ thủ công tải nội dung mã rút gọn Amelia"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1635
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1637
 msgid "For multiselect: hold CTRL / Command (⌘)."
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1636
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1638
 msgid "Show all categories"
 msgstr "Hiển thị tất cả các danh mục"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1637
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1639
 msgid "Show all employees"
 msgstr "Hiển thị tất cả nhân viên"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1638
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1640
 msgid "Show all locations"
 msgstr "Hiển thị tất cả các địa điểm"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1639
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1641
 msgid "Show all services"
 msgstr "Hiển thị tất cả các dịch vụ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1640
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1642
 msgid "Show all events"
 msgstr "Hiển thị tất cả sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1641
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1643
 msgid "Show all packages"
 msgstr "Hiển thị tất cả gói"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1642
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1644
 msgid "Show all tags"
 msgstr "Hiển thị tất cả các thẻ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1643
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1645
 msgid "Show catalog of all categories"
 msgstr "Hiển thị catalog của tất cả các danh mục"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1644
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1646
 msgid "Show specific category"
 msgstr "Hiển thị danh mục cụ thể"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1645
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1647
 #, fuzzy
 msgid "Show specific categories"
 msgstr "Hiển thị danh mục cụ thể"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1646
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1648
 msgid "Show specific package"
 msgstr "Hiển thị gói cụ thể"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1647
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1649
 #, fuzzy
 msgid "Show specific packages"
 msgstr "Hiển thị gói cụ thể"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1648
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1650
 msgid "Show event"
 msgstr "Hiển thị sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1649
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1651
 msgid "Show Type"
 msgstr "Hiển thị Loại"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1650
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1652
 msgid "List (default)"
 msgstr "Danh sách (mặc định)"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1652
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1654
 msgid "Show tag"
 msgstr "Hiển thị thẻ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1653
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1655
 msgid "Show specific service"
 msgstr "Hiển thị dịch vụ cụ thể"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1654
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1656
 #, fuzzy
 msgid "Show specific services"
 msgstr "Hiển thị dịch vụ cụ thể"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1655
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1657
 msgid "Trigger type"
 msgstr "Loại kích hoạt"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1656
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1658
 msgid "Id"
 msgstr "ID"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1657
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1659
 msgid "Class"
 msgstr "Lớp"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1658
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1660
 msgid "Trigger by attribute"
 msgstr "Kích hoạt theo thuộc tính"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1659
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1661
 msgid "Step Booking"
 msgstr "Bước đặt lịch hẹn "
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1660
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1662
 msgid "Catalog Booking"
 msgstr "đặt lịch hẹn  Catalog"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1661
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1663
 msgid "Events List Booking"
 msgstr "Danh sách sự kiện đặt lịch hẹn "
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1662
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1664
 msgid "Show recurring events"
 msgstr "Hiển thị sự kiện định kỳ"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1663
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1665
 #, fuzzy
 msgid "Show in Amelia Popup"
 msgstr "với Hỗ trợ Amelia"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1665
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1667
 msgid "AM - Booking view"
 msgstr "AM - Giao diện đặt lịch hẹn "
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1666
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1668
 msgid "AM - Step Booking"
 msgstr "AM - Bước đặt lịch hẹn "
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1667
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1669
 msgid "AM - Catalog Booking"
 msgstr "AM - đặt lịch hẹn  Catalog"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1668
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1670
 msgid "AM - Catalog view"
 msgstr "AM - Xem Catalog"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1669
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1671
 msgid "AM - Events view"
 msgstr "AM - Xem sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1670
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1672
 msgid "AM - Events List Booking"
 msgstr "AM - Danh sách sự kiện đặt lịch hẹn "
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1671
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1673
 msgid "AM - Events Calendar Booking"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1673
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1675
 msgid "Amelia - Booking view"
 msgstr "AM - Giao diện đặt lịch hẹn "
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1674
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1676
 msgid ""
 "Step-By-Step Booking Wizard gives your customers the option to choose "
 "everything about the booking in a few steps"
@@ -5708,11 +5716,11 @@ msgstr ""
 "Bước đặt lịch hẹn  từng bước giúp khách hàng của bạn có khả năng chọn mọi "
 "thứ về đặt lịch hẹn  trong vài bước."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1677
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1679
 msgid "Amelia - Step-By-Step Booking"
 msgstr "AM - Bước đặt lịch hẹn "
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1678
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1680
 msgid ""
 "Step-by-Step booking view guides the customers through several steps in "
 "order to make their bookings."
@@ -5720,11 +5728,11 @@ msgstr ""
 "Giao diện đặt lịch hẹn  từng bước hướng dẫn khách hàng qua một số bước để "
 "thực hiện đặt lịch hẹn  của họ."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1681
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1683
 msgid "Amelia - Catalog Booking"
 msgstr "AM - đặt lịch hẹn  Catalog"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1682
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1684
 msgid ""
 "Front-end Booking Catalog is shortcode when you want to show your service in "
 "a form of a catalog"
@@ -5732,11 +5740,11 @@ msgstr ""
 "Biểu mẫu đặt lịch hẹn  trước đẹp khi bạn muốn hiển thị dịch vụ của mình dưới "
 "dạng catalog."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1685
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1687
 msgid "Amelia - Catalog view"
 msgstr "AM - Xem Catalog"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1686
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1688
 msgid ""
 "Front-end Booking Catalog is shortcode when you want to show your service in "
 "a form of a cataloge"
@@ -5744,12 +5752,12 @@ msgstr ""
 "Biểu mẫu đặt lịch hẹn  trước đẹp khi bạn muốn hiển thị dịch vụ của mình dưới "
 "dạng catalog."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1689
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1691
 msgid "Amelia - Events"
 msgstr "AM - Sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1690
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1694
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1692
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1696
 msgid ""
 "Event Booking is shortcode that gives your customers the option to book one "
 "of the events that you've created on the back-end in a simple event list "
@@ -5759,26 +5767,26 @@ msgstr ""
 "năng đặt một trong những sự kiện bạn đã tạo ở phía sau trong chế độ xem danh "
 "sách sự kiện đơn giản."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1693
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1695
 msgid "Amelia - Events List"
 msgstr "AM - Danh sách sự kiện"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1697
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1699
 msgid "Amelia - Events Calendar"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1698
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1700
 msgid ""
 "Event Booking is shortcode that gives your customers the option to book one "
 "of the events that you've created on the back-end in a simple event calendar "
 "view."
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1700
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1702
 msgid "You are using a form that will be outdated soon!"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1719
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1721
 msgid "Recurring Appointments"
 msgstr "Cuộc hẹn Định kỳ"
 
