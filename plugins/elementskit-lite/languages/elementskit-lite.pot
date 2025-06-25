@@ -2,9 +2,9 @@
 # This file is distributed under the GPLv3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: ElementsKit Lite 3.5.3\n"
+"Project-Id-Version: ElementsKit Lite 3.5.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/elementskit-lite\n"
-"POT-Creation-Date: 2025-06-15 05:53:40+00:00\n"
+"POT-Creation-Date: 2025-06-24 09:41:08+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -65,7 +65,7 @@ msgstr ""
 msgid "which is currently NOT RUNNING on this server."
 msgstr ""
 
-#: elementskit-lite.php:421 libs/framework/views/onboard-steps/step-05.php:8
+#: elementskit-lite.php:421 libs/framework/views/onboard-steps/step-05.php:9
 msgid "ElementsKit"
 msgstr ""
 
@@ -135,6 +135,58 @@ msgstr ""
 
 #: libs/framework/attr.php:60 modules/onepage-scroll/extend-controls.php:75
 msgid "ElementsKit Settings"
+msgstr ""
+
+#: libs/framework/classes/ajax.php:118
+msgid "Setup Configurations"
+msgstr ""
+
+#: libs/framework/classes/ajax.php:119
+msgid "Page Builder Elements Installed"
+msgstr ""
+
+#: libs/framework/classes/ajax.php:120
+msgid "AI Content & SEO Tool Installed"
+msgstr ""
+
+#: libs/framework/classes/ajax.php:121
+msgid "WooCommerce Builder Installed"
+msgstr ""
+
+#: libs/framework/classes/ajax.php:122
+msgid "Form Builder Installed"
+msgstr ""
+
+#: libs/framework/classes/ajax.php:123
+msgid "Email Customizer Installed"
+msgstr ""
+
+#: libs/framework/classes/ajax.php:124
+msgid "Social Integration Installed"
+msgstr ""
+
+#: libs/framework/classes/ajax.php:125
+msgid "Review Management Installed"
+msgstr ""
+
+#: libs/framework/classes/ajax.php:126
+msgid "Fundraising & Donations"
+msgstr ""
+
+#: libs/framework/classes/ajax.php:127
+msgid "Page Builder Blocks Installed"
+msgstr ""
+
+#: libs/framework/classes/ajax.php:128
+msgid "Popup Builder Installed"
+msgstr ""
+
+#: libs/framework/classes/ajax.php:129
+msgid "Table Builder Installed"
+msgstr ""
+
+#: libs/framework/classes/ajax.php:135
+msgid "Plugin Installed"
 msgstr ""
 
 #: libs/framework/classes/plugin-status.php:59
@@ -242,7 +294,6 @@ msgid "Get premium features"
 msgstr ""
 
 #: libs/framework/views/layout-settings.php:80
-#: libs/framework/views/onboard-steps/step-06.php:5
 msgid "Save Changes"
 msgstr ""
 
@@ -290,17 +341,16 @@ msgstr ""
 
 #: libs/framework/views/onboard-steps/step-01.php:55
 #: libs/framework/views/onboard-steps/step-02.php:16
-#: libs/framework/views/onboard-steps/step-03.php:66
+#: libs/framework/views/onboard-steps/step-03.php:169
 #: libs/framework/views/onboard-steps/step-04.php:36
-#: libs/framework/views/onboard-steps/step-05.php:28
+#: libs/framework/views/onboard-steps/step-05.php:29
 msgid "Back"
 msgstr ""
 
 #: libs/framework/views/onboard-steps/step-01.php:56
 #: libs/framework/views/onboard-steps/step-02.php:17
-#: libs/framework/views/onboard-steps/step-03.php:67
+#: libs/framework/views/onboard-steps/step-03.php:172
 #: libs/framework/views/onboard-steps/step-04.php:37
-#: libs/framework/views/onboard-steps/step-05.php:29
 msgid "Next Step"
 msgstr ""
 
@@ -327,41 +377,45 @@ msgid "Promise!"
 msgstr ""
 
 #: libs/framework/views/onboard-steps/step-03.php:2
-#: libs/pro-awareness/pro-awareness.php:254
-msgid "Take your website to the next level"
+msgid "Build A Complete WordPress Website"
 msgstr ""
 
 #: libs/framework/views/onboard-steps/step-03.php:3
-msgid "We have some plugins you can install to get most from WordPress."
+msgid "A fleet of plugins with all types of features you will need for WordPress."
 msgstr ""
 
-#: libs/framework/views/onboard-steps/step-03.php:4
-#: libs/pro-awareness/pro-awareness.php:256
-msgid "These are absolute FREE to use."
+#: libs/framework/views/onboard-steps/step-03.php:38
+msgid "Find top keywords, create winning content & track SEO results with AI."
 msgstr ""
 
-#: libs/framework/views/onboard-steps/step-03.php:17
-msgid "Get FREE 1500 AI words, SEO Keyword, and Competitor Analysis credits"
+#: libs/framework/views/onboard-steps/step-03.php:55
+msgid "The ultimate solution to build a complete WooCommerce site in Elementor."
 msgstr ""
 
-#: libs/framework/views/onboard-steps/step-03.php:17
-msgid "on your personal AI assistant for Content & SEO right inside WordPress!"
+#: libs/framework/views/onboard-steps/step-03.php:72
+msgid "Most flexible form builder for Elementor with a wide range of features."
 msgstr ""
 
-#: libs/framework/views/onboard-steps/step-03.php:27
-msgid "Completely customize your  WooCommerce WordPress"
+#: libs/framework/views/onboard-steps/step-03.php:89
+msgid "Drag-and-drop email builder for WooCommerce & WordPress."
 msgstr ""
 
-#: libs/framework/views/onboard-steps/step-03.php:37
-msgid "Most flexible drag-and-drop form builder"
+#: libs/framework/views/onboard-steps/step-03.php:106 plugin.php:248
+msgid "Design popups that convert, right in your WordPress dashboard."
 msgstr ""
 
-#: libs/framework/views/onboard-steps/step-03.php:47
-msgid "Integrate all your social media to your website"
+#: libs/framework/views/onboard-steps/step-03.php:123
+msgid "Build credibility for your business with the all-in-one review plugin."
 msgstr ""
 
-#: libs/framework/views/onboard-steps/step-03.php:57
-msgid "Integrate various styled review system in your website"
+#: libs/framework/views/onboard-steps/step-03.php:140
+msgid "WordPress integration with popular social platforms to show social proof."
+msgstr ""
+
+#: libs/framework/views/onboard-steps/step-03.php:159
+msgid ""
+"Enhance block capability with page builder features & templates for "
+"Gutenberg."
 msgstr ""
 
 #: libs/framework/views/onboard-steps/step-04.php:2
@@ -394,58 +448,64 @@ msgid ""
 "<strong>20% Discount.</strong>"
 msgstr ""
 
-#: libs/framework/views/onboard-steps/step-05.php:8
+#: libs/framework/views/onboard-steps/step-05.php:9
 msgid "PRO"
 msgstr ""
 
-#: libs/framework/views/onboard-steps/step-05.php:11
+#: libs/framework/views/onboard-steps/step-05.php:12
 msgid "Header & Footer Builder"
 msgstr ""
 
-#: libs/framework/views/onboard-steps/step-05.php:12
+#: libs/framework/views/onboard-steps/step-05.php:13
 msgid "Megamenu Builder"
 msgstr ""
 
-#: libs/framework/views/onboard-steps/step-05.php:13
+#: libs/framework/views/onboard-steps/step-05.php:14
 msgid "Advanced Tab"
 msgstr ""
 
-#: libs/framework/views/onboard-steps/step-05.php:14
+#: libs/framework/views/onboard-steps/step-05.php:15
 msgid "Parallax Effect"
 msgstr ""
 
-#: libs/framework/views/onboard-steps/step-05.php:15
+#: libs/framework/views/onboard-steps/step-05.php:16
 msgid "Social Feeds"
 msgstr ""
 
-#: libs/framework/views/onboard-steps/step-05.php:16
+#: libs/framework/views/onboard-steps/step-05.php:17
 msgid "More Addons & Modules"
 msgstr ""
 
-#: libs/framework/views/onboard-steps/step-05.php:19
+#: libs/framework/views/onboard-steps/step-05.php:20
 msgid "45+ Pre-designed Header & Footer Templates"
 msgstr ""
 
-#: libs/framework/views/onboard-steps/step-05.php:20
+#: libs/framework/views/onboard-steps/step-05.php:21
 msgid "35+ Ready Pages"
 msgstr ""
 
-#: libs/framework/views/onboard-steps/step-05.php:21
+#: libs/framework/views/onboard-steps/step-05.php:22
 msgid "500+ Ready Sections"
 msgstr ""
 
-#: libs/framework/views/onboard-steps/step-05.php:24
+#: libs/framework/views/onboard-steps/step-05.php:25
 msgid "Explore PRO"
 msgstr ""
 
-#: libs/framework/views/onboard-steps/step-06.php:3
-msgid "Congratulations!"
+#: libs/framework/views/onboard-steps/step-05.php:30
+msgid "Complete Setup"
 msgstr ""
 
-#: libs/framework/views/onboard-steps/step-06.php:4
-msgid ""
-"Let’s dive into developing your website with the world’s best addons for "
-"Elementor."
+#: libs/framework/views/onboard-steps/step-06.php:2
+msgid "Great! You’re All Set!"
+msgstr ""
+
+#: libs/framework/views/onboard-steps/step-06.php:5
+msgid "Here’s an overview of everything that is setup."
+msgstr ""
+
+#: libs/framework/views/onboard-steps/step-06.php:18
+msgid "Go to WP Dashboard"
 msgstr ""
 
 #: libs/framework/views/settings-sections/dashboard.php:8
@@ -967,8 +1027,16 @@ msgstr ""
 msgid "Default Title"
 msgstr ""
 
+#: libs/pro-awareness/pro-awareness.php:254
+msgid "Take your website to the next level"
+msgstr ""
+
 #: libs/pro-awareness/pro-awareness.php:255
 msgid "We have some plugins you can install to get most from Wordpress."
+msgstr ""
+
+#: libs/pro-awareness/pro-awareness.php:256
+msgid "These are absolute FREE to use."
 msgstr ""
 
 #: libs/stories/stories.php:252
@@ -1126,7 +1194,7 @@ msgstr ""
 #: widgets/client-logo/client-logo.php:1296
 #: widgets/fluent-forms/fluent-forms.php:1700
 #: widgets/fluent-forms/fluent-forms.php:1899 widgets/nav-menu/nav-menu.php:585
-#: widgets/nav-menu/nav-menu.php:905 widgets/post-tab/post-tab.php:282
+#: widgets/nav-menu/nav-menu.php:924 widgets/post-tab/post-tab.php:282
 #: widgets/tab/tab.php:829 widgets/testimonial/testimonial.php:823
 #: widgets/testimonial/testimonial.php:1226
 #: widgets/testimonial/testimonial.php:2005
@@ -1713,7 +1781,7 @@ msgstr ""
 #: widgets/header-search/header-search.php:523 widgets/heading/heading.php:374
 #: widgets/icon-box/icon-box.php:382 widgets/icon-box/icon-box.php:735
 #: widgets/image-accordion/image-accordion.php:589
-#: widgets/nav-menu/nav-menu.php:1113 widgets/page-list/page-list.php:579
+#: widgets/nav-menu/nav-menu.php:1132 widgets/page-list/page-list.php:579
 #: widgets/page-list/page-list.php:593 widgets/page-list/page-list.php:959
 #: widgets/post-list/post-list.php:378 widgets/post-list/post-list.php:774
 #: widgets/pricing/pricing.php:1499 widgets/pricing/pricing.php:1569
@@ -1976,90 +2044,104 @@ msgid ""
 msgstr ""
 
 #: plugin.php:217
-msgid "GutenKit"
-msgstr ""
-
-#: plugin.php:220
-msgid ""
-"Gutenberg blocks, patterns, and templates that extend the page-building "
-"experience using the WordPress block editor."
-msgstr ""
-
-#: plugin.php:224
 msgid "ShopEngine"
 msgstr ""
 
-#: plugin.php:227
+#: plugin.php:220
 msgid ""
 "Complete WooCommerce solution for Elementor to fully customize any pages "
 "including cart, checkout, shop page, and so on."
 msgstr ""
 
-#: plugin.php:231
+#: plugin.php:224
 msgid "MetForm"
 msgstr ""
 
-#: plugin.php:234
+#: plugin.php:227
 msgid ""
 "Drag & drop form builder for Elementor to create contact forms, multi-step "
 "forms, and more — smoother, faster, and better!"
 msgstr ""
 
-#: plugin.php:238
+#: plugin.php:231
 msgid "EmailKit"
 msgstr ""
 
-#: plugin.php:241
+#: plugin.php:234
 msgid ""
 "Advanced email customizer for WooCommerce and WordPress. Build, customize, "
 "and send emails from WordPress to boost your sales!"
 msgstr ""
 
+#: plugin.php:238
+msgid "GutenKit"
+msgstr ""
+
+#: plugin.php:241
+msgid ""
+"Gutenberg blocks, patterns, and templates that extend the page-building "
+"experience using the WordPress block editor."
+msgstr ""
+
 #: plugin.php:245
+msgid "PopupKit"
+msgstr ""
+
+#: plugin.php:252
+msgid "TableKit"
+msgstr ""
+
+#: plugin.php:255
+msgid ""
+"Fully Customizable. Multi-Media Integration. Synch Any Data Files. All "
+"Within Block Editor."
+msgstr ""
+
+#: plugin.php:259
 msgid "WP Social"
 msgstr ""
 
-#: plugin.php:248
+#: plugin.php:262
 msgid ""
 "Add social share, login, and engagement counter — unified solution for all "
 "social media with tons of different styles for your website."
 msgstr ""
 
-#: plugin.php:252
+#: plugin.php:266
 msgid "WP Ultimate Review"
 msgstr ""
 
-#: plugin.php:255
+#: plugin.php:269
 msgid ""
 "Collect and showcase reviews on your website to build brand credibility and "
 "social proof with the easiest solution."
 msgstr ""
 
-#: plugin.php:259
+#: plugin.php:273
 msgid "FundEngine"
 msgstr ""
 
-#: plugin.php:262
+#: plugin.php:276
 msgid ""
 "Create fundraising, crowdfunding, and donation websites with PayPal and "
 "Stripe payment gateway integration."
 msgstr ""
 
-#: plugin.php:266
+#: plugin.php:280
 msgid "Blocks for ShopEngine"
 msgstr ""
 
-#: plugin.php:269
+#: plugin.php:283
 msgid ""
 "All in one WooCommerce solution for Gutenberg! Build your WooCommerce pages "
 "in a block editor with full customization."
 msgstr ""
 
-#: plugin.php:273
+#: plugin.php:287
 msgid "Genie Image"
 msgstr ""
 
-#: plugin.php:276
+#: plugin.php:290
 msgid ""
 "AI-powered text-to-image generator for WordPress with OpenAI’s DALL-E 2 "
 "technology to generate high-quality images in one click."
@@ -2303,8 +2385,8 @@ msgstr ""
 #: widgets/mail-chimp/mail-chimp.php:1043
 #: widgets/mail-chimp/mail-chimp.php:1075
 #: widgets/mail-chimp/mail-chimp.php:1185 widgets/nav-menu/nav-menu.php:725
-#: widgets/nav-menu/nav-menu.php:1237 widgets/nav-menu/nav-menu.php:1279
-#: widgets/nav-menu/nav-menu.php:1438 widgets/nav-menu/nav-menu.php:1479
+#: widgets/nav-menu/nav-menu.php:1256 widgets/nav-menu/nav-menu.php:1298
+#: widgets/nav-menu/nav-menu.php:1457 widgets/nav-menu/nav-menu.php:1498
 #: widgets/page-list/page-list.php:81 widgets/page-list/page-list.php:207
 #: widgets/page-list/page-list.php:383 widgets/page-list/page-list.php:619
 #: widgets/piechart/piechart.php:375 widgets/piechart/piechart.php:593
@@ -2463,9 +2545,9 @@ msgstr ""
 #: widgets/mail-chimp/mail-chimp.php:1241
 #: widgets/mail-chimp/mail-chimp.php:1354
 #: widgets/mail-chimp/mail-chimp.php:1390 widgets/nav-menu/nav-menu.php:736
-#: widgets/nav-menu/nav-menu.php:948 widgets/nav-menu/nav-menu.php:1247
-#: widgets/nav-menu/nav-menu.php:1289 widgets/nav-menu/nav-menu.php:1448
-#: widgets/nav-menu/nav-menu.php:1489 widgets/ninja-forms/ninja-forms.php:354
+#: widgets/nav-menu/nav-menu.php:967 widgets/nav-menu/nav-menu.php:1266
+#: widgets/nav-menu/nav-menu.php:1308 widgets/nav-menu/nav-menu.php:1467
+#: widgets/nav-menu/nav-menu.php:1508 widgets/ninja-forms/ninja-forms.php:354
 #: widgets/ninja-forms/ninja-forms.php:489
 #: widgets/ninja-forms/ninja-forms.php:722 widgets/page-list/page-list.php:353
 #: widgets/post-list/post-list.php:462 widgets/post-list/post-list.php:514
@@ -2556,8 +2638,8 @@ msgstr ""
 #: widgets/mail-chimp/mail-chimp.php:681 widgets/mail-chimp/mail-chimp.php:908
 #: widgets/mail-chimp/mail-chimp.php:1261
 #: widgets/mail-chimp/mail-chimp.php:1307 widgets/nav-menu/nav-menu.php:745
-#: widgets/nav-menu/nav-menu.php:1039 widgets/nav-menu/nav-menu.php:1175
-#: widgets/nav-menu/nav-menu.php:1398 widgets/ninja-forms/ninja-forms.php:365
+#: widgets/nav-menu/nav-menu.php:1058 widgets/nav-menu/nav-menu.php:1194
+#: widgets/nav-menu/nav-menu.php:1417 widgets/ninja-forms/ninja-forms.php:365
 #: widgets/ninja-forms/ninja-forms.php:732 widgets/page-list/page-list.php:361
 #: widgets/page-list/page-list.php:700 widgets/post-list/post-list.php:469
 #: widgets/post-list/post-list.php:521 widgets/post-list/post-list.php:860
@@ -2618,7 +2700,7 @@ msgstr ""
 #: widgets/icon-box/icon-box.php:1735 widgets/image-box/image-box.php:594
 #: widgets/image-box/image-box.php:888 widgets/image-box/image-box.php:940
 #: widgets/mail-chimp/mail-chimp.php:703 widgets/mail-chimp/mail-chimp.php:939
-#: widgets/nav-menu/nav-menu.php:1081 widgets/page-list/page-list.php:374
+#: widgets/nav-menu/nav-menu.php:1100 widgets/page-list/page-list.php:374
 #: widgets/piechart/piechart.php:572 widgets/post-tab/post-tab.php:263
 #: widgets/post-tab/post-tab.php:324 widgets/pricing/pricing.php:1067
 #: widgets/pricing/pricing.php:1104 widgets/tab/tab.php:540
@@ -2688,9 +2770,9 @@ msgstr ""
 #: widgets/mail-chimp/mail-chimp.php:711 widgets/mail-chimp/mail-chimp.php:920
 #: widgets/mail-chimp/mail-chimp.php:1249
 #: widgets/mail-chimp/mail-chimp.php:1283 widgets/nav-menu/nav-menu.php:347
-#: widgets/nav-menu/nav-menu.php:773 widgets/nav-menu/nav-menu.php:1002
-#: widgets/nav-menu/nav-menu.php:1131 widgets/nav-menu/nav-menu.php:1334
-#: widgets/nav-menu/nav-menu.php:1598 widgets/ninja-forms/ninja-forms.php:435
+#: widgets/nav-menu/nav-menu.php:773 widgets/nav-menu/nav-menu.php:1021
+#: widgets/nav-menu/nav-menu.php:1150 widgets/nav-menu/nav-menu.php:1353
+#: widgets/nav-menu/nav-menu.php:1617 widgets/ninja-forms/ninja-forms.php:435
 #: widgets/ninja-forms/ninja-forms.php:744 widgets/page-list/page-list.php:328
 #: widgets/page-list/page-list.php:872 widgets/page-list/page-list.php:912
 #: widgets/piechart/piechart.php:384 widgets/post-list/post-list.php:430
@@ -2762,8 +2844,8 @@ msgstr ""
 #: widgets/image-box/image-box.php:560 widgets/image-box/image-box.php:616
 #: widgets/image-box/image-box.php:864 widgets/image-box/image-box.php:916
 #: widgets/mail-chimp/mail-chimp.php:741 widgets/mail-chimp/mail-chimp.php:976
-#: widgets/nav-menu/nav-menu.php:367 widgets/nav-menu/nav-menu.php:1151
-#: widgets/nav-menu/nav-menu.php:1374 widgets/nav-menu/nav-menu.php:1524
+#: widgets/nav-menu/nav-menu.php:367 widgets/nav-menu/nav-menu.php:1170
+#: widgets/nav-menu/nav-menu.php:1393 widgets/nav-menu/nav-menu.php:1543
 #: widgets/ninja-forms/ninja-forms.php:599
 #: widgets/ninja-forms/ninja-forms.php:642 widgets/page-list/page-list.php:502
 #: widgets/page-list/page-list.php:627 widgets/post-list/post-list.php:695
@@ -2851,7 +2933,7 @@ msgstr ""
 #: widgets/image-comparison/image-comparison.php:570
 #: widgets/mail-chimp/mail-chimp.php:638 widgets/mail-chimp/mail-chimp.php:1007
 #: widgets/mail-chimp/mail-chimp.php:1295 widgets/nav-menu/nav-menu.php:758
-#: widgets/nav-menu/nav-menu.php:1354 widgets/nav-menu/nav-menu.php:1578
+#: widgets/nav-menu/nav-menu.php:1373 widgets/nav-menu/nav-menu.php:1597
 #: widgets/ninja-forms/ninja-forms.php:138
 #: widgets/ninja-forms/ninja-forms.php:756 widgets/page-list/page-list.php:340
 #: widgets/page-list/page-list.php:728 widgets/page-list/page-list.php:783
@@ -3041,8 +3123,8 @@ msgstr ""
 #: widgets/image-box/image-box.php:1197 widgets/image-box/image-box.php:1284
 #: widgets/image-box/image-box.php:1364 widgets/mail-chimp/mail-chimp.php:618
 #: widgets/mail-chimp/mail-chimp.php:662 widgets/mail-chimp/mail-chimp.php:900
-#: widgets/nav-menu/nav-menu.php:447 widgets/nav-menu/nav-menu.php:797
-#: widgets/nav-menu/nav-menu.php:1326 widgets/ninja-forms/ninja-forms.php:130
+#: widgets/nav-menu/nav-menu.php:447 widgets/nav-menu/nav-menu.php:816
+#: widgets/nav-menu/nav-menu.php:1345 widgets/ninja-forms/ninja-forms.php:130
 #: widgets/ninja-forms/ninja-forms.php:180
 #: widgets/ninja-forms/ninja-forms.php:231
 #: widgets/ninja-forms/ninja-forms.php:310
@@ -3121,8 +3203,8 @@ msgstr ""
 #: widgets/image-box/image-box.php:1294 widgets/image-box/image-box.php:1393
 #: widgets/image-comparison/image-comparison.php:454
 #: widgets/lottie/lottie.php:262 widgets/mail-chimp/mail-chimp.php:1022
-#: widgets/nav-menu/nav-menu.php:471 widgets/nav-menu/nav-menu.php:835
-#: widgets/nav-menu/nav-menu.php:1229 widgets/nav-menu/nav-menu.php:1430
+#: widgets/nav-menu/nav-menu.php:471 widgets/nav-menu/nav-menu.php:854
+#: widgets/nav-menu/nav-menu.php:1248 widgets/nav-menu/nav-menu.php:1449
 #: widgets/ninja-forms/ninja-forms.php:278
 #: widgets/ninja-forms/ninja-forms.php:670 widgets/piechart/piechart.php:455
 #: widgets/piechart/piechart.php:584 widgets/post-list/post-list.php:444
@@ -3188,8 +3270,8 @@ msgstr ""
 #: widgets/image-comparison/image-comparison.php:511
 #: widgets/lottie/lottie.php:295 widgets/mail-chimp/mail-chimp.php:1054
 #: widgets/nav-menu/nav-menu.php:97 widgets/nav-menu/nav-menu.php:525
-#: widgets/nav-menu/nav-menu.php:867 widgets/nav-menu/nav-menu.php:1271
-#: widgets/nav-menu/nav-menu.php:1471 widgets/ninja-forms/ninja-forms.php:770
+#: widgets/nav-menu/nav-menu.php:886 widgets/nav-menu/nav-menu.php:1290
+#: widgets/nav-menu/nav-menu.php:1490 widgets/ninja-forms/ninja-forms.php:770
 #: widgets/page-list/page-list.php:392 widgets/page-list/page-list.php:795
 #: widgets/piechart/piechart.php:604 widgets/post-list/post-list.php:496
 #: widgets/post-list/post-list.php:609 widgets/post-list/post-list.php:891
@@ -3546,7 +3628,7 @@ msgstr ""
 
 #: widgets/blog-posts/blog-posts.php:731 widgets/funfact/funfact.php:1062
 #: widgets/header-search/header-search.php:527
-#: widgets/icon-box/icon-box.php:739 widgets/nav-menu/nav-menu.php:1117
+#: widgets/icon-box/icon-box.php:739 widgets/nav-menu/nav-menu.php:1136
 #: widgets/pricing/pricing.php:1503 widgets/pricing/pricing.php:1573
 msgid "Middle"
 msgstr ""
@@ -3624,7 +3706,7 @@ msgstr ""
 #: widgets/header-offcanvas/header-offcanvas.php:428
 #: widgets/header-offcanvas/header-offcanvas.php:648
 #: widgets/image-accordion/image-accordion.php:505
-#: widgets/mail-chimp/mail-chimp.php:1150 widgets/nav-menu/nav-menu.php:1203
+#: widgets/mail-chimp/mail-chimp.php:1150 widgets/nav-menu/nav-menu.php:1222
 #: widgets/post-list/post-list.php:1058 widgets/pricing/pricing.php:289
 #: widgets/pricing/pricing.php:2112 widgets/progressbar/progressbar.php:469
 #: widgets/social/social.php:511 widgets/social-share/social-share.php:605
@@ -3667,7 +3749,7 @@ msgstr ""
 #: widgets/heading/heading.php:1175 widgets/icon-box/icon-box.php:1196
 #: widgets/image-box/image-box.php:421
 #: widgets/image-comparison/image-comparison.php:434
-#: widgets/nav-menu/nav-menu.php:1551 widgets/page-list/page-list.php:520
+#: widgets/nav-menu/nav-menu.php:1570 widgets/page-list/page-list.php:520
 #: widgets/page-list/page-list.php:652 widgets/post-list/post-list.php:713
 #: widgets/post-list/post-list.php:805 widgets/post-tab/post-tab.php:389
 #: widgets/progressbar/progressbar.php:183 widgets/social/social.php:588
@@ -4358,7 +4440,7 @@ msgstr ""
 #: widgets/client-logo/client-logo.php:832
 #: widgets/header-offcanvas/header-offcanvas.php:796
 #: widgets/heading/heading.php:1240 widgets/icon-box/icon-box.php:477
-#: widgets/nav-menu/nav-menu.php:1108 widgets/pricing/pricing.php:1544
+#: widgets/nav-menu/nav-menu.php:1127 widgets/pricing/pricing.php:1544
 #: widgets/team/team.php:1352 widgets/team/team.php:1909
 msgid "Position"
 msgstr ""
@@ -4782,7 +4864,7 @@ msgstr ""
 #: widgets/fluent-forms/fluent-forms.php:1979 widgets/funfact/funfact.php:863
 #: widgets/funfact/funfact.php:907 widgets/icon-box/icon-box.php:1129
 #: widgets/image-box/image-box.php:1176 widgets/image-box/image-box.php:1263
-#: widgets/nav-menu/nav-menu.php:805 widgets/ninja-forms/ninja-forms.php:211
+#: widgets/nav-menu/nav-menu.php:824 widgets/ninja-forms/ninja-forms.php:211
 #: widgets/ninja-forms/ninja-forms.php:448
 #: widgets/ninja-forms/ninja-forms.php:543 widgets/pricing/pricing.php:2065
 msgid "Spacing"
@@ -6269,7 +6351,7 @@ msgstr ""
 msgid "Mobile Menu Settings"
 msgstr ""
 
-#: widgets/nav-menu/nav-menu.php:207 widgets/nav-menu/nav-menu.php:1516
+#: widgets/nav-menu/nav-menu.php:207 widgets/nav-menu/nav-menu.php:1535
 msgid "Mobile Menu Logo"
 msgstr ""
 
@@ -6338,12 +6420,12 @@ msgid "Menu Item Style"
 msgstr ""
 
 #: widgets/nav-menu/nav-menu.php:479 widgets/nav-menu/nav-menu.php:533
-#: widgets/nav-menu/nav-menu.php:593 widgets/nav-menu/nav-menu.php:856
+#: widgets/nav-menu/nav-menu.php:593 widgets/nav-menu/nav-menu.php:875
 msgid "Item background"
 msgstr ""
 
 #: widgets/nav-menu/nav-menu.php:488 widgets/nav-menu/nav-menu.php:542
-#: widgets/nav-menu/nav-menu.php:842
+#: widgets/nav-menu/nav-menu.php:861
 msgid "Item text color"
 msgstr ""
 
@@ -6352,7 +6434,7 @@ msgstr ""
 msgid "Border Radius (px)"
 msgstr ""
 
-#: widgets/nav-menu/nav-menu.php:602 widgets/nav-menu/nav-menu.php:912
+#: widgets/nav-menu/nav-menu.php:602 widgets/nav-menu/nav-menu.php:931
 msgid "Item text color (Active)"
 msgstr ""
 
@@ -6368,64 +6450,68 @@ msgstr ""
 msgid "Submenu Item"
 msgstr ""
 
-#: widgets/nav-menu/nav-menu.php:874
+#: widgets/nav-menu/nav-menu.php:796
+msgid "Indicator Font Size"
+msgstr ""
+
+#: widgets/nav-menu/nav-menu.php:893
 msgid "Item text color (hover)"
 msgstr ""
 
-#: widgets/nav-menu/nav-menu.php:890
+#: widgets/nav-menu/nav-menu.php:909
 msgid "Item background (hover)"
 msgstr ""
 
-#: widgets/nav-menu/nav-menu.php:925
+#: widgets/nav-menu/nav-menu.php:944
 msgid "Item background (Active)"
 msgstr ""
 
-#: widgets/nav-menu/nav-menu.php:938
+#: widgets/nav-menu/nav-menu.php:957
 msgid "Sub Menu Items Border"
 msgstr ""
 
-#: widgets/nav-menu/nav-menu.php:956
+#: widgets/nav-menu/nav-menu.php:975
 msgid "Border Last Child"
 msgstr ""
 
-#: widgets/nav-menu/nav-menu.php:966
+#: widgets/nav-menu/nav-menu.php:985
 msgid "Border last Child"
 msgstr ""
 
-#: widgets/nav-menu/nav-menu.php:974 widgets/nav-menu/nav-menu.php:984
+#: widgets/nav-menu/nav-menu.php:993 widgets/nav-menu/nav-menu.php:1003
 msgid "Border First Child"
 msgstr ""
 
-#: widgets/nav-menu/nav-menu.php:994
+#: widgets/nav-menu/nav-menu.php:1013
 msgid "Submenu Panel"
 msgstr ""
 
-#: widgets/nav-menu/nav-menu.php:1021
+#: widgets/nav-menu/nav-menu.php:1040
 msgid "Panel Menu Border"
 msgstr ""
 
-#: widgets/nav-menu/nav-menu.php:1030
+#: widgets/nav-menu/nav-menu.php:1049
 msgid "Container background"
 msgstr ""
 
-#: widgets/nav-menu/nav-menu.php:1065
+#: widgets/nav-menu/nav-menu.php:1084
 msgid "Conatiner width"
 msgstr ""
 
-#: widgets/nav-menu/nav-menu.php:1091
+#: widgets/nav-menu/nav-menu.php:1110
 msgid "Hamburger Menu"
 msgstr ""
 
-#: widgets/nav-menu/nav-menu.php:1099
+#: widgets/nav-menu/nav-menu.php:1118
 msgid "Hamburger Toggle"
 msgstr ""
 
-#: widgets/nav-menu/nav-menu.php:1256 widgets/nav-menu/nav-menu.php:1298
-#: widgets/nav-menu/nav-menu.php:1457 widgets/nav-menu/nav-menu.php:1498
+#: widgets/nav-menu/nav-menu.php:1275 widgets/nav-menu/nav-menu.php:1317
+#: widgets/nav-menu/nav-menu.php:1476 widgets/nav-menu/nav-menu.php:1517
 msgid "Hamburger Icon Color"
 msgstr ""
 
-#: widgets/nav-menu/nav-menu.php:1316
+#: widgets/nav-menu/nav-menu.php:1335
 msgid "Close Toggle"
 msgstr ""
 

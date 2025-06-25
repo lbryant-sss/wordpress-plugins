@@ -9,6 +9,7 @@ namespace CookieYes\Lite\Admin\Modules\Review_Feedback;
 
 use CookieYes\Lite\Includes\Modules;
 use CookieYes\Lite\Includes\Notice;
+use CookieYes\Lite\Admin\Modules\Connect_Banner\Connect_Banner;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -68,6 +69,10 @@ class Review_Feedback extends Modules {
 		}
 		$notices = Notice::get_instance()->get();
 		if ( ! isset( $notices['review_notice'] ) || empty( $notices['review_notice'] ) ) {
+			return;
+		}
+		$connect_banner = Connect_Banner::get_instance()->check_condition();
+		if ( $screen && 'plugins' === $screen->id && $connect_banner ) {
 			return;
 		}
 		?>

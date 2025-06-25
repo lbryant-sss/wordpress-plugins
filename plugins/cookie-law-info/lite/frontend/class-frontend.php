@@ -561,6 +561,13 @@ var _ckyGcm = <?php echo $gcm_json; ?>;
 			'status'     => true,
 			'attributes' => array(),
 		);
+		$data[] = array(
+			'key'        => 'cky_preference_close_label',
+			'content'    => do_shortcode( '[cky_preference_close_label]' ),
+			'tag'        => '',
+			'status'     => true,
+			'attributes' => array(),
+		);
 		return $data;
 	}
 

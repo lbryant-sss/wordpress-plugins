@@ -206,7 +206,10 @@ class Cartflows_Ca_Database {
 		// Can't use placeholders for table/column names, it will be wrapped by a single quote (') instead of a backquote (`).
 		$email_template_count = $wpdb->get_var( "SELECT COUNT(*) FROM {$cart_abandonment_template_db}" ); // db call ok; no-cache ok.
 
-		if ( ( ! $email_template_count ) || $force_restore ) {
+		// Allow skipping default email templates via filter.
+		$skip_default_templates = apply_filters( 'cartflows_ca_skip_default_email_templates', false, $force_restore );
+
+		if ( ( ! $email_template_count || $force_restore ) && ! $skip_default_templates ) {
 
 			$email_templates = array(
 				array(

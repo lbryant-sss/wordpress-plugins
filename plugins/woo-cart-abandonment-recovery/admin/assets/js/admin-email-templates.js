@@ -21,6 +21,58 @@
 				'#wcf_ca_export_orders',
 				EmailTemplatesAdmin.export_orders
 			);
+			// Trigger to export all email templates on click of export button.
+			$( document ).on(
+				'click',
+				'#wcf-export-templates',
+				EmailTemplatesAdmin.export_templates
+			);
+			// Trigger to export email templates on click of export besides clone template button.
+			$( document ).on(
+				'click',
+				'.wcf-export-template',
+				EmailTemplatesAdmin.export_templates
+			);
+			$( document ).on(
+				'click',
+				'#doaction, #doaction2',
+				EmailTemplatesAdmin.handle_bulk_action
+			);
+			$( document ).on(
+				'click',
+				'#wcf-import-templates',
+				EmailTemplatesAdmin.open_import_modal
+			);
+			$( document ).on(
+				'click',
+				'.wcf-ca-modal-close, .wcf-ca-action--cancel',
+				EmailTemplatesAdmin.close_import_modal
+			);
+			$( document ).on(
+				'submit',
+				'#wcf-ca-import-form',
+				EmailTemplatesAdmin.import_templates
+			);
+			$( document ).on(
+				'change',
+				'#wcf-ca-import-file',
+				EmailTemplatesAdmin.handle_file_change
+			);
+			$( document ).on(
+				'dragover',
+				'#wcf-import-modal',
+				EmailTemplatesAdmin.prevent_default
+			);
+			$( document ).on(
+				'drop',
+				'#wcf-import-modal',
+				EmailTemplatesAdmin.handle_file_drop
+			);
+			$( document ).on(
+				'click',
+				'.wcf-ca-remove-file',
+				EmailTemplatesAdmin.reset_import_file
+			);
 			$( document ).on(
 				'click',
 				'.wcar-switch-grid',
@@ -56,8 +108,8 @@
 
 			const email_subject = $( '#wcf_email_subject' ).val();
 			const email_send_to = $( '#wcf_send_test_email' ).val();
-			const email_template_id = document.getElementsByName( 'id' )[ 0 ]
-				.value;
+			const email_template_id =
+				document.getElementsByName( 'id' )[ 0 ].value;
 			const wp_nonce = $( '#_wpnonce' ).val();
 
 			$( this ).next( 'div.error' ).remove();
@@ -154,6 +206,76 @@
 					wcf_ca_localized_vars._export_orders_nonce;
 			}
 		},
+		export_templates( e, ids ) {
+			if ( e ) {
+				e.preventDefault();
+			}
+			const $el = e ? $( e.currentTarget ) : $( '#wcf-export-templates' );
+			const nonce = $el.data( 'nonce' );
+			const id = $el.data( 'id' );
+			const data = {
+				action: 'wcf_ca_export_email_templates',
+				_wpnonce: nonce,
+			};
+			if ( Array.isArray( ids ) && ids.length ) {
+				data.ids = ids;
+			} else if ( id !== undefined ) {
+				data.ids = [ id ];
+			}
+			$.ajax( {
+				url: ajaxurl,
+				method: 'POST',
+				dataType: 'json',
+				data,
+				beforeSend() {
+					if ( $el.attr( 'id' ) === 'wcf-export-templates' ) {
+						$el.prop( 'disabled', true ).text( 'Exporting...' );
+						$( '#wcf-export-spinner' )
+							.addClass( 'is-active' )
+							.show();
+					}
+				},
+			} )
+				.done( function ( resData ) {
+					const blob = new Blob( [ JSON.stringify( resData ) ], {
+						type: 'application/json',
+					} );
+					const url = window.URL.createObjectURL( blob );
+					const a = document.createElement( 'a' );
+					a.href = url;
+					a.download = 'cart_abandonment_email_templates.json';
+					document.body.appendChild( a );
+					a.click();
+					window.URL.revokeObjectURL( url );
+					a.remove();
+				} )
+				.always( function () {
+					if ( $el.attr( 'id' ) === 'wcf-export-templates' ) {
+						$el.prop( 'disabled', false ).text( 'Export' );
+						$( '#wcf-export-spinner' )
+							.removeClass( 'is-active' )
+							.hide();
+					}
+				} );
+		},
+		handle_bulk_action( e ) {
+			const $btn = $( e.currentTarget );
+			const selector =
+				$btn.attr( 'id' ) === 'doaction'
+					? '#bulk-action-selector-top'
+					: '#bulk-action-selector-bottom';
+			if ( $( selector ).val() === 'export_email_templates' ) {
+				e.preventDefault();
+				const ids = $( 'input[name="id[]"]:checked' )
+					.map( function () {
+						return $( this ).val();
+					} )
+					.get();
+				if ( ids.length ) {
+					EmailTemplatesAdmin.export_templates( null, ids );
+				}
+			}
+		},
 		toggle_activate_template_on_grid() {
 			let new_state;
 			const $switch = $( this ),
@@ -196,6 +318,87 @@
 				new_state === 'on' ? 1 : 0
 			);
 			$switch.attr( 'wcf-ca-template-switch', new_state );
+		},
+
+		open_import_modal() {
+			$( '#wcf-import-modal' ).show();
+		},
+
+		close_import_modal() {
+			$( '#wcf-import-modal' ).hide();
+		},
+
+		import_templates( e ) {
+			e.preventDefault();
+			const fileInput = document.getElementById( 'wcf-ca-import-file' );
+			if ( ! fileInput.files.length ) {
+				return;
+			}
+			const reader = new FileReader();
+			reader.onload = function ( evt ) {
+				let templates = evt.target.result;
+				if ( typeof templates === 'string' ) {
+					try {
+						templates = JSON.parse( templates );
+					} catch ( error ) {
+						console.error( 'Error parsing JSON:', error );
+						return;
+					}
+				}
+				$.ajax( {
+					url: ajaxurl,
+					type: 'POST',
+					data: {
+						action: 'wcf_ca_import_email_templates',
+						_wpnonce: $(
+							'#wcf-ca-import-form [name="_wpnonce"]'
+						).val(),
+						templates: JSON.stringify( templates ),
+					},
+					beforeSend: EmailTemplatesAdmin.show_import_loader,
+				} ).done( function () {
+					window.location.reload();
+				} );
+			};
+			reader.readAsText( fileInput.files[ 0 ] );
+		},
+
+		handle_file_change() {
+			const file = this.files[ 0 ];
+			if ( file ) {
+				$( '.wcf-ca-file-name' ).text( file.name );
+				$( '.wcf-ca-file-preview' ).show();
+			} else {
+				EmailTemplatesAdmin.reset_import_file();
+			}
+		},
+
+		handle_file_drop( e ) {
+			EmailTemplatesAdmin.prevent_default( e );
+			const files = e.originalEvent.dataTransfer.files;
+			if ( files && files.length ) {
+				const input = document.getElementById( 'wcf-ca-import-file' );
+				input.files = files;
+				EmailTemplatesAdmin.handle_file_change.call( input );
+			}
+		},
+
+		prevent_default( e ) {
+			e.preventDefault();
+			e.stopPropagation();
+		},
+
+		reset_import_file() {
+			$( '#wcf-ca-import-file' ).val( '' );
+			$( '.wcf-ca-file-preview' ).hide();
+		},
+
+		show_import_loader() {
+			$( '#wcf-ca-import-form .spinner' ).addClass( 'is-active' ).show();
+			$( '#wcf-ca-import-form button[type="submit"]' ).prop(
+				'disabled',
+				true
+			);
 		},
 	};
 

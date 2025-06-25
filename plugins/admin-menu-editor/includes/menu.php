@@ -150,6 +150,15 @@ abstract class ameMenu {
 			}
 		}
 
+		//Copy detected meta capabilities.
+		if ( isset($arr['suspected_meta_caps']) && is_array($arr['suspected_meta_caps']) ) {
+			$meta_caps = array_map('strval', $arr['suspected_meta_caps']);
+			$meta_caps = array_unique($meta_caps); //Remove duplicates.
+			if ( !empty($meta_caps) ) {
+				$menu['suspected_meta_caps'] = $meta_caps;
+			}
+		}
+
 		//Copy component visibility.
 		if ( isset($arr['component_visibility']) ) {
 			$visibility = array();

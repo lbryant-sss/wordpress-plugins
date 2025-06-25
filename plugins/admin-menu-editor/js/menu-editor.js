@@ -2505,6 +2505,7 @@ function readMenuTreeState(){
 	var result = {
 		tree: tree,
 		granted_capabilities: AmeCapabilityManager.getGrantedCapabilities(),
+		suspected_meta_caps: AmeCapabilityManager.getSuspectedMetaCaps(),
 		component_visibility: $.extend(true, {}, generalComponentVisibility)
 	};
 

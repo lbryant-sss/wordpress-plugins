@@ -63,7 +63,7 @@ class Cartflows_Ca_Email_Templates_Table extends WP_List_Table {
 	 */
 	public function column_template_name( $item ) {
 
-		$row_actions['edit'] = '<a href="' . wp_nonce_url(
+		$edit_url = wp_nonce_url(
 			add_query_arg(
 				array(
 					'action'     => WCF_ACTION_EMAIL_TEMPLATES,
@@ -73,7 +73,9 @@ class Cartflows_Ca_Email_Templates_Table extends WP_List_Table {
 				$this->base_url
 			),
 			WCF_EMAIL_TEMPLATES_NONCE
-		) . '">' . __( 'Edit', 'woo-cart-abandonment-recovery' ) . '</a>';
+		);
+
+		$row_actions['edit'] = '<a href="' . $edit_url . '">' . __( 'Edit', 'woo-cart-abandonment-recovery' ) . '</a>';
 
 		$row_actions['delete'] = '<a onclick="return confirm(\'Are you sure to delete this email template?\');" href="' . wp_nonce_url(
 			add_query_arg(
@@ -99,7 +101,11 @@ class Cartflows_Ca_Email_Templates_Table extends WP_List_Table {
 			WCF_EMAIL_TEMPLATES_NONCE
 		) . '">' . __( 'Clone', 'woo-cart-abandonment-recovery' ) . '</a>';
 
-		return sprintf( '%s %s', esc_html( $item['template_name'] ), $this->row_actions( $row_actions ) );
+		$row_actions['export'] = '<a href="#" class="wcf-export-template" data-id="' . esc_attr( $item['id'] ) . '" data-nonce="' . esc_attr( wp_create_nonce( WCF_EMAIL_TEMPLATES_NONCE ) ) . '">' . __( 'Export', 'woo-cart-abandonment-recovery' ) . '</a>';
+
+		$template_name = '<a href="' . esc_url( $edit_url ) . '" title="' . esc_attr( $item['template_name'] ) . '">' . esc_html( $item['template_name'] ) . '</a>';
+
+		return sprintf( '%s %s', $template_name, $this->row_actions( $row_actions ) );
 	}
 
 	/**
@@ -119,7 +125,8 @@ class Cartflows_Ca_Email_Templates_Table extends WP_List_Table {
 	 */
 	public function get_bulk_actions() {
 		$actions = array(
-			WCF_ACTION_EMAIL_TEMPLATES => __( 'Delete', 'woo-cart-abandonment-recovery' ),
+			WCF_ACTION_EMAIL_TEMPLATES        => __( 'Delete', 'woo-cart-abandonment-recovery' ),
+			WCF_ACTION_EXPORT_EMAIL_TEMPLATES => __( 'Export', 'woo-cart-abandonment-recovery' ),
 		);
 		return $actions;
 	}

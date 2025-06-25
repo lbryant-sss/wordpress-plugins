@@ -3,7 +3,7 @@ Contributors: sujaypawar, wpcrafter
 Tags: woocommerce, cart abandonment, cart recovery
 Requires at least: 5.4
 Tested up to: 6.8
-Stable tag: 1.3.2
+Stable tag: 1.3.3
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -119,6 +119,12 @@ Here are few thoughts behind making it available for free:
 - It is our way of saying thank you to the community and helping shop owners to boost their profits.
 - And quite honestly, we want you to try one of our products for free. And when you see how helpful it is, it should get you excited to buy other products from us in the future
 
+= How can I report a security bug? =
+
+We take plugin security extremely seriously. If you discover a security vulnerability, please report it in a safe and responsible manner.
+
+You can report the issue through our [Bug Bounty Program](https://brainstormforce.com/bug-bounty-program/). We collaborate with Patchstack to provide opportunities for researchers to report vulnerabilities. The Patchstack team will help validate, triage, and handle any reported security issues.
+
 == Screenshots ==
 
 1. Track recovery report for abandonment sales from the dashboard
@@ -127,6 +133,9 @@ Here are few thoughts behind making it available for free:
 4. General settings for Email, Webhook (Coupon Code), GDPR
 
 == Changelog ==
+
+= Version 1.3.3 - Tuesday, 24th June 2025 =
+* New: Added import and export functionality for follow-up email templates, making it easier to back up, share, and migrate email configurations.
 
 = Version 1.3.2 - Thursday, 15th May 2025 =
 * Improvement: Included the abandoned cart recorded date in the exported file.

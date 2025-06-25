@@ -520,6 +520,10 @@ class AmeActorManager implements AmeActorManagerInterface {
 		return {prediction: true};
 	}
 
+	getSuspectedMetaCaps(): string[] {
+		return AmeActorManager._.keys(this.suspectedMetaCaps);
+	}
+
 	/* -------------------------------
 	 * Roles
 	 * ------------------------------- */

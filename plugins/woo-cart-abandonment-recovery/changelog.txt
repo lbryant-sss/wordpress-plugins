@@ -1,3 +1,6 @@
+Version 1.3.3 - Tuesday, 24th June 2025
+- New: Added import and export functionality for follow-up email templates, making it easier to back up, share, and migrate email configurations.
+
 Version 1.3.2 - Thursday, 15th May 2025
 - Improvement: Included the abandoned cart recorded date in the exported file.
 - Fix: Prevented recovery emails from being sent if the cart contains out-of-stock products.

@@ -409,15 +409,14 @@ function woocs_redirect(currency) {
 
     } else {
         if (Object.keys(woocs_array_of_get).length > 0) {
+	    let get_values = [];
             jQuery.each(woocs_array_of_get, function (index, value) {
-                string_of_get = string_of_get + "&" + index + "=" + value;
+                get_values.push(index + "=" + value);
             });
-
-        }
+	    string_of_get += get_values.join("&");
+	}
         window.location = l + string_of_get + id_key;
     }
-
-
 }
 
 function woocs_refresh_mini_cart(delay) {

@@ -440,6 +440,7 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 		//Grant virtual capabilities like "super_user" to users.
 		add_filter('user_has_cap', array($this, 'grant_virtual_caps_to_user'), 9, 3);
 		add_filter('user_has_cap', array($this, 'regrant_virtual_caps_to_user'), 200, 1);
+		add_filter('map_meta_cap', array($this, 'identity_map_meta_cap_for_user'), 200, 3);
 
 		//Update caches when the current user changes.
 		add_action('set_current_user', array($this, 'update_current_user_cache'), 2, 0); //Run before most plugins.
@@ -4894,15 +4895,12 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 		}
 		$user_id = intval($args[1]);
 
-		if ( !isset($this->cached_virtual_user_caps[$user_id]) ) {
-			$this->update_virtual_cap_cache($this->get_user_by_id($user_id));
-		}
-
-		if ( empty($this->cached_virtual_user_caps[$user_id][$this->virtual_cap_mode]) ) {
+		$caps_for_user = $this->get_virtual_caps_for_user($user_id);
+		if ( empty($caps_for_user) ) {
 			return $capabilities;
 		}
 
-		$this->virtual_caps_for_this_call = $this->cached_virtual_user_caps[$user_id][$this->virtual_cap_mode];
+		$this->virtual_caps_for_this_call = $caps_for_user;
 
 		$capabilities = array_merge($capabilities, $this->virtual_caps_for_this_call);
 		return $capabilities;
@@ -4924,6 +4922,100 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 			$this->virtual_caps_for_this_call = array();
 		}
 		return $capabilities;
+	}
+
+	private function get_virtual_caps_for_user($userId) {
+		if ( !isset($this->cached_virtual_user_caps[$userId]) ) {
+			$this->update_virtual_cap_cache($this->get_user_by_id($userId));
+		}
+
+		if ( empty($this->cached_virtual_user_caps[$userId][$this->virtual_cap_mode]) ) {
+			return [];
+		}
+
+		return $this->cached_virtual_user_caps[$userId][$this->virtual_cap_mode];
+	}
+
+	private $cached_identity_mapped_caps = null;
+
+	/**
+	 * Map selected meta caps to themselves so that they can be enabled by our "user_has_cap" filter.
+	 *
+	 * The "virtual capabilities" mechanism enables/disables certain capabilities for a user. That
+	 * doesn't work for meta capabilities because they're mapped to other, primitive capabilities
+	 * before they're checked. We can't reliably predict which primitive capabilities will be used,
+	 * especially for other plugins, so enabling the primitive caps is not always an option.
+	 *
+	 * Instead, we use the "map_meta_cap" filter to map only the relevant meta capabilities back to
+	 * themselves. This way, setting a meta cap in the "user_has_cap" filter will work as expected.
+	 *
+	 * @param string[]|mixed $primitiveCaps
+	 * @param string|mixed $requiredCap
+	 * @param int|mixed $userId
+	 * @return string[]
+	 */
+	public function identity_map_meta_cap_for_user($primitiveCaps, $requiredCap = '', $userId = 0) {
+		if ( $this->disable_virtual_caps ) {
+			return $primitiveCaps;
+		}
+
+		//Sanity checks.
+		$userId = intval($userId);
+		if ( ($userId <= 0) || !is_string($requiredCap) || !is_array($primitiveCaps) ) {
+			return $primitiveCaps;
+		}
+
+		//Is the cap set for the user?
+		$virtualCapsForUser = $this->get_virtual_caps_for_user($userId);
+		if ( empty($virtualCapsForUser) || !isset($virtualCapsForUser[$requiredCap]) ) {
+			return $primitiveCaps;
+		}
+
+		//map_meta_cap() is called a lot, so let's cache the capability list.
+		if ( $this->cached_identity_mapped_caps === null ) {
+			$custom_menu = $this->load_custom_menu();
+			if (
+				!empty($custom_menu)
+				&& !empty($custom_menu['suspected_meta_caps'])
+				&& !$this->menu_structure_feature->isCustomizationDisabled()
+			) {
+				$this->cached_identity_mapped_caps = array_fill_keys($custom_menu['suspected_meta_caps'], true);
+			} else {
+				$this->cached_identity_mapped_caps = [];
+			}
+
+			//Exclude dangerous Super User capabilities; don't remap them.
+			$dangerousSuperAdminCaps = [
+				'create_sites'           => true,
+				'delete_sites'           => true,
+				'manage_network'         => true,
+				'manage_sites'           => true,
+				'manage_network_users'   => true,
+				'manage_network_plugins' => true,
+				'manage_network_themes'  => true,
+				'manage_network_options' => true,
+				'upgrade_network'        => true,
+				'setup_network'          => true,
+				'update_php'             => true,
+				'update_https'           => true,
+			];
+			$this->cached_identity_mapped_caps = array_diff_key(
+				$this->cached_identity_mapped_caps,
+				$dangerousSuperAdminCaps
+			);
+		}
+
+		if ( !empty($this->cached_identity_mapped_caps[$requiredCap]) ) {
+			//Just to be safe, let's not override "do_not_allow" results.
+			if ( ($requiredCap === 'do_not_allow') || in_array('do_not_allow', $primitiveCaps) ) {
+				return $primitiveCaps;
+			}
+
+			//Map the meta cap to itself.
+			return [$requiredCap];
+		}
+
+		return $primitiveCaps;
 	}
 
 	/**

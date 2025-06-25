@@ -154,6 +154,8 @@ class Admin {
 			'review_feedback',
 			'upgrade',
 			'pageviews',
+			'dashboard_widget',
+			'connect_banner',
 		);
 		return $modules;
 	}

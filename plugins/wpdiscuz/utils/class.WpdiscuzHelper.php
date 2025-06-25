@@ -1107,12 +1107,19 @@ class WpdiscuzHelper implements WpDiscuzConstants {
                     "user_id" => $idOrEmail->user_id,
                 ];
             }
+        } else if ($idOrEmail instanceof WP_User) {
+            $nameAndEmail = [
+                "name"    => $idOrEmail->display_name,
+                "email"   => $idOrEmail->user_email,
+                "isUser"  => 1,
+                "user_id" => $idOrEmail->ID,
+            ];
         } else if (is_numeric($idOrEmail)) {
             $user = get_user_by("id", $idOrEmail);
             if ($user) {
                 $nameAndEmail = ["name" => $user->display_name, "email" => $user->user_email, "isUser" => 1, "user_id" => $user->ID];
             }
-        } else {
+        } else if (is_string($idOrEmail)) {
             $user = get_user_by("email", $idOrEmail);
             if ($user) {
                 $nameAndEmail = ["name" => $user->display_name, "email" => $user->user_email, "isUser" => 1, "user_id" => $user->ID];

@@ -22,8 +22,10 @@ class Admin {
 		// Embed the Script on our Plugin's Option Page Only
 		if (isset($_GET['page']) && ($_GET['page'] == 'element_pack_options')) {
 			add_action('admin_init', [$this, 'admin_script']);
-			add_action('admin_enqueue_scripts', [$this, 'enqueue_styles']);
 		}
+
+		add_action('admin_enqueue_scripts', [$this, 'enqueue_styles']);
+		
         add_filter('plugin_row_meta', [$this, 'plugin_row_meta'], 10, 2);
         add_filter( 'plugin_action_links_' . BDTEP_PBNAME, [ $this, 'plugin_action_links' ] );
 
@@ -41,11 +43,11 @@ class Admin {
 		$direction_suffix = is_rtl() ? '.rtl' : '';
 		$suffix           = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
 
-		wp_enqueue_style('bdt-uikit', BDTEP_ASSETS_URL . 'css/bdt-uikit' . $direction_suffix . '.css', [], '3.13.1');
+		wp_enqueue_style('bdt-uikit', BDTEP_ASSETS_URL . 'css/bdt-uikit' . $direction_suffix . '.css', [], '3.21.7');
 		wp_enqueue_style('ep-editor', BDTEP_ASSETS_URL . 'css/ep-editor' . $direction_suffix . '.css', [], BDTEP_VER);
 		wp_enqueue_style('ep-admin', BDTEP_ADMIN_URL . 'assets/css/ep-admin' . $direction_suffix . '.css', [], BDTEP_VER);
 
-		wp_enqueue_script('bdt-uikit', BDTEP_ASSETS_URL . 'js/bdt-uikit' . $suffix . '.js', ['jquery'], '3.13.1');
+		wp_enqueue_script('bdt-uikit', BDTEP_ASSETS_URL . 'js/bdt-uikit' . $suffix . '.js', ['jquery'], '3.21.7');
 	}
 
 	/**
@@ -79,7 +81,7 @@ class Admin {
 
         $row_meta = [
             'settings' => '<a href="'.admin_url( 'admin.php?page=element_pack_options' ) .'" aria-label="' . esc_attr(__('Go to settings', 'bdthemes-element-pack')) . '" >' . __('Settings', 'bdthemes-element-pack') . '</b></a>',
-            'gopro' => '<a href="https://www.elementpack.pro/pricing/?utm_source=ElementPackLite&utm_medium=PluginPage&utm_campaign=ElementPackLite&coupon=FREETOPRO" aria-label="' . esc_attr(__('Go get the pro version', 'bdthemes-element-pack')) . '" target="_blank" title="When you purchase through this link you will get 30% discount!" class="ep-go-pro">' . __('Upgrade For 30% Off!', 'bdthemes-element-pack') . '</a>',
+            'gopro' => '<a href="https://store.bdthemes.com/element-pack?utm_source=ElementPackLite&utm_medium=PluginPage&utm_campaign=ElementPackLite&coupon=FREETOPRO" aria-label="' . esc_attr(__('Go get the pro version', 'bdthemes-element-pack')) . '" target="_blank" title="When you purchase through this link you will get 30% discount!" class="ep-go-pro">' . __('Upgrade For 30% Off!', 'bdthemes-element-pack') . '</a>',
         ];
 
         $plugin_meta = array_merge($plugin_meta, $row_meta);

@@ -3,9 +3,9 @@ Contributors: webtoffee, cookieyesdev
 Donate link: https://www.cookieyes.com/ 
 Tags: cookie notice, cookie consent, cookie banner, eu cookie law, cookieyes
 Requires at least: 5.0.0
-Tested up to: 6.8
+Tested up to: 6.8.1
 Requires PHP: 5.6
-Stable tag: 3.2.10
+Stable tag: 3.3.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -205,6 +205,15 @@ Every time we update the plugin, you will see a notification on the installed pl
 9. Privacy policy generator and cookie policy generator
 
 == Changelog ==
+
+= 3.3.0 =
+
+[Compatibility] - Tested OK with WordPress version 6.8.1
+[Add] - Connection nudges added to the plugin page and WordPress admin dashboard.  
+[Add] - Opt-out trial flow implemented for free users.  
+[Enhancement] - Accessibility improvements.  
+[Enhancement] - Improved plugin security.  
+[Fix] - Minor bug fixes.
 
 = 3.2.10 = 
 
@@ -744,7 +753,10 @@ Tested OK with WordPress version 6.2
 
 == Upgrade Notice ==
 
-= 3.2.10 = 
+= 3.3.0 =
 
-[Compatibility] - Tested OK with WordPress version 6.8
-[Enhancement] - Improved UI in plans page.
+[Add] - Connection nudges added to the plugin page and WordPress admin dashboard.  
+[Add] - Opt-out trial flow implemented for free users.  
+[Enhancement] - Accessibility improvements.  
+[Enhancement] - Improved plugin security.  
+[Fix] - Minor bug fixes.

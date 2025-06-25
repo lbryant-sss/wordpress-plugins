@@ -5,13 +5,13 @@
  * Description: Simple to complex discount rules for your WooCommerce store. Core package.
  * Author: Flycart
  * Author URI: https://www.flycart.org
- * Version: 2.6.9
+ * Version: 2.6.10
  * Slug: woo-discount-rules
  * Text Domain: woo-discount-rules
  * Domain Path: /i18n/languages/
  * Requires at least: 4.6.1
  * WC requires at least: 3.0
- * WC tested up to: 9.7
+ * WC tested up to: 9.9
  * License: GPLv2 or later
  * Requires Plugins: woocommerce
  */
@@ -20,10 +20,20 @@ if (!defined('ABSPATH')) {
 }
 
 /**
+ * To set plugin is compatible for WC Custom Order Table (HPOS) feature.
+ */
+add_action('before_woocommerce_init', function() {
+	if (class_exists(\Automattic\WooCommerce\Utilities\FeaturesUtil::class)) {
+		\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility('custom_order_tables', __FILE__, true);
+	}
+});
+
+
+/**
  * Current version of our app
  */
 if (!defined('WDR_VERSION')) {
-    define('WDR_VERSION', '2.6.9');
+    define('WDR_VERSION', '2.6.10');
 }
 
 /**
@@ -201,12 +211,3 @@ if ($awdr_load_version == "v2") {
     }
     include_once(__DIR__ . "/v1/index.php");
 }
-
-/**
- * To set plugin is compatible for WC Custom Order Table (HPOS) feature.
- */
-add_action('before_woocommerce_init', function() {
-    if (class_exists(\Automattic\WooCommerce\Utilities\FeaturesUtil::class)) {
-        \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility('custom_order_tables', __FILE__, true);
-    }
-});

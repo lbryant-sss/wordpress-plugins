@@ -3,8 +3,8 @@ Contributors: flycart
 Donate link: https://flycart.org/
 Tags: woocommerce, coupons, discounts, dynamic pricing, bulk discount
 Requires at least: 4.6.1
-Tested up to: 6.7
-Stable tag: 2.6.9
+Tested up to: 6.8
+Stable tag: 2.6.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -291,6 +291,11 @@ In that case, the rule with the higher priority will be applied.
 * Dutch Translation - [@mvdburg1971](https://profiles.wordpress.org/mvdburg1971) - Michael van der Burg
 
 == Changelog ==
+= 2.6.10 - 24/06/25 =
+* Fix: Coupon case-sensitive.
+* Added: Compatibility for WordPress 6.8
+* Added: Compatibility for WooCommerce 9.9
+
 = 2.6.9 - 11/04/25 =
 * Updated readme.txt file.
 * Fix: Plugin check listed issue.

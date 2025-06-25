@@ -141,8 +141,8 @@ class Page implements Hookable
     private function get_header_promo(): array
     {
         $promo = [];
-        if (current_time('timestamp') < strtotime('2025-04-11')) {
-            $promo['new10'] = '<span><strong>Get an Extra 10% OFF your First Order!</strong> New customers only | Valid until April 10</span><span class="oct-code">NEW10 <span class="oct-copy-to-clipboard" data-value="NEW10">Copy code</span></span>';
+        if (current_time('timestamp') < strtotime('2025-08-30')) {
+            $promo['summer10'] = '<span>☀️ <strong>Summer Deal! Get an Extra 10% OFF Your First Order</strong> | Valid until Aug 31</span><span class="oct-code">SUMMER10 <span class="oct-copy-to-clipboard" data-value="SUMMER10">Copy code</span></span>';
         }
         return array_values(apply_filters('octolize/shipping-extensions/header-promo', $promo));
     }

@@ -5,7 +5,7 @@ Tags: woocommerce, currency, switcher, currency switcher, converter
 Requires at least: 4.9.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.4.2.3
+Stable tag: 1.4.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -192,6 +192,11 @@ R: You can report security bugs through the Patchstack Vulnerability Disclosure 
 
 
 == Changelog ==
+
+= 1.4.3 =
+* small fixes
+* new option: [https://share.pluginus.net/image/i20250620164152.png](Rate floor/ceil) which allows to set max and minum rate for currencies to avoid losses due to sharp fluctuations in currencies
+* new hook woocs_init_compatibility_woo_subscriptions: for switch on of compatibility with WooCommerce Subscriptions [https://pluginus.net/support/topic/compatibility-fix-for-woocommerce-subscriptions-7-5/](thanks to superdav42)
 
 = 1.4.2.3 =
 * 1 security issue fixed thanks to mikemyers and bounty program of Wordfence

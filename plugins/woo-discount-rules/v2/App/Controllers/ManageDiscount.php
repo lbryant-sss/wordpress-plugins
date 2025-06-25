@@ -866,7 +866,8 @@ class ManageDiscount extends Base
         if($coupon_code !== false && $coupon_code !== 0){
             $rule_helper = new Rule();
             $available_coupons = $rule_helper->getAllDynamicCoupons();
-            if (in_array($coupon_code, $available_coupons)) {
+	        $available_coupons = array_map('strtolower', $available_coupons);
+            if (in_array(strtolower($coupon_code), $available_coupons)) {
                 $amount = 0;
                 $coupon = array(
                     'id' => time() . wp_rand(2, 9),
@@ -917,7 +918,7 @@ class ManageDiscount extends Base
      * Set coupon values
      * */
     public static function setCartCouponValues($label, $discount_value, $cart_item_keys, $rule_ids, $discount_details){
-        $coupon_code = apply_filters('woocommerce_coupon_code', $label);
+        $coupon_code = strtolower(apply_filters('woocommerce_coupon_code', $label));
         $discount_value = apply_filters('advanced_woo_discount_rules_coupon_value', $discount_value, $label, $cart_item_keys);
         self::$apply_as_coupon_values[$coupon_code]['value'] = $discount_value;
         self::$apply_as_coupon_values[$coupon_code]['cart_item_keys'] = $cart_item_keys;
@@ -1169,6 +1170,7 @@ class ManageDiscount extends Base
     function validateVirtualCouponForCartRules($response, $coupon_data)
     {
         if($coupon_data !== false && $coupon_data !== 0){
+	        $coupon_data = strtolower($coupon_data);
             $discount_apply_type = self::$config->getConfig('apply_cart_discount_as', 'coupon');
             if($discount_apply_type == "coupon"){
                 if(empty(self::$apply_as_coupon_values)){
@@ -1254,6 +1256,7 @@ class ManageDiscount extends Base
         if(!empty($applied_coupons) && is_array($applied_coupons) && !empty($used_coupons)){
             $used_coupons = array_map('\Wdr\App\Helpers\Woocommerce::formatStringToLower', $used_coupons);
             foreach ($applied_coupons as $applied_coupon){
+	            $applied_coupon = strtolower($applied_coupon);
                 if(!in_array($applied_coupon, $used_coupons)){
                     $has_third_party_coupon = true;
                     break;
@@ -1292,6 +1295,7 @@ class ManageDiscount extends Base
                     $used_coupons = array_map('\Wdr\App\Helpers\Woocommerce::formatStringToLower', $used_coupons);
                 }
                 foreach ($applied_coupons as $applied_coupon){
+	                $applied_coupon = strtolower($applied_coupon);
                     if(empty($used_coupons) || !in_array($applied_coupon, $used_coupons)){
                         $exclude_coupon = apply_filters('advanced_woo_discount_rules_exclude_coupon_while_remove_third_party_coupon', false, $applied_coupon);
                         if ($exclude_coupon === false) {
@@ -2954,12 +2958,13 @@ class ManageDiscount extends Base
             $original_coupon_html = $coupon_html;
             $all_coupon_codes = $rule_helper->getCouponsFromDiscountRules();
             $coupon_code = self::$woocommerce_helper->getCouponCode($coupon);
-            $virtual_coupon = (isset($all_coupon_codes['custom_coupons']) && !empty($all_coupon_codes['custom_coupons'])) ? $all_coupon_codes['custom_coupons'] : array();
-            $woo_coupons = (isset($all_coupon_codes['woo_coupons'][0]) && !empty($all_coupon_codes['woo_coupons'][0])) ? $all_coupon_codes['woo_coupons'][0] : array();
-            if (!empty($woo_coupons) && in_array($coupon_code, $woo_coupons)) {
+
+	        $virtual_coupon = (isset($all_coupon_codes['custom_coupons']) && !empty($all_coupon_codes['custom_coupons'])) ? array_map('strtolower',$all_coupon_codes['custom_coupons']) : [];
+	        $woo_coupons = (isset($all_coupon_codes['woo_coupons'][0]) && !empty($all_coupon_codes['woo_coupons'][0])) ? $all_coupon_codes['woo_coupons'][0] : [];
+	        if (!empty($woo_coupons) && in_array($coupon_code, $woo_coupons)) {
                 $zero_price_html = '-' . self::$woocommerce_helper->formatPrice(0);
                 $coupon_html = str_replace($zero_price_html, '', $coupon_html);
-            } else if (!empty($virtual_coupon) && in_array($coupon_code, $virtual_coupon)) {
+            } else if (!empty($virtual_coupon) && in_array(strtolower($coupon_code), $virtual_coupon)) {
                 $zero_price_html = '-' . self::$woocommerce_helper->formatPrice(0);
                 $coupon_html = str_replace($zero_price_html, '', $coupon_html);
             }

@@ -212,9 +212,8 @@
 					type: 'POST',
 					data: sample_data,
 					success( data ) {
-						const response = ZapierSettings.handle_zapier_response(
-							data
-						);
+						const response =
+							ZapierSettings.handle_zapier_response( data );
 						if ( response ) {
 							$(
 								'#wcf_ca_' +

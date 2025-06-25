@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Discount Rules for WooCommerce 2.6.9\n"
+"Project-Id-Version: Discount Rules for WooCommerce 2.6.10\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woo-discount-rules\n"
 "Last-Translator: Flycart <support@flycart.org>\n"
 "Language-Team: Flycart <support@flycart.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-04-11T04:03:36+00:00\n"
+"POT-Creation-Date: 2025-06-23T10:37:05+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: woo-discount-rules\n"
@@ -33,51 +33,6 @@ msgstr ""
 #. Author of the plugin
 #: woo-discount-rules.php
 msgid "Flycart"
-msgstr ""
-
-#: common.php:9
-#: v2/App/Controllers/Admin/WDRAjax.php:877
-msgid "Invalid request"
-msgstr ""
-
-#: common.php:20
-msgid "Discount Rules 2.0 requires minimum PHP version of "
-msgstr ""
-
-#: common.php:24
-msgid "Discount Rules 2.0 requires at least Woocommerce"
-msgstr ""
-
-#: common.php:44
-msgid "Since 2.0, you need BOTH Core and Pro (2.0) packages installed and activated.  Please download the Pro 2.0 pack from My Downloads page in our site, install and activate it."
-msgstr ""
-
-#: common.php:67
-msgid "Discount Rules V2 comes with a better UI and advanced options."
-msgstr ""
-
-#: common.php:68
-msgid "Switch to New User Interface"
-msgstr ""
-
-#: common.php:71
-msgid "Would you like to switch to older Woo Discount Rules?"
-msgstr ""
-
-#: common.php:72
-msgid "Click here to Switch back"
-msgstr ""
-
-#: common.php:194
-msgid "This plugin can not be activated because it requires minimum PHP version of "
-msgstr ""
-
-#: common.php:197
-msgid "Woocommerce must installed and activated in-order to use Advanced woo discount rules!"
-msgstr ""
-
-#: common.php:200
-msgid " Advanced woo discount rules requires at least Woocommerce"
 msgstr ""
 
 #: v1/index.php:27
@@ -654,6 +609,10 @@ msgstr ""
 msgid "Search State"
 msgstr ""
 
+#: v2/App/Controllers/Admin/WDRAjax.php:877
+msgid "Invalid request"
+msgstr ""
+
 #: v2/App/Controllers/Base.php:42
 msgid "All Products"
 msgstr ""
@@ -719,24 +678,24 @@ msgid "<span class=\"onsale\">Sale!</span>"
 msgstr ""
 
 #: v2/App/Controllers/ManageDiscount.php:794
-#: v2/App/Controllers/ManageDiscount.php:1054
-#: v2/App/Controllers/ManageDiscount.php:1057
+#: v2/App/Controllers/ManageDiscount.php:1055
+#: v2/App/Controllers/ManageDiscount.php:1058
 #: v2/App/Helpers/Helper.php:271
 #: v2/App/Helpers/Helper.php:272
 msgid "Cart discount"
 msgstr ""
 
 #. translators: %s used to display currency code
-#: v2/App/Controllers/ManageDiscount.php:1124
+#: v2/App/Controllers/ManageDiscount.php:1125
 msgid "Coupon \"%s\" is currently not available!"
 msgstr ""
 
 #. translators: %s used to display coupon code
-#: v2/App/Controllers/ManageDiscount.php:1343
+#: v2/App/Controllers/ManageDiscount.php:1347
 msgid "Sorry, it is not possible to apply coupon <b>\"%s\"</b> as you already have a discount applied in cart."
 msgstr ""
 
-#: v2/App/Controllers/ManageDiscount.php:1357
+#: v2/App/Controllers/ManageDiscount.php:1361
 msgid "Coupon code applied successfully."
 msgstr ""
 

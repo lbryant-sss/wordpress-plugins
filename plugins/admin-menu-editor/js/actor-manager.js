@@ -346,6 +346,9 @@ class AmeActorManager {
         }
         return { prediction: true };
     }
+    getSuspectedMetaCaps() {
+        return AmeActorManager._.keys(this.suspectedMetaCaps);
+    }
     /* -------------------------------
      * Roles
      * ------------------------------- */

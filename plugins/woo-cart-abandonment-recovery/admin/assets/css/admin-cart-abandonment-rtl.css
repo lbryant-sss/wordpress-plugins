@@ -409,6 +409,11 @@
 	float: unset;
 }
 
+.wcf-ca-export-spinner {
+	float: none;
+	margin-right: 5px;
+}
+
 .wcf-ca-response-msg {
 	vertical-align: sub;
 	line-height: 28px;
@@ -679,4 +684,135 @@
 
 .wcf-ca-cf-promo-feature-icon svg {
 	color: #f06434;
+}
+
+/* Modal styles for template import */
+.wcf-ca-modal {
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba( 0, 0, 0, 0.5 );
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 9999;
+}
+
+.wcf-ca-modal-content {
+	background: #fff;
+	padding: 20px;
+	border-radius: 4px;
+	position: relative;
+	max-width: 500px;
+	width: 90%;
+	text-align: right;
+}
+
+.wcf-ca-modal-actions {
+	text-align: left;
+	margin-top: 15px;
+	display: flex;
+	justify-content: flex-end;
+	gap: 8px;
+}
+
+.wcf-ca-modal-close {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	background: transparent;
+	border: none;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+.wcf-ca-import-title {
+	margin-bottom: 0;
+}
+
+.wcf-ca-import-dropzone {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 24px;
+	border: 2px dashed #d1d5db;
+	border-radius: 8px;
+	cursor: pointer;
+	text-align: center;
+}
+
+.wcf-ca-import-dropzone:hover {
+	border-color: #9ca3af;
+}
+
+.wcf-ca-import-dropzone .dashicons {
+	font-size: 24px;
+	color: #9ca3af;
+}
+
+.wcf-ca-import-dropzone-text {
+	margin-top: 8px;
+	font-size: 14px;
+	font-weight: 600;
+	color: #4b5563;
+}
+
+.wcf-ca-import-dropzone-subtext {
+	margin-top: 8px;
+	font-size: 12px;
+	color: #6b7280;
+}
+
+.wcf-ca-hidden-file {
+	display: none;
+}
+.wcf-ca-file-preview {
+	display: none;
+	margin-top: 20px;
+	padding: 16px;
+	border-radius: 6px;
+	background-color: #f0fdf4;
+}
+.wcf-ca-file-preview-inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.wcf-import-flow--file-info {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+}
+.wcf-import-flow--file-info svg {
+	width: 24px;
+	height: 24px;
+	color: #9ca3af;
+	flex-shrink: 0;
+}
+.wcf-import-flow--message p {
+	margin: 0;
+	font-size: 0.875rem;
+	font-weight: 500;
+	color: #166534;
+}
+.wcf-import-flow--close-btn button {
+	display: inline-flex;
+	background-color: #f0fdf4;
+	color: #22c55e;
+	padding: 6px;
+	border-radius: 6px;
+}
+.wcf-ca-remove-file {
+	border: none;
+	cursor: pointer;
+}
+.wcf-import-flow--close-btn button:hover {
+	background-color: #dcfce7;
+}
+.wcf-import-flow--close-btn button:focus {
+	outline: none;
+	box-shadow: 0 0 0 2px #16a34a;
 }

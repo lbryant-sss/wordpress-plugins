@@ -103,48 +103,48 @@ class Cartflows_Ca_Email_Templates {
 			false
 		);
 
-		$current_user = wp_get_current_user();
-		$vars         = array(
-			'email'                           => $current_user->user_email,
-			'name'                            => $current_user->user_firstname,
-			'surname'                         => $current_user->user_lastname,
-			'phone'                           => get_user_meta( $current_user->ID, 'billing_phone', true ),
-			'billing_company'                 => get_user_meta( $current_user->ID, 'billing_company', true ),
-			'billing_address_1'               => get_user_meta( $current_user->ID, 'billing_address_1', true ),
-			'billing_address_2'               => get_user_meta( $current_user->ID, 'billing_address_2', true ),
-			'billing_state'                   => get_user_meta( $current_user->ID, 'billing_state', true ),
-			'billing_postcode'                => get_user_meta( $current_user->ID, 'billing_postcode', true ),
-			'shipping_first_name'             => $current_user->user_firstname,
-			'shipping_last_name'              => $current_user->user_lastname,
-			'shipping_company'                => get_user_meta( $current_user->ID, 'shipping_company', true ),
-			'shipping_address_1'              => get_user_meta( $current_user->ID, 'shipping_address_1', true ),
-			'shipping_address_2'              => get_user_meta( $current_user->ID, 'shipping_address_2', true ),
-			'shipping_city'                   => get_user_meta( $current_user->ID, 'shipping_city', true ),
-			'shipping_state'                  => get_user_meta( $current_user->ID, 'shipping_state', true ),
-			'shipping_postcode'               => get_user_meta( $current_user->ID, 'shipping_postcode', true ),
-			'woo_currency_symbol'             => get_woocommerce_currency_symbol(),
-			'email_toggle_button_nonce'       => wp_create_nonce( 'activate_email_templates' ),
-			'admin_firstname'                 => __( 'Admin Firstname', 'woo-cart-abandonment-recovery' ),
-			'admin_company'                   => __( 'Admin Company', 'woo-cart-abandonment-recovery' ),
-			'abandoned_product_details_table' => __( 'Abandoned Product Details Table', 'woo-cart-abandonment-recovery' ),
-			'abandoned_product_names'         => __( 'Abandoned Product Names', 'woo-cart-abandonment-recovery' ),
-			'cart_checkout_url'               => __( 'Cart Checkout URL', 'woo-cart-abandonment-recovery' ),
-			'coupon_code'                     => __( 'Coupon Code', 'woo-cart-abandonment-recovery' ),
-			'customer_firstname'              => __( 'Customer First Name', 'woo-cart-abandonment-recovery' ),
-			'customer_lastname'               => __( 'Customer Last Name', 'woo-cart-abandonment-recovery' ),
-			'customer_full_name'              => __( 'Customer Full Name', 'woo-cart-abandonment-recovery' ),
-			'cart_abandonment_date'           => __( 'Cart Abandonment Date', 'woo-cart-abandonment-recovery' ),
-			'site_url'                        => __( 'Site URL', 'woo-cart-abandonment-recovery' ),
-			'unsubscribe_link'                => __( 'Unsubscribe Link', 'woo-cart-abandonment-recovery' ),
-			'strings'                         => array(
-				'trigger_process'  => __( 'Triggering...', 'woo-cart-abandonment-recovery' ),
-				'trigger_failed'   => __( 'Trigger Failed.', 'woo-cart-abandonment-recovery' ),
-				'trigger_success'  => __( 'Trigger Success.', 'woo-cart-abandonment-recovery' ),
-				'verify_url'       => __( 'Please verify webhook URL.', 'woo-cart-abandonment-recovery' ),
-				'verify_url_error' => __( 'Webhook URL is required.', 'woo-cart-abandonment-recovery' ),
-			),
-		);
-		wp_localize_script( 'cartflows-ca-email-tmpl-settings', 'wcf_ca_details', $vars );
+				$current_user = wp_get_current_user();
+				$vars         = array(
+					'email'                           => $current_user->user_email,
+					'name'                            => $current_user->user_firstname,
+					'surname'                         => $current_user->user_lastname,
+					'phone'                           => get_user_meta( $current_user->ID, 'billing_phone', true ),
+					'billing_company'                 => get_user_meta( $current_user->ID, 'billing_company', true ),
+					'billing_address_1'               => get_user_meta( $current_user->ID, 'billing_address_1', true ),
+					'billing_address_2'               => get_user_meta( $current_user->ID, 'billing_address_2', true ),
+					'billing_state'                   => get_user_meta( $current_user->ID, 'billing_state', true ),
+					'billing_postcode'                => get_user_meta( $current_user->ID, 'billing_postcode', true ),
+					'shipping_first_name'             => $current_user->user_firstname,
+					'shipping_last_name'              => $current_user->user_lastname,
+					'shipping_company'                => get_user_meta( $current_user->ID, 'shipping_company', true ),
+					'shipping_address_1'              => get_user_meta( $current_user->ID, 'shipping_address_1', true ),
+					'shipping_address_2'              => get_user_meta( $current_user->ID, 'shipping_address_2', true ),
+					'shipping_city'                   => get_user_meta( $current_user->ID, 'shipping_city', true ),
+					'shipping_state'                  => get_user_meta( $current_user->ID, 'shipping_state', true ),
+					'shipping_postcode'               => get_user_meta( $current_user->ID, 'shipping_postcode', true ),
+					'woo_currency_symbol'             => get_woocommerce_currency_symbol(),
+					'email_toggle_button_nonce'       => wp_create_nonce( 'activate_email_templates' ),
+					'admin_firstname'                 => __( 'Admin Firstname', 'woo-cart-abandonment-recovery' ),
+					'admin_company'                   => __( 'Admin Company', 'woo-cart-abandonment-recovery' ),
+					'abandoned_product_details_table' => __( 'Abandoned Product Details Table', 'woo-cart-abandonment-recovery' ),
+					'abandoned_product_names'         => __( 'Abandoned Product Names', 'woo-cart-abandonment-recovery' ),
+					'cart_checkout_url'               => __( 'Cart Checkout URL', 'woo-cart-abandonment-recovery' ),
+					'coupon_code'                     => __( 'Coupon Code', 'woo-cart-abandonment-recovery' ),
+					'customer_firstname'              => __( 'Customer First Name', 'woo-cart-abandonment-recovery' ),
+					'customer_lastname'               => __( 'Customer Last Name', 'woo-cart-abandonment-recovery' ),
+					'customer_full_name'              => __( 'Customer Full Name', 'woo-cart-abandonment-recovery' ),
+					'cart_abandonment_date'           => __( 'Cart Abandonment Date', 'woo-cart-abandonment-recovery' ),
+					'site_url'                        => __( 'Site URL', 'woo-cart-abandonment-recovery' ),
+					'unsubscribe_link'                => __( 'Unsubscribe Link', 'woo-cart-abandonment-recovery' ),
+					'strings'                         => array(
+						'trigger_process'  => __( 'Triggering...', 'woo-cart-abandonment-recovery' ),
+						'trigger_failed'   => __( 'Trigger Failed.', 'woo-cart-abandonment-recovery' ),
+						'trigger_success'  => __( 'Trigger Success.', 'woo-cart-abandonment-recovery' ),
+						'verify_url'       => __( 'Please verify webhook URL.', 'woo-cart-abandonment-recovery' ),
+						'verify_url_error' => __( 'Webhook URL is required.', 'woo-cart-abandonment-recovery' ),
+					),
+				);
+				wp_localize_script( 'cartflows-ca-email-tmpl-settings', 'wcf_ca_details', $vars );
 
 	}
 
@@ -205,6 +205,7 @@ class Cartflows_Ca_Email_Templates {
 		define( 'WCF_CA_EMAIL_SETTINGS_OPTION_GROUP', 'cartflows-cart-abandonment-email-settings' );
 
 		define( 'WCF_ACTION_EMAIL_TEMPLATES', 'email_tmpl' );
+		define( 'WCF_ACTION_EXPORT_EMAIL_TEMPLATES', 'export_email_templates' );
 		define( 'WCF_ACTION_CARTFLOWS_PROMO', 'cartflows' );
 
 		define( 'WCF_SUB_ACTION_ADD_EMAIL_TEMPLATES', 'add_email_tmpl' );
@@ -214,6 +215,7 @@ class Cartflows_Ca_Email_Templates {
 		define( 'WCF_SUB_ACTION_DELETE_BULK_EMAIL_TEMPLATES', 'delete_bulk_email_tmpl' );
 		define( 'WCF_SUB_ACTION_SAVE_EMAIL_TEMPLATES', 'save_email_template' );
 		define( 'WCF_SUB_ACTION_RESTORE_EMAIL_TEMPLATES', 'restore_default_email_tmpl' );
+		define( 'WCF_SUB_ACTION_IMPORT_EMAIL_TEMPLATES', 'import_email_tmpl' );
 
 		define( 'WCF_SUB_ACTION_CART_ABANDONMENT_SETTINGS', 'cart_abandonment_settings' );
 		define( 'WCF_SUB_ACTION_EMAIL_SETTINGS', 'email_settings' );
@@ -229,12 +231,13 @@ class Cartflows_Ca_Email_Templates {
 	 */
 	public function show_messages() {
 
-		$helper_class             = Cartflows_Ca_Helper::get_instance();
-		$wcf_ca_template_created  = $helper_class->sanitize_text_filter( 'wcf_ca_template_created', 'GET' );
-		$wcf_ca_template_cloned   = $helper_class->sanitize_text_filter( 'wcf_ca_template_cloned', 'GET' );
-		$wcf_ca_template_deleted  = $helper_class->sanitize_text_filter( 'wcf_ca_template_deleted', 'GET' );
-		$wcf_ca_template_updated  = $helper_class->sanitize_text_filter( 'wcf_ca_template_updated', 'GET' );
-		$wcf_ca_template_restored = $helper_class->sanitize_text_filter( 'wcf_ca_template_restored', 'GET' );
+		$helper_class                     = Cartflows_Ca_Helper::get_instance();
+		$wcf_ca_template_created          = $helper_class->sanitize_text_filter( 'wcf_ca_template_created', 'GET' );
+		$wcf_ca_template_cloned           = $helper_class->sanitize_text_filter( 'wcf_ca_template_cloned', 'GET' );
+		$wcf_ca_template_deleted          = $helper_class->sanitize_text_filter( 'wcf_ca_template_deleted', 'GET' );
+		$wcf_ca_template_updated          = $helper_class->sanitize_text_filter( 'wcf_ca_template_updated', 'GET' );
+				$wcf_ca_template_restored = $helper_class->sanitize_text_filter( 'wcf_ca_template_restored', 'GET' );
+				$wcf_ca_template_imported = $helper_class->sanitize_text_filter( 'wcf_ca_template_imported', 'GET' );
 
 		?>
 		<?php if ( 'YES' === $wcf_ca_template_created ) { ?>
@@ -276,16 +279,25 @@ class Cartflows_Ca_Email_Templates {
 		</div>
 	<?php } ?>
 
-		<?php if ( 'YES' === $wcf_ca_template_restored ) { ?>
-			<div id="message" class="notice notice-success is-dismissible">
-				<p>
-					<strong>
-						<?php esc_html_e( 'Default Email Templates has been restored successfully.', 'woo-cart-abandonment-recovery' ); ?>
-					</strong>
-				</p>
-			</div>
-		<?php } ?>
-		<?php
+				<?php if ( 'YES' === $wcf_ca_template_restored ) { ?>
+						<div id="message" class="notice notice-success is-dismissible">
+								<p>
+										<strong>
+												<?php esc_html_e( 'Default Email Templates has been restored successfully.', 'woo-cart-abandonment-recovery' ); ?>
+										</strong>
+								</p>
+						</div>
+				<?php } ?>
+				<?php if ( 'YES' === $wcf_ca_template_imported ) { ?>
+						<div id="message" class="notice notice-success is-dismissible">
+								<p>
+										<strong>
+												<?php esc_html_e( 'Email Templates imported successfully.', 'woo-cart-abandonment-recovery' ); ?>
+										</strong>
+								</p>
+						</div>
+				<?php } ?>
+				<?php
 
 	}
 
@@ -295,14 +307,14 @@ class Cartflows_Ca_Email_Templates {
 	public function delete_bulk_templates() {
 		$wcf_template_list = new Cartflows_Ca_Email_Templates_Table();
 		$wcf_template_list->process_bulk_action();
-		$param        = array(
-			'page'                    => WCF_CA_PAGE_NAME,
-			'action'                  => WCF_ACTION_EMAIL_TEMPLATES,
-			'wcf_ca_template_deleted' => 'YES',
-		);
-		$redirect_url = add_query_arg( $param, admin_url( '/admin.php' ) );
-		wp_safe_redirect( $redirect_url );
-		exit;
+				$param        = array(
+					'page'                    => WCF_CA_PAGE_NAME,
+					'action'                  => WCF_ACTION_EMAIL_TEMPLATES,
+					'wcf_ca_template_deleted' => 'YES',
+				);
+				$redirect_url = add_query_arg( $param, admin_url( '/admin.php' ) );
+				wp_safe_redirect( $redirect_url );
+				exit;
 	}
 
 
@@ -321,14 +333,14 @@ class Cartflows_Ca_Email_Templates {
 				array( 'id' => $id ),
 				'%d'
 			); // db call ok; no cache ok.
-			$param        = array(
-				'page'                    => WCF_CA_PAGE_NAME,
-				'action'                  => WCF_ACTION_EMAIL_TEMPLATES,
-				'wcf_ca_template_deleted' => 'YES',
-			);
-			$redirect_url = add_query_arg( $param, admin_url( '/admin.php' ) );
-			wp_safe_redirect( $redirect_url );
-			exit;
+						$param        = array(
+							'page'                    => WCF_CA_PAGE_NAME,
+							'action'                  => WCF_ACTION_EMAIL_TEMPLATES,
+							'wcf_ca_template_deleted' => 'YES',
+						);
+						$redirect_url = add_query_arg( $param, admin_url( '/admin.php' ) );
+						wp_safe_redirect( $redirect_url );
+						exit;
 		}
 	}
 
@@ -414,13 +426,13 @@ class Cartflows_Ca_Email_Templates {
 		<div id="content">
 
 			<?php
-			$param             = array(
-				'page'       => WCF_CA_PAGE_NAME,
-				'action'     => WCF_ACTION_EMAIL_TEMPLATES,
-				'sub_action' => WCF_SUB_ACTION_SAVE_EMAIL_TEMPLATES,
-			);
-			$save_template_url = add_query_arg( $param, admin_url( '/admin.php' ) );
-			?>
+						$param             = array(
+							'page'       => WCF_CA_PAGE_NAME,
+							'action'     => WCF_ACTION_EMAIL_TEMPLATES,
+							'sub_action' => WCF_SUB_ACTION_SAVE_EMAIL_TEMPLATES,
+						);
+						$save_template_url = add_query_arg( $param, admin_url( '/admin.php' ) );
+						?>
 
 			<form method="post" action="<?php echo esc_url( $save_template_url ); ?>" id="wcf_settings">
 				<input type="hidden" name="sub_action" value="<?php echo esc_attr( $sub_action ); ?>"/>
@@ -961,17 +973,17 @@ class Cartflows_Ca_Email_Templates {
 			$this->update_email_template_meta( $email_template_id, $mera_key, $meta_value );
 		}
 
-		$param        = array(
-			'page'                    => WCF_CA_PAGE_NAME,
-			'action'                  => WCF_ACTION_EMAIL_TEMPLATES,
-			'sub_action'              => WCF_SUB_ACTION_EDIT_EMAIL_TEMPLATES,
-			'id'                      => $email_template_id,
-			'wcf_ca_template_updated' => 'YES',
-		);
-		$redirect_url = add_query_arg( $param, admin_url( '/admin.php' ) );
+				$param        = array(
+					'page'                    => WCF_CA_PAGE_NAME,
+					'action'                  => WCF_ACTION_EMAIL_TEMPLATES,
+					'sub_action'              => WCF_SUB_ACTION_EDIT_EMAIL_TEMPLATES,
+					'id'                      => $email_template_id,
+					'wcf_ca_template_updated' => 'YES',
+				);
+				$redirect_url = add_query_arg( $param, admin_url( '/admin.php' ) );
 
-		wp_safe_redirect( $redirect_url );
-		exit;
+				wp_safe_redirect( $redirect_url );
+				exit;
 	}
 
 	/**
@@ -1098,6 +1110,10 @@ class Cartflows_Ca_Email_Templates {
 		$param['sub_action']  = WCF_SUB_ACTION_RESTORE_EMAIL_TEMPLATES;
 		$restore_template_url = wp_nonce_url( add_query_arg( $param, admin_url( '/admin.php' ) ), WCF_EMAIL_TEMPLATES_NONCE );
 
+		$export_url = admin_url( 'admin-ajax.php?action=wcf_ca_export_email_templates' );
+
+		// Import handled entirely via AJAX.
+
 		?>
 		<div class="wcf-ca-report-btn">
 			<div  class="wcf-ca-left-report-field-group">
@@ -1105,6 +1121,63 @@ class Cartflows_Ca_Email_Templates {
 			</div>
 			<div  class="wcf-ca-right-report-field-group">
 				<a onclick="return confirm('Are you sure to restore email templates?');" style="cursor: pointer" href="<?php echo esc_url( $restore_template_url ); ?>" class="button-secondary"><?php esc_html_e( ' Restore Default Templates', 'woo-cart-abandonment-recovery' ); ?></a>
+				<a href="<?php echo esc_url( $export_url ); ?>" id="wcf-export-templates" class="button-secondary" data-nonce="<?php echo esc_attr( wp_create_nonce( WCF_EMAIL_TEMPLATES_NONCE ) ); ?>">
+					<?php esc_html_e( 'Export', 'woo-cart-abandonment-recovery' ); ?>
+				</a><span id="wcf-export-spinner" class="spinner wcf-ca-export-spinner" style="display:none;"></span>
+				<button type="button" id="wcf-import-templates" class="button-secondary">
+					<?php esc_html_e( 'Import', 'woo-cart-abandonment-recovery' ); ?>
+				</button>
+				<div id="wcf-import-modal" class="wcf-ca-modal" style="display:none;">
+					<div class="wcf-ca-modal-content">
+						<button type="button" class="wcf-ca-modal-close">&times;</button>
+						<h2 class="wcf-ca-import-title"><?php esc_html_e( 'Import Templates', 'woo-cart-abandonment-recovery' ); ?></h2>
+						<p>
+							<?php esc_html_e( 'Select a Cart Abandonment Recovery export file to import templates.', 'woo-cart-abandonment-recovery' ); ?>
+						</p>
+						<form method="post" id="wcf-ca-import-form">
+							<?php wp_nonce_field( WCF_EMAIL_TEMPLATES_NONCE ); ?>
+							<label for="wcf-ca-import-file" class="wcf-ca-import-dropzone">
+								<span class="dashicons dashicons-upload"></span>
+								<span class="wcf-ca-import-dropzone-text">
+													<?php esc_html_e( 'Upload a file or drag and drop', 'woo-cart-abandonment-recovery' ); ?>
+											</span>
+								<span class="wcf-ca-import-dropzone-subtext"><?php esc_html_e( 'JSON file up to 5MB', 'woo-cart-abandonment-recovery' ); ?></span>
+							</label>
+							<input id="wcf-ca-import-file" class="wcf-ca-hidden-file" type="file" name="wcf_ca_import_file" accept=".json" required />
+							<div id="wcf-ca-file-preview" class="wcf-ca-file-preview">
+								<div class="wcf-ca-file-preview-inner">
+									<div class="wcf-import-flow--file-info">
+										<div class="wcf-import-flow--icon">
+											<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+												<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"
+												/>
+											</svg>
+										</div>
+										<div class="wcf-import-flow--message">
+											<p>
+												<?php esc_html_e( 'File Selected:', 'woo-cart-abandonment-recovery' ); ?> <span class="wcf-ca-file-name"></span></p>
+										</div>
+									</div>
+									<div class="wcf-import-flow--close-btn">
+										<button type="button" class="wcf-ca-remove-file">
+											<span class="screen-reader-text"><?php esc_html_e( 'Dismiss', 'woo-cart-abandonment-recovery' ); ?></span>
+											<span class="dashicons dashicons-no-alt"></span>
+										</button>
+									</div>
+								</div>
+							</div>
+							<span class="spinner" style="float:none;display:none;"></span>
+							<div class="wcf-ca-modal-actions">
+								<button type="button" class="button wcf-ca-action--cancel">
+									<?php esc_html_e( 'Cancel', 'woo-cart-abandonment-recovery' ); ?>
+								</button>
+								<button type="submit" class="button-primary wcf-ca-action--import">
+									<?php esc_html_e( 'Import', 'woo-cart-abandonment-recovery' ); ?>
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
 			</div>
 		</div>
 		<?php
