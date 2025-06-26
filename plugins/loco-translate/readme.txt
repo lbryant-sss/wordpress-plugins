@@ -101,6 +101,9 @@ We don't collect your data or track you. See the [plugin privacy notice](https:/
 
 == Changelog ==
 
+= 2.8.1 =
+* DeepL uses `quality_optimized` with `loco_deepl_model` filter
+
 = 2.8.0 =
 * Bugfix for PHP 8.0 compatibility
 * Dropped support for PHP < 7.4
@@ -577,7 +580,7 @@ We don't collect your data or track you. See the [plugin privacy notice](https:/
 
 == Upgrade Notice ==
 
-= 2.8.0 =
+= 2.8.1 =
 * Various improvements and bug fixes
 
 

@@ -239,350 +239,94 @@ class Skb_Cife_Settings_API_Fields {
     /**
      * General tab output
      *
-     * @return General tab html markup output
+     * @return void General tab html markup output
      */
     function skb_cife_general_tab_html_output(){
-        ob_start();
 
-        $skb_brands_icons = array(
-            'brands_icon_name'       => 'Brands Icon',
-            'brands_icon_count'       => '934',
-            'brands_icon_link'       => 'https://simpleicons.org',
-        );
-        $skb_devicons_icons = array(
-            'devicons_icons_name'       => 'Devicons Icons',
-            'devicons_icons_count'       => '191',
-            'devicons_icons_link'       => 'http://vorillaz.github.io/devicons/#/dafont',
-        );
-        $skb_elegant_icons = array(
-            'elegant_icons_name'       => 'Elegant Icon',
-            'elegant_icons_count'       => '360',
-            'elegant_icons_link'       => 'https://www.elegantthemes.com/blog/resources/elegant-icon-font',
-        );
-        $skb_elusive_icons = array(
-            'elusive_icons_name'       => 'Elusive Icons',
-            'elusive_icons_count'       => '303',
-            'elusive_icons_link'       => 'http://elusiveicons.com',
-        );
-        $skb_icofont = array(
-            'icofont_name'       => 'Icofont',
-            'icofont_count'       => '2095',
-            'icofont_link'       => 'https://icofont.com',
-        );
-        $skb_icomoon = array(
-            'icomoon_name'       => 'Ico Moon',
-            'icomoon_count'       => '491',
-            'icomoon_link'       => 'https://icomoon.io/#preview-free',
-        );
-        $skb_iconic_icons = array(
-            'iconic_icons_name'       => 'Iconic Icons',
-            'iconic_icons_count'       => '172',
-            'iconic_icons_link'       => 'https://github.com/somerandomdude/Iconic',
-        );
-        $skb_ionicons = array(
-            'ionicons_name'       => 'Ion icons',
-            'ionicons_count'       => '696',
-            'ionicons_link'       => 'https://ionicons.com',
-        );
-        $skb_line_awesome = array(
-            'line_awesome_name'       => 'Line Awesome',
-            'line_awesome_count'       => '2004',
-            'line_awesome_link'       => 'https://icons8.com/line-awesome',
-        );
-        $skb_line_icon = array(
-            'line_icon_name'       => 'Line Icon',
-            'line_icon_count'       => '511',
-            'line_icon_link'       => 'https://lineicons.com',
-        );
-        $skb_linearicons = array(
-            'linearicons_name'       => 'Linear icons',
-            'linearicons_count'       => '170',
-            'linearicons_link'       => 'https://linearicons.com',
-        );
-        $skb_material_design_icons = array(
-            'material_design_icons_name'       => 'Material Design Icons',
-            'material_design_icons_count'       => '5346',
-            'material_design_icons_link'       => 'http://materialdesignicons.com',
-        );
-        $skb_simple_line_icon = array(
-            'simple_line_icon_name'       => 'Simple Line Icon',
-            'simple_line_icon_count'       => '189',
-            'simple_line_icon_link'       => 'https://simplelineicons.github.io',
-        );
-        $skb_themify_icon = array(
-            'themify_icon_name'       => 'Themify Icon',
-            'themify_icon_count'       => '351',
-            'themify_icon_link'       => 'https://themify.me/themify-icons',
-        );     
-        $skb_open_iconic_icon = array(
-            'open_iconic_icon_name'       => 'Open Iconic',
-            'open_iconic_icon_count'       => '223',
-            'open_iconic_icon_link'       => 'https://useiconic.com/open',
-        );     
+    // List of all icon packs.
+    $icon_packs = [
+        [ 'name' => 'Brands Icon',           'count' => '934',  'link' => 'https://simpleicons.org' ],
+        [ 'name' => 'Devicons Icons',        'count' => '191',  'link' => 'http://vorillaz.github.io/devicons/#/dafont' ],
+        [ 'name' => 'Elegant Icon',          'count' => '360',  'link' => 'https://www.elegantthemes.com/blog/resources/elegant-icon-font' ],
+        [ 'name' => 'Elusive Icons',         'count' => '303',  'link' => 'http://elusiveicons.com' ],
+        [ 'name' => 'Icofont',               'count' => '2400+', 'link' => 'https://icofont.com' ],
+        [ 'name' => 'Ico Moon',              'count' => '491',  'link' => 'https://icomoon.io/#preview-free' ],
+        [ 'name' => 'Iconic Icons',          'count' => '172',  'link' => 'https://github.com/somerandomdude/Iconic' ],
+        [ 'name' => 'Ion icons',             'count' => '696',  'link' => 'https://ionicons.com' ],
+        [ 'name' => 'Line Awesome',          'count' => '2004', 'link' => 'https://icons8.com/line-awesome' ],
+        [ 'name' => 'Line Icon',             'count' => '511',  'link' => 'https://lineicons.com' ],
+        [ 'name' => 'Linear icons',          'count' => '170',  'link' => 'https://linearicons.com' ],
+        [ 'name' => 'Material Design Icons', 'count' => '5346', 'link' => 'http://materialdesignicons.com' ],
+        [ 'name' => 'Simple Line Icon',      'count' => '189',  'link' => 'https://simplelineicons.github.io' ],
+        [ 'name' => 'Themify Icon',          'count' => '351',  'link' => 'https://themify.me/themify-icons' ],
+        [ 'name' => 'Open Iconic',           'count' => '223',  'link' => 'https://useiconic.com/open' ],
+    ];
 
-
-        ?>
-            <div class="skb_cife_general_tab_html_output-wrapper">
-
-                <div class="skb_cife_general_tab_html_output_inner skb-ovh">
-                    <div class="skb-genarel-tab-column skb-genarel-tab-column-1">
-                        <h3><?php echo esc_html('Skyboot Custom Icons for Elementor - More than 14,055+ icons includes.', 'skb_cife'); ?></h3>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th><?php echo esc_html('Icon Name', 'skb_cife'); ?></th>
-                                    <th><?php echo esc_html('Number of Icons', 'skb_cife'); ?></th>
-                                    <th><?php echo esc_html('Icon page', 'skb_cife'); ?></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <i class="dashicons dashicons-yes"></i> 
-                                        <?php echo esc_html( $skb_brands_icons['brands_icon_name'] ); ?>
-                                    </td>
-                                    <td>
-                                        <span><?php echo esc_html( $skb_brands_icons['brands_icon_count'] ); ?></span>
-                                    </td>
-                                    <td>
-                                        <a href="<?php echo esc_url( $skb_brands_icons['brands_icon_link'] ) ?>" target="_blank">
-                                                <i class="dashicons dashicons-admin-links"></i>
-                                            </a> 
-                                    </td>                                    
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <i class="dashicons dashicons-yes"></i> 
-                                        <?php echo esc_html( $skb_devicons_icons['devicons_icons_name'] ); ?>
-                                    </td>
-                                    <td>
-                                        <span><?php echo esc_html( $skb_devicons_icons['devicons_icons_count'] ); ?></span>
-                                    </td>
-                                    <td>
-                                        <a href="<?php echo esc_url( $skb_devicons_icons['devicons_icons_link'] ) ?>" target="_blank">
-                                        <i class="dashicons dashicons-admin-links"></i>
-                                    </a>   
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <i class="dashicons dashicons-yes"></i> 
-                                        <?php echo esc_html( $skb_elegant_icons['elegant_icons_name'] ); ?>
-                                    </td>
-                                    <td>
-                                        <span><?php echo esc_html( $skb_elegant_icons['elegant_icons_count'] ); ?></span>
-                                    </td>
-                                    <td>
-                                        <a href="<?php echo esc_url( $skb_elegant_icons['elegant_icons_link'] ) ?>" target="_blank">
-                                            <i class="dashicons dashicons-admin-links"></i>
-                                        </a>                                        
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <i class="dashicons dashicons-yes"></i> 
-                                        <?php echo esc_html( $skb_elusive_icons['elusive_icons_name'] ); ?>
-                                    </td>
-                                    <td>
-                                        <span><?php echo esc_html( $skb_elusive_icons['elusive_icons_count'] ); ?></span>
-                                    </td>
-                                    <td>
-                                        <a href="<?php echo esc_url( $skb_elusive_icons['elusive_icons_link'] ) ?>" target="_blank">
-                                            <i class="dashicons dashicons-admin-links"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <i class="dashicons dashicons-yes"></i> 
-                                        <?php echo esc_html( $skb_icofont['icofont_name'] ); ?>
-                                    </td>
-                                    <td>
-                                        <span><?php echo esc_html( $skb_icofont['icofont_count'] ); ?></span>
-                                    </td>
-                                    <td>
-                                        <a href="<?php echo esc_url( $skb_icofont['icofont_link'] ) ?>" target="_blank">
-                                        <i class="dashicons dashicons-admin-links"></i>
-                                    </a>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <i class="dashicons dashicons-yes"></i> 
-                                        <?php echo esc_html( $skb_icomoon['icomoon_name'] ); ?>
-                                    </td>
-                                    <td>
-                                        <span><?php echo esc_html( $skb_icomoon['icomoon_count'] ); ?></span>
-                                    </td>
-                                    <td>
-                                        <a href="<?php echo esc_url( $skb_icomoon['icomoon_link'] ) ?>" target="_blank">
-                                            <i class="dashicons dashicons-admin-links"></i>
-                                        </a>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <i class="dashicons dashicons-yes"></i> 
-                                        <?php echo esc_html( $skb_iconic_icons['iconic_icons_name'] ); ?>
-                                    </td>
-                                    <td>
-                                        <span><?php echo esc_html( $skb_iconic_icons['iconic_icons_count'] ); ?></span>
-                                    </td>
-                                    <td>
-                                        <a href="<?php echo esc_url( $skb_iconic_icons['iconic_icons_link'] ) ?>" target="_blank">
-                                            <i class="dashicons dashicons-admin-links"></i>
-                                        </a>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <i class="dashicons dashicons-yes"></i> 
-                                        <?php echo esc_html( $skb_ionicons['ionicons_name'] ); ?>
-                                    </td>
-                                    <td>
-                                        <span><?php echo esc_html( $skb_ionicons['ionicons_count'] ); ?></span>
-                                    </td>
-                                    <td>
-                                        <a href="<?php echo esc_url( $skb_ionicons['ionicons_link'] ) ?>" target="_blank">
-                                            <i class="dashicons dashicons-admin-links"></i>
-                                        </a>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <i class="dashicons dashicons-yes"></i> 
-                                        <?php echo esc_html( $skb_line_awesome['line_awesome_name'] ); ?>
-                                    </td>
-                                    <td>
-                                        <span><?php echo esc_html( $skb_line_awesome['line_awesome_count'] ); ?></span>
-                                    </td>
-                                    <td>
-                                        <a href="<?php echo esc_url( $skb_line_awesome['line_awesome_link'] ) ?>" target="_blank">
-                                            <i class="dashicons dashicons-admin-links"></i>
-                                        </a>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <i class="dashicons dashicons-yes"></i> 
-                                        <?php echo esc_html( $skb_line_icon['line_icon_name'] ); ?>
-                                    </td>
-                                    <td>
-                                        <span><?php echo esc_html( $skb_line_icon['line_icon_count'] ); ?></span>
-                                    </td>
-                                    <td>
-                                        <a href="<?php echo esc_url( $skb_line_icon['line_icon_link'] ) ?>" target="_blank">
-                                            <i class="dashicons dashicons-admin-links"></i>
-                                        </a>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <i class="dashicons dashicons-yes"></i> 
-                                        <?php echo esc_html( $skb_linearicons['linearicons_name'] ); ?>
-                                    </td>
-                                    <td>
-                                        <span><?php echo esc_html( $skb_linearicons['linearicons_count'] ); ?></span>
-                                    </td>
-                                    <td>
-                                        <a href="<?php echo esc_url( $skb_linearicons['linearicons_link'] ) ?>" target="_blank">
-                                            <i class="dashicons dashicons-admin-links"></i>
-                                        </a>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <i class="dashicons dashicons-yes"></i> 
-                                        <?php echo esc_html( $skb_material_design_icons['material_design_icons_name'] ); ?>
-                                    </td>
-                                    <td>
-                                        <span><?php echo esc_html( $skb_material_design_icons['material_design_icons_count'] ); ?></span>
-                                    </td>
-                                    <td>
-                                        <a href="<?php echo esc_url( $skb_material_design_icons['material_design_icons_link'] ) ?>" target="_blank">
-                                            <i class="dashicons dashicons-admin-links"></i>
-                                        </a>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <i class="dashicons dashicons-yes"></i> 
-                                        <?php echo esc_html( $skb_simple_line_icon['simple_line_icon_name'] ); ?>
-                                    </td>
-                                    <td>
-                                        <span><?php echo esc_html( $skb_simple_line_icon['simple_line_icon_count'] ); ?></span>
-                                    </td>
-                                    <td>
-                                        <a href="<?php echo esc_url( $skb_simple_line_icon['simple_line_icon_link'] ) ?>" target="_blank">
-                                            <i class="dashicons dashicons-admin-links"></i>
-                                        </a>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <i class="dashicons dashicons-yes"></i> 
-                                        <?php echo esc_html( $skb_themify_icon['themify_icon_name'] ); ?>
-                                    </td>
-                                    <td>
-                                        <span><?php echo esc_html( $skb_themify_icon['themify_icon_count'] ); ?></span>
-                                    </td>
-                                    <td>
-                                        <a href="<?php echo esc_url( $skb_themify_icon['themify_icon_link'] ) ?>" target="_blank">
-                                            <i class="dashicons dashicons-admin-links"></i>
-                                        </a>
-                                    </td> 
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <i class="dashicons dashicons-yes"></i> 
-                                        <?php echo esc_html( $skb_open_iconic_icon['open_iconic_icon_name'] ); ?>
-                                    </td>
-                                    <td>
-                                        <span><?php echo esc_html( $skb_open_iconic_icon['open_iconic_icon_count'] ); ?></span>
-                                    </td>
-                                    <td>
-                                        <a href="<?php echo esc_url( $skb_open_iconic_icon['open_iconic_icon_link'] ) ?>" target="_blank">
-                                            <i class="dashicons dashicons-admin-links"></i>
-                                        </a>
-                                    </td> 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>  
-                    <div class="skb_cife-two-column">
-                        <div class="skb_cife_rate-us">
-                            <h3>Who We Are</h3>
-                            <p>We are <strong>Skybootstrap</strong>, which specializes in WordPress plugins, HTML Templates, and provides high-quality blog posts for our readers. We recently launched our SaaS product named TLinky, offering URL Shortener, QR Code Generator, and Link In Bio Page Builder functionalities.</p>
-                            <hr/>
-                            <h3>Our SaaS Product - TLinky</h3>
-                            <p>We're excited to offer all our plugin users a 50% discount on all plans. Simply use the coupon code <strong>WP50</strong> to get the discount.</p>
-                            <a href="<?php echo esc_url('https://tlinky.com/?utm_source=skb-icon-admin&utm_medium=skb-free-plugin'); ?>" target="_blank">
-                                <img src="<?php echo SKB_CIFE_ASSETS; ?>images/tlinky-link-management-tools.png" alt="<?php echo esc_attr('TLinky - Link Management Platform'); ?>">
-                         
-                            </a>                            
-                            <hr/>
-                            <a href="<?php echo esc_url('https://wordpress.org/plugins/skyboot-custom-icons-for-elementor'); ?>" target="_blank">
-                                <img src="<?php echo SKB_CIFE_ASSETS; ?>images/skb-rate-us.png" alt="<?php echo esc_attr('Rate us on wordpress.org'); ?>">
-                         
-                            </a>
-                        </div>
-                    </div>                      
+    ob_start();
+    ?>
+    <div class="skb_cife_general_tab_html_output-wrapper">
+        <div class="skb_cife_general_tab_html_output_inner skb-ovh">
+            <div class="skb-genarel-tab-column skb-genarel-tab-column-1">
+                <h3><?php echo esc_html__('Skyboot Custom Icons for Elementor - More than 14,300+ icons includes.', 'skb_cife'); ?></h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th><?php echo esc_html__('Icon Name', 'skb_cife'); ?></th>
+                            <th><?php echo esc_html__('Number of Icons', 'skb_cife'); ?></th>
+                            <th><?php echo esc_html__('Icon page', 'skb_cife'); ?></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ( $icon_packs as $pack ) : // Loop through array ?>
+                        <tr>
+                            <td>
+                                <i class="dashicons dashicons-yes"></i>
+                                <?php echo esc_html( $pack['name'] ); ?>
+                            </td>
+                            <td>
+                                <span><?php echo esc_html( $pack['count'] ); ?></span>
+                            </td>
+                            <td>
+                                <a href="<?php echo esc_url( $pack['link'] ); ?>" target="_blank">
+                                    <i class="dashicons dashicons-admin-links"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="skb_cife-two-column">
+                <div class="skb_cife_rate-us">
+                    <h3><?php echo esc_html__( 'Who We Are', 'skb_cife' ); ?></h3>
+                    <p><?php echo esc_html__( 'We are Skybootstrap, which specializes in WordPress plugins, HTML Templates, and provides high-quality blog posts for our readers. We recently launched our SaaS product named TLinky, offering URL Shortener, QR Code Generator, and Link In Bio Page Builder functionalities.', 'skb_cife' ); ?></p>
+                    <hr/>
+                    <h3><?php echo esc_html__( 'Our SaaS Product - TLinky', 'skb_cife' ); ?></h3>
+                    <p><?php echo esc_html__( "We're excited to offer all our plugin users a 50% discount on all plans. Simply use the coupon code WP50 to get the discount.", 'skb_cife' ); ?></p>
+                    <a href="<?php echo esc_url('https://tlinky.com/?utm_source=skb-icon-admin&utm_medium=skb-free-plugin'); ?>" target="_blank">
+                        <img src="<?php echo esc_url( SKB_CIFE_ASSETS . 'images/tlinky-link-management-tools.png' ); ?>" alt="<?php echo esc_attr__('TLinky - Link Management Platform', 'skb_cife'); ?>">
+                    </a>
+                    <hr/>
+                    <a href="<?php echo esc_url('https://wordpress.org/plugins/skyboot-custom-icons-for-elementor'); ?>" target="_blank">
+                        <img src="<?php echo esc_url( SKB_CIFE_ASSETS . 'images/skb-rate-us.png' ); ?>" alt="<?php echo esc_attr__('Rate us on wordpress.org', 'skb_cife'); ?>">
+                    </a>
                 </div>
             </div>
-        <?php
-        echo ob_get_clean();
-    }    
+        </div>
+    </div>
+    <?php
+    echo ob_get_clean();
+    }  
 
     /**
      * Update info tab output
      *
-     * @return  Update info html markup output
+     * @return void Update info html markup output
      */
     function skb_cife_update_info_tab_html_output(){
         ob_start();
         ?>
             <div class="skb_cife_update_info_html_output-wrapper">
-
                 <div class="skb_cife-change-log-wrapper skb-ovh">
                     <div class="skb_cife-change-log-inner">
                         <div class="skb_cife-change-log">
@@ -592,6 +336,17 @@ class Skb_Cife_Settings_API_Fields {
                         </div>
                         <div class="skb_cife-change-log-table-wrapper">
                             <table class="skb_cife-change-log-table">
+                            <tr>
+                                <td>
+                                    <label><?php echo esc_html('1.1.0 (Date: 25-06-2025)', 'skb_cife'); ?></label>
+                                    <ul>
+                                        <li><i class="dashicons dashicons-yes"></i><?php echo esc_html('Added: 300+ Icofont Duotone New Icons', 'skb_cife'); ?></li>
+                                        <li><i class="dashicons dashicons-yes"></i><?php echo esc_html('Compatible: Compatibility check with latest version of Elementor', 'skb_cife'); ?></li>
+                                        <li><i class="dashicons dashicons-yes"></i><?php echo esc_html__('Improved: Code structure for maintainability and increase performance .', 'skb_cife'); ?></li>
+                                        <li><i class="dashicons dashicons-yes"></i><?php echo esc_html__('Fix: Some minor issues fixed.', 'skb_cife'); ?></li>
+                                    </ul>
+                                </td>
+                            </tr>                                 
                                 <tr>
                                     <td>
                                         <label><?php echo esc_html('1.0.9 (Date: 28-04-2025)', 'skb_cife'); ?></label>

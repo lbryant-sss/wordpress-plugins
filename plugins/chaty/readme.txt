@@ -7,7 +7,7 @@ Stable tag: 3.4.5
 Plugin URI: https://premio.io/downloads/chaty/
 License: GPLv3
 
-🔥 WhatsApp chat, Facebook Messenger, Telegram, TikTok, Instagram, Email, Line, WeChat Phone call, SMS, + 20 chat icons, with a WhatsApp chat pop up 💬
+🔥 WhatsApp chat, Facebook Messenger, Telegram, TikTok, Instagram, Email, Line, WeChat Phone call, SMS, 20+ live chat icons & WhatsApp chat pop up 💬
 
 == Description ==
 

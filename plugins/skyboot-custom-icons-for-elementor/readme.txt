@@ -1,4 +1,4 @@
-=== Skyboot Custom Icons for Elementor - Elementor Icons library - 14000+ Icons  ===
+=== Skyboot Custom Icons for Elementor - Elementor Icons library - 14300+ Icons  ===
 Contributors: skybootstrap
 Tags: elementor, custom icons, elementor icons, icons, icon fonts
 Author URI:  https://skybootstrap.com
@@ -7,23 +7,24 @@ Donate Link: https://buymeacoffee.com/skybootstrap
 Requires at least: 5.9
 Requires PHP: 7.0
 Tested up to: 6.8
-Stable tag: 1.0.9
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Skyboot Custom Icons for Elementor expands your Elementor icons library with custom icons, perfect for website owners and Elementor users.
+Skyboot Custom Icons for Elementor expands your Elementor icons library with custom icons, perfect for website owners who use the Elementor plugin.
 
 == Description ==
 Skyboot custom icons for Elementor is a fantastic custom Elementor icons plugin for the Elementor page builder. If you're looking to add custom icons to your site this is the perfect Elementor custom icons plugin for the website owners. Beautiful icons that can create a unique look for a website, the SkyBoot custom icons Elementor plugin is definitely worth the download. Increase Elementor icons library using the plugin. it's a perfect Elementor custom icons plugin for Elementor based website owners.
 
-This plugin offers a large number of icons ( more than 14055+ ) that will delightfully change the look of your website. Increase your Builtin Elementor icons library with the plugin. you can use icons anywhere on your website for fully free. We just extended the original Elementor icon library which is why it's so easy to use. You can change the size, and color of the icon from the edit screen.
+This plugin offers a large number of icons ( more than 14300+ ) that will delightfully change the look of your website. Increase your Builtin Elementor icons library with the plugin. you can use icons anywhere on your website for fully free. We just extended the original Elementor icon library which is why it's so easy to use. You can change the size, and color of the icon from the edit screen.
 
 👉 Click for [Live Demo](https://skybootstrap.com/custom-icons-for-elementor)
 👉 Our Website: [https://skybootstrap.com](https://skybootstrap.com)
 👉 Our Blog: [Click Here](https://skybootstrap.com/learning/)
+👉 Our SaaS Product: 🔥 [TLinky](https://tlinky.com/) - The #1 Link Management Platform. TLinky's Core Solutions: URL Shortener, QR Code Generator, & Link In Bio Builder.
 👉 Subscribe Our YouTube Channel: [Subscribe Now](https://skybootstrap.com/go/skybootstrap-youtube-channel)
 👉 Like Facebbok Page: [Like Now](https://www.facebook.com/Skybootstrap)
-👉 Our SaaS Product: [TLinky](https://tlinky.com/) - The #1 Link Management Platform. TLinky's Core Solutions: URL Shortener, QR Code Generator, & Link In Bio Builder.
+
 👉 Love this plugin? Support our work by [buying me a coffee](https://buymeacoffee.com/skybootstrap)! Your support keeps us motivated to create and improve. Thank you!
 
 Most of the popular brand icons are available in every icon package like Google icons, YouTube icons, Instagram icons, Whatsapp icons, Facebook icons, Twitter icons, Linkedin icons, tiktok icon, and much more. There are huge numbers of social media icons included in the plugin. All are free icons in the plugin like website icons, maps icons, camera icons, UI icons, and other icons in one place.
@@ -34,7 +35,7 @@ Most of the popular brand icons are available in every icon package like Google 
 ✅ Devicons Icons (191)
 ✅ Elegant Icon (360)
 ✅ Elusive Icons (303)
-✅ Icofont (2095)
+✅ Icofont (2400+)
 ✅ Ico Moon / icomoon (491)
 ✅ Iconic Icons (172)
 ✅ Ion icons / ionicons (696)
@@ -48,7 +49,7 @@ Most of the popular brand icons are available in every icon package like Google 
 
 = Features of custom Elementor icons plugin: =
 
-✅ 14,055+ Custom Elementor Icons.
+✅ 14,300+ Custom Elementor Icons.
 ✅ Individual ON/OFF switch.
 ✅ 15 icon font packs included.
 ✅ Easy to use.
@@ -92,7 +93,7 @@ Elementor is a WordPress visual page builder plugin. It allows users to build pa
 
 == How to use custom icons in Elementor? ==
 
-In order to increase your Elementor icons library, you can use this plugin called Skyboot custom icons for Elementor to add more than 14055+ icons to your Elementor based website. Before you use Skyboot, you'll need to download the plugin and install it. The plugin is compatible with the latest version of Elementor. After you have downloaded and installed the plugin, you'll be able to access the Elementor icon list. 
+In order to increase your Elementor icons library, you can use this plugin called Skyboot custom icons for Elementor to add more than 14300+ icons to your Elementor based website. Before you use Skyboot, you'll need to download the plugin and install it. The plugin is compatible with the latest version of Elementor. After you have downloaded and installed the plugin, you'll be able to access the Elementor icon list. 
 
 The library is filled with thousands of icons that you can use to customize your website. This plugin can help you increase your Elementor icon library by adding many new icons to your website.
 This gives you a bigger icon library for Elementor. Icon libraries are an essential part of any website design. There are many ways to go about building a library of icons, but one of the most popular is to use Elementor. 
@@ -101,7 +102,7 @@ This gives you a bigger icon library for Elementor. Icon libraries are an essent
 
 Yes, Because social media icons for any website are a great way to drive traffic to your social media page from your website. that's why you need to use beautiful social media icons on your website to attract your website visitors. If you are looking to quickly display social icons for your website, try this Elementor social icons plugin. This plugin has 14 different icons package, so you can use it to show social media icons in just a few seconds.
 
-Skyboot is incredibly simple to use with the Elementor interface, and it's compatible with any theme and plugin. We have added more than 14055+ custom icons for the Elementor website builder in one plugin, including Facebook icons, Instagram icon, Twitter icon, LinkedIn icon, Pinterest icon, YouTube icon, gallery icon,discord icons, email icons,custom icons, google map icons and many more. Every icone comes on many different veriation. All font icons free to use.
+Skyboot is incredibly simple to use with the Elementor interface, and it's compatible with any theme and plugin. We have added more than 14300+ custom icons for the Elementor website builder in one plugin, including Facebook icons, Instagram icon, Twitter icon, LinkedIn icon, Pinterest icon, YouTube icon, gallery icon,discord icons, email icons,custom icons, google map icons and many more. Every icone comes on many different veriation. All font icons free to use.
 
 = Why would I need to increase the Elementor Icons List? =
 
@@ -130,7 +131,7 @@ This Elementor plugin lets you create galleries with a gallery widget and a port
 
 = What can I do with this plugin? =
 
-You can use more than 14,055 icons in the single plugin.
+You can use more than 14,300+ icons in the single plugin.
 
 = is it possible to change color and size? =
 
@@ -143,9 +144,10 @@ No, Font Awesome icons are not included in this plugin. The Elementor plugin alr
 = What types of icons are included in the plugin? =
 This plugin comes with a wide variety of icons to enhance your website. You'll find icons for website elements such as settings icon, home icon, search icon, camera icon, phone icon, calendar icon, check icon, video icon, book icon, telephone icon, web icon, mobile icon, and messages icon. Additionally, it offer icons related to social media platforms, and 934 brand icons allowing you to easily use all icons into your website.
 
-= Does the plugin conflict with other Elementor Addons? =
-No, we have checked more than 35+ popular Elementor Addons like ElementsKit Elementor addons, Essential Addons for Elementor, Royal Elementor Addons, Premium Addons, Happy Addons for Elementor, PowerPack Addons for Elementor, Unlimited Elements, Qi Addons For Elementor, Premium Addons for Elementor, Elementor Header & Footer Builder, Starter Templates, Elementor Addon Elements, Unlimited Elements For Elementor, OoohBoi Steroids for Elementor, Livemesh Addons for Elementor, Timeline Widget For Elementor,     
-Jeg Elementor Kit, Master Addons for Elementor, The Post Grid, The Plus Addons for Elementor, Element Pack Elementor Addons, AnyWhere Elementor, Portfolio for Elementor, WidgetKit, Exclusive Addons for Elementor, Templately, Rife Elementor Extensions, Primary Addon for Elementor, Post Grid Elementor Addon, JetWidgets For Elementor, Tutor LMS Elementor Addons, Booster Elementor Addons, WPZOOM Addons for Elementor, Magical Addons For Elementor, Piotnet Addons For Elementor, etc it does not conflict with these plugins.
+= Does the plugin conflict with other Elementor addons? =
+No, it does not. We have tested our plugin with more than 35 popular Elementor addons, including ElementsKit, Essential Addons for Elementor, Royal Elementor Addons, Premium Addons, Happy Addons, PowerPack Addons, Unlimited Elements, Qi Addons, Elementor Header & Footer Builder, Starter Templates, Addon Elements, OoohBoi Steroids, Livemesh Addons, Timeline Widget, Jeg Elementor Kit, Master Addons, The Post Grid, The Plus Addons, Element Pack, AnyWhere Elementor, Portfolio for Elementor, WidgetKit, Exclusive Addons, Templately, Rife Extensions, Primary Addon, Post Grid Addon, JetWidgets, Tutor LMS Addons, Booster Addons, WPZOOM Addons, Magical Addons, Piotnet Addons, and more.
+
+We found no conflicts during our testing, and the plugin works smoothly alongside all these popular Elementor plugin.
 
 = How many icons are included in the custom Elementor Icon Set? =
 The Elementor Icon Set includes 14 icons pack. These icons cover a variety of categories, such as website elements, brand icon, social media, communication, and more. With this selection, you have a range of options to choose from and enhance the visual aspects of your website.
@@ -158,6 +160,12 @@ The Elementor Icon Set includes 14 icons pack. These icons cover a variety of ca
 
 
 == Changelog ==
+
+= 1.1.0 (Date: 25-06-2025) = 
+*   Added: 300+ Icofont Duotone New Icons
+*   Compatible: Compatibility check with latest version of Elementor
+*   Improved: Code structure for maintainability and increase performance .
+*   Fix: Some minor issues fixed.
 
 = 1.0.9 (Date: 28-04-2025) = 
 *   Compatible with WordPress 6.8

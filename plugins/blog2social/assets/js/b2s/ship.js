@@ -582,7 +582,7 @@ jQuery(document).on('click', '.b2s-post-item-details-release-area-sched-for-all'
     }
 
     jQuery('.b2s-post-item-details-release-input-date-select').each(function () {
-      
+
         if (jQuery(this).attr('data-network-auth-id') != dataNetworkAuthId && jQuery(this).has('option[value="' + jQuery('.b2s-post-item-details-release-input-date-select[data-network-auth-id="' + dataNetworkAuthId + '"]').val() + '"]').length > 0) {
             jQuery(this).val(jQuery('.b2s-post-item-details-release-input-date-select[data-network-auth-id="' + dataNetworkAuthId + '"]').val());
             //view elements
@@ -689,44 +689,44 @@ jQuery(document).on("click", ".b2s-post-item-option-share-type", function () {
 jQuery(document).on("click", ".b2s-post-item-share-as-reel", function () {
 
     if (jQuery(this).prop('checked')) {
-        if(jQuery('#is_video').val()==1 && jQuery(this).attr('data-network-id') == 1 ||  jQuery(this).attr('data-network-id') == 12){
-         
+        if (jQuery('#is_video').val() == 1 && jQuery(this).attr('data-network-id') == 1 || jQuery(this).attr('data-network-id') == 12) {
+
             if (jQuery(this).attr('data-network-count') >= 0) {
 
                 jQuery('.b2s-post-item-option-share-as-story[data-network-count="' + jQuery(this).attr('data-network-count') + '"][data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"]').prop('checked', false);
-                jQuery('.b2s-post-item-sched-customize-text[data-network-count="' + jQuery(this).attr('data-network-count') + '"][data-network-auth-id="' +jQuery(this).attr('data-network-auth-id')+'"]').show();
+                jQuery('.b2s-post-item-sched-customize-text[data-network-count="' + jQuery(this).attr('data-network-count') + '"][data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"]').show();
                 jQuery('.b2s-share-as-story-fields[data-network-count="' + jQuery(this).attr('data-network-count') + '"][data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"]').show();
                 jQuery('.b2s-post-item-ass-auth-btn[data-network-count="' + jQuery(this).attr('data-network-count') + '"][data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"]').show();
-            }else
+            } else
             {
-                jQuery('.b2s-post-item-details-item-message-area[data-network-count="' + jQuery(this).attr('data-network-count') + '"][data-network-auth-id="' +jQuery(this).attr('data-network-auth-id')+'"]').not('.b2s-share-as-story-fields').show();
+                jQuery('.b2s-post-item-details-item-message-area[data-network-count="' + jQuery(this).attr('data-network-count') + '"][data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"]').not('.b2s-share-as-story-fields').show();
                 jQuery('.b2s-post-item-ass-auth-btn[data-network-count="' + jQuery(this).attr('data-network-count') + '"][data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"]').show();
                 jQuery('.b2s-post-item-option-share-as-story[data-network-count="' + jQuery(this).attr('data-network-count') + '"][data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"]').prop('checked', false);
             }
-        
+
         }
     }
-   
+
 });
 
 
 jQuery(document).on("click", ".b2s-post-item-option-share-as-story", function () {
- 
+
     if (jQuery(this).prop('checked')) {
-        
-        if(jQuery('#is_video').val()==1 && jQuery(this).attr('data-network-id') == 1 ){
-            
-            jQuery('#b2s\\['+jQuery(this).attr('data-network-auth-id')+'\\]\\[isReelCB\\]').prop('checked', false);
-          
+
+        if (jQuery('#is_video').val() == 1 && jQuery(this).attr('data-network-id') == 1) {
+
+            jQuery('#b2s\\[' + jQuery(this).attr('data-network-auth-id') + '\\]\\[isReelCB\\]').prop('checked', false);
+
         }
-     
+
         if (jQuery(this).attr('data-network-count') >= 0) {
-         
+
             jQuery('.b2s-post-item-details-item-message-area[data-network-count="' + jQuery(this).attr('data-network-count') + '"][data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"]').children().not('.b2s-post-item-details-item-message-area-sched').hide();
             jQuery('.b2s-post-item-details-item-url-input[data-network-count="' + jQuery(this).attr('data-network-count') + '"][data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"]').parent().hide();
             jQuery('.b2s-multi-image-area[data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"]').hide();
         } else {
-           
+
             jQuery('.b2s-post-item-details-item-message-area[data-network-count="' + jQuery(this).attr('data-network-count') + '"][data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"]').first().hide();
             jQuery('.b2s-post-item-details-item-url-input[data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"]').parent().hide();
             jQuery('.b2s-multi-image-area[data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"]').hide();
@@ -739,7 +739,7 @@ jQuery(document).on("click", ".b2s-post-item-option-share-as-story", function ()
     } else {
 
         if (jQuery(this).attr('data-network-count') >= 0) {
-            
+
 
             jQuery('.b2s-post-item-details-item-message-area[data-network-count="' + jQuery(this).attr('data-network-count') + '"][data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"]').children().not('.b2s-post-item-textarea-loader').show();
             jQuery('.b2s-post-item-details-item-url-input[data-network-count="' + jQuery(this).attr('data-network-count') + '"][data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"]').parent().show();
@@ -798,7 +798,7 @@ jQuery(document).on("click", ".b2s-network-select-btn", function () {
                 }
             }
 
-   
+
 
 
 
@@ -807,11 +807,11 @@ jQuery(document).on("click", ".b2s-network-select-btn", function () {
                 activatePortal(networkAuthId);
 
                 //Hide OG Area when image format from v8.4 onwards
-                if(jQuery('.b2sNetworkSettingsPostFormatCurrent[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"]').val()==1){   
-                   
+                if (jQuery('.b2sNetworkSettingsPostFormatCurrent[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"]').val() == 1) {
+
                     jQuery('.b2s-post-original-area[data-network-auth-id="' + networkAuthId + '"]').children(':not(div.input-group)').attr('style', 'display: none !important;');
                 }
-    
+
                 //PostFormat
                 if (jQuery('.b2s-post-ship-item-post-format-text[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"]').length > 0 || networkId == 15) {
                     var postFormatText = JSON.parse(jQuery('.b2sNetworkSettingsPostFormatText').val());
@@ -890,15 +890,15 @@ jQuery(document).on("click", ".b2s-network-select-btn", function () {
                         jQuery('.b2s-post-ship-item-post-format-text[data-network-id="' + networkId + '"]').html(postFormatText[postFormatType][jQuery('.b2sNetworkSettingsPostFormatCurrent[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"]').val()]);
                         jQuery('.b2s-post-item-details-post-format[data-network-id="' + networkId + '"]').val(jQuery('.b2sNetworkSettingsPostFormatCurrent[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"]').val());
                     }
-                    
+
                     //Content Curation
                     if (jQuery('#b2sPostType').val() == 'ex') {
-                    
+
                         jQuery('.b2s-post-item-details-preview-title[data-network-auth-id="' + networkAuthId + '"]').prop("readonly", true);
                         jQuery('.b2s-post-item-details-preview-desc[data-network-auth-id="' + networkAuthId + '"]').prop("readonly", true);
                         jQuery('.b2s-load-info-meta-tag-modal[data-network-auth-id="' + networkAuthId + '"]').attr("style", "display:none !important");
                         if (jQuery('.b2s-post-item-details-post-format[data-network-auth-id="' + networkAuthId + '"]').val() == 0) {
-   
+
                             jQuery('.b2s-select-image-modal-open[data-network-auth-id="' + networkAuthId + '"]').hide();
                             jQuery('.b2s-image-remove-btn[data-network-auth-id="' + networkAuthId + '"]').hide();
                             jQuery('.cropper-open[data-network-auth-id="' + networkAuthId + '"]').hide();
@@ -906,7 +906,7 @@ jQuery(document).on("click", ".b2s-network-select-btn", function () {
                             jQuery('.b2s-post-item-details-preview-desc[data-network-auth-id="' + networkAuthId + '"]').show();
 
                         } else {
-                          
+
                             jQuery('.b2s-select-image-modal-open[data-network-auth-id="' + networkAuthId + '"]').show();
                             jQuery('.b2s-image-remove-btn[data-network-auth-id="' + networkAuthId + '"]').show();
                             jQuery('.cropper-open[data-network-auth-id="' + networkAuthId + '"]').show();
@@ -914,7 +914,7 @@ jQuery(document).on("click", ".b2s-network-select-btn", function () {
                             jQuery('.b2s-post-item-details-preview-desc[data-network-auth-id="' + networkAuthId + '"]').hide();
                         }
                         if (jQuery('.b2s-post-item-details-release-input-date-select[data-network-auth-id="' + networkAuthId + '"]').val() == 1) {
-                          
+
                             jQuery('.b2s-select-image-modal-open[data-network-auth-id="' + networkAuthId + '"][data-network-count="-1"]').hide();
                             jQuery('.b2s-image-remove-btn[data-network-auth-id="' + networkAuthId + '"][data-network-count="-1"]').hide();
                             jQuery('.cropper-open[data-network-auth-id="' + networkAuthId + '"][data-network-count="-1"]').hide();
@@ -1056,11 +1056,11 @@ jQuery(document).on("click", ".b2s-network-select-btn", function () {
 
                                 jQuery(".b2s-post-item-details-release-input-date").datepicker().on('changeDate', function (e) {
                                     checkSchedDateTime(jQuery(this).attr('data-network-auth-id'));
-                                    var dataNetworkAuthId= jQuery(this).attr('data-network-auth-id');
-                                    var count =  jQuery(this).attr('data-network-count');
+                                    var dataNetworkAuthId = jQuery(this).attr('data-network-auth-id');
+                                    var count = jQuery(this).attr('data-network-count');
                                     var maxValue = get3YearsMax('date', dataNetworkAuthId, count);
 
-                                    if(maxValue){
+                                    if (maxValue) {
                                         jQuery('.b2s-network-tos-sched-max-values-alert[data-network-auth-id="' + dataNetworkAuthId + '"]').show();
                                         jQuery(this).datepicker('update', maxValue);
                                         return;
@@ -1229,25 +1229,25 @@ jQuery(document).on("click", ".b2s-network-select-btn", function () {
                                             }
                                         }
                                     }
-                                 
+
                                     //Content Curation
                                     if (jQuery('#b2sPostType').val() == 'ex') {
                                         jQuery('.b2s-post-item-details-preview-title[data-network-auth-id="' + data.networkAuthId + '"]').prop("readonly", true);
                                         jQuery('.b2s-post-item-details-preview-desc[data-network-auth-id="' + data.networkAuthId + '"]').prop("readonly", true);
                                         jQuery('.b2s-load-info-meta-tag-modal[data-network-auth-id="' + data.networkAuthId + '"]').attr("style", "display:none !important");
                                         if (jQuery('.b2s-post-item-details-post-format[data-network-auth-id="' + data.networkAuthId + '"]').val() == 0) {
-                                          
+
                                             jQuery('.b2s-select-image-modal-open[data-network-auth-id="' + data.networkAuthId + '"]').hide();
                                             jQuery('.b2s-image-remove-btn[data-network-auth-id="' + data.networkAuthId + '"]').hide();
                                             jQuery('.cropper-open[data-network-auth-id="' + data.networkAuthId + '"]').hide();
                                         } else {
-                                            
+
                                             jQuery('.b2s-select-image-modal-open[data-network-auth-id="' + data.networkAuthId + '"]').show();
                                             jQuery('.b2s-image-remove-btn[data-network-auth-id="' + data.networkAuthId + '"]').show();
                                             jQuery('.cropper-open[data-network-auth-id="' + data.networkAuthId + '"]').show();
                                         }
                                         if (jQuery('.b2s-post-item-details-release-input-date-select[data-network-auth-id="' + data.networkAuthId + '"]').val() == 1) {
-                                          
+
                                             jQuery('.b2s-select-image-modal-open[data-network-auth-id="' + data.networkAuthId + '"][data-network-count="-1"]').hide();
                                             jQuery('.b2s-image-remove-btn[data-network-auth-id="' + data.networkAuthId + '"][data-network-count="-1"]').hide();
                                             jQuery('.cropper-open[data-network-auth-id="' + data.networkAuthId + '"][data-network-count="-1"]').hide();
@@ -1260,7 +1260,7 @@ jQuery(document).on("click", ".b2s-network-select-btn", function () {
                                                 if (exPostFormat == 2) {
                                                     exPostFormat = 1;
                                                 }
-                                                
+
                                                 openPostFormat(data.networkId, data.networkType, data.networkAuthId, 'ex', false);
                                                 changePostFormat(data.networkId, data.networkType, exPostFormat, data.networkAuthId, 'post', 'ex', false);
                                             }
@@ -1268,8 +1268,8 @@ jQuery(document).on("click", ".b2s-network-select-btn", function () {
                                     }
 
                                     //Hide OG Area when changed to image from v8.4 onwards
-                                    if(jQuery('.b2sNetworkSettingsPostFormatCurrent[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"]').val() ==1){
-                                            
+                                    if (jQuery('.b2sNetworkSettingsPostFormatCurrent[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"]').val() == 1) {
+
                                         jQuery('.b2s-post-original-area[data-network-auth-id="' + networkAuthId + '"]').children(':not(div.input-group)').attr('style', 'display: none !important;');
                                     }
                                 }
@@ -1319,7 +1319,7 @@ jQuery(document).on("click", ".b2s-network-select-btn", function () {
                                     });
 
                                     if (data.draftActions.releaseSelect == "1") {
-                                      
+
                                         jQuery('.b2s-post-item-details-release-input-date-select[data-network-auth-id="' + data.networkAuthId + '"]').val(data.draftActions.releaseSelect);
                                         jQuery('.b2s-post-item-details-release-input-date-select[data-network-auth-id="' + data.networkAuthId + '"]').trigger('change');
 
@@ -1339,7 +1339,7 @@ jQuery(document).on("click", ".b2s-network-select-btn", function () {
                                         });
                                     }
                                     if (data.draftActions.releaseSelect == "2") {
-                                      
+
                                         jQuery('.b2s-post-item-details-release-input-date-select[data-network-auth-id="' + data.networkAuthId + '"]').val(data.draftActions.releaseSelect);
                                         jQuery('.b2s-post-item-details-release-input-date-select[data-network-auth-id="' + data.networkAuthId + '"]').trigger('change');
 
@@ -1695,7 +1695,7 @@ jQuery(document).on('change', '.b2s-post-item-details-release-input-date-select'
 
     var dataNetworkCount = 0;
     var hideTextareaAfter = false;
- 
+
     if (jQuery(this).val() == 0) {
         // start - enable assistini buttons for main textare of this network
         if (this.getAttribute('data-network-id') != 4) { // special case tumblr
@@ -1719,7 +1719,7 @@ jQuery(document).on('change', '.b2s-post-item-details-release-input-date-select'
         if (jQuery(this).attr('data-network-id') == 2 || jQuery(this).attr('data-network-id') == 45) {
             jQuery('.b2s-network-tos-sched-warning[data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"]').hide();
         }
-        if (jQuery('.b2s-post-item-details-post-format[data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"]').val() == 1 || jQuery(this).attr('data-network-id') == 12 ||  jQuery(this).attr('data-network-id') == 1 || jQuery(this).attr('data-network-id') == 36) {
+        if (jQuery('.b2s-post-item-details-post-format[data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"]').val() == 1 || jQuery(this).attr('data-network-id') == 12 || jQuery(this).attr('data-network-id') == 1 || jQuery(this).attr('data-network-id') == 36) {
             jQuery('.b2s-multi-image-area[data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"][data-network-count="-1"]').show();
         }
     }
@@ -1758,16 +1758,16 @@ jQuery(document).on('change', '.b2s-post-item-details-release-input-date-select'
                 jQuery('.b2s-post-item-details-release-input-add[data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"][data-network-count="0"]').hide();
                 jQuery('.b2s-post-item-details-release-input-hide[data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"][data-network-count="1"').show();
             }
-      
-            if((jQuery(this).attr('data-network-id') == 12 || jQuery(this).attr('data-network-id') == 1) && jQuery('.b2s-post-item-option-share-as-story[data-network-auth-id="' + networkAuthId + '"][data-network-count="-1"]').prop('checked') == true) {
-                hideTextareaAfter= true;
-            }  
+
+            if ((jQuery(this).attr('data-network-id') == 12 || jQuery(this).attr('data-network-id') == 1) && jQuery('.b2s-post-item-option-share-as-story[data-network-auth-id="' + networkAuthId + '"][data-network-count="-1"]').prop('checked') == true) {
+                hideTextareaAfter = true;
+            }
 
 
         }
     }
     if (jQuery(this).val() == 1) {
-    
+
         // start - disable assistini buttons for main textarea of this network
         if (this.getAttribute('data-network-id') != 4) { // special case tumblr
             var networkAuthId = jQuery(this).data('network-auth-id');
@@ -1801,13 +1801,13 @@ jQuery(document).on('change', '.b2s-post-item-details-release-input-date-select'
                 jQuery('.b2s-post-item-details-release-input-add[data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"][data-network-count="0"]').hide();
                 jQuery('.b2s-post-item-details-release-input-hide[data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"][data-network-count="1"').show();
             }
-          
+
             jQuery('.b2s-multi-image-area[data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"][data-network-count="-1"]').hide();
         }
-       
-        if(jQuery(this).attr('data-network-id') == 12 || jQuery(this).attr('data-network-id') == 1){
+
+        if (jQuery(this).attr('data-network-id') == 12 || jQuery(this).attr('data-network-id') == 1) {
             jQuery('.b2s-post-item-details-item-url-input[data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"]').parent().show();
-        }  
+        }
     }
     releaseChoose(jQuery(this).val(), jQuery(this).attr('data-network-auth-id'), dataNetworkCount);
 
@@ -2754,7 +2754,7 @@ jQuery("#b2sNetworkSent").validate({
         if (checkImageByImageNetworks() == false) {
             return false;
         }
-       
+
         var userDate = new Date();
         var pubDate = userDate.getFullYear() + "-" + padDate(userDate.getMonth() + 1) + "-" + padDate(userDate.getDate()) + " " + padDate(userDate.getHours()) + ":" + padDate(userDate.getMinutes()) + ":" + padDate(userDate.getSeconds());
         jQuery('#publish_date').val(pubDate);
@@ -3411,8 +3411,8 @@ function releaseChoose(choose, dataNetworkAuthId, dataNetworkCount) {
             jQuery('.b2s-post-item-details-item-message-area' + selectorInput + '[data-network-count="-1"]').show();
 
             //Facebook Stories hide Share as story when link selected
-            if(jQuery('.b2s-post-item-details-post-format[name="b2s[' + dataNetworkAuthId + '][post_format]"]').val() == 0 && jQuery('.b2s-post-item-details-post-format[name="b2s[' + dataNetworkAuthId + '][post_format]"]').attr('data-network-id') == 1 ) {
-                
+            if (jQuery('.b2s-post-item-details-post-format[name="b2s[' + dataNetworkAuthId + '][post_format]"]').val() == 0 && jQuery('.b2s-post-item-details-post-format[name="b2s[' + dataNetworkAuthId + '][post_format]"]').attr('data-network-id') == 1) {
+
                 jQuery('.b2s-share-as-story-fields' + selectorInput + '[data-network-count="-1"]').hide();
             }
 
@@ -3470,7 +3470,7 @@ function releaseChoose(choose, dataNetworkAuthId, dataNetworkCount) {
         jQuery('.b2s-post-item-details-release-area-div-time' + selectorInput).hide();
         jQuery('.b2s-post-item-details-release-area-div-day' + selectorInput).hide();
     } else if (choose == 1) {
-       
+
         //since 4.8.0 customize content
         if (jQuery('.b2s-post-item-details-release-input-date-select' + selectorInput).attr('data-network-customize-content') == "1") {
             jQuery('.b2s-post-item-details-item-message-input' + selectorInput + '[data-network-count="-1"]').prop('disabled', true);
@@ -3543,7 +3543,7 @@ function releaseChoose(choose, dataNetworkAuthId, dataNetworkCount) {
         jQuery('.b2s-post-item-details-release-area-div-time' + selectorInput).show();
         jQuery('.b2s-post-item-details-release-area-div-day' + selectorInput).hide();
     } else if (choose == 2) {
-     
+
         //since 4.8.0 customize content
         if (jQuery('.b2s-post-item-details-release-input-date-select' + selectorInput).attr('data-network-customize-content') == "1") {
             jQuery('.b2s-post-item-details-item-message-input' + selectorInput + '[data-network-count="-1"]').removeAttr('disabled');
@@ -3611,7 +3611,7 @@ function releaseChoose(choose, dataNetworkAuthId, dataNetworkCount) {
 
 
 function releaseChooseInterval(interval, selectorInput, dataCount) {
-    
+
     //change view
     if (interval == 0) { //weekly,default
         // show
@@ -4687,13 +4687,13 @@ function openPostFormat(networkId, networkType, networkAuthId, wpType, showModal
 
             var currentPostFormat = jQuery('.b2s-post-item-details-post-format[data-network-auth-id="' + networkAuthId + '"]').val();
 
-            if(showModal) {    
+            if (showModal) {
                 jQuery('.b2s-user-network-settings-post-format-apply[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"]').attr("data-network-auth-id", networkAuthId);
                 jQuery('.b2s-user-network-settings-post-format-new[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"]').attr("data-network-auth-id", networkAuthId);
                 jQuery('.b2s-user-network-settings-post-format-area-new[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"]').attr("data-network-auth-id", networkAuthId);
                 jQuery('.b2s-user-network-settings-post-format-new[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"][data-post-format="' + currentPostFormat + '"]').prop("checked", true);
                 jQuery('.b2s-user-network-settings-post-format-area-new[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"][data-post-format="' + currentPostFormat + '"]').addClass('b2s-settings-checked-new');
-            }else
+            } else
             {
                 jQuery('.b2s-user-network-settings-post-format-new[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"][data-post-format="' + currentPostFormat + '"]').prop("checked", false);
             }
@@ -4722,7 +4722,7 @@ function openPostFormat(networkId, networkType, networkAuthId, wpType, showModal
 }
 
 function changePostFormat(networkId, networkType, postFormat, networkAuthId, postFormatType, postType, closeModal) {
-   
+
     jQuery('.b2s-settings-user-success').hide();
     jQuery('.b2s-settings-user-error').hide();
     jQuery('.b2s-server-connection-fail').hide();
@@ -4843,14 +4843,14 @@ function changePostFormat(networkId, networkType, postFormat, networkAuthId, pos
         jQuery('.b2s-post-item-details-preview-desc[data-network-auth-id="' + networkAuthId + '"]').prop("readonly", true);
         jQuery('.b2s-post-item-details-preview-url-reload[data-network-auth-id="' + networkAuthId + '"]').hide();
     }
- 
+
     //Content Curation V5.0.0
     if (postType == "ex") {
         jQuery('.b2s-post-item-details-preview-title[data-network-auth-id="' + networkAuthId + '"]').prop("readonly", true);
         jQuery('.b2s-post-item-details-preview-desc[data-network-auth-id="' + networkAuthId + '"]').prop("readonly", true);
         jQuery('.b2s-load-info-meta-tag-modal[data-network-auth-id="' + networkAuthId + '"]').attr("style", "display:none !important");
         if (postFormat == '0') {
-            
+
             jQuery('.b2s-select-image-modal-open[data-network-auth-id="' + networkAuthId + '"]').hide();
             jQuery('.b2s-image-remove-btn[data-network-auth-id="' + networkAuthId + '"]').hide();
             jQuery('.b2s-post-item-details-preview-title[data-network-auth-id="' + networkAuthId + '"]').show();
@@ -4875,7 +4875,7 @@ function changePostFormat(networkId, networkType, postFormat, networkAuthId, pos
         jQuery('#b2s-post-ship-item-post-format-modal').modal('hide');
     }
     checkGifAnimation(networkAuthId, networkId);
-    
+
     //Multi Image
     if (((postFormat == 1 && ((networkId == 1 && (networkType == 1 || networkType == 2)) || (networkId == 2) || (networkId == 3 && (networkType == 0 || networkType == 1)))) || networkId == 12 || networkId == 45) && jQuery('.b2s-post-item-details-release-input-date-select[data-network-auth-id="' + networkAuthId + '"]').val() != 1) {
         jQuery('.b2s-multi-image-area[data-network-auth-id="' + networkAuthId + '"][data-network-count="-1"]').show();
@@ -4898,48 +4898,48 @@ function changePostFormat(networkId, networkType, postFormat, networkAuthId, pos
         }
     }
 
-    if(networkId == 1){
-       
-        if(postFormat == 0){
-            jQuery('.b2s-share-as-story-fields[data-network-auth-id="' + networkAuthId+ '"]').hide();
-            jQuery('.b2s-post-item-details-item-url-input[data-network-auth-id="' + networkAuthId+ '"]').parent().show();
-            jQuery('.b2s-post-item-details-item-message-area[data-network-auth-id="' +networkAuthId+'"]').not('.b2s-share-as-story-fields').show();
-              
-        }else{
+    if (networkId == 1) {
 
-            jQuery('.b2s-share-as-story-fields[data-network-auth-id="' + networkAuthId+ '"]').show();
+        if (postFormat == 0) {
+            jQuery('.b2s-share-as-story-fields[data-network-auth-id="' + networkAuthId + '"]').hide();
+            jQuery('.b2s-post-item-details-item-url-input[data-network-auth-id="' + networkAuthId + '"]').parent().show();
+            jQuery('.b2s-post-item-details-item-message-area[data-network-auth-id="' + networkAuthId + '"]').not('.b2s-share-as-story-fields').show();
 
-            if(jQuery('.b2s-post-item-option-share-as-story[data-network-auth-id="' +networkAuthId+'"]').prop("checked")){
-              
-                jQuery('.b2s-post-item-details-item-url-input[data-network-auth-id="' + networkAuthId+ '"]').parent().hide();
+        } else {
+
+            jQuery('.b2s-share-as-story-fields[data-network-auth-id="' + networkAuthId + '"]').show();
+
+            if (jQuery('.b2s-post-item-option-share-as-story[data-network-auth-id="' + networkAuthId + '"]').prop("checked")) {
+
+                jQuery('.b2s-post-item-details-item-url-input[data-network-auth-id="' + networkAuthId + '"]').parent().hide();
                 jQuery('.b2s-multi-image-area[data-network-auth-id="' + networkAuthId + '"]').hide();
-                jQuery('.b2s-post-item-details-item-message-area[data-network-auth-id="' +networkAuthId+'"]').not('.b2s-share-as-story-fields').hide();
+                jQuery('.b2s-post-item-details-item-message-area[data-network-auth-id="' + networkAuthId + '"]').not('.b2s-share-as-story-fields').hide();
             }
         }
     }
 
-    if(networkId == 12){
+    if (networkId == 12) {
 
         //Fix Bug IG Postformat = 0 is image cutout, buttons need to show
-        if(postFormat== 0){
+        if (postFormat == 0) {
             jQuery('.b2s-select-image-modal-open[data-network-auth-id="' + networkAuthId + '"]').show();
             jQuery('.b2s-image-remove-btn[data-network-auth-id="' + networkAuthId + '"]').show();
         }
 
-        if(jQuery('.b2s-post-item-option-share-as-story[data-network-auth-id="' +networkAuthId+'"]').prop("checked")){
-            jQuery('.b2s-share-as-story-fields[data-network-auth-id="' + networkAuthId+ '"]').show();
-            jQuery('.b2s-post-item-details-item-url-input[data-network-auth-id="' + networkAuthId+ '"]').parent().hide();
+        if (jQuery('.b2s-post-item-option-share-as-story[data-network-auth-id="' + networkAuthId + '"]').prop("checked")) {
+            jQuery('.b2s-share-as-story-fields[data-network-auth-id="' + networkAuthId + '"]').show();
+            jQuery('.b2s-post-item-details-item-url-input[data-network-auth-id="' + networkAuthId + '"]').parent().hide();
             jQuery('.b2s-multi-image-area[data-network-auth-id="' + networkAuthId + '"]').hide();
-            jQuery('.b2s-post-item-details-item-message-area[data-network-auth-id="' +networkAuthId+'"]').not('.b2s-share-as-story-fields').hide();
+            jQuery('.b2s-post-item-details-item-message-area[data-network-auth-id="' + networkAuthId + '"]').not('.b2s-share-as-story-fields').hide();
         }
     }
 
     //Hide OG Area when changed to image from v8.4 onwards
-    if(postFormat==1){   
+    if (postFormat == 1) {
         jQuery('.b2s-post-original-area[data-network-auth-id="' + networkAuthId + '"]').children(':not(div.input-group)').attr('style', 'display: none !important;');
-    }else
+    } else
     {
-        if(networkId!=12){
+        if (networkId != 12) {
             jQuery('.b2s-post-original-area[data-network-auth-id="' + networkAuthId + '"]').children(':not(div.input-group)').show();
         }
     }
@@ -5567,110 +5567,115 @@ function showAssButtons(networkAuthId = 0, schedCount = - 1) {
 
 jQuery(document).on('click', '.b2s-user-network-settings-post-format-apply', function () {
 
-    var dataNetworkAuthId= jQuery(this).attr('data-network-auth-id');
- 
-    if(jQuery('.b2s-user-network-settings-post-format-new[data-network-auth-id="'+dataNetworkAuthId+'"][data-post-format="1"]').prop('checked')==true){
+    var dataNetworkAuthId = jQuery(this).attr('data-network-auth-id');
 
-       changePostFormat(jQuery(this).attr("data-network-id"), jQuery(this).attr("data-network-type"), "1", jQuery(this).attr("data-network-auth-id"), jQuery(this).attr("data-post-format-type"), jQuery(this).attr("data-post-wp-type"), true);
-    
-    }else
+    if (jQuery('.b2s-user-network-settings-post-format-new[data-network-auth-id="' + dataNetworkAuthId + '"][data-post-format="1"]').prop('checked') == true) {
+
+        changePostFormat(jQuery(this).attr("data-network-id"), jQuery(this).attr("data-network-type"), "1", jQuery(this).attr("data-network-auth-id"), jQuery(this).attr("data-post-format-type"), jQuery(this).attr("data-post-wp-type"), true);
+
+    } else
     {
-        changePostFormat(jQuery(this).attr("data-network-id"), jQuery(this).attr("data-network-type"), "0", jQuery(this).attr("data-network-auth-id"), jQuery(this).attr("data-post-format-type"), jQuery(this).attr("data-post-wp-type"), true);  
+        changePostFormat(jQuery(this).attr("data-network-id"), jQuery(this).attr("data-network-type"), "0", jQuery(this).attr("data-network-auth-id"), jQuery(this).attr("data-post-format-type"), jQuery(this).attr("data-post-wp-type"), true);
     }
 
 });
 
 jQuery(document).on('click', '.b2s-user-network-settings-post-format-new, img.b2s-user-network-settings-post-format-area-new', function () {
-   
-    var dataNetworkAuthId= jQuery(this).attr('data-network-auth-id');
-    var postFormat=  jQuery(this).attr('data-post-format');
-  
-    jQuery('.b2s-user-network-settings-post-format-new[data-network-auth-id="'+dataNetworkAuthId+'"][data-post-format="'+postFormat+'"]').prop("checked", true);
-    jQuery('.b2s-user-network-settings-post-format-new[data-network-auth-id="'+dataNetworkAuthId+'"][data-post-format!="'+postFormat+'"]').prop("checked", false);
 
-    jQuery('img.b2s-user-network-settings-post-format-area-new[data-network-auth-id="'+dataNetworkAuthId+'"][data-post-format="'+postFormat+'"]').addClass('b2s-settings-checked-new');
-    jQuery('img.b2s-user-network-settings-post-format-area-new[data-network-auth-id="'+dataNetworkAuthId+'"][data-post-format!="'+postFormat+'"]').removeClass('b2s-settings-checked-new');
-   
+    var dataNetworkAuthId = jQuery(this).attr('data-network-auth-id');
+    var postFormat = jQuery(this).attr('data-post-format');
+
+    jQuery('.b2s-user-network-settings-post-format-new[data-network-auth-id="' + dataNetworkAuthId + '"][data-post-format="' + postFormat + '"]').prop("checked", true);
+    jQuery('.b2s-user-network-settings-post-format-new[data-network-auth-id="' + dataNetworkAuthId + '"][data-post-format!="' + postFormat + '"]').prop("checked", false);
+
+    jQuery('img.b2s-user-network-settings-post-format-area-new[data-network-auth-id="' + dataNetworkAuthId + '"][data-post-format="' + postFormat + '"]').addClass('b2s-settings-checked-new');
+    jQuery('img.b2s-user-network-settings-post-format-area-new[data-network-auth-id="' + dataNetworkAuthId + '"][data-post-format!="' + postFormat + '"]').removeClass('b2s-settings-checked-new');
+
 });
 
 jQuery(document).on('change', '.b2s-post-item-details-release-input-times, .b2s-post-item-details-release-input-select-timespan', function () {
 
-    var dataNetworkAuthId= jQuery(this).attr('data-network-auth-id');
-    var count=  jQuery(this).attr('data-network-count');
+    var dataNetworkAuthId = jQuery(this).attr('data-network-auth-id');
+    var count = jQuery(this).attr('data-network-count');
 
-     if(jQuery(this).hasClass('b2s-post-item-details-release-input-times')){
+    if (jQuery(this).hasClass('b2s-post-item-details-release-input-times')) {
 
-        var maxValue= get3YearsMax('times', dataNetworkAuthId, count);
+        var maxValue = get3YearsMax('times', dataNetworkAuthId, count);
     }
 
-    if(jQuery(this).hasClass('b2s-post-item-details-release-input-select-timespan')){
+    if (jQuery(this).hasClass('b2s-post-item-details-release-input-select-timespan')) {
 
-        var maxValue= get3YearsMax('timespan', dataNetworkAuthId, count);
+        var maxValue = get3YearsMax('timespan', dataNetworkAuthId, count);
     }
 
-    if(maxValue){
-        
+    if (maxValue) {
+
         jQuery('.b2s-network-tos-sched-max-values-alert[data-network-auth-id="' + dataNetworkAuthId + '"]').show();
         jQuery(this).val(maxValue);
         return;
     }
-     jQuery('.b2s-network-tos-sched-max-values-alert[data-network-auth-id="' + dataNetworkAuthId + '"]').hide();
+    jQuery('.b2s-network-tos-sched-max-values-alert[data-network-auth-id="' + dataNetworkAuthId + '"]').hide();
 });
 
 function get3YearsMax(type, dataNetworkAuthId, count) {
 
-    var times= jQuery('[name="b2s[' + dataNetworkAuthId + '][duration_time][' + count + ']"]').val();      
+    var times = jQuery('[name="b2s[' + dataNetworkAuthId + '][duration_time][' + count + ']"]').val();
     var timespan = jQuery('[name="b2s[' + dataNetworkAuthId + '][select_timespan][' + count + ']"]').val();
     var startDateStr = jQuery('[name="b2s[' + dataNetworkAuthId + '][date][' + count + ']"]').val();
     var startTimeStr = jQuery('[name="b2s[' + dataNetworkAuthId + '][time][' + count + ']"]').val();
-    var startDateStr= startDateStr + " " + startTimeStr;
- 
-    const nowDate = new Date();
+    var startDateStr = startDateStr + " " + startTimeStr;
 
+    const nowDate = new Date();
     const futureDate = new Date(nowDate);
     futureDate.setFullYear(futureDate.getFullYear() + 3);
-
     const [datePart, timePart] = startDateStr.split(' ');
-    const [day, month, year] = datePart.split('.');
+    var day, month, year;
+    var eng = true;
+
+    //German Years
+    if (datePart.split(".").length == 3)
+    {
+        eng = false;
+        [day, month, year] = datePart.split('.');
+    } else if (datePart.split('-').length == 3)//English Years
+    {
+        [year, month, day] = datePart.split('-');
+    } else
+    {
+        return false;
+    }
+
     const [hour, minute] = timePart.split(':');
     const startDate = new Date(year, month - 1, day, hour, minute);
-
-    var startOffset= startDate - nowDate;
-
+    var startOffset = startDate - nowDate;
     //keep 1 day margin
-    var daysTotal= (timespan * times)-1;
+    var daysTotal = (timespan * times) + 1;
+    var totalRangeInMs = startOffset + (daysTotal * 24 * 60 * 60 * 1000);
+    var maxRangeInMs = futureDate - nowDate;
 
-    var totalRangeInMs= startOffset + (daysTotal * 24 * 60 * 60 * 1000);
-
-    var maxRangeInMs= futureDate - nowDate;
- 
-     if(totalRangeInMs > maxRangeInMs){
-
-        var maxValue=1;
-
-        if(type=='times'){
-
-            return Math.floor(maxRangeInMs / ((24 * 60 * 60 * 1000)*timespan));
+    if (totalRangeInMs > maxRangeInMs) {
+        var maxValue = 1;
+        if (type == 'times') {
+            return Math.floor(maxRangeInMs / ((24 * 60 * 60 * 1000) * timespan));
+        }
+        if (type == "timespan") {
+            return Math.floor(maxRangeInMs / ((24 * 60 * 60 * 1000) * times));
         }
 
-        if(type=="timespan"){
-
-            return Math.floor(maxRangeInMs / ((24 * 60 * 60 * 1000)*times));
-        }
-
-        if(type=="date"){
-        
-            var totalMilliseconds= daysTotal * 24 * 60 * 60 * 1000;
+        if (type == "date") {
+            var totalMilliseconds = daysTotal * 24 * 60 * 60 * 1000;
             futureDate.setTime(futureDate.getTime() - totalMilliseconds);
-          
             const day = String(futureDate.getDate()).padStart(2, '0');
             const month = String(futureDate.getMonth() + 1).padStart(2, '0'); // months are 0-indexed
             const year = futureDate.getFullYear();
-        
-            return `${day}.${month}.${year}`;
-          
+
+            if (eng) {
+                return `${year}-${month}-${day}`;
+            } else
+            {
+                return `${day}.${month}.${year}`;
+            }
         }
-
     }
-
+    return false;
 }

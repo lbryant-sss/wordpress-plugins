@@ -4,7 +4,7 @@ Tags: contact form, contact form 7, forms, custom form, form builder
 Requires at least: 4.2
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 3.5.20
+Stable tag: 3.5.21
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -74,6 +74,7 @@ Equipped with over 45 essential features, **Ultra Addons For Contact Form 7** is
 * Email Piping (Pro)
 * PDF Generate (Pro)
 * Drag & Drop Multiple File Uploads
+* Google reCAPTCHA Integration
 
 ### How It works:
 
@@ -255,7 +256,7 @@ Tag support for CF7 fields allows data to be passed through the redirect URL. Ad
 
 = Contact form 7 WooCommerce Checkout / Auto Add to Cart =
 
-Integrate [WooCommerce Checkout](https://cf7addons.com/preview/contact-form-7-woocommerce-checkout/) with your Contact Form 7 forms. When a customer selects a product and submits the form, they will be automatically redirected to the cart page, with the chosen product already added to their cart. From there, they can proceed to the checkout process and finalize their purchase using WooCommerce's payment system.
+Integrate [WooCommerce Checkout](https://cf7addons.com/preview/contact-form-7-woocommerce-checkout/) with your Contact Form 7. When a customer selects a product and submits the form, they’ll be redirected to the cart page with the product added, allowing them to proceed to checkout and complete their purchase using WooCommerce's payment system.
 
 = Choose Specific / Multiple / Categorize WooCommerce Product =
 
@@ -300,6 +301,10 @@ Our [PDF Generate Pro](https://cf7addons.com/preview/pdf-generate-pro/) feature 
 = Contact Form 7 Drag & Drop Multiple File Uploads =
 
 Our [Drag & Drop Multiple File Uploads](https://cf7addons.com/preview/drag-and-drop-multiple-file-upload/) feature enables a smooth and modern way to upload multiple files directly through your Contact Form 7.
+
+= Contact Form 7 Google reCAPTCHA =
+
+Our [Google reCAPTCHA](https://cf7addons.com/preview/google-recaptcha/) feature integrates with Contact Form 7, providing an effective and user-friendly solution to prevent spam and bot submissions.
 
 **More Pro addons are in development and will be available soon.**
 
@@ -448,8 +453,8 @@ Just install our plugin, and you'll get access to a variety of free templates!
 41. Conditional Redirect (Form Example)
 42. Custom Column Width (Settings)
 43. Custom Column Width (Form Example)
-44. Whatsapp Integration + CF7 Tag Support (Settings)
-45. Whatsapp Integration + CF7 Tag Support (Preview Example)
+44. WhatsApp Integration + CF7 Tag Support (Settings)
+45. WhatsApp Integration + CF7 Tag Support (Preview Example)
 46. Global Form Styler (Settings)
 47. Global Form Styler (Form Example)
 48. Autocomplete Country, City, State, and Zip Fields (IP Geolocation) (Settings)
@@ -461,9 +466,15 @@ Just install our plugin, and you'll get access to a variety of free templates!
 
 == Changelog ==
 
+= 3.5.21 - 25/05/2025 =
+
+- Introduced: Google reCAPTCHA Integration Addon for "Ultra Addons for Contact Form 7".
+- Improvements: Added Bulk Delete option to the Database addon.
+
 = 3.5.20 - 23/05/2025 =
 
 - Fixed: Resolved an issue with the radio input field not functioning correctly in multistep forms.
+- Fixed: Wordfence Security Vulnerability report issue has been resolved.
 
 = 3.5.19 - 17/05/2025 =
 
@@ -474,11 +485,6 @@ Just install our plugin, and you'll get access to a variety of free templates!
 - Fixed: Background color issue in Form Styler textarea.
 - Fixed: CSV export mistakenly included deleted files.
 - Improved: Save and continue feature settings added to multistep forms.
-
-= 3.5.18 - 06/04/2025 =
-
-- Fixed: cURL error issue has been resolved.
-- Improved: Overall system stability has been enhanced.
 
 **Old Changelog can be found [here](https://cf7addons.com/changelog/)**.
 

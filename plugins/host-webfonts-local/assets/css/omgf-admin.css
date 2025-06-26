@@ -144,7 +144,8 @@
 
 .omgf form .omgf-task-manager {
 	padding: 5px 25px;
-	box-shadow: 0px 10px 20px 1px #ccc;
+	margin-bottom: 30px;
+	box-shadow: 0 10px 20px 1px #ccc;
 	border: 0;
 	border-top: 4px solid #00adda;
 	border-radius: 10px;
@@ -281,29 +282,41 @@
 }
 
 .omgf-optimize-fonts-container {
-	text-align: center;
-	padding: 25px 50px;
-	max-width: 1024px;
-	margin: 20px auto 0 220px;
+	padding: 5px 25px 50px;
+	max-width: 1078px;
+	margin: 0 auto 30px 222px;
 	overflow: visible;
-	position: relative;
 	border: 0;
+	border-top: 4px solid #00adda;
 	border-radius: 10px;
 	box-shadow: 0px 10px 20px 1px #ccc;
 }
 
-.omgf-optimize-fonts-container .option-title {
+.omgf-optimize-fonts-container .form-table tr {
+	position: relative;
+}
+
+.omgf-optimize-fonts-container .form-table tr th {
 	position: absolute;
-	left: -220px;
-	top: 0;
+	left: -222px;
+	top: 2px;
+}
+
+.omgf-optimize-fonts-container .form-table tr td {
+	padding: 20px 0;
+}
+
+.omgf-optimize-fonts-container .omgf-optimize-fonts-contents {
+	position: relative;
+}
+
+.omgf-optimize-fonts-container .omgf-optimize-fonts-contents .option-title {
+	position: absolute;
+	left: -222px;
+	top: 4px;
 	font-weight: 600;
 	font-size: 14px;
 	color: #1d2327;
-}
-
-.omgf-optimize-fonts-container h3 {
-	font-size: 1.3em;
-	margin-top: 0;
 }
 
 .omgf-optimize-fonts-container .omgf-optimize-fonts-manage {
@@ -402,13 +415,12 @@
 	line-height: 1.5em;
 }
 
-.omgf-optimize-fonts-container .omgf-optimize-fonts-tooltip ul li:before {
-	margin-left: -25px;
-}
-
+.omgf-task-manager p,
 .omgf-optimize-fonts-container p,
-.omgf-optimize-fonts-container ul {
+.omgf-optimize-fonts-container ul,
+.omgf-help-section .about {
 	text-align: justify;
+	font-size: 14px;
 }
 
 .tooltip {

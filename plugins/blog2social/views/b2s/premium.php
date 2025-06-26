@@ -39,13 +39,17 @@
                                 <div id="b2s-license-user-area" class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
                                     <label class="b2s-font-bold"><?php esc_html_e('Select Team Member', 'blog2social'); ?></label>                          
                                     <select id="b2s-license-user-select" class="form-control" data-placeholder="<?php esc_html_e('Select a team member', 'blog2social'); ?>">
-                                        <?php
-                                        echo wp_kses(B2S_Tools::searchUser(wp_get_current_user()->display_name, B2S_PLUGIN_BLOG_USER_ID), array(
-                                            'option' => array(
-                                                'value' => array(),
-                                                'selected' => array()
-                                            )
-                                        ));
+                                        <?php if (B2S_PLUGIN_USER_VERSION <= 2) { ?>
+                                            <option value="<?php echo esc_attr(get_current_user_id()); ?>" selected ><?php echo esc_attr(wp_get_current_user()->display_name) ?> (<?php esc_html_e('Email', 'blog2social') . ': ' ?> <?php echo esc_attr(wp_get_current_user()->user_email) ?>)</option>
+                                            <?php
+                                        } else {
+                                            echo wp_kses(B2S_Tools::searchUser(wp_get_current_user()->display_name, B2S_PLUGIN_BLOG_USER_ID), array(
+                                                'option' => array(
+                                                    'value' => array(),
+                                                    'selected' => array()
+                                                )
+                                            ));
+                                        }
                                         ?>
                                     </select>
                                 </div>

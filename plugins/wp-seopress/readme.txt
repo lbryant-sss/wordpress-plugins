@@ -6,7 +6,7 @@ Tags: SEO, google search console, xml sitemap, schema, ai
 Requires at least: 5.0+
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 8.9.0.1
+Stable tag: 8.9.0.2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -271,6 +271,9 @@ You're theme is probably using a deprecated function to handle the title. <a hre
 12. Schema metabox
 
 == Changelog ==
+= 8.9.0.2 =
+* FIX An issue with the universal SEO metabox
+
 = 8.9.0.1 =
 * FIX Undefined variables in XML sitemaps
 * FIX Incorrect last mod date with specific timezone for XML Index Sitemap

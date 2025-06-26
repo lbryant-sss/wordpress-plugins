@@ -6,7 +6,7 @@
  * Description: <strong><em>***ATTENTION: After upgrade the plugin may be deactivated due to a known issue, to workaround please refresh this page and activate plugin.***</em></strong> The Facebook pixel is an analytics tool that helps you measure the effectiveness of your advertising. You can use the Facebook pixel to understand the actions people are taking on your website and reach audiences you care about.
  * Author: Facebook
  * Author URI: https://www.facebook.com/
- * Version: 4.1.3
+ * Version: 4.1.4
  * Text Domain: official-facebook-pixel
  *
  * @package FacebookPixelPlugin
@@ -65,6 +65,10 @@ class FacebookForWordpress {
     add_action( 'parse_request', array( $this, 'handle_events_request' ), 0 );
 
     $this->register_settings_page();
+
+    if ( false === get_option( 'is_wordpress_com_hosted' ) ) {
+        update_option( 'is_wordpress_com_hosted', FacebookWordpressOptions::is_wordpress_com_hosted() );
+    }
 
     new ServerEventAsyncTask();
     }

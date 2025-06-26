@@ -27,7 +27,7 @@
 /* Content-Widget */
 .b2s-widget-block-image-content{
     display: flex;
-    font-size: 22px;
+    font-size: 13px;
     line-height: 1.2;
 }
 .b2s-widget-block-image-content > img{

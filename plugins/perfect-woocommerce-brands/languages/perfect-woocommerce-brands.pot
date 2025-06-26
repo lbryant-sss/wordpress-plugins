@@ -2,16 +2,16 @@
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Perfect Brands WooCommerce 3.5.4\n"
+"Project-Id-Version: Perfect Brands WooCommerce 3.5.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/perfect-woocommerce-brands\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-05-05T13:32:25+00:00\n"
+"POT-Creation-Date: 2025-06-25T12:25:58+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.11.0\n"
+"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: perfect-woocommerce-brands\n"
 
 #. Plugin Name of the plugin
@@ -338,6 +338,7 @@ msgid "Import brands"
 msgstr ""
 
 #: lib/admin/class-admin-tab.php:347
+#, php-format
 msgid "Import brands from other brand plugin. <a href=\"%s\" target=\"_blank\">Click here for more details</a>"
 msgstr ""
 
@@ -395,6 +396,7 @@ msgid "Brands taxonomy slug"
 msgstr ""
 
 #: lib/admin/class-admin-tab.php:400
+#, php-format
 msgid "Your brands URLs will look like \"%s\""
 msgstr ""
 
@@ -928,6 +930,7 @@ msgid "It allows you to reduce the steps in the checkout process by skipping the
 msgstr ""
 
 #: vendor_packages/wp-notice-plugin-promote.php:45
+#, php-format
 msgid "Hello! %2$s We've spent countless hours developing this free plugin for you and would really appreciate it if you could drop us a quick rating. Your feedback is extremely valuable to us. %3$s It helps us to get better. Thanks for using %1$s."
 msgstr ""
 
@@ -944,11 +947,13 @@ msgid "Hello! We have a special gift!"
 msgstr ""
 
 #: vendor_packages/wp-notice-plugin-promote.php:71
+#, php-format
 msgid "Today we have a special gift for you. Use the coupon code %1$s within the next 48 hours to receive a %2$s discount on the premium version of the %3$s plugin."
 msgstr ""
 
 #: vendor_packages/wp-notice-plugin-promote.php:86
 #: vendor_packages/wp-notice-plugin-promote.php:100
+#, php-format
 msgid "Hello! We want to invite you to try our %s plugin!"
 msgstr ""
 
