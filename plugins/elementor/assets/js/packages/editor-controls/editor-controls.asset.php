@@ -24,7 +24,6 @@ return [
 		'elementor-v2-utils',
 		'elementor-v2-wp-media',
 		'react',
-		'react-dom',
 		'wp-i18n',
 	],
 ];

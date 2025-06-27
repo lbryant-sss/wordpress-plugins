@@ -24,7 +24,7 @@ class LinkExpressProduct extends LinkMixin(Gateway) {
     }
 
     onReady({availablePaymentMethods}) {
-        const {link = false} = availablePaymentMethods;
+        const {link = false} = availablePaymentMethods || {};
         if (link) {
             this.addEvents();
             $(this.container).show().addClass('active');
@@ -91,8 +91,12 @@ class LinkExpressProduct extends LinkMixin(Gateway) {
     }
 
     onQuantityChange() {
-        if (this.is_variable_product() && !this.variable_product_selected()) {
-            return;
+        if (this.is_variable_product()) {
+            if (!this.variable_product_selected()) {
+                return;
+            } else if (!this.params.product?.variation?.is_in_stock) {
+                return;
+            }
         }
         this.calculateCart();
     }

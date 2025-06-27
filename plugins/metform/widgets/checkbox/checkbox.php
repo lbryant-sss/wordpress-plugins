@@ -24,6 +24,10 @@ Class MetForm_Input_Checkbox extends Widget_Base{
 	public function get_icon() {
         return 'mf-widget-icon icon-metform_checkbox';
     }
+
+	public function has_widget_inner_wrapper(): bool {
+		return ! Plugin::$instance->experiments->is_feature_active('e_optimized_markup');
+	}
     
 	public function get_title() {
 		return esc_html__( 'Checkbox', 'metform' );
@@ -517,6 +521,7 @@ Class MetForm_Input_Checkbox extends Widget_Base{
 				}
 				?>
 			</div>
+			<input type="hidden" name="<?php echo esc_attr( $mf_input_name ); ?>" value="" />
 
 			<?php if ( !$is_edit_mode ) : ?>
 				<${validation.ErrorMessage}

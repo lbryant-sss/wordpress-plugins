@@ -54,20 +54,27 @@
         PaymentRequest.prototype.maybe_calculate_cart = function (e) {
             this.disable_payment_button();
             this.old_qty = this.get_quantity();
-            var variation = this.get_product_data().variation;
-            if (!this.is_variable_product() || this.variable_product_selected()) {
-                this.cart_calculation().then(function () {
-                    if (this.is_variable_product()) {
-                        this.createPaymentRequest();
-                        this.createPaymentRequestButton();
-                        wc_stripe.PaymentRequest.prototype.canMakePayment.apply(this, arguments).then(function () {
-                            this.enable_payment_button();
-                        }.bind(this));
-                    } else {
-                        this.enable_payment_button();
-                    }
-                }.bind(this));
+
+            if (this.is_variable_product()) {
+                if (!this.variable_product_selected()) {
+                    return;
+                }
+                var data = this.get_product_data();
+                if (data && data.variation && !data.variation.is_in_stock) {
+                    return;
+                }
             }
+            this.cart_calculation().then(function () {
+                if (this.is_variable_product()) {
+                    this.createPaymentRequest();
+                    this.createPaymentRequestButton();
+                    wc_stripe.PaymentRequest.prototype.canMakePayment.apply(this, arguments).then(function () {
+                        this.enable_payment_button();
+                    }.bind(this));
+                } else {
+                    this.enable_payment_button();
+                }
+            }.bind(this));
         }
 
         PaymentRequest.prototype.cart_calculation = function () {

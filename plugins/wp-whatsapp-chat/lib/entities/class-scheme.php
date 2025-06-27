@@ -8,6 +8,7 @@ class Scheme extends SingleEntity {
 	public $font_size                  = '18';
 	public $icon_size                  = '60';
 	public $icon_font_size             = '24';
+	public $box_max_height                 = '400';
 	public $brand                      = '';
 	public $text                       = '';
 	public $link                       = '';

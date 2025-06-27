@@ -156,14 +156,16 @@ padding: 0 10px 20px 20px;
 .lz-v-tab-content #lz-social-general-settings,
 .lz-v-tab-content #lz-social-login-settings,
 .lz-v-tab-content #lz-social-woocommerce-settings,
-.lz-v-tab-content #lz-social-comment-settings{
+.lz-v-tab-content #lz-social-comment-settings,
+.lz-v-tab-content #lz-social-ultimate-member-settings{
 display:none;
 }
 
 .loginizer-v-tab:has(label > input[value="general"]:checked) ~ .lz-v-tab-content #lz-social-general-settings,
 .loginizer-v-tab:has(label > input[value="login"]:checked) ~ .lz-v-tab-content #lz-social-login-settings,
 .loginizer-v-tab:has(label > input[value="woocommerce"]:checked) ~ .lz-v-tab-content #lz-social-woocommerce-settings,
-.loginizer-v-tab:has(label > input[value="comment"]:checked) ~ .lz-v-tab-content #lz-social-comment-settings{
+.loginizer-v-tab:has(label > input[value="comment"]:checked) ~ .lz-v-tab-content #lz-social-comment-settings,
+.loginizer-v-tab:has(label > input[value="ultimate-member"]:checked) ~ .lz-v-tab-content #lz-social-ultimate-member-settings{
 display:block;
 }
 

@@ -84,4 +84,15 @@ $loginizer_login_providers = [
 			'default' => 'background-color:#2271b1; color:white;'
 		]
 	],
+	'MicrosoftGraph' => [
+		'name' => 'Microsoft',
+		'color' => '#2F2F2F',
+		'icons' => [],
+		'premium' => true,
+		'styles' => [
+			'default' => 'background-color:#2F2F2F; color:#fff;',
+			'light' => 'background-color:#fff; color:#5E5E5E; border:1px solid #8C8C8C;',
+		]
+	],
+	
 ];

@@ -113,7 +113,6 @@ function monsterinsights_gutenberg_editor_assets() {
 			'page_insights_nonce'          => wp_create_nonce( 'mi-admin-nonce' ),
 			'isnetwork'                    => is_network_admin(),
 			'is_v4'                        => true,
-			'dismiss_envira_promo'         => isset($plugins['envira-gallery-lite/envira-gallery-lite.php']) || isset($plugins['envira-gallery/envira-gallery.php']) || get_transient('_monsterinsights_dismiss_envira_promo'),
 		) )
 	);
 

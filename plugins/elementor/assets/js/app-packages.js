@@ -1,4 +1,4 @@
-/*! elementor - v3.30.0 - 11-06-2025 */
+/*! elementor - v3.30.0 - 26-06-2025 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -2085,7 +2085,8 @@ function Header(props) {
   }), /*#__PURE__*/_react.default.createElement("h1", {
     className: "eps-app__title"
   }, props.title)), /*#__PURE__*/_react.default.createElement(_headerButtons.default, {
-    buttons: props.buttons
+    buttons: props.buttons,
+    onClose: props.onClose
   }));
 }
 Header.propTypes = {
@@ -2141,10 +2142,7 @@ function Page(props) {
     title: props.title,
     buttons: props.headerButtons,
     titleRedirectRoute: props.titleRedirectRoute,
-    onClose: function onClose() {
-      var _props$onClose;
-      return (_props$onClose = props.onClose) === null || _props$onClose === void 0 ? void 0 : _props$onClose.call(props);
-    }
+    onClose: props.onClose
   }), /*#__PURE__*/_react.default.createElement("div", {
     className: "eps-app__main"
   }, AppSidebar(), /*#__PURE__*/_react.default.createElement(_content.default, null, props.content)), AppFooter()));

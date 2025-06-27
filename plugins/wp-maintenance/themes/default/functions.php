@@ -217,7 +217,7 @@ function wpm_customcss() {
             // SÉCURITÉ : Validation que b_pattern est bien numérique
             $pattern_value = intval($picture['b_pattern']);
             if ($pattern_value > 0 && $pattern_value <= 12) {
-                $pattern_url = get_template_directory_uri().'/'.get_option('template').'/assets/images/pattern/pattern'.$pattern_value.'.png';
+                $pattern_url = WPM_PLUGIN_URL.'/images/pattern'.$pattern_value.'.png';
                 $addStyleGeneral .= 'background-image: url('.esc_url($pattern_url).');';
             }
         }

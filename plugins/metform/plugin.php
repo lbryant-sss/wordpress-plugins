@@ -3,6 +3,7 @@
 namespace MetForm;
 
 use MetForm\Core\Integrations\Onboard\Attr;
+use MetForm\Core\Integrations\Emailkit_Builder;
 use MetForm\Core\Integrations\Onboard\Onboard;
 
 defined('ABSPATH') || exit;
@@ -25,7 +26,7 @@ final class Plugin {
 
     public function version()
     {
-        return '3.9.9';
+        return '4.0.0';
     }
 
     public function package_type()
@@ -339,12 +340,6 @@ final class Plugin {
             return;
         }
 
-        // pro available notice
-        if (!file_exists(WP_PLUGIN_DIR . '/metform-pro/metform-pro.php')) {
-            $this->available_metform_pro();
-            // add_action('admin_notices', [$this, 'available_metform_pro']);
-        }
-
         if (current_user_can('manage_options')) {
             add_action('admin_menu', [$this, 'admin_menu']);
         }
@@ -378,6 +373,11 @@ final class Plugin {
         Core\Admin\Base::instance()->init();
 
         Core\Forms\Auto_Increment_Entry::instance();
+
+        if( class_exists( 'EmailKit' ) ){
+            //metform confirmation to user email template edit with emailkit
+            Emailkit_Builder::instance()->init();
+        }
     }
 
     function metform_editor_script(){
@@ -511,6 +511,13 @@ final class Plugin {
             wp_enqueue_script('metform-ui', $this->public_url() . 'assets/js/ui.min.js', [], $this->version(), true);
             wp_enqueue_script('metform-admin-script', $this->public_url() . 'assets/js/admin-script.js', [], null, true);
             wp_localize_script('metform-admin-script', 'metform_api', ['resturl' => get_rest_url(), 'admin_url' => get_admin_url()]);
+
+            wp_localize_script('metform-admin-script', 'metform_emailkit_config', [
+                'is_emailkit_active' => class_exists('EmailKit'),
+                'is_emailkit_pro_active' => class_exists('EmailKitPro'),
+                'ajax_url' => admin_url('admin-ajax.php'),
+                'nonce' => wp_create_nonce('metform_emailkit_nonce'),
+            ]);
         }
 
         if ($screen->id == 'edit-metform-entry' || $screen->id == 'metform-entry') {
@@ -603,35 +610,15 @@ final class Plugin {
             ->call();
     }
 
-    public function available_metform_pro()
-    {
-        //phpcs:disable WordPress.Security.NonceVerification -- Can't set nonce. Cause it's fire on 'plugins_loaded' hook
-        if (isset($_GET['activate'])) {
-            unset($_GET['activate']);
-        }
-        //phpcs:enable 
-        $btn['text'] = esc_html__('MetForm Pro', 'metform');
-        $btn['url'] = esc_url('https://products.wpmet.com/metform/');
-        $btn['class'] = 'button-primary';
-
-        $message = sprintf(esc_html__('We have MetForm Pro version. Check out our pro feature.', 'metform'), '2.6.0');
-        \Oxaim\Libs\Notice::instance('metform', 'unsupported-metform-pro-version')
-            ->set_dismiss('global', (3600 * 24 * 15))
-            ->set_message($message)
-            ->set_button($btn)
-            ->call();
-    }
-
-
     public function failed_elementor_version()
     {
 
         $btn['text'] = esc_html__('Update Elementor', 'metform');
         // translators: MetForm plugin version requirement. %s is the required Elementor version.
-        $btn['url'] = sprintf(esc_html__('MetForm requires Elementor version %1$s+, which is currently NOT RUNNING.', 'metform'), '2.6.0');
+        $btn['url'] = wp_nonce_url( self_admin_url( 'update.php?action=upgrade-plugin&plugin=elementor/elementor.php' ), 'upgrade-plugin_elementor/elementor.php' );
         $btn['class'] = 'button-primary';
 
-        $message = sprintf(esc_html__('We have MetForm Pro version. Check out our pro feature.', 'metform'), '2.6.0');
+        $message = sprintf(esc_html__('MetForm requires Elementor version %1$s+, which is currently NOT RUNNING.', 'metform'), '3.0.1');
         \Oxaim\Libs\Notice::instance('metform', 'unsupported-elementor-version')
             ->set_dismiss('global', (3600 * 24 * 15))
             ->set_message($message)

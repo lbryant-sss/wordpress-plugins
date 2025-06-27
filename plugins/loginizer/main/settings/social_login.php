@@ -23,6 +23,8 @@ function loginizer_social_login(){
 
 	loginizer_page_header('Social Login Settings');
 	
+	do_action('loginizer_pro_social_auth_notice');
+
 	echo '<div class="tabs-wrapper" style="margin-bottom:10px; width:100%;">
 	<nav class="nav-tab-wrapper">
 		<a href="?page=loginizer_social_login" class="nav-tab '.(isset($_GET['settings']) ? '' : 'nav-tab-active').'">Provider</a>
@@ -118,7 +120,8 @@ function loginizer_social_login(){
 				echo '<div class="loginizer-social-saving-order">'.esc_html__('Saving Order', 'loginizer').'...</div>
 				<img src="'.esc_url(LOGINIZER_URL . '/assets/images/social/'.$key.'.png').'" height="60" alt="'.esc_attr($provider['name']).'" style="'.(($provider['name'] === 'Google') ? 'background-color:white; padding:3px;' : '').'"/>
 			</div>
-			<div class="loginizer-social-provider-action"><h2>'.esc_html($provider['name']).'</h2><a href="'.esc_url($action_to).'" class="button'.esc_attr($action_class).'">'.esc_html($action_text).'</a></div>
+			<div class="loginizer-social-provider-action"><h2>'.esc_html($provider['name']).'</h2>
+			<a href="'.esc_url($action_to).'" class="button'.esc_attr($action_class).'">'.esc_html($action_text).'</a></div>
 		</div>';
 	}
 
@@ -148,26 +151,44 @@ function loginizer_provider_settings($provider, $provider_defaults){
 		return;
 	}
 
-	if(!empty($_POST['client_id'])){
+	if(!empty($_POST['lz_save_social_provider'])){
 		if(!check_admin_referer('loginizer_social_nonce', 'security')){
 			$error[] = __('Security Check failed', 'loginizer');
 		} else {
-
 			if(empty($provider_settings[$provider])){
 				$provider_settings[$provider] = []; // initializing
 				$provider_settings[$provider]['tested'] = false;
 			}
 			
 			// Need to make the user to test the login again if the key gets changed, if keys gets dirty
-			if((isset($provider_settings[$provider]['client_id']) && $provider_settings[$provider]['client_id'] != sanitize_text_field(wp_unslash($_POST['client_id']))) 
-				|| (isset($provider_settings[$provider]['client_secret']) && $provider_settings[$provider]['client_secret'] != sanitize_text_field(wp_unslash($_POST['client_secret'])))){
+			if(
+				(isset($provider_settings[$provider]['client_id']) && $provider_settings[$provider]['client_id'] != sanitize_text_field(wp_unslash($_POST['client_id']))) || 
+				(isset($provider_settings[$provider]['client_secret']) && $provider_settings[$provider]['client_secret'] != sanitize_text_field(wp_unslash($_POST['client_secret'])))
+			){
 				$provider_settings[$provider]['tested'] = false;
 			}
 
 			$provider_settings[$provider]['client_id'] = !empty($_POST['client_id']) ? sanitize_text_field(wp_unslash($_POST['client_id'])) : '';
 			$provider_settings[$provider]['client_secret'] = !empty($_POST['client_secret']) ? sanitize_text_field(wp_unslash($_POST['client_secret'])) : '';
 			$provider_settings[$provider]['enabled'] = !empty($_POST['provider_enabled']) ? true : false;
+
+			if(defined('LOGINIZER_PREMIUM')){
+				$provider_settings = apply_filters('loginizer_pro_save_provider_settings', $provider_settings, $provider);
+			}
+
 			$provider_settings[$provider]['button_style'] = !empty($_POST['button_style']) ? lz_optpost('button_style') : 'default';
+			
+			// Making sure we save enable only when required settings are there
+			if(!empty($provider_settings[$provider]['enabled'])){
+				if(
+					(empty($provider_settings[$provider]['client_secret']) || 
+					empty($provider_settings[$provider]['client_id'])) &&
+					empty($provider_settings[$provider]['loginizer_social_key'])
+				){
+					$provider_settings[$provider]['tested'] = false;
+					$provider_settings[$provider]['enabled'] = false;
+				}
+			}
 
 			update_option('loginizer_provider_settings', $provider_settings);
 
@@ -224,12 +245,12 @@ function loginizer_provider_settings($provider, $provider_defaults){
 
 	echo '<a href="'.esc_url(admin_url('admin.php?page=loginizer_social_login')).'">&#8592; '.esc_html__('Go Back', 'loginizer').'</a>';
 
-	if(!empty($provider_settings[$provider]) && !empty($provider_settings[$provider]['enabled']) && empty($provider_settings[$provider]['tested'])){
+	if(!empty($provider_settings[$provider]) && !empty($provider_settings[$provider]['enabled']) && empty($provider_settings[$provider]['tested']) && empty($provider_settings[$provider]['loginizer_social_key'])){
 		echo '<div class="loginizer-social-test-alert">
 			<h3>'.sprintf(esc_html__('Test %s to be able to use it', 'loginizer'), esc_html($provider_defaults[$provider]['name'])).'</h3>
 			<p>'.esc_html__('You have added/updated the keys of this provider so you will need to test it to be able to use it.', 'loginizer').'</p>
 			<p>'.esc_html__('Please use the same email with which you have created this account.', 'loginizer').'</p>
-			<button class="button button-primary" id="loginizer-test-provider-btn" onClick="loginizer_auth_test_popup()">'.esc_html__('Test Now', 'loginizer').'</button>
+			<button class="button button-primary" id="loginizer-test-provider-btn" onclick="loginizer_auth_test_popup()">'.esc_html__('Test Now', 'loginizer').'</button>
 		</div>';
 	}
 
@@ -242,14 +263,31 @@ function loginizer_provider_settings($provider, $provider_defaults){
 	<tr>
 		<th scope="row"><label for="provider_enabled">Enable</label></th>
 		<td><input type="checkbox" name="provider_enabled" id="provider_enabled" '.(!empty($provider_settings[$provider]['enabled']) ? 'checked' : '').' value="1"/></td>
+	</tr>';
+
+	$display_keys = '';
+	// Loginizer Social Auth Input
+	$lz_social_key_providers = function_exists('loginizer_pro_social_auth_providers') ? loginizer_pro_social_auth_providers() : [];
+
+	if(in_array($provider, $lz_social_key_providers)){
+		if(empty($provider_settings[$provider])){
+			$provider_settings[$provider] = [];
+		}
+
+		do_action('loginizer_pro_social_api_settings', $provider_settings[$provider], $provider);
+
+		if(!empty($provider_settings[$provider]['loginizer_social_key'])){
+			$display_keys = 'display:none;';
+		}
+	}
+
+	echo '<tr style="'.esc_attr($display_keys).'">
+		<th scope="row"><label for="loginizer_social_client_id">Client ID</label></th>
+		<td><input type="text" name="client_id" id="loginizer_social_client_id" value="'.(!empty($provider_settings[$provider]['client_id']) ? esc_attr($provider_settings[$provider]['client_id']) : '').'"/></td>
 	</tr>
-	<tr>
-		<th scope="row"><label for="client_id">Client ID</label></th>
-		<td><input type="text" name="client_id" id="client_id" value="'.(!empty($provider_settings[$provider]['client_id']) ? esc_attr($provider_settings[$provider]['client_id']) : '').'"/></td>
-	</tr>
-	<tr>
-		<th scope="row"><label for="client_secret">Client Secret</label></th>
-		<td><input type="text" name="client_secret" id="client_secret" value="'.(!empty($provider_settings[$provider]['client_secret']) ? esc_attr($provider_settings[$provider]['client_secret']) : '').'"/></td>
+	<tr style="'.esc_attr($display_keys).'">
+		<th scope="row"><label for="loginizer_social_client_secret">Client Secret</label></th>
+		<td><input type="text" name="client_secret" id="loginizer_social_client_secret" value="'.(!empty($provider_settings[$provider]['client_secret']) ? esc_attr($provider_settings[$provider]['client_secret']) : '').'"/></td>
 	</tr>
 	<tr>
 		<th scope="row"><label for="button_style_default">Button Style</label></th>
@@ -260,10 +298,21 @@ function loginizer_provider_settings($provider, $provider_defaults){
 				echo '<label style="padding:20px 20px 20px 0"><input type="radio" name="button_style" id="button_style_'.esc_attr($style).'" value="'.esc_attr($style).'" '.((empty($provider_settings[$provider]['button_style'])) ? 'checked' : checked($provider_settings[$provider]['button_style'], $style, false)).'/>'.esc_attr(ucfirst($style)).'</label>';
 			}
 		echo '</td>
-	</tr>
-	</table>';
+	</tr>';
+	
+	if($provider == 'MicrosoftGraph'){
+		echo '<tr style="'.esc_attr($display_keys).'">
+			<th scope="row"><label for="loginizer_social_ms_account_type">'.esc_html__('Account Type', 'loginizer').'</label>
+			<p class="description">'.esc_html__('Which type of accounts you want to allow to be able to signin', 'loginizer').'</p></th>
+			<td style="display:block;"><label><input type="radio" name="account_type" value="organizations" '.(!empty($provider_settings[$provider]['account_type']) ? checked($provider_settings[$provider]['account_type'], 'organizations', false) : '').'/>'.esc_html__('Accounts in any Organizational directory', 'loginizer').'</label></td>
+			<td style="display:block;"><label><input type="radio" name="account_type" value="common" '.(!empty($provider_settings[$provider]['account_type']) ? checked($provider_settings[$provider]['account_type'], 'common', false) : '').'/>'.esc_html__('Accounts in any Organizational directory and Personal Microsoft accounts', 'loginizer').'</label></td>
+			<td style="display:block;"><label><input type="radio" name="account_type" value="consumers" id="loginizer_social_ms_account_type" '.(!empty($provider_settings[$provider]['account_type']) ? checked($provider_settings[$provider]['account_type'], 'consumers', false) : '').'/>'.esc_html__('Personal Microsoft accounts only', 'loginizer').'</label></td>
+		</tr>';
+	}
+
+	echo '</table>';
 	wp_nonce_field('loginizer_social_nonce', 'security');
-	echo '<button class="button button-primary">Save Settings</button>
+	echo '<input type="submit" name="lz_save_social_provider" value="Save Settings" class="button button-primary"/>
 	</form>
 	</div>
 	<div class="loginizer-provider-docs" style="width:46%;">';
@@ -295,6 +344,8 @@ function loginizer_general_settings(){
 			$social_settings['login']['button_style'] = lz_optpost('button_style');
 			$social_settings['login']['button_shape'] = lz_optpost('button_shape');
 			$social_settings['login']['button_position'] = lz_optpost('button_position');
+			$social_settings['login']['alignment'] = lz_optpost('alignment');
+			$social_settings['login']['button_alignment'] = lz_optpost('button_alignment');
 		}
 		
 		$social_settings = apply_filters('loginizer_social_general_settings', $social_settings);
@@ -302,15 +353,21 @@ function loginizer_general_settings(){
 
 		update_option('loginizer_social_settings', $social_settings);
 	}
-
+	
+	// NOTE:: The tab switching is done purly through CSS so, if you add any other tab in here then use css, just look for the class of already present tabs in the CSS and you will know.
 	echo '
 	<div class="loginizer-social-login-settings">
 	<div class="loginizer-v-tab">
 		<label><input type="radio" name="lz-social-setting-type" value="general" checked/>'.esc_html__('General', 'loginizer').'</label>
 		<label><input type="radio" name="lz-social-setting-type" value="login"/>'.esc_html__('Login Form', 'loginizer').'</label>
 		<label><input type="radio" name="lz-social-setting-type" value="woocommerce"/>'.esc_html__('WooCommerce', 'loginizer').(!defined('LOGINIZER_PREMIUM') ? '<span class="dashicons dashicons-lock" style="color:#f69d2e;" title="Available in Premium version"></span>' : ''). '</label>
-		<label><input type="radio" name="lz-social-setting-type" value="comment"/>'.esc_html__('Comment', 'loginizer').(!defined('LOGINIZER_PREMIUM') ? '<span class="dashicons dashicons-lock" style="color:#f69d2e;" title="Available in Premium version"></span>' : '').'</label>
-	</div>
+		<label><input type="radio" name="lz-social-setting-type" value="comment"/>'.esc_html__('Comment', 'loginizer').(!defined('LOGINIZER_PREMIUM') ? '<span class="dashicons dashicons-lock" style="color:#f69d2e;" title="Available in Premium version"></span>' : '').'</label>';
+		
+		if(is_plugin_active('ultimate-member/ultimate-member.php')){
+			echo '<label><input type="radio" name="lz-social-setting-type" value="ultimate-member"/>'.esc_html__('Ultimate Member', 'loginizer').(!defined('LOGINIZER_PREMIUM') ? '<span class="dashicons dashicons-lock" style="color:#f69d2e;" title="Available in Premium version"></span>' : '').'</label>';
+		}
+
+	echo '</div>
 
 	<div class="lz-v-tab-content">
 	<div id="lz-social-general-settings">
@@ -448,6 +505,22 @@ function loginizer_general_settings(){
 					<label><input type="radio" name="button_position" value="above_plus" '.(!empty($social_settings['login']['button_position']) ? checked($social_settings['login']['button_position'], 'above_plus', false) : '').'>'.esc_html__('Above with Seperator', 'loginizer').'</label>
 				</td>
 			</tr>
+			<tr>
+				<th scope="row"><label for="social-alignment">'.esc_html__('Container Alignment', 'loginizer').'</label></th>
+				<td class="loginizer-general-settings">
+					<label><input type="radio" name="alignment" id="social-alignment" value="left" '.(empty($social_settings['login']['alignment']) ? 'checked' : checked($social_settings['login']['alignment'], 'left', false)).'>Left</label>
+					<label><input type="radio" name="alignment" value="center" '.(!empty($social_settings['login']['alignment']) ? checked($social_settings['login']['alignment'], 'center', false) : '').'>'.esc_html__('Center', 'loginizer').'</label>
+					<label><input type="radio" name="alignment" value="right" '.(!empty($social_settings['login']['alignment']) ? checked($social_settings['login']['alignment'], 'right', false) : '').'>'.esc_html__('Right', 'loginizer').'</label>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row"><label for="social-alignment">'.esc_html__('Button Alignment', 'loginizer').'</label></th>
+				<td class="loginizer-general-settings">
+					<label><input type="radio" name="button_alignment" id="social-alignment" value="left" '.(empty($social_settings['login']['button_alignment']) ? 'checked' : checked($social_settings['login']['button_alignment'], 'left', false)).'>Left</label>
+					<label><input type="radio" name="button_alignment" value="center" '.(!empty($social_settings['login']['button_alignment']) ? checked($social_settings['login']['button_alignment'], 'center', false) : '').'>'.esc_html__('Center', 'loginizer').'</label>
+					<label><input type="radio" name="button_alignment" value="right" '.(!empty($social_settings['login']['button_alignment']) ? checked($social_settings['login']['button_alignment'], 'right', false) : '').'>'.esc_html__('Right', 'loginizer').'</label>
+				</td>
+			</tr>
 		</table>';
 		wp_nonce_field('loginizer_social_nonce', 'security');
 		echo '<input type="submit" class="button button-primary" name="login_settings" value="'.esc_html__('Save Settings', 'loginizer').'">
@@ -495,6 +568,22 @@ function loginizer_general_settings(){
 					<label><input type="radio" name="button_position" value="above_plus" '.(!empty($social_settings['woocommerce']['button_position']) ? checked($social_settings['woocommerce']['button_position'], 'above_plus', false) : '').'>'.esc_html__('Above with Seperator', 'loginizer').'</label>
 				</td>
 			</tr>
+			<tr>
+				<th scope="row"><label for="social-alignment">'.esc_html__('Container Alignment', 'loginizer').'</label></th>
+				<td class="loginizer-general-settings">
+					<label><input type="radio" name="alignment" id="social-alignment" value="left" '.(empty($social_settings['woocommerce']['alignment']) ? 'checked' : checked($social_settings['woocommerce']['alignment'], 'left', false)).'>Left</label>
+					<label><input type="radio" name="alignment" value="center" '.(!empty($social_settings['woocommerce']['alignment']) ? checked($social_settings['woocommerce']['alignment'], 'center', false) : '').'>'.esc_html__('Center', 'loginizer').'</label>
+					<label><input type="radio" name="alignment" value="right" '.(!empty($social_settings['woocommerce']['alignment']) ? checked($social_settings['woocommerce']['alignment'], 'right', false) : '').'>'.esc_html__('Right', 'loginizer').'</label>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row"><label for="social-alignment">'.esc_html__('Button Alignment', 'loginizer').'</label></th>
+				<td class="loginizer-general-settings">
+					<label><input type="radio" name="button_alignment" id="social-alignment" value="left" '.(empty($social_settings['woocommerce']['button_alignment']) ? 'checked' : checked($social_settings['woocommerce']['button_alignment'], 'left', false)).'>Left</label>
+					<label><input type="radio" name="button_alignment" value="center" '.(!empty($social_settings['woocommerce']['button_alignment']) ? checked($social_settings['woocommerce']['button_alignment'], 'center', false) : '').'>'.esc_html__('Center', 'loginizer').'</label>
+					<label><input type="radio" name="button_alignment" value="right" '.(!empty($social_settings['woocommerce']['button_alignment']) ? checked($social_settings['woocommerce']['button_alignment'], 'right', false) : '').'>'.esc_html__('Right', 'loginizer').'</label>
+				</td>
+			</tr>
 		</table>';
 		wp_nonce_field('loginizer_social_nonce', 'security');
 		echo '<input type="submit" class="button button-primary" name="woocommerce_settings" value="'.esc_html__('Save Settings', 'loginizer').'">
@@ -526,11 +615,32 @@ function loginizer_general_settings(){
 					<label><input type="radio" name="button_shape" value="circle" '.(!empty($social_settings['comment']['button_shape']) ? checked($social_settings['comment']['button_shape'], 'circle', false) : '').'>'.esc_html__('Pill/Circle', 'loginizer').'</label>
 				</td>
 			</tr>
+			<tr>
+				<th scope="row"><label for="social-alignment">'.esc_html__('Container Alignment', 'loginizer').'</label></th>
+				<td class="loginizer-general-settings">
+					<label><input type="radio" name="alignment" id="social-alignment" value="left" '.(empty($social_settings['comment']['alignment']) ? 'checked' : checked($social_settings['comment']['alignment'], 'left', false)).'>Left</label>
+					<label><input type="radio" name="alignment" value="center" '.(!empty($social_settings['comment']['alignment']) ? checked($social_settings['comment']['alignment'], 'center', false) : '').'>'.esc_html__('Center', 'loginizer-security').'</label>
+					<label><input type="radio" name="alignment" value="right" '.(!empty($social_settings['comment']['alignment']) ? checked($social_settings['comment']['alignment'], 'right', false) : '').'>'.esc_html__('Right', 'loginizer-security').'</label>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row"><label for="social-alignment">'.esc_html__('Button Alignment', 'loginizer').'</label></th>
+				<td class="loginizer-general-settings">
+					<label><input type="radio" name="button_alignment" id="social-alignment" value="left" '.(empty($social_settings['comment']['button_alignment']) ? 'checked' : checked($social_settings['comment']['button_alignment'], 'left', false)).'>Left</label>
+					<label><input type="radio" name="button_alignment" value="center" '.(!empty($social_settings['comment']['button_alignment']) ? checked($social_settings['comment']['button_alignment'], 'center', false) : '').'>'.esc_html__('Center', 'loginizer').'</label>
+					<label><input type="radio" name="button_alignment" value="right" '.(!empty($social_settings['comment']['button_alignment']) ? checked($social_settings['comment']['button_alignment'], 'right', false) : '').'>'.esc_html__('Right', 'loginizer').'</label>
+				</td>
+			</tr>
 		</table>';
 		wp_nonce_field('loginizer_social_nonce', 'security');
 		echo '<input type="submit" class="button button-primary" name="comment_settings" value="'.esc_html__('Save Settings', 'loginizer').'"/>
 		</form>
 	</div>
+	<div id="lz-social-ultimate-member-settings">
+		<h2>'.esc_html__('Ultimate Member Settings', 'loginizer').'</h2>';
+		loginizer_feature_available('Social Login for Ultimate Member');
+		do_action('loginizer_pro_social_um_settings');
+	echo '</div>
 	</div>';
 
 	loginizer_page_footer();

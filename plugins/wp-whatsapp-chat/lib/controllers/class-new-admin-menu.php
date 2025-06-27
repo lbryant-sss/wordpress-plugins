@@ -148,18 +148,18 @@ class New_Admin_Menu {
 		);
 		add_submenu_page(
 			$menu_slug,
-			esc_html__( 'Settings', 'wp-whatsapp-chat' ),
-			esc_html__( 'Settings', 'wp-whatsapp-chat' ),
-			'manage_options',
-			"{$menu_slug}&tab=settings",
-			'__return_null'
-		);
-		add_submenu_page(
-			$menu_slug,
 			esc_html__( 'Theme', 'wp-whatsapp-chat' ),
 			esc_html__( 'Theme', 'wp-whatsapp-chat' ),
 			'manage_options',
 			"{$menu_slug}&tab=theme",
+			'__return_null'
+		);
+		add_submenu_page(
+			$menu_slug,
+			esc_html__( 'Analytics', 'wp-whatsapp-chat' ),
+			esc_html__( 'Analytics', 'wp-whatsapp-chat' ),
+			'manage_options',
+			"{$menu_slug}&tab=settings",
 			'__return_null'
 		);
 	}

@@ -37,7 +37,7 @@ function loginizer_dismiss_social_alert(){
 
 	// Some AJAX security
 	check_ajax_referer('loginizer_admin_ajax', 'nonce');
-	 
+
 	if(!current_user_can('manage_options')){
 		wp_send_json_error('Sorry, but you do not have permissions to change settings.');
 	}
@@ -51,7 +51,7 @@ function loginizer_dismiss_backuply(){
 
 	// Some AJAX security
 	check_ajax_referer('loginizer_admin_ajax', 'nonce');
-	 
+
 	if(!current_user_can('manage_options')){
 		wp_die('Sorry, but you do not have permissions to change settings.');
 	}
@@ -65,7 +65,7 @@ function loginizer_dismiss_newsletter(){
 
 	// Some AJAX security
 	check_ajax_referer('loginizer_admin_ajax', 'nonce');
-	 
+
 	if(!current_user_can('manage_options')){
 		wp_die('Sorry, but you do not have permissions to change settings.');
 	}

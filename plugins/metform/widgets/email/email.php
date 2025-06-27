@@ -25,6 +25,10 @@ class MetForm_Input_Email extends widget_base
 	{
 		return esc_html__('Email', 'metform');
 	}
+	
+	public function has_widget_inner_wrapper(): bool {
+		return ! Plugin::$instance->experiments->is_feature_active('e_optimized_markup');
+	}
 
 	public function show_in_panel()
 	{

@@ -278,7 +278,7 @@ if ( ! class_exists( 'CR_Reviews_Slider' ) ) {
 			$card_style = "border-color:" . $attributes['color_brdr'] . ";";
 			$card_style .= "background-color:" . $attributes['color_bcrd'] . ";";
 			$product_style = "background-color:" . $attributes['color_pr_bcrd'] . ";";
-			$stars_style = "color:" . $attributes['color_stars'] . ";";
+			$stars_style = $attributes['color_stars'];
 			$max_chars = $attributes['max_chars'];
 			$responsive_slides_to_show = $attributes['slides_to_show'] > 1 ? 2 : 1;
 
@@ -368,7 +368,7 @@ if ( ! class_exists( 'CR_Reviews_Slider' ) ) {
 				'color_ex_bcrd' => '',
 				'color_bcrd' => '#fbfbfb',
 				'color_pr_bcrd' => '#f2f2f2',
-				'color_stars' => '#6bba70',
+				'color_stars' => '#FFBC00',
 				'shop_reviews' => 'false',
 				'count_shop_reviews' => 1,
 				'inactive_products' => false,

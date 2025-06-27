@@ -492,15 +492,15 @@ function loginizer_social_btn($return = false, $page_type = 'login', $short_atts
 
 	// ------ HTML STARTS HERE -------- //
 
-	$style = 'full';
+	$style = 'icon';
 	$shape = 'square';
 	$position = 'below';
 	if(!empty($loginizer['social_settings'])){
 		$social_settings = $loginizer['social_settings'];
 
 		// Setting Button Style
-		if(!empty($social_settings[$page_type]['button_style']) && $social_settings[$page_type]['button_style'] === 'icon'){
-			$style = 'icon';
+		if(!empty($social_settings[$page_type]['button_style']) && $social_settings[$page_type]['button_style'] === 'full'){
+			$style = 'full';
 		}
 
 		// Setting Button Shape
@@ -514,6 +514,9 @@ function loginizer_social_btn($return = false, $page_type = 'login', $short_atts
 		}
 	}
 	
+	$container_alignment = isset($loginizer['social_settings'][$page_type]['alignment']) ? $loginizer['social_settings'][$page_type]['alignment'] : 'auto';
+	$button_alignment = isset($loginizer['social_settings'][$page_type]['button_alignment']) ? $loginizer['social_settings'][$page_type]['button_alignment'] : 'center';
+	
 	// Shortcode style
 	if(!empty($short_atts['type'])){
 		$style = esc_html($short_atts['type']);
@@ -522,6 +525,16 @@ function loginizer_social_btn($return = false, $page_type = 'login', $short_atts
 	// Shortcode Shape square or circle
 	if(!empty($short_atts['shape'])){
 		$shape = esc_html($short_atts['shape']);
+	}
+	
+	// Shortcode for Container alignment
+	if(!empty($short_atts['container_alignment'])){
+		$container_alignment = esc_html($short_atts['container_alignment']);
+	}
+	
+	// Shortcode for Button alignment
+	if(!empty($short_atts['button_alignment'])){
+		$button_alignment = esc_html($short_atts['button_alignment']);
 	}
 
 	// Setting divider position
@@ -543,7 +556,7 @@ function loginizer_social_btn($return = false, $page_type = 'login', $short_atts
 		'below' => 'top'
 	];
 
-	$social_buttons = '<div id="lz-social-login-btns" class="'.($style == 'icon' ? 'lz-social-login-btns-icon' : 'lz-social-login-btns-full').' '.($position == 'above' || $position == 'below' ? 'lz-social-'.$padding[$position].'-padding' : '').'">';
+	$social_buttons = '<div id="lz-social-login-btns" class="'.($style == 'icon' ? 'lz-social-login-btns-icon' : 'lz-social-login-btns-full').' '.($position == 'above' || $position == 'below' ? 'lz-social-'.$padding[$position].'-padding' : '').'" style="justify-self:'.esc_attr($container_alignment).'; justify-content:'.esc_attr($button_alignment).';">';
 
 	// HTML of the divider in case the buttons are below the login fields
 	if(!empty($divider_pos) && $divider_pos == 'above'){
@@ -580,7 +593,7 @@ function loginizer_social_btn($return = false, $page_type = 'login', $short_atts
 			}
 		}
 
-		$social_buttons .= '<div class="loginizer-social-button '.($style == 'icon' ? 'lz-social-button-icon' : 'lz-social-button-btn').' '.($shape == 'circle' ? 'lz-social-button-icon-circle' : 'lz-social-button-icon-square').'" onclick="loginizer_auth_popup(\''.esc_js($provider).'\')" style="'.((!empty($loginizer_login_providers[$provider]['styles']) && !empty($loginizer_login_providers[$provider]['styles'][$btn_style])) ? esc_attr($loginizer_login_providers[$provider]['styles'][$btn_style]) : esc_attr('background-color:'. esc_attr($color)). '; color:#FFF;') .'">
+		$social_buttons .= '<div class="loginizer-social-button '.($style == 'icon' ? 'lz-social-button-icon' : 'lz-social-button-btn').' '.($shape == 'circle' ? 'lz-social-button-icon-circle' : 'lz-social-button-icon-square').'" onclick="loginizer_auth_popup(\''.esc_js($provider).'\', '.esc_js(!empty($settings['loginizer_social_key']) ? true : 0).')" style="'.((!empty($loginizer_login_providers[$provider]['styles']) && !empty($loginizer_login_providers[$provider]['styles'][$btn_style])) ? esc_attr($loginizer_login_providers[$provider]['styles'][$btn_style]) : esc_attr('background-color:'. esc_attr($color)). '; color:#FFF;') .'">
 		<div class="loginizer-social-btn-logo">
 			<img src="'.esc_url($img_url).'" height="24" alt="'.esc_attr($name).' Icon"/>
 		</div>';
@@ -593,7 +606,7 @@ function loginizer_social_btn($return = false, $page_type = 'login', $short_atts
 
 		$social_buttons .= '</div>';
 	}
-	
+
 	if(empty($social_buttons)){
 		$social_buttons .= esc_html__('No Auth Provider configured', 'loginizer');
 	}
@@ -642,11 +655,21 @@ function loginizer_add_social_js($page_type){
 	wp_register_script('loginizer-social-js', '', ['jquery'], LOGINIZER_VERSION, ['strategy' => false, 'in_footer' => true]);
 	wp_enqueue_script('loginizer-social-js');
 	wp_add_inline_script('loginizer-social-js', '
+	
+		
 
 		let lz_form = document.querySelectorAll("#loginform, #registerform, .woocommerce-form-login, .woocommerce-form-register, #front-login-form, #setupform"),
 		lz_social_btns = document.querySelectorAll("#lz-social-login-btns"),
 		lz_target_window = "'.esc_html($target_window).'",
 		lz_is_interim = "'.(!empty($_GET['interim-login']) ? '&interim-login=0' : '').'"; // as for interim it should only open a popup
+		
+		if(lz_target_window == "same"){
+			let loader = "<style>#loginizer-social-loader-wrap{display:none; align-items:center; justify-content:center; position:fixed; top:0; left:0; width:100%; height:100vh; background-color:rgba(0, 0, 0, 0.2);} .loginizer-social-loader{width:48px;height:48px;border:5px solid #fff;border-bottom-color:transparent;border-radius:50%;display:inline-block;box-sizing:border-box;animation:1s linear infinite rotation}@keyframes rotation{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}</style>";
+			loader += "<div id=\"loginizer-social-loader-wrap\"><div class=\"loginizer-social-loader\"></div></div>";
+
+			jQuery("body").append(loader);
+		}
+		
 
 		lz_social_btns.forEach((btns) => {
 			btns.style.display="flex";
@@ -661,9 +684,20 @@ function loginizer_add_social_js($page_type){
 			});
 		}
 
-		function loginizer_auth_popup(provider) {
+		function loginizer_auth_popup(provider, isAPI) {
+			let target_url = "'.esc_url(wp_login_url()).'?social_security='.esc_html($social_nonce).'&lz_social_provider=" + provider+lz_is_interim;
+
+			if(isAPI){
+				target_url += "&lz_api=1";
+			}
+			
+			target_url += "&ref='.esc_url($_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']).'"
+
 			if(lz_target_window == "same"){
-				window.location.href = "'.esc_url(wp_login_url()).'?social_security='.esc_html($social_nonce).'&lz_social_provider="+ provider +"&ref='.esc_url($_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']).'";
+				jQuery("#loginizer-social-loader-wrap").css("display", "flex");
+				
+				window.location.href = target_url;
+
 				return;
 			}
 
@@ -687,7 +721,7 @@ function loginizer_add_social_js($page_type){
 			attributes.push("top=" + right);
 			attributes.push("scrollbars=1");
 
-			var auth_window = window.open("'.esc_url(wp_login_url()).'?social_security='.esc_html($social_nonce).'&lz_social_provider=" + provider+lz_is_interim+"&ref='.esc_url($_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']).'", "authWindow", attributes.join(","));
+			var auth_window = window.open(target_url, "authWindow", attributes.join(","));
 
 			if(window.focus){
 				auth_window.focus();

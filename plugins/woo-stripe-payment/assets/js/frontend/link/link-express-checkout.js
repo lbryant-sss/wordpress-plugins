@@ -63,7 +63,7 @@ class LinkExpressCheckout extends LinkMixin(Gateway) {
 
 
     onReady({availablePaymentMethods}) {
-        const {link = false} = availablePaymentMethods;
+        const {link = false} = availablePaymentMethods || {};
         if (link) {
             $(this.elementSelector).show().addClass('active');
             $('.wc-stripe-banner-checkout').addClass('active');

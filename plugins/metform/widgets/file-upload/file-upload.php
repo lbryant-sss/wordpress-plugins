@@ -23,6 +23,10 @@ Class MetForm_Input_File_Upload extends Widget_base{
     public function show_in_panel() {
         return 'metform-form' == get_post_type();
     }
+
+	public function has_widget_inner_wrapper(): bool {
+		return ! Plugin::$instance->experiments->is_feature_active('e_optimized_markup');
+	}
     
     public function get_categories() {
 		return [ 'metform' ];

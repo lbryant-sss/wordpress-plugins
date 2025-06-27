@@ -93,7 +93,7 @@ class Objects extends Base {
 
 		// Add action for scheduler.
 		$task_name = 'rank_math/analytics/data_fetch';
-		$fetch_gap = apply_filters( 'rank_math/analytics/fetch_gap', 7, 'objects' );
+		$fetch_gap = apply_filters( 'rank_math/analytics/fetch_gap', 3, 'objects' );
 
 		// Schedule new action only when there is no existing action.
 		if ( false === as_next_scheduled_action( $task_name ) ) {

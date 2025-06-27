@@ -4,7 +4,7 @@ Tags: woocommerce, review plugin, review reminder, customer reviews, review for 
 Requires at least: 4.5
 Tested up to: 6.8
 Requires PHP: 7.2
-Stable tag: 5.79.0
+Stable tag: 5.80.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -233,6 +233,9 @@ If you would like to change how reviews are sorted on product pages, it is possi
 
 == Changelog ==
 
+= 5.80.0 =
+* New feature: a setting to expire local aggregated review forms after a specified number of days
+* Bug fix: 'color_stars' parameter did not work in [cusrev_reviews_grid] and [cusrev_reviews_slider] shortcodes
 = 5.79.0 =
 * Improvement: removal of the checkbox to enable/disable shortcodes to avoid confusion
 * Improvement: compatibility with websites that have disabled threaded comments

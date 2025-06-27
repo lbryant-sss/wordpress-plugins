@@ -1,4 +1,4 @@
-/*! elementor - v3.30.0 - 11-06-2025 */
+/*! elementor - v3.30.0 - 26-06-2025 */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -294,10 +294,10 @@ var Admin = /*#__PURE__*/function () {
       }
       if (0 === referrerKitId.length) {
         this.createKitDeletedWidget({
-          message: __('Try a different Kit or build your site from scratch.', 'elementor'),
+          message: __('Try a different Website Template or build your site from scratch.', 'elementor'),
           strings: {
             confirm: __('OK', 'elementor'),
-            cancel: __('Kit Library', 'elementor')
+            cancel: __('Library', 'elementor')
           },
           onCancel: function onCancel() {
             location.href = elementorImportExport.appUrl;

@@ -1,4 +1,4 @@
-/*! elementor - v3.30.0 - 11-06-2025 */
+/*! elementor - v3.30.0 - 26-06-2025 */
 .elementor-hidden {
   display: none;
 }
@@ -2787,6 +2787,7 @@ body:not(.elementor-device-mobile) .elementor-control.elementor-control-responsi
   border-color: var(--e-a-color-primary-bold);
 }
 .elementor-visual-choice-element-image input:not(:checked) + label {
+  background-color: var(--e-a-color-white);
   opacity: 0.5;
 }
 .elementor-visual-choice-element-image img {

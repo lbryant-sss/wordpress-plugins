@@ -504,7 +504,7 @@ function loginizer_admin_menu() {
 	add_submenu_page('loginizer', __($loginizer['prefix'].'SSO', 'loginizer'), __('Single Sign On', 'loginizer'). ((time() < strtotime('30 November 2023')) ? ' <span style="color:yellow;">Update</span>' : ''), 'activate_plugins', 'loginizer_sso', 'loginizer_sso_settings');
 	
 	// Social Login
-	$hook_name =  add_submenu_page('loginizer', __($loginizer['prefix'].'social_login', 'loginizer'), __('Social Login', 'loginizer') . ((time() < strtotime('30 July 2024')) ? ' <span style="color:red;">New</span>' : ''), 'activate_plugins', 'loginizer_social_login', 'loginizer_social_login_settings');
+	$hook_name =  add_submenu_page('loginizer', __($loginizer['prefix'].'social_login', 'loginizer'), __('Social Login', 'loginizer') . (defined('LOGINIZER_PREMIUM') && (time() < strtotime('30 June 2025')) ? ' <span style="color:yellow;font-size:12px;">Updated</span>' : ''), 'activate_plugins', 'loginizer_social_login', 'loginizer_social_login_settings');
 	
 	// Security Settings
 	if(!defined('SITEPAD')){
@@ -682,7 +682,6 @@ function loginizer_checksums_settings(){
 
 function loginizer_dashboard(){
 	include_once LOGINIZER_DIR . '/main/settings/dashboard.php';
-	
 	loginizer_page_dashboard();
 }
 
@@ -717,8 +716,9 @@ function loginizer_social_login_url_alert(){
 	if(!current_user_can('activate_plugins')){
 		return;
 	}
-
-	if(get_option('loginizer_social_login_url', '') === wp_login_url()){
+	
+	$set_login_url = get_option('loginizer_social_login_url', '');
+	if(empty($set_login_url) || $set_login_url === wp_login_url()){
 		return;
 	}
 
@@ -731,11 +731,20 @@ function loginizer_social_login_url_alert(){
 	}
 
 	$has_enabled = false;
+	$has_non_login_auth = false;
 	foreach($provider_settings as $provider){
-		if($provider['enabled']){
-			$has_enabled = true;
-			break;
+		if(empty($provider['loginizer_social_key']) && !empty($provider['enabled'])){
+			$has_non_login_auth = true;
 		}
+		
+		if(!empty($provider['enabled'])){
+			$has_enabled = true;
+		}
+	}
+	
+	// We will only show this error if the user is using key based config
+	if(empty($has_non_login_auth)){
+		return;
 	}
 
 	// If we have no Provider enabled then just show the warning on the social login page.
@@ -744,7 +753,7 @@ function loginizer_social_login_url_alert(){
 	}
 	
 	echo '<div class="notice notice-error">
-		<h4>'.esc_html__('Your changed login slug!', 'loginizer').'</h4>
+		<h4>'.esc_html__('You changed login slug!', 'loginizer').'</h4>
 		<p>'.esc_html__('You changed the login slug and have some social login apps enabled. These social login apps use the login URL as the redirect URI. This means that since the login URL has changed, the social login will now break.', 'loginizer').'</p>
 
 		<h4>'.esc_html__('How to fix:', 'loginizer').'</h4>

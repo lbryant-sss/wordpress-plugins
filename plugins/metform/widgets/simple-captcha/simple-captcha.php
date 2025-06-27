@@ -26,6 +26,10 @@ Class MetForm_Input_Simple_Captcha extends Widget_Base{
 		return esc_html__( 'Simple Captcha', 'metform' );
     }
 
+	public function has_widget_inner_wrapper(): bool {
+		return ! Plugin::$instance->experiments->is_feature_active('e_optimized_markup');
+	}
+
 	public function show_in_panel() {
         return 'metform-form' == get_post_type();
 	}

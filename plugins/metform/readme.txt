@@ -3,7 +3,7 @@ Contributors: xpeedstudio, ataurr, emranio
 Tags: form builder, Elementor contact form, contact form builder, Elementor forms builder, custom form
 Requires at least: 5.0
 Tested up to: 6.8
-Stable tag: 3.9.9
+Stable tag: 4.0.0
 Requires PHP: 7.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
@@ -237,6 +237,19 @@ If you like using the MetForm form builder, then consider checking out our other
 **Check out** [Tutorials, Tips & Tricks](https://wpmet.com/blog)! 👌
 
 == Changelog ==
+Version: 4.0.0 // 2025-06-24
+Added: Elementor optimized markup support.
+Added: User confirmation email edit option with EmailKit.
+Improved: Admin settings dashboard UI/UX.
+Improved: Google sheet integration.
+Improved: Google reCAPTCHA widget.
+Improved: Security.
+Fixed: Pre-built templates section and container issue.
+Fixed: Pre-built quiz forms are not showing on the form creation modal.
+Fixed: Radio and checkbox issue for user confirmation and admin notification email.
+Fixed: Email shortcode issue with conditional widget.
+Removed: Promotional notice displayed during plugin activation.
+
 Version: 3.9.9 // 2025-05-26
 Added: Simple message widget.
 Improved: All widgets icon.

@@ -407,7 +407,7 @@ if ( ! class_exists( 'CR_Reviews_Grid' ) ) {
 			$card_style = "border-color:" . $attributes['color_brdr'] . ";";
 			$card_style .= "background-color:" . $attributes['color_bcrd'] . ";";
 			$product_style = "background-color:" . $attributes['color_pr_bcrd'] . ";";
-			$stars_style = "color:" . $attributes['color_stars'] . ";";
+			$stars_style = $attributes['color_stars'];
 
 			$id = uniqid( 'cr-reviews-grid-' );
 
@@ -485,7 +485,7 @@ if ( ! class_exists( 'CR_Reviews_Grid' ) ) {
 				'color_ex_bcrd' => '',
 				'color_bcrd' => '#ffffff',
 				'color_pr_bcrd' => '#f4f4f4',
-				'color_stars' => '#FFD707',
+				'color_stars' => '#FFBC00',
 				'shop_reviews' => 'false',
 				'count_shop_reviews' => 1,
 				'inactive_products' => 'false',

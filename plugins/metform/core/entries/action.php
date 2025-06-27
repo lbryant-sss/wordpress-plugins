@@ -464,6 +464,13 @@ class Action
             $this->response->store_entries = '0';
         }
 
+        //For shortcode processing need hidden fields too 
+        if ( $hidden_fields ) {
+            foreach ( $hidden_fields as $value ) {
+               $all_data[$value] = "";
+            }
+        }
+
         Metform_Shortcode::instance()->set_values($all_data);
 
         $attributes = [

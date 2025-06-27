@@ -4,7 +4,7 @@ Tags: security, access, admin, Loginizer, login, logs, ban ip, failed login, ip,
 Requires at least: 3.0
 Tested up to: 6.8
 Requires PHP: 5.5
-Stable tag: 2.0.0
+Stable tag: 2.0.1
 License: LGPLv2.1
 License URI: http://www.gnu.org/licenses/lgpl-2.1.html
 
@@ -56,7 +56,8 @@ Pro Features :
 * Disable Pingbacks - Simple way to disable PingBacks.
 * SSO - Single Sign-on, let any user access to your WordPress Dashboard without the need to share username or password.
 * Limit Concurrent Logins - It prevents user to login from different devices concurrently, you can define how many devices you want to allow, and how you want to restrict the user when concurrent limit is reached.
-* Social Login - Users can login or register with their Google, Github, Facebook, X (Twitter), Discord, Twitch, LinkedIn with support for WooCommerce.
+* Social Login - Users can login or register with their Google, Github, Facebook, X (Twitter), Discord, Twitch, LinkedIn, Microsoft with support for WooCommerce and Ultimate Member.
+* Key Less Social Login - Use Loginizer's Social Auth for easy key less Social login configuration, now supports Google, GitHub, X, LinkedIn more to be added later
 
 Features in Loginizer include:
 
@@ -84,6 +85,15 @@ That's it. You're done!
 3. Loginizer Brute Force Settings page
 
 == Changelog ==
+
+= 2.0.1 =
+* [Feature Pro] Ultimate Member is now compatible with Loginizer's Bruteforce, Social Login, Captcha and Two-Factor Auth.
+* [Feature Pro] Social Login using Loginizer's Login Keys, making Social Login single click setup.
+* [Feature Pro] Support for Microsoft Social Login.
+* [Bug Fix] [Pro] There was an issue with Hide WP-Admin in rename login, that has been fixed.
+* [Bug Fix] [Pro] There was an issue with refresh button of 2FA App QR Code when it was displays on a page other than WP-Admin, that has been fixed.
+* [Bug Fix] [Pro] Login Notification was not working with 2FA login this has been fixed.
+* [Task] Social Login restructured and refactored.
 
 = 2.0.0 =
 * [Task] Tested with WordPress 6.8.

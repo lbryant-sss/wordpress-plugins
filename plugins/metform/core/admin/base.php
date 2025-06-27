@@ -25,6 +25,47 @@ class Base {
     public function init(){
         add_action('admin_menu', [$this, 'register_settings'], 999);
         add_action('admin_init', [$this, 'register_actions'], 999);
+        add_action('wp_ajax_metform_admin_settings', [$this, 'mf_setting_data_save']);        
+    }
+
+    /**
+     * Save settings data via ajax.
+     * 
+     * @since 3.9.9
+     * @return void
+     */
+    public function mf_setting_data_save(){
+        
+        if ( ! current_user_can( 'manage_options' ) || ! isset( $_SERVER['HTTP_X_WP_NONCE'] ) || ! wp_verify_nonce( $_SERVER['HTTP_X_WP_NONCE'], 'wp_rest' ) ) {
+            
+            wp_send_json_error('You are not allowed to do this.');
+            wp_die();
+        }
+
+        $request = isset($_POST['form_data']) ? $_POST['form_data'] : [];
+
+        if (empty($request)) {
+            wp_send_json_error('No data provided');
+            wp_die();
+        }
+
+        //get existing settings
+        $settings = get_option($this->key_settings_option, []);
+
+        $checkboxes = array('mf_save_progress', 'mf_field_name_show', 'mf_paypal_sandbox', 'mf_stripe_sandbox');
+
+        //if checkbox is not set, unset it from settings that was set previously.
+        foreach ($checkboxes as $key) {
+            if (!isset($request[$key]) && isset($settings[$key])) {
+                unset($settings[$key]);
+            }
+        }
+
+        $settings = is_array($request) ? array_merge($settings, $request) : $settings;
+        $status = \MetForm\Core\Forms\Action::instance()->store( -1, $settings);
+        
+        wp_send_json_success($status);
+        exit;
     }
 
     public function register_settings(){

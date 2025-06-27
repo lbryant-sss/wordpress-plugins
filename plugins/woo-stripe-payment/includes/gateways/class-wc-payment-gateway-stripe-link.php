@@ -232,7 +232,8 @@ class WC_Payment_Gateway_Stripe_Link extends \WC_Payment_Gateway_Stripe {
 				'id'          => $product->get_id(),
 				'price'       => (float) $price,
 				'price_cents' => (float) wc_stripe_add_number_precision( $price, get_woocommerce_currency() ),
-				'variation'   => false
+				'variation'   => false,
+				'is_in_stock' => $product->is_in_stock()
 			);
 		}
 

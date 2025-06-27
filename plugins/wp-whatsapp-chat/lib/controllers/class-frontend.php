@@ -112,7 +112,7 @@ class Frontend {
 			data-box="<?php echo esc_attr( $box_json ); ?>"
 			data-scheme="<?php echo esc_attr( $scheme_json ); ?>"
 		>
-			<?php if ( ! empty( $box['footer'] ) ) : ?>
+			<?php if ( isset( $button['box'], $box['footer'] ) && 'yes' === $button['box'] && ! empty( $box['footer'] ) ) : ?>
 				<div class="qlwapp-footer">
 					<?php echo wpautop( wp_kses_post( $box['footer'] ) ); ?>
 				</div>

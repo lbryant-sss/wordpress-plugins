@@ -37,15 +37,6 @@
   margin: 20px 0;
 }
 
-.exactmetrics-editor-notice {
-  position: relative;
-}
-.exactmetrics-editor-notice-dismiss {
-  position: absolute;
-  right: 5px;
-  top: 5px;
-}
-
 .exactmetrics-headline-analyzer-wrapper {
   font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   position: relative;

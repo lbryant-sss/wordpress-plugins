@@ -19,6 +19,10 @@ Class MetForm_Input_Rating extends Widget_Base{
 	public function get_title() {
 		return esc_html__( 'Rating', 'metform' );
 	}
+
+    public function has_widget_inner_wrapper(): bool {
+		return ! Plugin::$instance->experiments->is_feature_active('e_optimized_markup');
+	}
 	
 	public function show_in_panel() {
         return 'metform-form' == get_post_type();

@@ -424,25 +424,3 @@ function exactmetrics_check_plugin_funnelkit_funnelkit_stripe_woo_gateway_config
 
 }
 add_action( 'wp_ajax_exactmetrics_funnelkit_stripe_woo_gateway_configured', 'exactmetrics_check_plugin_funnelkit_funnelkit_stripe_woo_gateway_configured' );
-
-/**
- * Called whenever a notice is dismissed in ExactMetrics editor blocks.
- *
- * @access public
- * @since 8.26.0
- */
-function exactmetrics_ajax_dismiss_editor_notice() {
-
-	// Run a security check first.
-	check_ajax_referer( 'exactmetrics-dismiss-notice', 'nonce' );
-
-	// Deactivate the notice
-	if ( isset( $_POST['notice'] ) && $_POST['notice'] === 'envira_promo' ) {
-		set_transient( '_exactmetrics_dismiss_envira_promo', true, 30 * DAY_IN_SECONDS );
-		wp_send_json_success();
-	}
-
-	wp_send_json_error();
-}
-
-add_action( 'wp_ajax_exactmetrics_ajax_dismiss_editor_notice', 'exactmetrics_ajax_dismiss_editor_notice' );

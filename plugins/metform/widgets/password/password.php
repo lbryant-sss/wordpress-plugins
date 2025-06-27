@@ -16,6 +16,10 @@ Class MetForm_Input_Password extends Widget_Base{
 		return esc_html__( 'Password', 'metform' );
 	}
 
+	public function has_widget_inner_wrapper(): bool {
+		return ! Plugin::$instance->experiments->is_feature_active('e_optimized_markup');
+	}
+
 	public function get_icon() {
 		return 'mf-widget-icon icon-metform_password';
 	}

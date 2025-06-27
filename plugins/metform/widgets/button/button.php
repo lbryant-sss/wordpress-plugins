@@ -12,6 +12,10 @@ Class MetForm_Input_Button extends Widget_Base{
 		return 'mf-button';
     }
 
+	public function has_widget_inner_wrapper(): bool {
+		return ! Plugin::$instance->experiments->is_feature_active('e_optimized_markup');
+	}
+
 	public function get_icon() {
         return 'mf-widget-icon icon-metform_button';
     }

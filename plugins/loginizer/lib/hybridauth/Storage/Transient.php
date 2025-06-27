@@ -51,6 +51,11 @@ class Transient implements StorageInterface
 	{
 		if(!empty($_COOKIE['lz_social_login'])){
 			$this->key = sanitize_text_field(wp_unslash($_COOKIE['lz_social_login']));
+			
+			$transient = get_transient($this->key);
+			if(!empty($transient)){
+				$this->transient = $transient;
+			}
 			return;
 		}
 

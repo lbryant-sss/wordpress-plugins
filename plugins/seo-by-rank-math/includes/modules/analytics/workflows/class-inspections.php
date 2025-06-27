@@ -13,6 +13,7 @@ namespace RankMath\Analytics\Workflow;
 use Exception;
 use RankMath\Helpers\DB;
 use RankMath\Traits\Hooker;
+use RankMath\Analytics\Workflow\Base;
 use RankMath\Analytics\DB as AnalyticsDB;
 use RankMath\Analytics\Url_Inspection;
 use RankMath\Google\Console;
@@ -133,6 +134,8 @@ class Inspections {
 			return;
 		}
 
+		global $wpdb;
+
 		$inspections_table = AnalyticsDB::inspections()->table;
 		$objects_table     = AnalyticsDB::objects()->table;
 
@@ -143,8 +146,40 @@ class Inspections {
 			->orderBy( "$inspections_table.created", 'ASC' )
 			->get();
 
-		$count = 0;
+		$pages = [];
 		foreach ( $objects as $object ) {
+			if ( $object->created && date( 'Y-m-d', strtotime( $object->created ) ) === date( 'Y-m-d' ) ) {
+				continue;
+			}
+
+			$pages[] = $object->page;
+		}
+
+		if ( empty( $pages ) ) {
+			return;
+		}
+
+		$dates = Base::get_dates();
+
+		$query = $wpdb->prepare(
+			"SELECT DISTINCT(page) as page, COUNT(impressions) as total
+			FROM {$wpdb->prefix}rank_math_analytics_gsc
+			WHERE page IN ('" . join( "', '", $pages ) . "')
+			AND DATE(created) BETWEEN %s AND %s
+			GROUP BY page
+			ORDER BY total DESC",
+			$dates['start_date'],
+			$dates['end_date']
+		);
+
+		$top_pages = $wpdb->get_results( $query );
+		$top_pages = wp_list_pluck( $top_pages, 'page' );
+
+		$pages = array_merge( $top_pages, $pages );
+		$pages = array_unique( $pages );
+
+		$count = 0;
+		foreach ( $pages as $page ) {
 			++$count;
 			$time = time() + ( $count * self::REQUEST_GAP_SECONDS );
 			if ( $count > self::API_LIMIT ) {
@@ -152,7 +187,7 @@ class Inspections {
 				$time       = strtotime( "+{$delay_days} days", $time );
 			}
 
-			as_schedule_single_action( $time, 'rank_math/analytics/get_inspections_data', [ $object->page ], 'rank-math' );
+			as_schedule_single_action( $time, 'rank_math/analytics/get_inspections_data', [ $page ], 'rank-math' );
 		}
 	}
 }

@@ -28,6 +28,11 @@ Class MetForm_Input_Radio extends Widget_Base{
 	public function get_title() {
 		return esc_html__( 'Radio', 'metform' );
 	}
+
+	public function has_widget_inner_wrapper(): bool {
+		return ! Plugin::$instance->experiments->is_feature_active('e_optimized_markup');
+	}
+
 	public function show_in_panel() {
         return 'metform-form' == get_post_type();
 	}
@@ -546,6 +551,7 @@ Class MetForm_Input_Radio extends Widget_Base{
 					/>
 			<?php endif; ?>
 			<?php echo ('' !== trim($mf_input_help_text) ? sprintf('<span class="mf-input-help"> %s </span>', esc_html( \MetForm\Utils\Util::react_entity_support(trim($mf_input_help_text), $render_on_editor))) : ''); ?>
+			<input type="hidden" name="<?php echo esc_attr( $mf_input_name ); ?>" value="" />
 		</div>
 
 		<?php

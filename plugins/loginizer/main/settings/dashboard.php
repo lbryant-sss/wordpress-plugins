@@ -294,7 +294,7 @@ input[type="text"], textarea, select {
 			// Setting up the dataset for the 30 day chart
 			$line_dataset[] = array(
 				'label' => __( 'Failed', 'loginizer'),
-				'data' => array_reverse($stats_dataset),
+				'data' => $stats_dataset,
 				'backgroundColor' => 'rgb(54, 162, 235)',
 				'borderColor' => 'rgb(54, 162, 235)',
 			);

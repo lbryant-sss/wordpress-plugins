@@ -879,10 +879,7 @@ function add_lz_bl_domains(){
 	
 		<div class="postbox-header">
 		<h2 class="hndle ui-sortable-handle">
-			<span><?php echo __('Limit Concurrent Sessions', 'loginizer');
-			if(time() < strtotime('30 July 2023')){
-				echo ' <span style="color:red;">New</span></span>';
-			} ?>
+			<span><?php echo __('Limit Concurrent Sessions', 'loginizer'); ?>
 		</h2>
 		</div>
 		

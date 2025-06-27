@@ -5,7 +5,7 @@ Tags: whatsapp, whatsapp business, whatsapp chat, woocommerce whatsapp, click to
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 6.8
-Stable tag: 7.7.3
+Stable tag: 7.7.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -136,6 +136,11 @@ Don't use: +001-(555)1234567
 * Brazilian Portuguese (thanks to [Dionizio Bach](@djio))
 
 == Changelog ==
+
+= 7.7.4 =
+* Fix box footer link
+* Fix box autoload
+* Feat add box max height
 
 = 7.7.3 =
 * Load scripts only when necessary
