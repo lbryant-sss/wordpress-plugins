@@ -114,6 +114,7 @@ class PostSettings {
 		$generalSettingsCapability      = aioseo()->access->hasCapability( 'aioseo_page_general_settings' );
 		$socialSettingsCapability       = aioseo()->access->hasCapability( 'aioseo_page_social_settings' );
 		$schemaSettingsCapability       = aioseo()->access->hasCapability( 'aioseo_page_schema_settings' );
+		$aiContentSettingsCapability    = aioseo()->access->hasCapability( 'aioseo_page_ai_content_settings' );
 		$linkAssistantCapability        = aioseo()->access->hasCapability( 'aioseo_page_link_assistant_settings' );
 		$redirectsCapability            = aioseo()->access->hasCapability( 'aioseo_page_redirects_manage' );
 		$advancedSettingsCapability     = aioseo()->access->hasCapability( 'aioseo_page_advanced_settings' );
@@ -127,6 +128,7 @@ class PostSettings {
 				empty( $generalSettingsCapability ) &&
 				empty( $socialSettingsCapability ) &&
 				empty( $schemaSettingsCapability ) &&
+				empty( $aiContentSettingsCapability ) &&
 				empty( $linkAssistantCapability ) &&
 				empty( $redirectsCapability ) &&
 				empty( $advancedSettingsCapability ) &&

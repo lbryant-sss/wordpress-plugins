@@ -5,7 +5,7 @@ Tags: cookie notice, cookie consent, cookie banner, eu cookie law, cookieyes
 Requires at least: 5.0.0
 Tested up to: 6.8.1
 Requires PHP: 5.6
-Stable tag: 3.3.0
+Stable tag: 3.3.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -205,6 +205,11 @@ Every time we update the plugin, you will see a notification on the installed pl
 9. Privacy policy generator and cookie policy generator
 
 == Changelog ==
+
+= 3.3.1 =
+
+[Add] - Added a promotional banner for the AccessYes widget inside the plugin dashboard for non-connected users.  
+[Add] - Added an AccessYes widget section inside the plugin dashboard for connected users.
 
 = 3.3.0 =
 
@@ -753,10 +758,7 @@ Tested OK with WordPress version 6.2
 
 == Upgrade Notice ==
 
-= 3.3.0 =
+= 3.3.1 =
 
-[Add] - Connection nudges added to the plugin page and WordPress admin dashboard.  
-[Add] - Opt-out trial flow implemented for free users.  
-[Enhancement] - Accessibility improvements.  
-[Enhancement] - Improved plugin security.  
-[Fix] - Minor bug fixes.
+[Add] - Added a promotional banner for the AccessYes widget inside the plugin dashboard for non-connected users.  
+[Add] - Added an AccessYes widget section inside the plugin dashboard for connected users.

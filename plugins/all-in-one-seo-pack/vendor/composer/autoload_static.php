@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit83be554b8abbdd90401a1adef1503ae5
+class ComposerStaticInit542a896fd848a8ca42c624988a91450e
 {
     public static $prefixLengthsPsr4 = array (
         'A' => 
@@ -51,6 +51,8 @@ class ComposerStaticInit83be554b8abbdd90401a1adef1503ae5
         'AIOSEO\\Plugin\\Common\\Admin\\SlugMonitor' => __DIR__ . '/../..' . '/app/Common/Admin/SlugMonitor.php',
         'AIOSEO\\Plugin\\Common\\Admin\\Usage' => __DIR__ . '/../..' . '/app/Common/Admin/Usage.php',
         'AIOSEO\\Plugin\\Common\\Admin\\WritingAssistant' => __DIR__ . '/../..' . '/app/Common/Admin/WritingAssistant.php',
+        'AIOSEO\\Plugin\\Common\\Ai\\Ai' => __DIR__ . '/../..' . '/app/Common/Ai/Ai.php',
+        'AIOSEO\\Plugin\\Common\\Api\\Ai' => __DIR__ . '/../..' . '/app/Common/Api/Ai.php',
         'AIOSEO\\Plugin\\Common\\Api\\Analyze' => __DIR__ . '/../..' . '/app/Common/Api/Analyze.php',
         'AIOSEO\\Plugin\\Common\\Api\\Api' => __DIR__ . '/../..' . '/app/Common/Api/Api.php',
         'AIOSEO\\Plugin\\Common\\Api\\Connect' => __DIR__ . '/../..' . '/app/Common/Api/Connect.php',
@@ -115,6 +117,7 @@ class ComposerStaticInit83be554b8abbdd90401a1adef1503ae5
         'AIOSEO\\Plugin\\Common\\Integrations\\BuddyPress' => __DIR__ . '/../..' . '/app/Common/Integrations/BuddyPress.php',
         'AIOSEO\\Plugin\\Common\\Integrations\\Semrush' => __DIR__ . '/../..' . '/app/Common/Integrations/Semrush.php',
         'AIOSEO\\Plugin\\Common\\Integrations\\WpCode' => __DIR__ . '/../..' . '/app/Common/Integrations/WpCode.php',
+        'AIOSEO\\Plugin\\Common\\Llms\\Llms' => __DIR__ . '/../..' . '/app/Common/Llms/Llms.php',
         'AIOSEO\\Plugin\\Common\\Main\\Activate' => __DIR__ . '/../..' . '/app/Common/Main/Activate.php',
         'AIOSEO\\Plugin\\Common\\Main\\CategoryBase' => __DIR__ . '/../..' . '/app/Common/Main/CategoryBase.php',
         'AIOSEO\\Plugin\\Common\\Main\\Filters' => __DIR__ . '/../..' . '/app/Common/Main/Filters.php',
@@ -234,6 +237,7 @@ class ComposerStaticInit83be554b8abbdd90401a1adef1503ae5
         'AIOSEO\\Plugin\\Common\\Standalone\\BbPress\\Component' => __DIR__ . '/../..' . '/app/Common/Standalone/BbPress/Component.php',
         'AIOSEO\\Plugin\\Common\\Standalone\\Blocks\\Blocks' => __DIR__ . '/../..' . '/app/Common/Standalone/Blocks/Blocks.php',
         'AIOSEO\\Plugin\\Common\\Standalone\\Blocks\\FaqPage' => __DIR__ . '/../..' . '/app/Common/Standalone/Blocks/FaqPage.php',
+        'AIOSEO\\Plugin\\Common\\Standalone\\Blocks\\KeyPoints' => __DIR__ . '/../..' . '/app/Common/Standalone/Blocks/KeyPoints.php',
         'AIOSEO\\Plugin\\Common\\Standalone\\Blocks\\TableOfContents' => __DIR__ . '/../..' . '/app/Common/Standalone/Blocks/TableOfContents.php',
         'AIOSEO\\Plugin\\Common\\Standalone\\BuddyPress\\BuddyPress' => __DIR__ . '/../..' . '/app/Common/Standalone/BuddyPress/BuddyPress.php',
         'AIOSEO\\Plugin\\Common\\Standalone\\BuddyPress\\Component' => __DIR__ . '/../..' . '/app/Common/Standalone/BuddyPress/Component.php',
@@ -438,10 +442,10 @@ class ComposerStaticInit83be554b8abbdd90401a1adef1503ae5
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit83be554b8abbdd90401a1adef1503ae5::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit83be554b8abbdd90401a1adef1503ae5::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit83be554b8abbdd90401a1adef1503ae5::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit83be554b8abbdd90401a1adef1503ae5::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit542a896fd848a8ca42c624988a91450e::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit542a896fd848a8ca42c624988a91450e::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit542a896fd848a8ca42c624988a91450e::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit542a896fd848a8ca42c624988a91450e::$classMap;
 
         }, null, ClassLoader::class);
     }

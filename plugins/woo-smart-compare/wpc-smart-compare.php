@@ -3,7 +3,7 @@
 Plugin Name: WPC Smart Compare for WooCommerce
 Plugin URI: https://wpclever.net/
 Description: Smart products compare for WooCommerce.
-Version: 6.4.6
+Version: 6.4.7
 Author: WPClever
 Author URI: https://wpclever.net
 Text Domain: woo-smart-compare
@@ -19,7 +19,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 defined( 'ABSPATH' ) || exit;
 
-! defined( 'WOOSC_VERSION' ) && define( 'WOOSC_VERSION', '6.4.6' );
+! defined( 'WOOSC_VERSION' ) && define( 'WOOSC_VERSION', '6.4.7' );
 ! defined( 'WOOSC_LITE' ) && define( 'WOOSC_LITE', __FILE__ );
 ! defined( 'WOOSC_FILE' ) && define( 'WOOSC_FILE', __FILE__ );
 ! defined( 'WOOSC_URI' ) && define( 'WOOSC_URI', plugin_dir_url( __FILE__ ) );
@@ -906,7 +906,7 @@ if ( ! function_exists( 'woosc_init' ) ) {
 													echo '<select name="woosc_settings[image_size]">';
 
 													foreach ( $image_sizes as $image_size_name => $image_size_data ) {
-														echo '<option value="' . esc_attr( $image_size_name ) . '" ' . ( $image_size_name === $image_size ? 'selected' : '' ) . '>' . esc_attr( $image_size_name ) . ( ! empty( $image_size_data['width'] ) ? ' ' . $image_size_data['width'] . '&times;' . $image_size_data['height'] : '' ) . ( $image_size_data['crop'] ? ' (cropped)' : '' ) . '</option>';
+														echo '<option value="' . esc_attr( $image_size_name ) . '" ' . ( $image_size_name === $image_size ? 'selected' : '' ) . '>' . esc_html( $image_size_name . ( ! empty( $image_size_data['width'] ) ? ' ' . $image_size_data['width'] . '&times;' . $image_size_data['height'] : '' ) . ( $image_size_data['crop'] ? ' (cropped)' : '' ) ) . '</option>';
 													}
 
 													echo '</select>';
@@ -1107,9 +1107,9 @@ if ( ! function_exists( 'woosc_init' ) ) {
                                                 <label>
                                                     <input type="text" class="woosc_color_picker"
                                                            name="woosc_settings[bar_bg_color]"
-                                                           value="<?php echo self::get_setting( 'bar_bg_color', $bar_bg_color_default ); ?>"/>
+                                                           value="<?php echo esc_attr( self::get_setting( 'bar_bg_color', $bar_bg_color_default ) ); ?>"/>
                                                 </label>
-                                                <span class="description"><?php printf( /* translators: color */ esc_html__( 'Choose the background color for the comparison bar, default %s', 'woo-smart-compare' ), '<code>' . $bar_bg_color_default . '</code>' ); ?></span>
+                                                <span class="description"><?php printf( /* translators: color */ esc_html__( 'Choose the background color for the comparison bar, default %s', 'woo-smart-compare' ), '<code>' . esc_html( $bar_bg_color_default ) . '</code>' ); ?></span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1119,9 +1119,9 @@ if ( ! function_exists( 'woosc_init' ) ) {
                                                 <label>
                                                     <input type="text" class="woosc_color_picker"
                                                            name="woosc_settings[bar_btn_color]"
-                                                           value="<?php echo self::get_setting( 'bar_btn_color', $bar_btn_color_default ); ?>"/>
+                                                           value="<?php echo esc_attr( self::get_setting( 'bar_btn_color', $bar_btn_color_default ) ); ?>"/>
                                                 </label>
-                                                <span class="description"><?php printf( /* translators: color */ esc_html__( 'Choose the color for the button on comparison bar, default %s', 'woo-smart-compare' ), '<code>' . $bar_btn_color_default . '</code>' ); ?></span>
+                                                <span class="description"><?php printf( /* translators: color */ esc_html__( 'Choose the color for the button on comparison bar, default %s', 'woo-smart-compare' ), '<code>' . esc_html( $bar_btn_color_default ) . '</code>' ); ?></span>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1306,7 +1306,7 @@ if ( ! function_exists( 'woosc_init' ) ) {
 													$saved_menus = self::get_setting( 'menus', [] );
 
 													foreach ( $nav_menus as $nav_id => $nav_name ) {
-														echo '<li><label><input type="checkbox" name="woosc_settings[menus][]" value="' . $nav_id . '" ' . ( is_array( $saved_menus ) && in_array( $nav_id, $saved_menus ) ? 'checked' : '' ) . '/> ' . $nav_name . '</label></li>';
+														echo '<li><label><input type="checkbox" name="woosc_settings[menus][]" value="' . esc_attr( $nav_id ) . '" ' . ( is_array( $saved_menus ) && in_array( $nav_id, $saved_menus ) ? 'checked' : '' ) . '/> ' . esc_html( $nav_name ) . '</label></li>';
 													}
 
 													echo '</ul>';
@@ -2534,7 +2534,7 @@ if ( ! function_exists( 'woosc_init' ) ) {
 
 						echo '</ul>';
 					} else {
-						echo '<ul><span>' . sprintf( self::localization( 'bar_search_no_results', /* translators: keyword */ esc_html__( 'No results found for "%s"', 'woo-smart-compare' ) ), $keyword ) . '</span></ul>';
+						echo '<ul><span>' . sprintf( self::localization( 'bar_search_no_results', /* translators: keyword */ esc_html__( 'No results found for "%s"', 'woo-smart-compare' ) ), esc_html( $keyword ) ) . '</span></ul>';
 					}
 
 					wp_die();
@@ -2662,8 +2662,8 @@ if ( ! function_exists( 'woosc_init' ) ) {
 						$button_class = 'woosc-btn woosc-btn-' . esc_attr( $attrs['id'] ) . ' ' . self::get_setting( 'button_class' );
 
 						// button text
-						$text       = $attrs['text'] ?: self::localization( 'button', esc_html__( 'Compare', 'woo-smart-compare' ) );
-						$text_added = $attrs['text_added'] ?: self::localization( 'button_added', esc_html__( 'Compare', 'woo-smart-compare' ) );
+						$text       = sanitize_text_field( $attrs['text'] ?: self::localization( 'button', esc_html__( 'Compare', 'woo-smart-compare' ) ) );
+						$text_added = sanitize_text_field( $attrs['text_added'] ?: self::localization( 'button_added', esc_html__( 'Compare', 'woo-smart-compare' ) ) );
 
 						if ( ( $button_icon = self::get_setting( 'button_icon', 'no' ) ) !== 'no' ) {
 							$button_class .= ' woosc-btn-has-icon';
@@ -2680,17 +2680,17 @@ if ( ! function_exists( 'woosc_init' ) ) {
 								$button_text  = '<span class="woosc-btn-icon ' . esc_attr( $icon ) . '"></span>';
 							}
 						} else {
-							$button_text = $text;
+							$button_text = esc_html( $text );
 						}
 
 						$button_class = apply_filters( 'woosc_button_class', $button_class, $attrs );
 						$button_attrs = apply_filters( 'woosc_button_attrs', [
-							'text'          => $text,
-							'text_added'    => $text_added,
-							'id'            => $attrs['id'],
-							'product_id'    => $attrs['id'],
-							'product_name'  => $product_name,
-							'product_image' => $product_image,
+							'text'          => esc_html( $text ),
+							'text_added'    => esc_html( $text_added ),
+							'id'            => absint( $attrs['id'] ),
+							'product_id'    => absint( $attrs['id'] ),
+							'product_name'  => esc_html( $product_name ),
+							'product_image' => esc_url( $product_image ),
 						], $attrs );
 
 						if ( $attrs['type'] === 'link' ) {
