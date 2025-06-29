@@ -12,14 +12,14 @@
  * Plugin Name:       Phlox Portfolio
  * Plugin URI:        http://phlox.pro/
  * Description:       Showcase your projects beautifully in Phlox theme
- * Version:           2.3.9
+ * Version:           2.3.10
  * Author:            averta
  * Author URI:        http://averta.net
  * License:           GPL2
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       auxin-portfolio
  * Domain Path:       /languages
- * Tested up to: 	  6.7.2
+ * Tested up to: 	  6.8.1
  * Requires Plugins:  auxin-elements
  */
 
@@ -54,7 +54,7 @@ if( is_admin() ||
 
         'themes' => array(
             array(
-                'name'                 => __('Phlox Pro', 'auxin-portfolio'), // The theme name.
+                'name'                 => 'Phlox Pro', // The theme name.
                 'id'                   => 'phlox-pro', // The theme id name.
                 'version'              => '5.1.8', // E.g. 1.0.0. If set, the active theme must be this version or higher.
                 'is_callable'          => '', // If set, this callable will be be checked for availability to determine if a theme is active.
@@ -62,7 +62,7 @@ if( is_admin() ||
                 'file_required'        => array( get_template_directory() . '/auxin-content/init/dependency.php', get_template_directory() . '/auxin-content/init/constant.php' )
             ),
             array(
-                'name'                 => __('Phlox', 'auxin-portfolio'), // The theme name.
+                'name'                 => 'Phlox', // The theme name.
                 'id'                   => 'phlox', // The theme id name.
                 'update_link'          => 'themes.php?theme=phlox',
                 'version'              => '2.3.10', // E.g. 1.0.0. If set, the active theme must be this version or higher.
@@ -73,7 +73,7 @@ if( is_admin() ||
         ),
 
         'config' => array(
-            'plugin_name'     =>  __('Phlox Portfolio', 'auxin-portfolio'), // Current plugin name.
+            'plugin_name'     =>  'Phlox Portfolio', // Current plugin name.
             'plugin_basename' => plugin_basename( __FILE__ ),
             'plugin_dir_path' => plugin_dir_path( __FILE__ ),
             'debug'           => false

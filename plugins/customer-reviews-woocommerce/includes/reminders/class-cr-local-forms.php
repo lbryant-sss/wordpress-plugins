@@ -8,6 +8,7 @@ if ( ! class_exists( 'CR_Local_Forms' ) ) :
 
 	class CR_Local_Forms {
 		private $form_id;
+		private $order_id;
 		private $items;
 		private $customer_email;
 		private $customer_name;
@@ -43,6 +44,7 @@ if ( ! class_exists( 'CR_Local_Forms' ) ) :
 				$this->display_name = $record->displayName;
 				$this->form_header = $record->formHeader;
 				$this->form_body = $record->formBody;
+				$this->order_id = $record->orderId;
 				$this->items = json_decode( $record->items );
 				$this->cr_form_color1 = get_option( 'ivole_form_color_bg', '#2C5E66' );
 				$this->cr_form_color2 = get_option( 'ivole_form_color_text', '#FFFFFF' );
@@ -182,10 +184,24 @@ if ( ! class_exists( 'CR_Local_Forms' ) ) :
 				// otherwise product item
 				$cr_form_item_rating_name = __( 'Rating', 'customer-reviews-woocommerce' );
 				$cr_form_item_image = $item->image;
+				// WPML Multi-currency compatibility
+				$price_args = array();
+				if ( self::TEST_FORM !== $this->form_id ) {
+					if ( has_filter( 'wpml_translate_single_string' ) && ! function_exists( 'pll_get_post' ) ) {
+						$order_obj = wc_get_order( $this->order_id );
+						if ( $order_obj ) {
+							$currency = $order_obj->get_currency();
+							if ( $currency ) {
+								$price_args['currency'] = $currency;
+							}
+						}
+					}
+				}
+				//
 				if ( isset( $item->pricePerItem ) ) {
-					$cr_form_item_price = CR_Email_Func::cr_price( $item->pricePerItem );
+					$cr_form_item_price = CR_Email_Func::cr_price( $item->pricePerItem, $price_args );
 				} else {
-					$cr_form_item_price = CR_Email_Func::cr_price( $item->price );
+					$cr_form_item_price = CR_Email_Func::cr_price( $item->price, $price_args );
 				}
 				$cr_form_media_enabled = ( 'yes' === get_option( 'ivole_form_attach_media', 'no' ) ? true : false );
 				if( property_exists( $item, 'media' ) ) {
@@ -317,7 +333,7 @@ if ( ! class_exists( 'CR_Local_Forms' ) ) :
 								`items` text DEFAULT NULL,
 								`language` varchar(10) DEFAULT NULL,
 								`extra` text DEFAULT NULL,
-								`dateCreated` datetime DEFAULT NULL
+								`dateCreated` datetime DEFAULT NULL,
 								PRIMARY KEY (`formId`),
 								KEY `orderId_index` (`orderId`),
 								KEY `dateCreated_index` (`dateCreated`)

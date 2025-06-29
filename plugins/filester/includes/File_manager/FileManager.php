@@ -52,7 +52,8 @@ class FileManager
             $this->options = array( // Setting up default values
                 'njt_fs_file_manager_settings' => array(
                     'root_folder_path' =>  ABSPATH,
-                    'root_folder_url' => site_url()
+                    'root_folder_url' => site_url(),
+                    'enable_sensitive_protection' => '1'
                 ),
             );
         }
@@ -289,30 +290,12 @@ class FileManager
                     'uploadOrder'   => array('deny', 'allow'),
                     'uploadDeny'    => array('htaccess'),
                     //'acceptedName' => 'validName',
-                    'attributes' => array(
-                        array(
-                            'pattern' => '/.htaccess/',
-                            'read' => true,
-                            'write' => false,
-                            'hidden' => false,
-                            'locked' => true
-                        )
-                    ) // default is empty
+                    'attributes' => array() // default is empty
                 ),
             ),
         );
 
-        // .htaccess
-        if(isset($this->options['njt_fs_file_manager_settings']['enable_htaccess']) && ($this->options['njt_fs_file_manager_settings']['enable_htaccess'] == '1')) {
-            $attributes = array(
-                'pattern' => '/.htaccess/',
-                'read' => true,
-                'write' => false,
-                'hidden' => true,
-                'locked' => true
-            );
-            array_push($opts['roots'][0]['attributes'], $attributes);
-        }
+    
 
         //Enable Trash
         if(isset($this->options['njt_fs_file_manager_settings']['enable_trash']) && ($this->options['njt_fs_file_manager_settings']['enable_trash'] == '1')) {
@@ -482,7 +465,41 @@ class FileManager
         }
        }
 
-       
+        // Sensitive files protection
+        if(isset($this->options['njt_fs_file_manager_settings']['enable_sensitive_protection']) && ($this->options['njt_fs_file_manager_settings']['enable_sensitive_protection'] == '1')) {
+            $sensitive_files = apply_filters('njt_fs_sensitive_files', array(
+                '.htaccess',
+                'wp-config.php', 
+                '.env',
+                'wp-config-sample.php',
+                'readme.html',
+                'license.txt',
+                'xmlrpc.php'
+            ));
+
+            foreach ($sensitive_files as $file) {
+                $attributes = array(
+                    'pattern' => '/' . preg_quote($file, '/') . '/',
+                    'read' => $this->canAccessSensitiveFiles(),
+                    'write' => $this->canEditSensitiveFiles(),
+                    'hidden' => !$this->canAccessSensitiveFiles(),
+                    'locked' => !$this->canEditSensitiveFiles()
+                );
+                array_push($opts['roots'][0]['attributes'], $attributes);
+            }
+        }
+
+        // .htaccess
+        if(isset($this->options['njt_fs_file_manager_settings']['enable_htaccess']) && ($this->options['njt_fs_file_manager_settings']['enable_htaccess'] == '1')) {
+            $attributes = array(
+                'pattern' => '/.htaccess/',
+                'read' => true,
+                'write' => false,
+                'hidden' => true,
+                'locked' => true
+            );
+            array_push($opts['roots'][0]['attributes'], $attributes);
+        }
 
         //End --setting User Role Restrictions
 
@@ -565,6 +582,7 @@ class FileManager
         $fm_locale = !empty($_POST['fm_locale']) ? sanitize_text_field($_POST['fm_locale']) : 'en';
         $enable_htaccess =  isset($_POST['enable_htaccess']) && $_POST['enable_htaccess'] == 'true' ? 1 : 0;
         $enable_trash = isset($_POST['enable_trash']) && $_POST['enable_trash'] == 'true' ? 1 : 0;
+        $enable_sensitive_protection = isset($_POST['enable_sensitive_protection']) && $_POST['enable_sensitive_protection'] == 'true' ? 1 : 0;
         //save options
         $this->options['njt_fs_file_manager_settings']['root_folder_path'] = $root_folder_path;
         $this->options['njt_fs_file_manager_settings']['root_folder_url'] = $root_folder_url;
@@ -573,6 +591,7 @@ class FileManager
         $this->options['njt_fs_file_manager_settings']['fm_locale'] = $fm_locale;
         $this->options['njt_fs_file_manager_settings']['enable_htaccess'] = $enable_htaccess;
         $this->options['njt_fs_file_manager_settings']['enable_trash'] = $enable_trash;
+        $this->options['njt_fs_file_manager_settings']['enable_sensitive_protection'] = $enable_sensitive_protection;
         //update options
         update_option('njt_fs_settings', $this->options);
         wp_send_json_success(get_option('njt_fs_settings'));
@@ -615,6 +634,24 @@ class FileManager
         update_option('njt_fs_settings', $this->options);
         wp_send_json_success(get_option('njt_fs_settings'));
         wp_die();
+    }
+
+    public function canAccessSensitiveFiles() {
+        // Filter hook for developers
+        if (apply_filters('njt_fs_allow_sensitive_access', false)) {
+            return true;
+        }
+        
+        return false;
+    }
+
+    public function canEditSensitiveFiles() {
+        // Filter hook for developers
+        if (apply_filters('njt_fs_allow_sensitive_edit', false)) {
+            return true;
+        }
+        
+        return false;
     }
 
 }

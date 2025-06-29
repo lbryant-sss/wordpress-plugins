@@ -3,7 +3,7 @@ Contributors: gn_themes
 License: GPLv3
 Donate link: https://getshortcodes.com/pricing/
 Tags: posts, carousel, shortcode, toggle, columns
-Stable tag: 7.4.1
+Stable tag: 7.4.2
 Requires PHP: 5.4
 Requires at least: 5.0
 Tested up to: 6.8
@@ -139,6 +139,16 @@ Upgrade normally
 
 == Changelog ==
 
+
+
+
+= 7.4.2
+
+This update fixes an issue where widgets might not display correctly in the classic interface, and some shortcodes could appear as plain text. This update is recommended for all users
+
+If you are using premium add-ons, don't forget to visit our website using the link below and download the latest versions. The add-ons have also been updated.
+
+[Download premium add-ons](https://getshortcodes.com/account/restore-purchase/)
 
 
 = 7.4.1

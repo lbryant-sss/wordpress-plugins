@@ -1,9 +1,9 @@
 # Averta Copyright (c) {2025}
 msgid ""
 msgstr ""
-"Project-Id-Version: Phlox Portfolio 2.3.9\n"
+"Project-Id-Version: Phlox Portfolio 2.3.10\n"
 "Report-Msgid-Bugs-To: http://averta.net/phlox/wordpress-theme/\n"
-"POT-Creation-Date: 2025-03-06 07:22:32+00:00\n"
+"POT-Creation-Date: 2025-06-28 11:26:16+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -499,18 +499,6 @@ msgstr ""
 #: admin/includes/metaboxes/metabox-fields-portfolio-related.php:243
 #: includes/general-hooks.php:2252
 msgid "A custom label for the button under related items section."
-msgstr ""
-
-#: auxin-portfolio.php:57
-msgid "Phlox Pro"
-msgstr ""
-
-#: auxin-portfolio.php:65
-msgid "Phlox"
-msgstr ""
-
-#. Plugin Name of the plugin/theme
-msgid "Phlox Portfolio"
 msgstr ""
 
 #: includes/classes/class-auxin-plugin-requirements.php:74
@@ -1958,8 +1946,8 @@ msgid "Vertical 3   : 4"
 msgstr ""
 
 #: includes/elements/elementor/recent-portfolios-grid.php:1012
-#: public/templates/theme-parts/entry/portfolio-column-overlay.php:68
-#: public/templates/theme-parts/entry/portfolio-column.php:77
+#: public/templates/theme-parts/entry/portfolio-column-overlay.php:70
+#: public/templates/theme-parts/entry/portfolio-column.php:79
 msgid "Read More"
 msgstr ""
 
@@ -3160,17 +3148,17 @@ msgstr ""
 msgid "Please activate \"Auxin Elements\" plugin."
 msgstr ""
 
-#: public/templates/theme-parts/entry/portfolio-column-overlay.php:58
-#: public/templates/theme-parts/entry/portfolio-column.php:67
-#: public/templates/theme-parts/entry/portfolio-land.php:86
-#: public/templates/theme-parts/entry/portfolio.php:46
+#: public/templates/theme-parts/entry/portfolio-column-overlay.php:60
+#: public/templates/theme-parts/entry/portfolio-column.php:69
+#: public/templates/theme-parts/entry/portfolio-land.php:87
+#: public/templates/theme-parts/entry/portfolio.php:48
 #: public/templates/theme-parts/entry/single-portfolio.php:124
 #: public/templates/theme-parts/entry/single-portfolio.php:132
 msgid "View all posts in "
 msgstr ""
 
-#: public/templates/theme-parts/entry/portfolio-land.php:92
-#: public/templates/theme-parts/entry/portfolio-land.php:94
+#: public/templates/theme-parts/entry/portfolio-land.php:93
+#: public/templates/theme-parts/entry/portfolio-land.php:95
 msgid "Edit"
 msgstr ""
 
@@ -3189,6 +3177,10 @@ msgstr ""
 #: public/templates/theme-parts/loop-portfolio.php:62
 #: public/templates/theme-parts/tax-portfolio.php:75
 msgid "To enable this feature, please install \"Auxin Portfolio\" plugin."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Phlox Portfolio"
 msgstr ""
 
 #. Plugin URI of the plugin/theme

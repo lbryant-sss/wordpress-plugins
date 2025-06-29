@@ -4,7 +4,7 @@
  * Plugin Name: 3D FlipBook : Dflip Lite
  * Description: Realistic 3D Flip-books for WordPress <a href="https://dearflip.com/go/wp-lite-full-version" >Get Full Version Here</a><strong> NOTE : Deactivate this lite version before activating Full Version</strong>
  *
- * Version: 2.3.65
+ * Version: 2.3.67
  *
  * Text Domain: 3d-flipbook-dflip-lite
  * Author: DearHive
@@ -45,7 +45,7 @@ if ( !class_exists( 'DFlip' ) ) {
      *
      * @var string
      */
-    public $version = '2.3.65';
+    public $version = '2.3.67';
 
     /**
      * The name of the plugin.
@@ -428,13 +428,13 @@ if ( !class_exists( 'DFlip' ) ) {
       $this->defaults['viewerType']                = array(
         'std'     => 'flipbook',
         'choices' => array(
-          'global'   => __( 'Global Setting', 'DFLIP' ),
-          'reader'   => __( 'Vertical Reader', 'DFLIP' ),
-          'flipbook' => __( 'Flipbook', 'DFLIP' ),
-          'slider'   => __( 'Slider', 'DFLIP' )
+          'global'   => __( 'Global Setting', '3d-flipbook-dflip-lite' ),
+          'reader'   => __( 'Vertical Reader', '3d-flipbook-dflip-lite' ),
+          'flipbook' => __( 'Flipbook', '3d-flipbook-dflip-lite' ),
+          'slider'   => __( 'Slider', '3d-flipbook-dflip-lite' )
         ),
-        'title'   => __( 'Viewer Type', 'DFLIP' ),
-        'desc'    => __( 'Choose the Viewer Type. Flipbook or normal viewer', 'DFLIP' )
+        'title'   => __( 'Viewer Type', '3d-flipbook-dflip-lite' ),
+        'desc'    => __( 'Choose the Viewer Type. Flipbook or normal viewer', '3d-flipbook-dflip-lite' )
       );
 
       $this->defaults['selectiveScriptLoading'] = array(

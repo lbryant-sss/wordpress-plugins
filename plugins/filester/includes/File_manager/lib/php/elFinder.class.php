@@ -2008,6 +2008,15 @@ class elFinder
                 if (!is_file($src) || !($fp = fopen($src, 'rb'))) {
                     return $a404;
                 }
+                
+                // SECURITY FIX: Validate $src path to prevent directory traversal
+                $realSrc = realpath($src);
+                $realTmpDir = realpath($tmpdir);
+                if (!$realSrc || !$realTmpDir || strpos($realSrc, $realTmpDir) !== 0) {
+                    fclose($fp);
+                    return $a403;
+                }
+                
                 if (strpos($src, $tmpdir) === 0) {
                     $GLOBALS['elFinderTempFiles'][$src] = true;
                 }

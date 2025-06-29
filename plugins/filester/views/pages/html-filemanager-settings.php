@@ -140,6 +140,20 @@ if( isset( $_POST ) && !empty( $_POST ) && !empty($_POST['njt-settings-form-subm
               <?php _e("After enable trash, after delete your files will go to trash folder.", 'filester'); ?></p>
           </td>
         </tr>
+        <!-- Sensitive Files Protection -->
+        <tr>
+          <th><?php _e("Sensitive Files Protection", 'filester'); ?></th>
+          <td>
+            <label class="shortcode-switch" for="enable_sensitive_protection">
+              <input name="enable_sensitive_protection" type="checkbox" id="enable_sensitive_protection" value="1"
+                <?php echo isset($this->options['njt_fs_file_manager_settings']['enable_sensitive_protection']) && ($this->options['njt_fs_file_manager_settings']['enable_sensitive_protection'] == '1') ? 'checked="checked"' : '';?>>
+              <div class="slider round"></div>
+            </label>
+            <p class="description njt-settting-width">
+              <?php _e("Protect sensitive files like wp-config.php, .env, etc. Only administrators can access.", 'filester'); ?>
+            </p>
+          </td>
+        </tr>
         <!-- button submit -->
         <tr>
           <td></td>

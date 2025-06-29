@@ -4,7 +4,7 @@ Donate link: https://ninjateam.org/wordpress-media-library-folders/
 Tags: file manager, wordpress file manager, wp file manager, files, download plugin
 Requires at least: 3.0
 Tested up to: 6.8
-Stable tag: 1.8.9
+Stable tag: 1.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -110,6 +110,9 @@ Otherwise, feel free to reach us at [Ninja Team Support Center](https://ninjatea
 4. Top free file manager plugins comparison chart
 
 == Changelog ==
+
+= Jun 28, 2025 - Version 1.9 =
+- Fixed: Authenticated (Subscriber+) Directory Traversal to Arbitrary File Deletion
 
 = Jun 11, 2025 - Version 1.8.9 =
 - Fixed: Patchstack security report
