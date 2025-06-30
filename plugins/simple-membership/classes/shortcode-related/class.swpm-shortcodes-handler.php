@@ -54,20 +54,76 @@ class SwpmShortcodesHandler {
 			return $error_msg;
 		}
 
-		include_once( SIMPLE_WP_MEMBERSHIP_PATH . 'views/payments/payment-gateway/paypal_button_shortcode_view.php' );
-		include_once( SIMPLE_WP_MEMBERSHIP_PATH . 'views/payments/payment-gateway/stripe_button_shortcode_view.php' );
-		include_once( SIMPLE_WP_MEMBERSHIP_PATH . 'views/payments/payment-gateway/stripe_sca_button_shortcode_view.php' );
-		include_once( SIMPLE_WP_MEMBERSHIP_PATH . 'views/payments/payment-gateway/braintree_button_shortcode_view.php' );
-		include_once( SIMPLE_WP_MEMBERSHIP_PATH . 'views/payments/payment-gateway/paypal_smart_checkout_button_shortcode_view.php' );
-		include_once( SIMPLE_WP_MEMBERSHIP_PATH . 'views/payments/payment-gateway/paypal_buy_now_new_button_shortcode_view.php' );
-		include_once( SIMPLE_WP_MEMBERSHIP_PATH . 'views/payments/payment-gateway/paypal_subscription_new_button_shortcode_view.php' );
+		//Initialize the output variable.
+		$output = '';
+		$any_note_or_msg_output = '';
+		$hide_payment_btn = false;
 
-		$button_code = '';
-		$button_code = apply_filters( 'swpm_payment_button_shortcode_for_' . $button_type, $button_code, $args );
+		//Check if the active subscription warning optoin is enabled for this button.
+		if ( in_array($button_type, array('stripe_sca_subscription', 'pp_subscription_new')) ){
+			$is_visitor_logged_in = SwpmAuth::get_instance()->is_logged_in();
+			$show_warning_if_any_active_sub = get_post_meta( $button_id, 'show_warning_if_any_active_sub', true );
 
-		$output  = '';
-		$output .= '<div class="swpm-payment-button">' . $button_code . '</div>';
+			if ( $is_visitor_logged_in && !empty($show_warning_if_any_active_sub) ){
+				// The visitor is logged in and the active subs warning option is enabled.
 
+				// Check if the user has any active subscription(s)
+				$logged_in_member_id = SwpmMemberUtils::get_logged_in_members_id();
+				$sub_utils = new SWPM_Utils_Subscriptions($logged_in_member_id);
+				$last_active_sub = $sub_utils->get_last_active_sub_if_any();
+
+				if (!empty($last_active_sub)){
+					// Active subscription detected.
+
+					// Check if the hide subscription button option is enabled for this button.
+					$hide_btn_if_any_active_sub = get_post_meta( $button_id, 'hide_btn_if_any_active_sub', true );
+					if( !empty($hide_btn_if_any_active_sub) && ($hide_btn_if_any_active_sub == 1) ){
+						//Set the hide payment button flag to true.
+						$hide_payment_btn = true;
+					}
+
+					// Warning message for the existing active subscription.
+					$any_note_or_msg_output .= '<div class="swpm-warning-msg-for-existing-sub swpm-yellow-box">';
+					$warning_msg_for_existing_sub = get_post_meta( $button_id, 'warning_msg_for_existing_sub', true );
+					if (!empty($warning_msg_for_existing_sub)){
+						//Use the custom warning message set for this button.
+						$any_note_or_msg_output .= $warning_msg_for_existing_sub;
+					} else {
+						//Add a default warning message.
+						$any_note_or_msg_output .= __('Note: You have an active subscription already.', 'simple-membership');
+					}
+					$any_note_or_msg_output .= '</div>';
+				}
+			}
+		}
+
+		/* Any notes or message section */
+		//Trigger a filter to allow addons to modify the output of the note/message before the payment button.
+		$any_note_or_msg_output = apply_filters( 'swpm_payment_button_note_msg_output', $any_note_or_msg_output, $button_id, $button_type );
+		if ( !empty($any_note_or_msg_output) ){
+			//If the active subscription warning message is set, we will show it before the payment button.
+			$output = '<div class="swpm-payment-button-note-msg">' . $any_note_or_msg_output . $output . '</div>';
+		}
+
+		/* The payment button section */
+		//Trigger a filter hook to allow custom code to modify the hide payment button flag. It can be used by addons to hide the payment button based on custom logic.
+		$hide_payment_btn = apply_filters( 'swpm_hide_payment_button', $hide_payment_btn, $button_id, $button_type );
+		if ( !$hide_payment_btn ){
+			include_once( SIMPLE_WP_MEMBERSHIP_PATH . 'views/payments/payment-gateway/paypal_button_shortcode_view.php' );
+			include_once( SIMPLE_WP_MEMBERSHIP_PATH . 'views/payments/payment-gateway/stripe_button_shortcode_view.php' );
+			include_once( SIMPLE_WP_MEMBERSHIP_PATH . 'views/payments/payment-gateway/stripe_sca_button_shortcode_view.php' );
+			include_once( SIMPLE_WP_MEMBERSHIP_PATH . 'views/payments/payment-gateway/braintree_button_shortcode_view.php' );
+			include_once( SIMPLE_WP_MEMBERSHIP_PATH . 'views/payments/payment-gateway/paypal_smart_checkout_button_shortcode_view.php' );
+			include_once( SIMPLE_WP_MEMBERSHIP_PATH . 'views/payments/payment-gateway/paypal_buy_now_new_button_shortcode_view.php' );
+			include_once( SIMPLE_WP_MEMBERSHIP_PATH . 'views/payments/payment-gateway/paypal_subscription_new_button_shortcode_view.php' );
+
+			$button_code = '';
+			$button_code = apply_filters( 'swpm_payment_button_shortcode_for_' . $button_type, $button_code, $args );
+
+			$output .= '<div class="swpm-payment-button">' . $button_code . '</div>';
+		}
+
+		//Return the final output.
 		return $output;
 	}
 

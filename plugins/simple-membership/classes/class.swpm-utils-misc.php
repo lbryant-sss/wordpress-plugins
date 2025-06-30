@@ -2,8 +2,6 @@
 
 class SwpmMiscUtils {
 
-	public static $stripe_sca_frontend_scripts_printed = false;
-
 	public static function create_mandatory_wp_pages() {
 		$settings = SwpmSettings::get_instance();
 
@@ -1149,28 +1147,85 @@ class SwpmMiscUtils {
 		wp_mail( $email, $subject, $email_body, $headers );
 	}
 
-	/**
-	* Outputs Stripe SCA frontend scripts and styles once
-	* @deprecated
-	*/
-	public static function output_stripe_sca_frontend_scripts_once() {
-		
-		trigger_error(__METHOD__ . ' is deprecated', E_USER_DEPRECATED);
-
-		$out = '';
-		if ( ! self::$stripe_sca_frontend_scripts_printed ) {
-			$out                                      .= '<script src="https://js.stripe.com/v3/"></script>';
-			$out                                      .= "<link rel='stylesheet' href='https://checkout.stripe.com/v3/checkout/button.css' type='text/css' media='all' />";
-			self::$stripe_sca_frontend_scripts_printed = true;
-		}
-		return $out;
-	}
-
-	public static function has_tag( $body, $tag ) {
+	public static function has_email_merge_tag( $body, $tag ) {
 		if( strpos( $body, $tag ) !== false ) {
 			return true;
 		}
 		return false;
 	}
 
+	public static function resend_activation_email_by_member_id( $member_id ) {
+		$member = SwpmMemberUtils::get_user_by_id( $member_id );
+		if ( empty( $member ) ) {
+			//can't find member
+			SwpmLog::log_simple_debug( 'Account activation email for member ID: '.$member_id.' could not be sent. Member account does not exists.', false );
+			SwpmTransfer::get_instance()->set('resend_activation_email_error', sprintf(__('Cannot find member account of ID: %d.', 'simple-membership'), $member_id));
+			return;
+		}
+		if ( isset($member->account_state) && $member->account_state !== 'activation_required' ) {
+			//account already active
+			SwpmLog::log_simple_debug( 'Account activation email for member ID: '.$member_id.' could not be sent. Account activation already done.', false );
+			SwpmTransfer::get_instance()->set('resend_activation_email_error', sprintf(__('Account activation for member ID: %d already done.', 'simple-membership'), $member_id));
+			return;
+		}
+		$act_data = get_option( 'swpm_email_activation_data_usr_' . $member_id, array() );
+		if ( empty( $act_data ) ) {
+			//looks like activation data has been removed for some reason. We won't be able to have member's plain password in this case
+			$act_data['plain_password'] = '';
+		}
+
+		delete_option( 'swpm_email_activation_data_usr_' . $member_id );
+
+		$member_info_array =  (array) $member;
+		$member_info_array['plain_password'] = isset($act_data['plain_password']) && !empty($act_data['plain_password']) ?  SwpmUtils::crypt( $act_data['plain_password'], 'd' ) : '';
+
+		$settings = SwpmSettings::get_instance();
+
+		//Generate the activation code and store it in the DB
+		$act_code  = md5( uniqid() . $member_id );
+		$user_data = array(
+			'timestamp'      => time(),
+			'act_code'       => $act_code,
+			'plain_password' => $member_info_array['plain_password'],
+		);
+
+		$user_data = apply_filters( 'swpm_email_activation_data', $user_data );
+
+		update_option( 'swpm_email_activation_data_usr_' . $member_id, $user_data, false );
+
+		$activation_link = add_query_arg(
+			array(
+				'swpm_email_activation' => '1',
+				'swpm_member_id'        => $member_id,
+				'swpm_token'            => $act_code,
+			),
+			get_home_url()
+		);
+
+		// Allow hooks to change the value of activation_link
+		$activation_link = apply_filters( 'swpm_send_reg_email_activation_link', $activation_link );
+
+		$from_address = $settings->get_value( 'email-from' );
+		$to_email     = trim( $member_info_array['email'] );
+		$login_link   = $settings->get_value( 'login-page-url' );
+		$headers      = 'From: ' . $from_address . "\r\n";
+
+		$member_info_array['activation_link']       = $activation_link;
+		$member_info_array['membership_level_name'] = SwpmPermission::get_instance( $member_info_array['membership_level'] )->get( 'alias' );
+		$member_info_array['password']              = $member_info_array['plain_password'];
+		$member_info_array['login_link']            = $login_link;
+
+		$values = array_values( $member_info_array );
+		$keys   = array_map( 'swpm_enclose_var', array_keys( $member_info_array ) );
+
+		$body = $settings->get_value( 'email-activation-mail-body' );
+		$body = html_entity_decode( $body );
+		$body = str_replace( $keys, $values, $body );
+		$body = SwpmMiscUtils::replace_dynamic_tags( $body, $member_id ); //Do the standard merge var replacement.
+
+		$subject = $settings->get_value( 'email-activation-mail-subject' );
+
+		SwpmMiscUtils::mail( $to_email, $subject, $body, $headers );
+		SwpmLog::log_simple_debug( 'Account activation email for member ID: '.$member_id.' successfully sent to: ' . $to_email . '. From email address value used: ' . $from_address, true );
+	}
 }

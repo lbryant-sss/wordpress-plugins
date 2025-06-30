@@ -205,7 +205,7 @@ class wsNewMenuHighlighter {
 			'ws-nmh-admin-script',
 			plugins_url('assets/highlight-menus.js', __FILE__),
 			$dependencies,
-			'20191111'
+			'20250629-2'
 		);
 
 		wp_localize_script(
