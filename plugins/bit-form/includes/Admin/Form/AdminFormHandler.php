@@ -2079,14 +2079,16 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
       return new WP_Error('empty_form', __('Form does not exist.', 'bit-form'));
     }
     $workFlowRunHelper = new WorkFlow($formID);
+
     $workFlowreturnedOnDelete = $workFlowRunHelper->executeOnDelete(
       $formManager,
       $formID,
       $entries
     );
+
     if (isset($workFlowreturnedOnDelete['entries'])) {
       if (0 === count($workFlowreturnedOnDelete['entries'])) {
-        return ['message' => __('Entry Deletetion prevented by  workflow', 'bit-form')];
+        return ['message' => __('Entry Deletetion prevented by workflow', 'bit-form')];
       } elseif (count($workFlowreturnedOnDelete['entries']) === count($entries)) {
         $message = __('Entry Deleted successfully', 'bit-form');
       } else {

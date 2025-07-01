@@ -21,6 +21,8 @@ return array(
     'HCaptcha\\Admin\\WhatsNew' => $baseDir . '/src/php/Admin/WhatsNew.php',
     'HCaptcha\\Affiliates\\Login' => $baseDir . '/src/php/Affiliates/Login.php',
     'HCaptcha\\Affiliates\\Register' => $baseDir . '/src/php/Affiliates/Register.php',
+    'HCaptcha\\AntiSpam\\AntiSpam' => $baseDir . '/src/php/AntiSpam/AntiSpam.php',
+    'HCaptcha\\AntiSpam\\ProviderBase' => $baseDir . '/src/php/AntiSpam/ProviderBase.php',
     'HCaptcha\\Asgaros\\Base' => $baseDir . '/src/php/Asgaros/Base.php',
     'HCaptcha\\Asgaros\\Form' => $baseDir . '/src/php/Asgaros/Form.php',
     'HCaptcha\\AutoVerify\\AutoVerify' => $baseDir . '/src/php/AutoVerify/AutoVerify.php',

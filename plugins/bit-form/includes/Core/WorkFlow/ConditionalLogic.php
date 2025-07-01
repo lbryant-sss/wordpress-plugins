@@ -275,7 +275,6 @@ final class ConditionalLogic
         if (!is_string($ssvalue)) {
           $this->_workflow_condition = $ssvalue;
           $isCondition = $this->getConditionStatus();
-
           if (0 === $sskey) {
             $conditionStatus = $isCondition;
           }

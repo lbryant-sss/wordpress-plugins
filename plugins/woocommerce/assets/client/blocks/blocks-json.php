@@ -859,111 +859,6 @@ return array(
 		'apiVersion' => 3,
 		'$schema' => 'https://schemas.wp.org/trunk/block.json'
 	),
-	'blockified-product-details' => array(
-		'$schema' => 'https://schemas.wp.org/trunk/block.json',
-		'apiVersion' => 3,
-		'name' => 'woocommerce/blockified-product-details',
-		'title' => 'Blockified Product Details',
-		'description' => 'Display a product\'s description, attributes, and reviews',
-		'category' => 'woocommerce',
-		'textdomain' => 'woocommerce',
-		'ancestor' => array(
-			'woocommerce/single-product',
-			'woocommerce/product-template',
-			'core/post-template'
-		),
-		'supports' => array(
-			'interactivity' => array(
-				'clientNavigation' => true
-			),
-			'align' => array(
-				'wide',
-				'full'
-			)
-		),
-		'attributes' => array(
-			
-		),
-		'usesContext' => array(
-			'query',
-			'queryId',
-			'postId',
-			'postType'
-		)
-	),
-	'blockified-product-reviews' => array(
-		'$schema' => 'https://schemas.wp.org/trunk/block.json',
-		'apiVersion' => 3,
-		'name' => 'woocommerce/blockified-product-reviews',
-		'icon' => 'admin-comments',
-		'title' => 'Blockified Product Reviews',
-		'description' => 'Display a product\'s reviews',
-		'category' => 'woocommerce',
-		'textdomain' => 'woocommerce',
-		'attributes' => array(
-			'tagName' => array(
-				'type' => 'string',
-				'default' => 'div'
-			)
-		),
-		'supports' => array(
-			'interactivity' => true,
-			'align' => array(
-				'wide',
-				'full'
-			),
-			'html' => false,
-			'color' => array(
-				'gradients' => true,
-				'heading' => true,
-				'link' => true,
-				'__experimentalDefaultControls' => array(
-					'background' => true,
-					'text' => true,
-					'link' => true
-				)
-			),
-			'spacing' => array(
-				'margin' => true,
-				'padding' => true
-			),
-			'typography' => array(
-				'fontSize' => true,
-				'lineHeight' => true,
-				'__experimentalFontFamily' => true,
-				'__experimentalFontWeight' => true,
-				'__experimentalFontStyle' => true,
-				'__experimentalTextTransform' => true,
-				'__experimentalTextDecoration' => true,
-				'__experimentalLetterSpacing' => true,
-				'__experimentalDefaultControls' => array(
-					'fontSize' => true
-				)
-			),
-			'__experimentalBorder' => array(
-				'radius' => true,
-				'color' => true,
-				'width' => true,
-				'style' => true,
-				'__experimentalDefaultControls' => array(
-					'radius' => true,
-					'color' => true,
-					'width' => true,
-					'style' => true
-				)
-			)
-		),
-		'usesContext' => array(
-			'postId',
-			'postType'
-		),
-		'ancestor' => array(
-			'woocommerce/single-product',
-			'woocommerce/product-template',
-			'core/post-template'
-		),
-		'viewScriptModule' => 'woocommerce/blockified-product-reviews'
-	),
 	'breadcrumbs' => array(
 		'name' => 'woocommerce/breadcrumbs',
 		'title' => 'Store Breadcrumbs',
@@ -3099,32 +2994,31 @@ return array(
 		)
 	),
 	'product-details' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
 		'name' => 'woocommerce/product-details',
-		'icon' => 'info',
 		'title' => 'Product Details',
-		'description' => 'Display a product\'s description, attributes, and reviews.',
-		'category' => 'woocommerce-product-elements',
-		'attributes' => array(
-			'hideTabTitle' => array(
-				'type' => 'boolean',
-				'default' => false
-			)
-		),
-		'keywords' => array(
-			'WooCommerce'
-		),
+		'description' => 'Display a product\'s description, attributes, and reviews',
+		'category' => 'woocommerce',
+		'textdomain' => 'woocommerce',
 		'supports' => array(
 			'interactivity' => array(
 				'clientNavigation' => true
 			),
-			'align' => true,
-			'spacing' => array(
-				'margin' => true
+			'align' => array(
+				'wide',
+				'full'
 			)
 		),
-		'textdomain' => 'woocommerce',
-		'apiVersion' => 3,
-		'$schema' => 'https://schemas.wp.org/trunk/block.json'
+		'attributes' => array(
+			
+		),
+		'usesContext' => array(
+			'query',
+			'queryId',
+			'postId',
+			'postType'
+		)
 	),
 	'product-filter-active' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
@@ -4543,7 +4437,7 @@ return array(
 		'title' => 'Review Author Name',
 		'category' => 'woocommerce',
 		'ancestor' => array(
-			'woocommerce/blockified-product-reviews'
+			'woocommerce/product-reviews'
 		),
 		'description' => 'Displays the name of the author of the review.',
 		'textdomain' => 'woocommerce',
@@ -4615,7 +4509,7 @@ return array(
 		'title' => 'Review Content',
 		'category' => 'woocommerce',
 		'ancestor' => array(
-			'woocommerce/blockified-product-reviews'
+			'woocommerce/product-reviews'
 		),
 		'description' => 'Displays the contents of a product review.',
 		'textdomain' => 'woocommerce',
@@ -4680,7 +4574,7 @@ return array(
 		'title' => 'Review Date',
 		'category' => 'woocommerce',
 		'ancestor' => array(
-			'woocommerce/blockified-product-reviews'
+			'woocommerce/product-reviews'
 		),
 		'description' => 'Displays the date on which the review was posted.',
 		'textdomain' => 'woocommerce',
@@ -4810,7 +4704,7 @@ return array(
 		'title' => 'Review Rating',
 		'category' => 'woocommerce',
 		'ancestor' => array(
-			'woocommerce/blockified-product-reviews'
+			'woocommerce/product-reviews'
 		),
 		'description' => 'Displays the rating of a product review.',
 		'textdomain' => 'woocommerce',
@@ -4842,7 +4736,7 @@ return array(
 		'title' => 'Reviews Template',
 		'category' => 'woocommerce',
 		'ancestor' => array(
-			'woocommerce/blockified-product-reviews'
+			'woocommerce/product-reviews'
 		),
 		'attributes' => array(
 			
@@ -4892,28 +4786,72 @@ return array(
 		)
 	),
 	'product-reviews' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
 		'name' => 'woocommerce/product-reviews',
 		'icon' => 'admin-comments',
 		'title' => 'Product Reviews',
-		'description' => 'A block that shows the reviews for a product.',
-		'category' => 'woocommerce-product-elements',
-		'keywords' => array(
-			'WooCommerce'
-		),
-		'supports' => array(
-			'interactivity' => array(
-				'clientNavigation' => true
+		'description' => 'Display a product\'s reviews',
+		'category' => 'woocommerce',
+		'textdomain' => 'woocommerce',
+		'attributes' => array(
+			'tagName' => array(
+				'type' => 'string',
+				'default' => 'div'
 			)
 		),
-		'attributes' => array(
-			
+		'supports' => array(
+			'interactivity' => true,
+			'align' => array(
+				'wide',
+				'full'
+			),
+			'html' => false,
+			'color' => array(
+				'gradients' => true,
+				'heading' => true,
+				'link' => true,
+				'__experimentalDefaultControls' => array(
+					'background' => true,
+					'text' => true,
+					'link' => true
+				)
+			),
+			'spacing' => array(
+				'margin' => true,
+				'padding' => true
+			),
+			'typography' => array(
+				'fontSize' => true,
+				'lineHeight' => true,
+				'__experimentalFontFamily' => true,
+				'__experimentalFontWeight' => true,
+				'__experimentalFontStyle' => true,
+				'__experimentalTextTransform' => true,
+				'__experimentalTextDecoration' => true,
+				'__experimentalLetterSpacing' => true,
+				'__experimentalDefaultControls' => array(
+					'fontSize' => true
+				)
+			),
+			'__experimentalBorder' => array(
+				'radius' => true,
+				'color' => true,
+				'width' => true,
+				'style' => true,
+				'__experimentalDefaultControls' => array(
+					'radius' => true,
+					'color' => true,
+					'width' => true,
+					'style' => true
+				)
+			)
 		),
 		'usesContext' => array(
-			'postId'
+			'postId',
+			'postType'
 		),
-		'textdomain' => 'woocommerce',
-		'apiVersion' => 3,
-		'$schema' => 'https://schemas.wp.org/trunk/block.json'
+		'viewScriptModule' => 'woocommerce/product-reviews'
 	),
 	'product-reviews-pagination' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
@@ -4922,7 +4860,7 @@ return array(
 		'title' => 'Reviews Pagination',
 		'category' => 'woocommerce',
 		'ancestor' => array(
-			'woocommerce/blockified-product-reviews'
+			'woocommerce/product-reviews'
 		),
 		'allowedBlocks' => array(
 			'woocommerce/product-reviews-pagination-previous',
@@ -5128,7 +5066,7 @@ return array(
 		'title' => 'Reviews Title',
 		'category' => 'woocommerce',
 		'ancestor' => array(
-			'woocommerce/blockified-product-reviews'
+			'woocommerce/product-reviews'
 		),
 		'description' => 'Displays a title with the number of reviews.',
 		'textdomain' => 'woocommerce',

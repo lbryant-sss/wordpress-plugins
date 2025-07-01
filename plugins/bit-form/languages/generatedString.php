@@ -1883,6 +1883,8 @@ $i18n_strings = array(
 
     'Edit HTML Content' => __('Edit HTML Content', 'bit-form'),
 
+    'Input Icons' => __('Input Icons', 'bit-form'),
+
     'Maximum' => __('Maximum', 'bit-form'),
 
     'Disable if maximum selected:' => __('Disable if maximum selected:', 'bit-form'),
@@ -2027,6 +2029,54 @@ $i18n_strings = array(
 
     'Key:' => __('Key:', 'bit-form'),
 
+    'Advanced Configuration' => __('Advanced Configuration', 'bit-form'),
+
+    'Basic Configuration' => __('Basic Configuration', 'bit-form'),
+
+    'Single' => __('Single', 'bit-form'),
+
+    'Range' => __('Range', 'bit-form'),
+
+    'Multiple' => __('Multiple', 'bit-form'),
+
+    'View Format' => __('View Format', 'bit-form'),
+
+    'Show the user a readable date (as per altFormat), but return something totally different to the server. <a href="https://flatpickr.js.org/options/#:~:text=Description-,altFormat,-String" target="_blank">Learn more</>' => __('Show the user a readable date (as per altFormat), but return something totally different to the server. <a href="https://flatpickr.js.org/options/#:~:text=Description-,altFormat,-String" target="_blank">Learn more</>', 'bit-form'),
+
+    'Value Format' => __('Value Format', 'bit-form'),
+
+    'A string of characters which are used to define how the date will be displayed in the input box. The supported characters are defined in the <a href="https://flatpickr.js.org/formatting/" target="_blank">documentation.</a>' => __('A string of characters which are used to define how the date will be displayed in the input box. The supported characters are defined in the <a href="https://flatpickr.js.org/formatting/" target="_blank">documentation.</a>', 'bit-form'),
+
+    'Relative to Today (± Days)' => __('Relative to Today (± Days)', 'bit-form'),
+
+    'Days before today' => __('Days before today', 'bit-form'),
+
+    'Days after today' => __('Days after today', 'bit-form'),
+
+    'Allow Input' => __('Allow Input', 'bit-form'),
+
+    'Allows the user to enter a date directly into the input field. By default, direct entry is disabled.' => __('Allows the user to enter a date directly into the input field. By default, direct entry is disabled.', 'bit-form'),
+
+    'Enable Time' => __('Enable Time', 'bit-form'),
+
+    'Enables time picker. By default, time picker is disabled. If you want to use time picker, you need to enable this.' => __('Enables time picker. By default, time picker is disabled. If you want to use time picker, you need to enable this.', 'bit-form'),
+
+    '24H Format' => __('24H Format', 'bit-form'),
+
+    'Enables 24-hour format for time. By default, 12-hour format is used. If you want to use 24-hour format, you need to enable this.' => __('Enables 24-hour format for time. By default, 12-hour format is used. If you want to use 24-hour format, you need to enable this.', 'bit-form'),
+
+    'Hide Calender' => __('Hide Calender', 'bit-form'),
+
+    'Hides the calendar. By default, calendar is shown. If you want to hide the calendar, you need to enable this.' => __('Hides the calendar. By default, calendar is shown. If you want to hide the calendar, you need to enable this.', 'bit-form'),
+
+    'Only valid JS object will work. for more details please check<a target="_blank" href="https://flatpickr.js.org/options/" rel="noreferrer"> the documentation for available configuration options</a>' => __('Only valid JS object will work. for more details please check<a target="_blank" href="https://flatpickr.js.org/options/" rel="noreferrer"> the documentation for available configuration options</a>', 'bit-form'),
+
+    'Current Date' => __('Current Date', 'bit-form'),
+
+    'Static' => __('Static', 'bit-form'),
+
+    'Dynamic' => __('Dynamic', 'bit-form'),
+
     'Upload Button Text:' => __('Upload Button Text:', 'bit-form'),
 
     'Button Icons' => __('Button Icons', 'bit-form'),
@@ -2144,8 +2194,6 @@ $i18n_strings = array(
     'Amount Type' => __('Amount Type', 'bit-form'),
 
     'Fixed' => __('Fixed', 'bit-form'),
-
-    'Dynamic' => __('Dynamic', 'bit-form'),
 
     'Amount' => __('Amount', 'bit-form'),
 
@@ -2599,8 +2647,6 @@ $i18n_strings = array(
 
     'Shadow Style' => __('Shadow Style', 'bit-form'),
 
-    'Input Icons' => __('Input Icons', 'bit-form'),
-
     'Input mode' => __('Input mode', 'bit-form'),
 
     'RegEx Pattern' => __('RegEx Pattern', 'bit-form'),
@@ -2956,6 +3002,10 @@ $i18n_strings = array(
     'Integration clone failed.' => __('Integration clone failed.', 'bit-form'),
 
     'Integrate your form with your favorite apps and services.' => __('Integrate your form with your favorite apps and services.', 'bit-form'),
+
+    'Advanced Date Time' => __('Advanced Date Time', 'bit-form'),
+
+    'Please Select a Date' => __('Please Select a Date', 'bit-form'),
 
     'First Name' => __('First Name', 'bit-form'),
 
@@ -3580,6 +3630,8 @@ $i18n_strings = array(
     'Active List' => __('Active List', 'bit-form'),
 
     'Sub Title' => __('Sub Title', 'bit-form'),
+
+    'Config Option' => __('Config Option', 'bit-form'),
 
     'Email Template:' => __('Email Template:', 'bit-form'),
 

@@ -172,7 +172,7 @@ final class WorkFlowHandler
         $conditions[$conIndex]->actions->failure = $failure;
       }
 
-      if (!empty($actions->avoid_delete)) {
+      if (!empty($workFlowDetails->avoid_delete)) {
         $conditions[$conIndex]->actions['avoid_delete'] = $workFlowDetails->avoid_delete;
       }
     }

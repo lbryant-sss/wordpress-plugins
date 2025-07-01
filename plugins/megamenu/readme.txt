@@ -132,6 +132,10 @@ See https://www.megamenu.com for more screenshots
 
 == Changelog ==
 
+= 3.6.2 =
+
+* Accessibility Fix: Windows Narrator ignores "Enter" keypress, preventing tab navigation working reliably
+
 = 3.6.1 =
 
 * Fix: PHP Error when percentage sign used in HTML block in menu toggle bar

@@ -130,7 +130,7 @@
                 plugin.hideSiblingPanels(anchor, true);
             }
 
-            if ((plugin.isMobileView() && $menu.hasClass("mega-keyboard-navigation")) || plugin.settings.vertical_behaviour === "accordion") {
+            if ((plugin.isMobileView() && $wrap.hasClass("mega-keyboard-navigation")) || plugin.settings.vertical_behaviour === "accordion") {
                 plugin.hideSiblingPanels(anchor, false);
             }
 
@@ -270,6 +270,13 @@
         };
 
         plugin.bindClickEvents = function() {
+
+            if ( $wrap.data('has-click-events') === true ) {
+                return;
+            }
+
+            $wrap.data('has-click-events', true);
+
             var dragging = false;
 
             $(document).on({
@@ -404,6 +411,7 @@
 
                 if (keyCode === tab_key) {
                     $wrap.addClass("mega-keyboard-navigation");
+                    plugin.bindClickEvents(); // Windows Narrator ignores the Enter keypress, so ensure click events are available when pressing tab
                 }
             });
 
@@ -478,7 +486,7 @@
                     }
                 }
 
-                if ( keyCode === enter_key ) {
+                if ( keyCode === enter_key ) { // ignored by windows narrator
 
                     // pressing enter on an arrow will toggle the sub menu
                     if ( active_link.is(".mega-indicator") ) {
@@ -495,11 +503,6 @@
 
                         // when clicking on the parent of a hidden submenu, follow the link
                         if ( plugin.isMobileView() && active_link.parent().is(".mega-hide-sub-menu-on-mobile") ) {
-                            return;
-                        }
-
-                        // when the arrow has been moved (i.e. it is clickable and visible, don't show the sub menu - just follow the link)
-                        if ( active_link.is("[href]") && active_link.siblings(".mega-indicator[tabindex]:visible").length !== 0 ) {
                             return;
                         }
 
@@ -621,8 +624,14 @@
         };
 
         plugin.unbindClickEvents = function() {
+            if ( $wrap.hasClass('mega-keyboard-navigation') ) {
+                return;
+            }
+
             // collapsable parents always have a click event
             $("> a.mega-menu-link", items_with_submenus).not(collapse_children_parents).off("click.megamenu touchend.megamenu");
+
+            $wrap.data('has-click-events', false);
         };
 
         plugin.unbindHoverEvents = function() {

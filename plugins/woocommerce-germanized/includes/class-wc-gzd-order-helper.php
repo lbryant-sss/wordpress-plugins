@@ -133,6 +133,25 @@ class WC_GZD_Order_Helper {
 				2
 			);
 
+			/**
+			 * In checkout-block context Woo does only create a draft order which is
+			 * not stored after tax calculation. The issue is that the tax (re-)calculation logic
+			 * does only work if a valid order already exists, e.g. WC_Order_Item_Shipping::get_order() works.
+			 * Use this tweak to make sure the order exists before actually calculating taxes.
+			 *
+			 * @see \Automattic\WooCommerce\StoreApi\Utilities\OrderController::update_order_from_cart()
+			 */
+			add_action(
+				'woocommerce_order_before_calculate_taxes',
+				function ( $args, $order ) {
+					if ( 'checkout-draft' === $order->get_status() && ! $order->get_id() ) {
+						$order->save();
+					}
+				},
+				10,
+				2
+			);
+
 			add_action( 'woocommerce_order_item_shipping_after_calculate_taxes', array( $this, 'adjust_additional_costs_item_taxes' ), 10, 2 );
 			add_action( 'woocommerce_order_item_fee_after_calculate_taxes', array( $this, 'adjust_additional_costs_item_taxes' ), 10, 2 );
 			add_action( 'woocommerce_order_item_after_calculate_taxes', array( $this, 'adjust_additional_costs_item_taxes' ), 10, 2 );
@@ -349,6 +368,8 @@ class WC_GZD_Order_Helper {
 			}
 		}
 
+		$item_has_taxes = $item->get_total_tax() > 0;
+
 		if ( $order = $item->get_order() ) {
 			$item->delete_meta_data( '_split_taxes' );
 			$item->delete_meta_data( '_tax_shares' );
@@ -394,6 +415,12 @@ class WC_GZD_Order_Helper {
 						$taxes = $taxes + $tax_class_taxes;
 					}
 
+					if ( ! $item_has_taxes ) {
+						foreach ( $taxes as $rate_id => $total ) {
+							$taxes[ $rate_id ] = 0.0;
+						}
+					}
+
 					$item->set_taxes( array( 'total' => $taxes ) );
 					$item->update_meta_data( '_split_taxes', $taxable_amounts );
 					$item->update_meta_data( '_tax_shares', $tax_share );
@@ -427,6 +454,12 @@ class WC_GZD_Order_Helper {
 					$taxable_amount  = $item_total;
 					$tax_class_taxes = WC_Tax::calc_tax( $taxable_amount, $tax_rates, wc_gzd_additional_costs_include_tax() );
 					$taxes           = $taxes + $tax_class_taxes;
+
+					if ( ! $item_has_taxes ) {
+						foreach ( $taxes as $rate_id => $total ) {
+							$taxes[ $rate_id ] = 0.0;
+						}
+					}
 
 					$item->set_taxes( array( 'total' => $taxes ) );
 

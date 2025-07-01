@@ -49,6 +49,7 @@ class ScriptFilePriorityManager
         ['priority' => 101, 'filename' => 'bfSelect.min.js'],
         ['priority' => 101, 'filename' => 'bfReset.min.js'],
         ['priority' => 101, 'filename' => 'setBFMsg.min.js'],
+        ['priority' => 101, 'filename' => 'bfSplit.min.js'],
         ['priority' => 101, 'filename' => 'scrollToElm.min.js'],
         ['priority' => 101, 'filename' => 'getFldKeyAndRowIndx.min.js'],
         ['priority' => 101, 'filename' => 'moveToFirstErrFld.min.js'],
@@ -159,6 +160,47 @@ class ScriptFilePriorityManager
       'rating' => [
         ['priority' => 201, 'filename' => 'customFieldsReset.min.js'],
         ['priority' => 301, 'filename' => 'bit-rating-field.min.js'],
+      ],
+      'advanced-datetime' => [
+        ['priority' => 101, 'filename' => 'observeElm.min.js'],
+        ['priority' => 201, 'filename' => 'customFieldsReset.min.js'],
+        ['priority' => 301, 'filename' => 'bit-advanced-datetime-field.min.js'],
+        ['priority' => 301, 'filename' => 'advancedDatetimeFldValidation.min.js'],
+        ['priority' => 301, 'filename' => 'bfDateFieldsLogicCheck.min.js'],
+        ['priority' => 301, 'filename' => 'bfCalculateDateTimeDifference.min.js'],
+        ['priority' => 301, 'filename' => 'bfAddOrSubtractDateTime.min.js'],
+        ['priority' => 301, 'filename' => 'bfParseDateTime.min.js'],
+        ['priority' => 301, 'filename' => 'bfSetDateTimeConfigOption.min.js']
+      ],
+      'date' => [
+        ['priority' => 301, 'filename' => 'bfDateFieldsLogicCheck.min.js'],
+        ['priority' => 301, 'filename' => 'bfCalculateDateTimeDifference.min.js'],
+        ['priority' => 301, 'filename' => 'bfAddOrSubtractDateTime.min.js'],
+        ['priority' => 301, 'filename' => 'bfParseDateTime.min.js']
+      ],
+      'datetime-local' => [
+        ['priority' => 301, 'filename' => 'bfDateFieldsLogicCheck.min.js'],
+        ['priority' => 301, 'filename' => 'bfCalculateDateTimeDifference.min.js'],
+        ['priority' => 301, 'filename' => 'bfAddOrSubtractDateTime.min.js'],
+        ['priority' => 301, 'filename' => 'bfParseDateTime.min.js']
+      ],
+      'time' => [
+        ['priority' => 301, 'filename' => 'bfDateFieldsLogicCheck.min.js'],
+        ['priority' => 301, 'filename' => 'bfCalculateDateTimeDifference.min.js'],
+        ['priority' => 301, 'filename' => 'bfAddOrSubtractDateTime.min.js'],
+        ['priority' => 301, 'filename' => 'bfParseDateTime.min.js']
+      ],
+      'month' => [
+        ['priority' => 301, 'filename' => 'bfDateFieldsLogicCheck.min.js'],
+        ['priority' => 301, 'filename' => 'bfCalculateDateTimeDifference.min.js'],
+        ['priority' => 301, 'filename' => 'bfAddOrSubtractDateTime.min.js'],
+        ['priority' => 301, 'filename' => 'bfParseDateTime.min.js']
+      ],
+      'week' => [
+        ['priority' => 301, 'filename' => 'bfDateFieldsLogicCheck.min.js'],
+        ['priority' => 301, 'filename' => 'bfCalculateDateTimeDifference.min.js'],
+        ['priority' => 301, 'filename' => 'bfAddOrSubtractDateTime.min.js'],
+        ['priority' => 301, 'filename' => 'bfParseDateTime.min.js']
       ],
     ];
   }
@@ -289,6 +331,13 @@ class ScriptFilePriorityManager
         'ajaxURL'            => ['val' => admin_url('admin-ajax.php')],
         'nonce'              => ['val' => wp_create_nonce('bitforms_save')],
         'uploadFileToServer' => ['val' => 1],
+        'fieldName'          => ['path' => 'fieldName'],
+        'contentId'          => ['var' => 'contentId'],
+      ],
+      'advanced-datetime' => [
+        'fieldKey'           => ['var' => 'fieldKey'],
+        'formID'             => ['var' => 'formId'],
+        'configSetting'      => ['path' => 'config'],
         'fieldName'          => ['path' => 'fieldName'],
         'contentId'          => ['var' => 'contentId'],
       ],

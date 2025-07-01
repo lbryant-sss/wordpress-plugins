@@ -44,18 +44,19 @@ if (!defined('ABSPATH') && !defined('BITFORMS_ASSET_URI')) {
   }
   </style>
   <?php
+  $formUpdateVersion = get_option('bit-form_form_update_version');
 $baseCSSPath = "/form-styles/bitform-{$formID}.css";
 $customCSSPath = "/form-styles/bitform-custom-{$formID}.css";
 $standaloneCSSPath = "/form-styles/bitform-standalone-{$formID}.css";
 ?>
-  <link rel="stylesheet" href="<?php echo esc_url(BITFORMS_UPLOAD_BASE_URL . $baseCSSPath)?>" />
+  <link rel="stylesheet" href="<?php echo esc_url(BITFORMS_UPLOAD_BASE_URL . $baseCSSPath . "?bfv={$formUpdateVersion}")?>" />
 
   <?php if (file_exists(BITFORMS_CONTENT_DIR . $customCSSPath)) : ?>
-  <link rel="stylesheet" href="<?php echo esc_url(BITFORMS_UPLOAD_BASE_URL . $customCSSPath) ?>" />
+    <link rel="stylesheet" href="<?php echo esc_url(BITFORMS_UPLOAD_BASE_URL . $customCSSPath . "?bfv={$formUpdateVersion}") ?>" />
   <?php endif; ?>
 
   <?php if (file_exists(BITFORMS_CONTENT_DIR . $standaloneCSSPath)) : ?>
-  <link rel="stylesheet" href="<?php echo esc_url(BITFORMS_UPLOAD_BASE_URL . $standaloneCSSPath) ?>" />
+    <link rel="stylesheet" href="<?php echo esc_url(BITFORMS_UPLOAD_BASE_URL . $standaloneCSSPath . "?bfv={$formUpdateVersion}") ?>" />
   <?php endif; ?>
 
   <?php if (isset($font) && '' !== $font) : ?>
@@ -76,7 +77,7 @@ $standaloneCSSPath = "/form-styles/bitform-standalone-{$formID}.css";
   <script>
   <?php echo $bfGlobals ?>;
   <?php
-  $previewJsPath = BITFORMS_UPLOAD_BASE_URL . '/form-scripts/preview-' . $formID . '.js';
+  $previewJsPath = BITFORMS_UPLOAD_BASE_URL . '/form-scripts/preview-' . $formID . ".js?bfv={$formUpdateVersion}";
 ?>
   </script>
   <script src="<?php echo esc_url($previewJsPath) ?>"></script>

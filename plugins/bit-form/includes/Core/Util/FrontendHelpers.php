@@ -239,7 +239,7 @@ final class FrontendHelpers
     return self::$formsPermissions[$formId];
   }
 
-  public static function is_current_user_can_access($formId, $action = 'entryViewAccess', $scope = '')
+  public static function is_current_user_can_access($formId, $action = 'entryViewAccess', $scope = '', $entryUserId = '')
   {
     $formPermissions = self::getFormPermissions($formId);
     $accessPermission = isset($formPermissions->{$action}) ? $formPermissions->{$action} : null;
@@ -251,26 +251,36 @@ final class FrontendHelpers
     }
     if (is_user_logged_in()) {
       $user = wp_get_current_user();
+      $userId = (string) $user->ID;
       if (in_array('administrator', $user->roles) || current_user_can('manage_bitform')) {
         return true;
       }
       if (!empty($scope) && !empty($accessPermission->{$scope}) && is_string($accessPermission->{$scope})) {
         $accessRolesArray = explode(',', $accessPermission->{$scope});
-        if (self::has_access_for_roles($user, $accessRolesArray)) {
+        if (self::has_access_for_roles($user, $accessRolesArray) && empty($entryUserId)) {
+          return true;
+        }
+        if (!empty($entryUserId) && (('ownEntries' === $scope && $userId === $entryUserId) || ('othersEntries' === $scope && $userId !== $entryUserId))) {
           return true;
         }
       }
 
       if (empty($scope) && isset($accessPermission->ownEntries) && !empty($accessPermission->ownEntries) && is_string($accessPermission->ownEntries)) {
         $accessRolesArray = explode(',', $accessPermission->ownEntries);
-        if (self::has_access_for_roles($user, $accessRolesArray)) {
+        if (self::has_access_for_roles($user, $accessRolesArray) && !empty($entryUserId) && $userId === $entryUserId) {
+          return true;
+        }
+        if (self::has_access_for_roles($user, $accessRolesArray) && empty($entryUserId)) {
           return true;
         }
       }
 
       if (empty($scope) && isset($accessPermission->othersEntries) && !empty($accessPermission->othersEntries) && is_string($accessPermission->othersEntries)) {
         $accessRolesArray = explode(',', $accessPermission->othersEntries);
-        if (self::has_access_for_roles($user, $accessRolesArray)) {
+        if (self::has_access_for_roles($user, $accessRolesArray) && !empty($entryUserId) && $userId !== $entryUserId) {
+          return true;
+        }
+        if (self::has_access_for_roles($user, $accessRolesArray) && empty($entryUserId)) {
           return true;
         }
       }

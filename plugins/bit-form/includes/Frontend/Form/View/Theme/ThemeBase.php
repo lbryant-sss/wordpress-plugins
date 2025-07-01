@@ -2,6 +2,7 @@
 
 namespace BitCode\BitForm\Frontend\Form\View\Theme;
 
+use BitCode\BitForm\Frontend\Form\View\Theme\Fields\AdvanceDateTimeField;
 use BitCode\BitForm\Frontend\Form\View\Theme\Fields\AdvanceFileUpField;
 use BitCode\BitForm\Frontend\Form\View\Theme\Fields\ButtonField;
 use BitCode\BitForm\Frontend\Form\View\Theme\Fields\CheckBoxField;
@@ -183,6 +184,9 @@ INPUTWRAPPER;
         return RatingField::init($field, $rowID, $field_name, $form_atomic_Cls_map, $formID, $error, $value);
       case 'image-select':
         return ImageSelectField::init($field, $rowID, $field_name, $form_atomic_Cls_map, $formID, $error, $value);
+      case 'advanced-datetime':
+        return AdvanceDateTimeField::init($field, $rowID, $field_name, $form_atomic_Cls_map, $formID, $error, $value);
+
       default:
         break;
     }

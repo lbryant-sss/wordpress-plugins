@@ -111,7 +111,7 @@ If you have questions or need cookie banner support, visit our [Help Center](htt
 ### Is Usercentrics Cookiebot free? ###
 Yes, the cookie consent plugin is completely free to use up to a certain number of website visitors. Based on the amount of monthly visitors on your website and if you want to access premium features, your subscription may become subject to a monthly subscription fee.
 
-See all details of Usercentrics CMP [plans and pricing](https://www.cookiebot.com/en/pricing/?utm_source=wordpress&utm_medium=referral&utm_campaign=banner).
+See all details of Usercentrics CMP [plans and pricing](https://usercentrics.com/pricing/?utm_source=wordpress&utm_medium=referral&utm_campaign=banner).
 
 ### My banner is not visible. What should I do? ###
 

@@ -396,26 +396,27 @@ GLOBALOBJ;
   }
 
   private $fldContainersByType = [
-    'select'           => '.__$fk__-dpd-fld-wrp',
-    'country'          => '.__$fk__-country-fld-wrp',
-    'currency'         => '.__$fk__-currency-fld-wrp',
-    'phone-number'     => '.__$fk__-phone-fld-wrp',
-    'file-up'          => '.__$fk__-file-up-wrpr',
-    'advanced-file-up' => '#filepond-__$fk__-container',
-    'paypal'           => '.__$fk__-paypal-wrp',
-    'razorpay'         => '.__$fk__-razorpay-wrp',
-    'recaptcha'        => '.__$fk__-recaptcha-wrp',
-    'stripe'           => '.__$fk__-stripe-fld',
-    'mollie'           => '.__$fk__-mollie-wrp',
-    'repeater'         => '.__$fk__-rpt-fld-wrp',
-    'signature'        => '.__$fk__-inp-fld-wrp',
-    'rating'           => '.__$fk__-inp-fld-wrp',
-    'hcaptcha'         => '.__$fk__-h-captcha-wrp',
+    'select'            => '.__$fk__-dpd-fld-wrp',
+    'country'           => '.__$fk__-country-fld-wrp',
+    'currency'          => '.__$fk__-currency-fld-wrp',
+    'phone-number'      => '.__$fk__-phone-fld-wrp',
+    'file-up'           => '.__$fk__-file-up-wrpr',
+    'advanced-file-up'  => '#filepond-__$fk__-container',
+    'paypal'            => '.__$fk__-paypal-wrp',
+    'razorpay'          => '.__$fk__-razorpay-wrp',
+    'recaptcha'         => '.__$fk__-recaptcha-wrp',
+    'stripe'            => '.__$fk__-stripe-fld',
+    'mollie'            => '.__$fk__-mollie-wrp',
+    'repeater'          => '.__$fk__-rpt-fld-wrp',
+    'signature'         => '.__$fk__-inp-fld-wrp',
+    'rating'            => '.__$fk__-inp-fld-wrp',
+    'hcaptcha'          => '.__$fk__-h-captcha-wrp',
+    'advanced-datetime' => '.__$fk__-advanced-datetime',
   ];
 
   private function generateFieldConfigsJs()
   {
-    $customFlds = ['select', 'country', 'currency', 'phone-number', 'file-up', 'advanced-file-up', 'paypal', 'razorpay', 'stripe', 'mollie', 'recaptcha', 'repeater', 'signature', 'rating', 'turnstile', 'hcaptcha'];
+    $customFlds = ['select', 'country', 'currency', 'phone-number', 'file-up', 'advanced-file-up', 'paypal', 'razorpay', 'stripe', 'mollie', 'recaptcha', 'repeater', 'signature', 'rating', 'turnstile', 'hcaptcha', 'advanced-datetime'];
     $allFieldTypes = array_keys($this->_fields);
     $customFldsInForms = array_intersect($allFieldTypes, $customFlds);
     $formContents = $this->_formContents;

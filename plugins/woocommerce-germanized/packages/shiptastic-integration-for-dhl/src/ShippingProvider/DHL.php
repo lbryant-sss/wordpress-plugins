@@ -193,6 +193,17 @@ class DHL extends Auto {
 			)
 		);
 
+		$this->register_service(
+			'GoGreenPlus',
+			array(
+				'label'          => _x( 'GoGreen Plus', 'dhl', 'woocommerce-germanized' ),
+				'description'    => _x( 'Ship your parcels climate friendly.', 'dhl', 'woocommerce-germanized' ),
+				'shipment_types' => array( 'simple', 'return' ),
+				'countries'      => array( 'DE' ),
+				'zones'          => array( 'dom' ),
+			)
+		);
+
 		$this->register_service( new PreferredLocation( $this ) );
 		$this->register_service( new PreferredNeighbour( $this ) );
 		$this->register_service( new PreferredDay( $this ) );
@@ -240,7 +251,7 @@ class DHL extends Auto {
 			array(
 				'label'       => _x( 'Bulky Goods', 'dhl', 'woocommerce-germanized' ),
 				'description' => _x( 'Deliver as bulky goods.', 'dhl', 'woocommerce-germanized' ),
-				'products'    => array( 'V01PAK', 'V53WPAK' ),
+				'products'    => array( 'V01PAK', 'V53WPAK', 'V54EPAK' ),
 			)
 		);
 

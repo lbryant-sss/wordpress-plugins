@@ -1,7 +1,7 @@
 === Contact Form by Bit Form: Multi Step Form, Calculation Contact Form, Payment Contact Form & Custom Contact Form builder ===
 Plugin Name: Contact Form by Bit Form: Multi Step Form, Calculation Contact Form, Payment Contact Form & Custom Contact Form builder
-Version: 2.19.2
-Stable tag: 2.19.2
+Version: 2.20.0
+Stable tag: 2.20.0
 Author: Contact form builder by Bit form
 Author URI: https://www.bitapps.pro/
 Contributors: bitpressadmin, arif25897, mdrhmaruf, mdabbasuddin, akaioum 
@@ -544,6 +544,22 @@ Yes, Bit Form has built-in spam protection better than any other Contact Form Bu
 6. Response table to view form entries
 
 == Changelog ==
+= 2.20.0 =
+*Release Date: 30 June, 2025*
+*New:
+    1. Advanced Date-Time Field: Introduced a new field type that lets users select both date and time, improving form flexibility and user experience.
+    2. New Smart Tags (Functions): Added ${_bf_datetime_difference()} and ${_bf_add_subtract_datetime()} smart tags to support date and time calculations.
+    3. New Conditional Action: Added a "Config Option" action in conditional logic to dynamically change Date-Time field config based on user input.
+
+*Improvements:
+    1. Enhanced Logic for Date/Time Fields: Improved conditional logic support for Date, Time, Week, and Month fields, enabling more advanced scenarios.
+
+*Fix:
+    1. Fixed an issue with mismatched created time format in the entries table based on site date/time format settings.
+    2. Resolved PayPal transaction ID mismatch issue in the entry details section.
+    3. Fixed a signature file path issue in multi-step forms.
+    4. Resolved a frontend data view & edit issue related to edit access control.
+
 = 2.19.2 =
 *Release Date: 15 June, 2025*
 *Improvements:

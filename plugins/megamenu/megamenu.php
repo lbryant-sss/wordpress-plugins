@@ -35,7 +35,7 @@ if ( ! class_exists( 'Mega_Menu' ) ) :
 		 *
 		 * @var string
 		 */
-		public $version = '3.6.1';
+		public $version = '3.6.1.1';
 
 
 		/**

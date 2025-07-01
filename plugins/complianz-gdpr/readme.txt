@@ -24,7 +24,7 @@ https://www.youtube.com/watch?v=JJzOzNAd5Bw&ab_channel=ReallySimplePlugins
 * Cookie Consent and Conditional Cookie Notice with Custom CSS and Customizable Templates. WCAG Level AA and ADA Compliant.
 * Banner Templates include: GDPR-friendly Cookie Wall - Accept/Dismiss - Consent per Category - Consent per Service
 * Banner Templates also include; Dismiss on scroll, time on page or both based on legislation
-* Cookie Banners and Legal Documents conform to WCAG 2.1 AA Accessibility Guidelines and ADA Compliance.
+* We aim to follow WCAG 2.1 AA guidelines and ADA best practices in the design of our cookie banners and legal documents to support accessibility.
 * No jQuery Dependency
 
 = Consent Management =

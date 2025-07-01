@@ -327,7 +327,6 @@ class FormEntryMetaModel extends Model
     $entry_table = $this->app_db->prefix . 'bitforms_form_entries';
     $fieldCount = count($formFields);
     $getSelectedMetaFldValue = $this->selectedEntryMeta($formFields, $fieldCount);
-
     $selectedMeta = $getSelectedMetaFldValue['selected_meta'];
     $formFieldsNames = $getSelectedMetaFldValue['form_fields_names'];
     $all_values = $getSelectedMetaFldValue['all_values'];
@@ -337,7 +336,7 @@ class FormEntryMetaModel extends Model
     // $entries = $paginateEntry ? array_slice($entries, $offset, $limit) : $entries;
     $paginateEntry = false;
     foreach ($entries as $entryDetail) {
-      $entryIDs[] = $entryDetail->id;
+      $entryIDs[] = isset($entryDetail->id) ? $entryDetail->id : $entryDetail;
     }
     if (empty($entryIDs)) {
       return [

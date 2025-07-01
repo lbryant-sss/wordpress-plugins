@@ -1,11 +1,10 @@
-
-=== Hustle: Pop-Ups, Slide-Ins, Email Opt-Ins & Lead Generation Forms ===
-Plugin Name: Hustle: Pop-Ups, Slide-Ins, Email Opt-Ins & Lead Generation Forms
+=== Hustle - Free Popup Builder & Optin Plugin for Email Marketing & Lead Generation Popups ===
+Plugin Name: Hustle - Free Popup Builder & Optin Plugin for Email Marketing & Lead Generation Popups
 Version: 7.8.7
 Author: WPMU DEV
 Author URI: https://wpmudev.com/
 Contributors: WPMUDEV
-Tags: pop-ups,lead generation,email opt-ins,slide-ins,WordPress marketing plugin
+Tags: popup,lead generation,marketing,optin,popups
 Requires at least: 6.4
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -13,43 +12,43 @@ Stable tag: 7.8.7
 License: GPL v3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Grow your audience and boost conversions with Hustle. Create beautiful pop-ups, slide-ins and lead gen forms for WordPress. No coding needed.
+Grow your audience and boost conversions with Hustle. Create beautiful popups, slide-ins and lead gen forms for WordPress. No coding needed.
 == Description ==
 Meet your new favorite marketing sidekick. ✨
 
 Hustle helps you grow your mailing list, capture leads, and promote your offers, without annoying your visitors or making your site look like a discount warehouse.
 
-Build beautiful pop-ups, slide-ins, and opt-in forms in minutes. Everything is fully customizable, design, layout, triggers, and targeting, no coding needed.
+Build beautiful popups, slide-ins, and optin forms in minutes. Everything is fully customizable, design, layout, triggers, and targeting, no coding needed.
 
 Whether you're just starting out or scaling fast, Hustle gives you the tools and creative freedom to convert more visitors your way.
 
--   Need even more power? Upgrade to [Hustle Pro](https://wpmudev.com/project/hustle/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=hustle-readme-above-the-fold&utm_content=hustle_pro) to unlock unlimited pop-ups and opt-ins, smart triggers, and full access to the WPMU DEV toolkit.
+–   Need even more power? Upgrade to [Hustle Pro](https://wpmudev.com/project/hustle/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=hustle-readme-above-the-fold&utm_content=hustle_pro) to unlock unlimited popups and optins, smart triggers, and full access to the WPMU DEV toolkit.
     
 
 ## TL;DR: Hustle’s Key Features at a Glance
 
--   Advanced Targeting – Show content based on behavior, device, or referral.
+–   Advanced Targeting – Show content based on behavior, device, or referral.
     
--   Scheduling – Time your popups for peak impact.
+–   Scheduling – Time your popups for peak impact.
     
--   Conditional Logic – Show or hide content based on user behavior.
+–   Conditional Logic – Show or hide content based on user behavior.
     
--   Google ReCAPTCHA – Stop spam while keeping things smooth.
+–   Google ReCAPTCHA – Stop spam while keeping things smooth.
     
--   Built-In Analytics – Monitor views, clicks, and conversions.
+–   Built-In Analytics – Monitor views, clicks, and conversions.
     
--   GDPR & HIPAA Ready – Stay compliant with privacy regulations.
+–   GDPR & HIPAA Ready – Stay compliant with privacy regulations.
     
--   All-in-One Dashboard – Manage everything inside WordPress.
+–   All-in-One Dashboard – Manage everything inside WordPress.
     
 
 ★★★★★  
 "Feature rich and easy to use. Gives you everything, from socialshare, pop-up, slide-in, and email capture. Shortcodes make the plugin easy to use. I love it!" – [ReviewHub](https://wordpress.org/support/users/reviewhub/)
 
 ## Why Hustle?
-Pop-ups can be beautiful. Lead gen can be smart. Hustle proves it.
+Popups can be beautiful. Lead gen can be smart. Hustle proves it.
 
-Instead of bombarding your visitors with bland pop-ups and forms, Hustle gives you the creative tools you need to grow your audience and your business, without sacrificing your brand's style (or your sanity).
+Instead of bombarding your visitors with bland popups and forms, Hustle gives you the creative tools you need to grow your audience and your business, without sacrificing your brand's style (or your sanity).
 
 From building your email list to promoting sales, webinars, or limited-time offers, Hustle helps you move users to action, naturally, professionally, and effectively.
 
@@ -59,23 +58,23 @@ Whether you’re a blogger, agency, store owner, or entrepreneur, Hustle makes i
 
 ### Smart, Not Spammy
 **Be engaging, not annoying.**  
-Use pop-ups that are timed, triggered, and targeted to perfection. Customize colors, fonts, images, animations, and more.
+Use popups that are timed, triggered, and targeted to perfection. Customize colors, fonts, images, animations, and more.
 
 ### Slide-Ins That Stay Classy
 **Subtle, stylish messages when visitors are ready.**  
 Perfect for newsletter sign-ups, announcements, or promotions without taking over the whole screen.
 
-### High-Converting Opt-In Forms
+### High-Converting Optin Forms
 **Built-in form builder, so you can grow your list faster.**  
-Create beautiful embedded opt-ins for sidebars, footers, inline areas, and anywhere else you want to invite users to connect.
+Create beautiful embedded optins for sidebars, footers, inline areas, and anywhere else you want to invite users to connect.
 
 ### Connect With Visitors Via Email
 **Keep the conversation going with your audience.**  
 Once a user has engaged with one of your marketing modules, you can follow up with next steps or a welcome message.
 
-### Smart Exit-Intent Pop-Ups
+### Smart Exit-Intent PopUps
 **Catch visitors before they leave your site.**  
-Create pop-ups that activate when visitors are about to navigate away, giving you one last chance to get their attention.
+Create popups that activate when visitors are about to navigate away, giving you one last chance to get their attention.
 
 ### Targeting & Behavior Triggers
 **Right message. Right time. Right user.**  
@@ -83,7 +82,7 @@ Set your campaigns to trigger based on scroll percentage, inactivity, referral s
 
 ### Professional Templates to Get You Started
 **No designer? No problem.**  
-Pick from Hustle’s library of templates for pop-ups, slide-ins, and forms, or start with a blank canvas and design your own.
+Pick from Hustle’s library of templates for popups, slide-ins, and forms, or start with a blank canvas and design your own.
 
 ### Social Sharing Made Simple
 **Grow your audience organically.**  
@@ -109,23 +108,23 @@ View the results of each individual module, with conversion stats displayed in a
 
 ## A Note from Hustle
 
-Hey there! I’m Hustle, your new best friend for lead generation and smart marketing. Whether you need simple email opt-ins or full-blown marketing campaigns with pop-ups, slide-ins, and behavior-driven targeting, I’m here to make it easy (and good-looking).
+Hey there! I’m Hustle, your new best friend for lead generation and smart marketing. Whether you need simple email optins or full-blown marketing campaigns with popups, slide-ins, and behavior-driven targeting, I’m here to make it easy (and good-looking).
 
 And just so you know, I’m part of the WPMU DEV family, an all-star team of plugins and site management tools built to help you run faster, smarter, and more profitable WordPress sites.
 
 Check out some of my sidekicks:
 
--   [Smush](https://wordpress.org/plugins/wp-smushit/): Image compression & optimization
+–   [Smush](https://wordpress.org/plugins/wp-smushit/): Image compression & optimization
     
--   [Forminator](https://wordpress.org/plugins/forminator/): Forms, polls, quizzes & surveys
+–   [Forminator](https://wordpress.org/plugins/forminator/): Forms, polls, quizzes & surveys
     
--   [Hummingbird](https://wordpress.org/plugins/hummingbird-performance/): Page speed & performance booster
+–   [Hummingbird](https://wordpress.org/plugins/hummingbird-performance/): Page speed & performance booster
     
--   [Hustle](https://wordpress.org/plugins/wordpress-popup/): Pop-ups, slide-ins & email opt-ins
+–   [Hustle](https://wordpress.org/plugins/wordpress-popup/): Popups, slide-ins & email optins
     
--   [Defender](https://wordpress.org/plugins/defender-security/): Security, monitoring & hack protection
+–   [Defender](https://wordpress.org/plugins/defender-security/): Security, monitoring & hack protection
     
--   [SmartCrawl](https://wordpress.org/plugins/smartcrawl-seo/): SEO checker, analyzer & optimizer
+–   [SmartCrawl](https://wordpress.org/plugins/smartcrawl-seo/): SEO checker, analyzer & optimizer
     
 
 If you love easy wins (and we know you do 😉), you’re going to love teaming up with Hustle. Let’s grow together!
@@ -134,17 +133,17 @@ If you love easy wins (and we know you do 😉), you’re going to love teaming 
 
 Hustle offers you:
 
--   Pop-ups that convert without annoying users
+–   Popups that convert without annoying users
     
--   Classy slide-ins for subtle promotions
+–   Classy slide-ins for subtle promotions
     
--   Embedded opt-in forms to grow your email list
+–   Embedded optin forms to grow your email list
     
--   Smart behavior triggers based on scroll, exit intent, or time
+–   Smart behavior triggers based on scroll, exit intent, or time
     
--   Social share bars to expand your content’s reach
+–   Social share bars to expand your content’s reach
     
--   Stylish templates to get started fast
+–   Stylish templates to get started fast
     
 
 ## Installation – Get Hustling in 5 Minutes
@@ -156,7 +155,7 @@ Just beautiful results, fast.
     
 2.  Activate Hustle through the 'Plugins' menu in WordPress.
     
-3.  Navigate to Hustle in your dashboard and start creating pop-ups, slide-ins, and opt-ins.
+3.  Navigate to Hustle in your dashboard and start creating popups, slide-ins, and optins.
     
 4.  Publish your campaigns and watch your conversions climb.
     
@@ -165,15 +164,15 @@ Need help? [Full documentation is available here](https://wpmudev.com/docs/wpmu-
 
 ### Learn The Ropes With These Hands-On Hustle Tutorials
 
--   [How to Make the Perfect Popup with Hustle](https://wpmudev.com/blog/make-perfect-popup-with-hustle/)
+–   [How to Make the Perfect Popup with Hustle](https://wpmudev.com/blog/make-perfect-popup-with-hustle/)
     
--   [How To Get the Most Out of Using Hustle](https://wpmudev.com/blog/get-the-most-out-of-hustle/)
+–   [How To Get the Most Out of Using Hustle](https://wpmudev.com/blog/get-the-most-out-of-hustle/)
     
--   [Oh, Behave! How to Use Behavior Settings in Hustle](https://wpmudev.com/blog/hustle-behavior-settings/)
+–   [Oh, Behave! How to Use Behavior Settings in Hustle](https://wpmudev.com/blog/hustle-behavior-settings/)
     
--   [How to Use Visibility Conditions in Hustle](https://wpmudev.com/blog/hustle-visibility-conditions/)
+–   [How to Use Visibility Conditions in Hustle](https://wpmudev.com/blog/hustle-visibility-conditions/)
     
--   [How to Get the Most Email Subscribers Using Hustle](https://wpmudev.com/blog/how-to-get-the-most-email-subscribers-using-hustle/)
+–   [How to Get the Most Email Subscribers Using Hustle](https://wpmudev.com/blog/how-to-get-the-most-email-subscribers-using-hustle/)
     
 
 ## About Us
@@ -198,9 +197,9 @@ Not a chance. Hustle is optimized for performance and built by the same team beh
 Absolutely. Hustle integrates with popular services like Mailchimp, ActiveCampaign, Campaign Monitor, SendGrid, and more.
 
 =Is Hustle GDPR compliant?=  
-Yes! Hustle offers features like opt-in consent checkboxes and data privacy settings to help you comply with GDPR regulations.
+Yes! Hustle offers features like optin consent checkboxes and data privacy settings to help you comply with GDPR regulations.
 
-=Can I customize pop-ups and opt-ins to match my brand?=  
+=Can I customize popups and optins to match my brand?=  
 Of course! Hustle’s visual editor lets you tweak every detail, fonts, colors, backgrounds, animations, layouts, to match your brand perfectly. As well as basic appearance elements, Hustle also allows for more advanced detailing like borders, spacing, shadow, module sizing and more. There’s also custom CSS, so you can really make your modules your own.
 
 = How can I report security issues or bugs? =

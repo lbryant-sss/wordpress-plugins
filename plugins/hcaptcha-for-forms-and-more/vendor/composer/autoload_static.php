@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitcbdd1530928a198037b6f398fb173df9
+class ComposerStaticInit225338e3d608b4de73fc149ed4707254
 {
     public static $prefixLengthsPsr4 = array (
         'K' => 
@@ -49,6 +49,8 @@ class ComposerStaticInitcbdd1530928a198037b6f398fb173df9
         'HCaptcha\\Admin\\WhatsNew' => __DIR__ . '/../..' . '/src/php/Admin/WhatsNew.php',
         'HCaptcha\\Affiliates\\Login' => __DIR__ . '/../..' . '/src/php/Affiliates/Login.php',
         'HCaptcha\\Affiliates\\Register' => __DIR__ . '/../..' . '/src/php/Affiliates/Register.php',
+        'HCaptcha\\AntiSpam\\AntiSpam' => __DIR__ . '/../..' . '/src/php/AntiSpam/AntiSpam.php',
+        'HCaptcha\\AntiSpam\\ProviderBase' => __DIR__ . '/../..' . '/src/php/AntiSpam/ProviderBase.php',
         'HCaptcha\\Asgaros\\Base' => __DIR__ . '/../..' . '/src/php/Asgaros/Base.php',
         'HCaptcha\\Asgaros\\Form' => __DIR__ . '/../..' . '/src/php/Asgaros/Form.php',
         'HCaptcha\\AutoVerify\\AutoVerify' => __DIR__ . '/../..' . '/src/php/AutoVerify/AutoVerify.php',
@@ -227,9 +229,9 @@ class ComposerStaticInitcbdd1530928a198037b6f398fb173df9
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitcbdd1530928a198037b6f398fb173df9::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitcbdd1530928a198037b6f398fb173df9::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitcbdd1530928a198037b6f398fb173df9::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit225338e3d608b4de73fc149ed4707254::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit225338e3d608b4de73fc149ed4707254::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit225338e3d608b4de73fc149ed4707254::$classMap;
 
         }, null, ClassLoader::class);
     }

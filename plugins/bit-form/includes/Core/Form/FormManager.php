@@ -836,18 +836,6 @@ class FormManager
 
     unset($updatedValue['_ajax_nonce'], $_REQUEST['g-recaptcha-response']);
 
-    $workFlowRunHelper = new WorkFlow($formID);
-    $workFlowreturnedOnSubmit = $workFlowRunHelper->executeOnSubmit(
-      'edit',
-      $this->getFormContentWithValue($updatedValue)->fields,
-      $updatedValue,
-      $entryID,
-      $log_id
-    );
-    if (!empty($workFlowreturnedOnSubmit['fields'])) {
-      $updatedValue = $workFlowreturnedOnSubmit['fields'];
-    }
-
     $toUpdateValues = [];
     foreach ($form_fields as $field) {
       if (isset($updatedValue[$field['key']])) {
@@ -862,6 +850,19 @@ class FormManager
         $img_type = $field->config->imgTyp;
         $toUpdateValues[$key] = $this->getSignatureFilePath($fld_data, $this->form_id, $key, $entryID, $img_type);
       }
+    }
+
+    $workFlowRunHelper = new WorkFlow($formID);
+    $workFlowreturnedOnSubmit = $workFlowRunHelper->executeOnSubmit(
+      'edit',
+      $this->getFormContentWithValue($toUpdateValues)->fields,
+      $toUpdateValues,
+      $entryID,
+      $log_id
+    );
+
+    if (!empty($workFlowreturnedOnSubmit['fields'])) {
+      $updatedValue = $workFlowreturnedOnSubmit['fields'];
     }
 
     $formEntryMetaUpdateStatus = $entryMeta->update(

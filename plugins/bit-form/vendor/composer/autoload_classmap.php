@@ -249,6 +249,7 @@ return array(
     'BitCode\\BitForm\\Frontend\\Form\\View\\FormViewer' => $baseDir . '/includes/Frontend/Form/View/FormViewer.php',
     'BitCode\\BitForm\\Frontend\\Form\\View\\InputWrapper' => $baseDir . '/includes/Frontend/Form/View/InputWrapper.php',
     'BitCode\\BitForm\\Frontend\\Form\\View\\Theme\\DefaultTheme' => $baseDir . '/includes/Frontend/Form/View/Theme/DefaultTheme.php',
+    'BitCode\\BitForm\\Frontend\\Form\\View\\Theme\\Fields\\AdvanceDateTimeField' => $baseDir . '/includes/Frontend/Form/View/Theme/Fields/AdvanceDateTimeField.php',
     'BitCode\\BitForm\\Frontend\\Form\\View\\Theme\\Fields\\AdvanceFileUpField' => $baseDir . '/includes/Frontend/Form/View/Theme/Fields/AdvanceFileUpField.php',
     'BitCode\\BitForm\\Frontend\\Form\\View\\Theme\\Fields\\ButtonField' => $baseDir . '/includes/Frontend/Form/View/Theme/Fields/ButtonField.php',
     'BitCode\\BitForm\\Frontend\\Form\\View\\Theme\\Fields\\CheckBoxField' => $baseDir . '/includes/Frontend/Form/View/Theme/Fields/CheckBoxField.php',

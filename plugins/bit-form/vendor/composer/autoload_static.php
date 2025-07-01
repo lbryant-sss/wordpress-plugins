@@ -303,6 +303,7 @@ class ComposerStaticInitd9e0233255f82de3026744d6f2fe1094
         'BitCode\\BitForm\\Frontend\\Form\\View\\FormViewer' => __DIR__ . '/../..' . '/includes/Frontend/Form/View/FormViewer.php',
         'BitCode\\BitForm\\Frontend\\Form\\View\\InputWrapper' => __DIR__ . '/../..' . '/includes/Frontend/Form/View/InputWrapper.php',
         'BitCode\\BitForm\\Frontend\\Form\\View\\Theme\\DefaultTheme' => __DIR__ . '/../..' . '/includes/Frontend/Form/View/Theme/DefaultTheme.php',
+        'BitCode\\BitForm\\Frontend\\Form\\View\\Theme\\Fields\\AdvanceDateTimeField' => __DIR__ . '/../..' . '/includes/Frontend/Form/View/Theme/Fields/AdvanceDateTimeField.php',
         'BitCode\\BitForm\\Frontend\\Form\\View\\Theme\\Fields\\AdvanceFileUpField' => __DIR__ . '/../..' . '/includes/Frontend/Form/View/Theme/Fields/AdvanceFileUpField.php',
         'BitCode\\BitForm\\Frontend\\Form\\View\\Theme\\Fields\\ButtonField' => __DIR__ . '/../..' . '/includes/Frontend/Form/View/Theme/Fields/ButtonField.php',
         'BitCode\\BitForm\\Frontend\\Form\\View\\Theme\\Fields\\CheckBoxField' => __DIR__ . '/../..' . '/includes/Frontend/Form/View/Theme/Fields/CheckBoxField.php',

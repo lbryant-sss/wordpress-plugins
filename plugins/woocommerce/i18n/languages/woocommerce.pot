@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce 10.0.0-rc.1\n"
+"Project-Id-Version: WooCommerce 10.0.0-rc.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-06-23T15:19:22+00:00\n"
+"POT-Creation-Date: 2025-06-30T13:35:46+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: woocommerce\n"
@@ -9511,8 +9511,7 @@ msgstr ""
 #: assets/client/admin/chunks/settings-payments-cheque.js:1
 #: assets/client/admin/chunks/settings-payments-cod.js:1
 #: assets/client/admin/product-editor/index.js:2
-#: assets/client/blocks/all-products.js:17
-#: assets/client/blocks/blockified-product-details.js:1
+#: assets/client/blocks/product-details.js:1
 msgid "Description"
 msgstr ""
 
@@ -11049,7 +11048,7 @@ msgstr ""
 #: templates/single-product-reviews.php:37
 #: assets/client/admin/chunks/customize-store.js:1
 #: assets/client/admin/chunks/homescreen.js:1
-#: assets/client/blocks/blockified-product-details.js:1
+#: assets/client/blocks/product-details.js:1
 #: assets/client/blocks/product-reviews-title.js:6
 msgid "Reviews"
 msgstr ""
@@ -11893,22 +11892,22 @@ msgid "Choose countries / regions&hellip;"
 msgstr ""
 
 #: includes/admin/class-wc-admin-settings.php:791
-#: includes/wc-formatting-functions.php:1556
+#: includes/wc-formatting-functions.php:1563
 msgid "Day(s)"
 msgstr ""
 
 #: includes/admin/class-wc-admin-settings.php:792
-#: includes/wc-formatting-functions.php:1557
+#: includes/wc-formatting-functions.php:1564
 msgid "Week(s)"
 msgstr ""
 
 #: includes/admin/class-wc-admin-settings.php:793
-#: includes/wc-formatting-functions.php:1558
+#: includes/wc-formatting-functions.php:1565
 msgid "Month(s)"
 msgstr ""
 
 #: includes/admin/class-wc-admin-settings.php:794
-#: includes/wc-formatting-functions.php:1559
+#: includes/wc-formatting-functions.php:1566
 msgid "Year(s)"
 msgstr ""
 
@@ -14658,8 +14657,8 @@ msgstr ""
 #: includes/shipping/legacy-flat-rate/includes/settings-flat-rate.php:101
 #: includes/shipping/legacy-free-shipping/class-wc-shipping-legacy-free-shipping.php:138
 #: includes/wc-account-functions.php:391
-#: includes/wc-formatting-functions.php:1376
-#: includes/wc-formatting-functions.php:1402
+#: includes/wc-formatting-functions.php:1383
+#: includes/wc-formatting-functions.php:1409
 #: src/Admin/API/Reports/Coupons/Controller.php:250
 #: src/Admin/API/Reports/Coupons/DataStore.php:197
 #: src/Admin/API/Reports/Products/Controller.php:370
@@ -14754,7 +14753,7 @@ msgstr ""
 
 #: includes/admin/list-tables/class-wc-admin-list-table-products.php:317
 #: includes/admin/reports/class-wc-report-stock.php:118
-#: includes/wc-formatting-functions.php:1266
+#: includes/wc-formatting-functions.php:1273
 #: includes/wc-product-functions.php:1083
 #: src/Internal/Features/ProductBlockEditor/ProductTemplates/ProductVariationTemplate.php:396
 #: src/Internal/Features/ProductBlockEditor/ProductTemplates/SimpleProductTemplate.php:862
@@ -21313,7 +21312,7 @@ msgstr ""
 
 #: includes/class-wc-checkout.php:183
 #: includes/class-wc-emails.php:69
-#: includes/class-wc-payment-gateways.php:58
+#: includes/class-wc-payment-gateways.php:61
 #: includes/class-wc-shipping.php:80
 #: includes/class-woocommerce.php:168
 msgid "Cloning is forbidden."
@@ -21321,7 +21320,7 @@ msgstr ""
 
 #: includes/class-wc-checkout.php:190
 #: includes/class-wc-emails.php:78
-#: includes/class-wc-payment-gateways.php:67
+#: includes/class-wc-payment-gateways.php:70
 #: includes/class-wc-shipping.php:89
 #: includes/class-woocommerce.php:177
 #: includes/rest-api/Utilities/SingletonTrait.php:49
@@ -21470,7 +21469,7 @@ msgid "Please rate the product."
 msgstr ""
 
 #: includes/class-wc-comments.php:473
-#: assets/client/blocks/blockified-product-reviews.js:2
+#: assets/client/blocks/product-reviews.js:2
 msgid "Product Reviews"
 msgstr ""
 
@@ -22572,7 +22571,7 @@ msgid "Error during status transition."
 msgstr ""
 
 #. translators: Payment gateway enabled notification email. 1: Username, 2: Gateway Title, 3: Site URL, 4: Gateway Settings URL, 5: Admin Email, 6: Site Name, 7: Site URL.
-#: includes/class-wc-payment-gateways.php:223
+#: includes/class-wc-payment-gateways.php:232
 #, php-format
 msgid ""
 "Howdy %1$s,\n"
@@ -22593,7 +22592,7 @@ msgid ""
 msgstr ""
 
 #. translators: Payment gateway enabled notification email subject. %s1: Site title, $s2: Gateway title.
-#: includes/class-wc-payment-gateways.php:260
+#: includes/class-wc-payment-gateways.php:269
 #, php-format
 msgid "[%1$s] Payment gateway \"%2$s\" enabled"
 msgstr ""
@@ -32252,55 +32251,55 @@ msgid "Fixed product discount"
 msgstr ""
 
 #. translators: %s: stock amount
-#: includes/wc-formatting-functions.php:1273
+#: includes/wc-formatting-functions.php:1280
 #, php-format
 msgid "Only %s left in stock"
 msgstr ""
 
 #. translators: %s: stock amount
-#: includes/wc-formatting-functions.php:1278
+#: includes/wc-formatting-functions.php:1285
 #, php-format
 msgid "%s in stock"
 msgstr ""
 
-#: includes/wc-formatting-functions.php:1283
+#: includes/wc-formatting-functions.php:1290
 msgid "(can be backordered)"
 msgstr ""
 
 #. translators: %s is a product's regular price.
-#: includes/wc-formatting-functions.php:1320
+#: includes/wc-formatting-functions.php:1327
 #, php-format
 msgid "Original price was: %s."
 msgstr ""
 
 #. translators: %s is a product's current (sale) price.
-#: includes/wc-formatting-functions.php:1329
+#: includes/wc-formatting-functions.php:1336
 #, php-format
 msgid "Current price is: %s."
 msgstr ""
 
 #. translators: 1: price from 2: price to
-#: includes/wc-formatting-functions.php:1344
+#: includes/wc-formatting-functions.php:1351
 #, php-format
 msgctxt "Price range: from-to"
 msgid "%1$s <span aria-hidden=\"true\">&ndash;</span> %2$s"
 msgstr ""
 
 #. translators: 1: price from 2: price to
-#: includes/wc-formatting-functions.php:1348
+#: includes/wc-formatting-functions.php:1355
 #, php-format
 msgid "Price range: %1$s through %2$s"
 msgstr ""
 
 #. translators: 1. A formatted number; 2. A label for a weight unit of measure. E.g. 2.72 kg.
-#: includes/wc-formatting-functions.php:1371
+#: includes/wc-formatting-functions.php:1378
 #, php-format
 msgctxt "formatted weight"
 msgid "%1$s %2$s"
 msgstr ""
 
 #. translators: 1. A formatted number; 2. A label for a dimensions unit of measure. E.g. 3.14 cm.
-#: includes/wc-formatting-functions.php:1397
+#: includes/wc-formatting-functions.php:1404
 #, php-format
 msgctxt "formatted dimensions"
 msgid "%1$s %2$s"
@@ -37758,7 +37757,7 @@ msgstr ""
 msgid "Increase quantity of %s"
 msgstr ""
 
-#: src/Blocks/BlockTypes/AddToCartWithOptions/AddToCartWithOptions.php:576
+#: src/Blocks/BlockTypes/AddToCartWithOptions/AddToCartWithOptions.php:577
 #: src/Blocks/BlockTypes/ProductCollection/Renderer.php:208
 #: assets/client/admin/app/index.js:2
 #: assets/client/admin/chunks/6005.js:1
@@ -37770,14 +37769,14 @@ msgid "Dismiss this notice"
 msgstr ""
 
 #. translators: %1$s: Product name. %2$s: Sale price. %3$s: Regular price
-#: src/Blocks/BlockTypes/AddToCartWithOptions/GroupedProductItemSelector.php:99
+#: src/Blocks/BlockTypes/AddToCartWithOptions/GroupedProductItemSelector.php:121
 #: templates/single-product/add-to-cart/grouped.php:71
 #, php-format
 msgid "Buy one of %1$s on sale for %2$s, original price was %3$s"
 msgstr ""
 
 #. translators: %1$s: Product name. %2$s: Product price
-#: src/Blocks/BlockTypes/AddToCartWithOptions/GroupedProductItemSelector.php:107
+#: src/Blocks/BlockTypes/AddToCartWithOptions/GroupedProductItemSelector.php:129
 #: templates/single-product/add-to-cart/grouped.php:79
 #, php-format
 msgid "Buy one of %1$s for %2$s"
@@ -38136,14 +38135,6 @@ msgstr[1] ""
 msgid "[product description rendering halted]"
 msgstr ""
 
-#: src/Blocks/BlockTypes/ProductDetails.php:28
-msgid "Classic"
-msgstr ""
-
-#: src/Blocks/BlockTypes/ProductDetails.php:37
-msgid "Minimal"
-msgstr ""
-
 #. translators:  {{label}} is the label of the active filter item.
 #: src/Blocks/BlockTypes/ProductFilterActive.php:61
 msgid "Remove filter: {{label}}"
@@ -38325,7 +38316,6 @@ msgstr ""
 #. translators: %s is product title
 #: src/Blocks/BlockTypes/Reviews/ProductReviewForm.php:67
 #: templates/single-product-reviews.php:75
-#: assets/client/blocks/all-products.js:17
 #: assets/client/blocks/product-review-form.js:1
 msgid "Add a review"
 msgstr ""
@@ -38346,7 +38336,6 @@ msgstr ""
 
 #: src/Blocks/BlockTypes/Reviews/ProductReviewForm.php:73
 #: templates/single-product-reviews.php:81
-#: assets/client/blocks/all-products.js:17
 #: assets/client/blocks/product-review-form.js:1
 msgid "Submit"
 msgstr ""
@@ -41348,61 +41337,61 @@ msgstr ""
 msgid "Database date field considered for Revenue and Orders reports"
 msgstr ""
 
-#: src/Internal/Admin/Settings/Payments.php:146
+#: src/Internal/Admin/Settings/Payments.php:148
 #: assets/client/admin/wp-admin-scripts/settings-embed.js:2
 msgid "Take offline payments"
 msgstr ""
 
-#: src/Internal/Admin/Settings/Payments.php:147
+#: src/Internal/Admin/Settings/Payments.php:149
 msgid "Accept payments offline using multiple different methods. These can also be used to test purchases."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders.php:619
-#: src/Internal/Admin/Settings/PaymentsProviders.php:686
+#: src/Internal/Admin/Settings/PaymentsProviders.php:691
+#: src/Internal/Admin/Settings/PaymentsProviders.php:758
 msgid "Invalid suggestion ID."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders.php:729
+#: src/Internal/Admin/Settings/PaymentsProviders.php:801
 msgid "Wallets & Express checkouts"
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders.php:730
+#: src/Internal/Admin/Settings/PaymentsProviders.php:802
 msgid "Allow shoppers to fast-track the checkout process with express options like Apple Pay and Google Pay."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders.php:735
+#: src/Internal/Admin/Settings/PaymentsProviders.php:807
 msgid "Buy Now, Pay Later"
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders.php:736
+#: src/Internal/Admin/Settings/PaymentsProviders.php:808
 msgid "Offer flexible payment options to your shoppers."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders.php:741
+#: src/Internal/Admin/Settings/PaymentsProviders.php:813
 msgid "Crypto Payments"
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders.php:742
+#: src/Internal/Admin/Settings/PaymentsProviders.php:814
 msgid "Offer cryptocurrency payment options to your shoppers."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders.php:747
+#: src/Internal/Admin/Settings/PaymentsProviders.php:819
 msgid "Payment Providers"
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders.php:748
+#: src/Internal/Admin/Settings/PaymentsProviders.php:820
 msgid "Give your shoppers additional ways to pay."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/MercadoPago.php:33
+#: src/Internal/Admin/Settings/PaymentsProviders/MercadoPago.php:34
 msgid "Installments without cards"
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/MercadoPago.php:36
+#: src/Internal/Admin/Settings/PaymentsProviders/MercadoPago.php:37
 msgid "Credit and debit cards"
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/MercadoPago.php:39
+#: src/Internal/Admin/Settings/PaymentsProviders/MercadoPago.php:40
 msgid "Invoice"
 msgstr ""
 
@@ -41436,232 +41425,232 @@ msgstr ""
 msgid "Where from in the onboarding flow this request was triggered."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:834
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:838
 #: src/Internal/Admin/Settings/PaymentsRestController.php:383
 msgid "The location argument must be a string."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:845
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:849
 #: src/Internal/Admin/Settings/PaymentsRestController.php:394
 msgid "The location argument must be a valid ISO3166 alpha-2 country code."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:916
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:920
 msgid "The general state of the onboarding process."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:922
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:926
 msgid "Whether the onboarding process is started."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:928
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:932
 msgid "Whether the onboarding process is completed."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:934
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:938
 msgid "Whether the onboarding process is in test mode."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:940
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:944
 msgid "Whether WooPayments is in dev mode."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:948
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:952
 msgid "The onboarding steps."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:956
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:960
 msgid "The unique identifier for the step."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:962
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:966
 msgid "The relative path of the step to use for frontend navigation."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:968
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:972
 msgid "The steps that are required to be completed before this step."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:977
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:981
 msgid "The current status of the step."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:988
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:992
 msgid "Errors list for the step."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:997
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:1001
 msgid "The available actions for the step."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:1003
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:1007
 msgid "Action to signal the step start."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:1010
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:1014
 msgid "Action to save step information in the database."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:1017
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:1021
 msgid "Action to check the step status."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:1024
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:1028
 msgid "Action to signal the step completion."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:1031
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:1035
 msgid "Action to clean the step progress."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:1038
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:1042
 msgid "Action to authorize the WPCOM connection."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:1045
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:1049
 msgid "Action to initialize a test account."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:1052
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:1056
 msgid "Action to create or resume an embedded KYC session."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:1059
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:1063
 msgid "Action to finish an embedded KYC session."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:1066
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:1070
 msgid "Action to use as a fallback when dealing with errors with the embedded KYC."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:1075
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:1079
 msgid "Various contextual data for the step to use."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:1084
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:1088
 msgid "Various contextual data for the onboarding process to use."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:1102
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:1106
 msgid "The action type to determine how to use the URL."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:1109
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:1113
 msgid "The URL to use for the action."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:191
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1499
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:194
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1583
 msgid "Invalid onboarding step ID."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:707
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:746
 msgid "Invalid onboarding step data."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:735
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:774
 msgid "Save action not supported for the onboarding step ID."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:842
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:881
 msgid "A test account is already set up."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:855
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:861
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:894
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:900
 msgid "An account is already set up. Reset the onboarding first."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:899
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:938
 msgid "An unexpected error happened while initializing the test account."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:938
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1057
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1179
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:977
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1117
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1242
 msgid "Received an unexpected response from the platform."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:947
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:986
 msgid "Failed to initialize the test account."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1018
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1078
 msgid "An unexpected error happened while creating the KYC session."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1066
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1126
 msgid "Failed to get the KYC session data."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1082
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1213
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1142
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1281
 msgid "A live account is set up. Reset the onboarding first."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1140
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1203
 msgid "An unexpected error happened while finalizing the KYC session."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1188
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1251
 msgid "Failed to finish the KYC session."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1237
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1474
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1305
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1558
 msgid "Another onboarding action is already in progress. Please wait for it to finish."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1306
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1381
 msgid "An unexpected error happened while resetting onboarding."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1330
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1405
 msgid "Failed to reset onboarding."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1392
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1465
 msgid "An unexpected error happened while disabling the test account."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1416
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1500
 msgid "Failed to disable the test account."
 msgstr ""
 
 #. translators: %s: WooPayments.
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1454
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1538
 #, php-format
 msgid "The %s extension is not active."
 msgstr ""
 
 #. translators: %s: WooPayments.
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1465
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1549
 #, php-format
 msgid "The %s extension is not up-to-date. Please update to the latest version and try again."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1506
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1590
 msgid "Onboarding step requirements are not met."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1513
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1597
 #: assets/client/admin/chunks/6005.js:1
 msgid "There are environment or store setup issues which are blocking progress. Please resolve them to proceed."
 msgstr ""
 
 #. translators: %s: The required key that is missing.
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1761
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1848
 #, php-format
 msgid "The onboarding step is missing required entries: %s"
 msgstr ""
 
 #. translators: %s: The invalid step ID.
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1766
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1853
 #, php-format
 msgid "The onboarding step ID is invalid: %s"
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:2249
+#: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:2343
 msgid "Failed to get onboarding fields data."
 msgstr ""
 
@@ -41701,348 +41690,352 @@ msgstr ""
 msgid "The order value must be an integer."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:581
+#: src/Internal/Admin/Settings/PaymentsRestController.php:610
 msgid "The ordered providers list. This includes registered payment gateways, suggestions, and offline payment methods group entry. The individual offline payment methods are separate."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:588
+#: src/Internal/Admin/Settings/PaymentsRestController.php:617
 msgid "The ordered offline payment methods providers list."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:595
+#: src/Internal/Admin/Settings/PaymentsRestController.php:624
 msgid "The list of suggestions, excluding the ones part of the providers list."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:602
+#: src/Internal/Admin/Settings/PaymentsRestController.php:631
 msgid "The suggestion categories."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:607
+#: src/Internal/Admin/Settings/PaymentsRestController.php:636
 msgid "A suggestion category."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:613
+#: src/Internal/Admin/Settings/PaymentsRestController.php:642
 msgid "The unique identifier for the category."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:619
+#: src/Internal/Admin/Settings/PaymentsRestController.php:648
 msgid "The priority of the category."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:625
+#: src/Internal/Admin/Settings/PaymentsRestController.php:654
 msgid "The title of the category."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:631
+#: src/Internal/Admin/Settings/PaymentsRestController.php:660
 msgid "The description of the category."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:652
+#: src/Internal/Admin/Settings/PaymentsRestController.php:681
 msgid "A payment provider in the context of the main Payments Settings page list."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:656
+#: src/Internal/Admin/Settings/PaymentsRestController.php:685
 msgid "The unique identifier for the provider."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:662
+#: src/Internal/Admin/Settings/PaymentsRestController.php:691
 msgid "The sort order of the provider."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:668
+#: src/Internal/Admin/Settings/PaymentsRestController.php:697
 msgid "The type of payment provider. Use this to differentiate between the various items in the list and determine their intended use."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:674
+#: src/Internal/Admin/Settings/PaymentsRestController.php:703
 msgid "The title of the provider."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:680
+#: src/Internal/Admin/Settings/PaymentsRestController.php:709
 msgid "The description of the provider."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:685
+#: src/Internal/Admin/Settings/PaymentsRestController.php:714
 msgid "Supported features for this provider."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:695
+#: src/Internal/Admin/Settings/PaymentsRestController.php:724
 msgid "The corresponding plugin details of the provider."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:707
+#: src/Internal/Admin/Settings/PaymentsRestController.php:736
 msgid "The type of the containing entity. Generally this is a regular plugin but it can also be a non-standard entity like a theme or a must-user plugin."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:713
+#: src/Internal/Admin/Settings/PaymentsRestController.php:742
 msgid "The slug of the containing entity."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:719
+#: src/Internal/Admin/Settings/PaymentsRestController.php:748
 msgid "The plugin main file. This is a relative path to the plugins directory."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:730
+#: src/Internal/Admin/Settings/PaymentsRestController.php:759
 msgid "The status of the containing entity."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:738
+#: src/Internal/Admin/Settings/PaymentsRestController.php:767
 msgid "The URL of the provider image."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:743
+#: src/Internal/Admin/Settings/PaymentsRestController.php:772
 msgid "The URL of the provider icon (square aspect ratio - 72px by 72px)."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:748
+#: src/Internal/Admin/Settings/PaymentsRestController.php:777
 msgid "Links for the provider."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:756
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1090
+#: src/Internal/Admin/Settings/PaymentsRestController.php:785
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1119
 msgid "The type of the link."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:762
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1096
+#: src/Internal/Admin/Settings/PaymentsRestController.php:791
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1125
 msgid "The URL of the link."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:771
+#: src/Internal/Admin/Settings/PaymentsRestController.php:800
 msgid "The general state of the provider with regards to it's payments processing."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:775
+#: src/Internal/Admin/Settings/PaymentsRestController.php:804
 msgid "Whether the provider is enabled for use on checkout."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:781
+#: src/Internal/Admin/Settings/PaymentsRestController.php:810
 msgid "Whether the provider has a payments processing account connected."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:787
+#: src/Internal/Admin/Settings/PaymentsRestController.php:816
 msgid "Whether the provider needs setup."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:793
+#: src/Internal/Admin/Settings/PaymentsRestController.php:822
 msgid "Whether the provider is in test mode for payments processing."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:799
+#: src/Internal/Admin/Settings/PaymentsRestController.php:828
 msgid "Whether the provider is in dev mode. Having this true usually leads to forcing test payments. "
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:807
+#: src/Internal/Admin/Settings/PaymentsRestController.php:836
 msgid "The management details of the provider."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:816
+#: src/Internal/Admin/Settings/PaymentsRestController.php:845
 msgid "The link to the settings page for the payment gateway."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:822
+#: src/Internal/Admin/Settings/PaymentsRestController.php:851
 msgid "The URL to the settings page for the payment gateway."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:834
+#: src/Internal/Admin/Settings/PaymentsRestController.php:863
 msgid "Onboarding-related details for the provider."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:838
+#: src/Internal/Admin/Settings/PaymentsRestController.php:867
 msgid "The type of onboarding process the provider supports."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:844
+#: src/Internal/Admin/Settings/PaymentsRestController.php:873
 msgid "The state of the onboarding process."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:854
+#: src/Internal/Admin/Settings/PaymentsRestController.php:883
 msgid "The onboarding preload link for the payment gateway."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:860
+#: src/Internal/Admin/Settings/PaymentsRestController.php:889
 msgid "The URL to do onboarding preload for the payment gateway."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:868
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1229
+#: src/Internal/Admin/Settings/PaymentsRestController.php:897
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1293
 msgid "The start/continue onboarding link for the payment gateway."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:874
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1235
+#: src/Internal/Admin/Settings/PaymentsRestController.php:903
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1299
 msgid "The URL to start/continue onboarding for the payment gateway."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:884
+#: src/Internal/Admin/Settings/PaymentsRestController.php:913
 msgid "The list of recommended payment methods details for the payment gateway."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:889
+#: src/Internal/Admin/Settings/PaymentsRestController.php:918
 msgid "The details for a recommended payment method."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:895
+#: src/Internal/Admin/Settings/PaymentsRestController.php:924
 msgid "The unique identifier for the payment method."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:901
+#: src/Internal/Admin/Settings/PaymentsRestController.php:930
 msgid "The sort order of the payment method."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:907
+#: src/Internal/Admin/Settings/PaymentsRestController.php:936
 msgid "Whether the payment method should be recommended as enabled or not."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:913
+#: src/Internal/Admin/Settings/PaymentsRestController.php:942
 msgid "Whether the payment method should be required (and force-enabled) or not."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:919
+#: src/Internal/Admin/Settings/PaymentsRestController.php:948
 msgid "The title of the payment method. Does not include HTML tags."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:925
+#: src/Internal/Admin/Settings/PaymentsRestController.php:954
 msgid "The description of the payment method. It can contain basic HTML."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:931
+#: src/Internal/Admin/Settings/PaymentsRestController.php:960
 msgid "The URL of the payment method icon or a base64-encoded SVG image."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:942
+#: src/Internal/Admin/Settings/PaymentsRestController.php:971
 msgid "The tags associated with the provider."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:948
+#: src/Internal/Admin/Settings/PaymentsRestController.php:977
 msgid "Tag associated with the provider."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:954
+#: src/Internal/Admin/Settings/PaymentsRestController.php:983
 msgid "The suggestion ID matching this provider."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:966
+#: src/Internal/Admin/Settings/PaymentsRestController.php:995
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1158
 msgid "The link to mark the suggestion as attached. This should be called when an extension is installed."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:972
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1001
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1164
 msgid "The URL to attach the suggestion."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:980
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1009
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1172
 msgid "The link to hide the suggestion."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:986
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1015
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1178
 msgid "The URL to hide the suggestion."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1006
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1035
 msgid "A suggestion with full details."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1012
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1041
 msgid "The unique identifier for the suggestion."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1018
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1047
 msgid "The priority of the suggestion."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1024
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1053
 msgid "The type of the suggestion."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1030
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1059
 msgid "The title of the suggestion."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1036
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1065
 msgid "The description of the suggestion."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1048
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1077
 msgid "The type of the plugin."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1054
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1083
 msgid "The slug of the plugin."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1065
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1094
 msgid "The status of the plugin."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1073
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1102
 msgid "The URL of the image."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1078
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1107
 msgid "The URL of the icon (square aspect ratio)."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1105
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1112
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1134
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1141
 msgid "The tags associated with the suggestion."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1118
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1147
 msgid "The category of the suggestion."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1134
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1198
 msgid "The active incentive for the provider."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1140
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1204
 msgid "The incentive unique ID. This ID needs to be used for incentive dismissals."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1146
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1210
 msgid "The incentive promo ID. This ID need to be fed into the onboarding flow."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1152
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1216
 msgid "The incentive title. It can contain stylistic HTML."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1158
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1222
 msgid "The incentive description. It can contain stylistic HTML."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1164
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1228
 msgid "The short description of the incentive. It can contain stylistic HTML."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1170
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1234
 msgid "The call to action label for the incentive."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1176
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1240
 msgid "The URL to the terms and conditions for the incentive."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1182
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1246
 msgid "The badge label for the incentive."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1188
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1252
 msgid "The dismissals list for the incentive. Each dismissal entry includes a context and a timestamp. The `all` entry means the incentive was dismissed for all contexts."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1197
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1261
 msgid "Context ID in which the incentive was dismissed."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1202
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1266
 msgid "Unix timestamp representing when the incentive was dismissed."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1215
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1279
 msgid "The link to dismiss the incentive."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsRestController.php:1221
+#: src/Internal/Admin/Settings/PaymentsRestController.php:1285
 msgid "The URL to dismiss the incentive."
 msgstr ""
 
@@ -48909,6 +48902,14 @@ msgid "In just a few moments, you'll be ready to test payments on your store."
 msgstr ""
 
 #: assets/client/admin/chunks/6005.js:1
+msgid "Setting up your test account"
+msgstr ""
+
+#: assets/client/admin/chunks/6005.js:1
+msgid "Almost there!"
+msgstr ""
+
+#: assets/client/admin/chunks/6005.js:1
 msgid "Creating test account failed. Please try again."
 msgstr ""
 
@@ -48927,23 +48928,26 @@ msgid "What's next:"
 msgstr ""
 
 #: assets/client/admin/chunks/6005.js:1
-#: assets/client/admin/chunks/settings-payments-main.js:1
-msgid "Continue your store setup"
+#: assets/client/admin/chunks/customize-store.js:1
+#: assets/client/admin/wp-admin-scripts/onboarding-load-sample-products-notice.js:1
+msgid "Continue setting up your store"
 msgstr ""
 
 #: assets/client/admin/chunks/6005.js:1
-#: assets/client/admin/chunks/settings-payments-main.js:1
-msgid "Finish completing the tasks required to launch your store."
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-#: assets/client/admin/chunks/settings-payments-main.js:1
-msgid "Provide some additional details about your business so you can begin accepting real payments. {{link}}Learn more{{/link}}"
+msgid "Test payments and finish off any other tasks required to launch your store."
 msgstr ""
 
 #: assets/client/admin/chunks/6005.js:1
 #: assets/client/admin/chunks/settings-payments-main.js:1
 msgid "Continue store setup"
+msgstr ""
+
+#: assets/client/admin/chunks/6005.js:1
+msgid "Activate real payments"
+msgstr ""
+
+#: assets/client/admin/chunks/6005.js:1
+msgid "Provide additional details about your business so you can begin accepting real payments. {{link}}Learn more{{/link}}"
 msgstr ""
 
 #: assets/client/admin/chunks/6005.js:1
@@ -51224,11 +51228,6 @@ msgid "Go to the Editor"
 msgstr ""
 
 #: assets/client/admin/chunks/customize-store.js:1
-#: assets/client/admin/wp-admin-scripts/onboarding-load-sample-products-notice.js:1
-msgid "Continue setting up your store"
-msgstr ""
-
-#: assets/client/admin/chunks/customize-store.js:1
 msgid "Go back to the Home screen to complete your store setup and start selling"
 msgstr ""
 
@@ -52781,7 +52780,7 @@ msgid "Get support"
 msgstr ""
 
 #: assets/client/admin/chunks/settings-payments-main.js:1
-msgid "Failed to hide the payment extension suggestion."
+msgid "Failed to hide the payments extension suggestion."
 msgstr ""
 
 #: assets/client/admin/chunks/settings-payments-main.js:1
@@ -52805,7 +52804,7 @@ msgid "Deactivate"
 msgstr ""
 
 #: assets/client/admin/chunks/settings-payments-main.js:1
-msgid "Failed to disable the plugin."
+msgid "Failed to disable the payments provider."
 msgstr ""
 
 #: assets/client/admin/chunks/settings-payments-main.js:1
@@ -52836,6 +52835,18 @@ msgstr ""
 
 #: assets/client/admin/chunks/settings-payments-main.js:1
 msgid "We've created a test account for you so that you can begin testing payments on your store. {{break/}}Not sure what to test? Take a look at {{link}}how to test payments{{/link}}."
+msgstr ""
+
+#: assets/client/admin/chunks/settings-payments-main.js:1
+msgid "Continue your store setup"
+msgstr ""
+
+#: assets/client/admin/chunks/settings-payments-main.js:1
+msgid "Finish completing the tasks required to launch your store."
+msgstr ""
+
+#: assets/client/admin/chunks/settings-payments-main.js:1
+msgid "Provide some additional details about your business so you can begin accepting real payments. {{link}}Learn more{{/link}}"
 msgstr ""
 
 #: assets/client/admin/chunks/settings-payments-main.js:1
@@ -53965,6 +53976,15 @@ msgstr ""
 
 #: assets/client/admin/data/index.js:2
 msgid "Plugins were successfully installed and activated."
+msgstr ""
+
+#: assets/client/admin/data/index.js:2
+#, js-format
+msgid "%1$s was successfully activated."
+msgstr ""
+
+#: assets/client/admin/data/index.js:2
+msgid "A plugin was successfully activated."
 msgstr ""
 
 #: assets/client/admin/date/index.js:1
@@ -56344,7 +56364,7 @@ msgid "Business location :"
 msgstr ""
 
 #: assets/client/admin/wp-admin-scripts/settings-embed.js:2
-msgid "Return to gateways"
+msgid "Return to payments settings"
 msgstr ""
 
 #: assets/client/admin/wp-admin-scripts/settings-embed.js:2
@@ -57475,32 +57495,6 @@ msgid "Edit details such as title, price, description and more."
 msgstr ""
 
 #: assets/client/blocks/all-products.js:17
-msgid "This block lists description, attributes and reviews for a single product."
-msgstr ""
-
-#: assets/client/blocks/all-products.js:17
-msgid "Show tab title in content"
-msgstr ""
-
-#: assets/client/blocks/all-products.js:17
-msgid "The products reviews and the form to add a new review will be displayed here according to your theme. The look you see here is not representative of what is going to look like, this is just a placeholder."
-msgstr ""
-
-#: assets/client/blocks/all-products.js:17
-msgid "3 reviews for this product"
-msgstr ""
-
-#: assets/client/blocks/all-products.js:17
-#: assets/client/blocks/product-review-form.js:1
-msgid "Your rating *"
-msgstr ""
-
-#: assets/client/blocks/all-products.js:17
-#: assets/client/blocks/product-review-form.js:1
-msgid "Your review *"
-msgstr ""
-
-#: assets/client/blocks/all-products.js:17
 #: assets/client/blocks/product-query.js:1
 msgid "Contains the block elements used to render a product, like its name, featured image, rating, and more."
 msgstr ""
@@ -58126,63 +58120,6 @@ msgstr ""
 #: assets/client/blocks/attribute-filter.js:19
 #: assets/client/blocks/filter-wrapper.js:1
 msgid "Filter by attribute"
-msgstr ""
-
-#: assets/client/blocks/blockified-product-details.js:1
-#: assets/client/blocks/order-confirmation-additional-fields-wrapper.js:1
-msgid "Additional Information"
-msgstr ""
-
-#: assets/client/blocks/blockified-product-details.js:1
-msgid "The Product Details block requires a product context. When used in a Query Loop, the Query Loop must be configured to display products."
-msgstr ""
-
-#: assets/client/blocks/blockified-product-reviews.js:1
-msgid "The <article> element should represent a self-contained, syndicatable portion of the document."
-msgstr ""
-
-#: assets/client/blocks/blockified-product-reviews.js:1
-msgid "The <aside> element should represent a portion of a document whose content is only indirectly related to the document's main content."
-msgstr ""
-
-#: assets/client/blocks/blockified-product-reviews.js:1
-msgid "The <div> element should only be used if the block is a design element with no semantic meaning."
-msgstr ""
-
-#: assets/client/blocks/blockified-product-reviews.js:1
-msgid "The <footer> element should represent a footer for its nearest sectioning element (e.g.: <section>, <article>, <main> etc.)."
-msgstr ""
-
-#: assets/client/blocks/blockified-product-reviews.js:1
-msgid "The <header> element should represent introductory content, typically a group of introductory or navigational aids."
-msgstr ""
-
-#: assets/client/blocks/blockified-product-reviews.js:1
-msgid "The <main> element should be used for the primary content of your document only."
-msgstr ""
-
-#: assets/client/blocks/blockified-product-reviews.js:1
-msgid "The <nav> element should be used to identify groups of links that are intended to be used for website or page content navigation."
-msgstr ""
-
-#: assets/client/blocks/blockified-product-reviews.js:1
-msgid "The <section> element should represent a standalone portion of the document that can't be better represented by another element."
-msgstr ""
-
-#. translators: %s: block name
-#: assets/client/blocks/blockified-product-reviews.js:2
-#: assets/client/blocks/product-description.js:2
-#: assets/client/blocks/product-specifications.js:2
-#, js-format
-msgid "The %s block requires a product context. When used in a Query Loop, the Query Loop must be configured to display products."
-msgstr ""
-
-#: assets/client/blocks/blockified-product-reviews.js:2
-msgid "HTML element"
-msgstr ""
-
-#: assets/client/blocks/blockified-product-reviews.js:2
-msgid "Default (<div>)"
 msgstr ""
 
 #: assets/client/blocks/breadcrumbs.js:1
@@ -60265,6 +60202,11 @@ msgstr ""
 msgid "Toggle to disable opening the Mini-Cart drawer when clicking the cart icon, and instead navigate to the checkout page."
 msgstr ""
 
+#: assets/client/blocks/order-confirmation-additional-fields-wrapper.js:1
+#: assets/client/blocks/product-details.js:1
+msgid "Additional Information"
+msgstr ""
+
 #: assets/client/blocks/order-confirmation-additional-information.js:1
 msgid "Additional Information for your order"
 msgstr ""
@@ -60938,8 +60880,20 @@ msgstr ""
 msgid "Block cannot be rendered inside itself."
 msgstr ""
 
+#. translators: %s: block name
+#: assets/client/blocks/product-description.js:2
+#: assets/client/blocks/product-reviews.js:2
+#: assets/client/blocks/product-specifications.js:2
+#, js-format
+msgid "The %s block requires a product context. When used in a Query Loop, the Query Loop must be configured to display products."
+msgstr ""
+
 #: assets/client/blocks/product-description.js:2
 msgid "Product Description"
+msgstr ""
+
+#: assets/client/blocks/product-details.js:1
+msgid "The Product Details block requires a product context. When used in a Query Loop, the Query Loop must be configured to display products."
 msgstr ""
 
 #: assets/client/blocks/product-filter-active.js:1
@@ -61303,6 +61257,14 @@ msgid "Link to review"
 msgstr ""
 
 #: assets/client/blocks/product-review-form.js:1
+msgid "Your rating *"
+msgstr ""
+
+#: assets/client/blocks/product-review-form.js:1
+msgid "Your review *"
+msgstr ""
+
+#: assets/client/blocks/product-review-form.js:1
 msgctxt "action that affects the current product"
 msgid "Enable reviews"
 msgstr ""
@@ -61364,6 +61326,46 @@ msgstr ""
 
 #: assets/client/blocks/product-reviews-title.js:1
 msgid "Show Reviews Count"
+msgstr ""
+
+#: assets/client/blocks/product-reviews.js:1
+msgid "The <article> element should represent a self-contained, syndicatable portion of the document."
+msgstr ""
+
+#: assets/client/blocks/product-reviews.js:1
+msgid "The <aside> element should represent a portion of a document whose content is only indirectly related to the document's main content."
+msgstr ""
+
+#: assets/client/blocks/product-reviews.js:1
+msgid "The <div> element should only be used if the block is a design element with no semantic meaning."
+msgstr ""
+
+#: assets/client/blocks/product-reviews.js:1
+msgid "The <footer> element should represent a footer for its nearest sectioning element (e.g.: <section>, <article>, <main> etc.)."
+msgstr ""
+
+#: assets/client/blocks/product-reviews.js:1
+msgid "The <header> element should represent introductory content, typically a group of introductory or navigational aids."
+msgstr ""
+
+#: assets/client/blocks/product-reviews.js:1
+msgid "The <main> element should be used for the primary content of your document only."
+msgstr ""
+
+#: assets/client/blocks/product-reviews.js:1
+msgid "The <nav> element should be used to identify groups of links that are intended to be used for website or page content navigation."
+msgstr ""
+
+#: assets/client/blocks/product-reviews.js:1
+msgid "The <section> element should represent a standalone portion of the document that can't be better represented by another element."
+msgstr ""
+
+#: assets/client/blocks/product-reviews.js:2
+msgid "HTML element"
+msgstr ""
+
+#: assets/client/blocks/product-reviews.js:2
+msgid "Default (<div>)"
 msgstr ""
 
 #: assets/client/blocks/product-search.js:1
@@ -61940,7 +61942,6 @@ msgstr ""
 #: assets/client/blocks/product-categories/block.json
 #: assets/client/blocks/product-category/block.json
 #: assets/client/blocks/product-collection/block.json
-#: assets/client/blocks/product-details/block.json
 #: assets/client/blocks/product-filter-active/block.json
 #: assets/client/blocks/product-filter-attribute/block.json
 #: assets/client/blocks/product-filter-checkbox-list/block.json
@@ -61965,7 +61966,6 @@ msgstr ""
 #: assets/client/blocks/product-rating-stars/block.json
 #: assets/client/blocks/product-rating/block.json
 #: assets/client/blocks/product-results-count/block.json
-#: assets/client/blocks/product-reviews/block.json
 #: assets/client/blocks/product-sale-badge/block.json
 #: assets/client/blocks/product-sku/block.json
 #: assets/client/blocks/product-stock-indicator/block.json
@@ -61985,10 +61985,8 @@ msgstr ""
 #: client/blocks/assets/js/atomic/blocks/product-elements/button/block.json
 #: client/blocks/assets/js/atomic/blocks/product-elements/image/block.json
 #: client/blocks/assets/js/atomic/blocks/product-elements/price/block.json
-#: client/blocks/assets/js/atomic/blocks/product-elements/product-details/block.json
 #: client/blocks/assets/js/atomic/blocks/product-elements/product-image-gallery/block.json
 #: client/blocks/assets/js/atomic/blocks/product-elements/product-meta/block.json
-#: client/blocks/assets/js/atomic/blocks/product-elements/product-reviews/block.json
 #: client/blocks/assets/js/atomic/blocks/product-elements/rating-counter/block.json
 #: client/blocks/assets/js/atomic/blocks/product-elements/rating-stars/block.json
 #: client/blocks/assets/js/atomic/blocks/product-elements/rating/block.json
@@ -62301,30 +62299,6 @@ msgstr ""
 #: client/blocks/assets/js/blocks/product-filters/inner-blocks/attribute-filter/block.json
 msgctxt "block description"
 msgid "Enable customers to filter the product grid by selecting one or more attributes, such as color."
-msgstr ""
-
-#: assets/client/blocks/blockified-product-details/block.json
-#: client/blocks/assets/js/blocks/product-details/block.json
-msgctxt "block title"
-msgid "Blockified Product Details"
-msgstr ""
-
-#: assets/client/blocks/blockified-product-details/block.json
-#: client/blocks/assets/js/blocks/product-details/block.json
-msgctxt "block description"
-msgid "Display a product's description, attributes, and reviews"
-msgstr ""
-
-#: assets/client/blocks/blockified-product-reviews/block.json
-#: client/blocks/assets/js/blocks/product-reviews/block.json
-msgctxt "block title"
-msgid "Blockified Product Reviews"
-msgstr ""
-
-#: assets/client/blocks/blockified-product-reviews/block.json
-#: client/blocks/assets/js/blocks/product-reviews/block.json
-msgctxt "block description"
-msgid "Display a product's reviews"
 msgstr ""
 
 #: assets/client/blocks/breadcrumbs/block.json
@@ -63368,15 +63342,15 @@ msgid "Displays the description of the product."
 msgstr ""
 
 #: assets/client/blocks/product-details/block.json
-#: client/blocks/assets/js/atomic/blocks/product-elements/product-details/block.json
+#: client/blocks/assets/js/blocks/product-details/block.json
 msgctxt "block title"
 msgid "Product Details"
 msgstr ""
 
 #: assets/client/blocks/product-details/block.json
-#: client/blocks/assets/js/atomic/blocks/product-elements/product-details/block.json
+#: client/blocks/assets/js/blocks/product-details/block.json
 msgctxt "block description"
-msgid "Display a product's description, attributes, and reviews."
+msgid "Display a product's description, attributes, and reviews"
 msgstr ""
 
 #: assets/client/blocks/product-filter-active/block.json
@@ -63790,15 +63764,15 @@ msgid "Displays a title with the number of reviews."
 msgstr ""
 
 #: assets/client/blocks/product-reviews/block.json
-#: client/blocks/assets/js/atomic/blocks/product-elements/product-reviews/block.json
+#: client/blocks/assets/js/blocks/product-reviews/block.json
 msgctxt "block title"
 msgid "Product Reviews"
 msgstr ""
 
 #: assets/client/blocks/product-reviews/block.json
-#: client/blocks/assets/js/atomic/blocks/product-elements/product-reviews/block.json
+#: client/blocks/assets/js/blocks/product-reviews/block.json
 msgctxt "block description"
-msgid "A block that shows the reviews for a product."
+msgid "Display a product's reviews"
 msgstr ""
 
 #: assets/client/blocks/product-sale-badge/block.json

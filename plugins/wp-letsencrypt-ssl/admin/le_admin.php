@@ -651,7 +651,7 @@ class WPLE_Admin
         }
         ///$html .= '<div style="text-align:center"><img src="' . WPLE_URL . '/admin/assets/new-year.png"></div>';
         $html .= '<div class="wple-upgrade-pro">
-              <!--<a href="' . $compareurl . '" target="_blank" class="wplecompare">' . esc_html__('COMPARE FREE & PRO VERSION', 'wp-letsencrypt-ssl') . '  <span class="dashicons dashicons-external"></span></a>-->';
+              <a href="' . $compareurl . '" target="_blank" class="wplecompare">' . esc_html__('COMPARE FREE & PRO VERSION', 'wp-letsencrypt-ssl') . '  <span class="dashicons dashicons-external"></span></a>';
         // if (isset($_GET['success']) && FALSE == $nopricing) {
         //   $html .= '<a href="' . $upgradeurl . '">' . esc_html__('UPGRADE TO PRO', 'wp-letsencrypt-ssl') . '<span class="dashicons dashicons-editor-help wple-tooltip" data-tippy="Requires cPanel or root SSH access"></span></a>
         //             <a href="https://wpencryption.com/#firewall" target="_blank">' . esc_html__('UPGRADE TO FIREWALL', 'wp-letsencrypt-ssl') . '<span class="dashicons dashicons-editor-help wple-tooltip" data-tippy="Why buy an SSL alone when you can get Premium SSL + CDN + Firewall Security for even lower cost."></span></a>';
@@ -1027,8 +1027,8 @@ class WPLE_Admin
         <h4 class="pricing-intro-subhead">Purchase once and use for lifetime - Trusted Globally by <b>250,000+</b> WordPress Users (Looking for <a href="<?php
                                                                                                                                                             echo esc_url_raw(admin_url('/admin.php?page=wp_encryption&gopro=3'));
                                                                                                                                                             ?>">Annual</a> | <a href="<?php
-                                    echo esc_url_raw(admin_url('/admin.php?page=wp_encryption&gopro=2'));
-                                    ?>">Unlimited Sites License?</a>)</h4>
+                                                                                                                                                                                        echo esc_url_raw(admin_url('/admin.php?page=wp_encryption&gopro=2'));
+                                                                                                                                                                                        ?>">Unlimited Sites License?</a>)</h4>
 
         <div style="text-align:center">
             <img src="<?php

@@ -1718,10 +1718,6 @@ return array(
 		'version' => '10.0.0.0',
 		'path'    => $baseDir . '/src/Blocks/BlockTypes/AttributeFilter.php'
 	),
-	'Automattic\\WooCommerce\\Blocks\\BlockTypes\\BlockifiedProductDetails' => array(
-		'version' => '10.0.0.0',
-		'path'    => $baseDir . '/src/Blocks/BlockTypes/BlockifiedProductDetails.php'
-	),
 	'Automattic\\WooCommerce\\Blocks\\BlockTypes\\Breadcrumbs' => array(
 		'version' => '10.0.0.0',
 		'path'    => $baseDir . '/src/Blocks/BlockTypes/Breadcrumbs.php'
@@ -2225,10 +2221,6 @@ return array(
 	'Automattic\\WooCommerce\\Blocks\\BlockTypes\\ProductResultsCount' => array(
 		'version' => '10.0.0.0',
 		'path'    => $baseDir . '/src/Blocks/BlockTypes/ProductResultsCount.php'
-	),
-	'Automattic\\WooCommerce\\Blocks\\BlockTypes\\ProductReviews' => array(
-		'version' => '10.0.0.0',
-		'path'    => $baseDir . '/src/Blocks/BlockTypes/ProductReviews.php'
 	),
 	'Automattic\\WooCommerce\\Blocks\\BlockTypes\\ProductSKU' => array(
 		'version' => '10.0.0.0',
@@ -3726,9 +3718,41 @@ return array(
 		'version' => '10.0.0.0',
 		'path'    => $baseDir . '/src/Internal/Admin/Settings/PaymentsProviders.php'
 	),
+	'Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsProviders\\Affirm' => array(
+		'version' => '10.0.0.0',
+		'path'    => $baseDir . '/src/Internal/Admin/Settings/PaymentsProviders/Affirm.php'
+	),
+	'Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsProviders\\AfterpayClearpay' => array(
+		'version' => '10.0.0.0',
+		'path'    => $baseDir . '/src/Internal/Admin/Settings/PaymentsProviders/AfterpayClearpay.php'
+	),
+	'Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsProviders\\Airwallex' => array(
+		'version' => '10.0.0.0',
+		'path'    => $baseDir . '/src/Internal/Admin/Settings/PaymentsProviders/Airwallex.php'
+	),
 	'Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsProviders\\AmazonPay' => array(
 		'version' => '10.0.0.0',
 		'path'    => $baseDir . '/src/Internal/Admin/Settings/PaymentsProviders/AmazonPay.php'
+	),
+	'Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsProviders\\Antom' => array(
+		'version' => '10.0.0.0',
+		'path'    => $baseDir . '/src/Internal/Admin/Settings/PaymentsProviders/Antom.php'
+	),
+	'Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsProviders\\GoCardless' => array(
+		'version' => '10.0.0.0',
+		'path'    => $baseDir . '/src/Internal/Admin/Settings/PaymentsProviders/GoCardless.php'
+	),
+	'Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsProviders\\HelioPay' => array(
+		'version' => '10.0.0.0',
+		'path'    => $baseDir . '/src/Internal/Admin/Settings/PaymentsProviders/HelioPay.php'
+	),
+	'Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsProviders\\Klarna' => array(
+		'version' => '10.0.0.0',
+		'path'    => $baseDir . '/src/Internal/Admin/Settings/PaymentsProviders/Klarna.php'
+	),
+	'Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsProviders\\KlarnaCheckout' => array(
+		'version' => '10.0.0.0',
+		'path'    => $baseDir . '/src/Internal/Admin/Settings/PaymentsProviders/KlarnaCheckout.php'
 	),
 	'Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsProviders\\MercadoPago' => array(
 		'version' => '10.0.0.0',
@@ -3738,21 +3762,61 @@ return array(
 		'version' => '10.0.0.0',
 		'path'    => $baseDir . '/src/Internal/Admin/Settings/PaymentsProviders/Mollie.php'
 	),
+	'Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsProviders\\Monei' => array(
+		'version' => '10.0.0.0',
+		'path'    => $baseDir . '/src/Internal/Admin/Settings/PaymentsProviders/Monei.php'
+	),
 	'Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsProviders\\PayPal' => array(
 		'version' => '10.0.0.0',
 		'path'    => $baseDir . '/src/Internal/Admin/Settings/PaymentsProviders/PayPal.php'
+	),
+	'Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsProviders\\PayUIndia' => array(
+		'version' => '10.0.0.0',
+		'path'    => $baseDir . '/src/Internal/Admin/Settings/PaymentsProviders/PayUIndia.php'
+	),
+	'Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsProviders\\Payfast' => array(
+		'version' => '10.0.0.0',
+		'path'    => $baseDir . '/src/Internal/Admin/Settings/PaymentsProviders/Payfast.php'
 	),
 	'Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsProviders\\PaymentGateway' => array(
 		'version' => '10.0.0.0',
 		'path'    => $baseDir . '/src/Internal/Admin/Settings/PaymentsProviders/PaymentGateway.php'
 	),
+	'Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsProviders\\Paymob' => array(
+		'version' => '10.0.0.0',
+		'path'    => $baseDir . '/src/Internal/Admin/Settings/PaymentsProviders/Paymob.php'
+	),
+	'Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsProviders\\Payoneer' => array(
+		'version' => '10.0.0.0',
+		'path'    => $baseDir . '/src/Internal/Admin/Settings/PaymentsProviders/Payoneer.php'
+	),
+	'Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsProviders\\Paystack' => array(
+		'version' => '10.0.0.0',
+		'path'    => $baseDir . '/src/Internal/Admin/Settings/PaymentsProviders/Paystack.php'
+	),
+	'Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsProviders\\Paytrail' => array(
+		'version' => '10.0.0.0',
+		'path'    => $baseDir . '/src/Internal/Admin/Settings/PaymentsProviders/Paytrail.php'
+	),
 	'Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsProviders\\PseudoWCPaymentGateway' => array(
 		'version' => '10.0.0.0',
 		'path'    => $baseDir . '/src/Internal/Admin/Settings/PaymentsProviders/PseudoWCPaymentGateway.php'
 	),
+	'Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsProviders\\Razorpay' => array(
+		'version' => '10.0.0.0',
+		'path'    => $baseDir . '/src/Internal/Admin/Settings/PaymentsProviders/Razorpay.php'
+	),
 	'Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsProviders\\Stripe' => array(
 		'version' => '10.0.0.0',
 		'path'    => $baseDir . '/src/Internal/Admin/Settings/PaymentsProviders/Stripe.php'
+	),
+	'Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsProviders\\Tilopay' => array(
+		'version' => '10.0.0.0',
+		'path'    => $baseDir . '/src/Internal/Admin/Settings/PaymentsProviders/Tilopay.php'
+	),
+	'Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsProviders\\Vivacom' => array(
+		'version' => '10.0.0.0',
+		'path'    => $baseDir . '/src/Internal/Admin/Settings/PaymentsProviders/Vivacom.php'
 	),
 	'Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsProviders\\WCCore' => array(
 		'version' => '10.0.0.0',
@@ -4998,10 +5062,6 @@ return array(
 		'version' => '10.0.0.0',
 		'path'    => $baseDir . '/tests/php/src/Blocks/BlockTypes/BlockHooksTests.php'
 	),
-	'Automattic\\WooCommerce\\Tests\\Blocks\\BlockTypes\\BlockifiedProductDetails\\BlockifiedProductDetails' => array(
-		'version' => '10.0.0.0',
-		'path'    => $baseDir . '/tests/php/src/Blocks/BlockTypes/BlockifiedProductDetails/BlockifiedProductDetails.php'
-	),
 	'Automattic\\WooCommerce\\Tests\\Blocks\\BlockTypes\\Cart' => array(
 		'version' => '10.0.0.0',
 		'path'    => $baseDir . '/tests/php/src/Blocks/BlockTypes/Cart.php'
@@ -5025,6 +5085,14 @@ return array(
 	'Automattic\\WooCommerce\\Tests\\Blocks\\BlockTypes\\ProductCollection' => array(
 		'version' => '10.0.0.0',
 		'path'    => $baseDir . '/tests/php/src/Blocks/BlockTypes/ProductCollection.php'
+	),
+	'Automattic\\WooCommerce\\Tests\\Blocks\\BlockTypes\\ProductDetails\\ProductDetails' => array(
+		'version' => '10.0.0.0',
+		'path'    => $baseDir . '/tests/php/src/Blocks/BlockTypes/ProductDetails/ProductDetails.php'
+	),
+	'Automattic\\WooCommerce\\Tests\\Blocks\\BlockTypes\\ProductImage' => array(
+		'version' => '10.0.0.0',
+		'path'    => $baseDir . '/tests/php/src/Blocks/BlockTypes/ProductImage.php'
 	),
 	'Automattic\\WooCommerce\\Tests\\Blocks\\BlockTypes\\ProductQuery' => array(
 		'version' => '10.0.0.0',
@@ -5106,10 +5174,6 @@ return array(
 		'version' => '10.0.0.0',
 		'path'    => $baseDir . '/tests/php/src/Blocks/Mocks/BlockHooksTestBlock.php'
 	),
-	'Automattic\\WooCommerce\\Tests\\Blocks\\Mocks\\BlockifiedProductDetailsMock' => array(
-		'version' => '10.0.0.0',
-		'path'    => $baseDir . '/tests/php/src/Blocks/Mocks/BlockifiedProductDetailsMock.php'
-	),
 	'Automattic\\WooCommerce\\Tests\\Blocks\\Mocks\\CartCheckoutUtilsMock' => array(
 		'version' => '10.0.0.0',
 		'path'    => $baseDir . '/tests/php/src/Blocks/Mocks/CartCheckoutUtilsMock.php'
@@ -5129,6 +5193,10 @@ return array(
 	'Automattic\\WooCommerce\\Tests\\Blocks\\Mocks\\ProductCollectionMock' => array(
 		'version' => '10.0.0.0',
 		'path'    => $baseDir . '/tests/php/src/Blocks/Mocks/ProductCollectionMock.php'
+	),
+	'Automattic\\WooCommerce\\Tests\\Blocks\\Mocks\\ProductDetailsNoRegisterMock' => array(
+		'version' => '10.0.0.0',
+		'path'    => $baseDir . '/tests/php/src/Blocks/Mocks/ProductDetailsNoRegisterMock.php'
 	),
 	'Automattic\\WooCommerce\\Tests\\Blocks\\Mocks\\ProductQueryMock' => array(
 		'version' => '10.0.0.0',

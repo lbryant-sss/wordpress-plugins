@@ -2,6 +2,7 @@
 
 namespace BitCode\BitForm\Frontend\Form;
 
+use BitCode\BitForm\Admin\Form\AdminFormHandler;
 use BitCode\BitForm\Admin\Form\FrontEndScriptGenerator;
 use BitCode\BitForm\Admin\Form\Helpers;
 use BitCode\BitForm\Core\Database\FormEntryMetaModel;
@@ -378,11 +379,18 @@ final class FrontendFormHandler
     $additional = $formContent->additional;
 
     // $workFlowRunType = $entryId ? 'edit' : 'create';
-    if ($entryId && (get_current_user_id() || is_admin())) {
-      // return  sprintf(__('Sorry!, You cannot edit #%s no form.', 'bit-form'), $formID);
+    if ($entryId && (FrontendHelpers::is_current_user_can_access($formID, 'entryEditAccess'))) {
       $workFlowRunType = 'edit';
-      $fields = $this->setFieldsValue($fields, $formID, $entryId);
+      $adminFormHandler = new AdminFormHandler();
+      $getEntry = $adminFormHandler->getSingleEntry($formID, $entryId);
+      if (FrontendHelpers::is_current_user_can_access($formID, 'entryEditAccess', '', $getEntry->user_id)) {
+        $fields = $this->setFieldsValue($fields, $formID, $entryId);
+      } elseif (!$isAbandoned) {
+        $entryId = false;
+        $workFlowRunType = 'create';
+      }
     } else {
+      $entryId = false;
       $workFlowRunType = 'create';
     }
 

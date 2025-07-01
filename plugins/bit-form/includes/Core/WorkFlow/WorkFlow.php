@@ -267,6 +267,7 @@ final class WorkFlow
               $conditionStatus = $conditionalLogic->getConditionStatus();
             }
             $conditionStatus = apply_filters('bitform_filter_workflow_condition_status', $conditionStatus, $condition, $fieldData, $this::$_formID);
+
             if (($conditionStatus && in_array($type, ['if', 'else-if'])) || 'else' === $type) {
               $fieldValue = $this->_actions->setOnSubmitSetFieldValue($actions->fields, $fieldValue);
               $onFormSuccessActionDefault = $this->_actions->setOnFormSuccess($onFormSuccessActionDefault, $actions->success, $fieldValue, $entryID);
@@ -327,22 +328,22 @@ final class WorkFlow
     return $workFlowReturnable;
   }
 
-  public function executeOnDelete(AdminFormManager $formManager, $formID, $detetedIds)
+  public function executeOnDelete(AdminFormManager $formManager, $formID, $deletedIds)
   {
     $workFlows = $this->getWorkFlow(['delete'], 'delete');
     $workFlowReturnable = [];
-    if (empty($workFlows) || is_wp_error($workFlows) || empty($detetedIds)) {
+    if (empty($workFlows) || is_wp_error($workFlows) || empty($deletedIds)) {
       return [];
     }
     if (!$formManager instanceof AdminFormManager) {
       $formManager = new AdminFormManager($formID);
     }
-    $returnableEntries = $detetedIds;
+    $returnableEntries = $deletedIds;
     $formFields = $formManager->getFieldLabel();
     $entryMeta = new FormEntryMetaModel();
     $entries = $entryMeta->getEntryMeta(
       $formFields,
-      $detetedIds
+      $deletedIds
     );
     if (is_wp_error($entries) || empty($entries['entries'])) {
       return $entries;
@@ -352,16 +353,22 @@ final class WorkFlow
       unset($fieldValue['entry_id']);
       $fields = $formManager->getFormContentWithValue($fieldValue)->fields;
       $fieldData = Helper::getFieldData($fields);
+
       foreach ($workFlows as $workFlow) {
         $workFlowBlock = json_decode($workFlow->workflow_condition);
-        $conditions = $workFlowBlock->logics;
-        $actions = $workFlowBlock->actions;
+        // $conditions = $workFlowBlock->logics;
+        // $actions = $workFlowBlock->actions;
         $conditionBehaviour = $workFlow->workflow_behaviour;
+
         if ('cond' === $conditionBehaviour) {
-          foreach ($conditions as $condition) {
+          foreach ($workFlowBlock as $condition) {
+            $actions = $condition->actions;
             $type = $condition->cond_type;
-            $conditionalLogic = new ConditionalLogic($condition, $fieldData);
+            $logics = $condition->logics;
+            $fieldData = Helper::smartFldMargeFormFld($logics, $fieldData);
+            $conditionalLogic = new ConditionalLogic($logics, $fieldData);
             $conditionStaus = $conditionalLogic->getConditionStatus();
+
             if (($conditionStaus && in_array($type, ['if', 'else-if'])) || 'else' === $type) {
               $isExists = \array_search($entry->entry_id, $returnableEntries);
               if (!empty($actions->avoid_delete) && false !== $isExists) {
