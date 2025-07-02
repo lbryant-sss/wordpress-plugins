@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPCode Lite 2.2.8\n"
+"Project-Id-Version: WPCode Lite 2.2.9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/insert-headers-and-footers\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-05-15T09:55:52+00:00\n"
+"POT-Creation-Date: 2025-07-01T12:18:29+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: insert-headers-and-footers\n"
@@ -355,6 +355,22 @@ msgstr ""
 #: includes/admin/importers/class-wpcode-importer-simple-custom-css-and-js.php:98
 #: includes/admin/importers/class-wpcode-importer-woody.php:92
 msgid "The snippet you are trying to import does not exist."
+msgstr ""
+
+#: includes/admin/importers/class-wpcode-importer-post-snippets.php:59
+msgid "(no title)"
+msgstr ""
+
+#: includes/admin/importers/class-wpcode-importer-post-snippets.php:86
+msgid "Invalid snippet ID."
+msgstr ""
+
+#: includes/admin/importers/class-wpcode-importer-post-snippets.php:99
+msgid "Snippet not found."
+msgstr ""
+
+#: includes/admin/importers/class-wpcode-importer-post-snippets.php:131
+msgid "Failed to import snippet."
 msgstr ""
 
 #: includes/admin/importers/class-wpcode-importer-simple-custom-css-and-js.php:133
@@ -3028,34 +3044,62 @@ msgid "Content ID"
 msgstr ""
 
 #: includes/class-wpcode-smart-tags.php:47
-msgid "Content title"
+msgid "Permalink"
 msgstr ""
 
 #: includes/class-wpcode-smart-tags.php:51
-msgid "Content Categories"
+msgid "Content title"
 msgstr ""
 
 #: includes/class-wpcode-smart-tags.php:55
-msgid "User's email"
+msgid "Post excerpt"
 msgstr ""
 
 #: includes/class-wpcode-smart-tags.php:59
-msgid "User's first name"
+msgid "Post content"
 msgstr ""
 
 #: includes/class-wpcode-smart-tags.php:63
-msgid "User's last name"
+msgid "URL of the featured image"
 msgstr ""
 
 #: includes/class-wpcode-smart-tags.php:67
+msgid "Categories"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:71
+msgid "Tags, comma-separated"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:75
+msgid "Post publish date"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:79
+msgid "Post modification date"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:83
+msgid "User's email"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:87
+msgid "User's first name"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:91
+msgid "User's last name"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:95
 msgid "Custom Field (meta)"
 msgstr ""
 
-#: includes/class-wpcode-smart-tags.php:72
+#: includes/class-wpcode-smart-tags.php:100
 msgid "Author ID"
 msgstr ""
 
-#: includes/class-wpcode-smart-tags.php:76
+#: includes/class-wpcode-smart-tags.php:104
 #: includes/generator/class-wpcode-generator-schema-article.php:158
 #: includes/generator/class-wpcode-generator-schema-book.php:165
 #: includes/generator/class-wpcode-generator-schema-fact-check.php:120
@@ -3063,47 +3107,251 @@ msgstr ""
 msgid "Author Name"
 msgstr ""
 
-#: includes/class-wpcode-smart-tags.php:80
+#: includes/class-wpcode-smart-tags.php:108
 #: includes/generator/class-wpcode-generator-schema-article.php:168
 #: includes/generator/class-wpcode-generator-schema-book.php:175
 #: includes/generator/class-wpcode-generator-schema-fact-check.php:130
 msgid "Author URL"
 msgstr ""
 
-#: includes/class-wpcode-smart-tags.php:84
+#: includes/class-wpcode-smart-tags.php:112
+msgid "Author's bio/description"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:116
+msgid "The website's name"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:120
+msgid "The website's home URL"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:124
+#: includes/conditional-logic/class-wpcode-conditional-page.php:84
+#: includes/generator/class-wpcode-generator-query.php:204
+msgid "Post type"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:128
 msgid "Login URL"
 msgstr ""
 
-#: includes/class-wpcode-smart-tags.php:88
+#: includes/class-wpcode-smart-tags.php:132
 msgid "Logout URL"
 msgstr ""
 
-#: includes/class-wpcode-smart-tags.php:92
-msgid "Permalink"
+#: includes/class-wpcode-smart-tags.php:139
+msgid "WooCommerce Order number"
 msgstr ""
 
-#: includes/class-wpcode-smart-tags.php:99
-msgid "Order number"
+#: includes/class-wpcode-smart-tags.php:143
+msgid "WooCommerce Order subtotal"
 msgstr ""
 
-#: includes/class-wpcode-smart-tags.php:103
-msgid "Order subtotal"
+#: includes/class-wpcode-smart-tags.php:147
+msgid "WooCommerce Order total"
 msgstr ""
 
-#: includes/class-wpcode-smart-tags.php:107
-msgid "Order total"
+#: includes/class-wpcode-smart-tags.php:151
+msgid "WooCommerce Product ID"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:155
+msgid "WooCommerce Permalink"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:159
+msgid "WooCommerce Product title"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:163
+msgid "WooCommerce SKU"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:167
+msgid "WooCommerce Regular price"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:171
+msgid "WooCommerce Sale price"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:175
+msgid "WooCommerce Price (with currency)"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:179
+msgid "WooCommerce In stock?"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:183
+msgid "WooCommerce Inventory count"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:187
+msgid "WooCommerce Product Description"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:191
+msgid "WooCommerce Product Short Description"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:195
+msgid "WooCommerce Featured image URL"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:199
+msgid "WooCommerce Product categories"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:203
+msgid "WooCommerce Product tags"
 msgstr ""
 
 #: includes/class-wpcode-smart-tags.php:207
+msgid "WooCommerce Average rating"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:211
+msgid "WooCommerce Number of reviews"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:215
+msgid "WooCommerce Gallery image URLs"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:229
+msgid "WooCommerce"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:237
+msgid "EDD File Name"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:242
+msgid "EDD File URL"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:247
+msgid "EDD File Price"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:251
+msgid "EDD File Notes"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:257
+msgid "Easy Digital Downloads"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:265
+msgid "Yoast SEO Title"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:269
+msgid "Yoast SEO Description"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:275
+msgid "Yoast SEO"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:283
+msgid "AIOSEO Title"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:287
+msgid "AIOSEO Description"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:293
+msgid "All in One SEO"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:301
+#: includes/generator/class-wpcode-generator-schema-course.php:73
+msgid "Course Name"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:305
+#: includes/generator/class-wpcode-generator-schema-course.php:83
+msgid "Course Description"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:309
+msgid "Course Permalink"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:313
+msgid "Course Price"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:317
+msgid "Course Availability"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:321
+msgid "Course Instructor"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:327
+msgid "MemberPress Courses"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:335
+msgid "Membership Name"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:339
+msgid "Membership Price"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:343
+msgid "Membership Description"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:347
+msgid "Membership URL"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:351
+msgid "Membership Billing Type"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:355
+msgid "Membership Period Type"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:359
+msgid "Membership Period"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:365
+msgid "MemberPress"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:498
 #: includes/lite/admin/class-wpcode-metabox-snippets-lite.php:202
 msgid "Show Smart Tags"
 msgstr ""
 
-#: includes/class-wpcode-smart-tags.php:210
+#: includes/class-wpcode-smart-tags.php:501
 msgid "Hide Smart Tags"
 msgstr ""
 
-#: includes/class-wpcode-smart-tags.php:241
+#: includes/class-wpcode-smart-tags.php:506
+msgid "Smart Tags"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:508
+msgid "Search smart tags"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:537
+msgid "No smart tags found"
+msgstr ""
+
+#: includes/class-wpcode-smart-tags.php:543
 msgid "Learn more about Smart Tags"
 msgstr ""
 
@@ -3242,11 +3490,6 @@ msgstr ""
 
 #: includes/conditional-logic/class-wpcode-conditional-page.php:77
 msgid "Blog home"
-msgstr ""
-
-#: includes/conditional-logic/class-wpcode-conditional-page.php:84
-#: includes/generator/class-wpcode-generator-query.php:204
-msgid "Post type"
 msgstr ""
 
 #: includes/conditional-logic/class-wpcode-conditional-page.php:85
@@ -5523,20 +5766,12 @@ msgstr ""
 msgid "Course Details"
 msgstr ""
 
-#: includes/generator/class-wpcode-generator-schema-course.php:73
-msgid "Course Name"
-msgstr ""
-
 #: includes/generator/class-wpcode-generator-schema-course.php:74
 msgid "The name of the course."
 msgstr ""
 
 #: includes/generator/class-wpcode-generator-schema-course.php:77
 msgid "Introduction to Web Development"
-msgstr ""
-
-#: includes/generator/class-wpcode-generator-schema-course.php:83
-msgid "Course Description"
 msgstr ""
 
 #: includes/generator/class-wpcode-generator-schema-course.php:84
@@ -9055,14 +9290,14 @@ msgstr ""
 msgid "WooCommerce Cart Contents Rule is a Pro Feature"
 msgstr ""
 
-#: includes/safe-mode.php:75
+#: includes/safe-mode.php:78
 msgid "WPCode is in Safe Mode which means no snippets are getting executed. Please disable any snippets that have caused errors and when done click the button below to exit safe mode."
 msgstr ""
 
-#: includes/safe-mode.php:76
+#: includes/safe-mode.php:79
 msgid "The link will open in a new window so if you are still encountering issues you safely can return to this tab and make further adjustments"
 msgstr ""
 
-#: includes/safe-mode.php:78
+#: includes/safe-mode.php:81
 msgid "Exit safe mode"
 msgstr ""

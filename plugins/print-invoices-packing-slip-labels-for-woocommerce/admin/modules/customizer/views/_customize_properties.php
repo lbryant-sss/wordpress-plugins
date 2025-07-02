@@ -295,6 +295,13 @@ function wt_pklist_get_customize_panel_html($type,$template_type)
 				'trgt_elm'=>$type.'_label',
 			),
 			array(
+				'label'=>__('Title font size','print-invoices-packing-slip-labels-for-woocommerce'),
+				'type'=>'text_inputgrp',
+				'css_prop'=>'font-size',
+				'trgt_elm'=>$type . '_label',
+				'unit'=>'px',
+			),
+			array(
 				'label'=>__('Text align','print-invoices-packing-slip-labels-for-woocommerce'),
 				'type'=>'select',
 				'select_options'=>Wf_Woocommerce_Packing_List_Customizer::get_customizer_presets('text-align'),
@@ -308,6 +315,13 @@ function wt_pklist_get_customize_panel_html($type,$template_type)
 				'css_prop'=>'color',
 				'trgt_elm'=>$type,
 				'event_class'=>'wf_cst_click',
+			),
+			array(
+				'label'=>__('Font size','print-invoices-packing-slip-labels-for-woocommerce'),
+				'type'=>'text_inputgrp',
+				'css_prop'=>'font-size',
+				'trgt_elm'=>$type,
+				'unit'=>'px',
 			),
 		);
 	}elseif("email" === $type || "tel" === $type || "customer_note" === $type || "vat_number" === $type || "ssn_number" === $type || "shipping_method" === $type || "tracking_number" === $type || "total_no_of_items" === $type || "box_name" === $type)

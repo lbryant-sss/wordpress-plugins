@@ -2223,6 +2223,14 @@ class WPvivid_Export_Import
         $options['type'] = 'application/zip';
         add_filter('upload_dir', array($this, 'upload_import_dir'));
 
+        $file_name=basename(sanitize_text_field($_POST['name']));
+        $validate = wp_check_filetype( $file_name );
+        if ( $validate['type'] == false )
+        {
+            echo wp_json_encode(array('result'=>WPVIVID_FAILED, 'error' => 'File type is not allowed.'));
+            die();
+        }
+
         $status = wp_handle_upload($_FILES['async-upload'],$options);
 
         remove_filter('upload_dir', array($this, 'upload_import_dir'));
@@ -2231,8 +2239,6 @@ class WPvivid_Export_Import
             echo wp_json_encode(array('result'=>WPVIVID_FAILED, 'error' => $status['error']));
             exit;
         }
-
-        $file_name=basename(sanitize_text_field($_POST['name']));
 
         if (isset($_POST['chunks']) && isset($_POST['chunk']))
         {

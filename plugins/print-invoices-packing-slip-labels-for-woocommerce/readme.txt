@@ -1,10 +1,10 @@
 === WooCommerce PDF Invoices, Packing Slips, Delivery Notes and Shipping Labels ===
 Contributors: WebToffee
-Version: 4.7.7
+Version: 4.7.8
 Tags: WooCommerce PDF invoices, WooCommerce invoice, packing slips, shipping label, print invoice
 Requires at least: 3.0.1
 Tested up to: 6.8.1
-Stable tag: 4.7.7
+Stable tag: 4.7.8
 Requires PHP: 5.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -60,7 +60,7 @@ For international sales, many countries require invoices as part of their standa
 Beyond compliance, these documents enhance customer experience by adding a human touch and serving as an additional communication channel between you and your buyer.
 
 
-&#9989; Tested OK with WooCommerce 9.8.5
+&#9989; Tested OK with WooCommerce 9.9.5
 &#9989; Tested OK up to PHP 8.2
 
 
@@ -284,8 +284,19 @@ Yes. The plugin addresses the needs of a multilingual website and is compatible 
 
 == Changelog ==
 
+= 4.7.8 2025-07-01 =
+* [Add] – Added email field to the uninstallation feedback form.
+* [Add] – Added CTA banners on order, product, and coupon edit pages.
+* [Add] – Added font size setting for addresses in documents.
+* [Add] – Added Dispatch Label document title.
+* [Add] – Added translation support for UBL format.
+* [Add] – Banner to auto-recommend mPDF for RTL and special character languages.
+* [Enhancement] – Improved language support and translation handling.
+* [Compatibility] – Tested OK with WordPress 6.8.1
+* [Compatibility] – Tested OK with WooCommerce 9.9.5
+
 = 4.7.7 2025-05-22 =
-* [Fix] Fixed early translation loading issue triggered by the review request banner.
+* [Fix] – [Fix] – Fixed early translation loading issue triggered by the review request banner.
 * [Compatibility] - Tested OK with WordPress 6.8.1
 * [Compatibility] - Tested OK with WooCommerce 9.8.5
 
@@ -1064,7 +1075,13 @@ Yes. The plugin addresses the needs of a multilingual website and is compatible 
  
 == Upgrade Notice ==
 
-= 4.7.7 =
-* [Fix] – Fixed early translation loading issue triggered by the review request banner.
-* [Compatibility] - Tested OK with WordPress 6.8.1
-* [Compatibility] - Tested OK with WooCommerce 9.8.5
+= 4.7.8 =
+* [Add] – Added email field to the uninstallation feedback form.
+* [Add] – Added CTA banners on order, product, and coupon edit pages.
+* [Add] – Added font size setting for addresses in documents.
+* [Add] – Added Dispatch Label document title.
+* [Add] – Added translation support for UBL format.
+* [Add] – Banner to auto-recommend mPDF for RTL and special character languages.
+* [Enhancement] – Improved language support and translation handling.
+* [Compatibility] – Tested OK with WordPress 6.8.1
+* [Compatibility] - Tested OK with WooCommerce 9.9.5

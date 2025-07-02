@@ -784,7 +784,7 @@ class WPvivid_one_drive extends WPvivid_Remote
 
     private function need_refresh()
     {
-        if(time()-120> $this->options['token']['expires'])
+        if(time()+120> $this->options['token']['expires'])
         {
             return true;
         }

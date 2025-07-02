@@ -153,13 +153,22 @@ class Wf_Woocommerce_Packing_List_Uninstall_Feedback
                         } 
                         ?>
                     </ul>
-
+                    <label style="margin-bottom: 0;">
+                        <span class="wt-checkbox-top-border"></span>
+                        <input type="checkbox" id="wt_contact_me_checkbox" name="wt_contact_me_checkbox" value="1">
+                        <?php _e("WebToffee can contact me about this feedback.", "print-invoices-packing-slip-labels-for-woocommerce"); ?>
+                    </label>
+                    <div id="wt_email_field_wrap" style="display:none; margin-top:10px;">
+                        <label for="wt_contact_email" style="font-weight:bold;"><?php _e("Enter your email address.", "print-invoices-packing-slip-labels-for-woocommerce"); ?></label>
+                        <br>
+                        <input type="email" id="wt_contact_email" name="wt_contact_email" class="input-text" style="width:75%; height: 40px; padding:2px; margin-top:10px; border-radius:5px; border:2px solid #2874ba; padding-left:15px;" placeholder="<?php esc_attr_e("Enter email address", "print-invoices-packing-slip-labels-for-woocommerce"); ?>">
+                        <div id="wt_email_error" style="color:red; display:none; font-size:12px; margin-top:5px;"></div>
+                    </div>
+                    <label style="display:block; margin-top:15px;"><input type="checkbox" id="wt_delete_all_settings" name="wt_delete_all_settings" value="1"> <?php _e("Delete all the settings made by this plugin","print-invoices-packing-slip-labels-for-woocommerce"); ?></label>
                     <div class="wt_pklist_policy_infobox">
                         <?php _e("We do not collect any personal data when you submit this form. It's your feedback that we value.", "print-invoices-packing-slip-labels-for-woocommerce");?>
                         <a href="https://www.webtoffee.com/privacy-policy/" target="_blank"><?php _e('Privacy Policy', 'print-invoices-packing-slip-labels-for-woocommerce');?></a>
                     </div>
-                    <br>
-                    <label><input type="checkbox" id="wt_delete_all_settings" name="wt_delete_all_settings" value="1"> <?php _e("Delete all the settings made by this plugin","print-invoices-packing-slip-labels-for-woocommerce"); ?></label>
                 </div>
                 <div class="wfinvoice-modal-footer">
                     <a class="button-primary" href="https://www.webtoffee.com/support/" target="_blank">
@@ -172,48 +181,25 @@ class Wf_Woocommerce_Packing_List_Uninstall_Feedback
             </div>
         </div>
         <style type="text/css">
-            .wfinvoice-modal {
-                position: fixed;
-                z-index: 99999;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                background: rgba(0,0,0,0.5);
-                display: none;
-            }
+            .wfinvoice-modal { position: fixed; z-index: 99999; top: 0; right: 0; bottom: 0; left: 0; background: rgba(0,0,0,0.5); display: none; }
             .wfinvoice-modal.modal-active {display: block;}
-            .wfinvoice-modal-wrap {
-                width: 50%;
-                position: relative;
-                margin: 10% auto;
-                background: #fff;
-            }
-            .wfinvoice-modal-header {
-                border-bottom: 1px solid #eee;
-                padding: 8px 20px;
-            }
-            .wfinvoice-modal-header h3 {
-                line-height: 150%;
-                margin: 0;
-            }
+            .wfinvoice-modal-wrap { width: 50%; position: relative;  margin: 10% auto; background: #fff; }
+            .wfinvoice-modal-header { border-bottom: 1px solid #eee; padding: 8px 20px; }
+            .wfinvoice-modal-header h3 { line-height: 150%; margin: 0; }
             .wfinvoice-modal-body {padding: 5px 20px 5px 20px;}
             .wfinvoice-modal-body .input-text,.wfinvoice-modal-body textarea {width:75%;}
             .wfinvoice-modal-body .input-text::placeholder,.wfinvoice-modal-body textarea::placeholder{ font-size:12px; }
-            .wfinvoice-modal-body .reason-input {
-                margin-top: 5px;
-                margin-left: 20px;
-            }
-            .wfinvoice-modal-footer {
-                border-top: 1px solid #eee;
-                padding: 12px 20px;
-                text-align: left;
-            }
-            .wt_pklist_policy_infobox{font-style:italic; text-align:left; font-size:12px; color:#aaa; line-height:14px; margin-top:35px;}
+            .wfinvoice-modal-body .reason-input { margin-top: 5px; margin-left: 20px; }
+            .wfinvoice-modal-body label:has(#wt_contact_me_checkbox) { padding-top: 8px; display: block; width: 100%; margin-bottom: 0; }
+            .wfinvoice-modal-body label[for="wt_delete_all_settings"],
+            .wfinvoice-modal-body label:has(#wt_delete_all_settings) { margin-top: 8px; }
+            .wfinvoice-modal-footer { border-top: 1px solid #eee; padding: 12px 20px; text-align: left; }
+            .wt_pklist_policy_infobox{font-style:italic; text-align:left; font-size:12px; color:#aaa; line-height:14px; margin-top:15px;}
             .wt_pklist_policy_infobox a{ font-size:11px; color:#4b9cc3; text-decoration-color: #99c3d7; }
             .sub_reasons{ display:none; margin-left:15px; margin-top:10px; }
             a.dont-bother-me{ color:#939697; text-decoration-color:#d0d3d5; float:right; margin-top:7px; }
             .reasons li{ padding-top:5px; }
+            .wt-checkbox-top-border { display: block; border-top: 1px solid #ddd; margin-top: 1px; margin-bottom: 15px; padding-top: 8px; width: 100%; }
         </style>
         <script type="text/javascript">
             (function ($) {
@@ -307,6 +293,20 @@ class Wf_Woocommerce_Packing_List_Uninstall_Feedback
                                 }
                             }  
                         }
+                        // Email validation
+                        var emailCheckbox = $('#wt_contact_me_checkbox');
+                        var emailField = $('#wt_contact_email');
+                        var emailError = $('#wt_email_error');
+                        emailError.hide();
+                        if (emailCheckbox.is(':checked')) {
+                            var emailVal = emailField.val();
+                            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                            if (!emailVal || !emailPattern.test(emailVal)) {
+                                emailError.text('<?php echo esc_js(__('Please enter a valid email address.', 'print-invoices-packing-slip-labels-for-woocommerce')); ?>').show();
+                                emailField.focus();
+                                return;
+                            }
+                        }
                         $.ajax({
                             url: ajaxurl,
                             type: 'POST',
@@ -314,7 +314,8 @@ class Wf_Woocommerce_Packing_List_Uninstall_Feedback
                                 action: 'wfinvoice_submit_uninstall_reason',
                                 _wpnonce: '<?php echo wp_create_nonce(WF_PKLIST_PLUGIN_NAME);?>',
                                 reason_id: reason_id,
-                                reason_info: reason_info
+                                reason_info: reason_info,
+                                user_email: $('#wt_contact_me_checkbox').is(':checked') ? $('#wt_contact_email').val() : ''
                             },
                             beforeSend: function () {
                                 button.addClass('disabled');
@@ -324,6 +325,15 @@ class Wf_Woocommerce_Packing_List_Uninstall_Feedback
                                 window.location.href = deactivateLink;
                             }
                         });
+                    });
+
+                    $('#wt_contact_me_checkbox').on('change', function() {
+                        if ($(this).is(':checked')) {
+                            $('#wt_email_field_wrap').slideDown();
+                        } else {
+                            $('#wt_email_field_wrap').slideUp();
+                            $('#wt_contact_email').val('');
+                        }
                     });
                 });
             }(jQuery));
@@ -343,7 +353,7 @@ class Wf_Woocommerce_Packing_List_Uninstall_Feedback
         {
             wp_send_json_error();
         }
-
+        
         //$current_user = wp_get_current_user();
         $data = array(
             'reason_id' => sanitize_text_field($_POST['reason_id']),
@@ -351,7 +361,7 @@ class Wf_Woocommerce_Packing_List_Uninstall_Feedback
             'auth' =>$this->auth_key,
             'date' => gmdate("M d, Y h:i:s A"),
             'url' => '',
-            'user_email' => '',
+            'user_email' => isset($_POST['user_email']) ? sanitize_email(wp_unslash($_POST['user_email'])) : '',
             'reason_info' => isset($_REQUEST['reason_info']) ? trim(stripslashes(sanitize_text_field($_REQUEST['reason_info']))) : '',
             'software' => $_SERVER['SERVER_SOFTWARE'],
             'php_version' => phpversion(),

@@ -200,7 +200,6 @@ class WPvivid_Uploads_Scanner
         }
 
         $options=get_option('widget_text',false);
-
         if($options!==false)
         {
             foreach ($options as $option)
@@ -217,9 +216,7 @@ class WPvivid_Uploads_Scanner
             }
         }
 
-
         $options=get_option('theme_mods_Divi',false);
-
         if($options!==false)
         {
             if(isset($options['background_image']))
@@ -228,7 +225,39 @@ class WPvivid_Uploads_Scanner
             }
         }
 
+        $options=get_option('et_divi_builder_global_presets_d5',false);
+        if($options!==false && is_array($options))
+        {
+            $results = array();
+            $this->wpvivid_recursive_image_search($options, $results);
+            if(!empty($results))
+            {
+                foreach ($results as $url)
+                {
+                    $src = $this->get_src($url);
+                    if ($src !== false && !in_array($src, $files))
+                    {
+                        $files[] = $src;
+                    }
+                }
+            }
+        }
         return $files;
+    }
+
+    public function wpvivid_recursive_image_search($array, &$results)
+    {
+        foreach ($array as $key => $value)
+        {
+            if (is_array($value))
+            {
+                $this->wpvivid_recursive_image_search($value, $results);
+            }
+            elseif (is_string($value) && preg_match('/\.(jpe?g|png|gif|webp)$/i', $value))
+            {
+                $results[] = $value;
+            }
+        }
     }
 
     public function get_images_from_widget($widget)
@@ -699,6 +728,33 @@ class WPvivid_Uploads_Scanner
                 }
             }
         }
+
+        preg_match_all('/"image"\s*:\s*\{[^}]*?"url"\s*:\s*"([^"]+\.jpe?g|png|gif|webp)"/i', $html, $res);
+        if ( !empty( $res ) && isset( $res[1] ) && count( $res[1] ) > 0 )
+        {
+            foreach ($res[1] as $url)
+            {
+                $src = $this->get_src($url);
+                if ($src !== false)
+                {
+                    array_push( $results, $src );
+                }
+            }
+        }
+
+        preg_match_all('/"src"\s*:\s*"([^"]+\.(jpe?g|png|gif|webp))"/i', $html, $res);
+        if ( !empty( $res ) && isset( $res[1] ) && count( $res[1] ) > 0 )
+        {
+            foreach ($res[1] as $url)
+            {
+                $src = $this->get_src($url);
+                if ($src !== false)
+                {
+                    array_push( $results, $src );
+                }
+            }
+        }
+
         // Background Image
         preg_match_all( "/background_image=\"((https?:\/\/)?[^\\&\#\[\] \"\?]+\.(jpe?g|gif|png|ico|tif?f|bmp))\"/", $html, $res );
         if ( !empty( $res ) && isset( $res[1] ) && count( $res[1] ) > 0 )

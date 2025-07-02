@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Mercado Pago payments for WooCommerce\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce-"
 "mercadopago\n"
-"POT-Creation-Date: 2025-06-02 18:49+0000\n"
+"POT-Creation-Date: 2025-06-25 20:42+0000\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -13,22 +13,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.6\n"
 
-#: ../../src/WoocommerceMercadoPago.php:440,
+#: ../../src/WoocommerceMercadoPago.php:446,
 #: ../../src/Translations/AdminTranslations.php:115
 msgid "Activate WooCommerce"
 msgstr "Activar WooCommerce"
 
-#: ../../src/WoocommerceMercadoPago.php:441,
+#: ../../src/WoocommerceMercadoPago.php:447,
 #: ../../src/Translations/AdminTranslations.php:116
 msgid "Install WooCommerce"
 msgstr "Instalar WooCommerce"
 
-#: ../../src/WoocommerceMercadoPago.php:442,
+#: ../../src/WoocommerceMercadoPago.php:448,
 #: ../../src/Translations/AdminTranslations.php:117
 msgid "See WooCommerce"
 msgstr "Ver WooCommerce"
 
-#: ../../src/WoocommerceMercadoPago.php:444,
+#: ../../src/WoocommerceMercadoPago.php:450,
 #: ../../src/Translations/AdminTranslations.php:106
 msgid "The Mercado Pago module needs an active version of %s in order to work!"
 msgstr ""
@@ -708,8 +708,7 @@ msgstr "no se rechazarán automaticamente"
 msgid "Your clients finalize their payments in Mercado Pago."
 msgstr "Tus clientes finalizan sus pagos en Mercado Pago."
 
-#: ../../src/Translations/AdminTranslations.php:388,
-#: ../../src/Translations/AdminTranslations.php:503
+#: ../../src/Translations/AdminTranslations.php:388
 msgid "Mercado Pago - Checkout Pro"
 msgstr "Mercado Pago - Checkout Pro"
 
@@ -1080,8 +1079,14 @@ msgstr "Pagos sin Tarjeta de Mercado Pago"
 
 #: ../../src/Translations/AdminTranslations.php:502,
 #: ../../src/Translations/AdminTranslations.php:504
-msgid "Your customers finish their payments on Mercado Pago."
-msgstr "Tus clientes finalizan sus pagos en Mercado Pago."
+msgid ""
+"Your customers finish their payments on Mercado Pago with a credit line."
+msgstr ""
+"Tus clientes finalizan sus pagos en Mercado Pago con una línea de crédito."
+
+#: ../../src/Translations/AdminTranslations.php:503
+msgid "Mercado Pago - Checkout Pro Pagos sin Tarjeta"
+msgstr "Mercado Pago - Checkout Pro Cuotas sin Tarjeta"
 
 #: ../../src/Translations/AdminTranslations.php:505
 msgid "Up to 12 installments without cards through Mercado Pago"
@@ -1230,7 +1235,7 @@ msgstr "sin tarjeta de crédito. Saber más"
 #: ../../src/Translations/AdminTranslations.php:601,
 #: ../../src/Translations/AdminTranslations.php:607
 msgid "Transparent Checkout for credit cards is"
-msgstr "El Checkout Transparente de las tarjetas de crédito está"
+msgstr "El Checkout Transparente para tarjeta de crédito está"
 
 #: ../../src/Translations/AdminTranslations.php:625,
 #: ../../src/Translations/AdminTranslations.php:631
@@ -1240,28 +1245,26 @@ msgstr "Los pagos a través de la cuenta de Mercado Pago están"
 #: ../../src/Translations/AdminTranslations.php:648,
 #: ../../src/Translations/AdminTranslations.php:663
 msgid "Credit and debit cards"
-msgstr "Tarjeta de crédito y débito"
+msgstr "Tarjetas de crédito o débito"
 
 #: ../../src/Translations/AdminTranslations.php:649,
 #: ../../src/Translations/AdminTranslations.php:651,
 #: ../../src/Translations/AdminTranslations.php:714,
 #: ../../src/Translations/AdminTranslations.php:776,
 #: ../../src/Translations/AdminTranslations.php:856,
-#: ../../src/Translations/AdminTranslations.php:858
-msgid "Payments without leaving your store with our customizable checkout"
-msgstr "Pagos sin salir de tu tienda con nuestro checkout personalizable"
+#: ../../src/Translations/AdminTranslations.php:858,
+#: ../../src/Translations/AdminTranslations.php:949,
+#: ../../src/Translations/AdminTranslations.php:951
+msgid "Payments without leaving your store with our customizable checkout."
+msgstr "Pagos sin salir de tu tienda con nuestro checkout personalizable."
 
-#: ../../src/Translations/AdminTranslations.php:650,
-#: ../../src/Translations/AdminTranslations.php:715,
-#: ../../src/Translations/AdminTranslations.php:777,
-#: ../../src/Translations/AdminTranslations.php:857,
-#: ../../src/Translations/AdminTranslations.php:950
+#: ../../src/Translations/AdminTranslations.php:650
 msgid "Mercado Pago - Checkout API"
 msgstr "Mercado Pago - Checkout API"
 
 #: ../../src/Translations/AdminTranslations.php:652
 msgid "Transparent Checkout | Credit card"
-msgstr "Checkout Transparente | Tarjeta de Crédito"
+msgstr "Checkout API | Tarjeta de crédito"
 
 #: ../../src/Translations/AdminTranslations.php:653
 msgid ""
@@ -1323,6 +1326,10 @@ msgstr "Configuración Avanzada"
 #: ../../src/Translations/AdminTranslations.php:727
 msgid "Invoice"
 msgstr "Efectivo"
+
+#: ../../src/Translations/AdminTranslations.php:715
+msgid "Mercado Pago - Checkout API Invoice"
+msgstr "Mercado Pago - Checkout API Efectivo"
 
 #: ../../src/Translations/AdminTranslations.php:716
 msgid "Transparent Checkout | Invoice or Loterica"
@@ -1417,6 +1424,10 @@ msgstr "Medios de pago disponibles"
 msgid "PSE"
 msgstr "PSE"
 
+#: ../../src/Translations/AdminTranslations.php:777
+msgid "Mercado Pago - Checkout API PSE"
+msgstr "Mercado Pago - Checkout API PSE"
+
 #: ../../src/Translations/AdminTranslations.php:778
 msgid "Transparent Checkout PSE"
 msgstr "Pago transparente PSE"
@@ -1466,6 +1477,10 @@ msgstr "Tus claves Pix"
 #: ../../src/Translations/AdminTranslations.php:870
 msgid "Pix"
 msgstr "Pix"
+
+#: ../../src/Translations/AdminTranslations.php:857
+msgid "Mercado Pago - Checkout API Pix"
+msgstr "Mercado Pago - Checkout API Pix"
 
 #: ../../src/Translations/AdminTranslations.php:859
 msgid "Transparent Checkout | Pix"
@@ -1616,10 +1631,9 @@ msgstr "para pagos con Yape"
 msgid "Yape"
 msgstr "Yape"
 
-#: ../../src/Translations/AdminTranslations.php:949,
-#: ../../src/Translations/AdminTranslations.php:951
-msgid "Payments without leaving your store with our customizable checkout."
-msgstr "Pagos sin salir de tu tienda con nuestro checkout personalizable."
+#: ../../src/Translations/AdminTranslations.php:950
+msgid "Mercado Pago - Checkout API Yape"
+msgstr "Mercado Pago - Checkout API Yape"
 
 #: ../../src/Translations/AdminTranslations.php:952
 msgid "Checkout API | Yape"
@@ -2809,6 +2823,8 @@ msgid "Up to 12 installments"
 msgstr "Hasta 12 cuotas"
 
 #: ../../src/Translations/StoreTranslations.php:225
+#, fuzzy
+#| msgid "Debit Cards"
 msgid "Debit cards"
 msgstr "Tarjetas de débito"
 
@@ -2907,12 +2923,17 @@ msgid "More options"
 msgstr "Más opciones"
 
 #: ../../src/Translations/StoreTranslations.php:253
+#, fuzzy
+#| msgid ""
+#| "If there is any interest, it will be applied and charged by your bank."
 msgid "The interest rate is applied and charged by your bank."
-msgstr "La tasa de interés es aplicada y cobrada por tu banco."
+msgstr "Si hay intereses, los aplicará y cobrará tu banco."
 
 #: ../../src/Translations/StoreTranslations.php:254
+#, fuzzy
+#| msgid "interest free"
 msgid "Interest"
-msgstr "Intereses"
+msgstr "sin interés"
 
 #: ../../src/Translations/StoreTranslations.php:255
 msgid "Card number is required"
@@ -3664,6 +3685,65 @@ msgid ""
 msgstr ""
 "<b>Por motivos de seguridad, tu pago fue rechazado</b><br>Te recomendamos "
 "pagar con el medio de pago y dispositivo que sueles usar para compras online."
+
+#~ msgid "Your customers finish their payments on Mercado Pago."
+#~ msgstr "Tus clientes finalizan sus pagos en Mercado Pago."
+
+#~ msgid "Payments without leaving your store with our customizable checkout"
+#~ msgstr "Pagos sin salir de tu tienda con nuestro checkout personalizable"
+
+#~ msgid "Mercado Pago - Checkout Pro Installments without Cards"
+#~ msgstr "Mercado Pago - Checkout Pro Cuotas sin Tarjeta"
+
+#~ msgid "Transparent Checkout for credit or debit cards is"
+#~ msgstr "El Checkout Transparente para tarjeta de crédito o débito está"
+
+#~ msgid "Transparent Checkout | Credit or debit card"
+#~ msgstr "Checkout API | Tarjeta de crédito o débito"
+
+#~ msgid "Select an option"
+#~ msgstr "Selecciona una opción"
+
+#~ msgid "Fill out this field"
+#~ msgstr "Completa este campo"
+
+#~ msgid "Type in the complete code"
+#~ msgstr "Ingresa el código completo"
+
+#~ msgid "Saved payment methods"
+#~ msgstr "Medios de pago disponibles"
+
+#~ msgid "New card"
+#~ msgstr "Nueva tarjeta"
+
+#~ msgid "Account Money"
+#~ msgstr "Dinero disponible en Mercado Pago"
+
+#~ msgid "installments"
+#~ msgstr "intereses"
+
+#~ msgid "Security code"
+#~ msgstr "Código de seguridad"
+
+#~ msgid "Eg.: 123"
+#~ msgstr "Ej.: 123"
+
+#~ msgid "Eg.: 1234"
+#~ msgstr "Ej.: 1234"
+
+#~ msgid ""
+#~ "It’s a 3 digit number. You can find it on the back of your card or on the "
+#~ "app of your bank or digital wallet."
+#~ msgstr ""
+#~ "Es un número de 3 dígitos. Lo encuentras al dorso de tu tarjeta o en la "
+#~ "app de tu banco o billetera."
+
+#~ msgid ""
+#~ "It’s a 4 digit number. You can find it on the front of your card or on "
+#~ "the app of your bank or digital wallet."
+#~ msgstr ""
+#~ "Es un número de 4 dígitos. Lo encuentras al frente de tu tarjeta o en la "
+#~ "app de tu banco o billetera."
 
 #~ msgid "Your saved cards or money available in Mercado Pago"
 #~ msgstr "Medios de pago disponibles en Mercado Pago"

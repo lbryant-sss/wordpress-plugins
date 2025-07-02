@@ -17,6 +17,7 @@ use RankMath\Analytics\Workflow\Base;
 use RankMath\Analytics\DB as AnalyticsDB;
 use RankMath\Analytics\Url_Inspection;
 use RankMath\Google\Console;
+use RankMath\Helpers\Schedule;
 
 use function as_unschedule_all_actions;
 
@@ -187,7 +188,7 @@ class Inspections {
 				$time       = strtotime( "+{$delay_days} days", $time );
 			}
 
-			as_schedule_single_action( $time, 'rank_math/analytics/get_inspections_data', [ $page ], 'rank-math' );
+			Schedule::single_action( $time, 'rank_math/analytics/get_inspections_data', [ $page ], 'rank-math' );
 		}
 	}
 }

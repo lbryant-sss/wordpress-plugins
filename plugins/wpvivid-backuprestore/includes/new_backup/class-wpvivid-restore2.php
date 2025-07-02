@@ -1677,12 +1677,25 @@ class WPvivid_Restore_2
         foreach ( glob( $path ) as $file_path ) {
             wp_delete_file( $file_path );
         }
+
+        $google_font_path = $wp_upload_dir['basedir'] . '/elementor/google-fonts';
+        $google_font_folder = array('css', 'fonts');
+        foreach ($google_font_folder as $folder)
+        {
+            $path = $google_font_path.'/'.$folder.'/'.'*';
+            foreach ( glob( $path ) as $file_path ) {
+                wp_delete_file( $file_path );
+            }
+        }
+
         delete_post_meta_by_key( '_elementor_css' );
+        delete_post_meta_by_key( '_elementor_inline_svg' );
+        delete_post_meta_by_key( '_elementor_element_cache' );
+        delete_post_meta_by_key( '_elementor_page_assets' );
         delete_option( '_elementor_global_css' );
         delete_option( 'elementor-custom-breakpoints-files' );
-
         delete_option( '_elementor_assets_data' );
-        delete_post_meta_by_key( '_elementor_inline_svg' );
+        delete_option( '_elementor_local_google_fonts' );
     }
 
     public function regenerate_css_files()

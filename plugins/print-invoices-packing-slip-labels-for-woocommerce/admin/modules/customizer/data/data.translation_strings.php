@@ -65,3 +65,5 @@ __('Total price', 'print-invoices-packing-slip-labels-for-woocommerce');
 __('S.no', 'print-invoices-packing-slip-labels-for-woocommerce');
 __('S.No', 'print-invoices-packing-slip-labels-for-woocommerce');
 __('Phone no:', 'print-invoices-packing-slip-labels-for-woocommerce');
+__('Shipping Method:', 'print-invoices-packing-slip-labels-for-woocommerce');
+__('Phone:', 'print-invoices-packing-slip-labels-for-woocommerce');

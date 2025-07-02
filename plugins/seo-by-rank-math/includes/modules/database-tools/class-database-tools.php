@@ -11,6 +11,7 @@ namespace RankMath\Tools;
 use RankMath\Helper;
 use RankMath\Helpers\Str;
 use RankMath\Helpers\Arr;
+use RankMath\Helpers\Schedule;
 use RankMath\Installer;
 use RankMath\Traits\Hooker;
 use RankMath\Helpers\Sitepress;
@@ -183,7 +184,7 @@ class Database_Tools {
 
 		// Analytics module.
 		if ( Helper::is_module_active( 'analytics' ) ) {
-			as_enqueue_async_action(
+			Schedule::async_action(
 				'rank_math/analytics/workflow/create_tables',
 				[],
 				'rank-math'

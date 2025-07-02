@@ -18,6 +18,7 @@ use RankMath\Google\Console;
 use RankMath\Google\Authentication;
 use RankMath\Analytics\Workflow\Jobs;
 use RankMath\Analytics\Workflow\Workflow;
+use RankMath\Helpers\Schedule;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -362,6 +363,6 @@ class Analytics_Common {
 	private function schedule_email_reporting( $frequency = 'monthly' ) {
 		$interval_days = Email_Reports::get_period_from_frequency( $frequency );
 		$midnight      = strtotime( 'tomorrow midnight' );
-		as_schedule_recurring_action( $midnight, $interval_days * DAY_IN_SECONDS, 'rank_math/analytics/email_report_event', [], 'rank-math' );
+		Schedule::recurring_action( $midnight, $interval_days * DAY_IN_SECONDS, 'rank_math/analytics/email_report_event', [], 'rank-math' );
 	}
 }

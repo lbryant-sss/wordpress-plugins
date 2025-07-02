@@ -73,7 +73,15 @@ table.wfte_product_table th, table.wfte_product_table td{ line-height: 1.6; padd
 table.wfte_payment_summary_table th, table.wfte_payment_summary_table td{ line-height: 1.6; padding:5px 5px;}
 </style>
 <div class="wfte_rtl_main wfte_invoice-main wfte_invoice_basic_main" style="padding-top:30px; padding-right:30px; padding-bottom:30px; padding-left:30px; margin-top: 0px; margin-bottom:0px; margin-left:0px; margin-right:0px;">
-    <div class="wfte_row clearfix">       
+    <div class="wfte_row clearfix">   
+        <div class="wfte_col-1 float_left">
+            <div class="wfte_doc_title wfte_template_element" data-hover-id="doc_title">__[Dispatch label]__</div>
+        </div> 
+        <div class="clearfix"></div>
+        <div class="wfte_row clearfix" style="padding-top: 15px;">
+            <div class="wfte_col-1 float_left wfte_text_left">
+            </div>
+        </div>   
         <div class="wfte_col-7 float_left">
             <div class="wfte_company_logo wfte_template_element" data-hover-id="company_logo">
                 <div class="wfte_company_logo_img_box">
