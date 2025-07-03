@@ -3515,6 +3515,26 @@ function isPostLocked(state) {
  *
  * @param {Object} state Global application state.
  *
+ * @example
+ * ```jsx
+ * import { __ } from '@wordpress/i18n';
+ * import { store as editorStore } from '@wordpress/editor';
+ * import { useSelect } from '@wordpress/data';
+ *
+ * const ExampleComponent = () => {
+ * 	const isSavingLocked = useSelect(
+ * 		( select ) => select( editorStore ).isPostSavingLocked(),
+ * 		[]
+ * 	);
+ *
+ * 	return isSavingLocked ? (
+ * 		<p>{ __( 'Post saving is locked' ) }</p>
+ * 	) : (
+ * 		<p>{ __( 'Post saving is not locked' ) }</p>
+ * 	);
+ * };
+ * ```
+ *
  * @return {boolean} Is locked.
  */
 function isPostSavingLocked(state) {
@@ -6433,7 +6453,7 @@ function DataFormLayout({
   }
   const normalizedFormFields = (0,external_wp_element_namespaceObject.useMemo)(() => normalizeFormFields(form), [form]);
   return /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.__experimentalVStack, {
-    spacing: 2,
+    spacing: 4,
     children: normalizedFormFields.map(formField => {
       const FieldLayout = getFormFieldLayout(formField.layout)?.component;
       if (!FieldLayout) {
@@ -10836,6 +10856,7 @@ function v4(options, buf, offset) {
 
 
 
+
 /**
  * Internal dependencies
  */
@@ -10866,6 +10887,9 @@ function mediaUpload({
   onSuccess,
   multiple = true
 }) {
+  const {
+    receiveEntityRecords
+  } = (0,external_wp_data_namespaceObject.dispatch)(external_wp_coreData_namespaceObject.store);
   const {
     getCurrentPost,
     getEditorSettings
@@ -10906,6 +10930,15 @@ function mediaUpload({
         clearSaveLock();
       }
       onFileChange?.(file);
+
+      // Files are initially received by `onFileChange` as a blob.
+      // After that the function is called a second time with the file as an entity.
+      // For core-data, we only care about receiving/invalidating entities.
+      const entityFiles = file.filter(_file => _file?.id);
+      if (entityFiles?.length) {
+        const invalidateCache = true;
+        receiveEntityRecords('root', 'media', entityFiles, undefined, invalidateCache);
+      }
     },
     onSuccess,
     additionalData: {
@@ -16186,7 +16219,27 @@ function setDefaultCompleters(completers = []) {
  */
 
 
-(0,external_wp_hooks_namespaceObject.addFilter)('editor.MediaUpload', 'core/editor/components/media-upload', () => external_wp_mediaUtils_namespaceObject.MediaUpload);
+
+
+
+function MediaUploadWithCacheInvalidation(props) {
+  const {
+    invalidateResolutionForStoreSelector
+  } = (0,external_wp_data_namespaceObject.useDispatch)(external_wp_coreData_namespaceObject.store);
+  const {
+    onClose: originalOnClose,
+    ...rest
+  } = props;
+  const onClose = (...onCloseArgs) => {
+    invalidateResolutionForStoreSelector('getMediaItems');
+    originalOnClose?.(...onCloseArgs);
+  };
+  return /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_mediaUtils_namespaceObject.MediaUpload, {
+    onClose: onClose,
+    ...rest
+  });
+}
+(0,external_wp_hooks_namespaceObject.addFilter)('editor.MediaUpload', 'core/editor/components/media-upload', () => MediaUploadWithCacheInvalidation);
 
 ;// ./packages/editor/build-module/hooks/pattern-overrides.js
 /**
@@ -20523,22 +20576,13 @@ function PostAuthorCombobox() {
       author: postAuthorId
     });
   };
-
-  /**
-   * Handle user input.
-   *
-   * @param {string} inputValue The current value of the input field.
-   */
-  const handleKeydown = inputValue => {
-    setFieldValue(inputValue);
-  };
   return /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.ComboboxControl, {
     __nextHasNoMarginBottom: true,
     __next40pxDefaultSize: true,
     label: (0,external_wp_i18n_namespaceObject.__)('Author'),
     options: authorOptions,
     value: authorId,
-    onFilterValueChange: (0,external_wp_compose_namespaceObject.debounce)(handleKeydown, 300),
+    onFilterValueChange: (0,external_wp_compose_namespaceObject.debounce)(setFieldValue, 300),
     onChange: handleSelect,
     allowReset: false,
     hideLabelFromVision: true,
@@ -24245,15 +24289,24 @@ function FlatTermSelector({
 
 
 const TagsPanel = () => {
+  var _tagLabels$add_new_it, _tagLabels$name;
+  const tagLabels = (0,external_wp_data_namespaceObject.useSelect)(select => {
+    const taxonomy = select(external_wp_coreData_namespaceObject.store).getTaxonomy('post_tag');
+    return taxonomy?.labels;
+  }, []);
+  const addNewItem = (_tagLabels$add_new_it = tagLabels?.add_new_item) !== null && _tagLabels$add_new_it !== void 0 ? _tagLabels$add_new_it : (0,external_wp_i18n_namespaceObject.__)('Add tag');
+  const tagLabel = (_tagLabels$name = tagLabels?.name) !== null && _tagLabels$name !== void 0 ? _tagLabels$name : (0,external_wp_i18n_namespaceObject.__)('Tags');
   const panelBodyTitle = [(0,external_wp_i18n_namespaceObject.__)('Suggestion:'), /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)("span", {
     className: "editor-post-publish-panel__link",
-    children: (0,external_wp_i18n_namespaceObject.__)('Add tags')
+    children: addNewItem
   }, "label")];
   return /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsxs)(external_wp_components_namespaceObject.PanelBody, {
     initialOpen: false,
     title: panelBodyTitle,
     children: [/*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)("p", {
-      children: (0,external_wp_i18n_namespaceObject.__)('Tags help users and search engines navigate your site and find your content. Add a few keywords to describe your post.')
+      children: (0,external_wp_i18n_namespaceObject.sprintf)(
+      // translators: %s is the taxonomy name (e.g., "Tags").
+      (0,external_wp_i18n_namespaceObject.__)('%s help users and search engines navigate your site and find your content. Add a few keywords to describe your post.'), tagLabel)
     }), /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(flat_term_selector, {
       slug: "post_tag",
       __nextHasNoMarginBottom: true

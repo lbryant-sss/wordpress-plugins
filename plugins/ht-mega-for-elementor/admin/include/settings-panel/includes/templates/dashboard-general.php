@@ -93,12 +93,12 @@ ob_start();
 
             <div class="htmega-video-item">
                 <div class="video-thumbnail">
-                    <img src="<?php echo esc_url( HTMEGAOPT_URL . '/assets/images/video-tutorial-thumb2.png' ); ?>" alt="<?php echo esc_html__('video tutorial','htmega-addons');?>">
-                    <a href="https://www.youtube.com/watch?v=z_9Z9VWhaEQ" target="_blank" class="play-button">
+                    <img src="<?php echo esc_url( HTMEGAOPT_URL . '/assets/images/video-tutorial-thumb3.png' ); ?>" alt="<?php echo esc_html__('video tutorial','htmega-addons');?>">
+                    <a href="https://www.youtube.com/watch?v=L8S_Ov3b56o" target="_blank" class="play-button">
                         <svg width="19" height="21" viewBox="0 0 19 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.6767 8.42964C19.3759 9.41071 19.3759 11.8634 17.6767 12.8445L4.29501 20.5703C2.59575 21.5514 0.471673 20.3251 0.471673 18.3629L0.471674 2.91115C0.471674 0.94901 2.59575 -0.277325 4.29502 0.703745L17.6767 8.42964Z" fill="#681EC8"/></svg>
                     </a>
                 </div>
-                <h3><?php echo esc_html__('Cross-Domain Copy Paste In Elementor', 'htmega-addons');?></h3>
+                <h3><?php echo esc_html__('Conditional Display Content In Elementor', 'htmega-addons');?></h3>
             </div>
         </div>
 

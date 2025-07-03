@@ -4,6 +4,9 @@ namespace YahnisElsts\AdminMenuEditor\Customizable\Settings;
 
 use YahnisElsts\AdminMenuEditor\Customizable\Storage\StorageInterface;
 
+/**
+ * @deprecated Use a SingularSetting with a Record schema instead.
+ */
 class MapSetting extends Setting {
 	protected $dataType = 'map';
 	protected $defaultValue = [];

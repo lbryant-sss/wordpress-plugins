@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HT Mega – Absolute Addons for Elementor.\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-25 08:29+0000\n"
+"POT-Creation-Date: 2025-07-01 09:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.7.2; wp-6.8.1\n"
+"X-Loco-Version: 2.8.0; wp-6.8.1; php-8.2.26\n"
 "X-Domain: htmega-addons"
 
 #: includes/widgets/htmega_twitter_feed.php:1684
@@ -32,7 +32,7 @@ msgstr ""
 msgid " hours ago"
 msgstr ""
 
-#: includes/helper-function.php:1236
+#: includes/helper-function.php:1223
 msgid " is missing! Please install and activate "
 msgstr ""
 
@@ -44,7 +44,7 @@ msgstr ""
 msgid " months ago"
 msgstr ""
 
-#: includes/class.htmega.php:313
+#: includes/class.htmega.php:324
 msgid " or greater of <strong>HT Mega Pro</strong> for seamless compatibility."
 msgstr ""
 
@@ -54,7 +54,7 @@ msgstr ""
 
 #. 1: Plugin name (HTMega Addons), 2: Required plugin name (Elementor), 3: Minimum required version
 #. 1: Plugin name (HTMega Addons), 2: Required component name (PHP), 3: Minimum required version
-#: includes/class.htmega.php:385 includes/class.htmega.php:400
+#: includes/class.htmega.php:396 includes/class.htmega.php:411
 #, php-format
 msgid "\"%1$s\" requires \"%2$s\" version %3$s or greater."
 msgstr ""
@@ -514,6 +514,10 @@ msgstr ""
 msgid "40 seconds"
 msgstr ""
 
+#: admin/include/class.theme-builder.php:132
+msgid "404"
+msgstr ""
+
 #: includes/widgets/htmega_errorcontent.php:13
 #: includes/widgets/htmega_errorcontent.php:37
 msgid "404 Content"
@@ -592,14 +596,14 @@ msgstr ""
 msgid "9:00 AM to 6:30 PM"
 msgstr ""
 
-#: includes/class.htmega.php:363
+#: includes/class.htmega.php:374
 msgid ""
 "<strong>HTMEGA Addons for Elementor</strong> requires \"<strong>"
 "Elementor</strong>\" plugin to be active. Please activate Elementor to "
 "continue."
 msgstr ""
 
-#: includes/class.htmega.php:370
+#: includes/class.htmega.php:381
 msgid ""
 "<strong>HTMEGA Addons for Elementor</strong> requires \"<strong>"
 "Elementor</strong>\" plugin to be active. Please install the Elementor "
@@ -619,7 +623,7 @@ msgstr ""
 msgid "<strong>Welcome,</strong>to Notification."
 msgstr ""
 
-#: admin/include/settings-panel/includes/classes/Admin/Menu.php:284
+#: admin/include/settings-panel/includes/classes/Admin/Menu.php:285
 msgid ""
 "Access a variety of ready-to-use templates for every niche, from business to "
 "e-commerce, blogs, and more."
@@ -703,7 +707,7 @@ msgid "Activate"
 msgstr ""
 
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:276
-msgid "Activate My Free Trial"
+msgid "ACTIVATE FOR $1 NOW"
 msgstr ""
 
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:236
@@ -928,6 +932,19 @@ msgstr ""
 msgid "After/Bottom Login Button"
 msgstr ""
 
+#: includes/ai/htmega-ai-integration.php:80
+msgid "AI Engine"
+msgstr ""
+
+#: includes/ai/htmega-ai-integration.php:49
+msgid "AI Writer"
+msgstr ""
+
+#: includes/ai/htmega-ai-integration.php:53
+#: includes/ai/htmega-ai-integration.php:55
+msgid "AI Writer Settings"
+msgstr ""
+
 #: includes/widgets/htmega_accordion.php:514
 #: includes/widgets/htmega_accordion.php:718
 #: includes/widgets/htmega_accordion.php:876
@@ -1123,6 +1140,10 @@ msgstr ""
 msgid "Alternate"
 msgstr ""
 
+#: includes/ai/htmega-ai-integration.php:229
+msgid "An error occurred. Please try again."
+msgstr ""
+
 #: includes/widgets/htmega_accordion.php:157
 #: includes/widgets/htmega_accordion.php:162
 #: includes/widgets/htmega_accordion.php:166
@@ -1183,6 +1204,10 @@ msgstr ""
 
 #: includes/widgets/htmega_googlemap.php:164
 msgid "Another Place"
+msgstr ""
+
+#: includes/ai/htmega-ai-integration.php:226
+msgid "API key not configured"
 msgstr ""
 
 #: includes/widgets/htmega_booked_calender.php:564
@@ -3697,6 +3722,30 @@ msgstr ""
 msgid "Circle Range"
 msgstr ""
 
+#: includes/ai/htmega-ai-integration.php:85
+msgid "Claude (Anthropic)"
+msgstr ""
+
+#: includes/ai/htmega-ai-integration.php:137
+msgid "Claude 3 Haiku (Fast & Affordable)"
+msgstr ""
+
+#: includes/ai/htmega-ai-integration.php:138
+msgid "Claude 3 Opus (Most Capable)"
+msgstr ""
+
+#: includes/ai/htmega-ai-integration.php:136
+msgid "Claude 3.5 Sonnet (Best Performance)"
+msgstr ""
+
+#: includes/ai/htmega-ai-integration.php:121
+msgid "Claude API Key"
+msgstr ""
+
+#: includes/ai/htmega-ai-integration.php:132
+msgid "Claude Model"
+msgstr ""
+
 #: admin/include/templates/library/templates.php:156
 msgid "Click here"
 msgstr ""
@@ -4303,6 +4352,14 @@ msgstr ""
 msgid "Conditional Display"
 msgstr ""
 
+#: admin/include/settings-panel/includes/templates/dashboard-general.php:101
+msgid "Conditional Display Content In Elementor"
+msgstr ""
+
+#: includes/ai/htmega-ai-integration.php:54
+msgid "Configure AI Writer for content generation in all widgets"
+msgstr ""
+
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:224
 msgid ""
 "Configure the elements of HT mega according to your preferences to make your "
@@ -4560,10 +4617,6 @@ msgstr ""
 
 #: extensions/wc-sales-notification/admin/setting.php:212
 msgid "Cross Icon Color"
-msgstr ""
-
-#: admin/include/settings-panel/includes/templates/dashboard-general.php:101
-msgid "Cross-Domain Copy Paste In Elementor"
 msgstr ""
 
 #: includes/widgets/htmega_data_table.php:55
@@ -4926,7 +4979,7 @@ msgstr ""
 msgid "Description Tag"
 msgstr ""
 
-#: admin/include/settings-panel/includes/classes/Admin/Menu.php:280
+#: admin/include/settings-panel/includes/classes/Admin/Menu.php:281
 msgid ""
 "Design stunning websites effortlessly with HT Mega's exclusive collection of "
 "templates."
@@ -5035,7 +5088,7 @@ msgid ""
 "Pro )</span>"
 msgstr ""
 
-#: includes/class.htmega.php:242
+#: includes/class.htmega.php:253
 #: admin/include/templates/dashboard-widget.php:94
 #: admin/include/settings-panel/includes/templates/dashboard-general.php:59
 #: admin/include/settings-panel/includes/templates/dashboard-general.php:63
@@ -5053,10 +5106,6 @@ msgstr ""
 #: includes/widgets/htmega_user_login_form.php:99
 #: includes/widgets/htmega_user_login_form.php:100
 msgid "Don’t Have account? You can create an account by using this form."
-msgstr ""
-
-#: admin/include/settings-panel/includes/classes/Admin/Menu.php:248
-msgid "Don’t Miss Out – Unlock Full Elementor Power for FREE!."
 msgstr ""
 
 #: includes/widgets/htmega_double_button.php:13
@@ -5254,15 +5303,15 @@ msgstr ""
 msgid "Element Space"
 msgstr ""
 
-#: includes/class.htmega.php:387 admin/include/templates_list.php:42
+#: includes/class.htmega.php:398 admin/include/templates_list.php:42
 msgid "Elementor"
 msgstr ""
 
-#: includes/class.htmega.php:364
+#: includes/class.htmega.php:375
 msgid "Elementor Activate Now"
 msgstr ""
 
-#: includes/class.htmega.php:372
+#: includes/class.htmega.php:383
 msgid "Elementor Install Now"
 msgstr ""
 
@@ -5311,6 +5360,14 @@ msgstr ""
 
 #: extensions/floating-effects/class.floating-effects.php:84
 msgid "Enable"
+msgstr ""
+
+#: includes/ai/htmega-ai-integration.php:70
+msgid "Enable AI Writer"
+msgstr ""
+
+#: includes/ai/htmega-ai-integration.php:75
+msgid "Enable AI Writer for content generation in all widgets."
 msgstr ""
 
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:100
@@ -5434,10 +5491,6 @@ msgstr ""
 msgid "Entries Style"
 msgstr ""
 
-#: admin/include/class.theme-builder.php:132
-msgid "Error"
-msgstr ""
-
 #: includes/widgets/htmega_ninja_form.php:1141
 msgid "Error Color"
 msgstr ""
@@ -5551,6 +5604,10 @@ msgstr ""
 msgid "Exclude Posts"
 msgstr ""
 
+#: admin/include/settings-panel/includes/classes/Admin/Menu.php:248
+msgid "Exclusive Deal - Full Pro Access for $1 in Your First Month!"
+msgstr ""
+
 #: includes/widgets/htmega_notify.php:173
 msgid "Exit Animation"
 msgstr ""
@@ -5576,7 +5633,7 @@ msgstr ""
 msgid "Expired timestamp, yours %1$s, ours %2$s"
 msgstr ""
 
-#: admin/include/settings-panel/includes/classes/Admin/Menu.php:279
+#: admin/include/settings-panel/includes/classes/Admin/Menu.php:280
 #, php-format
 msgid "Explore %s Templates"
 msgstr ""
@@ -5619,7 +5676,7 @@ msgstr ""
 msgid "Facebook"
 msgstr ""
 
-#: includes/class.htmega.php:243
+#: includes/class.htmega.php:254
 msgid "Facebook Group"
 msgstr ""
 
@@ -6023,6 +6080,10 @@ msgstr ""
 msgid "Full"
 msgstr ""
 
+#: admin/include/settings-panel/includes/classes/Admin/Menu.php:272
+msgid "Full Access & Updates"
+msgstr ""
+
 #: includes/widgets/htmega_scroll_navigation.php:214
 msgid "Full Screen"
 msgstr ""
@@ -6033,7 +6094,7 @@ msgstr ""
 msgid "Full Width"
 msgstr ""
 
-#: admin/include/settings-panel/includes/classes/Admin/Menu.php:291
+#: admin/include/settings-panel/includes/classes/Admin/Menu.php:292
 msgid "Fully Customizable"
 msgstr ""
 
@@ -6046,6 +6107,18 @@ msgstr ""
 msgid "Gallery Popup "
 msgstr ""
 
+#: includes/ai/htmega-ai-integration.php:162
+msgid "Gemini 1.5 Flash (Fast & Efficient)"
+msgstr ""
+
+#: includes/ai/htmega-ai-integration.php:163
+msgid "Gemini 1.5 Pro (Best Performance)"
+msgstr ""
+
+#: includes/ai/htmega-ai-integration.php:164
+msgid "Gemini Pro (Balanced)"
+msgstr ""
+
 #: extensions/floating-effects/class.floating-effects.php:581
 msgid "General Settings"
 msgstr ""
@@ -6054,6 +6127,10 @@ msgstr ""
 msgid ""
 "General widgets will be activated to build your website. Best suited for "
 "lightweight-fast starter websites."
+msgstr ""
+
+#: includes/ai/htmega-ai-integration.php:225
+msgid "Generating..."
 msgstr ""
 
 #: includes/widgets/htmega_testimonial_grid.php:242
@@ -6077,7 +6154,7 @@ msgstr ""
 msgid "Get Support"
 msgstr ""
 
-#: includes/class.htmega.php:417
+#: includes/class.htmega.php:428
 #: admin/include/templates/library/templates.php:71
 #: admin/include/settings-panel/includes/classes/Onboarding.php:66
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:186
@@ -6092,8 +6169,12 @@ msgid ""
 msgstr ""
 
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:194
-#: admin/include/settings-panel/includes/classes/Admin/Menu.php:298
+#: admin/include/settings-panel/includes/classes/Admin/Menu.php:299
 msgid "Go To Dashboard"
+msgstr ""
+
+#: includes/ai/htmega-ai-integration.php:228
+msgid "Go to Settings"
 msgstr ""
 
 #. %s: URL to the Menus Option page
@@ -6109,6 +6190,18 @@ msgstr ""
 msgid "Goggle Map Embed URL"
 msgstr ""
 
+#: includes/ai/htmega-ai-integration.php:86
+msgid "Google AI (Gemini)"
+msgstr ""
+
+#: includes/ai/htmega-ai-integration.php:147
+msgid "Google AI API Key"
+msgstr ""
+
+#: includes/ai/htmega-ai-integration.php:158
+msgid "Google AI Model"
+msgstr ""
+
 #: includes/widgets/htmega_googlemap.php:13
 #: includes/widgets/htmega_googlemap.php:44
 #: includes/widgets/htmega_lightbox.php:62
@@ -6121,6 +6214,18 @@ msgstr ""
 
 #: includes/widgets/htmega_socialshere.php:60
 msgid "Google+"
+msgstr ""
+
+#: includes/ai/htmega-ai-integration.php:112
+msgid "GPT-3.5 Turbo (Budget Friendly)"
+msgstr ""
+
+#: includes/ai/htmega-ai-integration.php:111
+msgid "GPT-4o (Best Performance)"
+msgstr ""
+
+#: includes/ai/htmega-ai-integration.php:110
+msgid "GPT-4o Mini (Fast & Affordable)"
 msgstr ""
 
 #: includes/widgets/htmega_post_grid_tab.php:1170
@@ -6352,7 +6457,7 @@ msgstr ""
 msgid "Hexagon"
 msgstr ""
 
-#: includes/class.htmega.php:275
+#: includes/class.htmega.php:286
 msgid ""
 "Hi there! Thanks a lot for choosing HT Mega Elementor Addons to take your "
 "WordPress website to the next level."
@@ -6681,7 +6786,7 @@ msgstr ""
 msgid "HT Header & Footer"
 msgstr ""
 
-#: includes/class.htmega.php:272
+#: includes/class.htmega.php:283
 msgid "HT Mega"
 msgstr ""
 
@@ -6720,7 +6825,7 @@ msgstr ""
 msgid "HT WPForms"
 msgstr ""
 
-#: includes/class.htmega.php:386 includes/class.htmega.php:401
+#: includes/class.htmega.php:397 includes/class.htmega.php:412
 #: includes/widgets_control.php:40
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:25
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:26
@@ -6825,7 +6930,7 @@ msgstr ""
 msgid "https://your-link.com/register"
 msgstr ""
 
-#: includes/class.htmega.php:282
+#: includes/class.htmega.php:293
 msgid "I already did"
 msgstr ""
 
@@ -7287,7 +7392,7 @@ msgstr ""
 msgid "Import"
 msgstr ""
 
-#: admin/include/settings-panel/includes/classes/Admin/Menu.php:288
+#: admin/include/settings-panel/includes/classes/Admin/Menu.php:289
 msgid ""
 "Import complete pages or sections in seconds to kickstart your website "
 "design with minimal effort."
@@ -7650,7 +7755,7 @@ msgid ""
 "be deleted."
 msgstr ""
 
-#: includes/class.htmega.php:276
+#: includes/class.htmega.php:287
 msgid ""
 "It would be greatly appreciated if you consider giving us a review in "
 "WordPress. These reviews help us improve the plugin further and make it "
@@ -8241,10 +8346,6 @@ msgstr ""
 
 #: includes/widgets/htmega_image_comparison.php:189
 msgid "Level Position"
-msgstr ""
-
-#: admin/include/settings-panel/includes/classes/Admin/Menu.php:272
-msgid "Lifetime Access & Updates Available"
 msgstr ""
 
 #: includes/widgets/htmega_lightbox.php:13
@@ -8993,7 +9094,7 @@ msgstr ""
 msgid "May"
 msgstr ""
 
-#: includes/class.htmega.php:280
+#: includes/class.htmega.php:291
 msgid "Maybe Later"
 msgstr ""
 
@@ -9218,7 +9319,7 @@ msgstr ""
 msgid "Modal Width"
 msgstr ""
 
-#: admin/include/settings-panel/includes/classes/Admin/Menu.php:292
+#: admin/include/settings-panel/includes/classes/Admin/Menu.php:293
 msgid ""
 "Modify every template to match your branding, ensuring a unique and "
 "personalized website."
@@ -9761,6 +9862,7 @@ msgstr ""
 msgid "Odnoklassniki"
 msgstr ""
 
+#: includes/ai/htmega-ai-integration.php:74
 #: includes/widgets/htmega_call_to_action.php:625
 #: includes/widgets/htmega_call_to_action.php:698
 #: includes/widgets/htmega_call_to_action.php:715
@@ -9822,10 +9924,11 @@ msgstr ""
 msgid "OK"
 msgstr ""
 
-#: includes/class.htmega.php:278
+#: includes/class.htmega.php:289
 msgid "Ok, you deserve it!"
 msgstr ""
 
+#: includes/ai/htmega-ai-integration.php:73
 #: includes/widgets/htmega_call_to_action.php:624
 #: includes/widgets/htmega_call_to_action.php:697
 #: includes/widgets/htmega_call_to_action.php:714
@@ -9858,12 +9961,8 @@ msgstr ""
 msgid "One Comment"
 msgstr ""
 
-#: admin/include/settings-panel/includes/classes/Admin/Menu.php:287
+#: admin/include/settings-panel/includes/classes/Admin/Menu.php:288
 msgid "One-Click Import"
-msgstr ""
-
-#: admin/include/settings-panel/includes/classes/Admin/Menu.php:273
-msgid "One-time payment, unlimited benefits."
 msgstr ""
 
 #: includes/widgets/htmega_switcher.php:572
@@ -9894,6 +9993,18 @@ msgstr ""
 
 #: includes/widgets/htmega_accordion.php:326
 msgid "Open Item Icon"
+msgstr ""
+
+#: includes/ai/htmega-ai-integration.php:84
+msgid "OpenAI"
+msgstr ""
+
+#: includes/ai/htmega-ai-integration.php:95
+msgid "OpenAI API Key"
+msgstr ""
+
+#: includes/ai/htmega-ai-integration.php:106
+msgid "OpenAI Model"
 msgstr ""
 
 #: includes/widgets/htmega_toggle.php:72
@@ -10439,7 +10550,7 @@ msgstr ""
 msgid "Photoshop"
 msgstr ""
 
-#: includes/class.htmega.php:402
+#: includes/class.htmega.php:413
 msgid "PHP"
 msgstr ""
 
@@ -10505,6 +10616,10 @@ msgstr ""
 
 #: includes/widgets/htmega_audio_player.php:223
 msgid "Player Position On"
+msgstr ""
+
+#: includes/ai/htmega-ai-integration.php:227
+msgid "Please configure your AI API key in HT Mega settings first."
 msgstr ""
 
 #: admin/include/class-deactivation.php:427
@@ -10912,7 +11027,7 @@ msgstr ""
 msgid "Product Added"
 msgstr ""
 
-#: admin/include/settings-panel/includes/classes/Admin/Menu.php:283
+#: admin/include/settings-panel/includes/classes/Admin/Menu.php:284
 msgid "Professionally Designed Templates"
 msgstr ""
 
@@ -11056,7 +11171,7 @@ msgstr ""
 msgid "Random"
 msgstr ""
 
-#: includes/class.htmega.php:244
+#: includes/class.htmega.php:255
 msgid "Rate the plugin"
 msgstr ""
 
@@ -11443,7 +11558,7 @@ msgid "Right Top"
 msgstr ""
 
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:268
-msgid "Risk-Free, No Hidden Cost"
+msgid "Risk-Free, Just $1 First Month"
 msgstr ""
 
 #: extensions/floating-effects/class.floating-effects.php:239
@@ -11783,14 +11898,30 @@ msgstr ""
 msgid "Select Template Type"
 msgstr ""
 
+#: includes/ai/htmega-ai-integration.php:89
+msgid "Select the AI engine to use for content generation."
+msgstr ""
+
+#: includes/ai/htmega-ai-integration.php:141
+msgid "Select the Claude model to use for content generation."
+msgstr ""
+
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:237
 msgid ""
 "Select the elements you want to use in your website. You can enable or "
 "disable them anytime later."
 msgstr ""
 
+#: includes/ai/htmega-ai-integration.php:167
+msgid "Select the Google AI model to use for content generation."
+msgstr ""
+
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:242
 msgid "Select the Modules You Require Now"
+msgstr ""
+
+#: includes/ai/htmega-ai-integration.php:115
+msgid "Select the OpenAI model to use for content generation."
 msgstr ""
 
 #: includes/widgets/htmega_calendly.php:54
@@ -11903,7 +12034,7 @@ msgstr ""
 msgid "Set the active item index. Default 1"
 msgstr ""
 
-#: includes/class.htmega.php:414 includes/widgets/htmega_scroll_image.php:268
+#: includes/class.htmega.php:425 includes/widgets/htmega_scroll_image.php:268
 #: extensions/ht-builder/widgets/bl_post_archive.php:42
 #: extensions/ht-menu/menu/templates.php:40
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:44
@@ -13250,7 +13381,7 @@ msgstr ""
 msgid "Template name is required"
 msgstr ""
 
-#: includes/helper-function.php:1205
+#: includes/helper-function.php:1192
 msgid "Template not published or does not exist"
 msgstr ""
 
@@ -14043,6 +14174,10 @@ msgstr ""
 msgid "Trigger On"
 msgstr ""
 
+#: admin/include/settings-panel/includes/classes/Admin/Menu.php:273
+msgid "Try everything for 30 days with a $1 payment."
+msgstr ""
+
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:269
 msgid "Try it for 30 days, cancel anytime."
 msgstr ""
@@ -14745,6 +14880,10 @@ msgstr ""
 msgid "Wrapper Link"
 msgstr ""
 
+#: includes/ai/htmega-ai-integration.php:230
+msgid "Write with HT Mega AI"
+msgstr ""
+
 #: includes/widgets/htmega_section_title.php:295
 msgid "X Offset"
 msgstr ""
@@ -14860,7 +14999,7 @@ msgstr ""
 msgid "You do not have permission to perform this action"
 msgstr ""
 
-#: admin/include/settings-panel/includes/classes/Admin/Menu.php:297
+#: admin/include/settings-panel/includes/classes/Admin/Menu.php:298
 msgid "You Have Completed Your Setup for HT Mega"
 msgstr ""
 
@@ -14915,11 +15054,9 @@ msgid "🌟 Enhance Your %1$s Experience as a Valued Contributor!"
 msgstr ""
 
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:247
-msgid "💡 No restrictions. No commitment. Just limitless creativity."
+msgid "💡 All Features. Zero Risk. Just $1 to Begin."
 msgstr ""
 
 #: admin/include/settings-panel/includes/classes/Admin/Menu.php:246
-msgid ""
-"🚀 Get 30 Days of <span style=\"display:inline-block;\">HT Mega Pro</span> "
-"<span style=\"display:inline-block;\">100% Free Trial!</span>"
+msgid "🚀  Get HT Mega Pro for Just $1 in the First Month - Cancel Anytime"
 msgstr ""

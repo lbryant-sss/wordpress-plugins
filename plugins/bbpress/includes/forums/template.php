@@ -372,7 +372,8 @@ function bbp_forum_title( $forum_id = 0 ) {
 	 */
 	function bbp_get_forum_title( $forum_id = 0 ) {
 		$forum_id = bbp_get_forum_id( $forum_id );
-		$title    = get_the_title( $forum_id );
+		$title    = get_post_field( 'post_title', $forum_id );
+		$title    = apply_filters( 'the_title', $title, $forum_id );
 
 		// Filter & return
 		return apply_filters( 'bbp_get_forum_title', $title, $forum_id );
@@ -1355,7 +1356,7 @@ function bbp_forum_topic_count_hidden( $forum_id = 0, $total_count = true, $inte
 	 */
 	function bbp_get_forum_topic_count_hidden( $forum_id = 0, $total_count = true, $integer = null ) {
 		$forum_id = bbp_get_forum_id( $forum_id );
-		$meta_key = empty( $total_count ) ? '_bbp_topic_count_hidden' : '_bbp_topic_reply_count_hidden';
+		$meta_key = empty( $total_count ) ? '_bbp_topic_count_hidden' : '_bbp_total_topic_count_hidden';
 		$topics   = (int) get_post_meta( $forum_id, $meta_key, true );
 		$filter   = ( true === $integer )
 			? 'bbp_get_forum_topic_count_hidden_int'

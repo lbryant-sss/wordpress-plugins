@@ -3,7 +3,7 @@ Contributors: hasthemes, htplugins, devitemsllc, tarekht, zenaulislam, aslamhasi
 Tags: elementor, elementor addons, elementor widgets, elementor templates, addons, elementor slider, elementor page builder, mega menu, addons for elementor, post grid, elements, header footer builder
 Requires at least: 5.0
 Tested up to: 6.8
-Stable tag: 2.8.9
+Stable tag: 2.9.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,14 +23,13 @@ If you want to view the demo templates available in this plugin, you can check t
 
 == Free Unique Advanced Features of HT Mega: 🔥 ==
 
+== ✅ AI Writer ==
+
+The AI Writer feature revolutionizes content creation within Elementor by integrating powerful AI engines directly into your widgets. Generate professional headlines, compelling copy, and engaging text instantly with support for OpenAI (GPT-4, GPT-3.5), Claude (Anthropic), and Google AI (Gemini). Simply click the AI button next to any text field, describe what you need, and get multiple high-quality content suggestions in seconds. This intelligent assistant provides relevant, conversion-focused content that saves hours of writing time while maintaining professional quality across all your web projects.
+
 == ✅ Header/Footer Builder ==
 
-This feature allows creating a header/footer layout for the full website or specific page. There is an option to select the preferred header/footer globally or for a single page/post. You will additionally get tons of header templates or footer templates to choose from, and customize one if you like.
-
-This plugin gives you complete control over the appearance of your WordPress site header by creating header templates or using a predesigned one. With this plugin, you can easily create custom headers for your WP site. This will allow you to create a different header for each page of your website.  The header builder tool allows you to create a header template from scratch or customize an existing header template.  You can also change the header image for your template. You can also add a header logo to your header template. The header logo can be linked to your website or to an external website. You can also add a header with a text block to your template. This will allow you to add a short description of your website or business in the template.
-
-In addition, HT Mega plugin offers a variety of features to help you build and design a custom footer for your WordPress site. With the footer builder, you can easily add footer text, footer logo, simple footer widgets, etc. You can create your custom footer template easily with the help of this builder and use it on your website.
-You can also customize the footer bar and the content in the post footer, edit the footer link, bring styles to footer content, etc. The plugin also offers a responsive footer gallery slider and a mobile footer CTA. If you want to hide the footer, you can easily do so.  Add or insert a footer image, footer ad, footer posts, footer form, footer date, or whatever you want to set the footer content beautifully.
+This feature lets you create and customize headers and footers for your entire WordPress site or specific pages. Choose from pre-designed templates or build your own using the header and footer builders. Add logos, text blocks, images, widgets, and more. You can also style, edit, or hide any section as needed, with full control over appearance and layout.
 
 == ✅ Theme / Template builder: ==
 
@@ -528,6 +527,15 @@ Visit [HasThemes](https://hasthemes.com/) for more details about HTML, Shopify a
 
 
 == Changelog ==
+= Version 2.9.0 - Date: 2025-07-02 =
+* Added: AI Writer for Widgets content generation( OpenAI, Claude, Google AI )
+* Added: [Prolio - Portfolio Template Kit](https://library.wphtmega.com/prolio-portfolio-template/).
+* Added: [Intario - Interior Design Template Kit](https://library.wphtmega.com/intario-interior-design-template/).
+* Added: [Arcbes - Architecture Template Kit](https://library.wphtmega.com/arcbes-architecture-template/).
+* Fixed: Gutenberg Button Block display issue.
+* Fixed: A few minor issues.
+* Tested: Compatibility with the latest version of Elementor.
+
 = Version 2.8.9 - Date: 2025-06-18 =
 * Added: [Sapruin - Home Service Template Kit](https://library.wphtmega.com/sapruin-home-service-template/).
 * Added: [Sinza - Business Template Kit](https://library.wphtmega.com/sinza-business-template/).
@@ -917,55 +925,6 @@ Visit [HasThemes](https://hasthemes.com/) for more details about HTML, Shopify a
 * Added: Scroll Image Overlay Option in Scroll Image Widget
 * Fixed: A few minor issues
 * Tested: Compatibility with the latest version of Elementor
-
-= Version: 2.2.7 - Date: 2023-09-12 =
-* Added: Scroll to Top Button Module
-* Added: Border and Border Radius control in Slider Thumbnail Gallery Widget
-* Updated: Reading Progress Bar Module Settings
-* Fixed: A few minor issues
-
-= Version: 2.2.6 - Date: 2023-08-28 =
-* Fixed: Duplicate Reading Progress Bar Module option
-* Fixed: A few minor issues
-
-= Version: 2.2.5 - Date: 2023-08-16 =
-* Added: Reading Progress Bar Module
-* Fixed: A few minor issues
-
-= Version: 2.2.4 - Date: 2023-08-09 =
-* Added: Typography control for Pagination text in Post Slider Widget
-* Fixed: PHP Warning debug log issue
-* Fixed: Browser support issue in Image Comparison Widget
-* Fixed: A few minor issues
-* Tested: Compatibility with the latest version of WordPress
-* Tested: Compatibility with the latest version of Elementor
-
-= Version: 2.2.3 - Date: 2023-07-26 =
-* Added: Active Item option in Switcher Widget
-* Updated: Icon choose option in Post Meta Info Widget
-* Updated: Removed 'BL:' prefix form the title of HT Mega Builder Widgets
-* Fixed: A few minor issues
-
-= Version: 2.2.2 - Date: 2023-07-17 =
-* Updated: Need help link
-* Fixed: A few minor issues
-
-= Version: 2.2.1 - Date: 2023-07-05 =
-* Added: Navigation button area label text in all the carousel buttons
-* Added: Nonce validation in User Register Widget
-* Added: A condition in the User Register Widget to create new users based on the 'Anyone can register' option settings
-* Fixed: Checkbox issue in contact form 7 Widget
-* Fixed: Post type selecting issue in Post Carousel Widget
-* Fixed: A few minor issues
-
-= Version: 2.2.0 - Date: 2023-06-21 =
-* Added: Wrapper Link option in Flexbox Container
-* Fixed: A few minor issues
-* Tested: Compatibility with the latest version of Elementor
-
-= Version: 2.1.9 - Date: 2023-06-12 =
-* Fixed: Title length Input Issue in Post Grid Tab, Post Carousel, Single Post, and News Sticker Widgets
-* Fixed: A few minor issues
 
 
 

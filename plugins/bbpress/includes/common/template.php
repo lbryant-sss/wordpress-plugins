@@ -181,6 +181,8 @@ function bbp_is_single_forum() {
  *
  * @since 2.1.0 bbPress (r3553)
  *
+ * @global string $pagenow The filename of the current screen.
+ *
  * @return bool True if it's the forum edit page, false if not
  */
 function bbp_is_forum_edit() {
@@ -278,6 +280,8 @@ function bbp_is_topic_archive() {
  * Check if current page is a topic edit page
  *
  * @since 2.0.0 bbPress (r2753)
+ *
+ * @global string $pagenow The filename of the current screen.
  *
  * @return bool True if it's the topic edit page, false if not
  */
@@ -381,6 +385,9 @@ function bbp_is_topic_tag() {
  *
  * @since 2.0.0 bbPress (r3346)
  *
+ * @global string $pagenow The filename of the current screen.
+ * @global string $taxnow  The taxonomy of the current screen.
+ *
  * @return bool True if editing a topic tag, false if not
  */
 function bbp_is_topic_tag_edit() {
@@ -463,6 +470,8 @@ function bbp_is_reply( $post_id = 0 ) {
  * Check if current page is a reply edit page
  *
  * @since 2.0.0 bbPress (r2753)
+ *
+ * @global string $pagenow The filename of the current screen.
  *
  * @return bool True if it's the reply edit page, false if not
  */
@@ -2262,7 +2271,7 @@ function bbp_breadcrumb( $args = array() ) {
 		}
 
 		// Define variables
-		$front_id         = $root_id                                 = 0;
+		$front_id         = $root_id          = $remove_root_id      = 0;
 		$ancestors        = $crumbs           = $tag_data            = array();
 		$pre_root_text    = $pre_front_text   = $pre_current_text    = '';
 		$pre_include_root = $pre_include_home = $pre_include_current = true;
@@ -2417,7 +2426,8 @@ function bbp_breadcrumb( $args = array() ) {
 			// Page exists at root slug path, so use its permalink
 			$page = bbp_get_page_by_path( bbp_get_root_slug() );
 			if ( ! empty( $page ) ) {
-				$root_url = get_permalink( $page->ID );
+				$root_url       = get_permalink( $page->ID );
+				$remove_root_id = $page->ID;
 
 			// Use the root slug
 			} else {
@@ -2439,6 +2449,11 @@ function bbp_breadcrumb( $args = array() ) {
 
 				// Skip parent if empty or error
 				if ( empty( $parent ) || is_wp_error( $parent ) ) {
+					continue;
+				}
+
+				// Skip to prevent duplicate root on subpages
+				if ( ! empty( $remove_root_id ) && ( $parent->ID === $remove_root_id ) ) {
 					continue;
 				}
 
@@ -2843,4 +2858,39 @@ function bbp_title( $title = '', $sep = '&raquo;', $seplocation = '' ) {
 
 	// Filter & return
 	return apply_filters( 'bbp_title', $new_title, $sep, $seplocation );
+}
+
+/**
+ * Removes Protected/Private post title hints.
+ *
+ * This function is hooked to 2 WordPress filters that are responsible for
+ * prepending hints to the beginning of Protected & Private post titles.
+ *
+ * These hints are a bit unsightly when used in functions like
+ * bbp_get_breadcrumb(), so we strip them back out for bbPress post types.
+ *
+ * @since 2.7.0
+ *
+ * @param string      $prepend Text displayed before a post title.
+ * @param int|WP_Post $post    Current post object.
+ *
+ * @return string
+ */
+function bbp_no_title_status_hints( $prepend = '', $post = 0 ) {
+
+	// Bail if empty
+	if ( empty( $prepend ) || empty( $post ) ) {
+		return $prepend;
+	}
+
+	// Get post type
+	$post_type = get_post_type( $post );
+
+	// Maybe override return value
+	$retval = in_array( $post_type, bbp_get_post_types(), true )
+		? '%s'
+		: $prepend;
+
+	// Filter & return
+	return (string) apply_filters( 'bbp_no_special_title_formatting', $retval, $prepend, $post );
 }

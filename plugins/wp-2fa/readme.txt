@@ -140,7 +140,7 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 * **New features**
 	 * Out of the box support for Yubico - [use any YubiKey hardware key by Yubico as a 2FA method to log in to your WordPress website](https://melapress.com/support/kb/wp-2fa-hardware-key/).
 
- * **Plugin & functionality improvements**
+* **Plugin & functionality improvements**
 	 * Bumped up the minimum supported PHP version from 7.2 to 7.3.
 	 * Updated a number of strings in the settings + improved help text.
 	 * The names of debug log file in uploads directory are now randomized.
@@ -149,7 +149,7 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 	 * Updated the features' page in the plugin - added the new features etc.
 	 * Updated all UTM parameters in the plugin's URLs and links.
 
- * **Bug fixes**
+* **Bug fixes**
 	 * Fixed: PHP fatal error in class-email-wizard-steps.php in some edge cases.
 	 * Fixed: Apostrophe character shows up as ASCII in email subject.
 	 * Fixed: Error with importing plugin's settings from one website to another in some edge cases.

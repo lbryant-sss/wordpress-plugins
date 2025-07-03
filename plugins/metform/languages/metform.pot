@@ -2,9 +2,9 @@
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: MetForm 4.0.0\n"
+"Project-Id-Version: MetForm 4.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/metform\n"
-"POT-Creation-Date: 2025-06-26 06:24:26+00:00\n"
+"POT-Creation-Date: 2025-07-02 11:01:52+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -2081,7 +2081,7 @@ msgid "20% Discount"
 msgstr ""
 
 #: core/integrations/onboard/views/onboard-steps/step-05.php:13
-#: widgets/manifest.php:116
+#: widgets/manifest.php:226
 msgid "Metform"
 msgstr ""
 
@@ -4125,6 +4125,62 @@ msgstr ""
 
 #: widgets/listing-optin/listing-optin.php:74
 msgid "Subscribe to ours newsletter."
+msgstr ""
+
+#: widgets/manifest.php:36
+msgid "Calculation"
+msgstr ""
+
+#: widgets/manifest.php:42
+msgid "Color Picker"
+msgstr ""
+
+#: widgets/manifest.php:48
+msgid "Credit Card"
+msgstr ""
+
+#: widgets/manifest.php:54
+msgid "Image Select"
+msgstr ""
+
+#: widgets/manifest.php:60
+msgid "Like Dislike"
+msgstr ""
+
+#: widgets/manifest.php:66
+msgid "Google Map Location"
+msgstr ""
+
+#: widgets/manifest.php:72
+msgid "Mobile Number"
+msgstr ""
+
+#: widgets/manifest.php:78
+msgid "Next Step"
+msgstr ""
+
+#: widgets/manifest.php:84
+msgid "Payment Method"
+msgstr ""
+
+#: widgets/manifest.php:90
+msgid "Prev Step"
+msgstr ""
+
+#: widgets/manifest.php:96
+msgid "Signature"
+msgstr ""
+
+#: widgets/manifest.php:102
+msgid "Simple Repeater"
+msgstr ""
+
+#: widgets/manifest.php:108
+msgid "Text Editor"
+msgstr ""
+
+#: widgets/manifest.php:114
+msgid "Toggle Select"
 msgstr ""
 
 #: widgets/multi-select/multi-select.php:21

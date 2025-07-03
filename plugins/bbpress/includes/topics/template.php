@@ -600,7 +600,8 @@ function bbp_topic_title( $topic_id = 0 ) {
 	 */
 	function bbp_get_topic_title( $topic_id = 0 ) {
 		$topic_id = bbp_get_topic_id( $topic_id );
-		$title    = get_the_title( $topic_id );
+		$title    = get_post_field( 'post_title', $topic_id );
+		$title    = apply_filters( 'the_title', $title, $topic_id );
 
 		// Filter & return
 		return apply_filters( 'bbp_get_topic_title', $title, $topic_id );
@@ -807,10 +808,13 @@ function bbp_topic_pagination( $args = array() ) {
 		// Slug must be checked for topics that have never been approved/published
 		$has_slug = bbp_get_topic( $r['topic_id'] )->post_name;
 
+		// Get the topic permalink
+		$topic_permalink = bbp_get_topic_permalink( $r['topic_id'] );
+
 		// If pretty permalinks are enabled, make our pagination pretty
 		$base = ! empty( $has_slug ) && bbp_use_pretty_urls() && bbp_is_topic_public( $r['topic_id'] )
-			? trailingslashit( get_permalink( $r['topic_id'] ) ) . user_trailingslashit( bbp_get_paged_slug() . '/%#%/' )
-			: add_query_arg( 'paged', '%#%', get_permalink( $r['topic_id'] ) );
+			? trailingslashit( $topic_permalink ) . user_trailingslashit( bbp_get_paged_slug() . '/%#%/' )
+			: add_query_arg( 'paged', '%#%', $topic_permalink );
 
 		// Get total and add 1 if topic is included in the reply loop
 		$total = bbp_get_topic_reply_count( $r['topic_id'], true );
@@ -1329,11 +1333,6 @@ function bbp_topic_author_display_name( $topic_id = 0 ) {
 		// Fallback if nothing could be found
 		if ( empty( $author_name ) ) {
 			$author_name = bbp_get_fallback_display_name( $topic_id );
-		}
-
-		// Encode possible UTF8 display names
-		if ( seems_utf8( $author_name ) === false ) {
-			$author_name = utf8_encode( $author_name );
 		}
 
 		// Filter & return

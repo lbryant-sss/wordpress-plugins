@@ -13,10 +13,12 @@ class Enum extends Schema {
 	protected $enumValues = [];
 	protected $valueDetails = [];
 	protected $cachedStringConversionSafe = null;
+	protected $cachedAllValuesAreStrings = null;
 
 	public function values($values) {
 		$this->enumValues = array_values($values);
 		$this->cachedStringConversionSafe = null;
+		$this->cachedAllValuesAreStrings = null;
 
 		if ( !empty($this->enumValues) && !in_array($this->getDefaultValue(), $this->enumValues) ) {
 			$this->defaultValue(reset($this->enumValues));
@@ -71,6 +73,21 @@ class Enum extends Schema {
 		}
 
 		return $this->cachedStringConversionSafe;
+	}
+
+	public function areAllValuesStrings(): bool {
+		if ( $this->cachedAllValuesAreStrings !== null ) {
+			return $this->cachedAllValuesAreStrings;
+		}
+
+		$this->cachedAllValuesAreStrings = true;
+		foreach ($this->enumValues as $value) {
+			if ( !is_string($value) ) {
+				$this->cachedAllValuesAreStrings = false;
+				break;
+			}
+		}
+		return $this->cachedAllValuesAreStrings;
 	}
 
 	public function getEnumValues() {

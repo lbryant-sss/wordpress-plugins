@@ -360,7 +360,7 @@ if (!function_exists('mf_dummy_checkbox_input')) {
 												<h2>Easy Documentation</h2>
 												<span class="ekit-admin-right-content--heading__sub-title">Docs</span>
 											</div>
-											<p>Get started by spending some time with the documentation to get familiar with MetForm. Build awesome forms for you or your clients with ease.</p>
+											<p>Check out the docs and start building awesome forms with MetForm!</p>
 											<div class="ekit-admin-right-content--button">
 												<a target="_blank" href="https://wpmet.com/doc/metform/" class="attr-btn attr-btn-primary ekit-admin-right-content--link"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="14" viewBox="0 0 12 14" fill="none">
 														<path d="M3.5 10.125H8.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>

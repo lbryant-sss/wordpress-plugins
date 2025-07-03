@@ -842,7 +842,7 @@ function bbp_check_for_flood( $anonymous_data = array(), $author_id = 0 ) {
  * @param int $author_id Topic or reply author ID
  * @param string $title The title of the content
  * @param string $content The content being posted
- * @param mixed  $strict  False for moderation_keys. True for disallow_keys.
+ * @param mixed  $strict  False for moderation_keys. True for disallowed_keys.
  *                        String for custom keys.
  * @return bool True if test is passed, false if fail
  */
@@ -866,7 +866,7 @@ function bbp_check_for_moderation( $anonymous_data = array(), $author_id = 0, $t
 	// Strict mode uses WordPress "disallow" settings
 	if ( true === $strict ) {
 		$hook_name   = 'blacklist';
-		$option_name = 'disallow_keys';
+		$option_name = 'disallowed_keys';
 
 	// Non-strict uses WordPress "moderation" settings
 	} elseif ( false === $strict ) {
@@ -987,7 +987,7 @@ function bbp_check_for_moderation( $anonymous_data = array(), $author_id = 0, $t
 		// Do some escaping magic so that '#' chars in the
 		// spam words don't break things:
 		$word    = preg_quote( $word, '#' );
-		$pattern = "#{$word}#i";
+		$pattern = "#{$word}#iu";
 
 		// Loop through post data
 		foreach ( $_post as $post_data ) {
@@ -1264,7 +1264,7 @@ function bbp_notify_forum_subscribers( $topic_id = 0, $forum_id = 0, $anonymous_
 
 	/** Topic *****************************************************************/
 
-	// Bail if topic is not public (includes closed)
+	// Bail if topic is not public (both open/closed are public)
 	if ( ! bbp_is_topic_public( $topic_id ) ) {
 		return false;
 	}
@@ -1310,7 +1310,7 @@ function bbp_notify_forum_subscribers( $topic_id = 0, $forum_id = 0, $anonymous_
 	$topic_title       = wp_specialchars_decode( strip_tags( bbp_get_topic_title( $topic_id ) ), ENT_QUOTES );
 	$topic_author_name = wp_specialchars_decode( strip_tags( $topic_author_name ), ENT_QUOTES );
 	$topic_content     = wp_specialchars_decode( strip_tags( bbp_get_topic_content( $topic_id ) ), ENT_QUOTES );
-	$topic_url         = get_permalink( $topic_id );
+	$topic_url         = bbp_get_topic_permalink( $topic_id );
 
 	// For plugins to filter messages per reply/topic/user
 	$message = sprintf( esc_html__( '%1$s wrote:
@@ -2616,9 +2616,14 @@ function bbp_pre_handle_404( $override = false, $wp_query = false ) {
 	if ( isset( $wp_query->bbp_is_404 ) ) {
 
 		// Either force a 404 when 200, or a 200 when 404
-		$override = ( true === $wp_query->bbp_is_404 )
-			? bbp_set_404( $wp_query )
-			: bbp_set_200();
+		if ( true === $wp_query->bbp_is_404 ) {
+			bbp_set_404( $wp_query );
+		} else {
+			bbp_set_200();
+		}
+
+		// Overridden
+		$override = true;
 	}
 
 	// Return, maybe overridden

@@ -24682,12 +24682,11 @@ function FontSizeGroup({
     }), /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsxs)(external_wp_components_namespaceObject.__experimentalVStack, {
       spacing: 4,
       children: [/*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsxs)(external_wp_components_namespaceObject.__experimentalHStack, {
-        justify: "space-between",
-        align: "center",
         children: [/*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(subtitle, {
           level: 3,
           children: label
         }), /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsxs)(external_wp_components_namespaceObject.FlexItem, {
+          className: "edit-site-global-styles__typography-panel__options-container",
           children: [origin === 'custom' && /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.Button, {
             label: (0,external_wp_i18n_namespaceObject.__)('Add font size'),
             icon: library_plus,
@@ -26026,13 +26025,9 @@ function ShadowEditor({
       spacing: 2,
       children: /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsxs)(external_wp_components_namespaceObject.__experimentalHStack, {
         justify: "space-between",
-        children: [/*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.Flex, {
-          align: "center",
-          className: "edit-site-global-styles__shadows-panel__title",
-          children: /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(subtitle, {
-            level: 3,
-            children: (0,external_wp_i18n_namespaceObject.__)('Shadows')
-          })
+        children: [/*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(subtitle, {
+          level: 3,
+          children: (0,external_wp_i18n_namespaceObject.__)('Shadows')
         }), /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.FlexItem, {
           className: "edit-site-global-styles__shadows-panel__options-container",
           children: /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.Button, {
@@ -43025,6 +43020,7 @@ const useEntitiesInfo = (entityName, templatePrefixes, additionalQueryParameters
 
 
 
+
 /**
  * Internal dependencies
  */
@@ -43137,9 +43133,20 @@ function SuggestionList({
 }
 function AddCustomTemplateModalContent({
   onSelect,
-  entityForSuggestions
+  entityForSuggestions,
+  onBack,
+  containerRef
 }) {
   const [showSearchEntities, setShowSearchEntities] = (0,external_wp_element_namespaceObject.useState)(entityForSuggestions.hasGeneralTemplate);
+
+  // Focus on the first focusable element when the modal opens.
+  // We handle focus management in the parent modal, just need to focus on the first focusable element.
+  (0,external_wp_element_namespaceObject.useEffect)(() => {
+    if (containerRef.current) {
+      const [firstFocusable] = external_wp_dom_namespaceObject.focus.focusable.find(containerRef.current);
+      firstFocusable?.focus();
+    }
+  }, [showSearchEntities]);
   return /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsxs)(external_wp_components_namespaceObject.__experimentalVStack, {
     spacing: 4,
     className: "edit-site-custom-template-modal__contents-wrapper",
@@ -43204,6 +43211,14 @@ function AddCustomTemplateModalContent({
             (0,external_wp_i18n_namespaceObject.__)('For a specific item')
           })]
         })]
+      }), /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.Flex, {
+        justify: "right",
+        children: /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.Button, {
+          __next40pxDefaultSize: true,
+          variant: "tertiary",
+          onClick: onBack,
+          children: (0,external_wp_i18n_namespaceObject.__)('Back')
+        })
       })]
     }), showSearchEntities && /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsxs)(external_ReactJSXRuntime_namespaceObject.Fragment, {
       children: [/*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.__experimentalText, {
@@ -43212,6 +43227,22 @@ function AddCustomTemplateModalContent({
       }), /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(SuggestionList, {
         entityForSuggestions: entityForSuggestions,
         onSelect: onSelect
+      }), /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.Flex, {
+        justify: "right",
+        children: /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.Button, {
+          __next40pxDefaultSize: true,
+          variant: "tertiary",
+          onClick: () => {
+            // If general template exists, go directly back to main screen
+            // instead of showing the choice screen
+            if (entityForSuggestions.hasGeneralTemplate) {
+              onBack();
+            } else {
+              setShowSearchEntities(false);
+            }
+          },
+          children: (0,external_wp_i18n_namespaceObject.__)('Back')
+        })
       })]
     })]
   });
@@ -43723,12 +43754,20 @@ function paramCase(input, options) {
 
 
 function AddCustomGenericTemplateModalContent({
-  onClose,
-  createTemplate
+  createTemplate,
+  onBack
 }) {
   const [title, setTitle] = (0,external_wp_element_namespaceObject.useState)('');
   const defaultTitle = (0,external_wp_i18n_namespaceObject.__)('Custom Template');
   const [isBusy, setIsBusy] = (0,external_wp_element_namespaceObject.useState)(false);
+  const inputRef = (0,external_wp_element_namespaceObject.useRef)();
+
+  // Set focus to the name input when the component mounts
+  (0,external_wp_element_namespaceObject.useEffect)(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
   async function onCreateTemplate(event) {
     event.preventDefault();
     if (isBusy) {
@@ -43756,6 +43795,7 @@ function AddCustomGenericTemplateModalContent({
         onChange: setTitle,
         placeholder: defaultTitle,
         disabled: isBusy,
+        ref: inputRef,
         help: (0,external_wp_i18n_namespaceObject.__)(
         // eslint-disable-next-line no-restricted-syntax -- 'sidebar' is a common web design term for layouts
         'Describe the template, e.g. "Post with sidebar". A custom template can be manually applied to any post or page.')
@@ -43765,10 +43805,8 @@ function AddCustomGenericTemplateModalContent({
         children: [/*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.Button, {
           __next40pxDefaultSize: true,
           variant: "tertiary",
-          onClick: () => {
-            onClose();
-          },
-          children: (0,external_wp_i18n_namespaceObject.__)('Cancel')
+          onClick: onBack,
+          children: (0,external_wp_i18n_namespaceObject.__)('Back')
         }), /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.Button, {
           __next40pxDefaultSize: true,
           variant: "primary",
@@ -43792,6 +43830,7 @@ function AddCustomGenericTemplateModalContent({
 /**
  * WordPress dependencies
  */
+
 
 
 
@@ -43900,6 +43939,7 @@ function NewTemplateModal({
     createErrorNotice,
     createSuccessNotice
   } = (0,external_wp_data_namespaceObject.useDispatch)(external_wp_notices_namespaceObject.store);
+  const containerRef = (0,external_wp_element_namespaceObject.useRef)(null);
   const isMobile = (0,external_wp_compose_namespaceObject.useViewportMatch)('medium', '<');
   const homeUrl = (0,external_wp_data_namespaceObject.useSelect)(select => {
     // Site index.
@@ -43911,6 +43951,14 @@ function NewTemplateModal({
     // translators: %s: The homepage url.
     (0,external_wp_i18n_namespaceObject.__)('E.g. %s'), homeUrl + '/' + new Date().getFullYear())
   };
+  (0,external_wp_element_namespaceObject.useEffect)(() => {
+    // Focus the first focusable element when component mounts or UI changes
+    // We don't want to focus on the other modals because they have their own focus management.
+    if (containerRef.current && modalContent === modalContentMap.templatesList) {
+      const [firstFocusable] = external_wp_dom_namespaceObject.focus.focusable.find(containerRef.current);
+      firstFocusable?.focus();
+    }
+  }, [modalContent]);
   async function createTemplate(template, isWPSuggestion = true) {
     if (isSubmitting) {
       return;
@@ -43970,6 +44018,7 @@ function NewTemplateModal({
     }),
     onRequestClose: onModalClose,
     overlayClassName: modalContent === modalContentMap.customGenericTemplate ? 'edit-site-custom-generic-template__modal' : undefined,
+    ref: containerRef,
     children: [modalContent === modalContentMap.templatesList && /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsxs)(external_wp_components_namespaceObject.__experimentalGrid, {
       columns: isMobile ? 2 : 3,
       gap: 4,
@@ -44007,10 +44056,12 @@ function NewTemplateModal({
       })]
     }), modalContent === modalContentMap.customTemplate && /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(add_custom_template_modal_content, {
       onSelect: createTemplate,
-      entityForSuggestions: entityForSuggestions
+      entityForSuggestions: entityForSuggestions,
+      onBack: () => setModalContent(modalContentMap.templatesList),
+      containerRef: containerRef
     }), modalContent === modalContentMap.customGenericTemplate && /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(add_custom_generic_template_modal_content, {
-      onClose: onModalClose,
-      createTemplate: createTemplate
+      createTemplate: createTemplate,
+      onBack: () => setModalContent(modalContentMap.templatesList)
     })]
   });
 }
@@ -46108,7 +46159,7 @@ function DataFormLayout({
   }
   const normalizedFormFields = (0,external_wp_element_namespaceObject.useMemo)(() => normalizeFormFields(form), [form]);
   return /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.__experimentalVStack, {
-    spacing: 2,
+    spacing: 4,
     children: normalizedFormFields.map(formField => {
       const FieldLayout = getFormFieldLayout(formField.layout)?.component;
       if (!FieldLayout) {

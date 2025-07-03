@@ -8,8 +8,118 @@ Class Manifest{
 	public function init() {
 
 		add_action( 'elementor/elements/categories_registered', [ $this, 'add_metform_widget_categories' ]);
-
+        add_filter('elementor/editor/localize_settings', [$this, 'promote_pro_widgets']);
 		add_action( 'elementor/widgets/register', [ $this, 'register_widgets' ] );
+	}
+
+	/**
+	 * Promote Pro Widgets
+	 * 
+	 * @param $settings
+	 * @return void
+	 */
+	public function promote_pro_widgets( $settings ) {
+
+		if( 'metform-form' != get_post_type() || class_exists( '\MetForm_Pro\Base\Package' ) ) {
+			return $settings;
+		}
+		
+		if(isset($settings['promotionWidgets']) && is_array($settings['promotionWidgets'])) {
+			$promotion_widgets = $settings['promotionWidgets'];
+		} else {
+			$promotion_widgets = [];
+		}
+
+		$merged_metform_promotion_widgets = array_merge( $promotion_widgets, [
+			[
+				'name'       => 'mf-calculation',
+				'title'      => esc_html__( 'Calculation', 'metform' ),
+				'icon'       => 'icon-metform_calculation_field',
+				'categories' => '["metform"]',
+			],
+			[
+				'name'	 => 'mf-color-picker',
+				'title' => esc_html__( 'Color Picker', 'metform' ),
+				'icon' => 'icon-metform_color_picker',
+				'categories' => '["metform"]',
+			],
+			[
+				'name'	   => 'mf-credit-card',
+				'title'      => esc_html__( 'Credit Card', 'metform' ),
+				'icon'       => 'icon-metform_credit_card_field-1',
+				'categories' => '["metform"]',
+			],
+			[
+				'name'       => 'mf-image-select',
+				'title'      => esc_html__( 'Image Select', 'metform' ),
+				'icon'       => 'icon-metform_image_selector',
+				'categories' => '["metform"]',
+			],
+			[
+				'name'       => 'mf-like-dislike',
+				'title'      => esc_html__( 'Like Dislike', 'metform' ),
+				'icon'       => 'icon-metform_like_dislike',
+				'categories' => '["metform"]',
+			],
+			[
+				'name'       => 'mf-map-location',
+				'title'      => esc_html__( 'Google Map Location', 'metform' ),
+				'icon'       => 'icon-metform_map_location_picker',
+				'categories' => '["metform"]',
+			],
+			[
+				'name'       => 'mf-mobile',
+				'title'      => esc_html__( 'Mobile Number', 'metform' ),
+				'icon'       => 'icon-metform_mobile_number',
+				'categories' => '["metform"]',
+			],
+			[
+				'name'       => 'mf-next-step',
+				'title'      => esc_html__( 'Next Step', 'metform' ),
+				'icon'       => 'icon-metform_next_step',
+				'categories' => '["metform"]',
+			],
+			[
+				'name'       => 'mf-payment-method',
+				'title'      => esc_html__( 'Payment Method', 'metform' ),
+				'icon'       => 'icon-metform_payment_method',
+				'categories' => '["metform"]',
+			],
+			[
+				'name'       => 'mf-prev-step',
+				'title'      => esc_html__( 'Prev Step', 'metform' ),
+				'icon'       => 'icon-metform_previous_step',
+				'categories' => '["metform"]',
+			],
+			[
+				'name'       => 'mf-signature',
+				'title'      => esc_html__( 'Signature', 'metform' ),
+				'icon'       => 'icon-metform_signature_field',
+				'categories' => '["metform"]',
+			],
+			[
+				'name'       => 'mf-simple-repeater',
+				'title'      => esc_html__( 'Simple Repeater', 'metform' ),
+				'icon'       => 'icon-metform_simple_repeater',
+				'categories' => '["metform"]',
+			],
+			[
+				'name'       => 'mf-text-editor',
+				'title'      => esc_html__( 'Text Editor', 'metform' ),
+				'icon'       => 'icon-metform_text_editor',
+				'categories' => '["metform"]',
+			],
+			[
+				'name'       => 'mf-toggle-select',
+				'title'      => esc_html__( 'Toggle Select', 'metform' ),
+				'icon'       => 'icon-metform_toggle_switch',
+				'categories' => '["metform"]',
+			],
+		]);
+		
+		$settings['promotionWidgets'] = $merged_metform_promotion_widgets;
+
+		return $settings;
 	}
 
 	public function get_input_widgets(){

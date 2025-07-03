@@ -5,7 +5,7 @@
  *
  * bbPress is forum software with a twist from the creators of WordPress.
  *
- * $Id: bbpress.php 7268 2024-06-28 22:02:43Z johnjamesjacoby $
+ * $Id: bbpress.php 7340 2025-07-02 15:49:24Z johnjamesjacoby $
  *
  * @package bbPress
  * @subpackage Main
@@ -44,16 +44,15 @@ final class bbPress {
 
 	/**
 	 * bbPress uses many variables, several of which can be filtered to
-	 * customize the way it operates. Most of these variables are stored in a
-	 * private array that gets updated with the help of PHP magic methods.
+	 * customize the way it operates. Most of those variables are stored in this
+	 * private array via PHP magic methods.
 	 *
 	 * This is a precautionary measure, to avoid potential errors produced by
-	 * unanticipated direct manipulation of run-time data.
+	 * unanticipated direct manipulation of critical run-time data.
 	 *
-	 * @see bbPress::setup_globals()
-	 * @var array
+	 * @var array All run-time data
 	 */
-	private $data;
+	private $data = array();
 
 	/** Not Magic *************************************************************/
 

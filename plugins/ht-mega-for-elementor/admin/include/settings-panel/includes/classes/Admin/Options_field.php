@@ -83,7 +83,7 @@ class Options_Field {
                     'title' => __( 'Module List', 'htmega-addons' ),
                     'desc'  => __( 'Freely use these elements to create your site. You can enable which you are not using, and, all associated assets will be disable to improve your site loading speed.', 'htmega-addons' ),
                 ],
-            )
+            ),
         );
 
         return apply_filters( 'htmega_admin_fields_sections', $tabs );
@@ -2092,7 +2092,6 @@ class Options_Field {
                     'label_off' => __( 'Off', 'htmega-addons' ),
                 ),
             ),
-
         );
 
         $settings['htmega_themebuilder_element_tabs'] = array(

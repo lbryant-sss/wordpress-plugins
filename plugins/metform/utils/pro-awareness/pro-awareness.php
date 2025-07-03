@@ -237,6 +237,74 @@ if(!class_exists('\Wpmet\Libs\Pro_Awareness')) :
 						<?php
 					} ?>
                 </div>
+				<div class="metform-video-section">
+					<div class="metform-video-separator"></div>
+						<h2 class="metform-video-title">MetForm Overview ⤵️</h2>
+						<div class="metform-video-embed-container">
+							<iframe
+								width="560"
+								height="315"
+								src="https://www.youtube.com/embed/zg1QIouKO_Q?si=CS33ga5SEFe2--_n"
+								title="YouTube video player"
+								frameborder="0"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+								referrerpolicy="strict-origin-when-cross-origin"
+								allowfullscreen
+							></iframe>
+						</div>
+					</div>
+
+				<style>
+					.metform-video-section {
+						margin-top: 60px;
+						max-width: 100%;
+						padding: 0 15px;
+					}
+					
+					.metform-video-separator {
+						width: 100px;
+						height: 3px;
+						background-color: #aeaeae;
+						margin: 0 auto 30px;
+						border-radius: 3px;
+					}
+					
+					.metform-video-title {
+						font-size: 28px;
+						color: #021343;
+						margin: 20px 0;
+						font-weight: 700;
+						display: block;
+						text-align: left;
+					}
+					
+					.metform-video-embed-container {
+						margin: 30px auto 0;
+						width: 100%;
+						position: relative;
+					}
+					
+					.metform-video-embed-container iframe {
+						width: 100%;
+						height: 500px;
+						border: none;
+					}
+
+					
+					@media (max-width: 768px) {
+						.metform-video-separator {
+							margin-bottom: 20px;
+						}
+						.metform-video-title {
+							font-size: 24px;
+							text-align: center;
+						}
+						.metform-video-embed-container iframe {
+							height: 400px;
+						}
+					}
+
+				</style>
 
 	            <?php do_action($this->text_domain.'/pro_awareness/after_grid_contents'); ?>
 

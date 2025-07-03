@@ -2,7 +2,7 @@
 
 Stable tag: 170220
 Requires at least: 4.2
-Tested up to: 6.5-RC2-57834
+Tested up to: 6.9-alpha-60398
 Text Domain: comet-cache
 
 License: GPLv2 or later

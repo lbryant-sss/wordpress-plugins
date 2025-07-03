@@ -21,6 +21,11 @@ class Color extends StringSchema {
 		return $this;
 	}
 
+	public function noTransparent() {
+		$this->transparentAllowed = false;
+		return $this;
+	}
+
 	public function parse($value, $errors = null, $stopOnFirstError = false) {
 		//An empty string is explicitly allowed.
 		if ( $value === '' ) {

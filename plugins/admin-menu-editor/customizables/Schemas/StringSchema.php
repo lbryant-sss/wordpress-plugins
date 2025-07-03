@@ -38,6 +38,10 @@ class StringSchema extends CheckableSchema {
 		return $this->addCheck('trim');
 	}
 
+	public function stripTags() {
+		return $this->addCheck('stripTags');
+	}
+
 	/**
 	 * Make the schema strict, meaning that the value must be a string.
 	 *
@@ -107,6 +111,9 @@ class StringSchema extends CheckableSchema {
 					break;
 				case 'trim':
 					$convertedValue = trim($convertedValue);
+					break;
+				case 'stripTags':
+					$convertedValue = wp_strip_all_tags($convertedValue);
 					break;
 			}
 

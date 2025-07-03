@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Tutor LMS 3.6.2\n"
+"Project-Id-Version: Tutor LMS 3.6.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/tutor\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-06-26T12:39:09+00:00\n"
+"POT-Creation-Date: 2025-07-02T05:54:46+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: tutor\n"
@@ -1747,7 +1747,7 @@ msgid "Select a monetization option to generate revenue by selling courses."
 msgstr ""
 
 #: classes/Options_V2.php:1034
-#: classes/WooCommerce.php:545
+#: classes/WooCommerce.php:576
 msgid "WooCommerce"
 msgstr ""
 
@@ -4134,15 +4134,15 @@ msgstr ""
 msgid "Rejected"
 msgstr ""
 
-#: classes/WooCommerce.php:240
+#: classes/WooCommerce.php:271
 msgid "Since monetization is currently disabled, your courses are set to free. Enable Tutor LMS monetization to start selling your courses."
 msgstr ""
 
-#: classes/WooCommerce.php:441
+#: classes/WooCommerce.php:472
 msgid "For Tutor"
 msgstr ""
 
-#: classes/WooCommerce.php:442
+#: classes/WooCommerce.php:473
 msgid "This checkmark ensure that you will sell a specific course via this product."
 msgstr ""
 
@@ -8697,10 +8697,9 @@ msgid "Updated"
 msgstr ""
 
 #: views/template-import/templates-list.php:36
-#: assets/js/tutor-course-builder.js:28161
-#: assets/js/tutor-course-builder.js:30947
-#: assets/js/tutor-course-builder.js:31068
-msgid "Preview"
+#: assets/js/tutor-import-export.js:8890
+#: assets/js/tutor-import-export.js:9108
+msgid "Import"
 msgstr ""
 
 #: views/template-import/templates-list.php:55
@@ -8719,8 +8718,8 @@ msgstr ""
 msgid "Choose your color palette and continue with your design"
 msgstr ""
 
-#: views/template-import/templates.php:108
-msgid "Tutor LMS demo courses and pages will be imported."
+#: views/template-import/templates.php:100
+msgid "Include Tutor LMS demo courses"
 msgstr ""
 
 #: assets/js/tutor-addon-list.js:225
@@ -11612,6 +11611,12 @@ msgstr ""
 msgid "Selected"
 msgstr ""
 
+#: assets/js/tutor-course-builder.js:28161
+#: assets/js/tutor-course-builder.js:30947
+#: assets/js/tutor-course-builder.js:31068
+msgid "Preview"
+msgstr ""
+
 #: assets/js/tutor-course-builder.js:28226
 #: assets/js/tutor-course-builder.js:28559
 msgid "Pro Placeholder"
@@ -12461,11 +12466,6 @@ msgstr ""
 
 #: assets/js/tutor-import-export.js:8855
 msgid "WARNING! Invalid file. Please upload a valid JSON file and try again."
-msgstr ""
-
-#: assets/js/tutor-import-export.js:8890
-#: assets/js/tutor-import-export.js:9108
-msgid "Import"
 msgstr ""
 
 #: assets/js/tutor-import-export.js:8920

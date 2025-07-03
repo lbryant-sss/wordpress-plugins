@@ -229,6 +229,17 @@ final class HTMega_Addons_Elementor {
             }
             
         }
+
+        /**
+         * Load HT Mega AI Integration
+         */
+        if (file_exists(HTMEGA_ADDONS_PL_PATH . 'includes/ai/htmega-ai-integration.php')) {
+           
+            require_once HTMEGA_ADDONS_PL_PATH . 'includes/ai/htmega-ai-integration.php';
+            // add_action('elementor/loaded', function() {
+            //     require_once HTMEGA_ADDONS_PL_PATH . 'includes/ai/htmega-ai-integration.php';
+            // });
+        }
     }
     
    /**

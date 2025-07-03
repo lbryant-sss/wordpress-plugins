@@ -8,6 +8,10 @@ if ( !class_exists( '\HTMegaOpt\Admin\Options_Field'  ) ) {
     require_once HTMEGAOPT_INCLUDES . '/classes/Admin/Options_field.php';
 }
 
+if ( !class_exists( 'HTMega_AI_Integration' ) ) {
+    require_once HTMEGA_ADDONS_PL_PATH . '/includes/ai/htmega-ai-integration.php';
+}
+
 /**
  * REST_API Handler
  */
@@ -194,6 +198,51 @@ class Settings extends WP_REST_Controller {
 
             }
         }
+        // check AI assistent API  validation
+        if (($section === 'htmega_ai_features_tabs')){
+            $ai_enable = isset($data_to_save['htmega_ai_enable']) ? $data_to_save['htmega_ai_enable'] : '';
+            $ai_engine = isset($data_to_save['htmega_ai_engine']) ? $data_to_save['htmega_ai_engine'] : '';
+            $openai_api_key = isset($data_to_save['htmega_openai_api_key']) ? $data_to_save['htmega_openai_api_key'] : '';
+            $openai_model = isset($data_to_save['htmega_openai_model']) ? $data_to_save['htmega_openai_model'] : '';
+            $claude_api_key = isset($data_to_save['htmega_claude_api_key']) ? $data_to_save['htmega_claude_api_key'] : '';
+            $claude_model = isset($data_to_save['htmega_claude_model']) ? $data_to_save['htmega_claude_model'] : '';
+            $google_api_key = isset($data_to_save['htmega_google_api_key']) ? $data_to_save['htmega_google_api_key'] : '';
+            $google_model = isset($data_to_save['htmega_google_model']) ? $data_to_save['htmega_google_model'] : '';
+
+            if($ai_enable == 'on' && $ai_engine == 'openai'){
+                $test_connection = $this->test_connection($ai_engine, $openai_api_key, $openai_model);
+                if($test_connection !== true) {
+                    return new \WP_REST_Response([
+                        'message' => is_string($test_connection) ? $test_connection : 'Invalid OpenAI API key or connection failed',
+                        'status' => 'error'
+                    ], 401);
+                }
+            }
+            if($ai_enable == 'on' && $ai_engine == 'claude'){
+                $test_connection = $this->test_connection($ai_engine, $claude_api_key, $claude_model);
+                if($test_connection !== true) {
+                    return new \WP_REST_Response([
+                        'message' => is_string($test_connection) ? $test_connection : 'Invalid Claude API key or connection failed',
+                        'status' => 'error'
+                    ], 401);
+                }
+            }
+            if($ai_enable == 'on' && $ai_engine == 'google'){
+                if(empty($google_api_key)){
+                    return new \WP_REST_Response([
+                        'message' => 'Google API Key is required',
+                        'status' => 'error'
+                    ], 401);
+                }
+                $test_connection = $this->test_connection($ai_engine, $google_api_key, $google_model);
+                if($test_connection !== true) {
+                    return new \WP_REST_Response([
+                        'message' => is_string($test_connection) ? $test_connection : 'Invalid Google API key or connection failed',
+                        'status' => 'error'
+                    ], 401);
+                }
+            }
+        }
 
         if ( ! empty( $this->errors->get_error_codes() ) ) {
 			return new \WP_REST_Response( $this->errors, 422 );
@@ -207,6 +256,36 @@ class Settings extends WP_REST_Controller {
 
 		return rest_ensure_response( $data_to_save );
         
+    }
+
+    /**
+     * test connection
+     * 
+     * @return bool|string Returns true if connection successful, error message string if failed
+     */
+    public function test_connection($ai_engine, $api_key, $model) {
+        try {
+            if (!class_exists('\HTMega_AI_Integration')) {
+                return 'HTMega AI Integration class not found';
+            }
+            
+            // Use fully qualified class name with leading backslash to reference global namespace
+            $ai_instance = \HTMega_AI_Integration::instance();
+            
+            // Test connection based on AI engine
+            switch ($ai_engine) {
+                case 'openai':
+                    return $ai_instance->validate_openai_key($api_key, $model);
+                case 'claude':
+                    return $ai_instance->validate_claude_key($api_key, $model);
+                case 'google':
+                    return $ai_instance->validate_google_key($api_key, $model);
+                default:
+                    return 'Invalid AI engine specified';
+            }
+        } catch (\Exception $e) {
+            return 'Error: ' . $e->getMessage();
+        }
     }
 
     /**

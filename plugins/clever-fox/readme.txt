@@ -4,7 +4,7 @@ Tags: homepage setup, companion, one click demo, sections, customizer
 Requires at least: 4.6 or higher
 Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 26.2.86
+Stable tag: 26.2.87
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -31,6 +31,7 @@ Clever Fox plugin to enhance the functionality of free themes made by <a href="h
 **Clever Fox Compatible Themes:**
 
 - [Webique](https://wordpress.org/themes/webique/)    - [Free Demo](https://www.nayrathemes.com/demo/lite/webique/)
+- [Websy](https://wordpress.org/themes/websy/)    	  - [Free Demo](https://www.nayrathemes.com/demo/lite/websy/)
 - [StartKit](https://wordpress.org/themes/startkit/)  - [Free Demo](https://www.nayrathemes.com/demo/lite/startkit/)
 - [StartBiz](https://wordpress.org/themes/startbiz/)  - [Free Demo](https://www.nayrathemes.com/demo/lite/startbiz/)
 - [Arowana](https://wordpress.org/themes/arowana/)	  - [Free Demo](https://www.nayrathemes.com/demo/lite/arowana/)
@@ -120,6 +121,7 @@ Yes, This plugin is specially make for Nayra Themes. You can install theme for e
 
 = Clever Fox Compatible Themes =
 - [Webique](https://wordpress.org/themes/webique/)
+- [Websy](https://wordpress.org/themes/websy/)
 - [StartKit](https://wordpress.org/themes/startkit/)
 - [StartBiz](https://wordpress.org/themes/startbiz/)
 - [Arowana](https://wordpress.org/themes/arowana/)
@@ -204,6 +206,9 @@ Clever Fox WordPress Plugin is licensed under the GPL3 (https://www.gnu.org/lice
 
 
 == Changelog ==
+
+= 26.2.87 =
+* Readme Updated & Header Issue Fixed
 
 = 26.2.86 =
 * Customizer Setting Fixed

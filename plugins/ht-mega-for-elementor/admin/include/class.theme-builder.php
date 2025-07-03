@@ -129,7 +129,7 @@ class HTMega_Theme_Builder {
             'single_blog_page' => __('Single', 'htmega-addons'),
             'archive_blog_page' => __('Blog', 'htmega-addons'),
             'search_page' => __('Search', 'htmega-addons'),
-            'error_page' => __('Error', 'htmega-addons'),
+            'error_page' => __('404', 'htmega-addons'),
             'coming_soon_page' => __('Coming Soon', 'htmega-addons')
         ];
     }
