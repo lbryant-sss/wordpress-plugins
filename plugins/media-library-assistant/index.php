@@ -15,9 +15,9 @@
 /*
 Plugin Name: Media Library Assistant
 Plugin URI: http://davidlingren.com/#two
-Description: 20250607 Enhances the Media Library; powerful [mla_gallery] [mla_tag_cloud] [mla_term_list], taxonomy support, IPTC/EXIF/XMP/PDF processing, bulk/quick edit.
+Description: 20250703 Enhances the Media Library; powerful [mla_gallery] [mla_tag_cloud] [mla_term_list], taxonomy support, IPTC/EXIF/XMP/PDF processing, bulk/quick edit.
 Version: 3.26
-Requires at least: 4.2
+Requires at least: 4.7
 Requires PHP: 5.3
 Author: David Lingren
 Author URI: http://davidlingren.com/
@@ -118,6 +118,8 @@ $mla_name_conflict_candidates =
 		'MLACore' => 'class',
 		'MLACoreOptions' => 'class',
 		'MLA_Checklist_Walker' => 'class',
+		'MLAAVIF' => 'class',
+		'MLAOffice' => 'class',
 		'MLAPDF' => 'class',
 		'MLAQuery' => 'class',
 		'MLAReferences' => 'class',

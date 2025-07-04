@@ -149,9 +149,13 @@ class Block_Editor {
 	 * Register Gutenberg script.
 	 */
 	public function action_enqueue_block_editor_assets() {
-		global $pagenow;
+		global $pagenow, $typenow;
 
 		if ( 'widgets.php' === $pagenow ) {
+			return;
+		}
+
+		if ( ! post_type_supports( $typenow, 'revisions' ) ) {
 			return;
 		}
 
@@ -166,14 +170,6 @@ class Block_Editor {
 			),
 			$asset_data['dependencies'],
 			$asset_data['version']
-		);
-
-		wp_localize_script(
-			$handle,
-			'wpRevisionsControlBlockEditorSettings',
-			array(
-				'metaKey' => WP_REVISIONS_CONTROL_LIMIT_META_KEY,
-			)
 		);
 
 		wp_set_script_translations(

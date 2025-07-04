@@ -1553,7 +1553,7 @@ class MLAShortcode_Support {
 			}
 
 			if ( ! empty( $arguments['mla_link_class'] ) ) {
-				$link_attributes .= 'class="' . esc_attr( self::mla_process_shortcode_parameter( $arguments['mla_link_class'], $item_values ) ) . '" ';
+				$link_attributes .= 'class="' . sanitize_html_class( self::mla_process_shortcode_parameter( $arguments['mla_link_class'], $item_values ) ) . '" ';
 			}
 
 			if ( ! empty( $link_attributes ) ) {
@@ -2525,7 +2525,7 @@ class MLAShortcode_Support {
 		}
 
 		if ( ! empty( $arguments['mla_link_class'] ) ) {
-			$new_link .= 'class="' . esc_attr( self::mla_process_shortcode_parameter( $arguments['mla_link_class'], $markup_values ) ) . '" ';
+			$new_link .= 'class="' . sanitize_html_class( self::mla_process_shortcode_parameter( $arguments['mla_link_class'], $markup_values ) ) . '" ';
 		}
 
 		if ( ! empty( $arguments['mla_rollover_text'] ) ) {

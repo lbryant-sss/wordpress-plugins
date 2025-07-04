@@ -3,7 +3,7 @@
 /**
  * Plugin Name:       Zapier for WordPress
  * Description:       Zapier enables you to automatically share your posts to social media, create WordPress posts from Mailchimp newsletters, and much more. Visit https://zapier.com/apps/wordpress/integrations for more details.
- * Version:           1.5.2
+ * Version:           1.5.3
  * Author:            Zapier
  * Author URI:        https://zapier.com
  * License:           Expat (MIT License)
@@ -91,6 +91,92 @@ class Zapier_Auth
         $this->loader->run();
     }
 
+    /**
+     * Verify user has proper authorization for webhook management
+     *
+     * @param WP_REST_Request $request
+     * @return bool|WP_Error
+     */
+    private function verify_webhook_authorization($request)
+    {
+        // Check if user is logged in
+        if (!is_user_logged_in()) {
+            return new WP_Error(
+                'not_logged_in',
+                'You are not logged in',
+                array('status' => 401)
+            );
+        }
+
+        // Check if user has proper capabilities - only administrators should manage webhooks
+        if (!current_user_can('manage_options')) {
+            return new WP_Error(
+                'insufficient_permissions',
+                'You do not have sufficient permissions to manage webhooks',
+                array('status' => 403)
+            );
+        }
+
+                // CSRF protection: Different approaches for different auth methods
+        $is_jwt_auth = isset($_SERVER['HTTP_X_ZAPIER_AUTH']) && isset($_SERVER['HTTP_USER_AGENT']) && $_SERVER['HTTP_USER_AGENT'] === 'Zapier';
+
+        if ($is_jwt_auth) {
+            // For JWT: Verify the token includes proper origin validation
+            // JWT tokens should only be used by Zapier's servers, not browsers
+            // The User-Agent check provides additional CSRF protection
+            if (!isset($_SERVER['HTTP_USER_AGENT']) || $_SERVER['HTTP_USER_AGENT'] !== 'Zapier') {
+                return new WP_Error(
+                    'invalid_user_agent',
+                    'Invalid request source',
+                    array('status' => 403)
+                );
+            }
+        } else {
+            // For browser-based requests: Use WordPress nonce
+            $nonce = $request->get_header('X-WP-Nonce');
+            if (!$nonce || !wp_verify_nonce($nonce, 'wp_rest')) {
+                return new WP_Error(
+                    'invalid_nonce',
+                    'Invalid security token',
+                    array('status' => 403)
+                );
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * Verify user authorization for read-only operations
+     *
+     * @param WP_REST_Request $request
+     * @return bool|WP_Error
+     */
+    private function verify_read_authorization($request)
+    {
+        // Check if user is logged in
+        if (!is_user_logged_in()) {
+            return new WP_Error(
+                'not_logged_in',
+                'You are not logged in',
+                array('status' => 401)
+            );
+        }
+
+        // For read operations, we can allow users with edit_posts capability
+        if (!current_user_can('edit_posts')) {
+            return new WP_Error(
+                'insufficient_permissions',
+                'You do not have sufficient permissions to access this resource',
+                array('status' => 403)
+            );
+        }
+
+        return true;
+    }
+
+
+
     public function add_api_routes()
     {
         register_rest_route($this->namespace, '/token', array(
@@ -102,26 +188,53 @@ class Zapier_Auth
         register_rest_route($this->namespace, '/(?P<type>[a-zA-Z0-9_-]+)/supports', array(
             'methods' => "GET",
             'callback' => array($this, 'get_custom_type_supports'),
-            'permission_callback' => '__return_true'
+            'permission_callback' => array($this, 'check_read_permission')
         ));
 
         register_rest_route($this->namespace, '/roles', array(
             'methods' => "GET",
             'callback' => array($this, 'get_roles'),
-            'permission_callback' => '__return_true'
+            'permission_callback' => array($this, 'check_read_permission')
         ));
 
         register_rest_route($this->namespace, '/webhook', array(
             'methods' => "POST",
             'callback' => array($this, 'add_webhook'),
-            'permission_callback' => '__return_true'
+            'permission_callback' => array($this, 'check_webhook_permission')
         ));
 
         register_rest_route($this->namespace, '/webhook', array(
             'methods' => "DELETE",
             'callback' => array($this, 'remove_webhook'),
-            'permission_callback' => '__return_true'
+            'permission_callback' => array($this, 'check_webhook_permission')
         ));
+    }
+
+    /**
+     * Permission callback for webhook operations
+     */
+    public function check_webhook_permission($request)
+    {
+        $auth_result = $this->verify_webhook_authorization($request);
+        return !is_wp_error($auth_result);
+    }
+
+        /**
+     * Permission callback for read operations
+     */
+    public function check_read_permission($request)
+    {
+        // Check if user is logged in (Application Password authentication should work here)
+        if (!is_user_logged_in()) {
+            return false;
+        }
+
+        // For read operations, allow users with edit_posts capability (editors and admins)
+        if (!current_user_can('edit_posts')) {
+            return false;
+        }
+
+        return true;
     }
 
     public function generate_token($request)
@@ -160,17 +273,7 @@ class Zapier_Auth
 
     public function get_custom_type_supports($request)
     {
-
-        if(!is_user_logged_in()) {
-            return new WP_Error(
-                'not_logged_in',
-                'You are not logged in',
-                array(
-                    'status' => 401,
-                )
-            );
-        }
-
+        // Authorization is handled by permission_callback
         $type = $request['type'];
         $types = get_post_types(array());
 
@@ -183,22 +286,13 @@ class Zapier_Auth
                 )
             );
         }
-        
+
         return array('supports' => get_all_post_type_supports($type));
     }
 
-    public function get_roles()
+    public function get_roles($request = null)
     {
-        if(!is_user_logged_in()) {
-            return new WP_Error(
-                'not_logged_in',
-                'You are not logged in',
-                array(
-                    'status' => 401,
-                )
-            );
-        }
-        
+        // Authorization is handled by permission_callback
         $roles = array();
         foreach (wp_roles()->roles as $key => $role) {
             $roles[] = (array('id' => $key, 'name' => $role['name']));
@@ -208,15 +302,10 @@ class Zapier_Auth
     }
 
     public function add_webhook($request) {
-
-        if(!is_user_logged_in()) {
-            return new WP_Error(
-                'not_logged_in',
-                'You are not logged in',
-                array(
-                    'status' => 401,
-                )
-            );
+        // Authorization is handled by permission_callback
+        $auth_result = $this->verify_webhook_authorization($request);
+        if (is_wp_error($auth_result)) {
+            return $auth_result;
         }
 
         $ALLOWED_ACTIONS = array('wp_update_user','post_updated');
@@ -244,6 +333,17 @@ class Zapier_Auth
             );
         }
 
+        // Enhanced URL validation
+        if (!$this->is_safe_url($endpoint_url)) {
+            return new WP_Error(
+                'unsafe_endpoint_url',
+                'The provided endpoint URL is not allowed for security reasons',
+                array(
+                    'status' => 400,
+                )
+            );
+        }
+
         $option_key = "zapier_hooks_$action";
 
         $hooks = get_option($option_key, []);
@@ -257,15 +357,10 @@ class Zapier_Auth
     }
 
     public function remove_webhook($request) {
-
-        if(!is_user_logged_in()) {
-            return new WP_Error(
-                'not_logged_in',
-                'You are not logged in',
-                array(
-                    'status' => 401,
-                )
-            );
+        // Authorization is handled by permission_callback
+        $auth_result = $this->verify_webhook_authorization($request);
+        if (is_wp_error($auth_result)) {
+            return $auth_result;
         }
 
         $action = $request->get_param("action");
@@ -285,13 +380,13 @@ class Zapier_Auth
     public function updated_user($user_id) {
         $option_key = "zapier_hooks_wp_update_user";
         $hooks = get_option($option_key, []);
-    
+
         foreach ($hooks as $hook) {
             // Validate the URL
             if (!$this->is_safe_url($hook)) {
                 continue; // Skip unsafe URLs
             }
-    
+
             // Use wp_safe_remote_post to ensure secure requests
             $response = wp_safe_remote_post($hook, [
                 'body'    => json_encode(['user_id' => $user_id]),
@@ -302,10 +397,10 @@ class Zapier_Auth
 
     public function updated_post($post_id, $post_after, $post_before) {
         $option_key = "zapier_hooks_post_updated";
-        
+
         $rest_base = get_post_type_object($post_after->post_type)->rest_base;
         $changed_properties = $this->compareObjects($post_after, $post_before);
-        
+
         $hooks = get_option($option_key, []);
 
         foreach($hooks as $hook) {

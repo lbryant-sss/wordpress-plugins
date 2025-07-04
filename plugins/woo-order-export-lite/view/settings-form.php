@@ -988,7 +988,6 @@ $woe_order_post_type = isset($settings['post_type']) ? $settings['post_type'] : 
                                     <input type="checkbox" name="settings[export_refunds]"
                                            value="1" <?php checked( $settings['export_refunds'] ) ?> />
 				                    <?php esc_html_e( "Export refunds", 'woo-order-export-lite' ) ?>
-				                    <i><?php esc_html_e( "(only date filters applied)", 'woo-order-export-lite' ) ?></i>
                                 </label>
 		                    <?php }
 	                    } ?>
@@ -1071,10 +1070,16 @@ $woe_order_post_type = isset($settings['post_type']) ? $settings['post_type'] : 
                                 type="checkbox" name="settings[all_products_from_order]"
                                 value="1" <?php checked( $settings['all_products_from_order'] ) ?> /> <?php esc_html_e( 'Export all products from the order',
 							'woo-order-export-lite' ) ?></label></div>
+                <div><input type="hidden" name="settings[skip_order_having_excluded_products]" value="0"/><label><input type="checkbox"
+                                                                                                        name="settings[skip_order_having_excluded_products]"
+                                                                                                        value="1" <?php checked( $settings['skip_order_having_excluded_products'] ) ?> /> <?php esc_html_e( 'Skip order having any excluded products',
+							'woo-order-export-lite' ) ?></label></div>
                 <div><input type="hidden" name="settings[skip_refunded_items]" value="0"/><label><input type="checkbox"
                                                                                                         name="settings[skip_refunded_items]"
                                                                                                         value="1" <?php checked( $settings['skip_refunded_items'] ) ?> /> <?php esc_html_e( 'Skip fully refunded items',
 							'woo-order-export-lite' ) ?></label></div>
+
+
                 <span class="wc-oe-header"><?php esc_html_e( 'Product categories', 'woo-order-export-lite' ) ?></span>
                 <select id="product_categories" class="select2-i18n" data-select2-i18n-ajax-method="get_categories"
                         name="settings[product_categories][]" multiple="multiple"

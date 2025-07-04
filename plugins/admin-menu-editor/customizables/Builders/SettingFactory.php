@@ -2,6 +2,7 @@
 
 namespace YahnisElsts\AdminMenuEditor\Customizable\Builders;
 
+use YahnisElsts\AdminMenuEditor\Customizable\Schemas;
 use YahnisElsts\AdminMenuEditor\Customizable\Schemas\Schema;
 use YahnisElsts\AdminMenuEditor\Customizable\Schemas\Struct;
 use YahnisElsts\AdminMenuEditor\Customizable\Settings;
@@ -90,10 +91,11 @@ class SettingFactory {
 	}
 
 	public function boolean($path, $label = null, $params = array()) {
-		return new Settings\BooleanSetting(
-			$this->idFrom($path),
-			$this->slotFor($path),
-			$this->prepareParams($path, $label, $params)
+		return $this->schemaToSetting(
+			new Schemas\Boolean($label),
+			$path,
+			Settings\WithSchema\SingularSetting::class,
+			$params
 		);
 	}
 
@@ -421,7 +423,9 @@ class SettingFactory {
 
 	public function schemaToSetting(Schema $schema, $path, $className = null, $params = []) {
 		//Override the schema default if we have a specific default value for this setting.
-		if ( array_key_exists($path, $this->defaults) ) {
+		if ( array_key_exists('default', $params) ) {
+			$schema = $schema->defaultValue($params['default']);
+		} elseif ( array_key_exists($path, $this->defaults) ) {
 			$schema = $schema->defaultValue($this->defaults[$path]);
 		}
 

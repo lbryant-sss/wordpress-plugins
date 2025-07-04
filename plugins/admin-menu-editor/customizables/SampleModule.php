@@ -9,7 +9,8 @@ use WPMenuEditor;
 use YahnisElsts\AdminMenuEditor\Customizable\Builders\ElementBuilderFactory;
 use YahnisElsts\AdminMenuEditor\Customizable\Builders\SettingFactory;
 use YahnisElsts\AdminMenuEditor\Customizable\Controls\Tooltip;
-use YahnisElsts\AdminMenuEditor\Customizable\Settings\BooleanSetting;
+use YahnisElsts\AdminMenuEditor\Customizable\Schemas\Boolean;
+use YahnisElsts\AdminMenuEditor\Customizable\Settings\WithSchema\SingularSetting;
 use YahnisElsts\AdminMenuEditor\Customizable\SettingsForm;
 use YahnisElsts\AdminMenuEditor\Customizable\Storage\AbstractSettingsDictionary;
 use YahnisElsts\AdminMenuEditor\Customizable\Storage\CompressedStorage;
@@ -506,7 +507,7 @@ class AmeCoreSettings extends AbstractSettingsDictionary {
 	}
 }
 
-class AmeHidePluginSetting extends BooleanSetting {
+class AmeHidePluginSetting extends SingularSetting {
 	const SETTING_KEY = 'plugins_page_allowed_user_id';
 
 	protected $defaultValue = false;
@@ -525,7 +526,12 @@ class AmeHidePluginSetting extends BooleanSetting {
 			$params['label'] = $label;
 		}
 
-		parent::__construct($id, $store, $params);
+		$schema = new Boolean($params['label']);
+		if ( array_key_exists('default', $params) ) {
+			$schema = $schema->defaultValue($params['default']);
+		}
+
+		parent::__construct($schema, $id, $store, $params);
 	}
 
 	public function getValue($customDefault = null) {
