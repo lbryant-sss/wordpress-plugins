@@ -4,7 +4,7 @@ Tags: google calendar, calendar, calendars, google, event calendar, custom calen
 Requires at least: 4.2
 Requires PHP: 7.3
 Tested up to: 6.8.1
-Stable tag: 3.5.3
+Stable tag: 3.5.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -96,6 +96,11 @@ We'd love your help! Here's a few things you can do:
 8. Attach a calendar to a post or page
 
 == Changelog ==
+
+= 3.5.4 =
+* Fix: Fixed multi-day events incorrectly displaying on all days when the "No, display only on first day of event" option is enabled.
+* Fix: Resolved issue where event details (qTip) were not showing in mobile portrait view.
+* Fix: Fixed layout issues on the admin settings page for fresh installations.
 
 = 3.5.3 =
 * Fix: Even after upgrading to PHP 8.x, an admin notice still appears to upgrade to PHP8.

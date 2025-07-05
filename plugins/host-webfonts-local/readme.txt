@@ -3,7 +3,7 @@ Contributors: DaanvandenBergh
 Tags: google, fonts, gdpr, dsgvo, cache
 Requires at least: 5.9
 Tested up to: 6.8
-Stable tag: 6.0.3
+Stable tag: 6.0.4
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -45,11 +45,9 @@ All Google Fonts are listed in the **Optimize Local Fonts** section of OMGF's se
 
 = Additional Features in OMGF Pro =
 
-- Run the Google Fonts checker in the frontend (for all users) to organically check for present external Google Fonts
-  throughout your site.
-- Smart Preload automatically configures which fonts should be preloaded i.e., loaded early to reduce Cumulative Layout Shift, Largest Contentful Paint and [Ensure Text Remains Visible During Webfont Load](https://daan.dev/blog/how-to/ensure-text-remains-visible-during-webfont-load/).
-- Automatically configures itself to make sure all externally hosted Google Fonts on your site are hosted locally. OMGF
-  Pro supports:
+- Run the **Google Fonts checker** in the frontend (for all users) to **organically check for present external Google Fonts** throughout your site.
+- **Smart Preload** automatically configures which fonts should be preloaded i.e., loaded early to reduce Cumulative Layout Shift, Largest Contentful Paint and [Ensure Text Remains Visible During Webfont Load](https://daan.dev/blog/how-to/ensure-text-remains-visible-during-webfont-load/).
+- Automatically configures itself to make sure all externally hosted Google Fonts on your site are hosted locally. OMGF Pro supports:
 	- `@font-face` and `@import` statements inside **inline `<style>` blocks**,
 	- `@font-face` and `@import` statements inside **local stylesheets** loaded by e.g. your theme and/or plugins,
 	- `@font-face` and `@import` statements inside **externally hosted stylesheets** loaded by your theme and/or
@@ -58,13 +56,13 @@ All Google Fonts are listed in the **Optimize Local Fonts** section of OMGF's se
 	- Async Google Fonts (loaded using JS)
 	- Material Icons.
 - **Multisite** and **WPML** support.
-- Whitelabel stylesheets, which removes branding and comments from the stylesheets to further reduce the size.
+- **Whitelabel stylesheets**, which removes branding and comments from the stylesheets to further reduce the size.
 - Modify your fonts' `src: url()` attribute to fully integrate with your configuration,
 	- Use this to serve fonts and the stylesheets from your CDN, or
 	- To serve fonts from an alternative path (e.g. when you're using Security through Obscurity plugins like WP Hide,
 	  etc.), or
 	- Anything you like!
-- Dev Mode, which allows you to easily migrate between Development, Staging/Testing, Acceptance and Production
+- **Developer Mode**, which allows you to easily migrate between Development, Staging/Testing, Acceptance and Production
   environments.
 
 *[Purchase OMGF Pro](https://daan.dev/wordpress/omgf-pro/) | [Documentation](https://daan.dev/docs/omgf-pro/) | [Tested Plugins & Themes](https://daan.dev/docs/omgf-pro/tested-themes-plugins/)*
@@ -89,6 +87,11 @@ For the FAQ, [click here](https://daan.dev/docs/omgf-pro-faq/).
 4. Advanced Settings. Change these to make OMGF work with your configuration (if needed). The default settings will suffice for most configurations.
 
 == Changelog ==
+
+= 6.0.4 | July 4th, 2025 =
+* Added: compatibility for themes/plugins using the WPTT webfont loader.
+* Improved: Optimize Local Fonts section is now full width, like the Dashboard.
+* Improved: Moved Test Mode into the Dashboard section.
 
 = 6.0.3 | June 24th, 2025 =
 * Added: Smart Preload (Pro) promotional option.
