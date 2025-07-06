@@ -24,7 +24,7 @@ msgstr ""
 msgid "A highly customizable collection of widgets, ready to be used anywhere, neatly bundled into a single plugin."
 msgstr ""
 
-#: so-widgets-bundle.php:8, compat/block-editor/widget-block.php:91, widgets/accordion/accordion.php:5, widgets/anything-carousel/anything-carousel.php:5, widgets/author-box/author-box.php:5, widgets/blog/blog.php:5, widgets/button/button.php:5, widgets/button-grid/button-grid.php:5, widgets/contact/contact.php:5, widgets/cta/cta.php:5, widgets/editor/editor.php:5, widgets/features/features.php:5, widgets/google-map/google-map.php:5, widgets/headline/headline.php:5, widgets/hero/hero.php:5, widgets/icon/icon.php:5, widgets/image/image.php:5, widgets/image-grid/image-grid.php:5, widgets/layout-slider/layout-slider.php:5, widgets/lottie-player/lottie-player.php:5, widgets/post-carousel/post-carousel.php:5, widgets/price-table/price-table.php:5, widgets/recent-posts/recent-posts.php:5, widgets/simple-masonry/simple-masonry.php:5, widgets/slider/slider.php:5, widgets/social-media-buttons/social-media-buttons.php:5, widgets/tabs/tabs.php:5, widgets/taxonomy/taxonomy.php:5, widgets/testimonial/testimonial.php:5, widgets/video/video.php:5, base/inc/installer/siteorigin-installer.php:6
+#: so-widgets-bundle.php:8, compat/block-editor/widget-block.php:93, widgets/accordion/accordion.php:5, widgets/anything-carousel/anything-carousel.php:5, widgets/author-box/author-box.php:5, widgets/blog/blog.php:5, widgets/button/button.php:5, widgets/button-grid/button-grid.php:5, widgets/contact/contact.php:5, widgets/cta/cta.php:5, widgets/editor/editor.php:5, widgets/features/features.php:5, widgets/google-map/google-map.php:5, widgets/headline/headline.php:5, widgets/hero/hero.php:5, widgets/icon/icon.php:5, widgets/image/image.php:5, widgets/image-grid/image-grid.php:5, widgets/layout-slider/layout-slider.php:5, widgets/lottie-player/lottie-player.php:5, widgets/post-carousel/post-carousel.php:5, widgets/price-table/price-table.php:5, widgets/recent-posts/recent-posts.php:5, widgets/simple-masonry/simple-masonry.php:5, widgets/slider/slider.php:5, widgets/social-media-buttons/social-media-buttons.php:5, widgets/tabs/tabs.php:5, widgets/taxonomy/taxonomy.php:5, widgets/testimonial/testimonial.php:5, widgets/video/video.php:5, base/inc/installer/siteorigin-installer.php:6
 msgid "SiteOrigin"
 msgstr ""
 
@@ -256,31 +256,31 @@ msgstr ""
 msgid "Widgets Bundle Post Meta Data"
 msgstr ""
 
-#: compat/block-editor/widget-block.php:197
+#: compat/block-editor/widget-block.php:208
 msgid "No description available."
 msgstr ""
 
-#: compat/block-editor/widget-block.php:210
+#: compat/block-editor/widget-block.php:221
 msgid "%s by %s"
 msgstr ""
 
-#: compat/block-editor/widget-block.php:296
+#: compat/block-editor/widget-block.php:307
 msgid "For improved block navigation, individual SiteOrigin Widget Blocks are now available. The multi-select SiteOrigin Widget Block will be automatically converted sitewide to the new individual SiteOrigin Widget Block format on page save; this action requires your consent to proceed. %sFind out more about this migration%s."
 msgstr ""
 
-#: compat/block-editor/widget-block.php:337
+#: compat/block-editor/widget-block.php:358
+msgid "Invalid widget class%s. Please make sure the widget has been activated in %sSiteOrigin Widgets%s."
+msgstr ""
+
+#: compat/block-editor/widget-block.php:469
 msgid "You need to select a widget type before you'll see anything here. :)"
 msgstr ""
 
-#: compat/block-editor/widget-block.php:367
-msgid "Invalid widget class %s. Please make sure the widget has been activated in %sSiteOrigin Widgets%s."
-msgstr ""
-
-#: compat/block-editor/widget-block.php:400
+#: compat/block-editor/widget-block.php:546
 msgid "No widget preview available."
 msgstr ""
 
-#: compat/block-editor/widget-block.php:505
+#: compat/block-editor/widget-block.php:651
 msgid "Invalid Widgets Bundle data"
 msgstr ""
 
@@ -336,7 +336,7 @@ msgstr ""
 msgid "When opening the panel, scroll the user to the top of the panel."
 msgstr ""
 
-#: widgets/accordion/accordion.php:71, widgets/accordion/accordion.php:84, widgets/anything-carousel/anything-carousel.php:66, widgets/anything-carousel/anything-carousel.php:82, widgets/blog/blog.php:85, widgets/contact/contact.php:101, widgets/cta/cta.php:75, widgets/editor/editor.php:32, widgets/features/features.php:140, widgets/icon/icon.php:67, widgets/post-carousel/post-carousel.php:366, widgets/price-table/price-table.php:42, widgets/price-table/price-table.php:61, widgets/recent-posts/recent-posts.php:59, widgets/simple-masonry/simple-masonry.php:43, widgets/simple-masonry/simple-masonry.php:85, widgets/social-media-buttons/social-media-buttons.php:53, widgets/tabs/tabs.php:72, widgets/tabs/tabs.php:85, widgets/taxonomy/taxonomy.php:34, widgets/testimonial/testimonial.php:40, widgets/video/video.php:38, base/inc/fields/posts.class.php:129
+#: widgets/accordion/accordion.php:71, widgets/accordion/accordion.php:84, widgets/anything-carousel/anything-carousel.php:66, widgets/anything-carousel/anything-carousel.php:82, widgets/blog/blog.php:85, widgets/contact/contact.php:101, widgets/cta/cta.php:75, widgets/editor/editor.php:32, widgets/features/features.php:140, widgets/icon/icon.php:67, widgets/post-carousel/post-carousel.php:367, widgets/price-table/price-table.php:42, widgets/price-table/price-table.php:61, widgets/recent-posts/recent-posts.php:59, widgets/simple-masonry/simple-masonry.php:43, widgets/simple-masonry/simple-masonry.php:85, widgets/social-media-buttons/social-media-buttons.php:53, widgets/tabs/tabs.php:72, widgets/tabs/tabs.php:85, widgets/taxonomy/taxonomy.php:34, widgets/testimonial/testimonial.php:40, widgets/video/video.php:38, base/inc/fields/posts.class.php:129
 msgid "Title"
 msgstr ""
 
@@ -516,7 +516,7 @@ msgstr ""
 msgid "SiteOrigin Author Box"
 msgstr ""
 
-#: widgets/author-box/author-box.php:32, widgets/blog/blog.php:644, widgets/button/button.php:31, widgets/button-grid/button-grid.php:51, widgets/contact/contact.php:1175, widgets/cta/cta.php:64, widgets/features/features.php:477, widgets/headline/headline.php:36, widgets/image/image.php:31, widgets/recent-posts/recent-posts.php:48, widgets/social-media-buttons/social-media-buttons.php:32, base/inc/widgets/base-slider.class.php:250
+#: widgets/author-box/author-box.php:32, widgets/blog/blog.php:644, widgets/button/button.php:31, widgets/button-grid/button-grid.php:51, widgets/contact/contact.php:1175, widgets/cta/cta.php:64, widgets/features/features.php:495, widgets/headline/headline.php:36, widgets/image/image.php:31, widgets/recent-posts/recent-posts.php:48, widgets/social-media-buttons/social-media-buttons.php:32, base/inc/widgets/base-slider.class.php:250
 msgid "Responsive Breakpoint"
 msgstr ""
 
@@ -656,7 +656,7 @@ msgstr ""
 msgid "Skip Post if No Featured Image"
 msgstr ""
 
-#: widgets/blog/blog.php:129, widgets/post-carousel/post-carousel.php:380
+#: widgets/blog/blog.php:129, widgets/post-carousel/post-carousel.php:381
 msgid "Featured Image Size"
 msgstr ""
 
@@ -844,7 +844,7 @@ msgstr ""
 msgid "Height"
 msgstr ""
 
-#: widgets/blog/blog.php:633, widgets/post-carousel/post-carousel.php:398, widgets/recent-posts/recent-posts.php:468
+#: widgets/blog/blog.php:633, widgets/post-carousel/post-carousel.php:399, widgets/recent-posts/recent-posts.php:468
 msgid "Posts Query"
 msgstr ""
 
@@ -1930,15 +1930,15 @@ msgstr ""
 msgid "Open more URL in a new window"
 msgstr ""
 
-#: widgets/features/features.php:479
+#: widgets/features/features.php:497
 msgid "This setting controls when the features widget will collapse for mobile devices. The default value is 780px"
 msgstr ""
 
-#: widgets/features/features.php:491
+#: widgets/features/features.php:509
 msgid "Add an feature icon title tooltip with %sSiteOrigin Premium%s"
 msgstr ""
 
-#: widgets/features/features.php:496
+#: widgets/features/features.php:514
 msgid "Use Google Fonts right inside the Features Widget with %sSiteOrigin Premium%s"
 msgstr ""
 
@@ -2757,15 +2757,15 @@ msgstr ""
 msgid "Alignment "
 msgstr ""
 
-#: widgets/image/image.php:406, widgets/image-grid/image-grid.php:439, widgets/simple-masonry/simple-masonry.php:498, widgets/slider/slider.php:374
+#: widgets/image/image.php:406, widgets/image-grid/image-grid.php:439, widgets/simple-masonry/simple-masonry.php:529, widgets/slider/slider.php:374
 msgid "Add a Lightbox to your images with %sSiteOrigin Premium%s"
 msgstr ""
 
-#: widgets/image/image.php:411, widgets/image-grid/image-grid.php:444, widgets/simple-masonry/simple-masonry.php:503, widgets/slider/slider.php:379
+#: widgets/image/image.php:411, widgets/image-grid/image-grid.php:444, widgets/simple-masonry/simple-masonry.php:534, widgets/slider/slider.php:379
 msgid "Add a beautiful and customizable text overlay with animations to your images with %sSiteOrigin Premium%s"
 msgstr ""
 
-#: widgets/image/image.php:416, widgets/image-grid/image-grid.php:449, widgets/simple-masonry/simple-masonry.php:513
+#: widgets/image/image.php:416, widgets/image-grid/image-grid.php:449, widgets/simple-masonry/simple-masonry.php:544
 msgid "Add an image title tooltip with %sSiteOrigin Premium%s"
 msgstr ""
 
@@ -2957,43 +2957,43 @@ msgstr ""
 msgid "Continuous"
 msgstr ""
 
-#: widgets/post-carousel/post-carousel.php:372
+#: widgets/post-carousel/post-carousel.php:373
 msgid "Default Thumbnail"
 msgstr ""
 
-#: widgets/post-carousel/post-carousel.php:373
+#: widgets/post-carousel/post-carousel.php:374
 msgid "Choose Thumbnail"
 msgstr ""
 
-#: widgets/post-carousel/post-carousel.php:374
+#: widgets/post-carousel/post-carousel.php:375
 msgid "Set Thumbnail"
 msgstr ""
 
-#: widgets/post-carousel/post-carousel.php:386
+#: widgets/post-carousel/post-carousel.php:387
 msgid "Link Target"
 msgstr ""
 
-#: widgets/post-carousel/post-carousel.php:387
+#: widgets/post-carousel/post-carousel.php:388
 msgid "Choose where to open each carousel item."
 msgstr ""
 
-#: widgets/post-carousel/post-carousel.php:389
+#: widgets/post-carousel/post-carousel.php:390
 msgid "Same window "
 msgstr ""
 
-#: widgets/post-carousel/post-carousel.php:390
+#: widgets/post-carousel/post-carousel.php:391
 msgid "New window "
 msgstr ""
 
-#: widgets/post-carousel/post-carousel.php:403
+#: widgets/post-carousel/post-carousel.php:404
 msgid "Posts Per Load"
 msgstr ""
 
-#: widgets/post-carousel/post-carousel.php:404
+#: widgets/post-carousel/post-carousel.php:405
 msgid "Set the number of posts preloaded in the background when clicking next. The default is 10."
 msgstr ""
 
-#: widgets/post-carousel/post-carousel.php:611
+#: widgets/post-carousel/post-carousel.php:612
 msgid "Get access to additional carousel themes with %sSiteOrigin Premium%s"
 msgstr ""
 
@@ -3257,7 +3257,7 @@ msgstr ""
 msgid "Device width, in pixels, at which to collapse into a mobile view."
 msgstr ""
 
-#: widgets/simple-masonry/simple-masonry.php:508
+#: widgets/simple-masonry/simple-masonry.php:539
 msgid "Add multiple Simple Masonry frames in one go with %sSiteOrigin Premium%s"
 msgstr ""
 
