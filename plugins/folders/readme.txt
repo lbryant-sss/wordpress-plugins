@@ -78,7 +78,7 @@ Upload text, images, videos, and audio. Then organize everything you upload into
 * Folders' icon colors
 * Download any media library folder as a ZIP: download any media library folder as a zip file
 * Sticky folders - pin your folders to the upper part of the folders navigation area. Use the sticky folders feature to make your most important folders accessible
-* Star directories
+* Star directories - keep your most important folders more visible
 * Upload folders from your PC - upload your computer folders, and all its structure (including subfolders) will be recreated on your WordPress website
 * Folders user access management - advanced folders access management for your team with roles that restrict their access to view and edit your website’s folders
 * Lock folders - locked folders stay pinned, and cannot be dragged or deleted (lock all folders/unlock all folders too)

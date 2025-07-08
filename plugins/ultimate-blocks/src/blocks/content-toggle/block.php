@@ -27,7 +27,7 @@ if ( ! class_exists( 'ub_simple_html_dom_node' ) ) {
 function ub_render_content_toggle_block( $attributes, $content, $block ) {
 	extract( $attributes );
 	$block_attrs = $block->parsed_block['attrs'];
-	if ( is_singular() && isset( $block_attrs['hasFAQSchema'] ) ) {
+	if ( is_singular() && isset( $block_attrs['hasFAQSchema'] ) && $block_attrs['hasFAQSchema'] ) {
 		add_action( 'wp_footer', 'ub_merge_faqpages', 80 );
 	}
 	$padding = Ultimate_Blocks\includes\get_spacing_css( isset($block_attrs['padding']) ? $block_attrs['padding'] : array() );
@@ -204,7 +204,7 @@ function ub_content_toggle_filter( $block_content, $block ) {
 
 	$output = $block_content;
 
-	if ( isset( $block['attrs']['hasFAQSchema'] ) ) {
+	if ( isset( $block['attrs']['hasFAQSchema'] ) && $block['attrs']['hasFAQSchema'] ) {
 		$parsedBlockContent = ub_str_get_html(
 			preg_replace(
 				'/^<div class="wp-block-ub-content-toggle(?: [^>]*)?" id="ub-content-toggle-.*?">/',

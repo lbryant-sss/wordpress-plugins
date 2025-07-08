@@ -5,7 +5,7 @@ Tags: order export,export orders,woocommerce,order,export
 Requires PHP: 8.1.0
 Requires at least: 4.7
 Tested up to: 6.8
-Stable tag: 4.0.2
+Stable tag: 4.0.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 

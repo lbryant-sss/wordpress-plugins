@@ -1824,7 +1824,7 @@ $defaultValues = array(
 			),
 			'enableDescription'       => array(
 				'type'    => 'boolean',
-				'default' => false,
+				'default' => true,
 			),
 			'descriptionAlign'        => array(
 				'type'    => 'string',
@@ -1848,7 +1848,7 @@ $defaultValues = array(
 			),
 			'enableImage'             => array(
 				'type'    => 'boolean',
-				'default' => false
+				'default' => true
 			),
 			'items'                   => array(
 				'type'    => 'string',

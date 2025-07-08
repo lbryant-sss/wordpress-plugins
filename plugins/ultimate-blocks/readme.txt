@@ -3,7 +3,7 @@ Contributors: dotcamp, ultimateblocks, imtiazrayhan, istiakrayhan, erdembircan, 
 Tags: blocks, gutenberg blocks, gutenberg, block editor, free
 Requires at least: 5.8
 Tested up to: 6.8
-Stable tag: 3.3.5
+Stable tag: 3.3.6
 Requires PHP: 7.2
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
@@ -149,6 +149,18 @@ That's it. You're done!
 3. Tabbed Content Block.
 
 == Changelog ==
+
+= 3.3.6 =
+
+* FIX: Content toggle schema rendering without it enabled.
+* FIX: Border issue in tabbed content block.
+* FIX: Countdown is not showing properly in responsive.
+* FIX: Promoter director path issue.
+* FIX: Image width is not working on frontend in post grid block.
+* FIX: Plus sign add in schema review block.
+* PRO: NEW: Search bar position in content toggle block.
+* NEW: Add border color for content toggle search box.
+* IMPROVE: Enable image and description by default in the review block.
 
 = 3.3.5 =
 

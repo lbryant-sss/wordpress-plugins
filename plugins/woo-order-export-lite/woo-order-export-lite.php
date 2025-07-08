@@ -27,6 +27,14 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 } // Exit if accessed directly
 
+// declare compatibility on startup
+use Automattic\WooCommerce\Utilities\FeaturesUtil;
+add_action( 'before_woocommerce_init', function() {
+	if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
+		FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+	}
+} );
+
 //Stop if another version is active!
 if ( class_exists( 'WC_Order_Export_Admin' ) ) {
 	add_action( 'admin_notices', function () {
@@ -57,14 +65,6 @@ $extension_file = WOE_PLUGIN_BASEPATH.'/pro_version/pre-loader.php';
 if ( file_exists( $extension_file ) ) {
     include_once $extension_file;
 }
-
-// declare compatibility on startup
-use Automattic\WooCommerce\Utilities\FeaturesUtil;
-add_action( 'before_woocommerce_init', function() {
-	if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
-		FeaturesUtil::declare_compatibility( 'custom_order_tables', WOE_PLUGIN_PATH, true );
-	}
-} );
 
 // a small function to check startup conditions
 if ( ! function_exists( "woe_check_running_options" ) ) {

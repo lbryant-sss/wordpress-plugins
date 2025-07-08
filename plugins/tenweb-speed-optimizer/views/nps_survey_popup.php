@@ -40,7 +40,7 @@ $nps_share_love = [
     'title' => __('Thanks for loving 10Web Booster', 'tenweb-speed-optimizer'),
     'description' => __('We have tried our best to make it free, accessible and valuable for the WordPress community.<br>
         For us to keep doing that, please leave your review on ', 'tenweb-speed-optimizer') .
-        '<a href="' . esc_url('https://wordpress.org/support/plugin/tenweb-speed-optimizer/reviews/?filter=5#new-post') . '" target="_blank">WP.org</a>'
+        '<a href="' . esc_url('https://wordpress.org/support/plugin/tenweb-speed-optimizer/reviews/#new-post') . '" target="_blank">WP.org</a>'
         . __(
             ' which won’t take you longer than a minute.',
             'tenweb-speed-optimizer'
@@ -48,7 +48,7 @@ $nps_share_love = [
     'button' => [
         'text' => __('Share your love', 'tenweb-speed-optimizer'),
         'class' => 'two-nps-green-button',
-        'url' => 'https://wordpress.org/support/plugin/tenweb-speed-optimizer/reviews/?filter=5#new-post',
+        'url' => 'https://wordpress.org/support/plugin/tenweb-speed-optimizer/reviews/#new-post',
     ],
 ];
 

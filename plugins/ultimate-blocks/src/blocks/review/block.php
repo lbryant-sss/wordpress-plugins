@@ -21,7 +21,10 @@ function ub_generatePercentageBar($value, $id, $activeColor, $inactiveColor ){
 }
 
 function ub_filterJsonldString($string){
-    return str_replace("\'", "'", wp_kses_post(urlencode($string)));
+    // Sanitize the content without URL encoding to avoid "+" symbols in spaces
+    // wp_kses_post ensures the content is safe for inclusion in the schema
+    // JSON escaping will be handled by json_encode elsewhere
+    return str_replace("\'", "'", wp_kses_post($string));
 }
 
 function ub_render_review_block($attributes, $block_content, $block_instance){

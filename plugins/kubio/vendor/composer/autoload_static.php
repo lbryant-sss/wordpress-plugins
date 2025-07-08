@@ -689,6 +689,7 @@ class ComposerStaticInitbf1f8f04398e40313f3088487e9f2524
         'Kubio\\Core\\StyleManager\\Utils' => __DIR__ . '/../..' . '/lib/src/Core/StyleManager/Utils.php',
         'Kubio\\Core\\Styles\\FlexAlign' => __DIR__ . '/../..' . '/lib/src/Core/Styles/FlexAlign.php',
         'Kubio\\Core\\Styles\\Utils' => __DIR__ . '/../..' . '/lib/src/Core/Styles/Utils.php',
+        'Kubio\\Core\\ThirdPartyPluginAssetLoaderInEditor' => __DIR__ . '/../..' . '/lib/src/Core/ThirdPartyPluginAssetLoaderInEditor.php',
         'Kubio\\Core\\Utils' => __DIR__ . '/../..' . '/lib/src/Core/Utils.php',
         'Kubio\\DemoSites\\DemoSites' => __DIR__ . '/../..' . '/lib/src/DemoSites/DemoSites.php',
         'Kubio\\DemoSites\\DemoSitesHelpers' => __DIR__ . '/../..' . '/lib/src/DemoSites/DemoSitesHelpers.php',

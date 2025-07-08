@@ -44,9 +44,22 @@ class LibraryPaths {
 	 * @param string $library_root_path Path to the library root directory.
 	 */
 	public function __construct( $plugin_file, $library_root_path ) {
-		$this->plugin_dir_path_cached     = plugin_dir_path( $plugin_file );
+		$library_root_path_adjusted = $this->path_universal_adjust( $library_root_path );
+
+		$this->plugin_dir_path_cached     = $this->path_universal_adjust( plugin_dir_path( $plugin_file ) );
 		$this->plugin_url_path_cached     = plugin_dir_url( $plugin_file );
-		$this->library_root_relative_path = $this->find_library_root_relative_path( $this->plugin_dir_path_cached, $library_root_path );
+		$this->library_root_relative_path = $this->find_library_root_relative_path( $this->plugin_dir_path_cached, $library_root_path_adjusted );
+	}
+
+	/**
+	 * Adjust given path independent from server OS specifics.
+	 *
+	 * @param string $target_path Path to adjust.
+	 *
+	 * @return string Adjusted path
+	 */
+	private function path_universal_adjust( $target_path ) {
+		return str_replace( '\\', '/', $target_path );
 	}
 
 	/**
@@ -73,16 +86,6 @@ class LibraryPaths {
 	 */
 	public function dir_path( $target_library_path ) {
 		return trailingslashit( $this->plugin_dir_path_cached ) . trailingslashit( ltrim( $this->library_root_relative_path, '/' ) ) . ltrim( $target_library_path, '/' );
-	}
-
-	/**
-	 * Builds a file path with the appropriate directory separator.
-	 *
-	 * @param string $segments,... unlimited number of path segments
-	 * @return string Path
-	 */
-	function build_file_path(...$segments) {
-		return join(DIRECTORY_SEPARATOR, $segments);
 	}
 
 	/**

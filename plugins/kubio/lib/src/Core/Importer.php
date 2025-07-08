@@ -404,11 +404,11 @@ class Importer {
 
 	public static function getCachedImportRemoteFileByUrl($source_url) {
 
-		$files_maps = get_transient(static::IMPORT_REMOTE_FILE_TRANSIENT_KEY);
-		if(empty($files_maps) || !is_array($files_maps)) {
+		$files_map = get_transient(static::IMPORT_REMOTE_FILE_TRANSIENT_KEY);
+		if(empty($files_map) || !is_array($files_map)) {
 			return null;
 		}
-		$result = isset($files_maps[$source_url]) ? $files_maps[$source_url] : null;
+		$result = isset($files_map[$source_url]) ? $files_map[$source_url] : null;
 		return $result;
 	}
 
@@ -417,7 +417,7 @@ class Importer {
 		if(empty($file)) {
 			return;
 		}
-		$files_map = static::getCachedImportRemoteFileByUrl($source_url);
+		$files_map = get_transient(static::IMPORT_REMOTE_FILE_TRANSIENT_KEY);
 		if(empty($files_map)) {
 			$files_map = [];
 		}

@@ -252,6 +252,10 @@ Read this <a href="https://www.seopress.org/support/guides/xml-sitemap-blank-pag
 
 You're theme is probably using a deprecated function to handle the title. <a href="https://www.seopress.org/support/guides/fixing-missing-add_theme_support-in-your-theme/">Learn more here</a>
 
+= How can I report security bugs? =
+
+By using our contact form (select Misc as subject), or directly from <a href="https://patchstack.com/database/vdp/c8c461bf-80aa-4c9d-8792-2ee26edd1570">Patchstack</a>
+
 = My question is not listed here! =
 
 <a href="https://www.seopress.org/support/faq/" target="_blank">Read our complete FAQ on our site</a>

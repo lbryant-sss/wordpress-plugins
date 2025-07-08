@@ -854,4 +854,8 @@ class Utils {
 		// Non FSE theme
 		return null;
 	}
+
+	public static function getIsImageHubPluginActive() {
+		return defined('IMAGE_HUB_PLUGIN_NAME');
+	}
 }

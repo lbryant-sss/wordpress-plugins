@@ -18,6 +18,8 @@ function kubio_set_editor_ui_version() {
 	//page content. The logic is that old users either found a solution or did not like them and we care only for new users
 	//who may encounter the issue
 	Flags::setSetting( 'enableTypographyBodySelector', true );
+
+	Flags::setSetting( 'showFreeImagesTab', true );
 }
 
 

@@ -126,6 +126,10 @@ class OptimizerCriticalCss
                 \TenWebWpTransients\OptimizerTransients::set('two_critical_flag', 1, 24 * HOUR_IN_SECONDS);
             }
             $page_id = sanitize_text_field($request_data['page_id']);
+
+            if (strpos($page_id, 'no_critical') === 0) {
+                return;
+            }
             $critical_in_progress_key = 'two_critical_in_progress_' . $page_id;
             \TenWebWpTransients\OptimizerTransients::set($critical_in_progress_key, '1', 30 * MINUTE_IN_SECONDS);
 

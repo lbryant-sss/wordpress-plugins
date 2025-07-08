@@ -68,6 +68,7 @@ $two_files_cache = $TwoSettings->get_settings('two_files_cache');
 $two_enable_htaccess_caching_headers = $TwoSettings->get_settings('two_enable_htaccess_caching_headers');
 $two_test_mode = $TwoSettings->get_settings('two_test_mode');
 $two_all_pages_are_optimizable = $TwoSettings->get_settings('two_all_pages_are_optimizable');
+$two_optimize_archive_pages = $TwoSettings->get_settings('two_optimize_archive_pages');
 $two_minify_js = $TwoSettings->get_settings('two_minify_js');
 $two_minify_css = $TwoSettings->get_settings('two_minify_css');
 $lazy_load_type = $TwoSettings->get_settings('lazy_load_type');
@@ -156,6 +157,7 @@ $two_enable_htaccess_caching_headers = ($two_enable_htaccess_caching_headers == 
 $two_test_mode = ($two_test_mode == 'on') ? 'checked' : '';
 $cloudflare_cache_status = ($cloudflare_cache_status == 'on') ? 'checked' : '';
 $two_all_pages_are_optimizable = ($two_all_pages_are_optimizable == 'on') ? 'checked' : '';
+$two_optimize_archive_pages = ($two_optimize_archive_pages == 'on') ? 'checked' : '';
 $two_do_not_optimize_images = ($two_do_not_optimize_images == 'on') ? 'checked' : '';
 $two_enable_use_srcset = ($two_enable_use_srcset == 'on') ? 'checked' : '';
 $two_enable_nginx_webp_delivery = ($two_enable_nginx_webp_delivery == 'on') ? 'checked' : '';
@@ -358,6 +360,13 @@ $show_bg_lazy_load = ($lazy_load_type === 'vanilla') ? '' : 'display:none';
                            class="wd-label"><?php _e('Run Optimizer on every page', 'tenweb-speed-optimizer'); ?></label>
                 </div>
                 <p class="description"><?php _e('Enable this option to run optimizer on every page, except excluded.', 'tenweb-speed-optimizer'); ?></p>
+                <div class="two_settings_option">
+                    <input <?php echo esc_html($two_optimize_archive_pages); ?> type="checkbox" name="two_optimize_archive_pages"
+                                                           id="two_optimize_archive_pages">
+                    <label for="two_optimize_archive_pages"
+                           class="wd-label"><?php _e('Run Optimizer on archive pages', 'tenweb-speed-optimizer'); ?></label>
+                </div>
+                <p class="description"><?php _e('Enable this option to run Optimizer on archive pages.', 'tenweb-speed-optimizer'); ?></p>
 
                 <div class="two_settings_option">
                     <input <?php echo esc_html($two_async_font); ?> type="checkbox" name="two_async_font" id="two_async_font">

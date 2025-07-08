@@ -120,6 +120,11 @@ class OptimizerMain
      */
     public $minify_css;
 
+    /**
+     * @var bool
+     */
+    private $page_has_id = true;
+
     private function __construct()
     {
         @ini_set('pcre.backtrack_limit', 5000000); // phpcs:ignore
@@ -235,6 +240,10 @@ class OptimizerMain
             $tenweb_subscription_id = (int) $tenweb_subscription_id;
             $page_id = $this->critical->page_id;
 
+            if (strpos($page_id, 'no_critical') === 0) {
+                $this->page_has_id = false;
+            }
+
             if (empty($page_id)) {
                 self::add_optimization_status_headers(0, 'Page id not found');
 
@@ -257,7 +266,9 @@ class OptimizerMain
 
             if (in_array((int) $tenweb_subscription_id, TENWEB_SO_FREE_SUBSCRIPTION_IDS) && $page_id != 'front_page' && !is_array($page_mode)) {
                 if (isset($this->critical->two_critical_pages[$page_id]['status']) && $this->critical->two_critical_pages[$page_id]['status'] != 'success' && $this->critical->two_critical_pages[$page_id]['status'] != 'in_progress') {
-                    OptimizerCriticalCss::generate_critical_css_by_id($page_id);
+                    if ($this->page_has_id) {
+                        OptimizerCriticalCss::generate_critical_css_by_id($page_id);
+                    }
                     self::add_optimization_status_headers(0, 'Critical id not found');
 
                     return;
@@ -275,7 +286,9 @@ class OptimizerMain
                     $two_flow_critical_start = get_option('two_flow_critical_start');
 
                     if ($two_flow_critical_start === '1' && \Tenweb_Authorization\Login::get_instance()->check_logged_in()) {
-                        OptimizerCriticalCss::generate_critical_css_by_id($page_id);
+                        if ($this->page_has_id) {
+                            OptimizerCriticalCss::generate_critical_css_by_id($page_id);
+                        }
                     }
                 }
             } elseif (TENWEB_SO_HOSTED_ON_10WEB
@@ -285,7 +298,9 @@ class OptimizerMain
                                 && $this->critical->two_critical_pages[$page_id]['status'] != 'in_progress')
                         )
                         && $conditions_for_generating_ccss) {
-                OptimizerCriticalCss::generate_critical_css_by_id($page_id);
+                if ($this->page_has_id) {
+                    OptimizerCriticalCss::generate_critical_css_by_id($page_id);
+                }
             }
             $date = time();
 

@@ -12,6 +12,8 @@ use Kubio\GoogleFontsLocalLoader;
 use Kubio\Migrations;
 use Kubio\NotificationsManager;
 use Kubio\GutenbergControls;
+use Kubio\Core\ThirdPartyPluginAssetLoaderInEditor;
+
 
 require_once __DIR__ . '/filters.php';
 require_once __DIR__ . '/preview/index.php';
@@ -92,3 +94,4 @@ Migrations::load();
 CLI::load();
 GutenbergControls::load();
 KubioFrontPageRevertNotice::load();
+ThirdPartyPluginAssetLoaderInEditor::load();

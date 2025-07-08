@@ -570,6 +570,7 @@ return array(
     'Kubio\\Core\\StyleManager\\Utils' => $baseDir . '/lib/src/Core/StyleManager/Utils.php',
     'Kubio\\Core\\Styles\\FlexAlign' => $baseDir . '/lib/src/Core/Styles/FlexAlign.php',
     'Kubio\\Core\\Styles\\Utils' => $baseDir . '/lib/src/Core/Styles/Utils.php',
+    'Kubio\\Core\\ThirdPartyPluginAssetLoaderInEditor' => $baseDir . '/lib/src/Core/ThirdPartyPluginAssetLoaderInEditor.php',
     'Kubio\\Core\\Utils' => $baseDir . '/lib/src/Core/Utils.php',
     'Kubio\\DemoSites\\DemoSites' => $baseDir . '/lib/src/DemoSites/DemoSites.php',
     'Kubio\\DemoSites\\DemoSitesHelpers' => $baseDir . '/lib/src/DemoSites/DemoSitesHelpers.php',

@@ -940,6 +940,7 @@ function kubio_edit_site_render_block_editor() {
 			z-index: 1000;
 			width: 100%;
 			height: 100%;
+			display: block !important;
 		}
 
 		.kubio-loading-editor {

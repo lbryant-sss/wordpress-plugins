@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce 10.0.0-rc.2\n"
+"Project-Id-Version: WooCommerce 10.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-06-30T13:35:46+00:00\n"
+"POT-Creation-Date: 2025-07-07T09:01:02+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: woocommerce\n"
@@ -11470,8 +11470,8 @@ msgstr ""
 #: src/Internal/DataStores/Orders/LegacyDataCleanup.php:225
 #: src/Internal/ProductDownloads/ApprovedDirectories/Admin/SyncUI.php:81
 #: src/Internal/ProductDownloads/ApprovedDirectories/Admin/UI.php:360
+#: assets/client/admin/chunks/53.js:1
 #: assets/client/admin/chunks/5875.js:1
-#: assets/client/admin/chunks/6005.js:1
 #: assets/client/admin/chunks/9336.js:1
 #: assets/client/admin/chunks/9670.js:1
 #: assets/client/admin/chunks/activity-panels-inbox.js:1
@@ -12106,8 +12106,8 @@ msgstr ""
 #: includes/admin/class-wc-admin-setup-wizard.php:1953
 #: includes/admin/importers/views/html-product-csv-import-form.php:115
 #: includes/admin/settings/views/html-admin-page-shipping-zone-methods.php:270
+#: assets/client/admin/chunks/53.js:1
 #: assets/client/admin/chunks/5875.js:1
-#: assets/client/admin/chunks/6005.js:1
 #: assets/client/admin/chunks/core-profiler.js:1
 #: assets/client/admin/components/index.js:2
 #: assets/client/admin/wp-admin-scripts/settings-embed.js:2
@@ -13573,8 +13573,8 @@ msgid "Once connected, your WooCommerce.com purchases will be listed here."
 msgstr ""
 
 #: includes/admin/helper/views/html-oauth-start.php:38
+#: assets/client/admin/chunks/53.js:1
 #: assets/client/admin/chunks/5875.js:1
-#: assets/client/admin/chunks/6005.js:1
 #: assets/client/admin/chunks/marketplace.js:1
 msgid "Connect"
 msgstr ""
@@ -18977,8 +18977,8 @@ msgid "Add shipping class costs"
 msgstr ""
 
 #: includes/admin/settings/views/html-admin-page-shipping-zone-methods.php:161
+#: assets/client/admin/chunks/53.js:1
 #: assets/client/admin/chunks/4706.js:1
-#: assets/client/admin/chunks/6005.js:1
 #: assets/client/admin/chunks/9336.js:1
 #: assets/client/admin/chunks/customize-store.js:1
 #: assets/client/admin/chunks/launch-store.js:1
@@ -21121,11 +21121,11 @@ msgid_plural "%s: "
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-wc-brands.php:945
+#: includes/class-wc-brands.php:930
 msgid "Limit result set to products assigned a specific brand ID."
 msgstr ""
 
-#: includes/class-wc-brands.php:1167
+#: includes/class-wc-brands.php:1136
 msgid "Brands: "
 msgstr ""
 
@@ -32833,7 +32833,7 @@ msgid "AND"
 msgstr ""
 
 #: includes/widgets/class-wc-widget-layered-nav.php:100
-#: assets/client/admin/chunks/6005.js:1
+#: assets/client/admin/chunks/53.js:1
 msgid "OR"
 msgstr ""
 
@@ -36883,8 +36883,8 @@ msgid "Add recommended marketing tools to reach new customers and grow your busi
 msgstr ""
 
 #: src/Admin/Features/OnboardingTasks/Tasks/Payments.php:42
-#: assets/client/admin/chunks/5875.js:1
-msgid "Get paid"
+#: assets/client/admin/chunks/launch-store.js:1
+msgid "Set up payments"
 msgstr ""
 
 #: src/Admin/Features/OnboardingTasks/Tasks/Payments.php:63
@@ -37760,7 +37760,8 @@ msgstr ""
 #: src/Blocks/BlockTypes/AddToCartWithOptions/AddToCartWithOptions.php:577
 #: src/Blocks/BlockTypes/ProductCollection/Renderer.php:208
 #: assets/client/admin/app/index.js:2
-#: assets/client/admin/chunks/6005.js:1
+#: assets/client/admin/chunks/53.js:1
+#: assets/client/admin/chunks/settings-payments-main.js:1
 #: assets/client/admin/embed/index.js:2
 #: assets/client/blocks/checkout.js:23
 #: assets/client/blocks/store-notices.js:1
@@ -41383,18 +41384,6 @@ msgstr ""
 msgid "Give your shoppers additional ways to pay."
 msgstr ""
 
-#: src/Internal/Admin/Settings/PaymentsProviders/MercadoPago.php:34
-msgid "Installments without cards"
-msgstr ""
-
-#: src/Internal/Admin/Settings/PaymentsProviders/MercadoPago.php:37
-msgid "Credit and debit cards"
-msgstr ""
-
-#: src/Internal/Admin/Settings/PaymentsProviders/MercadoPago.php:40
-msgid "Invoice"
-msgstr ""
-
 #: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:74
 #: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:96
 #: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsRestController.php:123
@@ -41634,7 +41623,7 @@ msgid "Onboarding step requirements are not met."
 msgstr ""
 
 #: src/Internal/Admin/Settings/PaymentsProviders/WooPayments/WooPaymentsService.php:1597
-#: assets/client/admin/chunks/6005.js:1
+#: assets/client/admin/chunks/53.js:1
 msgid "There are environment or store setup issues which are blocking progress. Please resolve them to proceed."
 msgstr ""
 
@@ -47437,6 +47426,281 @@ msgstr ""
 msgid "Click for error details"
 msgstr ""
 
+#: assets/client/admin/chunks/53.js:1
+msgid "Step completed"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "Step active"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+#, js-format
+msgid "Step %1$s of %2$s"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+#: assets/client/admin/chunks/launch-store.js:1
+msgid "Set up WooPayments"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+#: assets/client/admin/chunks/settings-payments-main.js:1
+#, js-format
+msgid "Currently selected: %s"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+#: assets/client/admin/chunks/settings-payments-main.js:1
+msgid "No selection"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "Search…"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "Select if you run your own business as an individual and are self-employed"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "Select if you filed documentation to register your business with a government agency"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "Select if you run a non-business entity"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "Select if your business is classed as a government entity"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "Select if you have been granted tax-exempt status by the Internal Revenue Service (IRS)"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "Start accepting real payments"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "You are currently testing payments on your store. To activate real payments, you will need to provide some additional details about your business. {{link}}Learn more{{/link}}."
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+#: assets/client/admin/chunks/settings-payments-main.js:1
+#: assets/client/admin/chunks/settings-payments-offline.js:1
+msgid "Activate payments"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "Let’s get your store ready to accept payments"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "We’ll use these details to enable payments for your store. This information can’t be changed after your account is created."
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "Please share a few more details"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "This info will help us speed up the set up process."
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "One last step! Verify your identity with our partner"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "This will take place in a secure environment through our partner. Once your business details are verified, you’ll be redirected back to your store dashboard."
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "Finish your verification process"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "This info will verify your account"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+#: assets/client/admin/chunks/core-profiler.js:1
+msgid "Where is your business located?"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "What type of legal entity is your business?"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "What category of legal entity identify your business?"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "What type of goods or services does your business sell? "
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "Please provide a response"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "Please provide a country"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "Please provide a business type"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "Please provide a type of goods or services"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+#: assets/client/admin/chunks/core-profiler.js:1
+#: assets/client/blocks/product-filter-attribute.js:1
+msgid "Select an option"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "Select a country"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+#, js-format
+msgid "By using %1$s, you agree to be bound by our {{tosLink}}Terms of Service{{/tosLink}} (including {{merchantTermsLink}}%2$s merchant terms{{/merchantTermsLink}}) and acknowledge that you have read our {{privacyPolicyLink}}Privacy Policy{{/privacyPolicyLink}}."
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "Unable to start onboarding. If this problem persists, please contact support."
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "Payment activation through our financial partner requires HTTPS and cannot be completed."
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "You’re ready to accept payments!"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "Great news — your WooPayments account has been activated. You can now start accepting payments on your store."
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "Go to Payments Overview"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "Close this window"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+#: assets/client/admin/wp-admin-scripts/settings-embed.js:2
+msgid "Choose your payment methods"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "Select which payment methods you'd like to offer to your shoppers. You can update these at any time."
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+#: assets/client/admin/chunks/settings-payments-methods.js:1
+#, js-format
+msgid "Show more (%s)"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "Finishing payments setup"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "In just a few moments, you'll be ready to test payments on your store."
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "Setting up your test account"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "Almost there!"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "Creating test account failed. Please try again."
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+#: assets/client/admin/chunks/settings-payments-main.js:1
+msgid "You're ready to test payments!"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "We've created a test account for you so that you can begin {{link}}testing payments on your store{{/link}}."
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+#: assets/client/admin/chunks/settings-payments-main.js:1
+msgid "What's next:"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+#: assets/client/admin/chunks/customize-store.js:1
+#: assets/client/admin/wp-admin-scripts/onboarding-load-sample-products-notice.js:1
+msgid "Continue setting up your store"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "Test payments and finish off any other tasks required to launch your store."
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+#: assets/client/admin/chunks/settings-payments-main.js:1
+msgid "Continue store setup"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "Activate real payments"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "Provide additional details about your business so you can begin accepting real payments. {{link}}Learn more{{/link}}"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "Reset Account"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "Try Again"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "An error occurred while creating your test account. Please try again."
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "The test account creation is taking a bit longer than expected, but don't worry — we're on it! Please bear with us for a few seconds more as we set everything up for your store."
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "Thank you for your patience! Unfortunately, the test account creation is taking a bit longer than we anticipated. But don't worry — we won't give up! Feel free to close this modal and check back later. We appreciate your understanding!"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "Your test account was successfully reset."
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "Connect to WordPress.com"
+msgstr ""
+
+#: assets/client/admin/chunks/53.js:1
+msgid "You’ll be briefly redirected to connect your store to your WordPress.com account and unlock the full features and functionality of WooPayments"
+msgstr ""
+
 #: assets/client/admin/chunks/2304.js:1
 #: assets/client/admin/chunks/3837.js:1
 #: assets/client/admin/chunks/analytics-report-coupons.js:1
@@ -48571,6 +48835,10 @@ msgid "Give your customers an easy and convenient way to pay! Set up one (or mor
 msgstr ""
 
 #: assets/client/admin/chunks/5875.js:1
+msgid "Get paid"
+msgstr ""
+
+#: assets/client/admin/chunks/5875.js:1
 msgid "Products illustration"
 msgstr ""
 
@@ -48705,273 +48973,6 @@ msgstr ""
 
 #: assets/client/admin/chunks/5875.js:1
 msgid "Show things to do next"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "Step completed"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "Step active"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-#, js-format
-msgid "Step %1$s of %2$s"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-#: assets/client/admin/chunks/launch-store.js:1
-msgid "Set up WooPayments"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-#: assets/client/admin/chunks/settings-payments-main.js:1
-#, js-format
-msgid "Currently selected: %s"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-#: assets/client/admin/chunks/settings-payments-main.js:1
-msgid "No selection"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "Search…"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "Select if you run your own business as an individual and are self-employed"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "Select if you filed documentation to register your business with a government agency"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "Select if you run a non-business entity"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "Select if your business is classed as a government entity"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "Select if you have been granted tax-exempt status by the Internal Revenue Service (IRS)"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "Start accepting real payments"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "You are currently testing payments on your store. To activate real payments, you will need to provide some additional details about your business. {{link}}Learn more{{/link}}."
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-#: assets/client/admin/chunks/settings-payments-main.js:1
-#: assets/client/admin/chunks/settings-payments-offline.js:1
-msgid "Activate payments"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "Let’s get your store ready to accept payments"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "We’ll use these details to enable payments for your store. This information can’t be changed after your account is created."
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "Please share a few more details"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "This info will help us speed up the set up process."
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "One last step! Verify your identity with our partner"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "This will take place in a secure environment through our partner. Once your business details are verified, you’ll be redirected back to your store dashboard."
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "Finish your verification process"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "This info will verify your account"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-#: assets/client/admin/chunks/core-profiler.js:1
-msgid "Where is your business located?"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "What type of legal entity is your business?"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "What category of legal entity identify your business?"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "What type of goods or services does your business sell? "
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "Please provide a response"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "Please provide a country"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "Please provide a business type"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "Please provide a type of goods or services"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-#: assets/client/admin/chunks/core-profiler.js:1
-#: assets/client/blocks/product-filter-attribute.js:1
-msgid "Select an option"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "Select a country"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-#, js-format
-msgid "By using %1$s, you agree to be bound by our {{tosLink}}Terms of Service{{/tosLink}} (including {{merchantTermsLink}}%2$s merchant terms{{/merchantTermsLink}}) and acknowledge that you have read our {{privacyPolicyLink}}Privacy Policy{{/privacyPolicyLink}}."
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "Unable to start onboarding. If this problem persists, please contact support."
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "Payment activation through our financial partner requires HTTPS and cannot be completed."
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "You’re ready to accept payments!"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "Great news — your WooPayments account has been activated. You can now start accepting payments on your store."
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "Go to Payments Overview"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "Close this window"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-#: assets/client/admin/wp-admin-scripts/settings-embed.js:2
-msgid "Choose your payment methods"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "Select which payment methods you'd like to offer to your shoppers. You can update these at any time."
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-#: assets/client/admin/chunks/settings-payments-methods.js:1
-#, js-format
-msgid "Show more (%s)"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "Finishing payments setup"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "In just a few moments, you'll be ready to test payments on your store."
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "Setting up your test account"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "Almost there!"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "Creating test account failed. Please try again."
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-#: assets/client/admin/chunks/settings-payments-main.js:1
-msgid "You're ready to test payments!"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "We've created a test account for you so that you can begin {{link}}testing payments on your store{{/link}}."
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-#: assets/client/admin/chunks/settings-payments-main.js:1
-msgid "What's next:"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-#: assets/client/admin/chunks/customize-store.js:1
-#: assets/client/admin/wp-admin-scripts/onboarding-load-sample-products-notice.js:1
-msgid "Continue setting up your store"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "Test payments and finish off any other tasks required to launch your store."
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-#: assets/client/admin/chunks/settings-payments-main.js:1
-msgid "Continue store setup"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "Activate real payments"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "Provide additional details about your business so you can begin accepting real payments. {{link}}Learn more{{/link}}"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "Try Again"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "An error occurred while creating your test account. Please try again."
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "The test account creation is taking a bit longer than expected, but don't worry — we're on it! Please bear with us for a few seconds more as we set everything up for your store."
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "Thank you for your patience! Unfortunately, the test account creation is taking a bit longer than we anticipated. But don't worry — we won't give up! Feel free to close this modal and check back later. We appreciate your understanding!"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "Connect to WordPress.com"
-msgstr ""
-
-#: assets/client/admin/chunks/6005.js:1
-msgid "You’ll be briefly redirected to connect your store to your WordPress.com account and unlock the full features and functionality of WooPayments"
 msgstr ""
 
 #: assets/client/admin/chunks/6568.js:1
@@ -51739,10 +51740,6 @@ msgid "Oops! We encountered a problem while launching your store. <retryButton/>
 msgstr ""
 
 #: assets/client/admin/chunks/launch-store.js:1
-msgid "Set up payments"
-msgstr ""
-
-#: assets/client/admin/chunks/launch-store.js:1
 #, js-format
 msgid "Enable %s"
 msgstr ""
@@ -51875,6 +51872,44 @@ msgstr ""
 #: assets/client/admin/chunks/launch-store.js:1
 #: assets/client/admin/product-editor/index.js:2
 msgid "What’s next?"
+msgstr ""
+
+#: assets/client/admin/chunks/launch-store.js:1
+#: assets/client/admin/chunks/settings-payments-main.js:1
+#, js-format
+msgid "When you reset your test account, all payment data — including your %s account details, test transactions, and payouts history — will be lost. Your order history will remain. This action cannot be undone, but you can create a new test account at any time."
+msgstr ""
+
+#: assets/client/admin/chunks/launch-store.js:1
+#: assets/client/admin/chunks/settings-payments-main.js:1
+#, js-format
+msgid "When you reset your account, all payment data — including your %s account details, test transactions, and payouts history — will be lost. Your order history will remain. This action cannot be undone, but you can create a new test account at any time."
+msgstr ""
+
+#: assets/client/admin/chunks/launch-store.js:1
+#: assets/client/admin/chunks/settings-payments-main.js:1
+#, js-format
+msgid "You need to reset your test account to continue onboarding with %1$s. This will create a new test account and reset any existing %2$s account details and test transactions."
+msgstr ""
+
+#: assets/client/admin/chunks/launch-store.js:1
+#: assets/client/admin/chunks/settings-payments-main.js:1
+msgid "Reset your test account"
+msgstr ""
+
+#: assets/client/admin/chunks/launch-store.js:1
+#: assets/client/admin/chunks/settings-payments-main.js:1
+msgid "Are you sure you'd like to continue?"
+msgstr ""
+
+#: assets/client/admin/chunks/launch-store.js:1
+#: assets/client/admin/chunks/settings-payments-main.js:1
+msgid "Failed to reset your WooPayments account."
+msgstr ""
+
+#: assets/client/admin/chunks/launch-store.js:1
+#: assets/client/admin/chunks/settings-payments-main.js:1
+msgid "Yes, reset account"
 msgstr ""
 
 #: assets/client/admin/chunks/leaderboards.js:1
@@ -52805,32 +52840,6 @@ msgstr ""
 
 #: assets/client/admin/chunks/settings-payments-main.js:1
 msgid "Failed to disable the payments provider."
-msgstr ""
-
-#: assets/client/admin/chunks/settings-payments-main.js:1
-msgid "Reset your test account"
-msgstr ""
-
-#: assets/client/admin/chunks/settings-payments-main.js:1
-#, js-format
-msgid "When you reset your test account, all payment data — including your %s account details, test transactions, and payouts history — will be lost. Your order history will remain. This action cannot be undone, but you can create a new test account at any time."
-msgstr ""
-
-#: assets/client/admin/chunks/settings-payments-main.js:1
-#, js-format
-msgid "When you reset your account, all payment data — including your %s account details, test transactions, and payouts history — will be lost. Your order history will remain. This action cannot be undone, but you can create a new test account at any time."
-msgstr ""
-
-#: assets/client/admin/chunks/settings-payments-main.js:1
-msgid "Are you sure you'd like to continue?"
-msgstr ""
-
-#: assets/client/admin/chunks/settings-payments-main.js:1
-msgid "Failed to reset your WooPayments account."
-msgstr ""
-
-#: assets/client/admin/chunks/settings-payments-main.js:1
-msgid "Yes, reset account"
 msgstr ""
 
 #: assets/client/admin/chunks/settings-payments-main.js:1

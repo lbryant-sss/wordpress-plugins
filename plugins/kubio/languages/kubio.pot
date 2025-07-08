@@ -2,16 +2,16 @@
 # This file is distributed under the GPL3+.
 msgid ""
 msgstr ""
-"Project-Id-Version: Kubio 2.6.1\n"
+"Project-Id-Version: Kubio 2.6.2\n"
 "Report-Msgid-Bugs-To: support@kubiobuilder.com\n"
 "Last-Translator: Kubio <support@kubiobuilder.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-05-05T17:34:55+03:00\n"
+"POT-Creation-Date: 2025-07-04T14:03:13+03:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.11.0\n"
+"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: kubio\n"
 
 #. Plugin Name of the plugin
@@ -53,11 +53,13 @@ msgstr ""
 
 #. translators: %s - year month or day
 #: build/block-library/blocks/page-title/index.php:16
+#, php-format
 msgid "Posts from %s"
 msgstr ""
 
 #. translators: %s - search term
 #: build/block-library/blocks/page-title/index.php:21
+#, php-format
 msgid "Search results for: %s"
 msgstr ""
 
@@ -68,16 +70,19 @@ msgstr ""
 
 #. translators: %s - category
 #: build/block-library/blocks/page-title/index.php:25
+#, php-format
 msgid "Posts in %s"
 msgstr ""
 
 #. translators: %s - author
 #: build/block-library/blocks/page-title/index.php:27
+#, php-format
 msgid "Posts by %s"
 msgstr ""
 
 #. translators: %s - tag
 #: build/block-library/blocks/page-title/index.php:29
+#, php-format
 msgid "Posts about %s"
 msgstr ""
 
@@ -156,11 +161,13 @@ msgstr ""
 
 #. translators: Post type archive title. 1: Post type name
 #: build/block-library/blocks/page-title/index.php:106
+#, php-format
 msgid "Archives: %s"
 msgstr ""
 
 #. translators: Taxonomy term archive title. 1: Taxonomy singular name, 2: Current taxonomy term
 #: build/block-library/blocks/page-title/index.php:110
+#, php-format
 msgid "%1$s: %2$s"
 msgstr ""
 
@@ -208,6 +215,7 @@ msgstr ""
 
 #. translators: %s: social link value
 #: build/block-library/blocks/social-icons/index.php:44
+#, php-format
 msgid "Social link: %s"
 msgstr ""
 
@@ -223,7 +231,7 @@ msgstr ""
 #: lib/add-edit-in-kubio.php:197
 #: lib/add-edit-in-kubio.php:376
 #: lib/filters/default-editor-overlay.php:156
-#: lib/kubio-editor.php:997
+#: lib/kubio-editor.php:998
 #: build/block-library/index.js:13
 msgid "Edit with Kubio"
 msgstr ""
@@ -282,7 +290,7 @@ msgid "Starter Sites"
 msgstr ""
 
 #: lib/admin-pages/main-page/demo-sites.php:13
-#: lib/kubio-editor.php:1246
+#: lib/kubio-editor.php:1247
 msgid "You need a higher level of permission."
 msgstr ""
 
@@ -444,6 +452,7 @@ msgstr ""
 
 #. translators: %s: Upgrade to Kubio PRO link.
 #: lib/admin-pages/main-page/upgrade-pro.php:32
+#, php-format
 msgid "%s - Select the plan that fits your needs."
 msgstr ""
 
@@ -454,6 +463,7 @@ msgstr ""
 
 #. translators: %s: Download the Kubio PRO Plugin link.
 #: lib/admin-pages/main-page/upgrade-pro.php:41
+#, php-format
 msgid "%s - A download link will be provided after purchase."
 msgstr ""
 
@@ -464,6 +474,7 @@ msgstr ""
 
 #. Translators: %1$s: Install & Activate, %2$s: Add New.
 #: lib/admin-pages/main-page/upgrade-pro.php:50
+#, php-format
 msgid "%1$s - Upload the ZIP file via WordPress > Plugins > %2$s, then enter your license key to activate PRO features instantly."
 msgstr ""
 
@@ -515,6 +526,7 @@ msgstr ""
 
 #. translators: %s: spinner icon
 #: lib/AI/admin-tab/partials/main.php:17
+#, php-format
 msgid "%s Retrieving data..."
 msgstr ""
 
@@ -862,6 +874,7 @@ msgstr ""
 
 #. translators: %s is the error message
 #: lib/AI/utils.php:410
+#, php-format
 msgid "AI Server error: %s"
 msgstr ""
 
@@ -923,6 +936,7 @@ msgstr ""
 
 #. translators: 1: Comment date, 2: Comment time.
 #: lib/blog/walker-comment.php:31
+#, php-format
 msgid "%1$s at %2$s"
 msgstr ""
 
@@ -945,31 +959,37 @@ msgstr ""
 
 #. translators: %1$s is the name of the plugin, %2$s is the name of the other plugin.
 #: lib/filters/gutenerg-plugin-check.php:10
+#, php-format
 msgid "The %1$s plugin is active on this site. This might interfere with the proper functioning of the %2$s plugin. It is recommended to deactivate the %1$s plugin"
 msgstr ""
 
 #. translators: %s - php version e.g. 7.2
 #: lib/filters/requirements-notices.php:14
+#, php-format
 msgid "PHP %1$s"
 msgstr ""
 
 #. translators: %s - WordPress version e.g. 5.0
 #: lib/filters/requirements-notices.php:17
+#, php-format
 msgid "WordPress %1$s"
 msgstr ""
 
 #. translators: %1$s and %2$s - PHP and WordPress versions version e.g. 5.0
 #: lib/filters/requirements-notices.php:27
+#, php-format
 msgid "%1$s and %2$s"
 msgstr ""
 
 #. translators: the placeholders are urls or a product name
 #: lib/filters/requirements-notices.php:42
+#, php-format
 msgid "If you want to rollback to a previous version you can get it here: <a href=\"%1$s\">%2$s</a>. You can follow this steps to manually install a Kubio: <a target=\"_blank\" href=\"%3$s\">Manual plugin update</a>"
 msgstr ""
 
 #. translators: %s required message. e.g. WordPress 6.0 and PHP 7.2
 #: lib/filters/requirements-notices.php:105
+#, php-format
 msgid "Kubio Page Builder requires %s!"
 msgstr ""
 
@@ -1161,6 +1181,7 @@ msgstr ""
 
 #. translators: %1$s: Template area type, %2$s: the uncategorized template area value.
 #: lib/full-site-editing/template-parts-area.php:118
+#, php-format
 msgid "\"%1$s\" is not a supported wp_template_part area value and has been added as \"%2$s\"."
 msgstr ""
 
@@ -1374,6 +1395,7 @@ msgstr ""
 
 #. translators: %s is the number of the color e.g. Kubio color 1
 #: lib/global-data.php:425
+#, php-format
 msgid "Kubio color %s"
 msgstr ""
 
@@ -1428,6 +1450,7 @@ msgstr ""
 
 #. translators: %s is the category name
 #: lib/kubio-block-library.php:9
+#, php-format
 msgid "Kubio - %s"
 msgstr ""
 
@@ -1575,57 +1598,57 @@ msgstr ""
 msgid "Original Size"
 msgstr ""
 
-#: lib/kubio-editor.php:981
-#: lib/kubio-editor.php:985
-#: lib/kubio-editor.php:996
+#: lib/kubio-editor.php:982
+#: lib/kubio-editor.php:986
+#: lib/kubio-editor.php:997
 msgid "Kubio"
 msgstr ""
 
-#: lib/kubio-editor.php:1024
+#: lib/kubio-editor.php:1025
 #: lib/src/Core/EditInKubioCustomizerPanel.php:87
 msgid "Open Kubio Editor"
 msgstr ""
 
-#: lib/kubio-editor.php:1102
+#: lib/kubio-editor.php:1103
 msgid "What to show on the front page"
 msgstr ""
 
-#: lib/kubio-editor.php:1115
+#: lib/kubio-editor.php:1116
 msgid "The ID of the page that should be displayed on the front page"
 msgstr ""
 
-#: lib/kubio-editor.php:1130
+#: lib/kubio-editor.php:1131
 msgid "The ID of the page that displays the posts"
 msgstr ""
 
-#: lib/kubio-editor.php:1148
+#: lib/kubio-editor.php:1149
 msgid "Site icon."
 msgstr ""
 
-#: lib/kubio-editor.php:1165
+#: lib/kubio-editor.php:1166
 msgctxt "Template name"
 msgid "Full Width"
 msgstr ""
 
-#: lib/kubio-editor.php:1166
-#: lib/kubio-editor.php:1173
+#: lib/kubio-editor.php:1167
+#: lib/kubio-editor.php:1174
 msgid "Recommended Kubio template to display individual pages. This template works best with the Kubio provided blocks and predesigned sections."
 msgstr ""
 
-#: lib/kubio-editor.php:1172
+#: lib/kubio-editor.php:1173
 msgctxt "Template name"
 msgid "Kubio Full Width"
 msgstr ""
 
-#: lib/kubio-editor.php:1247
+#: lib/kubio-editor.php:1248
 msgid "Sorry, you are not allowed to customize this site."
 msgstr ""
 
-#: lib/kubio-editor.php:1265
+#: lib/kubio-editor.php:1266
 msgid "Kubio Section"
 msgstr ""
 
-#: lib/kubio-editor.php:1307
+#: lib/kubio-editor.php:1308
 msgid "Kubio Favorites"
 msgstr ""
 
@@ -1692,6 +1715,7 @@ msgstr ""
 
 #. translators: %s: force=true
 #: lib/menu/class-wp-rest-menus-controller.php:450
+#, php-format
 msgid "Terms do not support trashing. Set '%s' to delete."
 msgstr ""
 
@@ -1757,6 +1781,7 @@ msgstr ""
 
 #. translators: the placeholder is an url
 #: lib/pro/filters/notices.php:33
+#, php-format
 msgid "If you want to rollback to a previous version please open a support ticket: <a target=\"_blank\" href=\"%1$s\">Open support ticket</a>"
 msgstr ""
 
@@ -1786,6 +1811,7 @@ msgstr ""
 
 #. translators: placeholders are some urls like <a href="#">My Account</a>
 #: lib/pro/src/Core/License/ActivationForm.php:99
+#, php-format
 msgid "Your key was sent via email when the purchase was completed. Also you can find the key in the %1$s of your %2$s account"
 msgstr ""
 
@@ -1828,11 +1854,13 @@ msgstr ""
 
 #. translators: %1$s - string with server error response
 #: lib/pro/src/Core/License/CheckForm.php:27
+#, php-format
 msgid "There was an error calling Kubio License Server: <code>%1$s</code>. Please contact us for support on <a href=\"%2$s\" target=\"_blank\">Kubio</a> website"
 msgstr ""
 
 #. translators: %s - string with server error response
 #: lib/pro/src/Core/License/CheckForm.php:36
+#, php-format
 msgid "Current license key was removed! Reason: %s"
 msgstr ""
 
@@ -1906,11 +1934,13 @@ msgstr ""
 
 #. translators: %1$s: block name, %2$s: items type
 #: lib/src/Core/Utils.php:122
+#, php-format
 msgid "%1$s has no %2$s."
 msgstr ""
 
 #. translators: %s: items type
 #: lib/src/Core/Utils.php:124
+#, php-format
 msgid "Edit this page to insert %s or delete this block."
 msgstr ""
 
@@ -1920,26 +1950,31 @@ msgstr ""
 
 #. translators: %s: URL to Update PHP page.
 #: lib/src/Core/Utils.php:331
+#, php-format
 msgid "<a href=\"%s\">Learn more about updating PHP</a>"
 msgstr ""
 
 #. translators: %s: URL to Update PHP page.
 #: lib/src/Core/Utils.php:337
+#, php-format
 msgid "<a href=\"%s\">Update WordPress now!</a>"
 msgstr ""
 
 #. translators: 1: Current WordPress version, 2: Current PHP version, 3: Plugin name, 4: Required WordPress version, 5: Required PHP version.
 #: lib/src/Core/Utils.php:346
+#, php-format
 msgid "<strong>Error:</strong> Current versions of WordPress (%1$s) and PHP (%2$s) do not meet minimum requirements for %3$s. The plugin requires WordPress %4$s and PHP %5$s."
 msgstr ""
 
 #. translators: 1: Current PHP version, 2: Plugin name, 3: Required PHP version.
 #: lib/src/Core/Utils.php:359
+#, php-format
 msgid "<strong>Error:</strong> Current PHP version (%1$s) does not meet minimum requirements for %2$s. The plugin requires PHP %3$s."
 msgstr ""
 
 #. translators: 1: Current WordPress version, 2: Plugin name, 3: Required WordPress version.
 #: lib/src/Core/Utils.php:370
+#, php-format
 msgid "<strong>Error:</strong> Current WordPress version (%1$s) does not meet minimum requirements for %2$s. The plugin requires WordPress %3$s."
 msgstr ""
 
@@ -1950,6 +1985,7 @@ msgstr ""
 
 #. translators: %1$s - opening div and paragraph HTML tags, %2$s - closing div and paragraph HTML tags.
 #: lib/src/DemoSites/DemoSitesHelpers.php:24
+#, php-format
 msgid "%1$sYour user role isn't high enough. You don't have permission to import demo data.%2$s"
 msgstr ""
 
@@ -1967,17 +2003,20 @@ msgstr ""
 
 #. translators: %1$s and %3$s - strong HTML tags, %2$s - file URL, %4$s - br HTML tag, %5$s - error code, %6$s - error message.
 #: lib/src/DemoSites/DemoSitesHelpers.php:130
+#, php-format
 msgid "An error occurred while fetching file from: %1$s%2$s%3$s!%4$sReason: %5$s - %6$s."
 msgstr ""
 
 #. translators: %1$s - br HTML tag, %2$s - file path
 #: lib/src/DemoSites/DemoSitesHelpers.php:229
 #: lib/src/DemoSites/DemoSitesHelpers.php:314
+#, php-format
 msgid "An error occurred while writing file to your server! Tried to write a file to: %1$s%2$s."
 msgstr ""
 
 #. translators: %1$s and %2$s - strong HTML tags, %3$s - HTML link to a doc page.
 #: lib/src/DemoSites/DemoSitesHelpers.php:251
+#, php-format
 msgid "This WordPress site does not have %1$sdirect%2$s write file access. This plugin needs it in order to save the demo import files to the upload directory of your site. You can change this setting with these instructions: %3$s."
 msgstr ""
 
@@ -2001,6 +2040,7 @@ msgstr ""
 
 #. translators: %s - the name of the selected import.
 #: lib/src/DemoSites/DemoSitesImporter.php:263
+#, php-format
 msgid "The import files for: %s were successfully downloaded!"
 msgstr ""
 
@@ -2018,6 +2058,7 @@ msgstr ""
 
 #. translators: %s - menu item name e.g. "Home", "Contact"
 #: lib/src/DemoSites/DemoSitesImporter.php:445
+#, php-format
 msgid "Old %s"
 msgstr ""
 
@@ -2028,6 +2069,7 @@ msgstr ""
 
 #. translators: %s file url
 #: lib/src/DemoSites/WXRImporter.php:346
+#, php-format
 msgid "Unable to import remote file: %s"
 msgstr ""
 
@@ -2041,11 +2083,13 @@ msgstr ""
 
 #. translators: %1$s = term slug, %2$s = taxonomy
 #: lib/src/DemoSites/WXRImporter.php:596
+#, php-format
 msgid "Create term `%1$s` in `%2$s`"
 msgstr ""
 
 #. translators: %s - plugin slug
 #: lib/src/PluginsManager.php:69
+#, php-format
 msgid "Failed to install plugin: %s"
 msgstr ""
 
@@ -2078,6 +2122,7 @@ msgstr ""
 
 #. translators: placeholders are for email and number of credits
 #: build/admin-area/index.js:3
+#, js-format
 msgid "You are currently connected as %1$s, and the current account has %2$s AI credits available"
 msgstr ""
 
@@ -2114,6 +2159,7 @@ msgstr ""
 
 #. translators: %s number of items
 #: build/admin-area/index.js:5
+#, js-format
 msgid "%s item"
 msgid_plural "%s items"
 msgstr[0] ""
@@ -2121,6 +2167,7 @@ msgstr[1] ""
 
 #. translators: %1$s current page, %2$s last page
 #: build/admin-area/index.js:7
+#, js-format
 msgid "%1$s of %2$s"
 msgstr ""
 
@@ -2311,6 +2358,7 @@ msgstr ""
 
 #. translators: %s is the error text
 #: build/ai/index.js:3
+#, js-format
 msgid "Kubio AI: %s"
 msgstr ""
 
@@ -2324,6 +2372,7 @@ msgstr ""
 
 #. translators: %s: category name
 #: build/ai/index.js:3
+#, js-format
 msgid "Generating articles for %s category"
 msgstr ""
 
@@ -3037,6 +3086,7 @@ msgstr ""
 
 #. translators: %s is the type of page e.g. front page, inner page
 #: build/ai/index.js:4
+#, js-format
 msgid "Generate %s"
 msgstr ""
 
@@ -3054,6 +3104,7 @@ msgstr[1] ""
 
 #. translators: %s is the type of page e.g. front page, inner page
 #: build/ai/index.js:5
+#, js-format
 msgid "Regenerate %s"
 msgstr ""
 
@@ -3220,17 +3271,20 @@ msgstr ""
 #. translators: %s: container size (i.e. 600px etc)
 #: build/block-editor/index.js:2
 #: build/block-editor/index.js:3
+#, js-format
 msgid "Max %s wide"
 msgstr ""
 
 #. translators: %s - template part name (e.g. header/ footer/ sidebar)
 #: build/block-editor/index.js:5
 #: build/controls/index.js:25
+#, js-format
 msgid "Would you like to apply this %s to all pages that are using the current template or only for this page?"
 msgstr ""
 
 #. translators: %1$s: area label, %2$s: current template label
 #: build/block-editor/index.js:7
+#, js-format
 msgid "Would you like to apply this %1$s to all pages that are using the \"%2$s\" template?"
 msgstr ""
 
@@ -3259,16 +3313,19 @@ msgstr ""
 
 #. translators: %1$s: area label, %2$s: other area label
 #: build/block-editor/index.js:9
+#, js-format
 msgid "Applying this %1$s will also replace the %2$s on this page."
 msgstr ""
 
 #. translators: %1$s: area label, %2$s: other area label, %3$s: other area label
 #: build/block-editor/index.js:11
+#, js-format
 msgid "The current page uses the header and footer provided by the theme. Replacing the %1$s will create a new template so the %2$s will also be replaced with a Kubio %3$s"
 msgstr ""
 
 #. translators: %s: area label
 #: build/block-editor/index.js:13
+#, js-format
 msgid "Change the %s"
 msgstr ""
 
@@ -3280,6 +3337,7 @@ msgstr ""
 #. translators: %s: type label
 #: build/block-editor/index.js:15
 #: build/core/index.js:7
+#, js-format
 msgid "Could not create new %s. Please try again later"
 msgstr ""
 
@@ -3340,6 +3398,7 @@ msgstr ""
 
 #. translators: %d: Number of blocks.
 #: build/block-editor/index.js:15
+#, js-format
 msgid "%d block"
 msgid_plural "%d blocks"
 msgstr[0] ""
@@ -3450,6 +3509,7 @@ msgstr ""
 
 #. translators: %d: number of results.
 #: build/block-editor/index.js:23
+#, js-format
 msgid "%d result found."
 msgid_plural "%d results found."
 msgstr[0] ""
@@ -3507,6 +3567,7 @@ msgstr ""
 #. translators: %s: the name of the block when there is only one
 #: build/block-editor/index.js:25
 #: build/block-editor/index.js:29
+#, js-format
 msgctxt "directly add the only allowed block"
 msgid "Add %s"
 msgstr ""
@@ -3523,6 +3584,7 @@ msgstr ""
 
 #. translators: %s: the name of the block that has been added
 #: build/block-editor/index.js:27
+#, js-format
 msgid "%s block added"
 msgstr ""
 
@@ -3565,6 +3627,7 @@ msgstr ""
 
 #. translators: %s: Type of block (i.e. Text, Image etc)
 #: build/block-editor/index.js:34
+#, js-format
 msgid "Block: %s"
 msgstr ""
 
@@ -3584,18 +3647,21 @@ msgstr ""
 
 #. translators: 1: Number of selected blocks, 2: Position of selected blocks
 #: build/block-editor/index.js:38
+#, js-format
 msgid "Move %1$d blocks from position %2$d down by one place"
 msgstr ""
 
 #. translators: 1: Number of selected blocks, 2: Position of selected blocks
 #: build/block-editor/index.js:40
 #: build/block-editor/index.js:46
+#, js-format
 msgid "Move %1$d blocks from position %2$d left by one place"
 msgstr ""
 
 #. translators: 1: Number of selected blocks, 2: Position of selected blocks
 #: build/block-editor/index.js:42
 #: build/block-editor/index.js:48
+#, js-format
 msgid "Move %1$d blocks from position %2$d right by one place"
 msgstr ""
 
@@ -3615,6 +3681,7 @@ msgstr ""
 
 #. translators: 1: Number of selected blocks, 2: Position of selected blocks
 #: build/block-editor/index.js:44
+#, js-format
 msgid "Move %1$d blocks from position %2$d up by one place"
 msgstr ""
 
@@ -3624,63 +3691,75 @@ msgstr ""
 
 #. translators: %s: Type of block (i.e. Text, Image etc)
 #: build/block-editor/index.js:50
+#, js-format
 msgid "Block %s is the only block, and cannot be moved"
 msgstr ""
 
 #. translators: 1: Type of block (i.e. Text, Image etc), 2: Position of selected block, 3: New position
 #: build/block-editor/index.js:52
+#, js-format
 msgid "Move %1$s block from position %2$d down to position %3$d"
 msgstr ""
 
 #. translators: 1: Type of block (i.e. Text, Image etc), 2: Position of selected block, 3: New position
 #: build/block-editor/index.js:54
 #: build/block-editor/index.js:66
+#, js-format
 msgid "Move %1$s block from position %2$d left to position %3$d"
 msgstr ""
 
 #. translators: 1: Type of block (i.e. Text, Image etc), 2: Position of selected block, 3: New position
 #: build/block-editor/index.js:56
 #: build/block-editor/index.js:68
+#, js-format
 msgid "Move %1$s block from position %2$d right to position %3$d"
 msgstr ""
 
 #. translators: 1: Type of block (i.e. Text, Image etc)
 #: build/block-editor/index.js:58
+#, js-format
 msgid "Block %1$s is at the end of the content and can’t be moved down"
 msgstr ""
 
 #. translators: 1: Type of block (i.e. Text, Image etc)
 #: build/block-editor/index.js:60
+#, js-format
 msgid "Block %1$s is at the end of the content and can’t be moved left"
 msgstr ""
 
 #. translators: 1: Type of block (i.e. Text, Image etc)
 #: build/block-editor/index.js:62
+#, js-format
 msgid "Block %1$s is at the end of the content and can’t be moved right"
 msgstr ""
 
 #. translators: 1: Type of block (i.e. Text, Image etc), 2: Position of selected block, 3: New position
 #: build/block-editor/index.js:64
+#, js-format
 msgid "Move %1$s block from position %2$d up to position %3$d"
 msgstr ""
 
 #. translators: 1: Type of block (i.e. Text, Image etc)
 #: build/block-editor/index.js:70
+#, js-format
 msgid "Block %1$s is at the beginning of the content and can’t be moved up"
 msgstr ""
 
 #. translators: 1: Type of block (i.e. Text, Image etc)
 #: build/block-editor/index.js:72
+#, js-format
 msgid "Block %1$s is at the beginning of the content and can’t be moved left"
 msgstr ""
 
 #. translators: 1: Type of block (i.e. Text, Image etc)
 #: build/block-editor/index.js:74
+#, js-format
 msgid "Block %1$s is at the beginning of the content and can’t be moved right"
 msgstr ""
 
 #. translators: %s: Name of the block's parent.
 #: build/block-editor/index.js:74
+#, js-format
 msgid "Select parent block: %s"
 msgstr ""
 
@@ -3708,6 +3787,7 @@ msgstr ""
 
 #. translators: %d: number of blocks.
 #: build/block-editor/index.js:74
+#, js-format
 msgid "Change type of %d block"
 msgid_plural "Change type of %d blocks"
 msgstr[0] ""
@@ -3727,11 +3807,13 @@ msgstr ""
 
 #. Translators: Name of the block being pasted, e.g. "Paragraph".
 #: build/block-editor/index.js:76
+#, js-format
 msgid "Pasted styles to %s."
 msgstr ""
 
 #. Translators: The number of the blocks.
 #: build/block-editor/index.js:78
+#, js-format
 msgid "Pasted styles to %d blocks."
 msgstr ""
 
@@ -3751,6 +3833,7 @@ msgstr ""
 
 #. translators: %s: Name of the block's parent.
 #: build/block-editor/index.js:78
+#, js-format
 msgid "Select parent block (%s)"
 msgstr ""
 
@@ -3888,6 +3971,7 @@ msgstr ""
 #. translators: %s: number of results.
 #: build/block-editor/index.js:94
 #: build/controls/index.js:19
+#, js-format
 msgid "%d result found, use up and down arrow keys to navigate."
 msgid_plural "%d results found, use up and down arrow keys to navigate."
 msgstr[0] ""
@@ -4315,6 +4399,7 @@ msgstr ""
 
 #. translators: %s: block title
 #: build/block-library/index.js:3
+#, js-format
 msgid "Edit %s"
 msgstr ""
 
@@ -4422,12 +4507,14 @@ msgstr ""
 #. translators: %s is the name of item that was saved
 #: build/block-library/index.js:5
 #: build/editor/index.js:27
+#, js-format
 msgid "%s saved successfully!"
 msgstr ""
 
 #. translators: %s is the name of item that was not saved
 #: build/block-library/index.js:7
 #: build/editor/index.js:33
+#, js-format
 msgid "An error occurred. %s was not saved"
 msgstr ""
 
@@ -4531,6 +4618,7 @@ msgstr ""
 
 #. translators: number of items per row
 #: build/block-library/index.js:9
+#, js-format
 msgid "%d item"
 msgid_plural "%d items"
 msgstr[0] ""
@@ -4652,6 +4740,7 @@ msgstr ""
 
 #. translators: %s - the name of a section
 #: build/block-library/index.js:11
+#, js-format
 msgid "%s Duplicate"
 msgstr ""
 
@@ -4848,11 +4937,13 @@ msgstr ""
 
 #. translators: %s: HTML tag based on area.
 #: build/block-library/index.js:11
+#, js-format
 msgid "Default based on area (%s)"
 msgstr ""
 
 #. translators: %s: template part title.
 #: build/block-library/index.js:11
+#, js-format
 msgid "Template Part \"%s\" inserted."
 msgstr ""
 
@@ -4891,6 +4982,7 @@ msgstr ""
 
 #. translators: %s - block title
 #: build/block-library/index.js:13
+#, js-format
 msgid "Kubio %s block"
 msgstr ""
 
@@ -4900,6 +4992,7 @@ msgstr ""
 
 #. translators: %s: Template part slug
 #: build/block-library/index.js:13
+#, js-format
 msgid "Template part has been deleted or is unavailable: %s"
 msgstr ""
 
@@ -4909,17 +5002,20 @@ msgstr ""
 
 #. translators: %s: type label
 #: build/block-library/index.js:15
+#, js-format
 msgid "%s settings"
 msgstr ""
 
 #. translators: %1$s: type label, %2$s: current template label
 #: build/block-library/index.js:17
+#, js-format
 msgid "Page %1$s for \"%2$s\""
 msgstr ""
 
 #. translators: %s: type label
 #: build/block-library/index.js:19
 #: build/controls/index.js:31
+#, js-format
 msgid "Create new %s"
 msgstr ""
 
@@ -4933,6 +5029,7 @@ msgstr ""
 
 #. translators: Display header name
 #: build/block-library/index.js:19
+#, js-format
 msgid "%s (Header)"
 msgstr ""
 
@@ -5957,6 +6054,7 @@ msgstr ""
 
 #. translators: Display footer name
 #: build/block-library/index.js:19
+#, js-format
 msgid "%s (Footer)"
 msgstr ""
 
@@ -5966,6 +6064,7 @@ msgstr ""
 
 #. translators: Display sidebar name
 #: build/block-library/index.js:19
+#, js-format
 msgid "%s (Sidebar)"
 msgstr ""
 
@@ -6281,6 +6380,7 @@ msgstr ""
 
 #. translators: 1. Error message
 #: build/block-library/index.js:19
+#, js-format
 msgid "Could not edit image. %s"
 msgstr ""
 
@@ -6648,6 +6748,7 @@ msgstr ""
 #. translators: %d: heading level e.g: "1", "2", "3"
 #: build/block-library/index.js:21
 #: build/block-library/index.js:23
+#, js-format
 msgid "Heading %d"
 msgstr ""
 
@@ -6727,6 +6828,7 @@ msgstr ""
 
 #. translators: %d: heading level e.g: "1", "2", "3"
 #: build/block-library/index.js:25
+#, js-format
 msgid "Heading %d element"
 msgstr ""
 
@@ -7030,6 +7132,7 @@ msgstr ""
 
 #. translators: %s: plugin name
 #: build/block-library/index.js:27
+#, js-format
 msgid "%s plugin was successfully installed"
 msgstr ""
 
@@ -7315,6 +7418,7 @@ msgstr ""
 
 #. translators: %d is the new number of tabs this block has.
 #: build/block-library/index.js:29
+#, js-format
 msgid "Tab title %d"
 msgstr ""
 
@@ -7592,11 +7696,13 @@ msgstr ""
 
 #. translators: %s is for the menu location name
 #: build/block-library/index.js:31
+#, js-format
 msgid "Use an existing menu for `%s` location, or create a new one"
 msgstr ""
 
 #. translators: %s menu location name
 #: build/block-library/index.js:33
+#, js-format
 msgid "Create a new menu for `%s` location"
 msgstr ""
 
@@ -8037,6 +8143,7 @@ msgstr ""
 
 #. translators: %s is the post title
 #: build/block-library/index.js:35
+#, js-format
 msgid "Currently editing the \"%s\" item template"
 msgstr ""
 
@@ -8086,6 +8193,7 @@ msgstr ""
 
 #. translators: %s - is the template name e.g. Default item template , Odd item template
 #: build/block-library/index.js:37
+#, js-format
 msgid "%s item template"
 msgstr ""
 
@@ -8903,6 +9011,7 @@ msgstr ""
 #: build/utils/index.js:6
 #: build/utils/index.js:7
 #: build/utils/index.js:8
+#, js-format
 msgid "Neutral %s"
 msgstr ""
 
@@ -8921,6 +9030,7 @@ msgstr ""
 #: build/utils/index.js:13
 #: build/utils/index.js:14
 #: build/utils/index.js:15
+#, js-format
 msgid "Professional %s"
 msgstr ""
 
@@ -8939,6 +9049,7 @@ msgstr ""
 #: build/utils/index.js:20
 #: build/utils/index.js:21
 #: build/utils/index.js:22
+#, js-format
 msgid "Playful %s"
 msgstr ""
 
@@ -9033,6 +9144,7 @@ msgstr ""
 
 #. translators: %1$s: gradient position e.g: 70%, %2$s: gradient color code e.g: rgb(52,121,151).
 #: build/controls/index.js:3
+#, js-format
 msgid "Gradient control point at position %1$s with color code %2$s."
 msgstr ""
 
@@ -9053,12 +9165,14 @@ msgstr ""
 #: build/controls/index.js:9
 #: build/controls/index.js:11
 #: build/controls/index.js:15
+#, js-format
 msgid "Gradient code: %s"
 msgstr ""
 
 #. translators: %s: The name of the gradient e.g: "Angular red to blue".
 #: build/controls/index.js:7
 #: build/controls/index.js:13
+#, js-format
 msgid "Gradient: %s"
 msgstr ""
 
@@ -9117,11 +9231,13 @@ msgstr ""
 
 #. translators: %s is for the Theme's name.
 #: build/controls/index.js:17
+#, js-format
 msgid "Would you like some help with that? The %s homepage has beautiful ready-made content sections that you can start customizing right away."
 msgstr ""
 
 #. translators: %$1s is for the Theme's name.
 #: build/controls/index.js:19
+#, js-format
 msgid "Yes, import %1$s homepage"
 msgstr ""
 
@@ -9186,6 +9302,7 @@ msgstr ""
 
 #. translators: %s: allowed file types
 #: build/controls/index.js:21
+#, js-format
 msgid "Only %s formats are supported"
 msgstr ""
 
@@ -9239,11 +9356,13 @@ msgstr ""
 
 #. translators: %s - template part name (e.g. header/ footer/ sidebar)
 #: build/controls/index.js:23
+#, js-format
 msgid "Editing the %s is part of the PRO features.<br/>Upgrade to PRO and get unlimited customizing options"
 msgstr ""
 
 #. translators: %1$s  - template part name (e.g. header/ footer/ sidebar), %2$s - template name
 #: build/controls/index.js:27
+#, js-format
 msgid "This %1$s is used on multiple pages. Would you like to edit this %1$s for all pages that are using the \"%2$s\" template?"
 msgstr ""
 
@@ -9270,16 +9389,19 @@ msgstr ""
 
 #. translators: %s type label
 #: build/controls/index.js:29
+#, js-format
 msgid "New %s"
 msgstr ""
 
 #. translators: %s type label
 #: build/controls/index.js:33
+#, js-format
 msgid "%s name"
 msgstr ""
 
 #. translators: %s type label
 #: build/controls/index.js:33
+#, js-format
 msgid "Save %s"
 msgstr ""
 
@@ -9289,6 +9411,7 @@ msgstr ""
 
 #. translators: %s type label
 #: build/controls/index.js:35
+#, js-format
 msgid "New page %s"
 msgstr ""
 
@@ -9298,6 +9421,7 @@ msgstr ""
 
 #. translators: 1: current page number 2: total number of pages
 #: build/controls/index.js:35
+#, js-format
 msgid "Step %1$d of %2$d"
 msgstr ""
 
@@ -9688,6 +9812,7 @@ msgstr ""
 
 #. translators: %s is replaced with the heading number
 #: build/controls/index.js:35
+#, js-format
 msgid "Heading %s color"
 msgstr ""
 
@@ -9910,6 +10035,7 @@ msgstr ""
 
 #. translators: %s: slide number
 #: build/controls/index.js:37
+#, js-format
 msgid "Slideshow image %s"
 msgstr ""
 
@@ -9994,6 +10120,7 @@ msgstr ""
 
 #. translators: %s: Type of block (i.e. Text, Image etc)
 #: build/controls/index.js:39
+#, js-format
 msgid "%s - axis"
 msgstr ""
 
@@ -10050,6 +10177,7 @@ msgstr ""
 
 #. translators: %s is the number of blocks
 #: build/controls/index.js:41
+#, js-format
 msgid "Style shared with %s other block"
 msgid_plural "Style shared with %s other blocks"
 msgstr[0] ""
@@ -10079,6 +10207,7 @@ msgstr ""
 
 #. translators: %s: error message describing the problem
 #: build/core/index.js:3
+#, js-format
 msgid "Error loading block: %s"
 msgstr ""
 
@@ -10105,6 +10234,7 @@ msgstr ""
 
 #. translators: %s: template part type label
 #: build/core/index.js:5
+#, js-format
 msgid "New %s created successfully"
 msgstr ""
 
@@ -10154,6 +10284,10 @@ msgstr ""
 
 #: build/editor-data/index.js:1
 msgid "Page title placeholder"
+msgstr ""
+
+#: build/editor/index.js:1
+msgid "Free Images"
 msgstr ""
 
 #: build/editor/index.js:1
@@ -10233,6 +10367,7 @@ msgstr ""
 
 #. translators:  %1$s , %1$s - template names
 #: build/editor/index.js:3
+#, js-format
 msgid "The current page uses the theme %1$s. Use the button below to replace it with a Kubio %2$s"
 msgstr ""
 
@@ -10473,6 +10608,7 @@ msgstr ""
 
 #. translators: %s is for the menu name
 #: build/editor/index.js:5
+#, js-format
 msgid "Menu: %s"
 msgstr ""
 
@@ -10526,6 +10662,7 @@ msgstr ""
 
 #. translators: %s: template title
 #: build/editor/index.js:5
+#, js-format
 msgid "Template: %s"
 msgstr ""
 
@@ -10549,6 +10686,7 @@ msgstr ""
 #. translators: %s: number of the preset, Set refers to the color scheme preset
 #: build/editor/index.js:7
 #: build/editor/index.js:35
+#, js-format
 msgid "Set %s"
 msgstr ""
 
@@ -10604,24 +10742,28 @@ msgstr ""
 
 #. translators: %1s: Title of a media work from Openverse; %2s: Name of the work's creator; %3s: Work's licence e.g: "CC0 1.0".
 #: build/editor/index.js:9
+#, js-format
 msgctxt "caption"
 msgid "\"%1$s\" by %2$s/ %3$s"
 msgstr ""
 
 #. translators: %1s: Link attributes for a given Openverse media work; %2s: Name of the work's creator; %3s: Works's licence e.g: "CC0 1.0".
 #: build/editor/index.js:11
+#, js-format
 msgctxt "caption"
 msgid "<a %1$s>Work</a> by %2$s/ %3$s"
 msgstr ""
 
 #. translators: %1s: Title of a media work from Openverse; %2s: Work's licence e.g: "CC0 1.0".
 #: build/editor/index.js:13
+#, js-format
 msgctxt "caption"
 msgid "\"%1$s\"/ %2$s"
 msgstr ""
 
 #. translators: %1s: Link attributes for a given Openverse media work; %2s: Works's licence e.g: "CC0 1.0".
 #: build/editor/index.js:15
+#, js-format
 msgctxt "caption"
 msgid "<a %1$s>Work</a>/ %3$s"
 msgstr ""
@@ -10724,6 +10866,7 @@ msgstr ""
 #. translators: %s is the url to pexels
 #: build/editor/index.js:17
 #: build/editor/index.js:55
+#, js-format
 msgid "The media items like photos and videos are provided by %s"
 msgstr ""
 
@@ -10738,6 +10881,7 @@ msgstr ""
 
 #. translators: %s section name
 #: build/editor/index.js:19
+#, js-format
 msgid "Tailoring \"%s\" section"
 msgstr ""
 
@@ -10758,6 +10902,7 @@ msgid "Home page with tailored content"
 msgstr ""
 
 #: build/editor/index.js:19
+#, js-format
 msgid "Our AI will create a first draft of home page content specific for the <strong>%s</strong> industry"
 msgstr ""
 
@@ -10784,6 +10929,7 @@ msgstr ""
 
 #. translators: %s: category name
 #: build/editor/index.js:19
+#, js-format
 msgid "Generating section for articles in %s category"
 msgstr ""
 
@@ -10833,6 +10979,7 @@ msgstr ""
 
 #. translators: %s is Kubio Cloud the account email
 #: build/editor/index.js:21
+#, js-format
 msgid "Currently connected as %s"
 msgstr ""
 
@@ -10997,6 +11144,7 @@ msgstr ""
 
 #. translators: %s: page name
 #: build/editor/index.js:23
+#, js-format
 msgid "You are being redirected to <strong>%s</strong> page."
 msgstr ""
 
@@ -11189,6 +11337,7 @@ msgstr ""
 
 #. translators: Editing current page
 #: build/editor/index.js:25
+#, js-format
 msgid "Editing: %s"
 msgstr ""
 
@@ -11248,6 +11397,7 @@ msgstr ""
 
 #. translators: %s is the name of item that was not saved
 #: build/editor/index.js:29
+#, js-format
 msgid "An error occurred. %s was not saved!"
 msgstr ""
 
@@ -11265,6 +11415,7 @@ msgstr ""
 
 #. translators: %s: page name
 #: build/editor/index.js:31
+#, js-format
 msgid "The <strong>%s</strong> page will be moved in the trash."
 msgstr ""
 
@@ -11387,6 +11538,7 @@ msgstr ""
 
 #. translators: %1$s is the current step index, %2$s is the total number of steps
 #: build/editor/index.js:37
+#, js-format
 msgid "Step %1$s of %2$s"
 msgstr ""
 
@@ -11432,6 +11584,7 @@ msgstr ""
 
 #. translators: %s section name
 #: build/editor/index.js:39
+#, js-format
 msgid "Generating \"%s\" section"
 msgstr ""
 
@@ -11461,26 +11614,31 @@ msgstr ""
 
 #. translators: %s is the number of credits
 #: build/editor/index.js:41
+#, js-format
 msgid "With %s credits you'll benefit of:"
 msgstr ""
 
 #. translators: %d is the number
 #: build/editor/index.js:43
+#, js-format
 msgid "%d full page generations"
 msgstr ""
 
 #. translators: %d is the number
 #: build/editor/index.js:45
+#, js-format
 msgid "%d page sections generations"
 msgstr ""
 
 #. translators: %d is the number
 #: build/editor/index.js:47
+#, js-format
 msgid "%d text generations"
 msgstr ""
 
 #. translators: %d is the number
 #: build/editor/index.js:49
+#, js-format
 msgid "%d image generations"
 msgstr ""
 
@@ -11518,6 +11676,7 @@ msgstr ""
 
 #. translators: %s is the amount of credits, e.g 7500
 #: build/editor/index.js:51
+#, js-format
 msgid "Starting from %s"
 msgstr ""
 
@@ -11763,6 +11922,7 @@ msgstr ""
 
 #. translators: %s: plugin name
 #: build/editor/index.js:51
+#, js-format
 msgid "The \"%s\" plugin has encountered an error and cannot be rendered."
 msgstr ""
 
@@ -11785,6 +11945,7 @@ msgstr ""
 
 #. translators: %s: the name of the block when there is only one
 #: build/editor/index.js:53
+#, js-format
 msgid "Add %s"
 msgstr ""
 
@@ -11875,6 +12036,7 @@ msgstr ""
 
 #. translators: %s is replaced with the number of credits
 #: build/editor/index.js:53
+#, js-format
 msgid "More samples will multiply the cost. Estimated cost: %s credits."
 msgstr ""
 
@@ -12340,6 +12502,7 @@ msgstr ""
 
 #. Translators: %d: Number of palette colors.
 #: build/wp-global-styles/index.js:3
+#, js-format
 msgid "%d color"
 msgid_plural "%d colors"
 msgstr[0] ""

@@ -276,15 +276,8 @@ Twenty Thirteen (sticky header – add your own custom logo image and edit to su
 Webnus netStudio theme
 ** Sticky Class =>.nav-wrap2
 
-
-Weblizar
-** Sticky Class => .row
-
-
 Wrock Metro Theme (entire header)
 ** Sticky Class =>#navigation
-
-
 
 
 == Frequently Asked Questions ==

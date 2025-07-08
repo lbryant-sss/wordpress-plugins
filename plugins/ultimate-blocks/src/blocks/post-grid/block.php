@@ -2,6 +2,9 @@
 /**
  * Server-side rendering for the post grid block
  */
+
+use function Ultimate_Blocks\includes\generate_css_string;
+
 require_once dirname(dirname(dirname(__DIR__))) . '/includes/ultimate-blocks-styles-css-generator.php';
 
 function ub_query_post( $attributes ){
@@ -109,11 +112,25 @@ function ub_render_post_grid_block( $attributes, $content, $block ){
 					"--ub-post-grid-image-bottom-right-radius" 	=> !empty($block_attrs['imageBorderRadius']['bottomRight']) ? $block_attrs['imageBorderRadius']['bottomRight'] : ""
 				);
 
+				$image_styles = array(
+					"max-width" => isset($attributes['postImageWidth']) ? $attributes['postImageWidth'] . 'px' : '',
+				);
+				if ( (!isset($attributes['preservePostImageAspectRatio']) || (isset($attributes['preservePostImageAspectRatio']) && !$attributes['preservePostImageAspectRatio'])) && isset( $attributes['postImageHeight'] ) && !empty($attributes['postImageHeight']) ) {
+					$image_styles['height'] = $attributes['postImageHeight'] . 'px';
+				}
+
                 /* Output the featured image */
                 $post_grid .= sprintf(
                     '<div class="ub-block-post-grid-image" style="%3$s"><a href="%1$s" rel="bookmark" aria-hidden="true" tabindex="-1">%2$s</a></div>',
                     esc_url( get_permalink( $post_id ) ),
-					wp_get_attachment_image( $post_thumb_id, array($attributes['postImageWidth'], $attributes['preservePostImageAspectRatio'] ? 0 : $attributes['postImageHeight']) ), //use array
+					wp_get_attachment_image(
+						$post_thumb_id,
+						"full",
+						false,
+						array(
+							'style' => Ultimate_Blocks\includes\generate_css_string($image_styles)
+						)
+					),
 					esc_attr( Ultimate_Blocks\includes\generate_css_string($styles) )
                 );
             }

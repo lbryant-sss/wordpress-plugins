@@ -2165,7 +2165,7 @@ $woe_order_post_type = isset($settings['post_type']) ? $settings['post_type'] : 
 			"https://wordpress.org/support/article/using-your-browser-to-diagnose-javascript-errors/#step-3-diagnosis" ); ?></div>
     <p class="submit">
         <input type="submit" id='preview-btn' class="button-secondary preview-btn"
-               data-limit="<?php echo( $mode === WC_Order_Export_Manage::EXPORT_ORDER_ACTION ? 1 : 5 ); ?>"
+               data-limit="<?php echo( $mode === WC_Order_Export_Manage::EXPORT_ORDER_ACTION ? 1 : apply_filters('woe_default_preview_size', 5) ); ?>"
                value="<?php esc_html_e( 'Preview', 'woo-order-export-lite' ) ?>"
                title="<?php esc_html_e( 'Might be different from actual export!', 'woo-order-export-lite' ) ?>"/>
 		<?php if ( $mode == WC_Order_Export_Manage::EXPORT_NOW ): ?>

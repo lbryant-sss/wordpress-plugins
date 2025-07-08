@@ -107,7 +107,7 @@ function wpbc_try_assign_full_width_template( $post_id ) {
 
 	$found = false;
 
-	// CLASSIC THEMES: Check PHP-based templates.
+	// CLASSIC THEMES: Check PHP-based templates. // FixIn: 10.12.2.1.
 	if ( function_exists( 'get_page_templates' ) ) {
 		$classic_templates = get_page_templates( get_post( $post_id ) );
 	} else {
@@ -157,6 +157,30 @@ function wpbc_is_shortcode_exist_in_page( $relative_url, $shortcode_to_add ) {
 	if ( ! empty( $relative_url ) ) {
 
 		$post_obj = get_page_by_path( $relative_url );
+
+		if ( ! empty( $post_obj ) ) {
+			if ( false !== strpos( $post_obj->post_content, $shortcode_to_add ) ) {
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+/**
+ * Is shortcode or some text  exist  in specific page
+ *
+ * @param string $relative_url     relative URL of the page, if we have absolute url, then get it using: wpbc_make_link_relative( 'https://...' );
+ * @param string $shortcode_to_add shortcode  to  check '[booking'
+ *
+ * @return bool
+ */
+function wpbc_is_shortcode_exist_in_page_with_id( $page_id, $shortcode_to_add ) {
+
+	if ( ! empty( $page_id ) ) {
+
+		$post_obj = get_post( $page_id );
 
 		if ( ! empty( $post_obj ) ) {
 			if ( false !== strpos( $post_obj->post_content, $shortcode_to_add ) ) {

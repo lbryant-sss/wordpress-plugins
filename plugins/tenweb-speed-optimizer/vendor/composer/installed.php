@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'plugins/tenweb-speed-optimizer',
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
-        'reference' => 'd591c363a97ce14ece522d3ba0cc9a55433cfcd3',
+        'pretty_version' => '2.32.3',
+        'version' => '2.32.3.0',
+        'reference' => 'c7a5aad62b88dc03fdec9f6bbfa1999a2df22a57',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -160,9 +160,9 @@
             'dev_requirement' => false,
         ),
         'plugins/tenweb-speed-optimizer' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => 'd591c363a97ce14ece522d3ba0cc9a55433cfcd3',
+            'pretty_version' => '2.32.3',
+            'version' => '2.32.3.0',
+            'reference' => 'c7a5aad62b88dc03fdec9f6bbfa1999a2df22a57',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

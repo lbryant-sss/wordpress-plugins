@@ -595,6 +595,10 @@ class CustomizerImporter {
 	}
 
 	private function normalizeNavigation( $parsed_block, $data, $item_data ) {
+		if( Arr::get( $data, 'props.useWhiteText', false ) ) {
+			$this->makeTextWhiteForInnerBlocks($parsed_block, ['kubio/logo', 'kubio/dropdown-menu']);
+		}
+
 		$show_top_bar = Arr::get( $item_data, 'props.showTopBar', false );
 		if ( ! $show_top_bar ) {
 			foreach ( $parsed_block['innerBlocks'] as $index => $inner_block ) {
@@ -774,6 +778,10 @@ class CustomizerImporter {
 		Arr::set( $data, 'style.descendants.outer.background.video.type', $video_type );
 		Arr::set( $data, 'style.descendants.outer.separators.bottom', $bottom_separator );
 		Arr::set( $data, 'style.descendants.outer.textAlign', 'center' );
+
+		if( Arr::get( $data, 'props.useWhiteText', false ) ) {
+			$this->makeTextWhiteForInnerBlocks($parsed_block);
+		}
 
 		if ( $gradient_bg ) {
 			Arr::set( $data, 'style.descendants.outer.background.image.0.source.gradient', $this->composeGradient( $gradient_bg ) );
@@ -1172,5 +1180,27 @@ class CustomizerImporter {
 		$row[1] = $temp;
 
 		return $row;
+	}
+
+	private function makeTextWhiteForInnerBlocks(
+		array &$parsed_blocks, $blockNames = [
+		'kubio/text',
+		'kubio/heading'
+	]
+	) {
+		$white_color = 'rgba(255,255,255,1)';
+
+		foreach ( $parsed_blocks['innerBlocks'] as &$block ) {
+			if ( isset( $block['blockName'] ) && in_array( $block['blockName'], $blockNames ) ) {
+				if ( $block['blockName'] === 'kubio/dropdown-menu' ) {
+					Arr::set( $block, 'attrs.kubio.style.descendants.main-menu-a.typography.color', $white_color );
+				} else {
+					Arr::set( $block, 'attrs.kubio.style.descendants.text.typography.color', $white_color );
+				}
+			}
+			if ( ! empty( $block['innerBlocks'] ) && is_array( $block['innerBlocks'] ) ) {
+				$this->makeTextWhiteForInnerBlocks( $block, $blockNames );
+			}
+		}
 	}
 }

@@ -7,10 +7,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-05-05T17:34:55+03:00\n"
+"POT-Creation-Date: 2025-07-04T14:03:13+03:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language: \n"
-"X-Generator: WP-CLI 2.11.0\n"
+"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: kubio\n"
 "Plural-Forms: \n"
 
@@ -53,11 +53,13 @@ msgstr "Meniu mobil"
 
 #. translators: %s - year month or day
 #: build/block-library/blocks/page-title/index.php:16
+#, php-format
 msgid "Posts from %s"
 msgstr "Articole de la %s"
 
 #. translators: %s - search term
 #: build/block-library/blocks/page-title/index.php:21
+#, php-format
 msgid "Search results for: %s"
 msgstr "Rezultate de căutare pentru: %s"
 
@@ -68,16 +70,19 @@ msgstr "Regret, nu am găsit pagina!"
 
 #. translators: %s - category
 #: build/block-library/blocks/page-title/index.php:25
+#, php-format
 msgid "Posts in %s"
 msgstr "Articole în %s"
 
 #. translators: %s - author
 #: build/block-library/blocks/page-title/index.php:27
+#, php-format
 msgid "Posts by %s"
 msgstr "Articole de %s"
 
 #. translators: %s - tag
 #: build/block-library/blocks/page-title/index.php:29
+#, php-format
 msgid "Posts about %s"
 msgstr "Articole despre %s"
 
@@ -156,11 +161,13 @@ msgstr "Chats"
 
 #. translators: Post type archive title. 1: Post type name
 #: build/block-library/blocks/page-title/index.php:106
+#, php-format
 msgid "Archives: %s"
 msgstr "Arhive: %s"
 
 #. translators: Taxonomy term archive title. 1: Taxonomy singular name, 2: Current taxonomy term
 #: build/block-library/blocks/page-title/index.php:110
+#, php-format
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
 
@@ -208,6 +215,7 @@ msgstr "(titlu articol)"
 
 #. translators: %s: social link value
 #: build/block-library/blocks/social-icons/index.php:44
+#, php-format
 msgid "Social link: %s"
 msgstr "Legătură la media socială: %s"
 
@@ -223,7 +231,7 @@ msgstr "Nu am găsit zona cu piese"
 #: lib/add-edit-in-kubio.php:197
 #: lib/add-edit-in-kubio.php:376
 #: lib/filters/default-editor-overlay.php:156
-#: lib/kubio-editor.php:997
+#: lib/kubio-editor.php:998
 #: build/block-library/index.js:13
 msgid "Edit with Kubio"
 msgstr "Editează cu Kubio"
@@ -282,7 +290,7 @@ msgid "Starter Sites"
 msgstr "Site-uri pentru a începe"
 
 #: lib/admin-pages/main-page/demo-sites.php:13
-#: lib/kubio-editor.php:1246
+#: lib/kubio-editor.php:1247
 msgid "You need a higher level of permission."
 msgstr "Îți trebuie un nivel superior de permisiuni."
 
@@ -444,6 +452,7 @@ msgstr "Cum să faci upgrade în 3 pași simpli"
 
 #. translators: %s: Upgrade to Kubio PRO link.
 #: lib/admin-pages/main-page/upgrade-pro.php:32
+#, php-format
 msgid "%s - Select the plan that fits your needs."
 msgstr "%s - Selectează planul care se potrivește nevoilor tale."
 
@@ -454,6 +463,7 @@ msgstr "Achiziționează o licență Kubio PRO"
 
 #. translators: %s: Download the Kubio PRO Plugin link.
 #: lib/admin-pages/main-page/upgrade-pro.php:41
+#, php-format
 msgid "%s - A download link will be provided after purchase."
 msgstr "%s - Un link de descărcare va fi furnizat după achiziție."
 
@@ -464,6 +474,7 @@ msgstr "Descarcă modulul Kubio PRO"
 
 #. Translators: %1$s: Install & Activate, %2$s: Add New.
 #: lib/admin-pages/main-page/upgrade-pro.php:50
+#, php-format
 msgid "%1$s - Upload the ZIP file via WordPress > Plugins > %2$s, then enter your license key to activate PRO features instantly."
 msgstr "%1$s - Încarcă fișierul ZIP prin WordPress > Module > %2$s, apoi introdu licența ta pentru a activa instant funcțiile PRO."
 
@@ -515,6 +526,7 @@ msgstr "Încearcă versiunea PRO online"
 
 #. translators: %s: spinner icon
 #: lib/AI/admin-tab/partials/main.php:17
+#, php-format
 msgid "%s Retrieving data..."
 msgstr "Se preiau datele..."
 
@@ -862,6 +874,7 @@ msgstr "Explorând lumea jocurilor, a jocurilor video și a sporturilor electron
 
 #. translators: %s is the error message
 #: lib/AI/utils.php:410
+#, php-format
 msgid "AI Server error: %s"
 msgstr "Eroare server AI: %s"
 
@@ -923,6 +936,7 @@ msgstr "Comentariile sunt închise."
 
 #. translators: 1: Comment date, 2: Comment time.
 #: lib/blog/walker-comment.php:31
+#, php-format
 msgid "%1$s at %2$s"
 msgstr "%1$s la %2$s"
 
@@ -945,31 +959,37 @@ msgstr "Editează cu editorul implicit"
 
 #. translators: %1$s is the name of the plugin, %2$s is the name of the other plugin.
 #: lib/filters/gutenerg-plugin-check.php:10
+#, php-format
 msgid "The %1$s plugin is active on this site. This might interfere with the proper functioning of the %2$s plugin. It is recommended to deactivate the %1$s plugin"
 msgstr "Modulul %1$s este activ pe acest site. Acest lucru ar putea interfera cu funcționarea corectă a modulului %2$s. Se recomandă dezactivarea modulului %1$s."
 
 #. translators: %s - php version e.g. 7.2
 #: lib/filters/requirements-notices.php:14
+#, php-format
 msgid "PHP %1$s"
 msgstr "PHP %1$s"
 
 #. translators: %s - WordPress version e.g. 5.0
 #: lib/filters/requirements-notices.php:17
+#, php-format
 msgid "WordPress %1$s"
 msgstr "WordPress %1$s"
 
 #. translators: %1$s and %2$s - PHP and WordPress versions version e.g. 5.0
 #: lib/filters/requirements-notices.php:27
+#, php-format
 msgid "%1$s and %2$s"
 msgstr "%1$s și %2$s"
 
 #. translators: the placeholders are urls or a product name
 #: lib/filters/requirements-notices.php:42
+#, php-format
 msgid "If you want to rollback to a previous version you can get it here: <a href=\"%1$s\">%2$s</a>. You can follow this steps to manually install a Kubio: <a target=\"_blank\" href=\"%3$s\">Manual plugin update</a>"
 msgstr "Dacă vrei să revii la o versiune anterioară, o poți obține de aici: <a href=\"%1$s\">%2$s</a>. Poți urma acești pași pentru a instala manual un Kubio: <a target=\"_blank\" href=\"%3$s\">Actualizare manuală a modulului</a>"
 
 #. translators: %s required message. e.g. WordPress 6.0 and PHP 7.2
 #: lib/filters/requirements-notices.php:105
+#, php-format
 msgid "Kubio Page Builder requires %s!"
 msgstr "Kubio Page Builder necesită %s!"
 
@@ -1161,6 +1181,7 @@ msgstr "Șablonul Bară laterală definește o zonă de pagină care conține de
 
 #. translators: %1$s: Template area type, %2$s: the uncategorized template area value.
 #: lib/full-site-editing/template-parts-area.php:118
+#, php-format
 msgid "\"%1$s\" is not a supported wp_template_part area value and has been added as \"%2$s\"."
 msgstr "„%1$s” nu este o valoare acceptată pentru zona wp_template_part și a fost adăugată ca „%2$s”."
 
@@ -1374,6 +1395,7 @@ msgstr "Variabile globale Kubio"
 
 #. translators: %s is the number of the color e.g. Kubio color 1
 #: lib/global-data.php:425
+#, php-format
 msgid "Kubio color %s"
 msgstr "Culoare Kubio %s"
 
@@ -1428,6 +1450,7 @@ msgstr "Adaugă piese aici ca să apară în bara laterală WooCommerce."
 
 #. translators: %s is the category name
 #: lib/kubio-block-library.php:9
+#, php-format
 msgid "Kubio - %s"
 msgstr "Kubio - %s"
 
@@ -1575,57 +1598,57 @@ msgstr "Mare"
 msgid "Original Size"
 msgstr "Mărime originală"
 
-#: lib/kubio-editor.php:981
-#: lib/kubio-editor.php:985
-#: lib/kubio-editor.php:996
+#: lib/kubio-editor.php:982
+#: lib/kubio-editor.php:986
+#: lib/kubio-editor.php:997
 msgid "Kubio"
 msgstr "Kubio"
 
-#: lib/kubio-editor.php:1024
+#: lib/kubio-editor.php:1025
 #: lib/src/Core/EditInKubioCustomizerPanel.php:87
 msgid "Open Kubio Editor"
 msgstr "Deschide editorul Kubio"
 
-#: lib/kubio-editor.php:1102
+#: lib/kubio-editor.php:1103
 msgid "What to show on the front page"
 msgstr "Ce să arăți în pagina din față"
 
-#: lib/kubio-editor.php:1115
+#: lib/kubio-editor.php:1116
 msgid "The ID of the page that should be displayed on the front page"
 msgstr "ID-ul paginii care ar trebui afișată în pagina din față"
 
-#: lib/kubio-editor.php:1130
+#: lib/kubio-editor.php:1131
 msgid "The ID of the page that displays the posts"
 msgstr "ID-ul paginii care afișează articolele"
 
-#: lib/kubio-editor.php:1148
+#: lib/kubio-editor.php:1149
 msgid "Site icon."
 msgstr "Icon site."
 
-#: lib/kubio-editor.php:1165
+#: lib/kubio-editor.php:1166
 msgctxt "Template name"
 msgid "Full Width"
 msgstr "Lățime completă"
 
-#: lib/kubio-editor.php:1166
-#: lib/kubio-editor.php:1173
+#: lib/kubio-editor.php:1167
+#: lib/kubio-editor.php:1174
 msgid "Recommended Kubio template to display individual pages. This template works best with the Kubio provided blocks and predesigned sections."
 msgstr "Șablonul Kubio recomandat pentru afișarea paginilor individuale. Acest șablon funcționează cel mai bine cu blocurile furnizate de Kubio și secțiunile preproiectate."
 
-#: lib/kubio-editor.php:1172
+#: lib/kubio-editor.php:1173
 msgctxt "Template name"
 msgid "Kubio Full Width"
 msgstr "Kubio pe toată lățimea"
 
-#: lib/kubio-editor.php:1247
+#: lib/kubio-editor.php:1248
 msgid "Sorry, you are not allowed to customize this site."
 msgstr "Regret, nu ai voie să personalizezi acest site."
 
-#: lib/kubio-editor.php:1265
+#: lib/kubio-editor.php:1266
 msgid "Kubio Section"
 msgstr "Secțiune Kubio"
 
-#: lib/kubio-editor.php:1307
+#: lib/kubio-editor.php:1308
 msgid "Kubio Favorites"
 msgstr "Favoritele Kubio"
 
@@ -1692,6 +1715,7 @@ msgstr "Termenul părinte nu există."
 
 #. translators: %s: force=true
 #: lib/menu/class-wp-rest-menus-controller.php:450
+#, php-format
 msgid "Terms do not support trashing. Set '%s' to delete."
 msgstr "Termenii nu pot fi aruncați la gunoi. Setează „%s” pentru a șterge."
 
@@ -1757,6 +1781,7 @@ msgstr "Starea curentă a previzualizări nu este disponibilă"
 
 #. translators: the placeholder is an url
 #: lib/pro/filters/notices.php:33
+#, php-format
 msgid "If you want to rollback to a previous version please open a support ticket: <a target=\"_blank\" href=\"%1$s\">Open support ticket</a>"
 msgstr "Dacă dorești să revii la o versiune anterioară, te rog deschide un tichet de suport: <a target=\"_blank\" href=\"%1$s\">Deschide tichet de suport</a>"
 
@@ -1786,6 +1811,7 @@ msgstr "Activează licența"
 
 #. translators: placeholders are some urls like <a href="#">My Account</a>
 #: lib/pro/src/Core/License/ActivationForm.php:99
+#, php-format
 msgid "Your key was sent via email when the purchase was completed. Also you can find the key in the %1$s of your %2$s account"
 msgstr "Cheia ta a fost trimisă prin email când achiziția a fost finalizată. De asemenea, poți găsi cheia în %1$s contul tău %2$s"
 
@@ -1828,11 +1854,13 @@ msgstr "Ne-ai putea spune ce te-a inspirat să faci upgrade?"
 
 #. translators: %1$s - string with server error response
 #: lib/pro/src/Core/License/CheckForm.php:27
+#, php-format
 msgid "There was an error calling Kubio License Server: <code>%1$s</code>. Please contact us for support on <a href=\"%2$s\" target=\"_blank\">Kubio</a> website"
 msgstr "A apărut o eroare la apelarea serverului de licențe Kubio: <code>%1$s</code>. Te rugăm să ne contactezi pentru suport pe site-ul <a href=\"%2$s\" target=\"_blank\">Kubio</a>"
 
 #. translators: %s - string with server error response
 #: lib/pro/src/Core/License/CheckForm.php:36
+#, php-format
 msgid "Current license key was removed! Reason: %s"
 msgstr "Cheia de licență actuală a fost înlăturată! Motiv: %s"
 
@@ -1906,11 +1934,13 @@ msgstr "Editează această pagină pentru a insera un scurt-cod sau pentru a șt
 
 #. translators: %1$s: block name, %2$s: items type
 #: lib/src/Core/Utils.php:122
+#, php-format
 msgid "%1$s has no %2$s."
 msgstr "%1$s nu are %2$s."
 
 #. translators: %s: items type
 #: lib/src/Core/Utils.php:124
+#, php-format
 msgid "Edit this page to insert %s or delete this block."
 msgstr "Editează această pagină pentru a insera %s sau șterge acest bloc."
 
@@ -1920,26 +1950,31 @@ msgstr "Informații Kubio"
 
 #. translators: %s: URL to Update PHP page.
 #: lib/src/Core/Utils.php:331
+#, php-format
 msgid "<a href=\"%s\">Learn more about updating PHP</a>"
 msgstr "<a href=\"%s\">Află mai multe despre actualizarea PHP</a>"
 
 #. translators: %s: URL to Update PHP page.
 #: lib/src/Core/Utils.php:337
+#, php-format
 msgid "<a href=\"%s\">Update WordPress now!</a>"
 msgstr "<a href=\"%s\">Actualizează WordPress acum!</a>"
 
 #. translators: 1: Current WordPress version, 2: Current PHP version, 3: Plugin name, 4: Required WordPress version, 5: Required PHP version.
 #: lib/src/Core/Utils.php:346
+#, php-format
 msgid "<strong>Error:</strong> Current versions of WordPress (%1$s) and PHP (%2$s) do not meet minimum requirements for %3$s. The plugin requires WordPress %4$s and PHP %5$s."
 msgstr "<strong>Eroare:</strong> Versiunile curente ale WordPress (%1$s) și PHP (%2$s) nu îndeplinesc cerințele minime pentru %3$s. Modulul necesită WordPress %4$s și PHP %5$s."
 
 #. translators: 1: Current PHP version, 2: Plugin name, 3: Required PHP version.
 #: lib/src/Core/Utils.php:359
+#, php-format
 msgid "<strong>Error:</strong> Current PHP version (%1$s) does not meet minimum requirements for %2$s. The plugin requires PHP %3$s."
 msgstr "<strong>Eroare:</strong> Versiunea curentă PHP (%1$s) nu îndeplinește cerințele minime pentru %2$s. Modulul necesită PHP %3$s."
 
 #. translators: 1: Current WordPress version, 2: Plugin name, 3: Required WordPress version.
 #: lib/src/Core/Utils.php:370
+#, php-format
 msgid "<strong>Error:</strong> Current WordPress version (%1$s) does not meet minimum requirements for %2$s. The plugin requires WordPress %3$s."
 msgstr "<strong>Eroare:</strong> Versiunea actuală WordPress (%1$s) nu îndeplinește cerințele minime pentru %2$s. Modulul necesită WordPress %3$s."
 
@@ -1950,6 +1985,7 @@ msgstr "Nu am găsit desciptorul"
 
 #. translators: %1$s - opening div and paragraph HTML tags, %2$s - closing div and paragraph HTML tags.
 #: lib/src/DemoSites/DemoSitesHelpers.php:24
+#, php-format
 msgid "%1$sYour user role isn't high enough. You don't have permission to import demo data.%2$s"
 msgstr "%1$sRolul tău de utilizator nu este suficient de înalt. Nu ai permisiunea de a importa date demo.%2$s"
 
@@ -1967,17 +2003,20 @@ msgstr "URL-ul nu este valid pentru descărcarea unui fișier!"
 
 #. translators: %1$s and %3$s - strong HTML tags, %2$s - file URL, %4$s - br HTML tag, %5$s - error code, %6$s - error message.
 #: lib/src/DemoSites/DemoSitesHelpers.php:130
+#, php-format
 msgid "An error occurred while fetching file from: %1$s%2$s%3$s!%4$sReason: %5$s - %6$s."
 msgstr "A apărut o eroare la aducerea fișierului din: %1$s%2$s%3$s!%4$sMotiv: %5$s - %6$s."
 
 #. translators: %1$s - br HTML tag, %2$s - file path
 #: lib/src/DemoSites/DemoSitesHelpers.php:229
 #: lib/src/DemoSites/DemoSitesHelpers.php:314
+#, php-format
 msgid "An error occurred while writing file to your server! Tried to write a file to: %1$s%2$s."
 msgstr "A apărut o eroare în timpul scrierii fișierului pe server! Am încercat să scriu un fișier la: %1$s%2$s."
 
 #. translators: %1$s and %2$s - strong HTML tags, %3$s - HTML link to a doc page.
 #: lib/src/DemoSites/DemoSitesHelpers.php:251
+#, php-format
 msgid "This WordPress site does not have %1$sdirect%2$s write file access. This plugin needs it in order to save the demo import files to the upload directory of your site. You can change this setting with these instructions: %3$s."
 msgstr "Acest site WordPress nu are acces %1$sdirect%2$s pentru scriere fișiere. Acest modul necesită acest lucru pentru a salva fișierele de import demo în directorul de încărcare al site-ului tău. Poți schimba această setare cu aceste instrucțiuni: %3$s."
 
@@ -2001,6 +2040,7 @@ msgstr "Fișier de import nedefinit"
 
 #. translators: %s - the name of the selected import.
 #: lib/src/DemoSites/DemoSitesImporter.php:263
+#, php-format
 msgid "The import files for: %s were successfully downloaded!"
 msgstr "Fișierele de import pentru: %s au fost descărcate cu succes!"
 
@@ -2018,6 +2058,7 @@ msgstr "Acțiunea de import nu a fost găsită"
 
 #. translators: %s - menu item name e.g. "Home", "Contact"
 #: lib/src/DemoSites/DemoSitesImporter.php:445
+#, php-format
 msgid "Old %s"
 msgstr "%s vechi"
 
@@ -2028,6 +2069,7 @@ msgstr "Vechi"
 
 #. translators: %s file url
 #: lib/src/DemoSites/WXRImporter.php:346
+#, php-format
 msgid "Unable to import remote file: %s"
 msgstr "Nu se poate importa fișierul de la distanță: %s"
 
@@ -2041,11 +2083,13 @@ msgstr "Procesare articole"
 
 #. translators: %1$s = term slug, %2$s = taxonomy
 #: lib/src/DemoSites/WXRImporter.php:596
+#, php-format
 msgid "Create term `%1$s` in `%2$s`"
 msgstr "Creează termenul „%1$s” în „%2$s”"
 
 #. translators: %s - plugin slug
 #: lib/src/PluginsManager.php:69
+#, php-format
 msgid "Failed to install plugin: %s"
 msgstr "Instalarea modulului a eșuat: %s"
 

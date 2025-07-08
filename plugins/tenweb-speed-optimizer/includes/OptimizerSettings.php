@@ -189,6 +189,14 @@ class OptimizerSettings
             'description' => 'Enable this option to run optimizer on every page, except excluded.',
             'accepted_value' => ['on', 'off'],
         ],
+        'two_optimize_archive_pages' => [
+            'type' => 'checkbox',
+            'default' => '',
+            'tab' => 'general',
+            'title' => 'Run Optimizer on archive pages',
+            'description' => 'Enable this option to run Optimizer on archive pages.',
+            'accepted_value' => ['on', 'off'],
+        ],
         'two_connected' => [
             'type' => 'txt',
             'default' => '0',

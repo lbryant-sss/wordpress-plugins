@@ -2093,6 +2093,14 @@ class OptimizerUtils
             }
         }
 
+        if ($id === 0 && isset($queried_object->has_archive)) {
+            global $TwoSettings;
+
+            if ($TwoSettings->get_settings('two_optimize_archive_pages') == 'on') {
+                $id = 'no_critical_' . md5($home_url);
+            }
+        }
+
         return $id;
     }
 
