@@ -16,11 +16,11 @@ class Product implements Translator {
 		}
 
 		$productId           = $item->get_product_id();
-		$translatedProductId = apply_filters( 'translate_object_id', $productId, 'product', true, $targetLanguage );
+		$translatedProductId = apply_filters( 'wpml_object_id', $productId, 'product', true, $targetLanguage );
 		if ( $productId && $productId !== $translatedProductId ) {
 			$item->set_product_id( $translatedProductId );
 			$item->set_name( get_post( $translatedProductId )->post_title );
+			$item->apply_changes();
 		}
 	}
-
 }

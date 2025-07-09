@@ -26,13 +26,10 @@ class WCML_Custom_Prices {
 	public function custom_prices_init() {
 
 		if ( is_admin() ) {
-			if ( isStandAlone() ) {
-				// In the full mode, this is done in the product sync logic.
-				add_action( 'save_post_product', [ $this, 'save_custom_prices' ] );
-				add_action( 'save_post_product_variation', [ $this, 'sync_product_variations_custom_prices' ] );
-				add_action( 'woocommerce_ajax_save_product_variations', [ $this, 'sync_product_variations_custom_prices_on_ajax' ] );
-			}
+			add_action( 'woocommerce_ajax_save_product_variations', [ $this, 'sync_product_variations_custom_prices_on_ajax' ] );
 
+			add_action( 'save_post_product', [ $this, 'save_custom_prices' ] );
+			add_action( 'save_post_product_variation', [ $this, 'sync_product_variations_custom_prices' ] );
 			add_action( 'woocommerce_variation_options', [ $this, 'add_individual_variation_nonce' ], 10, 3 );
 
 			// custom prices for different currencies for products/variations [BACKEND].
@@ -41,6 +38,7 @@ class WCML_Custom_Prices {
 
 		} else {
 			add_filter( 'woocommerce_product_is_on_sale', [ $this, 'filter_product_is_on_sale' ], 10, 2 );
+			add_filter( 'woocommerce_variation_prices', [ $this, 'exclude_hidden_variation_prices_from_prices' ], 10, 2 );
 		}
 
 		add_action( 'woocommerce_variation_is_visible', [ $this, 'filter_product_variations_with_custom_prices' ], 10, 2 );
@@ -296,8 +294,9 @@ class WCML_Custom_Prices {
 	}
 
 	public function filter_product_variations_with_custom_prices( $is_visible, $variation_id ) {
+		$is_product = is_product() || 'product_variation' === get_post_type( $variation_id );
 
-		if ( $this->is_filtering_products_with_custom_prices_enabled() && is_product() ) {
+		if ( $this->is_filtering_products_with_custom_prices_enabled() && $is_product ) {
 
 			$orig_child_id = $this->woocommerce_wpml->products->get_original_product_id( $variation_id );
 
@@ -334,12 +333,45 @@ class WCML_Custom_Prices {
 						continue;
 					}
 					if ( $product->post_type == 'product' ) {
-						$matched_products[] = apply_filters( 'translate_object_id', $product->ID, 'product', true );
+						$matched_products[] = apply_filters( 'wpml_object_id', $product->ID, 'product', true );
 					}
 					if ( $product->post_parent > 0 && ! in_array( $product->post_parent, $matched_products ) ) {
-						$matched_products[] = apply_filters( 'translate_object_id', $product->post_parent, get_post_type( $product->post_parent ), true );
+						$matched_products[] = apply_filters( 'wpml_object_id', $product->post_parent, get_post_type( $product->post_parent ), true );
 					}
 				}
+				// Add Grouped products only if **all** of their children have the custom price meta key
+				$groupedProducts = [];
+
+				$groupedProductRawData = $this->wpdb->get_results(
+					"SELECT post_id, meta_value
+					 FROM {$this->wpdb->postmeta}
+					 INNER JOIN {$this->wpdb->posts} ON {$this->wpdb->postmeta}.post_id = {$this->wpdb->posts}.ID
+					 WHERE meta_key = '_children' AND {$this->wpdb->posts}.post_type = 'product' AND {$this->wpdb->posts}.post_status = 'publish'"
+				);		
+				
+				foreach ( $groupedProductRawData as $rawData ) {
+					$ProductChildIdsRaw = maybe_unserialize( $rawData->meta_value );
+				
+					if ( ! is_array( $ProductChildIdsRaw ) || empty( $ProductChildIdsRaw ) ) {
+						continue;
+					}
+				
+					$AllProductChildrenHaveCustomPrices = true;
+				
+					foreach ( $ProductChildIdsRaw as $ProductChildId ) {
+						if ( ! in_array( $ProductChildId, $matched_products ) ) {
+							$AllProductChildrenHaveCustomPrices = false;
+							break;
+						}
+					}
+				
+					if ( $AllProductChildrenHaveCustomPrices ) {
+						$groupedProducts[] = $rawData->post_id;
+					}
+				}
+
+				$matched_products = array_merge( $matched_products, $groupedProducts );
+	
 				add_filter( 'get_post_metadata', [ $this->woocommerce_wpml->multi_currency->prices, 'product_price_filter' ], 10, 4 );
 			}
 
@@ -357,6 +389,28 @@ class WCML_Custom_Prices {
 	}
 
 	/**
+	 * @param array $prices_array
+	 * @param \WC_Product $product
+	 *
+	 * @return array
+	 */
+	public function exclude_hidden_variation_prices_from_prices( $prices_array, $product ) {
+		if ( ! $this->is_filtering_products_with_custom_prices_enabled() ) {
+			return $prices_array;
+		}
+
+		foreach ( $prices_array['price'] as $variation_id => $price ) {
+			if ( ! apply_filters( 'woocommerce_variation_is_visible', true, $variation_id, $product->get_id() ) ) {
+				unset( $prices_array['price'][ $variation_id ] );
+				unset( $prices_array['regular_price'][ $variation_id ] );
+				unset( $prices_array['sale_price'][ $variation_id ] );
+			}
+		}
+
+		return $prices_array;
+	}
+
+	/**
 	 * @return bool
 	 */
 	private function is_filtering_products_with_custom_prices_enabled() {
@@ -368,10 +422,18 @@ class WCML_Custom_Prices {
 	}
 
 	public function save_custom_prices( $post_id ) {
-		$nonce = filter_input( INPUT_POST, '_wcml_custom_prices_nonce', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
+		if ( WCML_MULTI_CURRENCIES_INDEPENDENT !== $this->woocommerce_wpml->settings['enable_multi_currency'] ) {
+			return;
+		}
 
+		$nonce = filter_input( INPUT_POST, '_wcml_custom_prices_nonce', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
 		if ( isset( $_POST['_wcml_custom_prices'] ) && isset( $nonce ) && wp_verify_nonce( $nonce, 'wcml_save_custom_prices' ) ) {
-			$this->save_custom_prices_without_post_form( $post_id, $_POST );
+			$original_product_id = $this->woocommerce_wpml->products->get_original_product_id( $post_id );
+			if ( empty( $original_product_id ) ) {
+				return;
+			}
+
+			$this->save_custom_prices_without_post_form( $original_product_id, $_POST );
 		}
 	}
 
@@ -381,11 +443,20 @@ class WCML_Custom_Prices {
 	 *
 	 * @return void
 	 */
-	public function save_custom_prices_ajax( $post_id, $wpRestRequest ) {
+	public function save_custom_prices_on_rest( $post_id, $wpRestRequest ) {
+		if ( WCML_MULTI_CURRENCIES_INDEPENDENT !== $this->woocommerce_wpml->settings['enable_multi_currency'] ) {
+			return;
+		}
+
+		$original_product_id = $this->woocommerce_wpml->products->get_original_product_id( $post_id );
+		if ( empty( $original_product_id ) ) {
+			return;
+		}
+
 		$rest2post = [];
 
 		$rest2post['_wcml_custom_prices'] = [
-			$post_id => null, // update product - Not implemented in REST API
+			$original_product_id => null, // update product - Not implemented in REST API
 			'new'    => null // create new product - Not implemented in REST API
 		];
 
@@ -408,7 +479,7 @@ class WCML_Custom_Prices {
 			}
 		}
 
-		$this->save_custom_prices_without_post_form( $post_id, $rest2post );
+		$this->save_custom_prices_without_post_form( $original_product_id, $rest2post );
 	}
 
 	/**
@@ -422,6 +493,10 @@ class WCML_Custom_Prices {
 	 * @return void
 	 */
 	private function save_custom_prices_without_post_form( $post_id, array $formPostData ) {
+		if ( WCML_MULTI_CURRENCIES_INDEPENDENT !== $this->woocommerce_wpml->settings['enable_multi_currency'] ) {
+			return;
+		}
+
 		if ( ! $this->woocommerce_wpml->products->is_variable_product( $post_id ) ) {
 			if ( isset( $formPostData['_wcml_custom_prices'][ $post_id ] ) || isset( $formPostData['_wcml_custom_prices']['new'] ) ) {
 				$wcml_custom_prices_option = $formPostData['_wcml_custom_prices'][ $post_id ] ?? $formPostData['_wcml_custom_prices']['new'];

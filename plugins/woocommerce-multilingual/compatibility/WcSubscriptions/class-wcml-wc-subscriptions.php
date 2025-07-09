@@ -4,15 +4,31 @@ class WCML_WC_Subscriptions implements \IWPML_Action {
 
 	const TRANSLATION_DOMAIN = 'woocommerce_subscriptions';
 
-	/** @var woocommerce_wpml */
+	/**
+	 * @var woocommerce_wpml
+	 */
 	private $woocommerce_wpml;
 
-	/** @var wpdb */
+	/**
+	 *  @var wpdb
+	 */
 	private $wpdb;
 
-	public function __construct( woocommerce_wpml $woocommerce_wpml, wpdb $wpdb ) {
+	/**
+	 * @var SitePress
+	 */
+	private $sitepress;
+
+	/**
+	 * @var WPML_URL_Converter
+	 */
+	private $url_converter;
+
+	public function __construct( woocommerce_wpml $woocommerce_wpml, wpdb $wpdb, SitePress $sitepress, WPML_URL_Converter $url_converter ) {
 		$this->woocommerce_wpml = $woocommerce_wpml;
 		$this->wpdb             = $wpdb;
+		$this->sitepress        = $sitepress;
+		$this->url_converter    = $url_converter;
 	}
 
 	public function add_hooks() {
@@ -31,6 +47,10 @@ class WCML_WC_Subscriptions implements \IWPML_Action {
 		// Add language links to email settings.
 		add_filter( 'wcml_emails_options_to_translate', [ $this, 'translate_email_options' ] );
 		add_filter( 'wcml_emails_section_name_prefix', [ $this, 'email_option_section_prefix' ], 10, 2 );
+
+		if ( WPML_LANGUAGE_NEGOTIATION_TYPE_DOMAIN === (int) $this->sitepress->get_setting( 'language_negotiation_type' ) ) {
+			add_filter( 'wc_subscriptions_site_url', [ $this, 'allowing_different_domains' ], 10, 4 );
+		}
 	}
 
 	public function init() {
@@ -214,6 +234,37 @@ class WCML_WC_Subscriptions implements \IWPML_Action {
 			return true;
 		}
 		return $translateOrderItems;
+	}
+
+	/**
+	 * @param string      $url     The URL used by WooCommerce Subscriptions to determine the site.
+	 * @param string      $path    The URL path (not used in this filter, but required by the hook).
+	 * @param string|null $scheme  The URL scheme (http/https, passed to set_url_scheme()).
+	 * @param int|null    $blog_id The blog ID for multisite (optional).
+	 *
+	 * @return string The correct domain to be used for WooCommerce Subscriptions.
+	 */
+	public function allowing_different_domains( $url, $path, $scheme, $blog_id ) {
+
+		$domains = $this->sitepress->get_setting( 'language_domains' ) ?: [];
+
+		$default_domain = $this->url_converter->get_abs_home();
+		array_unshift( $domains, $default_domain );
+
+		$normalized_domains = array_map( function( $d ) {
+			return wp_parse_url( $d, PHP_URL_HOST ) ?: $d;
+		}, $domains );
+
+		$default_domain_host = wp_parse_url( $url, PHP_URL_HOST ) ?: $url;
+		$current_domain_host = wp_parse_url( home_url(), PHP_URL_HOST ) ?: home_url();
+
+		if ( in_array( $default_domain_host, $normalized_domains, true ) && in_array( $current_domain_host, $normalized_domains, true ) ) {
+			$scheme = wp_is_using_https() ? 'https' : 'http';
+			return ( wp_parse_url( $url, PHP_URL_SCHEME ) ?: $scheme ) . '://' . $current_domain_host;
+		}
+
+		return $url;
+
 	}
 
 }

@@ -6,6 +6,7 @@ use WPML\Core\ISitePress;
 use WPML\FP\Fns;
 use WPML\FP\Obj;
 use function WCML\functions\isStandAlone;
+use function WPML\Container\make;
 use function WPML\FP\partial;
 use function WPML\FP\pipe;
 
@@ -15,7 +16,7 @@ class WCML_Products {
 	private $woocommerce_wpml;
 	/** @var SitePress */
 	private $sitepress;
-	/** @var WPML_Post_Translation */
+	/** @var WPML_Post_Translation|null */
 	private $post_translations;
 	/** @var wpdb */
 	private $wpdb;
@@ -23,18 +24,22 @@ class WCML_Products {
 	private $wpml_cache;
 
 	/**
-	 * @param woocommerce_wpml        $woocommerce_wpml
-	 * @param SitePress|NullSitePress $sitepress
-	 * @param WPML_Post_Translation   $post_translations
-	 * @param wpdb                    $wpdb
-	 * @param WPML_WP_Cache           $wpml_cache
+	 * @param woocommerce_wpml           $woocommerce_wpml
+	 * @param SitePress|NullSitePress    $sitepress
+	 * @param WPML_Post_Translation|null $post_translations
+	 * @param wpdb|null                  $wpdb
+	 * @param WPML_WP_Cache|null         $wpml_cache
 	 */
-	public function __construct( woocommerce_wpml $woocommerce_wpml, ISitePress $sitepress, WPML_Post_Translation $post_translations = null, wpdb $wpdb, WPML_WP_Cache $wpml_cache = null ) {
+	public function __construct( woocommerce_wpml $woocommerce_wpml, ISitePress $sitepress, $post_translations = null, $wpdb = null, $wpml_cache = null ) {
 		$this->woocommerce_wpml  = $woocommerce_wpml;
 		$this->sitepress         = $sitepress;
 		$this->post_translations = $post_translations;
-		$this->wpdb              = $wpdb;
-		$this->wpml_cache        = $wpml_cache ?: new WPML_WP_Cache( 'WCML_Products' );
+
+		if ( null === $wpdb ) {
+			global $wpdb;
+		}
+		$this->wpdb       = $wpdb;
+		$this->wpml_cache = $wpml_cache ?: new WPML_WP_Cache( 'WCML_Products' );
 	}
 
 	public function add_hooks() {
@@ -357,6 +362,9 @@ class WCML_Products {
 	 * @return array
 	 */
 	private function filter_found_products_by_language( $found_products, $language = false ) {
+		if ( null === $this->post_translations ) {
+			return $found_products;
+		}
 
 		if ( ! $language ) {
 			$language = $this->sitepress->get_current_language();
@@ -430,6 +438,10 @@ class WCML_Products {
 	 * @param int $product_id
 	 */
 	public function update_order_for_product_translations( $product_id ) {
+		if ( null === $this->post_translations ) {
+			return;
+		}
+
 		if ( isset( $this->woocommerce_wpml->settings['products_sync_order'] ) && $this->woocommerce_wpml->settings['products_sync_order'] ) {
 			$current_language = $this->sitepress->get_current_language();
 
@@ -606,7 +618,7 @@ class WCML_Products {
 			$product_variations = $this->woocommerce_wpml->sync_variations_data->get_product_variations( $post_id );
 			foreach ( $product_variations as $product_variation ) {
 				$trid                      = $this->sitepress->get_element_trid( $product_variation->ID, 'post_product_variation' );
-				$current_prod_variation_id = apply_filters( 'translate_object_id', $product_variation->ID, 'product_variation', false, $lang_to );
+				$current_prod_variation_id = apply_filters( 'wpml_object_id', $product_variation->ID, 'product_variation', false, $lang_to );
 				if ( is_null( $current_prod_variation_id ) ) {
 					$this->sitepress->set_element_language_details( $product_variation->ID, 'post_product_variation', $trid, $lang_to );
 
@@ -624,6 +636,9 @@ class WCML_Products {
 	}
 
 	public function check_product_sku( $sku_found, $product_id, $sku ) {
+		if ( null === $this->post_translations ) {
+			$sku_found;
+		}
 
 		if ( $sku_found ) {
 
@@ -676,9 +691,9 @@ class WCML_Products {
 		$is_per_domain = $this->sitepress->get_wp_api()->constant( 'WPML_LANGUAGE_NEGOTIATION_TYPE_DOMAIN' ) === (int) $this->sitepress->get_setting( 'language_negotiation_type' );
 
 		if ( $is_per_domain ) {
-			$wpml_url_helper = new WPML_URL_Converter_Url_Helper();
+			$wpml_url_converter = make( \WPML_URL_Converter::class );
 
-			if ( strpos( trim( $file_path ), $wpml_url_helper->get_abs_home() ) === 0 ) {
+			if ( strpos( trim( $file_path ), $wpml_url_converter->get_abs_home() ) === 0 ) {
 				$file_path = $this->sitepress->convert_url( $file_path );
 			}
 		}
@@ -730,11 +745,9 @@ class WCML_Products {
 			$post_type = get_post_type( $product_id );
 
 			if ( in_array( $post_type, [ 'product', 'product_variation' ], true ) ) {
-
 				remove_filter( 'get_post_metadata', [ $this, 'filter_product_data' ], 10 );
 
-				$data = get_post_meta( $product_id );
-
+				$data                = get_post_meta( $product_id );
 				$meta_keys_to_filter = [];
 				$is_mc_enabled       = (int) $this->woocommerce_wpml->settings['enable_multi_currency'] === (int) $this->sitepress->get_wp_api()->constant( 'WCML_MULTI_CURRENCIES_INDEPENDENT' );
 

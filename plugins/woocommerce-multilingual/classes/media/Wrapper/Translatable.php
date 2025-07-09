@@ -91,6 +91,13 @@ class Translatable implements IMedia {
 		return $product_images_ids;
 	}
 
+	/**
+	 * @param int    $original_product_id
+	 * @param int    $translated_product_id
+	 * @param string $language
+	 *
+	 * @see \WCML\Synchronization\Attachments::run
+	 */
 	public function sync_thumbnail_id( $original_product_id, $translated_product_id, $language ) {
 		if ( $this->is_thumbnail_image_duplication_enabled( $original_product_id ) ) {
 			$translated_thumbnail_id = $this->get_translated_thumbnail_id( $original_product_id, $language );
@@ -100,14 +107,21 @@ class Translatable implements IMedia {
 		}
 	}
 
-	public function sync_variation_thumbnail_id( $variation_id, $translated_variation_id, $language, $isNewTranslatedVariation = false ) {
+	/**
+	 * @param int    $variation_id
+	 * @param int    $translated_variation_id
+	 * @param string $language
+	 *
+	 * @see \WCML\Synchronization\VariationAttachments::run
+	 */
+	public function sync_variation_thumbnail_id( $variation_id, $translated_variation_id, $language ) {
 		if ( $this->is_thumbnail_image_duplication_enabled( wp_get_post_parent_id( $variation_id ) ) ) {
 			$translated_thumbnail_id = $this->get_translated_thumbnail_id( $variation_id, $language );
 			if ( ! $translated_thumbnail_id ) {
 				return null;
 			}
 
-			$stored_translated_variation_thumbnail_id = $isNewTranslatedVariation ? 0 : (int) get_post_meta( $translated_variation_id, self::META_KEY_THUMBNAIL_ID, true );
+			$stored_translated_variation_thumbnail_id = (int) get_post_meta( $translated_variation_id, self::META_KEY_THUMBNAIL_ID, true );
 			if ( (int) $translated_thumbnail_id !== $stored_translated_variation_thumbnail_id ) {
 				update_post_meta( $translated_variation_id, self::META_KEY_THUMBNAIL_ID, $translated_thumbnail_id );
 				update_post_meta( $variation_id, '_wpml_media_duplicate', 1 );
@@ -148,6 +162,8 @@ class Translatable implements IMedia {
 	 * @param int    $orig_post_id
 	 * @param int    $trnsl_post_id
 	 * @param string $lang
+	 *
+	 * @see \WCML\Synchronization\Attachments::run
 	 */
 	public function sync_product_gallery( $orig_post_id, $trnsl_post_id, $lang ) {
 		if ( $this->is_media_duplication_enabled( $orig_post_id ) ) {
@@ -194,7 +210,7 @@ class Translatable implements IMedia {
 				continue;
 			}
 			$duplicated_id = apply_filters(
-				'translate_object_id',
+				'wpml_object_id',
 				$image_id,
 				'attachment',
 				false,

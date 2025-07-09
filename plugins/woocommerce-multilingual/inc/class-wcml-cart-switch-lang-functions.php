@@ -55,9 +55,9 @@ class WCML_Cart_Switch_Lang_Functions implements \IWPML_Frontend_Action, \IWPML_
 			$current_url = $this->get_current_url();
 
 			if ( is_shop() ) {
-				$requested_page_id = apply_filters( 'translate_object_id', wc_get_page_id( 'shop' ), 'post', true, $this->lang_from );
+				$requested_page_id = apply_filters( 'wpml_object_id', wc_get_page_id( 'shop' ), 'post', true, $this->lang_from );
 			} elseif ( isset( $post->ID ) ) {
-				$requested_page_id = apply_filters( 'translate_object_id', $post->ID, get_post_type( $post->ID ), true, $this->lang_from );
+				$requested_page_id = apply_filters( 'wpml_object_id', $post->ID, get_post_type( $post->ID ), true, $this->lang_from );
 			}
 
 			if ( isset( $requested_page_id ) ) {

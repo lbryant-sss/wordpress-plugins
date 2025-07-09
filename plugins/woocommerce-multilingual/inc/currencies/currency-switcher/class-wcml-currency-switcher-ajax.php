@@ -194,7 +194,7 @@ class WCML_Currency_Switcher_Ajax {
 		$return['inline_css'] = $inline_css;
 
 		ob_start();
-		$this->woocommerce_wpml->multi_currency->currency_switcher->wcml_currency_switcher(
+		$this->woocommerce_wpml->multi_currency->currency_switcher->do_currency_switcher(
 			[
 				'switcher_id'    => $_POST['switcher_id'],
 				'format'         => isset( $_POST['template'] ) ? stripslashes_deep( $_POST['template'] ) : '%name% (%symbol%) - %code%',

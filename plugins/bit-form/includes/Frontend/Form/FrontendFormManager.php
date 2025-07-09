@@ -621,12 +621,12 @@ final class FrontendFormManager extends FormManager
 
   private function verifyTurnstileCaptcha()
   {
-    $turnstileSetting = $this->getTurnstileSettings();
-    if ($turnstileSetting) {
+    $hCaptchaExist = $this->isFieldTypeExist('turnstile');
+    if ($hCaptchaExist) {
       if (!isset($_POST['cf-turnstile-response'])) {
         return new WP_Error('spam_detection', __('Please verify Cloudflare Turnstile Captcha', 'bit-form'));
       }
-      $token = $_POST['cf-turnstile-response'];
+      $token = sanitize_text_field($_POST['cf-turnstile-response']);
       $turnstileCaptcha = null;
       $integrationHandler = new IntegrationHandler(0);
       $turnstileIntegration = $integrationHandler->getAllIntegration('app', 'turnstileCaptcha')[0];

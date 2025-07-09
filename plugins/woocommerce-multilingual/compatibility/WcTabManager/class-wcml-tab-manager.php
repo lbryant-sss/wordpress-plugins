@@ -219,7 +219,7 @@ class WCML_Tab_Manager implements \IWPML_Action {
 	 * @return array
 	 */
 	public function set_global_tab( $orig_prod_tab, $trnsl_product_tabs, $lang ) {
-		$tr_tab_id = apply_filters( 'translate_object_id', $orig_prod_tab['id'], self::POST_TYPE, true, $lang );
+		$tr_tab_id = apply_filters( 'wpml_object_id', $orig_prod_tab['id'], self::POST_TYPE, true, $lang );
 		$trnsl_product_tabs[ $orig_prod_tab['type'] . '_tab_' . $tr_tab_id ] = [
 			'position' => $orig_prod_tab['position'],
 			'type'     => $orig_prod_tab['type'],
@@ -242,7 +242,7 @@ class WCML_Tab_Manager implements \IWPML_Action {
 	 */
 	public function set_product_tab( $orig_prod_tab, $trnsl_product_tabs, $lang, $trnsl_product_id, $tab_id, $title, $content ) {
 		if ( ! $tab_id ) {
-			$tr_tab_id = apply_filters( 'translate_object_id', $orig_prod_tab['id'], self::POST_TYPE, false, $lang );
+			$tr_tab_id = apply_filters( 'wpml_object_id', $orig_prod_tab['id'], self::POST_TYPE, false, $lang );
 
 			if ( ! is_null( $tr_tab_id ) ) {
 				$tab_id = $tr_tab_id;
@@ -655,7 +655,7 @@ class WCML_Tab_Manager implements \IWPML_Action {
 					// sync tab positions for product tabs
 					foreach ( $original_product_tabs as $tab ) {
 						if ( $tab['type'] == 'product' ) {
-							$translated_tab_product_id = apply_filters( 'translate_object_id', $tab['id'], self::POST_TYPE, false, $language );
+							$translated_tab_product_id = apply_filters( 'wpml_object_id', $tab['id'], self::POST_TYPE, false, $language );
 							if ( $translated_tab_product_id && is_array( $translated_product_tabs[ 'product_tab_' . $translated_tab_product_id ] ) ) {
 								$translated_product_tabs[ 'product_tab_' . $translated_tab_product_id ]['position'] = $tab['position'];
 							}
@@ -694,7 +694,7 @@ class WCML_Tab_Manager implements \IWPML_Action {
 		if ( is_array( $default_tabs ) ) {
 			foreach ( $default_tabs as $tab_key => $default_tab ) {
 				if ( substr( $tab_key, 0, 10 ) == 'global_tab' ) {
-					$trnsl_tab_id = apply_filters( 'translate_object_id', $default_tab['id'], self::POST_TYPE, true, $this->sitepress->get_current_language() );
+					$trnsl_tab_id = apply_filters( 'wpml_object_id', $default_tab['id'], self::POST_TYPE, true, $this->sitepress->get_current_language() );
 
 					if ( $trnsl_tab_id != $default_tab['id'] ) {
 						$default_tabs[ 'global_tab_' . $trnsl_tab_id ]         = $default_tab;

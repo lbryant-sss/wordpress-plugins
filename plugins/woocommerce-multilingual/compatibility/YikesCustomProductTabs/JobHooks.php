@@ -8,6 +8,13 @@ use WPML\LIB\WP\Hooks as WPHooks;
 
 use function WPML\FP\spreadArgs;
 
+/**
+ * IMPORTANT NOTICE !!!
+ * This target plugin is not maintained anymore.
+ * We are stopping our compatibility maintenance too.
+ *
+ * @deprecated
+ */
 class JobHooks {
 
 	public function add_hooks() {

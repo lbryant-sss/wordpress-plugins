@@ -12,4 +12,16 @@
 
 		});
 
+		let ips_deactivateURL = '';
+		jQuery(document).on('click', '.xyz-ips-deactivate-link', function(e) {
+			e.preventDefault();
+			ips_deactivateURL = jQuery(this).attr('href');
+			jQuery('#xyz-ips-modal').fadeIn();
+		});
+		jQuery('#xyz-ips-proceed-deactivate').on('click', function() {
+			window.location.href = ips_deactivateURL;
+		});
+		jQuery('#xyz-ips-cancel-deactivate').on('click', function() {
+			jQuery('#xyz-ips-modal').fadeOut();
+		});
 	});

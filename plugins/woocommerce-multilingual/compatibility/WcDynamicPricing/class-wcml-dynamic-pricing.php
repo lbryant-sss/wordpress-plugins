@@ -64,10 +64,10 @@ class WCML_Dynamic_Pricing implements \IWPML_Action {
 	 */
 	public function is_object_in_translated_terms( $result, $product_id, $categories ) {
 		foreach ( $categories as &$cat_id ) {
-			$cat_id = apply_filters( 'translate_object_id', $cat_id, 'product_cat', true );
+			$cat_id = apply_filters( 'wpml_object_id', $cat_id, 'product_cat', true );
 		}
 
-		$product_id = apply_filters( 'translate_object_id', $product_id, 'product', true );
+		$product_id = apply_filters( 'wpml_object_id', $product_id, 'product', true );
 
 		return is_object_in_term( $product_id, 'product_cat', $categories );
 	}
@@ -172,7 +172,7 @@ class WCML_Dynamic_Pricing implements \IWPML_Action {
 
 		return array_map(
 			function ( $cat_id ) use ( $taxonomy ) {
-					return apply_filters( 'translate_object_id', $cat_id, $taxonomy, true );
+					return apply_filters( 'wpml_object_id', $cat_id, $taxonomy, true );
 			},
 			$cat_ids
 		);
@@ -188,7 +188,7 @@ class WCML_Dynamic_Pricing implements \IWPML_Action {
 			foreach ( $rules as $r_key => $rule ) {
 				if ( isset( $rule['variation_rules']['args']['variations'] ) ) {
 					foreach ( $rule['variation_rules']['args']['variations'] as $i => $variation_id ) {
-						$rules[ $r_key ]['variation_rules']['args']['variations'][ $i ] = apply_filters( 'translate_object_id', $variation_id, 'product_variation', true );
+						$rules[ $r_key ]['variation_rules']['args']['variations'][ $i ] = apply_filters( 'wpml_object_id', $variation_id, 'product_variation', true );
 					}
 				}
 			}

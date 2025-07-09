@@ -131,7 +131,7 @@ class TranslationControls extends TranslationControlsBase {
 		$this->pointerFactory
 			->create( [
 				'content'    => $this->getInstructions( $this->getStringDomain( $optionName ) ),
-				'selectorId' => 'wpbody-content .woocommerce .form-table',
+				'selectorId' => 'wpbody-content .woocommerce table.form-table:nth-of-type(1)',
 				'method'     => 'before',
 				'docLink'    => WCML_Tracking_Link::getWcmlTranslateEmailsDoc(),
 			] )->show();

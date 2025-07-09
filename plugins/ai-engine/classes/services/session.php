@@ -23,7 +23,7 @@ class Meow_MWAI_Services_Session {
     if ( $this->core->is_rest ) {
       $request_uri = $_SERVER['REQUEST_URI'] ?? '';
       // Only start sessions for actual AI Engine endpoints
-      if ( !strpos( $request_uri, '/mwai/' ) && !strpos( $request_uri, 'rest_route=/mwai/' ) ) {
+      if ( strpos( $request_uri, '/mwai/' ) === false && strpos( $request_uri, 'rest_route=/mwai/' ) === false ) {
         return false;
       }
     }

@@ -239,8 +239,6 @@ class WCML_Resources {
 		wp_register_script( 'wcml-lock-script', WCML_PLUGIN_URL . '/res/js/lock_fields' . WCML_JS_MIN . '.js', [ 'jquery' ], WCML_VERSION, true );
 		wp_enqueue_script( 'wcml-lock-script' );
 
-		$file_path_sync = self::$woocommerce_wpml->settings['file_path_sync'];
-
 		$product_id = false;
 		if ( $pagenow === 'post.php' && isset( $_GET['post'] ) ) {
 			$product_id = $_GET['post'];
@@ -248,15 +246,7 @@ class WCML_Resources {
 			$product_id = $_POST['product_id'];
 		}
 
-		if ( $product_id ) {
-			$original_id         = self::$woocommerce_wpml->products->get_original_product_id( $product_id );
-			$custom_product_sync = get_post_meta( $original_id, 'wcml_sync_files', true );
-			if ( $custom_product_sync && $custom_product_sync == 'self' ) {
-				$file_path_sync = false;
-			} elseif ( $custom_product_sync && $custom_product_sync == 'auto' ) {
-				$file_path_sync = true;
-			}
-		}
+		$file_path_sync = WCML_Downloadable_Products::isDownloadableFilesSetToUseSame( $product_id );
 
 		wp_localize_script(
 			'wcml-lock-script',

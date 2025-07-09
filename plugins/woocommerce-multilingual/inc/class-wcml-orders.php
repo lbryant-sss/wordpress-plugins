@@ -4,6 +4,7 @@ use WCML\Orders\Helper as OrdersHelper;
 use WPML\FP\Fns;
 use WPML\FP\Maybe;
 use WPML\FP\Obj;
+use WCML\Utilities\WCTaxonomies;
 use function WPML\FP\curryN;
 use function WPML\FP\invoke;
 
@@ -102,7 +103,7 @@ class WCML_Orders {
 
 		if ( $this->get_order_language_by_item_id( $item_id ) != $sitepress->get_user_admin_language( get_current_user_id(), true ) ) {
 			foreach ( $item['item_meta'] as $key => $item_meta ) {
-				if ( taxonomy_exists( wc_attribute_taxonomy_name( $key ) ) || substr( $key, 0, 3 ) === 'pa_' ) {
+				if ( taxonomy_exists( wc_attribute_taxonomy_name( $key ) ) || WCTaxonomies::isProductAttribute( $key ) ) {
 					$item_meta = (array) $item_meta;
 					foreach ( $item_meta as $value ) {
 						$this->force_update_itemmeta( $item_id, $key, $value, $sitepress->get_user_admin_language( get_current_user_id(), true ) );
@@ -118,7 +119,7 @@ class WCML_Orders {
 		$order_languge = $this->get_order_language_by_item_id( $item_id );
 		if ( $order_languge != $sitepress->get_user_admin_language( get_current_user_id(), true ) ) {
 			foreach ( $item['item_meta'] as $key => $item_meta ) {
-				if ( taxonomy_exists( wc_attribute_taxonomy_name( $key ) ) || substr( $key, 0, 3 ) === 'pa_' ) {
+				if ( taxonomy_exists( wc_attribute_taxonomy_name( $key ) ) || WCTaxonomies::isProductAttribute( $key ) ) {
 					$item_meta = (array) $item_meta;
 					foreach ( $item_meta as $value ) {
 						$this->force_update_itemmeta( $item_id, $key, $value, $order_languge );
@@ -140,7 +141,7 @@ class WCML_Orders {
 	public function force_update_itemmeta( $item_id, $key, $value, $languge ) {
 		global $wpdb, $woocommerce_wpml;
 
-		$taxonomy        = substr( $key, 0, 3 ) !== 'pa_' ? wc_attribute_taxonomy_name( $key ) : $key;
+		$taxonomy        = ! WCTaxonomies::isProductAttribute( $key ) ? wc_attribute_taxonomy_name( $key ) : $key;
 		$term_id         = $woocommerce_wpml->terms->wcml_get_term_id_by_slug( $taxonomy, $value );
 		$translated_term = $woocommerce_wpml->terms->wcml_get_translated_term( $term_id, $taxonomy, $languge );
 
@@ -321,12 +322,12 @@ class WCML_Orders {
 		$order_language = self::getLanguage( $object->get_id() );
 
 		if ( $item->get_variation_id() > 0 ) {
-			$translated_variation_id = apply_filters( 'translate_object_id', $item->get_variation_id(), 'product_variation', false, $order_language );
+			$translated_variation_id = apply_filters( 'wpml_object_id', $item->get_variation_id(), 'product_variation', false, $order_language );
 			if ( ! is_null( $translated_variation_id ) ) {
 				$item->set_variation_id( $translated_variation_id );
 			}
 		} else {
-			$translated_product_id = apply_filters( 'translate_object_id', $item->get_product_id(), 'product', false, $order_language );
+			$translated_product_id = apply_filters( 'wpml_object_id', $item->get_product_id(), 'product', false, $order_language );
 			if ( ! is_null( $translated_product_id ) ) {
 				$item->set_product_id( $translated_product_id );
 			}
@@ -345,7 +346,7 @@ class WCML_Orders {
 
 		foreach ( $downloads as $key => $download ) {
 
-			$translated_id = apply_filters( 'translate_object_id', $download['product_id'], get_post_type( $download['product_id'] ), false, $this->sitepress->get_current_language() );
+			$translated_id = apply_filters( 'wpml_object_id', $download['product_id'], get_post_type( $download['product_id'] ), false, $this->sitepress->get_current_language() );
 
 			if ( $translated_id ) {
 				$downloads[ $key ]['product_name'] = get_the_title( $translated_id );

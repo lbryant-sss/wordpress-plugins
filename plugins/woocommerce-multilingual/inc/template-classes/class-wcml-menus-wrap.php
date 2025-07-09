@@ -201,7 +201,7 @@ class WCML_Menus_Wrap extends WCML_Menu_Wrap_Base {
 		$product_attributes = $this->woocommerce_wpml->attributes->get_translatable_attributes();
 		if ( $product_attributes ) {
 			foreach ( $product_attributes as $product_attribute ) {
-				$product_attribute_names[] = 'pa_' . $product_attribute->attribute_name;
+				$product_attribute_names[] = \WCML\Utilities\WCTaxonomies::TAXONOMY_PREFIX_ATTRIBUTE . $product_attribute->attribute_name;
 			}
 		}
 

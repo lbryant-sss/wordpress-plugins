@@ -5,7 +5,7 @@ Donate link: https://www.patreon.com/meowapps
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 2.9.0
+Stable tag: 2.9.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -127,6 +127,12 @@ Check that your API key has permissions for image generation, and that the model
 Check the [docs](https://docs.meowapps.com/), [support forum](https://wordpress.org/support/plugin/ai-engine/), or join us on [Discord](https://discord.com/invite/bHDGh38).
 
 == Changelog ==
+
+= 2.9.1 (2025/07/08) =
+- Fix: Corrected guest user authentication by fixing the strpos check in session validation and making the start_session endpoint publicly accessible for proper guest login support.
+- Add: Introduced options for Embeddings Search supporting multiple search methods.
+- Add: New simpleFastTextQuery API endpoint.
+- Update: Optimized vector search queries to accurately handle exclusion terms.
 
 = 2.9.0 (2025/07/07) =
 * Add: Persisted templates in Content Generator, Images Generator, and Playground.

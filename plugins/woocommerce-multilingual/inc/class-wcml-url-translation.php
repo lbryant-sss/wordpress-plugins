@@ -1,6 +1,7 @@
 <?php
 
 use WCML\Permalinks\Strings;
+use WCML\Utilities\WCTaxonomies;
 
 class WCML_Url_Translation {
 	
@@ -95,6 +96,47 @@ class WCML_Url_Translation {
 			$this->woocommerce_wpml->update_settings();
 		}
 
+		add_action( 'init', [ $this, 'add_hooks_after_init' ], PHP_INT_MAX );
+	}
+
+	/**
+	 * Only after 'init' we can check if the product is set as "Display as Translated".
+	 * Thanks to this, instead of checking every time the filter is called, we can check it at the registration level once.
+	 */
+	public function add_hooks_after_init() {
+		if ( ! is_admin() ) {
+			if ( $this->isProductDisplayAsTranslatedDocument() ) {
+				add_filter( 'wpml_st_post_type_link_filter_language_details', [ $this, 'translate_product_slug_when_product_is_display_as_translated_document' ] );
+			}
+		}
+	}
+
+	/**
+	 * @param \stdClass $elementLanguageDetails
+	 *
+	 * @return \stdClass
+	 */
+	public function translate_product_slug_when_product_is_display_as_translated_document( $elementLanguageDetails ) {
+		if ( $elementLanguageDetails->source_language_code ) {
+			return $elementLanguageDetails;
+		}
+
+		if ( 'product' !== get_post_type( $elementLanguageDetails->element_id ) ) {
+			return $elementLanguageDetails;
+		}
+
+		$elementLanguageDetails->source_language_code = $elementLanguageDetails->language_code;
+		$elementLanguageDetails->language_code        = $this->sitepress->get_current_language();
+
+		return $elementLanguageDetails;
+	}
+
+	/**
+	 * This method depends on the registration of all CPTs [`register_post_type()`]
+	 * which should not happen before init
+	 */
+	private function isProductDisplayAsTranslatedDocument(): bool {
+		return in_array( 'product', \WPML\API\PostTypes::getDisplayAsTranslated(), true );
 	}
 
 	/**
@@ -454,7 +496,7 @@ class WCML_Url_Translation {
 	 * @return array
 	 */
 	public function translate_wc_default_taxonomies_bases_in_rewrite_rules( $value ) {
-		$taxonomies = [ 'product_cat', 'product_tag' ];
+		$taxonomies = [ WCTaxonomies::TAXONOMY_PRODUCT_CATEGORY, WCTaxonomies::TAXONOMY_PRODUCT_TAG ];
 
 		foreach ( $taxonomies as $taxonomy ) {
 			$slug_details = $this->get_translated_tax_slug( $taxonomy );
@@ -498,7 +540,7 @@ class WCML_Url_Translation {
 		$wc_taxonomies           = wc_get_attribute_taxonomies();
 		$wc_taxonomies_wc_format = [];
 		foreach ( $wc_taxonomies as $k => $v ) {
-			$wc_taxonomies_wc_format[] = 'pa_' . $v->attribute_name;
+			$wc_taxonomies_wc_format[] = WCTaxonomies::TAXONOMY_PREFIX_ATTRIBUTE . $v->attribute_name;
 		}
 
 		foreach ( $wc_taxonomies_wc_format as $taxonomy ) {
@@ -555,7 +597,7 @@ class WCML_Url_Translation {
 	public function translate_shop_page_base_in_rewrite_rules( $value ) {
 		// filter shop page rewrite slug
 		$current_shop_id = wc_get_page_id( 'shop' );
-		$default_shop_id = apply_filters( 'translate_object_id', $current_shop_id, 'page', true, $this->sitepress->get_default_language() );
+		$default_shop_id = apply_filters( 'wpml_object_id', $current_shop_id, 'page', true, $this->sitepress->get_default_language() );
 
 		if ( is_null( get_post( $current_shop_id ) ) || is_null( get_post( $default_shop_id ) ) ) {
 			return $value;
@@ -617,10 +659,10 @@ class WCML_Url_Translation {
 		// handles product categories, product tags and attributes
 		$wc_taxonomies = wc_get_attribute_taxonomies();
 		foreach ( $wc_taxonomies as $k => $v ) {
-			$wc_taxonomies_wc_format[] = 'pa_' . $v->attribute_name;
+			$wc_taxonomies_wc_format[] = WCTaxonomies::TAXONOMY_PREFIX_ATTRIBUTE . $v->attribute_name;
 		}
 
-		if ( ( $taxonomy == 'product_cat' || $taxonomy == 'product_tag' || ( ! empty( $wc_taxonomies_wc_format ) && in_array( $taxonomy, $wc_taxonomies_wc_format ) ) ) && ! $no_recursion_flag ) {
+		if ( ( WCTaxonomies::isProductAttribute( $taxonomy ) || WCTaxonomies::isProductTag( $taxonomy ) || ( ! empty( $wc_taxonomies_wc_format ) && in_array( $taxonomy, $wc_taxonomies_wc_format ) ) ) && ! $no_recursion_flag ) {
 
 			$cache_key = 'termlink#' . $taxonomy . '#' . $term->term_id;
 			if ( $link = wp_cache_get( $cache_key, 'terms' ) ) {
@@ -836,7 +878,7 @@ class WCML_Url_Translation {
 
 		if ( $base == 'shop' ) {
 			$source_language = $this->sitepress->get_language_for_element( wc_get_page_id( 'shop' ), 'post_page' );
-		} elseif ( in_array( $base, [ 'product', 'product_cat', 'product_tag', 'attribute' ] ) ) {
+		} elseif ( in_array( $base, [ 'product', WCTaxonomies::TAXONOMY_PRODUCT_CATEGORY, WCTaxonomies::TAXONOMY_PRODUCT_TAG, 'attribute' ] ) ) {
 			$source_language = $this->woocommerce_wpml->strings->get_string_language( $base, Strings::TRANSLATION_DOMAIN, Strings::getStringName( $base ) );
 		} elseif ( strpos( $base, 'attribute_slug-' ) === 0 ) {
 			$slug            = preg_replace( '#^attribute_slug-#', '', $base );
@@ -862,7 +904,7 @@ class WCML_Url_Translation {
 
 		if ( $original_base == 'shop' ) {
 			$original_shop_id   = wc_get_page_id( 'shop' );
-			$translated_shop_id = apply_filters( 'translate_object_id', $original_shop_id, 'page', false, $language );
+			$translated_shop_id = apply_filters( 'wpml_object_id', $original_shop_id, 'page', false, $language );
 
 			if ( ! is_null( $translated_shop_id ) ) {
 
@@ -872,7 +914,7 @@ class WCML_Url_Translation {
 
 			}
 		} else {
-			if ( in_array( $original_base, [ 'product', 'product_cat', 'product_tag', 'attribute' ] ) ) {
+			if ( in_array( $original_base, [ 'product', WCTaxonomies::TAXONOMY_PRODUCT_CATEGORY, WCTaxonomies::TAXONOMY_PRODUCT_TAG, 'attribute' ] ) ) {
 				$string_id = icl_get_string_id( $original_base_value, Strings::TRANSLATION_DOMAIN, Strings::getStringName( $original_base ) );
 			} elseif ( strpos( $original_base, 'attribute_slug-' ) === 0 ) {
 				$slug = preg_replace( '#^attribute_slug-#', '', $original_base );

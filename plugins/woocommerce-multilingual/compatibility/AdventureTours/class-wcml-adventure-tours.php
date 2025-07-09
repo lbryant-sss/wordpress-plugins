@@ -31,7 +31,6 @@ class WCML_Adventure_Tours implements \IWPML_Action {
 
 	public function add_hooks() {
 		add_action( 'updated_post_meta', [ $this, 'sync_tour_data_across_translations' ], 10, 4 );
-		add_filter( 'get_post_metadata', [ $this, 'product_price_filter' ], 9, 4 );
 
 		add_filter( 'wpml_tm_translation_job_data', [ $this, 'append_tour_data_translation_package' ], 10, 2 );
 		add_action( 'wpml_translation_job_saved', [ $this, 'save_tour_data_translation' ], 10, 3 );
@@ -57,6 +56,8 @@ class WCML_Adventure_Tours implements \IWPML_Action {
 					'replace_tm_editor_custom_fields_with_own_sections',
 				]
 			);
+		} elseif ( WCML_MULTI_CURRENCIES_INDEPENDENT === $this->woocommerce_wpml->settings['enable_multi_currency'] ) {
+			add_filter( 'get_post_metadata', [ $this, 'product_price_filter' ], 9, 4 );
 		}
 	}
 
@@ -81,7 +82,7 @@ class WCML_Adventure_Tours implements \IWPML_Action {
 			$original_product_id = $post_id;
 			if ( ! $this->woocommerce_wpml->products->is_original_product( $post_id ) ) {
 				$original_product_language = $this->woocommerce_wpml->products->get_original_product_language( $post_id );
-				$original_product_id       = apply_filters( 'translate_object_id', $post_id, 'product', true, $original_product_language );
+				$original_product_id       = apply_filters( 'wpml_object_id', $post_id, 'product', true, $original_product_language );
 			}
 
 			$product_trid         = $this->sitepress->get_element_trid( $original_product_id, 'post_product' );
@@ -308,8 +309,6 @@ class WCML_Adventure_Tours implements \IWPML_Action {
 
 		if (
 			$meta_key === 'tour_booking_periods' &&
-			$this->woocommerce_wpml->settings['enable_multi_currency'] === WCML_MULTI_CURRENCIES_INDEPENDENT &&
-			! is_admin() &&
 			get_post_type( $object_id ) === 'product' &&
 			( $currency = $this->woocommerce_wpml->multi_currency->get_client_currency() ) !== wcml_get_woocommerce_currency_option()
 		) {
@@ -317,7 +316,7 @@ class WCML_Adventure_Tours implements \IWPML_Action {
 			remove_filter( 'get_post_metadata', [ $this, 'product_price_filter' ], 9 );
 
 			$original_language = $this->woocommerce_wpml->products->get_original_product_language( $object_id );
-			$original_product  = apply_filters( 'translate_object_id', $object_id, 'product', true, $original_language );
+			$original_product  = apply_filters( 'wpml_object_id', $object_id, 'product', true, $original_language );
 
 			if ( get_post_meta( $original_product, '_wcml_custom_prices_status' ) ) {
 				$custom_periods_prices = get_post_meta( $object_id, 'custom_booking_periods_prices', true );

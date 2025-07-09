@@ -24,3 +24,4 @@ FallBack::add('2.10.1', 'FormFallback@resetJsGeneratedPageIds');
 FallBack::add('2.11.1', 'FormFallback@v1formMigragion');
 FallBack::add('2.16.4', 'StylesFallback@addStaticStyleForMultiStepForm');
 FallBack::add('2.17.5', 'AppStructureFallback@ensureIndexFileInUploadDirs');
+FallBack::add('2.20.0', 'AppOptionsFallback@appSettingsWithGlobalMessages');

@@ -3,7 +3,7 @@ Contributors: Aodhan Cullen
 Donate link: http://statcounter.com/
 Tags: web, statistics, stats, hit, counter, visitor, ip, tracker, analytics
 Requires at least: 2.0.2
-Tested up to: 6.7.1
+Tested up to: 6.8.1
 Stable tag: 2.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html

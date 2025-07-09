@@ -26,9 +26,8 @@ interface IMedia {
 	 * @param int    $variation_id
 	 * @param int    $translated_variation_id
 	 * @param string $lang
-	 * @param bool   $isNewTranslatedVariation
 	 */
-	public function sync_variation_thumbnail_id( $variation_id, $translated_variation_id, $lang, $isNewTranslatedVariation = false );
+	public function sync_variation_thumbnail_id( $variation_id, $translated_variation_id, $lang );
 
 	/**
 	 * @param int    $orig_post_id

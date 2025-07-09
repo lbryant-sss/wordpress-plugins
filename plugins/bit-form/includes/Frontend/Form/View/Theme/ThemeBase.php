@@ -31,6 +31,7 @@ use BitCode\BitForm\Frontend\Form\View\Theme\Fields\SectionField;
 use BitCode\BitForm\Frontend\Form\View\Theme\Fields\ShortcodeField;
 use BitCode\BitForm\Frontend\Form\View\Theme\Fields\SignatureField;
 use BitCode\BitForm\Frontend\Form\View\Theme\Fields\SliderField;
+use BitCode\BitForm\Frontend\Form\View\Theme\Fields\SpacerField;
 use BitCode\BitForm\Frontend\Form\View\Theme\Fields\StripeField;
 use BitCode\BitForm\Frontend\Form\View\Theme\Fields\TextAreaField;
 use BitCode\BitForm\Frontend\Form\View\Theme\Fields\TextField;
@@ -164,6 +165,8 @@ INPUTWRAPPER;
       case 'divider':
         // return $this->button($field, $rowID, $field_name, $formID, $error, $value);
         return DividerField::init($field, $rowID, $field_name, $form_atomic_Cls_map, $formID, $error, $value);
+      case 'spacer':
+        return SpacerField::init($field, $rowID, $field_name, $form_atomic_Cls_map, $formID, $error, $value);
       case 'country':
         return CountryField::init($field, $rowID, $field_name, $form_atomic_Cls_map, $formID, $error, $value);
       case 'currency':

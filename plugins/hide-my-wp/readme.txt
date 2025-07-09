@@ -329,8 +329,10 @@ Enjoy!
 == Changelog ==
 = 5.4.05 (27 May 2025) =
 * Update - Add AI support in the plugin settings
-* Fixed - Compatibility WooCommerce login/register with reCaptcha V3
 * Update - 7G & 8G Firewall for more compatibility with WP Plugins
+* Update - Compatibility with Riode theme on Brute Force
+* Fix - Compatibility WooCommerce login/register with reCaptcha V3
+* Fix - Update check error
 
 = 5.4.04 (21 Mar 2025) =
 * Update - Compatibility with the WP 6.8

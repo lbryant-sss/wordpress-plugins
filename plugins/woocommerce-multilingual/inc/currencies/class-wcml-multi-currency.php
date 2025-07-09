@@ -548,7 +548,7 @@ class WCML_Multi_Currency {
 
 		wcml_user_store_set( 'client_currency_switched', true );
 
-		do_action( 'wcml_switch_currency', $currency );
+		do_action( 'wcml_switch_currency', $currency, $from_currency );
 
 		$response = $this->prices->filter_pre_selected_widget_prices_in_new_currency( [], $currency, $from_currency, $params );
 

@@ -94,7 +94,7 @@ if(get_option('xyz_ips_auto_insert')==1){
             if($snippet_count == 0){
                 $xyz_shortCode = '[xyz-ips snippet="'.$xyz_ips_title.'"]';
                 $wpdb->update($wpdb->prefix.'xyz_ips_short_code', array('title'=>$xyz_ips_title,'insertionMethod' => $xyz_ips_insertionMethod, 'insertionLocation' => $xyz_ips_insertionLocation, 'insertionLocationType' => $xyz_ips_insertionLocationType,'content'=>$xyz_ips_content,'short_code'=>$xyz_shortCode,), array('id'=>$xyz_ips_snippetId));
-                header("Location:".admin_url('admin.php?page=insert-php-code-snippet-manage&action=snippet-edit&snippetId='.$xyz_ips_snippetId.'&xyz_ips_msg=1'.'&goback='.$goback));
+                wp_safe_redirect(admin_url('admin.php?page=insert-php-code-snippet-manage&action=snippet-edit&snippetId='.$xyz_ips_snippetId.'&xyz_ips_msg=1'.'&goback='.$goback));
             }
             else{
 ?>
@@ -163,7 +163,7 @@ $xyz_ips_insertionLocation = $snippetDetails->insertionLocation;
                             </font>
                         </td>
                         <td style="border-bottom: none;width:1px;">
-                            &nbsp;&nbsp;
+                        &nbsp;:&nbsp;
                         </td>
                         <td>
                             <select class="xyz_ips_uniq_select" name="xyz_ips_insertionMethod"
@@ -190,7 +190,7 @@ $xyz_ips_insertionLocation = $snippetDetails->insertionLocation;
                             </font>
                         </td>
                         <td style="border-bottom: none;width:1px;">
-                            &nbsp;&nbsp;
+                        &nbsp;:&nbsp;
                         </td>
                         <td>
                             <div>

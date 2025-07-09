@@ -42,11 +42,11 @@ class MultiCurrencyMissing implements \IWPML_Backend_Action, \IWPML_DIC_Action {
 	 * Add a notice reminding admin about missing secondary currency.
 	 */
 	public function addNotice() {
-		$text  = '<h2>' . __( "You haven't added any secondary currencies", 'woocommerce-multilingual' ) . '</h2>';
-		$text .= '<p>' . __( "Please add another currency to fully utilize multicurrency mode. If you do not need multiple currencies, you can disable this setting to improve your site's performance.", 'woocommerce-multilingual' ) . '</p>';
+		$text  = '<h2>' . esc_html__( "You haven't added any secondary currencies", 'woocommerce-multilingual' ) . '</h2>';
+		$text .= '<p>' . esc_html__( "Please add another currency to fully utilize multicurrency mode. If you do not need multiple currencies, you can disable this setting to improve your site's performance.", 'woocommerce-multilingual' ) . '</p>';
 		$text .= sprintf('<a href="%s">%s</a>',
 			\WCML\Utilities\AdminUrl::getMultiCurrencyTab(),
-			__( 'Configure multicurrency mode', 'woocommerce-multilingual' )
+			esc_html__( 'Configure multicurrency mode', 'woocommerce-multilingual' )
 		);
 
 		$notice = $this->notices->create_notice( self::NOTICE_ID, $text );

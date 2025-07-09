@@ -221,7 +221,7 @@ class WCML_Mix_And_Match_Products implements \IWPML_Action {
 				if ( empty( $product_translation->original ) ) {
 					foreach ( $mnm_data as $key => $mnm_element ) {
 
-						$trnsl_prod                = apply_filters( 'translate_object_id', $key, 'product', true, $product_translation->language_code );
+						$trnsl_prod                = apply_filters( 'wpml_object_id', $key, 'product', true, $product_translation->language_code );
 						$mnm_element['product_id'] = $trnsl_prod;
 						$mnm_data[ $trnsl_prod ]   = $mnm_element;
 						unset( $mnm_data[ $key ] );

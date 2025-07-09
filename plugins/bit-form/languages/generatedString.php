@@ -3007,6 +3007,8 @@ $i18n_strings = array(
 
     'Please Select a Date' => __('Please Select a Date', 'bit-form'),
 
+    'Spacer' => __('Spacer', 'bit-form'),
+
     'First Name' => __('First Name', 'bit-form'),
 
     'Last Name' => __('Last Name', 'bit-form'),

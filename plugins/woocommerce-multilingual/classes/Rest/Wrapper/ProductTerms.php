@@ -40,6 +40,7 @@ class ProductTerms extends Handler {
 			if ( 'all' === $language ) {
 				remove_filter( 'terms_clauses', [ $this->sitepress, 'terms_clauses' ], 10 );
 				remove_filter( 'get_term', [ $this->sitepress, 'get_term_adjust_id' ], 1 );
+				remove_filter( 'get_terms_args', [ $this->sitepress, 'get_terms_args_filter' ], 10 );
 			} else {
 				$this->checkLanguage( $language );
 			}
@@ -70,16 +71,10 @@ class ProductTerms extends Handler {
 				return isset( $term->term_id ) ? $term->term_id : null;
 			};
 
-			$hasFilter = remove_filter( 'get_term', [ $this->sitepress, 'get_term_adjust_id' ], 1 );
-
 			$response->data['translations'] = Fns::map(
 				$getTermId,
 				$this->wpmlTermTranslations->get_element_translations( $termTaxonomyId, $trid )
 			);
-
-			if ( $hasFilter ) {
-				add_filter( 'get_term', [ $this->sitepress, 'get_term_adjust_id' ], 1 );
-			}
 
 			$response->data['lang'] = $this->wpmlTermTranslations->get_element_lang_code( $termTaxonomyId );
 		}

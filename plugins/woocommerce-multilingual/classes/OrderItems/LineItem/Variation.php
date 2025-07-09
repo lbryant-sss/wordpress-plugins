@@ -17,13 +17,13 @@ class Variation implements Translator {
 
 		$wasTranslated       = false;
 		$productId           = $item->get_product_id();
-		$translatedProductId = apply_filters( 'translate_object_id', $productId, 'product', true, $targetLanguage );
+		$translatedProductId = apply_filters( 'wpml_object_id', $productId, 'product', true, $targetLanguage );
 		if ( $productId && $productId !== $translatedProductId ) {
 			$item->set_product_id( $translatedProductId );
 		}
 
 		$variationId           = $item->get_variation_id();
-		$translatedVariationId = apply_filters( 'translate_object_id', $variationId, 'product_variation', true, $targetLanguage );
+		$translatedVariationId = apply_filters( 'wpml_object_id', $variationId, 'product_variation', true, $targetLanguage );
 		if ( $variationId && $variationId !== $translatedVariationId ) {
 			$item->set_variation_id( $translatedVariationId );
 			$item->set_name( wc_get_product( $translatedVariationId )->get_name() );

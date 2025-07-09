@@ -383,7 +383,7 @@ final class FrontendFormHandler
       $workFlowRunType = 'edit';
       $adminFormHandler = new AdminFormHandler();
       $getEntry = $adminFormHandler->getSingleEntry($formID, $entryId);
-      if (FrontendHelpers::is_current_user_can_access($formID, 'entryEditAccess', '', $getEntry->user_id)) {
+      if (FrontendHelpers::is_current_user_can_access($formID, 'entryEditAccess', '', $getEntry->__user_id)) {
         $fields = $this->setFieldsValue($fields, $formID, $entryId);
       } elseif (!$isAbandoned) {
         $entryId = false;

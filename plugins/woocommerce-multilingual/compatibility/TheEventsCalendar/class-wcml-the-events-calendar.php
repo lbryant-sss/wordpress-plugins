@@ -69,11 +69,11 @@ class WCML_The_Events_Calendar implements \IWPML_Action {
 	public function synchronize_event_for_ticket( $post_id, $post, $update ) {
 		if ( 'product' === $post->post_type ) {
 			if ( ! $this->woocommerce_wpml->products->is_original_product( $post_id ) ) {
-				$original_product_id = apply_filters( 'translate_object_id', $post_id, 'product', false, $this->sitepress->get_default_language() );
+				$original_product_id = apply_filters( 'wpml_object_id', $post_id, 'product', false, $this->sitepress->get_default_language() );
 				if ( $original_product_id ) {
 					$original_event_id = get_post_meta( $original_product_id, '_tribe_wooticket_for_event', true );
 					if ( $original_event_id ) {
-						$event_id = apply_filters( 'translate_object_id', $original_event_id, 'tribe_events', false );
+						$event_id = apply_filters( 'wpml_object_id', $original_event_id, 'tribe_events', false );
 						if ( $event_id ) {
 							update_post_meta( $post_id, '_tribe_wooticket_for_event', $event_id );
 						}
@@ -178,7 +178,7 @@ class WCML_The_Events_Calendar implements \IWPML_Action {
 
 		foreach ( $translations as $rsvp_post_id => $translation ) {
 
-			$translated_rsvp_post_id = apply_filters( 'translate_object_id', $rsvp_post_id, 'tribe_rsvp_tickets', false, $job->language_code );
+			$translated_rsvp_post_id = apply_filters( 'wpml_object_id', $rsvp_post_id, 'tribe_rsvp_tickets', false, $job->language_code );
 
 			$postarr = [
 				'post_type'    => 'tribe_rsvp_tickets',
@@ -203,7 +203,7 @@ class WCML_The_Events_Calendar implements \IWPML_Action {
 
 			$event_id = get_post_meta( $rsvp_post_id, '_tribe_rsvp_for_event', true );
 
-			$translated_event_id = apply_filters( 'translate_object_id', $event_id, 'tribe_events', false, $job->language_code );
+			$translated_event_id = apply_filters( 'wpml_object_id', $event_id, 'tribe_events', false, $job->language_code );
 			update_post_meta( $translated_rsvp_post_id, '_tribe_rsvp_for_event', $translated_event_id );
 
 			$this->sync_custom_fields( $rsvp_post_id, $translated_rsvp_post_id );
@@ -274,7 +274,7 @@ class WCML_The_Events_Calendar implements \IWPML_Action {
 		}
 
 		foreach ( $translations as $ticket_post_id => $translation ) {
-			$translated_ticket_post_id = apply_filters( 'translate_object_id', $ticket_post_id, 'product', false, $job->language_code );
+			$translated_ticket_post_id = apply_filters( 'wpml_object_id', $ticket_post_id, 'product', false, $job->language_code );
 
 			$postarr = [
 				'post_type'    => 'product',
@@ -297,7 +297,7 @@ class WCML_The_Events_Calendar implements \IWPML_Action {
 
 			$event_id = get_post_meta( $ticket_post_id, '_tribe_wooticket_for_event', true );
 
-			$translated_event_id = apply_filters( 'translate_object_id', $event_id, 'tribe_events', false, $job->language_code );
+			$translated_event_id = apply_filters( 'wpml_object_id', $event_id, 'tribe_events', false, $job->language_code );
 			update_post_meta( $translated_ticket_post_id, '_tribe_wooticket_for_event', $translated_event_id );
 
 			$this->sync_custom_fields( $ticket_post_id, $translated_ticket_post_id );
@@ -406,7 +406,7 @@ class WCML_The_Events_Calendar implements \IWPML_Action {
 				if ( $venue_id ) {
 					foreach ( $event_translations as $language_code => $event_translation ) {
 						if ( $event_translation->element_id != $original_event_id ) {
-							$translated_venue_id = apply_filters( 'translate_object_id', $venue_id, 'tribe_venue', false, $language_code );
+							$translated_venue_id = apply_filters( 'wpml_object_id', $venue_id, 'tribe_venue', false, $language_code );
 							if ( $translated_venue_id ) {
 								update_post_meta( $event_translation->element_id, '_EventVenueID', $translated_venue_id );
 							}
@@ -432,7 +432,7 @@ class WCML_The_Events_Calendar implements \IWPML_Action {
 				$original_event_id  = $event_translations[ $_GET['source_lang'] ]->element_id;
 				$original_venue_id  = get_post_meta( $original_event_id, '_EventVenueID', true );
 				if ( $original_venue_id ) {
-					$translated_venue_id = apply_filters( 'translate_object_id', $original_venue_id, 'tribe_venue', false, $_GET['lang'] );
+					$translated_venue_id = apply_filters( 'wpml_object_id', $original_venue_id, 'tribe_venue', false, $_GET['lang'] );
 					if ( $translated_venue_id ) {
 						// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 						echo "<script type=\"text/javascript\">
@@ -450,7 +450,7 @@ class WCML_The_Events_Calendar implements \IWPML_Action {
 		$original_venue_id = get_post_meta( $original_event_id, '_EventVenueID', true );
 
 		if ( $original_venue_id ) {
-			$translated_venue_id = apply_filters( 'translate_object_id', $original_venue_id, 'tribe_venue', false, $job->language_code );
+			$translated_venue_id = apply_filters( 'wpml_object_id', $original_venue_id, 'tribe_venue', false, $job->language_code );
 			if ( $translated_venue_id ) {
 				update_post_meta( $post_id, '_EventVenueID', $translated_venue_id );
 			}
@@ -475,7 +475,7 @@ class WCML_The_Events_Calendar implements \IWPML_Action {
 
 	public function get_translated_organizer_ids( $organizer_ids, $event_id ) {
 		foreach ( $organizer_ids as $key => $organizer_id ) {
-			$organizer_ids[ $key ] = apply_filters( 'translate_object_id', $organizer_id, 'tribe_organizer', true );
+			$organizer_ids[ $key ] = apply_filters( 'wpml_object_id', $organizer_id, 'tribe_organizer', true );
 		}
 		return $organizer_ids;
 	}

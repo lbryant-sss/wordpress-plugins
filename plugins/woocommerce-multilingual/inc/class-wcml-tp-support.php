@@ -1,11 +1,12 @@
 <?php
 
-use WPML\FP\Obj;
-use WPML\LIB\WP\Hooks;
+use WCML\TranslationJob\Hooks;
 
 class WCML_TP_Support {
 
 	const CUSTOM_FIELD_NAME = 'wc_variation_field:';
+
+	const DOWNLOADABLE_FILES_TRANSLATABLE_FIELDS = [ 'name', 'file' ];
 
 	/** @var woocommerce_wpml */
 	private $woocommerce_wpml;
@@ -25,7 +26,6 @@ class WCML_TP_Support {
 	 * @param array $tm_settings
 	 */
 	public function __construct( woocommerce_wpml $woocommerce_wpml, wpdb $wpdb, WPML_Element_Translation_Package $tp, array $tm_settings ) {
-
 		$this->woocommerce_wpml = $woocommerce_wpml;
 		$this->wpdb             = $wpdb;
 		$this->tp               = $tp;
@@ -33,30 +33,46 @@ class WCML_TP_Support {
 	}
 
 	public function add_hooks() {
-		add_filter( 'wpml_tm_translation_job_data', array(
+		add_filter( 'wpml_tm_translation_job_data', [
 			$this,
 			'append_custom_attributes_to_translation_package'
-		), 10, 2 );
-		add_action( 'wpml_translation_job_saved', array( $this, 'save_custom_attribute_translations' ), 10, 3 );
+		], 10, 2 );
+		add_action( 'wpml_translation_job_saved', [ $this, 'save_custom_attribute_translations' ], 10, 3 );
 
-		add_filter( 'wpml_tm_translation_job_data', array(
+		add_filter( 'wpml_tm_translation_job_data', [
 			$this,
 			'append_variation_custom_fields_to_translation_package'
-		), 10, 2 );
-		add_action( 'wpml_pro_translation_completed', array(
+		], 10, 2 );
+
+		add_filter( 'wpml_tm_translation_job_data', [
+			$this,
+			'append_variation_downloadable_fields_to_translation_package'
+		], 10, 2 );
+
+		add_filter( 'wpml_tm_translation_job_data', [
+			$this,
+			'append_simple_downloadable_fields_to_translation_package'
+		], 10, 2 );
+
+		add_action( 'wpml_pro_translation_completed', [
 			$this,
 			'save_variation_custom_fields_translations'
-		), 20, 3 ); //after WCML_Products
+		], 20, 3 ); //after WCML_Products
 
 		if ( ! defined( 'WPML_MEDIA_VERSION' ) ) {
-			add_filter( 'wpml_tm_translation_job_data', array( $this, 'append_images_to_translation_package' ), 10, 2 );
-			add_action( 'wpml_translation_job_saved', array( $this, 'save_images_translations' ), 10, 3 );
+			add_filter( 'wpml_tm_translation_job_data', [ $this, 'append_images_to_translation_package' ], 10, 2 );
+			add_action( 'wpml_translation_job_saved', [ $this, 'save_images_translations' ], 10, 3 );
 		}
 	}
 
+	/**
+	 * @param array $package
+	 * @param \WP_Post $post
+	 *
+	 * @return array
+	 */
 	public function append_custom_attributes_to_translation_package( $package, $post ) {
-
-		if ( $post->post_type === 'product' ) {
+		if ( $this->isWpPostAWcProduct( $post ) ) {
 
 			$product      = wc_get_product( $post->ID );
 			$product_type = $product->get_type();
@@ -71,20 +87,20 @@ class WCML_TP_Support {
 						continue;
 					}
 
-					$package['contents'][ 'wc_attribute_name:' . $attribute_key ] = array(
+					$package['contents'][ 'wc_attribute_name:' . $attribute_key ] = [
 						'translate' => 1,
 						'data'      => $this->tp->encode_field_data( $attribute['name'] ),
 						'format'    => 'base64'
-					);
+					];
 					$values                                                       = explode( '|', $attribute['value'] );
 					$values                                                       = array_map( 'trim', $values );
 
 					foreach ( $values as $value_key => $value ) {
-						$package['contents'][ 'wc_attribute_value:' . $value_key . ':' . $attribute_key ] = array(
+						$package['contents'][ 'wc_attribute_value:' . $value_key . ':' . $attribute_key ] = [
 							'translate' => 1,
 							'data'      => $this->tp->encode_field_data( $value ),
 							'format'    => 'base64'
-						);
+						];
 					}
 				}
 			}
@@ -167,14 +183,19 @@ class WCML_TP_Support {
 			->toArray();
 	}
 
+	/**
+	 * @param array $package
+	 * @param \WP_Post $post
+	 *
+	 * @return array
+	 */
 	public function append_variation_custom_fields_to_translation_package( $package, $post ) {
-
-		if ( 'product' === $post->post_type ) {
+		if ( $this->isWpPostAWcProduct( $post ) ) {
 
 			/** @var WC_Product_Variable $product */
 			$product = wc_get_product( $post->ID );
 
-			$allowed_variations_types = apply_filters( 'wcml_xliff_allowed_variations_types', array( 'variable' ) );
+			$allowed_variations_types = apply_filters( 'wcml_xliff_allowed_variations_types', [ 'variable' ] );
 
 			if ( $product && in_array( $product->get_type(), $allowed_variations_types, true ) ) {
 
@@ -188,11 +209,11 @@ class WCML_TP_Support {
 						$meta_value = get_post_meta( $variation->ID, $meta_key, true );
 
 						if ( $meta_value && !is_array( $meta_value ) ) {
-							$package['contents'][ self::CUSTOM_FIELD_NAME.$meta_key.':' . $variation->ID ] = array(
+							$package['contents'][ self::CUSTOM_FIELD_NAME.$meta_key.':' . $variation->ID ] = [
 								'translate' => 1,
 								'data'      => $this->tp->encode_field_data( $meta_value ),
 								'format'    => 'base64'
-							);
+							];
 						}
 					}
 				}
@@ -205,11 +226,114 @@ class WCML_TP_Support {
 
 	}
 
+	/**
+	 * @param array $package
+	 * @param \WP_Post $post
+	 *
+	 * @return array
+	 */
+	public function append_variation_downloadable_fields_to_translation_package( $package, $post ) {
+		if ( $this->isWpPostAWcProduct( $post ) ) {
+
+			/** @var WC_Product_Variable $product */
+			$product = wc_get_product( $post->ID );
+
+			$allowed_variations_types = apply_filters( 'wcml_xliff_allowed_variations_types', [ 'variable' ] );
+
+			if ( $product && in_array( $product->get_type(), $allowed_variations_types, true ) ) {
+
+				$variations = $this->woocommerce_wpml->sync_variations_data->get_product_variations( $post->ID );
+
+				foreach ( $variations as $variation ) {
+
+					$meta_keys_to_translate = $this->get_variation_custom_fields_to_translate( $variation->ID );
+
+					if ( ! in_array( WCML_Downloadable_Products::DOWNLOADABLE_FILES_META, $meta_keys_to_translate ) ) {
+						continue;
+					}
+
+					$meta_value = get_post_meta( $variation->ID, WCML_Downloadable_Products::DOWNLOADABLE_FILES_META, true );
+
+					$fileNo = 0;
+					foreach ( $meta_value as $downloadableId => $downloadableFile ) {
+						foreach ( $downloadableFile as $name => $value ) {
+							if ( ! in_array( $name, self::DOWNLOADABLE_FILES_TRANSLATABLE_FIELDS ) ) {
+								continue;
+							}
+
+							$productKey = WCML_Downloadable_Products::buildDownloadableFileField( $fileNo, $downloadableId, $name );
+							$productVariantKey = sprintf( '%s:%d', $productKey, $variation->ID );
+
+							$package['contents'][ $productVariantKey ] = [
+								'translate' => 1,
+								'data'      => $this->tp->encode_field_data( $value ),
+								'format'    => 'base64'
+							];
+						}
+						$fileNo ++;
+					}
+				}
+			}
+		}
+		return $package;
+	}
+
+	/**
+	 * @param array $package
+	 * @param \WP_Post $post
+	 *
+	 * @return array
+	 */
+	public function append_simple_downloadable_fields_to_translation_package( $package, $post ) {
+		if ( $this->isWpPostAWcProduct( $post ) ) {
+			if ( WCML_Downloadable_Products::isDownloadableFilesSetToUseSame( $post->ID ) ) {
+				return $package;
+			}
+
+			/** @var WC_Product_Variable $product */
+			$product = wc_get_product( $post->ID );
+
+			$allowed_types = [ 'simple' ];
+
+			if ( $product && in_array( $product->get_type(), $allowed_types, true ) ) {
+
+				$meta_value = get_post_meta( $post->ID, WCML_Downloadable_Products::DOWNLOADABLE_FILES_META, true );
+
+				if ( ! is_array( $meta_value ) ) {
+					return $package;
+				}
+
+				$fileNo = 0;
+				foreach ( $meta_value as $downloadableId => $downloadableFile ) {
+					foreach ( $downloadableFile as $name => $value ) {
+						if ( ! in_array( $name, self::DOWNLOADABLE_FILES_TRANSLATABLE_FIELDS ) ) {
+							continue;
+						}
+
+						$productKey = WCML_Downloadable_Products::buildDownloadableFileField( $fileNo, $downloadableId, $name );
+
+						$package['contents'][ $productKey ] = [
+							'translate' => 1,
+							'data'      => $this->tp->encode_field_data( $value ),
+							'format'    => 'base64'
+						];
+					}
+					$fileNo ++;
+				}
+			}
+		}
+
+		return $package;
+	}
+
 	public function save_variation_custom_fields_translations( $post_id, $data, $job ) {
+		if ( ! Hooks::isProduct( $job ) ) {
+			return null;
+		}
 
 		$language = $job->language_code;
 
-		foreach ( $data as $data_key => $value ) {
+		foreach ( $data as $value ) {
 
 			if ( $value['finished'] && isset( $value['field_type'] ) && strpos( $value['field_type'], self::CUSTOM_FIELD_NAME ) === 0 ) {
 
@@ -218,7 +342,7 @@ class WCML_TP_Support {
 				$variation_id = $exp[2];
 
 				if ( is_post_type_translated( 'product_variation' ) ) {
-					$translated_variation_id = apply_filters( 'translate_object_id', $variation_id, 'product_variation', false, $language );
+					$translated_variation_id = apply_filters( 'wpml_object_id', $variation_id, 'product_variation', false, $language );
 				} else {
 					global $wpml_post_translations;
 					$translations            = $wpml_post_translations->get_element_translations( $variation_id );
@@ -233,9 +357,14 @@ class WCML_TP_Support {
 
 	}
 
+	/**
+	 * @param array $package
+	 * @param \WP_Post $post
+	 *
+	 * @return array
+	 */
 	public function append_images_to_translation_package( $package, $post ) {
-
-		if ( $post->post_type == 'product' ) {
+		if ( $this->isWpPostAWcProduct( $post ) ) {
 
 			$product_images = $this->woocommerce_wpml->media->product_images_ids( $post->ID );
 			foreach ( $product_images as $image_id ) {
@@ -263,11 +392,11 @@ class WCML_TP_Support {
 
 		$product_images = $this->woocommerce_wpml->media->product_images_ids( $job->original_doc_id );
 		foreach ( $product_images as $image_id ) {
-			$translated_prod_image = apply_filters( 'translate_object_id', $image_id, 'attachment', false, $language );
+			$translated_prod_image = apply_filters( 'wpml_object_id', $image_id, 'attachment', false, $language );
 			$image_data            = $this->get_image_data( $image_id, $data );
 			if ( ! empty( $image_data ) ) {
 
-				$translation = array();
+				$translation = [];
 				if ( isset( $image_data['title'] ) ) {
 					$translation['post_title'] = $image_data['title'];
 				}
@@ -279,7 +408,7 @@ class WCML_TP_Support {
 				}
 
 				if ( $translation ) {
-					$this->wpdb->update( $this->wpdb->posts, $translation, array( 'id' => $translated_prod_image ) );
+					$this->wpdb->update( $this->wpdb->posts, $translation, [ 'id' => $translated_prod_image ] );
 				}
 
 				if ( isset( $image_data['alt-text'] ) ) {
@@ -289,8 +418,15 @@ class WCML_TP_Support {
 		}
 	}
 
+	/**
+	 * @param \WP_Post $post
+	 */
+	private function isWpPostAWcProduct( $post ): bool {
+		return 'product' === $post->post_type;
+	}
+
 	private function get_image_data( $image_id, $data ) {
-		$image_data = array();
+		$image_data = [];
 
 		foreach ( $data as $data_key => $value ) {
 			if ( $value['finished'] && isset( $value['field_type'] ) ) {
@@ -315,11 +451,11 @@ class WCML_TP_Support {
 	}
 
 	private function add_to_package( &$package, $key, $data ) {
-		$package['contents'][ $key ] = array(
+		$package['contents'][ $key ] = [
 			'translate' => 1,
 			'data'      => $this->tp->encode_field_data( $data ),
 			'format'    => 'base64'
-		);
+		];
 
 	}
 }

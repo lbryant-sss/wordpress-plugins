@@ -2,6 +2,8 @@
 
 class WCML_Cart_Sync_Warnings {
 
+	const KEY_DISMISS = 'dismiss_cart_warning';
+
 	/**
 	 * @var woocommerce_wpml
 	 */
@@ -35,6 +37,7 @@ class WCML_Cart_Sync_Warnings {
 			add_action( 'admin_enqueue_scripts', [ $this, 'register_styles' ] );
 		}
 
+		add_action( 'admin_init', [ $this, 'handle_dismiss_cart_notice' ] );
 	}
 
 	public function check_if_show_notices_needed() {
@@ -46,7 +49,7 @@ class WCML_Cart_Sync_Warnings {
 				$cart_sync_settings['lang_switch'] === $this->sitepress->get_wp_api()->constant( 'WCML_CART_SYNC' ) ||
 				$cart_sync_settings['currency_switch'] === $this->sitepress->get_wp_api()->constant( 'WCML_CART_SYNC' )
 			) &&
-			! $this->woocommerce_wpml->settings['dismiss_cart_warning'] &&
+			! $this->woocommerce_wpml->settings[self::KEY_DISMISS] &&
 			$this->get_list_of_active_extensions()
 		) {
 			return true;
@@ -84,7 +87,7 @@ class WCML_Cart_Sync_Warnings {
 		$message .= '<p>';
 		$message .= sprintf( $reset_cart_message, $reset_cart_configure_link );
 		$message .= '</p>';
-		$message .= '<a class="notice-dismiss" href="' . esc_url( add_query_arg( 'wcml_action', 'dismiss_cart_warning', $request_url ) ) . '"><span class="screen-reader-text">' . esc_html__( 'Dismiss', 'woocommerce-multilingual' ) . '</a>';
+		$message .= '<a class="notice-dismiss" href="' . esc_url( add_query_arg( 'wcml_action', self::KEY_DISMISS, $request_url ) ) . '"><span class="screen-reader-text">' . esc_html__( 'Dismiss', 'woocommerce-multilingual' ) . '</span></a>';
 		$message .= '</div>';
 
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -116,4 +119,11 @@ class WCML_Cart_Sync_Warnings {
 
 	}
 
+	public function handle_dismiss_cart_notice() {
+		if ( isset( $_GET['wcml_action'] ) && $_GET['wcml_action'] === self::KEY_DISMISS ) {
+			$this->woocommerce_wpml->settings[self::KEY_DISMISS] = true;
+			$this->woocommerce_wpml->update_settings();
+			wcml_safe_redirect( remove_query_arg( 'wcml_action' ) ); // Redirect to avoid repeating the action
+		}
+	}	
 }

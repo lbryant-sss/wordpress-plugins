@@ -10,6 +10,7 @@ class FrontEndHooks implements IWPML_Action {
 
 	const CONTEXT      = 'wcml-reviews';
 	const COMMENT_TYPE = 'review';
+	const HOOK_ENABLE  = 'wcml_enable_product_review_translation';
 
 	public function add_hooks() {
 		/**
@@ -17,7 +18,7 @@ class FrontEndHooks implements IWPML_Action {
 		 *
 		 * @param bool $true
 		 */
-		if ( apply_filters( 'wcml_enable_product_review_translation', true ) ) {
+		if ( apply_filters( self::HOOK_ENABLE, true ) ) {
 			add_action( 'wp_insert_comment', [ $this, 'insertCommentAction' ], 10, 2 );
 			add_action( 'woocommerce_review_before', [ $this, 'translateReview' ] );
 		}
@@ -36,6 +37,10 @@ class FrontEndHooks implements IWPML_Action {
 	 */
 	public function translateReview( $comment ) {
 		if ( self::isNonEmptyReview( $comment ) ) {
+			if ( \WCML_Comments::is_translated( $comment ) ) {
+				return;
+			}
+
 			$reviewTranslation = apply_filters(
 				'wpml_translate_single_string',
 				$comment->comment_content,
@@ -75,12 +80,13 @@ class FrontEndHooks implements IWPML_Action {
 		return Obj::prop( 'comment_content', $comment )
 		       && Relation::propEq( 'comment_type', self::COMMENT_TYPE, $comment );
 	}
+
 	/**
 	 * @param \WP_Comment|\stdClass $review
 	 *
-	 * @return string (e.g. "product/123/review/456")
+	 * @return string (e.g. "product-123-review-456")
 	 */
 	private static function getReviewStringName( $review ) {
-		return 'product-' . Obj::prop( 'comment_post_ID', $review ) . '-review-' . Obj::prop( 'comment_ID', $review );
+		return 'product-' . \WCML_Comments::getOriginalPostId( $review ) . '-review-' . Obj::prop( 'comment_ID', $review );
 	}
 }

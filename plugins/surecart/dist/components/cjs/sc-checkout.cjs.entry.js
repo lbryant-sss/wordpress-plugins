@@ -3,11 +3,11 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-8acc3c89.js');
-const mutations = require('./mutations-cad5b919.js');
+const mutations = require('./mutations-10a18c83.js');
 const store = require('./store-4a539aea.js');
 const store$1 = require('./store-c4cf8771.js');
-require('./watchers-e1fab163.js');
-const getters = require('./getters-45548e2d.js');
+require('./watchers-5d4eed04.js');
+const getters = require('./getters-ae03ef93.js');
 const universe = require('./universe-0cf1168a.js');
 require('./index-bcdafe6e.js');
 require('./utils-2e91d46c.js');
@@ -16,7 +16,7 @@ require('./add-query-args-49dcb630.js');
 require('./index-fb76df07.js');
 require('./google-59d23803.js');
 require('./currency-71fce0f0.js');
-require('./price-ca4a4318.js');
+require('./price-5b1afcfe.js');
 require('./watchers-2ad3abd1.js');
 require('./util-b877b2bd.js');
 

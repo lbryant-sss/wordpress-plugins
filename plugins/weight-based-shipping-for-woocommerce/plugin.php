@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: WooCommerce Weight Based Shipping
+ * Plugin Name: Weight Based Shipping for WooCommerce
  * Plugin URI: https://wordpress.org/plugins/weight-based-shipping-for-woocommerce/
  * Description: Simple yet flexible shipping method for WooCommerce.
  * Version: 6.7.0

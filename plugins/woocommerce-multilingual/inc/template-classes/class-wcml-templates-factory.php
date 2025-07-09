@@ -30,6 +30,8 @@ abstract class WCML_Templates_Factory extends WPML_Templates_Factory {
 			$template = $this->get_template();
 		}
 
+		$this->before_render();
+
 		try {
 			/* @phpstan-ignore-next-line */
 			$output = $this->twig->render( $template, $model );
@@ -49,6 +51,10 @@ abstract class WCML_Templates_Factory extends WPML_Templates_Factory {
 		}
 
 		return $output;
+	}
+
+	protected function before_render() {
+
 	}
 
 	/**

@@ -43,25 +43,25 @@ class WCML_Multi_Currency_Reports {
 
 	public function add_hooks() {
 
-		add_action( 'init', array( $this, 'reports_init' ) );
+		add_action( 'init', [ $this, 'reports_init' ] );
 
 		if ( is_admin() ) {
 
-			add_action( 'wp_ajax_wcml_reports_set_currency', array( $this, 'set_reports_currency' ) );
+			add_action( 'wp_ajax_wcml_reports_set_currency', [ $this, 'set_reports_currency' ] );
 
-			add_action( 'wc_reports_tabs', array( $this, 'reports_currency_selector' ) );
+			add_action( 'wc_reports_tabs', [ $this, 'reports_currency_selector' ] );
 
 			if ( current_user_can( 'view_woocommerce_reports' ) ||
 			     current_user_can( 'manage_woocommerce' ) ||
 			     current_user_can( 'publish_shop_orders' )
 			) {
-				add_filter( 'woocommerce_dashboard_status_widget_top_seller_query', array(
+				add_filter( 'woocommerce_dashboard_status_widget_top_seller_query', [
 					$this,
 					'filterDashboardstatusWidgetTopSellerQuery'
-				) );
+				] );
 			}
 
-			add_action( 'current_screen', array( $this, 'admin_screen_loaded' ), 10, 1 );
+			add_action( 'current_screen', [ $this, 'admin_screen_loaded' ], 10, 1 );
 		}
 	}
 
@@ -70,10 +70,10 @@ class WCML_Multi_Currency_Reports {
 		if ( $screen->id === 'dashboard' ) {
 			// Note that this filter only runs when the WooCommerce Admin is disabled.
 			// See https://developer.woocommerce.com/2021/05/18/request-for-comments-removing-the-filter-to-turn-off-woocommerce-admin/
-			add_filter( 'woocommerce_reports_get_order_report_query', array(
+			add_filter( 'woocommerce_reports_get_order_report_query', [
 				$this,
 				'filterOrdersAsPostsByCurrencyPostmeta'
-			) );
+			] );
 		}
 
 	}
@@ -83,7 +83,7 @@ class WCML_Multi_Currency_Reports {
 		$isReportsPage = isset( $_GET['page'] ) && 'wc-reports' === $_GET['page'];
 
 		if( $isReportsPage || \WCML\Rest\Functions::isRestApiRequest() ){
-			add_filter( 'woocommerce_reports_get_order_report_query', array( $this, 'admin_reports_query_filter' ) );
+			add_filter( 'woocommerce_reports_get_order_report_query', [ $this, 'admin_reports_query_filter' ] );
 		}
 
 		if ( $isReportsPage ) { //wc-reports - 2.1.x, woocommerce_reports 2.0.x
@@ -115,7 +115,7 @@ class WCML_Multi_Currency_Reports {
 
 			$this->reports_currency = isset( $_COOKIE['_wcml_reports_currency'] ) ? $_COOKIE['_wcml_reports_currency'] : wcml_get_woocommerce_currency_option();
 
-			add_filter( 'woocommerce_currency_symbol', array( $this, '_set_reports_currency_symbol' ) );
+			add_filter( 'woocommerce_currency_symbol', [ $this, '_set_reports_currency_symbol' ] );
 		}
 	}
 
@@ -151,7 +151,7 @@ class WCML_Multi_Currency_Reports {
 
 		$nonce = filter_input( INPUT_POST, 'wcml_nonce', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
 		if ( ! $nonce || ! wp_verify_nonce( $nonce, 'reports_set_currency' ) ) {
-			echo json_encode( array( 'error' => __( 'Invalid nonce', 'woocommerce-multilingual' ) ) );
+			echo json_encode( [ 'error' => __( 'Invalid nonce', 'woocommerce-multilingual' ) ] );
 			die();
 		}
 
@@ -170,7 +170,7 @@ class WCML_Multi_Currency_Reports {
 		$currencies     = get_woocommerce_currencies();
 
 		// Remove filter temporary.
-		remove_filter( 'woocommerce_currency_symbol', array( $this, '_set_reports_currency_symbol' ) );
+		remove_filter( 'woocommerce_currency_symbol', [ $this, '_set_reports_currency_symbol' ] );
 		?>
         <select id="dropdown_shop_report_currency" style="margin-left:5px;">
 			<?php if ( empty( $currency_codes ) ): ?>
@@ -186,7 +186,7 @@ class WCML_Multi_Currency_Reports {
 		<?php
 
 		// Add filter back.
-		add_filter( 'woocommerce_currency_symbol', array( $this, '_set_reports_currency_symbol' ) );
+		add_filter( 'woocommerce_currency_symbol', [ $this, '_set_reports_currency_symbol' ] );
 	}
 
 	/**

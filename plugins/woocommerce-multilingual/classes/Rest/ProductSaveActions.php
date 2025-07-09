@@ -16,18 +16,18 @@ class ProductSaveActions extends \WPML_Post_Translation {
 	/** @var \SitePress $sitepress */
 	private $sitepress;
 
-	/** @var \WCML_Synchronize_Product_Data $productDataSync */
-	private $productDataSync;
+	/** @var \woocommerce_wpml $woocommerceWpml */
+	private $woocommerceWpml;
 
 	public function __construct(
 		array $settings,
 		\wpdb $wpdb,
 		\SitePress $sitepress,
-		\WCML_Synchronize_Product_Data $productDataSync
+		\woocommerce_wpml $woocommerceWpml
 	) {
 		parent::__construct( $settings, $wpdb );
 		$this->sitepress       = $sitepress;
-		$this->productDataSync = $productDataSync;
+		$this->woocommerceWpml = $woocommerceWpml;
 	}
 
 	/**
@@ -46,7 +46,12 @@ class ProductSaveActions extends \WPML_Post_Translation {
 		if ( ! $this->synchronize_product_stock_only( $wpRestRequest ) ) {
 			$this->after_save_post( $trid, get_post( $productId, ARRAY_A ), $langCode, $sourceLangCode );
 		}
-		$this->productDataSync->synchronize_products( $productId, get_post( $productId ), true, $wpRestRequest );
+
+		$originalProductId = $translationOf ?: $productId;
+		do_action( \WCML\Synchronization\Hooks::HOOK_SYNCHRONIZE_PRODUCT_TRANSLATIONS, get_post( $originalProductId ), [], [] );
+		if ( WCML_MULTI_CURRENCIES_INDEPENDENT === $this->woocommerceWpml->settings['enable_multi_currency'] ) {
+			$this->woocommerceWpml->multi_currency->custom_prices->save_custom_prices_on_rest( $originalProductId, $wpRestRequest );
+		}
 	}
 
 	/**

@@ -31,7 +31,7 @@ class WCML_Currency_Switcher {
 	}
 
 	public function on_init() {
-		add_action( 'wcml_currency_switcher', [ $this, 'wcml_currency_switcher' ] );
+		add_action( 'wcml_currency_switcher', [ $this, 'do_currency_switcher' ] );
 		// @deprecated 3.9
 		add_action( 'currency_switcher', [ $this, 'currency_switcher' ] );
 		add_shortcode( 'currency_switcher', [ $this, 'currency_switcher_shortcode' ] );
@@ -53,15 +53,17 @@ class WCML_Currency_Switcher {
 		$atts = (array) $atts;
 
 		ob_start();
-		$this->wcml_currency_switcher( $atts );
+		$this->do_currency_switcher( $atts );
 		$html = ob_get_contents();
 		ob_end_clean();
 
 		return $html;
 	}
 
-	public function wcml_currency_switcher( $args = [] ) {
-
+	/**
+	 * @param array $args
+	 */
+	public function do_currency_switcher( $args = [] ) {
 		if ( ! is_array( $args ) ) {
 			$args = [];
 		}
@@ -104,22 +106,8 @@ class WCML_Currency_Switcher {
 		$display_custom_prices = isset( $wcml_settings['display_custom_prices'] ) && $wcml_settings['display_custom_prices'];
 		$is_cart_or_checkout   = is_page( wc_get_page_id( 'cart' ) ) || is_page( wc_get_page_id( 'checkout' ) );
 
-		if ( $display_custom_prices ) {
-			if ( $is_cart_or_checkout ) {
-				$show_currency_switcher = false;
-			} elseif ( is_product() ) {
-				$current_product_id  = get_post()->ID;
-				$original_product_id = $this->woocommerce_wpml->products->get_original_product_id( $current_product_id );
-				$use_custom_prices   = get_post_meta(
-					$original_product_id,
-					'_wcml_custom_prices_status',
-					true
-				);
-
-				if ( ! $use_custom_prices ) {
-					$show_currency_switcher = false;
-				}
-			}
+		if ( ! $this->should_display_currency_switcher_based_on_custom_prices( $wcml_settings ) ) {
+			$show_currency_switcher = false;
 		}
 
 		if ( $show_currency_switcher ) {
@@ -151,11 +139,29 @@ class WCML_Currency_Switcher {
 	}
 
 	/**
+	 * @param array $args
+	 *
+	 * @deprecated 5.5.0 Use do_currency_switcher instead. The method sharing name with the class can have unexpected outcomes, for example, on PHPUnit.
+	 */
+	public function wcml_currency_switcher( $args = [] ) {
+		if ( ! is_array( $args ) ) {
+			$args = [];
+		}
+
+		if ( ! isset( $args['echo'] ) || $args['echo'] ) {
+			$this->do_currency_switcher( $args );
+		} else {
+			// phpcs:ignore Universal.CodeAnalysis.ConstructorDestructorReturn.ReturnValueFound
+			return $this->do_currency_switcher( $args );
+		}
+	}
+
+	/**
 	 * @param array $currencies
 	 *
 	 * @return array
 	 */
-	private function filter_allowed_currencies_on_frontend( $currencies ){
+	private function filter_allowed_currencies_on_frontend( $currencies ) {
 		$ifDisallowedByLanguage = function( $currency ) {
 			return ! Settings::isValidCurrencyForLang( $currency, $this->sitepress->get_current_language() );
 		};
@@ -198,7 +204,7 @@ class WCML_Currency_Switcher {
 	}
 
 	public function add_user_agent_touch_device_classes( $classes ) {
-		
+
 		if ( wp_is_mobile() ) {
 			$classes[] = 'wcml-cs-touch-device';
 		}
@@ -319,6 +325,45 @@ class WCML_Currency_Switcher {
 		}
 
 		return $args;
+	}
+
+	/**
+	 * @param array $wcml_settings
+	 *
+	 * @return bool
+	 */
+	public function should_display_currency_switcher_based_on_custom_prices( $wcml_settings ) {
+		if ( empty( $wcml_settings['display_custom_prices'] ) ) {
+			return true;
+		}
+
+		if ( is_page( wc_get_page_id( 'cart' ) ) || is_page( wc_get_page_id( 'checkout' ) ) ) {
+			return false;
+		}
+
+		$hasOriginalCustomPrices = function( $productId ) {
+			$originalId = $this->woocommerce_wpml->products->get_original_product_id( $productId );
+			return (bool) get_post_meta( $originalId, '_wcml_custom_prices_status', true );
+		};
+
+		if ( is_product() ) {
+			$currentProductId = get_the_ID();
+			$product          = wc_get_product( $currentProductId );
+
+			if ( $product && $product->is_type( 'grouped' ) ) {
+				foreach ( $product->get_children() as $child_id ) {
+					if ( ! $hasOriginalCustomPrices( $child_id ) ) {
+						return false;
+					}
+				}
+			} else {
+				if ( ! $hasOriginalCustomPrices( $currentProductId ) ) {
+					return false;
+				}
+			}
+		}
+
+		return true;
 	}
 
 }

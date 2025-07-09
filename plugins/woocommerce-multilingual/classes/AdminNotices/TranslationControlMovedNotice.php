@@ -54,15 +54,15 @@ class TranslationControlMovedNotice implements IWPML_Backend_Action, IWPML_Front
 	private function getNoticeText(): string {
 
 		$text = '';
-		$text .= '<h2>' . __( 'The Translation Controls Have Moved', 'woocommerce-multilingual' ) . '</h2>';
+		$text .= '<h2>' . esc_html__( 'The Translation Controls Have Moved', 'woocommerce-multilingual' ) . '</h2>';
 
-		$text .= '<p>' . __( 'We updated WooCommerce Multilingual to streamline your translation work.', 'woocommerce-multilingual' ) . '</p>';
+		$text .= '<p>' . esc_html__( 'We updated WooCommerce Multilingual to streamline your translation work.', 'woocommerce-multilingual' ) . '</p>';
 
 		$text .= '<p><strong>';
 
 		$text .= sprintf(
 			/* translators: %1$s and %2$s are opening and closing HTML link tags */
-			__( 'Translate your whole site\'s content, including products, from %1$sWPML &rarr; Translation Management%2$s.', 'woocommerce-multilingual' ),
+			esc_html__( 'Translate your whole site\'s content, including products, from %1$sWPML &rarr; Translation Management%2$s.', 'woocommerce-multilingual' ),
 			'<a href="' . \WCML\Utilities\AdminUrl::getWPMLTMDashboard() . '">',
 			'</a>'
 		);

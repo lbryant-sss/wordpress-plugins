@@ -859,6 +859,14 @@ var n="none",r="contents",i=/input|select|textarea|button|object|iframe/;functio
     p:last-child {
       margin-bottom: 0;
     }
+
+    ul {
+      list-style: disc;
+    }
+
+    ol {
+      list-style: decimal;
+    }
   }
 
   .neko-block-action {

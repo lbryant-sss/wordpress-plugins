@@ -44,7 +44,7 @@ class Review implements IWPML_Backend_Action, IWPML_Frontend_Action, IWPML_DIC_A
 			$notice->set_dismissible( true );
 
 			$reviewLink   = 'https://wordpress.org/support/plugin/woocommerce-multilingual/reviews/?filter=5#new-post';
-			$reviewButton = $this->wpmlNotices->get_new_notice_action( __( 'Review WooCommerce Multilingual & Multicurrency', 'woocommerce-multilingual' ), $reviewLink, false, false, true );
+			$reviewButton = $this->wpmlNotices->get_new_notice_action( esc_html__( 'Review WooCommerce Multilingual & Multicurrency', 'woocommerce-multilingual' ), $reviewLink, false, false, true );
 			$notice->add_action( $reviewButton );
 
 			$notice->set_restrict_to_screen_ids( RestrictedScreens::get() );
@@ -55,13 +55,13 @@ class Review implements IWPML_Backend_Action, IWPML_Frontend_Action, IWPML_DIC_A
 
 	private function getNoticeText(): string {
 		$text = '<h2>';
-		$text .= __( 'Congrats on making your first multicurrency sale!', 'woocommerce-multilingual' );
+		$text .= esc_html__( 'Congrats on making your first multicurrency sale!', 'woocommerce-multilingual' );
 		$text .= '</h2>';
 
 		$text .= '<p>';
 		$text .= sprintf(
 			/* translators: %1$s and %2$s are opening and closing HTML link tags */
-			__( 'Want to help <strong>WooCommerce Multilingual & Multicurrency</strong> plugin? %1$sGive us a review%2$s!', 'woocommerce-multilingual' ),
+			esc_html__( 'Want to help <strong>WooCommerce Multilingual & Multicurrency</strong> plugin? %1$sGive us a review%2$s!', 'woocommerce-multilingual' ),
 			'<a href="https://wordpress.org/support/plugin/woocommerce-multilingual/reviews/?filter=5#new-post" class="wpml-external-link" target="_blank">',
 			'</a>'
 		);

@@ -950,6 +950,7 @@ class ComposerStaticInitde6168bc7e17873548173e515fd8b9ef
         'SureCart\\Models\\TaxProtocol' => __DIR__ . '/../..' . '/app/src/Models/TaxProtocol.php',
         'SureCart\\Models\\TaxRegistration' => __DIR__ . '/../..' . '/app/src/Models/TaxRegistration.php',
         'SureCart\\Models\\TaxZone' => __DIR__ . '/../..' . '/app/src/Models/TaxZone.php',
+        'SureCart\\Models\\Traits\\CanDuplicate' => __DIR__ . '/../..' . '/app/src/Models/Traits/CanDuplicate.php',
         'SureCart\\Models\\Traits\\CanFinalize' => __DIR__ . '/../..' . '/app/src/Models/Traits/CanFinalize.php',
         'SureCart\\Models\\Traits\\CanResendNotifications' => __DIR__ . '/../..' . '/app/src/Models/Traits/CanResendNotifications.php',
         'SureCart\\Models\\Traits\\HasAffiliation' => __DIR__ . '/../..' . '/app/src/Models/Traits/HasAffiliation.php',

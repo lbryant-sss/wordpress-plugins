@@ -6,6 +6,7 @@ use IWPML_Backend_Action;
 use IWPML_Frontend_Action;
 use IWPML_DIC_Action;
 use WCML\MultiCurrency\Geolocation;
+use WCML\PaymentGateways\Strings;
 use WCML\StandAlone\IStandAloneAction;
 use WCML\Utilities\Resources;
 use WCML\Utilities\AdminUrl;
@@ -143,8 +144,8 @@ class Hooks implements IWPML_Backend_Action, IWPML_Frontend_Action, IWPML_DIC_Ac
 	 * @return array
 	 */
 	private function getStrings() {
-
 		return [
+			'translationInstructions'     => Strings::getTranslationInstructions(),
 			'labelAvailability'           => __( 'Country availability', 'woocommerce-multilingual' ),
 			'labelAllCountries'           => __( 'All countries', 'woocommerce-multilingual' ),
 			'labelAllCountriesExcept'     => __( 'All countries except', 'woocommerce-multilingual' ),
@@ -194,7 +195,13 @@ class Hooks implements IWPML_Backend_Action, IWPML_Frontend_Action, IWPML_DIC_Ac
 
 	public function outputAfterSettings() {
 		if ( $this->isSubmitButtonHidden() ) {
+			?>
+			<div id="wcml-after-mainform">
+			<?php
 			$this->output();
+			?>
+			</div>
+			<?php
 		}
 	}
 

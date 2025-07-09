@@ -827,7 +827,7 @@ class MulticurrencyHooks implements \IWPML_Action {
 
 				if ( get_post_type( $object_id ) == 'bookable_person' ) {
 
-					$original_id = apply_filters( 'translate_object_id', wp_get_post_parent_id( $object_id ), 'product', true, $this->woocommerce_wpml->products->get_original_product_language( wp_get_post_parent_id( $object_id ) ) );
+					$original_id = apply_filters( 'wpml_object_id', wp_get_post_parent_id( $object_id ), 'product', true, $this->woocommerce_wpml->products->get_original_product_language( wp_get_post_parent_id( $object_id ) ) );
 					$cost_status = get_post_meta( $original_id, Prices::CUSTOM_COSTS_STATUS_KEY, true );
 
 					$value = get_post_meta( $object_id, $meta_key . '_' . $currency, true );
@@ -881,7 +881,7 @@ class MulticurrencyHooks implements \IWPML_Action {
 
 						$res_costs = [];
 						foreach ( $costs['custom_costs'][ $currency ] as $resource_id => $cost ) {
-							$trns_resource_id               = apply_filters( 'translate_object_id', $resource_id, 'bookable_resource', true );
+							$trns_resource_id               = apply_filters( 'wpml_object_id', $resource_id, 'bookable_resource', true );
 							$res_costs[ $trns_resource_id ] = $cost;
 						}
 						$value = [ 0 => $res_costs ];

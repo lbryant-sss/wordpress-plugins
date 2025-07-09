@@ -151,7 +151,7 @@ class WCML_Table_Rate_Shipping implements \IWPML_Action {
 
 			foreach ( $terms as $k => $term ) {
 
-				$shipping_class_id = apply_filters( 'translate_object_id', $term->term_id, 'product_shipping_class', false, $shipp_class_language );
+				$shipping_class_id = apply_filters( 'wpml_object_id', $term->term_id, 'product_shipping_class', false, $shipp_class_language );
 
 				$icl_adjust_id_url_filter     = $icl_adjust_id_url_filter_off;
 				$icl_adjust_id_url_filter_off = true;

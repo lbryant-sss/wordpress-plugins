@@ -1,5 +1,5 @@
 import { r as registerInstance, c as createEvent, h } from './index-745b6bec.js';
-import { o as onChange, s as state } from './mutations-2f6b31cb.js';
+import { o as onChange, s as state } from './mutations-6bbbe793.js';
 import './index-06061d4e.js';
 import './utils-cd1431df.js';
 import './remove-query-args-938c53ea.js';
@@ -8,7 +8,7 @@ import './index-c5a96d53.js';
 import './google-a86aa761.js';
 import './currency-a0c9bff4.js';
 import './store-627acec4.js';
-import './price-7bb626d0.js';
+import './price-af9f0dbf.js';
 
 const scCustomerPhoneCss = ":host{display:block}";
 const ScCustomerPhoneStyle0 = scCustomerPhoneCss;

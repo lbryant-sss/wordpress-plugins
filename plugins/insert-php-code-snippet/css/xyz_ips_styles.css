@@ -421,6 +421,39 @@ text-decoration: underline;
     background-color: #ffeddf !important;
     box-shadow: none !important;}
 
+   /*popup model box in deactivate*/
+    .xyz-ips-modal-overlay {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+    .xyz-ips-modal-box {
+        background: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        width: 480px;
+        max-width: 90%;
+        text-align: center;
+        box-shadow: 0 0 10px #000;
+    }
+    .xyz-ips-modal-box h2 {
+        margin-top: 0;
+    }
+    .xyz-ips-modal-box p {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+    .xyz-ips-modal-buttons {
+        margin-top: 20px;
+    }
+    .xyz-ips-modal-buttons .button {
+        margin: 0 10px;
+    } 
   @media screen and (max-width: 1351px) {
 
    .xyz_ips_social_media{width:25%;}

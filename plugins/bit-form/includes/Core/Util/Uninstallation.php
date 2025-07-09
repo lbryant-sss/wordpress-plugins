@@ -60,6 +60,7 @@ final class Uninstallation
       }
 
       $this->deleteOptions('bitform_app_config');
+      $this->deleteOptions('bitform_app_settings');
     }
     $this->deleteOptions('bitforms_routes');
     $this->deleteOptions('bitforms_db_version');

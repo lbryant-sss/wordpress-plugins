@@ -9,8 +9,8 @@ function wcml_check_wpml_functions() {
 		return;
 	}
 
-	if ( ! has_filter( 'translate_object_id' ) ) {
-		add_filter( 'translate_object_id', 'icl_object_id', 10, 4 );
+	if ( ! has_filter( 'wpml_object_id' ) ) {
+		add_filter( 'wpml_object_id', 'icl_object_id', 10, 4 );
 	}
 
 	if ( ! has_action( 'wpml_register_single_string' ) ) {

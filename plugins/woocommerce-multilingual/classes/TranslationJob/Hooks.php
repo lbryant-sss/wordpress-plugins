@@ -8,6 +8,7 @@ use WPML\FP\Str;
 use WPML\Jobs\ExtraData;
 use WPML\LIB\WP\Hooks as WPHooks;
 use WPML\TM\Jobs\FieldId;
+use WCML\Utilities\WCTaxonomies;
 
 use function WPML\FP\spreadArgs;
 
@@ -21,9 +22,9 @@ class Hooks implements \IWPML_Backend_Action, \IWPML_REST_Action {
 
 	public function add_hooks() {
 		WPHooks::onFilter( 'wpml_tm_adjust_translation_fields', 10, 2 )
-			->then( spreadArgs( [ $this, 'adjustFields' ] ) );
+			   ->then( spreadArgs( [ $this, 'adjustFields' ] ) );
 		WPHooks::onFilter( 'wpml_tm_adjust_translation_job', 10, 2 )
-			->then( spreadArgs( [ $this, 'adjustGlobalAttributes' ] ) );
+			   ->then( spreadArgs( [ $this, 'adjustGlobalAttributes' ] ) );
 	}
 
 	/**
@@ -60,6 +61,8 @@ class Hooks implements \IWPML_Backend_Action, \IWPML_REST_Action {
 			$field = $this->handleVariationField( $field );
 		} elseif ( $typeStartsWith( 'image-id-' ) ) {
 			$field = $this->handleImage( $field );
+		} elseif ( $typeStartsWith( 'field-_downloadable_files-' ) ) {
+			$field = $this->handleDownloadableFile( $field );
 		}
 
 		return $field;
@@ -118,6 +121,30 @@ class Hooks implements \IWPML_Backend_Action, \IWPML_REST_Action {
 	}
 
 	/**
+	 * @param array $field
+	 *
+	 * @return array
+	 */
+	private function handleDownloadableFile( $field ) {
+		list( , $fileNo, $fileId, $title ) = \WCML_Downloadable_Products::parseDownloadableFileField( $field['field_type'] );
+
+		$labelNo = self::convertDownloadableFileIdToNumber( $fileId );
+
+		$ex = explode( ':', $title );
+		if ( isset( $ex[1] ) ) {
+			// Product Variant
+			$title    = $ex[0];
+			$labelNo .= ' [' . $ex[1] . ']';
+		}
+
+		$field['title'] = $title;
+		$field['group'] = self::getTopLevelGroup();
+		$field['group'][ sprintf( 'wc_downloadable_file_%s_%s', $fileNo, $fileId ) ] = sprintf( '#%s Downloadable File', $labelNo );
+
+		return $field;
+	}
+
+	/**
 	 * @param array[]   $fields
 	 * @param \stdClass $job
 	 *
@@ -128,7 +155,7 @@ class Hooks implements \IWPML_Backend_Action, \IWPML_REST_Action {
 			return $fields;
 		}
 
-		$isGlobalAttribute = Str::startsWith( 'pa_' );
+		$isGlobalAttribute = Str::startsWith( WCTaxonomies::TAXONOMY_PREFIX_ATTRIBUTE );
 
 		foreach ( $fields as &$field ) {
 			$title = Obj::path( [ 'attributes', 'resname' ], $field );
@@ -165,5 +192,18 @@ class Hooks implements \IWPML_Backend_Action, \IWPML_REST_Action {
 	 */
 	public static function getTopLevelGroup() {
 		return [ self::TOP_LEVEL_GROUP => self::TOP_LEVEL_GROUP_LABEL ];
+	}
+
+	/**
+	 * @param string $fileId
+	 */
+	private function convertDownloadableFileIdToNumber( $fileId ): int  {
+		static $downloadableFileNo = [];
+
+		if ( ! isset( $downloadableFileNo[ $fileId ] ) ) {
+			$downloadableFileNo[ $fileId ] = count( $downloadableFileNo ) + 1;
+		}
+
+		return $downloadableFileNo[ $fileId ];
 	}
 }

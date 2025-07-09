@@ -860,6 +860,7 @@ return array(
     'SureCart\\Models\\TaxProtocol' => $baseDir . '/app/src/Models/TaxProtocol.php',
     'SureCart\\Models\\TaxRegistration' => $baseDir . '/app/src/Models/TaxRegistration.php',
     'SureCart\\Models\\TaxZone' => $baseDir . '/app/src/Models/TaxZone.php',
+    'SureCart\\Models\\Traits\\CanDuplicate' => $baseDir . '/app/src/Models/Traits/CanDuplicate.php',
     'SureCart\\Models\\Traits\\CanFinalize' => $baseDir . '/app/src/Models/Traits/CanFinalize.php',
     'SureCart\\Models\\Traits\\CanResendNotifications' => $baseDir . '/app/src/Models/Traits/CanResendNotifications.php',
     'SureCart\\Models\\Traits\\HasAffiliation' => $baseDir . '/app/src/Models/Traits/HasAffiliation.php',

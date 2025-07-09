@@ -243,11 +243,24 @@
 .installer-table-wrap table.installer-plugins tbody tr td:first-of-type {
     border-left: 1px solid rgba(51, 135, 158, 0.2);
 }
-
+.rtl .installer-table-wrap table.installer-plugins tbody tr td:first-of-type {
+    border-left: none;
+    border-right: 1px solid rgba(51, 135, 158, 0.2);
+}
 .installer-table-wrap table.installer-plugins tbody tr td:last-of-type {
     border-right: 1px solid rgba(51, 135, 158, 0.2);
 }
-
+.rtl .installer-table-wrap table.installer-plugins tbody tr td:last-of-type {
+    border-right: none;
+    border-left: 1px solid rgba(51, 135, 158, 0.2);
+}
+.rtl #sitepress-multilingual-cms_release-notes td {
+    border-right: 1px solid rgba(51, 135, 158, 0.2);
+}
+.rtl #sitepress-multilingual-cms_release-notes .arrow_box::before,
+.rtl #sitepress-multilingual-cms_release-notes .arrow_box::after {
+    left: 3%;
+}
 .installer-table-wrap table.installer-plugins tbody tr td:last-of-type {
     text-align: right;
 }
@@ -274,15 +287,18 @@
     line-height: 1.625;
     color: var(--gray-dim);
 }
-input[type=checkbox] {
+.installer-plugins .installer_checkbox input[type=checkbox] {
+    width: 16px;
+    height: 16px;
     border: 1px solid rgba(51, 135, 158, 0.5);
     border-radius: 2px;
     position: relative;
 }
-input[type=checkbox]:hover, input[type=checkbox]:focus {
+.installer-plugins .installer_checkbox input[type=checkbox]:hover,
+.installer-plugins .installer_checkbox input[type=checkbox]:focus {
     border-color: var(--wpml-blue);
 }
-input[type=checkbox]:checked::before {
+.installer-plugins .installer-plugins .installer_checkbox input[type=checkbox]:checked::before {
     content: '';
     width: 4px;
     height: 8px;
@@ -293,7 +309,12 @@ input[type=checkbox]:checked::before {
     left: 8px;
     transform: rotate(45deg);
 }
-input[type=checkbox]:disabled {
+@media (max-width: 782px) {
+    .installer-plugins .installer-plugins .installer_checkbox input[type=checkbox]:checked::before {
+        left: 9px;
+    }
+}
+.installer-plugins .installer-plugins .installer_checkbox input[type=checkbox]:disabled {
     border: 1px solid rgba(51, 135, 158, 0.15);
     background-color: var(--wpml-blue-lightest);
     cursor: not-allowed;
@@ -333,6 +354,7 @@ input[type=checkbox]:disabled {
 }
 
 .wp-core-ui .button-secondary[type="submit"] {
+    margin: 0 0 32px;
     padding: 8px 20px;
     border-radius: 3px;
     border-color: var(--wpml-blue);
@@ -371,18 +393,17 @@ label.activate-label {
 
 .installer-download-progress-status::before,
 .installer-table-wrap .for_spinner_js .spinner::before {
-    content: '\f638';
+    content: '';
+    width: 16px;
+    height: 16px;
     display: inline-block;
-    font-family: 'otgs-icons';
+    background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNyIgaGVpZ2h0PSIxNiIgZmlsbD0ibm9uZSI+PHBhdGggZmlsbD0iIzMzODc5RSIgZD0iTTguMDc1LjUzM2EuNTMzLjUzMyAwIDEgMSAxLjA2NyAwdjMuMmEuNTMzLjUzMyAwIDAgMS0xLjA2NyAwdi0zLjJaTTguMDc1IDEyLjI2N2EuNTMzLjUzMyAwIDEgMSAxLjA2NyAwdjMuMmEuNTMzLjUzMyAwIDAgMS0xLjA2NyAwdi0zLjJaTTEyLjM0MiA4YzAgLjI5NS4yMzkuNTMzLjUzMy41MzNoMy4yYS41MzMuNTMzIDAgMSAwIDAtMS4wNjZoLTMuMmEuNTMzLjUzMyAwIDAgMC0uNTMzLjUzM1pNMS4xNDIgOC41MzNhLjUzMy41MzMgMCAxIDEgMC0xLjA2NmgzLjJhLjUzMy41MzMgMCAwIDEgMCAxLjA2NmgtMy4yWk0xMS4yNDYgMTAuNjM3YS41MzMuNTMzIDAgMCAwIDAgLjc1NGwyLjI2NCAyLjI2NGEuNTMzLjUzMyAwIDAgMCAuNzU0LS43NTRMMTIgMTAuNjM3YS41MzMuNTMzIDAgMCAwLS43NTQgMFpNNS44NjcgMTEuMzc5YS41MzMuNTMzIDAgMCAwLS43NTQtLjc1NEwyLjg1IDEyLjg4N2EuNTMzLjUzMyAwIDEgMCAuNzU1Ljc1NWwyLjI2Mi0yLjI2M1pNMTQuMjM1IDIuMjU2YS41MzMuNTMzIDAgMCAxIDAgLjc1NGwtMi4yNjEgMi4yNjFhLjUzMy41MzMgMCAxIDEtLjc1NS0uNzU0bDIuMjYyLTIuMjYxYS41MzMuNTMzIDAgMCAxIC43NTQgMFoiLz48L3N2Zz4=") no-repeat center;
     animation: spin 0.8s infinite linear;
-    transform-origin: 8px 9px;
-    font-size: 16px;
-    color: var(--wpml-blue);
+    transform-origin: center;
 }
 
 .installer-download-progress-status::before {
-    margin-right: 8px;
-    transform-origin: 10px 9px;
+    margin: 0 8px;
 }
 
 td.installer_plugin_name {
@@ -408,10 +429,18 @@ td.installer_checkbox {
     position: relative;
     background: #eee;
     border: 1px solid #ccc;
+    border-radius: 3px;
+    text-align: left;
+}
+.rtl .installer-release-notes .arrow_box {
+    text-align: right;
+}
+.installer-release-notes .arrow_box h3 {
+    margin: 0;
 }
 .installer-release-notes .arrow_box:after, .installer-release-notes .arrow_box:before {
     bottom: 100%;
-    left: 50%;
+    left: 97%;
     border: solid transparent;
     content: " ";
     height: 0;
@@ -552,4 +581,41 @@ tr#repository-wpml_wpml td:nth-of-type(2) p strong {
     font-size: 16px;
     line-height: 1.5;
     color: var(--gray-dark);
+}
+
+
+/** Notification */
+
+.widefat .otgs-reset * {
+    all: unset;
+}
+
+.otgs-reset .notification {
+    display: flex;
+    align-items: center;
+    padding: 12px 40px 12px 20px;
+    gap: 12px;
+    border-radius: 5px;
+    background: #33879E1A;
+    border-left: 4px solid #33879E;
+    max-width:  552px;
+    width:50%;
+}
+
+.otgs-reset .otgs-blue{
+    color:#33879E;
+}
+.otgs-reset .otgs-text-xs{
+    font-size: 12px;
+}
+.otgs-reset .otgs-text-sm{
+    font-size: 16px;
+    line-height: 16px;
+}
+.otgs-reset .otgs-ml-auto{
+    margin-left: auto;
+}
+
+.otgs-cursor-pointer{
+    cursor:pointer !important;
 }

@@ -47,7 +47,7 @@ class Factory {
 					return new Products(
 						$sitepress,
 						$wpml_post_translations,
-						new ProductSaveActions( $sitepress->get_settings(), $wpdb, $sitepress, $woocommerce_wpml->sync_product_data ),
+						new ProductSaveActions( $sitepress->get_settings(), $wpdb, $sitepress, $woocommerce_wpml ),
 						$woocommerce_wpml->strings
 					);
 				}

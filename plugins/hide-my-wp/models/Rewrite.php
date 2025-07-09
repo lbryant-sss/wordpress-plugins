@@ -1077,12 +1077,10 @@ class HMWP_Models_Rewrite {
 
 			if ( in_array( $path, array( 'login', 'wp-login', 'wp-login.php' ) ) ) {
 
-				//check if disable and do not redirect to log in
-				if ( HMWP_Classes_Tools::getIsset( HMWP_Classes_Tools::getOption( 'hmwp_disable_name' ) ) ) {
-					if ( HMWP_Classes_Tools::getValue( HMWP_Classes_Tools::getOption( 'hmwp_disable_name' ) ) == HMWP_Classes_Tools::getOption( 'hmwp_disable' ) ) {
-						//add the disabled param in order to work without issues
-						return add_query_arg( array( HMWP_Classes_Tools::getOption( 'hmwp_disable_name' ) => HMWP_Classes_Tools::getOption( 'hmwp_disable' ) ), $url );
-					}
+				// Check if disable and do not redirect to log in
+				if ( HMWP_Classes_Tools::calledSafeUrl( ) ) {
+					// Add the disabled param in order to work without issues
+					return add_query_arg( array( HMWP_Classes_Tools::getOption( 'hmwp_disable_name' ) => HMWP_Classes_Tools::getOption( 'hmwp_disable' ) ), $url );
 				}
 
 				if ( $query == '?action=lostpassword' && HMWP_Classes_Tools::getOption( 'hmwp_lostpassword_url' ) <> '' ) {
@@ -1163,12 +1161,10 @@ class HMWP_Models_Rewrite {
 
 			if ( in_array( $path, array( 'login', 'wp-login', 'wp-login.php' ) ) ) {
 
-				//check if disable and do not redirect to log in
-				if ( HMWP_Classes_Tools::getIsset( HMWP_Classes_Tools::getOption( 'hmwp_disable_name' ) ) ) {
-					if ( HMWP_Classes_Tools::getValue( HMWP_Classes_Tools::getOption( 'hmwp_disable_name' ) ) == HMWP_Classes_Tools::getOption( 'hmwp_disable' ) ) {
-						//add the disabled param in order to work without issues
-						return add_query_arg( array( HMWP_Classes_Tools::getOption( 'hmwp_disable_name' ) => HMWP_Classes_Tools::getOption( 'hmwp_disable' ) ), $url );
-					}
+				// Check if disable and do not redirect to log in
+				if ( HMWP_Classes_Tools::calledSafeUrl( ) ) {
+					// Add the disabled param in order to work without issues
+					return add_query_arg( array( HMWP_Classes_Tools::getOption( 'hmwp_disable_name' ) => HMWP_Classes_Tools::getOption( 'hmwp_disable' ) ), $url );
 				}
 
 				if ( $query == '?action=lostpassword' && HMWP_Classes_Tools::getOption( 'hmwp_lostpassword_url' ) <> '' ) {
@@ -1389,12 +1385,10 @@ class HMWP_Models_Rewrite {
 
 		if ( HMWP_Classes_Tools::$default['hmwp_login_url'] <> HMWP_Classes_Tools::getOption( 'hmwp_login_url' ) && strpos( $url, HMWP_Classes_Tools::$default['hmwp_login_url'] ) !== false ) {
 
-			//check if disable and do not redirect to log in
-			if ( HMWP_Classes_Tools::getIsset( HMWP_Classes_Tools::getOption( 'hmwp_disable_name' ) ) ) {
-				if ( HMWP_Classes_Tools::getValue( HMWP_Classes_Tools::getOption( 'hmwp_disable_name' ) ) == HMWP_Classes_Tools::getOption( 'hmwp_disable' ) ) {
-					//add the disabled param in order to work without issues
-					return add_query_arg( array( HMWP_Classes_Tools::getOption( 'hmwp_disable_name' ) => HMWP_Classes_Tools::getOption( 'hmwp_disable' ) ), $url );
-				}
+			// Check if disable and do not redirect to log in
+			if ( HMWP_Classes_Tools::calledSafeUrl( ) ) {
+				// Add the disabled param in order to work without issues
+				return add_query_arg( array( HMWP_Classes_Tools::getOption( 'hmwp_disable_name' ) => HMWP_Classes_Tools::getOption( 'hmwp_disable' ) ), $url );
 			}
 
 			$url = site_url( HMWP_Classes_Tools::getOption( 'hmwp_login_url' ) );

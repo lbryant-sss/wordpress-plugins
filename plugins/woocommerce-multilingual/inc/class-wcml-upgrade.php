@@ -5,6 +5,7 @@ use Automattic\WooCommerce\Internal\ProductAttributesLookup\DataRegenerator;
 use Automattic\WooCommerce\Internal\ProductAttributesLookup\LookupDataStore;
 use WCML\Attributes\LookupTableFactory;
 use WCML\Utilities\DB;
+use WCML\Utilities\WCTaxonomies;
 use function WCML\functions\getSitePress;
 use function WCML\functions\isStandAlone;
 
@@ -481,9 +482,9 @@ class WCML_Upgrade {
 		if ( isset( $wcml_settings['attributes_settings'] ) ) {
 			$attributes_settings = $wcml_settings['attributes_settings'];
 			foreach ( $attributes_settings as $name => $value ) {
-				if ( substr( $name, 0, 3 ) != 'pa_' ) {
+				if ( ! WCTaxonomies::isProductAttribute( $name ) ) {
 					unset( $wcml_settings['attributes_settings'] [ $name ] );
-					$wcml_settings['attributes_settings'] [ 'pa_' . $name ] = $value;
+					$wcml_settings['attributes_settings'] [ WCTaxonomies::TAXONOMY_PREFIX_ATTRIBUTE . $name ] = $value;
 				}
 			}
 		}

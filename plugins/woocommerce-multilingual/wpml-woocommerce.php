@@ -6,10 +6,10 @@
  * Author: OnTheGoSystems
  * Author URI: http://www.onthegosystems.com/
  * Text Domain: woocommerce-multilingual
- * Version: 5.4.5
+ * Version: 5.5.1
  * Plugin Slug: woocommerce-multilingual
  * WC requires at least: 3.9
- * WC tested up to: 9.8
+ * WC tested up to: 10.0
  *
  * @package WCML
  * @author  OnTheGoSystems
@@ -35,7 +35,7 @@ if ( ! $wpml_php_version_check->is_ok() ) {
 	return;
 }
 
-define( 'WCML_VERSION', '5.4.5' );
+define( 'WCML_VERSION', '5.5.1' );
 define( 'WCML_PLUGIN_PATH', dirname( __FILE__ ) );
 define( 'WCML_PLUGIN_FOLDER', basename( WCML_PLUGIN_PATH ) );
 define( 'WCML_LOCALE_PATH', WCML_PLUGIN_PATH . '/locale' );
@@ -91,7 +91,6 @@ function wcml_loader() {
 	$loaders = [
 		WCML_xDomain_Data::class,
 		'WCML_Privacy_Content_Factory',
-		'WCML_ATE_Activate_Synchronization',
 		\WCML\RewriteRules\Hooks::class,
 		\WCML\RewriteRules\ChildMyAccountHooks::class,
 		\WCML\Email\Factory::class,
@@ -117,6 +116,7 @@ function wcml_loader() {
 		\WCML\Reports\Orders\Hooks::class,
 		\WCML\Multicurrency\Analytics\Factory::class,
 		\WCML\Setup\BeforeHooks::class,
+		\WCML\AdminNotices\CurrencySwitcherUseTwigTemplate::class,
 		\WCML\AdminNotices\MultiCurrencyMissing::class,
 		\WCML\AdminNotices\TranslationControlMovedNotice::class,
 		\WCML\Products\Hooks::class,
@@ -136,21 +136,14 @@ function wcml_loader() {
 		\WCML\TranslationJob\Hooks::class,
 		\WCML\TMDashboard\Hooks::class,
 		\WCML\OrderItems\Hooks::class,
+		\WCML\Multicurrency\WpQueryMcPrice\Factory::class,
+		\WCML\Synchronization\Hooks::class,
 	];
 
-	if (
-		( defined( 'ICL_SITEPRESS_VERSION' ) && defined( 'WPML_MEDIA_VERSION' ) )
-		|| ( defined( 'ICL_SITEPRESS_VERSION' )
-			&& version_compare( ICL_SITEPRESS_VERSION, '4.0.0', '>=' )
-			&& version_compare( ICL_SITEPRESS_VERSION, '4.0.4', '<' )
-			&& ! defined( 'WPML_MEDIA_VERSION' )
-		)
-	) {
-		$loaders[] = 'WCML_Product_Image_Filter_Factory';
-		$loaders[] = 'WCML_Product_Gallery_Filter_Factory';
-		$loaders[] = 'WCML_Update_Product_Gallery_Translation_Factory';
-		$loaders[] = 'WCML_Append_Gallery_To_Post_Media_Ids_Factory';
-	}
+	$loaders[] = 'WCML_Product_Image_Filter_Factory';
+	$loaders[] = 'WCML_Product_Gallery_Filter_Factory';
+	$loaders[] = 'WCML_Update_Product_Gallery_Translation_Factory';
+	$loaders[] = 'WCML_Append_Gallery_To_Post_Media_Ids_Factory';
 
 	$action_filter_loader = new \WCML\StandAlone\ActionFilterLoader();
 	$action_filter_loader->load( $loaders );

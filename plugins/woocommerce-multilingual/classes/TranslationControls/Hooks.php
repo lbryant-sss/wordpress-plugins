@@ -4,6 +4,7 @@ namespace WCML\TranslationControls;
 
 use IWPML_Backend_Action;
 use IWPML_DIC_Action;
+use IWPML_REST_Action;
 use SitePress;
 use WCML\PointerUi\Factory;
 use WCML\StandAlone\NullSitePress;
@@ -14,7 +15,7 @@ use WPML\Core\ISitePress;
 use WPML\FP\Obj;
 use WPML_Simple_Language_Selector;
 
-abstract class Hooks implements IWPML_Backend_Action, IWPML_DIC_Action {
+abstract class Hooks implements IWPML_Backend_Action, IWPML_DIC_Action, IWPML_REST_Action {
 
 	const KEY_PREFIX                  = 'wcml_lang';
 	const LANGUAGE_SELECTOR_ID_SUFFIX = 'language_selector';
@@ -261,20 +262,22 @@ abstract class Hooks implements IWPML_Backend_Action, IWPML_DIC_Action {
 	}
 
 	/**
-	 * @param string $value
-	 * @param string $context
-	 * @param string $name
-	 * @param string $language
+	 * @param string      $value
+	 * @param string      $context
+	 * @param string      $name
+	 * @param string|null $language
 	 */
-	protected function replaceStringAndLanguage( $value, $context, $name, $language ) {
-		$previousStringLanguage = $this->getStringLanguage( $context, $name ) ?? 'en';
+	protected function replaceStringAndLanguage( $value, $context, $name, $language = null ) {
+		$previousStringLanguage = $this->getStringLanguage( $context, $name ) ?? $this->sitepress->get_default_language();
 		// First, register or update the POSTed value for translation. Keep language from the original value, if there is one.
 		// Respecting the language from the original value, if there is one, is crucial here:
 		// it will avoid some side effects when combining same or different values for the POSTed language, the admin language, and that language from the original string.
 		// See WPML_Register_String_Filter::register_string().
 		do_action( 'wpml_register_single_string', $context, $name, $value, false, $previousStringLanguage );
 		// Set the POSTed value language.
-		$this->wcmlStrings->set_string_language( $value, $context, $name, $language );
+		if ( $language ) {
+			$this->wcmlStrings->set_string_language( $value, $context, $name, $language );
+		}
 	}
 
 	/**

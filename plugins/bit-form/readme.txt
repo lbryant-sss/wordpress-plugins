@@ -1,7 +1,7 @@
 === Contact Form by Bit Form: Multi Step Form, Calculation Contact Form, Payment Contact Form & Custom Contact Form builder ===
 Plugin Name: Contact Form by Bit Form: Multi Step Form, Calculation Contact Form, Payment Contact Form & Custom Contact Form builder
-Version: 2.20.0
-Stable tag: 2.20.0
+Version: 2.20.1
+Stable tag: 2.20.1
 Author: Contact form builder by Bit form
 Author URI: https://www.bitapps.pro/
 Contributors: bitpressadmin, arif25897, mdrhmaruf, mdabbasuddin, akaioum 
@@ -544,6 +544,21 @@ Yes, Bit Form has built-in spam protection better than any other Contact Form Bu
 6. Response table to view form entries
 
 == Changelog ==
+=2.20.1 =
+*Release Date: 08 July, 2025*
+*New:
+    1. Spacer Field: Added a new Spacer field to create visual gaps between form fields, improving form layout and appearance.
+    2. Smart Tag – ${_bf_format_datetime()}: Introduced a new smart tag to format date and time based on user-defined preferences, allowing better control over how date/time values are displayed.
+
+*Improvements:
+    1. Min/Max Date-Time Range: Added support for setting minimum and maximum ranges in Date, Time, Month, and Week fields to enhance validation and input control.
+    2. Conditional Logic Enhancements: Improved behavior of "Change" and "Click" logic by accurately targeting and comparing selected fields.
+
+*Fix:
+    1. Resolved missing "Logged In User" option in the ACF integration edit section.
+    2. Fixed an issue where entry owner/user was being overwritten during entry edits.
+    3. Resolved global validation message overwrite issue in default settings.
+
 = 2.20.0 =
 *Release Date: 30 June, 2025*
 *New:

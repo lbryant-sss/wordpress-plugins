@@ -143,11 +143,17 @@ No – the plugin is built for speed and performance with minimal impact on site
 Yes\! Works great with Elementor, Spectra, and most major page builders.
 
 = I am new to Variation Swatches. Where can I find the documentation? = 
-[Click here](#) to access our comprehensive documentation. Have questions or need help with a specific feature? Here’s how to connect with us:
+[Click here](https://cartflows.com/docs-category/variation-swatches/) to access our documentation. Have questions or need help with a specific feature? Here’s how to connect with us:
 
 * [Support](https://cartflows.com/support/)  
 * [Contact Us](https://cartflows.com/contact/)  
 * [Join the community](https://www.facebook.com/groups/cartflows/) 
+
+= How can I report a security bug? =
+
+We take plugin security extremely seriously. If you discover a security vulnerability, please report it in a safe and responsible manner.
+
+You can report the issue through our [Bug Bounty Program](https://brainstormforce.com/bug-bounty-program/).
 
 == Screenshots ==
 1. Converts default dropdowns to Swatches

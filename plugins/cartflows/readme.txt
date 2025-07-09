@@ -379,6 +379,12 @@ Welcome to CartFlows\! Click here to access our comprehensive documentation and 
 * [Contact us](https://cartflows.com/contact/)
 * [Join the CartFlows community](https://www.facebook.com/groups/cartflows/)
 
+= How can I report a security bug? =
+
+We take plugin security extremely seriously. If you discover a security vulnerability, please report it in a safe and responsible manner.
+
+You can report the issue through our [Bug Bounty Program](https://brainstormforce.com/bug-bounty-program/).
+
 
 == Screenshots ==
 

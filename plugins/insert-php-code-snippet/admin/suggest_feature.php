@@ -49,16 +49,16 @@ if (isset($_POST) && isset($_POST['xyz_ips_send_mail']))
 		$xyz_ips_headers = array('From: '.$xyz_ips_admin_username.' <'. $xyz_ips_sender_email .'>' ,'Content-Type: text/html; charset=UTF-8');
 		$wp_mail_processed=wp_mail( $xyz_ips_recv_email, $xyz_ips_mail_subject, $xyz_ips_feature_content, $xyz_ips_headers );
 		if ($wp_mail_processed==true){
-		 header("Location:".admin_url('admin.php?page=insert-php-code-snippet-suggest-features&xyz_ips_msg=1'));
+			wp_safe_redirect(admin_url('admin.php?page=insert-php-code-snippet-suggest-features&xyz_ips_msg=1'));
 		 exit();
 		}
 		else 
 		{
-			header("Location:".admin_url('admin.php?page=insert-php-code-snippet-suggest-features&xyz_ips_msg=2'));exit();
+			wp_safe_redirect(admin_url('admin.php?page=insert-php-code-snippet-suggest-features&xyz_ips_msg=2'));exit();
 		}
 	}
 	else {
-		header("Location:".admin_url('admin.php?page=insert-php-code-snippet-suggest-features&xyz_ips_msg=3'));exit();
+		wp_safe_redirect(admin_url('admin.php?page=insert-php-code-snippet-suggest-features&xyz_ips_msg=3'));exit();
 	}
 }?>
 <form method="post" >

@@ -248,6 +248,7 @@ ICON;
     return [
       'button',
       'divider',
+      'spacer',
       'title',
       'html',
       'shortcode',

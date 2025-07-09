@@ -158,7 +158,7 @@ class ExportImport implements \IWPML_Backend_Action, \IWPML_DIC_Action {
 	private function getExportMessage() {
 		return sprintf(
 			/* translators: %s is a link. */
-			__( 'Migrating your multilingual shop? With %s you can transfer your translated content to a new site, including cross-sells, up-sells, and product attributes.', 'woocommerce-multilingual' ),
+			esc_html__( 'Migrating your multilingual shop? With %s you can transfer your translated content to a new site, including cross-sells, up-sells, and product attributes.', 'woocommerce-multilingual' ),
 			$this->getWpmlImportLink()
 		);
 	}
@@ -169,7 +169,7 @@ class ExportImport implements \IWPML_Backend_Action, \IWPML_DIC_Action {
 	private function getImportMessage() {
 		return sprintf(
 			/* translators: %1$s and %2$s are both links. */
-			__( 'Looking to import your multilingual shop? With %1$s and %2$s in both your original and new site, you can export and import your translations automatically.', 'woocommerce-multilingual' ),
+			esc_html__( 'Looking to import your multilingual shop? With %1$s and %2$s in both your original and new site, you can export and import your translations automatically.', 'woocommerce-multilingual' ),
 			$this->getWcmlLink(),
 			$this->getWpmlImportLink()
 		);
@@ -180,7 +180,7 @@ class ExportImport implements \IWPML_Backend_Action, \IWPML_DIC_Action {
 	 */
 	private function getWpmlImportLink() {
 		$url   = self::WPML_IMPORT_URL;
-		$title = __( 'WPML Export and Import', 'woocommerce-multilingual' );
+		$title = esc_html__( 'WPML Export and Import', 'woocommerce-multilingual' );
 		return '<a class="wpml-external-link" href="' . esc_url( $url ) . '" title="' . esc_attr( $title ) . '" target="_blank">'
 			. esc_html( $title )
 			. '</a>';
@@ -191,7 +191,7 @@ class ExportImport implements \IWPML_Backend_Action, \IWPML_DIC_Action {
 	 */
 	private function getWcmlLink() {
 		$url   = self::WCML_URL;
-		$title = __( 'WooCommerce Multilingual', 'woocommerce-multilingual' );
+		$title = esc_html__( 'WooCommerce Multilingual', 'woocommerce-multilingual' );
 		return '<a class="wpml-external-link" href="' . esc_url( $url ) . '" title="' . esc_attr( $title ) . '" target="_blank">'
 			. esc_html( $title )
 			. '</a>';

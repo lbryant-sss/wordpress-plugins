@@ -6,6 +6,7 @@ use WCML\AdminNotices\WizardNotice;
 use WCML\StandAlone\UI\AdminMenu;
 use WCML\Utilities\AdminPages;
 use WCML\Utilities\AdminUrl;
+use WCML\Utilities\WCTaxonomies;
 
 use WPML\FP\Fns;
 use WPML\FP\Str;
@@ -294,7 +295,7 @@ class WCML_Admin_Menus {
 				'<a href="' . esc_url( AdminUrl::getWPMLTMDashboardProducts() ) . '">',
 				'</a>'
 			);
-			$message .= '</p><a class="notice-dismiss" href="' . esc_url( add_query_arg( 'wcml_action', 'dismiss_tm_warning', $url ) ) . '"><span class="screen-reader-text">' . __( 'Dismiss', 'woocommerce-multilingual' ) . '</a>';
+			$message .= '</p><a class="notice-dismiss" href="' . esc_url( add_query_arg( 'wcml_action', 'dismiss_tm_warning', $url ) ) . '"><span class="screen-reader-text">' . __( 'Dismiss', 'woocommerce-multilingual' ) . '</span></a>';
 			$message .= '</div>';
 
 			echo wp_kses_post( $message );

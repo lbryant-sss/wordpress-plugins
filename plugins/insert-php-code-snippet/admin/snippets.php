@@ -32,13 +32,14 @@ if($_POST)
             wp_nonce_ays( 'bulk_actions_ips' );
             exit;
         }
+		$xyz_ips_snippet_ids = [];
 			$ips_bulk_actions_snippet=$_POST['ips_bulk_actions_snippet'];
-			if (isset($_POST['xyz_ips_snippet_ids']))
-				$xyz_ips_snippet_ids = $_POST['xyz_ips_snippet_ids'];
+			if (isset($_POST['xyz_ips_snippet_ids']) && is_array($_POST['xyz_ips_snippet_ids']))
+			$xyz_ips_snippet_ids = array_map('intval', $_POST['xyz_ips_snippet_ids']);
  				$xyz_ips_pageno = isset( $_GET['pagenum'] ) ? absint( $_GET['pagenum'] ) : 1;
  				if (empty($xyz_ips_snippet_ids))
 				{
-					header("Location:".admin_url('admin.php?page=insert-php-code-snippet-manage&xyz_ips_msg=8&pagenum='.$xyz_ips_pageno));
+					wp_safe_redirect(admin_url('admin.php?page=insert-php-code-snippet-manage&xyz_ips_msg=8&pagenum='.$xyz_ips_pageno));
 					exit();
 				}
 				if ($ips_bulk_actions_snippet==2)//bulk-delete
@@ -47,26 +48,26 @@ if($_POST)
 					{
 						$wpdb->query($wpdb->prepare( 'DELETE FROM  '.$wpdb->prefix.'xyz_ips_short_code  WHERE id=%d',$snippet_id)) ;
 					}
-					header("Location:".admin_url('admin.php?page=insert-php-code-snippet-manage&xyz_ips_msg=3&pagenum='.$xyz_ips_pageno));
+					wp_safe_redirect(admin_url('admin.php?page=insert-php-code-snippet-manage&xyz_ips_msg=3&pagenum='.$xyz_ips_pageno));
 					exit();
 				}
 				elseif ($ips_bulk_actions_snippet==0)//bulk-Deactivate
 				{
 					foreach ($xyz_ips_snippet_ids as $xyz_ips_snippetId)
 						$wpdb->update($wpdb->prefix.'xyz_ips_short_code', array('status'=>2), array('id'=>$xyz_ips_snippetId));
-						header("Location:".admin_url('admin.php?page=insert-php-code-snippet-manage&xyz_ips_msg=4&pagenum='.$xyz_ips_pageno));
+						wp_safe_redirect(admin_url('admin.php?page=insert-php-code-snippet-manage&xyz_ips_msg=4&pagenum='.$xyz_ips_pageno));
 						exit();
 				}
 				elseif ($ips_bulk_actions_snippet==1)//bulk-activate
 				{
 					foreach ($xyz_ips_snippet_ids as $xyz_ips_snippetId)
 						$wpdb->update($wpdb->prefix.'xyz_ips_short_code', array('status'=>1), array('id'=>$xyz_ips_snippetId));
-						header("Location:".admin_url('admin.php?page=insert-php-code-snippet-manage&xyz_ips_msg=4&pagenum='.$xyz_ips_pageno));
+						wp_safe_redirect(admin_url('admin.php?page=insert-php-code-snippet-manage&xyz_ips_msg=4&pagenum='.$xyz_ips_pageno));
 						exit();
 				}
 				elseif ($ips_bulk_actions_snippet==-1)//no action selected
 				{
-					header("Location:".admin_url('admin.php?page=insert-php-code-snippet-manage&xyz_ips_msg=7&pagenum='.$xyz_ips_pageno));
+					wp_safe_redirect(admin_url('admin.php?page=insert-php-code-snippet-manage&xyz_ips_msg=7&pagenum='.$xyz_ips_pageno));
 					exit();
 				}
 		}

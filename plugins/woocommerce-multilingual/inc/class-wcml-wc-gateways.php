@@ -63,9 +63,6 @@ class WCML_WC_Gateways {
 	}
 
 	public function loaded_woocommerce_payment_gateways( $load_gateways ) {
-		if ( ! function_exists( 'icl_get_string_id' ) ) {
-			return $load_gateways;
-		}
 
 		foreach ( $load_gateways as $key => $gateway ) {
 

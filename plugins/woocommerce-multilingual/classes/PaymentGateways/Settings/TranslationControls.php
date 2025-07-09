@@ -8,20 +8,49 @@ use WCML\Utilities\WcAdminPages;
 use WPML\FP\Obj;
 use WPML\FP\Str;
 
+/**
+ * Since WooCommerce 9.9.0, Payment Gateways default settings pages are using a React-based user interface.
+ *
+ * In those cases, we will not show language controls next to translatable strings for payment gateways:
+ * we just link to the Translation Dashboard instead.
+ *
+ * There might be third-party payment gateways still using the legacy settings page API.
+ *
+ * This class also manages saving and updating translatable string values, on POST or REST modes.
+ */
 class TranslationControls extends TranslationControlsBase {
 
-	protected function addAdminPageHooks() {
-		add_action( 'woocommerce_settings_checkout', function() {
-			if ( empty( $GLOBALS['hide_save_button'] ) ) {
-				add_action( 'woocommerce_after_settings_checkout', [ $this, 'translationInstructions' ] );
-				add_action( 'woocommerce_after_settings_checkout', [ $this, 'translationControls' ] );
-			}
-		} );
-		add_action( 'woocommerce_update_options_checkout', [ $this, 'registerStringsOnSave' ], 9 );
+	public function add_hooks() {
+		parent::add_hooks();
+		if ( wpml_is_rest_request() ) {
+			$this->addRestHooks();
+		}
 	}
 
 	protected function isAdminPage() {
 		return WcAdminPages::isPaymentSettings() && WcAdminPages::hasSection();
+	}
+
+	protected function addAdminPageHooks() {
+		add_action( 'woocommerce_after_settings_checkout', [ $this, 'translationInstructions' ] );
+		add_action( 'woocommerce_after_settings_checkout', [ $this, 'translationControls' ] );
+		add_action( 'woocommerce_update_options_checkout', [ $this, 'registerStringsOnSave' ], 9 );
+	}
+
+	private function addRestHooks() {
+		add_filter( 'woocommerce_rest_prepare_payment_gateway', [ $this, 'registerStringsOnRestSave' ], 10, 3 );
+	}
+
+	/**
+	 * Checks whether the payment gateway disabled the natural submit button.
+	 *
+	 * Note that this is usually defined at payment gateway options page render time, not before.
+	 * Used by WooCommerce in its settings page template, at /includes/admin/views/html-admin-settings.php.
+	 *
+	 * @return bool
+	 */
+	private function isSubmitButtonHidden() {
+		return ! empty( $GLOBALS['hide_save_button'] );
 	}
 
 	/**
@@ -31,15 +60,14 @@ class TranslationControls extends TranslationControlsBase {
 	 * @return string
 	 */
 	protected function getInstructionsWithRegisteredStrings( $domain, $search = '' ) {
-		return sprintf(
-			/* translators: %1$s and %2$s are opening and closing HTML link tags */
-			esc_html__( 'To translate custom text for payment methods, go to the %1$sTranslation Dashboard%2$s.', 'woocommerce-multilingual' ),
-			'<a href="' . esc_url( $this->getInstructionsLink( $domain, $search ) ) . '">',
-			'</a>'
-		);
+		return Strings::getTranslationInstructions();
 	}
 
 	public function translationInstructions() {
+		if ( $this->isSubmitButtonHidden() ) {
+			return;
+		}
+
 		$gateway = $this->getCurrentGateway();
 		if ( is_null( $gateway ) ) {
 			return;
@@ -48,7 +76,7 @@ class TranslationControls extends TranslationControlsBase {
 		$this->pointerFactory
 			->create( [
 				'content'    => $this->getInstructions( Strings::TRANSLATION_DOMAIN, Strings::getStringName( $gateway->id, '' ) ),
-				'selectorId' => 'wpbody-content .woocommerce .form-table',
+				'selectorId' => 'wpbody-content .woocommerce table.form-table:nth-of-type(1)',
 				'method'     => 'before',
 			] )->show();
 	}
@@ -85,7 +113,12 @@ class TranslationControls extends TranslationControlsBase {
 	 */
 	protected function getTranslationControls() {
 		$translationControls = [];
-		$gateway             = $this->getCurrentGateway();
+
+		if ( $this->isSubmitButtonHidden() ) {
+			return $translationControls;
+		}
+
+		$gateway = $this->getCurrentGateway();
 		if ( is_null( $gateway ) ) {
 			return $translationControls;
 		}
@@ -141,6 +174,35 @@ class TranslationControls extends TranslationControlsBase {
 			}
 			$this->replaceStringAndLanguage( $stringValue, Strings::TRANSLATION_DOMAIN, $name, $language );
 		} );
+	}
+
+	/**
+	 * @param \WP_REST_Response   $response The response object.
+	 * @param \WC_Payment_Gateway $gateway  Payment gateway object.
+	 * @param \WP_REST_Request    $request  Request object.
+	 *
+	 * @return \WP_REST_Response
+	 */
+	public function registerStringsOnRestSave( $response, $gateway, $request ) {
+		$requestMethod = $request->get_method();
+		if ( ! in_array( $requestMethod, [ 'POST', 'PUT', 'PATCH' ], true ) ) {
+			return $response;
+		}
+
+		$textKeys = $this->getGatewayTextKeys();
+		foreach ( $textKeys as $textKey ) {
+			$name = $this->getStringName( $gateway->id, $textKey );
+			if ( '' === $textKey ) {
+				$stringValue = $gateway->description;
+			} elseif ( isset( $gateway->settings[ $textKey ] ) ) {
+				$stringValue = $gateway->settings[ $textKey ];
+			} else {
+				$stringValue = Obj::prop( $textKey, $gateway );
+			}
+
+			$this->replaceStringAndLanguage( $stringValue, Strings::TRANSLATION_DOMAIN, $name );
+		}
+		return $response;
 	}
 
 	/**

@@ -475,7 +475,7 @@ class FormManager
       'log_type'      => 'entry',
       'ip'            => $user_details['ip'],
       'form_entry_id' => $entry_id,
-      'content'       => null,
+      'content'       => ['user_device' => $user_details['device']],
       'form_id'       => $this->form_id,
       'created_at'    => $user_details['time'],
     ];
@@ -749,9 +749,6 @@ class FormManager
     $oldEntry = $formEntryModel->get('status', ['id' => $entryID])[0];
     $formEntry = $formEntryModel->update(
       [
-        'user_id'     => $user_details['id'],
-        'user_ip'     => $user_details['ip'],
-        'user_device' => $user_details['device'],
         'status'      => ('9' === $oldEntry->status && !$this->_saveFormAsDraft) ? 1 : $oldEntry->status,
         'updated_at'  => $user_details['time'],
       ],

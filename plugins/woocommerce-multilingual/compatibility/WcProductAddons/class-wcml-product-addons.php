@@ -155,7 +155,7 @@ class WCML_Product_Addons implements IWPML_Action {
 	 */
 	public function addons_product_terms( $product_terms ) {
 		foreach ( $product_terms as $key => $product_term ) {
-			$product_terms[ $key ] = apply_filters( 'translate_object_id', $product_term, 'product_cat', true, $this->sitepress->get_default_language() );
+			$product_terms[ $key ] = apply_filters( 'wpml_object_id', $product_term, 'product_cat', true, $this->sitepress->get_default_language() );
 		}
 
 		return $product_terms;

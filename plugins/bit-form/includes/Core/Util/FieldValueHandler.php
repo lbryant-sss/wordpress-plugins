@@ -317,7 +317,7 @@ final class FieldValueHandler
     return array_reduce(array_keys($formFields), function ($filteredData, $key) use ($formFields, $formData, $uploadPath) {
       $field = $formFields[$key];
 
-      $ignoreFields = ['button', 'recaptcha', 'html', 'divider', 'section', 'file-up', 'turnstile', 'hcaptcha', 'advanced-file-up', 'image'];
+      $ignoreFields = ['button', 'recaptcha', 'html', 'divider', 'spacer', 'section', 'file-up', 'turnstile', 'hcaptcha', 'advanced-file-up', 'image'];
 
       $arrayValueFldType = ['check', 'select', 'image-select'];
 

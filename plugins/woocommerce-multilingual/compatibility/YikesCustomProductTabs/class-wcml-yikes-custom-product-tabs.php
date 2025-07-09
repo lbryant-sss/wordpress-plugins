@@ -1,7 +1,11 @@
 <?php
 
 /**
- * Class WCML_YIKES_Custom_Product_Tabs
+ * IMPORTANT NOTICE !!!
+ * This target plugin is not maintained anymore.
+ * We are stopping our compatibility maintenance too.
+ *
+ * @deprecated
  */
 class WCML_YIKES_Custom_Product_Tabs implements \IWPML_Action {
 

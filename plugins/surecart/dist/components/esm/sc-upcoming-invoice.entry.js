@@ -2,7 +2,7 @@ import { r as registerInstance, h, F as Fragment, a as getElement } from './inde
 import { a as apiFetch } from './fetch-8ecbbe53.js';
 import { o as onFirstVisible } from './lazy-deb42890.js';
 import { f as formatTaxDisplay } from './tax-a03623ca.js';
-import { p as productNameWithPrice } from './price-7bb626d0.js';
+import { p as productNameWithPrice } from './price-af9f0dbf.js';
 import { a as addQueryArgs } from './add-query-args-0e2a8393.js';
 import './remove-query-args-938c53ea.js';
 import './currency-a0c9bff4.js';

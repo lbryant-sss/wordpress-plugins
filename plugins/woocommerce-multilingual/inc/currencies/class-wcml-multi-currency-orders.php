@@ -3,7 +3,6 @@
 use WCML\COT\Helper as COTHelper;
 use WCML\Orders\Legacy\Helper as LegacyHelper;
 use WCML\Orders\Helper as OrdersHelper;
-use WPML\FP\Fns;
 use WPML\FP\Obj;
 
 class WCML_Multi_Currency_Orders {
@@ -250,7 +249,6 @@ class WCML_Multi_Currency_Orders {
 		$item->update_meta_data( '_wcml_total_qty', $item->get_quantity() );
 		$item->save();
 
-		$order->remove_item( $itemId );
 		$order->add_item( $item );
 
 		return $item;
@@ -530,28 +528,7 @@ class WCML_Multi_Currency_Orders {
 	 * @return string
 	 */
 	public function get_currency_for_new_order( $currency, $order ) {
-
-		/** @var callable():bool $isEditingNewOrderItems */
-		$isEditingNewOrderItems = function() {
-			return (
-				isset( $_POST['action'] ) &&
-				in_array(
-					$_POST['action'],
-					[
-						'woocommerce_add_order_item',
-						'woocommerce_remove_order_item',
-						'woocommerce_calc_line_taxes',
-						'woocommerce_save_order_items',
-					]
-				) )
-			|| (
-				isset( $_GET['action'] ) &&
-				$_GET['action'] == 'woocommerce_json_search_products_and_variations'
-			);
-		};
-
-
-		if ( OrdersHelper::isOrderCreateAdminScreen() || $isEditingNewOrderItems() ) {
+		if ( OrdersHelper::isOrderCreateAdminScreen() || OrdersHelper::isEditingNewOrderItems() ) {
 			$orderId       = method_exists( $order, 'get_id' ) ? $order->get_id() : Obj::prop( 'id', $order );
 			$orderCurrency = OrdersHelper::getCurrency( $orderId, true );
 

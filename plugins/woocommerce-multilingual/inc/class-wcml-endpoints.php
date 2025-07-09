@@ -13,8 +13,6 @@ class WCML_Endpoints {
 	 */
 	private $wpdb;
 
-	var $endpoints_strings = array();
-
 	/**
 	 * @var string
 	 * @see WPML_Endpoints_Support::STRING_CONTEXT
@@ -28,23 +26,23 @@ class WCML_Endpoints {
 	}
 
 	public function add_hooks() {
-		add_action( 'init', array( $this, 'migrate_ones_string_translations' ), 9 );
+		add_action( 'init', [ $this, 'migrate_ones_string_translations' ], 9 );
 
-		add_action( 'wpml_after_add_endpoints_translations', array( $this, 'add_wc_endpoints_translations' ) );
+		add_action( 'wpml_after_add_endpoints_translations', [ $this, 'add_wc_endpoints_translations' ] );
 
-		add_filter( 'wpml_endpoint_permalink_filter', array( $this, 'endpoint_permalink_filter' ), 10, 2 );
-		add_filter( 'wpml_endpoint_url_value', array( $this, 'filter_endpoint_url_value' ), 10, 2 );
-		add_filter( 'wpml_current_ls_language_url_endpoint', array( $this, 'add_endpoint_to_current_ls_language_url' ), 10, 4 );
+		add_filter( 'wpml_endpoint_permalink_filter', [ $this, 'endpoint_permalink_filter' ], 10, 2 );
+		add_filter( 'wpml_endpoint_url_value', [ $this, 'filter_endpoint_url_value' ], 10, 2 );
+		add_filter( 'wpml_current_ls_language_url_endpoint', [ $this, 'add_endpoint_to_current_ls_language_url' ], 10, 4 );
 
-		add_filter( 'wpml_sl_blacklist_requests', array( $this, 'reserved_requests' ) );
-		add_filter( 'woocommerce_get_endpoint_url', array( $this, 'filter_get_endpoint_url' ), 10, 4 );
+		add_filter( 'wpml_sl_blacklist_requests', [ $this, 'reserved_requests' ] );
+		add_filter( 'woocommerce_get_endpoint_url', [ $this, 'filter_get_endpoint_url' ], 10, 4 );
 	}
 
 	public function migrate_ones_string_translations() {
 
 		if ( ! get_option( 'wcml_endpoints_context_updated' ) ) {
 
-			$endpoint_keys = array(
+			$endpoint_keys = [
 				'order-pay',
 				'order-received',
 				'view-order',
@@ -57,41 +55,41 @@ class WCML_Endpoints {
 				'delete-payment-method',
 				'payment-methods',
 				'downloads',
-				'orders'
-			);
+				'orders',
+			];
 
 			foreach ( $endpoint_keys as $endpoint_key ) {
 
 				$existing_string_id = $this->wpdb->get_var(
 					$this->wpdb->prepare( "SELECT id FROM {$this->wpdb->prefix}icl_strings
 											WHERE context = %s AND name = %s",
-						WPML_Endpoints_Support::STRING_CONTEXT, $endpoint_key )
+					WPML_Endpoints_Support::STRING_CONTEXT, $endpoint_key )
 				);
 
-				if( $existing_string_id ){
+				if ( $existing_string_id ) {
 
 					$existing_wcml_string_id = $this->wpdb->get_var(
 						$this->wpdb->prepare( "SELECT id FROM {$this->wpdb->prefix}icl_strings
 											WHERE context = %s AND name = %s",
-							'WooCommerce Endpoints', $endpoint_key )
+						'WooCommerce Endpoints', $endpoint_key )
 					);
 
-					if( $existing_wcml_string_id ){
+					if ( $existing_wcml_string_id ) {
 						$wcml_string_translations = icl_get_string_translations_by_id( $existing_wcml_string_id );
 
-						foreach( $wcml_string_translations as $language_code => $translation_data ){
+						foreach ( $wcml_string_translations as $language_code => $translation_data ) {
 							icl_add_string_translation( $existing_string_id, $language_code, $translation_data['value'], ICL_STRING_TRANSLATION_COMPLETE );
 						}
 
 						wpml_unregister_string_multi( [ $existing_wcml_string_id ] );
 					}
-				}else{
+				} else {
 
 					$this->wpdb->query(
 						$this->wpdb->prepare( "UPDATE {$this->wpdb->prefix}icl_strings
                                   SET context = %s
                                   WHERE context = 'WooCommerce Endpoints' AND name = %s",
-							WPML_Endpoints_Support::STRING_CONTEXT, $endpoint_key )
+						WPML_Endpoints_Support::STRING_CONTEXT, $endpoint_key )
 					);
 
 					// update domain_name_context_md5 value
@@ -102,7 +100,7 @@ class WCML_Endpoints {
 							$this->wpdb->prepare( "UPDATE {$this->wpdb->prefix}icl_strings
                               SET domain_name_context_md5 = %s
                               WHERE id = %d",
-								md5( $endpoint_key, WPML_Endpoints_Support::STRING_CONTEXT ), $string_id )
+							md5( $endpoint_key, WPML_Endpoints_Support::STRING_CONTEXT ), $string_id )
 						);
 					}
 				}
@@ -119,7 +117,7 @@ class WCML_Endpoints {
 		$reserved_requests = wp_cache_get( $cache_key, $cache_group, false, $found );
 
 		if ( ! $found || ! $reserved_requests ) {
-			$reserved_requests = array();
+			$reserved_requests = [];
 
 			$current_language = $this->sitepress->get_current_language();
 			$languages        = $this->sitepress->get_active_languages();
@@ -135,11 +133,11 @@ class WCML_Endpoints {
 
 					if ( $account_base ) {
 
-						$reserved_requests[] = $account_base;
-						$reserved_requests[] = '/^' . str_replace( '/', "\/", $account_base ) . '/'; // regex version
+						$reserved_requests[]           = $account_base;
+						$reserved_requests[]           = '/^' . str_replace( '/', '\/', $account_base ) . '/'; // regex version
 						$is_page_display_as_translated = $this->sitepress->is_display_as_translated_post_type( 'page' );
 
-						if( ! $is_page_display_as_translated ){
+						if ( ! $is_page_display_as_translated ) {
 							$wc_query_vars = $this->woocommerce_wpml->get_wc_query_vars();
 							foreach ( $wc_query_vars as $key => $endpoint ) {
 								$translated_endpoint = $this->get_endpoint_translation( $endpoint, $language_code );
@@ -176,19 +174,36 @@ class WCML_Endpoints {
 
 		if ( ! empty( $wc_vars ) ) {
 
-			foreach ( $wc_vars as $key => $endpoint ){
-				$endpoint_translation = $this->get_endpoint_translation( $endpoint, $language );
+			foreach ( $wc_vars as $key => $endpoint ) {
+				$endpoint_translation                = $this->get_endpoint_translation( $endpoint, $language );
 				$query_vars[ $endpoint_translation ] = $endpoint_translation;
 			}
 
-			$query_vars = apply_filters( 'wcml_register_endpoints_query_vars', $query_vars, $wc_vars, $this );
+			$query_vars             = apply_filters( 'wcml_register_endpoints_query_vars', $query_vars, $wc_vars, $this );
 			WC()->query->query_vars = array_merge( $wc_vars, $query_vars );
 		}
 
 	}
 
-	public function get_endpoint_translation( $endpoint, $language = null ) {
-		return apply_filters( 'wpml_get_endpoint_translation', $endpoint, $endpoint, $language );
+	/**
+	 * @param string      $key
+	 * @param string|null $endpointOrLanguage
+	 * @param string|null $language
+	 *
+	 * @return string
+	 */
+	public function get_endpoint_translation( $key, $endpointOrLanguage = null, $language = null ) {
+		$endpoint = $key;
+
+		$activeLanguages = array_keys( $this->sitepress->get_active_languages() );
+
+		if ( in_array( $endpointOrLanguage, $activeLanguages, true ) ) {
+			$language = $endpointOrLanguage;
+		} elseif ( $endpointOrLanguage ) {
+			$endpoint = $endpointOrLanguage;
+		}
+
+		return apply_filters( 'wpml_get_endpoint_translation', $key, $endpoint, $language );
 	}
 
 	public function endpoint_permalink_filter( $data, $endpoint_key ) {
@@ -198,13 +213,13 @@ class WCML_Endpoints {
 
 		$endpoint = apply_filters( 'wcml_endpoint_permalink_filter', $endpoint, $endpoint_key );
 
-		return array( $link, $endpoint );
+		return [ $link, $endpoint ];
 	}
 
 	private function get_translated_edit_address_slug( $slug, $language = false ) {
 
 		/** @var WCML_WC_Strings $strings */
-		$strings = $this->woocommerce_wpml->strings;
+		$strings          = $this->woocommerce_wpml->strings;
 		$strings_language = $strings->get_string_language( $slug, 'woocommerce', 'edit-address-slug: ' . $slug );
 		if ( $strings_language == $language ) {
 			return $slug;
@@ -224,12 +239,12 @@ class WCML_Endpoints {
 
 	public function filter_get_endpoint_url( $url, $endpoint, $value, $permalink ) {
 
-		remove_filter( 'woocommerce_get_endpoint_url', array( $this, 'filter_get_endpoint_url' ), 10 );
+		remove_filter( 'woocommerce_get_endpoint_url', [ $this, 'filter_get_endpoint_url' ], 10 );
 
 		$translated_endpoint = $this->get_endpoint_translation( $endpoint );
 		$url                 = wc_get_endpoint_url( $translated_endpoint, $value, $this->sitepress->convert_url( $permalink ) );
 
-		add_filter( 'woocommerce_get_endpoint_url', array( $this, 'filter_get_endpoint_url' ), 10, 4 );
+		add_filter( 'woocommerce_get_endpoint_url', [ $this, 'filter_get_endpoint_url' ], 10, 4 );
 
 		return $url;
 	}
@@ -250,7 +265,7 @@ class WCML_Endpoints {
 		return $value;
 	}
 
-	public function add_endpoint_to_current_ls_language_url( $url, $post_lang, $data, $current_endpoint ){
+	public function add_endpoint_to_current_ls_language_url( $url, $post_lang, $data, $current_endpoint ) {
 		global $post;
 
 		if (

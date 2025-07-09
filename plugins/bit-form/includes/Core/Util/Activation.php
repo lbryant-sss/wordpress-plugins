@@ -2,6 +2,7 @@
 
 namespace BitCode\BitForm\Core\Util;
 
+use BitCode\BitForm\Admin\Form\Helpers;
 use BitCode\BitForm\Core\Database\DB;
 use BitCode\BitForm\Core\Database\FormModel;
 use WP_Error;
@@ -42,6 +43,13 @@ final class Activation
       $config->delete_table = true;
       update_option('bitform_app_config', $config);
     }
+    $appSettings = get_option('bitform_app_settings');
+    if (!$appSettings) {
+      $appSettings = (object) [];
+      $appSettings->globalMessages = Helpers::getDefaultGlobalMessages();
+      update_option('bitform_app_settings', $appSettings);
+    }
+
     update_option('bitforms_version', BITFORMS_VERSION);
     $this->layoutUpdate();
     $this->createUploadDir();

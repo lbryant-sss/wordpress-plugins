@@ -216,6 +216,8 @@ class woocommerce_wpml {
 			$this->translation_editor->add_hooks();
 			$tp_support = new WCML_TP_Support( $this, $wpdb, new WPML_Element_Translation_Package(), $sitepress->get_setting( 'translation-management', [] ) );
 			$tp_support->add_hooks();
+			$sync_downloadable_files_from_ATE = new \WCML\DownloadableFiles\SyncDownloadableFilesFromATE();
+			$sync_downloadable_files_from_ATE->add_hooks();
 		}
 
 		if ( is_admin() ) {
@@ -323,16 +325,16 @@ class woocommerce_wpml {
 	 */
 	public function get_settings() {
 		$defaults = [
-			'file_path_sync'                       => 1,
-			'is_term_order_synced'                 => 0,
-			'enable_multi_currency'                => WCML_MULTI_CURRENCIES_DISABLED,
-			'dismiss_doc_main'                     => 0,
-			'trnsl_interface'                      => 1,
-			'currency_options'                     => [],
-			'currency_switcher_product_visibility' => 1,
-			'dismiss_tm_warning'                   => 0,
-			'dismiss_cart_warning'                 => 0,
-			'cart_sync'                            => [
+			\WCML_Downloadable_Products::SYNC_MODE_SETTING_KEY => (int) \WCML_Downloadable_Products::SYNC_MODE_SETTING_AUTO,
+			'is_term_order_synced'                             => 0,
+			'enable_multi_currency'                            => WCML_MULTI_CURRENCIES_DISABLED,
+			'dismiss_doc_main'                                 => 0,
+			'trnsl_interface'                                  => 1,
+			'currency_options'                                 => [],
+			'currency_switcher_product_visibility'             => 1,
+			'dismiss_tm_warning'                               => 0,
+			'dismiss_cart_warning'                             => 0,
+			'cart_sync'                                        => [
 				'lang_switch'     => WCML_CART_SYNC,
 				'currency_switch' => WCML_CART_SYNC,
 			],

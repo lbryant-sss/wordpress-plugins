@@ -519,4 +519,52 @@ LOAD_SECRIPT;
     $msg = str_replace(array_keys($shortcodes), array_values($shortcodes), $msg);
     return $msg;
   }
+
+  public static function getDefaultGlobalMessages()
+  {
+    $defaultGlobalMessages = [
+      'err' => [
+        'req'   => '<p style="margin:0">' . __('This field is required', 'bit-form') . '</p>',
+        'email' => [
+          'invalid' => '<p style="margin:0">' . __('Please, enter a valid email address', 'bit-form') . '</p>',
+        ],
+        'url' => [
+          'invalid' => '<p style="margin:0">' . __('Please, enter a valid URL', 'bit-form') . '</p>',
+        ],
+        'mn'     => '<p style="margin:0">' . __('Minimum ${field.minimum} is required', 'bit-form') . '</p>',
+        'mx'     => '<p style="margin:0">' . __('Maximum ${field.maximum} is allowed', 'bit-form') . '</p>',
+        'number' => [
+          'invalid' => '<p style="margin:0">' . __('Please, enter only numbers', 'bit-form') . '</p>',
+        ],
+        'phone-number' => [
+          'invalid' => '<p style="margin:0">' . __('Please, enter a valid phone number', 'bit-form') . '</p>',
+        ],
+        'check' => [
+          'mn' => '<p style="margin:0">' . __('Select at least ${field.minimum} option(s)', 'bit-form') . '</p>',
+          'mx' => '<p style="margin:0">' . __('Please, select no more than ${field.maximum} option(s)', 'bit-form') . '</p>',
+        ],
+        'select' => [
+          'mn' => '<p style="margin:0">' . __('Select at least ${field.minimum} option(s)', 'bit-form') . '</p>',
+          'mx' => '<p style="margin:0">' . __('Please, select no more than ${field.maximum} option(s)', 'bit-form') . '</p>',
+        ],
+        'image-select' => [
+          'mn' => '<p style="margin:0">' . __('Select at least ${field.minimum} option(s)', 'bit-form') . '</p>',
+          'mx' => '<p style="margin:0">' . __('Please, select no more than ${field.maximum} option(s)', 'bit-form') . '</p>',
+        ],
+        'regexr'      => '<p style="margin:0">' . __('Input does not match the required pattern', 'bit-form') . '</p>',
+        'minFile'     => '<p style="margin:0">' . __('Minimum ${field.minimum_file} file(s) required', 'bit-form') . '</p>',
+        'maxFile'     => '<p style="margin:0">' . __('Maximum ${field.maximum_file} file(s) allowed', 'bit-form') . '</p>',
+        'maxSize'     => '<p style="margin:0">' . __('Maximum file size exceeded. (Max: ${field.maximum_size}MB)', 'bit-form') . '</p>',
+        'fileType'    => '<p style="margin:0">' . __('File type is not supported', 'bit-form') . '</p>',
+        'entryUnique' => '<p style="margin:0">' . __('This value is already taken. Please, choose a different one.', 'bit-form') . '</p>',
+        'userUnique'  => '<p style="margin:0">' . __('This username or email is already registered. Please, use another.', 'bit-form') . '</p>',
+        'otherOptReq' => '<p style="margin:0">' . __('Custom Option Required', 'bit-form') . '</p>',
+        'minValue'    => '<p style="margin:0">' . __('Minimum amount of ${field.minimum_amount} is required', 'bit-form') . '</p>',
+        'maxValue'    => '<p style="margin:0">' . __('Maximum amount of ${field.maximum_amount} is allowed', 'bit-form') . '</p>',
+      ],
+    ];
+
+    // Convert array to object recursively
+    return json_decode(json_encode($defaultGlobalMessages));
+  }
 }

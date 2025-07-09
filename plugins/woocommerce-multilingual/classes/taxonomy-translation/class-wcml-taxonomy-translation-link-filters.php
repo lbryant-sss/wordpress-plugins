@@ -1,5 +1,7 @@
 <?php
 
+use WCML\Utilities\WCTaxonomies;
+
 class WCML_Taxonomy_Translation_Link_Filters {
 
 	/**
@@ -25,7 +27,7 @@ class WCML_Taxonomy_Translation_Link_Filters {
 	public function override_translation_notice_text( $text, $notice ) {
 		if ( 'taxonomy-term-help-notices' === $notice['group'] ) {
 			$taxonomy            = get_taxonomy( $notice['id'] );
-			$built_in_taxonomies = [ 'product_cat', 'product_tag', 'product_shipping_class' ];
+			$built_in_taxonomies = [ WCTaxonomies::TAXONOMY_PRODUCT_CATEGORY, WCTaxonomies::TAXONOMY_PRODUCT_TAG, WCML_Terms::PRODUCT_SHIPPING_CLASS ];
 			if ( false !== $taxonomy && in_array( $notice['id'], $built_in_taxonomies ) ) {
 
 				$link = sprintf(
@@ -53,7 +55,7 @@ class WCML_Taxonomy_Translation_Link_Filters {
 	 * @return string|false
 	 */
 	public function get_screen_url( $taxonomy = '' ) {
-		$built_in_taxonomies = [ 'product_cat', 'product_tag', 'product_shipping_class' ];
+		$built_in_taxonomies = [ WCTaxonomies::TAXONOMY_PRODUCT_CATEGORY, WCTaxonomies::TAXONOMY_PRODUCT_TAG, WCML_Terms::PRODUCT_SHIPPING_CLASS ];
 		if ( in_array( $taxonomy, $built_in_taxonomies, true ) ) {
 			return \WCML\Utilities\AdminUrl::getWPMLTaxonomyTranslation( $taxonomy );
 		}
@@ -82,7 +84,7 @@ class WCML_Taxonomy_Translation_Link_Filters {
 
 		$translatable_attributes = [];
 		foreach ( $this->wcml_attributes->get_translatable_attributes() as $attribute ) {
-			$translatable_attributes[] = 'pa_' . $attribute->attribute_name;
+			$translatable_attributes[] = WCTaxonomies::TAXONOMY_PREFIX_ATTRIBUTE . $attribute->attribute_name;
 		}
 
 		return $translatable_attributes;

@@ -3,9 +3,9 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-8acc3c89.js');
-const mutations = require('./mutations-cad5b919.js');
-require('./watchers-e1fab163.js');
-const getters = require('./getters-45548e2d.js');
+const mutations = require('./mutations-10a18c83.js');
+require('./watchers-5d4eed04.js');
+const getters = require('./getters-ae03ef93.js');
 const watchers = require('./watchers-2ad3abd1.js');
 const MockProcessor = require('./MockProcessor-48b83649.js');
 const addQueryArgs = require('./add-query-args-49dcb630.js');
@@ -16,7 +16,7 @@ require('./index-fb76df07.js');
 require('./google-59d23803.js');
 require('./currency-71fce0f0.js');
 require('./store-4a539aea.js');
-require('./price-ca4a4318.js');
+require('./price-5b1afcfe.js');
 require('./util-b877b2bd.js');
 
 const scPaymentCss = ":host{display:flex !important;flex-direction:column;gap:var(--sc-input-label-margin);position:relative;font-family:var(--sc-font-sans)}.sc-payment-toggle-summary{line-height:1;display:flex;align-items:center;gap:0.5em;font-weight:var(--sc-font-weight-semibold)}.sc-payment-label{display:flex;justify-content:space-between}.sc-payment-instructions{color:var(--sc-color-gray-600);font-size:var(--sc-font-size-small);line-height:var(--sc-line-height-dense)}.sc-payment__stripe-card-element{display:flex !important;flex-direction:column;gap:var(--sc-input-label-margin);position:relative}";

@@ -4,6 +4,7 @@ use WCML\StandAlone\NullSitePress;
 use WCML\Utilities\DB;
 use WPML\Core\ISitePress;
 use WPML\FP\Obj;
+use WPML\FP\Str;
 
 class WCML_Downloadable_Products {
 
@@ -13,6 +14,8 @@ class WCML_Downloadable_Products {
 	const SYNC_MODE_META_SELF     = 'self';
 	const SYNC_MODE_META_AUTO     = 'auto';
 	const SYNC_MODE_SETTING_KEY   = 'file_path_sync';
+	const SYNC_MODE_SETTING_SELF   = '0';
+	const SYNC_MODE_SETTING_AUTO   = '1';
 
 	const CACHE_GROUP = 'WCML_Downloadable_Products';
 
@@ -49,6 +52,10 @@ class WCML_Downloadable_Products {
 		// downloadable files custom.
 		add_action( 'woocommerce_product_options_downloads', [ $this, 'product_options_downloads_custom_option' ] );
 		add_action( 'woocommerce_variation_options_download', [ $this, 'product_options_downloads_custom_option' ], 10, 3 );
+
+		add_action( 'save_post', [ $this, 'saveProductMode' ], PHP_INT_MAX - 1, 2 ); // After WPML, before WCML\Synchronization\Manager.
+		add_action( 'woocommerce_ajax_save_product_variations', [ $this, 'saveProductModeOnAjaxSaveVariations' ] );
+		add_action( 'woocommerce_bulk_edit_variations', [ $this, 'saveProductModeOnVariationsBulkEdit' ], 10, 3 );
 	}
 
 	/**
@@ -114,9 +121,11 @@ class WCML_Downloadable_Products {
 	 * @param string|int $original_id
 	 * @param string|int $trnsl_id
 	 * @param array|null $data
+	 *
+	 * @todo Deprecate and clone into the WCML_Editor_UI_Product_Job class.
 	 */
 	public function sync_files_to_translations( $original_id, $trnsl_id, $data = null ) {
-		$general_product_sync = $this->woocommerce_wpml->settings[ self::SYNC_MODE_SETTING_KEY ] ;
+		$general_product_sync = $this->woocommerce_wpml->settings[ self::SYNC_MODE_SETTING_KEY ];
 		$custom_product_sync  = get_post_meta( $original_id, self::SYNC_MODE_META, true );
 
 		if ( ( $custom_product_sync && $custom_product_sync === self::SYNC_MODE_META_SELF ) || ( ! $custom_product_sync && ! $general_product_sync) ) {
@@ -129,26 +138,89 @@ class WCML_Downloadable_Products {
 					$file_paths_array[ $key_file ]['file'] = $data[ md5( 'file-url' . $key . $original_id ) ];
 				}
 				update_post_meta( $trnsl_id, self::DOWNLOADABLE_FILES_META, $file_paths_array );
+			} else {
+				$this->duplicateDownloadableFilesToTranslatedProduct( $original_id, $trnsl_id );
 			}
 		} elseif ( ( $custom_product_sync && $custom_product_sync === self::SYNC_MODE_META_AUTO ) || $general_product_sync ) {
-			$orig_file_path = maybe_unserialize( get_post_meta( $original_id, self::DOWNLOADABLE_FILES_META, true ) );
-			update_post_meta( $trnsl_id, self::DOWNLOADABLE_FILES_META, $orig_file_path );
+			$this->duplicateDownloadableFilesToTranslatedProduct( $original_id, $trnsl_id );
 		}
+	}
+
+	private function duplicateDownloadableFilesToTranslatedProduct( $original_id, $trnsl_id ) {
+		$orig_file_path = maybe_unserialize( get_post_meta( $original_id, self::DOWNLOADABLE_FILES_META, true ) );
+
+		update_post_meta( $trnsl_id, self::DOWNLOADABLE_FILES_META, $orig_file_path );
+	}
+
+	public function saveProductMode( $postId, $post ) {
+		if ( 'product' !== $post->post_type ) {
+			return;
+		}
+
+		$nonce = filter_input( INPUT_POST, 'wcml_save_files_option_nonce', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
+		if ( ! wp_verify_nonce( $nonce, 'wcml_save_files_option' ) ) {
+			return;
+		}
+
+		$originalProductId = $this->woocommerce_wpml->products->get_original_product_id( $postId );
+
+		$this->save_files_option( $originalProductId );
+
+		if ( ! $this->woocommerce_wpml->products->is_variable_product( $originalProductId ) ) {
+			return;
+		}
+
+		$productVariationsIds = $this->wpdb->get_col(
+			$this->wpdb->prepare(
+				"SELECT ID FROM {$this->wpdb->posts}
+					WHERE post_status IN ('publish','private')
+					AND post_type = %s
+					AND post_parent = %d
+					",
+					'product_variation',
+					$originalProductId
+			)
+		);
+		if ( empty( $productVariationsIds ) ) {
+			return;
+		}
+
+		foreach ( $productVariationsIds as $variationId ) {
+			$this->save_files_option( $variationId );
+		}
+	}
+
+	public function saveProductModeOnAjaxSaveVariations( $productId ) {
+		$product = get_post( $productId );
+		$this->saveProductMode( $productId, $product );
+	}
+
+	public function saveProductModeOnVariationsBulkEdit( $bulkAction, $data, $productId ) {
+		$this->saveProductModeOnAjaxSaveVariations( $productId );
 	}
 
 	/**
 	 * @param string|int $post_id
 	 */
 	public function save_files_option( $post_id ) {
-		$nonce = filter_input( INPUT_POST, 'wcml_save_files_option_nonce', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
+		$nonce   = filter_input( INPUT_POST, 'wcml_save_files_option_nonce', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
+		$post_id = (int) $post_id;
 
-		if ( isset( $_POST['wcml_file_path_option'], $nonce ) && wp_verify_nonce( $nonce, 'wcml_save_files_option' ) ) {
-			if ( isset( $_POST['wcml_file_path_option'][ $post_id ] ) ) {
-				if ( $_POST['wcml_file_path_option'][ $post_id ] === 'on' ) {
-					update_post_meta( $post_id, self::SYNC_MODE_META, $_POST['wcml_file_path_sync'][ $post_id ] );
-				} else {
-					delete_post_meta( $post_id, self::SYNC_MODE_META );
-				}
+		if ( wp_verify_nonce( $nonce, 'wcml_save_files_option' ) ) {
+			$syncModeMetaValue = null;
+			if ( isset( $_POST['wcml_file_path_option'][0] ) && $_POST['wcml_file_path_option'][0] === 'on' ) {
+				// Create Product
+				$syncModeMetaValue = sanitize_text_field( $_POST['wcml_file_path_sync'][0] );
+			} else if ( isset( $_POST['wcml_file_path_option'][ $post_id ] ) && $_POST['wcml_file_path_option'][ $post_id ] === 'on' ) {
+				// Edit Product
+				$syncModeMetaValue = sanitize_text_field( $_POST['wcml_file_path_sync'][ $post_id ] );
+			} else {
+				// Use custom settings for translations download files - remove flags
+				delete_post_meta( $post_id, self::SYNC_MODE_META );
+			}
+
+			if ( in_array( $syncModeMetaValue, [ self::SYNC_MODE_META_AUTO, self::SYNC_MODE_META_SELF ], true ) ) {
+				update_post_meta( $post_id, self::SYNC_MODE_META, $_POST['wcml_file_path_sync'][ $post_id ] );
 			}
 		}
 	}
@@ -351,5 +423,60 @@ class WCML_Downloadable_Products {
 		}
 
 		return $files_data;
+	}
+
+	/**
+	 * @param int $product_id
+	 */
+	public static function isDownloadableFilesSetToUseSame( $product_id ): bool {
+		global $woocommerce_wpml;
+
+		if( !empty( $product_id ) ) {
+			$custom_product_sync  = get_post_meta( $product_id, \WCML_Downloadable_Products::SYNC_MODE_META, true );
+
+			// Use the same files for translations
+			if ( $custom_product_sync === \WCML_Downloadable_Products::SYNC_MODE_META_AUTO ) {
+				return true;
+			}
+
+			// Add separate download files for translations when translating products
+			if ( $custom_product_sync === \WCML_Downloadable_Products::SYNC_MODE_META_SELF ) {
+				return false;
+			}
+		}
+
+		$general_product_sync = $woocommerce_wpml->settings[ \WCML_Downloadable_Products::SYNC_MODE_SETTING_KEY ];
+
+		// Use the same files for translations
+		if ( $general_product_sync === \WCML_Downloadable_Products::SYNC_MODE_SETTING_AUTO ) {
+			return true;
+		}
+
+		// Add separate download files for translations when translating products
+		if ( $general_product_sync === \WCML_Downloadable_Products::SYNC_MODE_SETTING_SELF ) {
+			return false;
+		}
+
+		// DEFAULT: Use the same files for translations
+		return true;
+	}
+
+	/**
+	 * @param string $fieldType
+	 * @return array list( $match, $fileNo, $fileId, $title )
+	 */
+	public static function parseDownloadableFileField( $fieldType ): array {
+		return array_merge( Str::match( '/^field-_downloadable_files-(\d+)-(.*)-(.*)$/', $fieldType ), array_fill( 0, 4, null ) );
+	}
+
+	/**
+	 * @param string $fileNo
+	 * @param string $downloadableId
+	 * @param string $name
+	 */
+	public static function buildDownloadableFileField( $fileNo, $downloadableId, $name ): string {
+		$fileIdSafe = str_replace( '-', \WCML_Synchronize_Product_Data::CUSTOM_FIELD_KEY_SEPARATOR, $downloadableId );
+
+		return sprintf( 'field-_downloadable_files-%d-%s-%s', $fileNo, $fileIdSafe, $name );
 	}
 }

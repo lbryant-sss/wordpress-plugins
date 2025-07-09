@@ -14,6 +14,9 @@ class WCML_Multi_Currency_Shipping {
 	/** @var wpdb */
 	private $wpdb;
 
+	/** @var int */
+	const PRIORITY_SHIPPING = 10;
+
 	public function __construct( WCML_Multi_Currency $multi_currency, ISitePress $sitepress, wpdb $wpdb ) {
 
 		$this->multi_currency = $multi_currency;
@@ -35,11 +38,23 @@ class WCML_Multi_Currency_Shipping {
 		add_filter( 'wcml_shipping_price_amount', [ $this, 'shipping_price_filter' ] ); // WCML filters.
 		add_filter( 'wcml_shipping_free_min_amount', [ $this, 'shipping_free_min_amount' ], 10, 2 ); // WCML filters.
 
-		add_filter( 'woocommerce_evaluate_shipping_cost_args', [ $this, 'woocommerce_evaluate_shipping_cost_args' ] );
+		add_filter( 'woocommerce_evaluate_shipping_cost_args', [ $this, 'woocommerce_evaluate_shipping_cost_args' ], 10, 3 );
 
-		add_filter( 'woocommerce_shipping_packages', [ $this, 'convert_shipping_taxes' ] );
+		add_filter( 'woocommerce_shipping_packages', [ $this, 'convert_shipping_taxes' ], self::PRIORITY_SHIPPING );
+
+		add_filter( 'woocommerce_shipping_packages', [
+			$this,
+			'applyShippingRoundingRules'
+		], \WCML_Multi_Currency_Shipping::PRIORITY_SHIPPING + 1 );
 
 		add_filter( 'woocommerce_package_rates', [ $this, 'convert_shipping_costs_in_package_rates' ] );
+	}
+
+	/**
+	 * @param \WC_Shipping_Rate $rate
+	 */
+	private function isManualPricingEnabledForThisRate( $rate ): bool {
+		return ManualCost::get( $rate->method_id )->isManualPricingEnabled( $rate );
 	}
 
 	/**
@@ -60,7 +75,7 @@ class WCML_Multi_Currency_Shipping {
 			if ( $cached_converted_shipping_cost ) {
 				$rate->cost = $cached_converted_shipping_cost;
 			} elseif ( isset( $rate->cost ) && $rate->cost ) {
-				if ( ! ManualCost::get( $rate->method_id )->isManualPricingEnabled( $rate ) ) {
+				if ( ! $this->isManualPricingEnabledForThisRate( $rate ) ) {
 					$rate->cost = $this->multi_currency->prices->raw_price_filter( $rate->cost, $client_currency );
 				}
 				wp_cache_set( $cache_key, $rate->cost, self::CACHE_PERSISTENT_GROUP );
@@ -105,14 +120,19 @@ class WCML_Multi_Currency_Shipping {
 	}
 
 	/**
-	 * @param array $args
-	 *
 	 * When using [cost] in the shipping class costs, we need to use the not-converted cart total
 	 * It will be converted as part of the total cost
 	 *
+	 * @param array $args
+	 * @param string|float|int $sum
+	 * @param \WC_Shipping_Method $WC_Shipping_Method
+	 *
 	 * @return array
 	 */
-	public function woocommerce_evaluate_shipping_cost_args( $args ) {
+	public function woocommerce_evaluate_shipping_cost_args( $args, $sum, $WC_Shipping_Method ) {
+		if( isset( $WC_Shipping_Method->wcml_shipping_cost_in_mc ) && $WC_Shipping_Method->wcml_shipping_cost_in_mc === true ) {
+			return $args;
+		}
 
 		$args['cost'] = $this->multi_currency->prices->unconvert_price_amount( $args['cost'] );
 
@@ -120,8 +140,7 @@ class WCML_Multi_Currency_Shipping {
 	}
 
 	public function convert_shipping_taxes( $packages ) {
-
-		if ( 'yes' === get_option( 'woocommerce_calc_taxes' ) ) {
+		if ( wc_tax_enabled() ) {
 			foreach ( $packages as $package_id => $package ) {
 				if ( isset( $package['rates'] ) ) {
 					foreach ( $package['rates'] as $rate_id => $rate ) {
@@ -131,6 +150,21 @@ class WCML_Multi_Currency_Shipping {
 						}
 					}
 				}
+			}
+		}
+
+		return $packages;
+	}
+
+	/**
+	 * @param array $packages The array of packages after shipping costs are calculated.self
+	 *
+	 * @return array
+	 */
+	public function applyShippingRoundingRules( $packages ) {
+		foreach ( $packages as $packageKey => $package ) {
+			foreach ( $package['rates'] as $rateKey => $rate ) {
+				$packages[ $packageKey ]['rates'][ $rateKey ] = $this->roundingShippingCostIncludingTax( $rate );
 			}
 		}
 
@@ -163,5 +197,82 @@ class WCML_Multi_Currency_Shipping {
 	 */
 	public static function getShippingOptionName( $methodId, $instanceId ) {
 		return sprintf( 'woocommerce_%s_%d_settings', $methodId, $instanceId );
+	}
+
+	private function is_cart_prices_exclude_tax(): bool {
+		return ! wc_tax_enabled() || 'excl' === get_option( 'woocommerce_tax_display_cart' );
+	}
+
+	private function is_cart_prices_include_tax(): bool {
+		return wc_tax_enabled() || 'incl' === get_option( 'woocommerce_tax_display_cart' );
+	}
+
+	/**
+	 * @param \WC_Shipping_Rate $shippingRate
+	 *
+	 * @return \WC_Shipping_Rate
+	 */
+	private function roundingShippingCostIncludingTax( $shippingRate ) {
+		$shippingCosts = floatval( $shippingRate->get_cost() );
+		$shippingTaxes = floatval( $shippingRate->get_shipping_tax() );
+
+		// Free shipping
+		if ( 0.0 === $shippingCosts ) {
+			return $shippingRate;
+		}
+
+		// Display prices during cart and checkout: Including tax
+		// WC treats shipping costs as NET
+		// So, in order for the shipping cost to be presented on the screen as nicely rounded, we need to
+		// round the net cost (it will be presented on the screen), and recalculate TAX (it must be calculated with the correct rate, and it affects the final price)
+		if ( $this->is_cart_prices_exclude_tax() ) {
+			$priceWithRounding = $this->applyRoundingRules( $shippingCosts );
+
+			$shippingRate->set_cost( $priceWithRounding );
+			$shippingRate->set_taxes( $this->calculateTaxForCost( $priceWithRounding ) );
+
+			return $shippingRate;
+		}
+
+		// Display prices during cart and checkout: Including tax
+		// WC treats shipping costs as NET
+		// So, in order for the shipping cost to be presented on the screen as nicely rounded, we need to:
+		// - round (NET+TAX) and then calculate the increased NET and TAX (their sum will be presented on the screen)
+		if ( $this->is_cart_prices_include_tax() ) {
+			$priceStandard     = $shippingCosts + $shippingTaxes;
+			$priceWithRounding = $this->applyRoundingRules( $priceStandard );
+
+			if ( $priceWithRounding !== $priceStandard ) {
+				$tax     = $shippingTaxes / $shippingCosts;
+				$newCost = $priceWithRounding / ( 1 + $tax );
+
+				$shippingRate->set_cost( $newCost );
+				$shippingRate->set_taxes( $this->calculateTaxForCost( $newCost ) );
+
+				return $shippingRate;
+			}
+		}
+
+		return $shippingRate;
+	}
+
+	/**
+	 * @param float $price
+	 *
+	 * @return int|float
+	 */
+	private function applyRoundingRules( $price ) {
+		return $this->multi_currency->prices->apply_rounding_rules( $price );
+	}
+
+	/**
+	 * @param float $price
+	 */
+	private function calculateTaxForCost( $price ): array {
+		if ( ! wc_tax_enabled() ) {
+			return [];
+		}
+
+		return \WC_Tax::calc_shipping_tax( $price, \WC_Tax::get_shipping_tax_rates() );
 	}
 }

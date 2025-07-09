@@ -1,5 +1,5 @@
 import { r as registerInstance, c as createEvent, h, a as getElement } from './index-745b6bec.js';
-import { c as getCurrencySymbol } from './price-7bb626d0.js';
+import { c as getCurrencySymbol } from './price-af9f0dbf.js';
 import { F as FormSubmitController } from './form-data-76641f16.js';
 import { m as maybeConvertAmount, i as isZeroDecimal } from './currency-a0c9bff4.js';
 

@@ -5,7 +5,7 @@ use function WCML\functions\isStandAlone;
 class WCML_Pointers{
 
 	public function add_hooks() {
-		add_action( 'admin_head', array( $this, 'setup' ) );
+		add_action( 'admin_head', [ $this, 'setup' ] );
 	}
 
 	public function setup() {
@@ -25,14 +25,14 @@ class WCML_Pointers{
 		wp_register_style( 'wcml-pointers', WCML_PLUGIN_URL . '/res/css/wcml-pointers.css' );
 
 		if ( $isFullMode && 'edit-product' === $current_screen->id ) {
-			add_action( 'admin_footer', array( $this, 'add_products_translation_link' ), 100 );
+			add_action( 'admin_footer', [ $this, 'add_products_translation_link' ], 100 );
 		} elseif ( 'woocommerce_page_wc-settings' === $current_screen->id ) {
 			if ( $isFullMode && 'shipping' === $tab && 'classes' === $section ) {
-				add_action( 'admin_footer', array( $this, 'add_shipping_classes_translation_link' ) );
+				add_action( 'admin_footer', [ $this, 'add_shipping_classes_translation_link' ] );
 			} elseif ( ! $tab || 'general' === $tab ) {
-				add_filter( 'woocommerce_general_settings', array( $this, 'add_multi_currency_link' ) );
+				add_filter( 'woocommerce_general_settings', [ $this, 'add_multi_currency_link' ] );
 			} elseif ( $isFullMode && 'advanced' === $tab ) {
-				add_filter( 'woocommerce_settings_pages', array( $this, 'add_endpoints_translation_link' ) );
+				add_filter( 'woocommerce_settings_pages', [ $this, 'add_endpoints_translation_link' ] );
 			}
 		}
 	}
@@ -112,7 +112,7 @@ class WCML_Pointers{
 	private function add_link_with_settings( $link, $name, $setting_key, array $settings, $anchor_template ) {
 		wp_enqueue_style( 'wcml-pointers' );
 		foreach ( $settings as $key => $value ) {
-			if ( $setting_key === $value['id'] && isset( $value['desc'] ) ) {
+			if ( is_array( $value ) && isset( $value['id'], $value['desc'] ) && $setting_key === $value['id'] ) {
 
 				$settings[ $key ]['desc'] = $this->get_anchor( $link, $name, $anchor_template ) . '<br />' . $value['desc'];
 			}
@@ -129,6 +129,6 @@ class WCML_Pointers{
 	 * @return string
 	 */
 	private function get_anchor( $link, $name, $anchor_template ) {
-		return str_replace( array( '{{ url }}', '{{ text }}' ), array( $link, $name ), $anchor_template );
+		return str_replace( [ '{{ url }}', '{{ text }}' ], [ $link, $name ], $anchor_template );
 	}
 }

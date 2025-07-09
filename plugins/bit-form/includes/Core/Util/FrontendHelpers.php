@@ -255,6 +255,9 @@ final class FrontendHelpers
       if (in_array('administrator', $user->roles) || current_user_can('manage_bitform')) {
         return true;
       }
+      if ('entryEditAccess' === $action && !(isset($accessPermission->allowEntriesEdit) && $accessPermission->allowEntriesEdit)) {
+        return false;
+      }
       if (!empty($scope) && !empty($accessPermission->{$scope}) && is_string($accessPermission->{$scope})) {
         $accessRolesArray = explode(',', $accessPermission->{$scope});
         if (self::has_access_for_roles($user, $accessRolesArray) && empty($entryUserId)) {

@@ -26,8 +26,6 @@ class WCML_Synchronize_Variations_Data {
 
 	public function add_hooks() {
 
-		add_action( 'woocommerce_ajax_save_product_variations', [ $this, 'sync_product_variations_action' ], 11 );
-		add_action( 'woocommerce_bulk_edit_variations', [ $this, 'sync_product_variations_on_bulk_edit' ], 10, 3 );
 		add_action( 'wp_ajax_woocommerce_remove_variations', [ $this, 'remove_translations_for_variations' ], 9 );
 
 		/**
@@ -50,40 +48,65 @@ class WCML_Synchronize_Variations_Data {
 	 * @param string $bulk_action
 	 * @param array  $data
 	 * @param int    $product_id
+	 *
+	 * @deprecated Use \WCML\Synchronization\Hooks::synchronizeProductVariationsOnBulkEdit
 	 */
 	public function sync_product_variations_on_bulk_edit( $bulk_action, $data, $product_id ) {
 		$this->sync_product_variations_action( $product_id );
 	}
 
-	public function sync_product_variations_action( $product_id ) {
+	/**
+	 * @param int $productId
+	 *
+	 * @deprecated Use \WCML\Synchronization\Hooks::synchronizeProductVariationsOnAjax
+	 */
+	public function sync_product_variations_action( $productId ) {
+		$isOriginal = $this->woocommerce_wpml->products->is_original_product( $productId );
 
-		if ( $this->woocommerce_wpml->products->is_original_product( $product_id ) ) {
+		if ( ! $isOriginal ) {
+			return;
+		}
 
-			$this->sync_product_variations_custom_data( $product_id );
+		$trid = $this->sitepress->get_element_trid( $productId, 'post_product' );
+		if ( empty( $trid ) ) {
+			// phpcs:disable WordPress.WP.PreparedSQL.NotPrepared
+			$trid = $this->wpdb->get_var(
+				$this->wpdb->prepare(
+					"SELECT trid FROM {$this->wpdb->prefix}icl_translations
+																	WHERE element_id = %d AND element_type = 'post_product'",
+					$productId
+				)
+			);
+			// phpcs:enable
+		}
+		if ( empty( $trid ) ) {
+			return;	
+		}
 
-			$trid = $this->sitepress->get_element_trid( $product_id, 'post_product' );
-
-			if ( empty( $trid ) ) {
-				// phpcs:disable WordPress.WP.PreparedSQL.NotPrepared
-				$trid = $this->wpdb->get_var(
-					$this->wpdb->prepare(
-						"SELECT trid FROM {$this->wpdb->prefix}icl_translations
-																		WHERE element_id = %d AND element_type = 'post_product'",
-						$product_id
-					)
-				);
-				// phpcs:enable
-			}
-			$translations = $this->sitepress->get_element_translations( $trid, 'post_product' );
-			foreach ( $translations as $translation ) {
-				if ( ! $translation->original ) {
-					$this->sync_product_variations( $product_id, $translation->element_id, $translation->language_code );
-					$this->woocommerce_wpml->attributes->sync_default_product_attr( $product_id, $translation->element_id, $translation->language_code );
-				}
+		$translationsIds       = [];
+		$translationsLanguages = [];
+		$translations          = $this->sitepress->get_element_translations( $trid, 'post_product' );
+		foreach ( $translations as $translation ) {
+			if ( ! $translation->original ) {
+				$translationsIds[] = $translation->element_id;
+				$ttranslationsLanguages[ $translation->element_id ] = $translation->language_code;
 			}
 		}
+
+		if ( empty( $translationsIds ) ) {
+			return;
+		}
+
+		$product = get_post( $productId );
+		do_action( \WCML\Synchronization\Hooks::HOOK_SYNCHRONIZE_PRODUCT_COMPONENT, $product, $translationsIds, $translationsLanguages, \WCML\Synchronization\Store::COMPONENT_VARIATIONS );
+		do_action( \WCML\Synchronization\Hooks::HOOK_SYNCHRONIZE_PRODUCT_COMPONENT, $product, $translationsIds, $translationsLanguages, \WCML\Synchronization\Store::COMPONENT_ATTRIBUTES );
 	}
 
+	/**
+	 * @param int $product_id
+	 *
+	 * @deprecated The logic now lives in WCML_Downloadable_Products::saveProductMode and WCML_Custom_Prices::sync_product_variations_custom_prices
+	 */
 	public function sync_product_variations_custom_data( $product_id ) {
 
 		$is_variable_product = $this->woocommerce_wpml->products->is_variable_product( $product_id );
@@ -103,6 +126,7 @@ class WCML_Synchronize_Variations_Data {
 
 			foreach ( $get_all_post_variations as $k => $post_data ) {
 
+				// We need a single mechanism to sync prices in a product and in its variations.
 				if ( (int) $this->woocommerce_wpml->settings['enable_multi_currency'] === WCML_MULTI_CURRENCIES_INDEPENDENT ) {
 					$this->woocommerce_wpml->multi_currency->custom_prices->sync_product_variations_custom_prices( $post_data->ID );
 				}
@@ -119,6 +143,9 @@ class WCML_Synchronize_Variations_Data {
 	 * @param int    $tr_product_id
 	 * @param string $lang
 	 * @param array  $args
+	 *
+	 * @todo Still used by the WCML_Editor_UI_Product_Job CTE editor manager
+	 * @todo Still usd by the troubleshooting mechanism, see https://onthegosystems.myjetbrains.com/youtrack/issue/wcml-4904
 	 */
 	public function sync_product_variations( $product_id, $tr_product_id, $lang, $args = [] ) {
 		global $wpml_post_translations;
@@ -239,7 +266,7 @@ class WCML_Synchronize_Variations_Data {
 			}
 
 			// sync media.
-			$this->woocommerce_wpml->media->sync_variation_thumbnail_id( $original_variation_id, $variation_id, $lang, $isNewTranslatedVariation );
+			$this->woocommerce_wpml->media->sync_variation_thumbnail_id( $original_variation_id, $variation_id, $lang );
 
 			// sync file_paths.
 			$this->woocommerce_wpml->downloadable->sync_files_to_translations( $original_variation_id, $variation_id, $args['editor_translations'] );
@@ -266,6 +293,8 @@ class WCML_Synchronize_Variations_Data {
 		delete_transient( 'wc_product_children_' . $tr_product_id );
 		delete_transient( '_transient_wc_product_children_ids_' . $tr_product_id );
 
+		// This is independdent of variations translations
+		// Might be managed in the higher level with variations prices and downloadable options.
 		$this->sync_prices_variation_ids( $product_id, $tr_product_id, $lang );
 
 		add_action( 'save_post', [ $wpml_post_translations, 'save_post_actions' ], 100, 2 );
@@ -281,6 +310,15 @@ class WCML_Synchronize_Variations_Data {
 		return $this->sitepress->get_object_id( $original_variation_id, 'product_variation', false, $lang );
 	}
 
+	/**
+	 * @param int    $original_variation_id
+	 * @param int    $tr_variation_id
+	 * @param string $lang
+	 * @param bool   $isNewTranslatedVariation
+	 *
+	 * @deprecated Use \WCML\Synchronization\Component\VariationTaxonomies::run
+	 * @todo Still used by the variation synchronization main method here.
+	 */
 	public function sync_variations_taxonomies( $original_variation_id, $tr_variation_id, $lang, $isNewTranslatedVariation = false ) {
 		global $wpml_term_translations;
 		$returnTrue = Fns::always( true );
@@ -356,7 +394,7 @@ class WCML_Synchronize_Variations_Data {
 				}
 
 				foreach ( $tt_ids as $tt_id ) {
-					// Avoid the translate_object_id filter to escape from the WPML_Term_Translations::maybe_warm_term_id_cache() hell
+					// Avoid the wpml_object_id filter to escape from the WPML_Term_Translations::maybe_warm_term_id_cache() hell
 					// given that we invalidate the cache at every step on wp_set_post_terms().
 					$tt_id_trans = $wpml_term_translations->element_id_in( $tt_id, $lang );
 					if ( $tt_id_trans ) {
@@ -627,7 +665,7 @@ class WCML_Synchronize_Variations_Data {
 			$original_price_variation_id = get_post_meta( $product_id, $price_field, true );
 
 			if ( $original_price_variation_id ) {
-				$translated_price_variation_id = apply_filters( 'translate_object_id', $original_price_variation_id, 'product_variation', false, $language );
+				$translated_price_variation_id = apply_filters( 'wpml_object_id', $original_price_variation_id, 'product_variation', false, $language );
 				if ( ! is_null( $translated_price_variation_id ) ) {
 					update_post_meta( $tr_product_id, $price_field, $translated_price_variation_id );
 				}
@@ -718,7 +756,6 @@ class WCML_Synchronize_Variations_Data {
 
 			// Update all variations at once.
 			// For each meta key, data is made of pairs [ meta value => list of affected post IDs ] so it is easier to compose IN statements.
-			// TODO Evaluate whether having the meta_value and excluding those with the right value would improve this update.
 			$dataToUpdate = Obj::propOr( [], 'update', $delayedFieldMetaData );
 			if ( ! empty( $dataToUpdate ) ) {
 				foreach ( $dataToUpdate as $updateMetaValue => $idsToUpdate ) {

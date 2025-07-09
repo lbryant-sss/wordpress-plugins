@@ -1,6 +1,7 @@
 <?php
 
 use WCML\Utilities\SyncHash;
+use WPML\Translation\TranslationElements\FieldCompression;
 
 class WCML_Editor_UI_Product_Job extends WPML_Editor_UI_Job {
 
@@ -319,7 +320,7 @@ class WCML_Editor_UI_Product_Job extends WPML_Editor_UI_Job {
 					foreach ( $product_terms as $term ) {
 						if (
 							$this->sitepress->get_setting( 'tm_block_retranslating_terms' ) &&
-							! is_null( apply_filters( 'translate_object_id', $term->term_id, $taxonomy, false, $this->get_target_language() ) )
+							! is_null( apply_filters( 'wpml_object_id', $term->term_id, $taxonomy, false, $this->get_target_language() ) )
 						) {
 							continue;
 						}
@@ -410,7 +411,7 @@ class WCML_Editor_UI_Product_Job extends WPML_Editor_UI_Job {
 	 * @return array
 	 */
 	public function get_data() {
-		$trn_product_id = apply_filters( 'translate_object_id', $this->product_id, 'product', false, $this->get_target_language() );
+		$trn_product_id = apply_filters( 'wpml_object_id', $this->product_id, 'product', false, $this->get_target_language() );
 		$translation    = false;
 		if ( null !== $trn_product_id ) {
 			$translation = get_post( $trn_product_id );
@@ -454,7 +455,7 @@ class WCML_Editor_UI_Product_Job extends WPML_Editor_UI_Job {
 			$element_data[ 'image-id-' . $image_id . '-description' ] = [ 'original' => $attachment_data->post_content ];
 			$element_data[ 'image-id-' . $image_id . '-alt-text' ]    = [ 'original' => $alt_text ];
 
-			$trnsl_prod_image = apply_filters( 'translate_object_id', $image_id, 'attachment', false, $this->get_target_language() );
+			$trnsl_prod_image = apply_filters( 'wpml_object_id', $image_id, 'attachment', false, $this->get_target_language() );
 			if ( null !== $trnsl_prod_image ) {
 				/** @var stdClass */
 				$trnsl_attachment_data = $this->wpdb->get_row( $this->wpdb->prepare( "SELECT post_title,post_excerpt,post_content FROM {$this->wpdb->posts} WHERE ID = %d", $trnsl_prod_image ) );
@@ -490,7 +491,7 @@ class WCML_Editor_UI_Product_Job extends WPML_Editor_UI_Job {
 			if ( ! empty( $variations ) ) {
 				foreach ( $variations as $variation ) {
 					$element_data[ '_variation_description' . $variation->ID ] = [ 'original' => strip_tags( get_post_meta( $variation->ID, '_variation_description', true ) ) ];
-					$translated_variation_id                                   = apply_filters( 'translate_object_id', $variation->ID, 'product_variation', false, $this->get_target_language() );
+					$translated_variation_id                                   = apply_filters( 'wpml_object_id', $variation->ID, 'product_variation', false, $this->get_target_language() );
 					$element_data[ '_variation_description' . $variation->ID ]['translation'] = $translated_variation_id ? get_post_meta( $translated_variation_id, '_variation_description', true ) : '';
 
 					$element_data = $this->add_custom_field_to_element_data( $element_data, $variation->ID, $translated_variation_id, true );
@@ -502,7 +503,7 @@ class WCML_Editor_UI_Product_Job extends WPML_Editor_UI_Job {
 			$orig_product_files  = $file_data;
 			$trnsl_product_files = [];
 			if ( $this->product_is_variable ) {
-				$trnsl_variation_id = apply_filters( 'translate_object_id', $post_id, 'product_variation', false, $this->get_target_language() );
+				$trnsl_variation_id = apply_filters( 'wpml_object_id', $post_id, 'product_variation', false, $this->get_target_language() );
 				if ( $trnsl_variation_id ) {
 					$trnsl_product_files = $this->woocommerce_wpml->downloadable->get_files_data( $trnsl_variation_id );
 				}
@@ -619,6 +620,12 @@ class WCML_Editor_UI_Product_Job extends WPML_Editor_UI_Job {
 		return $element_data;
 	}
 
+	/**
+	 * @param array $translations
+	 *
+	 * @todo Port the pending synchronization methods, as they are focused on saving data and nos synchronizing it.
+	 * @todo Unify how we access and execute the synchronization API, we might want to have a dedicated entry point.
+	 */
 	public function save_translations( $translations ) {
 		/** @var TranslationManagement $iclTranslationManagement */
 		global $iclTranslationManagement;
@@ -632,7 +639,7 @@ class WCML_Editor_UI_Product_Job extends WPML_Editor_UI_Job {
 	    $active_languages = $this->sitepress->get_active_languages();
 
 		$product_trid  = $this->sitepress->get_element_trid( $this->product_id, 'post_' . $this->original_post->post_type );
-		$tr_product_id = apply_filters( 'translate_object_id', $this->product_id, 'product', false, $this->get_target_language() );
+		$tr_product_id = apply_filters( 'wpml_object_id', $this->product_id, 'product', false, $this->get_target_language() );
 
 		new WCML_Editor_Save_Filters( $product_trid, $this->get_target_language() );
 
@@ -655,7 +662,7 @@ class WCML_Editor_UI_Product_Job extends WPML_Editor_UI_Job {
 			$args['menu_order ']    = $this->original_post->menu_order;
 			$args['ping_status']    = $this->original_post->ping_status;
 			$args['comment_status'] = $this->original_post->comment_status;
-			$product_parent         = apply_filters( 'translate_object_id', $this->original_post->post_parent, 'product', false, $this->get_target_language() );
+			$product_parent         = apply_filters( 'wpml_object_id', $this->original_post->post_parent, 'product', false, $this->get_target_language() );
 			$args['post_parent']    = null === $product_parent ? 0 : $product_parent;
 
 			// TODO: remove after change required WPML version > 3.3.
@@ -709,7 +716,7 @@ class WCML_Editor_UI_Product_Job extends WPML_Editor_UI_Job {
 			$args['post_status']    = $this->original_post->post_status;
 			$args['ping_status']    = $this->original_post->ping_status;
 			$args['comment_status'] = $this->original_post->comment_status;
-			$product_parent         = apply_filters( 'translate_object_id', $this->original_post->post_parent, 'product', false, $this->get_target_language() );
+			$product_parent         = apply_filters( 'wpml_object_id', $this->original_post->post_parent, 'product', false, $this->get_target_language() );
 			$args['post_parent']    = null === $product_parent ? 0 : $product_parent;
 			$_POST['to_lang']       = $this->get_target_language();
 
@@ -739,24 +746,38 @@ class WCML_Editor_UI_Product_Job extends WPML_Editor_UI_Job {
 		}
 
 		$product_translations = $this->sitepress->get_element_translations( $product_trid, 'post_product', false, false, true );
+		
+		
+		
+		$post                  = $this->original_post;
+		$translationsIds       = [ $tr_product_id ];
+		$translationsLanguages = [ $tr_product_id => $this->get_target_language() ];
 
 		do_action( 'wcml_before_sync_product_data', $this->product_id, $tr_product_id, $this->get_target_language() );
 
+		// ===================================================================== //
+		// ====================== Saving and syncing data ====================== //
+		// ===================================================================== //
+
+		// TODO Port here as a saving method, as it does not only sync data.
 		$this->woocommerce_wpml->sync_product_data->duplicate_product_post_meta( $this->product_id, $tr_product_id, $translations );
 
 		$this->woocommerce_wpml->page_builders->save_page_builders_strings( $translations, $this->product_id, $this->get_target_language() );
-
 		$this->save_translated_terms();
-		// sync taxonomies.
-		$this->woocommerce_wpml->sync_product_data->sync_product_taxonomies( $this->product_id, $tr_product_id, $this->get_target_language() );
 
+		do_action( \WCML\Synchronization\Hooks::HOOK_SYNCHRONIZE_PRODUCT_COMPONENT, $this->original_post, $translationsIds, $translationsLanguages, \WCML\Synchronization\Store::COMPONENT_TAXONOMIES );
+
+		// Stay, this is unique to this flow., and used by multiple third-parties compatibility classes
 		do_action( 'wcml_update_extra_fields', $this->product_id, $tr_product_id, $translations, $this->get_target_language() );
 
+		// TODO Port here as a saving method, as it does not only sync data. Heavily related to \WCML\Synchronization\Store::COMPONENT_ATTRIBUTES.
 		$this->woocommerce_wpml->attributes->sync_product_attr( $this->product_id, $tr_product_id, $this->get_target_language(), $translations );
-
 		$this->woocommerce_wpml->attributes->sync_default_product_attr( $this->product_id, $tr_product_id, $this->get_target_language() );
 
-		// synchronize post variations.
+		// TODO Port here as a saving method, as it does not only sync data. Heavily related to \WCML\Synchronization\Store::COMPONENT_VARIATIONS.
+		// TODO Note that the legacy method is managing the custom fields when saved from the variation translation, see the duplicate_variation_data method. 
+		// TODO Note that the legacy method is managing the _variation_description meta field. 
+		// TODO Note that the legacy method is managing the downloadable fields data from the translation editor. 
 		$this->woocommerce_wpml->sync_variations_data->sync_product_variations(
 			$this->product_id,
 			$tr_product_id,
@@ -767,19 +788,14 @@ class WCML_Editor_UI_Product_Job extends WPML_Editor_UI_Job {
 			]
 		);
 
-		$this->woocommerce_wpml->sync_product_data->sync_linked_products( $this->product_id, $tr_product_id, $this->get_target_language() );
-
-		$this->woocommerce_wpml->sync_product_data->sync_product_stock( $this->product, wc_get_product( $tr_product_id ) );
-
-		// sync feature image.
-		$this->woocommerce_wpml->media->sync_thumbnail_id( $this->product_id, $tr_product_id, $this->get_target_language() );
-		// sync product gallery.
-		$this->woocommerce_wpml->media->sync_product_gallery( $this->product_id, $tr_product_id, $this->get_target_language() );
+		do_action( \WCML\Synchronization\Hooks::HOOK_SYNCHRONIZE_PRODUCT_COMPONENT, $this->original_post, $translationsIds, $translationsLanguages, \WCML\Synchronization\Store::COMPONENT_LINKED );
+		do_action( \WCML\Synchronization\Hooks::HOOK_SYNCHRONIZE_PRODUCT_COMPONENT, $this->original_post, $translationsIds, $translationsLanguages, \WCML\Synchronization\Store::COMPONENT_STOCK );
+		do_action( \WCML\Synchronization\Hooks::HOOK_SYNCHRONIZE_PRODUCT_COMPONENT, $this->original_post, $translationsIds, $translationsLanguages, \WCML\Synchronization\Store::COMPONENT_ATTACHMENTS );
 
 		// save images texts.
 		if ( $this->product_images_ids ) {
 			foreach ( $this->product_images_ids as $image_id ) {
-				$trnsl_prod_image = apply_filters( 'translate_object_id', $image_id, 'attachment', false, $this->get_target_language() );
+				$trnsl_prod_image = apply_filters( 'wpml_object_id', $image_id, 'attachment', false, $this->get_target_language() );
 
 				if ( ! $trnsl_prod_image ) {
 					$trnsl_prod_image = $this->woocommerce_wpml->media->create_base_media_translation( $image_id, $this->product_id, $this->get_target_language() );
@@ -801,6 +817,8 @@ class WCML_Editor_UI_Product_Job extends WPML_Editor_UI_Job {
 				}
 			}
 		}
+
+		// ===================================================================== //
 
 		do_action( 'wcml_after_sync_product_data', $this->product_id, $tr_product_id, $this->get_target_language() );
 
@@ -848,7 +866,9 @@ class WCML_Editor_UI_Product_Job extends WPML_Editor_UI_Job {
 			if ( substr( $field_key, 0, 2 ) === 't_' ) {
 				$update = [];
 				if ( isset( $field['data'] ) ) {
-					$update['field_data_translated'] = base64_encode( $field['data'] );
+					$update['field_data_translated'] = class_exists( FieldCompression::class ) ?
+						FieldCompression::compress( $field['data'], false ) :
+						base64_encode( $field['data'] );
 
 					$update['field_finished'] = 1;
 

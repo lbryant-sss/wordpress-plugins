@@ -1,5 +1,7 @@
 <?php
 
+use WCML\Utilities\WCTaxonomies;
+
 class WCML_Sync_Taxonomy extends WCML_Templates_Factory {
 
 	private $woocommerce_wpml;
@@ -27,7 +29,7 @@ class WCML_Sync_Taxonomy extends WCML_Templates_Factory {
 		$wcml_settings        = $this->woocommerce_wpml->get_settings();
 		$attribute_taxonomies = wc_get_attribute_taxonomies();
 		foreach ( $attribute_taxonomies as $a ) {
-			$attribute_taxonomies_arr[] = 'pa_' . $a->attribute_name;
+			$attribute_taxonomies_arr[] = WCTaxonomies::TAXONOMY_PREFIX_ATTRIBUTE . $a->attribute_name;
 		}
 
 		$model = [

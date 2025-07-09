@@ -30,7 +30,7 @@ class TranslationControls extends TranslationControlsBase {
 	protected function addAdminPageHooks() {
 		add_action( 'admin_footer', [ $this, 'translationInstructions' ] );
 		add_action( 'admin_footer', [ $this, 'translationControls' ] );
-		add_action( 'update_option_woocommerce_permalinks', [ $this, 'registerStringsOnSave' ] );
+		$this->registerStringsOnSave();
 	}
 
 	protected function isAdminPage() {
@@ -139,12 +139,19 @@ class TranslationControls extends TranslationControlsBase {
 		return $translationControls;
 	}
 
+	public function registerStringsOnSave() {
+		add_filter( 'pre_update_option_woocommerce_permalinks', [ $this, 'registerStringsOnPreUpdate' ] );
+	}
+
 	/**
 	 * Delegated into WCML_Url_Translation::register_product_and_taxonomy_bases().
+	 *
+	 * @param array $wcPermalinks
+	 *
+	 * @return array
 	 */
-	public function registerStringsOnSave() {
-		$this->wcmlStrings->getUrlTranslation()->flushWcSettings();
-		$this->wcmlStrings->getUrlTranslation()->register_product_and_taxonomy_bases();
+	public function registerStringsOnPreUpdate( $wcPermalinks ) {
+		return $this->wcmlStrings->getUrlTranslation()->register_product_and_taxonomy_bases( $wcPermalinks );
 	}
 
 	/**

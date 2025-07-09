@@ -1,5 +1,6 @@
 <?php
 
+use WCML\TranslationJob\Hooks;
 use WCML\Utilities\DB;
 use WCML\Utilities\SyncHash;
 
@@ -70,7 +71,7 @@ class WCML_Translation_Editor {
 
 		// See if it's a WooCommerce product.
 		$job = $iclTranslationManagement->get_translation_job( $job_data['job_id'] );
-		if ( $job && 'post_product' === $job->original_post_type ) {
+		if ( $job && Hooks::isProduct( $job ) ) {
 			$job_data['job_type'] = 'wc_product';
 			$job_data['job_id']   = $job->original_doc_id;
 		}
@@ -266,12 +267,8 @@ class WCML_Translation_Editor {
 				foreach ( $variations as $variation ) {
 					$variation_id        = absint( $variation->ID );
 					$original_id         = $this->woocommerce_wpml->products->get_original_product_id( $variation_id );
-					$custom_product_sync = get_post_meta( $original_id, 'wcml_sync_files', true );
-					if ( $custom_product_sync && 'self' === $custom_product_sync ) {
-						$file_path_sync[ $variation_id ] = false;
-					} else {
-						$file_path_sync[ $variation_id ] = true;
-					}
+
+					$file_path_sync[ $variation_id ] = WCML_Downloadable_Products::isDownloadableFilesSetToUseSame( $original_id );
 				}
 			}
 

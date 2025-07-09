@@ -21,12 +21,12 @@ function xyz_ips_run_upgrade_routines() {
 		foreach ($blog_ids as $blog_id) {
 			switch_to_blog($blog_id);
 			xyz_ips_install();
-			wp_cache_flush();
+			//wp_cache_flush();
 			restore_current_blog();
 		}
 	} else {
 		xyz_ips_install();
-		wp_cache_flush();
+		//wp_cache_flush();
 	}
 }
 }

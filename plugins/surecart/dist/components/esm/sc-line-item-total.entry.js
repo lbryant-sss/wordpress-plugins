@@ -1,6 +1,6 @@
 import { r as registerInstance, h, F as Fragment } from './index-745b6bec.js';
 import { f as formBusy } from './getters-487612aa.js';
-import { s as state } from './mutations-2f6b31cb.js';
+import { s as state } from './mutations-6bbbe793.js';
 import './store-627acec4.js';
 import './index-06061d4e.js';
 import './utils-cd1431df.js';
@@ -9,7 +9,7 @@ import './add-query-args-0e2a8393.js';
 import './index-c5a96d53.js';
 import './google-a86aa761.js';
 import './currency-a0c9bff4.js';
-import './price-7bb626d0.js';
+import './price-af9f0dbf.js';
 
 const scLineItemTotalCss = ":host{display:block}sc-line-item{text-align:left}.line-item-total__group sc-line-item{margin:4px 0px !important}.scratch-price{text-decoration:line-through;color:var(--sc-color-gray-500);font-size:var(--sc-font-size-small);margin-right:var(--sc-spacing-xx-small)}sc-line-item::part(base){grid-template-columns:max-content auto auto}.total-price{white-space:nowrap}.currency-label{color:var(--sc-color-gray-500);font-size:var(--sc-font-size-xx-small);margin-right:var(--sc-spacing-xx-small);vertical-align:middle}sc-divider{margin:16px 0 !important}.conversion-description{color:var(--sc-color-gray-500);font-size:var(--sc-font-size-small);margin-right:var(--sc-spacing-xx-small)}";
 const ScLineItemTotalStyle0 = scLineItemTotalCss;
@@ -84,7 +84,7 @@ const ScLineItemTotal = class {
         if (this.total === 'total' && (checkout === null || checkout === void 0 ? void 0 : checkout.total_amount) !== (checkout === null || checkout === void 0 ? void 0 : checkout.amount_due)) {
             return (h("div", { class: "line-item-total__group" }, h("sc-line-item", null, h("span", { slot: "description" }, this.hasInstallmentPlan(checkout) ? (this.renderLineItemTitle(checkout)) : (h(Fragment, null, h("slot", { name: "title" }), h("slot", { name: "description" })))), h("span", { slot: "price" }, h("sc-total", { total: this.total }))), !!checkout.trial_amount && (h("sc-line-item", null, h("span", { slot: "description" }, h("slot", { name: "free-trial-description" }, wp.i18n.__('Trial', 'surecart'))), h("span", { slot: "price" }, checkout === null || checkout === void 0 ? void 0 : checkout.trial_display_amount))), h("sc-line-item", { style: { '--price-size': 'var(--sc-font-size-x-large)' } }, this.hasSubscription(checkout) ? (h("span", { slot: "title" }, h("slot", { name: "subscription-title" }, wp.i18n.__('Total Due Today', 'surecart')))) : (h("span", { slot: "title" }, h("slot", { name: "due-amount-description" }, wp.i18n.__('Amount Due', 'surecart')))), h("span", { slot: "price" }, checkout === null || checkout === void 0 ? void 0 : checkout.amount_due_display_amount)), this.renderConversion()));
         }
-        return (h(Fragment, null, this.total === 'subtotal' && this.hasInstallmentPlan(checkout) && (h("sc-line-item", { style: this.size === 'large' ? { '--price-size': 'var(--sc-font-size-x-large)' } : {} }, h("span", { slot: "description" }, h("slot", { name: "total-payments-description" }, wp.i18n.__('Total Installment Payments', 'surecart'))), h("span", { slot: "price" }, checkout === null || checkout === void 0 ? void 0 : checkout.full_display_amount))), h("sc-line-item", { style: this.size === 'large' ? { '--price-size': 'var(--sc-font-size-x-large)' } : {} }, this.renderLineItemTitle(checkout), this.renderLineItemDescription(checkout), h("span", { slot: "price" }, !!(checkout === null || checkout === void 0 ? void 0 : checkout.total_savings_amount) && this.total === 'total' && h("span", { class: "scratch-price" }, checkout === null || checkout === void 0 ? void 0 : checkout.total_scratch_display_amount), h("span", { class: "total-price" }, checkout === null || checkout === void 0 ? void 0 : checkout.total_display_amount))), this.renderConversion()));
+        return (h(Fragment, null, this.total === 'subtotal' && this.hasInstallmentPlan(checkout) && (h("sc-line-item", { style: this.size === 'large' ? { '--price-size': 'var(--sc-font-size-x-large)' } : {} }, h("span", { slot: "description" }, h("slot", { name: "total-payments-description" }, wp.i18n.__('Total Installment Payments', 'surecart'))), h("span", { slot: "price" }, checkout === null || checkout === void 0 ? void 0 : checkout.full_display_amount))), h("sc-line-item", { style: this.size === 'large' ? { '--price-size': 'var(--sc-font-size-x-large)' } : {} }, this.renderLineItemTitle(checkout), this.renderLineItemDescription(checkout), h("span", { slot: "price" }, !!(checkout === null || checkout === void 0 ? void 0 : checkout.total_savings_amount) && this.total === 'total' && h("span", { class: "scratch-price" }, checkout === null || checkout === void 0 ? void 0 : checkout.total_scratch_display_amount), h("sc-total", { class: "total-price", total: this.total }))), this.renderConversion()));
     }
 };
 ScLineItemTotal.style = ScLineItemTotalStyle0;

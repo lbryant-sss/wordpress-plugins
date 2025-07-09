@@ -234,7 +234,7 @@ class WCML_Multi_Currency_UI extends WCML_Templates_Factory {
 
 	public function get_currency_switchers_preview() {
 		$preview = [
-			'product' => $this->woocommerce_wpml->multi_currency->currency_switcher->wcml_currency_switcher(
+			'product' => $this->woocommerce_wpml->multi_currency->currency_switcher->do_currency_switcher(
 				[
 					'switcher_id' => 'product',
 					'echo'        => false,
@@ -243,7 +243,7 @@ class WCML_Multi_Currency_UI extends WCML_Templates_Factory {
 		];
 
 		foreach ( $this->widget_currency_switchers() as $switcher ) {
-			$preview[ $switcher['id'] ] = $this->woocommerce_wpml->multi_currency->currency_switcher->wcml_currency_switcher(
+			$preview[ $switcher['id'] ] = $this->woocommerce_wpml->multi_currency->currency_switcher->do_currency_switcher(
 				[
 					'switcher_id' => $switcher['id'],
 					'echo'        => false,

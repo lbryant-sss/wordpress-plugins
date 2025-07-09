@@ -20,8 +20,7 @@ class Products implements \IWPML_Backend_Action {
 	 */
 	public function synchronizeProducts( $product ) {
 		do_action( 'wpml_sync_all_custom_fields', getId( $product ) );
-
-		getWooCommerceWpml()->sync_product_data->synchronize_products( getId( $product ), get_post( getId( $product ) ), true );
+		do_action( \WCML\Synchronization\Hooks::HOOK_SYNCHRONIZE_PRODUCT_TRANSLATIONS, get_post( getId( $product ) ), [], [] );
 	}
 
 }

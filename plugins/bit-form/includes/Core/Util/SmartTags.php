@@ -124,6 +124,9 @@ final class SmartTags
       case '_bf_math':
         return $smartTags;
         break;
+      case '_bf_format_datetime':
+        return $smartTags;
+        break;
       case '_bf_datetime_difference':
         return $smartTags;
         break;
@@ -161,6 +164,7 @@ final class SmartTags
       '_bf_length',
       '_bf_calc',
       '_bf_math',
+      '_bf_format_datetime',
       '_bf_datetime_difference',
       '_bf_add_subtract_datetime',
       '_bf_concat',

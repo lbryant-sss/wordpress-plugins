@@ -70,7 +70,7 @@ if(isset($_POST) && isset($_POST['addSubmit'])){
 
                 $xyz_shortCode = '[xyz-ips snippet="'.$xyz_ips_title.'"]';
                 $wpdb->insert($wpdb->prefix.'xyz_ips_short_code', array('title' =>$xyz_ips_title,'insertionMethod' => $xyz_ips_insertionMethod, 'insertionLocation' => $xyz_ips_insertionLocation, 'insertionLocationType' => $xyz_ips_insertionLocationType,'content'=>$xyz_ips_content,'short_code'=>$xyz_shortCode,'status'=>'1'),array('%s','%d','%d','%d','%s','%s','%d'));
-                header("Location:".admin_url('admin.php?page=insert-php-code-snippet-manage&xyz_ips_msg=1'));
+                wp_safe_redirect(admin_url('admin.php?page=insert-php-code-snippet-manage&xyz_ips_msg=1'));
             }
             else{
 ?>
@@ -131,7 +131,7 @@ if(isset($_POST) && isset($_POST['addSubmit'])){
 							</font>
 						</td>
 						<td style="border-bottom: none;width:1px;">
-							&nbsp;&nbsp;
+                        &nbsp;:&nbsp;
 						</td>
 						<td>
 							<select class="xyz_ips_uniq_select" name="xyz_ips_insertionMethod"
@@ -158,7 +158,7 @@ if(isset($_POST) && isset($_POST['addSubmit'])){
                             </font>
                         </td>
                         <td style="border-bottom: none;width:1px;">
-                            &nbsp;&nbsp;
+                        &nbsp;:&nbsp;
                         </td>
                         <td>
                             <div>

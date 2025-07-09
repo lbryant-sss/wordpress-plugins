@@ -26,6 +26,11 @@ if ( ! function_exists( 'otgs_is_rest_request' ) ) {
 	}
 }
 
+if ( file_exists( __DIR__ . '/../../otgs/icons/loader.php' ) ) {
+	$vendor_root_url = plugins_url( '/', __FILE__ )  . '../..'; // This variable is required in otgs/icons/loader.php
+	require_once __DIR__ . '/../../otgs/icons/loader.php';
+}
+
 $is_cron_request   = defined( 'DOING_CRON' ) && DOING_CRON;
 $is_wp_cli_request = defined( 'WP_CLI' ) && WP_CLI;
 
@@ -114,7 +119,7 @@ $wp_installer_instance = dirname( __FILE__ ) . '/installer.php';
 global $wp_installer_instances;
 $wp_installer_instances[ $wp_installer_instance ] = [
 	'bootfile' => $wp_installer_instance,
-	'version'  => '3.1.8'
+	'version'  => '3.1.13'
 ];
 
 /**

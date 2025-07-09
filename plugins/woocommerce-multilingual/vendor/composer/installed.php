@@ -1,11 +1,11 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '5.4.5',
-        'version' => '5.4.5.0',
+        'pretty_version' => '5.5.1',
+        'version' => '5.5.1.0',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '7f5015fe3f434d38ceac3595b24a1c4b7fd3d83b',
+        'reference' => 'd27d8cee83e8593f03f055d1704b1e628fda66b5',
         'name' => 'wcml/woocommerce-multilingual',
         'dev' => false,
     ),
@@ -38,12 +38,12 @@
             'dev_requirement' => false,
         ),
         'otgs/installer' => array(
-            'pretty_version' => '3.1.8',
-            'version' => '3.1.8.0',
+            'pretty_version' => '3.1.13',
+            'version' => '3.1.13.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../otgs/installer',
             'aliases' => array(),
-            'reference' => 'f373f35236694298884b0a95a22db532fd257a6b',
+            'reference' => '7558dcbcfe306ae4d0d06a81706840b527ad1ef2',
             'dev_requirement' => false,
         ),
         'otgs/ui' => array(
@@ -79,12 +79,12 @@
             ),
         ),
         'wcml/woocommerce-multilingual' => array(
-            'pretty_version' => '5.4.5',
-            'version' => '5.4.5.0',
+            'pretty_version' => '5.5.1',
+            'version' => '5.5.1.0',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '7f5015fe3f434d38ceac3595b24a1c4b7fd3d83b',
+            'reference' => 'd27d8cee83e8593f03f055d1704b1e628fda66b5',
             'dev_requirement' => false,
         ),
         'wpml-shared/wpml-lib-cache' => array(

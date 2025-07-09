@@ -165,42 +165,49 @@ class ScriptFilePriorityManager
         ['priority' => 101, 'filename' => 'observeElm.min.js'],
         ['priority' => 201, 'filename' => 'customFieldsReset.min.js'],
         ['priority' => 301, 'filename' => 'bit-advanced-datetime-field.min.js'],
-        ['priority' => 301, 'filename' => 'advancedDatetimeFldValidation.min.js'],
+        ['priority' => 301, 'filename' => 'bfDatetimeFldValidation.min.js'],
         ['priority' => 301, 'filename' => 'bfDateFieldsLogicCheck.min.js'],
         ['priority' => 301, 'filename' => 'bfCalculateDateTimeDifference.min.js'],
         ['priority' => 301, 'filename' => 'bfAddOrSubtractDateTime.min.js'],
         ['priority' => 301, 'filename' => 'bfParseDateTime.min.js'],
-        ['priority' => 301, 'filename' => 'bfSetDateTimeConfigOption.min.js']
+        ['priority' => 301, 'filename' => 'bfParseSpecialDateFormat.min.js'],
+        ['priority' => 301, 'filename' => 'bfSetDateTimeConfigOption.min.js'],
+        ['priority' => 301, 'filename' => 'bfFormatDateTime.min.js'],
       ],
       'date' => [
         ['priority' => 301, 'filename' => 'bfDateFieldsLogicCheck.min.js'],
         ['priority' => 301, 'filename' => 'bfCalculateDateTimeDifference.min.js'],
         ['priority' => 301, 'filename' => 'bfAddOrSubtractDateTime.min.js'],
-        ['priority' => 301, 'filename' => 'bfParseDateTime.min.js']
+        ['priority' => 301, 'filename' => 'bfParseDateTime.min.js'],
+        ['priority' => 301, 'filename' => 'bfFormatDateTime.min.js'],
       ],
       'datetime-local' => [
         ['priority' => 301, 'filename' => 'bfDateFieldsLogicCheck.min.js'],
         ['priority' => 301, 'filename' => 'bfCalculateDateTimeDifference.min.js'],
         ['priority' => 301, 'filename' => 'bfAddOrSubtractDateTime.min.js'],
-        ['priority' => 301, 'filename' => 'bfParseDateTime.min.js']
+        ['priority' => 301, 'filename' => 'bfParseDateTime.min.js'],
+        ['priority' => 301, 'filename' => 'bfFormatDateTime.min.js'],
       ],
       'time' => [
         ['priority' => 301, 'filename' => 'bfDateFieldsLogicCheck.min.js'],
         ['priority' => 301, 'filename' => 'bfCalculateDateTimeDifference.min.js'],
         ['priority' => 301, 'filename' => 'bfAddOrSubtractDateTime.min.js'],
-        ['priority' => 301, 'filename' => 'bfParseDateTime.min.js']
+        ['priority' => 301, 'filename' => 'bfParseDateTime.min.js'],
+        ['priority' => 301, 'filename' => 'bfFormatDateTime.min.js'],
       ],
       'month' => [
         ['priority' => 301, 'filename' => 'bfDateFieldsLogicCheck.min.js'],
         ['priority' => 301, 'filename' => 'bfCalculateDateTimeDifference.min.js'],
         ['priority' => 301, 'filename' => 'bfAddOrSubtractDateTime.min.js'],
-        ['priority' => 301, 'filename' => 'bfParseDateTime.min.js']
+        ['priority' => 301, 'filename' => 'bfParseDateTime.min.js'],
+        ['priority' => 301, 'filename' => 'bfFormatDateTime.min.js'],
       ],
       'week' => [
         ['priority' => 301, 'filename' => 'bfDateFieldsLogicCheck.min.js'],
         ['priority' => 301, 'filename' => 'bfCalculateDateTimeDifference.min.js'],
         ['priority' => 301, 'filename' => 'bfAddOrSubtractDateTime.min.js'],
-        ['priority' => 301, 'filename' => 'bfParseDateTime.min.js']
+        ['priority' => 301, 'filename' => 'bfParseDateTime.min.js'],
+        ['priority' => 301, 'filename' => 'bfFormatDateTime.min.js'],
       ],
     ];
   }
@@ -418,6 +425,8 @@ class ScriptFilePriorityManager
     return [
       'checkFldValidation'               => ['priority' => 701, 'filename' => 'checkFldValidation.min.js'],
       'checkMinMaxOptions'               => ['priority' => 702, 'filename' => 'checkMinMaxOptions.min.js'],
+      'bfDatetimeFldValidation'          => ['priority' => 702, 'filename' => 'bfDatetimeFldValidation.min.js'],
+      'bfParseDateTime'                  => ['priority' => 301, 'filename' => 'bfParseDateTime.min.js'],
       'checkMinMaxValue'                 => ['priority' => 702, 'filename' => 'checkMinMaxValue.min.js'],
       'customOptionValidation'           => ['priority' => 702, 'filename' => 'customOptionValidation.min.js'],
       'dcsnbxFldValidation'              => ['priority' => 702, 'filename' => 'dcsnbxFldValidation.min.js'],
@@ -441,7 +450,7 @@ class ScriptFilePriorityManager
 
   public static function validationScriptFileMapping($fieldType)
   {
-    $textTypeField = ['text', 'password', 'username', 'date', 'datetime-local', 'time', 'month', 'week', 'color'];
+    $textTypeField = ['text', 'password', 'username', 'color'];
     if (in_array($fieldType, $textTypeField)) {
       $fieldType = 'text';
     }
@@ -548,6 +557,46 @@ class ScriptFilePriorityManager
           'currencyFldValidation' => [
             'paths'        => ['err->minValue->show', 'err->maxValue->show'],
           ]
+        ],
+        'date' => [
+          'bfDatetimeFldValidation' => [
+            'paths'        => ['mn', 'mx'],
+            'dependencies' => [
+              'bfParseDateTime'
+            ]
+          ],
+        ],
+        'time' => [
+          'bfDatetimeFldValidation' => [
+            'paths'        => ['mn', 'mx'],
+            'dependencies' => [
+              'bfParseDateTime'
+            ]
+          ],
+        ],
+        'week' => [
+          'bfDatetimeFldValidation' => [
+            'paths'        => ['mn', 'mx'],
+            'dependencies' => [
+              'bfParseDateTime'
+            ]
+          ],
+        ],
+        'month' => [
+          'bfDatetimeFldValidation' => [
+            'paths'        => ['mn', 'mx'],
+            'dependencies' => [
+              'bfParseDateTime'
+            ]
+          ],
+        ],
+        'datetime-local' => [
+          'bfDatetimeFldValidation' => [
+            'paths'        => ['mn', 'mx'],
+            'dependencies' => [
+              'bfParseDateTime'
+            ]
+          ],
         ],
       ];
     return isset($fields[$fieldType]) ? $fields[$fieldType] : [];

@@ -13,6 +13,7 @@ class WCML_Comments {
 	const WC_AVERAGE_RATING_KEY   = '_wc_average_rating';
 	const WC_RATING_COUNT_KEY     = '_wc_rating_count';
 	const WC_REVIEW_COUNT_KEY     = '_wc_review_count';
+	const COMMENT_TYPE_REVIEW = 'review';
 
 	/** @var woocommerce_wpml */
 	private $woocommerce_wpml;
@@ -63,8 +64,8 @@ class WCML_Comments {
 		);
 
 		if ( ! defined( 'WPSEO_VERSION' )
-			 && 'all' === WPML\FP\Obj::prop( 'clang', $_GET )
-			 && ! $this->is_reviews_in_all_languages_by_default_selected()
+			&& 'all' === WPML\FP\Obj::prop( 'clang', $_GET )
+			&& ! $this->is_reviews_in_all_languages_by_default_selected()
 		) {
 			add_action( 'wp_head', [ $this, 'no_index_all_reviews_page' ], 10 );
 		}
@@ -73,6 +74,8 @@ class WCML_Comments {
 		add_filter( 'woocommerce_rating_filter_count', [ $this, 'woocommerce_rating_filter_count' ], 10, 3 );
 
 		add_filter( 'the_comments', [ $this, 'translate_product_ids' ] );
+
+		add_filter( 'wpml_skip_comment_duplication', [ $this, 'skip_review_duplication' ], 10, 3 );
 	}
 
 	/**
@@ -348,9 +351,13 @@ class WCML_Comments {
 	private function get_comment_language_on_all_languages_reviews( $comment ) {
 		if ( self::is_translated( $comment ) ) {
 			return $this->sitepress->get_current_language();
-		} elseif ( $this->is_reviews_in_all_languages( $comment->comment_post_ID ) ) {
-			return $this->post_translations->get_element_lang_code( $comment->comment_post_ID );
 		}
+
+		$commentPostId = self::getOriginalPostId( $comment );
+		if ( $this->is_reviews_in_all_languages( $commentPostId ) ) {
+			return $this->post_translations->get_element_lang_code( $commentPostId );
+		}
+
 		return null;
 	}
 
@@ -495,7 +502,9 @@ class WCML_Comments {
 	 */
 	public function translate_product_ids( $comments ) {
 		$convertProductId = function( $comment ) {
-			if ( 'review' === Obj::prop( 'comment_type', $comment ) ) {
+			if ( self::COMMENT_TYPE_REVIEW === Obj::prop( 'comment_type', $comment ) ) {
+				$comment->wcml_default_comment_post_ID = Obj::prop( 'comment_post_ID', $comment );
+
 				$comment = Obj::assoc(
 					'comment_post_ID',
 					Ids::convert( Obj::prop( 'comment_post_ID', $comment ), 'product', true ),
@@ -518,7 +527,33 @@ class WCML_Comments {
 	 *
 	 * @return bool
 	 */
-	private static function is_translated( $comment ) {
+	public static function is_translated( $comment ) {
 		return (bool) Obj::prop( 'is_translated', $comment );
+	}
+
+	/**
+	 * @param bool  $skip        Whether to skip duplicating the comment. Default: false.
+	 * @param int   $comment_id  The ID of the comment being processed.
+	 * @param array $comment     The comment data.
+	 *
+	 * @return bool True if duplication should be skipped, false otherwise.
+	 */
+	public function skip_review_duplication( $skip, $comment_id, $comment ) {
+		if ( isset( $comment['comment_type'] ) && 'review' === $comment['comment_type'] ) {
+			if ( $this->is_reviews_in_all_languages_by_default_selected() ) {
+				return true;
+			}
+		}
+		return $skip;
+	}
+
+	/**
+	 * @param \WP_Comment|stdClass|array $comment
+	 *
+	 * @return string
+	 */
+	public static function getOriginalPostId( $comment ) {
+		return Obj::prop( 'wcml_default_comment_post_ID', $comment )
+			?: Obj::prop( 'comment_post_ID', $comment );
 	}
 }

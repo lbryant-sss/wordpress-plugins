@@ -275,14 +275,8 @@ class Meow_MWAI_Engines_OpenAI extends Meow_MWAI_Engines_ChatML {
       // 2. It's a feedback query (needs full context)
       if ( !empty( $query->functions ) && ( empty( $body['previous_response_id'] ) || $query instanceof Meow_MWAI_Query_Feedback ) ) {
         $body['tools'] = $this->build_responses_tools( $query->functions );
-        // Debug: Log the tools structure
-        Meow_MWAI_Logging::log( 'Responses API tools structure: ' . json_encode( $body['tools'] ) );
       }
 
-      // Debug: Log the full request body for feedback queries
-      if ( $query instanceof Meow_MWAI_Query_Feedback ) {
-        Meow_MWAI_Logging::log( 'Responses API: Full feedback request body: ' . json_encode( $body, JSON_PRETTY_PRINT ) );
-      }
 
       // Add MCP servers if available
       if ( isset( $query->mcpServers ) && is_array( $query->mcpServers ) && !empty( $query->mcpServers ) ) {
@@ -325,7 +319,6 @@ class Meow_MWAI_Engines_OpenAI extends Meow_MWAI_Engines_ChatML {
                 }
                 $body['tools'][] = $mcp_tool;
 
-                Meow_MWAI_Logging::log( 'Responses API: Added MCP server ' . $env['name'] . ' to tools' );
                 break;
               }
             }
@@ -384,10 +377,6 @@ class Meow_MWAI_Engines_OpenAI extends Meow_MWAI_Engines_ChatML {
       Meow_MWAI_Logging::log( 'Responses API: Feedback query body: ' . json_encode( $body ) );
     }
 
-    // Debug logging for tools
-    if ( !empty( $body['tools'] ) ) {
-      Meow_MWAI_Logging::log( 'Responses API: Full request body with tools: ' . json_encode( $body ) );
-    }
 
     return $body;
   }
@@ -663,7 +652,6 @@ class Meow_MWAI_Engines_OpenAI extends Meow_MWAI_Engines_ChatML {
           $item = $json['item'];
           $itemType = $item['type'];
           $currentItemType = $itemType;
-          Meow_MWAI_Logging::log( 'Responses API: Output item added with type: ' . $itemType );
 
           // Don't emit events here for web search or image generation - wait for more specific events
           // This prevents duplicate events
@@ -821,7 +809,6 @@ class Meow_MWAI_Engines_OpenAI extends Meow_MWAI_Engines_ChatML {
         // Check if this is MCP-related content that shouldn't be shown
         if ( isset( $json['part']['type'] ) ) {
           $partType = $json['part']['type'];
-          Meow_MWAI_Logging::log( 'Responses API: Content part added with type: ' . $partType );
 
           // Just log the part type for debugging
           // We can use this info later if needed
@@ -1121,7 +1108,6 @@ class Meow_MWAI_Engines_OpenAI extends Meow_MWAI_Engines_ChatML {
 
     // Debug: Always log which API we're using
     $useResponsesApi = $this->should_use_responses_api( $query->model );
-    Meow_MWAI_Logging::log( 'OpenAI Engine: Model ' . $query->model . ' -> ' . ( $useResponsesApi ? 'Responses API' : 'ChatML API' ) );
 
     // Check if we should use Responses API
     if ( $useResponsesApi ) {
@@ -1263,8 +1249,6 @@ class Meow_MWAI_Engines_OpenAI extends Meow_MWAI_Engines_ChatML {
         $tool_calls = [];
         $images = [];
 
-        // Debug: Log that we're using Responses API parsing
-        Meow_MWAI_Logging::log( 'Responses API: Starting to parse response data' );
 
         if ( isset( $data['output'] ) && is_array( $data['output'] ) ) {
           foreach ( $data['output'] as $output_item ) {
@@ -1366,9 +1350,6 @@ class Meow_MWAI_Engines_OpenAI extends Meow_MWAI_Engines_ChatML {
           Meow_MWAI_Logging::log( 'Responses API: Added ' . count( $images ) . ' images to choices' );
         }
 
-        // Debug: Log what we're about to set as choices
-        Meow_MWAI_Logging::log( 'Responses API: Setting choices with content: "' . $content . '"' );
-        Meow_MWAI_Logging::log( 'Responses API: Choice structure: ' . json_encode( $returned_choices ) );
 
         // Extract usage information
         $usage = $data['usage'] ?? [];

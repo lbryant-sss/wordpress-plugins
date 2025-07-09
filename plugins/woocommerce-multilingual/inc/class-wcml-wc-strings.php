@@ -198,7 +198,7 @@ class WCML_WC_Strings {
 
 			$product_id = $values['variation_id'] ? $values['variation_id'] : $values['product_id'];
 
-			$translated_product_id = apply_filters( 'translate_object_id', $product_id, 'product', true );
+			$translated_product_id = apply_filters( 'wpml_object_id', $product_id, 'product', true );
 			$translated_product = wc_get_product( $translated_product_id );
 			$translated_title   = $translated_product ? $translated_product->get_name() : '';
 
@@ -215,7 +215,7 @@ class WCML_WC_Strings {
 	public function translated_checkout_product_title( $title, $product ) {
 
 		if ( $product ) {
-			$tr_product_id = apply_filters( 'translate_object_id', $product->get_id(), 'product', true, $this->current_language );
+			$tr_product_id = apply_filters( 'wpml_object_id', $product->get_id(), 'product', true, $this->current_language );
 			$title         = get_the_title( $tr_product_id );
 		}
 
@@ -412,7 +412,7 @@ class WCML_WC_Strings {
 	public function notice_after_woocommerce_product_options_attributes() {
 
 		if ( isset( $_GET['post'] ) && $this->sitepress->get_default_language() != $this->sitepress->get_current_language() ) {
-			$original_product_id = apply_filters( 'translate_object_id', $_GET['post'], 'product', true, $this->sitepress->get_default_language() );
+			$original_product_id = apply_filters( 'wpml_object_id', $_GET['post'], 'product', true, $this->sitepress->get_default_language() );
 
 			//The message used to include a link to translate THIS product, not sure if this will be doable when linking to the TM dashboard
 			$pointerFactory = new WCML\PointerUi\Factory();
