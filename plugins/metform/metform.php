@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: MetForm
- * Plugin URI: http://products.wpmet.com/metform/
- * Description: Most flexible and design friendly form builder for Elementor
+* Plugin URI: http://wpmet.com/plugin/metform/
+ * Description: Most flexible and design-friendly form builder for Elementor
  * Version: 4.0.1
  * Author: Wpmet
  * Author URI:  https://wpmet.com

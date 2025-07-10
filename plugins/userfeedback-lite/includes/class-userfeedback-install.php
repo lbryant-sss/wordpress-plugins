@@ -181,5 +181,6 @@ class UserFeedback_Install {
 		( new UserFeedback_Response() )->create_table();
 		( new UserFeedback_Heatmap() )->create_table();
 		( new UserFeedback_Heatmap_Recording() )->create_table();
+		( new UserFeedback_Post_Rating() )->create_table();
 	}
 }

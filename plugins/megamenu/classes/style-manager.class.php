@@ -868,6 +868,7 @@ if ( ! class_exists( 'Mega_Menu_Style_Manager' ) ) :
 			$vars['close_icon_font']      = 'dashicons';
 			$vars['close_icon_font_weight'] = 'normal';
 			$vars['arrow_combinator']     = "'>'";
+			$vars['css_type']             = isset($theme['use_flex_css']) && $theme['use_flex_css'] == 'on' ? 'flex' : 'standard';
 
 			$current_theme = wp_get_theme();
 			$theme_id      = $current_theme->template;

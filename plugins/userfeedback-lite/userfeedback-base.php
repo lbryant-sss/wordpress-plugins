@@ -20,7 +20,7 @@ if (!class_exists('UserFeedback_Base')) {
 		 * @access public
 		 * @var string $version Plugin version
 		 */
-		public $version = '1.6.0';
+		public $version = '1.7.0';
 
 		/**
 		 * Plugin file.
@@ -168,7 +168,8 @@ if (!class_exists('UserFeedback_Base')) {
 
 				// This does the version to version background upgrade routines and initial install
 				$uf_version = get_option('userfeedback_current_version', '0.0.0');
-				if (version_compare($uf_version, '1.5.0', '<')) {
+
+				if (version_compare($uf_version, '1.7.0', '<')) {
 					add_action('wp_loaded', array(self::$instance, 'install_and_upgrade'));
 				}
 
@@ -331,6 +332,7 @@ if (!class_exists('UserFeedback_Base')) {
 			require_once USERFEEDBACK_PLUGIN_DIR . 'includes/db/class-userfeedback-response.php';
 			require_once USERFEEDBACK_PLUGIN_DIR . 'includes/db/class-userfeedback-heatmap.php';
 			require_once USERFEEDBACK_PLUGIN_DIR . 'includes/db/class-userfeedback-heatmap-recording.php';
+			require_once USERFEEDBACK_PLUGIN_DIR . 'includes/db/class-userfeedback-post-rating.php';
 
 			// Survey templates helper
 			require_once USERFEEDBACK_PLUGIN_DIR . 'includes/survey-templates/class-userfeedback-survey-templates.php';

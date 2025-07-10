@@ -89,9 +89,16 @@ class ConnectPlugins {
 			}
 		}
 
-		// Elementor editor menu links to translations.
-		add_action( 'elementor/editor/after_enqueue_scripts', array( $this, 'elementor_editor_script' ) );
-		add_action( 'elementor/editor/after_enqueue_styles', array( $this, 'elementor_editor_style' ) );
+		// Check if Elementor is installed and its version is greater than 3.25.0
+		if ( defined( 'ELEMENTOR_VERSION' ) && version_compare( ELEMENTOR_VERSION, '3.25.0', '>' ) ) {
+			// Elementor 3.25.0 introduced a new way to handle language switcher controls.
+			add_action( 'elementor/documents/register_controls', array( $this, 'register_language_switcher_controls' ) );
+		} else {
+			// Deprecated way to handle language switcher controls.
+			// Elementor editor menu links to translations.
+			add_action( 'elementor/editor/after_enqueue_scripts', array( $this, 'elementor_editor_script' ) );
+			add_action( 'elementor/editor/after_enqueue_styles', array( $this, 'elementor_editor_style' ) );
+		}
 
 		// Elementor Site Editor template tweaks.
 		add_filter( 'elementor-pro/site-editor/data/template', array( $this, 'elementor_site_editor_template' ) );
@@ -842,5 +849,112 @@ class ConnectPlugins {
 		return $this->fix_url_domain( $url, $document->get_main_id() );
 
 	}
+
+	/**
+	 * Register language switcher controls in Elementor's document settings panel.
+	 * This function adds a "Languages" section where users can manage translations for the current post.
+	 *
+	 * @param \Elementor\Base\Document $document The Elementor document object.
+	 * @since  2.5.0
+	 */
+	public function register_language_switcher_controls( $document ) {
+
+		global $typenow, $post;
+
+		// Exit if is not translatable.
+		if ( ! pll_is_translated_post_type( $typenow ) ) {
+			return;
+		}
+
+		// Get the current post ID being edited in Elementor.
+		$post_id = $post->ID;
+
+		// Retrieve available languages from Polylang
+		$languages    = pll_languages_list( array( 'fields' => '' ) );
+		$translations = pll_get_post_translations( $post_id );
+		$use_emojis   = apply_filters( 'cpel/filter/use_emojis', true );
+
+		// Start adding a new section in Elementor settings panel
+		$document->start_controls_section(
+			'cpel_language_section',
+			array(
+				'label' => esc_html__( 'Languages', 'polylang' ),
+				'tab'   => \Elementor\Controls_Manager::TAB_SETTINGS,
+			)
+		);
+
+		// Loop through each available language
+		foreach ( $languages as $language ) {
+			// Check if a translation exists for the current language
+			if ( isset( $translations[ $language->slug ] ) ) {
+				// Get the post ID of the translated post
+				$translation_id = $translations[ $language->slug ];
+
+				// Get the standard WordPress edit link for the translated post
+				$edit_link = get_edit_post_link( $translation_id, 'edit' );
+
+				// Modify the edit link to open in Elementor editor if it's built with Elementor
+				if ( get_post_meta( $translation_id, '_elementor_edit_mode', true ) ) {
+					$edit_link = add_query_arg( 'action', 'elementor', $edit_link );
+				}
+
+				if ( $translation_id === $post_id ) {
+					$raw_html = sprintf(
+						'<strong><i class="eicon-document-file"></i> %s — %s</strong>',
+						get_the_title( $translation_id ),
+						$use_emojis ? cpel_flag_emoji( $language->flag_code ) : esc_html( $language->name )
+					);
+				} else {
+					$raw_html = sprintf(
+						'<a href="%s" target="_blank"><i class="eicon-document-file"></i> %s — %s</a>',
+						esc_url( $edit_link ),
+						get_the_title( $translation_id ),
+						$use_emojis ? cpel_flag_emoji( $language->flag_code ) : esc_html( $language->name )
+					);
+				}
+
+				// Add a control in Elementor panel with a clickable edit link for the translation
+				$document->add_control(
+					"cpel_lang_{$language->slug}",
+					array(
+						'type'            => \Elementor\Controls_Manager::RAW_HTML,
+						'raw'             => $raw_html,
+						'content_classes' => 'elementor-control-field',
+					)
+				);
+			} else {
+				// If no translation exists, generate a link to create a new translation
+				$args = array(
+					'post_type' => get_post_type( $post_id ), // Preserve original post type
+					'from_post' => $post_id, // Reference the current post ID
+					'new_lang'  => $language->slug, // Specify the target language slug
+					'_wpnonce'  => wp_create_nonce( 'new-post-translation' ), // Security nonce
+				);
+
+				// Generate the create translation link
+				$create_link = add_query_arg( $args, admin_url( 'post-new.php' ) );
+
+				// Add a button to create a new translation
+				$document->add_control(
+					"cpel_add_lang_{$language->slug}",
+					array(
+						'type'            => \Elementor\Controls_Manager::RAW_HTML,
+						'raw'             => sprintf(
+							'<a href="%s" target="_blank"><i class="eicon-plus"></i> %s</a>',
+							esc_url( $create_link ),
+							$use_emojis
+								? sprintf( __( 'Add a translation — %s', 'connect-polylang-elementor' ), cpel_flag_emoji( $language->flag_code ) ) // phpcs:ignore WordPress.WP.I18n
+								: sprintf( __( 'Add a translation in %s', 'connect-polylang-elementor' ), esc_html( $language->name ) ) // phpcs:ignore WordPress.WP.I18n
+						),
+						'content_classes' => 'elementor-descriptor',
+					)
+				);
+			}
+		}
+
+		// End the controls section
+		$document->end_controls_section();
+	}
+
 
 }

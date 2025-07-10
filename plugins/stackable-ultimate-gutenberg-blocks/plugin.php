@@ -7,7 +7,7 @@
  * Author: Gambit Technologies, Inc
  * Author URI: http://gambit.ph
  * Text Domain: stackable-ultimate-gutenberg-blocks
- * Version: 3.16.2
+ * Version: 3.17.0
  *
  * @package Stackable
  */
@@ -22,7 +22,7 @@ if ( function_exists( 'sugb_fs' ) ) {
 }
 defined( 'STACKABLE_SHOW_PRO_NOTICES' ) || define( 'STACKABLE_SHOW_PRO_NOTICES', true );
 defined( 'STACKABLE_BUILD' ) || define( 'STACKABLE_BUILD', 'free' );
-defined( 'STACKABLE_VERSION' ) || define( 'STACKABLE_VERSION', '3.16.2' );
+defined( 'STACKABLE_VERSION' ) || define( 'STACKABLE_VERSION', '3.17.0' );
 defined( 'STACKABLE_FILE' ) || define( 'STACKABLE_FILE', __FILE__ );
 defined( 'STACKABLE_I18N' ) || define( 'STACKABLE_I18N', 'stackable-ultimate-gutenberg-blocks' );
 // Plugin slug.
@@ -216,6 +216,8 @@ require_once plugin_dir_path( __FILE__ ) . 'src/plugins/theme-block-style-inheri
 require_once plugin_dir_path( __FILE__ ) . 'src/global-settings.php';
 require_once plugin_dir_path( __FILE__ ) . 'src/plugins/global-settings/spacing-and-borders/index.php';
 require_once plugin_dir_path( __FILE__ ) . 'src/plugins/global-settings/buttons-and-icons/index.php';
+require_once plugin_dir_path( __FILE__ ) . 'src/plugins/global-settings/color-schemes/deprecated/index.php';
+// We need to add this so the filter for deprecation gets applied.
 require_once plugin_dir_path( __FILE__ ) . 'src/plugins/global-settings/color-schemes/index.php';
 require_once plugin_dir_path( __FILE__ ) . 'src/plugins/global-settings/preset-controls/index.php';
 require_once plugin_dir_path( __FILE__ ) . 'src/custom-block-styles.php';
@@ -257,6 +259,7 @@ require_once plugin_dir_path( __FILE__ ) . 'src/deprecated/editor-settings.php';
 require_once plugin_dir_path( __FILE__ ) . 'src/deprecated/native-global-colors.php';
 require_once plugin_dir_path( __FILE__ ) . 'src/deprecated/navigation-panel-pre-enabled.php';
 require_once plugin_dir_path( __FILE__ ) . 'src/deprecated/font-awesome-version.php';
+require_once plugin_dir_path( __FILE__ ) . 'src/deprecated/global-color-schemes.php';
 /**
  * V2 Deprecated
  */

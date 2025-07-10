@@ -765,7 +765,6 @@ if ( ! class_exists( 'Mega_Menu_Menu_Item_Manager' ) ) :
 				$return .= __( 'Collapse sub menu', 'megamenu' );
 				$return .= '            </td>';
 				$return .= '            <td class="mega-value">';
-				$return .= $notice;
 				$return .= '                <input type="checkbox" name="settings[collapse_children]" value="true" ' . checked( $menu_item_meta['collapse_children'], 'true', false ) . ' />';
 				$return .= '                <em>' . __( 'Only applies to menu items displayed within mega sub menus.', 'megamenu' ) . '</em>';
 				$return .= '            </td>';

@@ -1849,7 +1849,7 @@ BEFORE_HTML;
 	 * @return bool
 	 */
 	public static function should_block_preview( $form_key ) {
-		$should_block = 'contact-form' === $form_key && ! current_user_can( 'frm_view_forms' );
+		$should_block = in_array( $form_key, array( 'contact-form', 'contact-us' ), true ) && ! current_user_can( 'frm_view_forms' );
 		/**
 		 * Filters whether the form preview should be blocked.
 		 *
@@ -1870,6 +1870,10 @@ BEFORE_HTML;
 	 * @return bool
 	 */
 	public static function form_is_loaded_by_api() {
+		global $frm_vars;
+		if ( ! empty( $frm_vars['inplace_edit'] ) ) {
+			return true;
+		}
 		return self::is_formidable_api_form() || self::is_gutenberg_editor() || self::is_elementor_ajax() || self::is_visual_views_preview();
 	}
 

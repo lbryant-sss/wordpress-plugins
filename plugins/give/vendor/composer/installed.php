@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'impress-org/give',
-        'pretty_version' => '4.4.0',
-        'version' => '4.4.0.0',
-        'reference' => '38f3b6d2cfedecfaaa81c30e3163ccd66f3ae5c3',
+        'pretty_version' => '4.5.0',
+        'version' => '4.5.0.0',
+        'reference' => 'b616c7761f6ba0c3d8c439fcc86dc3f1e10a473b',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -20,9 +20,9 @@
             'dev_requirement' => false,
         ),
         'impress-org/give' => array(
-            'pretty_version' => '4.4.0',
-            'version' => '4.4.0.0',
-            'reference' => '38f3b6d2cfedecfaaa81c30e3163ccd66f3ae5c3',
+            'pretty_version' => '4.5.0',
+            'version' => '4.5.0.0',
+            'reference' => 'b616c7761f6ba0c3d8c439fcc86dc3f1e10a473b',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -122,9 +122,9 @@
             'dev_requirement' => false,
         ),
         'stellarwp/validation' => array(
-            'pretty_version' => '1.4.1',
-            'version' => '1.4.1.0',
-            'reference' => '0f0d0dbc28b9b0780c61f81a6462c467e6d0358f',
+            'pretty_version' => '1.5.0',
+            'version' => '1.5.0.0',
+            'reference' => 'cf610086713a8a20ad640b7f0da2bcf0e8a826a4',
             'type' => 'library',
             'install_path' => __DIR__ . '/../stellarwp/validation',
             'aliases' => array(),

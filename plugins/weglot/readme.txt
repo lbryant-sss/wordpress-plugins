@@ -3,7 +3,7 @@ Contributors: remyb92, gmulti, wysija, wpr0ck, glx77
 Tags: translate, multilingual, language, translation, localization, multilingual SEO, languages, translator, website translation, multilanguage, international, traduction
 Requires at least: 4.5
 Tested up to: 6.8
-Requires PHP: 7.0
+Requires PHP: 7.4
 Stable tag: 4.3.3
 License: GPLv2 or later
 URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -266,20 +266,16 @@ See changelog for upgrade changes.
 
 
 == Changelog ==
-= 4.3.3 (19/05/2025) =
-
-* Improvement: Add filter and helper method to escape Vue.js attributes before parsing content
-* Improvement: Prevent empty host value when retrieving current URL via wp_parse_url
-* Improvement: Remove private API key from Weglot data JSON
-* Improvement: Exclude the generate_wpo_wcpdf AJAX action from translation
-* Improvement: Validate replacement limit before running link-replacement regex
-* Improvement: Trim redundant double slashes from URLs during redirect
-* Improvement: Check that autoswitch is enabled and remove the language_to parameter from the JS script
-* Improvement: Add filter to enable Weglot in U.S. environments
-* Improvement: Update button CSS so code-language classes are prefixed with wg-
-* Improvement: Document usage of the check_custom_redirect() method
-* Improvement: Add srcset attribute to default DOM checker list
-* Improvement: Add proxy option for HTTP client calls
+= 5.0 (15/07/2025) =
+* Major: Update minimum PHP requirement to 7.4 to align with WordPress requirements
+* Improvement: Add prefix to Weglot CSS to prevent conflicts with other styles
+* Improvement: Introduce escape_vue_attributes and preserve_attributes methods for attribute escaping
+* Improvement: Rename inline CSS ID from Weglot to weglot_custom_style
+* Improvement: Add missing keys for WooCommerce JSON (variation cart)
+* Improvement: Add reverse_translate method to TranslateService
+* Improvement: Enhance recursivelyConvertToUtf8 usage
+* Improvement: Control payload size and truncate when exceeding limits
+* Quality: Maintain PHPStan at level 6
 
 = Older versions =
 

@@ -645,17 +645,17 @@
         },
         {
             "name": "stellarwp/validation",
-            "version": "1.4.1",
-            "version_normalized": "1.4.1.0",
+            "version": "1.5.0",
+            "version_normalized": "1.5.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stellarwp/validation.git",
-                "reference": "0f0d0dbc28b9b0780c61f81a6462c467e6d0358f"
+                "reference": "cf610086713a8a20ad640b7f0da2bcf0e8a826a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stellarwp/validation/zipball/0f0d0dbc28b9b0780c61f81a6462c467e6d0358f",
-                "reference": "0f0d0dbc28b9b0780c61f81a6462c467e6d0358f",
+                "url": "https://api.github.com/repos/stellarwp/validation/zipball/cf610086713a8a20ad640b7f0da2bcf0e8a826a4",
+                "reference": "cf610086713a8a20ad640b7f0da2bcf0e8a826a4",
                 "shasum": ""
             },
             "require": {
@@ -668,9 +668,11 @@
                 "codeception/module-phpbrowser": "^1.0.0",
                 "lucatume/di52": "^3.0",
                 "lucatume/wp-browser": "^3.0.14",
-                "phpunit/phpunit": "~6.0"
+                "phpstan/phpstan": "^1.12",
+                "phpunit/phpunit": "~6.0",
+                "szepeviktor/phpstan-wordpress": "^1.3"
             },
-            "time": "2023-08-15T15:24:53+00:00",
+            "time": "2025-06-18T20:38:33+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -695,7 +697,7 @@
             "description": "An end-to-end ready PHP validation library",
             "support": {
                 "issues": "https://github.com/stellarwp/validation/issues",
-                "source": "https://github.com/stellarwp/validation/tree/1.4.1"
+                "source": "https://github.com/stellarwp/validation/tree/1.5.0"
             },
             "install-path": "../stellarwp/validation"
         },

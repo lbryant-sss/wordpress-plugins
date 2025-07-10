@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Give\Vendors\StellarWP\Validation\Rules\Abstracts;
 
 use Give\Vendors\StellarWP\FieldConditions\ComplexConditionSet;
+use Give\Vendors\StellarWP\FieldConditions\SimpleConditionSet;
 use Give\Vendors\StellarWP\FieldConditions\Contracts\Condition;
 use Give\Vendors\StellarWP\FieldConditions\Contracts\ConditionSet;
-use Give\Vendors\StellarWP\FieldConditions\SimpleConditionSet;
 use Give\Vendors\StellarWP\Validation\Config;
 use Give\Vendors\StellarWP\Validation\Contracts\ValidatesOnFrontEnd;
 use Give\Vendors\StellarWP\Validation\Contracts\ValidationRule;
@@ -15,12 +15,12 @@ use Give\Vendors\StellarWP\Validation\Contracts\ValidationRule;
 abstract class ConditionalRule implements ValidationRule, ValidatesOnFrontEnd
 {
     /**
-     * @var ConditionSet
+     * @var SimpleConditionSet|ComplexConditionSet
      */
-    protected $conditions;
+    protected ConditionSet $conditions;
 
     /**
-     * @param ConditionSet|Condition[] $conditions
+     * @param SimpleConditionSet|ComplexConditionSet|Condition[] $conditions
      */
     public function __construct($conditions)
     {
@@ -39,7 +39,7 @@ abstract class ConditionalRule implements ValidationRule, ValidatesOnFrontEnd
      *
      * @since 1.2.0
      */
-    public static function fromString(string $options = null): ValidationRule
+    public static function fromString(?string $options = null): ValidationRule
     {
         if (empty($options)) {
             Config::throwInvalidArgumentException(static::class . ' rule requires at least one condition');
@@ -58,6 +58,7 @@ abstract class ConditionalRule implements ValidationRule, ValidatesOnFrontEnd
             $conditionSet->and($rule[0], '=', $rule[1]);
         }
 
+        // @phpstan-ignore-next-line
         return new static($conditionSet);
     }
 

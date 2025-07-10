@@ -290,7 +290,7 @@
                                 left: auto;
                                 right: 0;
                             } @else {
-                                left: min(calc(100vw - 40px), #{$mobile_menu_off_canvas_width});
+                                left: calc(min(100vw - 40px, #{$mobile_menu_off_canvas_width}));
                                 right: auto;
                             }
                         }
@@ -315,7 +315,7 @@
                                 right: auto;
                                 left: 0;
                             } @else {
-                                right: min(calc(100vw - 40px), #{$mobile_menu_off_canvas_width});
+                                right: calc(min(100vw - 40px, #{$mobile_menu_off_canvas_width}));
                                 left: auto;
                             }
                         }

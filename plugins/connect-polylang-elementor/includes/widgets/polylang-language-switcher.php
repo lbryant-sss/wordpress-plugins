@@ -782,7 +782,8 @@ class PolylangLanguageSwitcher extends Widget_Base {
 
 						$language_flag = \PLL_Language::get_flag_html( $flag_svg, '', $language['name'] );
 					} elseif ( $flag_code ) {
-						$language_flag = \PLL_Language::get_flag_html( \PLL_Language::get_flag_informations( $flag_code ), '', $language['name'] );
+						$flag_information = method_exists( '\PLL_Language', 'get_flag_information' ) ? \PLL_Language::get_flag_information( $flag_code ) : \PLL_Language::get_flag_informations( $flag_code );
+						$language_flag    = \PLL_Language::get_flag_html( $flag_information, '', $language['name'] );
 					} else {
 						$language_flag = '<img src="' . esc_url( $language['flag'] ) . '" alt="' . esc_attr( $language['name'] ) . '" />';
 					}

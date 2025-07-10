@@ -99,7 +99,11 @@ It is because Permalink Manager overwrites one of the core WordPress functionali
 
 == Changelog ==
 
-= 2.5.2 (May 26, 2025) =
+= 2.5.1.3 (June 10, 2025)
+* Fix - The url_to_postid() function works also when the language code is provided with URL
+* Dev - New setting field - "Edit permalinks in WPML's Translation Editor"
+
+= 2.5.1.2 (May 26, 2025) =
 * Dev - WPML's Translation Editor compatibility code refactored
 * Dev - The slashes in titles are now changed to dashes when custom permalinks are sanitized, just like they are in default WordPress slugs
 * Fix - Improvements for WooCommerce REST API integration

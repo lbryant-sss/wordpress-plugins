@@ -3,7 +3,7 @@ Contributors: megamenu
 Tags: menu, responsive menu, mega menu, navigation, mobile menu
 Requires at least: 5.0
 Tested up to: 6.8
-Stable tag: 3.6.1
+Stable tag: 3.6.2
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -135,6 +135,10 @@ See https://www.megamenu.com for more screenshots
 = 3.6.2 =
 
 * Accessibility Fix: Windows Narrator ignores "Enter" keypress, preventing tab navigation working reliably
+* Fix: CSS generation fails when outdated versions of MMM Pro are installed (<= 2.3.1)
+* Fix: PHP notice
+* Change: Add css_type SCSS variable
+* Fix: Colorpicker z-index
 
 = 3.6.1 =
 

@@ -250,6 +250,12 @@ function userfeedback_screen_is_surveys()
 	return strpos($screen->id, 'userfeedback_surveys') !== false;
 }
 
+function userfeedback_screen_is_post_ratings()
+{
+	$screen = get_current_screen();
+	return strpos($screen->id, 'userfeedback_post_ratings') !== false;
+}
+
 function userfeedback_screen_is_results()
 {
 	$screen = get_current_screen();
@@ -266,6 +272,30 @@ function userfeedback_heatmap_preview()
 {
 	$heatmaps_basename = userfeedback_get_plugin_basename_from_slug( 'userfeedback-heatmaps' );
 	return ! userfeedback_is_pro_version() || ( ! is_plugin_active( $heatmaps_basename ) );
+}
+
+function userfeedback_post_ratings_is_licensed()
+{
+	$slug = 'post-ratings';
+	$addons = userfeedback_get_addons();
+	$licensed_addons = isset($addons['licensed']) ? $addons['licensed'] : array();
+	
+	$is_post_ratings_licensed = false;
+
+	foreach ($licensed_addons as $addon) {
+		if (isset($addon->slug) && $addon->slug === $slug) {
+			$is_post_ratings_licensed = true;
+			break;
+		}
+	}
+
+	return $is_post_ratings_licensed;
+}
+
+function userfeedback_post_ratings_upsell()
+{
+	$post_ratings_basename = userfeedback_get_plugin_basename_from_slug( 'userfeedback-post-ratings' );
+	return ! userfeedback_is_pro_version() || ( ! is_plugin_active( $post_ratings_basename ) ) || ! userfeedback_post_ratings_is_licensed();
 }
 
 function userfeedback_screen_is_settings()

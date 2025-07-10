@@ -164,6 +164,15 @@ function userfeedback_admin_styles() {
 		);
 	}
 
+	if ( userfeedback_screen_is_post_ratings() ) {
+		wp_enqueue_style(
+			'userfeedback-vue-post-ratings',
+			userfeedback_get_admin_asset_url( '/assets/vue/css/post-ratings.css' ),
+			array(),
+			userfeedback_get_asset_version()
+		);
+	}
+
 	if ( userfeedback_screen_is_results() ) {
 		wp_enqueue_style(
 			'userfeedback-vue-results',
@@ -324,6 +333,7 @@ function userfeedback_admin_scripts() {
 		);
 	}
 	// --------------------------------------------------
+	// --------------------------------------------------
 
 	// --------------------------------------------------
 	// --------------- Heatmap scripts ------------------
@@ -338,6 +348,24 @@ function userfeedback_admin_scripts() {
 		wp_enqueue_script( 'userfeedback-vue-heatmap-preview-script' );
 		wp_localize_script(
 			'userfeedback-vue-heatmap-preview-script',
+			'userfeedback',
+			userfeedback_get_common_script_localization_object()
+		);
+	}
+
+	// --------------------------------------------------
+	// --------------- Post Ratings Upsell scripts ------------------
+	if ( userfeedback_screen_is_post_ratings() && userfeedback_post_ratings_upsell() ) {
+		wp_register_script(
+			'userfeedback-vue-post-ratings-upsell-script',
+			userfeedback_get_admin_asset_url( '/assets/vue/js/post-ratings-upsell.js' ),
+			apply_filters( 'userfeedback_post_ratings_script_dependencies', array() ),
+			userfeedback_get_asset_version(),
+			true
+		);
+		wp_enqueue_script( 'userfeedback-vue-post-ratings-upsell-script' );
+		wp_localize_script(
+			'userfeedback-vue-post-ratings-upsell-script',
 			'userfeedback',
 			userfeedback_get_common_script_localization_object()
 		);

@@ -7,7 +7,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Plugin Name: ElementsKit Lite
  * Description: The most advanced addons for Elementor with tons of widgets, Header builder, Footer builder, Mega menu builder, layout pack and powerful custom controls.
- * Plugin URI: https://products.wpmet.com/elementskit
+ * Plugin URI: https://wpmet.com/plugin/elementskit/
  * Author: Wpmet
  * Version: 3.5.4
  * Author URI: https://wpmet.com/

@@ -5,7 +5,7 @@
  * Plugin URI: https://www.userfeedback.com/lite?utm_source=liteplugin&utm_medium=pluginlist
  * Description: See what your analytics software isn’t telling you with powerful UserFeedback surveys.
  * Author: UserFeedback Team
- * Version: 1.6.0
+ * Version: 1.7.0
  * Requires PHP: 5.6
  * Requires at least: 5.9.0
  * Author URI: https://userfeedback.com/lite

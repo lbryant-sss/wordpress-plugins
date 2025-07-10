@@ -57,6 +57,16 @@ function userfeedback_admin_menu() {
 		'userfeedback_results',
 		'userfeedback_results_page'
 	);
+	
+	// Post Ratings
+	add_submenu_page(
+		$menu_slug,
+		__( 'Post Ratings', 'userfeedback' ),
+		__( 'Post Ratings', 'userfeedback' ) . $new_indicator,
+		'manage_options',
+		'userfeedback_post_ratings',
+		'userfeedback_post_ratings_page'
+	);
 
 	//  Heatmaps
 	add_submenu_page(
@@ -226,6 +236,15 @@ function userfeedback_surveys_page() {
  */
 function userfeedback_results_page() {
 	echo '<div id="userfeedback-results"></div>';
+}
+
+/**
+ * Render UserFeedback Post Ratings page
+ *
+ * @return void
+ */
+function userfeedback_post_ratings_page() {
+	echo '<div id="userfeedback-post-ratings"></div>';
 }
 
 /**

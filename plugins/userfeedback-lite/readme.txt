@@ -4,7 +4,7 @@ Donate link: http://www.wpbeginner.com/wpbeginner-needs-your-help/
 Tags: analytics,feedback,surveys,user feedback, website feedback,heatmaps
 Requires at least: 5.9.0
 Tested Up To: 6.8.1
-Stable tag: 1.6.0
+Stable tag: 1.7.0
 Requires PHP: 5.6
 License: GPL v3
 
@@ -23,9 +23,9 @@ The UserFeedback survey widget will show up on your website automatically, allow
 
 You can create an unlimited number of UserFeedback surveys, so that you can gather user feedback for specific types of products, certain blog posts, or even target users who have already made a purchase.
 
-Want to run an NPS&reg; survey? No problem! With our built in templates and reporting you can launch a survey like this in seconds.  
+Want to run an NPS&reg; survey? No problem! With our built in templates and reporting you can launch a survey like this in seconds.
 
-Want to run a custom poll from your website visitors? With in-depth analytics reporting, you can easily run any type of survey and collect user feedback.  
+Want to run a custom poll from your website visitors? With in-depth analytics reporting, you can easily run any type of survey and collect user feedback.
 
 
 > <strong>UserFeedback Pro</strong><br />
@@ -49,8 +49,8 @@ We want to help small businesses compete against the big guys. That's why we don
 * Powerful Reporting - See feedback and results in realtime, right inside your WordPress Dashboard
 * Unlimited Surveys - Create an unlimited number of user feedback surveys on your website
 * Unlimited Questions - Ask any number of questions inside each survey
-* Heatmaps - Visually see exactly what your users are clicking and focusing with device and UTM filtering 
-* Net Promoter Scores &reg; and Reports - Use our beautiful custom report to see feedback sorted by passives, promoters, and detractors 
+* Heatmaps - Visually see exactly what your users are clicking and focusing with device and UTM filtering
+* Net Promoter Scores &reg; and Reports - Use our beautiful custom report to see feedback sorted by passives, promoters, and detractors
 * Question types - Use text boxes, radio buttons, checkboxes, star ratings to collect feedback
 * Page Level targeting - Specify surveys to run on your entire site or certain pages like your posts
 * Device targeting -  Launch surveys for specific devices like mobile, desktop, or tablet for feedback
@@ -66,7 +66,7 @@ We want to help small businesses compete against the big guys. That's why we don
 * Data / Export - Analyze your results offline with our CSV export
 * Geo Restricted Surveys - Easily limit surveys to a specific country to improve relevance
 * Shortcodes - Embed a survey on a page or pop-up to collect in-the-moment feedback
-* AI Summaries - Summarize verbatim feedback with actionable insights with a single click 
+* AI Summaries - Summarize verbatim feedback with actionable insights with a single click
 * Have an idea for something else? Let us know and we'll build it!
 
 After reading this full feature list, you can probably imagine how powerful our UserFeedback will be for getting new insights to start optimizing your website engagement in no time.
@@ -119,6 +119,10 @@ For documentation, tutorials, FAQ and videos check out: [UserFeedback Documentat
 4. Want more features? <a href=href="https://www.userFeedback.com/?utm_source=wprepo&utm_medium=link&utm_campaign=lite" rel="friend" title="UserFeedback">Purchase UserFeedback Pro</a>!
 
 == Changelog ==
+= 1.7.0: July 9, 2025 =
+- New: Our Post Ratings feature allows you to collect feedback automatically on every blog post to increase engagement from your website.
+- Fixed: Minor updates and bug fixes
+
 = 1.6.0: May 26, 2025 =
 - New: Geo Restrictions! Display surveys based on your visitors' location
 - Fixed: Minor updates and bug fixes
