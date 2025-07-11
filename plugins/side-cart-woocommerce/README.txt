@@ -8,12 +8,12 @@ Stable tag: 2.6.8
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Manage your cart from just a click away with an interactive design
+Side cart plugin adds a sleek floating basket to your site, letting customers see, edit, or remove items from their cart instantly — without ever leaving the page.
 
 == Description ==
 [Live Demo](http://demo.xootix.com/side-cart-for-woocommerce/)
 
-Say goodbye to your old cart page. Our sliding cart lets you add, see, and handle items without leaving your current page.
+Side cart plugin adds a sleek floating basket to your site, letting customers see, edit, or remove items from their cart instantly — without ever leaving the page.
 
 💰 Real-time updates of your subtotal.
 
@@ -123,6 +123,7 @@ You can use any third party plugin such as Loco Translate for hassle free transl
 5. Save Location: Your wordpress directory/wp-content/languages/
 
 == Screenshots ==
+1. Front view
 3. Row Layout
 4. Row Layout - Pro
 5. Floating Basket

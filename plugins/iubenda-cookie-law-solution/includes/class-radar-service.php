@@ -314,12 +314,44 @@ class Radar_Service {
 	 * Callback function for the scheduled reload of radar configuration.
 	 *
 	 * This function is triggered when the scheduled event is executed.
-	 * It forces the deletion of radar configuration and asks radar to send a request.
+	 * It checks if enough time has passed since the last run, updates the timestamp,
+	 * and triggers a forced reload of the radar configuration.
 	 *
 	 * @return void
 	 */
 	public function schedule_reload_radar_config() {
+		if ( ! $this->should_run_radar_reload() ) {
+			return;
+		}
+
+		$this->update_last_radar_run_time();
 		$this->force_reload_radar_config( true );
+	}
+
+	/**
+	 * Determines if the radar reload should be executed based on the last run time.
+	 *
+	 * @return bool True if reload should run, false otherwise.
+	 */
+	private function should_run_radar_reload() {
+		$last_run = get_option( 'iubenda_last_radar_run', 0 );
+		$interval = 1814400; // 3 Weeks to seconds.
+
+		// If not enough time has passed, do not run.
+		if ( time() < ( $last_run + $interval ) ) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Updates the last radar run time to the current time.
+	 *
+	 * @return void
+	 */
+	private function update_last_radar_run_time() {
+		update_option( 'iubenda_last_radar_run', time() );
 	}
 
 	/**

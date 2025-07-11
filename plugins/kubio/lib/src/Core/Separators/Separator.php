@@ -41,9 +41,9 @@ class Separator extends Element {
 		$type = sanitize_file_name( $this->getProp( 'type' ) );
 
 		$top               = $position === 'top';
-		$shouldUseNegative = $negative && file_exists( KUBIO_ROOT_DIR . "lib/shapes/separators/${type}-negative.svg" );
+		$shouldUseNegative = $negative && file_exists( KUBIO_ROOT_DIR . "lib/shapes/separators/{$type}-negative.svg" );
 
-		$supportsNegative = file_exists( KUBIO_ROOT_DIR . "lib/shapes/separators/${type}-negative.svg" );
+		$supportsNegative = file_exists( KUBIO_ROOT_DIR . "lib/shapes/separators/{$type}-negative.svg" );
 
 		if ( ( $shouldUseNegative && $top ) || ( ! $shouldUseNegative && ! $top ) ) {
 			$style['transform'] = 'rotateX(180deg)';
@@ -56,7 +56,7 @@ class Separator extends Element {
 		$html = file_get_contents( KUBIO_ROOT_DIR . 'lib/shapes/separators/' . $type . '.svg' );
 		$this->extendProps(
 			array(
-				'className' => array_merge( array( 'h-separator', "h-separator--${position}" ), $visibilityPerMedia ),
+				'className' => array_merge( array( 'h-separator', "h-separator--{$position}" ), $visibilityPerMedia ),
 				'style'     => $style,
 			)
 		);
@@ -104,13 +104,13 @@ class Separator extends Element {
 
 	public function getMediaProps( $block ) {
 		$separator_element = $block->separatorElement;
-		$key               = "attrs.kubio.style.descendants.${separator_element}.media";
+		$key               = "attrs.kubio.style.descendants.{$separator_element}.media";
 
 		return Arr::get( $block->block_data, $key );
 	}
 
 	public function getHeightForMedia( $array, $media, $position ) {
-		return Arr::get( $array, "${media}.separators.${position}.height" );
+		return Arr::get( $array, "{$media}.separators.{$position}.height" );
 	}
 
 	public function getStyleForMedia( $parent_class, $media = 'desktop', $position = 'bottom', $height = '100px' ) {
@@ -123,13 +123,13 @@ class Separator extends Element {
 		if ( $media === 'tablet' ) {
 			$style = "@media (min-width: 768px) and (max-width: 1023px){
 					.%s > .h-separator.h-separator--%s {
-						height: ${height} !important;
+						height: {$height} !important;
 					}
 				}";
 		} elseif ( $media === 'mobile' ) {
 			$style = "@media (max-width: 767px){
 					.%s > .h-separator.h-separator--%s {
-						height: ${height} !important;
+						height: {$height} !important;
 					}
 				}\n";
 		}

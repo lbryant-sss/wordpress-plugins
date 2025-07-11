@@ -3,7 +3,7 @@ Contributors: dotcamp, wptb, imtiazrayhan, istiakrayhan, permafrost06, erdembirc
 Tags: table, table builder, drag and drop
 Requires at least: 4.9
 Tested up to: 6.8
-Stable tag: 2.0.9
+Stable tag: 2.0.10
 Requires PHP: 7.4
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
@@ -90,8 +90,9 @@ That's it. You're done!
 
 == Changelog ==
 
-= 2.0.9 =
-* FIX: Not updating properly.
+= 2.0.10 =
+* FIX: Rollback textdomain notice fix because it was causing a lot of issues
+* PRO: FIX: Circle rating 100% renders empty circle
 
 = 2.0.8 =
 * FIX: _load_textdomain_just_in_time notice no longer appears

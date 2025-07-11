@@ -2,14 +2,14 @@
 # This file is distributed under the GPL3+.
 msgid ""
 msgstr ""
-"Project-Id-Version: Kubio 2.6.2\n"
+"Project-Id-Version: Kubio 2.6.3\n"
 "Report-Msgid-Bugs-To: support@kubiobuilder.com\n"
 "Last-Translator: Kubio <support@kubiobuilder.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-07-04T14:03:13+03:00\n"
+"POT-Creation-Date: 2025-07-10T11:44:49+03:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: kubio\n"
@@ -229,9 +229,9 @@ msgstr ""
 
 #: lib/add-edit-in-kubio.php:93
 #: lib/add-edit-in-kubio.php:197
-#: lib/add-edit-in-kubio.php:376
+#: lib/add-edit-in-kubio.php:377
 #: lib/filters/default-editor-overlay.php:156
-#: lib/kubio-editor.php:998
+#: lib/kubio-editor.php:999
 #: build/block-library/index.js:13
 msgid "Edit with Kubio"
 msgstr ""
@@ -290,7 +290,7 @@ msgid "Starter Sites"
 msgstr ""
 
 #: lib/admin-pages/main-page/demo-sites.php:13
-#: lib/kubio-editor.php:1247
+#: lib/kubio-editor.php:1248
 msgid "You need a higher level of permission."
 msgstr ""
 
@@ -370,7 +370,7 @@ msgstr ""
 #: build/block-editor/index.js:23
 #: build/block-editor/index.js:94
 #: build/block-library/index.js:19
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 #: build/editor/index.js:1
 #: build/editor/index.js:7
 #: build/editor/index.js:21
@@ -564,7 +564,7 @@ msgstr ""
 #: lib/AI/SDApi/KubioImagePrompts.php:15
 #: build/block-editor/index.js:100
 #: build/block-editor/index.js:110
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Background image"
 msgstr ""
 
@@ -627,8 +627,8 @@ msgstr ""
 #: lib/AI/SDApi/KubioImagePrompts.php:40
 #: build/block-editor/index.js:100
 #: build/controls/index.js:15
-#: build/controls/index.js:35
-#: build/controls/index.js:37
+#: build/controls/index.js:53
+#: build/controls/index.js:55
 #: build/wp-global-styles/index.js:3
 msgid "Gradient"
 msgstr ""
@@ -694,7 +694,7 @@ msgid "Neon Punk"
 msgstr ""
 
 #: lib/AI/SDApi/KubioImagePrompts.php:60
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Doodle"
 msgstr ""
 
@@ -916,6 +916,63 @@ msgstr ""
 #: lib/api/kubio-cloud.php:77
 #: lib/api/kubio-cloud.php:92
 msgid "Api key not found"
+msgstr ""
+
+#: lib/api/recommendations/bubble-chat.php:64
+#: lib/api/recommendations/bubble-chat.php:122
+msgid "Required plugin is missing"
+msgstr ""
+
+#: lib/api/recommendations/bubble-chat.php:70
+#: lib/api/recommendations/bubble-chat.php:128
+msgid "Required class or functions are missing"
+msgstr ""
+
+#: lib/api/recommendations/bubble-chat.php:95
+msgid "Kubio Widget"
+msgstr ""
+
+#: lib/api/recommendations/contact-forms.php:47
+msgid "Contact Form plugin is not active!"
+msgstr ""
+
+#: lib/api/recommendations/contact-forms.php:58
+msgid "Failed to create default contact form!"
+msgstr ""
+
+#: lib/api/recommendations/index.php:68
+#: lib/api/recommendations/index.php:74
+msgid "Page content not found for given plugin"
+msgstr ""
+
+#: lib/api/recommendations/index.php:84
+msgid "Plugin slug is required"
+msgstr ""
+
+#: lib/api/recommendations/index.php:94
+#: lib/api/recommendations/index.php:101
+msgid "Failed to fetch default settings"
+msgstr ""
+
+#: lib/api/recommendations/index.php:105
+msgid "No default settings found for the plugin"
+msgstr ""
+
+#: lib/api/recommendations/index.php:110
+msgid "Invalid default settings format"
+msgstr ""
+
+#: lib/api/recommendations/newsletter/index.php:49
+msgid "Promo plugin is not active!"
+msgstr ""
+
+#: lib/api/recommendations/newsletter/index.php:52
+msgid "At least one of required classes is missing"
+msgstr ""
+
+#: lib/api/recommendations/newsletter/index.php:55
+#: lib/recommendations/contact-forms.php:80
+msgid "At least one of required functions is missing"
 msgstr ""
 
 #: lib/api/subscribe-form.php:23
@@ -1598,57 +1655,57 @@ msgstr ""
 msgid "Original Size"
 msgstr ""
 
-#: lib/kubio-editor.php:982
-#: lib/kubio-editor.php:986
-#: lib/kubio-editor.php:997
+#: lib/kubio-editor.php:983
+#: lib/kubio-editor.php:987
+#: lib/kubio-editor.php:998
 msgid "Kubio"
 msgstr ""
 
-#: lib/kubio-editor.php:1025
+#: lib/kubio-editor.php:1026
 #: lib/src/Core/EditInKubioCustomizerPanel.php:87
 msgid "Open Kubio Editor"
 msgstr ""
 
-#: lib/kubio-editor.php:1103
+#: lib/kubio-editor.php:1104
 msgid "What to show on the front page"
 msgstr ""
 
-#: lib/kubio-editor.php:1116
+#: lib/kubio-editor.php:1117
 msgid "The ID of the page that should be displayed on the front page"
 msgstr ""
 
-#: lib/kubio-editor.php:1131
+#: lib/kubio-editor.php:1132
 msgid "The ID of the page that displays the posts"
 msgstr ""
 
-#: lib/kubio-editor.php:1149
+#: lib/kubio-editor.php:1150
 msgid "Site icon."
 msgstr ""
 
-#: lib/kubio-editor.php:1166
+#: lib/kubio-editor.php:1167
 msgctxt "Template name"
 msgid "Full Width"
 msgstr ""
 
-#: lib/kubio-editor.php:1167
-#: lib/kubio-editor.php:1174
+#: lib/kubio-editor.php:1168
+#: lib/kubio-editor.php:1175
 msgid "Recommended Kubio template to display individual pages. This template works best with the Kubio provided blocks and predesigned sections."
 msgstr ""
 
-#: lib/kubio-editor.php:1173
+#: lib/kubio-editor.php:1174
 msgctxt "Template name"
 msgid "Kubio Full Width"
 msgstr ""
 
-#: lib/kubio-editor.php:1248
+#: lib/kubio-editor.php:1249
 msgid "Sorry, you are not allowed to customize this site."
 msgstr ""
 
-#: lib/kubio-editor.php:1266
+#: lib/kubio-editor.php:1267
 msgid "Kubio Section"
 msgstr ""
 
-#: lib/kubio-editor.php:1308
+#: lib/kubio-editor.php:1309
 msgid "Kubio Favorites"
 msgstr ""
 
@@ -1864,6 +1921,41 @@ msgstr ""
 msgid "Current license key was removed! Reason: %s"
 msgstr ""
 
+#: lib/recommendations/contact-forms.php:62
+msgid "Contact / Quotation Form 1"
+msgstr ""
+
+#: lib/recommendations/contact-forms/default-template.php:4
+#: build/block-library/index.js:7
+#: build/block-library/index.js:37
+msgid "Name"
+msgstr ""
+
+#: lib/recommendations/contact-forms/default-template.php:9
+msgid "Email"
+msgstr ""
+
+#: lib/recommendations/contact-forms/default-template.php:15
+msgid "Subject"
+msgstr ""
+
+#: lib/recommendations/contact-forms/default-template.php:19
+#: build/admin-area/index.js:3
+msgid "Message"
+msgstr ""
+
+#: lib/recommendations/contact-forms/default-template.php:22
+msgid "Send message"
+msgstr ""
+
+#: lib/recommendations/newsletters.php:118
+msgid "Email capture popup 1"
+msgstr ""
+
+#: lib/recommendations/recommendation-page-post-type.php:9
+msgid "Recommendation pages"
+msgstr ""
+
 #: lib/src/Core/Activation.php:547
 msgid "Primary menu"
 msgstr ""
@@ -1882,7 +1974,7 @@ msgstr ""
 #: build/block-editor/index.js:100
 #: build/block-library/index.js:19
 #: build/controls/index.js:19
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Image"
 msgstr ""
 
@@ -2095,7 +2187,7 @@ msgstr ""
 
 #: build/admin-area/index.js:1
 #: build/block-library/index.js:33
-#: build/controls/index.js:21
+#: build/controls/index.js:39
 #: build/editor/index.js:33
 msgid "Loading…"
 msgstr ""
@@ -2143,10 +2235,6 @@ msgstr ""
 #: build/block-library/index.js:37
 #: build/third-party-blocks/index.js:1
 msgid "Date"
-msgstr ""
-
-#: build/admin-area/index.js:3
-msgid "Message"
 msgstr ""
 
 #: build/admin-area/index.js:3
@@ -2243,7 +2331,7 @@ msgstr ""
 #: build/block-editor/index.js:100
 #: build/block-editor/index.js:110
 #: build/block-library/index.js:37
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 #: build/editor/index.js:3
 #: build/editor/index.js:19
 #: build/editor/index.js:35
@@ -2269,7 +2357,7 @@ msgstr ""
 #: build/block-library/index.js:19
 #: build/block-library/index.js:37
 #: build/controls/index.js:1
-#: build/controls/index.js:39
+#: build/controls/index.js:57
 #: build/wp-global-styles/index.js:1
 msgid "Border"
 msgstr ""
@@ -2278,8 +2366,8 @@ msgstr ""
 #: build/block-library/index.js:11
 #: build/block-library/index.js:19
 #: build/block-library/index.js:37
-#: build/controls/index.js:37
-#: build/controls/index.js:39
+#: build/controls/index.js:55
+#: build/controls/index.js:57
 msgid "Box shadow"
 msgstr ""
 
@@ -2291,7 +2379,7 @@ msgstr ""
 #: build/block-library/index.js:29
 #: build/block-library/index.js:33
 #: build/block-library/index.js:37
-#: build/controls/index.js:39
+#: build/controls/index.js:57
 #: build/editor/index.js:3
 #: build/woocommerce-styles/index.js:1
 #: build/wp-global-styles/index.js:3
@@ -2299,7 +2387,7 @@ msgid "Background"
 msgstr ""
 
 #: build/advanced-panel/index.js:1
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Text shadow"
 msgstr ""
 
@@ -2313,7 +2401,7 @@ msgid "Dividers"
 msgstr ""
 
 #: build/advanced-panel/index.js:1
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 #: build/editor/index.js:3
 msgid "Transform"
 msgstr ""
@@ -2335,7 +2423,7 @@ msgid "Current block does not support advanced styling"
 msgstr ""
 
 #: build/advanced-panel/index.js:1
-#: build/controls/index.js:39
+#: build/controls/index.js:57
 msgid "Editing"
 msgstr ""
 
@@ -2409,7 +2497,7 @@ msgid "Looks like the current page already has content. This action will replace
 msgstr ""
 
 #: build/ai/index.js:3
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 #: build/editor/index.js:1
 #: build/editor/index.js:21
 #: build/editor/index.js:53
@@ -2851,6 +2939,7 @@ msgid "Email address"
 msgstr ""
 
 #: build/ai/index.js:3
+#: build/controls/index.js:25
 msgid "Phone number"
 msgstr ""
 
@@ -3247,7 +3336,7 @@ msgstr ""
 #: build/block-editor/index.js:1
 #: build/controls/index.js:1
 #: build/controls/index.js:15
-#: build/controls/index.js:19
+#: build/controls/index.js:37
 #: build/utils/index.js:22
 msgid "All"
 msgstr ""
@@ -3277,7 +3366,7 @@ msgstr ""
 
 #. translators: %s - template part name (e.g. header/ footer/ sidebar)
 #: build/block-editor/index.js:5
-#: build/controls/index.js:25
+#: build/controls/index.js:43
 #, js-format
 msgid "Would you like to apply this %s to all pages that are using the current template or only for this page?"
 msgstr ""
@@ -3289,12 +3378,12 @@ msgid "Would you like to apply this %1$s to all pages that are using the \"%2$s\
 msgstr ""
 
 #: build/block-editor/index.js:7
-#: build/controls/index.js:33
+#: build/controls/index.js:51
 msgid "Apply to all pages"
 msgstr ""
 
 #: build/block-editor/index.js:7
-#: build/controls/index.js:33
+#: build/controls/index.js:51
 msgid "Apply to this page only"
 msgstr ""
 
@@ -3303,7 +3392,7 @@ msgid "Template name"
 msgstr ""
 
 #: build/block-editor/index.js:7
-#: build/controls/index.js:21
+#: build/controls/index.js:39
 msgid "Eg. Page name - Template"
 msgstr ""
 
@@ -3636,7 +3725,7 @@ msgid "Sticky"
 msgstr ""
 
 #: build/block-editor/index.js:34
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Fixed"
 msgstr ""
 
@@ -3936,7 +4025,7 @@ msgstr ""
 
 #: build/block-editor/index.js:94
 #: build/block-library/index.js:19
-#: build/controls/index.js:37
+#: build/controls/index.js:55
 msgid "Rotate"
 msgstr ""
 
@@ -4017,19 +4106,19 @@ msgid "Font"
 msgstr ""
 
 #: build/block-editor/index.js:100
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 #: build/editor/index.js:3
 #: build/editor/index.js:53
 msgid "Size"
 msgstr ""
 
 #: build/block-editor/index.js:100
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Line height"
 msgstr ""
 
 #: build/block-editor/index.js:100
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Letter spacing"
 msgstr ""
 
@@ -4040,7 +4129,7 @@ msgid "Columns"
 msgstr ""
 
 #: build/block-editor/index.js:100
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 #: build/editor/index.js:3
 msgid "Decoration"
 msgstr ""
@@ -4080,7 +4169,7 @@ msgstr ""
 #: build/block-library/index.js:27
 #: build/block-library/index.js:29
 #: build/block-library/index.js:37
-#: build/controls/index.js:37
+#: build/controls/index.js:55
 #: build/editor/index.js:3
 #: build/woocommerce-styles/index.js:1
 #: build/wp-global-styles/index.js:1
@@ -4090,7 +4179,7 @@ msgstr ""
 #: build/block-editor/index.js:100
 #: build/block-library/index.js:27
 #: build/block-library/index.js:33
-#: build/controls/index.js:37
+#: build/controls/index.js:55
 #: build/editor/index.js:3
 #: build/wp-global-styles/index.js:1
 msgid "Margin"
@@ -4106,7 +4195,7 @@ msgid "Minimum height"
 msgstr ""
 
 #: build/block-editor/index.js:100
-#: build/controls/index.js:37
+#: build/controls/index.js:55
 #: build/wp-global-styles/index.js:1
 msgid "Radius"
 msgstr ""
@@ -4125,9 +4214,10 @@ msgstr ""
 #: build/block-editor/index.js:100
 #: build/controls/index.js:1
 #: build/controls/index.js:3
-#: build/controls/index.js:19
-#: build/controls/index.js:21
+#: build/controls/index.js:25
 #: build/controls/index.js:37
+#: build/controls/index.js:39
+#: build/controls/index.js:55
 #: build/editor/index.js:51
 #: build/format-library/index.js:1
 msgid "Reset"
@@ -4192,8 +4282,8 @@ msgstr ""
 #: build/block-library/index.js:25
 #: build/block-library/index.js:37
 #: build/controls/index.js:1
-#: build/controls/index.js:35
-#: build/controls/index.js:37
+#: build/controls/index.js:53
+#: build/controls/index.js:55
 #: build/editor/index.js:3
 #: build/wp-global-styles/index.js:1
 msgid "Color"
@@ -4212,8 +4302,8 @@ msgstr ""
 #: build/block-library/index.js:19
 #: build/block-library/index.js:33
 #: build/block-library/index.js:35
-#: build/controls/index.js:35
-#: build/controls/index.js:37
+#: build/controls/index.js:53
+#: build/controls/index.js:55
 #: build/third-party-blocks/index.js:1
 #: build/wp-global-styles/index.js:3
 msgid "Default"
@@ -4268,8 +4358,8 @@ msgid "Default Style"
 msgstr ""
 
 #: build/block-editor/index.js:110
-#: build/controls/index.js:35
-#: build/controls/index.js:37
+#: build/controls/index.js:53
+#: build/controls/index.js:55
 msgid "Position"
 msgstr ""
 
@@ -4374,7 +4464,7 @@ msgstr ""
 
 #: build/block-library/index.js:1
 #: build/block-library/index.js:19
-#: build/controls/index.js:37
+#: build/controls/index.js:55
 #: build/editor/index.js:3
 msgid "Change image"
 msgstr ""
@@ -4385,7 +4475,7 @@ msgid "Change video"
 msgstr ""
 
 #: build/block-library/index.js:1
-#: build/controls/index.js:19
+#: build/controls/index.js:37
 msgid "Select image"
 msgstr ""
 
@@ -4521,11 +4611,6 @@ msgstr ""
 #: build/block-library/index.js:7
 #: build/block-library/index.js:9
 msgid "Save as custom section"
-msgstr ""
-
-#: build/block-library/index.js:7
-#: build/block-library/index.js:37
-msgid "Name"
 msgstr ""
 
 #: build/block-library/index.js:7
@@ -4734,7 +4819,7 @@ msgstr ""
 #: build/block-library/index.js:9
 #: build/block-library/index.js:19
 #: build/controls/index.js:19
-#: build/controls/index.js:21
+#: build/controls/index.js:39
 msgid "Section"
 msgstr ""
 
@@ -4755,7 +4840,7 @@ msgid "Align"
 msgstr ""
 
 #: build/block-library/index.js:11
-#: build/controls/index.js:37
+#: build/controls/index.js:55
 msgid "Equal width columns"
 msgstr ""
 
@@ -4875,7 +4960,7 @@ msgstr ""
 #: build/block-library/index.js:19
 #: build/block-library/index.js:29
 #: build/block-library/index.js:37
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 #: build/third-party-blocks/index.js:1
 msgid "Horizontal align"
 msgstr ""
@@ -4951,8 +5036,8 @@ msgstr ""
 #: build/block-library/index.js:19
 #: build/block-library/index.js:37
 #: build/constants/index.js:1
-#: build/controls/index.js:35
-#: build/controls/index.js:37
+#: build/controls/index.js:53
+#: build/controls/index.js:55
 #: build/editor/index.js:5
 #: build/third-party-blocks/index.js:1
 #: build/utils/index.js:1
@@ -5014,7 +5099,7 @@ msgstr ""
 
 #. translators: %s: type label
 #: build/block-library/index.js:19
-#: build/controls/index.js:31
+#: build/controls/index.js:49
 #, js-format
 msgid "Create new %s"
 msgstr ""
@@ -5035,7 +5120,7 @@ msgstr ""
 
 #: build/block-library/index.js:19
 #: build/controls/index.js:19
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Video"
 msgstr ""
 
@@ -5048,7 +5133,7 @@ msgid "Icon with lightbox"
 msgstr ""
 
 #: build/block-library/index.js:19
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Self hosted"
 msgstr ""
 
@@ -5086,7 +5171,7 @@ msgstr ""
 #: build/block-library/index.js:19
 #: build/block-library/index.js:27
 #: build/controls/index.js:19
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Auto"
 msgstr ""
 
@@ -5325,7 +5410,7 @@ msgid "Fit to text"
 msgstr ""
 
 #: build/block-library/index.js:19
-#: build/controls/index.js:37
+#: build/controls/index.js:55
 msgid "Fixed width"
 msgstr ""
 
@@ -5333,14 +5418,15 @@ msgstr ""
 #: build/block-library/index.js:29
 #: build/controls/index.js:1
 #: build/controls/index.js:19
-#: build/controls/index.js:35
 #: build/controls/index.js:37
+#: build/controls/index.js:53
+#: build/controls/index.js:55
 msgid "Left"
 msgstr ""
 
 #: build/block-library/index.js:19
-#: build/controls/index.js:35
-#: build/controls/index.js:37
+#: build/controls/index.js:53
+#: build/controls/index.js:55
 msgid "Center"
 msgstr ""
 
@@ -5348,8 +5434,9 @@ msgstr ""
 #: build/block-library/index.js:29
 #: build/controls/index.js:1
 #: build/controls/index.js:19
-#: build/controls/index.js:35
 #: build/controls/index.js:37
+#: build/controls/index.js:53
+#: build/controls/index.js:55
 msgid "Right"
 msgstr ""
 
@@ -5420,10 +5507,6 @@ msgid "Button text"
 msgstr ""
 
 #: build/block-library/index.js:19
-msgid "Button link"
-msgstr ""
-
-#: build/block-library/index.js:19
 msgid "Display icon"
 msgstr ""
 
@@ -5436,6 +5519,11 @@ msgstr ""
 
 #: build/block-library/index.js:19
 msgid "Add button"
+msgstr ""
+
+#: build/block-library/index.js:19
+#: build/block-library/index.js:37
+msgid "Button Action"
 msgstr ""
 
 #: build/block-library/index.js:19
@@ -5504,7 +5592,7 @@ msgstr ""
 #: build/block-library/index.js:29
 #: build/block-library/index.js:33
 #: build/block-library/index.js:37
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 #: build/third-party-blocks/index.js:1
 msgid "Normal"
 msgstr ""
@@ -5522,7 +5610,7 @@ msgstr ""
 #: build/block-library/index.js:25
 #: build/block-library/index.js:27
 #: build/block-library/index.js:37
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 #: build/editor/index.js:3
 #: build/third-party-blocks/index.js:1
 #: build/woocommerce-styles/index.js:1
@@ -5540,7 +5628,7 @@ msgstr ""
 #: build/block-library/index.js:29
 #: build/block-library/index.js:33
 #: build/block-library/index.js:37
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 #: build/editor/index.js:3
 #: build/format-library/index.js:1
 #: build/third-party-blocks/index.js:1
@@ -5746,7 +5834,7 @@ msgid "Zoom"
 msgstr ""
 
 #: build/block-library/index.js:19
-#: build/controls/index.js:37
+#: build/controls/index.js:55
 msgid "Scale"
 msgstr ""
 
@@ -5763,7 +5851,7 @@ msgid "Circle"
 msgstr ""
 
 #: build/block-library/index.js:19
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Underline"
 msgstr ""
 
@@ -5772,7 +5860,7 @@ msgstr ""
 #: build/block-library/index.js:29
 #: build/block-library/index.js:33
 #: build/controls/index.js:1
-#: build/controls/index.js:19
+#: build/controls/index.js:37
 msgid "Double"
 msgstr ""
 
@@ -5793,8 +5881,8 @@ msgid "Strikethrough"
 msgstr ""
 
 #: build/block-library/index.js:19
-#: build/controls/index.js:35
-#: build/controls/index.js:37
+#: build/controls/index.js:53
+#: build/controls/index.js:55
 msgid "X"
 msgstr ""
 
@@ -5802,8 +5890,8 @@ msgstr ""
 #: build/block-library/index.js:29
 #: build/block-library/index.js:33
 #: build/controls/index.js:1
-#: build/controls/index.js:19
-#: build/controls/index.js:35
+#: build/controls/index.js:37
+#: build/controls/index.js:53
 #: build/editor/index.js:53
 msgid "None"
 msgstr ""
@@ -5822,7 +5910,7 @@ msgstr ""
 
 #: build/block-library/index.js:19
 #: build/block-library/index.js:27
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "PX"
 msgstr ""
 
@@ -5877,7 +5965,7 @@ msgstr ""
 #: build/block-library/index.js:19
 #: build/block-library/index.js:21
 #: build/block-library/index.js:37
-#: build/controls/index.js:39
+#: build/controls/index.js:57
 msgid "Heading type"
 msgstr ""
 
@@ -5979,7 +6067,7 @@ msgid "Sticky navigation layout"
 msgstr ""
 
 #: build/block-library/index.js:19
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Animation"
 msgstr ""
 
@@ -6366,7 +6454,7 @@ msgid "Caption"
 msgstr ""
 
 #: build/block-library/index.js:19
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "%"
 msgstr ""
 
@@ -6424,7 +6512,7 @@ msgstr ""
 
 #: build/block-library/index.js:19
 #: build/controls/index.js:3
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Opacity"
 msgstr ""
 
@@ -6524,14 +6612,15 @@ msgstr ""
 #: build/block-library/index.js:29
 #: build/controls/index.js:1
 #: build/controls/index.js:19
-#: build/controls/index.js:35
 #: build/controls/index.js:37
+#: build/controls/index.js:53
+#: build/controls/index.js:55
 msgid "Top"
 msgstr ""
 
 #: build/block-library/index.js:19
 #: build/block-library/index.js:29
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Middle"
 msgstr ""
 
@@ -6539,19 +6628,20 @@ msgstr ""
 #: build/block-library/index.js:29
 #: build/controls/index.js:1
 #: build/controls/index.js:19
-#: build/controls/index.js:35
 #: build/controls/index.js:37
+#: build/controls/index.js:53
+#: build/controls/index.js:55
 msgid "Bottom"
 msgstr ""
 
 #: build/block-library/index.js:19
-#: build/controls/index.js:35
-#: build/controls/index.js:37
+#: build/controls/index.js:53
+#: build/controls/index.js:55
 msgid "Blur"
 msgstr ""
 
 #: build/block-library/index.js:19
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Fade In"
 msgstr ""
 
@@ -6632,7 +6722,7 @@ msgstr ""
 #: build/block-library/index.js:25
 #: build/block-library/index.js:27
 #: build/block-library/index.js:37
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 #: build/editor/index.js:3
 #: build/third-party-blocks/index.js:1
 msgid "Background color"
@@ -6981,7 +7071,7 @@ msgstr ""
 #: build/block-library/index.js:29
 #: build/block-library/index.js:33
 #: build/controls/index.js:1
-#: build/controls/index.js:19
+#: build/controls/index.js:37
 #: build/wp-global-styles/index.js:3
 msgid "Solid"
 msgstr ""
@@ -6990,7 +7080,7 @@ msgstr ""
 #: build/block-library/index.js:29
 #: build/block-library/index.js:33
 #: build/controls/index.js:1
-#: build/controls/index.js:19
+#: build/controls/index.js:37
 msgid "Dashed"
 msgstr ""
 
@@ -6998,7 +7088,7 @@ msgstr ""
 #: build/block-library/index.js:29
 #: build/block-library/index.js:33
 #: build/controls/index.js:1
-#: build/controls/index.js:19
+#: build/controls/index.js:37
 msgid "Dotted"
 msgstr ""
 
@@ -7103,6 +7193,7 @@ msgid "Use shortcode"
 msgstr ""
 
 #: build/block-library/index.js:25
+#: build/controls/index.js:25
 msgid "Select a form"
 msgstr ""
 
@@ -7157,6 +7248,7 @@ msgid "Use one of the existing contact forms available, or paste a custom shortc
 msgstr ""
 
 #: build/block-library/index.js:27
+#: build/controls/index.js:25
 msgid "Contact form"
 msgstr ""
 
@@ -7398,13 +7490,13 @@ msgstr ""
 
 #: build/block-library/index.js:27
 #: build/block-library/index.js:29
-#: build/controls/index.js:37
+#: build/controls/index.js:55
 msgid "Horizontal"
 msgstr ""
 
 #: build/block-library/index.js:27
 #: build/block-library/index.js:29
-#: build/controls/index.js:37
+#: build/controls/index.js:55
 msgid "Vertical"
 msgstr ""
 
@@ -7531,29 +7623,29 @@ msgstr ""
 #: build/block-library/index.js:29
 #: build/block-library/index.js:33
 #: build/controls/index.js:1
-#: build/controls/index.js:19
+#: build/controls/index.js:37
 msgid "Groove"
 msgstr ""
 
 #: build/block-library/index.js:29
 #: build/block-library/index.js:33
 #: build/controls/index.js:1
-#: build/controls/index.js:19
+#: build/controls/index.js:37
 msgid "Ridge"
 msgstr ""
 
 #: build/block-library/index.js:29
 #: build/block-library/index.js:33
 #: build/controls/index.js:1
-#: build/controls/index.js:19
 #: build/controls/index.js:37
+#: build/controls/index.js:55
 msgid "Inset"
 msgstr ""
 
 #: build/block-library/index.js:29
 #: build/block-library/index.js:33
 #: build/controls/index.js:1
-#: build/controls/index.js:19
+#: build/controls/index.js:37
 msgid "Outset"
 msgstr ""
 
@@ -7574,7 +7666,7 @@ msgid "List Item"
 msgstr ""
 
 #: build/block-library/index.js:29
-#: build/controls/index.js:39
+#: build/controls/index.js:57
 #: build/editor/index.js:3
 #: build/third-party-blocks/index.js:1
 #: build/wp-global-styles/index.js:1
@@ -8232,10 +8324,6 @@ msgid "pagination"
 msgstr ""
 
 #: build/block-library/index.js:37
-msgid "Button Action"
-msgstr ""
-
-#: build/block-library/index.js:37
 msgid "Pagination Nav Button"
 msgstr ""
 
@@ -8256,7 +8344,7 @@ msgid "Current Page Number"
 msgstr ""
 
 #: build/block-library/index.js:37
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Dots"
 msgstr ""
 
@@ -8343,12 +8431,12 @@ msgid "1:1"
 msgstr ""
 
 #: build/block-library/index.js:37
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Cover"
 msgstr ""
 
 #: build/block-library/index.js:37
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Contain"
 msgstr ""
 
@@ -8422,7 +8510,7 @@ msgid "No tag placeholder"
 msgstr ""
 
 #: build/block-library/index.js:37
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 #: build/third-party-blocks/index.js:1
 msgid "Link color"
 msgstr ""
@@ -8612,7 +8700,7 @@ msgid "Avatar"
 msgstr ""
 
 #: build/block-library/index.js:37
-#: build/controls/index.js:21
+#: build/controls/index.js:39
 msgid "Edit link"
 msgstr ""
 
@@ -9102,23 +9190,23 @@ msgid "Select unit"
 msgstr ""
 
 #: build/controls/index.js:1
-#: build/controls/index.js:19
+#: build/controls/index.js:37
 msgid "Unlink Sides"
 msgstr ""
 
 #: build/controls/index.js:1
-#: build/controls/index.js:19
+#: build/controls/index.js:37
 msgid "Link Sides"
 msgstr ""
 
 #: build/controls/index.js:1
-#: build/controls/index.js:19
+#: build/controls/index.js:37
 msgid "Mixed"
 msgstr ""
 
 #: build/controls/index.js:1
-#: build/controls/index.js:19
-#: build/controls/index.js:39
+#: build/controls/index.js:37
+#: build/controls/index.js:57
 msgid "Hidden"
 msgstr ""
 
@@ -9266,7 +9354,7 @@ msgid "Unknown Block"
 msgstr ""
 
 #: build/controls/index.js:19
-#: build/controls/index.js:21
+#: build/controls/index.js:39
 msgid "Search or type url"
 msgstr ""
 
@@ -9283,522 +9371,626 @@ msgid "Add nofollow"
 msgstr ""
 
 #: build/controls/index.js:19
+msgid "Open a Link"
+msgstr ""
+
+#: build/controls/index.js:19
+msgid "Call a Phone Number"
+msgstr ""
+
+#: build/controls/index.js:19
+msgid "Open a WhatsApp Chat"
+msgstr ""
+
+#. Translators: %s is the plugin name.
+#: build/controls/index.js:21
+msgid "Open a Contact / Quotation Form"
+msgstr ""
+
+#. Translators: %s is the plugin name.
+#: build/controls/index.js:23
+#: build/controls/index.js:25
+#, js-format
+msgid "Installs %s plugin"
+msgstr ""
+
+#: build/controls/index.js:23
+msgid "Open an Appointment Booking form"
+msgstr ""
+
+#: build/controls/index.js:25
+msgid "Edit Bubble Chat Settings"
+msgstr ""
+
+#: build/controls/index.js:25
+msgid "Note:"
+msgstr ""
+
+#: build/controls/index.js:25
+msgid "Installing plugin:"
+msgstr ""
+
+#: build/controls/index.js:25
+#, js-format
+msgid "Install \"%s\" plugin"
+msgstr ""
+
+#: build/controls/index.js:25
+msgid "Edit design"
+msgstr ""
+
+#: build/controls/index.js:25
+msgid "Edit settings"
+msgstr ""
+
+#: build/controls/index.js:25
+msgid "No forms. Please create a form"
+msgstr ""
+
+#: build/controls/index.js:25
+msgid "Email capture form"
+msgstr ""
+
+#: build/controls/index.js:25
+#: build/third-party-blocks/index.js:1
+msgid "Calendar"
+msgstr ""
+
+#: build/controls/index.js:25
+msgid "Select a calendar"
+msgstr ""
+
+#. translators: %s is the plugin label
+#: build/controls/index.js:27
+#, js-format
+msgid "Plugin \"%s\" could not be activated"
+msgstr ""
+
+#. translators: %s is the plugin label
+#: build/controls/index.js:29
+#, js-format
+msgid "Installed plugin: \"%s\""
+msgstr ""
+
+#. translators: %s is the plugin label
+#: build/controls/index.js:31
+#: build/controls/index.js:35
+#, js-format
+msgid "Setup for plugin: \"%s\" is complete!"
+msgstr ""
+
+#. translators: %s is the plugin label
+#: build/controls/index.js:33
+#: build/controls/index.js:37
+#, js-format
+msgid "Encountered an error while doing initial setup for the plugin: \"%s\""
+msgstr ""
+
+#: build/controls/index.js:37
+msgid "Meet with us"
+msgstr ""
+
+#: build/controls/index.js:37
+msgid "Button link"
+msgstr ""
+
+#: build/controls/index.js:37
+msgid "Button action"
+msgstr ""
+
+#: build/controls/index.js:37
 msgid "Box Control"
 msgstr ""
 
-#: build/controls/index.js:19
+#: build/controls/index.js:37
 msgid "Custom size"
 msgstr ""
 
-#: build/controls/index.js:19
+#: build/controls/index.js:37
 #: build/editor/index.js:51
 msgid "Change background image"
 msgstr ""
 
-#: build/controls/index.js:19
+#: build/controls/index.js:37
 #: build/editor/index.js:51
 msgid "Remove image"
 msgstr ""
 
 #. translators: %s: allowed file types
-#: build/controls/index.js:21
+#: build/controls/index.js:39
 #, js-format
 msgid "Only %s formats are supported"
 msgstr ""
 
-#: build/controls/index.js:21
+#: build/controls/index.js:39
 msgid "Select a TypeKit Project"
 msgstr ""
 
-#: build/controls/index.js:21
+#: build/controls/index.js:39
 msgid "Update item"
 msgstr ""
 
-#: build/controls/index.js:21
+#: build/controls/index.js:39
 msgid "Custom link"
 msgstr ""
 
-#: build/controls/index.js:21
+#: build/controls/index.js:39
 msgid "Item link"
 msgstr ""
 
-#: build/controls/index.js:21
+#: build/controls/index.js:39
 msgid "Item label"
 msgstr ""
 
-#: build/controls/index.js:21
+#: build/controls/index.js:39
 msgid "Open in new tab"
 msgstr ""
 
-#: build/controls/index.js:21
+#: build/controls/index.js:39
 msgid "Initial value"
 msgstr ""
 
-#: build/controls/index.js:21
+#: build/controls/index.js:39
 msgid "Current template is used on multiple pages. Let’s create a custom template for this page"
 msgstr ""
 
-#: build/controls/index.js:21
+#: build/controls/index.js:39
 msgid "TEMPLATE NAME"
 msgstr ""
 
-#: build/controls/index.js:21
+#: build/controls/index.js:39
 msgid "The first character needs to be a alphabetic character"
 msgstr ""
 
-#: build/controls/index.js:21
+#: build/controls/index.js:39
 msgid "Create template"
 msgstr ""
 
-#: build/controls/index.js:21
+#: build/controls/index.js:39
 msgid "New page template"
 msgstr ""
 
 #. translators: %s - template part name (e.g. header/ footer/ sidebar)
-#: build/controls/index.js:23
+#: build/controls/index.js:41
 #, js-format
 msgid "Editing the %s is part of the PRO features.<br/>Upgrade to PRO and get unlimited customizing options"
 msgstr ""
 
 #. translators: %1$s  - template part name (e.g. header/ footer/ sidebar), %2$s - template name
-#: build/controls/index.js:27
+#: build/controls/index.js:45
 #, js-format
 msgid "This %1$s is used on multiple pages. Would you like to edit this %1$s for all pages that are using the \"%2$s\" template?"
 msgstr ""
 
-#: build/controls/index.js:27
+#: build/controls/index.js:45
 msgid "Edit for all pages"
 msgstr ""
 
-#: build/controls/index.js:27
+#: build/controls/index.js:45
 msgid "Edit for this page only"
 msgstr ""
 
-#: build/controls/index.js:27
+#: build/controls/index.js:45
 #: build/editor/index.js:3
 msgid "Choose editing mode"
 msgstr ""
 
-#: build/controls/index.js:27
+#: build/controls/index.js:45
 msgid "All pages using the current header"
 msgstr ""
 
-#: build/controls/index.js:27
+#: build/controls/index.js:45
 msgid "This page only"
 msgstr ""
 
 #. translators: %s type label
-#: build/controls/index.js:29
+#: build/controls/index.js:47
 #, js-format
 msgid "New %s"
 msgstr ""
 
 #. translators: %s type label
-#: build/controls/index.js:33
+#: build/controls/index.js:51
 #, js-format
 msgid "%s name"
 msgstr ""
 
 #. translators: %s type label
-#: build/controls/index.js:33
+#: build/controls/index.js:51
 #, js-format
 msgid "Save %s"
 msgstr ""
 
-#: build/controls/index.js:33
+#: build/controls/index.js:51
 msgid "Would you like to apply these changes to all pages that are using the current template or only for this page?"
 msgstr ""
 
 #. translators: %s type label
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 #, js-format
 msgid "New page %s"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Classic"
 msgstr ""
 
 #. translators: 1: current page number 2: total number of pages
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 #, js-format
 msgid "Step %1$d of %2$d"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 #: build/editor/index.js:35
 msgid "Finish"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Fade In Up"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Fade In Down"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Fade In Left"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Fade In Right"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Zoom In"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Zoom In Up"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Zoom In Down"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Zoom In Left"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Zoom In Right"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Back In Up"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Back In Down"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Back In Left"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Back In Right"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Bounce In"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Bounce In Up"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Bounce In Down"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Bounce In Left"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Bounce In Right"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Slide In Up"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Slide In Down"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Slide In Left"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Slide In Right"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Rotate In"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Rotate In Down Left"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Rotate In Down Right"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Rotate In Up Left"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Rotate In Up Right"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Bounce"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Flash"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Pulse"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Rubber band"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Shake"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Head Shake"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Swing"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Tada"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Wobble"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Jello"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Heart Beat"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Light Speed In"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Roll In"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Jack In The Box"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Flip In X"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Flip In Y"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Fading"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Zooming"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Bouncing"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Sliding"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Rotating"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Attention seekers"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Light Speed"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Specials"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Flippers"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Play animation"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Hide on desktop"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Hide on tablet"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Hide on mobile"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Arial"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Helvetica"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Times New Roman"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 #: build/format-library/index.js:1
 msgid "100 (thin)"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 #: build/format-library/index.js:1
 msgid "200 (extra light)"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 #: build/format-library/index.js:1
 msgid "300 (light)"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 #: build/format-library/index.js:1
 msgid "400 (normal)"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 #: build/format-library/index.js:1
 msgid "500 (medium)"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 #: build/format-library/index.js:1
 msgid "600 (semi bold)"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 #: build/format-library/index.js:1
 msgid "700 (bold)"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 #: build/format-library/index.js:1
 msgid "800 (extra bold)"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 #: build/format-library/index.js:1
 msgid "900 (heavy)"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "EM"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "REM"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Uppercase"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Lowercase"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Capitalize"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Italic"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Overline"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Line Through"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Full screen"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Min height"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Justify"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "No gap"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Inherit"
 msgstr ""
 
-#: build/controls/index.js:35
-msgid "Note:"
-msgstr ""
-
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Enabled"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Dividers color"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Dividers height"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "The divider can be configured only for the normal state."
 msgstr ""
 
-#: build/controls/index.js:35
-#: build/controls/index.js:37
+#: build/controls/index.js:53
+#: build/controls/index.js:55
 msgid "Y"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 #: build/editor/index.js:3
 #: build/format-library/index.js:1
 msgid "Font family"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Weight"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 #: build/core/index.js:7
 #: build/editor/index.js:3
 #: build/editor/index.js:7
@@ -9806,384 +9998,384 @@ msgstr ""
 msgid "Style"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Heading color"
 msgstr ""
 
 #. translators: %s is replaced with the heading number
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 #, js-format
 msgid "Heading %s color"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Hover link color"
 msgstr ""
 
-#: build/controls/index.js:35
-#: build/controls/index.js:37
+#: build/controls/index.js:53
+#: build/controls/index.js:55
 msgid "Edit theme defaults"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Enable hover transition"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Slideshow"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "External"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Top Left"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Top Center"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Top Right"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Center Left"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Center Center"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Center Right"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Bottom Left"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Bottom Center"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Bottom Right"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Scroll"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "No Repeat"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Repeat"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Repeat X"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Repeat Y"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Falling stars"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Grain"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Polygons"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Polylines"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Wavy lines"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Big circles"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Middle line"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Rounded triangle"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Multiple rounded triangles"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Semicircles"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Overlapping circles"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Intersecting circles"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Gradient circles"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "White gradient circles"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Waves"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Inverted waves"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Left tilted lines"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Right tilted lines"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Right tilted strips"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Background overlay"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Shape Only"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Overlay shape"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Shape light"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "The button can be configured only for the normal state."
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Background type"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Attachment"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Custom size x"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Custom size y"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Use feature image if available"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Use parallax"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Change Video"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Youtube Video"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Mobile browsers usually disable video backgrounds to save bandwidth. Please set a cover image to be displayed in this case."
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Video Poster"
 msgstr ""
 
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Change Video Poster"
 msgstr ""
 
 #. translators: %s: slide number
-#: build/controls/index.js:37
+#: build/controls/index.js:55
 #, js-format
 msgid "Slideshow image %s"
 msgstr ""
 
-#: build/controls/index.js:37
+#: build/controls/index.js:55
 msgid "Add new slideshow image"
 msgstr ""
 
-#: build/controls/index.js:37
+#: build/controls/index.js:55
 msgid "Slide duration"
 msgstr ""
 
-#: build/controls/index.js:37
+#: build/controls/index.js:55
 msgid "Effect speed"
 msgstr ""
 
-#: build/controls/index.js:37
+#: build/controls/index.js:55
 msgid "Spread"
 msgstr ""
 
-#: build/controls/index.js:37
+#: build/controls/index.js:55
 msgid "Outline"
 msgstr ""
 
-#: build/controls/index.js:37
+#: build/controls/index.js:55
 msgid "Different style"
 msgstr ""
 
-#: build/controls/index.js:37
+#: build/controls/index.js:55
 msgid "Gradient presets"
 msgstr ""
 
-#: build/controls/index.js:37
+#: build/controls/index.js:55
 msgid "Fit to content"
 msgstr ""
 
-#: build/controls/index.js:37
+#: build/controls/index.js:55
 msgid "Expand to available space"
 msgstr ""
 
-#: build/controls/index.js:37
+#: build/controls/index.js:55
 #: build/third-party-blocks/index.js:1
 msgid "Custom width"
 msgstr ""
 
-#: build/controls/index.js:37
+#: build/controls/index.js:55
 #: build/editor/index.js:55
 msgid "Translate"
 msgstr ""
 
-#: build/controls/index.js:37
+#: build/controls/index.js:55
 msgid "Skew"
 msgstr ""
 
-#: build/controls/index.js:37
-#: build/controls/index.js:39
+#: build/controls/index.js:55
+#: build/controls/index.js:57
 msgid "Perspective"
 msgstr ""
 
-#: build/controls/index.js:37
+#: build/controls/index.js:55
 msgid "Basic"
 msgstr ""
 
-#: build/controls/index.js:37
-#: build/controls/index.js:39
+#: build/controls/index.js:55
+#: build/controls/index.js:57
 #: build/editor/index.js:3
 #: build/editor/index.js:7
 #: build/editor/index.js:33
 msgid "Advanced"
 msgstr ""
 
-#: build/controls/index.js:37
+#: build/controls/index.js:55
 msgid "X - axis"
 msgstr ""
 
-#: build/controls/index.js:37
+#: build/controls/index.js:55
 msgid "Y - axis"
 msgstr ""
 
-#: build/controls/index.js:37
+#: build/controls/index.js:55
 msgid "Z - axis"
 msgstr ""
 
 #. translators: %s: Type of block (i.e. Text, Image etc)
-#: build/controls/index.js:39
+#: build/controls/index.js:57
 #, js-format
 msgid "%s - axis"
 msgstr ""
 
-#: build/controls/index.js:39
+#: build/controls/index.js:57
 msgid "Preview Transform"
 msgstr ""
 
-#: build/controls/index.js:39
+#: build/controls/index.js:57
 msgid "Transform origin"
 msgstr ""
 
-#: build/controls/index.js:39
+#: build/controls/index.js:57
 msgid "Visible"
 msgstr ""
 
-#: build/controls/index.js:39
+#: build/controls/index.js:57
 msgid "Z Index"
 msgstr ""
 
-#: build/controls/index.js:39
+#: build/controls/index.js:57
 msgid "Overflow option"
 msgstr ""
 
-#: build/controls/index.js:39
+#: build/controls/index.js:57
 msgid "HTML anchor (ID)"
 msgstr ""
 
-#: build/controls/index.js:39
+#: build/controls/index.js:57
 msgid "Additional CSS class(es)"
 msgstr ""
 
-#: build/controls/index.js:39
+#: build/controls/index.js:57
 msgid "Edit custom CSS"
 msgstr ""
 
-#: build/controls/index.js:39
+#: build/controls/index.js:57
 #: build/editor/index.js:3
 msgid "Texts"
 msgstr ""
 
-#: build/controls/index.js:39
+#: build/controls/index.js:57
 #: build/editor/index.js:3
 msgid "Headings"
 msgstr ""
 
-#: build/controls/index.js:39
+#: build/controls/index.js:57
 #: build/editor/index.js:3
 msgid "Lead text"
 msgstr ""
 
-#: build/controls/index.js:39
+#: build/controls/index.js:57
 msgid "Preserve whitespace"
 msgstr ""
 
 #. translators: %s is the number of blocks
-#: build/controls/index.js:41
+#: build/controls/index.js:59
 #, js-format
 msgid "Style shared with %s other block"
 msgid_plural "Style shared with %s other blocks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: build/controls/index.js:41
+#: build/controls/index.js:59
 msgid "Unlink"
 msgstr ""
 
@@ -12339,10 +12531,6 @@ msgstr ""
 
 #: build/third-party-blocks/index.js:1
 msgid "Widget Box"
-msgstr ""
-
-#: build/third-party-blocks/index.js:1
-msgid "Calendar"
 msgstr ""
 
 #: build/third-party-blocks/index.js:1

@@ -44,10 +44,10 @@ function kubio_register_kubio_scripts_scripts_dependencies( $version ) {
 			'handle' => 'fancybox',
 			'deps'   => array( 'jquery' ),
 			'src'    => 'fancybox/jquery.fancybox.min.js',
-		)
+		),
 	);
 
-	$scripts  = apply_filters("kubio/register_kubio_scripts_dependencies", $scripts );
+	$scripts = apply_filters( 'kubio/register_kubio_scripts_dependencies', $scripts );
 
 	foreach ( $scripts as $script ) {
 		AssetsDependencyInjector::registerKubioScriptsDependency(
@@ -227,10 +227,10 @@ function kubio_register_kubio_block_library_style_dependencies( $version ) {
 		array(
 			'handle' => 'fancybox',
 			'src'    => 'fancybox/jquery.fancybox.min.css',
-		)
+		),
 	);
 
-	$styles  = apply_filters("kubio/register_block_library_style_dependencies", $styles );
+	$styles = apply_filters( 'kubio/register_block_library_style_dependencies', $styles );
 
 	foreach ( $styles as $style ) {
 		AssetsDependencyInjector::registerKubioFrontendStyleDependency(
@@ -386,11 +386,12 @@ add_action(
 						'kubioAIParallelCalls'           => apply_filters( 'kubio/ai/parallel-calls', 5 ),
 						'showInternalFeatures'           => defined( '\KUBIO_INTERNAL' ) && \KUBIO_INTERNAL,
 						'sectionStylesTags'              => array( 'shadow', 'flat', 'outlined', 'rounded', 'minimal' ),
-						'kubio_is_ai_site_editor'		 => Utils::getIsAISiteEditor(),
+						'kubio_is_ai_site_editor'        => Utils::getIsAISiteEditor(),
 						'activatedOnStage2'              => Flags::getSetting( 'activatedOnStage2', false ),
 						'aiStage2'                       => Flags::getSetting( 'aiStage2', false ),
 						'advancedMode'                   => Flags::getSetting( 'advancedMode', true ),
 						'featuresVersion'                => Flags::getSetting( 'featuresVersion', 1 ),
+						'siteName'                       => get_bloginfo( 'name' ),
 						'wpAdminUpgradePage'             => add_query_arg(
 							array(
 								'tab'  => 'pro-upgrade',
@@ -399,21 +400,23 @@ add_action(
 							admin_url( 'admin.php' )
 						),
 						'adminLanguage'                  => get_user_locale(),
-						'autoStartBlackWizardOnboarding' =>  Flags::get( 'auto_start_black_wizard_onboarding', false ),
+						'autoStartBlackWizardOnboarding' => Flags::get( 'auto_start_black_wizard_onboarding', false ),
 						'importDesignIndex'              => Flags::get( 'import_design_index', null ),
 						'importDesignAiStructure'        => Flags::get( 'import_design_ai_structure', null ),
 						'aiWizardDescriptionOptional'    => Flags::getSetting( 'aiWizardDescriptionOptional', false ),
-						'showFrontPageRevertNotice'		 => KubioFrontPageRevertNotice::getShowNoticeInEditor(),
-						'frontPageRevertBackupData'		 => KubioFrontPageRevertNotice::getInstance()->getFrontPageBackupData(),
-						'frontPageRevertNoticeNonce' 	 =>  wp_create_nonce(KubioFrontPageRevertNotice::$nonceKey),
+						'showFrontPageRevertNotice'      => KubioFrontPageRevertNotice::getShowNoticeInEditor(),
+						'frontPageRevertBackupData'      => KubioFrontPageRevertNotice::getInstance()->getFrontPageBackupData(),
+						'frontPageRevertNoticeNonce'     => wp_create_nonce( KubioFrontPageRevertNotice::$nonceKey ),
 						'allow3rdPartyBlogOverride'      => apply_filters( 'kubio/allow_3rd_party_blog_override', true ),
-
+						'kubioRecommendationSettings'    => (object) kubio_get_recommendations_settings(),
 						'multilanguage'                  => array(
 							'hasTranslator'    => $is_wpml_active || $is_polylang_active,
 							'isWpmlActive'     => $is_wpml_active,
 							'isPolylangActive' => $is_polylang_active,
 							'polylang_add_page_translation_nonce' => wp_create_nonce( 'kubio_api_polylang_add_page_translation' ),
 						),
+
+						'bpaNonce'                       => wp_create_nonce( 'bpa_wp_nonce' ),
 					),
 					apply_filters( 'kubio/kubio-utils-data/extras', array() )
 				)

@@ -60,20 +60,23 @@ function cau_outdated_message( $single, $plural, $list ) {
 	$wpversion = get_bloginfo( 'version' );
 
 	// Base text
-	$text = sprintf( esc_html__( "You have %s on your WordPress site at %s that have not been tested with the latest 3 major releases of WordPress.", "companion-auto-update" ), $plural, get_site_url() );
+	/* translators: update type, like 'plugins' or 'themes' and site-url */
+	$text = sprintf( esc_html__( 'You have %1$s on your WordPress site at %2$s that have not been tested with the latest 3 major releases of WordPress.', 'companion-auto-update' ), $plural, get_site_url() );
 	$text .= "\n";
 	$text .= "\n";
 
 	// The list
 	if( !empty( $list ) ) {
 
-		$text .= sprintf( esc_html__( "The following %s have not been tested with WordPress %s:", "companion-auto-update" ), $plural, $wpversion );
+		/* translators: update type, like 'plugins' or 'themes' and the wordpress version */
+		$text .= sprintf( esc_html__( 'The following %1$s have not been tested with WordPress %2$s:', 'companion-auto-update' ), $plural, $wpversion );
 		$text .= "\n";
 		$text .= "\n";
 
 		foreach ( $list as $plugin => $version ) {
-			if( $version == '' ) $version = __( "Unknown", "companion-auto-update" );
-			$text .= "- ".sprintf( esc_html__( "%s tested up to: %s", "companion-auto-update" ), $plugin, $version )."\n";
+			if( $version == '' ) $version = esc_html__( "Unknown", "companion-auto-update" );
+			/* translators: plugin/theme name and the wordpress version */
+			$text .= "- ".sprintf( esc_html__( '%1$s tested up to: %2$s', 'companion-auto-update' ), $plugin, $version )."\n";
 		}
 
 	}
@@ -90,32 +93,31 @@ function cau_pending_message( $single, $plural, $list ) {
 	else $break = "\n";
 
 	// Base text
+	/* translators: update type, like 'plugins' or 'themes' and site-url */
 	$text = sprintf( esc_html__( 'You have pending %1$s updates on your WordPress site at %2$s.', 'companion-auto-update' ), $single, get_site_url() );
 	$text .= $break;
 
 	if( !empty( $list ) ) {
 		
 		$text .= $break;
+		/* translators: update type, like 'plugins' or 'themes' */
 		$text .= sprintf( esc_html__( 'The following %1$s have new versions available.', 'companion-auto-update' ), $plural );
 		$text .= $break;
 
 		if( cau_is_html() ) $text .= "<ol>";
 		foreach ( $list as $key => $value ) {
-			if( cau_is_html() ) {
-				$text .= "<li>$value</li>";
-			} else {
-				$text .= "-$value\n";
-			}
+			$text .= cau_is_html() ? "<li>$value</li>" : "-$value\n";
 		}
 		if( cau_is_html() ) $text .= "</ol>";
 		
 		$text .= $break;
 	}
 
-	$text .= __( 'Leaving your site outdated is a security risk so please consider manually updating them.', 'companion-auto-update' );
+	$text .= esc_html__( 'Leaving your site outdated is a security risk so please consider manually updating them.', 'companion-auto-update' );
 	$text .= $break;
 
 	// End
+	/* translators: url to the wordpress update page */
 	$text .= sprintf( esc_html__( 'Head over to %1$s and check the ones you want to update.', 'companion-auto-update' ), get_admin_url().'update-core.php' );
 
 	return $text;
@@ -130,6 +132,7 @@ function cau_updated_message( $type, $updatedList ) {
 	else $break = "\n";
 
 	// The message
+	/* translators: update type, like 'plugins' or 'themes' and site-url */
 	$text = sprintf( esc_html__( 
 		'One or more %1$s on your WordPress site at %2$s have been updated by Companion Auto Update. No further action is needed on your part. 
 For more info on what is new visit your dashboard and check the changelog.', 'companion-auto-update'
@@ -137,6 +140,8 @@ For more info on what is new visit your dashboard and check the changelog.', 'co
 
 	$text .= $break;
 	$text .= $break;
+
+	/* translators: update type, like 'plugins' or 'themes' */
 	$text .= sprintf( esc_html__( 
 		'The following %1$s have been updated:', 'companion-auto-update'
 	), $type );
@@ -145,7 +150,7 @@ For more info on what is new visit your dashboard and check the changelog.', 'co
 	$text .= $updatedList;
 
 	$text .= $break;
-	$text .= __( "(You'll also receive this email if you manually updated a plugin or theme)", "companion-auto-update"  );
+	$text .= esc_html__( "(You'll also receive this email if you manually updated a plugin or theme)", "companion-auto-update"  );
 
 	return $text;
 
@@ -158,9 +163,9 @@ function cau_list_outdated_software() {
 	if ( !function_exists( 'cau_get_db_value' ) ) require_once( plugin_dir_path( __FILE__ ) . 'cau_function.php' );
 
 	// Set up mail
-	$subject 		= '['.get_bloginfo( 'name' ).'] ' . __( 'You have outdated plugins on your site.', 'companion-auto-update' );
-	$type 			= __( 'plugin', 'companion-auto-update' );
-	$type_plural	= __( 'plugins', 'companion-auto-update' );
+	$subject 		= '['.get_bloginfo( 'name' ).'] ' . esc_html__( 'You have outdated plugins on your site.', 'companion-auto-update' );
+	$type 			= esc_html__( 'plugin', 'companion-auto-update' );
+	$type_plural	= esc_html__( 'plugins', 'companion-auto-update' );
 	$message 		= cau_outdated_message( $type, $type_plural, cau_list_outdated() );
 
 	// Send to all addresses
@@ -199,9 +204,9 @@ function cau_list_theme_updates() {
 					array_push( $list, $theme->get( 'Name' ) );
 				}
 
-				$subject 		= '[' . get_bloginfo( 'name' ) . '] ' . __( 'Theme update available.', 'companion-auto-update' );
-				$type 			= __('theme', 'companion-auto-update');
-				$type_plural	= __('themes', 'companion-auto-update');
+				$subject 		= '[' . get_bloginfo( 'name' ) . '] ' . esc_html__( 'Theme update available.', 'companion-auto-update' );
+				$type 			= esc_html__('theme', 'companion-auto-update');
+				$type_plural	= esc_html__('themes', 'companion-auto-update');
 				$message 		= cau_pending_message( $type, $type_plural, $list );
 				
 				foreach ( cau_set_email() as $key => $value) {
@@ -249,9 +254,9 @@ function cau_list_plugin_updates() {
 					array_push( $list, $name );
 				}
 
-				$subject 		= '[' . get_bloginfo( 'name' ) . '] ' . __( 'Plugin update available.', 'companion-auto-update' );
-				$type 			= __( 'plugin', 'companion-auto-update' );
-				$type_plural	= __( 'plugins', 'companion-auto-update' );
+				$subject 		= '[' . get_bloginfo( 'name' ) . '] ' . esc_html__( 'Plugin update available.', 'companion-auto-update' );
+				$type 			= esc_html__( 'plugin', 'companion-auto-update' );
+				$type_plural	= esc_html__( 'plugins', 'companion-auto-update' );
 				$message 		= cau_pending_message( $type, $type_plural, $list );
 
 				foreach ( cau_set_email() as $key => $value) {
@@ -272,9 +277,6 @@ function cau_plugin_updated() {
 
 	// Check if cau_get_db_value() function exists.
 	if ( !function_exists( 'cau_get_db_value' ) ) require_once( plugin_dir_path( __FILE__ ) . 'cau_function.php' );
-
-	// Set the correct timezone for emails
-	date_default_timezone_set( cau_get_proper_timezone() );
 
 	// Create arrays
 	$pluginNames 	= array();
@@ -394,14 +396,14 @@ function cau_plugin_updated() {
 		// Set up some var
 		$plugin_name 	= $pluginNames[$key];
 		$plugin_slug 	= $pluginSlug[$key];
-		$to_version		= __( "to version", "companion-auto-update" ).' '.$pluginVersion[$key];
-		$more_info_arr	= array( __( "Time of update", "companion-auto-update" ) => $pluginTimes[$key] );
+		$to_version		= esc_html__( "to version", "companion-auto-update" ).' '.$pluginVersion[$key];
+		$more_info_arr	= array( esc_html__( "Time of update", "companion-auto-update" ) => $pluginTimes[$key] );
 
 		// Plugin links
 		if( cau_get_db_value( 'plugin_links_emails' ) == 'on' ) {
-			$more_info_arr[__( "Plugin details", "companion-auto-update" )] 	= "<a href='https://wordpress.org/plugins/{$plugin_slug}/'>".__( "Visit", "companion-auto-update" )."</a>";
-			$more_info_arr[__( "Release notes", "companion-auto-update" )] 		= "<a href='https://wordpress.org/plugins/{$plugin_slug}/#developers'>".__( "Visit", "companion-auto-update" )."</a>";
-			$more_info_arr[__( "Support", "companion-auto-update" )] 			= "<a href='https://wordpress.org/support/plugin/{$plugin_slug}/'>".__( "Visit", "companion-auto-update" )."</a>";
+			$more_info_arr[esc_html__( "Plugin details", "companion-auto-update" )] 	= "<a href='https://wordpress.org/plugins/".esc_html( $plugin_slug )."/'>".esc_html__( "Visit", "companion-auto-update" )."</a>";
+			$more_info_arr[esc_html__( "Release notes", "companion-auto-update" )] 		= "<a href='https://wordpress.org/plugins/".esc_html( $plugin_slug )."/#developers'>".esc_html__( "Visit", "companion-auto-update" )."</a>";
+			$more_info_arr[esc_html__( "Support", "companion-auto-update" )] 			= "<a href='https://wordpress.org/support/plugin/".esc_html( $plugin_slug )."/'>".esc_html__( "Visit", "companion-auto-update" )."</a>";
 		}
 
 		// Email format
@@ -430,11 +432,11 @@ function cau_plugin_updated() {
 		if( cau_get_db_value( 'html_or_text' ) == 'html' ) {
 
 			$more_info = '';
-			if( cau_get_db_value( 'advanced_info_emails' ) == 'on' ) $more_info = "<br /><span style='opacity: 0.5;'>".__( "Time of update", "companion-auto-update" ).": ".$themeTimes[$key]."</span>"; 
-			$updatedListT .= "<li><strong>".$themeNames[$key]."</strong>".$more_info."</li>";
+			if( cau_get_db_value( 'advanced_info_emails' ) == 'on' ) $more_info = "<br /><span style='opacity: 0.5;'>".esc_html__( "Time of update", "companion-auto-update" ).": ".$themeTimes[$key]."</span>"; 
+			$updatedListT .= "<li><strong>".esc_html( $themeNames[$key] )."</strong>".esc_html( $more_info )."</li>";
 
 		} else {
-			$updatedListT .= "- ".$themeNames[$key]."\n";
+			$updatedListT .= "- ".esc_attr( $themeNames[$key] )."\n";
 		}
 
 		$totalNumT++;
@@ -457,8 +459,8 @@ function cau_plugin_updated() {
 	if( $totalNumP > 0 ) {
 
 		// E-mail content
-		$subject 		= '[' . get_bloginfo( 'name' ) . '] ' . __('One or more plugins have been updated.', 'companion-auto-update');
-		$type 			= __('plugins', 'companion-auto-update');
+		$subject 		= '[' . get_bloginfo( 'name' ) . '] ' . esc_html__('One or more plugins have been updated.', 'companion-auto-update');
+		$type 			= esc_html__('plugins', 'companion-auto-update');
 		$message 		= cau_updated_message( $type, $updatedListP );
 
 		// Send to all addresses
@@ -475,8 +477,8 @@ function cau_plugin_updated() {
 	if( $totalNumT > 0 ) {
 
 		// E-mail content
-		$subject 		= '[' . get_bloginfo( 'name' ) . '] ' . __('One or more themes have been updated.', 'companion-auto-update');
-		$type 			= __('themes', 'companion-auto-update');
+		$subject 		= '[' . get_bloginfo( 'name' ) . '] ' . esc_html__('One or more themes have been updated.', 'companion-auto-update');
+		$type 			= esc_html__('themes', 'companion-auto-update');
 		$message 		= cau_updated_message( $type, $updatedListT );
 
 		// Send to all addresses
@@ -510,8 +512,8 @@ function cau_notify_outofdate_db() {
 	if ( cau_incorrectDatabaseVersion() ) {
 
 		// Set up mail
-		$subject 		= '[' . get_bloginfo( 'name' ) . '] ' . __( 'We need your help with something', 'companion-auto-update' );
-		$message 		= __( 'Hi there! We need your help updating the database of Companion Auto Update to the latest version. No rush, old features will continue to work but some new features might not work until you update the database.', 'companion-auto-update' );
+		$subject 		= '[' . get_bloginfo( 'name' ) . '] ' . esc_html__( 'We need your help with something', 'companion-auto-update' );
+		$message 		= esc_html__( 'Hi there! We need your help updating the database of Companion Auto Update to the latest version. No rush, old features will continue to work but some new features might not work until you update the database.', 'companion-auto-update' );
 
 		// Send to all addresses
 		foreach ( cau_set_email() as $key => $value ) {

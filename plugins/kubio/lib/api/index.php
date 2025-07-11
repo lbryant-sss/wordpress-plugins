@@ -16,3 +16,4 @@ require_once __DIR__ . '/colibri.php';
 require_once __DIR__ . '/get-classic-page-template.php';
 require_once __DIR__ . '/update-settings-flags.php';
 require_once __DIR__ . '/multilanguage/index.php';
+require_once __DIR__ . '/recommendations/index.php';

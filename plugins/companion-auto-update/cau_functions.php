@@ -303,11 +303,8 @@ function checkCronjobsDisabled() {
 }
 
 // Menu location
-function cau_menloc( $after = '' ) {
-	return 'tools.php'.$after;
-}
-function cau_url( $tab = '' ) {
-	return admin_url( cau_menloc( '?page=cau-settings&tab='.$tab ) );
+function cau_url( $tab = false ) {
+	return admin_url( 'tools.php?page=cau-settings&tab='.esc_attr__( $tab ) );
 }
 
 // Get the active tab
@@ -315,7 +312,7 @@ function active_tab( $page, $identifier = 'tab' ) {
 	echo _active_tab( $page, $identifier );
 }
 function _active_tab( $page, $identifier = 'tab' ) {
-	$cur_page = !isset( $_GET[ $identifier ] ) ? '' : $_GET[ $identifier ];
+	$cur_page = !isset( $_GET[ $identifier ] ) ? '' : esc_html( $_GET[ $identifier ] );
 	if( $page == $cur_page ) {
 		return 'nav-tab-active';
 	}
@@ -323,7 +320,7 @@ function _active_tab( $page, $identifier = 'tab' ) {
 
 // Get the active subtab
 function active_subtab( $page, $identifier = 'tab' ) {
-	$cur_page = !isset( $_GET[ $identifier ] ) ? '' : $_GET[ $identifier ];
+	$cur_page = !isset( $_GET[ $identifier ] ) ? '' : esc_html( $_GET[ $identifier ] );
 	if( $page == $cur_page ) {
 		echo 'current';
 	}
@@ -841,7 +838,8 @@ function cau_wp_get_schedules() {
 					$identifier 	= __( 'months', 'companion-auto-update' );
 				}
 
-				$display 					= sprintf( esc_html__( 'Every %s %s', 'companion-auto-update' ), round( $numOfMinutes, 2 ), $identifier ); // Translateble
+				/* translators: interval, like every "two days" or every "five weeks" */
+				$display 					= sprintf( esc_html__( 'Every %1$s %2$s', 'companion-auto-update' ), round( $numOfMinutes, 2 ), $identifier ); // Translateble
 				$intervalNames[$counter] 	= $display; // Add the display name (i.e. "Once a month" or "Once Daily")
 
 				$counter++; // Make sure the next interval gets a new "key" value
@@ -933,7 +931,7 @@ function cau_disabled_test() {
         'label'       => __( 'Auto updating is enabled', 'companion-auto-update' ),
         'status'      => 'good',
         'badge'       => array(
-            'label' => __( 'Security' ),
+            'label' => __( 'Security', 'companion-auto-update' ),
             'color' => 'blue',
         ),
         'description' => sprintf( '<p>%s</p>', __( "Automatic updating isn't disabled on this site.", 'companion-auto-update' ) ),
@@ -987,11 +985,11 @@ function cau_test_is_vcs_checkout( $context ) {
 	}
 
 	if ( $checkout && ! apply_filters( 'automatic_updates_is_vcs_checkout', true, $context ) ) {
-		$result['description'] 	= sprintf( __( 'The folder %s was detected as being under version control (%s), but the %s filter is allowing updates' , 'companion-auto-update' ), "<code>$check_dir</code>", "<code>automatic_updates_is_vcs_checkout</code>" );
+		$result['description'] 	= sprintf( __( 'The folder %1$s was detected as being under version control (%2$s), but the %3$s filter is allowing updates' , 'companion-auto-update' ), "<code>$check_dir</code>", "<code>automatic_updates_is_vcs_checkout</code>" );
 		$result['icon'] 		= 'warning';
 		$result['status'] 		= 'info';
 	} else if ( $checkout ) {
-		$result['description'] 	= sprintf( __( 'The folder %s was detected as being under version control (%s)' , 'companion-auto-update' ), "<code>$check_dir</code>", "<code>$vcs_dir</code>" );
+		$result['description'] 	= sprintf( __( 'The folder %1$s was detected as being under version control (%2$s)' , 'companion-auto-update' ), "<code>$check_dir</code>", "<code>$vcs_dir</code>" );
 		$result['icon'] 		= 'no';
 		$result['status'] 		= 'disabled';
 	} else {

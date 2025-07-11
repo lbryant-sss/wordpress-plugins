@@ -518,6 +518,7 @@ function kubio_block_editor_general_settings( $settings ) {
 	$settings['enableFSEBlocks']                       = true;
 	$settings['kubioGlobalSettings']                   = (object) Flags::getSettings();
 
+
 	// settings for outside Kubio editor
 	// __unstableResolvedAssets was added in WP 6.0
 	if ( isset( $settings['__unstableResolvedAssets'] ) && ! kubio_is_kubio_editor_page() ) {
@@ -1340,7 +1341,7 @@ add_action( 'init', 'kubio_register_kubio_favorites_post_type', 9 );
 
 //From gutenberg_bootstrap_server_block_bindings_sources
 function kubio_load_block_bindings_sources() {
-	if(!kubio_is_kubio_editor_page()) {
+	if ( ! kubio_is_kubio_editor_page() ) {
 		return;
 	}
 	$registered_sources = get_all_registered_block_bindings_sources();
@@ -1370,7 +1371,7 @@ function kubio_load_block_bindings_sources() {
 			})()
 		</script>
 		<?php
-		$script = strip_tags(ob_get_clean());
+		$script = strip_tags( ob_get_clean() );
 		wp_add_inline_script(
 			'wp-blocks',
 			$script
@@ -1383,35 +1384,38 @@ add_action( 'enqueue_block_editor_assets', 'kubio_load_block_bindings_sources', 
 //0057618: Button styles do not work in kubio editor
 //Make the classic theme as a depedency for the block style variations to load the styles in the correct order so the classic
 //theme css does not override the variation styles
-add_action('wp_enqueue_scripts',function() {
-	$variation_handle = 'block-style-variation-styles';
-	$classic_handle = 'classic-theme-styles';
-	// Ensure both styles are registered before modifying them
-	if (wp_style_is($classic_handle, 'registered') && wp_style_is($variation_handle, 'registered')) {
+add_action(
+	'wp_enqueue_scripts',
+	function () {
+		$variation_handle = 'block-style-variation-styles';
+		$classic_handle   = 'classic-theme-styles';
+		// Ensure both styles are registered before modifying them
+		if ( wp_style_is( $classic_handle, 'registered' ) && wp_style_is( $variation_handle, 'registered' ) ) {
 
-		$style = wp_styles()->registered[$variation_handle];
-		$handle = $style->handle;
-		$src = $style->src;
-		$deps = $style->deps;
-		$ver = $style->ver;
-		$media = $style->args;
-		$extra= $style->extra;
+			$style  = wp_styles()->registered[ $variation_handle ];
+			$handle = $style->handle;
+			$src    = $style->src;
+			$deps   = $style->deps;
+			$ver    = $style->ver;
+			$media  = $style->args;
+			$extra  = $style->extra;
 
-		if (!in_array($classic_handle, $deps)) {
-			$deps[] = $classic_handle;
+			if ( ! in_array( $classic_handle, $deps ) ) {
+				$deps[] = $classic_handle;
+			}
+
+			$inline_styles = LodashBasic::get( $extra, 'after', array() );
+
+			// Deregister and re-register the style with updated dependencies
+			wp_deregister_style( $handle );
+			wp_register_style( $handle, $src, $deps, $ver, $media );
+			wp_enqueue_style( $handle );
+
+			// Reapply the captured inline styles
+			foreach ( $inline_styles as $inline_style ) {
+				wp_add_inline_style( $handle, $inline_style );
+			}
 		}
-
-		$inline_styles = LodashBasic::get($extra, 'after', []);
-
-
-		// Deregister and re-register the style with updated dependencies
-		wp_deregister_style($handle);
-		wp_register_style($handle, $src, $deps, $ver, $media);
-		wp_enqueue_style($handle);
-
-		// Reapply the captured inline styles
-		foreach ($inline_styles as $inline_style) {
-			wp_add_inline_style($handle, $inline_style);
-		}
-	}
-}, 100);
+	},
+	100
+);

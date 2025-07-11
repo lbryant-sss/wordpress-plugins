@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-07-04T14:03:13+03:00\n"
+"POT-Creation-Date: 2025-07-10T11:44:49+03:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language: \n"
 "X-Generator: WP-CLI 2.12.0\n"
@@ -229,9 +229,9 @@ msgstr "Область виджетов не найдена"
 
 #: lib/add-edit-in-kubio.php:93
 #: lib/add-edit-in-kubio.php:197
-#: lib/add-edit-in-kubio.php:376
+#: lib/add-edit-in-kubio.php:377
 #: lib/filters/default-editor-overlay.php:156
-#: lib/kubio-editor.php:998
+#: lib/kubio-editor.php:999
 #: build/block-library/index.js:13
 msgid "Edit with Kubio"
 msgstr "Редактировать с Kubio"
@@ -290,7 +290,7 @@ msgid "Starter Sites"
 msgstr "Стартовые сайты"
 
 #: lib/admin-pages/main-page/demo-sites.php:13
-#: lib/kubio-editor.php:1247
+#: lib/kubio-editor.php:1248
 msgid "You need a higher level of permission."
 msgstr "Вам требуется более высокий уровень доступа."
 
@@ -370,7 +370,7 @@ msgstr "Доступно только с Kubio PRO"
 #: build/block-editor/index.js:23
 #: build/block-editor/index.js:94
 #: build/block-library/index.js:19
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 #: build/editor/index.js:1
 #: build/editor/index.js:7
 #: build/editor/index.js:21
@@ -564,7 +564,7 @@ msgstr "3D модель"
 #: lib/AI/SDApi/KubioImagePrompts.php:15
 #: build/block-editor/index.js:100
 #: build/block-editor/index.js:110
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Background image"
 msgstr "Фоновое изображение"
 
@@ -627,8 +627,8 @@ msgstr "Цветочный"
 #: lib/AI/SDApi/KubioImagePrompts.php:40
 #: build/block-editor/index.js:100
 #: build/controls/index.js:15
-#: build/controls/index.js:35
-#: build/controls/index.js:37
+#: build/controls/index.js:53
+#: build/controls/index.js:55
 #: build/wp-global-styles/index.js:3
 msgid "Gradient"
 msgstr "Градиент"
@@ -694,7 +694,7 @@ msgid "Neon Punk"
 msgstr "Неоновый Панк"
 
 #: lib/AI/SDApi/KubioImagePrompts.php:60
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Doodle"
 msgstr "Каракули"
 
@@ -917,6 +917,63 @@ msgstr "Текущее содержимое записи пусто. В реда
 #: lib/api/kubio-cloud.php:92
 msgid "Api key not found"
 msgstr "Ключ API не найден"
+
+#: lib/api/recommendations/bubble-chat.php:64
+#: lib/api/recommendations/bubble-chat.php:122
+msgid "Required plugin is missing"
+msgstr "Отсутствует необходимый плагин"
+
+#: lib/api/recommendations/bubble-chat.php:70
+#: lib/api/recommendations/bubble-chat.php:128
+msgid "Required class or functions are missing"
+msgstr "Отсутствуют необходимые классы или функции"
+
+#: lib/api/recommendations/bubble-chat.php:95
+msgid "Kubio Widget"
+msgstr "Виджет Kubio"
+
+#: lib/api/recommendations/contact-forms.php:47
+msgid "Contact Form plugin is not active!"
+msgstr "Плагин формы обратной связи не активен!"
+
+#: lib/api/recommendations/contact-forms.php:58
+msgid "Failed to create default contact form!"
+msgstr "Не удалось создать контактную форму по умолчанию!"
+
+#: lib/api/recommendations/index.php:68
+#: lib/api/recommendations/index.php:74
+msgid "Page content not found for given plugin"
+msgstr "Содержимое страницы не найдено для указанного плагина"
+
+#: lib/api/recommendations/index.php:84
+msgid "Plugin slug is required"
+msgstr "Требуется идентификатор плагина"
+
+#: lib/api/recommendations/index.php:94
+#: lib/api/recommendations/index.php:101
+msgid "Failed to fetch default settings"
+msgstr "Не удалось получить настройки по умолчанию"
+
+#: lib/api/recommendations/index.php:105
+msgid "No default settings found for the plugin"
+msgstr "Для плагина не найдены настройки по умолчанию"
+
+#: lib/api/recommendations/index.php:110
+msgid "Invalid default settings format"
+msgstr "Недопустимый формат настроек по умолчанию"
+
+#: lib/api/recommendations/newsletter/index.php:49
+msgid "Promo plugin is not active!"
+msgstr "Промо-плагин не активен!"
+
+#: lib/api/recommendations/newsletter/index.php:52
+msgid "At least one of required classes is missing"
+msgstr "Отсутствует хотя бы один из необходимых классов"
+
+#: lib/api/recommendations/newsletter/index.php:55
+#: lib/recommendations/contact-forms.php:80
+msgid "At least one of required functions is missing"
+msgstr "Отсутствует хотя бы одна из необходимых функций"
 
 #: lib/api/subscribe-form.php:23
 msgid "Untitled form"
@@ -1598,57 +1655,57 @@ msgstr "Большой"
 msgid "Original Size"
 msgstr "Оригинальный размер"
 
-#: lib/kubio-editor.php:982
-#: lib/kubio-editor.php:986
-#: lib/kubio-editor.php:997
+#: lib/kubio-editor.php:983
+#: lib/kubio-editor.php:987
+#: lib/kubio-editor.php:998
 msgid "Kubio"
 msgstr "Kubio"
 
-#: lib/kubio-editor.php:1025
+#: lib/kubio-editor.php:1026
 #: lib/src/Core/EditInKubioCustomizerPanel.php:87
 msgid "Open Kubio Editor"
 msgstr "Открыть редактор Kubio"
 
-#: lib/kubio-editor.php:1103
+#: lib/kubio-editor.php:1104
 msgid "What to show on the front page"
 msgstr "Что показать на главной странице"
 
-#: lib/kubio-editor.php:1116
+#: lib/kubio-editor.php:1117
 msgid "The ID of the page that should be displayed on the front page"
 msgstr "ID страницы, которая должна отображаться на главной странице"
 
-#: lib/kubio-editor.php:1131
+#: lib/kubio-editor.php:1132
 msgid "The ID of the page that displays the posts"
 msgstr "Идентификатор страницы, на которой отображаются записи"
 
-#: lib/kubio-editor.php:1149
+#: lib/kubio-editor.php:1150
 msgid "Site icon."
 msgstr "Значок сайта."
 
-#: lib/kubio-editor.php:1166
+#: lib/kubio-editor.php:1167
 msgctxt "Template name"
 msgid "Full Width"
 msgstr "Во всю ширину"
 
-#: lib/kubio-editor.php:1167
-#: lib/kubio-editor.php:1174
+#: lib/kubio-editor.php:1168
+#: lib/kubio-editor.php:1175
 msgid "Recommended Kubio template to display individual pages. This template works best with the Kubio provided blocks and predesigned sections."
 msgstr "Рекомендуемый шаблон Kubio для отображения отдельных страниц. Этот шаблон лучше всего работает с предоставленными Kubio блоками и предварительно разработанными секциями."
 
-#: lib/kubio-editor.php:1173
+#: lib/kubio-editor.php:1174
 msgctxt "Template name"
 msgid "Kubio Full Width"
 msgstr "Полная ширина Kubio"
 
-#: lib/kubio-editor.php:1248
+#: lib/kubio-editor.php:1249
 msgid "Sorry, you are not allowed to customize this site."
 msgstr "Извините, вам не разрешено настраивать этот сайт."
 
-#: lib/kubio-editor.php:1266
+#: lib/kubio-editor.php:1267
 msgid "Kubio Section"
 msgstr "Раздел Kubio"
 
-#: lib/kubio-editor.php:1308
+#: lib/kubio-editor.php:1309
 msgid "Kubio Favorites"
 msgstr "Избранное Kubio"
 
@@ -1864,6 +1921,41 @@ msgstr "При вызове сервера лицензий Kubio произош
 msgid "Current license key was removed! Reason: %s"
 msgstr "Текущий лицензионный ключ был удален! Причина: %s"
 
+#: lib/recommendations/contact-forms.php:62
+msgid "Contact / Quotation Form 1"
+msgstr "Контактная / Заявка 1"
+
+#: lib/recommendations/contact-forms/default-template.php:4
+#: build/block-library/index.js:7
+#: build/block-library/index.js:37
+msgid "Name"
+msgstr "Имя"
+
+#: lib/recommendations/contact-forms/default-template.php:9
+msgid "Email"
+msgstr "Email"
+
+#: lib/recommendations/contact-forms/default-template.php:15
+msgid "Subject"
+msgstr "Тема"
+
+#: lib/recommendations/contact-forms/default-template.php:19
+#: build/admin-area/index.js:3
+msgid "Message"
+msgstr "Сообщение"
+
+#: lib/recommendations/contact-forms/default-template.php:22
+msgid "Send message"
+msgstr "Отправить сообщение"
+
+#: lib/recommendations/newsletters.php:118
+msgid "Email capture popup 1"
+msgstr "Окно захвата email 1"
+
+#: lib/recommendations/recommendation-page-post-type.php:9
+msgid "Recommendation pages"
+msgstr "Страницы рекомендаций"
+
 #: lib/src/Core/Activation.php:547
 msgid "Primary menu"
 msgstr "Основное меню"
@@ -1882,7 +1974,7 @@ msgstr "Часть шаблона не найдена"
 #: build/block-editor/index.js:100
 #: build/block-library/index.js:19
 #: build/controls/index.js:19
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Image"
 msgstr "Изображение"
 

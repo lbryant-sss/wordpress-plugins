@@ -15,7 +15,7 @@ The Best Ajax Live Search and Filter for WordPress. Live suggestions, Custom Pos
 
 **Ajax Search Lite** is a live search plugin for WordPress. This responsive live search engine, which will boost your user experience by providing a user friendly ajax powered search form – a live search bar. You can filter the results with the category and post type filter boxes as well. Google autocomplete and keyword suggestions also included.
 
-[youtube https://www.youtube.com/watch?v=tMde9nDQOEU]
+[youtube https://www.youtube.com/watch?v=qI2_iKK4n_4]
 
 
 Very smooth animations with mobile device support and regular updates. Use **Ajax Search Lite** as a replacement for the default WordPress search with a better looking, more efficient search engine.
@@ -23,7 +23,7 @@ Fine-tune the user experience by providing a powerful ajax search plugin to your
 
 [Home](https://ajaxsearchpro.com) | [Features](https://ajaxsearchpro.com/features) | [Lite Docs](https://documentation.ajaxsearchlite.com/) | [Pro Docs](https://documentation.ajaxsearchpro.com/)
 
-[youtube https://www.youtube.com/watch?v=qI2_iKK4n_4]
+[youtube https://www.youtube.com/watch?v=tMde9nDQOEU]
 
 Ajax Search Lite and Ajax Search Pro **does not require monthly subscriptions**, does not store your data on external servers – **everything is done locally**, on your server.
 

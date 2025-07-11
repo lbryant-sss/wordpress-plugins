@@ -2,11 +2,11 @@
 
 /*
  * Plugin Name: Companion Auto Update
- * Plugin URI: http://codeermeneer.nl/portfolio/companion-auto-update/
+ * Plugin URI: https://wijzijnqreative.nl/
  * Description: This plugin auto updates all plugins, all themes and the wordpress core.
- * Version: 3.9.2
+ * Version: 3.9.3
  * Author: Papin Schipper
- * Author URI: http://codeermeneer.nl/
+ * Author URI: https://wijzijnqreative.nl/
  * Contributors: papin
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -79,7 +79,7 @@ add_action( 'admin_init', 'cau_pluginRedirectWelcomeScreen' );
 
 // Donate url
 function cau_donateUrl() {
-	return 'https://www.paypal.me/dakel/10/';
+	return 'https://www.paypal.me/wijzijnqreative/';
 }
 
 // Database version
@@ -234,7 +234,7 @@ require_once( plugin_dir_path( __FILE__ ) . 'cau_functions.php' );
 
 // Add plugin to menu
 function register_cau_menu_page() {
-	if( cau_allowed_user_rights() ) add_submenu_page( cau_menloc() , __( 'Auto Updater', 'companion-auto-update' ), __( 'Auto Updater', 'companion-auto-update' ), 'manage_options', 'cau-settings', 'cau_frontend' );
+	if( cau_allowed_user_rights() ) add_submenu_page( 'tools.php' , esc_html__( 'Auto Updater', 'companion-auto-update' ), esc_html__( 'Auto Updater', 'companion-auto-update' ), 'manage_options', 'cau-settings', 'cau_frontend' );
 }
 add_action( 'admin_menu', 'register_cau_menu_page' );
 
@@ -242,7 +242,7 @@ add_action( 'admin_menu', 'register_cau_menu_page' );
 function cau_frontend() {
 
 	echo "<div class='wrap cau_content_wrap cau_content'>
-		<h1 class='wp-heading-inline'>".__( 'Companion Auto Update', 'companion-auto-update' )."</h1>
+		<h1 class='wp-heading-inline'>".esc_html__( 'Companion Auto Update', 'companion-auto-update' )."</h1>
 		<hr class='wp-header-end'>";
 
 		// Make sure the correct timezone is used
@@ -250,17 +250,17 @@ function cau_frontend() {
 
 		// Allow only access to these pages
 		$allowedPages 	= array( 
-			'dashboard' 	=> __( 'Dashboard' ), 
-			'pluginlist' 	=> __( 'Update filter', 'companion-auto-update' ), 
-			'log' 			=> __( 'Update log', 'companion-auto-update' ), 
-			'status' 		=> __( 'Status', 'companion-auto-update' ), 
+			'dashboard' 	=> esc_html__( 'Dashboard', 'companion-auto-update' ), 
+			'pluginlist' 	=> esc_html__( 'Update filter', 'companion-auto-update' ), 
+			'log' 			=> esc_html__( 'Update log', 'companion-auto-update' ), 
+			'status' 		=> esc_html__( 'Status', 'companion-auto-update' ), 
 		);
 
 		// Show subtabs
 		echo "<h2 class='nav-tab-wrapper wp-clearfix'>";
 
 		foreach ( $allowedPages as $page => $title ) {
-			echo "<a href='".cau_url( $page )."' id='tab-".$page."' class='nav-tab "._active_tab( $page )."'>".$title;
+			echo "<a href='".cau_url( $page )."' id='tab-".esc_attr( $page )."' class='nav-tab "._active_tab( $page )."'>".esc_html( $title );
 			if( $page == 'status' ) echo cau_pluginHasIssues() ? "<span class='cau_melding level-".cau_pluginIssueLevels()."'></span>" : "<span class='cau_melding level-okay'></span>"; // Show status icon
 			echo "</a>";
 		}
@@ -287,16 +287,16 @@ function cau_frontend() {
 
 // Add a widget to the dashboard.
 function cau_add_widget() {
-	if ( cau_allowed_user_rights() ) wp_add_dashboard_widget( 'cau-update-log', __('Update log', 'companion-auto-update'), 'cau_widget' );	
+	if ( cau_allowed_user_rights() ) wp_add_dashboard_widget( 'cau-update-log', esc_html__('Update log', 'companion-auto-update'), 'cau_widget' );	
 }
 add_action( 'wp_dashboard_setup', 'cau_add_widget' );
 
 // Widget content
 function cau_widget() {
 	echo '<style>table.autoupdatewidget { border: 0px solid transparent; border-bottom: 1px solid #EEEEEE; margin: 0 -12px; width: calc(100% + 24px); } table.autoupdatewidget tr td { border-top: 1px solid #EEEEEE; padding: 9px 12px 5px 12px; background: #FAFAFA; } .cau_divide { display: inline-block; color: #E7E0DF; padding: 0 2px; } </style>';
-	echo '<p>'.__('Below are the last 7 updates ran on this site. Includes plugins and themes, both automatically updated and manually updated.', 'companion-auto-update').'</p>';
+	echo '<p>'.esc_html__('Below are the last 7 updates ran on this site. Includes plugins and themes, both automatically updated and manually updated.', 'companion-auto-update').'</p>';
 	cau_fetch_log( '7' );
-	echo '<p><a href="'.cau_url( 'log' ).'">'.__( 'View full changelog', 'companion-auto-update' ).'</a> <span class="cau_divide">|</span> <a href="'.cau_url( 'dashboard' ).'">'.__( 'Settings' ).'</a></p>';
+	echo '<p><a href="'.cau_url( 'log' ).'">'.esc_html__( 'View full changelog', 'companion-auto-update' ).'</a> <span class="cau_divide">|</span> <a href="'.cau_url( 'dashboard' ).'">'.esc_html__( 'Settings', 'companion-auto-update' ).'</a></p>';
 }
 
 // Load admin styles
@@ -325,9 +325,9 @@ require_once( plugin_dir_path( __FILE__ ) . 'cau_emails.php' );
 // Add settings link on plugin page
 function cau_settings_link( $links ) { 
 
-	$settings_link 	= '<a href="'.cau_url( 'dashboard' ).'">'.__( 'Settings' ).'</a>'; 
-	$settings_link2 = '<a href="https://translate.wordpress.org/projects/wp-plugins/companion-auto-update">'.__( 'Help us translate', 'companion-auto-update' ).'</a>'; 
-	$settings_link3 = '<a href="'.cau_donateUrl().'">'.__( 'Donate to help development', 'companion-auto-update' ).'</a>'; 
+	$settings_link 	= '<a href="'.cau_url( 'dashboard' ).'">'.esc_html__( 'Settings', 'companion-auto-update' ).'</a>'; 
+	$settings_link2 = '<a href="https://translate.wordpress.org/projects/wp-plugins/companion-auto-update">'.esc_html__( 'Help us translate', 'companion-auto-update' ).'</a>'; 
+	$settings_link3 = '<a href="'.cau_donateUrl().'">'.esc_html__( 'Donate to help development', 'companion-auto-update' ).'</a>'; 
 
 	array_unshift( $links, $settings_link2 ); 
 	array_unshift( $links, $settings_link3 ); 
@@ -412,7 +412,7 @@ function cau_checkForIssues( $admin_bar ) {
 	        'href'  => cau_url( 'status' ),       
 	        'meta'   => array(
 	            'target'   => '_self',
-	            'title'    => __( 'Companion Auto Update ran into a critical error. View the status log for more info.', 'companion-auto-update' ),
+	            'title'    => esc_html__( 'Companion Auto Update ran into a critical error. View the status log for more info.', 'companion-auto-update' ),
 	        ),
 	    ));
 	}

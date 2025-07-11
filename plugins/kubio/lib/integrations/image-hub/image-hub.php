@@ -34,16 +34,16 @@ class KubioImageHubIntegration {
 
 
 	public function enqueue_media_library_scripts() {
-		//@TODO [Review] Prefix all styles / scripts names with kubio ( demo-image-hub-style => kubio-demo-image-hub-style)
+
 		wp_enqueue_style(
-			'demo-image-hub-style',
+			'kubio-image-hub-integration-style',
 			plugin_dir_url( __FILE__ ) . 'styles.css',
 			array(),
 			filemtime( plugin_dir_path( __FILE__ ) . 'styles.css' )
 		);
 
 		wp_enqueue_script(
-			'demo-image-hub-media-modal',
+			'kubio-image-hub-integration-media-modal',
 			plugin_dir_url( __FILE__ ) . 'media-modal.js',
 			array( 'wp-i18n', 'wp-components', 'wp-element', 'media-views', 'kubio-utils', 'wp-dom-ready' ),
 			filemtime( plugin_dir_path( __FILE__ ) . 'media-modal.js' ),
@@ -56,7 +56,7 @@ class KubioImageHubIntegration {
 
 
 	public function add_module_attribute( $tag, $handle ) {
-		if ( 'demo-image-hub-media-modal' === $handle ) {
+		if ( 'kubio-image-hub-integration-media-modal' === $handle ) {
 			return str_replace( 'src', 'type="module" src', $tag );
 		}
 		return $tag;

@@ -13,6 +13,14 @@
 		"link": {
 			"type": "object"
 		},
+		"linkType": {
+			"type": "string",
+			"default" : "link"
+		},
+		"recommendation": {
+			"type": "object",
+			"default" : {}
+		},
 		"preserveSpace": {
 			"type": "object"
 		},
@@ -57,7 +65,8 @@
 				"OUTER": "outer",
 				"LINK": "link",
 				"ICON": "icon",
-				"TEXT": "text"
+				"TEXT": "text",
+				"RECOMMENDATION_PAGE_IFRAME": "recommendationPageIframe"
 			},
 			"elementsByName": {
 				"outer": {
@@ -126,6 +135,12 @@
 								}
 							}
 						]
+					},
+					{
+						"type": "element",
+						"props": {
+							"name": "recommendationPageIframe"
+						}
 					}
 				]
 			}

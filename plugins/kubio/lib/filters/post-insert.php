@@ -14,7 +14,10 @@ function kubio_rest_pre_insert_import_assets( $prepared_post ) {
 
 	$blocks = parse_blocks( $content );
 
-	$blocks                      = Importer::maybeImportBlockAssets( $blocks );
+	$blocks = Importer::maybeImportBlockAssets( $blocks );
+
+	$blocks = apply_filters( 'kubio/rest-pre-save-post/import-assets', $blocks, $prepared_post );
+
 	$prepared_post->post_content = kubio_serialize_blocks( $blocks );
 
 	return $prepared_post;
@@ -31,9 +34,13 @@ function kubio_import_assets_filter() {
 add_action( 'init', 'kubio_import_assets_filter' );
 
 //when in site editor mode disable import download
-add_filter('kubio/importer/skip-remote-file-import', function($result) {
-	if(Utils::getIsAISiteEditor()) {
-		return true;
-	}
-	return $result;
-}, 9);
+add_filter(
+	'kubio/importer/skip-remote-file-import',
+	function ( $result ) {
+		if ( Utils::getIsAISiteEditor() ) {
+			return true;
+		}
+		return $result;
+	},
+	9
+);

@@ -126,13 +126,10 @@ class Wpzoom_Instagram_Widget extends WP_Widget {
 		$user_account_token = get_post_meta( $user_id, '_wpz-insta_token', true ) ?: '-1';
 		$user_business_page_id = get_post_meta( $user_id, '_wpz-insta_page_id', true ) ?: null;
 
-		//Set token from first created user
-		$this->api->set_access_token( $user_account_token );
-		$this->api->set_feed_id( $user_id );
-
-		if ( ! empty( $user_business_page_id ) ) {
-			$this->api->set_business_page_id( $user_business_page_id );
-		}
+		// Pass token and IDs directly to avoid singleton state collision
+		$instance['access-token'] = $user_account_token;
+		$instance['feed-id'] = $user_id;
+		$instance['business-page-id'] = $user_business_page_id;
 
 		$items  = $this->api->get_items( $instance );
 		$errors = $this->api->errors->get_error_messages();
@@ -427,7 +424,20 @@ class Wpzoom_Instagram_Widget extends WP_Widget {
 							$type     = in_array( $item['type'], array( 'VIDEO', 'CAROUSEL_ALBUM' ) ) ? strtolower( $item['type'] ) : false;
 							$is_album = 'carousel_album' == $type;
 							$is_video = 'video' == $type;
-							$children = $is_album && isset( $item['children'] ) && is_object( $item['children'] ) && isset( $item['children']->data ) ? $item['children']->data : false; ?>
+							// Handle both data structures: $item['children']->data (legacy) and $item['children'] (direct)
+							$children = false;
+							if ( $is_album && isset( $item['children'] ) ) {
+								if ( is_object( $item['children'] ) && isset( $item['children']->data ) ) {
+									// Legacy structure: children wrapped in data property
+									$children = $item['children']->data;
+								} elseif ( is_object( $item['children'] ) && property_exists( $item['children'], 'data' ) ) {
+									// Alternative data property check
+									$children = $item['children']->data;
+								} elseif ( is_array( $item['children'] ) || ( is_object( $item['children'] ) && ! property_exists( $item['children'], 'data' ) ) ) {
+									// Direct structure: children are the data itself
+									$children = $item['children'];
+								}
+							} ?>
 
 							<div data-uid="<?php echo $media_id; ?>" class="swiper-slide wpz-insta-lightbox-item">
 								<div class="wpz-insta-lightbox">

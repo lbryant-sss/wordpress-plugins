@@ -196,6 +196,7 @@ function kubio_post_edit_add_button() {
 			const icon = <?php echo wp_json_encode( base64_encode( KUBIO_LOGO_SVG ) ); ?>;
 			const label = <?php echo wp_json_encode( '<span>' . esc_html__( 'Edit with Kubio', 'kubio' ) . '</span>' ); ?>;
 			let unsubscribe = null;
+			top.kubioEditInKubioURL = url;
 
 			const createButton = () => {
 
@@ -363,11 +364,11 @@ function kubio_frontend_adminbar_items( $wp_admin_bar ) {
 		if ( gettype( $post ) === 'integer' ) {
 			$post = get_post( $post );
 		}
-		if(empty($post)) {
+		if ( empty( $post ) ) {
 			return;
 		}
 		//for now only disable on product as maybe some users update custom post types. Disable what we know it does not work
-		if($post->post_type === 'product') {
+		if ( $post->post_type === 'product' ) {
 			return;
 		}
 		$wp_admin_bar->add_menu(

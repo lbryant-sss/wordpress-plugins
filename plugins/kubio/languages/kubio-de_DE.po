@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-07-04T14:03:13+03:00\n"
+"POT-Creation-Date: 2025-07-10T11:44:49+03:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language: \n"
 "X-Generator: WP-CLI 2.12.0\n"
@@ -229,9 +229,9 @@ msgstr "Widget-Bereich nicht gefunden"
 
 #: lib/add-edit-in-kubio.php:93
 #: lib/add-edit-in-kubio.php:197
-#: lib/add-edit-in-kubio.php:376
+#: lib/add-edit-in-kubio.php:377
 #: lib/filters/default-editor-overlay.php:156
-#: lib/kubio-editor.php:998
+#: lib/kubio-editor.php:999
 #: build/block-library/index.js:13
 msgid "Edit with Kubio"
 msgstr "Bearbeiten mit Kubio"
@@ -290,7 +290,7 @@ msgid "Starter Sites"
 msgstr "Starter-Websites"
 
 #: lib/admin-pages/main-page/demo-sites.php:13
-#: lib/kubio-editor.php:1247
+#: lib/kubio-editor.php:1248
 msgid "You need a higher level of permission."
 msgstr "Du benötigst eine höhere Berechtigungsstufe."
 
@@ -370,7 +370,7 @@ msgstr "Nur verfügbar mit Kubio PRO"
 #: build/block-editor/index.js:23
 #: build/block-editor/index.js:94
 #: build/block-library/index.js:19
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 #: build/editor/index.js:1
 #: build/editor/index.js:7
 #: build/editor/index.js:21
@@ -564,7 +564,7 @@ msgstr "3D-Modell"
 #: lib/AI/SDApi/KubioImagePrompts.php:15
 #: build/block-editor/index.js:100
 #: build/block-editor/index.js:110
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Background image"
 msgstr "Hintergrundbild"
 
@@ -627,8 +627,8 @@ msgstr "Blumig"
 #: lib/AI/SDApi/KubioImagePrompts.php:40
 #: build/block-editor/index.js:100
 #: build/controls/index.js:15
-#: build/controls/index.js:35
-#: build/controls/index.js:37
+#: build/controls/index.js:53
+#: build/controls/index.js:55
 #: build/wp-global-styles/index.js:3
 msgid "Gradient"
 msgstr "Verlauf"
@@ -694,7 +694,7 @@ msgid "Neon Punk"
 msgstr "Neon Punk"
 
 #: lib/AI/SDApi/KubioImagePrompts.php:60
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Doodle"
 msgstr "Doodle"
 
@@ -917,6 +917,63 @@ msgstr "Der aktuelle Beitrag ist leer. Ein Platzhaltertext wird im Editor angeze
 #: lib/api/kubio-cloud.php:92
 msgid "Api key not found"
 msgstr "API-Schlüssel nicht gefunden"
+
+#: lib/api/recommendations/bubble-chat.php:64
+#: lib/api/recommendations/bubble-chat.php:122
+msgid "Required plugin is missing"
+msgstr "Das erforderliche Plugin fehlt"
+
+#: lib/api/recommendations/bubble-chat.php:70
+#: lib/api/recommendations/bubble-chat.php:128
+msgid "Required class or functions are missing"
+msgstr "Erforderliche Klasse oder Funktionen fehlen"
+
+#: lib/api/recommendations/bubble-chat.php:95
+msgid "Kubio Widget"
+msgstr "Kubio Widget"
+
+#: lib/api/recommendations/contact-forms.php:47
+msgid "Contact Form plugin is not active!"
+msgstr "Das Kontaktformular-Plugin ist nicht aktiv!"
+
+#: lib/api/recommendations/contact-forms.php:58
+msgid "Failed to create default contact form!"
+msgstr "Standard-Kontaktformular konnte nicht erstellt werden!"
+
+#: lib/api/recommendations/index.php:68
+#: lib/api/recommendations/index.php:74
+msgid "Page content not found for given plugin"
+msgstr "Seiteninhalt für das angegebene Plugin nicht gefunden"
+
+#: lib/api/recommendations/index.php:84
+msgid "Plugin slug is required"
+msgstr "Plugin-Slug ist erforderlich"
+
+#: lib/api/recommendations/index.php:94
+#: lib/api/recommendations/index.php:101
+msgid "Failed to fetch default settings"
+msgstr "Fehler beim Abrufen der Standardwerte"
+
+#: lib/api/recommendations/index.php:105
+msgid "No default settings found for the plugin"
+msgstr "Keine Standardwerte für das Plugin gefunden"
+
+#: lib/api/recommendations/index.php:110
+msgid "Invalid default settings format"
+msgstr "Ungültiges Standardformat für Einstellungen"
+
+#: lib/api/recommendations/newsletter/index.php:49
+msgid "Promo plugin is not active!"
+msgstr "Das Promo-Plugin ist nicht aktiv!"
+
+#: lib/api/recommendations/newsletter/index.php:52
+msgid "At least one of required classes is missing"
+msgstr "Mindestens eine der erforderlichen Klassen fehlt"
+
+#: lib/api/recommendations/newsletter/index.php:55
+#: lib/recommendations/contact-forms.php:80
+msgid "At least one of required functions is missing"
+msgstr "Mindestens eine der erforderlichen Funktionen fehlt"
 
 #: lib/api/subscribe-form.php:23
 msgid "Untitled form"
@@ -1598,57 +1655,57 @@ msgstr "Groß"
 msgid "Original Size"
 msgstr "Originalgröße"
 
-#: lib/kubio-editor.php:982
-#: lib/kubio-editor.php:986
-#: lib/kubio-editor.php:997
+#: lib/kubio-editor.php:983
+#: lib/kubio-editor.php:987
+#: lib/kubio-editor.php:998
 msgid "Kubio"
 msgstr "Kubio"
 
-#: lib/kubio-editor.php:1025
+#: lib/kubio-editor.php:1026
 #: lib/src/Core/EditInKubioCustomizerPanel.php:87
 msgid "Open Kubio Editor"
 msgstr "Kubio Editor öffnen"
 
-#: lib/kubio-editor.php:1103
+#: lib/kubio-editor.php:1104
 msgid "What to show on the front page"
 msgstr "Was auf der Startseite angezeigt werden soll"
 
-#: lib/kubio-editor.php:1116
+#: lib/kubio-editor.php:1117
 msgid "The ID of the page that should be displayed on the front page"
 msgstr "Die ID der Seite, die auf der Startseite angezeigt werden soll"
 
-#: lib/kubio-editor.php:1131
+#: lib/kubio-editor.php:1132
 msgid "The ID of the page that displays the posts"
 msgstr "Die ID der Seite, die die Beiträge anzeigt"
 
-#: lib/kubio-editor.php:1149
+#: lib/kubio-editor.php:1150
 msgid "Site icon."
 msgstr "Website-Icon."
 
-#: lib/kubio-editor.php:1166
+#: lib/kubio-editor.php:1167
 msgctxt "Template name"
 msgid "Full Width"
 msgstr "Gesamte Breite"
 
-#: lib/kubio-editor.php:1167
-#: lib/kubio-editor.php:1174
+#: lib/kubio-editor.php:1168
+#: lib/kubio-editor.php:1175
 msgid "Recommended Kubio template to display individual pages. This template works best with the Kubio provided blocks and predesigned sections."
 msgstr "Empfohlenes Kubio-Template zur Anzeige einzelner Seiten. Dieses Template funktioniert am besten mit den bereitgestellten Kubio-Blöcken und vordefinierten Abschnitten."
 
-#: lib/kubio-editor.php:1173
+#: lib/kubio-editor.php:1174
 msgctxt "Template name"
 msgid "Kubio Full Width"
 msgstr "Kubio in voller Breite"
 
-#: lib/kubio-editor.php:1248
+#: lib/kubio-editor.php:1249
 msgid "Sorry, you are not allowed to customize this site."
 msgstr "Du bist leider nicht berechtigt, diese Website anzupassen."
 
-#: lib/kubio-editor.php:1266
+#: lib/kubio-editor.php:1267
 msgid "Kubio Section"
 msgstr "Kubio Abschnitt"
 
-#: lib/kubio-editor.php:1308
+#: lib/kubio-editor.php:1309
 msgid "Kubio Favorites"
 msgstr "Kubio Favoriten"
 
@@ -1864,6 +1921,41 @@ msgstr "Beim Aufruf des Kubio Lizenzservers ist ein Fehler aufgetreten: <code>%1
 msgid "Current license key was removed! Reason: %s"
 msgstr "Der aktuelle Lizenzschlüssel wurde entfernt! Grund: %s"
 
+#: lib/recommendations/contact-forms.php:62
+msgid "Contact / Quotation Form 1"
+msgstr "Kontakt- / Angebotsformular 1"
+
+#: lib/recommendations/contact-forms/default-template.php:4
+#: build/block-library/index.js:7
+#: build/block-library/index.js:37
+msgid "Name"
+msgstr "Name"
+
+#: lib/recommendations/contact-forms/default-template.php:9
+msgid "Email"
+msgstr "E-Mail"
+
+#: lib/recommendations/contact-forms/default-template.php:15
+msgid "Subject"
+msgstr "Betreff"
+
+#: lib/recommendations/contact-forms/default-template.php:19
+#: build/admin-area/index.js:3
+msgid "Message"
+msgstr "Mitteilung"
+
+#: lib/recommendations/contact-forms/default-template.php:22
+msgid "Send message"
+msgstr "Nachricht senden"
+
+#: lib/recommendations/newsletters.php:118
+msgid "Email capture popup 1"
+msgstr "E-Mail-Erfassungs-Popup 1"
+
+#: lib/recommendations/recommendation-page-post-type.php:9
+msgid "Recommendation pages"
+msgstr "Empfehlungsseiten"
+
 #: lib/src/Core/Activation.php:547
 msgid "Primary menu"
 msgstr "Primäres Menü"
@@ -1882,7 +1974,7 @@ msgstr "Vorlage Teil nicht gefunden"
 #: build/block-editor/index.js:100
 #: build/block-library/index.js:19
 #: build/controls/index.js:19
-#: build/controls/index.js:35
+#: build/controls/index.js:53
 msgid "Image"
 msgstr "Bild"
 

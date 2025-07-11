@@ -29,6 +29,7 @@ require_once __DIR__ . '/kubio-editor.php';
 require_once __DIR__ . '/admin-pages/pages.php';
 require_once __DIR__ . '/menu/index.php';
 require_once __DIR__ . '/customizer/index.php';
+require_once __DIR__ . '/recommendations/index.php';
 require_once KUBIO_BUILD_DIR . '/third-party-blocks/index.php';
 
 /** full site editing */

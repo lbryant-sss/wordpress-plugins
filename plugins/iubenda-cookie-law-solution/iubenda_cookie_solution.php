@@ -3,7 +3,7 @@
  * Plugin Name: iubenda | All-in-one Compliance for GDPR / CCPA Cookie Consent + more
  * Plugin URI: https://www.iubenda.com
  * Description: The iubenda plugin is an <strong>all-in-one</strong>, extremely easy to use 360° compliance solution, with text crafted by actual lawyers, that quickly <strong>scans your site and auto-configures to match your specific setup</strong>.  It supports the GDPR (DSGVO, RGPD), UK-GDPR, ePrivacy, LGPD, USPR, CalOPPA, PECR and more.
- * Version: 3.12.3
+ * Version: 3.12.4
  * Author: iubenda
  * Author URI: https://www.iubenda.com
  * License: MIT License
@@ -45,7 +45,7 @@ define( 'IUB_DEBUG', false );
  * @property Iubenda_Legal_Widget       $widget
  *
  * @class   iubenda
- * @version 3.12.3
+ * @version 3.12.4
  */
 class iubenda {
 // phpcs:enable
@@ -139,7 +139,7 @@ class iubenda {
 	 *
 	 * @var string
 	 */
-	public $version = '3.12.3';
+	public $version = '3.12.4';
 
 	/**
 	 * Plugin activation info.
@@ -687,6 +687,7 @@ class iubenda {
 			delete_option( 'iubenda_terms_conditions_solution' );
 			delete_option( 'iubenda_global_options' );
 			delete_option( Iubenda_Notice::IUB_NOTIFICATIONS );
+			delete_option( 'iubenda_last_radar_run' );
 
 			// Detach iubenda legal block from footer.
 			$this->block->detach_legal_block_from_footer();
