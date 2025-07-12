@@ -113,6 +113,8 @@ The Shortcode Addon for Advanced File Manager unlocks even more possibilities by
 
 ✔️ **Google Drive:** Easily link Google Drive with WordPress to access, manage, and sync your cloud files right from the file manager interface. 
 
+✔️ **OneDrive:** Seamlessly connect your OneDrive account to WordPress and manage, upload, and organize files directly from the File Manager—no external tabs or tools required.
+
 **Get ✨[Advanced File Manager Pro](https://advancedfilemanager.com/pricing/?utm_source=wp_org&utm_medium=afm_product_page)✨ Now!**
 
 
@@ -212,7 +214,7 @@ Soon, you will be able to integrate your favorite cloud storage app with WordPre
 
 * [Google Drive](https://advancedfilemanager.com/pricing/?utm_source=wp_org&utm_medium=readme&utm_campaign=google_drive)
 
-* OneDrive (Coming Soon)
+* [OneDrive](https://advancedfilemanager.com/pricing/?utm_source=wp_org&utm_medium=readme&utm_campaign=one_drive)
 
 ### 🤝 **Compatibility**
 

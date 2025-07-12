@@ -3,10 +3,10 @@ import { CheckboxControl } from '@woocommerce/blocks-checkout';
 import { getSetting } from '@woocommerce/settings';
 import './styles.css';
 
-const { optInText, optInEnabled, optInPreselected } = getSetting( 'omnisend_consent_data', '' );
+const { newsletter } = getSetting( 'omnisend_consent_data', '' );
 
 const Block = ( { checkoutExtensionData } ) => {
-	const [ checked, setChecked ] = useState( optInPreselected );
+	const [ checked, setChecked ] = useState( newsletter.optInPreselected );
 	const { setExtensionData } = checkoutExtensionData;
 
 	useEffect( () => {
@@ -16,7 +16,7 @@ const Block = ( { checkoutExtensionData } ) => {
 		setExtensionData,
 	] );
 
-	if (!optInEnabled) {
+	if (!newsletter.optInEnabled) {
 		return null;
 	}
 
@@ -27,7 +27,7 @@ const Block = ( { checkoutExtensionData } ) => {
 				checked={ checked }
 				onChange={ setChecked }
 			>
-				{ optInText }
+				{ newsletter.optInText }
 			</CheckboxControl>
 		</div>
 	);

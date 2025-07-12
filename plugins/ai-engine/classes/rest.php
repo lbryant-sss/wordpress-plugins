@@ -1059,7 +1059,7 @@ class Meow_MWAI_Rest {
       $offset = $params['offset'];
       $limit = $params['limit'];
       $filters = $params['filters'];
-      $sort = $params['sort'];
+      $sort = isset( $params['sort'] ) ? $params['sort'] : null;
       $logs = apply_filters( 'mwai_stats_logs_list', [], $offset, $limit, $filters, $sort );
       return $this->create_rest_response( [ 'success' => true, 'total' => $logs['total'], 'logs' => $logs['rows'] ], 200 );
     }
