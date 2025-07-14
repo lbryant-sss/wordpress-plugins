@@ -107,7 +107,7 @@ Spam protection for everything about bbPress: logins, registrations, forums, top
 * WP User Frontend, UserPro.
 * WordPress Landing Pages.
 
-Protectoin for forms above works as built-in function of Anti-Spam by CleanTalk, without any additional actions from a user. Anywaym, if you have missed spam, try to activate a few options below. If nothing helps, ask for help at support forum <a href="https://wordpress.org/support/plugin/cleantalk-spam-protect/">https://wordpress.org/support/plugin/cleantalk-spam-protect/</a>
+Protection for forms above works as built-in function of Anti-Spam by CleanTalk, without any additional actions from a user. Anywaym, if you have missed spam, try to activate a few options below. If nothing helps, ask for help at support forum <a href="https://wordpress.org/support/plugin/cleantalk-spam-protect/">https://wordpress.org/support/plugin/cleantalk-spam-protect/</a>
 
 * Any WordPress form (checkbox 'Custom contact forms').
 * Any submission to the site (checkbox 'Check all POST data').
@@ -138,9 +138,8 @@ https://s.w.org/plugins/cleantalk-spam-protect/screenshot-5.png?r=1288723
 Unlike stand-alone plugins (like Antispam Bee) Anti-Spam by CleanTalk uses less CPU that improves site response, visitors experience and SEO results.
 
 = Spam FireWall =
-Spam FireWall allows blocking the most active spam bots before they get access to your website. It prevents spam bots from loading website pages so your web server doesn't have to perform all scripts on these pages. Also it prevents scanning of pages of the website by spam bots. Therefore Spam FireWall significantly reduces the load on your web server. Spam FireWall also makes CleanTalk the two-step protection from spam bots. Spam FireWall is the first step and it blocks the most active spam bots.  CleanTalk Anti-Spam is the second step and checks all other requests on the website in the moment of submitting comments/registers etc.
+Spam FireWall allows blocking the most active spam bots before they get access to your website. It prevents spam bots from loading website pages so your web server doesn't have to perform all scripts on these pages. Also it prevents scanning of pages of the website by spam bots. Therefore Spam FireWall significantly reduces the load on your web server. Spam FireWall also makes CleanTalk the two-step protection from spam bots. Spam FireWall is the first step and it blocks the most active spam bots.  CleanTalk Anti-Spam is the second step and checks all other requests on the website in the moment of submitting comments/registers etc. How does it work?
 
-= How does Spam FireWall work? =
  * The visitor enters to your web site.
  * HTTP request data are being checked in the nearly 5.8 million of the identified spam bot IPs.
  * If it is an active spam bot, the bot gets a blank page, if it is a visitor then he receives a normal page. This process is completely transparent for the visitors.
@@ -172,6 +171,21 @@ Improve your email list with email validation without fake emails.
 
 = Blocking  disposable & temporary emails =
 Block fake and suspicious users with disposable & temporary emails to improve email delivery. So, it also prevents malicious activity, spam bots, and internet trolls.
+
+= Latest and the most SPAM active IPs, Emails, Domains and ASN =
+* yawiviseya67@gmail.com
+* xrumer888@outlook.com
+* irinademenkova86@gmail.com
+* zekisuquc419@gmail.com
+* prince@stopformspam.xyz
+* 191.101.217.24
+* 199.167.138.22
+* 178.159.37.17
+* 185.190.42.200
+* 45.133.172.23
+
+Effective date is July 13th, 2025. Real-time data is available at <a href="https://cleantalk.org/blacklists">https://cleantalk.org/blacklists</a>.
+
 
 = Stops Spam in Search Form =
 Spam bots can use your search form to make a GET request with spam text. CleanTalk Anti-Spam has the option to protect your website search form from spam bots. Each time, the search generates a new page and if there are many requests, this can create additional load. So, under some conditions, spam searches can be indexed, which affects SEO,
