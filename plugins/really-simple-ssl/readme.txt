@@ -1,8 +1,8 @@
 === Really Simple Security - Simple and Performant Security (formerly Really Simple SSL)===
 Contributors: RogierLankhorst, markwolters, hesseldejong, vicocotea, marcelsanting, janwoostendorp, wimbraam
 Donate link: https://www.paypal.me/reallysimplessl
-Tags: security, login, 2fa, vulnerabilities, two factor
-Requires at least: 5.9
+Tags: security, https, 2fa, vulnerabilities, two factor
+Requires at least: 6.6
 License: GPL2
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -157,9 +157,18 @@ You can set a custom login URL under Advanced Site Hardening, which helps preven
 Yes. The plugin enforces HTTPS and handles all necessary redirects, optionally using .htaccess or PHP.
 
 = Can I use Really Simple Security besides WordFence? =
-Really Simple Security and WordFence greatly overlap in term of functionality. If you like to use specific features from both plugins, we strongly recommend not to enable similar features twice. The benefit of Really Simple Security is that disabled features don't load any code, so won't have an impact on site performance. 
+Really Simple Security and WordFence greatly overlap in term of functionality. If you like to use specific features from both plugins, we strongly recommend not to enable similar features twice. The benefit of Really Simple Security is that disabled features don't load any code, so won't have an impact on site performance.
 
 == Changelog ==
+= 9.4.2 =
+* Fix: Adjusted .htaccess redirect requirements for subfolder configurations
+* Fix: re-send e-mail button on the 2FA page will now show a message when the e-mail is sent.
+* Fix: restored SCSS files.
+* Fix: fixed an issue where the plugin kept redirecting to its settings page after activation.
+* Improvement: updated the way other plugins are installed via the onboarding and dashboard page.
+* Improvement: added notice with an option to force verify e-mail address.
+* Improvement: updated minimum WordPress version to 6.6.
+
 = 9.4.1 =
  * Fix: fixed a translations error where text domain was loaded too early.
 

@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => '10up/simple-local-avatars',
-        'pretty_version' => '2.8.3',
-        'version' => '2.8.3.0',
-        'reference' => 'f30aabcce169c2325759a8e9754e8ac82d948396',
+        'pretty_version' => '2.8.4',
+        'version' => '2.8.4.0',
+        'reference' => '00440a2f5c948ce9c8e79161f64a78a247bbdd2d',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         '10up/simple-local-avatars' => array(
-            'pretty_version' => '2.8.3',
-            'version' => '2.8.3.0',
-            'reference' => 'f30aabcce169c2325759a8e9754e8ac82d948396',
+            'pretty_version' => '2.8.4',
+            'version' => '2.8.4.0',
+            'reference' => '00440a2f5c948ce9c8e79161f64a78a247bbdd2d',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

@@ -13,7 +13,7 @@ class PluginsCompatibility {
 
 	public function __construct() {
 		// Break early if the "nofibosearch" mode is active.
-		if ( ! Helpers::isNoFiboSearchModeActive() ) {
+		if ( Helpers::isNoFiboSearchModeActive() ) {
 			return;
 		}
 

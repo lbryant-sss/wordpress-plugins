@@ -134,6 +134,7 @@ class Search {
             $stats = new Recorder();
             $stats->listen();
         }
+        Helpers::maybeInjectFiboDebugFields( 'score' );
     }
 
     /**
@@ -389,6 +390,9 @@ class Search {
             // Get SKU
             if ( in_array( 'sku', $fields, true ) ) {
                 $r['sku'] = $product->getSKU();
+            }
+            if ( Helpers::isFiboDebugEnabled( 'score' ) ) {
+                $r['score'] = round( $post->score, 2 );
             }
             // Is on sale
             //					if ( DGWT_WCAS()->settings->getOption( 'show_sale_badge' ) === 'on' ) {

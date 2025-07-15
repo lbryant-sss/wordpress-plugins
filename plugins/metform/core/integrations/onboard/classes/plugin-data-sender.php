@@ -86,6 +86,29 @@ class Plugin_Data_Sender {
 		);
 	}
 
+	/**
+	 * Send email subscribe data to the API.
+	 *
+	 * @param string $route The API route to send the data to.
+	 * @param array  $data The data to be sent.
+	 * @return array|WP_Error The response from the API or an error object.
+	 */
+	public  function sendEmailSubscribeData( $route, $data )
+	{
+		return wp_remote_post(
+			 'https://api.wpmet.com/public/' . $route,
+			[
+				'method'      => 'POST',
+				'data_format' => 'body',
+				'headers'     => [
+					'Accept'       => '*/*',
+                    'Content-Type' => 'application/json'
+				],
+				'body'        => json_encode($data)
+			]
+		);
+	}
+
 	public function get_data() {
 		return [
 			'environment_id'	  => Onboard::ENVIRONMENT_ID,

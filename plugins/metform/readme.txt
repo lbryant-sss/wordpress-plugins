@@ -3,7 +3,7 @@ Contributors: xpeedstudio, ataurr, emranio
 Tags: form builder, Elementor contact form, contact form builder, Elementor forms builder, custom form
 Requires at least: 5.0
 Tested up to: 6.8
-Stable tag: 4.0.1
+Stable tag: 4.0.2
 Requires PHP: 7.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
@@ -26,7 +26,7 @@ MetForm extends Elementor's power to help you create a wide range of custom form
 
 > [Explore the Features](https://wpmet.com/plugin/metform/features/) |  [Need Support?](http://wpmet.com/support-help/)| [Check Documentation](https://wpmet.com/doc/metform/) | [Video Tutorials](https://www.youtube.com/watch?v=zg1QIouKO_Q&list=PL3t2OjZ6gY8NoB_48DwWKUDRtBEuBOxSc&ab_channel=Wpmet) |  [ Buy Pro ](https://products.wpmet.com/metform/pricing/) | [Check Roadmap and Request a Feature](https://wpmet.com/plugin/metform/roadmaps#ideas)
 
-## Flexibility
+## Flexible Form Builder
 
 
 This WordPress form plugin is built with Elementor, where each field is an Elementor widget you can arrange using drag and drop facility. You can also add images or videos below your form to engage users. Our free contact form builder offers various field input styles to match your brand.
@@ -43,11 +43,17 @@ Metform works with Elementor without any issue and responsiveness can be control
 
 You can use Metform anywhere to create an Elementor contact form. Also, you can use it with any editor with a built-in form shortcode. Utilizing the shortcode support for customization is easy.
 
-## Manage Submissions
+## Manage Elementor Form Submissions
 
 Your online form submission data can be saved in admin. So, it will send data to the form admin and also send a confirmation email to form users.
 
-## File Upload
+## Conditional Logic Form
+Conditional Logic is a premium MetForm feature that helps you build smarter, more dynamic forms. It allows you to show or hide specific fields based on what the user selects or inputs. This means certain fields will only appear after the user takes a specific action or chooses a particular option, making your forms cleaner and more personalized.
+
+## Multi-step Form
+Divide long and lengthy forms into a step-by-step process to improve the user experience. By dividing the form into smaller, manageable sections, users are less likely to feel intimidated or abandon it midway. With MetForm, you can easily turn any WordPress form into a multi-step form in Elementor.
+
+## File Upload in Contact Form
 
 Want your users to upload files from your online form? no worries we have a file upload option with our Elementor form builder MetForm.
 
@@ -63,7 +69,7 @@ HubSpot integration is also available in MetForm. It ensures flawless customer r
 
 You can use MailChimp in your contact form to collect and send leads from WordPress to MailChimp. Also, create MailChimp signup or lead generation forms and boxes with a custom style and expand your lead list.
 
-## ✨Top Features
+## ✨Top Features of MetForm — Elementor Form Builder
 
 - **Built with Elementor:** MetForm is based on Elementor. This means this contact form builder offers an Elementor-like intuitive drag-and-drop workflow and real-time preview of your customizations. And, this budget-friendly email building tool with impressive form-building functionality powered by Elementor Builder has no learning curve. 
 
@@ -71,7 +77,7 @@ So, beginners can easily create a query form to collect reporting and other form
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/K7YJmNn9nIY?list=PL3t2OjZ6gY8NoB_48DwWKUDRtBEuBOxSc" title="How to Create a WordPress Booking Form with MetForm || Step by Step Guide to Do it Yourself Easily" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-- **Elementor Input Fields:** From lead generation to survey forms, or any complex style forms, we have designed **40+ Elementor widgets** fields to build in your preferred style.
+- **Elementor Form Input Fields:** From lead generation to survey forms, or any complex style forms, we have designed **40+ Elementor widgets** fields to build in your preferred style.
 
 > <strong>**MetForm Fields**</strong><br />
 
@@ -81,11 +87,11 @@ So, beginners can easily create a query form to collect reporting and other form
 
 - **Admin Notification Email:** Notify admin of successful order notifications after users or customers complete a form submission.
 
-- **Saved Entries in the Admin Panel:** Save all the data that users give to fill up the form and display it in the admin panel.
+- **Saved Form Entries in the Admin Panel:** Save all the data that users give to fill up the form and display it in the admin panel.
 
-- **Export Entries as CSV:** Export multiple data from your MetForm that the user enters in a single CSV file and downloads in a spreadsheet.
+- **Export Form Entries as CSV:** Export multiple data from your MetForm that the user enters in a single CSV file and downloads in a spreadsheet.
 
-- **Export to Google Sheets:** The popular Elementor form creator MetForm allows you to export all your users’ personal contacts, databases, and messages on Google Sheets. 
+- **Export Form to Google Sheets:** The popular Elementor form creator MetForm allows you to export all your users’ personal contacts, databases, and messages on Google Sheets. 
 
 - **Required Login to Submit the Form:** Make sure a secured and spam-free contact form by showing the required fields. Notify with a simple red star or an error message when those fields are empty.
 
@@ -97,27 +103,27 @@ So, beginners can easily create a query form to collect reporting and other form
 
 - **Redirect After Successful Form Submission:** Simply add the desired destination URL and redirect to that page after successfully submitting the form. It is possible with Elementor form maker MetForm.
 
-- **Validate required fields:** The multi-step Elementor contact form builder helps you to validate your form’s required field and gives an error message if needed to make your form standard and way more professional.
+- **Validate Required Form Fields:** The multi-step Elementor contact form builder helps you to validate your form’s required field and gives an error message if needed to make your form standard and way more professional.
 
-- **Form submission via AJAX without page refreshes:** Our Elementor contact form maker permits you to submit your contact us simple form without loading your page via AJAX to make it more user-friendly and time-saving. Therefore, online visitors can fill up the form using AJAX without page loading.
+- **Form Submission via AJAX without Page Refreshes:** Our Elementor contact form maker permits you to submit your contact us simple form without loading your page via AJAX to make it more user-friendly and time-saving. Therefore, online visitors can fill up the form using AJAX without page loading.
 
-- **Supports multiple-column layout:** Specify multiple-column layouts as many as you would like to display. Simply add the column in just one click with the multi-step form builder.
+- **Supports Multi-column Layout:** Specify multiple-column layouts as many as you would like to display. Simply add the column in just one click with the multi-step form builder.
 
-- **Shortcode support:** Add powerful features with a simple Shortcode without any knowledge of technical, complicated, and lengthy code. Now, it's easy to get Shortcode support for customization options.
+- **Shortcode Support:** Add powerful features with a simple Shortcode without any knowledge of technical, complicated, and lengthy code. Now, it's easy to get Shortcode support for customization options.
 
-- **Editable successful form submission message:** MetForm Elementor forms builder gives access to edit your successful form submission message so you can personalize your own message.
+- **Editable Successful Form Submission Message:** MetForm Elementor forms builder gives access to edit your successful form submission message so you can personalize your own message.
 
-- **Translation ready:** Our WordPress contact form builder plugin supports multiple languages which means you can easily translate a language into your language.
+- **Translation Ready:** Our WordPress contact form builder plugin supports multiple languages which means you can easily translate a language into your language.
 
-- **Top-notch user support:** MetForm is enriched with docs, FAQs, tutorials, and blogs. You will find answers to your problems in these resources.  And, the support team is one call away from you.
+- **Top-notch User Support:** MetForm is enriched with docs, FAQs, tutorials, and blogs. You will find answers to your problems in these resources.  And, the support team is one call away from you.
 
 ## Our Premium Input fields
 
-- **Phone no Input Field:** Let users select prefix country code from the dropdown.  
+- **Phone Number Input Field:** Let users select prefix country code from the dropdown.
 
 - **Image Select Input Field:** Upload images both vertically or horizontally to allow submitters to select one.
 
-- **Toggle Select  Input Field:** With our most powerful Toggle Select, you can activate one section from multiple sections at a time both vertically or horizontally. If you select one section as active, then another section will automatically get deactivated.
+- **Toggle Select Input Field:** With our most powerful Toggle Select, you can activate one section from multiple sections at a time both vertically or horizontally. If you select one section as active, then another section will automatically get deactivated.
 
 - **Simple Repeater Input Field:** Create a group of fields to use in the future within one click.
 
@@ -237,6 +243,10 @@ If you like using the MetForm form builder, then consider checking out our other
 **Check out** [Tutorials, Tips & Tricks](https://wpmet.com/blog)! 👌
 
 == Changelog ==
+Version: 4.0.2 // 2025-07-14
+Fixed: Cross-Site Scripting (XSS) vulnerability.
+Fixed: Dashboard security issue.
+
 Version: 4.0.1 // 2025-07-02
 Improved: Editor panel UI/UX.
 Improved: Admin dashboard get help page.
@@ -371,4 +381,3 @@ But you can see this video https://www.youtube.com/watch?v=rvawKRgLC14
 = How can I report security bugs? =
 
 You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/metform)
-

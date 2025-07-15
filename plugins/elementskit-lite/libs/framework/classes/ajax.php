@@ -116,23 +116,23 @@ class Ajax {
 	public static function plugin_activate_message($plugin_slug) {
 		$plugins_message = [
 			'setup_configurations' => esc_html__('Setup Configurations', 'elementskit-lite'),
-			'elementskit-lite/elementskit-lite.php' => esc_html__('Page Builder Elements Installed', 'elementskit-lite'),
-			'getgenie/getgenie.php' => esc_html__('AI Content & SEO Tool Installed', 'elementskit-lite'),
-			'shopengine/shopengine.php' => esc_html__('WooCommerce Builder Installed', 'elementskit-lite'),
-			'metform/metform.php' => esc_html__('Form Builder Installed', 'elementskit-lite'),
-			'emailkit/EmailKit.php' => esc_html__('Email Customizer Installed', 'elementskit-lite'),
-			'wp-social/wp-social.php' => esc_html__('Social Integration Installed', 'elementskit-lite'),
-			'wp-ultimate-review/wp-ultimate-review.php' => esc_html__('Review Management Installed', 'elementskit-lite'),
+			'elementskit-lite/elementskit-lite.php' => esc_html__('Page Builder Elements Activated', 'elementskit-lite'),
+			'getgenie/getgenie.php' => esc_html__('AI Content & SEO Tool Activated', 'elementskit-lite'),
+			'shopengine/shopengine.php' => esc_html__('WooCommerce Builder Activated', 'elementskit-lite'),
+			'metform/metform.php' => esc_html__('Form Builder Activated', 'elementskit-lite'),
+			'emailkit/EmailKit.php' => esc_html__('Email Customizer Activated', 'elementskit-lite'),
+			'wp-social/wp-social.php' => esc_html__('Social Integration Activated', 'elementskit-lite'),
+			'wp-ultimate-review/wp-ultimate-review.php' => esc_html__('Review Management Activated', 'elementskit-lite'),
 			'wp-fundraising-donation/wp-fundraising.php' => esc_html__('Fundraising & Donations', 'elementskit-lite'),
-			'gutenkit-blocks-addon/gutenkit-blocks-addon.php' => esc_html__('Page Builder Blocks Installed', 'elementskit-lite'),
-			'popup-builder-block/popup-builder-block.php' => esc_html__('Popup Builder Installed', 'elementskit-lite'),
-			'table-builder-block/table-builder-block.php' => esc_html__('Table Builder Installed', 'elementskit-lite'),
+			'gutenkit-blocks-addon/gutenkit-blocks-addon.php' => esc_html__('Page Builder Blocks Activated', 'elementskit-lite'),
+			'popup-builder-block/popup-builder-block.php' => esc_html__('Popup Builder Activated', 'elementskit-lite'),
+			'table-builder-block/table-builder-block.php' => esc_html__('Table Builder Activated', 'elementskit-lite'),
 		];
 
 		if ( array_key_exists( $plugin_slug, $plugins_message ) ) {
 			return esc_html( $plugins_message[$plugin_slug] );
 		} else {
-			return esc_html__( 'Plugin Installed', 'elementskit-lite' );
+			return esc_html__( 'Plugin Activated', 'elementskit-lite' );
 		}
 	}
 

@@ -15,23 +15,6 @@ Save 1 hour of your learning time.',
 	</div>
 </div>
 
-
-<div class="ekit-onboard-tut-term">
-	<label class="ekit-onboard-tut-term--label">
-		<?php 
-		$term = \ElementsKit_Lite\Libs\Framework\Attr::instance()->utils->get_option( 'settings', array() );
-		?>
-		<input 
-		<?php 
-		if ( empty( $term['tut_term'] ) || $term['tut_term'] !== 'user_agreed' ) :
-			?>
-			checked="checked"<?php endif; ?> class="ekit-onboard-tut-term--input" name="settings[tut_term]" type="checkbox" value="user_agreed">
-		<?php echo esc_html__( 'Share non-sensitive diagnostic data and details about plugin usage.', 'elementskit-lite' ); ?>
-	</label>
-
-	<p class="ekit-onboard-tut-term--helptext"><?php echo esc_html__( "We gather non-sensitive diagnostic data as well as information about plugin use. Your site's URL, WordPress and PHP versions, plugins and themes, as well as your email address, will be used to give you a discount coupon. This information enables us to ensure that this plugin remains consistent with the most common plugins and themes at all times. We pledge not to give you any spam, for sure.", 'elementskit-lite' ); ?></p>
-	<p class="ekit-onboard-tut-term--help"><?php echo esc_html__( 'What types of information do we gather?', 'elementskit-lite' ); ?></p>
-</div>
 <div class="ekit-onboard-pagination">
 	<a class="ekit-onboard-btn ekit-onboard-pagi-btn prev" href="#"><i class="icon icon-arrow-left"></i><?php echo esc_html__( 'Back', 'elementskit-lite' ); ?></a>
 	<a class="ekit-onboard-btn ekit-onboard-pagi-btn next" href="#"><?php echo esc_html__( 'Next Step', 'elementskit-lite' ); ?></a>

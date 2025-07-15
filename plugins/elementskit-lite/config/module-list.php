@@ -124,6 +124,11 @@ class Module_List extends \ElementsKit_Lite\Core\Config_List {
 					'package'           => 'pro-disabled',
 					'title'             => 'Mouse Cursor',
 				),
+				'liquid-glass' => [
+					'slug'              => 'liquid-glass',
+					'package'           => 'pro-disabled',
+					'title'             => 'Liquid Glass',
+				],
 			)
 		);
 	}

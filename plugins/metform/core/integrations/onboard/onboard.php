@@ -77,12 +77,11 @@ class Onboard {
 			if ( isset( $_POST['settings']['newsletter_email'] ) && !empty($_POST['settings']['newsletter_email'])) {
 				$data = [
 					'email'           =>  sanitize_text_field(wp_unslash($_POST['settings']['newsletter_email'])),
-					'environment_id'  => Onboard::ENVIRONMENT_ID,
-					'contact_list_id' => Onboard::CONTACT_LIST_ID,
+					'slug'             => 'metform',
 				];
 
-				$response = Plugin_Data_Sender::instance()->sendAutomizyData( 'email-subscribe', $data);
-				\MetForm\Utils\Util::metform_content_renderer(print_r($response));
+				$response = Plugin_Data_Sender::instance()->sendEmailSubscribeData( 'plugin-subscribe', $data );
+				\MetForm\Utils\Util::metform_content_renderer($response);
 				exit;
 			}
 		}

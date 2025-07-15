@@ -4,7 +4,7 @@ Tags: Elementor addons, mega menu builder,  header footer builder, elementor add
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 3.5.4
+Stable tag: 3.5.5
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -67,7 +67,7 @@ ElementsKit makes every part of your website fully customizable with a vast libr
 
 ### Extensive ElementsKit Templates for Elementor
 
-ElementsKit is a popular Elementor addon among millions of users that eliminates the need to design from scratch. It ships with over **791+** pre-made section blocks and **40+** ready-made Elementor templates for designing a full website. Whatever niche or industry, you’re working with, the ElementsKit page builder addon layout library includes unique Elementor templates designed with royalty-free images.
+ElementsKit is a popular Elementor addon among millions of users that eliminates the need to design from scratch. It ships with over **791+** pre-made section blocks and **40+** [ready-made Elementor templates](https://wpmet.com/plugin/elementskit/templates/) for designing a full website, including Elementor header-footer templates & Elementor mega menu templates. Whatever niche or industry, you’re working with, the ElementsKit page builder addon layout library includes unique Elementor templates designed with royalty-free images.
 
 ### Modular based and Lightweight
 
@@ -250,6 +250,8 @@ Add a customized list and improve visitors' engagement with your Elementor site.
 
 ✅ [**Interactive Links (PRO)**](https://wpmet.com/plugin/elementskit/interactive-links/?utm_source=org&utm_medium=readme) - Clickable and animated links boosts user interactions.
 
+✅ [**Advanced Search (PRO)**](https://wpmet.com/plugin/elementskit/advanced-search/?utm_source=org&utm_medium=readme) - Design powerful live search panel to provide relevant search results.
+
 ### Effortless Integration with Different Social Platforms
 ElementsKit is a complete Elementor social media addon that lets you showcase social media content, sharing options, and other helpful engagement features directly into your WordPress website. Web page visitors can see and connect with dominant social media platforms with the help of widgets like:
 
@@ -267,32 +269,34 @@ ElementsKit allows you to showcase authentic user feedback from trusted platform
 ### PRO Modules in Premium Addon version
 To empower the [Elementor page builder](https://wordpress.org/plugins/elementor/?utm_source=org&utm_medium=readme), ElementsKit has some exclusive premium modules:
 
-**🟢** [**Conditional Content Module (PRO)**](https://wpmet.com/plugin/elementskit/conditional-content/?utm_source=org&utm_medium=readme) Show or hide a specific part of your webpage or content based on certain conditions.
+**🟢** [**Conditional Content Module**](https://wpmet.com/plugin/elementskit/conditional-content/?utm_source=org&utm_medium=readme) Show or hide a specific part of your webpage or content based on certain conditions.
 
-**🟢** [**Advanced Sticky Module (PRO)**](https://wpmet.com/plugin/elementskit/sticky-landing/?utm_source=org&utm_medium=readme) Always Keep menu header at the top screen.
+**🟢** [**Advanced Sticky Module**](https://wpmet.com/plugin/elementskit/sticky-landing/?utm_source=org&utm_medium=readme) Always Keep menu header at the top screen.
 
-**🟢** [**Advanced Parallax Module (PRO)**](https://wpmet.com/plugin/elementskit/parallax-landing/?utm_source=org&utm_medium=readme) Design your page and tell stories while users scroll a page.
+**🟢** [**Advanced Parallax Module**](https://wpmet.com/plugin/elementskit/parallax-landing/?utm_source=org&utm_medium=readme) Design your page and tell stories while users scroll a page.
 
-**🟢** [**Advanced Tooltip Module (PRO)**](https://wpmet.com/plugin/elementskit/advanced-tooltip/?utm_source=org&utm_medium=readme)
+**🟢** [**Advanced Tooltip Module**](https://wpmet.com/plugin/elementskit/advanced-tooltip/?utm_source=org&utm_medium=readme)
 It guides you to arrange information, add any element or media and experiment different tooltips.
 
-**🟢** [**Cross-Domain Copy Paste (PRO)**](https://wpmet.com/plugin/elementskit/copy-paste/?utm_source=org&utm_medium=readme)
+**🟢** [**Cross-Domain Copy Paste**](https://wpmet.com/plugin/elementskit/copy-paste/?utm_source=org&utm_medium=readme)
 Easily reuse any section, column, and widget of a website to another website, with this module.
 
-**🟢** [**Image Masking (PRO)**](https://wpmet.com/plugin/elementskit/masking/?utm_source=org&utm_medium=readme)
+**🟢** [**Image Masking**](https://wpmet.com/plugin/elementskit/masking/?utm_source=org&utm_medium=readme)
 Helps you to customize the image shapes and make them more appealing.
 
-**🟢** [**Particles (PRO)**](https://wpmet.com/plugin/elementskit/particles/?utm_source=org&utm_medium=readme)
+**🟢** [**Particles**](https://wpmet.com/plugin/elementskit/particles/?utm_source=org&utm_medium=readme)
 Grab attention with ElementsKit Particles and decorate backgrounds with [ **dynamic particle effects**](https://wpmet.com/doc/particles-module/?utm_source=org&utm_medium=readme).
  
-**🟢** [**Wrapper Link (PRO)**](https://wpmet.com/plugin/elementskit/wrapper-link/?utm_source=org&utm_medium=readme)
+**🟢** [**Wrapper Link**](https://wpmet.com/plugin/elementskit/wrapper-link/?utm_source=org&utm_medium=readme)
 Advanced way to add a link to any section, column, or widget in Elementor.
 
-**🟢** [**Glass Morphism (PRO)**](https://wpmet.com/plugin/elementskit/glass-morphism/?utm_source=org&utm_medium=readme)
+**🟢** [**Glass Morphism**](https://wpmet.com/plugin/elementskit/glass-morphism/?utm_source=org&utm_medium=readme)
 To apply frosted glass effects on your website backgrounds, this module is a perfect choice.
 
-**🟢** [**Mouse Cursor (PRO)**](https://wpmet.com/plugin/elementskit/mouse-cursor/?utm_source=org&utm_medium=readme)
+**🟢** [**Mouse Cursor**](https://wpmet.com/plugin/elementskit/mouse-cursor/?utm_source=org&utm_medium=readme)
 Can convert the boring cursor to interesting ones with our latest module.
+
+**🟢** [**Liquid Glass**](https://wpmet.com/plugin/elementskit/elementor-liquid-glass/?utm_source=org&utm_medium=readme) - Add trendy Apple liquid glass interface to your Elementor webstie.
 
 
 **👉** Learn [How to Install and Use ElementsKit](https://wpmet.com/doc/how-to-purchase-and-activate-elementskit-pro-license/#1-toc-title)
@@ -331,6 +335,10 @@ If you like using ElementsKit Elementor addon, then consider checking out our ot
 Visit  [wpmet](https://wpmet.com/?utm_source=org&utm_medium=readme)  to learn more about how to get the best of WordPress with  [Tutorials, Tips & Tricks](https://wpmet.com/blog)!
 
 == Changelog ==
+ElementsKit Elementor Addons Version: 3.5.5 (2025-07-13)
+Added: Child submenu indicator icon size control in nav menu
+Fixed: Icon size not working for funfact widget
+
 ElementsKit Elementor Addons Version: 3.5.4 (2025-06-23)
 Fixed: Submenu indicator font size not working in nav menu widget
 

@@ -2143,6 +2143,39 @@ class Helpers {
     }
 
     /**
+     * Check if FiboDebug mode is enabled for a specific key
+     *
+     * @param string $key
+     *
+     * @return bool
+     */
+    public static function isFiboDebugEnabled( string $key ) : bool {
+        if ( !isset( $_GET['fibodebug'] ) ) {
+            return false;
+        }
+        $debugFlags = array_map( 'trim', explode( ',', $_GET['fibodebug'] ) );
+        return in_array( $key, $debugFlags, true );
+    }
+
+    /**
+     * Maybe enable FiboDebug mode for a specific debug key (e.g. 'score', 'nofuzzy').
+     *
+     * This will add a hidden input field to the search form and a custom parameter to search requests.
+     */
+    public static function maybeInjectFiboDebugFields( string $key ) : void {
+        if ( !self::isFiboDebugEnabled( $key ) ) {
+            return;
+        }
+        add_action( 'dgwt/wcas/form', function () {
+            printf( '<input type="hidden" name="fibodebug" value="%s"/>', esc_attr( $_GET['fibodebug'] ) );
+        } );
+        add_filter( 'dgwt/wcas/search_bar/custom_params', function ( $params ) {
+            $params['fibodebug'] = $_GET['fibodebug'];
+            return $params;
+        } );
+    }
+
+    /**
      * Converts multibyte characters to single-byte for use in levenshtein().
      *
      * @param string $str

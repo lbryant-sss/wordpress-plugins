@@ -16,7 +16,7 @@ The most popular **WooCommerce product search plugin**. It gives your users a we
 
 By default, WooCommerce provides a very simple search solution, without live product search or even SKU search. FiboSearch (formerly Ajax Search for WooCommerce) provides advanced search with live suggestions.
 
-Who doesn’t love instant, as-you-type suggestions? In 2023, customers expect smart product search. Baymard Institute’s latest UX research reveals that search autocomplete, auto-suggest, or an instant search feature **is now offered on 96% of major e-commerce sites**. It's a must-have feature for every online business that can’t afford to lose customers. Why? FiboSearch helps users save time and makes shopping easier. As a result, Fibo really boosts sales.
+Who doesn’t love instant, as-you-type suggestions? In 2025, customers expect smart product search. Baymard Institute’s latest UX research reveals that search autocomplete, auto-suggest, or an instant search feature **is now offered on 96% of major e-commerce sites**. It's a must-have feature for every online business that can’t afford to lose customers. Why? FiboSearch helps users save time and makes shopping easier. As a result, Fibo really boosts sales.
 
 = Features =
 &#9989; **Search by product title, long and short description**
@@ -148,7 +148,7 @@ You can read more and compare Pro and Free features here: [Full comparison - Pro
 
 == Changelog ==
 
-= 1.31.0, July 8, 2025 =
+= 1.31.0, July 16, 2025 =
 * ADDED: Info about **Elementor widget**
 * ADDED: Documentation links to **Search in SKU** and **GUID**
 * ADDED: Add filter to conditionally disable analytics recording (e.g. by IP, phrase, lang)
@@ -159,7 +159,6 @@ You can read more and compare Pro and Free features here: [Full comparison - Pro
 * ADDED: Filter to always show “**See all products**” button in autocomplete
 * ADDED: Filter to disable inline styles from the `Personalization` class
 * ADDED: CSS adjustments in **Uncode theme** — centered the search bar in the menu
-
 * FIXED: Managing initial search bar interactivity before the main script has loaded
 * FIXED: Incorrect language code in speech recognition
 * FIXED: Removed the `.woocommerce` class from the FiboSearch bar widget
@@ -168,7 +167,6 @@ You can read more and compare Pro and Free features here: [Full comparison - Pro
 * FIXED: Styling issues in the **Enfold theme**
 * FIXED: There was an error in the SQL syntax that occurred during the plugin uninstallation process
 * FIXED: Escape double quotes in `optionsRaw` to prevent `JSON.parse` errors
-
 * TWEAK: Moved the JS 'fibosearch/show-details-panel' event to just before the preloader is hidden
 * TWEAK: Code styling adjustments
 * TWEAK: Hiding unwanted banner on settings page

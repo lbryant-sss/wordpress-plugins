@@ -2554,6 +2554,8 @@
             // Open Title wrapper
             html += '<div class="dgwt-wcas-st">';
 
+
+
             // Custom content before title (3rd party)
             html += that.apply3rdPartyPlaceholder('title_before', suggestion);
 
@@ -2588,6 +2590,11 @@
 
             // Custom content after description (3rd party)
             html += that.apply3rdPartyPlaceholder('content_after', suggestion);
+
+            // Display score (only visible in debug mode with ?fibodebug=score)
+            if (typeof suggestion.score !== 'undefined') {
+                html += '<div class="dgwt-wcas-score">Score: ' + suggestion.score + '</div>';
+            }
 
             // Close title wrapper
             html += '</div>';

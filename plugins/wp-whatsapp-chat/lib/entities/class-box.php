@@ -16,7 +16,7 @@ class Box extends SingleEntity {
 								<p style="
 									font-size: 14px;
 								">Click one of our contacts below to chat on WhatsApp</p>';
-	public $footer          = '<p style="text-align: start;">Social Chat is free, download and try it now <a target="_blank" href="' . QLWAPP_LANDING_URL . '">here!</a></p>';
+	public $footer          = '<p style="text-align: start;">Need help? Our team is just a message away</p>';
 	public $response;
 
 	public function __construct() {
