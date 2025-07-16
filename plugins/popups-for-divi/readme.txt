@@ -3,7 +3,7 @@ Contributors: timstrifler, devjenndivilife, strackerphil-1
 Tags: popup, marketing, divi
 Requires at least: 4.0.0
 Tested up to: 6.8
-Stable tag: 3.0.9
+Stable tag: 3.1.0
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -174,6 +174,9 @@ When you need additional features, then please have a look at our the Premium pl
 5. Our free email course walks you through every aspect of the plugin - from the basics to advanced use-cases and techniques.
 
 == Changelog ==
+
+= Version 3.1.0 =
+- Add limited support for Divi 5
 
 = Version 3.0.9 =
 - Support WordPress 6.8 & Divi 4.27.4 

@@ -2579,15 +2579,21 @@ The default term list output is an unordered list of term names surrounded by hy
 <td>Returns HTML "input", "type=checkbox" elements enclosed by HTML unordered list tags (&lt;ul&gt;&lt;/ul&gt;). The "itemtag" and "termtag" parameters customize the list markup.</td>
 </tr>
 <tr>
+<td class="mla-doc-table-label">checklist,div</td>
+<td>Adding the ",div" qualifier to the checklist output format will wrap the list in an HTML "div" tag so, for example, you can add CSS styles to highlight the current list item or limit the size of the display area and add scroll bars to a long list.</td>
+</tr>
+<tr>
 <td class="mla-doc-table-label">array</td>
 <td>Returns a PHP array of list hyperlinks. This output format is not available through the shortcode; it is allowed when the <code>MLAShortcodes::mla_term_list()</code> function is called directly from your theme or plugin PHP code.</td>
 </tr>
 </table>
 <p>
-A separate parameter, <code>echo=true</code>, allows you to echo cloud output directly to the browser instead of returning it to post/page content. This output format is not available through the shortcode; it is allowed when the <code>MLAShortcodes::mla_term_list()</code> function is called directly from your theme or plugin PHP code.
+The list, dropdown and checklist formats can be extensively customized by using custom <a href="#mla_gallery_templates"><strong>Style and Markup Templates</strong></a>. Default templates are provided, and you can specify custom templates of your own. 
 </p>
 <p>
-The list, dropdown and checklist formats can be extensively customized by using custom <a href="#mla_gallery_templates"><strong>Style and Markup Templates</strong></a>.
+A separate parameter, <code>echo=true</code>, allows you to echo list output directly to the browser instead of returning it to post/page content. This output format is not available through the shortcode; it is allowed when the <code>MLAShortcodes::mla_term_list()</code> function is called directly from your theme or plugin PHP code.
+</p>
+<p>
 <a name="term_list_output_structure"></a>
 </p>
 <h4>Term List Output Structure</h4>
@@ -3554,7 +3560,7 @@ The values' display format is determined by the <strong>"mla_output"</strong> pa
 </tr>
 <tr>
 <td class="mla-doc-table-label">flat,div</td>
-<td>Adding the ",div" qualifier to the flat output format will wrap the hyperlink tags in an HTML "div" tag so, for example, you can add CSS styles to highlight the current list item. This output adds style and markup template processing to the output. Default templates are provided, and you can specify custom templates of your own. For this format, only the "Description", "Arguments", "Open" and "Close" markup template sections are used.</td>
+<td>Adding the ",div" qualifier to the flat output format will wrap the hyperlink tags in an HTML "div" tag so, for example, you can add CSS styles to highlight the current list item. For this format, only the "Description", "Arguments", "Open" and "Close" markup template sections are used.</td>
 </tr>
 <tr>
 <td class="mla-doc-table-label">ulist</td>
@@ -3582,7 +3588,7 @@ The values' display format is determined by the <strong>"mla_output"</strong> pa
 </tr>
 <tr>
 <td class="mla-doc-table-label">checklist,div</td>
-<td>Adding the ",div" qualifier to the checklist output format will wrap the list in an HTML "div" tag so, for example, you can add CSS styles to highlight the current list item or limit the size of the display area and add scroll bars to a long list. This output adds style and markup template processing to the output. Default templates are provided, and you can specify custom templates of your own. For this format, only the "Description", "Arguments", "Open" and "Close" markup template sections are used.</td>
+<td>Adding the ",div" qualifier to the checklist output format will wrap the list in an HTML "div" tag so, for example, you can add CSS styles to highlight the current list item or limit the size of the display area and add scroll bars to a long list. For this format, the "Row Open" and "Row Close" markup template sections are not used.</td>
 </tr>
 <tr>
 <td class="mla-doc-table-label">array</td>
@@ -3590,13 +3596,13 @@ The values' display format is determined by the <strong>"mla_output"</strong> pa
 </tr>
 </table>
 <p>
-A separate parameter, <code>echo=true</code>, allows you to echo cloud output directly to the browser instead of returning it to post/page content. This output format is not available through the shortcode; it is allowed when the <code>MLAShortcodes::mla_custom_list()</code> function is called directly from your theme or plugin PHP code.
-</p>
-<p>
-The list, grid, dropdown and checklist formats can be extensively customized by using custom <a href="#mla_gallery_templates"><strong>Style and Markup Templates</strong></a>.
+The flat,div, list, grid, dropdown and checklist formats can be extensively customized by using custom <a href="#mla_gallery_templates"><strong>Style and Markup Templates</strong></a>. Default templates are provided, and you can specify custom templates of your own.
 </p>
 <p>
 The <code>[mla_custom_list]</code> shortcode also supports <a href="#cf_list_pagination_parameters">mla_output pagination formats</a>: "previous_link", "current_link", "next_link", "previous_page", "next_page" and "paginate_links". These are essentially the same as those for the <code>[mla_gallery]</code> shortcode.
+</p>
+<p>
+A separate parameter, <code>echo=true</code>, allows you to echo cloud output directly to the browser instead of returning it to post/page content. This output format is not available through the shortcode; it is allowed when the <code>MLAShortcodes::mla_custom_list()</code> function is called directly from your theme or plugin PHP code.
 </p>
 <p>
 <a name="cf_list_items"></a>

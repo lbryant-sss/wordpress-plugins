@@ -169,7 +169,7 @@ function wpbc_is_shortcode_exist_in_page( $relative_url, $shortcode_to_add ) {
 }
 
 /**
- * Is shortcode or some text  exist  in specific page
+ * Is shortcode or some text  exist  in specific page (got by  ID)
  *
  * @param string $relative_url     relative URL of the page, if we have absolute url, then get it using: wpbc_make_link_relative( 'https://...' );
  * @param string $shortcode_to_add shortcode  to  check '[booking'
@@ -177,6 +177,8 @@ function wpbc_is_shortcode_exist_in_page( $relative_url, $shortcode_to_add ) {
  * @return bool
  */
 function wpbc_is_shortcode_exist_in_page_with_id( $page_id, $shortcode_to_add ) {
+
+	// FixIn: 10.12.3.1.
 
 	if ( ! empty( $page_id ) ) {
 

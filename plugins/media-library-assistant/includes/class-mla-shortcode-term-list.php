@@ -602,7 +602,11 @@ class MLATermList {
 			} elseif ( 'dropdown' === $output_parameters[0] ) {
 				$template = 'term-list-dropdown';
 			} elseif ( 'checklist' === $output_parameters[0] ) {
-				$template = 'term-list-checklist';
+				if ( isset( $output_parameters[1] ) && ( 'div' === $output_parameters[1] ) ) {
+					$template = 'term-list-checklist-div';
+				} else {
+					$template = 'term-list-checklist';
+				}
 			}
 		}
 
@@ -712,7 +716,6 @@ class MLATermList {
 		$default_markup = 'term-list-ul';
 
 		if ( $is_list = in_array( $output_parameters[0], array( 'list', 'ulist', 'olist', 'dlist' ) ) ) {
-
 			if ( 'list' === $output_parameters[0] && 'dd' === $arguments['captiontag'] ) {
 				$default_markup = 'term-list-dl';
 				$arguments['itemtag'] = 'dl';
@@ -748,7 +751,13 @@ class MLATermList {
 		}
 
 		if ( $is_checklist = 'checklist' === $output_parameters[0] ) {
-			$default_markup = 'term-list-checklist';
+				if ( isset( $output_parameters[1] ) && ( 'div' === $output_parameters[1] ) ) {
+					$default_style = 'term-list-checklist-div';
+					$default_markup = 'term-list-checklist-div';
+				} else {
+					$default_markup = 'term-list-checklist';
+				}
+
 			$arguments['termtag'] = 'li';
 		}
 

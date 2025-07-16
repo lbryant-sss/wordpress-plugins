@@ -215,7 +215,10 @@ function weglot_php_min_compatibility() {
  */
 function weglot_plugin_activate() {
 	if ( ! weglot_is_compatible() ) {
+		// Deactivate the plugin.
 		deactivate_plugins( plugin_basename( __FILE__ ) );
+
+		// Die with an error message.
 		wp_die(
 			sprintf(
 			/* translators: 1: Required PHP version, 2: Current PHP version */

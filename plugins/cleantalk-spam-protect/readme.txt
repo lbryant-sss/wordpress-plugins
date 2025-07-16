@@ -10,7 +10,7 @@ License: GPLv2
 Blocks spam comments, fake users, contact form spam and more. No impact on SEO or website performance. Enterprise-ready, premium Anti-Spam plugin. 
 
 == Description ==
-
+Blocks spam comments, fake users, contact form spam and more. No impact on SEO or website performance. Enterprise-ready, premium Anti-Spam plugin. 
 Top-rated anti-spam protection for WordPress. No CAPTCHA, no questions, no animal counting, no puzzles, no math and no spam bots. Universal AntiSpam plugin.
 
 = Anti-Spam features =

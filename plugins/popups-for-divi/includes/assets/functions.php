@@ -382,7 +382,18 @@ function pfd_assets_enqueue_js_library() {
 	 * @var array $infos Details about the current environment.
 	 */
 	$js_data['sys'] = apply_filters( 'divimode_debug_infos', [] );
+	
+	$load_loader_module = true;
+	if ( function_exists( 'et_builder_d5_enabled' ) ) {
+		
+		if ( et_builder_d5_enabled() && is_preview() ) {
+		
+			$load_loader_module = false;
+		}
+	}
 
+	if ( $load_loader_module ) {
+	
 	// Inject the loader module and the configuration object into the header.
 	pfd_assets_inject_loader( $js_data );
 
@@ -401,6 +412,8 @@ function pfd_assets_enqueue_js_library() {
 		$cache_version,
 		'all'
 	);
+	
+	}
 
 	wp_enqueue_script( 'js-divi-area' );
 	wp_enqueue_style( 'css-divi-area' );
