@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'bitcode/bitform',
-        'pretty_version' => '2.20.1.x-dev',
-        'version' => '2.20.1.9999999-dev',
-        'reference' => '17bef37ab06c452a7a09b124020499459fe0b523',
+        'pretty_version' => '2.20.2.x-dev',
+        'version' => '2.20.2.9999999-dev',
+        'reference' => '134935bd207ca79cad42e200dfcecc77b74f544d',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -29,9 +29,9 @@
             'dev_requirement' => false,
         ),
         'bitcode/bitform' => array(
-            'pretty_version' => '2.20.1.x-dev',
-            'version' => '2.20.1.9999999-dev',
-            'reference' => '17bef37ab06c452a7a09b124020499459fe0b523',
+            'pretty_version' => '2.20.2.x-dev',
+            'version' => '2.20.2.9999999-dev',
+            'reference' => '134935bd207ca79cad42e200dfcecc77b74f544d',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

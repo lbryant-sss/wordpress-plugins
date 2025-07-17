@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit2db93fba95914471d46674e1bc790613
+class ComposerStaticInitf919800977506ca940fce461e93d31d5
 {
     public static $prefixLengthsPsr4 = array (
         'M' => 
@@ -66,6 +66,7 @@ class ComposerStaticInit2db93fba95914471d46674e1bc790613
         'MercadoPago\\PP\\Sdk\\Entity\\Payment\\Identification' => __DIR__ . '/..' . '/mp-plugins/php-sdk/src/Entity/Payment/Identification.php',
         'MercadoPago\\PP\\Sdk\\Entity\\Payment\\Item' => __DIR__ . '/..' . '/mp-plugins/php-sdk/src/Entity/Payment/Item.php',
         'MercadoPago\\PP\\Sdk\\Entity\\Payment\\ItemList' => __DIR__ . '/..' . '/mp-plugins/php-sdk/src/Entity/Payment/ItemList.php',
+        'MercadoPago\\PP\\Sdk\\Entity\\Payment\\Location' => __DIR__ . '/..' . '/mp-plugins/php-sdk/src/Entity/Payment/Location.php',
         'MercadoPago\\PP\\Sdk\\Entity\\Payment\\Multipayment' => __DIR__ . '/..' . '/mp-plugins/php-sdk/src/Entity/Payment/Multipayment.php',
         'MercadoPago\\PP\\Sdk\\Entity\\Payment\\MultipaymentV2' => __DIR__ . '/..' . '/mp-plugins/php-sdk/src/Entity/Payment/MultipaymentV2.php',
         'MercadoPago\\PP\\Sdk\\Entity\\Payment\\MultipaymentV21' => __DIR__ . '/..' . '/mp-plugins/php-sdk/src/Entity/Payment/MultipaymentV21.php',
@@ -222,6 +223,7 @@ class ComposerStaticInit2db93fba95914471d46674e1bc790613
         'MercadoPago\\Woocommerce\\Transactions\\CustomTransaction' => __DIR__ . '/../..' . '/src/Transactions/CustomTransaction.php',
         'MercadoPago\\Woocommerce\\Transactions\\PixTransaction' => __DIR__ . '/../..' . '/src/Transactions/PixTransaction.php',
         'MercadoPago\\Woocommerce\\Transactions\\PseTransaction' => __DIR__ . '/../..' . '/src/Transactions/PseTransaction.php',
+        'MercadoPago\\Woocommerce\\Transactions\\SupertokenTransaction' => __DIR__ . '/../..' . '/src/Transactions/SupertokenTransaction.php',
         'MercadoPago\\Woocommerce\\Transactions\\TicketTransaction' => __DIR__ . '/../..' . '/src/Transactions/TicketTransaction.php',
         'MercadoPago\\Woocommerce\\Transactions\\WalletButtonTransaction' => __DIR__ . '/../..' . '/src/Transactions/WalletButtonTransaction.php',
         'MercadoPago\\Woocommerce\\Transactions\\YapeTransaction' => __DIR__ . '/../..' . '/src/Transactions/YapeTransaction.php',
@@ -233,9 +235,9 @@ class ComposerStaticInit2db93fba95914471d46674e1bc790613
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit2db93fba95914471d46674e1bc790613::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit2db93fba95914471d46674e1bc790613::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit2db93fba95914471d46674e1bc790613::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitf919800977506ca940fce461e93d31d5::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitf919800977506ca940fce461e93d31d5::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitf919800977506ca940fce461e93d31d5::$classMap;
 
         }, null, ClassLoader::class);
     }

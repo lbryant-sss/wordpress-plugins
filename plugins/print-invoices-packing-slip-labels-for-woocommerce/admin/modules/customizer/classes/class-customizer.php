@@ -22,7 +22,7 @@ class Wf_Woocommerce_Packing_List_CustomizerLib {
 	public static function set_order_data( $find_replace, $template_type, $html, $order = null ) {
 		if ( ! is_null( $order ) ) {
 			$wc_version = WC()->version;
-			$order_id   = $wc_version < '2.7.0' ? $order->id : $order->get_id();
+			$order_id   = version_compare($wc_version, '2.7.0', '<') ? $order->id : $order->get_id();
 
 			$find_replace['[wfte_order_number]'] = $order->get_order_number();
 			if ( Wf_Woocommerce_Packing_List_Public::module_exists( 'invoice' ) ) {
@@ -166,7 +166,7 @@ class Wf_Woocommerce_Packing_List_CustomizerLib {
 			$the_options   = Wf_Woocommerce_Packing_List::get_settings( $module_id );
 			$order_items   = $order->get_items();
 			$wc_version    = WC()->version;
-			$order_id      = $wc_version < '2.7.0' ? $order->id : $order->get_id();
+			$order_id      = version_compare($wc_version, '2.7.0', '<') ? $order->id : $order->get_id();
 			$user_currency = Wt_Pklist_Common::get_order_meta( $order_id, 'currency', true );
 
 			$tax_type = Wf_Woocommerce_Packing_List::get_option( 'woocommerce_wf_generate_for_taxstatus' );
@@ -215,7 +215,7 @@ class Wf_Woocommerce_Packing_List_CustomizerLib {
 			}
 
 			//order discount ==========================
-			$order_discount = ( $wc_version < '2.7.0' ? $order->order_discount : Wt_Pklist_Common::get_order_meta( $order_id, '_order_discount', true ) );
+			$order_discount = ( version_compare($wc_version, '2.7.0', '<') ? $order->order_discount : Wt_Pklist_Common::get_order_meta( $order_id, '_order_discount', true ) );
 			if ( $order_discount > 0 ) {
 				$find_replace['[wfte_product_table_order_discount]'] = '-' . Wf_Woocommerce_Packing_List_Admin::wf_display_price( $user_currency, $order, $order_discount );
 			} else {
@@ -368,9 +368,9 @@ class Wf_Woocommerce_Packing_List_CustomizerLib {
 			$coupon_info_html = '';
 			if ( ! empty( $coupon_details ) ) {
 				foreach ( $coupon_details as $coupon_id => $coupon_detail ) {
-					$discount                        = ( $wc_version < '3.2.0' ? $coupon_detail['discount_amount'] : $coupon_detail->get_discount() );
-					$discount_tax                    = ( $wc_version < '3.0.0' ? $coupon_detail['discount_amount_tax'] : $coupon_detail->get_discount_tax() );
-					$coupon_name                     = ( $wc_version < '3.0.0' ? esc_html( $coupon_detail['name'] ) : esc_html( $coupon_detail->get_name() ) );
+					$discount                        = ( version_compare($wc_version, '3.2.0', '<') ? $coupon_detail['discount_amount'] : $coupon_detail->get_discount() );
+					$discount_tax                    = ( version_compare($wc_version, '3.0.0', '<') ? $coupon_detail['discount_amount_tax'] : $coupon_detail->get_discount_tax() );
+					$coupon_name                     = ( version_compare($wc_version, '3.0.0', '<') ? esc_html( $coupon_detail['name'] ) : esc_html( $coupon_detail->get_name() ) );
 					$discount_total                  = (float) $discount + (float) $discount_tax;
 					$coupon_info_arr[ $coupon_name ] = Wf_Woocommerce_Packing_List_Admin::wf_display_price( $user_currency, $order, $discount_total );
 				}
@@ -382,20 +382,20 @@ class Wf_Woocommerce_Packing_List_CustomizerLib {
 			}
 
 			//payment info ==========================
-			$paymethod_title                                     = ( $wc_version < '2.7.0' ? $order->payment_method_title : $order->get_payment_method_title() );
+			$paymethod_title                                     = ( version_compare($wc_version, '2.7.0', '<') ? $order->payment_method_title : $order->get_payment_method_title() );
 			$paymethod_title                                     = __( $paymethod_title, 'print-invoices-packing-slip-labels-for-woocommerce' );
 			$find_replace['[wfte_product_table_payment_method]'] = $paymethod_title;
 
 			//total amount ==========================
 			if ( ! isset( $find_replace['[wfte_product_table_payment_total]'] ) || ! isset( $find_replace['[wfte_total_in_words]'] ) ) {
-				$total_price_final = (float) ( $wc_version < '2.7.0' ? $order->order_total : Wt_Pklist_Common::get_order_meta( $order_id, 'total', true ) );
+				$total_price_final = (float) ( version_compare($wc_version, '2.7.0', '<') ? $order->order_total : Wt_Pklist_Common::get_order_meta( $order_id, 'total', true ) );
 				$total_price       = $total_price_final; //taking value for future use
 				$refund_amount     = 0;
 				if ( $total_price_final ) {
 					$refund_data_arr = $order->get_refunds();
 					if ( ! empty( $refund_data_arr ) ) {
 						foreach ( $refund_data_arr as $refund_data ) {
-							$refund_id          = ( $wc_version < '2.7.0' ? $refund_data->id : $refund_data->get_id() );
+							$refund_id          = ( version_compare($wc_version, '2.7.0', '<') ? $refund_data->id : $refund_data->get_id() );
 							$cr_refund_amount   = (float) Wt_Pklist_Common::get_order_meta( $refund_id, 'total', true );
 							$total_price_final += $cr_refund_amount;
 							$refund_amount     -= $cr_refund_amount;
@@ -601,7 +601,7 @@ class Wf_Woocommerce_Packing_List_CustomizerLib {
 		$product_id          = 0;
 
 		if ( ! empty( $_product ) ) {
-			$product_id = ( $wc_version < '2.7.0' ? $_product->id : $_product->get_id() );
+			$product_id = ( version_compare($wc_version, '2.7.0', '<') ? $_product->id : $_product->get_id() );
 		}
 
 		$variation_id = ( '' !== $item['variation_id'] ? $item['variation_id'] * 1 : 0 );
@@ -611,7 +611,7 @@ class Wf_Woocommerce_Packing_List_CustomizerLib {
 		$dimension_unit = get_option( 'woocommerce_dimension_unit' );
 		$weight_unit    = get_option( 'woocommerce_weight_unit' );
 
-		$order_id      = $wc_version < '2.7.0' ? $order->id : $order->get_id();
+		$order_id = version_compare( $wc_version, '2.7.0', '<' ) ? $order->id : $order->get_id();
 		$user_currency = Wt_Pklist_Common::get_order_meta( $order_id, 'currency', true );
 
 		foreach ( $columns_list_arr as $columns_key => $columns_value ) {
@@ -824,7 +824,7 @@ class Wf_Woocommerce_Packing_List_CustomizerLib {
 
 		if ( ! is_null( $order ) ) {
 			$wc_version    = WC()->version;
-			$order_id      = $wc_version < '2.7.0' ? $order->id : $order->get_id();
+			$order_id      = version_compare($wc_version, '2.7.0', '<') ? $order->id : $order->get_id();
 			$user_currency = Wt_Pklist_Common::get_order_meta( $order_id, 'currency', true );
 
 			$incl_tax_arr  = self::get_include_tax_value_in_array( $template_type, $order );
@@ -835,7 +835,7 @@ class Wf_Woocommerce_Packing_List_CustomizerLib {
 			$order_items = apply_filters( 'wf_pklist_alter_order_items', $order_items, $template_type, $order );
 
 			$the_options = Wf_Woocommerce_Packing_List::get_settings( $module_id );
-			if ( $wc_version < '2.7.0' ) {
+			if ( version_compare($wc_version, '2.7.0', '<') ) {
 				$order_prices_include_tax  = $order->prices_include_tax;
 				$order_display_cart_ex_tax = $order->display_cart_ex_tax;
 			} else {
@@ -846,7 +846,7 @@ class Wf_Woocommerce_Packing_List_CustomizerLib {
 			foreach ( $order_items as $order_item_id => $order_item ) {
 
 				// since 2.8.0 - Display/hide free products
-				$product_total_free_order = ( $wc_version < '2.7.0' ? $order->get_item_meta( $order_item_id, '_line_total', true ) : $order->get_line_subtotal( $order_item, $incl_tax, true ) );
+				$product_total_free_order = ( version_compare($wc_version, '2.7.0', '<') ? $order->get_item_meta( $order_item_id, '_line_total', true ) : $order->get_line_subtotal( $order_item, $incl_tax, true ) );
 
 				if ( 0 === \intval( $order->get_total() ) ) {
 					if ( 'No' === $free_line_items_enable ) {
@@ -866,7 +866,7 @@ class Wf_Woocommerce_Packing_List_CustomizerLib {
 				$_product = $order_item->get_product();
 				if ( $_product ) {
 					$product_row_columns = array(); //for html generation
-					$product_id          = ( $wc_version < '2.7.0' ? $_product->id : $_product->get_id() );
+					$product_id          = ( version_compare($wc_version, '2.7.0', '<') ? $_product->id : $_product->get_id() );
 					$variation_id        = ( '' !== $order_item['variation_id'] ? $order_item['variation_id'] * 1 : 0 );
 					$parent_id           = wp_get_post_parent_id( $variation_id );
 					foreach ( $columns_list_arr as $columns_key => $columns_value ) {
@@ -959,7 +959,7 @@ class Wf_Woocommerce_Packing_List_CustomizerLib {
 							$item_price_formated = Wf_Woocommerce_Packing_List_Admin::wf_display_price( $user_currency, $order, $item_price );
 							$column_data         = apply_filters( 'wf_pklist_alter_item_price_formated', $item_price_formated, $template_type, $item_price, $_product, $order_item, $order );
 						} elseif ( 'total_price' === $columns_key || '-total_price' === $columns_key ) {
-							$product_total = ( $wc_version < '2.7.0' ? $order->get_item_meta( $order_item_id, '_line_total', true ) : $order->get_line_subtotal( $order_item, $incl_tax, true ) );
+							$product_total = ( version_compare($wc_version, '2.7.0', '<') ? $order->get_item_meta( $order_item_id, '_line_total', true ) : $order->get_line_subtotal( $order_item, $incl_tax, true ) );
 							$product_total = apply_filters( 'wf_pklist_alter_item_total', $product_total, $template_type, $_product, $order_item, $order, $incl_tax );
 
 							$product_total_formated = Wf_Woocommerce_Packing_List_Admin::wf_display_price( $user_currency, $order, $product_total );
@@ -1004,7 +1004,7 @@ class Wf_Woocommerce_Packing_List_CustomizerLib {
 							$item_price_formated = Wf_Woocommerce_Packing_List_Admin::wf_display_price( $user_currency, $order, $item_price );
 							$column_data         = apply_filters( 'wf_pklist_alter_item_price_formated_deteled_product', $item_price_formated, $template_type, $item_price, $order_item, $order );
 						} elseif ( 'total_price' === $columns_key || '-total_price' === $columns_key ) {
-							$product_total = ( $wc_version < '2.7.0' ? $order->get_item_meta( $order_item_id, '_line_total', true ) : $order->get_line_subtotal( $order_item, $incl_tax, true ) );
+							$product_total = ( version_compare($wc_version, '2.7.0', '<') ? $order->get_item_meta( $order_item_id, '_line_total', true ) : $order->get_line_subtotal( $order_item, $incl_tax, true ) );
 
 							$product_total = apply_filters( 'wf_pklist_alter_item_total_deleted_product', $product_total, $template_type, $order_item, $order, $incl_tax );
 
@@ -1072,7 +1072,7 @@ class Wf_Woocommerce_Packing_List_CustomizerLib {
 
 	public static function tax_column_in_product_table_row( $module_id, $template_type, $order, $order_item, $order_item_id, $_product = null ) {
 		$wc_version        = WC()->version;
-		$order_id          = $wc_version < '2.7.0' ? $order->id : $order->get_id();
+		$order_id          = version_compare($wc_version, '2.7.0', '<') ? $order->id : $order->get_id();
 		$user_currency     = Wt_Pklist_Common::get_order_meta( $order_id, 'currency', true );
 		$tax_rate_display  = '';
 		$tax_rate          = 0;
@@ -1108,7 +1108,7 @@ class Wf_Woocommerce_Packing_List_CustomizerLib {
 		$incl_tax_text     = $incl_tax_arr['incl_tax_text'];
 
 		if ( ( 'amount' === $total_tax_column_display_option ) || ( 'amount-rate' === $total_tax_column_display_option ) ) {
-			$product_total = (float) ( $wc_version < '2.7.0' ? $order->get_item_meta( $order_item_id, '_line_total', true ) : $order->get_line_subtotal( $order_item, false, true ) );
+			$product_total = (float) ( version_compare($wc_version, '2.7.0', '<') ? $order->get_item_meta( $order_item_id, '_line_total', true ) : $order->get_line_subtotal( $order_item, false, true ) );
 
 			if ( abs( $tax_rate ) > 0 ) {
 				$item_tax = $product_total * ( $tax_rate / 100 );
@@ -1273,10 +1273,10 @@ class Wf_Woocommerce_Packing_List_CustomizerLib {
 		}
 
 		if ( 'tel' === $key || 'contact_number' === $key ) {
-			if ( 'shippinglabel' === $template_type && "" !== ( ( WC()->version < '5.6.0' ) ? '' : $order->get_shipping_phone() ) ) {
+			if ( 'shippinglabel' === $template_type && "" !== ( version_compare( WC()->version, '5.6.0', '<' ) ? '' : $order->get_shipping_phone() ) ) {
 				$order_phone = $order->get_shipping_phone();
 			} else {
-				$order_phone = ( 0 === $wc_version ? $order->billing_phone : $order->get_billing_phone() );
+				$order_phone = $order->get_billing_phone();
 			}
 
 			return wp_kses_post( ! empty( $order_phone ) ? $order_phone : '' );
@@ -1286,7 +1286,7 @@ class Wf_Woocommerce_Packing_List_CustomizerLib {
 			if ( ! $is_pro_customizer && 'invoice' !== $template_type && 'shippinglabel' !== $template_type && 'Yes' !== Wf_Woocommerce_Packing_List::get_option( 'woocommerce_wf_add_customer_note_in_' . $template_type, $module_id ) ) {
 				return '';
 			}
-			$customer_note = ( 0 === $wc_version ? $order->customer_note : $order->get_customer_note() );
+			$customer_note = $order->get_customer_note();
 			return wp_kses_post( ! empty( $customer_note ) ? $customer_note : '' );
 		}
 
@@ -1320,7 +1320,7 @@ class Wf_Woocommerce_Packing_List_CustomizerLib {
 
 	public static function set_default_order_fields( $find_replace, $template_type, $html, $order = null ) {
 		if ( ! is_null( $order ) ) {
-			$wc_version                           = ( WC()->version < '2.7.0' ) ? 0 : 1;
+			$wc_version                           = version_compare( WC()->version, '2.7.0', '<' ) ? 0 : 1;
 			$order                                = ( $wc_version == 0 ? new WC_Order( $order ) : new wf_order( $order ) );
 			$order_id                             = ( $wc_version == 0 ? $order->id : $order->get_id() );
 			$find_replace['[wfte_email]']         = self::get_default_order_fields( 'email', $template_type, $order, $order_id, $wc_version );
@@ -1341,9 +1341,8 @@ class Wf_Woocommerce_Packing_List_CustomizerLib {
 			$default_options      = Wf_Woocommerce_Packing_List::default_settings( $module_id );
 			$default_fields       = array_keys( Wf_Woocommerce_Packing_List::$default_additional_data_fields );
 			$default_fields_label = Wf_Woocommerce_Packing_List::$default_additional_data_fields;
-			$wc_version           = ( WC()->version < '2.7.0' ) ? 0 : 1;
-			$order                = ( $wc_version == 0 ? new WC_Order( $order ) : new wf_order( $order ) );
-			$order_id             = ( $wc_version == 0 ? $order->id : $order->get_id() );
+			$wc_version           = version_compare( WC()->version, '2.7.0', '<' ) ? 0 : 1;
+			$order_id             = $order->get_id();
 
 			if ( isset( $the_options[ 'wf_' . $template_type . '_contactno_email' ] ) && is_array( $the_options[ 'wf_' . $template_type . '_contactno_email' ] ) ) {
 				$user_created_fields = Wf_Woocommerce_Packing_List::get_option( 'wf_additional_data_fields' ); //this is plugin main setting so no need to specify module id
@@ -1486,9 +1485,9 @@ class Wf_Woocommerce_Packing_List_CustomizerLib {
 	 */
 	protected static function get_shipping_address( $template_type, $order = null ) {
 		if ( ! is_null( $order ) ) {
-			$order					= ( WC()->version < '2.7.0' ) ? new WC_Order( $order ) : new wf_order( $order );
-			$order_id				= ( WC()->version < '2.7.0' ) ? $order->id : $order->get_id();
-			$shipping_phone        	= ( WC()->version < '5.6.0' ) ? '' : Wt_Pklist_Common::get_order_meta( $order_id, '_shipping_phone', true );
+			$order					= ( version_compare( WC()->version, '2.7.0', '<' ) ) ? new WC_Order( $order ) : new wf_order( $order );
+			$order_id				= version_compare( WC()->version, '2.7.0', '<' ) ? $order->id : $order->get_id();
+			$shipping_phone        	= version_compare( WC()->version, '5.6.0', '<' ) ? '' : Wt_Pklist_Common::get_order_meta( $order_id, '_shipping_phone', true );
 			if ( '' !== trim( $shipping_phone ) ) {
 				$shipping_phone_label = apply_filters( 'wt_pklist_alter_shipping_address_phone_number_label', '', $template_type, $order );
 				if ( !empty( $shipping_phone_label ) ) {
@@ -1593,8 +1592,8 @@ class Wf_Woocommerce_Packing_List_CustomizerLib {
 				return $order->get_formatted_billing_address();
 			}
 			$the_options          = Wf_Woocommerce_Packing_List::get_settings();
-			$order                = ( WC()->version < '2.7.0' ) ? new WC_Order( $order ) : new wf_order( $order );
-			$order_id             = ( WC()->version < '2.7.0' ) ? $order->id : $order->get_id();
+			$order                = ( version_compare( WC()->version, '2.7.0', '<' ) ) ? new WC_Order( $order ) : new wf_order( $order );
+			$order_id             = version_compare( WC()->version, '2.7.0', '<' ) ? $order->id : $order->get_id();
 			$order_data           = $order->get_data();
 			$countries            = WC()->countries;
 			$billing_country      = Wt_Pklist_Common::get_order_meta( $order_id, '_billing_country', true );
@@ -1664,7 +1663,7 @@ class Wf_Woocommerce_Packing_List_CustomizerLib {
 
 		$returnaddress = $fromaddress; //not affect from address filter to return address
 		if ( ! is_null( $order ) ) {
-			$order         = ( WC()->version < '2.7.0' ) ? new WC_Order( $order ) : new wf_order( $order );
+			$order         = ( version_compare( WC()->version, '2.7.0', '<' ) ) ? new WC_Order( $order ) : new wf_order( $order );
 			$fromaddress   = apply_filters( 'wf_pklist_alter_shipping_from_address', $fromaddress, $template_type, $order );
 			$returnaddress = apply_filters( 'wf_pklist_alter_shipping_return_address', $returnaddress, $template_type, $order );
 		}

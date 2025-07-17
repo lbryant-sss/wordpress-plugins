@@ -89,7 +89,7 @@ const AppSettings = () => {
      * 
      * @returns {void}
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     const handleInputChange = (e) => {
         const { name, value, required } = e.target;
@@ -104,7 +104,7 @@ const AppSettings = () => {
      * 
      * @returns {void}
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     const saveAppSettings = async () => {
         let missingRequired = false;
@@ -170,7 +170,7 @@ const AppSettings = () => {
      * 
      * @returns {JSX.Element}
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     const Settings = () => {
         if(hasTabs) {

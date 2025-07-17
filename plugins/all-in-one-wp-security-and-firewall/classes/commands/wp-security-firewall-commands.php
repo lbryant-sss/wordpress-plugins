@@ -484,4 +484,50 @@ trait AIOWPSecurity_Firewall_Commands_Trait {
 			'aiowps_banned_user_agents' => implode("\n", $agents)
 		));
 	}
+
+	/**
+	 * This function performs save upgrade unsafe http calls settings.
+	 *
+	 * @param array $data - The request data.
+	 *
+	 * @return array
+	 */
+	public function perform_save_upgrade_unsafe_http_calls_settings($data) {
+		$upgrade_unsafe_http_calls_url_exceptions = sanitize_textarea_field(wp_unslash($data['aiowps_upgrade_unsafe_http_calls_url_exceptions']));
+
+		$errors = '';
+
+		if (!empty($upgrade_unsafe_http_calls_url_exceptions)) {
+			foreach (preg_split('/\R/', $upgrade_unsafe_http_calls_url_exceptions) as $url) {
+				$url = sanitize_url($url);
+
+				if (empty($url)) {
+					continue;
+				}
+
+				if (0 === strpos($url, '#')) {
+					continue;
+				}
+
+				$parsed_url = parse_url($url); // phpcs:ignore WordPress.WP.AlternativeFunctions.parse_url_parse_url -- Using the same function as WordPress in order to not preclude URLs that would be allowed by WordPress.
+
+				if (empty($parsed_url['scheme'])) { // The same weak sanity check used by the WordPress wp_remote_* functions.
+					/* translators: %s URL entered by user. */
+					$errors .= "\n" . sprintf(__('%s is not a valid url.', 'all-in-one-wp-security-and-firewall'), $url);
+					continue;
+				}
+			}
+		}
+
+		if (!empty($errors)) {
+			return $this->handle_response(false, nl2br(trim($errors)), array('badges' => array('upgrade-unsafe-http-calls')));
+		}
+
+		$this->save_settings(array(
+			'aiowps_upgrade_unsafe_http_calls' => isset($data['aiowps_upgrade_unsafe_http_calls']) ? '1' : '',
+			'aiowps_upgrade_unsafe_http_calls_url_exceptions' => $upgrade_unsafe_http_calls_url_exceptions
+		));
+
+		return $this->handle_response(true, '', array('badges' => array('upgrade-unsafe-http-calls')));
+	}
 }

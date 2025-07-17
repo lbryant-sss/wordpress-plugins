@@ -5,21 +5,21 @@ class CF7Apps_hCaptcha_App extends CF7Apps_App {
     /**
      * Languages supported by hCaptcha
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public $languages = array();
 
     /**
      * Selected language
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public $selected_language = '';
 
     /**
      * Constructor
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public function __construct() {
         $this->languages = array(
@@ -138,13 +138,14 @@ class CF7Apps_hCaptcha_App extends CF7Apps_App {
         );
 
         $this->id = 'hcaptcha';
+        $this->priority = 2;
         $this->title = __( 'hCaptcha', 'cf7apps' );
         $this->description = __( 'Add hCaptcha to Contact Form 7 for secure, spam-free forms.', 'cf7apps' );
         $this->icon = plugin_dir_url( __FILE__ ) . 'assets/images/logo.png';
         $this->has_admin_settings = true;
         $this->is_pro = false;
         $this->by_default_enabled = false;
-        $this->documentation_url = 'https://cf7apps.com/docs/free-addons/contact-form-7-hcaptcha';
+        $this->documentation_url = 'https://cf7apps.com/docs/spam-protection/contact-form-7-hcaptcha/';
         $this->parent_menu = __( 'Spam Protection', 'cf7apps' );
 
         add_action( 'wp_footer', array( $this, 'enqueue_script' ) );
@@ -156,7 +157,7 @@ class CF7Apps_hCaptcha_App extends CF7Apps_App {
     /**
      * Register Admin Settings
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public function admin_settings() {
         return array(
@@ -213,7 +214,7 @@ class CF7Apps_hCaptcha_App extends CF7Apps_App {
     /**
      * Register Shortcode | Action Callback
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public function register_shortcode() {
         if ( function_exists( 'wpcf7_add_form_tag' ) ) {
@@ -229,7 +230,7 @@ class CF7Apps_hCaptcha_App extends CF7Apps_App {
      * @param mixed $tag
      * @return string
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public function render_cf7apps_hcaptcha( $tag ) {
         // Support both WPCF7_FormTag (CF7 4.6+) and WPCF7_Shortcode (older)
@@ -269,7 +270,7 @@ class CF7Apps_hCaptcha_App extends CF7Apps_App {
     /**
      * Enqueue Script
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public function enqueue_script() {
         if( $this->get_option( 'is_enabled' ) ) {
@@ -302,7 +303,7 @@ class CF7Apps_hCaptcha_App extends CF7Apps_App {
     /**
      * Validate hCaptcha
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public function validate_hcaptcha( $result, $tags ) { 
         if( $this->get_option( 'is_enabled' ) ) {
@@ -368,7 +369,7 @@ class CF7Apps_hCaptcha_App extends CF7Apps_App {
     /**
      * Renders button on form | Action Callback
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public function wpcf7_admin_init(){
         if( $this->get_option( 'is_enabled' ) ) {
@@ -380,7 +381,7 @@ class CF7Apps_hCaptcha_App extends CF7Apps_App {
     /**
      * Render Tag Generator | Callback
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public function render_tag_generator( $contact_form, $args = '' ) {
         $args = wp_parse_args( $args, array() );
@@ -495,7 +496,7 @@ class CF7Apps_hCaptcha_App extends CF7Apps_App {
 /**
  * Register hCpatcha App
  * 
- * @since 2.2.0
+ * @since 3.0.0
  */
 if( ! function_exists( 'cf7apps_register_hcaptcha' ) ):
 function cf7apps_register_hcaptcha( $apps ) {

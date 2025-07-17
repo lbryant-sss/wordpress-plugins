@@ -5,7 +5,7 @@ class CF7Apps_Rest_API_WP_Admin_V1 extends CF7Apps_Base_Rest_API {
     /**
      * Constructor
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public function __construct() {
         add_action( 'rest_api_init', array( $this, 'register_routes' ) );
@@ -14,7 +14,7 @@ class CF7Apps_Rest_API_WP_Admin_V1 extends CF7Apps_Base_Rest_API {
     /**
      * Register Routes | Action Callback
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public function register_routes() {
         register_rest_route( 'cf7apps/v1', '/get-menu-items', array(
@@ -63,20 +63,38 @@ class CF7Apps_Rest_API_WP_Admin_V1 extends CF7Apps_Base_Rest_API {
     /**
      * Get Menu Items | Callback
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public function get_menu_items( $request ) {
         $registered_apps = $this->get_registered_apps();
         $menu_items = array();
 
+        // First, collect all apps with their priorities
+        $apps_with_priority = array();
+        
         foreach( $registered_apps as $app ) {
             if( class_exists( $app ) ) {
-                $app = new $app;
+                $app_instance = new $app;
 
-                if( $app->has_admin_settings ) {
-                    $menu_items[$app->parent_menu][$app->id] = $app->title;
+                if( $app_instance->has_admin_settings ) {
+                    $apps_with_priority[] = array(
+                        'id' => $app_instance->id,
+                        'title' => $app_instance->title,
+                        'parent_menu' => $app_instance->parent_menu,
+                        'priority' => property_exists($app_instance, 'priority') ? $app_instance->priority : 999
+                    );
                 }
             }
+        }
+
+        // Sort by priority
+        usort($apps_with_priority, function($a, $b) {
+            return $a['priority'] <=> $b['priority'];
+        });
+
+        // Now organize by parent menu while maintaining the sorted order
+        foreach($apps_with_priority as $app) {
+            $menu_items[$app['parent_menu']][$app['id']] = $app['title'];
         }
 
         wp_send_json_success( $menu_items );
@@ -85,23 +103,39 @@ class CF7Apps_Rest_API_WP_Admin_V1 extends CF7Apps_Base_Rest_API {
     /**
      * Get Apps | Callback
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public function get_apps( $request ) {
         $id = $request->get_param( 'id' );
 
         $registered_apps = $this->get_registered_apps();
         $apps = array();
+        $apps_with_priority = array();
 
+        // First, collect all apps with their priorities
         foreach( $registered_apps as $key => $app ) {
             if( class_exists( $app ) ) {
                 $app_instance = new $app;
-                $apps[] = $app_instance->get_settings();
+                $apps_with_priority[] = array(
+                    'app_instance' => $app_instance,
+                    'priority' => property_exists($app_instance, 'priority') ? $app_instance->priority : 999
+                );
 
+                // If specific ID is requested, return immediately
                 if( ! empty( $id ) && $app_instance->id == $id ) {
                     wp_send_json_success( $app_instance->get_settings() );
                 }
             }
+        }
+
+        // Sort by priority
+        usort($apps_with_priority, function($a, $b) {
+            return $a['priority'] <=> $b['priority'];
+        });
+
+        // Extract the sorted app settings
+        foreach($apps_with_priority as $app_data) {
+            $apps[] = $app_data['app_instance']->get_settings();
         }
 
         wp_send_json_success( $apps );
@@ -110,7 +144,7 @@ class CF7Apps_Rest_API_WP_Admin_V1 extends CF7Apps_Base_Rest_API {
     /**
      * Save Settings | Callback
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public function save_app_settings( $request ) {
         $settings = $request->get_body(); 
@@ -143,7 +177,7 @@ class CF7Apps_Rest_API_WP_Admin_V1 extends CF7Apps_Base_Rest_API {
     /**
      * Get Contact form 7 forms | Callback
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public function get_cf7_forms( $request ) {
         $data = array();
@@ -175,7 +209,7 @@ class CF7Apps_Rest_API_WP_Admin_V1 extends CF7Apps_Base_Rest_API {
     /**
      * Has Migrated | Callback
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public function has_migrated( $request ) {
         $honeypot4cf7_config = get_option( 'honeypot4cf7_config' );
@@ -190,7 +224,7 @@ class CF7Apps_Rest_API_WP_Admin_V1 extends CF7Apps_Base_Rest_API {
     /**
      * Migrate Settings | Callback
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public function migrate() { 
         try {

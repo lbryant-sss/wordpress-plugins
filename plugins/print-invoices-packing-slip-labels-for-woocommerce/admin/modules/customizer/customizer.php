@@ -124,7 +124,7 @@ class Wf_Woocommerce_Packing_List_Customizer
 		} else {
 			$order_exists   = wc_get_order($value);
 			if (!empty($order_exists)) {
-				$order = (WC()->version < '2.7.0') ? new WC_Order($value) : new wf_order($value);
+				$order = ( version_compare( WC()->version, '2.7.0', '<' ) ) ? new WC_Order($value) : new wf_order($value);
 				if (!empty($order)) {
 					return intval($value);
 				}

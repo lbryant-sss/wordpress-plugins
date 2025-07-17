@@ -18,7 +18,7 @@ const CF7AppsApp = ({ settings }) => {
      * 
      * @returns {void}
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     const switchApp = () => {
         let app_settings = {};

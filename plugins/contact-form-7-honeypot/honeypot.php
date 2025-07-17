@@ -5,15 +5,14 @@
  * Description: Contact Form 7 Apps is a collection of useful modules and extensions for Contact Form 7.
  * Author: CF7Apps
  * Author URI: https://wpexperts.io/
- * Version: 2.2.0-beta.1
+ * Version: 3.0.0
  * Text Domain: contact-form-7-honeypot
  * Domain Path: /languages/
- * Requires Plugins: contact-form-7
  */
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'CF7APPS_VERSION', '2.2.0' );
+define( 'CF7APPS_VERSION', '3.0.0' );
 define( 'CF7APPS_PLUGIN', __FILE__ );
 define( 'CF7APPS_PLUGIN_BASENAME', plugin_basename( CF7APPS_PLUGIN ) );
 define( 'CF7APPS_PLUGIN_NAME', trim( dirname( CF7APPS_PLUGIN_BASENAME ), '/' ) );
@@ -29,14 +28,14 @@ require_once CF7APPS_PLUGIN_DIR . '/legacy-honeypot/legacy-honeypot.php';
 /**
  * Initialize Contact Form 7 Apps
  * 
- * @since 2.2.0
+ * @since 3.0.0
  */
 if( ! function_exists( 'CF7Apps' ) ):
 function CF7Apps() {
 	/**
 	 * Fires before Contact Form 7 Apps is initialized
 	 * 
-	 * @since 2.2.0
+	 * @since 3.0.0
 	 */
 	do_action( 'cf7apps_before_init' );
 
@@ -45,7 +44,7 @@ function CF7Apps() {
 	/**
 	 * Fires Contact Form 7 Apps is initialized
 	 * 
-	 * @since 2.2.0
+	 * @since 3.0.0
 	 */
 	do_action( 'cf7apps_init' );
 

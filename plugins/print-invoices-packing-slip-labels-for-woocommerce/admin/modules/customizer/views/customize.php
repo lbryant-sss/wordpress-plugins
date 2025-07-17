@@ -345,7 +345,7 @@ if (!defined('ABSPATH')) {
 
 	.wf_default_template_list {
 		width: 100%;
-		max-width: 650px;
+		max-width: 600px;
 	}
 
 	.wf_default_template_list_item {
@@ -503,6 +503,82 @@ if (!defined('ABSPATH')) {
 		white-space: nowrap;
 		box-sizing: border-box;
 	}
+	.wt-pro-cta-bar {
+		margin: 24px 20px 24px 20px;
+		max-width: 97%;
+		background: #f4f3fd;
+		border-left: 4px solid #5151CD;
+		padding: 8px 18px;
+		display: flex;
+		align-items: center;
+		font-size: 13px;
+		font-weight: 500;
+		color: #222;
+		min-height: 38px;
+		box-sizing: border-box;
+		position: relative;
+	}
+
+	.wt-pro-cta-lock {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 6px;
+		width: 28px;
+		height: 28px;
+		margin-right: 12px;
+	}
+	.wt-pro-cta-bar a {
+		color: #5151CD;
+		text-decoration: underline;
+		font-weight: 500;
+		margin-left: 6px;
+	}
+	.wt-pro-cta-close {
+		margin-left: auto;
+		cursor: pointer;
+		font-size: 20px;
+		color: #888;
+		line-height: 1;
+		padding-left: 16px;
+	}
+
+	/* Banner dismiss button styles */
+	.banner_dismiss {
+		margin-left: auto;
+		cursor: pointer;
+		font-size: 20px;
+		color: #888;
+		line-height: 1;
+		padding-left: 16px;
+		background: none;
+		border: none;
+		position: relative;
+	}
+
+	.banner_dismiss:before {
+		content: "\f158";
+		font: normal 20px/1 dashicons;
+		color: #888;
+	}
+
+	/* Basic template banner styles */
+	.basic_template_cta_banner_invoice,
+	.basic_template_cta_banner_shippinglabel {
+		margin: 24px 20px 24px 20px;
+		max-width: 97%;
+		background: #f4f3fd;
+		border-left: 4px solid #5151CD;
+		padding: 8px 18px;
+		display: flex;
+		align-items: center;
+		font-size: 13px;
+		font-weight: 500;
+		color: #222;
+		min-height: 38px;
+		box-sizing: border-box;
+		position: relative;
+	}
 </style>
 <div class="wf_cst_loader wf_loader_bg"></div>
 <div class="wf_my_template wf_pklist_popup">
@@ -567,9 +643,99 @@ if (!defined('ABSPATH')) {
 			$def_template_id++;
 		}
 		?>
+		<?php   
+		// Show CTA if only the basic template is available
+		if (isset($def_template_arr) && count($def_template_arr) === 1 && isset($def_template_arr[0]['id'])) {
+			$template_id = $def_template_arr[0]['id'];
+			if ($template_id === 'template0' || $template_id === 'template1') {
+				// Determine template type for banner class
+				$template_type_for_banner = ($template_id === 'template1') ? 'shippinglabel' : 'invoice';
+				$banner_class = 'basic_template_cta_banner_' . $template_type_for_banner;
+				$dismiss_banner_arr = Wf_Woocommerce_Packing_List_Pro_Addons::wt_pklist_get_cta_banners($banner_class);
+				
+				// Check if banner should be shown
+				$show_template_banner = false;
+				if (empty($dismiss_banner_arr)) {
+					$show_template_banner = true;
+				} elseif (isset($dismiss_banner_arr['type']) && "full" === $dismiss_banner_arr['type']) {
+					$show_template_banner = true;
+				} elseif (isset($dismiss_banner_arr['type']) && "class" === $dismiss_banner_arr['type'] && isset($dismiss_banner_arr['value'])) {
+					$banner_val = $dismiss_banner_arr['value'];
+					if (isset($banner_val['class']) && $banner_class === $banner_val['class'] && isset($banner_val['status']) && 1 === absint($banner_val['status'])) {
+						$show_template_banner = true;
+					}
+				}
+				
+				if ($show_template_banner) {
+					$cta_url = ($template_id === 'template1')
+						? 'https://www.webtoffee.com/product/woocommerce-shipping-labels-delivery-notes/?utm_source=free_plugin_customize_tab&utm_medium=pdf_basic&utm_campaign=Shipping_Label'
+						: 'https://www.webtoffee.com/product/woocommerce-pdf-invoices-packing-slips/?utm_source=free_plugin_customize_tab&utm_medium=pdf_basic&utm_campaign=PDF_invoice';
+					$banner_message = ($template_id === 'template1') 
+						? __('Get access to more shipping label templates.', 'print-invoices-packing-slip-labels-for-woocommerce')
+						: __('Get access to more invoice templates.', 'print-invoices-packing-slip-labels-for-woocommerce');
+		?>
+			<div class="wt-pro-cta-bar <?php echo esc_attr($banner_class); ?> wt_pklist_dismissible_banner_div" id="wt-pro-cta-bar">
+				<span class="wt-pro-cta-lock">
+					<svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+						<rect width="24" height="24" rx="6"/>
+						<path d="M12 17a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm6-5V9a6 6 0 1 0-12 0v3a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2ZM8 9a4 4 0 1 1 8 0v3H8V9Zm10 8a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-5a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v5Z" fill="#5c6ac4"/>
+					</svg>
+				</span>
+				<span>
+					<?php echo esc_html($banner_message); ?>
+					<a href="<?php echo esc_url($cta_url); ?>" target="_blank">
+						<?php echo __('Upgrade to Pro', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>
+					</a>
+				</span>
+				<button class="banner_dismiss notice-dismiss" data-banner-class="<?php echo esc_attr($banner_class); ?>" data-banner-interval="0" data-banner-action="0"></button>
+			</div>
+		<?php 
+				}
+			}
+		} 
+		?>
 	</div>
-</div>
 
+	<?php
+	// Show 'Did you know?' banner if ADC (Customizer) plugin is not active, inside the popup
+	$show_banner = false;
+	if (!empty($template_type)) {
+		$template_addon_key = Wf_Woocommerce_Packing_List_Pro_Addons::wt_get_addon_key_by_template_type($template_type);
+		$dismiss_banner_arr = Wf_Woocommerce_Packing_List_Pro_Addons::wt_pklist_get_cta_banners('adc_cta_banner_in_customizer_tab');
+		if (!empty($template_addon_key)) {
+			if (true === Wf_Woocommerce_Packing_List_Admin::wt_plugin_active($template_addon_key) && false === Wf_Woocommerce_Packing_List_Admin::wt_plugin_active('wt_adc_addon')) {
+				if (empty($dismiss_banner_arr)) {
+					$show_banner = true;
+				} elseif (isset($dismiss_banner_arr['type']) && "full" === $dismiss_banner_arr['type']) {
+					$show_banner = true;
+				} elseif (isset($dismiss_banner_arr['type']) && "class" === $dismiss_banner_arr['type'] && isset($dismiss_banner_arr['value'])) {
+					$banner_val = $dismiss_banner_arr['value'];
+					if (isset($banner_val['class']) && 'adc_cta_banner_in_customizer_tab' === $banner_val['class'] && isset($banner_val['status']) && 1 === absint($banner_val['status'])) {
+						$show_banner = true;
+					}
+				}
+			}
+		}
+	}
+	if (true === $show_banner) {
+	?>
+	<div class="wt-pro-cta-bar adc_missing_cta_banner wt_pklist_dismissible_banner_div" style="background: #eeedfa; border-left: 4px solid #5151CD; margin: 0 auto 10px; auto;">
+		<span><svg width="13" height="14" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M7.59664 13.1544H5.28993C5.05644 13.1544 4.86711 13.3437 4.86711 13.5772C4.86711 13.8107 5.05644 14 5.28993 14H7.59664C7.83013 14 8.01946 13.8107 8.01946 13.5772C8.01946 13.3437 7.83013 13.1544 7.59664 13.1544ZM6.44329 1.67342C6.67678 1.67342 6.86611 1.48409 6.86611 1.2506V0.422819C6.86611 0.189329 6.67678 0 6.44329 0C6.2098 0 6.02047 0.189329 6.02047 0.422819V1.2506C6.02047 1.48409 6.2098 1.67342 6.44329 1.67342ZM12.4638 5.54785H11.636C11.4025 5.54785 11.2132 5.73718 11.2132 5.97067C11.2132 6.20416 11.4025 6.39349 11.636 6.39349H12.4638C12.6972 6.39349 12.8866 6.20416 12.8866 5.97067C12.8866 5.73718 12.6977 5.54785 12.4638 5.54785ZM1.25013 5.54785H0.422819C0.189329 5.54785 0 5.73718 0 5.97067C0 6.20416 0.189329 6.39349 0.422819 6.39349H1.2506C1.48409 6.39349 1.67342 6.20416 1.67342 5.97067C1.67342 5.73718 1.48362 5.54785 1.25013 5.54785ZM2.80658 2.93201C2.88926 3.0147 2.99732 3.05604 3.10584 3.05604C3.21436 3.05604 3.32242 3.0147 3.4051 2.93201C3.57047 2.76711 3.57047 2.49933 3.4051 2.33443L2.81926 1.74859C2.65389 1.58322 2.38611 1.58322 2.22121 1.74859C2.05584 1.91349 2.05584 2.18128 2.22121 2.34617L2.80658 2.93201ZM10.0673 1.74859L9.48195 2.33396C9.31658 2.49886 9.31658 2.76664 9.48195 2.93154C9.56463 3.01423 9.67268 3.05557 9.78121 3.05557C9.88973 3.05557 9.99779 3.01423 10.0805 2.93154L10.6658 2.34617C10.8312 2.18128 10.8312 1.91349 10.6658 1.74859C10.5005 1.58369 10.2322 1.58369 10.0673 1.74859ZM6.44329 2.97946C4.31745 2.97617 2.58812 4.70503 2.58812 6.83463C2.58812 7.85973 2.99027 8.79228 3.64799 9.48054C4.08443 9.93765 4.3555 10.5272 4.3555 11.1591V11.5195C4.3555 11.7788 4.56597 11.9893 4.8253 11.9893H6.44329H8.06128C8.3206 11.9893 8.53107 11.7788 8.53107 11.5195V11.1591C8.53107 10.5272 8.80168 9.93765 9.23859 9.48054C9.89584 8.79228 10.2985 7.8602 10.2985 6.83463C10.2985 4.70503 8.56913 2.9757 6.44329 2.97946ZM6.0651 5.32658C5.51356 5.46376 5.07007 5.9096 4.93476 6.46255C4.88732 6.65564 4.71443 6.7853 4.52463 6.7853C4.49128 6.7853 4.45698 6.78107 4.42362 6.77309C4.19671 6.71765 4.05812 6.48886 4.11356 6.26195C4.32591 5.39423 4.99537 4.72148 5.86074 4.50584C6.08718 4.4504 6.31738 4.58711 6.37329 4.81403C6.42966 5.04094 6.29154 5.2702 6.0651 5.32658Z" fill="#5454A5"/>
+		</svg></span>
+		<span style="font-weight: 600; color: #5454A5; margin: 0 15px 0 5px;">Did you know?</span> 
+		<span style="color: #222; font-weight: 400; width: 60%; text-align: left; ">
+			You can unlock full invoice customization with our Customizer.
+			<a href="https://www.webtoffee.com/product/customizer-for-woocommerce-pdf-invoice/?utm_source=free_plugin_customize_tab&utm_medium=pdf_premium&utm_campaign=PDF_Customizer" target="_blank" style="color: #5151CD; text-decoration: underline; font-weight: 500; display: inline-block; margin-top: 2px;">
+				Get Plugin Now
+			</a>
+		</span>
+		<button class="banner_dismiss notice-dismiss" data-banner-class="adc_missing_cta_banner" data-banner-interval="0" data-banner-action="0"></button>
+	</div>
+	<?php
+	}
+	?>
+</div>
 
 <div class="wf_cst_headbar">
 	<div style="float:left; display:flex; align-items: center; height:100%; width:max-content; padding-left: 10px;">

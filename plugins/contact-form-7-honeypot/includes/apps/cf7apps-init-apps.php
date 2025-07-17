@@ -4,21 +4,21 @@ class CF7Apps_Init_Apps {
     /**
      * Instance
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     private static $instance;
 
     /**
      * Apps
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     private $apps = array();
 
     /**
      * Initialize the class
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public static function instance() {
         if ( ! isset( self::$instance ) && ! ( self::$instance instanceof CF7Apps_Init_Apps ) ) {
@@ -31,7 +31,7 @@ class CF7Apps_Init_Apps {
     /**
      * Constructor
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public function __construct() {
         $this->init_apps();
@@ -40,7 +40,7 @@ class CF7Apps_Init_Apps {
     /**
      * Initialize the plugin
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public function init_apps() {
         foreach( new DirectoryIterator( CF7APPS_PLUGIN_DIR . '/includes/apps' ) as $file ) {
@@ -55,7 +55,7 @@ class CF7Apps_Init_Apps {
         /**
          * Filter to Register App
          * 
-         * @since 2.2.0
+         * @since 3.0.0
          */
         $this->apps = apply_filters( 'cf7apps_apps', $this->apps );
 

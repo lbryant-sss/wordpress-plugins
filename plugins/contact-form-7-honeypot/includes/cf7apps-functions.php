@@ -6,7 +6,7 @@
  * @param int $id
  * @param array $settings
  * 
- * @since 2.2.0
+ * @since 3.0.0
  */
 if( ! function_exists( 'cf7apps_save_app_settings' ) ):
 function cf7apps_save_app_settings( $id, $settings ) {
@@ -35,7 +35,7 @@ endif;
 /**
  * Migrate Legacy Settings
  * 
- * @since 2.2.0
+ * @since 3.0.0
  */
 if( ! function_exists( 'cf7apps_migrate_legacy_settings' ) ):
 function cf7apps_migrate_legacy_settings() {
@@ -67,7 +67,7 @@ endif;
 /**
  * Get Default Settings
  * 
- * @since 2.2.0
+ * @since 3.0.0
  */
 if( ! function_exists( 'cf7apps_get_default_settings' ) ):
 function cf7apps_get_default_settings() {

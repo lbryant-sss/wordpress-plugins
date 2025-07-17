@@ -277,7 +277,8 @@ class ScriptFilePriorityManager
         'options'    => ['path' => 'options'],
         'assetsURL'  => ['val' => BITFORMS_ROOT_URI . '/static/countries/'],
         'classNames' => ['path' => 'customClasses'],
-        'attributes' => ['path' => 'customAttributes']
+        'attributes' => ['path' => 'customAttributes'],
+        'contentId'  => ['var' => 'contentId'],
       ],
       'file-up' => [
         'fieldKey'      => ['var' => 'fieldKey'],

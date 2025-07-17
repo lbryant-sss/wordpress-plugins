@@ -30,20 +30,21 @@ if (!defined('ABSPATH') && !defined('BITFORMS_ASSET_URI')) {
   }
   </style>
   <?php
-  $baseCSSPath = "/form-styles/bitform-{$formID}.css";
+    $formUpdateVersion = get_option('bit-form_form_update_version');
+$baseCSSPath = "/form-styles/bitform-{$formID}.css";
 $baseConversationalCSSPath = "/form-styles/bitform-conversational-{$formID}.css";
 $customCSSPath = "/form-styles/bitform-custom-{$formID}.css";
 $standaloneCSSPath = "/form-styles/bitform-standalone-{$formID}.css";
 ?>
-  <link rel="stylesheet" href="<?php echo esc_url(BITFORMS_UPLOAD_BASE_URL . $baseCSSPath) ?>" />
-  <link rel="stylesheet" href="<?php echo esc_url(BITFORMS_UPLOAD_BASE_URL . $baseConversationalCSSPath) ?>" />
+  <link rel="stylesheet" href="<?php echo esc_url(BITFORMS_UPLOAD_BASE_URL . $baseCSSPath . "?bfv={$formUpdateVersion}") ?>" />
+  <link rel="stylesheet" href="<?php echo esc_url(BITFORMS_UPLOAD_BASE_URL . $baseConversationalCSSPath . "?bfv={$formUpdateVersion}") ?>" />
 
   <?php if (file_exists(BITFORMS_CONTENT_DIR . $customCSSPath)) : ?>
-  <link rel="stylesheet" href="<?php echo esc_url(BITFORMS_UPLOAD_BASE_URL . $customCSSPath) ?>" />
+  <link rel="stylesheet" href="<?php echo esc_url(BITFORMS_UPLOAD_BASE_URL . $customCSSPath . "?bfv={$formUpdateVersion}") ?>" />
   <?php endif; ?>
 
   <?php if (file_exists(BITFORMS_CONTENT_DIR . $standaloneCSSPath)) : ?>
-  <link rel="stylesheet" href="<?php echo esc_url(BITFORMS_UPLOAD_BASE_URL . $standaloneCSSPath) ?>" />
+  <link rel="stylesheet" href="<?php echo esc_url(BITFORMS_UPLOAD_BASE_URL . $standaloneCSSPath . "?bfv={$formUpdateVersion}") ?>" />
   <?php endif; ?>
 
   <?php if (isset($font) && '' !== $font) : ?>
@@ -59,7 +60,7 @@ $standaloneCSSPath = "/form-styles/bitform-standalone-{$formID}.css";
   <script>
   <?php
 echo $bfGlobals;
-$jsPath = BITFORMS_UPLOAD_BASE_URL . '/form-scripts/bitform-conversational-' . $formID . '.js';
+$jsPath = BITFORMS_UPLOAD_BASE_URL . '/form-scripts/bitform-conversational-' . $formID . ".js?bfv={$formUpdateVersion}"
 ?>;
   </script>
   <script src="<?php echo esc_url($jsPath) ?>">

@@ -48,10 +48,11 @@ try {
                 <div class="htmega-opt-get-pro-content">
                     <h3 class="htmega-opt-get-pro-title"><?php esc_html_e( 'What You Get', 'htmega-addons' )?></h3>
                     <ul>
-                        <li><?php esc_html_e( '130+ Elemetor Widgets', 'htmega-addons' ) ?></li>
+                        <li><?php esc_html_e( '135+ Elemetor Widgets', 'htmega-addons' ) ?></li>
                         <li><?php esc_html_e( '14+ Essential Modules', 'htmega-addons' ) ?></li>
-                        <li><?php esc_html_e( '170+ Page Templates', 'htmega-addons') ?></li>
-                        <li><?php esc_html_e( '790+ Elementor Blocks Template', 'htmega-addons' ) ?></li>
+                        <li><?php esc_html_e( '245+ Page Templates', 'htmega-addons') ?></li>
+                        <li><?php esc_html_e( '795+ Elementor Blocks Template', 'htmega-addons' ) ?></li>
+                        <li><?php esc_html_e( 'AI Writer', 'htmega-addons' ) ?></li>
                         <li><?php esc_html_e( 'Mega Menu Builder', 'htmega-addons' ) ?></li>
                         <li><?php esc_html_e( 'Theme Builder', 'htmega-addons' ) ?></li>
                         <li><?php esc_html_e( 'Advanced Slider', 'htmega-addons' ) ?></li>

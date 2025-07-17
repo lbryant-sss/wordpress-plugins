@@ -116,8 +116,8 @@ class Wf_Woocommerce_Packing_List {
 			self::$base_version = WF_PKLIST_VERSION;
 		}else 
 		{
-			$this->version = '4.7.8	';
-			self::$base_version = '4.7.8';
+			$this->version = '4.7.9';
+			self::$base_version = '4.7.9';
 		}
 		if(defined('WF_PKLIST_PLUGIN_NAME'))
 		{
@@ -554,6 +554,10 @@ class Wf_Woocommerce_Packing_List {
 
 	public static function wf_encode($data) 
 	{
+        // Handle null or empty values
+        if ($data === null || $data === '') {
+            return '';
+        }
         return rtrim(strtr(base64_encode($data),'+/','-_'),'=');
     }
 
@@ -578,7 +582,7 @@ class Wf_Woocommerce_Packing_List {
 			$document_link = add_query_arg( array(
 				'attaching_pdf'		=> 1,
 				'print_packinglist' => 'true',
-				'email'     		=> self::wf_encode( WC()->version < '2.7.0' ? $order->billing_email : $order->get_billing_email() ),
+				'email'     		=> self::wf_encode( version_compare( WC()->version, '2.7.0', '<' ) ? $order->billing_email : $order->get_billing_email() ),
 				'post'				=> self::wf_encode($order_id),
 				'type'				=> $action,
 				'user_print'		=> 1,
@@ -640,7 +644,7 @@ class Wf_Woocommerce_Packing_List {
 			$document_link = add_query_arg( array(
 				'attaching_pdf'		=> 1,
 				'print_packinglist' => 'true',
-				'email'				=> self::wf_encode( WC()->version < '2.7.0' ? $order->billing_email : $order->get_billing_email() ),
+				'email'				=> self::wf_encode( version_compare( WC()->version, '2.7.0', '<' ) ? $order->billing_email : $order->get_billing_email() ),
 				'post'				=> self::wf_encode($order_id),
 				'type'				=> $action.'_'.$template_type,
 				'user_print'		=> 1,

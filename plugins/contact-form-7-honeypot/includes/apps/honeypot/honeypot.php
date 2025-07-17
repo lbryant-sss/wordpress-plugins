@@ -5,17 +5,18 @@ class CF7Apps_Honeypot_App extends CF7Apps_App {
     /**
      * Constructor
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public function __construct() {
         $this->id = 'honeypot';
+        $this->priority = 1;
         $this->title = __( 'Honeypot', 'cf7apps' );
         $this->description = __( 'Add invisible honeypot fields to your forms to trap spambots, ensuring spam-free form submission.', 'cf7apps' );
         $this->icon = plugin_dir_url( __FILE__ ) . 'assets/images/logo.png';
         $this->has_admin_settings = true;
         $this->is_pro = false;
         $this->by_default_enabled = true;
-        $this->documentation_url = 'https://cf7apps.com/docs/free-addons/contact-form-7-honeypot';
+        $this->documentation_url = 'https://cf7apps.com/docs/spam-protection/contact-form-7-honeypot/';
         $this->parent_menu = __( 'Spam Protection', 'cf7apps' );
         $this->setting_tabs = array(
             'general'   => __( 'General', 'cf7apps' ),
@@ -28,7 +29,7 @@ class CF7Apps_Honeypot_App extends CF7Apps_App {
     /**
      * Register Admin Settings
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public function admin_settings() {
         return array(
@@ -111,7 +112,7 @@ class CF7Apps_Honeypot_App extends CF7Apps_App {
     /**
      * Register Post Type Args | Filter Callback
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public function register_post_type_args( $args, $post_type ) {
         if ( 'wpcf7_contact_form' === $post_type ) {
@@ -125,7 +126,7 @@ class CF7Apps_Honeypot_App extends CF7Apps_App {
 /**
  * Register Honeypot App
  * 
- * @since 2.2.0
+ * @since 3.0.0
  */
 if( ! function_exists( 'cf7apps_register_honeypot' ) ):
 function cf7apps_register_honeypot( $apps ) {

@@ -1871,8 +1871,6 @@ $i18n_strings = array(
 
     'Duplicate field name' => __('Duplicate field name', 'bit-form'),
 
-    'Field name cannot contain dots or spaces' => __('Field name cannot contain dots or spaces', 'bit-form'),
-
     'Field name cannot be empty' => __('Field name cannot be empty', 'bit-form'),
 
     'Name' => __('Name', 'bit-form'),
@@ -2260,6 +2258,14 @@ $i18n_strings = array(
     'Input Format Option' => __('Input Format Option', 'bit-form'),
 
     'Value Format Option' => __('Value Format Option', 'bit-form'),
+
+    'Custom Validation (RegEx) Pattern' => __('Custom Validation (RegEx) Pattern', 'bit-form'),
+
+    'Expression' => __('Expression', 'bit-form'),
+
+    'Flags:' => __('Flags:', 'bit-form'),
+
+    'Hide Country List' => __('Hide Country List', 'bit-form'),
 
     'Options 2' => __('Options 2', 'bit-form'),
 
@@ -2651,11 +2657,7 @@ $i18n_strings = array(
 
     'RegEx Pattern' => __('RegEx Pattern', 'bit-form'),
 
-    'Expression' => __('Expression', 'bit-form'),
-
     'Fields' => __('Fields', 'bit-form'),
-
-    'Flags:' => __('Flags:', 'bit-form'),
 
     'Validations' => __('Validations', 'bit-form'),
 
@@ -3002,6 +3004,8 @@ $i18n_strings = array(
     'Integration clone failed.' => __('Integration clone failed.', 'bit-form'),
 
     'Integrate your form with your favorite apps and services.' => __('Integrate your form with your favorite apps and services.', 'bit-form'),
+
+    'Date Time (Advanced)' => __('Date Time (Advanced)', 'bit-form'),
 
     'Advanced Date Time' => __('Advanced Date Time', 'bit-form'),
 

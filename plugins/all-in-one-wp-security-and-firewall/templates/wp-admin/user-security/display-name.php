@@ -23,7 +23,7 @@
 		?>
 		<table class="form-table">
 			<?php
-				$edit_user_page = network_site_url().'/wp-admin/user-edit.php?user_id=';
+				$edit_user_page = network_site_url('wp-admin/user-edit.php?user_id=');
 				foreach ($login_nick_name_accounts as $usr) {
 					echo '<tr valign="top">';
 					// echo '<th scope="row"><label for="UserID'.$usr['ID'].'"> Login Name: </label></th>';

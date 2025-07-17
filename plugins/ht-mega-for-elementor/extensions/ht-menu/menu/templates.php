@@ -60,13 +60,13 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                     <div class="htmega-menu-popup-tab-pane" data-id="htmega-menu-popup-tab-settings">
                         <ul>
                             <li>
-                                <label for="menu-item-menuwidth-{{ data.id }}"><?php esc_html_e('Menu Width','htmega-addons'); ?></label>
-                                <input type="text" id="menu-item-menuwidth-{{ data.id }}" name="menu-item-menuwidth-{{ data.id }}" class="widefat" value="{{ data.content['menu-item-menuwidth-'+data.id] }}">
+                                <label for="menu-item-menuwidth-{{ data.id }}"><?php esc_html_e('Menu Width (px)','htmega-addons'); ?></label>
+                                <input type="text" id="menu-item-menuwidth-{{ data.id }}" name="menu-item-menuwidth-{{ data.id }}" class="widefat" value="{{ data.content['menu-item-menuwidth-'+data.id] }}" placeholder="500">
                             </li>
 
                             <li>
-                                <label for="menu-item-menuposition-{{ data.id }}"><?php esc_html_e('SubMenu Position','htmega-addons'); ?></label>
-                                <input type="text" id="menu-item-menuposition-{{ data.id }}" name="menu-item-menuposition-{{ data.id }}" class="widefat" value="{{ data.content['menu-item-menuposition-'+data.id] }}">
+                                <label for="menu-item-menuposition-{{ data.id }}"><?php esc_html_e('Sub Menu Position (px)','htmega-addons'); ?></label>
+                                <input type="text" id="menu-item-menuposition-{{ data.id }}" name="menu-item-menuposition-{{ data.id }}" class="widefat" value="{{ data.content['menu-item-menuposition-'+data.id] }}" placeholder="-250">
                             </li>
                         </ul>
                     </div>

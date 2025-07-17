@@ -7,7 +7,7 @@ class CF7Apps {
     /**
      * Initialize the class
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public static function instance() {
         if ( ! isset( self::$instance ) && ! ( self::$instance instanceof CF7Apps ) ) {
@@ -20,7 +20,7 @@ class CF7Apps {
     /**
      * Constructor
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public function __construct() {
         $this->init();
@@ -29,18 +29,59 @@ class CF7Apps {
     /**
      * Initialize the plugin
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public function init() {
+        // Check if Contact Form 7 is active
+        if ( ! $this->is_contact_form_7_active() ) {
+            add_action( 'admin_notices', array( $this, 'cf7_not_active_notice' ) );
+            return; // Don't initialize if CF7 is not active
+        }
+
         $this->includes();
         $this->register_hooks();
         $this->add_actions();
     }
 
     /**
+     * Check if Contact Form 7 is active
+     * 
+     * @return bool
+     * @since 3.0.0
+     */
+    private function is_contact_form_7_active() {
+        if ( ! function_exists( 'is_plugin_active' ) ) {
+            include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+        }
+        
+        return is_plugin_active( 'contact-form-7/wp-contact-form-7.php' );
+    }
+
+    /**
+     * Show admin notice when Contact Form 7 is not active
+     * 
+     * @since 3.0.0
+     */
+    public function cf7_not_active_notice() {
+        ?>
+        <div class="notice notice-error is-dismissible">
+            <p>
+                <?php 
+                printf(
+                    __( '%s requires Contact Form 7 to be installed and activated. %s', 'cf7apps' ),
+                    '<strong>CF7Apps</strong>',
+                    '<a href="' . esc_url( admin_url( 'plugin-install.php?s=contact+form+7&tab=search&type=term' ) ) . '">' . __( 'Install Contact Form 7', 'cf7apps' ) . '</a>'
+                );
+                ?>
+            </p>
+        </div>
+        <?php
+    }
+
+    /**
      * Include necessary files
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public function includes() {
         require_once 'cf7apps-functions.php';
@@ -53,7 +94,7 @@ class CF7Apps {
     /**
      * Register necessary hooks
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public function register_hooks() {
         register_activation_hook( CF7APPS_PLUGIN, array( $this, 'activate' ) );
@@ -62,7 +103,7 @@ class CF7Apps {
     /**
      * Activation hook
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public function activate() {
         $cf7apps_settings = get_option( 'cf7apps_settings' );
@@ -83,7 +124,7 @@ class CF7Apps {
     /**
      * Add necessary actions
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public function add_actions() {
         add_action( 'admin_menu', array( $this, 'admin_menu' ) );
@@ -92,7 +133,7 @@ class CF7Apps {
     /**
      * Add admin menu | Action Callback
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public function admin_menu() {
         $page_id = add_menu_page( 
@@ -140,7 +181,7 @@ class CF7Apps {
     /**
      * CF7 Apps Page | Action Callback
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public function admin_styles() {
         $asset_file = CF7APPS_PLUGIN_DIR . '/build/index.asset.php';
@@ -191,7 +232,7 @@ class CF7Apps {
     /**
      * CF7 Apps Page | Callback
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public function cf7_apps() {
         echo '<div id="root"></div>';

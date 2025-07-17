@@ -31,7 +31,7 @@ const CF7AppsView = () => {
      * 
      * @returns {void}
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     const updateDatabase = async () => {
         setIsMigrating( true );

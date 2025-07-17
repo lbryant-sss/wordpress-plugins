@@ -426,6 +426,7 @@ final class FrontendFormManager extends FormManager
 
   public function beforeSubmittedValidate()
   {
+    error_log('beforeSubmittedValidate called for form ID: ' . $this->_form_id);
     if ($this->verifySubmissionNonce()) {
       if ($this->isExist()) {
         $isRestricted = $this->checkSubmissionRestriction();
@@ -532,7 +533,7 @@ final class FrontendFormManager extends FormManager
     if ($captchaSettings || $captchaV3Settings) {
       $token = $_POST['g-recaptcha-response'];
       if (!isset($_POST['g-recaptcha-response'])) {
-        return new WP_Error('spam_detection', __('Please verify reCAPTCHA', 'bit-form'));
+        return new WP_Error('spam_detection', __('Please recheck your reCaptcha Configuration', 'bit-form'));
       }
       $integrationHandler = new IntegrationHandler(0);
       $allFormIntegrations = $integrationHandler->getAllIntegration('app', $captchaSettings ? 'gReCaptcha' : 'gReCaptchaV3');
@@ -621,8 +622,8 @@ final class FrontendFormManager extends FormManager
 
   private function verifyTurnstileCaptcha()
   {
-    $hCaptchaExist = $this->isFieldTypeExist('turnstile');
-    if ($hCaptchaExist) {
+    $turnstileExist = $this->isFieldTypeExist('turnstile');
+    if ($turnstileExist) {
       if (!isset($_POST['cf-turnstile-response'])) {
         return new WP_Error('spam_detection', __('Please verify Cloudflare Turnstile Captcha', 'bit-form'));
       }

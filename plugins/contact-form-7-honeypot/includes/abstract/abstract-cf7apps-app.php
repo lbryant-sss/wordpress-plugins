@@ -5,77 +5,84 @@ abstract class CF7Apps_App {
     /**
      * App ID
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public $id;
 
     /**
+     * Priority
+     * 
+     * @since 3.0.0
+     */
+    public $priority = 999;
+
+    /**
      * App Title
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public $title;
 
     /**
      * App Description
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public $description;
 
     /**
      * App Icon
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public $icon;
 
     /**
      * Has Settings
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public $has_admin_settings = false;
 
     /**
      * Is Pro
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public $is_pro = false;
 
     /**
      * Is enabled by default
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public $by_default_enabled = false;
 
     /**
      * Documentation URL
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public $documentation_url;
 
     /**
      * Parent Menu
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public $parent_menu = false;
 
     /**
      * Setting Tabs
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public $setting_tabs = array();
 
     /**
      * Admin Settings
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public function admin_settings() {
         return array();
@@ -84,7 +91,7 @@ abstract class CF7Apps_App {
     /**
      * Saved Settings
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public $options = false;
 
@@ -93,7 +100,7 @@ abstract class CF7Apps_App {
      * 
      * @param string $key Option key to get
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public function get_option( $key = false ) {
         $default_settings = array();
@@ -116,7 +123,7 @@ abstract class CF7Apps_App {
     /**
      * Get Settings
      * 
-     * @since 2.2.0
+     * @since 3.0.0
      */
     public function get_settings() {
         $default_settings = array();
@@ -126,6 +133,7 @@ abstract class CF7Apps_App {
 
         $settings = new StdClass;
         $settings->id = $this->id;
+        $settings->priority = $this->priority;
         $settings->title = $this->title;
         $settings->description = $this->description;
         $settings->icon = $this->icon;

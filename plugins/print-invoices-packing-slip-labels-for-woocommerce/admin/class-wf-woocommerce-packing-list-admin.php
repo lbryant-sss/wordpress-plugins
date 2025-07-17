@@ -274,8 +274,8 @@ class Wf_Woocommerce_Packing_List_Admin {
 	public function add_email_attachments($attachments, $status = null, $order = null, $email = null) 
 	{
 		if ( is_object( $order) && is_a( $order, 'WC_Order' ) ) {
-			$order = ( WC()->version < '2.7.0' ) ? new WC_Order($order) : new wf_order($order);
-			$order_id = (WC()->version < '2.7.0') ? $order->id : $order->get_id();
+			$order = ( version_compare( WC()->version, '2.7.0', '<' ) ) ? new WC_Order($order) : new wf_order($order);
+			$order_id = version_compare( WC()->version, '2.7.0', '<' ) ? $order->id : $order->get_id();
 		} else {
 		   /**
 			* 4.7.3
@@ -307,8 +307,8 @@ class Wf_Woocommerce_Packing_List_Admin {
 	{
 		if(is_object($order) && is_a($order,'WC_Order'))
 		{
-			$order=( WC()->version < '2.7.0' ) ? new WC_Order($order) : new wf_order($order);
-			$order_id = (WC()->version < '2.7.0') ? $order->id : $order->get_id();
+			$order=( version_compare( WC()->version, '2.7.0', '<' ) ) ? new WC_Order($order) : new wf_order($order);
+			$order_id = version_compare( WC()->version, '2.7.0', '<' ) ? $order->id : $order->get_id();
 			$html='';
 			$html=apply_filters('wt_email_print_actions',$html,$order,$order_id);	
 		}
@@ -321,16 +321,16 @@ class Wf_Woocommerce_Packing_List_Admin {
 	 */
 	public function add_fontend_print_actions($order)
 	{
-		$order=( WC()->version < '2.7.0' ) ? new WC_Order($order) : new wf_order($order);
-		$order_id = (WC()->version < '2.7.0') ? $order->id : $order->get_id();
+		$order=( version_compare( WC()->version, '2.7.0', '<' ) ) ? new WC_Order($order) : new wf_order($order);
+		$order_id = version_compare( WC()->version, '2.7.0', '<' ) ? $order->id : $order->get_id();
 		$html='';
 		$html=apply_filters('wt_frontend_print_actions',$html,$order,$order_id);	
 	}
 
 	public function add_order_list_page_print_actions($actions, $order)
 	{
-		$order=( WC()->version < '2.7.0' ) ? new WC_Order($order) : new wf_order($order);
-		$order_id = (WC()->version < '2.7.0') ? $order->id : $order->get_id();
+		$order=( version_compare( WC()->version, '2.7.0', '<' ) ) ? new WC_Order($order) : new wf_order($order);
+		$order_id = version_compare( WC()->version, '2.7.0', '<' ) ? $order->id : $order->get_id();
 
 		$wt_actions=array();
 		$wt_actions=apply_filters('wt_pklist_intl_frontend_order_list_page_print_actions', $wt_actions, $order, $order_id);
@@ -493,7 +493,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 		if ( ! is_object( $order ) && is_numeric( $order ) ) {
 			$order = wc_get_order( absint( $order ) );
 		}
-		$order_id = (WC()->version < '2.7.0') ? $order->id : $order->get_id();
+		$order_id = version_compare( WC()->version, '2.7.0', '<' ) ? $order->id : $order->get_id();
 		?>
 		<table class="wf_invoice_metabox" style="width:100%;">			
 			<?php
@@ -896,7 +896,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 		}
 		
 		if (1 === count( $orders ) ) {
-			$order = ( WC()->version < '2.7.0' ? new WC_Order( $orders[0] ) : new wf_order( $orders[0] ) );
+			$order = ( version_compare( WC()->version, '2.7.0', '<' ) ? new WC_Order( $orders[0] ) : new wf_order( $orders[0] ) );
 			if ( empty( $order ) ) {
 				// order is empty.
 				self::wt_pklist_safe_redirect_or_die( null, __( 'There is no order with this id', 'print-invoices-packing-slip-labels-for-woocommerce' ) );
@@ -1021,7 +1021,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 			if ( hash_equals( $order->get_order_key(), $access_key ) ) {
 				$orders	= explode(",",$decoded_order_id);
 			} else {
-				if ( $decoded_mail_id === ( ( WC()->version < '2.7.0' ) ? $order->billing_email : $order->get_billing_email() ) ) {
+				if ( $decoded_mail_id === ( version_compare( WC()->version, '2.7.0', '<' ) ? $order->billing_email : $order->get_billing_email() ) ) {
 					$orders	= explode( ",", $decoded_order_id );
 				} else {
 					self::wt_pklist_safe_redirect_or_die( null, __( 'It seems this order is not yours.', 'print-invoices-packing-slip-labels-for-woocommerce' ) );	
@@ -1039,7 +1039,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 		}
 
 		if (1 === count( $orders ) ) {
-			$order = ( WC()->version < '2.7.0' ? new WC_Order( $orders[0] ) : new wf_order( $orders[0] ) );
+			$order = ( version_compare( WC()->version, '2.7.0', '<' ) ? new WC_Order( $orders[0] ) : new wf_order( $orders[0] ) );
 			if ( empty( $order ) ) {
 				// order is empty.
 				self::wt_pklist_safe_redirect_or_die( null, __( 'There is no order with this id', 'print-invoices-packing-slip-labels-for-woocommerce' ) );
@@ -1797,11 +1797,11 @@ class Wf_Woocommerce_Packing_List_Admin {
     * 2.7.9 - bug fix - compatible with WC version below 4.1.0
     */
     public static function wf_display_price( $user_currency, $order, $price, $from="" ) {
-    	$order_id			= WC()->version<'2.7.0' ? $order->id : $order->get_id();
+    	$order_id			= version_compare(WC()->version, '2.7.0', '<') ? $order->id : $order->get_id();
     	$price 				= (float)$price;
 		$negative_price 	= ( 0 > $price ) ? true : false;
 		$price 				= abs( (float)$price );
-		$symbols			= ( '4.1.0' > WC()->version ) ? self::wf_get_woocommerce_currency_symbols() : get_woocommerce_currency_symbols();
+		$symbols			= version_compare( '4.1.0', WC()->version, '>' ) ? self::wf_get_woocommerce_currency_symbols() : get_woocommerce_currency_symbols();
 		$currency_pos		= get_option('woocommerce_currency_pos') ? get_option('woocommerce_currency_pos') : 'left';
     	$wc_currency_symbol = isset( $symbols[ $user_currency ] ) ? $symbols[ $user_currency ] : '';
 		$wc_currency_symbol = apply_filters( 'woocommerce_currency_symbol', $wc_currency_symbol, $user_currency );
@@ -1871,7 +1871,7 @@ class Wf_Woocommerce_Packing_List_Admin {
     }
 
     public static function wf_get_decimal_price($user_currency,$order){
-    	$order_id=WC()->version<'2.7.0' ? $order->id : $order->get_id();
+    	$order_id=version_compare(WC()->version, '2.7.0', '<') ? $order->id : $order->get_id();
     	if(true === get_option('woocommerce_price_num_decimals')){
     		$decimal = wc_get_price_decimals();
     	}else{
@@ -1911,7 +1911,7 @@ class Wf_Woocommerce_Packing_List_Admin {
     public static function wf_convert_to_user_currency($item_price,$user_currency,$order){
 
     	$rate = 1;
-    	$order_id=WC()->version<'2.7.0' ? $order->id : $order->get_id();
+    	$order_id=version_compare(WC()->version, '2.7.0', '<') ? $order->id : $order->get_id();
     	$item_price = (float)$item_price;
 
 		$woocs_rate 	= Wt_Pklist_Common::get_order_meta( $order_id, '_woocs_order_rate', true );
@@ -2124,7 +2124,7 @@ class Wf_Woocommerce_Packing_List_Admin {
     * Shipping address with order currency symbol
     */
 	public static function wf_shipping_formated_price($order){
-		$order_id=(WC()->version<'2.7.0' ? $order->id : $order->get_id());
+		$order_id=(version_compare(WC()->version, '2.7.0', '<') ? $order->id : $order->get_id());
 		$user_currency = Wt_Pklist_Common::get_order_meta($order_id,'currency',true);
 		$tax_display = get_option( 'woocommerce_tax_display_cart' );
 
@@ -2621,7 +2621,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 	public static function check_full_refunded_property($order){
 		$all_refund_orders = $order->get_refunds();
 		$number_of_refunds = count($all_refund_orders);
-		$order_status = ( WC()->version < '2.7.0' ) ? $order->status : $order->get_status();
+		$order_status = version_compare( WC()->version, '2.7.0', '<' ) ? $order->status : $order->get_status();
 		if(1 === $number_of_refunds && $order_status == "refunded"){
 			$order->full_refunded = 1;
 		}else{
@@ -4785,7 +4785,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 	 */
 	public function add_common_print_button_in_wc_order_listing_action_column( $order ) {
 		if ( !empty( $order ) ) {
-			$order_id					= (WC()->version < '2.7.0') ? $order->id : $order->get_id();
+			$order_id					= version_compare(WC()->version, '2.7.0', '<') ? $order->id : $order->get_id();
 			$enabled_common_print_btn 	= Wf_Woocommerce_Packing_List::get_option('wt_pklist_common_print_button_enable');
 			$show_print_button			= current_user_can('seller') ? false : true;
 			$show_print_button			= apply_filters('wt_pklist_show_document_common_print_button_action_column',$show_print_button);

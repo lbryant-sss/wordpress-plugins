@@ -3,7 +3,7 @@ Contributors: nerdpressteam, petersplugins, jchristopher
 Tags: 404, 404 page, custom 404, not found, 404 error
 Author: NerdPress
 Author URI: https://www.nerdpress.net
-Tested up to: 6.6
+Tested up to: 6.8
 Stable tag: 11.4.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html

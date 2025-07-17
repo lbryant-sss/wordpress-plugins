@@ -541,8 +541,8 @@ class Wt_Import_Export_For_Woo_Basic_Order_Export {
                 'fee_total' => wc_format_decimal($fee_total, 2),
                 'fee_tax_total' => wc_format_decimal($fee_tax_total, 2),
                 'tax_total' => wc_format_decimal($order->get_total_tax(), 2),
-                'cart_discount' => (defined('WC_VERSION') && (WC_VERSION >= 2.3)) ? wc_format_decimal($order->get_total_discount(), 2) : wc_format_decimal($order->get_cart_discount(), 2),
-                'order_discount' => (defined('WC_VERSION') && (WC_VERSION >= 2.3)) ? wc_format_decimal($order->get_total_discount(), 2) : wc_format_decimal($order->get_order_discount(), 2),
+                'cart_discount' => (defined('WC_VERSION') && version_compare(WC_VERSION, '2.3', '>=')) ? wc_format_decimal($order->get_total_discount(), 2) : (method_exists($order, 'get_cart_discount') ? wc_format_decimal($order->get_cart_discount(), 2) : '0.00'),
+                'order_discount' => (defined('WC_VERSION') && version_compare(WC_VERSION, '2.3', '>=')) ? wc_format_decimal($order->get_total_discount(), 2) : (method_exists($order, 'get_order_discount') ? wc_format_decimal($order->get_order_discount(), 2) : '0.00'),
                 'discount_total' => wc_format_decimal($order->get_discount_total(), 2),
                 'order_total' => wc_format_decimal($order->get_total(), 2),
                 'order_subtotal' => wc_format_decimal($order->get_subtotal(), 2), // Get order subtotal
@@ -606,8 +606,8 @@ class Wt_Import_Export_For_Woo_Basic_Order_Export {
                 'fee_total' => wc_format_decimal($fee_total, 2),
                 'fee_tax_total' => wc_format_decimal($fee_tax_total, 2),
                 'tax_total' => wc_format_decimal($order->get_total_tax(), 2),
-                'cart_discount' => (defined('WC_VERSION') && (WC_VERSION >= 2.3)) ? wc_format_decimal($order->get_total_discount(), 2) : wc_format_decimal($order->get_cart_discount(), 2),
-                'order_discount' => (defined('WC_VERSION') && (WC_VERSION >= 2.3)) ? wc_format_decimal($order->get_total_discount(), 2) : wc_format_decimal($order->get_order_discount(), 2),
+                'cart_discount' => (defined('WC_VERSION') && version_compare(WC_VERSION, '2.3', '>=')) ? wc_format_decimal($order->get_total_discount(), 2) : (method_exists($order, 'get_cart_discount') ? wc_format_decimal($order->get_cart_discount(), 2) : '0.00'),
+                'order_discount' => (defined('WC_VERSION') && version_compare(WC_VERSION, '2.3', '>=')) ? wc_format_decimal($order->get_total_discount(), 2) : (method_exists($order, 'get_order_discount') ? wc_format_decimal($order->get_order_discount(), 2) : '0.00'),
                 'discount_total' => wc_format_decimal($order->get_total_discount(), 2),
                 'order_total' => wc_format_decimal($order->get_total(), 2),
                 'order_subtotal' => wc_format_decimal($order->get_subtotal(), 2), // Get order subtotal
@@ -650,7 +650,7 @@ class Wt_Import_Export_For_Woo_Basic_Order_Export {
                 'tax_items' => implode(';', $tax_items),
                 'coupon_items' => implode(';', $coupon_items),
                 'refund_items' => implode(';', $refund_items),
-                'order_notes' => implode('||', (defined('WC_VERSION') && (WC_VERSION >= 3.2)) ? self::get_order_notes_new($order) : self::get_order_notes($order)),
+                'order_notes' => implode('||', (defined('WC_VERSION') && version_compare(WC_VERSION, '3.2', '>=')) ? self::get_order_notes_new($order) : self::get_order_notes($order)),
                 'download_permissions' => $order->is_download_permitted() ? $order->is_download_permitted() : 0,                
             );
             

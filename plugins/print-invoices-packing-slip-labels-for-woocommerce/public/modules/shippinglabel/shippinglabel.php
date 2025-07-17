@@ -480,7 +480,7 @@ class Wf_Woocommerce_Packing_List_Shippinglabel
 			}
 	        foreach ($orders as $order_id)
 	        {
-	        	$order = ( WC()->version < '2.7.0' ) ? new WC_Order($order_id) : new wf_order($order_id);
+	        	$order = version_compare( WC()->version, '2.7.0', '<' ) ? new WC_Order($order_id) : new wf_order($order_id);
 
 				/**
 				 * @since 4.6.0 - Added filter to add before preparing the order package and rendering the html.
@@ -508,7 +508,7 @@ class Wf_Woocommerce_Packing_List_Shippinglabel
 							}
 						}
 						$order_pack_inc++;
-						$order=( WC()->version < '2.7.0' ) ? new WC_Order($order_id) : new wf_order($order_id);						
+						$order= version_compare( WC()->version, '2.7.0', '<' ) ? new WC_Order($order_id) : new wf_order($order_id);						
 						if("No" === $is_single_page_print)
 						{
 							$out_arr[]=$this->customizer->generate_template_html($html,$template_type,$order,$box_packing,$order_package);
@@ -580,7 +580,7 @@ class Wf_Woocommerce_Packing_List_Shippinglabel
 		$show_print_button	= apply_filters('wt_pklist_show_document_print_button_action_column_free', true, $this->module_base, $order);
 		
 		if( !empty( $order ) && true === $show_print_button ) {
-			$order_id	= ( WC()->version < '2.7.0' ) ? $order->id : $order->get_id();
+			$order_id	= version_compare( WC()->version, '2.7.0', '<' ) ? $order->id : $order->get_id();
 			
 			if( in_array( $this->module_base, Wf_Woocommerce_Packing_List::get_option( 'wt_pklist_separate_print_button_enable' ) ) ) {
 				$btn_action_name 	= 'wt_pklist_print_document_'.$this->module_base.'_not_yet';

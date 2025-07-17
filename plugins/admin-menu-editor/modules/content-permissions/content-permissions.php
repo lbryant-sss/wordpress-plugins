@@ -320,6 +320,13 @@ class ContentPermissionsEnforcer {
 
 		//Collect the post type capabilities that map to core meta capabilities like "edit_post".
 		add_action('registered_post_type', function ($postTypeName, $postType = null) {
+			//Sanity check: $postType->cap should be an object. A user reported an "illegal offset" error
+			//with the Bricks theme, which I can't reproduce since I don't have that theme. It seems
+			//possible that it could be caused by "cap" being a string or an array instead of an object.
+			if ( !isset($postType->cap) || !is_object($postType->cap) ) {
+				return;
+			}
+
 			foreach (self::RELEVANT_POST_META_CAPS as $cap) {
 				if (
 					isset($postType->cap->$cap)

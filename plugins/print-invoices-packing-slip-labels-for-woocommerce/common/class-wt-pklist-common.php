@@ -341,7 +341,7 @@ class Wt_Pklist_Common
         if(!is_null($order)){
             $all_refund_orders = $order->get_refunds();
             $number_of_refunds = count($all_refund_orders);
-            $order_status = ( WC()->version < '2.7.0' ) ? $order->status : $order->get_status();
+            $order_status = version_compare( WC()->version, '2.7.0', '<' ) ? $order->status : $order->get_status();
             if(1 === $number_of_refunds && "refunded" === $order_status){
                 return true;
             }else{

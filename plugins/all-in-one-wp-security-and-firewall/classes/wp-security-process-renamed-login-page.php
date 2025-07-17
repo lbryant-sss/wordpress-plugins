@@ -178,10 +178,10 @@ class AIOWPSecurity_Process_Renamed_Login_Page {
 			}
 		}
 
-		//case where someone attempting to reach the standard register or signup pages
-		if (isset($_SERVER['REQUEST_URI']) && stripos(urldecode($_SERVER['REQUEST_URI']), 'wp-register.php') || isset($_SERVER['REQUEST_URI']) && stripos(urldecode($_SERVER['REQUEST_URI']), 'wp-signup.php')) {
+		//case where someone attempting to reach the standard register pages
+		if (isset($_SERVER['REQUEST_URI']) && stripos(urldecode($_SERVER['REQUEST_URI']), 'wp-register.php')) {
 			//Check if the maintenance (lockout) mode is active - if so prevent access to site by not displaying 404 page!
-			if ($aio_wp_security->configs->get_value('aiowps_site_lockout') == '1') {
+			if ('1' == $aio_wp_security->configs->get_value('aiowps_site_lockout')) {
 				AIOWPSecurity_WP_Loaded_Tasks::site_lockout_tasks();
 			} else {
 				AIOWPSecurity_Process_Renamed_Login_Page::aiowps_set_404();

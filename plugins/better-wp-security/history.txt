@@ -1101,3 +1101,5 @@
 9.3.9 - 2025-07-08 - Timothy Jacobs
 	Tweak: Reduce number of steps in the onboarding sequence.
 	Bug Fix: Notification Center settings could not be properly saved.
+9.3.10 - 2025-07-16 - Timothy Jacobs
+	Tweak: Update SolidWP Logo.

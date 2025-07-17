@@ -339,7 +339,7 @@ class HTMega_Elementor_Widget_Carousel extends Widget_Base {
                     'min' => 1,
                     'max' => 8,
                     'step' => 1,
-                    'default' => 1,
+                    'default' => 2,
                     'condition' => [
                         'slider_on' => 'yes',
                     ]
@@ -354,7 +354,7 @@ class HTMega_Elementor_Widget_Carousel extends Widget_Base {
                     'min' => 1,
                     'max' => 8,
                     'step' => 1,
-                    'default' => 1,
+                    'default' => 2,
                     'condition' => [
                         'slider_on' => 'yes',
                     ]
@@ -367,7 +367,7 @@ class HTMega_Elementor_Widget_Carousel extends Widget_Base {
                     'label' => __('Tablet Resolution', 'htmega-addons'),
                     'description' => __('The resolution to tablet.', 'htmega-addons'),
                     'type' => Controls_Manager::NUMBER,
-                    'default' => 750,
+                    'default' => 1024,
                     'condition' => [
                         'slider_on' => 'yes',
                     ]

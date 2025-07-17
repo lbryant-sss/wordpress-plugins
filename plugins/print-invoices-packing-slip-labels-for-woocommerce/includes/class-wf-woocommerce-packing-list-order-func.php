@@ -42,7 +42,7 @@ class Wf_Woocommerce_Packing_List_Order_Func{
             return 0;
         }
         $wc_version     = WC()->version;
-        $order_id       = $wc_version<'2.7.0' ? $order->id : $order->get_id();
+        $order_id       = ( version_compare( $wc_version, '2.7.0', '<' ) ) ? $order->id : $order->get_id();
         $user_currency  = Wt_Pklist_Common::get_order_meta($order_id, 'currency', true);
         $incl_tax_text  = '';
         if($incl_tax)

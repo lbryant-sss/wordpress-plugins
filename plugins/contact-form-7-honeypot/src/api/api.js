@@ -5,7 +5,7 @@ const headers =  {
 /**
  * Fetches the menu items from the server.
  * 
- * @since 2.2.0
+ * @since 3.0.0
  */
 export async function getMenu() {
     const response = await fetch(`${CF7Apps.restURL}cf7apps/v1/get-menu-items`, {
@@ -26,7 +26,7 @@ export async function getMenu() {
  * 
  * @param {string} id The ID of the app.
  * 
- * @since 2.2.0
+ * @since 3.0.0
  */
 export async function getApps( id = '' ) {
     // Use REST route with optional /id param, e.g. .../get-apps or .../get-apps/123
@@ -57,7 +57,7 @@ export async function getApps( id = '' ) {
  *  
  * @returns 
  * 
- * @since 2.2.0
+ * @since 3.0.0
  */
 export async function saveSettings(id, app_settings) {
     const response = await fetch(
@@ -83,7 +83,7 @@ export async function saveSettings(id, app_settings) {
 /**
  * Fetches the CF7 forms from the server.
  *  
- * @since 2.2.0
+ * @since 3.0.0
  * 
  * @returns {array} The CF7 forms.
  */
@@ -109,7 +109,7 @@ export async function getCF7Forms() {
  * 
  * @returns {boolean} True if the app has migrated, false otherwise.
  * 
- * @since 2.2.0
+ * @since 3.0.0
  */
 export async function hasMigrated() {
     const response = await fetch(
@@ -133,7 +133,7 @@ export async function hasMigrated() {
  * 
  * @returns {boolean} True if the migration was successful, false otherwise.
  * 
- * @since 2.2.0
+ * @since 3.0.0
  */
 export async function migrate() {
     const response = await fetch(

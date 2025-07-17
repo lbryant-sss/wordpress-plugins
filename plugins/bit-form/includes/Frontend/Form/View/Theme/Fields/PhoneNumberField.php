@@ -21,18 +21,23 @@ class PhoneNumberField
     $name = $fh->name();
     $ph = $fh->placeholder();
     $selectedFlagImage = '';
+    $dropDownBtn = '';
     $tabIndx = isset($field->disabled) ? -1 : 0;
     $selectedCountryClearable = '';
+    $dpdWrap = '';
     $searchPlaceholder = '';
     $searchClearable = '';
+    $optionWrap = '';
     $options = '';
+    $showSelectedFlagImg = $fh->property_exists_nested($field, 'config->selectedFlagImage', true);
+    $hideCountryList = $fh->property_exists_nested($field, 'config->hideCountryList', true);
     $readonlyCls = isset($field->readonly) ? 'readonly' : '';
     $disabledCls = isset($field->disabled) ? 'disabled' : '';
     $img = htmlentities("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'></svg>");
 
     $val = $fh->value();
 
-    if ($fh->property_exists_nested($field, 'config->selectedFlagImage', true)) {
+    if ($showSelectedFlagImg) {
       $selectedFlagImage = <<<FLAGIMAGE
       <div class="{$fh->getAtomicCls('selected-country-wrp')}">
         <img
@@ -44,6 +49,27 @@ class PhoneNumberField
         />
     </div>
 FLAGIMAGE;
+    }
+
+    if (!$hideCountryList) {
+      $dropDownBtn = <<<DPDBTN
+      <div class="{$fh->getAtomicCls('dpd-down-btn')}">
+              <svg
+                width="15"
+                height="15"
+                role="img"
+                title="Downarrow icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </div>
+DPDBTN;
     }
 
     if ($fh->property_exists_nested($field, 'config->selectedCountryClearable', true)) {
@@ -101,23 +127,8 @@ CLEARABLE;
 CLEARABLE;
     }
 
-    return <<<PHONENUMBERFIELD
-    <div class="{$fh->getAtomicCls('phone-fld-container')}">
-      <div 
-        {$fh->getCustomAttributes('phone-fld-wrp')}
-        class="{$fh->getAtomicCls('phone-fld-wrp')} {$fh->getCustomClasses('phone-fld-wrp')} {$readonly} {$disabled}"
-      >
-        <input
-          {$name}
-          {$req}
-          type="text"
-          title="Phone-number Hidden Input"
-          class="{$fh->getAtomicCls('phone-hidden-input')} d-none"
-          {$fh->disabled()}
-          {$fh->readonly()}
-          {$val}
-        />
-        <div class="{$fh->getAtomicCls('phone-inner-wrp')}">
+    if (!$hideCountryList || $showSelectedFlagImg) {
+      $dpdWrap = <<<DPDWRAP
           <div
             class="{$fh->getAtomicCls('dpd-wrp')}"
             role="combobox"
@@ -127,34 +138,13 @@ CLEARABLE;
             tabIndex={$tabIndx}
           >
             {$selectedFlagImage}
-            <div class="{$fh->getAtomicCls('dpd-down-btn')}">
-              <svg
-                width="15"
-                height="15"
-                role="img"
-                title="Downarrow icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
-            </div>
+            {$dropDownBtn}
           </div>
-          <input
-            {$fh->getCustomAttributes('phone-number-input')}
-            aria-label="Phone Number"
-            type="tel"
-            class="{$fh->getAtomicCls('phone-number-input')} {$fh->getCustomClasses('phone-number-input')}"
-            autoComplete="tel"
-            {$ph}
-            tabIndex={$tabIndx}
-          />
-          {$selectedCountryClearable}
-        </div>
+DPDWRAP;
+    }
+
+    if (!$hideCountryList) {
+      $optionWrap = <<<OPTIONWRAP
         <div 
           {$fh->getCustomAttributes('option-wrp')}
           class="{$fh->getAtomicCls('option-wrp')} {$fh->getCustomClasses('option-wrp')}"
@@ -202,6 +192,39 @@ CLEARABLE;
             </ul>
           </div>
         </div>
+OPTIONWRAP;
+    }
+
+    return <<<PHONENUMBERFIELD
+    <div class="{$fh->getAtomicCls('phone-fld-container')}">
+      <div 
+        {$fh->getCustomAttributes('phone-fld-wrp')}
+        class="{$fh->getAtomicCls('phone-fld-wrp')} {$fh->getCustomClasses('phone-fld-wrp')} {$readonly} {$disabled}"
+      >
+        <input
+          {$name}
+          {$req}
+          type="text"
+          title="Phone-number Hidden Input"
+          class="{$fh->getAtomicCls('phone-hidden-input')} d-none"
+          {$fh->disabled()}
+          {$fh->readonly()}
+          {$val}
+        />
+        <div class="{$fh->getAtomicCls('phone-inner-wrp')}">
+          {$dpdWrap}
+          <input
+            {$fh->getCustomAttributes('phone-number-input')}
+            aria-label="Phone Number"
+            type="tel"
+            class="{$fh->getAtomicCls('phone-number-input')} {$fh->getCustomClasses('phone-number-input')}"
+            autoComplete="tel"
+            {$ph}
+            tabIndex={$tabIndx}
+          />
+          {$selectedCountryClearable}
+        </div>   
+        {$optionWrap}
       </div>
     </div>
 PHONENUMBERFIELD;

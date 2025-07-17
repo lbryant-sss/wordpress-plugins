@@ -81,11 +81,16 @@ class Manage_Styles {
      * Api permission check
      */
     public function permission_check() {
-        if( current_user_can( 'edit_posts' ) ){
-            return true;
-        }else{
+
+		if( ! current_user_can( 'edit_posts' ) ){
             return false;
         }
+        // Additional security check: Only allow users who can edit published posts or are administrators
+        // This prevents contributors from accessing CSS operations on posts they don't own
+        if ( ! current_user_can( 'edit_published_posts' ) && ! current_user_can( 'manage_options' ) ) {
+            return false;
+        }
+		return true;
     }
 
 	/**
@@ -119,7 +124,7 @@ class Manage_Styles {
 
 			$params 	= $request->get_params();
 			$post_id 	= sanitize_text_field( $params['post_id'] );
-			$block_css = isset($params['block_css']) ? wp_strip_all_tags($params['block_css']) : '';
+			$block_css = isset($params['block_css']) ? $this->sanitize_css_content($params['block_css']) : '';
 
 			if ( $post_id == 'htmega-widget' && $params['has_block'] ) {
 				update_option( $post_id, sanitize_text_field( $block_css ) );
@@ -182,7 +187,7 @@ class Manage_Styles {
 		}
 
 		$params  = $request->get_params();
-		$css = isset($params['inner_css']) ? wp_strip_all_tags($params['inner_css']) : '';
+		$css = isset($params['inner_css']) ? $this->sanitize_css_content($params['inner_css']) : '';
 		$post_id = (int) sanitize_text_field( $params['post_id'] );
 
 		if( $post_id ){
@@ -328,5 +333,31 @@ class Manage_Styles {
 		}
 	}
 
+	/**
+	 * Sanitize CSS content to prevent XSS and dangerous patterns
+	 */
+	private function sanitize_css_content( $css ) {
+		// Remove script tags
+		$css = preg_replace( '/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/mi', '', $css );
+		// Remove dangerous CSS patterns
+		$dangerous_patterns = [
+			'/expression\s*\(/i',
+			'/url\s*\(\s*[\'\"]?\s*javascript:/i',
+			'/behavior\s*:/i',
+			'/binding\s*:/i',
+			'/@import\s+url\s*\(\s*[\'\"]?\s*javascript:/i',
+			'/moz-binding\s*:/i',
+			'/filter\s*:\s*progid\s*:/i',
+			'/<iframe\b[^>]*>/i',
+			'/<object\b[^>]*>/i',
+			'/<embed\b[^>]*>/i'
+		];
+		foreach ( $dangerous_patterns as $pattern ) {
+			$css = preg_replace( $pattern, '', $css );
+		}
+		// Strip HTML tags but preserve CSS
+		$css = wp_strip_all_tags( $css );
+		return $css;
+	}
 
 }

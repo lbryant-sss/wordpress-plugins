@@ -60,7 +60,7 @@ class Wf_Woocommerce_Packing_List_Sequential_Number
 	    {
 	    	$force_generate= ("No" === Wf_Woocommerce_Packing_List::get_option($keys['enable'], $module_id)) ? false : $force_generate;
 	    }
-	    $order_id = (WC()->version < '2.7.0') ? $order->id : $order->get_id();
+	    $order_id = version_compare( WC()->version, '2.7.0', '<' ) ? $order->id : $order->get_id();
 	    $wf_invoice_id = Wt_Pklist_Common::get_order_meta($order_id, $keys['number'], true);
 		if(false === $force_generate){
 			return $wf_invoice_id;
@@ -131,7 +131,7 @@ class Wf_Woocommerce_Packing_List_Sequential_Number
 	    	}else
 	    	{
 	    		$parent_id= $order->get_parent_id();
-	    		$parent_order=( WC()->version < '2.7.0' ) ? new WC_Order($parent_id) : new wf_order($parent_id);
+	    		$parent_order=( version_compare( WC()->version, '2.7.0', '<' ) ) ? new WC_Order($parent_id) : new wf_order($parent_id);
 	    		$order_num=	$parent_order->get_order_number();
 	    	}
 	    	$inv_num= $order_num;	
@@ -336,7 +336,7 @@ class Wf_Woocommerce_Packing_List_Sequential_Number
 	            		if(!is_null($order))
 	            		{ 
 	            			$wc_version=WC()->version;
-							$order_id=$wc_version<'2.7.0' ? $order->id : $order->get_id();
+							$order_id       = ( version_compare( $wc_version, '2.7.0', '<' ) ) ? $order->id : $order->get_id();
 							$date_val=strtotime(get_the_date('Y-m-d H:i:s', $order_id));
 	            		}
 	            	}

@@ -325,7 +325,7 @@ if (!class_exists('\\Wtpdf\\Ubl\\Documents\\Invoice')) {
                     $is_show_prompt = 1;
                     $document_exists = \Wf_Woocommerce_Packing_List_Admin::check_doc_already_created($order, $order_id, 'ublinvoice');
                     $generate_invoice_for = Wf_Woocommerce_Packing_List::get_option('woocommerce_wf_generate_for_orderstatus', $this->parent_module_id);
-                    $order_status = (WC()->version < '2.7.0') ? $order->status : $order->get_status();
+                    $order_status = version_compare( WC()->version, '2.7.0', '<' ) ? $order->status : $order->get_status();
                     $invoice_number = Wt_Pklist_Common::get_order_meta($order, 'wf_invoice_number', true);
 
                     /**
@@ -404,7 +404,7 @@ if (!class_exists('\\Wtpdf\\Ubl\\Documents\\Invoice')) {
             $show_print_button = apply_filters('wt_pklist_show_document_print_button_action_column_free', true, $this->module_base, $order);
 
             if (!empty($order) && true === $show_print_button) {
-                $order_id = (WC()->version < '2.7.0') ? $order->id : $order->get_id();
+                $order_id = version_compare( WC()->version, '2.7.0', '<' ) ? $order->id : $order->get_id();
 
                 if (in_array($this->module_base, \Wf_Woocommerce_Packing_List::get_option('wt_pklist_separate_print_button_enable'))) {
                     $invoice_number = Wt_Pklist_Common::get_order_meta($order_id, 'wf_invoice_number', true);

@@ -4,14 +4,9 @@
     $(function () {
         var wt_cta_banner = {
             init: function () {
-                this.moveBanner();
                 this.initToggleFeatures();
                 this.initDraggable();
                 this.initDismissButtons();
-            },
-
-            moveBanner: function() {
-                $('#wt_product_import_export_pro').appendTo('#side-sortables').addClass('postbox');
             },
 
             initToggleFeatures: function() {

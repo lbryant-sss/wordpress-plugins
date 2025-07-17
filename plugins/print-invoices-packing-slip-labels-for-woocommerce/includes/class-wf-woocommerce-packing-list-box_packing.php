@@ -33,19 +33,12 @@ class Wf_Woocommerce_Packing_List_Box_packing_Basic
                 $extra_meta_details = $this->wf_pklist_get_extra_meta_details($item_meta, $order, $product, $id, $item );
                 $sku = $variation_details = '';
 
-                if (WC()->version < '2.7.0') {
-                    $product_id = $product->id;
-                    $product_variation_data = $product->variation_data;
-                    $product_product_type = $product->product_type;
-                    $product_variation_id = $product_product_type === 'variation' ? $product->variation_id : '';
-                } else {
-                    $product_id = $product->get_id();
-                    $product_variation_data = $product->is_type('variation') ? wc_get_product_variation_attributes($product->get_id()) : '';
-                    $product_product_type = $product->get_type();
-                    $product_variation_id = $product->is_type('variation') ? $product->get_id() : '';
-                }
+                $product_id = $product->get_id();
+                $product_variation_data = $product->is_type('variation') ? wc_get_product_variation_attributes($product->get_id()) : '';
+                $product_product_type = $product->get_type();
+                $product_variation_id = $product->is_type('variation') ? $product->get_id() : '';
                 $sku = $product->get_sku();
-                $item_meta = (WC()->version < '3.1.0') ? new WC_Order_Item_Meta($item) : new WC_Order_Item_Product($item);
+                $item_meta = version_compare(WC()->version, '3.1.0', '<') ? new WC_Order_Item_Meta($item) : new WC_Order_Item_Product($item);
                 $variation_details ='';
                 if(Wf_Woocommerce_Packing_List_Admin::module_exists('customizer'))
                 {
@@ -93,12 +86,12 @@ class Wf_Woocommerce_Packing_List_Box_packing_Basic
         $extra_meta_details='';
         if($product)
         {
-            $product_id = (WC()->version < '2.7.0') ? $product->id : $product->get_id();
+            $product_id = $product->get_id();
             $_product = wc_get_product($product_id);                        
             $item_meta = array();
             if($_product) 
             {
-                if (((WC()->version < '2.7.0') ? $product->id : $product->get_id()) == ((WC()->version < '2.7.0') ? $_product->id : $_product->get_id())) 
+                if ($product->get_id() == $_product->get_id())
                 {
                     $item_meta = function_exists('wc_get_order_item_meta') ? wc_get_order_item_meta($id, '', false) : $order->get_item_meta($id);
                 }

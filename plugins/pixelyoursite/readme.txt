@@ -388,6 +388,22 @@ NO, absolutely not! We don't track any type of data about your website. We simpl
 
 == Changelog ==
 
+= PixelYourSite 11.0.1 =
+
+July 16, 2025
+
+* WooCommerce Purhcase event has some extra optional fields that can be needed for Google Conversion with Card Data (CwCD). Can be useful when configuring Google Automated Discounts inside Google Merchant. 
+
+* Improving the way we handle updates for the extra add-ons (Pinterest, Bing).
+
+* Fixing an issue with the Head and Footer scripts.
+
+* Fixing a warning "constant PYS_VIEW_PATH is undefined."
+
+* Video link updates. 
+
+* Small UI changes to reflect pro version new options (fire event when a form field gets data, track WooCommerce product and cart parameters for custom events).
+
 = PixelYourSite 11.0.0.4 =
 
 July 2, 2025
