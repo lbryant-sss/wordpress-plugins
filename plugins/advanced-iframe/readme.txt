@@ -1,20 +1,19 @@
 === Advanced iFrame ===
 Contributors: mdempfle
-Donate link: https://www.tinywebgallery.com
 Tags: iframe, embed, resize, shortcode, modify css
 Requires at least: 3.3
-Tested up to: 6.8.1
-Stable tag: 2025.5
+Tested up to: 6.8.2
+Stable tag: 2025.6
 Requires PHP: 5.4
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License: GPLv3 or later
+License URI: https://www.gnu.org/licenses/gpl-3.0
 
 Include content the way YOU like in an iframe that can hide and modify elements, does auto-height, forward parameters and does many, many more...
 
 == Description ==
 
-> **[Advanced iFrame Pro](https://www.tinywebgallery.com/blog/advanced-iframe-pro)**
-> **[Demo](http://www.tinywebgallery.com/blog/advanced-iframe/demo-advanced-iframe-2-0)**
+> **[New website: advanced-iframe.com](https://www.advanced-iframe.com/)**
+> **[Demo](https://www.advanced-iframe.com/advanced-iframe/demo-advanced-iframe-2-0)**
 
 Include content the way YOU like in an iframe that can hide and modify elements, does auto height, forward parameters and does many, many more...
 
@@ -35,7 +34,7 @@ The following cool features compared to a normal iframe are implemented:
 - Hide the content until it is fully loaded
 - Add a css and js file to the parent page
 - Security code: You can only insert the shortcode with a valid security code from the administration.
-- Many additional cool features are available the pro version - see http://www.tinywebgallery.com/blog/advanced-iframe/advanced-iframe-comparison-chart
+- Many additional cool features are available the pro version - see https://www.advanced-iframe.com/advanced-iframe/advanced-iframe-comparison-chart
 
 In the free version you can update to the pro version directly or test all features in the 30 days trial!
 
@@ -44,7 +43,7 @@ Please note: Modification inside the iframe are only possible if you are on the 
 So please check first if the iframe page and the parent page are one the same domain. www.example.com and text.example.com are different domains! Please check in the documentation if you can use the feature you like
 
 A free iframe checker is available at
-http://www.tinywebgallery.com/blog/advanced-iframe/free-iframe-checker.
+https://www.advanced-iframe.com/advanced-iframe/free-iframe-checker.
 This tool does check if a page is allowed to be included!
 
 All settings can be set with shortcode attributes as well. If you only use one iframe please use the settings in the administration because there each parameter is explained in detail and also the defaults are set there.
@@ -56,7 +55,7 @@ The free version has no functional restrictions and is for personal and small no
 It's quick and painless to get Advanced iFrame Pro. Simply sign up for the 30 days trail or buy directly in the plugin. You can than use the plugin on commercial, business, and professional sites and blogs. You furthermore get:
 
 * Show only specific areas of the iframe even when the iframe is on different domain
-* Graphical content selector: http://examples.tinywebgallery.com/configurator/advanced-iframe-area-selector.html
+* Graphical content selector: https://www.mdempfle.de/demos/configurator/advanced-iframe-area-selector.html
 * External workaround supports iframe modifications
 * Widget support
 * No view limit
@@ -71,29 +70,29 @@ It's quick and painless to get Advanced iFrame Pro. Simply sign up for the 30 da
 * Standalone version - can be used in ANY php page!
 * And much more...
 
-You can find the comparison chart here: http://www.tinywebgallery.com/blog/advanced-iframe/advanced-iframe-comparison-chart
+You can find the comparison chart here: https://www.advanced-iframe.com/advanced-iframe/advanced-iframe-comparison-chart
 See the pro demo here:
-http://www.tinywebgallery.com/blog/advanced-iframe/advanced-iframe-pro-demo
+https://www.advanced-iframe.com/advanced-iframe/advanced-iframe-pro-demo
 
 = Administration =
 * Go to Settings -> Advanced iFrame
 
 =	Quick start guide =
-The quickstart guide is also available as video: http://www.tinywebgallery.com/blog/advanced-iframe/advanced-iframe-video-tutorials
+The quickstart guide is also available as video: https://www.advanced-iframe.com/advanced-iframe/advanced-iframe-video-tutorials
 
 To include a webpage to your page please check the following things first:
 
-* Check if your page page is allowed to be included http://www.tinywebgallery.com/blog/advanced-iframe/free-iframe-checker!
+* Check if your page page is allowed to be included https://www.advanced-iframe.com/advanced-iframe/free-iframe-checker!
 * Check if the iframe page and the parent page are one the same domain. www.example.com and text.example.com are different domains!
 * Can you modify the page that should be included?
 
 Most likely you have one of the following setups:
 
 1.	iframe cannot be included:  You cannot include the content because the owner does not allow this.
-1.	iframe can be included and you are on a different domain: See the feature comparison chart: http://www.tinywebgallery.com/blog/advanced-iframe/advanced-iframe-comparison-chart and the feature overview http://www.tinywebgallery.com/blog/advanced-iframe/advanced-iframe-features-availability-overview. To resize the content to the height/width or modify css you need to modify the remote iframe page by adding one line of Javascript to enable the provided workaround.
+1.	iframe can be included and you are on a different domain: See the feature comparison chart: https://www.advanced-iframe.com/advanced-iframe/advanced-iframe-comparison-chart and the feature overview https://www.advanced-iframe.com/advanced-iframe/advanced-iframe-features-availability-overview. To resize the content to the height/width or modify css you need to modify the remote iframe page by adding one line of Javascript to enable the provided workaround.
 1.  iframe can be included and you are on the same domain: All features of the plugin can be used.
 
-If you mix http and https read http://www.tinywebgallery.com/blog/iframe-do-not-mix-http-and-https. Parent https and iframe http does not work on all mayor browsers!
+If you mix http and https read https://www.advanced-iframe.com/iframe-do-not-mix-http-and-https. Parent https and iframe http does not work on all mayor browsers!
 
 == Installation ==
 There are 2 ways to install the Advanced iFrame
@@ -153,23 +152,44 @@ Setting an attribute does overwrite the setting in the administration.
 
 == Frequently Asked Questions ==
 Find the latest FAQ here:
-http://www.tinywebgallery.com/blog/advanced-iframe/advanced-iframe-faq/
+https://www.advanced-iframe.com/advanced-iframe/advanced-iframe-faq/
 
 = Demo =
 See the pro demo here:
-http://www.tinywebgallery.com/blog/advanced-iframe/advanced-iframe-pro-demo
+https://www.advanced-iframe.com/advanced-iframe/advanced-iframe-pro-demo
 
 See the free demo here:
-http://www.tinywebgallery.com/blog/advanced-iframe/demo-advanced-iframe-2-0
+https://www.advanced-iframe.com/advanced-iframe/demo-advanced-iframe-2-0
 
 == Upgrade Notice ==
 Use the Wordpress installer to update or simply overwrite all files from your previous installation.
 If you have some radio elements empty after the update simply select the one you like and save again.
 
 == Changelog ==
+= 2025.6 =
+- Security fix: Vulnerability Title: Advanced iFrame <= 2025.5 - Authenticated (Contributor+) Stored Cross-Site Scripting CVE ID: CVE-2025-6987 was fixed.
+- New: Tested with WordPress 6.8.2
+- New: advanced iframe has a new domain: https://www.advanced-iframe.com. All links in the plugin where updated and checked. 
+- New: https://www.advanced-iframe.com is live now. Everything from www.tinywegballery.com/blog was moved. Also a new menu structure was introduced.
+- New: Edge was added as setting in the browser detection.
+- New: Standalone version is now also available in the freemius version.
+- New: Standalone examples where reworked and old links removed.
+- New: Standalone version is now even easier to setup because the site_url handling was rewritten and the default should work now even better.
+- New: Standalone version now also uses jQuery 3.7.1 like WordPress does.
+- New: The freemius section documentation was improved based on user feedback.
+- New: No 10.000 hit limit anymore. The powered by text is now removed automatically when you OPT-IN or if you disable it.
+- New: Updated Freemius to 2.12.1
+- Fix: Add iframe url as param: Same domain with hash" was broken because one of the last security fixes was too tight. Now it works fine again:  https://www.advanced-iframe.com/advanced-iframe/advanced-iframe-pro-demo/add-iframe-url-as-param-same-domain-hash
+- Fix: add_iframe_url_as_param_direct was not working anymore because of a wrong security check. Now https://www.advanced-iframe.com/advanced-iframe/advanced-iframe-pro-demo/add-iframe-params-to-parent works fine for the remove and same domain again.
+- Fix: documentation of the external workaround was improved.
+- Fix: When switching between free and pro a notice about unwanted characters was shown. This was a notice because both plugin where active for a small amount of time. This is solved now.
+- Fix: Users often use false in hide_part_of_iframe and a message was shown. Users contacted the advanced iframe team to solve this. Now this setting is simply ignored. 
+- Removed: iframe_zoom_ie8 was removed and all the code that comes with it as ie8 browser is not used anymore.
+- Removed: "Special case sub domain" section was removed as it was only containing the removal info text for one year.
+
 = 2025.5 =
 - Fix: == at the end of src caused the whole parameter to be removed. Now this is supported
-- Fix: filteredContent variable was not defined properly. Now it is.  
+- Fix: filteredContent variable was not defined properly. Now it is.
 
 = 2025.4 =
 - New: Tested with WordPress 6.8.1
@@ -177,21 +197,21 @@ If you have some radio elements empty after the update simply select the one you
 - Fix: advanced-iframe-admin-advanced.php was saved with a wrong line ending. Now Unix (LF) is used like for all other files. On some systems the administration was not loaded properly.
 
 = 2025.3 =
-- New: OPT-IN users now get additional benefits: Additional sections on the help tab, exclusive coupons, monthly chance to win a free license.   
+- New: OPT-IN users now get additional benefits: Additional sections on the help tab, exclusive coupons, monthly chance to win a free license.
 - New: Additional help is now also available for OPT-IN users.
 - New: All OPT-IN users have the chance to win a free license once a month. As long as you allow to receive marketing emails, you can win. You can only win once.
-- New: OPT-IN users will get exclusive coupons. No worries: Advanced iFrame will not spam you.   
+- New: OPT-IN users will get exclusive coupons. No worries: Advanced iFrame will not spam you.
 - Security Fix: CVE-2025-1437 - Authenticated (Contributor+) Stored Cross-Site Scripting) - using ononloadload was still executed. Now the filter method is checking recursively.
-- Fix: Removed old text about the Flash Uploader.  
+- Fix: Removed old text about the Flash Uploader.
 - Fix: Updated the link to the forum
 
 = 2025.2 =
-- Fix: The close icon of show iframe as layer was not shown because of an old path. Now the correct path in the pro version is used.  https://www.tinywebgallery.com/blog/advanced-iframe/advanced-iframe-pro-demo/show-the-iframe-as-layer 
+- Fix: The close icon of show iframe as layer was not shown because of an old path. Now the correct path in the pro version is used.  https://www.advanced-iframe.com/advanced-iframe/advanced-iframe-pro-demo/show-the-iframe-as-layer
 - Fix: Some links in the new pro version where still pointing to the old path. They are now working properly.
 
 = 2025.1 =
 - Fix: Documentation at the external workaround tab for the ai_external.js fixed and a link how to migrate from free to pro was added.
-- Fix: hide_fullscreen.html was linking to the old plugins folder in the pro version. Now a placeholder is filled automatically. Please delete the hide_fullscreen.html in the advanced-iframe-custom folder once and enter the administration to get a new version generated. See https://www.tinywebgallery.com/blog/advanced-iframe/advanced-iframe-pro-demo/full-screen-demo
+- Fix: hide_fullscreen.html was linking to the old plugins folder in the pro version. Now a placeholder is filled automatically. Please delete the hide_fullscreen.html in the advanced-iframe-custom folder once and enter the administration to get a new version generated. See https://www.advanced-iframe.com/advanced-iframe/advanced-iframe-pro-demo/full-screen-demo
 
 = 2025.0 =
 - New: Tested with WordPress 6.7.2
@@ -204,10 +224,10 @@ If you have some radio elements empty after the update simply select the one you
 - New: map_parameter_to_url does support now :sameDomain. This disables external links as parameters. So only internal links which have the same 2nd level domain can be opened inside the iframe
 - New: The replace function for empty parameters was rewritten. ?show will not be removed anymore. show= without any parameter will be still removed.
 - New: The whole code was reformatted with Intellij and most of the code recommendations where done.
-- Security Fix: map param to URL: When using hashes, the URLs are now checked if they are valid. Additionally there is now a limit of 1000 entries to avoid that the db is getting too big. 
+- Security Fix: map param to URL: When using hashes, the URLs are now checked if they are valid. Additionally there is now a limit of 1000 entries to avoid that the db is getting too big.
 - Security Fix: "Stored Cross-Site Scripting via Host Header". When debug_js="bottom" is used the user agent and all headers are now escaped.
 - Security Fix: the unfiltered_html check was made more strict. All parameters that allowed js are now simply removed.
-- Fix: The parameters of parameter_url_mapping are now trimmed to handle slightly invalid input as well. 
+- Fix: The parameters of parameter_url_mapping are now trimmed to handle slightly invalid input as well.
 - Fix: hide_page_until_loaded fas only working in the pro version. Now it works in the free version again like it should.
 - Fix: style of height and width of a custom
 - Fix: printMediaQuery iframe width in the generator in the administration was not set properly. In the shortcode itself it was working fine.
@@ -244,4 +264,4 @@ If you have some radio elements empty after the update simply select the one you
 - New: The scroll to top in the external workaround is now also supporting the "touched" event next to the "click" event.
 - New: The documentation was improved for scroll to top as the external workaround is also supporting "iframe" if "Scrolls the parent window/iframe to the top" is set to iframe.
 
-For older changes please see: https://www.tinywebgallery.com/blog/advanced-iframe/advanced-iframe-history
+For older changes please see: https://www.advanced-iframe.com/advanced-iframe/advanced-iframe-history

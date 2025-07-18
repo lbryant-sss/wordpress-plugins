@@ -264,9 +264,9 @@ if (!empty($hide_part_of_iframe)) {
       $html .= $html_hide;
     } else {
       if ($hide_part_of_iframe === 'false') {
-        $html = $error_css . '<div class="errordiv">' . __('ERROR: hide part of iframe is set to "false". If do do not want to use this feature please remove this shortcode attribute and set it empty in the administration', 'advanced-iframe') . '</div>';
+        // The plugin ignores false now. Too many users do not understand the error message and it only creates effortto explain every time. 
       } else {
-        $html = $error_css . '<div class="errordiv">' . __('ERROR: hide part of iframe does not have the required 6 parameters', 'advanced-iframe') . '</div>';
+        $html = $error_css . '<div class="errordiv">' . __('ERROR: hide part of iframe does not have the required parameters', 'advanced-iframe') . '</div>';
       }
       return $html;
     }
@@ -320,7 +320,7 @@ if ($show_iframe_as_layer_div) {
 
 if ($this->ai_startsWith(strtolower($src), "http://") && AdvancedIframeHelper::isSecure()) {
   // show a warning if https pages are shown in http pages.
-  $html .= 'Http iframes are not shown in https pages in many major browsers. Please read <a href="//www.tinywebgallery.com/blog/iframe-do-not-mix-http-and-https" target="_blank">this post</a> for details.';
+  $html .= 'Http iframes are not shown in https pages in many major browsers. Please read <a href="//www.advanced-iframe.com/iframe-do-not-mix-http-and-https" target="_blank">this post</a> for details.';
 } elseif ($this->ai_startsWith(strtolower($src), "https:") && !AdvancedIframeHelper::isSecure() &&
   $enable_external_height_workaround === "true" && $use_post_message === 'false') {
   $html .= 'You use a https iframe in a http page with the external workaround. To enable the external workaround you NEED to enable "Use postMessage for communication" on the "external workaround" tab.';

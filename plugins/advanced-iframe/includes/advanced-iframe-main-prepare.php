@@ -77,13 +77,8 @@ if (!class_exists('AdvancediFramePrepareJs')) {
       return $html_js;
     }
 
-    static function aiPrepareAiJsVariables($html_js, $iframe_zoom, $show_part_of_iframe_zoom, $enable_ie_8_support,
+    static function aiPrepareAiJsVariables($html_js, $iframe_zoom, $show_part_of_iframe_zoom,
                                            $store_height_in_cookie, $id, $onload_scroll_top, $additional_height, $debug_js, $fullscreen_button_full) {
-      if (version_compare(PHP_VERSION, '5.3.0') >= 0 && (!empty($iframe_zoom) || !empty($show_part_of_iframe_zoom))) {
-        $html_js .= ($enable_ie_8_support) ? 'var aiIsIe8=true;' : 'var aiIsIe8=false;';
-      } else {
-        $html_js .= 'var aiIsIe8=false;';
-      }
       if ($store_height_in_cookie === 'true') {
         $html_js .= 'var aiEnableCookie=true; aiId="' . $id . '";';
       }
@@ -536,7 +531,7 @@ if ($include_scripts_in_content === 'true') {
 }
 $html_js = AdvancediFramePrepareJs::aiPrepareGlobalJsVariables($id, $include_scripts_in_content, $aiPath, $add_document_domain, $document_domain);
 $html_js = AdvancediFramePrepareJs::aiPreparePostMessageJs($html_js, $id, $use_post_message, $src, $multi_domain_enabled);
-$html_js = AdvancediFramePrepareJs::aiPrepareAiJsVariables($html_js, $iframe_zoom, $show_part_of_iframe_zoom, $enable_ie_8_support,
+$html_js = AdvancediFramePrepareJs::aiPrepareAiJsVariables($html_js, $iframe_zoom, $show_part_of_iframe_zoom,
   $store_height_in_cookie, $id, $onload_scroll_top, $additional_height, $debug_js, $fullscreen_button_full);
 $html_js = AdvancediFramePrepareJs::aiPrepareAiShowIframeIdJs($html_js, $hide_part_of_iframe);
 $html_js = AdvancediFramePrepareJs::aiPrepareAiResizeJs($html_js, $id, $auto_zoom, $enable_responsive_iframe, $iframe_zoom, $show_part_of_iframe, $hide_page_until_loaded);

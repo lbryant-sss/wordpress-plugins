@@ -814,7 +814,7 @@ function ai_print_result_all($all_iframes) {
  *  Prints the input field for the auto zoom settings
  */
 function printDebug($options, $label, $id, $description) {
-  $url = '//www.tinywebgallery.com/blog/advanced-iframe/advanced-iframe-pro-demo/debug-javascript-example';
+  $url = '//www.advanced-iframe.com/advanced-iframe/advanced-iframe-pro-demo/debug-javascript-example';
 
   echo '
       <tr id="tr-' . $id . '">
@@ -876,7 +876,7 @@ function ai_print_result($result, $tooltip = false) {
     }
 
     if ($result['http_downgrade'] === true) {
-      $text .= __(' The url you try to include is HTTP and your page is HTTPS. This is not supported by most modern browsers. See <a href="//www.tinywebgallery.com/blog/iframe-do-not-mix-http-and-https" target="_blank">this blog</a> for details.', 'advanced-iframe');
+      $text .= __(' The url you try to include is HTTP and your page is HTTPS. This is not supported by most modern browsers. See <a href="//www.advanced-iframe.com/iframe-do-not-mix-http-and-https" target="_blank">this blog</a> for details.', 'advanced-iframe');
     }
     $icon = " dashicons-no";
     $color = "#f15123";
@@ -914,7 +914,7 @@ function ai_print_result($result, $tooltip = false) {
       $text .= __('A redirect to the same url was found. Redirecting to the same URL is occasionally used to set cookies and test to see that they are set.', 'advanced-iframe');
     }
 
-    $text .= __(' But there can still be a iframe blocker script on this page. Go <a href="//www.tinywebgallery.com/blog/advanced-iframe/free-iframe-checker" target="_blank">here</a> for a full check.', 'advanced-iframe');
+    $text .= __(' But there can still be a iframe blocker script on this page. Go <a href="//www.advanced-iframe.com/advanced-iframe/free-iframe-checker" target="_blank">here</a> for a full check.', 'advanced-iframe');
     if ($tooltip) {
       $html .= '<span style="padding-top: 0; color: green;" title=\'' . $text . '\'  class="dashicons dashicons-yes"></span>';
     } else {
@@ -1704,7 +1704,7 @@ function evaluatePageLinks(&$result_array, $content, $link, $title, &$all_links,
   }
 
   // now we check Gutenberg blocks
-  // <!-- wp:ai/ai-block {"src":"//www.tinywebgallery.com","width":"200","height":"200"} /-->
+  // <!-- wp:ai/ai-block {"src":"//www.advanced-iframe.com","width":"200","height":"200"} /-->
   if (preg_match_all('/ai-block[^}]+"src":"([^"]+)"/', $content, $match)) {
     $urls = $match[1];
     foreach ($urls as $url) {

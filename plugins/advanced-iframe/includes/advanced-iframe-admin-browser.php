@@ -29,9 +29,9 @@ aiPostboxOpen("id-help-browser", "Advanced iframe browser detection", $closedArr
             [advanced_iframe ' . $securitykeyString . 'id="example1" show_part_of_iframe_x="25" browser="ie(10),ie(11)"]<br />
             [advanced_iframe ' . $securitykeyString . 'id="example1" show_part_of_iframe_x="20" browser="default"]
          </p>
-         <h4>Example 2 - Special settings for IE, Firefox and Chrome</h4>
+         <h4>Example 2 - Special settings for Edge, Firefox and Chrome</h4>
          <p>
-            [advanced_iframe ' . $securitykeyString . 'id="example2" show_part_of_iframe_x="25" browser="ie"]<br />
+            [advanced_iframe ' . $securitykeyString . 'id="example2" show_part_of_iframe_x="25" browser="edge"]<br />
             [advanced_iframe ' . $securitykeyString . 'id="example2" show_part_of_iframe_x="23" browser="firefox,chrome"]<br />
             [advanced_iframe ' . $securitykeyString . 'id="example2" show_part_of_iframe_x="20" browser="default"]
          </p>
@@ -51,6 +51,7 @@ aiPostboxOpen("id-help-browser", "Advanced iframe browser detection", $closedArr
            <li>firefox - Selects all versions of Firefox. Also, a version is supported. Add the version in (). e.g. firefox(20)</li>
            <li>chrome - Selects all versions of Chrome. Also, a version is supported. Add the version in (). e.g. chrome(25)</li>
            <li>opera - Selects all versions of Opera. Also, a version is supported. Add the version in (). e.g. opera(20)</li>
+		   <li>edge - Selects all versions of Edge. Also, a version is supported. Add the version in (). e.g. edge(120)</li>
            <li>ipad - Selects all versions of ipad.</li>
            <li>ipod - Selects all versions of ipod.</li>
            <li>iphone - Selects all versions of iphone.</li>

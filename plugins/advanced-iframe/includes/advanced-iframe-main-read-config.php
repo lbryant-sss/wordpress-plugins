@@ -175,7 +175,6 @@ if (isset($aip_standalone)) {
       'additional_css_file_iframe' => $options['additional_css_file_iframe'],
       'additional_js_file_iframe' => $options['additional_js_file_iframe'],
       'add_css_class_iframe' => $options['add_css_class_iframe'],
-      'iframe_zoom_ie8' => $options['iframe_zoom_ie8'],
       'enable_lazy_load_reserve_space' => $options['enable_lazy_load_reserve_space'],
       'hide_content_until_iframe_color' => $options['hide_content_until_iframe_color'],
       'use_zoom_absolute_fix' => $options['use_zoom_absolute_fix'],
@@ -203,6 +202,7 @@ if (isset($aip_standalone)) {
       'referrerpolicy' => $options['referrerpolicy'],
       'add_surrounding_p' => $options['add_surrounding_p'],
       'custom' => $options['custom'],
+      'show_support_message' => $options['show_support_message'],
       $atts));
   }
 
@@ -356,7 +356,6 @@ if (isset($aip_standalone)) {
         'additional_js_file_iframe' => $options['additional_js_file_iframe'],
         'additional_css_file_iframe' => $options['additional_css_file_iframe'],
         'add_css_class_iframe' => $options['add_css_class_iframe'],
-        'iframe_zoom_ie8' => $options['iframe_zoom_ie8'],
         'enable_lazy_load_reserve_space' => $options['enable_lazy_load_reserve_space'],
         'hide_content_until_iframe_color' => $options['hide_content_until_iframe_color'],
         'use_zoom_absolute_fix' => $options['use_zoom_absolute_fix'],
@@ -503,16 +502,12 @@ if ($add_iframe_url_as_param != 'false' && empty($map_parameter_to_url)) {
 $mediaQueryArray = explode(',', $height);
 $height = array_shift($mediaQueryArray);
 
-$default_options = isset($aip_standalone) ? 1 : get_option('default_a_options');
-if (empty($default_options) || (date('j') < 3)) {
-  $default_options = 0;
-}
 $pro = true;
 
 $loginPreview = is_preview() && is_user_logged_in() && $demo === 'true';
 
 $evanto = (file_exists(dirname(__FILE__) . "/class-cw-envato-api.php"));
-if ($isFreemius) {
+if ($isFreemius && !isset($aip_standalone)) {
   global $ai_fs;
   $evanto = $ai_fs->can_use_premium_code__premium_only();
 }
@@ -543,11 +538,6 @@ if (!$evanto && !$loginPreview) {
   $fullscreen_button_full = 'false';
   $fullscreen_button_style = 'black';
   $mediaQueryArray = array();
-} elseif (!empty($purchase_code) || $isFreemius) {
-  $default_options = 0;
-}
-if (!isset($aip_standalone) && !is_admin()) {
-  update_option("default_a_options", ++$default_options);
 }
 
 if (!empty($iframe_zoom)) {
@@ -705,7 +695,7 @@ $reload_interval = AdvancedIframeHelper::filterXSS($reload_interval);
 $resize_on_element_resize_delay = AdvancedIframeHelper::filterXSS($resize_on_element_resize_delay);
 $include_fade = AdvancedIframeHelper::filterXSS($include_fade);
 $include_height = AdvancedIframeHelper::filterXSS($include_height);
-$add_iframe_url_as_param_direct = AdvancedIframeHelper::filterXSSTrueFalse($include_height);
+$add_iframe_url_as_param_direct = AdvancedIframeHelper::filterXSSTrueFalse($add_iframe_url_as_param_direct);
 $add_iframe_url_as_param_prefix = AdvancedIframeHelper::filterBasicXSS($add_iframe_url_as_param_prefix);
 $map_parameter_to_url = AdvancedIframeHelper::filterBasicXSS($map_parameter_to_url);
 $show_part_of_iframe_next_viewports = AdvancedIframeHelper::filterBasicXSS($show_part_of_iframe_next_viewports);

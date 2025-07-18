@@ -5969,15 +5969,23 @@ if ( ! function_exists( 'ur_check_is_inactive' ) ) {
 	 * Check if user is denied.
 	 */
 	function ur_check_is_inactive() {
-		if ( ! ur_check_module_activation( 'membership' ) || current_user_can( 'manage_options' ) ) {
+		if ( ! ur_check_module_activation( 'membership' ) ||
+			 current_user_can( 'manage_options' ) ||
+			 ( ! empty( $_POST['action'] ) && in_array( $_POST['action'], array(
+					"user_registration_membership_confirm_payment",
+					"user_registration_membership_create_stripe_subscription"
+				) ) )
+		) {
 			return;
 		}
 		$members_repository = new \WPEverest\URMembership\Admin\Repositories\MembersRepository();
-		$membership         = $members_repository->get_member_membership_by_id( get_current_user_id() );
+
+		$membership = $members_repository->get_member_membership_by_id( get_current_user_id() );
 
 		if ( empty( $membership ) ) {
 			return;
 		}
+
 		if ( in_array( $membership['status'], array( 'pending', 'canceled', 'inactive' ) ) ) {
 			wp_logout();
 		}
@@ -6766,14 +6774,6 @@ if ( ! function_exists( 'ur_prevent_default_login' ) ) {
 				if($has_invalid_page) {
                     return 'invalid_membership_pages';
                 }
-			}
-		}
-		elseif (isset($data['tab']) && "payment" === $data['tab'] && isset( $data['user_registration_global_paypal_cancel_url'] ) && isset( $data['user_registration_global_paypal_return_url'] )) {
-			if( empty($data['user_registration_global_paypal_cancel_url'] ) ) {
-				return 'user_registration_global_paypal_cancel_url';
-			}
-			if( empty( $data['user_registration_global_paypal_return_url'] ) ) {
-				return 'user_registration_global_paypal_return_url';
 			}
 		}
 		elseif(isset($data['user_registration_membership_renewal_reminder_days_before'])) {
@@ -8436,3 +8436,100 @@ function ur_cleanup_logs() {
 	}
 }
 add_action( 'user_registration_cleanup_logs', 'ur_cleanup_logs' );
+
+if ( ! function_exists( 'ur_sanitize_value_by_type' ) ) {
+	/**
+	 * Get sms verification message content .
+	 *
+	 * @since 4.2.1
+	 * @return array
+	 */
+	function ur_sanitize_value_by_type($option, $raw_value) {
+
+		// Format the value based on option type.
+		switch ( $option['type'] ) {
+
+			case 'checkbox':
+			case 'toggle':
+				$value = ur_string_to_bool( $raw_value );
+				break;
+			case 'textarea':
+				$value = wp_kses_post( trim( $raw_value ) );
+				break;
+			case 'multiselect':
+				$value = array_filter( array_map( 'ur_clean', (array) $raw_value ) );
+				break;
+			case 'select':
+				$allowed_values = empty( $option['options'] ) ? array() : array_keys( $option['options'] );
+				if ( empty( $option['default'] ) && empty( $allowed_values ) ) {
+					$value = null;
+					break;
+				}
+				$default = ( empty( $option['default'] ) ? $allowed_values[0] : $option['default'] );
+				$value   = in_array( $raw_value, $allowed_values ) ? sanitize_text_field( $raw_value ) : sanitize_text_field( $default );
+				break;
+			case 'tinymce':
+				$value = wpautop( $raw_value );
+				break;
+
+			default:
+				$value = ur_clean( $raw_value );
+				break;
+		}
+		return $value;
+	}
+};
+
+
+if ( ! function_exists( 'ur_save_settings_options' ) ) {
+
+	/**
+	 * ur_save_settings_options
+	 *
+	 * @param $option
+	 * @param $raw_value
+	 *
+	 * @return void
+	 */
+	function ur_save_settings_options($section, $form_data) {
+		$update_options = array();
+
+		foreach ( $section['settings'] as $option ) {
+			if ( empty( $option['id'] ) ) {
+				continue;
+			}
+
+			$option_id = $option['id'];
+			$option_name  = '';
+			$setting_name = '';
+
+			// Parse array notation (e.g., option_name[setting_name])
+			if ( str_contains( $option_id, '[' ) && str_contains( $option_id, ']' ) ) {
+				if ( preg_match( '/^([^[\]]+)\[([^[\]]+)\]$/', $option_id, $matches ) ) {
+					$option_name  = sanitize_text_field( $matches[1] );
+					$setting_name = sanitize_text_field( $matches[2] );
+				}
+			} else {
+				$option_name = sanitize_text_field( $option_id );
+			}
+
+			if ( isset( $form_data[ $option_id ] ) ) {
+				$value = ur_sanitize_value_by_type( $option, $form_data[ $option_id ] );
+				if ( $option_name && $setting_name ) {
+					if ( ! isset( $update_options[ $option_name ] ) || ! is_array( $update_options[ $option_name ] ) ) {
+						$existing = get_option( $option_name, array() );
+						$update_options[ $option_name ] = is_array( $existing ) ? $existing : array();
+					}
+					$update_options[ $option_name ][ $setting_name ] = $value;
+				} elseif ( $option_name ) {
+					$update_options[ $option_name ] = $value;
+				}
+			}
+		}
+
+		foreach ( $update_options as $name => $value ) {
+			update_option( $name, $value );
+		}
+	}
+};
+

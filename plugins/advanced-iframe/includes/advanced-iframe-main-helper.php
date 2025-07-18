@@ -347,6 +347,10 @@ class AdvancedIframeHelper {
     return strpos($str, $substr) !== false;
   }
 
+  static function aiContainsIgnoreCase($str, $substr) {
+    return stripos($str, $substr) !== false;
+  }
+  
   /**
    * remove query string and trailing backslash
    */

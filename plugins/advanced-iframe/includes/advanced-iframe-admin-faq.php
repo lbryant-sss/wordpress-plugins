@@ -7,7 +7,7 @@ _e('The FAQ is not included in the plugin directly as it is updated frequently o
 echo "</p>";
 ?>
   <p>
-    <a href="//www.tinywebgallery.com/blog/advanced-iframe/advanced-iframe-faq" target="_blank" id="faq"
+    <a href="//www.advanced-iframe.com/advanced-iframe/advanced-iframe-faq" target="_blank" id="faq"
        class="button-primary"><?php _e('Go to the FAQ', 'advanced-iframe'); ?></a>
   </p>
 <?php

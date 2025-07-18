@@ -347,6 +347,8 @@
 	 **/
 .user-registration-membership_page_add-new-registration,
 .toplevel_page_user-registration {
+	background-color: #FAFAFA;
+
 	#wpfooter {
 		display: none; //Hide WP footer on form builder page
 	}
@@ -3615,6 +3617,8 @@ a.button.ur-smart-tags-list-button {
 
 .user-registration-membership_page_add-new-registration,
 .toplevel_page_user-registration {
+	background-color: #FAFAFA;
+
 	#nav-menu-header {
 		padding-right: $spacing_30px;
 
@@ -4753,6 +4757,7 @@ a.button.ur-smart-tags-list-button {
 
 .toplevel_page_user-registration,
 body.user-registration {
+	background: #FAFAFA;
 	#wpcontent {
 		padding-left: 0;
 	}

@@ -110,18 +110,8 @@ class Plugin_Updater {
 
         $need_refresh = false;
 
-        // Check if cache expired
-        if ( $this->is_cache_expired() ) {
-            $need_refresh = true;
-        }
-
-        // Check if version_info is missing or incomplete
-        if ( ! $version_info || ! isset( $version_info->package ) || empty( $version_info->package ) ) {
-            $need_refresh = true;
-        }
-
-        // Check if package URL exists but is not accessible (only if not already expired)
-        if ( !$need_refresh && ! $this->is_url_working( $version_info->package ) ) {
+        // Check if version_info is missing or incomplete || Cache expired
+        if ( ! $version_info || $this->is_cache_expired() ) {
             $need_refresh = true;
         }
 
@@ -186,18 +176,8 @@ class Plugin_Updater {
 
             $need_refresh = false;
 
-// Cache expired
-            if ( $this->is_cache_expired() ) {
-                $need_refresh = true;
-            }
-
-// Missing or empty download link
-            if ( ! $version_info || ! isset( $version_info->package ) || empty( $version_info->package ) ) {
-                $need_refresh = true;
-            }
-
-// Package exists, but link is broken (only if cache is not already expired)
-            if ( !$need_refresh && ! $this->is_url_working( $version_info->package ) ) {
+            // Check if version_info is missing or incomplete || Cache expired
+            if ( ! $version_info || $this->is_cache_expired() ) {
                 $need_refresh = true;
             }
 

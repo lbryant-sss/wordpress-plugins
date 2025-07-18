@@ -13,10 +13,7 @@ aiPostboxOpen("id-help-communication", "Communication with window.postMessage or
       ', 'advanced-iframe'); ?>
 
     <?php _e('
-      <div id="details-workaround" >If the parent page (the page where the iframe is) and the iframe page (the page which is inside the iframe) are NOT on the same domain it is only possible to do the above stuff by including an additional iframe to the remote page which than can call a script on the parent domain that can then access the functions there. A detailed documentation how this works is described here:
-      <p>
-        <a target="_blank" href="http://www.codecouch.com/2008/10/cross-site-scripting-xss-using-iframes/">http://www.codecouch.com/2008/10/cross-site-scripting-xss-using-iframes</a> - This plugin does wrap everything that is described there. Simple follow the steps below.
-      </p>The following steps are needed:
+      <div id="details-workaround" >If the parent page (the page where the iframe is) and the iframe page (the page which is inside the iframe) are NOT on the same domain it is only possible to do the above stuff by including an additional iframe to the remote page which than can call a script on the parent domain that can then access the functions there. The following steps are needed:
       <ol>
         <li>The parent page has a Javascript function that resizes the iframe</li>
         <li>The external iframe page has an additional hidden iframe, an onload attribute at the body and a javascript function</li>
@@ -36,8 +33,8 @@ aiPostboxOpen("id-help-communication", "Communication with window.postMessage or
      One advantage of the iframe communication is that by default you see the callbacks to height.html in the network. So is was always easy to debug out of the box. window.postMessage by default is not visible like that. If you have any problems with window.postMessage select "Debug" at "Use postMessage communication" and log information about the transferred data is printed to the browser console. Use F12 at your browser to open the developer tools.
     </p>
     
-    <p>When the first version plugin was planned the percentage of browsers that not supported window.postMessage was ~20%. But now this has changed. The latest browser statistics show that IE <= 8 browsers have dropped to zero now. And as many websites do not support such old browsers either the new default is now window.postMessage for new pro installations.
-    </p><p>Existing installations can switch to window.postMessage by changing this in the administration and save it. But you still can use the old way as it works fine as well.
+    <p>When the first version plugin was planned the percentage of browsers that not supported window.postMessage was ~20%. But now this has changed. The latest browser statistics show that IE <= 8 browsers have dropped to zero now. The new default is now window.postMessage for new pro installations.
+    </p><p>Existing installations can switch to window.postMessage by changing this in the administration.
     ', 'advanced-iframe'); ?>
 
   </p>

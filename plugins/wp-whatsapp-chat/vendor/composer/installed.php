@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'quadlayers/wp-whatsapp-chat',
-        'pretty_version' => 'v7.7.7',
-        'version' => '7.7.7.0',
-        'reference' => 'c7be5c2ac33ca4956b39d38bf8ad7a28c43c0bd5',
+        'pretty_version' => 'v7.7.8',
+        'version' => '7.7.8.0',
+        'reference' => 'f3a2f007bd1c8b52c86f85db9070089cd3666eb7',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,11 +13,11 @@
         'automattic/jetpack-assets' => array(
             'pretty_version' => 'dev-trunk',
             'version' => 'dev-trunk',
-            'reference' => '6c7bf20db16e02c466dc2628e7cdc4161294adbd',
+            'reference' => 'ddb583eb91eb964776920902c54601043be4b4c4',
             'type' => 'jetpack-library',
             'install_path' => __DIR__ . '/../../jetpack_vendor/automattic/jetpack-assets',
             'aliases' => array(
-                0 => '4.1.x-dev',
+                0 => '4.2.x-dev',
             ),
             'dev_requirement' => false,
         ),
@@ -46,7 +46,7 @@
         'automattic/jetpack-status' => array(
             'pretty_version' => 'dev-trunk',
             'version' => 'dev-trunk',
-            'reference' => '18f2a853f35e014c2d7afabc761f5bb53d2299fc',
+            'reference' => 'ac5a5b67dac796bcb48323ad0baaa292fe0af7d4',
             'type' => 'jetpack-library',
             'install_path' => __DIR__ . '/../../jetpack_vendor/automattic/jetpack-status',
             'aliases' => array(
@@ -167,9 +167,9 @@
             'dev_requirement' => false,
         ),
         'quadlayers/wp-whatsapp-chat' => array(
-            'pretty_version' => 'v7.7.7',
-            'version' => '7.7.7.0',
-            'reference' => 'c7be5c2ac33ca4956b39d38bf8ad7a28c43c0bd5',
+            'pretty_version' => 'v7.7.8',
+            'version' => '7.7.8.0',
+            'reference' => 'f3a2f007bd1c8b52c86f85db9070089cd3666eb7',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

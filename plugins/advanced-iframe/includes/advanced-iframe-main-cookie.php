@@ -4,7 +4,7 @@
  *  This class fixes cookies that do not have Secret;SameSite=None;Partitioned set.
  *
  *  See
- *  https://www.tinywebgallery.com/blog/advanced-iframe/advanced-iframe-pro-demo/how-to-use-the-samesite-cookie-fix
+ *  https://www.advanced-iframe.com/advanced-iframe/advanced-iframe-pro-demo/how-to-use-the-samesite-cookie-fix
  *  how to use this class directly.
  *
  *  $filter = 'ALL' - all cookies are modified

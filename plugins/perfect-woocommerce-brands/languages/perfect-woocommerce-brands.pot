@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Perfect Brands WooCommerce 3.5.6\n"
+"Project-Id-Version: Perfect Brands WooCommerce 3.5.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/perfect-woocommerce-brands\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-07-15T18:33:40+00:00\n"
+"POT-Creation-Date: 2025-07-17T08:45:17+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: perfect-woocommerce-brands\n"
@@ -52,7 +52,7 @@ msgstr ""
 #: lib/admin/class-admin-tab.php:28
 #: lib/admin/class-admin-tab.php:308
 #: lib/admin/class-admin-tab.php:451
-#: lib/admin/class-edit-brands-page.php:157
+#: lib/admin/class-edit-brands-page.php:153
 #: lib/class-woocommerce.php:761
 #: lib/class-woocommerce.php:763
 #: lib/widgets/class-brands-dropdown.php:20
@@ -514,27 +514,27 @@ msgstr ""
 msgid "Product brands that the coupon will not be applied to, or that cannot be in the cart in order for the \"Fixed cart discount\" to be applied."
 msgstr ""
 
-#: lib/admin/class-edit-brands-page.php:48
+#: lib/admin/class-edit-brands-page.php:44
 msgid "featured"
 msgstr ""
 
-#: lib/admin/class-edit-brands-page.php:87
+#: lib/admin/class-edit-brands-page.php:83
 msgid "Logo"
 msgstr ""
 
-#: lib/admin/class-edit-brands-page.php:88
+#: lib/admin/class-edit-brands-page.php:84
 msgid "Featured"
 msgstr ""
 
-#: lib/admin/class-edit-brands-page.php:104
+#: lib/admin/class-edit-brands-page.php:100
 msgid "Set as featured"
 msgstr ""
 
-#: lib/admin/class-edit-brands-page.php:138
+#: lib/admin/class-edit-brands-page.php:134
 msgid "Error!"
 msgstr ""
 
-#: lib/admin/class-edit-brands-page.php:160
+#: lib/admin/class-edit-brands-page.php:156
 msgid "Show featured brands first"
 msgstr ""
 

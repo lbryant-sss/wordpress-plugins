@@ -4,8 +4,8 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: admin, dashboard, menu, security, wpmu
 License: GPLv3
 Requires at least: 5.4
-Tested up to: 6.8
-Stable tag: 1.13.1
+Tested up to: 6.8.2
+Stable tag: 1.14
 
 Lets you edit the WordPress admin menu. You can re-order, hide or rename menus, add custom menus and more. 
 
@@ -83,6 +83,17 @@ Plugins installed in the `mu-plugins` directory are treated as "always on", so y
 3. Re-ordering menu items via drag and drop
 
 == Changelog ==
+
+= 1.14 =
+* Increased the minimum required PHP version from 5.6 to 7.1.
+* Added an "About" tab to the "Content Permissions (AME)" meta box. The tab clarifies where the box came from and how to disable it if necessary.
+* Fixed a PHP 8.4 deprecation notice "fgetcsv(): the $escape parameter must be provided as its default value will change".
+* Fixed multiple instances of PHP 8.4 deprecation notices like "Implicitly marking parameter $foo as nullable is deprecated, the explicit nullable type must be used instead".
+* Fixed a conflict with the "Bricks" theme/site builder that could cause the fatal error "Uncaught TypeError: Illegal offset type in isset or empty".
+* Fixed a conflict with "FunnelKit Funnel Builder" where "WooFunnels" would permanently stay highlighted green as a "new" menu because its "Upgrade to Pro" submenu item could not be correctly marked as seen.
+* Fixed a similar but unrelated issue with "Forminator Forms" where the "Forminator" menu would always be highlighted as new.
+* Fixed a bug where AME could unexpectedly hide the top-level "Profile" menu from non-admin users in some configurations.
+* Fixed long menu titles wrapping to the next line and inconsistent field label spacing in the menu editor.
 
 = 1.13.1 =
 * Fixed a minor conflict with "Advanced Flat Rate Shipping For WooCommerce" that caused several of its submenu items that are supposed to be hidden to become visible.

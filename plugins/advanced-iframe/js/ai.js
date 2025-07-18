@@ -1,8 +1,8 @@
 /**
- *  Advanced iframe functions v2025.5
+ *  Advanced iframe functions v2025.6
  */
 /* jslint devel: true, unused: false */
-/* globals ai_show_id_only:false, aiIsIe8: false, aiChangeUrl: false, aiResizeIframeHeightId: false, aiShowIframeId: false, findAndReplaceDOMText: false, aiShowDebug: false */
+/* globals ai_show_id_only:false, aiChangeUrl: false, aiResizeIframeHeightId: false, aiShowIframeId: false, findAndReplaceDOMText: false, aiShowDebug: false */
 
 var aiEnableCookie = (typeof x === 'undefined') ? false : aiEnableCookie;
 var aiId = '';
@@ -1150,7 +1150,6 @@ function aiGenerateShortcode(isPro) {
     output += aiGenerateRadioShortcode('show_iframe_loader', 'false');
     output += aiGenerateTextShortcode('hide_content_until_iframe_color');
     output += aiGenerateTextShortcode('iframe_zoom');
-    output += aiGenerateRadioShortcode('iframe_zoom_ie8', 'false');
     output += aiGenerateRadioShortcode('use_zoom_absolute_fix', 'false');
     output += aiGenerateRadioShortcode('auto_zoom', 'false');
     output += aiGenerateTextShortcode('auto_zoom_by_ratio');
@@ -1427,10 +1426,6 @@ function aiAutoZoom(id, responsive, ratio) {
 function aiSetZoom(id, zoom) {
 
   var obj = jQuery('#' + id);
-
-  if (aiIsIe8 === true) {
-    obj.css('-ms-zoom', zoom);
-  }
 
   obj.css({
     '-ms-transform': 'scale(' + zoom + ')',

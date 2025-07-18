@@ -3,8 +3,8 @@ Contributors: WPEverest
 Tags: user registration, membership, user profile, registration form, login form,
 Requires at least: 5.5
 Requires PHP: 7.2
-Tested up to: 6.8.1
-Stable tag: 4.2.4
+Tested up to: 6.8.2
+Stable tag: 4.3.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -257,6 +257,26 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 21. User Account Page –  Vertical Layout
 
 == Changelog ==
+= 4.3.0    - 17/07/2025 =
+* Security - Cross Site Scripting Vulnerability with urcr_restrict shortcode
+* Feature  - Membership upgrade.
+* Enhance  - Prevent use of external url's in Paypal settings.
+* Enhance  - Auto select membership and pg if only one membership.
+* Enhance  - Separate payment settings save mechanism for each payment module
+* Tweak    - Redirection to respective payment settings.
+* Tweak    - Consistent drop-down for login and registration form builder setting.
+* Fix      - Failure of Paypal form creation.
+* Fix      - Export users page issue in settings.
+* Fix      - Unable to check plugin status issue.
+* Fix      - Profile picture not exported in CSV file.
+* Fix      - Hidden hover CSS in login form submit button
+* Fix      - Partial content restriction message Modification.
+* Fix      - Auto login not working for stripe paid membership.
+* Fix      - Datetime field conflict with hello elementor theme.
+* Fix      - Avoid the API request to stats for development mode.
+* Fix      - Default value exported instead of selected value in CSV.
+* Fix      - Submit button label and html content not translatable in WPML.
+* Fix      - Enable Paypal in form setting triggers override global paypal settings.
 
 = 4.2.4    - 19/06/2025 =
 * Enhance  - Lock/Unlock payment form setting.

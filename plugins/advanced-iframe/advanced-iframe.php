@@ -2,11 +2,11 @@
 /*
 Plugin Name: Advanced iFrame
 Plugin URI: https://wordpress.org/plugins/advanced-iframe/
-Version: 2025.5
+Version: 2025.6
 Text Domain: advanced-iframe
 Domain Path: /languages
 Author: Michael Dempfle
-Author URI: https://www.tinywebgallery.com
+Author URI: https://www.advanced-iframe.com
 License: GPLv2 or later
 Description: This plugin includes any web page as shortcode in an advanced iframe or embeds the content directly.
 
@@ -22,26 +22,28 @@ Description: This plugin includes any web page as shortcode in an advanced ifram
     along with this program; if not, write to the Free Software
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
-define('_VALID_AI', '42');
-define('AIP_URL', plugin_dir_url(__FILE__));
-define('AIP_IMGURL', AIP_URL . 'img');
+if (!defined('_VALID_AI')) {
+  define('_VALID_AI', '42');
+  define('AIP_URL', plugin_dir_url(__FILE__));
+  define('AIP_IMGURL', AIP_URL . 'img');
+}
 
 // enable this if nothing is working anymore to see as much output as possible on the page.
 // ini_set('display_errors', 1);
 // ini_set('display_startup_errors', 1);
 // error_reporting(E_ALL);
 
-$aiVersion = '2025.5';
+$aiVersion = '2025.6';
 // check $aiJsSize
 
-$cons_advancediFrame = null; 
+$cons_advancediFrame = null;
 $aiSlug = 'advanced-iframe';
 
 if (function_exists('ai_fs')) {
   ai_fs()->set_basename(false, __FILE__);
 } else {
   // DO NOT REMOVE THIS IF, IT IS ESSENTIAL FOR THE `function_exists` CALL ABOVE TO PROPERLY WORK.
-  if (!isset($aip_standalone) || !function_exists('ai_fs')) {
+  if (!isset($aip_standalone) && !function_exists('ai_fs')) {
     // Create a helper function for easy SDK access.
     function ai_fs() {
       global $ai_fs;
@@ -80,7 +82,7 @@ if (function_exists('ai_fs')) {
 
     function ai_fs_custom_connect_message_on_update($message, $user_first_name,
                                                     $product_title, $user_login, $site_link, $freemius_link) {
-      return sprintf(__('We have introduced this OPT-IN so you never miss an important update and help us make the plugin more compatible with your site and better at doing what you need it to.<br><br>OPT-IN to get email notifications for security & feature updates, educational content, and occasional offers, and to share some basic WordPress environment info. If you skip this, that\'s okay! %1$s will still shown just fine and after 10.000 views only a small notice is shown on the iframe.<br><br>If you OPT-IN you will additionally get: <ul style="list-style: outside;font-size: 15px;padding-left: 30px;"><li><strong>Unlimited views</strong> already the free version</li><li>Additional sections on the help tab</li><li>Monthly chance to win a pro license</li><li>Exclusive coupons</li></ul>', 'advanced-iframe'), '<b>' . $product_title . '</b>');
+      return sprintf(__('We have introduced this OPT-IN so you never miss an important update and help us make the plugin more compatible with your site and better at doing what you need it to.<br><br>OPT-IN to get email notifications for security & feature updates, educational content, and occasional offers, and to share some basic WordPress environment info.<br><br>If you OPT-IN you will additionally get: <ul style="list-style: outside;font-size: 15px;padding-left: 30px;"><li>Automatic removal of the small notice which is shown on the iframe.</li><li>Additional sections on the help tab</li><li>Exclusive coupons</li></ul>', 'advanced-iframe'), '<b>' . $product_title . '</b>');
     }
 
     ai_fs()->add_filter('connect_message_on_update', 'ai_fs_custom_connect_message_on_update', 10, 6);
@@ -120,8 +122,8 @@ if (function_exists('ai_fs')) {
         if (!wp_next_scheduled('ai_check_iframes_event')) {
           wp_schedule_event(time(), 'daily', 'ai_check_iframes_event');
         }
-        if ($options['src'] === '//www.tinywebgallery.com') {
-          $options['src'] = '//www.tinywebgallery.com/blog/advanced-iframe';
+        if ($options['src'] === '//www.advanced-iframe.com') {
+          $options['src'] = '//www.advanced-iframe.com/advanced-iframe';
         }
         update_option($this->adminOptionsName, $options);
         $this->resetMetaBoxes();
@@ -246,7 +248,7 @@ if (function_exists('ai_fs')) {
       function iframe_defaults() {
         return array(
           'securitykey' => '',
-          'src' => '//www.tinywebgallery.com/blog/advanced-iframe',
+          'src' => '//www.advanced-iframe.com/advanced-iframe',
           'width' => '100%',
           'height' => '600',
           'scrolling' => 'none',
@@ -350,7 +352,6 @@ if (function_exists('ai_fs')) {
           'additional_css_file_iframe' => '',
           'add_css_class_iframe' => 'false',
           'editorbutton' => 'src,width,height',
-          'iframe_zoom_ie8' => 'false',
           'enable_lazy_load_reserve_space' => 'true',
           'hide_content_until_iframe_color' => '',
           'use_zoom_absolute_fix' => 'false',
@@ -413,7 +414,8 @@ if (function_exists('ai_fs')) {
           'referrerpolicy' => '',
           'add_surrounding_p' => 'false',
           'custom' => '',
-          'enable_ai_content_pages' => 'false'
+          'enable_ai_content_pages' => 'false',
+		  'show_support_message' => 'true'
         );
       }
 
@@ -951,7 +953,7 @@ if (function_exists('ai_fs')) {
           // double check if it is somehow the expected content.
           if ($this->aiContains($minifiedContent, 'var extendedDebug') && $this->aiContains($minifiedContent, 'ddOnloadEvent(aiExecuteWorkaround')) {
             $type = $this->aiContains($newContent, 'Advanced iframe pro') ? 'pro' : 'free';
-            $minifiedContent = '/** Advanced iframe ' . $type . ' external workaround file ' . $aiVersion . '. Created: ' . date("Y-m-d H:i:s") . " */\n" . $minifiedContent;        
+            $minifiedContent = '/** Advanced iframe ' . $type . ' external workaround file ' . $aiVersion . '. Created: ' . date("Y-m-d H:i:s") . " */\n" . $minifiedContent;
 		  } else {
             $minifiedContent = $newContent;
           }
@@ -963,7 +965,7 @@ if (function_exists('ai_fs')) {
 
       function createMinimizedAiJs($backend) {
         global $aiVersion;
-        $aiJsSize = 87571;
+        $aiJsSize = 87420;
         $newContent = file_get_contents(dirname(__FILE__) . '/js/ai.js');
         $oldFileName = dirname(__FILE__) . '/js/ai.min.js';
         if ((strlen($newContent) == $aiJsSize) && file_exists($oldFileName)) {
@@ -1069,21 +1071,6 @@ if (function_exists('ai_fs')) {
         if (!file_exists($filenamedir . '/hide_fullscreen.html')) {
           $src = dirname(__FILE__) . '/custom/hide_fullscreen.html';
           @copy($src, $filenamedir . '/hide_fullscreen.html');
-        }
-      }
-
-      function checkIE8() {
-        $filenamedir = dirname(__FILE__) . '/../advanced-iframe-custom/browser-check-failed.txt';
-        if (file_exists($filenamedir)) {
-          return false;
-        } else {
-          $fh = @fopen($filenamedir, 'w');
-          if ($fh) {
-            @fwrite($fh, "Browser detection crashed. Please increase your php memory, delete this file and retry.");
-            @fclose($fh);
-          }
-          @unlink($filenamedir);
-          return ai_is_ie(8);
         }
       }
 
@@ -1222,7 +1209,6 @@ if (function_exists('ai_fs')) {
         }
 
         $screen = get_current_screen();
-        $viewsPercent = get_option('default_a_options') / 100;
 
         if ((file_exists(dirname(__FILE__) . "/includes/class-cw-envato-api.php")) && empty($devOptions['purchase_code']) && !strstr($screen->id, $this->page) && !$isFreemius) {
           printf(
@@ -1233,23 +1219,7 @@ if (function_exists('ai_fs')) {
             __('Advanced iFrame administration', 'advanced-iframe'),
             __(' on the options tab. Otherwise you will still have the view limit of the free version where a notice is over all iframes.', 'advanced-iframe')
           );
-          if ($viewsPercent > 100) {
-            _e('<p><strong style="color: red"> The monthly view limit is reached. A small notice is shown over all iframes.</strong></p>', 'advanced-iframe');
-          }
           echo '</div>';
-        } else if ($viewsPercent > 100 && !$ai_fs->can_use_premium_code__premium_only() && !strstr($screen->id, $this->page)) {
-         
-		  $isRegistered = $isFreemiusMigration && $ai_fs->is_registered() && $ai_fs->is_tracking_allowed();
-          if (!$isRegistered) {
-           $text1 = __('<p><strong style="color: red">The monthly view limit of advanced iframe free is reached. A small notice is shown over all iframes.</strong></p>', 'advanced-iframe');
-           $text2 = __('Please OPT-IN to get unlimited views. For more details go to the options tab of the ', 'advanced-iframe');
-           printf(
-              '<div class="%s">%s<p>%s <a href="%s">%s</a>.</p>',
-              'notice notice-error',$text1,$text2, admin_url('admin.php?page=advanced-iframe'),
-              __('Advanced iFrame administration', 'advanced-iframe')
-            );
-	      echo '</div>';
-	      }
         }
       }
 
@@ -1267,7 +1237,7 @@ if (function_exists('ai_fs')) {
           $pro = $ai_fs->can_use_premium_code__premium_only() ? "1" : "2";
           $default_key = "put your unique phrase here";
           $auth_key = defined('AUTH_KEY') ? ((AUTH_KEY == $default_key) ? get_site_url() : substr(AUTH_KEY, -2)) : get_site_url();
-          $urls = 'https://www.tinywebgallery.com/updatecheck/getAipVersion.php';
+          $urls = 'https://www.advanced-iframe.com/updatecheck/getAipVersion.php';
           $rand = substr(md5(microtime()), rand(0, 26), 2);
           $data = http_build_query(array('url' => get_site_url(), 'codehash' => $rand . base64_encode($purchaseCode), 'sitehash' => hash('sha256', $auth_key), 'type' => $pro, 'version' => $aiVersion, 'isFreemius' => $isFreemius ? 'true' : 'false'), '', '&');
           // use key 'http' even if you send the request to https://...
@@ -1414,7 +1384,7 @@ if (function_exists('ai_fs')) {
       // The function that handles the AJAX request
       function aip_map_url_callback() {
         check_ajax_referer('aip-parameter-nonce', 'security');
-        $url = $_POST['url'];
+        $url = urldecode($_POST['url']);
 		if (filter_var($url, FILTER_VALIDATE_URL) === FALSE) {
 	      echo "URL_NOT_VALID";
 		  die();
@@ -1529,7 +1499,7 @@ if (function_exists('ai_fs')) {
         if (preg_match_all('/' . $pattern . '/s', $content, $matches)) {
           $oldContent = $content;
 		  $filteredContent = '';
-		  
+
           foreach ($matches[0] as $hit) {
             // check if the user has the capability unfiltered_html and is therefore allowed to use the custom and onload shortcode attribute.
             if (!current_user_can('unfiltered_html')) {
@@ -1597,9 +1567,9 @@ if (function_exists('ai_fs')) {
       }
 
       function filterAttribute($attribute, $hit, $content) {
-        if (AdvancedIframeHelper::aiContains($hit, $attribute)) {
-	      $content = str_replace($attribute, '', $content);
-        }
+        if (AdvancedIframeHelper::aiContainsIgnoreCase($hit, $attribute)) {
+	      $content = str_ireplace($attribute, '', $content);
+	    }
         return $content;
       }
 
@@ -1835,14 +1805,14 @@ if (function_exists('ai_fs')) {
 
       if ($isFreemiusMigration) {
         $aiLinks = array('Version ' . advanced_iframe_plugin_version(),
-          'By <a href="https://www.tinywebgallery.com">Michael Dempfle</a>',
-          '<a href="//www.tinywebgallery.com/blog/advanced-iframe/advanced-iframe-pro-demo">Demos</a>'
+          'By <a href="https://www.advanced-iframe.com">Michael Dempfle</a>',
+          '<a href="//www.advanced-iframe.com/advanced-iframe/advanced-iframe-pro-demo">Demos</a>'
         );
       } else {
         $aiLinks = array('Version ' . advanced_iframe_plugin_version(),
-          'By <a href="https://www.tinywebgallery.com">Michael Dempfle</a>',
+          'By <a href="https://www.advanced-iframe.com">Michael Dempfle</a>',
           '<a target="_blank" href="https://1.envato.market/k2Q2x">Code canyon - Advanced iFrame Pro</a>',
-          '<a href="//www.tinywebgallery.com/blog/advanced-iframe/advanced-iframe-pro-demo">Demos</a>'
+          '<a href="//www.advanced-iframe.com/advanced-iframe/advanced-iframe-pro-demo">Demos</a>'
         );
       }
       $links = array_merge($links, $aiLinks);
@@ -1932,6 +1902,8 @@ if (function_exists('ai_fs')) {
     }
   }
 
-  register_uninstall_hook(__FILE__, 'ai_uninstall');
+  if (!isset($aip_standalone)) {
+    register_uninstall_hook(__FILE__, 'ai_uninstall');
+  }
 }
 ?>

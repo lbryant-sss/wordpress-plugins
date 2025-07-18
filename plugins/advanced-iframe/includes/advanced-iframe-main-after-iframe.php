@@ -253,17 +253,21 @@ $this->include_additional_files($additional_css, $additional_js, $version_counte
 
 $html .= $this->interceptAjaxResize($id, $onload_resize_width, $resize_on_ajax, $resize_on_ajax_jquery,
   $resize_on_click, $resize_on_click_elements, $resize_min_height);
-$openTag = '<p style="display:block !important; visibility:visible !important;margin: -28px 20px 0 0;padding-left: 5px;padding-top:5px;background: white; overflow: hidden; position: relative; line-height:15px;"><small style="display:block !important;visibility:visible !important">';
+$openTag = '<p style="display:block !important; visibility:visible !important;margin: -18px 14px 0 0;padding-left: 3px;padding-top:3px;background: white; overflow: hidden; position: relative; line-height:15px;width: fit-content;"><small style="display:block !important;visibility:visible !important">';
 
-if ($isFreemiusMigration) {
+if ($isFreemiusMigration && !isset($aip_standalone)) {
   global $ai_fs;
   $isRegistered = $ai_fs->is_registered() && $ai_fs->is_tracking_allowed();
-  if (!$isRegistered && $default_options > 100 * 100) {
-    $html .= $openTag . __('The maximum number of views of this element is reached.<br>Please contact the webmaster to enable unlimited views.</small></p>', 'advanced-iframe');
-  }
-} else {
-  if ($default_options > 100 * 100) {
-    $html .= $openTag . __('pow' . 'ered by Advanced iFrame. Get the <a target="_blank" href="https://1.envato.market/Kd23v">Pro version on CodeCanyon</a>.</small></p>', 'advanced-iframe');
+  if (!$isRegistered && $show_support_message == 'true' ) {
+    $html .= $openTag;
+	if (is_admin()) {
+	  	 $html .= '<a href="' . admin_url('admin.php?page=advanced-iframe') . '">';
+	}
+	$html .= __('pow' . 'ered by Advanced iFrame', 'advanced-iframe');
+	if (is_admin()) {
+       $html .= '</a>';
+	}
+	$html .= '</small></p>';
   }
 }
 if ($loginPreview) {

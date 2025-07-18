@@ -114,7 +114,6 @@ if ($show_part_of_iframe === 'true') {
 $scale_width = $width;
 $scale_height = $height;
 
-$enable_ie_8_support = false;
 if (!empty($iframe_zoom)) {
   if ($width != 'not set' && $width != '') {
     $scale_width = AdvancedIframeHelper::scale_value($width, $iframe_zoom);
@@ -136,12 +135,6 @@ if (!empty($iframe_zoom)) {
         }
         #' . $id . '
         {';
-  if (version_compare(PHP_VERSION, '5.3.0') >= 0) {
-    $enable_ie_8_support = ($iframe_zoom_ie8 === 'true') && $this->checkIE8();
-    if ($enable_ie_8_support) {
-      $html .= '-ms-zoom:' . $iframe_zoom . ';';
-    }
-  }
   $html .= '-ms-transform: scale(' . $iframe_zoom . ');
               -ms-transform-origin: 0 0;
               -moz-transform: scale(' . $iframe_zoom . ');

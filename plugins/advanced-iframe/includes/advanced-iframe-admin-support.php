@@ -13,7 +13,7 @@ aiPostboxOpen("id-help-support", "Get support", $closedArray, "100%", " show-alw
 <?php _e('<p>What do you get?</p><ul><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Free check if you can include the content the way YOU like.</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Fast and reliable setup of what you want.</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- You only pay if it works!</li></ul>', 'advanced-iframe'); ?>
 
   <p>
-    <?php _e('This offer is only available for Advanced iFrame Pro users.<br/>If you are interested please visit <a id="as" target="_blank" href="//www.tinywebgallery.com/blog/advanced-iframe-support/">www.tinywebgallery.com/blog/advanced-iframe-support/</a> for more information.', 'advanced-iframe'); ?>
+    <?php _e('This offer is only available for Advanced iFrame Pro users.<br/>If you are interested please visit <a id="as" target="_blank" href="//www.advanced-iframe.com/advanced-iframe-support/">www.advanced-iframe.com/advanced-iframe-support/</a> for more information.', 'advanced-iframe'); ?>
   </p>
 <?php
 aiPostboxClose();

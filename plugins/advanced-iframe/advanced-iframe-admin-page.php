@@ -1,7 +1,7 @@
 <?php
 /*
 Advanced iFrame Pro
-https://www.tinywebgallery.com/blog/advanced-iframe
+https://www.advanced-iframe.com/advanced-iframe
 Michael Dempfle
 Administration include
 */
@@ -54,7 +54,7 @@ if (is_user_logged_in() && is_admin()) {
       if (version_compare($latest_version, $aiVersion) === 1) {
         if (!(isset($devOptions['closed_messages']) && isset($devOptions['closed_messages']['show-version-message']))) {
           echo '<div id="show-version-message" class="notice notice-success is-dismissible is-permanent-closable"><p><strong>';
-          echo __('Version ', 'advanced-iframe') . $latest_version . __(' of Advanced iFrame Pro is available. See the <a href="//www.tinywebgallery.com/blog/advanced-iframe/advanced-iframe-history" target="_blank">history</a> for details. Please download the latest version from your download page of codecanyon.', 'advanced-iframe');
+          echo __('Version ', 'advanced-iframe') . $latest_version . __(' of Advanced iFrame Pro is available. See the <a href="//www.advanced-iframe.com/advanced-iframe/advanced-iframe-history" target="_blank">history</a> for details. Please download the latest version from your download page of codecanyon.', 'advanced-iframe');
           echo '</strong></p></div>';
         }
         $is_latest = false;
@@ -115,7 +115,7 @@ if (is_user_logged_in() && is_admin()) {
       'add_iframe_url_as_param_direct', 'use_iframe_title_for_parent',
       'reload_interval', 'iframe_content_css',
       'additional_js_file_iframe', 'additional_css_file_iframe',
-      'add_css_class_iframe', 'iframe_zoom_ie8',
+      'add_css_class_iframe',
       'enable_lazy_load_reserve_space', 'editorbutton',
       'hide_content_until_iframe_color', 'include_html',
       'enable_ios_mobile_scolling', 'sandbox',
@@ -145,7 +145,7 @@ if (is_user_logged_in() && is_admin()) {
       'referrerpolicy', 'add_surrounding_p',
       'custom', 'fullscreen_button_hide_elements',
       'fullscreen_button_full', 'fullscreen_button_style',
-      'enable_ai_content_pages'
+      'enable_ai_content_pages', 'show_support_message' 
     );
     if (!wp_verify_nonce($_POST['twg-options'], 'twg-options')) {
       die('Sorry, your nonce did not verify.');
@@ -351,14 +351,14 @@ if (is_user_logged_in() && is_admin()) {
         echo ' <small>v' . $aiVersion . '</small>';
         if ($evanto) {
           if ($is_latest) {
-            echo ' <small class="hide-print"><small><small>' . __('(Your installation is up to date - <a href="//www.tinywebgallery.com/blog/advanced-iframe/advanced-iframe-history" target="_blank">view history</a>)', 'advanced-iframe') . '</small></small></small>';
+            echo ' <small class="hide-print"><small><small>' . __('(Your installation is up to date - <a href="//www.advanced-iframe.com/advanced-iframe/advanced-iframe-history" target="_blank">view history</a>)', 'advanced-iframe') . '</small></small></small>';
           } elseif ($isFreemiusMigration) {
-            echo ' <small class="hide-print"><small><small>' . __('(<a href="//www.tinywebgallery.com/blog/advanced-iframe/advanced-iframe-history" target="_blank">Version ', 'advanced-iframe') . $latest_version . __('</a> is available. Please update the plugin on the "Plugins" page.', 'advanced-iframe') . '</small></small></small>';
+            echo ' <small class="hide-print"><small><small>' . __('(<a href="//www.advanced-iframe.com/advanced-iframe/advanced-iframe-history" target="_blank">Version ', 'advanced-iframe') . $latest_version . __('</a> is available. Please update the plugin on the "Plugins" page.', 'advanced-iframe') . '</small></small></small>';
           } else {
-            echo ' <small class="hide-print"><small><small>' . __('(<a href="//www.tinywebgallery.com/blog/advanced-iframe/advanced-iframe-history" target="_blank">Version ', 'advanced-iframe') . $latest_version . __('</a> is available. <a href="https://codecanyon.net/downloads" target="_blank">Download</a> it from CodeCanyon and follow the <a href="https://1.envato.market/WQJ3O#item-description__upgrade" target="blank">update instructions</a>!', 'advanced-iframe') . '</small></small></small>';
+            echo ' <small class="hide-print"><small><small>' . __('(<a href="//www.advanced-iframe.com/advanced-iframe/advanced-iframe-history" target="_blank">Version ', 'advanced-iframe') . $latest_version . __('</a> is available. <a href="https://codecanyon.net/downloads" target="_blank">Download</a> it from CodeCanyon and follow the <a href="https://1.envato.market/WQJ3O#item-description__upgrade" target="blank">update instructions</a>!', 'advanced-iframe') . '</small></small></small>';
           }
         } else {
-          echo ' <small class="hide-print"><small><small>' . __('(<a href="//www.tinywebgallery.com/blog/advanced-iframe/advanced-iframe-history" target="_blank">view history</a>)', 'advanced-iframe') . '</small></small></small>';
+          echo ' <small class="hide-print"><small><small>' . __('(<a href="//www.advanced-iframe.com/advanced-iframe/advanced-iframe-history" target="_blank">view history</a>)', 'advanced-iframe') . '</small></small></small>';
         }
         ?>
       </h1>
@@ -386,11 +386,7 @@ if (is_user_logged_in() && is_admin()) {
         echo __('<p><p>Thank you for installing advanced iframe pro.</p><p>Please enter your purchase code on the <a href="#" class="enter-registration">Options tab</a>. It will unlock all the additional features you purchased.<br>Without a purchase code the 10.000 views/month of the free version is active.</p>', 'advanced-iframe');
         echo '</strong></p></p></div>';
       }
-      if (!$evanto && !$isRegistered && $viewsPercent > 100) {
-        echo '<div id="show-registration-message" class="notice notice-success is-dismissible is-permanent-closable"><p><strong>';
-        echo __('The monthly view limit of advanced iframe free is reached. A small notice is shown below all iframes.</>', 'advanced-iframe');
-        echo __('<p>Please update to the pro version. For more details, go to the <a href="#" class="enter-registration">Options tab</a>.', 'advanced-iframe') . '</strong></p></div>';
-      } else if (!$evanto && !$isRegistered) {
+      if (!$evanto && !$isRegistered && $isFreemiusMigration) {
 		echo '<div id="show-registration-message" class="notice notice-success"><p>';
         echo __('<p>Please do not forget to OPT-IN to get additional benefits. For more details, go to the <a href="#" class="enter-pro">Options tab</a>.</p>', 'advanced-iframe');
         echo '</p></div>';
@@ -433,7 +429,7 @@ if (is_user_logged_in() && is_admin()) {
       }
 
       aiPostboxOpen("id-search", "Read this first", $closedArray, '48%', " show-always postbox-container-space");
-      echo __('If you start using advanced iframe please read the "<a href="//www.tinywebgallery.com/blog/advanced-iframe/advanced-iframe-checklist" target="_blank">Advanced iframe checklist</a>" first. Then continue with the quickstart guide on the options tab. After that continue with an iframe like described on the basic tab. Only if the iframe appears add additional features. Go to the <a href="//www.tinywebgallery.com/blog/advanced-iframe/demo-advanced-iframe-2-0" target="_blank">free</a> and the <a href="//www.tinywebgallery.com/blog/advanced-iframe/advanced-iframe-pro-demo" target="_blank">pro demos</a> page for running examples.', 'advanced-iframe');
+      echo __('If you start using advanced iframe please read the "<a href="//www.advanced-iframe.com/advanced-iframe/advanced-iframe-checklist" target="_blank">Advanced iframe checklist</a>" first. Then continue with the quickstart guide on the options tab. After that continue with an iframe like described on the basic tab. Only if the iframe appears add additional features. Go to the <a href="//www.advanced-iframe.com/advanced-iframe/demo-advanced-iframe-2-0" target="_blank">free</a> and the <a href="//www.advanced-iframe.com/advanced-iframe/advanced-iframe-pro-demo" target="_blank">pro demos</a> page for running examples.', 'advanced-iframe');
 
       echo '<p>';
       echo renderExampleIcon("javascript:void();");

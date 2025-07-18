@@ -142,8 +142,8 @@ if ($showHelp) { ?>
 		<li>$("a[href$=.pdf]") selects all &lt;a&gt; elements that possess an href attribute that ends in .pdf</li>
         <li>$("a[href=\'example.html\']") selects all &lt;a&gt; elements that has the href example.html</li>
         <li>$("a[href*=\'example.html\']") selects all &lt;a&gt; elements where the href does contain example.html</li>
-        <li>$("a[href^=\'https://www.tinywebgallery.com\']") selects all &lt;a&gt; elements that has a href that starts with https://www.tinywebgallery.com</li>
-        <li>$("a:not([href^=\'https://www.tinywebgallery.com\'])") selects all &lt;a&gt; elements that has a href that does NOT start with https://www.tinywebgallery.com. This can be used to detect external links and add target="_blank" there.</li>
+        <li>$("a[href^=\'https://www.advanced-iframe.com\']") selects all &lt;a&gt; elements that has a href that starts with https://www.advanced-iframe.com</li>
+        <li>$("a:not([href^=\'https://www.advanced-iframe.com\'])") selects all &lt;a&gt; elements that has a href that does NOT start with https://www.advanced-iframe.com. This can be used to detect external links and add target="_blank" there.</li>
         <li>$("button[id*=test]") selects all buttons whose id attributes contain test</li>
         <li>$("tr:not(.keep)") selects all table row that don\'t have the class "keep"</li>
         <li>$("table:nth-child(1)") selects the 2nd row of a table</li>
@@ -171,7 +171,7 @@ if ($showHelp) { ?>
     echo '<p>';
     _e('This help is available for PRO users or if you OPT-IN.', 'advanced-iframe');
     echo '</p>';
-} 
+}
 
 aiPostboxClose();
 ?>

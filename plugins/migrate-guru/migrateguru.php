@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Migrate Guru
+Plugin Name: Migrate Guru – Site Migration & Cloning
 Plugin URI: https://www.migrateguru.com
 Description: Migrating your site(s) to any WordPress Hosting platform has never been so easy.
 Author: Migrate Guru
