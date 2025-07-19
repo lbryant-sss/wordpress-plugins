@@ -99,29 +99,29 @@ function gosmtp_page_footer($no_twitter = 0){
 	echo '</tr>
 	</table>
 	<br />';
-        
-	if(empty($no_twitter)){
-	
-		echo '
-	<div style="width:45%;background:#FFF;padding:15px; margin:20px auto; border:1px solid #c3c4c7;">
-		<b>Let your followers know that you use GOSMTP to Sent mail on your website :</b>
-		<form method="get" action="https://twitter.com/intent/tweet" id="tweet" onsubmit="return dotweet(this);">
-			<textarea name="text" cols="45" row="3" style="resize:none;">I increased email deliverability of my #WordPress #site using @gosmtp</textarea>&nbsp; &nbsp; 
-			<input type="submit" value="Tweet!" class="button button-primary" onsubmit="return false;" id="twitter-btn" style="margin-top:20px;"/>
-		</form>	
-	</div>
-	<br/>
+	if(!defined('SITEPAD')){       
+		if(empty($no_twitter)){
+			echo '
+				<div style="width:45%;background:#FFF;padding:15px; margin:20px auto; border:1px solid #c3c4c7;">
+					<b>Let your followers know that you use GOSMTP to Sent mail on your website :</b>
+					<form method="get" action="https://twitter.com/intent/tweet" id="tweet" onsubmit="return dotweet(this);">
+						<textarea name="text" cols="45" row="3" style="resize:none;">I increased email deliverability of my #WordPress #site using @gosmtp</textarea>&nbsp; &nbsp; 
+						<input type="submit" value="Tweet!" class="button button-primary" onsubmit="return false;" id="twitter-btn" style="margin-top:20px;"/>
+					</form>	
+				</div>
+				<br/>
 
-	<script>
-		 function dotweet(ele){
-			window.open(jQuery("#"+ele.id).attr("action")+"?"+jQuery("#"+ele.id).serialize(), "_blank", "scrollbars=no, menubar=no, height=400, width=500, resizable=yes, toolbar=no, status=no");
-			return false;
+				<script>
+						function dotweet(ele){
+						window.open(jQuery("#"+ele.id).attr("action")+"?"+jQuery("#"+ele.id).serialize(), "_blank", "scrollbars=no, menubar=no, height=400, width=500, resizable=yes, toolbar=no, status=no");
+						return false;
+					}
+				</script>
+				
+				<a href="'.GOSMTP_WWW_URL.'" target="_blank">GOSMTP</a><span> v'.GOSMTP_VERSION.' You can report any bugs </span><a href="http://wordpress.org/support/plugin/gosmtp" target="_blank">here</a>.
+			</div>';
+		
 		}
-	</script>
-	
-	<a href="'.GOSMTP_WWW_URL.'" target="_blank">GOSMTP</a><span> v'.GOSMTP_VERSION.' You can report any bugs </span><a href="http://wordpress.org/support/plugin/gosmtp" target="_blank">here</a>.
-</div>';
-	
 	}
 }
 
@@ -391,9 +391,12 @@ function gosmtp_settings_page(){
 	
 	$tabs_nav = array(
 		'smtpsetting' => __('SMTP Settings'), 
-		'test-mail' => __('Test Mail'), 
-		'support' => __('Support')
+		'test-mail' => __('Test Mail')	
 	);
+
+	if(!defined('SITEPAD')){
+		$tabs_nav['support'] = __('Support');
+	}
 	
 	$tabs_nav = apply_filters('gosmtp_settings_tabs_nav', $tabs_nav);
 	?>
@@ -482,6 +485,7 @@ function gosmtp_mailer_settings($smtp_options, $is_new_connection = false){
 	$settings['from_name'] = isset($smtp_options['from_name']) ? $smtp_options['from_name'] : '';
 	$settings['force_from_name'] = isset($smtp_options['force_from_name']) ? $smtp_options['force_from_name'] : '';
 	$settings['return_path'] = isset($smtp_options['return_path']) ? $smtp_options['return_path'] : '';
+	$brand_name = !defined('SITEPAD') ? __('WordPress') : BRAND_SM;
 	
 	// Is new connection?
 	if($is_new_connection){
@@ -517,7 +521,14 @@ function gosmtp_mailer_settings($smtp_options, $is_new_connection = false){
 				<input name="from_email" type="text" class="regular-text always_active" placeholder="notifications@example.com"  value="<?php if(!empty($settings['from_email'])){
 					echo esc_attr($settings['from_email']);
 				}?>"> 
-				<p class="description" id="tagline-description"><?php _e("Set the from email address for your WordPress emails. If you're using an email provider (Gmail, Outlook.com, etc.), this should be your email address for that account"); ?></p>
+				<p class="description" id="tagline-description">
+				<?php
+					printf(
+						__('Set the from email address for your %s emails. If you\'re using an email provider (Gmail, Outlook.com, etc.), this should be your email address for that account'),
+						$brand_name
+					);
+				?>
+				</p>
 				<p class="description" id="tagline-description"><i><?php _e("Please note, enable the below setting to apply this setting."); ?></i></p>
 				<br>
 				<input name="force_from_email" type="checkbox" <?php if(!empty($settings['force_from_email'])){
@@ -639,7 +650,13 @@ function gosmtp_mailer_settings($smtp_options, $is_new_connection = false){
 				}
 			}?>
 				</select>
-				<p class="description" id="tagline-description"><?php _e("Set backup email address for your WordPress emails. If primary mailer fails then backup mailer will be used to send the mail."); ?></p>
+				<p class="description" id="tagline-description"><?php 
+					printf(
+						'Set backup email address for your %s emails. If primary mailer fails then backup mailer will be used to send the mail.',
+						$brand_name
+					);
+				?>
+				</p>
 			</td>
 		</tr>
 		<?php

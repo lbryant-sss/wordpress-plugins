@@ -326,7 +326,7 @@ justify-content:center;
 background:white;
 padding:18px;
 box-sizing: border-box;
-max-width:140px;
+max-width:100%;
 max-height:100%;
 }
 

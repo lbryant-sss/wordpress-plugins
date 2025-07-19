@@ -2,6 +2,8 @@
 	$cta_hs				= get_theme_mod('cta_hs','1'); 
 	$cta_title			= get_theme_mod('cta_title',__('Word We Love & Work Everyday','clever-fox')); 
 	$cta_description	= get_theme_mod('cta_description',__('Inspiration Is The One','clever-fox'));
+	$cta_button			= get_theme_mod('cta_button',__('Contact Us','clever-fox'));
+	$cta_button_link	= get_theme_mod('cta_button_link','');
 	$cta_bg_setting		= get_theme_mod('cta_bg_setting',esc_url(CLEVERFOX_PLUGIN_URL .'inc/corpex/images/cta/ctabg.jpg')); 
 	$cta_client_image	= get_theme_mod('cta_client_image',esc_url(CLEVERFOX_PLUGIN_URL .'inc/corpex/images/cta/image-1.png')); 
 	$cta_bg_position	= get_theme_mod('cta_bg_position','fixed');
@@ -16,6 +18,9 @@
                         <h3><?php echo esc_html($cta_description); ?> 
 							<span class="primary_color"><?php echo esc_html($cta_title); ?></span>
 						</h3>
+						<?php if ( ! empty( $cta_button ) ) : ?>
+							<a href="<?php echo esc_url( $cta_button_link ); ?>" class="main-btn"> <?php echo esc_html( $cta_button ); ?> </a>
+						<?php endif; ?>
                     </div>
                 </div>
                 <div class="col-lg-6">

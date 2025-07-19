@@ -889,7 +889,7 @@ $selective_refresh = isset( $wp_customize->selective_refresh ) ? 'postMessage' :
     	'tlh_btn_link',
     	array(
 	        'default'			=> '#',
-			'sanitize_callback' => 'corpex_pro_sanitize_url',
+			'sanitize_callback' => 'corpex_sanitize_url',
 			'capability' 		=> 'edit_theme_options',
 			'priority' 			=> 5,
 		)

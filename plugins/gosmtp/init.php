@@ -9,7 +9,7 @@
 if (!defined('ABSPATH')) exit;
 
 define('GOSMTP_BASE', plugin_basename(GOSMTP_FILE));
-define('GOSMTP_VERSION', '1.1.1');
+define('GOSMTP_VERSION', '1.1.3');
 define('GOSMTP_DIR', dirname(GOSMTP_FILE));
 define('GOSMTP_SLUG', 'gosmtp');
 define('GOSMTP_URL', plugins_url('', GOSMTP_FILE));
@@ -260,12 +260,15 @@ function gosmtp_admin_menu() {
 		add_submenu_page( '', __('Email Reports'), __('Weekly Email'), $capability, 'weekly_email_reports', 'gosmtp_weekly_email_handler');
 
 		// License Page
-		add_submenu_page( 'gosmtp', __('License'), __('License'), $capability, 'gosmtp-license', 'gosmtp_license_handler');
-		
+		if(!defined('SITEPAD')){
+			add_submenu_page( 'gosmtp', __('License'), __('License'), $capability, 'gosmtp-license', 'gosmtp_license_handler');
+		}
 	}
 	
 	// Support
-	add_submenu_page( 'gosmtp', __('Support'), __('Support'), $capability, 'gosmtp#support', 'gosmtp_page_handler');
+	if(!defined('SITEPAD')){
+		add_submenu_page( 'gosmtp', __('Support'), __('Support'), $capability, 'gosmtp#support', 'gosmtp_page_handler');
+	}
 }
 
 // SMTP page Handler
@@ -284,7 +287,7 @@ function gosmtp_email_reports_handler(){
 }
 
 function gosmtp_export_handler(){
-    include_once GOSMTP_PRO_DIR .'/main/export.php';
+	include_once GOSMTP_PRO_DIR .'/main/export.php';
 	gosmtp_export_page();
 }
 

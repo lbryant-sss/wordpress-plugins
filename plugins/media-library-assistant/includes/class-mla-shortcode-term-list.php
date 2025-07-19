@@ -657,7 +657,7 @@ class MLATermList {
 		// Clean up the current_item(s) to separate term_id from slug
 		if ( ! empty( $arguments[ $mla_item_parameter ] ) ) {
 			if ( is_string( $arguments[ $mla_item_parameter ] ) ) {
-				$arguments[ $mla_item_parameter ] = explode( ',', $arguments[ $mla_item_parameter ] );
+				$arguments[ $mla_item_parameter ] = array_map( 'sanitize_title', explode( ',', $arguments[ $mla_item_parameter ] ) );
 			}
 			foreach( $arguments[ $mla_item_parameter ] as $index => $value ) {
 				if ( ctype_digit( $value ) ) {
@@ -1061,7 +1061,7 @@ class MLATermList {
 			'mla_style' => $arguments['mla_style'],
 			'mla_markup' => $arguments['mla_markup'],
 			'taxonomy' => implode( '-', $arguments['taxonomy'] ),
-			'current_item' => sanitize_title( $arguments['current_item'] ),
+			'current_item' => implode( ',', $arguments[ $mla_item_parameter ] ),
 			'itemtag' => tag_escape( $arguments['itemtag'] ),
 			'termtag' => tag_escape( $arguments['termtag'] ),
 			'captiontag' => tag_escape( $arguments['captiontag'] ),

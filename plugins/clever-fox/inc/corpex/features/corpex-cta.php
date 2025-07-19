@@ -125,6 +125,47 @@ $selective_refresh = isset( $wp_customize->selective_refresh ) ? 'postMessage' :
 			'type'           => 'textarea',
 		)  
 	);	
+	// CTA Button // 
+	$wp_customize->add_setting(
+    	'cta_button',
+    	array(
+	        'default'			=> esc_html__('Contact US','clever-fox'),
+			'capability'     	=> 'edit_theme_options',
+			'sanitize_callback' => 'corpex_sanitize_html',
+			'transport'         => $selective_refresh,
+			'priority' => 6,
+		)
+	);	
+	
+	$wp_customize->add_control( 
+		'cta_button',
+		array(
+		    'label'   => __('Button','clever-fox'),
+		    'section' => 'cta_setting',
+			'type'           => 'text',
+		)  
+	);
+	
+	// CTA Link // 
+	$wp_customize->add_setting(
+    	'cta_button_link',
+    	array(
+	        'default'			=> '',
+			'capability'     	=> 'edit_theme_options',
+			'sanitize_callback' => 'corpex_sanitize_url',
+			'transport'         => $selective_refresh,
+			'priority' => 6,
+		)
+	);	
+	
+	$wp_customize->add_control( 
+		'cta_button_link',
+		array(
+		    'label'   => __('Link','clever-fox'),
+		    'section' => 'cta_setting',
+			'type'    => 'text',
+		)  
+	);
 	
 	// CTA Background // 	
 	$wp_customize->add_setting(

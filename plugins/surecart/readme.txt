@@ -4,7 +4,7 @@ Donate link: https://surecart.com
 Tags: ecommerce, online store, subscriptions, stripe, payments
 Requires at least: 6.6
 Tested up to: 6.8
-Stable tag: 3.10.0
+Stable tag: 3.10.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -313,8 +313,13 @@ Accessibility is a huge priority for the entire team building SureCart. As you k
 
 == Changelog ==
 
+= 3.10.1 - July 18th, 2025 =
+- Fix: Improved compatibility with Bricks Builder to ensure forms display correctly in the editor.
+- Fix: Resolved deprecated warnings when using Bricks Builder integration.
+- Fix: Enhanced stability of Bricks Builder elements and edit links.
+
 = 3.10.0 - July 8th, 2025 =
-[Overview](https://surecart.com/changelog/surecart-3-10-features-that-speed-up-your-workflow-and-boost-revenue/)
+- [Overview] (https://surecart.com/changelog/surecart-3-10-features-that-speed-up-your-workflow-and-boost-revenue/)
 - New: Price boosts. 1-click price swaps on your checkout page.
 - New: Duplicate products and prices.
 - New: Add a product form anywhere on your website.

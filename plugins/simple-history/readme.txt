@@ -4,7 +4,7 @@ Contributors: eskapism, wpsimplehistory
 Donate link: https://simple-history.com/sponsor/?utm_source=wordpress_org&utm_medium=plugin_directory&utm_campaign=sponsorship&utm_content=readme_donate_link
 Tags: history, audit log, event log, user tracking, activity
 Tested up to: 6.8
-Stable tag: 5.13.0
+Stable tag: 5.13.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -316,6 +316,22 @@ For more information, see our support page [GDPR and Privacy: How Your Data is S
 -   [Sponsor the plugin to keep it free.](https://simple-history.com/sponsor/?utm_source=wordpress_org&utm_medium=plugin_directory&utm_campaign=sponsorship&utm_content=readme_sponsor_footer)
 -   [Add a 5-star review so other users know it's good.](https://wordpress.org/support/plugin/simple-history/reviews/?filter=5)
 -   [Get the premium add-on for more features.](https://simple-history.com/add-ons/premium?utm_source=wordpress_org&utm_medium=plugin_directory&utm_campaign=documentation&utm_content=readme_doc_premium)
+
+### 5.13.1 (July 2025)
+
+**Fixed**
+
+-   Fix cache issue when sticking or unsticking events. [#566](https://github.com/bonny/WordPress-Simple-History/issues/566)
+-   Fix issue when Divi frontend builder is active. [#565](https://github.com/bonny/WordPress-Simple-History/issues/565)
+-   Fix issue when no menu page is found. [#564](https://github.com/bonny/WordPress-Simple-History/issues/564)
+
+**Improved**
+
+-   Improve email summary report (still only available for users with experimental features enabled).
+-   Improve license key settings page text to make it more clear that you need to install and activate the add-on first, before you can enter the license key.
+-   Auto expand search options when filters are applied via URL parameters. [#567](https://github.com/bonny/WordPress-Simple-History/issues/567)
+-   Add more checks in Admin Bar Quick Stats before initing the JS code.
+-   Misc internal code improvements and spelling fixes.
 
 ### 5.13.0 (June 2025)
 

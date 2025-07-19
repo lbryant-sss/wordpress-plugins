@@ -54,6 +54,8 @@ function wpa_add_honeypot_field(){
 	    'form.wpa_form',						   // Generic Class
 	    '.wpa_form form',					   // Generic Class	
 
+	    '.um-form form',						// Ulimate Membership Form
+
 	    // Login forms
 	    'form.spectra-pro-login-form',         // SPECTRA LOGIN FORM
 	    'form#loginform',                      // Default Login Form

@@ -35,7 +35,7 @@ class SMTP extends Loader{
 
 		// If we're using smtp auth, set the username & password
 		$smtp_auth = $this->getOption('smtp_auth', $this->mailer);
-		if(!empty($smtp_auth)) {
+		if(!empty($smtp_auth) && $smtp_auth == 'Yes'){
 			$phpmailer->SMTPAuth = true;
 			$phpmailer->Username = $this->getOption('smtp_username', $this->mailer);
 			$phpmailer->Password = $this->getOption('smtp_password', $this->mailer);

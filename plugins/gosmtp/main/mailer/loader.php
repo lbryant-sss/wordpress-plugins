@@ -182,11 +182,11 @@ class Loader{
 		}	
 		
 		if(!empty($options['force_from_email']) && !empty($options['from_email'])){
-		    $from_email = $options['from_email'];
+			$from_email = $options['from_email'];
 		}
 		
 		if(!empty($options['force_from_name']) && !empty($options['from_name'])){
-		    $from_name = $options['from_name'];
+			$from_name = $options['from_name'];
 		}
 		
 		try {
@@ -210,7 +210,7 @@ class Loader{
 		}	
 		
 		if(!empty($options['force_from_email']) && !empty($options['from_email'])){
-		    $from = $options['from_email'];
+			$from = $options['from_email'];
 		}
 		
 		return $from;
@@ -303,7 +303,7 @@ class Loader{
 			'Bcc' => $phpmailer->getBccAddresses(),
 			'Content-Type' => $phpmailer->ContentType,
 		);
-        
+		
 		$attachments = $phpmailer->getAttachments();
 
 		if(!empty($gosmtp->options['logs']['log_attachments'])){
@@ -328,7 +328,7 @@ class Loader{
 					if(file_exists($file[0])){
 						// TODO check the copy function use correct
 						if(copy($file[0], $location)){
-						    $file[0] = $location;
+							$file[0] = $location;
 						}	
 					}
 					
