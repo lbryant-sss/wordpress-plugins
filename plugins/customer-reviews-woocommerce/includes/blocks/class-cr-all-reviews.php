@@ -293,6 +293,14 @@ if (! class_exists('CR_All_Reviews')) :
 				}
 				if ( function_exists( 'pll_current_language' ) ) {
 					// Polylang compatibility
+					if ( apply_filters( 'cr_reviews_polylang_merge', true ) ) {
+						foreach ( $this->shortcode_atts['products'] as $product_id ) {
+							$translationIds = PLL()->model->post->get_translations( $product_id );
+							foreach ( $translationIds as $key => $translationID ) {
+								$this->shortcode_atts['products'][] = intval( $translationID );
+							}
+						}
+					}
 					$args['lang'] = '';
 				} elseif ( has_filter( 'wpml_current_language' ) ) {
 					// WPML compatibility

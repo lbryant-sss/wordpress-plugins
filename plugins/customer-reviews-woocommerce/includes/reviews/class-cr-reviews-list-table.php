@@ -673,8 +673,8 @@ class CR_Reviews_List_Table extends WP_List_Table {
 			} else {
 				$comment->cr_order = get_comment_meta( $comment->comment_ID, 'ivole_order_priv', true );
 				if ( $comment->cr_order ) {
-					// reviews collected via CusRev in the Private mode
-					$comment->via_cr = esc_html( __( 'via CR (Private)', 'customer-reviews-woocommerce' ) );
+					// reviews collected via CusRev in the Test mode
+					$comment->via_cr = esc_html( __( 'via CR (Test)', 'customer-reviews-woocommerce' ) );
 				} else {
 					$comment->cr_order = get_comment_meta( $comment->comment_ID, 'ivole_order_unve', true );
 					if ( $comment->cr_order ) {

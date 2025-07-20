@@ -51,10 +51,12 @@ if ( ! class_exists( 'CR_Email_Func' ) ) :
 					// check if an item needs to be skipped because none of categories it belongs to has been enabled for reminders
 					if( $enabled_for === 'categories' ) {
 						$skip = true;
-						foreach ( $categories as $category_id => $category ) {
-							if( in_array( $category->term_id, $enabled_categories ) ) {
-								$skip = false;
-								break;
+						if ( $categories && is_array( $categories ) ) {
+							foreach ( $categories as $category_id => $category ) {
+								if( in_array( $category->term_id, $enabled_categories ) ) {
+									$skip = false;
+									break;
+								}
 							}
 						}
 						if( $skip ) {
@@ -169,10 +171,12 @@ if ( ! class_exists( 'CR_Email_Func' ) ) :
 							$idens = array();
 							// save native WooCommerce categories associated with the product as tags
 							// save mapping of native WooCommerce categories to Google taxonomy as categories
-							foreach ($categories as $category) {
-								$tags[] = $category->name;
-								if( isset( $categories_mapping[$category->term_id] ) && $categories_mapping[$category->term_id] > 0 ) {
-									$cats[] = $categories_mapping[$category->term_id];
+							if ( $categories && is_array( $categories ) ) {
+								foreach ($categories as $category) {
+									$tags[] = $category->name;
+									if( isset( $categories_mapping[$category->term_id] ) && $categories_mapping[$category->term_id] > 0 ) {
+										$cats[] = $categories_mapping[$category->term_id];
+									}
 								}
 							}
 							$tags = array_values( array_unique( $tags ) );

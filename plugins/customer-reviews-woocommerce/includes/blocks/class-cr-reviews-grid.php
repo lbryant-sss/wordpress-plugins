@@ -217,6 +217,15 @@ if ( ! class_exists( 'CR_Reviews_Grid' ) ) {
 
 			if ( function_exists( 'pll_current_language' ) ) {
 				// Polylang compatibility
+				if ( apply_filters( 'cr_reviews_polylang_merge', true ) ) {
+					foreach ( $post_ids as $product_id ) {
+						$translationIds = PLL()->model->post->get_translations( $product_id );
+						foreach ( $translationIds as $key => $translationID ) {
+							$post_ids[] = intval( $translationID );
+						}
+					}
+					$args['post__in'] = $post_ids;
+				}
 				$args['lang'] = '';
 			} elseif ( has_filter( 'wpml_current_language' ) ) {
 				// WPML compatibility

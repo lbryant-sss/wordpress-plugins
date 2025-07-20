@@ -1056,12 +1056,13 @@ class MLATermList {
 			$found_rows += 1;
 		}
 
+
 		$style_values = array_merge( $page_values, array(
 			'mla_output' => $arguments['mla_output'],
 			'mla_style' => $arguments['mla_style'],
 			'mla_markup' => $arguments['mla_markup'],
 			'taxonomy' => implode( '-', $arguments['taxonomy'] ),
-			'current_item' => implode( ',', $arguments[ $mla_item_parameter ] ),
+			'current_item' => ( is_array( $arguments[ $mla_item_parameter ] ) ) ? implode( ',', $arguments[ $mla_item_parameter ] ) : $arguments[ $mla_item_parameter ],
 			'itemtag' => tag_escape( $arguments['itemtag'] ),
 			'termtag' => tag_escape( $arguments['termtag'] ),
 			'captiontag' => tag_escape( $arguments['captiontag'] ),

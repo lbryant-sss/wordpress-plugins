@@ -4,7 +4,7 @@ Tags: woocommerce, review plugin, review reminder, customer reviews, review for 
 Requires at least: 4.5
 Tested up to: 6.8
 Requires PHP: 7.2
-Stable tag: 5.80.1
+Stable tag: 5.80.2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -233,9 +233,15 @@ If you would like to change how reviews are sorted on product pages, it is possi
 
 == Changelog ==
 
+= 5.80.2 =
+* Improvement: check that an order exists when cancelling review reminders
+* Improvement: shortcodes to show Polylang reviews in all languages
+* Improvement: 'Private' mode is renamed to 'Test' mode to match the wording used in the CusRev dashboard
+* Bug fix: PHP warning about missing product categories
+* Bug fix: deletion of reminder log entries did not work
 = 5.80.1 =
 * Improvement: Polylang compatibility
-* Improvement: WPML Multicurrency compatibility for local aggregated review forms 
+* Improvement: WPML Multicurrency compatibility for local aggregated review forms
 * Bug fix: a table for local forms could not be created for new websites
 = 5.80.0 =
 * New feature: a setting to expire local aggregated review forms after a specified number of days

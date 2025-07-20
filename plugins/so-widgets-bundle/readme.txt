@@ -3,8 +3,8 @@ Tags: widgets, blocks, contact form, blog, slider
 Requires at least: 4.2
 Tested up to: 6.8
 Requires PHP: 7.0.0
-Stable tag: 1.69.1
-Build time: 2025-07-05T16:48:21+01:00
+Stable tag: 1.69.2
+Build time: 2025-07-19T23:36:58+01:00
 License: GPLv3 or later
 Contributors: gpriday, braam-genis, alexgso
 Donate link: https://siteorigin.com/downloads/premium/
@@ -108,6 +108,12 @@ SiteOrigin Premium includes access to our professional email support service, pe
 The Widgets Bundle global interface is available at Plugins > SiteOrigin Widgets. Widgets can be enabled or disabled as needed. If a widget offers global settings, you can access those via the Settings button next to each applicable widget.
 
 == Changelog ==
+
+= 1.69.2 - 19 July 2025 =
+* Features: Fixed icon disappearing when link overlay enabled and prevented theme margin on list items.
+* General: Added array type validation to get_active_widgets() method.
+* General: Improved widget toolbar with WordPress standard ToolbarGroup and accessibility labels.
+* General: Resolved type mismatch error in add_defaults method caused by Lightbox Addon.
 
 = 1.69.1 - 05 July 2025 =
 * Carousel, Post Carousel: Fixed animation speed and timeout to preserve zero values, updated continuous mode defaults, and improved animation speed handling.

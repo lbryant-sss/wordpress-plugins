@@ -201,6 +201,7 @@ All of the MLA source code has been annotated with "DocBlocks", a special type o
 
 = 3.28 =
 * Fix: **IMPORTANT: For the `[mla_term_list]` shortcode, a defect that caused the famous "There Has Been a Critical Error on This Website" error has been corrected.**
+* Fix: When WPML is active, the flag images have been restored to the Media/Assistant submenu table column headers.
 
 = 3.27 =
 * New: For the `[mla_term_list]` shortcode, **the `checklist,div` output format wraps the list in an HTML "div" tag so, for example, you can add CSS styles to highlight the current list item or limit the size of the display area and add scroll bars to a long list.** More information in the Settings/Media Library Assistant Documentation tab.
