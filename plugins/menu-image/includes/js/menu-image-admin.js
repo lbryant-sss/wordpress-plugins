@@ -145,6 +145,11 @@
 		updateMenuItemPreview();
 	});
 
+	// Update Preview - When changing Image Size.
+	$( document ).on( 'change', '#menu_item_image_size', function (){
+		updateImagePreviewSize($(this).val());
+	});
+
 	// Update Preview - When changing Button Color.
 	$( document ).on( 'change', 'input[name=menu_item_image_button_style]', function( e ) {
 		var color = $( '.menu-image-button-color' ).val();
@@ -452,6 +457,63 @@ function updateMenuItemPreview() {
 	$( '.menu-item-preview .title-text' ).css( 'border-radius', border_radius );
 	$( '.menu-item-preview .title-text' ).css( 'color', color );
 	$( '.menu-item-preview .title-text' ).css( 'background-color', bgcolor );
+}
+
+function updateImagePreviewSize(imageSize) {
+	// Only update if we have an image selected and are in image mode
+	if ( $( 'input[name="menu_item_image_type"]:checked' ).val() !== 'image' || 
+		 $( '.menu-item-images .set-post-thumbnail img' ).length === 0 ) {
+		return;
+	}
+
+	var item_id = $( '.menu-image-item-settings-content' ).attr( 'data-menu-item-id' );
+	
+	if ( !item_id ) {
+		return;
+	}
+
+	// Make AJAX call to get the resized image HTML
+	$.ajax({
+		type: 'POST',
+		url: ajaxurl,
+		data: {
+			action: 'get_resized_thumbnail',
+			post_id: item_id,
+			image_size: imageSize,
+			_ajax_nonce: menuImage.settings.nonce
+		},
+		success: function( response ) {
+			if ( response.success && response.data.html ) {
+				// Update the menu-item-images area with new HTML
+				$( '.menu-item-images' ).html( response.data.html );
+				
+				// Update the preview
+				$( '.menu-item-preview .title-text img' ).remove();
+				if ( $( '.menu-item-images .set-post-thumbnail img' ).length > 0 ) {
+					// Get title position to determine where to place the image
+					var title_position = $( 'input[name="menu_item_image_title_position"]:checked' ).val();
+					if ( title_position === 'above' || title_position === 'before' ) {
+						$( '.menu-item-preview .title-text' ).append( $( '.menu-item-images .set-post-thumbnail img' ).clone() );
+					} else {
+						$( '.menu-item-preview .title-text' ).prepend( $( '.menu-item-images .set-post-thumbnail img' ).clone() );
+					}
+				}
+				
+				// Show success message
+				$( '.menu-item-preview' ).append( '<div class="menu-image-toast">Image size updated</div>' );
+				setTimeout(() => {
+					$( '.menu-image-toast' ).fadeOut( '500' ).remove();
+				}, 2000);
+			}
+		},
+		error: function() {
+			// Show error message
+			$( '.menu-item-preview' ).append( '<div class="menu-image-toast error">Failed to update image size</div>' );
+			setTimeout(() => {
+				$( '.menu-image-toast' ).fadeOut( '500' ).remove();
+			}, 2000);
+		}
+	});
 }
 $( document ).on( 'click', '.wp-menu-image-notice .notice-dismiss' , function( e ) {
         

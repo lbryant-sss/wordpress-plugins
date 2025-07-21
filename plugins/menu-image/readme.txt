@@ -4,9 +4,10 @@ Tags: menu, navigation, image, icons, nav menu
 Donate link: https://www.freshlightlab.com/?utm_source=wprepo-menu-image&utm_medium=wprepo_readme&utm_campaign=Donate+Link
 Requires at least: 4.4.0
 Tested up to: 6.7
-Stable tag: 3.12
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Stable tag: 3.13
+License: GPLv3
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+Donate link: https://www.buymeacoffee.com/ruiguerreiro
 
 Adds an image or icon in the menu items. You can choose the position of the image (after, before, above, below) or even hide the menu item title.
 
@@ -115,6 +116,11 @@ Check this article in the following [link](https://www.freshlightlab.com/documen
 
 == Changelog ==
 
+
+### 3.13 ###
+* Fix! - Adjust image size on preview
+* Improvment! - Update Freemius SDK
+
 ### 3.12 ###
 * Fix! - Compatibility with WP 6.7
 * Improvment! - Update Freemius SDK
@@ -146,9 +152,6 @@ Check this article in the following [link](https://www.freshlightlab.com/documen
 ### 3.0.4 ###
 * Fix - Add new CSS style
 
-### 3.0.4 ###
-* Fix - Add new CSS style
-
 ### 3.0.3 ###
 * Fix - Remove style that was affecting Elementor menus
 
@@ -170,9 +173,10 @@ Check this article in the following [link](https://www.freshlightlab.com/documen
 * Improvment – Update Freemius SDK
 * Improvment – Code clean up
 
+
 ### 2.9.7 ###
 * Fix - Fix Issue with display title above and below
-* Improvment – Update Freemius SDK to 2.4.0.1
+* Improvment - Update Freemius SDK to 2.4.0.1
 
 ### 2.9.6 ###
 * Fix - Fix compatibility issue with WordPress 5.4.
