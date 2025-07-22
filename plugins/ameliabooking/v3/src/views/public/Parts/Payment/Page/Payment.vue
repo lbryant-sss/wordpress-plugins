@@ -109,6 +109,7 @@ import PaymentPayPal from '../Methods/PaymentPayPal.vue'
 import PaymentOnSite from '../Methods/PaymentOnSite.vue'
 import PaymentWc from '../Methods/PaymentWc.vue'
 import PaymentCommon from '../Methods/PaymentCommon.vue'
+import PaymentSquare from "../Methods/PaymentSquare.vue";
 
 // * Loader component
 import BookingSkeleton from '../../../Parts/BookingSkeleton.vue'
@@ -207,7 +208,7 @@ const paymentTypes = {
   razorpay: markRaw(PaymentCommon),
   mollie: markRaw(PaymentCommon),
   wc: markRaw(PaymentWc),
-  square: markRaw(PaymentCommon)
+  square: markRaw(PaymentSquare)
 }
 
 let ready = computed(() => store.getters['getReady'])
@@ -245,7 +246,7 @@ let paymentSentence = computed(() => {
   let sentence = ''
   if (paymentGateway.value === 'onSite' && !mandatoryOnSitePayment.value) {
     sentence = amLabels.payment_onsite_sentence
-  } else if (paymentGateway.value === 'mollie' || paymentGateway.value === 'wc' || paymentGateway.value === 'square') {
+  } else if (paymentGateway.value === 'mollie' || paymentGateway.value === 'wc') {
     sentence = amLabels.payment_wc_mollie_sentence
   }
 

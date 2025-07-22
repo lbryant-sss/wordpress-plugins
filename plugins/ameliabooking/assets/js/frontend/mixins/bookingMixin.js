@@ -1,8 +1,12 @@
 import moment from 'moment'
 import currentUserMixin from '../../common/mixins/currentUserMixin'
+import servicePriceMixin from '../../../js/common/mixins/servicePriceMixin'
 
 export default {
-  mixins: [currentUserMixin],
+  mixins: [
+    currentUserMixin,
+    servicePriceMixin
+  ],
 
   data () {
     return {
@@ -11,20 +15,8 @@ export default {
   },
 
   methods: {
-    getServiceDurationPrice (service, duration) {
-      if (duration !== service.duration &&
-        service.customPricing &&
-        'durations' in service.customPricing &&
-        service.customPricing.durations.filter(i => i.duration === duration).length
-      ) {
-        return service.customPricing.durations.find(i => i.duration === duration).price
-      }
-
-      return service.price
-    },
-
     setDurationsPrices (service, durations) {
-      if (service.customPricing && service.customPricing.enabled) {
+      if (this.isDurationPricingEnabled(service.customPricing)) {
         if (!(parseInt(service.duration) in durations)) {
           durations[parseInt(service.duration)] = []
 

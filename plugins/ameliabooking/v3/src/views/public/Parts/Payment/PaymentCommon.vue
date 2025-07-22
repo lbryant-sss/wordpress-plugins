@@ -96,7 +96,7 @@ function continueWithBooking () {
 
   let bookingData = useBookingData(
     store,
-    gateway === 'mollie' || gateway === 'square' ? {
+    gateway === 'mollie' ? {
       shortcode: shortcodeData.value,
       steps: stepsArray.value.map(i => i.key),
       sidebar: sidebarSteps.value.map(i => Object.assign({key: i.key, data: i.stepSelectedData})),

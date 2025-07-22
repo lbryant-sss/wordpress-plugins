@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PO File 5.8.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-07 10:48+0200\n"
-"PO-Revision-Date: 2025-06-03 10:09+0200\n"
+"POT-Creation-Date: 2025-07-21 09:23+0200\n"
+"PO-Revision-Date: 2025-07-10 17:25+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_TW\n"
@@ -81,13 +81,13 @@ msgid ""
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:38
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1572
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:220
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1577
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:222
 msgid "Close"
 msgstr "關閉"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:39
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1189
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1195
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:94
 msgid "Closed"
 msgstr "已關閉"
@@ -101,7 +101,7 @@ msgid "Comma (,)"
 msgstr "逗號 (,)"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:42
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:165
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:167
 msgid "Continue"
 msgstr "繼續"
 
@@ -160,8 +160,8 @@ msgid "Years"
 msgstr "年"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:56
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1404
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:196
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1409
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:198
 msgid "Date"
 msgstr "天"
 
@@ -170,12 +170,12 @@ msgid "Delete"
 msgstr "刪除"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:58
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:250
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:252
 msgid "Description"
 msgstr "描述"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:59
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1225
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1231
 msgid "Details"
 msgstr "細節"
 
@@ -184,7 +184,7 @@ msgid "Disabled"
 msgstr "已禁用"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:61
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1296
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1302
 msgid "Duration"
 msgstr "持續時間"
 
@@ -197,15 +197,15 @@ msgid "Edit"
 msgstr "編輯"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:64
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:961
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:962
 msgid "example@mail.com"
 msgstr "example@mail.com"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:65
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:370
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:638
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1407
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:199
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1412
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:201
 msgid "Employee"
 msgstr "員工"
 
@@ -244,12 +244,12 @@ msgid "Facebook App Secret is required"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:73
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:109
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:110
 msgid "Please enter email"
 msgstr "請輸入電子郵件"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:74
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:113
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:114
 msgid "Please enter a valid email address"
 msgstr "請輸入有效的電子郵件地址"
 
@@ -259,8 +259,8 @@ msgstr "錯誤"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:76
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:642
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1574
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:192
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1579
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:194
 msgid "Event"
 msgstr "活動"
 
@@ -309,7 +309,7 @@ msgid "Apple Calendar"
 msgstr "Google Calender "
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:87
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:118
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:119
 msgid "h"
 msgstr "小时"
 
@@ -330,30 +330,30 @@ msgid "Interested in unlocking this feature?"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:92
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:120
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:121
 #, fuzzy
 msgid "Available from Starter license"
 msgstr "可用的圖像"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:93
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:121
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:122
 msgid "Available from Standard license"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:94
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:122
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:123
 #, fuzzy
 msgid "Available from Pro license"
 msgstr "可用的圖像"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:95
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:123
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:124
 #, fuzzy
 msgid "Available in Elite licence"
 msgstr "捆綁銷售"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:96
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:124
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:125
 msgid "Upgrade"
 msgstr ""
 
@@ -408,7 +408,7 @@ msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:108
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:640
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1408
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1413
 msgid "Location"
 msgstr "地址"
 
@@ -421,7 +421,7 @@ msgid "Manage"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:111
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:125
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:126
 msgid "min"
 msgstr "最小值"
 
@@ -457,7 +457,7 @@ msgid "No"
 msgstr "無"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:119
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:274
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:278
 msgid "There are no results..."
 msgstr "沒有結果…"
 
@@ -478,7 +478,7 @@ msgid "No-show"
 msgstr "no-show"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:124
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:952
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:953
 msgid "Note"
 msgstr "請注意"
 
@@ -499,7 +499,7 @@ msgid "of"
 msgstr "的"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:129
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:126
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:127
 msgid "On-site"
 msgstr "現場"
 
@@ -508,8 +508,8 @@ msgid "Opened"
 msgstr "已打開"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:131
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1348
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:130
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1354
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:131
 msgid "Open"
 msgstr "打開"
 
@@ -531,12 +531,12 @@ msgstr "部分支付"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:136
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:637
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1390
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1400
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1558
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1579
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:195
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:222
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1395
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1405
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1563
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1584
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:197
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:224
 msgid "Payment"
 msgstr "付款"
 
@@ -565,8 +565,8 @@ msgid "Pending"
 msgstr "等待解決"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:142
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1339
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1486
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1345
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1491
 msgid "Phone"
 msgstr "電話"
 
@@ -579,7 +579,7 @@ msgid "Resources"
 msgstr "資源"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:145
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1294
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1300
 msgid "Save"
 msgstr "保存"
 
@@ -598,24 +598,24 @@ msgstr "請選擇時間"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:149
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:372
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1364
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1369
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1371
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1406
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1536
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:178
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:181
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:198
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:259
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1374
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1376
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1411
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1541
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:180
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:183
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:200
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:261
 msgid "Service"
 msgstr "服務"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:150
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:373
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1392
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1537
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:189
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:260
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1397
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1542
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:191
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:262
 msgid "Services"
 msgstr "服務"
 
@@ -632,7 +632,7 @@ msgid "Social Login"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:154
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1196
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1202
 msgid "Status"
 msgstr "狀態"
 
@@ -671,7 +671,7 @@ msgid "Tomorrow"
 msgstr "明天"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:163
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1271
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1277
 msgid "Total"
 msgstr "總計"
 
@@ -684,7 +684,7 @@ msgid "Translation"
 msgstr "翻譯"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:166
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:142
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:143
 msgid "View"
 msgstr "查看"
 
@@ -791,7 +791,7 @@ msgid ""
 msgstr "建議客戶在完成預約後將預約新增至其日曆<br/>。"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:202
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1285
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1291
 msgid "Address"
 msgstr "地址"
 
@@ -1090,8 +1090,8 @@ msgid "Set Coupons to be case insensitive"
 msgstr "將優惠券設定為不區分大小寫"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:262
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1269
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1653
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1275
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1658
 msgid "Calendar"
 msgstr "日曆"
 
@@ -1677,8 +1677,8 @@ msgid ""
 msgstr "如果啟用此選項，客戶將能夠透過電子郵件通知或透過其客戶面板進行付款。"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:405
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1064
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:188
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1065
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:190
 msgid "Payments"
 msgstr "支付"
 
@@ -1953,8 +1953,8 @@ msgstr ""
 "項。"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:465
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:129
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:137
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:130
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:138
 msgid "Square"
 msgstr ""
 
@@ -2396,7 +2396,7 @@ msgid "Booked Customer (full name, email, phone)"
 msgstr "已預約客戶(全名、電子郵件、電話)"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:580
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1195
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1201
 msgid "Number of people"
 msgstr "人數"
 
@@ -2499,8 +2499,8 @@ msgid "Event description"
 msgstr "活動描述"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:605
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1347
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:236
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1353
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:238
 msgid "Event Location"
 msgstr "活動地點"
 
@@ -2517,8 +2517,8 @@ msgid "End time of the event"
 msgstr "活動結束時間"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:609
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1575
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:194
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1580
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:196
 msgid "Event ID"
 msgstr "活動用戶"
 
@@ -2578,7 +2578,7 @@ msgid "Service ID"
 msgstr "服務"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:623
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1342
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1348
 msgid "Service name"
 msgstr "服務名稱"
 
@@ -2591,7 +2591,7 @@ msgid "Time Zone"
 msgstr "時區"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:626
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:131
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:132
 msgid "Phone:"
 msgstr "電話:"
 
@@ -2622,9 +2622,9 @@ msgid ""
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:639
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1115
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1370
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:180
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1116
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1375
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:182
 msgid "Category"
 msgstr "類別"
 
@@ -2634,13 +2634,13 @@ msgstr "占位符複制"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:645
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:849
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:919
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1251
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:920
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1257
 msgid "Price"
 msgstr "價格"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:646
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1188
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1194
 msgid "Pricing"
 msgstr "定價"
 
@@ -2762,7 +2762,7 @@ msgid "Text:"
 msgstr "文本:"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:692
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1226
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1232
 msgid "Time:"
 msgstr "時間:"
 
@@ -2900,7 +2900,7 @@ msgid "Don't show again"
 msgstr "別再出現了"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:736
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:975
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:976
 msgid "Pending Appointments"
 msgstr "等待預約"
 
@@ -2928,8 +2928,8 @@ msgid ""
 msgstr "顯示所選日期範圍內<br/>的付費預約的總收入。"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:742
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1148
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1252
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1151
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1258
 msgid "Time"
 msgstr "時間"
 
@@ -3027,7 +3027,7 @@ msgid "Hide"
 msgstr "隱藏"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:789
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1633
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1638
 msgid "Show"
 msgstr "顯示"
 
@@ -3052,7 +3052,7 @@ msgid "Add Category"
 msgstr "添加類別"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:817
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1284
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1290
 msgid "Add Extra"
 msgstr "添加額外的"
 
@@ -3073,8 +3073,8 @@ msgid "Add Resource"
 msgstr "添加資源"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:822
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1493
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:248
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1498
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:250
 msgid "Categories"
 msgstr "類別"
 
@@ -3187,7 +3187,7 @@ msgid "New Service"
 msgstr "新服務"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:850
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1463
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1468
 msgid "+more"
 msgstr "更多"
 
@@ -3282,65 +3282,69 @@ msgid ""
 msgstr "如果禁用此選項，您的客戶將無法同時預約定期預約。"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:873
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:921
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:922
 msgid "Provider has appointments for this service"
 msgstr "提供者對此服務有預約"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:885
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:874
+msgid "Pricing model"
+msgstr ""
+
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:886
 msgid "Create New"
 msgstr "建立新的"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:886
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1337
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1485
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:887
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1343
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1490
 msgid "Email"
 msgstr "電子郵件"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:887
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1382
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:110
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:888
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1387
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:111
 msgid "Please enter first name"
 msgstr "請輸入名字"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:888
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1384
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:111
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:889
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1389
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:112
 msgid "Please enter last name"
 msgstr "請輸入姓氏"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:889
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1334
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1483
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:890
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1340
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1488
 msgid "First Name"
 msgstr "名字"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:890
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1335
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1484
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:891
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1341
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1489
 msgid "Last Name"
 msgstr "姓氏"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:891
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:892
 msgid "Female"
 msgstr "女"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:892
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:893
 msgid "Male"
 msgstr "男"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:893
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:894
 msgid "Notification Language"
 msgstr "通知語言"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:894
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:895
 msgid "Select or Create New"
 msgstr "選擇或新建"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:895
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:896
 msgid "WordPress User"
 msgstr "WordPress識別"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:896
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:897
 msgid ""
 "Here you can map a WordPress user to the customer if<br/>you want to give "
 "customers access to the list of their<br/>appointments in the back-end of "
@@ -3349,7 +3353,7 @@ msgstr ""
 "如果<br/>您想讓客戶在插件的後端訪問他們的<br/>預約列表，您可以在這裏將"
 "WordPress識別映射到客戶。"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:897
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:898
 msgid ""
 "Here you can map a WordPress user to the employee if<br/>you want to give "
 "employee access to the list of their<br/>appointments in the back-end of the "
@@ -3358,7 +3362,7 @@ msgstr ""
 "如果<br/>您想讓員工在插件的後端訪問他們的<br/>預約列表，您可以在這裏將"
 "WordPress識別映射到員工。"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:898
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:899
 msgid ""
 "This is the language in which the customer will receive notifications for "
 "bookings made on the admin/employee panel. It is preselected if the customer "
@@ -3368,32 +3372,32 @@ msgstr ""
 "這是客戶在管理員/員工面板上收到預約通知的語言。如果客戶在Amelia通知中可用語言"
 "的頁面上預約，則可以預先選擇，或者可以在這裏設置。"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:910
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:911
 msgid "Assigned Services"
 msgstr "指定的服務"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:911
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:912
 msgid "Capacity"
 msgstr "能力"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:912
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:913
 #, fuzzy
 msgid "Provider Settings"
 msgstr "地位設置"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:913
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:914
 msgid "Employee has been saved"
 msgstr "員工已被保存"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:914
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:915
 msgid "Employee Panel Password"
 msgstr "員工面板密碼"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:915
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:916
 msgid "Applied for all assigned services"
 msgstr "適用於所有指定服務"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:916
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:917
 msgid ""
 "Select only specific services for this period.<br/>If no services are "
 "selected, then all assigned services for this employee<br/>will be available "
@@ -3402,103 +3406,103 @@ msgstr ""
 "只能選擇該時間段的特定服務。<br/>如果沒有選擇任何服務，則爲該員工分配的所有服"
 "務<br/>將可用於在此期間預約。"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:917
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:918
 msgid "Select specific services for each period."
 msgstr "選擇每個時間段的具體服務。"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:918
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:919
 msgid "Reflect On"
 msgstr "考慮"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:920
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:921
 msgid "Special Days"
 msgstr "特殊的日子"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:922
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:923
 msgid "Timezone"
 msgstr "時區"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:944
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:945
 msgid "Add Customer"
 msgstr "添加客戶"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:945
-msgid "Are you sure you want to delete this customer?"
-msgstr "您確定要刪除該客戶嗎?"
-
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:946
-#, fuzzy
-msgid "Are you sure you want to block this customer?"
+msgid "Are you sure you want to delete this customer?"
 msgstr "您確定要刪除該客戶嗎?"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:947
 #, fuzzy
-msgid "Are you sure you want to unblock this customer?"
+msgid "Are you sure you want to block this customer?"
 msgstr "您確定要刪除該客戶嗎?"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:948
+#, fuzzy
+msgid "Are you sure you want to unblock this customer?"
+msgstr "您確定要刪除該客戶嗎?"
+
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:949
 msgid "Customer Activity"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:949
-msgid "Customer has been deleted"
-msgstr "客戶已被刪除"
-
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:950
-#, fuzzy
-msgid "Customer has been blocked"
+msgid "Customer has been deleted"
 msgstr "客戶已被刪除"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:951
 #, fuzzy
+msgid "Customer has been blocked"
+msgstr "客戶已被刪除"
+
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:952
+#, fuzzy
 msgid "Customer has been unblocked"
 msgstr "客戶已被刪除"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:953
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:954
 msgid "Customer has been saved"
 msgstr "客戶已保存"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:954
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:955
 msgid "Customers"
 msgstr "客戶"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:955
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:956
 msgid "Customers have been deleted"
 msgstr "客戶已被刪除"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:956
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:957
 msgid "customers"
 msgstr "客戶"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:957
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:958
 msgid "Search Customers..."
 msgstr "搜索客戶…"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:958
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:959
 msgid "Created On"
 msgstr "建立於"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:959
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:960
 msgid "Date of Birth"
 msgstr "出生日期"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:960
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:961
 msgid "Edit Customer"
 msgstr "編輯客戶"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:962
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:963
 msgid "Events Booked"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:963
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:964
 msgid "You can use this option to export customers in CSV file."
 msgstr "您可以使用此選項以CSV文件的形式輸出客戶。"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:964
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:965
 msgid "Gender"
 msgstr "性別"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:965
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:966
 msgid ""
 "<ul><li>No first row with column names</li><li><b>First</b> and <b>Last "
 "name</b> are two separate fields</li><li><b>Date of birth</b> in the same "
@@ -3511,7 +3515,7 @@ msgstr ""
 "式，日期應在引號中)</li><li><b>電話</b>有國家代碼</li><li><b>性別</b>以男性或"
 "女性形式</li></ul>"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:966
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:967
 msgid ""
 "Valid <b>First</b> and <b>Last name</b> are required fields. <br>If invalid, "
 "other values will be skipped and not imported.<br>If multiple customers have "
@@ -3520,91 +3524,91 @@ msgstr ""
 "有效 <b>名字</b>和<b>姓氏</b>是必填字段。<br>如果無效，其他值將被跳過而不被輸"
 "入。<br>如果多個客戶具有相同的電子郵件地址，則只輸入第一個。"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:967
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:968
 msgid "customers have been imported successfully to your customer list"
 msgstr "客戶已成功輸入到客戶列表中"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:968
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:969
 msgid "You can use this option to import customers from a CSV file."
 msgstr "您可以使用此選項從CSV文件輸入客戶。"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:969
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:970
 msgid "Imported customers from file:"
 msgstr "從文件中輸入客戶:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:970
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:971
 msgid "Last Appointment"
 msgstr "最後預約"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:971
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:972
 msgid "Last Appointment Ascending"
 msgstr "最後一次預約升序"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:972
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:973
 msgid "Last Appointment Descending"
 msgstr "最後一次預約降序"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:973
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:974
 msgid "New Customer"
 msgstr "新客戶"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:974
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:975
 msgid "You don't have any customers here yet..."
 msgstr "您這裏還沒有客戶……"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:976
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:977
 msgid "Required fields are: <b>First Name</b> and <b>Last Name</b>."
 msgstr "必填字段是:<b>名字</b>和<b>姓氏</b>。"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:977
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:978
 msgid "Select Date of Birth"
 msgstr "選擇出生日期"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:978
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:979
 msgid "Total Appointments"
 msgstr "預約總數"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:979
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:980
 msgid "Upload Customers .csv file"
 msgstr "上傳客戶.csv文件"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:980
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:981
 msgid "View Appointments"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:981
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:982
 msgid "View Events"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:993
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:994
 msgid "Drag and drop or choose from <em>files</em>"
 msgstr "拖放或從<em>文件中選擇</em>"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:994
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:995
 msgid "Import customer data"
 msgstr "輸入客戶數據"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:995
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:996
 msgid "Import rules"
 msgstr "輸入規則"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:996
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:997
 msgid "Import successful"
 msgstr "輸入成功"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:997
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:998
 msgid "Please map corresponding data to columns."
 msgstr "請將相應的數據映射到列中。"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:998
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:999
 msgid "Some records have a wrong format"
 msgstr "有些記錄格式錯誤"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1010
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1011
 msgid "Welcome to wpAmelia"
 msgstr "歡迎來到wpAmelia"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1011
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1012
 msgid ""
 "Congratulations! You are about to use the most powerful WordPress booking "
 "plugin - Amelia is designed to make the process of bookings representation "
@@ -3613,292 +3617,304 @@ msgstr ""
 "恭喜您!您即將使用最強大的WordPress預約插件- Amelia旨在使預約表示和交互的過程"
 "快速，簡單和有效。"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1012
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1013
 msgid "Discover Amelia"
 msgstr "發現Amelia"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1013
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1014
 msgid "News Blog"
 msgstr "新聞博客"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1014
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1015
 msgid "Keep up to date!"
 msgstr "經常更新!"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1015
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1016
 msgid ""
 "Never miss notifications about new cool features, promotions, giveaways or "
 "freebies!"
 msgstr "永遠不要錯過關於新的酷功能，促銷，贈品或免費贈品的通知!"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1016
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1017
 msgid "Enter your email"
 msgstr "輸入您的郵箱"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1017
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1018
 msgid "Subscribe"
 msgstr "訂閱"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1018
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1019
 msgid "Take a look at how our clients use Amelia"
 msgstr "看看我們的客戶是怎麽利用Amelia的"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1019
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1020
 msgid "Read Success Stories"
 msgstr "閱讀成功故事"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1020
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1021
 msgid "Have questions?"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1021
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1022
 msgid "Our Support team will answer any of your questions"
 msgstr "我們的支持團隊將回答您的任何問題"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1022
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1023
 msgid "Contact our support"
 msgstr "聯系我們的支持"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1023
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1024
 msgid "Most used Premium features"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1024
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1025
 #, fuzzy
 msgid "Online Payments"
 msgstr "等待付款"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1025
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1026
 #, fuzzy
 msgid "Packages of services"
 msgstr "套裝服務清單"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1026
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1027
 #, fuzzy
 msgid "Google Calendar Sync"
 msgstr "Google Calender "
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1027
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1028
 #, fuzzy
 msgid "Zoom/Google Meet"
 msgstr "Google Meet連結"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1028
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1029
 #, fuzzy
 msgid "Custom Service Duration"
 msgstr "服務時間"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1040
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1041
 msgid "Amelia Plans Comparison"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1041
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1042
 msgid ""
 "Upgrade to any of our three premium versions and unlock a world of exclusive "
 "features and benefits, tailored to enhance your experience and maximize the "
 "value you get from our product."
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1042
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1043
 msgid "Upgrade now"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1043
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1044
 msgid "Support is only available through forum"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1055
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1056
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:80
 msgid "Amount"
 msgstr "數量"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1056
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1057
 msgid "Booking Start"
 msgstr "預約開始"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1057
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1122
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1058
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1125
 msgid "Customer Email"
 msgstr "客戶電子郵件"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1058
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1059
 msgid "Employee Email"
 msgstr "員工的電子郵件"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1059
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1060
 msgid ""
 "You can use this option to export payments in CSV file<br/>for the selected "
 "date range."
 msgstr "您可以使用此選項在CSV文件<br/>中輸出所選日期範圍的付款。"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1060
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1061
 msgid "Method"
 msgstr "方法"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1061
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1062
 msgid "You don't have any payments here yet"
 msgstr "您這裏還沒有付款"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1062
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1063
 msgid "Payment date"
 msgstr "付款日期"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1063
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1064
 #, fuzzy
 msgid "Payment created"
 msgstr "付款日期"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1065
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1066
 msgid "payments"
 msgstr "支付"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1066
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1067
 msgid "Rate"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1078
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1079
 msgid "Appointment Date"
 msgstr "預約日期"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1079
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1080
 msgid "Appointment Info"
 msgstr "預約信息"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1080
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1081
 msgid "Event Date"
 msgstr "活動日期"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1081
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1082
 msgid "Are you sure you want to delete this payment?"
 msgstr "您確定要刪除這筆付款嗎?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1082
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1083
 msgid "Discount"
 msgstr "折扣"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1083
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1084
 msgid "Due"
 msgstr "由於"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1084
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1085
 msgid "Enter new payment amount"
 msgstr "輸入新的付款金額"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1085
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1086
 msgid "Finance"
 msgstr "金融"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1086
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1087
 msgid "Payment has been deleted"
 msgstr "付款已被刪除"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1087
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1088
 msgid "Payment Details"
 msgstr "付款細節"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1088
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1089
 msgid "Payment has been saved"
 msgstr "付款已保存"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1089
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1090
 msgid "Payments have been deleted"
 msgstr "付款已被刪除"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1090
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1091
 msgid "Payment Type"
 msgstr "付款類型"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1091
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1355
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1092
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1360
 msgid "Service Price"
 msgstr "服務價格"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1092
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1395
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:277
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1093
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1400
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:281
 msgid "Subtotal"
 msgstr "小計"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1093
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1094
 msgid "Total Price"
 msgstr "總價格"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1094
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1095
 msgid "Bookings Price"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1095
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1353
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1096
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1358
 msgid "Event Price"
 msgstr "活動價格"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1107
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1108
 msgid "Appointment has been deleted"
 msgstr "預約已刪除"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1108
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1109
 msgid "Appointment has been saved"
 msgstr "預約已保存"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1109
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1110
 msgid "Cancel Appointment"
 msgstr "取消預約"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1110
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1267
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1111
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1273
 msgid "Appointment has been rescheduled"
 msgstr "預約已重新安排"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1111
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1112
 msgid "Appointment status has been changed to "
 msgstr "預約狀態已更改爲"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1112
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1113
 msgid "Appointments have been deleted"
 msgstr "預約已刪除"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1113
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1114
 msgid "Search for Customers, Employees, Services..."
 msgstr "搜索客戶、員工、服務…"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1114
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1115
 msgid "Assigned to"
 msgstr "分配給"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1116
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1117
 msgid "Change group status"
 msgstr "更改組狀態"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1117
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1118
 msgid "Are you sure you want to delete this appointment?"
 msgstr "您確定要刪除此預約嗎?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1118
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1119
 msgid "Are you sure you want to delete these appointments?"
 msgstr "您確定要刪除這些預約嗎?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1119
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1120
 msgid "Are you sure you want to duplicate this appointment?"
 msgstr "您確定要重制此預約嗎?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1120
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1121
 msgid "Create Customer"
 msgstr "建立客戶"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1121
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1300
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1122
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:276
+msgid "Generate payment links"
+msgstr ""
+
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1123
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:277
+msgid ""
+"Check this box to generate a payment link.<br> To include it in the "
+"notification, add the payment link placeholder."
+msgstr ""
+
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1124
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1306
 msgid "Custom Fields"
 msgstr "自訂字段"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1123
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1126
 msgid "Customer Phone"
 msgstr "客戶電話"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1124
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1127
 msgid "Customer(s)"
 msgstr "客戶"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1125
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1128
 msgid ""
 "Here you can define the number of people that are coming<br/>with this "
 "customer. The number you can choose depends<br/>on the service and employee "
@@ -3907,364 +3923,376 @@ msgstr ""
 "在這裏，您可以定義與該客戶一起來的人數。您可以選擇的數字取決於<br/>業務和員工"
 "容量。"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1126
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1129
 msgid "Edit Payment Details"
 msgstr "編輯付款細節"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1127
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1130
 msgid "Edit Appointment"
 msgstr "編輯預約"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1128
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1131
 msgid "End Time"
 msgstr "結束時間"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1129
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1132
 msgid ""
 "You can use this option to export appointments in CSV file<br/>for the "
 "selected date range."
 msgstr "您可以使用此選項以CSV文件<br/>的形式輸出所選日期範圍的預約。"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1130
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1133
 msgid ""
 "You can use this option to export attendees in CSV file<br/>for the selected "
 "event."
 msgstr "您可以使用此選項將所選活動的與會者輸出爲CSV文件<br/>。"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1131
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1134
 msgid "New Appointment"
 msgstr "新的預約"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1132
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1135
 msgid "Notify the attendee(s)"
 msgstr "通知參加者"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1133
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1136
 msgid ""
 "Check this checkbox if you want your attendee(s) to<br/>receive an email "
 "about the event’s updated information."
 msgstr "如果您希望參加者<br/>收到有關活動更新信息的電子郵件，請選中此複選框。"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1134
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1137
 msgid "Notify the customer(s)"
 msgstr "通知客戶"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1135
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1138
 msgid ""
 "Check this checkbox if you want your customer(s) to<br/>receive an email "
 "about the scheduled appointment."
 msgstr "如果您希望您的客戶<br/>收到關於預定預約的電子郵件，請選中此複選框。"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1136
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1139
 #, fuzzy
 msgid ""
 "By continuing, you will set the appointment to a time slot that already has "
 "an existing appointment!"
 msgstr "通過預約這個時間段，將在現有的團體預約之上預約一個預約!"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1137
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1140
 msgid "Schedule"
 msgstr "時間表"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1138
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1141
 msgid "Select Customer(s)"
 msgstr "選擇客戶"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1139
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1142
 msgid "Please select at least one customer"
 msgstr "請選擇至少一個客戶"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1140
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1143
 msgid "Maximum number of places is"
 msgstr "最大地址數是"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1141
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1144
 #, fuzzy
 msgid "Select Extra"
 msgstr "選擇額外"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1142
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1315
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1627
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:276
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1145
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1321
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1632
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:280
 msgid "Select Service"
 msgstr "選擇服務"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1143
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1306
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:179
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1146
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1312
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:181
 msgid "Please select service"
 msgstr "請選擇服務"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1144
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1147
 msgid "Select Service Category"
 msgstr "選擇服務類別"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1145
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1148
 msgid "Selected Customers"
 msgstr "選擇客戶"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1146
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1149
 msgid "This service does not have any extras"
 msgstr "這項服務沒有任何額外費用"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1147
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1150
 msgid "Start Time"
 msgstr "開始時間"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1149
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:139
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1152
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:140
 msgid "Time slot is unavailable"
 msgstr "時間段不可用"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1150
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1153
 msgid "Appointment can't be canceled"
 msgstr "預約不能取消"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1151
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1154
 msgid "Appointment can't be rescheduled"
 msgstr "預約不能重新安排"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1152
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1248
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1155
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1254
 msgid "Booking status has been changed to "
 msgstr "預約狀態已變更為"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1153
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1156
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1165
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1168
+msgid "Default Pricing"
+msgstr ""
+
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1169
 msgid "Deposit Payment"
 msgstr "存款支付"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1166
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1170
 msgid "Custom Pricing"
 msgstr "定制的價格"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1167
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1171
 msgid "Custom Duration and Pricing"
 msgstr "自定義期限和定價"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1179
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1172
+msgid "Pricing by the number of people"
+msgstr ""
+
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1173
+msgid "Conditional Pricing"
+msgstr ""
+
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1185
 msgid "Are you sure you want to delete selected attendee?"
 msgstr "您確定要刪除選定的與會者嗎？"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1180
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1186
 msgid "Are you sure you want to delete selected attendees?"
 msgstr "您確定要刪除選定的與會者嗎？"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1181
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1187
 msgid "Are you sure you want to delete this event?"
 msgstr "您確定要刪除此活動嗎?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1182
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1188
 msgid "Are you sure you want to duplicate this event?"
 msgstr "您確定要複制此活動嗎?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1183
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1189
 msgid "Are you sure you want to cancel this event?"
 msgstr "您確定要取消此活動嗎?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1184
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1190
 msgid "Are you sure you want to open this event?"
 msgstr "您確定要打開此活動嗎?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1185
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1191
 msgid "Please cancel the event first before deleting it."
 msgstr "刪除活動前請先取消該活動。"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1186
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1301
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1192
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1307
 msgid "Customize"
 msgstr "定制"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1187
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1193
 #, fuzzy
 msgid "Customer is already added to this event"
 msgstr "客戶已經預約了這個時間"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1190
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1349
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1196
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1355
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:98
 msgid "Full"
 msgstr "完整的"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1191
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1351
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1197
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1356
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:99
 msgid "Upcoming"
 msgstr "即將到來的"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1192
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1198
 msgid "Edit Event"
 msgstr "編輯活動"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1193
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1199
 msgid "Attendees"
 msgstr "與會者"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1194
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1200
 msgid "Add Attendee"
 msgstr "添加出席者"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1197
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1203
 msgid "Number of tickets"
 msgstr "門票數量"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1198
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1204
 msgid "Edit Attendee"
 msgstr "編輯出席者"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1199
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1205
 msgid "The price will multiply by the number of people/spots"
 msgstr "價格將乘以人數/地址"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1200
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1206
 msgid "Attendee has been saved"
 msgstr "與會者已被保存"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1201
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1207
 msgid "Remove Attendee"
 msgstr "刪除與會者"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1202
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1208
 msgid "Find Attendees"
 msgstr "發現與會者"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1203
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1209
 msgid "Attendee have been deleted"
 msgstr "與會者已刪除"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1204
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1210
 msgid "Attendees have been deleted"
 msgstr "與會者已被刪除"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1205
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1211
 msgid "Allow the same customer to book more than once"
 msgstr "允許同一客戶多次預約"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1206
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1212
 msgid "Allow bringing more people"
 msgstr "允許帶來更多的人"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1207
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1213
 msgid "Cancel Event"
 msgstr "取消活動"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1208
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1214
 msgid "Close Event after certain minimum is reached"
 msgstr "在達到某個最小值後關閉活動"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1209
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1215
 msgid "Minimum of attendees"
 msgstr "最少出席人數"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1210
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1216
 msgid "Minimum of bookings"
 msgstr "最低訂房量"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1211
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1217
 msgid "One spot is equal to one attendee."
 msgstr "一個地址等於一個參加者。"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1212
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1218
 msgid "One booking can have multiple attendees/spots in it."
 msgstr "一次預約可以包含多個參與者/地址。"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1213
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1219
 msgid "Set Minimum"
 msgstr "設置最小"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1214
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1220
 msgid "Custom Address"
 msgstr "自定義地址"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1215
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1221
 msgid "Delete Event"
 msgstr "刪除活動"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1216
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1222
 msgid "Event has been deleted"
 msgstr "活動已被刪除"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1217
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1223
 msgid "Duplicate Event"
 msgstr "重複的活動"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1218
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1224
 msgid "Name:"
 msgstr "名稱:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1219
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1225
 msgid "Booking closes:"
 msgstr "預約關閉:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1220
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1226
 msgid "Booking opens:"
 msgstr "預約打開:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1221
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1227
 msgid "Closes on:"
 msgstr "關閉於:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1222
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1228
 msgid "Opens on:"
 msgstr "打開於："
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1223
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1229
 msgid "Booking closes when event starts"
 msgstr "活動開始時將停止預約"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1224
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1230
 msgid "Booking opens immediately"
 msgstr "預約將立即開放"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1227
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1233
 msgid "Open Event"
 msgstr "開放活動"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1228
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1234
 msgid "Recurring:"
 msgstr "定期："
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1229
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1235
 msgid "This is a recurring event"
 msgstr "這是一個重複發生的活動"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1230
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1236
 msgid "Event has been opened"
 msgstr "活動已開啟"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1231
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1237
 msgid "Event has been canceled"
 msgstr "活動已取消"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1232
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1238
 msgid "Event has been saved"
 msgstr "活動已儲存"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1233
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1239
 msgid "Search Events..."
 msgstr "搜尋活動..."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1234
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1240
 msgid "Maximum allowed spots"
 msgstr "允許的最大積分"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1235
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1241
 msgid "Select Address"
 msgstr "選擇地址"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1236
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1242
 msgid "Staff"
 msgstr "員工"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1237
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1243
 msgid "Organizer"
 msgstr "主辦單位"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1238
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1244
 msgid ""
 "Here you can choose the employee that will be added as Organizer of the "
 "Google/Outlook Event. <br>Other employees chosen under the Staff option will "
@@ -4273,465 +4301,461 @@ msgstr ""
 "您可以在此處選擇將哪位員工新增為 Google/Outlook 活動組織者。 <br>「員工」選項"
 "選擇的其他員工將被加入為訪客。"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1239
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1245
 msgid "Dates:"
 msgstr "日期："
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1240
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1246
 msgid "Tags"
 msgstr "卡片"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1241
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1247
 msgid "Select or Create Tag"
 msgstr "選擇或建立卡片"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1242
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1248
 msgid "Enter Event Name"
 msgstr "輸入活動名稱"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1243
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1249
 msgid "Event Gallery:"
 msgstr "活動庫："
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1244
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1250
 msgid "Event Colors:"
 msgstr "活動顏色："
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1245
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1251
 msgid "Preset Colors"
 msgstr "預設顏色"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1246
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1252
 msgid "Custom Color"
 msgstr "自己搭配顏色"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1247
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1253
 msgid "Show event on site"
 msgstr "在網站上顯示活動"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1249
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1255
 msgid "There are no attendees yet..."
 msgstr "還沒有人參加..."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1250
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1256
 msgid "New Event"
 msgstr "新活動"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1253
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1259
 msgid "Maximum capacity is reached"
 msgstr "達到最大容量"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1265
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1271
 msgid "This will change the time of the appointment. Continue?"
 msgstr "這將改變約會的時間。 繼續？"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1266
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1272
 msgid "Appointment can't be moved in past time period"
 msgstr "預約不能超過該時段"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1268
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1274
 msgid "Appointment can't be moved out of employee working hours"
 msgstr "預約不能移至員工工作時間以外"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1270
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1276
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:100
 msgid "Confirm"
 msgstr "確認"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1283
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1289
 msgid "Add Custom Field"
 msgstr "添加自訂字段"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1286
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1292
 msgid "Are you sure you want to reset your form settings?"
 msgstr "您確定要重設表單設定嗎？"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1287
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1293
 msgid "Your current changes will be lost."
 msgstr "您目前的變更將會遺失。"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1288
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1294
 msgid "Yes, Reset"
 msgstr "是，重置"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1289
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1295
 msgid "No, Cancel"
 msgstr "不，取消"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1290
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1296
 msgid "Reset Form"
 msgstr "重置表格"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1291
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1297
 msgid "Available in package"
 msgstr "捆綁銷售"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1292
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1298
 msgid "Bringing Anyone with You?"
 msgstr "帶人一起去嗎？"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1293
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1299
 msgid "Buttons"
 msgstr "按鈕"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1295
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1301
 msgid "Default Label"
 msgstr "預設標籤"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1297
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1303
 msgid "Checkbox"
 msgstr "複選框"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1298
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1304
 msgid "Start by clicking the Add Custom Field button"
 msgstr "首先點擊添加自訂欄位按鈕"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1299
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1305
 msgid "Text Content"
 msgstr "文字內容"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1302
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1308
 msgid "Font"
 msgstr "字體"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1303
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1309
 msgid "You don't have any custom fields here yet..."
 msgstr "這裏還沒有任何自定義字段。"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1304
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1310
 msgid "Options"
 msgstr "選項"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1305
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1311
 msgid "Pick date & time"
 msgstr "選擇日期和時間"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1307
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1313
 msgid "Primary Color"
 msgstr "原色"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1308
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1314
 msgid "Success Color"
 msgstr "成功色"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1309
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1315
 msgid "Warning Color"
 msgstr "警告色"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1310
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1316
 msgid "Error Color"
 msgstr "錯誤色"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1311
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1317
 msgid "Radio Buttons"
 msgstr "單選按鈕"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1312
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1318
 msgid "Reset"
 msgstr "重置"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1313
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1319
 msgid "Selectbox"
 msgstr "選擇框"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1314
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1320
 msgid "Steps"
 msgstr "步驟"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1316
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1477
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1322
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1482
 msgid "Text"
 msgstr "文字"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1317
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1323
 msgid "Text Area"
 msgstr "文字區域"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1318
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1324
 msgid "Text Color"
 msgstr "文字顔色"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1319
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1325
 msgid "Placeholder Color"
 msgstr "占位符的顔色"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1320
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1326
 msgid "Text Color on Background"
 msgstr "背景文字顔色"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1321
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1327
 msgid "Attachment"
 msgstr "附件"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1322
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1328
 msgid "Date Picker"
 msgstr "日期選擇器"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1323
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1329
 msgid "Preview"
 msgstr "預覽"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1324
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1417
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1330
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1422
 msgid "Background Color"
 msgstr "背景顔色"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1325
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1331
 msgid "Background Gradient Color 1"
 msgstr "背景漸變色1"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1326
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1332
 msgid "Background Gradient Color 2"
 msgstr "背景漸變色2"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1327
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1333
 msgid "Background Gradient Angle"
 msgstr "背景梯度角"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1328
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1334
 msgid "Input Color"
 msgstr "輸入的顔色"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1329
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1335
 msgid "Input Text Color"
 msgstr "輸入文字顔色"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1330
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1336
 msgid "Dropdown Color"
 msgstr "下拉的顔色"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1331
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1337
 msgid "Dropdown Text Color"
 msgstr "下拉文字顔色"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1332
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1338
 msgid "Image Color"
 msgstr "圖片的顔色"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1333
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1339
 msgid "Repeat this appointment"
 msgstr "重複這個預約"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1336
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1342
 msgid "Last Name Input Field"
 msgstr "姓氏輸入欄"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1338
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1344
 msgid "Email Input Field"
 msgstr "電子郵件輸入欄"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1340
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1346
 msgid "Phone Input Field"
 msgstr "電話輸入區"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1341
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1511
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:258
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1347
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1516
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:260
 msgid "Go Back"
 msgstr "返回"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1343
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1349
 msgid "Display Field:"
 msgstr "顯示字段:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1344
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1350
 #, fuzzy
 msgid "Filterable Field:"
 msgstr "顯示字段:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1345
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1351
 msgid "Mandatory Field:"
 msgstr "強制性字段:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1346
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1352
 msgid "Event Type"
 msgstr "活動類型"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1350
-msgid "From"
-msgstr "從"
-
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1352
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1539
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1357
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1544
 msgid "Free"
 msgstr "免費"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1354
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1359
 msgid "Service Badge"
 msgstr "服務徽章"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1356
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1361
 msgid "Package Name"
 msgstr "套裝名稱"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1357
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1362
 msgid "Congratulations!"
 msgstr "恭喜您!"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1358
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1363
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:79
 msgid "Add to Calendar"
 msgstr "添加到日曆"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1359
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:116
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1364
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:117
 msgid "Finish"
 msgstr "完成"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1360
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1365
 msgid "Step By Step Booking Form"
 msgstr "按部就班預約表格"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1361
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1366
 msgid "Event Status"
 msgstr "活動狀態"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1362
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:216
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1367
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:218
 msgid "Filters"
 msgstr "過濾器"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1363
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:213
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1368
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:215
 msgid "Book event"
 msgstr "預約活動"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1365
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1370
 msgid "Form"
 msgstr "形式"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1366
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1371
 msgid "Form Flow"
 msgstr "表單流程"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1367
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1372
 msgid "Use Global Colors"
 msgstr "使用全局顔色"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1368
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1454
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:177
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1373
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1459
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:179
 msgid "Service Selection"
 msgstr "服務選擇"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1372
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1377
 msgid "No matching data"
 msgstr "無匹配數據"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1374
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1379
 msgid "Bringing Anyone With You"
 msgstr "帶任何人一起去嗎？"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1375
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:200
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:235
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1380
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:202
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:237
 msgid "Show more"
 msgstr "顯示更多"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1376
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:201
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:234
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1381
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:203
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:236
 msgid "Show less"
 msgstr "顯示更少"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1378
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:182
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1383
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:184
 msgid "Date & Time"
 msgstr "日期和時間"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1379
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1384
 msgid "All slots are selected"
 msgstr "所有插槽都被選中"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1380
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1573
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:183
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:223
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1385
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1578
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:185
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:225
 msgid "Your Information"
 msgstr "您的信息"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1381
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:184
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1386
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:186
 msgid "Enter first name"
 msgstr "輸入名字"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1383
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:185
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1388
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:187
 msgid "Enter last name"
 msgstr "輸入姓氏"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1385
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:186
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1390
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:188
 msgid "Enter email"
 msgstr "輸入電子郵件"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1386
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1391
 msgid "Please enter valid email"
 msgstr "請輸入有效的電子郵箱"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1387
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:187
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1392
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:189
 msgid "Enter phone"
 msgstr "輸入手機"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1388
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1393
 msgid "Please enter phone"
 msgstr "請輸入電話"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1391
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:173
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1396
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:175
 msgid "Summary"
 msgstr "總結"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1393
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1398
 msgid "Service Subtotal"
 msgstr "服務小計"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1394
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:191
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1399
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:193
 msgid "people"
 msgstr "人們"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1396
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1399
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1401
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1404
 msgid "Total Amount"
 msgstr "總金額"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1397
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:169
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1402
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:171
 msgid "The payment will be done on-site."
 msgstr "付款將在現場完成。"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1398
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:193
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1403
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:195
 msgid "Appointment ID"
 msgstr "預約識別"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1401
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:175
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1406
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:177
 msgid "Your Name"
 msgstr "您的名字"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1402
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:166
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1407
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:168
 msgid "Email Address"
 msgstr "電子郵件地址"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1403
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:170
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1408
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:172
 msgid "Phone Number"
 msgstr "電話號碼"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1405
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:197
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1410
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:199
 msgid "Local Time"
 msgstr "當地時間"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1409
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1414
 msgid "Choose a Form"
 msgstr "選擇表格"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1410
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1415
 msgid ""
 "Choose a form you want to customize. The Step-by-Step 2.0 form is the new "
 "and improved version which provides you with better design and user "
@@ -4740,899 +4764,899 @@ msgstr ""
 "選擇您想要自訂的表單。 逐步表格2.0 是全新的和改進的，為您提供更好的設計和識別"
 "體驗，以及更快的速度。"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1411
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1416
 msgid "Step-by-Step Booking Form 2.0"
 msgstr "逐步預約表2.0"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1412
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1417
 msgid "Booking Forms 1.0"
 msgstr "預約表格1.0"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1413
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1418
 msgid ""
 "Use the upgraded Step-by-Step Booking Form 2.0 for a simplified, direct "
 "booking process on your page. Customize its design and labels to enhance "
 "user experience and meet your business needs."
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1414
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1419
 msgid ""
 "The original booking forms—Step-by-Step, Catalog, Event List, and Event "
 "Calendar—feature basic customization and label changes, serving as the "
 "foundation for our newer versions."
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1415
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1420
 msgid "Primary and state colors"
 msgstr "原色和狀態色"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1416
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1466
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1421
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1471
 msgid "Sidebar"
 msgstr "側邊欄"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1418
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1423
 msgid "Content"
 msgstr "內容"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1419
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1424
 msgid "Heading Text Color"
 msgstr "標題文字顔色"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1420
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1425
 msgid "Content Text Color"
 msgstr "內容文字顔色"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1421
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1426
 msgid "Input Fields"
 msgstr "輸入字段"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1422
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1427
 msgid "Border Color"
 msgstr "邊框顔色"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1423
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1428
 msgid "Dropdowns"
 msgstr "下拉框"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1424
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1429
 msgid "Init Cell"
 msgstr "初始化單元格"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1425
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1430
 msgid "Init Cell Text"
 msgstr "初始化單元格文字"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1426
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1431
 msgid "Cell Selected Background"
 msgstr "單元格選擇背景"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1427
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1432
 msgid "Cell Selected Text"
 msgstr "單元格選定文字"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1428
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1433
 msgid "Cell Disabled Background"
 msgstr "單元格禁用背景信息"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1429
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1434
 msgid "Cell Disabled Text"
 msgstr "單元格禁用文字"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1430
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1435
 msgid "Primary Button Background Color"
 msgstr "主要按鈕背景顔色"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1431
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1436
 msgid "Primary Button Text Color"
 msgstr "主要按鈕文字顔色"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1432
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1437
 msgid "Secondary Button Background Color"
 msgstr "次要按鈕背景顔色"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1433
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1438
 msgid "Secondary Button Text Color"
 msgstr "次要按鈕文字顔色"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1434
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1439
 #, fuzzy
 msgid "Danger Button Background Color"
 msgstr "主要按鈕背景顔色"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1435
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1440
 #, fuzzy
 msgid "Danger Button Text Color"
 msgstr "主要按鈕文字顔色"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1436
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1441
 msgid "Layout & Inputs"
 msgstr "布局和輸入"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1437
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1442
 msgid "Colors"
 msgstr "顔色"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1438
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1443
 msgid "Fonts"
 msgstr "字體"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1439
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1444
 msgid "Order"
 msgstr "訂單"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1440
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1445
 msgid "Step Title"
 msgstr "步驟名稱"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1441
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1446
 msgid "Footer Buttons"
 msgstr "頁腳按鈕"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1442
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1447
 msgid "Step Content"
 msgstr "步驟內容"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1443
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1487
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1448
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1492
 msgid "Finish Button Type"
 msgstr "完成按鈕類型"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1444
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1488
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1449
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1493
 msgid "Panel Button Type"
 msgstr "面板按鈕類型"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1445
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1450
 msgid "Summary Segment"
 msgstr "總結部分"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1446
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1451
 msgid "Payment Segment"
 msgstr "支付部分"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1447
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1452
 msgid "Heading Title"
 msgstr "標題"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1448
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1453
 msgid "Sub Steps"
 msgstr "子步驟"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1449
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1454
 #, fuzzy
 msgid "Step Popups"
 msgstr "步驟"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1452
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1457
 msgid "Fonts and colors"
 msgstr "字體和顔色"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1453
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1458
 msgid "Set up Sidebar visibility and its content"
 msgstr "設置側邊欄可見性及其內容"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1455
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1460
 msgid "Set up Services, Locations, Employees selection options"
 msgstr "設置服務，地點，員工選擇選項"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1456
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1461
 msgid "Date & Time Selection"
 msgstr "日期和時間選擇"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1457
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1462
 msgid "Set up Calendar layout and Recurring popup options"
 msgstr "設置日曆布局和反複出現彈出選項"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1458
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1463
 msgid "Customer Information"
 msgstr "客戶信息"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1459
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1557
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1464
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1562
 msgid "Field order, mandatory fields, labels and display options"
 msgstr "字段順序，強制字段，標簽和顯示選項"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1460
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1465
 msgid "Payment Summary"
 msgstr "付款彙總"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1461
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1559
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1466
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1564
 msgid "Set up labels and buttons"
 msgstr "設置標簽和按鈕"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1462
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1561
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1467
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1566
 msgid "Set up button types and labels"
 msgstr "設置按鈕類型和標簽"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1465
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1470
 msgid "Global Settings"
 msgstr "全局設置"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1467
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1472
 msgid "Section"
 msgstr "部分"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1468
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1473
 msgid "Field Order"
 msgstr "字段順序"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1469
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1560
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1580
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1474
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1565
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1585
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:101
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:221
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:223
 msgid "Congratulations"
 msgstr "祝賀您"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1471
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1476
 msgid "Footer"
 msgstr "頁腳"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1472
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:167
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1477
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:169
 msgid "Get in Touch"
 msgstr "保持聯系"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1473
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1478
 msgid "Collapse Menu"
 msgstr "崩潰的菜單"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1475
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1480
 msgid "Filled"
 msgstr "填滿"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1476
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1481
 msgid "Plain"
 msgstr "簡單"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1479
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1484
 msgid "Continue Button Type"
 msgstr "繼續按鈕類型"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1480
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1485
 msgid "Calendar Slot End Time"
 msgstr "日曆時段結束時間"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1481
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1486
 msgid "Show Busy Time Slots"
 msgstr "顯示繁忙時段"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1482
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1487
 msgid "Calendar Time Zone"
 msgstr "日曆時區"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1489
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1494
 msgid "Sidebar Visibility"
 msgstr "側邊欄可見性"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1490
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1495
 msgid "Publish Form"
 msgstr "發布形式"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1492
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:253
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1497
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:255
 msgid "View All"
 msgstr "查看所有"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1494
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1499
 msgid "Set up categories cards"
 msgstr "設置類別卡片"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1495
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1500
 msgid "Cards"
 msgstr "卡片"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1496
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1501
 msgid "Card Button Type"
 msgstr "卡片按鈕類型"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1497
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1502
 msgid "Services Overview"
 msgstr "服務概述"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1498
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1503
 msgid "Set up Services view"
 msgstr "設置服務視圖"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1499
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1504
 msgid "Service Details"
 msgstr "服務細節"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1500
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1505
 msgid "Set up Service detailed view"
 msgstr "設置服務詳細視圖"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1501
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1506
 msgid "Booking Form"
 msgstr "預約表單"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1502
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1507
 msgid "Set options, colors and labels for booking form"
 msgstr "爲預約表單設置選項、顔色和標簽"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1504
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1509
 msgid "Catalog Booking Form 2.0"
 msgstr "目錄預約表格2.0"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1505
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1510
 msgid ""
 " Discover the modernized Catalog Booking Form 2.0 that showcases services in "
 "stylish card layouts. Easily add categories and adjust the appearance to "
 "reflect your brand."
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1508
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1513
 msgid "Total Number of Services"
 msgstr "服務總數"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1509
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1514
 msgid "Back Button"
 msgstr "返回按鈕"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1510
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1515
 msgid "“Back” Button Type"
 msgstr "“返回”按鈕類型"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1512
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1517
 msgid "“Book Now” Button Type"
 msgstr "“立即預約”按鈕類型"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1515
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1520
 msgid "Main Category Button"
 msgstr "主分類按鈕"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1516
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1521
 msgid "Category Card Side Color"
 msgstr "卡片側面顔色"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1517
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1522
 #, fuzzy
 msgid "Category Color"
 msgstr "卡片側面顔色"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1521
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1526
 msgid "Filter Menu Button Type"
 msgstr "過濾器菜單按鈕類型"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1522
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1524
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1527
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1529
 msgid "Categories Sidebar"
 msgstr "類別欄"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1523
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1528
 msgid "Filters Block"
 msgstr "過濾器件"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1525
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1530
 msgid "Page Header"
 msgstr "頁標題"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1526
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1531
 msgid "Main Content"
 msgstr "主要內容"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1527
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1532
 msgid "Service Category"
 msgstr "服務類別"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1528
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1533
 msgid "Service Duration"
 msgstr "服務時間"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1529
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1541
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:256
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1534
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1546
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:258
 msgid "About Service"
 msgstr "關於服務"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1530
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1535
 msgid "“Search” option"
 msgstr "“搜索”選項"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1531
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1536
 #, fuzzy
 msgid "Card Color"
 msgstr "邊框顔色"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1532
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1537
 #, fuzzy
 msgid "Page Scroll Visibility"
 msgstr "側邊欄可見性"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1534
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:254
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1539
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:256
 msgid "Search"
 msgstr "搜索"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1535
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:272
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1540
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:274
 msgid "Available"
 msgstr "可用"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1538
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1543
 msgid "No results"
 msgstr "沒有結果"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1540
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:255
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1545
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:257
 msgid "Book Now"
 msgstr "立即預約"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1542
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:257
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1547
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:259
 msgid "View all photos"
 msgstr "查看所有照片"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1544
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1549
 msgid "Support Heading:"
 msgstr "支持標題:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1545
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1550
 msgid "Company Phone:"
 msgstr "公司電話:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1546
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1551
 msgid "Company Email:"
 msgstr "公司電子郵件:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1549
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1554
 msgid "Event List Booking Form 2.0"
 msgstr "活動清單預約表格2.0"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1550
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1555
 msgid ""
 "The Event List Booking Form 2.0 offers an intuitive and fast booking "
 "experience, with a design that stands out. Customers can effortlessly browse "
 "and book from a list of events."
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1552
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1557
 msgid "Events List"
 msgstr "活動列表"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1553
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1558
 msgid ""
 "Set up Location, Images, Filters, Capacity, Price, and Status visibility "
 "options"
 msgstr "設置地址、圖像、過濾器、容量、價格和狀態可見性選項"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1554
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1577
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:115
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1559
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1582
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:116
 msgid "Event Info"
 msgstr "活動信息"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1555
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1560
 msgid "Set up Staff, Location, Gallery and other Event information visibility"
 msgstr "設置人員，地點，畫廊和其他活動信息的可見性"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1556
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1561
 msgid "Customer Info"
 msgstr "客戶信息"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1563
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:225
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1568
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:227
 msgid "Events Available"
 msgstr "可用的活動"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1564
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:226
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1569
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:228
 msgid "Event Available"
 msgstr "可用的活動"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1565
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1570
 msgid "Page"
 msgstr "頁面"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1566
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:227
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1571
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:229
 msgid "Search for Events"
 msgstr "搜索活動"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1567
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1572
 msgid "Begins"
 msgstr "開始"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1568
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:228
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1573
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:230
 msgid "slot left"
 msgstr "左邊槽"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1569
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:229
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1574
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:231
 msgid "slots left"
 msgstr "左邊槽"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1570
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:230
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1575
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:232
 msgid "Learn more"
 msgstr "了解更多"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1571
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:231
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1576
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:233
 msgid "Read more"
 msgstr "閱讀更多"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1576
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1581
 msgid "About"
 msgstr "關於"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1578
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:232
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1583
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:234
 msgid "Timetable"
 msgstr "時間表"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1581
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:224
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1586
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:226
 msgid "About Event"
 msgstr "關於活動"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1582
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:217
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1587
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:219
 msgid "Event Starts"
 msgstr "活動開始"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1583
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:218
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1588
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:220
 msgid "Event Ends"
 msgstr "活動結束"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1584
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:219
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1589
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:221
 msgid "at"
 msgstr "在"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1585
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:233
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1590
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:235
 msgid "How many attendees do you want to book event for?"
 msgstr "您想爲多少人預約活動?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1588
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1593
 msgid "Step Filters"
 msgstr "階躍濾波"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1589
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1594
 msgid "Event Card"
 msgstr "活動卡片"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1590
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1595
 msgid "Step Pagination"
 msgstr "一步分頁"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1591
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1596
 msgid "Event Slots Capacity"
 msgstr "活動插槽容量"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1592
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1597
 msgid "Filters Button Type"
 msgstr "過濾器按鈕類型"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1593
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1598
 msgid "Read More Button Type"
 msgstr "閱讀更多按鈕類型"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1594
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1599
 msgid "Learn More Button Type"
 msgstr "了解更多按鈕類型"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1595
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1600
 msgid "Event Tab Image"
 msgstr "活動頁簽圖像"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1596
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1601
 msgid "Step Header"
 msgstr "步頭"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1597
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1602
 msgid "Step Info Tab"
 msgstr "步驟信息選項卡"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1598
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1603
 msgid "Booking Event Button"
 msgstr "預約活動按鈕"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1599
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1604
 msgid "Finish Button"
 msgstr "結束按鈕"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1600
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1605
 msgid "Close Event Button"
 msgstr "關閉活動按鈕"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1601
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1606
 msgid "Event Gallery"
 msgstr "活動的畫廊"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1602
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1607
 msgid "Event Description"
 msgstr "活動描述"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1604
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:190
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1609
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:192
 msgid "person"
 msgstr "個人"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1605
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1610
 msgid "Event Employees"
 msgstr "活動的員工"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1615
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1620
 msgid "Catalog"
 msgstr "目錄"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1616
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1621
 msgid "Choose Category"
 msgstr "選擇類別"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1617
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1622
 msgid "Choose Service"
 msgstr "選擇服務"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1618
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1623
 msgid "Choose Package"
 msgstr "選擇套裝"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1619
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1624
 msgid "Preselect Booking Parameters"
 msgstr "預選預約參數"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1620
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1625
 msgid "Skip Categories step"
 msgstr "跳過類別步驟"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1621
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1626
 msgid "Insert Amelia Booking Shortcode"
 msgstr "插入Amelia預約短碼"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1622
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1627
 msgid "Select Catalog View"
 msgstr "選擇目錄視圖"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1623
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1628
 msgid "Select Category"
 msgstr "選擇類別"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1624
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1629
 msgid "Select Employee"
 msgstr "選擇員工"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1625
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1630
 msgid "Select Location"
 msgstr "選擇地點"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1626
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1631
 msgid "Select Package"
 msgstr "選擇套裝"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1628
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1633
 msgid "Select Event"
 msgstr "選擇活動"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1629
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1634
 #, fuzzy
 msgid "Select Events"
 msgstr "選擇活動"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1630
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1635
 msgid "Select Tag"
 msgstr "選擇標記"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1631
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1636
 #, fuzzy
 msgid "Select Tags"
 msgstr "選擇標記"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1632
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1637
 msgid "Select View"
 msgstr "選擇視圖"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1634
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1639
 msgid "Show All"
 msgstr "顯示所有"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1635
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1640
 msgid "Load booking form manually"
 msgstr "手動訂載表格"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1636
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1641
 msgid ""
 "Add element (button, link...) ID, that will manually load amelia shortcode "
 "content"
 msgstr "添加元素(按鈕，連結…)用戶，這將手動加載Amelia短代碼內容"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1637
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1642
 msgid "For multiselect: hold CTRL / Command (⌘)."
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1638
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1643
 msgid "Show all categories"
 msgstr "顯示所有類別"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1639
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1644
 msgid "Show all employees"
 msgstr "顯示所有員工"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1640
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1645
 msgid "Show all locations"
 msgstr "顯示所有地址"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1641
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1646
 msgid "Show all services"
 msgstr "顯示所有服務"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1642
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1647
 msgid "Show all events"
 msgstr "顯示所有活動"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1643
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1648
 msgid "Show all packages"
 msgstr "顯示所有套裝"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1644
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1649
 msgid "Show all tags"
 msgstr "顯示所有標簽"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1645
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1650
 msgid "Show catalog of all categories"
 msgstr "顯示所有類別的目錄"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1646
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1651
 msgid "Show specific category"
 msgstr "顯示特定類別"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1647
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1652
 #, fuzzy
 msgid "Show specific categories"
 msgstr "顯示特定類別"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1648
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1653
 msgid "Show specific package"
 msgstr "顯示特定套裝"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1649
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1654
 #, fuzzy
 msgid "Show specific packages"
 msgstr "顯示特定套裝"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1650
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1655
 msgid "Show event"
 msgstr "顯示活動"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1651
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1656
 msgid "Show Type"
 msgstr "顯示類型"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1652
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1657
 msgid "List (default)"
 msgstr "列表(默認)"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1654
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1659
 msgid "Show tag"
 msgstr "顯示標簽"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1655
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1660
 msgid "Show specific service"
 msgstr "顯示具體服務"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1656
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1661
 #, fuzzy
 msgid "Show specific services"
 msgstr "顯示具體服務"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1657
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1662
 msgid "Trigger type"
 msgstr "觸發類型"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1658
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1663
 msgid "Id"
 msgstr "用戶"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1659
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1664
 msgid "Class"
 msgstr "類"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1660
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1665
 msgid "Trigger by attribute"
 msgstr "按屬性激活"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1661
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1666
 msgid "Step Booking"
 msgstr "預約步驟"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1662
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1667
 msgid "Catalog Booking"
 msgstr "目錄預約"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1663
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1668
 msgid "Events List Booking"
 msgstr "預約活動清單"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1664
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1669
 msgid "Show recurring events"
 msgstr "顯示定期的活動"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1665
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1670
 #, fuzzy
 msgid "Show in Amelia Popup"
 msgstr "在Amelia的支持下"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1667
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1672
 msgid "AM - Booking view"
 msgstr "AM - 預約視圖"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1668
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1673
 msgid "AM - Step Booking"
 msgstr "AM - 預約步驟"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1669
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1674
 msgid "AM - Catalog Booking"
 msgstr "AM - 目錄預約"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1670
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1675
 msgid "AM - Catalog view"
 msgstr "AM - 目錄視圖"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1671
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1676
 msgid "AM - Events view"
 msgstr "AM - 活動視圖"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1672
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1677
 msgid "AM - Events List Booking"
 msgstr "AM - 活動列表預約"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1673
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1678
 msgid "AM - Events Calendar Booking"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1675
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1680
 msgid "Amelia - Booking view"
 msgstr "Amelia - 預約視圖"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1676
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1681
 msgid ""
 "Step-By-Step Booking Wizard gives your customers the option to choose "
 "everything about the booking in a few steps"
 msgstr "逐步預約向導讓您的客戶可以選擇在幾個步驟中選擇有關預約的所有內容。"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1679
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1684
 msgid "Amelia - Step-By-Step Booking"
 msgstr "Amelia - 逐步預約"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1680
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1685
 msgid ""
 "Step-by-Step booking view guides the customers through several steps in "
 "order to make their bookings."
 msgstr "逐步預約視圖引導客戶通過幾個步驟來進行預約。"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1683
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1688
 msgid "Amelia - Catalog Booking"
 msgstr "Amelia - 目錄預約"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1684
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1689
 msgid ""
 "Front-end Booking Catalog is shortcode when you want to show your service in "
 "a form of a catalog"
 msgstr "當您希望以目錄的形式顯示您的服務時，前端預約目錄是短代碼。"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1687
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1692
 msgid "Amelia - Catalog view"
 msgstr "Amelia - 目錄視圖"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1688
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1693
 msgid ""
 "Front-end Booking Catalog is shortcode when you want to show your service in "
 "a form of a cataloge"
 msgstr "當您希望以目錄的形式顯示您的服務時，前端預約目錄是短代碼。"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1691
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1696
 msgid "Amelia - Events"
 msgstr "Amelia - 活動"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1692
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1696
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1697
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1701
 msgid ""
 "Event Booking is shortcode that gives your customers the option to book one "
 "of the events that you've created on the back-end in a simple event list "
@@ -5641,26 +5665,26 @@ msgstr ""
 "活動預約是一個短代碼，它讓您的客戶可以選擇在一個簡單的活動列表視圖中預約您在"
 "後端建立的活動之一。"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1695
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1700
 msgid "Amelia - Events List"
 msgstr "Amelia - 活動名單"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1699
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1704
 msgid "Amelia - Events Calendar"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1700
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1705
 msgid ""
 "Event Booking is shortcode that gives your customers the option to book one "
 "of the events that you've created on the back-end in a simple event calendar "
 "view."
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1702
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1707
 msgid "You are using a form that will be outdated soon!"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1721
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1726
 msgid "Recurring Appointments"
 msgstr "重複預約"
 
@@ -5703,7 +5727,7 @@ msgid "Maximum bookings reached"
 msgstr "已達到的最高預約額"
 
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:93
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:215
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:217
 msgid "Capacity:"
 msgstr "容量:"
 
@@ -5724,105 +5748,113 @@ msgid "Email already exists with different name. Please check your name."
 msgstr "已經存在不同名稱的電子郵件。請核對一下您的姓名。"
 
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:108
+msgid "Email field is required"
+msgstr ""
+
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:109
 msgid ""
 "Employee daily appointment limit has been reached. Please choose another "
 "date or employee."
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:112
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:113
 msgid "Please enter phone number"
 msgstr "請輸入電話號碼"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:114
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:115
 msgid "Please enter a valid phone number"
 msgstr "請輸入有效的電話號碼"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:117
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:118
 msgid "First Name:"
 msgstr "第一個名字:"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:119
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:120
 msgid "Last Name:"
 msgstr "姓名:"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:127
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:128
 msgid "On-Site"
 msgstr "現場"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:128
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:129
 msgid "Oops..."
 msgstr "哎呀……"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:132
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:133
 #, fuzzy
 msgid "Phone already exists with different name. Please check your name."
 msgstr "已經存在不同名稱的電子郵件。請核對一下您的姓名。"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:133
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:134
 msgid "Price:"
 msgstr "價格:"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:134
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:135
 msgid "service"
 msgstr "服務"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:135
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:136
 msgid "Select Calendar"
 msgstr "選擇日曆"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:136
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:137
 msgid "services"
 msgstr "服務"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:138
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:139
 msgid "Local Time:"
 msgstr "當地時間:"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:140
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:141
 msgid "Total Cost:"
 msgstr "總成本:"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:141
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:142
 msgid "Total Number of People:"
 msgstr "總人數:"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:168
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:144
+msgid "Select"
+msgstr "選擇"
+
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:170
 msgid "Collapse menu"
 msgstr "崩潰的菜單"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:171
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:173
 msgid "Pick date & time:"
 msgstr "選擇日期和時間:"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:172
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:174
 msgid "Please select"
 msgstr "請選擇"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:174
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:176
 msgid "Total Amount:"
 msgstr "總金額:"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:214
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:216
 msgid "Book this event"
 msgstr "預約這個活動"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:249
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:251
 msgid "Category:"
 msgstr "類別:"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:251
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:253
 msgid "Info"
 msgstr "信息"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:252
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:254
 msgid "View More"
 msgstr "查看更多"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:273
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:275
 msgid "Booking can't be canceled"
 msgstr "預約不能取消"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:275
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:279
 msgid "Select Customer"
 msgstr "選擇客戶"
 
@@ -5916,6 +5948,9 @@ msgstr "選擇客戶"
 #~ msgid "Tickets"
 #~ msgstr "票"
 
+#~ msgid "From"
+#~ msgstr "從"
+
 #~ msgid "Google Meet Link"
 #~ msgstr "Google Meet連結"
 
@@ -5954,6 +5989,9 @@ msgstr "選擇客戶"
 
 #~ msgid "Manage Employee Badges"
 #~ msgstr "管理員工徽章"
+
+#~ msgid "NEW"
+#~ msgstr "新的"
 
 #~ msgid "You don't have any employees here yet..."
 #~ msgstr "您在這裡還沒有員工…"
@@ -6054,6 +6092,9 @@ msgstr "選擇客戶"
 
 #~ msgid "Sort"
 #~ msgstr "排序"
+
+#~ msgid "To"
+#~ msgstr "到"
 
 #~ msgid "Type"
 #~ msgstr "類型"
@@ -8659,9 +8700,6 @@ msgstr "選擇客戶"
 #~ msgid "Left to pay"
 #~ msgstr "留下付款"
 
-#~ msgid "To"
-#~ msgstr "到"
-
 #~ msgid "Qty"
 #~ msgstr "數量"
 
@@ -9070,9 +9108,6 @@ msgstr "選擇客戶"
 
 #~ msgid "Enter Address"
 #~ msgstr "輸入地址"
-
-#~ msgid "Select"
-#~ msgstr "選擇"
 
 #~ msgid "No, just this one"
 #~ msgstr "不，只是這個"
@@ -9645,9 +9680,6 @@ msgstr "選擇客戶"
 
 #~ msgid "Customer Panel"
 #~ msgstr "客戶面板"
-
-#~ msgid "NEW"
-#~ msgstr "新的"
 
 #~ msgid "Primary"
 #~ msgstr "主要"

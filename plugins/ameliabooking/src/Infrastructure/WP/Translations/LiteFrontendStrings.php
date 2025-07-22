@@ -105,6 +105,7 @@ class LiteFrontendStrings
             'duration_colon'               => __('Duration:', 'ameliabooking'),
             'email_colon'                  => __('Email:', 'ameliabooking'),
             'email_exist_error'            => __('Email already exists with different name. Please check your name.', 'ameliabooking'),
+            'email_required'               => __('Email field is required', 'ameliabooking'),
             'employee_limit_reached'       => __('Employee daily appointment limit has been reached. Please choose another date or employee.', 'ameliabooking'),
             'enter_email_warning'          => __('Please enter email', 'ameliabooking'),
             'enter_first_name_warning'     => __('Please enter first name', 'ameliabooking'),
@@ -140,6 +141,7 @@ class LiteFrontendStrings
             'total_cost_colon'             => __('Total Cost:', 'ameliabooking'),
             'total_number_of_persons'      => __('Total Number of People:', 'ameliabooking'),
             'view'                         => __('View', 'ameliabooking'),
+            'select'                       => __('Select', 'ameliabooking'),
         ];
     }
 
@@ -271,6 +273,8 @@ class LiteFrontendStrings
         return [
             'available'                              => __('Available', 'ameliabooking'),
             'booking_cancel_exception'               => __('Booking can\'t be canceled', 'ameliabooking'),
+            'generate_payment_links'                 => __('Generate payment links', 'ameliabooking'),
+            'generate_payment_links_tooltip'         => __('Check this box to generate a payment link.<br> To include it in the notification, add the payment link placeholder.', 'ameliabooking'),
             'no_results'                             => __('There are no results...', 'ameliabooking'),
             'select_customer'                        => __('Select Customer', 'ameliabooking'),
             'select_service'                         => __('Select Service', 'ameliabooking'),

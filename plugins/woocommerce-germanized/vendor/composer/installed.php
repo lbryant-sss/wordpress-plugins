@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'vendidero/woocommerce-germanized',
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
-        'reference' => '662b3324bef76f22f6a42b1c4aef2c88c044c760',
+        'pretty_version' => 'dev-eu-disputes-updates',
+        'version' => 'dev-eu-disputes-updates',
+        'reference' => '5faf549cb25c503c722b56cd9eeeb32b3cc33584',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -140,9 +140,9 @@
             'dev_requirement' => false,
         ),
         'vendidero/woocommerce-germanized' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => '662b3324bef76f22f6a42b1c4aef2c88c044c760',
+            'pretty_version' => 'dev-eu-disputes-updates',
+            'version' => 'dev-eu-disputes-updates',
+            'reference' => '5faf549cb25c503c722b56cd9eeeb32b3cc33584',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

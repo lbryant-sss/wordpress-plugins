@@ -62,6 +62,29 @@
       </div>
     </div>
 
+    <div
+      v-if="Object.keys(personPricing).length > 1 && pricingVisibility"
+      class="am-fs__bringing-main"
+    >
+      <div v-if="service.customPricing.enabled === 'person'" class="am-fs__bringing-content-price">
+        <span class="am-fs__bringing-content-price-left">
+          <span class="am-icon-service"></span>
+          <span class="am-fs__bringing-content-text">{{amLabels.bringing_price}}</span>
+        </span>
+        <p
+          v-for="(item, range) in personPricing"
+          :key="range"
+          class="am-fs__bringing-content-text am-fs__bringing-content-price-text"
+          :class="{'am-fs__bringing-content-price-text-selected': selectedGroup(item.from, item.to)}"
+          @click="rangeSelected(item.from)"
+        >
+          <span class="am-icon-users"></span>
+          <span>{{item.from === item.to ? item.from : item.from + ' - ' + item.to }}</span>
+          <span>{{item.prices[0] === item.prices[1] ? useFormattedPrice(item.prices[0]) : useFormattedPrice(item.prices[0])  + ' - ' + useFormattedPrice(item.prices[1])}}</span>
+        </p>
+      </div>
+    </div>
+
     <!-- Packages Popup -->
     <PackagesPopup
       @continue-with-service="packagesVisibility = false"
@@ -87,6 +110,8 @@ import PackagesPopup from '../PakagesStep/parts/PackagesPopup'
 
 import { useColorTransparency } from '../../../../assets/js/common/colorManipulation'
 import { useCapacity } from '../../../../assets/js/common/appointments'
+
+import { useFormattedPrice } from '../../../../assets/js/common/formatting'
 
 let props = defineProps({
   globalClass: {
@@ -171,6 +196,13 @@ let headingVisibility = amCustomize
 let infoVisibility = amCustomize
   ? amCustomize.bringingAnyone.options.info.visibility
   : true
+let pricingVisibility = computed(() => {
+  return (
+    'bringingPrice' in amCustomize.bringingAnyone.options
+      ? amCustomize.bringingAnyone.options.bringingPrice.visibility
+      : true
+  )
+})
 
 // * Step functionality
 let { nextStep, footerButtonReset, footerButtonClicked } = inject(
@@ -184,17 +216,21 @@ let { nextStep, footerButtonReset, footerButtonClicked } = inject(
   }
 )
 
+let service = computed(() => store.getters['entities/getService'](
+  store.getters['booking/getServiceId']
+))
+
+let employeesServices = computed(() => store.getters['entities/getEmployeeServices'](
+  store.getters['booking/getServiceProviderSelection']
+))
+
 let options = computed(() => {
   if (props.inPopup) {
     let { bringingAnyoneOptions } = inject('bringingOptions')
     return bringingAnyoneOptions.value
   }
 
-  return useCapacity(
-    store.getters['entities/getEmployeeServices'](
-      store.getters['booking/getServiceProviderSelection']
-    )
-  )
+  return useCapacity(employeesServices.value)
 })
 
 let persons = computed({
@@ -229,6 +265,68 @@ if (!props.inPopup) {
   })
 }
 
+function rangeSelected (range) {
+  store.commit('booking/setBookingPersons', range - (amSettings.appointments.bringingAnyoneLogic === 'additional' ? 1 : 0))
+}
+
+let personPricing = computed(() => {
+  let service = store.getters['entities/getService'](
+    store.getters['booking/getServiceId']
+  )
+
+  let maxCapacity = 0
+
+  let ranges = {}
+
+  let allowedRanges = {}
+
+  employeesServices.value.forEach((service) => {
+    Object.keys(service.customPricing.persons).forEach((key) => {
+      if (service.maxCapacity >= service.customPricing.persons[key].from) {
+        allowedRanges[service.customPricing.persons[key].from] = true
+      }
+    })
+
+    if (service.maxCapacity > maxCapacity) {
+      maxCapacity = service.maxCapacity
+    }
+  })
+
+  if (persons.value > maxCapacity) {
+    store.commit('booking/setBookingPersons', maxCapacity)
+  }
+
+  Object.keys(service.customPricing.persons).forEach((key) => {
+    if (service.customPricing.persons[key].from in allowedRanges && service.customPricing.persons[key].from <= options.value.max) {
+      ranges[service.customPricing.persons[key].from] = {from: service.customPricing.persons[key].from, to: parseInt(key), prices: []}
+    }
+  })
+
+  employeesServices.value.forEach((service) => {
+    Object.keys(service.customPricing.persons).forEach((key, index) => {
+      if (service.customPricing.persons[key].from in ranges) {
+        ranges[service.customPricing.persons[key].from].prices.push(service.customPricing.persons[key].price)
+
+        if (Object.keys(allowedRanges).length - 1 === index) {
+          ranges[service.customPricing.persons[key].from].to = maxCapacity
+        }
+      }
+    })
+  })
+
+  Object.keys(ranges).forEach((key) => {
+    ranges[key].prices = [Math.min(...ranges[key].prices), Math.max(...ranges[key].prices)]
+  })
+
+  return ranges
+})
+
+function selectedGroup (from, range) {
+  let start = amSettings.appointments.bringingAnyoneLogic === 'additional' ? 1 : 0
+
+  return (persons.value === (start ? 0 : 1) && from === 1) || (persons.value + start >= from && persons.value + start <= range)
+}
+
 // * Global colors
 let amColors = inject('amColors')
 let cssVars = computed(() => {
@@ -240,6 +338,11 @@ let cssVars = computed(() => {
     '--am-bringing-color-text-opacity60': useColorTransparency(
       amColors.value.colorMainText,
       0.6
+    ),
+    '--am-c-ps-primary': amColors.value.colorPrimary,
+    '--am-c-ps-primary-op10': useColorTransparency(
+      amColors.value.colorPrimary,
+      0.1
     ),
   }
 })
@@ -285,14 +388,61 @@ export default {
         margin: 0 0 4px 0;
       }
 
+      &-content-persons {
+        display: flex;
+
+        &-text {
+          margin: 0 0 0 8px;
+        }
+      }
+
+      &-content-price {
+        display: block;
+        background-color: var(--am-c-ps-primary-op10);
+
+        &-left {
+          margin-bottom: 5px;
+
+          .am-icon-service {
+            margin-right: 5px;
+          }
+        }
+
+        &-text {
+          padding: 3px;
+          border: 1px solid var(--am-bringing-color-border);
+          border-radius: 8px;
+          display: inline-block;
+          margin: 3px 0 0 3px;
+
+          span {
+            margin: 3px;
+          }
+
+          &-selected {
+            border-color: var(--am-c-ps-primary);
+            background-color: #FFFFFF;
+          }
+
+          span:nth-child(3) {
+            color: var(--am-c-ps-primary);
+            font-weight: bold;
+          }
+        }
+      }
+
       &-content {
         display: flex;
+      }
+
+      &-content, &-content-price {
         align-items: center;
         justify-content: space-between;
         padding: 12px 16px;
         margin: 0 0 4px 0;
         border: 1px solid var(--am-bringing-color-border);
         border-radius: 8px;
+        cursor: pointer;
 
         &-left {
           display: flex;
@@ -310,7 +460,6 @@ export default {
           font-weight: 400;
           line-height: 1.43;
           color: var(--am-c-main-text);
-          margin: 0 0 0 8px;
         }
 
         .am-input-number {

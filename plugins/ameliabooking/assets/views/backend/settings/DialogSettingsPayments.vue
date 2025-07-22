@@ -400,7 +400,7 @@
               <el-row style="margin-bottom: 8px">
                 <el-select v-model="settings.square.locationId" :disabled="squareLoading">
                   <el-option
-                      v-for="location in squareLocations"
+                      v-for="location in squareLocations.filter(s => s.capabilities.includes('CREDIT_CARD_PROCESSING') && s.status === 'ACTIVE')"
                       :key="location.id"
                       :label="location.name"
                       :value="location.id"

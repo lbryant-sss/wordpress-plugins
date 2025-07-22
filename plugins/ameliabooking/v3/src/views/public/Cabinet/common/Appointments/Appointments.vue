@@ -386,6 +386,8 @@ function editAppointment (appointment) {
         startDate: moment(startDateTime[0]).toDate(),
         startTime: startDateTime[1].substring(0, 5),
         bookings: bookings,
+        notifyParticipants: !!response.data.data.appointment.notifyParticipants,
+        createPaymentLinks: !!response.data.data.appointment.createPaymentLinks,
       }
     )
 

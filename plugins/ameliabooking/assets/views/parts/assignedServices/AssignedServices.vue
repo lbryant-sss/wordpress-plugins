@@ -97,6 +97,7 @@
           <money
             v-model="item.price"
             v-bind="moneyComponentData"
+            @input="priceChanged(item)"
             class="el-input__inner"
             :disabled="!item.state"
           >
@@ -105,8 +106,16 @@
         <!-- /Service Price -->
 
         <!-- Service Price -->
-        <el-col :span="2" v-if="item.customPricing && item.customPricing.enabled">
+        <el-col :span="2" v-if="isDurationPricingEnabled(item.customPricing)">
           <span @click="toggleDurations(item)">
+            <img class="svg-amelia edit" width="16px" :src="$root.getUrl+'public/img/edit.svg'" style="cursor: pointer;">
+          </span>
+        </el-col>
+        <!-- /Service Price -->
+
+        <!-- Service Price -->
+        <el-col :span="2" v-if="isPersonPricingEnabled(item.customPricing)">
+          <span @click="togglePersons(item)">
             <img class="svg-amelia edit" width="16px" :src="$root.getUrl+'public/img/edit.svg'" style="cursor: pointer;">
           </span>
         </el-col>
@@ -114,7 +123,7 @@
 
         </el-row>
 
-        <el-row v-if="item.customPricing && item.customPricing.enabled" style="margin-bottom: 0;">
+        <el-row v-if="isDurationPricingEnabled(item.customPricing)" style="margin-bottom: 0;">
           <div class="am-extra-item">
 
             <el-collapse-transition>
@@ -132,6 +141,23 @@
           </div>
         </el-row>
 
+        <el-row v-if="isPersonPricingEnabled(item.customPricing)" style="margin-bottom: 0;">
+          <div class="am-extra-item">
+
+            <el-collapse-transition>
+              <div v-if="showPersons && editedPersonsService.id === item.id">
+                <person-price
+                  :service="item"
+                  :enabledDelete="false"
+                  :enabledRange="false"
+                >
+                </person-price>
+              </div>
+            </el-collapse-transition>
+
+          </div>
+        </el-row>
+
       </div>
       <!-- /Body -->
 
@@ -143,8 +169,10 @@
 
 <script>
   import CustomDuration from '../../parts/assignedServices/CustomDuration'
+  import PersonPrice from '../../parts/assignedServices/PersonPrice'
   import notifyMixin from '../../../js/backend/mixins/notifyMixin'
   import priceMixin from '../../../js/common/mixins/priceMixin'
+  import servicePriceMixin from '../../../js/common/mixins/servicePriceMixin'
   import { Money } from 'v-money'
 
   export default {
@@ -152,11 +180,13 @@
 
     components: {
       CustomDuration,
+      PersonPrice,
       Money
     },
 
     mixins: [
       notifyMixin,
+      servicePriceMixin,
       priceMixin
     ],
 
@@ -190,7 +220,9 @@
     data () {
       return {
         editedDurationsService: null,
-        showDurations: false
+        editedPersonsService: null,
+        showDurations: false,
+        showPersons: false
       }
     },
 
@@ -208,6 +240,21 @@
         this.editedDurationsService = selectedItem
 
         this.showDurations = !!selectedItem
+      },
+
+      togglePersons (item) {
+        let selectedItem = (this.editedPersonsService && this.editedPersonsService.id !== item.id) ||
+        (!this.editedPersonsService) ? item : null
+
+        this.editedPersonsService = selectedItem
+
+        this.showPersons = !!selectedItem
+      },
+
+      priceChanged (item) {
+        if (item.customPricing.persons.length) {
+          item.customPricing.persons[0].price = item.price
+        }
       },
 
       changeCategory (categoryId) {

@@ -14,7 +14,7 @@
       <div v-if="props.booked.type === 'event'" class="am-congrats__main-heading-waiting-list">
 
         <!-- Waiting List info -->
-        <p v-if="event" class="am-congrats__main-heading">
+        <p v-if="props.booked.event.bookings[0].status === 'waiting'" class="am-congrats__main-heading">
           {{ props.labels.your_position_on_waiting_list }} {{ '#' + (event.waitingList.peopleWaiting + 1) }}
           <br/>
           <span>
@@ -24,7 +24,7 @@
         <!-- /Waiting List info -->
 
         <p class="am-congrats__main-heading">
-          {{ props.booked.data[0].title }}
+          {{ event.name }}
         </p>
 
       </div>
@@ -108,8 +108,10 @@ let props = defineProps({
   }
 })
 
+console.log('props.booked ', props.booked)
+
 let event = computed(() => {
-  if (props.booked.type === 'event' && props.booked.event.bookings[0].status === 'waiting') {
+  if (props.booked.type === 'event') {
     return store.getters['eventEntities/getEvent'](props.booked.event.id)
   }
 

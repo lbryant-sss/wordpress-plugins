@@ -193,6 +193,11 @@ let starterLabelsTreatment = deepMerge(
           'incl_tax',
         ],
       },
+      bringingAnyone: {
+        content: [
+          'bringing_price',
+        ],
+      },
       extrasStep: {
         card: [
           'total_tax_colon',
@@ -505,6 +510,9 @@ let starterOptionsTreatment = deepMerge(
       initStep: [
         'location',
         'tax',
+      ],
+      bringingAnyone: [
+        'bringingPrice',
       ],
       extrasStep: [
         'tax',

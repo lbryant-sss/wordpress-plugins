@@ -1,24 +1,61 @@
 import moment from "moment";
 import {settings} from "../../../plugins/settings";
 import {useTimeInSeconds} from "./date";
+import {useAppointmentServicePrice} from "./appointments";
 
 function useParsedCustomPricing (service) {
     if (!('customPricing' in service) || service.customPricing === null) {
-        service.customPricing = {enabled: true, durations: {}}
+        service.customPricing = {enabled: null, durations: {}, persons: {}}
 
         service.customPricing.durations[service.duration] = {price: service.price, rules: []}
     } else {
-        let customPricing = (typeof service.customPricing === 'object') ? service.customPricing : JSON.parse(service.customPricing)
+        let customPricing = (typeof service.customPricing === 'object')
+          ? service.customPricing
+          : JSON.parse(service.customPricing)
 
-        service.customPricing = {enabled: true, durations: {}}
+        service.customPricing = {enabled: null, durations: {}, persons: {}}
 
         service.customPricing.durations[service.duration] = {price: service.price, rules: []}
 
-        if (customPricing.enabled) {
-            service.customPricing.durations = Object.assign(
-              service.customPricing.durations,
-              customPricing.durations
-            )
+        service.customPricing.durations = Object.assign(
+          service.customPricing.durations,
+          customPricing.durations
+        )
+
+        customPricing.persons = 'persons' in customPricing ? customPricing.persons : {}
+
+        let persons = {}
+
+        if (Object.keys(customPricing.persons).length) {
+            let range = Object.keys(customPricing.persons)[0] - 1
+
+            persons[range] = {
+                from: 1,
+                range: range,
+                price: service.price,
+                rules: []
+            }
+
+            Object.keys(customPricing.persons).forEach((person, index) => {
+                range = index !== Object.keys(customPricing.persons).length - 1
+                  ? Object.keys(customPricing.persons)[index + 1] - 1
+                  : service.maxCapacity
+
+                persons[range] = {
+                    from: parseInt(person),
+                    range: range,
+                    price: customPricing.persons[person].price,
+                    rules: customPricing.persons[person].rules
+                }
+            })
+        }
+
+        service.customPricing.persons = persons
+
+        if (customPricing.enabled === 'duration') {
+            service.customPricing.enabled = 'duration'
+        } else if (customPricing.enabled === 'person') {
+            service.customPricing.enabled = 'person'
         }
     }
 
@@ -30,15 +67,9 @@ function getEmployeeServicePrice (store, providerId, serviceId) {
 
     let duration = store.getters['booking/getBookingDuration'] ? store.getters['booking/getBookingDuration'] : employeeService.duration
 
-    if (employeeService.customPricing &&
-      employeeService.customPricing.enabled &&
-      duration &&
-      duration in employeeService.customPricing.durations
-    ) {
-        return employeeService.customPricing.durations[duration].price
-    }
+    let persons = store.getters['booking/getBookingPersons']
 
-    return employeeService.price
+    return useAppointmentServicePrice(employeeService, persons, duration)
 }
 
 function sortForEmployeeSelection (store, employeesIds, serviceId) {
@@ -289,14 +320,23 @@ function useBackendEmployee (store, timeZone) {
             if (employee.serviceList[categoryId][serviceId].enabled) {
                 let service = store.getters['entities/getCategory'](categoryId).serviceList.find(i => i.id === parseInt(serviceId))
 
+                let price = employee.serviceList[categoryId][serviceId].customPricing.enabled === 'person'
+                  ? parseFloat(
+                    employee.serviceList[categoryId][serviceId].customPricing.persons[
+                      Object.keys(employee.serviceList[categoryId][serviceId].customPricing.persons)[0]
+                    ].price
+                  )
+                  : parseFloat(employee.serviceList[categoryId][serviceId].customPricing.durations[service.duration].price)
+
                 let employeeService = {
                     id: parseInt(serviceId),
                     minCapacity: parseInt(employee.serviceList[categoryId][serviceId].minCapacity),
                     maxCapacity: parseInt(employee.serviceList[categoryId][serviceId].maxCapacity),
-                    price: parseFloat(employee.serviceList[categoryId][serviceId].customPricing.durations[service.duration].price),
+                    price: price,
                     customPricing: {
-                        enabled: Object.keys(employee.serviceList[categoryId][serviceId].customPricing.durations).length > 1,
+                        enabled: employee.serviceList[categoryId][serviceId].customPricing.enabled,
                         durations: {},
+                        persons: {},
                     },
                 }
 
@@ -304,6 +344,15 @@ function useBackendEmployee (store, timeZone) {
                     employeeService.customPricing.durations[duration] = {
                         price: parseFloat(employee.serviceList[categoryId][serviceId].customPricing.durations[duration].price),
                         rules: [],
+                    }
+                })
+
+                Object.keys(employee.serviceList[categoryId][serviceId].customPricing.persons).forEach((range, index) => {
+                    if (index !== 0) {
+                        employeeService.customPricing.persons[employee.serviceList[categoryId][serviceId].customPricing.persons[range].from] = {
+                            price: parseFloat(employee.serviceList[categoryId][serviceId].customPricing.persons[range].price),
+                            rules: [],
+                        }
                     }
                 })
 

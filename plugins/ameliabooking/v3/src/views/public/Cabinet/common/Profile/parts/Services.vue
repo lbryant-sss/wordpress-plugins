@@ -112,11 +112,14 @@
 
             <!-- Duration and Price -->
             <template
-              v-for="(item, durationIndex) in employee.serviceList[category.id][service.id].customPricing.durations"
+              v-for="(item, durationIndex) in employee.serviceList[category.id][service.id].customPricing.enabled !== 'person'
+                ? employee.serviceList[category.id][service.id].customPricing.durations
+                : []"
               :key="durationIndex"
             >
               <!-- Duration -->
               <div
+                v-if="employee.serviceList[category.id][service.id].customPricing.enabled === 'duration'"
                 class="am-caes__service-content__item"
                 :class="props.responsiveClass"
               >
@@ -142,6 +145,46 @@
                   class="am-caes__service-content__inner"
                   placeholder=""
                   :aria-label="amLabels.price"
+                  size="small"
+                  :is-money="true"
+                />
+              </div>
+              <!-- /Price -->
+            </template>
+
+            <!-- Duration and Price -->
+            <template
+              v-for="(item, personIndex) in employee.serviceList[category.id][service.id].customPricing.enabled === 'person'
+                ? employee.serviceList[category.id][service.id].customPricing.persons
+                : []"
+              :key="personIndex"
+            >
+              <!-- Duration -->
+              <div
+                class="am-caes__service-content__item"
+                :class="props.responsiveClass"
+              >
+                <div class="am-caes__service-content__text">
+                  {{ amLabels.capacity }}
+                </div>
+                <div class="am-caes__service-content__inner am-caes__service-content__disabled">
+                  {{ item.from }} - {{ personIndex }}
+                </div>
+              </div>
+              <!-- /Duration -->
+
+              <!-- Price -->
+              <div
+                class="am-caes__service-content__item"
+                :class="props.responsiveClass"
+              >
+                <div class="am-caes__service-content__text">
+                  {{ amLabels.price }}
+                </div>
+                <AmInput
+                  v-model="item.price"
+                  class="am-caes__service-content__inner"
+                  placeholder=""
                   size="small"
                   :is-money="true"
                 />

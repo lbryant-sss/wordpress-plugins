@@ -261,7 +261,11 @@ import { useBuildPackage } from '../../../../assets/js/public/package.js'
 import { defaultCustomizeSettings } from '../../../../assets/js/common/defaultCustomize.js'
 import useAction from "../../../../assets/js/public/actions";
 import { useColorTransparency } from "../../../../assets/js/common/colorManipulation";
-import { useCapacity, usePrepaidPrice } from "../../../../assets/js/common/appointments";
+import {
+  useCapacity,
+  usePrepaidPrice,
+  useCheckingIfAllNotFree,
+} from "../../../../assets/js/common/appointments";
 import { useRenderAction } from "../../../../assets/js/public/renderActions";
 import {
   useAddToCart,
@@ -1287,58 +1291,7 @@ function removeCartStep () {
   )
 }
 
-function  checkIfAllNotFree () {
-  let preselected = store.getters['entities/getPreselected']
-
-  if (preselected.show === 'packages') {
-    let packages = store.getters['booking/getPackageId']
-      ? [store.getters['entities/getPackage'](store.getters['booking/getPackageId'])]
-      : store.getters['entities/getPackages']
-
-    return packages.length > 0 && packages.filter(p => p.price > 0).length === packages.length
-  }
-
-  if (!store.getters['booking/getPackageId']) {
-    let services = store.getters['booking/getServiceId']
-      ? [store.getters['entities/getService'](store.getters['booking/getServiceId'])]
-      : store.getters['entities/getServices']
-
-    let nonFreeServices = 0
-    for (let service of services) {
-      let employees = store.getters['booking/getEmployeeId']
-        ? (store.getters['entities/getEmployee'](store.getters['booking/getEmployeeId']) ? [store.getters['entities/getEmployee'](store.getters['booking/getEmployeeId'])] : [])
-        : store.getters['entities/getEmployees']
-
-      let duration = store.getters['booking/getBookingDuration']
-
-      let providers = employees.filter(eS => eS.serviceList.find(s => s.id === service.id && (s.price > 0 ||
-        (s.customPricing && s.customPricing.enabled &&
-          (Object.values(s.customPricing.durations).length === Object.values(s.customPricing.durations).filter(cp => cp.price > 0).length ||
-            (duration && s.customPricing.durations[duration].price > 0)
-          )
-        ))
-      ))
-
-      if (providers.length === employees.filter(eS => eS.serviceList.find(s => s.id === service.id)).length) {
-        nonFreeServices++
-      } else {
-        let extras = store.getters['booking/getSelectedExtras'].length
-          ? store.getters['booking/getSelectedExtras']
-          : []
-
-        if (extras.length > 0 && extras.reduce((partialSum, a) => partialSum + a.price, 0) > 0) {
-          nonFreeServices++
-        }
-      }
-    }
-
-    return services.length > 0 && nonFreeServices === services.length
-  }
-
-  return store.getters['entities/getPackage'](store.getters['booking/getPackageId']).price > 0
-}
-
-let keepPaymentStep = computed(() => useCart(store).length ? usePrepaidPrice(store) !== 0 : checkIfAllNotFree())
+let keepPaymentStep = computed(() => useCart(store).length ? usePrepaidPrice(store) !== 0 : useCheckingIfAllNotFree(store))
 
 watchEffect(() => {
   let cart = useCart(store)

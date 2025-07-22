@@ -99,6 +99,10 @@ let defaultCustomizeSettings = {
           name: globalLabels.info,
           visibility: true
         },
+        bringingPrice: {
+          name: globalLabels.bringing_price,
+          visibility: true
+        },
         primaryButton: {
           name: globalLabels.primary_button_type,
           buttonType: 'filled',
@@ -1854,6 +1858,7 @@ let defaultTranslations = {
         labels: {
           bringing_people: null,
           add_people: null,
+          bringing_price: null,
           bringing_people_total: null,
           add_people_total: null
         }

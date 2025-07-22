@@ -359,6 +359,14 @@ function recurringStep (repeat) {
   if (repeat) {
     goToRecurringStep()
   } else {
+    if (cartItem.value &&
+      'serviceId' in cartItem.value &&
+      cartItem.value.serviceId in cartItem.value.services &&
+      cartItem.value.services[cartItem.value.serviceId].list.length > 1
+    ) {
+      store.commit('booking/unsetRecurringItems')
+    }
+
     limitPerEmployeeError.value = ''
     let bookingFailed = useFillAppointments(store)
 
@@ -371,7 +379,7 @@ function recurringStep (repeat) {
 }
 
 function setDurationsPrices (service, durations) {
-  if (service.customPricing.enabled) {
+  if (service.customPricing.enabled === 'duration') {
     Object.keys(service.customPricing.durations).forEach((duration) => {
       if (!(duration in durations)) {
         durations[parseInt(duration)] = []

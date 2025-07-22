@@ -13,15 +13,17 @@ function useCustomFieldsData(bookings, userType) {
       let customFields = JSON.parse(booking.customFields)
 
       Object.keys(customFields).forEach((customFieldId) => {
-        let value = customFields[customFieldId].type === 'file'
-          ? (customFields[customFieldId]?.value ? customFields[customFieldId].value : '')
-          : customFields[customFieldId].value
+        if (customFields[customFieldId]) {
+          let value = customFields[customFieldId].type === 'file'
+              ? (customFields[customFieldId]?.value ? customFields[customFieldId].value : '')
+              : customFields[customFieldId].value
 
-        if (Array.isArray(value) ? value.length : value) {
-          result.push({
-            label: customFields[customFieldId].label,
-            value: value,
-          })
+          if (Array.isArray(value) ? value.length : value) {
+            result.push({
+              label: customFields[customFieldId].label,
+              value: value,
+            })
+          }
         }
       })
     }

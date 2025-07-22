@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Amelia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-07 10:48+0200\n"
-"PO-Revision-Date: 2025-06-03 10:06+0200\n"
+"POT-Creation-Date: 2025-07-21 09:23+0200\n"
+"PO-Revision-Date: 2025-07-10 17:23+0200\n"
 "Last-Translator: \n"
 "Language-Team: Amelia\n"
 "Language: hr\n"
@@ -83,13 +83,13 @@ msgid ""
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:38
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1572
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:220
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1577
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:222
 msgid "Close"
 msgstr "Zatvori"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:39
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1189
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1195
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:94
 msgid "Closed"
 msgstr "Zatvoreno"
@@ -103,7 +103,7 @@ msgid "Comma (,)"
 msgstr "Zarez (,)"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:42
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:165
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:167
 msgid "Continue"
 msgstr "Nastavi"
 
@@ -162,8 +162,8 @@ msgid "Years"
 msgstr "Godina"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:56
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1404
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:196
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1409
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:198
 msgid "Date"
 msgstr "Datum"
 
@@ -172,12 +172,12 @@ msgid "Delete"
 msgstr "Izbriši"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:58
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:250
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:252
 msgid "Description"
 msgstr "Opis"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:59
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1225
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1231
 msgid "Details"
 msgstr "Detalji"
 
@@ -186,7 +186,7 @@ msgid "Disabled"
 msgstr "Onemogućeno"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:61
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1296
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1302
 msgid "Duration"
 msgstr "Trajanje"
 
@@ -199,15 +199,15 @@ msgid "Edit"
 msgstr "Uredi"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:64
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:961
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:962
 msgid "example@mail.com"
 msgstr "primjer@mail.com"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:65
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:370
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:638
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1407
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:199
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1412
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:201
 msgid "Employee"
 msgstr "Zaposlenik"
 
@@ -246,12 +246,12 @@ msgid "Facebook App Secret is required"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:73
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:109
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:110
 msgid "Please enter email"
 msgstr "Molimo unesite email"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:74
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:113
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:114
 msgid "Please enter a valid email address"
 msgstr "Unesi važeću adresu e-pošte"
 
@@ -261,8 +261,8 @@ msgstr "Greška"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:76
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:642
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1574
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:192
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1579
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:194
 msgid "Event"
 msgstr "Događaj"
 
@@ -312,7 +312,7 @@ msgid "Apple Calendar"
 msgstr "Dodaj u Google kalendar"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:87
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:118
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:119
 msgid "h"
 msgstr "h"
 
@@ -333,31 +333,31 @@ msgid "Interested in unlocking this feature?"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:92
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:120
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:121
 #, fuzzy
 msgid "Available from Starter license"
 msgstr "Dostupne slike"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:93
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:121
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:122
 #, fuzzy
 msgid "Available from Standard license"
 msgstr "Dostupne slike"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:94
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:122
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:123
 #, fuzzy
 msgid "Available from Pro license"
 msgstr "Dostupne slike"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:95
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:123
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:124
 #, fuzzy
 msgid "Available in Elite licence"
 msgstr "Dostupno u pakiranju"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:96
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:124
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:125
 msgid "Upgrade"
 msgstr ""
 
@@ -414,7 +414,7 @@ msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:108
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:640
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1408
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1413
 msgid "Location"
 msgstr "Lokacija"
 
@@ -427,7 +427,7 @@ msgid "Manage"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:111
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:125
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:126
 msgid "min"
 msgstr "min"
 
@@ -463,7 +463,7 @@ msgid "No"
 msgstr "Ne"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:119
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:274
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:278
 msgid "There are no results..."
 msgstr "Nema rezultata..."
 
@@ -484,7 +484,7 @@ msgid "No-show"
 msgstr "Prikaži neaktivne odnose"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:124
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:952
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:953
 msgid "Note"
 msgstr "Napomena"
 
@@ -505,7 +505,7 @@ msgid "of"
 msgstr "od"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:129
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:126
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:127
 msgid "On-site"
 msgstr "Na stranici"
 
@@ -514,8 +514,8 @@ msgid "Opened"
 msgstr "Otvoreno"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:131
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1348
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:130
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1354
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:131
 msgid "Open"
 msgstr "Otvori"
 
@@ -537,12 +537,12 @@ msgstr "Djelomično plaćeno"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:136
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:637
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1390
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1400
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1558
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1579
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:195
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:222
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1395
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1405
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1563
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1584
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:197
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:224
 msgid "Payment"
 msgstr "Plaćanje"
 
@@ -572,8 +572,8 @@ msgid "Pending"
 msgstr "U tijeku"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:142
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1339
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1486
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1345
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1491
 msgid "Phone"
 msgstr "Telefon"
 
@@ -586,7 +586,7 @@ msgid "Resources"
 msgstr "Resursi"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:145
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1294
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1300
 msgid "Save"
 msgstr "Spremi"
 
@@ -605,24 +605,24 @@ msgstr "Odaberite vrijeme"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:149
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:372
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1364
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1369
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1371
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1406
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1536
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:178
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:181
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:198
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:259
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1374
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1376
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1411
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1541
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:180
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:183
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:200
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:261
 msgid "Service"
 msgstr "Usluga"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:150
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:373
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1392
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1537
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:189
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:260
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1397
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1542
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:191
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:262
 msgid "Services"
 msgstr "Usluge"
 
@@ -639,7 +639,7 @@ msgid "Social Login"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:154
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1196
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1202
 msgid "Status"
 msgstr "Status"
 
@@ -678,7 +678,7 @@ msgid "Tomorrow"
 msgstr "Sutra"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:163
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1271
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1277
 msgid "Total"
 msgstr "Ukupno"
 
@@ -691,7 +691,7 @@ msgid "Translation"
 msgstr "Prijevod"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:166
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:142
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:143
 msgid "View"
 msgstr "Pregled"
 
@@ -801,7 +801,7 @@ msgstr ""
 "rezervacija finalizirana."
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:202
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1285
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1291
 msgid "Address"
 msgstr "Adresa"
 
@@ -1111,8 +1111,8 @@ msgid "Set Coupons to be case insensitive"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:262
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1269
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1653
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1275
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1658
 msgid "Calendar"
 msgstr "Kalendar"
 
@@ -1726,8 +1726,8 @@ msgstr ""
 "poštom ili putem svoje korisničke ploče."
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:405
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1064
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:188
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1065
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:190
 msgid "Payments"
 msgstr "Plaćanja"
 
@@ -2017,8 +2017,8 @@ msgstr ""
 "entiteta (usluge, zaposlenici, lokacije, paketi, oznake)"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:465
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:129
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:137
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:130
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:138
 msgid "Square"
 msgstr ""
 
@@ -2466,7 +2466,7 @@ msgid "Booked Customer (full name, email, phone)"
 msgstr "Rezervirani korisnik (puno ime, e-mail, telefon)"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:580
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1195
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1201
 msgid "Number of people"
 msgstr "Broj ljudi"
 
@@ -2567,8 +2567,8 @@ msgid "Event description"
 msgstr "Opis događaja"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:605
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1347
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:236
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1353
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:238
 msgid "Event Location"
 msgstr "Mjesto događaja"
 
@@ -2585,8 +2585,8 @@ msgid "End time of the event"
 msgstr "Vrijeme završetka događaja"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:609
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1575
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:194
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1580
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:196
 #, fuzzy
 msgid "Event ID"
 msgstr "Dan događanja"
@@ -2648,7 +2648,7 @@ msgid "Service ID"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:623
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1342
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1348
 msgid "Service name"
 msgstr "Naziv usluge"
 
@@ -2661,7 +2661,7 @@ msgid "Time Zone"
 msgstr "Vremenska zona"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:626
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:131
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:132
 msgid "Phone:"
 msgstr "Telefon:"
 
@@ -2692,9 +2692,9 @@ msgid ""
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:639
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1115
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1370
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:180
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1116
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1375
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:182
 msgid "Category"
 msgstr "Kategorija"
 
@@ -2704,13 +2704,13 @@ msgstr "Rezervirano mjesto kopirano"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:645
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:849
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:919
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1251
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:920
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1257
 msgid "Price"
 msgstr "Cijena"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:646
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1188
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1194
 msgid "Pricing"
 msgstr "Cjenovnik"
 
@@ -2835,7 +2835,7 @@ msgid "Text:"
 msgstr "Tekst:"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:692
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1226
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1232
 msgid "Time:"
 msgstr "Vrijeme:"
 
@@ -2978,7 +2978,7 @@ msgid "Don't show again"
 msgstr "Ne pokazuj više"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:736
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:975
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:976
 msgid "Pending Appointments"
 msgstr "Sastanci na čekanju"
 
@@ -3010,8 +3010,8 @@ msgstr ""
 "rasponu."
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:742
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1148
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1252
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1151
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1258
 msgid "Time"
 msgstr "Vrijeme"
 
@@ -3109,7 +3109,7 @@ msgid "Hide"
 msgstr "Sakriti"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:789
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1633
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1638
 msgid "Show"
 msgstr "Prikaži"
 
@@ -3134,7 +3134,7 @@ msgid "Add Category"
 msgstr "Dodaj Kategoriju"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:817
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1284
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1290
 msgid "Add Extra"
 msgstr "Dodaj ekstra"
 
@@ -3155,8 +3155,8 @@ msgid "Add Resource"
 msgstr "Dodaj resurs"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:822
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1493
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:248
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1498
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:250
 msgid "Categories"
 msgstr "Kategorije"
 
@@ -3270,7 +3270,7 @@ msgid "New Service"
 msgstr "Nova usluga"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:850
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1463
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1468
 msgid "+more"
 msgstr "+više"
 
@@ -3371,65 +3371,69 @@ msgstr ""
 "koji se ponavljaju u isto vrijeme."
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:873
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:921
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:922
 msgid "Provider has appointments for this service"
 msgstr "Pružatelj ima zakazane termine za ovu uslugu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:885
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:874
+msgid "Pricing model"
+msgstr ""
+
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:886
 msgid "Create New"
 msgstr "Stvori Nove"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:886
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1337
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1485
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:887
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1343
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1490
 msgid "Email"
 msgstr "E-mail"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:887
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1382
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:110
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:888
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1387
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:111
 msgid "Please enter first name"
 msgstr "Molimo unesi ime"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:888
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1384
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:111
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:889
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1389
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:112
 msgid "Please enter last name"
 msgstr "Molimo unesi prezime"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:889
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1334
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1483
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:890
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1340
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1488
 msgid "First Name"
 msgstr "Ime"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:890
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1335
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1484
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:891
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1341
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1489
 msgid "Last Name"
 msgstr "Prezime"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:891
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:892
 msgid "Female"
 msgstr "Žensko"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:892
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:893
 msgid "Male"
 msgstr "Muško"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:893
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:894
 msgid "Notification Language"
 msgstr "Jezik obavijesti"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:894
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:895
 msgid "Select or Create New"
 msgstr "Odaberite ili Stvorite novi"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:895
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:896
 msgid "WordPress User"
 msgstr "Korisnik WordPressa"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:896
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:897
 msgid ""
 "Here you can map a WordPress user to the customer if<br/>you want to give "
 "customers access to the list of their<br/>appointments in the back-end of "
@@ -3439,7 +3443,7 @@ msgstr ""
 "klijentima omogućiti pristup popisu njihovih<br/> sastanci u pozadini "
 "dodatka."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:897
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:898
 msgid ""
 "Here you can map a WordPress user to the employee if<br/>you want to give "
 "employee access to the list of their<br/>appointments in the back-end of the "
@@ -3448,7 +3452,7 @@ msgstr ""
 "Ovdje možete preslikati WordPress korisnika na zaposlenika ako<br/> želite "
 "dati zaposleniku pristup popisu njihovih<br/> sastanci u pozadini dodatka."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:898
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:899
 msgid ""
 "This is the language in which the customer will receive notifications for "
 "bookings made on the admin/employee panel. It is preselected if the customer "
@@ -3460,32 +3464,32 @@ msgstr ""
 "rezervirao na stranici na jeziku dostupnom u obavijestima Amelie ili se može "
 "postaviti ovdje."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:910
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:911
 msgid "Assigned Services"
 msgstr "Dodijeljene usluge"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:911
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:912
 msgid "Capacity"
 msgstr "Kapacitet"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:912
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:913
 #, fuzzy
 msgid "Provider Settings"
 msgstr "Postavke uloga"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:913
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:914
 msgid "Employee has been saved"
 msgstr "Zaposlenik je spremljen"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:914
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:915
 msgid "Employee Panel Password"
 msgstr "Lozinka ploče zaposlenika"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:915
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:916
 msgid "Applied for all assigned services"
 msgstr "Primijenjen za sve dodijeljene usluge"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:916
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:917
 msgid ""
 "Select only specific services for this period.<br/>If no services are "
 "selected, then all assigned services for this employee<br/>will be available "
@@ -3495,103 +3499,103 @@ msgstr ""
 "nijedna usluga, onda su sve dodijeljene usluge za ovog zaposlenika<br/> bit "
 "će dostupni za rezervaciju u ovom razdoblju."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:917
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:918
 msgid "Select specific services for each period."
 msgstr "Odaberite posebne usluge za svako razdoblje."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:918
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:919
 msgid "Reflect On"
 msgstr "Razmišljati o"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:920
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:921
 msgid "Special Days"
 msgstr "Posebni dani"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:922
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:923
 msgid "Timezone"
 msgstr "Vremenska zona"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:944
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:945
 msgid "Add Customer"
 msgstr "Dodaj kupca"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:945
-msgid "Are you sure you want to delete this customer?"
-msgstr "Jeste li sigurni da želite izbrisati ovog kupca?"
-
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:946
-#, fuzzy
-msgid "Are you sure you want to block this customer?"
+msgid "Are you sure you want to delete this customer?"
 msgstr "Jeste li sigurni da želite izbrisati ovog kupca?"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:947
 #, fuzzy
-msgid "Are you sure you want to unblock this customer?"
+msgid "Are you sure you want to block this customer?"
 msgstr "Jeste li sigurni da želite izbrisati ovog kupca?"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:948
+#, fuzzy
+msgid "Are you sure you want to unblock this customer?"
+msgstr "Jeste li sigurni da želite izbrisati ovog kupca?"
+
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:949
 msgid "Customer Activity"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:949
-msgid "Customer has been deleted"
-msgstr "Klijent je izbrisan"
-
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:950
-#, fuzzy
-msgid "Customer has been blocked"
+msgid "Customer has been deleted"
 msgstr "Klijent je izbrisan"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:951
 #, fuzzy
+msgid "Customer has been blocked"
+msgstr "Klijent je izbrisan"
+
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:952
+#, fuzzy
 msgid "Customer has been unblocked"
 msgstr "Klijent je izbrisan"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:953
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:954
 msgid "Customer has been saved"
 msgstr "Kupac je spremljen"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:954
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:955
 msgid "Customers"
 msgstr "Korisnik usluge"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:955
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:956
 msgid "Customers have been deleted"
 msgstr "Kupci su izbrisani"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:956
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:957
 msgid "customers"
 msgstr "kupci"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:957
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:958
 msgid "Search Customers..."
 msgstr "Pretraži kupce..."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:958
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:959
 msgid "Created On"
 msgstr "Datum kreiranja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:959
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:960
 msgid "Date of Birth"
 msgstr "Datum rođenja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:960
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:961
 msgid "Edit Customer"
 msgstr "Uredi kupca"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:962
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:963
 msgid "Events Booked"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:963
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:964
 msgid "You can use this option to export customers in CSV file."
 msgstr "Ovu opciju možete koristiti za izvoz klijenata u CSV datoteku."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:964
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:965
 msgid "Gender"
 msgstr "Spol"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:965
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:966
 msgid ""
 "<ul><li>No first row with column names</li><li><b>First</b> and <b>Last "
 "name</b> are two separate fields</li><li><b>Date of birth</b> in the same "
@@ -3605,7 +3609,7 @@ msgstr ""
 "datumi bi trebali biti u navodnicima)</li><li> <b>Telefon</b> ima kod "
 "države</li><li> <b>Rod</b> u muškom ili ženskom obliku</li></ul>"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:966
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:967
 msgid ""
 "Valid <b>First</b> and <b>Last name</b> are required fields. <br>If invalid, "
 "other values will be skipped and not imported.<br>If multiple customers have "
@@ -3615,211 +3619,211 @@ msgstr ""
 "druge vrijednosti će se preskočiti i neće se uvesti.<br> Ako više klijenata "
 "ima istu adresu e-pošte, samo će prvi biti uvezen."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:967
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:968
 msgid "customers have been imported successfully to your customer list"
 msgstr "kupaca je uspješno uvezeno na vaš popis kupaca"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:968
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:969
 msgid "You can use this option to import customers from a CSV file."
 msgstr "Ovu opciju možete koristiti za uvoz kupaca iz CSV datoteke."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:969
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:970
 msgid "Imported customers from file:"
 msgstr "Uvezeni kupci iz datoteke:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:970
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:971
 msgid "Last Appointment"
 msgstr "Zadnji termin"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:971
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:972
 msgid "Last Appointment Ascending"
 msgstr "Posljednje imenovanje uzlazno"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:972
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:973
 msgid "Last Appointment Descending"
 msgstr "Zadnje imenovanje silazno"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:973
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:974
 msgid "New Customer"
 msgstr "Novi kupac"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:974
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:975
 msgid "You don't have any customers here yet..."
 msgstr "Ovdje još nemate kupaca..."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:976
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:977
 msgid "Required fields are: <b>First Name</b> and <b>Last Name</b>."
 msgstr "Obavezna polja su: <b>Ime</b> i <b>Prezime</b> ."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:977
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:978
 msgid "Select Date of Birth"
 msgstr "Odaberite Datum rođenja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:978
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:979
 msgid "Total Appointments"
 msgstr "Ukupno imenovanja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:979
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:980
 msgid "Upload Customers .csv file"
 msgstr "Učitajte .csv datoteku kupaca"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:980
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:981
 msgid "View Appointments"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:981
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:982
 msgid "View Events"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:993
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:994
 msgid "Drag and drop or choose from <em>files</em>"
 msgstr "Povucite i ispustite ili odaberite iz <em>datoteka</em>"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:994
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:995
 msgid "Import customer data"
 msgstr "Uvoz podataka o kupcima"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:995
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:996
 msgid "Import rules"
 msgstr "Pravila uvoza"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:996
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:997
 msgid "Import successful"
 msgstr "Uvoz uspješan"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:997
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:998
 msgid "Please map corresponding data to columns."
 msgstr "Mapirajte odgovarajuće podatke u stupce."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:998
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:999
 msgid "Some records have a wrong format"
 msgstr "Neki zapisi imaju pogrešan format"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1010
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1011
 msgid "Welcome to wpAmelia"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1011
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1012
 msgid ""
 "Congratulations! You are about to use the most powerful WordPress booking "
 "plugin - Amelia is designed to make the process of bookings representation "
 "and interaction quick, easy and effective."
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1012
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1013
 msgid "Discover Amelia"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1013
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1014
 msgid "News Blog"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1014
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1015
 msgid "Keep up to date!"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1015
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1016
 msgid ""
 "Never miss notifications about new cool features, promotions, giveaways or "
 "freebies!"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1016
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1017
 msgid "Enter your email"
 msgstr "Unesite svoju e-poštu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1017
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1018
 msgid "Subscribe"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1018
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1019
 msgid "Take a look at how our clients use Amelia"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1019
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1020
 #, fuzzy
 msgid "Read Success Stories"
 msgstr "Boja uspjeha"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1020
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1021
 msgid "Have questions?"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1021
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1022
 msgid "Our Support team will answer any of your questions"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1022
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1023
 msgid "Contact our support"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1023
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1024
 msgid "Most used Premium features"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1024
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1025
 #, fuzzy
 msgid "Online Payments"
 msgstr "Plaćanje na čekanju"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1025
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1026
 #, fuzzy
 msgid "Packages of services"
 msgstr "Popis paket usluga"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1026
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1027
 #, fuzzy
 msgid "Google Calendar Sync"
 msgstr "Dodaj u Google kalendar"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1027
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1028
 #, fuzzy
 msgid "Zoom/Google Meet"
 msgstr "Veza Google Meet"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1028
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1029
 #, fuzzy
 msgid "Custom Service Duration"
 msgstr "Trajanje usluge"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1040
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1041
 msgid "Amelia Plans Comparison"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1041
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1042
 msgid ""
 "Upgrade to any of our three premium versions and unlock a world of exclusive "
 "features and benefits, tailored to enhance your experience and maximize the "
 "value you get from our product."
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1042
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1043
 msgid "Upgrade now"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1043
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1044
 msgid "Support is only available through forum"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1055
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1056
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:80
 msgid "Amount"
 msgstr "Iznos"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1056
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1057
 msgid "Booking Start"
 msgstr "Početak rezervacije"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1057
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1122
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1058
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1125
 msgid "Customer Email"
 msgstr "E-pošta kupca"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1058
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1059
 msgid "Employee Email"
 msgstr "E-pošta zaposlenika"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1059
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1060
 msgid ""
 "You can use this option to export payments in CSV file<br/>for the selected "
 "date range."
@@ -3827,174 +3831,186 @@ msgstr ""
 "Ovu opciju možete koristiti za izvoz plaćanja u CSV datoteku<br/> za "
 "odabrani datumski raspon."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1060
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1061
 msgid "Method"
 msgstr "Metoda"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1061
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1062
 msgid "You don't have any payments here yet"
 msgstr "Ovdje još nemate plaćanja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1062
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1063
 msgid "Payment date"
 msgstr "Datum plačanja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1063
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1064
 #, fuzzy
 msgid "Payment created"
 msgstr "Datum plačanja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1065
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1066
 msgid "payments"
 msgstr "plaćanja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1066
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1067
 msgid "Rate"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1078
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1079
 msgid "Appointment Date"
 msgstr "Datum imenovanja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1079
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1080
 msgid "Appointment Info"
 msgstr "Informacije o terminu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1080
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1081
 msgid "Event Date"
 msgstr "Datum događaja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1081
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1082
 msgid "Are you sure you want to delete this payment?"
 msgstr "Jeste li sigurni da želite izbrisati ovo plaćanje?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1082
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1083
 msgid "Discount"
 msgstr "Popust"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1083
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1084
 msgid "Due"
 msgstr "Dospijeće"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1084
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1085
 msgid "Enter new payment amount"
 msgstr "Unesite novi iznos plaćanja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1085
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1086
 msgid "Finance"
 msgstr "Financije"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1086
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1087
 msgid "Payment has been deleted"
 msgstr "Plaćanje je izbrisano"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1087
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1088
 msgid "Payment Details"
 msgstr "Detalji o uplati"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1088
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1089
 msgid "Payment has been saved"
 msgstr "Plaćanje je spremljeno"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1089
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1090
 msgid "Payments have been deleted"
 msgstr "Uplate su izbrisane"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1090
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1091
 msgid "Payment Type"
 msgstr "Vrsta plaćanja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1091
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1355
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1092
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1360
 msgid "Service Price"
 msgstr "Cijena usluge"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1092
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1395
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:277
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1093
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1400
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:281
 msgid "Subtotal"
 msgstr "Međuzbroj"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1093
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1094
 msgid "Total Price"
 msgstr "Ukupna cijena"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1094
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1095
 msgid "Bookings Price"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1095
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1353
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1096
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1358
 msgid "Event Price"
 msgstr "Cijena događaja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1107
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1108
 msgid "Appointment has been deleted"
 msgstr "Termin je izbrisan"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1108
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1109
 msgid "Appointment has been saved"
 msgstr "Termin je spremljen"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1109
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1110
 msgid "Cancel Appointment"
 msgstr "Otkaži termin"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1110
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1267
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1111
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1273
 msgid "Appointment has been rescheduled"
 msgstr "Termin je pomaknut"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1111
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1112
 msgid "Appointment status has been changed to "
 msgstr "Status termina promijenjen je u"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1112
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1113
 msgid "Appointments have been deleted"
 msgstr "Termini su izbrisani"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1113
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1114
 msgid "Search for Customers, Employees, Services..."
 msgstr "Traži kupce, zaposlenike, usluge..."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1114
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1115
 msgid "Assigned to"
 msgstr "Dodijeljena"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1116
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1117
 msgid "Change group status"
 msgstr "Promjena statusa grupe"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1117
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1118
 msgid "Are you sure you want to delete this appointment?"
 msgstr "Jeste li sigurni da želite izbrisati ovaj termin?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1118
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1119
 msgid "Are you sure you want to delete these appointments?"
 msgstr "Jeste li sigurni da želite izbrisati ove sastanke?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1119
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1120
 msgid "Are you sure you want to duplicate this appointment?"
 msgstr "Jeste li sigurni da želite duplicirati ovaj termin?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1120
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1121
 msgid "Create Customer"
 msgstr "Stvorite kupca"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1121
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1300
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1122
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:276
+msgid "Generate payment links"
+msgstr ""
+
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1123
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:277
+msgid ""
+"Check this box to generate a payment link.<br> To include it in the "
+"notification, add the payment link placeholder."
+msgstr ""
+
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1124
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1306
 msgid "Custom Fields"
 msgstr "Prilagođena polja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1123
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1126
 msgid "Customer Phone"
 msgstr "Telefon klijenta"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1124
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1127
 msgid "Customer(s)"
 msgstr "Kupac(i)"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1125
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1128
 msgid ""
 "Here you can define the number of people that are coming<br/>with this "
 "customer. The number you can choose depends<br/>on the service and employee "
@@ -4003,20 +4019,20 @@ msgstr ""
 "Ovdje možete definirati broj ljudi koji će doći<br/> s ovim kupcem. Broj "
 "koji možete odabrati ovisi<br/> na uslugu i sposobnost zaposlenika."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1126
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1129
 #, fuzzy
 msgid "Edit Payment Details"
 msgstr "Detalji o uplati"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1127
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1130
 msgid "Edit Appointment"
 msgstr "Uredi termin"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1128
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1131
 msgid "End Time"
 msgstr "Vrijeme završetka"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1129
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1132
 msgid ""
 "You can use this option to export appointments in CSV file<br/>for the "
 "selected date range."
@@ -4024,7 +4040,7 @@ msgstr ""
 "Ovu opciju možete koristiti za izvoz sastanaka u CSV datoteku<br/> za "
 "odabrani datumski raspon."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1130
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1133
 msgid ""
 "You can use this option to export attendees in CSV file<br/>for the selected "
 "event."
@@ -4032,15 +4048,15 @@ msgstr ""
 "Ovu opciju možete koristiti za izvoz sudionika u CSV datoteku<br/> za "
 "odabrani događaj."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1131
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1134
 msgid "New Appointment"
 msgstr "Novi termin"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1132
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1135
 msgid "Notify the attendee(s)"
 msgstr "Obavijestite sudionike"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1133
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1136
 msgid ""
 "Check this checkbox if you want your attendee(s) to<br/>receive an email "
 "about the event’s updated information."
@@ -4048,11 +4064,11 @@ msgstr ""
 "Označite ovaj potvrdni okvir ako želite da vaš sudionik(i).<br/> primiti e-"
 "poruku o ažuriranim informacijama o događaju."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1134
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1137
 msgid "Notify the customer(s)"
 msgstr "Obavijestite klijenta(e)"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1135
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1138
 msgid ""
 "Check this checkbox if you want your customer(s) to<br/>receive an email "
 "about the scheduled appointment."
@@ -4060,315 +4076,327 @@ msgstr ""
 "Označite ovaj potvrdni okvir ako želite da vaš klijent(i).<br/> dobiti e-"
 "mail o dogovorenom terminu."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1136
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1139
 msgid ""
 "By continuing, you will set the appointment to a time slot that already has "
 "an existing appointment!"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1137
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1140
 msgid "Schedule"
 msgstr "Uređivanje podsjetnika za raspored"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1138
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1141
 msgid "Select Customer(s)"
 msgstr "Odaberite kupca(e)"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1139
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1142
 msgid "Please select at least one customer"
 msgstr "Odaberite barem jednog kupca"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1140
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1143
 msgid "Maximum number of places is"
 msgstr "Maksimalan broj mjesta je"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1141
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1144
 #, fuzzy
 msgid "Select Extra"
 msgstr "Odabrani dodaci"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1142
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1315
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1627
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:276
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1145
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1321
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1632
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:280
 msgid "Select Service"
 msgstr "Odaberite Usluga"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1143
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1306
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:179
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1146
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1312
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:181
 msgid "Please select service"
 msgstr "Odaberite uslugu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1144
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1147
 msgid "Select Service Category"
 msgstr "Odaberite kategoriju usluge"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1145
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1148
 msgid "Selected Customers"
 msgstr "Odabrani kupci"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1146
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1149
 msgid "This service does not have any extras"
 msgstr "Ova usluga nema nikakvih dodataka"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1147
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1150
 msgid "Start Time"
 msgstr "Vrijeme početka"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1149
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:139
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1152
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:140
 msgid "Time slot is unavailable"
 msgstr "Vrijeme je nedostupno"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1150
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1153
 msgid "Appointment can't be canceled"
 msgstr "Termin se ne može otkazati"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1151
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1154
 msgid "Appointment can't be rescheduled"
 msgstr "Termin se ne može pomaknuti"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1152
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1248
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1155
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1254
 msgid "Booking status has been changed to "
 msgstr "Status rezervacije je promijenjen u"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1153
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1156
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1165
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1168
+msgid "Default Pricing"
+msgstr ""
+
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1169
 msgid "Deposit Payment"
 msgstr "Plaćanje depozita"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1166
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1170
 msgid "Custom Pricing"
 msgstr "Prilagođene cijene"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1167
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1171
 msgid "Custom Duration and Pricing"
 msgstr "Prilagođeno trajanje i cijene"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1179
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1172
+msgid "Pricing by the number of people"
+msgstr ""
+
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1173
+msgid "Conditional Pricing"
+msgstr ""
+
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1185
 msgid "Are you sure you want to delete selected attendee?"
 msgstr "Jeste li sigurni da želite izbrisati odabranog sudionika?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1180
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1186
 msgid "Are you sure you want to delete selected attendees?"
 msgstr "Jeste li sigurni da želite izbrisati odabrane sudionike?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1181
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1187
 msgid "Are you sure you want to delete this event?"
 msgstr "Jeste li sigurni da želite izbrisati ovaj događaj?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1182
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1188
 msgid "Are you sure you want to duplicate this event?"
 msgstr "Jeste li sigurni da želite duplicirati ovaj događaj?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1183
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1189
 msgid "Are you sure you want to cancel this event?"
 msgstr "Jeste li sigurni da želite otkazati ovaj događaj?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1184
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1190
 msgid "Are you sure you want to open this event?"
 msgstr "Jeste li sigurni da želite otvoriti ovaj događaj?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1185
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1191
 msgid "Please cancel the event first before deleting it."
 msgstr "Prvo otkažite događaj prije nego što ga izbrišete."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1186
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1301
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1192
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1307
 msgid "Customize"
 msgstr "Prilagodi"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1187
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1193
 #, fuzzy
 msgid "Customer is already added to this event"
 msgstr "Već ste rezervirali ovaj termin"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1190
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1349
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1196
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1355
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:98
 msgid "Full"
 msgstr "Popunjeno"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1191
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1351
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1197
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1356
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:99
 msgid "Upcoming"
 msgstr "Nadolazeći"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1192
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1198
 msgid "Edit Event"
 msgstr "Uredi Događanje"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1193
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1199
 msgid "Attendees"
 msgstr "Polaznici"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1194
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1200
 msgid "Add Attendee"
 msgstr "Dodajte sudionika"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1197
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1203
 msgid "Number of tickets"
 msgstr "Broj ulaznica"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1198
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1204
 msgid "Edit Attendee"
 msgstr "Uredi sudionika"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1199
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1205
 msgid "The price will multiply by the number of people/spots"
 msgstr "Cijena će se množiti s brojem osoba/mjesta"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1200
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1206
 msgid "Attendee has been saved"
 msgstr "Sudionik je spremljen"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1201
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1207
 msgid "Remove Attendee"
 msgstr "Ukloni sudionika"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1202
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1208
 msgid "Find Attendees"
 msgstr "Pronađite sudionike"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1203
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1209
 msgid "Attendee have been deleted"
 msgstr "Sudionici su izbrisani"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1204
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1210
 msgid "Attendees have been deleted"
 msgstr "Sudionici su izbrisani"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1205
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1211
 msgid "Allow the same customer to book more than once"
 msgstr "Dopustite istom korisniku da rezervira više puta"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1206
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1212
 msgid "Allow bringing more people"
 msgstr "Dopustite dovođenje više ljudi"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1207
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1213
 msgid "Cancel Event"
 msgstr "Otkaži događaj"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1208
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1214
 msgid "Close Event after certain minimum is reached"
 msgstr "Zatvori događaj nakon što se dosegne određeni minimum"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1209
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1215
 msgid "Minimum of attendees"
 msgstr "Minimalni broj polaznika"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1210
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1216
 msgid "Minimum of bookings"
 msgstr "Minimum rezervacija"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1211
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1217
 msgid "One spot is equal to one attendee."
 msgstr "Jedno mjesto jednako je jednom sudioniku."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1212
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1218
 msgid "One booking can have multiple attendees/spots in it."
 msgstr "Jedna rezervacija može imati više sudionika/mjesta."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1213
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1219
 msgid "Set Minimum"
 msgstr "Postavite minimum"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1214
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1220
 msgid "Custom Address"
 msgstr "Prilagođena adresa"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1215
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1221
 msgid "Delete Event"
 msgstr "Izbriši događaj"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1216
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1222
 msgid "Event has been deleted"
 msgstr "Događaj je izbrisan"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1217
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1223
 msgid "Duplicate Event"
 msgstr "Napravi kopiju Događanja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1218
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1224
 msgid "Name:"
 msgstr "Ime:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1219
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1225
 msgid "Booking closes:"
 msgstr "Rezervacija se zatvara:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1220
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1226
 msgid "Booking opens:"
 msgstr "Rezervacija se otvara:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1221
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1227
 msgid "Closes on:"
 msgstr "Zatvara se:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1222
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1228
 msgid "Opens on:"
 msgstr "Otvara se:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1223
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1229
 msgid "Booking closes when event starts"
 msgstr "Rezervacija se zatvara kada događaj započne"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1224
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1230
 msgid "Booking opens immediately"
 msgstr "Rezervacija se otvara odmah"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1227
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1233
 msgid "Open Event"
 msgstr "Otvori događaj"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1228
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1234
 msgid "Recurring:"
 msgstr "Ponavljajući:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1229
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1235
 msgid "This is a recurring event"
 msgstr "Ovo je događaj koji se ponavlja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1230
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1236
 msgid "Event has been opened"
 msgstr "Događaj je otvoren"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1231
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1237
 msgid "Event has been canceled"
 msgstr "Događaj je otkazan"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1232
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1238
 msgid "Event has been saved"
 msgstr "Događaj je spremljen"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1233
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1239
 msgid "Search Events..."
 msgstr "Traži događaje..."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1234
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1240
 msgid "Maximum allowed spots"
 msgstr "Maksimalan broj dopuštenih mjesta"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1235
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1241
 msgid "Select Address"
 msgstr "Odaberite Adresa"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1236
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1242
 msgid "Staff"
 msgstr "Osoblje"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1237
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1243
 msgid "Organizer"
 msgstr "Organizator"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1238
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1244
 msgid ""
 "Here you can choose the employee that will be added as Organizer of the "
 "Google/Outlook Event. <br>Other employees chosen under the Staff option will "
@@ -4378,465 +4406,461 @@ msgstr ""
 "Outlook događaja.<br> Ostali zaposlenici odabrani pod opcijom Osoblje bit će "
 "dodani kao gosti."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1239
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1245
 msgid "Dates:"
 msgstr "Datumi:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1240
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1246
 msgid "Tags"
 msgstr "Oznake"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1241
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1247
 msgid "Select or Create Tag"
 msgstr "Odaberite ili stvorite oznaku"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1242
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1248
 msgid "Enter Event Name"
 msgstr "Unesite naziv događaja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1243
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1249
 msgid "Event Gallery:"
 msgstr "Galerija događaja:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1244
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1250
 msgid "Event Colors:"
 msgstr "Boje događaja:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1245
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1251
 msgid "Preset Colors"
 msgstr "Unaprijed postavljene boje"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1246
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1252
 msgid "Custom Color"
 msgstr "Prilagođena boja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1247
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1253
 msgid "Show event on site"
 msgstr "Prikaži događaj na mjestu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1249
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1255
 msgid "There are no attendees yet..."
 msgstr "Još nema sudionika..."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1250
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1256
 msgid "New Event"
 msgstr "Novo Događanje"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1253
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1259
 msgid "Maximum capacity is reached"
 msgstr "Dosegnut je maksimalni kapacitet"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1265
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1271
 msgid "This will change the time of the appointment. Continue?"
 msgstr "Time će se promijeniti vrijeme termina. Nastaviti?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1266
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1272
 msgid "Appointment can't be moved in past time period"
 msgstr "Termin se ne može pomaknuti u prošlom vremenskom razdoblju"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1268
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1274
 msgid "Appointment can't be moved out of employee working hours"
 msgstr "Termin se ne može pomaknuti izvan radnog vremena zaposlenika"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1270
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1276
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:100
 msgid "Confirm"
 msgstr "Potvrdi"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1283
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1289
 msgid "Add Custom Field"
 msgstr "Dodaj prilagođeno polje"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1286
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1292
 msgid "Are you sure you want to reset your form settings?"
 msgstr "Jeste li sigurni da želite poništiti postavke obrasca?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1287
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1293
 msgid "Your current changes will be lost."
 msgstr "Vaše trenutne promjene bit će izgubljene."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1288
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1294
 msgid "Yes, Reset"
 msgstr "Da, Reset"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1289
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1295
 msgid "No, Cancel"
 msgstr "Ne, odustani"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1290
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1296
 msgid "Reset Form"
 msgstr "Resetiraj formu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1291
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1297
 msgid "Available in package"
 msgstr "Dostupno u pakiranju"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1292
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1298
 msgid "Bringing Anyone with You?"
 msgstr "Dovodite li koga sa sobom?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1293
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1299
 msgid "Buttons"
 msgstr "Gumbi"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1295
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1301
 msgid "Default Label"
 msgstr "Zadana oznaka"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1297
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1303
 msgid "Checkbox"
 msgstr "Potvrdni okvir"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1298
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1304
 msgid "Start by clicking the Add Custom Field button"
 msgstr "Započnite klikom na gumb Dodaj prilagođeno polje"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1299
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1305
 msgid "Text Content"
 msgstr "Sadržaj teksta"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1302
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1308
 msgid "Font"
 msgstr "Font"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1303
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1309
 msgid "You don't have any custom fields here yet..."
 msgstr "Ovdje još nemate nijedno prilagođeno polje..."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1304
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1310
 msgid "Options"
 msgstr "Opcije"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1305
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1311
 msgid "Pick date & time"
 msgstr "Odaberite datum i vrijeme"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1307
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1313
 msgid "Primary Color"
 msgstr "Primarna boja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1308
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1314
 msgid "Success Color"
 msgstr "Boja uspjeha"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1309
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1315
 msgid "Warning Color"
 msgstr "Boja upozorenja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1310
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1316
 msgid "Error Color"
 msgstr "Boja pogreške"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1311
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1317
 msgid "Radio Buttons"
 msgstr "Radio Buttons"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1312
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1318
 msgid "Reset"
 msgstr "Vrati izvorno"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1313
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1319
 msgid "Selectbox"
 msgstr "Okvir za odabir"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1314
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1320
 msgid "Steps"
 msgstr "Koraci pripreme"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1316
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1477
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1322
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1482
 msgid "Text"
 msgstr "Tekst"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1317
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1323
 msgid "Text Area"
 msgstr "Kartica teksta"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1318
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1324
 msgid "Text Color"
 msgstr "Boja teksta"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1319
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1325
 msgid "Placeholder Color"
 msgstr "Boja rezerviranog mjesta"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1320
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1326
 msgid "Text Color on Background"
 msgstr "Boja teksta na pozadini"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1321
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1327
 msgid "Attachment"
 msgstr "Privitak"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1322
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1328
 msgid "Date Picker"
 msgstr "Birač datuma"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1323
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1329
 msgid "Preview"
 msgstr "Pregled"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1324
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1417
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1330
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1422
 msgid "Background Color"
 msgstr "Pozadinska Boja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1325
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1331
 msgid "Background Gradient Color 1"
 msgstr "Gradijent boje pozadine 1"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1326
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1332
 msgid "Background Gradient Color 2"
 msgstr "Gradijent boje pozadine 2"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1327
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1333
 msgid "Background Gradient Angle"
 msgstr "Kut gradijenta pozadine"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1328
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1334
 msgid "Input Color"
 msgstr "Boja unosa"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1329
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1335
 msgid "Input Text Color"
 msgstr "Boja teksta unosa"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1330
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1336
 msgid "Dropdown Color"
 msgstr "Padajuća boja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1331
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1337
 msgid "Dropdown Text Color"
 msgstr "Padajući izbornik Boja teksta"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1332
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1338
 msgid "Image Color"
 msgstr "Boja slike"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1333
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1339
 msgid "Repeat this appointment"
 msgstr "Ponovite ovaj sastanak"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1336
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1342
 msgid "Last Name Input Field"
 msgstr "Polje za unos prezimena"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1338
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1344
 msgid "Email Input Field"
 msgstr "Polje za unos e-pošte"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1340
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1346
 msgid "Phone Input Field"
 msgstr "Polje za unos telefona"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1341
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1511
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:258
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1347
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1516
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:260
 msgid "Go Back"
 msgstr "Natrag"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1343
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1349
 msgid "Display Field:"
 msgstr "Polje prikaza:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1344
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1350
 #, fuzzy
 msgid "Filterable Field:"
 msgstr "Polje prikaza:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1345
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1351
 msgid "Mandatory Field:"
 msgstr "Obavezno polje:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1346
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1352
 msgid "Event Type"
 msgstr "Vrsta događaja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1350
-msgid "From"
-msgstr "Od"
-
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1352
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1539
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1357
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1544
 msgid "Free"
 msgstr "Besplatno"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1354
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1359
 msgid "Service Badge"
 msgstr "Službena oznaka"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1356
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1361
 msgid "Package Name"
 msgstr "Naziv paketa"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1357
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1362
 msgid "Congratulations!"
 msgstr "Čestitamo!"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1358
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1363
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:79
 msgid "Add to Calendar"
 msgstr "Dodaj u Kalendar"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1359
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:116
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1364
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:117
 msgid "Finish"
 msgstr "Gotovo"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1360
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1365
 msgid "Step By Step Booking Form"
 msgstr "Obrazac za rezervaciju korak po korak"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1361
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1366
 msgid "Event Status"
 msgstr "Status događaja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1362
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:216
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1367
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:218
 msgid "Filters"
 msgstr "Filteri"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1363
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:213
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1368
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:215
 msgid "Book event"
 msgstr "Knjižni događaj"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1365
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1370
 msgid "Form"
 msgstr "Forma"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1366
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1371
 msgid "Form Flow"
 msgstr "Tijek obrazaca"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1367
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1372
 msgid "Use Global Colors"
 msgstr "Koristite globalne boje"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1368
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1454
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:177
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1373
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1459
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:179
 msgid "Service Selection"
 msgstr "Odaberite uslugu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1372
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1377
 msgid "No matching data"
 msgstr "Nema podudarnih podataka"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1374
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1379
 msgid "Bringing Anyone With You"
 msgstr "Dovedite bilo koga sa sobom"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1375
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:200
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:235
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1380
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:202
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:237
 msgid "Show more"
 msgstr "Prikaži više"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1376
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:201
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:234
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1381
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:203
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:236
 msgid "Show less"
 msgstr "Prikaži manje"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1378
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:182
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1383
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:184
 msgid "Date & Time"
 msgstr "Datum i vrijeme"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1379
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1384
 msgid "All slots are selected"
 msgstr "Odabrani su svi utori"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1380
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1573
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:183
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:223
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1385
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1578
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:185
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:225
 msgid "Your Information"
 msgstr "Vaše informacije"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1381
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:184
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1386
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:186
 msgid "Enter first name"
 msgstr "Unesi ime"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1383
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:185
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1388
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:187
 msgid "Enter last name"
 msgstr "Unesi prezime"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1385
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:186
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1390
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:188
 msgid "Enter email"
 msgstr "Unesite email"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1386
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1391
 msgid "Please enter valid email"
 msgstr "Molimo unesite valjanu e-poštu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1387
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:187
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1392
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:189
 msgid "Enter phone"
 msgstr "Unesite telefon"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1388
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1393
 msgid "Please enter phone"
 msgstr "Molimo unesite telefon"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1391
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:173
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1396
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:175
 msgid "Summary"
 msgstr "Sažetak"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1393
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1398
 msgid "Service Subtotal"
 msgstr "Međuzbroj usluga"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1394
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:191
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1399
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:193
 msgid "people"
 msgstr "ljudi"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1396
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1399
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1401
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1404
 msgid "Total Amount"
 msgstr "Ukupan iznos"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1397
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:169
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1402
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:171
 msgid "The payment will be done on-site."
 msgstr "Plaćanje će se izvršiti na licu mjesta."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1398
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:193
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1403
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:195
 msgid "Appointment ID"
 msgstr "ID termina"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1401
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:175
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1406
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:177
 msgid "Your Name"
 msgstr "Vaše ime"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1402
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:166
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1407
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:168
 msgid "Email Address"
 msgstr "Email adresa"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1403
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:170
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1408
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:172
 msgid "Phone Number"
 msgstr "Broj telefona"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1405
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:197
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1410
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:199
 msgid "Local Time"
 msgstr "Lokalno vrijeme"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1409
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1414
 msgid "Choose a Form"
 msgstr "Odaberite obrazac"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1410
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1415
 msgid ""
 "Choose a form you want to customize. The Step-by-Step 2.0 form is the new "
 "and improved version which provides you with better design and user "
@@ -4846,730 +4870,730 @@ msgstr ""
 "nova i poboljšana verzija koja vam pruža bolji dizajn i korisničko iskustvo, "
 "kao i bolju brzinu."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1411
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1416
 msgid "Step-by-Step Booking Form 2.0"
 msgstr "Obrazac za rezervaciju korak po korak 2.0"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1412
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1417
 msgid "Booking Forms 1.0"
 msgstr "Obrasci za rezervaciju 1.0"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1413
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1418
 msgid ""
 "Use the upgraded Step-by-Step Booking Form 2.0 for a simplified, direct "
 "booking process on your page. Customize its design and labels to enhance "
 "user experience and meet your business needs."
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1414
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1419
 msgid ""
 "The original booking forms—Step-by-Step, Catalog, Event List, and Event "
 "Calendar—feature basic customization and label changes, serving as the "
 "foundation for our newer versions."
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1415
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1420
 msgid "Primary and state colors"
 msgstr "Primarne i državne boje"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1416
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1466
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1421
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1471
 msgid "Sidebar"
 msgstr "Bočna traka"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1418
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1423
 msgid "Content"
 msgstr "Sadržaj"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1419
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1424
 msgid "Heading Text Color"
 msgstr "Boja teksta naslova"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1420
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1425
 msgid "Content Text Color"
 msgstr "Boja teksta sadržaja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1421
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1426
 msgid "Input Fields"
 msgstr "Polja za unos"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1422
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1427
 msgid "Border Color"
 msgstr "Boja obruba"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1423
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1428
 msgid "Dropdowns"
 msgstr "padajuće liste"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1424
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1429
 msgid "Init Cell"
 msgstr "Init ćelija"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1425
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1430
 msgid "Init Cell Text"
 msgstr "Početni tekst ćelije"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1426
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1431
 msgid "Cell Selected Background"
 msgstr "Odabrana pozadina ćelije"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1427
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1432
 msgid "Cell Selected Text"
 msgstr "Odabrani tekst ćelije"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1428
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1433
 msgid "Cell Disabled Background"
 msgstr "Pozadina onemogućene ćelije"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1429
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1434
 msgid "Cell Disabled Text"
 msgstr "Tekst onemogućen u ćeliji"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1430
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1435
 msgid "Primary Button Background Color"
 msgstr "Boja pozadine primarnog gumba"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1431
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1436
 msgid "Primary Button Text Color"
 msgstr "Boja teksta primarne tipke"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1432
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1437
 msgid "Secondary Button Background Color"
 msgstr "Boja pozadine sekundarnog gumba"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1433
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1438
 msgid "Secondary Button Text Color"
 msgstr "Boja teksta sekundarnog gumba"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1434
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1439
 #, fuzzy
 msgid "Danger Button Background Color"
 msgstr "Boja pozadine primarnog gumba"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1435
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1440
 #, fuzzy
 msgid "Danger Button Text Color"
 msgstr "Boja teksta primarne tipke"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1436
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1441
 msgid "Layout & Inputs"
 msgstr "Izgled i unosi"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1437
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1442
 msgid "Colors"
 msgstr "Boje"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1438
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1443
 msgid "Fonts"
 msgstr "Fontovi"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1439
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1444
 msgid "Order"
 msgstr "Narudžba"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1440
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1445
 msgid "Step Title"
 msgstr "Naslov koraka"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1441
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1446
 msgid "Footer Buttons"
 msgstr "Gumbi podnožja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1442
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1447
 msgid "Step Content"
 msgstr "Korak Sadržaj"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1443
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1487
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1448
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1492
 msgid "Finish Button Type"
 msgstr "Vrsta gumba Završi"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1444
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1488
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1449
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1493
 msgid "Panel Button Type"
 msgstr "Vrsta gumba ploče"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1445
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1450
 msgid "Summary Segment"
 msgstr "Segment sažetka"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1446
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1451
 msgid "Payment Segment"
 msgstr "Segment plaćanja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1447
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1452
 msgid "Heading Title"
 msgstr "Naslov naslova"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1448
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1453
 msgid "Sub Steps"
 msgstr "Podkoraci"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1449
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1454
 #, fuzzy
 msgid "Step Popups"
 msgstr "Koraci pripreme"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1452
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1457
 msgid "Fonts and colors"
 msgstr "Fontovi i boje"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1453
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1458
 msgid "Set up Sidebar visibility and its content"
 msgstr "Postavite vidljivost bočne trake i njezin sadržaj"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1455
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1460
 msgid "Set up Services, Locations, Employees selection options"
 msgstr "Postavite usluge, lokacije, opcije odabira zaposlenika"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1456
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1461
 msgid "Date & Time Selection"
 msgstr "Odabir datuma i vremena"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1457
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1462
 msgid "Set up Calendar layout and Recurring popup options"
 msgstr "Postavite raspored kalendara i ponavljajuće skočne opcije"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1458
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1463
 msgid "Customer Information"
 msgstr "Informacije o korisniku"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1459
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1557
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1464
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1562
 msgid "Field order, mandatory fields, labels and display options"
 msgstr "Redoslijed polja, obavezna polja, oznake i opcije prikaza"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1460
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1465
 msgid "Payment Summary"
 msgstr "Sažetak plaćanja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1461
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1559
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1466
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1564
 msgid "Set up labels and buttons"
 msgstr "Postavite oznake i gumbe"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1462
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1561
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1467
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1566
 msgid "Set up button types and labels"
 msgstr "Postavite tipove gumba i oznake"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1465
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1470
 msgid "Global Settings"
 msgstr "Globalne postavke"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1467
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1472
 msgid "Section"
 msgstr "Sekcija"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1468
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1473
 msgid "Field Order"
 msgstr "Terenski red"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1469
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1560
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1580
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1474
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1565
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1585
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:101
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:221
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:223
 msgid "Congratulations"
 msgstr "Čestitamo"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1471
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1476
 msgid "Footer"
 msgstr "Podnožje"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1472
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:167
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1477
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:169
 msgid "Get in Touch"
 msgstr "Javite nam se"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1473
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1478
 msgid "Collapse Menu"
 msgstr "Sažmi izbornik"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1475
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1480
 msgid "Filled"
 msgstr "Ispunjeno"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1476
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1481
 msgid "Plain"
 msgstr "Običan"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1479
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1484
 msgid "Continue Button Type"
 msgstr "Vrsta gumba Nastavi"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1480
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1485
 msgid "Calendar Slot End Time"
 msgstr "Vrijeme završetka kalendarskog termina"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1481
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1486
 msgid "Show Busy Time Slots"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1482
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1487
 msgid "Calendar Time Zone"
 msgstr "Vremenska zona kalendara"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1489
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1494
 msgid "Sidebar Visibility"
 msgstr "Vidljivost bočne trake"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1490
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1495
 msgid "Publish Form"
 msgstr "Objavite obrazac"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1492
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:253
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1497
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:255
 msgid "View All"
 msgstr "Pogledaj sve"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1494
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1499
 msgid "Set up categories cards"
 msgstr "Postavite kartice kategorija"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1495
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1500
 msgid "Cards"
 msgstr "Kartice"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1496
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1501
 msgid "Card Button Type"
 msgstr "Vrsta gumba kartice"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1497
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1502
 msgid "Services Overview"
 msgstr "Pregled usluga"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1498
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1503
 msgid "Set up Services view"
 msgstr "Postavite prikaz usluga"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1499
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1504
 msgid "Service Details"
 msgstr "Pojedinosti usluge"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1500
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1505
 msgid "Set up Service detailed view"
 msgstr "Postavite detaljan prikaz usluge"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1501
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1506
 msgid "Booking Form"
 msgstr "Rezervacija putovanja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1502
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1507
 msgid "Set options, colors and labels for booking form"
 msgstr "Postavite opcije, boje i oznake za obrazac za rezervaciju"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1504
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1509
 msgid "Catalog Booking Form 2.0"
 msgstr "Obrazac za rezervaciju kataloga 2.0"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1505
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1510
 msgid ""
 " Discover the modernized Catalog Booking Form 2.0 that showcases services in "
 "stylish card layouts. Easily add categories and adjust the appearance to "
 "reflect your brand."
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1508
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1513
 msgid "Total Number of Services"
 msgstr "Ukupan broj usluga"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1509
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1514
 msgid "Back Button"
 msgstr "Gumb Natrag"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1510
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1515
 msgid "“Back” Button Type"
 msgstr "Vrsta gumba \"Natrag\"."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1512
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1517
 msgid "“Book Now” Button Type"
 msgstr "Vrsta gumba \"Rezerviraj sada\"."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1515
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1520
 msgid "Main Category Button"
 msgstr "Gumb glavne kategorije"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1516
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1521
 msgid "Category Card Side Color"
 msgstr "Boja kartice kategorije"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1517
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1522
 msgid "Category Color"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1521
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1526
 msgid "Filter Menu Button Type"
 msgstr "Tip gumba izbornika filtra"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1522
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1524
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1527
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1529
 msgid "Categories Sidebar"
 msgstr "Bočna traka kategorija"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1523
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1528
 msgid "Filters Block"
 msgstr "Blok filtera"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1525
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1530
 msgid "Page Header"
 msgstr "Zaglavlje stranice"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1526
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1531
 msgid "Main Content"
 msgstr "Glavni sadržaj"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1527
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1532
 msgid "Service Category"
 msgstr "Kategorija usluge"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1528
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1533
 msgid "Service Duration"
 msgstr "Trajanje usluge"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1529
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1541
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:256
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1534
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1546
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:258
 msgid "About Service"
 msgstr "O usluzi"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1530
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1535
 msgid "“Search” option"
 msgstr "Opcija \"Traži\"."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1531
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1536
 msgid "Card Color"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1532
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1537
 #, fuzzy
 msgid "Page Scroll Visibility"
 msgstr "Vidljivost bočne trake"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1534
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:254
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1539
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:256
 msgid "Search"
 msgstr "Traži"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1535
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:272
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1540
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:274
 msgid "Available"
 msgstr "Dostupno"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1538
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1543
 msgid "No results"
 msgstr "Nema rezultata"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1540
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:255
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1545
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:257
 msgid "Book Now"
 msgstr "Rezerviraj sada"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1542
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:257
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1547
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:259
 msgid "View all photos"
 msgstr "Pogledajte sve fotografije"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1544
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1549
 msgid "Support Heading:"
 msgstr "Naslov podrške:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1545
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1550
 msgid "Company Phone:"
 msgstr "Telefon tvrtke:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1546
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1551
 msgid "Company Email:"
 msgstr "E-pošta tvrtke:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1549
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1554
 #, fuzzy
 msgid "Event List Booking Form 2.0"
 msgstr "Obrazac za rezervaciju popisa događaja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1550
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1555
 msgid ""
 "The Event List Booking Form 2.0 offers an intuitive and fast booking "
 "experience, with a design that stands out. Customers can effortlessly browse "
 "and book from a list of events."
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1552
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1557
 msgid "Events List"
 msgstr "Popis događaja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1553
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1558
 msgid ""
 "Set up Location, Images, Filters, Capacity, Price, and Status visibility "
 "options"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1554
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1577
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:115
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1559
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1582
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:116
 msgid "Event Info"
 msgstr "URL informacija o događaju"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1555
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1560
 msgid "Set up Staff, Location, Gallery and other Event information visibility"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1556
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1561
 #, fuzzy
 msgid "Customer Info"
 msgstr "Napomena korisnika"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1563
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:225
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1568
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:227
 #, fuzzy
 msgid "Events Available"
 msgstr "Dodaci dostupni"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1564
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:226
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1569
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:228
 #, fuzzy
 msgid "Event Available"
 msgstr "Dostupno"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1565
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1570
 #, fuzzy
 msgid "Page"
 msgstr "URL stranice korisničke ploče"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1566
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:227
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1571
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:229
 #, fuzzy
 msgid "Search for Events"
 msgstr "Traži događaje..."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1567
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1572
 msgid "Begins"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1568
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:228
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1573
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:230
 #, fuzzy
 msgid "slot left"
 msgstr "mjesto lijevo"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1569
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:229
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1574
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:231
 #, fuzzy
 msgid "slots left"
 msgstr "mjesta ostala"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1570
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:230
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1575
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:232
 #, fuzzy
 msgid "Learn more"
 msgstr "Saznajte više"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1571
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:231
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1576
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:233
 #, fuzzy
 msgid "Read more"
 msgstr "Prikaži više"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1576
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1581
 msgid "About"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1578
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:232
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1583
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:234
 #, fuzzy
 msgid "Timetable"
 msgstr "Vremenska crta"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1581
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:224
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1586
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:226
 #, fuzzy
 msgid "About Event"
 msgstr "O ovom događaju"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1582
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:217
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1587
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:219
 #, fuzzy
 msgid "Event Starts"
 msgstr "Status događaja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1583
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:218
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1588
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:220
 #, fuzzy
 msgid "Event Ends"
 msgstr "Događaji"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1584
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:219
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1589
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:221
 msgid "at"
 msgstr "u"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1585
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:233
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1590
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:235
 msgid "How many attendees do you want to book event for?"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1588
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1593
 #, fuzzy
 msgid "Step Filters"
 msgstr "Filtri pretraživanja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1589
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1594
 #, fuzzy
 msgid "Event Card"
 msgstr "Dan događanja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1590
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1595
 msgid "Step Pagination"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1591
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1596
 #, fuzzy
 msgid "Event Slots Capacity"
 msgstr "Kapacitet mjesta"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1592
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1597
 #, fuzzy
 msgid "Filters Button Type"
 msgstr "Tip gumba izbornika filtra"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1593
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1598
 #, fuzzy
 msgid "Read More Button Type"
 msgstr "Vrsta gumba kartice"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1594
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1599
 #, fuzzy
 msgid "Learn More Button Type"
 msgstr "Vrsta gumba ploče"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1595
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1600
 #, fuzzy
 msgid "Event Tab Image"
 msgstr "Naziv događaja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1596
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1601
 #, fuzzy
 msgid "Step Header"
 msgstr "Naslov koraka"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1597
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1602
 msgid "Step Info Tab"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1598
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1603
 #, fuzzy
 msgid "Booking Event Button"
 msgstr "Naziv kartice za rezervacije"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1599
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1604
 #, fuzzy
 msgid "Finish Button"
 msgstr "Vrsta gumba Završi"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1600
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1605
 #, fuzzy
 msgid "Close Event Button"
 msgstr "Kartice i gumbi"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1601
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1606
 #, fuzzy
 msgid "Event Gallery"
 msgstr "Galerija događaja:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1602
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1607
 msgid "Event Description"
 msgstr "Opis događaja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1604
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:190
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1609
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:192
 msgid "person"
 msgstr "osoba"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1605
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1610
 #, fuzzy
 msgid "Event Employees"
 msgstr "Zaposlenik događaja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1615
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1620
 msgid "Catalog"
 msgstr "Katalog"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1616
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1621
 msgid "Choose Category"
 msgstr "Odaberi kategoriju"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1617
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1622
 msgid "Choose Service"
 msgstr "Odaberite uslugu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1618
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1623
 msgid "Choose Package"
 msgstr "Odaberi paket"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1619
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1624
 msgid "Preselect Booking Parameters"
 msgstr "Unaprijed odaberite parametre rezervacije"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1620
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1625
 #, fuzzy
 msgid "Skip Categories step"
 msgstr "Kategorije"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1621
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1626
 msgid "Insert Amelia Booking Shortcode"
 msgstr "Umetnite skraćeni kod rezervacije Amelia"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1622
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1627
 msgid "Select Catalog View"
 msgstr "Odaberite Prikaz kataloga"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1623
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1628
 msgid "Select Category"
 msgstr "Izaberite kategoriju"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1624
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1629
 msgid "Select Employee"
 msgstr "Odaberi zaposlenika"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1625
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1630
 msgid "Select Location"
 msgstr "Odaberi lokaciju"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1626
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1631
 msgid "Select Package"
 msgstr "Odaberite paket"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1628
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1633
 msgid "Select Event"
 msgstr "Odaberite događaj"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1629
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1634
 #, fuzzy
 msgid "Select Events"
 msgstr "Odaberite događaj"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1630
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1635
 msgid "Select Tag"
 msgstr "Odaberite Oznaka"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1631
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1636
 #, fuzzy
 msgid "Select Tags"
 msgstr "Odaberite Oznaka"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1632
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1637
 msgid "Select View"
 msgstr "Odaberite Pogled"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1634
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1639
 msgid "Show All"
 msgstr "Prikaži sve"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1635
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1640
 msgid "Load booking form manually"
 msgstr "Učitajte obrazac za rezervaciju ručno"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1636
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1641
 msgid ""
 "Add element (button, link...) ID, that will manually load amelia shortcode "
 "content"
@@ -5577,157 +5601,157 @@ msgstr ""
 "Dodajte element (gumb, poveznica...) ID, koji će ručno učitati sadržaj "
 "kratkog koda amelia"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1637
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1642
 msgid "For multiselect: hold CTRL / Command (⌘)."
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1638
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1643
 msgid "Show all categories"
 msgstr "Prikaži sve kategorije"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1639
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1644
 msgid "Show all employees"
 msgstr "Prikaži sve zaposlenike"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1640
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1645
 msgid "Show all locations"
 msgstr "Prikaži sve lokacije"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1641
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1646
 msgid "Show all services"
 msgstr "Prikaži sve usluge"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1642
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1647
 msgid "Show all events"
 msgstr "Prikaži sve događaje"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1643
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1648
 msgid "Show all packages"
 msgstr "Prikaži sve pakete"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1644
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1649
 msgid "Show all tags"
 msgstr "Prikaži sve oznake"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1645
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1650
 msgid "Show catalog of all categories"
 msgstr "Prikažite katalog svih kategorija"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1646
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1651
 msgid "Show specific category"
 msgstr "Prikaži određenu kategoriju"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1647
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1652
 #, fuzzy
 msgid "Show specific categories"
 msgstr "Prikaži određenu kategoriju"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1648
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1653
 msgid "Show specific package"
 msgstr "Prikaži određeni paket"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1649
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1654
 #, fuzzy
 msgid "Show specific packages"
 msgstr "Prikaži određeni paket"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1650
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1655
 msgid "Show event"
 msgstr "Prikaži događaj"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1651
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1656
 msgid "Show Type"
 msgstr "Prikaži vrstu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1652
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1657
 msgid "List (default)"
 msgstr "Popis (zadano)"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1654
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1659
 msgid "Show tag"
 msgstr "Prikaži oznaku"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1655
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1660
 msgid "Show specific service"
 msgstr "Prikaži određenu uslugu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1656
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1661
 #, fuzzy
 msgid "Show specific services"
 msgstr "Prikaži određenu uslugu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1657
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1662
 msgid "Trigger type"
 msgstr "Vrsta okidača"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1658
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1663
 msgid "Id"
 msgstr "Id"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1659
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1664
 msgid "Class"
 msgstr "Razred"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1660
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1665
 msgid "Trigger by attribute"
 msgstr "Okidač po atributu"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1661
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1666
 msgid "Step Booking"
 msgstr "Korak Rezervacija"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1662
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1667
 msgid "Catalog Booking"
 msgstr "Rezervacija kataloga"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1663
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1668
 #, fuzzy
 msgid "Events List Booking"
 msgstr "Obrazac za rezervaciju popisa događaja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1664
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1669
 msgid "Show recurring events"
 msgstr "Prikaži događaje koji se ponavljaju"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1665
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1670
 #, fuzzy
 msgid "Show in Amelia Popup"
 msgstr "uz podršku Amelije"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1667
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1672
 msgid "AM - Booking view"
 msgstr "Prije podne - Prikaz rezervacije"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1668
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1673
 msgid "AM - Step Booking"
 msgstr "AM - Rezervacija koraka"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1669
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1674
 msgid "AM - Catalog Booking"
 msgstr "AM - Rezervacija kataloga"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1670
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1675
 msgid "AM - Catalog view"
 msgstr "AM - Prikaz kataloga"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1671
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1676
 msgid "AM - Events view"
 msgstr "Prijepodne - Prikaz događaja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1672
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1677
 #, fuzzy
 msgid "AM - Events List Booking"
 msgstr "Obrazac za rezervaciju popisa događaja"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1673
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1678
 msgid "AM - Events Calendar Booking"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1675
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1680
 msgid "Amelia - Booking view"
 msgstr "Amelia - Prikaz rezervacije"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1676
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1681
 msgid ""
 "Step-By-Step Booking Wizard gives your customers the option to choose "
 "everything about the booking in a few steps"
@@ -5735,11 +5759,11 @@ msgstr ""
 "Korak-po-korak Čarobnjak za rezervacije daje vašim klijentima mogućnost "
 "odabira svega o rezervaciji u nekoliko koraka"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1679
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1684
 msgid "Amelia - Step-By-Step Booking"
 msgstr "Amelia - Rezervacija korak po korak"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1680
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1685
 msgid ""
 "Step-by-Step booking view guides the customers through several steps in "
 "order to make their bookings."
@@ -5747,11 +5771,11 @@ msgstr ""
 "Pregled rezervacija korak po korak vodi korisnike kroz nekoliko koraka kako "
 "bi izvršili svoje rezervacije."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1683
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1688
 msgid "Amelia - Catalog Booking"
 msgstr "Amelia - Rezervacija kataloga"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1684
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1689
 msgid ""
 "Front-end Booking Catalog is shortcode when you want to show your service in "
 "a form of a catalog"
@@ -5759,11 +5783,11 @@ msgstr ""
 "Front-end Booking Catalog kratki je kod kada želite prikazati svoju uslugu u "
 "obliku kataloga"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1687
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1692
 msgid "Amelia - Catalog view"
 msgstr "Amelia - Pregled kataloga"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1688
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1693
 msgid ""
 "Front-end Booking Catalog is shortcode when you want to show your service in "
 "a form of a cataloge"
@@ -5771,12 +5795,12 @@ msgstr ""
 "Front-end Booking Catalog je kratki kod kada želite prikazati svoju uslugu u "
 "obliku kataloga"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1691
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1696
 msgid "Amelia - Events"
 msgstr "Amelia - Događaji"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1692
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1696
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1697
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1701
 msgid ""
 "Event Booking is shortcode that gives your customers the option to book one "
 "of the events that you've created on the back-end in a simple event list "
@@ -5786,27 +5810,27 @@ msgstr ""
 "rezerviranja jednog od događaja koje ste kreirali u pozadini u jednostavnom "
 "prikazu popisa događaja."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1695
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1700
 #, fuzzy
 msgid "Amelia - Events List"
 msgstr "Amelia - Događaji"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1699
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1704
 msgid "Amelia - Events Calendar"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1700
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1705
 msgid ""
 "Event Booking is shortcode that gives your customers the option to book one "
 "of the events that you've created on the back-end in a simple event calendar "
 "view."
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1702
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1707
 msgid "You are using a form that will be outdated soon!"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1721
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1726
 msgid "Recurring Appointments"
 msgstr "Ponavljajući termini"
 
@@ -5851,7 +5875,7 @@ msgid "Maximum bookings reached"
 msgstr "Dosegnut je maksimalan broj rezervacija"
 
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:93
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:215
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:217
 msgid "Capacity:"
 msgstr "Kapacitet:"
 
@@ -5872,105 +5896,113 @@ msgid "Email already exists with different name. Please check your name."
 msgstr "E-pošta već postoji s drugim imenom. Provjerite svoje ime."
 
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:108
+msgid "Email field is required"
+msgstr ""
+
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:109
 msgid ""
 "Employee daily appointment limit has been reached. Please choose another "
 "date or employee."
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:112
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:113
 msgid "Please enter phone number"
 msgstr "Molimo unesite telefonski broj"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:114
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:115
 msgid "Please enter a valid phone number"
 msgstr "Unesite važeći broj telefona"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:117
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:118
 msgid "First Name:"
 msgstr "Ime:"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:119
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:120
 msgid "Last Name:"
 msgstr "Prezime:"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:127
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:128
 msgid "On-Site"
 msgstr "Na stranici"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:128
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:129
 msgid "Oops..."
 msgstr "Ups..."
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:132
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:133
 #, fuzzy
 msgid "Phone already exists with different name. Please check your name."
 msgstr "E-pošta već postoji s drugim imenom. Provjerite svoje ime."
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:133
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:134
 msgid "Price:"
 msgstr "Cijena:"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:134
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:135
 msgid "service"
 msgstr "usluga"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:135
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:136
 msgid "Select Calendar"
 msgstr "Odaberite Kalendar"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:136
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:137
 msgid "services"
 msgstr "usluge"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:138
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:139
 msgid "Local Time:"
 msgstr "Lokalno vrijeme:"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:140
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:141
 msgid "Total Cost:"
 msgstr "Ukupni trošak:"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:141
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:142
 msgid "Total Number of People:"
 msgstr "Ukupan broj ljudi:"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:168
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:144
+msgid "Select"
+msgstr "Izaberi"
+
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:170
 msgid "Collapse menu"
 msgstr "Sažeti"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:171
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:173
 msgid "Pick date & time:"
 msgstr "Odaberite datum i vrijeme:"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:172
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:174
 msgid "Please select"
 msgstr "Odaberi"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:174
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:176
 msgid "Total Amount:"
 msgstr "Ukupno:"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:214
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:216
 msgid "Book this event"
 msgstr "Rezervirajte ovaj događaj"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:249
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:251
 msgid "Category:"
 msgstr "Kategorija:"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:251
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:253
 msgid "Info"
 msgstr "Informacije"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:252
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:254
 msgid "View More"
 msgstr "Pogledaj više"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:273
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:275
 msgid "Booking can't be canceled"
 msgstr "Rezervacija se ne može otkazati"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:275
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:279
 msgid "Select Customer"
 msgstr "Odaberite Kupac"
 
@@ -6066,6 +6098,9 @@ msgstr "Odaberite Kupac"
 #~ msgid "Tickets"
 #~ msgstr "Ulaznice"
 
+#~ msgid "From"
+#~ msgstr "Od"
+
 #~ msgid "Google Meet Link"
 #~ msgstr "Veza Google Meet"
 
@@ -6108,6 +6143,9 @@ msgstr "Odaberite Kupac"
 
 #~ msgid "Manage Employee Badges"
 #~ msgstr "Upravljajte značkama zaposlenika"
+
+#~ msgid "NEW"
+#~ msgstr "NOVO"
 
 #~ msgid "You don't have any employees here yet..."
 #~ msgstr "Ovdje još nemate zaposlenih..."
@@ -6214,6 +6252,9 @@ msgstr "Odaberite Kupac"
 
 #~ msgid "Sort"
 #~ msgstr "Razvrstaj"
+
+#~ msgid "To"
+#~ msgstr "Do"
 
 #~ msgid "Type"
 #~ msgstr "Vrsta"
@@ -8923,9 +8964,6 @@ msgstr "Odaberite Kupac"
 #~ msgid "Left to pay"
 #~ msgstr "Ostalo je platiti"
 
-#~ msgid "To"
-#~ msgstr "Do"
-
 #~ msgid "Qty"
 #~ msgstr "Kol"
 
@@ -9358,9 +9396,6 @@ msgstr "Odaberite Kupac"
 
 #~ msgid "Enter Address"
 #~ msgstr "Unesi adresu"
-
-#~ msgid "Select"
-#~ msgstr "Izaberi"
 
 #~ msgid "No, just this one"
 #~ msgstr "Ne, samo ovaj"
@@ -9940,9 +9975,6 @@ msgstr "Odaberite Kupac"
 
 #~ msgid "Customer Panel"
 #~ msgstr "Korisnička ploča"
-
-#~ msgid "NEW"
-#~ msgstr "NOVO"
 
 #~ msgid "Primary"
 #~ msgstr "Glavni"

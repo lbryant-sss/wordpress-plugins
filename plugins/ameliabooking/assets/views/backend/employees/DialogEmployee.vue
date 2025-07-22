@@ -383,10 +383,10 @@
                 <el-col :sm="15" :xs="24" style="padding: 0 8px;">
                   <el-select
                       ref="appleCalendarSelect"
-                      v-if="!employee.employeeAppleCalendar.iCloudId"
+                      v-if="!employee.employeeAppleCalendar.iCloudId || !isEmployeeConnectedToPersonalAppleCalendar"
                       v-model="employee.appleCalendarId"
                       placeholder=""
-                      :disabled="!$root.settings.appleCalendar || appleLoading"
+                      :disabled="(!$root.settings.appleCalendar || appleLoading) && isEmployeeConnectedToPersonalAppleCalendar"
                       @change="clearValidation()"
                   >
                     <div class="am-drop">
@@ -1103,7 +1103,7 @@
         let employee = JSON.parse(JSON.stringify(this.employee))
 
         employee.serviceList.forEach((item) => {
-          item.customPricing = this.getJsonCustomPricing(item.customPricing)
+          item.customPricing = this.getJsonCustomPricing(item)
         })
 
         if (this.employee.employeeAppleCalendar.iCloudId === null && this.employee.employeeAppleCalendar.appSpecificPassword === null) {
@@ -1395,6 +1395,7 @@
           this.getAppleCalendarList()
           this.notify(this.$root.labels.success, response.data.message, 'success')
         }).catch(e => {
+          this.isEmployeeConnectedToPersonalAppleCalendar = false
           if(e.response.data.message) {
             this.notify(this.$root.labels.error, e.response.data.message, 'error')
           } else {

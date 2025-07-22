@@ -476,7 +476,7 @@
                     v-model="service.maxCapacity"
                     :disabled="notInLicence('starter')"
                     :min="service.minCapacity"
-                    @input="clearValidation()"
+                    @input="changeCapacity"
                   >
                   </el-input-number>
                 </el-form-item>
@@ -568,7 +568,42 @@
               </el-row>
             </div>
 
-            <div class="am-setting-box am-switch-box" :class="licenceClass()" v-if="service.duration">
+            <div v-if="service.maxCapacity > 1 || service.duration" class="am-custom-pricing">
+            <div class="am-custom-pricing-label">{{ $root.labels.custom_pricing }}</div>
+            <div id="am-service-pricing-person" class="am-setting-box am-switch-box" :class="licenceClass()" v-if="service.maxCapacity > 1">
+              <!-- Person Pricing Enabled -->
+              <el-row type="flex" align="middle" :gutter="24">
+                <el-col :span="19" style="display: flex; gap: 8px; align-items: center">
+                  {{ $root.labels.custom_person_pricing_enabled }}
+                  <span class="am-custom-pricing-label-new">
+                    {{ $root.labels.new_caps }}
+                  </span>
+                </el-col>
+                <el-col :span="5" class="align-right">
+                  <el-switch
+                    v-model="personPricingEnabled"
+                    :disabled="notInLicence()"
+                    active-text=""
+                    inactive-text=""
+                    @change="togglePersonPricing"
+                  >
+                  </el-switch>
+                </el-col>
+              </el-row>
+
+              <person-price
+                v-if="isPersonPricingEnabled(service.customPricing)"
+                :service="service"
+                :enabledDelete="true"
+                :enabledRange="true"
+                @disable="personPricingEnabled = false"
+              >
+              </person-price>
+
+              <LicenceBlock/>
+            </div>
+
+            <div id="am-service-pricing-duration" class="am-setting-box am-switch-box" :class="licenceClass()" v-if="service.duration">
               <!-- Custom Duration Enabled -->
               <el-row type="flex" align="middle" :gutter="24">
                 <el-col :span="19">
@@ -576,17 +611,18 @@
                 </el-col>
                 <el-col :span="5" class="align-right">
                   <el-switch
-                    v-model="service.customPricing.enabled"
+                    v-model="durationPricingEnabled"
                     :disabled="notInLicence()"
                     active-text=""
                     inactive-text=""
+                    @change="toggleDurationPricing"
                   >
                   </el-switch>
                 </el-col>
               </el-row>
 
               <custom-duration
-                v-if="service.customPricing.enabled"
+                v-if="isDurationPricingEnabled(service.customPricing)"
                 :service="service"
                 :enabledDelete="true"
                 :enabledAdd="true"
@@ -596,8 +632,9 @@
 
               <LicenceBlock/>
             </div>
+            </div>
 
-            <div class="am-setting-box am-switch-box" :class="licenceClass()" v-if="depositAvailable()">
+            <div id="am-service-deposit" class="am-setting-box am-switch-box" :class="licenceClass()" v-if="depositAvailable()">
               <!-- Deposit Enabled -->
               <el-row type="flex" align="middle" :gutter="24">
                 <el-col :span="19">
@@ -1066,6 +1103,7 @@
   import helperMixin from '../../../js/backend/mixins/helperMixin'
   import settingsMixin from '../../../js/common/mixins/settingsMixin'
   import serviceMixin from '../../../js/common/mixins/serviceMixin'
+  import servicePriceMixin from '../../../js/common/mixins/servicePriceMixin'
   import PictureUpload from '../parts/PictureUpload.vue'
   import Form from 'form-object'
   import Draggable from 'vuedraggable'
@@ -1076,6 +1114,7 @@
   import DialogTranslate from '../parts/DialogTranslate'
   import ContentBlock from '../parts/ContentBlock'
   import CustomDuration from '../../parts/assignedServices/CustomDuration'
+  import PersonPrice from '../../parts/assignedServices/PersonPrice'
 
   export default {
     mixins: [
@@ -1085,6 +1124,7 @@
       durationMixin,
       priceMixin,
       serviceMixin,
+      servicePriceMixin,
       notifyMixin,
       helperMixin,
       settingsMixin
@@ -1119,6 +1159,8 @@
       }
 
       return {
+        durationPricingEnabled: false,
+        personPricingEnabled: false,
         durations: [],
         depositEnabled: false,
         mandatoryExtraEnabled: false,
@@ -1324,8 +1366,66 @@
         }
       },
 
+      toggleDurationPricing () {
+        this.service.customPricing.enabled = this.durationPricingEnabled ? 'duration' : null
+
+        this.personPricingEnabled = false
+      },
+
+      togglePersonPricing () {
+        this.service.customPricing.enabled = this.personPricingEnabled ? 'person' : null
+
+        this.durationPricingEnabled = false
+      },
+
+      changeCapacity () {
+        if (this.service.customPricing.persons.length) {
+          this.service.customPricing.persons[this.service.customPricing.persons.length - 1].range = null
+
+          let invalidRangeIndex = null
+
+          this.service.customPricing.persons.forEach((item, index) => {
+            if (invalidRangeIndex === null && index > 0) {
+              if (this.service.customPricing.persons[index - 1].range >= this.service.maxCapacity) {
+                invalidRangeIndex = index
+              }
+            } else if (invalidRangeIndex === null && (this.service.customPricing.persons[index].range ? this.service.customPricing.persons[index].range : this.service.maxCapacity) >= this.service.maxCapacity) {
+              invalidRangeIndex = 0
+            }
+          })
+
+          if (invalidRangeIndex !== null && invalidRangeIndex !== 0) {
+            this.service.customPricing.persons = this.service.customPricing.persons.filter(
+              (i, index) => index < invalidRangeIndex
+            )
+
+            this.service.customPricing.persons[this.service.customPricing.persons.length - 1].range = null
+          }
+
+          if (this.service.customPricing.persons.length <= 1 || invalidRangeIndex === 0) {
+            this.service.customPricing.persons = []
+
+            this.service.customPricing.enabled = this.service.customPricing.enabled === 'person' ? null : this.service.customPricing.enabled
+
+            this.personPricingEnabled = false
+          }
+        }
+
+        this.clearValidation()
+      },
+
       depositAvailable () {
-        return parseFloat(this.service.price) > 0 || (this.service.customPricing && this.service.customPricing.enabled ? this.service.customPricing.durations.filter(i => i.price) : false)
+        let depositAvailable = parseFloat(this.service.price) > 0
+
+        if (this.isDurationPricingEnabled(this.service.customPricing)) {
+          depositAvailable = depositAvailable || this.service.customPricing.durations.filter(i => i.price).length
+        }
+
+        if (this.isPersonPricingEnabled(this.service.customPricing)) {
+          depositAvailable = depositAvailable || this.service.customPricing.persons.filter(i => i.price).length
+        }
+
+        return depositAvailable
       },
 
       depositEnabledChanged () {
@@ -1339,8 +1439,16 @@
       getMaxPrice () {
         let maxPrice = this.service.price
 
-        if (this.service.customPricing && this.service.customPricing.enabled) {
+        if (this.isDurationPricingEnabled(this.service.customPricing)) {
           this.service.customPricing.durations.forEach((item) => {
+            if (item.price > maxPrice) {
+              maxPrice = item.price
+            }
+          })
+        }
+
+        if (this.isPersonPricingEnabled(this.service.customPricing)) {
+          this.service.customPricing.persons.forEach((item) => {
             if (item.price > maxPrice) {
               maxPrice = item.price
             }
@@ -1364,10 +1472,15 @@
         if (this.service.deposit > maxPrice && this.depositPayment === 'fixed') {
           this.service.deposit = maxPrice
         }
+
+        if (this.service.customPricing.persons.length) {
+          this.service.customPricing.persons[0].price = this.service.price
+        }
       },
 
       isDurationSelected (duration) {
-        return this.service.customPricing.durations.map(i => i.duration).includes(duration)
+        return this.isDurationPricingEnabled(this.service.customPricing) &&
+          this.service.customPricing.durations.map(i => i.duration).includes(duration)
       },
 
       instantiateDialog () {
@@ -1376,7 +1489,7 @@
 
           this.maxExtraPeopleEnabled = this.service.maxExtraPeople !== null
 
-          if (this.service.description.startsWith('<!-- Content -->')) {
+          if (this.service.description && this.service.description.startsWith('<!-- Content -->')) {
             this.service.descriptionHtml = this.service.description
           }
 
@@ -1418,6 +1531,10 @@
           if (!this.service.recurringCycle) {
             this.service.recurringCycle = 'disabled'
           }
+
+          this.durationPricingEnabled = this.isDurationPricingEnabled(this.service.customPricing)
+
+          this.personPricingEnabled = this.isPersonPricingEnabled(this.service.customPricing)
 
           this.dialogLoading = false
           this.executeUpdate = false
@@ -1477,7 +1594,7 @@
           JSON.parse(JSON.stringify(this.service)),
           {
             settings: serviceSettings ? JSON.stringify(serviceSettings) : null,
-            customPricing: this.getJsonCustomPricing(this.service.customPricing),
+            customPricing: this.getJsonCustomPricing(this.service),
             limitPerCustomer: JSON.stringify(this.service.limitPerCustomer)
           }
         )
@@ -1485,6 +1602,8 @@
 
       haveSaveConfirmation () {
         let customDurationChanged = false
+
+        let customPersonsChanged = false
 
         this.service.customPricing.durations = this.service.customPricing.durations.filter(item => item.duration)
 
@@ -1496,11 +1615,20 @@
           })
         })
 
+        this.service.customPricing.persons.forEach((serviceItem) => {
+          this.passedService.customPricing.persons.forEach((passedServiceItem) => {
+            if (serviceItem.range === passedServiceItem.range && serviceItem.price !== passedServiceItem.price) {
+              customPersonsChanged = true
+            }
+          })
+        })
+
         return this.service.id && (
           this.passedService.price !== this.service.price ||
           this.passedService.minCapacity !== this.service.minCapacity ||
           this.passedService.maxCapacity !== this.service.maxCapacity ||
-          customDurationChanged
+          customDurationChanged ||
+          customPersonsChanged
         )
       },
 
@@ -1782,7 +1910,8 @@
       EntitySettings,
       ContentBlock,
       DialogActions,
-      CustomDuration
+      CustomDuration,
+      PersonPrice
     }
   }
 </script>

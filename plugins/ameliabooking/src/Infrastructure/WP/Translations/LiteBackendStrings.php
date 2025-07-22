@@ -871,6 +871,7 @@ class LiteBackendStrings
             'service_recurring_cycle'            => __('Set recurring appointment', 'ameliabooking'),
             'service_recurring_cycle_tooltip'    => __('If this option is disabled, your customers won\'t be able to book recurring appointments at the same time.', 'ameliabooking'),
             'service_provider_remove_fail'       => __('Provider has appointments for this service', 'ameliabooking'),
+            'service_pricing_model'              => __('Pricing model', 'ameliabooking'),
         ];
     }
 
@@ -1118,6 +1119,8 @@ class LiteBackendStrings
             'confirm_delete_appointment_plural' => __('Are you sure you want to delete these appointments?', 'ameliabooking'),
             'confirm_duplicate_appointment'     => __('Are you sure you want to duplicate this appointment?', 'ameliabooking'),
             'create_customer'                   => __('Create Customer', 'ameliabooking'),
+            'generate_payment_links'            => __('Generate payment links', 'ameliabooking'),
+            'generate_payment_links_tooltip'    => __('Check this box to generate a payment link.<br> To include it in the notification, add the payment link placeholder.', 'ameliabooking'),
             'custom_fields'                     => __('Custom Fields', 'ameliabooking'),
             'customer_email'                    => __('Customer Email', 'ameliabooking'),
             'customer_phone'                    => __('Customer Phone', 'ameliabooking'),
@@ -1162,9 +1165,12 @@ class LiteBackendStrings
     public static function getBookableStrings()
     {
         return [
+            'default_pricing'                    => __('Default Pricing', 'ameliabooking'),
             'deposit_enabled'                    => __('Deposit Payment', 'ameliabooking'),
             'custom_pricing_enabled'             => __('Custom Pricing', 'ameliabooking'),
             'custom_duration_pricing_enabled'    => __('Custom Duration and Pricing', 'ameliabooking'),
+            'custom_person_pricing_enabled'      => __('Pricing by the number of people', 'ameliabooking'),
+            'custom_pricing'                     => __('Conditional Pricing', 'ameliabooking'),
         ];
     }
 
@@ -1347,7 +1353,6 @@ class LiteBackendStrings
             'event_location'                     => __('Event Location', 'ameliabooking'),
             'open'                               => __('Open', 'ameliabooking'),
             'full'                               => __('Full', 'ameliabooking'),
-            'from'                               => __('From', 'ameliabooking'),
             'upcoming'                           => __('Upcoming', 'ameliabooking'),
             'event_free'                         => __('Free', 'ameliabooking'),
             'event_price'                        => __('Event Price', 'ameliabooking'),

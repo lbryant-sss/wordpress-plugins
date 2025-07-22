@@ -135,6 +135,7 @@
       >
         <AppointmentPayment
           :responsive-class="props.responsiveClass"
+          :saved-appointment="savedAppointment"
         />
       </el-tab-pane>
       <!-- /Payment -->
@@ -153,19 +154,6 @@
         {{ amLabels.save }}
       </AmButton>
     </div>
-
-    <CancelPopup
-      :visibility="amountChanged"
-      :title="amLabels.confirm"
-      :description="amLabels.price_changed_message"
-      :close-btn-text="amLabels.no"
-      :confirm-btn-text="amLabels.yes"
-      :customized-options="{cancelBtn: {buttonType: 'plain'}, confirmBtn: {buttonType: 'filled'}}"
-      @decline="saveAppointment(false)"
-      @confirm="saveAppointment(true)"
-      @close="amountChanged = false"
-    >
-    </CancelPopup>
   </div>
   <Skeleton v-else></Skeleton>
 </template>
@@ -207,7 +195,11 @@ import CancelPopup from "../../parts/CancelPopup.vue";
 
 import httpClient from '../../../../../../plugins/axios'
 import { useColorTransparency } from '../../../../../../assets/js/common/colorManipulation'
-import {useAppointmentBookingAmountData} from "../../../../../../assets/js/common/appointments";
+import {
+  useAppointmentBookingAmountData,
+  useAppointmentServicePrice,
+  useChangedBookingPrice,
+} from '../../../../../../assets/js/common/appointments'
 
 // * Component properties
 let props = defineProps({
@@ -533,7 +525,7 @@ let slotsProps = computed(() => {
     extras: JSON.stringify(Object.values(extras)),
     persons: appointmentCapacity.value ? appointmentCapacity.value : 1,
     excludeAppointmentId: store.getters['appointment/getId'],
-    group: 1,
+    group: store.getters['appointment/getId'] ? 0 : 1,
     timeZone: store.getters['cabinet/getTimeZone'],
     monthsLoad: 1,
     page: 'appointments',
@@ -669,7 +661,6 @@ let loading = ref(false)
 
 let savedAppointment = ref(null)
 
-let amountChanged = ref(false)
 
 function getAmount(serviceId, bookings) {
   let amount = 0
@@ -682,9 +673,18 @@ function getAmount(serviceId, bookings) {
   bookings
     .filter(i => i.status !== 'canceled' && i.status !== 'rejected')
     .forEach((booking) => {
+      let changedBookingPrice = useChangedBookingPrice(
+        store.getters['appointment/getAppointmentData'],
+        savedAppointment.value,
+        booking,
+        service.value
+      )
+
       let data = {
         id: 'id' in booking ? booking.id : null,
-        price: 'price' in booking ? booking.price : employeeService.customPricing.durations[booking.duration].price,
+        price: !changedBookingPrice
+          ? booking.price
+          : useAppointmentServicePrice(employeeService, booking.persons, booking.duration),
         persons: booking.persons,
         aggregatedPrice: 'aggregatedPrice' in booking ? booking.aggregatedPrice : employeeService.aggregatedPrice,
         extras: booking.extras.filter((e) => 'id' in e && e.id),
@@ -786,33 +786,11 @@ function validateSave() {
         return
       }
 
-      // Check for payment links
-      let paymentLinksEnabled = amSettings.payments.paymentLinks && amSettings.payments.paymentLinks.enabled
-
-      let serviceSettings = service.value.settings ? JSON.parse(service.value.settings) : null
-
-      if (serviceSettings &&
-        'payments' in serviceSettings &&
-        'paymentLinks' in serviceSettings.payments
-      ) {
-        paymentLinksEnabled = serviceSettings.payments.paymentLinks.enabled
-      }
-
-      if (savedAppointment.value &&
-        paymentLinksEnabled &&
-        getAmount(store.getters['appointment/getServiceId'], store.getters['appointment/getBookings']) >
-        getAmount(savedAppointment.value.serviceId, savedAppointment.value.bookings)
-      ) {
-        amountChanged.value = true
-      } else {
-        saveAppointment(false)
-      }
+      saveAppointment()
     })
 }
 
-function saveAppointment(createPaymentLinks) {
-  amountChanged.value = false
-
+function saveAppointment() {
   let bookings = []
 
   store.getters['appointment/getBookings'].forEach((booking) => {
@@ -896,7 +874,9 @@ function saveAppointment(createPaymentLinks) {
     lessonSpace: store.getters['appointment/getLessonSpace']
       ? 'https://www.thelessonspace.com/space/' + store.getters['appointment/getLessonSpace']
       : null,
-    createPaymentLinks: createPaymentLinks,
+    createPaymentLinks: store.getters['appointment/getCreatePaymentLinks']
+        ? 1
+        : 0,
   }
 
   loading.value = true

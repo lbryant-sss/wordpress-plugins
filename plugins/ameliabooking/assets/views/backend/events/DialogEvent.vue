@@ -1073,7 +1073,8 @@
                       <el-row :style="{minHeight: '50px', borderBottom: '1px solid #E2E6EC', display: 'flex', alignItems: 'baseline', padding: '8px 0'}">
                         <el-col :span="5" :style="{marginBottom: 0, fontWeight: 500}">{{ $root.labels.event_date_range }}</el-col>
                         <el-col :span="17" style="overflow: visible" class="v-calendar-column">
-                          <v-date-picker
+                          <el-form-item>
+                            <v-date-picker
                               v-model="customTicketsDateRange[i].range"
                               :is-double-paned="false"
                               mode='range'
@@ -1093,9 +1094,15 @@
                               :max-date="getEndTicketRangeDate('date', false)"
                               :disabled-dates="customTicketsDateRangesSelected"
                               @input="setDisabledTicketRangeDates(null, false)"
-                              @popover-did-appear="setDisabledTicketRangeDates(i, true)"
-                          >
-                          </v-date-picker>
+                            >
+                            </v-date-picker>
+                            <span
+                              class="am-v-date-picker-suffix el-input__suffix-inner"
+                              @click="clearRange(i)"
+                            >
+                              <i class="el-select__caret el-input__icon el-icon-circle-close"></i>
+                            </span>
+                          </el-form-item>
                         </el-col>
                         <el-col :span="2">
                           <div class="am-delete-element" @click="deleteCustomTicketDateRange(i)" v-show="ticketIsBooked(ticket.id)" style="margin-left: 10px;">
@@ -2144,6 +2151,12 @@
         }
 
         return periodDates
+      },
+
+      clearRange (i) {
+        this.customTicketsDateRange[i].range = null
+
+        this.setDisabledTicketRangeDates(null, false)
       },
 
       setDisabledTicketRangeDates (i, force) {

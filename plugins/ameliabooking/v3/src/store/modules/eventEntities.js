@@ -278,8 +278,6 @@ export default {
         )
       })
 
-      commit('setReady', true, { root: true })
-
       if (getters['getEventsDisplay']) {
         dispatch('requestEvents', getters['getEventsDisplay'])
       } else {
@@ -384,6 +382,7 @@ export default {
           commit('setEvents', events)
         }
 
+        commit('setReady', true, { root: true })
         if (payload === 'upcoming') {
           commit('setUpcomingLoading', false)
         } else {

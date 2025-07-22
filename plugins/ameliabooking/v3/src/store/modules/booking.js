@@ -451,6 +451,12 @@ export default {
       }
     },
 
+    unsetRecurringItems (state) {
+      let i = state.appointmentsIndex
+
+      state.appointments[i].services[state.appointments[i].serviceId].list.length = 1
+    },
+
     setMultipleAppointmentsRange (state, payload) {
       let i = state.appointmentsIndex
 

@@ -1,6 +1,10 @@
 import moment from 'moment'
+import servicePriceMixin from '../../../js/common/mixins/servicePriceMixin'
 
 export default {
+  mixins: [
+    servicePriceMixin
+  ],
 
   data () {
     return {
@@ -19,7 +23,7 @@ export default {
           providerId: recurringData.providerId,
           locationId: recurringData.locationId,
           bookingStart: moment(recurringData.date).format('YYYY-MM-DD') + ' ' + recurringData.time,
-          price: this.getServiceDurationPrice(service, this.appointment.serviceDuration),
+          price: this.getBookingServicePrice(service, this.appointment.serviceDuration, this.appointment.bookings[0].persons),
           depositData: service.depositPayment !== 'disabled' ? {
             deposit: service.deposit,
             depositPayment: service.depositPayment,

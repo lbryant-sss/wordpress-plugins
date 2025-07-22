@@ -249,6 +249,7 @@
   import imageMixin from '../../../js/common/mixins/imageMixin'
   import dateMixin from '../../../js/common/mixins/dateMixin'
   import priceMixin from '../../../js/common/mixins/priceMixin'
+  import servicePriceMixin from '../../../js/common/mixins/servicePriceMixin'
   import helperMixin from '../../../js/backend/mixins/helperMixin'
   import settingsMixin from '../../../js/common/mixins/settingsMixin'
   import entitiesMixin from '../../../js/common/mixins/entitiesMixin'
@@ -284,6 +285,7 @@
       helperMixin,
       durationMixin,
       priceMixin,
+      servicePriceMixin,
       customFieldMixin,
       settingsMixin
     ],
@@ -708,7 +710,7 @@
           return {
             id: this.selectedService.id,
             name: this.selectedService.name,
-            price: this.getServiceDurationPrice(this.selectedService, this.appointment.serviceDuration),
+            price: this.getBookingServicePrice(this.selectedService, this.appointment.serviceDuration, this.appointment.bookings[0].persons),
             depositData: this.selectedService.depositPayment !== 'disabled' ? {
               deposit: this.selectedService.deposit,
               depositPayment: this.selectedService.depositPayment,
@@ -1050,7 +1052,7 @@
 
         this.toggleRecurringActive()
 
-        let service = null;
+        let service = null
         if (this.appointment.serviceId) {
           service = this.getServiceById(this.appointment.serviceId)
 
@@ -1058,7 +1060,7 @@
 
           this.updateSettings(service.settings)
         }
-        this.handleCapacity(true, false, service ? service.maxExtraPeople: null)
+        this.handleCapacity(true, false, service ? service.maxExtraPeople : null)
 
         if (('showAmeliaCalendarOnLoad' in window && window.showAmeliaCalendarOnLoad && this.appointment.serviceId) ||
           (this.showCalendarOnly(true) && this.$root.shortcodeData.booking.show !== 'packages')

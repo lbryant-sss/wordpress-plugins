@@ -1226,7 +1226,7 @@ export default {
 
               this.setEntitySettings(service, 'service')
 
-              service.customPricing = this.getArrayCustomPricing(service.customPricing)
+              service.customPricing = this.getArrayCustomPricing(service)
             })
 
             this.dialogService = false
@@ -1345,7 +1345,7 @@ export default {
 
             this.futureAppointments[service.id] = response.data.data.futureAppointmentsProvidersIds
 
-            service.customPricing = this.getArrayCustomPricing(service.customPricing)
+            service.customPricing = this.getArrayCustomPricing(service)
 
             service.extras.sort((a, b) => (a.position > b.position) ? 1 : -1)
 
@@ -1612,7 +1612,7 @@ export default {
           pictureFullPath: '',
           pictureThumbPath: '',
           price: 0,
-          customPricing: {enabled: false, durations: []},
+          customPricing: {enabled: null, durations: [], persons: []},
           status: 'visible',
           timeAfter: '',
           timeBefore: '',

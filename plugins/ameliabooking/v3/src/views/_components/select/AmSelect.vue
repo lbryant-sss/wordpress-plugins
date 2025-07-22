@@ -28,7 +28,7 @@
       :multiple-limit="props.multipleLimit"
       :name="props.name"
       :autocomplete="props.autocomplete"
-      :placeholder="props.placeholder"
+      :placeholder="props.placeholder ? props.placeholder : amLabels.select"
       :filterable="props.filterable"
       :allow-create="props.allowCreate"
       :filter-method="props.filterMethod"
@@ -99,6 +99,9 @@ import IconComponent from "../icons/IconComponent.vue";
 
 // * Composable
 import { useColorTransparency } from '../../../assets/js/common/colorManipulation';
+
+// * Labels
+let amLabels = inject('labels')
 
 /**
  * Component Props

@@ -202,19 +202,24 @@ export default {
        isValidEmail: true,
        blogPosts: [],
        changelog: {
-         version: '8.3.2',
+         version: '8.4',
          starter: {
            feature: [
+               'GooglePay via Square - Expanded payment options through Square integration for greater flexibility',
            ],
            improvement: [
+               'Updated Square integration - now works directly within the booking form, without redirecting to the external Square checkout page',
+               'Updated full-calendar library'
            ],
            translations: [
+               'Updated Korean translation'
            ],
            bugfix: [
-             'Fixed issue with certain slots being shown as \'Booked\' on the backend when they are available',
-             'Fixed issue with customers booking the same appointment when rescheduling',
-             'Fixed issue with dates for the “Event closes on” option',
-             'Fixed issue with \'Notify customers\' option when changing status in the edit appointment dialog',
+             'Fixed issue with preselecting an event via URL that includes a popup',
+             'Fixed issue with booking group appointments when creating a new customer',
+             'Fixed issue with event name translation on Congratulations',
+             'Fixed issue with left alignment when the alignment is changed in notifications',
+             'Fixed issue with wrong Attachment upload path in General settings'
            ],
            other: [
              'Other small bug fixes and stability improvements'
@@ -224,30 +229,33 @@ export default {
            feature: [
            ],
            improvement: [
-             'Enhanced and updated Stripe integration for improved performance and reliability',
-             'Added VAT number display on invoices'
+             'Updated Stripe integration for better performance'
            ],
            translations: [
            ],
            bugfix: [
-             'Fixed conflict with Divi theme in connection to Google Maps Api key',
-             'Fixed issue with Outlook and Locations from custom fields',
-             'Fixed issue with payment status when WooCommerce has included taxes',
-             'Fixed issue with description format on the new WooCommerce blocks'
+             'Fixed the issue with coupon and Apple/Google Pay (Booking form)',
+             'Fixed issue with Woo variable products connected to Amelia services/events/packages',
+             'Fixed issue with admin booking ignoring limit settings',
+             'Fixed issue with Square and WooCommerce when the URL has a hashtag',
+             'Fixed issue with duplicating events with Custom pricing by date range',
+             'Fixed issue with CSV file of exported attendees and translations',
+             'Fixed the Select placeholder in custom fields is not translated'
            ],
            other: [
            ]
          },
          pro: {
            feature: [
+               'Custom pricing by the number of people - Offer flexible service pricing that automatically adjusts based on the number of people in one booking'
            ],
            improvement: [
+               'Implement option to add coupon when booking package form Manage Package page'
            ],
            translations: [
            ],
            bugfix: [
-             'Fixed issue with duplicating appointments on the Manage packages page',
-             'Fixed issue with Stripe Connect and 3D secure'
+             'Fixed issue with missing Close button when booking events on waiting list if customer panel is disabled'
            ],
            other: [
            ]
@@ -260,6 +268,7 @@ export default {
            translations: [
            ],
            bugfix: [
+               'Fixed issue with booking appointments via API when extras are not sent'
            ],
            other: [
            ]

@@ -120,7 +120,7 @@ function continueWithBooking () {
 
   let bookingData = useBookingData(
     store,
-    gateway === 'mollie' || gateway === 'square' ? formData : null,
+    gateway === 'mollie' ? formData : null,
     false,
     {},
     null

@@ -19,7 +19,7 @@
     ></div>
     <AmButton
       v-if="props.paymentGateway !== 'payPal' || isCongratzStep"
-      :class="mainBtnClass"
+      :class="[{mainBtnClass}, {'square-continue': props.paymentGateway === 'square'}]"
       :type="props.primaryFooterButtonType"
       :category="isWaitingList() ? 'waiting' : 'primary'"
       size="medium"

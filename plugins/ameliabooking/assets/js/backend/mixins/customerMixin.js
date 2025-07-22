@@ -38,7 +38,7 @@ export default {
       }
     },
 
-    setInitialCustomers () {
+    setInitialCustomers (callback = () => {}) {
       if (this.$root.settings.role !== 'customer') {
         this.searchCustomers(
           '',
@@ -63,6 +63,8 @@ export default {
               if (this.params && this.params.customerId) {
                 this.setCustomerFromUrl(this.params.customerId)
               }
+
+              callback()
             })
           }
         )

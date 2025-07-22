@@ -249,12 +249,14 @@ export default {
         }
       }
 
-      &__header {
+      .el-dialog__header {
         padding: 0;
       }
 
       &__headerbtn {
         z-index: 10;
+        top: 16px;
+        right: 16px;
 
         &:active {
           position: absolute;
@@ -272,7 +274,7 @@ export default {
         }
       }
 
-      &__body {
+      .el-dialog__body {
         padding: 0;
       }
 

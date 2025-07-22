@@ -176,7 +176,7 @@
                       </div>
                       <!-- Selected Customer Duration -->
                       <div
-                          v-if="!packageServices && appointment.serviceId && getServiceById(appointment.serviceId).customPricing && getServiceById(appointment.serviceId).customPricing.enabled"
+                          v-if="!packageServices && appointment.serviceId && isDurationPricingEnabled(getServiceById(appointment.serviceId).customPricing)"
                           class="am-appointment-duration small"
                       >
                         <img
@@ -535,6 +535,20 @@
               </el-checkbox>
             </el-form-item>
 
+            <!-- Create Payment link -->
+            <el-form-item v-if="isGenerateLinkVisible()">
+              <el-checkbox
+                  v-model="appointment.createPaymentLinks"
+                  @change="clearValidation()"
+              >
+                {{ $root.labels.generate_payment_links }}
+                <el-tooltip placement="top">
+                  <div slot="content" v-html="$root.labels.generate_payment_links_tooltip"></div>
+                  <i class="el-icon-question am-tooltip-icon"></i>
+                </el-tooltip>
+              </el-checkbox>
+            </el-form-item>
+
             <!-- Note -->
             <div class="am-divider" v-if="this.$root.settings.role !== 'customer'"></div>
             <el-form-item :label="$root.labels.note_internal + ':'" v-if="this.$root.settings.role !== 'customer'">
@@ -833,17 +847,10 @@
         haveRemove: $root.settings.capabilities.canDelete === true,
         haveRemoveEffect: false,
         haveDuplicate: haveDuplicate,
-        haveSaveWarning: isPriceChanged() ? false : (isExistingAppointment() || isFullAppointment() || isIntersectedAppointment() || (this.activeRecurring && this.enabledRecurring))
+        haveSaveWarning: isExistingAppointment() || isFullAppointment() || isIntersectedAppointment() || (this.activeRecurring && this.enabledRecurring)
       }"
 
-      :buttonText="isPriceChanged() ? {
-          confirm: {
-            save: {
-              yes: $root.labels.yes,
-              no: $root.labels.no
-            }
-          }
-        } : null"
+      :buttonText="null"
 
       :message="{
         success: {
@@ -896,6 +903,7 @@
   import moment from 'moment'
   import notifyMixin from '../../../js/backend/mixins/notifyMixin'
   import priceMixin from '../../../js/common/mixins/priceMixin'
+  import servicePriceMixin from '../../../js/common/mixins/servicePriceMixin'
   import RecurringDates from '../../parts/RecurringDates.vue'
   import recurringMixin from '../../../js/common/mixins/recurringMixin'
   import RecurringSetup from '../../parts/RecurringSetup.vue'
@@ -915,6 +923,7 @@
       durationMixin,
       notifyMixin,
       priceMixin,
+      servicePriceMixin,
       customFieldMixin,
       appointmentPriceMixin,
       recurringMixin,
@@ -1208,6 +1217,26 @@
     },
 
     methods: {
+      isGenerateLinkVisible () {
+        return this.$root.settings.role !== 'customer' && !this.packageCustomer && this.appointment.notifyParticipants
+            && this.appointment.serviceId && this.isPaymentLinkEnabled(this.appointment.serviceId)
+      },
+
+
+      isPaymentLinkEnabled (serviceId) {
+        let service = this.getServiceById(serviceId)
+        let entitySettings = service && service.settings ? JSON.parse(service.settings) : null
+        let paymentLinksEnabled = entitySettings
+        && 'payments' in entitySettings
+        && entitySettings.payments
+        && 'paymentLinks' in entitySettings.payments
+        && entitySettings.payments.paymentLinks
+            ? entitySettings.payments.paymentLinks
+            : this.$root.settings.payments.paymentLinks
+
+        return paymentLinksEnabled && paymentLinksEnabled.enabled
+      },
+
       changedMonth (data) {
         if (typeof data !== 'undefined' && 'key' in data) {
           this.availableDates = []
@@ -1564,7 +1593,7 @@
         this.$emit('closeDialog')
       },
 
-      getParsedEntity (createPaymentLinks) {
+      getParsedEntity () {
         this.existingAppointmentAcknowledged = false
         this.fullAppointmentAcknowledged = false
         this.intersectedAppointmentAcknowledged = false
@@ -1582,9 +1611,9 @@
             serviceId: this.appointment.serviceId,
             timeZone: this.selectedTimeZone === 'UTC' ? null : this.selectedTimeZone,
             notifyParticipants: this.appointment.notifyParticipants ? 1 : 0,
+            createPaymentLinks: this.appointment.createPaymentLinks ? 1 : 0,
             customFields: this.appointment.bookings[0].customFields,
             internalNotes: this.appointment.internalNotes,
-            createPaymentLinks: false
           }
         }
 
@@ -1653,7 +1682,7 @@
             timeZone: this.selectedTimeZone === 'UTC' ? null : this.selectedTimeZone,
             utc: this.selectedTimeZone === 'UTC',
             locale: null,
-            createPaymentLinks: false,
+            createPaymentLinks: this.appointment.createPaymentLinks ? 1 : 0,
             packageBookingFromBackend: true
           }
         }
@@ -1741,12 +1770,12 @@
           'utc': this.selectedTimeZone === 'UTC',
           'timeZone': this.selectedTimeZone === 'UTC' ? null : this.selectedTimeZone,
           'notifyParticipants': this.appointment.notifyParticipants ? 1 : 0,
+          'createPaymentLinks': this.appointment.createPaymentLinks ? 1 : 0,
           'internalNotes': this.appointment.internalNotes,
           'id': this.appointment.id,
           'payment': this.payment,
           'recurring': this.activeRecurring && this.enabledRecurring ? this.selectedRecurringDates : [],
           'lessonSpace': this.appointment.lessonSpace ? 'https://www.thelessonspace.com/space/' + this.appointment.lessonSpace : null,
-          'createPaymentLinks': createPaymentLinks
         }
       },
 
@@ -1784,7 +1813,7 @@
         let service = this.appointment.serviceId ? this.getServiceById(this.appointment.serviceId) : null
 
         if (service && service.customPricing) {
-          if (service.customPricing.enabled) {
+          if (this.isDurationPricingEnabled(service.customPricing)) {
             this.setDuration()
           }
 
@@ -2067,13 +2096,23 @@
 
             $this.appointment.bookings.forEach(function (booking) {
               if (['approved', 'pending'].includes(booking.status)) {
-                let isChangedBookingDuration = (booking.duration === null ? providerService.duration : booking.duration) !== providerService.duration
+                let savedBooking = $this.savedAppointment && booking.id
+                  ? $this.savedAppointment.bookings.find(i => i.id === booking.id)
+                  : null
 
-                let providerServicePrice = $this.getBookingServicePrice(providerService, booking)
+                let isChangedBookingPersons = savedBooking &&
+                  savedBooking.persons !== booking.persons &&
+                  $this.isPersonPricingEnabled(service.customPricing)
+
+                let isChangedBookingDuration = savedBooking &&
+                  (booking.duration === null ? providerService.duration : booking.duration) !== savedBooking.duration &&
+                  $this.isDurationPricingEnabled(service.customPricing)
+
+                let providerServicePrice = $this.getBookingServicePrice(providerService, booking.duration, booking.persons)
 
                 let priceData = {
                   price: booking.id
-                    ? (isChangedServicePrice || isChangedBookingDuration ? providerServicePrice : booking.price)
+                    ? (isChangedServicePrice || isChangedBookingDuration || isChangedBookingPersons ? providerServicePrice : booking.price)
                     : providerServicePrice,
                   aggregatedPrice: booking.id ? booking.aggregatedPrice : service.aggregatedPrice,
                   id: booking.id ? null : $this.appointment.serviceId
@@ -2595,7 +2634,7 @@
           this.saveConfirmMessage = this.$root.labels.recurring_changed_message
         }
 
-        return haveConfirm || this.isPriceChanged()
+        return haveConfirm
       },
 
       getSelectedDistinctExtras () {

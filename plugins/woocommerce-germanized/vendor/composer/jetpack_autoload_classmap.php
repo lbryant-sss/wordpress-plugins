@@ -911,367 +911,367 @@ return array(
 		'path'    => $baseDir . '/packages/woocommerce-eu-tax-helper/src/Helper.php'
 	),
 	'Vendidero\\Germanized\\Autoloader' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Autoloader.php'
 	),
 	'Vendidero\\Germanized\\Blocks\\Assets' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Blocks/Assets.php'
 	),
 	'Vendidero\\Germanized\\Blocks\\BlockTypesController' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Blocks/BlockTypesController.php'
 	),
 	'Vendidero\\Germanized\\Blocks\\BlockTypes\\AbstractBlock' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Blocks/BlockTypes/AbstractBlock.php'
 	),
 	'Vendidero\\Germanized\\Blocks\\BlockTypes\\AbstractInnerBlock' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Blocks/BlockTypes/AbstractInnerBlock.php'
 	),
 	'Vendidero\\Germanized\\Blocks\\BlockTypes\\AbstractProductElementBlock' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Blocks/BlockTypes/AbstractProductElementBlock.php'
 	),
 	'Vendidero\\Germanized\\Blocks\\BlockTypes\\CheckoutCheckboxes' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Blocks/BlockTypes/CheckoutCheckboxes.php'
 	),
 	'Vendidero\\Germanized\\Blocks\\BlockTypes\\CheckoutPhotovoltaicSystemNotice' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Blocks/BlockTypes/CheckoutPhotovoltaicSystemNotice.php'
 	),
 	'Vendidero\\Germanized\\Blocks\\BlockTypes\\ProductDefectDescription' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Blocks/BlockTypes/ProductDefectDescription.php'
 	),
 	'Vendidero\\Germanized\\Blocks\\BlockTypes\\ProductDeliveryTime' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Blocks/BlockTypes/ProductDeliveryTime.php'
 	),
 	'Vendidero\\Germanized\\Blocks\\BlockTypes\\ProductDeposit' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Blocks/BlockTypes/ProductDeposit.php'
 	),
 	'Vendidero\\Germanized\\Blocks\\BlockTypes\\ProductDepositPackagingType' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Blocks/BlockTypes/ProductDepositPackagingType.php'
 	),
 	'Vendidero\\Germanized\\Blocks\\BlockTypes\\ProductManufacturer' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Blocks/BlockTypes/ProductManufacturer.php'
 	),
 	'Vendidero\\Germanized\\Blocks\\BlockTypes\\ProductNutriScore' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Blocks/BlockTypes/ProductNutriScore.php'
 	),
 	'Vendidero\\Germanized\\Blocks\\BlockTypes\\ProductPowerSupply' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Blocks/BlockTypes/ProductPowerSupply.php'
 	),
 	'Vendidero\\Germanized\\Blocks\\BlockTypes\\ProductSafetyAttachments' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Blocks/BlockTypes/ProductSafetyAttachments.php'
 	),
 	'Vendidero\\Germanized\\Blocks\\BlockTypes\\ProductSafetyInstructions' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Blocks/BlockTypes/ProductSafetyInstructions.php'
 	),
 	'Vendidero\\Germanized\\Blocks\\BlockTypes\\ProductShippingCostsInfo' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Blocks/BlockTypes/ProductShippingCostsInfo.php'
 	),
 	'Vendidero\\Germanized\\Blocks\\BlockTypes\\ProductTaxInfo' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Blocks/BlockTypes/ProductTaxInfo.php'
 	),
 	'Vendidero\\Germanized\\Blocks\\BlockTypes\\ProductUnitPrice' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Blocks/BlockTypes/ProductUnitPrice.php'
 	),
 	'Vendidero\\Germanized\\Blocks\\BlockTypes\\ProductUnitProduct' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Blocks/BlockTypes/ProductUnitProduct.php'
 	),
 	'Vendidero\\Germanized\\Blocks\\Cart' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Blocks/Cart.php'
 	),
 	'Vendidero\\Germanized\\Blocks\\Checkout' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Blocks/Checkout.php'
 	),
 	'Vendidero\\Germanized\\Blocks\\Integrations\\Cart' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Blocks/Integrations/Cart.php'
 	),
 	'Vendidero\\Germanized\\Blocks\\Integrations\\Checkout' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Blocks/Integrations/Checkout.php'
 	),
 	'Vendidero\\Germanized\\Blocks\\Integrations\\MiniCart' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Blocks/Integrations/MiniCart.php'
 	),
 	'Vendidero\\Germanized\\Blocks\\Integrations\\ProductElements' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Blocks/Integrations/ProductElements.php'
 	),
 	'Vendidero\\Germanized\\Blocks\\MiniCart' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Blocks/MiniCart.php'
 	),
 	'Vendidero\\Germanized\\Blocks\\PaymentGateways\\DirectDebit' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Blocks/PaymentGateways/DirectDebit.php'
 	),
 	'Vendidero\\Germanized\\Blocks\\PaymentGateways\\Invoice' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Blocks/PaymentGateways/Invoice.php'
 	),
 	'Vendidero\\Germanized\\Blocks\\Products' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Blocks/Products.php'
 	),
 	'Vendidero\\Germanized\\Bootstrap' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Bootstrap.php'
 	),
 	'Vendidero\\Germanized\\Package' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Package.php'
 	),
 	'Vendidero\\Germanized\\Packages' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Packages.php'
 	),
 	'Vendidero\\Germanized\\PluginsHelper' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/PluginsHelper.php'
 	),
 	'Vendidero\\Germanized\\Registry\\AbstractDependencyType' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Registry/AbstractDependencyType.php'
 	),
 	'Vendidero\\Germanized\\Registry\\Container' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Registry/Container.php'
 	),
 	'Vendidero\\Germanized\\Registry\\FactoryType' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Registry/FactoryType.php'
 	),
 	'Vendidero\\Germanized\\Registry\\SharedType' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Registry/SharedType.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\API\\Auth\\Auth' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/API/Auth/Auth.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\API\\Auth\\Basic' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/API/Auth/Basic.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\API\\Auth\\OAuth' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/API/Auth/OAuth.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\API\\REST' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/API/REST.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\API\\Response' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/API/Response.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Admin\\Admin' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/Admin/Admin.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Admin\\BulkActionHandler' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/Admin/BulkActionHandler.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Admin\\Settings' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/Admin/Settings.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Interfaces\\Compatibility' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/Interfaces/Compatibility.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Interfaces\\LabelConfigurationSet' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/Interfaces/LabelConfigurationSet.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Interfaces\\PackingBox' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/Interfaces/PackingBox.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Interfaces\\PackingItem' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/Interfaces/PackingItem.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Interfaces\\RESTAuth' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/Interfaces/RESTAuth.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Interfaces\\ShipmentLabel' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/Interfaces/ShipmentLabel.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Interfaces\\ShipmentReturnLabel' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/Interfaces/ShipmentReturnLabel.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Interfaces\\ShippingProvider' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/Interfaces/ShippingProvider.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Interfaces\\ShippingProviderAuto' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/Interfaces/ShippingProviderAuto.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Labels\\ConfigurationSet' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/Labels/ConfigurationSet.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Labels\\Label' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/Labels/Label.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Labels\\ReturnLabel' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/Labels/ReturnLabel.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Order' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/Order.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\PDFMerger' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/PDFMerger.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\PDFSplitter' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/PDFSplitter.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Package' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/Package.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Packaging' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/Packaging.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\PickupDelivery' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/PickupDelivery.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Registry\\Container' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/Registry/Container.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Registry\\FactoryType' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/Registry/FactoryType.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Registry\\SharedType' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/Registry/SharedType.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ReturnShipment' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/ReturnShipment.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\SecretBox' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/SecretBox.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\Shipment' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/Shipment.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ShipmentError' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/ShipmentError.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ShipmentItem' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/ShipmentItem.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ShipmentReturnItem' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/ShipmentReturnItem.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ShippingMethod\\ProviderMethod' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/ShippingMethod/ProviderMethod.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ShippingMethod\\ProviderMethodPlaceholder' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/ShippingMethod/ProviderMethodPlaceholder.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ShippingMethod\\ShippingMethod' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/ShippingMethod/ShippingMethod.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ShippingProvider\\Auto' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/ShippingProvider/Auto.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ShippingProvider\\Helper' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/ShippingProvider/Helper.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ShippingProvider\\PickupLocation' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/ShippingProvider/PickupLocation.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ShippingProvider\\Placeholder' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/ShippingProvider/Placeholder.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ShippingProvider\\PrintFormat' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/ShippingProvider/PrintFormat.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ShippingProvider\\Product' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/ShippingProvider/Product.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ShippingProvider\\Service' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/ShippingProvider/Service.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\ShippingProvider\\Simple' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/ShippingProvider/Simple.php'
 	),
 	'Vendidero\\Germanized\\Shipments\\SimpleShipment' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shipments/SimpleShipment.php'
 	),
 	'Vendidero\\Germanized\\Shiptastic' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shiptastic.php'
 	),
 	'Vendidero\\Germanized\\Shopmark' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shopmark.php'
 	),
 	'Vendidero\\Germanized\\Shopmarks' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Shopmarks.php'
 	),
 	'Vendidero\\Germanized\\Utilities\\CartCheckout' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Utilities/CartCheckout.php'
 	),
 	'Vendidero\\Germanized\\Utilities\\NumberUtil' => array(
-		'version' => 'dev-master',
+		'version' => 'dev-eu-disputes-updates',
 		'path'    => $baseDir . '/src/Utilities/NumberUtil.php'
 	),
 	'Vendidero\\Shiptastic\\API\\Api' => array(

@@ -189,6 +189,26 @@
     </el-form-item>
     <!-- /Notify Customers -->
 
+    <!-- Create payment links -->
+    <el-form-item v-if="appointmentFormData.notifyParticipants && appointmentFormData.serviceId && isPaymentLinkEnabled(appointmentFormData.serviceId)" class="am-capai-def__item">
+      <div class="am-capai-def__notify">
+        <AmCheckbox
+            v-model="appointmentFormData.createPaymentLinks"
+            :label="amLabels.generate_payment_links"
+        />
+        <el-tooltip
+            effect="dark"
+            placement="top"
+        >
+          <template #content>
+            <div v-html="amLabels.generate_payment_links_tooltip"></div>
+          </template>
+          <IconComponent icon="info-reverse" />
+        </el-tooltip>
+      </div>
+    </el-form-item>
+    <!-- /Notify Customers -->
+
     <!-- Internal Notes -->
     <el-form-item
       :label="`${amLabels.note_internal}`"
@@ -342,6 +362,12 @@ let appointmentFormData = ref({
       store.commit('appointment/setNotifyParticipants', val)
     }
   }),
+  createPaymentLinks: computed({
+    get: () => store.getters['appointment/getCreatePaymentLinks'],
+    set: (val) => {
+      store.commit('appointment/setCreatePaymentLinks', val)
+    }
+  }),
   internalNotes: computed({
     get: () => store.getters['appointment/getInternalNotes'],
     set: (val) => {
@@ -427,6 +453,21 @@ let services = ref(
     }
   )
 )
+
+function isPaymentLinkEnabled (serviceId) {
+  let service = store.getters['entities/getService'](serviceId)
+  let entitySettings = service && service.settings ? JSON.parse(service.settings) : null
+
+  let paymentLinksEnabled = entitySettings
+  && 'payments' in entitySettings
+  && entitySettings.payments
+  && 'paymentLinks' in entitySettings.payments
+  && entitySettings.payments.paymentLinks
+      ? entitySettings.payments.paymentLinks
+      : amSettings.payments.paymentLinks
+
+  return paymentLinksEnabled && paymentLinksEnabled.enabled
+}
 
 let queryService = ref('')
 function filterService (query) {

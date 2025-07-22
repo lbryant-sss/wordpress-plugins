@@ -1,7 +1,11 @@
 import taxesMixin from '../../../js/common/mixins/taxesMixin'
+import servicePriceMixin from '../../../js/common/mixins/servicePriceMixin'
 
 export default {
-  mixins: [taxesMixin],
+  mixins: [
+    servicePriceMixin,
+    taxesMixin
+  ],
 
   data () {
     return {}
@@ -16,13 +20,6 @@ export default {
       return providerService || this.getServiceById(appointment.serviceId)
     },
 
-    getBookingServicePrice (service, booking) {
-      return service.customPricing && service.customPricing.enabled &&
-        booking.duration &&
-        service.customPricing.durations.filter(i => i.duration === booking.duration).length
-        ? service.customPricing.durations.find(i => i.duration === booking.duration).price : service.price
-    },
-
     getAppointmentPrice (savedServiceId, service, bookings, isList, formatPrice = true) {
       let totalBookings = 0
       let $this = this
@@ -32,7 +29,7 @@ export default {
       bookings.filter(i => i.packageCustomerService === null).forEach(function (booking) {
         let isChangedBookingDuration = (booking.duration === null ? service.duration : booking.duration) !== service.duration
 
-        let servicePrice = $this.getBookingServicePrice(service, booking)
+        let servicePrice = $this.getBookingServicePrice(service, booking.duration, booking.persons)
 
         // for old bookings use price from booking
         if (booking.payments.length > 0) {

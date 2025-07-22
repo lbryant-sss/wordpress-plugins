@@ -133,6 +133,7 @@ export default {
         status: this.$root.settings.general.defaultAppointmentStatus,
         internalNotes: '',
         notifyParticipants: this.$root.settings.notifications.notifyCustomers,
+        createPaymentLinks: true,
         dateTimeSlots: [],
         calendarTimeSlots: [],
         occupiedTimeSlots: [],
@@ -289,6 +290,7 @@ export default {
 
           this.appointment = Object.assign(this.getInitAppointmentObject(null), response.data.data.appointment)
           this.appointment.notifyParticipants = !!this.appointment.notifyParticipants
+          this.appointment.createPaymentLinks = !!this.appointment.createPaymentLinks
 
           if (timeZone === 'UTC' && this.$root.settings.general.showClientTimeZone) {
             this.appointment.bookingStart = this.getConvertedUtcToLocalDateTime(this.appointment.bookingStart)

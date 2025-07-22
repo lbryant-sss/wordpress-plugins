@@ -63,7 +63,7 @@
 </template>
 
 <script setup>
-import {computed, onMounted, inject, watchEffect, ref} from 'vue'
+import {computed, onMounted, inject, watchEffect, ref, watch} from 'vue'
 import {
   usePaymentError,
   useBookingData,
@@ -128,31 +128,34 @@ let paymentRequestButton = null
 let supportsExpressCheckout = ref(false)
 let paymentRequestAvailable = ref(false)
 
-async function initializeExpressCheckout() {
+async function initializeExpressCheckout(update = false) {
   let checkoutPaymentData = null
 
   await httpClient.post(
-      '/payments/amount',
-      useBookingData(
-          store,
-          null,
-          true,
-          {},
-          null
-      )['data']
+    '/payments/amount',
+    useBookingData(
+      store,
+      null,
+      true,
+      {},
+      null
+    )['data']
   ).then((response) => {
     checkoutPaymentData = response.data.data
   }).catch(e => {
-    emits('payment-error', e.message)
+    const message = e?.response?.data?.message || e.message || 'Unknown error'
+    emits('payment-error', message)
   })
 
-  stripePaymentInit(
-    checkoutPaymentData?.transfers?.accounts &&
-    Object.keys(checkoutPaymentData.transfers.accounts).length === 1 &&
-    checkoutPaymentData?.transfers?.method === 'direct'
-      ? Object.keys(checkoutPaymentData.transfers.accounts)[0]
-      : null
-  )
+  if (!update) {
+    stripePaymentInit(
+      checkoutPaymentData?.transfers?.accounts &&
+      Object.keys(checkoutPaymentData.transfers.accounts).length === 1 &&
+      checkoutPaymentData?.transfers?.method === 'direct'
+        ? Object.keys(checkoutPaymentData.transfers.accounts)[0]
+        : null
+    )
+  }
 
   if (!stripeObject) return
 
@@ -163,7 +166,7 @@ async function initializeExpressCheckout() {
     currency: checkoutPaymentData.currency,
   }).formatToParts(checkoutPaymentData.amount)
 
-  const IntegerPart = totalPriceParts.find((part) => part.type === 'integer')?.value || ''
+  const IntegerPart = totalPriceParts.filter((part) => part.type === 'integer').map(part => part.value).join('')
   const fractionPart = totalPriceParts.find((part) => part.type === 'fraction')?.value || ''
   const totalPriceInMinorUnits = Number.parseInt(`${IntegerPart}${fractionPart}`)
 
@@ -210,28 +213,28 @@ async function handleExpressCheckout(event) {
         : null
 
     useCreateBooking(
+      store,
+      useBookingData(
         store,
-        useBookingData(
-            store,
-            null,
-            false,
-            {
-              paymentMethodId: paymentMethod.id,
-              address: addressResult ? addressResult.value : null,
-            },
-            recaptchaResponse.value
-        ),
-        function (response) {
-          if (response.data.data.requiresAction) {
-            stripePaymentActionRequired(response.data.data)
-            return
-          }
-          event.complete('success')
-          successBooking(response)
+        null,
+        false,
+        {
+          paymentMethodId: paymentMethod.id,
+          address: addressResult ? addressResult.value : null,
         },
-        (response) => {
-          errorBooking(response)
+        recaptchaResponse.value
+      ),
+      function (response) {
+        if (response.data.data.requiresAction) {
+          stripePaymentActionRequired(response.data.data)
+          return
         }
+        event.complete('success')
+        successBooking(response)
+      },
+      (response) => {
+        errorBooking(response)
+      }
     )
   } catch (error) {
     event.complete('fail')
@@ -252,13 +255,13 @@ function onRecaptchaVerify (response) {
 
   if (amSettings.general.googleRecaptcha.invisible) {
     stripePaymentCreate(
-        useBookingData(
-            store,
-            null,
-            false,
-            {},
-            recaptchaResponse.value
-        )
+      useBookingData(
+        store,
+        null,
+        false,
+        {},
+        recaptchaResponse.value
+      )
     )
 
     return false
@@ -347,31 +350,31 @@ async function stripePaymentCreate () {
       }
 
       useCreateBooking(
+        store,
+        useBookingData(
           store,
-          useBookingData(
-              store,
-              null,
-              false,
-              {
-                paymentMethodId: result.paymentMethod.id,
-                address: addressResult ? addressResult.value : null
-              },
-              recaptchaResponse.value
-          ),
-          function (response) {
-            if (response.data.data.requiresAction) {
-              stripePaymentActionRequired(response.data.data)
-
-              return
-            }
-
-            store.commit('setLoading', false)
-            successBooking(response)
+          null,
+          false,
+          {
+            paymentMethodId: result.paymentMethod.id,
+            address: addressResult ? addressResult.value : null
           },
-          (response) => {
-            store.commit('setLoading', false)
-            errorBooking(response)
+          recaptchaResponse.value
+        ),
+        function (response) {
+          if (response.data.data.requiresAction) {
+            stripePaymentActionRequired(response.data.data)
+
+            return
           }
+
+          store.commit('setLoading', false)
+          successBooking(response)
+        },
+        (response) => {
+          store.commit('setLoading', false)
+          errorBooking(response)
+        }
       )
 
 
@@ -418,7 +421,7 @@ function stripeError (result, addressResult) {
     usePaymentError(
       store,
       function () {
-        emits('payment-error', addressError ? amLabels.value.payment_address_error : result.error.message)
+        emits('payment-error', addressError ? amLabels.payment_address_error : result.error.message)
       }
     )
     return true
@@ -481,8 +484,22 @@ watchEffect(() => {
   }
 }, {flush: 'post'})
 
+// * Watch coupon changes and update paymentRequest amount
+watch(
+  () => store.getters['coupon/getCoupon'],
+  async (newCoupon, oldCoupon) => {
+    if (paymentRequest && store.getters['coupon/getCouponValidated']) {
+      if (paymentRequestButton) {
+        paymentRequestButton.unmount();
+        paymentRequestButton = null;
+      }
+      initializeExpressCheckout(true)
+    }
+  }
+)
+
 onMounted(() => {
-  initializeExpressCheckout()
+  initializeExpressCheckout(false)
 })
 
 // * Css variables

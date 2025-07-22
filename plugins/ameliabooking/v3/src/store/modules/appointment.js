@@ -9,6 +9,7 @@ function getDefaultAppointment() {
     startDate: '',
     startTime: '',
     notifyParticipants: true,
+    createPaymentLinks: true,
     internalNotes: '',
     bookings: [],
     customFields: [],
@@ -68,6 +69,10 @@ export default {
 
     getNotifyParticipants(state) {
       return state.notifyParticipants
+    },
+
+    getCreatePaymentLinks(state) {
+      return state.createPaymentLinks
     },
 
     getInternalNotes(state) {
@@ -158,6 +163,10 @@ export default {
 
     setNotifyParticipants(state, payload) {
       state.notifyParticipants = payload
+    },
+
+    setCreatePaymentLinks(state, payload) {
+      state.createPaymentLinks = payload
     },
 
     setInternalNotes(state, payload) {

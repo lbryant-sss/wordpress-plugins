@@ -187,8 +187,8 @@ import {
   watch,
   inject,
   computed,
-  reactive, onMounted,
-} from "vue"
+  reactive,
+} from 'vue'
 
 // * Import from vuex
 import { useStore } from "vuex";
@@ -217,18 +217,18 @@ let onlyOneEvent = computed (() => {
   return shortcodeEvents.length === 1 || urlEvents.length === 1
 })
 
-onMounted(() => {
-  let urlParams = useUrlQueryParams(window.location.href)
-  if (urlParams && urlParams.ameliaEventPopup) {
-    selectEvent(parseInt(urlParams.ameliaEventPopup))
-  }
-})
-
 // * Ready state
 let ready = computed(() => store.getters['getReady'])
 
 // * Load state
 let loading = computed(() => store.getters['getLoading'])
+
+let urlParams = useUrlQueryParams(window.location.href)
+watch(ready, (readyState) => {
+  if (readyState && urlParams && urlParams.ameliaEventPopup) {
+    selectEvent(parseInt(urlParams.ameliaEventPopup))
+  }
+})
 
 // * Container width
 let cWidth = inject('containerWidth')

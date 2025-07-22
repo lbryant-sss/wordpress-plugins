@@ -6,7 +6,7 @@ Donate link: https://wpamelia.com/
 Requires at least: 5.3
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.2.28
+Stable tag: 1.2.29
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -287,6 +287,16 @@ Installing Amelia Lite WordPress Booking Plugin is as easy as 1-2-3!
 
 
 == Changelog ==
+V1.2.29
+* Feature: GooglePay via Square - Expanded payment options through Square integration for greater flexibility
+* Improvement: Updated Square integration - now works directly within the booking form, without redirecting to the external Square checkout page
+* Improvement: Updated full-calendar library
+* BugFix: Fixed issue with preselecting an event via URL that includes a popup
+* BugFix: Fixed issue with event name translation on Congratulations step
+* BugFix: Fixed issue with left alignment when the alignment is changed in notifications
+* BugFix: Fixed issue with wrong Attachment upload path in General settings
+* Other small bug fixes and stability improvements
+
 V1.2.28
 * Small bug fixes and stability improvements
 

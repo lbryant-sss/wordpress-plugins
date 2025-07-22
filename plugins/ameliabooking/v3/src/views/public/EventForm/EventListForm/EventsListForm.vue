@@ -52,7 +52,7 @@
               :ready="ready"
               :loading="loading"
               :loading-upcoming="false"
-              :second-button-show="secondBtnVisibility && secBtnShow && amSettings.roles.customerCabinet.enabled && amSettings.roles.customerCabinet.pageUrl !== null"
+              :second-button-show="secBtnShow && customerCabinetButton"
               :payment-gateway="store.getters['payment/getPaymentGateway']"
               :customized-labels="customizedStepLabels"
               :primary-footer-button-type="isWaitingList && stepsArray[stepIndex].name === 'EventInfo' ? waitingButtonTypeEnabled : customizedStepOptions.primBtn.buttonType"
@@ -259,9 +259,17 @@ provide('bringingAnyoneVisibility', bringingAnyoneVisibility)
 let footerButtonClicked = ref(false)
 let footerBtnDisabled = ref(false)
 
-let secondBtnVisibility = computed(() => {
+let ifBookedCustomerCabinetUrl = computed(() => {
   if (booked.value !== null) {
     return booked.value.customerCabinetUrl.length > 0
+  }
+
+  return true
+})
+
+let customerCabinetButton = computed(() => {
+  if (stepsArray.value[stepIndex.value].name === 'CongratulationsStep') {
+    return amSettings.roles.customerCabinet.enabled && amSettings.roles.customerCabinet.pageUrl !== null && ifBookedCustomerCabinetUrl.value
   }
 
   return true

@@ -375,6 +375,7 @@ import { useColorTransparency } from '../../../assets/js/common/colorManipulatio
 import {
   usePrepaidPrice,
   useCapacity,
+  useCheckingIfAllNotFree,
 } from '../../../assets/js/common/appointments'
 import {
   useCart,
@@ -1332,99 +1333,8 @@ provide('changingStepsFunctions', {
 const sidebarSteps = ref([])
 provide('sidebarSteps', sidebarSteps)
 
-function checkIfAllNotFree() {
-  let preselected = store.getters['entities/getPreselected']
-
-  if (preselected.show === 'packages' || preselected.package.length > 0) {
-    let packages = store.getters['entities/getPackages']
-    if (store.getters['booking/getPackageId']) {
-      let selectedPackage = store.getters['entities/getPackage'](
-        store.getters['booking/getPackageId']
-      )
-      if (selectedPackage) {
-        packages = [selectedPackage]
-      } else {
-        return true
-      }
-    }
-    return (
-      packages.length > 0 &&
-      packages.filter((p) => p.price > 0).length === packages.length
-    )
-  }
-
-  if (!store.getters['booking/getPackageId']) {
-    let services = store.getters['booking/getServiceId']
-      ? [
-          store.getters['entities/getService'](
-            store.getters['booking/getServiceId']
-          ),
-        ]
-      : store.getters['entities/getServices']
-
-    let nonFreeServices = 0
-    for (let service of services) {
-      let employees = store.getters['booking/getEmployeeId']
-        ? store.getters['entities/getEmployee'](
-            store.getters['booking/getEmployeeId']
-          )
-          ? [
-              store.getters['entities/getEmployee'](
-                store.getters['booking/getEmployeeId']
-              ),
-            ]
-          : []
-        : store.getters['entities/getEmployees']
-
-      let duration = store.getters['booking/getBookingDuration']
-
-      let providers = employees.filter((eS) =>
-        eS.serviceList.find(
-          (s) =>
-            s.id === service.id &&
-            (s.price > 0 ||
-              (s.customPricing &&
-                s.customPricing.enabled &&
-                (Object.values(s.customPricing.durations).length ===
-                  Object.values(s.customPricing.durations).filter(
-                    (cp) => cp.price > 0
-                  ).length ||
-                  (duration && s.customPricing.durations[duration].price > 0))))
-        )
-      )
-
-      if (
-        providers.length ===
-        employees.filter((eS) =>
-          eS.serviceList.find((s) => s.id === service.id)
-        ).length
-      ) {
-        nonFreeServices++
-      } else {
-        let extras = store.getters['booking/getAllMultipleAppointments'].length
-          ? store.getters['booking/getSelectedExtras']
-          : []
-
-        if (
-          extras.length > 0 &&
-          extras.reduce((partialSum, a) => partialSum + a.price, 0) > 0
-        ) {
-          nonFreeServices++
-        }
-      }
-    }
-
-    return services.length > 0 && nonFreeServices === services.length
-  }
-
-  return (
-    store.getters['entities/getPackage'](store.getters['booking/getPackageId'])
-      .price > 0
-  )
-}
-
 let keepPaymentStep = computed(() =>
-  useCart(store).length ? usePrepaidPrice(store) !== 0 : checkIfAllNotFree()
+  useCart(store).length ? usePrepaidPrice(store) !== 0 : useCheckingIfAllNotFree(store)
 )
 
 watchEffect(() => {

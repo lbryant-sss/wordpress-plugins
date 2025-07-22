@@ -118,8 +118,8 @@
             </div>
             <div class="am-capai-pay__row-value">
               <span
-                :class="usePaymentStatusIcon(paymentData[index].status, amColors).icon"
-                :style="{color: usePaymentStatusIcon(paymentData[index].status, amColors).color}"
+                :class="usePaymentStatusIcon(payment.status, amColors).icon"
+                :style="{color: usePaymentStatusIcon(payment.status, amColors).color}"
               />
               {{ usePaymentStatusName(payment.status) }}
             </div>
@@ -204,6 +204,22 @@
         </div>
 
         <div
+          v-if="paymentData[index].wcTax"
+          class="am-capai-pay__row"
+          :class="props.responsiveClass"
+        >
+          <div class="am-capai-pay__row-label">
+            {{ amLabels.tax }} (Woo)
+          </div>
+          <div
+            class="am-capai-pay__row-value"
+            :class="{'am-pl-34': pageWidth > 480}"
+          >
+            {{ useFormattedPrice(paymentData[index].wcTax) }}
+          </div>
+        </div>
+
+        <div
           class="am-capai-pay__row"
           :class="props.responsiveClass"
         >
@@ -229,7 +245,23 @@
             class="am-capai-pay__row-value"
             :class="{'am-pl-34': pageWidth > 480}"
           >
-            {{ useFormattedPrice(paymentData[index].paid - paymentData[index].deposit) }}
+            {{ useFormattedPrice(paymentData[index].paid ? paymentData[index].paid - paymentData[index].deposit : 0) }}
+          </div>
+        </div>
+
+        <div
+          v-if="paymentData[index].refunded"
+          class="am-capai-pay__row"
+          :class="props.responsiveClass"
+        >
+          <div class="am-capai-pay__row-label">
+            {{ amLabels.refunded }}
+          </div>
+          <div
+            class="am-capai-pay__row-value"
+            :class="{'am-pl-34': pageWidth > 480}"
+          >
+            {{ useFormattedPrice(paymentData[index].refunded) }}
           </div>
         </div>
 
@@ -244,7 +276,7 @@
             class="am-capai-pay__row-value"
             :class="{'am-pl-34': pageWidth > 480}"
           >
-            {{ useFormattedPrice(paymentData[index].paid - (paymentData[index].total - paymentData[index].discount + paymentData[index].tax)) }}
+            {{ useFormattedPrice(paymentData[index].paid - (paymentData[index].total - paymentData[index].discount + paymentData[index].tax + paymentData[index].wcTax)) }}
           </div>
         </div>
 
@@ -259,7 +291,7 @@
             class="am-capai-pay__row-value"
             :class="{'am-pl-34': pageWidth > 480}"
           >
-            {{ useFormattedPrice(paymentData[index].total - paymentData[index].discount + paymentData[index].tax) }}
+            {{ useFormattedPrice(paymentData[index].total - paymentData[index].discount + paymentData[index].tax + paymentData[index].wcTax) }}
           </div>
         </div>
       </div>
@@ -287,7 +319,11 @@ import {
 } from "../../../../../../assets/js/admin/payment";
 import { getFrontedFormattedDate } from "../../../../../../assets/js/common/date";
 import { useFormattedPrice } from "../../../../../../assets/js/common/formatting";
-import { useAppointmentBookingAmountData } from "../../../../../../assets/js/common/appointments";
+import {
+  useAppointmentBookingAmountData,
+  useAppointmentServicePrice,
+  useChangedBookingPrice,
+} from "../../../../../../assets/js/common/appointments";
 import { useColorTransparency } from "../../../../../../assets/js/common/colorManipulation";
 
 // * Props
@@ -295,6 +331,10 @@ let props = defineProps({
   responsiveClass: {
     type: String,
     default: "",
+  },
+  savedAppointment: {
+    type: Object,
+    default: () => {},
   },
 });
 
@@ -319,6 +359,8 @@ let customerEmailVisibility = computed(() => shortcodeData.value.cabinetType ===
 
 let activeBookingIndex = ref(null)
 
+let service = computed(() => store.getters['appointment/getEmployeeService'])
+
 let appointmentBookings = computed(() => {
   return store.getters['appointment/getBookings'].filter((b) => 'id' in b && b.id && b.status !== 'canceled' && b.status !== 'rejected')
 })
@@ -327,27 +369,45 @@ let paymentData = computed(() => {
   let amountData = []
 
   appointmentBookings.value.forEach((booking, index) => {
+    let changedBookingPrice = useChangedBookingPrice(
+      store.getters['appointment/getAppointmentData'],
+      props.savedAppointment,
+      booking,
+      service.value
+    )
+
     amountData.push(
       useAppointmentBookingAmountData(
         store,
         {
-          price: booking.price,
+          price: !changedBookingPrice
+            ? booking.price
+            : useAppointmentServicePrice(service.value, booking.persons, booking.duration),
           persons: booking.persons,
           aggregatedPrice: booking.aggregatedPrice,
           extras: booking.extras.filter((e) => 'id' in e && e.id),
           serviceId: store.getters['appointment/getServiceId'],
           tax: booking.tax,
           coupon: booking.coupon,
+          wcTax: booking.payments.filter(p => p.wcOrderId && p.wcItemTaxValue).reduce(
+            (sum, payment) => sum + payment.wcItemTaxValue,
+            0
+          )
         },
         false
       )
     )
 
-    amountData[index].deposit = booking.payments.length
+    amountData[index].deposit = booking.payments.length && (booking.payments[0].status === 'paid' || booking.payments[0].status === 'partiallyPaid')
       ? booking.payments[0].amount
       : 0
 
-    amountData[index].paid = booking.payments.reduce(
+    amountData[index].paid = booking.payments.filter(p => p.status === 'paid' || p.status === 'partiallyPaid').reduce(
+      (sum, payment) => sum + payment.amount,
+      0
+    )
+
+    amountData[index].refunded = booking.payments.filter(p => p.status === 'refunded').reduce(
       (sum, payment) => sum + payment.amount,
       0
     )
@@ -360,7 +420,7 @@ let paymentData = computed(() => {
     if (booking.payments.filter(i => i.status !== 'refunded').length === 0) {
       amountData[index].status = 'refunded'
     } else if (
-      amountData[index].paid - (amountData[index].total - amountData[index].discount + amountData[index].tax) === 0
+      amountData[index].paid - (amountData[index].total - amountData[index].discount + amountData[index].tax + amountData[index].wcTax) === 0
     ) {
       amountData[index].status = 'paid'
     } else if (amountData[index].paid) {

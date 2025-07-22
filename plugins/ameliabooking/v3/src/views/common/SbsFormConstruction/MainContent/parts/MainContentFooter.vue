@@ -44,6 +44,7 @@
       <AmButton
         v-if="props.paymentGateway !== 'payPal' || isCongratzStep"
         class="am-button-continue"
+        :class="{'square-continue': props.paymentGateway === 'square'}"
         :disabled="isCongratzStep ? false : footerBtnDisabled"
         :type="props.primaryFooterButtonType"
         @click="continueClick"

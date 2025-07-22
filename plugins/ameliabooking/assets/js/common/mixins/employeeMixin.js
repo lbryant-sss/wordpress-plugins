@@ -136,7 +136,7 @@ export default {
               if (serItem.id === catSerItem.id) {
                 employeeService = Object.assign({}, serItem)
 
-                employeeService.customPricing = $this.getArrayCustomPricing(serItem.customPricing)
+                employeeService.customPricing = $this.getArrayCustomPricing(serItem)
 
                 employeeService.state = true
               }
@@ -148,7 +148,7 @@ export default {
           } else {
             let service = Object.assign({}, catSerItem)
 
-            service.customPricing = $this.getArrayCustomPricing(service.customPricing)
+            service.customPricing = $this.getArrayCustomPricing(service)
 
             service.state = false
             serviceList.push(service)

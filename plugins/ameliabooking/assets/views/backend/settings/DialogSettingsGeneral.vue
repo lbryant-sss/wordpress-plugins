@@ -572,7 +572,7 @@
         <el-row>
           <el-col :sm="24" class="align-right">
             <el-button type="" @click="closeDialog" class="">{{ $root.labels.cancel }}</el-button>
-            <el-button type="primary" @click="onSubmit" class="am-dialog-create">{{ $root.labels.save }}</el-button>
+            <el-button type="primary" @click="onSubmit" :loading="isSaveLoading" class="am-dialog-create">{{ $root.labels.save }}</el-button>
           </el-col>
         </el-row>
       </div>
@@ -841,7 +841,8 @@
               value: 'Events'
             }
           ]
-        }
+        },
+        isSaveLoading: false
       }
     },
 
@@ -897,8 +898,12 @@
       onSubmit () {
         this.$refs.settings.validate((valid) => {
           if (valid) {
-            this.$emit('closeDialogSettingsGeneral')
-            this.$emit('updateSettings', {'general': this.settings})
+            this.isSaveLoading = true
+            this.$emit('updateSettings', {'general': this.settings}, null, true, () => {
+              this.$emit('closeDialogSettingsGeneral')
+            }, () => {
+              this.isSaveLoading = false
+            })
           } else {
             return false
           }

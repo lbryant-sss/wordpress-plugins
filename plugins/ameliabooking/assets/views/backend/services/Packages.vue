@@ -894,7 +894,7 @@ export default {
           this.fetched = true
           this.options.fetched = true
         }, {
-          types: ['locations', 'employees', 'categories', 'custom_fields', 'packages', 'coupons', 'resources'],
+          types: ['locations', 'employees', 'categories', 'custom_fields', 'packages', 'coupons', 'resources', 'coupons'],
           lite: true,
           page: 'appointments',
           isFrontEnd: false,

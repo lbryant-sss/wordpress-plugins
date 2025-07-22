@@ -223,7 +223,7 @@
             v-model="item.persons"
             :parent-class="`${bookingClassDropdown(
               employeeService.maxCapacity > 1,
-              Object.keys(employeeService.customPricing.durations).length > 1
+              employeeService.customPricing.enabled === 'duration'
             )} ${props.responsiveClass}`"
             :placeholder="amLabels.persons"
             prefix-icon="users"
@@ -246,13 +246,11 @@
 
           <!-- Duration -->
           <AmSelect
-            v-if="
-              Object.keys(employeeService.customPricing.durations).length > 1
-            "
+            v-if="employeeService.customPricing.durations.enabled === 'duration'"
             v-model="item.duration"
             :parent-class="`${bookingClassDropdown(
               employeeService.maxCapacity > 1,
-              Object.keys(employeeService.customPricing.durations).length > 1
+              employeeService.customPricing.durations.enabled === 'duration'
             )} ${props.responsiveClass}`"
             :placeholder="amLabels.duration"
             prefix-icon="clock"

@@ -853,7 +853,7 @@
           })
       },
 
-      updateSettings (settings, message = null, notify = true, callback = null) {
+      updateSettings (settings, message = null, notify = true, callback = null, finallyCallback = null) {
         for (let category in settings) {
           if (settings.hasOwnProperty(category) && category !== 'weekSchedule') {
             this.settings[category] = settings[category]
@@ -893,6 +893,11 @@
               this.notify(this.$root.labels.error, e.response.data.message, 'error')
             } else {
               this.notify(this.$root.labels.error, e.message, 'error')
+            }
+          })
+          .finally(() => {
+            if (finallyCallback) {
+              finallyCallback()
             }
           })
       },

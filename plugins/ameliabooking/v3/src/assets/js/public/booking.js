@@ -467,6 +467,8 @@ function useBookingError (response, store) {
       message = globalLabels['coupon_expired']
     } else if ('couponMissing' in response.data && response.data.couponMissing === true) {
       message = globalLabels['coupon_missing']
+    } else if ('emailRequired' in response.data && response.data.emailRequired === true) {
+      message = globalLabels['email_required']
     } else if ('paymentSuccessful' in response.data && response.data.paymentSuccessful === false) {
       if (response.data.message) {
         message = response.data.message

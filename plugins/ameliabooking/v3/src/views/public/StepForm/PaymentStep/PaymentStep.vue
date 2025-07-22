@@ -106,6 +106,7 @@ import PaymentPayPal from '../../Parts/Payment/PaymentPayPal.vue'
 import PaymentOnSite from '../../Parts/Payment/PaymentOnSite.vue'
 import PaymentWc from '../../Parts/Payment/PaymentWc.vue'
 import PaymentCommon from '../../Parts/Payment/PaymentCommon.vue'
+import PaymentSquare from '../../Parts/Payment/PaymentSquare.vue'
 import BookingSkeleton from "../../Parts/BookingSkeleton.vue";
 import PackageInfo from './parts/PackageInfo'
 import { settings } from "../../../../plugins/settings";
@@ -192,7 +193,7 @@ const paymentTypes = {
   razorpay: markRaw(PaymentCommon),
   mollie: markRaw(PaymentCommon),
   wc: markRaw(PaymentWc),
-  square: markRaw(PaymentCommon)
+  square: markRaw(PaymentSquare)
 }
 
 let ready = computed(() => store.getters['entities/getReady'])
@@ -457,7 +458,7 @@ function getPaymentBtn (key) {
 
 function getPaymentSentence () {
   return paymentGateway.value === 'onSite' && !mandatoryOnSitePayment.value ? amLabels.value.payment_onsite_sentence :
-    (paymentGateway.value === 'mollie' || paymentGateway.value === 'wc' || paymentGateway.value === 'square') ? amLabels.value.payment_wc_mollie_sentence : ''
+    (paymentGateway.value === 'mollie' || paymentGateway.value === 'wc') ? amLabels.value.payment_wc_mollie_sentence : ''
 }
 
 // responsive

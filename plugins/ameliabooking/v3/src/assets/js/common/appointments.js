@@ -22,13 +22,48 @@ function useEmployeeService (store, serviceId, employeeId) {
   )
 }
 
-function useAppointmentServicePrice (employeeService, duration) {
-  return employeeService.customPricing.enabled && (duration in employeeService.customPricing.durations)
-    ? employeeService.customPricing.durations[duration].price : employeeService.price
+function useChangedBookingPrice (appointment, savedAppointment, booking, service) {
+  let isChangedBookingService =
+    savedAppointment &&
+    savedAppointment.serviceId !== appointment.serviceId
+
+  let savedBooking = savedAppointment && booking.id
+    ? savedAppointment.bookings.find(i => i.id === booking.id)
+    : null
+
+  let isChangedBookingPersons =
+    savedBooking &&
+    savedBooking.persons !== booking.persons &&
+    service.customPricing.enabled === 'person'
+
+  let isChangedBookingDuration =
+    savedBooking &&
+    (booking.duration === null ? service.duration : booking.duration) !== savedBooking.duration &&
+    service.customPricing.enabled === 'duration'
+
+  return isChangedBookingService || isChangedBookingPersons || isChangedBookingDuration
+}
+
+function useAppointmentServicePrice (service, persons, duration) {
+  if (service.customPricing.enabled === 'duration' &&
+    (duration in service.customPricing.durations)
+  ) {
+    return service.customPricing.durations[duration].price
+  } else if (service.customPricing.enabled === 'person') {
+    let lastRange = Object.keys(service.customPricing.persons)[Object.keys(service.customPricing.persons).length - 1]
+
+    for (let range in service.customPricing.persons) {
+      if (persons >= service.customPricing.persons[range].from && (range !== lastRange ? persons <= parseInt(range) : true)) {
+        return service.customPricing.persons[range].price
+      }
+    }
+  }
+
+  return service.price
 }
 
 function useAppointmentServiceAmount (employeeService, persons, duration) {
-  return useAppointmentServicePrice(employeeService, duration) * (employeeService.aggregatedPrice ? persons : 1)
+  return useAppointmentServicePrice(employeeService, persons, duration) * (employeeService.aggregatedPrice ? persons : 1)
 }
 
 function useAppointmentAmountData (store, item, coupon, couponLimit) {
@@ -85,7 +120,7 @@ function useAppointmentAmountData (store, item, coupon, couponLimit) {
     let amountData = useAppointmentBookingAmountData(
       store,
       {
-        price: useAppointmentServicePrice(employeeService, appointment.duration),
+        price: useAppointmentServicePrice(employeeService, appointment.persons, appointment.duration),
         persons: appointment.persons,
         aggregatedPrice: service.aggregatedPrice,
         extras: appointment.extras,
@@ -113,7 +148,7 @@ function useAppointmentAmountData (store, item, coupon, couponLimit) {
 
     let appointmentDepositAmount = 0
 
-    let servicePrice = useAppointmentServicePrice(employeeService, appointment.duration)
+    let servicePrice = useAppointmentServicePrice(employeeService, appointment.persons, appointment.duration)
 
     servicesPrices[servicePrice] = !(servicePrice in servicesPrices) ? 1 : servicesPrices[servicePrice] + 1
 
@@ -396,7 +431,8 @@ function useAppointmentBookingAmountData (store, appointment, includedTaxInTotal
     total: appointmentTotalAmount,
     bookable: appointmentServiceAmount,
     discount: appointmentDiscountAmount,
-    tax: appointmentTaxAmount
+    tax: appointmentTaxAmount,
+    wcTax: appointment.wcTax,
   }
 }
 
@@ -760,13 +796,13 @@ function setProviderServicePrice (store, employeeId, serviceId) {
 
   let service = employee.serviceList.find(i => i.id === parseInt(serviceId))
 
-  let duration = store.getters['booking/getDuration']
+  service.duration = store.getters['booking/getDuration']
 
-  if (store.getters['booking/getDuration'] in service.customPricing.durations) {
-    service.duration = duration
-
-    service.price = service.customPricing.durations[duration].price
-  }
+  service.price = useAppointmentServicePrice(
+    service,
+    store.getters['booking/getBookingPersons'],
+    store.getters['booking/getDuration']
+  )
 }
 
 function useAppointmentsAmount (store, service, appointments) {
@@ -1099,6 +1135,92 @@ function isPreferredLocationAndEmployee (slotsData, occupiedData, timeString, lo
   return locationId === appointmentStarts[closestTime]
 }
 
+function  useCheckingIfAllNotFree (store) {
+  let preselected = store.getters['entities/getPreselected']
+
+  if (preselected.show === 'packages') {
+    let packages = store.getters['booking/getPackageId']
+      ? [store.getters['entities/getPackage'](store.getters['booking/getPackageId'])]
+      : store.getters['entities/getPackages']
+
+    return packages.length > 0 && packages.filter(p => p.price > 0).length === packages.length
+  }
+
+  if (!store.getters['booking/getPackageId']) {
+    let services = store.getters['booking/getServiceId']
+      ? [store.getters['entities/getService'](store.getters['booking/getServiceId'])]
+      : store.getters['entities/getServices']
+
+    let nonFreeServices = 0
+    for (let service of services) {
+      let employees = store.getters['booking/getEmployeeId']
+        ? (
+          store.getters['entities/getEmployee'](store.getters['booking/getEmployeeId'])
+            ? [store.getters['entities/getEmployee'](store.getters['booking/getEmployeeId'])]
+            : []
+        )
+        : store.getters['entities/getEmployees']
+
+      let duration = store.getters['booking/getBookingDuration']
+
+      let persons = store.getters['booking/getBookingPersons']
+
+      let providers = employees.filter(
+        eS => eS.serviceList.find(s =>
+          s.id === service.id &&
+          (
+            s.price > 0 ||
+            (
+              s.customPricing &&
+              (
+                (
+                  s.customPricing.enabled === 'duration' &&
+                  (
+                    Object.values(s.customPricing.durations).length === Object.values(s.customPricing.durations).filter(cp => cp.price > 0).length ||
+                    (
+                      duration &&
+                      s.customPricing.durations[duration].price > 0
+                    )
+                  )
+                ) || (
+                  s.customPricing.enabled === 'person' &&
+                  (
+                    s.customPricing.persons.length === s.customPricing.persons.filter(cp => cp.price > 0).length ||
+                    (
+                      persons &&
+                      (
+                        s.customPricing.persons.filter(cp => cp.range >= persons).length
+                          ? s.customPricing.persons.filter(cp => cp.range >= persons)[0].price > 0
+                          : s.customPricing.persons[s.customPricing.persons.length - 1].price > 0
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          )
+        )
+      )
+
+      if (providers.length === employees.filter(eS => eS.serviceList.find(s => s.id === service.id)).length) {
+        nonFreeServices++
+      } else {
+        let extras = store.getters['booking/getSelectedExtras'].length
+          ? store.getters['booking/getSelectedExtras']
+          : []
+
+        if (extras.length > 0 && extras.reduce((partialSum, a) => partialSum + a.price, 0) > 0) {
+          nonFreeServices++
+        }
+      }
+    }
+
+    return services.length > 0 && nonFreeServices === services.length
+  }
+
+  return store.getters['entities/getPackage'](store.getters['booking/getPackageId']).price > 0
+}
+
 export {
   useCapacity,
   useAvailableSlots,
@@ -1118,4 +1240,7 @@ export {
   useServices,
   useEmployeeService,
   useAppointmentBookingAmountData,
+  useCheckingIfAllNotFree,
+  useAppointmentServicePrice,
+  useChangedBookingPrice,
 }

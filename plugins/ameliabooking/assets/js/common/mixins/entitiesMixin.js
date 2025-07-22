@@ -279,9 +279,9 @@ export default {
 
     getParsedCustomPricing (service) {
       if (service.customPricing === null) {
-        service.customPricing = {enabled: false, durations: []}
+        service.customPricing = {enabled: null, durations: [], persons: []}
       } else if (typeof service.customPricing !== 'object') {
-        service.customPricing = this.getArrayCustomPricing(service.customPricing)
+        service.customPricing = this.getArrayCustomPricing(service)
       }
 
       return service.customPricing
