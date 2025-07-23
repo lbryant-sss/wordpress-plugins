@@ -1,13 +1,14 @@
 === zipaddr-jp ===
 Contributors: ta_terunuma
 Donate link: https://zipaddr2.com/wordpress/
-Tags: zipaddr, zip, address, plugin, ajax, cross-domain
+Tags: zipaddr, zip, address, ajax, cross-domain
 Requires at least: 3.7
 Tested up to: 6.8
-Stable tag: 1.39
+Stable tag: 1.40
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
+zipaddr-jp is a collaborative tool that automatically inputs addresses from postal codes.
 
 == Description ==
 Firstly zipaddr has two sites of zipaddr.com and zipaddr2.com in a service provider.
@@ -36,19 +37,18 @@ The main operating procedure is as follows.
 5.Wordpress bury each data in an address column on the Wordpress side.
 
 == Installation ==
-
 1. Upload `zipaddr-jp` to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Frequently asked questions ==
-
-
+Nothing in particular.
 
 == Screenshots ==
-
 1. https://zipaddr2.com/wordpress/popup.png
 
 == Changelog ==
+= 1.40 =
+We reviewed our best practices and security checks.
 
 = 1.39 =
 We supported forms similar to YubinBango.js.
@@ -169,3 +169,4 @@ It added a setting function of the operation environment.
 It register an initial version.
 
 == Upgrade notice ==
+Nothing in particular.

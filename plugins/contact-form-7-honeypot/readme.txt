@@ -1,5 +1,5 @@
-=== CF7Apps – [Honeypot and hCAPTCHA for Contact Form 7] ===
-Tags: contact form spam, anti-spam, spam protection, captcha, honeypot
+=== CF7 Apps – [Honeypot and hCAPTCHA for Contact Form 7] ===
+Tags: contact form, anti-spam, spam protection, captcha, honeypot
 Requires at least: 4.8
 Tested up to: 6.8
 Stable tag: 3.0.0
@@ -8,7 +8,7 @@ Contributors: wpexpertsio
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Add hCaptcha and Honeypot to Contact Form 7 with CF7Apps. Improve form security, lightweight, and no unnecessary code.
+Add hCaptcha and Honeypot to Contact Form 7 with CF7 Apps. Improve form security, lightweight, and no unnecessary code.
 
 == Description ==
 
@@ -17,24 +17,25 @@ Add hCaptcha and Honeypot to Contact Form 7 with CF7Apps. Improve form security,
 Contact Form 7 is one of the most popular form plugins for WordPress, but **it lacks many advanced features** that modern websites need. CF7 Apps adds extra Spam Protection functionalities to your Contact Form 7 forms, introducing honeypot and hCaptcha options.
 
 👉 Get Support: [Click Here](https://wordpress.org/support/plugin/contact-form-7-honeypot/)
-👉 Check out the [Documentation](https://cf7apps.com/docs/)
+👉 Check out the [Documentation](https://cf7apps.com/docs/?utm_source=wp_org&utm_medium=readme&utm_campaign=documentation)
 
 ==What CF7 Apps Can Do for You ?==
 
 Right out of the box, CF7 Apps includes:
 
-✅ **hCaptcha App**
 ✅ **Honeypot App**
+✅ **hCaptcha App**
+💡 **[Suggest a Feature](https://cf7apps.com/submit-idea/?utm_source=wp_org&utm_medium=readme&utm_campaign=suggest_a_feature)**
 
 And that’s just the beginning.
-
-🌟 **Add hCaptcha to Contact Form 7**
-
-Protect your forms from spam bots using **hCaptcha,** a privacy-friendly alternative to Google reCAPTCHA. This extension integrates directly with CF7 and works instantly after setup. No coding is required, and no extra plugins are needed. Just set up your site keys and you're done.
 
 🌟 **Add a Honeypot Field to Prevent Spam**
 
 Our **Honeypot Contact Form 7 extension** creates a hidden field inside your Contact Form 7 forms. Real users never see it, but bots do—and that's how the bots fall for the trap. It blocks automated spam before it even hits your inbox.
+
+🌟 **Add hCaptcha to Contact Form 7**
+
+Protect your forms from spam bots using **hCaptcha,** a privacy-friendly alternative to Google reCAPTCHA. This extension integrates directly with CF7 and works instantly after setup. No coding is required, and no extra plugins are needed. Just set up your site keys and you're done.
 
 **NOTE:**
 The best thing is that both features work independently. You can run them alone or together based on your site’s needs.
@@ -42,8 +43,8 @@ The best thing is that both features work independently. You can run them alone 
 ==Real Use Cases for CF7 Apps==
 
 With the CF7 Apps, you can do the following:
-  ✔️ Add hCaptcha to Contact Form 7 for privacy-first anti-spam
   ✔️ Trap bots using a honeypot field without affecting users
+  ✔️ Add hCaptcha to Contact Form 7 for privacy-first anti-spam
 
 ==Why Should You Install CF7 Apps?==
 
@@ -87,7 +88,7 @@ For examples of the above, please see this [recipe Gist](https://gist.github.com
 == Frequently Asked Questions == 
 
 =How do I add hCaptcha to Contact Form 7?=
-Activate the hCaptcha App inside CF7Apps, enter your site keys, error messages, and save settings. That’s it. Now, you’ll see the hCaptcha tag in your Contact Form 7 form settings. 
+Activate the hCaptcha App inside CF7 Apps, enter your site keys, error messages, and save settings. That’s it. Now, you’ll see the hCaptcha tag in your Contact Form 7 form settings. 
 
 =What is Contact Form 7?=
 Contact Form 7 is a long-standing WordPress plugin that lets you build and manage contact forms on your site. It supports multiple forms, customization, and various integrations—all without writing any code.
@@ -105,6 +106,10 @@ You sure can, and many users have indicated this helps stop even more spam, as i
 
 Yep! See the **Installation** section for more details and [this Gist](https://gist.github.com/nocean/953b1362b63bd3ecf68c) for examples.
 
+= Disclaimer =
+
+CF7 Apps is a third-party plugin and is not officially associated with or endorsed by Contact Form 7.
+
 == Screenshots ==
 
 1. CF7 Apps Dashboard.
@@ -115,7 +120,7 @@ Yep! See the **Installation** section for more details and [this Gist](https://g
 
 == Changelog ==
 = 3.0.0 - July 16, 2025 =
-* NEW - Introducing CF7Apps, All new Dashboard.
+* NEW - Introducing CF7 Apps, All new Dashboard.
 * NEW - Introducing hCaptcha.
 
 = 2.1.7 October, 13, 2024 =

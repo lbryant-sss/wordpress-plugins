@@ -52,6 +52,12 @@ add_action('init', function () {
 		require_once EXACTMETRICS_PLUGIN_DIR . 'lite/includes/emails/summaries-infoblocks.php';
 		require_once EXACTMETRICS_PLUGIN_DIR . 'lite/includes/emails/summaries.php';
 		new ExactMetrics_Email_Summaries();
+
+		// Load API classes
+		require_once EXACTMETRICS_PLUGIN_DIR . 'includes/api/class-exactmetrics-api-error.php';
+		require_once EXACTMETRICS_PLUGIN_DIR . 'includes/api/class-exactmetrics-api.php';
+		require_once EXACTMETRICS_PLUGIN_DIR . 'includes/api/class-exactmetrics-api-reports.php';
+		require_once EXACTMETRICS_PLUGIN_DIR . 'includes/api/class-exactmetrics-api-tracking.php';
 	}
 
 	if ( is_admin() ) {
@@ -102,4 +108,4 @@ add_action('init', function () {
 
 	// Run hook to load ExactMetrics addons.
 	do_action( 'exactmetrics_load_plugins' ); // the updater class for each addon needs to be instantiated via `exactmetrics_updater`
-});
+}, 0 );

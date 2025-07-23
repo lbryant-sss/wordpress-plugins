@@ -15,15 +15,15 @@ if ( class_exists( 'QuadLayers\\WP_Notice_Plugin_Promote\\Load' ) ) {
 		 */
 		define( 'QLWAPP_PROMOTE_PREMIUM_SELL_SLUG', 'wp-whatsapp-chat-pro' );
 		define( 'QLWAPP_PROMOTE_PREMIUM_SELL_NAME', 'Social Chat PRO' );
-		define( 'QLWAPP_PROMOTE_PREMIUM_SELL_URL', QLWAPP_PREMIUM_SELL_URL );
-		define( 'QLWAPP_PROMOTE_PREMIUM_INSTALL_URL', 'https://quadlayers.com/products/whatsapp-chat/?utm_source=qlwapp_admin' );
+		define( 'QLWAPP_PROMOTE_PREMIUM_SELL_URL', 'https://quadlayers.com/products/whatsapp-chat/?utm_source=qlwapp_plugin&utm_medium=dashboard_notice&utm_campaign=premium_upgrade&utm_content=more_info_button' );
+		define( 'QLWAPP_PROMOTE_PREMIUM_INSTALL_URL', 'https://quadlayers.com/products/whatsapp-chat/?utm_source=qlwapp_plugin&utm_medium=dashboard_notice&utm_campaign=premium_upgrade&utm_content=more_info_button' );
 		/**
 		 * Notice cross sell 1
 		 */
 		define( 'QLWAPP_PROMOTE_CROSS_INSTALL_1_SLUG', 'ai-copilot' );
 		define( 'QLWAPP_PROMOTE_CROSS_INSTALL_1_NAME', 'AI Copilot' );
 		define( 'QLWAPP_PROMOTE_CROSS_INSTALL_1_DESCRIPTION', esc_html__( 'Boost your productivity in WordPress content creation with AI-driven tools, automated content generation, and enhanced editor utilities.', 'wp-whatsapp-chat' ) );
-		define( 'QLWAPP_PROMOTE_CROSS_INSTALL_1_URL', 'https://quadlayers.com/products/ai-copilot/?utm_source=qlwapp_admin' );
+		define( 'QLWAPP_PROMOTE_CROSS_INSTALL_1_URL', 'https://quadlayers.com/products/ai-copilot/?utm_source=qlwapp_plugin&utm_medium=dashboard_notice&utm_campaign=cross_sell&utm_content=more_info_button' );
 		define( 'QLWAPP_PROMOTE_CROSS_INSTALL_1_LOGO_SRC', plugins_url( '/assets/backend/img/ai-copilot.png', QLWAPP_PLUGIN_FILE ) );
 		/**
 		 * Notice cross sell 2
@@ -31,7 +31,7 @@ if ( class_exists( 'QuadLayers\\WP_Notice_Plugin_Promote\\Load' ) ) {
 		define( 'QLWAPP_PROMOTE_CROSS_INSTALL_2_SLUG', 'insta-gallery' );
 		define( 'QLWAPP_PROMOTE_CROSS_INSTALL_2_NAME', 'Instagram Feed Gallery' );
 		define( 'QLWAPP_PROMOTE_CROSS_INSTALL_2_DESCRIPTION', esc_html__( 'Instagram Feed Gallery is a user-friendly WordPress plugin. It simplifies integration, speeds up site updates, and aligns with the rapidly evolving social media landscape.', 'wp-whatsapp-chat' ) );
-		define( 'QLWAPP_PROMOTE_CROSS_INSTALL_2_URL', 'https://quadlayers.com/products/instagram-feed-gallery/?utm_source=qlwapp_admin' );
+		define( 'QLWAPP_PROMOTE_CROSS_INSTALL_2_URL', 'https://quadlayers.com/products/instagram-feed-gallery/?utm_source=qlwapp_plugin&utm_medium=dashboard_notice&utm_campaign=cross_sell&utm_content=more_info_button' );
 		define( 'QLWAPP_PROMOTE_CROSS_INSTALL_2_LOGO_SRC', plugins_url( '/assets/backend/img/insta-gallery.jpg', QLWAPP_PLUGIN_FILE ) );
 
 
@@ -49,7 +49,7 @@ if ( class_exists( 'QuadLayers\\WP_Notice_Plugin_Promote\\Load' ) ) {
 									'<br>'
 					),
 					'notice_link'        => QLWAPP_PROMOTE_REVIEW_URL,
-					'notice_more_link'   => QLWAPP_SUPPORT_URL,
+					'notice_more_link'   => 'https://quadlayers.com/account/support/?utm_source=qlwapp_plugin&utm_medium=dashboard_notice&utm_campaign=support&utm_content=report_bug_button',
 					'notice_more_label'  => esc_html__(
 						'Report a bug',
 						'wp-whatsapp-chat'

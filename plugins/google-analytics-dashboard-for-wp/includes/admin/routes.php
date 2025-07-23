@@ -57,7 +57,6 @@ class ExactMetrics_Rest_Routes {
 		) );
 		add_action( 'wp_ajax_exactmetrics_vue_update_included_metrics', array( $this, 'update_included_metrics' ) );
 		add_action( 'wp_ajax_exactmetrics_vue_get_user_included_metrics', array( $this, 'get_user_included_metrics' ) );
-
 	}
 
 	/**
@@ -144,6 +143,10 @@ class ExactMetrics_Rest_Routes {
 			if ( ! isset( $options[ $array_field ] ) ) {
 				$options[ $array_field ] = array();
 			}
+		}
+
+		if (class_exists('ExactMetrics_Google_Ads')) {
+			$options['google_ads'] = ExactMetrics_Google_Ads::get_settings();
 		}
 
 		//add email summaries options

@@ -79,6 +79,17 @@ class Ajax {
 			wp_send_json_success( $res );
 		}
 
+		if ('remove_from_cart_course' === $request_method) {
+			tutor_utils()->checking_nonce();
+			$cart = new CartController();
+			$user_id   = get_current_user_id();
+			$course_id = Input::post('course_id');
+
+			$res       = $cart->delete_course_from_cart($user_id, $course_id);
+
+			wp_send_json_success($res);
+		}
+
 		if('get_user_cart_item_count' === $request_method) {
 			$cart = new CartController();
 			$cart_items = $cart->get_cart_items();

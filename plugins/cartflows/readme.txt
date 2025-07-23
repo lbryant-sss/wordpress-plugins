@@ -3,7 +3,7 @@ Contributors: sujaypawar, wpcrafter
 Tags: woocommerce, funnel builder, sales funnels, custom checkout, WooCommerce checkout
 Requires at least: 5.8
 Tested up to: 6.8
-Stable tag: 2.1.14
+Stable tag: 2.1.15
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -394,6 +394,11 @@ You can report the issue through our [Bug Bounty Program](https://brainstormforc
 4. Quickly re-arrange the steps.
 
 == Changelog ==
+
+= Version 2.1.15 - Tuesday, 22nd July 2025 =
+* Fix: Addressed a conflict with LearnDash and the Classic Editor plugin.
+* Fix: Resolved issues in the onboarding flow for a smoother setup experience.
+* Fix: Page Builder and Permalink options were not saving correctly on WordPress Multisite installations.
 
 = Version 2.1.14 - Thursday, 26th June 2025 =
 * Improvement: Funnel import from a JSON file is now possible even when no funnels exist, as the Import button is displayed.

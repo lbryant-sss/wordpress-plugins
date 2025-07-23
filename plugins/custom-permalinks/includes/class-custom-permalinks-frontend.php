@@ -76,6 +76,7 @@ class Custom_Permalinks_Frontend {
 		add_filter( 'post_link', array( $this, 'custom_post_link' ), 10, 2 );
 		add_filter( 'post_type_link', array( $this, 'custom_post_link' ), 10, 2 );
 		add_filter( 'page_link', array( $this, 'custom_page_link' ), 10, 2 );
+		add_filter( 'url_to_postid', array( $this, 'postid_to_customized_permalink' ), 10, 1 );
 		add_filter( 'term_link', array( $this, 'custom_term_link' ), 10, 2 );
 		add_filter( 'user_trailingslashit', array( $this, 'custom_trailingslash' ) );
 
@@ -201,7 +202,7 @@ class Custom_Permalinks_Frontend {
 		$cache_name = 'cp$_' . str_replace( '/', '-', $requested_url ) . '_#cp';
 		$posts      = wp_cache_get( $cache_name, 'custom_permalinks' );
 
-		if ( ! $posts ) {
+		if ( false === $posts ) {
 			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
 			$posts = $wpdb->get_results(
 				$wpdb->prepare(
@@ -237,7 +238,8 @@ class Custom_Permalinks_Frontend {
 				);
 			}
 
-			wp_cache_set( $cache_name, $posts, 'custom_permalinks' );
+			// Cache permalink for 24 hours.
+			wp_cache_set( $cache_name, $posts, 'custom_permalinks', 86400 );
 		}
 
 		return $posts;
@@ -266,7 +268,7 @@ class Custom_Permalinks_Frontend {
 			return null;
 		}
 
-		if ( ! $matched_post ) {
+		if ( false === $matched_post ) {
 			$matched_post = array();
 
 			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
@@ -305,7 +307,8 @@ class Custom_Permalinks_Frontend {
 			}
 		}
 
-		wp_cache_set( $cache_name, $matched_post, 'custom_permalinks' );
+		// Cache permalink for 24 hours.
+		wp_cache_set( $cache_name, $matched_post, 'custom_permalinks', 86400 );
 
 		return $matched_post;
 	}
@@ -712,9 +715,6 @@ class Custom_Permalinks_Frontend {
 			);
 		}
 
-		$custom_permalink   = '';
-		$original_permalink = '';
-
 		// Get request URI, strip parameters.
 		$url     = wp_parse_url( get_bloginfo( 'url' ) );
 		$url     = isset( $url['path'] ) ? $url['path'] : '';
@@ -734,90 +734,95 @@ class Custom_Permalinks_Frontend {
 		 *
 		 * @since 1.7.0
 		 */
-		$avoid_redirect = apply_filters(
-			'custom_permalinks_avoid_redirect',
-			$request
-		);
-
+		$avoid_redirect = apply_filters( 'custom_permalinks_avoid_redirect', $request );
 		if ( is_bool( $avoid_redirect ) && $avoid_redirect ) {
 			return;
 		}
 
-		if ( defined( 'POLYLANG_VERSION' ) ) {
-			$cp_form = new Custom_Permalinks_Form();
-			$request = $cp_form->check_conflicts( $request );
-		}
+		$custom_permalink   = '';
+		$original_permalink = '';
+		$get_post_id        = url_to_postid( $this->request_uri );
 
-		$request_no_slash = preg_replace( '@/+@', '/', trim( $request, '/' ) );
-		$posts            = $this->query_post( $request_no_slash );
+		// Redirect original post permalink.
+		if ( ! empty( $get_post_id ) ) {
+			$custom_permalink = get_post_meta( $get_post_id, 'custom_permalink', true );
+			if ( ! empty( $custom_permalink ) ) {
+				// Append any query component.
+				$custom_permalink .= strstr( $this->request_uri, '?' );
 
-		if ( ! isset( $posts[0]->ID ) || ! isset( $posts[0]->meta_value )
-			|| empty( $posts[0]->meta_value )
-		) {
-			global $wp_query;
-
-			/*
-			 * If the post/tag/category we're on has a custom permalink, get it
-			 * and check against the request.
-			 */
-			if ( ( is_single() || is_page() ) && ! empty( $wp_query->post ) ) {
-				$post             = $wp_query->post;
-				$custom_permalink = get_post_meta(
-					$post->ID,
-					'custom_permalink',
-					true
-				);
-				if ( 'page' === $post->post_type ) {
-					$original_permalink = $this->original_page_link( $post->ID );
-				} else {
-					$original_permalink = $this->original_post_link( $post->ID );
-				}
-			} elseif ( is_tag() || is_category() ) {
-				$the_term           = $wp_query->get_queried_object();
-				$custom_permalink   = $this->term_permalink( $the_term->term_id );
-				$original_permalink = $this->original_term_link( $the_term->term_id );
+				wp_safe_redirect( home_url() . '/' . $custom_permalink, 301 );
+				exit( 0 );
 			}
 		} else {
-			$custom_permalink = $posts[0]->meta_value;
-			if ( 'page' === $posts[0]->post_type ) {
-				$original_permalink = $this->original_page_link( $posts[0]->ID );
-			} else {
-				$original_permalink = $this->original_post_link( $posts[0]->ID );
+			if ( defined( 'POLYLANG_VERSION' ) ) {
+				$cp_form = new Custom_Permalinks_Form();
+				$request = $cp_form->check_conflicts( $request );
 			}
-		}
 
-		$custom_length = strlen( $custom_permalink );
-		if ( $custom_permalink
-			&& (
-				substr( $request, 0, $custom_length ) !== $custom_permalink
-				|| $request === $custom_permalink . '/'
-			)
-		) {
-			// Request doesn't match permalink - redirect.
-			$url             = $custom_permalink;
-			$original_length = strlen( $original_permalink );
+			$request_no_slash = preg_replace( '@/+@', '/', trim( $request, '/' ) );
+			$posts            = $this->query_post( $request_no_slash );
 
-			if ( substr( $request, 0, $original_length ) === $original_permalink
-				&& trim( $request, '/' ) !== trim( $original_permalink, '/' )
+			if ( ! isset( $posts[0]->ID ) || ! isset( $posts[0]->meta_value )
+				|| empty( $posts[0]->meta_value )
 			) {
-				// This is the original link; we can use this URL to derive the new one.
-				$url = preg_replace(
-					'@//*@',
-					'/',
-					str_replace(
-						trim( $original_permalink, '/' ),
-						trim( $custom_permalink, '/' ),
-						$request
-					)
-				);
-				$url = preg_replace( '@([^?]*)&@', '\1?', $url );
+				global $wp_query;
+
+				/*
+				* If the post/tag/category we're on has a custom permalink, get it
+				* and check against the request.
+				*/
+				if ( ( is_single() || is_page() ) && ! empty( $wp_query->post ) ) {
+					$post             = $wp_query->post;
+					$custom_permalink = get_post_meta(
+						$post->ID,
+						'custom_permalink',
+						true
+					);
+					if ( 'page' === $post->post_type ) {
+						$original_permalink = $this->original_page_link( $post->ID );
+					} else {
+						$original_permalink = $this->original_post_link( $post->ID );
+					}
+				} elseif ( is_tag() || is_category() ) {
+					$the_term           = $wp_query->get_queried_object();
+					$custom_permalink   = $this->term_permalink( $the_term->term_id );
+					$original_permalink = $this->original_term_link( $the_term->term_id );
+				}
 			}
 
-			// Append any query component.
-			$url .= strstr( $this->request_uri, '?' );
+			$custom_length = strlen( $custom_permalink );
+			if ( $custom_permalink
+				&& (
+					substr( $request, 0, $custom_length ) !== $custom_permalink
+					|| $request === $custom_permalink . '/'
+				)
+			) {
+				// Request doesn't match permalink - redirect.
+				$url             = $custom_permalink;
+				$original_length = strlen( $original_permalink );
 
-			wp_safe_redirect( home_url() . '/' . $url, 301 );
-			exit( 0 );
+				if ( substr( $request, 0, $original_length ) === $original_permalink
+					&& trim( $request, '/' ) !== trim( $original_permalink, '/' )
+				) {
+					// This is the original link; we can use this URL to derive the new one.
+					$url = preg_replace(
+						'@//*@',
+						'/',
+						str_replace(
+							trim( $original_permalink, '/' ),
+							trim( $custom_permalink, '/' ),
+							$request
+						)
+					);
+					$url = preg_replace( '@([^?]*)&@', '\1?', $url );
+				}
+
+				// Append any query component.
+				$url .= strstr( $this->request_uri, '?' );
+
+				wp_safe_redirect( home_url() . '/' . $url, 301 );
+				exit( 0 );
+			}
 		}
 	}
 
@@ -918,6 +923,67 @@ class Custom_Permalinks_Frontend {
 		}
 
 		$permalink = $this->remove_double_slash( $permalink );
+
+		return $permalink;
+	}
+
+	/**
+	 * Fetch default permalink against the customized permalink.
+	 *
+	 * @since 3.0.0
+	 * @access public
+	 *
+	 * @param string $permalink URL Permalink to check.
+	 *
+	 * @return string Default Permalink or the same permalink if not found.
+	 */
+	public function postid_to_customized_permalink( $permalink ) {
+		$customized_permalink = ltrim( $permalink, '/' );
+		if ( defined( 'POLYLANG_VERSION' ) ) {
+			$cp_form              = new Custom_Permalinks_Form();
+			$customized_permalink = $cp_form->check_conflicts( $customized_permalink );
+		}
+
+		$customized_permalink = preg_replace( '@/+@', '/', trim( $customized_permalink, '/' ) );
+		$posts                = $this->query_post( $customized_permalink );
+		if ( is_array( $posts ) && ! empty( $posts ) ) {
+			if ( 'draft' === $posts[0]->post_status
+				|| 'pending' === $posts[0]->post_status
+			) {
+				if ( 'page' === $posts[0]->post_type ) {
+					$original_url = '?page_id=' . $posts[0]->ID;
+				} else {
+					$original_url = '?post_type=' . $posts[0]->post_type . '&p=' . $posts[0]->ID;
+				}
+			} else {
+				$post_meta = trim( strtolower( $posts[0]->meta_value ), '/' );
+				if ( 'page' === $posts[0]->post_type ) {
+					$get_original_url = $this->original_page_link( $posts[0]->ID );
+					$original_url     = preg_replace(
+						'@/+@',
+						'/',
+						str_replace(
+							$post_meta,
+							$get_original_url,
+							strtolower( $customized_permalink )
+						)
+					);
+				} else {
+					$get_original_url = $this->original_post_link( $posts[0]->ID );
+					$original_url     = preg_replace(
+						'@/+@',
+						'/',
+						str_replace(
+							$post_meta,
+							$get_original_url,
+							strtolower( $customized_permalink )
+						)
+					);
+				}
+			}
+
+			$permalink = $original_url;
+		}
 
 		return $permalink;
 	}

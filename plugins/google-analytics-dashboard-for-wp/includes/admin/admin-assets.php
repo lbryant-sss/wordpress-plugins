@@ -101,7 +101,7 @@ class ExactMetrics_Admin_Assets {
 		// For the settings pages, load the Vue app scripts.
 		if ( exactmetrics_is_settings_page() ) {
 			if ( ! defined( 'EXACTMETRICS_LOCAL_JS_URL' ) ) {
-				+$this->enqueue_script_specific_css( 'src/modules/settings/settings.js' );
+				$this->enqueue_script_specific_css( 'src/modules/settings/settings.js' );
 			}
 
 			// Don't load other scripts on the settings page.
@@ -144,15 +144,15 @@ class ExactMetrics_Admin_Assets {
 
 		// Get current screen.
 		$screen = get_current_screen();
-
+		
 		// Bail if we're not on a ExactMetrics screen.
 		if ( empty( $screen->id ) || strpos( $screen->id, 'exactmetrics' ) === false ) {
 			return;
 		}
-
+		
 		$version_path = exactmetrics_is_pro_version() ? 'pro' : 'lite';
 		$text_domain  = exactmetrics_is_pro_version() ? 'exactmetrics-premium' : 'google-analytics-dashboard-for-wp';
-
+		
 		// For the settings page, load the Vue app.
 		if ( exactmetrics_is_settings_page() ) {
 			$app_js_url = self::get_js_url( 'src/modules/settings/settings.js' );
@@ -224,6 +224,7 @@ class ExactMetrics_Admin_Assets {
 					'is_admin'                        => true,
 					'admin_email'                     => get_option( 'admin_email' ),
 					'site_url'                        => get_site_url(),
+					'site_name'                       => get_bloginfo( 'name' ),
 					'reports_url'                     => add_query_arg( 'page', 'exactmetrics_reports', admin_url( 'admin.php' ) ),
 					'landing_pages_top_reports_url'   => add_query_arg( 'page', 'exactmetrics_reports#/top-landing-pages', admin_url( 'admin.php' ) ),
 					'ecommerce_report_url'            => add_query_arg( 'page', 'exactmetrics_reports#/ecommerce', admin_url( 'admin.php' ) ),
@@ -310,7 +311,7 @@ class ExactMetrics_Admin_Assets {
 
 			return;
 		}
-
+		
 		// ublock notice
 		add_action( 'admin_print_footer_scripts', array( $this, 'exactmetrics_settings_ublock_error_js' ), 9999999 );
 	}

@@ -53,8 +53,24 @@ function zipaddrjp_fld(){
 function zipaddrjp_str($leng=16){
 	$ans= null;
 	$str= array_merge( range('a','z'),range('0','9'),range('A','Z') );
-	for( $i=0;$i<$leng;$i++ ) {$ans.= $str[rand(0,count($str)-1)];}
+	for( $i=0;$i<$leng;$i++ ) {$ans.= $str[wp_rand(0,count($str)-1)];}
 	return $ans;
 }
-function zipaddr_e($da){echo esc_html($da);}
+function zipaddrjp_e($da){echo esc_html($da);}
+function zipaddrjp_suji($in, $sp=".",$kwd="2.1.3.4"){
+	$ans= "";
+	$dt= explode($sp, $in);
+	$kd= explode($sp, $kwd);
+	for( $i=count($dt)-1;$i>=0;$i-- ){
+		$ss= substr("111111",$i,$i+1);
+		$ee= substr("999999",$i,$i+1);
+		$gen = wp_rand($ss,$ee);
+		$gen.= $kd[$i];
+		$gen.= $dt[$i];
+		for( $j=0;strlen($gen)<5;$j++ ){$gen.=wp_rand(0,9);}
+		if( $ans!="" ) $ans.= ".";
+		$ans.= $gen;
+	}
+	return $ans;
+}
 ?>

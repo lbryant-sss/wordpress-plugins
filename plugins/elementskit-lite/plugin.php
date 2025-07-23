@@ -244,7 +244,7 @@ class Plugin {
 				'popup-builder-block/popup-builder-block.php' => [
 					'name' => esc_html__('PopupKit', 'elementskit-lite'),
 					'url'  => 'https://wordpress.org/plugins/popup-builder-block/',
-					'icon' => 'https://ps.w.org/popup-builder-block/assets/icon-256x256.png?rev=3187075',
+					'icon' => 'https://ps.w.org/popup-builder-block/assets/icon-256x256.png?rev=3316844',
 					'desc' => esc_html__('Design popups that convert, right in your WordPress dashboard.', 'elementskit-lite'),
 					'docs' => 'https://wpmet.com/docs/gutenkit/',
 				],

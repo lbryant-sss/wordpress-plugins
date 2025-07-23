@@ -117,6 +117,9 @@ function exactmetrics_admin_menu()
 	// then SEO
 	add_submenu_page($parent_slug, __('SEO', 'google-analytics-dashboard-for-wp'), __('SEO', 'google-analytics-dashboard-for-wp'), 'manage_options', $seo_url);
 
+	// Google PAX
+	add_submenu_page($parent_slug, __('Google Ads', 'google-analytics-dashboard-for-wp'), __('Google Ads', 'google-analytics-dashboard-for-wp'), 'exactmetrics_view_dashboard', $submenu_base . '#/google-ads');
+
 	// then tools
 	add_submenu_page($parent_slug, __('Tools:', 'google-analytics-dashboard-for-wp'), __('Tools', 'google-analytics-dashboard-for-wp'), 'manage_options', $submenu_base . '#/tools');
 
