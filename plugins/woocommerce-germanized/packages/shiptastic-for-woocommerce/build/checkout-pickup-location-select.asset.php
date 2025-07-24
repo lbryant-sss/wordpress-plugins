@@ -1,1 +1,1 @@
-<?php return array('dependencies' => array('react', 'wc-blocks-checkout', 'wc-blocks-data-store', 'wc-shiptastic-blocks-checkout', 'wp-api-fetch', 'wp-data', 'wp-element', 'wp-html-entities', 'wp-i18n', 'wp-plugins'), 'version' => 'aa82ae362572325b952f');
+<?php return array('dependencies' => array('react', 'wc-blocks-checkout', 'wc-blocks-data-store', 'wc-shiptastic-blocks-checkout', 'wp-api-fetch', 'wp-data', 'wp-element', 'wp-html-entities', 'wp-i18n', 'wp-plugins'), 'version' => '4bbd8c9f15db43295a03');

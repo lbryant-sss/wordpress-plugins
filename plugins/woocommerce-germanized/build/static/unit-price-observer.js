@@ -222,19 +222,23 @@ var __webpack_exports__ = {};
              */
             self.timeout = setTimeout(function () {
               self.stopObserver(self, priceSelector);
-              var priceData = self.getCurrentPriceData(self, $priceNode, priceArgs['is_total_price'], isPrimary, priceArgs['quantity_selector']);
-              var isVisible = $priceNode.is(':visible');
-              if (priceData) {
-                if (self.isRefreshingUnitPrice(self.getCurrentProductId(self))) {
-                  self.abortRefreshUnitPrice(self.getCurrentProductId(self));
+              $priceNode = self.getPriceNode(self, priceSelector, isPrimary); // Refresh dom instance as the price element may change during timeout
+
+              if ($priceNode.length > 0) {
+                var priceData = self.getCurrentPriceData(self, $priceNode, priceArgs['is_total_price'], isPrimary, priceArgs['quantity_selector']);
+                var isVisible = $priceNode.is(':visible');
+                if (priceData) {
+                  if (self.isRefreshingUnitPrice(self.getCurrentProductId(self))) {
+                    self.abortRefreshUnitPrice(self.getCurrentProductId(self));
+                  }
+                  hasRefreshed = true;
+                  self.refreshUnitPrice(self, priceData, priceSelector, isPrimary);
                 }
-                hasRefreshed = true;
-                self.refreshUnitPrice(self, priceData, priceSelector, isPrimary);
-              }
-              if (!hasRefreshed && $unitPrice.length > 0) {
-                self.unsetUnitPriceLoading(self, $unitPrice);
-                if (!isVisible && isPrimary) {
-                  $unitPrice.hide();
+                if (!hasRefreshed && $unitPrice.length > 0) {
+                  self.unsetUnitPriceLoading(self, $unitPrice);
+                  if (!isVisible && isPrimary) {
+                    $unitPrice.hide();
+                  }
                 }
               }
               self.startObserver(self, priceSelector, isPrimary);

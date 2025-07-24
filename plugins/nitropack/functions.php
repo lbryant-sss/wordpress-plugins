@@ -119,7 +119,9 @@ function nitropack_deactivate() {
 }
 
 function nitropack_install_advanced_cache() {
-	if ( nitropack_is_conflicting_plugin_active() )
+	$conflictingPlugins = \NitroPack\WordPress\ConflictingPlugins::getInstance();
+	$nitropack_is_conflicting_plugin_active = $conflictingPlugins->nitropack_is_conflicting_plugin_active();
+	if ( $nitropack_is_conflicting_plugin_active )
 		return false;
 	if ( ! nitropack_is_advanced_cache_allowed() )
 		return false;
@@ -594,6 +596,7 @@ function nitropack_passes_page_requirements( $detectIfNoCachedResult = true ) {
 	$reduceCartChecks = defined( "NITROPACK_REDUCE_CART_CHECKS" ) && NITROPACK_REDUCE_CART_CHECKS;
 
 	if ( $cachedResult === NULL && $detectIfNoCachedResult ) {
+
 		$cachedResult = ! (
 			( is_404() && ! get_nitropack()->setDisabledReason( "404" ) ) ||
 			( is_preview() && ! get_nitropack()->setDisabledReason( "preview page" ) ) ||
@@ -666,6 +669,12 @@ function nitropack_is_allowed_request() {
 				}
 			}
 		}
+	}
+
+	$test_mode = get_option( 'nitropack-safeModeStatus');
+	if ( $test_mode ) {
+		get_nitropack()->setDisabledReason( "Test Mode" );
+		return false;
 	}
 
 	if ( null !== $nitro = get_nitropack_sdk() ) {
@@ -1173,7 +1182,7 @@ function nitropack_get_optimized_CPTs() {
 
 function nitropack_autooptimize_new_post_types_and_taxonomies() {
 	//start optimizing after the notice is shown
-	$notices = get_option('nitropack-dismissed-notices', []);
+	$notices = get_option( 'nitropack-dismissed-notices', [] );
 	if ( ! $notices || ! in_array( 'OptimizeCPT', $notices ) )
 		return;
 	//check if the non-optimized CPTs are stored, if not store them
@@ -1312,100 +1321,6 @@ function load_nitropack_scripts_styles( $page ) {
 }
 add_action( 'admin_enqueue_scripts', 'load_nitropack_scripts_styles' );
 
-function nitropack_get_conflicting_plugins() {
-	$clashingPlugins = array();
-
-	if ( defined( 'BREEZE_PLUGIN_DIR' ) ) { // Breeze cache plugin
-		$clashingPlugins[] = "Breeze";
-	}
-
-	if ( defined( 'WP_ROCKET_VERSION' ) ) { // WP-Rocket
-		$clashingPlugins[] = "WP-Rocket";
-	}
-
-	if ( defined( 'W3TC' ) ) { // W3 Total Cache
-		$clashingPlugins[] = "W3 Total Cache";
-	}
-
-	if ( defined( 'WPFC_MAIN_PATH' ) ) { // WP Fastest Cache
-		$clashingPlugins[] = "WP Fastest Cache";
-	}
-
-	if ( defined( 'PHASTPRESS_VERSION' ) ) { // PhastPress
-		$clashingPlugins[] = "PhastPress";
-	}
-
-	if ( defined( 'WPCACHEHOME' ) && function_exists( "wp_cache_phase2" ) ) { // WP Super Cache
-		$clashingPlugins[] = "WP Super Cache";
-	}
-
-	if ( defined( 'LSCACHE_ADV_CACHE' ) || defined( 'LSCWP_DIR' ) ) { // LiteSpeed Cache
-		$clashingPlugins[] = "LiteSpeed Cache";
-	}
-
-	if ( class_exists( 'Swift_Performance' ) || class_exists( 'Swift_Performance_Lite' ) ) { // Swift Performance
-		$clashingPlugins[] = "Swift Performance";
-	}
-
-	if ( class_exists( 'PagespeedNinja' ) ) { // PageSpeed Ninja
-		$clashingPlugins[] = "PageSpeed Ninja";
-	}
-
-	if ( defined( 'AUTOPTIMIZE_PLUGIN_VERSION' ) ) { // Autoptimize
-		$clashingPlugins[] = "Autoptimize";
-	}
-
-	if ( defined( 'PEGASAAS_ACCELERATOR_VERSION' ) ) { // Pegasaas Accelerator WP
-		$clashingPlugins[] = "Pegasaas Accelerator WP";
-	}
-
-	if ( class_exists( 'WP_Hummingbird' ) || class_exists( 'Hummingbird\\WP_Hummingbird' ) ) { // Hummingbird
-		$clashingPlugins[] = "Hummingbird";
-	}
-
-	if ( defined( 'WP_SMUSH_VERSION' ) ) { // Smush by WPMU DEV
-		if ( class_exists( 'Smush\\Core\\Settings' ) && defined( 'WP_SMUSH_PREFIX' ) ) {
-			$smushLazy = Smush\Core\Settings::get_instance()->get( 'lazy_load' );
-			if ( $smushLazy ) {
-				$clashingPlugins[] = "Smush Lazy Load";
-			}
-		} else {
-			$clashingPlugins[] = "Smush";
-		}
-	}
-
-	if ( defined( 'COMET_CACHE_PLUGIN_FILE' ) ) { // Comet Cache by WP Sharks
-		$clashingPlugins[] = "Comet Cache";
-	}
-
-	if ( defined( 'WPO_VERSION' ) && class_exists( 'WPO_Cache_Config' ) ) { // WP Optimize
-		$wpo_cache_config = WPO_Cache_Config::instance();
-		if ( $wpo_cache_config->get_option( 'enable_page_caching', false ) ) {
-			$clashingPlugins[] = "WP Optimize page caching";
-		}
-	}
-
-	if ( class_exists( 'BJLL' ) ) { // BJ Lazy Load
-		$clashingPlugins[] = "BJ Lazy Load";
-	}
-
-	if ( defined( 'SHORTPIXEL_IMAGE_OPTIMISER_VERSION' ) && class_exists( '\ShortPixel\ShortPixelPlugin' ) ) { //ShortPixel WebP
-		$sp_config = \ShortPixel\ShortPixelPlugin::getInstance();
-		if ( $sp_config->settings()->createWebp ) {
-			$clashingPlugins[] = "ShortPixel WebP image creation";
-		}
-	}
-	if ( defined( 'UUCSS_VERSION' ) || defined( 'UUCSS_PLUGIN_URL' ) ) { // RapidLoad
-		$clashingPlugins[] = "RapidLoad";
-	}
-
-	return $clashingPlugins;
-}
-
-function nitropack_is_conflicting_plugin_active() {
-	$conflictingPlugins = nitropack_get_conflicting_plugins();
-	return ! empty( $conflictingPlugins );
-}
 
 function nitropack_is_advanced_cache_allowed() {
 	return ! in_array( nitropack_detect_hosting(), array(
@@ -3697,7 +3612,7 @@ function nitropack_admin_bar_menu( $wp_admin_bar ) {
 	if ( ! get_nitropack()->isConnected() ) {
 		$node = array(
 			'id' => 'nitropack-top-menu',
-			'title' => '&nbsp;&nbsp;<i style="" class="circle nitro nitro-status nitro-status-error" aria-hidden="true"></i>&nbsp;&nbsp;NitroPack is disconnected',
+			'title' => '&nbsp;&nbsp;<i style="" class="circle nitro nitro-status nitro-status-not-connected" aria-hidden="true"></i>&nbsp;&nbsp;NitroPack is disconnected',
 			'href' => admin_url( 'admin.php?page=nitropack' ),
 			'meta' => array(
 				'class' => 'nitropack-menu'

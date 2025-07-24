@@ -34,6 +34,9 @@ var __webpack_exports__ = {};
     $form.on('show_variation.wc-gzd-variation-form', {
       GermanizedvariationForm: self
     }, self.onShowVariation);
+    if (self.replacePrice) {
+      self.$form.addClass('wc-gzd-replace-price');
+    }
     self.$wrapper.find('' + '.woocommerce-product-attributes-item--food_description, ' + '.woocommerce-product-attributes-item--alcohol_content, ' + '.woocommerce-product-attributes-item--net_filling_quantity, ' + '.woocommerce-product-attributes-item--drained_weight, ' + '.woocommerce-product-attributes-item--food_place_of_origin, ' + '.woocommerce-product-attributes-item--nutri_score, ' + '.woocommerce-product-attributes-item--food_distributor').each(function () {
       var $tr = $(this);
       if ($tr.find('.woocommerce-product-attributes-item__value').is(':empty') || $tr.find('.woocommerce-product-attributes-item__value .wc-gzd-additional-info-placeholder').is(':empty')) {
@@ -42,7 +45,11 @@ var __webpack_exports__ = {};
     });
   };
   GermanizedVariationForm.prototype.showOrHideTabs = function (self, has_product_safety_information = undefined) {
-    has_product_safety_information = undefined === has_product_safety_information ? self.$product.hasClass('has-product-safety-information') : has_product_safety_information;
+    /**
+     * Block-based themes have the global post/product classes attached to body instead of the product group wrapper.
+     */
+    var $defaultWrapper = $('body').hasClass('type-product') ? $('body') : self.$product;
+    has_product_safety_information = undefined === has_product_safety_information ? $defaultWrapper.hasClass('has-product-safety-information') : has_product_safety_information;
     if (has_product_safety_information) {
       self.$product.find('.product_safety_tab').show().css('display', 'inline-block');
     } else {

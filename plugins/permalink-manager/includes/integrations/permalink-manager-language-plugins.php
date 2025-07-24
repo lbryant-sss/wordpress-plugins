@@ -841,18 +841,18 @@ class Permalink_Manager_Language_Plugins {
 					$uri_translation_complete = 0;
 				}
 
-				$custom_uri_element                        = new stdClass();
-				$custom_uri_element->tid                   = 999999;
-				$custom_uri_element->job_id                = $job_id;
-				$custom_uri_element->content_id            = 0;
-				$custom_uri_element->timestamp             = date( 'Y-m-d H:i:s' );
-				$custom_uri_element->field_type            = 'Custom URI';
-				$custom_uri_element->field_wrap_tag        = '';
-				$custom_uri_element->field_format          = 'base64';
-				$custom_uri_element->field_translate       = 1;
-				$custom_uri_element->field_data            = base64_encode( $original_custom_uri );
-				$custom_uri_element->field_data_translated = base64_encode( $translation_custom_uri );
-				$custom_uri_element->field_finished        = $uri_translation_complete;
+				$custom_uri_element                         = new stdClass();
+				$custom_uri_element->tid                    = 999999;
+				$custom_uri_element->job_id                 = $job_id;
+				$custom_uri_element->content_id             = 0;
+				$custom_uri_element->timestamp              = date( 'Y-m-d H:i:s' );
+				$custom_uri_element->field_type             = 'Custom URI';
+				$custom_uri_element->field_wrap_tag         = '';
+				$custom_uri_element->field_format           = 'base64';
+				$custom_uri_element->field_translate        = 1;
+				$custom_uri_element->field_data             = base64_encode( $original_custom_uri );
+				$custom_uri_element->field_data_translated  = base64_encode( $translation_custom_uri );
+				$custom_uri_element->field_finished         = $uri_translation_complete;
 
 				$elements[] = $custom_uri_element;
 			}

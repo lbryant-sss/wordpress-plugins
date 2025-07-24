@@ -4,7 +4,7 @@ Tags: backup, restore, database backup, cloud backup, wordpress backup, migratio
 Requires at least: 4.7
 Tested up to: 6.8
 Requires PHP: 5.5
-Stable tag: 1.4.6
+Stable tag: 1.4.7
 License: LGPL v2.1
 License URI: http://www.gnu.org/licenses/lgpl-2.1.html
 
@@ -84,6 +84,12 @@ Go To your WordPress install -> Plugins -> Add New Button -> In Search Box searc
 7. **Backup Process** easy to understand backup progress.
 
 == Changelog ==
+
+= 1.4.7 (23 July 2025) =
+* [Bug-Fix Pro] For some cases, upload to OneDrive was getting stuck because OneDrive's servers were either breaking the request abruptly or not responding. This has been fixed.
+* [Bug-Fix] In certain cases, the info file and version file were not getting added to the backup; this has been fixed.
+* [Bug-Fix] Size of a file uploaded through FTP was showing wrong when the backup size was more than 2GB; this has been fixed.
+* [Task]  Backuply now handles UTC-based time zones as well. Earlier, it used to handle just the city-based based timezones of WordPress General settings.
 
 = 1.4.6 (17th June 2025) =
 * [Bug-Fix] There was issue with restore on sites where Cyrillic characters were getting used, this has been fixed.

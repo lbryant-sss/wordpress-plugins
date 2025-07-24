@@ -5235,8 +5235,12 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 			$csv = fopen($power_filename, 'r');
 			$firstLineSkipped = false;
 
+			//$escape should be an empty string since it's deprecated in modern PHP versions,
+			//but versions older than PHP 7.4 require it to be a character (i.e. non-empty string).
+			$escape = version_compare(phpversion(), '7.4', '>=') ? '' : '\\';
+
 			while ($csv && !feof($csv)) {
-				$line = fgetcsv($csv, 1000, ';', '"', '');
+				$line = fgetcsv($csv, 1000, ';', '"', $escape);
 				if ( !$firstLineSkipped ) {
 					$firstLineSkipped = true;
 					continue;

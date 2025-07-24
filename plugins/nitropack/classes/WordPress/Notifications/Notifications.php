@@ -23,6 +23,7 @@ class Notifications {
 		add_action( 'wp_ajax_nitropack_safemode_notification', [ $this, 'nitropack_safemode_notification' ] );
 		add_action( 'wp_ajax_nitropack_dismiss_permanently_notification', [ $this, 'nitropack_dismiss_permanently_notification' ] );
 		add_action( 'wp_ajax_nitropack_dismiss_notification_by_transient', [ $this, 'nitropack_dismiss_notification_by_transient' ] );
+		add_action( 'wp_ajax_nitropack_conflict_plugin_deactivate', [ $this, 'nitropack_conflict_plugin_deactivate' ] );
 
 	}
 	public static function getInstance() {
@@ -80,17 +81,23 @@ class Notifications {
 		$warnings = [];
 		$infos = [];
 
-		/* Sets a warning if there are any conflicit plugins - mostly caching plugins. */
-		$conflictingPlugins = nitropack_get_conflicting_plugins();
-		foreach ( $conflictingPlugins as $clashingPlugin ) {
-			$warnings[] = array(
-				'title' => sprintf( "%s is active", $clashingPlugin ),
-				'msg' => sprintf( __( "NitroPack and %s have overlapping functionality and can interfere with each other. Please deactivate %s for best results in NitroPack.", 'nitropack' ), $clashingPlugin, $clashingPlugin ),
-				'actions' => '<a href="' . admin_url() . 'plugins.php" target="_blank" class="btn btn-secondary">Plugins page</a>',
-				'classes' => [ 'conflicting-plugins plugin-' . sanitize_title( $clashingPlugin ) ],
-			);
-		}
+		/* Sets a warning if there are any conflicting plugins - mostly caching plugins. */
+		$conflictingPlugins = \NitroPack\WordPress\ConflictingPlugins::getInstance();
+		$conflictingPlugins_list = $conflictingPlugins->nitropack_get_conflicting_plugins();
 
+		if ( $conflictingPlugins_list ) {
+
+			foreach ( $conflictingPlugins_list as $clashingPlugin ) {
+				$warnings[] = array(
+					'title' => sprintf( "%s is active and may conflict with NitroPack", $clashingPlugin['name'] ),
+					'msg' => esc_html__( "Some of its features overlap with NitroPack's optimizations which could lead to issues. We recommend disabling it to avoid potential conflicts.", 'nitropack' ),
+					'actions' => '<a href="#" class="btn btn-secondary" data-modal-target="modal-plugin-deactivate" data-modal-toggle="modal-plugin-deactivate" title="Disable ' . $clashingPlugin['name'] . ' ">' . sprintf( "Deactivate %s", $clashingPlugin['name'] ) . '</a>',
+					'classes' => [ 'conflicting-plugins plugin-' . sanitize_title( $clashingPlugin['name'] ) ],
+				);
+				require_once NITROPACK_PLUGIN_DIR . 'view/modals/modal-plugin-deactivate.php';
+			}
+
+		}
 		/* Add residual cache notices if found */
 		$residualCachePlugins = \NitroPack\Integration\Plugin\RC::detectThirdPartyCaches();
 		foreach ( $residualCachePlugins as $rcpName ) {
@@ -153,7 +160,7 @@ class Notifications {
 								);
 							}
 						} else {
-							if ( ! nitropack_is_conflicting_plugin_active() ) {
+							if ( ! $conflictingPlugins->nitropack_is_conflicting_plugin_active() ) {
 
 								/* Sets an error notifications for not being able to create the advanced-cache.php file due to conflicting caching plugins */
 
@@ -168,7 +175,7 @@ class Notifications {
 				} else {
 					if ( ! defined( "NITROPACK_ADVANCED_CACHE_VERSION" ) || NITROPACK_VERSION != NITROPACK_ADVANCED_CACHE_VERSION ) {
 						if ( ! nitropack_install_advanced_cache() ) {
-							if ( nitropack_is_conflicting_plugin_active() ) {
+							if ( $conflictingPlugins->nitropack_is_conflicting_plugin_active() ) {
 								$errors[] = array(
 									'title' => $notification_title,
 									'msg' => esc_html__( 'The file /wp-content/advanced-cache.php cannot be created because a conflicting plugin is active. Please make sure to disable all conflicting plugins.', 'nitropack' ),
@@ -480,7 +487,7 @@ class Notifications {
 			"cloudways" => array(
 				"name" => "Cloudways",
 				"helpUrl" => "https://support.nitropack.io/hc/en-us/articles/360060916674-Cloudways-Hosting-Configuration-for-NitroPack"
-			)		
+			)
 		);
 
 		$siteConfig = nitropack_get_site_config();
@@ -530,14 +537,15 @@ class Notifications {
 			return;
 
 		$notices = $this->nitropack_plugin_notices();
+
 		$numberOfPluginErrors = 0;
 		$numberOfPluginWarnings = 0;
 		$notificationCount = 0;
 		foreach ( array( "warning", "error", "info" ) as $type ) {
 
 			foreach ( $notices[ $type ] as $notice ) {
-		
-				if ( !empty($notice['dismissibleId']) ) {
+
+				if ( ! empty( $notice['dismissibleId'] ) ) {
 					switch ( $type ) {
 						case "error":
 							$numberOfPluginErrors++;
@@ -553,14 +561,35 @@ class Notifications {
 
 			}
 		}
-		/* Notifications from the app */
 
+		/* Notifications from the app */
 		$app_notifications = AppNotifications::getInstance();
 		foreach ( $app_notifications->get( 'system' ) as $notification ) {
 
-			if ( ! empty( $notification['id'] ) )
-				$notificationCount++;
+			if ( ! empty( $notification['id'] ) ) {
 
+				/* Don't count if dismissed by transient and the time has passed  */
+				$notice = get_transient( $notification['id'] );
+				if ( ! empty( $notice ) && ( $notice && time() < $notice ) ) {
+					continue;
+				}
+
+				if ( ! empty( $notification['type'] ) ) {
+					switch ( $notification['type'] ) {
+						case 'error':
+							$numberOfPluginErrors++;
+							break;
+						case 'warning':
+							$numberOfPluginWarnings++;
+							break;
+						case 'info':
+							$notificationCount++;
+							break;
+					}
+				} else {
+					$notificationCount++;
+				}
+			}
 		}
 
 		$numberOfPluginIssues = $numberOfPluginErrors + $numberOfPluginWarnings;
@@ -597,7 +626,7 @@ class Notifications {
 		$this->test_mode_notification_html();
 		wp_die();
 	}
-	
+
 	/* Dismiss notification by using set_transient -> temporary dismissal with auto-expiry */
 	public function nitropack_dismiss_notification_by_transient() {
 		if ( ! $this->pass_notification_capabilities() ) {
@@ -670,6 +699,56 @@ class Notifications {
 				}
 				delete_option( $notice );
 			}
+		}
+	}
+	/**
+	 * Deactivates a conflicting plugin from NitroPack.
+	 *
+	 * It verifies the nonce for security and checks if the specified plugin is in the list of conflicting plugins 
+	 * and finally deactivates it if it is active.
+	 *
+	 * @return void Outputs a JSON response indicating success or failure.
+	 */
+	public function nitropack_conflict_plugin_deactivate() {
+		if ( ! $this->pass_notification_capabilities() ) {
+			wp_send_json_error( [ 'message' => __( 'You do not have sufficient permissions.' ) ] );
+		}
+
+		if ( empty( $_POST['plugin'] ) ) {
+			wp_send_json_error( [ 'message' => __( 'Missing plugin.' ) ] );
+		}
+		$plugin = sanitize_text_field( wp_unslash( $_POST['plugin'] ) );
+
+		if ( empty( $_POST['plugin_name'] ) ) {
+			wp_send_json_error( [ 'message' => __( 'Missing plugin name.' ) ] );
+		}
+		$plugin_name = sanitize_text_field( wp_unslash( $_POST['plugin_name'] ) );
+
+		nitropack_verify_ajax_nonce( $_REQUEST );
+
+		// Check if the plugin is in the list of conflicting plugins for extra security measures.
+		$conflictingPlugins = \NitroPack\WordPress\ConflictingPlugins::getInstance();
+		$conflictingPlugins_list = $conflictingPlugins->nitropack_get_conflicting_plugins();
+		$plugin_found = false;
+		foreach ( $conflictingPlugins_list as $conflict_plugin ) {
+			if ( $conflict_plugin['plugin'] === $plugin ) {
+				$plugin_found = true;
+				break;
+			}
+		}
+		if ( ! $plugin_found ) {
+			wp_send_json_error( [ 'message' => __( 'Plugin not found in the list of conflicting plugins.' ) ] );
+		}
+
+		if ( is_plugin_active( $plugin ) ) {
+			deactivate_plugins( $plugin );
+			if ( ! is_plugin_active( $plugin ) ) {
+				wp_send_json_success( [ 'message' => sprintf( esc_html__( '%s deactivated successfully.', 'nitropack' ), $plugin_name ) ] );
+			} else {
+				wp_send_json_error( [ 'message' => __( 'Failed to deactivate the plugin.' ) ] );
+			}
+		} else {
+			wp_send_json_error( [ 'message' => sprintf( esc_html__( '%s is not active.', 'nitropack' ), $plugin_name ) ] );
 		}
 	}
 }

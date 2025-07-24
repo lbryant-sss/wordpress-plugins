@@ -10,6 +10,7 @@ use Vendidero\Shiptastic\DHL\Api\LabelRest;
 use Vendidero\Shiptastic\DHL\Api\LabelSoap;
 use Vendidero\Shiptastic\DHL\Api\LocationFinder;
 use Vendidero\Shiptastic\DHL\Api\Paket;
+use Vendidero\Shiptastic\DHL\Api\ParcelTracking;
 use Vendidero\Shiptastic\DHL\Api\ReturnRest;
 use Vendidero\Shiptastic\DHL\ShippingProvider\DeutschePost;
 use Vendidero\Shiptastic\DHL\ShippingProvider\DHL;
@@ -17,6 +18,7 @@ use Vendidero\Shiptastic\DHL\Api\Internetmarke;
 use Vendidero\Shiptastic\Registry\Container;
 use Vendidero\Shiptastic\Shipment;
 use Vendidero\Shiptastic\ShippingProvider\Helper;
+use Vendidero\Shiptastic\SimpleShipment;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -30,7 +32,7 @@ class Package {
 	 *
 	 * @var string
 	 */
-	const VERSION = '4.0.1';
+	const VERSION = '4.1.0';
 
 	// These are all considered domestic by DHL
 	protected static $us_territories = array( 'US', 'GU', 'AS', 'PR', 'UM', 'VI' );
@@ -116,6 +118,13 @@ class Package {
 			'shiptastic_register_api_instance_dhl_im_rest',
 			function () {
 				return new InternetmarkeRest();
+			}
+		);
+
+		add_filter(
+			'shiptastic_register_api_instance_dhl_de_parcel_tracking',
+			function () {
+				return new ParcelTracking();
 			}
 		);
 

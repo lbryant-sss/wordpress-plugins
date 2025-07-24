@@ -12,7 +12,7 @@
  * Text Domain:       permalink-manager
  * Domain Path:       /languages
  * WC requires at least: 3.0.0
- * WC tested up to:      9.9.5
+ * WC tested up to:      10.0.3
  */
 
 // If this file is called directly or plugin is already defined, abort
@@ -193,7 +193,7 @@ if ( ! class_exists( 'Permalink_Manager_Class' ) ) {
 					'auto_fix_duplicates'       => 0,
 					'fix_language_mismatch'     => 0,
 					'wpml_support'              => 1,
-					'wpml_translate_mode'       => 1,
+					'wpml_translate_mode'       => 0,
 					'pmxi_support'              => 1,
 					'um_support'                => 1,
 					'yoast_breadcrumbs'         => 0,

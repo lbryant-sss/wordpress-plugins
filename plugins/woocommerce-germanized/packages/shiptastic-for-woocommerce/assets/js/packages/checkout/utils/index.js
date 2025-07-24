@@ -44,14 +44,15 @@ export const hasPickupLocation = () => {
 };
 
 export const getCheckoutData = () => {
-    const extensionsData = select( CHECKOUT_STORE_KEY ).getExtensionData();
+    const extensionData = useSelect(
+        ( select ) => {
+            const store = select( CHECKOUT_STORE_KEY );
 
-    const defaultData    = {
-        'pickup_location': '',
-        'pickup_location_customer_number': ''
-    };
+            return store.getExtensionData();
+        }
+    );
 
-    return extensionsData.hasOwnProperty( 'woocommerce-shiptastic' ) ? extensionsData['woocommerce-shiptastic'] : defaultData;
+    return extensionData.hasOwnProperty( 'woocommerce-shiptastic' ) ? extensionData['woocommerce-shiptastic'] : { 'pickup_location': '', 'pickup_location_customer_number': '' };
 };
 
 export const getCartData = () => {

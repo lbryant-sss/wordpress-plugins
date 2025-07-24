@@ -3,7 +3,7 @@
  * Plugin Name: Redis Object Cache Drop-In
  * Plugin URI: https://wordpress.org/plugins/redis-cache/
  * Description: A persistent object cache backend powered by Redis. Supports Predis, PhpRedis, Relay, replication, sentinels, clustering and WP-CLI.
- * Version: 2.6.1
+ * Version: 2.6.2
  * Author: Till Krüss
  * Author URI: https://objectcache.pro
  * License: GPLv3
@@ -1893,7 +1893,7 @@ class WP_Object_Cache {
                     end
                 until 0 == cur
                 return i
-LUA; // phpcs:enable
+LUA;
 
             if ( isset($this->redis_version) && version_compare( $this->redis_version, '5', '<' ) && version_compare( $this->redis_version, '3.2', '>=' ) ) {
                 $script = 'redis.replicate_commands()' . "\n" . $script;
@@ -1924,7 +1924,6 @@ LUA; // phpcs:enable
                 $this->unflushable_groups
             );
 
-            // phpcs:disable Squiz.PHP.Heredoc.NotAllowed
             $script = <<<LUA
                 local cur = 0
                 local i = 0
@@ -1947,7 +1946,7 @@ LUA; // phpcs:enable
                     end
                 until 0 == cur
                 return i
-LUA; // phpcs:enable
+LUA;
             if ( isset($this->redis_version) && version_compare( $this->redis_version, '5', '<' ) && version_compare( $this->redis_version, '3.2', '>=' ) ) {
                 $script = 'redis.replicate_commands()' . "\n" . $script;
             }
@@ -3037,7 +3036,9 @@ LUA; // phpcs:enable
             '<code>/wp-content/</code>'
         ) . "</p>\n";
 
-        wp_die( $message ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+        // phpcs:disable WordPress.Security.EscapeOutput
+        wp_die( $message );
+        // phpcs:enable
     }
 
     /**

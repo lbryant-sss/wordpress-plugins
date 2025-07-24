@@ -132,11 +132,25 @@ class Helper {
 			$available          = apply_filters(
 				'woocommerce_shiptastic_available_shipping_provider_integrations',
 				array(
-					'ups' => array(
+					'ups'           => array(
 						'title'          => _x( 'UPS', 'shipments', 'woocommerce-germanized' ),
 						'is_builtin'     => false,
 						'is_pro'         => false,
 						'extension_name' => 'shiptastic-integration-for-ups',
+					),
+					'dhl'           => array(
+						'title'               => _x( 'DHL', 'shipments', 'woocommerce-germanized' ),
+						'countries_supported' => array( 'DE' ),
+						'is_builtin'          => false,
+						'is_pro'              => false,
+						'extension_name'      => 'shiptastic-integration-for-dhl',
+					),
+					'deutsche_post' => array(
+						'title'               => _x( 'Deutsche Post', 'shipments', 'woocommerce-germanized' ),
+						'countries_supported' => array( 'DE' ),
+						'is_builtin'          => false,
+						'is_pro'              => false,
+						'extension_name'      => 'shiptastic-integration-for-dhl',
 					),
 				)
 			);

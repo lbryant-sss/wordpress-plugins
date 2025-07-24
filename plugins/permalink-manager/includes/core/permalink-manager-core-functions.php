@@ -694,10 +694,14 @@ class Permalink_Manager_Core_Functions {
 			/**
 			 * 1A. External redirect
 			 */
-			if ( ! empty( $pm_query['id'] ) && ! empty( $permalink_manager_external_redirects[ $pm_query['id'] ] ) ) {
-				$external_url = $permalink_manager_external_redirects[ $pm_query['id'] ];
+			if ( ! empty( $pm_query['id'] ) ) {
+				if ( ! empty( $queried_object->ID ) && ! empty( $permalink_manager_external_redirects[ $queried_object->ID ] ) ) {
+					$external_url = $permalink_manager_external_redirects[ $queried_object->ID ];
+				} else if ( ! empty( $queried_object->term_id ) && ! empty( $permalink_manager_external_redirects["tax-{$queried_object->term_id}"] ) ) {
+					$external_url = $permalink_manager_external_redirects["tax-{$queried_object->term_id}"];
+				}
 
-				if ( filter_var( $external_url, FILTER_VALIDATE_URL ) ) {
+				if ( ! empty( $external_url ) && filter_var( $external_url, FILTER_VALIDATE_URL ) ) {
 					// Allow redirect
 					$wp_query->query_vars['do_not_redirect'] = 0;
 

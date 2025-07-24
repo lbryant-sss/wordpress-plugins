@@ -14,11 +14,30 @@ if ( !defined( 'ABSPATH' ) ) {
  * Author: UpSolution
  */
 class UsCore {
+    private $post_ids = array();
+
     public function init() {
         if ( !defined( 'US_CORE_VERSION' ) ) {
             return;
         }
         add_action( 'pre_get_posts', array($this, 'pre_get_posts') );
+        add_action( 'wp_ajax_us_ajax_grid', array($this, 'set_search_post_ids_from_ajax'), 5 );
+        add_action( 'wp_ajax_nopriv_us_ajax_grid', array($this, 'set_search_post_ids_from_ajax'), 5 );
+    }
+
+    public function set_search_post_ids_from_ajax() {
+        if ( !$this->isRelevantProductAjaxQuery() ) {
+            return;
+        }
+        $template_vars_json = $_POST['template_vars'] ?? '';
+        $template_vars = json_decode( stripslashes( $template_vars_json ), true );
+        $search_term = $template_vars['query_args']['s'] ?? '';
+        if ( empty( $search_term ) ) {
+            return;
+        }
+        if ( !dgoraAsfwFs()->is_premium() ) {
+            $this->post_ids = Helpers::searchProducts( $search_term );
+        }
     }
 
     /**
@@ -31,12 +50,8 @@ class UsCore {
         if ( !$this->isRelevantProductAjaxQuery() ) {
             return;
         }
-        $search_term = $query->get( 's' );
-        if ( !dgoraAsfwFs()->is_premium() ) {
-            $post_ids = Helpers::searchProducts( $search_term );
-        }
-        if ( !empty( $post_ids ) ) {
-            $query->set( 'post__in', $post_ids );
+        if ( !empty( $this->post_ids ) ) {
+            $query->set( 'post__in', $this->post_ids );
             $query->set( 'orderby', 'post__in' );
             $query->set( 's', '' );
         }

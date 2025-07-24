@@ -1181,10 +1181,11 @@ class Table extends WP_List_Table {
 			$actions['delete'] = _x( 'Delete Permanently', 'shipments', 'woocommerce-germanized' );
 		}
 
-		$actions['mark_processing'] = _x( 'Change status to processing', 'shipments', 'woocommerce-germanized' );
-		$actions['mark_shipped']    = _x( 'Change status to shipped', 'shipments', 'woocommerce-germanized' );
-		$actions['mark_delivered']  = _x( 'Change status to delivered', 'shipments', 'woocommerce-germanized' );
-		$actions['labels']          = _x( 'Generate and download labels', 'shipments', 'woocommerce-germanized' );
+		$actions['mark_processing']         = _x( 'Change status to processing', 'shipments', 'woocommerce-germanized' );
+		$actions['mark_ready-for-shipping'] = _x( 'Change status to ready for shipping', 'shipments', 'woocommerce-germanized' );
+		$actions['mark_shipped']            = _x( 'Change status to shipped', 'shipments', 'woocommerce-germanized' );
+		$actions['mark_delivered']          = _x( 'Change status to delivered', 'shipments', 'woocommerce-germanized' );
+		$actions['labels']                  = _x( 'Generate and download labels', 'shipments', 'woocommerce-germanized' );
 
 		$actions = $this->get_custom_bulk_actions( $actions );
 

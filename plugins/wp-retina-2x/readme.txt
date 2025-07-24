@@ -3,7 +3,7 @@ Contributors: TigrouMeow
 Tags: retina, upscale, replace, thumbnail, regenerate
 Donate link: https://www.patreon.com/meowapps
 Requires at least: 6.0
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 7.4
 Stable tag: 7.0.2
 

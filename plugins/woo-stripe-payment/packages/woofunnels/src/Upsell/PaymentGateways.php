@@ -67,13 +67,16 @@ class PaymentGateways {
 	}
 
 	/**
-	 * @param                            $bool
+	 * @param bool                       $bool
 	 * @param \WC_Order                  $order
 	 * @param \WC_Payment_Gateway_Stripe $payment_method
 	 *
 	 * @return bool
 	 */
-	public function maybe_set_save_payment_method( $bool, \WC_Order $order, \WC_Payment_Gateway_Stripe $payment_method ) {
+	public function maybe_set_save_payment_method( $bool, $order, $payment_method = null ) {
+		if ( ! $payment_method ) {
+			return $bool;
+		}
 		if ( ! $bool ) {
 			$payment_gateway = $this->get_wfocu_payment_gateway( $order->get_payment_method() );
 			if ( $payment_gateway && $payment_gateway->should_tokenize() && ! $payment_method->use_saved_source() ) {

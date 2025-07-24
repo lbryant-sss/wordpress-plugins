@@ -435,17 +435,17 @@
         },
         {
             "name": "stellarwp/admin-notices",
-            "version": "2.0.0",
-            "version_normalized": "2.0.0.0",
+            "version": "2.0.1",
+            "version_normalized": "2.0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stellarwp/admin-notices.git",
-                "reference": "5c1302fb1de5b212ec6e05385e48e3859fd6b690"
+                "reference": "1d4c25adb2fe4fc959bea3f4501c58bb7586509d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stellarwp/admin-notices/zipball/5c1302fb1de5b212ec6e05385e48e3859fd6b690",
-                "reference": "5c1302fb1de5b212ec6e05385e48e3859fd6b690",
+                "url": "https://api.github.com/repos/stellarwp/admin-notices/zipball/1d4c25adb2fe4fc959bea3f4501c58bb7586509d",
+                "reference": "1d4c25adb2fe4fc959bea3f4501c58bb7586509d",
                 "shasum": ""
             },
             "require": {
@@ -464,7 +464,7 @@
                 "phpunit/phpunit": "^9.5",
                 "szepeviktor/phpstan-wordpress": "^1.3"
             },
-            "time": "2024-11-20T00:41:13+00:00",
+            "time": "2025-07-10T17:44:44+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -485,7 +485,7 @@
             "description": "A handy package for easily displaying admin notices in WordPress with simple to complex visibility conditions",
             "support": {
                 "issues": "https://github.com/stellarwp/admin-notices/issues",
-                "source": "https://github.com/stellarwp/admin-notices/tree/2.0.0"
+                "source": "https://github.com/stellarwp/admin-notices/tree/2.0.1"
             },
             "install-path": "../stellarwp/admin-notices"
         },

@@ -4,6 +4,7 @@ namespace Vendidero\Shiptastic\DataStores;
 
 use Vendidero\Shiptastic\Caches\Helper;
 use Vendidero\Shiptastic\Package;
+use Vendidero\Shiptastic\SecretBox;
 use WC_Data_Store_WP;
 use WC_Object_Data_Store_Interface;
 use Exception;
@@ -43,6 +44,8 @@ class Shipment extends WC_Data_Store_WP implements WC_Object_Data_Store_Interfac
 		'_refund_order_id',
 		'_pickup_location_code',
 		'_pickup_location_customer_number',
+		'_remote_status_events',
+		'_tracking_secret',
 	);
 
 	protected $core_props = array(
@@ -477,6 +480,15 @@ class Shipment extends WC_Data_Store_WP implements WC_Object_Data_Store_Interfac
 				case 'is_customer_requested':
 					$value = wc_bool_to_string( $value );
 					break;
+				case 'tracking_secret':
+					if ( ! empty( $value ) ) {
+						$encrypted = SecretBox::encrypt( $value );
+
+						if ( ! is_wp_error( $encrypted ) ) {
+							$value = $encrypted;
+						}
+					}
+					break;
 			}
 
 			// Force updating props that are dependent on inner content data (weight, dimensions)
@@ -649,7 +661,9 @@ class Shipment extends WC_Data_Store_WP implements WC_Object_Data_Store_Interfac
 					$date_query = $date_query_args['date_query'][0];
 
 					if ( 'post_date' === $date_query['column'] ) {
-						$date_query['column'] = $wpdb->stc_shipments . '.shipment_' . $db_key;
+						$date_query['column'] = "{$wpdb->stc_shipments}.shipment_{$db_key}";
+					} elseif ( 'post_date_gmt' === $date_query['column'] ) {
+						$date_query['column'] = "{$wpdb->stc_shipments}.shipment_{$db_key}_gmt";
 					}
 
 					$wp_query_args['date_query'][] = $date_query;

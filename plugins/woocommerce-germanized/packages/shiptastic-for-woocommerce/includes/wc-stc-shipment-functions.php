@@ -183,14 +183,46 @@ function wc_stc_get_shipments_by_order( $order ) {
 	return $shipments;
 }
 
+function wc_stc_get_order_last_tracking_id( $order ) {
+	$tracking_id = '';
+
+	if ( $order_shipment = wc_stc_get_shipment_order( $order ) ) {
+		$tracking_id = $order_shipment->get_last_tracking_id();
+	}
+
+	return $tracking_id;
+}
+
+/**
+ * @param $tracking_id
+ *
+ * @return false|Shipment
+ */
+function wc_stc_get_shipment_by_tracking_id( $tracking_id ) {
+	$shipments = wc_stc_get_shipments(
+		array(
+			'tracking_id' => $tracking_id,
+			'limit'       => 1,
+		)
+	);
+
+	if ( ! empty( $shipments ) ) {
+		return $shipments[0];
+	}
+
+	return false;
+}
+
 function wc_stc_get_shipment_order_shipping_statuses() {
 	$shipment_statuses = array(
-		'not-shipped'         => _x( 'Not shipped', 'shipments', 'woocommerce-germanized' ),
-		'partially-shipped'   => _x( 'Partially shipped', 'shipments', 'woocommerce-germanized' ),
-		'shipped'             => _x( 'Shipped', 'shipments', 'woocommerce-germanized' ),
-		'partially-delivered' => _x( 'Partially delivered', 'shipments', 'woocommerce-germanized' ),
-		'delivered'           => _x( 'Delivered', 'shipments', 'woocommerce-germanized' ),
-		'no-shipping-needed'  => _x( 'No shipping needed', 'shipments', 'woocommerce-germanized' ),
+		'not-shipped'                  => _x( 'Not shipped', 'shipments', 'woocommerce-germanized' ),
+		'ready-for-shipping'           => _x( 'Ready for shipping', 'shipments', 'woocommerce-germanized' ),
+		'partially-ready-for-shipping' => _x( 'Partially ready for shipping', 'shipments', 'woocommerce-germanized' ),
+		'partially-shipped'            => _x( 'Partially shipped', 'shipments', 'woocommerce-germanized' ),
+		'shipped'                      => _x( 'Shipped', 'shipments', 'woocommerce-germanized' ),
+		'partially-delivered'          => _x( 'Partially delivered', 'shipments', 'woocommerce-germanized' ),
+		'delivered'                    => _x( 'Delivered', 'shipments', 'woocommerce-germanized' ),
+		'no-shipping-needed'           => _x( 'No shipping needed', 'shipments', 'woocommerce-germanized' ),
 	);
 
 	/**
@@ -347,11 +379,12 @@ function wc_stc_get_shipment( $the_shipment ) {
  */
 function wc_stc_get_shipment_statuses() {
 	$shipment_statuses = array(
-		'draft'      => _x( 'Draft', 'shipments', 'woocommerce-germanized' ),
-		'processing' => _x( 'Processing', 'shipments', 'woocommerce-germanized' ),
-		'shipped'    => _x( 'Shipped', 'shipments', 'woocommerce-germanized' ),
-		'delivered'  => _x( 'Delivered', 'shipments', 'woocommerce-germanized' ),
-		'requested'  => _x( 'Requested', 'shipments', 'woocommerce-germanized' ),
+		'draft'              => _x( 'Draft', 'shipments', 'woocommerce-germanized' ),
+		'processing'         => _x( 'Processing', 'shipments', 'woocommerce-germanized' ),
+		'ready-for-shipping' => _x( 'Ready for shipping', 'shipments', 'woocommerce-germanized' ),
+		'shipped'            => _x( 'Shipped', 'shipments', 'woocommerce-germanized' ),
+		'delivered'          => _x( 'Delivered', 'shipments', 'woocommerce-germanized' ),
+		'requested'          => _x( 'Requested', 'shipments', 'woocommerce-germanized' ),
 	);
 
 	/**
@@ -1300,10 +1333,11 @@ function wc_stc_order_is_customer_returnable( $order, $check_date = true ) {
 		$maximum_days = absint( $maximum_days );
 
 		if ( ! empty( $maximum_days ) ) {
-
 			$completed_date = $shipment_order->get_order()->get_date_created();
 
-			if ( $shipment_order->get_date_shipped() ) {
+			if ( $shipment_order->get_date_delivered() ) {
+				$completed_date = $shipment_order->get_date_delivered();
+			} elseif ( $shipment_order->get_date_shipped() ) {
 				$completed_date = $shipment_order->get_date_shipped();
 			} elseif ( $shipment_order->get_order()->get_date_completed() ) {
 				$completed_date = $shipment_order->get_order()->get_date_completed();
@@ -1313,9 +1347,10 @@ function wc_stc_order_is_customer_returnable( $order, $check_date = true ) {
 			 * Filter to adjust the completed date of an order used to determine whether an order is
 			 * still returnable by the customer or not. The date is constructed by checking for existence in the following order:
 			 *
-			 * 1. The date the order was shipped completely
-			 * 2. The date the order was marked as completed
-			 * 3. The date the order was created
+			 * 1. The date the order was delivered completely
+			 * 2. The date the order was shipped completely
+			 * 3. The date the order was marked as completed
+			 * 4. The date the order was created
 			 *
 			 * @param WC_DateTime $completed_date The order completed date.
 			 * @param WC_Order    $order The order instance.

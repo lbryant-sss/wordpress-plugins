@@ -16,6 +16,7 @@ use Vendidero\Shiptastic\Packaging;
 use Vendidero\Shiptastic\Shipment;
 use Vendidero\Shiptastic\ShipmentError;
 use Vendidero\Shiptastic\SimpleShipment;
+use Vendidero\Shiptastic\Tracking\ShipmentStatus;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -480,10 +481,54 @@ abstract class Auto extends Simple implements ShippingProviderAuto {
 		return $settings;
 	}
 
+	protected function get_tracking_settings() {
+		$settings                 = parent::get_tracking_settings();
+		$remote_tracking_settings = array();
+
+		foreach ( \Vendidero\Shiptastic\Tracking\Helper::get_status_update_types() as $type => $type_title ) {
+			if ( $this->supports_remote_shipment_status( $type ) ) {
+				$remote_tracking_settings[] = array(
+					'title' => sprintf( _x( 'Remote Status (%s)', 'shipments', 'woocommerce-germanized' ), $type_title ),
+					'desc'  => sprintf( _x( 'Refresh shipment status via API (%s).', 'shipments', 'woocommerce-germanized' ), $type_title ) . '<div class="wc-shiptastic-additional-desc">' . _x( 'Enable this option to automatically refresh the shipment status based on the actual status returned by the API. To learn more about remote status updates, check the <a href="https://vendidero.com/doc/shiptastic/sync-shipment-status">docs</a>.', 'shipments', 'woocommerce-germanized' ) . '</div>',
+					'id'    => "enable_remote_shipment_status_update_{$type}",
+					'type'  => 'shiptastic_toggle',
+					'value' => wc_bool_to_string( $this->enable_remote_shipment_status_update( $type ) ),
+				);
+			}
+		}
+
+		if ( ! empty( $remote_tracking_settings ) ) {
+			$settings = array_merge(
+				$settings,
+				array(
+					array(
+						'title' => '',
+						'type'  => 'title',
+						'id'    => 'shipping_provider_tracking_auto_options',
+					),
+				)
+			);
+
+			$settings = array_merge( $settings, $remote_tracking_settings );
+
+			$settings = array_merge(
+				$settings,
+				array(
+					array(
+						'type' => 'sectionend',
+						'id'   => 'shipping_provider_label_auto_options',
+					),
+				)
+			);
+		}
+
+		return $settings;
+	}
+
 	protected function get_automation_settings() {
 		$settings = array(
 			array(
-				'title' => _x( 'Automation', 'shipments', 'woocommerce-germanized' ),
+				'title' => '',
 				'type'  => 'title',
 				'id'    => 'shipping_provider_label_auto_options',
 			),
@@ -810,6 +855,53 @@ abstract class Auto extends Simple implements ShippingProviderAuto {
 		return $pickup_locations;
 	}
 
+	public function supports_remote_shipment_status( $type ) {
+		return false;
+	}
+
+	public function get_number_of_shipments_per_status_check( $type ) {
+		return 20;
+	}
+
+	public function enable_remote_shipment_status_update( $type ) {
+		return wc_string_to_bool( $this->get_setting( "enable_remote_shipment_status_update_{$type}", 'no' ) );
+	}
+
+	/**
+	 * Handles a remote shipment status update event.
+	 * Needs to handle authentication too.
+	 *
+	 * @param \WP_REST_Request $request
+	 *
+	 * @return \WP_Error|\WP_REST_Response|ShipmentStatus
+	 */
+	public function handle_remote_shipment_status_update( $request ) {
+		return new \WP_Error( 'not_supported', 'Remote tracking not supported', array( 'status' => 500 ) );
+	}
+
+	/**
+	 * @param Shipment[] $shipments
+	 *
+	 * @return void
+	 */
+	public function subscribe_to_shipment_status_events( $shipments ) {}
+
+	/**
+	 * @param Shipment[] $shipments
+	 *
+	 * @return void
+	 */
+	public function unsubscribe_from_shipment_status_events( $shipments ) {}
+
+	/**
+	 * @param Shipment[] $shipments
+	 *
+	 * @return ShipmentStatus[]
+	 */
+	public function get_remote_status_for_shipments( $shipments ) {
+		return array();
+	}
+
 	protected function get_label_settings_by_shipment_type( $shipment_type = 'simple' ) {
 		$settings               = array();
 		$reference_settings     = array();
@@ -1040,7 +1132,8 @@ abstract class Auto extends Simple implements ShippingProviderAuto {
 
 	public function get_setting_sections() {
 		$sections = array(
-			'' => _x( 'General', 'shipments', 'woocommerce-germanized' ),
+			''         => _x( 'General', 'shipments', 'woocommerce-germanized' ),
+			'tracking' => _x( 'Tracking', 'shipments', 'woocommerce-germanized' ),
 		);
 
 		foreach ( wc_stc_get_shipment_types() as $shipment_type ) {

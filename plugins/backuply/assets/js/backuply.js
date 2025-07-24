@@ -1836,6 +1836,12 @@ function backuply_upload_backup(ev){
 		show_alert(error_div, 'Please select a .tar.gz file, only .tar.gz files are backup files.', 'error');
 		return;
 	}
+	
+	const regex = /^wp_.*_\d{4}-\d{2}-\d{2}_.*\.tar\.gz/;
+	if(!regex.test(dropped_file.name)){
+		show_alert(error_div, 'File name is of unexpected format, it should be of fromat wp_domain_name_YYYY-MM-DD_HH-MM-SS.tar.gz.', 'error');
+		return;
+	}
 
 	// Updating the UI
 	let progress_block = document.querySelector('.backuply-upload-backup'),

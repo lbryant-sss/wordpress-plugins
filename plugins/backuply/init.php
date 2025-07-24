@@ -10,7 +10,7 @@ if(!function_exists('add_action')){
 	exit;
 }
 
-define('BACKUPLY_VERSION', '1.4.6');
+define('BACKUPLY_VERSION', '1.4.7');
 define('BACKUPLY_DIR', dirname(BACKUPLY_FILE));
 define('BACKUPLY_URL', plugins_url('', BACKUPLY_FILE));
 define('BACKUPLY_BACKUP_DIR', str_replace('\\' , '/', WP_CONTENT_DIR).'/backuply/');
@@ -409,7 +409,7 @@ function backuply_backup_nag(){
 	wp_add_inline_script('backuply_time_nag' ,'
 
 		jQuery(document).ready(function(){
-			jQuery(".backuply-backup-nag .notice-dismiss").click(function(){
+			jQuery(".backuply-backup-nag .notice-dismiss").on("click", function(){
 			
 				jQuery.ajax({
 					method : "GET",

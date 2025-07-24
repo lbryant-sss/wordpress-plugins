@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit6a0a143c8b428dd153cb4f59303e006d
+class ComposerStaticInitb0899e702cdae1ae7a23a0a6fa3baf05
 {
     public static $files = array (
         '241d2bc730dc592f76425fee315639b6' => __DIR__ . '/..' . '/globalcitizen/php-iban/oophp-iban.php',
@@ -454,6 +454,7 @@ class ComposerStaticInit6a0a143c8b428dd153cb4f59303e006d
         'Vendidero\\Shiptastic\\DHL\\Api\\AuthSoap' => __DIR__ . '/../..' . '/packages/shiptastic-integration-for-dhl/src/Api/AuthSoap.php',
         'Vendidero\\Shiptastic\\DHL\\Api\\BasicAuthPaket' => __DIR__ . '/../..' . '/packages/shiptastic-integration-for-dhl/src/Api/BasicAuthPaket.php',
         'Vendidero\\Shiptastic\\DHL\\Api\\BasicAuthParcelServices' => __DIR__ . '/../..' . '/packages/shiptastic-integration-for-dhl/src/Api/BasicAuthParcelServices.php',
+        'Vendidero\\Shiptastic\\DHL\\Api\\BasicAuthParcelTracking' => __DIR__ . '/../..' . '/packages/shiptastic-integration-for-dhl/src/Api/BasicAuthParcelTracking.php',
         'Vendidero\\Shiptastic\\DHL\\Api\\ImProductList' => __DIR__ . '/../..' . '/packages/shiptastic-integration-for-dhl/src/Api/ImProductList.php',
         'Vendidero\\Shiptastic\\DHL\\Api\\ImProductsSoap' => __DIR__ . '/../..' . '/packages/shiptastic-integration-for-dhl/src/Api/ImProductsSoap.php',
         'Vendidero\\Shiptastic\\DHL\\Api\\Internetmarke' => __DIR__ . '/../..' . '/packages/shiptastic-integration-for-dhl/src/Api/Internetmarke.php',
@@ -467,6 +468,7 @@ class ComposerStaticInit6a0a143c8b428dd153cb4f59303e006d
         'Vendidero\\Shiptastic\\DHL\\Api\\Paket' => __DIR__ . '/../..' . '/packages/shiptastic-integration-for-dhl/src/Api/Paket.php',
         'Vendidero\\Shiptastic\\DHL\\Api\\PaketRest' => __DIR__ . '/../..' . '/packages/shiptastic-integration-for-dhl/src/Api/PaketRest.php',
         'Vendidero\\Shiptastic\\DHL\\Api\\ParcelServices' => __DIR__ . '/../..' . '/packages/shiptastic-integration-for-dhl/src/Api/ParcelServices.php',
+        'Vendidero\\Shiptastic\\DHL\\Api\\ParcelTracking' => __DIR__ . '/../..' . '/packages/shiptastic-integration-for-dhl/src/Api/ParcelTracking.php',
         'Vendidero\\Shiptastic\\DHL\\Api\\ReturnRest' => __DIR__ . '/../..' . '/packages/shiptastic-integration-for-dhl/src/Api/ReturnRest.php',
         'Vendidero\\Shiptastic\\DHL\\Api\\Soap' => __DIR__ . '/../..' . '/packages/shiptastic-integration-for-dhl/src/Api/Soap.php',
         'Vendidero\\Shiptastic\\DHL\\Blocks\\Assets' => __DIR__ . '/../..' . '/packages/shiptastic-integration-for-dhl/src/Blocks/Assets.php',
@@ -582,6 +584,8 @@ class ComposerStaticInit6a0a143c8b428dd153cb4f59303e006d
         'Vendidero\\Shiptastic\\ShippingProvider\\ServiceList' => __DIR__ . '/../..' . '/packages/shiptastic-for-woocommerce/src/ShippingProvider/ServiceList.php',
         'Vendidero\\Shiptastic\\ShippingProvider\\Simple' => __DIR__ . '/../..' . '/packages/shiptastic-for-woocommerce/src/ShippingProvider/Simple.php',
         'Vendidero\\Shiptastic\\SimpleShipment' => __DIR__ . '/../..' . '/packages/shiptastic-for-woocommerce/src/SimpleShipment.php',
+        'Vendidero\\Shiptastic\\Tracking\\Helper' => __DIR__ . '/../..' . '/packages/shiptastic-for-woocommerce/src/Tracking/Helper.php',
+        'Vendidero\\Shiptastic\\Tracking\\ShipmentStatus' => __DIR__ . '/../..' . '/packages/shiptastic-for-woocommerce/src/Tracking/ShipmentStatus.php',
         'Vendidero\\Shiptastic\\Utilities\\NumberUtil' => __DIR__ . '/../..' . '/packages/shiptastic-for-woocommerce/src/Utilities/NumberUtil.php',
         'Vendidero\\Shiptastic\\Utilities\\VariableStreamHandler' => __DIR__ . '/../..' . '/packages/shiptastic-for-woocommerce/src/Utilities/VariableStreamHandler.php',
         'Vendidero\\Shiptastic\\Validation' => __DIR__ . '/../..' . '/packages/shiptastic-for-woocommerce/src/Validation.php',
@@ -641,9 +645,9 @@ class ComposerStaticInit6a0a143c8b428dd153cb4f59303e006d
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit6a0a143c8b428dd153cb4f59303e006d::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit6a0a143c8b428dd153cb4f59303e006d::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit6a0a143c8b428dd153cb4f59303e006d::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitb0899e702cdae1ae7a23a0a6fa3baf05::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitb0899e702cdae1ae7a23a0a6fa3baf05::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitb0899e702cdae1ae7a23a0a6fa3baf05::$classMap;
 
         }, null, ClassLoader::class);
     }

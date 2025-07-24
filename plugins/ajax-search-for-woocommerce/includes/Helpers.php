@@ -673,7 +673,7 @@ class Helpers {
         /* ------------------------------------ *
          * Bonus for comparing individual words *
          * ------------------------------------ */
-        $words = explode( ' ', $phrase );
+        $words = explode( ' ', $phrase ?? '' );
         if ( count( $words ) > 1 ) {
             $args['check_similarity'] = false;
             foreach ( $words as $word ) {
@@ -1627,6 +1627,9 @@ class Helpers {
      * @return int[]
      */
     public static function searchProducts( $phrase ) {
+        if ( doing_action( 'pre_get_posts' ) ) {
+            _doing_it_wrong( __METHOD__, 'You should not call Helpers::searchProducts() during pre_get_posts. Collect post IDs earlier.', '0.1.1' );
+        }
         $postIn = [];
         $results = DGWT_WCAS()->nativeSearch->getSearchResults( $phrase, true, 'product-ids' );
         if ( isset( $results['suggestions'] ) && is_array( $results['suggestions'] ) ) {

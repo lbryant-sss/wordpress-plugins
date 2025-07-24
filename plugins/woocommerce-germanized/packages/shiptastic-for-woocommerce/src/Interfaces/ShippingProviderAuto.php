@@ -2,7 +2,9 @@
 namespace Vendidero\Shiptastic\Interfaces;
 
 use Vendidero\Shiptastic\Labels\ConfigurationSet;
+use Vendidero\Shiptastic\Shipment;
 use Vendidero\Shiptastic\ShippingProvider\PickupLocation;
+use Vendidero\Shiptastic\Tracking\ShipmentStatus;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -65,4 +67,57 @@ interface ShippingProviderAuto extends ShippingProvider, LabelConfigurationSet {
 	 * @return bool
 	 */
 	public function replace_shipping_address_by_pickup_location();
+
+	/**
+	 * Returns whether the shipping provider supports updating
+	 * shipment status via API
+	 *
+	 * @return bool
+	 */
+	public function supports_remote_shipment_status( $type );
+
+	/**
+	 * Returns the number of shipments supported per status check run.
+	 *
+	 * @param $type
+	 *
+	 * @return integer
+	 */
+	public function get_number_of_shipments_per_status_check( $type );
+
+	/**
+	 * Handles a remote shipment status update event.
+	 * Needs to handle authentication too.
+	 *
+	 * @param \WP_REST_Request $request
+	 *
+	 * @return \WP_Error|\WP_REST_Response|ShipmentStatus
+	 */
+	public function handle_remote_shipment_status_update( $request );
+
+	/**
+	 * @param Shipment[] $shipments
+	 *
+	 * @return void
+	 */
+	public function subscribe_to_shipment_status_events( $shipments );
+
+	/**
+	 * @param Shipment[] $shipments
+	 *
+	 * @return void
+	 */
+	public function unsubscribe_from_shipment_status_events( $shipments );
+
+	/**
+	 * @return bool
+	 */
+	public function enable_remote_shipment_status_update( $type );
+
+	/**
+	 * @param Shipment[] $shipments
+	 *
+	 * @return ShipmentStatus[]
+	 */
+	public function get_remote_status_for_shipments( $shipments );
 }

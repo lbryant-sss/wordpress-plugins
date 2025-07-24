@@ -1068,8 +1068,8 @@ if(file_exists(BACKUPLY_BACKUP_DIR . 'restoration/restoration.php')){
 		$backup_last_log = (file_exists(BACKUPLY_BACKUP_DIR . 'backuply_backup_log.php')) ? ' <span class="backuply-backup-last-log">(Last log)</span>' : '';
 		$restore_last_log = (file_exists(BACKUPLY_BACKUP_DIR . 'backuply_restore_log.php')) ? ' <span class="backuply-restore-last-log">(Last log)</span>' : '';
 		
-		$last_backup = get_option('backuply_last_backup') ? date('jS \of F Y h:i A', get_option('backuply_last_backup')) . $backup_last_log : 'None';
-		$last_restore = get_option('backuply_last_restore') ? date('jS \of F Y h:i A', get_option('backuply_last_restore')) . $restore_last_log : 'None';
+		$last_backup = get_option('backuply_last_backup') ? backuply_format_unix_time(get_option('backuply_last_backup')) . $backup_last_log : 'None';
+		$last_restore = get_option('backuply_last_restore') ? backuply_format_unix_time(get_option('backuply_last_restore')) . $restore_last_log : 'None';
 		$auto_backup_schedule = wp_next_scheduled('backuply_auto_backup_cron') ? date('Y-m-d h:i A', wp_next_scheduled('backuply_auto_backup_cron')) : '';
 		
 		if(!empty($auto_backup_schedule)) {
@@ -1867,28 +1867,28 @@ if(file_exists(BACKUPLY_BACKUP_DIR . 'restoration/restoration.php')){
 							}
 
 						}
-						
+
 						echo '
 						<tr data-proto-id="'.esc_attr($proto_id).'">
 							<td>
 								<input type="checkbox" name="backuply_selected_bak[]" value="'.esc_attr($all_info->name .'.'. $all_info->ext).'"/>
 							</td>
 							<td>
-								<div style="position:relative;" title="URL where the Backup was created '.(!empty($all_info->backup_site_url) ? esc_url($all_info->backup_site_url) : '').'">'.date('jS F Y h:i A', (int) esc_html($all_info->btime));
+								<div style="position:relative;" title="URL where the Backup was created '.(!empty($all_info->backup_site_url) ? esc_url($all_info->backup_site_url) : '').'">'.esc_html(backuply_format_unix_time($all_info->btime));
 
 						if(!empty($all_info->auto_backup)){
 							echo ' <span class="backuply-auto-mark">Auto</span>';
 						}
-						
+
 						echo '<span class="dashicons dashicons-media-text backuply-backup-last-log" title="Logs" style="cursor:pointer; text-decoration:none;" data-file-name="'.esc_attr($all_info->name) . '_log.php"></span>';
-						
+
 						if(!empty($all_info->backup_note)){
 							echo '<span class="backuply-backup-note-tip" title="'.esc_attr($all_info->backup_note).'" style="cursor:pointer; vertical-align:middle;"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512" fill="#f9be01"><path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H288V368c0-26.5 21.5-48 48-48H448V96c0-35.3-28.7-64-64-64H64zM448 352H402.7 336c-8.8 0-16 7.2-16 16v66.7V480l32-32 64-64 32-32z"/></svg></span>';
 						}
 
 						echo'</div>
 						</td>';
-							
+
 						$remote_icon = $backup_protocol;
 						if(!empty($s3_compat)){
 							$remote_icon = $s3_compat;
@@ -2322,4 +2322,24 @@ if(file_exists(BACKUPLY_BACKUP_DIR . 'restoration/restoration.php')){
 	</div>
 
 	<?php }
+}
+
+// Formats time if the time is in utc timezone
+function backuply_format_unix_time($unix_time){
+	// Making time zone conversions.
+	$unix_time = (int) $unix_time;
+
+	$default_timezone = date_default_timezone_get();
+	if($default_timezone == 'UTC' && class_exists('DateTime') && class_exists('DateTimeZone')){
+		$time_zone_string = wp_timezone_string();
+		$time_zone = new DateTimeZone($time_zone_string);
+		$date_time = new DateTime('@'.$unix_time);
+		$date_time->setTimezone($time_zone);
+		$formated_time = $date_time->format('jS F Y h:i A');
+
+		return $formated_time;
+	}
+
+	$formated_time = date('jS F Y h:i A', $unix_time);	
+	return $formated_time;
 }

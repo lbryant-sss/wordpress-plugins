@@ -886,27 +886,47 @@ class Simple extends WC_Data implements ShippingProvider {
 			$settings,
 			array(
 				array(
-					'title'       => _x( 'Tracking URL', 'shipments', 'woocommerce-germanized' ),
-					'desc'        => '<div class="wc-shiptastic-additional-desc">' . sprintf( _x( 'Adjust the placeholder used to construct the tracking URL for this shipping provider. You may use on of the following placeholders to insert the tracking id or other dynamic data: %s', 'shipments', 'woocommerce-germanized' ), '<code>' . implode( ', ', array_keys( $this->get_tracking_placeholders() ) ) . '</code>' ) . '</div>',
-					'id'          => 'shipping_provider_tracking_url_placeholder',
-					'placeholder' => $this->get_default_tracking_url_placeholder(),
-					'value'       => $this->get_tracking_url_placeholder( 'edit' ),
-					'default'     => $this->get_default_tracking_url_placeholder(),
-					'type'        => 'text',
-					'css'         => 'width: 100%;',
-				),
-
-				array(
-					'title'       => _x( 'Tracking description', 'shipments', 'woocommerce-germanized' ),
-					'desc'        => '<div class="wc-shiptastic-additional-desc">' . sprintf( _x( 'Adjust the placeholder used to construct the tracking description for this shipping provider (e.g. used within notification emails). You may use on of the following placeholders to insert the tracking id or other dynamic data: %s', 'shipments', 'woocommerce-germanized' ), '<code>' . implode( ', ', array_keys( $this->get_tracking_placeholders() ) ) . '</code>' ) . '</div>',
-					'id'          => 'shipping_provider_tracking_desc_placeholder',
-					'placeholder' => $this->get_default_tracking_desc_placeholder(),
-					'value'       => $this->get_tracking_desc_placeholder( 'edit' ),
-					'default'     => $this->get_default_tracking_desc_placeholder(),
-					'type'        => 'textarea',
-					'css'         => 'width: 100%; min-height: 60px; margin-top: 1em;',
+					'type' => 'sectionend',
+					'id'   => 'shipping_provider_options',
 				),
 			)
+		);
+
+		if ( $this->is_manual_integration() ) {
+			$settings = array_merge( $settings, $this->get_tracking_settings() );
+		}
+
+		return $settings;
+	}
+
+	protected function get_tracking_settings() {
+		$settings = array(
+			array(
+				'title' => '',
+				'type'  => 'title',
+				'id'    => 'shipping_provider_tracking_options',
+			),
+			array(
+				'title'       => _x( 'Tracking URL', 'shipments', 'woocommerce-germanized' ),
+				'desc'        => '<div class="wc-shiptastic-additional-desc">' . sprintf( _x( 'Adjust the placeholder used to construct the tracking URL for this shipping provider. You may use on of the following placeholders to insert the tracking id or other dynamic data: %s', 'shipments', 'woocommerce-germanized' ), '<code>' . implode( ', ', array_keys( $this->get_tracking_placeholders() ) ) . '</code>' ) . '</div>',
+				'id'          => 'shipping_provider_tracking_url_placeholder',
+				'placeholder' => $this->get_default_tracking_url_placeholder(),
+				'value'       => $this->get_tracking_url_placeholder( 'edit' ),
+				'default'     => $this->get_default_tracking_url_placeholder(),
+				'type'        => 'text',
+				'css'         => 'width: 100%;',
+			),
+
+			array(
+				'title'       => _x( 'Tracking description', 'shipments', 'woocommerce-germanized' ),
+				'desc'        => '<div class="wc-shiptastic-additional-desc">' . sprintf( _x( 'Adjust the placeholder used to construct the tracking description for this shipping provider (e.g. used within notification emails). You may use on of the following placeholders to insert the tracking id or other dynamic data: %s', 'shipments', 'woocommerce-germanized' ), '<code>' . implode( ', ', array_keys( $this->get_tracking_placeholders() ) ) . '</code>' ) . '</div>',
+				'id'          => 'shipping_provider_tracking_desc_placeholder',
+				'placeholder' => $this->get_default_tracking_desc_placeholder(),
+				'value'       => $this->get_tracking_desc_placeholder( 'edit' ),
+				'default'     => $this->get_default_tracking_desc_placeholder(),
+				'type'        => 'textarea',
+				'css'         => 'width: 100%; min-height: 60px; margin-top: 1em;',
+			),
 		);
 
 		$settings = array_merge(
@@ -914,7 +934,7 @@ class Simple extends WC_Data implements ShippingProvider {
 			array(
 				array(
 					'type' => 'sectionend',
-					'id'   => 'shipping_provider_options',
+					'id'   => 'shipping_provider_tracking_options',
 				),
 			)
 		);

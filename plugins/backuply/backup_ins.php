@@ -1308,7 +1308,32 @@ function backuply_info_json(&$info_data = []){
 	$info_data['btime'] = time();
 	$info_data['auto_backup'] = isset($data['auto_backup']) ? $data['auto_backup'] : false;
 	$info_data['ext'] = 'tar.gz';
-	$info_data['size'] = isset($backuply['status']['remote_file_path']) ? filesize($backuply['status']['remote_file_path']) : (isset($GLOBALS['successfile']) ? filesize($GLOBALS['successfile']) : false);
+
+	if(isset($backuply['status']['remote_file_path'])){
+		// We need to handle ftp size manually because, ftp stream does not gives correct size when the file is over 2GB
+		// As on some systems the ftp stream could be using 32bit.
+		if(strpos($backuply['status']['remote_file_path'], 'ftp:') === 0 && function_exists('ftp_connect')){
+			$ftp_url = parse_url($backuply['status']['remote_file_path']);
+			if(!isset($ftp_url['port'])){
+				$ftp_url['port'] = 21;
+			}
+
+			$ftp_conn = ftp_connect($ftp_url['host'], $ftp_url['port']);
+			if(!empty($ftp_conn)){
+				if(ftp_login($ftp_conn, rawurldecode($ftp_url['user']), rawurldecode($ftp_url['pass']))){
+					$ftp_size = ftp_size($ftp_conn, $ftp_url['path']);
+				}
+			}
+		}
+
+		$info_data['size'] = (empty($ftp_size) ? filesize($backuply['status']['remote_file_path']) : $ftp_size);
+
+	} else if(isset($GLOBALS['successfile'])){
+		$info_data['size'] = filesize($GLOBALS['successfile']);
+	} else {
+		$info_data['size'] = false;
+	}
+
 	$info_data['backup_site_url'] = get_site_url();
 	$info_data['backup_site_path'] = backuply_cleanpath(get_home_path());
 	
@@ -1686,7 +1711,7 @@ function backuply_remote_upload($finished = false){
 			$remote_fp = fopen(dirname($backuply['status']['remote_file_path']).'/'.$GLOBALS['data']['name'].'.info', 'ab');
 			fwrite($remote_fp, $info_file);
 			fclose($remote_fp);
-		
+
 		}
 		
 		backuply_die('DONE');
@@ -1847,12 +1872,16 @@ if(!empty($backuply['status']['init_data'])) {
 }
 
 // Save the version
-@file_put_contents($data['path'].'/tmp/'.$data['name'].'/softver.txt', BACKUPLY_VERSION);	
+if(!file_exists($data['path'].'/tmp/'.$data['name'].'/softver.txt')){
+	@file_put_contents($data['path'].'/tmp/'.$data['name'].'/softver.txt', BACKUPLY_VERSION);
+}
 $GLOBALS['replace']['from']['softver'] = $data['path'].'/tmp/'.$data['name'].'/softver.txt';
 $GLOBALS['replace']['to']['softver'] = 'softver.txt';
 
 // Save the info file data
-@file_put_contents($data['path'].'/tmp/'.$data['name'].'/'.$data['name'].'.php', backuply_info_json());
+if(!file_exists($data['path'].'/tmp/'.$data['name'].'/'.$data['name'].'.php')){
+	@file_put_contents($data['path'].'/tmp/'.$data['name'].'/'.$data['name'].'.php', backuply_info_json());
+}
 $GLOBALS['replace']['from']['backupinfo'] = $data['path'].'/tmp/'.$data['name'].'/'.$data['name'].'.php';
 $GLOBALS['replace']['to']['backupinfo'] = $data['name'] . '.php';
 
@@ -1994,8 +2023,7 @@ if(!empty($GLOBALS['bfh']['softperms'])){
 $GLOBALS['post_soft_list'][] = $data['path'].'/tmp/'.$data['name'].'/softver.txt';
 $GLOBALS['post_soft_list'][] = $data['path'].'/tmp/'.$data['name'].'/'.$data['name'].'.php';
 
-if(empty($GLOBALS['error']) && (!empty($f_list) || !empty($post_soft_list) || !empty($pre_soft_list))){
-	
+if(empty($GLOBALS['error']) && (!empty($f_list) || !empty($GLOBALS['post_soft_list']) || !empty($pre_soft_list))){
 	// Set default values
 	$GLOBALS['start'] = 0;
 	$GLOBALS['end_file'] = '';

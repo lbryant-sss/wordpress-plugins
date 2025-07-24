@@ -58,7 +58,6 @@ class WC_GZD_Admin {
 		add_action( 'admin_init', array( $this, 'check_dhl_import' ) );
 		add_action( 'admin_init', array( $this, 'check_internetmarke_import' ) );
 
-		add_filter( 'woocommerce_addons_section_data', array( $this, 'set_addon' ), 10, 2 );
 		add_filter( 'woocommerce_order_actions', array( $this, 'order_actions' ), 10, 1 );
 		add_action( 'woocommerce_order_action_order_confirmation', array( $this, 'resend_order_confirmation' ), 10, 1 );
 		add_action(
@@ -114,6 +113,7 @@ class WC_GZD_Admin {
 			'disable_food_options',
 			'install_oss',
 			'install_ts',
+			'install_shiptastic',
 			'update_database',
 			'migrate_to_shiptastic',
 			'remove_shiptastic_migration_notices',
@@ -177,6 +177,24 @@ class WC_GZD_Admin {
 		}
 
 		wp_safe_redirect( esc_url_raw( admin_url( 'plugin-install.php?s=one+stop+shop+woocommerce&tab=search&type=term' ) ) );
+		exit();
+	}
+
+	protected function check_install_shiptastic() {
+		if ( current_user_can( 'install_plugins' ) ) {
+			\Vendidero\Germanized\PluginsHelper::install_or_activate_shiptatic();
+
+			if ( 'yes' === get_option( 'woocommerce_gzd_is_shiptastic_dhl_standalone_update' ) ) {
+				\Vendidero\Germanized\PluginsHelper::install_or_activate_shiptatic_dhl();
+			}
+
+			if ( \Vendidero\Germanized\PluginsHelper::is_shiptastic_plugin_active() ) {
+				wp_safe_redirect( esc_url_raw( admin_url( 'admin.php?page=wc-settings&tab=shiptastic' ) ) );
+				exit();
+			}
+		}
+
+		wp_safe_redirect( esc_url_raw( admin_url( 'plugin-install.php?s=shiptastic+for+woocommerce&tab=search&type=term' ) ) );
 		exit();
 	}
 
@@ -762,24 +780,6 @@ class WC_GZD_Admin {
 		$tabs['germanized'] = __( 'Germanized', 'woocommerce-germanized' );
 
 		return $tabs;
-	}
-
-	public function set_addon( $products, $section_id ) {
-		if ( 'featured' !== $section_id ) {
-			return $products;
-		}
-
-		array_unshift(
-			$products,
-			(object) array(
-				'title'   => 'Germanized für WooCommerce Pro',
-				'excerpt' => 'Upgrade jetzt auf die Pro Version von Germanized und profitiere von weiteren nützliche Funktionen speziell für den deutschen Markt sowie professionellem Support.',
-				'link'    => 'https://vendidero.de/woocommerce-germanized#upgrade',
-				'price'   => '79 €',
-			)
-		);
-
-		return $products;
 	}
 
 	public function status_page() {

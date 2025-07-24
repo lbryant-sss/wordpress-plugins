@@ -448,3 +448,6 @@ Changelog
 - Add Web2MCP feature
 - Fix Settings state on failure
 - Bump dependencies version
+
+3.0.44 (2025-07-23)
+- Update translations

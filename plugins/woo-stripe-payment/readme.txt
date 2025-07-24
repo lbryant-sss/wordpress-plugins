@@ -4,7 +4,7 @@ Tags: stripe, klarna, credit card, apple pay, google pay
 Requires at least: 3.0.1
 Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 3.3.90
+Stable tag: 3.3.91
 Copyright: Payment Plugins
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -63,6 +63,10 @@ If your site is not loading over https, then Stripe won't render the Payment Req
 9. Stripe Link for high conversion
 
 == Changelog ==
+= 3.3.91 - 07/23/25 =
+* Fixed - Check that billing phone field exists on checkout page before requiring it in the Link Checkout wallet
+* Update - For level3 data, include logic for cases where discounts are added as a negative fee. [https://wordpress.org/support/topic/error-trying-to-capture-payment-in-woocommerce/](https://wordpress.org/support/topic/error-trying-to-capture-payment-in-woocommerce/)
+* Added - WC Tested to 10.0
 = 3.3.90 - 06/26/25 =
 * Fixed - If iDEAL was used to pay for a failed renewal order, it was not being converted to SEPA which caused the next renewal payment to fail.
 * Fixed - Javascript error in Firefox when Link Checkout enabled

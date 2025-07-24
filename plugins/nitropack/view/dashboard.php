@@ -248,7 +248,7 @@ $max_page_views = '10000'; ?>
           <div class="nitro-option" id="can-editor-clear-cache-widget">
             <div class="nitro-option-main">
               <div class="text-box">
-                <h6><?php esc_html_e('Allow Editors to purge cache', 'nitropack'); ?> <span class="badge badge-success ml-2">New</span></h6>
+                <h6><?php esc_html_e('Allow Editors to purge cache', 'nitropack'); ?></h6>
                 <p><?php esc_html_e('Give Editors the right to purge cache when content is updated.', 'nitropack'); ?></p>
               </div>
               <label class="inline-flex items-center cursor-pointer ml-auto">
@@ -283,7 +283,7 @@ $max_page_views = '10000'; ?>
                           <rect width="20" height="20" fill="white"></rect>
                         </clipPath>
                       </defs>
-                    </svg> <?php esc_html_e('This feature is available on paid subscription.', 'nitropack'); ?> <a href="https://app.nitropack.io/subscription/buy" class="text-primary" target="_blank"><b><?php esc_html_e('Upgrade here', 'nitropack'); ?></b></a>
+                    </svg> <?php esc_html_e('This feature is available on Plus plan and above.', 'nitropack'); ?> <a href="https://app.nitropack.io/subscription/buy" class="text-primary" target="_blank"><b><?php esc_html_e('Upgrade here', 'nitropack'); ?></b></a>
                   </p>
                 </div>
               <?php endif; ?>

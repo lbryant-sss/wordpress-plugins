@@ -45,8 +45,8 @@ class LinkExpressCheckout extends LinkMixin(Gateway) {
                     klarna: this.type === 'klarna' ? 'auto' : 'never',
                     link: this.type === 'link' ? 'auto' : 'never',
                 },
-                emailRequired: !isEmail($('#billing_email').val()),
-                phoneNumberRequired: !isPhoneNumber($('#billing_phone').val()),
+                emailRequired: !isEmail($('#billing_email').val() ?? ''),
+                phoneNumberRequired: $('#billing_phone').length > 0 && !isPhoneNumber($('#billing_phone').val() ?? ''),
                 billingAddressRequired: true,
                 shippingAddressRequired: this.needs_shipping()
             });

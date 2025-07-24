@@ -6,6 +6,7 @@ use Automattic\WooCommerce\Utilities\I18nUtil;
 use Exception;
 use Vendidero\Shiptastic\Registry\Container;
 use Vendidero\Shiptastic\ShippingMethod\MethodHelper;
+use Vendidero\Shiptastic\Tracking\Helper;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -18,7 +19,7 @@ class Package {
 	 *
 	 * @var string
 	 */
-	const VERSION = '4.4.0';
+	const VERSION = '4.5.1';
 
 	public static $upload_dir_suffix = '';
 
@@ -267,6 +268,17 @@ class Package {
 
 	public static function register_shortcodes() {
 		add_shortcode( 'shiptastic_return_request_form', array( __CLASS__, 'return_request_form' ) );
+
+		/**
+		 * Mark the return page as a Woo page to make sure default form styles work.
+		 */
+		add_filter( 'is_woocommerce', function( $is_woocommerce ) {
+			if ( wc_post_content_has_shortcode( 'shiptastic_return_request_form' ) ) {
+				$is_woocommerce = true;
+			}
+
+			return $is_woocommerce;
+		} );
 	}
 
 	public static function return_request_form( $args = array() ) {
@@ -642,7 +654,7 @@ class Package {
 	}
 
 	public static function is_debug_mode() {
-		$is_debug_mode = defined( 'WP_DEBUG' ) && WP_DEBUG ? true : false;
+		$is_debug_mode = 'yes' === self::get_setting( 'enable_debug_mode', 'no' );
 
 		return apply_filters( 'woocommerce_shiptastic_is_debug_mode', $is_debug_mode );
 	}
