@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to the OptinMonster plugin will be documented in this file.
 
+### 2.16.20 - 2025-07-24
+* Maintenance updates.
+
 ### 2.16.19 - 2025-03-31
 * Improved support for the WPML plugin
 

@@ -871,7 +871,7 @@ wf_popup = {
 	showPopup: function (popup_elm) {
 		var pw = popup_elm.outerWidth();
 		var wh = jQuery(window).height();
-		var ph = wh - 150;
+		var ph = wh - 200;
 		popup_elm.css({ 'margin-left': ((pw / 2) * -1), 'display': 'block', 'top': '20px' }).animate({ 'top': '50px' });
 		popup_elm.find('.wf_pklist_popup_body').css({ 'max-height': ph + 'px', 'overflow': 'auto' });
 		jQuery('.wf_cst_overlay').show();
@@ -1415,7 +1415,14 @@ var wt_pklist_cta_banner_dismiss = {
 				dataType: 'json',
 				success: function (result) {
 					if (true === result.status) {
-						elm.parents().find('.wt_pklist_dismissible_banner_div').remove();
+						// Remove only the specific banner that was clicked by targeting the unique banner classes
+						var clickedBanner = elm.closest('.wt_pklist_basic_template_banner, .wt_pklist_customizer_banner, .wt_pklist_customizer_tab_banner, .adc_cta_banner_in_customizer_tab_top');
+						if (clickedBanner.length > 0) {
+							clickedBanner.remove();
+						} else {
+							// Fallback: remove the closest parent with dismissible banner class
+							elm.closest('.wt_pklist_dismissible_banner_div').remove();
+						}
 					} else {
 						alert(result.message);
 					}

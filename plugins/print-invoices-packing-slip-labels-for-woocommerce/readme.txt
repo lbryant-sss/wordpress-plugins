@@ -1,10 +1,10 @@
 === WooCommerce PDF Invoices, Packing Slips, Delivery Notes and Shipping Labels ===
 Contributors: WebToffee
-Version: 4.7.9
+Version: 4.8.0
 Tags: WooCommerce PDF invoices, WooCommerce invoice, packing slips, shipping label, print invoice
 Requires at least: 3.0.1
-Tested up to: 6.8.1
-Stable tag: 4.7.9
+Tested up to: 6.8.2
+Stable tag: 4.8.0
 Requires PHP: 5.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -63,7 +63,7 @@ For international sales, many countries require invoices as part of their standa
 Beyond compliance, these documents enhance customer experience by adding a human touch and serving as an additional communication channel between you and your buyer.
 
 
-&#9989; Tested OK with WooCommerce 10.0.2
+&#9989; Tested OK with WooCommerce 10.0.4
 &#9989; Tested OK up to PHP 8.2
 
 
@@ -282,6 +282,10 @@ Yes. The plugin addresses the needs of a multilingual website and is compatible 
 18. Ubl Invoice settings
 
 == Changelog ==
+
+= 4.8.0 2025-07-24 =
+* [Compatibility] – Tested OK with WordPress 6.8.2
+* [Compatibility] – Tested OK with WooCommerce 10.0.4
 
 = 4.7.9 2025-07-16 =
 * [Fix] – Resolved conflict with Elementor add-ons that prevented adding product descriptions from the product edit page.
@@ -1080,8 +1084,6 @@ Yes. The plugin addresses the needs of a multilingual website and is compatible 
  
 == Upgrade Notice ==
 
-= 4.7.9 =
-* [Fix] – Resolved conflict with Elementor add-ons that prevented adding product descriptions from the product edit page.
-* [Fix] - Resolved the "wcs_subscription_meta_query is deprecated" warning.
-* [Add] – Added CTA banners that appear when switching templates.
-* [Compatibility] – Tested OK with WooCommerce 10.0.2
+= 4.8.0 =
+* [Compatibility] – Tested OK with WordPress 6.8.2
+* [Compatibility] – Tested OK with WooCommerce 10.0.4

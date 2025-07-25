@@ -21,11 +21,13 @@ function gosmtp_get_mailer_list(){
 		'zoho' => [ 'title' => __('Zoho'), 'class' => 'GOSMTP\Mailer\Zoho'],
 		'sendlayer' => [ 'title' => __('Sendlayer'), 'class' => 'GOSMTP\Mailer\Sendlayer'],
 		'smtpcom' => [ 'title' => __('SMTPcom'), 'class' => 'GOSMTP\Mailer\SMTPcom'],
-		'sendinblue' => [ 'title' => __('Sendinblue'), 'class' => 'GOSMTP\Mailer\Sendinblue'],
+		'sendinblue' => [ 'title' => __('Brevo'), 'class' => 'GOSMTP\Mailer\Sendinblue'],
 		'mailgun' => [ 'title' => __('Mailgun'), 'class' => 'GOSMTP\Mailer\Mailgun'],
 		'postmark' => [ 'title' => __('Postmark'), 'class' => 'GOSMTP\Mailer\Postmark'],
 		'sendgrid' => [ 'title' => __('Sendgrid'), 'class' => 'GOSMTP\Mailer\Sendgrid'],
-		'sparkpost' => [ 'title' => __('Sparkpost'), 'class' => 'GOSMTP\Mailer\Sparkpost']
+		'sparkpost' => [ 'title' => __('Sparkpost'), 'class' => 'GOSMTP\Mailer\Sparkpost'],
+		'elasticemail' => [ 'title' => __('Elastic Email', 'gosmtp'), 'class' => 'GOSMTP\Mailer\ElasticEmail'],
+		'smtp2go' => [ 'title' => __('SMTP2Go', 'gosmtp'), 'class' => 'GOSMTP\Mailer\SMTP2Go']
 	);
 	
 	return apply_filters( 'gosmtp_get_mailer_list', $list );

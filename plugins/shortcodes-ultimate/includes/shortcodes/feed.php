@@ -49,13 +49,17 @@ su_add_shortcode(
 function su_shortcode_feed( $atts = null, $content = null ) {
 
 	$atts   = su_parse_shortcode_atts( 'feed', $atts );
-	$feed   = null;
-	$items  = array();
-	$output = '';
 
 	$atts['url'] = wp_specialchars_decode( $atts['url'] );
 
-	if ( ! filter_var( $atts['url'], FILTER_VALIDATE_URL ) ) {
+	if (
+		! filter_var( $atts['url'], FILTER_VALIDATE_URL ) ||
+		filter_var(
+			$atts['url'],
+			FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE
+		) ||
+		strpos( $atts['url'], 'localhost' ) !== false
+	) {
 		return su_error_message( 'Feed', __( 'invalid feed URL', 'shortcodes-ultimate' ) );
 	}
 

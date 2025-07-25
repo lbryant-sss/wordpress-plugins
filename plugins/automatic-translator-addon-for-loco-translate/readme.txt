@@ -43,11 +43,7 @@ The LocoAI - Auto Translate For Loco Translate is a must-have tool for anyone lo
 
 > “If you spend too much time thinking about a thing, you'll never get it done. Stop wasting time, complete work smartly & quickly!”
 
-https://www.youtube.com/watch?si=3NfBYELlkhtwnbGL&v=WrM23QBsEs4&feature=youtu.be
-
-https://youtu.be/yNuOVKfwFcE?si=4hQResLF76ntAvzb
-
-https://youtu.be/6k8K6ZU2Rvo?si=UdiJr0n5zTwaDfXR
+https://www.youtube.com/playlist?list=PLAs6S1hKb-gN5GZXpkUiunuPvJfb6UKV7
 
 The LocoAI - Auto Translate For Loco Translate now includes powerful AI translation options: **ChatGPT, Gemini AI, and Chrome Built-in AI**. These integrations provide advanced, high-quality AI translations for your WordPress plugins and themes, using the latest AI technology.
 

@@ -6,7 +6,7 @@ Tags: email subscribers, newsletters, subscription forms, post notifications, wo
 Requires at least: 3.9
 Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: 5.8.9
+Stable tag: 5.8.10
 License: GPLv3
 
 License URI: http://www.gnu.org/licenses
@@ -340,11 +340,19 @@ Option 2:
 
 == Upgrade Notice ==
 
-= 5.8.9 =
+= 5.8.10 =
 
-* Update: Onboarding improvements
+* Enhancement: Option to add users to event-specific list whenever someone registers for an event in the WP Event Manager plugin [MAX]
+* Fix: Fixed an issue where form-specific success message was not showing after submission
+* Fix: Caching issue on the Audience page
 
 == Changelog ==
+
+**5.8.10 (24.07.2025)**
+
+* Enhancement: Option to add users to event-specific list whenever someone registers for an event in the WP Event Manager plugin [MAX]
+* Fix: Fixed an issue where form-specific success message was not showing after submission
+* Fix: Caching issue on the Audience page
 
 **5.8.9 (02.07.2025)**
 

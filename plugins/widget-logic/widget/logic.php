@@ -1,44 +1,66 @@
 <?php
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
+include_once 'logic/tokenizer.php';
+include_once 'logic/parser.php';
 
+/**
+ * Main function to check widget logic expressions
+ */
 function widget_logic_check_logic($logic)
 {
-    $logic = @trim((string) $logic);
-    $logic = apply_filters("widget_logic_eval_override", $logic);
+    $allowed_functions = array(
+        'is_home', 'is_front_page', 'is_single', 'is_page', 'is_category',
+        'is_tag', 'is_archive', 'is_search', 'is_404', 'is_user_logged_in',
+        'current_user_can', 'is_active_sidebar', 'is_admin',
+    );
 
-    if (is_bool($logic)) {
-        return $logic;
-    }
+    $allowed_functions = apply_filters('widget_logic_allowed_functions', $allowed_functions);
 
-    if ($logic === '') {
+    $logic = trim((string) $logic);
+    if ('' === $logic) {
         return true;
     }
 
-    if (stristr($logic, 'return') === false) {
-        $logic = 'return (' . html_entity_decode($logic, ENT_COMPAT | ENT_HTML401 | ENT_QUOTES) . ');';
-    }
-
-    set_error_handler('widget_logic_error_handler'); // phpcs:ignore -- we have mode for debugging for admins
+    // Set up error handling
+    set_error_handler('widget_logic_error_handler', E_WARNING | E_USER_WARNING);  // @codingStandardsIgnoreLine - we need this for error handling
 
     try {
-        $show_widget = eval ($logic); // @codingStandardsIgnoreLine - widget can't work without eval
-    } catch (Error $e) {
-        trigger_error($e->getMessage(), E_USER_WARNING); // @codingStandardsIgnoreLine - message is not dependent on user input
+        // Tokenize the logic string
+        $tokens = widget_logic_tokenize($logic);
 
-        $show_widget = false;
+        // Parse and evaluate the expression
+        $pos = 0;
+        $result = widget_logic_parse_expression($tokens, $pos, $allowed_functions);
+
+        // Check if there are any unexpected tokens after the expression
+        if ($pos < count($tokens)) {
+            throw new Exception(esc_html__('Widget Logic: Unexpected tokens after expression.', 'widget-logic'));
+        }
+
+        return (bool)$result;
+    } catch (Exception $e) {
+        widget_logic_error_handler(E_USER_WARNING, $e->getMessage());
+        return false;
+    } finally {
+        restore_error_handler();
     }
-
-    restore_error_handler();
-
-    return $show_widget;
 }
 
+/**
+ * Generic error handler for widget logic
+ */
 function widget_logic_error_handler($errno, $errstr)
 {
     global $wl_options;
 
-    $show_errors = !empty($wl_options['widget_logic-options-show_errors']) && current_user_can('manage_options');
+    // For testing, we want to see all errors
+    $show_errors = true;
+
+    // In normal operation, respect user settings
+    if (!defined('WIDGET_LOGIC_TESTING')) {
+        $show_errors = !empty($wl_options['widget_logic-options-show_errors']) && current_user_can('manage_options');
+    }
 
     if ($show_errors) {
         echo 'Invalid Widget Logic: ' . esc_html($errstr);

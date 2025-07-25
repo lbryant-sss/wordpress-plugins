@@ -3,7 +3,7 @@ Contributors: gn_themes
 License: GPLv3
 Donate link: https://getshortcodes.com/pricing/
 Tags: posts, carousel, shortcode, toggle, columns
-Stable tag: 7.4.3
+Stable tag: 7.4.4
 Requires PHP: 5.4
 Requires at least: 5.0
 Tested up to: 6.8
@@ -141,12 +141,18 @@ Upgrade normally
 
 
 
+= 7.4.4
+
+This update features security improvements and is recommended for all users
+
+If you're experiencing any issues with the premium add-ons, please visit the [Restore Purchase](https://getshortcodes.com/account/restore-purchase/) page to download the latest versions. Most likely, the issue has already been fixed.
+
 
 = 7.4.3
 
 This update features security improvements and is recommended for all users
 
-- Security patches
+- Security patch
 - Updated Freemius SDK
 
 

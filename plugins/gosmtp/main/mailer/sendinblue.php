@@ -11,11 +11,12 @@ use GOSMTP\Mailer\Loader;
 
 class Sendinblue extends Loader{
 
-	var $title = 'Sendinblue';
+	var $title = 'Brevo';
 	
 	var $mailer = 'sendinblue';
 
-	var $url = 'https://api.sendinblue.com/v3/smtp/email';
+	var $url = 'https://api.brevo.com/v3/smtp/email';
+	
 	
 	private $allowed_exts = [ 'xlsx', 'xls', 'ods', 'docx', 'docm', 'doc', 'csv', 'pdf', 'txt', 'gif', 'jpg', 'jpeg', 'png', 'tif', 'tiff', 'rtf', 'bmp', 'cgm', 'css', 'shtml', 'html', 'htm', 'zip', 'xml', 'ppt', 'pptx', 'tar', 'ez', 'ics', 'mobi', 'msg', 'pub', 'eps', 'odt', 'mp3', 'm4a', 'm4v', 'wma', 'ogg', 'flac', 'wav', 'aif', 'aifc', 'aiff', 'mp4', 'mov', 'avi', 'mkv', 'mpeg', 'mpg', 'wmv'];
 
@@ -189,7 +190,7 @@ class Sendinblue extends Loader{
 			'api_key' => array(
 				'title' => __('API Key'),
 				'type' => 'password',
-				'desc' => __( 'Follow this link to get an API Key: <a href="https://account.sendinblue.com/advanced/api" target="_blank">Get v3 API Key.</a>' ),
+				'desc' => __( 'Follow this link to get an API Key: <a href="https://app.brevo.com/settings/keys/api" target="_blank">Get v3 API Key.</a>' ),
 			)
 		);
 		

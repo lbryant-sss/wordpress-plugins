@@ -304,12 +304,6 @@ class OMAPI_Urls {
 	protected static function get_partner_params( $destination_url = '' ) {
 		$args = array();
 
-		// Add the partner id attribution query arg, if it exists.
-		$id = OMAPI_Partners::get_id();
-		if ( ! empty( $id ) ) {
-			$args['sscid'] = $id;
-		}
-
 		// Next, let's parse the partner url for additional query args
 		// stuffed on the urllink query arg redirect url.
 		$partner_url = OMAPI_Partners::has_partner_url();

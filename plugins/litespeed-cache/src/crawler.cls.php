@@ -610,7 +610,7 @@ class Crawler extends Root {
 	 */
 	private function _take_over_lane() {
 		self::debug('Take over lane as lane is free: ' . $this->json_local_path() . '.pid');
-		file::save($this->json_local_path() . '.pid', LITESPEED_LANE_HASH);
+		File::save($this->json_local_path() . '.pid', LITESPEED_LANE_HASH);
 	}
 
 	/**
@@ -651,7 +651,7 @@ class Crawler extends Root {
 				return false;
 			}
 		}
-		$pid = file::read($lane_file);
+		$pid = File::read($lane_file);
 		if ($pid && LITESPEED_LANE_HASH != $pid) {
 			// If lane file is older than 1h, ignore
 			if (time() - filemtime($lane_file) > 3600) {
@@ -672,9 +672,6 @@ class Crawler extends Root {
 	 * @return bool true if success and can continue crawling, false if failed and need to stop
 	 */
 	private function _test_port() {
-		if (empty($this->_crawler_conf['cookies']) || empty($this->_crawler_conf['cookies']['litespeed_hash'])) {
-			return true;
-		}
 		if (!$this->_server_ip) {
 			self::debug('❌ Server IP not set');
 			return false;
@@ -1038,10 +1035,13 @@ class Crawler extends Root {
 			return self::STATUS_NOCACHE; // Blacklist
 		}
 
-		$_cache_headers = array( 'x-qc-cache', 'x-lsadc-cache', 'x-litespeed-cache' );
+		$_cache_headers = array( 'x-litespeed-cache', 'x-qc-cache', 'x-lsadc-cache' );
 
 		foreach ($_cache_headers as $_header) {
 			if (stripos($header, $_header) !== false) {
+				if (stripos($header, $_header . ': bkn') !== false) {
+					return self::STATUS_HIT; // Hit
+				}
 				if (stripos($header, $_header . ': miss') !== false) {
 					return self::STATUS_MISS; // Miss
 				}
@@ -1403,7 +1403,7 @@ class Crawler extends Root {
 	 *
 	 * @since    1.1.0
 	 * @access protected
-	 * @param  string $error Error info
+	 * @param  string $msg Error info
 	 */
 	protected function output( $msg ) {
 		if (wp_doing_cron()) {

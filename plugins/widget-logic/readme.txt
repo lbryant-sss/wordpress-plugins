@@ -2,8 +2,8 @@
 Contributors: widgetlogics
 Tags: widget, sidebar, conditional tags, blocks, gutenberg widgets
 Requires at least: 3.0
-Tested up to: 6.7
-Stable tag: 6.0.5
+Tested up to: 6.8
+Stable tag: 6.0.6
 Requires PHP: 5.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -124,6 +124,12 @@ Tighten up your definitions with PHPs 'logical AND' &&, for example:
 5. Pre-installed 'Live Match' widget on website
 
 == Changelog ==
+
+= 6.0.6 =
+
+* reworked main logic function to avoid EVAL
+* !IMPORTANT! from this version not all php code will be executed in Widget Logic field
+* if you need more php functions you can add it with using `add_filter('widget_logic_allowed_functions', '[your_custom_function_here]');`
 
 = 6.0.5 =
 

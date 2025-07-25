@@ -45,10 +45,6 @@ $public_dashboard_url = add_query_arg(['koko-analytics-dashboard' => 1], home_ur
                 <?php } ?>
             <?php } // end if endpoint-installed ?>
 
-            <?php if (class_exists('Jetpack')) { ?>
-                <div class="notice notice-info is-dismissible"><p><?php printf(__('We noticed you have Jetpack enabled. Do you want to <a href="%1$s">import your historical statistics data from JetPack stats into Koko Analytics</a>?', 'koko-analytics'), esc_attr(add_query_arg(['tab' => 'jetpack_importer']))); ?></p></div>
-            <?php } ?>
-
             <form method="POST" action="<?php echo esc_attr(add_query_arg(['koko_analytics_action' => 'save_settings'])); ?>">
                 <?php wp_nonce_field('koko_analytics_save_settings'); ?>
                 <?php wp_referer_field(); ?>
@@ -84,7 +80,7 @@ $public_dashboard_url = add_query_arg(['koko-analytics-dashboard' => 1], home_ur
 
                 <div class="ka-margin-m">
                     <label for="ka-exclude-user-roles" class="ka-settings--label"><?php esc_html_e('Exclude pageviews from these user roles', 'koko-analytics'); ?></label>
-                    <select id="ka-exclude-user-roles" multiple="" name="koko_analytics_settings[exclude_user_roles][]" style="min-height: <?php echo count($user_roles) * 30; ?>px; min-width: 240px;">
+                    <select id="ka-exclude-user-roles" multiple="" name="koko_analytics_settings[exclude_user_roles][]" style="min-height: <?php echo count($user_roles) * 24; ?>px; min-width: 240px;">
                         <?php
                         foreach ($user_roles as $key => $value) {
                             $key = esc_attr($key);
@@ -104,7 +100,7 @@ $public_dashboard_url = add_query_arg(['koko-analytics-dashboard' => 1], home_ur
                 <div class="ka-margin-m">
                     <label for="ka-exclude-ip-addresses" class="ka-settings--label"><?php esc_html_e('Exclude pageviews from these IP addresses', 'koko-analytics'); ?></label>
                     <?php
-                    echo '<textarea id="ka-exclude-ip-addresses" name="koko_analytics_settings[exclude_ip_addresses]" class="widefat" rows="6">';
+                    echo sprintf('<textarea id="ka-exclude-ip-addresses" name="koko_analytics_settings[exclude_ip_addresses]" class="widefat" rows="%d">', max(4, count($settings['exclude_ip_addresses'])));
                     echo esc_textarea(join(PHP_EOL, $settings['exclude_ip_addresses']));
                     echo '</textarea>';
                     ?>
@@ -244,8 +240,9 @@ $public_dashboard_url = add_query_arg(['koko-analytics-dashboard' => 1], home_ur
                     <p><?php esc_html_e('You are currently using the free version of Koko Analytics. There is a premium version of this plugin which adds several powerful features.', 'koko-analytics'); ?></p>
                     <h4><?php esc_html_e('Premium features', ' koko-analytics'); ?></h4>
                     <ul class="ul-square">
+                        <li><a href="https://www.kokoanalytics.com/features/geo-location/"><?php esc_html_e('Geo-location', 'koko-analytics'); ?></a></li>
                         <li><a href="https://www.kokoanalytics.com/features/custom-event-tracking/"><?php esc_html_e('Event Tracking', 'koko-analytics'); ?></a></li>
-                        <li><a href="https://www.kokoanalytics.com/features/email-reports/"><?php esc_html_e('Email Reports', 'koko-analytics'); ?></a></li>
+                        <li><a href="https://www.kokoanalytics.com/features/email-reports/"><?php esc_html_e('Periodic Email Reports', 'koko-analytics'); ?></a></li>
                         <li><a href="https://www.kokoanalytics.com/features/pageviews-column/"><?php esc_html_e('Pageviews Column', 'koko-analytics'); ?></a></li>
                         <li><a href="https://www.kokoanalytics.com/features/csv-export/"><?php esc_html_e('CSV Export', 'koko-analytics'); ?></a></li>
                         <li><a href="https://www.kokoanalytics.com/features/admin-bar/"><?php esc_html_e('Admin Bar', 'koko-analytics'); ?></a></li>

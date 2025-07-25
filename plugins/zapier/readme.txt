@@ -4,7 +4,7 @@ Tags: zapier, automation, integration, workflow, dataflow
 Requires at least: 5.5
 Tested up to: 6.5
 Requires PHP: 7.4
-Stable tag: 1.5.2
+Stable tag: 1.5.3
 License: Expat (MIT License)
 License URI: https://spdx.org/licenses/MIT.html
 
@@ -130,3 +130,7 @@ If you have any feature requests, issues, or questions with Zapier for WordPress
 = 1.5.2 =
 
 * Security patch for updated_user hook
+
+= 1.5.3 =
+
+* Security improvements and bug fixes for  CVE-2025-50010.
