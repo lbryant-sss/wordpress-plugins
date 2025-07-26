@@ -8,7 +8,7 @@
  */
 
 /**
- * Class WOOCS_Subscription_Fix
+ * Class WOOCS_Subscriptions_Compatibility
  * Handles WooCommerce Currency Switcher (WOOCS) fixes for WooCommerce Subscriptions
  * Source - https://pluginus.net/support/topic/compatibility-fix-for-woocommerce-subscriptions-7-5/
  */
@@ -32,8 +32,8 @@ class WOOCS_Subscriptions_Compatibility {
           [$this, 'fix_new_order_items'], 2, 3);
 
        // Variable subscription price HTML
-       add_filter('woocommerce_variable_subscription_price_html',
-          [$this, 'fix_variable_subscription_price_html'], 10, 2);
+       //add_filter('woocommerce_variable_subscription_price_html',
+       //   [$this, 'fix_variable_subscription_price_html'], 10, 2);
 
        // Subscription product price string
        add_filter('woocommerce_subscriptions_product_price_string',
@@ -293,7 +293,7 @@ class WOOCS_Subscriptions_Compatibility {
              $subscription_price = $WOOCS->woocs_exchange_value(floatval($subscription_price));
           }
        }
-       $active_price = ( $subscription_price ) ? $subscription_price : self::get_regular_price( $product );
+       $active_price = ( $subscription_price ) ? $subscription_price :  $product->get_regular_price();
 
        // Ensure that $sale_price is non-empty because other plugins can use woocommerce_product_is_on_sale filter to
        // forcefully set a product's is_on_sale flag (like Dynamic Pricing )
@@ -401,6 +401,6 @@ class WOOCS_Subscriptions_Compatibility {
 
 
 if ( class_exists( 'WOOCS' ) && class_exists( 'WC_Subscriptions' ) ) {
-   $wcs_compatibilty = new WOOCS_Subscription_Fix();
+   $wcs_compatibilty = new WOOCS_Subscriptions_Compatibility ();
    $wcs_compatibilty->init();
 }

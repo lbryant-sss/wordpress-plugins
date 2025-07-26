@@ -1663,6 +1663,7 @@ final class WOOCS {
             $currencies = apply_filters('woocs_currency_data_manipulation', $currencies);
         }
 
+
         if (count($currencies) > 2) {
             $currencies = array_slice($currencies, 0, 2);
         }
@@ -5127,7 +5128,7 @@ final class WOOCS {
         }
         //convert
         foreach ($prices as $key => $val) {
-            if (!('amount' == $key AND !$convert)) {
+            if (!('amount' == $key AND !$convert) && $val) {
                 $prices[$key] = $this->woocs_exchange_value($val);
             }
             if ($this->is_fixed_coupon) {//fixed coupon
@@ -5502,7 +5503,7 @@ final class WOOCS {
                         $markup_offer["priceSpecification"][$key]["priceCurrency"] = $WOOCS->default_currency;
                     }
                     if (isset($product_data["price"]) && $WOOCS->is_multiple_allowed) {
-                        $markup_offer["priceSpecification"][$key]["price"] = number_format($product_data["price"] / $rate, $precision, '.', '');
+                        $markup_offer["priceSpecification"][$key]["price"] = number_format((float) $product_data["price"] / $rate, $precision, '.', '');
                     }
                 }
             }
@@ -5514,16 +5515,16 @@ final class WOOCS {
 
         if ($WOOCS->is_multiple_allowed) {
             if (isset($markup_offer["lowPrice"]) AND is_numeric($markup_offer["lowPrice"])) {
-                $markup_offer["lowPrice"] = number_format($markup_offer["lowPrice"] / $rate, $precision, '.', '');
+                $markup_offer["lowPrice"] = number_format((float) $markup_offer["lowPrice"] / $rate, $precision, '.', '');
             }
             if (isset($markup_offer["highPrice"]) AND is_numeric($markup_offer["highPrice"])) {
-                $markup_offer["highPrice"] = number_format($markup_offer["highPrice"] / $rate, $precision, '.', '');
+                $markup_offer["highPrice"] = number_format((float) $markup_offer["highPrice"] / $rate, $precision, '.', '');
             }
             if (isset($markup_offer["price"]) AND is_numeric($markup_offer["price"])) {
-                $markup_offer["price"] = number_format($markup_offer["price"] / $rate, $precision, '.', '');
+                $markup_offer["price"] = number_format((float) $markup_offer["price"] / $rate, $precision, '.', '');
             }
             if (isset($markup_offer["priceSpecification"]["price"]) AND is_numeric($markup_offer["priceSpecification"]["price"])) {
-                $markup_offer["priceSpecification"]["price"] = number_format($markup_offer["priceSpecification"]["price"] / $rate, $precision, '.', '');
+                $markup_offer["priceSpecification"]["price"] = number_format((float) $markup_offer["priceSpecification"]["price"] / $rate, $precision, '.', '');
             }
         }
 

@@ -2027,7 +2027,7 @@ global $WOOCS;
                                                     </div>
                                                     </div>
 
-                                                    <div class="woocs_settings_powered woocs-mb-3">
+                                                    <div class="woocs_settings_powered">
                                                         <h5><a href="https://pluginus.net/" target="_blank" >Powered by PluginUs.NET</a></h5>
                                                     </div>
 

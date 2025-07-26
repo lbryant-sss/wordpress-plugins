@@ -383,6 +383,11 @@ if(isset($_GET['form_id'])){
 if(!empty($res)){
     foreach($res as $v){
    if(!empty($v['lead_id']) && !empty($leads[$v['lead_id']])){
+  foreach($v as $kk=>$vv){
+      if(!empty($vv)){  
+         $v[$kk]= $this->verify_val($vv);
+      }     
+  }  
    $leads[$v['lead_id']]['detail']=$v;    
    }     
     }
@@ -522,14 +527,7 @@ public function get_lead_detail($lead_id){
 if(is_array($detail_arr)){
   foreach($detail_arr as $v){
       if(!empty($v['value'])){  
-   if(in_array(substr(ltrim($v['value']),0,1),array('{','[')) && in_array(substr( rtrim($v['value']), -1 ),array('}',']') )){
-       $val=json_decode($v['value'],1);
-       if(!empty($val)){
-        $v['value']=$val;   
-       }
-   }else if(is_serialized($v['value'])){
-     $v['value']=maybe_unserialize($v['value']); 
-   }    
+         $v['value']= $this->verify_val($v['value']);
       }
  $detail[$v['name']]=$v;     
   }  
@@ -537,6 +535,17 @@ if(is_array($detail_arr)){
 return $detail;
 }
 
+public function verify_val($string){
+       if(in_array(substr(ltrim($string),0,1),array('{','[')) && in_array(substr( rtrim($string), -1 ),array('}',']') )){
+       $val=json_decode($string,1);  
+       if(is_array($val)){
+        $string=$val;   
+       }
+   }else if(is_serialized($string)){
+    $string=maybe_unserialize($string);  
+   } 
+ return $string;  
+}
 public function is_json($string){
     return preg_match('/^(\{|\[).*(\}|\])$/', trim($string)) === 1;
 }

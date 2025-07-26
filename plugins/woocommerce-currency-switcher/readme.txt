@@ -5,7 +5,7 @@ Tags: woocommerce, currency, switcher, currency switcher, converter
 Requires at least: 4.9.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.4.3
+Stable tag: 1.4.3.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -192,6 +192,10 @@ R: You can report security bugs through the Patchstack Vulnerability Disclosure 
 
 
 == Changelog ==
+
+= 1.4.3.1 =
+* some small fixes
+* the fix related to new coupons creation
 
 = 1.4.3 =
 * small fixes
@@ -490,7 +494,7 @@ Plugin release. Operate all the basic functions.
 
 == License ==
 
-This plugin is copyright pluginus.net &copy; 2012-2025 with [GNU General Public License][] by realmag777.
+This plugin is copyright pluginus.net &copy; 2012-2026 with [GNU General Public License][] by realmag777.
 
 This program is free software; you can redistribute it and/or modify it under the terms of the [GNU General Public License][] as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
 

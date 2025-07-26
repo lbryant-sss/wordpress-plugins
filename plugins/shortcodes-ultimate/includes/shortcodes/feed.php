@@ -53,12 +53,10 @@ function su_shortcode_feed( $atts = null, $content = null ) {
 	$atts['url'] = wp_specialchars_decode( $atts['url'] );
 
 	if (
-		! filter_var( $atts['url'], FILTER_VALIDATE_URL ) ||
-		filter_var(
-			$atts['url'],
-			FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE
-		) ||
-		strpos( $atts['url'], 'localhost' ) !== false
+		strpos($atts['url'], '::') !== false ||
+		strpos($atts['url'], 'localhost') !== false ||
+		preg_match('/\d{1,3}\.\d{1,3}\.\d{1,3}/', $atts['url']) ||
+		!filter_var($atts['url'], FILTER_VALIDATE_URL)
 	) {
 		return su_error_message( 'Feed', __( 'invalid feed URL', 'shortcodes-ultimate' ) );
 	}

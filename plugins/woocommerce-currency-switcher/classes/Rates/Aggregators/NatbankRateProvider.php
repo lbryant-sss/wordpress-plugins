@@ -1,4 +1,5 @@
 <?php
+
 namespace WOOCS\Rates\Aggregators;
 
 include_once WOOCS_PATH . 'classes/Rates/Aggregators/RateProvider.php';
