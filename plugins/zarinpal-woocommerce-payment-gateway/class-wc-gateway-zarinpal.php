@@ -54,6 +54,7 @@ function Load_ZarinPal_Gateway() {
             public $zarinpal;
             public $instructions;
             public $accessToken;
+            public $feePayer;
             public function __construct() {
                 $this->id = 'WC_ZPal';
                 $this->method_title = __('پرداخت امن زرین‌پال', WC_ZPAL_TEXT_DOMAIN);
@@ -84,8 +85,11 @@ function Load_ZarinPal_Gateway() {
                 $this->instructions = $this->get_option('instructions');
                 $this->trustLogo = $this->get_option('trust_logo');
                 $this->accessToken = $this->sanitize_access_token($this->get_option('access_token'));
+                $this->feePayer = $this->get_option('fee_payer', 'merchant');
                 $this->order_button_text = __('پرداخت با زرین‌پال', WC_ZPAL_TEXT_DOMAIN);
                 $this->zarinpal = new ZarinpalHelperClass($this->merchantCode, $this->sandbox, $this->accessToken);
+                
+                $this->auto_detect_fee_payer();
                 add_action('woocommerce_update_options_payment_gateways_' . $this->id, array($this, 'process_admin_options'));
                 add_action('woocommerce_receipt_' . $this->id, array($this, 'Send_to_ZarinPal_Gateway'));
                 add_action('woocommerce_api_' . strtolower(get_class($this)), array($this, 'Return_from_ZarinPal_Gateway'));
@@ -97,6 +101,19 @@ function Load_ZarinPal_Gateway() {
                 }
                 add_action('admin_notices', array($this, 'admin_notice_missing_merchantcode'));
                 add_action('admin_notices', array($this, 'admin_notice_missing_accesstoken'));
+                
+                add_action('woocommerce_cart_calculate_fees', array($this, 'add_zarinpal_fee_to_cart'));
+                add_action('woocommerce_checkout_update_order_meta', array($this, 'save_fee_to_order'));
+                add_action('woocommerce_checkout_update_order_review', array($this, 'update_checkout_fees'));
+                add_action('woocommerce_store_api_register_endpoint_data', array($this, 'register_store_api_data'));
+                add_action('woocommerce_store_api_checkout_update_order_from_request', array($this, 'blocks_add_fee'), 10, 2);
+                add_action('woocommerce_checkout_create_order', array($this, 'checkout_create_order_fee'), 10, 2);
+                add_action('woocommerce_blocks_checkout_order_processed', array($this, 'blocks_order_processed'), 10, 1);
+                add_action('woocommerce_store_api_cart_update_customer', array($this, 'blocks_payment_method_changed'), 10, 1);
+                add_filter('woocommerce_get_price_decimals', array($this, 'adjust_decimals_for_zarinpal_fee'), 10, 1);
+                
+                add_action('wp_head', array($this, 'add_cart_css'));
+
             }
             public function init_form_fields() {
                 $this->form_fields = apply_filters(
@@ -160,6 +177,17 @@ function Load_ZarinPal_Gateway() {
                             'title' => __('تنظیمات عملیات پرداخت', WC_ZPAL_TEXT_DOMAIN),
                             'type' => 'title',
                             'description' => '',
+                        ),
+                        'fee_payer' => array(
+                            'title' => __('کسر کارمزد از', WC_ZPAL_TEXT_DOMAIN),
+                            'type' => 'select',
+                            'description' => __('انتخاب کنید که کارمزد تراکنش از پذیرنده کسر شود یا به خریدار اضافه شود. اگر کسر کارمزد از خریدار انتخاب شود، در صفحه چک‌اوت مبلغی تحت عنوان کارمزد به صورت جداگانه محاسبه و به مبلغ کل اضافه خواهد شد.', WC_ZPAL_TEXT_DOMAIN),
+                            'default' => 'merchant',
+                            'desc_tip' => true,
+                            'options' => array(
+                                'merchant' => __('پذیرنده (پیش‌فرض)', WC_ZPAL_TEXT_DOMAIN),
+                                'customer' => __('خریدار', WC_ZPAL_TEXT_DOMAIN),
+                            ),
                         ),
                         'success_message' => array(
                             'title' => __('پیام پرداخت موفق', WC_ZPAL_TEXT_DOMAIN),
@@ -232,7 +260,9 @@ function Load_ZarinPal_Gateway() {
             public function Send_to_ZarinPal_Gateway($order_id) {
                 $order = wc_get_order($order_id);
                 $currency = $order->get_currency();
-                $amount = intval($order->get_total());
+                
+                $order_total = $order->get_total();
+                $amount = intval($order_total);
                 $currency = strtolower($currency);
                 if ($currency === 'irht') {
                     $amount *= 10000;
@@ -240,6 +270,50 @@ function Load_ZarinPal_Gateway() {
                     $amount *= 1000;
                 } elseif ($currency === 'irt') {
                     $amount *= 10;
+                }
+                
+                $payment_amount = $amount;
+                
+                if ($this->feePayer === 'customer') {
+                    try {
+                        $base_amount = $order_total;
+                        $fees = $order->get_fees();
+                        foreach ($fees as $fee) {
+                            if (strpos($fee->get_name(), 'کارمزد درگاه') !== false) {
+                                $base_amount -= $fee->get_total();
+                                break;
+                            }
+                        }
+                        
+                        $base_amount_rial = intval($base_amount);
+                        if ($currency === 'irht') {
+                            $base_amount_rial *= 10000;
+                        } elseif ($currency === 'irhr') {
+                            $base_amount_rial *= 1000;
+                        } elseif ($currency === 'irt') {
+                            $base_amount_rial *= 10;
+                        }
+                        
+                        $fee_data = $this->zarinpal->calculateFee($base_amount_rial, 'IRR');
+                        
+                        if (isset($fee_data['fee_type']) && $fee_data['fee_type'] === 'Merchant' && 
+                            isset($fee_data['suggested_amount']) && $fee_data['suggested_amount'] > 0) {
+                            
+                            $payment_amount = $fee_data['suggested_amount'];
+                            
+                            $order->update_meta_data('_zarinpal_fee_data', array(
+                                'base_amount' => $base_amount_rial,
+                                'order_total' => $amount,
+                                'fee' => $fee_data['fee'],
+                                'suggested_amount' => $fee_data['suggested_amount'],
+                                'fee_type' => $fee_data['fee_type'],
+                                'timestamp' => time()
+                            ));
+                            $order->save();
+                        }
+                    } catch (Exception $e) {
+                        $payment_amount = $amount;
+                    }
                 }
                 $callback_url = add_query_arg('wc_order', $order_id, WC()->api_request_url('WC_ZPal'));
                 $description = 'خرید به شماره سفارش: ' . $order->get_order_number();
@@ -275,7 +349,7 @@ function Load_ZarinPal_Gateway() {
                 );
                 try {
                     $authority = $this->zarinpal->requestPayment(
-                        $amount,
+                        $payment_amount,
                         $callback_url,
                         $description,
                         $metadata,
@@ -304,7 +378,9 @@ function Load_ZarinPal_Gateway() {
                 }
                 if (isset($_GET['Status']) && $_GET['Status'] === 'OK') {
                     $authority = sanitize_text_field($_GET['Authority']);
-                    $amount = intval($order->get_total());
+                    
+                    $order_total = $order->get_total();
+                    $amount = intval($order_total);
                     $currency = $order->get_currency();
                     $currency = strtolower($currency);
                     if ($currency === 'irht') {
@@ -314,8 +390,23 @@ function Load_ZarinPal_Gateway() {
                     } elseif ($currency === 'irt') {
                         $amount *= 10;
                     }
+                    
+                    $verify_amount = $amount;
+                    if ($this->feePayer === 'customer') {
+                        $fee_data = $order->get_meta('_zarinpal_fee_data');
+                        if ($fee_data && is_array($fee_data)) {
+                            if (isset($fee_data['order_total'], $fee_data['suggested_amount'], $fee_data['timestamp'], $fee_data['fee_type'])) {
+                                if ($fee_data['order_total'] == $amount && $fee_data['fee_type'] === 'Merchant') {
+                                    if ((time() - $fee_data['timestamp']) < 3600) {
+                                        $verify_amount = $fee_data['suggested_amount'];
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
                     try {
-                        $response = $this->zarinpal->verifyPayment($authority, $amount);
+                        $response = $this->zarinpal->verifyPayment($authority, $verify_amount);
                         if ($response['code'] == 100) {
                             $transaction_id = $response['ref_id'];
                             $order->payment_complete($transaction_id);
@@ -441,10 +532,612 @@ function Load_ZarinPal_Gateway() {
                 }
                 return $token;
             }
+            
+            public function add_zarinpal_fee_to_cart($cart) {
+                if (is_admin() && !defined('DOING_AJAX')) {
+                    return;
+                }
+                
+                if (is_cart() && !defined('DOING_AJAX')) {
+                    return;
+                }
+                
+                if ($this->feePayer === 'customer') {
+                    $chosen_payment_method = WC()->session->get('chosen_payment_method');
+                    
+                    $is_zarinpal_selected = false;
+                    
+                    if ($chosen_payment_method === $this->id) {
+                        $is_zarinpal_selected = true;
+                    }
+                    
+                    if (isset($_POST['payment_method']) && $_POST['payment_method'] === $this->id) {
+                        $is_zarinpal_selected = true;
+                    }
+                    
+                    if (defined('WC_DOING_AJAX') && WC_DOING_AJAX) {
+                        $request_uri = $_SERVER['REQUEST_URI'] ?? '';
+                        if (strpos($request_uri, '/wc/store/') !== false) {
+                            global $wp;
+                            if (isset($wp->query_vars['rest_route']) && strpos($wp->query_vars['rest_route'], '/wc/store/') !== false) {
+                                $input = file_get_contents('php://input');
+                                if ($input) {
+                                    $data = json_decode($input, true);
+                                    if (isset($data['payment_method']) && $data['payment_method'] === $this->id) {
+                                        $is_zarinpal_selected = true;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                    if (!$is_zarinpal_selected && empty($chosen_payment_method) && is_checkout()) {
+                        $available_gateways = WC()->payment_gateways->get_available_payment_gateways();
+                        $gateway_keys = array_keys($available_gateways);
+                        if (!empty($gateway_keys) && $gateway_keys[0] === $this->id) {
+                            $is_zarinpal_selected = true;
+                        }
+                    }
+                    
+                    if ($is_zarinpal_selected) {
+                        $fees = $cart->get_fees();
+                        $fee_exists = false;
+                        foreach ($fees as $fee) {
+                            if (strpos($fee->name, 'کارمزد درگاه') !== false) {
+                                $fee_exists = true;
+                                break;
+                            }
+                        }
+                        
+                        if (!$fee_exists) {
+                            $cart_total = $cart->get_subtotal() + $cart->get_subtotal_tax() + $cart->get_shipping_total() + $cart->get_shipping_tax();
+                            
+                            $cart_fees = $cart->get_fees();
+                            foreach ($cart_fees as $fee) {
+                                if (strpos($fee->name, 'کارمزد درگاه') === false) {
+                                    $cart_total += $fee->total;
+                                }
+                            }
+                            
+                            $cart_total -= $cart->get_discount_total();
+                            
+                            $currency = get_woocommerce_currency();
+                            $amount_in_rial = intval($cart_total);
+                            $currency_lower = strtolower($currency);
+                            
+                            if ($currency_lower === 'irht') {
+                                $amount_in_rial *= 10000;
+                            } elseif ($currency_lower === 'irhr') {
+                                $amount_in_rial *= 1000;
+                            } elseif ($currency_lower === 'irt') {
+                                $amount_in_rial *= 10;
+                            }
+                            
+                            try {
+                                $fee_data = $this->zarinpal->calculateFee($amount_in_rial, 'IRR');
+                                
+                                if (isset($fee_data['fee_type']) && $fee_data['fee_type'] === 'Merchant' && 
+                                    isset($fee_data['suggested_amount']) && $fee_data['suggested_amount'] > 0) {
+                                    
+                                    $suggested_amount = $fee_data['suggested_amount'];
+                                    
+                                    if ($currency_lower === 'irht') {
+                                        $suggested_amount /= 10000;
+                                    } elseif ($currency_lower === 'irhr') {
+                                        $suggested_amount /= 1000;
+                                    } elseif ($currency_lower === 'irt') {
+                                        $suggested_amount /= 10;
+                                    }
+                                    
+
+                                    $cart_total_rial = $amount_in_rial;
+                                    $gateway_amount_rial = $fee_data['suggested_amount'];
+                                    $fee_rial = $gateway_amount_rial - $cart_total_rial;
+                                    
+
+                                    $fee_amount = $fee_rial;
+                                    if ($currency_lower === 'irht') {
+                                        $fee_amount /= 10000;
+                                    } elseif ($currency_lower === 'irhr') {
+                                        $fee_amount /= 1000;
+                                    } elseif ($currency_lower === 'irt') {
+                                        $fee_amount /= 10;
+                                    }
+                                    
+
+                                    $decimals = wc_get_price_decimals();
+                                    if ($fee_amount < 1000) {
+                                        $decimals = max($decimals, 3); // At least 3 decimals for small amounts
+                                    }
+                                    $fee_amount = round($fee_amount, $decimals);
+                                    
+                                    if ($fee_amount > 0) {
+                                        $cart->add_fee(__('کارمزد درگاه پرداخت', WC_ZPAL_TEXT_DOMAIN), $fee_amount);
+                                    }
+                                }
+                            } catch (Exception $e) {
+                            }
+                        }
+                    } else {
+                        $this->remove_zarinpal_fees($cart);
+                    }
+                } else {
+                    if ($this->feePayer === 'merchant') {
+                        $this->remove_zarinpal_fees($cart);
+                    }
+                }
+            }
+            
+            public function register_store_api_data() {
+                if (function_exists('woocommerce_store_api_register_endpoint_data')) {
+                    woocommerce_store_api_register_endpoint_data(array(
+                        'endpoint' => \Automattic\WooCommerce\StoreApi\Schemas\V1\CheckoutSchema::IDENTIFIER,
+                        'namespace' => 'zarinpal',
+                        'data_callback' => array($this, 'store_api_data_callback'),
+                        'schema_callback' => array($this, 'store_api_schema_callback'),
+                    ));
+                }
+            }
+            
+            public function store_api_data_callback() {
+                return array(
+                    'fee_payer' => $this->feePayer,
+                    'gateway_id' => $this->id,
+                );
+            }
+            
+            public function store_api_schema_callback() {
+                return array(
+                    'fee_payer' => array(
+                        'description' => __('Who pays the fee', WC_ZPAL_TEXT_DOMAIN),
+                        'type' => 'string',
+                        'readonly' => true,
+                    ),
+                    'gateway_id' => array(
+                        'description' => __('Gateway ID', WC_ZPAL_TEXT_DOMAIN),
+                        'type' => 'string',
+                        'readonly' => true,
+                    ),
+                );
+            }
+            
+            public function blocks_add_fee($order, $request) {
+                $payment_method = $request['payment_method'] ?? '';
+                
+                                if ($payment_method === $this->id && $this->feePayer === 'customer') {
+                    $existing_fees = $order->get_fees();
+                    $fee_exists = false;
+                    foreach ($existing_fees as $existing_fee) {
+                        if (strpos($existing_fee->get_name(), 'کارمزد درگاه') !== false) {
+                            $fee_exists = true;
+                            break;
+                        }
+                    }
+                    
+                    if (!$fee_exists) {
+                        $order_total = $order->get_subtotal() + $order->get_total_tax() + $order->get_shipping_total() + $order->get_shipping_tax();
+                        
+                        $order_fees = $order->get_fees();
+                        foreach ($order_fees as $fee) {
+                            if (strpos($fee->get_name(), 'کارمزد درگاه') === false) {
+                                $order_total += $fee->get_total();
+                            }
+                        }
+                        
+                        $order_total -= $order->get_discount_total();
+                        
+                        $currency = $order->get_currency();
+                        $amount_in_rial = intval($order_total);
+                        $currency_lower = strtolower($currency);
+                        
+                        if ($currency_lower === 'irht') {
+                            $amount_in_rial *= 10000;
+                        } elseif ($currency_lower === 'irhr') {
+                            $amount_in_rial *= 1000;
+                        } elseif ($currency_lower === 'irt') {
+                            $amount_in_rial *= 10;
+                        }
+                        
+                        try {
+                            $fee_data = $this->zarinpal->calculateFee($amount_in_rial, 'IRR');
+                            
+                            if (isset($fee_data['fee_type']) && $fee_data['fee_type'] === 'Merchant' && 
+                                isset($fee_data['suggested_amount']) && $fee_data['suggested_amount'] > 0) {
+                                
+                                $suggested_amount = $fee_data['suggested_amount'];
+                                
+                                if ($currency_lower === 'irht') {
+                                    $suggested_amount /= 10000;
+                                } elseif ($currency_lower === 'irhr') {
+                                    $suggested_amount /= 1000;
+                                } elseif ($currency_lower === 'irt') {
+                                    $suggested_amount /= 10;
+                                }
+                                
+
+                                    $order_total_rial = $amount_in_rial;
+                                    $gateway_amount_rial = $fee_data['suggested_amount'];
+                                    $fee_rial = $gateway_amount_rial - $order_total_rial;
+                                    
+
+                                    $fee_amount = $fee_rial;
+                                    if ($currency_lower === 'irht') {
+                                        $fee_amount /= 10000;
+                                    } elseif ($currency_lower === 'irhr') {
+                                        $fee_amount /= 1000;
+                                    } elseif ($currency_lower === 'irt') {
+                                        $fee_amount /= 10;
+                                    }
+                                    
+
+                                    $decimals = wc_get_price_decimals();
+                                    if ($fee_amount < 1000) {
+                                        $decimals = max($decimals, 3); // At least 3 decimals for small amounts
+                                    }
+                                    $fee_amount = round($fee_amount, $decimals);
+                                    
+                                    if ($fee_amount > 0) {
+                                        $fee = new WC_Order_Item_Fee();
+                                        $fee->set_name(__('کارمزد درگاه پرداخت', WC_ZPAL_TEXT_DOMAIN));
+                                        $fee->set_amount($fee_amount);
+                                        $fee->set_total($fee_amount);
+                                        $fee->set_tax_status('none');
+                                        $order->add_item($fee);
+                                        $order->calculate_totals();
+                                    }
+                            }
+                        } catch (Exception $e) {
+                        }
+                    }
+                }
+            }
+            
+            public function save_fee_to_order($order_id) {
+                $order = wc_get_order($order_id);
+                if ($order && $order->get_payment_method() === $this->id && $this->feePayer === 'customer') {
+                }
+            }
+            
+            public function checkout_create_order_fee($order, $data) {
+                if (isset($data['payment_method']) && $data['payment_method'] === $this->id && $this->feePayer === 'customer') {
+                    $existing_fees = $order->get_fees();
+                    $fee_exists = false;
+                    foreach ($existing_fees as $existing_fee) {
+                        if (strpos($existing_fee->get_name(), 'کارمزد درگاه') !== false) {
+                            $fee_exists = true;
+                            break;
+                        }
+                    }
+                    
+                    if (!$fee_exists) {
+                        $cart = WC()->cart;
+                        if ($cart) {
+                            $cart_total = $cart->get_subtotal() + $cart->get_subtotal_tax() + $cart->get_shipping_total() + $cart->get_shipping_tax();
+                            
+                            $cart_fees = $cart->get_fees();
+                            foreach ($cart_fees as $fee) {
+                                if (strpos($fee->name, 'کارمزد درگاه') === false) {
+                                    $cart_total += $fee->total;
+                                }
+                            }
+                            
+                            $cart_total -= $cart->get_discount_total();
+                            
+                            $currency = get_woocommerce_currency();
+                            $amount_in_rial = intval($cart_total);
+                            $currency_lower = strtolower($currency);
+                            
+                            if ($currency_lower === 'irht') {
+                                $amount_in_rial *= 10000;
+                            } elseif ($currency_lower === 'irhr') {
+                                $amount_in_rial *= 1000;
+                            } elseif ($currency_lower === 'irt') {
+                                $amount_in_rial *= 10;
+                            }
+                            
+                            try {
+                                $fee_data = $this->zarinpal->calculateFee($amount_in_rial, 'IRR');
+                                
+                                if (isset($fee_data['fee_type']) && $fee_data['fee_type'] === 'Merchant' && 
+                                    isset($fee_data['suggested_amount']) && $fee_data['suggested_amount'] > 0) {
+                                    
+                                    $suggested_amount = $fee_data['suggested_amount'];
+                                    
+                                    if ($currency_lower === 'irht') {
+                                        $suggested_amount /= 10000;
+                                    } elseif ($currency_lower === 'irhr') {
+                                        $suggested_amount /= 1000;
+                                    } elseif ($currency_lower === 'irt') {
+                                        $suggested_amount /= 10;
+                                    }
+                                    
+
+                                    $cart_total_rial = $amount_in_rial;
+                                    $gateway_amount_rial = $fee_data['suggested_amount'];
+                                    $fee_rial = $gateway_amount_rial - $cart_total_rial;
+                                    
+
+                                    $fee_amount = $fee_rial;
+                                    if ($currency_lower === 'irht') {
+                                        $fee_amount /= 10000;
+                                    } elseif ($currency_lower === 'irhr') {
+                                        $fee_amount /= 1000;
+                                    } elseif ($currency_lower === 'irt') {
+                                        $fee_amount /= 10;
+                                    }
+                                    
+
+                                    $decimals = wc_get_price_decimals();
+                                    if ($fee_amount < 1000) {
+                                        $decimals = max($decimals, 3); // At least 3 decimals for small amounts
+                                    }
+                                    $fee_amount = round($fee_amount, $decimals);
+                                    
+                                    if ($fee_amount > 0) {
+                                        $fee = new WC_Order_Item_Fee();
+                                        $fee->set_name(__('کارمزد درگاه پرداخت', WC_ZPAL_TEXT_DOMAIN));
+                                        $fee->set_amount($fee_amount);
+                                        $fee->set_total($fee_amount);
+                                        $fee->set_tax_status('none');
+                                        $order->add_item($fee);
+                                    }
+                                }
+                            } catch (Exception $e) {
+                            }
+                        }
+                    }
+                }
+            }
+            
+            public function blocks_order_processed($order) {
+                if ($order->get_payment_method() === $this->id && $this->feePayer === 'customer') {
+                    $fees = $order->get_fees();
+                }
+            }
+            
+            public function blocks_payment_method_changed($customer) {
+                if (WC()->cart && $this->feePayer === 'customer') {
+                    WC()->cart->calculate_fees();
+                    WC()->cart->calculate_totals();
+                }
+            }
+            
+            public function remove_zarinpal_fees($cart) {
+                $fees = $cart->get_fees();
+                $fee_removed = false;
+                
+                foreach ($fees as $fee_key => $fee) {
+                    if (strpos($fee->name, 'کارمزد درگاه') !== false) {
+                        unset($cart->fees[$fee_key]);
+                        $fee_removed = true;
+                    }
+                }
+                
+                if ($fee_removed) {
+                    $cart->fees = array_values($cart->fees);
+                }
+            }
+            
+            public function update_checkout_fees() {
+                if ($this->feePayer === 'customer') {
+                    $chosen_payment_method = WC()->session->get('chosen_payment_method');
+                    
+                    if ($chosen_payment_method !== $this->id && WC()->cart) {
+                        $this->remove_zarinpal_fees(WC()->cart);
+                    }
+                    
+                    WC()->cart->calculate_fees();
+                }
+            }
+            
+            public function add_fee_notice() {
+                $chosen_payment_method = WC()->session->get('chosen_payment_method');
+                if ($chosen_payment_method === $this->id && $this->feePayer === 'customer') {
+                    echo '<div class="woocommerce-info zarinpal-fee-notice" style="margin-bottom: 15px;">';
+                    echo '<p>' . __('با انتخاب درگاه زرین‌پال، کارمزد تراکنش به مبلغ سفارش اضافه می‌شود.', WC_ZPAL_TEXT_DOMAIN) . '</p>';
+                    echo '</div>';
+                }
+            }
+            
+                        public function enqueue_zarinpal_scripts() {
+                if (is_checkout() || is_cart()) {
+                    wp_enqueue_script('jquery');
+                }
+            }
+            
+            public function add_cart_css() {
+                return;
+            }
+            
+
+            public function adjust_decimals_for_zarinpal_fee($decimals) {
+                if ((is_checkout() || is_cart() || wp_doing_ajax()) && $this->feePayer === 'customer') {
+                    $chosen_payment_method = WC()->session ? WC()->session->get('chosen_payment_method') : '';
+                    
+                    if ($chosen_payment_method === $this->id || 
+                        (isset($_POST['payment_method']) && $_POST['payment_method'] === $this->id)) {
+                        
+                        return max($decimals, 3);
+                    }
+                }
+                
+                return $decimals;
+            }
+            
+
+            
+
+            
+            private function auto_detect_fee_payer() {
+                if (empty($this->merchantCode)) {
+                    return;
+                }
+                
+                $fee_detection_done = get_option('zarinpal_fee_detection_done_' . $this->merchantCode, false);
+                if ($fee_detection_done) {
+                    return;
+                }
+                
+                try {
+                    $test_amount = 100000;
+                    $fee_data = $this->zarinpal->calculateFee($test_amount, 'IRR');
+                    
+                    if (isset($fee_data['fee_type'])) {
+                        $auto_fee_payer = ($fee_data['fee_type'] === 'Merchant') ? 'merchant' : 'customer';
+                        
+                        $current_settings = get_option('woocommerce_WC_ZPal_settings', array());
+                        
+                        if (!isset($current_settings['fee_payer']) || empty($current_settings['fee_payer'])) {
+                            $current_settings['fee_payer'] = $auto_fee_payer;
+                            update_option('woocommerce_WC_ZPal_settings', $current_settings);
+                            $this->feePayer = $auto_fee_payer;
+                        }
+                        
+                        update_option('zarinpal_fee_detection_done_' . $this->merchantCode, true);
+                    }
+                    
+                } catch (Exception $e) {
+                    update_option('zarinpal_fee_detection_done_' . $this->merchantCode, true);
+                }
+            }
         }
     }
 }
 add_action('plugins_loaded', 'Load_ZarinPal_Gateway', 11);
+
+add_action('wp_ajax_get_zarinpal_fee', 'zarinpal_ajax_get_fee');
+add_action('wp_ajax_nopriv_get_zarinpal_fee', 'zarinpal_ajax_get_fee');
+
+add_action('wp_ajax_zarinpal_update_payment_method', 'zarinpal_update_payment_method');
+add_action('wp_ajax_nopriv_zarinpal_update_payment_method', 'zarinpal_update_payment_method');
+
+function zarinpal_update_payment_method() {
+    $payment_method = sanitize_text_field($_POST['payment_method'] ?? '');
+    $nonce = sanitize_text_field($_POST['nonce'] ?? '');
+    
+    $nonce_valid = false;
+    if (check_ajax_referer('update_order_review', 'nonce', false)) {
+        $nonce_valid = true;
+    } elseif ($nonce === 'zarinpal_checkout_nonce') {
+        $nonce_valid = true;
+    }
+    
+    if (!$nonce_valid) {
+        wp_send_json_error(array('message' => 'Security check failed'));
+        return;
+    }
+    
+    if (WC()->session) {
+        $old_method = WC()->session->get('chosen_payment_method');
+        WC()->session->set('chosen_payment_method', $payment_method);
+        
+        if (WC()->cart) {
+            $cart_fees = WC()->cart->get_fees();
+            foreach ($cart_fees as $fee_key => $fee) {
+                if (strpos($fee->name, 'کارمزد درگاه') !== false) {
+                    unset(WC()->cart->fees[$fee_key]);
+                }
+            }
+            
+            WC()->cart->calculate_fees();
+            WC()->cart->calculate_totals();
+        }
+    }
+    
+    wp_send_json_success(array(
+        'payment_method' => $payment_method,
+        'cart_total' => WC()->cart ? WC()->cart->get_total('') : 0
+    ));
+}
+
+function zarinpal_ajax_get_fee() {
+    if (!check_ajax_referer('zarinpal_fee_nonce', 'nonce', false)) {
+        wp_send_json_error(array('message' => 'Invalid nonce'));
+    }
+    
+    $gateways = WC()->payment_gateways->payment_gateways();
+    if (!isset($gateways['WC_ZPal'])) {
+        wp_send_json_error(array('message' => 'Gateway not found'));
+    }
+    
+    $gateway = $gateways['WC_ZPal'];
+    if ($gateway->feePayer !== 'customer') {
+        wp_send_json_error(array('message' => 'Fee not applicable'));
+    }
+    
+    $cart_total = floatval($_POST['cart_total']);
+    if ($cart_total <= 0) {
+        wp_send_json_error(array('message' => 'Invalid amount'));
+    }
+    
+    $currency = get_woocommerce_currency();
+    $amount_in_rial = intval($cart_total);
+    $currency_lower = strtolower($currency);
+    
+    if ($currency_lower === 'irht') {
+        $amount_in_rial *= 10000;
+    } elseif ($currency_lower === 'irhr') {
+        $amount_in_rial *= 1000;
+    } elseif ($currency_lower === 'irt') {
+        $amount_in_rial *= 10;
+    }
+    
+    try {
+        $fee_data = $gateway->zarinpal->calculateFee($amount_in_rial, 'IRR');
+        
+        if (isset($fee_data['fee_type']) && $fee_data['fee_type'] === 'Merchant' && 
+            isset($fee_data['fee']) && $fee_data['fee'] > 0) {
+            
+            $fee_amount = $fee_data['fee'];
+            
+            if ($currency_lower === 'irht') {
+                $fee_amount /= 10000;
+            } elseif ($currency_lower === 'irhr') {
+                $fee_amount /= 1000;
+            } elseif ($currency_lower === 'irt') {
+                $fee_amount /= 10;
+            }
+            
+
+            $decimals = wc_get_price_decimals();
+            if ($fee_amount < 1000) {
+                $decimals = max($decimals, 3);
+            }
+            $fee_amount = round($fee_amount, $decimals);
+            
+            wp_send_json_success(array(
+                'fee_amount' => $fee_amount,
+                'fee_formatted' => wc_price($fee_amount),
+                'fee_type' => $fee_data['fee_type']
+            ));
+        } else {
+            wp_send_json_success(array(
+                'fee_amount' => 0, 
+                'fee_formatted' => '',
+                'fee_type' => isset($fee_data['fee_type']) ? $fee_data['fee_type'] : 'unknown'
+            ));
+        }
+    } catch (Exception $e) {
+        wp_send_json_error(array('message' => $e->getMessage()));
+    }
+}
+
+add_action('upgrader_process_complete', 'zarinpal_plugin_updated', 10, 2);
+function zarinpal_plugin_updated($upgrader_object, $options) {
+    if ($options['action'] == 'update' && $options['type'] == 'plugin') {
+        if (isset($options['plugins'])) {
+            foreach ($options['plugins'] as $plugin) {
+                if (strpos($plugin, 'zarinpal') !== false || strpos($plugin, 'class-wc-gateway-zarinpal') !== false) {
+                    $settings = get_option('woocommerce_WC_ZPal_settings');
+                    if ($settings && isset($settings['merchantcode'])) {
+                        delete_option('zarinpal_fee_detection_done_' . $settings['merchantcode']);
+                    }
+                    break;
+                }
+            }
+        }
+    }
+}
 
 add_action('wp_ajax_zpal_transaction_info', 'zpal_display_transaction_info');
 add_action('wp_ajax_nopriv_zpal_transaction_info', 'zpal_display_transaction_info');
@@ -617,7 +1310,8 @@ function zpal_manual_verify_transaction() {
     if (empty($authority)) {
         wp_die(__('کد آتوریتی برای این سفارش یافت نشد.', WC_ZPAL_TEXT_DOMAIN));
     }
-    $amount = intval($order->get_total());
+    $order_total = $order->get_total();
+    $amount = intval($order_total);
     $currency = strtolower($order->get_currency());
     if ($currency === 'irht') {
         $amount *= 10000;
@@ -626,8 +1320,24 @@ function zpal_manual_verify_transaction() {
     } elseif ($currency === 'irt') {
         $amount *= 10;
     }
+    
+    $verify_amount = $amount;
+    $fee_payer = isset($settings['fee_payer']) ? $settings['fee_payer'] : 'merchant';
+    if ($fee_payer === 'customer') {
+        $fee_data = $order->get_meta('_zarinpal_fee_data');
+        if ($fee_data && is_array($fee_data)) {
+            if (isset($fee_data['order_total'], $fee_data['suggested_amount'], $fee_data['timestamp'], $fee_data['fee_type'])) {
+                if ($fee_data['order_total'] == $amount && $fee_data['fee_type'] === 'Merchant') {
+                    if ((time() - $fee_data['timestamp']) < 3600) {
+                        $verify_amount = $fee_data['suggested_amount'];
+                    }
+                }
+            }
+        }
+    }
+    
     try {
-        $response = $zarinpal->verifyPayment($authority, $amount);
+        $response = $zarinpal->verifyPayment($authority, $verify_amount);
         if ($response['code'] == 100) {
             $transaction_id = $response['ref_id'];
             if (!$order->is_paid()) {

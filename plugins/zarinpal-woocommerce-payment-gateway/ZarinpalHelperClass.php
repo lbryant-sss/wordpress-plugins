@@ -190,6 +190,22 @@ class ZarinpalHelperClass {
             throw new Exception($errorMessage);
         }
     }
+    public function calculateFee($amount, $currency = 'IRR') {
+        $data = array(
+            'merchant_id' => $this->merchantId,
+            'amount' => $amount,
+            'currency' => $currency,
+        );
+        
+        $response = $this->sendRequest('feeCalculation.json', $data);
+        
+        if (isset($response['data']['code']) && $response['data']['code'] == 100) {
+            return $response['data'];
+        } else {
+            $errorMessage = $response['errors']['message'] ?? 'خطای ناشناخته';
+            throw new Exception($errorMessage);
+        }
+    }
     private function sendGraphQLRequest($query) {
         $url = $this->graphqlUrl;
         $args = array(
