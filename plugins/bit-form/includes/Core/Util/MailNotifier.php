@@ -7,6 +7,7 @@ use BitCode\BitForm\Core\Database\FormEntryMetaModel;
 use BitCode\BitForm\Core\Messages\EmailTemplateHandler;
 use BitCode\BitForm\Core\Messages\PdfTemplateHandler;
 use BitCode\BitFormPro\Admin\AppSetting\Pdf;
+use Error;
 
 final class MailNotifier
 {
@@ -35,7 +36,7 @@ final class MailNotifier
       }
 
       if (class_exists('\BitCode\BitFormPro\Admin\AppSetting\Pdf')) {
-        $serverPath = BITFORMS_UPLOAD_DIR . DIRECTORY_SEPARATOR;
+        $serverPath = Helpers::getFullPathWithEncryptedEntryId($formID, $entryID);
 
         if (isset($pdfSetting->password)) {
           if (isset($pdfSetting->password->static) && $pdfSetting->password->static && !empty($pdfSetting->password->pass)) {
@@ -61,9 +62,20 @@ final class MailNotifier
           $attachments[] = $generatedPdf;
           $tempPdfLink = $generatedPdf;
           $apiResponse->apiResponse($logId, '', ['type' =>  'record', 'type_name' => 'pdf'], 'success', 'PDF successfully generated.', $entryDetails);
+          Log::debug_log([
+            'status'          => 'success',
+            'code'            => 'pdf_generated',
+            'message'         => 'PDF successfully generated',
+            'responseDetails' => $generatedPdf
+          ]);
         } else {
           $apiResponse->apiResponse($logId, '', ['type' =>  'record', 'type_name' => 'pdf'], 'errors', 'Error in generating PDF.', $entryDetails);
-          Log::debug_log('Error in generating PDF: ' . $generatedPdf->get_error_message());
+          Log::debug_log([
+            'status'          => 'error',
+            'code'            => 'pdf_generation_error',
+            'message'         => 'Error in generating PDF',
+            'responseDetails' => $generatedPdf->get_error_message()
+          ]);
         }
       }
     }
@@ -90,7 +102,7 @@ final class MailNotifier
             $from_mail = $fromMail[0];
           }
           (new MailConfig())->sendMail(['from_name' => $from_name, 'from_email' => $from_mail]);
-          $mailSubject = FieldValueHandler::replaceFieldWithValue($mailTemplate[0]->sub, $fieldValue);
+          $mailSubject = FieldValueHandler::replaceFieldWithValue($mailTemplate[0]->sub, $fieldValue, $formID);
 
           $mailBody = $mailTemplate[0]->body;
           if (class_exists('\BitCode\BitFormPro\Admin\DownloadFile')) {
@@ -100,7 +112,7 @@ final class MailNotifier
           }
 
           $mailBody = FieldValueHandler::replaceFieldWithValue($mailBody, $fieldValue, $formID);
-          $webUrl = BITFORMS_UPLOAD_BASE_URL . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR;
+          $webUrl = BITFORMS_UPLOAD_BASE_URL . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . $formID . DIRECTORY_SEPARATOR . Helpers::getEncryptedEntryId($entryID) . DIRECTORY_SEPARATOR;
           $mailBody = FieldValueHandler::changeImagePathInHTMLString($mailBody, $webUrl);
 
           if (!empty($notifyDetails->replyto)) {
@@ -144,6 +156,7 @@ final class MailNotifier
           if (!empty($notifyDetails->attachment)) {
             $files = $notifyDetails->attachment;
             $fileBasePath = FileHandler::getEntriesFileUploadDir($formID, $entryID) . DIRECTORY_SEPARATOR;
+
             if (is_array($files)) {
               foreach ($files as $file) {
                 if (isset($fieldValue[$file])) {
@@ -176,8 +189,20 @@ final class MailNotifier
           $status = wp_mail($mailTo, $mailSubject, $mailBody, $mailHeaders, $attachments);
 
           if (!$status) {
+            Log::debug_log([
+              'status'          => 'error',
+              'code'            => 'mail_not_sent',
+              'message'         => 'Mail not sent',
+              'responseDetails' => $status
+            ]);
             $apiResponse->apiResponse($logId, '', ['type' =>  'record', 'type_name' => 'smtp'], 'errors', 'Mail dose not send successfully', $entryDetails);
           } else {
+            Log::debug_log([
+              'status'          => 'success',
+              'code'            => 'mail_sent',
+              'message'         => 'Mail successfully sent',
+              'responseDetails' => $status
+            ]);
             $apiResponse->apiResponse($logId, '', ['type' =>  'record', 'type_name' => 'smtp'], 'success', 'Mail successfully send.', $entryDetails);
           }
           if ($status && $isDblOptin && false !== strpos($oldMailBody, 'entry_confirmation_url')) {

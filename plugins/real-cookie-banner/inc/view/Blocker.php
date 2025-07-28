@@ -115,6 +115,11 @@ class Blocker
      */
     private $blockedHandles = ['js' => [], 'css' => []];
     /**
+     * A list of URLs which are currently being processed in the `pre_http_request` hook. This is used to avoid
+     * duplicate processing of the same URL and leading to a infinite loop and memory exhaustion.
+     */
+    private $currentRequestUrlQueue = [];
+    /**
      * C'tor.
      *
      * @codeCoverageIgnore
@@ -353,6 +358,10 @@ class Blocker
         if (!\is_array($backtrace)) {
             return $response;
         }
+        if (isset($this->currentRequestUrlQueue[$url]) && $this->currentRequestUrlQueue[$url]) {
+            return $response;
+        }
+        $this->currentRequestUrlQueue[$url] = \true;
         $result = [];
         if (!isset($truncated_path)) {
             $truncated_path = \wp_normalize_path(ABSPATH);
@@ -405,6 +414,7 @@ wordpress-filter:pre_http_request
             }
             // We keep the request firing in scan mode to catch also follow-up requests.
         }
+        unset($this->currentRequestUrlQueue[$url]);
         return $response;
     }
     /**

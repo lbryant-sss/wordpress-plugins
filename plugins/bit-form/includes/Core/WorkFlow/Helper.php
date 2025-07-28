@@ -56,9 +56,9 @@ final class Helper
     return $fieldData;
   }
 
-  public static function replaceFieldWithValue($stringToReplaceField, $fieldValues, $evalMathExpr = true)
+  public static function replaceFieldWithValue($stringToReplaceField, $fieldValues, $evalMathExpr = true, $formID = null)
   {
-    $stringToReplaceField = FieldValueHandler::replaceFieldWithValue($stringToReplaceField, $fieldValues);
+    $stringToReplaceField = FieldValueHandler::replaceFieldWithValue($stringToReplaceField, $fieldValues, $formID);
     if ($evalMathExpr) {
       return self::evalMathExpression($stringToReplaceField);
     }

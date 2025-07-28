@@ -387,6 +387,12 @@ LOAD_SECRIPT;
     return self::$encryptEntryIds[$entryId];
   }
 
+  public static function getFullPathWithEncryptedEntryId($formId, $entryId)
+  {
+    $encryptDirectory = Helpers::getEncryptedEntryId($entryId);
+    return BITFORMS_UPLOAD_DIR . DIRECTORY_SEPARATOR . $formId . DIRECTORY_SEPARATOR . $encryptDirectory;
+  }
+
   public static function PDFPassHash($entryId)
   {
     return abs(crc32($entryId));

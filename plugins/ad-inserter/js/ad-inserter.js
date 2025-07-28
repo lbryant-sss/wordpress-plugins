@@ -6126,6 +6126,7 @@ jQuery(document).ready (function($) {
     var virtual_button = $("#ads-txt-virtual");
     var virtual = virtual_button.hasClass ('violet') ? '1' : '0';
     var view = editor_button.hasClass ('editor') ? 'text' : 'table';
+
     var search = encodeURIComponent ($("#ads-txt-search").val());
     var data_container = $("#ads-txt-data");
 
@@ -6164,17 +6165,17 @@ jQuery(document).ready (function($) {
               reload_button.removeClass ('dashicons-download');
               reload_button.addClass ('dashicons-no');
 
-              if ($('#ads-txt-missing').length != 0) {
-                reload_button.removeClass ('red');
-                reload_button.attr ('title', reload_button.attr ('title-table'))
-                .tooltip({
-                  track: true,
-                  delay: 700,
-                  showURL: false,
-                  showBody: " | ",
-                  fade: 250
-                });
-              } else {
+//              if ($('#ads-txt-missing').length != 0) {
+//                reload_button.removeClass ('red');
+//                reload_button.attr ('title', reload_button.attr ('title-table'))
+//                .tooltip({
+//                  track: true,
+//                  delay: 700,
+//                  showURL: false,
+//                  showBody: " | ",
+//                  fade: 250
+//                });
+//              } else {
                   reload_button.addClass ('red');
                   reload_button.attr ('title', reload_button.attr ('title-editor'))
                   .tooltip({
@@ -6184,7 +6185,7 @@ jQuery(document).ready (function($) {
                     showBody: " | ",
                     fade: 250
                   });
-                }
+//                }
               break;
             case 'table':
               editor_button.removeClass ('dashicons-yes-alt');
@@ -7034,10 +7035,12 @@ jQuery(document).ready (function($) {
 
 //  $("#ads-txt-virtual").click (function () {
   $("#ads-txt-virtual").on ("click", function () {
+    var editor_button = $("#ads-txt-editor");
 
     function switch_to_physical () {
       var virtual_button = $("#ads-txt-virtual");
       virtual_button.removeClass ('violet');
+      editor_button.removeClass ('editor');
       virtual_button.attr ('title', virtual_button.attr ('title-physical'))
       .tooltip({
         track: true,
@@ -7049,16 +7052,17 @@ jQuery(document).ready (function($) {
       setTimeout (function() {load_ads_txt ();}, 50);
 
     }
-    var editor_button = $("#ads-txt-editor");
     var view = editor_button.hasClass ('editor') ? 'text' : 'table';
     var virtual_button = $("#ads-txt-virtual");
 
     if (virtual_button.hasClass ('violet')) {
       var message = ai_admin.switch_to_physical_ads_txt;
-      var ads_txt_data = $("#ads-txt-data").find ('textarea#ads-txt-text').val ();
-      var ads_txt_missing = $('#ads-txt-missing').length != 0;
+//      var ads_txt_data = $("#ads-txt-data").find ('textarea#ads-txt-text').val ();
+//      var ads_txt_missing = $('#ads-txt-missing').length != 0;
+      var ads_txt_empty = $('#ads-txt-empty').length != 0;
 
-      if (!ads_txt_missing && (view == 'table' || ads_txt_data != '')) {
+//      if (!ads_txt_missing && (view == 'table' || ads_txt_data != '')) {
+      if (!ads_txt_empty) {
         $('<div />').html(message).attr ('title', ai_admin.warning).dialog({
           bgiframe: true,
           draggable: false,

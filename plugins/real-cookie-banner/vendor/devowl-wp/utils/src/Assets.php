@@ -863,6 +863,10 @@ JS;
              * supports autoloader, so we can safely check if the class exists.
              */
             $iri = new Iri($url);
+            // The URL does not have a host, only a path
+            if ($iri->host === null) {
+                return $url;
+            }
             $iri->host = IdnaEncoder::encode($iri->host);
             return $iri->uri;
         } else {
@@ -873,6 +877,10 @@ JS;
                 require_once ABSPATH . WPINC . '/Requests/IDNAEncoder.php';
             }
             $iri = new Requests_IRI($url);
+            // The URL does not have a host, only a path
+            if ($iri->host === null) {
+                return $url;
+            }
             $iri->host = Requests_IDNAEncoder::encode($iri->host);
             return $iri->uri;
         }

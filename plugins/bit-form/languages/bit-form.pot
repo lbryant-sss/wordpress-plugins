@@ -2,16 +2,16 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Bit Form 2.20.2\n"
+"Project-Id-Version: Bit Form 2.20.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/bit-form\n"
 "Last-Translator: developer@bitcode.pro\n"
 "Language-Team: support@bitcode.pro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-07-16T06:59:35+00:00\n"
+"POT-Creation-Date: 2025-07-27T12:01:19+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.11.0\n"
+"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: bit-form\n"
 
 #. Plugin Name of the plugin
@@ -207,7 +207,7 @@ msgstr ""
 #: includes/Core/Integration/ZohoWorkDrive/ZohoWorkDriveHandler.php:257
 #: includes/Core/Integration/ZohoWorkDrive/ZohoWorkDriveHandler.php:335
 #: includes/Core/Integration/ZohoWorkDrive/ZohoWorkDriveHandler.php:403
-#: includes/Frontend/Form/FrontendFormManager.php:525
+#: includes/Frontend/Form/FrontendFormManager.php:511
 msgid "Token expired"
 msgstr ""
 
@@ -342,6 +342,7 @@ msgid "Form update failed."
 msgstr ""
 
 #: includes/Admin/Form/AdminFormHandler.php:877
+#, php-format
 msgid "Error Occured in saving %s"
 msgstr ""
 
@@ -431,7 +432,7 @@ msgstr ""
 
 #: includes/Admin/Form/AdminFormHandler.php:2074
 #: includes/Admin/Form/AdminFormHandler.php:2151
-#: includes/Frontend/Form/FrontendFormManager.php:319
+#: includes/Frontend/Form/FrontendFormManager.php:306
 msgid "Entries id is invalid"
 msgstr ""
 
@@ -465,7 +466,7 @@ msgstr ""
 
 #: includes/Admin/Form/AdminFormHandler.php:2156
 #: includes/Admin/Form/AdminFormHandler.php:2223
-#: includes/Frontend/Form/FrontendFormManager.php:523
+#: includes/Frontend/Form/FrontendFormManager.php:509
 msgid "Form does not exist"
 msgstr ""
 
@@ -545,83 +546,83 @@ msgstr ""
 msgid "Payment setting updated successfully"
 msgstr ""
 
-#: includes/Admin/Form/Helpers.php:527
+#: includes/Admin/Form/Helpers.php:533
 msgid "This field is required"
 msgstr ""
 
-#: includes/Admin/Form/Helpers.php:529
+#: includes/Admin/Form/Helpers.php:535
 msgid "Please, enter a valid email address"
 msgstr ""
 
-#: includes/Admin/Form/Helpers.php:532
+#: includes/Admin/Form/Helpers.php:538
 msgid "Please, enter a valid URL"
 msgstr ""
 
-#: includes/Admin/Form/Helpers.php:534
+#: includes/Admin/Form/Helpers.php:540
 msgid "Minimum ${field.minimum} is required"
 msgstr ""
 
-#: includes/Admin/Form/Helpers.php:535
+#: includes/Admin/Form/Helpers.php:541
 msgid "Maximum ${field.maximum} is allowed"
 msgstr ""
 
-#: includes/Admin/Form/Helpers.php:537
+#: includes/Admin/Form/Helpers.php:543
 msgid "Please, enter only numbers"
 msgstr ""
 
-#: includes/Admin/Form/Helpers.php:540
+#: includes/Admin/Form/Helpers.php:546
 msgid "Please, enter a valid phone number"
 msgstr ""
 
-#: includes/Admin/Form/Helpers.php:543
-#: includes/Admin/Form/Helpers.php:547
-#: includes/Admin/Form/Helpers.php:551
+#: includes/Admin/Form/Helpers.php:549
+#: includes/Admin/Form/Helpers.php:553
+#: includes/Admin/Form/Helpers.php:557
 msgid "Select at least ${field.minimum} option(s)"
 msgstr ""
 
-#: includes/Admin/Form/Helpers.php:544
-#: includes/Admin/Form/Helpers.php:548
-#: includes/Admin/Form/Helpers.php:552
+#: includes/Admin/Form/Helpers.php:550
+#: includes/Admin/Form/Helpers.php:554
+#: includes/Admin/Form/Helpers.php:558
 msgid "Please, select no more than ${field.maximum} option(s)"
 msgstr ""
 
-#: includes/Admin/Form/Helpers.php:554
+#: includes/Admin/Form/Helpers.php:560
 msgid "Input does not match the required pattern"
 msgstr ""
 
-#: includes/Admin/Form/Helpers.php:555
+#: includes/Admin/Form/Helpers.php:561
 msgid "Minimum ${field.minimum_file} file(s) required"
 msgstr ""
 
-#: includes/Admin/Form/Helpers.php:556
+#: includes/Admin/Form/Helpers.php:562
 msgid "Maximum ${field.maximum_file} file(s) allowed"
 msgstr ""
 
-#: includes/Admin/Form/Helpers.php:557
+#: includes/Admin/Form/Helpers.php:563
 msgid "Maximum file size exceeded. (Max: ${field.maximum_size}MB)"
 msgstr ""
 
-#: includes/Admin/Form/Helpers.php:558
+#: includes/Admin/Form/Helpers.php:564
 msgid "File type is not supported"
 msgstr ""
 
-#: includes/Admin/Form/Helpers.php:559
+#: includes/Admin/Form/Helpers.php:565
 msgid "This value is already taken. Please, choose a different one."
 msgstr ""
 
-#: includes/Admin/Form/Helpers.php:560
+#: includes/Admin/Form/Helpers.php:566
 msgid "This username or email is already registered. Please, use another."
 msgstr ""
 
-#: includes/Admin/Form/Helpers.php:561
+#: includes/Admin/Form/Helpers.php:567
 msgid "Custom Option Required"
 msgstr ""
 
-#: includes/Admin/Form/Helpers.php:562
+#: includes/Admin/Form/Helpers.php:568
 msgid "Minimum amount of ${field.minimum_amount} is required"
 msgstr ""
 
-#: includes/Admin/Form/Helpers.php:563
+#: includes/Admin/Form/Helpers.php:569
 msgid "Maximum amount of ${field.maximum_amount} is allowed"
 msgstr ""
 
@@ -956,6 +957,7 @@ msgid "webhook url is empty"
 msgstr ""
 
 #: includes/Core/Integration/WooCommerce/RecordApiHelper.php:51
+#, php-format
 msgid "%s is required for woocommerce %s"
 msgstr ""
 
@@ -972,6 +974,7 @@ msgid "workspace, table, fields are required for zoho analytics api"
 msgstr ""
 
 #: includes/Core/Integration/ZohoBigin/RecordApiHelper.php:70
+#, php-format
 msgid "%s is required for zoho bigin, %s module"
 msgstr ""
 
@@ -980,6 +983,7 @@ msgid "module, fields are required for zoho bigin api"
 msgstr ""
 
 #: includes/Core/Integration/ZohoCampaigns/RecordApiHelper.php:70
+#, php-format
 msgid "%s is required for zoho campaigns"
 msgstr ""
 
@@ -988,6 +992,7 @@ msgid "list are required for zoho campaigns api"
 msgstr ""
 
 #: includes/Core/Integration/ZohoCreator/RecordApiHelper.php:127
+#, php-format
 msgid "%s is required for zoho creator"
 msgstr ""
 
@@ -996,10 +1001,12 @@ msgid "tokenDetails error"
 msgstr ""
 
 #: includes/Core/Integration/ZohoCRM/RecordApiHelper.php:73
+#, php-format
 msgid "%s is required for zoho crm, %s module"
 msgstr ""
 
 #: includes/Core/Integration/ZohoCRM/RecordApiHelper.php:84
+#, php-format
 msgid "zoho crm field %s's maximum length is %s, Given %s"
 msgstr ""
 
@@ -1009,6 +1016,7 @@ msgid "module, layout, fields are required for zoho crm api"
 msgstr ""
 
 #: includes/Core/Integration/ZohoDesk/RecordApiHelper.php:84
+#, php-format
 msgid "%s is required for zoho bigin"
 msgstr ""
 
@@ -1029,6 +1037,7 @@ msgid "list are required for zoho marketingHub api"
 msgstr ""
 
 #: includes/Core/Integration/ZohoProjects/RecordApiHelper.php:194
+#, php-format
 msgid "%s is required for %s"
 msgstr ""
 
@@ -1037,6 +1046,7 @@ msgid "list are required for zoho projects api"
 msgstr ""
 
 #: includes/Core/Integration/ZohoRecruit/RecordApiHelper.php:67
+#, php-format
 msgid "%s is required for zoho recruit, %s module"
 msgstr ""
 
@@ -1111,7 +1121,7 @@ msgstr ""
 
 #: includes/Core/WorkFlow/WorkFlow.php:209
 #: includes/Core/WorkFlow/WorkFlow.php:294
-#: includes/Frontend/Form/FrontendFormManager.php:301
+#: includes/Frontend/Form/FrontendFormManager.php:288
 msgid "Form Submitted Successfully"
 msgstr ""
 
@@ -1124,86 +1134,94 @@ msgid "Form ID cannot be empty"
 msgstr ""
 
 #: includes/Frontend/Form/FrontendFormHandler.php:335
+#, php-format
 msgid "#%s no. Form doesn't exists"
 msgstr ""
 
 #: includes/Frontend/Form/FrontendFormHandler.php:351
+#, php-format
 msgid "#%s no. Form is not active"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:400
+#: includes/Frontend/Form/FrontendFormManager.php:387
 msgid "Entry Update Successfully"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:437
+#: includes/Frontend/Form/FrontendFormManager.php:423
 msgid "Token verification failed"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:463
+#: includes/Frontend/Form/FrontendFormManager.php:449
 msgid "You are already logged in"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:512
+#: includes/Frontend/Form/FrontendFormManager.php:498
 msgid "Please submit form with valid fields"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:536
+#: includes/Frontend/Form/FrontendFormManager.php:522
 msgid "Please recheck your reCaptcha Configuration"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:572
+#: includes/Frontend/Form/FrontendFormManager.php:558
 msgid "Please verify reCAPTCHA"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:583
+#: includes/Frontend/Form/FrontendFormManager.php:569
 msgid "Please verify hCaptcha"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:617
+#: includes/Frontend/Form/FrontendFormManager.php:603
 msgid "hCaptcha verification failed"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:628
-#: includes/Frontend/Form/FrontendFormManager.php:658
+#: includes/Frontend/Form/FrontendFormManager.php:614
+#: includes/Frontend/Form/FrontendFormManager.php:644
 msgid "Please verify Cloudflare Turnstile Captcha"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:648
+#: includes/Frontend/Form/FrontendFormManager.php:634
 msgid "Cloudflare Turnstile Validation Error: "
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:711
+#: includes/Frontend/Form/FrontendFormManager.php:697
 msgid "Sorry!! Entry limit exceeded"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:725
+#: includes/Frontend/Form/FrontendFormManager.php:711
 msgid "Sorry!! You have already submitted"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:784
+#: includes/Frontend/Form/FrontendFormManager.php:770
+#, php-format
 msgid "within %s to %s"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:797
+#: includes/Frontend/Form/FrontendFormManager.php:783
+#, php-format
 msgid "%s to %s"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:803
-#: includes/Frontend/Form/FrontendFormManager.php:806
+#: includes/Frontend/Form/FrontendFormManager.php:789
+#: includes/Frontend/Form/FrontendFormManager.php:792
+#, php-format
 msgid "Form is available %s From %s"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:804
-#: includes/Frontend/Form/FrontendFormManager.php:807
+#: includes/Frontend/Form/FrontendFormManager.php:790
+#: includes/Frontend/Form/FrontendFormManager.php:793
+#, php-format
 msgid "Form is available %s"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:809
+#: includes/Frontend/Form/FrontendFormManager.php:795
+#, php-format
 msgid "Form is available on %s"
 msgstr ""
 
-#: includes/Frontend/Form/FrontendFormManager.php:822
-#: includes/Frontend/Form/FrontendFormManager.php:834
+#: includes/Frontend/Form/FrontendFormManager.php:808
+#: includes/Frontend/Form/FrontendFormManager.php:820
+#, php-format
 msgid "Sorry!! Your IP address is %s, Blocked from submitting the form"
 msgstr ""
 
@@ -2113,6 +2131,7 @@ msgid "Spreadsheet refreshed"
 msgstr ""
 
 #: languages/generatedString.php:450
+#, php-format
 msgid "Spreadsheet refresh failed Cause: %s. please try again"
 msgstr ""
 
@@ -2489,6 +2508,7 @@ msgid "Audience list refreshed"
 msgstr ""
 
 #: languages/generatedString.php:638
+#, php-format
 msgid "Audience list refresh failed Cause: %s. please try again"
 msgstr ""
 
@@ -2501,6 +2521,7 @@ msgid "Audience tags refreshed"
 msgstr ""
 
 #: languages/generatedString.php:644
+#, php-format
 msgid "Audience tags refresh failed Cause: %s. please try again"
 msgstr ""
 
@@ -2905,6 +2926,7 @@ msgid "List refreshed"
 msgstr ""
 
 #: languages/generatedString.php:846
+#, php-format
 msgid "List refresh failed Cause: %s. please try again"
 msgstr ""
 
@@ -2917,6 +2939,7 @@ msgid "Templates refreshed"
 msgstr ""
 
 #: languages/generatedString.php:852
+#, php-format
 msgid "Templates refresh failed Cause: %s. please try again"
 msgstr ""
 
@@ -3305,6 +3328,7 @@ msgid "Modules refreshed"
 msgstr ""
 
 #: languages/generatedString.php:1046
+#, php-format
 msgid "Modules refresh failed Cause: %s. please try again"
 msgstr ""
 
@@ -3597,6 +3621,7 @@ msgid "Layouts refreshed"
 msgstr ""
 
 #: languages/generatedString.php:1192
+#, php-format
 msgid "Layouts refresh failed Cause: %s. please try again"
 msgstr ""
 
@@ -3717,6 +3742,7 @@ msgid "Departments refreshed"
 msgstr ""
 
 #: languages/generatedString.php:1252
+#, php-format
 msgid "Departments refresh failed Cause: %s. please try again"
 msgstr ""
 
@@ -3837,10 +3863,12 @@ msgid "Create"
 msgstr ""
 
 #: languages/generatedString.php:1312
+#, php-format
 msgid "%s Owner"
 msgstr ""
 
 #: languages/generatedString.php:1314
+#, php-format
 msgid "Add an owner to %s  pushed to Zoho Projects."
 msgstr ""
 
@@ -3881,6 +3909,7 @@ msgid "Add a group to project pushed to Zoho Projects."
 msgstr ""
 
 #: languages/generatedString.php:1334
+#, php-format
 msgid "%s Flag"
 msgstr ""
 
@@ -3905,46 +3934,57 @@ msgid "Add followers to issue pushed to Zoho Projects"
 msgstr ""
 
 #: languages/generatedString.php:1346
+#, php-format
 msgid "Issue %s"
 msgstr ""
 
 #: languages/generatedString.php:1348
+#, php-format
 msgid "Add %s to issue pushed to Zoho Projects"
 msgstr ""
 
 #: languages/generatedString.php:1350
+#, php-format
 msgid "%s Attachments"
 msgstr ""
 
 #: languages/generatedString.php:1352
+#, php-format
 msgid "%s Time Log"
 msgstr ""
 
 #: languages/generatedString.php:1354
+#, php-format
 msgid "Add time log to %s pushed to Zoho Projects."
 msgstr ""
 
 #: languages/generatedString.php:1356
+#, php-format
 msgid "%s Recurrence"
 msgstr ""
 
 #: languages/generatedString.php:1358
+#, php-format
 msgid "Add recurrence to %s pushed to Zoho Projects."
 msgstr ""
 
 #: languages/generatedString.php:1360
+#, php-format
 msgid "%s Reminder"
 msgstr ""
 
 #: languages/generatedString.php:1362
+#, php-format
 msgid "Add reminder to %s pushed to Zoho Projects."
 msgstr ""
 
 #: languages/generatedString.php:1364
+#, php-format
 msgid "%s Tags"
 msgstr ""
 
 #: languages/generatedString.php:1366
+#, php-format
 msgid "Add tags to %s pushed to Zoho Projects."
 msgstr ""
 
@@ -4109,6 +4149,7 @@ msgid "No Portal Found"
 msgstr ""
 
 #: languages/generatedString.php:1450
+#, php-format
 msgid "Portals refresh failed Cause: %s. please try again"
 msgstr ""
 
@@ -4121,6 +4162,7 @@ msgid "No Project Found"
 msgstr ""
 
 #: languages/generatedString.php:1456
+#, php-format
 msgid "Projects refresh failed Cause: %s. please try again"
 msgstr ""
 
@@ -4137,6 +4179,7 @@ msgid "No Milestone Found"
 msgstr ""
 
 #: languages/generatedString.php:1464
+#, php-format
 msgid "Milestones refresh failed Cause: %s. please try again"
 msgstr ""
 
@@ -4153,6 +4196,7 @@ msgid "No Tasklist Found"
 msgstr ""
 
 #: languages/generatedString.php:1472
+#, php-format
 msgid "Tasklists refresh failed Cause: %s. please try again"
 msgstr ""
 
@@ -4169,6 +4213,7 @@ msgid "No Task Found"
 msgstr ""
 
 #: languages/generatedString.php:1480
+#, php-format
 msgid "Tasks refresh failed Cause: %s. please try again"
 msgstr ""
 
@@ -4177,6 +4222,7 @@ msgid "Tasks refresh failed. please try again"
 msgstr ""
 
 #: languages/generatedString.php:1484
+#, php-format
 msgid "Fields refresh failed Cause: %s. please try again"
 msgstr ""
 
@@ -4185,6 +4231,7 @@ msgid "No Owner Found"
 msgstr ""
 
 #: languages/generatedString.php:1488
+#, php-format
 msgid "Owners refresh failed Cause: %s. please try again"
 msgstr ""
 
@@ -4197,6 +4244,7 @@ msgid "No Task Layout Found"
 msgstr ""
 
 #: languages/generatedString.php:1494
+#, php-format
 msgid "Task Layouts refresh failed Cause: %s. please try again"
 msgstr ""
 
@@ -4213,6 +4261,7 @@ msgid "No Project Group Found"
 msgstr ""
 
 #: languages/generatedString.php:1502
+#, php-format
 msgid "Project Groups refresh failed Cause: %s. please try again"
 msgstr ""
 
@@ -4225,6 +4274,7 @@ msgid "No Tag Found"
 msgstr ""
 
 #: languages/generatedString.php:1508
+#, php-format
 msgid "Tags refresh failed Cause: %s. please try again"
 msgstr ""
 
@@ -4241,6 +4291,7 @@ msgid "to create a subtask you must select a task or create a new task"
 msgstr ""
 
 #: languages/generatedString.php:1516
+#, php-format
 msgid "to create a %s under milestone you must select a tasklist or create a new tasklist"
 msgstr ""
 
@@ -4377,6 +4428,7 @@ msgid "Note Types refreshed"
 msgstr ""
 
 #: languages/generatedString.php:1584
+#, php-format
 msgid "Note Types refresh failed Cause: %s. please try again"
 msgstr ""
 
@@ -4385,6 +4437,7 @@ msgid "Note Types refresh failed. please try again"
 msgstr ""
 
 #: languages/generatedString.php:1588
+#, php-format
 msgid "RelatedLists refresh failed Cause: %s. please try again"
 msgstr ""
 
@@ -4401,6 +4454,7 @@ msgid "Workbooks refreshed"
 msgstr ""
 
 #: languages/generatedString.php:1596
+#, php-format
 msgid "Workbooks refresh failed Cause: %s. please try again"
 msgstr ""
 
@@ -4425,6 +4479,7 @@ msgid "Template Details refreshed"
 msgstr ""
 
 #: languages/generatedString.php:1608
+#, php-format
 msgid "Template Details refresh failed Cause: %s. please try again"
 msgstr ""
 
@@ -4517,6 +4572,7 @@ msgid "Teams refreshed"
 msgstr ""
 
 #: languages/generatedString.php:1654
+#, php-format
 msgid "Teams refresh failed Cause: %s. please try again"
 msgstr ""
 
@@ -4529,6 +4585,7 @@ msgid "Folders refreshed"
 msgstr ""
 
 #: languages/generatedString.php:1660
+#, php-format
 msgid "Folders refresh failed Cause: %s. please try again"
 msgstr ""
 
@@ -4537,6 +4594,7 @@ msgid "Folders refresh failed. please try again"
 msgstr ""
 
 #: languages/generatedString.php:1664
+#, php-format
 msgid "Users refresh failed Cause: %s. please try again"
 msgstr ""
 
@@ -9587,6 +9645,7 @@ msgid "Allows you to preset the language to be used in the hosted payment pages 
 msgstr ""
 
 #: languages/generatedString.php:4198
+#, php-format
 msgid "Mollie provide a description for the payment. This option is required. <a target='_blank' href='https://docs.mollie.com/reference/create-payment#:~:text=Body%20Params-,description,required,-The%20description%20of'>learn more</a>. and also you add field value in this description. e.g: This Payment from Name: ${field_key}"
 msgstr ""
 

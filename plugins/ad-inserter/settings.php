@@ -327,6 +327,11 @@ function generate_settings_form (){
       <span class="checkbox-button dashicons dashicons-buddicons-forums" onclick="window.open('https://adinserter.pro/about')" ></span>
 <?php endif; ?>
 
+<!--      <label id="ai-ads-txt" class="checkbox-button iab-ads-txt" title="<?php _e ('Edit ads.txt file', 'ad-inserter'); ?>" ><span class="checkbox-icon icon-ads-txt"></span></label>-->
+<?php endif; ?>
+
+
+<?php if (!ai_is_multisite() || ai_is_main_site () || ai_settings_check_1 ('AD_INSERTER_MULTISITE_VIRTUAL_ADS_TXT')) : ?>
       <label id="ai-ads-txt" class="checkbox-button iab-ads-txt" title="<?php _e ('Edit ads.txt file', 'ad-inserter'); ?>" ><span class="checkbox-icon icon-ads-txt"></span></label>
 <?php endif; ?>
 
@@ -2605,7 +2610,7 @@ function generate_settings_form (){
         <li id="ai-fe" class="ai-plugin-tab"><a href="#tab-general-frontend"><?php _e ('Frontend', 'ad-inserter'); ?></a></li>
         <li id="ai-ad" class="ai-plugin-tab"><a href="#tab-general-admin"><?php _e ('Administration', 'ad-inserter'); ?></a></li>
         <li id="ai-co" class="ai-plugin-tab"><a href="#tab-general-constants"><?php _e ('Constants', 'ad-inserter'); ?></a></li>
-<?php if (function_exists ('ai_plugin_recaptcha_tab') && ai_settings_check ('AD_INSERTER_RECAPTCHA')): ?>
+<?php if (function_exists ('ai_plugin_recaptcha_tab') && ai_settings_check_1 ('AD_INSERTER_RECAPTCHA')): ?>
 <?php ai_plugin_recaptcha_tab (); ?>
 <?php endif; ?>
       </ul>
@@ -2925,7 +2930,7 @@ function generate_settings_form (){
 
 
 
-<?php if (function_exists ('ai_general_settings_3') && ai_settings_check ('AD_INSERTER_RECAPTCHA')): ?>
+<?php if (function_exists ('ai_general_settings_3') && ai_settings_check_1 ('AD_INSERTER_RECAPTCHA')): ?>
       <div id="tab-general-recaptcha" style="padding: 0;">
 <?php ai_general_settings_3 (); ?>
       </div>
@@ -4072,6 +4077,8 @@ function adsense_list_container () {
 }
 
 function ads_txt_container () {
+  global $ai_db_options;
+
   $rw = !function_exists ('ai_settings_write') || ai_settings_write ();
 
   if (function_exists ('ai_settings_virtual_ads_txt')) {
@@ -4102,9 +4109,20 @@ function ads_txt_container () {
         <label class="checkbox-button iab-ads-txt" title="<?php /* translators: %s: ads.txt */ echo sprintf (__('Open %s', 'ad-inserter'), $ads_txt_file); ?>" onclick="window.open('<?php echo $ads_txt_file; ?>')"><span class="checkbox-icon icon-ads-txt"></span></label>
       </span>
 
+
+<?php if (ai_settings_check_1 ('AD_INSERTER_MULTISITE_VIRTUAL_ADS_TXT')) : ?>
+
+      <span style="float: right;">
+        <span <?php echo $virtual_id; ?> class="violet"></span>
+      </span>
+
+<?php else: ?>
+
       <span style="margin-right: 10px; float: right;">
         <span <?php echo $virtual_id; ?> class="checkbox-button dashicons dashicons-shield<?php echo $virtual_ads_txt ? ' violet' : ''; ?>" title="<?php echo $virtual_title; ?>" title-virtual="<?php echo $virtual_text; ?>" title-physical="<?php echo $physical_text; ?>"></span>
       </span>
+
+<?php endif; ?>
 
       <span style="margin-right: 10px; float: right;">
         <span id="ads-txt-reload" class="checkbox-button dashicons dashicons-download" title="<?php _e ('Reload ads.txt file', 'ad-inserter'); ?>" title-editor="<?php _e ('Cancel', 'ad-inserter'); ?>" title-table="<?php _e ('Reload ads.txt file', 'ad-inserter'); ?>"></span>
@@ -4226,6 +4244,7 @@ function ads_txt ($action) {
     $ads = get_option (AI_ADS_TXT_NAME);
     if ($ads === false) {
       $virtual_file_missing = true;
+      update_option (AI_ADS_TXT_NAME, '');
       $ads = '';
       if ($action == 'table') {
         $action = 'text';
@@ -4292,12 +4311,22 @@ function ads_txt ($action) {
       echo '<div class="ai-rounded">';
                          // translators: %s: Ad Inserter
       echo '<div>', sprintf (__('ads.txt file: %s virtual ads.txt file', 'ad-inserter'), AD_INSERTER_NAME), '</div>';
+
+      if (is_multisite () && is_main_site ()) {
+                           // translators: %s: multisite installation, .htaccess file
+        echo '<div>', sprintf (__('You are using %s installation. You need to manually add to the %s file the following line:', 'ad-inserter'), 'multisite', '.htaccess'), '</div>';
+        echo '<div><pre>RewriteRule ^ads\.txt /wp-admin/admin-ajax.php?action=ai_ajax&ads-txt= [QSA,L]</pre></div>';
+      }
       echo '</div>';
 
       if ($virtual_file_missing) {
-        echo '<div id="ads-txt-missing" class="ai-rounded">';
-        echo '<div><strong><span style="color: red;">', __('Warning', 'ad-inserter'), ':</span></strong> ', /* translators: %s: Ad Inserter */ sprintf (__('%s virtual file ads.txt not found', 'ad-inserter'), AD_INSERTER_NAME), '</div>';
-        echo '</div>';
+//        echo '<div id="ads-txt-missing" class="ai-rounded">';
+//        echo '<div><strong><span style="color: red;">', __('Warning', 'ad-inserter'), ':</span></strong> ', /* translators: %s: Ad Inserter */ sprintf (__('%s virtual file ads.txt not found', 'ad-inserter'), AD_INSERTER_NAME), '</div>';
+//        echo '</div>';
+        echo '<div id="ads-txt-missing"></div>';
+      }
+      if ($ads == '') {
+        echo '<div id="ads-txt-empty"></div>';
       }
       break;
     default:
@@ -4433,11 +4462,11 @@ function ads_txt ($action) {
 
       if ($virtual) {
         if (isset ($_POST ['text'])) {
-          if ($text != '') {
+//          if ($text != '') {
             update_option (AI_ADS_TXT_NAME, $text);
-          } else {
-              delete_option (AI_ADS_TXT_NAME);
-            }
+//          } else {
+//              delete_option (AI_ADS_TXT_NAME);
+//            }
           ai_add_rewrite_rules ();
           flush_rewrite_rules();
         }

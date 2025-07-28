@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 5.1.17 (2025-07-27)
+
+
+### Bug Fixes
+
+* hotfix when Weglot and TranslatePress with latest version lead to memory issues (CU-31mpbvp)
+
+
+<details><summary>Dependency updates @devowl-wp/multilingual 1.13.36</summary>
+
+
+**_Purpose of dependency:_** _Provide helper functionality for multilingual plugins like WPML and PolyLang_
+##### Bug Fixes
+
+* hotfix when Weglot and TranslatePress with latest version lead to memory issues (CU-31mpbvp)</details>
+
+<details><summary>Dependency updates @devowl-wp/utils 1.19.35</summary>
+
+
+**_Purpose of dependency:_** _Utility functionality for all your WordPress plugins._
+##### Bug Fixes
+
+* uncaught InvalidArgument IdnaEncoder::encode() Argument [#1](https://git.owlinfra.de/devowlio/devowl-wp/issues/1) () must be of type string|Stringable, NULL given</details>
+
+
+
+
+
 ## 5.1.16 (2025-07-23)
 
 

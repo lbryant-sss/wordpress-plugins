@@ -430,6 +430,52 @@ class FormEntryMetaModel extends Model
     return $valueFilter;
   }
 
+  private function unescapeString($str)
+  {
+    // return preg_replace_callback(
+    //   '/\\\\u([0-9a-fA-F]{4})/',
+    //   fn ($match) => mb_convert_encoding(pack('H*', $match[1]), 'UTF-8', 'UCS-2BE'),
+    //   $str
+    // );
+    if (is_string($str) && '' !== $str) {
+      // Handle JSON-style escaping
+      $decoded = json_decode('"' . str_replace('"', '\\"', $str) . '"');
+      return (null !== $decoded) ? $decoded : $str;
+    }
+    return $str;
+  }
+
+  private function formatRepeaterValue($rawValue, $fieldMap)
+  {
+    if (empty($rawValue)) {
+      return '';
+    }
+    $rows = [];
+    preg_match_all('/\{([^}]+)\}/', $rawValue, $matches);
+
+    foreach ($matches[1] as $row) {
+      $pairs = explode(',', $row);
+      $formattedPairs = [];
+
+      foreach ($pairs as $pair) {
+        if (false === strpos($pair, ':')) {
+          continue;
+        }
+        [$childKey, $value] = explode(':', $pair, 2);
+        $childKey = trim($childKey);
+        $value = trim($value);
+
+        // Get label from fieldMap or use key
+        $label = $fieldMap[$childKey]['adminLbl'] ?? $childKey;
+        $formattedPairs[] = "$label: " . self::unescapeString($value);
+      }
+
+      $rows[] = implode(', ', $formattedPairs);
+    }
+
+    return implode('; ', $rows);
+  }
+
   public function getExportEntry($formFields, $entries, $formId, $fieldLabels, $limit = null, $sortBy = null, $sortByField = null)
   {
     $entry_table = $this->app_db->prefix . 'bitforms_form_entries';
@@ -529,35 +575,64 @@ class FormEntryMetaModel extends Model
     if (is_wp_error($result)) {
       wp_send_json_error('Internal server error', 500);
     } else {
+      // Create mappings:
+      $fieldMap = [];       // fieldKey => fieldData
+      $repeaterFields = []; // repeater fieldKeys
+      $fileFields = [];
       $downloadableFieldType = ['file-up', 'signature', 'advanced-file-up'];
+
       foreach ($fieldLabels as $field) {
-        foreach ($allData as $index => $entry) {
-          if (array_key_exists($field['key'], $entry) && in_array($field['type'], $downloadableFieldType, true)) {
-            $key = $field['key'];
-            if (empty($entry[$key])) {
-              continue;
-            }
-            $_upload_dir = FileHandler::getEntriesFileUploadDir($formId, $entry['entry_id']);
-            $imageArray = explode(',', $entry[$key]);
-            if (is_array($imageArray)) {
-              $fileData = [];
-              foreach ($imageArray as $file) {
-                $path = "bitforms/bitforms-file/?formID=$formId&entryID=" . $entry['entry_id'] . "&fileID=$file";
-                if (file_exists($_upload_dir . DIRECTORY_SEPARATOR . $file)) {
-                  $fileData[] = site_url($path, null);
-                }
-              }
-              $allData[$index][$key] = implode(',', $fileData);
-            } else {
-              $uploadedFile = explode('_', $entry[$key]);
-              $path = "bitforms/bitforms-file/?formID=$formId&entryID=" . $entry['entry_id'] . '&fileID=' . $uploadedFile[0];
-              if (file_exists($_upload_dir . DIRECTORY_SEPARATOR . $uploadedFile[0])) {
-                $allData[$index][$key] = site_url($path, null);
-              }
-            }
-          }
+        $key = $field['key'];
+        $fieldMap[$key] = $field;
+        if ('repeater' === $field['type']) {
+          $repeaterFields[] = $key;
+        } elseif (in_array($field['type'], $downloadableFieldType, true)) {
+          $fileFields[] = $key;
         }
       }
+
+      // Step 4: Process all entries efficiently
+      foreach ($allData as &$entry) {
+        // Process all fields with unified unescaping
+        foreach ($entry as $key => &$value) {
+          if (is_string($value)) {
+            $value = self::unescapeString($value);
+          }
+
+          // Process repeater fields
+          if (in_array($key, $repeaterFields, true)) {
+            $value = self::formatRepeaterValue($value, $fieldMap);
+          }
+        }
+
+        unset($value); // Break reference
+      }
+      unset($entry, $value); // Break references
+
+      // Process file fields (existing logic optimized)
+      foreach ($allData as $index => &$entry) {
+        $entryId = $entry['entry_id'];
+        $_upload_dir = FileHandler::getEntriesFileUploadDir($formId, $entryId);
+        foreach ($fileFields as $fileKey) {
+          if (empty($entry[$fileKey])) {
+            continue;
+          }
+
+          $fileIds = explode(',', $entry[$fileKey]);
+          $urls = [];
+
+          foreach ($fileIds as $fileId) {
+            $path = "bitforms/bitforms-file/?formID=$formId&entryID=$entryId&fileID=$fileId";
+            if (file_exists($_upload_dir . DIRECTORY_SEPARATOR . $fileId)) {
+              $urls[] = site_url($path);
+            }
+          }
+
+          $entry[$fileKey] = implode(',', $urls);
+        }
+      }
+
+      unset($entry); // Break reference
       wp_send_json_success($allData, 200);
     }
   }

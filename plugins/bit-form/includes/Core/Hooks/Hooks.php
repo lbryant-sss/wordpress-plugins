@@ -25,7 +25,7 @@ class Hooks
     add_action('init', [PostType::class, 'registerBitformsPostType']);
     add_action('init', [PostType::class, 'registerCustomPostType']);
     add_action('bitforms_exec_integrations', [Integrations::class, 'integrationExecutionHelper'], 1, 5);
-    add_action('init', [Hooks::class, 'localization_setup']);
+    // add_action('init', [Hooks::class, 'localization_setup']);
     add_action('init', [Hooks::class, 'init_classes']);
     add_action('init', [Hooks::class, 'versionUpdateRunFallbacks']);
     add_action('rest_api_init', [Hooks::class, 'registerRoutes']);

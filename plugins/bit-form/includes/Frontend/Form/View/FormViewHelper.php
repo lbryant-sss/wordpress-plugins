@@ -75,6 +75,7 @@ HEADERLABEL;
     return <<<BUTTON
         <button
           class="{$this->_form->getAtomicCls("_frm-b{$formID}-{$key}")} {$key}"
+          name="{$key}"
           type="{$btnTyp}"
         >
           {$preIcnMrkp}

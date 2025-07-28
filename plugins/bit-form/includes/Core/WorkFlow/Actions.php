@@ -213,7 +213,7 @@ final class Actions
         $messageContent = $downloadFile->replaceShortCodeToPdfPassword($messageContent, static::$_formID, $entryID);
       }
 
-      $workFlowReturnable['message'] = Helper::replaceFieldWithValue($messageContent, $fieldValue);
+      $workFlowReturnable['message'] = Helper::replaceFieldWithValue($messageContent, $fieldValue, true, static::$_formID);
       if (!empty($workFlowReturnable['message']) && Utilities::isPro()) {
         $workFlowReturnable['message'] = do_shortcode($workFlowReturnable['message']);
       }

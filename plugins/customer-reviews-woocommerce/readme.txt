@@ -4,7 +4,7 @@ Tags: woocommerce, review plugin, review reminder, customer reviews, review for 
 Requires at least: 4.5
 Tested up to: 6.8
 Requires PHP: 7.2
-Stable tag: 5.80.2
+Stable tag: 5.81.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -233,6 +233,9 @@ If you would like to change how reviews are sorted on product pages, it is possi
 
 == Changelog ==
 
+= 5.81.0 =
+* Improvement: self-hosted aggregated review forms improvements for RTL languages
+* Bug fix: vulnerability prevention
 = 5.80.2 =
 * Improvement: check that an order exists when cancelling review reminders
 * Improvement: shortcodes to show Polylang reviews in all languages

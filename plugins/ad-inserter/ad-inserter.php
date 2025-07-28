@@ -18,6 +18,10 @@ License: GPLv3
 
 Change Log
 
+Ad Inserter 2.8.5 - 2025-07-26
+- Support for individual virtual ads.txt files on multisite sites
+- Few minor bug fixes, cosmetic changes and code improvements
+
 Ad Inserter 2.8.4 - 2025-06-22
 - Few minor bug fixes, cosmetic changes and code improvements
 
@@ -5628,6 +5632,18 @@ function ai_load_options () {
     if (isset ($ai_db_options_main [AI_OPTION_GLOBAL]['PLUGIN_TYPE']))            $ai_db_options [AI_OPTION_GLOBAL]['PLUGIN_TYPE']            = $ai_db_options_main [AI_OPTION_GLOBAL]['PLUGIN_TYPE'];
     if (isset ($ai_db_options_main [AI_OPTION_GLOBAL]['PLUGIN_STATUS']))          $ai_db_options [AI_OPTION_GLOBAL]['PLUGIN_STATUS']          = $ai_db_options_main [AI_OPTION_GLOBAL]['PLUGIN_STATUS'];
     if (isset ($ai_db_options_main [AI_OPTION_GLOBAL]['PLUGIN_STATUS_COUNTER']))  $ai_db_options [AI_OPTION_GLOBAL]['PLUGIN_STATUS_COUNTER']  = $ai_db_options_main [AI_OPTION_GLOBAL]['PLUGIN_STATUS_COUNTER'];
+
+    // Enable virtual ads.txt files on multisite sub-sites
+    $plugins = get_site_option ('active_sitewide_plugins');
+    if ((isset ($plugins ['ad-inserter/ad-inserter.php']) || isset ($plugins ['ad-inserter-pro/ad-inserter.php'])) && get_blog_option (BLOG_ID_CURRENT_SITE, AI_ADS_TXT_NAME) !== false) {
+      define ('AD_INSERTER_MULTISITE_VIRTUAL_ADS_TXT', true);
+
+      if (get_option (AI_ADS_TXT_NAME) === false) {
+        update_option (AI_ADS_TXT_NAME, '');
+      }
+    } else {
+        delete_option (AI_ADS_TXT_NAME);
+      }
   }
 
   if (($ai_wp_data [AI_WP_DEBUGGING] & AI_DEBUG_PROCESSING) != 0) ai_log ("LOAD OPTIONS END");
@@ -6732,7 +6748,7 @@ function ai_ajax () {
   elseif (isset ($_GET ["ads-txt"])) {
     $ads_txt = get_option (AI_ADS_TXT_NAME);
     if ($ads_txt === false) {
-      wp_die ('Page not found', 404);
+      wp_die ('File not found', 404);
     }
 
     header ('Content-Type: text/plain');
@@ -7044,13 +7060,13 @@ function ai_ajax_backend () {
   }
 
   elseif (isset ($_GET ["ads-txt"])) {
-    if (!is_multisite() || is_main_site ()) {
+//    if (!is_multisite() || is_main_site ()) {
       if (function_exists ('ai_remote_ads_txt') && ai_remote_ads_txt ()) {
         wp_die ();
       }
 
       ads_txt (esc_html ($_GET ["ads-txt"]));
-    }
+//    }
   }
 
   elseif (isset ($_GET ["settings"])) {
@@ -12221,6 +12237,30 @@ function ai_unserialize ($string) {
 //  $string = preg_replace ('#o:\d+:"[a-z0-9_]+":\d+:{.*?}#i', '', $string);
 
   return @unserialize ($string, ['allowed_classes' => false]);
+}
+
+function ai_settings_check_1 ($check) {
+  if (function_exists ('ai_settings_check')) {
+    return (ai_settings_check ($check));
+  }
+
+  return defined ($check) && constant ($check);
+}
+
+function ai_is_multisite () {
+  if (function_exists ('ai_settings_multisite')) {
+    return (ai_settings_multisite ());
+  }
+
+  return is_multisite ();
+}
+
+function ai_is_main_site () {
+  if (function_exists ('ai_settings_main_site')) {
+    return (ai_settings_main_site ());
+  }
+
+  return is_main_site ();
 }
 
 // ===========================================================================================

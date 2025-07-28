@@ -275,10 +275,20 @@ final class FieldValueHandler
 
         if (!preg_match('/^(http|https):\/\//', $fullPath)) {
           if (!file_exists($fullPath) || !isset($allowedMimeTypes[$extension])) {
+            Log::debug_log([
+              'status'  => 'error',
+              'code'    => 'file_not_found',
+              'message' => "File not found or unsupported file type: $fullPath",
+            ]);
             return '';
           }
           $mimeType = mime_content_type($fullPath);
           if (!in_array($mimeType, $allowedMimeTypes[$extension], true)) {
+            Log::debug_log([
+              'status'  => 'error',
+              'code'    => 'unsupported_file_type',
+              'message' => "Unsupported file type: $mimeType for file: $fullPath",
+            ]);
             return '';
           }
         }
@@ -291,11 +301,9 @@ final class FieldValueHandler
 
   public static function replaceValueOfBf_all_data($stringToReplaceField, $fieldValues, $formId)
   {
-    // ${bf_all_fields.1}
     $pattern = '/\$\{bf_all_data\}/'; // Corrected escaping
 
     preg_match_all($pattern, $stringToReplaceField, $matches);
-
     if (count($matches[0]) > 0) {
       $formManager = FormManager::getInstance($formId);
       $formFields = $formManager->getFields();
@@ -314,7 +322,7 @@ final class FieldValueHandler
 
     $uploadPath = $formId . DIRECTORY_SEPARATOR . $encryptDirectory;
 
-    return array_reduce(array_keys($formFields), function ($filteredData, $key) use ($formFields, $formData, $uploadPath) {
+    return array_reduce(array_keys($formFields), function ($filteredData, $key) use ($formFields, $formData) {
       $field = $formFields[$key];
 
       $ignoreFields = ['button', 'recaptcha', 'html', 'divider', 'spacer', 'section', 'file-up', 'turnstile', 'hcaptcha', 'advanced-file-up', 'image'];
@@ -329,7 +337,7 @@ final class FieldValueHandler
         if ('repeater' === $field['type']) {
           $filteredData[$key] = is_string($formData[$key]) ? json_decode($formData[$key], true) : $formData[$key];
         } elseif ('signature' === $field['type']) {
-          $file_path = strpos($formData[$key], '/') ? $formData[$key] : $uploadPath . DIRECTORY_SEPARATOR . $formData[$key];
+          $file_path = strpos($formData[$key], '/') ? $formData[$key] : $formData[$key];
           $filteredData[$key] = '<img src="' . $file_path . '" style="max-width: 100%; height: auto;" />';
         } elseif (in_array($field['type'], $arrayValueFldType)) {
           $filteredData[$key] = is_array($formData[$key]) ? implode(', ', $formData[$key]) : $formData[$key];
@@ -345,6 +353,14 @@ final class FieldValueHandler
   private static function generateTable($fields, $formFields)
   {
     if (empty($fields)) {
+      Log::debug_log([
+        'status'     => 'error',
+        'code'       => 'no_fields_found',
+        'type'       => 'bf_all_data',
+        'message'    => 'No fields found for bf_all_data',
+        'fields'     => $fields,
+        'formFields' => $formFields,
+      ]);
       return '<p>No data available.</p>';
     }
 

@@ -1,3 +1,102 @@
+= 2.16.5 =
+*Release Date: 12 November, 2024*
+*Improvements:
+    1. Allow <style> tag usage in the HTML field.
+    2. Add advanced file upload field styling in conversational forms.
+    3. Improve responsiveness for multi-step forms.
+*Fixes:
+    1. Fix scrolling issue in the custom field options.
+    2. Resolve blank page issue when opening the custom styling modal.
+
+= 2.16.4 =
+*Release Date: 06 November, 2024*
+*Improvements:
+    1. Enhanced UI/UX in the App Settings section.
+*Fix:
+    1. Resolved height issue with the image select field.
+
+= 2.16.3 =
+*Release Date: 03 November, 2024*
+*Fix:
+    1. Resolved missing configuration issue with Stripe billing address.
+    2. Resolved unwanted response issue when deleting forms.
+
+= 2.16.2 =
+*Release Date: 28 October, 2024*
+*Improvements:
+    1. Added support for United Arab Emirates Dirham (AED) currency in Stripe card payment options.
+    2. Enabled billing address in the Stripe payment field to dynamically populate from the user’s form address input.
+*Fix:
+    1. Resolved PHP warnings related to handling dynamic properties.
+    2. Resolved blank screen issue when using the form template (Meeting Room Registration Form).
+
+= 2.16.1 =
+*Release Date: 24 October, 2024*
+*Improvements:
+    1. Added a new field in the builder to assign the position of a field before the submit button.
+    2. Updated translation strings for "Other..." option in checkbox and radio fields.
+*Fix:
+    1. Resolved issues with Google Sheets integration when using repeater or section fields.
+
+= 2.16.0 =
+*Release Date: 22 October, 2024*
+*New:
+    1. Added GDPR Agreement Field: Utilize this field to obtain user consent for data processing and storage in compliance with GDPR regulations.
+*Improvement:
+    1. Updated the default style of the Image Select Field for improved appearance.
+*Fix:
+    1. Resolved issues with PayPal Plan ID and invalid amount value.
+
+= 2.15.4 =
+*Release Date: 17 October, 2024*
+*New:
+    1. Added new form template: Customer Complain Form
+    2. Add Change anction in conditional logic for repeater field.
+    2. Added new Filter and Action Hooks for handling WP User Authentication.
+*Improvement:
+    1. Default amount value settings in the Currency Field.
+    2. Improve "On Click" of button action in conditional logic section.
+*Fix:
+    1. Resolved "0" value not set as default value inssue in the Number Field.
+
+
+
+= 2.15.3 =
+*Release Date: 09 October, 2024*
+*New:
+    1. Added new form template: WP User Registration Form
+*Improvement:
+    1. Improved security for Icon Upload in Field Settings.
+    2. Updated the default styling for the Image Select Field.
+
+= 2.15.2 =
+*Release Date: 01 October, 2024*
+*Improvement:
+    1. Enhanced responsiveness of form templates cards for smaller screen devices.
+    
+= 2.15.0 =
+*Release Date: 29 September, 2024*
+*Feature
+    1. Frontent entry view & edit: Added the ability to view and logged in user to edit form entries.
+*Fix
+    1. Resolved Column Number set issue with Checkbox and Radio Field
+
+= 2.14.1 = 
+*Release Date: 26 September, 2024*
+*Improvement:
+    1. Added new admin sidebar and top bar menu for Bit Form.
+*Fixes:
+    1. Resolved HTML tag filtering issue in the HTML field.
+    2. Fixed duplicate and export/import issues with the repeater and section fields.
+
+= 2.14.0 =
+*Release Date: 17 September, 2024*
+*Feature:
+    1. New Form Templates: Added 24+ new form templates to simplify form creation.
+*Improvement:
+    1. Telegram Integration: Implemented support for sending images or signatures directly to a Telegram channel.
+
+
 = 2.13.13 =
 *Release Date: 08 September, 2024*
 *Improvements:

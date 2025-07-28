@@ -405,9 +405,9 @@ final class FrontendFormHandler
     $workFlowreturnedOnUserInput = $this->executeOnUserInput($formID, $shortCodeCounter, $fields);
 
     // test for form before remove
-    $noLabel = ['decision-box', 'gdpr', 'html', 'shortcode', 'button', 'paypal', 'razorpay', 'recaptcha', 'turnstile', 'hcaptcha', 'stripe'];
+    $noLabelFieldTypes = ['decision-box', 'gdpr', 'html', 'shortcode', 'button', 'paypal', 'razorpay', 'recaptcha', 'turnstile', 'hcaptcha', 'stripe', 'spacer'];
     foreach ($fields as $fldKey => $field) {
-      if (!in_array($field->typ, $noLabel) && isset($field->lbl)) {
+      if (!in_array($field->typ, $noLabelFieldTypes) && isset($field->lbl)) {
         $lblReplaceToBackslash = str_replace('$_bf_$', '\\', $field->lbl);
         $fields->{$fldKey}->lbl = FieldValueHandler::replaceSmartTagWithValue($lblReplaceToBackslash);
       }

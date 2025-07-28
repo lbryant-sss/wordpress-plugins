@@ -36,7 +36,8 @@ final class MailConfig
         $phpmailer->Username = $integration_details->smtp_user_name;
         $phpmailer->Password = $integration_details->smtp_password;
         $phpmailer->SMTPSecure = $integration_details->encryption;
-        // $phpmailer->SMTP_DEBUG = 1;
+        // $phpmailer->SMTPDebug = 1;
+        // $phpmailer->Debugoutput = 'error_log';
         $phpmailer->From = $integration_details->form_email_address;
         if (isset($this->config['from_email']) && !empty($this->config['from_email'])) {
           $phpmailer->From = $this->config['from_email'];

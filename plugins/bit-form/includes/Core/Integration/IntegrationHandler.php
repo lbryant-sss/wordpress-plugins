@@ -340,9 +340,10 @@ final class IntegrationHandler
           ]
         );
 
+        $triggerData['fields'] = $workFlowReturnedData['fields'];
         if (!is_wp_error($updatedStatus)) {
           if ($workFlowReturnedData['dflt_template']) {
-            $triggerData['fields'] = $workFlowReturnedData['fields'];
+            // $triggerData['fields'] = $workFlowReturnedData['fields'];
             do_action('bf_double_optin_confirmation', $workFlowReturnedData['integrationDetails'], $triggerData);
           } elseif (isset($triggerData['dblOptin'])) {
             foreach ($triggerData['dblOptin'] as $value) {

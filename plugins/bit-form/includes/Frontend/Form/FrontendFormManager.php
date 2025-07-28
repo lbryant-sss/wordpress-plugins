@@ -246,19 +246,6 @@ final class FrontendFormManager extends FormManager
       $entryID = $saveResponse['entry_id'];
       do_action('bitform_submit_success', $this->_form_id, $entryID, $_POST, $_FILES);
 
-      // check and replace signature field value
-      $formFields = $this->getFields();
-      // $uploadPath = BITFORMS_UPLOAD_BASE_URL . "/uploads/{$this->_form_id}/{$entryID}"; // web root
-      // $uploadPath = BITFORMS_UPLOAD_DIR . "/{$this->_form_id}/{$entryID}"; // server root
-      $encrypt_directory = Helpers::getEncryptedEntryId($entryID);
-      $uploadPath = $this->_form_id . DIRECTORY_SEPARATOR . $encrypt_directory;
-
-      foreach ($formFields as $key => $field) {
-        if ('signature' === $field['type']) {
-          $saveResponse['fields'][$key] = $uploadPath . DIRECTORY_SEPARATOR . $saveResponse['fields'][$key];
-        }
-      }
-
       $captchaV3Settings = $this->getCaptchaV3Settings();
       if ($captchaV3Settings) {
         $token = $_POST['g-recaptcha-response'];
@@ -426,7 +413,6 @@ final class FrontendFormManager extends FormManager
 
   public function beforeSubmittedValidate()
   {
-    error_log('beforeSubmittedValidate called for form ID: ' . $this->_form_id);
     if ($this->verifySubmissionNonce()) {
       if ($this->isExist()) {
         $isRestricted = $this->checkSubmissionRestriction();
