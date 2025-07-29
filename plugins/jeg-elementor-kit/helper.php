@@ -1180,3 +1180,37 @@ if ( ! function_exists( 'jkit_optimized_markup_class' ) ) {
 		return ' > .elementor-widget-container';
 	}
 }
+
+if ( ! function_exists( 'jkit_render_faq_schema_seo' ) ) {
+	/**
+	 * Render FAQ Schema for SEO
+	 *
+	 * @since 2.6.14
+	 */
+	function jkit_render_faq_schema_seo() {
+		$data = apply_filters( 'jkit_faq_schema_seo_data', array() );
+
+		if ( ! empty( $data ) ) {
+			$schema = array(
+				'@context'   => 'https://schema.org',
+				'@type'      => 'FAQPage',
+				'mainEntity' => array(),
+			);
+
+			foreach ( $data as $item ) {
+				$schema['mainEntity'][] = array(
+					'@type'          => 'Question',
+					'name'           => $item['question'],
+					'acceptedAnswer' => array(
+						'@type' => 'Answer',
+						'text'  => $item['answer'],
+					),
+				);
+			}
+
+			echo '<script type="application/ld+json">' . wp_json_encode( $schema ) . '</script>';
+		}
+	}
+
+	add_action( 'wp_footer', 'jkit_render_faq_schema_seo' );
+}

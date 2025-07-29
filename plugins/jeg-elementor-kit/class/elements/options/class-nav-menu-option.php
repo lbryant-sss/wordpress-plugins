@@ -687,8 +687,8 @@ class Nav_Menu_Option extends Option_Abstract {
 			'segment'    => 'style_menu_item',
 			'selectors'  => array(
 				'custom' => array(
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu > li:hover > a'     => 'color: {{VALUE}};',
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu > li:hover > a svg' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu > li:not(.hover-gradient, .current-menu-item):hover > a'     => 'color: {{VALUE}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu > li:not(.hover-gradient, .current-menu-item):hover > a svg' => 'fill: {{VALUE}};',
 				),
 			),
 		);
@@ -714,7 +714,7 @@ class Nav_Menu_Option extends Option_Abstract {
 			'type'      => 'border',
 			'title'     => esc_html__( 'Item Text Hover Border', 'jeg-elementor-kit' ),
 			'segment'   => 'style_menu_item',
-			'selectors' => '.jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu > li:hover > a',
+			'selectors' => '.jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu > li:not(.hover-gradient, .current-menu-item):hover > a',
 		);
 
 		$this->options['st_menu_item_text_hover_border_radius'] = array(
@@ -722,7 +722,7 @@ class Nav_Menu_Option extends Option_Abstract {
 			'title'     => esc_html__( 'Border Radius', 'jeg-elementor-kit' ),
 			'segment'   => 'style_menu_item',
 			'units'     => array( 'px', '%', 'em' ),
-			'selectors' => '.jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu > li:hover > a',
+			'selectors' => '.jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu > li:not(.hover-gradient, .current-menu-item):hover > a',
 			'attribute' => 'border-radius',
 		);
 
@@ -1069,8 +1069,8 @@ class Nav_Menu_Option extends Option_Abstract {
 			'segment'    => 'style_submenu_item',
 			'selectors'  => array(
 				'custom' => array(
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu .sub-menu li:hover > a'     => 'color: {{VALUE}};',
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu .sub-menu li:hover > a svg' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu .sub-menu li:not(.hover-gradient, .current-menu-item):hover > a'     => 'color: {{VALUE}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu .sub-menu li:not(.hover-gradient, .current-menu-item):hover > a svg' => 'fill: {{VALUE}};',
 				),
 			),
 		);
@@ -1096,14 +1096,14 @@ class Nav_Menu_Option extends Option_Abstract {
 			'type'      => 'border',
 			'title'     => esc_html__( 'Items Border', 'jeg-elementor-kit' ),
 			'segment'   => 'style_submenu_item',
-			'selectors' => '.jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu .sub-menu li:hover > a',
+			'selectors' => '.jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu .sub-menu li:not(.hover-gradient, .current-menu-item):hover > a',
 		);
 
 		$this->options['st_submenu_item_hover_border_radius'] = array(
 			'type'      => 'dimension',
 			'title'     => esc_html__( 'Items Border Radius', 'jeg-elementor-kit' ),
 			'segment'   => 'style_submenu_item',
-			'selectors' => '.jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu .sub-menu li:hover > a',
+			'selectors' => '.jeg-elementor-kit.jkit-nav-menu .jkit-menu-wrapper .jkit-menu .sub-menu li:not(.hover-gradient, .current-menu-item):hover > a',
 			'attribute' => 'border-radius',
 		);
 

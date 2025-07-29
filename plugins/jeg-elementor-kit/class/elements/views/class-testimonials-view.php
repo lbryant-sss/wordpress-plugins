@@ -350,7 +350,8 @@ class Testimonials_View extends View_Abstract {
 	 * Render Option
 	 */
 	private function render_option() {
-		$default   = array(
+		$breakpoints = jkit_get_responsive_breakpoints();
+		$default     = array(
 			'widescreen'   => array(
 				'items'  => 3,
 				'margin' => 10,
@@ -380,10 +381,10 @@ class Testimonials_View extends View_Abstract {
 				'margin' => 10,
 			),
 		);
-		$nav_left  = preg_replace( '~[\r\n\s]+~', ' ', $this->render_icon_element( $this->attribute['sg_setting_arrow_left'] ) );
-		$nav_right = preg_replace( '~[\r\n\s]+~', ' ', $this->render_icon_element( $this->attribute['sg_setting_arrow_right'] ) );
-		$items     = ! empty( $this->attribute['sg_setting_slide_show_responsive']['size'] ) ? $this->attribute['sg_setting_slide_show_responsive']['size'] : $default['dekstop']['items'];
-		$margin    = ! empty( $this->attribute['sg_setting_margin_responsive']['size'] ) ? $this->attribute['sg_setting_margin_responsive']['size'] : $default['dekstop']['margin'];
+		$nav_left    = preg_replace( '~[\r\n\s]+~', ' ', $this->render_icon_element( $this->attribute['sg_setting_arrow_left'] ) );
+		$nav_right   = preg_replace( '~[\r\n\s]+~', ' ', $this->render_icon_element( $this->attribute['sg_setting_arrow_right'] ) );
+		$items       = ! empty( $this->attribute['sg_setting_slide_show_responsive']['size'] ) ? $this->attribute['sg_setting_slide_show_responsive']['size'] : $default['dekstop']['items'];
+		$margin      = ! empty( $this->attribute['sg_setting_margin_responsive']['size'] ) ? $this->attribute['sg_setting_margin_responsive']['size'] : $default['dekstop']['margin'];
 
 		if ( 'gradient' === $this->attribute['st_arrow_normal_background_background_background'] || 'gradient' === $this->attribute['st_arrow_hover_background_background_background'] ) {
 			$icon_class = 'hover-gradient';
@@ -394,6 +395,22 @@ class Testimonials_View extends View_Abstract {
 			$nav_right = '<span>' . $nav_right . '</span>';
 		}
 
+		if ( isset( $breakpoints[0]['key'] ) && 'widescreen' === $breakpoints[0]['key'] ) {
+			$responsive[ $breakpoints[0]['key'] ] = array(
+				'items'      => $items,
+				'margin'     => $margin,
+				'breakpoint' => $breakpoints[0]['value'],
+			);
+
+			if ( isset( $this->attribute['sg_setting_slide_show_responsive_widescreen'] ) ) {
+				$responsive['widescreen']['items'] = ! empty( $this->attribute[ 'sg_setting_slide_show_responsive_' . $breakpoints[0]['key'] ]['size'] ) ? $this->attribute[ 'sg_setting_slide_show_responsive_' . $breakpoints[0]['key'] ]['size'] : $items;
+			}
+
+			if ( isset( $this->attribute['sg_setting_margin_responsive_widescreen'] ) ) {
+				$responsive['widescreen']['margin'] = ! empty( $this->attribute[ 'sg_setting_margin_responsive_' . $breakpoints[0]['key'] ]['size'] ) ? $this->attribute[ 'sg_setting_margin_responsive_' . $breakpoints[0]['key'] ]['size'] : $margin;
+			}
+		}
+
 		$prev_key              = 'desktop';
 		$responsive['desktop'] = array(
 			'items'      => $items,
@@ -401,12 +418,17 @@ class Testimonials_View extends View_Abstract {
 			'breakpoint' => 0,
 		);
 
-		foreach ( jkit_get_responsive_breakpoints() as $breakpoint ) {
-			$responsive[ $breakpoint['key'] ]      = array(
-				'items'      => $default[ $breakpoint['key'] ]['items'],
-				'margin'     => $default[ $breakpoint['key'] ]['margin'],
+		foreach ( $breakpoints as $breakpoint ) {
+			if ( 'widescreen' === $breakpoint['key'] ) {
+				continue; // Skip widescreen as it's already handled above.
+			}
+
+			$responsive[ $breakpoint['key'] ] = array(
+				'items'      => $responsive[ $prev_key ]['items'],
+				'margin'     => $responsive[ $prev_key ]['margin'],
 				'breakpoint' => 0,
 			);
+
 			$responsive[ $prev_key ]['breakpoint'] = $breakpoint['value'] + 1;
 
 			if ( isset( $this->attribute[ 'sg_setting_slide_show_responsive_' . $breakpoint['key'] ] ) ) {
@@ -414,7 +436,7 @@ class Testimonials_View extends View_Abstract {
 			}
 
 			if ( isset( $this->attribute[ 'sg_setting_margin_responsive_' . $breakpoint['key'] ] ) ) {
-				$responsive[ $breakpoint['key'] ]['margin'] = ! empty( $this->attribute[ 'sg_setting_margin_responsive_' . $breakpoint['key'] ]['size'] ) ? $this->attribute[ 'sg_setting_margin_responsive_' . $breakpoint['key'] ]['size'] : $responsive[ $prev_key ]['margin'];
+				$responsive[ $breakpoint['key'] ]['margin'] = ! empty( $this->attribute[ 'sg_setting_margin_responsive_' . $breakpoint['key'] ]['margin'] ) ? $this->attribute[ 'sg_setting_margin_responsive_' . $breakpoint['key'] ]['margin'] : $responsive[ $prev_key ]['margin'];
 			}
 
 			$prev_key = $breakpoint['key'];

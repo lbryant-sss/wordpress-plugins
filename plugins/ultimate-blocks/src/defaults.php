@@ -378,14 +378,50 @@ $defaultValues = array(
 				'type'    => 'boolean',
 				'default' => true
 			),
-			'buttonWidth'          => array(
+			'buttonWidth'         => array(
 				'type'    => 'string',
-				'default' => 'fixed'
+				'default' => 'flex'
 			),
-			'buttons'			   => array(
-				'type'	=> 'array',
+			'buttons'      => array(
+				'type'    => 'array',
 				'default' => array()
 			),
+			'typography' => array(
+				'type'    => 'object',
+				'default' => array()
+			),
+			'fontFamily' => array(
+				'type'    => 'string',
+				'default' => ''
+			),
+			'fontSize' => array(
+				'type'    => 'string',
+				'default' => ''
+			),
+			'fontStyle' => array(
+				'type'    => 'string',
+				'default' => ''
+			),
+			'fontWeight' => array(
+				'type'    => 'string',
+				'default' => ''
+			),
+			'letterSpacing' => array(
+				'type'    => 'string',
+				'default' => ''
+			),
+			'lineHeight' => array(
+				'type'    => 'string',
+				'default' => ''
+			),
+			'textTransform' => array(
+				'type'    => 'string',
+				'default' => ''
+			),
+			'textDecoration' => array(
+				'type'    => 'string',
+				'default' => ''
+			)
 		)
 	),
 	'ub/call-to-action-block'       => array(

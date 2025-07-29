@@ -27,22 +27,25 @@ function ub_query_post( $attributes ){
 	$page = isset($pro_query['page']) ? $pro_query['page'] : 1;
 	$post_type = isset($pro_query['postType']) ? $pro_query['postType'] : 'post';
 	/* Setup the query */
-    $post_query = new WP_Query(
-        array(
-			'paged' => $page,
-            'posts_per_page' => $attributes['amountPosts'],
-            'post_status' => 'publish',
-            'order' => $attributes['order'],
-            'orderby' => $attributes['orderBy'],
-            'cat' => $includedCategories,
-            'category__not_in' => $excludedCategories,
-            'post_type' => $post_type,
-            'ignore_sticky_posts' => 1,
-            'post__not_in' => array(absint($post->ID)), // Exclude the current post from the grid.
-            'tag__in' => $attributes['tagArray'],
-            'author__in' => $attributes['authorArray']
-        )
+    $query_args = array(
+        'paged' => $page,
+        'posts_per_page' => $attributes['amountPosts'],
+        'post_status' => 'publish',
+        'order' => $attributes['order'],
+        'orderby' => $attributes['orderBy'],
+        'cat' => $includedCategories,
+        'category__not_in' => $excludedCategories,
+        'post_type' => $post_type,
+        'ignore_sticky_posts' => 1,
+        'post__not_in' => array(absint($post->ID)), // Exclude the current post from the grid.
+        'tag__in' => $attributes['tagArray'],
+        'author__in' => $attributes['authorArray']
     );
+
+    // Apply filter for manually selected posts
+    $query_args = apply_filters('ubpro_post_grid_selected_posts', $query_args, $attributes);
+
+    $post_query = new WP_Query($query_args);
 	return $post_query;
 
 }

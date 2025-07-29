@@ -19,6 +19,10 @@ class Accordion_View extends View_Abstract {
 	 * Build block content
 	 */
 	public function build_content() {
+		if ( 'yes' === $this->attribute['sg_accordion_faq_schema'] ) {
+			add_filter( 'jkit_faq_schema_seo_data', array( $this, 'render_schema' ) );
+		}
+
 		return $this->render_wrapper( 'accordion', $this->render_accordion(), array( 'style-' . $this->attribute['sg_accordion_style'] ) );
 	}
 
@@ -86,5 +90,23 @@ class Accordion_View extends View_Abstract {
 		}
 
 		return $accordions;
+	}
+
+	/**
+	 * FAQ Schema
+	 * 
+	 * @since 2.6.14
+	 *
+	 * @param array $data Data Schema.
+	 */
+	public function render_schema( $data ) {
+		foreach ( $this->attribute['sg_accordion_list'] as $item ) {
+			$data[] = array(
+				'question' => $item['sg_accordion_list_title'],
+				'answer'   => $item['sg_accordion_list_content'],
+			);
+		}
+
+		return $data;
 	}
 }

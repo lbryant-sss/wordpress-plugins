@@ -276,6 +276,14 @@ class Accordion_Option extends Option_Abstract {
 				),
 			),
 		);
+
+		$this->options['sg_accordion_faq_schema'] = array(
+			'type'        => 'checkbox',
+			'title'       => esc_html__( 'FAQ Schema', 'jeg-elementor-kit' ),
+			'description' => esc_html__( 'Frequently Asked Questions schema for SEO.', 'jeg-elementor-kit' ),
+			'segment'     => 'segment_accordion',
+			'separator'   => 'before',
+		);
 	}
 
 	/**

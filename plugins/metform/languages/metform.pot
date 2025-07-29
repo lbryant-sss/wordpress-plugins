@@ -2,9 +2,9 @@
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: MetForm 4.0.2\n"
+"Project-Id-Version: MetForm 4.0.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/metform\n"
-"POT-Creation-Date: 2025-07-14 08:58:34+00:00\n"
+"POT-Creation-Date: 2025-07-28 06:49:45+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -477,9 +477,7 @@ msgid "Smart Form is a premium feature—get Pro to use it!"
 msgstr ""
 
 #: core/admin/views/settings.php:653 core/admin/views/settings.php:955
-#: core/admin/views/settings.php:1075
-#: core/integrations/onboard/views/onboard-steps/step-06.php:5
-#: utils/render.php:83
+#: core/admin/views/settings.php:1075 utils/render.php:83
 msgid "Save Changes"
 msgstr ""
 
@@ -1892,6 +1890,58 @@ msgstr ""
 msgid "Your data inserted on ActiveCampaign."
 msgstr ""
 
+#: core/integrations/onboard/classes/ajax.php:89
+msgid "Setup Configurations"
+msgstr ""
+
+#: core/integrations/onboard/classes/ajax.php:90
+msgid "Page Builder Elements Activated"
+msgstr ""
+
+#: core/integrations/onboard/classes/ajax.php:91
+msgid "AI Content & SEO Tool Activated"
+msgstr ""
+
+#: core/integrations/onboard/classes/ajax.php:92
+msgid "WooCommerce Builder Activated"
+msgstr ""
+
+#: core/integrations/onboard/classes/ajax.php:93
+msgid "Form Builder Activated"
+msgstr ""
+
+#: core/integrations/onboard/classes/ajax.php:94
+msgid "Email Customizer Activated"
+msgstr ""
+
+#: core/integrations/onboard/classes/ajax.php:95
+msgid "Social Integration Activated"
+msgstr ""
+
+#: core/integrations/onboard/classes/ajax.php:96
+msgid "Review Management Activated"
+msgstr ""
+
+#: core/integrations/onboard/classes/ajax.php:97
+msgid "Fundraising & Donations"
+msgstr ""
+
+#: core/integrations/onboard/classes/ajax.php:98
+msgid "Page Builder Blocks Activated"
+msgstr ""
+
+#: core/integrations/onboard/classes/ajax.php:99
+msgid "Popup Builder Activated"
+msgstr ""
+
+#: core/integrations/onboard/classes/ajax.php:100
+msgid "Table Builder Activated"
+msgstr ""
+
+#: core/integrations/onboard/classes/ajax.php:106
+msgid "Plugin Activated"
+msgstr ""
+
 #: core/integrations/onboard/classes/plugin-status.php:57
 #: utils/apps/apps.php:373
 msgid "Activated"
@@ -1978,7 +2028,7 @@ msgstr ""
 
 #: core/integrations/onboard/views/onboard-steps/step-01.php:29
 #: core/integrations/onboard/views/onboard-steps/step-02.php:16
-#: core/integrations/onboard/views/onboard-steps/step-03.php:90
+#: core/integrations/onboard/views/onboard-steps/step-03.php:171
 #: core/integrations/onboard/views/onboard-steps/step-04.php:29
 #: core/integrations/onboard/views/onboard-steps/step-05.php:32
 msgid "Back"
@@ -1986,9 +2036,8 @@ msgstr ""
 
 #: core/integrations/onboard/views/onboard-steps/step-01.php:30
 #: core/integrations/onboard/views/onboard-steps/step-02.php:17
-#: core/integrations/onboard/views/onboard-steps/step-03.php:91
+#: core/integrations/onboard/views/onboard-steps/step-03.php:172
 #: core/integrations/onboard/views/onboard-steps/step-04.php:30
-#: core/integrations/onboard/views/onboard-steps/step-05.php:33
 msgid "Next"
 msgstr ""
 
@@ -2015,47 +2064,41 @@ msgid "Take your website to the next level"
 msgstr ""
 
 #: core/integrations/onboard/views/onboard-steps/step-03.php:5
-msgid "We have some plugins you can install to get most from Wordpress."
+msgid "A fleet of plugins with all types of features you will need for WordPress."
 msgstr ""
 
-#: core/integrations/onboard/views/onboard-steps/step-03.php:6
-msgid "These are absolute FREE to use."
+#: core/integrations/onboard/views/onboard-steps/step-03.php:42
+msgid "Find top keywords, create winning content & track SEO results with AI."
 msgstr ""
 
-#: core/integrations/onboard/views/onboard-steps/step-03.php:19
-msgid "Fundraising"
+#: core/integrations/onboard/views/onboard-steps/step-03.php:59
+msgid "The ultimate solution to build a complete WooCommerce site in Elementor."
 msgstr ""
 
-#: core/integrations/onboard/views/onboard-steps/step-03.php:20
-msgid "Get FREE 2500 AI words, SEO Keyword, and Competitor Analysis credits"
+#: core/integrations/onboard/views/onboard-steps/step-03.php:76
+msgid "Best companion for Elementor with top widgets and templates."
 msgstr ""
 
-#: core/integrations/onboard/views/onboard-steps/step-03.php:20
-msgid "on your personal AI assistant for Content & SEO right inside WordPress!"
+#: core/integrations/onboard/views/onboard-steps/step-03.php:93
+msgid "Drag-and-drop email builder for WooCommerce & WordPress."
 msgstr ""
 
-#: core/integrations/onboard/views/onboard-steps/step-03.php:30
-msgid "Your Ultimate Page Builder Blocks for Gutenberg"
+#: core/integrations/onboard/views/onboard-steps/step-03.php:110
+msgid "Design popups that convert, right in your WordPress dashboard."
 msgstr ""
 
-#: core/integrations/onboard/views/onboard-steps/step-03.php:40
-msgid "All-in-One Addons for Elementor"
+#: core/integrations/onboard/views/onboard-steps/step-03.php:127
+msgid "Build credibility for your business with the all-in-one review plugin."
 msgstr ""
 
-#: core/integrations/onboard/views/onboard-steps/step-03.php:50
-msgid "Completely customize your  WooCommerce WordPress"
+#: core/integrations/onboard/views/onboard-steps/step-03.php:144
+msgid "WordPress integration with popular social platforms to show social proof."
 msgstr ""
 
-#: core/integrations/onboard/views/onboard-steps/step-03.php:61
-msgid "No-Code Email Customizer for WordPress"
-msgstr ""
-
-#: core/integrations/onboard/views/onboard-steps/step-03.php:71
-msgid "Integrate all your social media to your website"
-msgstr ""
-
-#: core/integrations/onboard/views/onboard-steps/step-03.php:81
-msgid "Integrate various styled review system in your website"
+#: core/integrations/onboard/views/onboard-steps/step-03.php:163
+msgid ""
+"Enhance block capability with page builder features & templates for "
+"Gutenberg."
 msgstr ""
 
 #: core/integrations/onboard/views/onboard-steps/step-04.php:4
@@ -2121,12 +2164,20 @@ msgstr ""
 msgid "Explore PRO"
 msgstr ""
 
-#: core/integrations/onboard/views/onboard-steps/step-06.php:3
-msgid "Congratulations!"
+#: core/integrations/onboard/views/onboard-steps/step-05.php:33
+msgid "Complete Setup"
 msgstr ""
 
-#: core/integrations/onboard/views/onboard-steps/step-06.php:4
-msgid "Let’s start your journey with the best form plugin for Elementor!"
+#: core/integrations/onboard/views/onboard-steps/step-06.php:2
+msgid "Great! You’re All Set!"
+msgstr ""
+
+#: core/integrations/onboard/views/onboard-steps/step-06.php:5
+msgid "Here’s an overview of everything that is setup."
+msgstr ""
+
+#: core/integrations/onboard/views/onboard-steps/step-06.php:18
+msgid "Go to WP Dashboard"
 msgstr ""
 
 #: core/integrations/onboard/views/settings-sections/dashboard.php:12

@@ -322,6 +322,9 @@ if (!\class_exists('FSVendor\WPDesk_Tracker')) {
             if (!\current_user_can('activate_plugins') || \false === \check_ajax_referer(self::WPDESK_TRACKER_ACTION, self::WPDESK_TRACKER_NONCE)) {
                 die;
             }
+            if (!$this->applies_to_current_plugin()) {
+                return;
+            }
             $user = \wp_get_current_user();
             $username = $user->first_name;
             $plugin = \sanitize_text_field(\wp_unslash($_GET['plugin'] ?? ''));
@@ -504,6 +507,10 @@ if (!\class_exists('FSVendor\WPDesk_Tracker')) {
                 return \in_array($screen->id, \apply_filters('wpdesk_tracker_notice_screens', []), \true);
             }
             return \true;
+        }
+        private function applies_to_current_plugin(): bool
+        {
+            return \strpos(\sanitize_text_field(\wp_unslash($_GET['plugin'] ?? '')), $this->plugin_basename);
         }
     }
 }

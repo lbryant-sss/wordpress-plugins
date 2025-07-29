@@ -181,11 +181,10 @@ First check the questions mentioned in the FAQ tab inside the plugin settings pa
 
 == Screenshots ==
 
-1. Enable Caching
-2. Cache Settings
-3. Cloudflare (CDN & Edge Caching Settings)
-4. Advanced Settings
-5. Third-Party Plugins Settings
-6. Other Settings
-7. Test Caching and FAQ
-
+1. Enable Caching in One Click
+2. Cache Management with Activity Log
+3. Asset Manager
+4. Cloudflare (CDN & Edge Caching)
+5. Lazy Loading
+6. Database Optimization
+7. Import and Export Settings

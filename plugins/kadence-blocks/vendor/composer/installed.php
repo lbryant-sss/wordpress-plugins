@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'kadencewp/kadence-blocks',
-        'pretty_version' => '3.5.15',
-        'version' => '3.5.15.0',
-        'reference' => 'ebd003a8d03034fc8ee45fcc9b1e25dfb6d1f36b',
+        'pretty_version' => '3.5.16',
+        'version' => '3.5.16.0',
+        'reference' => 'ae801b7ef3a25e7f02a75bbd687d4465a6c7ff07',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -47,9 +47,9 @@
             'dev_requirement' => false,
         ),
         'kadencewp/kadence-blocks' => array(
-            'pretty_version' => '3.5.15',
-            'version' => '3.5.15.0',
-            'reference' => 'ebd003a8d03034fc8ee45fcc9b1e25dfb6d1f36b',
+            'pretty_version' => '3.5.16',
+            'version' => '3.5.16.0',
+            'reference' => 'ae801b7ef3a25e7f02a75bbd687d4465a6c7ff07',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

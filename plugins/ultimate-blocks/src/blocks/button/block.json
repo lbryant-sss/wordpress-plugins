@@ -110,11 +110,50 @@
 		"isBorderComponentChanged": {
 			"type": "boolean",
 			"default": false
+		},
+		"fontFamily": {
+			"type": "string",
+			"default": ""
+		},
+		"fontSize": {
+			"type": "string",
+			"default": ""
+		},
+		"fontStyle": {
+			"type": "string",
+			"default": ""
+		},
+		"fontWeight": {
+			"type": "string",
+			"default": ""
+		},
+		"letterSpacing": {
+			"type": "string",
+			"default": ""
+		},
+		"lineHeight": {
+			"type": "string",
+			"default": ""
+		},
+		"textTransform": {
+			"type": "string",
+			"default": ""
+		},
+		"textDecoration": {
+			"type": "string",
+			"default": ""
+		},
+		"width": {
+			"type": "string",
+			"default": ""
+		},
+		"isOldSizeRemoved": {
+			"type": "boolean",
+			"default": false
 		}
 	},
 	"supports": {},
 	"editorStyle": "ultimate_blocks-cgb-block-editor-css",
 	"editorScript": "ultimate_blocks-cgb-block-js",
-	"style": "ultimate_blocks-cgb-style-css",
-	"viewScript": "ultimate_blocks-button-front-script"
+	"style": "ultimate_blocks-cgb-style-css"
 }

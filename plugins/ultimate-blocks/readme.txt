@@ -3,7 +3,7 @@ Contributors: dotcamp, ultimateblocks, imtiazrayhan, istiakrayhan, erdembircan, 
 Tags: blocks, gutenberg blocks, gutenberg, block editor, free
 Requires at least: 5.8
 Tested up to: 6.8
-Stable tag: 3.3.6
+Stable tag: 3.3.7
 Requires PHP: 7.2
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
@@ -149,6 +149,15 @@ That's it. You're done!
 3. Tabbed Content Block.
 
 == Changelog ==
+
+= 3.3.7 =
+
+* FIX: Make Table of contents compatibility with FSE.
+* IMPROVE: Table of contents edit and delete icon.
+* IMPROVE: Make tabbed content scrollbar always visible.
+* IMPROVE: Post grid block controls.
+* NEW: Typography controls in button block and remove old button size option.
+* PRO: NEW: Manual post selection option in Post grid block.
 
 = 3.3.6 =
 

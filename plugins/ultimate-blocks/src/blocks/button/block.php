@@ -51,10 +51,9 @@ function ub_multi_buttons_parse($b){
 	);
 
 	$link_class = sprintf(
-		'ub-button-block-main ub-button-%1$s %2$s %3$s',
-		$size,
+		'ub-button-block-main %1$s %2$s',
 		$buttonWidth === 'full' ? ' ub-button-full-width' : '',
-		$buttonWidth === 'flex' ? ' ub-button-flex-'. $size : ''
+		$buttonWidth === 'flex' ? ' ub-button-flex' : ''
 	);
 	$ubpro_link_classes = apply_filters( 'ubpro_button_link_classes', "", $b);
 	$link_class .= $ubpro_link_classes;
@@ -73,6 +72,76 @@ function ub_multi_buttons_parse($b){
 	$link_style = Ultimate_Blocks\includes\generate_css_string($style_vars);
 	$pro_link_styles = apply_filters('ubpro_button_link_styles', array(), $b);
 	$link_style .= Ultimate_Blocks\includes\generate_css_string($pro_link_styles);
+
+	// Add typography styles if they exist
+	$typography_styles = [];
+
+	// Font family
+	if (!empty($b['fontFamily'])) {
+		$typography_styles['font-family'] = $b['fontFamily'];
+	}
+
+	// Font size
+	if (!empty($b['fontSize'])) {
+		$typography_styles['font-size'] = $b['fontSize'];
+	}
+
+	// Font style
+	if (!empty($b['fontStyle'])) {
+		$typography_styles['font-style'] = $b['fontStyle'];
+	}
+
+	// Font weight
+	if (!empty($b['fontWeight'])) {
+		$typography_styles['font-weight'] = $b['fontWeight'];
+	}
+
+	// Line height
+	if (!empty($b['lineHeight'])) {
+		$typography_styles['line-height'] = $b['lineHeight'];
+	}
+
+	// Letter spacing
+	if (!empty($b['letterSpacing'])) {
+		$typography_styles['letter-spacing'] = $b['letterSpacing'];
+	}
+
+	// Text transform
+	if (!empty($b['textTransform'])) {
+		$typography_styles['text-transform'] = $b['textTransform'];
+	}
+
+	// Text decoration
+	if (!empty($b['textDecoration'])) {
+		$typography_styles['text-decoration'] = $b['textDecoration'];
+	}
+
+	$link_style .= Ultimate_Blocks\includes\generate_css_string($typography_styles);
+
+	// Add width styles if buttonWidth is fixed
+	$width_styles = [];
+	if ($buttonWidth === 'fixed' && !empty($b['width'])) {
+		$width_styles['width'] = Ultimate_Blocks\includes\spacing_preset_css_var($b['width']['all']);
+	}
+	$link_style .= Ultimate_Blocks\includes\generate_css_string($width_styles);
+
+	// Add button padding styles
+	$button_padding_styles = [];
+		if (!empty($buttonPadding)) {
+		$button_padding_css = Ultimate_Blocks\includes\get_spacing_css($buttonPadding);
+	} else {
+		$button_padding_css = [
+			'top' => '20px',
+			'right' => '20px',
+			'bottom' => '20px',
+			'left' => '20px',
+		];
+	}
+	$button_padding_styles['padding-top'] =  $button_padding_css['top'];
+	$button_padding_styles['padding-right'] =  $button_padding_css['right'];
+	$button_padding_styles['padding-bottom'] =  $button_padding_css['bottom'];
+	$button_padding_styles['padding-left'] =  $button_padding_css['left'];
+	$link_style .= Ultimate_Blocks\includes\generate_css_string($button_padding_styles);
 
 	if (isset($isBorderComponentChanged) && $isBorderComponentChanged) {
 		$link_border_radius_styles = [
@@ -133,10 +202,9 @@ function ub_single_button_parse($b) {
     $iconSize = array('small' => 25, 'medium' => 30, 'large' => 35, 'larger' => 40);
 
 	$link_class = sprintf(
-		'ub-button-block-main ub-button-%1$s %2$s %3$s',
-		esc_attr($size),
+		'ub-button-block-main %1$s %2$s',
 		$buttonWidth === 'full' ? 'ub-button-full-width' : '',
-		$buttonWidth === 'flex' ? 'ub-button-flex-' . esc_attr($size) : ''
+		$buttonWidth === 'flex' ? 'ub-button-flex' : ''
 	);
 
 	$ubpro_link_classes = apply_filters( 'ubpro_button_link_classes', "", $b);
@@ -162,6 +230,76 @@ function ub_single_button_parse($b) {
 		'--ub-button-hover-border'              => $button_is_transparent ? '3px solid ' . esc_attr($button_hover_color) : 'none',
 	];
 	$link_style .= Ultimate_Blocks\includes\generate_css_string($style_vars);
+
+	// Add typography styles if they exist
+	$typography_styles = [];
+
+	// Font family
+	if (!empty($fontFamily)) {
+		$typography_styles['font-family'] = $fontFamily;
+	}
+
+	// Font size
+	if (!empty($fontSize)) {
+		$typography_styles['font-size'] = $fontSize;
+	}
+
+	// Font style
+	if (!empty($fontStyle)) {
+		$typography_styles['font-style'] = $fontStyle;
+	}
+
+	// Font weight
+	if (!empty($fontWeight)) {
+		$typography_styles['font-weight'] = $fontWeight;
+	}
+
+	// Line height
+	if (!empty($lineHeight)) {
+		$typography_styles['line-height'] = $lineHeight;
+	}
+
+	// Letter spacing
+	if (!empty($letterSpacing)) {
+		$typography_styles['letter-spacing'] = $letterSpacing;
+	}
+
+	// Text transform
+	if (!empty($textTransform)) {
+		$typography_styles['text-transform'] = $textTransform;
+	}
+
+	// Text decoration
+	if (!empty($textDecoration)) {
+		$typography_styles['text-decoration'] = $textDecoration;
+	}
+
+	$link_style .= Ultimate_Blocks\includes\generate_css_string($typography_styles);
+
+	// Add width styles if buttonWidth is fixed
+	$width_styles = [];
+	if ($buttonWidth === 'fixed' && !empty($width)) {
+		$width_styles['width'] = Ultimate_Blocks\includes\spacing_preset_css_var($width['all']);
+	}
+	$link_style .= Ultimate_Blocks\includes\generate_css_string($width_styles);
+
+	// Add button padding styles
+	$button_padding_styles = [];
+	if (!empty($buttonPadding)) {
+		$button_padding_css = Ultimate_Blocks\includes\get_spacing_css($buttonPadding);
+	} else {
+		$button_padding_css = [
+			'top' => '20px',
+			'right' => '20px',
+			'bottom' => '20px',
+			'left' => '20px',
+		];
+	}
+	$button_padding_styles['padding-top'] =  $button_padding_css['top'];
+	$button_padding_styles['padding-right'] =  $button_padding_css['right'];
+	$button_padding_styles['padding-bottom'] =  $button_padding_css['bottom'];
+	$button_padding_styles['padding-left'] =  $button_padding_css['left'];
+	$link_style .= Ultimate_Blocks\includes\generate_css_string($button_padding_styles);
 
 	$link_attrs = sprintf(
 		'href="%1$s" target="%2$s" rel="noopener noreferrer%3$s" class="%4$s" style="%5$s"',
