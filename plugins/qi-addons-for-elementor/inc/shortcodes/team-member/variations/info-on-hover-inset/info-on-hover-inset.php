@@ -64,7 +64,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_team_member_options_info_on
 			'field_type' => 'slider',
 			'name'       => 'info_on_hover_inset_margin_bottom',
 			'title'      => esc_html__( 'Text Margin Bottom', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--info-on-hover-inset .qodef-m-text' => 'margin-bottom: {{SIZE}}{{UNIT}};',
@@ -138,7 +138,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_team_member_options_info_on
 			'field_type' => 'dimensions',
 			'name'       => 'info_on_hover_inset_content_padding',
 			'title'      => esc_html__( 'Content Padding', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--info-on-hover-inset .qodef-m-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -158,7 +158,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_team_member_options_info_on
 			'field_type' => 'dimensions',
 			'name'       => 'info_on_hover_inset_content_positioning',
 			'title'      => esc_html__( 'Content Positioning', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%' ),
+			'size_units' => array( 'px', '%', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--info-on-hover-inset .qodef-m-content' => 'top: {{TOP}}{{UNIT}}; right: {{RIGHT}}{{UNIT}}; bottom: {{BOTTOM}}{{UNIT}}; left: {{LEFT}}{{UNIT}};',
@@ -178,7 +178,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_team_member_options_info_on
 			'field_type' => 'slider',
 			'name'       => 'info_on_hover_inset_content_inset',
 			'title'      => esc_html__( 'Content Background Inner Offset', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--info-on-hover-inset .qodef-m-inner:hover .qodef-m-content' => 'clip-path: inset({{SIZE}}{{UNIT}} {{SIZE}}{{UNIT}} {{SIZE}}{{UNIT}} {{SIZE}}{{UNIT}});',

@@ -183,7 +183,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_blog_list_options_info_on_i
 			'field_type' => 'dimensions',
 			'name'       => 'info_on_image_date_padding',
 			'title'      => esc_html__( 'Date Padding', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--info-on-image .qodef-e-info-date' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -203,7 +203,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_blog_list_options_info_on_i
 			'field_type' => 'dimensions',
 			'name'       => 'info_on_image_content_padding',
 			'title'      => esc_html__( 'Content Padding', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--info-on-image .qodef-e-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -223,7 +223,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_blog_list_options_info_on_i
 			'field_type' => 'slider',
 			'name'       => 'info_on_image_date_border_radius',
 			'title'      => esc_html__( 'Date Border Radius', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'dependency' => array(
 				'show' => array(
@@ -243,7 +243,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_blog_list_options_info_on_i
 			'field_type' => 'slider',
 			'name'       => 'info_on_image_date_vertical_offset',
 			'title'      => esc_html__( 'Date Vertical Offset', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'dependency' => array(
 				'show' => array(
@@ -263,7 +263,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_blog_list_options_info_on_i
 			'field_type' => 'slider',
 			'name'       => 'info_on_image_date_horizontal_offset',
 			'title'      => esc_html__( 'Date Horizontal Offset', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'dependency' => array(
 				'show' => array(

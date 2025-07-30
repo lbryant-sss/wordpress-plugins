@@ -8988,6 +8988,7 @@ echo '</body>
     switch ($ai_wp_data [AI_WP_PAGE_TYPE]) {
       case AI_PT_STATIC:
       case AI_PT_POST:
+      case AI_PT_FEED:
         $wp_categories = get_the_category ();
         break;
       default:

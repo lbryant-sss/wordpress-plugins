@@ -74,7 +74,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_timeline_vertical_separated
 			'field_type' => 'slider',
 			'name'       => 'vertical_separated_side_width',
 			'title'      => esc_html__( 'Sides Width', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'vw' ),
+			'size_units' => array( 'px', '%', 'vw', 'custom' ),
 			'range'      => array(
 				'px' => array(
 					'min' => 100,
@@ -109,7 +109,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_timeline_vertical_separated
 			'field_type' => 'slider',
 			'name'       => 'vertical_separated_space_from_center',
 			'title'      => esc_html__( 'Space From Center', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'range'      => array(
 				'px' => array(
 					'min' => 0,

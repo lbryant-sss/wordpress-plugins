@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Give - Donation Plugin plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Give - Donation Plugin 4.6.0\n"
+"Project-Id-Version: Give - Donation Plugin 4.6.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/givewp\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-07-23T17:18:41+00:00\n"
+"POT-Creation-Date: 2025-07-29T22:51:07+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: give\n"
@@ -1616,8 +1616,8 @@ msgstr ""
 #: includes/admin/tools/export/class-export-earnings.php:68
 #: includes/admin/tools/export/class-export.php:82
 #: src/API/Endpoints/Reports/IncomeBreakdown.php:82
-#: src/API/REST/V3/Routes/Donations/DonationController.php:927
-#: src/API/REST/V3/Routes/Donations/DonationController.php:948
+#: src/API/REST/V3/Routes/Donations/DonationController.php:928
+#: src/API/REST/V3/Routes/Donations/DonationController.php:949
 #: src/Campaigns/ListTable/Columns/DateColumn.php:28
 #: src/DonationForms/V2/ListTable/Columns/DateCreatedColumn.php:37
 #: templates/history-donations.php:69
@@ -2585,7 +2585,7 @@ msgid "Do you want to display the total amount raised based on your monetary goa
 msgstr ""
 
 #: includes/admin/forms/class-metabox-form-data.php:473
-#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:165
+#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:166
 msgid "Amount Raised"
 msgstr ""
 
@@ -2596,7 +2596,7 @@ msgstr ""
 #: includes/admin/forms/class-metabox-form-data.php:475
 #: includes/admin/shortcodes/shortcode-give-donation-grid.php:66
 #: includes/admin/tools/export/pdf-reports.php:113
-#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:171
+#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:172
 #: build/adminBlocks.js:1
 #: build/campaignBlocks.js:1
 #: build/formBuilderRegistrars.js:1
@@ -2604,7 +2604,7 @@ msgid "Number of Donations"
 msgstr ""
 
 #: includes/admin/forms/class-metabox-form-data.php:476
-#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:176
+#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:177
 #: build/campaignBlocks.js:1
 msgid "Number of Donors"
 msgstr ""
@@ -2898,7 +2898,7 @@ msgstr ""
 #: includes/admin/import-functions.php:411
 #: includes/admin/tools/export/give-export-donations-exporter.php:175
 #: includes/admin/tools/export/give-export-donations-functions.php:257
-#: src/API/REST/V3/Routes/Donations/DonationController.php:796
+#: src/API/REST/V3/Routes/Donations/DonationController.php:797
 #: templates/shortcode-receipt.php:100
 msgid "Donation ID"
 msgstr ""
@@ -3237,7 +3237,7 @@ msgstr ""
 #: includes/admin/import-functions.php:522
 #: includes/admin/tools/export/give-export-donations-exporter.php:249
 #: includes/admin/tools/export/give-export-donations-functions.php:504
-#: src/API/REST/V3/Routes/Donations/DonationController.php:800
+#: src/API/REST/V3/Routes/Donations/DonationController.php:801
 #: src/API/REST/V3/Routes/Donors/DonorController.php:331
 #: build/adminBlocks.js:1
 msgid "Donor ID"
@@ -3456,7 +3456,7 @@ msgstr[1] ""
 #: includes/admin/payments/class-payments-table.php:416
 #: src/Campaigns/Actions/ReplaceGiveFormsCptLabels.php:17
 #: src/Donations/ListTable/Columns/CampaignColumn.php:34
-#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:213
+#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:214
 #: build/assets/dist/js/donor-dashboards-app.js:1
 #: build/campaignBlock.js:1
 #: build/campaignBlocks.js:1
@@ -4058,8 +4058,8 @@ msgid "Last Year"
 msgstr ""
 
 #: includes/admin/reports/graphing.php:516
-#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:218
-#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:237
+#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:219
+#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:238
 #: build/adminBlocks.js:1
 msgid "Custom"
 msgstr ""
@@ -15805,103 +15805,103 @@ msgstr ""
 msgid "You do not have permission to refund donations."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:804
+#: src/API/REST/V3/Routes/Donations/DonationController.php:805
 #: src/API/REST/V3/Routes/Donors/DonorController.php:341
 msgid "Donor first name"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:809
+#: src/API/REST/V3/Routes/Donations/DonationController.php:810
 #: src/API/REST/V3/Routes/Donors/DonorController.php:349
 msgid "Donor last name"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:814
+#: src/API/REST/V3/Routes/Donations/DonationController.php:815
 msgid "Donor honorific/prefix"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:819
+#: src/API/REST/V3/Routes/Donations/DonationController.php:820
 #: src/API/REST/V3/Routes/Donors/DonorController.php:357
 msgid "Donor email"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:824
+#: src/API/REST/V3/Routes/Donations/DonationController.php:825
 #: src/API/REST/V3/Routes/Donors/DonorController.php:370
 msgid "Donor phone"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:829
+#: src/API/REST/V3/Routes/Donations/DonationController.php:830
 #: src/API/REST/V3/Routes/Donors/DonorController.php:375
 msgid "Donor company"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:846
+#: src/API/REST/V3/Routes/Donations/DonationController.php:847
 #: build/donationDetails.js:7
 msgid "Donation amount"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:862
+#: src/API/REST/V3/Routes/Donations/DonationController.php:863
 msgid "Fee amount recovered"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:879
+#: src/API/REST/V3/Routes/Donations/DonationController.php:880
 msgid "Event tickets amount"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:883
+#: src/API/REST/V3/Routes/Donations/DonationController.php:884
 msgid "Donation status"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:888
+#: src/API/REST/V3/Routes/Donations/DonationController.php:889
 msgid "Payment gateway ID"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:893
+#: src/API/REST/V3/Routes/Donations/DonationController.php:894
 msgid "Donation mode (live or test)"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:898
+#: src/API/REST/V3/Routes/Donations/DonationController.php:899
 msgid "Whether the donation is anonymous"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:902
+#: src/API/REST/V3/Routes/Donations/DonationController.php:903
 msgid "Billing address"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:914
+#: src/API/REST/V3/Routes/Donations/DonationController.php:915
 msgid "Donor IP address (sensitive data)"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:919
+#: src/API/REST/V3/Routes/Donations/DonationController.php:920
 msgid "Purchase key (sensitive data)"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:932
-#: src/API/REST/V3/Routes/Donations/DonationController.php:953
+#: src/API/REST/V3/Routes/Donations/DonationController.php:933
+#: src/API/REST/V3/Routes/Donations/DonationController.php:954
 msgid "Timezone of the date"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:937
-#: src/API/REST/V3/Routes/Donations/DonationController.php:958
+#: src/API/REST/V3/Routes/Donations/DonationController.php:938
+#: src/API/REST/V3/Routes/Donations/DonationController.php:959
 msgid "Timezone type"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:940
+#: src/API/REST/V3/Routes/Donations/DonationController.php:941
 msgid "Donation creation date"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:961
+#: src/API/REST/V3/Routes/Donations/DonationController.php:962
 msgid "Donation last update date"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:967
+#: src/API/REST/V3/Routes/Donations/DonationController.php:968
 msgid "Custom fields (sensitive data)"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:973
+#: src/API/REST/V3/Routes/Donations/DonationController.php:974
 msgid "Field label"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:978
+#: src/API/REST/V3/Routes/Donations/DonationController.php:979
 msgid "Field value"
 msgstr ""
 
@@ -17181,74 +17181,74 @@ msgid_plural "<p>The following blocks were not found and are required for the fo
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:166
+#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:167
 msgid "The total amount raised for the form"
 msgstr ""
 
-#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:172
+#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:173
 msgid "The total number of donations made for the form"
 msgstr ""
 
-#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:177
+#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:178
 msgid "The total number of unique donors who have donated to the form"
 msgstr ""
 
-#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:185
+#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:186
 msgid "Subscription Amount Raised"
 msgstr ""
 
-#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:186
+#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:187
 msgid "The total amount raised for the form through subscriptions"
 msgstr ""
 
-#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:191
+#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:192
 msgid "Number of Subscriptions"
 msgstr ""
 
-#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:192
+#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:193
 msgid "The total number of subscriptions made for the form"
 msgstr ""
 
-#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:196
+#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:197
 msgid "Number of Subscribers"
 msgstr ""
 
-#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:197
+#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:198
 msgid "The total number of unique donors who have donated to the form through subscriptions"
 msgstr ""
 
-#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:214
+#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:215
 msgid "The goal for this form will automatically adjust according to the campaign goal. Change campaign goal."
 msgstr ""
 
-#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:219
+#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:220
 msgid "Set the custom goal for this form"
 msgstr ""
 
-#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:232
+#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:233
 msgid "All time"
 msgstr ""
 
-#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:233
+#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:234
 msgid "Displays the goal progress for a lifetime, starting from when this form was published."
 msgstr ""
 
-#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:238
+#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:239
 msgid "Displays the goal progress from the start date to the end date."
 msgstr ""
 
-#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:265
 #: src/FormBuilder/ViewModels/FormBuilderViewModel.php:266
+#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:267
 msgid "The first name supplied by the donor during their donation."
 msgstr ""
 
-#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:272
 #: src/FormBuilder/ViewModels/FormBuilderViewModel.php:273
+#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:274
 msgid "The last name supplied by the donor during their donation."
 msgstr ""
 
-#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:279
 #: src/FormBuilder/ViewModels/FormBuilderViewModel.php:280
+#: src/FormBuilder/ViewModels/FormBuilderViewModel.php:281
 msgid "The email supplied by the donor during their donation."
 msgstr ""
 

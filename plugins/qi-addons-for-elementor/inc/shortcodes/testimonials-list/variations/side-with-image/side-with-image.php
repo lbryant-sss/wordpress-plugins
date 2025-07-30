@@ -37,7 +37,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_testimonials_list_side_with
 			'field_type' => 'slider',
 			'name'       => 'side_with_image_side_width',
 			'title'      => esc_html__( 'Side Width', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'vw' ),
+			'size_units' => array( 'px', '%', 'vw', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--side-with-image .qodef-e-side' => 'width: {{SIZE}}{{UNIT}};',
@@ -57,7 +57,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_testimonials_list_side_with
 			'field_type' => 'dimensions',
 			'name'       => 'side_with_image_image_border_radius',
 			'title'      => esc_html__( 'Image Border Radius', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%' ),
+			'size_units' => array( 'px', '%', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--side-with-image .qodef-e-side .qodef-e-media-image' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};;',
@@ -77,7 +77,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_testimonials_list_side_with
 			'field_type' => 'slider',
 			'name'       => 'side_with_image_side_margin_right',
 			'title'      => esc_html__( 'Item Side Margin Right', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'range'      => array(
 				'px' => array(
 					'min' => 10,
@@ -103,7 +103,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_testimonials_list_side_with
 			'field_type' => 'slider',
 			'name'       => 'side_with_image_author_position_margin_top',
 			'title'      => esc_html__( 'Item Author Occupation Margin Top', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--side-with-image .qodef-e-author-job' => 'margin-top: {{SIZE}}{{UNIT}};',
@@ -141,7 +141,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_testimonials_list_side_with
 			'field_type' => 'slider',
 			'name'       => 'side_with_image_quote_box_size',
 			'title'      => esc_html__( 'Quote Box Size', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'range'      => array(
 				'px' => array(
 					'min' => 1,
@@ -167,7 +167,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_testimonials_list_side_with
 			'field_type' => 'dimensions',
 			'name'       => 'side_with_image_quote_border_radius',
 			'title'      => esc_html__( 'Quote Border Radius', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%' ),
+			'size_units' => array( 'px', '%', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--side-with-image .qodef-e-quote' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -187,7 +187,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_testimonials_list_side_with
 			'field_type'         => 'dimensions',
 			'name'               => 'side_with_image_quote_position',
 			'title'              => esc_html__( 'Quote Position', 'qi-addons-for-elementor' ),
-			'size_units'         => array( 'px', '%', 'em' ),
+			'size_units'         => array( 'px', '%', 'em', 'custom' ),
 			'allowed_dimensions' => array( 'bottom', 'right' ),
 			'responsive'         => true,
 			'selectors'          => array(

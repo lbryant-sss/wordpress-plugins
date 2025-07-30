@@ -116,7 +116,7 @@ abstract class QiAddonsForElementor_Slider_Shortcode extends QiAddonsForElemento
 					'field_type' => 'slider',
 					'name'       => 'vertical_slider_height',
 					'title'      => esc_html__( 'Vertical Slider Height', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'vh' ),
+					'size_units' => array( 'px', '%', 'vh', 'custom' ),
 					'range'      => array(
 						'px' => array(
 							'min' => 0,
@@ -177,7 +177,7 @@ abstract class QiAddonsForElementor_Slider_Shortcode extends QiAddonsForElemento
 					'field_type' => 'slider',
 					'name'       => 'slider_height',
 					'title'      => esc_html__( 'Slider Height', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'vh' ),
+					'size_units' => array( 'px', '%', 'vh', 'custom' ),
 					'range'      => array(
 						'px' => array(
 							'min' => 0,
@@ -686,7 +686,7 @@ abstract class QiAddonsForElementor_Slider_Shortcode extends QiAddonsForElemento
 								),
 							),
 						),
-						'size_units' => array( 'px', '%', 'em' ),
+						'size_units' => array( 'px', '%', 'em', 'custom' ),
 						'range'      => array(
 							'px' => array(
 								'min' => - 300,
@@ -738,7 +738,7 @@ abstract class QiAddonsForElementor_Slider_Shortcode extends QiAddonsForElemento
 								),
 							),
 						),
-						'size_units' => array( 'px', '%', 'em' ),
+						'size_units' => array( 'px', '%', 'em', 'custom' ),
 						'range'      => array(
 							'px' => array(
 								'min' => - 300,
@@ -851,7 +851,7 @@ abstract class QiAddonsForElementor_Slider_Shortcode extends QiAddonsForElemento
 								),
 							),
 						),
-						'size_units' => array( 'px', 'em' ),
+						'size_units' => array( 'px', 'em', 'custom' ),
 						'responsive' => true,
 						'selectors'  => array(
 							'{{WRAPPER}} .qodef-swiper-together-inner > .swiper-button-prev'                                                         => 'margin-right: {{SIZE}}{{UNIT}} !important;',
@@ -894,7 +894,7 @@ abstract class QiAddonsForElementor_Slider_Shortcode extends QiAddonsForElemento
 								'max' => 30,
 							),
 						),
-						'size_units' => array( 'px', 'em' ),
+						'size_units' => array( 'px', 'em', 'custom' ),
 						'responsive' => true,
 						'selectors'  => array(
 							'{{WRAPPER}} .qodef-swiper-together-nav'                                                           => 'margin-top: {{SIZE}}{{UNIT}};',
@@ -941,7 +941,7 @@ abstract class QiAddonsForElementor_Slider_Shortcode extends QiAddonsForElemento
 								),
 							),
 						),
-						'size_units' => array( 'px', '%', 'em' ),
+						'size_units' => array( 'px', '%', 'em', 'custom' ),
 						'responsive' => true,
 						'selectors'  => array(
 							'{{WRAPPER}} .qodef-swiper-together-nav'                                                                     => 'left: {{SIZE}}{{UNIT}}; right: {{SIZE}}{{UNIT}};',
@@ -1020,7 +1020,7 @@ abstract class QiAddonsForElementor_Slider_Shortcode extends QiAddonsForElemento
 						'field_type' => 'slider',
 						'name'       => 'navigation_together_holder_width',
 						'title'      => esc_html__( 'Navigation Holder Width', 'qi-addons-for-elementor' ),
-						'size_units' => array( 'px', '%', 'em' ),
+						'size_units' => array( 'px', '%', 'em', 'custom' ),
 						'range'      => array(
 							'px' => array(
 								'min' => 0,
@@ -1052,7 +1052,7 @@ abstract class QiAddonsForElementor_Slider_Shortcode extends QiAddonsForElemento
 						'field_type' => 'slider',
 						'name'       => 'navigation_together_holder_height',
 						'title'      => esc_html__( 'Navigation Holder Height', 'qi-addons-for-elementor' ),
-						'size_units' => array( 'px', '%', 'em' ),
+						'size_units' => array( 'px', '%', 'em', 'custom' ),
 						'range'      => array(
 							'px' => array(
 								'min' => 0,
@@ -1130,7 +1130,7 @@ abstract class QiAddonsForElementor_Slider_Shortcode extends QiAddonsForElemento
 						'field_type' => 'dimensions',
 						'name'       => 'navigation_together_holder_border_radius',
 						'title'      => esc_html__( 'Navigation Border Radius', 'qi-addons-for-elementor' ),
-						'size_units' => array( 'px', '%' ),
+						'size_units' => array( 'px', '%', 'custom' ),
 						'responsive' => true,
 						'dependency' => array(
 							'relation' => 'or',
@@ -1352,7 +1352,7 @@ abstract class QiAddonsForElementor_Slider_Shortcode extends QiAddonsForElemento
 						'field_type' => 'slider',
 						'name'       => 'slider_navigation_arrows_size',
 						'title'      => esc_html__( 'Navigation Arrow Size', 'qi-addons-for-elementor' ),
-						'size_units' => array( 'px', '%', 'em' ),
+						'size_units' => array( 'px', '%', 'em', 'custom' ),
 						'responsive' => true,
 						'selectors'  => array(
 							'{{WRAPPER}} .swiper-button-next' => 'font-size: {{SIZE}}{{UNIT}};',
@@ -1375,7 +1375,7 @@ abstract class QiAddonsForElementor_Slider_Shortcode extends QiAddonsForElemento
 						'field_type' => 'slider',
 						'name'       => 'slider_navigation_arrows_holder_width',
 						'title'      => esc_html__( 'Navigation Arrow Holder Width', 'qi-addons-for-elementor' ),
-						'size_units' => array( 'px', '%', 'em' ),
+						'size_units' => array( 'px', '%', 'em', 'custom' ),
 						'responsive' => true,
 						'selectors'  => array(
 							'{{WRAPPER}} .swiper-button-next' => 'width: {{SIZE}}{{UNIT}} !important;',
@@ -1398,7 +1398,7 @@ abstract class QiAddonsForElementor_Slider_Shortcode extends QiAddonsForElemento
 						'field_type' => 'slider',
 						'name'       => 'slider_navigation_arrows_holder_height',
 						'title'      => esc_html__( 'Navigation Arrow Holder Height', 'qi-addons-for-elementor' ),
-						'size_units' => array( 'px', '%', 'em' ),
+						'size_units' => array( 'px', '%', 'em', 'custom' ),
 						'responsive' => true,
 						'selectors'  => array(
 							'{{WRAPPER}} .swiper-button-next' => 'height: {{SIZE}}{{UNIT}} !important;',
@@ -1557,7 +1557,7 @@ abstract class QiAddonsForElementor_Slider_Shortcode extends QiAddonsForElemento
 						'field_type' => 'slider',
 						'name'       => 'slider_pagination_offset',
 						'title'      => esc_html__( 'Pagination Offset', 'qi-addons-for-elementor' ),
-						'size_units' => array( 'px', '%', 'vh' ),
+						'size_units' => array( 'px', '%', 'vh', 'custom' ),
 						'range'      => array(
 							'px' => array(
 								'min' => 0,
@@ -1600,7 +1600,7 @@ abstract class QiAddonsForElementor_Slider_Shortcode extends QiAddonsForElemento
 						'field_type' => 'slider',
 						'name'       => 'slider_pagination_offset_from_edge',
 						'title'      => esc_html__( 'Pagination Offset from Edge', 'qi-addons-for-elementor' ),
-						'size_units' => array( 'px', '%' ),
+						'size_units' => array( 'px', '%', 'custom' ),
 						'range'      => array(
 							'px' => array(
 								'min' => 0,
@@ -1824,7 +1824,6 @@ abstract class QiAddonsForElementor_Slider_Shortcode extends QiAddonsForElemento
 							'{{WRAPPER}} .swiper-vertical>.swiper-pagination-bullets .swiper-pagination-bullet'                                     => 'margin: calc({{SIZE}}{{UNIT}}*0.72/2) 0;',
 							'{{WRAPPER}} .swiper-vertical ~ .qodef-swiper-pagination-outside.swiper-pagination .swiper-pagination-bullet'           => 'margin: calc({{SIZE}}{{UNIT}}*0.72/2) 0;',
 							'{{WRAPPER}} .qodef-pagination--vertical .swiper-pagination-bullets .swiper-pagination-bullet'                          => 'margin: calc({{SIZE}}{{UNIT}}*0.72/2) 0;',
-						
 						),
 						'dependency' => array(
 							'hide' => array(

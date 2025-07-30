@@ -1,5 +1,10 @@
 *** Changelog ***
 == Changelog ==
+2025-07-29 - version 1.3.4
+* Fix - Error for product updates
+* Fix - Error with filter for event attributes
+* Update - Configuration button to launch integration
+
 2025-06-13 - version 1.3.3
 * Fix - Performance optimizations with event tracking
 

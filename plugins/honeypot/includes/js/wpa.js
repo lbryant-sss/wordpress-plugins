@@ -80,6 +80,7 @@ function wpa_add_honeypot_field(){
 	    'form.comment-form',                   // WP Comment with class
 	    '.review-form form',                   // LearnPress Review
 	    'form#edd-reviews-form',               // EDD Reviews with ID
+	    'form.wpr-comment-form',				
 
 	    // BBPress forms
 	    '.bbp-topic-form form',                // BBPress Topic Form

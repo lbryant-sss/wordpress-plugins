@@ -63,7 +63,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_separator_with_icon_add_extra_o
 			'field_type' => 'slider',
 			'name'       => 'separator_icon_font_size',
 			'title'      => esc_html__( 'Icon Font Size', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-m-separator-icon' => 'font-size: {{SIZE}}{{UNIT}};',
@@ -83,7 +83,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_separator_with_icon_add_extra_o
 			'field_type' => 'dimensions',
 			'name'       => 'separator_icon_margin',
 			'title'      => esc_html__( 'Icon Margin', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-m-separator-icon' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',

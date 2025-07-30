@@ -57,7 +57,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_product_category_list_optio
 			'field_type' => 'dimensions',
 			'name'       => 'info_on_image_content_padding',
 			'title'      => esc_html__( 'Title Padding', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--info-on-image .woocommerce-loop-category__title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',

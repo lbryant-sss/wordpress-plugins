@@ -104,7 +104,7 @@ if ( class_exists( 'QiAddonsForElementor_List_Shortcode' ) ) {
 							'field_type' => 'slider',
 							'name'       => 'item_margin-top',
 							'title'      => esc_html__( 'Item Offset', 'qi-addons-for-elementor' ),
-							'size_units' => array( 'px', '%', 'em' ),
+							'size_units' => array( 'px', '%', 'em', 'custom' ),
 							'responsive' => true,
 							'selectors'  => array(
 								'{{WRAPPER}} .qodef-qi-process.qodef-item-layout--horizontal {{CURRENT_ITEM}}.qodef-process-item' => 'margin-top: {{SIZE}}{{UNIT}};',
@@ -115,7 +115,7 @@ if ( class_exists( 'QiAddonsForElementor_List_Shortcode' ) ) {
 							'field_type' => 'slider',
 							'name'       => 'item_icon_holder_size',
 							'title'      => esc_html__( 'Item Holder Size', 'qi-addons-for-elementor' ),
-							'size_units' => array( 'px', '%', 'em' ),
+							'size_units' => array( 'px', '%', 'em', 'custom' ),
 							'responsive' => true,
 							'selectors'  => array(
 								'{{WRAPPER}} {{CURRENT_ITEM}} .qodef-e-icon' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}};',
@@ -147,7 +147,7 @@ if ( class_exists( 'QiAddonsForElementor_List_Shortcode' ) ) {
 							'field_type' => 'dimensions',
 							'name'       => 'item_icon_holder_radius',
 							'title'      => esc_html__( 'Item Holder Radius', 'qi-addons-for-elementor' ),
-							'size_units' => array( 'px', '%', 'em' ),
+							'size_units' => array( 'px', '%', 'em', 'custom' ),
 							'responsive' => true,
 							'selectors'  => array(
 								'{{WRAPPER}} {{CURRENT_ITEM}} .qodef-e-icon' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -168,7 +168,7 @@ if ( class_exists( 'QiAddonsForElementor_List_Shortcode' ) ) {
 							'field_type' => 'slider',
 							'name'       => 'item_line_top_offset',
 							'title'      => esc_html__( 'Line Top Offset', 'qi-addons-for-elementor' ),
-							'size_units' => array( 'px', '%', 'em' ),
+							'size_units' => array( 'px', '%', 'em', 'custom' ),
 							'responsive' => true,
 							'selectors'  => array(
 								'{{WRAPPER}} {{CURRENT_ITEM}} .qodef-e-line' => 'top: {{SIZE}}{{UNIT}};',
@@ -282,7 +282,7 @@ if ( class_exists( 'QiAddonsForElementor_List_Shortcode' ) ) {
 					'field_type' => 'slider',
 					'name'       => 'global_item_margin_top',
 					'title'      => esc_html__( 'Item Offset', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em' ),
+					'size_units' => array( 'px', '%', 'em', 'custom' ),
 					'responsive' => true,
 					'selectors'  => array(
 						'{{WRAPPER}} .qodef-qi-process.qodef-item-layout--horizontal .qodef-process-item' => 'margin-top: {{SIZE}}{{UNIT}};',
@@ -297,7 +297,7 @@ if ( class_exists( 'QiAddonsForElementor_List_Shortcode' ) ) {
 					'field_type' => 'slider',
 					'name'       => 'global_item_icon_holder_size',
 					'title'      => esc_html__( 'Item Holder Size', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em' ),
+					'size_units' => array( 'px', '%', 'em', 'custom' ),
 					'responsive' => true,
 					'selectors'  => array(
 						'{{WRAPPER}} .qodef-e-icon' => 'height: {{SIZE}}{{UNIT}}; width: {{SIZE}}{{UNIT}};',
@@ -344,7 +344,7 @@ if ( class_exists( 'QiAddonsForElementor_List_Shortcode' ) ) {
 					'field_type' => 'dimensions',
 					'name'       => 'global_item_icon_holder_radius',
 					'title'      => esc_html__( 'Item Holder Radius', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em' ),
+					'size_units' => array( 'px', '%', 'em', 'custom' ),
 					'responsive' => true,
 					'selectors'  => array(
 						'{{WRAPPER}} .qodef-e-icon' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -405,7 +405,7 @@ if ( class_exists( 'QiAddonsForElementor_List_Shortcode' ) ) {
 					'field_type' => 'slider',
 					'name'       => 'title_margin_top',
 					'title'      => esc_html__( 'Item Title Margin Top', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em' ),
+					'size_units' => array( 'px', '%', 'em', 'custom' ),
 					'responsive' => true,
 					'selectors'  => array(
 						'{{WRAPPER}} .qodef-qi-process .qodef-e-title' => 'margin-top: {{SIZE}}{{UNIT}};',
@@ -418,7 +418,7 @@ if ( class_exists( 'QiAddonsForElementor_List_Shortcode' ) ) {
 					'field_type' => 'slider',
 					'name'       => 'text_margin_top',
 					'title'      => esc_html__( 'Item Text Margin Top', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em' ),
+					'size_units' => array( 'px', '%', 'em', 'custom' ),
 					'responsive' => true,
 					'selectors'  => array(
 						'{{WRAPPER}} .qodef-qi-process .qodef-e-text' => 'margin-top: {{SIZE}}{{UNIT}};',
@@ -431,7 +431,7 @@ if ( class_exists( 'QiAddonsForElementor_List_Shortcode' ) ) {
 					'field_type' => 'dimensions',
 					'name'       => 'text_padding',
 					'title'      => esc_html__( 'Item Text Padding', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em' ),
+					'size_units' => array( 'px', '%', 'em', 'custom' ),
 					'responsive' => true,
 					'selectors'  => array(
 						'{{WRAPPER}} .qodef-qi-process .qodef-e-text' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -467,7 +467,7 @@ if ( class_exists( 'QiAddonsForElementor_List_Shortcode' ) ) {
 					'field_type' => 'slider',
 					'name'       => 'horizontal_additional_holder_size',
 					'title'      => esc_html__( 'Additional Holder Size', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em' ),
+					'size_units' => array( 'px', '%', 'em', 'custom' ),
 					'responsive' => true,
 					'selectors'  => array(
 						'{{WRAPPER}} .qodef-e-number' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
@@ -482,7 +482,7 @@ if ( class_exists( 'QiAddonsForElementor_List_Shortcode' ) ) {
 					'name'               => 'horizontal_additional_holder_position',
 					'title'              => esc_html__( 'Additional Holder Position', 'qi-addons-for-elementor' ),
 					'allowed_dimensions' => array( 'top', 'right' ),
-					'size_units'         => array( 'px', '%', 'em' ),
+					'size_units'         => array( 'px', '%', 'em', 'custom' ),
 					'responsive'         => true,
 					'selectors'          => array(
 						'{{WRAPPER}} .qodef-e-number' => 'top: {{TOP}}{{UNIT}}; right: {{RIGHT}}{{UNIT}};',

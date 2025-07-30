@@ -56,7 +56,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_product_slider_options_info
 			'name'       => 'info_on_image_category_margin_top',
 			'title'      => esc_html__( 'Category Margin Top', 'qi-addons-for-elementor' ),
 			'group'      => esc_html__( 'Spacing Style', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--info-on-image .qodef-e-product-categories' => 'margin-top: {{SIZE}}{{UNIT}};',
@@ -76,7 +76,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_product_slider_options_info
 			'name'       => 'info_on_image_rating_margin_top',
 			'title'      => esc_html__( 'Rating Margin Top', 'qi-addons-for-elementor' ),
 			'group'      => esc_html__( 'Spacing Style', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--info-on-image .qodef-e-ratings' => 'margin-top: {{SIZE}}{{UNIT}};',

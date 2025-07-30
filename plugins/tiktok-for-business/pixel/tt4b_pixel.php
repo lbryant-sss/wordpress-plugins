@@ -17,4 +17,4 @@ add_action( 'woocommerce_blocks_checkout_enqueue_data', array( 'Tt4b_Pixel_Class
 add_action( 'wp_head', array( 'Tt4b_Pixel_Class', 'print_script' ) );
 add_action( 'init', array( 'Tt4b_Pixel_Class', 'set_ttclid' ) );
 add_action( 'wp_enqueue_scripts', array( 'Tt4b_Pixel_Class', 'add_ajax_snippet' ) );
-add_filter( 'woocommerce_loop_add_to_cart_args', array( 'Tt4b_Pixel_Class', 'filter_add_to_cart_attributes' ), 10, 2 );
+//add_filter( 'woocommerce_loop_add_to_cart_args', array( 'Tt4b_Pixel_Class', 'filter_add_to_cart_attributes' ), 10, 2 );

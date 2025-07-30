@@ -939,16 +939,16 @@ class WC_Advanced_Shipment_Tracking_Actions {
 	public function email_display( $order, $sent_to_admin, $plain_text = null, $email = null ) {
 
 		$wc_ast_unclude_tracking_info = get_ast_settings( 'ast_general_settings', 'wc_ast_unclude_tracking_info', '' );
-		
 		$order_id = is_callable( array( $order, 'get_id' ) ) ? $order->get_id() : $order->id;
-		
 		$ast_preview = ( isset( $_REQUEST['action'] ) && 'ast_email_preview' === $_REQUEST['action'] ) ? true : false;
-		
 		$local_template	= get_stylesheet_directory() . '/woocommerce/emails/fluid-tracking-info.php';
-		
 		$order = wc_get_order( $order_id );
-		
-		if ( $ast_preview && 1 == $order_id ) {
+
+		// check if it is a woocommerce	email preview
+		$wc_order_status = ( isset( $_REQUEST['type'] ) && ( $_REQUEST['type'] === 'WC_Email_Customer_Completed_Order' || $_REQUEST['type'] === 'WC_Email_Customer_Partial_Shipped_Order' ) );
+		$wc_order_preview = ( isset( $_REQUEST['preview_woocommerce_mail'] ) && 'true' === $_REQUEST['preview_woocommerce_mail'] );
+
+		if ( ( $ast_preview && 1 == $order_id ) || ( $wc_order_status && $wc_order_preview ) ) {
 			
 			$upload_dir   = wp_upload_dir();	
 			$ast_directory = $upload_dir['baseurl'] . '/ast-shipping-providers/';

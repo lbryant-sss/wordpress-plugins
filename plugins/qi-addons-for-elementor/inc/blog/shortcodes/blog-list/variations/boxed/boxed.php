@@ -94,7 +94,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_blog_list_options_boxed' ) 
 			'field_type' => 'slider',
 			'name'       => 'boxed_text_margin_bottom',
 			'title'      => esc_html__( 'Text Margin Bottom', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--boxed .qodef-e-text' => 'margin-bottom: {{SIZE}}{{UNIT}};',
@@ -132,7 +132,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_blog_list_options_boxed' ) 
 			'field_type' => 'dimensions',
 			'name'       => 'boxed_content_padding',
 			'title'      => esc_html__( 'Content Padding', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--boxed .qodef-e-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -238,7 +238,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_blog_list_options_boxed' ) 
 			'field_type' => 'dimensions',
 			'name'       => 'boxed_date_padding',
 			'title'      => esc_html__( 'Date Padding', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--boxed .qodef-e-info-date' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -258,7 +258,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_blog_list_options_boxed' ) 
 			'field_type' => 'slider',
 			'name'       => 'boxed_date_border_radius',
 			'title'      => esc_html__( 'Date Border Radius', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'dependency' => array(
 				'show' => array(
@@ -278,7 +278,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_blog_list_options_boxed' ) 
 			'field_type' => 'slider',
 			'name'       => 'boxed_date_vertical_offset',
 			'title'      => esc_html__( 'Date Vertical Offset', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'dependency' => array(
 				'show' => array(
@@ -298,7 +298,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_blog_list_options_boxed' ) 
 			'field_type' => 'slider',
 			'name'       => 'boxed_date_horizontal_offset',
 			'title'      => esc_html__( 'Date Horizontal Offset', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'dependency' => array(
 				'show' => array(

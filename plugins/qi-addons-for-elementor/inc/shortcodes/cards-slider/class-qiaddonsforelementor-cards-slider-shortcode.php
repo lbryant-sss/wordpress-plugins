@@ -315,7 +315,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type' => 'slider',
 					'name'       => 'slider_navigation_arrows_size',
 					'title'      => esc_html__( 'Navigation Arrow Size', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em' ),
+					'size_units' => array( 'px', '%', 'em', 'custom' ),
 					'responsive' => true,
 					'selectors'  => array(
 						'{{WRAPPER}} .qodef-m-navigation .qodef-nav' => 'font-size: {{SIZE}}{{UNIT}};',
@@ -329,7 +329,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type' => 'slider',
 					'name'       => 'slider_navigation_arrows_holder_width',
 					'title'      => esc_html__( 'Navigation Arrow Holder Width', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em' ),
+					'size_units' => array( 'px', '%', 'em', 'custom' ),
 					'responsive' => true,
 					'selectors'  => array(
 						'{{WRAPPER}} .qodef-m-navigation .qodef-nav' => 'width: {{SIZE}}{{UNIT}} !important;',
@@ -343,7 +343,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type' => 'slider',
 					'name'       => 'slider_navigation_arrows_holder_height',
 					'title'      => esc_html__( 'Navigation Arrow Holder Height', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em' ),
+					'size_units' => array( 'px', '%', 'em', 'custom' ),
 					'responsive' => true,
 					'selectors'  => array(
 						'{{WRAPPER}} .qodef-m-navigation .qodef-nav' => 'height: {{SIZE}}{{UNIT}} !important;',
@@ -365,7 +365,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type' => 'slider',
 					'name'       => 'slider_navigation_together_margin_top',
 					'title'      => esc_html__( 'Navigation Margin Top', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', 'em' ),
+					'size_units' => array( 'px', 'em', 'custom' ),
 					'responsive' => true,
 					'selectors'  => array(
 						'{{WRAPPER}} .qodef-m-navigation' => 'margin-top: {{SIZE}}{{UNIT}};',
@@ -378,7 +378,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type' => 'slider',
 					'name'       => 'slider_navigation_together_left_offset',
 					'title'      => esc_html__( 'Navigation Left Offset', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', 'em', '%' ),
+					'size_units' => array( 'px', 'em', '%', 'custom' ),
 					'range'      => array(
 						'px' => array(
 							'min' => - 100,
@@ -405,7 +405,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type' => 'slider',
 					'name'       => 'slider_navigation_together_space_between',
 					'title'      => esc_html__( 'Space Between Arrows', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', 'em' ),
+					'size_units' => array( 'px', 'em', 'custom' ),
 					'responsive' => true,
 					'selectors'  => array(
 						'{{WRAPPER}} .qodef-m-navigation > .qodef--prev' => 'margin-right: {{SIZE}}{{UNIT}};',

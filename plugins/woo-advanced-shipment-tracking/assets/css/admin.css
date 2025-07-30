@@ -363,9 +363,9 @@ input.inner_tab_input:checked + label.ts_tabs_label{
 	border-bottom: 1px solid #e0e0e0;
 }
 .wp-core-ui .btn_green2 {
-	background: #09d3ac;
+	background: #3b64d3;
 	text-shadow: none;
-	border-color: #09d3ac;
+	border-color: #3b64d3;
 	box-shadow: none;
 	font-size: 14px;
 	line-height: 32px;
@@ -577,9 +577,9 @@ ul.wcast-tracking-number-list, ul.wcast-shipment-status-list {
 .woocommerce_page_woocommerce-advanced-shipment-tracking #wpcontent{
 	padding-left: 0;	
 }
-.woocommerce_page_woocommerce-advanced-shipment-tracking #wpbody-content{
+/* .woocommerce_page_woocommerce-advanced-shipment-tracking #wpbody-content{
 	padding-bottom: 40px;
-}
+} */
 .multiple_label{
 	font-weight:400;
 	line-height: 23px;
@@ -2897,3 +2897,153 @@ span.dashicons.dashicons-arrow-up-alt{
     box-shadow: none;
 }
 /* activity-panel custom popup create end */
+
+/* addons page start*/
+
+img.zorem_logo {
+    width: 150px;
+	margin-top: 20px;
+}
+p.zorem_description {
+    color: #3c4858;
+    font-size: 16px;
+}
+.plugins_section.pro_plugin_section,.plugins_section.free_plugin_section {
+    display: flex;
+    flex-wrap: wrap;
+}
+.single_plugin {         
+    flex-grow: 1;
+    width: 33%;
+    max-width: 33%;
+    padding: 20px 20px 0 0;    
+    box-sizing: border-box;
+}
+.single_plugin:nth-child(2n){
+	padding-right: 0;
+}
+.plugins_section.free_plugin_section .single_plugin{
+	width: 100%;
+    max-width: 100%;
+}
+.plugins_section.pro_plugin_section .plugin_image {
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+}
+.plugins_section.pro_plugin_section .plugin_image img {
+    width: 100%;
+	border-radius: 3px;
+}
+.plugins_section.free_plugin_section .plugin_image{
+	max-width: 128px;
+	display: inline-block;
+    margin: 0 4% 0 0;
+    vertical-align: top;
+}
+.plugins_section.free_plugin_section .paid_plugin_image{
+    text-align: center;
+    margin: 0 -15px;
+    border-bottom: 1px solid #e0e0e0;   
+	padding: 15px 0;
+    background: #f5f5f5;
+}
+.plugins_section.free_plugin_section .paid_plugin_image img{
+	max-width: 100px;
+}
+.plugins_section.free_plugin_section .plugin_image img{
+	width: 100%;
+}
+.plugins_section.free_plugin_section .plugin_description{
+	width: -webkit-calc(95% - 130px);
+    width: calc(95% - 130px);    
+    margin: auto;
+    vertical-align: top;
+    display: -webkit-inline-box;    
+    -webkit-box-orient: vertical;    
+}
+.plugins_section.free_plugin_section .plugin_description h3{
+	margin: 0;
+}
+.plugins_section.free_plugin_section .plugin_description p{
+	display: -webkit-inline-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.plugins_section.free_plugin_section .single_plugin .free_plugin_inner{
+	border: 1px solid #e0e0e0;
+	border-radius: 3px;
+	background: #fff;
+	padding: 0 15px 15px;
+}
+
+.addons_page_header{
+	padding: 15px;
+	border-bottom: 1px solid #e0e0e0;
+}
+.addons_page_header p{
+	margin-bottom: 0;
+	margin-top: 5px;
+}
+.addons_page_title{
+    color: #333333;
+    margin: 0;
+    font-size: 20px;        
+}
+.zorem_plugin_container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.zorem_single_plugin {
+     max-width: 33.33%;
+    -ms-flex-preferred-size: 33.33%;
+    flex-basis: 33.33%;
+    flex-grow: 1;
+    padding: 20px 20px 0 0;
+    box-sizing: border-box;
+}
+.zorem_single_plugin:nth-child(3n) {
+    padding-right: 0;
+}
+.zorem_single_plugin .free_plugin_inner{
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+    background: #fff;
+    padding: 0 15px 15px;
+}
+.zorem_single_plugin .plugin_image {
+    text-align: center;
+    margin: 0 -15px;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 15px;
+    height: 50px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+.zorem_single_plugin .plugin_image img{
+    height: 45px;
+}
+.zorem_single_plugin .plugin_title {
+    font-size: 16px;
+    font-weight: normal;
+    margin-left: 20px;
+}
+.zorem_single_plugin .plugin_description p {
+    display: -webkit-inline-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.addons_title_divider{
+	background-color: #005B9A;
+    height: 3px;
+    display: block;
+    margin: 0 0 30px;
+    width: 100%;
+    max-width: 30px;
+}
+
+/* addons page end */

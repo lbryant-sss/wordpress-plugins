@@ -132,7 +132,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_return_elementor_templates' ) )
 
 			foreach ( $all_templates as $id => $title ) {
 				$template_type = get_post_meta( $id, '_elementor_template_type', true );
-				$allowed_types = array( 'section', 'page' );
+				$allowed_types = array( 'section', 'container', 'page' );
 				if ( in_array( $template_type, $allowed_types, true ) ) {
 					$title            = get_the_title( $id );
 					$templates[ $id ] = $title . ' (' . $template_type . ')';

@@ -300,7 +300,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 						'{{WRAPPER}} .qodef-qi-graphs .qodef-m-canvas' => 'width: {{SIZE}}{{UNIT}};',
 					),
 					'group'      => esc_html__( 'Graph Style', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em' ),
+					'size_units' => array( 'px', '%', 'em', 'custom' ),
 				)
 			);
 			$this->set_option(

@@ -30,7 +30,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_item_showcase_options_side_
 			'field_type' => 'dimensions',
 			'name'       => 'side_icon_side_margin',
 			'title'      => esc_html__( 'Side Margins', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-layout--side-icon .qodef--right .qodef-e-side-holder' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',

@@ -310,7 +310,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'name'       => 'label_margin_top',
 					'title'      => esc_html__( 'Label Margin Top', 'qi-addons-for-elementor' ),
 					'group'      => esc_html__( 'Style', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em' ),
+					'size_units' => array( 'px', '%', 'em', 'custom' ),
 					'responsive' => true,
 					'selectors'  => array(
 						'{{WRAPPER}} .qodef-qi-countdown .qodef-label' => 'margin-top: {{SIZE}}{{UNIT}};',
@@ -333,7 +333,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'name'       => 'item_width',
 					'title'      => esc_html__( 'Item Width', 'qi-addons-for-elementor' ),
 					'group'      => esc_html__( 'Item Style', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em' ),
+					'size_units' => array( 'px', '%', 'em', 'custom' ),
 					'responsive' => true,
 					'selectors'  => array(
 						'{{WRAPPER}} .qodef-qi-countdown .qodef-digit-wrapper' => 'width: {{SIZE}}{{UNIT}};',
@@ -346,7 +346,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'name'       => 'item_height',
 					'title'      => esc_html__( 'Item Height', 'qi-addons-for-elementor' ),
 					'group'      => esc_html__( 'Item Style', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', 'em' ),
+					'size_units' => array( 'px', 'em', 'custom' ),
 					'responsive' => true,
 					'selectors'  => array(
 						'{{WRAPPER}} .qodef-qi-countdown .qodef-digit-wrapper' => 'height: {{SIZE}}{{UNIT}};',
@@ -358,7 +358,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type' => 'dimensions',
 					'name'       => 'item_margin',
 					'title'      => esc_html__( 'Item Margin', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em' ),
+					'size_units' => array( 'px', '%', 'em', 'custom' ),
 					'responsive' => true,
 					'selectors'  => array(
 						'{{WRAPPER}} .qodef-qi-countdown .qodef-digit-wrapper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',

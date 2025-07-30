@@ -1277,9 +1277,6 @@ jQuery(document).on("click", ".b2s-network-select-btn", function () {
                                 if (data.networkId == 4 && (jQuery('#b2sExPostFormat').val() == 0 || jQuery('#b2sExPostFormat').val() == 1 || jQuery('#b2sExPostFormat').val() == 2)) {
                                     if (jQuery('#user_version').val() >= 1) {
                                         var exPostFormat = jQuery('#b2sExPostFormat').val();
-                                        if (exPostFormat == 0) {
-                                            exPostFormat = 2;
-                                        }
                                         if (exPostFormat == 1) {
                                             exPostFormat = 0;
                                         }
@@ -1719,7 +1716,7 @@ jQuery(document).on('change', '.b2s-post-item-details-release-input-date-select'
         if (jQuery(this).attr('data-network-id') == 2 || jQuery(this).attr('data-network-id') == 45) {
             jQuery('.b2s-network-tos-sched-warning[data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"]').hide();
         }
-        if (jQuery('.b2s-post-item-details-post-format[data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"]').val() == 1 || jQuery(this).attr('data-network-id') == 12 || jQuery(this).attr('data-network-id') == 1 || jQuery(this).attr('data-network-id') == 36) {
+        if (jQuery('.b2s-post-item-details-post-format[data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"]').val() == 1 || jQuery(this).attr('data-network-id') == 12  || jQuery(this).attr('data-network-id') == 36) {
             jQuery('.b2s-multi-image-area[data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"][data-network-count="-1"]').show();
         }
     }
@@ -1769,7 +1766,7 @@ jQuery(document).on('change', '.b2s-post-item-details-release-input-date-select'
     if (jQuery(this).val() == 1) {
 
         // start - disable assistini buttons for main textarea of this network
-        if (this.getAttribute('data-network-id') != 4) { // special case tumblr
+        if (! ( this.getAttribute('data-network-id') == 4 || this.getAttribute('data-network-id') == 11 ||  this.getAttribute('data-network-id') == 27 || this.getAttribute('data-network-id') == 38 || this.getAttribute('data-network-id') == 39 ) ) { // special case tumblr
             var networkAuthId = jQuery(this).data('network-auth-id');
             hideAssButtons(networkAuthId);
         }
@@ -3471,6 +3468,17 @@ function releaseChoose(choose, dataNetworkAuthId, dataNetworkCount) {
         jQuery('.b2s-post-item-details-release-area-div-day' + selectorInput).hide();
     } else if (choose == 1) {
 
+        //Take text char count from default text area
+        var $source = jQuery(".b2s-post-item-countChar[data-network-count=-1][data-network-auth-id='" + dataNetworkAuthId + "']");
+        var $target = jQuery(".b2s-post-item-countChar[data-network-count=0][data-network-auth-id='" + dataNetworkAuthId + "']");
+
+        if ($source.length && $target.length) {
+            var sourceHtml = $source.html();
+            if (typeof sourceHtml !== "undefined") {
+                $target.html(sourceHtml);
+            }
+        }
+         
         //since 4.8.0 customize content
         if (jQuery('.b2s-post-item-details-release-input-date-select' + selectorInput).attr('data-network-customize-content') == "1") {
             jQuery('.b2s-post-item-details-item-message-input' + selectorInput + '[data-network-count="-1"]').prop('disabled', true);
@@ -4875,9 +4883,8 @@ function changePostFormat(networkId, networkType, postFormat, networkAuthId, pos
         jQuery('#b2s-post-ship-item-post-format-modal').modal('hide');
     }
     checkGifAnimation(networkAuthId, networkId);
-
     //Multi Image
-    if (((postFormat == 1 && ((networkId == 1 && (networkType == 1 || networkType == 2)) || (networkId == 2) || (networkId == 3 && (networkType == 0 || networkType == 1)))) || networkId == 12 || networkId == 45) && jQuery('.b2s-post-item-details-release-input-date-select[data-network-auth-id="' + networkAuthId + '"]').val() != 1) {
+    if (((postFormat == 1 && ((networkId == 1 && (networkType == 1 || networkType == 2)) || (networkId == 2) || (networkId == 45) (networkId == 3 && (networkType == 0 || networkType == 1)))) || networkId == 12 )  && jQuery('.b2s-post-item-details-release-input-date-select[data-network-auth-id="' + networkAuthId + '"]').val() != 1) {
         jQuery('.b2s-multi-image-area[data-network-auth-id="' + networkAuthId + '"][data-network-count="-1"]').show();
     } else {
         jQuery('.b2s-multi-image-area[data-network-auth-id="' + networkAuthId + '"][data-network-count="-1"]').hide();
@@ -5491,7 +5498,7 @@ function assGenerateText(networkAuthId, networkName, schedCount = false) {
                 jQuery('.b2s-nonce-check-fail').show();
             } else if (data.error == 3001) {
                 jQuery('#b2sAssLimitModal').modal('show');
-            } else if (data.error == 'no_content') {
+            } else if (data.error == 3100) {
                 if (jQuery('#b2sIsVideo').val() == 1) {
                     jQuery('#b2sAssNoContentVideoModal').modal('show');
                 } else {
@@ -5679,3 +5686,257 @@ function get3YearsMax(type, dataNetworkAuthId, count) {
     }
     return false;
 }
+
+
+/////////New TikTok Direct Review///////////////////////////////
+
+//Validation
+
+jQuery.validator.addMethod('checkTiktokPrivacy', function (value, element, rest) {
+    var select = jQuery('.b2s-tiktok-form-select[data-network-auth-id="'+jQuery(element).attr('data-network-auth-id')+'"]');
+    if (select.val() == 1 &&jQuery(element).val() == "") {
+        return false; 
+    }
+    return true;
+});
+jQuery.validator.addClassRules('b2s-tiktok-status_privacy', {'checkTiktokPrivacy': true});
+
+
+jQuery(document).on('change', '.b2s-tiktok-promotion-option', function () {  
+    var authId = jQuery(this).attr("data-network-auth-id");  
+
+    var submitButton = jQuery('.b2s-submit-btn');
+    var submitButtonScroll = jQuery('.b2s-submit-btn-scroll');
+    submitButton.prop('disabled', false)
+    submitButtonScroll.prop('disabled', false)
+    submitButton.removeAttr('title');
+    submitButtonScroll.removeAttr('title');
+    submitButton.unbind('mouseenter mouseleave');
+    submitButtonScroll.unbind('mouseenter mouseleave');
+
+    if(jQuery(this).val() == 0){
+        jQuery('.tiktok-music-confirmation[data-network-auth-id="'+authId+'"]').show();
+        jQuery('.tiktok-music-brand-confirmation[data-network-auth-id="'+authId+'"]').hide();
+
+    } else {
+        jQuery('.tiktok-music-confirmation[data-network-auth-id="'+authId+'"]').hide();
+        jQuery('.tiktok-music-brand-confirmation[data-network-auth-id="'+authId+'"]').show();
+
+    }
+});
+
+
+jQuery(document).on('change', '.b2s-tiktok-form-select', function () {
+    var authId = jQuery(this).attr("data-network-auth-id");
+    var mode = jQuery(this).val();
+
+    if(mode == 0){
+        //share as draft
+     
+        jQuery('.tikttok-share-settings-view[data-network-auth-id="'+authId+'"]').hide();
+        jQuery('.b2s-tiktok-draft-note[data-network-auth-id="'+authId+'"]').show();
+
+        var isVideo= jQuery('.tiktok-video-preview[data-network-auth-id="'+authId+'"]').data("is-video");
+        if(isVideo){
+            jQuery('.tiktok-video-preview[data-network-auth-id="'+authId+'"]').hide();
+            jQuery('.tiktok-text-input-fields[data-network-auth-id="'+authId+'"]').hide();
+        }
+
+    
+    } else if(mode == 1){
+
+        var isVideo= jQuery('.tiktok-video-preview[data-network-auth-id="'+authId+'"]').data("is-video");
+      
+        if(isVideo){
+            jQuery('.tiktok-video-preview[data-network-auth-id="'+authId+'"]').show();
+            jQuery('.tiktok-text-input-fields[data-network-auth-id="'+authId+'"]').show();
+        }
+        //share directly
+        jQuery('.tikttok-share-settings-view[data-network-auth-id="'+authId+'"]').show();
+        jQuery('.b2s-tiktok-draft-note[data-network-auth-id="'+authId+'"]').hide();
+      
+       
+    }
+});
+jQuery(document).on('change', '.b2s-tiktok-status_privacy', function () {
+    var authId = jQuery(this).attr("data-network-auth-id");
+    var mode = jQuery(this).val();
+
+    if(mode == "SELF_ONLY"){
+   
+        jQuery('.b2s-tiktok-promotion-radio[data-network-auth-id="'+authId+'"]').attr("disabled", true);
+        jQuery('.b2s-tiktok-promotion-radio[data-network-auth-id="'+authId+'"]').first().prop("checked", false);
+        jQuery('.b2s-tiktok-promotion-radio[data-network-auth-id="'+authId+'"]').last().prop("checked", true);
+        jQuery('#b2s\\['+authId+'\\]\\[b2sTiktokPromotionThirdParty\\]').attr("disabled", true);
+
+    } else {
+
+        jQuery('#b2s\\['+authId+'\\]\\[b2sTiktokPromotionThirdParty\\]').attr("disabled", false);
+    }
+});
+
+jQuery(document).on('click', '.toggle', function () {
+   
+    jQuery(this).toggleClass('off'); 
+ 
+    var authId = jQuery(this).attr("data-network-auth-id");
+
+    var options = jQuery('.b2s-tiktok-promotion-options[data-network-auth-id="'+jQuery(this).attr('data-network-auth-id')+'"]');
+    var self_only_option = jQuery('.b2s-tiktok-status_privacy[data-network-auth-id="'+authId+'"] > option[value="SELF_ONLY"]');
+
+    var submitButton = jQuery('.b2s-submit-btn');
+    var submitButtonScroll = jQuery('.b2s-submit-btn-scroll');
+
+    //Toggle on
+    if(!jQuery(this).hasClass('off')){
+        options.show();
+
+        var promotionChecked= jQuery('#b2s\\['+authId+'\\]\\[b2sTiktokPromotionOwnBrand\\]').is(':checked');
+        var brandedChecked= jQuery('#b2s\\['+authId+'\\]\\[b2sTiktokPromotionThirdParty\\]').is(':checked');
+
+        if(brandedChecked){
+            self_only_option.attr("disabled", true);
+            self_only_option.text(jQuery(".b2s-tiktok-self-only-disabled-text").val());
+        }
+
+        if(promotionChecked && !brandedChecked){
+            jQuery('#b2s\\['+authId+'\\]\\[b2sPromotional\\]').show();
+            jQuery('#b2s\\['+authId+'\\]\\[b2sPaidPartnership\\]').hide();
+            jQuery('.tiktok-music-confirmation[data-network-auth-id="'+authId+'"]').show();
+            jQuery('.tiktok-music-brand-confirmation[data-network-auth-id="'+authId+'"]').hide();
+            
+        }
+
+        if(!promotionChecked && !brandedChecked){
+            jQuery('#b2s\\['+authId+'\\]\\[b2sPromotional\\]').hide();
+            jQuery('#b2s\\['+authId+'\\]\\[b2sPaidPartnership\\]').hide();
+            jQuery('.tiktok-music-confirmation[data-network-auth-id="'+authId+'"]').show();
+            jQuery('.tiktok-music-brand-confirmation[data-network-auth-id="'+authId+'"]').hide();
+        
+            submitButton.prop('disabled', true)
+            submitButtonScroll.prop('disabled', true)
+
+            submitButtonScroll.hover(
+                function () {
+                    var text = jQuery('.b2s-tiktok-no-promotion-selected').val();
+                    jQuery(this).attr('title', text);
+                });
+
+            submitButton.hover(
+                function () {
+                    var text = jQuery('.b2s-tiktok-no-promotion-selected').val();
+                    jQuery(this).attr('title', text);
+                });
+        
+        
+        } else {
+            
+            submitButton.prop('disabled', false)
+            submitButtonScroll.prop('disabled', false)
+            submitButton.removeAttr('title');
+            submitButtonScroll.removeAttr('title');
+        }
+
+    } else {
+
+        jQuery('#b2s\\['+authId+'\\]\\[b2sPromotional\\]').hide();
+        jQuery('#b2s\\['+authId+'\\]\\[b2sPaidPartnership\\]').hide();
+
+        jQuery('.tiktok-music-confirmation[data-network-auth-id="'+authId+'"]').show();
+        jQuery('.tiktok-music-brand-confirmation[data-network-auth-id="'+authId+'"]').hide();
+       
+        options.hide()
+        self_only_option.attr("disabled", false);
+        self_only_option.text(jQuery(".b2s-tiktok-self-only-text").val());
+
+        submitButton.prop('disabled', false)
+        submitButtonScroll.prop('disabled', false)
+        submitButton.removeAttr('title');
+        submitButtonScroll.removeAttr('title');  
+        submitButton.unbind('mouseenter mouseleave');
+        submitButtonScroll.unbind('mouseenter mouseleave');
+    }
+
+   
+});
+
+
+jQuery(document).on('change', '.b2s-tiktok-promotion-option', function () {
+  
+    if (jQuery(this).is(':checked')) {
+      jQuery(this).val("on");   // change value when checked
+    } else {
+      jQuery(this).val("off");  // change value when unchecked
+    }
+
+    var authId = jQuery(this).attr("data-network-auth-id");
+  
+    var promotionChecked= jQuery('#b2s\\['+authId+'\\]\\[b2sTiktokPromotionOwnBrand\\]').is(':checked');
+    var brandedChecked= jQuery('#b2s\\['+authId+'\\]\\[b2sTiktokPromotionThirdParty\\]').is(':checked');
+
+    var submitButton = jQuery('.b2s-submit-btn');
+    var submitButtonScroll = jQuery('.b2s-submit-btn-scroll');
+
+    if(!promotionChecked && !brandedChecked){
+            
+        submitButton.prop('disabled', true)
+        submitButtonScroll.prop('disabled', true)
+
+        submitButtonScroll.hover(
+            function () {
+                var text = jQuery('.b2s-tiktok-no-promotion-selected').val();
+                jQuery(this).attr('title', text);
+            });
+
+        submitButton.hover(
+            function () {
+                var text = jQuery('.b2s-tiktok-no-promotion-selected').val();
+                jQuery(this).attr('title', text);
+            });
+    
+    }else {
+            submitButton.prop('disabled', false)
+            submitButtonScroll.prop('disabled', false)
+            submitButton.removeAttr('title');
+            submitButtonScroll.removeAttr('title');
+    }
+
+    var self_only_option = jQuery('.b2s-tiktok-status_privacy[data-network-auth-id="'+authId+'"] > option[value="SELF_ONLY"]');
+
+    if(brandedChecked){
+        jQuery('#b2s\\['+authId+'\\]\\[b2sPaidPartnership\\]').show();
+        jQuery('#b2s\\['+authId+'\\]\\[b2sPromotional\\]').hide();
+
+        self_only_option.attr("disabled", true);
+        self_only_option.text(jQuery(".b2s-tiktok-self-only-disabled-text").val());
+
+        jQuery('.tiktok-music-confirmation[data-network-auth-id="'+authId+'"]').hide();
+        jQuery('.tiktok-music-brand-confirmation[data-network-auth-id="'+authId+'"]').show();
+  
+    }else
+    {
+        self_only_option.attr("disabled", false);
+        self_only_option.text(jQuery(".b2s-tiktok-self-only-text").val());
+    }
+    
+    if(promotionChecked && !brandedChecked){
+        
+        jQuery('#b2s\\['+authId+'\\]\\[b2sPromotional\\]').show();
+        jQuery('#b2s\\['+authId+'\\]\\[b2sPaidPartnership\\]').hide();
+        jQuery('.tiktok-music-confirmation[data-network-auth-id="'+authId+'"]').show();
+        jQuery('.tiktok-music-brand-confirmation[data-network-auth-id="'+authId+'"]').hide();
+        return;
+    }
+    if(!promotionChecked && !brandedChecked){
+        jQuery('#b2s\\['+authId+'\\]\\[b2sPromotional\\]').hide();
+        jQuery('#b2s\\['+authId+'\\]\\[b2sPaidPartnership\\]').hide();
+        jQuery('.tiktok-music-confirmation[data-network-auth-id="'+authId+'"]').show();
+        jQuery('.tiktok-music-brand-confirmation[data-network-auth-id="'+authId+'"]').hide();
+        return;
+    }
+
+});
+
+
+
+

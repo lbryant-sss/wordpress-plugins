@@ -31,7 +31,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_team_member_options_info_be
 			'field_type' => 'slider',
 			'name'       => 'info_below_content_margin_top',
 			'title'      => esc_html__( 'Content Top Margin', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-qi-team-member.qodef-item-layout--info-below .qodef-m-content' => 'margin-top: {{SIZE}}{{UNIT}};',

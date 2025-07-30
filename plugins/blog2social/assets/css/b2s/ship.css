@@ -851,7 +851,7 @@ input[type="checkbox"], input[type="radio"] {
     /*flex-direction: column;*/
     /*
     gap:8px;*/
-    height: 340px;
+    height: 320px;
     width:100%;
 }
 
@@ -1201,4 +1201,29 @@ input[type="number"]{
     background-color: #e9e9ed !important;
     border-color: transparent !important;
     color: #3c434a !important;
+}
+
+.b2s-tiktok-form-container{
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+
+.tiktok-video-preview{
+    flex-shrink: 0;
+    width: 30%;
+}
+.tiktok-preview-right-container{
+    width: 100%;
+}
+
+.tiktok-preview-margin-bottom{
+    margin-bottom: 10px;
+}
+
+input[type="checkbox"].error,
+select.error,
+.b2s-tiktok-status_privacy.error {
+    border: 1px solid #FF0000 !important
 }

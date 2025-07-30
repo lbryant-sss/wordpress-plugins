@@ -645,7 +645,7 @@ class B2S_Util {
         return wp_date($slug, strtotime(wp_date('Y-m-d ' . $time . ':00:00', null, new DateTimeZone(date_default_timezone_get()))), new DateTimeZone(date_default_timezone_get()));
     }
 
-    public static function getExcerpt($text, $count = 400, $max = false, $add = false) {
+    public static function getExcerpt($text, $count = 400, $max = false, $add = false, $customStops=array()) {
 
         //Bug: Converting json + PHP Extension
         if (function_exists('mb_strlen') && function_exists('mb_substr') && function_exists('mb_stripos') && function_exists('mb_strripos')) {
@@ -679,11 +679,12 @@ class B2S_Util {
                 }
             }
             $tmpText = implode(array_slice($parts, 0, $last_taken));
-
+      
             //Old case: first whole set in $text is greater than $count, do cut off by word -until V7.5.5
             if (empty($tmpText)) {
 
-                $stops = array('.', '?', '!', '#', '(');
+                $stops= !empty($customStops) && is_array($customStops)? $customStops: array('.', '?', '!', '#', '(');
+         
                 $min = $count;
                 $cleanTruncateWord = true;
                 $max = ($max !== false) ? ($max - $min) : ($min - 1);

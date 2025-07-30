@@ -4,7 +4,7 @@ Tags: file-manager, wp-file-manager, document management, ftp, advance-file-mana
 Requires at least: 4.0
 Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: 5.3.6
+Stable tag: 5.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -360,6 +360,12 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 
 == Changelog ==
+= 5.4.0 - July 29, 2025 =
+* New - Introducing Debug feature, which will not save the code if it contains error.
+* Fix - Download progress bar was showing incorrect progress.
+* Fix - Typo Fix Incorrect Display Name for Editor
+* Security Enhancement - Authenticated (Subscriber+) Directory Traversal to Arbitrary File Deletion.
+
 = 5.3.6 - July 03, 2025 =
 * Tweak - Added demo screen.
 

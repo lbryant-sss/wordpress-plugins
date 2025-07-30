@@ -55,7 +55,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_product_list_options_info_b
 			'field_type' => 'slider',
 			'name'       => 'info_below_hover_inset_image_overlay_inner_offset',
 			'title'      => esc_html__( 'Image Overlay Inner Offset', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--info-below-hover-inset .qodef-e-product-inner:hover .qodef-e-product-image-inner' => 'clip-path: inset({{SIZE}}{{UNIT}} {{SIZE}}{{UNIT}} {{SIZE}}{{UNIT}} {{SIZE}}{{UNIT}});',
@@ -76,7 +76,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_product_list_options_info_b
 			'name'       => 'info_below_hover_inset_category_margin_top',
 			'title'      => esc_html__( 'Category Margin Top', 'qi-addons-for-elementor' ),
 			'group'      => esc_html__( 'Spacing Style', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--info-below-hover-inset .qodef-e-product-categories' => 'margin-top: {{SIZE}}{{UNIT}};',
@@ -96,7 +96,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_product_list_options_info_b
 			'name'       => 'info_below_hover_inset_rating_margin_top',
 			'title'      => esc_html__( 'Rating Margin Top', 'qi-addons-for-elementor' ),
 			'group'      => esc_html__( 'Spacing Style', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--info-below-hover-inset .qodef-e-ratings' => 'margin-top: {{SIZE}}{{UNIT}};',

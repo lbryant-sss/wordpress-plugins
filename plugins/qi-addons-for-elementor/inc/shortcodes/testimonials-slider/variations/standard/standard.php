@@ -37,7 +37,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_testimonials_slider_standar
 			'field_type' => 'slider',
 			'name'       => 'standard_quote_margin_bottom',
 			'title'      => esc_html__( 'Quote Margin Bottom', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--standard .qodef-e-quote' => 'margin-bottom: {{SIZE}}{{UNIT}};',
@@ -57,7 +57,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_testimonials_slider_standar
 			'field_type' => 'slider',
 			'name'       => 'standard_image_margin_right',
 			'title'      => esc_html__( 'Item Image Margin Right', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--standard .qodef-e-media-image' => 'margin-right: {{SIZE}}{{UNIT}};',
@@ -77,7 +77,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_testimonials_slider_standar
 			'field_type' => 'slider',
 			'name'       => 'standard_author_position_margin_top',
 			'title'      => esc_html__( 'Item Author Occupation Margin Top', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--standard .qodef-e-author-job' => 'margin-top: {{SIZE}}{{UNIT}};',

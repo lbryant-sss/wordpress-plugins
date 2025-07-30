@@ -205,7 +205,7 @@ class B2S_AutoPost_Item {
         $content .= '<br>';
         $content .= '<hr>';
         $content .= '</div>';
-        $content .= '<h4 class="b2s-auto-post-header">' . esc_html__('Autoposter for Imported Posts', 'blog2social') . '</h4><a target="_blank" href="' . esc_url(B2S_Tools::getSupportLink('auto_post_import')) . '">Info</a>';
+        $content .= '<h4 class="b2s-auto-post-header">' . esc_html__('Autoposter for Imported Posts e.g. RSS-Feed from other plugins', 'blog2social') . '</h4><a target="_blank" href="' . esc_url(B2S_Tools::getSupportLink('auto_post_import')) . '">Info</a>';
         $content .= '<p class="b2s-bold">' . esc_html__('Set up your autoposter to automatically share your imported posts, pages and custom post types on your social media channels.', 'blog2social') . '</p>';
         $content .= '<div id="b2s-licence-condition" class="alert alert-danger ' . $showSchedLimitInfo . '"><span class="b2s-text-bold">' . esc_html__("You've reached your posting limit!", "blog2social") . '</span><br>' . esc_html__('To increase your limit and enjoy more features, consider upgrading.', 'blog2social') . '<br><a target="_blank" class="b2s-text-bold" href="' . esc_url(B2S_Tools::getSupportLink('pricing')) . '">' . esc_html__('Upgrade', 'blog2social') . '</a></div>';
         $content .= '<p>' . esc_html__('Your current license:', 'blog2social') . '<span class="b2s-key-name"> ' . esc_html($versionType[B2S_PLUGIN_USER_VERSION]) . '</span> ';

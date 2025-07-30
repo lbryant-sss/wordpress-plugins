@@ -203,7 +203,9 @@ abstract class QiAddonsForElementor_Framework_Shortcode {
 	}
 
 	public function set_scripts( $scripts = array() ) {
-		$this->scripts = $scripts;
+		if ( ! qi_addons_for_elementor_is_widget_disabled( $this->shortcode_path ) ) {
+			$this->scripts = $scripts;
+		}
 	}
 
 	public function get_documentation() {

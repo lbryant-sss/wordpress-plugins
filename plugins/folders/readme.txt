@@ -106,7 +106,7 @@ We also have a native integration with WooCommerce. Manage your dynamic folders 
 
 This is a great way to manage all your stuff into different folders right after you start using folders. 
 
-= 🔁 Replace media files =
+= 🔁 Replace media library files =
 With the Folders plugin, replace media library files with other files. Save time whenever you need to replace a media file on all of your pages, posts, etc. When you replace a media file, the change will reflect on all of your pages, posts, and more. 
 
 With the replace media files feature, users can select the file they want to replace, choose whether to "just replace the file" or "replace the file and use the new file name and update all relevant links", and select any desired date options. The changes are automatically applied to all instances of the file on the user's website, so they don't have to waste time manually replacing each instance of the file.
@@ -153,7 +153,7 @@ Wondering how you can use these pages, posts, and media library folders plugin f
 = 🔒 GDPR AND PRIVACY =
 Folders plugin is GDPR compliant, all data is saved locally on your server.
 
-Folders is compatible with Gutenberg, Elementor website builder, Divi, Visual Composer, WPbakery, Beaver Builder, and any WordPress theme. 
+Folders is compatible with Gutenberg, Elementor website builder, Divi, Visual Composer, WPBakery, Beaver Builder, and any WordPress theme. 
 
 Download this plugin today for free and get unlimited folders to organize your WP content. Then unlock unlimited folders with the Pro Plan for max organization! 
 

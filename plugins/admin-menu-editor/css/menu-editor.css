@@ -1776,6 +1776,7 @@ select.ws_dropdown optgroup option {
 *************************************/
 #ws-ame-copy-permissions-dialog select {
   min-width: 280px;
+  max-width: 100%;
 }
 
 /*********************************************

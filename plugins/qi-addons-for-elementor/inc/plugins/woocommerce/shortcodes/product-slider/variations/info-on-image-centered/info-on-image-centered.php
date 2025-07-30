@@ -56,7 +56,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_product_slider_options_info
 			'name'       => 'info_on_image_centered_title_margin_top',
 			'title'      => esc_html__( 'Title Margin Top', 'qi-addons-for-elementor' ),
 			'group'      => esc_html__( 'Spacing Style', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--info-on-image-centered .qodef-e-product-title' => 'margin-top: {{SIZE}}{{UNIT}};',
@@ -76,7 +76,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_product_slider_options_info
 			'name'       => 'info_on_image_centered_price_margin_top',
 			'title'      => esc_html__( 'Price Margin Top', 'qi-addons-for-elementor' ),
 			'group'      => esc_html__( 'Spacing Style', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--info-on-image-centered .qodef-woo-product-price' => 'margin-top: {{SIZE}}{{UNIT}};',
@@ -96,7 +96,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_product_slider_options_info
 			'name'       => 'info_on_image_centered_rating_margin_top',
 			'title'      => esc_html__( 'Rating Margin Top', 'qi-addons-for-elementor' ),
 			'group'      => esc_html__( 'Spacing Style', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--info-on-image-centered .qodef-e-ratings' => 'margin-top: {{SIZE}}{{UNIT}};',
@@ -116,7 +116,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_product_slider_options_info
 			'name'       => 'info_on_image_centered_button_margin_top',
 			'title'      => esc_html__( 'Button Margin Top', 'qi-addons-for-elementor' ),
 			'group'      => esc_html__( 'Spacing Style', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--info-on-image-centered .qodef-qi-button' => 'margin-top: {{SIZE}}{{UNIT}};',

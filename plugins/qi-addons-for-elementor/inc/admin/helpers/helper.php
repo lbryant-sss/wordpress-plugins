@@ -377,7 +377,11 @@ if ( ! function_exists( 'qi_addons_for_elementor_framework_get_inline_attr' ) ) 
 		}
 
 		if ( '' !== $properties ) {
-			return $attr . '="' . esc_attr( sanitize_text_field( html_entity_decode( $properties ) ) ) . '"';
+
+			$sanitized_properties = esc_attr( sanitize_text_field( html_entity_decode( $properties ) ) );
+			$clean_properties     = preg_replace( '/<[^>]*>|#x3[ce];|&lt;|&gt;/i', '', $sanitized_properties );
+			return $attr . '="' . $clean_properties . '"';
+
 		}
 
 		return '';

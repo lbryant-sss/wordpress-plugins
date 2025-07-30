@@ -16,13 +16,13 @@ class B2S_Tools {
             delete_option('B2S_PLUGIN_PRIVACY_POLICY_USER_ACCEPT_' . B2S_PLUGIN_BLOG_USER_ID);
 
             $currentDate = new DateTime("now", wp_timezone());
-            $version = json_decode(B2S_Api_Post::post(B2S_PLUGIN_API_ENDPOINT, array('action' => 'getUserDetails', 
-                'blog_user_id' => $blog_user_id, 
-                'blog_url' => $blog_url, 
-                'email' => $email, 
-                'current_date' => $currentDate->format('Y-m-d'), 
-                'token' => B2S_PLUGIN_TOKEN, 
-                'version' => B2S_PLUGIN_VERSION), 30));
+            $version = json_decode(B2S_Api_Post::post(B2S_PLUGIN_API_ENDPOINT, array('action' => 'getUserDetails',
+                        'blog_user_id' => $blog_user_id,
+                        'blog_url' => $blog_url,
+                        'email' => $email,
+                        'current_date' => $currentDate->format('Y-m-d'),
+                        'token' => B2S_PLUGIN_TOKEN,
+                        'version' => B2S_PLUGIN_VERSION), 30));
 
             $tokenInfo = array();
             $tokenInfo['B2S_PLUGIN_USER_VERSION'] = (isset($version->version) ? $version->version : 0);
@@ -80,10 +80,10 @@ class B2S_Tools {
                 $tokenInfo['B2S_PLUGIN_LICENCE_CONDITION'] = (array) $version->licence_condition;
             }
 
-            if(isset($version->network_condition)){
+            if (isset($version->network_condition)) {
                 $tokenInfo['B2S_PLUGIN_NETWORK_CONDITION'] = (array) $version->network_condition;
             }
-                
+
             if (!isset($version->version)) {
                 define('B2S_PLUGIN_NOTICE', 'CONNECTION');
             } else {
@@ -132,14 +132,14 @@ class B2S_Tools {
                     $getTimeForPage = in_array($k, $allowPage) ? true : false;
                     $getTimeForGroup = in_array($k, $allowGroup) ? true : false;
                     if ($getTimeForPage) {
-                        $endProfile = wp_date("H:i", strtotime('-30 minutes', strtotime($endProfile . ':00')),  new DateTimeZone(date_default_timezone_get()));   //-30min
+                        $endProfile = wp_date("H:i", strtotime('-30 minutes', strtotime($endProfile . ':00')), new DateTimeZone(date_default_timezone_get()));   //-30min
                     }
                     if ($getTimeForGroup) {
                         $endProfile = wp_date("H:i", strtotime('-30 minutes', strtotime($endProfile . ':00')), new DateTimeZone(date_default_timezone_get()));   //-30min
                     }
                     $endProfile = (strpos($endProfile, ':') === false) ? $endProfile . ':00' : $endProfile;
                     $startProfle = (strpos($v[0], ':') === false) ? $v[0] . ':00' : $v[0];
-                    $dateTime = wp_date('Y-m-d ' . B2S_Util::getRandomTime($startProfle, $endProfile) . ':00',null, new DateTimeZone(date_default_timezone_get()));
+                    $dateTime = wp_date('Y-m-d ' . B2S_Util::getRandomTime($startProfle, $endProfile) . ':00', null, new DateTimeZone(date_default_timezone_get()));
                     //Profile
                     $userTimes[$k][0] = wp_date($slug, strtotime($dateTime), new DateTimeZone(date_default_timezone_get()));
                     //Page
@@ -162,11 +162,11 @@ class B2S_Tools {
         if ($type == 'faq') {
             return 'https://service.blog2social.com/support?url=' . get_option('home') . '&token=' . B2S_PLUGIN_TOKEN;
         }
-        
-        if($type == 'faq_license_key'){
+
+        if ($type == 'faq_license_key') {
             return 'https://www.blog2social.com/en/faq/content/7/48/en/where-do-i-find-my-license-key.html';
         }
-        
+
         if ($type == 'faq_direct') {
             return 'https://www.blog2social.com/' . (($lang == 'en') ? 'en' : 'de') . "/faq/";
         }
@@ -196,22 +196,22 @@ class B2S_Tools {
             return 'https://www.blog2social.com/' . (($lang == 'en') ? 'en/privacy-policy' : 'de/datenschutz');
         }
 
-        if($type == 'ass_account'){
+        if ($type == 'ass_account') {
             return 'https://app.assistini.com/?screen=Plan';
         }
-        
+
         if ($type == 'pinterest_app_tos_spam') {
             return 'https://developers.pinterest.com/docs/reference/spam/';
         }
 
-        if( $type == 'dashboard-video-posting-addon-info'){
+        if ($type == 'dashboard-video-posting-addon-info') {
             return ($lang == 'en') ? 'https://en.blog2social.com/video-posting/' : 'https://de.blog2social.com/video-posting/';
         }
-        
-        if($type == 'network_guide_re_sharer'){
+
+        if ($type == 'network_guide_re_sharer') {
             return ($lang == 'en') ? 'https://www.blog2social.com/en/faq/index.php?solution_id=1165' : 'https://www.blog2social.com/de/faq/index.php?solution_id=1162';
         }
-        
+
         if ($type == 'userTimeSettings') {
             return ($lang == 'en') ? 'https://www.blog2social.com/en/faq/index.php?action=artikel&cat=5&id=32&artlang=en' : 'https://www.blog2social.com/de/faq/index.php?action=artikel&cat=5&id=43&artlang=de';
         }
@@ -285,9 +285,8 @@ class B2S_Tools {
         if ($type == 'faq_settings') {
             return ($lang == 'en') ? 'https://www.blog2social.com/en/faq/index.php?action=show&cat=11' : 'https://www.blog2social.com/de/faq/index.php?action=show&cat=11';
         }
-        if($type == 'faq_postformats'){
-            return ($lang == 'en') ? 'https://www.blog2social.com/en/faq/content/4/131/en/social-media-post-formats-_-the-differences-between-image-post-and-link-post.html' : 'https://www.blog2social.com/de/faq/content/4/131/de/social-media-postformate-_-die-unterschiede-zwischen-bild_beitraegen-und-link_beitraegen.html?highlight=Post%20Format';
-            
+        if ($type == 'faq_postformats') {
+            return ($lang == 'en') ? 'https://www.blog2social.com/en/faq/content/4/131/en/social-media-post-formats-_-the-differences-between-image-post-and-link-post.html' : 'https://www.blog2social.com/de/faq/content/4/131/de/social-media-postformate-_-die-unterschiede-zwischen-bild_beitraegen-und-link_beitraegen.html';
         }
 
         if ($type == 'browser_extension') {
@@ -590,6 +589,12 @@ class B2S_Tools {
         if ($type == "pricing") {
             return ($lang == 'de') ? 'https://www.blog2social.com/de/preise/' : 'https://www.blog2social.com/en/pricing/';
         }
+        if ($type == 'tiktok_music_confirmation') {
+            return 'https://www.tiktok.com/legal/page/global/music-usage-confirmation/en';
+        }
+        if ($type == 'tiktok_branded_confirmation') {
+            return 'https://www.tiktok.com/legal/page/global/bc-policy/en';
+        }
 
         return false;
     }
@@ -641,7 +646,7 @@ class B2S_Tools {
                             $ver = ", " . esc_html__('Current license', 'blog2social') . ": " . esc_html($b2sVersionType[$userVersion]);
                         }
                     }
-                    $options .= '<option value="' . esc_attr($user->data->ID) . '" ' . (($user->data->ID == $selectId) ? "selected" : "") . '>' . esc_html($user->data->display_name) . " (".esc_html__('Email', 'blog2social') .': '. esc_html($user->data->user_email)  . $ver . ')</option>';
+                    $options .= '<option value="' . esc_attr($user->data->ID) . '" ' . (($user->data->ID == $selectId) ? "selected" : "") . '>' . esc_html($user->data->display_name) . " (" . esc_html__('Email', 'blog2social') . ': ' . esc_html($user->data->user_email) . $ver . ')</option>';
                 }
             }
         }
@@ -836,4 +841,8 @@ class B2S_Tools {
         return false;
     }
 
+    public static function getPrePostDetails($client_user_network_id = 0) {
+        $details = B2S_Api_Post::post(B2S_PLUGIN_API_ENDPOINT, array('action' => 'getPrePostDetails', 'token' => B2S_PLUGIN_TOKEN, 'plugin_version' => B2S_PLUGIN_VERSION, 'client_user_network_id' => $client_user_network_id));
+        return $details;
+    }
 }

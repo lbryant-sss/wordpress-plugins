@@ -24,7 +24,7 @@ class Tiktokforbusiness {
 	 *
 	 * @var string[]
 	 */
-	private static $current_tiktok_for_woocommerce_version = '1.3.3';
+	private static $current_tiktok_for_woocommerce_version = '1.3.4';
 
 	/**
 	 * Whether WooCommerce has been loaded.
@@ -130,7 +130,7 @@ class Tiktokforbusiness {
 	public function get_settings_link() {
 		$settings_url = get_admin_url() . 'admin.php?page=tiktok';
 		if ( $settings_url ) {
-			return sprintf( '<a href="%s">%s</a>', $settings_url, esc_html__( 'Configure', 'tiktok-for-woocommerce' ) );
+			return sprintf( '<a href="%s">%s</a>', $settings_url, esc_html__( 'Configure', 'tiktok-for-business' ) );
 		}
 		// no settings.
 		return '';

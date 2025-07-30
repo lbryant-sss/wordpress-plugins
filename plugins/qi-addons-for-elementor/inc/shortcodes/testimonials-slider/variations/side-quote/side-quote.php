@@ -37,7 +37,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_testimonials_slider_side_qu
 			'field_type' => 'slider',
 			'name'       => 'side_quote_image_margin_right',
 			'title'      => esc_html__( 'Item Image Margin Right', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--side-quote .qodef-e-media-image' => 'margin-right: {{SIZE}}{{UNIT}};',
@@ -57,7 +57,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_testimonials_slider_side_qu
 			'field_type' => 'slider',
 			'name'       => 'side_quote_quote_margin_right',
 			'title'      => esc_html__( 'Quote Margin Right', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--side-quote .qodef-e-quote' => 'margin-right: {{SIZE}}{{UNIT}};',

@@ -51,7 +51,7 @@ class B2S_Ship_Image {
                 $content .= '<div class="b2s-image-item">';
                 $content .= '<div class="b2s-image-item-thumb">';
                 $content .= '<label for="b2s-image-count-' . esc_attr($tempCountImage) . '">';
-                $content .= '<img class="img-thumbnail networkImage img-responsive" alt="blogImage" src="' . esc_url($image[0]) . '">';
+                $content .= '<img class="img-thumbnail networkImage img-responsive" alt="" src="' . esc_url($image[0]) . '">';
                 $content .= '</label>';
                 $content .= '</div>';
                 $content .= '<div class="b2s-image-item-caption text-center">';

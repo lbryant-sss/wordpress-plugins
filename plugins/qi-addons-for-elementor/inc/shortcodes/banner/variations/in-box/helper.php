@@ -48,7 +48,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_banner_in_box_add_extra_options
 			'field_type' => 'dimensions',
 			'name'       => 'content_border_radius',
 			'title'      => esc_html__( 'Content Border Radius', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-m-content-inner' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -68,7 +68,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_banner_in_box_add_extra_options
 			'field_type' => 'dimensions',
 			'name'       => 'content_padding',
 			'title'      => esc_html__( 'Content Padding', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-m-content-inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -88,7 +88,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_banner_in_box_add_extra_options
 			'field_type' => 'slider',
 			'name'       => 'content_width',
 			'title'      => esc_html__( 'Content Width', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%' ),
+			'size_units' => array( 'px', '%', 'custom' ),
 			'range'      => array(
 				'px' => array(
 					'min' => 100,

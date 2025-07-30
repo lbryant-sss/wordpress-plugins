@@ -217,7 +217,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type' => 'slider',
 					'name'       => 'icon_size',
 					'title'      => esc_html__( 'Icon Size', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', 'em' ),
+					'size_units' => array( 'px', 'em', 'custom' ),
 					'responsive' => true,
 					'selectors'  => array(
 						'{{WRAPPER}} .qodef-e-icon-holder' => 'font-size: {{SIZE}}{{UNIT}};',
@@ -319,7 +319,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type' => 'slider',
 					'name'       => 'main_image_offset',
 					'title'      => esc_html__( 'Image Top Offset', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em', 'vh' ),
+					'size_units' => array( 'px', '%', 'em', 'vh', 'custom' ),
 					'range'      => array(
 						'px' => array(
 							'min' => -300,
@@ -350,7 +350,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type' => 'slider',
 					'name'       => 'image_side_margin',
 					'title'      => esc_html__( 'Image Side Margin', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em', 'vw' ),
+					'size_units' => array( 'px', '%', 'em', 'vw', 'custom' ),
 					'range'      => array(
 						'px' => array(
 							'min' => 0,
@@ -369,7 +369,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type' => 'slider',
 					'name'       => 'item_space',
 					'title'      => esc_html__( 'Item Space', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em' ),
+					'size_units' => array( 'px', '%', 'em', 'custom' ),
 					'responsive' => true,
 					'selectors'  => array(
 						'{{WRAPPER}} .qodef-m-item' => 'margin-bottom: {{SIZE}}{{UNIT}};',
@@ -382,7 +382,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type' => 'slider',
 					'name'       => 'title_bottom_margin',
 					'title'      => esc_html__( 'Title Margin Bottom', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em' ),
+					'size_units' => array( 'px', '%', 'em', 'custom' ),
 					'responsive' => true,
 					'selectors'  => array(
 						'{{WRAPPER}} .qodef-e-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',

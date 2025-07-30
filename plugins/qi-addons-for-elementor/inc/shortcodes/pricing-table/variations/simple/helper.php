@@ -70,7 +70,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_pricing_table_simple_add_extra_
 			'field_type' => 'dimensions',
 			'name'       => 'title_wrapper_padding',
 			'title'      => esc_html__( 'Title Wrapper Padding', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-m-title-wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',

@@ -1,9 +1,10 @@
-=== Timeline Widget For Elementor (Elementor Timeline, Vertical & Horizontal Timeline) ===
+=== Timeline Widget For Elementor - Vertical & Horizontal Timeline ===
+
 Contributors:narinder-singh,satindersingh,coolplugins
 Donate link: https://paypal.me/CoolPlugins/10USD/
 Tags:timeline,elementor timeline,roadmap,history,horizontal timeline
 Requires at least:5.0
-Tested up to:6.8.1
+Tested up to:6.7
 Requires PHP:7.2
 Stable tag:1.6.8
 License:GPLv2 or later
@@ -114,11 +115,11 @@ You can show your stories, events, appointments, concerts, future & history happ
 For detailed help and support, visit our [support page](https://coolplugins.net/support/). 
 
 == Screenshots ==
-1.  Timeline Widget Vertical on both sides/ One-sided Layout Preview
+1.  Timeline Widget Demo Preview
 2.  Timeline Widget Horizontal Timeline configuration 
-3.  Add New Story Settings Preview.
-4.  Style Settings Preview
-5.  Timeline Widget Demo Preview
+3.  Timeline Widget Vertical on both sides/ One-sided Layout Preview
+4.  Add New Story Settings Preview.
+5.  Style Settings Preview
 
 == Frequently Asked Questions ==
 
@@ -190,33 +191,6 @@ The widget is versatile and suitable for various uses such as business milestone
 You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/timeline-widget-addon-for-elementor)
 
 == Changelog ==
-
-**Version 1.6.8 | 05 May 2025**
-- **Tested up to:** WordPress 6.8.1.
-
-**Version 1.6.7 | 18 March 2025**
-- **Tested up to:** Elementor 3.28.0.
-- **Tested up to:** Elementor Pro 3.28.0.
-- **Tested up to:** WordPress 6.7.2.
-
-**Version 1.6.6 | 17 December 2024**
-- **Fixed:** Swiper styling issue with Elementor 3.26.0.
-- **Tested up to:** Elementor 3.26.0.
-
-**Version 1.6.5 | 11 December 2024**
-- **Fixed:** JS errors.
-- **Tweaks:** Minor textual changes.
-
-**Version 1.6.4 | 04 December 2024**
-- **Added:** Form widget plugin notice.
-- **Fixed:** Horizontal timeline JS error for logged in users.
-- **Tested up to:** Elementor 3.25.10
-
-**Version 1.6.3 | 27 November 2024**
-- **Fixed:** JS assets loading issue for logged in users.
-- **Fixed:** Resolved an issue with the load_plugin_textdomain() function, ensuring correct localization.
-- **Tested up to:** Elementor 3.25.7 and WordPress 6.7.1
-
 **Version 1.6.2 | 27 September 2024**
 - **Removed:** Elementor caching system to fix assests loading issue.
 
@@ -244,8 +218,8 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 - **Fixed:** Minor bug fixes
 
 **Version 1.5.4 | 31 January 2024**
-- **Added:** Escaping function on attributes
 - **Fixed:** Minor vulnerability fixes
+- **Added:** Escaping function on attributes
 - **Fixed:** Horizontal slides hidden issue
 - **Fixed:** PHP error if slideshow option selected in media
 - **Fixed:** PHP deprecated function issue
@@ -307,7 +281,7 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 - **Improved:** Minor fixes
 
 **Version 1.3.1 | 20 OCT 2021**
-- **Tested up to:** Elementor version 3.4.6
+- **Improved:** Tested up to Elementor version 3.4.6
 - **Improved:** Minor textual changes
 
 **Version 1.3 | 23 APR 2021**
@@ -315,11 +289,11 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 - **Fixed:** PHP Deprecated: Elementor\Scheme_Typography & Elementor\Scheme_Color
 - **Improved:** Settings panel, code flow, JS code
 - **Improved:** Horizontal Timeline Responsive
-- **Tested up to:** WordPress version 5.7
+- **Improved:** Tested up to 5.7
 
 **Version 1.2.2 | 10 DEC 2020**
 - **Fixed:** Fixed RTL support issues in horizontal layout
-- **Tested up to:** WordPress version 5.6
+- **Fixed:** Tested up to 5.6
 
 **Version 1.2.1 | 19 SEP 2020**
 - **Fixed:** Fixed compatibility issues with Elementor 2.9 or lower version

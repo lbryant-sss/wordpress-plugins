@@ -18,19 +18,6 @@ if ( ! function_exists( 'qi_addons_for_elementor_woo_get_global_product' ) ) {
 	}
 }
 
-if ( ! function_exists( 'qi_addons_for_elementor_include_woocommerce_shortcodes' ) ) {
-	/**
-	 * Function that includes shortcodes
-	 */
-	function qi_addons_for_elementor_include_woocommerce_shortcodes() {
-		foreach ( glob( QI_ADDONS_FOR_ELEMENTOR_PLUGINS_PATH . '/woocommerce/shortcodes/*/include.php' ) as $shortcode ) {
-			include_once $shortcode;
-		}
-	}
-
-	add_action( 'qi_addons_for_elementor_action_framework_before_shortcodes_register', 'qi_addons_for_elementor_include_woocommerce_shortcodes' );
-}
-
 if ( ! function_exists( 'qi_addons_for_elementor_woo_product_get_rating_html' ) ) {
 	/**
 	 * Function that return ratings templates

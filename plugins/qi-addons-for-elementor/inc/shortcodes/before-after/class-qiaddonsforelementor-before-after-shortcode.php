@@ -123,7 +123,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type' => 'slider',
 					'name'       => 'handle_offset',
 					'title'      => esc_html__( 'Handle Top Offset', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'vw' ),
+					'size_units' => array( 'px', '%', 'vw', 'custom' ),
 					'range'      => array(
 						'px' => array(
 							'min' => 0,
@@ -143,7 +143,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type' => 'slider',
 					'name'       => 'circle_size',
 					'title'      => esc_html__( 'Circle Size', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', 'em', 'vw' ),
+					'size_units' => array( 'px', 'em', 'vw', 'custom' ),
 					'range'      => array(
 						'px' => array(
 							'min' => 0,
@@ -163,7 +163,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type' => 'slider',
 					'name'       => 'border_width',
 					'title'      => esc_html__( 'Border Size', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', 'em', 'vw' ),
+					'size_units' => array( 'px', 'em', 'vw', 'custom' ),
 					'range'      => array(
 						'px' => array(
 							'min' => 0,

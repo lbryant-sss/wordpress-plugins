@@ -219,7 +219,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type' => 'slider',
 					'name'       => 'title_margin_bottom',
 					'title'      => esc_html__( 'Title Margin Bottom', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em' ),
+					'size_units' => array( 'px', '%', 'em', 'custom' ),
 					'responsive' => true,
 					'selectors'  => array(
 						'{{WRAPPER}} .qodef-e-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
@@ -234,7 +234,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'name'        => 'title_padding',
 					'title'       => esc_html__( 'Title Padding', 'qi-addons-for-elementor' ),
 					'description' => esc_html__( 'Top/bottom and left/right padding will change sides for vertical separated type on every other item', 'qi-addons-for-elementor' ),
-					'size_units'  => array( 'px', '%', 'em' ),
+					'size_units'  => array( 'px', '%', 'em', 'custom' ),
 					'responsive'  => true,
 					'selectors'   => array(
 						'{{WRAPPER}} .qodef-e-title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -272,7 +272,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type' => 'slider',
 					'name'       => 'date_margin_bottom',
 					'title'      => esc_html__( 'Date Margin Bottom', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em' ),
+					'size_units' => array( 'px', '%', 'em', 'custom' ),
 					'range'      => array(
 						'px' => array(
 							'min' => -100,
@@ -322,7 +322,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type' => 'slider',
 					'name'       => 'text_margin_bottom',
 					'title'      => esc_html__( 'Text Margin Bottom', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em' ),
+					'size_units' => array( 'px', '%', 'em', 'custom' ),
 					'responsive' => true,
 					'selectors'  => array(
 						'{{WRAPPER}} .qodef-e-text' => 'margin-bottom: {{SIZE}}{{UNIT}};',
@@ -337,7 +337,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'name'        => 'text_padding',
 					'title'       => esc_html__( 'Text Padding', 'qi-addons-for-elementor' ),
 					'description' => esc_html__( 'Left/right padding will change sides for vertical separated type on every other item', 'qi-addons-for-elementor' ),
-					'size_units'  => array( 'px', '%', 'em' ),
+					'size_units'  => array( 'px', '%', 'em', 'custom' ),
 					'responsive'  => true,
 					'selectors'   => array(
 						'{{WRAPPER}} .qodef-e-text' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -353,7 +353,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type'    => 'slider',
 					'name'          => 'space_between_items',
 					'title'         => esc_html__( 'Space Between Items', 'qi-addons-for-elementor' ),
-					'size_units'    => array( 'px', 'em' ),
+					'size_units'    => array( 'px', 'em', 'custom' ),
 					'range'         => array(
 						'px' => array(
 							'min' => 0,
@@ -378,7 +378,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type' => 'dimensions',
 					'name'       => 'image_border_radius',
 					'title'      => esc_html__( 'Image Border Radius', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%' ),
+					'size_units' => array( 'px', '%', 'custom' ),
 					'responsive' => true,
 					'selectors'  => array(
 						'{{WRAPPER}} .qodef-e-image' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};;',
@@ -602,7 +602,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type' => 'slider',
 					'name'       => 'line_thickness',
 					'title'      => esc_html__( 'Line Thickness', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em' ),
+					'size_units' => array( 'px', '%', 'em', 'custom' ),
 					'responsive' => true,
 					'selectors'  => array(
 						'{{WRAPPER}} .qodef-timeline--vertical .qodef-e-line-holder'                                => 'width: {{SIZE}}{{UNIT}};',
@@ -634,7 +634,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type' => 'slider',
 					'name'       => 'point_position',
 					'title'      => esc_html__( 'Point Position', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em' ),
+					'size_units' => array( 'px', '%', 'em', 'custom' ),
 					'responsive' => true,
 					'selectors'  => array(
 						'{{WRAPPER}} .qodef-timeline--vertical .qodef-e-point-holder' => 'top: {{SIZE}}{{UNIT}};',
@@ -657,7 +657,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type' => 'slider',
 					'name'       => 'point_diamond_lines_size',
 					'title'      => esc_html__( 'Diamond Lines Size', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em' ),
+					'size_units' => array( 'px', '%', 'em', 'custom' ),
 					'responsive' => true,
 					'selectors'  => array(
 						'{{WRAPPER}} .qodef-timeline--vertical.qodef-point--diamond .qodef-e-point-holder:before'   => 'width: {{SIZE}}{{UNIT}};',
@@ -682,7 +682,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type' => 'slider',
 					'name'       => 'point_size',
 					'title'      => esc_html__( 'Point Size', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em' ),
+					'size_units' => array( 'px', '%', 'em', 'custom' ),
 					'responsive' => true,
 					'selectors'  => array(
 						'{{WRAPPER}} .qodef-e-point-holder' => 'font-size: {{SIZE}}{{UNIT}};',
@@ -708,7 +708,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type' => 'dimensions',
 					'name'       => 'point_border_radius',
 					'title'      => esc_html__( 'Point Border Radius', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em' ),
+					'size_units' => array( 'px', '%', 'em', 'custom' ),
 					'responsive' => true,
 					'selectors'  => array(
 						'{{WRAPPER}} .qodef-e-point' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -722,7 +722,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type' => 'slider',
 					'name'       => 'icon_size',
 					'title'      => esc_html__( 'Icon Size', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em' ),
+					'size_units' => array( 'px', '%', 'em', 'custom' ),
 					'responsive' => true,
 					'selectors'  => array(
 						'{{WRAPPER}} .qodef-e-point .qodef-e-icon-holder' => 'font-size: {{SIZE}}{{UNIT}};',
@@ -803,7 +803,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type' => 'slider',
 					'name'       => 'slider_navigation_arrows_size',
 					'title'      => esc_html__( 'Navigation Arrow Size', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em' ),
+					'size_units' => array( 'px', '%', 'em', 'custom' ),
 					'responsive' => true,
 					'selectors'  => array(
 						'{{WRAPPER}} .qodef-nav-prev' => 'font-size: {{SIZE}}{{UNIT}};',
@@ -825,7 +825,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type' => 'slider',
 					'name'       => 'slider_navigation_arrows_offset',
 					'title'      => esc_html__( 'Navigation Arrow Offset', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em' ),
+					'size_units' => array( 'px', '%', 'em', 'custom' ),
 					'range'      => array(
 						'px' => array(
 							'min' => 0,

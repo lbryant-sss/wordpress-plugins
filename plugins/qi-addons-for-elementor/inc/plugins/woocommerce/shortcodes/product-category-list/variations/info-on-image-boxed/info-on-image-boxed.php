@@ -30,7 +30,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_product_category_list_optio
 			'field_type' => 'slider',
 			'name'       => 'info_on_image_boxed_title_box_width',
 			'title'      => esc_html__( 'Title Box Width', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'vw' ),
+			'size_units' => array( 'px', '%', 'vw', 'custom' ),
 			'range'      => array(
 				'px' => array(
 					'min' => 100,
@@ -56,7 +56,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_product_category_list_optio
 			'field_type' => 'dimensions',
 			'name'       => 'info_on_image_boxed_title_padding',
 			'title'      => esc_html__( 'Title Padding', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--info-on-image-boxed .woocommerce-loop-category__title' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -94,7 +94,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_product_category_list_optio
 			'field_type' => 'slider',
 			'name'       => 'info_on_image_boxed_title_bottom_offset',
 			'title'      => esc_html__( 'Title Bottom Offset', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%' ),
+			'size_units' => array( 'px', '%', 'custom' ),
 			'range'      => array(
 				'px' => array(
 					'min' => 0,

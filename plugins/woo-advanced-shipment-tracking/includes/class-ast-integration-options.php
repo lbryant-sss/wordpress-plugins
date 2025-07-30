@@ -105,6 +105,9 @@ class AST_Integration {
 			'jj_global'					=> $fun( __( 'J&J Global Fulfillment', $text_domin ), 'jj_global-icon.png', 'jj_global/' ),
 			'shipping_easy'				=> $fun( __( 'ShippingEasy', $text_domin ), 'shipping_easy-icon.png', 'shipping-easy/' ),
 			'podpartner'				=> $fun( __( 'PODpartner', $text_domin ), 'podpartner-icon.png', 'podpartner/' ),
+			'ups_ecommerce_dashboard'	=> $fun( __( 'UPS Ecommerce Dashboard', $text_domin ), 'ups-ecommerce-dashboard-icon.png', 'ups-ecommerce-dashboard/' ),
+			'shippit'					=> $fun( __( 'shippit', $text_domin ), 'shippit-icon.png', 'shippit/' ),
+			'boostmyshop'				=> $fun( __( 'BoostMyShop', $text_domin ), 'boostmyshop-icon.png', 'boostmyshop/' ),
 		);
 		
 		return $form_data;

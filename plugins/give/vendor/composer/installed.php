@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'impress-org/give',
-        'pretty_version' => '4.6.0',
-        'version' => '4.6.0.0',
-        'reference' => 'b2351ea1a12ad2d352955c920ef62c5b77448e19',
+        'pretty_version' => '4.6.1',
+        'version' => '4.6.1.0',
+        'reference' => '5d8d598127292fc5296b4705b5475ac53bf06608',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -20,9 +20,9 @@
             'dev_requirement' => false,
         ),
         'impress-org/give' => array(
-            'pretty_version' => '4.6.0',
-            'version' => '4.6.0.0',
-            'reference' => 'b2351ea1a12ad2d352955c920ef62c5b77448e19',
+            'pretty_version' => '4.6.1',
+            'version' => '4.6.1.0',
+            'reference' => '5d8d598127292fc5296b4705b5475ac53bf06608',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

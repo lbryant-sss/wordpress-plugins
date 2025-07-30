@@ -64,7 +64,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_pricing_table_with_icon_add_ext
 			'name'       => 'with_icon_icon_size',
 			'title'      => esc_html__( 'Icon Size', 'qi-addons-for-elementor' ),
 			'group'      => esc_html__( 'Icon Style', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', 'em' ),
+			'size_units' => array( 'px', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-m-title-icon' => 'font-size: {{SIZE}}{{UNIT}};',
@@ -83,7 +83,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_pricing_table_with_icon_add_ext
 			'field_type' => 'dimensions',
 			'name'       => 'with_icon_top_area_padding',
 			'title'      => esc_html__( 'Top Area Padding', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-layout--with-icon .qodef-m-top' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -110,7 +110,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_pricing_table_with_icon_add_ext
 			'field_type' => 'dimensions',
 			'name'       => 'with_icon_item_padding',
 			'title'      => esc_html__( 'Item Padding', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-layout--with-icon .qodef-m-content .qodef-e-item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',

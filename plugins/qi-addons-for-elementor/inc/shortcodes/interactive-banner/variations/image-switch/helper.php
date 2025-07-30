@@ -47,7 +47,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_interactive_banner_options_
 			'field_type' => 'slider',
 			'name'       => 'image_switch_image_width',
 			'title'      => esc_html__( 'Image Side Width', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'vw' ),
+			'size_units' => array( 'px', '%', 'vw', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-layout--image-switch .qodef-m-image-holder' => 'width: {{SIZE}}{{UNIT}};',
@@ -67,7 +67,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_interactive_banner_options_
 			'field_type' => 'slider',
 			'name'       => 'image_switch_content_margin_right',
 			'title'      => esc_html__( 'Content Margin Right', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-layout--image-switch .qodef-m-content-inner' => 'margin-right: {{SIZE}}{{UNIT}};',

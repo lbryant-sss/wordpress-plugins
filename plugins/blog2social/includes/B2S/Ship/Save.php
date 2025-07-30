@@ -330,6 +330,7 @@ class B2S_Ship_Save {
                         //since V4.8.0 relay posts
                         $printDelayDates = array();
                         if (empty($errorCode) && isset($v['relay_data']) && !empty($v['relay_data']) && is_array($v['relay_data']) && isset($v['relay_data']['auth']) && isset($v['relay_data']['delay'])) {
+                        
                             $userTimeZone = (isset($this->postData['user_timezone'])) ? $this->postData['user_timezone'] : 0;
                             $sched_date =  wp_date('Y-m-d H:i:00', current_time('timestamp'), new DateTimeZone(date_default_timezone_get()));
                             $sched_date_utc =  wp_date('Y-m-d H:i:00', strtotime(B2S_Util::getUTCForDate($sched_date, $userTimeZone * (-1))),new DateTimeZone(date_default_timezone_get()) );
@@ -359,8 +360,10 @@ class B2S_Ship_Save {
                                 $content[] = array('networkAuthId' => $post->network_auth_id, 'html' => $this->getItemHtml($networkId, $errorCode, $post->publishUrl, $printDelayDates, true, $isVideo));
                             }
                         } else {
+                         
                             if (!$quickShare) {
-                                $content[] = array('networkAuthId' => $post->network_auth_id, 'html' => $this->getItemHtml($networkId, $errorCode, $post->publishUrl, $printDelayDates, true, $isVideo));
+                                 $shareMode = (isset($v['share_settings']['mode']) && !empty($v['share_settings']['mode'])) ? (int) $v['share_settings']['mode'] : 0; 
+                                $content[] = array('networkAuthId' => $post->network_auth_id, 'html' => $this->getItemHtml($networkId, $errorCode, $post->publishUrl, $printDelayDates, true, $isVideo, $shareMode));
                             } else {
                                 $content[] = array('networkAuthId' => $post->network_auth_id, 'networkDisplayName' => $v['network_display_name'], 'networkId' => $v['network_id'], 'networkType' => $v['network_type'], 'html' => $this->getItemHtml($networkId, $errorCode, $post->publishUrl, $printDelayDates, true));
                             }
@@ -703,13 +706,18 @@ class B2S_Ship_Save {
         return $html;
     }
 
-    public function getItemHtml($network_id = 0, $error = "", $link = "", $schedDate = array(), $directPost = false, $isVideo = 0) {
+    public function getItemHtml($network_id = 0, $error = "", $link = "", $schedDate = array(), $directPost = false, $isVideo = 0, $shareMode=0) {
         $html = "";
         if (empty($error)) {
             if ($directPost) {
                 if ($isVideo == 1) {
                     if ($network_id == 36) { // mobile approvement
-                        $html .= '<br><div class="alert alert-warning"><b>' . esc_html__('Your video will be uploaded. After TikTok has processed your video, you can unlock it in your TikTok app.', 'blog2social') . '</b> (<a href="' . esc_url(B2S_Tools::getSupportLink('video_sharing_tiktok')) . '" target="_blank">' . esc_html__('Learn how it works', 'blog2social') . '</a>)</div>';
+                        if($shareMode == 1){
+                            $html .= '<br><div class="alert alert-warning"><b>' . esc_html__('Your Video is uploading. It may take a few minutes for the content to process and be visible on your profile.', 'blog2social') . '</b></div>';
+                        } else{
+                            $html .= '<br><div class="alert alert-warning"><b>' . esc_html__('Your video will be uploaded. After TikTok has processed your video, you can unlock it in your TikTok app.', 'blog2social') . '</b> (<a href="' . esc_url(B2S_Tools::getSupportLink('video_sharing_tiktok')) . '" target="_blank">' . esc_html__('Learn how it works', 'blog2social') . '</a>)</div>';
+                        }
+
                     } else if (is_array($schedDate) && empty($schedDate)) {
                         if ($network_id == 32) { // youtube approvement
                             $html .= '<br><div class="alert alert-info"><b>' . esc_html__('Your Video is uploading. Please note: It can take up to 2-3 hours for YouTube to index your newly uploaded video (Youtube Shorts excluded).', 'blog2social') . '</b></div>';
@@ -719,7 +727,16 @@ class B2S_Ship_Save {
                     }
                 } else {
                     if ($network_id == 36) { // mobile approvement
+                        if($shareMode == 1){
+                        //$html .= '<br><div class="alert alert-warning"><b>' . esc_html__('Your image was successfully posted. It may take a few minutes for the content to process and be visible on your profile.', 'blog2social') . '</b></div>';
+                        $html .= '<br><span class="text-success"><i class="glyphicon glyphicon-ok-circle"></i> ' . esc_html__('published', 'blog2social');
+                        $html .= !empty($link) ? ': <a href="' . esc_url($link) . '" target="_blank">' . esc_html__('view social media post', 'blog2social') . '</a>' : '';
+                        $html .= '</span>';
+                   
+                        }else{
                         $html .= '<br><div class="alert alert-warning"><b>' . esc_html__('Your image will be uploaded. If TikTok has successfully processed your image, you can unlock it in your TikTok app.', 'blog2social') . '</b> (<a href="' . esc_url(B2S_Tools::getSupportLink('video_sharing_tiktok')) . '" target="_blank">' . esc_html__('Learn how it works', 'blog2social') . '</a>)</div>';
+                    }
+                     
                     }
                     else if (!isset($schedDate) || empty($schedDate)) {
                         $html .= '<br><span class="text-success"><i class="glyphicon glyphicon-ok-circle"></i> ' . esc_html__('published', 'blog2social');

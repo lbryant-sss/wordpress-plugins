@@ -557,7 +557,7 @@ abstract class QiAddonsForElementor_List_Shortcode extends QiAddonsForElementor_
 					'field_type' => 'slider',
 					'name'       => 'pagination_arrows_size',
 					'title'      => esc_html__( 'Pagination Arrows Size', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em' ),
+					'size_units' => array( 'px', '%', 'em', 'custom' ),
 					'responsive' => true,
 					'dependency' => array(
 						'hide' => array(
@@ -579,7 +579,7 @@ abstract class QiAddonsForElementor_List_Shortcode extends QiAddonsForElementor_
 					'field_type' => 'dimensions',
 					'name'       => 'pagination_border_radius',
 					'title'      => esc_html__( 'Pagination Item Border Radius', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em' ),
+					'size_units' => array( 'px', '%', 'em', 'custom' ),
 					'responsive' => true,
 					'dependency' => array(
 						'hide' => array(
@@ -601,7 +601,7 @@ abstract class QiAddonsForElementor_List_Shortcode extends QiAddonsForElementor_
 					'field_type' => 'slider',
 					'name'       => 'pagination_width',
 					'title'      => esc_html__( 'Pagination Item Width', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em' ),
+					'size_units' => array( 'px', '%', 'em', 'custom' ),
 					'responsive' => true,
 					'dependency' => array(
 						'hide' => array(
@@ -623,7 +623,7 @@ abstract class QiAddonsForElementor_List_Shortcode extends QiAddonsForElementor_
 					'field_type' => 'slider',
 					'name'       => 'pagination_height',
 					'title'      => esc_html__( 'Pagination Item Height', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em' ),
+					'size_units' => array( 'px', '%', 'em', 'custom' ),
 					'responsive' => true,
 					'dependency' => array(
 						'hide' => array(
@@ -645,7 +645,7 @@ abstract class QiAddonsForElementor_List_Shortcode extends QiAddonsForElementor_
 					'field_type' => 'slider',
 					'name'       => 'pagination_spacing',
 					'title'      => esc_html__( 'Space Between Pagination Items', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em' ),
+					'size_units' => array( 'px', '%', 'em', 'custom' ),
 					'responsive' => true,
 					'dependency' => array(
 						'hide' => array(
@@ -675,7 +675,7 @@ abstract class QiAddonsForElementor_List_Shortcode extends QiAddonsForElementor_
 							),
 						),
 					),
-					'size_units' => array( 'px', '%', 'em' ),
+					'size_units' => array( 'px', '%', 'em', 'custom' ),
 					'range'      => array(
 						'px' => array(
 							'min' => - 150,
@@ -730,7 +730,7 @@ abstract class QiAddonsForElementor_List_Shortcode extends QiAddonsForElementor_
 					'field_type'    => 'slider',
 					'name'          => 'zigzag_amount',
 					'title'         => esc_html__( 'Zigzag Amount', 'qi-addons-for-elementor' ),
-					'size_units'    => array( 'px', '%' ),
+					'size_units'    => array( 'px', '%', 'custom' ),
 					'responsive'    => true,
 					'default_value' => array(
 						'size' => 30,

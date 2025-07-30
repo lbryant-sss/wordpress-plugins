@@ -380,7 +380,7 @@ class Tt4b_Catalog_Class {
 
 		$raw_products_payload = array();
 		$mapi_upload_payload  = array();
-		// $mapi_update_payload = [];
+		$mapi_update_payload = array();
 		foreach ( $products as $product ) {
 			if ( is_null( $product ) ) {
 				++$failed_products_count;
@@ -404,11 +404,12 @@ class Tt4b_Catalog_Class {
 			if ( $mapi_reference_time <= $createTime || $restored_product ) {
 				$mapi_upload_payload[] = $dpa_product_info;
 			}
-			// if ( $createTime < $mapi_reference_time && !$restored_product ) {
-			// $mapi_update_payload[] = $dpa_product_info;
-			// } else {
-			// $mapi_upload_payload[] = $dpa_product_info;
-			// }
+
+			if ( $createTime < $mapi_reference_time && !$restored_product ) {
+			 	$mapi_update_payload[] = $dpa_product_info;
+			} else {
+			 	$mapi_upload_payload[] = $dpa_product_info;
+			}
 
 			$response = $this->tikTokProductsController->prepare_object( $product, $request );
 			if ( $response->is_error() ) {
@@ -444,10 +445,10 @@ class Tt4b_Catalog_Class {
 
 				$variations     = $product->get_available_variations( 'objects' );
 				$dpa_variations = $this->fetch_mapi_product_variations( $dpa_product_info['sku_id'], $dpa_product_info['description'] !== $dpa_product_info['title'] ? $dpa_product_info['description'] : '', $store_name, $variations, $mapi_reference_time );
-				// $update_variations = $dpa_variations[0];
+				$update_variations = $dpa_variations[0];
 				$upload_variations   = $dpa_variations[1];
 				$mapi_upload_payload = array_merge( $mapi_upload_payload, $upload_variations );
-				// $mapi_update_payload = array_merge( $mapi_update_payload, $update_variations );
+				$mapi_update_payload = array_merge( $mapi_update_payload, $update_variations );
 			}
 		}
 
@@ -467,14 +468,15 @@ class Tt4b_Catalog_Class {
 			);
 			$this->mapi->mapi_post( 'catalog/product/upload/', $access_token, $mapi_upload_request, 'v1.3' );
 		}
-		// if ( 0 < count( $mapi_update_payload ) ) {
-		// $mapi_update_request = [
-		// 'bc_id' => $bc_id,
-		// 'catalog_id' => $catalog_id,
-		// 'products' => $mapi_update_payload
-		// ];
-		// $this->mapi->mapi_post( 'catalog/product/update/', $access_token, $mapi_update_request, 'v1.3' );
-		// }
+		if ( 0 < count( $mapi_update_payload ) ) {
+			 $mapi_update_request = [
+			 'bc_id' => $bc_id,
+			 'catalog_id' => $catalog_id,
+			 'products' => $mapi_update_payload
+		 ];
+		 // use upload endpoint until update endpoint has better field support
+		 $this->mapi->mapi_post( 'catalog/product/upload/', $access_token, $mapi_update_request, 'v1.3' );
+		}
 		update_option( 'tt4b_product_restore_queue', $products_to_restore );
 
 		++$page;
@@ -503,6 +505,16 @@ class Tt4b_Catalog_Class {
 	 * @param int    $page_total
 	 * @param int    $page
 	 *
+	 * /**
+	 *  Sync a product's variants to the TikTok catalog
+	 *
+	 *  @param int    $parent_id
+	 *  @param string $parent_sku
+	 *  @param string $access_token
+	 *  @param int    $page_total
+	 *  @param int    $page
+	 *
+	 *  @return void
 	 * @return void
 	 */
 	public function variation_sync_helper( int $parent_id, string $parent_sku, string $access_token, int $page_total, int $page ) {
@@ -605,14 +617,14 @@ class Tt4b_Catalog_Class {
 			if ( $last_catalog_sync <= $createTime || $restored_product ) {
 				$dpa_variation_upload_products[] = $dpa_variation_product;
 			}
-			// if ( $createTime < $last_catalog_sync && !$restored_product ) {
-			// MAPI currently doesn't support updating item_group_id with /product/update/ endpoint
-			// unset( $dpa_variation_product['item_group_id'] );
-			// unset( $dpa_variation_product['price_info']['sale_price'] );
-			// $dpa_variation_update_products[] = $dpa_variation_product;
-			// } else {
-			// $dpa_variation_upload_products[] = $dpa_variation_product;
-			// }
+			 if ( $createTime < $last_catalog_sync && !$restored_product ) {
+			 // MAPI currently doesn't support updating item_group_id with /product/update/ endpoint
+			 // unset( $dpa_variation_product['item_group_id'] );
+			 // unset( $dpa_variation_product['price_info']['sale_price'] );
+			 $dpa_variation_update_products[] = $dpa_variation_product;
+			 } else {
+			 $dpa_variation_upload_products[] = $dpa_variation_product;
+			 }
 		}
 		update_option( 'tt4b_product_restore_queue', $products_to_restore );
 		return array( $dpa_variation_update_products, $dpa_variation_upload_products );

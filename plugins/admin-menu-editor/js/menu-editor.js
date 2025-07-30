@@ -4663,7 +4663,7 @@ function ameOnDomReady() {
 
 	//Only enable the copy button when the user selects a valid source and destination.
 	copyConfirmationButton.prop('disabled', true);
-	sourceActorList.add(destinationActorList).on('click', function() {
+	sourceActorList.add(destinationActorList).on('change', function() {
 		var sourceActor = sourceActorList.val();
 		var destinationActor = destinationActorList.val();
 

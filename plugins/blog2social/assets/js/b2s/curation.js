@@ -979,7 +979,7 @@ jQuery(document).on('click', '.b2s-upload-image', function () {
             var content = '<div class="b2s-image-item">' +
                     '<div class="b2s-image-item-thumb">' +
                     '<label for="b2s-image-count-' + count + '">' +
-                    '<img class="img-thumbnail networkImage" alt="blogImage" src="' + attachment.url + '">' +
+                    '<img class="img-thumbnail networkImage" alt="" src="' + attachment.url + '">' +
                     '</label>' +
                     '</div>' +
                     '<div class="b2s-image-item-caption text-center">' +

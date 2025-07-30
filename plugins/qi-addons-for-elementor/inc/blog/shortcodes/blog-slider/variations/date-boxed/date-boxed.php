@@ -94,7 +94,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_blog_slider_options_date_bo
 			'field_type' => 'slider',
 			'name'       => 'date_boxed_image_margin_bottom',
 			'title'      => esc_html__( 'Image Margin Bottom', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--date-boxed .qodef-e-media' => 'margin-bottom: {{SIZE}}{{UNIT}};',
@@ -114,7 +114,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_blog_slider_options_date_bo
 			'field_type' => 'slider',
 			'name'       => 'date_boxed_text_margin_bottom',
 			'title'      => esc_html__( 'Text Margin Bottom', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--date-boxed .qodef-e-text' => 'margin-bottom: {{SIZE}}{{UNIT}};',
@@ -204,7 +204,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_blog_slider_options_date_bo
 			'field_type' => 'dimensions',
 			'name'       => 'date_boxed_date_padding',
 			'title'      => esc_html__( 'Date Padding', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--date-boxed .qodef-e-info-date' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',

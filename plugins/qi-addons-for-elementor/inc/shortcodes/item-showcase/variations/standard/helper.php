@@ -31,7 +31,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_item_showcase_options_stand
 			'field_type' => 'dimensions',
 			'name'       => 'standard_icon_margin',
 			'title'      => esc_html__( 'Icon/Number Margin', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-layout--standard .qodef-e-icon-holder' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',

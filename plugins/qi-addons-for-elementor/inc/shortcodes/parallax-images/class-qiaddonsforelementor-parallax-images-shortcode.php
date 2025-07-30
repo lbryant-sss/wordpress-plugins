@@ -135,7 +135,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 					'field_type' => 'dimensions',
 					'name'       => 'main_padding',
 					'title'      => esc_html__( 'Main Image Padding', 'qi-addons-for-elementor' ),
-					'size_units' => array( 'px', '%', 'em' ),
+					'size_units' => array( 'px', '%', 'em', 'custom' ),
 					'responsive' => true,
 					'selectors'  => array(
 						'{{WRAPPER}} .qodef-qi-parallax-images' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -230,7 +230,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 							'field_type' => 'slider',
 							'name'       => 'parallax_image_max_width',
 							'title'      => esc_html__( 'Image Max Width', 'qi-addons-for-elementor' ),
-							'size_units' => array( 'px', '%', 'em' ),
+							'size_units' => array( 'px', '%', 'em', 'custom' ),
 							'range'      => array(
 								'px' => array(
 									'min' => 0,
@@ -258,7 +258,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 							'field_type' => 'slider',
 							'name'       => 'parallax_image_vertical_offset',
 							'title'      => esc_html__( 'Vertical Offset', 'qi-addons-for-elementor' ),
-							'size_units' => array( 'px', 'vh', '%' ),
+							'size_units' => array( 'px', 'vh', '%', 'custom' ),
 							'range'      => array(
 								'px' => array(
 									'min' => - 200,
@@ -285,7 +285,7 @@ if ( class_exists( 'QiAddonsForElementor_Shortcode' ) ) {
 							'field_type' => 'slider',
 							'name'       => 'parallax_image_horizontal_offset',
 							'title'      => esc_html__( 'Horizontal Offset', 'qi-addons-for-elementor' ),
-							'size_units' => array( 'px', 'vw', '%' ),
+							'size_units' => array( 'px', 'vw', '%', 'custom' ),
 							'range'      => array(
 								'px' => array(
 									'min' => - 200,

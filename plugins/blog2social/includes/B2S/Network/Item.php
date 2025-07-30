@@ -805,7 +805,7 @@ class B2S_Network_Item {
             $post_excerpt = (function_exists('strip_shortcodes')) ? strip_shortcodes($post[0]['post_excerpt']) : $post[0]['post_excerpt'];
             $post_title = (function_exists('strip_shortcodes')) ? strip_shortcodes($post[0]['post_title']) : $post[0]['post_title'];
             $html .= '<input type="hidden" id="b2s_use_post" value="true">';
-            $html .= '<input type="hidden" id="b2s_post_content" value="' . "test" . esc_attr(wp_strip_all_tags($post_content)) . '">';
+            $html .= '<input type="hidden" id="b2s_post_content" value="' . esc_attr(wp_strip_all_tags($post_content)) . '">';
             $html .= '<input type="hidden" id="b2s_post_excerpt" value="' . esc_attr(wp_strip_all_tags($post_excerpt)) . '">';
             $html .= '<input type="hidden" id="b2s_post_title" value="' . esc_attr(wp_strip_all_tags($post_title)) . '">';
             $html .= '<input type="hidden" id="b2s_post_author" value="' . esc_attr($author) . '">';

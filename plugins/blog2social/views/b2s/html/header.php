@@ -738,7 +738,7 @@ if (isset($_GET['page']) && !empty($_GET['page']) && !in_array($_GET['page'], un
                 </div>
                 <div class="row">
                     <div class="b2s-ass-auth-step-1-content">
-                        <h2><?php esc_html_e('Connect AI assistant', 'blog2social') ?></h2>
+                        <h2><?php esc_html_e('Improve post with AI', 'blog2social') ?></h2>
                         <p><?php esc_html_e('Connect with the AI assistant to get started.', 'blog2social') ?></p>
                         <br>
                         <p><b><?php esc_html_e('Use this email for verification', 'blog2social') ?></b></p>

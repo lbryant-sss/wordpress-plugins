@@ -38,7 +38,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_product_list_options_info_b
 			'name'       => 'info_below_title_margin_top',
 			'title'      => esc_html__( 'Title Margin Top', 'qi-addons-for-elementor' ),
 			'group'      => esc_html__( 'Spacing Style', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--info-below .qodef-e-product-title' => 'margin-top: {{SIZE}}{{UNIT}};',
@@ -58,7 +58,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_product_list_options_info_b
 			'name'       => 'info_below_price_margin_top',
 			'title'      => esc_html__( 'Price Margin Top', 'qi-addons-for-elementor' ),
 			'group'      => esc_html__( 'Spacing Style', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--info-below .qodef-woo-product-price' => 'margin-top: {{SIZE}}{{UNIT}};',
@@ -78,7 +78,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_product_list_options_info_b
 			'name'       => 'info_below_rating_margin_top',
 			'title'      => esc_html__( 'Rating Margin Top', 'qi-addons-for-elementor' ),
 			'group'      => esc_html__( 'Spacing Style', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--info-below .qodef-e-ratings' => 'margin-top: {{SIZE}}{{UNIT}};',
@@ -98,7 +98,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_add_product_list_options_info_b
 			'name'       => 'info_below_button_margin_top',
 			'title'      => esc_html__( 'Button Margin Top', 'qi-addons-for-elementor' ),
 			'group'      => esc_html__( 'Spacing Style', 'qi-addons-for-elementor' ),
-			'size_units' => array( 'px', '%', 'em' ),
+			'size_units' => array( 'px', '%', 'em', 'custom' ),
 			'responsive' => true,
 			'selectors'  => array(
 				'{{WRAPPER}} .qodef-item-layout--info-below .qodef-e-product-content .qodef-qi-button' => 'margin-top: {{SIZE}}{{UNIT}};',
