@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: nextend-facebook-connect\n"
-"POT-Creation-Date: 2025-05-05 11:04+0200\n"
-"PO-Revision-Date: 2025-05-05 11:04+0200\n"
+"POT-Creation-Date: 2025-07-29 11:37+0200\n"
+"PO-Revision-Date: 2025-07-29 11:37+0200\n"
 "Last-Translator: \n"
 "Language-Team: renato@modernstuff.com.br\n"
 "Language: pt_BR\n"
@@ -1830,10 +1830,8 @@ msgstr ""
 msgid "Required scope: %1$s"
 msgstr "Escopo requerido: %1$s"
 
-#, fuzzy
-#| msgid "Uniform"
-msgid "Uniform - Legacy"
-msgstr "Uniforme"
+msgid "Neutral"
+msgstr ""
 
 #, fuzzy
 #| msgid "Click on the \"Credentials\" in the left hand menu"
@@ -4887,6 +4885,11 @@ msgstr "Confirme a senha"
 
 msgid "Username"
 msgstr "Nome de usuário"
+
+#, fuzzy
+#~| msgid "Uniform"
+#~ msgid "Uniform - Legacy"
+#~ msgstr "Uniforme"
 
 #, fuzzy, php-format
 #~| msgid "Click on the \"Credentials\" in the left hand menu"

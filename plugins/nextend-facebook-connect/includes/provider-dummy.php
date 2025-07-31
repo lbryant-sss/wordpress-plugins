@@ -3,6 +3,13 @@
 abstract class NextendSocialProviderDummy {
 
     protected $id;
+
+    /**
+     * The absolute URL of the related documentation
+     *
+     * @var string $docUrl
+     */
+    protected $docUrl;
     protected $label;
     protected $path;
 
@@ -44,6 +51,14 @@ abstract class NextendSocialProviderDummy {
      */
     public function getId() {
         return $this->id;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getDocURL() {
+        return $this->docUrl;
     }
 
     /**

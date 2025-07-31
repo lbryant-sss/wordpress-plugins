@@ -6,7 +6,7 @@ const index = require('./index-8acc3c89.js');
 const mutations = require('./mutations-10a18c83.js');
 const store = require('./store-4a539aea.js');
 const store$1 = require('./store-c4cf8771.js');
-require('./watchers-5d4eed04.js');
+require('./watchers-f70e33a5.js');
 const getters = require('./getters-ae03ef93.js');
 const universe = require('./universe-0cf1168a.js');
 require('./index-bcdafe6e.js');

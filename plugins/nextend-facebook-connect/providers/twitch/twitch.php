@@ -5,9 +5,10 @@ class NextendSocialProviderTwitch extends NextendSocialProviderDummy {
     protected $color = '#9146FF';
 
     public function __construct() {
-        $this->id    = 'twitch';
-        $this->label = 'Twitch';
-        $this->path  = dirname(__FILE__);
+        $this->id     = 'twitch';
+        $this->docUrl = 'https://social-login.nextendweb.com/documentation/providers/twitch/';
+        $this->label  = 'Twitch';
+        $this->path   = dirname(__FILE__);
     }
 }
 

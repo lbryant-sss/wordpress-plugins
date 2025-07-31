@@ -619,7 +619,7 @@ class NextendSocialLoginAdmin {
         $dismissUrl = wp_nonce_url(add_query_arg($redirectTo, NextendSocialLoginAdmin::getAdminUrl('dismiss_woocommerce')), 'nsl_dismiss_woocommerce');
         echo '<div class="notice notice-info">
             <p>' . sprintf(__('%1$s detected that %2$s installed on your site. You need the Pro Addon to display Social Login buttons in %2$s login form!', 'nextend-facebook-connect'), '<b>Nextend Social Login</b>', '<b>WooCommerce</b>') . '</p>
-            <p><a href="' . NextendSocialLoginAdmin::trackUrl('https://nextendweb.com/social-login/', 'woocommerce-notice') . '" target="_blank" onclick="window.location.href=\'' . esc_url($dismissUrl) . '\';" class="button button-primary">' . __('Dismiss and check Pro Addon', 'nextend-facebook-connect') . '</a> <a href="' . esc_url($dismissUrl) . '" class="button button-secondary">' . __('Dismiss', 'nextend-facebook-connect') . '</a></p>
+            <p><a href="' . NextendSocialLoginAdmin::trackUrl('https://social-login.nextendweb.com/', 'woocommerce-notice') . '" target="_blank" onclick="window.location.href=\'' . esc_url($dismissUrl) . '\';" class="button button-primary">' . __('Dismiss and check Pro Addon', 'nextend-facebook-connect') . '</a> <a href="' . esc_url($dismissUrl) . '" class="button button-secondary">' . __('Dismiss', 'nextend-facebook-connect') . '</a></p>
         </div>';
     }
 
@@ -787,7 +787,7 @@ class NextendSocialLoginAdmin {
     }
 
     public static function show_WPML_warning() {
-        printf(__('<strong><u>Warning</u></strong>: You are using <b>%1$s</b>! Depending on your %1$s configuration the Redirect URI can be different. For more information please check our %2$s %1$s compatibility tutorial%3$s!', 'nextend-facebook-connect'), 'WPML', '<a href="https://nextendweb.com/nextend-social-login-docs/how-to-make-nextend-social-login-compatible-with-wpml/" target="_blank">', '</a>');
+        printf(__('<strong><u>Warning</u></strong>: You are using <b>%1$s</b>! Depending on your %1$s configuration the Redirect URI can be different. For more information please check our %2$s %1$s compatibility tutorial%3$s!', 'nextend-facebook-connect'), 'WPML', '<a href="https://social-login.nextendweb.com/documentation/for-developers/guides/how-to-make-nextend-social-login-compatible-with-wpml/" target="_blank">', '</a>');
     }
 
     /**
@@ -1014,7 +1014,7 @@ class NextendSocialLoginAdmin {
 
             $lastUpdatedDate = date_format(date_create_from_format('Y-m-d', $lastUpdated), get_option('date_format'));
 
-            $supportURL         = 'https://nextendweb.com/contact-us/nextend-social-login-support/';
+            $supportURL         = 'https://social-login.nextendweb.com/support/';
             $version            = defined('NSL_PRO_PATH') ? 'Pro-Addon' : 'Free';
             $args               = array(
                 'topic'    => 'Wrong-Steps',
@@ -1023,9 +1023,7 @@ class NextendSocialLoginAdmin {
             );
             $supportUrlWithArgs = add_query_arg($args, $supportURL);
 
-            $documentationURL = 'https://nextendweb.com/nextend-social-login-docs/provider-' . $provider->getId() . '/';
-
-            printf(__('<p><strong><u>Warning</u></strong>: Providers change the App setup process quite often, which means some steps below might not be accurate. If you see a significant difference in the written instructions and what you see at the provider, check the guide in the %1$sonline documentation%2$s first, just in case if we are already aware of the changes, hence updated the guide. Otherwise feel free to %3$sreport the changes%4$s, so we can check and update the instructions.<br><strong>Last updated:</strong> %5$s.</p>', 'nextend-facebook-connect'), '<a href="' . $documentationURL . '" target="_blank">', '</a>', '<a href="' . $supportUrlWithArgs . '" target="_blank">', '</a>', $lastUpdatedDate);
+            printf(__('<p><strong><u>Warning</u></strong>: Providers change the App setup process quite often, which means some steps below might not be accurate. If you see a significant difference in the written instructions and what you see at the provider, check the guide in the %1$sonline documentation%2$s first, just in case if we are already aware of the changes, hence updated the guide. Otherwise feel free to %3$sreport the changes%4$s, so we can check and update the instructions.<br><strong>Last updated:</strong> %5$s.</p>', 'nextend-facebook-connect'), '<a href="' . $provider->getDocURL() . '" target="_blank">', '</a>', '<a href="' . $supportUrlWithArgs . '" target="_blank">', '</a>', $lastUpdatedDate);
         }
     }
 }

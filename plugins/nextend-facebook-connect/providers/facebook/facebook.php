@@ -60,8 +60,9 @@ class NextendSocialProviderFacebook extends NextendSocialProviderOAuth {
     );
 
     public function __construct() {
-        $this->id    = 'facebook';
-        $this->label = 'Facebook';
+        $this->id     = 'facebook';
+        $this->docUrl = 'https://social-login.nextendweb.com/documentation/providers/facebook/';
+        $this->label  = 'Facebook';
 
         $this->path = dirname(__FILE__);
 

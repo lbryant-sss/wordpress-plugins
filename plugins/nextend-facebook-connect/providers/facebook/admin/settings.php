@@ -12,7 +12,7 @@ $settings = $provider->settings;
         <div class="error">
             <p><?php printf(__('%1$s allows HTTPS OAuth Redirects only. You must move your site to HTTPS in order to allow login with %1$s.', 'nextend-facebook-connect'), 'Facebook'); ?></p>
             <p>
-                <a href="https://nextendweb.com/nextend-social-login-docs/facebook-api-changes/#enforce-https" target="_blank"><?php _e('How to get SSL for my WordPress site?', 'nextend-facebook-connect'); ?></a>
+                <a href="https://social-login.nextendweb.com/documentation/providers/facebook/#enforce-https" target="_blank"><?php _e('How to get SSL for my WordPress site?', 'nextend-facebook-connect'); ?></a>
             </p>
         </div>
     <?php endif; ?>
@@ -58,7 +58,7 @@ $settings = $provider->settings;
             <div class="error">
                 <p><?php printf(__('By replacing your existing %1$s App, users with linked %1$s accounts will no longer be able to login with %1$s.', 'nextend-facebook-connect'), 'Facebook'); ?></p>
                 <p>
-                    <a href="https://nextendweb.com/nextend-social-login-docs/provider-facebook/#app_scoped_user_id" target="_blank"><?php _e('Find out why?', 'nextend-facebook-connect'); ?></a>
+                    <a href="https://social-login.nextendweb.com/documentation/providers/facebook/#app-scoped-user-id" target="_blank"><?php _e('Find out why?', 'nextend-facebook-connect'); ?></a>
                 </p>
             </div>
         <?php endif; ?>

@@ -9,7 +9,7 @@ function nsl_get_pro_no_license() {
         <p><?php printf(__('The features below are available in %s Pro Addon. Get it today and tweak the awesome settings.', 'nextend-facebook-connect'), "Nextend Social Login"); ?></p>
         <p><?php _e('If you already have a license, you can Authorize your Pro Addon. Otherwise you can purchase it using the button below.', 'nextend-facebook-connect'); ?></p>
         <p>
-            <a href="<?php echo NextendSocialLoginAdmin::trackUrl('https://nextendweb.com/social-login/', 'buy-pro-addon-button'); ?>"
+            <a href="<?php echo NextendSocialLoginAdmin::trackUrl('https://social-login.nextendweb.com/pricing/', 'buy-pro-addon-button'); ?>"
                target="_blank"
                class="button button-primary"><?php _e('Buy Pro Addon', 'nextend-facebook-connect'); ?></a>
             <a href="<?php echo NextendSocialLoginAdmin::getAdminUrl('pro-addon'); ?>"

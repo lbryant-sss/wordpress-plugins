@@ -14428,31 +14428,29 @@ function SidebarNavigationScreen({
  */
 
 
-/** @typedef {{icon: JSX.Element, size?: number} & import('@wordpress/primitives').SVGProps} IconProps */
+/**
+ * External dependencies
+ */
 
 /**
  * Return an SVG icon.
  *
- * @param {IconProps}                                 props icon is the SVG component to render
- *                                                          size is a number specifying the icon size in pixels
- *                                                          Other props will be passed to wrapped SVG component
- * @param {import('react').ForwardedRef<HTMLElement>} ref   The forwarded ref to the SVG element.
+ * @param props The component props.
  *
- * @return {JSX.Element}  Icon component
+ * @return Icon component
  */
-function Icon({
+/* harmony default export */ const build_module_icon = ((0,external_wp_element_namespaceObject.forwardRef)(({
   icon,
   size = 24,
   ...props
-}, ref) {
+}, ref) => {
   return (0,external_wp_element_namespaceObject.cloneElement)(icon, {
     width: size,
     height: size,
     ...props,
     ref
   });
-}
-/* harmony default export */ const build_module_icon = ((0,external_wp_element_namespaceObject.forwardRef)(Icon));
+}));
 
 ;// ./packages/icons/build-module/library/chevron-left-small.js
 /**
@@ -32827,6 +32825,58 @@ function datetime_isValid(value, context) {
   }
 });
 
+;// ./packages/dataviews/build-module/field-types/date.js
+/**
+ * WordPress dependencies
+ */
+
+
+/**
+ * Internal dependencies
+ */
+
+
+const getFormattedDate = dateToDisplay => (0,external_wp_date_namespaceObject.dateI18n)((0,external_wp_date_namespaceObject.getSettings)().formats.date, (0,external_wp_date_namespaceObject.getDate)(dateToDisplay));
+function date_sort(a, b, direction) {
+  const timeA = new Date(a).getTime();
+  const timeB = new Date(b).getTime();
+  return direction === 'asc' ? timeA - timeB : timeB - timeA;
+}
+function date_isValid(value, context) {
+  if (context?.elements) {
+    const validValues = context?.elements.map(f => f.value);
+    if (!validValues.includes(value)) {
+      return false;
+    }
+  }
+  return true;
+}
+/* harmony default export */ const date = ({
+  sort: date_sort,
+  isValid: date_isValid,
+  Edit: null,
+  render: ({
+    item,
+    field
+  }) => {
+    if (field.elements) {
+      return renderFromElements({
+        item,
+        field
+      });
+    }
+    const value = field.getValue({
+      item
+    });
+    if (!value) {
+      return '';
+    }
+    return getFormattedDate(value);
+  },
+  enableSorting: true,
+  filterBy: false
+});
+
 ;// ./packages/dataviews/build-module/field-types/boolean.js
 /**
  * WordPress dependencies
@@ -32992,6 +33042,7 @@ const arrayFieldType = {
 
 
 
+
 /**
  *
  * @param {FieldType} type The field type definition to get.
@@ -33010,6 +33061,9 @@ function getFieldTypeDefinition(type) {
   }
   if ('datetime' === type) {
     return datetime;
+  }
+  if ('date' === type) {
+    return date;
   }
   if ('boolean' === type) {
     return field_types_boolean;
@@ -34023,17 +34077,29 @@ function filterSortAndPaginate(data, view, fields) {
   }
 
   // Handle sorting.
-  if (view.sort) {
-    const fieldId = view.sort.field;
-    const fieldToSort = _fields.find(field => {
-      return field.id === fieldId;
-    });
-    if (fieldToSort) {
-      filteredData.sort((a, b) => {
+  const sortByField = view.sort?.field ? _fields.find(field => {
+    return field.id === view.sort?.field;
+  }) : null;
+  const groupByField = view.groupByField ? _fields.find(field => {
+    return field.id === view.groupByField;
+  }) : null;
+  if (sortByField || groupByField) {
+    filteredData.sort((a, b) => {
+      if (groupByField) {
+        const groupCompare = groupByField.sort(a, b, 'asc');
+
+        // If items are in different groups, return the group comparison result.
+        // Otherwise, fall back to sorting by the sort field.
+        if (groupCompare !== 0) {
+          return groupCompare;
+        }
+      }
+      if (sortByField) {
         var _view$sort$direction;
-        return fieldToSort.sort(a, b, (_view$sort$direction = view.sort?.direction) !== null && _view$sort$direction !== void 0 ? _view$sort$direction : 'desc');
-      });
-    }
+        return sortByField.sort(a, b, (_view$sort$direction = view.sort?.direction) !== null && _view$sort$direction !== void 0 ? _view$sort$direction : 'desc');
+      }
+      return 0;
+    });
   }
 
   // Handle pagination.
@@ -41561,8 +41627,62 @@ function ViewGrid({
   const gridStyle = usedPreviewSize ? {
     gridTemplateColumns: `repeat(${usedPreviewSize}, minmax(0, 1fr))`
   } : {};
+  const groupField = view.groupByField ? fields.find(f => f.id === view.groupByField) : null;
+
+  // Group data by groupByField if specified
+  const dataByGroup = groupField ? data.reduce((groups, item) => {
+    const groupName = groupField.getValue({
+      item
+    });
+    if (!groups.has(groupName)) {
+      groups.set(groupName, []);
+    }
+    groups.get(groupName)?.push(item);
+    return groups;
+  }, new Map()) : null;
   return /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsxs)(external_ReactJSXRuntime_namespaceObject.Fragment, {
-    children: [hasData && /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.__experimentalGrid, {
+    children: [
+    // Render multiple groups.
+    hasData && groupField && dataByGroup && /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.__experimentalVStack, {
+      spacing: 4,
+      children: Array.from(dataByGroup.entries()).map(([groupName, groupItems]) => /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsxs)(external_wp_components_namespaceObject.__experimentalVStack, {
+        spacing: 2,
+        children: [/*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)("h3", {
+          className: "dataviews-view-grid__group-header",
+          children: (0,external_wp_i18n_namespaceObject.sprintf)(
+          // translators: 1: The label of the field e.g. "Date". 2: The value of the field, e.g.: "May 2022".
+          (0,external_wp_i18n_namespaceObject.__)('%1$s: %2$s'), groupField.label, groupName)
+        }), /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.__experimentalGrid, {
+          gap: 8,
+          columns: 2,
+          alignment: "top",
+          className: dist_clsx('dataviews-view-grid', className),
+          style: gridStyle,
+          "aria-busy": isLoading,
+          children: groupItems.map(item => {
+            return /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(GridItem, {
+              view: view,
+              selection: selection,
+              onChangeSelection: onChangeSelection,
+              onClickItem: onClickItem,
+              isItemClickable: isItemClickable,
+              renderItemLink: renderItemLink,
+              getItemId: getItemId,
+              item: item,
+              actions: actions,
+              mediaField: mediaField,
+              titleField: titleField,
+              descriptionField: descriptionField,
+              regularFields: regularFields,
+              badgeFields: badgeFields,
+              hasBulkActions: hasBulkActions
+            }, getItemId(item));
+          })
+        })]
+      }, groupName))
+    }),
+    // Render a single grid with all data.
+    hasData && !dataByGroup && /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(external_wp_components_namespaceObject.__experimentalGrid, {
       gap: 8,
       columns: 2,
       alignment: "top",
@@ -41588,7 +41708,9 @@ function ViewGrid({
           hasBulkActions: hasBulkActions
         }, getItemId(item));
       })
-    }), !hasData && /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)("div", {
+    }),
+    // Render empty state.
+    !hasData && /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)("div", {
       className: dist_clsx({
         'dataviews-loading': isLoading,
         'dataviews-no-results': !isLoading

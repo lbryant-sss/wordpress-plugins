@@ -57,7 +57,7 @@ wp_enqueue_script('jquery-ui-sortable');
                     switch ($state) {
                         case 'pro-only':
                             ?>
-                            <a href="<?php echo NextendSocialLoginAdmin::trackUrl('https://nextendweb.com/social-login/', 'buy-pro-addon-button-' . $provider->getId()); ?>"
+                            <a href="<?php echo NextendSocialLoginAdmin::trackUrl('https://social-login.nextendweb.com/pricing/', 'buy-pro-addon-button-' . $provider->getId()); ?>"
                                class="button button-secondary" target="_blank">
                                 <?php _e('Upgrade Now', 'nextend-facebook-connect'); ?>
                             </a>
@@ -116,7 +116,7 @@ wp_enqueue_script('jquery-ui-sortable');
         if (!$already_subscribed):
             ?>
 
-            <div class="nsl-dashboard-newsletter" style="background-color: #fff; border: 2px solid #0073aa">
+            <div class="nsl-dashboard-newsletter" style="background-color: #fff; border: 2px solid #1344FE">
                 <div class="nsl-dashboard-newsletter-content">
 
                     <h2><?php _e('Stay Updated', 'nextend-facebook-connect'); ?></h2>

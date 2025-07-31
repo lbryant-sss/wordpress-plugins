@@ -11,7 +11,7 @@ $provider = $this->getProvider();
     <p>
         <b><?php _e('Important!', 'nextend-facebook-connect'); ?></b>
         &nbsp;<?php _e('The shortcodes are only rendered for users who haven\'t logged in yet!', 'nextend-facebook-connect'); ?>
-        &nbsp;<a href="https://nextendweb.com/nextend-social-login-docs/theme-developer/#shortcode"><?php _e('See the full list of shortcode parameters.', 'nextend-facebook-connect'); ?></a>
+        &nbsp;<a href="https://social-login.nextendweb.com/documentation/for-developers/theme/#shortcode" target="_blank"><?php _e('See the full list of shortcode parameters.', 'nextend-facebook-connect'); ?></a>
     </p>
 
     <?php

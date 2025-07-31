@@ -106,8 +106,9 @@ class NextendSocialProviderTwitter extends NextendSocialProviderOAuth {
     );
 
     public function __construct() {
-        $this->id    = 'twitter';
-        $this->label = 'X (formerly Twitter)';
+        $this->id     = 'twitter';
+        $this->docUrl = 'https://social-login.nextendweb.com/documentation/providers/x-formerly-twitter/';
+        $this->label  = 'X (formerly Twitter)';
 
         $this->path = dirname(__FILE__);
 

@@ -64,6 +64,9 @@ class HTMega_Elementor_Widget_Service extends Widget_Base {
                     'label' => __( 'Service Title', 'htmega-addons' ),
                     'type' => Controls_Manager::TEXT,
                     'placeholder' => __( 'Services Title', 'htmega-addons' ),
+                     'dynamic' => [
+                        'active' => true,
+                    ],
                 ]
             );
 
@@ -96,7 +99,10 @@ class HTMega_Elementor_Widget_Service extends Widget_Base {
                     ],
                     'condition' => [
                         'htmega_service_icon_type' => 'img',
-                    ]
+                    ],
+                     'dynamic' => [
+                        'active' => true,
+                    ],
                 ]
             );
 
@@ -133,6 +139,9 @@ class HTMega_Elementor_Widget_Service extends Widget_Base {
                     'label' => __( 'Service description', 'htmega-addons' ),
                     'type' => Controls_Manager::TEXTAREA,
                     'placeholder' => __( 'There are many variations of passages Lorem Ipsum available, but majority have ama suffered altratio. the lorem.', 'htmega-addons' ),
+                     'dynamic' => [
+                        'active' => true,
+                    ],
                 ]
             );
 
@@ -142,6 +151,9 @@ class HTMega_Elementor_Widget_Service extends Widget_Base {
                     'label' => __( 'Service Button text', 'htmega-addons' ),
                     'type' => Controls_Manager::TEXT,
                     'placeholder' => __( 'Read More', 'htmega-addons' ),
+                     'dynamic' => [
+                        'active' => true,
+                    ],
                 ]
             );
             $this->add_control(
@@ -223,6 +235,9 @@ class HTMega_Elementor_Widget_Service extends Widget_Base {
                         'url' => '#',
                         'is_external' => false,
                         'nofollow' => false,
+                    ],
+                     'dynamic' => [
+                        'active' => true,
                     ],
                 ]
             );

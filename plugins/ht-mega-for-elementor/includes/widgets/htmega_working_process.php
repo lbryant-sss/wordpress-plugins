@@ -1068,18 +1068,18 @@ class HTMega_Elementor_Widget_Working_Process extends Widget_Base {
                     'label' => __( 'Hover', 'htmega-addons' ),
                 ]
             );
-            $this->add_control(
-                'icon_color_hover',
-                [
-                    'label' => __( 'Color', 'htmega-addons' ),
-                    'type' => Controls_Manager::COLOR,
-                    'selectors' => [
-                        '{{WRAPPER}} .htmega-process-area .htmega-single-process:hover .icon' => 'color: {{VALUE}}',
-                        '{{WRAPPER}} .htmega-process-area .htmega-single-process:hover .icon i' => 'color: {{VALUE}}',
-                        '{{WRAPPER}} .htmega-process-area .htmega-single-process:hover .icon svg path' => 'fill: {{VALUE}}',
-                    ],
-                ]
-            );
+                $this->add_control(
+                    'icon_color_hover',
+                    [
+                        'label' => __( 'Color', 'htmega-addons' ),
+                        'type' => Controls_Manager::COLOR,
+                        'selectors' => [
+                            '{{WRAPPER}} .htmega-process-area .htmega-single-process:hover .icon' => 'color: {{VALUE}}',
+                            '{{WRAPPER}} .htmega-process-area .htmega-single-process:hover .icon i' => 'color: {{VALUE}}',
+                            '{{WRAPPER}} .htmega-process-area .htmega-single-process:hover .icon svg path' => 'fill: {{VALUE}}',
+                        ],
+                    ]
+                );
                 $this->add_group_control(
                     Group_Control_Background::get_type(),
                     [
@@ -1097,6 +1097,65 @@ class HTMega_Elementor_Widget_Working_Process extends Widget_Base {
                         'selector' => '{{WRAPPER}} .htmega-process-area .htmega-single-process:hover .icon',
                     ]
                 );
+            $this->end_controls_tabS(); //end
+        $this->end_controls_section();
+
+        // Process Image Style tab section
+        $this->start_controls_section(
+            'process_image_style_section',
+            [
+                'label' => __( 'Image', 'htmega-addons' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_control(
+            'process_image_width',
+            [
+                'label' => __( 'Width', 'htmega-addons' ),
+                'type'  => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', '%' ],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 500,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .htmega-single-process .icon img' => 'width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'process_image_border',
+                'label' => __( 'Border', 'htmega-addons' ),
+                'selector' => '{{WRAPPER}} .htmega-single-process .icon img',
+            ]
+        );
+        $this->add_responsive_control(
+            'process_image_border_radius',
+            [
+                'label' => esc_html__( 'Border Radius', 'htmega-addons' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%' ],
+                'selectors' => [
+                    '{{WRAPPER}} .htmega-single-process .icon img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name' => 'process_image_box_shadow',
+                'label' => __( 'Box Shadow', 'htmega-addons' ),
+                'selector' => '{{WRAPPER}} .htmega-single-process .icon img',
+            ]
+        );
         $this->end_controls_section();
 
     }

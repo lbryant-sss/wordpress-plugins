@@ -11,7 +11,7 @@ $provider = $this->getProvider();
         <div class="error">
             <p><?php printf(__('%1$s allows HTTPS OAuth Redirects only. You must move your site to HTTPS in order to allow login with %1$s.', 'nextend-facebook-connect'), 'Facebook'); ?></p>
             <p>
-                <a href="https://nextendweb.com/nextend-social-login-docs/facebook-api-changes/#enforce-https" target="_blank"><?php _e('How to get SSL for my WordPress site?', 'nextend-facebook-connect'); ?></a>
+                <a href="https://social-login.nextendweb.com/documentation/providers/facebook/#enforce-https" target="_blank"><?php _e('How to get SSL for my WordPress site?', 'nextend-facebook-connect'); ?></a>
             </p>
         </div>
     <?php else: ?>
@@ -81,12 +81,12 @@ $provider = $this->getProvider();
             </ol>
 
             <p><?php printf(__('<b>WARNING:</b> <u>Don\'t replace your Facebook App with another!</u> Since WordPress users with linked Facebook accounts can only login using the %1$s App, that was originally used at the time, when the WordPress account was linked with a %1$s Account.<br>
-If you would like to know the reason of this, or you really need to replace the Facebook App, then please check our %2$sdocumentation%3$s.', 'nextend-facebook-connect'), 'Facebook', '<a href="https://nextendweb.com/nextend-social-login-docs/provider-facebook/#app_scoped_user_id" target="_blank">', '</a>'); ?></p>
+If you would like to know the reason of this, or you really need to replace the Facebook App, then please check our %2$sdocumentation%3$s.', 'nextend-facebook-connect'), 'Facebook', '<a href="https://social-login.nextendweb.com/documentation/providers/facebook/#app-scoped-user-id" target="_blank">', '</a>'); ?></p>
 
             <br>
             <h2 class="title"><?php _e('Maintaining the Facebook App:', 'nextend-facebook-connect'); ?></h2>
             <p><?php printf(__('<strong><u>Facebook Data Use Checkup:</u></strong> To protecting people\'s privacy, Facebook might requests you to fill some forms, so they can ensure that your API access and data use comply with the Facebook policies.
-If Facebook displays the "%1$s" modal for your App, then in our %2$sdocumentation%3$s you can find more information about the permissions that we need.', 'nextend-facebook-connect'), 'Data Use Checkup', '<a href="https://nextendweb.com/nextend-social-login-docs/provider-facebook/#data_use_checkup" target="_blank">', '</a>'); ?></p>
+If Facebook displays the "%1$s" modal for your App, then in our %2$sdocumentation%3$s you can find more information about the permissions that we need.', 'nextend-facebook-connect'), 'Data Use Checkup', '<a href="https://social-login.nextendweb.com/documentation/providers/facebook/#data-use-checkup" target="_blank">', '</a>'); ?></p>
 
             <a href="<?php echo $this->getUrl('settings'); ?>"
                class="button button-primary"><?php printf(__('I am done setting up my %s', 'nextend-facebook-connect'), 'Facebook App'); ?></a>

@@ -3,16 +3,16 @@
  * Plugin Name: Simple Banner
  * Plugin URI: https://github.com/rpetersen29/simple-banner
  * Description: Display a simple banner at the top or bottom of your website. Now with multi-banner support
- * Version: 3.0.9
+ * Version: 3.0.10
  * Author: Ryan Petersen
  * Author URI: http://rpetersen29.github.io/
  * License: GPLv3
  *
  * @package Simple Banner
- * @version 3.0.9
+ * @version 3.0.10
  * @author Ryan Petersen <rpetersen.dev@gmail.com>
  */
-define ('SB_VERSION', '3.0.9');
+define ('SB_VERSION', '3.0.10');
 
 register_activation_hook( __FILE__, 'simple_banner_activate' );
 function simple_banner_activate() {
@@ -970,15 +970,18 @@ function simple_banner_settings_page() {
 		};
 
 		// Permissions
-		document.getElementById('simple_banner_pro_permissions').onclick=function(e){
-			let permissionsArray = [];
-			Array.from(document.getElementById('simple_banner_pro_permissions').getElementsByTagName('input')).forEach(function(e) {
-				if (e.checked) {
-					permissionsArray.push(e.value);
-				}
-			});
-			document.getElementById('permissions_array').value = permissionsArray;
-		};
+		// Permissions only shown to administrators so need to wrap in if statement in order to ensure no errors
+		if (document.getElementById('simple_banner_pro_permissions')) {
+			document.getElementById('simple_banner_pro_permissions').onclick=function(e){
+				let permissionsArray = [];
+				Array.from(document.getElementById('simple_banner_pro_permissions').getElementsByTagName('input')).forEach(function(e) {
+					if (e.checked) {
+						permissionsArray.push(e.value);
+					}
+				});
+				document.getElementById('permissions_array').value = permissionsArray;
+			};
+		}
 
 		// Switch Banners
 		document.getElementById('banner_selector').onchange=function(e){

@@ -38,6 +38,7 @@
     "align": false,
     "alignWide": false,
     "html": false,
+    "inserter": false,
     "multiple": false,
     "__experimentalSelector": ".wp-block-button .wp-block-button__link",
     "color": {

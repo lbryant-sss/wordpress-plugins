@@ -30,7 +30,7 @@ NextendSocialLoginAdmin::showProBox();
                 <?php
                 $customActionNotices = '<p class="description">' . sprintf(__('%1$s Add your custom actions here. One action per line.', 'nextend-facebook-connect'), '<b>' . __('Usage:', "nextend-facebook-connect") . '</b>') . '</p>';
                 $customActionNotices .= '<p class="description">' . sprintf(__('%1$s The HTML of the social buttons will be added at the place where the action is fired.', 'nextend-facebook-connect'), '<b>' . __("Important:", "nextend-facebook-connect") . '</b>') . '</p>';
-                $customActionNotices .= '<p class="description">' . sprintf(__('If you %1$sexperience problems%2$s because of this feature, you can disable it by defining the %3$s constant.', 'nextend-facebook-connect'), '<a href="https://nextendweb.com/nextend-social-login-docs/global-settings-custom-actions/#custom-actions" target="_blank">', '</a>', '<code>NSL_DISABLE_CUSTOM_ACTIONS</code>') . '</p>';
+                $customActionNotices .= '<p class="description">' . sprintf(__('If you %1$sexperience problems%2$s because of this feature, you can disable it by defining the %3$s constant.', 'nextend-facebook-connect'), '<a href="https://social-login.nextendweb.com/documentation/form-integrations/custom-actions/" target="_blank">', '</a>', '<code>NSL_DISABLE_CUSTOM_ACTIONS</code>') . '</p>';
 
                 echo $customActionNotices;
                 ?>
@@ -217,10 +217,6 @@ NextendSocialLoginAdmin::showProBox();
                 ?>
                 <textarea rows="4" cols="53" name="custom_actions_link_unlink" id="custom_actions_link_unlink"<?php echo $attr; ?>><?php echo esc_textarea($customActions); ?></textarea>
                 <?php
-                $customActionNotices = '<p class="description">' . sprintf(__('%1$s Add your custom actions here. One action per line.', 'nextend-facebook-connect'), '<b>' . __('Usage:', "nextend-facebook-connect") . '</b>') . '</p>';
-                $customActionNotices .= '<p class="description">' . sprintf(__('%1$s The HTML of the social buttons will be added at the place where the action is fired.', 'nextend-facebook-connect'), '<b>' . __("Important:", "nextend-facebook-connect") . '</b>') . '</p>';
-                $customActionNotices .= '<p class="description">' . sprintf(__('If you %1$sexperience problems%2$s because of this feature, you can disable it by defining the %3$s constant.', 'nextend-facebook-connect'), '<a href="https://nextendweb.com/nextend-social-login-docs/global-settings-custom-actions/#custom-actions" target="_blank">', '</a>', '<code>NSL_DISABLE_CUSTOM_ACTIONS</code>') . '</p>';
-
                 echo $customActionNotices;
                 ?>
             </td>

@@ -71,7 +71,8 @@
   "editorScript": "file:./index.js",
   "style": [
     "file:./style-index.css",
-    "surecart-drawer"
+    "surecart-drawer",
+    "surecart-block-ui"
   ],
   "render": "file:./view.php",
   "viewScriptModule": [

@@ -6,7 +6,7 @@ const index = require('./index-8acc3c89.js');
 const mutations = require('./mutations-10a18c83.js');
 const index$1 = require('./index-9cef574e.js');
 const getters = require('./getters-87b7ef91.js');
-require('./watchers-5d4eed04.js');
+require('./watchers-f70e33a5.js');
 const getters$1 = require('./getters-ae03ef93.js');
 const watchers = require('./watchers-2ad3abd1.js');
 const mutations$1 = require('./mutations-2cb33668.js');

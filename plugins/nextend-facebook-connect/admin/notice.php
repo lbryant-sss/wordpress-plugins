@@ -14,7 +14,7 @@ if (mktime(0, 0, 0, 11, 25, 2024) <= $current && $current < mktime(0, 0, 0, 12, 
                     with <b>up to 50% OFF</b> to access <b>WooCommerce support</b>, <b>Apple provider</b> and much more!
                     This limited time offer expires on December 3.</p>
                 <p style="margin:0;">
-                    <a class="button button-primary" href="https://nextendweb.com/social-login/?coupon=BF2024&utm_source=wpfree&utm_medium=wp&utm_campaign=bf24#pricing" target="_blank">
+                    <a class="button button-primary" href="https://social-login.nextendweb.com/?coupon=BF2024&utm_source=wpfree&utm_medium=wp&utm_campaign=bf24#pricing" target="_blank">
                         Buy Now</a>
                     <a class="button button-dismiss" href="#">Dismiss</a>
                 </p>

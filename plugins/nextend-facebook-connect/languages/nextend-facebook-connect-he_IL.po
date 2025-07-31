@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nextend-facebook-connect\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-05 11:03+0200\n"
-"PO-Revision-Date: 2025-05-05 11:03+0200\n"
+"POT-Creation-Date: 2025-07-29 11:35+0200\n"
+"PO-Revision-Date: 2025-07-29 11:35+0200\n"
 "Last-Translator: \n"
 "Language-Team: עִבְרִית\n"
 "Language: he_IL\n"
@@ -1796,8 +1796,8 @@ msgstr "ה %1$s שהוזן לא נראה חוקי. יש להזין %2$s חוקי
 msgid "Required scope: %1$s"
 msgstr "היקף נדרש: %1$s"
 
-msgid "Uniform - Legacy"
-msgstr "דור קודם"
+msgid "Neutral"
+msgstr ""
 
 msgid "Click on the \"<b>Credentials</b>\" in the left hand menu"
 msgstr "לחץ על \"<b>אישורים</b>\" בתפריט הימני"
@@ -4721,6 +4721,9 @@ msgstr "אימות סיסמה"
 
 msgid "Username"
 msgstr "שם משתמש"
+
+#~ msgid "Uniform - Legacy"
+#~ msgstr "דור קודם"
 
 #, php-format
 #~ msgid "Click the “<b>%1$s</b>” button on the left hand side."

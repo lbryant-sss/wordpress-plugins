@@ -494,7 +494,7 @@
             },
             success:function(data) {
                 $(".htwptmessage").show();
-                var tmediturl = HTTM.adminURL+"post.php?post="+ data.id +"&action=elementor";
+                var tmediturl = HTTM.adminURL+"post.php?post="+ data.id +"&action=htmega_theme_builder";
                 $('.htwpt-edit').html('<a href="'+ tmediturl +'" target="_blank">'+ data.edittxt +'</a>');
             },
             complete:function(data){

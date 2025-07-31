@@ -10,6 +10,7 @@ class ComposerStaticInit20ffbdf9670d31d6ed9d94ce50faf1c3
         'O' => 
         array (
             'OMGF\\Tests\\Unit\\' => 16,
+            'OMGF\\Tests\\Mocks\\' => 17,
             'OMGF\\Tests\\Integration\\' => 23,
             'OMGF\\Tests\\' => 11,
             'OMGF\\' => 5,
@@ -20,6 +21,10 @@ class ComposerStaticInit20ffbdf9670d31d6ed9d94ce50faf1c3
         'OMGF\\Tests\\Unit\\' => 
         array (
             0 => __DIR__ . '/../..' . '/tests/unit',
+        ),
+        'OMGF\\Tests\\Mocks\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/tests/mocks',
         ),
         'OMGF\\Tests\\Integration\\' => 
         array (

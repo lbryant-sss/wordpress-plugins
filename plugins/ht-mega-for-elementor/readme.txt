@@ -3,7 +3,7 @@ Contributors: hasthemes, htplugins, devitemsllc, tarekht, zenaulislam, aslamhasi
 Tags: elementor, elementor addons, elementor widgets, elementor templates, addons, elementor slider, elementor page builder, mega menu, addons for elementor, post grid, elements, header footer builder
 Requires at least: 5.0
 Tested up to: 6.8
-Stable tag: 2.9.1
+Stable tag: 2.9.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -531,6 +531,19 @@ Visit [HasThemes](https://hasthemes.com/) for more details about HTML, Shopify a
 
 
 == Changelog ==
+
+= Version 2.9.2 - Date: 2025-07-30 =
+* Added: [Yogabes - Yoga Template Kit](https://library.wphtmega.com/yogabes-yoga-template/).
+* Added: [Xova - Business Agency Template Kit](https://library.wphtmega.com/xova-business-agency-template/).
+* Added: [Travlo - Traveling Template Kit](https://library.wphtmega.com/travlo-traveling-template/).
+* Added: [Zyift - Fitness Template Kit](https://library.wphtmega.com/zyift-fitness-template/).
+* Added: [TechZen - Technology Template Kit](https://library.wphtmega.com/techzen-technology-template/) (Pro).
+* Added: Dynamic tag support in Services widget.
+* Added: Image Border, Border Radius, Shadow and Image width options in Working Process widget.
+* Fixed: Page Redirect issue after template creation in Theme Builder.
+* Fixed: A few minor issues.
+* Tested: Compatibility with the latest version of Elementor.
+
 = Version 2.9.1 - Date: 2025-07-16 =
 * Added: [Vrzion - Technology Template Kit](https://library.wphtmega.com/vrzion-technology-template/).
 * Added: [Arfito - IT Consulting Template Kit](https://library.wphtmega.com/arfito-it-consulting-template/).

@@ -16,9 +16,9 @@
             </label>
             <label>
                 <input type="radio" name="skin"
-                       value="uniform" <?php if ($settings->get('skin') == 'uniform') : ?> checked="checked" <?php endif; ?>>
-                <span><?php _e('Uniform - Legacy', 'nextend-facebook-connect'); ?></span><br/>
-                <img src="<?php echo plugins_url('images/google/uniform.png', NSL_ADMIN_PATH) ?>"/>
+                       value="neutral" <?php if ($settings->get('skin') == 'neutral') : ?> checked="checked" <?php endif; ?>>
+                <span><?php _e('Neutral', 'nextend-facebook-connect'); ?></span><br/>
+                <img src="<?php echo plugins_url('images/google/neutral.png', NSL_ADMIN_PATH) ?>"/>
             </label>
             <br>
         </fieldset>

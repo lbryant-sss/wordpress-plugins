@@ -18,10 +18,10 @@ if ((0 < $state && $state < 5) || $state == 6) {
         <div class="nsl-box-review-label" data-star="4"><?php _e('Liked it', 'nextend-facebook-connect'); ?></div>
         <div class="nsl-box-review-label" data-star="5"><?php _e('Loved it', 'nextend-facebook-connect'); ?></div>
         <div class="nsl-box-review-stars-container">
-            <div class="nsl-box-review-star" data-star="1" data-href="<?php echo esc_attr(NextendSocialLoginAdmin::trackUrl('https://nextendweb.com/contact-us/suggestion/', 'dashboard-review-1')); ?>"></div>
-            <div class="nsl-box-review-star" data-star="2" data-href="<?php echo esc_attr(NextendSocialLoginAdmin::trackUrl('https://nextendweb.com/contact-us/suggestion/', 'dashboard-review-2')); ?>"></div>
-            <div class="nsl-box-review-star" data-star="3" data-href="<?php echo esc_attr(NextendSocialLoginAdmin::trackUrl('https://nextendweb.com/contact-us/satisfaction-feedback/', 'dashboard-review-3')); ?>"></div>
-            <div class="nsl-box-review-star" data-star="4" data-href="<?php echo esc_attr(NextendSocialLoginAdmin::trackUrl('https://nextendweb.com/contact-us/satisfaction-feedback/', 'dashboard-review-4')); ?>"></div>
+            <div class="nsl-box-review-star" data-star="1" data-href="<?php echo esc_attr(NextendSocialLoginAdmin::trackUrl('https://social-login.nextendweb.com/suggestion/', 'dashboard-review-1')); ?>"></div>
+            <div class="nsl-box-review-star" data-star="2" data-href="<?php echo esc_attr(NextendSocialLoginAdmin::trackUrl('https://social-login.nextendweb.com/suggestion/', 'dashboard-review-2')); ?>"></div>
+            <div class="nsl-box-review-star" data-star="3" data-href="<?php echo esc_attr(NextendSocialLoginAdmin::trackUrl('https://social-login.nextendweb.com/satisfaction-feedback/', 'dashboard-review-3')); ?>"></div>
+            <div class="nsl-box-review-star" data-star="4" data-href="<?php echo esc_attr(NextendSocialLoginAdmin::trackUrl('https://social-login.nextendweb.com/satisfaction-feedback/', 'dashboard-review-4')); ?>"></div>
             <div class="nsl-box-review-star" data-star="5"></div>
         </div>
     </div>

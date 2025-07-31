@@ -17,7 +17,7 @@
 }
 .line-item--has-swap {
   border: 1px solid var(--sc-input-border-color);
-  background: #fff;
+  background: var(--sc-card-background-color, var(--sc-color-white));
   border-radius: var(--sc-border-radius-medium);
   gap: 0;
   border-radius: var(--sc-input-border-radius-medium);
@@ -29,7 +29,7 @@
 }
 .line-item--has-swap sc-swap {
   padding: var(--sc-spacing-medium);
-  background: var(--sc-color-gray-50);
+  background: var(--sc-card-background-color, var(--sc-color-gray-50));
 }
 
 sc-swap {

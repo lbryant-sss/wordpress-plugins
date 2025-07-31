@@ -23,7 +23,8 @@ class WPCaptcha_AJAX extends WPCaptcha
             wp_send_json_error(__('You are not allowed to run this action.', 'advanced-google-recaptcha'));
         }
 
-        set_time_limit(300);
+        //phpcs:ignore because some calls can be slow for larger logs
+        set_time_limit(300); //phpcs:ignore
 
         if(!isset($_REQUEST['tool'])){
             wp_send_json_error(__('Unknown tool.', 'advanced-google-recaptcha')); 
@@ -318,9 +319,9 @@ class WPCaptcha_AJAX extends WPCaptcha
     
         $rResult = $wpdb->get_results($prepared_sql); //phpcs:ignore
     
-        $iFilteredTotal = $wpdb->get_var("SELECT FOUND_ROWS()");
+        $iFilteredTotal = $wpdb->get_var("SELECT FOUND_ROWS()"); //phpcs:ignore
     
-        $iTotal = $wpdb->get_var("SELECT COUNT(`accesslock_ID`) FROM `{$wpdb->wpcatcha_accesslocks}`");
+        $iTotal = $wpdb->get_var("SELECT COUNT(`accesslock_ID`) FROM `{$wpdb->wpcatcha_accesslocks}`"); //phpcs:ignore
     
         $output = array(
             "sEcho" => isset($_GET['sEcho']) ? intval($_GET['sEcho']) : '',
@@ -457,11 +458,11 @@ class WPCaptcha_AJAX extends WPCaptcha
         $rResult = $wpdb->get_results($prepared_sql); //phpcs:ignore
     
         // filtered count
-        $iFilteredTotal = $wpdb->get_var("SELECT FOUND_ROWS()");
+        $iFilteredTotal = $wpdb->get_var("SELECT FOUND_ROWS()"); //phpcs:ignore
     
         // total count
         //phpcs: no need to prepare, $sIndexColumn
-        $iTotal = $wpdb->get_var("SELECT COUNT(`login_attempt_ID`) FROM {$wpdb->wpcatcha_login_fails}");
+        $iTotal = $wpdb->get_var("SELECT COUNT(`login_attempt_ID`) FROM {$wpdb->wpcatcha_login_fails}"); //phpcs:ignore
     
         // output formatting
         $output = array(

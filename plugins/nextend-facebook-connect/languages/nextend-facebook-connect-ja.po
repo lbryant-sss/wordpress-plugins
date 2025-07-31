@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nextend-facebook-connect\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-05 11:04+0200\n"
-"PO-Revision-Date: 2025-05-05 11:04+0200\n"
+"POT-Creation-Date: 2025-07-29 11:36+0200\n"
+"PO-Revision-Date: 2025-07-29 11:36+0200\n"
 "Last-Translator: \n"
 "Language-Team: 日本語\n"
 "Language: ja\n"
@@ -1837,8 +1837,8 @@ msgstr "入力された%1$sは有効でないようです。有効な%2$sを入�
 msgid "Required scope: %1$s"
 msgstr "必要なスコープ：%1$s"
 
-msgid "Uniform - Legacy"
-msgstr "公式デザイン - （古い）"
+msgid "Neutral"
+msgstr ""
 
 msgid "Click on the \"<b>Credentials</b>\" in the left hand menu"
 msgstr "左メニューの「<b>認証情報(Credentials)</b>」をクリックします。"
@@ -4871,6 +4871,9 @@ msgstr "パスワードの確認"
 
 msgid "Username"
 msgstr "ユーザー名（ユーザーID）"
+
+#~ msgid "Uniform - Legacy"
+#~ msgstr "公式デザイン - （古い）"
 
 #, php-format
 #~ msgid "Click the “<b>%1$s</b>” button on the left hand side."

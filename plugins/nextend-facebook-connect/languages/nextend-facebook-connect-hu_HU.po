@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: nextend-facebook-connect\n"
-"POT-Creation-Date: 2025-05-05 11:03+0200\n"
-"PO-Revision-Date: 2025-05-05 11:03+0200\n"
+"POT-Creation-Date: 2025-07-29 11:35+0200\n"
+"PO-Revision-Date: 2025-07-29 11:35+0200\n"
 "Last-Translator: \n"
 "Language-Team: nextend-facebook-connect\n"
 "Language: hu\n"
@@ -1787,7 +1787,7 @@ msgstr ""
 msgid "Required scope: %1$s"
 msgstr ""
 
-msgid "Uniform - Legacy"
+msgid "Neutral"
 msgstr ""
 
 #, fuzzy

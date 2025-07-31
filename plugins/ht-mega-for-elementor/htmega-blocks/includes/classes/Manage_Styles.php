@@ -1,6 +1,6 @@
 <?php
 namespace HtMegaBlocks;
-
+use Exception;
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -99,9 +99,25 @@ class Manage_Styles {
 	public function get_post_data( $request ) {
 		$params = $request->get_params();
 		if ( isset( $params['post_id'] ) ) {
+			$post = get_post( $params['post_id'] );
+			if ( ! $post ) {
+				return [
+					'success' => false,
+					'message' => __('Post not found.', 'htmega-addons' )
+				];
+			}
+
+			// Check if user has permission to access this post
+			if ( ! current_user_can( 'manage_options' ) && get_current_user_id() !== (int) $post->post_author ) {
+				return [
+					'success' => false,
+					'message' => __('You do not have permission to access this content.', 'htmega-addons' )
+				];
+			}
+
 			return [
 				'success' => true, 
-				'data' 	  => get_post( $params['post_id'] )->post_content, 
+				'data' 	  => $post->post_content, 
 				'message' => __('Post Data found.', 'htmega-addons' )
 			];
 		} else {
@@ -117,13 +133,24 @@ class Manage_Styles {
 	 */
 	public function save_block_css( $request ){
 		try{
+			$params 	= $request->get_params();
+			$post_id 	= sanitize_text_field( $params['post_id'] );
+
+			// For regular posts, check if user is admin or post author
+			$post = get_post( $post_id );
+			if ( ! $post || 
+				( ! current_user_can( 'manage_options' ) && 
+				get_current_user_id() !== (int) $post->post_author )
+			) {
+				throw new Exception( __('You do not have permission to manage CSS for this post.', 'htmega-addons' ) );
+			}
+
+
 			global $wp_filesystem;
 			if ( ! $wp_filesystem ) {
 				require_once( ABSPATH . 'wp-admin/includes/file.php' );
 			}
 
-			$params 	= $request->get_params();
-			$post_id 	= sanitize_text_field( $params['post_id'] );
 			$block_css = isset($params['block_css']) ? $this->sanitize_css_content($params['block_css']) : '';
 
 			if ( $post_id == 'htmega-widget' && $params['has_block'] ) {
@@ -135,7 +162,7 @@ class Manage_Styles {
 				];
 			}
 			
-			$filename 		= "htmega-css-{$post_id}.css";
+			$filename 		= sanitize_file_name("htmega-css-{$post_id}.css");
 			$upload_dir_url = wp_upload_dir();
 			$dirname 		= trailingslashit( $upload_dir_url['basedir'] ) . 'htmega-addons/';
 
@@ -159,8 +186,9 @@ class Manage_Styles {
 				];
 			} else {
 				delete_post_meta( $post_id, '_htmega_active' );
-				if ( file_exists( $dirname.$filename ) ) {
-					wp_delete_file( $dirname.$filename );
+				$safe_filename = sanitize_file_name($filename);
+			if ( file_exists( $dirname.$safe_filename ) ) {
+					wp_delete_file( $dirname.$safe_filename );
 				}
 				delete_post_meta( $post_id, '_htmega_css' );
 				return [
@@ -181,18 +209,27 @@ class Manage_Styles {
 	 * Save Inner Block CSS
 	 */
 	public function appened_css( $request ) {
-		global $wp_filesystem;
-		if ( ! $wp_filesystem ) {
-			require_once( ABSPATH . 'wp-admin/includes/file.php' );
-		}
+		try {
+			$params  = $request->get_params();
+			$post_id = (int) sanitize_text_field( $params['post_id'] );
 
-		$params  = $request->get_params();
-		$css = isset($params['inner_css']) ? $this->sanitize_css_content($params['inner_css']) : '';
-		$post_id = (int) sanitize_text_field( $params['post_id'] );
+			// For regular posts, check if user is admin or post author
+			$post = get_post( $post_id );
+			if ( ! $post || 
+				( ! current_user_can( 'manage_options' ) && 
+				get_current_user_id() !== (int) $post->post_author )
+			) {
+				throw new Exception( __('You do not have permission to manage CSS for this post.', 'htmega-addons' ) );
+			}
 
-		if( $post_id ){
+			global $wp_filesystem;
+			if ( ! $wp_filesystem ) {
+				require_once( ABSPATH . 'wp-admin/includes/file.php' );
+			}
 
-			$filename = "htmega-css-{$post_id}.css";
+			$css = isset($params['inner_css']) ? $this->sanitize_css_content($params['inner_css']) : '';
+
+			$filename = sanitize_file_name("htmega-css-{$post_id}.css");
 			$dirname  = trailingslashit( wp_upload_dir()['basedir'] ).'htmega-addons/';
 			
 			WP_Filesystem( false, $upload_dir_url['basedir'], true );
@@ -214,13 +251,12 @@ class Manage_Styles {
 				]
 			);
 
-		} else {
-			return [ 
-				'success' => false, 
-				'message' => __('Data not found.', 'htmega-addons' )
+		} catch( Exception $e ){
+			return [
+				'success' => false,
+				'message' => $e->getMessage()
 			];
 		}
-
 	}
 
     /**
@@ -270,7 +306,8 @@ class Manage_Styles {
 			$reusable_block_css = '';
 			$reusable_id = htmegaBlocks_reusable_id( $post_id );
 			foreach ( $reusable_id as $id ) {
-				$reusable_dir_path = $upload_css_dir_url."htmega-addons/htmega-css-{$id}.css";
+				$safe_reusable_filename = sanitize_file_name("htmega-css-{$id}.css");
+				$reusable_dir_path = $upload_css_dir_url."htmega-addons/".$safe_reusable_filename;
 				if (file_exists( $reusable_dir_path )) {
 					$reusable_block_css .= htmega_get_local_file_data( $reusable_dir_path );
 				}else{
@@ -309,9 +346,11 @@ class Manage_Styles {
             // Reusable Block CSS
 			$reusable_id = htmegaBlocks_reusable_id( $post_id );
 			foreach ( $reusable_id as $id ) {
-				$reusable_dir_path = $upload_css_dir_url."htmega-addons/htmega-css-{$id}.css";
+				$safe_reusable_filename = sanitize_file_name("htmega-css-{$id}.css");
+				$reusable_dir_path = $upload_css_dir_url."htmega-addons/".$safe_reusable_filename;
 				if (file_exists( $reusable_dir_path )) {
-                    $css_file_url = $css_dir_url . "htmega-addons/htmega-css-{$id}.css";
+                    $safe_css_filename = sanitize_file_name("htmega-css-{$id}.css");
+                    $css_file_url = $css_dir_url . "htmega-addons/".$safe_css_filename;
 				    wp_enqueue_style( "htmega-post-{$id}", $css_file_url, false, HTMEGA_VERSION, 'all' );
 				}else{
 					$css = get_post_meta( $id, '_htmega_css', true );
@@ -322,7 +361,8 @@ class Manage_Styles {
             }
 
 			if ( file_exists( $css_file_path ) ) {
-				$css_file_url = $css_dir_url . "htmega-addons/htmega-css-{$post_id}.css";
+				$safe_css_filename = sanitize_file_name("htmega-css-{$post_id}.css");
+				$css_file_url = $css_dir_url . "htmega-addons/".$safe_css_filename;
 				wp_enqueue_style( "htmega-post-{$post_id}", $css_file_url, false, HTMEGA_VERSION, 'all' );
 			} else {
 				$css = get_post_meta( $post_id, '_htmega_css', true );

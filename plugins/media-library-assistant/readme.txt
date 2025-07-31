@@ -201,6 +201,7 @@ All of the MLA source code has been annotated with "DocBlocks", a special type o
 
 = 3.28 =
 * Fix: **IMPORTANT: For the `[mla_term_list]` shortcode, a defect that caused the famous "There Has Been a Critical Error on This Website" error has been corrected.**
+* Fix: IMPORTANT: An arbitrary file deletion security risk in the Media/Assistant submenu table has been mitigated.
 * Fix: When WPML is active, the flag images have been restored to the Media/Assistant submenu table column headers.
 
 = 3.27 =

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: nextend-facebook-connect\n"
-"POT-Creation-Date: 2025-05-05 11:04+0200\n"
-"PO-Revision-Date: 2025-05-05 11:04+0200\n"
+"POT-Creation-Date: 2025-07-29 11:37+0200\n"
+"PO-Revision-Date: 2025-07-29 11:37+0200\n"
 "Last-Translator: Erik Molenaar <info@erikmolenaar.nl>\n"
 "Language-Team: nextend-facebook-connect\n"
 "Language: nl_NL\n"
@@ -1803,10 +1803,8 @@ msgstr "Het ingevoerde %1$s bleek niet geldig te zijn. Vul een geldig %2$s in."
 msgid "Required scope: %1$s"
 msgstr "Vereiste scope: %1$s"
 
-#, fuzzy
-#| msgid "Uniform"
-msgid "Uniform - Legacy"
-msgstr "Uniform"
+msgid "Neutral"
+msgstr ""
 
 #, fuzzy
 #| msgid "Click on the \"Credentials\" in the left hand menu"
@@ -4920,6 +4918,11 @@ msgstr "Bevestig wachtwoord"
 
 msgid "Username"
 msgstr "Gebruikersnaam"
+
+#, fuzzy
+#~| msgid "Uniform"
+#~ msgid "Uniform - Legacy"
+#~ msgstr "Uniform"
 
 #, fuzzy, php-format
 #~| msgid "Click on the \"Credentials\" in the left hand menu"

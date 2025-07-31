@@ -626,12 +626,6 @@ function heateorSssMoreSharingPopup(elem, postUrl, postTitle, twitterTitle){
 		redirect_url: "https://www.twiddla.com/New.aspx?url=" + postUrl + "&title=" + postTitle,
 		svg: '<svg focusable="false" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 32 32"><path fill="#fff" d="M10.5 5.688l1.375 1.375-4.812 4.812L5.688 10.5A3.438 3.438 0 0 1 10.5 5.688zm2.406 2.406l-4.812 4.812 12.72 12.72L27 27l-1.375-6.188-12.72-12.718zm-.095 3.533l9.63 9.625-1.187 1.183-9.624-9.625 1.185-1.183z"></path></svg>'
 	  },
-	  Webnews: {
-	  	background_color:"#cc2512",
-		title: "Webnews",
-		redirect_url: "https://www.webnews.de/login",
-		svg: '<svg focusable="false" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 32 32"><path fill="#fff" d="M6 6h5.48v14.557h1.844V6h5.396v14.557h1.852V6H26v18.196h-1.82V26h-7.25v-1.825h-1.838V26h-7.25v-1.825H6V6z"/></svg>'
-	  },
 	  Wykop: {
 	  	background_color:"#367da9",
 		title: "Wykop",

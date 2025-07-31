@@ -64,7 +64,7 @@
                               value="1" <?php if ($settings->get('bypass_cache') == '1') : ?> checked="checked" <?php endif; ?>>
                     <span><?php _e('Enabled', 'nextend-facebook-connect'); ?></span></label><br>
             </fieldset>
-            <p class="description" id="tagline-bypass_cache"><?php printf(__('Enabling this option will add a GET parameter to the URL where we redirect after a successful registration or login with social login. %1$sLearn more%2$s.', 'nextend-facebook-connect'), '<a href="https://nextendweb.com/nextend-social-login-docs/how-to-bypass-the-cache-after-the-login-with-social-login/#how-to-bypass" target="_blank">', '</a>'); ?></p>
+            <p class="description" id="tagline-bypass_cache"><?php printf(__('Enabling this option will add a GET parameter to the URL where we redirect after a successful registration or login with social login. %1$sLearn more%2$s.', 'nextend-facebook-connect'), '<a href="https://social-login.nextendweb.com/documentation/getting-started/troubleshooting/bypass-cache-after-social-login/#bypass-cache-after-login" target="_blank">', '</a>'); ?></p>
         </td>
     </tr>
 
@@ -213,7 +213,7 @@
                               value="1" <?php if ($settings->get('login_restriction') == '1') : ?> checked="checked" <?php endif; ?>>
                     <span><?php _e('Enabled', 'nextend-facebook-connect'); ?></span></label><br>
             </fieldset>
-            <p class="description" id="tagline-login-restriction"><?php printf(__('Please visit to our %1$s to check what plugins are supported!', 'nextend-facebook-connect'), '<a href="https://nextendweb.com/nextend-social-login-docs/login-restriction/" target="_blank">Login Restriction page</a>'); ?></p>
+            <p class="description" id="tagline-login-restriction"><?php printf(__('Please visit to our %1$s to check what plugins are supported!', 'nextend-facebook-connect'), '<a href="https://social-login.nextendweb.com/documentation/getting-started/troubleshooting/login-restrictions/" target="_blank">Login Restriction page</a>'); ?></p>
         </td>
     </tr>
 
@@ -261,7 +261,7 @@
                               value="1" <?php if ($settings->get('custom_register_label') == '1') : ?> checked="checked" <?php endif; ?>>
                     <span><?php _e('Enabled', 'nextend-facebook-connect'); ?></span></label><br>
             </fieldset>
-            <p class="description"><?php printf(__('Set a custom label for the social buttons in registration forms and for shortcodes with %1$s parameter set to %2$s.<br>The register specific labels can be modified at the Buttons tab of each provider.<br>This option also allows the use of register specific %3$s options.', 'nextend-facebook-connect'), '<b>labeltype</b>', '<b>register</b>', '<a href="https://nextendweb.com/nextend-social-login-docs/global-settings-custom-actions/" target="_blank">Custom Actions</a>'); ?></p>
+            <p class="description"><?php printf(__('Set a custom label for the social buttons in registration forms and for shortcodes with %1$s parameter set to %2$s.<br>The register specific labels can be modified at the Buttons tab of each provider.<br>This option also allows the use of register specific %3$s options.', 'nextend-facebook-connect'), '<b>labeltype</b>', '<b>register</b>', '<a href="https://social-login.nextendweb.com/documentation/form-integrations/custom-actions/" target="_blank">Custom Actions</a>'); ?></p>
         </td>
     </tr>
 
@@ -298,8 +298,8 @@
                               value="disable-button" <?php if ($settings->get('unsupported_webview_behavior') == 'disable-button') : ?> checked="checked" <?php endif; ?>>
                     <span><?php _e('Disable button', 'nextend-facebook-connect'); ?></span></label><br>
             </fieldset>
-            <p class="description"><?php printf(__('Some %1$sproviders%2$s don\'t support embedded browsers.', 'nextend-facebook-connect'), '<a href="https://nextendweb.com/nextend-social-login-docs/can-use-nextend-social-login-webview/" target="_blank">', '</a>'); ?></p>
-            <p class="description"><?php printf(__('This setting defines if we should remove or disable the related buttons in WebView environments.', 'nextend-facebook-connect'), '<a href="https://nextendweb.com/nextend-social-login-docs/can-use-nextend-social-login-webview/" target="_blank">', '</a>'); ?></p>
+            <p class="description"><?php printf(__('Some %1$sproviders%2$s don\'t support embedded browsers.', 'nextend-facebook-connect'), '<a href="https://social-login.nextendweb.com/documentation/getting-started/troubleshooting/missing-social-login-on-mobile/" target="_blank">', '</a>'); ?></p>
+            <p class="description"><?php printf(__('This setting defines if we should remove or disable the related buttons in WebView environments.', 'nextend-facebook-connect'), '<a href="https://social-login.nextendweb.com/documentation/getting-started/troubleshooting/missing-social-login-on-mobile/" target="_blank">', '</a>'); ?></p>
         </td>
     </tr>
 

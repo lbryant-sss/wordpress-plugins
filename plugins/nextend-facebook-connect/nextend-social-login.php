@@ -20,9 +20,9 @@ require_once(NSL_PATH . '/compat.php');
 
 class NextendSocialLogin {
 
-    public static $version = '3.1.18';
+    public static $version = '3.1.19';
 
-    public static $nslPROMinVersion = '3.1.18';
+    public static $nslPROMinVersion = '3.1.19';
 
     public static $proxyPage = false;
 
@@ -651,14 +651,29 @@ class NextendSocialLogin {
 
     public static function nslDOMReady() {
         echo '<script type="text/javascript">
-            window._nslDOMReady = function (callback) {
-                if ( document.readyState === "complete" || document.readyState === "interactive" ) {
-                    callback();
-                } else {
-                    document.addEventListener( "DOMContentLoaded", callback );
-                }
-            };
-            </script>';
+            window._nslDOMReady = (function () {
+                const executedCallbacks = new Set();
+            
+                return function (callback) {
+                    /**
+                    * Third parties might dispatch DOMContentLoaded events, so we need to ensure that we only run our callback once!
+                    */
+                    if (executedCallbacks.has(callback)) return;
+            
+                    const wrappedCallback = function () {
+                        if (executedCallbacks.has(callback)) return;
+                        executedCallbacks.add(callback);
+                        callback();
+                    };
+            
+                    if (document.readyState === "complete" || document.readyState === "interactive") {
+                        wrappedCallback();
+                    } else {
+                        document.addEventListener("DOMContentLoaded", wrappedCallback);
+                    }
+                };
+            })();
+        </script>';
     }
 
     public static function loginHead() {

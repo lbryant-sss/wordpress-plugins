@@ -121,17 +121,22 @@ div.nsl-container .nsl-button-default div.nsl-button-label-container {
     display: inline-block;
 }
 
-div.nsl-container .nsl-button-google[data-skin="dark"] .nsl-button-svg-container {
-    margin: 1px;
-    padding: 7px;
-    border-radius: 3px;
-    background: #fff;
+div.nsl-container .nsl-button-google[data-skin="light"] {
+    box-shadow: inset 0 0 0 1px #747775;
+    color: #1f1f1f;
 }
 
-div.nsl-container .nsl-button-google[data-skin="light"] {
-    border-radius: 1px;
-    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, .25);
-    color: RGBA(0, 0, 0, 0.54);
+div.nsl-container .nsl-button-google[data-skin="dark"] {
+    box-shadow: inset 0 0 0 1px #8E918F;
+    color: #E3E3E3;
+}
+
+div.nsl-container .nsl-button-google[data-skin="neutral"] {
+    color: #1F1F1F;
+}
+
+div.nsl-container .nsl-button-google div.nsl-button-label-container {
+    font-family: "Roboto Medium", Roboto, Helvetica, Arial, sans-serif;
 }
 
 div.nsl-container .nsl-button-apple .nsl-button-svg-container {

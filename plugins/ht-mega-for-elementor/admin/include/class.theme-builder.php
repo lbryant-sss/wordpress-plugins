@@ -88,7 +88,7 @@ class HTMega_Theme_Builder {
      */
     public function register_post_type() {
         $labels = [
-            'name' => __('Templates', 'htmega-addons'),
+            'name' => __('HT Mega Templates', 'htmega-addons'),
             'singular_name' => __('Template', 'htmega-addons'),
             'add_new' => __('Add New', 'htmega-addons'),
             'add_new_item' => __('Add New Template', 'htmega-addons'),
@@ -112,7 +112,7 @@ class HTMega_Theme_Builder {
             'exclude_from_search' => true,
             'capability_type' => 'post',
             'hierarchical' => false,
-            'supports' => ['title', 'editor', 'revisions'],
+            'supports' => ['title', 'editor', 'revisions','elementor'],
             'menu_icon' => 'dashicons-admin-page',
         ];
 
@@ -607,8 +607,8 @@ class HTMega_Theme_Builder {
             return;
         }
 
-        // Check permissions
-        if (!current_user_can('delete_posts')) {
+        // Check administrator capability
+        if (!current_user_can('manage_options')) {
             wp_send_json_error(__('Permission denied', 'htmega-addons'));
             return;
         }
@@ -622,6 +622,19 @@ class HTMega_Theme_Builder {
 
         $trashed = 0;
         foreach ($template_ids as $template_id) {
+            // Verify post type is elementor_library
+            $post_type = get_post_type($template_id);
+            
+            if ($post_type !== self::CPT) {
+                continue;
+            }
+
+            // Check if user is template author or admin
+            $post = get_post($template_id);
+            if (!current_user_can('manage_options') && $post->post_author != get_current_user_id()) {
+                continue;
+            }
+
             if (wp_trash_post($template_id)) {
                 $trashed++;
             }

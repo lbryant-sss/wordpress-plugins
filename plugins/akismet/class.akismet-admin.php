@@ -508,7 +508,7 @@ class Akismet_Admin {
 			return;
 		}
 
-		if ( ! wp_verify_nonce( $_POST['nonce'], 'akismet_check_for_spam' ) ) {
+		if ( empty( $_POST['nonce'] ) || ! wp_verify_nonce( $_POST['nonce'], 'akismet_check_for_spam' ) ) {
 			wp_send_json(
 				array(
 					'error' => __( 'You don&#8217;t have permission to do that.', 'akismet' ),

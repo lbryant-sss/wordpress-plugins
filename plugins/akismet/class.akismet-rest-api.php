@@ -388,7 +388,7 @@ class Akismet_REST_API {
 	public static function remote_call_permission_callback( $request ) {
 		$local_key = Akismet::get_api_key();
 
-		return $local_key && ( strtolower( $request->get_param( 'key' ) ) === strtolower( $local_key ) );
+		return $local_key && ( strtolower( $request->get_param( 'key' ) ?? '' ) === strtolower( $local_key ) );
 	}
 
 	public static function sanitize_interval( $interval, $request, $param ) {
