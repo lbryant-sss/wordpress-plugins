@@ -4,10 +4,10 @@ Plugin URI: https://melapress.com/wordpress-2fa/
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.html
 Tags: 2FA, two-factor authentication, 2-factor authentication, WordPress authentication, google authenticator
-Requires at least: 5.0
-Tested up to: 6.8
-Stable tag: 2.8.0
-Requires PHP: 7.3.0
+Requires at least: 5.5
+Tested up to: 6.8.2
+Stable tag: 2.9.0
+Requires PHP: 7.4.0
 
 Get better WordPress login security; add two-factor authentication (2FA) for all your users with this easy-to-use plugin.
 
@@ -135,28 +135,66 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 == Changelog ==
 
-= 2.8.0 (2024-07-17) =
+= 2.9.0 (2025-07-31) =
 
 * **New features**
-	 * Out of the box support for Yubico - [use any YubiKey hardware key by Yubico as a 2FA method to log in to your WordPress website](https://melapress.com/support/kb/wp-2fa-hardware-key/).
+	 * REST API endpoints for 2FA code verification and other operations, thus making it much easier to integrate the plugin in custom processes.
+	 * Option to allow temporary login without 2FA for a specific user or number of users.
+	 * New filter _wp_2fa_oob_redirect_url_ to assist with user redirection post-login when Link via email (OOB) 2FA method is in use.
+	 * Quick Links section with useful inks.
 
-* **Plugin & functionality improvements**
-	 * Bumped up the minimum supported PHP version from 7.2 to 7.3.
-	 * Updated a number of strings in the settings + improved help text.
-	 * The names of debug log file in uploads directory are now randomized.
-	 * Updated the default text in different sections of the wizard to simplify things and improve UX.
-	 * Adjusted the order in which the 2FA methods are listed.
-	 * Updated the features' page in the plugin - added the new features etc.
-	 * Updated all UTM parameters in the plugin's URLs and links.
+ * **Plugin & functionality improvements**
+	 * Bumped up the minimum supported PHP version from 7.3 to 7.4.
+	 * Bumped up the minimum supported WordPress Core version from  5.0 to 5.5.
+	 * Better support for setups in which access to the wp-login.php file is restricted or denied.
+	 * Plugin no longer supports 2FA enforcement on users without any role, to adhere to the new Wordpress core changes.
+	 * Improved performance: plugin now better loads and handles it's files and scripts .
+	 * Updated the 2FA setup wizard UI – available methods are now displayed vertically for improved readability and layout consistency.
+	 * Changed the default template of the 2FA code email for improved email deliverability (new installs only).
+	 * Tweaked the redirection of users on Woocommerce to cater for latest Woocommerce version, ensuing correct and consistent redirection flow post-login.
+	 * White Labeling - added option to enable help text to assist users during 2FA configuration for all methods.
+	 * White Labeling - Changed the placeholder title on the 2FA code page text to "Verification code" for consistency.
+	 * White Labeling - added a new white labeling option to enable/disable our plugin's signature from the 2FA Frontend configuration page.
+	 * White Labeling - made more wizard elements translatable by assisting with localizing text inside JS elements.
+	 * White Labeling - Tweaked the 2FA page code elements by introducing new unique classes, to make it easier for users to customize their logo with the right size and format.
+	 * Switched the default setting for HOTP to now allow users to use another email address during configuration. 
+	 * Removed old links and imagery related to Captcha 4WP plugin.
+	 * Added [Melapress Role Editor](https://melapress.com/wordpress-user-roles-editor/) in the About Us page.
+	 * Reviewed all links in the plugin; fixed few broken links and added UTM parameters.
+	 * Tweaked the UI inside a few wizards and plugin pages to avoid orphaned words or hanging elements.
+	 * When "Log out users after 2FA configuration" is enabled, users are no longer logged out after they configure a backup method only.
+	 * Made the 2FA notice regarding WP 2FA Encrypt key storage in wp-config.php dismissable.
+	 * Authy method was removed from the setup wizard - service is being decommissioned by Twilio.
+	 * Added our own custom libraries for Twilio integration, replacing the official SDK for improved performance and reduced dependencies.
+	 * Removed the "User licensing" tab from the Settings which was redundant (used by the old licensing model).
+	 * Improved the code that retrieves the number of subsites on a multisite network.
+	 * Woocommerce Integration - 2FA Configuration page from My Account dashboard is now correctly positioned above the Log Out button. 
+	 * Yubico method will now show up in 2FA method selection wizard even when it's the only method enabled.
+	 * Removed a redundant wizard steps when only one method was active (Yubico) for a smoother process.
+	 * Updated the text and layout of the Yubikey configuration wizard.
 
-* **Bug fixes**
-	 * Fixed: PHP fatal error in class-email-wizard-steps.php in some edge cases.
-	 * Fixed: Apostrophe character shows up as ASCII in email subject.
-	 * Fixed: Error with importing plugin's settings from one website to another in some edge cases.
-	 * Fixed: The grace period expiration setting did not have a default value / setting.
-	 * Removed reference to Premium backup methods in the free edition's wizard.
-	 * Fixed: Redirecting to frontend 2FA page without permalinks set up does not work.
-	 * Fixed: Some user profile 2FA buttons were not functioning properly when used on mobile.
-	 * Fixed: Data was not always / all deleted when the setting "Delete data upon uninstall" was enabled.
+ * **Bug fixes**
+	 * Fixed a PHP Notice "Function _load_textdomain_just_in_time" which could constantly occur in certain site setups .
+	 * Translations: Fixed an edge case where Admin settings switch to Dutch once .po files are loaded, preventing the inheritance of actual site language.
+	 * Fixed a bug causing the WordPress logo to be hidden on the 2FA code page in the Premium edition of WP 2FA.
+	 * Fixed a scenario where users could see the "Remove 2FA" button on their profile page even though 2FA was enforced and no grace period was allowed.
+	 * Fixed a handful of user role Inheritance issues which were causing some 2FA policies to not be correctly enforced to certain roles.
+	 * Fixed an error which could occur when redirecting a user to a non-existent URL after configuring 2FA. 
+	 * Fixed a variety of PHP warnings related to Yubico, the out of band 2FA method, and the Reports page.
+	 * Fixed a bug which could prevent users with SMS via Clickatell to use a backup code via email to log in.
+	 * Fixed a bug which was causing the "grace period time left" shortcode to always show time in UTC format instead of site's timezone.
+	 * Fixed a bug in which users using Yubico as primary method were unable to configure the email backup method.
+	 * Added a check to avoid the plugin from writing multiple comments inside the wp-config.php file when the file is refreshed by third parties.
+	 * Fixed a PHP deprecation: Function _print_emoji_styles_ which occured on fresh installations.
+	 * Fixed a user reported edge case error involving WP 2FA and Paid Membership plugin when Authy 2FA method was in use.
+	 * Fixed a scenario where the user could get locked out even though the setting to lock users with exceeded grace period was disabled.
+	 * Fixed a user-reported PHP error - Uncaught Error: Call to a member function get_page_permastruct() on null.
+	 * Fixed a some user-reported PHP errors that could occur inside Reports page under very specific circumstances.
+	 * Fixed a UI glitch which could cause users to be prompted with "This page is asking you to confirm that you want to leave - information you've entered may not be saved." when configuring 2FA.
+	 * Fixed a PHP 8.4 Deprecated notice: WP2FA_Vendor\BaconQrCode\Encoder\Encoder::chooseMode().
+	 * Fixed a number of issues on how the 2FA frontend configuration pages are created on each subsite on a multisite nework.
+	 * Fixed a shortcode behavior _{from_email}_ which was pulling the site admin email instead of the actual From email address.
+	 * Fixed a user-reported edge case that could intermittently cause the wrong 2FA method to be selected during configuration, loading OTP via email wizard instead of the Authenticator app.
+	 * Fixed a scenario where users with multiple roles on multiple websites have 2FA removed if "No role for this website" is selected.
 	
 Refer to the complete [plugin changelog](https://melapress.com/support/kb/wp-2fa-plugin-changelog/?utm_source=wordpress.org&utm_medium=referral&utm_campaign=WP2FA&utm_content=plugin+repos+description) for more detailed information about what was new, improved and fixed in previous version updates of WP 2FA.

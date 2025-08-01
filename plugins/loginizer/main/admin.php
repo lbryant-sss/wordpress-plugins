@@ -4,12 +4,79 @@ if(!defined('ABSPATH')){
 	die('Hacking Attempt!');
 }
 
-// HOOKS
-add_action('admin_menu', 'loginizer_admin_menu');
-add_action('admin_notices', 'loginizer_social_login_url_alert');
-add_action('admin_footer', 'loginizer_social_interim_js');
-add_action('admin_init', 'loginizer_admin_actions');
-//add_filter("plugin_action_links_plugin_loginizer", 'loginizer_plugin_action_links');
+function loginizer_admin_hooks(){
+	add_action('admin_menu', 'loginizer_admin_menu');
+	add_action('admin_notices', 'loginizer_social_login_url_alert');
+	add_action('admin_footer', 'loginizer_social_interim_js');
+	add_action('admin_init', 'loginizer_admin_actions');
+	// add_filter("plugin_action_links_plugin_loginizer", 'loginizer_plugin_action_links');
+	
+	loginizer_admin_promo_hooks();
+}
+
+function loginizer_admin_promo_hooks(){
+	global $loginizer;
+	
+	if(!current_user_can('activate_plugins')){
+		return;
+	}
+
+	// Is the premium features there ?
+	if(defined('LOGINIZER_PREMIUM')){
+		// The promo time
+		$loginizer['promo_time'] = get_option('loginizer_promo_time');
+		if(empty($loginizer['promo_time'])){
+			$loginizer['promo_time'] = time();
+			update_option('loginizer_promo_time', $loginizer['promo_time']);
+		}
+
+		// Are we to show the loginizer promo
+		if(!empty($loginizer['promo_time']) && $loginizer['promo_time'] > 0 && $loginizer['promo_time'] < (time() - (30*24*3600))){
+			add_action('admin_notices', 'loginizer_promo');
+		}
+
+		if(!empty($loginizer['csrf_promo']) && $loginizer['csrf_promo'] > 0 && $loginizer['csrf_promo'] < (time() - 86400)){
+			add_action('admin_notices', 'loginizer_csrf_promo');
+		}
+
+		// Are we to disable the promo
+		if(isset($_GET['loginizer_promo']) && (int)$_GET['loginizer_promo'] == 0){
+			update_option('loginizer_promo_time', (0 - time()) );
+			die('DONE');
+		}
+
+		$loginizer['backuply_promo'] = get_option('loginizer_backuply_promo_time');
+		if(empty($loginizer['backuply_promo'])){
+			$loginizer['backuply_promo'] = abs($loginizer['promo_time']);
+			update_option('loginizer_backuply_promo_time', $loginizer['backuply_promo']);
+		}
+
+		// Setting CSRF Promo time
+		$loginizer['csrf_promo'] = get_option('loginizer_csrf_promo_time');
+
+		if(empty($loginizer['csrf_promo'])){
+			$loginizer['csrf_promo'] = abs($loginizer['promo_time']);
+			update_option('loginizer_csrf_promo_time', $loginizer['csrf_promo']);
+		}
+	}
+
+	// === Plugin Update Notice === //
+	$plugin_update_notice = get_option('softaculous_plugin_update_notice', []);
+	$available_update_list = get_site_transient('update_plugins'); 
+
+	if(
+		!empty($available_update_list) &&
+		is_object($available_update_list) &&
+		!empty($available_update_list->response) &&
+		!empty($available_update_list->response['loginizer/loginizer.php']) && 
+		(empty($plugin_update_notice) || empty($plugin_update_notice['loginizer/loginizer.php']) || (!empty($plugin_update_notice['loginizer/loginizer.php']) &&
+		version_compare($plugin_update_notice['loginizer/loginizer.php'], $available_update_list->response['loginizer/loginizer.php']->new_version, '<')))
+	){
+		add_action('admin_notices', 'loginizer_plugin_update_notice');
+		add_filter('softaculous_plugin_update_notice', 'loginizer_update_notice_filter');
+	}
+	// === Plugin Update Notice === //
+}
 
 function loginizer_admin_actions(){
 	global $loginizer;
@@ -881,4 +948,52 @@ function loginizer_check_expires(){
 			jQuery.post(admin_url, data, function(response){
 			});
 		});');	
-} 
+}
+
+function loginizer_update_notice_filter($plugins = []){
+	$plugins['loginizer/loginizer.php'] = 'Loginizer';
+	
+	return $plugins;
+}
+
+function loginizer_plugin_update_notice(){
+	if(defined('SOFTACULOUS_PLUGIN_UPDATE_NOTICE')){
+		return;
+	}
+
+	$to_update_plugins = apply_filters('softaculous_plugin_update_notice', []);
+
+	if(empty($to_update_plugins)){
+		return;
+	}
+
+	/* translators: %1$s is replaced with a "string" of name of plugins, and %2$s is replaced with "string" which can be "is" or "are" based on the count of the plugin */
+	$msg = sprintf(__('New versions of %1$s %2$s available. Updating ensures better performance, security, and access to the latest features.', 'loginizer'), '<b>'.esc_html(implode(', ', $to_update_plugins)).'</b>', (count($to_update_plugins) > 1 ? 'are' : 'is')) . ' <a class="button button-primary" href='.esc_url(admin_url('plugins.php?plugin_status=upgrade')).'>Update Now</a>';
+
+	define('SOFTACULOUS_PLUGIN_UPDATE_NOTICE', true); // To make sure other plugins don't return a Notice
+	echo '<div class="notice notice-info is-dismissible" id="loginizer-plugin-update-notice">
+		<p>'.$msg. '</p>
+	</div>';
+
+	wp_register_script('loginizer-update-notice', '', ['jquery'], '', true);
+	wp_enqueue_script('loginizer-update-notice');
+	wp_add_inline_script('loginizer-update-notice', 'jQuery("#loginizer-plugin-update-notice").on("click", function(e){
+		let target = jQuery(e.target);
+
+		if(!target.hasClass("notice-dismiss")){
+			return;
+		}
+
+		var data;
+		
+		// Hide it
+		jQuery("#loginizer-plugin-update-notice").hide();
+		
+		// Save this preference
+		jQuery.post("'.admin_url('admin-ajax.php?action=loginizer_close_update_notice').'&security='.wp_create_nonce('loginizer_promo_nonce').'", data, function(response) {
+			//alert(response);
+		});
+	});');
+}
+
+loginizer_admin_hooks();

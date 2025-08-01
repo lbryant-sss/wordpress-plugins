@@ -82,7 +82,7 @@ class Frontend {
 		// Filter the contacts based on the display settings.
 		$contacts = array_values(
 			array_filter(
-				Models_Contacts::instance()->get_contacts_reorder(),
+				Models_Contacts::instance()->get(),
 				function ( $contact ) {
 					if ( ! isset( $contact['display'] ) ) {
 						return true;

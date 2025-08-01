@@ -15,7 +15,7 @@ SEOPress, a simple, fast and powerful all in one SEO plugin for WordPress. Rank 
 == Description ==
 
 <h3>Best SEO plugin for WordPress fully integrated with all page builders and themes!</h3>
-<h3>Now with AI ( GPT-4o Mini, GPT-4o, GPT-4, GPT-3.5-Turbo) to automagically generate meta title, description and alternative texts for images!</h3>
+<h3>Now with AI ( GPT-4o Mini, GPT-4o, GPT-4, GPT-3.5-Turbo & DeepSeek) to automagically generate meta title, description and alternative texts for images!</h3>
 
 SEOPress is a powerful WordPress SEO plugin to optimize your SEO, boost your traffic, improve social sharing, build custom HTML and XML Sitemaps, create optimized breadcrumbs, add schemas / Google Structured data types, manage 301 redirections and so much more.<br>
 
@@ -26,7 +26,7 @@ SEOPress is a powerful WordPress SEO plugin to optimize your SEO, boost your tra
 ✔ <strong><a href="https://translate.wordpress.org/projects/wp-plugins/wp-seopress" target="_blank">Translated into 26 languages (and counting)</strong>
 ✔ <strong>Trusted by over 350,000 WordPress websites since 2017</strong>
 
-<a href="https://www.seopress.org/pricing/" target="_blank"><strong>Buy SEOPress PRO: only $49 / year / 5 sites</strong></a>
+<a href="https://www.seopress.org/pricing/" target="_blank"><strong>Buy SEOPress PRO: only $49 / year / 1 site</strong></a>
 
 [youtube https://www.youtube.com/watch?v=4ysKFVr_nu0]
 
@@ -36,7 +36,7 @@ SEOPress is a powerful WordPress SEO plugin to optimize your SEO, boost your tra
 
 <ul>
 	<li><a href="https://www.seopress.org/seopress-productivity/"><strong>Save time</strong></a>: you prefer to work with Excel or Google Spreadsheets? No problem, you can import / export your metadata from CSV files with SEOPress PRO in few clicks!</li>
-	<li><a href="https://www.seopress.org/pricing/"><strong>Save money</strong></a>: SEOPress PRO is available for $49 / year / 5 sites. Go unlimited sites for just $149 / year!</li>
+	<li><a href="https://www.seopress.org/pricing/"><strong>Save money</strong></a>: SEOPress PRO is available for $49 / year / 1 site. Go unlimited sites for just $149 / year!</li>
 	<li><a href="https://www.seopress.org/features/"><strong>All in one SEO plugin</strong></a>: comes with all the features you need to optimize the SEO of your WordPress site. No need to install additional extensions to manage redirects, schemas, XML sitemaps... You reduce the risk of conflicts and maintenance costs. You don't need a special feature? Deactivate it with one click without losing your configuration. Child's play !</li>
 	<li><strong>Easy AND ready to use</strong>: you doesn't need to know SEO or code to use SEOPress. Most of the parameters are automatically set. And thanks to our installation wizard, configuring SEOPress has never been easier. To go further, we provide many <a href="https://www.seopress.org/support/" target="_blank">free tutorials</a> and <a href="https://www.seopress.org/support/ebooks/" target="_blank">ebooks to learn SEO</a> in order to better understand how to position your content on search engines.</li>
 </ul>

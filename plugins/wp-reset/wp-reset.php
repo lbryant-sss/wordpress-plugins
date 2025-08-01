@@ -3,16 +3,16 @@
   Plugin Name: WP Reset
   Plugin URI: https://wpreset.com/
   Description: Reset the entire site or just selected parts while reserving the option to undo by using snapshots.
-  Version: 2.04
+  Version: 2.05
   Requires at least: 4.0
   Requires PHP: 5.2
-  Tested up to: 6.6
+  Tested up to: 6.8
   License: GPLv2 or later
   Author: WebFactory Ltd
   Author URI: https://www.webfactoryltd.com/
   Text Domain: wp-reset
 
-  Copyright 2015 - 2024  WebFactory Ltd  (email: wpreset@webfactoryltd.com)
+  Copyright 2015 - 2025  WebFactory Ltd  (email: wpreset@webfactoryltd.com)
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License, version 2, as
@@ -2385,7 +2385,13 @@ class WP_Reset
         if ($snapshots = $this->get_snapshots()) {
             $snapshots = array_reverse($snapshots);
             echo '<table id="wpr-snapshots">';
-            echo '<tr><th>Date</th><th>Description</th><th class="ss-size">Size</th><th class="ss-actions">&nbsp;</th></tr>';
+            echo '<tr><th>Date</th><th>Description</th><th class="ss-size">Size</th><th class="ss-actions">
+            <div class="dropdown" style="font-weight:normal;     margin-left: 4px;"><a class="button dropdown-toggle" href="#">Actions</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item button-pro-feature" href="#">Import a snapshot - <span class="pro-feature" data-feature="snapshots"><span class="pro">PRO</span> Feature</span></a>
+                    <a class="dropdown-item button-pro-feature" href="#">Cloud snapshots - <span class="pro-feature" data-feature="snapshots"><span class="pro">PRO</span> Feature</span></a>
+                </div>
+            </div></th></tr>';
             foreach ($snapshots as $ss) {
                 echo '<tr id="wpr-ss-' . esc_attr($ss['uid']) . '">';
                 if (!empty($ss['name'])) {

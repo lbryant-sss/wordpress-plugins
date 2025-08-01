@@ -217,7 +217,7 @@ class QLWAPP_Compatibility {
 		// objects
 		$qlwapp['button']   = $models_button->get();
 		$qlwapp['box']      = $models_box->get();
-		$qlwapp['contacts'] = $models_contacts->get_contacts_reorder();
+		$qlwapp['contacts'] = $models_contacts->get_all();
 		$qlwapp['display']  = $models_display->get();
 		$qlwapp['scheme']   = $models_scheme->get();
 

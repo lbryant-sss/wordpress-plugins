@@ -21,6 +21,16 @@ class Loginizer_Social_Base{
 			wp_clear_auth_cookie();
 			
 			do_action('authenticate', $user, $user->user_login, '');
+			
+			// If the user has enabled limit concurrent sessions
+			if(defined('LOGINIZER_PRO_VERSION')){
+				$limit_session = apply_filters('loginizer_pro_limit_sessions', $user);
+				if(!empty($limit_session) && is_wp_error($limit_session)){
+					self::$error['concurrent_logins'] = $limit_session->get_error_message();
+					return false;
+				}
+			}
+
 			wp_set_current_user($user->ID, $user->user_login);
 			wp_set_auth_cookie($user->ID, true, is_ssl());
 			do_action('wp_login', $user->user_login, $user);

@@ -691,7 +691,7 @@ function loginizer_add_social_js($page_type){
 				target_url += "&lz_api=1";
 			}
 			
-			target_url += "&ref='.esc_url($_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']).'"
+			target_url += "&ref='.esc_url((is_ssl() ? 'https://' : 'http://').$_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']).'"
 
 			if(lz_target_window == "same"){
 				jQuery("#loginizer-social-loader-wrap").css("display", "flex");

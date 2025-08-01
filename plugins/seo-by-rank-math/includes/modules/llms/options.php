@@ -59,7 +59,7 @@ $cmb->add_field(
 		'desc'       => esc_html__( 'Maximum number of links to include for each post type.', 'rank-math' ),
 		'type'       => 'text',
 		'classes'    => 'small-text',
-		'default'    => 100,
+		'default'    => 50,
 		'attributes' => [
 			'type' => 'number',
 			'min'  => 1,

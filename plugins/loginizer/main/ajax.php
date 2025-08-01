@@ -15,7 +15,7 @@ add_action('wp_ajax_loginizer_export', 'loginizer_export');
 add_action('wp_ajax_loginizer_social_order', 'loginizer_social_order');
 add_action('wp_ajax_loginizer_dismiss_license_alert', 'loginizer_dismiss_license_alert');
 add_action('wp_ajax_loginizer_dismiss_softwp_alert', 'loginizer_dismiss_softwp_alert');
-
+add_action('wp_ajax_loginizer_close_update_notice', 'loginizer_close_update_notice');
 
 // ----- FUNCTIONS ------//
 
@@ -215,4 +215,31 @@ function loginizer_dismiss_softwp_alert(){
 
 	update_option('loginizer_softwp_upgrade', (0 - time()), false);
 	die('DONE');
+}
+
+function loginizer_close_update_notice(){
+
+	if(!wp_verify_nonce($_GET['security'], 'loginizer_promo_nonce')){
+		wp_send_json_error('Security Check failed!');
+	}
+	
+	if(!current_user_can('manage_options')){
+		wp_send_json_error('You don\'t have privilege to close this notice!');
+	}
+	
+	$plugin_update_notice = get_option('softaculous_plugin_update_notice', []);
+	$available_update_list = get_site_transient('update_plugins');
+	$to_update_plugins = apply_filters('softaculous_plugin_update_notice', []);
+	
+	if(empty($available_update_list) || empty($available_update_list->response)){
+		return;
+	}
+	
+	foreach($to_update_plugins as $plugin_path => $plugin_name){
+		if(isset($available_update_list->response[$plugin_path])){
+			$plugin_update_notice[$plugin_path] = $available_update_list->response[$plugin_path]->new_version;
+		}
+	}
+
+	update_option('softaculous_plugin_update_notice', $plugin_update_notice);
 }

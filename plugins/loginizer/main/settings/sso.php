@@ -187,7 +187,7 @@ jQuery(document).ready(function(){
 		<table class="form-table">
 			<tr>
 				<td scope="row" valign="top" colspan="2">
-					<i><?php esc_html_e('You can generate SSO link or send it to an email, to give them access to your WordPress admin', 'loginizer'); ?></i>
+					<i><?php esc_html_e('You can generate SSO link or send it to an email, to give them access to your site\'s admin panel', 'loginizer'); ?></i>
 				</td>
 			</tr>
 			<tr>

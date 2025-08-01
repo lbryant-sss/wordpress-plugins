@@ -83,24 +83,8 @@ class Contacts {
 		}
 	}
 
-	public function order_contact( $a, $b ) {
-
-		if ( ! isset( $a['order'] ) || ! isset( $b['order'] ) ) {
-			return 0;
-		}
-
-		if ( $a['order'] == $b['order'] ) {
-			return 0;
-		}
-
-		return ( $a['order'] < $b['order'] ) ? -1 : 1;
-	}
-
-	// TODO: Delete after frontend refactor
 	public function get_contacts_reorder() {
-		$contacts = $this->get_contacts();
-		uasort( $contacts, array( $this, 'order_contact' ) );
-		return $contacts;
+		return $this->get_all();
 	}
 
 	public function get_contacts() {

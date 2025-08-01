@@ -106,6 +106,9 @@ You sure can, and many users have indicated this helps stop even more spam, as i
 
 Yep! See the **Installation** section for more details and [this Gist](https://gist.github.com/nocean/953b1362b63bd3ecf68c) for examples.
 
+= Where do I report security bugs found in this plugin? =
+Please report security bugs found in the source code of the CF7 Apps – [Honeypot and hCAPTCHA for Contact Form 7] plugin through the [Patchstack Vulnerability Disclosure Program](https://patchstack.com/database/vdp/e58fd0b7-60aa-4ba8-aeeb-61889936d10c). The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin.
+
 = Disclaimer =
 
 CF7 Apps is a third-party plugin and is not officially associated with or endorsed by Contact Form 7.

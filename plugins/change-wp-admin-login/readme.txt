@@ -249,6 +249,9 @@ Yes, AIO Login allows you to track all login attempts and activity logs in real-
 = Is AIO Login required for WP-Admin security? =
 Even though it is not mandatory, using AIO Login can significantly enhance the security of your WP-Admin login page against unauthorized access.
 
+= Where do I report security bugs found in this plugin? =
+Please report security bugs found in the source code of the Change wp-admin login plugin through the [Patchstack Vulnerability Disclosure Program](https://patchstack.com/database/vdp/9e5fb882-a208-4e32-a495-da1d8f98c036). The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin.
+
 
 == Screenshots ==
 

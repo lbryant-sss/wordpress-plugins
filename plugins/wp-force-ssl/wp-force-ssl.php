@@ -5,13 +5,14 @@
   Description: Redirect all traffic from HTTP to HTTPS and fix other SSL issues.
   Author: WebFactory Ltd
   Author URI: https://www.webfactoryltd.com/
-  Version: 1.67
+  Version: 1.68
   Text Domain: wp-force-ssl
   Requires at least: 4.6
   Requires PHP: 5.2
-  Tested up to: 6.5
+  Tested up to: 6.8
+  License: GPLv2 or later
 
-  Copyright 2019 - 2024  WebFactory Ltd  (email: support@webfactoryltd.com)
+  Copyright 2019 - 2025  WebFactory Ltd  (email: support@webfactoryltd.com)
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License, version 2, as
@@ -152,7 +153,7 @@ class wpForceSSL
       wp_send_json_error('You are not allowed to run this action.');
     }
 
-    $notice_name = trim(sanitize_text_field(@$_GET['notice_name']));
+    $notice_name = trim(sanitize_text_field(wp_unslash($_GET['notice_name'] ?? '')));
 
     if ($notice_name != 'welcome') {
       wp_send_json_error('Unknown notice');
@@ -879,7 +880,7 @@ class wpForceSSL
   public function wpfs_core()
   {
     if (!is_ssl()) {
-      wp_safe_redirect('https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], 301);
+      wp_safe_redirect('https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], 301); //phpcs:ignore
       exit();
     }
   } // wpfs_core
@@ -914,7 +915,8 @@ class wpForceSSL
    */
   public function notice_min_wp_version()
   {
-    wpForceSSL_Utility::wp_kses_wf('<div class="error"><p>' . sprintf(__('WP Force SSL plugin <b>requires WordPress version 4.6</b> or higher to function properly. You are using WordPress version %s. Please <a href="%s">update it</a>.', 'wp-force-ssl'), get_bloginfo('version'), admin_url('update-core.php')) . '</p></div>');
+    /* translators: %1$s WordPress version, %2$s is the Dashboard update URL  */
+    wpForceSSL_Utility::wp_kses_wf('<div class="error"><p>' . sprintf(__('WP Force SSL plugin <b>requires WordPress version 4.6</b> or higher to function properly. You are using WordPress version %1$s. Please <a href="%2$s">update it</a>.', 'wp-force-ssl'), get_bloginfo('version'), admin_url('update-core.php')) . '</p></div>');
   } // notice_min_wp_version_error
 
 

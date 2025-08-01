@@ -2,9 +2,9 @@
 Contributors: WebFactory
 Tags: ssl, force ssl, https, ssl certificate, mixed content
 Requires at least: 4.6
-Tested up to: 6.5
+Tested up to: 6.8
 Requires PHP: 5.2
-Stable Tag: 1.67
+Stable Tag: 1.68
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -84,6 +84,9 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 
 == Changelog ==
+= v1.68 =
+- 2025/07/31
+- minor code fixes
 
 = v1.67 =
 - 2024/06/07

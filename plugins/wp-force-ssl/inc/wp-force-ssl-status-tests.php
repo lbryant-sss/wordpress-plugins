@@ -349,11 +349,13 @@ class wpForceSSL_status_tests
 
   function is_localhost()
   {
+    $server_address = sanitize_text_field(wp_unslash($_SERVER['SERVER_ADDR'] ?? ''));
+    $server_host = sanitize_text_field(wp_unslash($_SERVER['HTTP_HOST'] ?? ''));
     if (
-      substr($_SERVER['SERVER_ADDR'], 0, 6) == '127.0.'
-      || substr($_SERVER['SERVER_ADDR'], 0, 8) == '192.168.'
-      || @$_SERVER['HTTP_HOST'] == 'localhost'
-      || $_SERVER['SERVER_ADDR'] == '::1'
+      substr($server_address, 0, 6) == '127.0.'
+      || substr($server_address, 0, 8) == '192.168.'
+      || $server_host == 'localhost'
+      || $server_address == '::1'
     ) {
       return true;
     }
@@ -406,8 +408,8 @@ class wpForceSSL_status_tests
           $tmp = openssl_x509_parse($cont['options']['ssl']['peer_certificate']);
           $data = array();
 
-          $data['valid_from'] = date('Y-m-d', (int) $tmp['validFrom_time_t']);
-          $data['valid_to'] = date('Y-m-d', (int) $tmp['validTo_time_t']);
+          $data['valid_from'] = wp_date('Y-m-d', (int) $tmp['validFrom_time_t']);
+          $data['valid_to'] = wp_date('Y-m-d', (int) $tmp['validTo_time_t']);
           $data['issuer'] = implode(', ', array_reverse($tmp['issuer']));
           $data['issued_to'] = implode(', ', array_reverse($tmp['subject']));
 
@@ -456,7 +458,7 @@ class wpForceSSL_status_tests
 
   function test_rand()
   {
-    $rand = rand(0, 100);
+    $rand = wp_rand(0, 100);
 
     if ($rand > 66) {
       return array('status' => 'pass', 'data' => $rand);
@@ -662,7 +664,7 @@ class wpForceSSL_status_tests
 
   function test_htaccess()
   {
-    $server = strtolower(filter_var($_SERVER['SERVER_SOFTWARE'], FILTER_SANITIZE_FULL_SPECIAL_CHARS));
+    $server = strtolower(filter_var(wp_unslash($_SERVER['SERVER_SOFTWARE'] ?? ''), FILTER_SANITIZE_FULL_SPECIAL_CHARS));
 
     if (stripos($server, 'apache') === false && stripos($server, 'litespeed') === false) {
       return false;

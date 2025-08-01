@@ -4,7 +4,7 @@ Tags: security, access, admin, Loginizer, login, logs, ban ip, failed login, ip,
 Requires at least: 3.0
 Tested up to: 6.8
 Requires PHP: 5.5
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 License: LGPLv2.1
 License URI: http://www.gnu.org/licenses/lgpl-2.1.html
 
@@ -85,6 +85,12 @@ That's it. You're done!
 3. Loginizer Brute Force Settings page
 
 == Changelog ==
+
+= 2.0.2 =
+* [Improvement Pro] reCAPTCHA v3 now supports score based threshold, making the v3 reCAPTCHA even more effective in blocking bots.
+* [Task Pro] Limit concurrent attempts is now compatible with miniOrange Social login plugin.
+* [Bug Fix Pro] Social Login now works with Limit concurrent attempts.
+* [Bug Fix] There was an issue with social login where in some cases after Social login verification redirection back to the host site was getting blocked by the server's firewall, this has been fixed.
 
 = 2.0.1 =
 * [Feature Pro] Ultimate Member is now compatible with Loginizer's Bruteforce, Social Login, Captcha and Two-Factor Auth.
