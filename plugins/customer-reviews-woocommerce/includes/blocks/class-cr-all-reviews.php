@@ -88,6 +88,9 @@ if (! class_exists('CR_All_Reviews')) :
 					$products = array_map( 'intval', $products );
 
 					$attributes['products'] = $products;
+				} else {
+					$products = array_map( 'intval', $attributes['products'] );
+					$attributes['products'] = $products;
 				}
 			}
 

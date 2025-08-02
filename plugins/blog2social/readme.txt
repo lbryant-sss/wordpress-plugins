@@ -6,7 +6,7 @@ Donate link: https://paypal.me/adenion
 Requires at least: 6.2
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 8.5.0
+Stable tag: 8.5.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -274,8 +274,10 @@ To get started with the basics of Blog2Social and maybe find some useful tips an
 
 
 == Changelog ==
-= 8.5.0 =
+= 8.5.1 =
 Usability Optimization
+= 8.5.0 =
+Network: TikTok Photo / Video direct posting
 = 8.4.7 =
 Usability Optimization
 = 8.4.6 =
@@ -368,8 +370,10 @@ Bugfix: Autoposting
 Publish and share videos
 
 == Upgrade Notice ==
-= 8.5.0 =
+= 8.5.1 =
 Usability Optimization
+= 8.5.0 =
+Network: TikTok Photo / Video direct posting
 = 8.4.7 =
 Usability Optimization
 = 8.4.6 =

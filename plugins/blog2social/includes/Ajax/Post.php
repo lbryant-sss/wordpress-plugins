@@ -3471,7 +3471,7 @@ class Ajax_Post {
             'settings' => array(
                 'post_template' => true,
                 'deactivate_emojis' => false,
-                'generate_hashtags' => false
+                'generate_hashtags' => true
             ),
         );
         $options->_setOption(1, $toolData);
@@ -3600,10 +3600,12 @@ class Ajax_Post {
                                 $assText = $message;
                             }
                         } else {
+                           
                             if (!isset($b2sItem)) {
                                 $b2sItem = new B2S_Ship_Item((int) $_POST['post_id']);
                             }
                             $characterLimits = $b2sItem->getCharacterLimits();
+
                             if (isset($_POST['post_id']) && isset($_POST['network_id']) && isset($_POST['network_type']) && isset($characterLimits[(int) $_POST['network_type']][(int) $_POST['network_id']]) && (int) $characterLimits[(int) $_POST['network_type']][(int) $_POST['network_id']] > 0) {
                                 $networkCharacterLimit = (int) $characterLimits[(int) $_POST['network_type']][(int) $_POST['network_id']];
                                 if ($generateHashtags) {
@@ -3612,9 +3614,11 @@ class Ajax_Post {
                                 if (strlen($result['ass_text']) > (int) $characterLimits[(int) $_POST['network_type']][(int) $_POST['network_id']]) {
                                     $assText = B2S_Util::getExcerpt($assText, 0, (int) $characterLimits[(int) $_POST['network_type']][(int) $_POST['network_id']]);
                                 }
-                                if ($generateHashtags) {
-                                    $assText .= $this->prepareAssHashtags($result['ass_hashtags']);
-                                }
+             
+                            }
+
+                            if ($generateHashtags) {
+                                $assText .= $this->prepareAssHashtags($result['ass_hashtags']);
                             }
                         }
                         echo json_encode(array('result' => true, 'ass_text' => $assText, 'ass_words_open' => (int) $result['ass_words_open']));

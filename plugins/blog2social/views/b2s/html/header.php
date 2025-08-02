@@ -791,6 +791,7 @@ if (isset($_GET['page']) && !empty($_GET['page']) && !in_array($_GET['page'], un
                             <br>
                             <input type="checkbox" id="b2s-ass-settings-checkbox-3" />
                             <label for="b2s-ass-settings-checkbox-3"><?php esc_html_e('Generate Hashtags', 'blog2social') ?></label>
+                            <div id="b2s-ass-settings-checkbox-3-conditional-text" hidden><?php  esc_html_e('(is defined in post templates)', 'blog2social') ?></div>
                         </div>
                     </div>
                 </div>

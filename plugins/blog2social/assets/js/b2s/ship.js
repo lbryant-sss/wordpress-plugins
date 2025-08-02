@@ -4690,25 +4690,28 @@ function openPostFormat(networkId, networkType, networkAuthId, wpType, showModal
         jQuery('.b2s-user-network-settings-post-format-area').hide();
         jQuery('.b2s-user-network-settings-post-format-area[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"]').show();
         jQuery('#b2s-post-ship-item-post-format-network-title').html(jQuery('.b2s-user-network-settings-post-format-area[data-network-id="' + networkId + '"]').attr('data-network-title'));
+       
+        jQuery('.b2s-user-network-settings-post-format[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"]').removeClass('b2s-settings-checked');
+
+        var currentPostFormat = jQuery('.b2s-post-item-details-post-format[data-network-auth-id="' + networkAuthId + '"]').val();
+
+        if (showModal) {
+            jQuery('.b2s-user-network-settings-post-format-apply[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"]').attr("data-network-auth-id", networkAuthId);
+            jQuery('.b2s-user-network-settings-post-format-new[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"]').attr("data-network-auth-id", networkAuthId);
+            jQuery('.b2s-user-network-settings-post-format-area-new[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"]').attr("data-network-auth-id", networkAuthId);
+            jQuery('.b2s-user-network-settings-post-format-new[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"][data-post-format="' + currentPostFormat + '"]').prop("checked", true);
+            jQuery('.b2s-user-network-settings-post-format-area-new[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"][data-post-format="' + currentPostFormat + '"]').addClass('b2s-settings-checked-new');
+        } else
+        {
+            jQuery('.b2s-user-network-settings-post-format-new[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"][data-post-format="' + currentPostFormat + '"]').prop("checked", false);
+        }
+
+        jQuery('.b2s-user-network-settings-post-format-new[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"][data-post-format="' + currentPostFormat + '"][data-network-auth-id="' + networkAuthId + '"]').prop("checked", true);
+        
         if (jQuery('#user_version').val() >= 2) {
-            jQuery('.b2s-user-network-settings-post-format[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"]').removeClass('b2s-settings-checked');
-
-            var currentPostFormat = jQuery('.b2s-post-item-details-post-format[data-network-auth-id="' + networkAuthId + '"]').val();
-
-            if (showModal) {
-                jQuery('.b2s-user-network-settings-post-format-apply[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"]').attr("data-network-auth-id", networkAuthId);
-                jQuery('.b2s-user-network-settings-post-format-new[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"]').attr("data-network-auth-id", networkAuthId);
-                jQuery('.b2s-user-network-settings-post-format-area-new[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"]').attr("data-network-auth-id", networkAuthId);
-                jQuery('.b2s-user-network-settings-post-format-new[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"][data-post-format="' + currentPostFormat + '"]').prop("checked", true);
-                jQuery('.b2s-user-network-settings-post-format-area-new[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"][data-post-format="' + currentPostFormat + '"]').addClass('b2s-settings-checked-new');
-            } else
-            {
-                jQuery('.b2s-user-network-settings-post-format-new[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"][data-post-format="' + currentPostFormat + '"]').prop("checked", false);
-            }
-
-            jQuery('.b2s-user-network-settings-post-format-new[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"][data-post-format="' + currentPostFormat + '"][data-network-auth-id="' + networkAuthId + '"]').prop("checked", true);
             jQuery('#b2s-post-ship-item-post-format-network-display-name').html(jQuery('.b2s-post-item-details-network-display-name[data-network-auth-id="' + networkAuthId + '"]').text().toUpperCase());
         }
+        
         jQuery('.b2s-post-format-settings-info').hide();
         jQuery('.b2s-post-format-settings-info[data-network-id="' + networkId + '"]').show();
         if (showModal) {
@@ -5217,6 +5220,17 @@ jQuery(document).on('click', '.b2s-post-item-ass-setting-btn', function () {
 
                 if (data.settings.post_template != null) {
                     postTemplateElm.prop('checked', data.settings.post_template);
+                    if(data.settings.post_template==true){
+                        jQuery('#b2s-ass-settings-checkbox-3').prop("disabled", true);
+                        jQuery('#b2s-ass-settings-checkbox-3').prop("checked", true);
+                        var text= jQuery('label[for="b2s-ass-settings-checkbox-3"]').text();
+                        text = text.replace(/\s?\(.*?\)/g, '');
+                        var additionText= jQuery('#b2s-ass-settings-checkbox-3-conditional-text').text();
+                        var wholeText= text +" "+ additionText;
+                        jQuery('label[for="b2s-ass-settings-checkbox-3"]').text(wholeText);
+                    }
+          
+    
                 }
                 if (data.settings.deactivate_emojis != null) {
                     emojiElm.prop('checked', data.settings.deactivate_emojis);
@@ -5238,6 +5252,30 @@ jQuery(document).on('click', '.b2s-post-item-ass-setting-btn', function () {
     });
     return true;
 });
+
+//JM 2025/07/31 Update Notice for Customers->
+jQuery(document).on('change', '#b2s-ass-settings-checkbox-1', function () {
+    
+    var checked = jQuery(this).prop("checked");
+  
+    if(checked){
+        jQuery('#b2s-ass-settings-checkbox-3').prop("disabled", true);
+        jQuery('#b2s-ass-settings-checkbox-3').prop("checked", true);
+        var text= jQuery('label[for="b2s-ass-settings-checkbox-3"]').text();
+        var additionText= jQuery('#b2s-ass-settings-checkbox-3-conditional-text').text();
+        var wholeText= text +" "+ additionText;
+        jQuery('label[for="b2s-ass-settings-checkbox-3"]').text(wholeText);
+        
+    }else
+    {
+        jQuery('#b2s-ass-settings-checkbox-3').prop("disabled", false);
+        var text =jQuery('label[for="b2s-ass-settings-checkbox-3"]').text();
+        text = text.replace(/\s?\(.*?\)/g, '');
+        jQuery('label[for="b2s-ass-settings-checkbox-3"]').text(text);
+    }
+
+});
+
 
 //Tool:Assistini / Settings Save
 jQuery(document).on('click', '#b2s-ass-settings-save-btn', function () {

@@ -111,6 +111,7 @@ if ( ! class_exists( '\WP2FA\WP2FA' ) ) {
 					'grace-period-denominator'         => 'days',
 					'enable_destroy_session'           => '',
 					'limit_access'                     => '',
+					'enable_rest'                      => false,
 					'brute_force_disable'              => '',
 					'2fa_settings_last_updated_by'     => '',
 					'2fa_main_user'                    => '',
@@ -168,14 +169,6 @@ if ( ! class_exists( '\WP2FA\WP2FA' ) ) {
 
 			Methods_Helper::init();
 
-			/**
-			 * Enables the API endpoints for the plugin.
-			 *
-			 * @since 2.9.0
-			 */
-			if ( \apply_filters( \WP_2FA_PREFIX . 'enable_api_endpoints', true ) ) {
-				Endpoints::init();
-			}
 
 			self::$plugin_settings[ WP_2FA_POLICY_SETTINGS_NAME ]      = Settings_Utils::get_option( WP_2FA_POLICY_SETTINGS_NAME, array() );
 			self::$plugin_settings[ WP_2FA_SETTINGS_NAME ]             = Settings_Utils::get_option( WP_2FA_SETTINGS_NAME, array() );
@@ -219,6 +212,15 @@ if ( ! class_exists( '\WP2FA\WP2FA' ) ) {
 			Plugin_Updated_Notice::init();
 
 			self::add_actions();
+
+			/**
+			 * Enables the API endpoints for the plugin.
+			 *
+			 * @since 2.9.1
+			 */
+			if ( Settings_Utils::string_to_bool( self::get_wp2fa_general_setting( 'enable_rest' ) ) ) {
+				Endpoints::init();
+			}
 
 			// Inits all the additional free app extensions.
 			$free_extensions = Classes_Helper::get_classes_by_namespace( 'WP2FA\\App\\' );

@@ -42,6 +42,7 @@ if ( ! class_exists( '\WP2FA\Admin\SettingsPages\Settings_Page_General' ) ) {
 			self::no_method_exists();
 			self::disable_brute_force_settings();
 			self::limit_settings_access();
+			self::enable_rest();
 			self::remove_data_upon_uninstall();
 			submit_button( null, 'primary', WP_2FA_SETTINGS_NAME . '[submit]' );
 		}
@@ -66,6 +67,7 @@ if ( ! class_exists( '\WP2FA\Admin\SettingsPages\Settings_Page_General' ) ) {
 			$simple_settings_we_can_loop = array(
 				'enable_destroy_session',
 				'limit_access',
+				'enable_rest',
 				'brute_force_disable',
 				'delete_data_upon_uninstall',
 				'method_invalid_setting',
@@ -83,6 +85,7 @@ if ( ! class_exists( '\WP2FA\Admin\SettingsPages\Settings_Page_General' ) ) {
 			$settings_to_turn_into_bools = array(
 				'enable_destroy_session',
 				'limit_access',
+				'enable_rest',
 				'brute_force_disable',
 				'delete_data_upon_uninstall',
 			);
@@ -239,6 +242,38 @@ if ( ! class_exists( '\WP2FA\Admin\SettingsPages\Settings_Page_General' ) ) {
 								<?php checked( 1, WP2FA::get_wp2fa_general_setting( 'limit_access' ), true ); ?>
 								>
 								<?php \esc_html_e( 'Hide settings from other administrators', 'wp-2fa' ); ?>
+							</fieldset>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<?php
+		}
+
+		/**
+		 * Enable REST API
+		 *
+		 * @return void
+		 *
+		 * @since 2.9.1
+		 */
+		private static function enable_rest() {
+			?>
+			<br>
+			<h3><?php \esc_html_e( 'Enable the REST API endpoints for 2FA', 'wp-2fa' ); ?></h3>
+			<p class="description">
+				<?php \esc_html_e( 'Use the below setting to enable the REST API endpoints for the 2FA operations. This is mostly needed if you need to easily integrate with the plugin.', 'wp-2fa' ); ?>
+			</p>
+			<table class="form-table">
+				<tbody>
+					<tr>
+						<th><label for="enable_rest"><?php \esc_html_e( 'Enable the REST API endpoints for 2FA', 'wp-2fa' ); ?></label></th>
+						<td>
+							<fieldset>
+								<input type="checkbox" id="enable_rest" name="wp_2fa_settings[enable_rest]" value="enable_rest"
+								<?php \checked( 1, WP2FA::get_wp2fa_general_setting( 'enable_rest' ), true ); ?>
+								>
+								<?php // \esc_html_e( '', 'wp-2fa' ); ?>
 							</fieldset>
 						</td>
 					</tr>
