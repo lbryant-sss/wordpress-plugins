@@ -30,7 +30,7 @@ class MLACore {
 	 *
 	 * @var	string
 	 */
-	const MLA_DEVELOPMENT_VERSION = '20250730';
+	const MLA_DEVELOPMENT_VERSION = '20250802';
 
 	/**
 	 * Slug for registering and enqueueing plugin style sheets (moved from class-mla-main.php)

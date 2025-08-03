@@ -203,6 +203,8 @@ All of the MLA source code has been annotated with "DocBlocks", a special type o
 * Fix: **IMPORTANT: For the `[mla_term_list]` shortcode, a defect that caused the famous "There Has Been a Critical Error on This Website" error has been corrected.**
 * Fix: IMPORTANT: An arbitrary file deletion security risk in the Media/Assistant submenu table has been mitigated.
 * Fix: When WPML is active, the flag images have been restored to the Media/Assistant submenu table column headers.
+* Fix: For the "MLA Gallery Download Checklist" example plugin (v1.01), an explicit check for ZIP archive support has been added to prevent a "Critical Site Error" occurance.
+* Fix: The `screen_options_show_screen` filter for the Settings/Media Library Assistant page has been updated to avoid a defect in Sugar Calendar Lite v3.8.0 (fixed in v3.8.1).
 
 = 3.27 =
 * New: For the `[mla_term_list]` shortcode, **the `checklist,div` output format wraps the list in an HTML "div" tag so, for example, you can add CSS styles to highlight the current list item or limit the size of the display area and add scroll bars to a long list.** More information in the Settings/Media Library Assistant Documentation tab.
