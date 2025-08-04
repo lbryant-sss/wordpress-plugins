@@ -198,17 +198,9 @@ Let's look at some of the best Elementor widgets in ElementsKit Premium version:
 
 ✅ [ **Motion Text** ](https://wpmet.com/plugin/elementskit/motion-text/?utm_source=org&utm_medium=readme) - Helps to display your text with various motion animations, with styles.
 
-✅ [ **WooCommerce Product List** ](https://wpmet.com/plugin/elementskit/woo-product-list/?utm_source=org&utm_medium=readme) - Display and design eCommerce product list easily.
-
-✅ [ **WooCommerce Product Carousel** ](https://wpmet.com/plugin/elementskit/woo-product-carousel/?utm_source=org&utm_medium=readme) - Show Woo products in functional and intuitive sliders.
-
-✅ [ **WooCommerce Category List** ](https://wpmet.com/plugin/elementskit/woo-category-list/?utm_source=org&utm_medium=readme) - Display Woo-Categories anywhere on the website.
-
-✅ [ **WooCommerce Mini Cart** ](https://wpmet.com/plugin/elementskit/woo-mini-cart/?utm_source=org&utm_medium=readme) Get customization options like the cart button, body, header, item, etc.
-
 ✅ [ **Advanced Toggle** ](https://wpmet.com/plugin/elementskit/advanced-toggle/?utm_source=org&utm_medium=readme) - Create amazing pricing tables, icon boxes, and packages and decorate them nicely.
 
-✅ [ **Vertical Mega Menu** ](https://products.wpmet.com/megamenu/?utm_source=org&utm_medium=readme) - Display Mega Menu vertically and customize the content easily.
+✅ [ **Vertical Mega Menu** ](https://products.wpmet.com/megamenu/?utm_source=org&utm_medium=readme) - Display Mega Menu vertically & customize the content easily with this mega menu builder addon.
 
 ✅ [ **Hotspot** ](https://wpmet.com/plugin/elementskit/hotspot/?utm_source=org&utm_medium=readme) - Identify a specific part of your image with a tooltip and reveal an associated text after clicking.
 
@@ -254,6 +246,10 @@ Add a customized list and improve visitors' engagement with your Elementor site.
 ✅ [**Interactive Links**](https://wpmet.com/plugin/elementskit/interactive-links/?utm_source=org&utm_medium=readme) - Clickable and animated links boosts user interactions.
 
 ✅ [**Advanced Search**](https://wpmet.com/plugin/elementskit/advanced-search/?utm_source=org&utm_medium=readme) - Design powerful live search panel to provide relevant search results.
+
+## WooCommerce Elementor Addon
+Display and design e-commerce products in a list and intuitive sliders, along with their categories and mini cart option, anywhere you want.
+**<strong></strong><br />🔶  [WooCommerce Product List](%28https://wpmet.com/plugin/elementskit/woo-product-list/?utm_source=org&utm_medium=readme%29) 🔶[WooCommerce Product Carousel](%28https://wpmet.com/plugin/elementskit/woo-product-carousel/?utm_source=org&utm_medium=readme%29) 🔶[WooCommerce Category List](%28https://wpmet.com/plugin/elementskit/woo-category-list/?utm_source=org&utm_medium=readme%29) 🔶[WooCommerce Mini Cart](%28https://wpmet.com/plugin/elementskit/woo-mini-cart/?utm_source=org&utm_medium=readme%29)**
 
 ### Effortless Integration with Different Social Platforms
 ElementsKit Pro is a complete Elementor social media addon that lets you showcase social media content, sharing options, and other helpful engagement features directly into your WordPress website. Web page visitors can see and connect with dominant social media platforms with the help of widgets like:
