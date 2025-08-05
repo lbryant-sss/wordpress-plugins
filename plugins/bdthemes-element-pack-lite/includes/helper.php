@@ -153,7 +153,8 @@ function element_pack_get_posts() {
 }
 
 function element_pack_allow_tags( $tag = null ) {
-	$tag_allowed = wp_kses_allowed_html( 'post' );
+	// Define secure configurations without inheriting from wp_kses_allowed_html('post')
+	$tag_allowed = [];
 
 	$tag_allowed['input']  = [ 
 		'class'   => [],
@@ -223,6 +224,18 @@ function element_pack_allow_tags( $tag = null ) {
 			'd' => [],
 			'fill' => [],
 		],
+	];
+
+	$tag_allowed['safe_formatting'] = [ 
+		'strong' => [],
+		'br'     => [],
+		'em'     => [],
+		'i'      => [],
+		'b'      => [],
+		'u'      => [],
+		'span'   => [ 'class' => [] ],
+		'div'    => [ 'class' => [] ],
+		'p'      => [ 'class' => [] ],
 	];
 
 	$tag_allowed['svg'] = [ 
@@ -905,6 +918,30 @@ function element_pack_mask_shapes() {
 	}
 
 	return $list;
+}
+
+/**
+ * Get Element Pack mask shapes options for VISUAL_CHOICE control
+ * 
+ * @return array Options array for VISUAL_CHOICE control
+ */
+function element_pack_mask_shapes_options() {
+	$options = [];
+	$shape_list = element_pack_mask_shapes();
+	
+	foreach ( $shape_list as $shape_key => $shape_name ) {
+		// Skip the first item if it's a placeholder
+		if ( $shape_key === 0 ) {
+			continue;
+		}
+		
+		$options[ $shape_key ] = [
+			'title' => $shape_name,
+			'image' => BDTEP_ASSETS_URL . 'images/mask/' . $shape_key . '.svg',
+		];
+	}
+	
+	return $options;
 }
 
 /**

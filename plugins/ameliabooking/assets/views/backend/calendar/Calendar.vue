@@ -108,6 +108,7 @@
               :tags="options.entities.tags"
               @closeDialog="closeDialogEvent"
               @saveCallback="saveCallback"
+              @duplicateCallback="duplicateEventCallback"
           >
           </dialog-event>
         </el-dialog>
@@ -295,6 +296,23 @@
     },
 
     methods: {
+      duplicateEventCallback (entity) {
+        this.event = entity
+        this.event.id = 0
+        this.event.duplicated = true
+        this.event.periods.forEach((period) => {
+          period.googleCalendarEventId = null
+          period.googleMeetUrl = null
+          period.outlookCalendarEventId = null
+          period.microsoftTeamsUrl = null
+          period.appleCalendarEventId = null
+        })
+
+        setTimeout(() => {
+          this.dialogEvent = true
+        }, 300)
+      },
+
       saveCallback () {
         this.getCalendarOptions(false)
       },

@@ -1,4 +1,7 @@
 <?php
+
+use function Ultimate_Blocks\includes\generate_css_string;
+
 require_once dirname(dirname(dirname(__DIR__))) . '/includes/ultimate-blocks-styles-css-generator.php';
 
 function ub_render_progress_bar_block($attributes, $block_content, $block){
@@ -41,7 +44,14 @@ function ub_render_progress_bar_block($attributes, $block_content, $block){
 	$number_suffix              = isset($attributes['numberSuffix']) ? $attributes['numberSuffix'] : '%';
 	$inside_percentage_class    = $percentage_position === 'inside' ? " ub_progress-bar-label-inside" : '';
 	$stripe_style               = $is_stripe ? " ub_progress-bar-stripe" : '';
-	$detail_text                = '<div class="ub_progress-bar-text"><p' . ($blockID === '' ? ' style="justify-content: ' . esc_attr($detailAlign) . ';"' : '') . '>' . wp_kses_post($detail) . '</p></div>';
+	$detail_text = sprintf(
+		'<div class="ub_progress-bar-text" style="%3$s"><p%1$s>%2$s</p></div>',
+		$blockID === '' ? ' style="justify-content: ' . esc_attr($detailAlign) . ';"' : '',
+		wp_kses_post($detail),
+		generate_css_string(array(
+			'color' => isset($descriptionColor) ? $descriptionColor : '',
+		))
+	);
 
 	$percentage_text = sprintf(
 		'<div class="%1$s-label%2$s" style="%3$s"><p>

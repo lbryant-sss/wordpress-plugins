@@ -36,7 +36,6 @@ class Ultimate_Blocks_Deactivator {
 		if(file_exists(wp_upload_dir()['basedir'] . '/ultimate-blocks')){
 			unlink(wp_upload_dir()['basedir'] . '/ultimate-blocks/blocks.editor.build.css');
 			unlink(wp_upload_dir()['basedir'] . '/ultimate-blocks/blocks.style.build.css');
-			unlink(wp_upload_dir()['basedir'] . '/ultimate-blocks/sprite-twitter.png');
 			rmdir(wp_upload_dir()['basedir'] . '/ultimate-blocks');
 		}
 
@@ -48,5 +47,5 @@ class Ultimate_Blocks_Deactivator {
 		delete_option('ub_icon_choices');
 		unregister_setting('ub_settings', 'ub_icon_choices');
 	}
-	
+
 }

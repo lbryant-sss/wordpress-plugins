@@ -298,7 +298,9 @@ class LoginLockdown_Setup extends LoginLockdown
 			`login_attempt_IP` varchar(100) NOT NULL default '',
             `failed_user` varchar(200) NOT NULL default '',
             `reason` varchar(200) NULL,
-			PRIMARY KEY  (`login_attempt_ID`)
+			PRIMARY KEY  (`login_attempt_ID`),
+            KEY `login_attempt_date` (`login_attempt_date`),
+            KEY `login_attempt_IP` (`login_attempt_IP`)
 			);";
         dbDelta($lockdown_login_fails);
 
@@ -310,7 +312,9 @@ class LoginLockdown_Setup extends LoginLockdown
 			`lockdown_IP` varchar(100) NOT NULL default '',
             `reason` varchar(200) NULL,
             `unlocked` smallint(20) NOT NULL default '0',
-			PRIMARY KEY  (`lockdown_ID`)
+			PRIMARY KEY  (`lockdown_ID`),
+            KEY `lockdown_date` (`lockdown_date`),
+            KEY `lockdown_IP` (`lockdown_IP`)
 			);";
         dbDelta($lockdown_lockdowns);
 

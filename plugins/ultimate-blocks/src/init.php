@@ -84,10 +84,6 @@ function ub_update_css_version( $updated ) {
 
 	if ( $frontendStyleUpdated && $editorStyleUpdated ) {
 		update_option( 'ultimate_blocks_css_version', Ultimate_Blocks_Constants::plugin_version() );
-		if ( ! file_exists( wp_upload_dir()['basedir'] . '/ultimate-blocks/sprite-twitter.png' ) ) {
-			copy( dirname( __DIR__ ) . '/src/blocks/click-to-tweet/icons/sprite-twitter.png',
-					wp_upload_dir()['basedir'] . '/ultimate-blocks/sprite-twitter.png' );
-		}
 		$frontendStyleUpdated = false;
 		$editorStyleUpdated   = false;
 	}

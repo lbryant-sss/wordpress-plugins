@@ -53,7 +53,11 @@
     },
     "labelColor": {
       "type": "string",
-      "default": ""
+      "default": null
+    },
+    "descriptionColor": {
+      "type": "string",
+      "default": null
     },
     "numberPrefix": {
       "type": "string",

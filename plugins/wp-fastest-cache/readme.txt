@@ -58,7 +58,7 @@ WP Fastest Cache is not only a wp cache plugin but also a speed optimization wor
 
 <h4>Premium Performance Optimization</h4>
 
-The free version is enough to speed up your site but in the premium version there are extra features such as Mobile Cache, Widget Cache, Minify HTML Plus, Minify CSS Plus, Minify JS, Combine JS Plus, Defer Javascript, Optimize Images, Convert WebP, Database Cleanup, Google Fonts Async, Lazy Load for super fast load times.
+The free version is enough to speed up your site but in the premium version there are extra features such as Mobile Cache, Widget Cache, Minify HTML Plus, Minify CSS Plus, Minify JS, Combine JS Plus, Defer Javascript, Optimize Images, Convert WebP, Database Cleanup, Google Fonts Async, Lazy Load and Delay JS for super fast load times.
 
 1. Mobile Cache
 2. Widget Cache
@@ -72,6 +72,7 @@ The free version is enough to speed up your site but in the premium version ther
 10. Database Cleanup - The Database Cleanup feature clears out all of the garbage datas such as post revisions, trashed posts & pages, comments from trash & spam, trackbacks and pingbacks, transient options etc.
 11. Google Fonts Async
 12. Lazy Load - Defer offscreen images. Consider lazy-loading offscreen and hidden images after all critical resources have finished loading to lower time to interactive
+12. Delay JS - The Delay JavaScript feature helps reduce the 'Reduce unused JavaScript' warning in the Google PageSpeed Insights tool
 
 <h4>Information</h4>
 

@@ -2,7 +2,7 @@
 /*
 Plugin Name: Captcha Code
 Description: Adds captcha to front-end forms.
-Version: 3.2
+Version: 3.3
 Author: WebFactory Ltd
 Author URI: https://www.webfactoryltd.com/
 License: GPL2
@@ -102,7 +102,7 @@ class WP_Captcha_Code
       wp_enqueue_script('jquery-ui-dialog');
 
       $js_localize = array(
-        'wp301_install_url' => add_query_arg(array('action' => 'wp_captcha_code_install_wp301', '_wpnonce' => wp_create_nonce('install_wp301'), 'rnd' => rand()), admin_url('admin.php'))
+        'wp301_install_url' => add_query_arg(array('action' => 'wp_captcha_code_install_wp301', '_wpnonce' => wp_create_nonce('install_wp301'), 'rnd' => wp_rand()), admin_url('admin.php'))
       );
       wp_enqueue_script('wp-captcha-code-admin', WP_CAPTCHA_CODE_URL . 'js/wp-captcha-code.js', array('jquery'), self::$version, true);
       wp_localize_script('wp-captcha-code-admin', 'wp_captcha_code_vars', $js_localize);
@@ -183,41 +183,41 @@ class WP_Captcha_Code
     }
 
     if (isset($_POST['submit']) && isset($_POST['wpcatpcha_update_admin_options_nonce'])) {
-      if (!wp_verify_nonce($_POST['wpcatpcha_update_admin_options_nonce'], 'wpcatpcha_update_admin_options')) {
+      if (!wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['wpcatpcha_update_admin_options_nonce'])), 'wpcatpcha_update_admin_options')) {
         echo '<div id="message" class="updated fade">
                     <p><strong>' . esc_html__('Sorry, your nonce did not verify.', 'captcha-code-authentication') . '</strong></p>
                 </div>';
       } else {
         if (isset($_POST['captcha_show_login'])) {
-          $options['options']['show_login'] = sanitize_text_field($_POST['captcha_show_login']);
+          $options['options']['show_login'] = sanitize_text_field(wp_unslash($_POST['captcha_show_login']));
         }
 
         if (isset($_POST['captcha_show_registration'])) {
-          $options['options']['show_registration'] = sanitize_text_field($_POST['captcha_show_registration']);
+          $options['options']['show_registration'] = sanitize_text_field(wp_unslash($_POST['captcha_show_registration']));
         }
 
         if (isset($_POST['captcha_show_lost_password'])) {
-          $options['options']['show_lost_password'] = sanitize_text_field($_POST['captcha_show_lost_password']);
+          $options['options']['show_lost_password'] = sanitize_text_field(wp_unslash($_POST['captcha_show_lost_password']));
         }
 
         if (isset($_POST['captcha_show_comments'])) {
-          $options['options']['show_comments'] = sanitize_text_field($_POST['captcha_show_comments']);
+          $options['options']['show_comments'] = sanitize_text_field(wp_unslash($_POST['captcha_show_comments']));
         }
 
         if (isset($_POST['captcha_show_logged_in'])) {
-          $options['options']['show_logged_in'] = sanitize_text_field($_POST['captcha_show_logged_in']);
+          $options['options']['show_logged_in'] = sanitize_text_field(wp_unslash($_POST['captcha_show_logged_in']));
         }
 
         if (isset($_POST['captcha_type'])) {
-          $options['options']['captcha_type'] = sanitize_text_field($_POST['captcha_type']);
+          $options['options']['captcha_type'] = sanitize_text_field(wp_unslash($_POST['captcha_type']));
         }
 
         if (isset($_POST['captcha_letters'])) {
-          $options['options']['captcha_letters'] = sanitize_text_field($_POST['captcha_letters']);
+          $options['options']['captcha_letters'] = sanitize_text_field(wp_unslash($_POST['captcha_letters']));
         }
 
         if (isset($_POST['total_no_of_characters'])) {
-          $options['options']['total_no_of_characters'] = sanitize_text_field($_POST['total_no_of_characters']);
+          $options['options']['total_no_of_characters'] = sanitize_text_field(wp_unslash($_POST['total_no_of_characters']));
         }
 
         $change = true;
@@ -265,8 +265,8 @@ class WP_Captcha_Code
   static function admin_menu()
   {
     add_options_page(
-      esc_html__('Captcha'),
-      esc_html__('Captcha'),
+      esc_html('Captcha'),
+      esc_html('Captcha'),
       'manage_options',
       'captcha-code-authentication',
       array(__CLASS__, 'options_page')
@@ -280,8 +280,8 @@ class WP_Captcha_Code
                 <div style="clear:both;"></div><div style="clear:both;"></div>';
     self::generate_captcha_image();
 
-    if (isset($_GET['captcha']) && $_GET['captcha'] == 'confirm_error') {
-      echo '<label style="color:#FF0000;" id="capt_err">' . esc_html($_SESSION['captcha_error']) . '</label><div style="clear:both;"></div>';;
+    if (isset($_GET['captcha']) && $_GET['captcha'] == 'confirm_error') { //phpcs:ignore
+      echo '<label style="color:#FF0000;" id="capt_err">' . esc_html(sanitize_text_field($_SESSION['captcha_error'] ?? '')) . '</label><div style="clear:both;"></div>';;
       $_SESSION['captcha_error'] = '';
     }
 
@@ -293,11 +293,12 @@ class WP_Captcha_Code
 
   static function captcha_login_errors($errors)
   {
-    if (isset($_REQUEST['action']) && 'register' == sanitize_text_field($_REQUEST['action'])) {
+    //phpcs:ignore since request can come from non-nonced source
+    if (isset($_REQUEST['action']) && 'register' == sanitize_text_field($_REQUEST['action'])) { //phpcs:ignore
       return ($errors);
     }
 
-    if (esc_html($_SESSION['captcha_code']) != sanitize_text_field($_REQUEST['captcha_code'])) {
+    if (sanitize_text_field($_SESSION['captcha_code'] ?? '') != sanitize_text_field($_REQUEST['captcha_code'])) { //phpcs:ignore
       return $errors . '<label id="capt_err" for="captcha_code_error">' . esc_html__('Captcha confirmation error!', 'captcha-code-authentication') . '</label>';
     }
     return $errors;
@@ -306,10 +307,12 @@ class WP_Captcha_Code
   static function captcha_login_redirect($url)
   {
     /* Captcha mismatch */
-    if (empty($_REQUEST['captcha_code']) || (isset($_SESSION['captcha_code']) && esc_html($_SESSION['captcha_code']) != sanitize_text_field($_REQUEST['captcha_code']))) {
+    //phpcs:ignore since request can come from non-nonced source
+    if (empty($_REQUEST['captcha_code']) || (isset($_SESSION['captcha_code']) && esc_html($_SESSION['captcha_code']) != sanitize_text_field($_REQUEST['captcha_code']))) { //phpcs:ignore
       $_SESSION['captcha_error'] = esc_html__('Incorrect captcha confirmation!', 'captcha-code-authentication');
       wp_clear_auth_cookie();
-      return $_SERVER["REQUEST_URI"] . "/?captcha='confirm_error'";
+      $request_url = sanitize_text_field(wp_unslash($_SERVER["REQUEST_URI"] ?? ''));
+      return $request_url . "/?captcha='confirm_error'";
     }
     /* Captcha match: take to the admin panel */ else {
       return home_url('/wp-admin/');
@@ -366,7 +369,8 @@ class WP_Captcha_Code
       wp_die(esc_html__('CAPTCHA cannot be empty.', 'captcha-code-authentication'));
 
     // captcha was matched
-    if ($_SESSION['captcha_code'] == $_REQUEST['captcha_code']) {
+    $captcha_code = sanitize_text_field($_SESSION['captcha_code'] ?? '');
+    if ($captcha_code == $_REQUEST['captcha_code']) {
       return ($comment);
     } else {
       wp_die(esc_html__('Error: Incorrect CAPTCHA. Press your browser\'s back button and try again.', 'captcha-code-authentication'));
@@ -387,13 +391,14 @@ class WP_Captcha_Code
 
   static function captcha_register_post($login, $email, $errors)
   {
+    //phpcs:ignore since request can come from non-nonced source
     // If captcha is blank - add error
-    if (isset($_REQUEST['captcha_code']) && "" ==  $_REQUEST['captcha_code']) {
+    if (isset($_REQUEST['captcha_code']) && "" ==  $_REQUEST['captcha_code']) { //phpcs:ignore
       $errors->add('captcha_blank', '<strong>' . esc_html__('ERROR', 'captcha-code-authentication') . '</strong>: ' . esc_html__('Please complete the CAPTCHA.', 'captcha-code-authentication'));
       return $errors;
     }
 
-    if (isset($_REQUEST['captcha_code']) && ($_SESSION['captcha_code'] == $_REQUEST['captcha_code'])) {
+    if (isset($_REQUEST['captcha_code']) && ($_SESSION['captcha_code'] == $_REQUEST['captcha_code'])) { //phpcs:ignore
       // captcha was matched
     } else {
       $errors->add('captcha_wrong', '<strong>' . esc_html__('ERROR', 'captcha-code-authentication') . '</strong>: ' . esc_html__('That CAPTCHA was incorrect.', 'captcha-code-authentication'));
@@ -403,12 +408,13 @@ class WP_Captcha_Code
 
   static function captcha_register_validate($results)
   {
-    if (isset($_REQUEST['captcha_code']) && "" ==  $_REQUEST['captcha_code']) {
+    //phpcs:ignore since request can come from non-nonced source
+    if (isset($_REQUEST['captcha_code']) && "" ==  $_REQUEST['captcha_code']) { //phpcs:ignore
       $results['errors']->add('captcha_blank', '<strong>' . esc_html__('ERROR', 'captcha-code-authentication') . '</strong>: ' . esc_html__('Please complete the CAPTCHA.', 'captcha-code-authentication'));
       return $results;
     }
 
-    if (isset($_REQUEST['captcha_code']) && ($_SESSION['captcha_code'] == $_REQUEST['captcha_code'])) {
+    if (isset($_REQUEST['captcha_code']) && ($_SESSION['captcha_code'] == $_REQUEST['captcha_code'])) { //phpcs:ignore
       // captcha was matched
     } else {
       $results['errors']->add('captcha_wrong', '<strong>' . esc_html__('ERROR', 'captcha-code-authentication') . '</strong>: ' . esc_html__('That CAPTCHA was incorrect.', 'captcha-code-authentication'));
@@ -429,16 +435,18 @@ class WP_Captcha_Code
 
   static function captcha_lostpassword_post()
   {
-    if (isset($_REQUEST['user_login']) && "" == $_REQUEST['user_login'])
+    //phpcs:ignore since request can come from non-nonced source
+    if (isset($_REQUEST['user_login']) && "" == $_REQUEST['user_login']) //phpcs:ignore
       return;
 
     // If captcha doesn't entered
-    if (empty($_REQUEST['captcha_code'])) {
+    if (empty($_REQUEST['captcha_code'])) { //phpcs:ignore
       wp_die(esc_html__('Please complete the CAPTCHA.', 'captcha-code-authentication'));
     }
 
     // Check entered captcha
-    if (isset($_REQUEST['captcha_code']) && ($_SESSION['captcha_code'] == $_REQUEST['captcha_code'])) {
+    $captcha_code = sanitize_text_field($_SESSION['captcha_code'] ?? '');
+    if (isset($_REQUEST['captcha_code']) && ($captcha_code == $_REQUEST['captcha_code'])) { //phpcs:ignore
       return;
     } else {
       wp_die(esc_html__('Error: Incorrect CAPTCHA. Press your browser\'s back button and try again.', 'captcha-code-authentication'));
@@ -498,7 +506,7 @@ class WP_Captcha_Code
 
     $i = 0;
     while ($i < $options['total_no_of_characters']) {
-      $code .= substr($possible_letters, mt_rand(0, strlen($possible_letters) - 1), 1);
+      $code .= substr($possible_letters, wp_rand(0, strlen($possible_letters) - 1), 1);
       $i++;
     }
 
@@ -526,12 +534,12 @@ class WP_Captcha_Code
 
     /* generating the dots randomly in background */
     for ($i = 0; $i < $random_dots; $i++) {
-      imagefilledellipse($image, mt_rand(0, $image_width), mt_rand(0, $image_height), 2, 3, $image_noise_color);
+      imagefilledellipse($image, wp_rand(0, $image_width), wp_rand(0, $image_height), 2, 3, $image_noise_color);
     }
 
     /* generating lines randomly in background of image */
     for ($i = 0; $i < $random_lines; $i++) {
-      imageline($image, mt_rand(0, $image_width), mt_rand(0, $image_height), mt_rand(0, $image_width), mt_rand(0, $image_height), $image_noise_color);
+      imageline($image, wp_rand(0, $image_width), wp_rand(0, $image_height), wp_rand(0, $image_width), wp_rand(0, $image_height), $image_noise_color);
     }
 
     /* create a text box and add 6 letters code in it */

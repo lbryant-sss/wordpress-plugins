@@ -63,7 +63,7 @@ function ub_multi_buttons_parse($b){
 		'--ub-button-color'						=> $buttonIsTransparent ? esc_attr($buttonColor) : ($buttonTextColor ? esc_attr($buttonTextColor) : 'inherit'),
 		'--ub-button-border'					=> $buttonIsTransparent ? '3px solid ' . esc_attr($buttonColor) : 'none',
 		'--ub-button-hover-background-color'	=> $buttonIsTransparent ? '' : esc_attr($buttonHoverColor),
-		'--ub-button-hover-color'				=> $buttonIsTransparent ? esc_attr($buttonHoverColor) : esc_attr($buttonTextHoverColor),
+		'--ub-button-hover-color'				=> $buttonIsTransparent ? esc_attr($buttonHoverColor) : (isset($buttonTextHoverColor) ? esc_attr($buttonTextHoverColor) : ''),
 		'--ub-button-hover-border'				=> $buttonIsTransparent ? '3px solid ' . esc_attr($buttonHoverColor) : 'none',
 	];
 	$pro_styles = apply_filters('ubpro_buttons_styles', [], $b);
@@ -120,7 +120,12 @@ function ub_multi_buttons_parse($b){
 
 	// Add width styles if buttonWidth is fixed
 	$width_styles = [];
-	if ($buttonWidth === 'fixed' && !empty($b['width'])) {
+	if (
+		$buttonWidth === 'fixed' &&
+		!empty($b['width']) &&
+		is_array($b['width']) &&
+		isset($b['width']['all'])
+	) {
 		$width_styles['width'] = Ultimate_Blocks\includes\spacing_preset_css_var($b['width']['all']);
 	}
 	$link_style .= Ultimate_Blocks\includes\generate_css_string($width_styles);
@@ -131,10 +136,10 @@ function ub_multi_buttons_parse($b){
 		$button_padding_css = Ultimate_Blocks\includes\get_spacing_css($buttonPadding);
 	} else {
 		$button_padding_css = [
-			'top' => '20px',
-			'right' => '20px',
-			'bottom' => '20px',
-			'left' => '20px',
+			'top' => '10px',
+			'right' => '10px',
+			'bottom' => '10px',
+			'left' => '10px',
 		];
 	}
 	$button_padding_styles['padding-top'] =  $button_padding_css['top'];
@@ -278,7 +283,12 @@ function ub_single_button_parse($b) {
 
 	// Add width styles if buttonWidth is fixed
 	$width_styles = [];
-	if ($buttonWidth === 'fixed' && !empty($width)) {
+	if (
+		$buttonWidth === 'fixed' &&
+		!empty($width) &&
+		is_array($width) &&
+		isset($width['all'])
+	) {
 		$width_styles['width'] = Ultimate_Blocks\includes\spacing_preset_css_var($width['all']);
 	}
 	$link_style .= Ultimate_Blocks\includes\generate_css_string($width_styles);
@@ -289,10 +299,10 @@ function ub_single_button_parse($b) {
 		$button_padding_css = Ultimate_Blocks\includes\get_spacing_css($buttonPadding);
 	} else {
 		$button_padding_css = [
-			'top' => '20px',
-			'right' => '20px',
-			'bottom' => '20px',
-			'left' => '20px',
+			'top' => '10px',
+			'right' => '10px',
+			'bottom' => '10px',
+			'left' => '10px',
 		];
 	}
 	$button_padding_styles['padding-top'] =  $button_padding_css['top'];

@@ -17,7 +17,7 @@
     },
     "endDate": {
       "type": "number",
-      "default": 1728565920
+      "default": 1760447520
     },
     "style": {
       "type": "string",

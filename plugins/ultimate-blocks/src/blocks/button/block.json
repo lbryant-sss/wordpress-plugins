@@ -144,8 +144,10 @@
 			"default": ""
 		},
 		"width": {
-			"type": "string",
-			"default": ""
+			"type": "object",
+			"default": {
+				"all": ""
+			}
 		},
 		"isOldSizeRemoved": {
 			"type": "boolean",

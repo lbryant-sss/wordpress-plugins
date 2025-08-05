@@ -152,7 +152,22 @@ function ub_render_table_of_contents_block($attributes, $_, $block){
 			'margin-right'       => !empty($margin['right']) ? $margin['right']  : "",
 			'margin-bottom'      => !empty($margin['bottom']) ? $margin['bottom']  : "",
 	);
+	// Add border styles if set
+	if (!empty($block_attrs['border'])) {
+		$border_css = Ultimate_Blocks\includes\get_border_css($block_attrs['border']);
+		$styles['border-top'] = Ultimate_Blocks\includes\get_single_side_border_value($border_css, 'top');
+		$styles['border-left'] = Ultimate_Blocks\includes\get_single_side_border_value($border_css, 'left');
+		$styles['border-right'] = Ultimate_Blocks\includes\get_single_side_border_value($border_css, 'right');
+		$styles['border-bottom'] = Ultimate_Blocks\includes\get_single_side_border_value($border_css, 'bottom');
+	}
 
+	// Add border radius styles if set
+	if (!empty($block_attrs['borderRadius'])) {
+		$styles['border-top-left-radius'] = !empty($block_attrs['borderRadius']['topLeft']) ? $block_attrs['borderRadius']['topLeft'] : '';
+		$styles['border-top-right-radius'] = !empty($block_attrs['borderRadius']['topRight']) ? $block_attrs['borderRadius']['topRight'] : '';
+		$styles['border-bottom-left-radius'] = !empty($block_attrs['borderRadius']['bottomLeft']) ? $block_attrs['borderRadius']['bottomLeft'] : '';
+		$styles['border-bottom-right-radius'] = !empty($block_attrs['borderRadius']['bottomRight']) ? $block_attrs['borderRadius']['bottomRight'] : '';
+	}
 	if ($attributes['allowToCHiding']) {
 		$styles['max-width'] = 'fit-content';
 		$styles['max-width'] = '-moz-fit-content';

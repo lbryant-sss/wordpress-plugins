@@ -52,6 +52,9 @@ class LLMS_Txt {
 					'desc'    => esc_html__( 'Configure your llms.txt file for custom crawling/indexing rules.', 'rank-math' ),
 					'file'    => __DIR__ . '/options.php',
 					'classes' => 'rank-math-advanced-option',
+					'json'    => [
+						'llmsUrl' => esc_url( home_url( '/llms.txt' ) ),
+					],
 				],
 			],
 			5

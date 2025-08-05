@@ -7,7 +7,7 @@
  * Author: Gambit Technologies, Inc
  * Author URI: http://gambit.ph
  * Text Domain: stackable-ultimate-gutenberg-blocks
- * Version: 3.17.3
+ * Version: 3.18.0
  *
  * @package Stackable
  */
@@ -22,7 +22,7 @@ if ( function_exists( 'sugb_fs' ) ) {
 }
 defined( 'STACKABLE_SHOW_PRO_NOTICES' ) || define( 'STACKABLE_SHOW_PRO_NOTICES', true );
 defined( 'STACKABLE_BUILD' ) || define( 'STACKABLE_BUILD', 'free' );
-defined( 'STACKABLE_VERSION' ) || define( 'STACKABLE_VERSION', '3.17.3' );
+defined( 'STACKABLE_VERSION' ) || define( 'STACKABLE_VERSION', '3.18.0' );
 defined( 'STACKABLE_FILE' ) || define( 'STACKABLE_FILE', __FILE__ );
 defined( 'STACKABLE_I18N' ) || define( 'STACKABLE_I18N', 'stackable-ultimate-gutenberg-blocks' );
 // Plugin slug.
@@ -192,7 +192,9 @@ if ( !function_exists( 'is_frontend' ) ) {
  * Freemius.
  * This needs to be first.
  */
-require_once plugin_dir_path( __FILE__ ) . 'freemius.php';
+if ( STACKABLE_BUILD !== 'free' ) {
+    require_once plugin_dir_path( __FILE__ ) . 'freemius.php';
+}
 /**
  * Block Initializer.
  */
@@ -221,7 +223,7 @@ require_once plugin_dir_path( __FILE__ ) . 'src/plugins/global-settings/color-sc
 // We need to add this so the filter for deprecation gets applied.
 require_once plugin_dir_path( __FILE__ ) . 'src/plugins/global-settings/color-schemes/index.php';
 require_once plugin_dir_path( __FILE__ ) . 'src/plugins/global-settings/preset-controls/index.php';
-require_once plugin_dir_path( __FILE__ ) . 'src/custom-block-styles.php';
+require_once plugin_dir_path( __FILE__ ) . 'src/plugins/global-settings/block-styles/index.php';
 require_once plugin_dir_path( __FILE__ ) . 'src/css-optimize.php';
 require_once plugin_dir_path( __FILE__ ) . 'src/compatibility/index.php';
 if ( !is_admin() ) {
@@ -255,12 +257,15 @@ if ( is_admin() ) {
     require_once plugin_dir_path( __FILE__ ) . 'src/welcome/notification.php';
     require_once plugin_dir_path( __FILE__ ) . 'src/welcome/notification-rate.php';
 }
+if ( STACKABLE_BUILD === 'premium' ) {
+}
 // Deprecated.
 require_once plugin_dir_path( __FILE__ ) . 'src/deprecated/editor-settings.php';
 require_once plugin_dir_path( __FILE__ ) . 'src/deprecated/native-global-colors.php';
 require_once plugin_dir_path( __FILE__ ) . 'src/deprecated/navigation-panel-pre-enabled.php';
 require_once plugin_dir_path( __FILE__ ) . 'src/deprecated/font-awesome-version.php';
 require_once plugin_dir_path( __FILE__ ) . 'src/deprecated/global-color-schemes.php';
+require_once plugin_dir_path( __FILE__ ) . 'src/deprecated/block-defaults.php';
 /**
  * V2 Deprecated
  */

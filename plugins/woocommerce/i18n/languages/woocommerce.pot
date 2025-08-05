@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce 10.1.0-rc.1\n"
+"Project-Id-Version: WooCommerce 10.1.0-rc.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-07-29T08:11:19+00:00\n"
+"POT-Creation-Date: 2025-08-04T10:09:56+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: woocommerce\n"
@@ -12835,12 +12835,12 @@ msgid "Uncategorized"
 msgstr ""
 
 #: includes/admin/class-wc-admin-taxonomies.php:344
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:169
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:178
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:187
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:196
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:205
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:219
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:174
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:183
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:192
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:201
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:210
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:224
 #: src/Blocks/BlockTypes/OrderConfirmation/Totals.php:226
 #: src/Internal/DataStores/Orders/CustomOrdersTableController.php:288
 #: src/Internal/DataStores/Orders/LegacyDataCleanup.php:215
@@ -13066,9 +13066,9 @@ msgid "Clear WooCommerce.com cache"
 msgstr ""
 
 #: includes/admin/helper/class-wc-helper-admin.php:276
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:166
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:175
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:184
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:171
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:180
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:189
 #: src/Internal/Admin/Analytics.php:159
 #: src/Internal/ProductDownloads/ApprovedDirectories/Admin/SyncUI.php:68
 #: templates/single-product/add-to-cart/variable.php:55
@@ -20451,7 +20451,7 @@ msgid "Learn how to update"
 msgstr ""
 
 #: includes/admin/views/html-admin-page-status-report.php:1098
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:183
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:188
 msgid "Clear system status theme info cache"
 msgstr ""
 
@@ -21276,8 +21276,8 @@ msgstr ""
 #: includes/class-wc-frontend-scripts.php:641
 #: includes/wc-cart-functions.php:133
 #: includes/wc-template-functions.php:2446
-#: src/Blocks/BlockTypes/ProductButton.php:383
-#: src/Blocks/BlockTypes/ProductButton.php:384
+#: src/Blocks/BlockTypes/ProductButton.php:385
+#: src/Blocks/BlockTypes/ProductButton.php:386
 msgid "View cart"
 msgstr ""
 
@@ -29702,7 +29702,7 @@ msgid "Product lookup tables"
 msgstr ""
 
 #: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:151
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:211
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:216
 #: src/Internal/ProductAttributesLookup/DataRegenerator.php:327
 msgid "Regenerate"
 msgstr ""
@@ -29712,239 +29712,251 @@ msgid "This tool will regenerate product lookup table data. This process may tak
 msgstr ""
 
 #: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:155
-msgid "Term counts"
+msgid "Coupons lookup table"
 msgstr ""
 
 #: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:156
-msgid "Recount terms"
+msgid "Repair"
 msgstr ""
 
 #: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:157
-msgid "This tool will recount product terms - useful when changing your settings in a way which hides products from the catalog."
+msgid "This tool will repair the coupons lookup table data with missing discount amounts. This process may take a while."
 msgstr ""
 
 #: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:160
-msgid "Capabilities"
+msgid "Term counts"
 msgstr ""
 
 #: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:161
-msgid "Reset capabilities"
+msgid "Recount terms"
 msgstr ""
 
 #: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:162
-msgid "This tool will reset the admin, customer and shop_manager roles to default. Use this if your users cannot access all of the WooCommerce admin pages."
+msgid "This tool will recount product terms - useful when changing your settings in a way which hides products from the catalog."
 msgstr ""
 
 #: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:165
-msgid "Clear customer sessions"
+msgid "Capabilities"
+msgstr ""
+
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:166
+msgid "Reset capabilities"
+msgstr ""
+
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:167
+msgid "This tool will reset the admin, customer and shop_manager roles to default. Use this if your users cannot access all of the WooCommerce admin pages."
 msgstr ""
 
 #: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:170
+msgid "Clear customer sessions"
+msgstr ""
+
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:175
 msgid "This tool will delete all customer session data from the database, including current carts and saved carts in the database."
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:174
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:179
 msgid "Clear template cache"
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:179
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:184
 msgid "This tool will empty the template cache."
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:188
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:193
 msgid "This tool will empty the system status theme info cache."
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:192
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:197
 msgid "Create default WooCommerce pages"
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:193
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:198
 msgid "Create pages"
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:197
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:202
 msgid "This tool will install all the missing WooCommerce pages. Pages already defined and set up will not be replaced."
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:201
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:206
 msgid "Delete WooCommerce tax rates"
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:202
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:207
 msgid "Delete tax rates"
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:206
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:211
 msgid "This option will delete ALL of your tax rates, use with caution. This action cannot be reversed."
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:210
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:215
 msgid "Regenerate shop thumbnails"
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:212
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:217
 msgid "This will regenerate all shop thumbnails to match your theme and/or image settings."
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:215
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:216
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:220
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:221
 msgid "Update database"
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:220
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:225
 msgid "This tool will update your WooCommerce database to the latest version. Please ensure you make sufficient backups before proceeding."
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:224
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:229
 msgid "Re-create Order Address FTS index"
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:225
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:230
 msgid "Recreate index"
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:226
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:231
 msgid "This tool will recreate the full text search index for order addresses. If the index does not exist, it will try to create it."
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:231
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:236
 msgid "Verify base database tables"
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:232
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:237
 msgid "Verify database"
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:234
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:239
 msgid "Verify if all base database tables are present."
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:286
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:311
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:291
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:316
 msgid "Invalid tool ID."
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:369
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:374
 msgid "A unique identifier for the tool."
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:377
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:382
 msgid "Tool name."
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:385
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:390
 msgid "What running the tool will do."
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:393
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:398
 msgid "Tool description."
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:401
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:406
 msgid "Did the tool run successfully?"
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:406
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:411
 msgid "Tool return message."
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:473
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:478
 msgid "Product transients cleared"
 msgstr ""
 
 #. translators: %d: amount of expired transients
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:478
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:483
 #, php-format
 msgid "%d transients rows cleared"
 msgstr ""
 
 #. translators: %d: amount of orphaned variations
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:492
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:497
 #, php-format
 msgid "%d orphaned variations deleted"
 msgstr ""
 
 #. translators: %d: amount of permissions
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:518
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:523
 #, php-format
 msgid "%d permissions deleted"
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:525
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:530
 msgid "Lookup tables are regenerating"
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:531
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:541
 msgid "Roles successfully reset"
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:536
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:546
 msgid "Terms successfully recounted"
 msgstr ""
 
 #. translators: %d: amount of sessions
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:543
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:553
 msgid "Deleted all active sessions"
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:548
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:558
 msgid "All missing WooCommerce pages successfully installed"
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:560
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:570
 msgid "Tax rates successfully deleted"
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:565
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:575
 msgid "Thumbnail regeneration has been scheduled to run in the background."
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:573
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:583
 msgid "Database upgrade routine has been scheduled to run in the background."
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:579
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:589
 msgid "Template cache cleared."
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:581
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:591
 msgid "The active version of WooCommerce does not support template cache clearing."
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:588
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:598
 msgid "System status theme info cache cleared."
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:593
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:603
 msgid "You need WooCommerce 4.2 or newer to run this tool."
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:600
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:610
 msgid "Database verified successfully."
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:602
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:612
 msgid "Verifying database... One or more tables are still missing: "
 msgstr ""
 
 #. translators: %1$s: callback string, %2$s: error message
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:628
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:638
 #, php-format
 msgid "There was an error calling %1$s: %2$s"
 msgstr ""
 
 #. translators: %s: callback string
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:650
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:660
 #, php-format
 msgid "There was an error calling %s"
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:652
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:662
 msgid "Tool ran."
 msgstr ""
 
-#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:656
+#: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:666
 msgid "There was an error calling this tool. There is no callback present."
 msgstr ""
 
@@ -32325,16 +32337,30 @@ msgstr ""
 msgid "%1$s should not be called before the %2$s action."
 msgstr ""
 
-#: includes/wc-coupon-functions.php:24
+#: includes/wc-coupon-functions.php:25
 msgid "Percentage discount"
 msgstr ""
 
-#: includes/wc-coupon-functions.php:25
+#: includes/wc-coupon-functions.php:26
 msgid "Fixed cart discount"
 msgstr ""
 
-#: includes/wc-coupon-functions.php:26
+#: includes/wc-coupon-functions.php:27
 msgid "Fixed product discount"
+msgstr ""
+
+#: includes/wc-coupon-functions.php:152
+msgid "Coupons lookup table does not exist."
+msgstr ""
+
+#: includes/wc-coupon-functions.php:169
+msgid "No entries with zero discount amount found. Coupons lookup table is up to date."
+msgstr ""
+
+#. translators: %1$d: number of entries processed, %2$d: number of errors
+#: includes/wc-coupon-functions.php:208
+#, php-format
+msgid "Coupons lookup table entries with zero discount amount repaired successfully. Processed %1$d entries with %2$d errors."
 msgstr ""
 
 #. translators: %s: stock amount
@@ -38241,15 +38267,14 @@ msgstr ""
 msgid "Payment:"
 msgstr ""
 
-#. translators: %s: product quantity.
 #. translators: %s: product number.
-#: src/Blocks/BlockTypes/ProductButton.php:179
-#: src/Blocks/BlockTypes/ProductButton.php:358
+#: src/Blocks/BlockTypes/ProductButton.php:182
+#: src/Blocks/BlockTypes/ProductButton.php:360
 #, php-format
 msgid "%s in cart"
 msgstr ""
 
-#: src/Blocks/BlockTypes/ProductButton.php:353
+#: src/Blocks/BlockTypes/ProductButton.php:355
 msgid "Added to cart"
 msgstr ""
 

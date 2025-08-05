@@ -127,7 +127,7 @@ if ( ! class_exists( 'Stackable_Init' ) ) {
 			wp_register_style( 'ugb-style-css-nodep', false );
 			$inline_css = apply_filters( 'stackable_inline_styles_nodep', '' );
 			if ( ! empty( $inline_css ) ) {
-				wp_add_inline_style( 'ugb-style-css-nodep', $inline_css );
+				wp_add_inline_style( 'ugb-style-css-nodep', trim( $inline_css ) );
 			}
 
 			// Register inline frontend styles for theme.json block style inheritance
@@ -361,8 +361,9 @@ if ( ! class_exists( 'Stackable_Init' ) ) {
 				'isPro' => STACKABLE_BUILD === 'premium' && sugb_fs()->can_use_premium_code(),
 				'showProNotice' => stackable_should_show_pro_notices(),
 				'pricingURL' => 'https://wpstackable.com/premium/?utm_source=wp-settings&utm_campaign=gopremium&utm_medium=wp-dashboard',
-				'planName' => sugb_fs()->is_plan( 'starter', true ) ? 'starter' :
-							( sugb_fs()->is_plan( 'professional', true ) ? 'professional' : 'business' ),
+				'planName' => STACKABLE_BUILD === 'free' ? '' :
+							( sugb_fs()->is_plan( 'starter', true ) ? 'starter' :
+								( sugb_fs()->is_plan( 'professional', true ) ? 'professional' : 'business' ) ),
 
 				// Icons.
 				'fontAwesomeSearchProIcons' => apply_filters( 'stackable_search_fontawesome_pro_icons', false ),

@@ -3,7 +3,7 @@ Contributors: dotcamp, ultimateblocks, imtiazrayhan, istiakrayhan, erdembircan, 
 Tags: blocks, gutenberg blocks, gutenberg, block editor, free
 Requires at least: 5.8
 Tested up to: 6.8
-Stable tag: 3.3.7
+Stable tag: 3.3.8
 Requires PHP: 7.2
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
@@ -149,6 +149,19 @@ That's it. You're done!
 3. Tabbed Content Block.
 
 == Changelog ==
+
+= 3.3.8 =
+
+* NEW: Add border and border radius options to Table of Contents block.
+* NEW: Add description color option to Progress Bar block.
+* IMPROVE: Update 'Click to Tweet' block to 'Post on X' with X icon.
+* IMPROVE: Update default padding in Button block.
+* IMPROVE: Refine color controls in Table of Contents block.
+* IMPROVE: Refine Progress Bar block controls.
+* IMPROVE: Extend default end time for Countdown block to 2025.
+* FIX: Resolve fatal error in Tabbed Content block.
+* FIX: Address undefined variable error in Button block.
+* FIX: Correct type error in Button block.
 
 = 3.3.7 =
 

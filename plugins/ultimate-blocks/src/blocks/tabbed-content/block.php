@@ -33,10 +33,14 @@ function ub_render_tabbed_content_block($attributes, $contents, $block){
 
     $tabs = '';
 
-    $contents = ub_str_get_html('<div id="tabarray">' . $contents . '</div>', $lowercase=true, $forceTagsClosed=true, $target_charset = UB_DEFAULT_TARGET_CHARSET, $stripRN=false)
-                    ->find('#tabarray > .wp-block-ub-tabbed-content-tab-content-wrap');
+   	$html = ub_str_get_html('<div id="tabarray">' . $contents . '</div>', true, true, UB_DEFAULT_TARGET_CHARSET, false);
+	if ( $html ) {
+		$contents = $html->find('#tabarray > .wp-block-ub-tabbed-content-tab-content-wrap');
+	} else {
+		$contents = array();
+	}
 
-    $tabContents = [];
+    	$tabContents = [];
 	$block_attrs = $block->parsed_block['attrs'];
 	$tab_contents_styles = array(
 		'border-top-left-radius' => !empty( $block_attrs['tabContentsBorderRadius']['topLeft'] ) ? esc_attr($block_attrs['tabContentsBorderRadius']['topLeft']) . ';': "",
