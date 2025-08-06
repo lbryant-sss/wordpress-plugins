@@ -17,10 +17,12 @@ if ( get_locale() === 'fa_IR' && wpp_is_active( 'persian_date' ) ) {
 	add_filter( 'the_date', 'wpp_fix_post_date', 10, 3 );
 	add_filter( 'get_the_time', 'wpp_fix_post_time', 10, 2 );
 	add_filter( 'get_the_date', 'wpp_fix_post_date', 100, 3 );
+	add_filter( 'get_the_modified_date', 'wpp_fix_modified_date', 10, 3 );
 	add_filter( 'get_comment_time', 'wpp_fix_comment_time', 10, 2 );
-	add_filter( 'get_comment_date', 'wpp_fix_comment_date', 10, 2 );
+	add_filter( 'get_comment_date', 'wpp_fix_comment_date', 10, 3 );
 	//add_filter('get_post_modified_time', 'wpp_fix_post_modified_time', 10, 3);
 	add_filter( 'date_i18n', 'wpp_fix_i18n', 10, 4 );
+    add_filter( 'media_view_settings', 'wpp_fix_media_view_settings', 10, 2 );
 
 	if ( ! wpp_is_sitemap() ) {
 		add_filter( 'wp_date', 'wpp_fix_i18n', 10, 4 );
@@ -61,11 +63,33 @@ function wpp_fix_post_date( $time, $format = '', $post = null ) {
 		$format = get_option( 'date_format' );
 	}
 
-	if ( ! disable_wpp() ) {
-		return date( $format, strtotime( $post->post_modified ) );
+	if ( 'c' === $format || ! disable_wpp() ) {
+		return date( $format, strtotime( $post->post_date ) );
 	}
 
 	return parsidate( $format, date( 'Y-m-d H:i:s', strtotime( $post->post_date ) ), ! wpp_is_active( 'conv_dates' ) ? 'eng' : 'per' );
+}
+
+/**
+ * Fixes post modified date and returns to Jalali format
+ *
+ * @param string $time Post modified time
+ * @param string $format Date format
+ * @param WP_Post|null	$post	WP_Post object or null if no post is found.
+ *
+ * @return string Formatted date
+ * @author Yousef Mahmoudi
+ */
+function wpp_fix_modified_date( $time, $format, $post ) {
+	if ( empty( $post ) ) {
+		return $time;
+	}
+	
+	if ( 'c' === $format ) {
+		return date( $format, strtotime( $post->post_modified ) );
+	}
+	
+	return $time;
 }
 
 /**
@@ -149,9 +173,7 @@ function wpp_fix_comment_time( $time, $format = '' ) {
  *
  * @return          string Formatted date
  */
-function wpp_fix_comment_date( $time, $format = '' ) {
-	global $comment;
-
+function wpp_fix_comment_date( $time, $format = '', $comment ) {
 	if ( empty( $comment ) ) {
 		return $time;
 	}
@@ -159,7 +181,7 @@ function wpp_fix_comment_date( $time, $format = '' ) {
 	if ( empty( $format ) ) {
 		$format = get_option( 'date_format' );
 	}
-	if ( ! disable_wpp() ) {
+	if ( 'c' === $format || ! disable_wpp() ) {
 		return date( $format, strtotime( $comment->comment_date ) );
 	}
 
@@ -230,4 +252,28 @@ function array_key_exists_r( $needle, $haystack, $value = null ) {
 	}
 
 	return $result;
+}
+
+/**
+ * Fixes Media view Select box and returns in Jalali Format Date
+ *
+ * @param   array   $settings List of media view settings.
+ * @param   WP_Post $post     Post object.
+ *
+ * @return  array _wpMediaViewsL10n localize script in WordPress
+ * @author  Mehrshad Darzi
+ */
+function wpp_fix_media_view_settings($settings, $post)
+{
+    global $wpp_settings;
+
+    if (isset($settings['months']) and !empty($settings['months'])) {
+        for ($i = 0; $i < count($settings['months']); $i++) {
+            if (isset($settings['months'][$i]->year) and isset($settings['months'][$i]->month)) {
+                $settings['months'][$i]->text = parsidate("F Y", $settings['months'][$i]->year . '-' . $settings['months'][$i]->month, $wpp_settings['conv_dates'] == 'disable' ? 'eng' : 'per');
+            }
+        }
+    }
+
+    return $settings;
 }

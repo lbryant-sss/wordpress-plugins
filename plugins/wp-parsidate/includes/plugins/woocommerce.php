@@ -323,17 +323,19 @@ if ( ! class_exists( 'WPP_WooCommerce' ) ) {
 
 			if ( isset( $_POST['_sale_price_dates_from'] ) ) {
 				$date_on_sale_from = eng_number( wc_get_post_data_by_key( '_sale_price_dates_from' ) );
+                $time_on_sale_from = ((!empty($_POST['_sale_price_times_from']) and wpp_is_time_validate($_POST['_sale_price_times_from'])) ? wpp_is_time_validate($_POST['_sale_price_times_from']) : '00:00:00');
 
 				if ( ! empty( $date_on_sale_from ) ) {
-					$props['date_on_sale_from'] = date( 'Y-m-d 00:00:00', strtotime( gregdate( 'Y-m-d', $date_on_sale_from ) ) );
+                    $props['date_on_sale_from'] = date('Y-m-d ' . $time_on_sale_from, strtotime(gregdate('Y-m-d', $date_on_sale_from)));
 				}
 			}
 
 			if ( isset( $_POST['_sale_price_dates_to'] ) ) {
 				$date_on_sale_to = eng_number( wc_get_post_data_by_key( '_sale_price_dates_to' ) );
+                $time_on_sale_to = ((!empty($_POST['_sale_price_times_to']) and wpp_is_time_validate($_POST['_sale_price_times_to'])) ? wpp_is_time_validate($_POST['_sale_price_times_to']) : '23:59:59');
 
 				if ( ! empty( $date_on_sale_to ) ) {
-					$props['date_on_sale_to'] = date( 'Y-m-d 23:59:59', strtotime( gregdate( 'Y-m-d', $date_on_sale_to ) ) );
+                    $props['date_on_sale_to'] = date('Y-m-d ' . $time_on_sale_to, strtotime(gregdate('Y-m-d', $date_on_sale_to)));
 				}
 			}
 
@@ -632,8 +634,7 @@ if ( ! class_exists( 'WPP_WooCommerce' ) ) {
 				return $valid;
 			}
 
-			// based on https://github.com/VahidN/DNTPersianUtils.Core/blob/34b9ae00ad3584bc9ef34033c6402d1b8ae7a148/src/DNTPersianUtils.Core/Validators/IranCodesUtils.cs#L13
-			return (bool) preg_match( '/\b(?!(\d)\1{3})[13-9]{4}[1346-9][013-9]{5}\b/', $postcode );
+            return wpp_is_postal_code_validate($postcode, apply_filters('wpp_validate_postal_code_checksum', false));
 		}
 
 		/**

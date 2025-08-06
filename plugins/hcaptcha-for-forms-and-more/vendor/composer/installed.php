@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'hcaptcha/hcaptcha-wordpress-plugin',
-        'pretty_version' => '4.15.0',
-        'version' => '4.15.0.0',
-        'reference' => 'f8faada126441a79a59b4cb6370935babca52f31',
+        'pretty_version' => '4.16.0',
+        'version' => '4.16.0.0',
+        'reference' => 'a7c7adcad35de74072aec91cefc35ea305d55592',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'hcaptcha/hcaptcha-wordpress-plugin' => array(
-            'pretty_version' => '4.15.0',
-            'version' => '4.15.0.0',
-            'reference' => 'f8faada126441a79a59b4cb6370935babca52f31',
+            'pretty_version' => '4.16.0',
+            'version' => '4.16.0.0',
+            'reference' => 'a7c7adcad35de74072aec91cefc35ea305d55592',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -38,9 +38,9 @@
             'dev_requirement' => false,
         ),
         'woocommerce/action-scheduler' => array(
-            'pretty_version' => '3.9.2',
-            'version' => '3.9.2.0',
-            'reference' => 'efbb7953f72a433086335b249292f280dd43ddfe',
+            'pretty_version' => '3.9.3',
+            'version' => '3.9.3.0',
+            'reference' => 'c58cdbab17651303d406cd3b22cf9d75c71c986c',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../woocommerce/action-scheduler',
             'aliases' => array(),

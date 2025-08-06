@@ -79,10 +79,7 @@ if ($compressed_pages >= $free_plan_limit) {
   });
 </script>
 <div class="two-container connected" dir="ltr">
-  <?php include_once 'two_header.php';
-        $banner = new \TenWebOptimizer\OptimizerBanner();
-        $banner->NPSBannerPluginPage();
-        ?>
+  <?php include_once 'two_header.php'; ?>
   <div class="two-body-container">
     <?php
     global $TwoSettings;

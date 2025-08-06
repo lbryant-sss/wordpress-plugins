@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'woocommerce/google-listings-and-ads',
-        'pretty_version' => 'dev-release/3.2.0',
-        'version' => 'dev-release/3.2.0',
-        'reference' => 'bca315de58ce7c6b5172b4318fe97499966167ae',
+        'pretty_version' => 'dev-release/3.3.0',
+        'version' => 'dev-release/3.3.0',
+        'reference' => 'e5517c049b7bed989032c24945c9304d0eab762a',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -374,9 +374,9 @@
             'dev_requirement' => false,
         ),
         'woocommerce/google-listings-and-ads' => array(
-            'pretty_version' => 'dev-release/3.2.0',
-            'version' => 'dev-release/3.2.0',
-            'reference' => 'bca315de58ce7c6b5172b4318fe97499966167ae',
+            'pretty_version' => 'dev-release/3.3.0',
+            'version' => 'dev-release/3.3.0',
+            'reference' => 'e5517c049b7bed989032c24945c9304d0eab762a',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

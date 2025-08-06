@@ -419,23 +419,6 @@ class OptimizerApi
 
         register_rest_route(
             'tenweb_so/v1',
-            'update_nps',
-            [
-                'methods' => 'POST',
-                'callback' => [$this, 'update_nps'],
-                'permission_callback' => [$this, 'check_authorization'],
-                'args' => [
-                    'nps' => [
-                        'type' => 'string',
-                        'required' => true,
-                        'validate_callback' => [$this, 'validate_string'],
-                    ],
-                ],
-            ]
-        );
-
-        register_rest_route(
-            'tenweb_so/v1',
             'two_settings',
             [
                 'methods' => 'GET',
@@ -678,29 +661,6 @@ class OptimizerApi
             $data_for_response['error'] = 'Option name not found.';
 
             return new WP_REST_Response($data_for_response, 404);
-        } catch (Exception $exception) {
-            return new WP_REST_Response($data_for_response, 500);
-        }
-    }
-
-    public function update_nps(WP_REST_Request $request)
-    {
-        $this->clear_response();
-        $data_for_response = [
-            'success' => false,
-            'message' => 'Cannot update nps',
-        ];
-
-        try {
-            $nps = sanitize_text_field($request['nps']);
-            $data_for_response['success'] = true;
-            $data_for_response['message'] = 'Nps updated successfully';
-            $two_nps_data = [
-                'nps' => $nps,
-            ];
-            update_option('two_nps_data', $two_nps_data, false);
-
-            return new WP_REST_Response($data_for_response, 500);
         } catch (Exception $exception) {
             return new WP_REST_Response($data_for_response, 500);
         }

@@ -331,7 +331,7 @@ if ( ! function_exists( 'get_mocked_sponsors' ) ) {
 		$sponsors = array();
 		$all_sponsors = array(
 			array(
-				'image_url' => WP_PARSI_URL . 'assets/images/sponsors/mediana.jpg',
+				'image_url' => WP_PARSI_URL . 'assets/images/sponsors/mediana2.jpg',
 				'image_alt' => __( 'Mediana', 'wp-parsidate' ),
 				'link'      => 'https://wp-parsidate.ir/mediana',
 				'end_date'  => '2025-08-23',

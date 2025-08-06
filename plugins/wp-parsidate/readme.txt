@@ -1,10 +1,10 @@
 === Parsi Date ===
-Contributors: lord_viper, man4toman, parselearn, yazdaniwp, saeedfard, iehsanir
+Contributors: lord_viper, man4toman, parselearn, yazdaniwp, saeedfard, iehsanir, wordpress-parsi
 Donate link: https://wp-parsi.com/support/
 Tags: shamsi, persian, jalali, date, woocommerce
 Requires at least: 5.3
 Tested up to: 6.8
-Stable tag: 5.1.6
+Stable tag: 5.1.7
 License: GPLv3
 
 Persian date support for WordPress
@@ -48,6 +48,19 @@ List of some features:
 6. Persian date type in ACF
 
 == Changelog ==
+
+= 5.1.7 =
+* Fix date format in ISO 8601
+* Update dashboard.css
+* Fix postalCode Validate
+* Fix editor rtl
+* Fix show gateway logo
+* Central Gateways Method
+* Fix Mellat Gateway + Support Block API
+* Add Melli Gateway + Support Block API
+* Fixes Media view Select box and returns in Jalali Format Date
+* Compatible with Sales Countdown Timer plugin
+* Fix block editor datepicker wrong date
 
 = 5.1.6 =
 * Some additional/unused options have been removed

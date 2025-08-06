@@ -13,6 +13,7 @@ use DevOwl\RealCookieBanner\base\UtilsProvider;
 use DevOwl\RealCookieBanner\Core;
 use DevOwl\RealCookieBanner\scanner\Scanner;
 use DevOwl\RealCookieBanner\settings\Blocker as SettingsBlocker;
+use DevOwl\RealCookieBanner\settings\CookieGroup;
 use DevOwl\RealCookieBanner\settings\General;
 use DevOwl\RealCookieBanner\Utils;
 use DevOwl\RealCookieBanner\view\blockable\BlockerPostType;
@@ -353,6 +354,12 @@ class Blocker
      */
     public function pre_http_request($response, $parsed_args, $url)
     {
+        // Only allow to block requests when our taxonomy is ready and can be read. Otherwise, we could run into "Invalid taxonomy" errors
+        // when reading service groups in `CookieGroup::getOrdered()` class.
+        // Example: WP Rocket sends a license check request before the `init` hook:
+        if (!\taxonomy_exists(CookieGroup::TAXONOMY_NAME)) {
+            return $response;
+        }
         static $truncated_path;
         $backtrace = \debug_backtrace(\DEBUG_BACKTRACE_IGNORE_ARGS, 15);
         if (!\is_array($backtrace)) {

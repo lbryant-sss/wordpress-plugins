@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit225338e3d608b4de73fc149ed4707254
+class ComposerStaticInite907ee6af17ec21150d2317fc40abfc9
 {
     public static $prefixLengthsPsr4 = array (
         'K' => 
@@ -36,6 +36,7 @@ class ComposerStaticInit225338e3d608b4de73fc149ed4707254
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'HCaptcha\\ACFE\\Form' => __DIR__ . '/../..' . '/src/php/ACFE/Form.php',
+        'HCaptcha\\Abstracts\\CommentBase' => __DIR__ . '/../..' . '/src/php/Abstracts/CommentBase.php',
         'HCaptcha\\Abstracts\\LoginBase' => __DIR__ . '/../..' . '/src/php/Abstracts/LoginBase.php',
         'HCaptcha\\Abstracts\\LostPasswordBase' => __DIR__ . '/../..' . '/src/php/Abstracts/LostPasswordBase.php',
         'HCaptcha\\Admin\\Events\\Events' => __DIR__ . '/../..' . '/src/php/Admin/Events/Events.php',
@@ -65,6 +66,9 @@ class ComposerStaticInit225338e3d608b4de73fc149ed4707254
         'HCaptcha\\BeaverBuilder\\Base' => __DIR__ . '/../..' . '/src/php/BeaverBuilder/Base.php',
         'HCaptcha\\BeaverBuilder\\Contact' => __DIR__ . '/../..' . '/src/php/BeaverBuilder/Contact.php',
         'HCaptcha\\BeaverBuilder\\Login' => __DIR__ . '/../..' . '/src/php/BeaverBuilder/Login.php',
+        'HCaptcha\\Blocksy\\NewsletterSubscribe' => __DIR__ . '/../..' . '/src/php/Blocksy/NewsletterSubscribe.php',
+        'HCaptcha\\Blocksy\\ProductReview' => __DIR__ . '/../..' . '/src/php/Blocksy/ProductReview.php',
+        'HCaptcha\\Blocksy\\Waitlist' => __DIR__ . '/../..' . '/src/php/Blocksy/Waitlist.php',
         'HCaptcha\\Brizy\\Base' => __DIR__ . '/../..' . '/src/php/Brizy/Base.php',
         'HCaptcha\\Brizy\\Form' => __DIR__ . '/../..' . '/src/php/Brizy/Form.php',
         'HCaptcha\\BuddyPress\\CreateGroup' => __DIR__ . '/../..' . '/src/php/BuddyPress/CreateGroup.php',
@@ -83,6 +87,9 @@ class ComposerStaticInit225338e3d608b4de73fc149ed4707254
         'HCaptcha\\ColorlibCustomizer\\Login' => __DIR__ . '/../..' . '/src/php/ColorlibCustomizer/Login.php',
         'HCaptcha\\ColorlibCustomizer\\LostPassword' => __DIR__ . '/../..' . '/src/php/ColorlibCustomizer/LostPassword.php',
         'HCaptcha\\ColorlibCustomizer\\Register' => __DIR__ . '/../..' . '/src/php/ColorlibCustomizer/Register.php',
+        'HCaptcha\\CustomerReviews\\Base' => __DIR__ . '/../..' . '/src/php/CustomerReviews/Base.php',
+        'HCaptcha\\CustomerReviews\\QuestionAnswer' => __DIR__ . '/../..' . '/src/php/CustomerReviews/QuestionAnswer.php',
+        'HCaptcha\\CustomerReviews\\Review' => __DIR__ . '/../..' . '/src/php/CustomerReviews/Review.php',
         'HCaptcha\\DelayedScript\\DelayedScript' => __DIR__ . '/../..' . '/src/php/DelayedScript/DelayedScript.php',
         'HCaptcha\\Divi\\Comment' => __DIR__ . '/../..' . '/src/php/Divi/Comment.php',
         'HCaptcha\\Divi\\Contact' => __DIR__ . '/../..' . '/src/php/Divi/Contact.php',
@@ -119,6 +126,7 @@ class ComposerStaticInit225338e3d608b4de73fc149ed4707254
         'HCaptcha\\Helpers\\Pages' => __DIR__ . '/../..' . '/src/php/Helpers/Pages.php',
         'HCaptcha\\Helpers\\Request' => __DIR__ . '/../..' . '/src/php/Helpers/Request.php',
         'HCaptcha\\Helpers\\Utils' => __DIR__ . '/../..' . '/src/php/Helpers/Utils.php',
+        'HCaptcha\\IcegramExpress\\Form' => __DIR__ . '/../..' . '/src/php/IcegramExpress/Form.php',
         'HCaptcha\\Jetpack\\Base' => __DIR__ . '/../..' . '/src/php/Jetpack/Base.php',
         'HCaptcha\\Jetpack\\Form' => __DIR__ . '/../..' . '/src/php/Jetpack/Form.php',
         'HCaptcha\\Kadence\\AdvancedBlockParser' => __DIR__ . '/../..' . '/src/php/Kadence/AdvancedBlockParser.php',
@@ -195,11 +203,13 @@ class ComposerStaticInit225338e3d608b4de73fc149ed4707254
         'HCaptcha\\Vendors\\MatthiasMullie\\Minify\\Exceptions\\BasicException' => __DIR__ . '/../..' . '/vendors/matthiasmullie/minify/src/Exceptions/BasicException.php',
         'HCaptcha\\Vendors\\MatthiasMullie\\Minify\\Exceptions\\FileImportException' => __DIR__ . '/../..' . '/vendors/matthiasmullie/minify/src/Exceptions/FileImportException.php',
         'HCaptcha\\Vendors\\MatthiasMullie\\Minify\\Exceptions\\IOException' => __DIR__ . '/../..' . '/vendors/matthiasmullie/minify/src/Exceptions/IOException.php',
+        'HCaptcha\\Vendors\\MatthiasMullie\\Minify\\Exceptions\\PatternMatchException' => __DIR__ . '/../..' . '/vendors/matthiasmullie/minify/src/Exceptions/PatternMatchException.php',
         'HCaptcha\\Vendors\\MatthiasMullie\\Minify\\JS' => __DIR__ . '/../..' . '/vendors/matthiasmullie/minify/src/JS.php',
         'HCaptcha\\Vendors\\MatthiasMullie\\Minify\\Minify' => __DIR__ . '/../..' . '/vendors/matthiasmullie/minify/src/Minify.php',
         'HCaptcha\\Vendors\\MatthiasMullie\\PathConverter\\Converter' => __DIR__ . '/../..' . '/vendors/matthiasmullie/path-converter/src/Converter.php',
         'HCaptcha\\Vendors\\MatthiasMullie\\PathConverter\\ConverterInterface' => __DIR__ . '/../..' . '/vendors/matthiasmullie/path-converter/src/ConverterInterface.php',
         'HCaptcha\\Vendors\\MatthiasMullie\\PathConverter\\NoConverter' => __DIR__ . '/../..' . '/vendors/matthiasmullie/path-converter/src/NoConverter.php',
+        'HCaptcha\\WCGermanized\\ReturnRequest' => __DIR__ . '/../..' . '/src/php/WCGermanized/ReturnRequest.php',
         'HCaptcha\\WCWishlists\\CreateList' => __DIR__ . '/../..' . '/src/php/WCWishlists/CreateList.php',
         'HCaptcha\\WC\\Checkout' => __DIR__ . '/../..' . '/src/php/WC/Checkout.php',
         'HCaptcha\\WC\\Login' => __DIR__ . '/../..' . '/src/php/WC/Login.php',
@@ -229,9 +239,9 @@ class ComposerStaticInit225338e3d608b4de73fc149ed4707254
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit225338e3d608b4de73fc149ed4707254::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit225338e3d608b4de73fc149ed4707254::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit225338e3d608b4de73fc149ed4707254::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInite907ee6af17ec21150d2317fc40abfc9::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInite907ee6af17ec21150d2317fc40abfc9::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInite907ee6af17ec21150d2317fc40abfc9::$classMap;
 
         }, null, ClassLoader::class);
     }

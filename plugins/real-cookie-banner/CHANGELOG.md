@@ -3,6 +3,58 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 5.1.19 (2025-08-05)
+
+
+### Bug Fixes
+
+* : lot of PHP warnings: Attempt to read property count when WP Rocket is active and user is logged-in (CU-869a18h6h)
+
+
+<details><summary>Dependency updates @devowl-wp/cache-invalidate 1.18.22</summary>
+
+
+**_Purpose of dependency:_** _Provide a single entry point to trigger cache invalidation of known caching plugins_
+##### Bug Fixes
+
+* compatibility with FlyingPress v5 (CU-8696uzcjp)</details>
+
+
+
+
+
+## 5.1.18 (2025-07-29) (not released)
+
+**Note:** This version of the package has not (yet) been released publicly. This happens if changes have been made in dependencies that do not affect this package (e.g. changes for the development of the package). The changes will be rolled out with the next official update.
+
+**Note:** This package (@devowl-wp/real-cookie-banner) has been updated because a dependency, which is also shipped with this package, has changed.
+
+
+<details><summary>Development dependency update @devowl-wp/continuous-integration 0.7.8</summary>
+
+
+**_Purpose of dependency:_** _DevOps macros, job templates and jobs for Gitlab CI and @devowl-wp/node-gitlab-ci._
+##### Continuous Integration
+
+* resource group for Docker Review deployments to avoid race condition in Swarm subnet allocation (CU-8699xj5ue)
+
+
+##### Tests
+
+* introduce optional playwright coverage with c8 (CU-8699761na)</details>
+
+<details><summary>Development dependency update @devowl-wp/monorepo-utils 0.2.17</summary>
+
+
+**_Purpose of dependency:_** _Predefined monorepo utilities and tasks._
+##### Bug Fixes
+
+* compatibility with latest version of Taskfile (CU-8699761na)</details>
+
+
+
+
+
 ## 5.1.17 (2025-07-27)
 
 

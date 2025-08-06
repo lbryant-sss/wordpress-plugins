@@ -412,7 +412,7 @@ class Tt4b_Catalog_Class {
 			}
 
 			$response = $this->tikTokProductsController->prepare_object( $product, $request );
-			if ( $response->is_error() ) {
+			if ( null == $response || $response->is_error() ) {
 				$this->logger->log( __METHOD__, 'unable to parse product: ' . $product_id . ' in to REST API schema' );
 				++$failed_products_count;
 				continue;
@@ -545,7 +545,7 @@ class Tt4b_Catalog_Class {
 			);
 
 			$response = $this->tikTokProductsController->prepare_object( $product, $request );
-			if ( $response->is_error() ) {
+			if ( null == $response || $response->is_error() ) {
 				$this->logger->log( __METHOD__, 'unable to parse product: ' . $product_id . ' in to REST API schema' );
 				++$failed_products_count;
 				continue;

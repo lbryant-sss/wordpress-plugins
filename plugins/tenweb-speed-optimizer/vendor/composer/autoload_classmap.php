@@ -115,7 +115,6 @@ return array(
     'TenWebOptimizer\\OptimizerImages' => $baseDir . '/includes/OptimizerImages.php',
     'TenWebOptimizer\\OptimizerLogger' => $baseDir . '/includes/OptimizerLogger.php',
     'TenWebOptimizer\\OptimizerMain' => $baseDir . '/includes/OptimizerMain.php',
-    'TenWebOptimizer\\OptimizerNPS' => $baseDir . '/includes/OptimizerNPS.php',
     'TenWebOptimizer\\OptimizerOnInit' => $baseDir . '/includes/OptimizerOnInit.php',
     'TenWebOptimizer\\OptimizerScripts' => $baseDir . '/includes/OptimizerScripts.php',
     'TenWebOptimizer\\OptimizerSettings' => $baseDir . '/includes/OptimizerSettings.php',

@@ -21,26 +21,8 @@ class OptimizerOnInit
         // Add Optimize column to the posts list table.
         add_filter('manage_post_posts_columns', [ $this, 'two_add_column_to_posts']);
         add_filter('manage_page_posts_columns', [ $this, 'two_add_column_to_posts']);
-        add_filter('cron_schedules', [ $this, 'two_nps_cron_schedule' ]);
 
-        if (! wp_next_scheduled('two_check_nps')) {
-            $nps_data = get_option('two_nps_data');
-            $domain_id = get_site_option('tenweb_domain_id');
-            $count_optimized_pages = count(\TenWebOptimizer\OptimizerUtils::getCriticalPages());
-            $front_page_significant_improved = \TenWebOptimizer\OptimizerNPS::front_page_significant_improved();
-
-            if ((!defined('TWO_INCOMPATIBLE_ERROR') || !TWO_INCOMPATIBLE_ERROR)
-                && OptimizerUtils::is_tenweb_booster_connected()
-                && !TENWEB_SO_HOSTED_ON_10WEB && strtolower(TWO_SO_ORGANIZATION_NAME) == '10web'
-                && $count_optimized_pages >= 1 && $front_page_significant_improved) {
-                if (!isset($nps_data['nps']) && isset($domain_id)) {
-                    wp_schedule_event(time(), 'every_six_hours', 'two_check_nps');
-                }
-            }
-        }
-        add_action('two_check_nps', [ $this, 'two_check_nps_data' ]);
         add_action('admin_notices', [ $this, 'two_admin_banners' ]);
-        add_action('wp_ajax_two_send_nps_survey_data', [ '\TenWebOptimizer\OptimizerBanner', 'two_send_nps_survey_data' ]);
         add_action('wp_ajax_two_set_autoupdate_from_banner', [ '\TenWebOptimizer\OptimizerBanner', 'two_set_autoupdate_from_banner' ]);
         // Call the action on finishing the given page optimization.
         add_action('two_page_optimized', [ $this, 'two_page_optimized']);
@@ -211,21 +193,6 @@ class OptimizerOnInit
         $offset = array_search('author', array_keys($columns));
 
         return array_merge(array_slice($columns, 0, $offset), [ 'two-speed' => '<b>' . TWO_SO_ORGANIZATION_NAME . ' Booster' . '</b>' ], array_slice($columns, $offset, null));
-    }
-
-    public function two_nps_cron_schedule($schedules)
-    {
-        $schedules['every_six_hours'] = [
-            'interval' => 21600, // Every 6 hours
-            'display' => __('Every 6 hours'),
-        ];
-
-        return $schedules;
-    }
-
-    public function two_check_nps_data()
-    {
-        \TenWebOptimizer\OptimizerNPS::update_nps_survey_data();
     }
 
     public function two_admin_banners()

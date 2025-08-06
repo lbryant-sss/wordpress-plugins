@@ -824,6 +824,10 @@ class ElementsKit_Widget_Team extends Widget_Base {
                         'min'   => 10,
                         'max'   => 300,
                     ],
+                    '%' => [
+                        'min'   => 10,
+                        'max'   => 100,
+                    ],
                 ],
 				'selectors' => [
 					'{{WRAPPER}} .ekit-wid-con .profile-square-v.square-v4 .profile-card .profile-header' => 'padding-top: {{SIZE}}{{UNIT}};',
@@ -831,6 +835,32 @@ class ElementsKit_Widget_Team extends Widget_Base {
 				],
 				'default' => [
 					'unit' => '%'
+				]
+            ]
+        );
+
+		$this->add_responsive_control(
+            'ekit_team_image_border_radius',
+            [
+                'label' => esc_html__( 'Border Radius', 'elementskit-lite' ),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => [ 'px', '%', 'em' ],
+                'range'  => [
+                    'px' => [
+                        'min'   => 0,
+                        'max'   => 100,
+                    ],
+                    '%' => [
+                        'min'   => 0,
+                        'max'   => 100,
+                    ],
+                ],
+				'selectors' => [					
+                    '{{WRAPPER}} .profile-header > img, {{WRAPPER}} .profile-image-card img' => 'border-radius: {{SIZE}}{{UNIT}};'
+				],
+				'default' => [
+					'unit' => '%',
+                    'size' => 0,
 				]
             ]
         );
@@ -865,6 +895,11 @@ class ElementsKit_Widget_Team extends Widget_Base {
                 'selectors' => [
                     '{{WRAPPER}} .profile-card .profile-header' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
+                'condition' => [
+                    'ekit_team_style' => [
+                        'default', 'centered_style', 'centered_style_details', 'long_height_details', 'long_height_details_hover'
+                    ],
+                ],
             ]
         );
 
@@ -895,6 +930,11 @@ class ElementsKit_Widget_Team extends Widget_Base {
             Group_Control_Box_Shadow::get_type(), [
                 'name'      => 'ekit_team_image_shadow',
                 'selector'  => '{{WRAPPER}} .profile-card .profile-header',
+                'condition' => [
+                    'ekit_team_style' => [
+                        'default', 'centered_style', 'centered_style_details', 'long_height_details', 'long_height_details_hover'
+                    ]
+                ]
             ]
         );
 
@@ -905,6 +945,9 @@ class ElementsKit_Widget_Team extends Widget_Base {
                 'selector'  => '{{WRAPPER}} .ekit-team-modal-img > img',
                 'condition' => [
                     'ekit_team_chose_popup' => 'yes',
+                    'ekit_team_style' => [
+                        'default', 'centered_style', 'centered_style_details', 'long_height_details', 'long_height_details_hover'
+                    ]
                 ],
             ]
         );
@@ -915,6 +958,11 @@ class ElementsKit_Widget_Team extends Widget_Base {
                 'name' => 'ekit_team_image_border',
                 'label' => esc_html__( 'Border', 'elementskit-lite' ),
                 'selector' => '{{WRAPPER}} .profile-card .profile-header',
+                'condition' => [
+                    'ekit_team_style' => [
+                        'default', 'centered_style', 'centered_style_details', 'long_height_details', 'long_height_details_hover'
+                    ]
+                ],
             ]
         );
 
@@ -933,22 +981,12 @@ class ElementsKit_Widget_Team extends Widget_Base {
 					'left' => '50',
 					'bottom' => '50',
 					'unit' => '%',
-				]
-            ]
-        );
-
-        $this->add_responsive_control(
-            'ekit_team_image_margin',
-            [
-                'label' => esc_html__( 'Margin', 'elementskit-lite' ),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => [ 'px', '%', 'em' ],
+                ],
                 'condition' => [
-                    'team_style!' => 'overlay',
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .profile-card .profile-header' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
+                    'ekit_team_style' => [
+                        'default', 'centered_style', 'centered_style_details', 'long_height_details', 'long_height_details_hover'
+                    ]
+                ]
             ]
         );
 
@@ -959,6 +997,11 @@ class ElementsKit_Widget_Team extends Widget_Base {
                 'label' => esc_html__( 'Background', 'elementskit-lite' ),
                 'types' => [ 'classic', 'gradient' ],
                 'selector' => '{{WRAPPER}} .profile-card .profile-header',
+                'condition' => [
+                    'ekit_team_style' => [
+                        'default', 'centered_style', 'centered_style_details', 'long_height_details', 'long_height_details_hover'
+                    ]
+                ],
             ]
         );
 
