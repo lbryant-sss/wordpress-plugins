@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Legacy API Request class. Used by most Reports and legacy Measurement Protocol calls.
+ * API Request class.
  *
  * @since 7.0.0
  *

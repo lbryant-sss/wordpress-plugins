@@ -3,8 +3,8 @@ Contributors: wpclever
 Donate link: https://wpclever.net
 Tags: woocommerce, wpc, wishlist, wait-list
 Tested up to: 6.8
-Version: 5.0.1
-Stable tag: 5.0.1
+Version: 5.0.2
+Stable tag: 5.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -98,11 +98,15 @@ Example:
 
 == Changelog ==
 
+= 5.0.2 =
+* Updated: Optimized the code
+* Updated: Compatible with WP 6.8 & Woo 10.0
+
 = 5.0.1 =
-* Fixed: Minor JS issue in the frontend
+* Fixed: Minor JS issue in the backend
 
 = 5.0.0 =
-* Fixed: Minor JS issue in the frontend
+* Fixed: Minor JS issue on the frontend
 * Updated: Compatible with WP 6.8 & Woo 9.9
 
 = 4.9.9 =

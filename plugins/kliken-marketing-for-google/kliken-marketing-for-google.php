@@ -10,13 +10,13 @@
  * Text Domain: kliken-marketing-for-google
  * Domain path: /languages
  *
- * Version: 1.5.3
+ * Version: 1.5.4
  * Requires PHP: 7.4
  * Requires at least: 5.8
  * Tested up to: 6.8
  * Requires Plugins: woocommerce
  * WC requires at least: 6.0
- * WC tested up to: 9.8
+ * WC tested up to: 10.0
  *
  * License: GPLv3
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -26,7 +26,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'KK_WC_PLUGIN_VERSION', '1.5.0' );
+define( 'KK_WC_PLUGIN_VERSION', '1.5.4' );
 define( 'KK_WC_PLUGIN_FILE', __FILE__ );
 define( 'KK_WC_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'KK_WC_PLUGIN_URL', plugin_dir_url( __FILE__ ) );

@@ -330,13 +330,7 @@ class ShortCodeManager extends ManageDiscount
     {
         if (!empty(self::$available_rules)) {
             global $woocommerce_loop;
-            $short_code_attributes = shortcode_atts(array(
-                'per_page' => 12,
-                'columns' => 3,
-                'orderby' => 'title',
-                'do_pagination' => 1,
-                'order' => 'asc'
-            ), $short_code_attributes);
+            $short_code_attributes = shortcode_atts( apply_filters('advanced_woo_discount_rules_sale_page_list_attributes', ['per_page' => 12, 'columns' => 3, 'orderby' => 'title', 'do_pagination' => 1, 'order' => 'asc']), $short_code_attributes);
             $paged = $this->input->get('product-page', 1);
             $order_by = $this->input->get('orderby', 'title');
 

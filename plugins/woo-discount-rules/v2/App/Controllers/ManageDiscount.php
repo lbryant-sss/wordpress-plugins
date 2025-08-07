@@ -1558,17 +1558,16 @@ class ManageDiscount extends Base
     /**
      * save discounts of order for future
      *
-     * @param $order_id
-     * @param $items
+     * @param $order
      * @return void
      */
-    function orderItemsSaved($order_id, $items)
+    function orderItemsSaveDiscount($order)
     {
-        $order = self::$woocommerce_helper->getOrder($order_id);
-        if (empty($order)) {
+        if (empty($order) || !is_object($order)) {
             return;
         }
 
+        $order_id = $order->get_id();
         $free_shipping = false;
         if (self::$woocommerce_helper->orderHasShippingMethod($order, 'wdr_free_shipping')) {
             $free_shipping = true;
@@ -1677,6 +1676,38 @@ class ManageDiscount extends Base
         if (!empty($order_discount_info['free_shipping']) || !empty($order_discount_info['saved_amount']['total'])) {
             self::$woocommerce_helper->setOrderMeta($order, '_wdr_discounts', $order_discount_info);
         }
+    }
+
+    /**
+     * save discounts of order for future - classic checkout
+     *
+     * @param $order_id
+     * @param $items
+     * @return void
+     */
+    function orderItemsSaved($order_id, $items)
+    {
+        $order = self::$woocommerce_helper->getOrder($order_id);
+        if (!$order){
+            return;
+        }
+
+        $this->orderItemsSaveDiscount($order);
+    }
+
+    /**
+     * Save discounts of order for future - block checkout
+     *
+     * @param WC_Order $order
+     * @return void
+     */
+    function blockCheckoutOrderItemsSaved($order)
+    {
+        if (!$order || !is_object($order)){
+            return;
+        }
+
+        $this->orderItemsSaveDiscount($order);
     }
 
     /**
@@ -3011,26 +3042,28 @@ class ManageDiscount extends Base
     /**
      * Export Data via CSV
      */
-    public function awdrExportCsv(){
-        if (isset($_POST['wdr-export']) && isset($_POST['security'])) {
-            if(wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['security'])),'awdr_export_rules')) {
-                ob_end_clean();
-                $rule_helper = new Rule();
-                $rules = $rule_helper->exportRuleByName('all');
-                $file_name = 'advanced-discount-rules-' . gmdate("Y-m-d-h-i-a") . '.csv';
-                $file = fopen('php://output', 'w');
-                header('Content-type: application/csv');
-                header('Content-Disposition: attachment; filename=' . $file_name);
-                $export_csv_separator = apply_filters('advanced_woo_discount_rules_csv_import_export_separator', ',');
-                fputcsv($file, array('id', 'enabled', 'deleted', 'exclusive', 'title', 'priority', 'apply_to', 'filters', 'conditions', 'product_adjustments', 'cart_adjustments', 'buy_x_get_x_adjustments', 'buy_x_get_y_adjustments', 'bulk_adjustments', 'set_adjustments', 'other_discounts', 'date_from', 'date_to', 'usage_limits', 'rule_language', 'used_limits', 'additional', 'max_discount_sum', 'advanced_discount_message', 'discount_type', 'used_coupons', 'created_by', 'created_on', 'modified_by', 'modified_on'), $export_csv_separator);
-                foreach ($rules as $rule_row) {
-                    $row_data = (array)$rule_row;
-                    fputcsv($file, $row_data, $export_csv_separator);
-                }
-                exit;
-            }
-        }
-    }
+	public function awdrExportCsv(){
+		if (isset($_POST['wdr-export']) && isset($_POST['security'])) {
+			if(wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['security'])),'awdr_export_rules')) {
+				ob_end_clean();
+				$rule_helper = new Rule();
+				$rules = $rule_helper->exportRuleByName('all');
+				$file_name = 'advanced-discount-rules-' . gmdate("Y-m-d-h-i-a") . '.csv';
+				$file = fopen('php://output', 'w');
+				header('Content-type: application/csv');
+				header('Content-Disposition: attachment; filename=' . $file_name);
+				$export_csv_separator = apply_filters('advanced_woo_discount_rules_csv_import_export_separator', ',');
+				$enclosure =  apply_filters('advanced_woo_discount_rules_csv_import_export_encloser','"');
+				$escape =  apply_filters('advanced_woo_discount_rules_csv_import_export_escape',"\\");
+				fputcsv($file, array('id', 'enabled', 'deleted', 'exclusive', 'title', 'priority', 'apply_to', 'filters', 'conditions', 'product_adjustments', 'cart_adjustments', 'buy_x_get_x_adjustments', 'buy_x_get_y_adjustments', 'bulk_adjustments', 'set_adjustments', 'other_discounts', 'date_from', 'date_to', 'usage_limits', 'rule_language', 'used_limits', 'additional', 'max_discount_sum', 'advanced_discount_message', 'discount_type', 'used_coupons', 'created_by', 'created_on', 'modified_by', 'modified_on'), $export_csv_separator,$enclosure,$escape);
+				foreach ($rules as $rule_row) {
+					$row_data = (array)$rule_row;
+					fputcsv($file, $row_data, $export_csv_separator, $enclosure, $escape);
+				}
+				exit;
+			}
+		}
+	}
 
     /**
      * Display total savings in order

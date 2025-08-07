@@ -4,7 +4,7 @@ Tags: gutenberg block, blocks, patterns, wireframes, gutenberg templates
 Requires at least: 5.8
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.4.1
+Stable tag: 1.4.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -291,6 +291,11 @@ Feel free to try out some of our other products:
 12.	Device Frame Slider Block.
 
 == Changelog ==
+
+= 1.4.2 - 06-08-2025 =
+- Improved saving block options
+- Improved qi_blocks_get_inline_attr helper functions
+- Fixed minor bugs
 
 = 1.4.1 - 17-07-2025 =
 - Improved saving FSS blocks style

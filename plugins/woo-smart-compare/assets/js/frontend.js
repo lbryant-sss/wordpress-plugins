@@ -183,9 +183,9 @@
 
                 if ($btn.hasClass('woosc-btn-has-icon')) {
                     $btn.find('.woosc-btn-icon').removeClass(woosc_vars.button_added_icon).addClass(woosc_vars.button_normal_icon);
-                    $btn.find('.woosc-btn-text').html(text);
+                    $btn.find('.woosc-btn-text').text(text);
                 } else {
-                    $btn.html(text);
+                    $btn.text(text);
                 }
             });
         }
@@ -204,9 +204,9 @@
 
                 if ($btn.hasClass('woosc-btn-has-icon')) {
                     $btn.find('.woosc-btn-icon').removeClass(woosc_vars.button_added_icon).addClass(woosc_vars.button_normal_icon);
-                    $btn.find('.woosc-btn-text').html(text);
+                    $btn.find('.woosc-btn-text').text(text);
                 } else {
-                    $btn.html(text);
+                    $btn.text(text);
                 }
             });
         }
@@ -609,9 +609,9 @@
 
                 if ($btn.hasClass('woosc-btn-has-icon')) {
                     $btn.find('.woosc-btn-icon').removeClass(woosc_vars.button_normal_icon).addClass(woosc_vars.button_added_icon);
-                    $btn.find('.woosc-btn-text').html(text_added);
+                    $btn.find('.woosc-btn-text').text(text_added);
                 } else {
-                    $btn.html(text_added);
+                    $btn.text(text_added);
                 }
             });
         }
@@ -644,9 +644,9 @@
 
                 if ($btn.hasClass('woosc-btn-has-icon')) {
                     $btn.find('.woosc-btn-icon').removeClass(woosc_vars.button_added_icon).addClass(woosc_vars.button_normal_icon);
-                    $btn.find('.woosc-btn-text').html(text);
+                    $btn.find('.woosc-btn-text').text(text);
                 } else {
-                    $btn.html(text);
+                    $btn.text(text);
                 }
             });
         } else {
@@ -664,9 +664,9 @@
 
                 if ($btn.hasClass('woosc-btn-has-icon')) {
                     $btn.find('.woosc-btn-icon').removeClass(woosc_vars.button_added_icon).addClass(woosc_vars.button_normal_icon);
-                    $btn.find('.woosc-btn-text').html(text);
+                    $btn.find('.woosc-btn-text').text(text);
                 } else {
-                    $btn.html(text);
+                    $btn.text(text);
                 }
             });
         }
@@ -689,9 +689,9 @@
 
                 if ($btn.hasClass('woosc-btn-has-icon')) {
                     $btn.find('.woosc-btn-icon').removeClass(woosc_vars.button_added_icon).addClass(woosc_vars.button_normal_icon);
-                    $btn.find('.woosc-btn-text').html(text);
+                    $btn.find('.woosc-btn-text').text(text);
                 } else {
-                    $btn.html(text);
+                    $btn.text(text);
                 }
             });
 
@@ -704,9 +704,9 @@
 
                     if ($btn.hasClass('woosc-btn-has-icon')) {
                         $btn.find('.woosc-btn-icon').removeClass(woosc_vars.button_normal_icon).addClass(woosc_vars.button_added_icon);
-                        $btn.find('.woosc-btn-text').html(text_added);
+                        $btn.find('.woosc-btn-text').text(text_added);
                     } else {
-                        $btn.html(text_added);
+                        $btn.text(text_added);
                     }
                 });
             });
@@ -988,7 +988,7 @@
 
         $('#woosc-area').attr('data-count', count);
         $('.woosc-bar').attr('data-count', count);
-        $('.woosc-sidebar-count').html(' (' + count + ')');
+        $('.woosc-sidebar-count').text(' (' + count + ')');
         $('.woosc-link .woosc-link-inner').attr('data-count', count);
 
         $('.woosc-bar-items').removeClass('woosc-bar-items-loaded');

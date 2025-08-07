@@ -359,6 +359,14 @@ if ( ! function_exists( 'qi_blocks_get_inline_attr' ) ) {
 	 * @return string generated html attribute
 	 */
 	function qi_blocks_get_inline_attr( $value, $attr, $glue = '', $allow_zero_values = false ) {
+		$properties = '';
+
+		// Leave only allowed characters in attr.
+		preg_match( '/[-_a-z0-9]+/', $attr, $attr_matches );
+
+		$single_attr_key = $attr_matches[0];
+
+		// Concatenate values in one variable and check for zero values.
 		if ( $allow_zero_values ) {
 			if ( '' !== $value ) {
 
@@ -367,8 +375,6 @@ if ( ! function_exists( 'qi_blocks_get_inline_attr' ) ) {
 				} else {
 					$properties = $value;
 				}
-
-				return $attr . '="' . esc_attr( sanitize_text_field( html_entity_decode( $properties ) ) ) . '"';
 			}
 		} else {
 			if ( ! empty( $value ) ) {
@@ -380,12 +386,22 @@ if ( ! function_exists( 'qi_blocks_get_inline_attr' ) ) {
 				} else {
 					return '';
 				}
-
-				return $attr . '="' . esc_attr( sanitize_text_field( html_entity_decode( $properties ) ) ) . '"';
 			}
 		}
 
-		return '';
+		if ( empty( $properties ) || empty( $attr_matches[0] ) ) {
+			return '';
+		}
+
+		// Remove not allowed js events.
+		if ( 'on' === substr( $single_attr_key, 0, 2 ) || 'href' === $single_attr_key || 'on' === substr( $properties, 0, 2 ) || 'href' === $properties ) {
+			return '';
+		}
+
+		$sanitized_properties = esc_attr( sanitize_text_field( html_entity_decode( $properties ) ) );
+		$clean_properties     = preg_replace( '/<[^>]*>|#x3[ce];|&lt;|&gt;/i', '', $sanitized_properties );
+
+		return $attr . '="' . $clean_properties . '"';
 	}
 }
 

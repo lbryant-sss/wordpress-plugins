@@ -45,11 +45,11 @@
       "_vendor-b9834729.min.js"
     ]
   },
-  "_date-intervals-6021be66.min.js": {
-    "file": "js/chunks/date-intervals-6021be66.min.js",
+  "_date-intervals-d8f13c98.min.js": {
+    "file": "js/chunks/date-intervals-d8f13c98.min.js",
     "imports": [
       "_vendor-b9834729.min.js",
-      "_index-a8f776b5.min.js"
+      "_index-a68026ec.min.js"
     ]
   },
   "_exactmetrics-icons-f933244e.min.js": {
@@ -62,12 +62,15 @@
     ],
     "isDynamicEntry": true
   },
-  "_index-989e3e7e.min.js": {
+  "_index-1c2b78ea.min.js": {
     "assets": [
       "img/logo-ExactMetrics.png",
-      "img/logo-ExactMetrics@2x.png",
-      "img/icon-info.svg",
       "img/logo-ExactMetrics@2x2.png",
+      "img/logo-exactmetrics-agency.svg",
+      "img/logo-exactmetrics-pro.svg",
+      "img/logo-exactmetrics-plus.svg",
+      "img/icon-info.svg",
+      "img/logo-ExactMetrics@2x.png",
       "fonts/Roboto-Regular.woff2",
       "fonts/Roboto-Bold.woff2",
       "fonts/lato-regular-webfont.woff",
@@ -87,24 +90,25 @@
     "css": [
       "css/index.css"
     ],
-    "file": "js/chunks/index-989e3e7e.min.js",
+    "file": "js/chunks/index-1c2b78ea.min.js",
     "imports": [
       "_vendor-b9834729.min.js",
-      "_ContentIconList-bbe6e6ed.min.js"
+      "_ContentIconList-bbe6e6ed.min.js",
+      "_index-a68026ec.min.js"
     ]
   },
-  "_index-a8f776b5.min.js": {
-    "file": "js/chunks/index-a8f776b5.min.js",
+  "_index-a68026ec.min.js": {
+    "file": "js/chunks/index-a68026ec.min.js",
     "imports": [
       "_vendor-b9834729.min.js"
     ]
   },
-  "_report-table-helper-b32e3f2d.min.js": {
-    "file": "js/chunks/report-table-helper-b32e3f2d.min.js",
+  "_report-table-helper-f8974d4c.min.js": {
+    "file": "js/chunks/report-table-helper-f8974d4c.min.js",
     "imports": [
       "_vendor-b9834729.min.js",
       "_SettingsInfoTooltip-facc1a56.min.js",
-      "_date-intervals-6021be66.min.js",
+      "_date-intervals-d8f13c98.min.js",
       "_exactmetrics-icons-f933244e.min.js"
     ]
   },
@@ -428,7 +432,7 @@
     "src": "src/assets/img/exactmetrics/loading-background.jpg"
   },
   "src/assets/img/exactmetrics/logo-ExactMetrics@2x.png": {
-    "file": "img/logo-ExactMetrics@2x2.png",
+    "file": "img/logo-ExactMetrics@2x.png",
     "src": "src/assets/img/exactmetrics/logo-ExactMetrics@2x.png"
   },
   "src/assets/img/exactmetrics/media-report-upsell.png": {
@@ -543,90 +547,6 @@
     "file": "img/givewp.png",
     "src": "src/assets/img/givewp.png"
   },
-  "src/assets/img/google-ads-welcome.png": {
-    "file": "img/google-ads-welcome.png",
-    "src": "src/assets/img/google-ads-welcome.png"
-  },
-  "src/assets/img/growth-tools-icons/icon-advancedcoupons.svg": {
-    "file": "img/icon-advancedcoupons.svg",
-    "src": "src/assets/img/growth-tools-icons/icon-advancedcoupons.svg"
-  },
-  "src/assets/img/growth-tools-icons/icon-aioseo.svg": {
-    "file": "img/icon-aioseo.svg",
-    "src": "src/assets/img/growth-tools-icons/icon-aioseo.svg"
-  },
-  "src/assets/img/growth-tools-icons/icon-constantcontact.svg": {
-    "file": "img/icon-constantcontact.svg",
-    "src": "src/assets/img/growth-tools-icons/icon-constantcontact.svg"
-  },
-  "src/assets/img/growth-tools-icons/icon-easyaffiliate.svg": {
-    "file": "img/icon-easyaffiliate.svg",
-    "src": "src/assets/img/growth-tools-icons/icon-easyaffiliate.svg"
-  },
-  "src/assets/img/growth-tools-icons/icon-edd.svg": {
-    "file": "img/icon-edd.svg",
-    "src": "src/assets/img/growth-tools-icons/icon-edd.svg"
-  },
-  "src/assets/img/growth-tools-icons/icon-em.svg": {
-    "file": "img/icon-em.svg",
-    "src": "src/assets/img/growth-tools-icons/icon-em.svg"
-  },
-  "src/assets/img/growth-tools-icons/icon-google-ads.svg": {
-    "file": "img/icon-google-ads.svg",
-    "src": "src/assets/img/growth-tools-icons/icon-google-ads.svg"
-  },
-  "src/assets/img/growth-tools-icons/icon-guide.svg": {
-    "file": "img/icon-guide.svg",
-    "src": "src/assets/img/growth-tools-icons/icon-guide.svg"
-  },
-  "src/assets/img/growth-tools-icons/icon-memberpress.svg": {
-    "file": "img/icon-memberpress.svg",
-    "src": "src/assets/img/growth-tools-icons/icon-memberpress.svg"
-  },
-  "src/assets/img/growth-tools-icons/icon-optinmonster.svg": {
-    "file": "img/icon-optinmonster.svg",
-    "src": "src/assets/img/growth-tools-icons/icon-optinmonster.svg"
-  },
-  "src/assets/img/growth-tools-icons/icon-prettylinks.svg": {
-    "file": "img/icon-prettylinks.svg",
-    "src": "src/assets/img/growth-tools-icons/icon-prettylinks.svg"
-  },
-  "src/assets/img/growth-tools-icons/icon-pushengage.svg": {
-    "file": "img/icon-pushengage.svg",
-    "src": "src/assets/img/growth-tools-icons/icon-pushengage.svg"
-  },
-  "src/assets/img/growth-tools-icons/icon-rafflepress.svg": {
-    "file": "img/icon-rafflepress.svg",
-    "src": "src/assets/img/growth-tools-icons/icon-rafflepress.svg"
-  },
-  "src/assets/img/growth-tools-icons/icon-searchwp.svg": {
-    "file": "img/icon-searchwp.svg",
-    "src": "src/assets/img/growth-tools-icons/icon-searchwp.svg"
-  },
-  "src/assets/img/growth-tools-icons/icon-seedprod.png": {
-    "file": "img/icon-seedprod.png",
-    "src": "src/assets/img/growth-tools-icons/icon-seedprod.png"
-  },
-  "src/assets/img/growth-tools-icons/icon-semrush.svg": {
-    "file": "img/icon-semrush.svg",
-    "src": "src/assets/img/growth-tools-icons/icon-semrush.svg"
-  },
-  "src/assets/img/growth-tools-icons/icon-smashballoon.svg": {
-    "file": "img/icon-smashballoon.svg",
-    "src": "src/assets/img/growth-tools-icons/icon-smashballoon.svg"
-  },
-  "src/assets/img/growth-tools-icons/icon-thirstyaffiliates.png": {
-    "file": "img/icon-thirstyaffiliates.png",
-    "src": "src/assets/img/growth-tools-icons/icon-thirstyaffiliates.png"
-  },
-  "src/assets/img/growth-tools-icons/icon-wp-simple-pay.png": {
-    "file": "img/icon-wp-simple-pay.png",
-    "src": "src/assets/img/growth-tools-icons/icon-wp-simple-pay.png"
-  },
-  "src/assets/img/growth-tools-icons/icon-wpforms.svg": {
-    "file": "img/icon-wpforms.svg",
-    "src": "src/assets/img/growth-tools-icons/icon-wpforms.svg"
-  },
   "src/assets/img/icon-addon-ads.png": {
     "file": "img/icon-addon-ads.png",
     "src": "src/assets/img/icon-addon-ads.png"
@@ -696,7 +616,7 @@
     "src": "src/assets/img/logo-ExactMetrics.png"
   },
   "src/assets/img/logo-ExactMetrics@2x.png": {
-    "file": "img/logo-ExactMetrics@2x.png",
+    "file": "img/logo-ExactMetrics@2x2.png",
     "src": "src/assets/img/logo-ExactMetrics@2x.png"
   },
   "src/assets/img/logo-ExactMetrics.png": {
@@ -707,6 +627,18 @@
     "file": "img/logo-ExactMetrics@2x.png",
     "src": "src/assets/img/logo-ExactMetrics@2x.png"
   },
+  "src/assets/img/logo-exactmetrics-agency.svg": {
+    "file": "img/logo-exactmetrics-agency.svg",
+    "src": "src/assets/img/logo-exactmetrics-agency.svg"
+  },
+  "src/assets/img/logo-exactmetrics-plus.svg": {
+    "file": "img/logo-exactmetrics-plus.svg",
+    "src": "src/assets/img/logo-exactmetrics-plus.svg"
+  },
+  "src/assets/img/logo-exactmetrics-pro.svg": {
+    "file": "img/logo-exactmetrics-pro.svg",
+    "src": "src/assets/img/logo-exactmetrics-pro.svg"
+  },
   "src/assets/img/logo-formidable-forms.png": {
     "file": "img/logo-formidable-forms.png",
     "src": "src/assets/img/logo-formidable-forms.png"
@@ -714,6 +646,18 @@
   "src/assets/img/logo-gravity.png": {
     "file": "img/logo-gravity.png",
     "src": "src/assets/img/logo-gravity.png"
+  },
+  "src/assets/img/logo-exactmetrics-agency.svg": {
+    "file": "img/logo-exactmetrics-agency.svg",
+    "src": "src/assets/img/logo-exactmetrics-agency.svg"
+  },
+  "src/assets/img/logo-exactmetrics-plus.svg": {
+    "file": "img/logo-exactmetrics-plus.svg",
+    "src": "src/assets/img/logo-exactmetrics-plus.svg"
+  },
+  "src/assets/img/logo-exactmetrics-pro.svg": {
+    "file": "img/logo-exactmetrics-pro.svg",
+    "src": "src/assets/img/logo-exactmetrics-pro.svg"
   },
   "src/assets/img/logo-wp-forms.png": {
     "file": "img/logo-wp-forms.png",
@@ -827,117 +771,17 @@
     "file": "img/bg-ai-insights-em.png",
     "src": "src/assets/img/reports/lite-modals/bg-ai-insights-em.png"
   },
-  "src/assets/img/reports/lite-modals/bg-ai-insights.png": {
-    "file": "img/bg-ai-insights.png",
-    "src": "src/assets/img/reports/lite-modals/bg-ai-insights.png"
-  },
-  "src/assets/img/reports/lite-modals/bg-cart-abandonment@2x.png": {
-    "file": "img/bg-cart-abandonment@2x.png",
-    "src": "src/assets/img/reports/lite-modals/bg-cart-abandonment@2x.png"
-  },
   "src/assets/img/reports/lite-modals/bg-conversations-ai-em.png": {
     "file": "img/bg-conversations-ai-em.png",
     "src": "src/assets/img/reports/lite-modals/bg-conversations-ai-em.png"
-  },
-  "src/assets/img/reports/lite-modals/bg-conversations-ai.png": {
-    "file": "img/bg-conversations-ai.png",
-    "src": "src/assets/img/reports/lite-modals/bg-conversations-ai.png"
-  },
-  "src/assets/img/reports/lite-modals/bg-countries.png": {
-    "file": "img/bg-countries.png",
-    "src": "src/assets/img/reports/lite-modals/bg-countries.png"
-  },
-  "src/assets/img/reports/lite-modals/bg-dimensions@2x.png": {
-    "file": "img/bg-dimensions@2x.png",
-    "src": "src/assets/img/reports/lite-modals/bg-dimensions@2x.png"
-  },
-  "src/assets/img/reports/lite-modals/bg-ecommerce-coupons@2x.png": {
-    "file": "img/bg-ecommerce-coupons@2x.png",
-    "src": "src/assets/img/reports/lite-modals/bg-ecommerce-coupons@2x.png"
-  },
-  "src/assets/img/reports/lite-modals/bg-ecommerce-product-sales@2x.png": {
-    "file": "img/bg-ecommerce-product-sales@2x.png",
-    "src": "src/assets/img/reports/lite-modals/bg-ecommerce-product-sales@2x.png"
-  },
-  "src/assets/img/reports/lite-modals/bg-ecommerce@2x.png": {
-    "file": "img/bg-ecommerce@2x.png",
-    "src": "src/assets/img/reports/lite-modals/bg-ecommerce@2x.png"
-  },
-  "src/assets/img/reports/lite-modals/bg-engagement-pages@2x.png": {
-    "file": "img/bg-engagement-pages@2x.png",
-    "src": "src/assets/img/reports/lite-modals/bg-engagement-pages@2x.png"
-  },
-  "src/assets/img/reports/lite-modals/bg-forms@2x.png": {
-    "file": "img/bg-forms@2x.png",
-    "src": "src/assets/img/reports/lite-modals/bg-forms@2x.png"
-  },
-  "src/assets/img/reports/lite-modals/bg-media-upsell.svg": {
-    "file": "img/bg-media-upsell.svg",
-    "src": "src/assets/img/reports/lite-modals/bg-media-upsell.svg"
-  },
-  "src/assets/img/reports/lite-modals/bg-publisher@2x.png": {
-    "file": "img/bg-publisher@2x.png",
-    "src": "src/assets/img/reports/lite-modals/bg-publisher@2x.png"
-  },
-  "src/assets/img/reports/lite-modals/bg-queries@2x.png": {
-    "file": "img/bg-queries@2x.png",
-    "src": "src/assets/img/reports/lite-modals/bg-queries@2x.png"
-  },
-  "src/assets/img/reports/lite-modals/bg-realtime@2x.png": {
-    "file": "img/bg-realtime@2x.png",
-    "src": "src/assets/img/reports/lite-modals/bg-realtime@2x.png"
-  },
-  "src/assets/img/reports/lite-modals/bg-sitespeed@2x.png": {
-    "file": "img/bg-sitespeed@2x.png",
-    "src": "src/assets/img/reports/lite-modals/bg-sitespeed@2x.png"
-  },
-  "src/assets/img/reports/lite-modals/bg-traffic-campaigns@2x.png": {
-    "file": "img/bg-traffic-campaigns@2x.png",
-    "src": "src/assets/img/reports/lite-modals/bg-traffic-campaigns@2x.png"
-  },
-  "src/assets/img/reports/lite-modals/bg-traffic-landing-page@2x.png": {
-    "file": "img/bg-traffic-landing-page@2x.png",
-    "src": "src/assets/img/reports/lite-modals/bg-traffic-landing-page@2x.png"
-  },
-  "src/assets/img/reports/lite-modals/bg-traffic-overview@2x.png": {
-    "file": "img/bg-traffic-overview@2x.png",
-    "src": "src/assets/img/reports/lite-modals/bg-traffic-overview@2x.png"
-  },
-  "src/assets/img/reports/lite-modals/bg-traffic-source-medium@2x.png": {
-    "file": "img/bg-traffic-source-medium@2x.png",
-    "src": "src/assets/img/reports/lite-modals/bg-traffic-source-medium@2x.png"
-  },
-  "src/assets/img/reports/lite-modals/bg-traffic-technology@2x.png": {
-    "file": "img/bg-traffic-technology@2x.png",
-    "src": "src/assets/img/reports/lite-modals/bg-traffic-technology@2x.png"
   },
   "src/assets/img/reports/lite-modals/bullet-em.svg": {
     "file": "img/bullet-em.svg",
     "src": "src/assets/img/reports/lite-modals/bullet-em.svg"
   },
-  "src/assets/img/reports/lite-modals/bullet.svg": {
-    "file": "img/bullet.svg",
-    "src": "src/assets/img/reports/lite-modals/bullet.svg"
-  },
-  "src/assets/img/reports/lite-modals/ecommerce-funnel@2x.png": {
-    "file": "img/ecommerce-funnel@2x.png",
-    "src": "src/assets/img/reports/lite-modals/ecommerce-funnel@2x.png"
-  },
-  "src/assets/img/reports/lite-modals/exceptions-report.png": {
-    "file": "img/exceptions-report.png",
-    "src": "src/assets/img/reports/lite-modals/exceptions-report.png"
-  },
   "src/assets/img/reports/lite-modals/icon-info.svg": {
     "file": "img/icon-info.svg",
     "src": "src/assets/img/reports/lite-modals/icon-info.svg"
-  },
-  "src/assets/img/reports/lite-modals/icon-lock.svg": {
-    "file": "img/icon-lock.svg",
-    "src": "src/assets/img/reports/lite-modals/icon-lock.svg"
-  },
-  "src/assets/img/reports/lite-modals/social-media-report@2x.png": {
-    "file": "img/social-media-report@2x.png",
-    "src": "src/assets/img/reports/lite-modals/social-media-report@2x.png"
   },
   "src/assets/img/reports/report-arrow-down-green.png": {
     "file": "img/report-arrow-down-green.png",
@@ -976,7 +820,7 @@
     "src": "src/assets/img/site-notes/arrow-down.svg"
   },
   "src/assets/img/site-notes/icon-lock.svg": {
-    "file": "img/icon-lock2.svg",
+    "file": "img/icon-lock.svg",
     "src": "src/assets/img/site-notes/icon-lock.svg"
   },
   "src/assets/img/site-notes/icon-media.svg": {
@@ -1026,6 +870,10 @@
   "src/assets/img/woocommerce.png": {
     "file": "img/woocommerce.png",
     "src": "src/assets/img/woocommerce.png"
+  },
+  "src/assets/img/wpconsent-page-feature-image.png": {
+    "file": "img/wpconsent-page-feature-image.png",
+    "src": "src/assets/img/wpconsent-page-feature-image.png"
   },
   "src/assets/img/yir-bar-chart-bg.svg": {
     "file": "img/yir-bar-chart-bg.svg",
@@ -1172,10 +1020,10 @@
     "file": "js/frontend.min.js",
     "imports": [
       "_vendor-b9834729.min.js",
-      "_date-intervals-6021be66.min.js",
+      "_date-intervals-d8f13c98.min.js",
       "_WidgetReportError-1a54c6a5.min.js",
       "_LaunchWizardButton-f581f36d.min.js",
-      "_index-a8f776b5.min.js"
+      "_index-a68026ec.min.js"
     ],
     "isEntry": true,
     "src": "src/modules/frontend/frontend.js"
@@ -1279,11 +1127,11 @@
     "file": "js/reports.min.js",
     "imports": [
       "_vendor-b9834729.min.js",
-      "_date-intervals-6021be66.min.js",
-      "_report-table-helper-b32e3f2d.min.js",
+      "_date-intervals-d8f13c98.min.js",
+      "_report-table-helper-f8974d4c.min.js",
       "_SettingsInfoTooltip-facc1a56.min.js",
-      "_index-989e3e7e.min.js",
-      "_index-a8f776b5.min.js",
+      "_index-1c2b78ea.min.js",
+      "_index-a68026ec.min.js",
       "_ContentIconList-bbe6e6ed.min.js",
       "_LaunchWizardButton-f581f36d.min.js",
       "_exactmetrics-icons-f933244e.min.js"
@@ -1298,7 +1146,7 @@
   "src/modules/settings/settings.js": {
     "assets": [
       "img/ecommerce-report.png",
-      "img/google-ads-welcome.png",
+      "img/wpconsent-page-feature-image.png",
       "img/em-logo-lg.png",
       "img/icon-download.png",
       "img/pretty-links-logo-white.svg",
@@ -1317,26 +1165,6 @@
       "img/testimonial-image-1.png",
       "img/testimonial-image-2.png",
       "img/testimonial-image-3.jpg",
-      "img/icon-em.svg",
-      "img/icon-aioseo.svg",
-      "img/icon-pushengage.svg",
-      "img/icon-rafflepress.svg",
-      "img/icon-constantcontact.svg",
-      "img/icon-semrush.svg",
-      "img/icon-google-ads.svg",
-      "img/icon-wpforms.svg",
-      "img/icon-optinmonster.svg",
-      "img/icon-smashballoon.svg",
-      "img/icon-seedprod.png",
-      "img/icon-easyaffiliate.svg",
-      "img/icon-searchwp.svg",
-      "img/icon-edd.svg",
-      "img/icon-memberpress.svg",
-      "img/icon-thirstyaffiliates.png",
-      "img/icon-advancedcoupons.svg",
-      "img/icon-prettylinks.svg",
-      "img/icon-wp-simple-pay.png",
-      "img/icon-guide.svg",
       "img/arrow-right.svg",
       "img/check.svg",
       "img/pp-theme-icons.png",
@@ -1404,7 +1232,7 @@
       "img/site-notes-category-upsell-em.jpg",
       "img/site-notes-integration-upsell.png",
       "img/icon-plus.svg",
-      "img/icon-lock2.svg",
+      "img/icon-lock.svg",
       "img/upsell-button-arrow.svg",
       "img/upsell-screen.png",
       "img/exactmetrics.png",
@@ -1434,31 +1262,6 @@
       "img/optimize-screen.png",
       "img/custom-dimensions-screen.png",
       "img/forms-wpforms-upsell.png",
-      "img/bullet.svg",
-      "img/icon-lock.svg",
-      "img/bg-publisher@2x.png",
-      "img/bg-queries@2x.png",
-      "img/bg-forms@2x.png",
-      "img/bg-realtime@2x.png",
-      "img/bg-ecommerce@2x.png",
-      "img/ecommerce-funnel@2x.png",
-      "img/bg-dimensions@2x.png",
-      "img/bg-sitespeed@2x.png",
-      "img/bg-media-upsell.svg",
-      "img/bg-traffic-overview@2x.png",
-      "img/bg-traffic-landing-page@2x.png",
-      "img/bg-traffic-technology@2x.png",
-      "img/bg-traffic-source-medium@2x.png",
-      "img/bg-traffic-campaigns@2x.png",
-      "img/bg-ecommerce-product-sales@2x.png",
-      "img/bg-ecommerce-coupons@2x.png",
-      "img/bg-cart-abandonment@2x.png",
-      "img/bg-engagement-pages@2x.png",
-      "img/bg-countries.png",
-      "img/social-media-report@2x.png",
-      "img/exceptions-report.png",
-      "img/bg-ai-insights.png",
-      "img/bg-conversations-ai.png",
       "img/icon-warning.png",
       "img/woocommerce.png",
       "img/easy-digital-downloads.png",
@@ -1492,10 +1295,10 @@
     "file": "js/settings.min.js",
     "imports": [
       "_vendor-b9834729.min.js",
-      "_index-a8f776b5.min.js",
+      "_index-a68026ec.min.js",
       "_ContentIconList-bbe6e6ed.min.js",
       "_AboutTestimonialsSlider-a497a870.min.js",
-      "_index-989e3e7e.min.js",
+      "_index-1c2b78ea.min.js",
       "_LaunchWizardButton-f581f36d.min.js",
       "_SettingsInfoTooltip-facc1a56.min.js",
       "_exactmetrics-icons-f933244e.min.js"
@@ -1601,11 +1404,11 @@
     "file": "js/widget.min.js",
     "imports": [
       "_vendor-b9834729.min.js",
-      "_date-intervals-6021be66.min.js",
-      "_report-table-helper-b32e3f2d.min.js",
+      "_date-intervals-d8f13c98.min.js",
+      "_report-table-helper-f8974d4c.min.js",
       "_SettingsInfoTooltip-facc1a56.min.js",
       "_WidgetReportError-1a54c6a5.min.js",
-      "_index-a8f776b5.min.js",
+      "_index-a68026ec.min.js",
       "_exactmetrics-icons-f933244e.min.js"
     ],
     "isEntry": true,
@@ -1630,7 +1433,7 @@
       "fonts/icons.woff",
       "fonts/icons.ttf",
       "fonts/icons.otf",
-      "img/logo-ExactMetrics@2x2.png",
+      "img/logo-ExactMetrics@2x.png",
       "img/icon-smile.png",
       "img/wpforms.png",
       "img/forms-screen.png",
@@ -1686,7 +1489,7 @@
       "_vendor-b9834729.min.js",
       "_AboutTestimonialsSlider-a497a870.min.js",
       "_SettingsInfoTooltip-facc1a56.min.js",
-      "_index-a8f776b5.min.js",
+      "_index-a68026ec.min.js",
       "_ContentIconList-bbe6e6ed.min.js",
       "_LaunchWizardButton-f581f36d.min.js"
     ],

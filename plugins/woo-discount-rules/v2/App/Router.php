@@ -192,6 +192,7 @@ class Router
             }
             //After place order button clicked
             add_action('woocommerce_checkout_update_order_meta', array(self::$manage_discount, 'orderItemsSaved'), 10, 2);
+            add_action('woocommerce_store_api_checkout_update_order_meta', array(self::$manage_discount, 'blockCheckoutOrderItemsSaved'), 10, 1);
             //Showing the bulk table
             $show_bulk_table = $manage_discount_class::$config->getConfig('show_bulk_table', 0);
             $position_to_show_bulk_table = $manage_discount_class::$config->getConfig('position_to_show_bulk_table', 'woocommerce_before_add_to_cart_form');

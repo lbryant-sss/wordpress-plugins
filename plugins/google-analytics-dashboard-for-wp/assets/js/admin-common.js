@@ -24,6 +24,30 @@ jQuery(document).ready(function ($) {
 
   });
 
+  /**
+   * WP Consent Notice Dismiss
+   * - Handles the dismissal of the WP Consent notice
+   */
+  $('#exactmetrics-wpconsent-notice-close').on('click', function (e) {
+    e.preventDefault();
+
+    var $notice = $('#exactmetrics-wpconsent-notice');
+
+    // Fade out the notice immediately for better UX
+    $notice.fadeOut();
+
+    // Send AJAX request to dismiss the notice
+    $.post(
+      exactmetrics_admin_common.ajax,
+      {
+        action: 'exactmetrics_dismiss_wpconsent_notice',
+        nonce: exactmetrics_admin_common.dismiss_notice_nonce
+      },
+      function () {},
+      'json'
+    );
+  });
+
   $('div.wp-menu-name > .exactmetrics-menu-notification-indicator').click(function (event) {
     event.preventDefault();
     event.stopPropagation();

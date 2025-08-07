@@ -8,12 +8,8 @@ $is_pro = \Wdr\App\Helpers\Helper::hasPro();
 ?>
 <br>
 <div id="wpbody-content" class="awdr-container">
-    <div class="" style="<?php if (!$is_pro) {
-        echo "width: 70%; float: left;";
-    } ?>">
-        <div class="col-md-6 col-lg-6 text-left awdr-list-header-btn" <?php if (!$is_pro) {
-            echo 'style="width:100%; float: left"';
-        } ?>>
+    <div class="" style="width: 70%; float: left;">
+        <div class="col-md-6 col-lg-6 text-left awdr-list-header-btn" style="width:100%; float:left;">
             <h1 class="wp-heading-inline"><?php esc_html_e('Discount Rules', 'woo-discount-rules'); ?></h1>
             <a href="<?php echo esc_url(admin_url("admin.php?" . http_build_query(array('page' => WDR_SLUG, 'tab' => 'rules', 'task' => 'create')))); ?>"
                class="btn btn-primary"><?php esc_html_e('Add New Rule', 'woo-discount-rules'); ?></a>
@@ -483,7 +479,9 @@ $is_pro = \Wdr\App\Helpers\Helper::hasPro();
                     </div>
                 </div>
             </div>
+        <?php } ?>
             <?php foreach ($recommended_addon as  $slug => $recommendation) :?>
+    <div class="awdr-pro-content-card-list">
             <div class="awdr-pro-content-card card" style="float: right;">
                 <div class="card-body text-right">
                     <div class="awdr-pro-content-header">
@@ -503,10 +501,7 @@ $is_pro = \Wdr\App\Helpers\Helper::hasPro();
             </div>
              <?php endforeach; ?>
         </div>
-    <?php } ?>
-
-
-</div>
+    </div>
 <?php
 if ($page_sort == 1 ) { ?>
 <style>

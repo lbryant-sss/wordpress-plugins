@@ -384,8 +384,8 @@ class Products {
 		?>
 		<div style="font-size: 1.1em;" class="marketplace-suggestions-container">
 		<div style="padding: 1em 1.5em;overflow: hidden;" class="marketplace-suggestion-container">
-			<div style="float:right;"><a target="blank" class="marketplace-suggestion-manage-link linkout" href="<?php echo esc_url( QLWCDC_DOCUMENTATION_URL ); ?>"><?php esc_html_e( 'Documentation', 'woocommerce-direct-checkout' ); ?></a></div>
-			<div style="float:left;"><a style="text-decoration:none" target="blank" href="<?php echo esc_url( QLWCDC_PREMIUM_SELL_URL ); ?>" class="linkout"><?php esc_html_e( 'Purchase Now', 'woocommerce-direct-checkout' ); ?><span style="margin-left: 4px;bottom: 2px;position: relative;" class="dashicons dashicons-external"></span></a></div>
+			<div style="float:right;"><a target="blank" class="marketplace-suggestion-manage-link linkout" href="<?php echo esc_url( 'https://quadlayers.com/documentation/woocommerce-direct-checkout/?utm_source=qlwcdc_plugin&utm_medium=admin_product&utm_campaign=documentation&utm_content=documentation_link' ); ?>"><?php esc_html_e( 'Documentation', 'woocommerce-direct-checkout' ); ?></a></div>
+			<div style="float:left;"><a style="text-decoration:none" target="blank" href="<?php echo esc_url( 'https://quadlayers.com/products/woocommerce-direct-checkout/?utm_source=qlwcdc_plugin&utm_medium=admin_product&utm_campaign=premium_upgrade&utm_content=premium_link' ); ?>" class="linkout"><?php esc_html_e( 'Purchase Now', 'woocommerce-direct-checkout' ); ?><span style="margin-left: 4px;bottom: 2px;position: relative;" class="dashicons dashicons-external"></span></a></div>
 		</div>
 		</div>
 	</div>

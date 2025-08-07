@@ -2,8 +2,8 @@
 Contributors: danieledesantis
 Tags: css, custom css, style, styles, stylesheet, custom stylesheet, single post css, site css, single page css, custom post type css, product css
 Requires at least: 4.0
-Tested up to: 6.0.2
-Stable tag: 1.1.6
+Tested up to: 6.8.2
+Stable tag: 1.2.0
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,8 +14,12 @@ Add custom css to the whole website and to specific posts and pages.
 WP Add Custom CSS allows you to **add custom CSS** to the **whole website** and to **individual posts, pages and custom post types** (such as **Woocommerce products**).
 The CSS rules applied to the whole website will override the default stylesheets of your theme and plugins, while the CSS rules applied to specific pages, posts or custom post types will override the main stylesheet too.
 
+The plugin works with the most popular builders, such as **Elementor, Gutenberg and the Classic Editor**.
+
 You can edit the main stylesheet from the the "Add custom CSS" settings page.
 The plugin also creates a new "Custom CSS" box in the editing area to **add custom CSS to specific posts, pages and custom post types**.
+
+Select the preferred CSS output method from the plugin’s settings page to ensure seamless integration with **caching and minification plugins** or to improve **above-the-fold rendering performance**.
 
 == Installation ==
 
@@ -44,6 +48,12 @@ Once the plugin is installed and activated, you will find a new box called "Cust
 
 Once the plugin is installed and activated, from your dashboard navigate to "Add custom CSS", check the desired custom post types and save. You will find a new box called "Custom CSS" in your custom post type editing area.
 
+= Which CSS output method should I choose? =
+
+To improve your website’s speed, it’s generally recommended to select "Use a CSS file", which allows optimization plugins to cache and minify the output.   
+Choosing "Use a style tag in the HTML head" outputs the CSS directly in the <head> of the page, which can improve above-the-fold rendering performance. 
+By default, the "Use WordPress hook" option is selected to maintain backward compatibility.
+
 = The "Custom CSS" box is not displaying, why? =
 
 Click on the "Screen option" link from your post/page editing area and be sure the "Custom CSS" option is checked.
@@ -56,6 +66,9 @@ Click on the "Screen option" link from your post/page editing area and be sure t
 4. Add custom CSS to specific custom post types (such as Woocommerce products).
 
 == Changelog ==
+
+= 1.2.0 =
+* Added output as pure CSS file or style tag to improve performance
 
 = 1.1.6 =
 * Updated code editor
@@ -117,6 +130,9 @@ Click on the "Screen option" link from your post/page editing area and be sure t
 * First release
 
 == Upgrade Notice ==
+
+= 1.2.0 =
+* Added output as pure CSS file or style tag to improve performance
 
 = 1.1.6 =
 * Updated code editor

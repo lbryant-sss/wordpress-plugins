@@ -27,15 +27,15 @@ if ( class_exists( 'QuadLayers\\WP_Notice_Plugin_Promote\\Load' ) ) {
 				QLWCDC_PROMOTE_PREMIUM_SELL_NAME
 			)
 		);
-		define( 'QLWCDC_PROMOTE_PREMIUM_SELL_URL', QLWCDC_PREMIUM_SELL_URL );
-		define( 'QLWCDC_PROMOTE_PREMIUM_INSTALL_URL', 'https://quadlayers.com/products/woocommerce-direct-checkout/?utm_source=qlwcdc_admin' );
+		define( 'QLWCDC_PROMOTE_PREMIUM_SELL_URL', 'https://quadlayers.com/products/woocommerce-direct-checkout/?utm_source=qlwcdc_plugin&utm_medium=dashboard_notice&utm_campaign=premium_upgrade&utm_content=premium_link' );
+		define( 'QLWCDC_PROMOTE_PREMIUM_INSTALL_URL', 'https://quadlayers.com/products/woocommerce-direct-checkout/?utm_source=qlwcdc_plugin&utm_medium=dashboard_notice&utm_campaign=premium_upgrade&utm_content=premium_install_button' );
 		/**
 		 * Notice cross sell 1
 		 */
 		define( 'QLWCDC_PROMOTE_CROSS_INSTALL_1_SLUG', 'woocommerce-checkout-manager' );
 		define( 'QLWCDC_PROMOTE_CROSS_INSTALL_1_NAME', 'WooCommerce Checkout Manager' );
 		define( 'QLWCDC_PROMOTE_CROSS_INSTALL_1_DESCRIPTION', esc_html__( 'WooCommerce Checkout Manager allows you to add custom fields to the checkout page, related to billing, Shipping or Additional fields sections.', 'woocommerce-direct-checkout' ) );
-		define( 'QLWCDC_PROMOTE_CROSS_INSTALL_1_URL', 'https://quadlayers.com/products/woocommerce-checkout-manager/?utm_source=qlwcdc_admin' );
+		define( 'QLWCDC_PROMOTE_CROSS_INSTALL_1_URL', 'https://quadlayers.com/products/woocommerce-checkout-manager/?utm_source=qlwcdc_plugin&utm_medium=dashboard_notice&utm_campaign=cross_sell&utm_content=checkout_manager_link' );
 		define( 'QLWCDC_PROMOTE_CROSS_INSTALL_1_LOGO_SRC', plugins_url( '/assets/backend/img/woocommerce-direct-checkout.jpg', QLWCDC_PLUGIN_FILE ) );
 
 		/**
@@ -44,7 +44,7 @@ if ( class_exists( 'QuadLayers\\WP_Notice_Plugin_Promote\\Load' ) ) {
 		define( 'QLWCDC_PROMOTE_CROSS_INSTALL_2_SLUG', 'perfect-woocommerce-brands' );
 		define( 'QLWCDC_PROMOTE_CROSS_INSTALL_2_NAME', 'Perfect WooCommerce Brands' );
 		define( 'QLWCDC_PROMOTE_CROSS_INSTALL_2_DESCRIPTION', esc_html__( 'Perfect WooCommerce Brands the perfect tool to improve customer experience on your site. It allows you to highlight product brands and organize them in lists, dropdowns, thumbnails, and as a widget.', 'woocommerce-direct-checkout' ) );
-		define( 'QLWCDC_PROMOTE_CROSS_INSTALL_2_URL', 'https://quadlayers.com/products/perfect-woocommerce-brands/?utm_source=qlwcdc_admin' );
+		define( 'QLWCDC_PROMOTE_CROSS_INSTALL_2_URL', 'https://quadlayers.com/products/perfect-woocommerce-brands/?utm_source=qlwcdc_plugin&utm_medium=dashboard_notice&utm_campaign=cross_sell&utm_content=perfect_brands_link' );
 		define( 'QLWCDC_PROMOTE_CROSS_INSTALL_2_LOGO_SRC', plugins_url( '/assets/backend/img/perfect-woocommerce-brands.jpg', QLWCDC_PLUGIN_FILE ) );
 
 		new \QuadLayers\WP_Notice_Plugin_Promote\Load(
@@ -61,7 +61,7 @@ if ( class_exists( 'QuadLayers\\WP_Notice_Plugin_Promote\\Load' ) ) {
 									'<br>'
 					),
 					'notice_link'        => QLWCDC_PROMOTE_REVIEW_URL,
-					'notice_more_link'   => QLWCDC_SUPPORT_URL,
+					'notice_more_link'   => 'https://quadlayers.com/account/support/?utm_source=qlwcdc_plugin&utm_medium=dashboard_notice&utm_campaign=support&utm_content=report_bug_button',
 					'notice_more_label'  => esc_html__(
 						'Report a bug',
 						'woocommerce-direct-checkout'

@@ -68,4 +68,8 @@ class ExactMetrics_License_Compat {
 	public function license_expired() {
 		return false;
 	}
+	
+	public function is_agency() {
+		return false;
+	}
 }

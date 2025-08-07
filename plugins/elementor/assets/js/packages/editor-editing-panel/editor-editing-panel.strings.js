@@ -73,8 +73,6 @@ __(
 __( 'Rename', 'elementor' );
 __( 'Open CSS Class Menu', 'elementor' );
 __( 'Inherited from base styles', 'elementor' );
-__( 'Margin', 'elementor' );
-__( 'Padding', 'elementor' );
 __( 'Word spacing', 'elementor' );
 __( 'Text transform', 'elementor' );
 __( 'None', 'elementor' );
@@ -115,6 +113,8 @@ __( 'Font size', 'elementor' );
 __( 'Font family', 'elementor' );
 __( 'Column gap', 'elementor' );
 __( 'Columns', 'elementor' );
+__( 'Margin', 'elementor' );
+__( 'Padding', 'elementor' );
 __( 'Width', 'elementor' );
 __( 'Height', 'elementor' );
 __( 'Min width', 'elementor' );

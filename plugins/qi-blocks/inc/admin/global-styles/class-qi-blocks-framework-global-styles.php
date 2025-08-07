@@ -46,6 +46,10 @@ if ( ! class_exists( 'Qi_Blocks_Framework_Global_Styles' ) ) {
 			return $global;
 		}
 
+		public function sanitize_block_selector( $selector ) {
+			return preg_replace( '/[^a-zA-Z0-9\-_.:>\s]/', '', $selector );
+		}
+
 		public function add_options() {
 			if ( ! get_option( 'qi_blocks_global_styles' ) ) {
 				add_option(
@@ -180,23 +184,24 @@ if ( ! class_exists( 'Qi_Blocks_Framework_Global_Styles' ) ) {
 						}
 
 						foreach ( $block_style->values as $block_element ) {
+							$block_selector = $this->sanitize_block_selector( $block_element->selector );
 
 							if ( ! empty( $block_element->styles ) ) {
-								$styles[] = $templates_selector . $block_element->selector . '{' . $block_element->styles . '}';
+								$styles[] = $templates_selector . $block_selector . '{' . $block_element->styles . '}';
 							}
 
 							if ( isset( $block_element->tablet_styles ) && ! empty( $block_element->tablet_styles ) ) {
-								$styles[] = '@media (max-width: 1024px) { ' . $templates_selector . $block_element->selector . '{' . $block_element->tablet_styles . '} }';
+								$styles[] = '@media (max-width: 1024px) { ' . $templates_selector . $block_selector . '{' . $block_element->tablet_styles . '} }';
 							}
 
 							if ( isset( $block_element->mobile_styles ) && ! empty( $block_element->mobile_styles ) ) {
-								$styles[] = '@media (max-width: 680px) { ' . $templates_selector . $block_element->selector . '{' . $block_element->mobile_styles . '} }';
+								$styles[] = '@media (max-width: 680px) { ' . $templates_selector . $block_selector . '{' . $block_element->mobile_styles . '} }';
 							}
 
 							if ( isset( $block_element->custom_styles ) && ! empty( $block_element->custom_styles ) ) {
 								foreach ( $block_element->custom_styles as $custom_style ) {
 									if ( isset( $custom_style->value ) && ! empty( $custom_style->value ) ) {
-										$styles[] = '@media (max-width: ' . $custom_style->key . 'px) { ' . $templates_selector . $block_element->selector . '{' . $custom_style->value . '} }';
+										$styles[] = '@media (max-width: ' . $custom_style->key . 'px) { ' . $templates_selector . $block_selector . '{' . $custom_style->value . '} }';
 									}
 								}
 							}
@@ -221,23 +226,24 @@ if ( ! class_exists( 'Qi_Blocks_Framework_Global_Styles' ) ) {
 						}
 
 						foreach ( $block_style->values as $block_element ) {
+							$block_selector = $this->sanitize_block_selector( $block_element->selector );
 
 							if ( ! empty( $block_element->styles ) ) {
-								$styles[] = $templates_selector . $block_element->selector . '{' . $block_element->styles . '}';
+								$styles[] = $templates_selector . $block_selector . '{' . $block_element->styles . '}';
 							}
 
 							if ( isset( $block_element->tablet_styles ) && ! empty( $block_element->tablet_styles ) ) {
-								$styles[] = '@media (max-width: 1024px) { ' . $templates_selector . $block_element->selector . '{' . $block_element->tablet_styles . '} }';
+								$styles[] = '@media (max-width: 1024px) { ' . $templates_selector . $block_selector . '{' . $block_element->tablet_styles . '} }';
 							}
 
 							if ( isset( $block_element->mobile_styles ) && ! empty( $block_element->mobile_styles ) ) {
-								$styles[] = '@media (max-width: 680px) { ' . $templates_selector . $block_element->selector . '{' . $block_element->mobile_styles . '} }';
+								$styles[] = '@media (max-width: 680px) { ' . $templates_selector . $block_selector . '{' . $block_element->mobile_styles . '} }';
 							}
 
 							if ( isset( $block_element->custom_styles ) && ! empty( $block_element->custom_styles ) ) {
 								foreach ( $block_element->custom_styles as $custom_style ) {
 									if ( isset( $custom_style->value ) && ! empty( $custom_style->value ) ) {
-										$styles[] = '@media (max-width: ' . $custom_style->key . 'px) { ' . $templates_selector . $block_element->selector . '{' . $custom_style->value . '} }';
+										$styles[] = '@media (max-width: ' . $custom_style->key . 'px) { ' . $templates_selector . $block_selector . '{' . $custom_style->value . '} }';
 									}
 								}
 							}
@@ -300,23 +306,24 @@ if ( ! class_exists( 'Qi_Blocks_Framework_Global_Styles' ) ) {
 						}
 
 						foreach ( $block_style->values as $block_element ) {
+							$block_selector = $this->sanitize_block_selector( $block_element->selector );
 
 							if ( ! empty( $block_element->styles ) ) {
-								$styles[] = $block_element->selector . '{' . $block_element->styles . '}';
+								$styles[] = $block_selector . '{' . $block_element->styles . '}';
 							}
 
 							if ( isset( $block_element->tablet_styles ) && ! empty( $block_element->tablet_styles ) ) {
-								$styles[] = '@media (max-width: 1024px) { ' . $block_element->selector . '{' . $block_element->tablet_styles . '} }';
+								$styles[] = '@media (max-width: 1024px) { ' . $block_selector . '{' . $block_element->tablet_styles . '} }';
 							}
 
 							if ( isset( $block_element->mobile_styles ) && ! empty( $block_element->mobile_styles ) ) {
-								$styles[] = '@media (max-width: 680px) { ' . $block_element->selector . '{' . $block_element->mobile_styles . '} }';
+								$styles[] = '@media (max-width: 680px) { ' . $block_selector . '{' . $block_element->mobile_styles . '} }';
 							}
 
 							if ( isset( $block_element->custom_styles ) && ! empty( $block_element->custom_styles ) ) {
 								foreach ( $block_element->custom_styles as $custom_style ) {
 									if ( isset( $custom_style->value ) && ! empty( $custom_style->value ) ) {
-										$styles[] = '@media (max-width: ' . $custom_style->key . 'px) { ' . $block_element->selector . '{' . $custom_style->value . '} }';
+										$styles[] = '@media (max-width: ' . $custom_style->key . 'px) { ' . $block_selector . '{' . $custom_style->value . '} }';
 									}
 								}
 							}
@@ -341,7 +348,7 @@ if ( ! class_exists( 'Qi_Blocks_Framework_Global_Styles' ) ) {
 
 				// Load styles.
 				if ( ! empty( $styles ) ) {
-					wp_add_inline_style( 'qi-blocks-main', implode( ' ', $styles ) );
+					wp_add_inline_style( 'qi-blocks-main', wp_strip_all_tags( implode( ' ', $styles ) ) );
 				}
 			}
 		}

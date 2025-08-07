@@ -4,7 +4,7 @@
  * Plugin Name:             WooCommerce Direct Checkout
  * Plugin URI:              https://quadlayers.com/products/woocommerce-direct-checkout/
  * Description:             Simplifies the checkout process to improve your sales rate.
- * Version:                 3.5.1
+ * Version:                 3.5.2
  * Text Domain:             woocommerce-direct-checkout
  * Author:                  QuadLayers
  * Author URI:              https://quadlayers.com
@@ -25,16 +25,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Definition globals varibles
  */
 define( 'QLWCDC_PLUGIN_NAME', 'WooCommerce Direct Checkout' );
-define( 'QLWCDC_PLUGIN_VERSION', '3.5.1' );
+define( 'QLWCDC_PLUGIN_VERSION', '3.5.2' );
 define( 'QLWCDC_PLUGIN_FILE', __FILE__ );
 define( 'QLWCDC_PLUGIN_DIR', __DIR__ . DIRECTORY_SEPARATOR );
 define( 'QLWCDC_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 define( 'QLWCDC_PREFIX', 'qlwcdc' );
 define( 'QLWCDC_WORDPRESS_URL', 'https://wordpress.org/plugins/woocommerce-direct-checkout/' );
-define( 'QLWCDC_DOCUMENTATION_URL', 'https://quadlayers.com/documentation/woocommerce-direct-checkout/?utm_source=qlwcdc_admin' );
-define( 'QLWCDC_SUPPORT_URL', 'https://quadlayers.com/account/support/?utm_source=qlwcdc_admin' );
-define( 'QLWCDC_DEMO_URL', 'https://quadlayers.com/woocommerce-direct-checkout/?utm_source=qlwcdc_admin' );
-define( 'QLWCDC_PREMIUM_SELL_URL', 'https://quadlayers.com/products/woocommerce-direct-checkout/?utm_source=qlwcdc_admin' );
 
 /**
  * Load composer autoload

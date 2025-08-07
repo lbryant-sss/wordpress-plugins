@@ -17,7 +17,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 function exactmetrics_is_settings_page() {
 	$current_screen = function_exists( 'get_current_screen' ) ? get_current_screen() : false;
- 
 	global $admin_page_hooks;
 
 	if ( ! is_object( $current_screen ) || empty( $current_screen->id ) || empty( $admin_page_hooks ) ) {
@@ -38,10 +37,6 @@ function exactmetrics_is_settings_page() {
 	}
 
 	if ( strpos( $current_screen->id, 'exactmetrics_settings' ) !== false ) {
-		$settings_page = true;
-	}
-	
-	if ( strpos( $current_screen->id, 'exactmetrics_google_ads' ) !== false ) {
 		$settings_page = true;
 	}
 
@@ -100,14 +95,6 @@ function exactmetrics_is_own_admin_page() {
 	}
 
 	return false;
-}
-
-/**
- * Determine if the current page is Google Ads
- * @return bool
- */
-function exactmetrics_is_ads_page() {
-	return str_contains( get_current_screen()->id, 'exactmetrics_google_ads' );
 }
 
 /**

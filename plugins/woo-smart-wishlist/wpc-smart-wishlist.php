@@ -3,7 +3,7 @@
 Plugin Name: WPC Smart Wishlist for WooCommerce
 Plugin URI: https://wpclever.net/
 Description: WPC Smart Wishlist is a simple but powerful tool that can help your customer save products for buy later.
-Version: 5.0.1
+Version: 5.0.2
 Author: WPClever
 Author URI: https://wpclever.net
 Text Domain: woo-smart-wishlist
@@ -12,14 +12,14 @@ Requires Plugins: woocommerce
 Requires at least: 4.0
 Tested up to: 6.8
 WC requires at least: 3.0
-WC tested up to: 9.9
+WC tested up to: 10.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 defined( 'ABSPATH' ) || exit;
 
-! defined( 'WOOSW_VERSION' ) && define( 'WOOSW_VERSION', '5.0.1' );
+! defined( 'WOOSW_VERSION' ) && define( 'WOOSW_VERSION', '5.0.2' );
 ! defined( 'WOOSW_LITE' ) && define( 'WOOSW_LITE', __FILE__ );
 ! defined( 'WOOSW_FILE' ) && define( 'WOOSW_FILE', __FILE__ );
 ! defined( 'WOOSW_URI' ) && define( 'WOOSW_URI', plugin_dir_url( __FILE__ ) );
@@ -276,7 +276,7 @@ if ( ! function_exists( 'woosw_init' ) ) {
 
 						if ( array_key_exists( $product_id, $products ) ) {
 							unset( $products[ $product_id ] );
-							update_option( 'woosw_list_' . $key, $products );
+							update_option( 'woosw_list_' . $key, $products, false );
 							self::update_product_count( $product_id, 'remove' );
 						}
 					}
@@ -306,7 +306,7 @@ if ( ! function_exists( 'woosw_init' ) ) {
 										            'note'   => ''
 									            ]
 								            ] + $products;
-								update_option( 'woosw_list_' . $key, $products );
+								update_option( 'woosw_list_' . $key, $products, false );
 							}
 						}
 					}
@@ -346,7 +346,7 @@ if ( ! function_exists( 'woosw_init' ) ) {
 										            'note'   => ''
 									            ]
 								            ] + $products;
-								update_option( 'woosw_list_' . $key, $products );
+								update_option( 'woosw_list_' . $key, $products, false );
 								self::update_product_count( $product_id, 'add' );
 								$return['notice'] = self::localization( 'added_message', esc_html__( '{name} has been added to Wishlist.', 'woo-smart-wishlist' ) );
 							} else {
@@ -398,7 +398,7 @@ if ( ! function_exists( 'woosw_init' ) ) {
 
 							if ( array_key_exists( $product_id, $products ) ) {
 								unset( $products[ $product_id ] );
-								update_option( 'woosw_list_' . $key, $products );
+								update_option( 'woosw_list_' . $key, $products, false );
 								self::update_product_count( $product_id, 'remove' );
 								$return['count']  = count( $products );
 								$return['status'] = 1;
@@ -451,7 +451,7 @@ if ( ! function_exists( 'woosw_init' ) ) {
 						}
 
 						// remove option
-						update_option( 'woosw_list_' . $key, [] );
+						update_option( 'woosw_list_' . $key, [], false );
 						$return['status']  = 1;
 						$return['count']   = 0;
 						$return['notice']  = self::localization( 'empty_notice', esc_html__( 'All products have been removed from the Wishlist!', 'woo-smart-wishlist' ) );
@@ -549,7 +549,7 @@ if ( ! function_exists( 'woosw_init' ) ) {
 							];
 						}
 
-						update_option( 'woosw_list_' . $key, $products );
+						update_option( 'woosw_list_' . $key, $products, false );
 					}
 
 					if ( empty( $note ) ) {
@@ -2382,7 +2382,7 @@ if ( ! function_exists( 'woosw_init' ) ) {
 
 					// update products
 					if ( $real_count < $count ) {
-						update_option( 'woosw_list_' . $key, $real_products );
+						update_option( 'woosw_list_' . $key, $real_products, false );
 					}
 
 					return apply_filters( 'woosw_wishlist_items', ob_get_clean(), $key, $products );

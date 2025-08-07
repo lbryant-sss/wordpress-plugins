@@ -4,7 +4,7 @@ Donate link: https://flycart.org/
 Tags: woocommerce, coupons, discounts, dynamic pricing, bulk discount
 Requires at least: 4.6.1
 Tested up to: 6.8
-Stable tag: 2.6.10
+Stable tag: 2.6.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -291,6 +291,13 @@ In that case, the rule with the higher priority will be applied.
 * Dutch Translation - [@mvdburg1971](https://profiles.wordpress.org/mvdburg1971) - Michael van der Burg
 
 == Changelog ==
+= 2.6.11 - 05/08/25 =
+* Added: Event: advanced_woo_discount_rules_sale_page_list_attributes [Core].
+* Added: Event: advanced_woo_discount_rules_user_id_on_condition_userlist_check [Pro]
+* Fix: Product Sku filter.
+* Fix: Block checkout item discount [Core].
+* Added: Compatibility for WooCommerce 10.0
+
 = 2.6.10 - 24/06/25 =
 * Fix: Coupon case-sensitive.
 * Added: Compatibility for WordPress 6.8

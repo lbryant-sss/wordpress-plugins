@@ -145,10 +145,6 @@ class ExactMetrics_Rest_Routes {
 			}
 		}
 
-		if (class_exists('ExactMetrics_Google_Ads')) {
-			$options['google_ads'] = ExactMetrics_Google_Ads::get_settings();
-		}
-
 		//add email summaries options
 		if ( exactmetrics_is_pro_version() ) {
 			$default_email = array(
@@ -416,7 +412,7 @@ class ExactMetrics_Rest_Routes {
 			'installed' => array_key_exists( 'wpconsent-cookies-banner-privacy-suite/wpconsent.php', $installed_plugins ),
 			'basename'  => 'wpconsent-cookies-banner-privacy-suite/wpconsent.php',
 			'slug'      => 'wpconsent-cookies-banner-privacy-suite',
-			'settings'  => admin_url( 'admin.php?page=wpconsent_dashboard' ),
+			'settings'  => admin_url( 'admin.php?page=wpconsent' ),
 		);
 
 		// Duplicator
@@ -950,7 +946,7 @@ class ExactMetrics_Rest_Routes {
 		$api->set_additional_data( array(
 			'mp_token' => $value,
 		) );
-			
+
 		// Even if there's an error from Relay, we can still return a successful json
 		// payload because we can try again with Relay token push in the future
 		$data   = array();
@@ -1202,6 +1198,11 @@ class ExactMetrics_Rest_Routes {
 			wp_send_json( array(
 				'message' => esc_html__( 'Missing plugin name.', 'google-analytics-dashboard-for-wp' ),
 			) );
+		}
+
+		// Check plugin diectory already available.
+		if ( is_dir( WP_PLUGIN_DIR . '/' . $slug ) ) {
+			wp_send_json_success(__( 'Plugin already installed.', 'google-analytics-dashboard-for-wp' ));
 		}
 
 		include_once ABSPATH . 'wp-admin/includes/plugin-install.php';
@@ -1669,6 +1670,7 @@ class ExactMetrics_Rest_Routes {
 				delete_site_option( 'exactmetrics_network_report_data_overview' );
 				delete_site_option( 'exactmetrics_report_data_compare_overview' );
 				delete_transient( 'exactmetrics_report_data_compare_overview' );
+
 			}
 			update_user_meta( get_current_user_id(), 'exactmetrics_included_metrics', $selected_metrics );
 		}

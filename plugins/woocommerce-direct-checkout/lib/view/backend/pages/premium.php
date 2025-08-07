@@ -25,9 +25,9 @@ require_once 'parts/tabs.php';
 					?>
 				</div>
 				<br />
-				<a class="button button-primary" target="_blank" href="<?php echo esc_url( QLWCDC_PREMIUM_SELL_URL ); ?>"><?php esc_html_e( 'Purchase Now', 'woocommerce-direct-checkout' ); ?></a>
-				<a class="button button-secondary" target="_blank" href="<?php echo esc_url( QLWCDC_DEMO_URL ); ?>"><?php esc_html_e( 'View demo', 'woocommerce-direct-checkout' ); ?></a>
-				<a class="button button-secondary" target="_blank" href="<?php echo esc_url( QLWCDC_SUPPORT_URL ); ?>"><?php esc_html_e( 'Get Support', 'woocommerce-direct-checkout' ); ?></a>
+				<a class="button button-primary" target="_blank" href="<?php echo esc_url( 'https://quadlayers.com/products/woocommerce-direct-checkout/?utm_source=qlwcdc_plugin&utm_medium=admin_tab&utm_campaign=premium_upgrade&utm_content=purchase_button' ); ?>"><?php esc_html_e( 'Purchase Now', 'woocommerce-direct-checkout' ); ?></a>
+				<a class="button button-secondary" target="_blank" href="<?php echo esc_url( 'https://quadlayers.com/woocommerce-direct-checkout/?utm_source=qlwcdc_plugin&utm_medium=admin_tab&utm_campaign=demo&utm_content=demo_button' ); ?>"><?php esc_html_e( 'View demo', 'woocommerce-direct-checkout' ); ?></a>
+				<a class="button button-secondary" target="_blank" href="<?php echo esc_url( 'https://quadlayers.com/account/support/?utm_source=qlwcdc_plugin&utm_medium=admin_tab&utm_campaign=support&utm_content=support_button' ); ?>"><?php esc_html_e( 'Get Support', 'woocommerce-direct-checkout' ); ?></a>
 			</div>
 			<hr />
 			<div class="feature-section" style="padding: 10px 0;">

@@ -117,9 +117,6 @@ function exactmetrics_admin_menu()
 	// then SEO
 	add_submenu_page($parent_slug, __('SEO', 'google-analytics-dashboard-for-wp'), __('SEO', 'google-analytics-dashboard-for-wp'), 'manage_options', $seo_url);
 
-	// Google PAX
-	add_submenu_page($parent_slug, __('Google Ads', 'google-analytics-dashboard-for-wp'), __('Google Ads', 'google-analytics-dashboard-for-wp'), 'exactmetrics_view_dashboard', $submenu_base . '#/google-ads');
-
 	// then tools
 	add_submenu_page($parent_slug, __('Tools:', 'google-analytics-dashboard-for-wp'), __('Tools', 'google-analytics-dashboard-for-wp'), 'manage_options', $submenu_base . '#/tools');
 
@@ -140,12 +137,18 @@ function exactmetrics_admin_menu()
 	// then About Us page.
 	add_submenu_page($parent_slug, __('About Us:', 'google-analytics-dashboard-for-wp'), __('About Us', 'google-analytics-dashboard-for-wp'), 'manage_options', $submenu_base . '#/about');
 
+	add_submenu_page(
+		$parent_slug,
+		__('WPConsent:', 'google-analytics-dashboard-for-wp'),
+		__('WPConsent', 'google-analytics-dashboard-for-wp') . $new_indicator,
+		'manage_options',
+		$submenu_base . '#/wpconsent'
+	);
+
 	if (!exactmetrics_is_pro_version() && !strstr(plugin_basename(__FILE__), 'dashboard-for')) {
 		// automated promotion
 		exactmetrics_automated_menu($hook);
 	}
-
-	add_submenu_page($parent_slug, __('Growth Tools:', 'google-analytics-dashboard-for-wp'), __('Growth Tools', 'google-analytics-dashboard-for-wp'), 'manage_options', $submenu_base . '#/growth-tools');
 
 	// then Upgrade To Pro.
 	if (!exactmetrics_is_pro_version()) {
@@ -458,7 +461,7 @@ function exactmetrics_admin_footer($text)
 	) {
 		$url = 'https://wordpress.org/support/view/plugin-reviews/google-analytics-dashboard-for-wp?filter=5';
 		// Translators: Placeholders add a link to the wordpress.org repository.
-		$text = sprintf(esc_html__('Please rate %1$sExactMetrics%2$s on %3$s %4$sWordPress.org%5$s to help us spread the word. Thank you from the ExactMetrics team!', 'google-analytics-dashboard-for-wp'), '<strong>', '</strong>', '<a class="exactmetrics-no-text-decoration" href="' . $url . '" target="_blank" rel="noopener noreferrer"><i class="monstericon-star"></i><i class="monstericon-star"></i><i class="monstericon-star"></i><i class="monstericon-star"></i><i class="monstericon-star"></i></a>', '<a href="' . $url . '" target="_blank" rel="noopener noreferrer">', '</a>');
+		$text = sprintf(esc_html__('Please rate %1$sExactMetrics%2$s on %3$s %4$sWordPress.org%5$s to help us spread the word.', 'google-analytics-dashboard-for-wp'), '<strong>', '</strong>', '<a class="exactmetrics-no-text-decoration" href="' . $url . '" target="_blank" rel="noopener noreferrer"><i class="monstericon-star"></i><i class="monstericon-star"></i><i class="monstericon-star"></i><i class="monstericon-star"></i><i class="monstericon-star"></i></a>', '<a href="' . $url . '" target="_blank" rel="noopener noreferrer">', '</a>');
 	}
 
 	return $text;
@@ -499,7 +502,7 @@ function exactmetrics_admin_setup_notices()
 		echo '<p>' . wp_kses_post($message) . '</p>';
 		echo '<p>';
 		echo '<a href="https://www.exactmetrics.com/docs/connect-google-analytics/"
-                   target="_blank" rel="noopener noreferrer">' .
+				   target="_blank" rel="noopener noreferrer">' .
 			__( 'Learn How to Create a GA4 Property', 'google-analytics-dashboard-for-wp' ) . // phpcs:ignore
 			'</a><br>';
 		echo '<a href="' . esc_url($wizard_url) . '">' .
@@ -876,6 +879,41 @@ add_action( 'admin_notices', 'exactmetrics_empty_measurement_protocol_token' );
 add_action( 'network_admin_notices', 'exactmetrics_admin_setup_notices' );
 
 /**
+ * Display notice in admin when ExactMetrics Ads addon is installed.
+ */
+function exactmetrics_ads_addon_installed_notice() {
+	if ( ! class_exists( 'ExactMetrics_Ads' ) ) {
+		return;
+	}
+
+	if ( exactmetrics_is_pro_version() && ExactMetrics()->license->get_license_type() === 'pro' ) {
+		$addons_url = admin_url() . '/admin.php?page=exactmetrics_settings#/addons?ads_addon_ppc_alert=1';
+		$button_text = esc_html__( 'Install Now', 'google-analytics-dashboard-for-wp' );
+		$button_target = '_self';
+	} else {
+		$addons_url = exactmetrics_get_upgrade_link('admin-notices', 'ads-addon-activated', 'https://www.exactmetrics.com/lite/');
+		$button_text = esc_html__( 'Upgrade Now', 'google-analytics-dashboard-for-wp' );
+		$button_target = '_blank';
+	}
+
+	$message = sprintf(
+		/* translators: Placeholders link to addons page. */
+		esc_html__(
+			'We\'ve detected you have our %1$sExactMetrics Ads%2$s addon activated. Please activate our %3$sPPC Tracking%4$s addon for more advanced features and powerful integrations.',
+			'google-analytics-dashboard-for-wp'
+		),
+		'<strong>',
+		'</strong>',
+		'<a href="' . $addons_url . '" target="' . $button_target . '">',
+		'</a>'
+	);
+
+	echo '<div class="notice notice-info is-dismissible"><p>' . $message . '</p><p><a href="' . $addons_url . '" class="button button-primary" target="' . $button_target . '">' . $button_text . '</a></p></div>'; // phpcs:ignore
+}
+
+add_action( 'admin_notices', 'exactmetrics_ads_addon_installed_notice' );
+
+/**
  * Check if the plugin is MI Lite.
  *
  * @return bool
@@ -883,6 +921,100 @@ add_action( 'network_admin_notices', 'exactmetrics_admin_setup_notices' );
 function check_is_it_exactmetrics_lite() {
 	return 'googleanalytics.php' == basename( EXACTMETRICS_PLUGIN_FILE );
 }
+
+/**
+ * Add custom text and links to footer.
+ */
+function exactmetrics_in_admin_footer() {
+	$screen = get_current_screen();
+	// Check the current screen is ExactMetrics.
+	if (empty($screen) || empty($screen->id) || strpos($screen->id, 'exactmetrics') === false) {
+		return;
+	}
+
+	$is_pro = exactmetrics_is_pro_version();
+
+	$links = [
+		[
+			'text' => __( 'Support', 'google-analytics-dashboard-for-wp' ),
+			'link' => $is_pro ? exactmetrics_get_url('footer_link', 'made-with-love', 'https://www.exactmetrics.com/support/') : 'https://wordpress.org/support/plugin/google-analytics-dashboard-for-wp/',
+			'target' => '_blank',
+		],
+		[
+			'text' => __( 'Docs', 'google-analytics-dashboard-for-wp' ),
+			'link' => exactmetrics_get_url('footer_link', 'made-with-love', 'https://www.exactmetrics.com/docs/'),
+			'target' => '_blank',
+		],
+		[
+			'text' => __( 'Free Plugins', 'google-analytics-dashboard-for-wp' ),
+			'link' => admin_url('admin.php?page=exactmetrics_settings#/about'),
+			'target' => '_self',
+		],
+	];
+
+	echo '<div class="exactmetrics-footer-love">';
+	echo sprintf(esc_html__('Made with %1$s by the ExactMetrics Team', 'google-analytics-dashboard-for-wp'), '<span class="exactmetrics-footer-love-icon">♥</span>');
+	$links_output = [];
+	foreach($links as $link){
+		$links_output[] = '<a target="'.esc_attr($link['target']).'" href="'.esc_url($link['link']).'">' . esc_html($link['text']) . '</a>';
+	}
+	echo '<div>'. implode('<span class="flsep">/</span>', $links_output) .'</div>'; // phpcs:ignore
+	echo '</div>';
+}
+
+add_action( 'in_admin_footer', 'exactmetrics_in_admin_footer' );
+
+/**
+ * Display notice in admin to install WPConsent.
+ */
+function exactmetrics_wpconsent_install_notice() {
+	// If WPConsent plugin active.
+	if ( function_exists( 'WPConsent' ) ) {
+		return;
+	}
+
+	// If other plugin active
+	if ( exactmetrics_wpconsent_is_cmp_plugin_active() ) {
+		return;
+	}
+
+	// If notice has been dismissed
+	if ( get_option( 'exactmetrics_wpconsent_notice_dismissed', false ) ) {
+		return;
+	}
+
+	$plugin_installed = false;
+	if ( file_exists( WP_PLUGIN_DIR . '/wpconsent-cookies-banner-privacy-suite/wpconsent.php' ) ) {
+		$plugin_installed = true;
+	}
+	?>
+	<div class="exactmetrics-wpconsent-notice-box notice" id="exactmetrics-wpconsent-notice">
+		<div class="exactmetrics-wpconsent-sidebar">
+			<div class="exactmetrics-wpconsent-icon">
+				<img src="<?php echo esc_url(trailingslashit(EXACTMETRICS_PLUGIN_URL)); ?>assets/images/exactmetrics-notice-box-logo.svg">
+			</div>
+		</div>
+		<div class="exactmetrics-wpconsent-content">
+			<button class="exactmetrics-wpconsent-close" id="exactmetrics-wpconsent-notice-close">&times;</button>
+			<h3><?php esc_html_e('Make Your Website Analytics Compliant with Privacy Laws', 'google-analytics-dashboard-for-wp'); ?></h3>
+			<p><?php esc_html_e('Privacy laws like GDPR, CCPA, and others require user consent before you can track visitors. Our sister plugin, WPConsent, helps you add a smart cookie consent banner for better privacy compliance with Google Analytics.', 'google-analytics-dashboard-for-wp'); ?></p>
+			<div class="exactmetrics-wpconsent-buttons">
+				<a class="exactmetrics-wpconsent-btn-primary" href="<?php echo esc_url( admin_url() ) ?>admin.php?page=exactmetrics_settings#/wpconsent?installnow=1">
+					<?php
+						if ( $plugin_installed ) {
+							esc_html_e('Activate', 'google-analytics-dashboard-for-wp');
+						} else {
+							esc_html_e('Install Now', 'google-analytics-dashboard-for-wp');
+						}
+					 ?>
+				</a>
+				<a class="exactmetrics-wpconsent-btn-secondary" href="<?php echo esc_url( admin_url() ) ?>admin.php?page=exactmetrics_settings#/wpconsent"><?php esc_html_e('Learn More', 'google-analytics-dashboard-for-wp'); ?></a>
+			</div>
+		</div>
+	</div>
+	<?php
+}
+add_action( 'admin_notices', 'exactmetrics_wpconsent_install_notice' );
 
 /**
  * Add EEA Compliance file.

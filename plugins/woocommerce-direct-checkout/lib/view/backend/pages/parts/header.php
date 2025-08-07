@@ -13,8 +13,8 @@
 	<p class="about-text"><?php printf( esc_html__( 'Thanks for using our product! We recommend these extensions that will add new features to stand out your business and improve your sales.', 'woocommerce-direct-checkout' ), esc_html( QLWCDC_PLUGIN_NAME ) ); ?></p>
 
 	<p class="about-text">
-	<?php printf( '<a href="%s" target="_blank">%s</a>', esc_html( QLWCDC_PREMIUM_SELL_URL ), esc_html__( 'Purchase', 'woocommerce-direct-checkout' ) ); ?></a> |
-	<?php printf( '<a href="%s" target="_blank">%s</a>', esc_html( QLWCDC_DOCUMENTATION_URL ), esc_html__( 'Documentation', 'woocommerce-direct-checkout' ) ); ?></a>
+	<?php printf( '<a href="%s" target="_blank">%s</a>', 'https://quadlayers.com/products/woocommerce-direct-checkout/?utm_source=qlwcdc_plugin&utm_medium=admin_header&utm_campaign=premium_upgrade&utm_content=premium_link', esc_html__( 'Purchase', 'woocommerce-direct-checkout' ) ); ?></a> |
+	<?php printf( '<a href="%s" target="_blank">%s</a>', 'https://quadlayers.com/documentation/woocommerce-direct-checkout/?utm_source=qlwcdc_plugin&utm_medium=admin_header&utm_campaign=documentation&utm_content=documentation_link', esc_html__( 'Documentation', 'woocommerce-direct-checkout' ) ); ?></a>
 	</p>
 	<?php
 	printf(
@@ -32,7 +32,7 @@
                display: inline-block;
                width: 140px;
                " class="wp-badge">%s</div></a>',
-		'https://quadlayers.com/?utm_source=qlwcdc_admin',
+		'https://quadlayers.com/?utm_source=qlwcdc_plugin&utm_medium=admin_header&utm_campaign=branding&utm_content=header_logo',
 		esc_url( plugins_url( '/assets/backend/img/quadlayers.jpg', QLWCDC_PLUGIN_FILE ) ),
 		esc_html__( 'QuadLayers', 'woocommerce-direct-checkout' )
 	);

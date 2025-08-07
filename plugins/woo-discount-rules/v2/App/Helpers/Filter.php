@@ -386,10 +386,12 @@ class Filter
     function checkInList($product_id, $operation_method, $operation_values)
     {
         $result = false;
+        $operation_values = array_map('strval', $operation_values);
+        $product_id = (string)($product_id);
         if ('in_list' === $operation_method) {
-            $result = (in_array($product_id, $operation_values));
+            $result = (in_array($product_id, $operation_values, true));
         } elseif ('not_in_list' === $operation_method) {
-            $result = !(in_array($product_id, $operation_values));
+            $result = !(in_array($product_id, $operation_values,true));
         } elseif ('any' === $operation_method) {
             $result = true;
         }

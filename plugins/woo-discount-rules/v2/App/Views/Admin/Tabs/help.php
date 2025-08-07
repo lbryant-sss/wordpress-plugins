@@ -152,10 +152,8 @@ if (!defined('ABSPATH')) {
 
             </div>
         </div>
-        <?php
-        if(!$is_pro){ ?>
             <div class="awdr-pro-content-card-list">
-                <div class="awdr-pro-content-card card" style="float: right;">
+                <div class="awdr-pro-content-card card" style="float: right; <?php echo $is_pro ? 'display: none;' : '' ?>">
                     <div class="card-body text-right">
                         <img class="banner" style="    width: 100%;height: 160px;object-fit: cover;"  src="https://static.flycart.net/recommendation/image/discount-rule.png" <?php //phpcs:ignore PluginCheck.CodeAnalysis.Offloading.OffloadedContent,PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage  ?>
                              alt="discount-rule-banner-image">
@@ -217,8 +215,6 @@ if (!defined('ABSPATH')) {
                     </div>
 		        <?php endforeach; ?>
             </div>
-        <?php } ?>
-
     </div>
 
 </div>
