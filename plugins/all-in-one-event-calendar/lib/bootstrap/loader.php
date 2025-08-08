@@ -263,7 +263,7 @@ class Ai1ec_Loader {
         while ( false !== ( $entry = readdir( $directory ) ) ) {
             if ( is_null( $entry ) || '.' === $entry[0] || 'tests' === $entry
 				|| strpos( strtolower( $entry ), 'icalcreator' ) !== false
-				|| strpos( strtolower( $entry ), 'apiki' ) !== false) {
+				) {
                 continue;
             }
             $local_path = $path . DIRECTORY_SEPARATOR . $entry;

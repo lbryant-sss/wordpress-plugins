@@ -153,6 +153,12 @@ class ExactMetrics_Admin_Assets {
 		$version_path = exactmetrics_is_pro_version() ? 'pro' : 'lite';
 		$text_domain  = exactmetrics_is_pro_version() ? 'exactmetrics-premium' : 'google-analytics-dashboard-for-wp';
 
+		$license      = ExactMetrics()->license;
+		$license_info = array(
+			'type'      => $license->get_license_type(),
+			'is_agency' => $license->is_agency(),
+		);
+
 		// For the settings page, load the Vue app.
 		if ( exactmetrics_is_settings_page() ) {
 			$app_js_url = self::get_js_url( 'src/modules/settings/settings.js' );
@@ -192,12 +198,6 @@ class ExactMetrics_Admin_Assets {
 			}
 
 			$is_authed = ( ExactMetrics()->auth->is_authed() || ExactMetrics()->auth->is_network_authed() );
-			$license   = ExactMetrics()->license;
-
-			$license_info = array(
-				'type'      => $license->get_license_type(),
-				'is_agency' => $license->is_agency(),
-			);
 
 			wp_localize_script(
 				'exactmetrics-vue-script',
@@ -306,6 +306,7 @@ class ExactMetrics_Admin_Assets {
 					'addons_pre_check'    => array(
 						'ai_insights' => is_plugin_active( 'exactmetrics-ai-insights/exactmetrics-ai-insights.php' ),
 					),
+					'license'             => $license_info,
 				)
 			);
 

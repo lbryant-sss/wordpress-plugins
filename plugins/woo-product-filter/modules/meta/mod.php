@@ -1,10 +1,26 @@
 <?php
+/**
+ * Product Filter by WBW - MetaWpf Class
+ *
+ * @version 2.9.3
+ *
+ * @author  woobewoo
+ */
+
+defined( 'ABSPATH' ) || exit;
 
 class MetaWpf extends ModuleWpf {
-	private $calculated = false;
-	public static $wpfPreviousProductId = -1;
+
+	/**
+	 * Properties.
+	 */
+	private $calculated                    = false;
+	public static $wpfPreviousProductId    = -1;
 	public static $wpfPreviousProductIdAcf = -1;
 
+	/**
+	 * init.
+	 */
 	public function init() {
 		parent::init();
 		DispatcherWpf::addFilter( 'optionsDefine', array( $this, 'addOptions' ) );
@@ -18,18 +34,33 @@ class MetaWpf extends ModuleWpf {
 
 		add_filter('woocommerce_product_csv_importer_steps', array($this, 'recalcAfterImporting'));
 	}
+
+	/**
+	 * isGlobalCalcRunning.
+	 */
 	public function isGlobalCalcRunning() {
 		return FrameWpf::_()->getModule('options')->getModel()->get('start_indexing') == 2;
 	}
+
+	/**
+	 * isDisabledAutoindexing.
+	 */
 	public function isDisabledAutoindexing() {
 		$param = FrameWpf::_()->getModule('options')->getModel()->get('disable_autoindexing');
 		return false === $param ? 0 : ( (int) $param );
 	}
+
+	/**
+	 * isDisabledAutoindexingBySS.
+	 */
 	public function isDisabledAutoindexingBySS() {
 		$param = FrameWpf::_()->getModule('options')->getModel()->get('disable_autoindexing_by_ss');
 		return false === $param ? 0 : ( (int) $param );
 	}
 
+	/**
+	 * recalcAfterImporting.
+	 */
 	public function recalcAfterImporting( $steps ) {
 		$step = ReqWpf::getVar('step');
 		if (!is_null($step) && 'done' == $step && !$this->isDisabledAutoindexing()) {
@@ -38,15 +69,20 @@ class MetaWpf extends ModuleWpf {
 		return $steps;
 	}
 
+	/**
+	 * addOptions.
+	 *
+	 * @version 2.9.3
+	 */
 	public function addOptions( $options ) {
 		$opts = array_merge(array(
 			'start_indexing' => array(
-				'label' => esc_html__('Start indexing product parameters', 'woo-product-filter'),
-				'desc' => esc_html__('For correct and fast operation of filters, the plugin creates index tables for product parameters. This tables are automatically rebuilt by editing / creating products. But if you edited products with third-party plugins or methods, and/or noticed that the filter does not work correctly, then click this button to forcefully rebuild the index tables. If you have a lot of products, the process may take a while.', 'woo-product-filter') .
+				'label'        => esc_html__('Start indexing product parameters', 'woo-product-filter'),
+				'desc'         => esc_html__('For correct and fast operation of filters, the plugin creates index tables for product parameters. This tables are automatically rebuilt by editing / creating products. But if you edited products with third-party plugins or methods, and/or noticed that the filter does not work correctly, then click this button to forcefully rebuild the index tables. If you have a lot of products, the process may take a while.', 'woo-product-filter') .
 					'<br><br>' . esc_html__('There is a way to start indexing with a URL: ', 'woo-product-filter') . '<br><b>/wp-admin/admin-ajax.php?mod=meta&action=doMetaIndexingFree&pl=wpf&reqType=ajax</b><br>' .
 					esc_html__('Add a parameter &inCron=1 if you need to run in the background (via cron).', 'woo-product-filter'),
-				'html' => 'startMetaButton',
-				'def' => '',
+				'html'         => 'startMetaButton',
+				'def'          => '',
 				'add_sub_opts' => '<div class="woobewoo-check-group"><input type="checkbox" id="wpfStartIndexingCron"><label class="woobewoo-group-label">' . esc_html__( 'run in background ', 'woo-product-filter' ) . '</label></div>',
 			),
 			'disable_autoindexing' => array(
@@ -61,7 +97,7 @@ class MetaWpf extends ModuleWpf {
 				'html'  => 'checkboxHiddenVal',
 				'def'   => '0',
 			),
-			'indexing_schedule'    => array(
+			'indexing_schedule' => array(
 				'label'        => esc_html__( 'Start indexing on a schedule', 'woo-product-filter' ),
 				'desc'         => esc_html__( 'Indexing will start at the selected time according to the schedule', 'woo-product-filter' ),
 				'html'         => 'checkboxHiddenVal',
@@ -70,32 +106,45 @@ class MetaWpf extends ModuleWpf {
 			),
 			'logging' => array(
 				'label' => esc_html__('Logging', 'woo-product-filter'),
-				'desc' => esc_html__('Save debug messages to the WooCommerce SystemStatus Log', 'woo-product-filter'),
-				'html' => 'checkboxHiddenVal',
-				'def' => '0',
+				'desc'  => esc_html__('Save debug messages to the WooCommerce SystemStatus Log', 'woo-product-filter'),
+				'html'  => 'checkboxHiddenVal',
+				'def'   => '0',
 			),
 			'start_optimization' => array(
 				'label' => esc_html__('Start index tables optimization', 'woo-product-filter'),
-				'desc' => esc_html__('Sometimes index tables take up more space than they should, and product filtering takes longer than they should. Start optimizing your index tables to defragment them and rebuild your data in the most efficient way.', 'woo-product-filter'),
-				'html' => 'startOptimizingButton',
-				'def' => '',
+				'desc'  => esc_html__('Sometimes index tables take up more space than they should, and product filtering takes longer than they should. Start optimizing your index tables to defragment them and rebuild your data in the most efficient way.', 'woo-product-filter'),
+				'html'  => 'startOptimizingButton',
+				'def'   => '',
 			),
-			'optimizing_schedule'    => array(
+			'optimizing_schedule' => array(
 				'label'        => esc_html__( 'Start optimization on a schedule', 'woo-product-filter' ),
 				'desc'         => esc_html__( 'Index tables optimization will start at the selected time according to the schedule', 'woo-product-filter' ),
 				'html'         => 'checkboxHiddenVal',
 				'def'          => '0',
 				'add_sub_opts' => array( $this, 'getSettingsOptimizingSchedule' ),
 			),
+			'price_thousands_sep' => array(
+				'label'        => esc_html__( 'Price thousands separator', 'woo-product-filter' ),
+				'desc'         => esc_html__( 'Add thousands separator to the min/max prices in the Price filter', 'woo-product-filter' ),
+				'html'         => 'checkboxHiddenVal',
+				'def'          => '0',
+			),
 		), $options['general']['opts']);
 
 		$options['general']['opts'] = $opts;
 		return $options;
 	}
+
+	/**
+	 * getSettingsOptimizingSchedule.
+	 */
 	public function getSettingsOptimizingSchedule( $options ) {
 		return $this->getSettingsIndexingSchedule( $options, '_optimizing' );
 	}
 
+	/**
+	 * getSettingsIndexingSchedule.
+	 */
 	public function getSettingsIndexingSchedule( $options, $addName = '' ) {
 		$hourSelect = FrameWpf::_()->getModule( 'options' )->getModel()->get( 'shedule_hour' . $addName );
 		$hours      = array(
@@ -150,6 +199,9 @@ class MetaWpf extends ModuleWpf {
 		return "<div><select name=\"opt_values[shedule_hour{$addName}]\">{$hoursHtml}</select> <select name=\"opt_values[shedule_day{$addName}]\">{$daysHtml}</select></div>";
 	}
 
+	/**
+	 * recalcProductMetaValues.
+	 */
 	public function recalcProductMetaValues( $productId ) {
 		if ( ! $this->isDisabledAutoindexing() ) {
 			if (self::$wpfPreviousProductId !== $productId) {
@@ -158,6 +210,10 @@ class MetaWpf extends ModuleWpf {
 			}
 		}
 	}
+
+	/**
+	 * recalcProductMetaValuesAcf.
+	 */
 	public function recalcProductMetaValuesAcf( $productId ) {
 		if ( ! $this->isDisabledAutoindexing() ) {
 			if (self::$wpfPreviousProductIdAcf !== $productId) {
@@ -167,12 +223,18 @@ class MetaWpf extends ModuleWpf {
 		}
 	}
 
+	/**
+	 * recalcProductStockStatus.
+	 */
 	public function recalcProductStockStatus( $productId ) {
 		if ( ! $this->isDisabledAutoindexingBySS() ) {
 			$this->getModel()->recalcMetaValues( $productId, array( 'meta_key' => '_stock_status' ) );
 		}
 	}
 
+	/**
+	 * calcNeededMetaValues.
+	 */
 	public function calcNeededMetaValues( $one = false ) {
 		if ( ! $this->isGlobalCalcRunning() ) {
 			if ($one && $this->isDisabledAutoindexingBySS() && $this->isDisabledAutoindexing()) {
@@ -185,7 +247,9 @@ class MetaWpf extends ModuleWpf {
 		}
 	}
 
-
+	/**
+	 * recalcMetaIndexingShedule.
+	 */
 	public function recalcMetaIndexingShedule() {
 		$daySelect = FrameWpf::_()->getModule( 'options' )->getModel()->get( 'shedule_day' );
 
@@ -207,6 +271,10 @@ class MetaWpf extends ModuleWpf {
 		$this->getModel()->recalcMetaValues();
 
 	}
+
+	/**
+	 * recalcMetaOptimizingShedule.
+	 */
 	public function recalcMetaOptimizingShedule() {
 		$daySelect = FrameWpf::_()->getModule( 'options' )->getModel()->get( 'shedule_day_optimizing' );
 		if ( '0' !== $daySelect && gmdate( 'N' ) !== $daySelect ) {
@@ -219,6 +287,5 @@ class MetaWpf extends ModuleWpf {
 		}
 		$this->getModel()->optimizeMetaTables();
 	}
-
 
 }

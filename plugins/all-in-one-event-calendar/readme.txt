@@ -3,7 +3,7 @@ Contributors: timelynetwork
 Tags: calendar, event, events, event manager, event management
 Requires at least: 5.0
 Tested up to: 6.7.1
-Stable tag: 3.0.1
+Stable tag: 3.0.2
 Requires PHP: 7.2
 License: GNU General Public License, version 3 (GPL-3.0)
 
@@ -149,11 +149,10 @@ For small, medium and larger organizations that need more advanced tools, Timely
 = How do I get more advanced event management features for my Timely Events Calendar? =
 Timely offers the most comprehensive and flexible event management platform available in the market. Check out all our [amazing features](https://time.ly/event-management-software-features/), and [contact us](https://time.ly/contact/) to add them to your Timely event calendar.
 
-= Shortcode version 3.0.1 (new platform) =
-
-* [timely-calendar]
-
 == Changelog ==
+
+= Version 3.0.2 =
+* Reviewed WordPress policies.
 
 = Version 3.0.1 =
 * Improve performance by avoiding the complete application reload.

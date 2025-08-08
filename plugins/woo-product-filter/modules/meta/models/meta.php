@@ -1,5 +1,14 @@
 <?php
+/**
+ * Product Filter by WBW - MetaModelWpf Class
+ *
+ * @author  woobewoo
+ */
+
+defined( 'ABSPATH' ) || exit;
+
 class MetaModelWpf extends ModelWpf {
+
 	private $maxTextLength = 150;
 	private $maxKeyLength  = 32;
 	public $maxKeySize     = 4;
@@ -14,10 +23,10 @@ class MetaModelWpf extends ModelWpf {
 		$this->_setTbl('meta_data');
 		$this->setIndexes(array(
 			'product_key' => 'INDEX `product_key` (`product_id`, `key_id`)',
-			'key_id' => 'INDEX `key_id` (`key_id`)',
-			'key_dec' => 'INDEX `key_dec` (`val_dec`, `key_id`)',
-			'key_int' => 'INDEX `key_int` (`val_int`, `key_id`)',
-			'val_id' => 'INDEX `val_id` (`val_id`)'
+			'key_id'      => 'INDEX `key_id` (`key_id`)',
+			'key_dec'     => 'INDEX `key_dec` (`val_dec`, `key_id`)',
+			'key_int'     => 'INDEX `key_int` (`val_int`, `key_id`)',
+			'val_id'      => 'INDEX `val_id` (`val_id`)'
 		));
 	}
 
@@ -35,11 +44,11 @@ class MetaModelWpf extends ModelWpf {
 			$logger = wc_get_logger();
 			if ($logger) {
 				$logger->warning(UtilsWpf::jsonEncode($this->getErrors()), array('source' => 'wpf-meta-indexing'));
-			} 
+			}
 		}
 		return $result;
 	}
-	
+
 	public function doRecalcMetaValues( $productId, $params ) {
 		if (!empty($productId) && !is_numeric($productId)) {
 			return false;
@@ -63,26 +72,21 @@ class MetaModelWpf extends ModelWpf {
 				$this->pushError($keysModel->getErrors());
 				return false;
 			}
-			//$optModel->save('start_indexing', 1);
-			/*if (!$keysModel->resetLockedKeys()) {
-				$this->pushError($keysModel->getErrors());
-				return false;
-			}*/
 		}
 		if ($fullRecalc) {
 			$optModel->save('start_indexing', 2);
 		}
 
 		if ($isAllKeys) {
-			$params['parent'] = 0; 
-		} 
-		
+			$params['parent'] = 0;
+		}
+
 		$keys = $keysModel->getKeysForRecalc($params);
 		if (count($keys) == 0) {
 			return true;
 		}
 		$this->addIndexes();
-				
+
 		$whereProduct = '';
 
 		if (!$isAllProducts) {
@@ -110,7 +114,7 @@ class MetaModelWpf extends ModelWpf {
 				$whereKeys .= ( $isAllProducts ? '' : ' AND ' ) . ' key_id IN (' . substr($list, 0, -1) . ')';
 			}
 		}
-		
+
 
 		if ($isKnownKeyList) {
 			if ($isAllProducts) {
@@ -134,20 +138,20 @@ class MetaModelWpf extends ModelWpf {
 			$where      = ' WHERE 1=1';
 			$maxCntTemp = DbWpf::get( 'SELECT count(*) FROM ' . $tempTable, 'one');
 		}
-		
+
 		$insert        = 'INSERT INTO `@__meta_data` (product_id, is_var, key_id, ';
 		$maxKeySize    = $this->maxKeySize;
 		$maxTextLength = $this->maxTextLength;
 		$this->setKeys();
 		$keyRecalc = array();
-		
+
 		$limit            = 1000;
 		$maxCountProducts = DbWpf::get('SELECT count(*) FROM `#__posts` as p ' . $where, 'one');
-		if (false === $maxCountProducts) { 
+		if (false === $maxCountProducts) {
 			$this->pushError(DbWpf::getError());
 			return false;
 		}
-		
+
 		$maxCountProducts += 100;
 		DbWpf::query('SET session wait_timeout=600');
 		global $wpfMetaSeparator;
@@ -157,10 +161,10 @@ class MetaModelWpf extends ModelWpf {
 			$keyName = $key['meta_key'];
 			$isLike  = !empty($key['meta_like']);
 			$parent  = $key['id'];
-			
+
 			if ($isLike) {
 				$keysData = DbWpf::get('SELECT DISTINCT meta_key' . ( $isAllProducts ? ' FROM `#__postmeta` as m FORCE INDEX (meta_key) WHERE ' : $from . $where . ' AND ' ) . " m.meta_key LIKE '" . $keyName . "'", 'col');
-				if (false === $keysData) { 
+				if (false === $keysData) {
 					$this->pushError(DbWpf::getError());
 					return false;
 				}
@@ -208,7 +212,6 @@ class MetaModelWpf extends ModelWpf {
 						continue;
 					}
 				}
-				//$keyMode = $key['meta_mode'];
 				$keyType = $this->controlMetaFieldType($key['meta_type'], $keyName);
 				if (false === $keyType) {
 					continue;
@@ -247,12 +250,12 @@ class MetaModelWpf extends ModelWpf {
 				}
 
 				if (!$calculated) {
-					
+
 					$query     = '';
 					$whereMeta = $where . " AND m.meta_key='" . $keyName . "'";
 					if ($isMetaVar) {
-						$keyDataVar = $keysModel->getKeyData($keyNameVar, true);					
-						if (empty($keyDataVar)) { 
+						$keyDataVar = $keysModel->getKeyData($keyNameVar, true);
+						if (empty($keyDataVar)) {
 							continue;
 						}
 					} else {
@@ -261,7 +264,7 @@ class MetaModelWpf extends ModelWpf {
 					$selectType = ( $tempTable ? 'p.is_var,' : "IF(p.post_type='product_variation',1,0) as is_var," );
 
 					switch ($keyType) {
-						case 0:							
+						case 0:
 							$join = ' JOIN @__meta_values as v ON (v.key_id=' . ( $isMetaVar ? $keyDataVar['id'] : $keyId ) . ' AND v.value=' . ( $isMetaVar || !$isAllProducts ? 'CAST(meta_value AS CHAR(' . $maxTextLength . '))' : 'm.meta_value' );
 							for ($k = 2; $k <= $maxKeySize; $k++) {
 								$join .= ' AND v.key' . $k . "=''";
@@ -273,11 +276,11 @@ class MetaModelWpf extends ModelWpf {
 							} else {
 								set_time_limit(300);
 								DbWpf::query('SET session wait_timeout=600');
-								
+
 								if ($isAllProducts) {
 									$query = 'SELECT m.meta_id as id, m.post_id, ' . $selectType . ' CAST(meta_value AS CHAR(' . $maxTextLength . ')) as meta_value' .
 										$from . $whereMeta . ( strpos($keyName, 'attribute_') === 0 ? '' : " AND m.meta_value!=''" );
-									
+
 									$tempTableAttr  = FrameWpf::_()->getModule('woofilters')->createTemporaryTable('wpf_meta_calc_attr', $query);
 									$query = 'INSERT IGNORE INTO @__meta_values (key_id, value)' .
 										' SELECT DISTINCT ' . $keyId . ',m.meta_value' .
@@ -295,43 +298,6 @@ class MetaModelWpf extends ModelWpf {
 									} else {
 										$query = $insert . 'val_id) SELECT post_id,' . $selectType . $keyId . ',v.id' . $from . ' INNER ' . $join . $whereMeta;
 									}
-									/*if ($isAllProducts && $maxCntTemp > 8000) {
-										$cntValues = DbWpf::get( 'SELECT count(*) FROM `@__meta_values` WHERE key_id=' . $keyId, 'one');
-										if ($cntValues > 50) {
-											if ($cntValues < 5000 || $maxCntTemp < 25000) {											
-												$q = 'UPDATE ' . $tempTable . ' SET for_ins=0';
-												if (!DbWpf::query($q)) {
-													$this->pushError(DbWpf::getError());
-													$this->pushError($q);
-													return false;
-												}
-												$bulkLimit = 5000;
-												$ins       = 0;
-												do {
-													set_time_limit(300);
-													$cnt = DbWpf::query('UPDATE ' . $tempTable . ' SET for_ins=1 WHERE for_ins=0 LIMIT ' . $bulkLimit, true);
-													if (0 == $cnt) {
-														break;
-													}
-													$ins += $cnt;
-													DbWpf::query('SET session wait_timeout=600');
-													$q = $query . ' AND p.for_ins=1';
-													if (!DbWpf::query($q)) {
-														$this->pushError(DbWpf::getError());
-														$this->pushError($q);
-														return false;
-													}
-													if (!DbWpf::query('UPDATE ' . $tempTable . ' SET for_ins=2 WHERE for_ins=1')) {
-														$this->pushError(DbWpf::getError());
-														$this->pushError($q);
-														return false;
-													}
-												} while ( $maxCntTemp >= $ins );
-											}
-											$status = 1;
-											$query  = '';
-										}
-									}*/
 								} else {
 									$this->pushError(DbWpf::getError());
 									return false;
@@ -353,7 +319,6 @@ class MetaModelWpf extends ModelWpf {
 						case 7:
 						case 8:
 						case 9:
-							//$query = $insert . 'meta_dec) SELECT post_id,' . $keyId . ',CAST(meta_value AS DECIMAL(19,4)) ' . $from . $whereMeta;
 							$valsModel->selectMetaValues($keyId);
 							$offset = 0;
 							if (!$isKnownKeyList) {
@@ -364,7 +329,7 @@ class MetaModelWpf extends ModelWpf {
 							$limitQuery = 'SELECT post_id, ' . $selectType . ' meta_value' . $from . $whereMeta . ' ORDER BY meta_id LIMIT ';
 							do {
 								$data = DbWpf::get($limitQuery . $offset . ',' . $limit);
-								if (false === $data) { 
+								if (false === $data) {
 									$this->pushError(DbWpf::getError());
 									return false;
 								}
@@ -379,7 +344,7 @@ class MetaModelWpf extends ModelWpf {
 									}
 									if (is_array($valuesArr)) {
 										$j++;
-										
+
 										if (9 == $keyType || 5 == $keyType) {
 											$insValues = $this->saveMetaList($keyId, $values['post_id'], $values['is_var'] , $valuesArr);
 										} else {
@@ -412,7 +377,7 @@ class MetaModelWpf extends ModelWpf {
 							}
 							$valsModel->addIndexes();
 							break;
-						
+
 						default:
 							$status = 10;
 							break;
@@ -505,7 +470,7 @@ class MetaModelWpf extends ModelWpf {
 						return false;
 					}
 
-					$query = $insert . 'val_id) SELECT p.id,1,' . $keyId . ',' . $valId . 
+					$query = $insert . 'val_id) SELECT p.id,1,' . $keyId . ',' . $valId .
 						' FROM ' . ( $tempTable ? $tempTable : ' `#__posts` ' ) . ' as p' .
 						' INNER JOIN `#__posts` as pp ON (pp.id=p.post_parent)' .
 						' INNER JOIN @__meta_data as mp ON (mp.product_id=pp.id AND mp.key_id=' . $attrKeyId . ' AND mp.val_id IN (' . implode(',', $ids) . '))' .
@@ -521,7 +486,7 @@ class MetaModelWpf extends ModelWpf {
 						return false;
 					}
 				}
-			
+
 			}
 			set_time_limit(300);
 
@@ -537,7 +502,7 @@ class MetaModelWpf extends ModelWpf {
 			}
 			$optModel->save('start_indexing', 1);
 		}
-		
+
 		return true;
 	}
 
@@ -552,7 +517,7 @@ class MetaModelWpf extends ModelWpf {
 		$valsModel  = $this->valsModel;
 		foreach ($data as $k2 => $v2) {
 			$keys['key2'] = $this->getCutKeyValue($k2);
-			if (is_array($v2)) {	
+			if (is_array($v2)) {
 				foreach ($v2 as $k3 => $v3) {
 					$keys['key3'] = $this->getCutKeyValue($k3);
 					if (is_array($v3)) {
@@ -595,7 +560,7 @@ class MetaModelWpf extends ModelWpf {
 		}
 		return $insert;
 	}
-	
+
 	public function saveMetaArray_product_attributes( $keyId, $productId, $isVar, $data ) {
 		$insert     = '';
 		$queryValue = '(' . $productId . ',' . $isVar . ',' . $keyId . ',';
@@ -613,7 +578,6 @@ class MetaModelWpf extends ModelWpf {
 			}
 
 			if (is_array($v2) && isset($v2['is_taxonomy']) && ( '1' != $v2['is_taxonomy'] ) && !empty($v2['value'])) {
-				//$keys['key2'] = $this->getCutKeyValue($k2);
 				$values       = explode('|', $v2['value']);
 				$keys['key2'] = 'local';
 				foreach ($values as $value) {
@@ -646,6 +610,7 @@ class MetaModelWpf extends ModelWpf {
 		}
 		return $str;
 	}
+
 	public function getCutKeyValue( $str, $cut = true ) {
 		if ($this->existMB) {
 			if (mb_strlen($str) > $this->maxKeyLength) {
@@ -669,7 +634,7 @@ class MetaModelWpf extends ModelWpf {
 		$values = array_flip($this->valsModel->getKeyValueIds($keyId, $keys, true));
 
 		$avariable = array('variable', 'single', 'variation');
-		foreach ($avariable as $value) {	
+		foreach ($avariable as $value) {
 			if (!isset($values[$value])) {
 				$keys['key_id'] = $keyId;
 				$keys['value']  = $value;
@@ -681,7 +646,7 @@ class MetaModelWpf extends ModelWpf {
 		}
 
 		$query = 'INSERT INTO @__meta_data (product_id, is_var, key_id, val_id)' .
-			' SELECT DISTINCT p.id, ' . ( $tempTable ? 'p.is_var,' : "IF(p.post_type='product_variation',1,0) as is_var," ) . $keyId . ',' . 
+			' SELECT DISTINCT p.id, ' . ( $tempTable ? 'p.is_var,' : "IF(p.post_type='product_variation',1,0) as is_var," ) . $keyId . ',' .
 			' CASE WHEN p.post_parent>0 THEN ' . $values['variation'] .
 			" WHEN EXISTS(SELECT 1 FROM `#__posts` as pa WHERE pa.post_parent=p.ID AND pa.post_type='product_variation' LIMIT 1) THEN " . $values['variable'] . ' ELSE ' . $values['single'] . ' END' .
 			' FROM ' . ( $tempTable ? $tempTable : ' `#__posts` ' ) . ' as p' .
@@ -693,7 +658,7 @@ class MetaModelWpf extends ModelWpf {
 		}
 		return true;
 	}
-	
+
 	public function afterCalcMeta_stock_status( $productId, $keyData, $tempTable ) {
 		$groupedTerm = get_term_by('name', 'grouped', 'product_type', ARRAY_A);
 		if ($groupedTerm && !empty( $groupedTerm['term_id'])) {
@@ -701,22 +666,22 @@ class MetaModelWpf extends ModelWpf {
 			$keyId = $keyData['id'];
 			$instockId = $this->valsModel->getMetaValueId($keyId, 'instock');
 			$outofstockId = $this->valsModel->getMetaValueId($keyId, 'outofstock');
-			$query = 'SELECT 1 FROM @__meta_data WHERE key_id=' . $keyId . ' AND val_id!=' . $outofstockId . ' AND product_id IN '; 
+			$query = 'SELECT 1 FROM @__meta_data WHERE key_id=' . $keyId . ' AND val_id!=' . $outofstockId . ' AND product_id IN ';
 			$updateO = 'UPDATE @__meta_data SET val_id=' . $outofstockId . ' WHERE key_id=' . $keyId . ' AND val_id!=' . $outofstockId . ' AND product_id IN ';
 			$updateI = 'UPDATE @__meta_data SET val_id=' . $instockId . ' WHERE key_id=' . $keyId . ' AND val_id!=' . $instockId . ' AND product_id IN ';
 			$controlBundle = FrameWpf::_()->getModule('options')->getModel()->get('index_group_bundle') == 1;
-			
+
 			$limit = 500;
 			$offset = 0;
-			$limitQuery = ' SELECT p.id, m.meta_id, m.meta_value' . 
+			$limitQuery = ' SELECT p.id, m.meta_id, m.meta_value' .
 				' FROM ' . ( $tempTable ? $tempTable : ' `#__posts` ' ) . ' as p' .
-				' INNER JOIN `#__term_relationships` AS tr ON (tr.`object_id`=p.ID AND tr.`term_taxonomy_id`=' . $grId . ') '. 
+				' INNER JOIN `#__term_relationships` AS tr ON (tr.`object_id`=p.ID AND tr.`term_taxonomy_id`=' . $grId . ') '.
 				" INNER JOIN `#__postmeta` as m ON (m.post_id=p.ID AND m.meta_key='_children' AND m.meta_value!='')" .
 				' ORDER BY meta_id LIMIT ';
 			do {
 				$q = $limitQuery . $offset . ',' . $limit;
 				$data = DbWpf::get($q,0);
-				if (false === $data) { 
+				if (false === $data) {
 					$this->pushError(DbWpf::getError());
 					$this->pushError($q);
 					return false;
@@ -743,12 +708,12 @@ class MetaModelWpf extends ModelWpf {
 
 						$q = $query . '(' . implode(',', UtilsWpf::controlNumericValues($vars, 'id')) . ') LIMIT 1';
 						$exist = DbWpf::get($q, 'one');
-						if (false === $exist) { 
+						if (false === $exist) {
 							$this->pushError(DbWpf::getError());
 							$this->pushError($q);
 							return false;
 						}
-						if (is_null($exist)) { 
+						if (is_null($exist)) {
 							$listIdsO .= $values['id'] . ',';
 						} else {
 							$listIdsI .= $values['id'] . ',';
@@ -785,9 +750,10 @@ class MetaModelWpf extends ModelWpf {
 				return false;
 			}
 		}
-		
+
 		return true;
 	}
+
 	public function addCompatibilities( $productId, $tempTable ) {
 		if (class_exists( 'WC_Measurement_Price_Calculator' )) {
 			$keysModel = FrameWpf::_()->getModule('meta')->getModel('meta_keys');
@@ -829,7 +795,7 @@ class MetaModelWpf extends ModelWpf {
 				$price = '';
 				$salePrice = '';
 				$settings = new \WC_Price_Calculator_Settings( $product );
-	
+
 				// user-defined calculator with pricing rules enabled (nothing needs to be changed for user-defined calculators with no pricing rules)
 				if ( $settings->pricing_rules_enabled() ) {
 					$price         = $settings->get_pricing_rules_maximum_price();
@@ -886,18 +852,21 @@ class MetaModelWpf extends ModelWpf {
 		}
 		return true;
 	}
+
 	public function hasEmojis( $string ) {
 		$emojis_regex = '/[\x{1F600}-\x{1F64F}\x{2700}-\x{27BF}\x{1F680}-\x{1F6FF}\x{24C2}-\x{1F251}\x{1F30D}-\x{1F567}\x{1F900}-\x{1F9FF}\x{1F300}-\x{1F5FF}\x{1FA70}-\x{1FAF6}]/u';
 		preg_match($emojis_regex, $string, $matches);
 		return ( empty($matches) ? false : true );
 	}
+
 	public function controlMetaFieldType( $metaType, $keyName ) {
 		if ( 'wcb2b_product_group_prices' == $keyName ) {
 			$metaType = 8;
 		}
-		
+
 		return DispatcherWpf::applyFilters('getMetaFieldType', $metaType, $keyName);
 	}
+
 	public function saveMetaArraywcb2b_product_group_prices( $keyId, $productId, $isVar, $data ) {
 		$insert     = '';
 		$queryValue = '(' . $productId . ',' . $isVar . ',' . $keyId . ',';
@@ -915,4 +884,5 @@ class MetaModelWpf extends ModelWpf {
 		}
 		return $insert;
 	}
+
 }

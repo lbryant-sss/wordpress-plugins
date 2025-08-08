@@ -68,8 +68,15 @@ class Ai1ec_Front_Controller {
         add_action( 'plugins_loaded', array( $this, 'register_extensions' ), 1 );
         add_action( 'after_setup_theme', array( $this, 'register_themes' ), 1 );
         add_action( 'init', array( $lessphp, 'invalidate_css_cache_if_requested' ) );
+        add_shortcode( 'timely-calendar', array( $this, 'embed_calendar' ) );
     }
 
+    public function embed_calendar() {
+		return is_string( get_option( 'timely_embed_calendar_script' ) ) ?
+			get_option( 'timely_embed_calendar_script' ) :
+			'';
+	}
+    
     /**
      * Let other objects access default theme
      *
@@ -273,7 +280,6 @@ class Ai1ec_Front_Controller {
     protected function _init( $ai1ec_loader ) {
         $exception = null;
         // Load the textdomain
-        add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
         try {
             // Initialize the registry object
             $this->_initialize_registry( $ai1ec_loader );

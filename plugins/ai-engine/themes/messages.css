@@ -229,6 +229,27 @@
   overflow: auto;
   max-height: var(--mwai-maxHeight);
   padding: var(--mwai-spacing) var(--mwai-spacing) 0;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.05);
+}
+.mwai-messages-theme .mwai-conversation::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+.mwai-messages-theme .mwai-conversation::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+.mwai-messages-theme .mwai-conversation::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+.mwai-messages-theme .mwai-conversation::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+.mwai-messages-theme .mwai-conversation::-webkit-scrollbar-thumb:active {
+  background: rgba(0, 0, 0, 0.3);
 }
 .mwai-messages-theme .mwai-conversation .mwai-reply {
   margin-bottom: var(--mwai-spacing);
@@ -783,7 +804,7 @@
 .mwai-messages-theme.mwai-window .mwai-header .mwai-buttons .mwai-resize-button {
   justify-content: center;
   height: 32px;
-  width: 22px;
+  width: 32px;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -805,9 +826,10 @@
 .mwai-messages-theme.mwai-window .mwai-header .mwai-buttons .mwai-close-button {
   justify-content: center;
   height: 32px;
-  width: 33px;
+  width: 32px;
   cursor: pointer;
   border-radius: var(--mwai-borderRadius);
+  margin-left: -10px;
 }
 .mwai-messages-theme.mwai-window .mwai-header .mwai-buttons .mwai-close-button:before {
   transition: all 0.2s ease-out;
@@ -868,6 +890,19 @@
   bottom: inherit;
   right: inherit;
   left: 0;
+}
+.mwai-messages-theme.mwai-window.mwai-center-open.mwai-open {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  right: inherit;
+  bottom: inherit;
+}
+@media (max-width: 760px) {
+  .mwai-messages-theme.mwai-window.mwai-center-open.mwai-open {
+    width: calc(100% - 40px);
+    max-width: var(--mwai-width);
+  }
 }
 .mwai-messages-theme.mwai-window.mwai-top-left .mwai-trigger, .mwai-messages-theme.mwai-window.mwai-bottom-left .mwai-trigger {
   align-items: flex-start;
@@ -1025,6 +1060,15 @@
   .mwai-messages-theme.mwai-window.mwai-open .mwai-body .mwai-conversation {
     flex: auto;
     max-height: none;
+  }
+  .mwai-messages-theme.mwai-window.mwai-open.mwai-center-open {
+    top: 0 !important;
+    left: 0 !important;
+    transform: none !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
   .mwai-messages-theme.mwai-window.mwai-open .mwai-input {
     flex-direction: column;

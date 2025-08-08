@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WPCode Lite
  * Plugin URI: https://www.wpcode.com/
- * Version: 2.2.9
+ * Version: 2.3.0
  * Requires at least: 4.6
  * Requires PHP: 5.5
  * Tested up to: 6.8
@@ -391,6 +391,8 @@ class WPCode {
 			require_once WPCODE_PLUGIN_PATH . 'includes/admin/class-wpcode-review.php';
 			// Suggest free plugins.
 			require_once WPCODE_PLUGIN_PATH . 'includes/admin/class-wpcode-suggested-plugins.php';
+			// Highlight features.
+			require_once WPCODE_PLUGIN_PATH . 'includes/admin/class-wpcode-features-notices.php';
 		}
 
 		// Load lite-specific files.

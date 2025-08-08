@@ -1,33 +1,43 @@
 <?php
+/**
+ * Product Filter by WBW - FrameWpf Class
+ *
+ * @author  woobewoo
+ */
+
+defined( 'ABSPATH' ) || exit;
+
 class FrameWpf {
-	private $_modules = array();
-	private $_tables = array();
-	private $_allModules = array();
+
+	private $_modules            = array();
+	private $_tables             = array();
+	private $_allModules         = array();
 	/**
 	 * Uses to know if we are on one of the plugin pages
 	 */
-	private $_inPlugin = false;
+	private $_inPlugin           = false;
 	/**
 	 * Array to hold all scripts and add them in one time in addScripts method
 	 */
-	private $_scripts = array();
+	private $_scripts            = array();
 	private $_scriptsInitialized = false;
-	private $_styles = array();
-	private $_stylesInitialized = false;
-	private $_useFootAssets = false;
+	private $_styles             = array();
+	private $_stylesInitialized  = false;
+	private $_useFootAssets      = false;
 
-	private $_scriptsVars = array();
-	private $_mod = '';
-	private $_action = '';
-	private $_proVersion = null;
+	private $_scriptsVars        = array();
+	private $_mod                = '';
+	private $_action             = '';
+	private $_proVersion         = null;
 	/**
 	 * Object with result of executing non-ajax module request
 	 */
-	private $_res = null;
+	private $_res                = null;
 
 	public function __construct() {
 		$this->_res = toeCreateObjWpf('response', array());
 	}
+
 	public static function getInstance() {
 		static $instance;
 		if (!$instance) {
@@ -35,9 +45,11 @@ class FrameWpf {
 		}
 		return $instance;
 	}
+
 	public static function _() {
 		return self::getInstance();
 	}
+
 	public function parseRoute() {
 		// Check plugin
 		$pl = ReqWpf::getVar('pl');
@@ -52,18 +64,23 @@ class FrameWpf {
 			}
 		}
 	}
+
 	public function setMod( $mod ) {
 		$this->_mod = $mod;
 	}
+
 	public function getMod() {
 		return $this->_mod;
 	}
+
 	public function setAction( $action ) {
 		$this->_action = $action;
 	}
+
 	public function getAction() {
 		return $this->_action;
 	}
+
 	private function _checkPromoModName( $activeModules ) {
 		foreach ($activeModules as $i => $m) {
 			if ('supsystic_promo' == $m['code']) { // Well, rename it ;)
@@ -74,6 +91,7 @@ class FrameWpf {
 		}
 		return $activeModules;
 	}
+
 	protected function _extractModules() {
 		$activeModules = $this->getTable('modules')
 				->innerJoin( $this->getTable('modules_type'), 'type_id' )
@@ -89,13 +107,12 @@ class FrameWpf {
 				if (is_dir($moduleLocationDir . $code)) {
 					$this->_allModules[$m['code']] = 1;
 					if ((bool) $m['active']) {
-						//importClassWpf($code . strFirstUpWpf(WPF_CODE), $moduleLocationDir . $code . DS . 'mod.php');
 						if (!class_exists($code . strFirstUpWpf(WPF_CODE))) {
 							if (file_exists($moduleLocationDir . $code . DS . 'mod.php')) {
 								require $moduleLocationDir . $code . DS . 'mod.php';
 							}
 						}
-							
+
 						$moduleClass = toeGetClassNameWpf($code);
 						if (class_exists($moduleClass)) {
 							$this->_modules[$code] = new $moduleClass($m);
@@ -113,6 +130,7 @@ class FrameWpf {
 			}
 		}
 	}
+
 	protected function _initModules() {
 		if (!empty($this->_modules)) {
 			foreach ($this->_modules as $mod) {
@@ -120,6 +138,7 @@ class FrameWpf {
 			}
 		}
 	}
+
 	public function init() {
 		ReqWpf::init();
 		$this->_extractTables();
@@ -148,7 +167,7 @@ class FrameWpf {
 	}
 
 	public function pluginRow( $plugin_file, $plugin_data, $status ) {
-		if ( !version_compare($plugin_data['Version'], WPF_PRO_REQUIRES, '>=') ) { 
+		if ( !version_compare($plugin_data['Version'], WPF_PRO_REQUIRES, '>=') ) {
 			$colspan = version_compare($GLOBALS['wp_version'], '5.5', '<') ? 3 : 4;
 			$active = is_plugin_active($plugin_file) ? ' active' : '';
 			?>
@@ -170,7 +189,7 @@ class FrameWpf {
 				<td colspan="<?php echo esc_attr($colspan); ?>" class="plugin-update colspanchange">
 					<div class="update-message notice inline notice-error notice-alt">
 						<p>
-						<?php 
+						<?php
 							/* translators: 1: plugin name 2: plugin version */
 							echo sprintf(esc_html__('Current version of Free (Base) plugin %1$s requires version of WBW Product Filter PRO plugin at least %2$s.', 'woo-product-filter'), esc_html__('Product Filter by WBW', 'woo-product-filter'), esc_html(WPF_PRO_REQUIRES));
 						?>
@@ -186,8 +205,9 @@ class FrameWpf {
 		global $langOK;
 		$langOK = load_plugin_textdomain('woo-product-filter', false, WPF_PLUG_NAME . '/languages/');
 	}
+
 	/**
-	 * Check permissions for action in controller by $code and made corresponding action
+	 * Check permissions for action in controller by $code and made corresponding action.
 	 *
 	 * @param string $code Code of controller that need to be checked
 	 * @param string $action Action that need to be checked
@@ -200,8 +220,9 @@ class FrameWpf {
 			exit(esc_html_e('You have no permissions to view this page', 'woo-product-filter'));
 		}
 	}
+
 	/**
-	 * Check permissions for action in controller by $code
+	 * Check permissions for action in controller by $code.
 	 *
 	 * @param string $code Code of controller that need to be checked
 	 * @param string $action Action that need to be checked
@@ -213,7 +234,7 @@ class FrameWpf {
 		$action = strtolower($action);
 		if ($mod) {
 			$permissions = $mod->getController()->getPermissions();
-			if (!empty($permissions)) {  // Special permissions
+			if (!empty($permissions)) { // Special permissions
 				if (isset($permissions[WPF_METHODS]) && !empty($permissions[WPF_METHODS])) {
 					foreach ($permissions[WPF_METHODS] as $method => $permissions) {   // Make case-insensitive
 						$permissions[WPF_METHODS][strtolower($method)] = $permissions;
@@ -235,7 +256,7 @@ class FrameWpf {
 					}
 					foreach ($permissions[WPF_USERLEVELS] as $userlevel => $methods) {
 						if (is_array($methods)) {
-							$lowerMethods = array_map('strtolower', $methods);          // Make case-insensitive
+							$lowerMethods = array_map('strtolower', $methods);           // Make case-insensitive
 							if (in_array($action, $lowerMethods)) {                      // Permission for this method exists
 								if ($currentUserPosition != $userlevel) {
 									$res = false;
@@ -243,7 +264,7 @@ class FrameWpf {
 								break;
 							}
 						} else {
-							$lowerMethod = strtolower($methods);            // Make case-insensitive
+							$lowerMethod = strtolower($methods);             // Make case-insensitive
 							if ($lowerMethod == $action) {                   // Permission for this method exists
 								if ($currentUserPosition != $userlevel) {
 									$res = false;
@@ -269,12 +290,15 @@ class FrameWpf {
 		}
 		return $res;
 	}
+
 	public function getRes() {
 		return $this->_res;
 	}
+
 	public function execAfterWpInit() {
 		$this->_doExec();
 	}
+
 	/**
 	 * Check if method for module require some special permission. We can detect users permissions only after wp init action was done.
 	 */
@@ -300,6 +324,7 @@ class FrameWpf {
 		}
 		return $res;
 	}
+
 	protected function _execModules() {
 		if ($this->_mod) {
 			// If module exist and is active
@@ -313,6 +338,7 @@ class FrameWpf {
 			}
 		}
 	}
+
 	protected function _doExec() {
 		$mod = $this->getModule($this->_mod);
 		if ($mod && $this->checkPermissions($this->_mod, $this->_action)) {
@@ -327,6 +353,7 @@ class FrameWpf {
 			}
 		}
 	}
+
 	protected function _extractTables( $tablesDir = WPF_TABLES_DIR ) {
 		$mDirHandle = opendir($tablesDir);
 		while ( ( $file = readdir($mDirHandle) ) !== false ) {
@@ -335,8 +362,8 @@ class FrameWpf {
 			}
 		}
 	}
+
 	protected function _extractTable( $tableName, $tablesDir = WPF_TABLES_DIR ) {
-		//importClassWpf('noClassNameHere', $tablesDir . $tableName . '.php');
 		if (!class_exists('noClassNameHere')) {
 			if (file_exists($tablesDir . $tableName . '.php')) {
 				require $tablesDir . $tableName . '.php';
@@ -344,8 +371,9 @@ class FrameWpf {
 		}
 		$this->_tables[$tableName] = TableWpf::_($tableName);
 	}
+
 	/**
-	 * Public alias for _extractTables method
+	 * Public alias for _extractTables method.
 	 *
 	 * @see _extractTables
 	 */
@@ -354,14 +382,17 @@ class FrameWpf {
 			$this->_extractTables($tablesDir);
 		}
 	}
+
 	public function exec() {
 		//deprecated
 	}
+
 	public function getTables() {
 		return $this->_tables;
 	}
+
 	/**
-	 * Return table by name
+	 * Return table by name.
 	 *
 	 * @param string $tableName table name in database
 	 * @return object table
@@ -373,6 +404,7 @@ class FrameWpf {
 		}
 		return $this->_tables[$tableName];
 	}
+
 	public function getModules( $filter = array() ) {
 		$res = array();
 		if (empty($filter)) {
@@ -394,17 +426,20 @@ class FrameWpf {
 	public function getModule( $code ) {
 		return ( isset($this->_modules[$code]) ? $this->_modules[$code] : null );
 	}
+
 	public function inPlugin() {
 		return $this->_inPlugin;
 	}
+
 	public function usePackAssets() {
 		if (!$this->_useFootAssets && $this->getModule('options') && $this->getModule('options')->get('foot_assets')) {
 			$this->_useFootAssets = true;
 		}
 		return $this->_useFootAssets;
 	}
+
 	/**
-	 * Push data to script array to use it all in addScripts method
+	 * Push data to script array to use it all in addScripts method.
 	 *
 	 * @see wp_enqueue_script definition
 	 */
@@ -426,8 +461,9 @@ class FrameWpf {
 			);
 		}
 	}
+
 	/**
-	 * Add all scripts from _scripts array to wordpress
+	 * Add all scripts from _scripts array to wordpress.
 	 */
 	public function addScripts() {
 		if (!empty($this->_scripts)) {
@@ -471,6 +507,7 @@ class FrameWpf {
 		}
 		$this->_scriptsInitialized = true;
 	}
+
 	public function addJSVar( $script, $name, $val ) {
 		if ($this->_scriptsInitialized) {
 			if ( is_array( $val ) ) {
@@ -494,13 +531,14 @@ class FrameWpf {
 		} else {
 			$this->_styles[] = array(
 				'handle' => $handle,
-				'src' => $src,
-				'deps' => $deps,
-				'ver' => $ver,
-				'media' => $media,
+				'src'    => $src,
+				'deps'   => $deps,
+				'ver'    => $ver,
+				'media'  => $media,
 			);
 		}
 	}
+
 	public function addStyles() {
 		if (!empty($this->_styles)) {
 			foreach ($this->_styles as $s) {
@@ -509,29 +547,36 @@ class FrameWpf {
 		}
 		$this->_stylesInitialized = true;
 	}
+
 	//Very interesting thing going here.............
 	public function loadPlugins() {
 		require_once ABSPATH . 'wp-includes/pluggable.php';
 	}
+
 	public function loadWPSettings() {
 		require_once ABSPATH . 'wp-settings.php';
 	}
+
 	public function loadLocale() {
 		require_once ABSPATH . 'wp-includes/locale.php';
 	}
+
 	public function moduleActive( $code ) {
 		return isset($this->_modules[$code]);
 	}
+
 	public function moduleExists( $code ) {
 		if ($this->moduleActive($code)) {
 			return true;
 		}
 		return isset($this->_allModules[$code]);
 	}
+
 	public function isTplEditor() {
 		$tplEditor = ReqWpf::getVar('tplEditor');
 		return (bool) $tplEditor;
 	}
+
 	/**
 	 * This is custom method for each plugin and should be modified if you create copy from this instance.
 	 */
@@ -542,21 +587,26 @@ class FrameWpf {
 		}
 		return false;
 	}
+
 	public function isAdminPlugPage() {
 		if ($this->isAdminPlugOptsPage()) {
 			return true;
 		}
 		return false;
 	}
+
 	public function licenseDeactivated() {
 		return ( !$this->getModule('license') && $this->moduleExists('license') );
 	}
+
 	public function savePluginActivationErrors() {
 		update_option(WPF_CODE . '_plugin_activation_errors', ob_get_contents());
 	}
+
 	public function getActivationErrors() {
 		return get_option(WPF_CODE . '_plugin_activation_errors');
 	}
+
 	public function isPro() {
 		return $this->moduleExists('license') && $this->getModule('license') && $this->getModule('access');
 	}
@@ -576,7 +626,9 @@ class FrameWpf {
 
 		return ( ( $notPro && false === $this->_proVersion ) || version_compare( $this->_proVersion, $requires, $compare ) );
 	}
+
 	public function isWCLicense() {
 		return $this->moduleExists('license') && $this->getModule('license') && isset($this->getModule('license')->isWooLicense) && $this->getModule('license')->isWooLicense;
 	}
+
 }

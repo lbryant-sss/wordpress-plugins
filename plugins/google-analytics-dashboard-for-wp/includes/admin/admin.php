@@ -983,6 +983,12 @@ function exactmetrics_wpconsent_install_notice() {
 		return;
 	}
 
+	// If user not authenticated then do not show.
+	$authed = ExactMetrics()->auth->is_authed() || ExactMetrics()->auth->is_network_authed();
+	if ( empty( $authed ) ) {
+		return;
+	}
+
 	$plugin_installed = false;
 	if ( file_exists( WP_PLUGIN_DIR . '/wpconsent-cookies-banner-privacy-suite/wpconsent.php' ) ) {
 		$plugin_installed = true;

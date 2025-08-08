@@ -289,6 +289,7 @@ It is both! Visual Composer’s free version works like a page builder where you
 - Fix: Half outline button is available in Visual Composer Hub
 - Fix: Popups work properly in header and footer layouts
 - Fix: Deletion of global templates is being handled properly
+
 - Fix: Classic tab background works properly
 
 = 45.9.0 =
