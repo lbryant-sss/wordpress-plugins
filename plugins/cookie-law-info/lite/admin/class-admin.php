@@ -44,6 +44,15 @@ class Admin {
 	private $version;
 
 	/**
+	 * The suffix of the script.
+	 *
+	 * @since    3.0.0
+	 * @access   private
+	 * @var      string    $suffix    The suffix of the script.
+	 */
+	private $suffix;
+
+	/**
 	 * Admin modules of the plugin
 	 *
 	 * @var array
@@ -74,6 +83,7 @@ class Admin {
 	public function __construct( $plugin_name, $version ) {
 		$this->plugin_name = $plugin_name;
 		$this->version     = $version;
+		$this->suffix      = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 		self::$modules     = $this->get_default_modules();
 		$this->load();
 		$this->add_notices();
@@ -200,7 +210,7 @@ class Admin {
 		if ( false === cky_is_admin_page() ) {
 			return;
 		}
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'dist/css/app.css', array(), $this->version );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'dist/css/app' . $this->suffix . '.css', array(), $this->version );
 	}
 
 	/**
@@ -263,8 +273,8 @@ class Admin {
 			wp_enqueue_editor();
 		}
 
-		wp_enqueue_script( $this->plugin_name . '-vendors', plugin_dir_url( __FILE__ ) . 'dist/js/chunk-vendors.js', array(), $this->version, true );
-		wp_enqueue_script( $this->plugin_name . '-app', plugin_dir_url( __FILE__ ) . 'dist/js/app.js', array(), $this->version, true );
+		wp_enqueue_script( $this->plugin_name . '-vendors', plugin_dir_url( __FILE__ ) . 'dist/js/chunk-vendors' . $this->suffix . '.js', array(), $this->version, true );
+		wp_enqueue_script( $this->plugin_name . '-app', plugin_dir_url( __FILE__ ) . 'dist/js/app' . $this->suffix . '.js', array(), $this->version, true );
 
 		wp_localize_script(
 			$global_script,

@@ -133,6 +133,8 @@ function ub_render_tabbed_content_block($attributes, $contents, $block){
 	);
 	$padding = Ultimate_Blocks\includes\get_spacing_css( isset($block_attrs['padding']) ? $block_attrs['padding'] : array() );
 	$margin  = Ultimate_Blocks\includes\get_spacing_css( isset($block_attrs['margin']) ? $block_attrs['margin'] : array() );
+	$gap = isset($attributes['gap']['all']) ?  Ultimate_Blocks\includes\spacing_preset_css_var($attributes['gap']['all']) : "";
+
 	$styles = array(
 			'padding-top'        => isset($padding['top']) ? $padding['top'] : "",
 			'padding-left'       => isset($padding['left']) ? $padding['left'] : "",
@@ -142,6 +144,7 @@ function ub_render_tabbed_content_block($attributes, $contents, $block){
 			'margin-left'        => !empty($margin['left']) ? $margin['left']  : "",
 			'margin-right'       => !empty($margin['right']) ? $margin['right']  : "",
 			'margin-bottom'      => !empty($margin['bottom']) ? $margin['bottom']  : "",
+			'gap'                => $gap,
 	);
 
 	return sprintf(

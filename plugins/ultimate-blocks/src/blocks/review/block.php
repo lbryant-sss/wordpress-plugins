@@ -19,12 +19,20 @@ function ub_generatePercentageBar($value, $id, $activeColor, $inactiveColor ){
             <div>' . wp_kses_post($value) . '%</div>
     </div>';
 }
-
 function ub_filterJsonldString($string){
-    // Sanitize the content without URL encoding to avoid "+" symbols in spaces
-    // wp_kses_post ensures the content is safe for inclusion in the schema
-    // JSON escaping will be handled by json_encode elsewhere
-    return str_replace("\'", "'", wp_kses_post($string));
+    // Strip all HTML tags for JSON-LD compatibility
+    $string = wp_strip_all_tags($string);
+
+    // Remove line breaks and extra whitespace
+    $string = preg_replace('/\s+/', ' ', $string);
+
+    // Escape quotes and backslashes for JSON
+    $string = str_replace(array('\\', '"', "\r", "\n", "\t"), array('\\\\', '\\"', '', '', ''), $string);
+
+    // Trim whitespace
+    $string = trim($string);
+
+    return $string;
 }
 
 function ub_render_review_block($attributes, $block_content, $block_instance){
@@ -65,7 +73,7 @@ function ub_render_review_block($attributes, $block_content, $block_instance){
             "price" => ub_filterJsonldString($offerPrice),
         );
         if($offerExpiry > 0){
-            array_merge($offer, array('priceValidUntil'=>date("Y-m-d", $offerExpiry)));
+            $offer = array_merge($offer, array('priceValidUntil'=>date("Y-m-d", $offerExpiry)));
         }
 
         $offers[] = $offer;
@@ -74,8 +82,8 @@ function ub_render_review_block($attributes, $block_content, $block_instance){
     $all_buttons_offer = json_encode($offers, JSON_UNESCAPED_SLASHES);
     $aggregate_offer = '{
         "@type": "' . $offerType . '",
-        "priceCurrency": "' . ub_filterJsonldString($offerCurrency) . '",' .
-        '"lowPrice": "' . $offerLowPrice . '",
+        "priceCurrency": "' . ub_filterJsonldString($offerCurrency) . '",
+        "lowPrice": "' . $offerLowPrice . '",
         "highPrice": "' . $offerHighPrice . '",
         "offerCount": "' . absint($offerCount) . '"
     }';

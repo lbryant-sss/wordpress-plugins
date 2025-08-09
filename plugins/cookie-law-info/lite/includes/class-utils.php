@@ -214,11 +214,9 @@ if ( ! function_exists( 'cky_disable_banner' ) ) {
 	 */
 	function cky_disable_banner() {
 		global $wp_customize;
-		if ( isset( $_GET['et_fb'] ) || isset( $_GET['et_fb'] )
-		|| ( defined( 'ET_FB_ENABLED' ) && ET_FB_ENABLED )
-		|| isset( $_GET['elementor-preview'] )
-		|| isset( $_POST['cs_preview_state'] )
-		|| isset( $wp_customize ) ) {
+		if ( isset( $_GET['et_fb'] ) || isset( $_GET['et_fb'] ) || ( defined( 'ET_FB_ENABLED' ) && ET_FB_ENABLED ) //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		|| isset( $_GET['elementor-preview'] ) || isset( $_POST['cs_preview_state'] ) || isset( $wp_customize ) ) //phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+		{
 			return true;
 		}
 		return false;

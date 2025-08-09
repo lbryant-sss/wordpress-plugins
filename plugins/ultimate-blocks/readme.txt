@@ -3,7 +3,7 @@ Contributors: dotcamp, ultimateblocks, imtiazrayhan, istiakrayhan, erdembircan, 
 Tags: blocks, gutenberg blocks, gutenberg, block editor, free
 Requires at least: 5.8
 Tested up to: 6.8
-Stable tag: 3.3.8
+Stable tag: 3.3.9
 Requires PHP: 7.2
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
@@ -149,6 +149,12 @@ That's it. You're done!
 3. Tabbed Content Block.
 
 == Changelog ==
+
+= 3.3.9 =
+
+* PRO: FIX: Content toggle space inconsistent when using search.
+* FIX: Google parse error in review block schema.
+* NEW: Add Gap option to add space between tabs and content.
 
 = 3.3.8 =
 

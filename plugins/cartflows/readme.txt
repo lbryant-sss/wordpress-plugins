@@ -1,4 +1,4 @@
-=== WooCommerce Checkout & Funnel Builder by CartFlows ===
+=== CartFlows - Checkout & Funnel Builder for WooCommerce ===
 Contributors: sujaypawar, wpcrafter
 Tags: woocommerce, funnel builder, sales funnels, custom checkout, WooCommerce checkout
 Requires at least: 5.8
@@ -12,7 +12,7 @@ WooCommerce checkout & funnel builder to boost conversion and revenue with beaut
 
 == Description ==
 
-**#1 WooCommerce Checkout & Funnel Builder by CartFlows – The Secret to High-Converting WooCommerce Stores** <br>
+**#1 CartFlows - Checkout & Funnel Builder for WooCommerce – The Secret to High-Converting WooCommerce Stores** <br>
 ★★★★★<br>
 
 [youtube https://www.youtube.com/watch?v=tCm60PWOd0M]

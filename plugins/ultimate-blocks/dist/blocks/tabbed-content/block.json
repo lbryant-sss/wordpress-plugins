@@ -22,6 +22,12 @@
       "type": "number",
       "default": 0
     },
+    "gap": {
+      "type": "object",
+      "default": {
+        "all": ""
+      }
+    },
     "theme": {
       "type": "string",
       "default": "#eeeeee"
