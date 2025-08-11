@@ -12,7 +12,7 @@ class HTMega_Elementor_Widget_Testimonial extends Widget_Base {
     }
     
     public function get_title() {
-        return __( 'Testimonial', 'htmega-addons' );
+        return __( 'Testimonial Carousel', 'htmega-addons' );
     }
 
     public function get_icon() {
@@ -49,7 +49,7 @@ class HTMega_Elementor_Widget_Testimonial extends Widget_Base {
         $this->start_controls_section(
             'htmega_testimonial_content_section',
             [
-                'label' => __( 'Testimonial', 'htmega-addons' ),
+                'label' => __( 'Testimonial Carousel', 'htmega-addons' ),
             ]
         );
 

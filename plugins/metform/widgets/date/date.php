@@ -489,6 +489,155 @@ Class MetForm_Input_Date extends Widget_Base{
 			]
 		);
 
+		$this->add_control(
+			'mf_date_calendar_month_year_color',
+			[
+				'label' => esc_html__( 'Month/Year Input Color', 'metform' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-current-month input.flatpickr-monthDropdown-month' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-current-month input.cur-year' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-current-month .flatpickr-monthDropdown-months' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-current-month .numInputWrapper input' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'mf_date_calendar_time_color',
+			[
+				'label' => esc_html__( 'Time Input Color', 'metform' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-time input.flatpickr-hour' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-time input.flatpickr-minute' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-time input.flatpickr-second' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-time .flatpickr-am-pm' => 'color: {{VALUE}};',
+				],
+				'condition' => [
+					'mf_input_date_with_time' => 'yes'
+				]
+			]
+		);
+
+		$this->add_control(
+			'mf_date_calendar_month_year_bg_color',
+			[
+				'label' => esc_html__( 'Month/Year Background Color', 'metform' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-current-month input.flatpickr-monthDropdown-month' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-current-month input.cur-year' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-current-month .flatpickr-monthDropdown-months' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-current-month .numInputWrapper input' => 'background-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'mf_date_calendar_time_bg_color',
+			[
+				'label' => esc_html__( 'Time Background Color', 'metform' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-time input.flatpickr-hour' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-time input.flatpickr-minute' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-time input.flatpickr-second' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-time .flatpickr-am-pm' => 'background-color: {{VALUE}};',
+				],
+				'condition' => [
+					'mf_input_date_with_time' => 'yes'
+				]
+			]
+		);
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'mf_date_calendar_month_year_border',
+				'label' => esc_html__( 'Month/Year Border', 'metform' ),
+				'selector' => '{{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-current-month input.flatpickr-monthDropdown-month, {{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-current-month input.cur-year, {{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-current-month .flatpickr-monthDropdown-months, {{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-current-month .numInputWrapper input',
+			]
+		);
+
+		$this->add_control(
+			'mf_date_calendar_month_year_border_radius',
+			[
+				'label' => esc_html__( 'Month/Year Border Radius', 'metform' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+				'selectors' => [
+					'{{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-current-month input.flatpickr-monthDropdown-month' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-current-month input.cur-year' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-current-month .flatpickr-monthDropdown-months' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-current-month .numInputWrapper input' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'mf_date_calendar_month_year_padding',
+			[
+				'label' => esc_html__( 'Month/Year Padding', 'metform' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+				'selectors' => [
+					'{{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-current-month input.flatpickr-monthDropdown-month' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-current-month input.cur-year' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-current-month .flatpickr-monthDropdown-months' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-current-month .numInputWrapper input' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'mf_date_calendar_time_border',
+				'label' => esc_html__( 'Time Border', 'metform' ),
+				'selector' => '{{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-time input.flatpickr-hour, {{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-time input.flatpickr-minute, {{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-time input.flatpickr-second, {{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-time .flatpickr-am-pm',
+				'condition' => [
+					'mf_input_date_with_time' => 'yes'
+				]
+			]
+		);
+
+		$this->add_control(
+			'mf_date_calendar_time_border_radius',
+			[
+				'label' => esc_html__( 'Time Border Radius', 'metform' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+				'selectors' => [
+					'{{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-time input.flatpickr-hour' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-time input.flatpickr-minute' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-time input.flatpickr-second' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-time .flatpickr-am-pm' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'condition' => [
+					'mf_input_date_with_time' => 'yes'
+				]
+			]
+		);
+
+		$this->add_control(
+			'mf_date_calendar_time_padding',
+			[
+				'label' => esc_html__( 'Time Padding', 'metform' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+				'selectors' => [
+					'{{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-time input.flatpickr-hour' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-time input.flatpickr-minute' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-time input.flatpickr-second' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .mf-input-wrapper .flatpickr-calendar .flatpickr-time .flatpickr-am-pm' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'condition' => [
+					'mf_input_date_with_time' => 'yes'
+				]
+			]
+		);
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(

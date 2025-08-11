@@ -3,7 +3,7 @@ Contributors: hasthemes, htplugins, devitemsllc, tarekht, zenaulislam, aslamhasi
 Tags: elementor, elementor addons, elementor widgets, elementor templates, addons, elementor slider, elementor page builder, mega menu, addons for elementor, post grid, elements, header footer builder
 Requires at least: 5.0
 Tested up to: 6.8
-Stable tag: 2.9.2
+Stable tag: 2.9.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -531,6 +531,15 @@ Visit [HasThemes](https://hasthemes.com/) for more details about HTML, Shopify a
 
 
 == Changelog ==
+
+= Version 2.9.3 - Date: 2025-08-10 =
+* Added: [Evenro - Event Management Template Kit](https://library.wphtmega.com/evenro-event-management-template/).
+* Added: [Eldero - Wellness Website Template Kit](https://library.wphtmega.com/eldero-senior-care-template/).
+* Added: [Rosoi - Food & Drink Website Template Kit](https://library.wphtmega.com/rosoi-restaurant-template/).
+* Fixed: Image spacing issue in Testimonial Carousel widget.
+* Fixed: Arrow icon default Size issue in Post Carousel widget.
+* Fixed: A few minor issues.
+* Tested: Compatibility with the latest version of Elementor.
 
 = Version 2.9.2 - Date: 2025-07-30 =
 * Added: [Yogabes - Yoga Template Kit](https://library.wphtmega.com/yogabes-yoga-template/).

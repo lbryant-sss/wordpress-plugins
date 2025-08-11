@@ -1749,7 +1749,7 @@ class HTMega_Elementor_Widget_Post_Carousel extends Widget_Base {
                             ],
                             'default' => [
                                 'unit' => 'px',
-                                'size' => 46,
+                                'size' => 40,
                             ],
                             'selectors' => [
                                 '{{WRAPPER}} .htmega-carousel-activation button.slick-arrow' => 'width: {{SIZE}}{{UNIT}};',

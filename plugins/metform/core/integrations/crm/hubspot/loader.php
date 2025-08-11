@@ -100,14 +100,17 @@ class Integration
 							</svg> Upgrade to Pro</a>
 					</div>
 				</div>
-				<div class="attr-row" style="padding: 0 24px;">
+				<div class="attr-row">
 					<div class="mf-setting-input-group">
 						<p class="description">
-							<a href="#" class="button-primary mf-setting-btn btn-tst"> <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+							<a href="#" class="button-primary mf-setting-btn btn-tst"> 
+								<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
 									<path d="M7.08663 6.21467L7.21077 6.09053C8.39799 4.90326 10.3229 4.90326 11.5101 6.09053C12.6974 7.27775 12.6974 9.20267 11.5101 10.3899L9.79041 12.1096C8.60319 13.2969 6.67827 13.2969 5.49102 12.1096C4.30378 10.9224 4.30378 8.99747 5.49102 7.81025L5.76963 7.53167" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
 									<path d="M11.8312 6.46841L12.1097 6.18983C13.297 5.00257 13.297 3.07768 12.1097 1.89043C10.9225 0.70319 8.99759 0.70319 7.81037 1.89043L6.09065 3.61019C4.90338 4.79743 4.90338 6.72233 6.09065 7.90955C7.27787 9.09683 9.20279 9.09683 10.39 7.90955L10.5141 7.78541" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
 									<path d="M1.00049 4.60008L2.80049 5.20008M1.60049 7.90008L2.80049 7.00008M2.50049 2.20007L3.40049 3.40007" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-								</svg>  <?php esc_html_e('Connect Zoho ', 'metform'); ?> </a>
+								</svg>  
+								<?php esc_html_e('Connect Zoho ', 'metform'); ?> 
+							</a>
 						</p>
 					</div>
 				</div>
@@ -139,7 +142,7 @@ class Integration
 							</svg> Upgrade to Pro</a>
 					</div>
 				</div>
-				<div class="attr-row" style="padding: 0 24px;">
+				<div class="attr-row">
 					<div class="mf-setting-input-group">
 						<label class="mf-setting-label">App ID</label>
 

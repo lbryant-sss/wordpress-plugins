@@ -722,7 +722,7 @@ class Options_Field {
             
                 array(
                     'id'  => 'testimonial',
-                    'name'  => __( 'Testimonial', 'htmega-addons' ),
+                    'name'  => __( 'Testimonial Carousel', 'htmega-addons' ),
                     'type'  => 'element',
                     'default'=>'on',
                     'label_on' => __( 'On', 'htmega-addons' ),

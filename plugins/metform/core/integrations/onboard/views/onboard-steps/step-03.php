@@ -168,8 +168,13 @@ echo esc_html__('Take your website to the next level', 'metform'); ?></strong></
     </div>
 </div>
 <div class="mf-onboard-pagination">
-    <a class="mf-onboard-btn mf-onboard-pagi-btn prev" href="#"><i class="xs-onboard-arrow-left"></i><?php echo esc_html__('Back', 'metform'); ?></a>
-    <a class="mf-onboard-btn mf-onboard-pagi-btn next" href="#"><?php echo esc_html__('Next', 'metform'); ?></a>
+    <div class="mf-onboard-left">
+        <a class="mf-onboard-btn mf-step-3-back-btn mf-onboard-pagi-btn prev" href="#"><i style="margin-right: -5px; margin-top: 4px;" class="xs-onboard-arrow-left"></i><?php echo esc_html__('Back', 'metform'); ?></a>
+    </div>
+    <div class="mf-onboard-right">
+        <a class="mf-continue-button mf-onboard-pagi-btn next" href="#"><?php echo esc_html__('Continue', 'metform'); ?></a>
+        <a class="mf-onboard-btn mf-onboard-pagi-btn mf-onboard-select-all-next-btn next" href="#"><?php echo esc_html__('Unlock All & Continue', 'metform'); ?></a>
+    </div>
 </div>
 <div class="mf-onboard-shapes">
     <img src="<?php echo esc_url(self::get_url()); ?>assets/images/shape-06.png" alt="" class="shape-06">

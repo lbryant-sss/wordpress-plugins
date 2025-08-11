@@ -3330,11 +3330,13 @@ body:has( .htmega_mega_menu ){
   }
   
   .htmega-testimonial-style-1 .testimonal img {
-      margin-bottom: 34px;
+      margin-bottom: 0px;
       text-align: center;
       display: inline-block;
   }
-  
+  .htmega-testimonial-style-1 .testimonal .testimonal-image{
+    margin-bottom: 34px;
+  }
   .htmega-testimonial-style-1 .testimonal .shape img {
       margin: 0;
   }

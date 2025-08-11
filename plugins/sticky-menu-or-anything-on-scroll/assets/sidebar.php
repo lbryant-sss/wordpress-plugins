@@ -2,7 +2,8 @@
 
 <?php
   $options = get_option('sticky_anything_options');
-  $dismiss_url = add_query_arg(array('action' => 'sticky_hide_review_notification', 'redirect' => urlencode($_SERVER['REQUEST_URI'])), admin_url('admin.php'));
+  $request_url = sanitize_text_field(wp_unslash($_SERVER['REQUEST_URI'] ?? ''));
+  $dismiss_url = add_query_arg(array('action' => 'sticky_hide_review_notification', 'redirect' => urlencode($request_url)), admin_url('admin.php'));
   $dismiss_url = wp_nonce_url($dismiss_url, 'sticky_hide_review_notification');
 ?>
 

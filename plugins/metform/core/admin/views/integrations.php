@@ -183,16 +183,18 @@ $news_letter_integrations = array(
 							<div class="mf-dashboard__settings-api__lists-content">
 								<div class="mf-dashboard__settings-api__content-input">
 									<?php if (isset($integration['form_fields'])) {
-										foreach ($integration['form_fields'] as $field_key => $field) {
-									?>
+										foreach ($integration['form_fields'] as $field_key => $field) { 
+										?>
 											<h4 class="field-key"><?php echo esc_html($field['label']); ?></h4>
 											<input name="<?php echo esc_attr($field['name']); ?>" type="text" placeholder="<?php echo esc_attr($field['placeholder']); ?>" value="<?php echo esc_attr((isset($settings[$field['name']])) ? $settings[$field['name']] : ''); ?>">
 											<?php if (isset($field['help_text']) && isset($field['help_url'])): ?>
 												<p class="help-text"><?php echo esc_html($field['help_text']); ?> <a href="<?php echo esc_url($field['help_url']); ?>">Get API</a></p>
 											<?php endif; ?>
 										<?php } ?>
-										<button type="button" data-dismiss="modal" class="components-button mf-settings-form-submit-btn save-btn"> <?php echo esc_html(! empty($integration['button_text']) ? $integration['button_text'] : 'Save'); ?> </button>
-										<button type="button" class="components-button cancel-btn" data-dismiss="modal">Cancel</button>
+										<div class="mf-dashboard__settings-api__btn-group">
+											<button type="button" data-dismiss="modal" class="components-button mf-settings-form-submit-btn save-btn"> <?php echo esc_html(! empty($integration['button_text']) ? $integration['button_text'] : 'Save'); ?> </button>
+											<button type="button" class="components-button cancel-btn" data-dismiss="modal">Cancel</button>
+										</div>
 									<?php } ?>
 									<?php if (isset($integration['redirect_url'])):  ?>
 										<label for="attr-input-label" class="mf-setting-label mf-setting-label attr-input-label">Redirect url:</label>

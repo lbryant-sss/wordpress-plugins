@@ -5,13 +5,14 @@ Plugin URI: https://wpsticky.com/
 Description: Pick any element on the page, and it will stick when it reaches the top of the page when you scroll down. Handy for navigation menus, but can be used for any element on the page.
 Author: WebFactory Ltd
 Author URI: https://www.webfactoryltd.com/
-Version: 2.33
+Version: 2.34
 Requires at least: 3.6
-Tested up to: 6.6
+Tested up to: 6.8
 Requires PHP: 5.2
+License: GPLv2 or later
 Text Domain: sticky-menu-or-anything-on-scroll
 
-  Copyright 2020 - 2024  WebFactory Ltd  (email: support@webfactoryltd.com)
+  Copyright 2020 - 2025  WebFactory Ltd  (email: support@webfactoryltd.com)
   Copyright 2019 - 2020  @senff
 
   This program is free software; you can redistribute it and/or modify
@@ -220,7 +221,8 @@ if (!function_exists('sticky_anything_config_page')) {
     <p><?php esc_html_e('Pick any element on the page, and it will stick when it reaches the top of the page when you scroll down. Great for headers and navigation menus, but can be used for any page element.','sticky-menu-or-anything-on-scroll'); ?><br><br></p>
 <?php
   if (!empty($sticky_anything_options['sa_element']) && empty($sticky_anything_options['sa_hide_review_notification'])) {
-    $dismiss_url = add_query_arg(array('action' => 'sticky_hide_review_notification', 'redirect' => urlencode($_SERVER['REQUEST_URI'])), admin_url('admin.php'));
+    $request_url = sanitize_text_field(wp_unslash($_SERVER['REQUEST_URI'] ?? ''));
+    $dismiss_url = add_query_arg(array('action' => 'sticky_hide_review_notification', 'redirect' => urlencode($request_url)), admin_url('admin.php'));
     $dismiss_url = wp_nonce_url($dismiss_url, 'sticky_hide_review_notification');
 ?>
     <div class="notice-info notice notice-rate"><p><strong>Help us keep Sticky Menu updated &amp; free!</strong></p>
@@ -233,8 +235,9 @@ if (!function_exists('sticky_anything_config_page')) {
 		<div class="main-content">
 
 			<?php
-				if ( isset( $_GET['tab'] )) {
-					$activeTab = $_GET['tab'];
+                //phpcs:ignore because page can be opened directly without a nonce
+				if ( isset( $_GET['tab'] )) { //phpcs:ignore
+					$activeTab = $_GET['tab']; //phpcs:ignore
 				} else {
 					$activeTab = 'main';
 				}
@@ -256,13 +259,13 @@ if (!function_exists('sticky_anything_config_page')) {
 
 				$warnings = false;
 
-				if ( isset( $_GET['message'] )) {
-					if ($_GET['message'] == '1') {
+				if ( isset( $_GET['message'] )) { //phpcs:ignore
+					if ($_GET['message'] == '1') { //phpcs:ignore
 						echo '<div id="message" class="fade updated"><p><strong>'.esc_html__('Settings Updated.','sticky-menu-or-anything-on-scroll').'</strong></p></div>';
 					}
 				}
 
-				if ( isset( $_GET['message'] )) {
+				if ( isset( $_GET['message'] )) { //phpcs:ignore
 					if ($sticky_anything_options['sa_element'] == '') {
 						$warnings = true;
 					}
@@ -503,7 +506,7 @@ if (!function_exists('sticky_anything_config_page')) {
 
 					<div class="tab-content tab-sticky-main tab-sticky-advanced <?php if (($activeTab != 'main') && ($activeTab != 'advanced')) {echo 'hide';} ?>">
 
-						<input type="hidden" name="sa_tab" value="<?php esc_attr_e($activeTab); ?>">
+						<input type="hidden" name="sa_tab" value="<?php esc_attr($activeTab); ?>">
 
 						&nbsp;<br><input type="submit" value="<?php esc_html_e('Save Changes','sticky-menu-or-anything-on-scroll'); ?>" class="button-primary"/>
 
@@ -564,37 +567,37 @@ if (!function_exists('process_sticky_anything_options')) {
 
 		foreach ( array('sa_element') as $option_name ) {
 			if ( isset( $_POST[$option_name] ) ) {
-				$options[$option_name] = sanitize_text_field( $_POST[$option_name] );
+				$options[$option_name] = sanitize_text_field(wp_unslash($_POST[$option_name]));
 			}
 		}
 
 		foreach ( array('sa_topspace') as $option_name ) {
 			if ( isset( $_POST[$option_name] ) ) {
-				$options[$option_name] = sanitize_text_field( $_POST[$option_name] );
+				$options[$option_name] = sanitize_text_field(wp_unslash($_POST[$option_name]));
 			}
 		}
 
 		foreach ( array('sa_minscreenwidth') as $option_name ) {
 			if ( isset( $_POST[$option_name] ) ) {
-				$options[$option_name] = sanitize_text_field( $_POST[$option_name] );
+				$options[$option_name] = sanitize_text_field(wp_unslash($_POST[$option_name]));
 			}
 		}
 
 		foreach ( array('sa_maxscreenwidth') as $option_name ) {
 			if ( isset( $_POST[$option_name] ) ) {
-				$options[$option_name] = sanitize_text_field( $_POST[$option_name] );
+				$options[$option_name] = sanitize_text_field(wp_unslash($_POST[$option_name]));
 			}
 		}
 
 		foreach ( array('sa_zindex') as $option_name ) {
 			if ( isset( $_POST[$option_name] ) ) {
-				$options[$option_name] = sanitize_text_field( $_POST[$option_name] );
+				$options[$option_name] = sanitize_text_field(wp_unslash($_POST[$option_name]));
 			}
 		}
 
 		foreach ( array('sa_pushup') as $option_name ) {
 			if ( isset( $_POST[$option_name] ) ) {
-				$options[$option_name] = sanitize_text_field( $_POST[$option_name] );
+				$options[$option_name] = sanitize_text_field(wp_unslash($_POST[$option_name]));
 			}
 		}
 
@@ -632,11 +635,11 @@ if (!function_exists('process_sticky_anything_options')) {
 
 		foreach ( array('sa_tab') as $option_name ) {
 			if ( isset( $_POST[$option_name] ) ) {
-				$options[$option_name] = sanitize_text_field( $_POST[$option_name] );
+				$options[$option_name] = sanitize_text_field(wp_unslash($_POST[$option_name]));
 			}
 		}
 
-		$tabValue = $_POST['sa_tab'];
+		$tabValue = sanitize_text_field(wp_unslash($_POST['sa_tab'] ?? ''));
 
 		update_option( 'sticky_anything_options', $options );
  		wp_safe_redirect( add_query_arg(
@@ -800,7 +803,7 @@ function sticky_anything_admin_footer() {
 
 
   function sticky_hide_review_notification() {
-    if (false == wp_verify_nonce(@$_GET['_wpnonce'], 'sticky_hide_review_notification')) {
+    if (false == wp_verify_nonce( sanitize_text_field(wp_unslash($_GET['_wpnonce'] ?? '')), 'sticky_hide_review_notification') ) {
       wp_die('Please click back, reload the page and try again.');
     }
 
@@ -809,7 +812,7 @@ function sticky_anything_admin_footer() {
     update_option('sticky_anything_options', $sticky_anything_options);
 
     if (!empty($_GET['redirect'])) {
-      wp_safe_redirect(esc_url($_GET['redirect']));
+      wp_safe_redirect(sanitize_text_field(wp_unslash($_GET['redirect'])));
     } else {
       wp_safe_redirect(admin_url('options-general.php?page=stickyanythingmenu'));
     }

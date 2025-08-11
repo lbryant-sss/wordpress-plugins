@@ -13,7 +13,7 @@
 
 
     <div class="mf-onboard-pagination">
-        <a class="mf-onboard-btn mf-onboard-pagi-btn prev" href="#"><i class="xs-onboard-arrow-left"></i><?php echo esc_html__('Back', 'metform'); ?></a>
+        <a class="mf-onboard-btn mf-onboard-pagi-btn prev" href="#"><i style="margin-right: -5px; margin-top: 4px;" class="xs-onboard-arrow-left"></i><?php echo esc_html__('Back', 'metform'); ?></a>
         <a class="mf-onboard-btn mf-onboard-pagi-btn next" href="#"><?php echo esc_html__('Next', 'metform'); ?></a>
     </div>
 

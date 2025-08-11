@@ -3,8 +3,8 @@ Contributors: WebFactory
 Tags: coming soon page, under construction mode, under construction, under construction page, coming soon mode
 Requires at least: 4.0
 Requires PHP: 5.2
-Tested up to: 6.7
-Stable tag: 4.02
+Tested up to: 6.8
+Stable tag: 4.03
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -140,6 +140,10 @@ Or if needed, upload manually;
 
 
 == Changelog ==
+= 4.03 =
+* 2025/08/10
+* expanded list of allowed CSS properties in Custom CSS
+
 = 4.02 =
 * 2025/02/10
 * fixed !doctype missing
