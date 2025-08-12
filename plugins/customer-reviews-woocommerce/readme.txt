@@ -4,7 +4,7 @@ Tags: woocommerce, review plugin, review reminder, customer reviews, review for 
 Requires at least: 4.5
 Tested up to: 6.8
 Requires PHP: 7.2
-Stable tag: 5.81.1
+Stable tag: 5.81.2
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -233,6 +233,8 @@ If you would like to change how reviews are sorted on product pages, it is possi
 
 == Changelog ==
 
+= 5.81.2 =
+* Improvement: compatibility with Android browsers to allow customers to open their camera and capture media files for their reviews
 = 5.81.1 =
 * Bug fix: SQL injection prevention
 = 5.81.0 =

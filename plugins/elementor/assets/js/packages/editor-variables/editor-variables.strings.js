@@ -34,9 +34,6 @@ __( 'Save', 'elementor' );
 __( 'Go Back', 'elementor' );
 __( 'Create variable', 'elementor' );
 __( 'Create', 'elementor' );
-__( 'Name', 'elementor' );
-__( 'Value', 'elementor' );
-__( 'Value', 'elementor' );
 __( 'Create your first variable', 'elementor' );
 __(
 							'Variables are saved attributes that you can apply anywhere on your site.',
@@ -68,6 +65,9 @@ __( 'All elements using', 'elementor' );
 __( 'will keep their current values, but the variable itself will be removed.', 'elementor' );
 __( 'Not now', 'elementor' );
 __( 'Delete', 'elementor' );
+__( 'Name', 'elementor' );
+__( 'Value', 'elementor' );
+__( 'Value', 'elementor' );
 __( 'Missing variable', 'elementor' );
 __( 'deleted', 'elementor' );
 __( 'Unlink', 'elementor' );

@@ -4,6 +4,8 @@
 
 /*! ./get-current-user */
 
+/*! ./on-set-user */
+
 /*! ./use-current-user */
 
 /*! ./use-current-user-capabilities */
@@ -37,6 +39,10 @@
 /*!*****************************************************************!*\
   !*** ./packages/packages/libs/editor-current-user/src/index.ts ***!
   \*****************************************************************/
+
+/*!***********************************************************************!*\
+  !*** ./packages/packages/libs/editor-current-user/src/on-set-user.ts ***!
+  \***********************************************************************/
 
 /*!****************************************************************************!*\
   !*** ./packages/packages/libs/editor-current-user/src/get-current-user.ts ***!

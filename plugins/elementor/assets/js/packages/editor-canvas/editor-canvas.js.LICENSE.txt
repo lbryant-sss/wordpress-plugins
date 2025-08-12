@@ -37,6 +37,8 @@
 
 /*! ./cjs/react-jsx-runtime.development.js */
 
+/*! ./components/classes-rename */
+
 /*! ./components/elements-overlays */
 
 /*! ./components/style-renderer */
@@ -143,6 +145,8 @@
 
 /*! @elementor/editor */
 
+/*! @elementor/editor-documents */
+
 /*! @elementor/editor-elements */
 
 /*! @elementor/editor-notifications */
@@ -232,6 +236,10 @@
 /*!*************************************************!*\
   !*** external ["elementorV2","editorElements"] ***!
   \*************************************************/
+
+/*!**************************************************!*\
+  !*** external ["elementorV2","editorDocuments"] ***!
+  \**************************************************/
 
 /*!***************************************************!*\
   !*** external ["elementorV2","editorResponsive"] ***!
@@ -328,6 +336,10 @@
 /*!*******************************************************************************!*\
   !*** ./packages/packages/core/editor-canvas/src/utils/abort-previous-runs.ts ***!
   \*******************************************************************************/
+
+/*!********************************************************************************!*\
+  !*** ./packages/packages/core/editor-canvas/src/components/classes-rename.tsx ***!
+  \********************************************************************************/
 
 /*!********************************************************************************!*\
   !*** ./packages/packages/core/editor-canvas/src/components/style-renderer.tsx ***!

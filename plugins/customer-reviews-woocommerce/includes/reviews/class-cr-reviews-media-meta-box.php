@@ -154,7 +154,7 @@ if ( ! class_exists( 'CR_Reviews_Media_Meta_Box' ) ) :
 			$uploadMedia = '<div class="cr-upload-local-images">';
 			$uploadMedia .= '<label for="review_image" class="cr-upload-local-images-status">';
 			$uploadMedia .= __( 'Upload images or videos', 'customer-reviews-woocommerce' );
-			$uploadMedia .= '</label><input type="file" accept="image/*, video/*" multiple="multiple" name="review_image_' . $comment->comment_ID . '[]" id="review_image" />';
+			$uploadMedia .= '</label><input type="file" capture="environment" accept="image/*, video/*" multiple="multiple" name="review_image_' . $comment->comment_ID . '[]" id="review_image" />';
 			$uploadMedia .= '<input type="button" class="cr-upload-local-images-btn button button-secondary" value="' .
 			__( 'Upload', 'customer-reviews-woocommerce' ) . '" data-postid="' . $comment->comment_post_ID .
 			'" data-commentid="' . $comment->comment_ID . '" data-nonce="' . wp_create_nonce( 'cr-upload-images' ) . '"/>';

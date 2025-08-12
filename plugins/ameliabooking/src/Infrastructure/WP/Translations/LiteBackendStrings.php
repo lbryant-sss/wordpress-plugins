@@ -1094,6 +1094,8 @@ class LiteBackendStrings
             'total_price'              => __('Total Price', 'ameliabooking'),
             'bookings_price'           => __('Bookings Price', 'ameliabooking'),
             'event_price'              => __('Event Price', 'ameliabooking'),
+            'paid_deposit'             => __('Paid deposit', 'ameliabooking'),
+            'paid_remaining_amount'    => __('Paid remaining amount', 'ameliabooking'),
         ];
     }
 

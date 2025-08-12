@@ -27,7 +27,9 @@
   "parent": [
     "mailchimp/mailchimp"
   ],
-  "usesContext": ["mailchimp/list_id"],
+  "usesContext": [
+    "mailchimp/list_id"
+  ],
   "editorScript": "file:./index.js",
   "render": "file:./markup.php"
 }

@@ -59,6 +59,7 @@ export declare class ScStripePaymentElement {
             };
         };
     };
+    maybeApplyFilters(options: any): any;
     /** Update the payment element mode, amount and currency when it changes. */
     createOrUpdateElements(): void;
     /** Update the default attributes of the element when they cahnge. */

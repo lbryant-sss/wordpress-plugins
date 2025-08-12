@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-07-30T20:08:49",
+  "timestamp": "2025-08-11T17:02:36",
   "compiler": {
     "name": "node",
     "version": "16.20.2"
@@ -9,11 +9,11 @@
     "fsNamespace": "surecart",
     "components": 229,
     "entries": 229,
-    "bundles": 4141,
+    "bundles": 4143,
     "outputs": [
       {
         "name": "dist-collection",
-        "files": 1290,
+        "files": 1292,
         "generatedFiles": [
           "./dist/collection/components/context/consumer/sc-consumer.js",
           "./dist/collection/components/context/consumer/sc-consumer.js.map",
@@ -1017,6 +1017,8 @@
           "./dist/collection/components/ui/stripe-element/test/sc-stripe-element.spec.js.map",
           "./dist/collection/components/ui/stripe-payment-element/sc-stripe-payment-element.js",
           "./dist/collection/components/ui/stripe-payment-element/sc-stripe-payment-element.js.map",
+          "./dist/collection/components/ui/stripe-payment-element/test/sc-stripe-payment-element.spec.js",
+          "./dist/collection/components/ui/stripe-payment-element/test/sc-stripe-payment-element.spec.js.map",
           "./dist/collection/components/ui/stripe-payment-request/sc-stripe-payment-request.js",
           "./dist/collection/components/ui/stripe-payment-request/sc-stripe-payment-request.js.map",
           "./dist/collection/components/ui/stripe-payment-request/test/sc-stripe-payment-request.e2e.js",
@@ -3311,6 +3313,8 @@
           "./dist/surecart/p-1d72a9f5.entry.js.map",
           "./dist/surecart/p-1e7454f5.entry.js",
           "./dist/surecart/p-1e7454f5.entry.js.map",
+          "./dist/surecart/p-1f203b9c.entry.js",
+          "./dist/surecart/p-1f203b9c.entry.js.map",
           "./dist/surecart/p-1f60f497.js",
           "./dist/surecart/p-1f60f497.js.map",
           "./dist/surecart/p-1fdec92b.entry.js",
@@ -3329,8 +3333,6 @@
           "./dist/surecart/p-24d4db19.entry.js.map",
           "./dist/surecart/p-254470ef.entry.js",
           "./dist/surecart/p-254470ef.entry.js.map",
-          "./dist/surecart/p-269ad1aa.entry.js",
-          "./dist/surecart/p-269ad1aa.entry.js.map",
           "./dist/surecart/p-2725f5b1.entry.js",
           "./dist/surecart/p-2725f5b1.entry.js.map",
           "./dist/surecart/p-27bcb46a.entry.js",
@@ -3423,8 +3425,6 @@
           "./dist/surecart/p-51628d41.entry.js.map",
           "./dist/surecart/p-53e7f7d7.js",
           "./dist/surecart/p-53e7f7d7.js.map",
-          "./dist/surecart/p-552e29a5.entry.js",
-          "./dist/surecart/p-552e29a5.entry.js.map",
           "./dist/surecart/p-566c9487.js",
           "./dist/surecart/p-566c9487.js.map",
           "./dist/surecart/p-56d85a8b.entry.js",
@@ -3463,6 +3463,8 @@
           "./dist/surecart/p-70f0a08f.entry.js.map",
           "./dist/surecart/p-72386d0b.entry.js",
           "./dist/surecart/p-72386d0b.entry.js.map",
+          "./dist/surecart/p-7297684a.entry.js",
+          "./dist/surecart/p-7297684a.entry.js.map",
           "./dist/surecart/p-72cf956d.entry.js",
           "./dist/surecart/p-72cf956d.entry.js.map",
           "./dist/surecart/p-73bbf66c.entry.js",
@@ -3761,6 +3763,8 @@
           "./www/build/p-1d72a9f5.entry.js.map",
           "./www/build/p-1e7454f5.entry.js",
           "./www/build/p-1e7454f5.entry.js.map",
+          "./www/build/p-1f203b9c.entry.js",
+          "./www/build/p-1f203b9c.entry.js.map",
           "./www/build/p-1f60f497.js",
           "./www/build/p-1f60f497.js.map",
           "./www/build/p-1fdec92b.entry.js",
@@ -3779,8 +3783,6 @@
           "./www/build/p-24d4db19.entry.js.map",
           "./www/build/p-254470ef.entry.js",
           "./www/build/p-254470ef.entry.js.map",
-          "./www/build/p-269ad1aa.entry.js",
-          "./www/build/p-269ad1aa.entry.js.map",
           "./www/build/p-2725f5b1.entry.js",
           "./www/build/p-2725f5b1.entry.js.map",
           "./www/build/p-27bcb46a.entry.js",
@@ -3873,8 +3875,6 @@
           "./www/build/p-51628d41.entry.js.map",
           "./www/build/p-53e7f7d7.js",
           "./www/build/p-53e7f7d7.js.map",
-          "./www/build/p-552e29a5.entry.js",
-          "./www/build/p-552e29a5.entry.js.map",
           "./www/build/p-566c9487.js",
           "./www/build/p-566c9487.js.map",
           "./www/build/p-56d85a8b.entry.js",
@@ -3913,6 +3913,8 @@
           "./www/build/p-70f0a08f.entry.js.map",
           "./www/build/p-72386d0b.entry.js",
           "./www/build/p-72386d0b.entry.js.map",
+          "./www/build/p-7297684a.entry.js",
+          "./www/build/p-7297684a.entry.js.map",
           "./www/build/p-72cf956d.entry.js",
           "./www/build/p-72cf956d.entry.js.map",
           "./www/build/p-73bbf66c.entry.js",
@@ -4711,8 +4713,8 @@
         "components": [
           "sc-dashboard-customer-details"
         ],
-        "bundleId": "p-269ad1aa",
-        "fileName": "p-269ad1aa.entry.js",
+        "bundleId": "p-1f203b9c",
+        "fileName": "p-1f203b9c.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-d9fa04f9.js",
@@ -4720,7 +4722,7 @@
           "p-401e165e.js",
           "p-d3366af3.js"
         ],
-        "originalByteSize": 2189
+        "originalByteSize": 2418
       },
       {
         "key": "sc-dashboard-downloads-list.entry",
@@ -5745,8 +5747,8 @@
         "components": [
           "sc-stripe-payment-element"
         ],
-        "bundleId": "p-552e29a5",
-        "fileName": "p-552e29a5.entry.js",
+        "bundleId": "p-7297684a",
+        "fileName": "p-7297684a.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-9ef0f73f.js",
@@ -5769,7 +5771,7 @@
           "p-93127aa7.js",
           "p-07b1b1ed.js"
         ],
-        "originalByteSize": 17803
+        "originalByteSize": 18030
       },
       {
         "key": "sc-subscription.entry",
@@ -7764,7 +7766,7 @@
           "add-query-args-0e2a8393.js",
           "remove-query-args-938c53ea.js"
         ],
-        "originalByteSize": 2229
+        "originalByteSize": 2458
       },
       {
         "key": "sc-dashboard-downloads-list.entry",
@@ -8813,7 +8815,7 @@
           "util-50af2a83.js",
           "address-b892540d.js"
         ],
-        "originalByteSize": 17928
+        "originalByteSize": 18155
       },
       {
         "key": "sc-subscription.entry",
@@ -10810,7 +10812,7 @@
           "add-query-args-49dcb630.js",
           "remove-query-args-b57e8cd3.js"
         ],
-        "originalByteSize": 2301
+        "originalByteSize": 2530
       },
       {
         "key": "sc-dashboard-downloads-list.entry",
@@ -11859,7 +11861,7 @@
           "util-b877b2bd.js",
           "address-4c70d641.js"
         ],
-        "originalByteSize": 18578
+        "originalByteSize": 18805
       },
       {
         "key": "sc-subscription.entry",
@@ -62533,6 +62535,7 @@
           "isPlain": false,
           "htmlAttrNames": [
             "key",
+            "exportparts",
             "customer",
             "loading",
             "error",
@@ -119505,6 +119508,10 @@
       "./src/components/ui/stripe-element/sc-stripe-element"
     ],
     "./src/components/ui/stripe-payment-element/sc-stripe-payment-element.tsx": [],
+    "./src/components/ui/stripe-payment-element/test/sc-stripe-payment-element.spec.tsx": [
+      "./src/store/checkout",
+      "./src/store/processors"
+    ],
     "./src/components/ui/stripe-payment-request/sc-stripe-payment-request.tsx": [
       "./src/services/session"
     ],

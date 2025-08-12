@@ -14,7 +14,7 @@ License: GPLv3
 
 <strong>Use My Sticky Bar to create a beautiful notification bar for your website. You can also use this notification bar & sticky menu plugin to make your menu or header sticky on top of page, after desired number of pixels when scrolled. You can use it also to create a Welcome bar for announcements, promotion and more. This lightweight plugin will help your visitors navigate easily and reach to the navigation menu without wasting time. Install My Sticky Bar and improve your website’s user experience! If you want to change the CSS style, disable on scroll down or disable on specific pages. check out the <a href="https://premio.io/downloads/mystickymenu/" target="_blank" title="My Sticky Bar pro plans">Pro version</a>.</strong>
 
-By default, My Sticky Bar should make your menu sticky right away if you turn the sticky menu feature on - which means your menu should become sticky right out of the box. Sticky menu is designed to use element class ".navbar" as "Sticky Class". That value should be modified in plugin settings for different themes to make it work. Sticky Class is actually nothing more than an element class (or id) of the element that should become sticky.
+By default, My Sticky Bar (formerly myStickymenu) should make your menu sticky right away if you turn the sticky menu feature on - which means your menu should become sticky right out of the box. Sticky menu is designed to use element class ".navbar" as "Sticky Class". That value should be modified in plugin settings for different themes to make it work. Sticky Class is actually nothing more than an element class (or id) of the element that should become sticky.
 
 [youtube  https://www.youtube.com/watch?v=l9aRnPVuCVY]
 

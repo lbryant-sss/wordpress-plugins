@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce 10.1.0-rc.2\n"
+"Project-Id-Version: WooCommerce 10.1.0-rc.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-08-04T10:09:56+00:00\n"
+"POT-Creation-Date: 2025-08-11T13:25:06+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: woocommerce\n"
@@ -14798,13 +14798,13 @@ msgstr ""
 
 #: includes/admin/list-tables/class-wc-admin-list-table-products.php:408
 #: includes/admin/meta-boxes/views/html-variation-admin.php:117
-#: includes/admin/wc-admin-functions.php:586
+#: includes/admin/wc-admin-functions.php:593
 msgid "Downloadable"
 msgstr ""
 
 #: includes/admin/list-tables/class-wc-admin-list-table-products.php:412
 #: includes/admin/meta-boxes/views/html-variation-admin.php:121
-#: includes/admin/wc-admin-functions.php:579
+#: includes/admin/wc-admin-functions.php:586
 msgid "Virtual"
 msgstr ""
 
@@ -20791,26 +20791,26 @@ msgid "Adjusted stock: %s"
 msgstr ""
 
 #. Translators: %d variation count.
-#: includes/admin/wc-admin-functions.php:532
+#: includes/admin/wc-admin-functions.php:539
 #, php-format
 msgid "%d variation does not have a price."
 msgid_plural "%d variations do not have prices."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/admin/wc-admin-functions.php:535
+#: includes/admin/wc-admin-functions.php:542
 msgid "Variations (and their attributes) that do not have prices will not be shown in your store."
 msgstr ""
 
-#: includes/admin/wc-admin-functions.php:540
+#: includes/admin/wc-admin-functions.php:547
 msgid "Add price"
 msgstr ""
 
-#: includes/admin/wc-admin-functions.php:580
+#: includes/admin/wc-admin-functions.php:587
 msgid "Virtual products are intangible and are not shipped."
 msgstr ""
 
-#: includes/admin/wc-admin-functions.php:587
+#: includes/admin/wc-admin-functions.php:594
 msgid "Downloadable products give access to a file upon purchase."
 msgstr ""
 

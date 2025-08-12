@@ -3,8 +3,8 @@ Tags: htaccess, htaccess editor, htaccess file, htaccess file editor, file edito
 Contributors: WebFactory
 Requires at least: 4.0
 Requires PHP: 5.2
-Tested up to: 6.6
-Stable tag: 1.72
+Tested up to: 6.8
+Stable tag: 1.73
 Playground: true
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -61,6 +61,10 @@ Or if needed, upload manually;
 
 
 == Changelog ==
+= v1.73 =
+* 2025/08/11
+* Minor code fixes
+
 = v1.72 =
 * 2024/07/10
 * Minor security fixes

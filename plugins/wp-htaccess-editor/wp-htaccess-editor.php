@@ -3,17 +3,17 @@
   Plugin Name: WP .htaccess Editor
   Plugin URI: https://wphtaccess.com/
   Description: Safe and easy way to edit the .htaccess file directly from WP admin without using FTP.
-  Version: 1.72
+  Version: 1.73
   Requires at least: 4.0
   Requires PHP: 5.2
-  Tested up to: 6.6
+  Tested up to: 6.8
   Author: WebFactory Ltd
   Author URI: https://www.webfactoryltd.com/
   Text Domain: wp-htaccess-editor
   Network: true
 
   Copyright 2011 - 2018  Lukenzi  (email: lukenzi@gmail.com)
-  Copyright 2018 - 2024  WebFactory Ltd (email: support@webfactoryltd.com)
+  Copyright 2018 - 2025  WebFactory Ltd (email: support@webfactoryltd.com)
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License, version 2, as
@@ -382,8 +382,7 @@ class WP_Htaccess_Editor
     private function update_options($key, $data)
     {
         if (false === in_array($key, array('options', 'meta', 'dismissed_notices'))) {
-            trigger_error('Unknown option key used in update_options($key, $data) function.', E_USER_ERROR);
-            return false;
+            return new WP_Error( 'invalid_option_key', 'Unknown option key' );
         }
 
         $this->options[$key] = $data;
@@ -479,8 +478,11 @@ class WP_Htaccess_Editor
         } else {
             $notices = $this->get_dismissed_notices();
             $notices[$notice_name] = true;
-            $this->update_options('dismissed_notices', $notices);
-            return true;
+            if(is_wp_error($this->update_options('dismissed_notices', $notices))){
+                return false;
+            } else {
+                return true;
+            }
         }
     } // dismiss_notice
 
@@ -567,7 +569,7 @@ class WP_Htaccess_Editor
             'nonce_dismiss_notice' => wp_create_nonce('wp-htaccess-editor_dismiss_notice'),
             'nonce_do_action' => wp_create_nonce('wp-htaccess-editor_do_action'),
             'cm_settings' => $editor_settings,
-            'wp301_install_url' => add_query_arg(array('action' => 'wp_htaccess_editor_install_wp301', '_wpnonce' => wp_create_nonce('install_wp301'), 'rnd' => rand()), admin_url('admin.php')),
+            'wp301_install_url' => add_query_arg(array('action' => 'wp_htaccess_editor_install_wp301', '_wpnonce' => wp_create_nonce('install_wp301'), 'rnd' => wp_rand()), admin_url('admin.php')),
         );
 
         wp_enqueue_style('wp-codemirror');
@@ -626,16 +628,16 @@ class WP_Htaccess_Editor
             // since we're working with code it's hard/impossible to sanitize input
             // WP core doesn't sanitize either for plugin/theme editor so it should be OK
             // nonce is in place and user permissions are double checked
-            $new_content = wp_unslash(trim($_POST['new_content']));
+            $new_content = wp_unslash(trim($_POST['new_content'])); //phpcs:ignore
             if (false == $this->is_htaccess_writable() || false == $this->write_htaccess($new_content)) {
                 wp_send_json_error(__('Could not write .htaccess file. Please check file permissions.', 'wp-htaccess-editor'));
             }
 
             wp_send_json_success();
         } elseif ($subaction == 'test_htaccess') {
-            $new_content = wp_unslash(trim($_POST['new_content']));
+            $new_content = wp_unslash(trim($_POST['new_content'])); //phpcs:ignore
             $uploads_directory = wp_upload_dir();
-            $test_id = rand(1000, 9999);
+            $test_id = wp_rand(1000, 9999);
             $htaccess_test_folder = $uploads_directory['basedir'] . '/htaccess-test-' . $test_id . '/';
             $htaccess_test_url = $uploads_directory['baseurl'] . '/htaccess-test-' . $test_id . '/';
 
@@ -698,8 +700,12 @@ class WP_Htaccess_Editor
         if (true === $result) {
             $meta = $this->get_meta();
             $meta['edits_count']++;
-            $this->update_options('meta', $meta);
-            return true;
+          
+            if(is_wp_error(  $this->update_options('meta', $meta))){
+                return false;
+            } else {
+                return true;
+            }
         } else {
             return false;
         }
@@ -729,8 +735,11 @@ class WP_Htaccess_Editor
         if ($db_save) {
             $tmp = $this->get_options();
             $tmp['last_backup'] = $htaccess_content_orig;
-            $this->update_options('options', $tmp);
-            $success = true;
+            if(is_wp_error($this->update_options('options', $tmp))){
+                $success = false;
+            } else {
+                $success = true;
+            }
         }
 
         if ($file_save) {
@@ -738,7 +747,7 @@ class WP_Htaccess_Editor
                 return false;
             }
 
-            $backup_path = trailingslashit(WP_CONTENT_DIR) . $this->backup_folder . '/htaccess-' . date('Y-m-d-H-i-s', current_time('timestamp')) . '.backup';
+            $backup_path = trailingslashit(WP_CONTENT_DIR) . $this->backup_folder . '/htaccess-' . gmdate('Y-m-d-H-i-s', current_time('timestamp')) . '.backup';
             $success = $this->wp_filesystem->put_contents($backup_path, $htaccess_content_orig);
         }
 

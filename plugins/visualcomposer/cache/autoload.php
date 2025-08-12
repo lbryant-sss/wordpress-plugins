@@ -388,6 +388,27 @@ return array (
       'make' => false,
       'singleton' => true,
     ),
+    'SettingsFieldsRegistryHelper' => 
+    array (
+      'name' => 'SettingsFieldsRegistryHelper',
+      'abstract' => 'VisualComposer\\Helpers\\Settings\\FieldsRegistry',
+      'make' => false,
+      'singleton' => true,
+    ),
+    'SettingsSectionsRegistryHelper' => 
+    array (
+      'name' => 'SettingsSectionsRegistryHelper',
+      'abstract' => 'VisualComposer\\Helpers\\Settings\\SectionsRegistry',
+      'make' => false,
+      'singleton' => true,
+    ),
+    'SettingsTabsRegistryHelper' => 
+    array (
+      'name' => 'SettingsTabsRegistryHelper',
+      'abstract' => 'VisualComposer\\Helpers\\Settings\\TabsRegistry',
+      'make' => false,
+      'singleton' => true,
+    ),
     'AccessCurrentUserHelper' => 
     array (
       'name' => 'AccessCurrentUserHelper',
@@ -416,237 +437,307 @@ return array (
       'make' => false,
       'singleton' => true,
     ),
-    'SettingsFieldsRegistryHelper' => 
-    array (
-      'name' => 'SettingsFieldsRegistryHelper',
-      'abstract' => 'VisualComposer\\Helpers\\Settings\\FieldsRegistry',
-      'make' => false,
-      'singleton' => true,
-    ),
-    'SettingsSectionsRegistryHelper' => 
-    array (
-      'name' => 'SettingsSectionsRegistryHelper',
-      'abstract' => 'VisualComposer\\Helpers\\Settings\\SectionsRegistry',
-      'make' => false,
-      'singleton' => true,
-    ),
-    'SettingsTabsRegistryHelper' => 
-    array (
-      'name' => 'SettingsTabsRegistryHelper',
-      'abstract' => 'VisualComposer\\Helpers\\Settings\\TabsRegistry',
-      'make' => false,
-      'singleton' => true,
-    ),
   ),
   'modules' => 
   array (
-    'AssetsAssetBundleCompressionController' => 
+    'ApiFactory' => 
     array (
-      'name' => 'AssetsAssetBundleCompressionController',
-      'abstract' => 'VisualComposer\\Modules\\Assets\\AssetBundleCompressionController',
+      'name' => 'ApiFactory',
+      'abstract' => 'VisualComposer\\Modules\\Api\\Factory',
       'make' => true,
       'singleton' => true,
     ),
-    'AssetsAssetBundleController' => 
+    'HubDownloadController' => 
     array (
-      'name' => 'AssetsAssetBundleController',
-      'abstract' => 'VisualComposer\\Modules\\Assets\\AssetBundleController',
+      'name' => 'HubDownloadController',
+      'abstract' => 'VisualComposer\\Modules\\Hub\\DownloadController',
       'make' => true,
       'singleton' => true,
     ),
-    'AssetsAssetResetController' => 
+    'HubJsonActionsController' => 
     array (
-      'name' => 'AssetsAssetResetController',
-      'abstract' => 'VisualComposer\\Modules\\Assets\\AssetResetController',
+      'name' => 'HubJsonActionsController',
+      'abstract' => 'VisualComposer\\Modules\\Hub\\JsonActionsController',
       'make' => true,
       'singleton' => true,
     ),
-    'AssetsDataController' => 
+    'HubUpdateController' => 
     array (
-      'name' => 'AssetsDataController',
-      'abstract' => 'VisualComposer\\Modules\\Assets\\DataController',
+      'name' => 'HubUpdateController',
+      'abstract' => 'VisualComposer\\Modules\\Hub\\UpdateController',
       'make' => true,
       'singleton' => true,
     ),
-    'AssetsEnqueueController' => 
+    'HubPagesHub' => 
     array (
-      'name' => 'AssetsEnqueueController',
-      'abstract' => 'VisualComposer\\Modules\\Assets\\EnqueueController',
+      'name' => 'HubPagesHub',
+      'abstract' => 'VisualComposer\\Modules\\Hub\\Pages\\Hub',
       'make' => true,
       'singleton' => true,
     ),
-    'AssetsFileController' => 
+    'HubPagesPremiumTeasers' => 
     array (
-      'name' => 'AssetsFileController',
-      'abstract' => 'VisualComposer\\Modules\\Assets\\FileController',
+      'name' => 'HubPagesPremiumTeasers',
+      'abstract' => 'VisualComposer\\Modules\\Hub\\Pages\\PremiumTeasers',
       'make' => true,
       'singleton' => true,
     ),
-    'AssetsJsDataController' => 
+    'HubPagesUpdateBePage' => 
     array (
-      'name' => 'AssetsJsDataController',
-      'abstract' => 'VisualComposer\\Modules\\Assets\\JsDataController',
+      'name' => 'HubPagesUpdateBePage',
+      'abstract' => 'VisualComposer\\Modules\\Hub\\Pages\\UpdateBePage',
       'make' => true,
       'singleton' => true,
     ),
-    'AssetsJsEnqueueController' => 
+    'HubPagesUpdateFePage' => 
     array (
-      'name' => 'AssetsJsEnqueueController',
-      'abstract' => 'VisualComposer\\Modules\\Assets\\JsEnqueueController',
+      'name' => 'HubPagesUpdateFePage',
+      'abstract' => 'VisualComposer\\Modules\\Hub\\Pages\\UpdateFePage',
       'make' => true,
       'singleton' => true,
     ),
-    'AssetsPreviewDataController' => 
+    'HubElementsElementDownloadController' => 
     array (
-      'name' => 'AssetsPreviewDataController',
-      'abstract' => 'VisualComposer\\Modules\\Assets\\PreviewDataController',
+      'name' => 'HubElementsElementDownloadController',
+      'abstract' => 'VisualComposer\\Modules\\Hub\\Elements\\ElementDownloadController',
       'make' => true,
       'singleton' => true,
     ),
-    'AssetsPreviewEnqueueController' => 
+    'HubElementsElements' => 
     array (
-      'name' => 'AssetsPreviewEnqueueController',
-      'abstract' => 'VisualComposer\\Modules\\Assets\\PreviewEnqueueController',
+      'name' => 'HubElementsElements',
+      'abstract' => 'VisualComposer\\Modules\\Hub\\Elements\\Elements',
       'make' => true,
       'singleton' => true,
     ),
-    'AssetsPreviewJsDataController' => 
+    'HubElementsElementsUpdater' => 
     array (
-      'name' => 'AssetsPreviewJsDataController',
-      'abstract' => 'VisualComposer\\Modules\\Assets\\PreviewJsDataController',
+      'name' => 'HubElementsElementsUpdater',
+      'abstract' => 'VisualComposer\\Modules\\Hub\\Elements\\ElementsUpdater',
       'make' => true,
       'singleton' => true,
     ),
-    'AssetsPreviewJsEnqueueController' => 
+    'HubElementsTeasersTeasersController' => 
     array (
-      'name' => 'AssetsPreviewJsEnqueueController',
-      'abstract' => 'VisualComposer\\Modules\\Assets\\PreviewJsEnqueueController',
+      'name' => 'HubElementsTeasersTeasersController',
+      'abstract' => 'VisualComposer\\Modules\\Hub\\Elements\\Teasers\\TeasersController',
       'make' => true,
       'singleton' => true,
     ),
-    'AssetsSharedController' => 
+    'HubElementsTeasersTeasersDownloadController' => 
     array (
-      'name' => 'AssetsSharedController',
-      'abstract' => 'VisualComposer\\Modules\\Assets\\SharedController',
+      'name' => 'HubElementsTeasersTeasersDownloadController',
+      'abstract' => 'VisualComposer\\Modules\\Hub\\Elements\\Teasers\\TeasersDownloadController',
       'make' => true,
       'singleton' => true,
     ),
-    'UtmUtm' => 
+    'HubGroupsCategoriesCategories' => 
     array (
-      'name' => 'UtmUtm',
-      'abstract' => 'VisualComposer\\Modules\\Utm\\Utm',
+      'name' => 'HubGroupsCategoriesCategories',
+      'abstract' => 'VisualComposer\\Modules\\Hub\\GroupsCategories\\Categories',
       'make' => true,
       'singleton' => true,
     ),
-    'MigrationsAssets22Migration' => 
+    'HubGroupsCategoriesCategoriesUpdater' => 
     array (
-      'name' => 'MigrationsAssets22Migration',
-      'abstract' => 'VisualComposer\\Modules\\Migrations\\Assets22Migration',
+      'name' => 'HubGroupsCategoriesCategoriesUpdater',
+      'abstract' => 'VisualComposer\\Modules\\Hub\\GroupsCategories\\CategoriesUpdater',
       'make' => true,
       'singleton' => true,
     ),
-    'MigrationsCustomTemplatesTypeMigration' => 
+    'HubGroupsCategoriesGroups' => 
     array (
-      'name' => 'MigrationsCustomTemplatesTypeMigration',
-      'abstract' => 'VisualComposer\\Modules\\Migrations\\CustomTemplatesTypeMigration',
+      'name' => 'HubGroupsCategoriesGroups',
+      'abstract' => 'VisualComposer\\Modules\\Hub\\GroupsCategories\\Groups',
       'make' => true,
       'singleton' => true,
     ),
-    'MigrationsDatabaseMigration' => 
+    'HubGroupsCategoriesGroupsUpdater' => 
     array (
-      'name' => 'MigrationsDatabaseMigration',
-      'abstract' => 'VisualComposer\\Modules\\Migrations\\DatabaseMigration',
+      'name' => 'HubGroupsCategoriesGroupsUpdater',
+      'abstract' => 'VisualComposer\\Modules\\Hub\\GroupsCategories\\GroupsUpdater',
       'make' => true,
       'singleton' => true,
     ),
-    'MigrationsDefaultCapabilitiesMigration' => 
+    'HubStockMediaStockMediaDownloadController' => 
     array (
-      'name' => 'MigrationsDefaultCapabilitiesMigration',
-      'abstract' => 'VisualComposer\\Modules\\Migrations\\DefaultCapabilitiesMigration',
+      'name' => 'HubStockMediaStockMediaDownloadController',
+      'abstract' => 'VisualComposer\\Modules\\Hub\\StockMedia\\StockMediaDownloadController',
       'make' => true,
       'singleton' => true,
     ),
-    'MigrationsDefaultElementsMigration' => 
+    'HubActionsPostUpdateAction' => 
     array (
-      'name' => 'MigrationsDefaultElementsMigration',
-      'abstract' => 'VisualComposer\\Modules\\Migrations\\DefaultElementsMigration',
+      'name' => 'HubActionsPostUpdateAction',
+      'abstract' => 'VisualComposer\\Modules\\Hub\\Actions\\PostUpdateAction',
       'make' => true,
       'singleton' => true,
     ),
-    'MigrationsEnabledPostTypesMigration' => 
+    'HubTemplatesTemplateDownloadController' => 
     array (
-      'name' => 'MigrationsEnabledPostTypesMigration',
-      'abstract' => 'VisualComposer\\Modules\\Migrations\\EnabledPostTypesMigration',
+      'name' => 'HubTemplatesTemplateDownloadController',
+      'abstract' => 'VisualComposer\\Modules\\Hub\\Templates\\TemplateDownloadController',
       'make' => true,
       'singleton' => true,
     ),
-    'MigrationsFreeMigration' => 
+    'HubTemplatesTemplatesUpdater' => 
     array (
-      'name' => 'MigrationsFreeMigration',
-      'abstract' => 'VisualComposer\\Modules\\Migrations\\FreeMigration',
+      'name' => 'HubTemplatesTemplatesUpdater',
+      'abstract' => 'VisualComposer\\Modules\\Hub\\Templates\\TemplatesUpdater',
       'make' => true,
       'singleton' => true,
     ),
-    'MigrationsGlobalJavascriptMigration' => 
+    'HubTemplatesTeasersTeasersController' => 
     array (
-      'name' => 'MigrationsGlobalJavascriptMigration',
-      'abstract' => 'VisualComposer\\Modules\\Migrations\\GlobalJavascriptMigration',
+      'name' => 'HubTemplatesTeasersTeasersController',
+      'abstract' => 'VisualComposer\\Modules\\Hub\\Templates\\Teasers\\TeasersController',
       'make' => true,
       'singleton' => true,
     ),
-    'MigrationsLicenseMigration' => 
+    'HubTemplatesTeasersTeasersDownloadController' => 
     array (
-      'name' => 'MigrationsLicenseMigration',
-      'abstract' => 'VisualComposer\\Modules\\Migrations\\LicenseMigration',
+      'name' => 'HubTemplatesTeasersTeasersDownloadController',
+      'abstract' => 'VisualComposer\\Modules\\Hub\\Templates\\Teasers\\TeasersDownloadController',
       'make' => true,
       'singleton' => true,
     ),
-    'MigrationsMaintenanceModeMigration' => 
+    'HubAssetsAssetDownloadController' => 
     array (
-      'name' => 'MigrationsMaintenanceModeMigration',
-      'abstract' => 'VisualComposer\\Modules\\Migrations\\MaintenanceModeMigration',
+      'name' => 'HubAssetsAssetDownloadController',
+      'abstract' => 'VisualComposer\\Modules\\Hub\\Assets\\AssetDownloadController',
       'make' => true,
       'singleton' => true,
     ),
-    'MigrationsMergeArchivesLayoutsMigration' => 
+    'HubAddonsAddonDownloadController' => 
     array (
-      'name' => 'MigrationsMergeArchivesLayoutsMigration',
-      'abstract' => 'VisualComposer\\Modules\\Migrations\\MergeArchivesLayoutsMigration',
+      'name' => 'HubAddonsAddonDownloadController',
+      'abstract' => 'VisualComposer\\Modules\\Hub\\Addons\\AddonDownloadController',
       'make' => true,
       'singleton' => true,
     ),
-    'MigrationsNewDefaultCapabilitiesMigration' => 
+    'HubAddonsAddons' => 
     array (
-      'name' => 'MigrationsNewDefaultCapabilitiesMigration',
-      'abstract' => 'VisualComposer\\Modules\\Migrations\\NewDefaultCapabilitiesMigration',
+      'name' => 'HubAddonsAddons',
+      'abstract' => 'VisualComposer\\Modules\\Hub\\Addons\\Addons',
       'make' => true,
       'singleton' => true,
     ),
-    'MigrationsPredefinedTemplateMigration' => 
+    'HubAddonsAddonsUpdater' => 
     array (
-      'name' => 'MigrationsPredefinedTemplateMigration',
-      'abstract' => 'VisualComposer\\Modules\\Migrations\\PredefinedTemplateMigration',
+      'name' => 'HubAddonsAddonsUpdater',
+      'abstract' => 'VisualComposer\\Modules\\Hub\\Addons\\AddonsUpdater',
       'make' => true,
       'singleton' => true,
     ),
-    'MigrationsSettingsMigration' => 
+    'HubAddonsTeasersTeasersController' => 
     array (
-      'name' => 'MigrationsSettingsMigration',
-      'abstract' => 'VisualComposer\\Modules\\Migrations\\SettingsMigration',
+      'name' => 'HubAddonsTeasersTeasersController',
+      'abstract' => 'VisualComposer\\Modules\\Hub\\Addons\\Teasers\\TeasersController',
       'make' => true,
       'singleton' => true,
     ),
-    'MigrationsTemplates114Migration' => 
+    'HubAddonsTeasersTeasersDownloadController' => 
     array (
-      'name' => 'MigrationsTemplates114Migration',
-      'abstract' => 'VisualComposer\\Modules\\Migrations\\Templates114Migration',
+      'name' => 'HubAddonsTeasersTeasersDownloadController',
+      'abstract' => 'VisualComposer\\Modules\\Hub\\Addons\\Teasers\\TeasersDownloadController',
       'make' => true,
       'singleton' => true,
     ),
-    'MigrationsUpdateGlobalElementsMigration' => 
+    'InternationalizationLocale' => 
     array (
-      'name' => 'MigrationsUpdateGlobalElementsMigration',
-      'abstract' => 'VisualComposer\\Modules\\Migrations\\UpdateGlobalElementsMigration',
+      'name' => 'InternationalizationLocale',
+      'abstract' => 'VisualComposer\\Modules\\Internationalization\\Locale',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'SettingsCustomPostTypesController' => 
+    array (
+      'name' => 'SettingsCustomPostTypesController',
+      'abstract' => 'VisualComposer\\Modules\\Settings\\CustomPostTypesController',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'SettingsMenuController' => 
+    array (
+      'name' => 'SettingsMenuController',
+      'abstract' => 'VisualComposer\\Modules\\Settings\\MenuController',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'SettingsNoticeController' => 
+    array (
+      'name' => 'SettingsNoticeController',
+      'abstract' => 'VisualComposer\\Modules\\Settings\\NoticeController',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'SettingsSettingsController' => 
+    array (
+      'name' => 'SettingsSettingsController',
+      'abstract' => 'VisualComposer\\Modules\\Settings\\SettingsController',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'SettingsPagesCssJsSettings' => 
+    array (
+      'name' => 'SettingsPagesCssJsSettings',
+      'abstract' => 'VisualComposer\\Modules\\Settings\\Pages\\CssJsSettings',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'SettingsPagesMaintenanceMode' => 
+    array (
+      'name' => 'SettingsPagesMaintenanceMode',
+      'abstract' => 'VisualComposer\\Modules\\Settings\\Pages\\MaintenanceMode',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'SettingsPagesRoleManager' => 
+    array (
+      'name' => 'SettingsPagesRoleManager',
+      'abstract' => 'VisualComposer\\Modules\\Settings\\Pages\\RoleManager',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'SettingsPagesSettings' => 
+    array (
+      'name' => 'SettingsPagesSettings',
+      'abstract' => 'VisualComposer\\Modules\\Settings\\Pages\\Settings',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'SettingsPagesSystemStatus' => 
+    array (
+      'name' => 'SettingsPagesSystemStatus',
+      'abstract' => 'VisualComposer\\Modules\\Settings\\Pages\\SystemStatus',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'SettingsFieldsCssEditor' => 
+    array (
+      'name' => 'SettingsFieldsCssEditor',
+      'abstract' => 'VisualComposer\\Modules\\Settings\\Fields\\CssEditor',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'SettingsFieldsFactoryResetController' => 
+    array (
+      'name' => 'SettingsFieldsFactoryResetController',
+      'abstract' => 'VisualComposer\\Modules\\Settings\\Fields\\FactoryResetController',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'SettingsFieldsJsEditor' => 
+    array (
+      'name' => 'SettingsFieldsJsEditor',
+      'abstract' => 'VisualComposer\\Modules\\Settings\\Fields\\JsEditor',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'SettingsAjaxSystemStatusController' => 
+    array (
+      'name' => 'SettingsAjaxSystemStatusController',
+      'abstract' => 'VisualComposer\\Modules\\Settings\\Ajax\\SystemStatusController',
       'make' => true,
       'singleton' => true,
     ),
@@ -671,10 +762,10 @@ return array (
       'make' => true,
       'singleton' => true,
     ),
-    'ElementsAjaxShortcodeController' => 
+    'ElementsEncodedShortcodeController' => 
     array (
-      'name' => 'ElementsAjaxShortcodeController',
-      'abstract' => 'VisualComposer\\Modules\\Elements\\AjaxShortcode\\Controller',
+      'name' => 'ElementsEncodedShortcodeController',
+      'abstract' => 'VisualComposer\\Modules\\Elements\\EncodedShortcode\\Controller',
       'make' => true,
       'singleton' => true,
     ),
@@ -685,17 +776,17 @@ return array (
       'make' => true,
       'singleton' => true,
     ),
-    'ElementsGlobalVariablesController' => 
+    'ElementsAjaxImageControllerController' => 
     array (
-      'name' => 'ElementsGlobalVariablesController',
-      'abstract' => 'VisualComposer\\Modules\\Elements\\GlobalVariables\\Controller',
+      'name' => 'ElementsAjaxImageControllerController',
+      'abstract' => 'VisualComposer\\Modules\\Elements\\AjaxImageController\\Controller',
       'make' => true,
       'singleton' => true,
     ),
-    'ElementsEncodedShortcodeController' => 
+    'ElementsAjaxShortcodeController' => 
     array (
-      'name' => 'ElementsEncodedShortcodeController',
-      'abstract' => 'VisualComposer\\Modules\\Elements\\EncodedShortcode\\Controller',
+      'name' => 'ElementsAjaxShortcodeController',
+      'abstract' => 'VisualComposer\\Modules\\Elements\\AjaxShortcode\\Controller',
       'make' => true,
       'singleton' => true,
     ),
@@ -713,24 +804,10 @@ return array (
       'make' => true,
       'singleton' => true,
     ),
-    'ElementsAjaxImageControllerController' => 
+    'ElementsGlobalVariablesController' => 
     array (
-      'name' => 'ElementsAjaxImageControllerController',
-      'abstract' => 'VisualComposer\\Modules\\Elements\\AjaxImageController\\Controller',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'AutoloadAddonsAutoload' => 
-    array (
-      'name' => 'AutoloadAddonsAutoload',
-      'abstract' => 'VisualComposer\\Modules\\Autoload\\AddonsAutoload',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'AutoloadElementsAutoload' => 
-    array (
-      'name' => 'AutoloadElementsAutoload',
-      'abstract' => 'VisualComposer\\Modules\\Autoload\\ElementsAutoload',
+      'name' => 'ElementsGlobalVariablesController',
+      'abstract' => 'VisualComposer\\Modules\\Elements\\GlobalVariables\\Controller',
       'make' => true,
       'singleton' => true,
     ),
@@ -748,10 +825,17 @@ return array (
       'make' => true,
       'singleton' => true,
     ),
-    'EditorsPageEditableController' => 
+    'EditorsTutorialController' => 
     array (
-      'name' => 'EditorsPageEditableController',
-      'abstract' => 'VisualComposer\\Modules\\Editors\\PageEditable\\Controller',
+      'name' => 'EditorsTutorialController',
+      'abstract' => 'VisualComposer\\Modules\\Editors\\Tutorial\\Controller',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'EditorsTutorialPostType' => 
+    array (
+      'name' => 'EditorsTutorialPostType',
+      'abstract' => 'VisualComposer\\Modules\\Editors\\Tutorial\\PostType',
       'make' => true,
       'singleton' => true,
     ),
@@ -787,174 +871,6 @@ return array (
     array (
       'name' => 'EditorsFrontendVariablesController',
       'abstract' => 'VisualComposer\\Modules\\Editors\\Frontend\\VariablesController',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'EditorsFrontendLayoutSwitcherBundleController' => 
-    array (
-      'name' => 'EditorsFrontendLayoutSwitcherBundleController',
-      'abstract' => 'VisualComposer\\Modules\\Editors\\FrontendLayoutSwitcher\\BundleController',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'EditorsDataAjaxController' => 
-    array (
-      'name' => 'EditorsDataAjaxController',
-      'abstract' => 'VisualComposer\\Modules\\Editors\\DataAjax\\Controller',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'EditorsDataAjaxPostDataController' => 
-    array (
-      'name' => 'EditorsDataAjaxPostDataController',
-      'abstract' => 'VisualComposer\\Modules\\Editors\\DataAjax\\PostDataController',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'EditorsDataAjaxPostFieldsController' => 
-    array (
-      'name' => 'EditorsDataAjaxPostFieldsController',
-      'abstract' => 'VisualComposer\\Modules\\Editors\\DataAjax\\PostFieldsController',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'EditorsDataAjaxRevisionController' => 
-    array (
-      'name' => 'EditorsDataAjaxRevisionController',
-      'abstract' => 'VisualComposer\\Modules\\Editors\\DataAjax\\RevisionController',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'EditorsElementsController' => 
-    array (
-      'name' => 'EditorsElementsController',
-      'abstract' => 'VisualComposer\\Modules\\Editors\\Elements\\Controller',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'EditorsEditPostLinksController' => 
-    array (
-      'name' => 'EditorsEditPostLinksController',
-      'abstract' => 'VisualComposer\\Modules\\Editors\\EditPostLinks\\Controller',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'EditorsDataUsageMostUsedItemsController' => 
-    array (
-      'name' => 'EditorsDataUsageMostUsedItemsController',
-      'abstract' => 'VisualComposer\\Modules\\Editors\\DataUsage\\MostUsedItemsController',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'EditorsNotificationsController' => 
-    array (
-      'name' => 'EditorsNotificationsController',
-      'abstract' => 'VisualComposer\\Modules\\Editors\\Notifications\\Controller',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'EditorsTemplatesController' => 
-    array (
-      'name' => 'EditorsTemplatesController',
-      'abstract' => 'VisualComposer\\Modules\\Editors\\Templates\\Controller',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'EditorsTemplatesPostType' => 
-    array (
-      'name' => 'EditorsTemplatesPostType',
-      'abstract' => 'VisualComposer\\Modules\\Editors\\Templates\\PostType',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'EditorsInitialHelpersController' => 
-    array (
-      'name' => 'EditorsInitialHelpersController',
-      'abstract' => 'VisualComposer\\Modules\\Editors\\InitialHelpers\\Controller',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'EditorsPopupsPremiumPromoController' => 
-    array (
-      'name' => 'EditorsPopupsPremiumPromoController',
-      'abstract' => 'VisualComposer\\Modules\\Editors\\Popups\\PremiumPromoController',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'EditorsBackendSaveSetEditorController' => 
-    array (
-      'name' => 'EditorsBackendSaveSetEditorController',
-      'abstract' => 'VisualComposer\\Modules\\Editors\\Backend\\SaveSetEditorController',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'EditorsTutorialController' => 
-    array (
-      'name' => 'EditorsTutorialController',
-      'abstract' => 'VisualComposer\\Modules\\Editors\\Tutorial\\Controller',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'EditorsTutorialPostType' => 
-    array (
-      'name' => 'EditorsTutorialPostType',
-      'abstract' => 'VisualComposer\\Modules\\Editors\\Tutorial\\PostType',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'EditorsAttributesWpEditor' => 
-    array (
-      'name' => 'EditorsAttributesWpEditor',
-      'abstract' => 'VisualComposer\\Modules\\Editors\\Attributes\\WpEditor',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'EditorsAttributesAjaxFormController' => 
-    array (
-      'name' => 'EditorsAttributesAjaxFormController',
-      'abstract' => 'VisualComposer\\Modules\\Editors\\Attributes\\AjaxForm\\Controller',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'EditorsAttributesCodeMirrorCodeMirrorController' => 
-    array (
-      'name' => 'EditorsAttributesCodeMirrorCodeMirrorController',
-      'abstract' => 'VisualComposer\\Modules\\Editors\\Attributes\\CodeMirror\\CodeMirrorController',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'EditorsAttributesIconPickerController' => 
-    array (
-      'name' => 'EditorsAttributesIconPickerController',
-      'abstract' => 'VisualComposer\\Modules\\Editors\\Attributes\\IconPicker\\Controller',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'EditorsAttributesCheckboxController' => 
-    array (
-      'name' => 'EditorsAttributesCheckboxController',
-      'abstract' => 'VisualComposer\\Modules\\Editors\\Attributes\\Checkbox\\Controller',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'EditorsAttributesAutoCompleteController' => 
-    array (
-      'name' => 'EditorsAttributesAutoCompleteController',
-      'abstract' => 'VisualComposer\\Modules\\Editors\\Attributes\\AutoComplete\\Controller',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'EditorsAttributesPageDesignOptionsController' => 
-    array (
-      'name' => 'EditorsAttributesPageDesignOptionsController',
-      'abstract' => 'VisualComposer\\Modules\\Editors\\Attributes\\PageDesignOptions\\Controller',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'EditorsAttributesUrlController' => 
-    array (
-      'name' => 'EditorsAttributesUrlController',
-      'abstract' => 'VisualComposer\\Modules\\Editors\\Attributes\\Url\\Controller',
       'make' => true,
       'singleton' => true,
     ),
@@ -1084,318 +1000,164 @@ return array (
       'make' => true,
       'singleton' => true,
     ),
-    'ImportImportController' => 
+    'EditorsInitialHelpersController' => 
     array (
-      'name' => 'ImportImportController',
-      'abstract' => 'VisualComposer\\Modules\\Import\\ImportController',
+      'name' => 'EditorsInitialHelpersController',
+      'abstract' => 'VisualComposer\\Modules\\Editors\\InitialHelpers\\Controller',
       'make' => true,
       'singleton' => true,
     ),
-    'InternationalizationLocale' => 
+    'EditorsBackendSaveSetEditorController' => 
     array (
-      'name' => 'InternationalizationLocale',
-      'abstract' => 'VisualComposer\\Modules\\Internationalization\\Locale',
+      'name' => 'EditorsBackendSaveSetEditorController',
+      'abstract' => 'VisualComposer\\Modules\\Editors\\Backend\\SaveSetEditorController',
       'make' => true,
       'singleton' => true,
     ),
-    'ApiFactory' => 
+    'EditorsElementsController' => 
     array (
-      'name' => 'ApiFactory',
-      'abstract' => 'VisualComposer\\Modules\\Api\\Factory',
+      'name' => 'EditorsElementsController',
+      'abstract' => 'VisualComposer\\Modules\\Editors\\Elements\\Controller',
       'make' => true,
       'singleton' => true,
     ),
-    'HubDownloadController' => 
+    'EditorsNotificationsController' => 
     array (
-      'name' => 'HubDownloadController',
-      'abstract' => 'VisualComposer\\Modules\\Hub\\DownloadController',
+      'name' => 'EditorsNotificationsController',
+      'abstract' => 'VisualComposer\\Modules\\Editors\\Notifications\\Controller',
       'make' => true,
       'singleton' => true,
     ),
-    'HubJsonActionsController' => 
+    'EditorsPopupsPremiumPromoController' => 
     array (
-      'name' => 'HubJsonActionsController',
-      'abstract' => 'VisualComposer\\Modules\\Hub\\JsonActionsController',
+      'name' => 'EditorsPopupsPremiumPromoController',
+      'abstract' => 'VisualComposer\\Modules\\Editors\\Popups\\PremiumPromoController',
       'make' => true,
       'singleton' => true,
     ),
-    'HubUpdateController' => 
+    'EditorsAttributesWpEditor' => 
     array (
-      'name' => 'HubUpdateController',
-      'abstract' => 'VisualComposer\\Modules\\Hub\\UpdateController',
+      'name' => 'EditorsAttributesWpEditor',
+      'abstract' => 'VisualComposer\\Modules\\Editors\\Attributes\\WpEditor',
       'make' => true,
       'singleton' => true,
     ),
-    'HubActionsPostUpdateAction' => 
+    'EditorsAttributesPageDesignOptionsController' => 
     array (
-      'name' => 'HubActionsPostUpdateAction',
-      'abstract' => 'VisualComposer\\Modules\\Hub\\Actions\\PostUpdateAction',
+      'name' => 'EditorsAttributesPageDesignOptionsController',
+      'abstract' => 'VisualComposer\\Modules\\Editors\\Attributes\\PageDesignOptions\\Controller',
       'make' => true,
       'singleton' => true,
     ),
-    'HubAssetsAssetDownloadController' => 
+    'EditorsAttributesCodeMirrorCodeMirrorController' => 
     array (
-      'name' => 'HubAssetsAssetDownloadController',
-      'abstract' => 'VisualComposer\\Modules\\Hub\\Assets\\AssetDownloadController',
+      'name' => 'EditorsAttributesCodeMirrorCodeMirrorController',
+      'abstract' => 'VisualComposer\\Modules\\Editors\\Attributes\\CodeMirror\\CodeMirrorController',
       'make' => true,
       'singleton' => true,
     ),
-    'HubGroupsCategoriesCategories' => 
+    'EditorsAttributesIconPickerController' => 
     array (
-      'name' => 'HubGroupsCategoriesCategories',
-      'abstract' => 'VisualComposer\\Modules\\Hub\\GroupsCategories\\Categories',
+      'name' => 'EditorsAttributesIconPickerController',
+      'abstract' => 'VisualComposer\\Modules\\Editors\\Attributes\\IconPicker\\Controller',
       'make' => true,
       'singleton' => true,
     ),
-    'HubGroupsCategoriesCategoriesUpdater' => 
+    'EditorsAttributesAjaxFormController' => 
     array (
-      'name' => 'HubGroupsCategoriesCategoriesUpdater',
-      'abstract' => 'VisualComposer\\Modules\\Hub\\GroupsCategories\\CategoriesUpdater',
+      'name' => 'EditorsAttributesAjaxFormController',
+      'abstract' => 'VisualComposer\\Modules\\Editors\\Attributes\\AjaxForm\\Controller',
       'make' => true,
       'singleton' => true,
     ),
-    'HubGroupsCategoriesGroups' => 
+    'EditorsAttributesCheckboxController' => 
     array (
-      'name' => 'HubGroupsCategoriesGroups',
-      'abstract' => 'VisualComposer\\Modules\\Hub\\GroupsCategories\\Groups',
+      'name' => 'EditorsAttributesCheckboxController',
+      'abstract' => 'VisualComposer\\Modules\\Editors\\Attributes\\Checkbox\\Controller',
       'make' => true,
       'singleton' => true,
     ),
-    'HubGroupsCategoriesGroupsUpdater' => 
+    'EditorsAttributesUrlController' => 
     array (
-      'name' => 'HubGroupsCategoriesGroupsUpdater',
-      'abstract' => 'VisualComposer\\Modules\\Hub\\GroupsCategories\\GroupsUpdater',
+      'name' => 'EditorsAttributesUrlController',
+      'abstract' => 'VisualComposer\\Modules\\Editors\\Attributes\\Url\\Controller',
       'make' => true,
       'singleton' => true,
     ),
-    'HubElementsElementDownloadController' => 
+    'EditorsAttributesAutoCompleteController' => 
     array (
-      'name' => 'HubElementsElementDownloadController',
-      'abstract' => 'VisualComposer\\Modules\\Hub\\Elements\\ElementDownloadController',
+      'name' => 'EditorsAttributesAutoCompleteController',
+      'abstract' => 'VisualComposer\\Modules\\Editors\\Attributes\\AutoComplete\\Controller',
       'make' => true,
       'singleton' => true,
     ),
-    'HubElementsElements' => 
+    'EditorsEditPostLinksController' => 
     array (
-      'name' => 'HubElementsElements',
-      'abstract' => 'VisualComposer\\Modules\\Hub\\Elements\\Elements',
+      'name' => 'EditorsEditPostLinksController',
+      'abstract' => 'VisualComposer\\Modules\\Editors\\EditPostLinks\\Controller',
       'make' => true,
       'singleton' => true,
     ),
-    'HubElementsElementsUpdater' => 
+    'EditorsDataUsageMostUsedItemsController' => 
     array (
-      'name' => 'HubElementsElementsUpdater',
-      'abstract' => 'VisualComposer\\Modules\\Hub\\Elements\\ElementsUpdater',
+      'name' => 'EditorsDataUsageMostUsedItemsController',
+      'abstract' => 'VisualComposer\\Modules\\Editors\\DataUsage\\MostUsedItemsController',
       'make' => true,
       'singleton' => true,
     ),
-    'HubElementsTeasersTeasersController' => 
+    'EditorsTemplatesController' => 
     array (
-      'name' => 'HubElementsTeasersTeasersController',
-      'abstract' => 'VisualComposer\\Modules\\Hub\\Elements\\Teasers\\TeasersController',
+      'name' => 'EditorsTemplatesController',
+      'abstract' => 'VisualComposer\\Modules\\Editors\\Templates\\Controller',
       'make' => true,
       'singleton' => true,
     ),
-    'HubElementsTeasersTeasersDownloadController' => 
+    'EditorsTemplatesPostType' => 
     array (
-      'name' => 'HubElementsTeasersTeasersDownloadController',
-      'abstract' => 'VisualComposer\\Modules\\Hub\\Elements\\Teasers\\TeasersDownloadController',
+      'name' => 'EditorsTemplatesPostType',
+      'abstract' => 'VisualComposer\\Modules\\Editors\\Templates\\PostType',
       'make' => true,
       'singleton' => true,
     ),
-    'HubPagesHub' => 
+    'EditorsDataAjaxController' => 
     array (
-      'name' => 'HubPagesHub',
-      'abstract' => 'VisualComposer\\Modules\\Hub\\Pages\\Hub',
+      'name' => 'EditorsDataAjaxController',
+      'abstract' => 'VisualComposer\\Modules\\Editors\\DataAjax\\Controller',
       'make' => true,
       'singleton' => true,
     ),
-    'HubPagesPremiumTeasers' => 
+    'EditorsDataAjaxPostDataController' => 
     array (
-      'name' => 'HubPagesPremiumTeasers',
-      'abstract' => 'VisualComposer\\Modules\\Hub\\Pages\\PremiumTeasers',
+      'name' => 'EditorsDataAjaxPostDataController',
+      'abstract' => 'VisualComposer\\Modules\\Editors\\DataAjax\\PostDataController',
       'make' => true,
       'singleton' => true,
     ),
-    'HubPagesUpdateBePage' => 
+    'EditorsDataAjaxPostFieldsController' => 
     array (
-      'name' => 'HubPagesUpdateBePage',
-      'abstract' => 'VisualComposer\\Modules\\Hub\\Pages\\UpdateBePage',
+      'name' => 'EditorsDataAjaxPostFieldsController',
+      'abstract' => 'VisualComposer\\Modules\\Editors\\DataAjax\\PostFieldsController',
       'make' => true,
       'singleton' => true,
     ),
-    'HubPagesUpdateFePage' => 
+    'EditorsDataAjaxRevisionController' => 
     array (
-      'name' => 'HubPagesUpdateFePage',
-      'abstract' => 'VisualComposer\\Modules\\Hub\\Pages\\UpdateFePage',
+      'name' => 'EditorsDataAjaxRevisionController',
+      'abstract' => 'VisualComposer\\Modules\\Editors\\DataAjax\\RevisionController',
       'make' => true,
       'singleton' => true,
     ),
-    'HubTemplatesTemplateDownloadController' => 
+    'EditorsPageEditableController' => 
     array (
-      'name' => 'HubTemplatesTemplateDownloadController',
-      'abstract' => 'VisualComposer\\Modules\\Hub\\Templates\\TemplateDownloadController',
+      'name' => 'EditorsPageEditableController',
+      'abstract' => 'VisualComposer\\Modules\\Editors\\PageEditable\\Controller',
       'make' => true,
       'singleton' => true,
     ),
-    'HubTemplatesTemplatesUpdater' => 
+    'EditorsFrontendLayoutSwitcherBundleController' => 
     array (
-      'name' => 'HubTemplatesTemplatesUpdater',
-      'abstract' => 'VisualComposer\\Modules\\Hub\\Templates\\TemplatesUpdater',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'HubTemplatesTeasersTeasersController' => 
-    array (
-      'name' => 'HubTemplatesTeasersTeasersController',
-      'abstract' => 'VisualComposer\\Modules\\Hub\\Templates\\Teasers\\TeasersController',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'HubTemplatesTeasersTeasersDownloadController' => 
-    array (
-      'name' => 'HubTemplatesTeasersTeasersDownloadController',
-      'abstract' => 'VisualComposer\\Modules\\Hub\\Templates\\Teasers\\TeasersDownloadController',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'HubStockMediaStockMediaDownloadController' => 
-    array (
-      'name' => 'HubStockMediaStockMediaDownloadController',
-      'abstract' => 'VisualComposer\\Modules\\Hub\\StockMedia\\StockMediaDownloadController',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'HubAddonsAddonDownloadController' => 
-    array (
-      'name' => 'HubAddonsAddonDownloadController',
-      'abstract' => 'VisualComposer\\Modules\\Hub\\Addons\\AddonDownloadController',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'HubAddonsAddons' => 
-    array (
-      'name' => 'HubAddonsAddons',
-      'abstract' => 'VisualComposer\\Modules\\Hub\\Addons\\Addons',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'HubAddonsAddonsUpdater' => 
-    array (
-      'name' => 'HubAddonsAddonsUpdater',
-      'abstract' => 'VisualComposer\\Modules\\Hub\\Addons\\AddonsUpdater',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'HubAddonsTeasersTeasersController' => 
-    array (
-      'name' => 'HubAddonsTeasersTeasersController',
-      'abstract' => 'VisualComposer\\Modules\\Hub\\Addons\\Teasers\\TeasersController',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'HubAddonsTeasersTeasersDownloadController' => 
-    array (
-      'name' => 'HubAddonsTeasersTeasersDownloadController',
-      'abstract' => 'VisualComposer\\Modules\\Hub\\Addons\\Teasers\\TeasersDownloadController',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'FrontViewAssetResetController' => 
-    array (
-      'name' => 'FrontViewAssetResetController',
-      'abstract' => 'VisualComposer\\Modules\\FrontView\\AssetResetController',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'FrontViewAssetUrlReplaceController' => 
-    array (
-      'name' => 'FrontViewAssetUrlReplaceController',
-      'abstract' => 'VisualComposer\\Modules\\FrontView\\AssetUrlReplaceController',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'FrontViewContentUrlReplaceController' => 
-    array (
-      'name' => 'FrontViewContentUrlReplaceController',
-      'abstract' => 'VisualComposer\\Modules\\FrontView\\ContentUrlReplaceController',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'FrontViewFrontVariablesController' => 
-    array (
-      'name' => 'FrontViewFrontVariablesController',
-      'abstract' => 'VisualComposer\\Modules\\FrontView\\FrontVariablesController',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'FrontViewFrontViewController' => 
-    array (
-      'name' => 'FrontViewFrontViewController',
-      'abstract' => 'VisualComposer\\Modules\\FrontView\\FrontViewController',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'FrontViewLazyLoadController' => 
-    array (
-      'name' => 'FrontViewLazyLoadController',
-      'abstract' => 'VisualComposer\\Modules\\FrontView\\LazyLoadController',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'FrontViewMaintenanceModeController' => 
-    array (
-      'name' => 'FrontViewMaintenanceModeController',
-      'abstract' => 'VisualComposer\\Modules\\FrontView\\MaintenanceModeController',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'FrontViewPluginsInfoController' => 
-    array (
-      'name' => 'FrontViewPluginsInfoController',
-      'abstract' => 'VisualComposer\\Modules\\FrontView\\PluginsInfoController',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'UpdatesUpdatesController' => 
-    array (
-      'name' => 'UpdatesUpdatesController',
-      'abstract' => 'VisualComposer\\Modules\\Updates\\UpdatesController',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'SystemActivationController' => 
-    array (
-      'name' => 'SystemActivationController',
-      'abstract' => 'VisualComposer\\Modules\\System\\Activation\\Controller',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'SystemTextDomainController' => 
-    array (
-      'name' => 'SystemTextDomainController',
-      'abstract' => 'VisualComposer\\Modules\\System\\TextDomain\\Controller',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'SystemCacheCacheController' => 
-    array (
-      'name' => 'SystemCacheCacheController',
-      'abstract' => 'VisualComposer\\Modules\\System\\Cache\\CacheController',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'SystemAjaxAdminController' => 
-    array (
-      'name' => 'SystemAjaxAdminController',
-      'abstract' => 'VisualComposer\\Modules\\System\\Ajax\\AdminController',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'SystemAjaxController' => 
-    array (
-      'name' => 'SystemAjaxController',
-      'abstract' => 'VisualComposer\\Modules\\System\\Ajax\\Controller',
+      'name' => 'EditorsFrontendLayoutSwitcherBundleController',
+      'abstract' => 'VisualComposer\\Modules\\Editors\\FrontendLayoutSwitcher\\BundleController',
       'make' => true,
       'singleton' => true,
     ),
@@ -1417,41 +1179,6 @@ return array (
     array (
       'name' => 'VendorsWordPressController',
       'abstract' => 'VisualComposer\\Modules\\Vendors\\WordPressController',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'VendorsThemesGeneratePressController' => 
-    array (
-      'name' => 'VendorsThemesGeneratePressController',
-      'abstract' => 'VisualComposer\\Modules\\Vendors\\Themes\\GeneratePressController',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'VendorsThemesStorefrontController' => 
-    array (
-      'name' => 'VendorsThemesStorefrontController',
-      'abstract' => 'VisualComposer\\Modules\\Vendors\\Themes\\StorefrontController',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'VendorsThemesTwentySeventeenController' => 
-    array (
-      'name' => 'VendorsThemesTwentySeventeenController',
-      'abstract' => 'VisualComposer\\Modules\\Vendors\\Themes\\TwentySeventeenController',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'VendorsThemesTwentyTwentyOneController' => 
-    array (
-      'name' => 'VendorsThemesTwentyTwentyOneController',
-      'abstract' => 'VisualComposer\\Modules\\Vendors\\Themes\\TwentyTwentyOneController',
-      'make' => true,
-      'singleton' => true,
-    ),
-    'VendorsThemesWeaverXtremeController' => 
-    array (
-      'name' => 'VendorsThemesWeaverXtremeController',
-      'abstract' => 'VisualComposer\\Modules\\Vendors\\Themes\\WeaverXtremeController',
       'make' => true,
       'singleton' => true,
     ),
@@ -1595,6 +1322,41 @@ return array (
       'make' => true,
       'singleton' => true,
     ),
+    'VendorsThemesGeneratePressController' => 
+    array (
+      'name' => 'VendorsThemesGeneratePressController',
+      'abstract' => 'VisualComposer\\Modules\\Vendors\\Themes\\GeneratePressController',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'VendorsThemesStorefrontController' => 
+    array (
+      'name' => 'VendorsThemesStorefrontController',
+      'abstract' => 'VisualComposer\\Modules\\Vendors\\Themes\\StorefrontController',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'VendorsThemesTwentySeventeenController' => 
+    array (
+      'name' => 'VendorsThemesTwentySeventeenController',
+      'abstract' => 'VisualComposer\\Modules\\Vendors\\Themes\\TwentySeventeenController',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'VendorsThemesTwentyTwentyOneController' => 
+    array (
+      'name' => 'VendorsThemesTwentyTwentyOneController',
+      'abstract' => 'VisualComposer\\Modules\\Vendors\\Themes\\TwentyTwentyOneController',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'VendorsThemesWeaverXtremeController' => 
+    array (
+      'name' => 'VendorsThemesWeaverXtremeController',
+      'abstract' => 'VisualComposer\\Modules\\Vendors\\Themes\\WeaverXtremeController',
+      'make' => true,
+      'singleton' => true,
+    ),
     'VendorsGutenbergAttributeController' => 
     array (
       'name' => 'VendorsGutenbergAttributeController',
@@ -1616,94 +1378,241 @@ return array (
       'make' => true,
       'singleton' => true,
     ),
-    'SettingsCustomPostTypesController' => 
+    'ImportImportController' => 
     array (
-      'name' => 'SettingsCustomPostTypesController',
-      'abstract' => 'VisualComposer\\Modules\\Settings\\CustomPostTypesController',
+      'name' => 'ImportImportController',
+      'abstract' => 'VisualComposer\\Modules\\Import\\ImportController',
       'make' => true,
       'singleton' => true,
     ),
-    'SettingsMenuController' => 
+    'MigrationsAssets22Migration' => 
     array (
-      'name' => 'SettingsMenuController',
-      'abstract' => 'VisualComposer\\Modules\\Settings\\MenuController',
+      'name' => 'MigrationsAssets22Migration',
+      'abstract' => 'VisualComposer\\Modules\\Migrations\\Assets22Migration',
       'make' => true,
       'singleton' => true,
     ),
-    'SettingsNoticeController' => 
+    'MigrationsCustomTemplatesTypeMigration' => 
     array (
-      'name' => 'SettingsNoticeController',
-      'abstract' => 'VisualComposer\\Modules\\Settings\\NoticeController',
+      'name' => 'MigrationsCustomTemplatesTypeMigration',
+      'abstract' => 'VisualComposer\\Modules\\Migrations\\CustomTemplatesTypeMigration',
       'make' => true,
       'singleton' => true,
     ),
-    'SettingsSettingsController' => 
+    'MigrationsDatabaseMigration' => 
     array (
-      'name' => 'SettingsSettingsController',
-      'abstract' => 'VisualComposer\\Modules\\Settings\\SettingsController',
+      'name' => 'MigrationsDatabaseMigration',
+      'abstract' => 'VisualComposer\\Modules\\Migrations\\DatabaseMigration',
       'make' => true,
       'singleton' => true,
     ),
-    'SettingsFieldsCssEditor' => 
+    'MigrationsDefaultCapabilitiesMigration' => 
     array (
-      'name' => 'SettingsFieldsCssEditor',
-      'abstract' => 'VisualComposer\\Modules\\Settings\\Fields\\CssEditor',
+      'name' => 'MigrationsDefaultCapabilitiesMigration',
+      'abstract' => 'VisualComposer\\Modules\\Migrations\\DefaultCapabilitiesMigration',
       'make' => true,
       'singleton' => true,
     ),
-    'SettingsFieldsFactoryResetController' => 
+    'MigrationsDefaultElementsMigration' => 
     array (
-      'name' => 'SettingsFieldsFactoryResetController',
-      'abstract' => 'VisualComposer\\Modules\\Settings\\Fields\\FactoryResetController',
+      'name' => 'MigrationsDefaultElementsMigration',
+      'abstract' => 'VisualComposer\\Modules\\Migrations\\DefaultElementsMigration',
       'make' => true,
       'singleton' => true,
     ),
-    'SettingsFieldsJsEditor' => 
+    'MigrationsEnabledPostTypesMigration' => 
     array (
-      'name' => 'SettingsFieldsJsEditor',
-      'abstract' => 'VisualComposer\\Modules\\Settings\\Fields\\JsEditor',
+      'name' => 'MigrationsEnabledPostTypesMigration',
+      'abstract' => 'VisualComposer\\Modules\\Migrations\\EnabledPostTypesMigration',
       'make' => true,
       'singleton' => true,
     ),
-    'SettingsPagesCssJsSettings' => 
+    'MigrationsFreeMigration' => 
     array (
-      'name' => 'SettingsPagesCssJsSettings',
-      'abstract' => 'VisualComposer\\Modules\\Settings\\Pages\\CssJsSettings',
+      'name' => 'MigrationsFreeMigration',
+      'abstract' => 'VisualComposer\\Modules\\Migrations\\FreeMigration',
       'make' => true,
       'singleton' => true,
     ),
-    'SettingsPagesMaintenanceMode' => 
+    'MigrationsGlobalJavascriptMigration' => 
     array (
-      'name' => 'SettingsPagesMaintenanceMode',
-      'abstract' => 'VisualComposer\\Modules\\Settings\\Pages\\MaintenanceMode',
+      'name' => 'MigrationsGlobalJavascriptMigration',
+      'abstract' => 'VisualComposer\\Modules\\Migrations\\GlobalJavascriptMigration',
       'make' => true,
       'singleton' => true,
     ),
-    'SettingsPagesRoleManager' => 
+    'MigrationsLicenseMigration' => 
     array (
-      'name' => 'SettingsPagesRoleManager',
-      'abstract' => 'VisualComposer\\Modules\\Settings\\Pages\\RoleManager',
+      'name' => 'MigrationsLicenseMigration',
+      'abstract' => 'VisualComposer\\Modules\\Migrations\\LicenseMigration',
       'make' => true,
       'singleton' => true,
     ),
-    'SettingsPagesSettings' => 
+    'MigrationsMaintenanceModeMigration' => 
     array (
-      'name' => 'SettingsPagesSettings',
-      'abstract' => 'VisualComposer\\Modules\\Settings\\Pages\\Settings',
+      'name' => 'MigrationsMaintenanceModeMigration',
+      'abstract' => 'VisualComposer\\Modules\\Migrations\\MaintenanceModeMigration',
       'make' => true,
       'singleton' => true,
     ),
-    'SettingsPagesSystemStatus' => 
+    'MigrationsMergeArchivesLayoutsMigration' => 
     array (
-      'name' => 'SettingsPagesSystemStatus',
-      'abstract' => 'VisualComposer\\Modules\\Settings\\Pages\\SystemStatus',
+      'name' => 'MigrationsMergeArchivesLayoutsMigration',
+      'abstract' => 'VisualComposer\\Modules\\Migrations\\MergeArchivesLayoutsMigration',
       'make' => true,
       'singleton' => true,
     ),
-    'SettingsAjaxSystemStatusController' => 
+    'MigrationsNewDefaultCapabilitiesMigration' => 
     array (
-      'name' => 'SettingsAjaxSystemStatusController',
-      'abstract' => 'VisualComposer\\Modules\\Settings\\Ajax\\SystemStatusController',
+      'name' => 'MigrationsNewDefaultCapabilitiesMigration',
+      'abstract' => 'VisualComposer\\Modules\\Migrations\\NewDefaultCapabilitiesMigration',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'MigrationsPredefinedTemplateMigration' => 
+    array (
+      'name' => 'MigrationsPredefinedTemplateMigration',
+      'abstract' => 'VisualComposer\\Modules\\Migrations\\PredefinedTemplateMigration',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'MigrationsSettingsMigration' => 
+    array (
+      'name' => 'MigrationsSettingsMigration',
+      'abstract' => 'VisualComposer\\Modules\\Migrations\\SettingsMigration',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'MigrationsTemplates114Migration' => 
+    array (
+      'name' => 'MigrationsTemplates114Migration',
+      'abstract' => 'VisualComposer\\Modules\\Migrations\\Templates114Migration',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'MigrationsUpdateGlobalElementsMigration' => 
+    array (
+      'name' => 'MigrationsUpdateGlobalElementsMigration',
+      'abstract' => 'VisualComposer\\Modules\\Migrations\\UpdateGlobalElementsMigration',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'SystemTextDomainController' => 
+    array (
+      'name' => 'SystemTextDomainController',
+      'abstract' => 'VisualComposer\\Modules\\System\\TextDomain\\Controller',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'SystemActivationController' => 
+    array (
+      'name' => 'SystemActivationController',
+      'abstract' => 'VisualComposer\\Modules\\System\\Activation\\Controller',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'SystemCacheCacheController' => 
+    array (
+      'name' => 'SystemCacheCacheController',
+      'abstract' => 'VisualComposer\\Modules\\System\\Cache\\CacheController',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'SystemAjaxAdminController' => 
+    array (
+      'name' => 'SystemAjaxAdminController',
+      'abstract' => 'VisualComposer\\Modules\\System\\Ajax\\AdminController',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'SystemAjaxController' => 
+    array (
+      'name' => 'SystemAjaxController',
+      'abstract' => 'VisualComposer\\Modules\\System\\Ajax\\Controller',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'UtmUtm' => 
+    array (
+      'name' => 'UtmUtm',
+      'abstract' => 'VisualComposer\\Modules\\Utm\\Utm',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'FrontViewAssetResetController' => 
+    array (
+      'name' => 'FrontViewAssetResetController',
+      'abstract' => 'VisualComposer\\Modules\\FrontView\\AssetResetController',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'FrontViewAssetUrlReplaceController' => 
+    array (
+      'name' => 'FrontViewAssetUrlReplaceController',
+      'abstract' => 'VisualComposer\\Modules\\FrontView\\AssetUrlReplaceController',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'FrontViewContentUrlReplaceController' => 
+    array (
+      'name' => 'FrontViewContentUrlReplaceController',
+      'abstract' => 'VisualComposer\\Modules\\FrontView\\ContentUrlReplaceController',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'FrontViewFrontVariablesController' => 
+    array (
+      'name' => 'FrontViewFrontVariablesController',
+      'abstract' => 'VisualComposer\\Modules\\FrontView\\FrontVariablesController',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'FrontViewFrontViewController' => 
+    array (
+      'name' => 'FrontViewFrontViewController',
+      'abstract' => 'VisualComposer\\Modules\\FrontView\\FrontViewController',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'FrontViewLazyLoadController' => 
+    array (
+      'name' => 'FrontViewLazyLoadController',
+      'abstract' => 'VisualComposer\\Modules\\FrontView\\LazyLoadController',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'FrontViewMaintenanceModeController' => 
+    array (
+      'name' => 'FrontViewMaintenanceModeController',
+      'abstract' => 'VisualComposer\\Modules\\FrontView\\MaintenanceModeController',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'FrontViewPluginsInfoController' => 
+    array (
+      'name' => 'FrontViewPluginsInfoController',
+      'abstract' => 'VisualComposer\\Modules\\FrontView\\PluginsInfoController',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'AutoloadAddonsAutoload' => 
+    array (
+      'name' => 'AutoloadAddonsAutoload',
+      'abstract' => 'VisualComposer\\Modules\\Autoload\\AddonsAutoload',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'AutoloadElementsAutoload' => 
+    array (
+      'name' => 'AutoloadElementsAutoload',
+      'abstract' => 'VisualComposer\\Modules\\Autoload\\ElementsAutoload',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'UpdatesUpdatesController' => 
+    array (
+      'name' => 'UpdatesUpdatesController',
+      'abstract' => 'VisualComposer\\Modules\\Updates\\UpdatesController',
       'make' => true,
       'singleton' => true,
     ),
@@ -1774,6 +1683,97 @@ return array (
     array (
       'name' => 'LicensePagesLicenseStatus',
       'abstract' => 'VisualComposer\\Modules\\License\\Pages\\LicenseStatus',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'AssetsAssetBundleCompressionController' => 
+    array (
+      'name' => 'AssetsAssetBundleCompressionController',
+      'abstract' => 'VisualComposer\\Modules\\Assets\\AssetBundleCompressionController',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'AssetsAssetBundleController' => 
+    array (
+      'name' => 'AssetsAssetBundleController',
+      'abstract' => 'VisualComposer\\Modules\\Assets\\AssetBundleController',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'AssetsAssetResetController' => 
+    array (
+      'name' => 'AssetsAssetResetController',
+      'abstract' => 'VisualComposer\\Modules\\Assets\\AssetResetController',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'AssetsDataController' => 
+    array (
+      'name' => 'AssetsDataController',
+      'abstract' => 'VisualComposer\\Modules\\Assets\\DataController',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'AssetsEnqueueController' => 
+    array (
+      'name' => 'AssetsEnqueueController',
+      'abstract' => 'VisualComposer\\Modules\\Assets\\EnqueueController',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'AssetsFileController' => 
+    array (
+      'name' => 'AssetsFileController',
+      'abstract' => 'VisualComposer\\Modules\\Assets\\FileController',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'AssetsJsDataController' => 
+    array (
+      'name' => 'AssetsJsDataController',
+      'abstract' => 'VisualComposer\\Modules\\Assets\\JsDataController',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'AssetsJsEnqueueController' => 
+    array (
+      'name' => 'AssetsJsEnqueueController',
+      'abstract' => 'VisualComposer\\Modules\\Assets\\JsEnqueueController',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'AssetsPreviewDataController' => 
+    array (
+      'name' => 'AssetsPreviewDataController',
+      'abstract' => 'VisualComposer\\Modules\\Assets\\PreviewDataController',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'AssetsPreviewEnqueueController' => 
+    array (
+      'name' => 'AssetsPreviewEnqueueController',
+      'abstract' => 'VisualComposer\\Modules\\Assets\\PreviewEnqueueController',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'AssetsPreviewJsDataController' => 
+    array (
+      'name' => 'AssetsPreviewJsDataController',
+      'abstract' => 'VisualComposer\\Modules\\Assets\\PreviewJsDataController',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'AssetsPreviewJsEnqueueController' => 
+    array (
+      'name' => 'AssetsPreviewJsEnqueueController',
+      'abstract' => 'VisualComposer\\Modules\\Assets\\PreviewJsEnqueueController',
+      'make' => true,
+      'singleton' => true,
+    ),
+    'AssetsSharedController' => 
+    array (
+      'name' => 'AssetsSharedController',
+      'abstract' => 'VisualComposer\\Modules\\Assets\\SharedController',
       'make' => true,
       'singleton' => true,
     ),

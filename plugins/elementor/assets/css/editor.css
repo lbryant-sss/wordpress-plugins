@@ -1,4 +1,4 @@
-/*! elementor - v3.31.0 - 06-08-2025 */
+/*! elementor - v3.31.0 - 11-08-2025 */
 .elementor-control-unit-1 {
   width: 27px;
 }
@@ -4073,6 +4073,7 @@ body:not(.elementor-device-mobile) .elementor-control.elementor-control-responsi
   transition: var(--e-a-transition-hover);
   cursor: pointer;
   overflow: hidden;
+  width: 100%;
   padding: 8px;
 }
 .elementor-visual-choice-element-image input.e-visual-choice-placeholder + label, .elementor-visual-choice-element-image input:checked + label, .elementor-visual-choice-element-image input:hover + label {

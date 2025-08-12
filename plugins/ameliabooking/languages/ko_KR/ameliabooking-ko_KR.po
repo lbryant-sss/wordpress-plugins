@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Amelia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-31 09:49+0200\n"
+"POT-Creation-Date: 2025-08-07 12:16+0200\n"
 "PO-Revision-Date: 2025-07-15 09:17+0900\n"
 "Last-Translator: \n"
 "Language-Team: Amelia\n"
@@ -84,13 +84,13 @@ msgstr ""
 "드가 있는 경우 텍스트 모드 옵션을 사용하지 마세요."
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:38
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1577
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1579
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:222
 msgid "Close"
 msgstr "마감"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:39
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1195
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1197
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:94
 msgid "Closed"
 msgstr "마감됨"
@@ -162,7 +162,7 @@ msgid "Years"
 msgstr "년"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:56
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1409
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1411
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:198
 msgid "Date"
 msgstr "날짜"
@@ -177,7 +177,7 @@ msgid "Description"
 msgstr "설명"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:59
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1231
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1233
 msgid "Details"
 msgstr "세부 정보"
 
@@ -186,7 +186,7 @@ msgid "Disabled"
 msgstr "비활성화"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:61
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1302
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1304
 msgid "Duration"
 msgstr "기간"
 
@@ -206,7 +206,7 @@ msgstr "example@mail.com"
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:65
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:370
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:638
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1412
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1414
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:201
 msgid "Employee"
 msgstr "담당자"
@@ -256,7 +256,7 @@ msgstr "오류"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:76
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:642
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1579
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1581
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:194
 msgid "Event"
 msgstr "이벤트"
@@ -400,7 +400,7 @@ msgstr "라이트 대 프리미엄"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:108
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:640
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1413
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1415
 msgid "Location"
 msgstr "장소"
 
@@ -499,7 +499,7 @@ msgid "Opened"
 msgstr "열림"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:131
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1354
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1356
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:131
 msgid "Open"
 msgstr "오픈"
@@ -522,10 +522,10 @@ msgstr "부분 결제됨"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:136
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:637
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1395
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1405
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1563
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1584
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1397
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1407
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1565
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1586
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:197
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:224
 msgid "Payment"
@@ -556,8 +556,8 @@ msgid "Pending"
 msgstr "대기 중"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:142
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1345
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1491
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1347
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1493
 msgid "Phone"
 msgstr "전화"
 
@@ -570,7 +570,7 @@ msgid "Resources"
 msgstr "자원"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:145
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1300
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1302
 msgid "Save"
 msgstr "저장"
 
@@ -588,11 +588,11 @@ msgstr "시간을 선택해 주세요"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:149
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:372
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1369
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1374
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1371
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1376
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1411
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1541
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1378
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1413
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1543
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:180
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:183
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:200
@@ -602,8 +602,8 @@ msgstr "서비스"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:150
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:373
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1397
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1542
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1399
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1544
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:191
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:262
 msgid "Services"
@@ -622,7 +622,7 @@ msgid "Social Login"
 msgstr "소셜 로그인"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:154
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1202
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1204
 msgid "Status"
 msgstr "상태"
 
@@ -660,7 +660,7 @@ msgid "Tomorrow"
 msgstr "내일"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:163
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1277
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1279
 msgid "Total"
 msgstr "합계"
 
@@ -780,7 +780,7 @@ msgid ""
 msgstr "예약이 완료되면<br/>고객에게 캘린더에 약속을 추가하도록 제안합니다."
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:202
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1291
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1293
 msgid "Address"
 msgstr "주소"
 
@@ -1083,8 +1083,8 @@ msgid "Set Coupons to be case insensitive"
 msgstr "쿠폰을 대소문자를 구분하지 않도록 설정"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:262
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1275
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1658
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1277
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1660
 msgid "Calendar"
 msgstr "캘린더"
 
@@ -2403,7 +2403,7 @@ msgid "Booked Customer (full name, email, phone)"
 msgstr "예약한 고객(이름, 이메일, 전화)"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:580
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1201
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1203
 msgid "Number of people"
 msgstr "인원 수"
 
@@ -2504,7 +2504,7 @@ msgid "Event description"
 msgstr "이벤트 설명"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:605
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1353
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1355
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:238
 msgid "Event Location"
 msgstr "이벤트 장소"
@@ -2522,7 +2522,7 @@ msgid "End time of the event"
 msgstr "이벤트 종료 시간"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:609
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1580
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1582
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:196
 msgid "Event ID"
 msgstr "이벤트 ID"
@@ -2582,7 +2582,7 @@ msgid "Service ID"
 msgstr "서비스 ID"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:623
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1348
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1350
 msgid "Service name"
 msgstr "서비스 이름"
 
@@ -2646,8 +2646,8 @@ msgstr ""
 "습니다."
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:639
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1116
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1375
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1118
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1377
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:182
 msgid "Category"
 msgstr "카테고리"
@@ -2659,12 +2659,12 @@ msgstr "플레이스홀더 복사됨"
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:645
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:849
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:920
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1257
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1259
 msgid "Price"
 msgstr "가격"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:646
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1194
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1196
 msgid "Pricing"
 msgstr "가격 책정"
 
@@ -2787,7 +2787,7 @@ msgid "Text:"
 msgstr "텍스트:"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:692
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1232
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1234
 msgid "Time:"
 msgstr "시간:"
 
@@ -2957,8 +2957,8 @@ msgid ""
 msgstr "선택한 날짜 범위의 유료 예약에<br/>대한 총 수입을 표시합니다."
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:742
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1151
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1258
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1153
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1260
 msgid "Time"
 msgstr "시간"
 
@@ -3056,7 +3056,7 @@ msgid "Hide"
 msgstr "숨기기"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:789
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1638
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1640
 msgid "Show"
 msgstr "표시"
 
@@ -3081,7 +3081,7 @@ msgid "Add Category"
 msgstr "카테고리 추가"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:817
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1290
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1292
 msgid "Add Extra"
 msgstr "추가 항목 추가"
 
@@ -3102,7 +3102,7 @@ msgid "Add Resource"
 msgstr "자원 추가"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:822
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1498
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1500
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:250
 msgid "Categories"
 msgstr "카테고리"
@@ -3214,7 +3214,7 @@ msgid "New Service"
 msgstr "새 서비스"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:850
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1468
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1470
 msgid "+more"
 msgstr "+더보기"
 
@@ -3325,32 +3325,32 @@ msgid "Create New"
 msgstr "새로 만들기"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:887
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1343
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1490
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1345
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1492
 msgid "Email"
 msgstr "이메일"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:888
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1387
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1389
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:111
 msgid "Please enter first name"
 msgstr "이름을 입력하세요"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:889
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1389
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1391
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:112
 msgid "Please enter last name"
 msgstr "성을 입력하세요"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:890
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1340
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1488
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1342
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1490
 msgid "First Name"
 msgstr "이름"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:891
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1341
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1489
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1343
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1491
 msgid "Last Name"
 msgstr "성"
 
@@ -3749,7 +3749,7 @@ msgid "Booking Start"
 msgstr "예약 시작"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1058
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1125
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1127
 msgid "Customer Email"
 msgstr "고객 이메일"
 
@@ -3842,12 +3842,12 @@ msgid "Payment Type"
 msgstr "결제 유형"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1092
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1360
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1362
 msgid "Service Price"
 msgstr "서비스 가격"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1093
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1400
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1402
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:281
 msgid "Subtotal"
 msgstr "소계"
@@ -3861,90 +3861,98 @@ msgid "Bookings Price"
 msgstr "예약 가격"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1096
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1358
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1360
 msgid "Event Price"
 msgstr "이벤트 가격"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1108
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1097
+msgid "Paid deposit"
+msgstr "결제된 보증금"
+
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1098
+msgid "Paid remaining amount"
+msgstr "결제 잔액"
+
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1110
 msgid "Appointment has been deleted"
 msgstr "약속이 삭제되었습니다"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1109
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1111
 msgid "Appointment has been saved"
 msgstr "약속이 저장되었습니다"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1110
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1112
 msgid "Cancel Appointment"
 msgstr "약속 취소"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1111
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1273
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1113
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1275
 msgid "Appointment has been rescheduled"
 msgstr "약속 일정이 변경되었습니다"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1112
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1114
 msgid "Appointment status has been changed to "
 msgstr "약속 상태가 다음과 같이 변경되었습니다. "
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1113
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1115
 msgid "Appointments have been deleted"
 msgstr "약속이 삭제되었습니다"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1114
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1116
 msgid "Search for Customers, Employees, Services..."
 msgstr "고객, 담당자, 서비스 검색..."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1115
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1117
 msgid "Assigned to"
 msgstr "할당 서비스"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1117
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1119
 msgid "Change group status"
 msgstr "그룹 상태 변경"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1118
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1120
 msgid "Are you sure you want to delete this appointment?"
 msgstr "이 예약을 삭제하시겠습니까?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1119
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1121
 msgid "Are you sure you want to delete these appointments?"
 msgstr "이 예약을 삭제하시겠습니까?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1120
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1122
 msgid "Are you sure you want to duplicate this appointment?"
 msgstr "이 예약을 복제하시겠습니까?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1121
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1123
 msgid "Create Customer"
 msgstr "고객 만들기"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1122
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1124
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:276
 #, fuzzy
 msgid "Generate payment links"
 msgstr "일반 설정"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1123
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1125
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:277
 msgid ""
 "Check this box to generate a payment link.<br> To include it in the "
 "notification, add the payment link placeholder."
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1124
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1306
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1126
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1308
 msgid "Custom Fields"
 msgstr "사용자 지정 필드"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1126
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1128
 msgid "Customer Phone"
 msgstr "고객 전화"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1127
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1129
 msgid "Customer(s)"
 msgstr "고객(들)"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1128
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1130
 msgid ""
 "Here you can define the number of people that are coming<br/>with this "
 "customer. The number you can choose depends<br/>on the service and employee "
@@ -3953,19 +3961,19 @@ msgstr ""
 "여기에서 이 고객과 함께 오는 사람의 수를 정의할 수 있습니다.<br/>선택할 수 있"
 "는 인원은 서비스 및 직원 수에 따라 다릅니다."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1129
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1131
 msgid "Edit Payment Details"
 msgstr "결제 세부 정보 편집"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1130
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1132
 msgid "Edit Appointment"
 msgstr "예약 편집"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1131
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1133
 msgid "End Time"
 msgstr "종료 시간"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1132
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1134
 msgid ""
 "You can use this option to export appointments in CSV file<br/>for the "
 "selected date range."
@@ -3973,7 +3981,7 @@ msgstr ""
 "이 옵션을 사용하면 선택한 날짜 범위의 예약을<br/>CSV 파일로 내보낼 수 있습니"
 "다."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1133
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1135
 msgid ""
 "You can use this option to export attendees in CSV file<br/>for the selected "
 "event."
@@ -3981,15 +3989,15 @@ msgstr ""
 "이 옵션을 사용하면 선택한 이벤트의 참석자를 CSV 파일<br/>로 내보낼 수 있습니"
 "다."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1134
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1136
 msgid "New Appointment"
 msgstr "새 예약"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1135
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1137
 msgid "Notify the attendee(s)"
 msgstr "참석자에게 알림"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1136
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1138
 msgid ""
 "Check this checkbox if you want your attendee(s) to<br/>receive an email "
 "about the event’s updated information."
@@ -3997,336 +4005,336 @@ msgstr ""
 "참석자에게 이벤트의 업데이트된 정보에 대한<br/>이메일을 수신하도록 하려면 이 "
 "확인란을 선택합니다."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1137
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1139
 msgid "Notify the customer(s)"
 msgstr "고객에게 알림"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1138
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1140
 msgid ""
 "Check this checkbox if you want your customer(s) to<br/>receive an email "
 "about the scheduled appointment."
 msgstr ""
 "고객이 예정된 약속에 대한 이메일을 받도록 하려면<br/>이 확인란을 선택합니다."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1139
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1141
 msgid ""
 "By continuing, you will set the appointment to a time slot that already has "
 "an existing appointment!"
 msgstr "계속 진행하면 이미 기존 약속이 있는 시간 슬롯으로 약속이 설정됩니다!"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1140
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1142
 msgid "Schedule"
 msgstr "스케줄"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1141
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1143
 msgid "Select Customer(s)"
 msgstr "고객 선택"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1142
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1144
 msgid "Please select at least one customer"
 msgstr "고객을 한명 이상 선택해 주세요"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1143
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1145
 msgid "Maximum number of places is"
 msgstr "최대 장소 수는 다음과 같습니다"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1144
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1146
 msgid "Select Extra"
 msgstr "추가 선택"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1145
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1321
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1632
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1147
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1323
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1634
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:280
 msgid "Select Service"
 msgstr "서비스 선택"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1146
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1312
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1148
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1314
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:181
 msgid "Please select service"
 msgstr "서비스를 선택해 주세요"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1147
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1149
 msgid "Select Service Category"
 msgstr "서비스 카테고리 선택"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1148
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1150
 msgid "Selected Customers"
 msgstr "선택된 고객"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1149
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1151
 msgid "This service does not have any extras"
 msgstr "이 서비스에는 추가 혜택이 업습니다"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1150
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1152
 msgid "Start Time"
 msgstr "시작 시간"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1152
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1154
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:140
 msgid "Time slot is unavailable"
 msgstr "시간 슬롯을 사용할 수 없습니다"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1153
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1155
 msgid "Appointment can't be canceled"
 msgstr "약속을 취소할 수 없음"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1154
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1156
 msgid "Appointment can't be rescheduled"
 msgstr "약속 일정을 변경할 수 없음"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1155
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1254
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1157
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1256
 msgid "Booking status has been changed to "
 msgstr "예약 상태가 다음과 같이 변경되었습니다. "
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1156
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1158
 msgid "WooCommerce"
 msgstr "우커머스"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1168
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1170
 msgid "Default Pricing"
 msgstr "기본 가격"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1169
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1171
 msgid "Deposit Payment"
 msgstr "입금 결제"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1170
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1172
 msgid "Custom Pricing"
 msgstr "사용자 지정 가격"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1171
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1173
 msgid "Custom Duration and Pricing"
 msgstr "사용자 지정 기간 및 가격"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1172
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1174
 msgid "Pricing by the number of people"
 msgstr "인원 수에 따른 가격 책정"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1173
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1175
 msgid "Conditional Pricing"
 msgstr "조건부 가격 책정"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1185
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1187
 msgid "Are you sure you want to delete selected attendee?"
 msgstr "선택한 참석자를 삭제하시겠습니까?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1186
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1188
 msgid "Are you sure you want to delete selected attendees?"
 msgstr "선택한 참석자를 삭제하시겠습니까?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1187
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1189
 msgid "Are you sure you want to delete this event?"
 msgstr "이 이벤트를 삭제하시겠습니까?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1188
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1190
 msgid "Are you sure you want to duplicate this event?"
 msgstr "이 이벤트를 복제하시겠습니까?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1189
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1191
 msgid "Are you sure you want to cancel this event?"
 msgstr "이 이벤트를 취소하시겠습니까?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1190
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1192
 msgid "Are you sure you want to open this event?"
 msgstr "이 이벤트를 열시겠습니까?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1191
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1193
 msgid "Please cancel the event first before deleting it."
 msgstr "이벤트를 삭제하기 전에 먼저 취소하세요."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1192
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1307
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1194
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1309
 msgid "Customize"
 msgstr "사용자 지정"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1193
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1195
 msgid "Customer is already added to this event"
 msgstr "고객이 이미 이 이벤트에 추가되었습니다"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1196
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1355
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1198
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1357
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:98
 msgid "Full"
 msgstr "Full"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1197
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1356
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1199
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1358
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:99
 msgid "Upcoming"
 msgstr "예정"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1198
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1200
 msgid "Edit Event"
 msgstr "이벤트 편집"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1199
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1201
 msgid "Attendees"
 msgstr "참석자"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1200
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1202
 msgid "Add Attendee"
 msgstr "참석자 추가"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1203
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1205
 msgid "Number of tickets"
 msgstr "티켓 수"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1204
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1206
 msgid "Edit Attendee"
 msgstr "참석자 편집"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1205
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1207
 msgid "The price will multiply by the number of people/spots"
 msgstr "가격은 인원 수/스팟 수에 곱해집니다"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1206
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1208
 msgid "Attendee has been saved"
 msgstr "참석자가 저장되었습니다"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1207
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1209
 msgid "Remove Attendee"
 msgstr "참석자 제거"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1208
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1210
 msgid "Find Attendees"
 msgstr "참석자 찾기"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1209
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1211
 msgid "Attendee have been deleted"
 msgstr "참석자가 삭제되었습니다"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1210
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1212
 msgid "Attendees have been deleted"
 msgstr "참석자가 삭제되었습니다"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1211
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1213
 msgid "Allow the same customer to book more than once"
 msgstr "동일한 고객이 두 번 이상 예약하도록 허용"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1212
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1214
 msgid "Allow bringing more people"
 msgstr "더 많은 사람 데려오기 허용"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1213
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1215
 msgid "Cancel Event"
 msgstr "이벤트 취소"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1214
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1216
 msgid "Close Event after certain minimum is reached"
 msgstr "특정 최소값에 도달한 후 이벤트 닫기"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1215
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1217
 msgid "Minimum of attendees"
 msgstr "최소 참석자 수"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1216
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1218
 msgid "Minimum of bookings"
 msgstr "최소 예약 인원"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1217
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1219
 msgid "One spot is equal to one attendee."
 msgstr "하나의 자리는 참석자 한 명과 동일합니다."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1218
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1220
 msgid "One booking can have multiple attendees/spots in it."
 msgstr "하나의 예약에 여러 참석자/지점이 포함될 수 있습니다."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1219
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1221
 msgid "Set Minimum"
 msgstr "최소 설정"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1220
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1222
 msgid "Custom Address"
 msgstr "사용자 지정 주소"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1221
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1223
 msgid "Delete Event"
 msgstr "이벤트 삭제"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1222
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1224
 msgid "Event has been deleted"
 msgstr "이벤트가 삭제되었습니다"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1223
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1225
 msgid "Duplicate Event"
 msgstr "중복 이벤트"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1224
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1226
 msgid "Name:"
 msgstr "이름:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1225
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1227
 msgid "Booking closes:"
 msgstr "예약이 마감됩니다.:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1226
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1228
 msgid "Booking opens:"
 msgstr "예약이 열림:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1227
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1229
 msgid "Closes on:"
 msgstr "마감:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1228
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1230
 msgid "Opens on:"
 msgstr "다음에 열립니다.:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1229
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1231
 msgid "Booking closes when event starts"
 msgstr "이벤트 시작 시 예약 마감"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1230
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1232
 msgid "Booking opens immediately"
 msgstr "예약이 즉시 열림"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1233
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1235
 msgid "Open Event"
 msgstr "이벤트 열기"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1234
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1236
 msgid "Recurring:"
 msgstr "반복:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1235
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1237
 msgid "This is a recurring event"
 msgstr "반복되는 이벤트입니다"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1236
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1238
 msgid "Event has been opened"
 msgstr "이벤트가 열렸습니다"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1237
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1239
 msgid "Event has been canceled"
 msgstr "이벤트가 취소되었습니다"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1238
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1240
 msgid "Event has been saved"
 msgstr "이벤트가 저장되었습니다"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1239
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1241
 msgid "Search Events..."
 msgstr "이벤트 검색..."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1240
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1242
 msgid "Maximum allowed spots"
 msgstr "최대 허용 좌석 수"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1241
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1243
 msgid "Select Address"
 msgstr "주소 선택"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1242
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1244
 msgid "Staff"
 msgstr "담당자"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1243
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1245
 msgid "Organizer"
 msgstr "주최자"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1244
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1246
 msgid ""
 "Here you can choose the employee that will be added as Organizer of the "
 "Google/Outlook Event. <br>Other employees chosen under the Staff option will "
@@ -4335,460 +4343,460 @@ msgstr ""
 "여기에서 구글 / 아웃룩 이벤트의 주최자로 추가할 직원을 선택할 수 있습니다. "
 "<br>직원 옵션에서 선택한 다른 직원은 게스트로 추가됩니다."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1245
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1247
 msgid "Dates:"
 msgstr "날짜:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1246
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1248
 msgid "Tags"
 msgstr "태그"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1247
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1249
 msgid "Select or Create Tag"
 msgstr "태그 선택 또는 생성"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1248
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1250
 msgid "Enter Event Name"
 msgstr "이벤트 이름 입력"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1249
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1251
 msgid "Event Gallery:"
 msgstr "이벤트 갤러리:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1250
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1252
 msgid "Event Colors:"
 msgstr "이벤트 색상:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1251
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1253
 msgid "Preset Colors"
 msgstr "사전 설정 색상"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1252
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1254
 msgid "Custom Color"
 msgstr "사용자 지정 색상"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1253
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1255
 msgid "Show event on site"
 msgstr "현장 이벤트 표시"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1255
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1257
 msgid "There are no attendees yet..."
 msgstr "아직 참석자가 없습니다."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1256
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1258
 msgid "New Event"
 msgstr "새 이벤트"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1259
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1261
 msgid "Maximum capacity is reached"
 msgstr "최대 수용 인원에 도달함"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1271
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1273
 msgid "This will change the time of the appointment. Continue?"
 msgstr "예약 시간이 변경됩니다. 계속하시겠습니까?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1272
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1274
 msgid "Appointment can't be moved in past time period"
 msgstr "지난 기간에는 약속을 이동할 수 없음"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1274
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1276
 msgid "Appointment can't be moved out of employee working hours"
 msgstr "담당자 근무 시간 외로 약속을 이동할 수 없습니다"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1276
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1278
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:100
 msgid "Confirm"
 msgstr "확인"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1289
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1291
 msgid "Add Custom Field"
 msgstr "사용자 지정 필드 추가"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1292
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1294
 msgid "Are you sure you want to reset your form settings?"
 msgstr "양식 설정을 재설정하시겠습니까?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1293
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1295
 msgid "Your current changes will be lost."
 msgstr "현재 변경 사항이 손실됩니다."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1294
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1296
 msgid "Yes, Reset"
 msgstr "예, 재설정"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1295
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1297
 msgid "No, Cancel"
 msgstr "아니요, 취소"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1296
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1298
 msgid "Reset Form"
 msgstr "양식 재설정"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1297
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1299
 msgid "Available in package"
 msgstr "패키지에서 사용 가능"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1298
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1300
 msgid "Bringing Anyone with You?"
 msgstr "동행이 있나요?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1299
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1301
 msgid "Buttons"
 msgstr "버튼"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1301
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1303
 msgid "Default Label"
 msgstr "기본 레이블"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1303
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1305
 msgid "Checkbox"
 msgstr "체크박스"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1304
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1306
 msgid "Start by clicking the Add Custom Field button"
 msgstr "사용자 지정 필드 추가 버튼을 클릭하여 시작합니다"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1305
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1307
 msgid "Text Content"
 msgstr "텍스트 내용"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1308
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1310
 msgid "Font"
 msgstr "글꼴"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1309
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1311
 msgid "You don't have any custom fields here yet..."
 msgstr "아직 여기에 사용자 정의 필드가 없습니다."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1310
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1312
 msgid "Options"
 msgstr "옵션"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1311
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1313
 msgid "Pick date & time"
 msgstr "날짜 및 시간 선택"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1313
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1315
 msgid "Primary Color"
 msgstr "기본 색상"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1314
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1316
 msgid "Success Color"
 msgstr "성공 색상"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1315
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1317
 msgid "Warning Color"
 msgstr "경고 색상"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1316
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1318
 msgid "Error Color"
 msgstr "오류 색상"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1317
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1319
 msgid "Radio Buttons"
 msgstr "라디오 버튼"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1318
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1320
 msgid "Reset"
 msgstr "초기화"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1319
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1321
 msgid "Selectbox"
 msgstr "선택 상자"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1320
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1322
 msgid "Steps"
 msgstr "단계"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1322
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1482
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1324
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1484
 msgid "Text"
 msgstr "텍스트"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1323
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1325
 msgid "Text Area"
 msgstr "텍스트 영역"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1324
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1326
 msgid "Text Color"
 msgstr "텍스트 색상"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1325
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1327
 msgid "Placeholder Color"
 msgstr "플레이스홀더 색상"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1326
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1328
 msgid "Text Color on Background"
 msgstr "배경의 텍스트 색상"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1327
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1329
 msgid "Attachment"
 msgstr "첨부 파일"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1328
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1330
 msgid "Date Picker"
 msgstr "날짜 선택기"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1329
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1331
 msgid "Preview"
 msgstr "미리보기"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1330
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1422
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1332
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1424
 msgid "Background Color"
 msgstr "배경 색상"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1331
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1333
 msgid "Background Gradient Color 1"
 msgstr "배경 그라데이션 색상 1"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1332
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1334
 msgid "Background Gradient Color 2"
 msgstr "배경 그라데이션 색상 2"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1333
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1335
 msgid "Background Gradient Angle"
 msgstr "배경 그라데이션 각도"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1334
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1336
 msgid "Input Color"
 msgstr "입력 색상"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1335
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1337
 msgid "Input Text Color"
 msgstr "입력 텍스트 색상"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1336
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1338
 msgid "Dropdown Color"
 msgstr "드롭다운 색상"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1337
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1339
 msgid "Dropdown Text Color"
 msgstr "드롭다운 텍스트 색상"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1338
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1340
 msgid "Image Color"
 msgstr "이미지 색상"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1339
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1341
 msgid "Repeat this appointment"
 msgstr "이 예약 반복"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1342
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1344
 msgid "Last Name Input Field"
 msgstr "성 입력 필드"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1344
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1346
 msgid "Email Input Field"
 msgstr "이메일 입력 필드"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1346
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1348
 msgid "Phone Input Field"
 msgstr "전화번호 입력 필드"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1347
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1516
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1349
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1518
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:260
 msgid "Go Back"
 msgstr "뒤로 가기"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1349
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1351
 msgid "Display Field:"
 msgstr "표시 필드:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1350
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1352
 msgid "Filterable Field:"
 msgstr "필터링 가능한 필드:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1351
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1353
 msgid "Mandatory Field:"
 msgstr "필수 필드:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1352
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1354
 msgid "Event Type"
 msgstr "이벤트 유형"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1357
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1544
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1359
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1546
 msgid "Free"
 msgstr "무료"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1359
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1361
 msgid "Service Badge"
 msgstr "서비스 배지"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1361
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1363
 msgid "Package Name"
 msgstr "패키지 이름"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1362
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1364
 msgid "Congratulations!"
 msgstr "축하합니다.!"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1363
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1365
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:79
 msgid "Add to Calendar"
 msgstr "캘린더에 추가"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1364
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1366
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:117
 msgid "Finish"
 msgstr "마침"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1365
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1367
 msgid "Step By Step Booking Form"
 msgstr "단계별 예약 양식"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1366
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1368
 msgid "Event Status"
 msgstr "이벤트 상태"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1367
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1369
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:218
 msgid "Filters"
 msgstr "필터"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1368
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1370
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:215
 msgid "Book event"
 msgstr "이벤트 예약"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1370
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1372
 msgid "Form"
 msgstr "양식"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1371
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1373
 msgid "Form Flow"
 msgstr "양식 흐름"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1372
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1374
 msgid "Use Global Colors"
 msgstr "글로벌 색상 사용"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1373
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1459
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1375
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1461
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:179
 msgid "Service Selection"
 msgstr "서비스 선택"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1377
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1379
 msgid "No matching data"
 msgstr "일치하는 데이터가 없습니다"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1379
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1381
 msgid "Bringing Anyone With You"
 msgstr "동행 동반"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1380
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1382
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:202
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:237
 msgid "Show more"
 msgstr "더 보기"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1381
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1383
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:203
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:236
 msgid "Show less"
 msgstr "적게 표시"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1383
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1385
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:184
 msgid "Date & Time"
 msgstr "날짜 및 시간"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1384
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1386
 msgid "All slots are selected"
 msgstr "모든 슬롯이 선택됨"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1385
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1578
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1387
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1580
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:185
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:225
 msgid "Your Information"
 msgstr "회원 정보"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1386
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1388
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:186
 msgid "Enter first name"
 msgstr "이름 입력"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1388
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1390
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:187
 msgid "Enter last name"
 msgstr "성을 입력하세요"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1390
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1392
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:188
 msgid "Enter email"
 msgstr "이메일 입력"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1391
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1393
 msgid "Please enter valid email"
 msgstr "유효한 이메일을 입력하세요"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1392
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1394
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:189
 msgid "Enter phone"
 msgstr "휴대폰 입력"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1393
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1395
 msgid "Please enter phone"
 msgstr "전화번호를 입력하세요"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1396
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1398
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:175
 msgid "Summary"
 msgstr "요약"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1398
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1400
 msgid "Service Subtotal"
 msgstr "서비스 소계"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1399
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1401
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:193
 msgid "people"
 msgstr "사람들"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1401
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1404
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1403
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1406
 msgid "Total Amount"
 msgstr "총 금액"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1402
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1404
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:171
 msgid "The payment will be done on-site."
 msgstr "결제는 현장에서 이루어집니다."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1403
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1405
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:195
 msgid "Appointment ID"
 msgstr "약속 ID"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1406
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1408
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:177
 msgid "Your Name"
 msgstr "회원님의 이름"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1407
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1409
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:168
 msgid "Email Address"
 msgstr "이메일 주소"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1408
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1410
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:172
 msgid "Phone Number"
 msgstr "전화 번호"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1410
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1412
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:199
 msgid "Local Time"
 msgstr "현지 시간"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1414
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1416
 msgid "Choose a Form"
 msgstr "양식 선택"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1415
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1417
 msgid ""
 "Choose a form you want to customize. The Step-by-Step 2.0 form is the new "
 "and improved version which provides you with better design and user "
@@ -4797,15 +4805,15 @@ msgstr ""
 "사용자 지정하려는 양식을 선택하세요. 단계별 2.0 양식은 더 나은 디자인과 사용"
 "자 경험은 물론 더 빠른 속도를 제공하는 새롭고 개선된 버전입니다."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1416
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1418
 msgid "Step-by-Step Booking Form 2.0"
 msgstr "단계별 예약 양식 2.0"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1417
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1419
 msgid "Booking Forms 1.0"
 msgstr "예약 양식 1.0"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1418
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1420
 msgid ""
 "Use the upgraded Step-by-Step Booking Form 2.0 for a simplified, direct "
 "booking process on your page. Customize its design and labels to enhance "
@@ -4815,7 +4823,7 @@ msgstr ""
 "간소화할 수 있습니다. 디자인과 레이블을 사용자 지정하여 사용자 경험을 개선하"
 "고 비즈니스 요구 사항을 충족하세요."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1419
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1421
 msgid ""
 "The original booking forms—Step-by-Step, Catalog, Event List, and Event "
 "Calendar—feature basic customization and label changes, serving as the "
@@ -4824,299 +4832,299 @@ msgstr ""
 "단계별 예약, 카탈로그, 이벤트 목록, 이벤트 캘린더 등 기존 예약 양식은 기본적"
 "인 사용자 지정 및 라벨 변경 기능을 제공하며, 최신 버전의 기반이 됩니다."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1420
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1422
 msgid "Primary and state colors"
 msgstr "기본 및 상태 색상"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1421
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1471
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1423
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1473
 msgid "Sidebar"
 msgstr "사이드바"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1423
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1425
 msgid "Content"
 msgstr "콘텐츠"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1424
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1426
 msgid "Heading Text Color"
 msgstr "헤딩 텍스트 색상"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1425
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1427
 msgid "Content Text Color"
 msgstr "콘텐츠 텍스트 색상"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1426
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1428
 msgid "Input Fields"
 msgstr "입력 필드"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1427
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1429
 msgid "Border Color"
 msgstr "테두리 색상"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1428
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1430
 msgid "Dropdowns"
 msgstr "드롭다운"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1429
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1431
 msgid "Init Cell"
 msgstr "셀 초기화"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1430
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1432
 msgid "Init Cell Text"
 msgstr "셀 텍스트 초기화"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1431
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1433
 msgid "Cell Selected Background"
 msgstr "셀 선택된 배경"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1432
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1434
 msgid "Cell Selected Text"
 msgstr "셀 선택된 텍스트"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1433
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1435
 msgid "Cell Disabled Background"
 msgstr "셀 비활성화 배경"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1434
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1436
 msgid "Cell Disabled Text"
 msgstr "셀 비활성화 텍스트"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1435
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1437
 msgid "Primary Button Background Color"
 msgstr "기본 버튼 배경 색상"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1436
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1438
 msgid "Primary Button Text Color"
 msgstr "기본 버튼 텍스트 색상"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1437
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1439
 msgid "Secondary Button Background Color"
 msgstr "보조 버튼 배경색"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1438
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1440
 msgid "Secondary Button Text Color"
 msgstr "보조 버튼 텍스트 색상"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1439
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1441
 msgid "Danger Button Background Color"
 msgstr "위험 버튼 배경색"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1440
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1442
 msgid "Danger Button Text Color"
 msgstr "위험 버튼 텍스트 색상"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1441
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1443
 msgid "Layout & Inputs"
 msgstr "레이아웃 및 입력"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1442
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1444
 msgid "Colors"
 msgstr "색상"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1443
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1445
 msgid "Fonts"
 msgstr "글꼴"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1444
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1446
 msgid "Order"
 msgstr "주문"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1445
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1447
 msgid "Step Title"
 msgstr "단계 제목"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1446
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1448
 msgid "Footer Buttons"
 msgstr "푸터 버튼"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1447
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1449
 msgid "Step Content"
 msgstr "단계 내용"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1448
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1492
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1450
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1494
 msgid "Finish Button Type"
 msgstr "완료 버튼 유형"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1449
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1493
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1451
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1495
 msgid "Panel Button Type"
 msgstr "패널 버튼 유형"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1450
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1452
 msgid "Summary Segment"
 msgstr "요약 세그먼트"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1451
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1453
 msgid "Payment Segment"
 msgstr "결제 구간"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1452
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1454
 msgid "Heading Title"
 msgstr "헤딩 제목"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1453
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1455
 msgid "Sub Steps"
 msgstr "하위 단계"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1454
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1456
 msgid "Step Popups"
 msgstr "단계 팝업"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1457
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1459
 msgid "Fonts and colors"
 msgstr "글꼴 및 색상"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1458
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1460
 msgid "Set up Sidebar visibility and its content"
 msgstr "사이드바 표시 여부 및 콘텐츠 설정하기"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1460
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1462
 msgid "Set up Services, Locations, Employees selection options"
 msgstr "서비스, 장소, 담당자 선택 옵션 설정하기"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1461
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1463
 msgid "Date & Time Selection"
 msgstr "날짜 및 시간 선택"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1462
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1464
 msgid "Set up Calendar layout and Recurring popup options"
 msgstr "캘린더 레이아웃 및 반복 팝업 옵션 설정하기"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1463
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1465
 msgid "Customer Information"
 msgstr "고객 정보"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1464
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1562
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1466
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1564
 msgid "Field order, mandatory fields, labels and display options"
 msgstr "필드 순서, 필수 필드, 레이블 및 표시 옵션"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1465
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1467
 msgid "Payment Summary"
 msgstr "결제 요약"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1466
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1564
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1468
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1566
 msgid "Set up labels and buttons"
 msgstr "레이블 및 버튼 설정하기"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1467
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1566
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1469
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1568
 msgid "Set up button types and labels"
 msgstr "버튼 유형 및 레이블 설정"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1470
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1472
 msgid "Global Settings"
 msgstr "글로벌 설정"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1472
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1474
 msgid "Section"
 msgstr "섹션"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1473
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1475
 msgid "Field Order"
 msgstr "필드 순서"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1474
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1565
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1585
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1476
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1567
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1587
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:101
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:223
 msgid "Congratulations"
 msgstr "축하합니다"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1476
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1478
 msgid "Footer"
 msgstr "푸터"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1477
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1479
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:169
 msgid "Get in Touch"
 msgstr "연락하기"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1478
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1480
 msgid "Collapse Menu"
 msgstr "메뉴 축소"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1480
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1482
 msgid "Filled"
 msgstr "채워짐"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1481
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1483
 msgid "Plain"
 msgstr "일반"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1484
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1486
 msgid "Continue Button Type"
 msgstr "계속 버튼 유형"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1485
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1487
 msgid "Calendar Slot End Time"
 msgstr "캘린더 슬롯 종료 시간"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1486
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1488
 msgid "Show Busy Time Slots"
 msgstr "바쁜 시간대 표시"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1487
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1489
 msgid "Calendar Time Zone"
 msgstr "캘린더 시간대"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1494
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1496
 msgid "Sidebar Visibility"
 msgstr "사이드바 가시성"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1495
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1497
 msgid "Publish Form"
 msgstr "게시 양식"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1497
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1499
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:255
 msgid "View All"
 msgstr "모두 보기"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1499
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1501
 msgid "Set up categories cards"
 msgstr "카테고리 카드 설정"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1500
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1502
 msgid "Cards"
 msgstr "카드"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1501
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1503
 msgid "Card Button Type"
 msgstr "카드 버튼 유형"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1502
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1504
 msgid "Services Overview"
 msgstr "서비스 개요"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1503
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1505
 msgid "Set up Services view"
 msgstr "서비스 보기 설정"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1504
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1506
 msgid "Service Details"
 msgstr "서비스 세부 정보"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1505
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1507
 msgid "Set up Service detailed view"
 msgstr "서비스 상세 보기 설정하기"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1506
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1508
 msgid "Booking Form"
 msgstr "예약 양식"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1507
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1509
 msgid "Set options, colors and labels for booking form"
 msgstr "예약 양식의 옵션, 색상 및 레이블 설정"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1509
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1511
 msgid "Catalog Booking Form 2.0"
 msgstr "카탈로그 예약 양식 2.0"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1510
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1512
 msgid ""
 " Discover the modernized Catalog Booking Form 2.0 that showcases services in "
 "stylish card layouts. Easily add categories and adjust the appearance to "
@@ -5126,122 +5134,122 @@ msgstr ""
 "을 살펴보세요. 손쉽게 카테고리를 추가하고 브랜드를 반영하도록 모양을 조정할 "
 "수 있습니다."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1513
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1515
 msgid "Total Number of Services"
 msgstr "총 서비스 수"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1514
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1516
 msgid "Back Button"
 msgstr "뒤로 버튼"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1515
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1517
 msgid "“Back” Button Type"
 msgstr "\"뒤로 가기” 버튼 유형"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1517
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1519
 msgid "“Book Now” Button Type"
 msgstr "\"지금 예약\" 버튼 유형"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1520
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1522
 msgid "Main Category Button"
 msgstr "기본 카테고리 버튼"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1521
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1523
 msgid "Category Card Side Color"
 msgstr "카테고리 카드 측면 색상"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1522
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1524
 msgid "Category Color"
 msgstr "카테고리 색상"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1526
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1528
 msgid "Filter Menu Button Type"
 msgstr "필터 메뉴 버튼 유형"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1527
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1529
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1531
 msgid "Categories Sidebar"
 msgstr "카테고리 사이드바"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1528
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1530
 msgid "Filters Block"
 msgstr "필터 블록"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1530
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1532
 msgid "Page Header"
 msgstr "페이지 헤더"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1531
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1533
 msgid "Main Content"
 msgstr "주요 콘텐츠"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1532
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1534
 msgid "Service Category"
 msgstr "서비스 카테고리"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1533
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1535
 msgid "Service Duration"
 msgstr "서비스 기간"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1534
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1546
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1536
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1548
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:258
 msgid "About Service"
 msgstr "서비스 정보"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1535
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1537
 msgid "“Search” option"
 msgstr "\"검색\" 옵션"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1536
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1538
 msgid "Card Color"
 msgstr "카드 색상"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1537
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1539
 msgid "Page Scroll Visibility"
 msgstr "페이지 스크롤 가시성"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1539
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1541
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:256
 msgid "Search"
 msgstr "검색"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1540
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1542
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:274
 msgid "Available"
 msgstr "사용 가능"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1543
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1545
 msgid "No results"
 msgstr "결과 없음"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1545
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1547
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:257
 msgid "Book Now"
 msgstr "지금 예약"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1547
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1549
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:259
 msgid "View all photos"
 msgstr "모든 사진 보기"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1549
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1551
 msgid "Support Heading:"
 msgstr "지원 제목:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1550
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1552
 msgid "Company Phone:"
 msgstr "회사 전화:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1551
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1553
 msgid "Company Email:"
 msgstr "회사 이메일:"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1554
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1556
 msgid "Event List Booking Form 2.0"
 msgstr "이벤트 목록 예약 양식 2.0"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1555
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1557
 msgid ""
 "The Event List Booking Form 2.0 offers an intuitive and fast booking "
 "experience, with a design that stands out. Customers can effortlessly browse "
@@ -5250,253 +5258,253 @@ msgstr ""
 "이벤트 목록 예약 양식 2.0은 눈에 띄는 디자인으로 직관적이고 빠른 예약 환경을 "
 "제공합니다. 고객은 이벤트 목록을 손쉽게 탐색하고 예약할 수 있습니다."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1557
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1559
 msgid "Events List"
 msgstr "이벤트 목록"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1558
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1560
 msgid ""
 "Set up Location, Images, Filters, Capacity, Price, and Status visibility "
 "options"
 msgstr "장소, 이미지, 필터, 용량, 가격 및 상태 표시 옵션 설정하기"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1559
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1582
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1561
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1584
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:116
 msgid "Event Info"
 msgstr "이벤트 정보"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1560
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1562
 msgid "Set up Staff, Location, Gallery and other Event information visibility"
 msgstr "담당자, 장소, 갤러리 및 기타 이벤트 정보 표시 여부 설정하기"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1561
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1563
 msgid "Customer Info"
 msgstr "고객 정보"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1568
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1570
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:227
 msgid "Events Available"
 msgstr "사용 가능한 이벤트"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1569
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1571
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:228
 msgid "Event Available"
 msgstr "이벤트 사용 가능"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1570
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1572
 msgid "Page"
 msgstr "페이지"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1571
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1573
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:229
 msgid "Search for Events"
 msgstr "이벤트 검색"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1572
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1574
 msgid "Begins"
 msgstr "시작"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1573
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1575
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:230
 msgid "slot left"
 msgstr "슬롯 남음"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1574
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1576
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:231
 msgid "slots left"
 msgstr "남은 슬롯"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1575
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1577
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:232
 msgid "Learn more"
 msgstr "자세히 알아보기"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1576
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1578
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:233
 msgid "Read more"
 msgstr "더 읽기"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1581
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1583
 msgid "About"
 msgstr "소개"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1583
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1585
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:234
 msgid "Timetable"
 msgstr "시간표"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1586
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1588
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:226
 msgid "About Event"
 msgstr "이벤트 정보"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1587
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1589
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:219
 msgid "Event Starts"
 msgstr "이벤트 시작"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1588
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1590
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:220
 msgid "Event Ends"
 msgstr "이벤트 종료"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1589
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1591
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:221
 msgid "at"
 msgstr "에서"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1590
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1592
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:235
 msgid "How many attendees do you want to book event for?"
 msgstr "몇 명의 참석자를 대상으로 이벤트를 예약하시겠습니까?"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1593
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1595
 msgid "Step Filters"
 msgstr "단계 필터"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1594
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1596
 msgid "Event Card"
 msgstr "이벤트 카드"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1595
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1597
 msgid "Step Pagination"
 msgstr "단계 페이지 매김"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1596
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1598
 msgid "Event Slots Capacity"
 msgstr "이벤트 슬롯 용량"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1597
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1599
 msgid "Filters Button Type"
 msgstr "필터 버튼 유형"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1598
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1600
 msgid "Read More Button Type"
 msgstr "더 읽기 버튼 유형"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1599
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1601
 msgid "Learn More Button Type"
 msgstr "자세히 알아보기 버튼 유형"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1600
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1602
 msgid "Event Tab Image"
 msgstr "이벤트 탭 이미지"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1601
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1603
 msgid "Step Header"
 msgstr "단계 헤더"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1602
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1604
 msgid "Step Info Tab"
 msgstr "단계 정보 탭"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1603
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1605
 msgid "Booking Event Button"
 msgstr "이벤트 예약 버튼"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1604
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1606
 msgid "Finish Button"
 msgstr "완료 버튼"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1605
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1607
 msgid "Close Event Button"
 msgstr "이벤트 닫기 버튼"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1606
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1608
 msgid "Event Gallery"
 msgstr "이벤트 갤러리"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1607
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1609
 msgid "Event Description"
 msgstr "이벤트 설명"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1609
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1611
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:192
 msgid "person"
 msgstr "사람"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1610
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1612
 msgid "Event Employees"
 msgstr "이벤트 담당자"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1620
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1622
 msgid "Catalog"
 msgstr "카탈로그"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1621
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1623
 msgid "Choose Category"
 msgstr "카테고리 선택"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1622
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1624
 msgid "Choose Service"
 msgstr "서비스 선택"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1623
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1625
 msgid "Choose Package"
 msgstr "패키지 선택"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1624
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1626
 msgid "Preselect Booking Parameters"
 msgstr "예약 매개변수 미리 선택"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1625
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1627
 msgid "Skip Categories step"
 msgstr "카테고리 건너뛰기 단계"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1626
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1628
 msgid "Insert Amelia Booking Shortcode"
 msgstr "아멜리아 예약 쇼트코드 삽입"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1627
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1629
 msgid "Select Catalog View"
 msgstr "카탈로그 보기 선택"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1628
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1630
 msgid "Select Category"
 msgstr "카테고리 선택"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1629
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1631
 msgid "Select Employee"
 msgstr "담당자 선택"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1630
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1632
 msgid "Select Location"
 msgstr "장소 선택"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1631
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1633
 msgid "Select Package"
 msgstr "패키지 선택"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1633
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1635
 msgid "Select Event"
 msgstr "이벤트 선택"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1634
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1636
 msgid "Select Events"
 msgstr "이벤트 선택"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1635
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1637
 msgid "Select Tag"
 msgstr "태그 선택"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1636
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1638
 msgid "Select Tags"
 msgstr "태그 선택"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1637
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1639
 msgid "Select View"
 msgstr "보기 선택"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1639
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1641
 msgid "Show All"
 msgstr "모두 표시"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1640
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1642
 msgid "Load booking form manually"
 msgstr "예약 양식 수동으로 로드"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1641
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1643
 msgid ""
 "Add element (button, link...) ID, that will manually load amelia shortcode "
 "content"
@@ -5504,151 +5512,151 @@ msgstr ""
 "아멜리아 쇼트코드 콘텐츠를 수동으로 로드할 요소(버튼, 링크...) ID를 추가합니"
 "다"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1642
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1644
 msgid "For multiselect: hold CTRL / Command (⌘)."
 msgstr "다중 선택의 경우: CTRL / Command(⌘)를 길게 누릅니다."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1643
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1645
 msgid "Show all categories"
 msgstr "모든 카테고리 표시"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1644
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1646
 msgid "Show all employees"
 msgstr "모든 담당자 표시"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1645
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1647
 msgid "Show all locations"
 msgstr "모든 장소 표시"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1646
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1648
 msgid "Show all services"
 msgstr "모든 서비스 표시"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1647
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1649
 msgid "Show all events"
 msgstr "모든 이벤트 표시"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1648
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1650
 msgid "Show all packages"
 msgstr "모든 패키지 표시"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1649
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1651
 msgid "Show all tags"
 msgstr "모든 태그 표시"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1650
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1652
 msgid "Show catalog of all categories"
 msgstr "모든 카테고리 카탈로그 표시"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1651
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1653
 msgid "Show specific category"
 msgstr "특정 카테고리 표시"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1652
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1654
 msgid "Show specific categories"
 msgstr "특정 카테고리 표시"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1653
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1655
 msgid "Show specific package"
 msgstr "특정 패키지 표시"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1654
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1656
 msgid "Show specific packages"
 msgstr "특정 패키지 표시"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1655
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1657
 msgid "Show event"
 msgstr "이벤트 표시"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1656
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1658
 msgid "Show Type"
 msgstr "유형 표시"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1657
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1659
 msgid "List (default)"
 msgstr "목록(기본값)"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1659
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1661
 msgid "Show tag"
 msgstr "태그 표시"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1660
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1662
 msgid "Show specific service"
 msgstr "특정 서비스 표시"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1661
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1663
 msgid "Show specific services"
 msgstr "특정 서비스 표시"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1662
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1664
 msgid "Trigger type"
 msgstr "트리거 유형"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1663
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1665
 msgid "Id"
 msgstr "Id"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1664
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1666
 msgid "Class"
 msgstr "클래스"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1665
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1667
 msgid "Trigger by attribute"
 msgstr "속성별 트리거"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1666
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1668
 msgid "Step Booking"
 msgstr "단계별 예약"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1667
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1669
 msgid "Catalog Booking"
 msgstr "카탈로그 예약"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1668
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1670
 msgid "Events List Booking"
 msgstr "이벤트 목록 예약"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1669
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1671
 msgid "Show recurring events"
 msgstr "반복 이벤트 표시"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1670
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1672
 msgid "Show in Amelia Popup"
 msgstr "아멜리아 팝업에서 보기"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1672
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1674
 msgid "AM - Booking view"
 msgstr "AM - 예약 보기"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1673
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1675
 msgid "AM - Step Booking"
 msgstr "AM - 단계 예약"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1674
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1676
 msgid "AM - Catalog Booking"
 msgstr "AM - 카탈로그 예약"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1675
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1677
 msgid "AM - Catalog view"
 msgstr "AM - 카탈로그 보기"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1676
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1678
 msgid "AM - Events view"
 msgstr "AM - 이벤트 보기"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1677
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1679
 msgid "AM - Events List Booking"
 msgstr "AM - 이벤트 목록 예약"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1678
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1680
 msgid "AM - Events Calendar Booking"
 msgstr "AM - 이벤트 캘린더 예약"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1680
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1682
 msgid "Amelia - Booking view"
 msgstr "아멜리아 - 예약 보기"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1681
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1683
 msgid ""
 "Step-By-Step Booking Wizard gives your customers the option to choose "
 "everything about the booking in a few steps"
@@ -5656,21 +5664,21 @@ msgstr ""
 "단계별 예약 마법사는 고객이 몇 단계만으로 예약에 관한 모든 것을 선택할 수 있"
 "는 옵션을 제공합니다"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1684
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1686
 msgid "Amelia - Step-By-Step Booking"
 msgstr "아멜리아 - 단계별 예약"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1685
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1687
 msgid ""
 "Step-by-Step booking view guides the customers through several steps in "
 "order to make their bookings."
 msgstr "단계별 예약 보기는 고객이 예약을 진행하기 위한 여러 단계를 안내합니다."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1688
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1690
 msgid "Amelia - Catalog Booking"
 msgstr "아멜리아 - 카탈로그 예약"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1689
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1691
 msgid ""
 "Front-end Booking Catalog is shortcode when you want to show your service in "
 "a form of a catalog"
@@ -5678,11 +5686,11 @@ msgstr ""
 "프론트엔드 예약 카탈로그는 서비스를 카탈로그 형태로 표시하려는 경우 쇼트코드"
 "입니다"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1692
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1694
 msgid "Amelia - Catalog view"
 msgstr "아멜리아 - 카탈로그 보기"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1693
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1695
 msgid ""
 "Front-end Booking Catalog is shortcode when you want to show your service in "
 "a form of a cataloge"
@@ -5690,12 +5698,12 @@ msgstr ""
 "프론트엔드 예약 카탈로그는 서비스를 카탈로그 형태로 표시하려는 경우 쇼트코드"
 "입니다"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1696
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1698
 msgid "Amelia - Events"
 msgstr "아멜리아 - 이벤트"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1697
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1701
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1699
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1703
 msgid ""
 "Event Booking is shortcode that gives your customers the option to book one "
 "of the events that you've created on the back-end in a simple event list "
@@ -5704,15 +5712,15 @@ msgstr ""
 "이벤트 예약은 고객이 백엔드에서 생성한 이벤트 중 하나를 간단한 이벤트 목록 보"
 "기에서 예약할 수 있는 옵션을 제공하는 쇼트코드입니다."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1700
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1702
 msgid "Amelia - Events List"
 msgstr "아멜리아 - 이벤트 목록"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1704
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1706
 msgid "Amelia - Events Calendar"
 msgstr "아멜리아 - 이벤트 캘린더"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1705
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1707
 msgid ""
 "Event Booking is shortcode that gives your customers the option to book one "
 "of the events that you've created on the back-end in a simple event calendar "
@@ -5721,11 +5729,11 @@ msgstr ""
 "이벤트 예약은 고객이 백엔드에서 생성한 이벤트 중 하나를 간단한 이벤트 캘린더 "
 "보기에서 예약할 수 있는 옵션을 제공하는 쇼트코드입니다."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1707
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1709
 msgid "You are using a form that will be outdated soon!"
 msgstr "곧 구식이 될 양식을 사용하고 있습니다.!"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1726
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1728
 msgid "Recurring Appointments"
 msgstr "반복 예약"
 
@@ -9037,12 +9045,6 @@ msgstr "고객 선택"
 
 #~ msgid "This booking is part of a package deal"
 #~ msgstr "이 예약은 패키지 상품의 일부입니다"
-
-#~ msgid "Paid deposit"
-#~ msgstr "결제된 보증금"
-
-#~ msgid "Paid remaining amount"
-#~ msgstr "결제 잔액"
 
 #~ msgid "Payment has not been deleted"
 #~ msgstr "결제가 삭제되지 않았습니다"

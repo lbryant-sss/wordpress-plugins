@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'mailchimp/wordpress',
-        'pretty_version' => '1.9.0',
-        'version' => '1.9.0.0',
-        'reference' => 'f76aa28fbfb62f61a78c5b2eb5527514202a6e35',
+        'pretty_version' => '2.0.0',
+        'version' => '2.0.0.0',
+        'reference' => 'f75618e4495ce73463a28d46ef80406839598c45',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'mailchimp/wordpress' => array(
-            'pretty_version' => '1.9.0',
-            'version' => '1.9.0.0',
-            'reference' => 'f76aa28fbfb62f61a78c5b2eb5527514202a6e35',
+            'pretty_version' => '2.0.0',
+            'version' => '2.0.0.0',
+            'reference' => 'f75618e4495ce73463a28d46ef80406839598c45',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

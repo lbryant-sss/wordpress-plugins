@@ -104,7 +104,7 @@ With the Pro version, when you use the folders plugin on WordPress, our plugin i
 With dynamic folders, Sort out all your posts by date, authors, categories and more! Folders seamlessly integrates with the WordPress interface to intelligently create folders containing your content. 
 We also have a native integration with WooCommerce. Manage your dynamic folders automatically using Folders with WooCommerce.
 
-This is a great way to manage all your stuff into different folders right after you start using folders. 
+This is a great way to manage and organize folders when you start using the Folders plugin. 
 
 = 🔁 Replace media library files =
 With the Folders plugin, replace media library files with other files. Save time whenever you need to replace a media file on all of your pages, posts, etc. When you replace a media file, the change will reflect on all of your pages, posts, and more. 
