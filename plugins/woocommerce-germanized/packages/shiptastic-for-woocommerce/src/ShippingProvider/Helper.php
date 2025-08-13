@@ -123,6 +123,20 @@ class Helper {
 		return array_key_exists( $name, $available ) ? $available[ $name ] : false;
 	}
 
+	public function get_features() {
+		$features = array(
+			'tracking'              => _x( 'Tracking', 'shipments-provider-feature', 'woocommerce-germanized' ),
+			'remote_status_updates' => _x( 'Remote status updates', 'shipments-provider-feature', 'woocommerce-germanized' ),
+			'pickup_locations'      => _x( 'Pickup locations', 'shipments-provider-feature', 'woocommerce-germanized' ),
+		);
+
+		foreach ( wc_stc_get_shipment_label_types() as $type ) {
+			$features[ "labels_{$type}" ] = wc_stc_get_shipment_label_title( $type, true );
+		}
+
+		return $features;
+	}
+
 	/**
 	 * @return Placeholder[]
 	 */
@@ -133,24 +147,32 @@ class Helper {
 				'woocommerce_shiptastic_available_shipping_provider_integrations',
 				array(
 					'ups'           => array(
-						'title'          => _x( 'UPS', 'shipments', 'woocommerce-germanized' ),
-						'is_builtin'     => false,
-						'is_pro'         => false,
-						'extension_name' => 'shiptastic-integration-for-ups',
+						'title'                     => _x( 'UPS', 'shipments', 'woocommerce-germanized' ),
+						'is_builtin'                => false,
+						'is_pro'                    => false,
+						'extension_name'            => 'shiptastic-integration-for-ups',
+						'label_types_supported'     => array( 'simple', 'return' ),
+						'remote_shipment_status_types_supported' => array( 'pull' ),
+						'supports_pickup_locations' => true,
 					),
 					'dhl'           => array(
-						'title'               => _x( 'DHL', 'shipments', 'woocommerce-germanized' ),
-						'countries_supported' => array( 'DE' ),
-						'is_builtin'          => false,
-						'is_pro'              => false,
-						'extension_name'      => 'shiptastic-integration-for-dhl',
+						'title'                     => _x( 'DHL', 'shipments', 'woocommerce-germanized' ),
+						'countries_supported'       => array( 'DE' ),
+						'is_builtin'                => false,
+						'is_pro'                    => false,
+						'extension_name'            => 'shiptastic-integration-for-dhl',
+						'label_types_supported'     => array( 'simple', 'return' ),
+						'remote_shipment_status_types_supported' => array( 'pull' ),
+						'supports_pickup_locations' => true,
 					),
 					'deutsche_post' => array(
-						'title'               => _x( 'Deutsche Post', 'shipments', 'woocommerce-germanized' ),
-						'countries_supported' => array( 'DE' ),
-						'is_builtin'          => false,
-						'is_pro'              => false,
-						'extension_name'      => 'shiptastic-integration-for-dhl',
+						'title'                     => _x( 'Deutsche Post', 'shipments', 'woocommerce-germanized' ),
+						'countries_supported'       => array( 'DE' ),
+						'is_builtin'                => false,
+						'is_pro'                    => false,
+						'extension_name'            => 'shiptastic-integration-for-dhl',
+						'label_types_supported'     => array( 'simple', 'return' ),
+						'supports_pickup_locations' => true,
 					),
 				)
 			);

@@ -41,6 +41,7 @@ With this plugin you can safely disable those annoying services, unnecessary cod
 * **Security Headers**: X-Pingback and other revealing headers removal
 * **Version Hiding**: Removes WordPress version information
 * **XML-RPC Management**: Smart deactivation based on active plugins
+* **WordPress File Editor Deactivation**: Internal plugin and theme editor deactivation
 
 **⚙️ Administration Optimizations:**
 * **Dashboard Cleanup**: Removes unnecessary dashboard widgets

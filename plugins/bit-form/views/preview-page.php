@@ -121,5 +121,13 @@ function readable_filesize($bytes, $decimals = 2)
   </div>
   <script src="<?php echo BITFORMS_ASSET_URI . '/bit-fake-filler.min.js?bfv=' . $formUpdateVersion ?>"></script>
 </body>
+<script>
+  // Listen for refresh messages
+window.addEventListener('message', (e) => {
+  if (e.origin === window.location.origin && e.data === 'REFRESH_PREVIEW') {
+    window.location.reload()
+  }
+})
+</script>
 
 </html>

@@ -694,7 +694,9 @@ final class FrontendFormManager extends FormManager
           );
           $count = !empty($countResult[0]) && !empty($countResult[0]->count) ? $countResult[0]->count : false;
           if ($count && $count >= intval($fromRestrictionSetitings->{$restrictionKey})) {
-            $restrictionMessage[] = __('Sorry!! Entry limit exceeded', 'bit-form');
+            $entry_limit_restriction = 'Sorry!! Entry limit exceeded';
+            $entry_limit_restriction = apply_filters('bitform_filter_restriction_entry_limit_message', $entry_limit_restriction, $this->form_id);
+            $restrictionMessage[] = __($entry_limit_restriction, 'bit-form');
           }
         }
         if ('onePerIp' === $restrictionKey) {
@@ -708,16 +710,22 @@ final class FrontendFormManager extends FormManager
           $count = !empty($countResult[0]) && !empty($countResult[0]->count) ? $countResult[0]->count : false;
 
           if ($count && $count > 0) {
-            $restrictionMessage[] = __('Sorry!! You have already submitted', 'bit-form');
+            $onePerIp = 'Sorry!! You have already submitted from this IP address';
+            $onePerIp = apply_filters('bitform_filter_restriction_one_per_ip_message', $onePerIp, $this->form_id);
+            $restrictionMessage[] = __($onePerIp, 'bit-form');
           }
         }
         if ('is_login' === $restrictionKey && 0 === get_current_user_id()) {
-          $restrictionMessage[] = __($fromRestrictionSetitings->is_login->message, 'bit-form');
+          $is_login_messages = $fromRestrictionSetitings->is_login->message;
+          $is_login_messages = apply_filters('bitform_filter_restriction_is_login_message', $is_login_messages, $this->form_id);
+          $restrictionMessage[] = __($is_login_messages, 'bit-form');
         }
         if ($checkedEmptySubmitted && 'empty_submission' === $restrictionKey) {
           $isEmpty = $this->checkEmptySubmission($_POST, $_FILES);
           if ($isEmpty) {
-            $restrictionMessage[] = __($fromRestrictionSetitings->empty_submission->message, 'bit-form');
+            $restriction = $fromRestrictionSetitings->empty_submission->message;
+            $restriction = apply_filters('bitform_filter_restriction_empty_submission_message', $restriction, $this->form_id);
+            $restrictionMessage[] = __($restriction, 'bit-form');
           }
         }
         if ('restrict_form' === $restrictionKey && isset($fromRestrictionSetitings->{$restrictionKey})) {
@@ -785,14 +793,20 @@ final class FrontendFormManager extends FormManager
           }
 
           if (!($isdateOk && $isdayOk && $istimeOk)) {
+            $restrict_form_message = null;
             if (!$isdayOk) {
-              $restrictionMessage[] = !empty($timeNotOkMsg) ? sprintf(__('Form is available %s From %s', 'bit-form'), $dayNotOkMsg, $timeNotOkMsg) :
+              $restrict_form_message = !empty($timeNotOkMsg) ? sprintf(__('Form is available %s From %s', 'bit-form'), $dayNotOkMsg, $timeNotOkMsg) :
                   sprintf(__('Form is available %s', 'bit-form'), $dayNotOkMsg, $timeNotOkMsg);
             } elseif (!$isdateOk) {
-              $restrictionMessage[] = !empty($timeNotOkMsg) ? sprintf(__('Form is available %s From %s', 'bit-form'), $dateNotOkMsg, $timeNotOkMsg) :
+              $restrict_form_message = !empty($timeNotOkMsg) ? sprintf(__('Form is available %s From %s', 'bit-form'), $dateNotOkMsg, $timeNotOkMsg) :
                   sprintf(__('Form is available %s', 'bit-form'), $dateNotOkMsg, $timeNotOkMsg);
             } elseif (!$istimeOk) {
-              $restrictionMessage[] = sprintf(__('Form is available on %s', 'bit-form'), $timeNotOkMsg);
+              $restrict_form_message = sprintf(__('Form is available on %s', 'bit-form'), $timeNotOkMsg);
+            }
+
+            if ($restrict_form_message) {
+              $restrict_form_message = apply_filters('bitform_filter_restrict_form_message', $restrict_form_message, $this->form_id);
+              $restrictionMessage[] = __($restrict_form_message, 'bit-form');
             }
           }
         }
@@ -805,7 +819,9 @@ final class FrontendFormManager extends FormManager
             }
           }
           if ($isIpBlocked) {
-            $restrictionMessage[] = sprintf(__('Sorry!! Your IP address is %s, Blocked from submitting the form', 'bit-form'), $ipAddress);
+            $blocked_ip_message = sprintf('Sorry!! Your IP address is %s, Blocked from submitting the form', $ipAddress);
+            $blocked_ip_message = apply_filters('bitform_filter_restricted_ip_message', $blocked_ip_message, $this->form_id);
+            $restrictionMessage[] = __($blocked_ip_message, 'bit-form');
           }
         }
         if ('private_ip' === $restrictionKey && isset($fromRestrictionSetitings->{$restrictionKey})) {
@@ -817,7 +833,9 @@ final class FrontendFormManager extends FormManager
             }
           }
           if (!$isIpWhiteListed) {
-            $restrictionMessage[] = sprintf(__('Sorry!! Your IP address is %s, Blocked from submitting the form', 'bit-form'), $ipAddress);
+            $private_ip = sprintf('Sorry!! Your IP address is %s, Blocked from submitting the form', $ipAddress);
+            $private_ip = apply_filters('bitform_filter_private_ip_message', $private_ip, $this->form_id);
+            $restrictionMessage[] = __($private_ip, 'bit-form');
           }
         }
       }

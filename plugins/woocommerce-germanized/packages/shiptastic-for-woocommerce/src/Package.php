@@ -6,7 +6,6 @@ use Automattic\WooCommerce\Utilities\I18nUtil;
 use Exception;
 use Vendidero\Shiptastic\Registry\Container;
 use Vendidero\Shiptastic\ShippingMethod\MethodHelper;
-use Vendidero\Shiptastic\Tracking\Helper;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -19,7 +18,7 @@ class Package {
 	 *
 	 * @var string
 	 */
-	const VERSION = '4.5.1';
+	const VERSION = '4.6.0';
 
 	public static $upload_dir_suffix = '';
 
@@ -28,7 +27,7 @@ class Package {
 	protected static $locale = array();
 
 	/**
-	 * Init the package - load the REST API Server class.
+	 * Init the package
 	 */
 	public static function init() {
 		if ( ! self::has_dependencies() ) {
@@ -272,13 +271,16 @@ class Package {
 		/**
 		 * Mark the return page as a Woo page to make sure default form styles work.
 		 */
-		add_filter( 'is_woocommerce', function( $is_woocommerce ) {
-			if ( wc_post_content_has_shortcode( 'shiptastic_return_request_form' ) ) {
-				$is_woocommerce = true;
-			}
+		add_filter(
+			'is_woocommerce',
+			function ( $is_woocommerce ) {
+				if ( wc_post_content_has_shortcode( 'shiptastic_return_request_form' ) ) {
+					$is_woocommerce = true;
+				}
 
-			return $is_woocommerce;
-		} );
+				return $is_woocommerce;
+			}
+		);
 	}
 
 	public static function return_request_form( $args = array() ) {
@@ -1045,7 +1047,7 @@ class Package {
 	 * @return string
 	 */
 	public static function get_i18n_path() {
-		return apply_filters( 'woocommerce_shiptastic_get_i18n_path', self::get_path( 'i18n/languages' ) );
+		return self::is_standalone() ? self::get_path( 'i18n/languages' ) : apply_filters( 'woocommerce_shiptastic_get_i18n_path', self::get_path( 'i18n/languages' ) );
 	}
 
 	/**
@@ -1054,6 +1056,6 @@ class Package {
 	 * @return string
 	 */
 	public static function get_i18n_textdomain() {
-		return apply_filters( 'woocommerce_shiptastic_get_i18n_textdomain', 'woocommerce-germanized' );
+		return self::is_standalone() ? 'shiptastic-for-woocommerce' : apply_filters( 'woocommerce_shiptastic_get_i18n_textdomain', 'woocommerce-germanized' );
 	}
 }

@@ -262,18 +262,23 @@ if ( ! class_exists( '\WP2FA\Admin\SettingsPages\Settings_Page_General' ) ) {
 			<br>
 			<h3><?php \esc_html_e( 'Enable the REST API endpoints for 2FA', 'wp-2fa' ); ?></h3>
 			<p class="description">
-				<?php \esc_html_e( 'Use the below setting to enable the REST API endpoints for the 2FA operations. This is mostly needed if you need to easily integrate with the plugin.', 'wp-2fa' ); ?>
+				<?php \esc_html_e( 'Choose how WP 2FA verifies the 2FA by default. The native method works for most setups, but you can switch to REST API verification if needed. Only change this setting if you are experiencing issues with the default method.', 'wp-2fa' ); ?>
 			</p>
 			<table class="form-table">
 				<tbody>
 					<tr>
-						<th><label for="enable_rest"><?php \esc_html_e( 'Enable the REST API endpoints for 2FA', 'wp-2fa' ); ?></label></th>
+						<th><label for="enable_rest"><?php \esc_html_e( 'Select the default 2FA verification mechanism', 'wp-2fa' ); ?></label></th>
 						<td>
 							<fieldset>
-								<input type="checkbox" id="enable_rest" name="wp_2fa_settings[enable_rest]" value="enable_rest"
-								<?php \checked( 1, WP2FA::get_wp2fa_general_setting( 'enable_rest' ), true ); ?>
+								<input type="radio" id="enable_native" name="wp_2fa_settings[enable_rest]" value=""
+								<?php \checked( false, WP2FA::get_wp2fa_general_setting( 'enable_rest' ), true ); ?>
 								>
-								<?php // \esc_html_e( '', 'wp-2fa' ); ?>
+								<label for="enable_native"><?php \esc_html_e( 'Native', 'wp-2fa' ); ?></label>
+								<br><input type="radio" id="enable_rest" name="wp_2fa_settings[enable_rest]" value="enable_rest"
+								<?php \checked( true, WP2FA::get_wp2fa_general_setting( 'enable_rest' ), true ); ?>
+								>
+								<label for="enable_rest">
+								<?php \esc_html_e( 'REST API', 'wp-2fa' ); ?></label>
 							</fieldset>
 						</td>
 					</tr>

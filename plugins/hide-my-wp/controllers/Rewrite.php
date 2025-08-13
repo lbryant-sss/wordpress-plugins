@@ -459,15 +459,18 @@ class HMWP_Controllers_Rewrite extends HMWP_Classes_FrontController {
 		///////////////////////////////////////////////
 		/// Check if changing the paths is true
 		if ( HMWP_Classes_Tools::doChangePaths() ) {
+			$priority = apply_filters( 'hmwp_priority_hook', 1 );
 
+			// If there is late loading, start the buffer on template_redirect PHP_INT_MAX
 			if ( apply_filters( 'hmwp_laterload', HMWP_Classes_Tools::getOption( 'hmwp_laterload' ) ) ) {
 				// On Late loading, start the buffer on template_redirect
-				add_action( 'template_redirect', array( $this->model, 'startBuffer' ), PHP_INT_MAX );
-			} else {
-				add_action( 'template_redirect', array( $this->model, 'startBuffer' ), 1 );
+				$priority = apply_filters( 'hmwp_priority_hook', PHP_INT_MAX );
 			}
 
-			// Start buffer on login init hook
+			// Start the buffer on template_redirect
+			add_action( 'template_redirect', array( $this->model, 'startBuffer' ), $priority  );
+
+			// For login page
 			add_action( 'login_init', array( $this->model, 'startBuffer' ) );
 
 		}

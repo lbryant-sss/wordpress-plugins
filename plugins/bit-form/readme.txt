@@ -1,7 +1,7 @@
 === Bit Form - Custom Contact Form, Multi Step, Conversational, Payment & Quiz Form builder ===
 Plugin Name: Bit Form - Custom Contact Form, Multi Step, Conversational, Payment & Quiz Form builder
-Version: 2.20.3
-Stable tag: 2.20.3
+Version: 2.20.4
+Stable tag: 2.20.4
 Author: Contact form builder by Bit form
 Author URI: https://www.bitapps.pro/
 Contributors: bitpressadmin, arif25897, mdrhmaruf, mdabbasuddin, akaioum 
@@ -501,7 +501,15 @@ Yes, Bit Form has built-in spam protection better than any other Contact Form Bu
 6. Response table to view form entries
 
 == Changelog ==
-= 2.20.3=
+= 2.20.4 =
+*Release Date: 12 August, 2025*
+*Fix:
+    1. File Upload Security Enhancement: Strictly block uploading of executable files.
+
+*Improvements:
+    1. Ensure only a single preview tab is open and automatically reload it on every Preview button click.
+
+= 2.20.3 =
 *Release Date: 27 July, 2025*
 *Improvements:
     1. Conditional Logic: Added support for using the "Next" button for an action to conditionally change steps in Multi Step forms.
@@ -750,8 +758,8 @@ Yes, Bit Form has built-in spam protection better than any other Contact Form Bu
 
 == Upgrade Notice ==
 
-= 2.18.3 =
-Update this version to get issue fixes.
+= 2.20.4 =
+Update this to improve file upload security and strictly prevent executable file uploads.
 
 
 For changelog of all versions please check [Changelog.txt](https://plugins.trac.wordpress.org/browser/bit-form/trunk/changelog.txt)

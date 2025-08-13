@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitb0899e702cdae1ae7a23a0a6fa3baf05
+class ComposerStaticInit459bdb015dd1ec2a89a2fe9247a48ad6
 {
     public static $files = array (
         '241d2bc730dc592f76425fee315639b6' => __DIR__ . '/..' . '/globalcitizen/php-iban/oophp-iban.php',
@@ -417,6 +417,7 @@ class ComposerStaticInitb0899e702cdae1ae7a23a0a6fa3baf05
         'Vendidero\\Shiptastic\\Admin\\Preview\\Shipment' => __DIR__ . '/../..' . '/packages/shiptastic-for-woocommerce/src/Admin/Preview/Shipment.php',
         'Vendidero\\Shiptastic\\Admin\\ReturnTable' => __DIR__ . '/../..' . '/packages/shiptastic-for-woocommerce/src/Admin/ReturnTable.php',
         'Vendidero\\Shiptastic\\Admin\\Settings' => __DIR__ . '/../..' . '/packages/shiptastic-for-woocommerce/src/Admin/Settings.php',
+        'Vendidero\\Shiptastic\\Admin\\Setup\\Wizard' => __DIR__ . '/../..' . '/packages/shiptastic-for-woocommerce/src/Admin/Setup/Wizard.php',
         'Vendidero\\Shiptastic\\Admin\\Table' => __DIR__ . '/../..' . '/packages/shiptastic-for-woocommerce/src/Admin/Table.php',
         'Vendidero\\Shiptastic\\Admin\\Tabs\\General' => __DIR__ . '/../..' . '/packages/shiptastic-for-woocommerce/src/Admin/Tabs/General.php',
         'Vendidero\\Shiptastic\\Admin\\Tabs\\Packaging' => __DIR__ . '/../..' . '/packages/shiptastic-for-woocommerce/src/Admin/Tabs/Packaging.php',
@@ -645,9 +646,9 @@ class ComposerStaticInitb0899e702cdae1ae7a23a0a6fa3baf05
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitb0899e702cdae1ae7a23a0a6fa3baf05::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitb0899e702cdae1ae7a23a0a6fa3baf05::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitb0899e702cdae1ae7a23a0a6fa3baf05::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit459bdb015dd1ec2a89a2fe9247a48ad6::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit459bdb015dd1ec2a89a2fe9247a48ad6::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit459bdb015dd1ec2a89a2fe9247a48ad6::$classMap;
 
         }, null, ClassLoader::class);
     }

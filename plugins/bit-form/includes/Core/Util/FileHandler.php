@@ -286,46 +286,141 @@ final class FileHandler
 
   private function validateSingleFile($fieldType, &$file, $allowTypes, $maxSize = null)
   {
-    $fileName = sanitize_file_name($file['name']);
-    if (!empty($fileName)) {
-      $fileSize = $file['size'];
-      if (!empty($maxSize) && $fileSize > $maxSize) {
-        return [
-          'message'   => __('File size is too large', 'bit-form'),
-          'error_type'=> 'file_size_error',
-        ];
-      }
+    // 0) Basic sanity & transport integrity
+    if (!is_array($file) || empty($file['tmp_name'])) {
+      // return ['message' => __('No file uploaded.', 'bit-form'), 'error_type' => 'file_missing'];
+      return null;
+    }
+    if (!isset($file['error']) || UPLOAD_ERR_OK !== $file['error']) {
+      return ['message' => __('Upload failed', 'bit-form'), 'error_type' => 'file_upload_error'];
+    }
+    if (!is_uploaded_file($file['tmp_name'])) {
+      return ['message' => __('Untrusted upload source', 'bit-form'), 'error_type' => 'file_upload_error'];
+    }
+    if (!is_file($file['tmp_name']) || !is_readable($file['tmp_name'])) {
+      return ['message' => __('Temporary file not accessible', 'bit-form'), 'error_type' => 'file_upload_error'];
+    }
 
-      $fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
-      $fileExtAllowedByWp = wp_check_filetype_and_ext($file['tmp_name'], $fileName);
-      $isAllowedFileType = in_array('.' . $fileExtension, $allowTypes);
-      if ('advanced-file-up' === $fieldType && !empty($allowTypes)) {
-        if (function_exists('mime_content_type')) {
-          $fileMimeType = mime_content_type($file['tmp_name']);
-        } else {
-          $fileMimeType = $fileExtAllowedByWp['type'];
-        }
-        $isAllowedFileType = in_array($fileMimeType, $allowTypes);
+    $fileName = sanitize_file_name((string)($file['name'] ?? ''));
+    error_log('fileName: ' . $fileName);
+    if ('' === $fileName) {
+      return ['message' => __('Empty filename', 'bit-form'), 'error_type' => 'file_type_error'];
+    }
+
+    // 1) Enforce max size (header + actual)
+    $onDiskSize = @filesize($file['tmp_name']);
+    if (false === $onDiskSize) {
+      return ['message' => __('Cannot read file size', 'bit-form'), 'error_type' => 'file_upload_error'];
+    }
+    if (!empty($maxSize) && $onDiskSize > $maxSize) {
+      return ['message' => __('File size is too large', 'bit-form'), 'error_type' => 'file_size_error'];
+    }
+
+    // 2) Determine ext + MIME using WP + finfo
+    $wpCheck = wp_check_filetype_and_ext($file['tmp_name'], $fileName); // ['ext'=>'jpg','type'=>'image/jpeg']
+    $fileExtension = strtolower((string)(empty($wpCheck['ext']) ? pathinfo($fileName, PATHINFO_EXTENSION) : empty($wpCheck['ext'])));
+    $wpExt = strtolower((string)(empty($wpCheck['ext']) ? $fileExtension : $wpCheck['ext']));
+    $wpType = strtolower((string)($wpCheck['type'] ?? ''));
+    $fi = function_exists('finfo_open') ? @finfo_open(FILEINFO_MIME_TYPE) : false;
+    $detectedMime = $fi ? @finfo_file($fi, $file['tmp_name']) : false;
+    if ($fi) {
+      @finfo_close($fi);
+    }
+    if (!$detectedMime && function_exists('mime_content_type')) {
+      $detectedMime = @mime_content_type($file['tmp_name']);
+    }
+    if (!$detectedMime) {
+      $detectedMime = '' !== $wpType ? $wpType : 'application/octet-stream';
+    }
+    $detectedMime = strtolower(trim($detectedMime));
+
+    // Hard-block risky types regardless
+    // 3) Block obvious executable types regardless of allow list
+    $disallowedMimes = apply_filters('bitform_filter_upload_disallowed_mimes', [
+      'application/x-php', 'text/x-php', 'application/x-msdownload', 'application/x-msdos-program',
+      'application/x-sh', 'application/x-csh', 'text/x-shellscript', 'application/java-archive'
+    ]);
+    $denyExt = apply_filters('bitform_filter_upload_denied_extensions', ['php', 'phtml', 'phar', 'htaccess', 'html', 'js', 'exe', 'sh', 'bat', 'cmd']);
+    if (in_array($detectedMime, $disallowedMimes, true) || in_array($fileExtension, $denyExt, true)) {
+      return ['message' => __('This file type is not allowed', 'bit-form'), 'error_type' => 'file_type_error'];
+    }
+
+    // 4) Normalize allowlist: support both extensions (.jpg or jpg) and MIME types
+    // --- ALLOWLIST NORMALIZATION (extensions + MIME) ---
+    $normalizedAllow = array_values(array_unique(array_map(static function ($t) {
+      return strtolower(trim((string)$t));
+    }, (array)$allowTypes)));
+
+    $allowExts = [];
+    $allowMimes = [];
+    foreach ($normalizedAllow as $t) {
+      if ('' === $t) {
+        continue;
       }
-      if ((!empty($allowTypes) && !$isAllowedFileType) || (empty($allowTypes) && empty($fileExtAllowedByWp['ext']))) {
-        return [
-          'message'   => __(($fileExtension ? ".{$fileExtension}" : 'empty') . ' file extension is not allowed', 'bit-form'),
-          'error_type'=> 'file_type_error',
-        ];
-      }
-      if ('svg' === $fileExtension) {
-        $svg_sanitizer = new Sanitizer();
-        $dirty_svg = file_get_contents($file['tmp_name']);
-        $clean_svg = $svg_sanitizer->sanitize($dirty_svg);
-        if (false === $clean_svg) {
-          return [
-            'message'   => __('SVG file is not valid', 'bit-form'),
-            'error_type'=> 'file_type_error',
-          ];
-        }
-        file_put_contents($file['tmp_name'], $clean_svg);
+      if (false !== strpos($t, '/')) {
+        // looks like a MIME
+        $allowMimes[] = $t;
+      } else {
+        // extension: may include leading dot; normalize without dot
+        $allowExts[] = ltrim($t, '.');
       }
     }
+
+    $allowExts = array_values(array_unique($allowExts));
+    $allowMimes = array_values(array_unique($allowMimes));
+
+    $hasAllowlist = (!empty($allowExts) || !empty($allowMimes));
+    $extMatch = in_array($fileExtension, $allowExts, true);
+    $mimeMatch = in_array($detectedMime, $allowMimes, true);
+
+    // 5) Require BOTH a legit WP mapping AND a match to the allowlist
+    $wpOk = ('' !== $wpExt && '' !== $wpType);
+
+    if ($hasAllowlist) {
+      if (!($extMatch || $mimeMatch)) {
+        return ['message' => __('File type is not allowed', 'bit-form'), 'error_type' => 'file_type_error'];
+      }
+    } else {
+      if (!$wpOk) {
+        return ['message' => __('File type is not allowed', 'bit-form'), 'error_type' => 'file_type_error'];
+      }
+    }
+
+    // 5) Special SVG handling (by MIME, not just extension)
+    if ('svg' === $fileExtension || 'image/svg+xml' === $detectedMime || 'image/svg+xml' === $wpType) {
+      if ('image/svg+xml' !== $detectedMime) {
+        return ['message' => __('Invalid SVG', 'bit-form'), 'error_type' => 'file_type_error'];
+      }
+
+      $dirty = file_get_contents($file['tmp_name']);
+      $svg_sanitizer = new Sanitizer();
+      $clean = $svg_sanitizer->sanitize($dirty);
+      if (false === $clean) {
+        return ['message' => __('SVG file is not valid', 'bit-form'), 'error_type' => 'file_type_error'];
+      }
+      file_put_contents($file['tmp_name'], $clean, LOCK_EX);
+      // Re-check size post-sanitize
+      if (!empty($maxSize) && filesize($file['tmp_name']) > $maxSize) {
+        return ['message' => __('File size is too large after sanitation', 'bit-form'), 'error_type' => 'file_size_error'];
+      }
+    }
+
+    // --- Allow developer to make a final decision override (optional) ---
+    $final = apply_filters('bit_form_upload_allow_file', true, [
+      'file_name'     => $fileName,
+      'extension'     => $fileExtension,
+      'detected_mime' => $detectedMime,
+      'wp_ext'        => $wpExt,
+      'wp_type'       => $wpType,
+      'allow_exts'    => $allowExts,
+      'allow_mimes'   => $allowMimes,
+      'has_allowlist' => $hasAllowlist,
+    ]);
+    if (true !== $final) {
+      // If a dev returns a WP_Error, you could extract message/type; here we just block.
+      return ['message' => __('File not allowed by policy', 'bit-form'), 'error_type' => 'file_policy_block'];
+    }
+    return null; // success
   }
 
   public static function deleteIsFileExists($path)

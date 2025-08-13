@@ -11,6 +11,7 @@ namespace BitCode\BitForm\Core\Form;
  */
 
 use BitCode\BitForm\Admin\Form\CustomFieldHandler;
+use BitCode\BitForm\Admin\Form\Helpers;
 use BitCode\BitForm\Core\Database\FormEntryLogModel;
 use BitCode\BitForm\Core\Database\FormEntryMetaModel;
 use BitCode\BitForm\Core\Database\FormEntryModel;
@@ -526,6 +527,46 @@ class FormManager
     return $submitted_data;
   }
 
+  private function addNewFilePathToFiles($form_id, $entry_id, $file_fields = [])
+  {
+    $common_file_path = Helpers::getWebPathWithEncryptedEntryId($form_id, $entry_id);
+    // Handle files and assign file_path
+    foreach ($_FILES as $field_key => $file_details) {
+      if (!($file_fields && in_array($field_key, $file_fields))) {
+        continue;
+      }
+
+      $isRepeaterFldKey = $this->isRepeatedField($field_key);
+      if ($isRepeaterFldKey && isset($file_details['new_name'])) {
+        // If 'new_name' is an array (i.e., for repeated fields)
+        foreach ($file_details['new_name'] as $slNo => $newFileNamesArray) {
+          if (is_array($newFileNamesArray)) {
+            foreach ($newFileNamesArray as $newFileName) {
+              $filePath = $common_file_path . DIRECTORY_SEPARATOR . $newFileName;
+              $_FILES[$field_key]['file_path'][$slNo][] = $filePath;
+            }
+          } else {
+            // Generate the file path for each file
+            $filePath = $common_file_path . DIRECTORY_SEPARATOR . $newFileNamesArray;
+            $_FILES[$field_key]['file_path'][$slNo] = $filePath;
+          }
+        }
+      } elseif (isset($file_details['new_name'])) {
+        // If 'new_name' is an array (i.e., for repeated fields)
+        if (is_array($file_details['new_name'])) {
+          foreach ($file_details['new_name'] as $slNo => $newFileName) {
+            // Generate the file path for each file
+            $filePath = $common_file_path . DIRECTORY_SEPARATOR . $newFileName;
+            $_FILES[$field_key]['file_path'][$slNo] = $filePath;
+          }
+        } else {
+          $filePath = $common_file_path . DIRECTORY_SEPARATOR . $file_details['new_name'];
+          $_FILES[$field_key]['file_path'] = $filePath;
+        }
+      }
+    }
+  }
+
   private function formatRepeateFieldData($submitted_data, $form_fields)
   {
     $repeaterFields = $this->getRepeaterFields();
@@ -534,8 +575,14 @@ class FormManager
       $repeatIndexes = explode(',', $repeatIndexes);
       foreach ($repeatIndexes as $slNo => $repeatIndex) {
         foreach ($repeatedFields as $repeatedField) {
+          if (!isset($submitted_data[$repeatedField][$repeatIndex])) {
+            continue;
+          }
           if (!isset($submitted_data[$repeaterFldKey][$slNo])) {
             $submitted_data[$repeaterFldKey][$slNo] = [];
+          }
+          if (!isset($submitted_data[$repeaterFldKey][$slNo][$repeatedField])) {
+            $submitted_data[$repeaterFldKey][$slNo][$repeatedField] = [];
           }
           $submitted_data[$repeaterFldKey][$slNo][$repeatedField] = $submitted_data[$repeatedField][$repeatIndex];
         }
@@ -646,10 +693,10 @@ class FormManager
       $formFields = $this->getFields();
       $submitted_data = FileHandler::tempDirToUploadDir($submitted_data, $formFields, $this->form_id, $entry_id);
       $fileHandler = new FileHandler();
-      foreach ($_FILES as $file_name => $file_details) {
-        if ($file_fields && in_array($file_name, $file_fields)) {
-          $filePath = [];
-          $repeaterFldKey = $this->isRepeatedField($file_name);
+      foreach ($_FILES as $field_key => $file_details) {
+        if ($file_fields && in_array($field_key, $file_fields)) {
+          $fileNames = [];
+          $repeaterFldKey = $this->isRepeatedField($field_key);
           if ($repeaterFldKey) {
             foreach ($file_details['name'] as $slNo => $fileName) {
               $repeateFileDetails = [
@@ -659,21 +706,24 @@ class FormManager
                 'error'    => $file_details['error'][$slNo],
                 'size'     => $file_details['size'][$slNo],
               ];
-              $filePath = $fileHandler->moveUploadedFiles($repeateFileDetails, $this->form_id, $entry_id);
-              if (!empty($filePath)) {
-                $submitted_data[$repeaterFldKey][$slNo - 1][$file_name] = $filePath;
-                $_FILES[$file_name]['new_name'][$slNo - 1] = $filePath;
+              $fileNames = $fileHandler->moveUploadedFiles($repeateFileDetails, $this->form_id, $entry_id);
+              if (!empty($fileNames)) {
+                $submitted_data[$repeaterFldKey][$slNo - 1][$field_key] = $fileNames;
+                $_FILES[$field_key]['new_name'][$slNo - 1] = $fileNames;
               }
             }
           } else {
-            $filePath = $fileHandler->moveUploadedFiles($file_details, $this->form_id, $entry_id);
-            if (!empty($filePath)) {
-              $submitted_data[$file_name] = $filePath;
-              $_FILES[$file_name]['new_name'] = $filePath;
+            $fileNames = $fileHandler->moveUploadedFiles($file_details, $this->form_id, $entry_id);
+            if (!empty($fileNames)) {
+              $submitted_data[$field_key] = $fileNames;
+              $_FILES[$field_key]['new_name'] = $fileNames;
             }
           }
         }
       }
+
+      // Get the common path for file storage
+      $this->addNewFilePathToFiles($this->form_id, $entry_id, $file_fields);
 
       /* ======== for Signature field ===========*/
       foreach ($form_content->fields as $key => $field) {
@@ -778,29 +828,29 @@ class FormManager
           }
         }
       }
-      foreach ($file_fields as $field_name) {
-        if (isset($updatedValue[$field_name . '_old'])) {
+      foreach ($file_fields as $field_key) {
+        if (isset($updatedValue[$field_key . '_old'])) {
           $file_exists = $entryMeta->get(
             'meta_value',
             [
               'bitforms_form_entry_id' => $entryID,
-              'meta_key'               => $field_name,
+              'meta_key'               => $field_key,
             ]
           );
           if (!is_wp_error($file_exists) && count($file_exists) > 0) {
             $files_in_db = json_decode($file_exists[0]->meta_value);
-            $files_old = empty($updatedValue[$field_name . '_old']) ? [] : explode(',', $updatedValue[$field_name . '_old']);
+            $files_old = empty($updatedValue[$field_key . '_old']) ? [] : explode(',', $updatedValue[$field_key . '_old']);
             $deleted_file = array_diff($files_in_db, $files_old);
             if (count($deleted_file) > 0) {
               $fileHandler->deleteFiles($formID, $entryID, $deleted_file);
             }
-            $updatedValue[$field_name] = wp_json_encode($files_old);
+            $updatedValue[$field_key] = wp_json_encode($files_old);
           }
         }
-        if (!empty($_FILES[$field_name]['name'])) {
-          $repeaterFldKey = $this->isRepeatedField($field_name);
+        if (!empty($_FILES[$field_key]['name'])) {
+          $repeaterFldKey = $this->isRepeatedField($field_key);
           if ($repeaterFldKey) {
-            $file_details = $_FILES[$field_name];
+            $file_details = $_FILES[$field_key];
             foreach ($file_details['name'] as $index => $file) {
               $repeateFileDetails = [
                 'name'     => $file_details['name'][$index],
@@ -811,24 +861,29 @@ class FormManager
               ];
               $meta_value = $fileHandler->moveUploadedFiles($repeateFileDetails, $formID, $entryID, $index);
               if (!empty($meta_value)) {
-                $updatedValue[$repeaterFldKey][$index - 1][$field_name] = wp_json_encode($meta_value);
-                $_FILES[$field_name]['new_name'][$index - 1] = $meta_value;
+                $updatedValue[$repeaterFldKey][$index - 1][$field_key] = wp_json_encode($meta_value);
+                $_FILES[$field_key]['new_name'][$index - 1] = $meta_value;
+                // $_FILES[$field_key]['file_path'][$index - 1] = $common_file_path . DIRECTORY_SEPARATOR . $meta_value;
               }
             }
           } else {
-            $meta_value = $fileHandler->moveUploadedFiles($_FILES[$field_name], $formID, $entryID);
+            $meta_value = $fileHandler->moveUploadedFiles($_FILES[$field_key], $formID, $entryID);
             if (!empty($meta_value)) {
-              $_FILES[$field_name]['new_name'] = $meta_value;
-              if (isset($updatedValue[$field_name . '_old']) && !is_wp_error($file_exists) && count($file_exists) > 0) {
+              $_FILES[$field_key]['new_name'] = $meta_value;
+              // $_FILES[$field_key]['file_path'] = $common_file_path . DIRECTORY_SEPARATOR . $meta_value;
+              if (isset($updatedValue[$field_key . '_old']) && !is_wp_error($file_exists) && count($file_exists) > 0) {
                 $meta_value = empty($files_old) ? $meta_value : array_merge($meta_value, $files_old);
-                $updatedValue[$field_name] = $meta_value;
+                $updatedValue[$field_key] = $meta_value;
               } else {
-                $updatedValue[$field_name] = $meta_value;
+                $updatedValue[$field_key] = $meta_value;
               }
             }
           }
         }
       }
+
+      // Get the common file path to avoid repetitive calculation
+      $this->addNewFilePathToFiles($formID, $entryID, $file_fields);
     }
 
     unset($updatedValue['_ajax_nonce'], $_REQUEST['g-recaptcha-response']);

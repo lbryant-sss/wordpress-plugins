@@ -331,6 +331,7 @@ return array(
     'Vendidero\\Shiptastic\\Admin\\Preview\\Shipment' => $baseDir . '/packages/shiptastic-for-woocommerce/src/Admin/Preview/Shipment.php',
     'Vendidero\\Shiptastic\\Admin\\ReturnTable' => $baseDir . '/packages/shiptastic-for-woocommerce/src/Admin/ReturnTable.php',
     'Vendidero\\Shiptastic\\Admin\\Settings' => $baseDir . '/packages/shiptastic-for-woocommerce/src/Admin/Settings.php',
+    'Vendidero\\Shiptastic\\Admin\\Setup\\Wizard' => $baseDir . '/packages/shiptastic-for-woocommerce/src/Admin/Setup/Wizard.php',
     'Vendidero\\Shiptastic\\Admin\\Table' => $baseDir . '/packages/shiptastic-for-woocommerce/src/Admin/Table.php',
     'Vendidero\\Shiptastic\\Admin\\Tabs\\General' => $baseDir . '/packages/shiptastic-for-woocommerce/src/Admin/Tabs/General.php',
     'Vendidero\\Shiptastic\\Admin\\Tabs\\Packaging' => $baseDir . '/packages/shiptastic-for-woocommerce/src/Admin/Tabs/Packaging.php',

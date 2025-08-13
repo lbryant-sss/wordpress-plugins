@@ -254,8 +254,8 @@ STEPWRPR;
         $hideOtherSteps = $key > 0 ? 'deactive' : '';
         $step = $key + 1;
         $fieldHtml .= <<<HTMLa
-          <div class="{$this->_form->getAtomicCls("_frm-b{$formID}-stp-cntnt")} $hideOtherSteps" data-step="{$step}">
-            <div class="_frm-b{$formID}">
+          <div class="{$this->_form->getAtomicCls("_frm-b{$formID}-stp-cntnt")} _frm-b-stp-cntnt $hideOtherSteps" data-step="{$step}">
+            <div class="_frm-b{$formID} _frm-b">
               {$this->getLayoutHtml($lay->layout)}
             </div>
             {$formViewHelper->getStepButtonMarkup()}

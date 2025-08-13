@@ -220,6 +220,16 @@ class HMWP_Models_Compatibility_Others extends HMWP_Models_Compatibility_Abstrac
 		// Add Riode theme compatibility on comment recaptcha
 		if (  HMWP_Classes_Tools::getOption( 'hmwp_bruteforce' ) && HMWP_Classes_Tools::getOption( 'hmwp_bruteforce_comments' ) ) {
 			add_filter( 'riode_filter_comment_form_args',  array(HMWP_Classes_ObjController::getClass( 'HMWP_Models_Bruteforce_Comments' ), 'formArgs'), 99 );
+
+			if ( HMWP_Classes_Tools::getOption( 'hmwp_bruteforce_woocommerce' ) ) {
+				// Load brute force comments on Woocommerce reviews
+				add_filter( 'woocommerce_product_review_comment_form_args', array(HMWP_Classes_ObjController::getClass( 'HMWP_Models_Bruteforce_Comments' ), 'formArgs'), 99 );
+			}
+		}
+
+		// Add compatibility with Debloat
+		if ( HMWP_Classes_Tools::isPluginActive( 'debloat/debloat.php' ) ) {
+			add_filter( 'hmwp_priority_hook', function( $priority ) { return -1000; } );
 		}
 	}
 

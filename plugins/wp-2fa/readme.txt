@@ -6,7 +6,7 @@ License URI: https://www.gnu.org/licenses/gpl.html
 Tags: 2FA, two-factor authentication, 2-factor authentication, WordPress authentication, google authenticator
 Requires at least: 5.5
 Tested up to: 6.8.2
-Stable tag: 2.9.1
+Stable tag: 2.9.2
 Requires PHP: 7.4.0
 
 Get better WordPress login security; add two-factor authentication (2FA) for all your users with this easy-to-use plugin.
@@ -134,6 +134,20 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 8. In the user profile users only have a few 2FA options, so it is not confusing for them and everything is self explanatory.
 
 == Changelog ==
+
+= 2.9.2 (2025-08-12) =
+
+* **Plugin & functionality improvements**
+	* REST API endpoints are now enabled by default.
+	* Added a new setting to choose how OTP verification is handled — via the legacy (native) method or through REST API.
+	* Introduced a timeout/limit on the “Resend code” option in the “2FA required on password resets” feature to prevent email abuse.
+	* Enhanced email templates with more relevant content and improved anti-spam scoring.
+	* Added default WP 2FA branding to all email templates in the Free edition.
+	* Refined the help text descriptions in several areas of the plugin.
+
+* **Bug fixes**
+	* Removed an email template from the Free edition (reserved for Premium edition).
+	* Fixed an issue in the “2FA required on password resets” feature where the wrong email template was sent when using the “Resend code” button.
 
 = 2.9.1 (2025-08-01) =
 

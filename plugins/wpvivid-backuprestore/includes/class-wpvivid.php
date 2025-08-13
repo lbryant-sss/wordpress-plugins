@@ -2967,23 +2967,29 @@ class WPvivid
                             header('Content-Transfer-Encoding: binary');
                         }
 
-                        if ($size < 1024 * 1024 * 60) {
+                        if (ob_get_level() == 0) {
+                            ob_start();
+                        }
+
+                        while (ob_get_level() > 0) {
                             ob_end_clean();
+                        }
+                        @set_time_limit(20);
+                        if ($size < 1024 * 1024 * 60) {
                             readfile($path);
                             exit;
                         } else {
-                            ob_end_clean();
-                            $download_rate = 1024 * 10;
-                            $file = fopen($path, "r");
+                            $file = fopen($path, "rb");
                             while (!feof($file)) {
-                                @set_time_limit(20);
-                                // send the current file part to the browser
-                                print fread($file, round($download_rate * 1024));
-                                // flush the content to the browser
-                                ob_flush();
+                                $buffer = fread($file, 1024 * 1024 * 10);
+                                if ($buffer === false || $buffer === '') {
+                                    break;
+                                }
+                                echo $buffer;
+                                if (ob_get_level() > 0) {
+                                    ob_flush();
+                                }
                                 flush();
-                                // sleep one second
-                                sleep(1);
                             }
                             fclose($file);
                             exit;

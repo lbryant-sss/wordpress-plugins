@@ -3,7 +3,7 @@
  * Plugin Name: Germanized for WooCommerce
  * Plugin URI: https://www.vendidero.de/woocommerce-germanized
  * Description: Germanized for WooCommerce extends WooCommerce to become a legally compliant store in the german market.
- * Version: 3.20.0
+ * Version: 3.20.1
  * Author: vendidero
  * Author URI: https://vendidero.de
  * Requires at least: 5.4
@@ -68,7 +68,7 @@ if ( ! class_exists( 'WooCommerce_Germanized' ) ) :
 		 *
 		 * @var string
 		 */
-		public $version = '3.20.0';
+		public $version = '3.20.1';
 
 		/**
 		 * @var WooCommerce_Germanized $instance of the plugin
@@ -801,6 +801,14 @@ if ( ! class_exists( 'WooCommerce_Germanized' ) ) :
 			$gzd_original_template = apply_filters( 'woocommerce_gzd_default_plugin_template', $this->plugin_path() . '/templates/' . $template_name, $template_name );
 			$is_checkbox           = strstr( $template_name, 'checkboxes/' );
 
+			/**
+			 * Prevent using our cancelled email template in case
+			 * Woo has the cancelled order email built-in.
+			 */
+			if ( in_array( $template_name, array( 'emails/customer-cancelled-order.php', 'emails/plain/customer-cancelled-order.php' ), true ) && class_exists( 'WC_Email_Customer_Cancelled_Order' ) ) {
+				return $template;
+			}
+
 			/** This filter is documented in woocommerce-germanized.php */
 			if ( file_exists( $gzd_original_template ) || $is_checkbox ) {
 				// Check for Theme overrides
@@ -1502,11 +1510,11 @@ if ( ! class_exists( 'WooCommerce_Germanized' ) ) :
 			foreach ( $this->get_custom_email_ids() as $class_name => $email_id ) {
 				/**
 				 * Do only register custom GZD cancelled order email in case
-                 * it does not exist within Woo Core.
+				 * it does not exist within Woo Core.
 				 */
-                if ( 'customer_cancelled_order' === $email_id && array_key_exists( 'WC_Email_Customer_Cancelled_Order', $mails ) ) {
-                    continue;
-                }
+				if ( 'customer_cancelled_order' === $email_id && array_key_exists( 'WC_Email_Customer_Cancelled_Order', $mails ) ) {
+					continue;
+				}
 
 				$path = WC_GERMANIZED_ABSPATH . 'includes/emails/';
 				$file = 'class-' . trim( str_replace( '_', '-', strtolower( $class_name ) ) ) . '.php';

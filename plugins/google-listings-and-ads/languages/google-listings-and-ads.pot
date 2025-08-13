@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Google for WooCommerce 3.3.0\n"
+"Project-Id-Version: Google for WooCommerce 3.3.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/google-listings-and-ads\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-08-05T07:33:20+00:00\n"
+"POT-Creation-Date: 2025-08-12T07:12:25+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: google-listings-and-ads\n"
@@ -3399,18 +3399,6 @@ msgstr ""
 
 #: js/build/commons.js:57
 msgid "Connect to existing Merchant Center account"
-msgstr ""
-
-#: js/build/commons.js:57
-msgid "Unable to enable new product sync."
-msgstr ""
-
-#: js/build/commons.js:60
-msgid "Grant access"
-msgstr ""
-
-#: js/build/commons.js:60
-msgid "There was an issue granting access to Google for fetching your products."
 msgstr ""
 
 #: js/build/commons.js:60

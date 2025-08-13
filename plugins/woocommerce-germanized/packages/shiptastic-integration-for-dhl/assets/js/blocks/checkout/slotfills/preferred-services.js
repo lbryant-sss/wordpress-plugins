@@ -36,7 +36,7 @@ const getDhlCheckoutData = ( checkoutData ) => {
 };
 
 const setDhlCheckoutData = ( checkoutData ) => {
-    dispatch( CHECKOUT_STORE_KEY ).__internalSetExtensionData( 'woocommerce-stc-dhl', checkoutData );
+    dispatch( CHECKOUT_STORE_KEY ).setExtensionData( 'woocommerce-stc-dhl', checkoutData );
 };
 
 const DhlPreferredDaySelect = ({
@@ -326,9 +326,10 @@ const DhlPreferredDeliveryOptions = ({
     } );
 
     const [ needsFeeUpdate, setNeedsFeeUpdate ] = useState( false );
+    const [ checkoutHasPickupLocation, setCheckoutHasPickupLocation ] = useState( false );
     const shippingProviders = getSelectedShippingProviders( shippingRates );
     const hasDhlProvider = hasShippingProvider( 'dhl', shippingProviders );
-    const { __internalSetExtensionData } = useDispatch( CHECKOUT_STORE_KEY );
+    const { setExtensionData } = useDispatch( CHECKOUT_STORE_KEY );
 
     const { isCustomerDataUpdating } = useSelect(
         ( select ) => {
@@ -348,14 +349,13 @@ const DhlPreferredDeliveryOptions = ({
         };
     }, [] );
 
-    const { preferredOptions } = useSelect( ( select ) => {
+    const extensionsData = useSelect( ( select ) => {
         const store = select( CHECKOUT_STORE_KEY );
 
-        return {
-            preferredOptions: getDhlCheckoutData( store.getExtensionData() )
-        };
+        return store.getExtensionData();
     } );
 
+    const preferredOptions      = getDhlCheckoutData( extensionsData );
     const dhlOptions            = getDhlCheckoutData( extensions );
     const preferredDayCost = parseInt( dhlOptions.hasOwnProperty( 'preferred_day_cost' ) ? dhlOptions['preferred_day_cost'] : 0, 10 );
     const homeDeliveryCost = parseInt( dhlOptions.hasOwnProperty( 'preferred_home_delivery_cost' ) ? dhlOptions['preferred_home_delivery_cost'] : 0, 10 );
@@ -391,11 +391,18 @@ const DhlPreferredDeliveryOptions = ({
     const totalsCurrency = getCurrencyFromPriceResponse( cart.cartTotals );
     const excludedPaymentGateways = getSetting( 'dhlExcludedPaymentGateways', [] );
     const isGatewayExcluded = _.includes( excludedPaymentGateways, activePaymentMethod );
+    const hasPickupLocationShip = hasPickupLocation();
+
+    useEffect(() => {
+        setCheckoutHasPickupLocation( () => hasPickupLocationShip );
+    }, [
+        hasPickupLocationShip
+    ] );
 
     const preferredDayEnabled = dhlOptions.preferred_day_enabled && dhlOptions.preferred_days.length > 0;
-    const preferredLocationEnabled = dhlOptions.preferred_location_enabled && ! hasPickupLocation();
-    const preferredNeighborEnabled = dhlOptions.preferred_neighbor_enabled && ! hasPickupLocation();
-    const preferredDeliveryTypeEnabled = dhlOptions.preferred_delivery_type_enabled;
+    const preferredLocationEnabled = dhlOptions.preferred_location_enabled && ! checkoutHasPickupLocation;
+    const preferredNeighborEnabled = dhlOptions.preferred_neighbor_enabled && ! checkoutHasPickupLocation;
+    const preferredDeliveryTypeEnabled = dhlOptions.preferred_delivery_type_enabled && ! checkoutHasPickupLocation;
     const cdpCountries = getSetting( 'dhlCdpCountries', [] );
 
     const preferredOptionsAvailable = 'DE' === cart.shippingAddress.country && ( preferredDayEnabled || preferredNeighborEnabled || preferredLocationEnabled );
@@ -431,9 +438,10 @@ const DhlPreferredDeliveryOptions = ({
             }
         }
     }, [
+        isAvailable,
         preferredOptionsAvailable,
         isCdpAvailable,
-        __internalSetExtensionData
+        setExtensionData
     ] );
 
     // Debounce re-disable since disabling process itself will incur additional mutations which should be ignored.

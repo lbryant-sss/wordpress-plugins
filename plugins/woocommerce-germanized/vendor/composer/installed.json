@@ -608,17 +608,17 @@
         },
         {
             "name": "setasign/fpdi",
-            "version": "v2.6.3",
-            "version_normalized": "2.6.3.0",
+            "version": "v2.6.4",
+            "version_normalized": "2.6.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Setasign/FPDI.git",
-                "reference": "67c31f5e50c93c20579ca9e23035d8c540b51941"
+                "reference": "4b53852fde2734ec6a07e458a085db627c60eada"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Setasign/FPDI/zipball/67c31f5e50c93c20579ca9e23035d8c540b51941",
-                "reference": "67c31f5e50c93c20579ca9e23035d8c540b51941",
+                "url": "https://api.github.com/repos/Setasign/FPDI/zipball/4b53852fde2734ec6a07e458a085db627c60eada",
+                "reference": "4b53852fde2734ec6a07e458a085db627c60eada",
                 "shasum": ""
             },
             "require": {
@@ -633,12 +633,12 @@
                 "setasign/fpdf": "~1.8.6",
                 "setasign/tfpdf": "~1.33",
                 "squizlabs/php_codesniffer": "^3.5",
-                "tecnickcom/tcpdf": "^6.2"
+                "tecnickcom/tcpdf": "^6.8"
             },
             "suggest": {
                 "setasign/fpdf": "FPDI will extend this class but as it is also possible to use TCPDF or tFPDF as an alternative. There's no fixed dependency configured."
             },
-            "time": "2025-02-05T13:22:35+00:00",
+            "time": "2025-08-05T09:57:14+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -671,7 +671,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Setasign/FPDI/issues",
-                "source": "https://github.com/Setasign/FPDI/tree/v2.6.3"
+                "source": "https://github.com/Setasign/FPDI/tree/v2.6.4"
             },
             "funding": [
                 {
@@ -683,17 +683,17 @@
         },
         {
             "name": "vendidero/shiptastic-for-woocommerce",
-            "version": "4.5.1",
-            "version_normalized": "4.5.1.0",
+            "version": "4.6.0",
+            "version_normalized": "4.6.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vendidero/shiptastic-for-woocommerce.git",
-                "reference": "29bbdd2fed51f816cc8a5d2590603b36a98e25f6"
+                "reference": "5cd0939f7a02a34ab490834d2a842d9ef08aa5ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vendidero/shiptastic-for-woocommerce/zipball/29bbdd2fed51f816cc8a5d2590603b36a98e25f6",
-                "reference": "29bbdd2fed51f816cc8a5d2590603b36a98e25f6",
+                "url": "https://api.github.com/repos/vendidero/shiptastic-for-woocommerce/zipball/5cd0939f7a02a34ab490834d2a842d9ef08aa5ba",
+                "reference": "5cd0939f7a02a34ab490834d2a842d9ef08aa5ba",
                 "shasum": ""
             },
             "require": {
@@ -707,7 +707,7 @@
                 "woocommerce/woocommerce-sniffs": "^1.0.0",
                 "yoast/phpunit-polyfills": "^3.0"
             },
-            "time": "2025-07-22T10:54:26+00:00",
+            "time": "2025-08-12T08:33:12+00:00",
             "type": "wordpress-plugin",
             "installation-source": "dist",
             "autoload": {
@@ -738,23 +738,23 @@
             "description": "Shiptastic for WooCommerce",
             "homepage": "https://vendidero.de",
             "support": {
-                "source": "https://github.com/vendidero/shiptastic-for-woocommerce/tree/v4.5.1"
+                "source": "https://github.com/vendidero/shiptastic-for-woocommerce/tree/v4.6.0"
             },
             "install-path": "../../packages/shiptastic-for-woocommerce"
         },
         {
             "name": "vendidero/shiptastic-integration-for-dhl",
-            "version": "4.1.0",
-            "version_normalized": "4.1.0.0",
+            "version": "4.1.2",
+            "version_normalized": "4.1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vendidero/shiptastic-integration-for-dhl.git",
-                "reference": "22a8cd6351678c0b5c6372430a16a30f1881f8a1"
+                "reference": "4dc59951bee5502071f9d3b5e5dbed1c139917ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vendidero/shiptastic-integration-for-dhl/zipball/22a8cd6351678c0b5c6372430a16a30f1881f8a1",
-                "reference": "22a8cd6351678c0b5c6372430a16a30f1881f8a1",
+                "url": "https://api.github.com/repos/vendidero/shiptastic-integration-for-dhl/zipball/4dc59951bee5502071f9d3b5e5dbed1c139917ec",
+                "reference": "4dc59951bee5502071f9d3b5e5dbed1c139917ec",
                 "shasum": ""
             },
             "require": {
@@ -765,7 +765,7 @@
             "require-dev": {
                 "woocommerce/woocommerce-sniffs": "^1.0.0"
             },
-            "time": "2025-07-17T09:56:23+00:00",
+            "time": "2025-08-01T09:38:56+00:00",
             "type": "wordpress-plugin",
             "installation-source": "dist",
             "autoload": {
@@ -798,7 +798,7 @@
             "description": "DHL & Deutsche Post integration for Shiptastic",
             "homepage": "https://github.com/vendidero/shiptastic-integration-for-dhl",
             "support": {
-                "source": "https://github.com/vendidero/shiptastic-integration-for-dhl/tree/v4.1.0"
+                "source": "https://github.com/vendidero/shiptastic-integration-for-dhl/tree/v4.1.2"
             },
             "install-path": "../../packages/shiptastic-integration-for-dhl"
         },

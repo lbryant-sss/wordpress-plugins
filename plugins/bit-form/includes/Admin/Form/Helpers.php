@@ -393,6 +393,12 @@ LOAD_SECRIPT;
     return BITFORMS_UPLOAD_DIR . DIRECTORY_SEPARATOR . $formId . DIRECTORY_SEPARATOR . $encryptDirectory;
   }
 
+  public static function getWebPathWithEncryptedEntryId($formId, $entryId)
+  {
+    $encryptDirectory = Helpers::getEncryptedEntryId($entryId);
+    return BITFORMS_UPLOAD_BASE_URL . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . $formId . DIRECTORY_SEPARATOR . $encryptDirectory;
+  }
+
   public static function PDFPassHash($entryId)
   {
     return abs(crc32($entryId));
