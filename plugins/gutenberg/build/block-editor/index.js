@@ -8188,6 +8188,7 @@ const globalStylesLinksDataKey = Symbol('globalStylesLinks');
 const selectBlockPatternsKey = Symbol('selectBlockPatternsKey');
 const reusableBlocksSelectKey = Symbol('reusableBlocksSelect');
 const sectionRootClientIdKey = Symbol('sectionRootClientIdKey');
+const mediaEditKey = Symbol('mediaEditKey');
 
 ;// external ["wp","privateApis"]
 const external_wp_privateApis_namespaceObject = window["wp"]["privateApis"];
@@ -15845,7 +15846,11 @@ const mergeBlocks = (firstBlockClientId, secondBlockClientId) => ({
     return;
   }
   if (!blockAType.merge) {
-    dispatch.selectBlock(blockA.clientId);
+    if ((0,external_wp_blocks_namespaceObject.isUnmodifiedBlock)(blockB, 'content')) {
+      dispatch.removeBlock(clientIdB, select.isBlockSelected(clientIdB));
+    } else {
+      dispatch.selectBlock(blockA.clientId);
+    }
     return;
   }
   const blockBType = (0,external_wp_blocks_namespaceObject.getBlockType)(blockB.name);
@@ -39192,7 +39197,8 @@ const BLOCK_BINDINGS_ALLOWED_BLOCKS = {
   'core/paragraph': ['content'],
   'core/heading': ['content'],
   'core/image': ['id', 'url', 'title', 'alt'],
-  'core/button': ['url', 'text', 'linkTarget', 'rel']
+  'core/button': ['url', 'text', 'linkTarget', 'rel'],
+  'core/post-date': ['datetime']
 };
 
 /**
@@ -48538,7 +48544,6 @@ function ZoomOutSeparator({
     return {
       sectionRootClientId: root,
       sectionClientIds: sectionRootClientIds,
-      blockOrder: getBlockOrder(root),
       insertionPoint: getInsertionPoint(),
       blockInsertionPoint: getBlockInsertionPoint(),
       blockInsertionPointVisible: isBlockInsertionPointVisible(),
@@ -49871,7 +49876,9 @@ function useClickSelection() {
       const startClientId = getBlockSelectionStart();
       const clickedClientId = getBlockClientId(event.target);
       if (event.shiftKey) {
-        if (startClientId !== clickedClientId) {
+        // When selecting a single block in a document by holding the shift key,
+        // don't mark this action as multiselection.
+        if (startClientId && startClientId !== clickedClientId) {
           node.contentEditable = true;
           // Firefox doesn't automatically move focus.
           node.focus();
@@ -51209,8 +51216,15 @@ function Iframe({
     function interceptLinkClicks(event) {
       if (event.target.tagName === 'A' && event.target.getAttribute('href')?.startsWith('#')) {
         event.preventDefault();
-        // Manually handle link fragment navigation within the iframe to prevent page reloads.
-        // This ensures smooth scrolling to anchor links (e.g., footnotes) despite the iframe's different base URL.
+        // Manually handle link fragment navigation within the iframe. The iframe's
+        // location is a blob URL, which can't be used to resolve relative links like
+        // `#hash`. The relative link would be resolved against the iframe's base URL
+        // or the parent frame's URL, causing the iframe to navigate to a completely
+        // different page. Setting the `location.hash` works because it really sets the
+        // blob URL's hash.
+        //
+        // Links with fragments are used for example with footnotes. Clicking on these
+        // links will scroll smoothly to the anchors in the editor canvas.
         iFrameDocument.defaultView.location.hash = event.target.getAttribute('href').slice(1);
       }
     }
@@ -64655,7 +64669,8 @@ function PrivateBlockToolbar({
       getSettings,
       getParentSectionBlock,
       isZoomOut,
-      isNavigationMode: _isNavigationMode
+      isNavigationMode: _isNavigationMode,
+      isSectionBlock
     } = unlock(select(store));
     const selectedBlockClientIds = getSelectedBlockClientIds();
     const selectedBlockClientId = selectedBlockClientIds[0];
@@ -64665,6 +64680,7 @@ function PrivateBlockToolbar({
     const parentBlockName = getBlockName(parentClientId);
     const parentBlockType = (0,external_wp_blocks_namespaceObject.getBlockType)(parentBlockName);
     const editingMode = getBlockEditingMode(selectedBlockClientId);
+    const isNavigationModeEnabled = _isNavigationMode();
     const _isDefaultEditingMode = editingMode === 'default';
     const _blockName = getBlockName(selectedBlockClientId);
     const isValid = selectedBlockClientIds.every(id => isBlockValid(id));
@@ -64690,9 +64706,10 @@ function PrivateBlockToolbar({
       showSlots: !_isZoomOut,
       showGroupButtons: !_isZoomOut,
       showLockButtons: !_isZoomOut,
-      showSwitchSectionStyleButton: _isZoomOut,
+      showSwitchSectionStyleButton: _isZoomOut || isNavigationModeEnabled && editingMode === 'contentOnly' && isSectionBlock(selectedBlockClientId),
+      // Zoom out or Write Mode Section Blocks
       hasFixedToolbar: getSettings().hasFixedToolbar,
-      isNavigationMode: _isNavigationMode()
+      isNavigationMode: isNavigationModeEnabled
     };
   }, []);
   const toolbarWrapperRef = (0,external_wp_element_namespaceObject.useRef)(null);
@@ -67134,7 +67151,8 @@ function ListViewBlock({
           className: 'block-editor-list-view-block__menu',
           tabIndex,
           onClick: clearSettingsAnchorRect,
-          onFocus
+          onFocus,
+          size: 'small'
         },
         disableOpenOnArrowDown: true,
         expand: expand,
@@ -70295,12 +70313,15 @@ const constants_POPOVER_PROPS = {
 /**
  * WordPress dependencies
  */
-// Disable Reason: Needs to be refactored.
-// eslint-disable-next-line no-restricted-imports
 
 
 
 
+
+
+/**
+ * Internal dependencies
+ */
 
 
 const messages = {
@@ -70321,11 +70342,27 @@ function useSaveImage({
     createSuccessNotice
   } = (0,external_wp_data_namespaceObject.useDispatch)(external_wp_notices_namespaceObject.store);
   const [isInProgress, setIsInProgress] = (0,external_wp_element_namespaceObject.useState)(false);
+  const {
+    editMediaEntity
+  } = (0,external_wp_data_namespaceObject.useSelect)(select => {
+    const settings = select(store).getSettings();
+    return {
+      editMediaEntity: settings?.[mediaEditKey]
+    };
+  }, []);
   const cancel = (0,external_wp_element_namespaceObject.useCallback)(() => {
     setIsInProgress(false);
     onFinishEditing();
   }, [onFinishEditing]);
-  const apply = (0,external_wp_element_namespaceObject.useCallback)(() => {
+  const apply = (0,external_wp_element_namespaceObject.useCallback)(async () => {
+    if (!editMediaEntity) {
+      onFinishEditing();
+      createErrorNotice((0,external_wp_i18n_namespaceObject.__)('Sorry, you are not allowed to edit images on this site.'), {
+        id: 'image-editing-error',
+        type: 'snackbar'
+      });
+      return;
+    }
     setIsInProgress(true);
     const modifiers = [];
     if (rotation > 0) {
@@ -70357,41 +70394,42 @@ function useSaveImage({
       return;
     }
     const modifierType = modifiers.length === 1 ? modifiers[0].type : 'cropAndRotate';
-    external_wp_apiFetch_default()({
-      path: `/wp/v2/media/${id}/edit`,
-      method: 'POST',
-      data: {
+    try {
+      const savedImage = await editMediaEntity(id, {
         src: url,
         modifiers
+      }, {
+        throwOnError: true
+      });
+      if (savedImage) {
+        onSaveImage({
+          id: savedImage.id,
+          url: savedImage.source_url
+        });
+        createSuccessNotice(messages[modifierType], {
+          type: 'snackbar',
+          actions: [{
+            label: (0,external_wp_i18n_namespaceObject.__)('Undo'),
+            onClick: () => {
+              onSaveImage({
+                id,
+                url
+              });
+            }
+          }]
+        });
       }
-    }).then(response => {
-      onSaveImage({
-        id: response.id,
-        url: response.source_url
-      });
-      createSuccessNotice(messages[modifierType], {
-        type: 'snackbar',
-        actions: [{
-          label: (0,external_wp_i18n_namespaceObject.__)('Undo'),
-          onClick: () => {
-            onSaveImage({
-              id,
-              url
-            });
-          }
-        }]
-      });
-    }).catch(error => {
+    } catch (error) {
       createErrorNotice((0,external_wp_i18n_namespaceObject.sprintf)(/* translators: %s: Error message. */
       (0,external_wp_i18n_namespaceObject.__)('Could not edit image. %s'), (0,external_wp_dom_namespaceObject.__unstableStripHTML)(error.message)), {
         id: 'image-editing-error',
         type: 'snackbar'
       });
-    }).finally(() => {
+    } finally {
       setIsInProgress(false);
       onFinishEditing();
-    });
-  }, [crop, rotation, id, url, onSaveImage, createErrorNotice, createSuccessNotice, onFinishEditing]);
+    }
+  }, [crop, rotation, id, url, onSaveImage, createErrorNotice, createSuccessNotice, onFinishEditing, editMediaEntity]);
   return (0,external_wp_element_namespaceObject.useMemo)(() => ({
     isInProgress,
     apply,
@@ -75209,6 +75247,7 @@ const image_image = /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx
 
 
 
+
 /**
  * Internal dependencies
  */
@@ -75308,7 +75347,7 @@ const ImageURLInputUI = ({
         // This check will ensure our link destination is correct.
         const selectedDestination = getLinkDestinations().find(destination => destination.url === urlInput)?.linkDestination || LINK_DESTINATION_CUSTOM;
         onChangeUrl({
-          href: urlInput,
+          href: (0,external_wp_url_namespaceObject.prependHTTP)(urlInput),
           linkDestination: selectedDestination,
           lightbox: {
             enabled: false
@@ -76943,6 +76982,7 @@ function PublishDateTimePicker({
   showPopoverHeaderActions,
   isCompact,
   currentDate,
+  title,
   ...additionalProps
 }, ref) {
   const datePickerProps = {
@@ -76957,7 +76997,7 @@ function PublishDateTimePicker({
     ref: ref,
     className: "block-editor-publish-date-time-picker",
     children: [/*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(InspectorPopoverHeader, {
-      title: (0,external_wp_i18n_namespaceObject.__)('Publish'),
+      title: title || (0,external_wp_i18n_namespaceObject.__)('Publish'),
       actions: showPopoverHeaderActions ? [{
         label: (0,external_wp_i18n_namespaceObject.__)('Now'),
         onClick: () => onChange?.(null)
@@ -80852,7 +80892,8 @@ lock(privateApis, {
   setBackgroundStyleDefaults: setBackgroundStyleDefaults,
   sectionRootClientIdKey: sectionRootClientIdKey,
   CommentIconSlotFill: block_comment_icon_slot,
-  CommentIconToolbarSlotFill: block_comment_icon_toolbar_slot
+  CommentIconToolbarSlotFill: block_comment_icon_toolbar_slot,
+  mediaEditKey: mediaEditKey
 });
 
 ;// ./packages/block-editor/build-module/index.js

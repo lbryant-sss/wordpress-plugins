@@ -656,6 +656,7 @@ trait WordPress {
 		global $wp_filesystem;
 
 		if ( empty( $wp_filesystem ) ) {
+			global $wp_file_descriptions;
 			require_once ABSPATH . '/wp-admin/includes/file.php'; // @phpstan-ignore-line
 			WP_Filesystem();
 		}

@@ -6954,6 +6954,19 @@ const i18nBlockSchema = {
  *                                              then no preview is shown.
  */
 
+/**
+ * An object describing a Block Bindings source.
+ *
+ * @typedef {Object} WPBlockBindingsSource
+ *
+ * @property {string}   name               The unique and machine-readable name.
+ * @property {string}   [label]            Human-readable label. Optional when it is defined in the server.
+ * @property {Array}    [usesContext]      Optional array of context needed by the source only in the editor.
+ * @property {Function} [getValues]        Optional function to get the values from the source.
+ * @property {Function} [setValues]        Optional function to update multiple values connected to the source.
+ * @property {Function} [canUserEditValue] Optional function to determine if the user can edit the value.
+ */
+
 function isObject(object) {
   return object !== null && typeof object === 'object';
 }
@@ -7538,13 +7551,7 @@ const unregisterBlockVariation = (blockName, variationName) => {
  *
  * @since 6.7.0 Introduced in WordPress core.
  *
- * @param {Object}   source                    Properties of the source to be registered.
- * @param {string}   source.name               The unique and machine-readable name.
- * @param {string}   [source.label]            Human-readable label. Optional when it is defined in the server.
- * @param {Array}    [source.usesContext]      Optional array of context needed by the source only in the editor.
- * @param {Function} [source.getValues]        Optional function to get the values from the source.
- * @param {Function} [source.setValues]        Optional function to update multiple values connected to the source.
- * @param {Function} [source.canUserEditValue] Optional function to determine if the user can edit the value.
+ * @param {WPBlockBindingsSource} source Object describing a block bindings source.
  *
  * @example
  * ```js
@@ -7747,7 +7754,15 @@ function isUnmodifiedBlock(block, role) {
   const blockAttributes = (_getBlockType$attribu = getBlockType(block.name)?.attributes) !== null && _getBlockType$attribu !== void 0 ? _getBlockType$attribu : {};
 
   // Filter attributes by role if a role is provided.
-  const attributesToCheck = role ? Object.entries(blockAttributes).filter(([, definition]) => definition.role === role || definition.__experimentalRole === role) : Object.entries(blockAttributes);
+  const attributesToCheck = role ? Object.entries(blockAttributes).filter(([key, definition]) => {
+    // A special case for the metadata attribute.
+    // It can include block bindings that serve as a source of content,
+    // without directly modifying content attributes.
+    if (role === 'content' && key === 'metadata') {
+      return true;
+    }
+    return definition.role === role || definition.__experimentalRole === role;
+  }) : Object.entries(blockAttributes);
   return attributesToCheck.every(([key, definition]) => {
     const value = block.attributes[key];
 
@@ -9573,6 +9588,9 @@ const processBlockType = (name, blockSettings) => ({
     variations: mergeBlockVariations(Array.isArray(bootstrappedBlockType?.variations) ? bootstrappedBlockType.variations : [], Array.isArray(blockSettings?.variations) ? blockSettings.variations : [])
   };
   const settings = (0,external_wp_hooks_namespaceObject.applyFilters)('blocks.registerBlockType', blockType, name, null);
+  if (settings.apiVersion <= 2) {
+     false ? 0 : void 0;
+  }
   if (settings.description && typeof settings.description !== 'string') {
     external_wp_deprecated_default()('Declaring non-string block descriptions', {
       since: '6.2'
