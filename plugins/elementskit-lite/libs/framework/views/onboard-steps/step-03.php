@@ -165,14 +165,20 @@
 </div>
 <div class="ekit-onboard-pagination">
 	<a class="ekit-onboard-btn ekit-onboard-pagi-btn prev" href="#">
-		<i class="icon icon-arrow-left"></i>
-		<?php echo esc_html__( 'Back', 'elementskit-lite' ); ?>
+		<i class="icon icon-arrow-left"></i><?php echo esc_html__( 'Back', 'elementskit-lite' ); ?>
 	</a>
-	<a class="ekit-onboard-btn ekit-onboard-pagi-btn next" href="#">
-		<?php echo esc_html__( 'Next Step', 'elementskit-lite' ); ?>
+	<a class="ekit-onboard-btn ekit-onboard-pagi-btn next continue" href="#">
+		<?php echo esc_html__( 'Continue', 'elementskit-lite' ); ?>
+	</a>
+	<a
+	class="ekit-onboard-btn ekit-onboard-pagi-btn next"
+	href="#"
+	onclick="document.querySelectorAll('.ekit-onboard-plugin-list input[type=checkbox]').forEach(cb => cb.checked = true);"
+	>
+		<?php echo esc_html__( 'Unlock All & Continue', 'elementskit-lite' ); ?>
 	</a>
 </div>
-<div class="ekit-onboard-shapes">
+<div class="ekit-onboard-shapes" style="display: none;">
 	<img src="<?php echo esc_url(self::get_url()); ?>assets/images/onboard/shape-06.png" alt="" class="shape-06">
 	<img src="<?php echo esc_url(self::get_url()); ?>assets/images/onboard/shape-10.png" alt="" class="shape-10">
 	<img src="<?php echo esc_url(self::get_url()); ?>assets/images/onboard/shape-11.png" alt="" class="shape-11">

@@ -160,7 +160,7 @@ class Widget_List extends \ElementsKit_Lite\Core\Config_List
 				),
 				'nav-menu' => array(
 					'slug'            => 'nav-menu',
-					'title'           => 'ElementsKit Nav Menu',
+					'title'           => 'Nav Menu',
 					'package'         => 'free',
 					'widget-category' => 'header-footer', // header footer
 				),

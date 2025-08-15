@@ -3,7 +3,7 @@ Contributors: danieledesantis
 Tags: css, custom css, style, styles, stylesheet, custom stylesheet, single post css, site css, single page css, custom post type css, product css
 Requires at least: 4.0
 Tested up to: 6.8.2
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -66,6 +66,10 @@ Click on the "Screen option" link from your post/page editing area and be sure t
 4. Add custom CSS to specific custom post types (such as Woocommerce products).
 
 == Changelog ==
+
+= 1.2.1 =
+* Moved custom css file to uploads
+* Set higher priority for wp_head callbacks
 
 = 1.2.0 =
 * Added output as pure CSS file or style tag to improve performance
@@ -130,6 +134,10 @@ Click on the "Screen option" link from your post/page editing area and be sure t
 * First release
 
 == Upgrade Notice ==
+
+= 1.2.1 =
+* Moved custom css file to uploads
+* Set higher priority for wp_head callbacks
 
 = 1.2.0 =
 * Added output as pure CSS file or style tag to improve performance

@@ -3,7 +3,7 @@ Contributors: mdempfle
 Tags: iframe, embed, resize, shortcode, modify css
 Requires at least: 3.3
 Tested up to: 6.8.2
-Stable tag: 2025.6
+Stable tag: 2025.7
 Requires PHP: 5.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0
@@ -166,6 +166,13 @@ Use the Wordpress installer to update or simply overwrite all files from your pr
 If you have some radio elements empty after the update simply select the one you like and save again.
 
 == Changelog ==
+= 2025.7 =
+- Security fix: https://www.cve.org/CVERecord?id=CVE-2025-8089 was fixed. Unfortunately the Gutenberg block has to be restricted as only the time of the rendering the attributes can be filtered in a secure way. So if you use the Gutenberg block you cannot use onload, custom, include_html, additional_js and additional_js_file_iframe anymore. You can use the shortcode block or anything were you can enter shortcodes directly. 
+- New: iframe border is now applied also in css
+- Deprecated: The external workaround of the free version with a hidden iframe will not be maintained anymore and removed in one of the next versions. Please upgrade to the Pro version which uses postMessage if you need this feature.
+- Fix: use_shortcode_only in the free version was showing a notice about a missing show_support_message attribute. The attribute is now properly extracted and no notice is shown anymore.
+- Fix: replace_iframe_tags was not saved properly to the db
+
 = 2025.6 =
 - Security fix: Vulnerability Title: Advanced iFrame <= 2025.5 - Authenticated (Contributor+) Stored Cross-Site Scripting CVE ID: CVE-2025-6987 was fixed.
 - New: Tested with WordPress 6.8.2

@@ -9,6 +9,8 @@ class Meow_MWAI_Engines_Anthropic extends Meow_MWAI_Engines_ChatML {
   protected $mcpServerNames = [];
   protected $mcpTools = []; // Track MCP tools by ID
   protected $mcpToolCount = 0;
+  protected $textStarted = false; // Track if text streaming has started
+  protected $requestSentEmitted = false; // Track if request sent event was emitted
 
   public function __construct( $core, $env ) {
     parent::__construct( $core, $env );
@@ -444,7 +446,7 @@ class Meow_MWAI_Engines_Anthropic extends Meow_MWAI_Engines_ChatML {
       // Send "Generating response..." when we start a text block
       if ( $this->currentDebugMode && $this->streamCallback ) {
         $block = $json['content_block'];
-        if ( $block['type'] === 'text' && !isset( $this->textStarted ) ) {
+        if ( $block['type'] === 'text' && !$this->textStarted ) {
           $this->textStarted = true;
           $event = Meow_MWAI_Event::generating_response();
           call_user_func( $this->streamCallback, $event );

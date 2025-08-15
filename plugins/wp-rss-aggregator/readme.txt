@@ -264,6 +264,20 @@ Our complete Help Center with FAQs, Glossary, and Video Library can be found [he
 
 == Changelog ==
 
+= 5.0.1 (2025-08-14) =
+**Added**
+- Migration block that prevents add-on users from upgrading to v5 without the Premium plugin installed and activated, avoiding feature loss and confusion.
+
+**Changed**
+- Improved performance when loading very large numbers of imported items or previewing sources with large item counts.
+
+**Fixed**
+- Restored <author> and improved <source> metadata in custom feeds after migration to v5.
+- Corrected SQL syntax issue that could prevent the Sources list from loading in certain MySQL configurations.
+- Resolved fatal error when processing base64-encoded image URLs in feed preview.
+- Fixed rollback from v5 to v4 to prevent “Invalid post type” errors and ensure full restoration of previous settings and functionality.
+- Corrected feed validation in v5 so that valid feeds are recognized, even if affected by default User Agent handling.
+
 = 5.0.0 (2025-07-24) =
 **Added**
 - Fully rebuilt **user interface** with a modern design and improved navigation

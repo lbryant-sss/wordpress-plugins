@@ -6,6 +6,7 @@ Requires PHP: 7.4
 Tested up to: 6.6
 Stable tag: 3.0.8.6
 License: GPL-2.0+
+0ddcemmihs4a843ekhaoofzosrunf4bl
 
 Redirect users to different locations after they log in, log out and register based on different conditions.
 

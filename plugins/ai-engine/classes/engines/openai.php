@@ -28,6 +28,7 @@ class Meow_MWAI_Engines_OpenAI extends Meow_MWAI_Engines_ChatML {
   protected $streamImages = [];
   protected $seenCallIds = []; // Track seen call IDs to prevent duplicates
   protected $lastRequestBody = null; // For debugging
+  protected $contentStarted = false; // Track if content streaming has started
   // IMPORTANT: OpenAI Responses API sends the same function call in both:
   // 1. response.output_item.done - when individual function call completes
   // 2. response.completed - with all function calls in the final response
@@ -277,13 +278,14 @@ class Meow_MWAI_Engines_OpenAI extends Meow_MWAI_Engines_ChatML {
 
       // Handle GPT-5 specific parameters: reasoning and verbosity
       if ( strpos( $query->model, 'gpt-5' ) === 0 ) {
-        // Add reasoning parameter if set (at root level)
+        // Add reasoning parameter as an object (Responses API expects object)
+        // { reasoning: { effort: 'minimal|low|medium|high' } }
         if ( !empty( $query->reasoning ) ) {
-          $body['reasoning'] = $query->reasoning;
+          $body['reasoning'] = [ 'effort' => $query->reasoning ];
         }
         // Add verbosity parameter if set (inside text object)
         if ( !empty( $query->verbosity ) ) {
-          if ( !isset( $body['text'] ) ) {
+          if ( !isset( $body['text'] ) || !is_array( $body['text'] ) ) {
             $body['text'] = [];
           }
           $body['text']['verbosity'] = $query->verbosity;
@@ -304,11 +306,10 @@ class Meow_MWAI_Engines_OpenAI extends Meow_MWAI_Engines_ChatML {
 
       if ( !empty( $query->responseFormat ) && $query->responseFormat === 'json' ) {
         // Responses API uses 'text.format' instead of 'response_format'
-        $body['text'] = [
-          'format' => [
-            'type' => 'json_object'
-          ]
-        ];
+        if ( !isset( $body['text'] ) || !is_array( $body['text'] ) ) {
+          $body['text'] = [];
+        }
+        $body['text']['format'] = [ 'type' => 'json_object' ];
       }
 
       // Function calling - convert to tools
@@ -942,7 +943,7 @@ class Meow_MWAI_Engines_OpenAI extends Meow_MWAI_Engines_ChatML {
         // Streaming text chunk for the current content part
         if ( isset( $json['delta'] ) ) {
           // Send a status event for the first content chunk
-          if ( $this->currentDebugMode && !isset( $this->contentStarted ) ) {
+          if ( $this->currentDebugMode && !$this->contentStarted ) {
             $this->contentStarted = true;
             $statusEvent = Meow_MWAI_Event::generating_response();
             call_user_func( $this->streamCallback, $statusEvent );
@@ -955,7 +956,7 @@ class Meow_MWAI_Engines_OpenAI extends Meow_MWAI_Engines_ChatML {
         // Final text for the content part
         // Contains the complete accumulated text
         // Don't send response_completed here - ChatbotContext adds "Request completed"
-        unset( $this->contentStarted );
+        $this->contentStarted = false;
         break;
 
       case 'response.refusal.delta':
@@ -1417,6 +1418,12 @@ class Meow_MWAI_Engines_OpenAI extends Meow_MWAI_Engines_ChatML {
         if ( empty( $data ) ) {
           throw new Exception( 'No content received (res is null).' );
         }
+        
+        // Ensure $data is an array
+        if ( !is_array( $data ) ) {
+          $error_message = is_string( $data ) ? $data : 'Invalid response format';
+          throw new Exception( 'Responses API error: ' . $error_message );
+        }
 
         // Handle Responses API response format
         $returned_id = $data['id'] ?? null;
@@ -1508,12 +1515,18 @@ class Meow_MWAI_Engines_OpenAI extends Meow_MWAI_Engines_ChatML {
 
         // If still no content found, log for debugging
         if ( empty( $content ) ) {
-          Meow_MWAI_Logging::log( 'Responses API: No content found in response. Structure: ' . json_encode( array_keys( $data ) ) );
-          if ( isset( $data['output'][0] ) ) {
-            Meow_MWAI_Logging::log( 'Responses API: First output item: ' . json_encode( $data['output'][0] ) );
-          }
-          if ( isset( $data['text'] ) ) {
-            Meow_MWAI_Logging::log( 'Responses API: Text field structure: ' . json_encode( $data['text'] ) );
+          // Check if $data is actually an array before using array_keys
+          if ( is_array( $data ) ) {
+            Meow_MWAI_Logging::log( 'Responses API: No content found in response. Structure: ' . json_encode( array_keys( $data ) ) );
+            if ( isset( $data['output'][0] ) ) {
+              Meow_MWAI_Logging::log( 'Responses API: First output item: ' . json_encode( $data['output'][0] ) );
+            }
+            if ( isset( $data['text'] ) ) {
+              Meow_MWAI_Logging::log( 'Responses API: Text field structure: ' . json_encode( $data['text'] ) );
+            }
+          } else {
+            // If $data is not an array, it might be an error string
+            Meow_MWAI_Logging::log( 'Responses API: Invalid response data type. Data: ' . ( is_string( $data ) ? $data : json_encode( $data ) ) );
           }
           // Log the entire response for debugging
           Meow_MWAI_Logging::log( 'Responses API: Full response data: ' . json_encode( $data ) );

@@ -2,9 +2,9 @@
 # This file is distributed under the GPLv3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: ElementsKit Lite 3.6.0\n"
+"Project-Id-Version: ElementsKit Lite 3.6.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/elementskit-lite\n"
-"POT-Creation-Date: 2025-08-04 08:56:40+00:00\n"
+"POT-Creation-Date: 2025-08-13 05:08:29+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -340,16 +340,15 @@ msgid "Custom"
 msgstr ""
 
 #: libs/framework/views/onboard-steps/step-01.php:55
-#: libs/framework/views/onboard-steps/step-02.php:16
-#: libs/framework/views/onboard-steps/step-03.php:169
+#: libs/framework/views/onboard-steps/step-02.php:17
+#: libs/framework/views/onboard-steps/step-03.php:168
 #: libs/framework/views/onboard-steps/step-04.php:19
 #: libs/framework/views/onboard-steps/step-05.php:29
 msgid "Back"
 msgstr ""
 
 #: libs/framework/views/onboard-steps/step-01.php:56
-#: libs/framework/views/onboard-steps/step-02.php:17
-#: libs/framework/views/onboard-steps/step-03.php:172
+#: libs/framework/views/onboard-steps/step-02.php:20
 #: libs/framework/views/onboard-steps/step-04.php:20
 msgid "Next Step"
 msgstr ""
@@ -416,6 +415,14 @@ msgstr ""
 msgid ""
 "Enhance block capability with page builder features & templates for "
 "Gutenberg."
+msgstr ""
+
+#: libs/framework/views/onboard-steps/step-03.php:171
+msgid "Continue"
+msgstr ""
+
+#: libs/framework/views/onboard-steps/step-03.php:178
+msgid "Unlock All & Continue"
 msgstr ""
 
 #: libs/framework/views/onboard-steps/step-04.php:2
@@ -676,15 +683,15 @@ msgstr ""
 
 #: libs/framework/views/settings-sections/usersettings.php:107
 #: libs/framework/views/settings-sections/usersettings.php:184
-#: libs/framework/views/settings-sections/usersettings.php:378
-#: libs/framework/views/settings-sections/usersettings.php:520
+#: libs/framework/views/settings-sections/usersettings.php:390
+#: libs/framework/views/settings-sections/usersettings.php:532
 msgid "Clear Cache"
 msgstr ""
 
 #: libs/framework/views/settings-sections/usersettings.php:113
 #: libs/framework/views/settings-sections/usersettings.php:157
-#: libs/framework/views/settings-sections/usersettings.php:371
-#: libs/framework/views/settings-sections/usersettings.php:526
+#: libs/framework/views/settings-sections/usersettings.php:383
+#: libs/framework/views/settings-sections/usersettings.php:538
 msgid "Get access token"
 msgstr ""
 
@@ -718,274 +725,210 @@ msgid "Facebook Messenger"
 msgstr ""
 
 #: libs/framework/views/settings-sections/usersettings.php:275
-#: widgets/accordion/accordion.php:274 widgets/accordion/accordion.php:377
-#: widgets/accordion/accordion.php:522 widgets/accordion/accordion.php:748
-#: widgets/accordion/accordion.php:836 widgets/back-to-top/back-to-top.php:393
-#: widgets/back-to-top/back-to-top.php:425
-#: widgets/blog-posts/blog-posts.php:1163
-#: widgets/blog-posts/blog-posts.php:1242
-#: widgets/blog-posts/blog-posts.php:1505
-#: widgets/blog-posts/blog-posts.php:1530
-#: widgets/blog-posts/blog-posts.php:1818
-#: widgets/blog-posts/blog-posts.php:1931
-#: widgets/blog-posts/blog-posts.php:1959
-#: widgets/blog-posts/blog-posts.php:2161
-#: widgets/business-hours/business-hours.php:270
-#: widgets/business-hours/business-hours.php:333
-#: widgets/caldera-forms/caldera-forms.php:104
-#: widgets/caldera-forms/caldera-forms.php:146
-#: widgets/caldera-forms/caldera-forms.php:494
-#: widgets/caldera-forms/caldera-forms.php:764
-#: widgets/caldera-forms/caldera-forms.php:821
-#: widgets/category-list/category-list.php:302
-#: widgets/category-list/category-list.php:363
-#: widgets/client-logo/client-logo.php:1070
-#: widgets/client-logo/client-logo.php:1105
-#: widgets/contact-form7/contact-form7.php:101
-#: widgets/contact-form7/contact-form7.php:143
-#: widgets/contact-form7/contact-form7.php:492
-#: widgets/contact-form7/contact-form7.php:762
-#: widgets/contact-form7/contact-form7.php:819
-#: widgets/countdown-timer/countdown-timer.php:374
-#: widgets/countdown-timer/countdown-timer.php:420
-#: widgets/countdown-timer/countdown-timer.php:574
-#: widgets/countdown-timer/countdown-timer.php:632
-#: widgets/countdown-timer/countdown-timer.php:849
-#: widgets/countdown-timer/countdown-timer.php:908
-#: widgets/countdown-timer/countdown-timer.php:1122
-#: widgets/countdown-timer/countdown-timer.php:1183
-#: widgets/countdown-timer/countdown-timer.php:1398
-#: widgets/countdown-timer/countdown-timer.php:1459
-#: widgets/drop-caps/drop-caps.php:83 widgets/drop-caps/drop-caps.php:114
-#: widgets/dual-button/dual-button.php:442
-#: widgets/dual-button/dual-button.php:583
-#: widgets/dual-button/dual-button.php:662
-#: widgets/dual-button/dual-button.php:801
-#: widgets/dual-button/dual-button.php:873 widgets/faq/faq.php:222
-#: widgets/fluent-forms/fluent-forms.php:241
-#: widgets/fluent-forms/fluent-forms.php:315
-#: widgets/fluent-forms/fluent-forms.php:1150
-#: widgets/fluent-forms/fluent-forms.php:1205
-#: widgets/fluent-forms/fluent-forms.php:1305
-#: widgets/fluent-forms/fluent-forms.php:1389
-#: widgets/fluent-forms/fluent-forms.php:1688
-#: widgets/fluent-forms/fluent-forms.php:1706
-#: widgets/fluent-forms/fluent-forms.php:1741
-#: widgets/fluent-forms/fluent-forms.php:1772
-#: widgets/fluent-forms/fluent-forms.php:1887
-#: widgets/fluent-forms/fluent-forms.php:1905
-#: widgets/fluent-forms/fluent-forms.php:2160
-#: widgets/fluent-forms/fluent-forms.php:2232
-#: widgets/fluent-forms/fluent-forms.php:2575 widgets/funfact/funfact.php:601
-#: widgets/funfact/funfact.php:922
-#: widgets/header-offcanvas/header-offcanvas.php:354
-#: widgets/header-offcanvas/header-offcanvas.php:387
-#: widgets/header-offcanvas/header-offcanvas.php:581
-#: widgets/header-offcanvas/header-offcanvas.php:614
-#: widgets/header-search/header-search.php:129
-#: widgets/header-search/header-search.php:159
-#: widgets/header-search/header-search.php:364
-#: widgets/header-search/header-search.php:616
-#: widgets/header-search/header-search.php:646 widgets/heading/heading.php:463
-#: widgets/heading/heading.php:644 widgets/heading/heading.php:788
-#: widgets/icon-box/icon-box.php:810 widgets/icon-box/icon-box.php:850
-#: widgets/icon-box/icon-box.php:1712
-#: widgets/image-accordion/image-accordion.php:492
-#: widgets/image-box/image-box.php:1214 widgets/image-box/image-box.php:1301
-#: widgets/image-comparison/image-comparison.php:287
-#: widgets/image-comparison/image-comparison.php:347
-#: widgets/mail-chimp/mail-chimp.php:626 widgets/mail-chimp/mail-chimp.php:1029
-#: widgets/mail-chimp/mail-chimp.php:1061
-#: widgets/mail-chimp/mail-chimp.php:1202
-#: widgets/mail-chimp/mail-chimp.php:1333
-#: widgets/mail-chimp/mail-chimp.php:1369 widgets/nav-menu/nav-menu.php:729
-#: widgets/ninja-forms/ninja-forms.php:199 widgets/page-list/page-list.php:120
-#: widgets/page-list/page-list.php:220 widgets/page-list/page-list.php:549
-#: widgets/page-list/page-list.php:850 widgets/post-grid/post-grid.php:190
-#: widgets/post-list/post-list.php:599 widgets/post-list/post-list.php:622
-#: widgets/post-list/post-list.php:746 widgets/post-list/post-list.php:882
-#: widgets/post-list/post-list.php:1150 widgets/post-list/post-list.php:1195
-#: widgets/post-tab/post-tab.php:228 widgets/post-tab/post-tab.php:289
-#: widgets/post-tab/post-tab.php:454 widgets/pricing/pricing.php:608
-#: widgets/pricing/pricing.php:827 widgets/pricing/pricing.php:845
-#: widgets/pricing/pricing.php:1150 widgets/pricing/pricing.php:1612
-#: widgets/pricing/pricing.php:1640 widgets/pricing/pricing.php:1860
-#: widgets/pricing/pricing.php:1886 widgets/pricing/pricing.php:1942
-#: widgets/progressbar/progressbar.php:338
-#: widgets/progressbar/progressbar.php:391
-#: widgets/progressbar/progressbar.php:457 widgets/social/social.php:224
-#: widgets/social/social.php:286 widgets/social-share/social-share.php:258
-#: widgets/social-share/social-share.php:320
-#: widgets/tablepress/tablepress.php:211 widgets/tablepress/tablepress.php:623
-#: widgets/team/team.php:270 widgets/team/team.php:336
-#: widgets/team/team.php:1242 widgets/team/team.php:1281
-#: widgets/team/team.php:1344 widgets/team/team.php:1363
-#: widgets/team/team.php:1421 widgets/team/team.php:1441
-#: widgets/team/team.php:1518 widgets/team/team.php:1538
-#: widgets/team/team.php:1909 widgets/team/team.php:1961
-#: widgets/team/team.php:2015 widgets/team/team.php:2077
-#: widgets/testimonial/testimonial.php:982
-#: widgets/testimonial/testimonial.php:1043
-#: widgets/testimonial/testimonial.php:1152
-#: widgets/testimonial/testimonial.php:1189
-#: widgets/testimonial/testimonial.php:1233
-#: widgets/testimonial/testimonial.php:1541
-#: widgets/testimonial/testimonial.php:1605
-#: widgets/testimonial/testimonial.php:2264
-#: widgets/testimonial/testimonial.php:2314
-msgid "Color"
+#: widgets/blog-posts/blog-posts.php:1174
+#: widgets/blog-posts/blog-posts.php:1254
+#: widgets/header-info/header-info.php:195 widgets/icon-box/icon-box.php:975
+#: widgets/image-box/image-box.php:444 widgets/image-box/image-box.php:488
+#: widgets/pricing/pricing.php:277 widgets/tab/tab.php:773
+#: widgets/tab/tab.php:846 widgets/team/team.php:2123
+msgid "Icon Color"
 msgstr ""
 
 #: libs/framework/views/settings-sections/usersettings.php:287
-msgid "Logged-in user greeting"
+#: widgets/accordion/accordion.php:308 widgets/blog-posts/blog-posts.php:1829
+#: widgets/business-hours/business-hours.php:128
+#: widgets/category-list/category-list.php:112
+#: widgets/fluent-forms/fluent-forms.php:593
+#: widgets/fluent-forms/fluent-forms.php:801
+#: widgets/fluent-forms/fluent-forms.php:981
+#: widgets/fluent-forms/fluent-forms.php:1097
+#: widgets/fluent-forms/fluent-forms.php:1317
+#: widgets/fluent-forms/fluent-forms.php:1401
+#: widgets/fluent-forms/fluent-forms.php:1527
+#: widgets/fluent-forms/fluent-forms.php:1599
+#: widgets/fluent-forms/fluent-forms.php:2365
+#: widgets/fluent-forms/fluent-forms.php:2471
+#: widgets/fluent-forms/fluent-forms.php:2522
+#: widgets/header-info/header-info.php:166
+#: widgets/header-offcanvas/header-offcanvas.php:367
+#: widgets/header-offcanvas/header-offcanvas.php:399
+#: widgets/header-offcanvas/header-offcanvas.php:594
+#: widgets/header-offcanvas/header-offcanvas.php:626
+#: widgets/header-search/header-search.php:141
+#: widgets/header-search/header-search.php:171
+#: widgets/header-search/header-search.php:627
+#: widgets/header-search/header-search.php:657
+#: widgets/icon-box/icon-box.php:1055
+#: widgets/image-accordion/image-accordion.php:890
+#: widgets/mail-chimp/mail-chimp.php:1345
+#: widgets/mail-chimp/mail-chimp.php:1381
+#: widgets/ninja-forms/ninja-forms.php:297
+#: widgets/ninja-forms/ninja-forms.php:476
+#: widgets/ninja-forms/ninja-forms.php:699
+#: widgets/ninja-forms/ninja-forms.php:777 widgets/post-list/post-list.php:1163
+#: widgets/post-list/post-list.php:1207 widgets/pricing/pricing.php:508
+#: widgets/progressbar/progressbar.php:408
+#: widgets/progressbar/progressbar.php:421 widgets/social/social.php:238
+#: widgets/social/social.php:299 widgets/social-share/social-share.php:272
+#: widgets/social-share/social-share.php:333 widgets/team/team.php:286
+#: widgets/team/team.php:351 widgets/team/team.php:1254
+#: widgets/team/team.php:1293 widgets/we-forms/we-forms.php:203
+#: widgets/we-forms/we-forms.php:239 widgets/we-forms/we-forms.php:525
+#: widgets/we-forms/we-forms.php:556 widgets/wp-forms/wp-forms.php:143
+#: widgets/wp-forms/wp-forms.php:505 widgets/wp-forms/wp-forms.php:594
+msgid "Background Color"
 msgstr ""
 
 #: libs/framework/views/settings-sections/usersettings.php:299
-msgid "Logged out user greeting"
+msgid "Logged-in user greeting"
 msgstr ""
 
 #: libs/framework/views/settings-sections/usersettings.php:311
+msgid "Logged out user greeting"
+msgstr ""
+
+#: libs/framework/views/settings-sections/usersettings.php:323
 msgid "Show Dialog Box"
 msgstr ""
 
-#: libs/framework/views/settings-sections/usersettings.php:320
+#: libs/framework/views/settings-sections/usersettings.php:332
 msgid "Please add below domain as white listed in page advance messaging option"
 msgstr ""
 
-#: libs/framework/views/settings-sections/usersettings.php:321
+#: libs/framework/views/settings-sections/usersettings.php:333
 msgid "how?"
 msgstr ""
 
-#: libs/framework/views/settings-sections/usersettings.php:341
+#: libs/framework/views/settings-sections/usersettings.php:353
 msgid "Dribbble User Data"
 msgstr ""
 
-#: libs/framework/views/settings-sections/usersettings.php:358
+#: libs/framework/views/settings-sections/usersettings.php:370
 msgid "Access token"
 msgstr ""
 
-#: libs/framework/views/settings-sections/usersettings.php:400
+#: libs/framework/views/settings-sections/usersettings.php:412
 msgid "Twitter User Data"
 msgstr ""
 
-#: libs/framework/views/settings-sections/usersettings.php:413
+#: libs/framework/views/settings-sections/usersettings.php:425
 msgid "Twitter Username"
 msgstr ""
 
-#: libs/framework/views/settings-sections/usersettings.php:425
-#: libs/framework/views/settings-sections/usersettings.php:486
+#: libs/framework/views/settings-sections/usersettings.php:437
+#: libs/framework/views/settings-sections/usersettings.php:498
 msgid "Access Token"
 msgstr ""
 
-#: libs/framework/views/settings-sections/usersettings.php:436
+#: libs/framework/views/settings-sections/usersettings.php:448
 msgid "Get Access Token"
 msgstr ""
 
-#: libs/framework/views/settings-sections/usersettings.php:456
+#: libs/framework/views/settings-sections/usersettings.php:468
 msgid "Instragram User Data"
 msgstr ""
 
-#: libs/framework/views/settings-sections/usersettings.php:476
+#: libs/framework/views/settings-sections/usersettings.php:488
 msgid "User ID"
 msgstr ""
 
-#: libs/framework/views/settings-sections/usersettings.php:496
+#: libs/framework/views/settings-sections/usersettings.php:508
 msgid "Token Expiry Time"
 msgstr ""
 
-#: libs/framework/views/settings-sections/usersettings.php:506
+#: libs/framework/views/settings-sections/usersettings.php:518
 msgid "Token generation date"
 msgstr ""
 
-#: libs/framework/views/settings-sections/usersettings.php:509
+#: libs/framework/views/settings-sections/usersettings.php:521
 msgid "This is need to calculate the remaining time for token"
 msgstr ""
 
-#: libs/framework/views/settings-sections/usersettings.php:547
+#: libs/framework/views/settings-sections/usersettings.php:559
 msgid "Zoom Data"
 msgstr ""
 
-#: libs/framework/views/settings-sections/usersettings.php:561
+#: libs/framework/views/settings-sections/usersettings.php:573
 msgid "Account ID"
 msgstr ""
 
-#: libs/framework/views/settings-sections/usersettings.php:571
+#: libs/framework/views/settings-sections/usersettings.php:583
 msgid "Client ID"
 msgstr ""
 
-#: libs/framework/views/settings-sections/usersettings.php:581
+#: libs/framework/views/settings-sections/usersettings.php:593
 msgid "Client Secret"
 msgstr ""
 
-#: libs/framework/views/settings-sections/usersettings.php:591
+#: libs/framework/views/settings-sections/usersettings.php:603
 msgid "Api key"
 msgstr ""
 
-#: libs/framework/views/settings-sections/usersettings.php:601
+#: libs/framework/views/settings-sections/usersettings.php:613
 msgid "Secret Key"
 msgstr ""
 
-#: libs/framework/views/settings-sections/usersettings.php:612
+#: libs/framework/views/settings-sections/usersettings.php:624
 msgid "Check connection"
 msgstr ""
 
-#: libs/framework/views/settings-sections/usersettings.php:634
+#: libs/framework/views/settings-sections/usersettings.php:646
 msgid "Google Map"
 msgstr ""
 
-#: libs/framework/views/settings-sections/usersettings.php:647
+#: libs/framework/views/settings-sections/usersettings.php:659
 msgid "Api Key"
 msgstr ""
 
-#: libs/framework/views/settings-sections/usersettings.php:668
+#: libs/framework/views/settings-sections/usersettings.php:680
 msgid "Google Sheet For Elementor Pro Form"
 msgstr ""
 
-#: libs/framework/views/settings-sections/usersettings.php:682
+#: libs/framework/views/settings-sections/usersettings.php:694
 msgid "Google Client Id"
 msgstr ""
 
-#: libs/framework/views/settings-sections/usersettings.php:689
+#: libs/framework/views/settings-sections/usersettings.php:701
 msgid "Google Client Secret"
 msgstr ""
 
-#: libs/framework/views/settings-sections/usersettings.php:700
+#: libs/framework/views/settings-sections/usersettings.php:712
 #: widgets/image-accordion/image-accordion.php:317
 #: widgets/nav-menu/nav-menu.php:98 widgets/tab/tab.php:343
 msgid "Click"
 msgstr ""
 
-#: libs/framework/views/settings-sections/usersettings.php:702
+#: libs/framework/views/settings-sections/usersettings.php:714
 msgid "and create App/Project On Google developer account"
 msgstr ""
 
-#: libs/framework/views/settings-sections/usersettings.php:705
+#: libs/framework/views/settings-sections/usersettings.php:717
 msgid "Must add the following URL to the \"Valid OAuth redirect URIs\" field:"
 msgstr ""
 
-#: libs/framework/views/settings-sections/usersettings.php:706
+#: libs/framework/views/settings-sections/usersettings.php:718
 msgid "After getting the App ID & App Secret, put those information"
 msgstr ""
 
-#: libs/framework/views/settings-sections/usersettings.php:707
+#: libs/framework/views/settings-sections/usersettings.php:719
 msgid "Click on \"Save Changes\""
 msgstr ""
 
-#: libs/framework/views/settings-sections/usersettings.php:708
+#: libs/framework/views/settings-sections/usersettings.php:720
 msgid "Click on \"Generate Access Token\""
 msgstr ""
 
-#: libs/framework/views/settings-sections/usersettings.php:715
+#: libs/framework/views/settings-sections/usersettings.php:727
 msgid ""
 "Note:- After 200 days your token will be expired, before the expiration of "
 "your token,"
 msgstr ""
 
-#: libs/framework/views/settings-sections/usersettings.php:715
+#: libs/framework/views/settings-sections/usersettings.php:727
 msgid "Generate a new access Token"
 msgstr ""
 
-#: libs/framework/views/settings-sections/usersettings.php:718
+#: libs/framework/views/settings-sections/usersettings.php:730
 msgid "Generate Access Token"
 msgstr ""
 
@@ -2310,6 +2253,124 @@ msgstr ""
 msgid "Open"
 msgstr ""
 
+#: widgets/accordion/accordion.php:274 widgets/accordion/accordion.php:377
+#: widgets/accordion/accordion.php:522 widgets/accordion/accordion.php:748
+#: widgets/accordion/accordion.php:836 widgets/back-to-top/back-to-top.php:393
+#: widgets/back-to-top/back-to-top.php:425
+#: widgets/blog-posts/blog-posts.php:1163
+#: widgets/blog-posts/blog-posts.php:1242
+#: widgets/blog-posts/blog-posts.php:1505
+#: widgets/blog-posts/blog-posts.php:1530
+#: widgets/blog-posts/blog-posts.php:1818
+#: widgets/blog-posts/blog-posts.php:1931
+#: widgets/blog-posts/blog-posts.php:1959
+#: widgets/blog-posts/blog-posts.php:2161
+#: widgets/business-hours/business-hours.php:270
+#: widgets/business-hours/business-hours.php:333
+#: widgets/caldera-forms/caldera-forms.php:104
+#: widgets/caldera-forms/caldera-forms.php:146
+#: widgets/caldera-forms/caldera-forms.php:494
+#: widgets/caldera-forms/caldera-forms.php:764
+#: widgets/caldera-forms/caldera-forms.php:821
+#: widgets/category-list/category-list.php:302
+#: widgets/category-list/category-list.php:363
+#: widgets/client-logo/client-logo.php:1070
+#: widgets/client-logo/client-logo.php:1105
+#: widgets/contact-form7/contact-form7.php:101
+#: widgets/contact-form7/contact-form7.php:143
+#: widgets/contact-form7/contact-form7.php:492
+#: widgets/contact-form7/contact-form7.php:762
+#: widgets/contact-form7/contact-form7.php:819
+#: widgets/countdown-timer/countdown-timer.php:374
+#: widgets/countdown-timer/countdown-timer.php:420
+#: widgets/countdown-timer/countdown-timer.php:574
+#: widgets/countdown-timer/countdown-timer.php:632
+#: widgets/countdown-timer/countdown-timer.php:849
+#: widgets/countdown-timer/countdown-timer.php:908
+#: widgets/countdown-timer/countdown-timer.php:1122
+#: widgets/countdown-timer/countdown-timer.php:1183
+#: widgets/countdown-timer/countdown-timer.php:1398
+#: widgets/countdown-timer/countdown-timer.php:1459
+#: widgets/drop-caps/drop-caps.php:83 widgets/drop-caps/drop-caps.php:114
+#: widgets/dual-button/dual-button.php:442
+#: widgets/dual-button/dual-button.php:583
+#: widgets/dual-button/dual-button.php:662
+#: widgets/dual-button/dual-button.php:801
+#: widgets/dual-button/dual-button.php:873 widgets/faq/faq.php:222
+#: widgets/fluent-forms/fluent-forms.php:241
+#: widgets/fluent-forms/fluent-forms.php:315
+#: widgets/fluent-forms/fluent-forms.php:1150
+#: widgets/fluent-forms/fluent-forms.php:1205
+#: widgets/fluent-forms/fluent-forms.php:1305
+#: widgets/fluent-forms/fluent-forms.php:1389
+#: widgets/fluent-forms/fluent-forms.php:1688
+#: widgets/fluent-forms/fluent-forms.php:1706
+#: widgets/fluent-forms/fluent-forms.php:1741
+#: widgets/fluent-forms/fluent-forms.php:1772
+#: widgets/fluent-forms/fluent-forms.php:1887
+#: widgets/fluent-forms/fluent-forms.php:1905
+#: widgets/fluent-forms/fluent-forms.php:2160
+#: widgets/fluent-forms/fluent-forms.php:2232
+#: widgets/fluent-forms/fluent-forms.php:2575 widgets/funfact/funfact.php:601
+#: widgets/funfact/funfact.php:922
+#: widgets/header-offcanvas/header-offcanvas.php:354
+#: widgets/header-offcanvas/header-offcanvas.php:387
+#: widgets/header-offcanvas/header-offcanvas.php:581
+#: widgets/header-offcanvas/header-offcanvas.php:614
+#: widgets/header-search/header-search.php:129
+#: widgets/header-search/header-search.php:159
+#: widgets/header-search/header-search.php:364
+#: widgets/header-search/header-search.php:616
+#: widgets/header-search/header-search.php:646 widgets/heading/heading.php:463
+#: widgets/heading/heading.php:644 widgets/heading/heading.php:788
+#: widgets/icon-box/icon-box.php:810 widgets/icon-box/icon-box.php:850
+#: widgets/icon-box/icon-box.php:1712
+#: widgets/image-accordion/image-accordion.php:492
+#: widgets/image-box/image-box.php:1214 widgets/image-box/image-box.php:1301
+#: widgets/image-comparison/image-comparison.php:287
+#: widgets/image-comparison/image-comparison.php:347
+#: widgets/mail-chimp/mail-chimp.php:626 widgets/mail-chimp/mail-chimp.php:1029
+#: widgets/mail-chimp/mail-chimp.php:1061
+#: widgets/mail-chimp/mail-chimp.php:1202
+#: widgets/mail-chimp/mail-chimp.php:1333
+#: widgets/mail-chimp/mail-chimp.php:1369 widgets/nav-menu/nav-menu.php:729
+#: widgets/ninja-forms/ninja-forms.php:199 widgets/page-list/page-list.php:120
+#: widgets/page-list/page-list.php:220 widgets/page-list/page-list.php:549
+#: widgets/page-list/page-list.php:850 widgets/post-grid/post-grid.php:190
+#: widgets/post-list/post-list.php:599 widgets/post-list/post-list.php:622
+#: widgets/post-list/post-list.php:746 widgets/post-list/post-list.php:882
+#: widgets/post-list/post-list.php:1150 widgets/post-list/post-list.php:1195
+#: widgets/post-tab/post-tab.php:228 widgets/post-tab/post-tab.php:289
+#: widgets/post-tab/post-tab.php:454 widgets/pricing/pricing.php:608
+#: widgets/pricing/pricing.php:827 widgets/pricing/pricing.php:845
+#: widgets/pricing/pricing.php:1150 widgets/pricing/pricing.php:1612
+#: widgets/pricing/pricing.php:1640 widgets/pricing/pricing.php:1860
+#: widgets/pricing/pricing.php:1886 widgets/pricing/pricing.php:1942
+#: widgets/progressbar/progressbar.php:338
+#: widgets/progressbar/progressbar.php:391
+#: widgets/progressbar/progressbar.php:457 widgets/social/social.php:224
+#: widgets/social/social.php:286 widgets/social-share/social-share.php:258
+#: widgets/social-share/social-share.php:320
+#: widgets/tablepress/tablepress.php:211 widgets/tablepress/tablepress.php:623
+#: widgets/team/team.php:270 widgets/team/team.php:336
+#: widgets/team/team.php:1242 widgets/team/team.php:1281
+#: widgets/team/team.php:1344 widgets/team/team.php:1363
+#: widgets/team/team.php:1421 widgets/team/team.php:1441
+#: widgets/team/team.php:1518 widgets/team/team.php:1538
+#: widgets/team/team.php:1909 widgets/team/team.php:1961
+#: widgets/team/team.php:2015 widgets/team/team.php:2077
+#: widgets/testimonial/testimonial.php:982
+#: widgets/testimonial/testimonial.php:1043
+#: widgets/testimonial/testimonial.php:1152
+#: widgets/testimonial/testimonial.php:1189
+#: widgets/testimonial/testimonial.php:1233
+#: widgets/testimonial/testimonial.php:1541
+#: widgets/testimonial/testimonial.php:1605
+#: widgets/testimonial/testimonial.php:2264
+#: widgets/testimonial/testimonial.php:2314
+msgid "Color"
+msgstr ""
+
 #: widgets/accordion/accordion.php:285 widgets/accordion/accordion.php:386
 #: widgets/accordion/accordion.php:758 widgets/accordion/accordion.php:846
 #: widgets/blog-posts/blog-posts.php:2173 widgets/heading/heading.php:473
@@ -2415,50 +2476,6 @@ msgstr ""
 #: widgets/testimonial/testimonial.php:2278
 #: widgets/testimonial/testimonial.php:2328
 msgid "Background"
-msgstr ""
-
-#: widgets/accordion/accordion.php:308 widgets/blog-posts/blog-posts.php:1829
-#: widgets/business-hours/business-hours.php:128
-#: widgets/category-list/category-list.php:112
-#: widgets/fluent-forms/fluent-forms.php:593
-#: widgets/fluent-forms/fluent-forms.php:801
-#: widgets/fluent-forms/fluent-forms.php:981
-#: widgets/fluent-forms/fluent-forms.php:1097
-#: widgets/fluent-forms/fluent-forms.php:1317
-#: widgets/fluent-forms/fluent-forms.php:1401
-#: widgets/fluent-forms/fluent-forms.php:1527
-#: widgets/fluent-forms/fluent-forms.php:1599
-#: widgets/fluent-forms/fluent-forms.php:2365
-#: widgets/fluent-forms/fluent-forms.php:2471
-#: widgets/fluent-forms/fluent-forms.php:2522
-#: widgets/header-info/header-info.php:166
-#: widgets/header-offcanvas/header-offcanvas.php:367
-#: widgets/header-offcanvas/header-offcanvas.php:399
-#: widgets/header-offcanvas/header-offcanvas.php:594
-#: widgets/header-offcanvas/header-offcanvas.php:626
-#: widgets/header-search/header-search.php:141
-#: widgets/header-search/header-search.php:171
-#: widgets/header-search/header-search.php:627
-#: widgets/header-search/header-search.php:657
-#: widgets/icon-box/icon-box.php:1055
-#: widgets/image-accordion/image-accordion.php:890
-#: widgets/mail-chimp/mail-chimp.php:1345
-#: widgets/mail-chimp/mail-chimp.php:1381
-#: widgets/ninja-forms/ninja-forms.php:297
-#: widgets/ninja-forms/ninja-forms.php:476
-#: widgets/ninja-forms/ninja-forms.php:699
-#: widgets/ninja-forms/ninja-forms.php:777 widgets/post-list/post-list.php:1163
-#: widgets/post-list/post-list.php:1207 widgets/pricing/pricing.php:508
-#: widgets/progressbar/progressbar.php:408
-#: widgets/progressbar/progressbar.php:421 widgets/social/social.php:238
-#: widgets/social/social.php:299 widgets/social-share/social-share.php:272
-#: widgets/social-share/social-share.php:333 widgets/team/team.php:286
-#: widgets/team/team.php:351 widgets/team/team.php:1254
-#: widgets/team/team.php:1293 widgets/we-forms/we-forms.php:203
-#: widgets/we-forms/we-forms.php:239 widgets/we-forms/we-forms.php:525
-#: widgets/we-forms/we-forms.php:556 widgets/wp-forms/wp-forms.php:143
-#: widgets/wp-forms/wp-forms.php:505 widgets/wp-forms/wp-forms.php:594
-msgid "Background Color"
 msgstr ""
 
 #: widgets/accordion/accordion.php:320 widgets/accordion/accordion.php:419
@@ -3711,15 +3728,6 @@ msgstr ""
 #: widgets/tab/tab.php:664 widgets/team/team.php:1702
 #: widgets/testimonial/testimonial.php:1271 widgets/video/video.php:604
 msgid "Icon Size"
-msgstr ""
-
-#: widgets/blog-posts/blog-posts.php:1174
-#: widgets/blog-posts/blog-posts.php:1254
-#: widgets/header-info/header-info.php:195 widgets/icon-box/icon-box.php:975
-#: widgets/image-box/image-box.php:444 widgets/image-box/image-box.php:488
-#: widgets/pricing/pricing.php:277 widgets/tab/tab.php:773
-#: widgets/tab/tab.php:846 widgets/team/team.php:2123
-msgid "Icon Color"
 msgstr ""
 
 #: widgets/blog-posts/blog-posts.php:1321

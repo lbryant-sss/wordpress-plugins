@@ -80,6 +80,7 @@ if (isset($aip_standalone)) {
   $use_post_message = $options['use_post_message'];
   $multi_domain_enabled = $options['multi_domain_enabled'];
   $demo = $options['demo'];
+  $show_support_message = $options['show_support_message'];
   $purchase_code = $options['purchase_code'];
 
   $debug_js = AdvancedIframeHelper::check_debug_enabled($options['debug_js']);
@@ -202,7 +203,6 @@ if (isset($aip_standalone)) {
       'referrerpolicy' => $options['referrerpolicy'],
       'add_surrounding_p' => $options['add_surrounding_p'],
       'custom' => $options['custom'],
-      'show_support_message' => $options['show_support_message'],
       $atts));
   }
 

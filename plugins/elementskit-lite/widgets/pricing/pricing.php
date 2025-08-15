@@ -2552,7 +2552,7 @@ class ElementsKit_Widget_Pricing extends Widget_Base {
             $this->add_render_attribute( 'image', 'src', $settings['ekit_pricing_image']['url'] );
             $this->add_render_attribute( 'image', 'alt', Control_Media::get_image_alt( $settings['ekit_pricing_image'] ) );
 
-            $image_html = Group_Control_Image_Size::get_attachment_image_html( $settings, 'thumbnail', 'ekit_pricing_image' );
+            $image_html = Group_Control_Image_Size::get_attachment_image_html( $settings, 'ekit_pricing_thumbnail', 'ekit_pricing_image' );
 
 
             $image = '<figure class="elementor-pricing-img">' . $image_html . '</figure>';

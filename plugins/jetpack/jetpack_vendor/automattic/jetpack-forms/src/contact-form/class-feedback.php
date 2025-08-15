@@ -221,12 +221,19 @@ class Feedback {
 	/**
 	 * Get a sanitized value from the post data.
 	 *
-	 * @param string $key The key to look for in the post data.
-	 * @param array  $post_data The post data array, typically $_POST.
+	 * @param string      $key The key to look for in the post data.
+	 * @param array       $post_data The post data array, typically $_POST.
+	 * @param string|null $type The type of the field, if applicable (e.g., 'file').
 	 *
 	 * @return string|array The sanitized value, or an empty string if the key is not found.
 	 */
-	private function get_field_value( $key, $post_data ) {
+	private function get_field_value( $key, $post_data, $type = null ) {
+		if ( $type === 'file' ) {
+			if ( isset( $post_data[ $key ] ) ) {
+				return self::process_file_field_value( $post_data[ $key ] );
+			}
+			return array( 'files' => array() );
+		}
 		if ( isset( $post_data[ $key ] ) ) {
 			if ( is_array( $post_data[ $key ] ) ) {
 				return array_map( 'sanitize_text_field', wp_unslash( $post_data[ $key ] ) );
@@ -235,6 +242,39 @@ class Feedback {
 			}
 		}
 		return '';
+	}
+
+	/**
+	 * Process the file field value.
+	 *
+	 * @param array $raw_data The raw post data from the file field.
+	 *
+	 * @return array The processed file data.
+	 */
+	public static function process_file_field_value( $raw_data ) {
+		$file_data_array = is_array( $raw_data )
+			? array_map(
+				function ( $json_str ) {
+					$decoded = json_decode( $json_str, true );
+					return array(
+						'file_id' => isset( $decoded['file_id'] ) ? sanitize_text_field( $decoded['file_id'] ) : '',
+						'name'    => isset( $decoded['name'] ) ? sanitize_text_field( $decoded['name'] ) : '',
+						'size'    => isset( $decoded['size'] ) ? absint( $decoded['size'] ) : 0,
+						'type'    => isset( $decoded['type'] ) ? sanitize_text_field( $decoded['type'] ) : '',
+					);
+				},
+				$raw_data
+			) : array();
+
+		if ( empty( $file_data_array ) ) {
+			return array(
+				'files' => array(),
+			);
+		}
+
+		return array(
+			'files' => $file_data_array,
+		);
 	}
 
 	/**
@@ -254,6 +294,7 @@ class Feedback {
 		}
 		return '';
 	}
+
 	/**
 	 * Get the value of the field based on the first type found.
 	 *
@@ -289,6 +330,21 @@ class Feedback {
 	}
 
 	/**
+	 * Check whether this feedback contains at least one field of a given type.
+	 *
+	 * @param string $type Field type to check for (e.g. 'consent', 'email', 'textarea').
+	 * @return bool True if a field of the given type exists; false otherwise.
+	 */
+	public function has_field_type( $type ) {
+		foreach ( $this->fields as $field ) {
+			if ( $field->get_type() === $type ) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
 	 * Get the values related to where the form was submitted from.
 	 *
 	 * @return array An array of entry values.
@@ -318,6 +374,66 @@ class Feedback {
 		return array_merge( $this->get_compiled_fields( 'default', 'key-value' ), $this->get_entry_values() );
 	}
 
+	/**
+	 * Get extra values.
+	 * This is a legacy method to maintain compatibility with older code.
+	 *
+	 * @return array An array of extra values, including entry values
+	 */
+	public function get_legacy_extra_values() {
+		$count            = 1;
+		$_extra_fields    = array();
+		$special_fields   = array();
+		$non_extra_fields = array( 'email', 'name', 'url', 'subject', 'textarea', 'ip' );
+
+		// Create a map of special fields to check agains their values.
+		foreach ( $this->fields as $field ) {
+			if ( in_array( $field->get_type(), $non_extra_fields, true ) && $field->get_render_value() ) {
+				$special_fields[ $field->get_render_value() ] = true;
+			}
+		}
+
+		foreach ( $this->fields as $field ) {
+			if ( $field->compile_field( 'default' ) ) {
+				continue;
+			}
+			if ( $field->get_type() === 'basic' && isset( $special_fields[ $field->get_render_value() ] ) ) {
+				++$count;
+				continue; // Skip fields that are already present in the non-extra fields.
+			}
+			$_extra_fields[] = $field;
+			++$count; // Increment count to ensure unique keys for extra values.
+		}
+		$extra_values       = array();
+		$extra_fields_count = $count;
+		$is_present         = array(); // Used to store the value only once.
+
+		foreach ( $_extra_fields as $field ) {
+			if ( ! in_array( $field->get_type(), $non_extra_fields, true ) || isset( $is_present[ $field->get_type() ] ) ) {
+				$extra_values[ $extra_fields_count . '_' . $field->get_label() ] = $field->get_render_value( 'default' );
+				++$extra_fields_count; // Increment count to ensure unique keys for extra values.
+			} else {
+				$is_present[ $field->get_type() ] = true;
+			}
+		}
+		return $extra_values;
+	}
+
+	/**
+	 * Get all values of the response.
+	 *
+	 * @return array An array of all values, including fields and entry values.
+	 */
+	public function get_all_legacy_values() {
+		return array(
+			'_feedback_author'       => $this->get_author(),
+			'_feedback_author_email' => $this->get_author_email(),
+			'_feedback_author_url'   => $this->get_author_url(),
+			'_feedback_subject'      => $this->get_subject(),
+			'_feedback_ip'           => $this->get_ip_address(),
+			'_feedback_all_fields'   => $this->get_all_values(),
+		);
+	}
 	/**
 	 * Return the compiled fields for the given context.
 	 *
@@ -537,6 +653,43 @@ class Feedback {
 	 */
 	public function has_file() {
 		return $this->has_file;
+	}
+
+	/**
+	 * Get the uploaded files from the feedback entry.
+	 *
+	 * @return array
+	 */
+	public function get_files() {
+		$files = array();
+		foreach ( $this->fields as $field ) {
+			if ( $field->get_type() === 'file' ) {
+				$field_value = $field->get_value();
+				if ( ! empty( $field_value['files'] ) && is_array( $field_value['files'] ) ) {
+					$field_value['files'] = array_filter(
+						$field_value['files'],
+						function ( $file ) {
+							if ( empty( $file['file_id'] ) ) {
+								return false;
+							}
+							if ( empty( $file['name'] ) ) {
+								return false;
+							}
+							if ( empty( $file['size'] ) ) {
+								return false;
+							}
+							if ( empty( $file['type'] ) ) {
+								return false;
+							}
+							return true;
+						}
+					);
+
+					$files = array_merge( $files, $field_value['files'] );
+				}
+			}
+		}
+		return $files;
 	}
 
 	/**
@@ -998,7 +1151,7 @@ class Feedback {
 				continue;
 			}
 
-			$value = $this->get_field_value( $field_id, $post_data );
+			$value = $this->get_field_value( $field_id, $post_data, $type );
 			$label = wp_strip_all_tags( $field->get_attribute( 'label' ) );
 			$key   = $i . '_' . $label;
 

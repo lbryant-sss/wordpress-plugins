@@ -7,6 +7,7 @@ Requires PHP: 7.4
 Stable tag: 4.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+0ddcemmihs4a843ekhaoofzosrunf4bl
 
 Widget Options gives you super powers to control your site’s sidebar widgets and all Gutenberg blocks on pages, posts & other custom post types.
 

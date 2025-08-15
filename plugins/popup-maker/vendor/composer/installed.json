@@ -36,20 +36,20 @@
         },
         {
             "name": "code-atlantic/wp-autoloader",
-            "version": "1.0.0",
-            "version_normalized": "1.0.0.0",
+            "version": "1.1.0",
+            "version_normalized": "1.1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/code-atlantic/wp-autoloader.git",
-                "reference": "7fbc81bfe4e9a520da32afbb9b96eb342f878cc5"
+                "reference": "fc53e1e327bb02c4cff04b5a719326d582056eff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/code-atlantic/wp-autoloader/zipball/7fbc81bfe4e9a520da32afbb9b96eb342f878cc5",
-                "reference": "7fbc81bfe4e9a520da32afbb9b96eb342f878cc5",
+                "url": "https://api.github.com/repos/code-atlantic/wp-autoloader/zipball/fc53e1e327bb02c4cff04b5a719326d582056eff",
+                "reference": "fc53e1e327bb02c4cff04b5a719326d582056eff",
                 "shasum": ""
             },
-            "time": "2023-11-26T21:30:24+00:00",
+            "time": "2025-06-02T06:39:53+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -64,7 +64,7 @@
             "description": "A helper class to autoload composer deps in WordPress plugins",
             "support": {
                 "issues": "https://github.com/code-atlantic/wp-autoloader/issues",
-                "source": "https://github.com/code-atlantic/wp-autoloader/tree/1.0.0"
+                "source": "https://github.com/code-atlantic/wp-autoloader/tree/v1.1.0"
             },
             "install-path": "../code-atlantic/wp-autoloader"
         },

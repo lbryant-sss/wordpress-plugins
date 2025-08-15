@@ -272,9 +272,21 @@ $pro_active = ( in_array( 'elementskit/elementskit.php', apply_filters( 'active_
 							array(
 								'type'        => 'color',
 								'name'        => 'user_data[fbm_module][txt_color]',
-								'label'       => esc_html__( 'Color', 'elementskit-lite' ),
+								'label'       => esc_html__( 'Icon Color', 'elementskit-lite' ),
+								'placeholder' => '#000000',
+								'value'       => ( ! isset( $user_data['fbm_module']['txt_color'] ) ) ? '#000000' : esc_html( $user_data['fbm_module']['txt_color'] ),
+							)
+						);
+						?>
+
+						<?php
+						$this->utils->input(
+							array(
+								'type'        => 'color',
+								'name'        => 'user_data[fbm_module][bg_color]',
+								'label'       => esc_html__( 'Background Color', 'elementskit-lite' ),
 								'placeholder' => '#3b5998',
-								'value'       => ( ! isset( $user_data['fbm_module']['txt_color'] ) ) ? '#3b5998' : esc_html( $user_data['fbm_module']['txt_color'] ),
+								'value'       => ( ! isset( $user_data['fbm_module']['bg_color'] ) ) ? '#3b5998' : esc_html( $user_data['fbm_module']['bg_color'] ),
 							)
 						);
 						?>

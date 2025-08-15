@@ -158,8 +158,12 @@ class Meow_MWAI_Query_Text extends Meow_MWAI_Query_Base implements JsonSerializa
     if ( !empty( $params['responseFormat'] ) ) {
       $this->set_response_format( $params['responseFormat'] );
     }
+    // Accept both 'reasoning' and 'reasoningEffort' (UI uses reasoningEffort)
     if ( !empty( $params['reasoning'] ) ) {
       $this->set_reasoning( $params['reasoning'] );
+    }
+    if ( !empty( $params['reasoningEffort'] ) ) {
+      $this->set_reasoning( $params['reasoningEffort'] );
     }
     if ( !empty( $params['verbosity'] ) ) {
       $this->set_verbosity( $params['verbosity'] );

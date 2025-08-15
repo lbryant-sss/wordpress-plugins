@@ -1,8 +1,8 @@
 <?php return array(
     'root' => array(
         'name' => 'popupmaker/popup-maker',
-        'pretty_version' => '1.20.5',
-        'version' => '1.20.5.0',
+        'pretty_version' => '1.20.6',
+        'version' => '1.20.6.0',
         'reference' => null,
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
@@ -20,9 +20,9 @@
             'dev_requirement' => false,
         ),
         'code-atlantic/wp-autoloader' => array(
-            'pretty_version' => '1.0.0',
-            'version' => '1.0.0.0',
-            'reference' => '7fbc81bfe4e9a520da32afbb9b96eb342f878cc5',
+            'pretty_version' => '1.1.0',
+            'version' => '1.1.0.0',
+            'reference' => 'fc53e1e327bb02c4cff04b5a719326d582056eff',
             'type' => 'library',
             'install_path' => __DIR__ . '/../code-atlantic/wp-autoloader',
             'aliases' => array(),
@@ -38,8 +38,8 @@
             'dev_requirement' => false,
         ),
         'popupmaker/popup-maker' => array(
-            'pretty_version' => '1.20.5',
-            'version' => '1.20.5.0',
+            'pretty_version' => '1.20.6',
+            'version' => '1.20.6.0',
             'reference' => null,
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',

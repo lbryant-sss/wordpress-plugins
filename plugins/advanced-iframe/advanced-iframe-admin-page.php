@@ -145,7 +145,8 @@ if (is_user_logged_in() && is_admin()) {
       'referrerpolicy', 'add_surrounding_p',
       'custom', 'fullscreen_button_hide_elements',
       'fullscreen_button_full', 'fullscreen_button_style',
-      'enable_ai_content_pages', 'show_support_message' 
+      'enable_ai_content_pages', 'show_support_message',
+      'replace_iframe_tags'     	  
     );
     if (!wp_verify_nonce($_POST['twg-options'], 'twg-options')) {
       die('Sorry, your nonce did not verify.');

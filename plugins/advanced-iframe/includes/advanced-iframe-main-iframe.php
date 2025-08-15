@@ -388,8 +388,10 @@ if (!empty ($marginheight)) {
 }
 if ($frameborder != '') {
   $html .= ' frameborder="' . esc_html(trim($frameborder)) . '" ';
+  $style =" border-width: " . $this->addPx($frameborder) . ';';  
   if ($frameborder === "0") {
     $html .= ' border="0" ';
+	$style =" border: none;";  
   }
 }
 if (!empty ($transparency)) {

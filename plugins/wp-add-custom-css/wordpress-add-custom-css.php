@@ -3,7 +3,7 @@
 Plugin Name: WP Add Custom CSS
 Plugin URI: http://www.danieledesantis.net
 Description: Add custom css to the whole website and to specific posts, pages and custom post types.
-Version: 1.2.0
+Version: 1.2.1
 Author: Daniele De Santis
 Author URI: http://www.danieledesantis.net
 Text Domain: wp-add-custom-css
@@ -49,8 +49,8 @@ if(!class_exists('Wpacc'))
 			add_action('init', array($this, 'init'));
 			add_filter('query_vars', array($this, 'add_wp_var'));
 			add_action( 'wp_enqueue_scripts', array($this, 'add_custom_css'), 9999 );
-			add_action('wp_head', array($this, 'main_custom_css'), 98 );
-			add_action('wp_head', array($this, 'single_custom_css'), 99 );
+			add_action('wp_head', array($this, 'main_custom_css'), 9998 );
+			add_action('wp_head', array($this, 'single_custom_css'), 9999 );
 		}
 
 		public function init() {
@@ -303,8 +303,13 @@ if(!class_exists('Wpacc'))
 		public function update_main_custom_style($old_value, $value, $option) {
 			// echo 'updated option ' . var_dump($value);
 			if(is_array($value) && !empty($value['main_custom_style'])) {
-				// echo $value['main_custom_style'];
-				file_put_contents(plugin_dir_path( __FILE__ ) . '/css/custom-css.css', $value['main_custom_style']);
+				$upload_dir = wp_upload_dir();
+				$custom_css_dir = trailingslashit($upload_dir['basedir']) . 'wp-add-custom-css';
+				if (!file_exists($custom_css_dir)) {
+					wp_mkdir_p($custom_css_dir);
+				}
+				$custom_css_path = trailingslashit($custom_css_dir) . 'custom-css.css';
+				file_put_contents($custom_css_path, $value['main_custom_style']);
 			}
 			// exit();
 		}
@@ -331,7 +336,8 @@ if(!class_exists('Wpacc'))
 				return;
 			}
 			if ( isset($this->options['main_custom_style_output_method']) && $this->options['main_custom_style_output_method'] === 'css_file' ) {
-				$css_base_url = plugin_dir_url( __FILE__ ) . 'css/custom-css.css';
+				$upload_dir = wp_upload_dir();
+				$css_base_url = trailingslashit($upload_dir['baseurl']) . 'wp-add-custom-css/custom-css.css';
 			} else {
 				if ( function_exists('icl_object_id') ) {
 					$css_base_url = site_url();
@@ -380,7 +386,6 @@ if(!class_exists('Wpacc'))
 				}
 			}
 		}
-
 
     }
 }

@@ -4,7 +4,7 @@ Donate link: http://davidlingren.com/#donate
 Tags: categories, images, media, media library, tags
 Requires at least: 4.7
 Tested up to: 6.8.2
-Stable tag: 3.27
+Stable tag: 3.28
 Requires PHP: 5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -389,8 +389,8 @@ All of the MLA source code has been annotated with "DocBlocks", a special type o
 
 == Upgrade Notice ==
 
-= 3.27 =
-IMPORTANT: Security fixes. Shortcode enhancements for term list checklists and custom field date queries, AVIF metadata support. Three enhancements and five fixes in all.
+= 3.28 =
+IMPORTANT: Security mitigation and [mla_term_list] critical error fix. WPML Media/Assistant fix. Five fixes in all.
 
 == Acknowledgements ==
 

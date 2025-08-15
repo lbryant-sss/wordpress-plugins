@@ -15,9 +15,11 @@ defined('_VALID_AI') or die('Direct Access to this location is not allowed.');
  
   if (!$evanto) { 
   echo '<p><span class="ai-red">';
+  echo '<strong>'; 
   _e('Please note: ', 'advanced-iframe');
+  echo '</strong>'; 
+  _e('The free version of Advanced iFrame uses a hidden iframe to communicate between the iframe and the parent. The recommended method nowadays is to use postMessage, which is used in the Pro version. It is unclear how long major browsers will support this solution. If you want to use the auto-height feature on a professional website, it is recommended that you upgrade to the Pro version, which uses postMessage. The hidden iframe solution will not be maintained anymore and will be removed in one of the next versions!', 'advanced-iframe');
   echo '</span>';
-  _e('The free version of Advanced iFrame uses a hidden iframe to communicate between the iframe and the parent. The recommended method nowadays is to use postMessage, which is used in the Pro version. It is unclear how long major browsers will support this solution. If you want to use the auto-height feature on a professional website, it is recommended that you upgrade to the Pro version, which uses postMessage.', 'advanced-iframe');
   echo '</p>';
   }
   

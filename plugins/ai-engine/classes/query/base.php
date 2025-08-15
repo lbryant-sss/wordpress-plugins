@@ -364,7 +364,12 @@ class Meow_MWAI_Query_Base implements JsonSerializable {
     if ( !empty( $params['instructions'] ) ) {
       $this->set_instructions( $params['instructions'] );
     }
-    if ( !empty( $params['message'] ) ) {
+    // Do not allow external params to clobber an already-set message
+    // The message is typically set via constructor (e.g., Chatbot newMessage).
+    // Some UIs may accidentally send a top-level 'message' param (e.g., from
+    // unrelated settings like verbosity defaults), which would override the
+    // real user input here. Only set it if it's not already set.
+    if ( !empty( $params['message'] ) && $this->message === '' ) {
       $this->set_message( $params['message'] );
     }
     if ( !empty( $params['messages'] ) ) {

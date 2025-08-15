@@ -2,7 +2,7 @@
 /*
 Plugin Name: Advanced iFrame
 Plugin URI: https://wordpress.org/plugins/advanced-iframe/
-Version: 2025.6
+Version: 2025.7
 Text Domain: advanced-iframe
 Domain Path: /languages
 Author: Michael Dempfle
@@ -33,7 +33,7 @@ if (!defined('_VALID_AI')) {
 // ini_set('display_startup_errors', 1);
 // error_reporting(E_ALL);
 
-$aiVersion = '2025.6';
+$aiVersion = '2025.7';
 // check $aiJsSize
 
 $cons_advancediFrame = null;
@@ -1235,11 +1235,11 @@ if (function_exists('ai_fs')) {
           $devOptions = get_option($this->adminOptionsName);
           $purchaseCode = (isset($devOptions['purchase_code']) && strlen($devOptions['purchase_code']) === 36) ? $devOptions['purchase_code'] : 'NOT_SET';
           $pro = $ai_fs->can_use_premium_code__premium_only() ? "1" : "2";
-          $default_key = "put your unique phrase here";
+		  $default_key = "put your unique phrase here";
           $auth_key = defined('AUTH_KEY') ? ((AUTH_KEY == $default_key) ? get_site_url() : substr(AUTH_KEY, -2)) : get_site_url();
           $urls = 'https://www.advanced-iframe.com/updatecheck/getAipVersion.php';
           $rand = substr(md5(microtime()), rand(0, 26), 2);
-          $data = http_build_query(array('url' => get_site_url(), 'codehash' => $rand . base64_encode($purchaseCode), 'sitehash' => hash('sha256', $auth_key), 'type' => $pro, 'version' => $aiVersion, 'isFreemius' => $isFreemius ? 'true' : 'false'), '', '&');
+          $data = http_build_query(array('url' => get_site_url(), 'codehash' => $rand . base64_encode($purchaseCode), 'sitehash' => hash('sha256', $auth_key), 'type' => $pro, 'version' => $aiVersion, 'isFreemius' => $isFreemius ? 'true' : 'false', 'isRegistered' => $ai_fs->is_registered() ? "true": "false"), '', '&');
           // use key 'http' even if you send the request to https://...
           $options = array(
             'ssl' => array(
@@ -1504,13 +1504,13 @@ if (function_exists('ai_fs')) {
             // check if the user has the capability unfiltered_html and is therefore allowed to use the custom and onload shortcode attribute.
             if (!current_user_can('unfiltered_html')) {
               while ($content != $filteredContent) {
-			    $filteredContent = $content;
-			    $content = $this->filterAttribute('onload', $hit, $content);
-			    $content = $this->filterAttribute('custom', $hit, $content);
-			    $content = $this->filterAttribute('include_html', $hit, $content);
-			    $content = $this->filterAttribute('additional_js', $hit, $content);
-			    $content = $this->filterAttribute('additional_js_file_iframe', $hit, $content);
-			  }
+                $filteredContent = $content;
+                $content = $this->filterAttribute('onload', $hit, $content);
+                $content = $this->filterAttribute('custom', $hit, $content);
+                $content = $this->filterAttribute('include_html', $hit, $content);
+                $content = $this->filterAttribute('additional_js', $hit, $content);
+                $content = $this->filterAttribute('additional_js_file_iframe', $hit, $content);
+              }
               $attsArray = shortcode_parse_atts($hit);
               $content = $this->filterXSSAttributes($attsArray, $content);
             }
@@ -1837,7 +1837,15 @@ if (function_exists('ai_fs')) {
     } else {
       $new_attributes = $attributes;
     }
-
+	
+    // we remove in the gutenberg block all attributes for the right unfiltered_html because of security reasons. If a user needs this, short code block can be used.   
+    $invalidAttributes = array("onload", "custom", "include_html", "additional_js_file_iframe");
+    foreach ($new_attributes as $key => $value) {
+      if (in_array($key, $invalidAttributes)) {
+        unset($new_attributes[$key]);
+      } 	  
+    }
+	 
     $new_attributes['add_surrounding_p'] = (isset($attributes['add_surrounding_p_boolean'])) ? 'true' : 'false';
 
     unset($new_attributes['additional']);
