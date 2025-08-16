@@ -97,6 +97,11 @@ Absolutely! Both free and premium plugin can be managed with composer. Read the 
 We value your feedback. You can [submit a support request on the WordPress forums](https://wordpress.org/support/plugin/burst-statistics/), and we will respond promptly.
 
 == Change log ==
+= 2.2.3 =
+* Improvement: allow ipv6 addresses
+* Improvement: prevent false positives on ajax fallback notice
+* Improvement: rest optimizer improvements
+
 = 2.2.2 =
 * New: Extensive range of filter options to easily track what campaigns are delivering your conversions!
 * Improvement: Added CORS support to tracking endpoint to allow cross-origin requests via fetch/sendBeacon. props Alex

@@ -199,6 +199,9 @@ All of the MLA source code has been annotated with "DocBlocks", a special type o
 
 == Changelog ==
 
+= 3.29 =
+* Fix: For the "Featured image" Media Manager Modal (popup) Window, a PHP warning when filtering the content with a custom field view/query has been eliminated.
+
 = 3.28 =
 * Fix: **IMPORTANT: For the `[mla_term_list]` shortcode, a defect that caused the famous "There Has Been a Critical Error on This Website" error has been corrected.**
 * Fix: IMPORTANT: An arbitrary file deletion security risk in the Media/Assistant submenu table has been mitigated.
