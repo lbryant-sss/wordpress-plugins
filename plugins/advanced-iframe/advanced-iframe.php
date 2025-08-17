@@ -2,7 +2,7 @@
 /*
 Plugin Name: Advanced iFrame
 Plugin URI: https://wordpress.org/plugins/advanced-iframe/
-Version: 2025.7
+Version: 2025.8
 Text Domain: advanced-iframe
 Domain Path: /languages
 Author: Michael Dempfle
@@ -33,7 +33,7 @@ if (!defined('_VALID_AI')) {
 // ini_set('display_startup_errors', 1);
 // error_reporting(E_ALL);
 
-$aiVersion = '2025.7';
+$aiVersion = '2025.8';
 // check $aiJsSize
 
 $cons_advancediFrame = null;

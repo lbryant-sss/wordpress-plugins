@@ -21,7 +21,7 @@ You can create unlimited courses, quizzes, interactive lessons, generate reports
 
 👉 [Tutor LMS Themes](https://tutorlms.com/themes/)
 
-👉 [Live Demo](https://demo.themeum.com/tutor/)
+👉 [Live Demo](https://pathwise.tutorlms.io/)
 
 👉 [Documentation](https://docs.themeum.com/tutor-lms/)
 

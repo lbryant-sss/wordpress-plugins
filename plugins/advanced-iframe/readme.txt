@@ -3,7 +3,7 @@ Contributors: mdempfle
 Tags: iframe, embed, resize, shortcode, modify css
 Requires at least: 3.3
 Tested up to: 6.8.2
-Stable tag: 2025.7
+Stable tag: 2025.8
 Requires PHP: 5.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0
@@ -166,6 +166,9 @@ Use the Wordpress installer to update or simply overwrite all files from your pr
 If you have some radio elements empty after the update simply select the one you like and save again.
 
 == Changelog ==
+= 2025.8
+- Fix: 2025.7 was overwriting the style attribute instead appending the border. This broke a couple of features which now work fine again. 
+
 = 2025.7 =
 - Security fix: https://www.cve.org/CVERecord?id=CVE-2025-8089 was fixed. Unfortunately the Gutenberg block has to be restricted as only the time of the rendering the attributes can be filtered in a secure way. So if you use the Gutenberg block you cannot use onload, custom, include_html, additional_js and additional_js_file_iframe anymore. You can use the shortcode block or anything were you can enter shortcodes directly. 
 - New: iframe border is now applied also in css

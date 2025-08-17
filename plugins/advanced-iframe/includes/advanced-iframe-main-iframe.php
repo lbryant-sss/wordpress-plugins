@@ -388,11 +388,12 @@ if (!empty ($marginheight)) {
 }
 if ($frameborder != '') {
   $html .= ' frameborder="' . esc_html(trim($frameborder)) . '" ';
-  $style .= ";border-width: " . $this->addPx($frameborder) . ';';  
   if ($frameborder === "0") {
     $html .= ' border="0" ';
-	$style .= ";border: none;";  
+	$style = ";border: none;" . $style;  
   }
+  $style = ";border-width: " . $this->addPx($frameborder) . ';' . $style;  
+  
 }
 if (!empty ($transparency)) {
   $html .= ' allowtransparency="' . esc_html(trim($transparency)) . '" ';
