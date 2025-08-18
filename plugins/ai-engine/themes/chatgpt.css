@@ -353,20 +353,29 @@
 .mwai-chatgpt-theme .mwai-reply .mwai-text a {
   color: #2196f3;
 }
-.mwai-chatgpt-theme .mwai-reply .mwai-text h1, .mwai-chatgpt-theme .mwai-reply .mwai-text h2, .mwai-chatgpt-theme .mwai-reply .mwai-text h3, .mwai-chatgpt-theme .mwai-reply .mwai-text h4 {
+.mwai-chatgpt-theme .mwai-reply .mwai-text h1, .mwai-chatgpt-theme .mwai-reply .mwai-text h2, .mwai-chatgpt-theme .mwai-reply .mwai-text h3, .mwai-chatgpt-theme .mwai-reply .mwai-text h4, .mwai-chatgpt-theme .mwai-reply .mwai-text h5, .mwai-chatgpt-theme .mwai-reply .mwai-text h6 {
   color: var(--mwai-fontColor);
+  margin: 0px;
+  line-height: 1.2;
 }
 .mwai-chatgpt-theme .mwai-reply .mwai-text h1 {
-  font-size: 200%;
+  font-size: 150%;
 }
 .mwai-chatgpt-theme .mwai-reply .mwai-text h2 {
-  font-size: 160%;
+  font-size: 130%;
 }
 .mwai-chatgpt-theme .mwai-reply .mwai-text h3 {
-  font-size: 140%;
+  font-size: 115%;
 }
 .mwai-chatgpt-theme .mwai-reply .mwai-text h4 {
-  font-size: 120%;
+  font-size: 105%;
+}
+.mwai-chatgpt-theme .mwai-reply .mwai-text h5 {
+  font-size: 100%;
+}
+.mwai-chatgpt-theme .mwai-reply .mwai-text h6 {
+  font-size: 95%;
+  font-weight: bold;
 }
 .mwai-chatgpt-theme .mwai-reply .mwai-text p code {
   background: var(--mwai-backgroundSecondaryColor);

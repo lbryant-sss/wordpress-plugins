@@ -354,17 +354,28 @@
 .mwai-messages-theme .mwai-text a {
   color: #2196f3;
 }
+.mwai-messages-theme .mwai-text h1, .mwai-messages-theme .mwai-text h2, .mwai-messages-theme .mwai-text h3, .mwai-messages-theme .mwai-text h4, .mwai-messages-theme .mwai-text h5, .mwai-messages-theme .mwai-text h6 {
+  margin: 0px;
+  line-height: 1.2;
+}
 .mwai-messages-theme .mwai-text h1 {
-  font-size: 200%;
+  font-size: 150%;
 }
 .mwai-messages-theme .mwai-text h2 {
-  font-size: 160%;
+  font-size: 130%;
 }
 .mwai-messages-theme .mwai-text h3 {
-  font-size: 140%;
+  font-size: 115%;
 }
 .mwai-messages-theme .mwai-text h4 {
-  font-size: 120%;
+  font-size: 105%;
+}
+.mwai-messages-theme .mwai-text h5 {
+  font-size: 100%;
+}
+.mwai-messages-theme .mwai-text h6 {
+  font-size: 95%;
+  font-weight: bold;
 }
 .mwai-messages-theme .mwai-text p {
   font-size: var(--mwai-fontSize);

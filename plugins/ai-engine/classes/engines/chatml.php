@@ -1170,6 +1170,19 @@ class Meow_MWAI_Engines_ChatML extends Meow_MWAI_Engines_Core {
         if ( empty( $data ) ) {
           throw new Exception( 'No content received (res is null).' );
         }
+        
+        // Comprehensive logging for non-streaming mode - capture FULL response
+        $queries_debug = $this->core->get_option( 'queries_debug_mode' );
+        if ( $queries_debug ) {
+          error_log( '[AI Engine Queries] ========================================' );
+          error_log( '[AI Engine Queries] FULL RESPONSE STRUCTURE (Non-streaming ChatML):' );
+          error_log( json_encode( $data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES ) );
+          error_log( '[AI Engine Queries] ========================================' );
+          
+          // Look specifically for container_id
+          $this->search_for_container_id_recursive( $data, '' );
+        }
+        
         if ( !$data['model'] ) {
           $service = $this->get_service_name();
           Meow_MWAI_Logging::error( "$service: Invalid response (no model information)." );
@@ -1719,6 +1732,7 @@ class Meow_MWAI_Engines_ChatML extends Meow_MWAI_Engines_Core {
       $hasQuery = strpos( $url, '?' ) !== false;
       $url = $url . ( $hasQuery ? '&' : '?' ) . $this->azureApiVersion;
     }
+    
 
     // If it's a GET, body should be null, and we should append the query to the URL.
     if ( $method === 'GET' ) {
@@ -1768,8 +1782,37 @@ class Meow_MWAI_Engines_ChatML extends Meow_MWAI_Engines_Core {
       if ( is_wp_error( $res ) ) {
         throw new Exception( $res->get_error_message() );
       }
+      
+      
       $res = wp_remote_retrieve_body( $res );
-      $data = $json ? json_decode( $res, true ) : $res;
+      
+      
+      // Handle empty responses for container LIST API only (not for file content downloads)
+      if ( strpos( $url, '/containers/' ) !== false && 
+           strpos( $url, '/files' ) !== false && 
+           strpos( $url, '/content' ) === false &&  // Don't apply this to content downloads
+           empty( $res ) ) {
+        // Return empty array for empty container files LIST response
+        $data = $json ? [] : '';
+        error_log( '[AI Engine] Container LIST API returned empty response, treating as empty array' );
+      } else {
+        $data = $json ? json_decode( $res, true ) : $res;
+      }
+      
+      // Debug logging for decoded data (skip for content downloads)
+      if ( strpos( $url, '/containers/' ) !== false && strpos( $url, '/files' ) !== false && strpos( $url, '/content' ) === false ) {
+        error_log( '[AI Engine] After json_decode:' );
+        error_log( '[AI Engine] - Data type: ' . gettype( $data ) );
+        error_log( '[AI Engine] - Data is null: ' . ( $data === null ? 'YES' : 'NO' ) );
+        if ( $data !== null && is_array( $data ) ) {
+          error_log( '[AI Engine] - Data keys: ' . implode( ', ', array_keys( $data ) ) );
+          error_log( '[AI Engine] - Data count: ' . count( $data ) );
+        }
+        if ( $json && $data === null && !empty( $res ) ) {
+          error_log( '[AI Engine] - JSON decode error: ' . json_last_error_msg() );
+        }
+      }
+      
       $this->handle_response_errors( $data );
 
       // Log the response if queries debug is enabled
@@ -1822,6 +1865,27 @@ class Meow_MWAI_Engines_ChatML extends Meow_MWAI_Engines_Core {
 
   public static function get_models_static() {
     return MWAI_OPENAI_MODELS;
+  }
+
+  /**
+   * Recursively search for container_id in the response data
+   */
+  protected function search_for_container_id_recursive( $data, $path = '' ) {
+    if ( is_array( $data ) || is_object( $data ) ) {
+      foreach ( $data as $key => $value ) {
+        $currentPath = $path ? $path . '.' . $key : $key;
+        
+        // Check if this key is container_id
+        if ( $key === 'container_id' ) {
+          error_log( '[AI Engine Queries] *** FOUND container_id at path: ' . $currentPath . ' = ' . $value . ' ***' );
+        }
+        
+        // Recursively search in nested structures
+        if ( is_array( $value ) || is_object( $value ) ) {
+          $this->search_for_container_id_recursive( $value, $currentPath );
+        }
+      }
+    }
   }
 
   private function calculate_price( $modelFamily, $inUnits, $outUnits, $resolution = null, $finetune = false ) {

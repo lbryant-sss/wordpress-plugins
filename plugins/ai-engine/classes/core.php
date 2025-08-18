@@ -986,7 +986,7 @@ class Meow_MWAI_Core {
           if ( is_array( $value ) ) {
             foreach ( $value as $tool ) {
               $sanitized_tool = sanitize_text_field( $tool );
-              if ( in_array( $sanitized_tool, ['web_search', 'image_generation', 'thinking'] ) ) {
+              if ( in_array( $sanitized_tool, ['web_search', 'image_generation', 'thinking', 'code_interpreter'] ) ) {
                 $tools[] = $sanitized_tool;
               }
             }

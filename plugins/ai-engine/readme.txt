@@ -5,7 +5,7 @@ Donate link: https://www.patreon.com/meowapps
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 3.0.0
+Stable tag: 3.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -154,6 +154,12 @@ Check that your API key has permissions for image generation, and that the model
 Check the [docs](https://ai.thehiddendocs.com/), [support forum](https://wordpress.org/support/plugin/ai-engine/), or join us on [Discord](https://discord.com/invite/bHDGh38).
 
 == Changelog ==
+
+= 3.0.1 (2025/08/17) =
+* Add: Support for Code Interpreter tool in OpenAI chatbots.
+* Update: Enhancements to the themes.
+* Fix: Fixed Magic CSS Generator.
+* Fix: Resolved missing parameter in Qdrant.
 
 = 3.0.0 (2025/08/13) =
 * Add: Brand new Terminal mode with SF Mono font, zoom animations, improved cursor behavior, fullscreen support, and more.
