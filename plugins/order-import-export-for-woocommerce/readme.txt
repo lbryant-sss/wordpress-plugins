@@ -4,7 +4,7 @@ Tags: woocommerce export orders, woocommerce import orders, advanced order expor
 Requires at least: 3.0
 Tested up to: 6.8.2
 Requires PHP: 5.6
-Stable tag: 2.6.3
+Stable tag: 2.6.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -30,8 +30,8 @@ The following are functionalities offered by the basic version of the WooCommerc
  &#128312; **Bulk Updates:** Bulk update WooCommerce orders and coupons.
  &#128312; **YITH Compatibility:** Compatible with YITH WooCommerce Order Tracking plugin.
  &#128312; **Export Filters:** Supports various export orders filters (order status, product, coupon, customer, date range) for order export to CSV.
- &#9989; Tested OK with WooCommerce 9.8.5
- &#9989; Tested OK with WordPress 6.8
+ &#9989; Tested OK with WooCommerce 10.1.0
+ &#9989; Tested OK with WordPress 6.8.2
  &#9989; Tested OK with PHP 8.3
 
 = Advanced Features for Seamless CSV Export and Import =
@@ -125,9 +125,9 @@ Highlights: Simply Export Orders, Customer Order CSV Export, Export Orders to Ex
 
 **Pre-requisites**
 
- &#128312; PHP Version:
- &#128312; WooCommerce version:
- &#128312; WordPress version:
+ &#128312; PHP Version: 5.6 or later
+ &#128312; WooCommerce version: 3.0 or later
+ &#128312; WordPress version: 3.0 or later
 
 **Automatic Installation**
 
@@ -206,6 +206,12 @@ Yes.
 14. Exported coupon CSV
 
 == Changelog ==
+= 2.6.4 2025-08-18 =
+* [Compatibility] - Tested OK with WordPress 6.8.2
+* [Compatibility] - Tested OK with WooCommerce 10.1.0
+* [Improvement] - Enhancements to the import mapping screen.
+* [Fix] - Resolved issue with importing shipping tax during order import.
+
 = 2.6.3 2025-07-16 =
 * [Compatibility] - Tested OK with WordPress 6.8.2
 * [Compatibility] - Tested OK with WooCommerce 10.0.2
@@ -625,7 +631,10 @@ Yes.
 
 == Upgrade Notice ==
 
-= 2.6.3 = 
-* [Compatibility] - Tested OK with WooCommerce 10.0.2
+= 2.6.4 = 
 * [Compatibility] - Tested OK with WordPress 6.8.2
+* [Compatibility] - Tested OK with WooCommerce 10.1.0
+* [Improvement] - Enhancements to the import mapping screen.
+* [Fix] - Resolved issue with importing shipping tax during order import.
+
 

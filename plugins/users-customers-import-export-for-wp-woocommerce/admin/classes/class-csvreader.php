@@ -257,7 +257,7 @@ class Wt_Import_Export_For_Woo_Basic_Csvreader
 	protected function format_data_from_csv($data, $enc) 
 	{
 		//return sanitize_text_field(( $enc == 'UTF-8' ) ? trim($data) : utf8_encode(trim($data)));  sanitize_text_field stripping html content
-	    return (( $enc == 'UTF-8' ) ? trim($data) : utf8_encode(trim($data)));
+	    return wt_iew_utf8ize_basic( trim( $data ) );
 	}
 }
 }

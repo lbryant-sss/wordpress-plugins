@@ -101,7 +101,21 @@ if (!class_exists('WF_OrderImpExp_Uninstall_Feedback')) :
                         <div class="wt-uninstall-feedback-privacy-policy">
                             <?php _e('We do not collect any personal data when you submit this form. It\'s your feedback that we value.', 'order-import-export-for-woocommerce'); ?>
                             <a href="https://www.webtoffee.com/privacy-policy/" target="_blank"><?php _e('Privacy Policy', 'order-import-export-for-woocommerce'); ?></a>
-                        </div>                          
+                        </div>
+
+                        <br>
+                        <label>
+                        <input type="checkbox" id="wt_wforderimpexp_contact_me_checkbox" name="wt_wforderimpexp_contact_me_checkbox" value="1">
+                        <?php _e("Webtoffee can contact me about this feedback.", "print-invoices-packing-slip-labels-for-woocommerce"); ?>
+                        </label>
+                        <div id="wt_wforderimpexp_email_field_wrap" style="display:none; margin-top:10px;">
+                            <label for="wt_wforderimpexp_contact_email" style="font-weight:bold;"><?php _e("Enter your email address.", "print-invoices-packing-slip-labels-for-woocommerce"); ?></label>
+                            <br>
+                            <input type="email" id="wt_wforderimpexp_contact_email" name="wt_wforderimpexp_contact_email" class="input-text" style="width:75%; height: 40px; padding:2px; margin-top:10px; border-radius:5px; border:2px solid #2874ba;" placeholder="<?php esc_attr_e("Enter email address", "print-invoices-packing-slip-labels-for-woocommerce"); ?>">
+                            <div id="wt_wforderimpexp_email_error" style="color:red; display:none; font-size:12px; margin-top:5px;"></div>
+                        </div>
+                        <br><br>
+
                     </div>
                     <div class="wforderimpexp-modal-footer">
                         <a href="#" class="dont-bother-me"><?php _e('I rather wouldn\'t say', 'order-import-export-for-woocommerce'); ?></a>
@@ -226,6 +240,15 @@ if (!class_exists('WF_OrderImpExp_Uninstall_Feedback')) :
                                 }
                             });
 
+                            $('#wt_wforderimpexp_contact_me_checkbox').on('change', function() {
+                                if ($(this).is(':checked')) {
+                                    $('#wt_wforderimpexp_email_field_wrap').slideDown();
+                                } else {
+                                    $('#wt_wforderimpexp_email_field_wrap').slideUp();
+                                    $('#wt_wforderimpexp_contact_email').val('');
+                                }
+                            });
+
                         modal.on('click', 'button.wforderimpexp-model-submit', function (e) {
                             e.preventDefault();
                             var button = $(this);
@@ -234,7 +257,22 @@ if (!class_exists('WF_OrderImpExp_Uninstall_Feedback')) :
                             }
                             var $radio = $('input[type="radio"]:checked', modal);
                             var $selected_reason = $radio.parents('li:first'),
-                                    $input = $selected_reason.find('textarea, input[type="text"]');
+                                $input = $selected_reason.find('textarea, input[type="text"]');
+                                    
+                             // Email validation
+                            var emailCheckbox = $('#wt_wforderimpexp_contact_me_checkbox');
+                            var emailField = $('#wt_wforderimpexp_contact_email');
+                            var emailError = $('#wt_wforderimpexp_email_error');
+                            emailError.hide();
+                            if (emailCheckbox.is(':checked')) {
+                                var emailVal = emailField.val();
+                                var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                                if (!emailVal || !emailPattern.test(emailVal)) {
+                                    emailError.text('<?php echo esc_js(__('Please enter a valid email address.', 'print-invoices-packing-slip-labels-for-woocommerce')); ?>').show();
+                                    emailField.focus();
+                                    return;
+                                }
+                            }
 
                             $.ajax({
                                 url: ajaxurl,
@@ -242,7 +280,8 @@ if (!class_exists('WF_OrderImpExp_Uninstall_Feedback')) :
                                 data: {
                                     action: 'wforderimpexp_submit_uninstall_reason',
                                     reason_id: (0 === $radio.length) ? 'none' : $radio.val(),
-                                    reason_info: (0 !== $input.length) ? $input.val().trim() : ''
+                                    reason_info: (0 !== $input.length) ? $input.val().trim() : '',
+                                    user_email: $('#wt_wforderimpexp_contact_me_checkbox').is(':checked') ? $('#wt_wforderimpexp_contact_email').val() : ''
                                 },
                                 beforeSend: function () {
                                     button.addClass('disabled');
@@ -273,7 +312,7 @@ if (!class_exists('WF_OrderImpExp_Uninstall_Feedback')) :
                 'auth' => $this->auth_key,
                 'date' => gmdate("M d, Y h:i:s A"),
                 'url' => '',
-                'user_email' => '',
+                'user_email' => isset($_POST['user_email']) ? sanitize_email($_POST['user_email']) : '',
                 'reason_info' => isset($_REQUEST['reason_info']) ? trim(stripslashes($_REQUEST['reason_info'])) : '',
                 'software' => $_SERVER['SERVER_SOFTWARE'],
                 'php_version' => phpversion(),

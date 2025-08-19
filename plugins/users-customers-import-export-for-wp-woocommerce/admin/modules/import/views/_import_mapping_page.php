@@ -252,6 +252,11 @@ if (!defined('ABSPATH')) {
 		foreach($this->mapping_enabled_fields as $mapping_enabled_field_key=>$mapping_enabled_field)
 		{
 			$mapping_enabled_field=(!is_array($mapping_enabled_field) ? array($mapping_enabled_field, 0) : $mapping_enabled_field);
+
+			// Skip hidden_meta section entirely for import
+			if ($mapping_enabled_field_key === 'hidden_meta') {
+				continue;
+			}
 			
 			if(count($form_data_mapping_enabled_fields)>0)
 			{

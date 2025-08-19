@@ -85,18 +85,21 @@ class User_import_export_Review_Request
 
             $wt_iew_review_banner_shown = true; // Set the global flag
 
-            $this->banner_message = sprintf(__("Hey, we at %sWebToffee%s would like to thank you for using our plugin. We would really appreciate if you could take a moment to drop a quick review that will inspire us to keep going."), '<b>', '</b>');
+            add_action('init', function() {
 
-            $this->new_review_banner_title = sprintf(__('%1$s  %2$s  Loving %3$s  WebToffee Import Export plugin? %4$s  Share Your Feedback! %5$s', 'product-import-export-for-woo'), '🌟', '<span style="font-weight:300;">', '</span>', '<span style="font-weight:300;">', '</span>');
+                $this->banner_message = sprintf(__("Hey, we at %sWebToffee%s would like to thank you for using our plugin. We would really appreciate if you could take a moment to drop a quick review that will inspire us to keep going."), '<b>', '</b>');
 
-            /* button texts */
-            $this->later_btn_text   = __("Remind me later", 'users-customers-import-export-for-wp-woocommerce');
-            $this->never_btn_text   = __("Not interested", 'users-customers-import-export-for-wp-woocommerce');
-            $this->review_btn_text  = __("Review now", 'users-customers-import-export-for-wp-woocommerce');
-            $this->review_btn_new_text = __("You deserve it", 'users-customers-import-export-for-wp-woocommerce');
-            $this->later_btn_new_text = __("Nope, maybe later", 'users-customers-import-export-for-wp-woocommerce');
-            $this->already_did_btn_new_text = __("I already did", 'users-customers-import-export-for-wp-woocommerce');
+                $this->new_review_banner_title = sprintf(__('%1$s  %2$s  Loving %3$s  WebToffee Import Export plugin? %4$s  Share Your Feedback! %5$s', 'product-import-export-for-woo'), '🌟', '<span style="font-weight:300;">', '</span>', '<span style="font-weight:300;">', '</span>');
 
+                /* button texts */
+                $this->later_btn_text   = __("Remind me later", 'users-customers-import-export-for-wp-woocommerce');
+                $this->never_btn_text   = __("Not interested", 'users-customers-import-export-for-wp-woocommerce');
+                $this->review_btn_text  = __("Review now", 'users-customers-import-export-for-wp-woocommerce');
+                $this->review_btn_new_text = __("You deserve it", 'users-customers-import-export-for-wp-woocommerce');
+                $this->later_btn_new_text = __("Nope, maybe later", 'users-customers-import-export-for-wp-woocommerce');
+                $this->already_did_btn_new_text = __("I already did", 'users-customers-import-export-for-wp-woocommerce');
+            });
+            
             add_action('admin_notices', array($this, 'show_banner')); /* show banner */
             add_action('admin_print_footer_scripts', array($this, 'add_banner_scripts')); /* add banner scripts */
             add_action('wp_ajax_' . $this->ajax_action_name, array($this, 'process_user_action')); /* process banner user action */

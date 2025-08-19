@@ -417,7 +417,7 @@ if(!function_exists('is_woocommerce_prior_to_basic')){
         $woocommerce_is_pre_version = (!defined('WC_VERSION') || version_compare(WC_VERSION, $version, '<')) ? true : false;
         return $woocommerce_is_pre_version;
 
-        if (WC()->version < $version) {
+        if ( version_compare( WC()->version, $version, '<' ) ) {
             return TRUE;
         } else {
             return FALSE;

@@ -1,7 +1,8 @@
 <?php
 
 /** @var array|WP_Error $compatible_plugins */
-$compatible_plugins = Akismet_Compatible_Plugins::get_installed_compatible_plugins();
+$bypass_cache = ! empty( $_GET['akismet_refresh_compatible_plugins'] );
+$compatible_plugins = Akismet_Compatible_Plugins::get_installed_compatible_plugins( $bypass_cache );
 if ( is_array( $compatible_plugins ) ) :
 
 	$compatible_plugin_count = count( $compatible_plugins );

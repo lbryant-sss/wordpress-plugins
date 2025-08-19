@@ -79,11 +79,7 @@ class Wt_Import_Export_For_Woo_Basic_User_Bulk_Export {
 	}
 
 	public static function format_data($data) {
-		//if (!is_array($data));
-		//$data = (string) urldecode($data);
-		$enc = mb_detect_encoding($data, 'UTF-8, ISO-8859-1', true);
-		$data = ( $enc == 'UTF-8' ) ? $data : utf8_encode($data);
-		return $data;
+		return wt_iew_utf8ize_basic( $data );
 	}
 
 	/**

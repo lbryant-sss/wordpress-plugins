@@ -3,9 +3,9 @@
 /** Kubio - automatically generated file **/
 
 return array(
-	'core/widgets/archives/support.json',
 	'core/post-content/support.json',
 	'core/widgets/calendar/support.json',
+	'core/widgets/archives/support.json',
 	'core/widgets/categories/support.json',
 	'core/widgets/latest-comments/support.json',
 	'core/widgets/latest-posts/support.json',

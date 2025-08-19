@@ -112,7 +112,7 @@ function mailchimp_environment_variables() {
     return (object) array(
         'repo' => 'master',
         'environment' => 'production', // staging or production
-        'version' => '5.5',
+        'version' => '5.5.1',
         'php_version' => phpversion(),
         'wp_version' => (empty($wp_version) ? 'Unknown' : $wp_version),
         'wc_version' => function_exists('WC') ? WC()->version : null,
@@ -331,6 +331,13 @@ function mailchimp_carts_disabled() {
  */
 function mailchimp_carts_subscribers_only() {
     return mailchimp_get_option('mailchimp_cart_tracking', 'all') === 'subscribed';
+}
+
+/**
+ * @return bool
+ */
+function mailchimp_landing_tracking_enabled() {
+    return (bool) mailchimp_get_option('mailchimp-woocommerce-enable-landing-tracking', false);
 }
 
 /**

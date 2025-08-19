@@ -84,15 +84,31 @@ if (!defined('ABSPATH')) {
 					$mapping_enabled_field[1]=0;
 				}
 			}
+			$data_loaded = 0;
+			$banner_html = '';
+
+			if ( 'hidden_meta' === $mapping_enabled_field_key && ! empty( $mapping_enabled_field['banner_html'] ) ) {
+				$data_loaded = 1;
+				$banner_html = $mapping_enabled_field['banner_html'];
+			}
 			?>
 			<div class="meta_mapping_box">
 				<div class="meta_mapping_box_hd wt_iew_noselect">
 					<span class="dashicons dashicons-arrow-right"></span>
 					<?php echo $mapping_enabled_field[0];?>
+					<?php if( 'Hidden meta' == trim( $mapping_enabled_field[0] ) ): ?>
+					<span class="premium-badge" style="padding:2px 4px;width: 77px;height: 20px;top: 180px;left: 380px;border-radius: 10px;border: 0.5px solid #F2E971;background-color:#FFF29B;font-family: Inter;font-weight: 500;font-size: 11px;line-height: 100%;letter-spacing: 0%;text-align: center;"> <?php _e('Premium 💎', 'order-import-export-for-woocommerce'); ?> </span>
+					<?php endif; ?>
 					<span class="meta_mapping_box_selected_count_box"><span class="meta_mapping_box_selected_count_box_num">0</span> <?php _e(' columns(s) selected'); ?></span>
 				</div>
 				<div style="clear:both;"></div>
-				<div class="meta_mapping_box_con" data-sortable="0" data-loaded="0" data-field-validated="0" data-key="<?php echo $mapping_enabled_field_key;?>"></div>
+				<div class="meta_mapping_box_con" data-sortable="0" data-loaded="<?php echo esc_attr($data_loaded); ?>" data-field-validated="0" data-key="<?php echo $mapping_enabled_field_key;?>">
+					<?php 
+					if ( ! empty( $banner_html ) ) {
+						echo wp_kses_post($banner_html);
+					}
+					?>
+				</div>
 			</div>
 			<div style="clear:both;"></div>
 			<?php

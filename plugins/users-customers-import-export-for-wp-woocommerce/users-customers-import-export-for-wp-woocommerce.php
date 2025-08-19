@@ -5,10 +5,10 @@
   Description: Export and Import User/Customers details From and To your WordPress/WooCommerce.
   Author: WebToffee
   Author URI: https://www.webtoffee.com/product/wordpress-users-woocommerce-customers-import-export/
-  Version: 2.6.4
+  Version: 2.6.5
   Text Domain: users-customers-import-export-for-wp-woocommerce
   Domain Path: /languages
-  WC tested up to: 9.8.5
+  WC tested up to: 10.1.0
   Requires at least: 3.0
   Requires PHP: 5.6
   License: GPLv3
@@ -43,12 +43,18 @@ if (!defined('WT_IEW_DEBUG_BASIC')) {
 if (!defined('WT_IEW_DEBUG_BASIC_TROUBLESHOOT')) {
     define('WT_IEW_DEBUG_BASIC_TROUBLESHOOT', 'https://www.webtoffee.com/finding-php-error-logs/');
 }
+
+if ( ! defined( 'WBTE_UIEW_CROSS_PROMO_BANNER_VERSION' ) ) {
+    // This constant must be unique for each plugin. Update this value when updating to a new banner.
+    define ( 'WBTE_UIEW_CROSS_PROMO_BANNER_VERSION', '1.0.0' );
+}
+
 /**
  * Currently plugin version.
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define('WT_U_IEW_VERSION', '2.6.4');
+define('WT_U_IEW_VERSION', '2.6.5');
 
 /**
  * The code that runs during plugin activation.

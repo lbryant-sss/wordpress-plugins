@@ -179,6 +179,14 @@ function ub_multi_buttons_parse($b){
 
 	$link_style .= Ultimate_Blocks\includes\generate_css_string($link_border_radius_styles);
 
+	// Add shadow styles if they exist
+	if (isset($shadow) && !empty($shadow)) {
+		$shadow_styles = [
+			'box-shadow' => Ultimate_Blocks\includes\get_box_shadow_css($shadow)
+		];
+		$link_style .= Ultimate_Blocks\includes\generate_css_string($shadow_styles);
+	}
+
 	return sprintf(
 		'<div class="ub-button-container%1$s">
 			<a href="%2$s" target="%3$s" rel="%4$s" class="%5$s" role="button" style="%9$s">

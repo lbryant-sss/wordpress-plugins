@@ -83,7 +83,7 @@ if (!class_exists('Wt_Import_Export_For_Woo_Basic')) {
 			if (defined('WT_O_IEW_VERSION')) {
 				$this->version = WT_O_IEW_VERSION;
 			} else {
-				$this->version = '2.6.3';
+				$this->version = '2.6.4';
 			}
 			$this->plugin_name = 'wt-import-export-for-woo-basic';
 
@@ -161,7 +161,21 @@ if (!class_exists('Wt_Import_Export_For_Woo_Basic')) {
 			 */
 			require_once plugin_dir_path(dirname(__FILE__)) . 'admin/banner/class-wtier-bfcm-twenty-twenty-four.php';
 
-						/**
+			
+			/**
+			 * Includes cross promotion banner main class file.
+			 */
+			require_once plugin_dir_path(dirname(__FILE__)) . 'admin/cross-promotion-banners/class-wbte-cross-promotion-banners.php';
+
+
+			/**
+			 * Class includes helper functions for product import export cta banner in default page.
+			 */
+			if ( ! get_option( 'wt_p_iew_product_cta_banner_default_page_dismissed' ) ) {
+				require_once plugin_dir_path(dirname(__FILE__)) . 'admin/banner/class-wt-p-iew-cta-banner-default-page.php';
+			}
+
+			/**
 			 * Includes request a feature class file
 			 */
 			require_once plugin_dir_path(dirname(__FILE__)) . 'admin/modules/request_feature/request_feature.php';

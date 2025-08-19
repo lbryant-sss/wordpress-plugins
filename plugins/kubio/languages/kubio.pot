@@ -2,14 +2,14 @@
 # This file is distributed under the GPL3+.
 msgid ""
 msgstr ""
-"Project-Id-Version: Kubio 2.6.3\n"
+"Project-Id-Version: Kubio 2.6.4\n"
 "Report-Msgid-Bugs-To: support@kubiobuilder.com\n"
 "Last-Translator: Kubio <support@kubiobuilder.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-07-10T11:44:49+03:00\n"
+"POT-Creation-Date: 2025-08-16T16:44:03+03:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: kubio\n"
@@ -9382,16 +9382,20 @@ msgstr ""
 msgid "Open a WhatsApp Chat"
 msgstr ""
 
-#. Translators: %s is the plugin name.
-#: build/controls/index.js:21
-msgid "Open a Contact / Quotation Form"
+#: build/controls/index.js:19
+msgid "Open a Marketing Campaign"
 msgstr ""
 
 #. Translators: %s is the plugin name.
+#: build/controls/index.js:21
 #: build/controls/index.js:23
 #: build/controls/index.js:25
 #, js-format
 msgid "Installs %s plugin"
+msgstr ""
+
+#: build/controls/index.js:21
+msgid "Open a Contact / Quotation Form"
 msgstr ""
 
 #: build/controls/index.js:23

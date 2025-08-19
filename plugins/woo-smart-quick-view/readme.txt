@@ -3,8 +3,8 @@ Contributors: wpclever
 Donate link: https://wpclever.net
 Tags: woocommerce, wpc, quickview, quick-view
 Tested up to: 6.8
-Version: 4.2.1
-Stable tag: 4.2.1
+Version: 4.2.2
+Stable tag: 4.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -86,6 +86,9 @@ Example:
 });`
 
 == Changelog ==
+
+= 4.2.2 =
+* Fixed: Security issue on the shortcode
 
 = 4.2.1 =
 * Fixed: Optimized the code

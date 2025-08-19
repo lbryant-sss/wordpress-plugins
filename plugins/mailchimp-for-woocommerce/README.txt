@@ -4,7 +4,7 @@ Tags: ecommerce,email,workflows,mailchimp
 Donate link: https://mailchimp.com
 Requires at least: 6.2
 Tested up to: 6.8
-Stable tag: 5.5
+Stable tag: 5.5.1
 Requires PHP: 7.4
 WC requires at least: 8.2
 WC tested up to: 10.0
@@ -78,9 +78,6 @@ At this time, the synchronization of product categories from WooCommerce to Mail
 If you are unable to sync or connect with Mailchimp, you can open a ticket on our [Github plugin page](https://github.com/mailchimp/mc-woocommerce/issues). Please provide the version of the plugin and PHP you're using, any fatal errors in the WooCommerce logs (WooCommerce -> Status -> Logs) you're seeing, along with relevant information to the problem you're experiencing.
 
 == Changelog ==
-= 5.5 =
-* WooCommerce block dependency updates
-* Logging enhancements
-* Better compatibility when external object cache is detected
-* Refactor Connected Sites API connection
-* Adds support for Product visibility logic for syncing
+= 5.5.1 =
+* Guest checkout sync logic fix
+* Site Performance update -  Disabled mailchimp_landing_site cookie by default.

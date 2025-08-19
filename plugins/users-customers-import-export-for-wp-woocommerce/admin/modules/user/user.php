@@ -11,6 +11,8 @@ if (!defined('ABSPATH')) {
 }
 
 if(!class_exists('Wt_Import_Export_For_Woo_basic_User')){
+    
+#[AllowDynamicProperties]
 class Wt_Import_Export_For_Woo_basic_User {
 
     public $module_id = '';
@@ -278,12 +280,68 @@ class Wt_Import_Export_For_Woo_basic_User {
     }
 
     public function exporter_alter_mapping_enabled_fields($mapping_enabled_fields, $base, $form_data_mapping_enabled_fields) {        
-        if ($base != $this->module_base) {
-            return $mapping_enabled_fields;
-        }
+        if ($base == $this->module_base) {
             $mapping_enabled_fields = array();
-        
+            $mapping_enabled_fields['hidden_meta'] = array(__('Hidden meta'), 0);
+
+            if ( ! function_exists( 'is_plugin_active' ) ) {
+                include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+            }
+
+            // Check if premium plugin is active.
+            if ( ! is_plugin_active( 'wt-import-export-for-woo-user/wt-import-export-for-woo-user.php' ) ) {
+                if ( $this->has_hidden_meta_keys() ) {
+                    $mapping_enabled_fields['hidden_meta']['banner_html'] = $this->get_upgrade_banner_html();
+                }
+            }
+        }
         return $mapping_enabled_fields;
+    }
+
+    /**
+     * Get upgrade banner HTML for premium features
+     */
+    public function get_upgrade_banner_html() {
+        $icon_url = plugins_url('admin/wt-ds/icons/icons/right-arrow-3.svg', __FILE__);
+
+        return '<div id="user-type-notice" style="margin-top: 10px; display: block; width: 840px; height: auto; top: 210px; left: 117px;">
+    <div class="notice notice-warning" style="width: 93%; max-width: 810px; margin-left: 0px;margin-top: 20px;display: inline-flex; padding: 16px 18px 16px 26px; justify-content: flex-end; align-items: center; border-radius: 8px; border: 1px solid #F5F9FF; background-color: #F5F9FF; box-sizing: border-box;">
+        <div style="display: flex; flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-start; width: 100%;">
+            <!-- Title -->
+            <div style="padding-bottom: 10px; align-self: stretch; color: #2A3646; font-size: 14px; font-family: Inter; font-weight: 600; line-height: 16px; word-wrap: break-word;">
+                ' . __('Upgrade to premium 💎', 'order-import-export-for-woocommerce') . '
+            </div>
+
+            <!-- Description -->
+            <div style="width:780;height: 19;angle: 0 deg;opacity: 1;top: 48px;left: 27px;padding-bottom: 10px;">
+                <span style="color: #2A3646; font-size: 13px; font-family: Inter; font-weight: 400; ">
+                        ' . __('We\'ve detected hidden WooCommerce metadata & custom user fields in your store. Unlock full access to export them seamlessly.', 'order-import-export-for-woocommerce') . '
+                    </span>
+                </div>
+
+            <!-- Button -->
+                <a href="https://www.webtoffee.com/product/wordpress-users-woocommerce-customers-import-export/?utm_source=free_plugin&utm_medium=export_hidden_meta_tab&utm_campaign=User_Import_Export" target="_blank" style="
+                    width: auto;
+                    height: 18px;
+                font-family:  Inter;
+                    font-weight: 600;
+                    font-size: 12px;
+                    line-height: 100%;
+                    color: #2B28E9;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 4px;
+                    gap: 5px;
+                    text-decoration: none;
+                margin-top: 0px;
+                ">
+                    ' . __('Upgrade now', 'order-import-export-for-woocommerce') . ' <span style="font-size: 14px;">→</span>
+                </a>
+            </div>
+        </div>
+    </div>
+';
     }
 
     public function exporter_alter_meta_mapping_fields($fields, $base, $step_page_form_data) {
@@ -371,7 +429,31 @@ class Wt_Import_Export_For_Woo_basic_User {
         return apply_filters('wt_alter_user_meta_data', $wpdb->get_col("SELECT distinct(meta_key) FROM $wpdb->usermeta WHERE meta_key NOT IN ('".$wpdb->prefix."capabilities')"));
     }
     
-    
+   
+    /**
+     * Check if any hidden meta keys exist (for existence check only)
+     */
+    public function has_hidden_meta_keys() {
+        if (isset($this->has_hidden_meta_keys)) {
+            return $this->has_hidden_meta_keys;
+        }
+
+        global $wpdb;
+        $csv_columns = self::get_user_post_columns();
+        
+        // Use a more efficient query to check for existence of hidden meta keys
+        $query = $wpdb->prepare(
+            "SELECT 1 FROM $wpdb->usermeta 
+             WHERE meta_key LIKE %s 
+             AND meta_key NOT IN ('" . $wpdb->prefix . "capabilities')
+             AND meta_key NOT IN (" . implode(',', array_fill(0, count($csv_columns), '%s')) . ")
+             LIMIT 1",
+            array_merge(['_%'], array_keys($csv_columns))
+        );
+
+        $this->has_hidden_meta_keys = $wpdb->get_var($query) !== null;
+        return $this->has_hidden_meta_keys;
+    }
     
     public function wt_get_found_hidden_meta() {
 

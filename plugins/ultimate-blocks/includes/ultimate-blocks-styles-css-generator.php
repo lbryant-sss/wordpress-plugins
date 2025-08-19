@@ -79,6 +79,33 @@ function generate_css_string( $styles ) {
 }
 
 /**
+ * Get CSS value for box shadow
+ *
+ * @param array $shadow - Shadow object.
+ * @return string CSS value for box-shadow.
+ */
+function get_box_shadow_css( $shadow ) {
+	if ( empty( $shadow ) || !is_array( $shadow ) ) {
+		return '';
+	}
+
+	// If shadow has a 'shadow' property and preset is not custom, use it directly
+	if ( isset( $shadow['shadow'] ) && isset( $shadow['preset'] ) && $shadow['preset'] !== 'custom' ) {
+		return $shadow['shadow'];
+	}
+
+	// Build from individual properties (for custom or when shadow property is not set)
+	$color = isset( $shadow['color'] ) ? $shadow['color'] : 'rgba(0, 0, 0, 0.2)';
+	$horizontal = isset( $shadow['horizontal'] ) ? $shadow['horizontal'] . 'px' : '0px';
+	$vertical = isset( $shadow['vertical'] ) ? $shadow['vertical'] . 'px' : '0px';
+	$blur = isset( $shadow['blur'] ) ? $shadow['blur'] . 'px' : '0px';
+	$spread = isset( $shadow['spread'] ) ? $shadow['spread'] . 'px' : '0px';
+	$position = isset( $shadow['position'] ) && $shadow['position'] === 'inset' ? 'inset ' : '';
+
+	return $position . $horizontal . ' ' . $vertical . ' ' . $blur . ' ' . $spread . ' ' . $color;
+}
+
+/**
  * Get the CSS value for a single side of the border.
  *
  * @param array  $border - border.

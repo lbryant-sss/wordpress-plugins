@@ -44,6 +44,7 @@ class ProPluginAdvertMetabox implements Hookable, HookableCollection {
 						__( 'Conditional Logic', 'flexible-shipping' ),
 						__( 'Hide the shipping methods', 'flexible-shipping' ),
 						__( 'Premium 1-on-1 Support', 'flexible-shipping' ),
+						__( 'AI Assistant for shipping configuration', 'flexible-shipping' ),
 					],
 					get_locale() === 'pl_PL' ? 'https://octol.io/fs-box-upgrade-pl' : 'https://octol.io/fs-box-upgrade',
 					__( 'Upgrade Now', 'flexible-shipping' ),

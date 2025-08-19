@@ -1163,39 +1163,69 @@ class Wt_Import_Export_For_Woo_Basic_Order_Import {
         return $payment_method_obj;                
     }
     
-    public function wt_parse_shipping_items_field($value) {
-        $shipping_items = array();
-        if('' !== $value){
-            $shipping_line_items = explode('|', $value);
-            $items = array_shift($shipping_line_items);
-            $items = json_decode(substr($items, strpos($items, ":") + 1));
-            $method_id = array_shift($shipping_line_items);
-            $method_id = json_decode(substr($method_id, strpos($method_id, ":") + 1));
-            $taxes = array_shift($shipping_line_items);
-            $tax_data = json_decode(substr($taxes, strpos($taxes, ":") + 1));
-             
-            $new_tax_data = array();
-            if(isset($tax_data->total)){
-                foreach($tax_data->total as $t_key => $t_value){
-                    if(isset($this->item_data['tax_items'][$t_key])){
-                        $new_tax_data ['total'][$this->item_data['tax_items'][$t_key]['rate_id']] = $t_value ;
-                    }else{
-                        $new_tax_data ['total'][$t_key] = $t_value;
-                    }
+    public function wt_parse_shipping_items_field($value) {    
+        $shipping_items = [
+            'Items'     => null,
+            'method_id' => null,
+            'taxes'     => null,
+        ];
+    
+        if ( '' !== $value ) {
+            $parts = explode('|', $value);
+    
+            foreach ( $parts as $part ) {
+                // Split only on the first ":" to preserve any colons in the value
+                $kv = explode(':', $part, 2);
+                $key = isset($kv[0]) ? trim($kv[0]) : '';
+                $raw = isset($kv[1]) ? $kv[1] : '';
+    
+                switch ($key) {
+                    case 'items':
+                        // Plain string, no json_decode
+                        $shipping_items['Items'] = $raw;
+                        break;
+    
+                    case 'method_id':
+                        $shipping_items['method_id'] = $raw;
+                        break;
+    
+                    case 'taxes':
+                        // This is PHP-serialized data (e.g., a:1:{s:5:"total";...})
+                        $tax_data = Wt_Import_Export_For_Woo_Basic_Common_Helper::wt_unserialize_safe($raw);
+    
+                        // Fallback: sometimes exporters may send JSON; try decoding to array
+                        if ( false === $tax_data || null === $tax_data) {
+                            $as_json = json_decode($raw, true);
+                            if ( JSON_ERROR_NONE === json_last_error() ) {
+                                $tax_data = $as_json;
+                            }
+                        }
+    
+                        if ( is_array( $tax_data ) ) {
+                            $new_tax_data = ['total' => []];
+    
+                            if ( isset( $tax_data['total'] ) && is_array( $tax_data['total'] ) ) {
+                                foreach ( $tax_data['total'] as $t_key => $t_value ) {
+                                    // If we have a tax_items index->rate_id mapping, remap keys
+                                    if ( isset( $this->item_data['tax_items'] ) && isset( $this->item_data['tax_items'][$t_key]['rate_id'] ) ) {
+                                        $rate_id = $this->item_data['tax_items'][$t_key]['rate_id'];
+                                        $new_tax_data['total'][$rate_id] = $t_value;
+                                    } else {
+                                        $new_tax_data['total'][$t_key] = $t_value;
+                                    }
+                                }
+                            }
+    
+                            $shipping_items['taxes'] = $new_tax_data;
+                        } else {
+                            $shipping_items['taxes'] = $tax_data; // null/false as-is, for visibility
+                        }
+                        break;
                 }
-            }else{
-                $new_tax_data =  $tax_data;
             }
-            
-            $shipping_items = array(
-                'Items' => $items,
-                'method_id' => $method_id,
-                'taxes' => $new_tax_data
-            );
         }
-        
+    
         return $shipping_items;
-        
     }
         
     public function wt_parse_fee_items_field($value) {
@@ -1975,7 +2005,7 @@ class Wt_Import_Export_For_Woo_Basic_Order_Import {
                     );
                     $var_id = 0;
                     if ($product) {
-                        if (WC()->version < '2.7.0') {
+                        if ( version_compare( WC()->version, '2.7.0', '<' ) ) {
                             $var_id = ($product->product_type === 'variation') ? $product->variation_id : 0;
                         } else {
                             $var_id = $product->is_type('variation') ? $product->get_id() : 0;
@@ -2018,32 +2048,100 @@ class Wt_Import_Export_For_Woo_Basic_Order_Import {
             }
 
             $shipping_tax = isset($data['shipping_tax_total'])?$data['shipping_tax_total']:0;
-            // create the shipping order items
-            if (!empty($data['order_shipping'])) {
-                foreach ($data['order_shipping'] as $order_shipping) {                    
-                    if(empty($order_shipping)) 
+
+            /**
+             * 2.6.4 - create the shipping order items using WooCommerce object methods
+             */
+            if ( ! empty( $data['order_shipping'] ) && is_array( $data['order_shipping'] ) ) {
+                foreach ( $data['order_shipping'] as $order_shipping ) {                    
+                    if ( empty( $order_shipping ) ) 
                         continue; // special case need to rewrite this concept.  empty array returning from wt_parse_order_shipping_field
                     
-                    $shipping_order_item = array(
-                        'order_item_name' => ($order_shipping['title']) ? $order_shipping['title'] : $data['shipping_method'],
-                        'order_item_type' => 'shipping',
-                    );
-                    $shipping_order_item_id = wc_add_order_item($order_id, $shipping_order_item);
-                    if ($shipping_order_item_id) {
-                        wc_add_order_item_meta($shipping_order_item_id, 'cost', $order_shipping['cost']);
-                        wc_add_order_item_meta($shipping_order_item_id, 'total_tax', $shipping_tax);
+                    // Create shipping item using WooCommerce object
+                    if ( ! class_exists( 'WC_Order_Item_Shipping' ) ) {
+                        Wt_Import_Export_For_Woo_Basic_Logwriter::write_log($this->parent_module->module_base, 'import', "Error: WC_Order_Item_Shipping class not found. WooCommerce may not be active.");
+                        continue;
                     }
+
+                    $shipping_item = new WC_Order_Item_Shipping();
+                    $shipping_title = ($order_shipping['title']) ? $order_shipping['title'] : (isset($data['shipping_method']) ? $data['shipping_method'] : '');
+
+                    if ( ! empty( $shipping_title ) && method_exists( $shipping_item, 'set_method_title' ) ) {
+                        $shipping_item->set_method_title( $shipping_title );
+                    }
+
+                    // Set method ID from parsed shipping items data if available
+                    if ( ! empty( $this->item_data['shipping_items']['method_id'] ) && method_exists( $shipping_item, 'set_method_id' ) ) {
+                        $shipping_item->set_method_id( $this->item_data['shipping_items']['method_id'] );
+                    }
+
+                    if ( ! empty( $order_shipping['cost'] ) && method_exists( $shipping_item, 'set_total' ) ) {
+                        $shipping_item->set_total( $order_shipping['cost'] );
+                    }
+                 
+                    // Set shipping tax - use existing order tax rate ID for compatibility
+                    if ( ! empty( $shipping_tax ) && method_exists( $shipping_item, 'set_taxes' ) ) {
+                        // Use parsed shipping items data if available
+                        if ( ! empty( $this->item_data['shipping_items']['taxes'] ) ) {
+                            $tax_data = $this->item_data['shipping_items']['taxes'];
+                        } else {
+                            // Fallback: Find the appropriate tax rate ID from import data
+                            $tax_rate_id = 0; // Default fallback
+
+                            if ( ! empty( $data['tax_items'] ) ) {
+                                if ( 1 === count( $data['tax_items'] ) ) {
+                                    // Single tax item - use it directly
+                                    $single_tax_item = reset( $data['tax_items'] );
+                                    $tax_rate_id = isset( $single_tax_item['rate_id'] ) ? $single_tax_item['rate_id'] : 0;
+                                } else {
+                                    // Multiple tax items - find the highest rate
+                                    $highest_rate = 0;
+                                    $highest_rate_id = 0;
+                                    
+                                    foreach ( $data['tax_items'] as $tax_item ) {
+                                        $rate_percent = isset( $tax_item['rate_percent'] ) ? floatval( $tax_item['rate_percent'] ) : 0;
+                                        if ( $rate_percent > $highest_rate ) {
+                                            $highest_rate = $rate_percent;
+                                            $highest_rate_id = isset( $tax_item['rate_id'] ) ? $tax_item['rate_id'] : 0;
+                                        }
+                                    }
+                                    $tax_rate_id = $highest_rate_id;
+                                }
+                            }
+                            $tax_data = array( 'total' => array( $tax_rate_id => $shipping_tax ) );
+                        }
+                        $shipping_item->set_taxes( $tax_data );
+                    }
+                    
+                    // Add "Items" meta data to show product names and quantities in shipping section
+                    if ( ! empty( $this->item_data['shipping_items']['Items'] ) ) {
+                        // Use parsed shipping items data
+                        if ( method_exists( $shipping_item, 'add_meta_data' ) ) {
+                            $shipping_item->add_meta_data('Items', $this->item_data['shipping_items']['Items']);
+                        }
+                    } elseif ( ! empty($data['order_items'] ) ) {
+                        // Fallback to order items
+                        $items_array = array();
+                        foreach ( $data['order_items'] as $item ) {
+                            if ( ! empty( $item['product_name'] ) && ! empty( $item['qty'] ) ) {
+                                $items_array[] = $item['product_name'] . ' &times; ' . $item['qty'];
+                            }
+                        }
+                        if ( ! empty( $items_array ) && method_exists( $shipping_item, 'add_meta_data' ) ) {
+                            $shipping_item->add_meta_data('Items', implode(', ', $items_array));
+                        }
+                    }
+                    
+                    // Add to order
+                    $order->add_item($shipping_item);
+                    $shipping_order_item_id = $shipping_item->get_id();
                 }
             }
 
-            if (!empty($data['shipping_items'])) {
+            // Add additional shipping item metadata
+            if (!empty($data['shipping_items']) && isset($shipping_order_item_id) && $shipping_order_item_id) {
                 foreach ($data['shipping_items'] as $key => $value) {
-                    if (isset($shipping_order_item_id) && $shipping_order_item_id) {
-                        wc_add_order_item_meta($shipping_order_item_id, $key, $value);
-                    } else {
-                        $shipping_order_item_id = wc_add_order_item($order_id, $shipping_order_item);
-                        wc_add_order_item_meta($shipping_order_item_id, $key, $value);
-                    }
+                    wc_add_order_item_meta($shipping_order_item_id, $key, $value);
                 }
             }
 
@@ -2567,6 +2665,7 @@ class Wt_Import_Export_For_Woo_Basic_Order_Import {
             add_action( 'woocommerce_order_status_completed_notification', array( $email_class->emails['WC_Email_Customer_Completed_Order'], 'trigger' ) );
         
     }
+
 }
 }
 

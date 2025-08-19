@@ -156,6 +156,11 @@ class Ultimate_Blocks_Util {
 				'name'   => 'ub/counter',
 				'active' => true,
 			),
+			array(
+				'label'  => 'Image',
+				'name'   => 'ub/image',
+				'active' => true,
+			),
 		);
 	}
 	/**

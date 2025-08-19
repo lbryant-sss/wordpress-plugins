@@ -392,8 +392,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 			return '.'.$vl;
 		}, $file_extensions);
        
-		if(WC()->version < '6.7.0')
-		{
+		if ( version_compare( WC()->version, '6.7.0', '<' ) ) {
             $review_url = admin_url('edit-comments.php');
         } else {
             $review_url= admin_url('edit.php?post_type=product&page=product-reviews');
@@ -426,6 +425,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 				'drop_upload'=>__('Drop files here or click to upload'),
 				'upload_done'=>sprintf(__('%s Done.'), '<span class="dashicons dashicons-yes-alt" style="color:#3fa847;"></span>'),
 				'remove'=>__('Remove'),
+				'no_columns_mapped'=>__('No columns have been mapped. Please map the required fields to proceed with the import.'),
 			),
 			'addons' => array(
 				'product' => array(

@@ -35,7 +35,7 @@ $columns['dismissed_wp_pointers'] = array('title'=>'dismissed_wp_pointers','desc
 $columns['show_welcome_panel'] = array('title'=>'show_welcome_panel','description'=>'');
 $columns['session_tokens'] = array('title'=>'session_tokens','description'=>'');
 $columns['last_update'] = array('title'=>'last_update','description'=>'');
-$columns['is_geuest_user'] = array('title'=>'is_geuest_user','description'=>'');
+$columns['is_guest_user'] = array('title'=>'is_guest_user','description'=>'');
 
 
 if( is_plugin_active( 'woocommerce/woocommerce.php' ) ):

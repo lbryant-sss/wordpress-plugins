@@ -16,7 +16,7 @@ echo $ds_obj->get_component('help-widget', array(
 	'values' => array(
 		'items' => array(
 			array('title' => esc_html__('FAQ', 'users-customers-import-export-for-wp-woocommerce'), 'icon' => 'chat-1', 'href' => 'https://wordpress.org/plugins/users-customers-import-export-for-wp-woocommerce/#:~:text=import%20export%20log-,FAQ,-Does%20this%20plugin', 'target' => '_blank'),
-			array('title' => esc_html__('Setup guide', 'users-customers-import-export-for-wp-woocommerce'), 'icon' => 'book', 'href' => 'https://www.webtoffee.com/category/basic-plugin-documentation/#:~:text=View%20All-,User%20Import/Export,-User%20Import%20Export', 'target' => '_blank'),
+			array('title' => esc_html__('Setup guide', 'users-customers-import-export-for-wp-woocommerce'), 'icon' => 'book', 'href' => 'https://www.webtoffee.com/docs/wp-users-customers-imp-exp-basic/user-import-export-plugin-wordpress-basic-setup-guide/', 'target' => '_blank'),
 			array('title' => esc_html__('Contact support', 'users-customers-import-export-for-wp-woocommerce'), 'icon' => 'headphone', 'href' => 'https://wordpress.org/plugins/users-customers-import-export-for-wp-woocommerce/', 'target' => '_blank'),
 			array('title' => esc_html__('Request a feature', 'users-customers-import-export-for-wp-woocommerce'), 'icon' => 'light-bulb-1'),
 		),

@@ -80,7 +80,7 @@ class Wt_Import_Export_For_Woo_Basic {
 		if ( defined( 'WT_U_IEW_VERSION' ) ) {
 			$this->version = WT_U_IEW_VERSION;
 		} else {
-			$this->version = '2.6.4';
+			$this->version = '2.6.5';
 		}
 		$this->plugin_name = 'wt-import-export-for-woo-basic';
 
@@ -158,6 +158,10 @@ class Wt_Import_Export_For_Woo_Basic {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/banner/class-wtier-bfcm-twenty-twenty-four.php';
 	
+		/**
+		 * Includes cross promotion banner main class file.
+		 */
+		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/cross-promotion-banners/class-wbte-cross-promotion-banners.php';
 		/**
 		 * Includes request a feature class file
 		 */

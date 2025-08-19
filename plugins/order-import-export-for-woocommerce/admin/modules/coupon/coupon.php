@@ -248,9 +248,66 @@ class Wt_Import_Export_For_Woo_Basic_Coupon {
     
     public function exporter_alter_mapping_enabled_fields($mapping_enabled_fields, $base, $form_data_mapping_enabled_fields) {
         if ($base == $this->module_base) {
-            $mapping_enabled_fields = array();             
+            $mapping_enabled_fields = array();
+
+            $mapping_enabled_fields['hidden_meta'] = array(__('Hidden meta'), 0);
+
+            if ( ! function_exists( 'is_plugin_active' ) ) {
+                include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+            }
+
+            // Check if premium plugin is active.
+            if ( ! is_plugin_active( 'wt-import-export-for-woo-order/wt-import-export-for-woo-order.php' ) ) {
+                if ( $this->wt_get_found_hidden_meta() ) {
+                    $mapping_enabled_fields['hidden_meta']['banner_html'] = $this->get_upgrade_banner_html();
+                }
+            }
         }
         return $mapping_enabled_fields;
+    }
+
+    /**
+     * Get upgrade banner HTML for premium features
+     */
+    public function get_upgrade_banner_html() {
+        return '<div id="product-type-notice" style="margin-top: 10px; display: block; width: 850px; height: auto; top: 210px; left: 117px;">
+    <div class="notice notice-warning" style="width: 92.5%; max-width: 810px; margin-left: 0px; display: inline-flex; padding: 16px 18px 16px 26px; justify-content: flex-end; align-items: center; border-radius: 8px; border: 1px solid #F5F9FF; background-color: #F5F9FF; box-sizing: border-box;">
+        <div style="display: flex; flex: 1 1 0; flex-direction: column; justify-content: flex-start; align-items: flex-start; width: 100%;">
+            <!-- Title -->
+            <div style="padding-bottom: 10px; align-self: stretch; color: #2A3646; font-size: 14px; font-family: Inter; font-weight: 600; line-height: 16px; word-wrap: break-word;">
+                ' . __('Upgrade to premium 💎', 'order-import-export-for-woocommerce') . '
+            </div>
+
+            <!-- Description -->
+            <div style="width: 100%; max-width: 679px; padding-bottom: 10px;">
+                <span style="color: #2A3646; font-size: 13px; font-family: Inter; font-weight: 400; ">
+                        ' . __('We\'ve detected hidden WooCommerce metadata & custom coupon fields in your store. Unlock full access to export them seamlessly.', 'order-import-export-for-woocommerce') . '
+                    </span>
+                </div>
+
+            <!-- Button -->
+                <a href="//www.webtoffee.com/product/order-import-export-plugin-for-woocommerce/?utm_source=free_plugin&utm_medium=export_hidden_meta_tab&utm_campaign=Order_Import_Export" target="_blank" style="
+                    width: auto;
+                    height: 18px;
+                font-family:  \'Inter\', sans-serif;
+                    font-weight: 600;
+                    font-size: 12px;
+                    line-height: 100%;
+                    color: #2B28E9;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 4px;
+                    gap: 5px;
+                    text-decoration: none;
+                margin-top: 0px;
+                ">
+                    ' . __('Upgrade now', 'order-import-export-for-woocommerce') . ' <span style="font-size: 14px;">→</span>
+                </a>
+            </div>
+        </div>
+    </div>
+';
     }
 
     
@@ -314,30 +371,18 @@ class Wt_Import_Export_For_Woo_Basic_Coupon {
     }
 
     public function wt_get_found_hidden_meta() {
-
-        if (!empty($this->found_hidden_meta)) {
-            return $this->found_hidden_meta;
-        }
-
-        // Loop products and load meta data
-        $found_hidden_meta = array();
-        // Some of the values may not be usable (e.g. arrays of arrays) but the worse
-        // that can happen is we get an empty column.
-
-        $all_meta_keys = $this->wt_get_all_meta_keys();
-        $csv_columns = self::get_coupon_post_columns();
-        foreach ($all_meta_keys as $meta) {
-
-            if (!$meta || (substr((string) $meta, 0, 1) != '_') || in_array($meta, array_keys($csv_columns)) || in_array('meta:' . $meta, array_keys($csv_columns)))
-                continue;
-
-            $found_hidden_meta[] = $meta;
-        }
-
-        $found_hidden_meta = array_diff($found_hidden_meta, array_keys($csv_columns));
-
-        $this->found_hidden_meta = $found_hidden_meta;
-        return $this->found_hidden_meta;
+        global $wpdb;
+    
+        $query = "
+            SELECT 1
+            FROM {$wpdb->postmeta} pm
+            JOIN {$wpdb->posts} p ON p.ID = pm.post_id
+            WHERE pm.meta_key LIKE '_%'
+            AND p.post_type = 'shop_coupon'
+            LIMIT 1
+        ";
+    
+        return $wpdb->get_var($query) !== null;
     }
 
 

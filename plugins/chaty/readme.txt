@@ -128,7 +128,7 @@ Different chats buttons based on purpose (support, sales, etc)
 19. Contact form leads to email
 20. Google reCAPTCHA
 21. Date scheduling
-22. Contact form integration with Mailchimp & Klaviyo
+22. Contact form integration with email marketing platforms like Mailchimp & Klaviyo
 23. Blur the screen when Chaty chat icons are in open state
 24. Change the page's title to grab attention to the chat buttons
 

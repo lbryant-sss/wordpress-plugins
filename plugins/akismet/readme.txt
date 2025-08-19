@@ -35,6 +35,8 @@ Upload the Akismet plugin to your blog, activate it, and then enter your Akismet
 = 5.5.1 =
 *Release Date - TBD*
 
+* Improve caching of compatible plugins.
+
 = 5.5 =
 *Release Date - 15 July 2025*
 

@@ -355,6 +355,7 @@ class Wt_Import_Export_For_Woo_Basic_Order_Export {
     public function generate_row_data($order_id) {
 
         $csv_columns = $this->prepare_header();
+        $version = WC()->version;
      
         $row = array();
         // Get an instance of the WC_Order object
@@ -364,15 +365,15 @@ class Wt_Import_Export_For_Woo_Basic_Order_Export {
         // get line items
         foreach ($order->get_items() as $item_id => $item) {
             /* WC_Abstract_Legacy_Order::get_product_from_item() deprecated since version 4.4.0*/
-            $product = (WC()->version < '4.4.0') ? $order->get_product_from_item($item) : $item->get_product();  
+            $product = ( version_compare( $version, '4.4.0', '<' ) ) ? $order->get_product_from_item($item) : $item->get_product();  
             if (!is_object($product)) {
                 $product = new WC_Product(0);
             }
             $item_meta = self::get_order_line_item_meta($item_id);
-            $prod_type = (WC()->version < '3.0.0') ? $product->product_type : $product->get_type();
+            $prod_type = ( version_compare( $version, '3.0.0', '<' ) ) ? $product->product_type : $product->get_type();
             $line_item = array(
                 'name' => html_entity_decode(!empty($item['name']) ? $item['name'] : $product->get_title(), ENT_NOQUOTES, 'UTF-8'),
-                'product_id' => (WC()->version < '2.7.0') ? $product->id : (($prod_type == 'variable' || $prod_type == 'variation' || $prod_type == 'subscription_variation') ? $product->get_parent_id() : $product->get_id()),
+                'product_id' => ( version_compare( $version, '2.7.0', '<' ) ) ? $product->id : (($prod_type == 'variable' || $prod_type == 'variation' || $prod_type == 'subscription_variation') ? $product->get_parent_id() : $product->get_id()),
                 'sku' => $product->get_sku(),
                 'quantity' => $item['qty'],
                 'total' => wc_format_decimal($order->get_line_total($item), 2),
@@ -418,7 +419,7 @@ class Wt_Import_Export_For_Woo_Basic_Order_Export {
             }
 
             if ($prod_type === 'variable' || $prod_type === 'variation' || $prod_type === 'subscription_variation') {
-                $line_item['_variation_id'] = (WC()->version > '2.7') ? $product->get_id() : $product->variation_id;
+                $line_item['_variation_id'] = ( version_compare( $version, '2.7', '>' ) ) ? $product->get_id() : $product->variation_id;
             }
             $line_items[] = $line_item;
         }
@@ -445,8 +446,13 @@ class Wt_Import_Export_For_Woo_Basic_Order_Export {
 			// Assign shipping method ID without wrapping in quotes
 			$meta['method_id'] = isset($item['method_id']) ? $item['method_id'] : '';
 
-			// Retrieve taxes from meta and serialize (match original format)
-			$taxes = $item->get_meta('taxes', true);
+            /**
+             * Retrieve taxes from meta and serialize (match original format).
+             * 
+             *  2.6.4 - take tax data using woocommerce default function.
+             */
+			$taxes = $item->get_taxes();
+            
 			if (is_array($taxes) || is_object($taxes)) {
 				// Serialize arrays/objects into PHP serialized format
 				$meta['taxes'] = serialize($taxes);
@@ -501,9 +507,9 @@ class Wt_Import_Export_For_Woo_Basic_Order_Export {
 
 		// Add coupons.
 		foreach ($order->get_items('coupon') as $_ => $coupon_item) {
-			$discount_amount = (WC()->version < '4.4.0') ? $coupon_item['discount_amount'] : $coupon_item->get_discount();
+			$discount_amount = ( version_compare( $version, '4.4.0', '<' ) ) ? $coupon_item['discount_amount'] : $coupon_item->get_discount();
 			$discount_amount = !empty($discount_amount) ? $discount_amount : 0;
-			$coupon_code = (WC()->version < '4.4.0') ? $coupon_item['name'] : $coupon_item->get_code();
+			$coupon_code = ( version_compare( $version, '4.4.0', '<' ) ) ? $coupon_item['name'] : $coupon_item->get_code();
 			$coupon_items[] = implode('|', array(
 				'code:' . $coupon_code,
 				'amount:' . wc_format_decimal($discount_amount, 2),
@@ -512,7 +518,7 @@ class Wt_Import_Export_For_Woo_Basic_Order_Export {
 
         foreach ($order->get_refunds() as $refunded_items) {
 
-            if ((WC()->version < '2.7.0')) {
+            if ( version_compare( $version, '2.7.0', '<' ) ) {
                 $refund_items[] = implode('|', array(
                     'amount:' . $refunded_items->get_refund_amount(),
                     'reason:' . $refunded_items->reason,
@@ -941,7 +947,7 @@ class Wt_Import_Export_For_Woo_Basic_Order_Export {
     public static function get_order_notes($order) {
         $callback = array('WC_Comments', 'exclude_order_comments');
         $args = array(
-            'post_id' => (WC()->version < '2.7.0') ? $order->id : $order->get_id(),
+            'post_id' => ( version_compare( WC()->version, '2.7.0', '<' ) ) ? $order->id : $order->get_id(),
             'approve' => 'approve',
             'type' => 'order_note'
         );

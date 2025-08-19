@@ -1,9 +1,9 @@
-=== Ultimate Blocks - WordPress Blocks Plugin ===
+=== Ultimate Blocks - 25+ Gutenberg Blocks for Block Editor ===
 Contributors: dotcamp, ultimateblocks, imtiazrayhan, istiakrayhan, erdembircan, alexius08
 Tags: blocks, gutenberg blocks, gutenberg, block editor, free
 Requires at least: 5.8
 Tested up to: 6.8
-Stable tag: 3.3.9
+Stable tag: 3.4.0
 Requires PHP: 7.2
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
@@ -124,6 +124,10 @@ Add custom divider between your blocks. Customize the color, size, everything.
 
 [Tableberg](https://wordpress.org/plugins/tableberg/): The Best WordPress Block Table Plugin to create beautiful and responsive tables.
 
+[Sliderberg](https://wordpress.org/plugins/sliderberg/): A block-based WordPress slider plugin that lets you create lightweight, responsive sliders directly in the Gutenberg editor.
+
+[Galleryberg](https://wordpress.org/plugins/galleryberg-gallery-block/): A modern WordPress gallery block plugin designed to showcase images beautifully with full Gutenberg integration.
+
 [GroundWP](https://wordpress.org/themes/groundwp/): Lightweight and Minimal Block Theme for efficient Full-Site Editing.
 
 == Frequently Asked Questions ==
@@ -149,6 +153,14 @@ That's it. You're done!
 3. Tabbed Content Block.
 
 == Changelog ==
+
+= 3.4.0 =
+
+* NEW: Image block.
+* NEW: Box shadow option in button block.
+* FIX: PHP Fatal error Uncaught TypeError fwrite().
+* FIX: countdown timer shows expired on frontend when insert a block.
+* FIX: Custom css is not working in content filter block.
 
 = 3.3.9 =
 

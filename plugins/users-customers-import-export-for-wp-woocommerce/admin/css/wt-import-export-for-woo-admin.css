@@ -209,7 +209,7 @@
 }
 .wt_iew_sort_handle{ width:25px; cursor:move; }
 .wt-iew-mapping-tb tbody tr:hover td{ background:#f6f6f6; }
-.wt-iew-mapping-tb .wt_iew_mapping_checkbox_main{ margin-left:29px; }
+.wt-iew-mapping-tb .wt_iew_mapping_checkbox_main{ margin-left:4px; }
 .wt-iew-mapping-tb .wt_iew_mapping_checkbox_sub{ margin-left:4px; margin-top:2px; }
 .wt_iew_sort_handle{ float:left; }
 .wt_iew_sort_handle img{ margin-top:5px; color:#ccc; height:15px; opacity:.8; }

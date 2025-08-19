@@ -36,7 +36,7 @@ $columns['dismissed_wp_pointers'] = 'dismissed_wp_pointers';
 $columns['show_welcome_panel'] = 'show_welcome_panel';
 $columns['session_tokens'] = 'session_tokens';
 $columns['last_update'] = 'last_update';
-$columns['is_geuest_user'] = 'is_geuest_user';
+$columns['is_guest_user'] = 'is_guest_user';
 
 if (!function_exists( 'is_plugin_active' ) )
      require_once( ABSPATH . '/wp-admin/includes/plugin.php' );

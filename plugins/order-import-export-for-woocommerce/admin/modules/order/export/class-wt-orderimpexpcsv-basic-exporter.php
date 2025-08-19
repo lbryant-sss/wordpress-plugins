@@ -226,6 +226,7 @@ class Wt_Import_Export_For_Woo_Basic_Order_Bulk_Export {
 
     public static function get_orders_csv_row($order_id, $export_columns, $max_line_items, $user_columns_name = array()) {
         $csv_columns = include( __DIR__ . '/../data/data-order-post-columns.php' );
+        $version = WC()->version;
 
         // Get an instance of the WC_Order object
         $order = wc_get_order($order_id);
@@ -233,16 +234,16 @@ class Wt_Import_Export_For_Woo_Basic_Order_Bulk_Export {
 
         // get line items
         foreach ($order->get_items() as $item_id => $item) {
-            $product = (WC()->version < '4.4.0') ? $order->get_product_from_item($item) : $item->get_product(); // $order->get_product_from_item($item) deprecated since version 4.4.0 
+            $product = ( version_compare( $version, '4.4.0', '<' ) ) ? $order->get_product_from_item($item) : $item->get_product(); // $order->get_product_from_item($item) deprecated since version 4.4.0 
             if (!is_object($product)) {
                 $product = new WC_Product(0);
             }
             //$item_meta = function_exists('wc_get_order_item_meta') ? wc_get_order_item_meta($item_id, '', false) : $order->get_item_meta($item_id);
             $item_meta = self::get_order_line_item_meta($item_id);
-            $prod_type = (WC()->version < '3.0.0') ? $product->product_type : $product->get_type();
+            $prod_type = ( version_compare( $version, '3.0.0', '<' ) ) ? $product->product_type : $product->get_type();
             $line_item = array(
                 'name' => html_entity_decode(!empty($item['name']) ? $item['name'] : $product->get_title(), ENT_NOQUOTES, 'UTF-8'),
-                'product_id' => (WC()->version < '2.7.0') ? $product->id : (($prod_type == 'variable' || $prod_type == 'variation' || $prod_type == 'subscription_variation') ? $product->get_parent_id() : $product->get_id()),
+                'product_id' => ( version_compare( $version, '2.7.0', '<' ) ) ? $product->id : (($prod_type == 'variable' || $prod_type == 'variation' || $prod_type == 'subscription_variation') ? $product->get_parent_id() : $product->get_id()),
                 'sku' => $product->get_sku(),
                 'quantity' => $item['qty'],
                 'total' => wc_format_decimal($order->get_line_total($item), 2),
@@ -289,7 +290,7 @@ class Wt_Import_Export_For_Woo_Basic_Order_Bulk_Export {
             }
 
             if ($prod_type === 'variable' || $prod_type === 'variation' || $prod_type === 'subscription_variation') {
-                $line_item['_variation_id'] = (WC()->version > '2.7') ? $product->get_id() : $product->variation_id;
+                $line_item['_variation_id'] = ( version_compare( $version, '2.7', '>' ) ) ? $product->get_id() : $product->variation_id;
             }
             $line_items[] = $line_item;
         }
@@ -371,7 +372,7 @@ class Wt_Import_Export_For_Woo_Basic_Order_Bulk_Export {
         }
 
         // add coupons
-		if ( (WC()->version < '4.4.0' ) ) {
+		if ( ( version_compare( $version, '4.4.0', '<' ) ) ) {
 			foreach ( $order->get_items('coupon') as $_ => $coupon_item ) {
 				$discount_amount = !empty( $coupon_item[ 'discount_amount' ] ) ? $coupon_item[ 'discount_amount' ] : 0;
 				$coupon_items[]	 = implode( '|', array(
@@ -392,7 +393,7 @@ class Wt_Import_Export_For_Woo_Basic_Order_Bulk_Export {
 
         foreach ($order->get_refunds() as $refunded_items) {
 
-            if ((WC()->version < '2.7.0')) {
+            if ( version_compare( $version, '2.7.0', '<' ) ) {
                 $refund_items[] = implode('|', array(
                     'amount:' . $refunded_items->get_refund_amount(),
                     'reason:' . $refunded_items->reason,
@@ -569,7 +570,7 @@ class Wt_Import_Export_For_Woo_Basic_Order_Bulk_Export {
     public static function get_order_notes($order) {
         $callback = array('WC_Comments', 'exclude_order_comments');
         $args = array(
-            'post_id' => (WC()->version < '2.7.0') ? $order->id : $order->get_id(),
+            'post_id' => ( version_compare( WC()->version, '2.7.0', '<' ) ) ? $order->id : $order->get_id(),
             'approve' => 'approve',
             'type' => 'order_note'
         );

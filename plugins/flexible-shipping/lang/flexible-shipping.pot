@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Flexible Shipping plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Flexible Shipping 6.2.4\n"
+"Project-Id-Version: Flexible Shipping 6.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/flexible-shipping\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-08-11T23:11:43+00:00\n"
+"POT-Creation-Date: 2025-08-18T10:00:02+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: flexible-shipping\n"
@@ -545,26 +545,31 @@ msgid "Quantity-based shipping"
 msgstr ""
 
 #: src/WPDesk/FS/AdvertMetabox/ProPluginAdvertMetabox.php:43
-#: src/WPDesk/FS/Info/views/fs-pro.php:17
+#: src/WPDesk/FS/Info/views/fs-pro.php:15
 msgid "Additional Cost"
 msgstr ""
 
 #: src/WPDesk/FS/AdvertMetabox/ProPluginAdvertMetabox.php:44
-#: src/WPDesk/FS/Info/views/fs-pro.php:21
+#: src/WPDesk/FS/Info/views/fs-pro.php:18
 msgid "Conditional Logic"
 msgstr ""
 
 #: src/WPDesk/FS/AdvertMetabox/ProPluginAdvertMetabox.php:45
-#: src/WPDesk/FS/Info/views/fs-pro.php:25
+#: src/WPDesk/FS/Info/views/fs-pro.php:21
 msgid "Hide the shipping methods"
 msgstr ""
 
 #: src/WPDesk/FS/AdvertMetabox/ProPluginAdvertMetabox.php:46
-#: src/WPDesk/FS/Info/views/fs-pro.php:29
+#: src/WPDesk/FS/Info/views/fs-pro.php:24
 msgid "Premium 1-on-1 Support"
 msgstr ""
 
-#: src/WPDesk/FS/AdvertMetabox/ProPluginAdvertMetabox.php:49
+#: src/WPDesk/FS/AdvertMetabox/ProPluginAdvertMetabox.php:47
+#: src/WPDesk/FS/Info/views/fs-pro.php:27
+msgid "AI Assistant for shipping configuration"
+msgstr ""
+
+#: src/WPDesk/FS/AdvertMetabox/ProPluginAdvertMetabox.php:50
 #: src/WPDesk/FS/Info/FSPro.php:40
 msgid "Upgrade Now"
 msgstr ""
@@ -608,7 +613,7 @@ msgstr ""
 msgid "Combine shipping classes in Flexible Shipping"
 msgstr ""
 
-#: src/WPDesk/FS/Info/views/fs-pro.php:13
+#: src/WPDesk/FS/Info/views/fs-pro.php:12
 msgid "Products based shipping"
 msgstr ""
 
@@ -3024,44 +3029,43 @@ msgstr ""
 msgid "Flexible Shipping Free Shipping Notice"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/ai/fs-ai-chat.js:113
+#: assets-src/rules-settings/js/components/ai/fs-ai-chat.js:108
 #: assets/js/rules-settings.js:132
 msgid "Ask me anything about Flexible Shipping rules settings."
 msgstr ""
 
-#: assets-src/rules-settings/js/components/ai/fs-ai-chat.js:116
+#: assets-src/rules-settings/js/components/ai/fs-ai-chat.js:111
 #: assets/js/rules-settings.js:132
 msgid "I can help you with configuration examples, JSON format, and more."
 msgstr ""
 
-#: assets-src/rules-settings/js/components/ai/fs-ai-chat.js:119
+#: assets-src/rules-settings/js/components/ai/fs-ai-chat.js:114
 #: assets/js/rules-settings.js:132
 msgid "You can also select one of initial prompts below"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/ai/fs-ai-chat.js:210
-#: assets-src/rules-settings/js/components/ai/fs-ai-chat.js:219
+#: assets-src/rules-settings/js/components/ai/fs-ai-chat.js:205
+#: assets-src/rules-settings/js/components/ai/fs-ai-chat.js:214
 #: assets/js/rules-settings.js:132
 msgid "Type your message..."
 msgstr ""
 
-#: assets-src/rules-settings/js/components/ai/fs-ai-chat.js:260
+#: assets-src/rules-settings/js/components/ai/fs-ai-chat.js:256
 #: assets/js/rules-settings.js:132
 msgid "AI can make mistakes. Octolize has access to the conversation held in this chat."
 msgstr ""
 
-#: assets-src/rules-settings/js/components/ai/fs-ai-chat.js:289
-#: assets-src/rules-settings/js/components/ai/use-chat.js:109
+#: assets-src/rules-settings/js/components/ai/fs-ai-chat.js:285
 #: assets/js/rules-settings.js:132
 msgid "Flexible Shipping AI assistant"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/ai/fs-ai-chat.js:294
+#: assets-src/rules-settings/js/components/ai/fs-ai-chat.js:290
 #: assets/js/rules-settings.js:132
 msgid "Start new conversation"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/ai/fs-ai-chat.js:306
+#: assets-src/rules-settings/js/components/ai/fs-ai-chat.js:302
 #: assets-src/rules-settings/js/components/preconfigured-scenarios-unavailable-modal.js:65
 #: assets/js/rules-settings.js:132
 msgid "Close"
@@ -3282,23 +3286,23 @@ msgstr ""
 msgid "Save time with AI ✦"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:611
-#: assets-src/rules-settings/js/components/rules-settings.js:618
+#: assets-src/rules-settings/js/components/rules-settings.js:609
+#: assets-src/rules-settings/js/components/rules-settings.js:616
 #: assets/js/rules-settings.js:132
 msgid "PRO Features"
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:613
+#: assets-src/rules-settings/js/components/rules-settings.js:611
 #: assets/js/rules-settings.js:132
 msgid "Tick this checkbox to display the features and shipping cost calculation conditions coming with the plugin's PRO version."
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:623
+#: assets-src/rules-settings/js/components/rules-settings.js:621
 #: assets/js/rules-settings.js:132
 msgid "Show the options available in the PRO version."
 msgstr ""
 
-#: assets-src/rules-settings/js/components/rules-settings.js:627
+#: assets-src/rules-settings/js/components/rules-settings.js:625
 #: assets/js/rules-settings.js:132
 msgid "Learn more about PRO version →"
 msgstr ""
@@ -3321,11 +3325,6 @@ msgstr ""
 #: assets-src/rules-settings/js/components/validate_rules_table_config.js:19
 #: assets/js/rules-settings.js:132
 msgid "Invalid conditions in rule."
-msgstr ""
-
-#: assets-src/rules-settings/js/components/validate_rules_table_config.js:28
-#: assets/js/rules-settings.js:132
-msgid "Additional costs are available only in the Flexible Shipping PRO plugin!"
 msgstr ""
 
 #: assets-src/rules-settings/js/components/validate_rules_table_config.js:32

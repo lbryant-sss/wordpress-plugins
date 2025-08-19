@@ -133,7 +133,7 @@ class Wt_Import_Export_For_Woo_basic_User_Import {
        
         try{
             $data = apply_filters('wt_user_importer_pre_parse_data', $data); 
-            if( $this->skip_guest_user &&  !empty($data['mapping_fields']['is_geuest_user'])){
+            if( $this->skip_guest_user &&  !empty($data['mapping_fields']['is_guest_user'])){
                 $email = '';
                 if(isset($data['mapping_fields']['user_email']) &&!empty($data['mapping_fields']['user_email'])){
                     $email =  'Email : ' . $data['mapping_fields']['user_email'];

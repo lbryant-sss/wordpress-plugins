@@ -90,42 +90,9 @@ function ub_update_css_version( $updated ) {
 }
 
 function ub_load_assets() {
-	if ( file_exists( wp_upload_dir()['basedir'] . '/ultimate-blocks/blocks.style.build.css' ) &&
-		 get_option( 'ultimate_blocks_css_version' ) != Ultimate_Blocks_Constants::plugin_version() ) {
-		$frontStyleFile = fopen( wp_upload_dir()['basedir'] . '/ultimate-blocks/blocks.style.build.css', 'w' );
-		$blockDir       = dirname( __DIR__ ) . '/src/blocks/';
-		$blockList      = get_option( 'ultimate_blocks', false );
-
-		foreach ( $blockList as $key => $block ) {
-			$blockDirName       = strtolower( str_replace( ' ', '-',
-					trim( preg_replace( '/\(.+\)/', '', $blockList[ $key ]['label'] ) )
-			) );
-			$frontStyleLocation = $blockDir . $blockDirName . '/style.css';
-
-			if ( file_exists( $frontStyleLocation ) && $blockList[ $key ]['active'] ) { //also detect if block is enabled
-				if ( $block['name'] === 'ub/click-to-tweet' ) {
-					fwrite( $frontStyleFile, str_replace( "src/blocks/click-to-tweet/icons", "ultimate-blocks",
-							file_get_contents( $frontStyleLocation ) ) );
-				} else {
-					fwrite( $frontStyleFile, file_get_contents( $frontStyleLocation ) );
-				}
-			}
-			if ( $block['name'] === 'ub/styled-box' && $blockList[ $key ]['active'] ) {
-				//add css for blocks phased out by styled box
-				fwrite( $frontStyleFile, file_get_contents( $blockDir . 'feature-box' . '/style.css' ) );
-				fwrite( $frontStyleFile, file_get_contents( $blockDir . 'notification-box' . '/style.css' ) );
-				fwrite( $frontStyleFile, file_get_contents( $blockDir . 'number-box' . '/style.css' ) );
-			}
-		}
-		fclose( $frontStyleFile );
-		ub_update_css_version( 'frontend' );
-	}
-
 	wp_register_style(
 			'ultimate_blocks-cgb-style-css', // Handle.
-			file_exists( wp_upload_dir()['basedir'] . '/ultimate-blocks/blocks.style.build.css' ) ?
-					content_url( '/uploads/ultimate-blocks/blocks.style.build.css' ) :
-					plugins_url( 'dist/blocks.style.build.css', dirname( __FILE__ ) ), // Block style CSS.
+			plugins_url( 'dist/blocks.style.build.css', dirname( __FILE__ ) ), // Block style CSS.
 			array(), // Dependency to include the CSS after it.
 			Ultimate_Blocks_Constants::plugin_version()  // Version: latest version number.
 	);
@@ -270,37 +237,9 @@ function ultimate_blocks_cgb_editor_assets() {
 			true
 	);
 
-	// Styles.
-	if ( file_exists( wp_upload_dir()['basedir'] . '/ultimate-blocks/blocks.editor.build.css' ) &&
-		 get_option( 'ultimate_blocks_css_version' ) != Ultimate_Blocks_Constants::plugin_version() ) {
-		$adminStyleFile = fopen( wp_upload_dir()['basedir'] . '/ultimate-blocks/blocks.editor.build.css', 'w' );
-		$blockDir       = dirname( __DIR__ ) . '/src/blocks/';
-		$blockList      = get_option( 'ultimate_blocks', false );
-
-		foreach ( $blockList as $key => $block ) {
-			$blockDirName       = strtolower( str_replace( ' ', '-',
-					trim( preg_replace( '/\(.+\)/', '', $blockList[ $key ]['label'] ) )
-			) );
-			$adminStyleLocation = $blockDir . $blockDirName . '/editor.css';
-
-			if ( file_exists( $adminStyleLocation ) && $blockList[ $key ]['active'] ) { //also detect if block is enabled
-				fwrite( $adminStyleFile, file_get_contents( $adminStyleLocation ) );
-			}
-			if ( $block['name'] === 'ub/styled-box' && $blockList[ $key ]['active'] ) {
-				//add css for blocks phased out by styled box
-				fwrite( $adminStyleFile, file_get_contents( $blockDir . 'feature-box' . '/editor.css' ) );
-				fwrite( $adminStyleFile, file_get_contents( $blockDir . 'number-box' . '/editor.css' ) );
-			}
-		}
-		fclose( $adminStyleFile );
-		ub_update_css_version( 'editor' );
-	}
-
 	wp_register_style(
 			'ultimate_blocks-cgb-block-editor-css', // Handle.
-			file_exists( wp_upload_dir()['basedir'] . '/ultimate-blocks/blocks.editor.build.css' ) ?
-					content_url( '/uploads/ultimate-blocks/blocks.editor.build.css' ) :
-					plugins_url( 'dist/blocks.editor.build.css', dirname( __FILE__ ) ), // Block editor CSS.
+			plugins_url( 'dist/blocks.editor.build.css', dirname( __FILE__ ) ), // Block editor CSS.
 			array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
 			Ultimate_Blocks_Constants::plugin_version() // Version: latest version number
 	);
@@ -413,6 +352,9 @@ require_once plugin_dir_path( __FILE__ ) . 'blocks/icon/block.php';
 
 // Counter
 require_once plugin_dir_path( __FILE__ ) . 'blocks/counter/block.php';
+
+// Image
+require_once plugin_dir_path( __FILE__ ) . 'blocks/image/block.php';
 
 /**
  * Innerblocks.

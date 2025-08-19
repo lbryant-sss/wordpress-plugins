@@ -405,16 +405,31 @@ function wt_removeBomUtf8_basic($s) {
 }
 }
 
-if(!function_exists('wt_iew_utf8ize_basic')){
-    function wt_iew_utf8ize_basic($d) {
-        if (is_array($d)) {
-            foreach ($d as $k => $v) {
-                $d[$k] = wt_iew_utf8ize_basic($v);
+if (!function_exists('wt_iew_utf8ize_basic')) {
+    function wt_iew_utf8ize_basic($data) {
+        if (is_array($data)) {
+            foreach ($data as $key => $value) {
+                $data[$key] = wt_iew_utf8ize_basic($value);
             }
-        } else if (is_string ($d)) {
-            return utf8_encode($d);
+        } else if (is_string($data)) {
+            // Use mbstring if available
+            if (extension_loaded('mbstring')) {
+                $encoding = mb_detect_encoding($data, ['UTF-8', 'ISO-8859-1', 'Windows-1252'], true);
+                if ($encoding !== 'UTF-8') {
+                    return mb_convert_encoding($data, 'UTF-8', $encoding ?: 'ISO-8859-1');
+                }
+                return $data; // Already UTF-8
+            } else {
+                // Fallback: utf8_encode (assumes ISO-8859-1)
+                if (function_exists('utf8_encode')) { 
+                    return utf8_encode($data);
+                } else {
+                    return $data;
+                }
+            }
         }
-        return $d;
+        
+        return $data;
     }
 }
 

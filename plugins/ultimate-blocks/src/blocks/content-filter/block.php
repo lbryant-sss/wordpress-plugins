@@ -133,14 +133,15 @@ function ub_render_content_filter_block($attributes, $content, $block){
 	$classes = array();
     $block_attributes = get_block_wrapper_attributes(
             array(
-                'class' => implode(" ", $classes),
-				'style' => Ultimate_Blocks\includes\generate_css_string($contentFilterWrapperStyles)
+			'class' => implode(" ", $classes),
+			'style' => Ultimate_Blocks\includes\generate_css_string($contentFilterWrapperStyles),
+			'id' => 'ub-content-filter-block-' . esc_attr($blockID)
             )
     );
 return sprintf(
 	'<div %1$s%2$s data-currentSelection="%3$s" data-initiallyShowAll="%4$s" data-matchingOption="%5$s">%6$s%7$s</div>',
 	$block_attributes, //1
-	($blockID === '' ? '' : ' id="ub-content-filter-' . esc_attr($blockID) . '"'), //2
+	($blockID === '' ? '' : ' id="ub-content-filter-block' . esc_attr($blockID) . '"'), //2
 	json_encode($currentSelection), //3
 	json_encode($initiallyShowAll), //4
 	esc_attr($matchingOption), //5

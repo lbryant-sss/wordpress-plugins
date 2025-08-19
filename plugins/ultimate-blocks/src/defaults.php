@@ -733,7 +733,7 @@ $defaultValues = array(
 			),
 			'endDate'       => array(
 				'type'    => 'number',
-				'default' => 1728565920
+				'default' => 1760447520
 			),
 			'style'         => array(
 				'type'    => 'string',

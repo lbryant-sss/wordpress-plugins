@@ -47,7 +47,7 @@ if ( ! class_exists( 'Qi_Blocks_Framework_Global_Styles' ) ) {
 		}
 
 		public function sanitize_block_selector( $selector ) {
-			return preg_replace( '/[^a-zA-Z0-9\-_.:>\s]/', '', $selector );
+			return preg_replace( '/[^a-zA-Z0-9\-_.,:>\s\[\]*~=\"()#\'+]/', '', $selector );
 		}
 
 		public function add_options() {

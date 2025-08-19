@@ -37,37 +37,7 @@ if (!defined('ABSPATH')) {
 
 			</td>
 		</tr>
-		<?php if(!empty($this->mapping_enabled_fields)):?>
-        <tr class="wt-iew-export-method-options wt-iew-export-method-options-quick" style="display:none;">
-            <th style="width:150px; text-align:left; vertical-align:top;"><label><?php _e('Include fields from the respective groups');?></label></th>
-            <td colspan="2" style="width:75%;">
-                <?php
-                foreach($this->mapping_enabled_fields as $mapping_enabled_field_key=>$mapping_enabled_field)
-                {
-                    $mapping_enabled_field=(!is_array($mapping_enabled_field) ? array($mapping_enabled_field, 0) : $mapping_enabled_field);
-                    
-                    if($this->rerun_id>0) /* check this is a rerun request */
-                    {
-                        if(in_array($mapping_enabled_field_key, $form_data_mapping_enabled))
-                        {
-                            $mapping_enabled_field[1]=1; //mark it as checked
-                        }else
-                        {
-                            $mapping_enabled_field[1]=0; //mark it as unchecked
-                        }
-                    }
-                    ?>
-                    <div class="wt_iew_checkbox" style="padding-left:0px;">
-                        <input type="checkbox" id="wt_iew_<?php echo $mapping_enabled_field_key;?>" name="wt_iew_include_these_fields[]" value="<?php echo $mapping_enabled_field_key;?>" <?php echo ($mapping_enabled_field[1]==1 ? 'checked="checked"' : '');?> /> 
-                        <label for="wt_iew_<?php echo $mapping_enabled_field_key;?>"><?php echo $mapping_enabled_field[0];?></label>
-                    </div>  
-                    <?php
-                }
-                ?>
-                <span class="wt-iew_form_help"><?php _e('Enabling any of these ensures that all the fields from the respective groups are included in your export.');?></span>
-            </td>
-        </tr>
-		<?php endif; ?>
+
 
 		<tr class="wt-iew-export-method-options wt-iew-export-method-options-template" style="display:none;">
     		<th><label><?php _e('Export template');?></label></th>
