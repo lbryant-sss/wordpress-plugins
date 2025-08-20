@@ -4,7 +4,7 @@ Donate link: https://solidwp.com/email
 Tags: wordpress smtp, email, email log, smtp
 Requires at least: 6.4
 Tested up to: 6.8
-Stable tag: 2.1.6
+Stable tag: 2.2.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -24,6 +24,8 @@ Solid Mail makes connecting to many popular SMTP services straightforward and cl
 * Amazon SES
 * Postmark
 * Manual connection (connect to any ESP)
+
+Enjoy complete flexibility and reliability in email delivery. Set up multiple connections to send emails via different Email Service Providers according to the From: address, and choose a fallback connection to ensure messages are sent even if a connection fails or the address doesn’t match an existing connection.
 
 [Learn more about transactional email services for your WordPress website here](https://solidwp.com/blog/alternatives-for-wordpress-transactional-emails/).
 
@@ -97,6 +99,18 @@ To configure your WordPress website to send email using any SMTP email provider 
 
 For more information, see the [documentation](https://go.solidwp.com/solid-mail-documentation).
 
+= Can I create multiple connections using different SMTP services? =
+
+Yes! You can create multiple connections, each using a different service, and send mail via those connections based on the From: address of the message being sent.
+
+This is especially useful if you’d like to use different services to send mail for various operational needs i.e., configure a connection to handle transactional emails sent from your WooCommerce store address, another for WordPress account-related emails, etc.
+
+= What happens if one of my connections has an issue? =
+
+For peace of mind, you can set a Default connection as your site’s fallback.
+
+If a connection fails or an email is sent from an address without a matching connection, it will be automatically sent through the Default connection for a second delivery attempt.
+
 == Installation ==
 
 There are several ways to install and activate Solid Mail for your website. Here are two of them:
@@ -126,6 +140,14 @@ Now your website email deliverability is SOLID with Solid Mail!
 3. See a comprehensive log of all emails sent from your WordPress website at a glance
 
 == Changelog ==
+
+= [2.2.0] 2025-08-18 =
+
+* Feature - Support multiple active connections, select the appropriate connection based on the outgoing email address.
+* Feature - Retry email sending with fallback connections.
+* Feature - Possibility to clear all logs.
+* Tweak - Improved WordPress 6.8 compatibility.
+* Fix - Addressed an issue where the email was logged before sending the complete.
 
 = [2.1.6] 2025-04-28 =
 

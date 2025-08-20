@@ -136,8 +136,25 @@ class HTMega_Elementor_Widget_Slider_Thumb_Gallery extends Widget_Base {
                     'default' => [
 
                         [
-                            'slider_title'           => __('Location Name Here.','htmega-addons'),
-                            'slider_sub_title'           => '',
+                            'slider_title'           => esc_html__( 'Mountain Hills, USA', 'htmega-addons' ),
+                            'slider_sub_title'       => esc_html__( 'Photo by David Swindler', 'htmega-addons' ),
+                            'slider_image'           => [
+                                'url' => esc_url( HTMEGA_ADDONS_PL_URL . 'assets/widgets/thumbnail-slider/images/image1.jpg' ),
+                            ],
+                        ],
+                        [
+                            'slider_title'           => esc_html__( 'Mountain river, USA', 'htmega-addons' ),
+                            'slider_sub_title'           => esc_html__( 'Photo by David Swindler', 'htmega-addons' ),
+                            'slider_image'           => [
+                                'url' => esc_url( HTMEGA_ADDONS_PL_URL . 'assets/widgets/thumbnail-slider/images/image2.jpg' ),
+                            ]
+                        ],
+                        [
+                            'slider_title'           =>esc_html__( 'Mountain Hills, USA', 'htmega-addons' ),
+                            'slider_sub_title'           => esc_html__( 'Photo by David Swindler', 'htmega-addons' ),
+                            'slider_image'           => [
+                                'url' => esc_url( HTMEGA_ADDONS_PL_URL . 'assets/widgets/thumbnail-slider/images/image3.jpg' ),
+                            ]
                         ],
 
                     ],
@@ -428,7 +445,7 @@ class HTMega_Elementor_Widget_Slider_Thumb_Gallery extends Widget_Base {
                     'label' => esc_html__( 'Thumbnails Arrow', 'htmega-addons' ),
                     'type' => Controls_Manager::SWITCHER,
                     'return_value' => 'yes',
-                    'default' => 'yes',
+                    'default' => 'no',
                     
                 ]
             );
@@ -893,7 +910,7 @@ class HTMega_Elementor_Widget_Slider_Thumb_Gallery extends Widget_Base {
                             ],
                             'default' => [
                                 'unit' => 'px',
-                                'size' => 30,
+                                'size' => 18,
                             ],
                             'selectors' => [
                                 '{{WRAPPER}} .htmega-thumbgallery-for button.slick-arrow,{{WRAPPER}} .htmega-thumbgallery-nav button.slick-arrow' => 'font-size: {{SIZE}}{{UNIT}};',

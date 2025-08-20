@@ -6,6 +6,8 @@ modules:
         - WPDb
         - WPLoader
         - WPBrowser
+        - \Helper\Acceptance
+        - WPCLI
     config:
         WPDb:
             dsn: 'mysql:host=%WP_DB_HOST%;dbname=%WP_DB_NAME%'
@@ -34,3 +36,11 @@ modules:
             headers:
                 X_TEST_REQUEST: 1
                 X_WPBROWSER_REQUEST: 1
+        WPCLI:
+            path: '%WP_ROOT_FOLDER%'
+            allow-root: true
+            env:
+                strict-args: true
+        \Helper\Acceptance:
+            depends:
+                - WPCLI

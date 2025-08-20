@@ -23,6 +23,7 @@ class Provider extends Service_Provider {
 	public function register(): void {
 		$this->container->get( ProvidersRepository::class );
 		$this->container->get( LogsRepository::class );
+		$this->container->get( SettingsRepository::class );
 	}
 
 	/**

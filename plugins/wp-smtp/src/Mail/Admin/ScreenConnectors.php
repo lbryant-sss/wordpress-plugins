@@ -12,8 +12,8 @@ namespace SolidWP\Mail\Admin;
 
 use SolidWP\Mail\Container;
 use SolidWP\Mail\AbstractController;
-use SolidWP\Mail\Repository\ProvidersRepository;
 use SolidWP\Mail\Service\ConnectionService;
+use SolidWP\Mail\SolidMailer;
 
 /**
  * Class ConnectionScreenController
@@ -51,6 +51,13 @@ class ScreenConnectors extends AbstractController {
 	private Container $container;
 
 	/**
+	 * Holds the test from email if provided.
+	 *
+	 * @var string|null
+	 */
+	private ?string $test_from_email = null;
+
+	/**
 	 * ConnectionScreenController constructor.
 	 *
 	 * @param ConnectionService $connection_service The service for managing SMTP connections.
@@ -69,10 +76,10 @@ class ScreenConnectors extends AbstractController {
 		// record error for debug.
 		add_action( 'wp_mail_failed', [ $this, 'record_error' ] );
 
+		// to test different outgoing emails
+		add_filter( 'wp_mail_from', [ $this, 'configure_outgoing_test_from_email' ] );
+
 		// ajax functions.
-		add_action( 'wp_ajax_solidwp_mail_save_connection', [ $this, 'save_connection' ] );
-		add_action( 'wp_ajax_solidwp_mail_delete_connection', [ $this, 'delete_connection' ] );
-		add_action( 'wp_ajax_solidwp_mail_make_provider_active', [ $this, 'make_connection_active' ] );
 		add_action( 'wp_ajax_solidwp_mail_send_test_email', [ $this, 'send_test_email' ] );
 	}
 
@@ -108,9 +115,10 @@ class ScreenConnectors extends AbstractController {
 
 		// Sanitize and retrieve input data.
 		$data = [
-			'to_email' => $this->get_and_sanitize_input( 'to_email' ),
-			'subject'  => $this->get_and_sanitize_input( 'subject' ),
-			'message'  => $this->get_and_sanitize_textarea( 'message' ),
+			'from_email' => $this->get_and_sanitize_input( 'from_email' ),
+			'to_email'   => $this->get_and_sanitize_input( 'to_email' ),
+			'subject'    => $this->get_and_sanitize_input( 'subject' ),
+			'message'    => $this->get_and_sanitize_textarea( 'message' ),
 		];
 
 		$result = $this->connection_service->validate_test_email_input( $data );
@@ -122,8 +130,23 @@ class ScreenConnectors extends AbstractController {
 			);
 		}
 
+		if ( $data['from_email'] ) {
+			$this->test_from_email = $data['from_email'];
+		}
+
 		// phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.wp_mail_wp_mail
 		$sent = wp_mail( $data['to_email'], $data['subject'], $data['message'] );
+
+		$this->test_from_email = null;
+
+		if ( ! SolidMailer::is_solid_mail_configured() ) {
+			wp_send_json_error(
+				[
+					'message' => __( 'Solid Mail did not process the test email.', 'LION' ),
+				]
+			);
+		}
+
 		// Return a JSON response indicating success or failure.
 		if ( $sent ) {
 			wp_send_json_success( [ 'message' => __( 'Test email sent successfully.', 'LION' ) ] );
@@ -149,83 +172,13 @@ class ScreenConnectors extends AbstractController {
 	}
 
 	/**
-	 * Deletes the connection.
+	 * Use a test "from email" if provided by the user or preserve the value provided by WordPress.
 	 *
-	 * @return void
+	 * @param $wordpress_provided_from_email
+	 *
+	 * @return string
 	 */
-	public function delete_connection() {
-		if ( ! $this->able_to_perform( 'delete_connection' ) ) {
-			$this->bail_out_generic_error( __( 'User cannot delete providers.', 'LION' ) );
-		}
-
-		$provider_id = $this->get_and_sanitize_input( 'provider_id' );
-		if ( empty( $provider_id ) ) {
-			$this->bail_out_generic_error( __( 'Provider ID cannot be empty.', 'LION' ) );
-		}
-
-		$model = $this->container->get( ProvidersRepository::class )->get_active_provider();
-
-		if ( is_object( $model ) && $model->get_id() === $provider_id ) {
-			// this is the active provider, should not allow for delete.
-			wp_send_json_error(
-				[
-					'message' => __( 'Cannot delete the connection because it is set as the default.', 'LION' ),
-				]
-			);
-		}
-
-		wp_send_json_success( $this->connection_service->delete_connection( $provider_id ) );
-	}
-
-	/**
-	 * Saves a new SMTP connection.
-	 *
-	 * Validates the input data, processes it, and saves the SMTP connection model if validation succeeds.
-	 * If validation fails or the user lacks the necessary permissions, an error response is sent.
-	 *
-	 * @return void
-	 */
-	public function save_connection() {
-		if ( ! $this->able_to_perform( 'save_connection' ) ) {
-			$this->bail_out_generic_error( __( 'User cannot add providers.', 'LION' ) );
-		}
-
-		// populate data.
-		$name = $this->get_and_sanitize_input( 'name' );
-
-		if ( empty( $name ) ) {
-			$this->bail_out_generic_error( __( 'Name cannot be empty.', 'LION' ) );
-		}
-
-		//phpcs:ignore.
-		$data = wp_unslash( $_POST );
-
-		$result = $this->connection_service->save_connection( $data );
-
-		if ( true === $result ) {
-			wp_send_json_success( $this->container->get( ProvidersRepository::class )->get_all_providers_as_array() );
-		}
-
-		wp_send_json_error( $this->wp_error_to_array( $result ) );
-	}
-
-	/**
-	 * Makes a provider active.
-	 *
-	 * @return void
-	 */
-	public function make_connection_active() {
-		if ( ! $this->able_to_perform( 'make_connection_active' ) ) {
-			$this->bail_out_generic_error( __( 'User cannot change active providers.', 'LION' ) );
-		}
-
-		$provider_id = $this->get_and_sanitize_input( 'provider_id' );
-		if ( empty( $provider_id ) ) {
-			$this->bail_out_generic_error( __( 'Provider cannot be empty.', 'LION' ) );
-		}
-
-		$this->connection_service->make_provider_active( $provider_id );
-
-		wp_send_json_success( $this->container->get( ProvidersRepository::class )->get_all_providers_as_array() );
+	public function configure_outgoing_test_from_email( $wordpress_provided_from_email ): string {
+		return $this->test_from_email ?? $wordpress_provided_from_email;
 	}
 }

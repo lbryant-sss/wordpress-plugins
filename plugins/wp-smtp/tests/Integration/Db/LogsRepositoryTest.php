@@ -108,4 +108,76 @@ class LogsRepositoryTest extends WPTestCase {
 
 		$this->assertEquals( 5, $total_logs );
 	}
+
+	public function testGetEmailLogsByDate(): void {
+		global $wpdb;
+
+		// Get timestamps for the first and third logs
+		$first_log_timestamp = $wpdb->get_var( "SELECT timestamp FROM {$wpdb->prefix}wpsmtp_logs WHERE subject = 'Test Subject 1'" );
+		$third_log_timestamp = $wpdb->get_var( "SELECT timestamp FROM {$wpdb->prefix}wpsmtp_logs WHERE subject = 'Test Subject 3'" );
+
+		$from_timestamp = strtotime( $first_log_timestamp );
+		$to_timestamp   = strtotime( $third_log_timestamp );
+
+		$logs = $this->repository->get_email_logs_by_date( $from_timestamp, $to_timestamp );
+
+		// Should return logs 1, 2, and 3 (ordered by timestamp ASC)
+		$this->assertCount( 3, $logs );
+		$this->assertEquals( 'Test Subject 1', $logs[0]['subject'] );
+		$this->assertEquals( 'Test Subject 2', $logs[1]['subject'] );
+		$this->assertEquals( 'Test Subject 3', $logs[2]['subject'] );
+	}
+
+	public function testGetEmailLogsByDateWithInvalidParams(): void {
+		$logs = $this->repository->get_email_logs_by_date( 0, 100 );
+		$this->assertEmpty( $logs );
+
+		$logs = $this->repository->get_email_logs_by_date( -1, 100 );
+		$this->assertEmpty( $logs );
+
+		$logs = $this->repository->get_email_logs_by_date( 200, 100 ); // from > to
+		$this->assertEmpty( $logs );
+	}
+
+	public function testDeleteLogs(): void {
+		global $wpdb;
+
+		// Get IDs of first two logs
+		$log_ids = $wpdb->get_col( "SELECT mail_id FROM {$wpdb->prefix}wpsmtp_logs WHERE subject IN ('Test Subject 1', 'Test Subject 2')" );
+
+		$this->assertCount( 2, $log_ids );
+
+		$deleted = $this->repository->delete_logs( $log_ids );
+		$this->assertTrue( $deleted );
+
+		// Verify logs are deleted
+		$total_logs = $this->repository->count_all_logs();
+		$this->assertEquals( 3, $total_logs );
+
+		// Verify specific logs are gone
+		$remaining_subjects = $wpdb->get_col( "SELECT subject FROM {$wpdb->prefix}wpsmtp_logs ORDER BY subject" );
+		$this->assertEquals( [ 'Test Subject 3', 'Test Subject 4', 'Test Subject 5' ], $remaining_subjects );
+	}
+
+	public function testDeleteLogsWithEmptyArray(): void {
+		$deleted = $this->repository->delete_logs( [] );
+		$this->assertFalse( $deleted );
+
+		// Verify no logs were deleted
+		$total_logs = $this->repository->count_all_logs();
+		$this->assertEquals( 5, $total_logs );
+	}
+
+	public function testClearAllLogs(): void {
+		// Verify we have logs initially
+		$total_logs = $this->repository->count_all_logs();
+		$this->assertEquals( 5, $total_logs );
+
+		$cleared = $this->repository->clear_all_logs();
+		$this->assertTrue( $cleared );
+
+		// Verify all logs are cleared
+		$total_logs = $this->repository->count_all_logs();
+		$this->assertEquals( 0, $total_logs );
+	}
 }

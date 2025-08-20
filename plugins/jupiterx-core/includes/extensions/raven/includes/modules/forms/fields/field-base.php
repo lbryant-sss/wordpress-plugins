@@ -479,7 +479,7 @@ abstract class Field_Base {
 	 * @param object $field The field data.
 	 */
 	public static function validate_required( $ajax_handler, $field ) {
-		$record_field = $ajax_handler->record['fields'][ $field['_id'] ];
+		$record_field = isset( $ajax_handler->record['fields'][ $field['_id'] ] ) ? $ajax_handler->record['fields'][ $field['_id'] ] : '';
 
 		if ( ! empty( $field['required'] ) && empty( $record_field ) ) {
 			$error = Module::$messages['required'];

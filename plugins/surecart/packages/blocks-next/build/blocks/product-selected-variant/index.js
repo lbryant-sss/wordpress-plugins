@@ -1,0 +1,1 @@
+!function(){"use strict";var e=window.wp.blocks,r=window.wp.i18n,t=window.wp.blockEditor,c=JSON.parse('{"UU":"surecart/product-selected-variant"}');(0,e.registerBlockType)(c.UU,{edit:()=>{const e=(0,t.useBlockProps)();return React.createElement("div",e,(0,r.__)("Small","surecart")," / ",(0,r.__)("Red","surecart")," /"," ",(0,r.__)("Cotton","surecart"))}})}();

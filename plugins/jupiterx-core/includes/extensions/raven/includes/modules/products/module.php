@@ -417,6 +417,10 @@ class Module extends Module_Base {
 		apply_filters( 'jx_products_apply_button_icon', $settings );
 		apply_filters( 'jx_products_apply_wishlist', $settings );
 
+		if ( ! $settings['query_order'] ) {
+			$settings['query_order'] = 'DESC';
+		}
+
 		$query = $filter::query( $widget, $settings );
 
 		if ( empty( $fallback_filter ) ) {
@@ -664,6 +668,7 @@ class Module extends Module_Base {
 			'total'    => ! empty( $products['query_results']->total ) ? $products['query_results']->total : '',
 			'per_page' => ! empty( $products['query_results']->per_page ) ? $products['query_results']->per_page : '',
 			'current'  => ! empty( $products['query_results']->current_page ) ? $products['query_results']->current_page : '',
+			'orderedby' => '',
 		];
 
 		ob_start();

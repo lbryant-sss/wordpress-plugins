@@ -168,6 +168,7 @@ class Counter extends Base_Widget {
 					'{{WRAPPER}} .raven-counter-item' => 'width: calc({{VALUE}}% - {{spacing_between.size}}{{spacing_between.unit}} / 2)',
 					'{{WRAPPER}} .raven-counter-multi-rows .raven-counter-item' => 'margin-bottom: {{spacing_between.size}}{{spacing_between.unit}}',
 				],
+				'frontend_available' => true,
 			]
 		);
 

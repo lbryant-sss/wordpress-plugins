@@ -5,13 +5,13 @@ Tags: elementor, elementor addons, widgets, header footer builder, templates
 Requires at least: 5.0.0
 Tested up to: 6.8.2
 Requires PHP: 7.4.0
-Stable tag: 8.1.6
+Stable tag: 8.1.8
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Elementor requires at least: 3.22
-Elementor tested up to: 3.30.4
+Elementor tested up to: 3.31.2
 
-Ultimate Elementor addon with 300+ widgets, templates, live copy and paste, post grid, header and footer, mega menu, dynamic builder, WooCommerce builder and more.
+Ultimate Elementor addon with 300+ widgets, templates, live copy paste, post grid, header footer, mega menu, dynamic builder, WooCommerce builder and more.
 
 
 == Description ==
@@ -277,6 +277,16 @@ https://youtu.be/NhaIMIrFh1Q?si=GA64tzuOaEAYqAvV
 
 
 == Changelog ==
+
+= 8.1.8 [18th August 2025] =
+
+* Fixed: Admin notice loading issue fixed
+
+= 8.1.7 [18th August 2025] =
+
+* Added: Link to Wrapper Item option added in product grid widget
+* Added: Button a & button b padding added in dual button widget
+* Fixed: Admin API Notice loading issue fixed
 
 = 8.1.6 [4th August 2025] =
 

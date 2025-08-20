@@ -553,7 +553,7 @@ class Animated_Heading extends Base_Widget {
 							for ( var i = 0; i < rotatingText.length; i++ ) {
 								var statusClass = 0 === i ? 'raven-heading-text-active' : ''; #>
 								<span class="raven-heading-dynamic-text {{ statusClass }}">
-									{{{ rotatingText[ i ].replace( ' ', '&nbsp;' ) }}}
+									{{{ rotatingText[ i ] }}}
 								</span>
 							<# }
 						}
@@ -592,7 +592,7 @@ class Animated_Heading extends Base_Widget {
 			foreach ( $rotating_text as $key => $text ) :
 				$status_class = 1 > $key ? 'raven-heading-text-active' : ''; ?>
 				<span class="raven-heading-dynamic-text <?php echo esc_attr( $status_class ); ?>">
-					<?php Utils::print_unescaped_internal_string( str_replace( ' ', '&nbsp;', $text ) ); ?>
+					<?php Utils::print_unescaped_internal_string( $text ); ?>
 				</span>
 			<?php endforeach; ?>
 		<?php elseif ( 'highlight' === $settings['heading_style'] && ! empty( $settings['highlighted_text'] ) ) : ?>

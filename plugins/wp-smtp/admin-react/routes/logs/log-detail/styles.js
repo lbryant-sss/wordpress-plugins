@@ -9,18 +9,20 @@ import styled from '@emotion/styled';
 import { Notice, Surface } from '@ithemes/ui';
 
 export const Header = styled.div`
-	padding: ${ ( { theme } ) => theme.spacing.section };
+	padding: ${({ theme }) => theme.spacing.section};
+	border-bottom: solid 1px ${({ theme }) => theme.colors.border.normal};
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+`;
+export const HeaderRow = styled.div`
 	display: flex;
 	justify-content: space-between;
-	border-bottom: solid 1px ${ ( { theme } ) => theme.colors.border.normal };
-
-	@media ( max-width: ${ ( { theme } ) => `${ theme.breaks.medium }px` } ) {
-		grid-template-columns: 1fr;
-		gap: 20px;
-	}
+	gap: 20px;
 `;
+
 export const Body = styled.div`
-	padding: ${ ( { theme } ) => theme.spacing.section };
+	padding: ${({ theme }) => theme.spacing.section};
 
 	p {
 		margin-bottom: 10px;
@@ -35,12 +37,12 @@ export const Empty = styled.div`
 	width: 100%;
 `;
 
-export const StyledSurface = styled( Surface )`
-	margin-bottom: ${ ( { theme } ) => theme.spacing.section };
+export const StyledSurface = styled(Surface)`
+	margin-bottom: ${({ theme }) => theme.spacing.section};
 	max-height: 800px;
 	overflow-y: scroll;
 `;
-export const StyledNotice = styled( Notice )`
-	margin: ${ ( { theme } ) => theme.spacing.section };
+export const StyledNotice = styled(Notice)`
+	margin: ${({ theme }) => theme.spacing.section};
 	margin-bottom: 0;
 `;

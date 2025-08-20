@@ -1,8 +1,8 @@
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
 import { Flex } from '@wordpress/components';
+import { __ } from '@wordpress/i18n';
 
 /**
  * SolidWP dependencies
@@ -20,13 +20,13 @@ import { Button, Text, TextSize } from '@ithemes/ui';
  *
  * @return {JSX.Element} The rendered Pagination component.
  */
-function Pagination( { currentPage, totalPages, searchTerm, setCurrentPage } ) {
+function Pagination({ currentPage, totalPages, searchTerm, setCurrentPage }) {
 	/**
 	 * Handles the click event for the previous page button.
 	 */
 	const handlePrevPage = () => {
-		if ( currentPage > 0 ) {
-			setCurrentPage( currentPage - 1, searchTerm );
+		if (currentPage > 0) {
+			setCurrentPage(currentPage - 1, searchTerm);
 		}
 	};
 
@@ -34,31 +34,31 @@ function Pagination( { currentPage, totalPages, searchTerm, setCurrentPage } ) {
 	 * Handles the click event for the next page button.
 	 */
 	const handleNextPage = () => {
-		if ( currentPage < totalPages ) {
-			setCurrentPage( currentPage + 1, searchTerm );
+		if (currentPage < totalPages) {
+			setCurrentPage(currentPage + 1, searchTerm);
 		}
 	};
 
 	return (
-		<Flex justify={ 'space-between' }>
+		<Flex justify={'space-between'}>
 			<Button
-				variant={ 'primary' }
-				icon={ 'arrow-left' }
-				onClick={ handlePrevPage }
-				disabled={ currentPage <= 1 }
+				variant={'primary'}
+				icon={'arrow-left'}
+				onClick={handlePrevPage}
+				disabled={currentPage <= 1}
 			>
-				{ __( 'Prev', 'LION' ) }
+				{__('Prev', 'LION')}
 			</Button>
-			<Text size={ TextSize.LARGE }>
-				{ currentPage } { __( 'of', 'LION' ) } { totalPages }
+			<Text size={TextSize.LARGE}>
+				{currentPage} {__('of', 'LION')} {totalPages}
 			</Text>
 			<Button
-				variant={ 'primary' }
-				icon={ 'arrow-right' }
-				onClick={ handleNextPage }
-				disabled={ currentPage >= totalPages }
+				variant={'primary'}
+				icon={'arrow-right'}
+				onClick={handleNextPage}
+				disabled={currentPage >= totalPages}
 			>
-				{ __( 'Next', 'LION' ) }
+				{__('Next', 'LION')}
 			</Button>
 		</Flex>
 	);

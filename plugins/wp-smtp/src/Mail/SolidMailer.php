@@ -2,9 +2,11 @@
 
 namespace SolidWP\Mail;
 
+use LogicException;
 use PHPMailer\PHPMailer\Exception;
-use PHPMailer\PHPMailer\PHPMailer;
+use SolidWP\Mail\Connectors\ConnectionPool;
 use SolidWP\Mail\Connectors\ConnectorSMTP;
+use SolidWP\Mail\Contracts\Api_Connector;
 use WP_Error;
 
 /**
@@ -17,38 +19,138 @@ use WP_Error;
  *
  * @since   2.1.3
  * @package SolidWP\Mail\Pro
- * @extends PHPMailer
+ * @extends \WP_PHPMailer
  */
-class SolidMailer extends PHPMailer {
+class SolidMailer extends \WP_PHPMailer {
 
 	/**
-	 * SMTP connector instance.
+	 * Whether to throw exceptions for errors.
 	 *
-	 * @since 2.1.3
-	 * @var ConnectorSMTP
+	 * @var bool
 	 */
-	protected ConnectorSMTP $connector;
+	protected $exceptions = true;
+
+	/**
+	 * Pool of connections available for the mail sending.
+	 *
+	 * @var ConnectionPool | null
+	 */
+	protected ?ConnectionPool $connection_pool = null;
+
+	/**
+	 * The email "from name" that the user passed.
+	 *
+	 * @var string
+	 */
+	protected string $initial_from_name = '';
 
 	/**
 	 * Sets the SMTP connector instance.
 	 *
-	 * @param ConnectorSMTP $connector The connector instance to use for email transmission.
+	 * @param ConnectionPool|null $connection_pool Pool of connections available for the mail sending.
+	 *                                          or null to reset the pool.
 	 *
 	 * @since 2.1.3
 	 * @return void
 	 */
-	public function set_connector( ConnectorSMTP $connector ): void {
-		$this->connector = $connector;
+	public function set_pool( ConnectionPool $connection_pool ): void {
+		$this->connection_pool = $connection_pool;
 	}
 
 	/**
-	 * Sets the mailer type to API.
+	 * Define the initial "from name" for the current email request.
 	 *
-	 * @since 2.1.3
+	 * @param string $initial_from_name
+	 *
 	 * @return void
 	 */
-	public function isAPI() {
-		$this->Mailer = 'api';
+	public function set_initial_from_name( string $initial_from_name ): void {
+		$this->initial_from_name = $initial_from_name;
+	}
+
+	/**
+	 * Current connection.
+	 *
+	 * @return ConnectorSMTP|null
+	 */
+	public function get_connection(): ?ConnectorSMTP {
+		if ( ! $this->connection_pool instanceof ConnectionPool ) {
+			return null;
+		}
+
+		$current = $this->connection_pool->current();
+		return $current instanceof ConnectorSMTP ? $current : null;
+	}
+
+	/**
+	 * If Solid Mail is used for the current request
+	 *
+	 * @return bool
+	 */
+	public static function is_solid_mail_configured(): bool {
+		global $phpmailer;
+		return $phpmailer instanceof self && $phpmailer->get_connection() instanceof ConnectorSMTP;
+	}
+
+	/**
+	 * Create a message and send it.
+	 * Uses the sending method specified by $Mailer.
+	 *
+	 * @throws Exception
+	 *
+	 * @return bool false on error - See the ErrorInfo property for details of the error
+	 */
+	public function send(): bool {
+		if ( ! $this->connection_pool instanceof ConnectionPool || $this->connection_pool->count() === 0 ) {
+			// Pool is empty, send email without Solid Mail
+			return parent::send();
+		}
+
+		try {
+			$connection = $this->get_connection();
+			if ( ! $connection instanceof ConnectorSMTP ) {
+				throw new LogicException( 'Connection is not defined' );
+			}
+
+			$this->configure_for_connection( $connection );
+
+			if ( ! $this->preSend() ) {
+				return false;
+			}
+
+			return $this->postSend();
+		} catch ( Exception $exc ) {
+			/**
+			 * As we have an `exceptions` property enabled, `preSend` and `postSend` methods throw an exception on error.
+			 * So we can handle a negative path only once in the catch construction.
+			 */
+			if ( $this->connection_pool->hasNext() ) {
+				$this->connection_pool->next();
+				return $this->send();
+			}
+
+			$this->mailHeader = '';
+			$this->setError( $exc->getMessage() );
+
+			throw $exc;
+		}
+	}
+
+	private function configure_for_connection( ConnectorSMTP $connection ): void {
+		// now bind the SMTP info to wp phpmailer.
+		$this->Mailer = $connection->isAPI() ? 'api' : 'smtp';
+		$this->From   = $connection->get_from_email();
+		// Don't override from name if it was defined already
+		$this->FromName = $this->initial_from_name === 'WordPress' ? $connection->get_from_name() : $this->initial_from_name;
+		$this->Sender   = $this->From;
+		$this->clearReplyTos();
+		$this->AddReplyTo( $this->From, $this->FromName );
+		$this->Host       = $connection->get_host();
+		$this->SMTPSecure = $connection->get_secure();
+		$this->Port       = $connection->get_port();
+		$this->SMTPAuth   = $connection->is_authentication();
+		$this->Username   = $this->SMTPAuth ? $connection->get_username() : '';
+		$this->Password   = $this->SMTPAuth ? $connection->get_password() : '';
 	}
 
 	/**
@@ -62,12 +164,17 @@ class SolidMailer extends PHPMailer {
 	 * @throws \Exception
 	 */
 	public function apiSend( $header, $body ) {
+		$connector = $this->get_connection();
+		if ( ! $connector instanceof Api_Connector ) {
+			throw new Exception( 'API connector is not defined', self::STOP_CRITICAL );
+		}
+
 		$email_data = $this->getEmailData( $header, $body );
 		if ( is_wp_error( $email_data ) ) {
 			throw new Exception( $email_data->get_error_message(), self::STOP_CRITICAL );
 		}
 
-		$result = $this->connector->send_use_api( $email_data );
+		$result = $connector->send_use_api( $email_data );
 		if ( is_wp_error( $result ) ) {
 			throw new Exception( $result->get_error_message(), self::STOP_CRITICAL );
 		}

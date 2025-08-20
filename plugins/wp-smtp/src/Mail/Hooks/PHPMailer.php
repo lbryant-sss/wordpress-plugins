@@ -5,7 +5,10 @@ namespace SolidWP\Mail\Hooks;
 use PHPMailer\PHPMailer\SMTP;
 use SolidWP\Mail\AbstractController;
 use SolidWP\Mail\App;
+use SolidWP\Mail\Connectors\ConnectionPool;
+use SolidWP\Mail\Connectors\ConnectorSMTP;
 use SolidWP\Mail\Repository\ProvidersRepository;
+use SolidWP\Mail\Repository\SettingsRepository;
 use SolidWP\Mail\SolidMailer;
 
 /**
@@ -25,12 +28,24 @@ class PHPMailer extends AbstractController {
 	protected ProvidersRepository $providers_repository;
 
 	/**
+	 * The repository for getting settings.
+	 *
+	 * @var SettingsRepository
+	 */
+	protected SettingsRepository $settings_repository;
+
+	/**
 	 * Constructor for the class.
 	 *
 	 * @param ProvidersRepository $providers_repository The repository instance for managing providers.
+	 * @param SettingsRepository $settings_repository The settings repository instance.
 	 */
-	public function __construct( ProvidersRepository $providers_repository ) {
+	public function __construct(
+		ProvidersRepository $providers_repository,
+		SettingsRepository $settings_repository
+	) {
 		$this->providers_repository = $providers_repository;
+		$this->settings_repository  = $settings_repository;
 	}
 
 	/**
@@ -42,7 +57,7 @@ class PHPMailer extends AbstractController {
 	 */
 	public function register_hooks() {
 		add_filter( 'pre_wp_mail', [ $this, 'init_solidmail_mailer' ] );
-		add_action( 'phpmailer_init', [ $this, 'wp_smtp' ], 9999 );
+		add_action( 'phpmailer_init', [ $this, 'set_up_connection_pool' ], 9999 );
 		add_action( 'wp_mail_failed', [ $this, 'maybe_capture_sending_error' ] );
 	}
 
@@ -54,10 +69,11 @@ class PHPMailer extends AbstractController {
 	 * @return null
 	 */
 	public function init_solidmail_mailer() {
-		$active_provider = $this->providers_repository->get_active_provider();
+		$active_providers = $this->providers_repository->get_active_providers();
+		$default_provider = $this->providers_repository->get_default_provider();
 
-		if ( ! is_object( $active_provider ) ) {
-			// if there is no active provider, or the active provider use SMTP, then dont inject anything.
+		if ( ! $default_provider instanceof ConnectorSMTP && count( $active_providers ) === 0 ) {
+			// if there is no active providers and default provider, do nothing.
 			return null;
 		}
 
@@ -67,10 +83,10 @@ class PHPMailer extends AbstractController {
 			require_once ABSPATH . WPINC . '/PHPMailer/PHPMailer.php';
 			require_once ABSPATH . WPINC . '/PHPMailer/SMTP.php';
 			require_once ABSPATH . WPINC . '/PHPMailer/Exception.php';
+			require_once WPSMTP_PATH . 'inc/wp-phpmailer-compatibility.php';
 
 			// phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 			$phpmailer = new SolidMailer( true );
-			$phpmailer->set_connector( $active_provider );
 		}
 
 		return null;
@@ -92,34 +108,41 @@ class PHPMailer extends AbstractController {
 	 *
 	 * This method is invoked when PHPMailer is initialized to configure it for SMTP usage.
 	 *
-	 * @param SolidMailer $phpmailer The PHPMailer instance.
+	 * @param \PHPMailer\PHPMailer\PHPMailer $phpmailer The PHPMailer instance.
 	 *
 	 * @return void
 	 */
-	public function wp_smtp( $phpmailer ) {
-		$default_provider = $this->providers_repository->get_active_provider();
-		// make sure the provider data right.
-		if ( is_object( $default_provider ) && $default_provider->validation() === true ) {
-			// now bind the SMTP info to wp phpmailer.
-			$phpmailer->Mailer   = 'smtp';
-			$phpmailer->From     = $default_provider->get_from_email();
-			$phpmailer->FromName = $default_provider->get_from_name();
-			$phpmailer->Sender   = $phpmailer->From;
-			$phpmailer->AddReplyTo( $phpmailer->From, $phpmailer->FromName );
-			$phpmailer->Host       = $default_provider->get_host();
-			$phpmailer->SMTPSecure = $default_provider->get_secure();
-			$phpmailer->Port       = $default_provider->get_port();
-			$phpmailer->SMTPAuth   = $default_provider->is_authentication();
+	public function set_up_connection_pool( \PHPMailer\PHPMailer\PHPMailer $phpmailer ): void {
+		if ( ! $phpmailer instanceof SolidMailer ) {
+			return;
+		}
 
-			if ( $phpmailer->SMTPAuth ) {
-				$phpmailer->Username = $default_provider->get_username();
-				$phpmailer->Password = $default_provider->get_password();
-			}
+		$connection_pool = new ConnectionPool();
 
-			if ( $default_provider->isAPI() ) {
-				// set this as API sender.
-				$phpmailer->isAPI();
+		$active_connections = $this->providers_repository->get_active_providers();
+
+		// 1. Add connections with a full email match
+		foreach ( $active_connections as $connection ) {
+			if ( $connection->get_from_email() === $phpmailer->From ) {
+				$connection_pool->append( $connection );
 			}
 		}
+
+		// 2. Use a default connection if we could not find at least one
+		// or prioritize the default connection if we want to add unmatched active connections
+		$default_connection = $this->providers_repository->get_default_provider();
+		if ( $connection_pool->count() === 0 || $this->settings_repository->use_unmatched_connections() ) {
+			$connection_pool->append( $default_connection );
+		}
+
+		// 3. Add unmatched active connections if enabled
+		if ( $this->settings_repository->use_unmatched_connections() ) {
+			foreach ( $active_connections as $connection ) {
+				$connection_pool->append( $connection );
+			}
+		}
+
+		$phpmailer->set_pool( $connection_pool );
+		$phpmailer->set_initial_from_name( $phpmailer->FromName );
 	}
 }

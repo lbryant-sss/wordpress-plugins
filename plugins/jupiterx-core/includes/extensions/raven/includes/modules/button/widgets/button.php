@@ -531,7 +531,7 @@ class Button extends Base_Widget {
 			[
 				'name' => 'hover_background',
 				'exclude' => [ 'image' ],
-				'selector' => '{{WRAPPER}} .raven-button .raven-button-overlay:before',
+				'selector' => '{{WRAPPER}} a.raven-button:hover',
 			]
 		);
 

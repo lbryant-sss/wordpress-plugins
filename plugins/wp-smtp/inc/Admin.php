@@ -5,8 +5,6 @@ use SolidWP\Mail\Admin\SettingsScreen;
 
 class Admin {
 
-	private $wsOptions;
-
 	/**
 	 * The new solid mail setting.
 	 *
@@ -14,10 +12,7 @@ class Admin {
 	 */
 	private $solidMailOptions;
 
-	public static $phpmailer_error;
-
 	public function __construct() {
-		$this->wsOptions        = get_option( 'wp_smtp_options' );
 		$this->solidMailOptions = get_option( SettingsScreen::SETTINGS_SLUG );
 
 		add_action( 'admin_menu', [ $this, 'add_menu' ] );

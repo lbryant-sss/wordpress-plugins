@@ -2,10 +2,10 @@
 
 namespace Unit\Connectors;
 
-use Codeception\Test\Unit;
+use lucatume\WPBrowser\TestCase\WPTestCase;
 use SolidWP\Mail\Connectors\ConnectorSMTP;
 
-class ConnectorSMTPTest extends Unit {
+class ConnectorSMTPTest extends WPTestCase {
 
 	public function testProcessData(): void {
 		$data = [

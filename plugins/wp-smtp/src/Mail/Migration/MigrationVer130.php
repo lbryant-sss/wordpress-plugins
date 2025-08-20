@@ -90,7 +90,7 @@ class MigrationVer130 extends AbstractController {
 			return;
 		}
 
-		$active_connection = $this->providers_repository->get_active_provider();
+		$active_connection = current( $this->providers_repository->get_active_providers() );
 
 		$provider = new ConnectorSMTP(
 			[

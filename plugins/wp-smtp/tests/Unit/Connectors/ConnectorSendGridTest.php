@@ -2,10 +2,10 @@
 
 namespace Unit\Connectors;
 
-use Codeception\Test\Unit;
+use lucatume\WPBrowser\TestCase\WPTestCase;
 use SolidWP\Mail\Connectors\ConnectorSendGrid;
 
-class ConnectorSendGridTest extends Unit {
+class ConnectorSendGridTest extends WPTestCase {
 
 	public function testDefaultSettings() {
 		$provider = new ConnectorSendGrid();

@@ -2,10 +2,10 @@
 
 namespace Unit\Connectors;
 
-use Codeception\Test\Unit;
+use lucatume\WPBrowser\TestCase\WPTestCase;
 use SolidWP\Mail\Connectors\ConnectorBrevo;
 
-class ConnectorBrevoTest extends Unit {
+class ConnectorBrevoTest extends WPTestCase {
 
 	public function testDefaultSettings(): void {
 		$provider = new ConnectorBrevo();

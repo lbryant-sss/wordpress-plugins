@@ -2429,7 +2429,7 @@ var EffectsHandler = /*#__PURE__*/function (_elementorModules$fro) {
     value: function getDefaultElements() {
       var selectors = this.getSettings('selectors');
       return {
-        $container: $(this.$element).find(selectors.container)
+        $container: jQuery(this.$element).find(selectors.container)
       };
     }
   }, {
@@ -3612,8 +3612,8 @@ var StickyScript = /*#__PURE__*/function () {
   }, {
     key: "initElements",
     value: function initElements() {
-      this.$element = $(this.element).addClass(this.settings.classes.sticky);
-      this.elements.$window = $(window);
+      this.$element = jQuery(this.element).addClass(this.settings.classes.sticky);
+      this.elements.$window = jQuery(window);
 
       if (this.settings.parent) {
         this.elements.$parent = this.$element.parent();
@@ -3955,8 +3955,9 @@ var PaginationModule = _module["default"].extend({
     return this.getSettings('isEnabled');
   },
   recreatePagination: function recreatePagination(totalPages) {
+    var activePage = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
     this.setTotalPages(totalPages);
-    this.setActivePage(1);
+    this.setActivePage(activePage);
     this.renderUpdate();
   },
   renderUpdate: function renderUpdate() {
@@ -4537,8 +4538,14 @@ var SortableModule = _module["default"].extend({
     event.preventDefault();
     var $this = $(event.target);
     var category = parseInt($this.data('category'));
+    var activeCategory = this.getActiveID();
+    var urlAnalyze = this.urlAnalyze();
 
-    if (this.getActiveID() !== category) {
+    if (activeCategory !== category) {
+      this.triggerSort($this, category);
+    }
+
+    if (activeCategory === -1 && urlAnalyze.category && urlAnalyze.category !== -1) {
       this.triggerSort($this, category);
     }
   },
@@ -4551,6 +4558,18 @@ var SortableModule = _module["default"].extend({
   },
   handleSort: function handleSort() {
     this.renderUpdate();
+  },
+  urlAnalyze: function urlAnalyze() {
+    var url = new URL(window.location.href);
+
+    if ('1' !== url.searchParams.get('jupiterx_filters')) {
+      return false;
+    }
+
+    return {
+      paged: url.searchParams.get('jupiterx_page') ? Number(url.searchParams.get('jupiterx_page')) : 1,
+      category: url.searchParams.get('category') ? Number(url.searchParams.get('category')) : -1
+    };
   }
 });
 
@@ -4562,8 +4581,11 @@ exports["default"] = _default;
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
+var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
+
 var _tippy = _interopRequireDefault(require("tippy.js"));
 
+var $ = jQuery;
 var JupiterTooltip = {
   widgetEditorSettings: function widgetEditorSettings(widgetId) {
     var editorElements = null,
@@ -4615,7 +4637,8 @@ var JupiterTooltip = {
       tooltipTrigger: widgetData.jupiter_widget_tooltip_trigger || 'mouseenter',
       customSelector: widgetData.jupiter_widget_tooltip_custom_selector || '',
       zIndex: widgetData.jupiter_widget_tooltip_z_index || '999',
-      delay: widgetData.jupiter_widget_tooltip_delay || '0'
+      delay: widgetData.jupiter_widget_tooltip_delay || '0',
+      triggerTarget: $(widgetData.jupiter_widget_tooltip_custom_selector)
     };
   },
   jupiterTooltipInstance: function jupiterTooltipInstance($scope) {
@@ -4624,8 +4647,9 @@ var JupiterTooltip = {
     var widgetId = $scope.data('id'),
         widgetSelector = $scope[0],
         editMode = Boolean(elementorFrontend.isEditMode());
-    var tooltipSelector = widgetSelector,
-        settings = {}; // Compatibility with jet tooltip.
+    var tooltipSelector = widgetSelector;
+    var settings = {},
+        customSelector = []; // Compatibility with jet tooltip.
 
     if ($(widgetSelector).hasClass('jet-tooltip-widget')) {
       return;
@@ -4649,14 +4673,14 @@ var JupiterTooltip = {
       return false;
     }
 
-    if ('false' === settings.tooltip || 'undefined' === typeof settings.tooltip || '' === settings.tooltipDescription) {
+    if ('true' !== settings.tooltip || 'undefined' === typeof settings.tooltip || '' === settings.tooltipDescription) {
       return false;
     }
 
     $scope.addClass('jupiter-tooltip-widget');
 
     if (settings.customSelector) {
-      tooltipSelector = $(settings.customSelector)[0];
+      customSelector = $(settings.customSelector);
     }
 
     if (editMode && !$('#jupiter-tooltip-content-' + widgetId)[0]) {
@@ -4677,6 +4701,7 @@ var JupiterTooltip = {
       offset: [settings.xOffset, settings.yOffset],
       animation: settings.tooltipAnimation,
       trigger: settings.tooltipTrigger,
+      triggerTarget: customSelector.length > 0 ? (0, _toConsumableArray2["default"])(customSelector) : null,
       interactive: true,
       zIndex: settings.zIndex,
       maxWidth: 'none',
@@ -4728,7 +4753,7 @@ elementorFrontend.hooks.addAction('frontend/element_ready/widget', function ($sc
   new JupiterTooltip.jupiterTooltipInstance($scope);
 });
 
-},{"@babel/runtime/helpers/interopRequireDefault":96,"tippy.js":124}],24:[function(require,module,exports){
+},{"@babel/runtime/helpers/interopRequireDefault":96,"@babel/runtime/helpers/toConsumableArray":105,"tippy.js":124}],24:[function(require,module,exports){
 "use strict";
 
 var WrapperLink = {
@@ -5823,6 +5848,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = _default;
 
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+
 var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/toConsumableArray"));
 
 var _module = _interopRequireDefault(require("../utils/module"));
@@ -5880,6 +5907,9 @@ var AdvancedPosts = _module["default"].extend({
     };
   },
   bindEvents: function bindEvents() {
+    this.handleQueryOnLoad();
+    this.handlePopstate();
+
     if (this.getInstanceValue('mirror_rows') === 'yes') {
       elementorFrontend.addListenerOnce(this.$element.data('model-cid'), 'resize', this.mirrorRows.bind(this));
     }
@@ -6120,23 +6150,26 @@ var AdvancedPosts = _module["default"].extend({
     });
   },
   addPosts: function addPosts(data) {
+    var queryLoad = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
     var state = this.getSettings('state');
 
     if (state.isLoading || state.paged < 1) {
       return false;
     }
 
-    this.ajaxPosts(data, this.appendPosts);
+    this.ajaxPosts(data, this.appendPosts, queryLoad);
     return true;
   },
   setPosts: function setPosts(data) {
+    var queryLoad = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    var isPopState = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
     var state = this.getSettings('state');
 
     if (state.isLoading) {
       return false;
     }
 
-    this.ajaxPosts(data, this.renderPosts);
+    this.ajaxPosts(data, this.renderPosts, queryLoad, isPopState);
     return true;
   },
   handleSort: function handleSort(category) {
@@ -6220,7 +6253,8 @@ var AdvancedPosts = _module["default"].extend({
 
       _this7.addPosts({
         paged: newPaged,
-        category: loadMorestate.category
+        category: loadMorestate.category,
+        is_appended: true
       });
     });
   },
@@ -6255,7 +6289,8 @@ var AdvancedPosts = _module["default"].extend({
         var newPaged = state.paged + 1;
         self.addPosts({
           paged: newPaged,
-          category: state.category
+          category: state.category,
+          is_appended: true
         });
       }, options);
     });
@@ -6271,6 +6306,7 @@ var AdvancedPosts = _module["default"].extend({
   renderPosts: function renderPosts(res) {
     var _this$elements$$preLo, _this$elements$$preLo2, _this$elements$$sortP, _this$elements$$sortP2;
 
+    var queryLoad = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
     this.elements.$postsContainer.empty();
     this.elements.$postsContainer.append(res.posts);
 
@@ -6289,7 +6325,21 @@ var AdvancedPosts = _module["default"].extend({
     this.setPaged({
       paged: 1,
       maxNumPages: res.max_num_pages
-    }); // eslint-disable-next-line no-unused-expressions
+    });
+
+    if (queryLoad) {
+      var data = this.urlAnalyze();
+
+      if (this.getInstanceValue('pagination_type') === 'page_based') {
+        this.Pagination.recreatePagination(res.max_num_pages, data.paged);
+      }
+
+      this.setPaged({
+        paged: data.paged,
+        maxNumPages: res.max_num_pages
+      });
+    } // eslint-disable-next-line no-unused-expressions
+
 
     (_this$elements$$preLo = this.elements.$preLoader[0]) === null || _this$elements$$preLo === void 0 ? void 0 : (_this$elements$$preLo2 = _this$elements$$preLo.classList) === null || _this$elements$$preLo2 === void 0 ? void 0 : _this$elements$$preLo2.remove('active-preloader'); // eslint-disable-next-line no-unused-expressions
 
@@ -6297,12 +6347,19 @@ var AdvancedPosts = _module["default"].extend({
     this.initialize();
   },
   appendPosts: function appendPosts(res) {
+    var queryLoad = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
     var state = this.getSettings('state');
     this.elements.$postsContainer.append(res.posts);
-    this.setPaged({
+    var data = {
       paged: state.paged + 1,
       maxNumPages: res.max_num_pages
-    });
+    };
+
+    if (queryLoad) {
+      data.paged = state.paged;
+    }
+
+    this.setPaged(data);
     this.afterAppend();
   },
   afterAppend: function afterAppend() {
@@ -6339,6 +6396,8 @@ var AdvancedPosts = _module["default"].extend({
     (_this$elements$$sortP3 = this.elements.$sortPreLoader[0]) === null || _this$elements$$sortP3 === void 0 ? void 0 : (_this$elements$$sortP4 = _this$elements$$sortP3.classList) === null || _this$elements$$sortP4 === void 0 ? void 0 : _this$elements$$sortP4.remove('active-preloader');
   },
   ajaxPosts: function ajaxPosts(data, callback) {
+    var queryLoad = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+    var isPopState = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
     var archiveQuery = this.elements.$postsContainer.data('archive-query'),
         self = this;
     var ajaxData = {
@@ -6351,6 +6410,10 @@ var AdvancedPosts = _module["default"].extend({
       nonce: ravenTools.nonce
     };
 
+    if (data.should_append) {
+      ajaxData.should_append = true;
+    }
+
     if (archiveQuery) {
       ajaxData.archive_query = JSON.stringify(archiveQuery);
     }
@@ -6360,13 +6423,54 @@ var AdvancedPosts = _module["default"].extend({
         return;
       }
 
-      callback(response);
+      if (queryLoad) {
+        callback(response, queryLoad);
+      } else {
+        callback(response);
+      }
+    };
+
+    var addParametersToUrl = function addParametersToUrl(url, params) {
+      var urlObj = new URL(url);
+      var searchParams = new URLSearchParams(urlObj.search); // Add new parameters
+
+      for (var _i = 0, _Object$entries = Object.entries(params); _i < _Object$entries.length; _i++) {
+        var _Object$entries$_i = (0, _slicedToArray2["default"])(_Object$entries[_i], 2),
+            key = _Object$entries$_i[0],
+            value = _Object$entries$_i[1];
+
+        searchParams.set(key, value);
+      } // Update the URL with new search parameters
+
+
+      urlObj.search = searchParams.toString();
+      var currentUrl = urlObj.toString();
+
+      if (!isPopState) {
+        window.history.pushState({
+          path: currentUrl
+        }, '', currentUrl);
+      }
     };
 
     this.setSettings('state.isLoading', true);
     wp.ajax.post(ajaxData).done(function (response) {
       ajaxSuccess(response);
       self.setSettings('state.isLoading', false);
+      var params = {
+        jupiterx_filters: 1,
+        jupiterx_page: data.paged
+      };
+
+      if (data.category) {
+        params.category = data.category;
+      }
+
+      if (data.is_appended) {
+        params.is_appended = data.is_appended;
+      }
+
+      addParametersToUrl(window.location.href, params);
     });
   },
   getCurrentPostId: function getCurrentPostId() {
@@ -6375,11 +6479,13 @@ var AdvancedPosts = _module["default"].extend({
   setPaged: function setPaged(params) {
     var paged = params.paged,
         maxNumPages = params.maxNumPages;
+    this.elements.$loadMore.attr('data-paged', paged);
 
     if (paged >= maxNumPages) {
       paged = -1;
     }
 
+    this.elements.$loadMore.attr('data-paged-next', paged);
     this.elements.$loadMore.show();
 
     if (paged === -1) {
@@ -6605,6 +6711,69 @@ var AdvancedPosts = _module["default"].extend({
 
       window.location.assign(postLink);
     });
+  },
+  handleQueryOnLoad: function handleQueryOnLoad() {
+    var data = this.urlAnalyze();
+
+    if (!data) {
+      return;
+    }
+
+    this.setSettings('state.paged', data.paged);
+    this.setSettings('state.category', data.category);
+    this.elements.$postsContainer.find('.raven-posts-item').delay('100').addClass('raven-posts-remove-animation');
+
+    if (this.getInstanceValue('show_sortable') === 'yes') {
+      this.elements.$sortable.find('.raven-sortable-item').removeClass('raven-sortable-active');
+      var sortableItem = this.elements.$sortable.find(".raven-sortable-item[data-category=\"".concat(data.category, "\"]"));
+      sortableItem.addClass('raven-sortable-active');
+    }
+
+    if (data.should_append === true && this.elements.$infinteLoadIndicator.length) {
+      this.elements.$postsContainer.empty();
+      this.addPosts(data, true);
+      this.afterAppend();
+    } else {
+      this.setPosts(data, true);
+    }
+  },
+  handlePopstate: function handlePopstate() {
+    var _this8 = this;
+
+    if (this.getInstanceValue('pagination_type') === 'page_based' || this.urlAnalyze()) {
+      window.addEventListener('popstate', function () {
+        var urlData = _this8.urlAnalyze();
+
+        if (!urlData) {
+          urlData = {
+            paged: 1,
+            category: -1
+          };
+        }
+
+        _this8.elements.$postsContainer.empty();
+
+        _this8.setPosts(urlData, true, true);
+      });
+    }
+  },
+  urlAnalyze: function urlAnalyze() {
+    var url = new URL(window.location.href);
+
+    if ('1' !== url.searchParams.get('jupiterx_filters')) {
+      return false;
+    }
+
+    var data = {
+      paged: url.searchParams.get('jupiterx_page') ? Number(url.searchParams.get('jupiterx_page')) : 1,
+      category: url.searchParams.get('category') ? Number(url.searchParams.get('category')) : -1
+    };
+
+    if (url.searchParams.get('is_appended')) {
+      data.should_append = true;
+    }
+
+    return data;
   }
 });
 
@@ -6614,7 +6783,7 @@ function _default($scope) {
   });
 }
 
-},{"../utils/module":9,"../utils/pagination":20,"../utils/sortable":22,"@babel/runtime/helpers/interopRequireDefault":96,"@babel/runtime/helpers/toConsumableArray":105}],29:[function(require,module,exports){
+},{"../utils/module":9,"../utils/pagination":20,"../utils/sortable":22,"@babel/runtime/helpers/interopRequireDefault":96,"@babel/runtime/helpers/slicedToArray":103,"@babel/runtime/helpers/toConsumableArray":105}],29:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6697,7 +6866,8 @@ var AnimatedHeading = _module["default"].extend({
       animationIn: 'raven-heading-animation-in',
       typeSelected: 'raven-heading-typing-selected',
       activateHighlight: 'raven-animated',
-      hideHighlight: 'raven-hide-highlight'
+      hideHighlight: 'raven-hide-highlight',
+      typingCursor: 'raven-heading-typing-cursor'
     };
     return settings;
   },
@@ -6736,12 +6906,53 @@ var AnimatedHeading = _module["default"].extend({
         $word.append($letter);
       });
       $word.css('opacity', 1);
-    });
+    }); // Create cursor for typing animation
+
+    if ('typing' === this.getElementSettings('animation_type')) {
+      this.createTypingCursor();
+    }
+  },
+  createTypingCursor: function createTypingCursor() {
+    var classes = this.getSettings('classes'); // Remove any existing cursor
+
+    this.elements.$dynamicWrapper.find('.' + classes.typingCursor).remove(); // Create new cursor element
+
+    this.$cursor = $('<span>', {
+      "class": classes.typingCursor,
+      'aria-hidden': 'true'
+    }).text('|'); // Position cursor after the first active word
+
+    this.positionCursor();
+  },
+  positionCursor: function positionCursor() {
+    var classes = this.getSettings('classes');
+    var $activeWord = this.elements.$dynamicText.filter('.' + classes.textActive);
+
+    if (!this.$cursor || !$activeWord.length) {
+      return;
+    } // Remove cursor from current position
+
+
+    this.$cursor.detach(); // Find the last visible letter in the active word
+
+    var $visibleLetters = $activeWord.find('.' + classes.dynamicLetter + '.' + classes.animationIn);
+
+    if ($visibleLetters.length > 0) {
+      // Insert cursor after the last visible letter
+      $visibleLetters.last().after(this.$cursor);
+    } else {
+      // No letters visible yet, insert at the beginning of the word
+      $activeWord.prepend(this.$cursor);
+    }
   },
   showLetter: function showLetter($letter, $word, thisWordHasBiggerLength, duration) {
     var self = this,
         classes = this.getSettings('classes');
-    $letter.addClass(classes.animationIn);
+    $letter.addClass(classes.animationIn); // Update cursor position for typing animation
+
+    if ('typing' === this.getElementSettings('animation_type')) {
+      this.positionCursor();
+    }
 
     if (!$letter.is(':last-child')) {
       setTimeout(function () {
@@ -6759,7 +6970,11 @@ var AnimatedHeading = _module["default"].extend({
   hideLetter: function hideLetter($letter, $word, thisWordHasBiggerLength, duration) {
     var self = this,
         settings = this.getSettings();
-    $letter.removeClass(settings.classes.animationIn);
+    $letter.removeClass(settings.classes.animationIn); // Update cursor position for typing animation
+
+    if ('typing' === this.getElementSettings('animation_type')) {
+      this.positionCursor();
+    }
 
     if (!$letter.is(':last-child')) {
       setTimeout(function () {
@@ -6786,8 +7001,10 @@ var AnimatedHeading = _module["default"].extend({
     }
 
     if ('clip' === animationType) {
+      // Store the word's natural width before animation constrains it
+      var naturalWidth = $word.data('natural-width') || $word.width();
       self.elements.$dynamicWrapper.animate({
-        width: $word.width() + 10
+        width: naturalWidth + 10
       }, settings.revealDuration, function () {
         setTimeout(function () {
           self.hideWord($word);
@@ -6808,10 +7025,19 @@ var AnimatedHeading = _module["default"].extend({
     }
 
     if ('typing' === animationType) {
+      // Hide cursor during selection
+      if (self.$cursor) {
+        self.$cursor.hide();
+      }
+
       self.elements.$dynamicWrapper.addClass(classes.typeSelected);
       setTimeout(function () {
         self.elements.$dynamicWrapper.removeClass(classes.typeSelected);
-        $word.addClass(settings.classes.textInactive).removeClass(classes.textActive).children(letterSelector).removeClass(classes.animationIn);
+        $word.addClass(settings.classes.textInactive).removeClass(classes.textActive).children(letterSelector).removeClass(classes.animationIn); // Show cursor again
+
+        if (self.$cursor) {
+          self.$cursor.show();
+        }
       }, settings.selectionDuration);
       setTimeout(function () {
         self.showWord(nextWord, settings.typeLettersDelay);
@@ -6852,7 +7078,14 @@ var AnimatedHeading = _module["default"].extend({
   animateHeading: function animateHeading() {
     var self = this,
         animationType = self.getElementSettings('animation_type'),
-        $dynamicWrapper = self.elements.$dynamicWrapper;
+        $dynamicWrapper = self.elements.$dynamicWrapper; // Store natural widths of all words before animations start
+
+    if ('clip' === animationType) {
+      self.elements.$dynamicText.each(function () {
+        var $word = $(this);
+        $word.data('natural-width', $word.width());
+      });
+    }
 
     if ('clip' === animationType) {
       $dynamicWrapper.width($dynamicWrapper.width() + 10);
@@ -13415,7 +13648,10 @@ var ProductsCarousel = _module["default"].extend({
         addToCartButton: 'a.add_to_cart_button',
         productTitle: '.woocommerce-loop-product__title',
         productPrice: '.price',
-        ratingWrapper: '.rating-wrapper'
+        ratingWrapper: '.rating-wrapper',
+        product_type_external: 'a.product_type_external',
+        product_type_grouped: 'a.product_type_grouped',
+        product_type_simple: 'a.product_type_simple'
       }
     };
   },
@@ -13431,7 +13667,10 @@ var ProductsCarousel = _module["default"].extend({
       $addToCartButton: this.$element.find(selectors.addToCartButton),
       $productTitle: this.$element.find(selectors.productTitle),
       $productPrice: this.$element.find(selectors.productPrice),
-      $ratingWrapper: this.$element.find(selectors.ratingWrapper)
+      $ratingWrapper: this.$element.find(selectors.ratingWrapper),
+      $product_type_external: this.$element.find(selectors.product_type_external),
+      $product_type_grouped: this.$element.find(selectors.product_type_grouped),
+      $product_type_simple: this.$element.find(selectors.product_type_simple)
     };
   },
   getCarouselSettings: function getCarouselSettings() {
@@ -13678,6 +13917,9 @@ var ProductsCarousel = _module["default"].extend({
 
     if ('outside' === carouselSettings.atc_button_location) {
       contents.push(this.elements.$addToCartButton);
+      contents.push(this.elements.$product_type_external);
+      contents.push(this.elements.$product_type_grouped);
+      contents.push(this.elements.$product_type_simple);
     }
 
     contents.forEach(function (content) {
@@ -13975,7 +14217,7 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-$ = jQuery;
+var $ = jQuery;
 
 var ShoppingCart = _module["default"].extend({
   getDefaultSettings: function getDefaultSettings() {

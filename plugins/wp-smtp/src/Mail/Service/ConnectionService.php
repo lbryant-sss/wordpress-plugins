@@ -37,21 +37,42 @@ class ConnectionService {
 	 *
 	 * @param array $data The data for the new SMTP connection.
 	 *
-	 * @return bool|\WP_Error The result of the save operation, either the updated providers or validation errors.
+	 * @return array|\WP_Error The result of the save operation, either the connector data or validation errors.
 	 */
 	public function save_connection( array $data ) {
-		$name = $data['name'] ?? '';
+		$input     = $data;
+		$name      = $data['name'] ?? '';
+		$is_update = ! empty( $data['id'] );
 
-		if ( ! empty( $data['id'] ) ) {
+		if ( $is_update ) {
 			$model = $this->providers_repository->get_provider_by_id( $data['id'] );
+			if ( ! $model ) {
+				$wp_error = new \WP_Error();
+				$wp_error->add( 'connector_not_found', __( 'Connector not found.', 'wp-smtp' ), [ 'status' => 404 ] );
+				return $wp_error;
+			}
+			// For updates, merge with existing data
+			$existing_data = $model->to_array();
+			$data          = array_merge( $existing_data, $data );
+			
+			// Use existing name if not provided
+			if ( empty( $name ) ) {
+				$name         = $model->get_name();
+				$data['name'] = $name;
+			}
 		} else {
+			// For new connectors, name is required
+			if ( empty( $name ) ) {
+				$wp_error = new \WP_Error();
+				$wp_error->add( 'missing_name', __( 'Connector name is required.', 'wp-smtp' ), [ 'status' => 400 ] );
+				return $wp_error;
+			}
 			$model = $this->providers_repository->factory( $name );
 		}
 
 		if ( ! is_object( $model ) ) {
 			$wp_error = new \WP_Error();
-			$wp_error->add( 'invalid_model', __( 'Invalid model object.', 'wp-smtp' ) );
-
+			$wp_error->add( 'invalid_connector_type', __( 'Invalid connector type.', 'wp-smtp' ), [ 'status' => 400 ] );
 			return $wp_error;
 		}
 
@@ -60,22 +81,34 @@ class ConnectionService {
 		if ( $model->validation() ) {
 			$this->providers_repository->save( $model );
 
-			$is_active = filter_var( $data['is_active'] ?? false, FILTER_VALIDATE_BOOLEAN );
-
-			if ( $is_active ) {
-				// let make this active and turn other off.
-				$this->make_provider_active( $model->get_id() );
-			} else {
-				$model->set_is_active( $is_active );
-				$this->providers_repository->save( $model );
+			if ( isset( $input['is_active'] ) ) {
+				$model->set_is_active( (bool) $input['is_active'] );
+				if ( ! $model->is_active() ) {
+					// Inactive connection can't be a default
+					$model->set_is_default( false );
+				} elseif ( ! $this->providers_repository->get_default_provider() ) {
+					// If we activate the connection and there is no default connection, let's make this connection default
+					$model->set_is_default( true );
+					$this->providers_repository->set_default_provider( $model->get_id() );
+				}
 			}
 
-			return true;
+			if ( isset( $input['is_default'] ) ) {
+				$model->set_is_default( (bool) $input['is_default'] );
+				if ( $model->is_default() ) {
+					// Default connection must be active
+					$model->set_is_active( true );
+					$this->providers_repository->set_default_provider( $model->get_id() );
+				}
+			}
+
+			$this->providers_repository->save( $model );
+			return $model->to_array();
 		}
 
 		// Convert validation errors to WP_Error.
 		$errors   = $model->get_errors();
-		$wp_error = new \WP_Error();
+		$wp_error = new \WP_Error( 'invalid_connection_data', 'Invalid connection data.', [ 'status' => 400 ] );
 
 		foreach ( $errors as $field => $error_message ) {
 			$wp_error->add( $field, $error_message );
@@ -98,24 +131,6 @@ class ConnectionService {
 	}
 
 	/**
-	 * Makes an SMTP provider active.
-	 *
-	 * @param string $provider_id The ID of the provider to activate.
-	 *
-	 * @return array The updated list of providers or an error message.
-	 */
-	public function make_provider_active( string $provider_id ): array {
-		$provider = $this->providers_repository->get_provider_by_id( $provider_id );
-		if ( empty( $provider ) ) {
-			return [ 'error' => 'Provider not found.' ];
-		}
-
-		$this->providers_repository->set_active_provider( $provider_id );
-
-		return $this->providers_repository->get_all_providers_as_array();
-	}
-
-	/**
 	 * Validates the test email input.
 	 *
 	 * @param array $data The data for the test email.
@@ -124,15 +139,17 @@ class ConnectionService {
 	 */
 	public function validate_test_email_input( array $data ) {
 		$rules = [
-			'to_email' => [ 'required', 'email' ],
-			'subject'  => [ 'required' ],
-			'message'  => [ 'required' ],
+			'from_email' => [ 'optional', 'email' ],
+			'to_email'   => [ 'required', 'email' ],
+			'subject'    => [ 'required' ],
+			'message'    => [ 'required' ],
 		];
 
 		$labels = [
-			'to_email' => 'To Email',
-			'subject'  => 'Subject',
-			'message'  => 'Message',
+			'from_email' => 'From Email',
+			'to_email'   => 'To Email',
+			'subject'    => 'Subject',
+			'message'    => 'Message',
 		];
 
 		$validator = new Validator( $rules, $data, $labels );

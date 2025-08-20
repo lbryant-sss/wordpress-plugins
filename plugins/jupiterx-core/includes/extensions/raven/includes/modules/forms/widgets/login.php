@@ -127,7 +127,6 @@ class Login extends Form {
 							'operator' => 'in',
 							'value' => [
 								'recaptcha',
-								'recaptcha_v3',
 							],
 						],
 						[
@@ -157,7 +156,6 @@ class Login extends Form {
 							'operator' => 'in',
 							'value' => [
 								'recaptcha',
-								'recaptcha_v3',
 							],
 						],
 						[
@@ -278,6 +276,12 @@ class Login extends Form {
 						'type' => 'recaptcha',
 						'_enable' => 'false',
 						'name' => 'recaptcha',
+					],
+					[
+						'label' => 'reCAPTCHA V3',
+						'type' => 'recaptcha_v3',
+						'_enable' => 'false',
+						'name' => 'recaptchav3',
 					],
 				],
 				'item_actions' => [

@@ -101,6 +101,7 @@ class Frontend {
 			add_filter( 'excerpt_more', [ $this, 'excerpt_more' ], PHP_INT_MAX );
 
 			$queried_posts['max_num_pages'] = $this->wp_query->max_num_pages;
+			$queried_posts['total_posts']   = $this->wp_query->found_posts;
 
 			$increment = 0;
 
@@ -144,7 +145,8 @@ class Frontend {
 			$args['ignore_sticky_posts'] = true;
 
 			if ( $this->archive_query ) {
-				$args = $this->archive_query;
+				$this->archive_query['ignore_sticky_posts'] = true;
+				$args                                       = $this->archive_query;
 			}
 		}
 

@@ -8,7 +8,7 @@ import styled from '@emotion/styled';
  */
 import { SnackbarList } from '@wordpress/components';
 
-export const FloatingSnackBar = styled( SnackbarList )`
+export const FloatingSnackBar = styled(SnackbarList)`
 	position: fixed;
 	right: 20px;
 	bottom: 20px;

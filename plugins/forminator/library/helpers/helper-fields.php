@@ -647,9 +647,7 @@ function forminator_replace_form_data( $content, ?Forminator_Form_Model $custom_
 				$value = forminator_get_value_from_form_entry( $element_id, $custom_form, $entry, $get_labels, $urlencode, $user_meta, $is_pdf );
 			}
 
-			if ( $urlencode ) {
-				$value = rawurlencode( $value );
-			} else {
+			if ( ! $urlencode ) {
 				$content = forminator_replace_placeholder_in_urls( $content, $match, $value );
 			}
 			$content = str_replace( $match, $value, $content );

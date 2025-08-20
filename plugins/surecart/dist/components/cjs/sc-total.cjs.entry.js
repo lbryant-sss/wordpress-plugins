@@ -31,14 +31,16 @@ const ScTotal = class {
             amount_due: 'amount_due_display_amount',
         };
         this.total = 'amount_due';
+        this.checkout = undefined;
     }
     render() {
-        var _a, _b, _c, _d, _e;
-        if (!((_a = mutations.state === null || mutations.state === void 0 ? void 0 : mutations.state.checkout) === null || _a === void 0 ? void 0 : _a.currency))
+        var _a, _b;
+        const checkoutData = this.checkout || (mutations.state === null || mutations.state === void 0 ? void 0 : mutations.state.checkout);
+        if (!(checkoutData === null || checkoutData === void 0 ? void 0 : checkoutData.currency))
             return;
-        if (!((_d = (_c = (_b = mutations.state === null || mutations.state === void 0 ? void 0 : mutations.state.checkout) === null || _b === void 0 ? void 0 : _b.line_items) === null || _c === void 0 ? void 0 : _c.data) === null || _d === void 0 ? void 0 : _d.length))
+        if (!((_b = (_a = checkoutData === null || checkoutData === void 0 ? void 0 : checkoutData.line_items) === null || _a === void 0 ? void 0 : _a.data) === null || _b === void 0 ? void 0 : _b.length))
             return;
-        return ((_e = mutations.state === null || mutations.state === void 0 ? void 0 : mutations.state.checkout) === null || _e === void 0 ? void 0 : _e[ORDER_KEYS[this.total]]) || '';
+        return (checkoutData === null || checkoutData === void 0 ? void 0 : checkoutData[ORDER_KEYS[this.total]]) || '';
     }
 };
 ScTotal.style = ScTotalStyle0;

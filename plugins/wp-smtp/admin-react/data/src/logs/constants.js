@@ -9,11 +9,14 @@
  * @property {Object|null} selectedLog - The currently selected log entry.
  */
 export const DEFAULT_STATE = {
-    logs: SolidWPMail.first_page_logs,
-    totalPages: SolidWPMail.total_pages,
-    currentPage: 1,
-    selectedLog: SolidWPMail.first_page_logs.length > 0 ? SolidWPMail.first_page_logs[0] : null,
-    isSearching: false,
+	logs: SolidWPMail.first_page_logs,
+	totalPages: SolidWPMail.total_pages,
+	currentPage: 1,
+	selectedLog:
+		SolidWPMail.first_page_logs.length > 0
+			? SolidWPMail.first_page_logs[0]
+			: null,
+	isSearching: false,
 };
 
 /**

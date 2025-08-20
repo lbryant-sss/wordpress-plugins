@@ -329,26 +329,6 @@ $settings = array(
 
 	array(
 		'callback' 		=> 'color',
-		'title' 		=> 'Progress Bar Color',
-		'id' 			=> 'sch-pbcolor',
-		'section_id' 	=> 'sc_head',
-		'default' 		=> '#f0f0f0',
-		'pro' 			=> 'yes'
-	),
-
-
-	array(
-		'callback' 		=> 'color',
-		'title' 		=> 'Progress Bar Filled Color',
-		'id' 			=> 'sch-pbfillcolor',
-		'section_id' 	=> 'sc_head',
-		'default' 		=> '#000000',
-		'pro' 			=> 'yes'
-	),
-
-
-	array(
-		'callback' 		=> 'color',
 		'title' 		=> 'Background Color',
 		'id' 			=> 'sch-bgcolor',
 		'section_id' 	=> 'sc_head',
@@ -454,23 +434,35 @@ $settings = array(
 				'separate' 	=> 'Show separately',
 			),
 		),
-		'default' 		=> 'one_liner',
+		'default' 		=> 'separate',
 		'desc' 			=> '"One line" works when quantity, price and total are enabled'
 	),
 
 
 	array(
-		'callback' 		=> 'select',
+		'callback' 		=> 'asset_selector',
 		'title' 		=> 'Products Layout',
 		'id' 			=> 'scb-playout',
 		'section_id' 	=> 'sc_body',
-		'args' 			=> array(
-			'options' 	=> array(
-				'rows' 		=> 'Rows',
-				'cards' 	=> 'Cards',
-			),
-		),
 		'default' 		=> 'rows',
+		'args' 			=> array(
+			'options' => array(
+				'rows' 	=> array(
+					'title' => 'Rows',
+					'asset' => XOO_WSC_URL.'/admin/assets/images/pattern-row.jpg',
+				),
+				'cards' 	=> array(
+					'title' => 'Cards',
+					'asset' => XOO_WSC_URL.'/admin/assets/images/pattern-card.jpg',
+				),
+				
+			),
+			'custom_attributes' => array(
+				'data-multiple' => 'no',
+				'data-required' => 'yes'
+			)
+		),
+
 	),
 
 

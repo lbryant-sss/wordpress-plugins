@@ -8,10 +8,10 @@ import styled from '@emotion/styled';
  */
 import { Surface } from '@ithemes/ui';
 
-export const StyledMessageTab = styled( Surface )``;
+export const StyledMessageTab = styled(Surface)``;
 
 export const StyledRawMessage = styled.pre`
 	margin: 0;
 	overflow-x: auto;
-	padding: ${ ( { theme } ) => theme.spacing.section };
+	padding: ${({ theme }) => theme.spacing.section};
 `;

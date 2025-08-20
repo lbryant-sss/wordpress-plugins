@@ -2,6 +2,7 @@
  * Internal dependencies
  */
 import { LogoHeader } from '../../../components/icons';
+
 import { Toolbar } from './styles';
 
 /**

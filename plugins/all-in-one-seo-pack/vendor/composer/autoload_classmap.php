@@ -180,6 +180,7 @@ return array(
     'AIOSEO\\Plugin\\Common\\SearchStatistics\\SearchStatistics' => $baseDir . '/app/Common/SearchStatistics/SearchStatistics.php',
     'AIOSEO\\Plugin\\Common\\SearchStatistics\\Site' => $baseDir . '/app/Common/SearchStatistics/Site.php',
     'AIOSEO\\Plugin\\Common\\SearchStatistics\\Sitemap' => $baseDir . '/app/Common/SearchStatistics/Sitemap.php',
+    'AIOSEO\\Plugin\\Common\\SeoAnalysis\\SeoAnalysis' => $baseDir . '/app/Common/SeoAnalysis/SeoAnalysis.php',
     'AIOSEO\\Plugin\\Common\\SeoRevisions\\SeoRevisions' => $baseDir . '/app/Common/SeoRevisions/SeoRevisions.php',
     'AIOSEO\\Plugin\\Common\\Sitemap\\Content' => $baseDir . '/app/Common/Sitemap/Content.php',
     'AIOSEO\\Plugin\\Common\\Sitemap\\File' => $baseDir . '/app/Common/Sitemap/File.php',

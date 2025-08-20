@@ -32,6 +32,7 @@ class ProviderRepositoryTest extends WPTestCase {
 					'from_email' => 'sendgrid@example.com',
 					'from_name'  => 'SendGrid Sender',
 					'is_active'  => false,
+					'is_default' => false,
 				]
 			),
 			new ConnectorMailGun(
@@ -41,6 +42,7 @@ class ProviderRepositoryTest extends WPTestCase {
 					'from_email' => 'mailgun@example.com',
 					'from_name'  => 'MailGun Sender',
 					'is_active'  => false,
+					'is_default' => false,
 				]
 			),
 			new ConnectorSES(
@@ -50,6 +52,7 @@ class ProviderRepositoryTest extends WPTestCase {
 					'from_email' => 'ses@example.com',
 					'from_name'  => 'SES Sender',
 					'is_active'  => false,
+					'is_default' => false,
 				]
 			),
 			new ConnectorBrevo(
@@ -58,7 +61,8 @@ class ProviderRepositoryTest extends WPTestCase {
 					'name'       => 'brevo',
 					'from_email' => 'brevo@example.com',
 					'from_name'  => 'Brevo Sender',
-					'is_active'  => false,
+					'is_active'  => true,
+					'is_default' => false,
 				]
 			),
 			new ConnectorSMTP(
@@ -68,6 +72,7 @@ class ProviderRepositoryTest extends WPTestCase {
 					'from_email' => 'smtp@example.com',
 					'from_name'  => 'SMTP Sender',
 					'is_active'  => true,
+					'is_default' => true,
 				]
 			),
 		];
@@ -79,10 +84,13 @@ class ProviderRepositoryTest extends WPTestCase {
 		}
 	}
 
-	public function testGetActiveProvider(): void {
-		$activeProvider = $this->repository->get_active_provider();
-		$this->assertInstanceOf( ConnectorSMTP::class, $activeProvider );
-		$this->assertEquals( 'provider_smtp', $activeProvider->get_id() );
+	public function testGetActiveProviders(): void {
+		$activeProviders = $this->repository->get_active_providers();
+		$this->assertCount( 2, $activeProviders );
+		$this->assertInstanceOf( ConnectorSMTP::class, $activeProviders['provider_smtp'] );
+		$this->assertEquals( 'provider_smtp', $activeProviders['provider_smtp']->get_id() );
+		$this->assertInstanceOf( ConnectorSMTP::class, $activeProviders['provider_brevo'] );
+		$this->assertEquals( 'provider_brevo', $activeProviders['provider_brevo']->get_id() );
 	}
 
 	public function testSave(): void {
@@ -126,15 +134,15 @@ class ProviderRepositoryTest extends WPTestCase {
 		}
 	}
 
-	public function testSetActiveProvider(): void {
-		$this->repository->set_active_provider( 'provider_sendgrid' );
+	public function testSetDefaultProvider(): void {
+		$this->repository->set_default_provider( 'provider_sendgrid' );
 
 		foreach ( $this->providers as $provider ) {
 			$retrievedProvider = $this->repository->get_provider_by_id( $provider->get_id() );
 			if ( $provider->get_id() === 'provider_sendgrid' ) {
-				$this->assertTrue( $retrievedProvider->is_active() );
+				$this->assertTrue( $retrievedProvider->is_default() );
 			} else {
-				$this->assertFalse( $retrievedProvider->is_active() );
+				$this->assertFalse( $retrievedProvider->is_default() );
 			}
 		}
 	}

@@ -2,10 +2,10 @@
 
 namespace Unit\Connectors;
 
-use Codeception\Test\Unit;
+use lucatume\WPBrowser\TestCase\WPTestCase;
 use SolidWP\Mail\Connectors\ConnectorSES;
 
-class ConnectorSESTest extends Unit {
+class ConnectorSESTest extends WPTestCase {
 
 	public function testDefaultSettings(): void {
 		$provider = new ConnectorSES();

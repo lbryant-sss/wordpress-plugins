@@ -79,4 +79,51 @@ class LogsEndpointsTest extends WPRestApiTestCase {
 		$count = $this->repository->count_all_logs();
 		$this->assertEquals( 4, $count );
 	}
+
+	public function testClearAllLogs(): void {
+		wp_set_current_user(
+			$this->factory()->user->create( [ 'role' => 'administrator' ] )
+		);
+
+		// Verify we have logs initially
+		$initial_count = $this->repository->count_all_logs();
+		$this->assertEquals( 5, $initial_count );
+
+		$request  = new WP_REST_Request( 'DELETE', '/solidwp-mail/v1/logs' );
+		$response = rest_get_server()->dispatch( $request );
+
+		$this->assertSame( 204, $response->get_status() );
+
+		// Verify all logs are cleared
+		$final_count = $this->repository->count_all_logs();
+		$this->assertEquals( 0, $final_count );
+	}
+
+	public function testClearAllLogsUnauthorized(): void {
+		wp_set_current_user( 0 );
+
+		$request  = new WP_REST_Request( 'DELETE', '/solidwp-mail/v1/logs' );
+		$response = rest_get_server()->dispatch( $request );
+
+		$this->assertSame( 401, $response->get_status() );
+
+		// Verify logs are not cleared
+		$count = $this->repository->count_all_logs();
+		$this->assertEquals( 5, $count );
+	}
+
+	public function testClearAllLogsWithoutManageOptionsCapability(): void {
+		wp_set_current_user(
+			$this->factory()->user->create( [ 'role' => 'editor' ] )
+		);
+
+		$request  = new WP_REST_Request( 'DELETE', '/solidwp-mail/v1/logs' );
+		$response = rest_get_server()->dispatch( $request );
+
+		$this->assertSame( 403, $response->get_status() );
+
+		// Verify logs are not cleared
+		$count = $this->repository->count_all_logs();
+		$this->assertEquals( 5, $count );
+	}
 }

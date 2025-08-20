@@ -190,6 +190,14 @@ class JupiterX_Core_Condition_Manager {
 	public function get_data( $type, $section ) {
 
 		if ( 'wpml' === $type ) {
+			// Check if WPML is active
+			if ( ! defined( 'ICL_SITEPRESS_VERSION' ) ) {
+				return [
+					'list' => [],
+					'type' => $type,
+				];
+			}
+
 			$data = [
 				'list' => $this->get_wpml_options(),
 				'type' => $type,
@@ -283,6 +291,11 @@ class JupiterX_Core_Condition_Manager {
 	 * @return array An associative array of WPML options.
 	 */
 	private function get_wpml_options() {
+		// Check if WPML is active
+		if ( ! defined( 'ICL_SITEPRESS_VERSION' ) ) {
+			return [];
+		}
+
 		return [
 			''           => esc_html__( 'Select One', 'jupiterx-core' ),
 			'_language'  => esc_html__( 'Language', 'jupiterx-core' ),
@@ -554,7 +567,7 @@ class JupiterX_Core_Condition_Manager {
 		update_post_meta( $post, self::JUPITERX_CONDITIONS_COMPONENT_META_STRING, $conditions_string );
 
 		if ( ! $result ) {
-			wp_send_json_error( esc_html__( 'Conditions has been set successfully.', 'jupiterx-core' ) );
+			wp_send_json_error( esc_html__( 'Conditions has not been set successfully.', 'jupiterx-core' ) );
 		}
 
 		$this->add_posts_id_with_conditions( $post, $conditions );

@@ -8,12 +8,12 @@ import styled from '@emotion/styled';
  */
 import { Callout } from '@ithemes/ui';
 
-export const StyledCallout = styled( Callout )`
-	padding: ${ ( { theme } ) => theme.spacing.empty_connections };
+export const StyledCallout = styled(Callout)`
+	padding: ${({ theme }) => theme.spacing.empty_connections};
 
 	span {
-		margin-top: ${ ( { theme } ) => theme.spacing.section };
-		margin-bottom: ${ ( { theme } ) => theme.spacing.section };
+		margin-top: ${({ theme }) => theme.spacing.section};
+		margin-bottom: ${({ theme }) => theme.spacing.section};
 	}
 `;
 

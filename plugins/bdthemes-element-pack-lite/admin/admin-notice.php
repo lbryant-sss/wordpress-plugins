@@ -20,39 +20,15 @@ class Notices {
 
 	public function __construct() {
 
-		add_action('admin_notices', [$this, 'show_api_notices']);
+		// Admin API Notices
+		add_action('admin_notices', [$this, 'cleanup_expired_dismissals']);
+
 		add_action('admin_notices', [$this, 'show_notices']);
 		add_action('wp_ajax_element-pack-notices', [$this, 'dismiss']);
 
-	}
+		// AJAX endpoint to fetch API notices on demand (after page load)
+		add_action('wp_ajax_ep_fetch_api_notices', [$this, 'ajax_fetch_api_notices']);
 
-	/**
-	 * Fetch and display notices from API
-	 */
-	public function show_api_notices() {
-		$notices = $this->get_api_notices_data();
-		
-
-		
-		if (is_array($notices)) {
-			foreach ($notices as $index => $notice) {
-				// Check if notice is enabled and within date range
-				if ($this->should_show_notice($notice)) {
-					$notice_id = isset($notice->id) ? $notice->id : 'api-notice-' . $index;
-					
-					// Check if this notice should be shown (not dismissed)
-					if (!$this->is_notice_dismissed($notice_id)) {
-						self::add_notice([
-							'id' => 'api-notice-' . $notice_id,
-							'type' => isset($notice->type) ? $notice->type : 'info',
-							'dismissible' => true,
-							'dismissible-time' => isset($notice->visible_expired) ? $notice->visible_expired : HOUR_IN_SECONDS * 6,
-							'html_message' => $this->render_api_notice($notice),
-						]);
-					}
-				}
-			}
-		}
 	}
 
 	/**
@@ -61,6 +37,14 @@ class Notices {
 	 * @return array|mixed
 	 */
 	private function get_api_notices_data() {
+
+		// 6-hour transient cache for API response
+		$transient_key = 'ep_api_notices_element_pack';
+		$cached = get_transient($transient_key);
+		if ($cached !== false && is_array($cached)) {
+			return $cached;
+		}
+
 		// API endpoint for notices - you can change this to your actual endpoint
 		$api_url = 'https://store.bdthemes.com/api/notices/api-data-by-product';
 
@@ -82,7 +66,12 @@ class Notices {
 		$notices = json_decode($response_body);
 		
 		if( isset($notices->api) && isset($notices->api->{'element-pack'}) ) {
-			return $notices->api->{'element-pack'};
+			$data = $notices->api->{'element-pack'};
+			if (is_array($data)) {
+				$ttl = apply_filters('ep_api_notices_cache_ttl', 6 * HOUR_IN_SECONDS);
+				set_transient($transient_key, $data, $ttl);
+				return $data;
+			}
 		}
 
 		return [];
@@ -101,9 +90,33 @@ class Notices {
 			$dismissed_notices = [];
 		}
 
-		$is_dismissed = in_array($notice_id, $dismissed_notices);
+		// Check if notice is dismissed and if the end date has passed
+		if (isset($dismissed_notices[$notice_id])) {
+			$dismissal_data = $dismissed_notices[$notice_id];
+			
+			// If it's just a string (old format), treat it as permanently dismissed
+			if (is_string($dismissal_data)) {
+				return true;
+			}
+			
+			// If it's an array with end_date, check if end date has passed
+			if (is_array($dismissal_data) && isset($dismissal_data['end_date'])) {
+				$end_date = new \DateTime($dismissal_data['end_date'], new \DateTimeZone($dismissal_data['timezone'] ?? 'UTC'));
+				$current_date = new \DateTime('now', new \DateTimeZone($dismissal_data['timezone'] ?? 'UTC'));
+				
+				// If end date has passed, allow notice to show again
+				if ($current_date > $end_date) {
+					// Remove from dismissed list since end date has passed
+					unset($dismissed_notices[$notice_id]);
+					update_user_meta(get_current_user_id(), 'element_pack_dismissed_notices', $dismissed_notices);
+					return false;
+				}
+				
+				return true;
+			}
+		}
 
-		return $is_dismissed;
+		return false;
 	}
 
 	/**
@@ -122,6 +135,11 @@ class Notices {
 		
 		// Check if the notice is enabled
 		if (!isset($notice->is_enabled) || !$notice->is_enabled) {
+			return false;
+		}
+
+		// Check plugin compatibility
+		if (!$this->is_notice_compatible_with_plugin($notice)) {
 			return false;
 		}
 
@@ -160,6 +178,218 @@ class Notices {
 	}
 
 	/**
+	 * Check if a notice should be shown based on plugin priority
+	 * This is used when both plugins are installed to avoid duplicate notices
+	 *
+	 * @param object $notice The notice data from the API.
+	 * @return bool True if the notice should be shown, false otherwise.
+	 */
+	private function should_show_based_on_priority($notice) {
+		// If only one plugin is installed, show the notice
+		if (!$this->are_both_plugins_installed()) {
+			return true;
+		}
+		
+		// If both plugins are installed, check priority
+		$current_priority = $this->get_plugin_priority();
+		
+		// Lite version has priority 1, Pro version has priority 2
+		// Only show notices from the plugin with the highest priority (lowest number)
+		if ($current_priority === 1) {
+			// Lite version - show notices
+			return true;
+		} else {
+			// Pro version - don't show notices when both are installed
+			return false;
+		}
+	}
+
+	/**
+	 * Check if we should show this notice based on plugin priority
+	 * This prevents duplicate notices when both lite and pro versions are installed
+	 *
+	 * @param object $notice The notice data from the API.
+	 * @return bool True if the notice should be shown, false otherwise.
+	 */
+	private function should_show_notice_based_on_priority($notice) {
+		// If only one plugin is installed, show the notice
+		if (!$this->are_both_plugins_installed()) {
+			return true;
+		}
+		
+		// If both plugins are installed, check priority
+		$current_priority = $this->get_plugin_priority();
+		
+		// Lite version has priority 1, Pro version has priority 2
+		// Only show notices from the plugin with the highest priority (lowest number)
+		if ($current_priority === 1) {
+			// Lite version - show notices
+			return true;
+		} else {
+			// Pro version - don't show notices when both are installed
+			return false;
+		}
+	}
+
+	/**
+	 * Check if another plugin has already shown this notice
+	 * This prevents duplicate notices across different plugins with same codebase
+	 * Uses a global option to prevent duplicates across plugin instances
+	 *
+	 * @param object $notice The notice data from the API.
+	 * @return bool True if the notice should be shown, false if already shown by another plugin.
+	 */
+	private function should_show_notice_cross_plugin($notice) {
+		$notice_class = isset($notice->notice_class) ? $notice->notice_class : '';
+		
+		if (empty($notice_class)) {
+			return true; // No notice_class, show it
+		}
+		
+		// Use a global option to track notices shown across all plugin instances
+		$global_notice_key = 'bdt_global_notice_' . $notice_class;
+		$global_notice_data = get_option($global_notice_key, false);
+		
+		// Check if this notice was shown in the last few seconds (same page load)
+		if ($global_notice_data && is_array($global_notice_data)) {
+			$time_diff = time() - $global_notice_data['timestamp'];
+			
+			// If notice was shown in the last 10 seconds, consider it a duplicate
+			if ($time_diff < 10) {
+				return false;
+			}
+		}
+		
+		// Mark this notice as shown globally with current timestamp
+		update_option($global_notice_key, [
+			'plugin' => $this->get_current_plugin_slug(),
+			'timestamp' => time(),
+			'notice_class' => $notice_class
+		]);
+		
+		return true;
+	}
+
+	/**
+	 * Check if a notice is compatible with the current plugin installation
+	 *
+	 * @param object $notice The notice data from the API.
+	 * @return bool True if the notice should be shown, false otherwise.
+	 */
+	private function is_notice_compatible_with_plugin($notice) {
+		// Get current plugin info
+		$current_plugin_slug = $this->get_current_plugin_slug();
+		$is_pro_active = function_exists('element_pack_pro_activated') ? element_pack_pro_activated() : false;
+		$is_lite_active = $current_plugin_slug === 'bdthemes-element-pack-lite';
+		$is_pro_plugin = $current_plugin_slug === 'bdthemes-element-pack';
+		
+		// Get client targets, default to ['both'] if not set or not an array
+		$client_targets = (isset($notice->client_targets) && is_array($notice->client_targets))
+		? $notice->client_targets
+		: ['both'];
+
+		// Determine if this is targeted at Pro users
+		$pro_targeted = in_array('pro', $client_targets, true);
+		
+		// Ensure client_targets is always an array
+		if (!is_array($client_targets)) {
+			$client_targets = [$client_targets];
+		}
+		
+		// Handle pro_targeted parameter (only for free version)
+		if ($pro_targeted && $is_lite_active) {
+			// If pro_targeted is true, only show if pro is NOT active
+			$should_show = !$is_pro_active;
+			return $should_show;
+		}
+		
+		// Check if any of the client targets match current plugin status
+		foreach ($client_targets as $target) {
+			$target = trim($target); // Clean up any whitespace
+			
+			switch ($target) {
+				case 'pro':
+					// Pro-only notices: show only if pro is active
+					if ($is_pro_active) {
+						return true;
+					}
+					break;
+					
+				case 'free':
+					if ($is_lite_active) {
+						return true;
+					}
+					break;
+					
+				case 'both':
+					if ($is_lite_active && $is_pro_active) {
+						return $this->should_show_based_on_priority($notice);
+					} elseif ($is_lite_active && !$is_pro_active) {
+						return true;
+					} elseif ($is_pro_plugin && !$is_lite_active) {
+						return true;
+					}
+					break;
+			}
+		}
+		
+		return false;
+	}
+
+	/**
+	 * Get plugin priority for notice display
+	 * This helps determine which plugin should show notices when both are installed
+	 *
+	 * @return int Priority number (lower = higher priority)
+	 */
+	private function get_plugin_priority() {
+		$current_plugin_slug = $this->get_current_plugin_slug();
+		
+		// Lite version has higher priority (shows notices first)
+		if ($current_plugin_slug === 'bdthemes-element-pack-lite') {
+			return 1;
+		}
+		
+		// Pro version has lower priority
+		if ($current_plugin_slug === 'bdthemes-element-pack') {
+			return 2;
+		}
+		
+		// Default priority
+		return 999;
+	}
+
+	/**
+	 * Check if both plugins are installed and active
+	 *
+	 * @return bool
+	 */
+	private function are_both_plugins_installed() {
+		// Check if lite plugin is active
+		$lite_active = is_plugin_active('bdthemes-element-pack-lite/bdthemes-element-pack-lite.php');
+		
+		// Check if pro plugin is active
+		$pro_active = is_plugin_active('bdthemes-element-pack/bdthemes-element-pack.php');
+		
+		return $lite_active && $pro_active;
+	}
+
+	/**
+	 * Get current plugin slug
+	 *
+	 * @return string
+	 */
+	private function get_current_plugin_slug() {
+		// Get plugin basename from current file
+		$plugin_file = plugin_basename(BDTEP__FILE__);
+		
+		// Extract plugin slug from basename
+		$plugin_slug = dirname($plugin_file);
+		
+		return $plugin_slug;
+	}
+
+	/**
 	 * Render API notice HTML
 	 *
 	 * @param object $notice
@@ -192,54 +422,60 @@ class Notices {
 			
 			<?php $title = (isset($notice->title) && !empty($notice->title)) ? $notice->title : ''; ?>
 
-			<div class="bdt-plugin-logo-wrapper">
-				<img height="auto" width="40" src="<?php echo esc_url(BDTEP_ASSETS_URL); ?>images/logo.svg" alt="Element Pack Logo">
-			</div>
-
-			<div class="bdt-notice-content">
-				<?php if (isset($notice->logo) && !empty($notice->logo)) : ?>
-					<div class="bdt-notice-logo-wrapper">
-						<img width="100" src="<?php echo esc_url($notice->logo); ?>" alt="Logo">
-					</div>
-				<?php endif; ?>
-				<div class="bdt-notice-title-description">
-					<?php if (isset($title) && !empty($title)) : ?>
-						<h2 class="bdt-notice-title"><?php echo wp_kses_post($title); ?></h2>
-					<?php endif; ?>
-
-					<?php if (isset($notice->content) && !empty($notice->content)) : ?>
-						<div class="bdt-notice-html-content">
-							<?php echo wp_kses_post($notice->content); ?>
-						</div>
-					<?php endif; ?>
+			<div class="bdt-api-notice-content">
+				<div class="bdt-plugin-logo-wrapper">
+					<img height="auto" width="40" src="<?php echo esc_url(BDTEP_ASSETS_URL); ?>images/logo.svg" alt="Element Pack Logo">
 				</div>
 
-				<?php 
-				// Only show countdown if it's enabled, has an end date, and the end date is in the future
-				$show_countdown = isset($notice->show_countdown) && $notice->show_countdown && isset($notice->end_date);
-				if ($show_countdown) {
-					$end_timestamp = strtotime($notice->end_date);
-					$current_timestamp = current_time('timestamp');
-					$show_countdown = $end_timestamp > $current_timestamp;
-				}
-				?>
-				<?php if ($show_countdown) : ?>
-					<div class="bdt-notice-countdown" data-end-date="<?php echo esc_attr($notice->end_date); ?>" data-timezone="<?php echo esc_attr($notice->timezone ? $notice->timezone : 'UTC'); ?>">
-						<div class="countdown-timer">Loading...</div>
-					</div>
-				<?php endif; ?>
-
-				<?php if (isset($notice->link) && !empty($notice->link)) : ?>
-					<div class="bdt-notice-btn">
-						<a href="<?php echo esc_url($notice->link); ?>" target="_blank">
-							<div class="nm-notice-btn">
-							    <?php echo isset($notice->button_text) ? esc_html($notice->button_text) : 'Read More'; ?>
-								<span class="dashicons dashicons-arrow-right-alt"></span>
-								<div class="zolo-star zolo-star-1">✦</div><div class="zolo-star zolo-star-2">✦</div><div class="zolo-star zolo-star-3">✦</div><div class="zolo-star zolo-star-4">✦</div><div class="zolo-star zolo-star-5">✦</div><div class="zolo-star zolo-star-6">✦</div>
+				<div class="bdt-notice-content">
+					<div class="bdt-notice-content-inner">
+						<?php if (isset($notice->logo) && !empty($notice->logo)) : ?>
+							<div class="bdt-notice-logo-wrapper">
+								<img width="100" src="<?php echo esc_url($notice->logo); ?>" alt="Logo">
 							</div>
-						</a>
+						<?php endif; ?>
+						<div class="bdt-notice-title-description">
+							<?php if (isset($title) && !empty($title)) : ?>
+								<h2 class="bdt-notice-title"><?php echo wp_kses_post($title); ?></h2>
+							<?php endif; ?>
+		
+							<?php if (isset($notice->content) && !empty($notice->content)) : ?>
+								<div class="bdt-notice-html-content">
+									<?php echo wp_kses_post($notice->content); ?>
+								</div>
+							<?php endif; ?>
+						</div>
 					</div>
-				<?php endif; ?>
+
+					<div class="bdt-notice-content-right">
+						<?php 
+						// Only show countdown if it's enabled, has an end date, and the end date is in the future
+						$show_countdown = isset($notice->show_countdown) && $notice->show_countdown && isset($notice->end_date);
+						if ($show_countdown) {
+							$end_timestamp = strtotime($notice->end_date);
+							$current_timestamp = current_time('timestamp');
+							$show_countdown = $end_timestamp > $current_timestamp;
+						}
+						?>
+						<?php if ($show_countdown) : ?>
+							<div class="bdt-notice-countdown" data-end-date="<?php echo esc_attr($notice->end_date); ?>" data-timezone="<?php echo esc_attr($notice->timezone ? $notice->timezone : 'UTC'); ?>">
+								<div class="countdown-timer">Loading...</div>
+							</div>
+						<?php endif; ?>
+		
+						<?php if (isset($notice->link) && !empty($notice->link)) : ?>
+							<div class="bdt-notice-btn">
+								<a href="<?php echo esc_url($notice->link); ?>" target="_blank">
+									<div class="nm-notice-btn">
+										<?php echo isset($notice->button_text) ? esc_html($notice->button_text) : 'Read More'; ?>
+										<span class="dashicons dashicons-arrow-right-alt"></span>
+										<div class="zolo-star zolo-star-1">✦</div><div class="zolo-star zolo-star-2">✦</div><div class="zolo-star zolo-star-3">✦</div><div class="zolo-star zolo-star-4">✦</div><div class="zolo-star zolo-star-5">✦</div><div class="zolo-star zolo-star-6">✦</div>
+									</div>
+								</a>
+							</div>
+						<?php endif; ?>
+					</div>
+				</div>
 			</div>
 		</div>
 		<?php
@@ -250,6 +486,60 @@ class Notices {
 		if (is_array($args)) {
 			self::$notices[] = $args;
 		}
+	}
+
+	/**
+	 * AJAX: Build and return API notices HTML for dynamic injection
+	 */
+	public function ajax_fetch_api_notices() {
+		$nonce = isset($_POST['_wpnonce']) ? sanitize_text_field($_POST['_wpnonce']) : '';
+		if (!wp_verify_nonce($nonce, 'element-pack')) {
+			wp_send_json_error([ 'message' => 'invalid_nonce' ]);
+		}
+
+		if (!current_user_can('manage_options')) {
+			wp_send_json_error([ 'message' => 'forbidden' ]);
+		}
+
+		$notices = $this->get_api_notices_data();
+		$grouped_notices = [];
+
+		if (is_array($notices)) {
+			foreach ($notices as $index => $notice) {
+				if ($this->should_show_notice($notice)) {
+					$notice_class = isset($notice->notice_class) ? $notice->notice_class : 'default-' . $index;
+					if ($this->should_show_notice_based_on_priority($notice) && $this->should_show_notice_cross_plugin($notice)) {
+						if (!isset($grouped_notices[$notice_class])) {
+							$grouped_notices[$notice_class] = $notice;
+						}
+					}
+				}
+			}
+		}
+
+		// Build notices using the same pipeline as synchronous rendering
+		foreach ($grouped_notices as $notice_class => $notice) {
+			$notice_id = isset($notice->id) ? $notice_class : $notice->id;
+			if ($this->is_notice_dismissed($notice_id)) {
+				continue;
+			}
+			$this->store_notice_data($notice_id, $notice);
+
+			self::add_notice([
+				'id' => 'api-notice-' . $notice_id,
+				'type' => isset($notice->type) ? $notice->type : 'info',
+				'dismissible' => true,
+				'html_message' => $this->render_api_notice($notice),
+				'dismissible-meta' => 'transient',
+				'dismissible-time' => WEEK_IN_SECONDS,
+			]);
+		}
+
+		ob_start();
+		$this->show_notices();
+		$markup = ob_get_clean();
+
+		wp_send_json_success([ 'html' => $markup ]);
 	}
 
 	/**
@@ -293,6 +583,28 @@ class Notices {
 	}
 
 	/**
+	 * Store notice data for dismissal reference
+	 *
+	 * @param string $notice_id
+	 * @param object $notice
+	 */
+	private function store_notice_data($notice_id, $notice) {
+		$stored_notices = get_user_meta(get_current_user_id(), 'element_pack_stored_notices', true);
+		
+		if (!is_array($stored_notices)) {
+			$stored_notices = [];
+		}
+		
+		$stored_notices[$notice_id] = [
+			'end_date' => isset($notice->end_date) ? $notice->end_date : null,
+			'timezone' => isset($notice->timezone) ? $notice->timezone : 'UTC',
+			'stored_at' => current_time('mysql')
+		];
+		
+		update_user_meta(get_current_user_id(), 'element_pack_stored_notices', $stored_notices);
+	}
+
+	/**
 	 * Dismiss API notice
 	 *
 	 * @param string $notice_id
@@ -304,9 +616,100 @@ class Notices {
 			$dismissed_notices = [];
 		}
 
-		if (!in_array($notice_id, $dismissed_notices)) {
-			$dismissed_notices[] = $notice_id;
+		// Get the stored notice data
+		$stored_notices = get_user_meta(get_current_user_id(), 'element_pack_stored_notices', true);
+		$notice_data = null;
+		
+		if (is_array($stored_notices) && isset($stored_notices[$notice_id])) {
+			$notice_data = $stored_notices[$notice_id];
+		}
+		
+		// Store dismissal with end date and timezone for future reference
+		if ($notice_data && isset($notice_data['end_date'])) {
+			$dismissed_notices[$notice_id] = [
+				'end_date' => $notice_data['end_date'],
+				'timezone' => $notice_data['timezone'],
+				'dismissed_at' => current_time('mysql')
+			];
+		} else {
+			// Fallback: store as permanently dismissed if no end date
+			$dismissed_notices[$notice_id] = true;
+		}
+		
+		update_user_meta(get_current_user_id(), 'element_pack_dismissed_notices', $dismissed_notices);
+	}
+
+	/**
+	 * Clean up expired dismissals to keep user meta clean
+	 */
+	public function cleanup_expired_dismissals() {
+		$dismissed_notices = get_user_meta(get_current_user_id(), 'element_pack_dismissed_notices', true);
+		$stored_notices = get_user_meta(get_current_user_id(), 'element_pack_stored_notices', true);
+		
+		if (!is_array($dismissed_notices)) {
+			$dismissed_notices = [];
+		}
+		
+		if (!is_array($stored_notices)) {
+			$stored_notices = [];
+		}
+		
+		$cleaned_dismissed = false;
+		$cleaned_stored = false;
+		$current_time = new \DateTime('now', new \DateTimeZone('UTC'));
+		
+		// Clean up expired dismissals
+		foreach ($dismissed_notices as $notice_id => $dismissal_data) {
+			// Skip if it's not an array (old format)
+			if (!is_array($dismissal_data) || !isset($dismissal_data['end_date'])) {
+				continue;
+			}
+			
+			try {
+				$timezone = isset($dismissal_data['timezone']) ? $dismissal_data['timezone'] : 'UTC';
+				$end_date = new \DateTime($dismissal_data['end_date'], new \DateTimeZone($timezone));
+				
+				// If end date has passed, remove from dismissed list
+				if ($current_time > $end_date) {
+					unset($dismissed_notices[$notice_id]);
+					$cleaned_dismissed = true;
+				}
+			} catch (Exception $e) {
+				// If there's an error parsing the date, remove the invalid entry
+				unset($dismissed_notices[$notice_id]);
+				$cleaned_dismissed = true;
+			}
+		}
+		
+		// Clean up stored notices that are no longer valid
+		foreach ($stored_notices as $notice_id => $stored_data) {
+			if (!isset($stored_data['end_date'])) {
+				continue;
+			}
+			
+			try {
+				$timezone = isset($stored_data['timezone']) ? $stored_data['timezone'] : 'UTC';
+				$end_date = new \DateTime($stored_data['end_date'], new \DateTimeZone($timezone));
+				
+				// If end date has passed, remove from stored list
+				if ($current_time > $end_date) {
+					unset($stored_notices[$notice_id]);
+					$cleaned_stored = true;
+				}
+			} catch (Exception $e) {
+				// If there's an error parsing the date, remove the invalid entry
+				unset($stored_notices[$notice_id]);
+				$cleaned_stored = true;
+			}
+		}
+		
+		// Update user meta if we cleaned anything
+		if ($cleaned_dismissed) {
 			update_user_meta(get_current_user_id(), 'element_pack_dismissed_notices', $dismissed_notices);
+		}
+		
+		if ($cleaned_stored) {
+			update_user_meta(get_current_user_id(), 'element_pack_stored_notices', $stored_notices);
 		}
 	}
 
@@ -387,22 +790,6 @@ class Notices {
 	}
 
 	/**
-	 * Notice layout
-	 * @param  array $notice Notice notice_layout.
-	 * @return void
-	 */
-	public static function __old__notice_layout($notice = []) {
-
-?>
-		<div id="<?php echo esc_attr($notice['id']); ?>" class="<?php echo esc_attr($notice['classes']); ?>" <?php echo esc_attr($notice['data']); ?>>
-			<p>
-				<?php echo wp_kses_post($notice['message']); ?>
-			</p>
-		</div>
-	<?php
-	}
-
-	/**
 	 * New Notice Layout
 	 * @param  array $notice Notice notice_layout.
 	 * @return void
@@ -442,18 +829,13 @@ class Notices {
 	}
 
 	public static function new_notice_layout( $notice = [] ) {
-
 		?>
-		<div id="<?php echo esc_attr( $notice['id'] ); ?>" class="<?php echo esc_attr( $notice['classes'] ); ?>" <?php echo esc_attr( $notice['data'] ); ?>>
-
-				
+		<div id="<?php echo esc_attr( $notice['id'] ); ?>" class="<?php echo esc_attr( $notice['classes'] ); ?>" <?php echo esc_attr( $notice['data'] ); ?>>	
 			<?php 
 				echo wp_kses_post( $notice['html_message'] );
 			?>
-			
-
-
 		</div>
+		
 		<?php
 	}
 }

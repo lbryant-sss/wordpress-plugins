@@ -8,7 +8,7 @@ const selectors = {
 	 * @param {Object} state - The current state.
 	 * @return {Array} The array of logs.
 	 */
-	getLogs( state ) {
+	getLogs(state) {
 		return state.logs;
 	},
 	/**
@@ -17,7 +17,7 @@ const selectors = {
 	 * @param {Object} state - The current state.
 	 * @return {number} The total number of pages.
 	 */
-	getTotalPages( state ) {
+	getTotalPages(state) {
 		return state.totalPages;
 	},
 	/**
@@ -26,7 +26,7 @@ const selectors = {
 	 * @param {Object} state - The current state.
 	 * @return {Object|null} The selected log.
 	 */
-	getSelectedLog( state ) {
+	getSelectedLog(state) {
 		return state.selectedLog;
 	},
 	/**
@@ -35,7 +35,7 @@ const selectors = {
 	 * @param {Object} state - The current state.
 	 * @return {number} The current page number.
 	 */
-	getCurrentPage( state ) {
+	getCurrentPage(state) {
 		return state.currentPage;
 	},
 	/**
@@ -44,7 +44,7 @@ const selectors = {
 	 * @param {Object} state - The current state.
 	 * @return {boolean} True if searching is in progress, false otherwise.
 	 */
-	isSearching( state ) {
+	isSearching(state) {
 		return state.isSearching;
 	},
 };

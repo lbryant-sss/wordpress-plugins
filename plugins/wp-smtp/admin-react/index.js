@@ -11,13 +11,13 @@ import { createRoot } from '@wordpress/element';
 /**
  * Internal dependencies
  */
-import Root from './routes/Root';
 import Connections from './routes/connections';
 import AddConnection from './routes/connections/add-connection';
 import EditConnection from './routes/connections/edit-connection';
 import EmailTest from './routes/email-test';
+import Root from './routes/Root';
 
-const router = createHashRouter( [
+const router = createHashRouter([
 	{
 		path: '/providers',
 		element: <Root />,
@@ -50,8 +50,8 @@ const router = createHashRouter( [
 		path: '*',
 		element: <Navigate to="/providers" replace />,
 	},
-] );
+]);
 
-const rootElement = document.getElementById( 'solidwp-mail-root' );
-const root = createRoot( rootElement );
-root.render( <RouterProvider router={ router } /> );
+const rootElement = document.getElementById('solidwp-mail-root');
+const root = createRoot(rootElement);
+root.render(<RouterProvider router={router} />);

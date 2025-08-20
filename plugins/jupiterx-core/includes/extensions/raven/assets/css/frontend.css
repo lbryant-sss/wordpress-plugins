@@ -2660,6 +2660,28 @@
   }
 }
 
+@-webkit-keyframes raven-heading-cursor-blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes raven-heading-cursor-blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
 @-webkit-keyframes raven-heading-flip-in {
   0% {
     -webkit-transform: rotateX(180deg);
@@ -2740,42 +2762,6 @@
   to {
     -webkit-transform: rotateX(180deg);
     transform: rotateX(180deg);
-    opacity: 0;
-  }
-}
-
-@-webkit-keyframes raven-heading-pulse {
-  0% {
-    -webkit-transform: translateY(-50%) scale(1);
-    transform: translateY(-50%) scale(1);
-    opacity: 1;
-  }
-  40% {
-    -webkit-transform: translateY(-50%) scale(0.9);
-    transform: translateY(-50%) scale(0.9);
-    opacity: 0;
-  }
-  to {
-    -webkit-transform: translateY(-50%) scale(0);
-    transform: translateY(-50%) scale(0);
-    opacity: 0;
-  }
-}
-
-@keyframes raven-heading-pulse {
-  0% {
-    -webkit-transform: translateY(-50%) scale(1);
-    transform: translateY(-50%) scale(1);
-    opacity: 1;
-  }
-  40% {
-    -webkit-transform: translateY(-50%) scale(0.9);
-    transform: translateY(-50%) scale(0.9);
-    opacity: 0;
-  }
-  to {
-    -webkit-transform: translateY(-50%) scale(0);
-    transform: translateY(-50%) scale(0);
     opacity: 0;
   }
 }
@@ -3158,6 +3144,9 @@
   display: block !important;
   font-size: 43px;
   line-height: 1.2;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .raven-heading-dynamic-text {
@@ -3227,7 +3216,10 @@
 }
 
 .raven-heading-text-wrapper {
+  max-width: 100%;
   vertical-align: bottom;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .raven-heading-dynamic-wrapper {
@@ -3244,6 +3236,18 @@
 
 .raven-heading-dynamic-wrapper .raven-heading-dynamic-text.raven-heading-text-active {
   position: relative;
+}
+
+.raven-heading:not(.raven-heading-animation-type-clip) .raven-heading-dynamic-wrapper {
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.raven-heading:not(.raven-heading-animation-type-clip) .raven-heading-dynamic-wrapper .raven-heading-dynamic-text {
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .raven-heading-animation-type-flip .raven-heading-dynamic-wrapper {
@@ -3281,30 +3285,8 @@
   vertical-align: top;
 }
 
-.raven-heading-animation-type-typing .raven-heading-dynamic-wrapper:after {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  left: auto;
-  width: 1px;
-  height: 90%;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-  background-color: #0d0d0d;
-  content: "";
-}
-
-.raven-heading-animation-type-typing .raven-heading-dynamic-wrapper:not(.raven-heading-typing-selected):after {
-  -webkit-animation: raven-heading-pulse 1s infinite;
-  animation: raven-heading-pulse 1s infinite;
-}
-
 .raven-heading-animation-type-typing .raven-heading-dynamic-wrapper.raven-heading-typing-selected {
   background-color: var(--typing-selected-bg-color, #0d0d0d);
-}
-
-.raven-heading-animation-type-typing .raven-heading-dynamic-wrapper.raven-heading-typing-selected:after {
-  visibility: hidden;
 }
 
 .raven-heading-animation-type-typing .raven-heading-dynamic-wrapper.raven-heading-typing-selected .raven-heading-dynamic-text {
@@ -3318,6 +3300,23 @@
 .raven-heading-animation-type-typing .raven-heading-dynamic-letter:not(.raven-heading-animation-in) {
   position: absolute;
   visibility: hidden;
+}
+
+.raven-heading-animation-type-typing .raven-heading-typing-cursor {
+  display: inline;
+  color: var(--dynamic-text-color, #aebcb9);
+  font-weight: normal;
+  -webkit-animation: raven-heading-cursor-blink 1s infinite;
+  animation: raven-heading-cursor-blink 1s infinite;
+  -webkit-margin-end: 0;
+  margin-inline-end: 0;
+  -webkit-margin-start: 1px;
+  margin-inline-start: 1px;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .raven-heading-animation-type-swirl .raven-heading-dynamic-wrapper {
@@ -3347,7 +3346,6 @@
 .raven-heading-animation-type-swirl .raven-heading-dynamic-text {
   -webkit-transform: scaleX(1.0005);
   transform: scaleX(1.0005);
-  white-space: nowrap;
   opacity: 0;
 }
 
@@ -3420,7 +3418,11 @@
 }
 
 .raven-heading-animation-type-clip .raven-heading-dynamic-text {
+  max-width: none;
+  white-space: nowrap;
   opacity: 0;
+  overflow-wrap: normal;
+  word-wrap: normal;
 }
 
 .raven-heading-animation-type-clip .raven-heading-dynamic-text.raven-heading-text-active {
@@ -3458,7 +3460,6 @@
 }
 
 .raven-heading-animation-type-blinds .raven-heading-dynamic-text {
-  white-space: nowrap;
   opacity: 0;
 }
 
@@ -3481,7 +3482,6 @@
 }
 
 .raven-heading-animation-type-wave .raven-heading-dynamic-text {
-  white-space: nowrap;
   opacity: 0;
 }
 

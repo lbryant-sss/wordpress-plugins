@@ -27,7 +27,13 @@ define( 'JX_EDITOR_WOO_CONDITIONS', JupiterX_Core_Condition_Manager::get_instanc
 define( 'JX_EDITOR_USERS_CONDITIONS', JupiterX_Core_Condition_Manager::get_instance()->get_data( 'users', $section )['list'] );
 define( 'JX_EDITOR_SINGULAR_CONDITIONS', JupiterX_Core_Condition_Manager::get_instance()->get_data( 'singular', $section )['list'] );
 define( 'JX_EDITOR_ARCHIVE_CONDITIONS', JupiterX_Core_Condition_Manager::get_instance()->get_data( 'archive', $section )['list'] );
-define( 'JX_EDITOR_WPML_CONDITIONS', JupiterX_Core_Condition_Manager::get_instance()->get_data( 'wpml', $section )['list'] );
+
+// Define WPML conditions only if WPML is active
+if ( defined( 'ICL_SITEPRESS_VERSION' ) ) {
+	define( 'JX_EDITOR_WPML_CONDITIONS', JupiterX_Core_Condition_Manager::get_instance()->get_data( 'wpml', $section )['list'] );
+} else {
+	define( 'JX_EDITOR_WPML_CONDITIONS', [] );
+}
 
 // Enabled conditions for header - footer - page titlebar
 $second_condition = [
@@ -65,6 +71,7 @@ if ( 'product' === $section || 'product-archive' === $section ) {
 	];
 }
 
+// Add WPML to second_condition array only if WPML is active
 if ( defined( 'ICL_SITEPRESS_VERSION' ) ) {
 	$second_condition['wpml'] = esc_html__( 'WPML', 'jupiterx-core' );
 }
@@ -112,7 +119,7 @@ function jx_editor_conditions_create_select_options( $data, $condition3 ) {
 function jx_editor_conditions_create_condition_row( $value1, $value2, $value3, $value4, $first_condition, $second_condition ) {
 	$hidden3    = 'jx-condition-hide';
 	$third_data = [];
-	$by_child   = [ 'singular', 'archive', 'users', 'woocommerce' ];
+	$by_child   = [ 'singular', 'archive', 'users', 'woocommerce', 'wpml' ];
 	$hidden4    = '';
 
 	// Make decision for condition select 3 and its values.

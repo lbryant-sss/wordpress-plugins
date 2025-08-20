@@ -34,7 +34,7 @@ $imgPath = XOO_WSC_URL . '/admin/assets/images/pro/';
 			<span><img src="<?php echo $imgPath.'/sales.png' ?>">Boost Sales & Engagement</span>
 			<ul>
 				<li><img src="<?php echo $imgPath.'/checkmark.png' ?>"> Display cross-sells, up-sells & related products or custom product IDs</li>
-				<li><img src="<?php echo $imgPath.'/rewards.png' ?>">Rewards & checkpoints (free gifts, discounts, shipping bar)</li>
+				<li><img src="<?php echo $imgPath.'/rewards.png' ?>">Rewards - Add multiple progress bars & checkpoints (free gifts, discounts, shipping bar)</li>
 			</ul>
 		</div>
 

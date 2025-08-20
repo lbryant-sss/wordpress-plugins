@@ -12,6 +12,7 @@ import { Heading, Text, TextSize } from '@ithemes/ui';
  * Internal dependencies
  */
 import Header from '../header';
+
 import { Navigation, SolidwpMailRoot, StyledNavLink } from './styles';
 
 /** @typedef {import('React').ReactNode} ReactNode */
@@ -24,35 +25,35 @@ import { Navigation, SolidwpMailRoot, StyledNavLink } from './styles';
  * @param {string}    [props.headerText=''] - The text to display in the header.
  * @param {boolean}   [props.withNav=true]  - Whether to display the navigation.
  */
-const MainLayout = ( { children, headerText = '', withNav = true } ) => {
+const MainLayout = ({ children, headerText = '', withNav = true }) => {
 	return (
 		<>
 			<Header />
 			<SolidwpMailRoot>
-				<Heading level={ 2 }>{ headerText }</Heading>
-				{ withNav && (
+				<Heading level={2}>{headerText}</Heading>
+				{withNav && (
 					<Navigation>
 						<StyledNavLink to="/providers">
 							<Text
-								size={ TextSize.LARGE }
-								weight={ 600 }
-								align={ 'center' }
+								size={TextSize.LARGE}
+								weight={600}
+								align={'center'}
 							>
-								{ __( 'Connections', 'LION' ) }
+								{__('Connections', 'LION')}
 							</Text>
 						</StyledNavLink>
 						<StyledNavLink to="/email-test">
 							<Text
-								size={ TextSize.LARGE }
-								weight={ 600 }
-								align={ 'center' }
+								size={TextSize.LARGE}
+								weight={600}
+								align={'center'}
 							>
-								{ __( 'Email Test', 'LION' ) }
+								{__('Email Test', 'LION')}
 							</Text>
 						</StyledNavLink>
 					</Navigation>
-				) }
-				{ children }
+				)}
+				{children}
 			</SolidwpMailRoot>
 		</>
 	);

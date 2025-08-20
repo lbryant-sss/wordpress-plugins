@@ -68,7 +68,7 @@ class MigrationVer210 extends AbstractController {
 		if ( version_compare( $version, '2.1.0', '==' ) ) {
 
 			// Retrieve the current active provider, legacy provider, and all providers.
-			$active_provider = $this->providers_repository->get_active_provider();
+			$active_provider = current( $this->providers_repository->get_active_providers() );
 			$legacy_provider = $this->providers_repository->get_provider_by_id( 'legacy_smtp_id' );
 			$all_providers   = $this->providers_repository->get_all_providers();
 

@@ -2,12 +2,12 @@
 
 namespace Unit;
 
-use Codeception\Test\Unit;
+use lucatume\WPBrowser\TestCase\WPTestCase;
 use SolidWP\Mail\Assets;
 use SolidWP\Mail\Container;
 use SolidWP\Mail\StellarWP\Assets\Assets as StellarWpAssets;
 
-class AssetsTest extends Unit {
+class AssetsTest extends WPTestCase {
 
 	/**
 	 * @dataProvider dataScriptLocalize

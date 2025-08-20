@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
-import { queryLogs, deleteLogs } from './controls';
+import { queryLogs, deleteLogs, clearAllLogs } from './controls';
 
 /**
  * Redux action creators and selectors for managing logs.
@@ -14,9 +14,9 @@ import { queryLogs, deleteLogs } from './controls';
  * @param {string} search - The search query.
  * @return {Object} The action to set logs.
  */
-export function* populateLogs( page, search ) {
-	const data = yield queryLogs( page, search );
-	if ( search ) {
+export function* populateLogs(page, search) {
+	const data = yield queryLogs(page, search);
+	if (search) {
 		yield {
 			type: IS_SEARCHING,
 		};
@@ -25,7 +25,7 @@ export function* populateLogs( page, search ) {
 			type: STOP_SEARCHING,
 		};
 	}
-	return setLogs( data );
+	return setLogs(data);
 }
 
 /**
@@ -34,18 +34,18 @@ export function* populateLogs( page, search ) {
  * @param {Array} data - The logs data.
  * @return {Object} The action object.
  */
-export function setLogs( data ) {
+export function setLogs(data) {
 	return {
 		type: SET_LOGS,
 		data,
 	};
 }
 
-export function* setCurrentPage( page, search ) {
+export function* setCurrentPage(page, search) {
 	// fetch the logs
-	const logs = yield queryLogs( page, search );
+	const logs = yield queryLogs(page, search);
 	// update the state
-	yield setLogs( logs );
+	yield setLogs(logs);
 	return {
 		type: SET_CURRENT_PAGE,
 		page,
@@ -55,15 +55,28 @@ export function* setCurrentPage( page, search ) {
 /**
  * Generator function to delete a log and refresh the logs data.
  *
- * @param {number[]} IDs   - The ID of the log to delete.
- * @param {number} page - The current page number.
+ * @param {number[]} IDs  - The ID of the log to delete.
+ * @param {number}   page - The current page number.
  * @return {Object} The action to set logs after deletion.
  */
-export function* deleteLog( IDs, page ) {
-	yield deleteLogs( IDs );
+export function* deleteLog(IDs, page) {
+	yield deleteLogs(IDs);
 	// Refresh the data.
-	const logs = yield queryLogs( page, '' );
-	return setLogs( logs );
+	const logs = yield queryLogs(page, '');
+	return setLogs(logs);
+}
+
+/**
+ * Generator function to clear all logs and refresh the logs data.
+ *
+ * @param {number} page - The current page number.
+ * @return {Object} The action to set logs after clearing all.
+ */
+export function* clearAllLogsAction(page) {
+	yield clearAllLogs();
+	// Refresh the data.
+	const logs = yield queryLogs(page, '');
+	return setLogs(logs);
 }
 
 /**
@@ -72,7 +85,7 @@ export function* deleteLog( IDs, page ) {
  * @param {Object} log - The log object to select.
  * @return {Object} The action object.
  */
-export function selectLog( log ) {
+export function selectLog(log) {
 	return {
 		type: SET_SELECTED_LOG,
 		log,

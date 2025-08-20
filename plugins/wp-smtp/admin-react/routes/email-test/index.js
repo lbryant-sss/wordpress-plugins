@@ -1,15 +1,16 @@
 /**
  * External dependencies
  */
-import { useState } from '@wordpress/element';
+import { stringify } from 'qs';
 
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
+import apiFetch from '@wordpress/api-fetch';
 import { Flex, FlexItem } from '@wordpress/components';
 import { useDispatch } from '@wordpress/data';
-import apiFetch from '@wordpress/api-fetch';
+import { useState } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 import { addQueryArgs } from '@wordpress/url';
 
 /**
@@ -20,11 +21,11 @@ import { Button } from '@ithemes/ui';
 /**
  * Internal dependencies
  */
-import { STORE_NAME as connectionStore } from '../../data/src/connections/constants';
-import { FormTextInput, FormTextarea } from '../../components/form';
 import { StyledSurface } from '../../assets/common';
+import { FormTextInput, FormTextarea } from '../../components/form';
+import { STORE_NAME as connectionStore } from '../../data/src/connections/constants';
+
 import { Container } from './styles';
-import qs from 'qs';
 
 /**
  * Component for sending a test email.
@@ -32,37 +33,39 @@ import qs from 'qs';
  * @return {JSX.Element} The rendered EmailTest component.
  */
 const EmailTest = () => {
-	const [ toEmail, setToEmail ] = useState( '' );
-	const [ subject, setSubject ] = useState( '' );
-	const [ message, setMessage ] = useState( '' );
-	const [ loading, setLoading ] = useState( false );
-	const [ errors, setErrors ] = useState( [] );
+	const [fromEmail, setFromEmail] = useState('');
+	const [toEmail, setToEmail] = useState('');
+	const [subject, setSubject] = useState('');
+	const [message, setMessage] = useState('');
+	const [loading, setLoading] = useState(false);
+	const [errors, setErrors] = useState([]);
 
-	const { addToast } = useDispatch( connectionStore );
+	const { addToast } = useDispatch(connectionStore);
 
-	const handleSendTestEmail = async ( event ) => {
+	const handleSendTestEmail = async (event) => {
 		event.preventDefault();
 		try {
-			setLoading( true );
+			setLoading(true);
 			// const response = await sendTestEmail( toEmail, subject, message );
-			const response = await apiFetch( {
-				url:
-					addQueryArgs( ajaxurl, {
-						action: 'solidwp_mail_send_test_email',
-						solidwp_mail_connections_nonce: SolidWPMail.nonces.send_test_email,
-					} ),
+			const response = await apiFetch({
+				url: addQueryArgs(ajaxurl, {
+					action: 'solidwp_mail_send_test_email',
+					solidwp_mail_connections_nonce:
+						SolidWPMail.nonces.send_test_email,
+				}),
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/x-www-form-urlencoded',
 				},
-				body: qs.stringify( {
+				body: stringify({
+					from_email: fromEmail,
 					to_email: toEmail,
 					subject,
 					message,
-				} ),
-			} );
-			if ( response.success === false && response.data.validation ) {
-				setErrors( response.data.validation );
+				}),
+			});
+			if (response.success === false && response.data.validation) {
+				setErrors(response.data.validation);
 				addToast(
 					__(
 						'Validation failed. Please check the highlighted fields and try again.',
@@ -70,54 +73,62 @@ const EmailTest = () => {
 					)
 				);
 			} else {
-				addToast( response.data.message );
+				addToast(response.data.message);
 			}
-			setLoading( false );
-		} catch ( error ) {
-			addToast(
-				__(
-					'Error sending test email',
-					'LION'
-				)
-			);
+			setLoading(false);
+		} catch (_error) {
+			addToast(__('Error sending test email', 'LION'));
 		}
 	};
 
 	return (
 		<Container>
-			<form method="post" onSubmit={ handleSendTestEmail }>
+			<form method="post" onSubmit={handleSendTestEmail}>
 				<StyledSurface>
 					<FormTextInput
-						label={ __( 'To Email', 'LION' ) }
-						value={ toEmail }
-						error={ errors.to_email }
-						onChange={ setToEmail }
-						description={ __( "Enter the recipient's email address", 'LION' ) }
+						label={__('From Email (optional)', 'LION')}
+						value={fromEmail}
+						error={errors.from_email}
+						onChange={setFromEmail}
+						help={__(
+							'Enter the address emails are sent from. Remember, this may determine which connection is used.',
+							'LION'
+						)}
 					/>
 					<FormTextInput
-						label={ __( 'Subject', 'LION' ) }
-						value={ subject }
-						error={ errors.subject }
-						onChange={ setSubject }
-						description={ __( 'Provide the subject of the test email.', 'LION' ) }
+						label={__('To Email', 'LION')}
+						value={toEmail}
+						error={errors.to_email}
+						onChange={setToEmail}
+						help={__("Enter the recipient's email address", 'LION')}
+					/>
+					<FormTextInput
+						label={__('Subject', 'LION')}
+						value={subject}
+						error={errors.subject}
+						onChange={setSubject}
+						help={__(
+							'Provide the subject of the test email.',
+							'LION'
+						)}
 					/>
 					<FormTextarea
-						label={ __( 'Message', 'LION' ) }
-						value={ message }
-						error={ errors.message }
-						onChange={ setMessage }
-						description={ __( 'Enter the email message', 'LION' ) }
+						label={__('Message', 'LION')}
+						value={message}
+						error={errors.message}
+						onChange={setMessage}
+						help={__('Enter the email message', 'LION')}
 					/>
 				</StyledSurface>
-				<Flex align={ 'flex-end' } direction={ 'column' }>
+				<Flex align={'flex-end'} direction={'column'}>
 					<FlexItem>
 						<Button
-							disabled={ loading }
-							isBusy={ loading }
-							variant={ 'primary' }
-							type={ 'submit' }
+							disabled={loading}
+							isBusy={loading}
+							variant={'primary'}
+							type={'submit'}
 						>
-							{ __( 'Send Test Email', 'LION' ) }
+							{__('Send Test Email', 'LION')}
 						</Button>
 					</FlexItem>
 				</Flex>

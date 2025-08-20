@@ -54,13 +54,17 @@ class Jupiterx_Conditions_Check {
 		require_once __DIR__ . '/archives.php';
 		require_once __DIR__ . '/woocommerce.php';
 		require_once __DIR__ . '/users.php';
-		require_once __DIR__ . '/wpml.php';
 
 		$this->singulars   = new Jupiterx_Singular_Condition();
 		$this->archives    = new Jupiterx_Archives_Condition();
 		$this->woocommerce = new Jupiterx_Woocommerce_Condition();
 		$this->users       = new Jupiterx_Users_Condition();
-		$this->wpml        = new Jupiterx_WPML_Condition();
+
+		// Only load WPML condition if WPML is active
+		if ( defined( 'ICL_SITEPRESS_VERSION' ) ) {
+			require_once __DIR__ . '/wpml.php';
+			$this->wpml = new Jupiterx_WPML_Condition();
+		}
 	}
 
 	/**
@@ -90,7 +94,11 @@ class Jupiterx_Conditions_Check {
 		}
 
 		if ( 'wpml' === $condition[0] ) {
-			$result = $this->wpml->sub_condition( $condition );
+			if ( isset( $this->wpml ) ) {
+				$result = $this->wpml->sub_condition( $condition, $post );
+			} else {
+				$result = false;
+			}
 		}
 
 		if ( 'entire' === $condition[0] ) {

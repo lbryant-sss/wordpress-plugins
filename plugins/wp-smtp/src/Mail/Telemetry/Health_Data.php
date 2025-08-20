@@ -8,6 +8,7 @@
 
 namespace SolidWP\Mail\Telemetry;
 
+use SolidWP\Mail\Connectors\ConnectorSMTP;
 use SolidWP\Mail\Repository\LogsRepository;
 use SolidWP\Mail\Repository\ProvidersRepository;
 
@@ -38,7 +39,7 @@ class Health_Data {
 	 * @return array
 	 */
 	public function add_summary_to_telemetry( array $info ): array {
-		$active_provider      = $this->providers_repository->get_active_provider();
+		$active_providers     = $this->providers_repository->get_active_providers();
 		$brevo_connections    = 0;
 		$mailgun_connections  = 0;
 		$sendgrid_connections = 0;
@@ -62,43 +63,51 @@ class Health_Data {
 		// Get count of all logs for mail sends
 		$number_of_logs = $this->logs_repository->count_all_logs();
 
-		$active_provider_name = is_object( $active_provider ) ? $active_provider->get_name() : 'n/a';
-		$active_provider_name = $active_provider_name === 'other' ? 'SMTP' : ucfirst( $active_provider_name );
+		$number_of_active_connections = count( $active_providers );
+		$active_connections_names     = implode(
+			', ',
+			array_map( static fn ( ConnectorSMTP $connection ) => $connection->get_name(), $active_providers )
+		);
 
 		$info['solid-mail'] = [
 			'label'  => esc_html__( 'Solid Mail', 'LION' ),
 			'fields' => [
-				'active_provider'      => [
-					'label' => esc_html__( 'Active Provider', 'LION' ),
-					'value' => $active_provider_name,
-					'debug' => $active_provider_name,
+				'active_connections_number' => [
+					'label' => esc_html__( 'Number of active connections', 'LION' ),
+					'value' => $number_of_active_connections,
+					'debug' => $number_of_active_connections,
 				],
-				'brevo_connections'    => [
+				'active_connections_names'  => [
+					'label' => esc_html__( 'Active connections', 'LION' ),
+					'value' => $active_connections_names,
+					'debug' => $active_connections_names,
+				],
+				'brevo_connections'         => [
 					'label' => esc_html__( 'Number of Brevo connections', 'LION' ),
 					'value' => $brevo_connections,
 					'debug' => $brevo_connections,
 				],
-				'mailgun_connections'  => [
+				'mailgun_connections'       => [
 					'label' => esc_html__( 'Number of MailGun connections', 'LION' ),
 					'value' => $mailgun_connections,
 					'debug' => $mailgun_connections,
 				],
-				'sendgrid_connections' => [
+				'sendgrid_connections'      => [
 					'label' => esc_html__( 'Number of SendGrid connections', 'LION' ),
 					'value' => $sendgrid_connections,
 					'debug' => $sendgrid_connections,
 				],
-				'ses_connections'      => [
+				'ses_connections'           => [
 					'label' => esc_html__( 'Number of SES connections', 'LION' ),
 					'value' => $ses_connections,
 					'debug' => $ses_connections,
 				],
-				'smtp_connections'     => [
+				'smtp_connections'          => [
 					'label' => esc_html__( 'Number of SMTP connections', 'LION' ),
 					'value' => $smtp_connections,
 					'debug' => $smtp_connections,
 				],
-				'sent_emails'          => [
+				'sent_emails'               => [
 					'label' => esc_html__( 'Number of sent emails', 'LION' ),
 					'value' => $number_of_logs,
 					'debug' => $number_of_logs,

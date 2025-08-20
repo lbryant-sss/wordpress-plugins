@@ -112,3 +112,12 @@ a.htmega-pro-dialog-buttons-action{
 .elementor-button.go-pro.dialog-button.dialog-action.dialog-buttons-action.htmega-elementor-buttion-pro-hide {
   display: none!important;
 }
+
+.ht-mega-new-badge {
+  background: #4caf50;
+  color: #ffffff;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 10px;
+  display: inline-block;
+}

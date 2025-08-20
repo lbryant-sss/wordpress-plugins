@@ -69,6 +69,16 @@ class Logs extends \WP_REST_Controller {
 
 		register_rest_route(
 			$this->namespace,
+			'/' . $this->rest_base,
+			[
+				'methods'             => \WP_REST_Server::DELETABLE,
+				'callback'            => [ $this, 'clear_all_logs' ],
+				'permission_callback' => [ $this, 'get_items_permissions_check' ],
+			]
+		);
+
+		register_rest_route(
+			$this->namespace,
 			'/' . $this->rest_base . '/delete',
 			[
 				'methods'             => \WP_REST_Server::DELETABLE,
@@ -244,6 +254,23 @@ class Logs extends \WP_REST_Controller {
 	public function delete_item( $request ) {
 		$log_ids = $request['logIds'];
 		$this->repository->delete_logs( $log_ids );
+
+		return new WP_REST_Response( null, \WP_Http::NO_CONTENT );
+	}
+
+	/**
+	 * Handles the REST request for clearing all email logs.
+	 *
+	 * @param WP_REST_Request $request Full data about the request.
+	 *
+	 * @return WP_REST_Response|WP_Error The response or WP_Error object on failure.
+	 */
+	public function clear_all_logs( $request ) {
+		$result = $this->repository->clear_all_logs();
+
+		if ( ! $result ) {
+			return new WP_Error( 'clear_logs_failed', __( 'Failed to clear all logs.', 'wp-smtp' ), [ 'status' => 500 ] );
+		}
 
 		return new WP_REST_Response( null, \WP_Http::NO_CONTENT );
 	}

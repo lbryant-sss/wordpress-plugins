@@ -12,7 +12,8 @@
   ],
   "ancestor": [
     "surecart/product-page",
-    "surecart/product-template"
+    "surecart/product-template",
+    "surecart/sticky-purchase"
   ],
   "attributes": {
     "show_range": {

@@ -8,10 +8,12 @@ import {
 	RadioControl,
 	ToggleControl,
 } from '@wordpress/components';
+
 /**
  * SolidWP dependencies
  */
 import { Text } from '@ithemes/ui';
+
 /**
  * Internal dependencies
  */
@@ -29,7 +31,7 @@ import { FormControl, FormControlInput, FormControlLabel } from './styles';
  * @param {string}   [props.error]       - The error message to display.
  * @param {string}   [props.help]        - The description/help text for the input.
  */
-function FormTextInput( {
+function FormTextInput({
 	label,
 	name,
 	type = 'text',
@@ -37,19 +39,19 @@ function FormTextInput( {
 	onChange,
 	error,
 	help,
-} ) {
+}) {
 	return (
 		<FormControl>
-			<FormControlLabel>{ label }</FormControlLabel>
+			<FormControlLabel>{label}</FormControlLabel>
 			<FormControlInput>
 				<TextControl
-					help={ help }
-					name={ name }
-					type={ type }
-					value={ value }
-					onChange={ onChange }
+					help={help}
+					name={name}
+					type={type}
+					value={value}
+					onChange={onChange}
 				/>
-				{ error && <Text variant={ 'danger' }>{ error }</Text> }
+				{error && <Text variant={'danger'}>{error}</Text>}
 			</FormControlInput>
 		</FormControl>
 	);
@@ -67,7 +69,7 @@ function FormTextInput( {
  * @param {string}   [props.error]      - The error message to display.
  * @param {string}   [props.help]       - The help/help text for the radio group.
  */
-function FormRadioGroup( {
+function FormRadioGroup({
 	label,
 	name,
 	value = '',
@@ -75,19 +77,19 @@ function FormRadioGroup( {
 	onChange,
 	error,
 	help,
-} ) {
+}) {
 	return (
 		<FormControl>
-			<FormControlLabel>{ label }</FormControlLabel>
+			<FormControlLabel>{label}</FormControlLabel>
 			<FormControlInput>
 				<RadioControl
-					help={ help }
-					selected={ value }
-					options={ options }
-					onChange={ onChange }
-					name={ name }
+					help={help}
+					selected={value}
+					options={options}
+					onChange={onChange}
+					name={name}
 				/>
-				{ error && <Text variant={ 'danger' }>{ error }</Text> }
+				{error && <Text variant={'danger'}>{error}</Text>}
 			</FormControlInput>
 		</FormControl>
 	);
@@ -105,7 +107,7 @@ function FormRadioGroup( {
  * @param {string}   [props.error]      - The error message to display.
  * @param {string}   [props.help]       - The help/help text for the select control.
  */
-function FormSelect( {
+function FormSelect({
 	label,
 	name,
 	options = [],
@@ -113,20 +115,20 @@ function FormSelect( {
 	onChange,
 	error,
 	help,
-} ) {
+}) {
 	return (
 		<FormControl>
-			<FormControlLabel>{ label }</FormControlLabel>
+			<FormControlLabel>{label}</FormControlLabel>
 			<FormControlInput>
 				<SelectControl
-					value={ value }
-					options={ options }
-					help={ help }
-					onChange={ onChange }
-					name={ name }
+					value={value}
+					options={options}
+					help={help}
+					onChange={onChange}
+					name={name}
 					__nextHasNoMarginBottom
 				/>
-				{ error && <Text variant={ 'danger' }>{ error }</Text> }
+				{error && <Text variant={'danger'}>{error}</Text>}
 			</FormControlInput>
 		</FormControl>
 	);
@@ -144,7 +146,7 @@ function FormSelect( {
  * @param {string}   [props.error]       - The error message to display.
  * @param {string}   [props.help]        - The help/help text for the textarea control.
  */
-function FormTextarea( {
+function FormTextarea({
 	label,
 	name,
 	type = 'text',
@@ -152,19 +154,19 @@ function FormTextarea( {
 	onChange,
 	error,
 	help,
-} ) {
+}) {
 	return (
 		<FormControl>
-			<FormControlLabel>{ label }</FormControlLabel>
+			<FormControlLabel>{label}</FormControlLabel>
 			<FormControlInput>
 				<TextareaControl
-					help={ help }
-					type={ type }
-					name={ name }
-					value={ value }
-					onChange={ onChange }
+					help={help}
+					type={type}
+					name={name}
+					value={value}
+					onChange={onChange}
 				/>
-				{ error && <Text variant={ 'danger' }>{ error }</Text> }
+				{error && <Text variant={'danger'}>{error}</Text>}
 			</FormControlInput>
 		</FormControl>
 	);
@@ -181,19 +183,19 @@ function FormTextarea( {
  * @param {string}   [props.error]       - The error message to display.
  * @param {string}   [props.help]        - The help/help text for the toggle control.
  */
-function FormToggle( { label, name, value = false, onChange, error, help } ) {
+function FormToggle({ label, name, value = false, onChange, error, help }) {
 	return (
 		<FormControl>
-			<FormControlLabel>{ label }</FormControlLabel>
+			<FormControlLabel>{label}</FormControlLabel>
 			<FormControlInput>
 				<ToggleControl
-					label={ '' }
-					help={ help }
-					checked={ value }
-					onChange={ onChange }
-					name={ name }
+					label={''}
+					help={help}
+					checked={value}
+					onChange={onChange}
+					name={name}
 				/>
-				{ error && <Text variant={ 'danger' }>{ error }</Text> }
+				{error && <Text variant={'danger'}>{error}</Text>}
 			</FormControlInput>
 		</FormControl>
 	);

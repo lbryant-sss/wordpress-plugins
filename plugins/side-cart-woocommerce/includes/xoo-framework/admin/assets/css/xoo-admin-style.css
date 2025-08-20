@@ -9,7 +9,7 @@ ul.xoo-sc-tabs {
     top: 0;
     z-index: 999999;
     background-color: #f0f0f1;
-    padding: 10px 20px;
+    padding: 10px 20px 5px;
     border-radius: 5px;
     display: table;
     margin: 0 auto;
@@ -20,17 +20,17 @@ ul.xoo-sc-tabs li {
     display: inline-block;
     padding: 10px 20px;
     background-color: #1d3557;
-    margin: 0 5px 0 0;
+    margin: 0 5px 5px 0;
     color: #f0f0f0;
     font-weight: 500;
     text-transform: uppercase;
     width: auto;
     cursor: pointer;
+    user-select: none;
 }
 
 ul.xoo-sc-tabs li.xoo-sct-active {
     background-color: #1a7dc7;
-    transform: scale(1.05);
 }
 
 .xoo-as-slider {
@@ -120,7 +120,7 @@ form.xoo-as-form {
 .xoo-as-setting {
     margin-bottom: 38px;
     display: flex;
-    gap: 50px;
+    column-gap: 50px;
 }
 
 
@@ -172,8 +172,8 @@ span.xoo-asc-head {
 
 span.xoo-asc-desc {
     display: block;
-    margin-top: -19px;
-    margin-bottom: 30px;
+    margin-top: -20px;
+    margin-bottom: 20px;
     font-style: italic;
 }
 
@@ -280,6 +280,10 @@ button.xoo-as-form-save {
     font-weight: bold;
 }
 
+.xoo-ass-pro-sec > span:first-child:after {
+    color: #ffd700;
+}
+
 
 .xoo-as-disable-pro .xoo-as-is-pro , .xoo-as-disable-pro .xoo-ass-pro-sec{
     display: none!important;
@@ -377,12 +381,12 @@ table.xoo-sc-table tr td:first-child {
 
 .xoo-sc-bottom-btns > *:last-child  {
     border-top-right-radius: 2px;
-    2px: 10px;
+    border-bottom-right-radius: 2px;
 }
 
 
 .xoo-sc-bottom-btns {
-    bottom: 18px;
+    bottom: 10px;
 }
 
 .xoo-sc-bottom-btns > * {
@@ -655,15 +659,13 @@ body.rtl .xoo-as-label {
     background-color: #ffffff;
     z-index: 9999;
     flex-wrap: wrap;
-    padding: 8px 10px;
+    padding: 10px;
     border-radius: 5px;
     justify-content: center;
     width: max-content;
     margin: 0 auto;
     max-width: 100%;
-    margin-top: 6px;
-    border-bottom: 2px solid #eeeeee;
-    user-select: none;
+    margin-top: -10px;
 }
 
 .xoo-sc-sections a {
@@ -737,10 +739,10 @@ html{
 
 .xoo-as-pattern-cont {
     display: flex;
-    align-items: flex-start;
+    align-items: flex-end;
     user-select: none;
     flex-wrap: wrap;
-    column-gap: 25px;
+    gap: 25px;
     position: relative;
 }
 
@@ -778,6 +780,8 @@ span.xoo-as-info {
 .xoo-as-patdesc .dashicons {
     cursor: pointer;
 }
+
+
 .xoo-as-setting.xoo-as-has-asset label{
     margin-right: 0;
 }
@@ -787,10 +791,9 @@ span.xoo-as-info {
 }
 
 ul.xoo-sc-tabs li[data-tab="pro"] {
-    background-color: gold;
+    background-color: #ffd700;
     color: #000;
 }
-
 
 .xoo-sc-tab-content[data-tab="info"] h3 {
     background-color: transparent;

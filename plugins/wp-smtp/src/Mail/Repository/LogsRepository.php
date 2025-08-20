@@ -203,15 +203,36 @@ class LogsRepository {
 		// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 	}
 
+	/**
+	 * Clears all email logs from the database.
+	 *
+	 * This method deletes all log entries from the wp_wpsmtp_logs table.
+	 * Use with caution as this operation cannot be undone.
+	 *
+	 * @return bool True if the logs were successfully cleared, false otherwise.
+	 */
+	public function clear_all_logs(): bool {
+		global $wpdb;
+
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+		$result = $wpdb->query( "TRUNCATE TABLE {$this->table}" );
+
+		return $result !== false;
+	}
+
 	protected function parse_log( array $raw ) {
 		return [
-			'mail_id'   => $raw['mail_id'],
-			'timestamp' => $raw['timestamp'],
-			'to'        => json_decode( $raw['to'], true ) ?: [ $raw['to'] ],
-			'subject'   => $raw['subject'],
-			'message'   => $raw['message'],
-			'headers'   => json_decode( $raw['headers'], true ) ?: $raw['headers'],
-			'error'     => $raw['error'],
+			'mail_id'       => $raw['mail_id'],
+			'timestamp'     => $raw['timestamp'],
+			'to'            => json_decode( $raw['to'], true ) ?: [ $raw['to'] ],
+			'subject'       => $raw['subject'],
+			'message'       => $raw['message'],
+			'headers'       => json_decode( $raw['headers'], true ) ?: $raw['headers'],
+			'content_type'  => $raw['content_type'],
+			'error'         => $raw['error'],
+			'connection_id' => $raw['connection_id'],
+			'from_email'    => $raw['from_email'],
+			'from_name'     => $raw['from_name'],
 		];
 	}
 }

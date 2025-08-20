@@ -9,7 +9,7 @@ class Provider {
 		'mailgun',
 		'brevo',
 		'amazon_ses',
-		'postmark'
+		'postmark',
 	];
 
 	/**
@@ -39,11 +39,11 @@ class Provider {
 		smtpUsername = '',
 		smtpPassword = ''
 	) {
-		if ( ! Provider.allowedNames.includes( name ) ) {
+		if (!Provider.allowedNames.includes(name)) {
 			throw new Error(
-				`Invalid provider name: ${ name }. Allowed names are: ${ Provider.allowedNames.join(
+				`Invalid provider name: ${name}. Allowed names are: ${Provider.allowedNames.join(
 					', '
-				) }`
+				)}`
 			);
 		}
 

@@ -5,17 +5,17 @@
  * Plugin URI: 	https://wphtmega.com/
  * Author: 		HasThemes
  * Author URI: 	https://hasthemes.com/
- * Version: 	2.9.3
+ * Version: 	2.9.4
  * License:     GPL2
  * License URI:  https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: htmega-addons
  * Domain Path: /languages
- * Elementor tested up to: 3.31.1
- * Elementor Pro tested up to: 3.31.0
+ * Elementor tested up to: 3.31.2
+ * Elementor Pro tested up to: 3.31.2
 */
 
 if( ! defined( 'ABSPATH' ) ) exit(); // Exit if accessed directly
-define( 'HTMEGA_VERSION', '2.9.3' );
+define( 'HTMEGA_VERSION', '2.9.4' );
 define( 'HTMEGA_ADDONS_PL_ROOT', __FILE__ );
 define( 'HTMEGA_ADDONS_PL_URL', plugins_url( '/', HTMEGA_ADDONS_PL_ROOT ) );
 define( 'HTMEGA_ADDONS_PL_PATH', plugin_dir_path( HTMEGA_ADDONS_PL_ROOT ) );

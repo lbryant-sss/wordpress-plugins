@@ -21,6 +21,11 @@ class Module extends Module_Base {
 		return [ 'advanced-posts' ];
 	}
 
+	/**
+	 * Render posts.
+	 *
+	 * @SuppressWarnings(PHPMD.NPathComplexity)
+	 */
 	public function render_posts() {
 		check_ajax_referer( 'jupiterx-core-raven', 'nonce' );
 
@@ -29,6 +34,7 @@ class Module extends Module_Base {
 		$paged         = filter_input( INPUT_POST, 'paged' );
 		$category      = filter_input( INPUT_POST, 'category' );
 		$archive_query = filter_input( INPUT_POST, 'archive_query' );
+		$should_append = filter_input( INPUT_POST, 'should_append' );
 
 		if ( ! empty( $archive_query ) ) {
 			$archive_query          = json_decode( $archive_query, true );
@@ -57,6 +63,25 @@ class Module extends Module_Base {
 			$posts_data['settings']['category'] = intval( $category );
 		}
 
+		$archive_query['post_status'] = 'publish';
+
+		if ( 'true' === $should_append ) {
+			$query_posts_per_page = intval( $posts_data['settings']['query_posts_per_page'] );
+
+			if ( ! $query_posts_per_page ) {
+				$widget = $elementor->elements_manager->create_element_instance( $posts_data );
+
+				$query_posts_per_page = intval( $widget->get_settings( 'query_posts_per_page' ) ? $widget->get_settings( 'query_posts_per_page' ) : get_option( 'posts_per_page' ) );
+			}
+
+			$posts_data['settings']['query_posts_per_page'] = intval( $query_posts_per_page ) * intval( $paged );
+
+			$archive_query['paged'] = 1;
+
+			$posts_data['settings']['paged'] = 1;
+
+		}
+
 		$widget = $elementor->elements_manager->create_element_instance( $posts_data );
 
 		if ( ! $widget ) {
@@ -66,6 +91,12 @@ class Module extends Module_Base {
 		$archive_query['post_status'] = 'publish';
 
 		$queried_posts = $widget->ajax_get_queried_posts( $archive_query );
+
+		if ( 'true' === $should_append ) {
+			$total_posts = $queried_posts['total_posts'];
+
+			$queried_posts['max_num_pages'] = ceil( $total_posts / $query_posts_per_page );
+		}
 
 		wp_send_json_success( $queried_posts );
 	}

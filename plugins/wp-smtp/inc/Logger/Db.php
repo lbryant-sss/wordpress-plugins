@@ -66,8 +66,6 @@ class Db {
 	 */
 	protected function prepare_for_database( array $raw ) {
 		$to      = $raw['to'] ?? [];
-		$subject = (string) ( $raw['subject'] ?? '' );
-		$message = (string) ( $raw['message'] ?? '' );
 		$headers = $raw['headers'] ?? [];
 
 		if ( ! is_array( $to ) ) {
@@ -81,11 +79,15 @@ class Db {
 		$headers = $this->parse_headers( $headers );
 
 		return [
-			'to'      => wp_json_encode( $to ),
-			'subject' => $subject,
-			'message' => $message,
-			'headers' => wp_json_encode( $headers ),
-			'error'   => isset( $raw['error'] ) ? sanitize_text_field( $raw['error'] ) : '',
+			'to'            => wp_json_encode( $to ),
+			'subject'       => (string) ( $raw['subject'] ?? '' ),
+			'message'       => (string) ( $raw['message'] ?? '' ),
+			'headers'       => wp_json_encode( $headers ),
+			'content_type'  => (string) ( $raw['content_type'] ?? '' ),
+			'error'         => isset( $raw['error'] ) ? sanitize_text_field( $raw['error'] ) : '',
+			'connection_id' => (string) ( $raw['connection_id'] ?? '' ),
+			'from_email'    => (string) ( $raw['from_email'] ?? '' ),
+			'from_name'     => (string) ( $raw['from_name'] ?? '' ),
 		];
 	}
 

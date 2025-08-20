@@ -3,7 +3,7 @@
  * Plugin Name: Jupiter X Core
  * Plugin URI: https://jupiterx.com
  * Description: Adds core functionality to the Jupiter X theme.
- * Version: 4.9.2
+ * Version: 4.10.1
  * Author: Artbees
  * Author URI: https://artbees.net
  * Text Domain: jupiterx-core
@@ -20,6 +20,7 @@ defined( 'ABSPATH' ) || die();
  * Jupiter Core class.
  *
  * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
+ * @SuppressWarnings(PHPMD.TooManyMethods)
  */
 if ( ! class_exists( 'JupiterX_Core' ) ) {
 
@@ -122,6 +123,7 @@ if ( ! class_exists( 'JupiterX_Core' ) ) {
 		public function __construct() {
 			$this->define_constants();
 			$this->load();
+			$this->activation_hook();
 		}
 
 		/**
@@ -154,9 +156,35 @@ if ( ! class_exists( 'JupiterX_Core' ) ) {
 				'extensions/class',
 				'admin/class-notices',
 				'svg-sanitizer/functions',
+				'admin/license/class-api-license',
+				'admin/license/class-event-license',
 			] );
 
 			add_action( 'jupiterx_init', [ $this, 'init' ], 4 );
+		}
+
+		/**
+		 * Activation hook.
+		 *
+		 * @since 4.10.1
+		 */
+		protected function activation_hook() {
+			register_activation_hook( __FILE__, [ $this, 'licensing_schedules' ] );
+
+			add_action( 'admin_init', [ $this, 'check_event_transient' ] );
+
+			register_deactivation_hook( __FILE__, [ $this, 'clear_licensing_schedules' ] );
+		}
+
+		/**
+		 * Check event transient.
+		 *
+		 * @since 4.10.1
+		 */
+		public function check_event_transient() {
+			if ( ! get_transient( 'jupiterx_event_transient' ) ) {
+				$this->licensing_schedules();
+			}
 		}
 
 		/**
@@ -532,6 +560,44 @@ if ( ! class_exists( 'JupiterX_Core' ) ) {
 				exit;
 			}
 			// phpcs:enable
+		}
+
+		/**
+		 * Registers license schedules for various periodic checks.
+		 *
+		 * @since 4.10.1
+		 *
+		 * @return void
+		 */
+		public function licensing_schedules() {
+			wp_schedule_event( time(), 'weekly', 'jupiterx_license_checks' );
+
+			set_transient( 'jupiterx_event_transient', true, 30 * DAY_IN_SECONDS );
+		}
+
+		/**
+		 * Clears future schedules after plugin deactivations.
+		 *
+		 * @since 4.10.1
+		 *
+		 * @return void
+		 */
+		public function clear_licensing_schedules() {
+			if ( is_multisite() ) {
+				$sites = get_sites();
+
+				foreach ( $sites as $site ) {
+					switch_to_blog( $site->blog_id );
+
+					wp_clear_scheduled_hook( 'jupiterx_license_checks' );
+					delete_transient( 'jupiterx_event_transient' );
+
+					restore_current_blog();
+				}
+			}
+
+			wp_clear_scheduled_hook( 'jupiterx_license_checks' );
+			delete_transient( 'jupiterx_event_transient' );
 		}
 
 		/**

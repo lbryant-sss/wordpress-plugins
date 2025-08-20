@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-08-11T17:02:36",
+  "timestamp": "2025-08-19T15:44:10",
   "compiler": {
     "name": "node",
     "version": "16.20.2"
@@ -3529,10 +3529,12 @@
           "./dist/surecart/p-94f536d6.js.map",
           "./dist/surecart/p-95325ec5.js",
           "./dist/surecart/p-95325ec5.js.map",
+          "./dist/surecart/p-953efa31.entry.js",
+          "./dist/surecart/p-953efa31.entry.js.map",
           "./dist/surecart/p-95ed2184.entry.js",
           "./dist/surecart/p-95ed2184.entry.js.map",
-          "./dist/surecart/p-96555ad9.entry.js",
-          "./dist/surecart/p-96555ad9.entry.js.map",
+          "./dist/surecart/p-961fbbca.entry.js",
+          "./dist/surecart/p-961fbbca.entry.js.map",
           "./dist/surecart/p-97b27579.entry.js",
           "./dist/surecart/p-97b27579.entry.js.map",
           "./dist/surecart/p-98160f12.entry.js",
@@ -3603,8 +3605,6 @@
           "./dist/surecart/p-babb004b.entry.js.map",
           "./dist/surecart/p-bad5a365.entry.js",
           "./dist/surecart/p-bad5a365.entry.js.map",
-          "./dist/surecart/p-bc2f5d06.entry.js",
-          "./dist/surecart/p-bc2f5d06.entry.js.map",
           "./dist/surecart/p-bccd17d9.entry.js",
           "./dist/surecart/p-bccd17d9.entry.js.map",
           "./dist/surecart/p-bd196d66.entry.js",
@@ -3979,10 +3979,12 @@
           "./www/build/p-94f536d6.js.map",
           "./www/build/p-95325ec5.js",
           "./www/build/p-95325ec5.js.map",
+          "./www/build/p-953efa31.entry.js",
+          "./www/build/p-953efa31.entry.js.map",
           "./www/build/p-95ed2184.entry.js",
           "./www/build/p-95ed2184.entry.js.map",
-          "./www/build/p-96555ad9.entry.js",
-          "./www/build/p-96555ad9.entry.js.map",
+          "./www/build/p-961fbbca.entry.js",
+          "./www/build/p-961fbbca.entry.js.map",
           "./www/build/p-97b27579.entry.js",
           "./www/build/p-97b27579.entry.js.map",
           "./www/build/p-98160f12.entry.js",
@@ -4053,8 +4055,6 @@
           "./www/build/p-babb004b.entry.js.map",
           "./www/build/p-bad5a365.entry.js",
           "./www/build/p-bad5a365.entry.js.map",
-          "./www/build/p-bc2f5d06.entry.js",
-          "./www/build/p-bc2f5d06.entry.js.map",
           "./www/build/p-bccd17d9.entry.js",
           "./www/build/p-bccd17d9.entry.js.map",
           "./www/build/p-bd196d66.entry.js",
@@ -6614,8 +6614,8 @@
         "components": [
           "sc-line-item-total"
         ],
-        "bundleId": "p-bc2f5d06",
-        "fileName": "p-bc2f5d06.entry.js",
+        "bundleId": "p-953efa31",
+        "fileName": "p-953efa31.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-ff10bfbf.js",
@@ -6630,7 +6630,7 @@
           "p-3f6362a4.js",
           "p-4df6e0c5.js"
         ],
-        "originalByteSize": 8886
+        "originalByteSize": 8926
       },
       {
         "key": "sc-payment-method-choice.sc-payment-selected.entry",
@@ -6892,8 +6892,8 @@
         "components": [
           "sc-total"
         ],
-        "bundleId": "p-96555ad9",
-        "fileName": "p-96555ad9.entry.js",
+        "bundleId": "p-961fbbca",
+        "fileName": "p-961fbbca.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-53e7f7d7.js",
@@ -6907,7 +6907,7 @@
           "p-95325ec5.js",
           "p-4df6e0c5.js"
         ],
-        "originalByteSize": 1602
+        "originalByteSize": 1630
       },
       {
         "key": "sc-price-input.entry",
@@ -9674,7 +9674,7 @@
           "currency-a0c9bff4.js",
           "price-af9f0dbf.js"
         ],
-        "originalByteSize": 8965
+        "originalByteSize": 9005
       },
       {
         "key": "sc-payment-method-choice.sc-payment-selected.entry",
@@ -9951,7 +9951,7 @@
           "store-627acec4.js",
           "price-af9f0dbf.js"
         ],
-        "originalByteSize": 1675
+        "originalByteSize": 1703
       },
       {
         "key": "sc-price-input.entry",
@@ -12720,7 +12720,7 @@
           "currency-71fce0f0.js",
           "price-5b1afcfe.js"
         ],
-        "originalByteSize": 9424
+        "originalByteSize": 9464
       },
       {
         "key": "sc-payment-method-choice.sc-payment-selected.entry",
@@ -12997,7 +12997,7 @@
           "store-4a539aea.js",
           "price-5b1afcfe.js"
         ],
-        "originalByteSize": 1849
+        "originalByteSize": 1817
       },
       {
         "key": "sc-price-input.entry",
@@ -52558,6 +52558,30 @@
             "original": "'total' | 'subtotal' | 'amount_due'",
             "resolved": "\"amount_due\" | \"subtotal\" | \"total\"",
             "references": {}
+          },
+          "docs": {
+            "tags": [],
+            "text": ""
+          },
+          "internal": false
+        },
+        {
+          "name": "checkout",
+          "type": "unknown",
+          "reflect": false,
+          "mutable": false,
+          "required": false,
+          "optional": true,
+          "complexType": {
+            "original": "Checkout",
+            "resolved": "Checkout",
+            "references": {
+              "Checkout": {
+                "location": "import",
+                "path": "../../../../types",
+                "id": "src/types.ts::Checkout"
+              }
+            }
           },
           "docs": {
             "tags": [],
@@ -95957,7 +95981,8 @@
             "name",
             "style",
             "class",
-            "total"
+            "total",
+            "checkout"
           ],
           "htmlTagNames": [
             "span",
@@ -104071,6 +104096,30 @@
                 "original": "'total' | 'subtotal' | 'amount_due'",
                 "resolved": "\"amount_due\" | \"subtotal\" | \"total\"",
                 "references": {}
+              },
+              "docs": {
+                "tags": [],
+                "text": ""
+              },
+              "internal": false
+            },
+            {
+              "name": "checkout",
+              "type": "unknown",
+              "reflect": false,
+              "mutable": false,
+              "required": false,
+              "optional": true,
+              "complexType": {
+                "original": "Checkout",
+                "resolved": "Checkout",
+                "references": {
+                  "Checkout": {
+                    "location": "import",
+                    "path": "../../../../types",
+                    "id": "src/types.ts::Checkout"
+                  }
+                }
               },
               "docs": {
                 "tags": [],

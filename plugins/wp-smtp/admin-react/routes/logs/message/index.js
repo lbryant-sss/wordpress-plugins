@@ -11,42 +11,42 @@ import { __ } from '@wordpress/i18n';
 import HTMLTab from './html-tab';
 import { StyledMessageTab, StyledRawMessage } from './styles';
 
-const getTabs = ( email ) => {
+const getTabs = (email) => {
 	const tabs = [];
 
-	if ( email.headers[ 'content-type' ]?.includes( 'text/html' ) ) {
-		tabs.push( {
+	if (email.content_type === 'text/html') {
+		tabs.push({
 			name: 'html',
-			title: __( 'HTML', 'LION' ),
+			title: __('HTML', 'LION'),
 			email,
-		} );
+		});
 	}
 
-	tabs.push( {
+	tabs.push({
 		name: 'text',
-		title: __( 'Plain Text', 'LION' ),
+		title: __('Plain Text', 'LION'),
 		email,
-	} );
+	});
 
 	return tabs;
 };
 
-function renderTab( tab ) {
-	if ( tab.name === 'html' ) {
-		return <HTMLTab email={ tab.email } />;
+function renderTab(tab) {
+	if (tab.name === 'html') {
+		return <HTMLTab email={tab.email} />;
 	}
 
 	return (
 		<StyledMessageTab variant="info">
-			<StyledRawMessage>{ tab.email.message.trim() }</StyledRawMessage>
+			<StyledRawMessage>{tab.email.message.trim()}</StyledRawMessage>
 		</StyledMessageTab>
 	);
 }
 
-function Message( { email } ) {
-	const tabs = useMemo( () => getTabs( email ), [ email ] );
+function Message({ email }) {
+	const tabs = useMemo(() => getTabs(email), [email]);
 
-	return <TabPanel tabs={ tabs }>{ renderTab }</TabPanel>;
+	return <TabPanel tabs={tabs}>{renderTab}</TabPanel>;
 }
 
-export default memo( Message );
+export default memo(Message);

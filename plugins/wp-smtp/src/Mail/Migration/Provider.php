@@ -22,5 +22,6 @@ class Provider extends Service_Provider {
 	public function register(): void {
 		$this->container->get( MigrationVer130::class )->register_hooks();
 		$this->container->get( MigrationVer210::class )->register_hooks();
+		$this->container->get( MigrationVer220::class )->register_hooks();
 	}
 }

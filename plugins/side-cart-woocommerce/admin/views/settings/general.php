@@ -133,7 +133,7 @@ $settings = array(
 				'separate' 	=> 'Show separately',
 			),
 		),
-		'default' 		=> 'one_liner',
+		'default' 		=> 'separate',
 		'desc' 			=> '"One line" works when quantity, price and total are enabled'
 	),
 
@@ -249,7 +249,7 @@ $settings = array(
 
 	array(
 		'callback' 		=> 'checkbox',
-		'title' 		=> 'Open Login Slider/Popup on checkout',
+		'title' 		=> 'Open Login Slider/Popup on checkout click',
 		'id' 			=> 'scf-chklogin-en',
 		'section_id' 	=> 'sc_footer',
 		'default' 		=> 'no',
@@ -267,110 +267,6 @@ $settings = array(
 		'desc' 			=> 'Set footer text below under "Texts section" '
 	),
 
-
-
-	
-	/*** PROGRESS BAR ***/
-
-	array(
-		'callback' 		=> 'checkbox',
-		'title' 		=> 'Enable',
-		'id' 			=> 'scbar-en',
-		'section_id' 	=> 'sc_bar',
-		'default' 		=> 'yes',
-		'pro' 			=> 'yes'
-	),
-
-
-	array(
-		'callback' 		=> 'select',
-		'title' 		=> 'Use cart total',
-		'id' 			=> 'scbar-total',
-		'section_id' 	=> 'sc_bar',
-		'args' 			=> array(
-			'options' 	=> array(
-				'total'			=> 'Total',
-				'subtotal' 		=> 'Subtotal',
-				'subtotal_tax' 	=> 'Subtotal including Tax'
-			),
-		),
-		'default' 	=> 'subtotal_tax',
-		'desc' 		=> 'The cart value to be used to calculate the remaining amount',
-		'pro' 			=> 'yes'
-	),
-
-
-	array(
-		'callback' 		=> 'select',
-		'title' 		=> 'Bar Location',
-		'id' 			=> 'scbar-pos',
-		'section_id' 	=> 'sc_bar',
-		'args' 			=> array(
-			'options' 	=> array(
-				'xoo_wsc_header_end'  	=> 'Header',
-				'xoo_wsc_body_start' 	=> 'Before Products',
-				'xoo_wsc_body_end' 		=> 'After Products',
-				'xoo_wsc_footer_start' 	=> 'Footer Start',
-				'xoo_wsc_footer_end' 	=> 'Footer end',
-			),
-		),
-		'default' 	=> 'xoo_wsc_body_start',
-		'pro' 			=> 'yes'
-	),
-
-
-	array(
-		'callback' 		=> 'select',
-		'title' 		=> 'Divide bar',
-		'id' 			=> 'scbar-divide',
-		'section_id' 	=> 'sc_bar',
-		'args' 			=> array(
-			'options' 	=> array(
-				'equal'	=> 'Equally',
-				'prop' 	=> 'Proportionately',
-			),
-		),
-		'default' 	=> 'equal',
-		'pro' 		=> 'yes'
-	),
-
-
-	array(
-		'callback' 		=> 'checkbox_list',
-		'title' 		=> 'Show',
-		'id' 			=> 'scbar-show',
-		'section_id' 	=> 'sc_bar',
-		'args' 			=> array(
-			'options' 	=> array(
-				'remaining' 	=> 'Remaining Text',
-				'title' 		=> 'Title',
-				'amount' 		=> 'Amount'
-			),
-		),
-		'default' 	=> array(
-			'remaining', 'title', 'amount'
-		),
-		'pro' 			=> 'yes'
-	),
-
-
-	array(
-		'callback' 		=> 'custombardata',
-		'title' 		=> 'Checkpoints',
-		'id' 			=> 'scbar-data',
-		'section_id' 	=> 'sc_bar',
-		'default' 		=> '',
-		'pro' 			=> 'yes'
-	),
-
-	array(
-		'callback' 		=> 'text',
-		'title' 		=> 'Completed Text',
-		'id' 			=> 'scbar-comptext',
-		'section_id' 	=> 'sc_bar',
-		'default' 		=> 'Congrats! you have unlocked all achievements.',
-		'pro' 			=> 'yes'
-	),
 
 
 	/*** SUGGESTED PRODUCTS ***/

@@ -105,11 +105,18 @@ class ConnectorSMTP {
 	protected string $secure;
 
 	/**
-	 * If this is set as default sender.
+	 * If this connection is active.
 	 *
 	 * @var bool
 	 */
 	protected bool $is_active = false;
+
+	/**
+	 * If this connection is set as default.
+	 *
+	 * @var bool
+	 */
+	protected bool $is_default = false;
 
 	/**
 	 * The method used for message delivery (e.g., 'smtp', 'api')
@@ -143,8 +150,9 @@ class ConnectorSMTP {
 		$this->process_data( $data );
 		// if the load data is empty, generate a new id.
 
-		$this->id        = empty( $data['id'] ) ? uniqid() : $data['id'];
-		$this->is_active = filter_var( $data['is_active'] ?? false, FILTER_VALIDATE_BOOLEAN );
+		$this->id         = empty( $data['id'] ) ? uniqid() : $data['id'];
+		$this->is_active  = filter_var( $data['is_active'] ?? false, FILTER_VALIDATE_BOOLEAN );
+		$this->is_default = filter_var( $data['is_default'] ?? false, FILTER_VALIDATE_BOOLEAN );
 	}
 
 	/**
@@ -323,6 +331,20 @@ class ConnectorSMTP {
 	}
 
 	/**
+	 * @return bool
+	 */
+	public function is_default(): bool {
+		return $this->is_default;
+	}
+
+	/**
+	 * @param bool $is_default
+	 */
+	public function set_is_default( bool $is_default ): void {
+		$this->is_default = $is_default;
+	}
+
+	/**
 	 * Sets whether to disable logging for this provider.
 	 *
 	 * @param bool $disable_logs Whether to disable logging for this provider.
@@ -445,6 +467,7 @@ class ConnectorSMTP {
 			'disable_logs'  => $this->disable_logs,
 			'smtp_secure'   => $this->secure,
 			'is_active'     => $this->is_active,
+			'is_default'    => $this->is_default,
 		];
 	}
 }

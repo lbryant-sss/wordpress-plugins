@@ -21,15 +21,27 @@ class ProvidersRepository {
 	const OPTION_NAME = 'solid_smtp_providers';
 
 	/**
-	 * Retrieves the active SMTP provider.
+	 * Retrieves active SMTP providers.
 	 *
-	 * @return ConnectorSMTP|null The active SMTP provider configuration, or null if not found.
+	 * @return array<ConnectorSMTP> Active SMTP providers.
 	 */
-	public function get_active_provider(): ?ConnectorSMTP {
+	public function get_active_providers(): array {
+		return array_filter(
+			$this->get_all_providers(),
+			static fn ( ConnectorSMTP $provider ) => $provider->is_active()
+		);
+	}
+
+	/**
+	 * Retrieves the default SMTP provider.
+	 *
+	 * @return ConnectorSMTP|null The default SMTP provider configuration, or null if not found.
+	 */
+	public function get_default_provider(): ?ConnectorSMTP {
 		$providers = $this->get_all_providers();
 
 		foreach ( $providers as $provider ) {
-			if ( $provider->is_active() ) {
+			if ( $provider->is_default() ) {
 				return $provider;
 			}
 		}
@@ -61,7 +73,12 @@ class ProvidersRepository {
 		$providers = get_option( self::OPTION_NAME, [] );
 		$data      = [];
 		foreach ( $providers as $provider ) {
-			$data[ $provider['id'] ] = $this->factory( $provider['name'], $provider );
+			$instance = $this->factory( $provider['name'], $provider );
+			if ( ! $instance instanceof ConnectorSMTP ) {
+				continue;
+			}
+
+			$data[ $provider['id'] ] = $instance;
 		}
 
 		return $data;
@@ -97,16 +114,18 @@ class ProvidersRepository {
 	}
 
 	/**
-	 * Sets a specific SMTP provider as active by its ID.
+	 * Sets a specific SMTP provider as default by its ID.
+	 * Ensures only one provider can be default at a time.
 	 *
-	 * @param string $provider_id The ID of the SMTP provider to set as active.
+	 * @param string $provider_id The ID of the SMTP provider to set as default.
 	 *
 	 * @return void
 	 */
-	public function set_active_provider( string $provider_id ): void {
+	public function set_default_provider( string $provider_id ): void {
 		$providers = $this->get_all_providers();
 		foreach ( $providers as $provider ) {
-			$provider->set_is_active( $provider_id === $provider->get_id() );
+			$provider->set_is_default( $provider_id === $provider->get_id() );
+
 			// though it not performance wise, but it safer.
 			$this->save( $provider );
 		}

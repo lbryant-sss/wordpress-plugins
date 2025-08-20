@@ -5,6 +5,14 @@ import styled from '@emotion/styled';
 
 export const ConnectionInfo = styled.div`
 	display: flex;
+
+	@media (min-width: ${({ theme }) => `${theme.breaks.small}px`}) {
+		grid-column: 1 / 4;
+	}
+
+	@media (min-width: ${({ theme }) => `${theme.breaks.medium}px`}) {
+		grid-column: unset;
+	}
 `;
 
 export const ConnectionInfoImage = styled.div`
@@ -13,7 +21,7 @@ export const ConnectionInfoImage = styled.div`
 	border-radius: 4px;
 	margin-right: 20px;
 
-	@media ( max-width: ${ ( { theme } ) => `${ theme.breaks.medium }px` } ) {
+	@media (max-width: ${({ theme }) => `${theme.breaks.medium}px`}) {
 		display: none;
 	}
 `;
@@ -26,17 +34,19 @@ export const ConnectionInfoName = styled.div`
 `;
 
 export const ConnectionToggle = styled.div`
-	@media ( max-width: ${ ( { theme } ) => `${ theme.breaks.medium }px` } ) {
-		display: none;
+	& .components-base-control {
+		margin-bottom: 0 !important;
+	}
+
+	@media (min-width: ${({ theme }) => `${theme.breaks.medium}px`}) {
+		& .components-toggle-control__label {
+			display: none;
+		}
 	}
 `;
 
 export const ConnectionActions = styled.div`
-	button {
-		margin-right: 10px;
-	}
-
-	button:last-child {
-		margin-right: 0;
-	}
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
 `;

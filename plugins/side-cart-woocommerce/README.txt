@@ -1,19 +1,19 @@
 ===Side Cart Woocommerce | Woocommerce Cart===
 Contributors: XootiX
 Donate link: https://www.paypal.me/xootix
-Tags: woocommerce cart, floating cart, cart popup, woocommerce, slider
+Tags: floating cart, cart popup, woocommerce, slider, rewards
 Requires at least: 3.0.1
 Tested up to: 6.8
-Stable tag: 2.6.8
+Stable tag: 2.7
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Side cart plugin adds a sleek floating basket to your site, letting customers see, edit, or remove items from their cart instantly — without ever leaving the page.
+Manage your cart from just a click away with an interactive design
 
 == Description ==
 [Live Demo](http://demo.xootix.com/side-cart-for-woocommerce/)
 
-Side cart plugin adds a sleek floating basket to your site, letting customers see, edit, or remove items from their cart instantly — without ever leaving the page.
+Say goodbye to your old cart page. Our sliding cart lets you add, see, and handle items without leaving your current page.
 
 💰 Real-time updates of your subtotal.
 
@@ -79,7 +79,7 @@ Customers can directly update their shipping location and get the exact shipping
 
 ##Rewards & Checkpoints
 
-Incentivize with progress: Free gifts, discounts and free shipping, display the minimum amount required to achieve a reward on progress bar.
+Incentivize with progress: Unlock rewards as you shop! Track your progress with multiple bars showing free gifts, discounts, and free shipping—based on your cart total or quantity
 
 
 ##Save For Later
@@ -123,7 +123,8 @@ You can use any third party plugin such as Loco Translate for hassle free transl
 5. Save Location: Your wordpress directory/wp-content/languages/
 
 == Screenshots ==
-1. Front view
+1. Card Layout
+2. Card Layout - Pro
 3. Row Layout
 4. Row Layout - Pro
 5. Floating Basket
@@ -132,6 +133,10 @@ You can use any third party plugin such as Loco Translate for hassle free transl
 8. Change Shipping Pro
 
 == Changelog ==
+
+= 2.7.0 =
+* Fix - Login slider auto opening
+* New - Rewards[PRO]
 
 = 2.6.8 =
 * Fix - PHP error when there is no menu found.

@@ -256,6 +256,9 @@ if ( ! function_exists( 'jupiterx_core_get_managed_plugins' ) ) {
 	}
 }
 
+/**
+ * @SuppressWarnings(PHPMD.NPathComplexity)
+ */
 if ( ! function_exists( 'jupiterx_core_get_plugins_from_api' ) ) {
 	/**
 	 * Get plugins with details from API.
@@ -308,9 +311,9 @@ if ( ! function_exists( 'jupiterx_core_get_plugins_from_api' ) ) {
 					continue;
 				}
 
-				$plugins_list[ $slug ]['version'] = $info['version'];
-				$plugins_list[ $slug ]['desc']    = $info['short_description'];
-				$plugins_list[ $slug ]['img_url'] = isset( $info['icons']['1x'] ) ? $info['icons']['1x'] : $info['icons']['default'];
+				$plugins_list[ $slug ]['version'] = isset( $info['version'] ) ? $info['version'] : '';
+				$plugins_list[ $slug ]['desc']    = isset( $info['short_description'] ) ? $info['short_description'] : '';
+				$plugins_list[ $slug ]['img_url'] = isset( $info['icons'] ) ? ( isset( $info['icons']['1x'] ) ? $info['icons']['1x'] : $info['icons']['default'] ) : '';
 
 				if ( is_callable( [ $tgmpa, '_get_plugin_basename_from_slug' ] ) ) {
 					$plugins_list[ $slug ]['file_path'] = $tgmpa->_get_plugin_basename_from_slug( $info['slug'] );

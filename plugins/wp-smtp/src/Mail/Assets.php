@@ -5,7 +5,6 @@ namespace SolidWP\Mail;
 use SolidWP\Mail\Admin\SettingsScreen;
 use SolidWP\Mail\Contracts\Service_Provider;
 use SolidWP\Mail\Repository\LogsRepository;
-use SolidWP\Mail\Repository\ProvidersRepository;
 use SolidWP\Mail\StellarWP\Assets\Asset;
 
 /**
@@ -46,8 +45,9 @@ class Assets extends Service_Provider {
 	 */
 	public function register_assets() {
 
-		Asset::add( 'solidwp-mail-admin-css', 'css/style.css' )
+		Asset::add( 'solidwp-mail-admin-css', 'js/index.css' )
 			->prefix_asset_directory( false )
+			->use_asset_file( false )
 			->set_condition(
 				static function () {
 				     //phpcs:ignore.
@@ -69,8 +69,7 @@ class Assets extends Service_Provider {
 			->enqueue_on( 'admin_enqueue_scripts' )
 			->register();
 
-		$index_asset_data     = require WPSMTP_ASSETS_PATH . 'js/index.asset.php';
-		$providers_repository = $this->container->get( ProvidersRepository::class );
+		$index_asset_data = require WPSMTP_ASSETS_PATH . 'js/index.asset.php';
 		Asset::add( 'solidwp-mail-admin', 'js/index.js', $index_asset_data['version'] )
 			->in_footer()
 			->set_dependencies(
@@ -89,14 +88,10 @@ class Assets extends Service_Provider {
 			)
 			->add_localize_script(
 				'SolidWPMail',
-				static function () use ( $providers_repository ) {
+				static function () {
 					return [
-						'providers' => $providers_repository->get_all_providers_as_array(),
-						'nonces'    => [
-							'save_connection'        => wp_create_nonce( 'save_connection' ),
-							'send_test_email'        => wp_create_nonce( 'send_test_email' ),
-							'delete_connection'      => wp_create_nonce( 'delete_connection' ),
-							'make_connection_active' => wp_create_nonce( 'make_connection_active' ),
+						'nonces' => [
+							'send_test_email' => wp_create_nonce( 'send_test_email' ),
 						],
 					];
 				}

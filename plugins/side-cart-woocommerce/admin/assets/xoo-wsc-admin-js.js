@@ -592,71 +592,6 @@ jQuery(document).ready(function($){
 	SideCart.init();
 
 
-	function barToggleShipButton(){
-
-		var hasFreeShipping = false,
-			$button 		= $('button.xoo-scbchk-add.xoo-scbhk-add-ship');
-
-		$('.xoo-scbhk-chkcont').each(function(index,el){
-			if( $(el).find( '.xoo-scb-type select' ).val() === 'freeshipping' ){
-				hasFreeShipping = true;
-				return true;
-			}
-		})
-
-		if( hasFreeShipping ){
-			$button.hide();
-		}
-		else{
-			$button.show();
-		}
-	}
-
-	barToggleShipButton();
-
-
-	$('button.xoo-scbchk-add').click( function(){
-		var $cont = $('.xoo-bar-points-cont').append( $('.xoo-bar-points-cont .xoo-scbhk-chkcont:last-child').clone() );
-		
-		var $addedCheckpoint 	= $cont.find( '.xoo-scbhk-chkcont:last-child' ),
-			$pointType 			= $addedCheckpoint.find('.xoo-scb-type select');
-
-		$pointType.find('option').removeAttr('selected');	
-
-		if( $(this).hasClass('xoo-scbhk-add-ship') ){
-			$addedCheckpoint.addClass('xoo-scbhk-shipcont');
-			$pointType.find('option[value="freeshipping"]').attr('selected', 'selected');
-		}
-		else{
-			$addedCheckpoint.removeClass('xoo-scbhk-shipcont');
-			$pointType.find('option:first-child').attr('selected', 'selected');
-		}
-		$pointType.trigger('change');
-		barToggleShipButton();
-	} );
-
-
-	$('body').on( 'click', '.xoo-scbh-del', function(){
-		$(this).closest('.xoo-scbhk-chkcont').remove();
-		barToggleShipButton();
-	} );
-
-
-	$('body').on( 'change', '.xoo-scb-type select', function(){
-
-		var $giftField = $(this).closest('.xoo-scbar-chkpoint').find('.xoo-scbhk-gift');
-
-		if( $(this).val() === 'gift' ){
-			$giftField.show();
-		}
-		else{
-			$giftField.hide();
-		}
-
-	} );
-
-	$('.xoo-scb-type select').trigger('change');
-
 
 	$('select[name="xoo-wsc-gl-options[m-ajax-atc]"]').on( 'change', function(){
 
@@ -709,15 +644,14 @@ jQuery(document).ready(function($){
 
 
 	//Hide/show product row and layout settings section
-	$('select[name="xoo-wsc-sy-options[scb-playout]"]').on('change', function(){
+	$('input[name="xoo-wsc-sy-options[scb-playout]"]').on('change', function(){
 
 		var $rowSection 	= $('.xoo-ass-style-scb_product'),
 			$cardSection 	= $('.xoo-ass-style-scb_productcard'),
 			$cardlink 		= $('a[href="#style_scb_productcard"]'),
 			$rowlink 		= $('a[href="#style_scb_product"]');
 
-
-		if( $(this).val() === 'rows' ){
+		if( $(this).val() === 'rows' && $(this).prop('checked') ){
 			$rowSection.show();
 			$cardSection.hide();
 			$cardlink.hide();
@@ -729,7 +663,9 @@ jQuery(document).ready(function($){
 			$rowlink.hide();
 			$cardlink.show();
 		}
-	}).trigger('change');
+	});
+
+	$('input[name="xoo-wsc-sy-options[scb-playout]"]:checked').trigger('change');
 
 
 	//Hide product elements for card layout depending on the items enabled/disabled
@@ -831,32 +767,346 @@ jQuery(document).ready(function($){
 	}).trigger('change');
 
 
-	$('img.xoo-wsc-patimg').on('click', function(){
-
-		$('img.xoo-wsc-patimg').removeClass('xoo-wsc-patactive');
-
-		$(this).addClass('xoo-wsc-patactive')
-
-		$('select[name="xoo-wsc-sy-options[scb-playout]"]').val( $(this).data('pattern') ).trigger('change');
-		
-	});
-
-
-	$('img.xoo-wsc-patimg[data-pattern="'+$('select[name="xoo-wsc-sy-options[scb-playout]"]').val()+'"]').addClass('xoo-wsc-patactive');
 
 	Customizer.pageLoading = false;
 	Customizer.build();
 
 
-	$('button.xoo-wsc-adpopup-go').on('click', function(){
-		$('body').removeClass('xoo-wsc-adpopup-active');
-		$('.xoo-wsc-admin-popup').remove();
-		$('img.xoo-wsc-patimg[data-pattern="'+$('select[name="xoo-wsc-sy-options[scb-playout]"]').val()+'"]').addClass('xoo-wsc-patactive');
+	$('.xoo-wsc-admin-popup img.xoo-as-patimg').on('click', function(){
+
+		var $cont 		= $(this).closest('.xoo-as-setting'),
+			fieldID 	= $cont.data('field_id'),
+			key			= $(this).data('key'),
+			$formField 	= $('.xoo-as-setting[data-field_id="'+fieldID+'"]').not($cont);
+
+
+		if( $formField.length ){
+			$formField.find( 'img.xoo-as-patimg[data-key="'+key+'"]' ).trigger('click');
+		}
+
+
+	})
+
+
+	$('.xoo-wsc-admin-popup select[name="xoo-wsc-gl-options[scbp-qpdisplay]"]').on('change', function(){
+		$('select[name="xoo-wsc-gl-options[scbp-qpdisplay]"]').not(this).val($(this).val()).trigger('change');
 	});
+
+
+
+	 $('button.xoo-wsc-adpopup-go').on('click', function(){
+
+	 	$('body').removeClass('xoo-wsc-adpopup-active');
+
+		$('.xoo-wsc-admin-popup').remove();
+
+
+		$('html, body').animate({ scrollTop: 0 }, 0);
+	});
+	
 
 
 	if( !xoo_wsc_admin_params.hasMenu ){
 		$('.xoo-ass-general-sh_bk').hide();
 	}
+
+
+	$('body').on('click', '.xoo-wsc-acc-head', function(){
+
+		var $container 	= $(this).closest('.xoo-wsc-accordion'),
+			$content 	= $container.children('.xoo-wsc-acc-cont');
+
+		$container.toggleClass('xoo-wsc-acc-active');
+	})
+
+
+
+    var Rewards = {
+
+		templateBar: '',
+		templateCheckpoint: '',
+		barInputNames: {},
+		$cont: $('.xoo-wsc-rewards-cont'),
+
+		init: function(){
+			this.initTemplates();
+			this.events(); 
+			this.createSettingsOnLoad();
+		},
+
+		barNumbering: function(){
+			$.each( $('.xoo-wsc-bar'), function( index, el ){
+				var $el 		= $(el),
+					$titleInput = $el.find('.xoo-wsc-bar-title-input');
+				$titleInput.val( $titleInput.val().replace( '[%^]','#'+ (index + 1) ) ).trigger('input');
+			} )
+		},
+
+		createSettingsOnLoad(){
+			var bars = xoo_wsc_admin_params.bars;
+			if( !bars ) return;
+			$.each( bars, function( index, barData ){
+
+				$bar 	= $(Rewards.templateBar(barData.settings));
+
+				$('.xoo-wsc-bars').append($bar);
+
+				if( barData.checkpoints ){
+					$.each( barData.checkpoints, function( index, checkpointData ){
+						var $checkpoint = $(Rewards.templateCheckpoint(checkpointData));
+						$bar.find('.xoo-wsc-bar-checkpoints').append($checkpoint);
+					} );
+				}
+
+				$bar.find('select.xoo-wsc-bar-barValue').trigger('change');
+				
+			} )
+
+			Rewards.onBarAdd();
+			Rewards.initProductSearchBox();
+		},
+
+
+		onBarAdd: function(){
+			Rewards.initSortable();
+			Rewards.initColorPicker();
+			Rewards.barNumbering();
+		},
+
+
+		addBar: function(){
+
+			$('.xoo-wsc-bar').removeClass('xoo-wsc-acc-active');
+
+			var $bar = $(Rewards.templateBar(xoo_wsc_admin_params.barDefaults.settings));
+	
+			$('.xoo-wsc-bars').append($bar);
+
+			$bar.addClass('xoo-wsc-acc-active');
+
+			Rewards.onBarAdd();
+
+			
+		},
+
+		events: function(){
+			$('button.xoo-wsc-add-bar').on('click', Rewards.addBar );
+			$('body').on('click', 'button.xoo-wsc-bar-add-chkpoint', Rewards.addBarCheckpoint );
+			$('body').on('click', '.xoo-wsc-bar-delete', Rewards.deleteBar);
+			$('body').on('click', '.xoo-wsc-checkpoint-delete', Rewards.deleteCheckpoint);
+			$('body').on('click', '.xoo-wsc-bar-chkpoint > .xoo-wsc-acc-head', Rewards.onCheckPointToggle );
+			$('body').on( 'input', '.xoo-wsc-chkpoint-title-input', Rewards.onCheckPointTitleChange );
+			$('body').on( 'input', '.xoo-wsc-bar-title-input', Rewards.onBarTitleChange );
+			$('body').on( 'change', 'select.xoo-wsc-bar-barValue', Rewards.onBarValueChange );
+
+			$('button.xoo-as-form-save').on( 'click', Rewards.beforeSettingsSave );
+			$(document).ajaxComplete(Rewards.onSettingsSave);
+			
+		},
+
+
+		onBarValueChange: function(){
+			var $bar 						= $(this).closest('.xoo-wsc-bar'),
+				$checkPointSelector 		= $bar.find('.xoo-wsc-checkpoint-selector select'),
+				$checkPointSelectorShipping = $checkPointSelector.find('option[value="freeshipping"]'),
+				$freeShippingCheckpoint 	= $bar.find('.xoo-wsc-bar-chkpoint[data-type="freeshipping"]');
+
+
+			if( $(this).val() === 'quantity' ){
+				$checkPointSelectorShipping.add($freeShippingCheckpoint).hide();
+				$checkPointSelector.val('discount').trigger('change');
+			}
+			else{
+				$checkPointSelectorShipping.add($freeShippingCheckpoint).show();
+			}
+		},
+
+		onCheckPointTitleChange: function(){
+			$(this).closest('.xoo-wsc-bar-chkpoint').find('.xoo-wsc-chkpoint-title').text($(this).val());
+		},
+
+		onBarTitleChange: function(){
+			var $bar = $(this).closest('.xoo-wsc-bar');
+			$bar.find('.xoo-wsc-bar-title').text($(this).val());
+		},
+
+		onCheckPointToggle: function(){
+			var $checkpoint = $(this).closest('.xoo-wsc-bar-chkpoint');
+			Rewards.initIconPicker( $checkpoint );
+			Rewards.productSearchFillDefaultValues( $checkpoint );
+		},
+
+
+		productSearchFillDefaultValues( $checkpoint ){
+
+			$.each( $checkpoint.find('.xoo-wsc-bar-prodsearch'), function( index, el ){
+
+				var $searchCont 	= $(el),
+					$defaultCont 	= $searchCont.find('.xoo-wsc-barpsearch-defaults');
+
+				if( !$defaultCont.length ) return true;
+
+				var $defaultInputs  = $defaultCont.find('input'),
+					$searchSelect 	= $searchCont.find('select.wc-product-search'),
+					defaultValues 	= [] ;
+
+				if( !$defaultInputs.length ) return true;
+
+				let productIDs = $defaultInputs.map(function(){
+				    return $(this).val();
+				}).get();
+
+				$searchCont.addClass('xoo-as-processing');
+
+				$.ajax({
+					url: xoo_wsc_admin_params.adminurl,
+					type: 'POST',
+					data: {
+						action: 'xoo_wsc_product_search_fill_defaults',
+						product_ids: productIDs,
+						xoo_wsc_nonce: xoo_wsc_admin_params.nonce
+					},
+					success: function( response ){
+						$searchSelect.html(response);
+						$defaultCont.remove();
+						$searchCont.removeClass('xoo-as-processing');
+					}
+				})
+
+			} );
+
+
+		},
+
+		onSettingsSave: function(event,xhr,options){
+
+			if( $(event.target.activeElement).hasClass('xoo-as-form-save') ){
+
+				$.each( Rewards.barInputNames, function( newName, oldName ){
+					$('[name="'+newName+'"]').attr('name', oldName);
+				})
+
+				Rewards.barInputNames = {};
+
+				Rewards.$cont.removeClass('xoo-as-processing');
+
+			}
+		},
+
+		beforeSettingsSave: function(){
+
+			var $cont 	= Rewards.$cont,
+				id 		= '[%$]';
+
+			$cont.addClass('xoo-as-processing');
+
+			$('.xoo-wsc-bar').each( function(index, el){
+				
+				$(el).find('[name*="' + id + '"]').each( function(i, inel){
+
+					var name 	= $(inel).attr('name'),
+						newName = name.replace( '[%$]', '['+index+']' );
+
+					if( name.includes('[%#]') ){
+						var checkPointIndex = $(inel).closest('.xoo-wsc-bar-chkpoint').index();
+						newName = newName.replace('[%#]', '['+checkPointIndex+']' );
+					}
+
+					Rewards.barInputNames[newName] = name;
+
+					$(inel).attr('name' , newName );
+
+					if( name === id+'[id]' ){
+						$(inel).val( 'id_'+index );
+					}
+
+				} );
+
+
+			} );
+		},
+
+
+		initColorPicker: function(){
+			$('.xoo-wsc-barColorPicker input:not(.wp-color-picker)').wpColorPicker({
+				change: function(event, ui){
+					$(event.target).val(ui.color.toString()).trigger('change')
+				}
+			});
+		},
+
+
+		initSortable: function(){
+			$('.xoo-wsc-bars').sortable({
+				handle: '.xoo-wsc-bar-head'
+			});
+		},
+
+		initTemplates: function(){
+			this.templateBar 		= wp.template('xoo-as-bar');
+			this.templateCheckpoint = wp.template('xoo-as-chkpoint');
+		},
+
+		
+
+		deleteBar: function(e){
+			if( !confirm( 'Are you sure you want to delete this progress bar and all its checkpoints?' ) ){
+				e.preventDefault();
+				return;
+			}
+			$(this).closest('.xoo-wsc-bar').remove();
+		},
+
+		deleteCheckpoint: function(e){
+			$(this).closest('.xoo-wsc-bar-chkpoint').remove();
+			e.stopImmediatePropagation();
+		},
+
+		addBarCheckpoint: function(){
+
+			var $bar 			= $(this).closest('.xoo-wsc-bar'),
+				$type  			= $bar.find('.xoo-wsc-checkpoint-selector select');
+
+			var checkpointData 	= {
+				type: $type.val(),
+			}
+
+			checkpointData = $.extend( xoo_wsc_admin_params.barDefaults.checkpoints[checkpointData.type], checkpointData );
+
+			$bar.find('.xoo-wsc-bar-chkpoint').removeClass('xoo-wsc-acc-active');
+
+			var $checkpoint = $(Rewards.templateCheckpoint(checkpointData));
+
+			$bar.find('.xoo-wsc-bar-checkpoints').append($checkpoint);
+
+			$checkpoint.addClass('xoo-wsc-acc-active');
+
+			Rewards.initIconPicker( $checkpoint );
+			Rewards.initProductSearchBox();
+
+
+		},
+
+		initProductSearchBox(){
+			$( document.body ).trigger( 'wc-enhanced-select-init' );
+		},
+
+		initIconPicker( $checkpoint ){
+
+			$checkpoint.find('.xoo-wsc-bar-icon:not(.iconpicker-input)').iconpicker({
+				hideOnSelect: true,
+			}).on('iconpickerSelected', function(e){
+			  $(e.target).next().attr('class',e.iconpickerValue || $(e.target).val() );
+			}).trigger('iconpickerSelected');
+			
+		}
+
+	}
+
+	Rewards.init();
+
+	$(document).on('click', '.iconpicker-item', function(e) {
+	    e.preventDefault(); // stops "#" from being written
+	});
 	
 })

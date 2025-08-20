@@ -1,11 +1,14 @@
 /**
- * External dependencies
- */
-import { useState } from '@wordpress/element';
-/**
  * WordPress dependencies
  */
-import { CheckboxControl, FlexBlock, FlexItem } from '@wordpress/components';
+import {
+	CheckboxControl,
+	Flex,
+	FlexBlock,
+	FlexItem,
+} from '@wordpress/components';
+import { useDispatch, useSelect } from '@wordpress/data';
+import { useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 /**
@@ -16,11 +19,17 @@ import { Button, Text, TextVariant } from '@ithemes/ui';
 /**
  * Internal dependencies
  */
-import ConfirmationDialog from "../../../components/confirmation-dialog";
-import { LogItem, ErrorBadge, SenderEmail, StyledFlex, ActionsBar } from './styles';
-import { StyledSurface } from "../styles";
-import { useDispatch, useSelect } from "@wordpress/data";
-import { STORE_NAME as LogsStore } from "../../../data/src/logs/constants";
+import ConfirmationDialog from '../../../components/confirmation-dialog';
+import { STORE_NAME as LogsStore } from '../../../data/src/logs/constants';
+import { StyledSurface } from '../styles';
+
+import {
+	LogItem,
+	ErrorBadge,
+	SenderEmail,
+	StyledFlex,
+	ActionsBar,
+} from './styles';
 
 /**
  * Component for displaying a table of logs.
@@ -30,38 +39,42 @@ import { STORE_NAME as LogsStore } from "../../../data/src/logs/constants";
  * @param {Object}   props.selectedLog - The currently selected log entry.
  * @param {Function} props.selectLog   - The function to set the selected log entry.
  */
-function LogsTable( { logs, selectedLog, selectLog } ) {
+function LogsTable({ logs, selectedLog, selectLog }) {
 	// define state
-	const [ isAllChecked, setIsAllChecked ] = useState( false );
-	const [ checkedItems, setCheckedItems ] = useState( [] );
-	const [ isDialogOpen, setIsDialogOpen ] = useState( false );
-	const [ isDeleting, setIsDeleting ] = useState( false )
+	const [isAllChecked, setIsAllChecked] = useState(false);
+	const [checkedItems, setCheckedItems] = useState([]);
+	const [isDialogOpen, setIsDialogOpen] = useState(false);
+	const [isDeleting, setIsDeleting] = useState(false);
+	const [isClearAllDialogOpen, setIsClearAllDialogOpen] = useState(false);
+	const [isClearingAll, setIsClearingAll] = useState(false);
 
-	const currentPage = useSelect( ( select ) => select( LogsStore ).getCurrentPage(), [] );
-	const { deleteLog } = useDispatch( LogsStore );
+	const currentPage = useSelect(
+		(select) => select(LogsStore).getCurrentPage(),
+		[]
+	);
+	const { deleteLog, clearAllLogsAction } = useDispatch(LogsStore);
 
 	const handleSelectAll = () => {
 		const newCheckedState = !isAllChecked;
-		setIsAllChecked( newCheckedState );
+		setIsAllChecked(newCheckedState);
 
 		// If selecting all, update checkedItems with all log IDs, otherwise clear it
-		if ( newCheckedState ) {
-			const allIds = logs.map( ( item ) => item.mail_id );
-			setCheckedItems( allIds );
+		if (newCheckedState) {
+			const allIds = logs.map((item) => item.mail_id);
+			setCheckedItems(allIds);
 		} else {
-			setCheckedItems( [] );
+			setCheckedItems([]);
 		}
 	};
 
-	const handleCheckboxChange = ( mail_id ) => {
-		setCheckedItems( ( prevCheckedItems ) => {
+	const handleCheckboxChange = (mailId) => {
+		setCheckedItems((prevCheckedItems) => {
 			// Toggle the ID in the checkedItems array
-			if ( prevCheckedItems.includes( mail_id ) ) {
-				return prevCheckedItems.filter( id => id !== mail_id );
-			} else {
-				return [ ...prevCheckedItems, mail_id ];
+			if (prevCheckedItems.includes(mailId)) {
+				return prevCheckedItems.filter((id) => id !== mailId);
 			}
-		} );
+			return [...prevCheckedItems, mailId];
+		});
 	};
 
 	const handleDeleteSelected = () => {
@@ -70,15 +83,15 @@ function LogsTable( { logs, selectedLog, selectLog } ) {
 	};
 
 	const handleConfirmDelete = async () => {
-		setIsDeleting( true )
+		setIsDeleting(true);
 		// Perform the actual delete action here
-		await deleteLog( checkedItems, currentPage );
+		await deleteLog(checkedItems, currentPage);
 		// Close the dialog after deletion
 		setIsDialogOpen(false);
 		// reset the list
-		setCheckedItems( [] )
+		setCheckedItems([]);
 		// reset the state
-		setIsDeleting( false )
+		setIsDeleting(false);
 	};
 
 	const handleCancelDelete = () => {
@@ -86,74 +99,129 @@ function LogsTable( { logs, selectedLog, selectLog } ) {
 		setIsDialogOpen(false);
 	};
 
+	const handleClearAllLogs = () => {
+		// Show the confirmation dialog
+		setIsClearAllDialogOpen(true);
+	};
+
+	const handleConfirmClearAll = async () => {
+		setIsClearingAll(true);
+		// Perform the actual clear all action here
+		await clearAllLogsAction(currentPage);
+		// Close the dialog after clearing
+		setIsClearAllDialogOpen(false);
+		// reset the list
+		setCheckedItems([]);
+		setIsAllChecked(false);
+		// reset the state
+		setIsClearingAll(false);
+	};
+
+	const handleCancelClearAll = () => {
+		// Simply close the dialog
+		setIsClearAllDialogOpen(false);
+	};
+
 	return (
 		<>
 			<ActionsBar>
-				<StyledFlex gap={ 3 } align={"center"}>
+				<Flex gap={3} align={'center'}>
 					<CheckboxControl
-						checked={ isAllChecked }
-						onChange={ handleSelectAll }
+						checked={isAllChecked}
+						onChange={handleSelectAll}
 					/>
 					<FlexBlock>
-						<Button
-							variant={ "secondary" }
-							onClick={ handleDeleteSelected }
-							disabled={ checkedItems.length === 0 }>
-							{ __( 'Delete Selected', 'LION' ) }
-						</Button>
+						<Flex justify={'space-between'}>
+							<Button
+								variant={'secondary'}
+								onClick={handleDeleteSelected}
+								disabled={checkedItems.length === 0}
+							>
+								{__('Delete Selected', 'LION')}
+							</Button>
+							<Button
+								variant={'secondary'}
+								onClick={handleClearAllLogs}
+								disabled={logs.length === 0}
+								isDestructive
+							>
+								{__('Clear All Logs', 'LION')}
+							</Button>
+						</Flex>
 					</FlexBlock>
-				</StyledFlex>
+				</Flex>
 			</ActionsBar>
 			<StyledSurface>
-			{ logs.map( ( item ) => (
-				<LogItem
-					key={ item.mail_id }
-					onClick={ () => {
-						selectLog( item );
-					} }
-					className={
-						selectedLog !== null &&
-						item.mail_id === selectedLog.mail_id
-							? 'active'
-							: ''
-					}
-				>
-					<StyledFlex gap={ 3 }>
-						<FlexItem>
-							<CheckboxControl
-								checked={ checkedItems.includes( item.mail_id ) }
-								onChange={ () => handleCheckboxChange( item.mail_id ) }
-							/>
-						</FlexItem>
-						<FlexBlock>
-							<SenderEmail>{ item.to }</SenderEmail>
-							<Text as={ 'p' } variant={ TextVariant.MUTED }>
-								{ item.subject }
-							</Text>
-							{ item.error && (
-								<ErrorBadge variant={ 'error' }>
-									{ __( 'error', 'LION' ) }
-								</ErrorBadge>
-							) }
-						</FlexBlock>
-						<FlexItem>
-							<Text>{ item.timestamp }</Text>
-						</FlexItem>
-					</StyledFlex>
-				</LogItem>
-			) ) }
+				{logs.map((item) => (
+					<LogItem
+						key={item.mail_id}
+						onClick={() => {
+							selectLog(item);
+						}}
+						className={
+							selectedLog !== null &&
+							item.mail_id === selectedLog.mail_id
+								? 'active'
+								: ''
+						}
+					>
+						<StyledFlex gap={3}>
+							<FlexItem>
+								<CheckboxControl
+									checked={checkedItems.includes(
+										item.mail_id
+									)}
+									onChange={() =>
+										handleCheckboxChange(item.mail_id)
+									}
+								/>
+							</FlexItem>
+							<FlexBlock>
+								<SenderEmail>{item.to}</SenderEmail>
+								<Text as={'p'} variant={TextVariant.MUTED}>
+									{item.subject}
+								</Text>
+								{item.error && (
+									<ErrorBadge variant={'error'}>
+										{__('error', 'LION')}
+									</ErrorBadge>
+								)}
+							</FlexBlock>
+							<FlexItem>
+								<Text>{item.timestamp}</Text>
+							</FlexItem>
+						</StyledFlex>
+					</LogItem>
+				))}
 			</StyledSurface>
 
-			{ isDialogOpen && (
+			{isDialogOpen && (
 				<ConfirmationDialog
-					onCancel={ handleCancelDelete }
-					onContinue={ handleConfirmDelete }
-					title={ __( 'Confirm Deletion', 'LION' ) }
-					body={ __( 'Are you sure you want to delete the selected logs?', 'LION' ) }
-					continueText={ __( 'Delete', 'LION' ) }
-					isBusy={ isDeleting }
+					onCancel={handleCancelDelete}
+					onContinue={handleConfirmDelete}
+					title={__('Confirm Deletion', 'LION')}
+					body={__(
+						'Are you sure you want to delete the selected logs?',
+						'LION'
+					)}
+					continueText={__('Delete', 'LION')}
+					isBusy={isDeleting}
 				/>
-			) }
+			)}
+
+			{isClearAllDialogOpen && (
+				<ConfirmationDialog
+					onCancel={handleCancelClearAll}
+					onContinue={handleConfirmClearAll}
+					title={__('Confirm Clear All Logs', 'LION')}
+					body={__(
+						'Are you sure you want to clear all logs? This action cannot be undone and will delete all email logs permanently.',
+						'LION'
+					)}
+					continueText={__('Clear All', 'LION')}
+					isBusy={isClearingAll}
+				/>
+			)}
 		</>
 	);
 }

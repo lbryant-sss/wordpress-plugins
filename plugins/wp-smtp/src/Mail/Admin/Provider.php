@@ -4,6 +4,7 @@ namespace SolidWP\Mail\Admin;
 
 use SolidWP\Mail\Container;
 use SolidWP\Mail\Admin\REST\Logs;
+use SolidWP\Mail\Admin\REST\Connections;
 use SolidWP\Mail\Contracts\Service_Provider;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -77,5 +78,6 @@ class Provider extends Service_Provider {
 	 */
 	public function queue_rest_controllers(): void {
 		$this->container->get( Logs::class )->register_routes();
+		$this->container->get( Connections::class )->register_routes();
 	}
 }

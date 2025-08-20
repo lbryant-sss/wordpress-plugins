@@ -96,16 +96,51 @@ class HTMega_Elementor_Widget_Carousel extends Widget_Base {
                     'separator' => 'none',
                 ]
             );
-
+            // New Link Control - Add this after the image size group control
+            $repeater->add_control(
+                'carosul_image_link',
+                [
+                    'label' => __( 'Image Link ', 'htmega-addons' ). ' <span class="ht-mega-new-badge">' . esc_html__('New','htmega-addons') . '</span>',
+                    'type' => Controls_Manager::URL,
+                    'placeholder' => __( 'https://your-link.com', 'htmega-addons' ),
+                    'description' => __( 'Add a link to this image. Leave empty if no link is needed.', 'htmega-addons' ),
+                    'show_external' => true,
+                    'default' => [
+                        'url' => '',
+                        'is_external' => true,
+                        'nofollow' => true,
+                    ],
+                ]
+            );
             $this->add_control(
                 'carosul_image_list',
                 [
                     'type'    => Controls_Manager::REPEATER,
                     'fields'  => $repeater->get_controls(),
                     'default' => [
-
                         [
-                            'carosul_image_title'        => __('Image Grid Title','htmega-addons'),
+                            'carosul_image_title'           => esc_html__( 'Mountain Hills, USA', 'htmega-addons' ),
+                            'carosul_image'           => [
+                                'url' => esc_url( HTMEGA_ADDONS_PL_URL . 'assets/widgets/thumbnail-slider/images/image1.jpg' ),
+                            ],
+                        ],
+                        [
+                            'carosul_image_title'           => esc_html__( 'Mountain river, USA', 'htmega-addons' ),
+                            'carosul_image'           => [
+                                'url' => esc_url( HTMEGA_ADDONS_PL_URL . 'assets/widgets/thumbnail-slider/images/image2.jpg' ),
+                            ]
+                        ],
+                        [
+                            'carosul_image_title'           =>esc_html__( 'Mountain River, USA', 'htmega-addons' ),
+                            'carosul_image'           => [
+                                'url' => esc_url( HTMEGA_ADDONS_PL_URL . 'assets/widgets/thumbnail-slider/images/image3.jpg' ),
+                            ]
+                        ],
+                        [
+                            'carosul_image_title'           => esc_html__( 'Mountain Hills, USA', 'htmega-addons' ),
+                            'carosul_image'           => [
+                                'url' => esc_url( HTMEGA_ADDONS_PL_URL . 'assets/widgets/thumbnail-slider/images/image1.jpg' ),
+                            ],
                         ],
 
                     ],
@@ -600,7 +635,7 @@ class HTMega_Elementor_Widget_Carousel extends Widget_Base {
                             ],
                             'default' => [
                                 'unit' => 'px',
-                                'size' => 20,
+                                'size' => 14,
                             ],
                             'selectors' => [
                                 '{{WRAPPER}} .htmega-carousel-activation .slick-arrow' => 'font-size: {{SIZE}}{{UNIT}};',
@@ -819,7 +854,99 @@ class HTMega_Elementor_Widget_Carousel extends Widget_Base {
             $this->end_controls_tabs();
 
         $this->end_controls_section(); // Style instagram arrow style end
+        // New Link Styles Section - Add after Box Option section
+        $this->start_controls_section(
+            'htmega_custom_carousel_link_style',
+            [
+                'label' => __( 'Link Style', 'htmega-addons' ) . ' <span class="ht-mega-new-badge">' . esc_html__('New','htmega-addons') . '</span>',
+                'tab'   => Controls_Manager::TAB_STYLE,
+            ]
+        );
 
+            $this->add_control(
+                'htmega_link_hover_effect',
+                [
+                    'label' => __( 'Link Hover Effect', 'htmega-addons' ),
+                    'type' => Controls_Manager::SELECT,
+                    'default' => 'none',
+                    'options' => [
+                        'none'   => __( 'None', 'htmega-addons' ),
+                        'zoom'   => __( 'Zoom', 'htmega-addons' ),
+                        'fade'   => __( 'Fade', 'htmega-addons' ),
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'htmega_link_zoom_scale',
+                [
+                    'label' => __( 'Zoom Scale', 'htmega-addons' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'range' => [
+                        'px' => [
+                            'min' => 1,
+                            'max' => 2,
+                            'step' => 0.1,
+                        ],
+                    ],
+                    'default' => [
+                        'size' => 1.05,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .ht-custom-carousel .htmega-carousel-link.htmega-link-zoom:hover img' => 'transform: scale({{SIZE}}) !important;',
+                    ],
+                    'condition' => [
+                        'htmega_link_hover_effect' => 'zoom',
+                    ],
+                ]
+            );
+            
+            $this->add_control(
+                'htmega_link_fade_opacity',
+                [
+                    'label' => __( 'Fade Opacity', 'htmega-addons' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 1,
+                            'step' => 0.1,
+                        ],
+                    ],
+                    'default' => [
+                        'size' => 0.8,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .ht-custom-carousel .htmega-carousel-link.htmega-link-fade:hover img' => 'opacity: {{SIZE}} !important;',
+                    ],
+                    'condition' => [
+                        'htmega_link_hover_effect' => 'fade',
+                    ],
+                ]
+            );
+            
+            $this->add_control(
+                'htmega_link_transition',
+                [
+                    'label' => __( 'Transition Duration', 'htmega-addons' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 2,
+                            'step' => 0.1,
+                        ],
+                    ],
+                    'default' => [
+                        'size' => 0.3,
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .ht-custom-carousel .htmega-carousel-link img' => 'transition: all {{SIZE}}s ease !important;',
+                    ],
+                ]
+            );
+
+        $this->end_controls_section();
 
         // Style Dots style start
         $this->start_controls_section(
@@ -1518,8 +1645,26 @@ class HTMega_Elementor_Widget_Carousel extends Widget_Base {
             <?php foreach ( $settings['carosul_image_list'] as $imagecarosul ): ?>
                 <div class="single-custom-carousel htmega-data-title" data-title="<?php echo esc_attr( $imagecarosul['carosul_image_title'] ); ?>">
                     <?php 
-                        echo Group_Control_Image_Size::get_attachment_image_html( $imagecarosul, 'carosul_imagesize', 'carosul_image' );
+                    // Check if link exists and is not empty
+                    $has_link = !empty($imagecarosul['carosul_image_link']['url']);
+                    
+                    if ($has_link) :
+                        // Set link attributes
+                        $link_target = $imagecarosul['carosul_image_link']['is_external'] ? ' target="_blank"' : '';
+                        $link_nofollow = $imagecarosul['carosul_image_link']['nofollow'] ? ' rel="nofollow"' : '';
+                        $link_classes = '';
+                        
+                        // Add hover effect classes only if set
+                        if (!empty($settings['htmega_link_hover_effect']) && $settings['htmega_link_hover_effect'] !== 'none') {
+                            $link_classes = ' class="htmega-carousel-link htmega-link-' . esc_attr($settings['htmega_link_hover_effect']) . '"';
+                        }
                     ?>
+                        <a href="<?php echo esc_url($imagecarosul['carosul_image_link']['url']); ?>"<?php echo $link_classes . $link_target . $link_nofollow; ?>>
+                            <?php echo Group_Control_Image_Size::get_attachment_image_html( $imagecarosul, 'carosul_imagesize', 'carosul_image' ); ?>
+                        </a>
+                    <?php else : ?>
+                        <?php echo Group_Control_Image_Size::get_attachment_image_html( $imagecarosul, 'carosul_imagesize', 'carosul_image' ); ?>
+                    <?php endif; ?>
                 </div>
             <?php endforeach;?>
 

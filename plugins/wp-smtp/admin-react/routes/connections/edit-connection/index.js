@@ -1,14 +1,15 @@
 /**
  * External dependencies
  */
-import { useState } from '@wordpress/element';
 import { useParams } from 'react-router-dom';
 
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
+import { Spinner } from '@wordpress/components';
 import { useSelect } from '@wordpress/data';
+import { useState } from '@wordpress/element';
+import { __ } from '@wordpress/i18n';
 import { arrowLeft, Icon } from '@wordpress/icons';
 
 /**
@@ -21,6 +22,7 @@ import { Text, TextVariant } from '@ithemes/ui';
  */
 import { STORE_NAME as connectionsStore } from '../../../data/src/connections/constants';
 import ConnectionForm from '../connection-form';
+
 import { Container, StyledLink } from './../add-connection/styles';
 
 /**
@@ -28,17 +30,27 @@ import { Container, StyledLink } from './../add-connection/styles';
  */
 function EditConnection() {
 	const { id } = useParams();
-	const connection = useSelect(
-		( select ) => select( connectionsStore ).getConnectionById( id ),
-		[ id ]
+	const { connection, isResolved } = useSelect(
+		(select) => ({
+			connection: select(connectionsStore).getConnectionById(id),
+			isResolved: select(connectionsStore).hasFinishedResolution(
+				'getConnectionById',
+				[id]
+			),
+		}),
+		[id]
 	);
 
-	const [ model, setModel ] = useState( connection );
+	const [model, setModel] = useState(connection);
 
-	if ( connection === null ) {
+	if (!isResolved) {
+		return <Spinner />;
+	}
+
+	if (connection === null) {
 		return (
-			<Text variant={ TextVariant.ACCENT }>
-				{ __( 'The connection does not exist.', 'LION' ) }
+			<Text variant={TextVariant.ACCENT}>
+				{__('The connection does not exist.', 'LION')}
 			</Text>
 		);
 	}
@@ -46,12 +58,12 @@ function EditConnection() {
 	return (
 		<Container>
 			<StyledLink to="/providers">
-				<Icon icon={ arrowLeft } size={ 20 } />
-				<Text variant={ TextVariant.ACCENT }>
-					{ __( 'Back to Email Connections', 'LION' ) }
+				<Icon icon={arrowLeft} size={20} />
+				<Text variant={TextVariant.ACCENT}>
+					{__('Back to Email Connections', 'LION')}
 				</Text>
 			</StyledLink>
-			<ConnectionForm model={ model } setModel={ setModel } />
+			<ConnectionForm model={model} setModel={setModel} />
 		</Container>
 	);
 }

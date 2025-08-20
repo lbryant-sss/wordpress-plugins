@@ -6,8 +6,8 @@ import { Outlet } from 'react-router-dom';
 /**
  * WordPress dependencies
  */
-import { __ } from '@wordpress/i18n';
 import { useDispatch, useSelect } from '@wordpress/data';
+import { __ } from '@wordpress/i18n';
 
 /**
  * SolidWP dependencies
@@ -19,9 +19,10 @@ import { Root } from '@ithemes/ui';
  */
 import '../data/src/connections/index';
 import '../assets/scss/Root.scss';
-import { STORE_NAME } from '../data/src/connections/constants';
-import { solidMailTheme } from '../components/layout/theme';
 import MainLayout from '../components/layout/main';
+import { solidMailTheme } from '../components/layout/theme';
+import { STORE_NAME } from '../data/src/connections/constants';
+
 import { FloatingSnackBar } from './styles';
 
 /**
@@ -32,25 +33,22 @@ import { FloatingSnackBar } from './styles';
  * @return {JSX.Element} The SnackbarNotification component.
  */
 function SnackbarNotification() {
-	const toasts = useSelect(
-		( select ) => select( STORE_NAME ).getToasts(),
-		[]
-	);
-	const { removeToast } = useDispatch( STORE_NAME );
+	const toasts = useSelect((select) => select(STORE_NAME).getToasts(), []);
+	const { removeToast } = useDispatch(STORE_NAME);
 	return (
 		<div>
-			{ toasts.length > 0 && (
+			{toasts.length > 0 && (
 				<FloatingSnackBar
-					notices={ toasts.map( ( toast ) => ( {
+					notices={toasts.map((toast) => ({
 						id: toast.id,
 						content: toast.message,
-						status: 'default',
-					} ) ) }
-					onRemove={ ( id ) => {
-						removeToast( id );
-					} }
+						status: toast.status,
+					}))}
+					onRemove={(id) => {
+						removeToast(id);
+					}}
 				/>
-			) }
+			)}
 		</div>
 	);
 }
@@ -64,8 +62,8 @@ function SnackbarNotification() {
  */
 function MailRoot() {
 	return (
-		<Root theme={ solidMailTheme }>
-			<MainLayout headerText={ __( 'Email Connections', 'LION' ) }>
+		<Root theme={solidMailTheme}>
+			<MainLayout headerText={__('Email Connections', 'LION')}>
 				<Outlet />
 				<SnackbarNotification />
 			</MainLayout>

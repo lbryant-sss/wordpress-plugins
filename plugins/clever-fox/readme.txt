@@ -4,7 +4,7 @@ Tags: homepage setup, companion, one click demo, sections, customizer
 Requires at least: 4.6 or higher
 Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 26.2.91
+Stable tag: 26.2.92
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
 
@@ -22,7 +22,7 @@ Clever Fox plugin to enhance the functionality for free themes made by <a href="
 &#9989; Manage Font Typography by Setting
 &#9989; Background Animations
 &#9989; Kenburn Effect on Slider
-&#9989; Compatible with WPML, Polylang and Your Choice
+&#9989; Compatible with WPML, Polylang
 &#9989; Translation Ready
 &#9989; Responsive for All Devices
 &#9989; Cross Browser Compatibility and More Features
@@ -208,6 +208,9 @@ Clever Fox WordPress Plugin is licensed under the GPL3 (https://www.gnu.org/lice
 
 
 == Changelog ==
+
+= 26.2.92 =
+* Readme Updated
 
 = 26.2.91 =
 * Theme Description Updated

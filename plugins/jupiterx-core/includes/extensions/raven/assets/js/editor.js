@@ -35,7 +35,7 @@ var JupiterxConditionManager = function JupiterxConditionManager() {
 
     if ('active' === elementor.config.jx_editor_top_bar || 'default' === elementor.config.jx_editor_top_bar) {
       var editorHeader = $('.MuiBox-root'),
-          trigger = editorHeader.find('button[aria-label="Save Options"]');
+          trigger = editorHeader.find('button');
       trigger.parent().prev().addClass('layout_builder_publish_button');
       var btnClass = 'jx-editor-modal-trigger-top jx-editor-modal-trigger-top-light';
 
@@ -173,6 +173,8 @@ var JupiterxConditionManager = function JupiterxConditionManager() {
       conditions: conditionsArray,
       post: elementor.ajax.requestConstants.initial_document_id,
       nonce: elementor.ajax.requestConstants._nonce
+    }).always(function () {
+      $('.jupiterx-conditions-modal').css('display', 'none');
     });
   }
 

@@ -227,6 +227,8 @@ class JupiterX_Core_Control_Panel_Layout_Builder {
 
 		$data->conditions_string = get_post_meta( $data->ID, 'jupiterx-condition-rules-string', true ); // conditions string
 
+		$data = $this->filter_inactive_conditions( $data );
+
 		if ( empty( $data->conditions_string ) ) {
 			$data->conditions_string = esc_html__( 'No Instance', 'jupiterx-core' );
 			$data->priority          = 5;
@@ -238,6 +240,22 @@ class JupiterX_Core_Control_Panel_Layout_Builder {
 		], $editor_url );
 
 		$data->editor_url = $editor_url;
+
+		return $data;
+	}
+
+	private function filter_inactive_conditions( $data ) {
+		if ( ! defined( 'ICL_SITEPRESS_VERSION' ) ) {
+			foreach ( $data->conditions as $key => $condition ) {
+				if ( 'wpml' === $condition['conditionB'] ) {
+					unset( $data->conditions[ $key ] );
+				}
+			}
+
+			if ( preg_match( '/Language:\s*[^,\s]+/i', $data->conditions_string ) ) {
+				$data->conditions_string = '';
+			}
+		}
 
 		return $data;
 	}

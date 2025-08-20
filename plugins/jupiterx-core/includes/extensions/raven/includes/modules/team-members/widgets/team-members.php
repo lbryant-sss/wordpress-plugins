@@ -1677,9 +1677,27 @@ class Team_Members extends Base_Widget {
 	 * @since 3.0.0
 	 */
 	private function get_description( $member ) {
+		$allowed_tags = [
+			'a'      => [
+				'href'   => [],
+				'title'  => [],
+				'target' => [],
+				'rel'    => [],
+			],
+			'strong' => [],
+			'b'      => [],
+			'em'     => [],
+			'i'      => [],
+			'br'     => [],
+			'p'      => [],
+			'ul'     => [],
+			'ol'     => [],
+			'li'     => [],
+		];
+
 		return sprintf(
-			'<p class="team-member--description">%s</p>',
-			esc_html( $member['description'] )
+			'<div class="team-member--description">%s</div>',
+			wp_kses( $member['description'], $allowed_tags )
 		);
 	}
 

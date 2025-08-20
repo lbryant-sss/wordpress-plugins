@@ -5,6 +5,7 @@ modules:
     enabled:
         - WPLoader
         - \Helper\MailDb
+        - \Helper\Mailer
     config:
         WPLoader:
             wpRootFolder: '%WP_ROOT_FOLDER%'

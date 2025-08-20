@@ -3,7 +3,7 @@ Contributors: artbees
 Tags: jupiter, jupiterx
 Requires at least: 5.6
 Tested up to: 6.7
-Stable tag: 4.9.2
+Stable tag: 4.10.1
 Requires PHP: 7.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -29,6 +29,20 @@ It's worth mentioning that, some of the features are disabled for the Jupiter X 
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 
 == Changelog ==
+= 4.10.1 =
+* Added New Feature to Support for new bulk license added.
+* Fixed keeping history of pagination in Advanced Post.
+* Fixed displaying of Bundle & virtual product on overlay layout on product carousel.
+* Fixed closing Condition modal in elementor editor.
+* Fixed displaying WPML condition on Elementor editor.
+* Added recaptcha V3 to login form widget.
+* Fixed overflow issue on Animated Heading widget.
+* Fixed conflict between Event manager Plugin & JupiterX.
+* Enabled query result number in Advanced Post widget for archive template.
+* Fixed displaying `Condition Display` in Elementor editor for other language than english.
+* Fixed Advanced menu to accept Download Link.
+* Fixed Product Short Description dynamic tag in the Price List widget.
+
 = 4.9.2 =
 * Fixed conflict between JupiterX & Elementor.
 * Improved form widget to prevent the form label from being included in sent messages.

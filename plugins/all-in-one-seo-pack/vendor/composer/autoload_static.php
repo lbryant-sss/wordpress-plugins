@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitac1564f5b572cf25907cf4d1712cd518
+class ComposerStaticInit9b0f47576a3819165cca00c44421d8e9
 {
     public static $prefixLengthsPsr4 = array (
         'A' => 
@@ -205,6 +205,7 @@ class ComposerStaticInitac1564f5b572cf25907cf4d1712cd518
         'AIOSEO\\Plugin\\Common\\SearchStatistics\\SearchStatistics' => __DIR__ . '/../..' . '/app/Common/SearchStatistics/SearchStatistics.php',
         'AIOSEO\\Plugin\\Common\\SearchStatistics\\Site' => __DIR__ . '/../..' . '/app/Common/SearchStatistics/Site.php',
         'AIOSEO\\Plugin\\Common\\SearchStatistics\\Sitemap' => __DIR__ . '/../..' . '/app/Common/SearchStatistics/Sitemap.php',
+        'AIOSEO\\Plugin\\Common\\SeoAnalysis\\SeoAnalysis' => __DIR__ . '/../..' . '/app/Common/SeoAnalysis/SeoAnalysis.php',
         'AIOSEO\\Plugin\\Common\\SeoRevisions\\SeoRevisions' => __DIR__ . '/../..' . '/app/Common/SeoRevisions/SeoRevisions.php',
         'AIOSEO\\Plugin\\Common\\Sitemap\\Content' => __DIR__ . '/../..' . '/app/Common/Sitemap/Content.php',
         'AIOSEO\\Plugin\\Common\\Sitemap\\File' => __DIR__ . '/../..' . '/app/Common/Sitemap/File.php',
@@ -442,10 +443,10 @@ class ComposerStaticInitac1564f5b572cf25907cf4d1712cd518
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitac1564f5b572cf25907cf4d1712cd518::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitac1564f5b572cf25907cf4d1712cd518::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitac1564f5b572cf25907cf4d1712cd518::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitac1564f5b572cf25907cf4d1712cd518::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit9b0f47576a3819165cca00c44421d8e9::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit9b0f47576a3819165cca00c44421d8e9::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit9b0f47576a3819165cca00c44421d8e9::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit9b0f47576a3819165cca00c44421d8e9::$classMap;
 
         }, null, ClassLoader::class);
     }

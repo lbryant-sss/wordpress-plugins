@@ -2536,7 +2536,7 @@ abstract class Post_Base extends Action_Base {
 		?>
 		<span class="raven-post-overlay-icons" >
 		<?php if ( 'yes' === $show_quick_view && ( ! empty( $quick_view_icon ) || ! empty( $quick_view_icon_new['value'] ) ) ) : ?>
-			<a class="raven-overlay-icon raven-overlay-qucik-view-icon slick-slide-image" href="<?php echo esc_url( the_post_thumbnail_url( 'full' ) ); ?>" data-elementor-lightbox-slideshow="<?php echo esc_attr( $this->skin->parent->get_id() ); ?>">
+			<a class="raven-overlay-icon raven-overlay-qucik-view-icon slick-slide-image" href="<?php echo esc_url( get_the_post_thumbnail_url( get_the_ID(), 'full' ) ); ?>" data-elementor-lightbox-slideshow="<?php echo esc_attr( $this->skin->parent->get_id() ); ?>">
 				<?php $this->render_quick_view_icon(); ?>
 			</a>
 		<?php endif; ?>

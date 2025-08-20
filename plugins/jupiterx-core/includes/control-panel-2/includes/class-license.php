@@ -18,14 +18,15 @@
  */
 class JupiterX_Core_Control_Panel_License {
 
-	const ARTBEES_THEMES_API        = 'https://my.artbees.net/wp-json/artbees_license';
-	const ENVATO_ITEM_ID            = '5177775';
-	const PURCHASE_CODE_OPTION_NAME = 'envato_purchase_code_' . self::ENVATO_ITEM_ID;
-	const ACCESS_TOKEN_OPTION_NAME  = 'api_access_token';
-	const API_KEY_OPTION_NAME       = 'api_key';
-	const EMAIL_OPTION_NAME         = 'api_email';
-	const EXPIRY_OPTION_NAME        = 'api_expiry';
-	const NONCE_ACTION              = 'jupiterx_control_panel';
+	const ARTBEES_THEMES_API                          = 'https://my.artbees.net/wp-json/artbees_license';
+	const ENVATO_ITEM_ID                              = '5177775';
+	const PURCHASE_CODE_OPTION_NAME                   = 'envato_purchase_code_' . self::ENVATO_ITEM_ID;
+	const ACCESS_TOKEN_OPTION_NAME                    = 'api_access_token';
+	const API_KEY_OPTION_NAME                         = 'api_key';
+	const EMAIL_OPTION_NAME                           = 'api_email';
+	const EXPIRY_OPTION_NAME                          = 'api_expiry';
+	const NONCE_ACTION                                = 'jupiterx_control_panel';
+	const IS_REGISTERED_ON_ANOTHER_DOMAIN_OPTION_NAME = 'is_registered_on_another_domain';
 
 	/**
 	 * Class instance.
@@ -59,6 +60,10 @@ class JupiterX_Core_Control_Panel_License {
 	public function __construct() {
 		add_action( 'wp_ajax_jupiterx_cp_register_license', [ $this, 'register_license' ] );
 		add_action( 'wp_ajax_jupiterx_cp_revoke_license', [ $this, 'revoke_license' ] );
+
+		if ( $this->get_details()['is_registered_on_another_domain'] ) {
+			add_action( 'admin_notices', [ $this, 'show_registered_on_another_domain_warning' ] );
+		}
 	}
 
 	/**
@@ -132,6 +137,7 @@ class JupiterX_Core_Control_Panel_License {
 		$this->update_option( self::ACCESS_TOKEN_OPTION_NAME, $verify['access_token'] );
 		$this->update_option( self::EMAIL_OPTION_NAME, $verify['email'] );
 		$this->update_option( self::EXPIRY_OPTION_NAME, $verify['expiry'] );
+		$this->update_option( self::IS_REGISTERED_ON_ANOTHER_DOMAIN_OPTION_NAME, false );
 
 		wp_send_json_success( [
 			'code'    => 'register_success',
@@ -345,6 +351,7 @@ class JupiterX_Core_Control_Panel_License {
 		$this->remove_option( self::API_KEY_OPTION_NAME );
 		$this->remove_option( self::EMAIL_OPTION_NAME );
 		$this->remove_option( self::EXPIRY_OPTION_NAME );
+		$this->remove_option( self::IS_REGISTERED_ON_ANOTHER_DOMAIN_OPTION_NAME );
 
 		wp_send_json_success( [
 			'code'    => 'revoke_success',
@@ -417,6 +424,17 @@ class JupiterX_Core_Control_Panel_License {
 	}
 
 	/**
+	 * Check if license is registered on another domain.
+	 *
+	 * @since 4.10.1
+	 *
+	 * @return boolean License status.
+	 */
+	private function is_registered_on_another_domain() {
+		return $this->get_option( self::IS_REGISTERED_ON_ANOTHER_DOMAIN_OPTION_NAME );
+	}
+
+	/**
 	 * Get license details.
 	 *
 	 * @since 1.18.0
@@ -428,6 +446,7 @@ class JupiterX_Core_Control_Panel_License {
 			'has_api_key'      => $this->has_api_key(),
 			'email'            => $this->get_email(),
 			'expiry'           => $this->get_expiry(),
+			'is_registered_on_another_domain' => $this->is_registered_on_another_domain(),
 		];
 	}
 
@@ -514,6 +533,17 @@ class JupiterX_Core_Control_Panel_License {
 	 */
 	private function is_sha256( $string = '' ) {
 		return preg_match( '/^[a-f0-9]{64}$/', $string );
+	}
+
+	/**
+	 * Show admin warning if license is registered on another domain.
+	 *
+	 * @since 4.10.1
+	 *
+	 * @return void
+	 */
+	public function show_registered_on_another_domain_warning() {
+		echo '<div class="notice notice-warning"><p>' . __( 'Warning: <strong>Another domain</strong> is registered with this <strong>JupiterX</strong> license and it may be <strong>deactivated</strong> in future releases. If you have your api_key or purchase key, please revoke and reactivate your license. Otherwise, please contact <a href="https://my.artbees.net/create-ticket/" target="_blank">Artbees support</a>', 'jupiterx-core' ) . '</p></div>';
 	}
 }
 

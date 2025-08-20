@@ -2,10 +2,10 @@
 
 namespace Unit\Connectors;
 
-use Codeception\Test\Unit;
+use lucatume\WPBrowser\TestCase\WPTestCase;
 use SolidWP\Mail\Connectors\ConnectorMailGun;
 
-class ConnectorMailGunTest extends Unit {
+class ConnectorMailGunTest extends WPTestCase {
 
 	public function testDefaultSettings(): void {
 		$provider = new ConnectorMailGun();
