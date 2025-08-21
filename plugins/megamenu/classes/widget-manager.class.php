@@ -379,26 +379,20 @@ if ( ! class_exists( 'Mega_Menu_Widget_Manager' ) ) :
 				return;
 			}
 
-			$grid                = isset( $_POST['grid'] ) ? $_POST['grid'] : false;
+			$grid = isset( $_POST['grid'] ) ? $_POST['grid'] : false;
 			$parent_menu_item_id = absint( $_POST['parent_menu_item'] );
 
-			$saved = true;
+			$saved - false;
 
 			$existing_settings = get_post_meta( $parent_menu_item_id, '_megamenu', true );
 
 			if ( is_array( $grid ) ) {
-
 				$submitted_settings = array_merge( $existing_settings, array( 'grid' => $grid ) );
-
-			}
-
-			update_post_meta( $parent_menu_item_id, '_megamenu', $submitted_settings );
-
-			if ( $saved ) {
+				update_post_meta( $parent_menu_item_id, '_megamenu', $submitted_settings );
 				$this->send_json_success( sprintf( __( 'Saved (%s)', 'megamenu' ), json_encode( $grid ) ) );
-			} else {
-				$this->send_json_error( sprintf( __( "Didn't save", 'megamenu' ), json_encode( $grid ) ) );
 			}
+
+			$this->send_json_error( sprintf( __( "Didn't save", 'megamenu' ), json_encode( $grid ) ) );
 
 		}
 

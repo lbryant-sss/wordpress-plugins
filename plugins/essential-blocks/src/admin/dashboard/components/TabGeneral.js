@@ -277,69 +277,15 @@ export default function TabGeneral() {
                         >
                             <div className="changelog-wrapper">
                                 <div className="changelog-title">
-                                    {__("Version: 5.6.0", "essential-blocks")}
+                                    {__("Version: 5.6.2", "essential-blocks")}
                                     <span className="changelog-date">
-                                        {__("27/07/2025", "essential-blocks")}
+                                        {__("20/08/2025", "essential-blocks")}
                                     </span>
                                 </div>
                                 <ul className="changelog-content">
                                     <li>
                                         {__(
-                                            "Added: New Feature | AI Image Generation",
-                                            "essential-blocks"
-                                        )}
-                                    </li>
-                                    <li>
-                                        {__(
-                                            "Fixed: Infobox | Image border appearing rounded",
-                                            "essential-blocks"
-                                        )}
-                                    </li>
-                                    <li>
-                                        {__(
-                                            "Fixed: Filterable Gallery | Missing image alt attribute",
-                                            "essential-blocks"
-                                        )}
-                                    </li>
-                                    <li>
-                                        {__(
-                                            "Fixed: Accordion | Animation not smooth on first click",
-                                            "essential-blocks"
-                                        )}
-                                    </li>
-                                    <li>
-                                        {__(
-                                            "Fixed: Slider | Image size issue in 'Image with Content' layout",
-                                            "essential-blocks"
-                                        )}
-                                    </li>
-                                    <li>
-                                        {__(
-                                            "Fixed: Post Grid | API request blocked on servers with 8G firewall enabled",
-                                            "essential-blocks"
-                                        )}
-                                    </li>
-                                    <li>
-                                        {__(
-                                            "Fixed: Popup | Not Triggering in External Element",
-                                            "essential-blocks"
-                                        )}
-                                    </li>
-                                    <li>
-                                        {__(
-                                            "Fixed: Animation | FadeInLeft not working correctly on initial viewport",
-                                            "essential-blocks"
-                                        )}
-                                    </li>
-                                    <li>
-                                        {__(
-                                            "Improved: Accordion | Title editing experience enhanced",
-                                            "essential-blocks"
-                                        )}
-                                    </li>
-                                    <li>
-                                        {__(
-                                            "Few minor bug fixes & improvements",
+                                            "Minor bug fixes and improvements",
                                             "essential-blocks"
                                         )}
                                     </li>

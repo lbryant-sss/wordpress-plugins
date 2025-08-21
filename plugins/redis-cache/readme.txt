@@ -5,7 +5,7 @@ Tags: redis, object cache, caching, performance, relay
 Requires at least: 4.6
 Tested up to: 6.8
 Requires PHP: 7.2
-Stable tag: 2.6.3
+Stable tag: 2.6.5
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -60,6 +60,15 @@ Redis Object Cache has various WP CLI commands, for more information run `wp hel
 4. Dashboard widget, displaying recent response time metrics.
 
 == Changelog ==
+
+= 2.6.5 =
+
+- Fixed an issue with (in|de)crement cache values when using igbinary
+
+= 2.6.4 =
+
+- Prevent some deprecation notices
+- Fixed an issue with (in|de)crement cache values
 
 = 2.6.3 =
 

@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-08-19T15:48:33+00:00\n"
+"POT-Creation-Date: 2025-08-20T20:52:09+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 
@@ -164,7 +164,7 @@ msgid "Checkout"
 msgstr ""
 
 #: src/BlockLibrary/BlockServiceProvider.php:136
-#: src/WordPress/Pages/PageService.php:124
+#: src/WordPress/Pages/PageService.php:123
 #: dashboard/customer-dashboard.php:6
 #: Blocks/Confirmation/edit.js:30
 msgid "Customer Dashboard"
@@ -7914,18 +7914,18 @@ msgstr ""
 msgid "Deleting This is Restricted"
 msgstr ""
 
-#: src/WordPress/Pages/PageService.php:120
+#: src/WordPress/Pages/PageService.php:119
 #: src/WordPress/PostTypes/FormPostTypeService.php:151
 msgid "Store Checkout"
 msgstr ""
 
-#: src/WordPress/Pages/PageService.php:128
+#: src/WordPress/Pages/PageService.php:127
 #: confirmation/order-confirmation.php:6
 #: settings/customer/CustomerSettings.js:330
 msgid "Order Confirmation"
 msgstr ""
 
-#: src/WordPress/Pages/PageService.php:132
+#: src/WordPress/Pages/PageService.php:131
 #: settings/advanced/AdvancedSettings.js:353
 msgid "Shop Page"
 msgstr ""

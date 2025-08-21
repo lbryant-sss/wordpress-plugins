@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-08-19T15:44:10",
+  "timestamp": "2025-08-20T20:47:57",
   "compiler": {
     "name": "node",
     "version": "16.20.2"
@@ -3619,8 +3619,6 @@
           "./dist/surecart/p-c0bbc160.entry.js.map",
           "./dist/surecart/p-c112413e.entry.js",
           "./dist/surecart/p-c112413e.entry.js.map",
-          "./dist/surecart/p-c63bcb85.entry.js",
-          "./dist/surecart/p-c63bcb85.entry.js.map",
           "./dist/surecart/p-c78cea8f.entry.js",
           "./dist/surecart/p-c78cea8f.entry.js.map",
           "./dist/surecart/p-c855a257.entry.js",
@@ -3713,6 +3711,8 @@
           "./dist/surecart/p-feacb288.entry.js.map",
           "./dist/surecart/p-ff10bfbf.js",
           "./dist/surecart/p-ff10bfbf.js.map",
+          "./dist/surecart/p-ff9620ab.entry.js",
+          "./dist/surecart/p-ff9620ab.entry.js.map",
           "./dist/surecart/p-ffccf465.entry.js",
           "./dist/surecart/p-ffccf465.entry.js.map",
           "./dist/surecart/surecart.esm.js",
@@ -4069,8 +4069,6 @@
           "./www/build/p-c0bbc160.entry.js.map",
           "./www/build/p-c112413e.entry.js",
           "./www/build/p-c112413e.entry.js.map",
-          "./www/build/p-c63bcb85.entry.js",
-          "./www/build/p-c63bcb85.entry.js.map",
           "./www/build/p-c78cea8f.entry.js",
           "./www/build/p-c78cea8f.entry.js.map",
           "./www/build/p-c855a257.entry.js",
@@ -4163,6 +4161,8 @@
           "./www/build/p-feacb288.entry.js.map",
           "./www/build/p-ff10bfbf.js",
           "./www/build/p-ff10bfbf.js.map",
+          "./www/build/p-ff9620ab.entry.js",
+          "./www/build/p-ff9620ab.entry.js.map",
           "./www/build/p-ffccf465.entry.js",
           "./www/build/p-ffccf465.entry.js.map",
           "./www/build/surecart.esm.js",
@@ -6188,8 +6188,8 @@
           "sc-checkout-mollie-payment",
           "sc-checkout-paystack-payment-provider"
         ],
-        "bundleId": "p-c63bcb85",
-        "fileName": "p-c63bcb85.entry.js",
+        "bundleId": "p-ff9620ab",
+        "fileName": "p-ff9620ab.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-fab02ef6.js",
@@ -6216,7 +6216,7 @@
           "p-07b1b1ed.js",
           "p-8bcf1946.js"
         ],
-        "originalByteSize": 9512
+        "originalByteSize": 9451
       },
       {
         "key": "sc-checkout-stock-alert.sc-checkout-test-complete.sc-checkout-unsaved-changes-warning.sc-form-components-validator.sc-form-error-provider.sc-form-state-provider.sc-login-provider.sc-order-confirm-provider.sc-session-provider.entry",
@@ -9260,7 +9260,7 @@
           "address-b892540d.js",
           "index-a2617916.js"
         ],
-        "originalByteSize": 9667
+        "originalByteSize": 9606
       },
       {
         "key": "sc-checkout-stock-alert.sc-checkout-test-complete.sc-checkout-unsaved-changes-warning.sc-form-components-validator.sc-form-error-provider.sc-form-state-provider.sc-login-provider.sc-order-confirm-provider.sc-session-provider.entry",
@@ -12306,7 +12306,7 @@
           "address-4c70d641.js",
           "index-9cef574e.js"
         ],
-        "originalByteSize": 9959
+        "originalByteSize": 9898
       },
       {
         "key": "sc-checkout-stock-alert.sc-checkout-test-complete.sc-checkout-unsaved-changes-warning.sc-form-components-validator.sc-form-error-provider.sc-form-state-provider.sc-login-provider.sc-order-confirm-provider.sc-session-provider.entry",

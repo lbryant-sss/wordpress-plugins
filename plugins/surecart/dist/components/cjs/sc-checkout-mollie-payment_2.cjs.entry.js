@@ -59,12 +59,12 @@ const ScCheckoutMolliePayment = class {
     componentWillLoad() {
         watchers.state.id = 'mollie';
         this.fetchMethods();
-        listenTo('checkout', ['total_amount', 'currency', 'reusabled_payment_method_required', 'shipping_address'], () => this.fetchMethods());
+        listenTo('checkout', ['total_amount', 'subtotal_amount', 'currency', 'reusabled_payment_method_required', 'shipping_address'], () => this.fetchMethods());
     }
     async fetchMethods() {
         var _a;
         const checkout = mutations.state.checkout;
-        if (!(checkout === null || checkout === void 0 ? void 0 : checkout.currency) || !(checkout === null || checkout === void 0 ? void 0 : checkout.total_amount))
+        if (!(checkout === null || checkout === void 0 ? void 0 : checkout.currency))
             return; // wait until we have a currency.
         try {
             mutations$1.lockCheckout('methods');

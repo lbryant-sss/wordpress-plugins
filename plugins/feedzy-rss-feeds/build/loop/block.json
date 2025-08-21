@@ -74,6 +74,13 @@
         }
       }
     },
+    "thumb": {
+      "type": "string",
+      "default": "auto"
+    },
+    "fallbackImage": {
+      "type": "object"
+    },
     "conditions": {
       "type": "object",
       "properties": {
@@ -108,6 +115,10 @@
       }
     },
     "innerBlocksContent": {
+      "type": "string",
+      "default": ""
+    },
+    "referral_url": {
       "type": "string",
       "default": ""
     }

@@ -32,7 +32,7 @@ class LinkPayment extends AbstractStripePayment {
 	}
 
 	public function is_active() {
-		return $this->link->is_active();
+		return \wc_string_to_bool( $this->get_setting( 'enabled', 'no' ) );
 	}
 
 	public function add_stripe_params( $data ) {

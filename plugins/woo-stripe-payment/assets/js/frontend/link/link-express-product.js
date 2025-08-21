@@ -1,6 +1,5 @@
 import {BaseGateway, ProductGateway} from '@paymentplugins/wc-stripe';
 import $ from 'jquery';
-import {isEmail, isPhoneNumber} from "@wordpress/url";
 import LinkMixin from './link-mixin';
 
 function Gateway(params) {
@@ -28,6 +27,7 @@ class LinkExpressProduct extends LinkMixin(Gateway) {
         if (link) {
             this.addEvents();
             $(this.container).show().addClass('active');
+            $(this.container).parent().parent().addClass('active');
         } else {
             $(this.container).hide();
         }

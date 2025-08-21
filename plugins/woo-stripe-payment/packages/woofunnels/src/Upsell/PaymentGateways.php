@@ -17,7 +17,6 @@ class PaymentGateways {
 	}
 
 	private function initialize() {
-		add_action( 'init', [ $this, 'initialize_gateways' ] );
 		add_filter( 'wfocu_wc_get_supported_gateways', [ $this, 'add_supported_gateways' ] );
 		add_filter( 'wc_stripe_force_save_payment_method', [ $this, 'maybe_set_save_payment_method' ], 10, 3 );
 		add_action( 'wc_stripe_order_payment_complete', [ $this, 'maybe_setup_upsell' ], 10, 2 );

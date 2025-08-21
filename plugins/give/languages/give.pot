@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Give - Donation Plugin plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Give - Donation Plugin 4.6.1\n"
+"Project-Id-Version: Give - Donation Plugin 4.7.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/givewp\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-07-29T22:51:07+00:00\n"
+"POT-Creation-Date: 2025-08-20T14:06:15+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: give\n"
@@ -89,8 +89,10 @@ msgstr ""
 #: blocks/donor-wall/class-give-donor-wall.php:168
 #: includes/admin/shortcodes/shortcode-give-donor-wall.php:106
 #: includes/donors/class-give-donor-wall.php:218
-#: src/Campaigns/Shortcodes/CampaignDonationsShortcode.php:69
-#: src/Campaigns/Shortcodes/CampaignDonorsShortcode.php:71
+#: src/Campaigns/Shortcodes/CampaignDonationsShortcode.php:72
+#: src/Campaigns/Shortcodes/CampaignDonorsShortcode.php:74
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonationsWidget/ElementorCampaignDonationsWidget.php:203
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonorsWidget/ElementorCampaignDonorsWidget.php:215
 #: build/adminBlocks.js:1
 msgid "Load more"
 msgstr ""
@@ -105,7 +107,6 @@ msgstr ""
 #: includes/admin/class-give-html-elements.php:385
 #: includes/api/class-give-api.php:1002
 #: includes/class-give-cli-commands.php:470
-#: build/donationDetails.js:7
 msgid "No donors found."
 msgstr ""
 
@@ -134,7 +135,7 @@ msgstr ""
 #: includes/gateways/stripe/includes/give-stripe-scripts.php:54
 #: includes/shortcodes.php:658
 #: src/Campaigns/Blocks/CampaignForm/render.php:26
-#: src/Campaigns/Shortcodes/CampaignFormShortcode.php:71
+#: src/Campaigns/Shortcodes/CampaignFormShortcode.php:74
 #: src/Form/Template.php:241
 #: src/Form/Template.php:252
 #: src/Form/Template/Options.php:60
@@ -144,6 +145,7 @@ msgstr ""
 #: src/Onboarding/DefaultFormFactory.php:45
 #: src/Onboarding/DefaultFormFactory.php:129
 #: src/PaymentGateways/Gateways/Stripe/Traits/CheckoutModal.php:124
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveTotalsWidget.php:163
 #: src/Views/Form/Templates/Sequoia/Actions.php:230
 #: src/Views/Form/Templates/Sequoia/Actions.php:293
 #: src/Views/Form/Templates/Sequoia/optionConfig.php:124
@@ -154,12 +156,14 @@ msgstr ""
 
 #: build/Campaigns/Blocks/CampaignStats/render.php:38
 #: src/Campaigns/Blocks/CampaignStats/render.php:38
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignStatsWidget/ElementorCampaignStatsWidget.php:131
 #: build/campaignBlocksLandingPage.js:1
 msgid "Top Donation"
 msgstr ""
 
 #: build/Campaigns/Blocks/CampaignStats/render.php:38
 #: src/Campaigns/Blocks/CampaignStats/render.php:38
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignStatsWidget/ElementorCampaignStatsWidget.php:132
 #: build/assets/dist/js/admin-reports.js:1
 #: build/campaignBlocksLandingPage.js:1
 msgid "Average Donation"
@@ -169,7 +173,8 @@ msgstr ""
 #: includes/gateways/stripe/includes/give-stripe-scripts.php:45
 #: src/Campaigns/Blocks/CampaignDonations/resources/views/render.php:13
 #: src/Campaigns/Blocks/DonateButton/render.php:24
-#: src/Campaigns/Shortcodes/CampaignDonationsShortcode.php:66
+#: src/Campaigns/Shortcodes/CampaignDonationsShortcode.php:69
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonationsWidget/ElementorCampaignDonationsWidget.php:166
 #: templates/shortcode-form-grid.php:222
 #: build/campaignBlocksLandingPage.js:1
 #: build/donationFormApp.js:2
@@ -177,11 +182,11 @@ msgstr ""
 msgid "Donate"
 msgstr ""
 
-#: give.php:469
+#: give.php:470
 msgid "The Visual Form Builder Beta plugin is no longer needed, since the form builder is included in your current version of GiveWP. To prevent conflicts, the Beta plugin has been deactivated and can be safely deleted."
 msgstr ""
 
-#: give.php:496
+#: give.php:497
 #, php-format
 msgid "<strong>Attention:</strong> GiveWP 2.5.0+ requires the latest version of the Recurring Donations add-on to process payments properly with Stripe. Please update to the latest version add-on to resolve compatibility issues. If your license is active, you should see the update available in WordPress. Otherwise, you can access the latest version by <a href=\"%1$s\" target=\"_blank\">logging into your account</a> and visiting <a href=\"%1$s\" target=\"_blank\">your downloads</a> page on the GiveWP website."
 msgstr ""
@@ -477,9 +482,11 @@ msgstr ""
 #: includes/admin/emails/class-email-access-email.php:42
 #: includes/admin/reports/class-donor-reports-table.php:67
 #: src/Email/Notifications/DonationProcessingReceipt.php:27
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:135
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:145
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:324
 #: templates/history-donations.php:70
 #: templates/shortcode-receipt.php:47
-#: build/donationDetails.js:7
 #: build/donorEntity.js:1
 msgid "Donor"
 msgstr ""
@@ -792,6 +799,7 @@ msgstr ""
 #: includes/admin/tools/export/class-give-export-donations.php:222
 #: includes/post-types.php:64
 #: src/DonationForms/V2/DonationFormsAdminPage.php:70
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:221
 msgid "All Forms"
 msgstr ""
 
@@ -830,7 +838,6 @@ msgid "Select a Donor"
 msgstr ""
 
 #: includes/admin/class-give-html-elements.php:379
-#: build/donationDetails.js:7
 msgid "No donor attached"
 msgstr ""
 
@@ -934,6 +941,8 @@ msgstr ""
 #: src/Campaigns/ListTable/Columns/StartDateColumn.php:28
 #: src/EventTickets/ListTable/Columns/DateColumn.php:37
 #: src/Exports/resources/views/export-donors-table-row.php:23
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:147
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:247
 #: build/assets/dist/js/give-admin-event-tickets-details.js:1
 #: build/formBuilderApp.js:13
 msgid "Start Date"
@@ -948,6 +957,9 @@ msgstr ""
 #: includes/admin/tools/export/class-give-export-donations.php:252
 #: src/Campaigns/ListTable/Columns/EndDateColumn.php:28
 #: src/Exports/resources/views/export-donors-table-row.php:32
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveMultiFormGoalWidget.php:158
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:159
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:250
 #: build/assets/dist/js/give-admin-event-tickets-details.js:1
 #: build/formBuilderApp.js:13
 msgid "End Date"
@@ -959,6 +971,8 @@ msgstr ""
 #: includes/admin/reports/class-form-reports-table.php:122
 #: includes/post-types.php:59
 #: includes/post-types.php:274
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormWidget/ElementorDonationFormWidget.php:120
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:147
 #: build/assets/dist/js/donor-dashboards-app.js:1
 #: build/campaignBlocksLandingPage.js:1
 #: build/donationDetails.js:7
@@ -1057,6 +1071,9 @@ msgstr ""
 #: includes/admin/shortcodes/shortcode-give-donation-grid.php:72
 #: includes/admin/shortcodes/shortcode-give-donor-wall.php:58
 #: src/Donors/ListTable/Columns/DateCreatedColumn.php:37
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:235
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignGridWidget/ElementorCampaignGridWidget.php:173
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:164
 #: build/adminBlocks.js:1
 #: build/campaignBlocks.js:1
 msgid "Date Created"
@@ -1116,6 +1133,7 @@ msgstr ""
 #: includes/class-give-scripts.php:252
 #: includes/class-give-scripts.php:303
 #: includes/forms/template.php:1671
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:291
 #: build/assets/dist/js/admin.js:1
 #: build/assets/dist/js/give-admin-donation-forms.js:4
 #: build/assets/dist/js/give-admin-donations.js:4
@@ -1365,6 +1383,7 @@ msgstr ""
 #: includes/admin/import-functions.php:548
 #: includes/forms/template.php:790
 #: src/DonationForms/Actions/ConvertDonationFormBlocksToFieldsApi.php:308
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignCommentsWidget/ElementorCampaignCommentsWidget.php:129
 #: build/adminBlocks.js:1
 #: build/campaignBlocks.js:1
 #: build/campaignBlocksLandingPage.js:1
@@ -1530,6 +1549,7 @@ msgstr ""
 #: includes/admin/donors/donors.php:815
 #: includes/admin/donors/donors.php:907
 #: includes/admin/donors/donors.php:977
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:252
 #: build/assets/dist/js/give-admin-donation-forms.js:1
 #: build/assets/dist/js/give-admin-donations.js:1
 #: build/assets/dist/js/give-admin-donors.js:1
@@ -1576,6 +1596,7 @@ msgstr ""
 
 #: includes/admin/donors/donors.php:890
 #: src/Campaigns/Blocks/CampaignDonations/resources/views/render.php:12
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonationsWidget/ElementorCampaignDonationsWidget.php:179
 #: build/assets/dist/js/donor-dashboards-app.js:1
 msgid "Recent Donations"
 msgstr ""
@@ -1589,6 +1610,7 @@ msgstr ""
 #: src/Donors/ListTable/Columns/IdColumn.php:37
 #: src/EventTickets/ListTable/Columns/IdColumn.php:37
 #: src/Subscriptions/ListTable/Columns/IdColumn.php:37
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:111
 #: templates/history-donations.php:68
 #: build/assets/dist/js/donor-dashboards-app.js:1
 #: build/assets/dist/js/give-admin-event-tickets-details.js:1
@@ -1602,6 +1624,7 @@ msgstr ""
 #: includes/admin/payments/class-payments-table.php:419
 #: src/Donations/ListTable/Columns/AmountColumn.php:35
 #: src/Subscriptions/ListTable/Columns/AmountColumn.php:35
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:147
 #: templates/history-donations.php:71
 #: build/assets/dist/js/donor-dashboards-app.js:1
 #: build/donationDetails.js:7
@@ -1616,10 +1639,13 @@ msgstr ""
 #: includes/admin/tools/export/class-export-earnings.php:68
 #: includes/admin/tools/export/class-export.php:82
 #: src/API/Endpoints/Reports/IncomeBreakdown.php:82
-#: src/API/REST/V3/Routes/Donations/DonationController.php:928
-#: src/API/REST/V3/Routes/Donations/DonationController.php:949
+#: src/API/REST/V3/Routes/Donations/DonationController.php:940
+#: src/API/REST/V3/Routes/Donations/DonationController.php:961
 #: src/Campaigns/ListTable/Columns/DateColumn.php:28
 #: src/DonationForms/V2/ListTable/Columns/DateCreatedColumn.php:37
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:123
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:157
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:336
 #: templates/history-donations.php:69
 #: templates/shortcode-receipt.php:69
 #: build/assets/dist/js/donor-dashboards-app.js:1
@@ -1633,6 +1659,10 @@ msgstr ""
 #: src/DonationForms/V2/ListTable/Columns/StatusColumn.php:36
 #: src/Donations/ListTable/Columns/StatusColumn.php:36
 #: src/Subscriptions/ListTable/Columns/StatusColumn.php:36
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:159
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:193
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:111
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:238
 #: templates/history-donations.php:72
 #: build/assets/dist/js/donor-dashboards-app.js:1
 #: build/assets/dist/js/give-log-list-table-app.js:1
@@ -1734,6 +1764,7 @@ msgstr ""
 #: includes/admin/shortcodes/shortcode-give-receipt.php:28
 #: src/Onboarding/DefaultFormFactory.php:90
 #: src/Onboarding/DefaultFormFactory.php:91
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:315
 #: src/Views/Form/defaultFormReceiptTemplate.php:13
 #: src/Views/Form/Templates/Classic/resources/views/receipt.php:153
 #: src/Views/Form/Templates/Sequoia/views/receipt.php:129
@@ -2010,10 +2041,11 @@ msgstr ""
 #: src/Form/Template/Options.php:170
 #: src/Form/Template/Options.php:194
 #: src/PaymentGateways/Gateways/PayPalStandard/PayPalStandard.php:240
-#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:187
-#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:219
-#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:274
+#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:190
+#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:222
+#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:277
 #: src/Settings/Security/Actions/RegisterSettings.php:56
+#: src/ThirdPartySupport/Elementor/Settings/RegisterSettings.php:52
 #: src/Tracking/AdminSettings.php:47
 #: src/Views/Form/Templates/Classic/optionConfig.php:57
 #: src/Views/Form/Templates/Classic/optionConfig.php:113
@@ -2079,10 +2111,11 @@ msgstr ""
 #: src/Form/Template/Options.php:171
 #: src/Form/Template/Options.php:195
 #: src/PaymentGateways/Gateways/PayPalStandard/PayPalStandard.php:241
-#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:188
-#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:220
-#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:275
+#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:191
+#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:223
+#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:278
 #: src/Settings/Security/Actions/RegisterSettings.php:57
+#: src/ThirdPartySupport/Elementor/Settings/RegisterSettings.php:53
 #: src/Tracking/AdminSettings.php:48
 #: src/Views/Form/Templates/Classic/optionConfig.php:58
 #: src/Views/Form/Templates/Classic/optionConfig.php:114
@@ -2597,6 +2630,8 @@ msgstr ""
 #: includes/admin/shortcodes/shortcode-give-donation-grid.php:66
 #: includes/admin/tools/export/pdf-reports.php:113
 #: src/FormBuilder/ViewModels/FormBuilderViewModel.php:172
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:238
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:167
 #: build/adminBlocks.js:1
 #: build/campaignBlocks.js:1
 #: build/formBuilderRegistrars.js:1
@@ -2610,6 +2645,8 @@ msgid "Number of Donors"
 msgstr ""
 
 #: includes/admin/forms/class-metabox-form-data.php:481
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveMultiFormGoalWidget.php:148
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveTotalsWidget.php:125
 #: build/formBuilderApp.js:13
 msgid "Goal Amount"
 msgstr ""
@@ -2631,6 +2668,7 @@ msgid "Set the total number of donors as a goal."
 msgstr ""
 
 #: includes/admin/forms/class-metabox-form-data.php:514
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:419
 #: build/adminBlocks.js:1
 msgid "Progress Bar Color"
 msgstr ""
@@ -2682,6 +2720,7 @@ msgstr ""
 
 #: includes/admin/forms/class-metabox-form-data.php:577
 #: includes/gateways/offline-donations.php:51
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:401
 msgid "Disable"
 msgstr ""
 
@@ -2728,6 +2767,7 @@ msgid "Default options"
 msgstr ""
 
 #: includes/admin/forms/class-metabox-form-data.php:640
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveLoginWidget.php:111
 #: build/formBuilderApp.js:13
 msgid "Redirect URL"
 msgstr ""
@@ -2737,6 +2777,9 @@ msgid "The full URL of the page you want this form to redirect to when clicked o
 msgstr ""
 
 #: includes/admin/forms/class-metabox-form-data.php:651
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonationsWidget/ElementorCampaignDonationsWidget.php:164
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonorsWidget/ElementorCampaignDonorsWidget.php:176
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormWidget/ElementorDonationFormWidget.php:141
 #: build/formBuilderApp.js:13
 msgid "Donate Button Text"
 msgstr ""
@@ -2762,6 +2805,9 @@ msgstr ""
 #: includes/admin/forms/dashboard-columns.php:36
 #: includes/admin/tools/export/pdf-reports.php:105
 #: includes/post-types.php:170
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveMultiFormGoalWidget.php:137
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveTotalsWidget.php:182
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:474
 #: build/adminBlocks.js:1
 msgid "Categories"
 msgstr ""
@@ -2769,6 +2815,9 @@ msgstr ""
 #: includes/admin/forms/dashboard-columns.php:37
 #: includes/admin/tools/export/pdf-reports.php:110
 #: includes/post-types.php:207
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveMultiFormGoalWidget.php:124
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveTotalsWidget.php:191
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:485
 #: build/adminBlocks.js:1
 msgid "Tags"
 msgstr ""
@@ -2898,7 +2947,8 @@ msgstr ""
 #: includes/admin/import-functions.php:411
 #: includes/admin/tools/export/give-export-donations-exporter.php:175
 #: includes/admin/tools/export/give-export-donations-functions.php:257
-#: src/API/REST/V3/Routes/Donations/DonationController.php:797
+#: src/API/REST/V3/Routes/Donations/DonationController.php:809
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:359
 #: templates/shortcode-receipt.php:100
 msgid "Donation ID"
 msgstr ""
@@ -2909,6 +2959,8 @@ msgstr ""
 #: src/FormBuilder/Actions/GenerateDefaultDonationFormBlockCollection.php:68
 #: src/Framework/Receipts/Actions/GenerateConfirmationPageReceipt.php:143
 #: src/Receipt/DonationReceipt.php:131
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:162
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:166
 #: build/adminBlocks.js:1
 #: build/donationFormRegistrars.js:1
 #: build/formBuilderRegistrars.js:1
@@ -2921,6 +2973,7 @@ msgstr ""
 #: src/DonationSummary/resources/views/summary.php:109
 #: src/Framework/Receipts/Actions/GenerateConfirmationPageReceipt.php:162
 #: src/Receipt/DonationReceipt.php:144
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:133
 #: build/donationFormRegistrars.js:1
 #: build/formBuilderRegistrars.js:1
 msgid "Donation Total"
@@ -2957,6 +3010,8 @@ msgstr ""
 #: includes/admin/import-functions.php:426
 #: includes/admin/tools/export/give-export-donations-exporter.php:240
 #: includes/admin/tools/export/give-export-donations-functions.php:311
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:161
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:165
 msgid "Donation Date"
 msgstr ""
 
@@ -3006,6 +3061,8 @@ msgstr ""
 #: src/FormMigration/Concerns/Blocks/BlockFactory.php:39
 #: src/Framework/Receipts/Actions/GenerateConfirmationPageReceipt.php:216
 #: src/Onboarding/BlockFactory.php:25
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:205
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:330
 #: templates/shortcode-profile-editor.php:67
 #: templates/shortcode-receipt.php:62
 #: build/formBuilderRegistrars.js:1
@@ -3164,6 +3221,7 @@ msgstr ""
 #: includes/admin/import-functions.php:480
 #: includes/admin/tools/export/give-export-donations-exporter.php:219
 #: includes/admin/tools/export/give-export-donations-functions.php:303
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:353
 #: templates/shortcode-receipt.php:94
 msgid "Donation Status"
 msgstr ""
@@ -3171,6 +3229,9 @@ msgstr ""
 #: includes/admin/import-functions.php:484
 #: src/Framework/Receipts/Actions/GenerateConfirmationPageReceipt.php:139
 #: src/Receipt/DonationReceipt.php:125
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:171
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:169
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:365
 #: templates/history-donations.php:73
 #: templates/shortcode-receipt.php:106
 #: build/assets/dist/js/donor-dashboards-app.js:1
@@ -3237,8 +3298,8 @@ msgstr ""
 #: includes/admin/import-functions.php:522
 #: includes/admin/tools/export/give-export-donations-exporter.php:249
 #: includes/admin/tools/export/give-export-donations-functions.php:504
-#: src/API/REST/V3/Routes/Donations/DonationController.php:801
-#: src/API/REST/V3/Routes/Donors/DonorController.php:331
+#: src/API/REST/V3/Routes/Donations/DonationController.php:813
+#: src/API/REST/V3/Routes/Donors/DonorController.php:343
 #: build/adminBlocks.js:1
 msgid "Donor ID"
 msgstr ""
@@ -3261,11 +3322,13 @@ msgstr ""
 #: includes/admin/shortcodes/shortcode-give-form.php:28
 #: includes/post-types.php:71
 #: src/DonationForms/Properties/FormSettings.php:306
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormWidget/ElementorDonationFormWidget.php:115
 #: build/adminBlocks.js:1
 #: build/assets/dist/js/orphaned-forms-list-table.js:1
 #: build/campaignBlocks.js:1
 #: build/donationFormBlock.js:1
 #: build/donationFormBlockApp.js:1
+#: build/elementorDonationFormWidget.js:1
 #: build/formBuilderApp.js:13
 #: build/formEntity.js:1
 msgid "Donation Form"
@@ -3274,6 +3337,8 @@ msgstr ""
 #: includes/admin/import-functions.php:547
 #: includes/admin/shortcodes/shortcode-give-donation-grid.php:64
 #: includes/admin/tools/export/pdf-reports.php:100
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:236
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:165
 #: build/adminBlocks.js:1
 msgid "Form Name"
 msgstr ""
@@ -3290,6 +3355,10 @@ msgstr ""
 
 #: includes/admin/import-functions.php:557
 #: includes/admin/tools/export/give-export-donations-exporter.php:228
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:144
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:240
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:118
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveGoalWidget.php:111
 #: build/adminBlocks.js:1
 #: build/formBuilderApp.js:13
 msgid "Form ID"
@@ -3444,7 +3513,8 @@ msgstr ""
 #: includes/admin/payments/class-payments-table.php:415
 #: src/API/Endpoints/Reports/TopDonors.php:46
 #: src/PaymentGateways/Gateways/PayPalStandard/PayPalStandard.php:225
-#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:250
+#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:253
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:347
 #: templates/shortcode-receipt.php:88
 #: build/assets/dist/js/donor-dashboards-app.js:1
 #: build/donationEntity.js:1
@@ -3457,6 +3527,13 @@ msgstr[1] ""
 #: src/Campaigns/Actions/ReplaceGiveFormsCptLabels.php:17
 #: src/Donations/ListTable/Columns/CampaignColumn.php:34
 #: src/FormBuilder/ViewModels/FormBuilderViewModel.php:214
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignCommentsWidget/ElementorCampaignCommentsWidget.php:120
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonationsWidget/ElementorCampaignDonationsWidget.php:119
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonorsWidget/ElementorCampaignDonorsWidget.php:119
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignGoalWidget/ElementorCampaignGoalWidget.php:120
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignStatsWidget/ElementorCampaignStatsWidget.php:119
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignWidget/ElementorCampaignWidget.php:115
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignWidget/ElementorCampaignWidget.php:120
 #: build/assets/dist/js/donor-dashboards-app.js:1
 #: build/campaignBlock.js:1
 #: build/campaignBlocks.js:1
@@ -3634,6 +3711,7 @@ msgstr ""
 #: includes/admin/tools/views/html-admin-page-system-info.php:673
 #: src/PaymentGateways/Gateways/TestGateway/TestGateway.php:48
 #: src/PaymentGateways/Gateways/TestGateway/TestGateway.php:75
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:366
 #: build/assets/dist/js/donor-dashboards-app.js:1
 #: build/donationDetails.js:7
 msgid "Test Donation"
@@ -3644,6 +3722,7 @@ msgid "Update Donation"
 msgstr ""
 
 #: includes/admin/payments/view-payment-details.php:181
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:398
 msgid "Status:"
 msgstr ""
 
@@ -3739,6 +3818,10 @@ msgstr ""
 #: includes/admin/tools/views/html-admin-page-system-info.php:1020
 #: includes/class-give-cli-commands.php:138
 #: includes/forms/template.php:919
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:128
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:131
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:137
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:309
 #: build/donationDetails.js:7
 msgid "Yes"
 msgstr ""
@@ -3747,6 +3830,10 @@ msgstr ""
 #: includes/admin/tools/views/html-admin-page-system-info.php:1020
 #: includes/class-give-cli-commands.php:138
 #: includes/forms/template.php:902
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:132
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:135
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:138
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:310
 #: build/donationDetails.js:7
 msgid "No"
 msgstr ""
@@ -3942,6 +4029,7 @@ msgstr ""
 #: includes/admin/reports/reports.php:123
 #: includes/admin/tools/import/class-give-import-donations.php:610
 #: includes/post-types.php:275
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveTotalsWidget.php:112
 #: build/campaignDetails.js:10
 msgid "Forms"
 msgstr ""
@@ -4122,6 +4210,73 @@ msgstr ""
 #: includes/admin/shortcodes/shortcode-give-receipt.php:89
 #: includes/admin/shortcodes/shortcode-give-receipt.php:96
 #: includes/admin/shortcodes/shortcode-give-totals.php:129
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:114
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:126
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:138
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:150
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:162
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:174
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:136
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:148
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:160
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:172
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:184
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:196
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:208
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:220
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:205
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:231
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:244
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:257
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:270
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:296
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:312
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:222
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:284
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:296
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:320
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:332
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:367
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:132
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:153
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:166
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveGoalWidget.php:123
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveGoalWidget.php:135
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:114
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:126
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:138
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:150
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:162
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveTotalsWidget.php:173
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignCommentsWidget/ElementorCampaignCommentsWidget.php:140
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignCommentsWidget/ElementorCampaignCommentsWidget.php:152
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignCommentsWidget/ElementorCampaignCommentsWidget.php:164
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignCommentsWidget/ElementorCampaignCommentsWidget.php:176
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonationsWidget/ElementorCampaignDonationsWidget.php:130
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonationsWidget/ElementorCampaignDonationsWidget.php:142
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonationsWidget/ElementorCampaignDonationsWidget.php:154
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonorsWidget/ElementorCampaignDonorsWidget.php:130
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonorsWidget/ElementorCampaignDonorsWidget.php:142
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonorsWidget/ElementorCampaignDonorsWidget.php:154
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonorsWidget/ElementorCampaignDonorsWidget.php:166
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignGridWidget/ElementorCampaignGridWidget.php:136
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignGridWidget/ElementorCampaignGridWidget.php:148
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignGridWidget/ElementorCampaignGridWidget.php:160
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignGridWidget/ElementorCampaignGridWidget.php:209
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignWidget/ElementorCampaignWidget.php:131
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignWidget/ElementorCampaignWidget.php:143
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignWidget/ElementorCampaignWidget.php:155
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:272
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:285
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:348
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:374
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:387
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:218
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:244
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:257
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:270
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:283
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:325
 msgid "Show"
 msgstr ""
 
@@ -4571,7 +4726,7 @@ msgstr ""
 
 #: includes/admin/settings/class-settings-gateways.php:68
 #: includes/gateways/stripe/includes/admin/class-give-stripe-admin-settings.php:197
-#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:265
+#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:268
 msgid "Collect Billing Details"
 msgstr ""
 
@@ -5147,31 +5302,39 @@ msgid "Order By:"
 msgstr ""
 
 #: includes/admin/shortcodes/shortcode-give-donation-grid.php:62
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:162
 msgid "Different parameter to set the order for the forms display in the form grid."
 msgstr ""
 
 #: includes/admin/shortcodes/shortcode-give-donation-grid.php:65
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:237
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:166
 #: templates/shortcode-donor-wall.php:181
 #: build/adminBlocks.js:1
 msgid "Amount Donated"
 msgstr ""
 
 #: includes/admin/shortcodes/shortcode-give-donation-grid.php:67
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:239
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:168
 #: build/adminBlocks.js:1
 msgid "Menu Order"
 msgstr ""
 
 #: includes/admin/shortcodes/shortcode-give-donation-grid.php:68
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:169
 #: build/adminBlocks.js:1
 msgid "Provided Form IDs"
 msgstr ""
 
 #: includes/admin/shortcodes/shortcode-give-donation-grid.php:69
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:170
 #: build/adminBlocks.js:1
 msgid "Closest To Goal"
 msgstr ""
 
 #: includes/admin/shortcodes/shortcode-give-donation-grid.php:70
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:171
 #: build/adminBlocks.js:1
 msgid "Random"
 msgstr ""
@@ -5182,11 +5345,17 @@ msgid "Order:"
 msgstr ""
 
 #: includes/admin/shortcodes/shortcode-give-donation-grid.php:78
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:182
 msgid "Display forms based on order."
 msgstr ""
 
 #: includes/admin/shortcodes/shortcode-give-donation-grid.php:80
 #: includes/admin/shortcodes/shortcode-give-donor-wall.php:66
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:176
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:255
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignGridWidget/ElementorCampaignGridWidget.php:185
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:185
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:180
 #: build/adminBlocks.js:1
 #: build/campaignBlocks.js:1
 msgid "Ascending"
@@ -5194,6 +5363,11 @@ msgstr ""
 
 #: includes/admin/shortcodes/shortcode-give-donation-grid.php:82
 #: includes/admin/shortcodes/shortcode-give-donor-wall.php:68
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:175
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:254
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignGridWidget/ElementorCampaignGridWidget.php:186
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:184
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:179
 #: build/adminBlocks.js:1
 #: build/campaignBlocks.js:1
 msgid "Descending"
@@ -5205,6 +5379,7 @@ msgid "Columns:"
 msgstr ""
 
 #: includes/admin/shortcodes/shortcode-give-donation-grid.php:88
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:145
 msgid "Sets the number of forms per row."
 msgstr ""
 
@@ -5230,6 +5405,10 @@ msgstr ""
 
 #: includes/admin/shortcodes/shortcode-give-donation-grid.php:95
 #: includes/admin/shortcodes/shortcode-give-donor-wall.php:119
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:189
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:268
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:147
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:193
 msgid "Best Fit"
 msgstr ""
 
@@ -5239,6 +5418,7 @@ msgstr ""
 
 #: includes/admin/shortcodes/shortcode-give-donation-grid.php:101
 #: includes/admin/shortcodes/shortcode-give-goal.php:82
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:373
 msgid "Do you want to display the goal's progress bar?"
 msgstr ""
 
@@ -5262,6 +5442,73 @@ msgstr ""
 #: includes/admin/shortcodes/shortcode-give-receipt.php:87
 #: includes/admin/shortcodes/shortcode-give-receipt.php:98
 #: includes/admin/shortcodes/shortcode-give-totals.php:130
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:115
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:127
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:139
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:151
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:163
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:175
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:137
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:149
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:161
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:173
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:185
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:197
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:209
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:221
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:206
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:232
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:245
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:258
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:271
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:297
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:313
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:223
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:285
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:297
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:321
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:333
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:368
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:133
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:154
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:167
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveGoalWidget.php:124
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveGoalWidget.php:136
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:115
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:127
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:139
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:151
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:163
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveTotalsWidget.php:174
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignCommentsWidget/ElementorCampaignCommentsWidget.php:141
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignCommentsWidget/ElementorCampaignCommentsWidget.php:153
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignCommentsWidget/ElementorCampaignCommentsWidget.php:165
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignCommentsWidget/ElementorCampaignCommentsWidget.php:177
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonationsWidget/ElementorCampaignDonationsWidget.php:131
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonationsWidget/ElementorCampaignDonationsWidget.php:143
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonationsWidget/ElementorCampaignDonationsWidget.php:155
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonorsWidget/ElementorCampaignDonorsWidget.php:131
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonorsWidget/ElementorCampaignDonorsWidget.php:143
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonorsWidget/ElementorCampaignDonorsWidget.php:155
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonorsWidget/ElementorCampaignDonorsWidget.php:167
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignGridWidget/ElementorCampaignGridWidget.php:137
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignGridWidget/ElementorCampaignGridWidget.php:149
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignGridWidget/ElementorCampaignGridWidget.php:161
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignGridWidget/ElementorCampaignGridWidget.php:210
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignWidget/ElementorCampaignWidget.php:132
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignWidget/ElementorCampaignWidget.php:144
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignWidget/ElementorCampaignWidget.php:156
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:273
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:286
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:349
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:375
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:388
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:219
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:245
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:258
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:271
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:284
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:326
 msgid "Hide"
 msgstr ""
 
@@ -5270,6 +5517,7 @@ msgid "Show Excerpt:"
 msgstr ""
 
 #: includes/admin/shortcodes/shortcode-give-donation-grid.php:111
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:347
 msgid "Do you want to display the excerpt?"
 msgstr ""
 
@@ -5278,6 +5526,7 @@ msgid "Show Featured Image:"
 msgstr ""
 
 #: includes/admin/shortcodes/shortcode-give-donation-grid.php:121
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:284
 msgid "Do you want to display the featured image?"
 msgstr ""
 
@@ -5288,10 +5537,12 @@ msgid "Display Style:"
 msgstr ""
 
 #: includes/admin/shortcodes/shortcode-give-donation-grid.php:131
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:196
 msgid "Show form as modal window or redirect to a new page?"
 msgstr ""
 
 #: includes/admin/shortcodes/shortcode-give-donation-grid.php:133
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:199
 #: build/adminBlocks.js:1
 msgid "Redirect"
 msgstr ""
@@ -5299,6 +5550,8 @@ msgstr ""
 #: includes/admin/shortcodes/shortcode-give-donation-grid.php:135
 #: includes/admin/shortcodes/shortcode-give-form.php:107
 #: includes/forms/widget.php:230
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:198
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormWidget/ElementorDonationFormWidget.php:132
 #: src/Views/Form/Templates/Legacy/optionConfig.php:15
 #: build/adminBlocks.js:1
 #: build/campaignBlocks.js:1
@@ -5312,6 +5565,7 @@ msgid "Forms Per Page:"
 msgstr ""
 
 #: includes/admin/shortcodes/shortcode-give-donation-grid.php:141
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:133
 msgid "Sets the number of forms to display per page."
 msgstr ""
 
@@ -5470,6 +5724,7 @@ msgid "You must first select a Campaign Form!"
 msgstr ""
 
 #: includes/admin/shortcodes/shortcode-give-form.php:70
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:269
 #: build/adminBlocks.js:1
 msgid "Show Title"
 msgstr ""
@@ -5479,6 +5734,10 @@ msgid "Do you want to display the form title?"
 msgstr ""
 
 #: includes/admin/shortcodes/shortcode-give-form.php:80
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:150
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignGridWidget/ElementorCampaignGridWidget.php:158
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignWidget/ElementorCampaignWidget.php:153
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:371
 #: build/adminBlocks.js:1
 msgid "Show Goal"
 msgstr ""
@@ -5510,6 +5769,7 @@ msgstr ""
 
 #: includes/admin/shortcodes/shortcode-give-form.php:103
 #: src/Form/Template/Options.php:106
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:262
 msgid "Display Options"
 msgstr ""
 
@@ -5525,6 +5785,7 @@ msgstr ""
 
 #: includes/admin/shortcodes/shortcode-give-form.php:108
 #: includes/forms/widget.php:229
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:192
 #: src/Views/Form/Templates/Legacy/optionConfig.php:16
 #: build/adminBlocks.js:1
 #: build/campaignBlocks.js:1
@@ -5694,6 +5955,7 @@ msgid "Please enter a valid total goal amount."
 msgstr ""
 
 #: includes/admin/shortcodes/shortcode-give-totals.php:103
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveTotalsWidget.php:135
 msgid "Message:"
 msgstr ""
 
@@ -5703,6 +5965,7 @@ msgstr ""
 
 #: includes/admin/shortcodes/shortcode-give-totals.php:105
 #: includes/shortcodes.php:648
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveTotalsWidget.php:138
 msgid "Hey! We've raised {total} of the {total_goal} we are trying to raise for this campaign!"
 msgstr ""
 
@@ -5772,8 +6035,8 @@ msgid "System Info"
 msgstr ""
 
 #: includes/admin/tools/data/class-give-tools-delete-donations.php:156
-#: src/API/REST/V3/Routes/Donations/DonationController.php:706
-#: src/API/REST/V3/Routes/Donations/DonationController.php:722
+#: src/API/REST/V3/Routes/Donations/DonationController.php:717
+#: src/API/REST/V3/Routes/Donations/DonationController.php:733
 msgid "You do not have permission to delete donations."
 msgstr ""
 
@@ -5951,6 +6214,9 @@ msgstr ""
 #: build/campaignGridApp.js:1
 #: build/campaignGridBlock.js:1
 #: build/campaignListTable.js:4
+#: build/elementorCampaignGoalWidget.js:1
+#: build/elementorCampaignGridWidget.js:1
+#: build/elementorCampaignWidget.js:1
 msgid "Number of donations"
 msgstr ""
 
@@ -6245,7 +6511,7 @@ msgstr ""
 #: includes/admin/tools/import/class-give-import-donations.php:254
 #: includes/admin/tools/import/class-give-import-donations.php:260
 #: includes/forms/functions.php:1293
-#: src/DonationForms/DataTransferObjects/DonationFormGoalData.php:219
+#: src/DonationForms/DataTransferObjects/DonationFormGoalData.php:228
 #: build/assets/dist/js/give-admin-donors.js:4
 msgid "donors"
 msgstr ""
@@ -6295,7 +6561,7 @@ msgstr[1] ""
 #: includes/admin/tools/import/class-give-import-donations.php:272
 #: includes/admin/tools/import/class-give-import-donations.php:278
 #: includes/forms/functions.php:1293
-#: src/DonationForms/DataTransferObjects/DonationFormGoalData.php:223
+#: src/DonationForms/DataTransferObjects/DonationFormGoalData.php:232
 #: build/assets/dist/js/give-admin-donations.js:4
 #: build/donationFormRegistrars.js:1
 #: build/formBuilderRegistrars.js:1
@@ -7431,8 +7697,10 @@ msgstr ""
 
 #: includes/admin/upgrades/class-give-updates.php:623
 #: includes/admin/upgrades/views/upgrades.php:92
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:357
 #: build/campaignBlocksLandingPage.js:1
 #: build/campaignCommentsBlockApp.js:1
+#: build/elementorCampaignCommentsWidget.js:1
 msgid "Read More"
 msgstr ""
 
@@ -8132,6 +8400,7 @@ msgstr ""
 #: build/donationDetails.js:7
 #: build/donationFormBlock.js:1
 #: build/donorDetails.js:7
+#: build/elementorCampaignGridWidget.js:1
 msgid "Confirm"
 msgstr ""
 
@@ -13843,6 +14112,7 @@ msgid "Register or donate as a guest &raquo;"
 msgstr ""
 
 #: includes/forms/template.php:1636
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveLoginWidget.php:163
 #: templates/shortcode-login.php:34
 msgid "Username or Email Address"
 msgstr ""
@@ -13853,6 +14123,7 @@ msgstr ""
 
 #: includes/forms/template.php:1651
 #: src/Framework/FieldsAPI/Authentication.php:29
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveLoginWidget.php:168
 #: templates/shortcode-login.php:39
 #: templates/shortcode-register.php:44
 #: build/formBuilderRegistrars.js:1
@@ -13865,6 +14136,7 @@ msgstr ""
 
 #: includes/forms/template.php:1676
 #: includes/process-donation.php:1006
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveLoginWidget.php:178
 #: templates/shortcode-login.php:52
 #: build/assets/dist/js/donor-dashboards-app.js:1
 msgid "Reset Password"
@@ -14186,7 +14458,7 @@ msgstr ""
 #: includes/gateways/stripe/class-give-stripe.php:194
 #: includes/gateways/stripe/class-give-stripe.php:200
 #: includes/gateways/stripe/includes/admin/class-give-stripe-admin-settings.php:112
-#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:77
+#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:80
 msgid "Credit Card"
 msgstr ""
 
@@ -15070,6 +15342,7 @@ msgid "This custom meta key has been deprecated for performance reasons. Your cu
 msgstr ""
 
 #: includes/payments/functions.php:601
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:354
 msgid "Complete"
 msgstr ""
 
@@ -15471,6 +15744,8 @@ msgid "The form does not have Goals enabled."
 msgstr ""
 
 #: includes/shortcodes.php:359
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:114
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:115
 msgid "You are missing the donation id to view this donation receipt."
 msgstr ""
 
@@ -15756,205 +16031,205 @@ msgid "Array of donation IDs to delete"
 msgstr ""
 
 #: src/API/REST/V3/Routes/Donations/DonationController.php:263
-#: src/API/REST/V3/Routes/Donations/DonationController.php:286
-#: src/API/REST/V3/Routes/Donations/DonationController.php:338
-#: src/API/REST/V3/Routes/Donations/DonationController.php:422
-#: src/API/REST/V3/Routes/Donations/DonationController.php:466
+#: src/API/REST/V3/Routes/Donations/DonationController.php:289
+#: src/API/REST/V3/Routes/Donations/DonationController.php:346
+#: src/API/REST/V3/Routes/Donations/DonationController.php:430
+#: src/API/REST/V3/Routes/Donations/DonationController.php:474
 #: src/API/REST/V3/Routes/Donations/DonationNotesController.php:96
 #: src/API/REST/V3/Routes/Donations/DonationNotesController.php:157
-#: src/API/REST/V3/Routes/Donations/DonationNotesController.php:185
-#: src/API/REST/V3/Routes/Donations/DonationNotesController.php:212
-#: src/API/REST/V3/Routes/Donations/DonationNotesController.php:251
+#: src/API/REST/V3/Routes/Donations/DonationNotesController.php:190
+#: src/API/REST/V3/Routes/Donations/DonationNotesController.php:218
+#: src/API/REST/V3/Routes/Donations/DonationNotesController.php:262
 #: src/Donations/DonationsAdminPage.php:64
 msgid "Donation not found"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:344
+#: src/API/REST/V3/Routes/Donations/DonationController.php:352
 msgid "Refunds are not supported for this gateway"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:360
+#: src/API/REST/V3/Routes/Donations/DonationController.php:368
 #: build/donationDetails.js:7
 msgid "Failed to refund donation"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:435
-#: src/API/REST/V3/Routes/Donations/DonationController.php:479
+#: src/API/REST/V3/Routes/Donations/DonationController.php:443
+#: src/API/REST/V3/Routes/Donations/DonationController.php:487
 msgid "Failed to delete donation"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:443
-#: src/API/REST/V3/Routes/Donations/DonationController.php:487
+#: src/API/REST/V3/Routes/Donations/DonationController.php:451
+#: src/API/REST/V3/Routes/Donations/DonationController.php:495
 msgid "Failed to trash donation"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:659
-#: src/API/REST/V3/Routes/Donors/DonorController.php:532
+#: src/API/REST/V3/Routes/Donations/DonationController.php:670
+#: src/API/REST/V3/Routes/Donors/DonorController.php:546
 msgid "You do not have permission to include sensitive data."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:670
+#: src/API/REST/V3/Routes/Donations/DonationController.php:681
 msgid "You do not have permission to include anonymous donations."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:690
+#: src/API/REST/V3/Routes/Donations/DonationController.php:701
 msgid "You do not have permission to update donations."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:738
+#: src/API/REST/V3/Routes/Donations/DonationController.php:749
 msgid "You do not have permission to refund donations."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:805
-#: src/API/REST/V3/Routes/Donors/DonorController.php:341
+#: src/API/REST/V3/Routes/Donations/DonationController.php:817
+#: src/API/REST/V3/Routes/Donors/DonorController.php:353
 msgid "Donor first name"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:810
-#: src/API/REST/V3/Routes/Donors/DonorController.php:349
+#: src/API/REST/V3/Routes/Donations/DonationController.php:822
+#: src/API/REST/V3/Routes/Donors/DonorController.php:361
 msgid "Donor last name"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:815
+#: src/API/REST/V3/Routes/Donations/DonationController.php:827
 msgid "Donor honorific/prefix"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:820
-#: src/API/REST/V3/Routes/Donors/DonorController.php:357
+#: src/API/REST/V3/Routes/Donations/DonationController.php:832
+#: src/API/REST/V3/Routes/Donors/DonorController.php:369
 msgid "Donor email"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:825
-#: src/API/REST/V3/Routes/Donors/DonorController.php:370
+#: src/API/REST/V3/Routes/Donations/DonationController.php:837
+#: src/API/REST/V3/Routes/Donors/DonorController.php:382
 msgid "Donor phone"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:830
-#: src/API/REST/V3/Routes/Donors/DonorController.php:375
+#: src/API/REST/V3/Routes/Donations/DonationController.php:842
+#: src/API/REST/V3/Routes/Donors/DonorController.php:387
 msgid "Donor company"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:847
+#: src/API/REST/V3/Routes/Donations/DonationController.php:859
 #: build/donationDetails.js:7
 msgid "Donation amount"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:863
+#: src/API/REST/V3/Routes/Donations/DonationController.php:875
 msgid "Fee amount recovered"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:880
+#: src/API/REST/V3/Routes/Donations/DonationController.php:892
 msgid "Event tickets amount"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:884
+#: src/API/REST/V3/Routes/Donations/DonationController.php:896
 msgid "Donation status"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:889
+#: src/API/REST/V3/Routes/Donations/DonationController.php:901
 msgid "Payment gateway ID"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:894
+#: src/API/REST/V3/Routes/Donations/DonationController.php:906
 msgid "Donation mode (live or test)"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:899
+#: src/API/REST/V3/Routes/Donations/DonationController.php:911
 msgid "Whether the donation is anonymous"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:903
+#: src/API/REST/V3/Routes/Donations/DonationController.php:915
 msgid "Billing address"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:915
+#: src/API/REST/V3/Routes/Donations/DonationController.php:927
 msgid "Donor IP address (sensitive data)"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:920
+#: src/API/REST/V3/Routes/Donations/DonationController.php:932
 msgid "Purchase key (sensitive data)"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:933
-#: src/API/REST/V3/Routes/Donations/DonationController.php:954
+#: src/API/REST/V3/Routes/Donations/DonationController.php:945
+#: src/API/REST/V3/Routes/Donations/DonationController.php:966
 msgid "Timezone of the date"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:938
-#: src/API/REST/V3/Routes/Donations/DonationController.php:959
+#: src/API/REST/V3/Routes/Donations/DonationController.php:950
+#: src/API/REST/V3/Routes/Donations/DonationController.php:971
 msgid "Timezone type"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:941
+#: src/API/REST/V3/Routes/Donations/DonationController.php:953
 msgid "Donation creation date"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:962
+#: src/API/REST/V3/Routes/Donations/DonationController.php:974
 msgid "Donation last update date"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:968
+#: src/API/REST/V3/Routes/Donations/DonationController.php:980
 msgid "Custom fields (sensitive data)"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:974
+#: src/API/REST/V3/Routes/Donations/DonationController.php:986
 msgid "Field label"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:979
+#: src/API/REST/V3/Routes/Donations/DonationController.php:991
 msgid "Field value"
 msgstr ""
 
 #: src/API/REST/V3/Routes/Donations/DonationNotesController.php:42
-#: src/API/REST/V3/Routes/Donations/DonationNotesController.php:370
+#: src/API/REST/V3/Routes/Donations/DonationNotesController.php:384
 msgid "The ID of the donation this note belongs to."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationNotesController.php:190
-#: src/API/REST/V3/Routes/Donations/DonationNotesController.php:217
-#: src/API/REST/V3/Routes/Donations/DonationNotesController.php:256
-#: src/API/REST/V3/Routes/Donors/DonorNotesController.php:190
-#: src/API/REST/V3/Routes/Donors/DonorNotesController.php:217
-#: src/API/REST/V3/Routes/Donors/DonorNotesController.php:256
+#: src/API/REST/V3/Routes/Donations/DonationNotesController.php:195
+#: src/API/REST/V3/Routes/Donations/DonationNotesController.php:223
+#: src/API/REST/V3/Routes/Donations/DonationNotesController.php:267
+#: src/API/REST/V3/Routes/Donors/DonorNotesController.php:191
+#: src/API/REST/V3/Routes/Donors/DonorNotesController.php:219
+#: src/API/REST/V3/Routes/Donors/DonorNotesController.php:263
 msgid "Note not found"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationNotesController.php:365
-#: src/API/REST/V3/Routes/Donors/DonorNotesController.php:365
+#: src/API/REST/V3/Routes/Donations/DonationNotesController.php:379
+#: src/API/REST/V3/Routes/Donors/DonorNotesController.php:375
 msgid "Unique identifier for the note."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationNotesController.php:375
-#: src/API/REST/V3/Routes/Donations/DonationNotesController.php:452
-#: src/API/REST/V3/Routes/Donors/DonorNotesController.php:375
-#: src/API/REST/V3/Routes/Donors/DonorNotesController.php:454
+#: src/API/REST/V3/Routes/Donations/DonationNotesController.php:389
+#: src/API/REST/V3/Routes/Donations/DonationNotesController.php:468
+#: src/API/REST/V3/Routes/Donors/DonorNotesController.php:385
+#: src/API/REST/V3/Routes/Donors/DonorNotesController.php:464
 msgid "The content of the note."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationNotesController.php:382
-#: src/API/REST/V3/Routes/Donations/DonationNotesController.php:460
-#: src/API/REST/V3/Routes/Donors/DonorNotesController.php:381
-#: src/API/REST/V3/Routes/Donors/DonorNotesController.php:462
+#: src/API/REST/V3/Routes/Donations/DonationNotesController.php:396
+#: src/API/REST/V3/Routes/Donations/DonationNotesController.php:476
+#: src/API/REST/V3/Routes/Donors/DonorNotesController.php:391
+#: src/API/REST/V3/Routes/Donors/DonorNotesController.php:472
 msgid "The type of the note."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationNotesController.php:388
-#: src/API/REST/V3/Routes/Donors/DonorNotesController.php:387
+#: src/API/REST/V3/Routes/Donations/DonationNotesController.php:402
+#: src/API/REST/V3/Routes/Donors/DonorNotesController.php:397
 msgid "The date the note was created."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationNotesController.php:394
-#: src/API/REST/V3/Routes/Donors/DonorNotesController.php:393
+#: src/API/REST/V3/Routes/Donations/DonationNotesController.php:408
+#: src/API/REST/V3/Routes/Donors/DonorNotesController.php:403
 msgid "The date the note was last updated."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationNotesController.php:416
-#: src/API/REST/V3/Routes/Donors/DonorNotesController.php:417
+#: src/API/REST/V3/Routes/Donations/DonationNotesController.php:432
+#: src/API/REST/V3/Routes/Donors/DonorNotesController.php:427
 msgid "HATEOAS links for the note."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationNotesController.php:439
-#: src/API/REST/V3/Routes/Donors/DonorNotesController.php:441
+#: src/API/REST/V3/Routes/Donations/DonationNotesController.php:455
+#: src/API/REST/V3/Routes/Donors/DonorNotesController.php:451
 msgid "The note ID."
 msgstr ""
 
@@ -15976,113 +16251,113 @@ msgid "The ID of the campaign to filter donors by - zero or empty mean \"all cam
 msgstr ""
 
 #: src/API/REST/V3/Routes/Donors/DonorController.php:195
-#: src/API/REST/V3/Routes/Donors/DonorController.php:214
+#: src/API/REST/V3/Routes/Donors/DonorController.php:217
 #: src/API/REST/V3/Routes/Donors/DonorNotesController.php:96
-#: src/API/REST/V3/Routes/Donors/DonorNotesController.php:157
-#: src/API/REST/V3/Routes/Donors/DonorNotesController.php:185
-#: src/API/REST/V3/Routes/Donors/DonorNotesController.php:212
-#: src/API/REST/V3/Routes/Donors/DonorNotesController.php:251
+#: src/API/REST/V3/Routes/Donors/DonorNotesController.php:158
+#: src/API/REST/V3/Routes/Donors/DonorNotesController.php:186
+#: src/API/REST/V3/Routes/Donors/DonorNotesController.php:214
+#: src/API/REST/V3/Routes/Donors/DonorNotesController.php:258
 #: src/API/REST/V3/Routes/Donors/DonorStatisticsController.php:80
 #: src/Donors/DonorsAdminPage.php:43
 msgid "Donor not found"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:288
+#: src/API/REST/V3/Routes/Donors/DonorController.php:297
 msgid "You do not have permission to update donors."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:336
+#: src/API/REST/V3/Routes/Donors/DonorController.php:348
 msgid "Donor prefix"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:344
+#: src/API/REST/V3/Routes/Donors/DonorController.php:356
 msgid "First name is required"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:352
+#: src/API/REST/V3/Routes/Donors/DonorController.php:364
 msgid "Last name is required"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:362
+#: src/API/REST/V3/Routes/Donors/DonorController.php:374
 msgid "Donor additional emails"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:380
+#: src/API/REST/V3/Routes/Donors/DonorController.php:392
 msgid "Donor avatar ID"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:382
+#: src/API/REST/V3/Routes/Donors/DonorController.php:394
 msgid "Invalid avatar ID"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:386
+#: src/API/REST/V3/Routes/Donors/DonorController.php:398
 #: build/donorDetails.js:7
 msgid "Donor addresses"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:389
+#: src/API/REST/V3/Routes/Donors/DonorController.php:401
 #: build/donorDetails.js:7
 msgid "Donor address"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:393
+#: src/API/REST/V3/Routes/Donors/DonorController.php:405
 msgid "Donor address line 1"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:398
+#: src/API/REST/V3/Routes/Donors/DonorController.php:410
 msgid "Donor address line 2"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:403
+#: src/API/REST/V3/Routes/Donors/DonorController.php:415
 msgid "Donor address city"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:408
+#: src/API/REST/V3/Routes/Donors/DonorController.php:420
 msgid "Donor address state"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:413
+#: src/API/REST/V3/Routes/Donors/DonorController.php:425
 msgid "Donor address country"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:418
+#: src/API/REST/V3/Routes/Donors/DonorController.php:430
 msgid "Donor address zip"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:445
+#: src/API/REST/V3/Routes/Donors/DonorController.php:459
 msgid "The field by which to sort the donors."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:459
+#: src/API/REST/V3/Routes/Donors/DonorController.php:473
 msgid "The direction of sorting: ascending (ASC) or descending (DESC)."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:465
+#: src/API/REST/V3/Routes/Donors/DonorController.php:479
 msgid "Whether to include only donors who have made donations."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:470
+#: src/API/REST/V3/Routes/Donors/DonorController.php:484
 msgid "The mode of donations to filter by \"live\" or \"test\" (it only gets applied when \"onlyWithDonations\" is set to true)."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:479
+#: src/API/REST/V3/Routes/Donors/DonorController.php:493
 msgid "The ID of the campaign to filter donors by - zero or empty mean \"all campaigns\" (it only gets applied when \"onlyWithDonations\" is set to true)."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:498
+#: src/API/REST/V3/Routes/Donors/DonorController.php:512
 msgid "Include or not include data that can be used to contact or locate the donors, such as phone number, email, billing address, etc. (require proper permissions)"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:506
+#: src/API/REST/V3/Routes/Donors/DonorController.php:520
 msgid "Exclude, include, or redact data that can be used to identify the donors, such as ID, first name, last name, etc (require proper permissions)."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:542
+#: src/API/REST/V3/Routes/Donors/DonorController.php:556
 msgid "You do not have permission to include anonymous donors."
 msgstr ""
 
 #: src/API/REST/V3/Routes/Donors/DonorNotesController.php:42
-#: src/API/REST/V3/Routes/Donors/DonorNotesController.php:370
+#: src/API/REST/V3/Routes/Donors/DonorNotesController.php:380
 msgid "The ID of the donor this note belongs to."
 msgstr ""
 
@@ -16144,6 +16419,7 @@ msgid "Edit Campaign Form"
 msgstr ""
 
 #: src/Campaigns/Blocks/CampaignDonations/resources/views/render.php:12
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonationsWidget/ElementorCampaignDonationsWidget.php:180
 msgid "Top Donations"
 msgstr ""
 
@@ -16183,18 +16459,21 @@ msgid "%s ago"
 msgstr ""
 
 #: src/Campaigns/Blocks/CampaignDonors/resources/views/render.php:13
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonorsWidget/ElementorCampaignDonorsWidget.php:191
 #: build/assets/dist/js/admin-reports.js:1
 #: build/campaignBlocksLandingPage.js:1
 msgid "Top Donors"
 msgstr ""
 
 #: src/Campaigns/Blocks/CampaignDonors/resources/views/render.php:14
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonorsWidget/ElementorCampaignDonorsWidget.php:192
 #: build/campaignBlocksLandingPage.js:1
 msgid "Recent Donors"
 msgstr ""
 
 #: src/Campaigns/Blocks/CampaignDonors/resources/views/render.php:15
-#: src/Campaigns/Shortcodes/CampaignDonorsShortcode.php:68
+#: src/Campaigns/Shortcodes/CampaignDonorsShortcode.php:71
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonorsWidget/ElementorCampaignDonorsWidget.php:178
 msgid "Join the list"
 msgstr ""
 
@@ -16238,6 +16517,7 @@ msgid "%s (copy)"
 msgstr ""
 
 #: src/Campaigns/Factories/CampaignFactory.php:29
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignWidget/ElementorCampaignWidget.php:30
 msgid "GiveWP Campaign"
 msgstr ""
 
@@ -16289,6 +16569,8 @@ msgstr ""
 
 #: src/Campaigns/ListTable/Columns/StatusColumn.php:38
 #: src/Subscriptions/ValueObjects/SubscriptionStatus.php:62
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:400
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:264
 #: build/campaignDetails.js:10
 #: build/campaignListTable.js:4
 msgid "Active"
@@ -16369,16 +16651,17 @@ msgstr ""
 msgid "Form not found"
 msgstr ""
 
-#: src/DonationForms/DataTransferObjects/DonationFormGoalData.php:227
+#: src/DonationForms/DataTransferObjects/DonationFormGoalData.php:236
 msgid "recurring donations"
 msgstr ""
 
-#: src/DonationForms/DataTransferObjects/DonationFormGoalData.php:230
+#: src/DonationForms/DataTransferObjects/DonationFormGoalData.php:239
 msgid "amount"
 msgstr ""
 
 #: src/DonationForms/Factories/DonationFormFactory.php:25
 #: src/FormBuilder/Routes/CreateFormRoute.php:43
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormWidget/ElementorDonationFormWidget.php:30
 msgid "GiveWP Donation Form"
 msgstr ""
 
@@ -17016,6 +17299,8 @@ msgid "The button label for completing a donation."
 msgstr ""
 
 #: src/Form/Template/Options.php:78
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:194
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormWidget/ElementorDonationFormWidget.php:130
 msgid "Display Style"
 msgstr ""
 
@@ -17504,6 +17789,7 @@ msgid "Anonymous Donation"
 msgstr ""
 
 #: src/Framework/Receipts/Actions/GenerateConfirmationPageReceipt.php:261
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:236
 #: build/assets/dist/js/donor-dashboards-app.js:1
 msgid "Subscription"
 msgstr ""
@@ -17513,16 +17799,23 @@ msgid "Subscription Status"
 msgstr ""
 
 #: src/Framework/Receipts/Actions/GenerateConfirmationPageReceipt.php:276
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:123
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:241
 msgid "Renewal Date"
 msgstr ""
 
 #: src/Framework/Receipts/Actions/GenerateConfirmationPageReceipt.php:280
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:135
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:244
 #: build/assets/dist/js/donor-dashboards-app.js:1
 msgid "Progress"
 msgstr ""
 
 #: src/Framework/Receipts/Actions/GenerateConfirmationPageReceipt.php:284
 #: src/LegacySubscriptions/includes/give-subscription.php:1031
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:409
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:275
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:285
 #: build/formBuilderRegistrars.js:1
 msgid "Ongoing"
 msgstr ""
@@ -18168,12 +18461,12 @@ msgid "PayPal Transaction Type"
 msgstr ""
 
 #: src/PaymentGateways/Gateways/PayPalStandard/PayPalStandard.php:218
-#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:243
+#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:246
 msgid "Nonprofits must verify their status to withdraw donations they receive via PayPal. PayPal users that are not verified nonprofits must demonstrate how their donations will be used, once they raise more than $10,000. By default, GiveWP transactions are sent to PayPal as donations. You may change the transaction type using this option if you feel you may not meet PayPal's donation requirements."
 msgstr ""
 
 #: src/PaymentGateways/Gateways/PayPalStandard/PayPalStandard.php:226
-#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:251
+#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:254
 msgid "Standard Transaction"
 msgstr ""
 
@@ -18217,7 +18510,7 @@ msgid "Stripe Checkout Session ID: %s"
 msgstr ""
 
 #: src/PaymentGateways/Gateways/Stripe/Actions/CreatePaymentIntent.php:72
-#: src/PaymentGateways/Gateways/Stripe/StripePaymentElementGateway/StripePaymentElementRepository.php:143
+#: src/PaymentGateways/Gateways/Stripe/StripePaymentElementGateway/StripePaymentElementRepository.php:155
 #, php-format
 msgid "Stripe Charge/Payment Intent ID: %s"
 msgstr ""
@@ -18231,7 +18524,7 @@ msgid "Unable to find or create stripe customer object."
 msgstr ""
 
 #: src/PaymentGateways/Gateways/Stripe/Actions/GetOrCreateStripeCustomer.php:46
-#: src/PaymentGateways/Gateways/Stripe/StripePaymentElementGateway/StripePaymentElementRepository.php:76
+#: src/PaymentGateways/Gateways/Stripe/StripePaymentElementGateway/StripePaymentElementRepository.php:88
 #, php-format
 msgid "Stripe Customer ID: %s"
 msgstr ""
@@ -18269,15 +18562,34 @@ msgstr ""
 msgid "Remove payment intent secret meta"
 msgstr ""
 
-#: src/PaymentGateways/Gateways/Stripe/StripePaymentElementGateway/StripePaymentElementGateway.php:43
+#: src/PaymentGateways/Gateways/Stripe/StripePaymentElementGateway/StripePaymentElementGateway.php:48
 msgid "Stripe - Payment Element"
 msgstr ""
 
-#: src/PaymentGateways/Gateways/Stripe/StripePaymentElementGateway/StripePaymentElementGateway.php:51
+#: src/PaymentGateways/Gateways/Stripe/StripePaymentElementGateway/StripePaymentElementGateway.php:56
 msgid "Stripe Payment Element"
 msgstr ""
 
-#: src/PaymentGateways/Gateways/Stripe/StripePaymentElementGateway/StripePaymentElementRepository.php:148
+#: src/PaymentGateways/Gateways/Stripe/StripePaymentElementGateway/StripePaymentElementGateway.php:178
+msgid "Refund failed. Please check the Stripe dashboard for more details."
+msgstr ""
+
+#: src/PaymentGateways/Gateways/Stripe/StripePaymentElementGateway/StripePaymentElementGateway.php:184
+#, php-format
+msgid "Donation refunded in Stripe for transaction ID: %s"
+msgstr ""
+
+#: src/PaymentGateways/Gateways/Stripe/StripePaymentElementGateway/StripePaymentElementGateway.php:194
+#, php-format
+msgid "Error! Donation %s was NOT refunded. Find more details on the error in the logs at Donations > Tools > Logs. To refund the donation, use the Stripe dashboard tools."
+msgstr ""
+
+#: src/PaymentGateways/Gateways/Stripe/StripePaymentElementGateway/StripePaymentElementGateway.php:202
+#, php-format
+msgid "Stripe API error: %s"
+msgstr ""
+
+#: src/PaymentGateways/Gateways/Stripe/StripePaymentElementGateway/StripePaymentElementRepository.php:160
 #, php-format
 msgid "Stripe Payment Intent Client Secret: %s"
 msgstr ""
@@ -18379,7 +18691,7 @@ msgid "Account Status"
 msgstr ""
 
 #: src/PaymentGateways/PayPalCommerce/AdminSettingFields.php:93
-#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:168
+#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:171
 msgid "Account Country"
 msgstr ""
 
@@ -19440,77 +19752,93 @@ msgstr ""
 msgid "For Mastercard, account closed as fraudulent. Obtain another type of payment from customer due to account being closed or fraud. Possible reason: Account closed as fraudulent. For Visa, the card holder wants to stop all recurring payment transactions for a specific merchant. Stop recurring payment requests."
 msgstr ""
 
-#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:67
+#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:70
 msgid "PayPal Donations"
 msgstr ""
 
-#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:129
+#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:132
 #, php-format
 msgid "Transaction Successful. PayPal Transaction ID: %1$s    PayPal Order ID: %2$s"
 msgstr ""
 
-#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:173
+#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:176
 msgid "Connect With Paypal"
 msgstr ""
 
-#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:178
+#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:181
 msgid "Accept Venmo"
 msgstr ""
 
-#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:181
+#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:184
 msgid "Displays a button allowing Donors to pay with Venmo (US-only). Donations still come into your PayPal account and are subject to normal PayPal transaction fees."
 msgstr ""
 
-#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:192
+#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:195
 msgid "Payment Field Type"
 msgstr ""
 
-#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:194
+#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:197
 #, php-format
 msgid "\"Auto\" provides the most payment options to the donor as possible, based on your account. \"Smart Buttons Only\" shows only the payment buttons. There is no \"Hosted Only\" option at this time due to limitations with PayPal's hosted fields. Not sure what this means? %1$sRead here%2$s."
 msgstr ""
 
-#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:204
+#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:207
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:318
 #: build/adminBlocks.js:1
 msgid "Auto"
 msgstr ""
 
-#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:205
+#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:208
 msgid "Smart Buttons Only"
 msgstr ""
 
-#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:210
+#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:213
 msgid "Accept Credit Card (Smart Buttons Only)"
 msgstr ""
 
-#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:213
+#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:216
 msgid "Displays a button allowing Donors to pay with Credit Card. This option is only available if \"Smart Buttons Only\" is selected on Payment Field Type."
 msgstr ""
 
-#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:224
+#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:227
 msgid "PayPal Donations Gateway Settings Docs Link"
 msgstr ""
 
-#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:227
+#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:230
 msgid "PayPal Donations Gateway Settings"
 msgstr ""
 
-#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:242
+#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:245
 msgid "Transaction Type"
 msgstr ""
 
-#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:268
+#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:271
 msgid "If enabled, required billing address fields are added to PayPal Donations Donation forms. These fields are required to process the transaction when enabled. Billing address details are added to both the donation and donor record in GiveWP."
 msgstr ""
 
-#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:329
+#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:332
 #, php-format
 msgid "PayPal Order has been declined.  Transaction status:: %s"
 msgstr ""
 
-#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:338
+#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:341
 #, php-format
 msgid "PayPal Order has an error: %s"
+msgstr ""
+
+#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:378
+#, php-format
+msgid "Donation refunded in PayPal for transaction ID: %s"
+msgstr ""
+
+#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:388
+#, php-format
+msgid "Error! Donation %s was NOT refunded. Find more details on the error in the logs at Donations > Tools > Logs. To refund the donation, use the PayPal dashboard tools."
+msgstr ""
+
+#: src/PaymentGateways/PayPalCommerce/PayPalCommerce.php:396
+#, php-format
+msgid "PayPal API error: %s"
 msgstr ""
 
 #: src/PaymentGateways/PayPalCommerce/RefundPaymentHandler.php:88
@@ -20075,6 +20403,8 @@ msgid "Every %d quarters"
 msgstr ""
 
 #: src/Subscriptions/ValueObjects/SubscriptionPeriod.php:40
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:394
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:260
 #: build/formBuilderRegistrars.js:1
 msgid "Monthly"
 msgstr ""
@@ -20104,6 +20434,1351 @@ msgstr ""
 
 #: src/Subscriptions/ValueObjects/SubscriptionStatus.php:70
 msgid "Paused"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/ServiceProvider.php:55
+msgid "GiveWP (Legacy)"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/ServiceProvider.php:101
+msgid "GiveWP now includes Elementor widgets! You can safely deactivate and remove the GiveWP Elementor Widgets plugin as it is no longer needed. Rest assured, all of your widgets currently being used will remain working properly."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Settings/RegisterSection.php:15
+msgid "Elementor"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Settings/RegisterSettings.php:46
+msgid "Enable Elementor Legacy Widgets"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Settings/RegisterSettings.php:47
+msgid "If enabled, this option will add legacy widgets to elementor that were previously available in the GiveWP Elementor Widgets plugin."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:44
+msgid "Give Donation History (Legacy)"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:103
+msgid "Donation History Widget"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:113
+msgid "Show or hide the \"ID\" column."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:125
+msgid "Show or hide a column with the date of the donation."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:137
+msgid "Show or hide a column with the donors full name."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:149
+msgid "Show or hide a column with the amount of the donation."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:161
+msgid "Show or hide a column with the status of the payment."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:173
+msgid "Show or hide a column with the name of the payment method."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:189
+msgid "GIVEWP DONATION HISTORY WIDGET"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:190
+msgid "This is the GiveWP Donation History widget. Choose which columns you want to have appear for your donors history."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:192
+msgid "Visit the GiveWP Docs for more info on the GiveWP Donation History."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:44
+msgid "Give Donation Receipt (Legacy)"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:103
+msgid "GiveWP Donation Receipt Widget"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:111
+msgid "Error Message"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:113
+msgid "Custom text to show if there is an error showing the receipt table."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:122
+msgid "Success Message"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:124
+msgid "Custom text to show if the donation was successful."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:125
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:126
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:307
+msgid "Thank you for your donation."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:135
+msgid "Show or hide a row with the total donation amount."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:147
+msgid "Show or hide a row with the donors full name."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:159
+msgid "Show or hide a row with the date of the donation."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:171
+msgid "Show or hide a row with the name of the payment type (credit card, offline, etc)."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:181
+msgid "Payment ID"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:183
+msgid "Show or hide a row with the ID of the donation."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:195
+msgid "Show or hide a row with the status of the payment."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:207
+msgid "Show or hide a row with the company name the donor provided."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:217
+msgid "Payment Status Notice"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:219
+msgid "Show or hide an alert above the receipt table showing the status of the donation payment."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:235
+msgid "GIVEWP RECEIPT WIDGET"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:236
+msgid "This is the GiveWP Receipt widget. Choose the columns you want to have appear for your donor receipts."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:237
+msgid "NOTE:"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:237
+msgid "This is a sample receipt with all fields exposed. The alerts and info will show correctly for your donors. This receipt is just for preview/editing purposes."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:239
+msgid "Visit the GiveWP Docs for more info on the GiveWP Donation Receipt."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:301
+msgid "You are missing the donation ID to view this donation receipt."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:325
+msgid "Test Donor"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:337
+msgid "April 18, 2020"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:342
+#: templates/shortcode-receipt.php:75
+msgid "Total Donation"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:348
+msgid "First Form"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:371
+msgid "Receipt"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:372
+#: build/assets/dist/js/donor-dashboards-app.js:1
+msgid "Download Receipt"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:384
+#: build/donationFormRegistrars.js:1
+msgid "Subscription Details"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:392
+msgid "Subscription:"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:404
+msgid "Renewal Date:"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:405
+msgid "June 4, 2020"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:408
+msgid "Progress:"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:415
+msgid "Manage Subscriptions"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:44
+msgid "Give Donor Wall (Legacy)"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:103
+msgid "GiveWP Donor Wall Widget"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:111
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:122
+msgid "Donors per Page"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:113
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:124
+msgid "Set how many donors will show before the \"Show More\" button appears."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:123
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:134
+msgid "Show All Donors?"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:125
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:136
+msgid "Do you want to show all donors here, or choose one form?"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:146
+msgid "What is the form ID of the form you want to pull the donors from?"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:157
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:171
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:231
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:250
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:160
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:161
+#: build/adminBlocks.js:1
+#: build/campaignBlocks.js:1
+msgid "Order By"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:159
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:233
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:163
+msgid "The element which the order will be determined by."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:173
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:252
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:177
+msgid "The order the donors will be displayed in according to the \"Order By\" field chosen."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:185
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:264
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:189
+msgid "Number of Columns"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:187
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:266
+msgid "The number of columns to display. Note that \"Best Fit\" will always stretch to fill the available width that the donor wall is placed within."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:202
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:215
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignCommentsWidget/ElementorCampaignCommentsWidget.php:150
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonorsWidget/ElementorCampaignDonorsWidget.php:152
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:215
+#: build/adminBlocks.js:1
+#: build/campaignBlocksLandingPage.js:1
+msgid "Show Avatar"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:204
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:217
+msgid "Show/Hide the donor avatar. Will display the donor's initials if no avatar is supported for their email address."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:217
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:230
+msgid "Set the size of the Avatar in pixels."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:228
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignCommentsWidget/ElementorCampaignCommentsWidget.php:174
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:241
+#: build/adminBlocks.js:1
+#: build/campaignBlocksLandingPage.js:1
+msgid "Show Name"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:230
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:243
+msgid "Show/Hide the donor's name."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:241
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:254
+#: build/adminBlocks.js:1
+msgid "Show Total"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:243
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:256
+msgid "Show/Hide the donation amount."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:254
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignCommentsWidget/ElementorCampaignCommentsWidget.php:162
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:267
+#: build/campaignBlocksLandingPage.js:1
+msgid "Show Date"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:256
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:269
+msgid "Show/Hide the date the donation was made."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:267
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:280
+#: build/adminBlocks.js:1
+msgid "Show Comments"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:269
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:282
+msgid "Show/Hide the donor comment if any was provided by the donor."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:280
+msgid "Comment length in characters"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:282
+msgid "Number of characters to allow to be shown in the donor comments. This can help make each donor card a more consistent height for appearance purposes."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:293
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:306
+msgid "Only Show Donations with Comments"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:295
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:308
+msgid "Only show donations that have comments."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:309
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonationsWidget/ElementorCampaignDonationsWidget.php:128
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:322
+msgid "Show Anonymous Donations"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:311
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:324
+msgid "Include/Exclude donations made that selected to be \"Anonymous\". They will be shown without the name or comments."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:322
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:344
+#: build/adminBlocks.js:1
+msgid "Load More Text"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:324
+msgid "The text that appears on the \"Load More\" button if you have multiple \"pages\" of donor cards beyond what the \"Donors per Page\" setting above is set to."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:333
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignCommentsWidget/ElementorCampaignCommentsWidget.php:197
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:354
+#: build/adminBlocks.js:1
+#: build/campaignBlocksLandingPage.js:1
+msgid "Read More Text"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:335
+msgid "The text that appears on the \"Read More\" link if your donor comments are truncated because of the comment length."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:350
+msgid "GIVEWP DONOR WALL WIDGET"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:351
+msgid "This is the GiveWP Donor Wall widget. Choose the elements you want to see appear in the donor wall. Note that the live preview only works if you have existing donors to display."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:353
+msgid "Visit the GiveWP Docs for more info on the GiveWP Donor Wall."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:44
+msgid "Give Form Grid (Legacy)"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:103
+msgid "GiveWP Form Grid Widget"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:113
+msgid "Would you like to show forms by ID, by their Categories, or by their Tags?"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:126
+msgid "Show All Forms?"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:128
+msgid "Do you want to show all forms in your grid?"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:150
+msgid "Show by Form IDs"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:152
+msgid "Place the form IDs you'd like to show in your grid here, separated by commas."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:163
+msgid "Show by Form Categories"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:165
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:177
+msgid "Place the form category IDs you'd like to show in your grid here, separated by commas."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:175
+msgid "Show by Form Tags"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:187
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:246
+msgid "Exclude Forms"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:189
+msgid "List the form IDs that you want excluded from this Form Grid."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:196
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:131
+#: build/adminBlocks.js:1
+msgid "Forms Per Page"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:198
+msgid "The number of forms to show in the grid before the \"Load More\" button appears."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:220
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignGridWidget/ElementorCampaignGridWidget.php:207
+#: build/adminBlocks.js:1
+msgid "Show Pagination"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:241
+msgid "Closest to Goal"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:281
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:129
+msgid "Show Form Title"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:283
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:271
+msgid "Show/Hide the form title."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:293
+msgid "Show Form Excerpt"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:295
+msgid "Show/Hide the form excerpt."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:305
+msgid "Excerpt Length"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:307
+msgid "Excerpt Length."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:317
+msgid "Show Form Goal"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:319
+msgid "Show/Hide the form goal."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:329
+msgid "Show Form Featured Image"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:331
+msgid "Show/Hide the form featured image."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:341
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:295
+#: build/adminBlocks.js:1
+msgid "Image Size"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:343
+msgid "Featured image size. Default \"medium\". Accepts WordPress image sizes."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:353
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:314
+#: build/adminBlocks.js:1
+msgid "Image Height"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:355
+msgid "Featured image height. Default \"auto\". Accepts valid CSS heights"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:365
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonationsWidget/ElementorCampaignDonationsWidget.php:152
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonorsWidget/ElementorCampaignDonorsWidget.php:164
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:384
+#: build/adminBlocks.js:1
+msgid "Show Donate Button"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:376
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:452
+#: build/adminBlocks.js:1
+msgid "Donate Button Text Color"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:388
+#: build/adminBlocks.js:1
+#: build/formBuilderRegistrars.js:1
+msgid "Display Type"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:390
+msgid "Choose the behavior when a form is clicked on within the grid."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:392
+msgid "Redirect to the single Form Page."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:393
+msgid "Open the form in a modal window."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:408
+msgid "GIVEWP FORM GRID WIDGET"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:409
+msgid "This is the GiveWP Form Grid widget. Choose the elements you want to see appear in the form grid."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:411
+msgid "Visit the GiveWP Docs for more info on the GiveWP Form Grid."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:46
+msgid "Give Donation Form (Legacy)"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:110
+msgid "GiveWP Form Widget"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:120
+msgid "Choose the GiveWP Form you want to embed."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:131
+msgid "Show/hide the GiveWP form title."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:152
+msgid "Show/hide the progress bar and goal for this form."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:163
+msgid "Show Form Content"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:165
+msgid "Show/hide the content of this form."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:185
+msgid "Form Display Style"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:187
+msgid "Choose which display to use for this GiveWP form."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:189
+#: build/adminBlocks.js:1
+#: build/donationFormBlock.js:1
+msgid "Full Form"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:190
+msgid "Button Only"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:191
+msgid "Modal Reveal"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:201
+msgid "Reveal Button Text"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:203
+msgid "Text on the button that reveals the form."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:204
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:277
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormWidget/ElementorDonationFormWidget.php:143
+msgid "Continue to Donate"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:214
+msgid "Important Note"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:216
+msgid "Form Display Style changes will not be visible for Donation forms created using the Visual Form Builder. Save the page and view it on the front end."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:242
+msgid "GIVEWP FORM WIDGET"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:243
+msgid "This is the GiveWP Form widget. Choose which form you want to embed on this page with it's form \"ID\"."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:248
+msgid "Visit the GiveWP Docs for more info on the GiveWP Form."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveGoalWidget.php:44
+msgid "Give Goal (Legacy)"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveGoalWidget.php:103
+msgid "GiveWP Goal Widget"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveGoalWidget.php:120
+msgid "Show Text"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveGoalWidget.php:122
+msgid "Show or hide the goal text."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveGoalWidget.php:132
+msgid "Show Progress Bar"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveGoalWidget.php:134
+msgid "Show or hide progress bar."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveGoalWidget.php:150
+msgid "GIVEWP GOAL WIDGET"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveGoalWidget.php:151
+msgid "This is the GiveWP Goal widget. Choose how you want your form goal to be displayed. Note that this widget only supports forms that have a goal enabled. If you want to show progress of any form or multiple forms, use the \"GiveWP Totals\" widget instead."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveGoalWidget.php:153
+msgid "Visit the GiveWP Docs for more info on the GiveWP Goal."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveLoginWidget.php:44
+msgid "Give Login (Legacy)"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveLoginWidget.php:103
+msgid "GiveWP Login Widget"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveLoginWidget.php:126
+msgid "GIVEWP LOGIN WIDGET"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveLoginWidget.php:127
+msgid "This is the GiveWP Login widget."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveLoginWidget.php:128
+msgid "This is a sample Login form with all fields exposed. This is only to help position and style the form with Elementor. If you want to see the live form, go to this page while logged out or in an Icognito browser."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveLoginWidget.php:130
+msgid "Visit the GiveWP Docs for more info on the GiveWP Login."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveLoginWidget.php:161
+#: templates/shortcode-login.php:22
+msgid "Log into Your Account"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveMultiFormGoalWidget.php:49
+msgid "Give Multi Form Goal (Legacy)"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveMultiFormGoalWidget.php:105
+msgid "Give Multi Form Goal Widget"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveMultiFormGoalWidget.php:113
+msgid "Donation Form IDs"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveMultiFormGoalWidget.php:115
+msgid "Choose the IDs of the forms you want to display in the multi-form goal. Display all the forms (default), a single form ID, or a comma-separated list of IDs"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveMultiFormGoalWidget.php:126
+msgid "If you have tags enabled in GiveWP, you can list the category IDs that you want displayed in this grid. A comma-separated list of form tag IDs will cause the grid to include only forms with those tags."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveMultiFormGoalWidget.php:139
+msgid "If you have categories enabled in GiveWP, you can list the category IDs that you want displayed in this grid. A comma-separated list of form category IDs will cause the grid to include only forms from those categories"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveMultiFormGoalWidget.php:150
+msgid "Choose the goal amount to be displayed in the multi-form goal card."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveMultiFormGoalWidget.php:160
+msgid "Define when the multi-form goal should come to an end."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveMultiFormGoalWidget.php:168
+#: build/adminBlocks.js:1
+#: build/formBuilderApp.js:13
+msgid "Color"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveMultiFormGoalWidget.php:170
+msgid "Choose the primary color of the multi-form goal card"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveMultiFormGoalWidget.php:178
+msgid "Heading Title"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveMultiFormGoalWidget.php:180
+msgid "Choose the heading to be displayed on the multi-form goal card."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveMultiFormGoalWidget.php:188
+msgid "Featured Image of the Card"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveMultiFormGoalWidget.php:190
+msgid "Choose the image URL of the multi-form goal card."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveMultiFormGoalWidget.php:200
+#: build/adminBlocks.js:1
+#: build/donorDetails.js:7
+#: build/formBuilderApp.js:13
+msgid "Summary"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveMultiFormGoalWidget.php:202
+msgid "Choose the summary text placed below the heading title."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveProfileEditorWidget.php:44
+msgid "Give Profile Editor (Legacy)"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveProfileEditorWidget.php:103
+msgid "GiveWP Profile Editor Widget"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveProfileEditorWidget.php:117
+msgid "GIVEWP PROFILE EDITOR WIDGET"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveProfileEditorWidget.php:118
+msgid "This is the GiveWP Profile Editor widget. The Profile Editor has no settings at all, just drop it on your page and it's ready to go."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveProfileEditorWidget.php:120
+msgid "Visit the GiveWP Docs for more info on the GiveWP Profile Editor."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveRegisterWidget.php:44
+msgid "Give Register (Legacy)"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveRegisterWidget.php:103
+msgid "GiveWP Register Widget"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveRegisterWidget.php:111
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveTotalsWidget.php:145
+msgid "Link"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveRegisterWidget.php:113
+msgid "The url you want to redirect users to after they submit the registration form."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveRegisterWidget.php:132
+msgid "GIVEWP REGISTER WIDGET"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveRegisterWidget.php:133
+msgid "This is the GiveWP Register widget. Allow your visitors to register on your website."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveRegisterWidget.php:134
+msgid "This is a sample register form with all fields exposed. This is only to help position and style the form with Elementor. If you want to see the live form, go to this page while logged out or in an Icognito browser."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveRegisterWidget.php:136
+msgid "Visit the GiveWP Docs for more info on the GiveWP Register feature."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:44
+msgid "Give Subscriptions (Legacy)"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:103
+msgid "GiveWP Subscriptions Widget"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:113
+msgid "Show or hide the subscription status column."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:125
+msgid "Show or hide a column with the subscription renewal date."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:137
+msgid "Show or hide a column with progress of the subscription."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:149
+msgid "Show or hide a column with the subscription start date."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:161
+msgid "Show or hide a column with the subscription end date."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:171
+msgid "Subscriptions per Page"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:173
+msgid "The number of subscriptions to show before pagination appears."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:188
+msgid "GIVEWP SUBSCRIPTION HISTORY WIDGET"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:189
+msgid "This is the GiveWP Subscriptions widget. Choose which columns you want to have appear for your donors subscription history."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:191
+msgid "Visit the GiveWP Docs for more info on the GiveWP Subscriptions table."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:258
+msgid "Form with a Goal"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:270
+msgid "Auto renew on June 4, 2020"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:280
+msgid "May 4, 2020"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:289
+#: build/assets/dist/js/donor-dashboards-app.js:1
+msgid "View Receipt"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveTotalsWidget.php:45
+msgid "Give Totals (Legacy)"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveTotalsWidget.php:104
+msgid "GiveWP Totals Widget"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveTotalsWidget.php:114
+msgid "Choose the forms you want to combine in this total."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveTotalsWidget.php:127
+msgid "Designate a goal amount."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveTotalsWidget.php:137
+msgid "(Optional) The total goal you want to reflect in your message."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveTotalsWidget.php:147
+msgid "The url of where you want to link donors to encourage them to donate toward the goal."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveTotalsWidget.php:160
+#: build/formBuilderRegistrars.js:1
+msgid "Link Text"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveTotalsWidget.php:162
+msgid "The text you want to hyperlink with your link."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveTotalsWidget.php:170
+msgid "Show Progress"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveTotalsWidget.php:172
+msgid "Show or hide a the progress bar."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveTotalsWidget.php:184
+msgid "Comma separated list of GiveWP category IDs you want to combine into this total."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveTotalsWidget.php:193
+msgid "Comma separated list of GiveWP tag IDs you want to combine into this total."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveTotalsWidget.php:206
+msgid "GIVEWP TOTALS WIDGET"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveTotalsWidget.php:207
+msgid "This is the GiveWP Totals widget. Use this to display a total of one or many forms."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveTotalsWidget.php:209
+msgid "Visit the GiveWP Docs for more info on the GiveWP Totals."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignCommentsWidget/ElementorCampaignCommentsWidget.php:30
+msgid "GiveWP Campaign Comments"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignCommentsWidget/ElementorCampaignCommentsWidget.php:115
+msgid "Campaign Comments"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignCommentsWidget/ElementorCampaignCommentsWidget.php:138
+#: build/adminBlocks.js:1
+#: build/campaignBlocksLandingPage.js:1
+msgid "Show Anonymous"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignCommentsWidget/ElementorCampaignCommentsWidget.php:186
+#: build/adminBlocks.js:1
+#: build/campaignBlocksLandingPage.js:1
+msgid "Comment Length"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignCommentsWidget/ElementorCampaignCommentsWidget.php:206
+#: build/campaignBlocksLandingPage.js:1
+msgid "Comments Per Page"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonationsWidget/ElementorCampaignDonationsWidget.php:29
+msgid "GiveWP Campaign Donations"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonationsWidget/ElementorCampaignDonationsWidget.php:114
+msgid "Campaign Donations"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonationsWidget/ElementorCampaignDonationsWidget.php:140
+msgid "Show Icon"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonationsWidget/ElementorCampaignDonationsWidget.php:176
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonorsWidget/ElementorCampaignDonorsWidget.php:188
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignGridWidget/ElementorCampaignGridWidget.php:170
+#: build/adminBlocks.js:1
+msgid "Sort By"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonationsWidget/ElementorCampaignDonationsWidget.php:189
+msgid "Donations Per Page"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonationsWidget/ElementorCampaignDonationsWidget.php:201
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonorsWidget/ElementorCampaignDonorsWidget.php:213
+msgid "Load More Button Text"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonorsWidget/ElementorCampaignDonorsWidget.php:29
+msgid "GiveWP Campaign Donors"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonorsWidget/ElementorCampaignDonorsWidget.php:114
+msgid "Campaign Donors"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonorsWidget/ElementorCampaignDonorsWidget.php:128
+msgid "Show Anonymous Donors"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonorsWidget/ElementorCampaignDonorsWidget.php:140
+#: build/adminBlocks.js:1
+msgid "Show Company Name"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignDonorsWidget/ElementorCampaignDonorsWidget.php:201
+#: build/adminBlocks.js:1
+msgid "Donors Per Page"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignGoalWidget/ElementorCampaignGoalWidget.php:30
+msgid "GiveWP Campaign Goal"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignGoalWidget/ElementorCampaignGoalWidget.php:115
+#: build/campaignDetails.js:10
+msgid "Campaign Goal"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignGridWidget/ElementorCampaignGridWidget.php:27
+msgid "GiveWP Campaign Grid"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignGridWidget/ElementorCampaignGridWidget.php:113
+msgid "Campaign Grid"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignGridWidget/ElementorCampaignGridWidget.php:120
+#: build/adminBlocks.js:1
+#: build/campaignBlocks.js:1
+#: build/formBuilderApp.js:13
+msgid "Layout"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignGridWidget/ElementorCampaignGridWidget.php:123
+msgid "Full"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignGridWidget/ElementorCampaignGridWidget.php:124
+#: build/adminBlocks.js:1
+#: build/campaignBlocks.js:1
+msgid "Double"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignGridWidget/ElementorCampaignGridWidget.php:125
+#: build/adminBlocks.js:1
+#: build/campaignBlocks.js:1
+msgid "Triple"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignGridWidget/ElementorCampaignGridWidget.php:134
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignWidget/ElementorCampaignWidget.php:129
+msgid "Show Image"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignGridWidget/ElementorCampaignGridWidget.php:146
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignWidget/ElementorCampaignWidget.php:141
+#: build/formBuilderApp.js:13
+msgid "Show Description"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignGridWidget/ElementorCampaignGridWidget.php:182
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:180
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:175
+#: build/adminBlocks.js:1
+#: build/campaignBlocks.js:1
+msgid "Order"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignGridWidget/ElementorCampaignGridWidget.php:195
+msgid "Per Page"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignStatsWidget/ElementorCampaignStatsWidget.php:29
+msgid "GiveWP Campaign Stats"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignStatsWidget/ElementorCampaignStatsWidget.php:114
+msgid "Campaign Statistics"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignStatsWidget/ElementorCampaignStatsWidget.php:128
+msgid "Statistic Type"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:31
+msgid "GiveWP Donation Form Grid"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:124
+msgid "Form Grid Settings"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:143
+#: build/adminBlocks.js:1
+msgid "Columns"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:210
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:217
+msgid "Form Selection"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:219
+msgid "Choose how to select forms to display."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:222
+msgid "Include Specific Forms"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:223
+msgid "Exclude Specific Forms"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:232
+msgid "Include Forms"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:234
+msgid "Select specific forms to include in the grid."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:248
+msgid "Select specific forms to exclude from the grid."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:282
+#: build/adminBlocks.js:1
+msgid "Show Featured Image"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:297
+msgid "Select the size of the featured image."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:299
+msgid "Thumbnail"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:300
+msgid "Medium"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:301
+msgid "Large"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:302
+msgid "Full Size"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:316
+msgid "Set the height of the featured image."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:319
+#: build/formBuilderRegistrars.js:1
+msgid "Fixed"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:331
+msgid "Image Height (px)"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:333
+msgid "Set a fixed height for images in pixels."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:345
+#: build/adminBlocks.js:1
+msgid "Show Excerpt"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:358
+msgid "Excerpt Length (words)"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:360
+msgid "Number of words to display in the excerpt."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:386
+msgid "Show/Hide the donate button on each form."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:397
+msgid "Enable Pagination"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:399
+msgid "Enable pagination for the form grid."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:400
+msgid "Enable"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:412
+msgid "Style Options"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:421
+msgid "Choose the color for the goal progress bar."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:432
+#: build/adminBlocks.js:1
+msgid "Tag Background Color"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:434
+msgid "Background color for form tags."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:442
+#: build/adminBlocks.js:1
+msgid "Tag Text Color"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:444
+msgid "Text color for form tags."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:454
+msgid "Text color for the donate button."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:467
+msgid "Filter Options"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:476
+msgid "Filter forms by specific categories."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:487
+msgid "Filter forms by specific tags."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormWidget/ElementorDonationFormWidget.php:132
+msgid "On Page"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormWidget/ElementorDonationFormWidget.php:132
+#: build/adminBlocks.js:1
+#: build/campaignBlocks.js:1
+#: build/donationFormBlock.js:1
+#: build/formBuilderApp.js:13
+msgid "New Tab"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:30
+msgid "GiveWP Donor Wall"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:115
+msgid "Donor Wall Settings"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:149
+msgid "Select the form to pull donors from."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:191
+msgid "The number of columns to display. Note that \"Best Fit\" will always stretch to fill the available width."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:208
+#: build/formBuilderApp.js:1
+msgid "Display Settings"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:228
+#: build/adminBlocks.js:1
+msgid "Avatar Size"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:293
+msgid "Comment Length (characters)"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:295
+msgid "Number of characters to allow to be shown in the donor comments. This can help make each donor card a more consistent height."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:337
+msgid "Button Text Settings"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:346
+msgid "The text that appears on the \"Load More\" button if you have multiple \"pages\" of donor cards."
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:347
+msgid "Load More"
+msgstr ""
+
+#: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:356
+msgid "The text that appears on the \"Read More\" link if your donor comments are truncated."
 msgstr ""
 
 #: src/Tracking/AdminSettings.php:37
@@ -20794,20 +22469,20 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. translators: 1: amount of income raised 2: goal target amount.
-#: templates/shortcode-goal.php:200
+#: templates/shortcode-goal.php:204
 #, php-format
 msgid "<span class=\"income\" data-amounts=\"%1$s\">%2$s</span> of <span class=\"goal-text\" data-amounts=\"%3$s\">%4$s</span> raised"
 msgstr ""
 
 #. translators: %s: percentage of the amount raised compared to the goal target
-#: templates/shortcode-goal.php:210
+#: templates/shortcode-goal.php:214
 #: templates/shortcode-totals-progress.php:34
 #, php-format
 msgid "<span class=\"give-percentage\">%s%%</span> funded"
 msgstr ""
 
 #. translators: 1: total number of donations completed 2: total number of donations set as goal
-#: templates/shortcode-goal.php:217
+#: templates/shortcode-goal.php:221
 #, php-format
 msgid "<span class=\"income\">%1$s</span> of <span class=\"goal-text\">%2$s</span> donation"
 msgid_plural "<span class=\"income\">%1$s</span> of <span class=\"goal-text\">%2$s</span> donations"
@@ -20815,16 +22490,12 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. translators: 1: total number of donors completed 2: total number of donors set as goal
-#: templates/shortcode-goal.php:231
+#: templates/shortcode-goal.php:235
 #, php-format
 msgid "<span class=\"income\">%1$s</span> of <span class=\"goal-text\">%2$s</span> donor"
 msgid_plural "<span class=\"income\">%1$s</span> of <span class=\"goal-text\">%2$s</span> donors"
 msgstr[0] ""
 msgstr[1] ""
-
-#: templates/shortcode-login.php:22
-msgid "Log into Your Account"
-msgstr ""
 
 #: templates/shortcode-login.php:47
 #: build/donationFormRegistrars.js:1
@@ -20905,10 +22576,6 @@ msgstr ""
 
 #: templates/shortcode-receipt.php:21
 msgid "The specified receipt ID appears to be invalid."
-msgstr ""
-
-#: templates/shortcode-receipt.php:75
-msgid "Total Donation"
 msgstr ""
 
 #: templates/shortcode-receipt.php:137
@@ -20996,21 +22663,9 @@ msgid "Form Format"
 msgstr ""
 
 #: build/adminBlocks.js:1
-#: build/donationFormBlock.js:1
-msgid "Full Form"
-msgstr ""
-
-#: build/adminBlocks.js:1
 #: build/campaignBlocks.js:1
 #: build/donationFormBlock.js:1
 msgid "One Button Launch"
-msgstr ""
-
-#: build/adminBlocks.js:1
-#: build/campaignBlocks.js:1
-#: build/donationFormBlock.js:1
-#: build/formBuilderApp.js:13
-msgid "New Tab"
 msgstr ""
 
 #: build/adminBlocks.js:1
@@ -21034,6 +22689,7 @@ msgstr ""
 #: build/campaignBlocks.js:1
 #: build/donationFormBlock.js:1
 #: build/donationFormBlockApp.js:1
+#: build/elementorDonationFormWidget.js:1
 msgid "Loading donation form"
 msgstr ""
 
@@ -21041,6 +22697,7 @@ msgstr ""
 #: build/campaignBlocks.js:1
 #: build/donationFormBlock.js:1
 #: build/donationFormBlockApp.js:1
+#: build/elementorDonationFormWidget.js:1
 msgid "Open donation form"
 msgstr ""
 
@@ -21048,6 +22705,7 @@ msgstr ""
 #: build/campaignBlocks.js:1
 #: build/donationFormBlock.js:1
 #: build/donationFormBlockApp.js:1
+#: build/elementorDonationFormWidget.js:1
 msgid "In progress"
 msgstr ""
 
@@ -21055,6 +22713,7 @@ msgstr ""
 #: build/campaignBlocks.js:1
 #: build/donationFormBlock.js:1
 #: build/donationFormBlockApp.js:1
+#: build/elementorDonationFormWidget.js:1
 msgid "Close donation form"
 msgstr ""
 
@@ -21078,27 +22737,7 @@ msgid "Full Width"
 msgstr ""
 
 #: build/adminBlocks.js:1
-#: build/campaignBlocks.js:1
-msgid "Double"
-msgstr ""
-
-#: build/adminBlocks.js:1
-#: build/campaignBlocks.js:1
-msgid "Triple"
-msgstr ""
-
-#: build/adminBlocks.js:1
 msgid "Max (4)"
-msgstr ""
-
-#: build/adminBlocks.js:1
-#: build/campaignBlocks.js:1
-#: build/formBuilderApp.js:13
-msgid "Layout"
-msgstr ""
-
-#: build/adminBlocks.js:1
-msgid "Columns"
 msgstr ""
 
 #: build/adminBlocks.js:1
@@ -21112,26 +22751,6 @@ msgid "Display Elements"
 msgstr ""
 
 #: build/adminBlocks.js:1
-msgid "Show Excerpt"
-msgstr ""
-
-#: build/adminBlocks.js:1
-msgid "Show Donate Button"
-msgstr ""
-
-#: build/adminBlocks.js:1
-msgid "Show Featured Image"
-msgstr ""
-
-#: build/adminBlocks.js:1
-msgid "Image Size"
-msgstr ""
-
-#: build/adminBlocks.js:1
-msgid "Image Height"
-msgstr ""
-
-#: build/adminBlocks.js:1
 msgid "Featured image height. Default \"auto\". Accepts valid heights in px, em, or rem."
 msgstr ""
 
@@ -21141,17 +22760,7 @@ msgid "Grid Settings"
 msgstr ""
 
 #: build/adminBlocks.js:1
-#: build/campaignBlocks.js:1
-msgid "Order By"
-msgstr ""
-
-#: build/adminBlocks.js:1
 msgid "The order forms are displayed in."
-msgstr ""
-
-#: build/adminBlocks.js:1
-#: build/campaignBlocks.js:1
-msgid "Order"
 msgstr ""
 
 #: build/adminBlocks.js:1
@@ -21187,11 +22796,6 @@ msgid "Grid Interaction"
 msgstr ""
 
 #: build/adminBlocks.js:1
-#: build/formBuilderRegistrars.js:1
-msgid "Display Type"
-msgstr ""
-
-#: build/adminBlocks.js:1
 msgid "Users will be redirected to the donation form page."
 msgstr ""
 
@@ -21200,15 +22804,7 @@ msgid "Modal with the donation form will be displayed on the same page."
 msgstr ""
 
 #: build/adminBlocks.js:1
-msgid "Forms Per Page"
-msgstr ""
-
-#: build/adminBlocks.js:1
 msgid "Sets the number of forms to be displayed on the first page load."
-msgstr ""
-
-#: build/adminBlocks.js:1
-msgid "Show Pagination"
 msgstr ""
 
 #: build/adminBlocks.js:1
@@ -21217,18 +22813,6 @@ msgstr ""
 
 #: build/adminBlocks.js:1
 msgid "Color Settings"
-msgstr ""
-
-#: build/adminBlocks.js:1
-msgid "Tag Background Color"
-msgstr ""
-
-#: build/adminBlocks.js:1
-msgid "Tag Text Color"
-msgstr ""
-
-#: build/adminBlocks.js:1
-msgid "Donate Button Text Color"
 msgstr ""
 
 #: build/adminBlocks.js:1
@@ -21256,38 +22840,11 @@ msgid "Controls how many columns of the Form Grid appear. All sizes will adjust 
 msgstr ""
 
 #: build/adminBlocks.js:1
-#: build/campaignBlocksLandingPage.js:1
-msgid "Show Name"
-msgstr ""
-
-#: build/adminBlocks.js:1
-msgid "Show Company Name"
-msgstr ""
-
-#: build/adminBlocks.js:1
-#: build/campaignBlocksLandingPage.js:1
-msgid "Show Anonymous"
-msgstr ""
-
-#: build/adminBlocks.js:1
-#: build/campaignBlocksLandingPage.js:1
-msgid "Show Avatar"
-msgstr ""
-
-#: build/adminBlocks.js:1
-msgid "Avatar Size"
-msgstr ""
-
-#: build/adminBlocks.js:1
 msgid "Avatar size. Default height is 75. Accepts valid heights in px."
 msgstr ""
 
 #: build/adminBlocks.js:1
 msgid "Show Donation Form"
-msgstr ""
-
-#: build/adminBlocks.js:1
-msgid "Show Total"
 msgstr ""
 
 #: build/adminBlocks.js:1
@@ -21299,16 +22856,7 @@ msgid "Show Tributes"
 msgstr ""
 
 #: build/adminBlocks.js:1
-msgid "Show Comments"
-msgstr ""
-
-#: build/adminBlocks.js:1
 msgid "Only Comments"
-msgstr ""
-
-#: build/adminBlocks.js:1
-#: build/campaignBlocksLandingPage.js:1
-msgid "Comment Length"
 msgstr ""
 
 #: build/adminBlocks.js:1
@@ -21317,16 +22865,7 @@ msgid "Limits the amount of characters to be displayed on donations with comment
 msgstr ""
 
 #: build/adminBlocks.js:1
-#: build/campaignBlocksLandingPage.js:1
-msgid "Read More Text"
-msgstr ""
-
-#: build/adminBlocks.js:1
 msgid "Wall Settings"
-msgstr ""
-
-#: build/adminBlocks.js:1
-msgid "Sort By"
 msgstr ""
 
 #: build/adminBlocks.js:1
@@ -21342,20 +22881,7 @@ msgid "Wall Interaction"
 msgstr ""
 
 #: build/adminBlocks.js:1
-msgid "Donors Per Page"
-msgstr ""
-
-#: build/adminBlocks.js:1
 msgid "How many donors should show up on the initial page load?"
-msgstr ""
-
-#: build/adminBlocks.js:1
-msgid "Load More Text"
-msgstr ""
-
-#: build/adminBlocks.js:1
-#: build/formBuilderApp.js:13
-msgid "Color"
 msgstr ""
 
 #: build/adminBlocks.js:1
@@ -21381,12 +22907,6 @@ msgstr ""
 #: build/adminBlocks.js:1
 #: build/formBuilderApp.js:13
 msgid "Heading"
-msgstr ""
-
-#: build/adminBlocks.js:1
-#: build/donorDetails.js:7
-#: build/formBuilderApp.js:13
-msgid "Summary"
 msgstr ""
 
 #: build/adminBlocks.js:1
@@ -21947,10 +23467,6 @@ msgid "Read more about the connection types"
 msgstr ""
 
 #: build/assets/dist/js/donor-dashboards-app.js:1
-msgid "View Receipt"
-msgstr ""
-
-#: build/assets/dist/js/donor-dashboards-app.js:1
 msgid "Count"
 msgstr ""
 
@@ -21976,10 +23492,6 @@ msgstr ""
 
 #: build/assets/dist/js/donor-dashboards-app.js:1
 msgid "Back to Donation History"
-msgstr ""
-
-#: build/assets/dist/js/donor-dashboards-app.js:1
-msgid "Download Receipt"
 msgstr ""
 
 #: build/assets/dist/js/donor-dashboards-app.js:1
@@ -22374,6 +23886,7 @@ msgstr ""
 #: build/campaignListTable.js:1
 #: build/donationDetails.js:7
 #: build/donorDetails.js:7
+#: build/elementorCampaignGridWidget.js:1
 msgid "No data"
 msgstr ""
 
@@ -22393,6 +23906,7 @@ msgstr ""
 #: build/campaignListTable.js:1
 #: build/donationDetails.js:7
 #: build/donorDetails.js:7
+#: build/elementorCampaignGridWidget.js:1
 msgid "Error details"
 msgstr ""
 
@@ -22412,6 +23926,7 @@ msgstr ""
 #: build/campaignListTable.js:1
 #: build/donationDetails.js:7
 #: build/donorDetails.js:7
+#: build/elementorCampaignGridWidget.js:1
 msgid "Additional context"
 msgstr ""
 
@@ -23417,6 +24932,9 @@ msgstr ""
 #: build/campaignGridApp.js:1
 #: build/campaignGridBlock.js:1
 #: build/campaignListTable.js:4
+#: build/elementorCampaignGoalWidget.js:1
+#: build/elementorCampaignGridWidget.js:1
+#: build/elementorCampaignWidget.js:1
 msgid "Amount raised"
 msgstr ""
 
@@ -23429,6 +24947,9 @@ msgstr ""
 #: build/campaignGridApp.js:1
 #: build/campaignGridBlock.js:1
 #: build/campaignListTable.js:4
+#: build/elementorCampaignGoalWidget.js:1
+#: build/elementorCampaignGridWidget.js:1
+#: build/elementorCampaignWidget.js:1
 msgid "Number of donors"
 msgstr ""
 
@@ -23441,6 +24962,9 @@ msgstr ""
 #: build/campaignGridApp.js:1
 #: build/campaignGridBlock.js:1
 #: build/campaignListTable.js:4
+#: build/elementorCampaignGoalWidget.js:1
+#: build/elementorCampaignGridWidget.js:1
+#: build/elementorCampaignWidget.js:1
 msgid "Recurring amount raised"
 msgstr ""
 
@@ -23453,6 +24977,9 @@ msgstr ""
 #: build/campaignGridApp.js:1
 #: build/campaignGridBlock.js:1
 #: build/campaignListTable.js:4
+#: build/elementorCampaignGoalWidget.js:1
+#: build/elementorCampaignGridWidget.js:1
+#: build/elementorCampaignWidget.js:1
 msgid "Number of recurring donations"
 msgstr ""
 
@@ -23465,6 +24992,9 @@ msgstr ""
 #: build/campaignGridApp.js:1
 #: build/campaignGridBlock.js:1
 #: build/campaignListTable.js:4
+#: build/elementorCampaignGoalWidget.js:1
+#: build/elementorCampaignGridWidget.js:1
+#: build/elementorCampaignWidget.js:1
 msgid "Number of recurring donors"
 msgstr ""
 
@@ -23475,6 +25005,9 @@ msgstr ""
 #: build/campaignGoalBlockApp.js:1
 #: build/campaignGridApp.js:1
 #: build/campaignGridBlock.js:1
+#: build/elementorCampaignGoalWidget.js:1
+#: build/elementorCampaignGridWidget.js:1
+#: build/elementorCampaignWidget.js:1
 msgid "Our goal"
 msgstr ""
 
@@ -23609,17 +25142,20 @@ msgstr ""
 
 #: build/campaignBlocks.js:1
 #: build/campaignGridApp.js:1
+#: build/elementorCampaignGridWidget.js:1
 msgid "Previous page"
 msgstr ""
 
 #: build/campaignBlocks.js:1
 #: build/campaignGridApp.js:1
+#: build/elementorCampaignGridWidget.js:1
 #, js-format
 msgid "Page %d"
 msgstr ""
 
 #: build/campaignBlocks.js:1
 #: build/campaignGridApp.js:1
+#: build/elementorCampaignGridWidget.js:1
 msgid "Next page"
 msgstr ""
 
@@ -23745,34 +25281,30 @@ msgstr ""
 
 #: build/campaignBlocksLandingPage.js:1
 #: build/campaignCommentsBlockApp.js:1
+#: build/elementorCampaignCommentsWidget.js:1
 msgid "Leave a supportive message by"
 msgstr ""
 
 #: build/campaignBlocksLandingPage.js:1
 #: build/campaignCommentsBlockApp.js:1
+#: build/elementorCampaignCommentsWidget.js:1
 msgid "donating to the campaign."
 msgstr ""
 
 #: build/campaignBlocksLandingPage.js:1
 #: build/campaignCommentsBlockApp.js:1
+#: build/elementorCampaignCommentsWidget.js:1
 msgid "Share your support"
 msgstr ""
 
 #: build/campaignBlocksLandingPage.js:1
 #: build/campaignCommentsBlockApp.js:1
+#: build/elementorCampaignCommentsWidget.js:1
 msgid "Leave a supportive message by donating to the campaign."
 msgstr ""
 
 #: build/campaignBlocksLandingPage.js:1
-msgid "Show Date"
-msgstr ""
-
-#: build/campaignBlocksLandingPage.js:1
 msgid "Comment Settings"
-msgstr ""
-
-#: build/campaignBlocksLandingPage.js:1
-msgid "Comments Per Page"
 msgstr ""
 
 #: build/campaignBlocksLandingPage.js:1
@@ -24059,10 +25591,6 @@ msgstr ""
 #: build/campaignDetails.js:10
 #: build/campaignListTable.js:4
 msgid "Select to upload"
-msgstr ""
-
-#: build/campaignDetails.js:10
-msgid "Campaign Goal"
 msgstr ""
 
 #: build/campaignDetails.js:10
@@ -24372,6 +25900,10 @@ msgid "Associated donor"
 msgstr ""
 
 #: build/donationDetails.js:7
+msgid "No donor associated with this donation"
+msgstr ""
+
+#: build/donationDetails.js:7
 #: build/donorDetails.js:7
 msgid "Recurring"
 msgstr ""
@@ -24525,14 +26057,6 @@ msgid "Phone"
 msgstr ""
 
 #: build/donationDetails.js:7
-msgid "Manage the donor connected to this donation"
-msgstr ""
-
-#: build/donationDetails.js:7
-msgid "Link the donation to the selected donor"
-msgstr ""
-
-#: build/donationDetails.js:7
 msgid "Billing details"
 msgstr ""
 
@@ -24632,6 +26156,7 @@ msgid "Progress: Step %1$d of %2$d"
 msgstr ""
 
 #: build/donationFormBlockApp.js:1
+#: build/elementorDonationFormWidget.js:1
 msgid "Opens in a new tab"
 msgstr ""
 
@@ -24791,10 +26316,6 @@ msgstr ""
 
 #: build/donationFormRegistrars.js:1
 msgid "Every <period />"
-msgstr ""
-
-#: build/donationFormRegistrars.js:1
-msgid "Subscription Details"
 msgstr ""
 
 #: build/donationFormRegistrars.js:1
@@ -25237,10 +26758,6 @@ msgstr ""
 #: build/formBuilderApp.js:1
 #: build/formBuilderRegistrars.js:1
 msgid "Field Settings"
-msgstr ""
-
-#: build/formBuilderApp.js:1
-msgid "Display Settings"
 msgstr ""
 
 #: build/formBuilderApp.js:1
@@ -25846,10 +27363,6 @@ msgid "Show Heading"
 msgstr ""
 
 #: build/formBuilderApp.js:13
-msgid "Show Description"
-msgstr ""
-
-#: build/formBuilderApp.js:13
 msgid "Image Style"
 msgstr ""
 
@@ -26269,10 +27782,6 @@ msgid "Multi-level"
 msgstr ""
 
 #: build/formBuilderRegistrars.js:1
-msgid "Fixed"
-msgstr ""
-
-#: build/formBuilderRegistrars.js:1
 msgid "Every"
 msgstr ""
 
@@ -26447,10 +27956,6 @@ msgstr ""
 
 #: build/formBuilderRegistrars.js:1
 msgid "Link to terms"
-msgstr ""
-
-#: build/formBuilderRegistrars.js:1
-msgid "Link Text"
 msgstr ""
 
 #: build/formBuilderRegistrars.js:1

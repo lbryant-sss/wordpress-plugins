@@ -2,7 +2,7 @@
 /**
  * Product Filter by WBW - WoofiltersWpf Class
  *
- * @version 2.9.4
+ * @version 2.9.5
  *
  * @author  woobewoo
  */
@@ -576,20 +576,31 @@ class WoofiltersWpf extends ModuleWpf {
 
 	/**
 	 * replaceArgsIfBuilderUsed.
+	 *
+	 * @version 2.9.5
 	 */
 	public function replaceArgsIfBuilderUsed( $args ) {
+
+		// Manual ignore
+		if ( ! empty( $args['wbw_woo_product_filter_ignore'] ) ) {
+			return $args;
+		}
+
 		// For Woocommerce Lookup table regeneration
 		if ( ! empty($args['return']) && ! empty($args['limit']) && ( 'ids' == $args['return'] ) && ( 1 == $args['limit'] ) ) {
 			return $args;
 		}
+
 		// For TI WooCommerce Merkzettel
 		if ( ReqWpf::getVar('wc-ajax') == 'tinvwl' ) {
 			return $args;
 		}
+
 		// For WooCommerce Mix and Match Products
 		if ( ! empty($args['query_id']) && ( 'wc_mnm_query_child_items_by_category' == $args['query_id'] ) ) {
 			return $args;
 		}
+
 		// Skip filtering if FiboSearch is active with Divi theme to maintain compatibility
 		if ( ReqWpf::getVar('dgwt_wcas') == 1 ) {
 			return $args;
@@ -602,11 +613,13 @@ class WoofiltersWpf extends ModuleWpf {
 		if ( $flag && ! empty($args['taxonomy']) ) {
 			return $args;
 		}
+
 		if ( isset( $this->mainWCQueryFiltered ) && ! empty( $this->mainWCQueryFiltered ) ) {
 			$args = $this->mainWCQueryFiltered;
 		} elseif ( isset( $this->mainWCQuery ) && ! empty( $this->mainWCQuery ) ) {
 			$args = $this->mainWCQuery;
 		}
+
 		$args['paged'] = $paged;
 		if ( $flag ) {
 			$args['post_cards_query'] = $flag;
@@ -614,6 +627,7 @@ class WoofiltersWpf extends ModuleWpf {
 		if ( false !== $ret ) {
 			$args['return'] = $ret;
 		}
+
 		return $args;
 	}
 
