@@ -158,6 +158,36 @@
 					}
 				}
 			);
+
+			$( '#cartflows_ca_use_new_ui' ).on( 'click', function () {
+				const button = $( this );
+
+				// Show loading state
+				button.prop( 'disabled', true ).text( 'Switching...' );
+
+				// Send AJAX request to save the option
+				$.ajax( {
+					url: ajaxurl,
+					type: 'POST',
+					data: {
+						action: 'wcf_ca_save_new_ui_option',
+						security: wcf_ca_localized_vars._ui_switch,
+						value: 'on',
+					},
+					success( response ) {
+						if ( response.success ) {
+							// Update button state
+							button
+								.prop( 'disabled', false )
+								.text( 'New UI Enabled' );
+							window.location.reload();
+						} else {
+							button.text( 'Switch' );
+						}
+						button.prop( 'disabled', false );
+					},
+				} );
+			} );
 		},
 	};
 
@@ -251,7 +281,7 @@
 					},
 				} );
 			} else {
-				$( 'wcf_ca' + event.data.order_status + '_btn_message' )
+				$( '#wcf_ca_' + event.data.order_status + '_btn_message' )
 					.text( wcf_ca_details.strings.verify_url )
 					.fadeIn()
 					.delay( 2000 )

@@ -42,6 +42,7 @@ class Meow_MWAI_Query_Text extends Meow_MWAI_Query_Base implements JsonSerializa
         'envId' => $this->envId,
         'scope' => $this->scope,
         'session' => $this->session,
+        'customId' => $this->customId,
         'maxMessages' => $this->maxMessages,
       ]
     ];

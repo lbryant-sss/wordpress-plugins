@@ -4,7 +4,7 @@ Tags: hide,security,firewall,login,wp admin
 Requires at least: 5.3
 Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: 5.4.05
+Stable tag: 5.4.06
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -327,6 +327,11 @@ Enjoy!
 17. New custom core paths changed with Hide My WP Ghost
 
 == Changelog ==
+= 5.4.06 (21 Aug 2025) =
+* Update - Firewall rules for more compatibility
+* Update - Safe URL verification process
+* Update - Compatibility with the plugin Debloat
+
 = 5.4.05 (27 May 2025) =
 * Update - Add AI support in the plugin settings
 * Update - 7G & 8G Firewall for more compatibility with WP Plugins

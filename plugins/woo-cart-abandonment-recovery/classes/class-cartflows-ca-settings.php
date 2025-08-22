@@ -13,8 +13,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Class Cartflows_Ca_Utils.
  */
 class Cartflows_Ca_Settings {
-
-
 	/**
 	 * Member Variable
 	 *
@@ -22,15 +20,13 @@ class Cartflows_Ca_Settings {
 	 */
 	private static $instance;
 
-
 	/**
 	 * Cartflows_Ca_Settings constructor.
 	 */
 	public function __construct() {
-		add_action( 'admin_init', array( $this, 'wcf_initialize_settings' ) );
-		add_filter( 'plugin_action_links_' . CARTFLOWS_CA_BASE, array( $this, 'add_action_links' ), 999 );
+		add_action( 'admin_init', [ $this, 'wcf_initialize_settings' ] );
+		add_filter( 'plugin_action_links_' . CARTFLOWS_CA_BASE, [ $this, 'add_action_links' ], 999 );
 	}
-
 
 	/**
 	 * Adding action links for plugin list page.
@@ -39,9 +35,9 @@ class Cartflows_Ca_Settings {
 	 * @return array
 	 */
 	public function add_action_links( $links ) {
-		$mylinks = array(
+		$mylinks = [
 			'<a href="' . admin_url( 'admin.php?page=' . WCF_CA_PAGE_NAME ) . '">Settings</a>',
-		);
+		];
 
 		return array_merge( $mylinks, $links );
 	}
@@ -50,24 +46,24 @@ class Cartflows_Ca_Settings {
 	 *
 	 * @since 1.1.5
 	 */
-	public function wcf_initialize_settings() {
+	public function wcf_initialize_settings(): void {
 
 		// Start: Settings for cart abandonment.
 		add_settings_section(
 			WCF_CA_GENERAL_SETTINGS_SECTION,
 			/* translators: %1$s: html start, %2$s: html end*/
 			sprintf( __( '%1$sCart Abandonment Settings%2$s', 'woo-cart-abandonment-recovery' ), '<span class="wcf-ca-tracking-settings">', '</span>' ),
-			array( $this, 'wcf_cart_abandonment_options_callback' ),
+			[ $this, 'wcf_cart_abandonment_options_callback' ],
 			WCF_CA_PAGE_NAME
 		);
 
 		add_settings_field(
 			'wcf_ca_status',
 			__( 'Enable Tracking', 'woo-cart-abandonment-recovery' ),
-			array( $this, 'wcf_ca_status_callback' ),
+			[ $this, 'wcf_ca_status_callback' ],
 			WCF_CA_PAGE_NAME,
 			WCF_CA_GENERAL_SETTINGS_SECTION,
-			array( __( 'Start capturing abandoned carts. <br/><br/> <span class="description"><strong>Note:</strong> Cart will be considered abandoned if order is not completed in cart abandoned cut-off time.</span>', 'woo-cart-abandonment-recovery' ) )
+			[ __( 'Start capturing abandoned carts. <br/><br/> <span class="description"><strong>Note:</strong> Cart will be considered abandoned if order is not completed in cart abandoned cut-off time.</span>', 'woo-cart-abandonment-recovery' ) ]
 		);
 
 		register_setting(
@@ -78,10 +74,10 @@ class Cartflows_Ca_Settings {
 		add_settings_field(
 			'wcf_ca_cron_run_time',
 			__( 'Cart abandoned cut-off time', 'woo-cart-abandonment-recovery' ),
-			array( $this, 'wcf_ca_cron_run_time_callback' ),
+			[ $this, 'wcf_ca_cron_run_time_callback' ],
 			WCF_CA_PAGE_NAME,
 			WCF_CA_GENERAL_SETTINGS_SECTION,
-			array( __( 'Minutes. <br/><br/> <span class="description"><strong>Note:</strong> Consider cart abandoned after above entered minutes of item being added to cart and order not placed.</span><span class="dashicons dashicons-editor-help" title="Please remove the custom code to update cron cut off time, if added."></span>', 'woo-cart-abandonment-recovery' ) )
+			[ __( 'Minutes. <br/><br/> <span class="description"><strong>Note:</strong> Consider cart abandoned after above entered minutes of item being added to cart and order not placed.</span><span class="dashicons dashicons-editor-help" title="Please remove the custom code to update cron cut off time, if added."></span>', 'woo-cart-abandonment-recovery' ) ]
 		);
 
 		register_setting(
@@ -92,10 +88,10 @@ class Cartflows_Ca_Settings {
 		add_settings_field(
 			'wcf_ca_ignore_users',
 			__( 'Disable Tracking For', 'woo-cart-abandonment-recovery' ),
-			array( $this, 'wcf_ca_ignore_users_callback' ),
+			[ $this, 'wcf_ca_ignore_users_callback' ],
 			WCF_CA_PAGE_NAME,
 			WCF_CA_GENERAL_SETTINGS_SECTION,
-			array( '<br><span class="description"><strong>Note:</strong>' . __( ' It will ignore selected users from abandonment process when they logged in, and hence they can not receive mail for cart abandoned by themselves.', 'woo-cart-abandonment-recovery' ) . '</span>' )
+			[ '<br><span class="description"><strong>Note:</strong>' . __( ' It will ignore selected users from abandonment process when they logged in, and hence they can not receive mail for cart abandoned by themselves.', 'woo-cart-abandonment-recovery' ) . '</span>' ]
 		);
 
 		register_setting(
@@ -106,10 +102,10 @@ class Cartflows_Ca_Settings {
 		add_settings_field(
 			'wcf_ca_excludes_orders',
 			__( 'Exclude email sending For', 'woo-cart-abandonment-recovery' ),
-			array( $this, 'wcf_ca_exclude_orders_callback' ),
+			[ $this, 'wcf_ca_exclude_orders_callback' ],
 			WCF_CA_PAGE_NAME,
 			WCF_CA_GENERAL_SETTINGS_SECTION,
-			array( '<br><span class="description"><strong>Note:</strong>' . __( ' It will not send future recovery emails to selected order status and will mark as recovered.', 'woo-cart-abandonment-recovery' ) . '</span>' )
+			[ '<br><span class="description"><strong>Note:</strong>' . __( ' It will not send future recovery emails to selected order status and will mark as recovered.', 'woo-cart-abandonment-recovery' ) . '</span>' ]
 		);
 
 		register_setting(
@@ -120,10 +116,10 @@ class Cartflows_Ca_Settings {
 		add_settings_field(
 			'wcar_email_admin_on_recovery',
 			__( 'Notify recovery to admin', 'woo-cart-abandonment-recovery' ),
-			array( $this, 'wcar_email_admin_on_recovery' ),
+			[ $this, 'wcar_email_admin_on_recovery' ],
 			WCF_CA_PAGE_NAME,
 			WCF_CA_GENERAL_SETTINGS_SECTION,
-			array( __( 'This option will send an email to admin on new order recovery.', 'woo-cart-abandonment-recovery' ) )
+			[ __( 'This option will send an email to admin on new order recovery.', 'woo-cart-abandonment-recovery' ) ]
 		);
 
 		register_setting(
@@ -134,10 +130,10 @@ class Cartflows_Ca_Settings {
 		add_settings_field(
 			'wcf_ca_global_param',
 			__( 'UTM parameters', 'woo-cart-abandonment-recovery' ),
-			array( $this, 'wcar_add_param_to_recovery_url' ),
+			[ $this, 'wcar_add_param_to_recovery_url' ],
 			WCF_CA_PAGE_NAME,
 			WCF_CA_GENERAL_SETTINGS_SECTION,
-			array( '<br><span>' . __( 'The UTM parameters will be appended to the checkout page links which is available in the recovery emails.', 'woo-cart-abandonment-recovery' ) . '</span>' )
+			[ '<br><span>' . __( 'The UTM parameters will be appended to the checkout page links which is available in the recovery emails.', 'woo-cart-abandonment-recovery' ) . '</span>' ]
 		);
 
 		register_setting(
@@ -152,17 +148,17 @@ class Cartflows_Ca_Settings {
 			WCF_CA_COUPONS_SETTINGS_SECTION,
 			/* translators: %1$s: html start, %2$s: html end*/
 			sprintf( __( '%1$sCoupons Settings%2$s', 'woo-cart-abandonment-recovery' ), '<span class="wcf-ca-coupon-settings">', '</span>' ),
-			array( $this, 'wcf_cart_abandonment_options_callback' ),
+			[ $this, 'wcf_cart_abandonment_options_callback' ],
 			WCF_CA_PAGE_NAME
 		);
 
 		add_settings_field(
 			'wcf_ca_auto_delete_coupons',
 			__( 'Delete Coupons Automatically', 'woo-cart-abandonment-recovery' ),
-			array( $this, 'wcf_ca_auto_delete_coupons_callback' ),
+			[ $this, 'wcf_ca_auto_delete_coupons_callback' ],
 			WCF_CA_PAGE_NAME,
 			WCF_CA_COUPONS_SETTINGS_SECTION,
-			array( __( 'Delete coupons automatically on weekly basis.<br><span class="description"><br/><strong>Note:</strong> This option will set a weekly cron to delete all <strong>expired</strong> and <strong>used</strong> coupons automatically in the background.</p>', 'woo-cart-abandonment-recovery' ) )
+			[ __( 'Delete coupons automatically on weekly basis.<br><span class="description"><br/><strong>Note:</strong> This option will set a weekly cron to delete all <strong>expired</strong> and <strong>used</strong> coupons automatically in the background.</p>', 'woo-cart-abandonment-recovery' ) ]
 		);
 
 		register_setting(
@@ -173,10 +169,10 @@ class Cartflows_Ca_Settings {
 		add_settings_field(
 			'wcf_ca_delete_coupons',
 			__( 'Delete Coupons Manually', 'woo-cart-abandonment-recovery' ),
-			array( $this, 'wcf_ca_delete_coupons_callback' ),
+			[ $this, 'wcf_ca_delete_coupons_callback' ],
 			WCF_CA_PAGE_NAME,
 			WCF_CA_COUPONS_SETTINGS_SECTION,
-			array( '<br><span class="description"> ' . __( '<br><strong>Note:</strong> This will delete all <strong>expired</strong> and <strong>used</strong> coupons that were created by Woo Cart Abandonment Recovery.</p>', 'woo-cart-abandonment-recovery' ) )
+			[ '<br><span class="description"> ' . __( '<br><strong>Note:</strong> This will delete all <strong>expired</strong> and <strong>used</strong> coupons that were created by Woo Cart Abandonment Recovery.</p>', 'woo-cart-abandonment-recovery' ) ]
 		);
 
 		register_setting(
@@ -190,35 +186,35 @@ class Cartflows_Ca_Settings {
 			WCF_CA_EMAIL_SETTINGS_SECTION,
 			/* translators: %1$s: html start, %2$s: html end*/
 			sprintf( __( '%1$sEmail Settings%2$s', 'woo-cart-abandonment-recovery' ), '<span class="wcf-ca-email-settings">', '</span>' ),
-			array( $this, 'wcf_cart_abandonment_options_callback' ),
+			[ $this, 'wcf_cart_abandonment_options_callback' ],
 			WCF_CA_PAGE_NAME
 		);
 
 		add_settings_field(
 			'wcf_ca_from_name',
 			__( '"From" Name', 'woo-cart-abandonment-recovery' ),
-			array( $this, 'wcf_ca_from_name_callback' ),
+			[ $this, 'wcf_ca_from_name_callback' ],
 			WCF_CA_PAGE_NAME,
 			WCF_CA_EMAIL_SETTINGS_SECTION,
-			array( __( 'Name will appear in email sent.', 'woo-cart-abandonment-recovery' ) )
+			[ __( 'Name will appear in email sent.', 'woo-cart-abandonment-recovery' ) ]
 		);
 
 		add_settings_field(
 			'wcf_ca_from_email',
 			__( '"From" Address', 'woo-cart-abandonment-recovery' ),
-			array( $this, 'wcf_ca_from_email_callback' ),
+			[ $this, 'wcf_ca_from_email_callback' ],
 			WCF_CA_PAGE_NAME,
 			WCF_CA_EMAIL_SETTINGS_SECTION,
-			array( __( 'Email which send from.', 'woo-cart-abandonment-recovery' ) )
+			[ __( 'Email which send from.', 'woo-cart-abandonment-recovery' ) ]
 		);
 
 		add_settings_field(
 			'wcf_ca_reply_email',
 			__( '"Reply To" Address', 'woo-cart-abandonment-recovery' ),
-			array( $this, 'wcf_ca_reply_email_callback' ),
+			[ $this, 'wcf_ca_reply_email_callback' ],
 			WCF_CA_PAGE_NAME,
 			WCF_CA_EMAIL_SETTINGS_SECTION,
-			array( __( 'When a user clicks reply, which email address should that reply be sent to?', 'woo-cart-abandonment-recovery' ) )
+			[ __( 'When a user clicks reply, which email address should that reply be sent to?', 'woo-cart-abandonment-recovery' ) ]
 		);
 
 		register_setting(
@@ -229,13 +225,13 @@ class Cartflows_Ca_Settings {
 		register_setting(
 			WCF_CA_SETTINGS_OPTION_GROUP,
 			'wcf_ca_from_email',
-			array( $this, 'wcf_ca_from_email_validation' )
+			[ $this, 'wcf_ca_from_email_validation' ]
 		);
 
 		register_setting(
 			WCF_CA_SETTINGS_OPTION_GROUP,
 			'wcf_ca_reply_email',
-			array( $this, 'wcf_ca_reply_email_validation' )
+			[ $this, 'wcf_ca_reply_email_validation' ]
 		);
 		// End: Settings for email templates.
 		// Start: Settings for recovery report email templates.
@@ -243,26 +239,26 @@ class Cartflows_Ca_Settings {
 			WCF_CA_RECOVERY_EMAIL_SETTINGS_SECTION,
 			/* translators: %1$s: html start, %2$s: html end*/
 			sprintf( __( '%1$sRecovery Report Emails%2$s', 'woo-cart-abandonment-recovery' ), '<span id="wcf-ca-weekly-report-email-settings">', '<span/>' ),
-			array( $this, 'wcf_cart_abandonment_options_callback' ),
+			[ $this, 'wcf_cart_abandonment_options_callback' ],
 			WCF_CA_PAGE_NAME
 		);
 
 		add_settings_field(
 			'wcf_ca_send_recovery_report_emails_to_admin',
 			__( 'Send recovery report emails', 'woo-cart-abandonment-recovery' ),
-			array( $this, 'send_recovery_report_emails_to_admin' ),
+			[ $this, 'send_recovery_report_emails_to_admin' ],
 			WCF_CA_PAGE_NAME,
 			WCF_CA_RECOVERY_EMAIL_SETTINGS_SECTION,
-			array( __( 'Enable sending recovery report emails.', 'woo-cart-abandonment-recovery' ) )
+			[ __( 'Enable sending recovery report emails.', 'woo-cart-abandonment-recovery' ) ]
 		);
 
 		add_settings_field(
 			'wcf_ca_admin_email',
 			__( 'Email address', 'woo-cart-abandonment-recovery' ),
-			array( $this, 'admin_email_callback' ),
+			[ $this, 'admin_email_callback' ],
 			WCF_CA_PAGE_NAME,
 			WCF_CA_RECOVERY_EMAIL_SETTINGS_SECTION,
-			array( '<br><span>' . __( 'Email address to send recovery report emails. For multiple emails, add each email address per line.', 'woo-cart-abandonment-recovery' ) . '</span>' )
+			[ '<br><span>' . __( 'Email address to send recovery report emails. For multiple emails, add each email address per line.', 'woo-cart-abandonment-recovery' ) . '</span>' ]
 		);
 
 		register_setting(
@@ -273,26 +269,26 @@ class Cartflows_Ca_Settings {
 		register_setting(
 			WCF_CA_SETTINGS_OPTION_GROUP,
 			'wcf_ca_admin_email',
-			array( $this, 'wcf_ca_report_emails_validation' )
+			[ $this, 'wcf_ca_report_emails_validation' ]
 		);
 		// End: Settings for recovery report email templates.
 		// Start: Settings for coupon code.
 		add_settings_field(
 			'wcf_ca_zapier_tracking_status',
 			__( 'Enable Webhook', 'woo-cart-abandonment-recovery' ),
-			array( $this, 'wcf_ca_zapier_tracking_status_callback' ),
+			[ $this, 'wcf_ca_zapier_tracking_status_callback' ],
 			WCF_CA_PAGE_NAME,
 			WCF_CA_ZAPIER_SETTINGS_SECTION,
-			array( __( 'Allows you to trigger webhook automatically upon cart abandonment and recovery.', 'woo-cart-abandonment-recovery' ) )
+			[ __( 'Allows you to trigger webhook automatically upon cart abandonment and recovery.', 'woo-cart-abandonment-recovery' ) ]
 		);
 
 		add_settings_field(
 			'wcf_ca_zapier_cart_abandoned_webhook',
 			__( 'Webhook URL', 'woo-cart-abandonment-recovery' ),
-			array( $this, 'wcf_ca_zapier_cart_abandoned_webhook_callback' ),
+			[ $this, 'wcf_ca_zapier_cart_abandoned_webhook_callback' ],
 			WCF_CA_PAGE_NAME,
 			WCF_CA_ZAPIER_SETTINGS_SECTION,
-			array( '', 'woo-cart-abandonment-recovery' )
+			[ '', 'woo-cart-abandonment-recovery' ]
 		);
 
 		register_setting(
@@ -309,44 +305,44 @@ class Cartflows_Ca_Settings {
 			WCF_CA_ZAPIER_SETTINGS_SECTION,
 			/* translators: %1$s: html start, %2$s: html end*/
 			sprintf( __( '%1$sCoupon Code Settings%2$s', 'woo-cart-abandonment-recovery' ), '<span class="wcf-ca-webhook-coupon-settings">', '</span>' ),
-			array( $this, 'wcf_cart_abandonment_options_callback' ),
+			[ $this, 'wcf_cart_abandonment_options_callback' ],
 			WCF_CA_PAGE_NAME
 		);
 
 		add_settings_field(
 			'wcf_ca_coupon_code_status',
 			__( 'Create Coupon Code', 'woo-cart-abandonment-recovery' ),
-			array( $this, 'wcf_ca_coupon_code_status_callback' ),
+			[ $this, 'wcf_ca_coupon_code_status_callback' ],
 			WCF_CA_PAGE_NAME,
 			WCF_CA_ZAPIER_SETTINGS_SECTION,
-			array( __( 'Auto-create the special coupon for the abandoned cart to send over the emails.', 'woo-cart-abandonment-recovery' ) )
+			[ __( 'Auto-create the special coupon for the abandoned cart to send over the emails.', 'woo-cart-abandonment-recovery' ) ]
 		);
 
 		add_settings_field(
 			'wcf_ca_discount_type',
 			__( 'Discount Type', 'woo-cart-abandonment-recovery' ),
-			array( $this, 'wcf_ca_discount_type_callback' ),
+			[ $this, 'wcf_ca_discount_type_callback' ],
 			WCF_CA_PAGE_NAME,
 			WCF_CA_ZAPIER_SETTINGS_SECTION,
-			array( '', 'woo-cart-abandonment-recovery' )
+			[ '', 'woo-cart-abandonment-recovery' ]
 		);
 
 		add_settings_field(
 			'wcf_ca_coupon_amount',
 			__( 'Coupon Amount', 'woo-cart-abandonment-recovery' ),
-			array( $this, 'wcf_ca_coupon_amount_callback' ),
+			[ $this, 'wcf_ca_coupon_amount_callback' ],
 			WCF_CA_PAGE_NAME,
 			WCF_CA_ZAPIER_SETTINGS_SECTION,
-			array( '', 'woo-cart-abandonment-recovery' )
+			[ '', 'woo-cart-abandonment-recovery' ]
 		);
 
 		add_settings_field(
 			'wcf_ca_coupon_expiry',
 			__( 'Coupon Expires After', 'woo-cart-abandonment-recovery' ),
-			array( $this, 'wcf_ca_coupon_expiry_callback' ),
+			[ $this, 'wcf_ca_coupon_expiry_callback' ],
 			WCF_CA_PAGE_NAME,
 			WCF_CA_ZAPIER_SETTINGS_SECTION,
-			array( __( '<br/><br/> <span class="description"><strong>Note: </strong>. Enter zero (0) to restrict coupon from expiring.</span>', 'woo-cart-abandonment-recovery' ) )
+			[ __( '<br/><br/> <span class="description"><strong>Note: </strong>. Enter zero (0) to restrict coupon from expiring.</span>', 'woo-cart-abandonment-recovery' ) ]
 		);
 
 		register_setting(
@@ -371,7 +367,7 @@ class Cartflows_Ca_Settings {
 		register_setting(
 			WCF_CA_SETTINGS_OPTION_GROUP,
 			'wcf_ca_coupon_amount',
-			array( $this, 'wcf_ca_coupon_amount_validation' )
+			[ $this, 'wcf_ca_coupon_amount_validation' ]
 		);
 		// End: Settings for coupon code.
 		// Start: Settings for Zapier.
@@ -379,7 +375,7 @@ class Cartflows_Ca_Settings {
 			WCF_CA_ZAPIER_SETTINGS_SECTION,
 			/* translators: %1$s: html start, %2$s: html end*/
 			sprintf( __( '%1$sWebhook Settings%2$s', 'woo-cart-abandonment-recovery' ), '<span class="wcf-ca-webhook-settings">', '</span>' ),
-			array( $this, 'wcf_cart_abandonment_options_callback' ),
+			[ $this, 'wcf_cart_abandonment_options_callback' ],
 			WCF_CA_PAGE_NAME
 		);
 
@@ -389,26 +385,26 @@ class Cartflows_Ca_Settings {
 			WCF_CA_GDPR_SETTINGS_SECTION,
 			/* translators: %1$s: html start, %2$s: html end*/
 			sprintf( __( '%1$sGDPR Settings%2$s', 'woo-cart-abandonment-recovery' ), '<span class="wcf-ca-gdpr-settings">', '</span>' ),
-			array( $this, 'wcf_cart_abandonment_options_callback' ),
+			[ $this, 'wcf_cart_abandonment_options_callback' ],
 			WCF_CA_PAGE_NAME
 		);
 
 		add_settings_field(
 			'wcf_ca_gdpr_status',
 			__( 'Enable GDPR Integration', 'woo-cart-abandonment-recovery' ),
-			array( $this, 'wcf_ca_gdpr_status_callback' ),
+			[ $this, 'wcf_ca_gdpr_status_callback' ],
 			WCF_CA_PAGE_NAME,
 			WCF_CA_GDPR_SETTINGS_SECTION,
-			array( __( 'Ask confirmation from the user before tracking data. <br/><br/> <span class="description"><strong>Note:</strong> By checking this, it will show up confirmation text below the email id on checkout page.</span>', 'woo-cart-abandonment-recovery' ) )
+			[ __( 'Ask confirmation from the user before tracking data. <br/><br/> <span class="description"><strong>Note:</strong> By checking this, it will show up confirmation text below the email id on checkout page.</span>', 'woo-cart-abandonment-recovery' ) ]
 		);
 
 		add_settings_field(
 			'wcf_ca_gdpr_message',
 			__( 'GDPR Message', 'woo-cart-abandonment-recovery' ),
-			array( $this, 'wcf_ca_gdpr_message_callback' ),
+			[ $this, 'wcf_ca_gdpr_message_callback' ],
 			WCF_CA_PAGE_NAME,
 			WCF_CA_GDPR_SETTINGS_SECTION,
-			array( '', 'woo-cart-abandonment-recovery' )
+			[ '', 'woo-cart-abandonment-recovery' ]
 		);
 
 		register_setting(
@@ -427,7 +423,7 @@ class Cartflows_Ca_Settings {
 			WCF_CA_PLUGIN_SETTINGS_SECTION,
 			/* translators: %1$s: html start, %2$s: html end*/
 			sprintf( __( '%1$sPlugin Settings%2$s', 'woo-cart-abandonment-recovery' ), '<span class="wcf-ca-plugin-settings">', '</span>' ),
-			array( $this, 'wcf_cart_abandonment_options_callback' ),
+			[ $this, 'wcf_cart_abandonment_options_callback' ],
 			WCF_CA_PAGE_NAME
 		);
 		register_setting(
@@ -437,12 +433,26 @@ class Cartflows_Ca_Settings {
 		add_settings_field(
 			'wcf_ca_delete_plugin_data',
 			__( 'Delete Plugin Data', 'woo-cart-abandonment-recovery' ),
-			array( $this, 'wcf_ca_delete_plugin_data_callback' ),
+			[ $this, 'wcf_ca_delete_plugin_data_callback' ],
 			WCF_CA_PAGE_NAME,
 			WCF_CA_PLUGIN_SETTINGS_SECTION,
-			array( __( 'Enabling this option will delete the plugin data while deleting the Plugin.', 'woo-cart-abandonment-recovery' ) )
+			[ __( 'Enabling this option will delete the plugin data while deleting the Plugin.', 'woo-cart-abandonment-recovery' ) ]
 		);
 
+		register_setting(
+			WCF_CA_SETTINGS_OPTION_GROUP,
+			'cartflows_ca_use_new_ui'
+		);
+
+		// TODO: Remove this after new UI is enabled by default.
+		add_settings_field(
+			'cartflows_ca_use_new_ui',
+			__( 'Use New Interface', 'woo-cart-abandonment-recovery' ),
+			[ $this, 'cartflows_ca_use_new_ui_callback' ],
+			WCF_CA_PAGE_NAME,
+			WCF_CA_PLUGIN_SETTINGS_SECTION,
+			[ __( 'Experience the new design with updated layout and features.', 'woo-cart-abandonment-recovery' ) ]
+		);
 	}
 
 	/**
@@ -450,9 +460,10 @@ class Cartflows_Ca_Settings {
 	 *
 	 * @param array $args args.
 	 * @since 1.1.5
+	 * @since 1.3.3 Uses default meta class for fallback value
 	 */
-	public function send_recovery_report_emails_to_admin( $args ) {
-		$email_admin_on_recovery = get_option( 'wcf_ca_send_recovery_report_emails_to_admin', 'on' );
+	public function send_recovery_report_emails_to_admin( $args ): void {
+		$email_admin_on_recovery = wcf_ca()->utils->wcar_get_option( 'wcf_ca_send_recovery_report_emails_to_admin', 'on' );
 
 		$html = '';
 		printf(
@@ -468,9 +479,10 @@ class Cartflows_Ca_Settings {
 	 *
 	 * @param array $args args.
 	 * @since 1.1.5
+	 * @since 1.3.3 Uses default meta class for fallback value
 	 */
-	public function admin_email_callback( $args ) {
-		$wcf_ca_admin_email = get_option( 'wcf_ca_admin_email', get_option( 'admin_email' ) );
+	public function admin_email_callback( $args ): void {
+		$wcf_ca_admin_email = wcf_ca()->utils->wcar_get_option( 'wcf_ca_admin_email', get_option( 'admin_email' ) );
 
 		$html = '';
 		printf(
@@ -487,8 +499,8 @@ class Cartflows_Ca_Settings {
 	 * @param array $args args.
 	 * @since 1.2.13
 	 */
-	public function wcar_add_param_to_recovery_url( $args ) {
-		$wcf_ca_global_param = get_option( 'wcf_ca_global_param', false );
+	public function wcar_add_param_to_recovery_url( $args ): void {
+		$wcf_ca_global_param = wcf_ca()->utils->wcar_get_option( 'wcf_ca_global_param', false );
 		$html                = '';
 		printf(
 			'<textarea rows="4" cols="60" id="wcf_ca_global_param" name="wcf_ca_global_param" spellcheck="false" placeholder=" ' . __( 'Add UTM parameter per line.', 'woo-cart-abandonment-recovery' ) . '">%s</textarea>',
@@ -504,8 +516,8 @@ class Cartflows_Ca_Settings {
 	 * @param array $args args.
 	 * @since 1.1.5
 	 */
-	public function wcf_ca_delete_plugin_data_callback( $args ) {
-		$wcf_ca_delete_plugin_data = get_option( 'wcf_ca_delete_plugin_data' );
+	public function wcf_ca_delete_plugin_data_callback( $args ): void {
+		$wcf_ca_delete_plugin_data = wcf_ca()->utils->wcar_get_option( 'wcf_ca_delete_plugin_data' );
 		$html                      = '';
 		printf(
 			'<input type="checkbox" id="wcf_ca_delete_plugin_data" name="wcf_ca_delete_plugin_data" value="on"
@@ -515,6 +527,28 @@ class Cartflows_Ca_Settings {
 		echo wp_kses_post( $html );
 	}
 
+	/**
+	 * Callback for use new UI option.
+	 *
+	 * @param array $args args.
+	 * @since 1.3.2
+	 */
+	public function cartflows_ca_use_new_ui_callback( $args ): void {
+		$cartflows_ca_use_new_ui = wcf_ca()->utils->wcar_get_option( 'cartflows_ca_use_new_ui' );
+		$html                    = '';
+		
+		$button_text = 'on' === $cartflows_ca_use_new_ui ? __( 'New UI Enabled', 'woo-cart-abandonment-recovery' ) : __( 'Switch UI', 'woo-cart-abandonment-recovery' );
+
+		printf(
+			'<button type="button" id="cartflows_ca_use_new_ui" class="button-secondary" data-current-value="%s">%s</button>',
+			esc_attr( $cartflows_ca_use_new_ui ),
+			esc_html( $button_text )
+		);
+
+		$html .= '<br><br><span class="description"> ' . $args[0] . '</span>';
+		
+		echo wp_kses_post( $html );
+	}
 
 	/**
 	 * Callback for cart abandonment status.
@@ -522,8 +556,8 @@ class Cartflows_Ca_Settings {
 	 * @param array $args args.
 	 * @since 1.1.5
 	 */
-	public function wcf_ca_coupon_code_status_callback( $args ) {
-		$wcf_ca_coupon_code_status = get_option( 'wcf_ca_coupon_code_status' );
+	public function wcf_ca_coupon_code_status_callback( $args ): void {
+		$wcf_ca_coupon_code_status = wcf_ca()->utils->wcar_get_option( 'wcf_ca_coupon_code_status' );
 		$html                      = '';
 		printf(
 			'<input type="checkbox" id="wcf_ca_coupon_code_status" name="wcf_ca_coupon_code_status" value="on"
@@ -533,15 +567,14 @@ class Cartflows_Ca_Settings {
 		echo wp_kses_post( $html );
 	}
 
-
 	/**
 	 * Callback for cart abandonment cut off time.
 	 *
 	 * @param array $args args.
 	 * @since 1.1.5
 	 */
-	public function wcf_ca_zapier_cart_abandoned_webhook_callback( $args ) {
-		$wcf_ca_zapier_cart_abandoned_webhook = get_option( 'wcf_ca_zapier_cart_abandoned_webhook' );
+	public function wcf_ca_zapier_cart_abandoned_webhook_callback( $args ): void {
+		$wcf_ca_zapier_cart_abandoned_webhook = wcf_ca()->utils->wcar_get_option( 'wcf_ca_zapier_cart_abandoned_webhook' );
 		echo '<input type="text" class="wcf-ca-trigger-input" id="wcf_ca_zapier_cart_abandoned_webhook" name="wcf_ca_zapier_cart_abandoned_webhook" value="' . esc_attr( sanitize_text_field( $wcf_ca_zapier_cart_abandoned_webhook ) ) . '" />';
 		echo '<button id="wcf_ca_trigger_web_hook_abandoned_btn" type="button" class="button"> Trigger Sample </button>';
 		echo '<span style="margin-left: 10px;" id="wcf_ca_abandoned_btn_message"></span>';
@@ -549,15 +582,14 @@ class Cartflows_Ca_Settings {
 		echo wp_kses_post( $html );
 	}
 
-
 	/**
 	 * Callback for cart abandonment status.
 	 *
 	 * @param array $args args.
 	 * @since 1.1.5
 	 */
-	public function wcf_ca_zapier_tracking_status_callback( $args ) {
-		$wcf_ca_zapier_tracking_status = get_option( 'wcf_ca_zapier_tracking_status' );
+	public function wcf_ca_zapier_tracking_status_callback( $args ): void {
+		$wcf_ca_zapier_tracking_status = wcf_ca()->utils->wcar_get_option( 'wcf_ca_zapier_tracking_status' );
 
 		$html = '';
 		printf(
@@ -574,8 +606,8 @@ class Cartflows_Ca_Settings {
 	 * @param array $args args.
 	 * @since 1.1.5
 	 */
-	public function wcar_email_admin_on_recovery( $args ) {
-		$email_admin_on_recovery = get_option( 'wcar_email_admin_on_recovery' );
+	public function wcar_email_admin_on_recovery( $args ): void {
+		$email_admin_on_recovery = wcf_ca()->utils->wcar_get_option( 'wcar_email_admin_on_recovery' );
 
 		$html = '';
 		printf(
@@ -592,8 +624,8 @@ class Cartflows_Ca_Settings {
 	 * @param array $args args.
 	 * @since 1.1.5
 	 */
-	public function wcf_ca_coupon_amount_callback( $args ) {
-		$wcf_ca_coupon_amount = get_option( 'wcf_ca_coupon_amount' );
+	public function wcf_ca_coupon_amount_callback( $args ): void {
+		$wcf_ca_coupon_amount = wcf_ca()->utils->wcar_get_option( 'wcf_ca_coupon_amount' );
 		printf(
 			'<input type="number" class="wcf-ca-trigger-input wcf-ca-email-inputs" id="wcf_ca_coupon_amount" name="wcf_ca_coupon_amount" value="%s" />',
 			isset( $wcf_ca_coupon_amount ) ? esc_attr( $wcf_ca_coupon_amount ) : ''
@@ -608,23 +640,23 @@ class Cartflows_Ca_Settings {
 	 * @param array $args args.
 	 * @since 1.1.5
 	 */
-	public function wcf_ca_coupon_expiry_callback( $args ) {
-		$wcf_ca_coupon_expiry = intval( get_option( 'wcf_ca_coupon_expiry' ) );
+	public function wcf_ca_coupon_expiry_callback( $args ): void {
+		$wcf_ca_coupon_expiry = intval( wcf_ca()->utils->wcar_get_option( 'wcf_ca_coupon_expiry' ) );
 		printf(
 			'<input type="number" min="0" class="wcf-ca-trigger-input wcf-ca-coupon-inputs" id="wcf_ca_coupon_expiry" name="wcf_ca_coupon_expiry" value="%s" autocomplete="off" />',
 			isset( $wcf_ca_coupon_expiry ) ? esc_attr( $wcf_ca_coupon_expiry ) : ''
 		);
 
-		$coupon_expiry_unit = get_option( 'wcf_ca_coupon_expiry_unit' );
-		$items              = array(
+		$coupon_expiry_unit = wcf_ca()->utils->wcar_get_option( 'wcf_ca_coupon_expiry_unit' );
+		$items              = [
 			'hours' => __( 'Hour(s)', 'woo-cart-abandonment-recovery' ),
 			'days'  => __( 'Day(s)', 'woo-cart-abandonment-recovery' ),
-		);
+		];
 		echo "<select id='wcf_ca_coupon_expiry_unit' name='wcf_ca_coupon_expiry_unit'>";
 		foreach ( $items as $key => $item ) {
-			$selected = ( $coupon_expiry_unit === $key ) ? 'selected="selected"' : '';
+			$selected = $coupon_expiry_unit === $key ? 'selected="selected"' : '';
 			// Can't use wp_kses_post as it does not allow option tag. Escaping attributes and content.
-			echo '<option value=' . esc_attr( $key ) . " $selected>" . esc_html( $item ) . '</option>'; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo '<option value=' . esc_attr( $key ) . " {$selected}>" . esc_html( $item ) . '</option>'; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 		echo '</select>';
 
@@ -632,16 +664,14 @@ class Cartflows_Ca_Settings {
 		echo wp_kses_post( $html );
 	}
 
-
-
 	/**
 	 * Callback for cart abandonment cut off time.
 	 *
 	 * @param array $args args.
 	 * @since 1.1.5
 	 */
-	public function wcf_ca_gdpr_message_callback( $args ) {
-		$wcf_ca_gdpr_message = get_option( 'wcf_ca_gdpr_message' );
+	public function wcf_ca_gdpr_message_callback( $args ): void {
+		$wcf_ca_gdpr_message = wcf_ca()->utils->wcar_get_option( 'wcf_ca_gdpr_message' );
 
 		printf(
 			'<textarea rows="2" cols="60" id="wcf_ca_gdpr_message" name="wcf_ca_gdpr_message" spellcheck="false">%s</textarea>',
@@ -657,17 +687,17 @@ class Cartflows_Ca_Settings {
 	 * @param array $args args.
 	 * @since 1.1.5
 	 */
-	public function wcf_ca_discount_type_callback( $args ) {
+	public function wcf_ca_discount_type_callback( $args ): void {
 
-		$discount_type = get_option( 'wcf_ca_discount_type' );
-		$items         = array(
+		$discount_type = wcf_ca()->utils->wcar_get_option( 'wcf_ca_discount_type' );
+		$items         = [
 			'percent'    => __( 'Percentage discount', 'woo-cart-abandonment-recovery' ),
 			'fixed_cart' => __( 'Fixed cart discount', 'woo-cart-abandonment-recovery' ),
-		);
+		];
 		echo "<select id='wcf_ca_discount_type' name='wcf_ca_discount_type'>";
 		foreach ( $items as $key => $item ) {
-			$selected = ( $discount_type === $key ) ? 'selected="selected"' : '';
-			echo '<option value= ' . esc_attr( $key ) . " $selected>" . esc_html( $item ) . '</option>'; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			$selected = $discount_type === $key ? 'selected="selected"' : '';
+			echo '<option value= ' . esc_attr( $key ) . " {$selected}>" . esc_html( $item ) . '</option>'; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 		echo '</select>';
 	}
@@ -698,10 +728,9 @@ class Cartflows_Ca_Settings {
 	 *
 	 * @since 1.1.5
 	 */
-	public function wcf_cart_abandonment_options_callback() {
+	public function wcf_cart_abandonment_options_callback(): void {
 		echo '<hr/>';
 	}
-
 
 	/**
 	 * Callback for cart abandonment status.
@@ -709,8 +738,8 @@ class Cartflows_Ca_Settings {
 	 * @param array $args args.
 	 * @since 1.1.5
 	 */
-	public function wcf_ca_status_callback( $args ) {
-		$wcf_ca_status = get_option( 'wcf_ca_status' );
+	public function wcf_ca_status_callback( $args ): void {
+		$wcf_ca_status = wcf_ca()->utils->wcar_get_option( 'wcf_ca_status' );
 		$html          = '';
 		printf(
 			'<input type="checkbox" id="wcf_ca_status" name="wcf_ca_status" value="on"
@@ -725,9 +754,11 @@ class Cartflows_Ca_Settings {
 	 *
 	 * @param array $args args.
 	 * @since 1.1.5
+	 * @since 1.3.3 Uses default meta class for fallback value
 	 */
-	public static function wcf_ca_cron_run_time_callback( $args ) {
-		$wcf_ca_cron_run_time = apply_filters( 'woo_ca_update_order_cron_interval', get_option( 'wcf_ca_cron_run_time', 20 ) );
+	public static function wcf_ca_cron_run_time_callback( $args ): void {
+		$wcf_ca_cron_run_time = apply_filters( 'woo_ca_update_order_cron_interval', wcf_ca()->utils->wcar_get_option( 'wcf_ca_cron_run_time', 20 ) );
+
 		printf(
 			'<input class="wcf-ca-trigger-input wcf-ca-email-inputs" type="number" min="10" id="wcf_ca_cron_run_time" name="wcf_ca_cron_run_time" value="%s" />',
 			esc_attr( $wcf_ca_cron_run_time )
@@ -737,34 +768,33 @@ class Cartflows_Ca_Settings {
 		echo wp_kses_post( $html );
 	}
 
-
 	/**
 	 * Callback for ignore users from tracking cart.
 	 *
 	 * @param array $args args.
 	 * @since 1.1.5
 	 */
-	public function wcf_ca_ignore_users_callback( $args ) {
+	public function wcf_ca_ignore_users_callback( $args ): void {
 
-		$wcf_ca_ignore_users = get_option( 'wcf_ca_ignore_users' );
+		$wcf_ca_ignore_users = wcf_ca()->utils->wcar_get_option( 'wcf_ca_ignore_users' );
 		$html                = '';
 		$roles_obj           = new WP_Roles();
 		$roles_names_array   = $roles_obj->get_names();
-		$roles_names_array   = array_diff( $roles_names_array, array( 'Customer' ) );
+		$roles_names_array   = array_diff( $roles_names_array, [ 'Customer' ] );
 		?>
 		<p class="wcf_ca_ignore_users" name="wcf_ca_ignore_users" multiple="multiple">
 				<?php
-				foreach ( $roles_names_array as $role_name ) {
+				foreach ( $roles_names_array as $role_key => $role_name ) {
 					?>
 					<input type="checkbox" name="wcf_ca_ignore_users[]"
 					<?php
 					if ( ! empty( $wcf_ca_ignore_users ) ) {
 						foreach ( $wcf_ca_ignore_users as $user ) {
-							checked( $user, $role_name );
+							checked( $user, $role_key );
 						}
 					}
 					?>
-					value="<?php echo esc_attr( $role_name ); ?>">
+					value="<?php echo esc_attr( $role_key ); ?>">
 					<?php
 					echo esc_attr( $role_name );
 					echo '<br> ';
@@ -782,14 +812,14 @@ class Cartflows_Ca_Settings {
 	 * @param array $args args.
 	 * @since 1.1.5
 	 */
-	public function wcf_ca_exclude_orders_callback( $args ) {
-		$wcf_ca_excludes_orders = get_option( 'wcf_ca_excludes_orders', array() );
+	public function wcf_ca_exclude_orders_callback( $args ): void {
+		$wcf_ca_excludes_orders = wcf_ca()->utils->wcar_get_option( 'wcf_ca_excludes_orders', [] );
 
 		$html             = '';
 		$order_status     = wc_get_order_statuses();
 		$new_order_status = str_replace( 'wc-', '', array_keys( $order_status ) );
 		$order_status     = array_combine( $new_order_status, $order_status );
-		$order_status     = \array_diff( $order_status, array( 'Refunded', 'Draft', 'Cancelled' ) );
+		$order_status     = \array_diff( $order_status, [ 'Refunded', 'Draft', 'Cancelled' ] );
 		?>
 		<p class="wcf-ca-excludes-orders" name="wcf-ca-excludes-orders">
 			<?php
@@ -818,8 +848,8 @@ class Cartflows_Ca_Settings {
 	 *
 	 * @param array $args args.
 	 */
-	public function wcf_ca_auto_delete_coupons_callback( $args ) {
-		$wcf_ca_auto_delete_coupons = get_option( 'wcf_ca_auto_delete_coupons' );
+	public function wcf_ca_auto_delete_coupons_callback( $args ): void {
+		$wcf_ca_auto_delete_coupons = wcf_ca()->utils->wcar_get_option( 'wcf_ca_auto_delete_coupons' );
 		$html                       = '';
 		printf(
 			'<input type="checkbox" id="wcf_ca_auto_delete_coupons" name="wcf_ca_auto_delete_coupons" value="on"
@@ -834,7 +864,7 @@ class Cartflows_Ca_Settings {
 	 *
 	 * @param array $args args.
 	 */
-	public function wcf_ca_delete_coupons_callback( $args ) {
+	public function wcf_ca_delete_coupons_callback( $args ): void {
 		?>
 
 		<input type="button" class="button-secondary" id="wcf_ca_delete_coupons" value="<?php esc_attr_e( 'Delete', 'woo-cart-abandonment-recovery' ); ?>" >
@@ -852,8 +882,8 @@ class Cartflows_Ca_Settings {
 	 * @param array $args args.
 	 * @since 1.1.5
 	 */
-	public function wcf_ca_gdpr_status_callback( $args ) {
-		$wcf_ca_gdpr_status = get_option( 'wcf_ca_gdpr_status' );
+	public function wcf_ca_gdpr_status_callback( $args ): void {
+		$wcf_ca_gdpr_status = wcf_ca()->utils->wcar_get_option( 'wcf_ca_gdpr_status' );
 		$html               = '';
 		printf(
 			'<input type="checkbox" id="wcf_ca_gdpr_status" name="wcf_ca_gdpr_status" value="on"
@@ -868,8 +898,8 @@ class Cartflows_Ca_Settings {
 	 *
 	 * @param array $args Arguments.
 	 */
-	public static function wcf_ca_from_name_callback( $args ) {
-		$wcf_ca_from_name = get_option( 'wcf_ca_from_name' );
+	public static function wcf_ca_from_name_callback( $args ): void {
+		$wcf_ca_from_name = wcf_ca()->utils->wcar_get_option( 'wcf_ca_from_name' );
 		printf(
 			'<input class="wcf-ca-trigger-input wcf-ca-email-inputs" type="text" id="wcf_ca_from_name" name="wcf_ca_from_name" value="%s" />',
 			isset( $wcf_ca_from_name ) ? esc_attr( $wcf_ca_from_name ) : ''
@@ -883,8 +913,8 @@ class Cartflows_Ca_Settings {
 	 *
 	 * @param array $args Arguments.
 	 */
-	public static function wcf_ca_from_email_callback( $args ) {
-		$wcf_ca_from_email = get_option( 'wcf_ca_from_email' );
+	public static function wcf_ca_from_email_callback( $args ): void {
+		$wcf_ca_from_email = wcf_ca()->utils->wcar_get_option( 'wcf_ca_from_email' );
 		printf(
 			'<input class="wcf-ca-trigger-input wcf-ca-email-inputs" type="text" id="wcf_ca_from_email" name="wcf_ca_from_email" value="%s" />',
 			isset( $wcf_ca_from_email ) ? esc_attr( $wcf_ca_from_email ) : ''
@@ -899,8 +929,8 @@ class Cartflows_Ca_Settings {
 	 * @param array $args Arguments.
 	 * @since 3.5
 	 */
-	public static function wcf_ca_reply_email_callback( $args ) {
-		$wcf_ca_reply_email = get_option( 'wcf_ca_reply_email' );
+	public static function wcf_ca_reply_email_callback( $args ): void {
+		$wcf_ca_reply_email = wcf_ca()->utils->wcar_get_option( 'wcf_ca_reply_email' );
 		printf(
 			'<input class="wcf-ca-trigger-input wcf-ca-email-inputs" type="text" id="wcf_ca_reply_email" name="wcf_ca_reply_email" value="%s" />',
 			isset( $wcf_ca_reply_email ) ? esc_attr( $wcf_ca_reply_email ) : ''
@@ -909,7 +939,6 @@ class Cartflows_Ca_Settings {
 		$html = '<label for="wcf_ca_reply_email"> ' . $args[0] . '</label>';
 		echo wp_kses_post( $html );
 	}
-
 
 	/**
 	 * Validation for email.
@@ -922,7 +951,7 @@ class Cartflows_Ca_Settings {
 		if ( ! empty( $input ) ) {
 
 			$admin_emails = preg_split( "/[\f\r\n]+/", $input );
-			$emails_ids   = array();
+			$emails_ids   = [];
 
 			foreach ( $admin_emails as $admin_email ) {
 				if ( is_email( $admin_email ) ) {
@@ -930,9 +959,7 @@ class Cartflows_Ca_Settings {
 				}
 			}
 
-			$emails_ids = implode( "\n", $emails_ids );
-
-			return $emails_ids;
+			return implode( "\n", $emails_ids );
 		}
 
 		return $input;
@@ -983,9 +1010,6 @@ class Cartflows_Ca_Settings {
 		}
 		return self::$instance;
 	}
-
-
-
 
 }
 Cartflows_Ca_Settings::get_instance();

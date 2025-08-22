@@ -42,6 +42,8 @@ class Meow_MWAI_Query_Base implements JsonSerializable {
   // Seem to be only used by the Assistants, to get the current thread/discussion.
   // Maybe we should try to move this to the assistant class, or use it as ExtraParams.
   public ?string $botId = null;
+  // Identifier for ad-hoc/custom chatbots (distinct from registered botId)
+  public ?string $customId = null;
   
   // Embeddings configuration
   public ?string $embeddingsEnvId = null;
@@ -86,6 +88,7 @@ class Meow_MWAI_Query_Base implements JsonSerializable {
         'envId' => $this->envId,
         'scope' => $this->scope,
         'session' => $this->session,
+        'customId' => $this->customId,
         'maxMessages' => $this->maxMessages,
       ]
     ];
@@ -259,6 +262,14 @@ class Meow_MWAI_Query_Base implements JsonSerializable {
   public function set_bot_id( string $botId ) {
     $this->botId = $botId;
   }
+
+  /**
+  * The custom ID to use for ad-hoc chatbots (shortcode/overrides).
+  * @param string $customId The custom chatbot ID.
+  */
+  public function set_custom_id( string $customId ) {
+    $this->customId = $customId;
+  }
   
   /**
   * The embeddings environment ID to use.
@@ -392,6 +403,9 @@ class Meow_MWAI_Query_Base implements JsonSerializable {
     }
     if ( !empty( $params['botId'] ) ) {
       $this->set_bot_id( $params['botId'] );
+    }
+    if ( !empty( $params['customId'] ) ) {
+      $this->set_custom_id( $params['customId'] );
     }
     if ( !empty( $params['envId'] ) ) {
       $this->set_env_id( $params['envId'] );

@@ -10,76 +10,88 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-<table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-7" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
-	<tbody>
-		<tr>
-			<td>
-				<table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 600px;" width="600">
-					<tbody>
-						<tr>
-							<td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 5px; padding-bottom: 5px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%">
-								<table border="0" cellpadding="20" cellspacing="0" class="social_block" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
-									<tr>
-										<td>
-											<table align="center" border="0" cellpadding="0" cellspacing="0" class="social-table" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="138px">
-												<tr>
-													<td style="padding:0 7px 0 7px;"><a href="https://www.facebook.com/groups/cartflows/" target="_blank"><img alt="Facebook" height="32" src="<?php echo esc_url( $facebook_icon ); ?>" style="display: block; height: auto; border: 0;" title="facebook" width="32" /></a>
-													</td>
-													<td style="padding:0 7px 0 7px;"><a href="https://twitter.com/cartflows" target="_blank"><img alt="Twitter" height="32" src="<?php echo esc_url( $twitter_icon ); ?>" style="display: block; height: auto; border: 0;" title="twitter" width="32" /></a>
-													</td>
-													<td style="padding:0 7px 0 7px;"><a href="https://www.youtube.com/channel/UCEdXT5pEI_Vbd5te5v7sOpQ" target="_blank"><img alt="YouTube" height="32" src="<?php echo esc_url( $youtube_icon ); ?>" style="display: block; height: auto; border: 0;" title="YouTube" width="32" /></a>
-													</td>
-												</tr>
+
+<tbody data-block-id="13" class="mceWrapper">
+	<tr>
+		<td style="background-color:transparent;padding-bottom:40px" valign="top" align="center" class="mceSectionFooter">
+			<table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:660px" role="presentation">
+				<tbody>
+					<tr>
+						<td style="background-color:#ffffff" valign="top" class="mceWrapperInner">
+							<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" data-block-id="12">
+								<tbody>
+									<tr class="mceRow">
+										<td style="background-position:center;background-repeat:no-repeat;background-size:cover" valign="top">
+											<table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
+												<tbody>
+													<tr>
+														<td style="padding-top:0;padding-bottom:0" valign="top" class="mceColumn" id="mceColumnId--12" data-block-id="-12" colspan="12" width="100%">
+															<table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
+																<tbody>
+																	<tr>
+																		<td style="background-color:#fef1ec;padding-top:8px;padding-bottom:8px;padding-right:8px;padding-left:8px;border:0;border-radius:0" valign="top" id="b11">
+																			<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" data-block-id="11" id="section_5b9b2ccd26f3f4ef51984d37a8a6df4e" class="mceFooterSection">
+																				<tbody>
+																					<tr class="mceRow">
+																						<td style="background-color:#fef1ec;background-position:center;background-repeat:no-repeat;background-size:cover;padding-top:0px;padding-bottom:0px" valign="top">
+																							<table border="0" cellpadding="0" cellspacing="12" width="100%" role="presentation">
+																								<tbody>
+																									<tr>
+																										<td style="padding-top:0;padding-bottom:0" valign="top" class="mceColumn" id="mceColumnId--3" data-block-id="-3" colspan="12" width="100%">
+																											<table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation">
+																												<tbody>
+																													<tr>
+																														<td style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;border:0;border-radius:0" valign="top" align="center" id="b9">
+																															<table width="100%" style="border:0;border-radius:0;border-collapse:separate">
+																																<tbody>
+																																	<tr>
+																																		<td style="padding-left:16px;padding-right:16px;padding-top:12px;padding-bottom:12px" class="mceTextBlockContainer">
+																																			<div data-block-id="9" class="mceText" id="d9" style="display:inline-block;width:100%">
+																																				<p class="last-child">
+																																					<span style="font-size: 11px"><?php echo esc_html__( 'This email was auto-generated and sent from ', 'woo-cart-abandonment-recovery' ); ?></span>
+																																					<a href="<?php echo esc_url( home_url() ); ?>" target="_blank">
+																																						<span style="font-size: 11px">
+																																							<?php echo esc_html( wp_specialchars_decode( get_bloginfo( 'name' ) ) ); ?>
+																																						</span>
+																																					</a>
+																																					<span style="font-size: 11px">.<br></span>
+																																					<a href="<?php echo esc_url( $unsubscribe_link ); ?>"><span style="font-size: 11px"><?php echo esc_html__( 'Unsubscribe', 'woo-cart-abandonment-recovery' ); ?></span></a>
+																																				</p>
+																																			</div>
+																																		</td>
+																																	</tr>
+																																</tbody>
+																															</table>
+																														</td>
+																													</tr>
+																												</tbody>
+																											</table>
+																										</td>
+																									</tr>
+																								</tbody>
+																							</table>
+																						</td>
+																					</tr>
+																				</tbody>
+																			</table>
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+														</td>
+													</tr>
+												</tbody>
 											</table>
 										</td>
 									</tr>
-								</table>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</td>
-		</tr>
-	</tbody>
-</table>
-<table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-8" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
-	<tbody>
-		<tr>
-			<td>
-				<table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 600px;" width="600">
-					<tbody>
-						<tr>
-							<td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; vertical-align: top; padding-top: 5px; padding-bottom: 5px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%">
-								<table border="0" cellpadding="10" cellspacing="0" class="text_block" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
-									<tr>
-										<td>
-											<div style="font-family: sans-serif">
-												<div style="font-size: 14px; mso-line-height-alt: 16.8px; color: #393d47; line-height: 1.2; font-family: Arial, Helvetica Neue, Helvetica, sans-serif;">
-													<p style="margin: 0; text-align: center;">
-													<?php
-														echo wp_kses_post(
-															sprintf( /* translators: %1$s - link to a site; */
-																__( 'This email was auto-generated and sent from %1$s.', 'woo-cart-abandonment-recovery' ),
-																'<a href="' . esc_url( home_url() ) . '" style="text-decoration:none;" >' . esc_html( wp_specialchars_decode( get_bloginfo( 'name' ) ) ) . '</a>'
-															)
-														);
-														?>
-													</p>
-													<p style="margin: 0; text-align: center; mso-line-height-alt: 16.8px;">
-														 </p>
-													<p style="margin: 0; text-align: center;"><a href="<?php echo esc_url( $unsubscribe_link ); ?>" rel="noopener" style="color: #8a3b8f;" target="_blank"><?php echo esc_html__( 'Unsubscribe', 'woo-cart-abandonment-recovery' ); ?></a></p>
-												</div>
-											</div>
-										</td>
-									</tr>
-								</table>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</td>
-		</tr>
-	</tbody>
-</table>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</td>
+	</tr>
+</tbody>
 
 <?php

@@ -3,7 +3,7 @@ defined( 'ABSPATH' ) || exit( 'No direct script access allowed' );
 
 /**
  * Plugin Name: WP-Parsidate
- * Version: 5.1.7
+ * Version: 5.1.8
  * Plugin URI: https://wp-parsi.com/support/
  * Description: Persian package for WordPress, Adds full RTL and Shamsi (Jalali) support for: posts, comments, pages, archives, search, categories, permalinks and all admin sections and TinyMce editor, lists, quick editor. This package has Jalali archive widget.
  * Author: WP-Parsi Team
@@ -57,7 +57,7 @@ final class WP_Parsidate {
 	public static $instance = null;
 
 	private function __construct() {
-		add_action( 'after_setup_theme', array( $this, 'load_plugin_textdomain' ) );
+		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
 
 		$this->define_const();
 		$this->include_files();
@@ -77,6 +77,8 @@ final class WP_Parsidate {
 		add_action( 'widgets_init', array( $this, 'register_widget' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'wpp_load_vazir_font_in_admin_area' ) );
 		add_action( 'wpp_jalali_datepicker_enqueued', array( $this, 'wpp_localize_months_name' ) );
+
+        do_action('wpp_init');
 	}
 
 	/**
@@ -99,7 +101,7 @@ final class WP_Parsidate {
 		}
 
 		if ( ! defined( 'WP_PARSI_VER' ) ) {
-			define( 'WP_PARSI_VER', '5.1.7' );
+			define( 'WP_PARSI_VER', '5.1.8' );
     }
 	}
 
@@ -148,6 +150,10 @@ final class WP_Parsidate {
 		if ( class_exists( '\Elementor\Core\Editor\Editor' ) ) {
 			$files[] = 'plugins/elementor';
 		}
+
+        if ( class_exists( '\RankMath' ) ) {
+            $files[] = 'plugins/rank-math';
+        }
 
 		$files[] = 'plugins/disable';
 

@@ -28,15 +28,6 @@ if ( get_locale() === 'fa_IR' && wpp_is_active( 'persian_date' ) ) {
 		add_filter( 'wp_date', 'wpp_fix_i18n', 10, 4 );
 	}
 
-	if ( WP_Parsidate::is_plugin_activated( 'seo-by-rank-math/rank-math.php' ) ) {
-		add_filter( "rank_math/opengraph/facebook/article_published_time", function ( $content ) {
-			return gregdate( 'c', eng_number( $content ) );
-		} );
-
-		add_filter( "rank_math/opengraph/facebook/article_modified_time", function ( $content ) {
-			return gregdate( 'c', eng_number( $content ) );
-		} );
-	}
 }
 
 /**
@@ -58,7 +49,9 @@ function wpp_fix_post_date( $time, $format = '', $post = null ) {
 	if ( ! $post ) {
 		return $time;
 	}
-
+	if (function_exists( 'pll_current_language' ) && pll_current_language() !== "fa"  ) {
+		return $time;
+	}
 	if ( empty( $format ) ) {
 		$format = get_option( 'date_format' );
 	}
@@ -168,24 +161,24 @@ function wpp_fix_comment_time( $time, $format = '' ) {
 /**
  * Fixes comment date and returns in Jalali format
  *
- * @param string $time Comment time
- * @param string $format Date format
- *
- * @return          string Formatted date
+ * @param string|int $comment_date Formatted date string or Unix timestamp.
+ * @param string $format PHP date format.
+ * @param \WP_Comment $comment The comment object.
  */
-function wpp_fix_comment_date( $time, $format = '', $comment ) {
-	if ( empty( $comment ) ) {
-		return $time;
-	}
+function wpp_fix_comment_date($comment_date, $format, $comment)
+{
+    if (empty($comment)) {
+        return $comment_date;
+    }
 
-	if ( empty( $format ) ) {
-		$format = get_option( 'date_format' );
-	}
-	if ( 'c' === $format || ! disable_wpp() ) {
-		return date( $format, strtotime( $comment->comment_date ) );
-	}
+    if (empty($format)) {
+        $format = get_option('date_format');
+    }
+    if ('c' === $format || !disable_wpp()) {
+        return date($format, strtotime($comment->comment_date));
+    }
 
-	return parsidate( $format, $comment->comment_date, ! wpp_is_active( 'conv_dates' ) ? 'eng' : 'per' );
+    return parsidate($format, $comment->comment_date, !wpp_is_active('conv_dates') ? 'eng' : 'per');
 }
 
 /**
@@ -203,7 +196,9 @@ function wpp_fix_comment_date( $time, $format = '', $comment ) {
 function wpp_fix_i18n( $date, $format, $timestamp, $gmt ) {
 	global $post;
 
-	//$post_id = ( is_object( $post ) && isset( $post->ID ) ) ? $post->ID : null;
+	if((function_exists( 'pll_current_language' ) && pll_current_language() !== "fa" )){
+		return $date;
+	}
 
 	if ( ! disable_wpp() ) {
 		return $format;
@@ -270,7 +265,15 @@ function wpp_fix_media_view_settings($settings, $post)
     if (isset($settings['months']) and !empty($settings['months'])) {
         for ($i = 0; $i < count($settings['months']); $i++) {
             if (isset($settings['months'][$i]->year) and isset($settings['months'][$i]->month)) {
-                $settings['months'][$i]->text = parsidate("F Y", $settings['months'][$i]->year . '-' . $settings['months'][$i]->month, $wpp_settings['conv_dates'] == 'disable' ? 'eng' : 'per');
+                $conv_dates_status = 'eng';
+                if (isset($wpp_settings['conv_dates']) && $wpp_settings['conv_dates'] != 'disable') {
+                    $conv_dates_status = 'per';
+                }
+                $settings['months'][$i]->text = parsidate(
+                    "F Y",
+                    $settings['months'][$i]->year . '-' . $settings['months'][$i]->month,
+                    $conv_dates_status
+                );
             }
         }
     }

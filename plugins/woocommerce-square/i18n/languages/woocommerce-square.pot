@@ -2,10 +2,10 @@
 # This file is distributed under the GPL-3.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce Square 4.9.7\n"
+"Project-Id-Version: WooCommerce Square 4.9.8\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/woocommerce-square\n"
-"POT-Creation-Date: 2025-07-29 02:42:16+00:00\n"
+"POT-Creation-Date: 2025-08-21 16:22:02+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1094,19 +1094,19 @@ msgstr ""
 #: includes/Framework/PaymentGateway/ApplePay/Payment_Gateway_Apple_Pay.php:548
 #: includes/Gateway/API/Requests/Orders.php:319
 #: includes/Gateway/Cash_App_Pay_Gateway.php:852
-#: includes/Gateway/Digital_Wallet.php:614
+#: includes/Gateway/Digital_Wallet.php:615
 msgid "Discount"
 msgstr ""
 
 #: includes/Framework/PaymentGateway/ApplePay/Payment_Gateway_Apple_Pay.php:558
 #: includes/Gateway/Cash_App_Pay_Gateway.php:836
-#: includes/Gateway/Digital_Wallet.php:598
+#: includes/Gateway/Digital_Wallet.php:599
 msgid "Shipping"
 msgstr ""
 
 #: includes/Framework/PaymentGateway/ApplePay/Payment_Gateway_Apple_Pay.php:568
 #: includes/Gateway/Cash_App_Pay_Gateway.php:860
-#: includes/Gateway/Digital_Wallet.php:622
+#: includes/Gateway/Digital_Wallet.php:623
 msgid "Fees"
 msgstr ""
 
@@ -2063,38 +2063,38 @@ msgstr ""
 msgid "Expiry Date"
 msgstr ""
 
-#: includes/Framework/Plugin.php:229
+#: includes/Framework/Plugin.php:225
 #. translators: Placeholders: %s - plugin name
 msgid "You cannot clone instances of %s."
 msgstr ""
 
-#: includes/Framework/Plugin.php:240
+#: includes/Framework/Plugin.php:236
 #. translators: Placeholders: %s - plugin name
 msgid "You cannot unserialize instances of %s."
 msgstr ""
 
-#: includes/Framework/Plugin.php:373
+#: includes/Framework/Plugin.php:307
 #. translators: Docs as in Documentation
 msgid "Docs"
 msgstr ""
 
-#: includes/Framework/Plugin.php:465
+#: includes/Framework/Plugin.php:399
 #. translators: Placeholders: %1$s = Current PHP setting value, %2$s = Minimum
 #. required PHP setting value
 msgid "%1$s - A minimum of %2$s is required."
 msgstr ""
 
-#: includes/Framework/Plugin.php:475
+#: includes/Framework/Plugin.php:409
 #. translators: Placeholders: %1$s = Current PHP setting value set as, %2$s =
 #. Minimum required PHP setting value
 msgid "Set as %1$s - %2$s is required."
 msgstr ""
 
-#: includes/Framework/Plugin.php:660
+#: includes/Framework/Plugin.php:594
 msgid "Configure"
 msgstr ""
 
-#: includes/Framework/Plugin.php:682
+#: includes/Framework/Plugin.php:616
 msgid "Setup Wizard"
 msgstr ""
 
@@ -2306,8 +2306,8 @@ msgid "via WooCommerce"
 msgstr ""
 
 #: includes/Gateway/Cash_App_Pay_Gateway.php:844
-#: includes/Gateway/Digital_Wallet.php:473
-#: includes/Gateway/Digital_Wallet.php:606
+#: includes/Gateway/Digital_Wallet.php:474
+#: includes/Gateway/Digital_Wallet.php:607
 msgid "Tax"
 msgstr ""
 
@@ -2363,24 +2363,24 @@ msgstr ""
 msgid "You cannot purchase \"%1$s\" because it is currently not available."
 msgstr ""
 
-#: includes/Gateway/Digital_Wallet.php:531
+#: includes/Gateway/Digital_Wallet.php:532
 msgid "This payment method cannot be used for multiple shipments."
 msgstr ""
 
-#: includes/Gateway/Digital_Wallet.php:542
+#: includes/Gateway/Digital_Wallet.php:543
 msgid "Pending"
 msgstr ""
 
-#: includes/Gateway/Digital_Wallet.php:661
+#: includes/Gateway/Digital_Wallet.php:662
 #. translators: Context (product, cart, checkout or page)
 msgid "Empty payment request data for %s."
 msgstr ""
 
-#: includes/Gateway/Digital_Wallet.php:998
+#: includes/Gateway/Digital_Wallet.php:999
 msgid "Empty cart"
 msgstr ""
 
-#: includes/Gateway/Digital_Wallet.php:1133
+#: includes/Gateway/Digital_Wallet.php:1134
 msgid "Unable to verify domain with Apple Pay - missing access token."
 msgstr ""
 
@@ -3381,12 +3381,12 @@ msgctxt "payment method type"
 msgid "Account"
 msgstr ""
 
-#: includes/Framework/Plugin.php:378
+#: includes/Framework/Plugin.php:312
 msgctxt "noun"
 msgid "Support"
 msgstr ""
 
-#: includes/Framework/Plugin.php:383
+#: includes/Framework/Plugin.php:317
 msgctxt "verb"
 msgid "Review"
 msgstr ""

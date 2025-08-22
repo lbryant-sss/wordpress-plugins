@@ -13,15 +13,37 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Cart abandonment tracking class.
  */
 class Cartflows_Ca_Setting_Functions {
-
-
-
 	/**
 	 * Member Variable
 	 *
 	 * @var object instance
 	 */
 	private static $instance;
+
+	/**
+	 *  Constructor function that initializes required actions and hooks.
+	 */
+	public function __construct() {
+
+		$page = Cartflows_Ca_Helper::get_instance()->sanitize_text_filter( 'page', 'GET' );
+
+		if ( WCF_CA_PAGE_NAME === $page ) {
+			// Adding filter to add new button to add custom fields.
+			add_filter( 'mce_buttons', [ $this, 'wcf_filter_mce_button' ] );
+			add_filter( 'mce_external_plugins', [ $this, 'wcf_filter_mce_plugin' ], 9 );
+		}
+
+		// GDPR actions.
+		add_action( 'wp_ajax_cartflows_skip_cart_tracking_gdpr', [ $this, 'skip_cart_tracking_by_gdpr' ] );
+		add_action( 'wp_ajax_nopriv_cartflows_skip_cart_tracking_gdpr', [ $this, 'skip_cart_tracking_by_gdpr' ] );
+
+		// Delete coupons.
+
+		add_action( 'wp_ajax_wcf_ca_delete_garbage_coupons', [ $this, 'delete_used_and_expired_coupons' ] );
+
+		// TODO: Remove this after new UI is enabled by default.
+		add_action( 'wp_ajax_wcf_ca_save_new_ui_option', [ $this, 'save_new_ui_option' ] );
+	}
 
 	/**
 	 *  Initiator
@@ -34,28 +56,6 @@ class Cartflows_Ca_Setting_Functions {
 	}
 
 	/**
-	 *  Constructor function that initializes required actions and hooks.
-	 */
-	public function __construct() {
-
-		$page = Cartflows_Ca_Helper::get_instance()->sanitize_text_filter( 'page', 'GET' );
-
-		if ( WCF_CA_PAGE_NAME === $page ) {
-			// Adding filter to add new button to add custom fields.
-			add_filter( 'mce_buttons', array( $this, 'wcf_filter_mce_button' ) );
-			add_filter( 'mce_external_plugins', array( $this, 'wcf_filter_mce_plugin' ), 9 );
-		}
-
-		// GDPR actions.
-		add_action( 'wp_ajax_cartflows_skip_cart_tracking_gdpr', array( $this, 'skip_cart_tracking_by_gdpr' ) );
-		add_action( 'wp_ajax_nopriv_cartflows_skip_cart_tracking_gdpr', array( $this, 'skip_cart_tracking_by_gdpr' ) );
-
-		// Delete coupons.
-
-		add_action( 'wp_ajax_wcf_ca_delete_garbage_coupons', array( $this, 'delete_used_and_expired_coupons' ) );
-	}
-
-	/**
 	 * Register button.
 	 *
 	 * @param  array $buttons mce buttons.
@@ -65,7 +65,6 @@ class Cartflows_Ca_Setting_Functions {
 		array_push( $buttons, 'cartflows_ac' );
 		return $buttons;
 	}
-
 
 	/**
 	 * Link JS to mce button.
@@ -81,11 +80,10 @@ class Cartflows_Ca_Setting_Functions {
 		return $plugins;
 	}
 
-
-		/**
-		 *  Delete tracked data and set cookie for the user.
-		 */
-	public function skip_cart_tracking_by_gdpr() {
+	/**
+	 *  Delete tracked data and set cookie for the user.
+	 */
+	public function skip_cart_tracking_by_gdpr(): void {
 		check_ajax_referer( 'cartflows_skip_cart_tracking_gdpr', 'security' );
 
 		global $wpdb;
@@ -93,7 +91,7 @@ class Cartflows_Ca_Setting_Functions {
 
 		$session_id = WC()->session->get( 'wcf_session_id' );
 		if ( $session_id ) {
-			$wpdb->delete( $cart_abandonment_table, array( 'session_id' => sanitize_key( $session_id ) ) ); // db call ok; no cache ok.
+			$wpdb->delete( $cart_abandonment_table, [ 'session_id' => sanitize_key( $session_id ) ] ); // db call ok; no cache ok.
 		}
 
 		// Ignoring below rule as it need to replace the already build cookie logic to another logic. Can be update in future scope.
@@ -104,7 +102,7 @@ class Cartflows_Ca_Setting_Functions {
 	/**
 	 * Check if transient is set for delete garbage coupons.
 	 */
-	public function delete_used_and_expired_coupons() {
+	public function delete_used_and_expired_coupons(): void {
 		$is_ajax_request  = wp_doing_ajax();
 		$is_transient_set = false;
 		global $wpdb;
@@ -125,10 +123,10 @@ class Cartflows_Ca_Setting_Functions {
 				$coupons_post_ids = implode( ',', wp_list_pluck( $coupons, 'ID' ) );
 				// Can't use placeholders for table/column names, it will be wrapped by a single quote (') instead of a backquote (`).
 				$wpdb->query(
-					"DELETE FROM {$wpdb->prefix}postmeta WHERE post_id IN( $coupons_post_ids )" //phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+					"DELETE FROM {$wpdb->prefix}postmeta WHERE post_id IN( {$coupons_post_ids} )" //phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 				); // db call ok; no cache ok.
 				$wpdb->query(
-					"DELETE FROM {$wpdb->prefix}posts WHERE ID IN( $coupons_post_ids )" //phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+					"DELETE FROM {$wpdb->prefix}posts WHERE ID IN( {$coupons_post_ids} )" //phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 				); // db call ok; no cache ok.
 			}
 
@@ -153,7 +151,7 @@ class Cartflows_Ca_Setting_Functions {
 		$coupon_generated_by = WCF_CA_COUPON_GENERATED_BY;
 		$timestamp           = time();
 		$post_type           = 'shop_coupon';
-		$coupons             = $wpdb->get_results(
+		return $wpdb->get_results(
 			$wpdb->prepare(
 				"SELECT ID, coupon_code, usage_limit, total_usaged, expiry_date FROM (
 			    SELECT p.ID,
@@ -173,9 +171,45 @@ class Cartflows_Ca_Setting_Functions {
 				$coupon_generated_by,
 				$timestamp
 			)
-		); // db call ok; no cache ok.
-		return $coupons;
+		);
 	}
+
+	/**
+	 * AJAX handler for saving the new UI option.
+	 * TODO: Remove this after new UI is enabled by default.
+	 *
+	 * @since 1.0.0
+	 */
+	public function save_new_ui_option() {
+
+		if ( ! current_user_can( 'manage_woocommerce' ) ) {
+			wp_send_json_error( __( 'Permission denied.', 'woo-cart-abandonment-recovery' ) );
+		}
+
+		if ( ! check_ajax_referer( 'wcf_ca_new_ui_nonce', 'security' ) ) {
+			wp_send_json_error( __( 'Security check failed.', 'woo-cart-abandonment-recovery' ) );
+		}
+
+		if ( ! isset( $_POST['value'] ) ) {
+			wp_send_json_error( __( 'Required data missing.', 'woo-cart-abandonment-recovery' ) );
+		}
+
+		$value = sanitize_text_field( wp_unslash( $_POST['value'] ) );
+		
+		if ( ! in_array( $value, [ 'on', '' ], true ) ) {
+			wp_send_json_error( __( 'Invalid value provided.', 'woo-cart-abandonment-recovery' ) );
+		}
+
+		// Save the option.
+		$result = update_option( 'cartflows_ca_use_new_ui', $value );
+
+		if ( $result ) {
+			wp_send_json_success( __( 'Setting saved successfully.', 'woo-cart-abandonment-recovery' ) );
+		} else {
+			wp_send_json_error( __( 'Failed to save setting.', 'woo-cart-abandonment-recovery' ) );
+		}
+	}
+
 }
 
 Cartflows_Ca_Setting_Functions::get_instance();

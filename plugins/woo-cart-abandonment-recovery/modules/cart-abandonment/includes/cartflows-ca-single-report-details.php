@@ -19,10 +19,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 			$back_link = wp_get_referer();
 		} else {
 			$back_link = add_query_arg(
-				array(
+				[
 					'page'   => WCF_CA_PAGE_NAME,
 					'action' => WCF_ACTION_REPORTS,
-				),
+				],
 				admin_url( '/admin.php' )
 			);
 		}
@@ -43,7 +43,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</div>
 				<div class="wcf-ca-right-report-field-group">
 
-					<?php if ( WCF_CART_ABANDONED_ORDER === $details->order_status && ! $details->unsubscribed ) : ?>
+					<?php if ( WCF_CART_ABANDONED_ORDER === $details->order_status && ! $details->unsubscribed ) { ?>
 						<?php add_thickbox(); ?>
 						<div id="wcf-ca-confirm-email-reschedule" style="display:none;">
 							<div style="text-align:center;">
@@ -70,14 +70,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 							</div>
 						</div>
 						<a name="<?php esc_attr_e( 'Do you really want to reschedule emails?', 'woo-cart-abandonment-recovery' ); ?>" href="#TB_inline?&width=500&height=200&inlineId=wcf-ca-confirm-email-reschedule" class="thickbox button button-secondary"> <?php esc_html_e( 'Reschedule Emails', 'woo-cart-abandonment-recovery' ); ?> </a>
-					<?php endif; ?>
+					<?php } ?>
 				</div>
 			</div>
 
-			<?php if ( empty( $scheduled_emails ) ) : ?>
+			<?php if ( empty( $scheduled_emails ) ) { ?>
 				<div style="text-align: center;"><strong> <?php esc_html_e( ' No Email Scheduled.', 'woo-cart-abandonment-recovery' ); ?></strong>
 				</div>
-			<?php else : ?>
+			<?php } else { ?>
+				<?php
+				/**
+				 * Action before displaying email schedule table.
+				 *
+				 * @param object $details Cart abandonment details.
+				 * @param array  $scheduled_emails Scheduled emails array.
+				 * @since 1.0.0
+				 */
+				do_action( 'wcf_ca_before_email_schedule_table', $details, $scheduled_emails );
+				?>
 				<table cellpadding="15" cellspacing="0" class="wcf-table wcf-table-striped fixed posts">
 					<thead>
 					<tr>
@@ -93,23 +103,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 					</thead>
 
 					<tbody>
-					<?php foreach ( $scheduled_emails as $scheduled_email ) : ?>
+					<?php foreach ( $scheduled_emails as $scheduled_email ) { ?>
 
 						<?php
 						$email_tmpl_url = wp_nonce_url(
 							add_query_arg(
-								array(
+								[
 									'page'       => WCF_CA_PAGE_NAME,
 									'action'     => WCF_ACTION_EMAIL_TEMPLATES,
 									'sub_action' => WCF_SUB_ACTION_EDIT_EMAIL_TEMPLATES,
 									'id'         => $scheduled_email->template_id,
-								),
+								],
 								admin_url( '/admin.php' )
 							),
 							WCF_EMAIL_TEMPLATES_NONCE
 						);
-
-
 
 						switch ( $scheduled_email->email_sent ) {
 							case 0:
@@ -131,7 +139,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 								break;
 						}
 
-
 						$scheduled_time = gmdate( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), strtotime( $scheduled_email->scheduled_time ) );
 						?>
 
@@ -147,10 +154,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 							</td>
 							<td class="wcf-ca-report-table-row"> <?php echo esc_html( $scheduled_time ); ?> </td>
 						</tr>
-					<?php endforeach; ?>
+					<?php } ?>
 					</tbody>
 				</table>
-			<?php endif; ?>
+			<?php } ?>
 
 		</div>
 	</div>
@@ -163,9 +170,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<h2> <?php esc_html_e( 'User Address Details:', 'woo-cart-abandonment-recovery' ); ?> </h2>
 				</div>
 				<div class="wcf-ca-right-report-field-group">
-					<?php if ( $details->unsubscribed ) : ?>
+					<?php if ( $details->unsubscribed ) { ?>
 						<span class="wcf-ca-tag"> <?php esc_html_e( 'Unsubscribed', 'woo-cart-abandonment-recovery' ); ?> </span>
-					<?php endif; ?>
+					<?php } ?>
 
 					<span class="wcf-ca-tag"> <?php echo esc_html( ucfirst( $details->order_status ) ); ?> </span>
 				</div>
@@ -226,7 +233,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<p>
 					<?php
 					$cart_abandonment = Cartflows_Ca_Helper::get_instance();
-					$token_data       = array( 'wcf_session_id' => $details->session_id );
+					$token_data       = [ 'wcf_session_id' => $details->session_id ];
 					?>
 					<strong> <a target="_blank" href=" <?php echo esc_url( $cart_abandonment->get_checkout_url( $details->checkout_id, $token_data ) ); ?> ">
 							<?php esc_html_e( 'Checkout Link', 'woo-cart-abandonment-recovery' ); ?>

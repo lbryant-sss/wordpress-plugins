@@ -48,7 +48,7 @@ define( 'MWAI_CHATBOT_DEFAULT_PARAMS', [
   'model' => MWAI_FALLBACK_MODEL,
   'temperature' => 0.8,
   'maxMessages' => 15,
-  'maxTokens' => 1024,
+  'maxTokens' => 4096,
   'maxResults' => 1,
   'apiKey' => null,
   // Orchestration
@@ -206,7 +206,7 @@ define( 'MWAI_OPTIONS', [
   'queries_debug_mode' => false,
   'logs_path' => null,
   'resolve_shortcodes' => false,
-  'context_max_length' => 4096,
+  'context_max_length' => 16384,
   'banned_words' => [],
   'ignore_word_boundaries' => false,
   'banned_ips' => [],

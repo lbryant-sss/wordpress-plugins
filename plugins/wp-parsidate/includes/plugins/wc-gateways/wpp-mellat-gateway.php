@@ -18,6 +18,13 @@ if (!function_exists('wpp_mellat_payment_gateway_init')) {
             {
 
                 private $gateway_name;
+                public $method_title;
+                public $terminal_id;
+                public $username;
+                public $password;
+                public $title;
+                public $description;
+                public $failed_massage;
 
                 public function __construct()
                 {
@@ -475,5 +482,5 @@ if (!function_exists('wpp_mellat_payment_gateway_init')) {
         }
     }
 
-    add_action('plugins_loaded', 'wpp_mellat_payment_gateway_init', 0);
+    add_action('before_woocommerce_init', 'wpp_mellat_payment_gateway_init', 15);
 }

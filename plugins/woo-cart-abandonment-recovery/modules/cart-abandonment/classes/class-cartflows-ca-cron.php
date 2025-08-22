@@ -13,15 +13,25 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Cart abandonment tracking class.
  */
 class Cartflows_Ca_Cron {
-
-
-
 	/**
 	 * Member Variable
 	 *
 	 * @var object instance
 	 */
 	private static $instance;
+
+	/**
+	 *  Constructor function that initializes required actions and hooks.
+	 */
+	public function __construct() {
+		// We are adding cron run time to check order status.
+		add_filter( 'cron_schedules', [ $this, 'cartflows_ca_update_order_status_action' ] );//phpcs:ignore WordPress.WP.CronInterval.ChangeDetected
+
+		// Schedule an action if it's not already scheduled.
+		if ( ! wp_next_scheduled( 'cartflows_ca_update_order_status_action' ) ) {
+			wp_schedule_event( time(), 'every_fifteen_minutes', 'cartflows_ca_update_order_status_action' );
+		}
+	}
 
 	/**
 	 *  Initiator
@@ -34,24 +44,11 @@ class Cartflows_Ca_Cron {
 	}
 
 	/**
-	 *  Constructor function that initializes required actions and hooks.
+	 * Create custom schedule.
+	 *
+	 * @param array $schedules schedules.
+	 * @return mixed
 	 */
-	public function __construct() {
-		// We are adding cron run time to check order status.
-		add_filter( 'cron_schedules', array( $this, 'cartflows_ca_update_order_status_action' ) );//phpcs:ignore WordPress.WP.CronInterval.ChangeDetected
-
-		// Schedule an action if it's not already scheduled.
-		if ( ! wp_next_scheduled( 'cartflows_ca_update_order_status_action' ) ) {
-			wp_schedule_event( time(), 'every_fifteen_minutes', 'cartflows_ca_update_order_status_action' );
-		}
-	}
-
-		/**
-		 * Create custom schedule.
-		 *
-		 * @param array $schedules schedules.
-		 * @return mixed
-		 */
 	public function cartflows_ca_update_order_status_action( $schedules ) {
 
 		/**
@@ -59,10 +56,10 @@ class Cartflows_Ca_Cron {
 		 */
 		$cron_time = apply_filters( 'woo_ca_update_order_cron_interval', get_option( 'wcf_ca_cron_run_time', 20 ) );
 
-		$schedules['every_fifteen_minutes'] = array(
+		$schedules['every_fifteen_minutes'] = [
 			'interval' => intval( $cron_time ) * MINUTE_IN_SECONDS,
 			'display'  => __( 'Every Fifteen Minutes', 'woo-cart-abandonment-recovery' ),
-		);
+		];
 
 		return $schedules;
 	}

@@ -275,6 +275,7 @@ class Meow_MWAI_Modules_Chatbot {
 
   public function sanitize_shortcuts( $shortcuts ) {
     $supported_shortcut_types = [
+      'message' => ['label', 'message'],
       'action' => ['label', 'message', 'action'],
       'callback' => ['label', 'onClick'],
     ];
@@ -519,7 +520,7 @@ class Meow_MWAI_Modules_Chatbot {
       }
       else {
         $query = $mode === 'assistant' ? new Meow_MWAI_Query_Assistant( $newMessage ) :
-          new Meow_MWAI_Query_Text( $newMessage, 1024 );
+          new Meow_MWAI_Query_Text( $newMessage, 4096 );
 
         // Handle Params
         $newParams = [];

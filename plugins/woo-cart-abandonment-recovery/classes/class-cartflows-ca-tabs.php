@@ -13,26 +13,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Class Cartflows_Ca_Utils.
  */
 class Cartflows_Ca_Tabs {
-
-
 	/**
 	 * Class instance.
 	 *
 	 * @access private
-	 * @var $instance Class instance.
+	 * @var Class $instance instance.
 	 */
 	private static $instance;
-
-		/**
-		 * Initiator
-		 */
-	public static function get_instance() {
-		if ( ! isset( self::$instance ) ) {
-			self::$instance = new self();
-		}
-		return self::$instance;
-	}
-
 
 	/**
 	 * Cartflows_Ca_Settings constructor.
@@ -40,15 +27,25 @@ class Cartflows_Ca_Tabs {
 	public function __construct() {
 
 		// Adding menu to view cart abandonment report.
-		add_action( 'admin_menu', array( $this, 'abandoned_cart_tracking_menu' ), 999 );
+		add_action( 'admin_menu', [ $this, 'abandoned_cart_tracking_menu' ], 999 );
 	}
 
-		/**
-		 * Add submenu to admin menu.
-		 *
-		 * @since 1.1.5
-		 */
-	public function abandoned_cart_tracking_menu() {
+	/**
+	 * Initiator
+	 */
+	public static function get_instance() {
+		if ( ! isset( self::$instance ) ) {
+			self::$instance = new self();
+		}
+		return self::$instance;
+	}
+
+	/**
+	 * Add submenu to admin menu.
+	 *
+	 * @since 1.1.5
+	 */
+	public function abandoned_cart_tracking_menu(): void {
 
 		$capability = current_user_can( 'manage_woocommerce' ) ? 'manage_woocommerce' : 'manage_options';
 
@@ -58,22 +55,29 @@ class Cartflows_Ca_Tabs {
 			__( 'Cart Abandonment', 'woo-cart-abandonment-recovery' ),
 			$capability,
 			WCF_CA_PAGE_NAME,
-			array( $this, 'render_abandoned_cart_tracking' )
+			[ $this, 'render_abandoned_cart_tracking' ]
 		);
 	}
 
-		/**
-		 * Render table view for cart abandonment tracking.
-		 *
-		 * @since 1.1.5
-		 */
-	public function render_abandoned_cart_tracking() {
+	/**
+	 * Render table view for cart abandonment tracking.
+	 *
+	 * @since 1.1.5
+	 */
+	public function render_abandoned_cart_tracking(): void {
+
+		// Use new UI decision function.
+		if ( wcf_ca()->should_use_new_ui() ) {
+			include_once CARTFLOWS_CA_DIR . 'admin/views/settings-app.php';
+			return;
+		}
+
 		// This function is called on `admin_init` so no nonce required.
 		$wcf_list_table = Cartflows_Ca_Order_Table::get_instance();
 
 		if ( 'delete' === $wcf_list_table->current_action() ) {
 
-			$ids = array();
+			$ids = [];
 			if ( isset( $_REQUEST['id'] ) && is_array( $_REQUEST['id'] ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				$ids = array_map( 'intval', $_REQUEST['id'] ); //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			}
@@ -95,8 +99,8 @@ class Cartflows_Ca_Tabs {
 
 			$wpdb->update(
 				$cart_abandonment_table,
-				array( 'unsubscribed' => true ),
-				array( 'id' => $id )
+				[ 'unsubscribed' => true ],
+				[ 'id' => $id ]
 			); // db call ok; no-cache ok.
 			$wcf_list_table->process_bulk_action();
 			$message = '<div class="notice notice-success is-dismissible" id="message"><p>' . sprintf( __( 'User(s) unsubscribed successfully!', 'woo-cart-abandonment-recovery' ) ) . '</p></div>';
@@ -118,9 +122,9 @@ class Cartflows_Ca_Tabs {
 	 *
 	 * @since 1.1.5
 	 */
-	public function wcf_display_tabs() {
+	public function wcf_display_tabs(): void {
 
-		$helper_class = Cartflows_Ca_Helper::get_instance();
+		$helper_class = wcf_ca()->helper;
 		$wcar_action  = $helper_class->sanitize_text_filter( 'action', 'GET' );
 		$sub_action   = $helper_class->sanitize_text_filter( 'sub_action', 'GET' );
 
@@ -155,32 +159,34 @@ class Cartflows_Ca_Tabs {
 	<div class="nav-tab-wrapper woo-nav-tab-wrapper">
 
         <?php
-        $url = add_query_arg( array(
+        $url = add_query_arg( [
             'page' => WCF_CA_PAGE_NAME,
-            'action' => WCF_ACTION_REPORTS
-        ), admin_url( '/admin.php' ) )
+            'action' => WCF_ACTION_REPORTS,
+        ], admin_url( '/admin.php' ) )
         ?>
         <a href="<?php echo $url; ?>"
            class="nav-tab
         <?php
            if ( isset( $active_reports ) ) {
-			echo $active_reports;}
+			echo $active_reports;
+           }
            ?>
 			">
             <?php _e( 'Report', 'woo-cart-abandonment-recovery' ); ?>
         </a>
 
 			<?php
-			$url = add_query_arg( array(
-            'page' => WCF_CA_PAGE_NAME,
-            'action' => WCF_ACTION_EMAIL_TEMPLATES
-			), admin_url( '/admin.php' ) )
+			$url = add_query_arg( [
+                'page' => WCF_CA_PAGE_NAME,
+                'action' => WCF_ACTION_EMAIL_TEMPLATES,
+			], admin_url( '/admin.php' ) )
         ?>
         <a href="<?php echo $url; ?>"
            class="nav-tab
         <?php
            if ( isset( $active_email_templates ) ) {
-			echo $active_email_templates;}
+			echo $active_email_templates;
+           }
            ?>
 			">
             <?php _e( 'Follow-Up Emails', 'woo-cart-abandonment-recovery' ); ?>
@@ -188,13 +194,13 @@ class Cartflows_Ca_Tabs {
 
 		<?php
 
-		$is_cartflows_active = 'active' === Cartflows_Ca_Helper::get_instance()->get_plugin_status( 'cartflows/cartflows.php' );
+		$is_cartflows_active = 'active' === wcf_ca()->helper->get_plugin_status( 'cartflows/cartflows.php' );
 
 		if( ! $is_cartflows_active ) {
-			$url = add_query_arg( array(
+			$url = add_query_arg( [
 				'page' => WCF_CA_PAGE_NAME,
-				'action' => WCF_ACTION_CARTFLOWS_PROMO
-				), admin_url( '/admin.php' ) 
+				'action' => WCF_ACTION_CARTFLOWS_PROMO,
+            ], admin_url( '/admin.php' )
 			);
 		?>
 			<a 	
@@ -202,7 +208,8 @@ class Cartflows_Ca_Tabs {
 				class="nav-tab
 				<?php
 					if ( isset( $active_cartflows ) ) {
-							echo $active_cartflows;}
+					echo $active_cartflows;
+                    }
 				?>"
 			>
 				<?php _e( 'CartFlows', 'woo-cart-abandonment-recovery' ); ?>
@@ -210,16 +217,17 @@ class Cartflows_Ca_Tabs {
 		<?php
 		}
 
-			$url = add_query_arg( array(
-            'page' => WCF_CA_PAGE_NAME,
-            'action' => WCF_ACTION_SETTINGS
-			), admin_url( '/admin.php' ) )
+			$url = add_query_arg( [
+                'page' => WCF_CA_PAGE_NAME,
+                'action' => WCF_ACTION_SETTINGS,
+			], admin_url( '/admin.php' ) )
            ?>
 		<a href="<?php echo $url; ?>"
 		   class="nav-tab
 			<?php
 		  if ( isset( $active_settings ) ) {
-                echo $active_settings;}
+                echo $active_settings;
+          }
 		  ?>
 			">
       <?php _e( 'Settings', 'woo-cart-abandonment-recovery' ); ?>
@@ -235,7 +243,7 @@ class Cartflows_Ca_Tabs {
 	 *
 	 * @since 1.1.5
 	 */
-	public function wcf_display_settings() {
+	public function wcf_display_settings(): void {
 		?>
 
 	<form method="post" action="options.php">
@@ -252,9 +260,9 @@ class Cartflows_Ca_Tabs {
 	 *
 	 * @since 1.1.5
 	 */
-	public function wcf_display_reports() {
+	public function wcf_display_reports(): void {
 
-		$helper_class = Cartflows_Ca_Helper::get_instance();
+		$helper_class = wcf_ca()->helper;
 		$filter       = $helper_class->sanitize_text_filter( 'filter', 'GET' );
 		$filter_table = $helper_class->sanitize_text_filter( 'filter_table', 'GET' );
 
@@ -303,7 +311,7 @@ class Cartflows_Ca_Tabs {
 
 		if ( $export_data ) {
 
-			$wpnonce = Cartflows_Ca_Helper::get_instance()->sanitize_text_filter( 'security', 'GET' );
+			$wpnonce = wcf_ca()->helper->sanitize_text_filter( 'security', 'GET' );
 
 			if ( $wpnonce && wp_verify_nonce( $wpnonce, 'wcf_ca_export_orders' ) && current_user_can( 'manage_woocommerce' ) ) {
 
@@ -315,22 +323,21 @@ class Cartflows_Ca_Tabs {
 		}
 
 		$conversion_rate = 0;
-		$total_orders    = ( $recovered_report['no_of_orders'] + $abandoned_report['no_of_orders'] + $lost_report['no_of_orders'] );
+		$total_orders    = $recovered_report['no_of_orders'] + $abandoned_report['no_of_orders'] + $lost_report['no_of_orders'];
 		if ( $total_orders ) {
-			$conversion_rate = ( $recovered_report['no_of_orders'] / $total_orders ) * 100;
+			$conversion_rate = $recovered_report['no_of_orders'] / $total_orders * 100;
 		}
 
 		global  $woocommerce;
 		$conversion_rate = number_format_i18n( $conversion_rate, 2 );
 		$currency_symbol = get_woocommerce_currency_symbol();
 		require_once CARTFLOWS_CART_ABANDONMENT_TRACKING_DIR . 'includes/cartflows-cart-abandonment-reports.php';
-
 	}
 
 	/**
 	 * Send headers to export orders to csv format.
 	 */
-	public function download_send_headers() {
+	public function download_send_headers(): void {
 		$now      = gmdate( 'Y-m-d-H-i-s' );
 		$filename = 'woo-cart-abandonment-recovery-export-' . $now . '.csv';
 
@@ -362,7 +369,7 @@ class Cartflows_Ca_Tabs {
 		// Ignoring below rule as we are not working on wp directory and do not require path.
 		fputcsv( //phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_fputcsv
 			$data_file,
-			array(
+			[
 				'First-Name',
 				'Last-Name',
 				'Email',
@@ -373,18 +380,18 @@ class Cartflows_Ca_Tabs {
 				'Unsubscribed',
 				'Coupon-Code',
 				'Date',
-			)
+			]
 		);
 
 		foreach ( $user_data as $data ) {
 			$name             = maybe_unserialize( $data['other_fields'] );
-			$checkout_details = Cartflows_Ca_Helper::get_instance()->get_checkout_details( $data['session_id'] );
-			$cart_data        = Cartflows_Ca_Helper::get_instance()->get_comma_separated_products( $checkout_details->cart_contents );
+			$checkout_details = wcf_ca()->helper->get_checkout_details( $data['session_id'] );
+			$cart_data        = wcf_ca()->helper->get_comma_separated_products( $checkout_details->cart_contents );
 			fputcsv( //phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.file_ops_fputcsv
 				$data_file,
 				array_map(
 					'esc_html',
-					array(
+					[
 						$name['wcf_first_name'],
 						$name['wcf_last_name'],
 						$data['email'],
@@ -395,7 +402,7 @@ class Cartflows_Ca_Tabs {
 						$data['unsubscribed'] ? 'Yes' : 'No',
 						$data['coupon_code'],
 						gmdate( 'Y-m-d', strtotime( $data['time'] ) ),
-					)
+					]
 				)
 			);
 
@@ -417,37 +424,35 @@ class Cartflows_Ca_Tabs {
 		$cart_abandonment_table = $wpdb->prefix . CARTFLOWS_CA_CART_ABANDONMENT_TABLE;
 		$minutes                = wcf_ca()->utils->get_cart_abandonment_tracking_cut_off_time();
 		// Can't use placeholders for table/column names, it will be wrapped by a single quote (') instead of a backquote (`).
-		$attributable_revenue = $wpdb->get_row(
+		return $wpdb->get_row( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 			$wpdb->prepare( "SELECT  SUM(`cart_total`) as revenue, count('*') as no_of_orders  FROM {$cart_abandonment_table} WHERE `order_status` = %s AND DATE(`time`) >= %s AND DATE(`time`) <= %s  ", $type, $from_date, $to_date ), // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 			ARRAY_A
-		); // db call ok; no-cache ok.
-		return $attributable_revenue;
+		);
 	}
 
 	/**
 	 * Show report details for specific order.
 	 */
-	public function wcf_display_report_details() {
+	public function wcf_display_report_details(): void {
 
-		$sesson_id = Cartflows_Ca_Helper::get_instance()->sanitize_text_filter( 'session_id', 'GET' );
+		$sesson_id = wcf_ca()->helper->sanitize_text_filter( 'session_id', 'GET' );
 
 		if ( $sesson_id ) {
-			$details          = Cartflows_Ca_Helper::get_instance()->get_checkout_details( $sesson_id );
+			$details          = wcf_ca()->helper->get_checkout_details( $sesson_id );
 			$user_details     = (object) maybe_unserialize( $details->other_fields );
-			$scheduled_emails = Cartflows_Ca_Helper::get_instance()->fetch_scheduled_emails( $sesson_id );
+			$scheduled_emails = wcf_ca()->helper->fetch_scheduled_emails( $sesson_id );
 
 			require_once CARTFLOWS_CART_ABANDONMENT_TRACKING_DIR . 'includes/cartflows-ca-single-report-details.php';
 		}
-
 	}
 
-		/**
-		 * Generate the view for admin product cart block.
-		 *
-		 * @param  string $cart_contents user cart contents details.
-		 * @param  float  $cart_total user cart total.
-		 * @return string
-		 */
+	/**
+	 * Generate the view for admin product cart block.
+	 *
+	 * @param  string $cart_contents user cart contents details.
+	 * @param  float  $cart_total user cart total.
+	 * @return string
+	 */
 	public function get_admin_product_block( $cart_contents, $cart_total ) {
 
 		$cart_items = maybe_unserialize( $cart_contents );
@@ -465,9 +470,9 @@ class Cartflows_Ca_Tabs {
 
 			if ( isset( $cart_item['product_id'] ) && isset( $cart_item['quantity'] ) && isset( $cart_item['line_total'] ) && isset( $cart_item['line_subtotal'] ) ) {
 				$id        = 0 !== $cart_item['variation_id'] ? $cart_item['variation_id'] : $cart_item['product_id'];
-				$discount  = $discount + ( $cart_item['line_subtotal'] - $cart_item['line_total'] );
-				$total     = $total + $cart_item['line_subtotal'];
-				$tax       = $tax + $cart_item['line_tax'];
+				$discount  = $discount + $cart_item['line_subtotal'] - $cart_item['line_total'];
+				$total    += $cart_item['line_subtotal'];
+				$tax      += $cart_item['line_tax'];
 				$image_url = get_the_post_thumbnail_url( $id );
 				$image_url = ! empty( $image_url ) ? $image_url : get_the_post_thumbnail_url( $cart_item['product_id'] );
 
@@ -479,13 +484,13 @@ class Cartflows_Ca_Tabs {
 				}
 
 				$custom_field_data = '';
-				$custom_field_data = wp_kses( wc_get_formatted_cart_item_data( $cart_item ), array( 'ul', 'li' ) );
+				$custom_field_data = wp_kses( wc_get_formatted_cart_item_data( $cart_item ), [ 'ul', 'li' ] );
 
 				if ( ! empty( $custom_field_data ) ) {
 					$custom_field_data = '<h4>' . __( 'Product Custom Data: ', 'woo-cart-abandonment-recovery' ) . '</h4>' . $custom_field_data;
 				}
 
-				$tr = $tr . '<tr  align="center">
+				$tr .= '<tr  align="center">
                            <td ><img class="demo_img" width="42" height="42" src=" ' . esc_url( $image_url ) . ' "/></td>
 						   <td >' . $product_name . '<br> ' . $custom_field_data . '</td>
                            <td > ' . $cart_item['quantity'] . ' </td>
@@ -518,7 +523,7 @@ class Cartflows_Ca_Tabs {
 
 						<tr align="center" id="wcf-ca-shipping">
 							<td colspan="4" >' . __( 'Shipping', 'woo-cart-abandonment-recovery' ) . '</td>
-							<td>' . wc_price( $discount + ( $cart_total - $total ) - $tax ) . '</td>
+							<td>' . wc_price( $discount + $cart_total - $total - $tax ) . '</td>
 						</tr>
 						<tr align="center" id="wcf-ca-cart-total">
 							<td colspan="4" >' . __( 'Cart Total', 'woo-cart-abandonment-recovery' ) . '</td>
@@ -531,12 +536,12 @@ class Cartflows_Ca_Tabs {
 	/**
 	 *  Check and show warning message if cart abandonment is disabled.
 	 */
-	public function wcf_show_warning_ca() {
+	public function wcf_show_warning_ca(): void {
 		$settings_url = add_query_arg(
-			array(
+			[
 				'page'   => WCF_CA_PAGE_NAME,
 				'action' => WCF_ACTION_SETTINGS,
-			),
+			],
 			admin_url( '/admin.php' )
 		);
 

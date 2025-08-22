@@ -18,6 +18,9 @@ License: GPLv3
 
 Change Log
 
+Ad Inserter 2.8.6 - 2025-08-04
+- Few minor bug fixes, cosmetic changes and code improvements
+
 Ad Inserter 2.8.5 - 2025-07-26
 - Support for individual virtual ads.txt files on multisite sites
 - Few minor bug fixes, cosmetic changes and code improvements
@@ -2689,6 +2692,12 @@ function ai_replace_js_data ($js) {
     foreach ($match [1] as $index => $constant) {
       if (defined ($constant))
         $js = str_replace ($match [0][$index], constant ($constant), $js);
+    }
+  }
+
+  if (preg_match_all ('/AI_CONSTB_([_A-Z0-9]+)/', $js, $match)) {
+    foreach ($match [1] as $index => $constant) {
+      $js = str_replace ($match [0][$index], defined ($constant) ? 1 : 0, $js);
     }
   }
 

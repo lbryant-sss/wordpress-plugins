@@ -2,18 +2,23 @@
 	let timer;
 	const wcf_cart_abandonment = {
 		init() {
-			if (
-				wcf_ca_vars._show_gdpr_message &&
-				! $( '#wcf_cf_gdpr_message_block' ).length
-			) {
-				$( '#billing_email' ).after(
-					"<span id='wcf_cf_gdpr_message_block'> <span style='font-size: xx-small'> " +
-						wcf_ca_vars._gdpr_message +
-						" <a style='cursor: pointer' id='wcf_ca_gdpr_no_thanks'> " +
-						wcf_ca_vars._gdpr_nothanks_msg +
-						' </a></span></span>'
-				);
-			}
+			$( document ).ready( function () {
+				if (
+					wcf_ca_vars._show_gdpr_message &&
+					! $( '#wcf_cf_gdpr_message_block' ).length
+				) {
+					const target = wcf_ca_vars._is_block_based_checkout
+						? $( '#email' ).parent()
+						: $( '#billing_email' );
+					target.after(
+						"<span id='wcf_cf_gdpr_message_block'> <span style='font-size: xx-small'> " +
+							wcf_ca_vars._gdpr_message +
+							" <a style='cursor: pointer' id='wcf_ca_gdpr_no_thanks'> " +
+							wcf_ca_vars._gdpr_nothanks_msg +
+							' </a></span></span>'
+					);
+				}
+			} );
 
 			$( document ).on(
 				'keyup keypress change',
@@ -87,11 +92,10 @@
 				return;
 			}
 
+			/* eslint-disable no-mixed-spaces-and-tabs */
 			let wcf_phone = wcf_ca_vars._is_block_based_checkout
-				? jQuery( '#billing-phone' ).val() ||
-				jQuery( '#shipping-phone' ).val()
-				: jQuery( '#billing_phone' ).val() ||
-				jQuery( '#shipping_phone' ).val();
+				? jQuery( '#billing-phone' ).val() || jQuery( '#shipping-phone' ).val() // prettier-ignore
+				: jQuery( '#billing_phone' ).val() || jQuery( '#shipping_phone' ).val(); // prettier-ignore
 
 			const atposition = wcf_email.indexOf( '@' );
 			const dotposition = wcf_email.lastIndexOf( '.' );

@@ -13,15 +13,20 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Cart Abandonment DB class.
  */
 class Cartflows_Ca_Module_Loader {
-
-
-
 	/**
 	 * Member Variable
 	 *
 	 * @var object instance
 	 */
 	private static $instance;
+
+	/**
+	 *  Constructor
+	 */
+	public function __construct() {
+
+		$this->load_module_files();
+	}
 
 	/**
 	 *  Initiator
@@ -34,41 +39,30 @@ class Cartflows_Ca_Module_Loader {
 	}
 
 	/**
-	 *  Constructor
-	 */
-	public function __construct() {
-
-		$this->load_module_files();
-	}
-
-
-
-
-	/**
 	 *  Load required files for module.
 	 */
-	private function load_module_files() {
+	private function load_module_files(): void {
 
-				$module_files = array(
-					'class-cartflows-ca-tracking.php',
-					'class-cartflows-ca-cron.php',
-					'class-cartflows-ca-email-templates-table.php',
-					'class-cartflows-ca-email-templates.php',
-					'class-cartflows-ca-email-template-importer-exporter.php',
-					'class-cartflows-ca-email-schedule.php',
-					'class-cartflows-ca-helper.php',
-					'class-cartflows-ca-order-table.php',
-					'class-cartflows-ca-setting-functions.php',
-				);
+		$module_files = array(
+			'class-cartflows-ca-tracking.php',
+			'class-cartflows-ca-cron.php',
+			'class-cartflows-ca-email-templates-table.php',
+			'class-cartflows-ca-email-templates.php',
+			'class-cartflows-ca-email-template-importer-exporter.php',
+			'class-cartflows-ca-email-schedule.php',
+			'class-cartflows-ca-helper.php',
+			'class-cartflows-ca-order-table.php',
+			'class-cartflows-ca-setting-functions.php',
+		);
 
-				foreach ( $module_files as $index => $file ) {
+		foreach ( $module_files as $index => $file ) {
 
-					$filename = CARTFLOWS_CA_DIR . '/modules/cart-abandonment/classes/' . $file;
+			$filename = CARTFLOWS_CA_DIR . '/modules/cart-abandonment/classes/' . $file;
 
-					if ( file_exists( $filename ) ) {
-						include_once $filename;
-					}
-				}
+			if ( file_exists( $filename ) ) {
+				include_once $filename;
+			}
+		}
 
 	}
 

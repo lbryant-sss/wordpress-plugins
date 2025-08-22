@@ -13,15 +13,20 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Cart abandonment tracking class.
  */
 class Cartflows_Ca_Email_Schedule {
-
-
-
 	/**
 	 * Member Variable
 	 *
 	 * @var object instance
 	 */
 	private static $instance;
+
+	/**
+	 *  Constructor function that initializes required actions and hooks.
+	 */
+	public function __construct() {
+
+		add_action( 'wp_ajax_wcf_ca_preview_email_send', [ $this, 'send_preview_email' ] );
+	}
 
 	/**
 	 *  Initiator
@@ -34,17 +39,9 @@ class Cartflows_Ca_Email_Schedule {
 	}
 
 	/**
-	 *  Constructor function that initializes required actions and hooks.
-	 */
-	public function __construct() {
-
-		add_action( 'wp_ajax_wcf_ca_preview_email_send', array( $this, 'send_preview_email' ) );
-	}
-
-	/**
 	 *  Send preview emails.
 	 */
-	public function send_preview_email() {
+	public function send_preview_email(): void {
 
 		if ( ! current_user_can( 'manage_woocommerce' ) ) {
 			wp_send_json_error( __( 'Permission denied.', 'woo-cart-abandonment-recovery' ) );
@@ -59,13 +56,13 @@ class Cartflows_Ca_Email_Schedule {
 		}
 	}
 
-		/**
-		 * Callback function to send email templates.
-		 *
-		 * @param array   $email_data email data  .
-		 * @param boolean $preview_email preview email.
-		 * @since 1.0.0
-		 */
+	/**
+	 * Callback function to send email templates.
+	 *
+	 * @param array $email_data email data  .
+	 * @param bool  $preview_email preview email.
+	 * @since 1.0.0
+	 */
 	public function send_email_templates( $email_data, $preview_email = false ) {
 
 		if ( $preview_email ) {
@@ -74,12 +71,26 @@ class Cartflows_Ca_Email_Schedule {
 
 		if ( filter_var( $email_data->email, FILTER_VALIDATE_EMAIL ) ) {
 			if ( ! $preview_email ) {
+
 				$cart_items = maybe_unserialize( $email_data->cart_contents );
 				if ( $this->cart_contains_out_of_stock_products( $cart_items ) ) {
 					return false;
 				}
-	
+
 				if ( ! $this->check_if_already_purchased_by_email_product_ids( $email_data, $email_data->cart_contents ) ) {
+					return false;
+				}
+
+				/**
+				 * Filter to determine if email should be sent.
+				 *
+				 * @param bool   $should_send Whether email should be sent.
+				 * @param object $email_data Email data object.
+				 * @since 1.0.0
+				 */
+				$should_send = apply_filters( 'wcf_ca_should_send_email', true, $email_data );
+
+				if ( ! $should_send ) {
 					return false;
 				}
 			}
@@ -100,6 +111,8 @@ class Cartflows_Ca_Email_Schedule {
 			$subject_email_preview = stripslashes( html_entity_decode( $email_data->email_subject, ENT_QUOTES, 'UTF-8' ) );
 			$subject_email_preview = convert_smilies( $subject_email_preview );
 			$subject_email_preview = str_replace( '{{customer.firstname}}', $user_first_name, $subject_email_preview );
+			$subject_email_preview = str_replace( '{{customer.lastname}}', $user_last_name, $subject_email_preview );
+			$subject_email_preview = str_replace( '{{customer.fullname}}', $user_full_name, $subject_email_preview );
 			$body_email_preview    = convert_smilies( $email_data->email_body );
 			$body_email_preview    = str_replace( '{{customer.firstname}}', $user_first_name, $body_email_preview );
 			$body_email_preview    = str_replace( '{{customer.lastname}}', $user_last_name, $body_email_preview );
@@ -120,40 +133,43 @@ class Cartflows_Ca_Email_Schedule {
 
 			$auto_apply_coupon = $email_instance->get_email_template_meta_by_key( $email_data->email_template_id, 'auto_coupon' );
 
-			$token_data = array(
+			$token_data = [
 				'wcf_session_id'    => $email_data->session_id,
 				'wcf_coupon_code'   => isset( $auto_apply_coupon ) && $auto_apply_coupon->meta_value ? $coupon_code : null,
 				'wcf_preview_email' => $preview_email ? true : false,
-			);
+			];
 
 			$checkout_url = Cartflows_Ca_Helper::get_instance()->get_checkout_url( $email_data->checkout_id, $token_data );
 
-			$body_email_preview = str_replace( '{{cart.coupon_code}}', $coupon_code, $body_email_preview );
+			$subject_email_preview = str_replace( '{{cart.coupon_code}}', $coupon_code, $subject_email_preview );
+			$body_email_preview    = str_replace( '{{cart.coupon_code}}', $coupon_code, $body_email_preview );
 
-			$current_time_stamp  = $email_data->time;
-			$body_email_preview  = str_replace( '{{cart.abandoned_date}}', $current_time_stamp, $body_email_preview );
-			$unsubscribe_element = '<a target="_blank" style="color: lightgray" href="' . $checkout_url . '&unsubscribe=true ">' . __( 'Don\'t remind me again.', 'woo-cart-abandonment-recovery' ) . '</a>';
-			$body_email_preview  = str_replace( '{{cart.unsubscribe}}', $unsubscribe_element, $body_email_preview );
-			$body_email_preview  = str_replace( 'http://{{cart.checkout_url}}', '{{cart.checkout_url}}', $body_email_preview );
-			$body_email_preview  = str_replace( 'https://{{cart.checkout_url}}', '{{cart.checkout_url}}', $body_email_preview );
-			$body_email_preview  = str_replace( '{{cart.checkout_url}}', $checkout_url, $body_email_preview );
-			$host                = wp_parse_url( get_site_url() );
-			$body_email_preview  = str_replace( '{{site.url}}', $host['host'], $body_email_preview );
+			$current_time_stamp    = $email_data->time;
+			$subject_email_preview = str_replace( '{{cart.abandoned_date}}', $current_time_stamp, $subject_email_preview );
+			$body_email_preview    = str_replace( '{{cart.abandoned_date}}', $current_time_stamp, $body_email_preview );
+			$unsubscribe_element   = '<a target="_blank" style="color: lightgray" href="' . $checkout_url . '&unsubscribe=true ">' . __( 'Don\'t remind me again.', 'woo-cart-abandonment-recovery' ) . '</a>';
+			$body_email_preview    = str_replace( '{{cart.unsubscribe}}', $unsubscribe_element, $body_email_preview );
+			$body_email_preview    = str_replace( 'http://{{cart.checkout_url}}', '{{cart.checkout_url}}', $body_email_preview );
+			$body_email_preview    = str_replace( 'https://{{cart.checkout_url}}', '{{cart.checkout_url}}', $body_email_preview );
+			$body_email_preview    = str_replace( '{{cart.checkout_url}}', $checkout_url, $body_email_preview );
+			$host                  = wp_parse_url( get_site_url() );
+			$body_email_preview    = str_replace( '{{site.url}}', $host['host'], $body_email_preview );
 
 			if ( false !== strpos( $body_email_preview, '{{cart.product.names}}' ) ) {
 				$body_email_preview = str_replace( '{{cart.product.names}}', Cartflows_Ca_Helper::get_instance()->get_comma_separated_products( $email_data->cart_contents ), $body_email_preview );
 			}
 
-			$admin_user         = get_users(
-				array(
+			$admin_user            = get_users(
+				[
 					'role'   => 'Administrator',
 					'number' => 1,
-				)
+				]
 			);
-			$admin_user         = reset( $admin_user );
-			$admin_first_name   = $admin_user->user_firstname ? $admin_user->user_firstname : __( 'Admin', 'woo-cart-abandonment-recovery' );
-			$body_email_preview = str_replace( '{{admin.firstname}}', $admin_first_name, $body_email_preview );
-			$body_email_preview = str_replace( '{{admin.company}}', get_bloginfo( 'name' ), $body_email_preview );
+			$admin_user            = reset( $admin_user );
+			$admin_first_name      = $admin_user->user_firstname ? $admin_user->user_firstname : __( 'Admin', 'woo-cart-abandonment-recovery' );
+			$subject_email_preview = str_replace( '{{admin.firstname}}', $admin_first_name, $subject_email_preview );
+			$body_email_preview    = str_replace( '{{admin.firstname}}', $admin_first_name, $body_email_preview );
+			$body_email_preview    = str_replace( '{{admin.company}}', get_bloginfo( 'name' ), $body_email_preview );
 
 			$headers  = 'From: ' . $from_email_name . ' <' . $from_email_preview . '>' . "\r\n";
 			$headers .= 'Content-Type: text/html' . "\r\n";
@@ -163,12 +179,23 @@ class Cartflows_Ca_Email_Schedule {
 			$body_email_preview = str_replace( '{{cart.product.table}}', $var, $body_email_preview );
 			$body_email_preview = wpautop( $body_email_preview );
 
+			/**
+			 * Filter to modify email body before sending.
+			 *
+			 * @param string $body_email_preview Email body content.
+			 * @param object $email_data Email data object.
+			 * @param bool   $preview_email Whether this is a preview email.
+			 * @return string Modified email body.
+			 * @since 1.0.0
+			 */
+			$body_email_preview = apply_filters( 'wcf_ca_email_body_before_send', $body_email_preview, $email_data, $preview_email );
+
 			$use_woo_style = $email_instance->get_email_template_meta_by_key( $email_data->email_template_id, 'use_woo_email_style' );
 
 			if ( '1' === $use_woo_style->meta_value ) {
 				ob_start();
 
-				wc_get_template( 'emails/email-header.php', array( 'email_heading' => $subject_email_preview ) );
+				wc_get_template( 'emails/email-header.php', [ 'email_heading' => $subject_email_preview ] );
 				$email_body_template_header = ob_get_clean();
 
 				ob_start();
@@ -180,37 +207,24 @@ class Cartflows_Ca_Email_Schedule {
 				$email_body_template_footer = str_ireplace( '{site_title}', $site_title, $email_body_template_footer );
 
 				$final_email_body = $email_body_template_header . $body_email_preview . $email_body_template_footer;
-				wc_mail( $email_data->email, $subject_email_preview, stripslashes( $final_email_body ), $headers );
-
-				return true;
+				return $this->send_email( $email_data, $subject_email_preview, $final_email_body, $headers, $preview_email, 'wc_mail' );
 			}
 
 			// Ignoring the below rule as rule asking to use third party mailing functions but third-party SMTP plugins overrides the wp_mail and uses their mailing system.
 			//phpcs:disable WordPressVIPMinimum.Functions.RestrictedFunctions.wp_mail_wp_mail
 
-			$mail_result = wp_mail( $email_data->email, $subject_email_preview, stripslashes( $body_email_preview ), $headers );
-			if ( $mail_result ) {
-				return true;
-			} else {
-				// Retry sending mail.
-				$mail_result = wp_mail( $email_data->email, $subject_email_preview, stripslashes( $body_email_preview ), $headers );
-				if ( ! $preview_email ) {
-					return true;
-				}
-				return false;
-			}
-			//phpcs:enable WordPressVIPMinimum.Functions.RestrictedFunctions.wp_mail_wp_mail
-		} else {
-			return false;
-		}
+			return $this->send_email( $email_data, $subject_email_preview, $body_email_preview, $headers, $preview_email, 'wp_mail' );
 
+			//phpcs:enable WordPressVIPMinimum.Functions.RestrictedFunctions.wp_mail_wp_mail
+		}
+			return false;
 	}
 
-		/**
-		 * Create a dummy object for the preview email.
-		 *
-		 * @return stdClass
-		 */
+	/**
+	 * Create a dummy object for the preview email.
+	 *
+	 * @return stdClass
+	 */
 	public function create_dummy_session_for_preview_email() {
 
 		$email_data                    = new stdClass();
@@ -226,32 +240,32 @@ class Cartflows_Ca_Email_Schedule {
 		$email_data->email_subject = $helper_class->sanitize_text_filter( 'email_subject', 'POST' );
 		$email_data->email_body    = html_entity_decode( $email_data->email_body, ENT_COMPAT, 'UTF-8' );
 		$email_data->other_fields  = maybe_serialize(
-			array(
+			[
 				'wcf_first_name' => $current_user->user_firstname,
 				'wcf_last_name'  => $current_user->user_lastname,
-			)
+			]
 		);
 		if ( ! WC()->cart->get_cart_contents_count() ) {
-			$args = array(
+			$args = [
 				'posts_per_page' => 1,
 				'orderby'        => 'rand',
 				'post_type'      => 'product',
-				'meta_query'     => array( //phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
+				'meta_query'     => [ //phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
 					// Exclude out of stock products.
-					array(
+					[
 						'key'     => '_stock_status',
 						'value'   => 'outofstock',
 						'compare' => 'NOT IN',
-					),
-				),
-				'tax_query'      => array( //phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
-					array(
+					],
+				],
+				'tax_query'      => [ //phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
+					[
 						'taxonomy' => 'product_type',
 						'field'    => 'slug',
 						'terms'    => 'simple',
-					),
-				),
-			);
+					],
+				],
+			];
 
 			$random_products = get_posts( $args );
 			if ( ! empty( $random_products ) ) {
@@ -266,14 +280,13 @@ class Cartflows_Ca_Email_Schedule {
 		return $email_data;
 	}
 
-
-		/**
-		 * Generate the view for email product cart block.
-		 *
-		 * @param  string $cart_contents user cart contents details.
-		 * @param  float  $cart_total user cart total.
-		 * @return string
-		 */
+	/**
+	 * Generate the view for email product cart block.
+	 *
+	 * @param  string $cart_contents user cart contents details.
+	 * @param  float  $cart_total user cart total.
+	 * @return string
+	 */
 	public function get_email_product_block( $cart_contents, $cart_total ) {
 
 		$cart_items = maybe_unserialize( $cart_contents );
@@ -283,20 +296,20 @@ class Cartflows_Ca_Email_Schedule {
 		}
 
 		$tr    = '';
-		$style = array(
-			'product_image' => array(
+		$style = [
+			'product_image' => [
 				'style'     => 'height: 42px; width: 42px;',
 				'attribute' => 'width=42 height=42',
-			),
-			'table'         => array(
+			],
+			'table'         => [
 				'style'     => 'color: #636363; border: 1px solid #e5e5e5;',
 				'attribute' => 'align= left;',
-			),
-		);
+			],
+		];
 
 		$style_filter        = apply_filters( 'woo_ca_email_template_table_style', $style );
-		$product_image_style = isset( $style_filter['product_image']['style'] ) ? $style_filter['product_image']['style'] : '';
-		$style               = isset( $style_filter['table']['style'] ) ? $style_filter['table']['style'] : '';
+		$product_image_style = $style_filter['product_image']['style'] ?? '';
+		$style               = $style_filter['table']['style'] ?? '';
 
 		foreach ( $cart_items as $cart_item ) {
 
@@ -311,7 +324,7 @@ class Cartflows_Ca_Email_Schedule {
 				if ( empty( $image_url ) ) {
 					$image_url = CARTFLOWS_CA_URL . 'admin/assets/images/image-placeholder.png';
 				}
-				$tr = $tr . '<tr style=' . $style . ' align="center">
+				$tr .= '<tr style=' . $style . ' align="center">
                            <td style="' . $style . '"><img  class="demo_img" style="' . $product_image_style . '" src="' . esc_url( $image_url ) . '" ' . $style_filter['product_image']['attribute'] . '></td>
                            <td style="' . $style . '">' . $product_name . '</td>
                            <td style="' . $style . '"> ' . $cart_item['quantity'] . ' </td>
@@ -326,7 +339,7 @@ class Cartflows_Ca_Email_Schedule {
 		 */
 		$enable_cart_total = apply_filters( 'woo_ca_recovery_enable_cart_total', false );
 		if ( $enable_cart_total ) {
-			$tr = $tr . '<tr style="' . $style . '" align="center">
+			$tr .= '<tr style="' . $style . '" align="center">
                            <td colspan="4" style="' . $style . '"> ' . __( 'Cart Total ( Cart Total + Shipping + Tax )', 'woo-cart-abandonment-recovery' ) . ' </td>
                            <td style="' . $style . '" >' . wc_price( $cart_total ) . '</td>
                         </tr> ';
@@ -343,13 +356,13 @@ class Cartflows_Ca_Email_Schedule {
 	        </table>';
 	}
 
-		/**
-		 * Check before emails actually send to user.
-		 *
-		 * @param object $email_data email_data.
-		 * @param string $current_cart_data cart data.
-		 * @return bool
-		 */
+	/**
+	 * Check before emails actually send to user.
+	 *
+	 * @param object $email_data email_data.
+	 * @param string $current_cart_data cart data.
+	 * @return bool
+	 */
 	public function check_if_already_purchased_by_email_product_ids( $email_data, $current_cart_data ) {
 
 		global $wpdb;
@@ -363,14 +376,14 @@ class Cartflows_Ca_Email_Schedule {
 		$cart_abandonment_table = $wpdb->prefix . CARTFLOWS_CA_CART_ABANDONMENT_TABLE;
 
 		$orders             = wc_get_orders(
-			array(
+			[
 				'billing_email' => $email_data->email,
-				'status'        => array( 'processing', 'completed' ),
+				'status'        => [ 'processing', 'completed' ],
 				'date_after'    => gmdate(
 					'Y-m-d h:i:s',
 					strtotime( '-30 days' )
 				),
-			)
+			]
 		);
 		$need_to_send_email = true;
 
@@ -383,7 +396,7 @@ class Cartflows_Ca_Email_Schedule {
 					/**
 					 * Remove duplicate captured order for tracking.
 					 */
-					$wpdb->delete( $cart_abandonment_table, array( 'session_id' => sanitize_key( $email_data->session_id ) ) ); // db call ok; no-cache ok.
+					$wpdb->delete( $cart_abandonment_table, [ 'session_id' => sanitize_key( $email_data->session_id ) ] ); // db call ok; no-cache ok.
 					$need_to_send_email = false;
 					break;
 				}
@@ -395,14 +408,14 @@ class Cartflows_Ca_Email_Schedule {
 	/**
 	 * Schedule events for the abadoned carts to send emails.
 	 *
-	 * @param integer $session_id user session id.
-	 * @param boolean $force_reschedule force reschedule.
+	 * @param int  $session_id user session id.
+	 * @param bool $force_reschedule force reschedule.
 	 */
-	public function schedule_emails( $session_id, $force_reschedule = false ) {
+	public function schedule_emails( $session_id, $force_reschedule = false ): void {
 
 		$checkout_details = Cartflows_Ca_Helper::get_instance()->get_checkout_details( $session_id );
 
-		if ( ( $checkout_details->unsubscribed ) || ( WCF_CART_COMPLETED_ORDER === $checkout_details->order_status ) ) {
+		if ( $checkout_details->unsubscribed || ( WCF_CART_COMPLETED_ORDER === $checkout_details->order_status ) ) {
 			return;
 		}
 
@@ -428,41 +441,55 @@ class Cartflows_Ca_Email_Schedule {
 				continue;
 			}
 
+			/**
+			 * Filter to determine if template should be scheduled.
+			 *
+			 * @param bool   $should_schedule Whether template should be scheduled.
+			 * @param object $template Email template object.
+			 * @param object $checkout_details Checkout details object.
+			 * @since 1.0.0
+			 */
+			$should_schedule = apply_filters( 'wcf_ca_should_schedule_template', true, $template, $checkout_details );
+
+			if ( ! $should_schedule ) {
+				continue;
+			}
+
 			$timestamp_str  = '+' . $template->frequency . ' ' . $template->frequency_unit . 'S';
 			$scheduled_time = gmdate( WCF_CA_DATETIME_FORMAT, strtotime( $scheduled_time_from . $timestamp_str ) );
 			$discount_type  = $email_tmpl->get_email_template_meta_by_key( $template->id, 'discount_type' );
-			$discount_type  = isset( $discount_type->meta_value ) ? $discount_type->meta_value : '';
+			$discount_type  = $discount_type->meta_value ?? '';
 			$amount         = $email_tmpl->get_email_template_meta_by_key( $template->id, 'coupon_amount' );
-			$amount         = isset( $amount->meta_value ) ? $amount->meta_value : '';
+			$amount         = $amount->meta_value ?? '';
 
 			$coupon_expiry_date = $email_tmpl->get_email_template_meta_by_key( $template->id, 'coupon_expiry_date' );
 			$coupon_expiry_unit = $email_tmpl->get_email_template_meta_by_key( $template->id, 'coupon_expiry_unit' );
-			$coupon_expiry_date = isset( $coupon_expiry_date->meta_value ) ? $coupon_expiry_date->meta_value : '';
-			$coupon_expiry_unit = isset( $coupon_expiry_unit->meta_value ) ? $coupon_expiry_unit->meta_value : 'hours';
+			$coupon_expiry_date = $coupon_expiry_date->meta_value ?? '';
+			$coupon_expiry_unit = $coupon_expiry_unit->meta_value ?? 'hours';
 
 			$coupon_expiry_date = $coupon_expiry_date ? strtotime( $scheduled_time . ' +' . $coupon_expiry_date . ' ' . $coupon_expiry_unit ) : '';
 
 			$free_shipping_coupon = $email_tmpl->get_email_template_meta_by_key( $template->id, 'free_shipping_coupon' );
-			$free_shipping        = ( isset( $free_shipping_coupon ) && ( $free_shipping_coupon->meta_value ) ) ? 'yes' : 'no';
+			$free_shipping        = isset( $free_shipping_coupon ) && ( $free_shipping_coupon->meta_value ) ? 'yes' : 'no';
 
 			$individual_use_only = $email_tmpl->get_email_template_meta_by_key( $template->id, 'individual_use_only' );
-			$individual_use      = ( isset( $individual_use_only ) && ( $individual_use_only->meta_value ) ) ? 'yes' : 'no';
+			$individual_use      = isset( $individual_use_only ) && ( $individual_use_only->meta_value ) ? 'yes' : 'no';
 
 			$override_global_coupon = $email_tmpl->get_email_template_meta_by_key( $template->id, 'override_global_coupon' );
 
 			$new_coupon_code = '';
 			if ( ! empty( $override_global_coupon ) && ! empty( $override_global_coupon->meta_value ) && $override_global_coupon->meta_value ) {
-				$new_coupon_code = $this->generate_coupon_code( $discount_type, $amount, $coupon_expiry_date, $free_shipping, $individual_use );
+				$new_coupon_code = $this->generate_coupon_code( $discount_type, $amount, $coupon_expiry_date, $free_shipping, $individual_use, $template->id );
 			}
 
 			$wpdb->replace(
 				$email_history_table,
-				array(
+				[
 					'template_id'    => $template->id,
 					'ca_session_id'  => $checkout_details->session_id,
 					'coupon_code'    => $new_coupon_code,
 					'scheduled_time' => $scheduled_time,
-				)
+				]
 			); // db call ok; no-cache ok.
 		}
 	}
@@ -475,24 +502,25 @@ class Cartflows_Ca_Email_Schedule {
 	 * @param string $expiry expiry.
 	 * @param string $free_shipping is free shipping.
 	 * @param string $individual_use use coupon individual.
+	 * @param int    $template_id template ID.
 	 */
-	public function generate_coupon_code( $discount_type, $amount, $expiry = '', $free_shipping = 'no', $individual_use = 'no' ) {
+	public function generate_coupon_code( $discount_type, $amount, $expiry = '', $free_shipping = 'no', $individual_use = 'no', $template_id = 0 ) {
 
 		$coupon_code = '';
 
 			$coupon_code = wp_generate_password( 8, false, false );
 
 			$new_coupon_id = wp_insert_post(
-				array(
+				[
 					'post_title'   => $coupon_code,
 					'post_content' => '',
 					'post_status'  => 'publish',
 					'post_author'  => 1,
 					'post_type'    => 'shop_coupon',
-				)
+				]
 			);
 
-			$coupon_post_data = array(
+			$coupon_post_data = [
 				'discount_type'       => $discount_type,
 				'description'         => WCF_CA_COUPON_DESCRIPTION,
 				'coupon_amount'       => $amount,
@@ -505,13 +533,29 @@ class Cartflows_Ca_Email_Schedule {
 				'apply_before_tax'    => 'yes',
 				'free_shipping'       => $free_shipping,
 				'coupon_generated_by' => WCF_CA_COUPON_GENERATED_BY,
-			);
+			];
 
-			$coupon_post_data = apply_filters( 'woo_ca_generate_coupon', $coupon_post_data );
+			/**
+			 * Filter coupon post data.
+			 *
+			 * @param array $coupon_post_data Coupon post data.
+			 * @param int   $template_id Template ID if available.
+			 */
+			$coupon_post_data = apply_filters( 'woo_ca_generate_coupon', $coupon_post_data, $template_id );
 
 			foreach ( $coupon_post_data as $key => $value ) {
 				update_post_meta( $new_coupon_id, $key, $value );
 			}
+
+			/**
+			 * Action after coupon is created.
+			 *
+			 * @param string $coupon_code Generated coupon code.
+			 * @param int    $new_coupon_id Coupon post ID.
+			 * @param array  $context Additional context.
+			 * @since 1.0.0
+			 */
+			do_action( 'wcf_ca_after_coupon_created', $coupon_code, $new_coupon_id );
 
 			return $coupon_code;
 	}
@@ -537,6 +581,43 @@ class Cartflows_Ca_Email_Schedule {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Send email and trigger actions in one place.
+	 *
+	 * @param object $email_data Email data object.
+	 * @param string $subject Email subject.
+	 * @param string $body Email body.
+	 * @param string $headers Email headers.
+	 * @param bool   $preview_email Whether this is a preview email.
+	 * @param string $mail_type Mail type: 'wc_mail' or 'wp_mail'.
+	 * @return bool
+	 */
+	private function send_email( $email_data, $subject, $body, $headers, $preview_email, $mail_type ) {
+		$result = false;
+
+		//phpcs:disable WordPressVIPMinimum.Functions.RestrictedFunctions.wp_mail_wp_mail
+		if ( 'wc_mail' === $mail_type ) {
+			// WooCommerce style email.
+			wc_mail( $email_data->email, $subject, stripslashes( $body ), $headers );
+			$result = true;
+		} else {
+			// Regular wp_mail with retry mechanism.
+			$result = wp_mail( $email_data->email, $subject, stripslashes( $body ), $headers );
+			if ( ! $result ) {
+				// Retry sending mail.
+				$result = wp_mail( $email_data->email, $subject, stripslashes( $body ), $headers );
+			}
+		}
+		//phpcs:enable WordPressVIPMinimum.Functions.RestrictedFunctions.wp_mail_wp_mail
+
+		// Trigger action after successful email sending (only for non-preview emails).
+		if ( ! $preview_email && $result ) {
+			do_action( 'wcf_ca_after_email_sent', $email_data, $mail_type );
+		}
+
+		return $result;
 	}
 
 }

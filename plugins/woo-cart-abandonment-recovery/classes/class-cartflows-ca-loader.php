@@ -15,8 +15,26 @@ if ( ! class_exists( 'CARTFLOWS_CA_Loader' ) ) {
 	 * Class CARTFLOWS_CA_Loader.
 	 */
 	final class CARTFLOWS_CA_Loader {
+		/**
+		 * Member Variable
+		 *
+		 * @var utils
+		 */
+		public $utils = null;
 
+		/**
+		 * Member Variable
+		 *
+		 * @var Cartflows_Ca_Helper
+		 */
+		public $helper = null;
 
+		/**
+		 * Member Variable
+		 *
+		 * @var Cartflows_Ca_Default_Meta
+		 */
+		public $options = null;
 		/**
 		 * Member Variable
 		 *
@@ -25,12 +43,24 @@ if ( ! class_exists( 'CARTFLOWS_CA_Loader' ) ) {
 		private static $instance = null;
 
 		/**
-		 * Member Variable
-		 *
-		 * @var utils
+		 * Constructor
 		 */
-		public $utils = null;
+		public function __construct() {
 
+			$this->define_constants();
+
+			// Activation hook.
+			register_activation_hook( CARTFLOWS_CA_FILE, [ $this, 'activation_reset' ] );
+
+			// deActivation hook.
+			register_deactivation_hook( CARTFLOWS_CA_FILE, [ $this, 'deactivation_reset' ] );
+			add_action( 'plugins_loaded', [ $this, 'load_libraries' ] );
+			add_action( 'init', [ $this, 'load_cf_textdomain' ] );
+			add_action( 'init', [ $this, 'load_plugin' ], 99 );
+
+			// Let WooCommerce know, Plugin is compatible with HPOS.
+			add_action( 'before_woocommerce_init', [ $this, 'declare_woo_hpos_compatibility' ] );
+		}
 
 		/**
 		 *  Initiator
@@ -55,36 +85,15 @@ if ( ! class_exists( 'CARTFLOWS_CA_Loader' ) ) {
 		}
 
 		/**
-		 * Constructor
-		 */
-		public function __construct() {
-
-			$this->define_constants();
-
-			// Activation hook.
-			register_activation_hook( CARTFLOWS_CA_FILE, array( $this, 'activation_reset' ) );
-
-			// deActivation hook.
-			register_deactivation_hook( CARTFLOWS_CA_FILE, array( $this, 'deactivation_reset' ) );
-
-			add_action( 'plugins_loaded', array( $this, 'load_plugin' ), 99 );
-
-			add_action( 'init', array( $this, 'load_cf_textdomain' ) );
-
-			// Let WooCommerce know, Plugin is compatible with HPOS.
-			add_action( 'before_woocommerce_init', array( $this, 'declare_woo_hpos_compatibility' ) );
-		}
-
-		/**
 		 * Defines all constants
 		 *
 		 * @since 1.0.0
 		 */
-		public function define_constants() {
+		public function define_constants(): void {
 			define( 'CARTFLOWS_CA_BASE', plugin_basename( CARTFLOWS_CA_FILE ) );
 			define( 'CARTFLOWS_CA_DIR', plugin_dir_path( CARTFLOWS_CA_FILE ) );
 			define( 'CARTFLOWS_CA_URL', plugins_url( '/', CARTFLOWS_CA_FILE ) );
-			define( 'CARTFLOWS_CA_VER', '1.3.3' );
+			define( 'CARTFLOWS_CA_VER', '2.0.0' );
 
 			define( 'CARTFLOWS_CA_SLUG', 'cartflows_ca' );
 
@@ -92,6 +101,9 @@ if ( ! class_exists( 'CARTFLOWS_CA_Loader' ) ) {
 			define( 'CARTFLOWS_CA_EMAIL_TEMPLATE_TABLE', 'cartflows_ca_email_templates' );
 			define( 'CARTFLOWS_CA_EMAIL_HISTORY_TABLE', 'cartflows_ca_email_history' );
 			define( 'CARTFLOWS_CA_EMAIL_TEMPLATE_META_TABLE', 'cartflows_ca_email_templates_meta' );
+
+			define( 'CARTFLOWS_CA_DOMAIN_URL', 'https://cartflows.com/cart-abandonment-pro-launch-waitlist/' );
+			define( 'CARTFLOWS_CA_NPS_WEBHOOK_URL', 'https://webhook.ottokit.com/ottokit/c883bcf8-1f86-4a16-9b81-7fd4cfaa3a49' );
 		}
 
 		/**
@@ -101,22 +113,22 @@ if ( ! class_exists( 'CARTFLOWS_CA_Loader' ) ) {
 		 *
 		 * @return void
 		 */
-		public function load_plugin() {
+		public function load_plugin(): void {
 
 			if ( ! function_exists( 'WC' ) ) {
-				add_action( 'admin_notices', array( $this, 'fails_to_load' ) );
+				add_action( 'admin_notices', [ $this, 'fails_to_load' ] );
 				return;
 			}
 
 			if ( 'no' === get_option( 'wcf_ca_all_db_tables_created', false ) ) {
-				add_action( 'admin_notices', array( $this, 'fails_to_create_table' ) );
+				add_action( 'admin_notices', [ $this, 'fails_to_create_table' ] );
 				return;
 			}
 
 			$this->load_helper_files_components();
 			$this->load_core_files();
 			$this->load_core_components();
-
+			
 			/**
 			 * CartFlows Init.
 			 *
@@ -127,7 +139,6 @@ if ( ! class_exists( 'CARTFLOWS_CA_Loader' ) ) {
 			do_action( 'cartflows_ca_init' );
 		}
 
-
 		/**
 		 * Show error notice when all of the required database tables are not created.
 		 *
@@ -135,7 +146,7 @@ if ( ! class_exists( 'CARTFLOWS_CA_Loader' ) ) {
 		 *
 		 * @return void
 		 */
-		public function fails_to_create_table() {
+		public function fails_to_create_table(): void {
 
 			$class = 'notice notice-error';
 			/* translators: %s: html tags */
@@ -144,7 +155,6 @@ if ( ! class_exists( 'CARTFLOWS_CA_Loader' ) ) {
 			printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), wp_kses_post( $message ) );
 		}
 
-
 		/**
 		 * Fires admin notice when Elementor is not installed and activated.
 		 *
@@ -152,7 +162,7 @@ if ( ! class_exists( 'CARTFLOWS_CA_Loader' ) ) {
 		 *
 		 * @return void
 		 */
-		public function fails_to_load() {
+		public function fails_to_load(): void {
 
 			$screen = get_current_screen();
 
@@ -187,7 +197,6 @@ if ( ! class_exists( 'CARTFLOWS_CA_Loader' ) ) {
 			printf( '<div class="%1$s"><p>%2$s</p>%3$s</div>', esc_attr( $class ), wp_kses_post( $message ), wp_kses_post( $button ) );
 		}
 
-
 		/**
 		 * Is woocommerce plugin installed.
 		 *
@@ -210,14 +219,13 @@ if ( ! class_exists( 'CARTFLOWS_CA_Loader' ) ) {
 		 *
 		 * @return void
 		 */
-		public function initialize_cart_abandonment_tables() {
+		public function initialize_cart_abandonment_tables(): void {
 
 			include_once CARTFLOWS_CA_DIR . 'modules/cart-abandonment/classes/class-cartflows-ca-database.php';
 			$db = Cartflows_Ca_Database::get_instance();
 			$db->create_tables();
 			$db->template_table_seeder();
 		}
-
 
 		/**
 		 * Load Helper Files and Components.
@@ -226,45 +234,94 @@ if ( ! class_exists( 'CARTFLOWS_CA_Loader' ) ) {
 		 *
 		 * @return void
 		 */
-		public function load_helper_files_components() {
+		public function load_helper_files_components(): void {
 
+			/* Cart abandonment helper class */
+			include_once CARTFLOWS_CA_DIR . 'classes/class-cartflows-ca-helper.php';
+			include_once CARTFLOWS_CA_DIR . 'classes/class-cartflows-ca-default-meta.php';
 			include_once CARTFLOWS_CA_DIR . 'classes/class-cartflows-ca-utils.php';
-			$this->utils = Cartflows_Ca_Utils::get_instance();
+
+			$this->utils  = Cartflows_Ca_Utils::get_instance();
+			$this->helper = Cartflows_Ca_Helper::get_instance();
+
+			// Check if the options instance is already set. If not, create a new instance.
+			if ( is_null( $this->options ) || empty( $this->options ) ) {
+				$this->options = $this->get_options_instance();
+			}
 		}
 
 		/**
 		 * Load core files.
+		 * 
+		 * @since 1.0.0
+		 * @return void
 		 */
-		public function load_core_files() {
+		public function load_core_files(): void {
+
 			/* Update compatibility. */
 			require_once CARTFLOWS_CA_DIR . 'classes/class-cartflows-ca-update.php';
 
 			include_once CARTFLOWS_CA_DIR . 'classes/class-cartflows-ca-settings.php';
 
 			include_once CARTFLOWS_CA_DIR . 'classes/class-cartflows-ca-tabs.php';
+			
+			include_once CARTFLOWS_CA_DIR . 'classes/class-cartflows-ca-admin-notices.php';
+			
+			if ( ! $this->is_legacy_admin() ) {
+				/* New admin loader with namespace */
+				include_once CARTFLOWS_CA_DIR . 'class-wcar-admin-loader.php';
+			}
+		}
+
+		/**
+		 * Load Libraries file and classes.
+		 *
+		 * @since 2.0.0
+		 * @return void
+		 */
+		public function load_libraries() {
 
 			if ( is_admin() ) {
 				require_once CARTFLOWS_CA_DIR . 'lib/astra-notices/class-astra-notices.php';
 			}
 
 			if ( ! class_exists( 'BSF_Analytics_Loader' ) ) {
-				require_once CARTFLOWS_CA_DIR . '/admin/bsf-analytics/class-bsf-analytics-loader.php';
+				require_once CARTFLOWS_CA_DIR . '/lib/bsf-analytics/class-bsf-analytics-loader.php';
 			}
 
 			$bsf_analytics = BSF_Analytics_Loader::get_instance();
 
 			$bsf_analytics->set_entity(
-				array(
-					'cf' => array(
-						'product_name'   => 'Woocommerce Cart Abandonment Recovery',
-						'usage_doc_link' => 'https://my.cartflows.com/usage-tracking/',
-						'path'           => CARTFLOWS_CA_DIR . 'admin/bsf-analytics',
-						'author'         => 'CartFlows Inc',
-					),
-				)
+				[
+					'cf' => [
+						'hide_optin_checkbox' => true,
+						'product_name'        => 'Woocommerce Cart Abandonment Recovery',
+						'usage_doc_link'      => 'https://my.cartflows.com/usage-tracking/',
+						'path'                => CARTFLOWS_CA_DIR . 'lib/bsf-analytics',
+						'author'              => 'CartFlows Inc',
+						'deactivation_survey' => apply_filters(
+							'wcar_bsf_analytics_deactivation_survey_data',
+							array(
+								array(
+									'id'                => 'deactivation-survey-woo-cart-abandonment-recovery',
+									'popup_logo'        => CARTFLOWS_CA_URL . 'admin/assets/images/wcar-icon.svg',
+									'plugin_version'    => CARTFLOWS_CA_VER,
+									'plugin_slug'       => 'woo-cart-abandonment-recovery',
+									'popup_title'       => __( 'Quick Feedback', 'woo-cart-abandonment-recovery' ),
+									'support_url'       => 'https://cartflows.com/contact/',
+									'popup_description' => __( 'If you have a moment, please share why you are deactivating Cart Abandonment Recovery:', 'woo-cart-abandonment-recovery' ),
+									'show_on_screens'   => array( 'plugins' ),
+								),
+							)
+						),
+					],
+				]
 			);
 
-			include_once CARTFLOWS_CA_DIR . 'classes/class-cartflows-ca-admin-notices.php';
+			// Load the NPS Survey library.
+			if ( ! class_exists( 'Cartflows_Ca_Nps_Survey' ) ) {
+				require_once CARTFLOWS_CA_DIR . 'lib/class-cartflows-ca-nps-survey.php';
+			}
 		}
 
 		/**
@@ -276,7 +333,7 @@ if ( ! class_exists( 'CARTFLOWS_CA_Loader' ) ) {
 		 * @since  1.0.3
 		 * @return void
 		 */
-		public function load_cf_textdomain() {
+		public function load_cf_textdomain(): void {
 
 			// Default languages directory for CartFlows Ca.
 			$lang_dir = CARTFLOWS_CA_DIR . 'languages/';
@@ -300,7 +357,7 @@ if ( ! class_exists( 'CARTFLOWS_CA_Loader' ) ) {
 			/**
 			 * Language Locale for CartFlows Ca
 			 *
-			 * @var $get_locale The locale to use.
+			 * @var The $get_locale locale to use.
 			 * Uses get_user_locale()` in WordPress 4.7 or greater,
 			 * otherwise uses `get_locale()`.
 			 */
@@ -329,55 +386,43 @@ if ( ! class_exists( 'CARTFLOWS_CA_Loader' ) ) {
 		 *
 		 * @return void
 		 */
-		public function load_core_components() {
+		public function load_core_components(): void {
 
-			/* Cart abandonment templates class */
+			/* Cart abandonment module loader class */
 			include_once CARTFLOWS_CA_DIR . 'modules/cart-abandonment/classes/class-cartflows-ca-module-loader.php';
 
 			include_once CARTFLOWS_CA_DIR . 'modules/weekly-email-report/class-cartflows-ca-admin-report-emails.php';
-
 		}
-
 
 		/**
 		 * Activation Reset
 		 */
-		public function activation_reset() {
+		public function activation_reset(): void {
+			// Set the default options.
 			$this->update_default_settings();
+			// Create the database tables if they do not exist.
 			$this->initialize_cart_abandonment_tables();
 		}
 
-
 		/**
-		 *  Set the default cart abandonment settings.
+		 * Set the default cart abandonment settings.
+		 *
+		 * Uses the universal plugin options for centralized default value management.
+		 *
+		 * @since 1.0.0 Original method
+		 * @since 1.3.3 Refactored to use universal plugin options
 		 */
-		public function update_default_settings() {
+		public function update_default_settings(): void {
 
-			$current_user     = wp_get_current_user();
-			$email_from       = ( isset( $current_user->user_firstname ) && ! empty( $current_user->user_firstname ) ) ? $current_user->user_firstname . ' ' . $current_user->user_lastname : 'Admin';
-			$default_settings = array(
-				'wcf_ca_status'                        => 'on',
-				'wcf_ca_gdpr_status'                   => 'off',
-				'wcf_ca_coupon_code_status'            => 'off',
-				'wcf_ca_zapier_tracking_status'        => 'off',
-				'wcf_ca_delete_plugin_data'            => 'off',
-				'wcf_ca_cut_off_time'                  => 15,
-				'wcf_ca_from_name'                     => $email_from,
-				'wcf_ca_from_email'                    => $current_user->user_email,
-				'wcf_ca_reply_email'                   => $current_user->user_email,
-				'wcf_ca_discount_type'                 => 'percent',
-				'wcf_ca_coupon_amount'                 => 10,
-				'wcf_ca_zapier_cart_abandoned_webhook' => '',
-				'wcf_ca_gdpr_message'                  => 'Your email & cart are saved so we can send email reminders about this order.',
-				'wcf_ca_coupon_expiry'                 => 0,
-				'wcf_ca_coupon_expiry_unit'            => 'hours',
-				'wcf_ca_excludes_orders'               => array( 'processing', 'completed' ),
+			// Get plugin options configuration.
+			$plugin_options = $this->get_options_instance()->get_plugin_options();
 
-			);
-
-			foreach ( $default_settings as $option_key => $option_value ) {
-				if ( ! get_option( $option_key ) ) {
-					update_option( $option_key, $option_value );
+			foreach ( $plugin_options as $option_key => $config ) {
+				// Only set default if option doesn't exist.
+				if ( false === get_option( $option_key, false ) ) {
+					// Sanitize the default value before saving.
+					$sanitized_value = $this->options->sanitize_setting_value( $option_key, $config['default'] );
+					update_option( $option_key, $sanitized_value );
 				}
 			}
 		}
@@ -385,19 +430,99 @@ if ( ! class_exists( 'CARTFLOWS_CA_Loader' ) ) {
 		/**
 		 * Deactivation Reset
 		 */
-		public function deactivation_reset() {
+		public function deactivation_reset(): void {
 			wp_clear_scheduled_hook( 'cartflows_ca_update_order_status_action' );
 		}
 
 		/**
 		 *  Declare the woo HPOS compatibility.
 		 */
-		public function declare_woo_hpos_compatibility() {
+		public function declare_woo_hpos_compatibility(): void {
 
 			if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
 				\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', CARTFLOWS_CA_FILE, true );
 			}
 		}
+
+		/**
+		 * Get the options instance.
+		 *
+		 * @since 2.0.0
+		 * @return Cartflows_Ca_Default_Meta
+		 */
+		public function get_options_instance() {
+
+			// Load required classes for activation.
+			if ( ! class_exists( 'Cartflows_Ca_Default_Meta' ) ) {
+				include_once CARTFLOWS_CA_DIR . 'classes/class-cartflows-ca-default-meta.php';
+			}
+
+			if ( is_null( $this->options ) || empty( $this->options ) ) {
+				$this->options = Cartflows_Ca_Default_Meta::get_instance();
+			}
+
+			return $this->options;
+		}
+
+		/**
+		 * Determine which UI to use based on version and user opt-in.
+		 *
+		 * @since 1.3.2
+		 * @return bool True for new UI, false for legacy UI.
+		 */
+		public function should_use_new_ui(): bool {
+			$saved_version = get_option( 'wcf_ca_version', false );
+			$user_opted_in = get_option( 'cartflows_ca_use_new_ui', false );
+
+			// If user has explicitly opted into new UI, use it.
+			if ( $user_opted_in ) {
+				return true;
+			}
+
+			// For versions above 2.0.0, use new UI by default.
+			
+			if ( ! empty( $saved_version ) && false === stripos( $saved_version, 'RC' ) && version_compare( $saved_version, '2.0.0', '>' ) ) {
+				return true;
+			}
+
+			// For versions below 2.0.0, use legacy UI (with notice to switch).
+			return false;
+		}
+
+		/**
+		 * Check if we should show the UI switch notice.
+		 *
+		 * @since 1.3.2
+		 * @return bool True if notice should be shown.
+		 */
+		public function should_show_ui_switch_notice(): bool {
+			$saved_version = get_option( 'wcf_ca_version', false );
+			$user_opted_in = get_option( 'cartflows_ca_use_new_ui', false );
+
+			// Don't show notice if user already opted in.
+			if ( $user_opted_in ) {
+				return false;
+			}
+
+			// Show notice only for versions below or equal to 2.0.0.
+			// Check for null, empty, and exclude RC versions from comparison.
+			if ( ! empty( $saved_version ) && false === stripos( $saved_version, 'RC' ) && version_compare( $saved_version, '2.0.0', '<=' ) ) {
+				return true;
+			}
+
+			return false;
+		}
+
+		/**
+		 * Is legacy admin - backward compatibility wrapper.
+		 *
+		 * @since 1.0.0
+		 * @return bool
+		 */
+		public function is_legacy_admin(): bool {
+			return ! $this->should_use_new_ui();
+		}
+
 	}
 
 	/**
@@ -406,7 +531,6 @@ if ( ! class_exists( 'CARTFLOWS_CA_Loader' ) ) {
 	 */
 	CARTFLOWS_CA_Loader::get_instance();
 }
-
 
 if ( ! function_exists( 'wcf_ca' ) ) {
 	/**
@@ -418,4 +542,3 @@ if ( ! function_exists( 'wcf_ca' ) ) {
 		return CARTFLOWS_CA_Loader::get_instance();
 	}
 }
-

@@ -9,8 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-
-
 ?>
 <div class="wrap">
 	<h1 id="wcf_cart_abandonment_tracking_table"><?php echo esc_html__( 'WooCommerce Cart Abandonment Recovery  ', 'woo-cart-abandonment-recovery' ); ?></h1>
@@ -19,7 +17,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	$helper_class = Cartflows_Ca_Helper::get_instance();
 	$wcar_action  = $helper_class->sanitize_text_filter( 'action', 'GET' );
 	$sub_action   = $helper_class->sanitize_text_filter( 'sub_action', 'GET' );
-
 
 	if ( ! $wcar_action ) {
 		$wcar_action = WCF_ACTION_REPORTS;
@@ -32,13 +29,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	echo wp_kses_post( get_transient( 'wcf_ca_show_message' ) );
 	?>
 
-	<?php if ( WCF_ACTION_SETTINGS === $wcar_action ) : ?>
+	<?php if ( WCF_ACTION_SETTINGS === $wcar_action ) { ?>
 		<?php
 		$this->wcf_display_settings();
 		?>
-	<?php endif; ?>
+	<?php } ?>
 
-	<?php if ( WCF_ACTION_REPORTS === $wcar_action ) : ?>
+	<?php if ( WCF_ACTION_REPORTS === $wcar_action ) { ?>
 
 		<?php
 
@@ -55,12 +52,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 					$email_schedule->schedule_emails( $session_id, true );
 				}
 
-				$param        = array(
+				$param        = [
 					'page'       => WCF_CA_PAGE_NAME,
 					'action'     => WCF_ACTION_REPORTS,
 					'sub_action' => WCF_SUB_ACTION_REPORTS_VIEW,
 					'session_id' => $session_id,
-				);
+				];
 				$redirect_url = add_query_arg( $param, admin_url( '/admin.php' ) );
 
 				wp_safe_redirect( $redirect_url );
@@ -73,9 +70,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		?>
 
-	<?php endif; ?>
+	<?php } ?>
 
-	<?php if ( WCF_ACTION_EMAIL_TEMPLATES === $wcar_action ) : ?>
+	<?php if ( WCF_ACTION_EMAIL_TEMPLATES === $wcar_action ) { ?>
 
 		<?php
 		$email_template_class_inst = Cartflows_Ca_Email_Templates::get_instance();
@@ -119,12 +116,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 		?>
 
 
-	<?php endif; ?>
+	<?php } ?>
 
-	<?php if ( WCF_ACTION_CARTFLOWS_PROMO === $wcar_action ) : ?>
+	<?php if ( WCF_ACTION_CARTFLOWS_PROMO === $wcar_action ) { ?>
 		<?php
 		require_once CARTFLOWS_CART_ABANDONMENT_TRACKING_DIR . 'includes/cartflows-ca-cf-promotion-page.php';
 		?>
-	<?php endif; ?>
+	<?php } ?>
 
 </div>

@@ -80,7 +80,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<h1>
 				<?php
 				echo esc_html( $currency_symbol );
-				echo ( ! empty( $abandoned_report['revenue'] ) || ! is_null( $abandoned_report['revenue'] ) ) ? esc_html( number_format_i18n( floatval( $abandoned_report['revenue'] ), 2 ) ) : '0.0';
+				echo ! empty( $abandoned_report['revenue'] ) || ! is_null( $abandoned_report['revenue'] ) ? esc_html( number_format_i18n( floatval( $abandoned_report['revenue'] ), 2 ) ) : '0.0';
 				?>
 			</h1>
 			<small> <?php esc_html_e( 'Total Recoverable Revenue.', 'woo-cart-abandonment-recovery' ); ?> </small>
@@ -92,7 +92,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<div class="wcf-ca-ibox-content"><h1>
 				<?php
 				echo esc_html( $currency_symbol );
-				echo ( ! empty( $recovered_report['revenue'] ) || ! is_null( $recovered_report['revenue'] ) ) ? esc_html( number_format_i18n( floatval( $recovered_report['revenue'] ), 2 ) ) : '0.0';
+				echo ! empty( $recovered_report['revenue'] ) || ! is_null( $recovered_report['revenue'] ) ? esc_html( number_format_i18n( floatval( $recovered_report['revenue'] ), 2 ) ) : '0.0';
 				?>
 			</h1>
 			<small> <?php esc_html_e( 'Total Recovered Revenue.', 'woo-cart-abandonment-recovery' ); ?> </small>

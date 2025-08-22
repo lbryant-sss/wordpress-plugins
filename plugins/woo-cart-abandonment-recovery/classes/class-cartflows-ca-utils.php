@@ -13,8 +13,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Class Cartflows_Ca_Utils.
  */
 class Cartflows_Ca_Utils {
-
-
 	/**
 	 * Member Variable
 	 *
@@ -36,7 +34,6 @@ class Cartflows_Ca_Utils {
 	 */
 	private static $cart_abandonment_settings = null;
 
-
 	/**
 	 *  Initiator
 	 */
@@ -54,7 +51,7 @@ class Cartflows_Ca_Utils {
 	 */
 	public function is_cart_abandonment_tracking_enabled() {
 
-		$wcf_ca_status = get_option( 'wcf_ca_status' );
+		$wcf_ca_status = $this->wcar_get_option( 'wcf_ca_status' );
 
 		// Check if abandonment cart tracking is disabled or zapier webhook is empty.
 		if ( isset( $wcf_ca_status ) && 'on' === $wcf_ca_status ) {
@@ -71,7 +68,7 @@ class Cartflows_Ca_Utils {
 	 */
 	public function is_zapier_trigger_enabled() {
 
-		$wcf_ca_zapier_tracking_status = get_option( 'wcf_ca_zapier_tracking_status' );
+		$wcf_ca_zapier_tracking_status = $this->wcar_get_option( 'wcf_ca_zapier_tracking_status' );
 
 		// Check if zapier tracking is disabled or zapier webhook is empty.
 		if ( isset( $wcf_ca_zapier_tracking_status ) && 'on' === $wcf_ca_zapier_tracking_status ) {
@@ -84,14 +81,13 @@ class Cartflows_Ca_Utils {
 	/**
 	 * Get cart abandonment tracking cutoff time.
 	 *
-	 * @param  boolean $in_seconds get cutoff time in seconds if true.
+	 * @param  bool $in_seconds get cutoff time in seconds if true.
 	 * @return bool
 	 */
 	public function get_cart_abandonment_tracking_cut_off_time( $in_seconds = false ) {
 
 		$cart_abandoned_time = apply_filters( 'cartflows_ca_cart_abandonment_cut_off_time', WCF_DEFAULT_CUT_OFF_TIME );
 		return $in_seconds ? $cart_abandoned_time * MINUTE_IN_SECONDS : $cart_abandoned_time;
-
 	}
 
 	/**
@@ -101,7 +97,7 @@ class Cartflows_Ca_Utils {
 	 */
 	public function is_gdpr_enabled() {
 
-		$wcf_ca_gdpr_status = get_option( 'wcf_ca_gdpr_status' );
+		$wcf_ca_gdpr_status = $this->wcar_get_option( 'wcf_ca_gdpr_status' );
 
 		// Check if abandonment cart tracking is disabled or zapier webhook is empty.
 		if ( isset( $wcf_ca_gdpr_status ) && 'on' === $wcf_ca_gdpr_status ) {
@@ -111,5 +107,40 @@ class Cartflows_Ca_Utils {
 		return false;
 	}
 
+	/**
+	 * Get the value of a Cart Abandonment option.
+	 *
+	 * @param string $option  The name of the option to retrieve.
+	 * @param mixed  $default The default value to return if the option is not set.
+	 * @return mixed The value of the option, or the default value if not set.
+	 * @since 2.0.0
+	 */
+	public function wcar_get_option( $option, $default = false ) {
 
+		$default_options = wcf_ca()->options->get_default_settings();
+		$value           = get_option( $option );
+
+		if ( ! $value ) {
+			if ( false !== $default ) {
+				$value = $default;
+			}
+		}
+
+		/**
+		 * Filter the options array for Cart Abandonment Settings.
+		 *
+		 * @since  2.0.0
+		 * @var Array
+		 */
+		$default_options = apply_filters( 'wcar_get_option_array', $default_options, $option, $default );
+
+		/**
+		 * Dynamic filter wcar_get_option_$option.
+		 * $option is the name of the Cart Abandonment Setting
+		 *
+		 * @since  2.0.0
+		 * @var Mixed.
+		 */
+		return apply_filters( "wcar_get_option_{$option}", $value, $option, $default );
+	}
 }

@@ -13,19 +13,29 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Class Cartflows_Ca_Admin_Report_Emails.
  */
 class Cartflows_Ca_Admin_Report_Emails {
-
-
 	/**
 	 * Class instance.
 	 *
 	 * @access private
-	 * @var $instance Class instance.
+	 * @var Class $instance instance.
 	 */
 	private static $instance;
 
-		/**
-		 * Initiator
-		 */
+	/**
+	 * Constructor.
+	 */
+	public function __construct() {
+
+		add_action( 'admin_init', [ $this, 'schedule_weekly_report_email' ] );
+
+		add_action( 'cartflows_ca_send_report_summary_email', [ $this, 'send_weekly_report_email' ] );
+
+		add_action( 'admin_init', [ $this, 'unsubscribe_cart_abandonment_weekly_emails' ], 9 );
+	}
+
+	/**
+	 * Initiator
+	 */
 	public static function get_instance() {
 		if ( ! isset( self::$instance ) ) {
 			self::$instance = new self();
@@ -33,24 +43,10 @@ class Cartflows_Ca_Admin_Report_Emails {
 		return self::$instance;
 	}
 
-
-	/**
-	 * Constructor.
-	 */
-	public function __construct() {
-
-		add_action( 'admin_init', array( $this, 'schedule_weekly_report_email' ) );
-
-		add_action( 'cartflows_ca_send_report_summary_email', array( $this, 'send_weekly_report_email' ) );
-
-		add_action( 'admin_init', array( $this, 'unsubscribe_cart_abandonment_weekly_emails' ), 9 );
-
-	}
-
 	/**
 	 * Sechedule the email.
 	 */
-	public function schedule_weekly_report_email() {
+	public function schedule_weekly_report_email(): void {
 
 		$is_emails_enabled = get_option( 'wcf_ca_send_recovery_report_emails_to_admin', 'on' );
 
@@ -68,7 +64,7 @@ class Cartflows_Ca_Admin_Report_Emails {
 	/**
 	 * Send the email.
 	 */
-	public function send_weekly_report_email() {
+	public function send_weekly_report_email(): void {
 
 		$is_emails_enabled = get_option( 'wcf_ca_send_recovery_report_emails_to_admin', 'on' );
 
@@ -118,11 +114,11 @@ class Cartflows_Ca_Admin_Report_Emails {
 
 		$cf_logo          = CARTFLOWS_CA_URL . 'admin/assets/images/cartflows-email-logo.png';
 		$unsubscribe_link = add_query_arg(
-			array(
+			[
 				'page'                     => 'woo-cart-abandonment-recovery',
 				'unsubscribe_weekly_email' => true,
 				'email'                    => $admin_email,
-			),
+			],
 			admin_url( 'admin.php' )
 		);
 
@@ -140,7 +136,7 @@ class Cartflows_Ca_Admin_Report_Emails {
 	/**
 	 *  Unsubscribe the user from the mailing list.
 	 */
-	public function unsubscribe_cart_abandonment_weekly_emails() {
+	public function unsubscribe_cart_abandonment_weekly_emails(): void {
 
 		$unsubscribe = filter_input( INPUT_GET, 'unsubscribe_weekly_email', FILTER_VALIDATE_BOOLEAN );
 		$page        = Cartflows_Ca_Helper::get_instance()->sanitize_text_filter( 'page', 'GET' );
@@ -155,8 +151,8 @@ class Cartflows_Ca_Admin_Report_Emails {
 
 				$email_list = array_filter(
 					$email_list,
-					function( $e ) use ( $email ) {
-						return ( $e !== $email );
+					static function( $e ) use ( $email ) {
+						return $e !== $email;
 					}
 				);
 
@@ -169,7 +165,6 @@ class Cartflows_Ca_Admin_Report_Emails {
 
 			wp_die( esc_html__( 'You have successfully unsubscribed from our weekly emails list.', 'woo-cart-abandonment-recovery' ), esc_html__( 'Unsubscribed', 'woo-cart-abandonment-recovery' ) );
 		}
-
 	}
 
 	/**
@@ -186,21 +181,21 @@ class Cartflows_Ca_Admin_Report_Emails {
 		$recovered_report = $report_instance->get_report_by_type( $from_date, $to_date, WCF_CART_COMPLETED_ORDER );
 		$lost_report      = $report_instance->get_report_by_type( $from_date, $to_date, WCF_CART_LOST_ORDER );
 
-		$total_orders = ( $recovered_report['no_of_orders'] + $abandoned_report['no_of_orders'] + $lost_report['no_of_orders'] );
+		$total_orders = $recovered_report['no_of_orders'] + $abandoned_report['no_of_orders'] + $lost_report['no_of_orders'];
 		if ( $total_orders ) {
-			$conversion_rate = ( $recovered_report['no_of_orders'] / $total_orders ) * 100;
+			$conversion_rate = $recovered_report['no_of_orders'] / $total_orders * 100;
 		}
 
 		$from_date                   = gmdate( 'Y-m-d', strtotime( '-30 days' ) );
 		$last_month_recovered_report = $report_instance->get_report_by_type( $from_date, $to_date, WCF_CART_COMPLETED_ORDER );
 
-		return array(
+		return [
 			'recovered_revenue'            => $recovered_report['revenue'],
 			'recovered_orders'             => $recovered_report['no_of_orders'],
 			'abandonded_orders'            => $abandoned_report['no_of_orders'],
 			'last_month_recovered_Revenue' => $last_month_recovered_report['revenue'],
 			'conversion_rate'              => number_format_i18n( $conversion_rate, 2 ),
-		);
+		];
 	}
 
 }

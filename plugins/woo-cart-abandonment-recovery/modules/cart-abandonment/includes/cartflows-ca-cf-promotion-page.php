@@ -10,51 +10,51 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 $action_url = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=cartflows' ), 'install-plugin_cartflows' );
 // Array of features.
-$features = array(
-	array(
+$features = [
+	[
 		'title'       => __( 'Faster & Optimized Checkout', 'woo-cart-abandonment-recovery' ),
 		'description' => __( "Streamline your checkout process with CartFlows' high-converting pages for a faster, smoother purchase experience.", 'woo-cart-abandonment-recovery' ),
 		'icon'        => '<svg data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z"></path>
                       </svg>',
-	),
-	array(
+	],
+	[
 		'title'       => __( 'Increase AOV with One Click Upsells', 'woo-cart-abandonment-recovery' ),
 		'description' => __( 'Increase your AOV (Average Order Value) by offering one-click upsells without re-entering payment details.', 'woo-cart-abandonment-recovery' ),
 		'icon'        => '<svg data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941"></path>
                       </svg>',
-	),
-	array(
+	],
+	[
 		'title'       => __( 'Increase Revenue with Order Bumps', 'woo-cart-abandonment-recovery' ),
 		'description' => __( 'Let customers add complementary products to their order directly at checkout, increasing sales without disrupting the flow.', 'woo-cart-abandonment-recovery' ),
 		'icon'        => '<svg data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"></path>
               </svg>',
-	),
-	array(
+	],
+	[
 		'title'       => __( 'A/B Split Testing', 'woo-cart-abandonment-recovery' ),
 		'description' => __( 'Try different funnel variations to find the best checkout and sales strategies for higher conversions.', 'woo-cart-abandonment-recovery' ),
 		'icon'        => '<svg data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z"></path>
                 <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z"></path>
               </svg>',
-	),
-	array(
+	],
+	[
 		'title'       => __( 'Conversion Optimized Templates', 'woo-cart-abandonment-recovery' ),
 		'description' => __( 'Quickly build sales funnels, product pages, and checkout flows using ready-made, high-converting templates.', 'woo-cart-abandonment-recovery' ),
 		'icon'        => '<svg data-slot="icon" fill="none" stroke-width="1.5" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6.429 9.75 2.25 12l4.179 2.25m0-4.5 5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0 4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0-5.571 3-5.571-3"></path>
               </svg>',
-	),
-	array(
+	],
+	[
 		'title'       => __( 'Cart Abandonment Recovery', 'woo-cart-abandonment-recovery' ),
 		'description' => __( 'Recover lost sales with email reminders and personalized offers to bring customers back to complete their purchases.', 'woo-cart-abandonment-recovery' ),
 		'icon'        => '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M4 4V9H4.58152M19.9381 11C19.446 7.05369 16.0796 4 12 4C8.64262 4 5.76829 6.06817 4.58152 9M4.58152 9H9M20 20V15H19.4185M19.4185 15C18.2317 17.9318 15.3574 20 12 20C7.92038 20 4.55399 16.9463 4.06189 13M19.4185 15H15" stroke="#F06434" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                       </svg>',
-	),
-);
+	],
+];
 
 ?>
 
@@ -83,7 +83,7 @@ $features = array(
 				<h2><?php _e( 'See How CartFlows Helps You Get More Customers and Revenue', 'woo-cart-abandonment-recovery' ); ?></h2>
 				<div class="wcf-ca-cf-promo-features-grid">
 					<!-- Feature Items -->
-					<?php foreach ( $features as $feature ) : ?>
+					<?php foreach ( $features as $feature ) { ?>
 					<div class="wcf-ca-cf-promo-feature-item">
 						<span class="wcf-ca-cf-promo-feature-icon">
 							<?php echo $feature['icon']; // phpcs:ignore: WordPress.Security.EscapeOutput.OutputNotEscaped ?>
@@ -91,7 +91,7 @@ $features = array(
 						<h3><?php echo esc_html( $feature['title'] ); ?></h3>
 						<p><?php echo esc_html( $feature['description'] ); ?></p>
 					</div>
-					<?php endforeach; ?>
+					<?php } ?>
 					<!-- Repeat for other features -->
 				</div>
 				<p><?php _e( 'These are just some examples. The possibilities are truly endless!', 'woo-cart-abandonment-recovery' ); ?></p>

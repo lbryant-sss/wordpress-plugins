@@ -277,9 +277,9 @@
 			}
 		},
 		toggle_activate_template_on_grid() {
-			let new_state;
 			const $switch = $( this ),
 				state = $switch.attr( 'wcf-ca-template-switch' ),
+				new_state = state === 'on' ? 'off' : 'on',
 				css = state === 'on' ? 'green' : 'red';
 
 			$.post(

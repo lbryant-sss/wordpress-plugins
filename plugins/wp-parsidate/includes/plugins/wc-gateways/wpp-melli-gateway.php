@@ -18,6 +18,12 @@ if (!function_exists('wpp_melli_payment_gateway_init')) {
             {
 
                 private $gateway_name;
+                public $terminal_id;
+                public $merchant_id;
+                public $key;
+                public $title;
+                public $description;
+                public $failed_massage;
 
                 public function __construct()
                 {
@@ -331,5 +337,5 @@ if (!function_exists('wpp_melli_payment_gateway_init')) {
         }
     }
 
-    add_action('plugins_loaded', 'wpp_melli_payment_gateway_init', 10);
+    add_action('before_woocommerce_init', 'wpp_melli_payment_gateway_init', 15);
 }

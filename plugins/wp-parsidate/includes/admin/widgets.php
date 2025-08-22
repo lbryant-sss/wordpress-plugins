@@ -75,11 +75,11 @@ if ( ! function_exists( 'wpp_add_our_dashboard_primary_widget' ) ) {
 			'wpp_dashboard_primary_widget_content',
 			'dashboard',
 			'normal',
-			'high',
+			'high'
 		);
 	}
 
-	add_action( 'admin_init', 'wpp_add_our_dashboard_primary_widget', 1 );
+	add_action( 'wp_dashboard_setup', 'wpp_add_our_dashboard_primary_widget', 1 );
 }
 
 if ( ! function_exists( 'wpp_dashboard_primary_widget_content' ) ) {
@@ -331,16 +331,16 @@ if ( ! function_exists( 'get_mocked_sponsors' ) ) {
 		$sponsors = array();
 		$all_sponsors = array(
 			array(
-				'image_url' => WP_PARSI_URL . 'assets/images/sponsors/mediana2.jpg',
+				'image_url' => WP_PARSI_URL . 'assets/images/sponsors/mediana.jpg',
 				'image_alt' => __( 'Mediana', 'wp-parsidate' ),
-				'link'      => 'https://wp-parsidate.ir/mediana',
-				'end_date'  => '2025-08-23',
+				'link'      => 'https://app.mediana.ir/register?utm_source=parsi_date&utm_medium=banner&utm_campaign=plugin_referral',
+				'end_date'  => '2025-11-21',
 			),
 			array(
-				'image_url' => WP_PARSI_URL . 'assets/images/sponsors/triboon.jpg',
-				'image_alt' => __( 'Triboon', 'wp-parsidate' ),
-				'link'      => 'https://wp-parsidate.ir/triboon',
-				'end_date'  => '2025-08-23',
+				'image_url' => WP_PARSI_URL . 'assets/images/sponsors/seven.jpg',
+				'image_alt' => __( 'Seven', 'wp-parsidate' ),
+				'link'      => 'https://7ho.st/hosting/woocommerce?utm_source=wp-parsidate&utm_medium=banner&utm_campaign=sponsorship-parsidate',
+				'end_date'  => '2025-11-21',
 			),
 		);
 		$today = date( 'Y-m-d' );

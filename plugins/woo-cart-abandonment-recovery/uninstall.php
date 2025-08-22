@@ -18,7 +18,7 @@ $delete_data = get_option( 'wcf_ca_delete_plugin_data' );
 
 if ( 'on' === $delete_data ) {
 
-	$options = array(
+	$options = [
 		'wcf_ca_status',
 		'wcf_ca_gdpr_status',
 		'wcf_ca_coupon_code_status',
@@ -38,7 +38,7 @@ if ( 'on' === $delete_data ) {
 		'wcf_ca_version',
 		'wcf_ca_send_recovery_report_emails_to_admin',
 		'wcf_ca_admin_email',
-	);
+	];
 
 	// Delete all options data.
 	foreach ( $options as $index => $key ) {
@@ -55,4 +55,3 @@ if ( 'on' === $delete_data ) {
 	$wpdb->get_results( "DROP TABLE IF EXISTS {$wpdb->prefix}cartflows_ca_cart_abandonment" );
 	//phpcs:disable WordPress.DB.DirectDatabaseQuery
 }
-

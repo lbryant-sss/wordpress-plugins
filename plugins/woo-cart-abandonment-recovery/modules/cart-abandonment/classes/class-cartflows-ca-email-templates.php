@@ -3,6 +3,7 @@
  * Cart Abandonment
  *
  * @package Woocommerce-Cart-Abandonment-Recovery
+ * @since   1.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -13,7 +14,9 @@ define( 'CARTFLOWS_EMAIL_TEMPLATE_DIR', CARTFLOWS_CA_DIR . 'modules/cart-abandon
 define( 'CARTFLOWS_EMAIL_TEMPLATE_URL', CARTFLOWS_CA_URL . 'modules/cart-abandonment/' );
 
 /**
- * Class for analytics tracking.
+ * Class for analytics tracking
+ *
+ * @since 1.0.0
  */
 class Cartflows_Ca_Email_Templates {
 
@@ -370,14 +373,9 @@ class Cartflows_Ca_Email_Templates {
 			); // db call ok; no cache ok.
 
 			$email_template_id = $wpdb->insert_id;
-			$meta_data         = array(
-				'override_global_coupon' => false,
-				'discount_type'          => 'percent',
-				'coupon_amount'          => 10,
-				'coupon_expiry_date'     => '',
-				'coupon_expiry_unit'     => 'hours',
-				'use_woo_email_style'    => false,
-			);
+			
+			// Use centralized meta defaults.
+			$meta_data = wcf_ca()->options->get_email_template_meta_defaults();
 
 			foreach ( $meta_data as $mera_key => $meta_value ) {
 				$this->add_email_template_meta( $email_template_id, $mera_key, $meta_value );
@@ -403,7 +401,7 @@ class Cartflows_Ca_Email_Templates {
 		global $wpdb;
 		// Can't use placeholders for table/column names, it will be wrapped by a single quote (') instead of a backquote (`).
 		return $wpdb->get_row(
-			$wpdb->prepare( "SELECT  *  FROM {$this->cart_abandonment_template_table_name} WHERE id = %d ", $email_tmpl_id )  //phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+			$wpdb->prepare( "SELECT  *  FROM {$this->cart_abandonment_template_table_name} WHERE id = %d ", $email_tmpl_id ) //phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 		); // db call ok; no cache ok.
 
 	}
@@ -922,7 +920,7 @@ class Cartflows_Ca_Email_Templates {
 		foreach ( $meta_data as $mera_key => $meta_value ) {
 			$this->add_email_template_meta( $email_template_id, $mera_key, $meta_value );
 		}
-
+		
 		$param        = array(
 			'page'                    => WCF_CA_PAGE_NAME,
 			'action'                  => WCF_ACTION_EMAIL_TEMPLATES,
@@ -1224,6 +1222,30 @@ class Cartflows_Ca_Email_Templates {
 			$wpdb->prepare( "SELECT * FROM {$this->email_history_table} WHERE id = %s", $email_history_id ) //phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 		); // db call ok; no cache ok.
 		return $result;
+	}
+
+	/**
+	 * Get all meta key-value pairs for a template, filling missing keys with defaults.
+	 *
+	 * @param int $email_template_id The email template ID.
+	 * @return array
+	 */
+	public function get_all_email_template_meta( $email_template_id ) {
+		global $wpdb;
+		$results = $wpdb->get_results(
+			$wpdb->prepare(
+				"SELECT meta_key, meta_value FROM {$this->email_templates_meta_table} WHERE email_template_id = %d", //phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+				$email_template_id
+			),
+			ARRAY_A
+		);
+		$meta    = [];
+		foreach ( $results as $row ) {
+			$meta[ $row['meta_key'] ] = maybe_unserialize( $row['meta_value'] );
+		}
+		// Fill missing keys with defaults.
+		$defaults = function_exists( 'wcf_ca' ) ? wcf_ca()->options->get_email_template_meta_defaults() : [];
+		return array_merge( $defaults, $meta );
 	}
 }
 
