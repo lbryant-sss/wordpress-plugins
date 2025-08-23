@@ -31,8 +31,8 @@ if ( is_array( $compatible_plugins ) ) :
 			} else {
 				echo esc_html(
 					_n(
-						"The plugin you've installed is compatible. Follow the documentation link to get started.",
-						"The plugins you've installed are compatible. Follow the documentation links to get started.",
+						"This plugin you've installed is compatible. Follow the documentation link to get started.",
+						"These plugins you've installed are compatible. Follow the documentation links to get started.",
 						$compatible_plugin_count,
 						'akismet'
 					)

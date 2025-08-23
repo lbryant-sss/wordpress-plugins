@@ -17,33 +17,6 @@ use AIOSEO\Plugin\Common\Tools;
  */
 trait Vue {
 	/**
-	 * Holds the data for Vue.
-	 *
-	 * @since 4.4.9
-	 *
-	 * @var array
-	 */
-	private $data = [];
-
-	/**
-	 * Optional arguments for setting the data.
-	 *
-	 * @since 4.4.9
-	 *
-	 * @var array
-	 */
-	private $args = [];
-
-	/**
-	 * Holds the cached data.
-	 *
-	 * @since 4.5.1
-	 *
-	 * @var array
-	 */
-	private $cache = [];
-
-	/**
 	 * Returns the data for Vue.
 	 *
 	 * @since   4.0.0
@@ -127,7 +100,7 @@ trait Vue {
 				'llmsUrl'           => aioseo()->llms->getUrl(),
 				'robotsTxtUrl'      => $this->getSiteUrl() . '/robots.txt',
 				'marketingSiteUrl'  => $this->getMarketingSiteUrl(),
-				'upgradeUrl'        => apply_filters( 'aioseo_upgrade_link', AIOSEO_MARKETING_URL ),
+				'upgradeUrl'        => apply_filters( 'aioseo_upgrade_link', AIOSEO_MARKETING_URL . 'lite-upgrade/' ),
 				'staticHomePage'    => 'page' === get_option( 'show_on_front' ) ? get_edit_post_link( get_option( 'page_on_front' ), 'url' ) : null,
 				'feeds'             => [
 					'rdf'            => get_bloginfo( 'rdf_url' ),
@@ -621,7 +594,7 @@ trait Vue {
 
 			foreach ( $entry->translations as $translation ) {
 				// If any of the translated strings contains an HTML line break, we need to ignore it. Otherwise, logging into the admin breaks.
-
+				// https://github.com/awesomemotive/aioseo/issues/2074
 				if ( preg_match( '/<br[\s\/\\\\]*>/', (string) $translation ) ) {
 					continue 2;
 				}

@@ -4,7 +4,7 @@ Donate link: https://woobewoo.com/product/woocommerce-filter/
 Tags: product filter, WooCommerce product filter, shop filter, e-commerce filter, WooCommerce filter
 Requires at least: 3.4.0
 Tested up to: 6.8
-Stable tag: 2.9.5
+Stable tag: 2.9.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -151,8 +151,12 @@ You may help us translate the plugin into your language and get the PRO version 
 
 == Changelog ==
 
+= 2.9.6 - 22/08/2025 =
+* Fix - Text typo fixed.
+* Dev - Coding standards improved.
+
 = 2.9.5 - 20/08/2025 =
-* Dev - Developers - `wbw_woo_product_filter_ignore` filter added.
+* Dev - Developers - `replaceArgsIfBuilderUsed()` - `wbw_woo_product_filter_ignore` argument added (e.g., for the `woocommerce_product_object_query_args` filter).
 
 = 2.9.4 - 15/08/2025 =
 * Dev - Coding standards improved.

@@ -300,6 +300,7 @@ return array(
     'AIOSEO\\Plugin\\Lite\\Main\\Filters' => $baseDir . '/app/Lite/Main/Filters.php',
     'AIOSEO\\Plugin\\Lite\\Options\\InternalOptions' => $baseDir . '/app/Lite/Options/InternalOptions.php',
     'AIOSEO\\Plugin\\Lite\\Options\\Options' => $baseDir . '/app/Lite/Options/Options.php',
+    'AIOSEO\\Plugin\\Lite\\Traits\\Helpers\\Vue' => $baseDir . '/app/Lite/Traits/Helpers/Vue.php',
     'AIOSEO\\Plugin\\Lite\\Traits\\Options' => $baseDir . '/app/Lite/Traits/Options.php',
     'AIOSEO\\Plugin\\Lite\\Utils\\Helpers' => $baseDir . '/app/Lite/Utils/Helpers.php',
     'AIOSEO\\Vendor\\Monolog\\ErrorHandler' => $baseDir . '/vendor_prefixed/monolog/monolog/src/Monolog/ErrorHandler.php',

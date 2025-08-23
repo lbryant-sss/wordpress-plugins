@@ -4,7 +4,7 @@ Tags: SEO, Google Search Console, XML Sitemap, meta description, schema
 Tested up to: 6.8
 Requires at least: 5.4
 Requires PHP: 7.2
-Stable tag: 4.8.6
+Stable tag: 4.8.6.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
 
@@ -234,6 +234,12 @@ AIOSEO&reg; is a registered trademark of Semper Plugins LLC. When writing about 
 
 == Changelog ==
 
+**New in Version 4.8.6.1**
+
+* Updated: Prevent potential plugin conflicts due to the loading of dependencies multiple times.
+* Updated: Local SEO render options for Opening Hours are now hidden when feature is disabled.
+* Fixed: Loading spinner for SEO Revisions in sidebar menu not aligned.
+
 **New in Version 4.8.6**
 
 * New: Site Audit - Get a detailed report of SEO issues for all posts and terms on your site, discover why these issues are important and how you can fix them. 🔨
@@ -322,15 +328,6 @@ AIOSEO&reg; is a registered trademark of Semper Plugins LLC. When writing about 
 * Fixed: PHP notice in Author SEO (E-E-A-T) addon due to translations loaded too early.
 * Fixed: SEO Site Score widget sometimes not displaying results.
 
-**New in Version 4.8.2**
-
-* New: Index Status Report - Quickly identify which posts are indexed by Google and why others aren’t—with granular details on crawl status, fetch results, robots.txt and structured data.
-* Updated: Improved Table of Contents block rendering performance.
-* Updated: Hardened limit and order clauses in database queries.
-* Fixed: WP 6.8 deprecation warning for default Table of Contents and FAQ block styles.
-* Fixed: Potential page freeze issue when converting Table of Contents block from Group to Columns via block toolbar.
-* Fixed: Console error in Table of Contents block when switching between Visual and Code Editor in Block Editor.
-
 **See our [changelog on aioseo.com](https://aioseo.com/changelog/?utm_source=wprepo&utm_medium=link&utm_campaign=aioseo) for previous releases.**
 
 == Frequently Asked Questions ==
@@ -412,6 +409,6 @@ Additionally, AIOSEO can also provide you with data on the most frequently used 
 
 == Upgrade Notice ==
 
-= 4.8.6 =
+= 4.8.6.1 =
 
 This update adds major improvements and bug fixes.

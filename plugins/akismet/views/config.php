@@ -168,7 +168,7 @@ $kses_allow_link_href = array(
 										</div>
 										<div>
 											<label class="akismet-settings__row-input-label" for="akismet_strictness_0">
-												<input type="radio" name="akismet_strictness" id="akismet_strictness_0" value="0" <?php checked( '0', get_option( 'akismet_strictness' ) ); ?> />
+												<input type="radio" name="akismet_strictness" id="akismet_strictness_0" value="0" <?php checked( true, get_option( 'akismet_strictness' ) !== '1' ); ?> />
 												<span class="akismet-settings__row-label-text">
 													<?php esc_html_e( 'Always put spam in the Spam folder for review.', 'akismet' ); ?>
 												</span>
