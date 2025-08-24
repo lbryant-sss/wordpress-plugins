@@ -5,7 +5,7 @@ Tags: events, calendar, tickets, bookings, appointments
 Text Domain: events-manager
 Requires at least: 6.1
 Tested up to: 6.8
-Stable tag: 7.0.5
+Stable tag: 7.1
 Requires PHP: 7.0
 License: GPLv2
 
@@ -32,6 +32,9 @@ Events Manager is a full-featured event calendar, bookings and registration mana
  * Network-wide Global Booking Management
  * BuddyPress and BuddyBoss Support
  * Create modular (independent) event subsites or inter-networked events
+* **NEW** Multiple custom event types (Archetypes), such as Workshops, Events, Webinars, Appointments etc.
+ * Customize your labels, slugs and CPT names
+ * Enable or disable specific features for specific event archetypes.
 * Multiple Location Types
  * Physical Locations
  * Online Events (URLs)
@@ -54,7 +57,7 @@ Events Manager is a full-featured event calendar, bookings and registration mana
 * Add to Google Calendar buttons
 * RSS Feeds
 * Compatible with SEO plugins
-* Timezone Support - create events in different timezones 
+* Timezone Support - create events in different timezones
 * Plenty of template tags and shortcodes for use in your posts and pages
 * Actively maintained and supported
 * Lots of documentation and tutorials
@@ -164,9 +167,13 @@ See our [FAQ](http://wp-events-plugin.com/documentation/faq/) page for helps wit
 18. Grid view for displaying your upcoming events at a glance
 
 == Changelog ==
-= 7.0.5.2 (dev) =
+= 7.1 =
+* Rewritten custom posts architecture to introduce Archetypes; create multiple event CPTs running off Events Manager infrastructure with individually customizable settings (formats, enabled/disabled features, etc.)
+* Added functionality to rename labels and CPTs of main event CPT and locations
+* Changed event_type single 'event' type to 'single' to avoid confusion with CPTs
+* Added fix and warning for when location Google coordinates aren’t originally saved and location editor is reopened, prompting user to re-save with updated coordinates
 * Fixed pagination errors when events list default scope is selected as 'all'
-* Added new event list scope default option which is the base scope for shortcodes, widgets, functions etc. outside the events page (found on settings page)
+* Added new event list scope default option, used as base scope for shortcodes, widgets, and functions outside the events page (found on settings page)
 
 = 7.0.5 =
 * Improved installation/upgrade logic to allow users to re-trigger `dbem_version` upgrades from 6 to 7 without duplicating recurrence set data.
