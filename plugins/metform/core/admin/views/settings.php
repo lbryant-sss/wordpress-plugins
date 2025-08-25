@@ -468,12 +468,12 @@ if (!function_exists('mf_dummy_checkbox_input')) {
 											</div>
 										</div>
 
-										<div class="attr-row" style="margin: 0 -5px;">
-											<div class="attr-col-lg-12">
+										<div class="attr-row">
+											<div class="attr-col-lg-12" style="padding: 0px;">
 												<div class="mf-recaptcha-settings-wrapper">
 													<div class="mf-recaptcha-settings" id="mf-recaptcha-v2">
 														<div class="attr-row">
-															<div class="attr-col-lg-6">
+															<div class="attr-col-lg-6" style="padding: 0px 5px 0px 0px;">
 																<div class="mf-setting-input-group">
 																	<label class="mf-setting-label"><?php esc_html_e('Site key:', 'metform'); ?>
 																	</label>
@@ -483,7 +483,7 @@ if (!function_exists('mf_dummy_checkbox_input')) {
 																	</p>
 																</div>
 															</div>
-															<div class="attr-col-lg-6">
+															<div class="attr-col-lg-6" style="padding: 0px 0px 0px 5px;">
 																<div class="mf-setting-input-group">
 																	<label class="mf-setting-label"><?php esc_html_e('Secret key:', 'metform'); ?>
 																	</label>
@@ -577,7 +577,7 @@ if (!function_exists('mf_dummy_checkbox_input')) {
 											<div class="tab-pane" id="mf-other-tab">
 												<div class="info-list">
 													<div class="attr-row">
-														<div class="attr-col-lg-12">
+														<div class="attr-col-lg-12" style="padding: 0px;">
 															<div class="mf-setting-input-group">
 																<label class="mf-setting-label mf-setting-switch">
 																	<input type="checkbox" name="mf_save_progress" value="1" class="attr-form-control" <?php echo esc_attr((isset($settings['mf_save_progress'])) ? 'Checked' : ''); ?> />
@@ -593,7 +593,7 @@ if (!function_exists('mf_dummy_checkbox_input')) {
 												</div>
 												<div class="info-list">
 													<div class="attr-row">
-														<div class="attr-col-lg-12">
+														<div class="attr-col-lg-12" style="padding: 0px;">
 															<div class="mf-setting-input-group">
 																<label class="mf-setting-label mf-setting-switch">
 																	<input type="checkbox" name="mf_field_name_show" value="1" class="attr-form-control" <?php echo esc_attr((isset($settings['mf_field_name_show'])) ? 'Checked' : ''); ?> />
@@ -996,7 +996,7 @@ if (!function_exists('mf_dummy_checkbox_input')) {
 												<div class="attr-tab-pane attr-active attr-in" id="mf-google-sheet-tab" role="tabpanel" aria-labelledby="nav-home-tab">
 													<div class="attr-row">
 
-														<div class="attr-col-lg-6">
+														<div class="attr-col-lg-6" style="padding: 0px 5px 0px 0px;">
 															<div class="mf-setting-input-group">
 																<label for="attr-input-label" class="mf-setting-label mf-setting-label attr-input-label"><?php esc_html_e('Google Client Id:', 'metform'); ?></label>
 																<input type="text" name="mf_google_sheet_client_id" value="<?php echo esc_attr(isset($settings['mf_google_sheet_client_id']) ? $settings['mf_google_sheet_client_id'] : ''); ?>" class="mf-setting-input mf-google-sheet-api-key attr-form-control" placeholder="<?php esc_html_e('Google OAuth Client Id', 'metform'); ?>">
@@ -1005,7 +1005,7 @@ if (!function_exists('mf_dummy_checkbox_input')) {
 																</p>
 															</div>
 														</div>
-														<div class="attr-col-lg-6">
+														<div class="attr-col-lg-6" style="padding: 0px 0px 0px 5px;">
 															<div class="mf-setting-input-group">
 																<label for="attr-input-label" class="mf-setting-label mf-setting-label attr-input-label"><?php esc_html_e('Google Client Secret:', 'metform'); ?></label>
 																<input type="text" name="mf_google_sheet_client_secret" value="<?php echo esc_attr(isset($settings['mf_google_sheet_client_secret']) ? $settings['mf_google_sheet_client_secret'] : ''); ?>" class="mf-setting-input mf-google-sheet-api-key attr-form-control" placeholder="<?php esc_html_e('Google OAuth Client Secret', 'metform'); ?>">

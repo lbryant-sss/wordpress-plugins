@@ -350,7 +350,7 @@
                                         <div class="mf-input-group mf-google-spreadsheets-selection mf-form-top-spacing mf-form-bottom-spacing">
                                             <label for="attr-input-label" class="attr-input-label">
                                                 <span><?php esc_html_e('Spreadsheets List:', 'metform'); ?></span>
-                                                <span class="refresh-icon">
+                                                <span class="refresh-icon  metfrom-btn-refresh-google-spreadsheets-list">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" fill="none" class="metfrom-btn-refresh-hubsopt-list">
                                                         <?php \MetForm\Utils\Util::metform_content_renderer( $refresh_icon_path); ?>
                                                     </svg>
@@ -364,7 +364,7 @@
                                         </div>
                                         <div class="mf-input-group mf-google-sheets-selection" style="margin-bottom: 4px;">
                                             <label for="attr-input-label" class="attr-input-label"><?php esc_html_e('Sheets List:', 'metform'); ?>
-                                                <span class="refresh-icon">
+                                                <span class="refresh-icon metfrom-btn-refresh-google-sheets-list">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" fill="none" class="metfrom-btn-refresh-hubsopt-list">
                                                         <?php \MetForm\Utils\Util::metform_content_renderer( $refresh_icon_path); ?>
                                                     </svg>

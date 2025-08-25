@@ -23,7 +23,7 @@ class WPLE_Ajax
         //since 7.8.0
         add_action('wp_ajax_wple_mscan_ignorefile', [$this, 'wple_malware_ignorefile']);
 
-        add_action('wp_ajax_wple_dismiss_notice', [$this, 'wple_dismiss_notice']);;
+        add_action('wp_ajax_wple_dismiss_notice', [$this, 'wple_dismiss_notice']);
     }
 
     /**
