@@ -242,6 +242,41 @@ class Contact_Form_Block {
 					),
 				)
 			);
+
+			Blocks::jetpack_register_block(
+				'jetpack/phone-input',
+				array(
+					'supports'     => array(
+						'__experimentalBorder' => array(
+							'color'  => true,
+							'radius' => true,
+							'style'  => true,
+							'width'  => true,
+						),
+						'color'                => array(
+							'text'       => true,
+							'background' => true,
+							'gradients'  => false,
+						),
+						'typography'           => array(
+							'fontSize'                     => true,
+							'lineHeight'                   => true,
+							'__experimentalFontFamily'     => true,
+							'__experimentalFontWeight'     => true,
+							'__experimentalFontStyle'      => true,
+							'__experimentalTextTransform'  => true,
+							'__experimentalTextDecoration' => true,
+							'__experimentalLetterSpacing'  => true,
+						),
+					),
+					'uses_context' => array(
+						'jetpack/field-share-attributes',
+						'jetpack/field-prefix-options',
+						'jetpack/field-prefix-default',
+						'jetpack/field-prefix-onChange',
+					),
+				)
+			);
 		}
 		// Field render methods.
 		Blocks::jetpack_register_block(
@@ -395,6 +430,31 @@ class Contact_Form_Block {
 					'provides_context' => array( 'jetpack/field-required' => 'required' ),
 				)
 			);
+
+			Blocks::jetpack_register_block(
+				'jetpack/field-phone',
+				array(
+					'render_callback'  => array( Contact_Form_Plugin::class, 'gutenblock_render_field_phone' ),
+					'attributes'       => array(
+						'showCountrySelector' => array(
+							'type'    => 'boolean',
+							'default' => true,
+						),
+						'default'             => array(
+							'type'    => 'string',
+							'default' => '',
+							'role'    => 'content',
+						),
+					),
+					'supports'         => array(
+						'interactivity' => true,
+					),
+					'provides_context' => array(
+						'jetpack/field-required'       => 'required',
+						'jetpack/field-prefix-default' => 'default',
+					),
+				)
+			);
 		}
 
 		// Paid file field block
@@ -511,7 +571,7 @@ class Contact_Form_Block {
 	 */
 	public static function pre_render_contact_form( $pre_render, $parsed_block ) {
 		// Only process contact form blocks
-		if ( $parsed_block['blockName'] !== 'jetpack/contact-form' ) {
+		if ( ! isset( $parsed_block['blockName'] ) || $parsed_block['blockName'] !== 'jetpack/contact-form' ) {
 			return $pre_render;
 		}
 

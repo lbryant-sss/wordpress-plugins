@@ -13,4 +13,5 @@ return array(
     'WPBannerize\\PureCSSSwitch\\' => array($vendorDir . '/wpbones/pure-css-switch/src'),
     'WPBannerize\\GeoLocalizer\\' => array($vendorDir . '/wpbones/geolocalizer/src'),
     'WPBannerize\\' => array($baseDir . '/plugin'),
+    'Detection\\' => array($vendorDir . '/mobiledetect/mobiledetectlib/src'),
 );

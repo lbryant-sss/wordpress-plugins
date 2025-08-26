@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/donate/?hosted_button_id=L77YYA8AVH2UW
 Tags: Banner Management, Advertising, Marketing Tools, Ad Placement, Campaign Optimization
 Requires at least: 6.2
 Tested up to: 6.7
-Stable tag: 1.10.0
+Stable tag: 1.11.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -67,6 +67,28 @@ This section describes [how to install](https://bannerize.vercel.app/docs/Gettin
 Your screenshot
 
 == Changelog ==
+
+= 1.11.0 =
+
+Security & Enhancement Updates
+
+🔒 Security
+* SSRF Protection: Added Server-Side Request Forgery (SSRF) protection for external banner image URLs
+* Added wp_bannerize_is_remote_image() method to validate remote image URLs
+* Only allows JPEG, PNG, and GIF image formats from external sources
+* Returns HTTP 200 status validation for remote images
+* Prevents malicious URL exploitation through banner uploads
+* Added admin error notice when invalid image URLs are submitted
+
+ 🎨 Code Quality
+* Code Formatting: Standardized code indentation and formatting in WPBannerizeServiceProvider.php
+* Improved readability and consistency across the codebase
+* Fixed indentation issues throughout the service provider class
+
+🚨 User Experience
+* Error Handling: Added user-friendly error messages
+* Display admin notice when invalid banner image URLs are entered
+* Clear feedback for users when external image URLs fail validation
 
 = 1.10.0 =
 

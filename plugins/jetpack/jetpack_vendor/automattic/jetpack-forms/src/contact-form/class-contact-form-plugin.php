@@ -499,6 +499,25 @@ class Contact_Form_Plugin {
 					continue;
 				}
 
+				// This input is exclusively used by the new phone field (not telephone).
+				if ( 'jetpack/phone-input' === $block_name ) {
+					$atts['placeholder'] = $inner_block['attrs']['placeholder'] ?? '';
+
+					$input_attrs           = self::get_block_support_classes_and_styles( $block_name, $inner_block['attrs'] );
+					$atts['inputclasses']  = 'wp-block-jetpack-input jetpack-field__input-element';
+					$atts['inputclasses'] .= isset( $input_attrs['class'] ) ? ' ' . $input_attrs['class'] : '';
+					$atts['inputstyles']   = $input_attrs['style'] ?? null;
+
+					/*
+						Borders for the outlined notched HTML.
+					*/
+					$style_variation_data                     = self::get_style_variation_shortcode_attributes( $block_name, $inner_block['attrs'] );
+					$atts                                     = array_merge( $atts, $style_variation_data );
+					$add_block_style_classes_to_field_wrapper = true;
+
+					continue;
+				}
+
 				// The following handles when option blocks are a direct inner block for a field e.g. singular checkbox field.
 				if ( 'jetpack/option' === $block_name ) {
 					$atts['label']                            = $inner_block['attrs']['label'] ?? $inner_block['attrs']['defaultLabel'] ?? '';
@@ -796,10 +815,10 @@ class Contact_Form_Plugin {
 		}
 
 		// Use WordPress Style Engine for block supports (dimensions, spacing, background, etc.)
-		$generated_styles = wp_style_engine_get_styles( $attributes['style'] ?? null );
+		$generated_styles = wp_style_engine_get_styles( $attributes['style'] ?? array() );
 
-		// Combine all styles
-		$all_styles = array_filter( array_merge( $custom_styles, explode( ';', $generated_styles['css'] ) ) );
+		$generated_css_parts = ! empty( $generated_styles['css'] ) ? explode( ';', $generated_styles['css'] ) : array();
+		$all_styles          = array_filter( array_merge( $custom_styles, $generated_css_parts ) );
 
 		$extra_attributes = array();
 		if ( ! empty( $all_styles ) ) {
@@ -977,6 +996,20 @@ class Contact_Form_Plugin {
 	 */
 	public static function gutenblock_render_field_telephone( $atts, $content, $block ) {
 		$atts = self::block_attributes_to_shortcode_attributes( $atts, 'telephone', $block );
+		return Contact_Form::parse_contact_field( $atts, $content, $block );
+	}
+
+	/**
+	 * Render the phone field.
+	 *
+	 * @param array    $atts - the block attributes.
+	 * @param string   $content - html content.
+	 * @param WP_Block $block - the block instance object.
+	 *
+	 * @return string HTML for the contact form field.
+	 */
+	public static function gutenblock_render_field_phone( $atts, $content, $block ) {
+		$atts = self::block_attributes_to_shortcode_attributes( $atts, 'phone', $block );
 		return Contact_Form::parse_contact_field( $atts, $content, $block );
 	}
 
@@ -3217,11 +3250,13 @@ class Contact_Form_Plugin {
 	 */
 	public static function gutenblock_render_field_slider( $atts, $content, $block ) {
 		// Get min, max, and default from the parent block's attributes.
-		$parent_attrs    = $block->parsed_block['attrs'] ?? array();
-		$atts['min']     = isset( $parent_attrs['min'] ) ? $parent_attrs['min'] : 0;
-		$atts['max']     = isset( $parent_attrs['max'] ) ? $parent_attrs['max'] : 100;
-		$atts['default'] = isset( $parent_attrs['default'] ) ? $parent_attrs['default'] : 0;
-		$atts['step']    = isset( $parent_attrs['step'] ) ? $parent_attrs['step'] : 1;
+		$parent_attrs     = $block->parsed_block['attrs'] ?? array();
+		$atts['min']      = isset( $parent_attrs['min'] ) ? $parent_attrs['min'] : 0;
+		$atts['max']      = isset( $parent_attrs['max'] ) ? $parent_attrs['max'] : 100;
+		$atts['default']  = isset( $parent_attrs['default'] ) ? $parent_attrs['default'] : 0;
+		$atts['step']     = isset( $parent_attrs['step'] ) ? $parent_attrs['step'] : 1;
+		$atts['minLabel'] = isset( $parent_attrs['minLabel'] ) ? $parent_attrs['minLabel'] : '';
+		$atts['maxLabel'] = isset( $parent_attrs['maxLabel'] ) ? $parent_attrs['maxLabel'] : '';
 
 		$atts = self::block_attributes_to_shortcode_attributes( $atts, 'slider', $block );
 		return Contact_Form::parse_contact_field( $atts, $content, $block );

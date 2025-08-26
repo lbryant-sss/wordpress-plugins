@@ -217,6 +217,38 @@ class WPBannerizeCustomPostType extends WordPressCustomPostTypeServiceProvider
   }
 
   /**
+   * Check if the given URL is a remote image.
+   *
+   * @param string $url The URL to check.
+   * @return bool True if the URL is a remote image, false otherwise.
+   */
+  private function wp_bannerize_is_remote_image($url)
+  {
+    if (!filter_var($url, FILTER_VALIDATE_URL)) {
+      return false;
+    }
+
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_NOBODY, true);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+
+    curl_exec($ch);
+
+    $contentType = curl_getinfo($ch, CURLINFO_CONTENT_TYPE);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+    curl_close($ch);
+
+    if ($httpCode === 200 && in_array($contentType, ['image/jpeg', 'image/png', 'image/gif'])) {
+      return true;
+    }
+
+    return false;
+  }
+
+  /**
    * Override this method to save/update your custom data.
    * This method is called by hook action save_post_{post_type}`
    *
@@ -238,6 +270,18 @@ class WPBannerizeCustomPostType extends WordPressCustomPostTypeServiceProvider
       $target = esc_attr($_POST['wp_bannerize_banner_target']);
       $urlMine = $type == 'local' ? $url : $urlExt;
       $size = $this->getBanner($post_id)->getSizeWithURL($urlMine);
+
+      // SSRF fix
+      if (!empty($urlExt)) {
+        if (!$this->wp_bannerize_is_remote_image($urlExt)) {
+          // Remove or do not save the invalid URL
+          delete_post_meta($post_id, 'wp_bannerize_banner_external_url');
+          // Show an error message to the user
+          add_filter('redirect_post_location', function ($location) {
+            return add_query_arg('banner_image_error', 1, $location);
+          });
+        }
+      }
 
       if (isset($size) && is_array($size) && count($size) >= 2) {
         $width = !empty($size[0]) ? filter_var($size[0], FILTER_SANITIZE_NUMBER_INT) . 'px' : null;

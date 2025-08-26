@@ -8,6 +8,7 @@ class Box extends SingleEntity {
 	public $auto_open       = 'no';
 	public $auto_delay_open = 1000;
 	public $lazy_load       = 'no';
+	public $allow_outside_close  = 'no';
 	public $header          = '<h3 style="
 									font-size: 26px;
 									font-weight: bold;

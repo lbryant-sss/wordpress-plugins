@@ -19,6 +19,9 @@
     "email": "wpbones.info@gmail.com",
     "issues": "https://github.com/wpbones/useragent/issues"
   },
+  "require": {
+    "mobiledetect/mobiledetectlib": "^3.74"
+  },
   "autoload": {
     "psr-4": {
       "WPBannerize\\UserAgent\\": "src/"

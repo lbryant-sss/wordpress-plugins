@@ -22,9 +22,13 @@ class ComposerStaticInitc81ed5d1fcacf6e393db54e42bfe8664
             'WPBannerize\\WPBones\\' => 15,
             'WPBannerize\\UserAgent\\' => 17,
             'WPBannerize\\PureCSSTabs\\' => 19,
-            'WPBannerize\\PureCSSSwitch\\' => 21,
+            'WPBannerize\\PureCSSSwitch\\' => 26,
             'WPBannerize\\GeoLocalizer\\' => 25,
             'WPBannerize\\' => 12,
+        ),
+        'D' => 
+        array (
+            'Detection\\' => 10,
         ),
     );
 
@@ -57,10 +61,15 @@ class ComposerStaticInitc81ed5d1fcacf6e393db54e42bfe8664
         array (
             0 => __DIR__ . '/../..' . '/plugin',
         ),
+        'Detection\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mobiledetect/mobiledetectlib/src',
+        ),
     );
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Detection\\MobileDetect' => __DIR__ . '/..' . '/mobiledetect/mobiledetectlib/src/MobileDetect.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

@@ -3,6 +3,130 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 5.2.0 (2025-08-25)
+
+
+### Features
+
+* translate into Slovenian and Croatia (CU-8699ce5ba)
+
+
+<details><summary>Dependency updates @devowl-wp/api-real-cookie-banner 1.2.1</summary>
+
+
+**_Purpose of dependency:_** _Shared typings for all Real Cookie Banner backend._
+##### Bug Fixes
+
+* added sl and hr to supported languages (CU-8699ce5ba)</details>
+
+<details><summary>Dependency updates @devowl-wp/customize 1.13.0</summary>
+
+
+**_Purpose of dependency:_** _Abstract utility for live preview (customize)_
+##### Features
+
+* translate into Slovenian and Croatia (CU-8699ce5ba)</details>
+
+<details><summary>Dependency updates @devowl-wp/multilingual 1.14.0</summary>
+
+
+**_Purpose of dependency:_** _Provide helper functionality for multilingual plugins like WPML and PolyLang_
+##### Features
+
+* translate into Slovenian and Croatia (CU-8699ce5ba)</details>
+
+<details><summary>Dependency updates @devowl-wp/real-product-manager-wp-client 1.20.0</summary>
+
+
+**_Purpose of dependency:_** _A WordPress client for Real Product Manager_
+##### Features
+
+* translate into Slovenian and Croatia (CU-8699ce5ba)</details>
+
+<details><summary>Dependency updates @devowl-wp/real-queue 1.1.0</summary>
+
+
+**_Purpose of dependency:_** _Provide a promise-based queue system working in frontend for client and server tasks_
+##### Features
+
+* translate into Slovenian and Croatia (CU-8699ce5ba)</details>
+
+<details><summary>Dependency updates @devowl-wp/real-utils 1.14.0</summary>
+
+
+**_Purpose of dependency:_** _Create cross-selling ads, about page, rating and newsletter input for WP Real plugins._
+##### Features
+
+* translate into Slovenian and Croatia (CU-8699ce5ba)</details>
+
+<details><summary>Dependency updates @devowl-wp/utils 1.20.0</summary>
+
+
+**_Purpose of dependency:_** _Utility functionality for all your WordPress plugins._
+##### Features
+
+* translate into Slovenian and Croatia (CU-8699ce5ba)</details>
+
+<details><summary>Development dependency update @devowl-wp/api 1.2.1</summary>
+
+
+**_Purpose of dependency:_** _Shared typings for all Node.js backends and frontends._
+##### Bug Fixes
+
+* make API contracts aware of recursion, parameters to object for refinable schema and switch language contexts correctly (CU-8699z5dt7)</details>
+
+<details><summary>Development dependency update @devowl-wp/continuous-localization 0.8.24</summary>
+
+
+**_Purpose of dependency:_** _Provide a CLI to push and pull localization files from different translation management systems._
+##### Bug Fixes
+
+* after creating a language wait for component to be idle and no task is running (CU-8699ce5ba)
+
+
+##### Continuous Integration
+
+* handle 404 error correctly after tasks was in progress previously (CU-8699ce5ba)</details>
+
+<details><summary>Development dependency update @devowl-wp/webpack-config 0.2.47</summary>
+
+
+**_Purpose of dependency:_** _Webpack config builder for multiple ecosystems like standalone React frontends, Antd, Preact and WordPress._
+##### Build System
+
+* ignore async_hooks in webpack (CU-8699z5dt7)</details>
+
+
+
+
+
+## 5.1.20 (2025-08-08) (not released)
+
+**Note:** This version of the package has not (yet) been released publicly. This happens if changes have been made in dependencies that do not affect this package (e.g. changes for the development of the package). The changes will be rolled out with the next official update.
+
+**Note:** This package (@devowl-wp/real-cookie-banner) has been updated because a dependency, which is also shipped with this package, has changed.
+
+
+<details><summary>Dependency updates @devowl-wp/api-real-cookie-banner 1.2.0</summary>
+
+
+**_Purpose of dependency:_** _Shared typings for all Real Cookie Banner backend._
+##### Features
+
+* make API contracts compatible with OpenAPI, move guards to API definition and automatically generate API UI (CU-8699z5dt7)</details>
+
+<details><summary>Development dependency update @devowl-wp/api 1.2.0</summary>
+
+
+**_Purpose of dependency:_** _Shared typings for all Node.js backends and frontends._
+##### Features
+
+* make API contracts compatible with OpenAPI, move guards to API definition and automatically generate API UI (CU-8699z5dt7)</details>
+
+
+
+
+
 ## 5.1.19 (2025-08-05)
 
 

@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit366105ca8fc758093b2a4a29dc439fd4
+class ComposerStaticInit4b8bc75ffbbebb5716ae4eeaf7f0562b
 {
     public static $files = array (
         'da5f6548f070d3d306f90eee42dd5de6' => __DIR__ . '/..' . '/donatj/phpuseragentparser/src/UserAgentParser.php',
@@ -18,6 +18,10 @@ class ComposerStaticInit366105ca8fc758093b2a4a29dc439fd4
         array (
             'donatj\\UserAgent\\' => 17,
         ),
+        'W' => 
+        array (
+            'WPMedia\\Mixpanel\\' => 17,
+        ),
         'M' => 
         array (
             'MyThemeShop\\Helpers\\' => 20,
@@ -28,6 +32,10 @@ class ComposerStaticInit366105ca8fc758093b2a4a29dc439fd4
         'donatj\\UserAgent\\' => 
         array (
             0 => __DIR__ . '/..' . '/donatj/phpuseragentparser/src/UserAgent',
+        ),
+        'WPMedia\\Mixpanel\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/wp-media/wp-mixpanel/src',
         ),
         'MyThemeShop\\Helpers\\' => 
         array (
@@ -358,6 +366,7 @@ class ComposerStaticInit366105ca8fc758093b2a4a29dc439fd4
         'RankMath\\Tools\\Yoast_HowTo_Converter' => __DIR__ . '/../..' . '/includes/modules/database-tools/class-yoast-howto-converter.php',
         'RankMath\\Tools\\Yoast_Local_Converter' => __DIR__ . '/../..' . '/includes/modules/database-tools/class-yoast-local-converter.php',
         'RankMath\\Tools\\Yoast_TOC_Converter' => __DIR__ . '/../..' . '/includes/modules/database-tools/class-yoast-toc-converter.php',
+        'RankMath\\Tracking' => __DIR__ . '/../..' . '/includes/class-tracking.php',
         'RankMath\\Traits\\Ajax' => __DIR__ . '/../..' . '/includes/traits/class-ajax.php',
         'RankMath\\Traits\\Cache' => __DIR__ . '/../..' . '/includes/traits/class-cache.php',
         'RankMath\\Traits\\Hooker' => __DIR__ . '/../..' . '/includes/traits/class-hooker.php',
@@ -388,6 +397,20 @@ class ComposerStaticInit366105ca8fc758093b2a4a29dc439fd4
         'RankMath\\WooCommerce\\Sitemap' => __DIR__ . '/../..' . '/includes/modules/woocommerce/class-sitemap.php',
         'RankMath\\WooCommerce\\WC_Vars' => __DIR__ . '/../..' . '/includes/modules/woocommerce/class-wc-vars.php',
         'RankMath\\WooCommerce\\WooCommerce' => __DIR__ . '/../..' . '/includes/modules/woocommerce/class-woocommerce.php',
+        'WPMedia\\Mixpanel\\Optin' => __DIR__ . '/..' . '/wp-media/wp-mixpanel/src/Optin.php',
+        'WPMedia\\Mixpanel\\Tracking' => __DIR__ . '/..' . '/wp-media/wp-mixpanel/src/Tracking.php',
+        'WPMedia\\Mixpanel\\TrackingPlugin' => __DIR__ . '/..' . '/wp-media/wp-mixpanel/src/TrackingPlugin.php',
+        'WPMedia\\Mixpanel\\WPConsumer' => __DIR__ . '/..' . '/wp-media/wp-mixpanel/src/WPConsumer.php',
+        'WPMedia_Base_MixpanelBase' => __DIR__ . '/..' . '/wp-media/wp-mixpanel/src/Classes/Base/MixpanelBase.php',
+        'WPMedia_ConsumerStrategies_AbstractConsumer' => __DIR__ . '/..' . '/wp-media/wp-mixpanel/src/Classes/ConsumerStrategies/AbstractConsumer.php',
+        'WPMedia_ConsumerStrategies_CurlConsumer' => __DIR__ . '/..' . '/wp-media/wp-mixpanel/src/Classes/ConsumerStrategies/CurlConsumer.php',
+        'WPMedia_ConsumerStrategies_FileConsumer' => __DIR__ . '/..' . '/wp-media/wp-mixpanel/src/Classes/ConsumerStrategies/FileConsumer.php',
+        'WPMedia_ConsumerStrategies_SocketConsumer' => __DIR__ . '/..' . '/wp-media/wp-mixpanel/src/Classes/ConsumerStrategies/SocketConsumer.php',
+        'WPMedia_Mixpanel' => __DIR__ . '/..' . '/wp-media/wp-mixpanel/src/Classes/Mixpanel.php',
+        'WPMedia_Producers_MixpanelBaseProducer' => __DIR__ . '/..' . '/wp-media/wp-mixpanel/src/Classes/Producers/MixpanelBaseProducer.php',
+        'WPMedia_Producers_MixpanelEvents' => __DIR__ . '/..' . '/wp-media/wp-mixpanel/src/Classes/Producers/MixpanelEvents.php',
+        'WPMedia_Producers_MixpanelGroups' => __DIR__ . '/..' . '/wp-media/wp-mixpanel/src/Classes/Producers/MixpanelGroups.php',
+        'WPMedia_Producers_MixpanelPeople' => __DIR__ . '/..' . '/wp-media/wp-mixpanel/src/Classes/Producers/MixpanelPeople.php',
         'WP_Async_Request' => __DIR__ . '/..' . '/a5hleyrich/wp-background-processing/classes/wp-async-request.php',
         'WP_Background_Process' => __DIR__ . '/..' . '/a5hleyrich/wp-background-processing/classes/wp-background-process.php',
         'donatj\\UserAgent\\Browsers' => __DIR__ . '/..' . '/donatj/phpuseragentparser/src/UserAgent/Browsers.php',
@@ -400,9 +423,9 @@ class ComposerStaticInit366105ca8fc758093b2a4a29dc439fd4
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit366105ca8fc758093b2a4a29dc439fd4::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit366105ca8fc758093b2a4a29dc439fd4::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit366105ca8fc758093b2a4a29dc439fd4::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit4b8bc75ffbbebb5716ae4eeaf7f0562b::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit4b8bc75ffbbebb5716ae4eeaf7f0562b::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit4b8bc75ffbbebb5716ae4eeaf7f0562b::$classMap;
 
         }, null, ClassLoader::class);
     }

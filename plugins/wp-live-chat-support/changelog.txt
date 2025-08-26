@@ -1,9 +1,12 @@
+= 10.0.17 - 2025-08-25 =
+* Chat engine update
+
 = 10.0.16 - 2025-04-03 =
 * Plugin title update
 
 = 10.0.15 - 2025-02-27 =
 * callus.js update
-* tested with WordPress 6.7
+* Tested with WordPress 6.7
 
 = 10.0.14 - 2024-07-04 =
 * Limit incomplete installation warnings to 1

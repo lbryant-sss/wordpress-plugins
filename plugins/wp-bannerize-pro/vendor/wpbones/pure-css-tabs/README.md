@@ -1,28 +1,15 @@
 # Pure CSS Tabs for WP Bones
 
-<p align="center">
+<div align="center">
 
-  <a href="https://packagist.org/packages/wpbones/pure-css-tabs">
-  <img src="https://poser.pugx.org/wpbones/pure-css-tabs/v/stable?style=for-the-badge" alt="Latest Stable Version" />
-  </a>
+[![Latest Stable Version](https://poser.pugx.org/wpbones/pure-css-tabs/v/stable?style=for-the-badge)](https://packagist.org/packages/wpbones/pure-css-tabs) &nbsp;
+[![Latest Unstable Version](https://poser.pugx.org/wpbones/pure-css-tabs/v/unstable?style=for-the-badge)](https://packagist.org/packages/wpbones/pure-css-tabs) &nbsp;
+[![Total Downloads](https://poser.pugx.org/wpbones/pure-css-tabs/downloads?style=for-the-badge)](https://packagist.org/packages/wpbones/pure-css-tabs) &nbsp;
+[![License](https://poser.pugx.org/wpbones/pure-css-tabs/license?style=for-the-badge)](https://packagist.org/packages/wpbones/pure-css-tabs) &nbsp;
+[![Monthly Downloads](https://poser.pugx.org/wpbones/pure-css-tabs/d/monthly?style=for-the-badge)](https://packagist.org/packages/wpbones/pure-css-tabs)
 
-  <a href="https://packagist.org/packages/wpbones/pure-css-tabs">
-   <img src="https://poser.pugx.org/wpbones/pure-css-tabs/v/unstable?style=for-the-badge" alt="Latest Unstable Version" />
-  </a>
 
-  <a href="https://packagist.org/packages/wpbones/pure-css-tabs">
-   <img src="https://poser.pugx.org/wpbones/pure-css-tabs/downloads?style=for-the-badge" alt="Total Downloads" />
-  </a>
-
-  <a href="https://packagist.org/packages/wpbones/pure-css-tabs">
-   <img src="https://poser.pugx.org/wpbones/pure-css-tabs/license?style=for-the-badge" alt="License" />
-  </a>
-
-  <a href="https://packagist.org/packages/wpbones/pure-css-tabs">
-   <img src="https://poser.pugx.org/wpbones/pure-css-tabs/d/monthly?style=for-the-badge" alt="Monthly Downloads" />
-  </a>
-
-</p>
+</div>
 
 This package provides a simple way to create tabs with pure CSS for WordPress/WP Bones.
 
@@ -53,8 +40,8 @@ You may also to add `" wpbones/pure-css-tabs": "~0.7"` in the `composer.json` fi
 ```json copy filename="composer.json" {4}
   "require": {
     "php": ">=7.4",
-    "wpbones/wpbones": "~1.5",
-    " wpbones/pure-css-tabs": "~0.7"
+    "wpbones/wpbones": "~1.9",
+    "wpbones/pure-css-tabs": "~1.1"
   },
 ```
 
@@ -193,9 +180,11 @@ Also, you can use `openTab()` and `closeTab()` methods:
   /**
    * Display the open tab.
    *
-   * @param string $label    The label of tab.
-   * @param null   $id       Optional. ID of tab. If null, will sanitize_title() the label.
-   * @param bool   $selected Optional. Default false. TRUE for checked.
+   * @param string|array  $label    The label of tab or un array with [label, group]
+   * @param null          $id       Optional. ID of tab. If null, will sanitize_title() the label.
+   * @param bool          $selected Optional. Default false. TRUE for checked.
+   * @param string        $group    Optional. Group of tabs when you want to handle multiple tab in the same view. Default 'tabs'
+
    */
    public static function openTab( $label, $id = null, $selected = false ) {}
 ```
@@ -210,6 +199,36 @@ Also, you can use `openTab()` and `closeTab()` methods:
   <?php WPBannerize\PureCSSTabs\PureCSSTabsProvider::openTab( 'Tab 2' ) ?>
     <h2>Hello, world! I'm the content of tab-2</h2>
   <?php WPBannerize\PureCSSTabs\PureCSSTabsProvider::closeTab ?>
+
+</div>
+```
+
+You may also use the hook approach by using `::useTabs()`
+
+```php copy
+<?php [$openTabs, $closeTabs] = WPBannerize\PureCSSTabs\PureCSSTabsProvider::useTabs() ?>
+
+<div class="wpbones-tabs">
+
+  <!-- first tab -->
+  <?php $openTabs(['Settings', 'hook'], null, true); ?>
+
+  <div>
+    <h3>Content for Settings</h3>
+  </div>
+
+  <?php $closeTabs(); ?>
+
+  <!-- second tab -->
+  <?php $openTabs(['Dashboard', 'hook']); ?>
+
+  <div>
+    <h3>Content for Dashboard</h3>
+  </div>
+
+  <?php $closeTabs(); ?>
+
+  <!-- son on... -->
 
 </div>
 ```

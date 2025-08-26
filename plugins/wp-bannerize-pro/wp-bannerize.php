@@ -4,7 +4,7 @@
  * Plugin Name: WP Bannerize Pro
  * Plugin URI: https://bannerize.vercel.app/
  * Description: Bannerize is a WordPress plugin that enables quick and easy creation and management of advertising banners. It allows you to track views and clicks, providing insights into the effectiveness of your campaigns.
- * Version: 1.10.0
+ * Version: 1.11.0
  * Requires at least: 6.2
  * Requires PHP: 7.4
  * Author: Giovambattista Fazioli
@@ -17,7 +17,7 @@
  */
 
 if (!defined('ABSPATH')) {
-    exit();
+  exit();
 }
 
 /*

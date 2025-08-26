@@ -1,30 +1,16 @@
 # User Agent for WP Bones
 
-<p align="center">
+<div align="center">
 
-  <a href="https://packagist.org/packages/wpbones/useragent">
-  <img src="https://poser.pugx.org/wpbones/useragent/v/stable?style=for-the-badge" alt="Latest Stable Version" />
-  </a>
+[![Latest Stable Version](https://poser.pugx.org/wpbones/useragent/v/stable?style=for-the-badge)](https://packagist.org/packages/wpbones/useragent) &nbsp;
+[![Latest Unstable Version](https://poser.pugx.org/wpbones/useragent/v/unstable?style=for-the-badge)](https://packagist.org/packages/wpbones/useragent) &nbsp;
+[![Total Downloads](https://poser.pugx.org/wpbones/useragent/downloads?style=for-the-badge)](https://packagist.org/packages/wpbones/useragent) &nbsp;
+[![License](https://poser.pugx.org/wpbones/useragent/license?style=for-the-badge)](https://packagist.org/packages/wpbones/useragent) &nbsp;
+[![Monthly Downloads](https://poser.pugx.org/wpbones/useragent/d/monthly?style=for-the-badge)](https://packagist.org/packages/wpbones/useragent)
 
-  <a href="https://packagist.org/packages/wpbones/useragent">
-   <img src="https://poser.pugx.org/wpbones/useragent/v/unstable?style=for-the-badge" alt="Latest Unstable Version" />
-  </a>
+</div>
 
-  <a href="https://packagist.org/packages/wpbones/useragent">
-   <img src="https://poser.pugx.org/wpbones/useragent/downloads?style=for-the-badge" alt="Total Downloads" />
-  </a>
-
-  <a href="https://packagist.org/packages/wpbones/useragent">
-   <img src="https://poser.pugx.org/wpbones/useragent/license?style=for-the-badge" alt="License" />
-  </a>
-
-  <a href="https://packagist.org/packages/wpbones/useragent">
-   <img src="https://poser.pugx.org/wpbones/useragent/d/monthly?style=for-the-badge" alt="Monthly Downloads" />
-  </a>
-
-</p>
-
-An useful method to detect the useragent
+An useful wrapper for [Mobile Detect](https://github.com/serbanghita/Mobile-Detect) to detect mobile devices for WP Bones.
 
 ## Requirements
 

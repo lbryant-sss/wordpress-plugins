@@ -2,9 +2,9 @@
 Contributors: WP-LiveChat, wordpress3cx, wp3cx
 Tags: live chat, free live chat, live help, live support, wordpress live chat
 Requires at least: 5.3
-Tested up to: 6.7
+Tested up to: 6.8.2
 Requires PHP: 5.4
-Stable tag: 10.0.16
+Stable tag: 10.0.17
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: wp-live-chat-support
@@ -92,6 +92,9 @@ With 3CX Dedicated (hosted or self-managed) you get live chat included free for 
 Huge update with over 300 changes that include: Bugfixes, Vulnerability Fixes & Plugin Security, Plugin Optimization & Rebranding Updates. We suggest you remove any existing installations of this plugin and install 8.1.x fresh.
 
 == Changelog ==
+
+= 10.0.17 - 2025-08-25 =
+* Chat engine update
 
 = 10.0.16 - 2025-04-03 =
 * Plugin title update

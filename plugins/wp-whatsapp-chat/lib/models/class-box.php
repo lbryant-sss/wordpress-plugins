@@ -64,6 +64,9 @@ class Box {
 		if ( isset( $settings['lazy_load'] ) ) {
 			$settings['lazy_load'] = wp_kses_post( $settings['lazy_load'] );
 		}
+		if ( isset( $settings['allow_outside_close'] ) ) {
+			$settings['allow_outside_close'] = wp_kses_post( $settings['allow_outside_close'] );
+		}
 		if ( isset( $settings['auto_delay_open'] ) ) {
 			$settings['auto_delay_open'] = wp_kses_post( $settings['auto_delay_open'] );
 		}
