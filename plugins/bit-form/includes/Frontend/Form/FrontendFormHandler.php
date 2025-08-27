@@ -586,7 +586,10 @@ final class FrontendFormHandler
         window.bf_globals.{$FormIdentifier} = {} 
       }
       if(document.getElementById('{$FormIdentifier}')) {
-        window.bf_globals.{$FormIdentifier} = {...window.bf_globals.{$FormIdentifier}, ...{$frontArr}};
+        window.bf_globals.{$FormIdentifier} = { 
+          ...window.bf_globals.{$FormIdentifier}, 
+          ...{$frontArr}
+        };
       }
 BFGLOBALS;
 

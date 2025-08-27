@@ -45,7 +45,6 @@ class MigrationVer130 extends AbstractController {
 	 * Register hooks for the migration.
 	 */
 	public function register_hooks() {
-		add_action( 'wp_loaded', [ $this, 'migration' ] );
 		add_action( 'admin_menu', [ $this, 'redirect_to_new_page_slug' ] );
 	}
 
@@ -74,9 +73,7 @@ class MigrationVer130 extends AbstractController {
 	 * Checks the stored plugin version and compares it with the current plugin version.
 	 * If an upgrade is needed, it converts the old SMTP options to the new provider model.
 	 */
-	public function migration() {
-		$version = get_option( self::OPTION_VERSION_NAME, '' );
-
+	public function migration( string $version ): void {
 		if ( version_compare( $version, '2.0.0', '>=' ) ) {
 			return;
 		}
@@ -85,8 +82,6 @@ class MigrationVer130 extends AbstractController {
 		$smtp = get_option( 'wp_smtp_options' );
 
 		if ( empty( $smtp['from'] ) || empty( $smtp['host'] ) ) {
-			// if the condition not met, that can be newly install.
-			update_option( self::OPTION_VERSION_NAME, WPSMTP_VERSION );
 			return;
 		}
 
@@ -141,7 +136,6 @@ class MigrationVer130 extends AbstractController {
 			update_option( 'solid_mail_migration_error', $result->get_error_message() );
 		}
 
-		update_option( self::OPTION_VERSION_NAME, WPSMTP_VERSION );
 		// we will need to migrate the disable_logs too.
 		$disable_logs = 'no';
 

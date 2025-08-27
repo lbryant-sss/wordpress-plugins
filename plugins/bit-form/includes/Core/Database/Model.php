@@ -386,11 +386,19 @@ class Model
     foreach ($condition as $key => $value) {
       $value_type = '';
       if (is_array($value)) {
-        if (isset($value['operator'])) {
+        // Check for raw SQL values first
+        if (isset($value['raw'])) {
+          // Handle raw SQL - don't format or add to prepared values
+          $set_check_operator = isset($value['operator']) ? $value['operator'] : '=';
+          $value_type = $value['raw']; // Use raw SQL directly
+          // Don't add to $all_values since it's raw SQL
+        } elseif (isset($value['operator'])) {
+          // logic for operator arrays
           $set_check_operator = $value['operator'];
           $value_type .= $this->getFieldFormat($value['value']);
           $all_values[] = $value['value'];
         } else {
+          // logic for IN conditions
           $set_check_operator = \is_null($check_operator) ? 'in' : $check_operator;
           $value_type .= ' ( ';
           $value_index_checker = 0;
@@ -406,6 +414,7 @@ class Model
           $value_type .= ' )';
         }
       } else {
+        // logic for simple values
         $set_check_operator = \is_null($check_operator) ? '=' : $check_operator;
         $value_type .= $this->getFieldFormat($value);
         $all_values[] = $value;

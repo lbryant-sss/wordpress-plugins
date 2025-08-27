@@ -26,7 +26,7 @@ class Validation
             }
             $fldData->err->req = (object) [
               'show' => true,
-              'dflt' => 'This field is required',
+              'dflt' => __('This field is required', 'bit-form'),
             ];
           }
 
@@ -42,7 +42,7 @@ class Validation
               }
               $fldData->err->req = (object) [
                 'show' => true,
-                'dflt' => implode(', ', $reqOpts) . ' is required',
+                'dflt' => implode(', ', $reqOpts) . ' ' . __('is required', 'bit-form'),
               ];
             }
           }
@@ -59,14 +59,14 @@ class Validation
             if (isset($fldData->mn)) {
               $fldData->err->mn = (object) [
                 'show' => true,
-                'dflt' => 'Minimum number is ' . $fldData->mn,
+                'dflt' => __('Minimum number is', 'bit-form') . ' ' . $fldData->mn,
               ];
             }
 
             if (isset($fldData->mx)) {
               $fldData->err->mx = (object) [
                 'show' => true,
-                'dflt' => 'Maximum number is ' . $fldData->mx,
+                'dflt' => __('Maximum number is', 'bit-form') . ' ' . $fldData->mx,
               ];
             }
           }
@@ -78,7 +78,7 @@ class Validation
             }
             $fldData->err->invalid = (object) [
               'show' => true,
-              'dflt' => 'Email is invalid',
+              'dflt' => __('Email is invalid', 'bit-form'),
             ];
           }
 
@@ -89,7 +89,7 @@ class Validation
             }
             $fldData->err->invalid = [
               'show' => true,
-              'dflt' => 'URL is invalid',
+              'dflt' => __('URL is invalid', 'bit-form'),
             ];
           }
           $fields->{$fldKey} = $fldData;

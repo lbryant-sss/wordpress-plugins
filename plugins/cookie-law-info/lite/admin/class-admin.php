@@ -263,7 +263,7 @@ class Admin {
 			}
 		}
 		$notice = Notice::get_instance();
-		$expand = Connect_Notice::get_instance();
+		$connect_notice = Connect_Notice::get_instance();
 
 		$global_script  = $this->plugin_name . '-app';
 		$admin_url      = cky_parse_url( admin_url( 'admin.php' ) );
@@ -370,7 +370,12 @@ class Admin {
 		wp_localize_script(
 			$global_script,
 			'ckyNoticeExpand',
-			$expand->get()
+			$connect_notice->get_accordion_status()
+		);
+		wp_localize_script(
+			$global_script,
+			'ckyConnectNotice',
+			$connect_notice->get_connect_notice_state()
 		);
 
 	}

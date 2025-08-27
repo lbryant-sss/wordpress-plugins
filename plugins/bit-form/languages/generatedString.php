@@ -15,7 +15,83 @@ $i18n_strings = array(
 
     'Unsplash Images' => __('Unsplash Images', 'bit-form'),
 
+    'Go to the Google reCaptcha V2 Admin Dashboard' => __('Go to the Google reCaptcha V2 Admin Dashboard', 'bit-form'),
+
+    'Click on the Register button and add Label.' => __('Click on the Register button and add Label.', 'bit-form'),
+
+    'Choose the type of reCaptcha V2 (either I\'m not a robot checkbox or Invisible reCaptcha badge).' => __('Choose the type of reCaptcha V2 (either I\'m not a robot checkbox or Invisible reCaptcha badge).', 'bit-form'),
+
+    'Copy Your Domain URL and Goto Google ReCaptcha Dashboard, paste it under Domains.' => __('Copy Your Domain URL and Goto Google ReCaptcha Dashboard, paste it under Domains.', 'bit-form'),
+
+    'Click on the Submit button.' => __('Click on the Submit button.', 'bit-form'),
+
+    'You will then see the site key and secret key. Copy both keys and back to Bit form Google reCaptcha Settings to paste them into the corresponding' => __('You will then see the site key and secret key. Copy both keys and back to Bit form Google reCaptcha Settings to paste them into the corresponding', 'bit-form'),
+
+    'Site Key' => __('Site Key', 'bit-form'),
+
+    'and' => __('and', 'bit-form'),
+
+    'Secret Key' => __('Secret Key', 'bit-form'),
+
+    'fields.' => __('fields.', 'bit-form'),
+
+    'Click on the' => __('Click on the', 'bit-form'),
+
+    'Save' => __('Save', 'bit-form'),
+
+    'button to apply the settings.' => __('button to apply the settings.', 'bit-form'),
+
+    'Now, Please go to your form and add a Google reCaptcha V2 field.' => __('Now, Please go to your form and add a Google reCaptcha V2 field.', 'bit-form'),
+
+    'For more details, please visit the' => __('For more details, please visit the', 'bit-form'),
+
+    'Bit form Google reCaptcha V2 documentation' => __('Bit form Google reCaptcha V2 documentation', 'bit-form'),
+
+    'and watch' => __('and watch', 'bit-form'),
+
+    'YouTube Video' => __('YouTube Video', 'bit-form'),
+
+    'Go to the Google reCaptcha V3 Admin Dashboard' => __('Go to the Google reCaptcha V3 Admin Dashboard', 'bit-form'),
+
+    'Choose the type of reCaptcha V3 (reCaptcha V3).' => __('Choose the type of reCaptcha V3 (reCaptcha V3).', 'bit-form'),
+
+    'Now, Please go to your form and add a Google reCaptcha V3 field.' => __('Now, Please go to your form and add a Google reCaptcha V3 field.', 'bit-form'),
+
+    'Bit form Google reCaptcha V3 documentation' => __('Bit form Google reCaptcha V3 documentation', 'bit-form'),
+
+    'Go to the Turnstile Admin Dashboard' => __('Go to the Turnstile Admin Dashboard', 'bit-form'),
+
+    'If you haven\'t created a Turnstile Site yet, click on the "Add Site" button and fill out the required fields.' => __('If you haven\'t created a Turnstile Site yet, click on the "Add Site" button and fill out the required fields.', 'bit-form'),
+
+    'If you already have a Turnstile Site, click on the Site Name to open the Site Dashboard.' => __('If you already have a Turnstile Site, click on the Site Name to open the Site Dashboard.', 'bit-form'),
+
+    'You will then see the site key and secret key. Copy both keys and back to Bit form Turnstile Settings to paste them into the corresponding' => __('You will then see the site key and secret key. Copy both keys and back to Bit form Turnstile Settings to paste them into the corresponding', 'bit-form'),
+
+    'Now, Please go to your form and add a Turnstile field.' => __('Now, Please go to your form and add a Turnstile field.', 'bit-form'),
+
+    'Bit form Turnstile documentation' => __('Bit form Turnstile documentation', 'bit-form'),
+
+    'Go to the hCaptcha Admin Dashboard' => __('Go to the hCaptcha Admin Dashboard', 'bit-form'),
+
+    'If you haven\'t created a hCaptcha Site yet, click on the "Add Site" button and fill out the required fields.' => __('If you haven\'t created a hCaptcha Site yet, click on the "Add Site" button and fill out the required fields.', 'bit-form'),
+
+    'If you already have a hCaptcha Site, click on the Site Name to open the Site Dashboard.' => __('If you already have a hCaptcha Site, click on the Site Name to open the Site Dashboard.', 'bit-form'),
+
+    'You will then see the site. Copy' => __('You will then see the site. Copy', 'bit-form'),
+
+    'and back to Bit form hCaptcha Settings to paste in Site Key fields.' => __('and back to Bit form hCaptcha Settings to paste in Site Key fields.', 'bit-form'),
+
+    'Then get the secret key. Go to the Profile → Settings and click the secret tab. You will find secret list or Generate New Secret.' => __('Then get the secret key. Go to the Profile → Settings and click the secret tab. You will find secret list or Generate New Secret.', 'bit-form'),
+
+    'Now, Please go to your form and add a hCaptcha field.' => __('Now, Please go to your form and add a hCaptcha field.', 'bit-form'),
+
+    'Bit form hCaptcha documentation' => __('Bit form hCaptcha documentation', 'bit-form'),
+
     'Captcha Settings' => __('Captcha Settings', 'bit-form'),
+
+    'Note:' => __('Note:', 'bit-form'),
+
+    'Please click on the available Captcha option for configuration.' => __('Please click on the available Captcha option for configuration.', 'bit-form'),
 
     'Edit' => __('Edit', 'bit-form'),
 
@@ -29,17 +105,11 @@ $i18n_strings = array(
 
     'Domain URL:' => __('Domain URL:', 'bit-form'),
 
-    'Site Key' => __('Site Key', 'bit-form'),
-
-    'Secret Key' => __('Secret Key', 'bit-form'),
-
     'To get Site Key and SECRET , Please Visit' => __('To get Site Key and SECRET , Please Visit', 'bit-form'),
 
     'Google reCAPTCHA Admin' => __('Google reCAPTCHA Admin', 'bit-form'),
 
     'Update' => __('Update', 'bit-form'),
-
-    'Save' => __('Save', 'bit-form'),
 
     'hCaptcha' => __('hCaptcha', 'bit-form'),
 
@@ -70,6 +140,12 @@ $i18n_strings = array(
     'Action' => __('Action', 'bit-form'),
 
     'Email Templates' => __('Email Templates', 'bit-form'),
+
+    'How to setup Email Templates & Send Email Notification:' => __('How to setup Email Templates & Send Email Notification:', 'bit-form'),
+
+    'YouTube' => __('YouTube', 'bit-form'),
+
+    'Documentation' => __('Documentation', 'bit-form'),
 
     'Add New Template' => __('Add New Template', 'bit-form'),
 
@@ -118,6 +194,14 @@ $i18n_strings = array(
     'Loading ACF Fields...' => __('Loading ACF Fields...', 'bit-form'),
 
     'Loading Post Types...' => __('Loading Post Types...', 'bit-form'),
+
+    'Select one of the defined WordPress post types Or custom post types for the post.' => __('Select one of the defined WordPress post types Or custom post types for the post.', 'bit-form'),
+
+    'Select Post Type' => __('Select Post Type', 'bit-form'),
+
+    'Select the status for the post. If published status is selected and the post date is in the future, it will automatically be changed to scheduled' => __('Select the status for the post. If published status is selected and the post date is in the future, it will automatically be changed to scheduled', 'bit-form'),
+
+    'Select the user to be assigned to the post.' => __('Select the user to be assigned to the post.', 'bit-form'),
 
     'Select Field' => __('Select Field', 'bit-form'),
 
@@ -1725,11 +1809,17 @@ $i18n_strings = array(
 
     'WP Authentication' => __('WP Authentication', 'bit-form'),
 
+    'How to setup WP Authentication:' => __('How to setup WP Authentication:', 'bit-form'),
+
     'Available On' => __('Available On', 'bit-form'),
 
     'Premium' => __('Premium', 'bit-form'),
 
     'Enable' => __('Enable', 'bit-form'),
+
+    'Note :' => __('Note :', 'bit-form'),
+
+    'When the login, forgot password or reset password any of these feature enabled in the form, the entries will not be saved in the WP database.' => __('When the login, forgot password or reset password any of these feature enabled in the form, the entries will not be saved in the WP database.', 'bit-form'),
 
     'Get $10 Cashback' => __('Get $10 Cashback', 'bit-form'),
 
@@ -1742,8 +1832,6 @@ $i18n_strings = array(
     'For more details,' => __('For more details,', 'bit-form'),
 
     'Click here' => __('Click here', 'bit-form'),
-
-    'Note:' => __('Note:', 'bit-form'),
 
     'Accept and complete to share non-sensitive diagnostic data to help us improve your experience.' => __('Accept and complete to share non-sensitive diagnostic data to help us improve your experience.', 'bit-form'),
 
@@ -1842,6 +1930,10 @@ $i18n_strings = array(
     'Already have a submit button' => __('Already have a submit button', 'bit-form'),
 
     'Button Text' => __('Button Text', 'bit-form'),
+
+    'Leading Icon' => __('Leading Icon', 'bit-form'),
+
+    'Trailing Icon' => __('Trailing Icon', 'bit-form'),
 
     'Full Width' => __('Full Width', 'bit-form'),
 
@@ -1987,6 +2079,8 @@ $i18n_strings = array(
 
     'Double Opt-In' => __('Double Opt-In', 'bit-form'),
 
+    'How to setup Double Opt-In & Send Email Notification:' => __('How to setup Double Opt-In & Send Email Notification:', 'bit-form'),
+
     'Delete the unconfirmed entries from responses after days:' => __('Delete the unconfirmed entries from responses after days:', 'bit-form'),
 
     'Disable double opt-in confirmation for logged in users.' => __('Disable double opt-in confirmation for logged in users.', 'bit-form'),
@@ -2000,6 +2094,8 @@ $i18n_strings = array(
     'Customize Email template' => __('Customize Email template', 'bit-form'),
 
     'Edit verification messages' => __('Edit verification messages', 'bit-form'),
+
+    'The webhook, email notification & integrations will trigger after the responder confirms their Opt-In.' => __('The webhook, email notification & integrations will trigger after the responder confirms their Opt-In.', 'bit-form'),
 
     'Active Options' => __('Active Options', 'bit-form'),
 
@@ -2131,7 +2227,13 @@ $i18n_strings = array(
 
     'Add/Edit Options' => __('Add/Edit Options', 'bit-form'),
 
+    'Validate as Entry Unique' => __('Validate as Entry Unique', 'bit-form'),
+
+    'Enabling this option will check from the entry database whether its value is duplicate.' => __('Enabling this option will check from the entry database whether its value is duplicate.', 'bit-form'),
+
     'Allow Multiple' => __('Allow Multiple', 'bit-form'),
+
+    'This field is required' => __('This field is required', 'bit-form'),
 
     'Item Size' => __('Item Size', 'bit-form'),
 
@@ -2140,6 +2242,8 @@ $i18n_strings = array(
     'Check Position' => __('Check Position', 'bit-form'),
 
     'Specify the check position.' => __('Specify the check position.', 'bit-form'),
+
+    'Unique Entry' => __('Unique Entry', 'bit-form'),
 
     'Hide Image Label' => __('Hide Image Label', 'bit-form'),
 
@@ -2671,6 +2775,8 @@ $i18n_strings = array(
 
     'Limit Password Length' => __('Limit Password Length', 'bit-form'),
 
+    'Validate as User Unique' => __('Validate as User Unique', 'bit-form'),
+
     'Title' => __('Title', 'bit-form'),
 
     'More Options' => __('More Options', 'bit-form'),
@@ -2691,11 +2797,19 @@ $i18n_strings = array(
 
     'Confirmations' => __('Confirmations', 'bit-form'),
 
+    'How to set up Confirmation messages or Redirect page:' => __('How to set up Confirmation messages or Redirect page:', 'bit-form'),
+
     'Success/Error Messages' => __('Success/Error Messages', 'bit-form'),
 
     'Redirect Page' => __('Redirect Page', 'bit-form'),
 
+    'Be sure to configure conditional logic for displaying Success/Error messages and Redirect Page. If no conditional logic is set, the default confirmation will be displayed.' => __('Be sure to configure conditional logic for displaying Success/Error messages and Redirect Page. If no conditional logic is set, the default confirmation will be displayed.', 'bit-form'),
+
     'Conversational Form Settings' => __('Conversational Form Settings', 'bit-form'),
+
+    'Note: In the Conversational Form feature, certain fields such as Captcha, Payments, HTML, etc are currently not supported.' => __('Note: In the Conversational Form feature, certain fields such as Captcha, Payments, HTML, etc are currently not supported.', 'bit-form'),
+
+    'How to setup Conversational form:' => __('How to setup Conversational form:', 'bit-form'),
 
     'Theme settings' => __('Theme settings', 'bit-form'),
 
@@ -2875,6 +2989,8 @@ $i18n_strings = array(
 
     'Export Form Data' => __('Export Form Data', 'bit-form'),
 
+    'Preview Data' => __('Preview Data', 'bit-form'),
+
     'Move' => __('Move', 'bit-form'),
 
     'Style' => __('Style', 'bit-form'),
@@ -2897,9 +3013,15 @@ $i18n_strings = array(
 
     'History Empty' => __('History Empty', 'bit-form'),
 
+    'Please select property you want to import with form' => __('Please select property you want to import with form', 'bit-form'),
+
+    'Preview' => __('Preview', 'bit-form'),
+
     'In order to repopulate form fields, it is necessary to store the submitted data in the database. Please make sure to turn off the "disable storing form submission data" option in the form settings.' => __('In order to repopulate form fields, it is necessary to store the submitted data in the database. Please make sure to turn off the "disable storing form submission data" option in the form settings.', 'bit-form'),
 
     'Form Abandonment' => __('Form Abandonment', 'bit-form'),
+
+    'How to setup Form Abandonment & save partial form progress:' => __('How to setup Form Abandonment & save partial form progress:', 'bit-form'),
 
     'Show warning message below the form description' => __('Show warning message below the form description', 'bit-form'),
 
@@ -2931,9 +3053,19 @@ $i18n_strings = array(
 
     'How to setup Landinge Page' => __('How to setup Landinge Page', 'bit-form'),
 
-    'YouTube' => __('YouTube', 'bit-form'),
+    'Custom URL' => __('Custom URL', 'bit-form'),
 
-    'Documentation' => __('Documentation', 'bit-form'),
+    'Please try to avoid any duplicate custom url, as it will conflict between the page and Bit Form.' => __('Please try to avoid any duplicate custom url, as it will conflict between the page and Bit Form.', 'bit-form'),
+
+    'Page Title' => __('Page Title', 'bit-form'),
+
+    'Share via Direct URL' => __('Share via Direct URL', 'bit-form'),
+
+    'Share via Direct URL (Conversational Form)' => __('Share via Direct URL (Conversational Form)', 'bit-form'),
+
+    'Embed via HTML Code' => __('Embed via HTML Code', 'bit-form'),
+
+    'Embed via HTML Code (Conversational Form)' => __('Embed via HTML Code (Conversational Form)', 'bit-form'),
 
     'Customer ID key cann\'t be empty' => __('Customer ID key cann\'t be empty', 'bit-form'),
 
@@ -2975,6 +3107,44 @@ $i18n_strings = array(
 
     'Messages saved successfully.' => __('Messages saved successfully.', 'bit-form'),
 
+    'Note: This global message will be applied to all forms and fields unless a custom error message is set for an individual field. Also you can use the' => __('Note: This global message will be applied to all forms and fields unless a custom error message is set for an individual field. Also you can use the', 'bit-form'),
+
+    'Shortcode patterns (Ex:' => __('Shortcode patterns (Ex:', 'bit-form'),
+
+    'to dynamically replace field-specific labels/values.' => __('to dynamically replace field-specific labels/values.', 'bit-form'),
+
+    'Required Field' => __('Required Field', 'bit-form'),
+
+    'Invalid Email' => __('Invalid Email', 'bit-form'),
+
+    'Invalid URL' => __('Invalid URL', 'bit-form'),
+
+    'Invalid Number' => __('Invalid Number', 'bit-form'),
+
+    'Invalid Phone Number' => __('Invalid Phone Number', 'bit-form'),
+
+    'Minimum Value' => __('Minimum Value', 'bit-form'),
+
+    'Maximum Value' => __('Maximum Value', 'bit-form'),
+
+    'Regex Pattern' => __('Regex Pattern', 'bit-form'),
+
+    'Minimum Option Count' => __('Minimum Option Count', 'bit-form'),
+
+    'Maximum Option Count' => __('Maximum Option Count', 'bit-form'),
+
+    'Minimum File Count' => __('Minimum File Count', 'bit-form'),
+
+    'Maximum File Count' => __('Maximum File Count', 'bit-form'),
+
+    'Maximum File Size' => __('Maximum File Size', 'bit-form'),
+
+    'Other Option Required' => __('Other Option Required', 'bit-form'),
+
+    'Unique Entry Value' => __('Unique Entry Value', 'bit-form'),
+
+    'Unique User' => __('Unique User', 'bit-form'),
+
     'App delete successfully.' => __('App delete successfully.', 'bit-form'),
 
     'App deletion failed Cause' => __('App deletion failed Cause', 'bit-form'),
@@ -2985,7 +3155,11 @@ $i18n_strings = array(
 
     'Integrations' => __('Integrations', 'bit-form'),
 
+    'How to setup Integrations:' => __('How to setup Integrations:', 'bit-form'),
+
     'Connected/Authorized Platforms' => __('Connected/Authorized Platforms', 'bit-form'),
+
+    'Search Available Integrations...' => __('Search Available Integrations...', 'bit-form'),
 
     'Available Integrations' => __('Available Integrations', 'bit-form'),
 
@@ -3141,7 +3315,13 @@ $i18n_strings = array(
 
     'Button' => __('Button', 'bit-form'),
 
+    'Draft Button' => __('Draft Button', 'bit-form'),
+
     'Save Draft' => __('Save Draft', 'bit-form'),
+
+    'Next Step' => __('Next Step', 'bit-form'),
+
+    'Previous Step' => __('Previous Step', 'bit-form'),
 
     'Previous' => __('Previous', 'bit-form'),
 
@@ -3175,6 +3355,10 @@ $i18n_strings = array(
 
     'Step-' => __('Step-', 'bit-form'),
 
+    'Clone Step' => __('Clone Step', 'bit-form'),
+
+    'Delete Step' => __('Delete Step', 'bit-form'),
+
     'Add New Step' => __('Add New Step', 'bit-form'),
 
     'Add Steps' => __('Add Steps', 'bit-form'),
@@ -3185,7 +3369,77 @@ $i18n_strings = array(
 
     'Saving Payment Setting...' => __('Saving Payment Setting...', 'bit-form'),
 
+    'Choose a unique name to identify this integration within your app.' => __('Choose a unique name to identify this integration within your app.', 'bit-form'),
+
+    'Login to you Mollie account (or create on if you haven\'t already).' => __('Login to you Mollie account (or create on if you haven\'t already).', 'bit-form'),
+
+    'Go to your Mollie Dashboard' => __('Go to your Mollie Dashboard', 'bit-form'),
+
+    'and find the API section.' => __('and find the API section.', 'bit-form'),
+
+    'Generate a new API key or use an existing one (you can use test API key for testing purposes). This key is required for authenticating API requests.' => __('Generate a new API key or use an existing one (you can use test API key for testing purposes). This key is required for authenticating API requests.', 'bit-form'),
+
+    'Copy the API key and paste it in the Bit Form' => __('Copy the API key and paste it in the Bit Form', 'bit-form'),
+
+    'field above.' => __('field above.', 'bit-form'),
+
+    'Then click on the' => __('Then click on the', 'bit-form'),
+
+    'button to save the settings.' => __('button to save the settings.', 'bit-form'),
+
+    'Please go to your form now and add a Mollie payment field.' => __('Please go to your form now and add a Mollie payment field.', 'bit-form'),
+
+    'Bit form Mollie Payment Gateway documentation' => __('Bit form Mollie Payment Gateway documentation', 'bit-form'),
+
+    'Login to you PayPal account (or create on if you haven\'t already).' => __('Login to you PayPal account (or create on if you haven\'t already).', 'bit-form'),
+
+    'Go to your PayPal Dashboard' => __('Go to your PayPal Dashboard', 'bit-form'),
+
+    'Select Transaction Mode (Live or Sandbox).' => __('Select Transaction Mode (Live or Sandbox).', 'bit-form'),
+
+    'Copy the' => __('Copy the', 'bit-form'),
+
+    'from PayPal Dashboard and paste it in the Bit Form' => __('from PayPal Dashboard and paste it in the Bit Form', 'bit-form'),
+
+    'field above (you can use Sandbox or Live mode).' => __('field above (you can use Sandbox or Live mode).', 'bit-form'),
+
+    'Please go to your form now and add a PayPal payment field.' => __('Please go to your form now and add a PayPal payment field.', 'bit-form'),
+
+    'Bit form PayPal Payment Gateway documentation' => __('Bit form PayPal Payment Gateway documentation', 'bit-form'),
+
+    'PayPal Integrations Video' => __('PayPal Integrations Video', 'bit-form'),
+
+    'Login to you Stripe account (or create on if you haven\'t already).' => __('Login to you Stripe account (or create on if you haven\'t already).', 'bit-form'),
+
+    'Go to your Stripe Dashboard' => __('Go to your Stripe Dashboard', 'bit-form'),
+
+    'and find the API Key section.' => __('and find the API Key section.', 'bit-form'),
+
+    'from Stripe API Dashboard and paste it in the Bit Form' => __('from Stripe API Dashboard and paste it in the Bit Form', 'bit-form'),
+
+    'field above (you can use test API key for testing purposes).' => __('field above (you can use test API key for testing purposes).', 'bit-form'),
+
+    'Please go to your form now and add a Stripe payment field.' => __('Please go to your form now and add a Stripe payment field.', 'bit-form'),
+
+    'Bit form Stripe Payment Gateway documentation' => __('Bit form Stripe Payment Gateway documentation', 'bit-form'),
+
+    'Stripe Integrations Video' => __('Stripe Integrations Video', 'bit-form'),
+
+    'Login to you Razorpay account (or create on if you haven\'t already).' => __('Login to you Razorpay account (or create on if you haven\'t already).', 'bit-form'),
+
+    'Go to your Razorpay Dashboard' => __('Go to your Razorpay Dashboard', 'bit-form'),
+
+    'from Razorpay API Dashboard and paste it in the Bit Form' => __('from Razorpay API Dashboard and paste it in the Bit Form', 'bit-form'),
+
+    'Please go to your form now and add a Razorpay payment field.' => __('Please go to your form now and add a Razorpay payment field.', 'bit-form'),
+
+    'Bit form Razorpay Payment Gateway documentation' => __('Bit form Razorpay Payment Gateway documentation', 'bit-form'),
+
+    'Razorpay Integrations Video' => __('Razorpay Integrations Video', 'bit-form'),
+
     'Available Payment Gateways' => __('Available Payment Gateways', 'bit-form'),
+
+    'Please click on the available payment gateway option for configuration.' => __('Please click on the available payment gateway option for configuration.', 'bit-form'),
 
     'Available on' => __('Available on', 'bit-form'),
 
@@ -3210,6 +3464,8 @@ $i18n_strings = array(
     'Available Font for PDF' => __('Available Font for PDF', 'bit-form'),
 
     'PDF Templates' => __('PDF Templates', 'bit-form'),
+
+    'How to setup PDF Templates:' => __('How to setup PDF Templates:', 'bit-form'),
 
     'PDF File Name' => __('PDF File Name', 'bit-form'),
 
@@ -3286,6 +3542,12 @@ $i18n_strings = array(
     'Please update your PHP version is 7.4 or higher.' => __('Please update your PHP version is 7.4 or higher.', 'bit-form'),
 
     'PHP extension is missing in your server. Please install it.' => __('PHP extension is missing in your server. Please install it.', 'bit-form'),
+
+    'To use Arabic, Chinese, Japanese and Korean languages, you need to install additional fonts! Please navigate to the' => __('To use Arabic, Chinese, Japanese and Korean languages, you need to install additional fonts! Please navigate to the', 'bit-form'),
+
+    'tab to proceed.' => __('tab to proceed.', 'bit-form'),
+
+    'Publish' => __('Publish', 'bit-form'),
 
     'Razorpay Settings' => __('Razorpay Settings', 'bit-form'),
 
@@ -3419,6 +3681,14 @@ $i18n_strings = array(
 
     'ReCaptcha validation failed.' => __('ReCaptcha validation failed.', 'bit-form'),
 
+    'The form has reached its maximum number of submissions.' => __('The form has reached its maximum number of submissions.', 'bit-form'),
+
+    'You have reached the maximum number of submissions allowed.' => __('You have reached the maximum number of submissions allowed.', 'bit-form'),
+
+    'You must be logged in.' => __('You must be logged in.', 'bit-form'),
+
+    'Empty form cannot be submitted.' => __('Empty form cannot be submitted.', 'bit-form'),
+
     'Allow single entry for each IP address' => __('Allow single entry for each IP address', 'bit-form'),
 
     'Require user to be logged in for submit form' => __('Require user to be logged in for submit form', 'bit-form'),
@@ -3437,7 +3707,17 @@ $i18n_strings = array(
 
     'Honeypot trap for bot' => __('Honeypot trap for bot', 'bit-form'),
 
-    'Disable this form after limited entry' => __('Disable this form after limited entry', 'bit-form'),
+    'Manage Submission Limits (by count, time, or user)' => __('Manage Submission Limits (by count, time, or user)', 'bit-form'),
+
+    'Limit By Submission Count' => __('Limit By Submission Count', 'bit-form'),
+
+    'Submission Limit' => __('Submission Limit', 'bit-form'),
+
+    'Limit period type' => __('Limit period type', 'bit-form'),
+
+    'Limit By Per User' => __('Limit By Per User', 'bit-form'),
+
+    'User verify type' => __('User verify type', 'bit-form'),
 
     'Limit Form Submission Period' => __('Limit Form Submission Period', 'bit-form'),
 
@@ -3567,6 +3847,8 @@ $i18n_strings = array(
 
     'ctrl + s' => __('ctrl + s', 'bit-form'),
 
+    'Choose/Drop your file (.json)' => __('Choose/Drop your file (.json)', 'bit-form'),
+
     'Issue' => __('Issue', 'bit-form'),
 
     'Idea' => __('Idea', 'bit-form'),
@@ -3657,6 +3939,8 @@ $i18n_strings = array(
 
     'Select PDF Template' => __('Select PDF Template', 'bit-form'),
 
+    'Field Actions' => __('Field Actions', 'bit-form'),
+
     'Integration' => __('Integration', 'bit-form'),
 
     'Select Integation' => __('Select Integation', 'bit-form'),
@@ -3711,7 +3995,15 @@ $i18n_strings = array(
 
     'UNLIMITED' => __('UNLIMITED', 'bit-form'),
 
+    'Conditional Logics are triggered based on the order of the logic groups. The higher the logic group, the higher the priority. If you want to change the priority, you can sort by drag and drop the logic group.' => __('Conditional Logics are triggered based on the order of the logic groups. The higher the logic group, the higher the priority. If you want to change the priority, you can sort by drag and drop the logic group.', 'bit-form'),
+
+    'Additional Actions' => __('Additional Actions', 'bit-form'),
+
     'Email Notification' => __('Email Notification', 'bit-form'),
+
+    'Action Run When:' => __('Action Run When:', 'bit-form'),
+
+    'Action Effect:' => __('Action Effect:', 'bit-form'),
 
     'Only on Form Load' => __('Only on Form Load', 'bit-form'),
 
@@ -3720,6 +4012,8 @@ $i18n_strings = array(
     'Only on Form Validate' => __('Only on Form Validate', 'bit-form'),
 
     'Only on Form Submit' => __('Only on Form Submit', 'bit-form'),
+
+    'Action Behaviour:' => __('Action Behaviour:', 'bit-form'),
 
     'Condition' => __('Condition', 'bit-form'),
 
@@ -3748,6 +4042,8 @@ $i18n_strings = array(
     'Invalid activation key' => __('Invalid activation key', 'bit-form'),
 
     'Reject Success Message' => __('Reject Success Message', 'bit-form'),
+
+    'If the Username and Password fields are blank then the user will take the value of the email field as the field and the password will be auto-generated.' => __('If the Username and Password fields are blank then the user will take the value of the email field as the field and the password will be auto-generated.', 'bit-form'),
 
     'Field Mappping' => __('Field Mappping', 'bit-form'),
 
@@ -3792,8 +4088,6 @@ $i18n_strings = array(
     'Form Name' => __('Form Name', 'bit-form'),
 
     'Entries' => __('Entries', 'bit-form'),
-
-    'Preview' => __('Preview', 'bit-form'),
 
     'Short Code' => __('Short Code', 'bit-form'),
 
@@ -3943,6 +4237,26 @@ $i18n_strings = array(
 
     'Create First View' => __('Create First View', 'bit-form'),
 
+    'Professional & Easy To Use WordPress Form Builder' => __('Professional & Easy To Use WordPress Form Builder', 'bit-form'),
+
+    'Drag and Drop WordPress Form Builder will allow you to build any kind of forms for WordPress website that you can imagine. The Professional design of Bit Form keeps all the tools right where you want them! You can make integration among various CRM and application with no zero experience.' => __('Drag and Drop WordPress Form Builder will allow you to build any kind of forms for WordPress website that you can imagine. The Professional design of Bit Form keeps all the tools right where you want them! You can make integration among various CRM and application with no zero experience.', 'bit-form'),
+
+    'Explore our extensive documentation. From beginners to developers - everyone will get an answer' => __('Explore our extensive documentation. From beginners to developers - everyone will get an answer', 'bit-form'),
+
+    'here' => __('here', 'bit-form'),
+
+    'Support' => __('Support', 'bit-form'),
+
+    'In Bit Apps, we provide all kind product support for any types of customer, it doesn\'t matter FREE or PRO user. We actively provide support through Email and Live Chat. Our support team is always ready to help you. We are here to answer your questions and help you with any issues you may have.' => __('In Bit Apps, we provide all kind product support for any types of customer, it doesn\'t matter FREE or PRO user. We actively provide support through Email and Live Chat. Our support team is always ready to help you. We are here to answer your questions and help you with any issues you may have.', 'bit-form'),
+
+    'Facebook support group' => __('Facebook support group', 'bit-form'),
+
+    'YouTube channel' => __('YouTube channel', 'bit-form'),
+
+    'Chat here' => __('Chat here', 'bit-form'),
+
+    'Rate us on WordPress' => __('Rate us on WordPress', 'bit-form'),
+
     'Lost In Space' => __('Lost In Space', 'bit-form'),
 
     'Redirecting Home in' => __('Redirecting Home in', 'bit-form'),
@@ -4033,21 +4347,13 @@ $i18n_strings = array(
 
     'Mollie Payment Field' => __('Mollie Payment Field', 'bit-form'),
 
-    'Leading Icon' => __('Leading Icon', 'bit-form'),
-
-    'Trailing Icon' => __('Trailing Icon', 'bit-form'),
-
     'Default Value' => __('Default Value', 'bit-form'),
 
     'Suggestions' => __('Suggestions', 'bit-form'),
 
     'Input Mode' => __('Input Mode', 'bit-form'),
 
-    'Regex Pattern' => __('Regex Pattern', 'bit-form'),
-
     'Read Only' => __('Read Only', 'bit-form'),
-
-    'Unique Entry' => __('Unique Entry', 'bit-form'),
 
     'User Unique' => __('User Unique', 'bit-form'),
 
@@ -4215,6 +4521,142 @@ $i18n_strings = array(
 
     'This allows to show the step label. You can toggle this option to show or hide the step label.' => __('This allows to show the step label. You can toggle this option to show or hide the step label.', 'bit-form'),
 
-    'This allows to show the step subtitle. You can toggle this option to show or hide the step subtitle.' => __('This allows to show the step subtitle. You can toggle this option to show or hide the step subtitle.', 'bit-form')
+    'This allows to show the step subtitle. You can toggle this option to show or hide the step subtitle.' => __('This allows to show the step subtitle. You can toggle this option to show or hide the step subtitle.', 'bit-form'),
+
+    'Allow only one entry for each IP address.' => __('Allow only one entry for each IP address.', 'bit-form'),
+
+    'Allow only logged in users to submit the form.' => __('Allow only logged in users to submit the form.', 'bit-form'),
+
+    'This will prevent empty form submission.' => __('This will prevent empty form submission.', 'bit-form'),
+
+    'This will validate the field when the user leaves the field.' => __('This will validate the field when the user leaves the field.', 'bit-form'),
+
+    'This will disable storing the user entry in the database.' => __('This will disable storing the user entry in the database.', 'bit-form'),
+
+    'This will enable reCAPTCHA v3.' => __('This will enable reCAPTCHA v3.', 'bit-form'),
+
+    'This will limit the number of entries.' => __('This will limit the number of entries.', 'bit-form'),
+
+    'this will limit the form submission for specific period.' => __('this will limit the form submission for specific period.', 'bit-form'),
+
+    'This will block the specific IP address from submitting the form.' => __('This will block the specific IP address from submitting the form.', 'bit-form'),
+
+    'This will allow the specific IP address to submit the form.' => __('This will allow the specific IP address to submit the form.', 'bit-form'),
+
+    'This will enable Google Ads conversion tracking.' => __('This will enable Google Ads conversion tracking.', 'bit-form'),
+
+    'How to Configure Confirmation Message/Redirect page' => __('How to Configure Confirmation Message/Redirect page', 'bit-form'),
+
+    'How to Configure Conditional Logic' => __('How to Configure Conditional Logic', 'bit-form'),
+
+    'How to enable Conversational Form' => __('How to enable Conversational Form', 'bit-form'),
+
+    'How to Setup Integrations' => __('How to Setup Integrations', 'bit-form'),
+
+    'How to Configure Email Templates' => __('How to Configure Email Templates', 'bit-form'),
+
+    'How to Setup ACF integration' => __('How to Setup ACF integration', 'bit-form'),
+
+    'How to Setup ActiveCampaign integration' => __('How to Setup ActiveCampaign integration', 'bit-form'),
+
+    'How to Setup Acumbamail integration' => __('How to Setup Acumbamail integration', 'bit-form'),
+
+    'How to Setup Autonami integration' => __('How to Setup Autonami integration', 'bit-form'),
+
+    'How to Setup Dropbox integration' => __('How to Setup Dropbox integration', 'bit-form'),
+
+    'How to Setup Elastic Email Integration' => __('How to Setup Elastic Email Integration', 'bit-form'),
+
+    'How to Setup Encharge integration' => __('How to Setup Encharge integration', 'bit-form'),
+
+    'How to Setup Fluent-CRM integration' => __('How to Setup Fluent-CRM integration', 'bit-form'),
+
+    'How to Setup Google Sheets integration' => __('How to Setup Google Sheets integration', 'bit-form'),
+
+    'How to Setup Integrately integration' => __('How to Setup Integrately integration', 'bit-form'),
+
+    'How to Setup Integromat integration' => __('How to Setup Integromat integration', 'bit-form'),
+
+    'How to Setup MailChamp integration' => __('How to Setup MailChamp integration', 'bit-form'),
+
+    'How to Setup MailPoet integration' => __('How to Setup MailPoet integration', 'bit-form'),
+
+    'How to Setup MailerLite integration' => __('How to Setup MailerLite integration', 'bit-form'),
+
+    'How to Setup MetaBox integration' => __('How to Setup MetaBox integration', 'bit-form'),
+
+    'How to Setup Pabbly integration' => __('How to Setup Pabbly integration', 'bit-form'),
+
+    'How to Setup Pods integration' => __('How to Setup Pods integration', 'bit-form'),
+
+    'How to Setup Brevo(SendinBlue) integration' => __('How to Setup Brevo(SendinBlue) integration', 'bit-form'),
+
+    'How to Setup Telegram integration' => __('How to Setup Telegram integration', 'bit-form'),
+
+    'How to Setup WooCommerce integration' => __('How to Setup WooCommerce integration', 'bit-form'),
+
+    'How to Setup Zapier integration' => __('How to Setup Zapier integration', 'bit-form'),
+
+    'How to Setup Zoho Analytics integration' => __('How to Setup Zoho Analytics integration', 'bit-form'),
+
+    'How to Setup Zoho Bigin integration' => __('How to Setup Zoho Bigin integration', 'bit-form'),
+
+    'How to Setup Zoho Campaigns integration' => __('How to Setup Zoho Campaigns integration', 'bit-form'),
+
+    'How to Setup Zoho Creator integration' => __('How to Setup Zoho Creator integration', 'bit-form'),
+
+    'How to Setup Zoho-CRM integration' => __('How to Setup Zoho-CRM integration', 'bit-form'),
+
+    'How to Setup Zoho Desk integration' => __('How to Setup Zoho Desk integration', 'bit-form'),
+
+    'How to Setup Zoho Flow integration' => __('How to Setup Zoho Flow integration', 'bit-form'),
+
+    'How to Setup Zoho Mail integration' => __('How to Setup Zoho Mail integration', 'bit-form'),
+
+    'How to Setup Zoho Marketing Hub integration' => __('How to Setup Zoho Marketing Hub integration', 'bit-form'),
+
+    'How to Setup Zoho Projects integration' => __('How to Setup Zoho Projects integration', 'bit-form'),
+
+    'How to Setup Zoho Recruit integration' => __('How to Setup Zoho Recruit integration', 'bit-form'),
+
+    'How to Setup Zoho Sheet integration' => __('How to Setup Zoho Sheet integration', 'bit-form'),
+
+    'How to Setup Zoho Sign integration' => __('How to Setup Zoho Sign integration', 'bit-form'),
+
+    'How to Setup Zoho Work Drive integration' => __('How to Setup Zoho Work Drive integration', 'bit-form'),
+
+    'How to Configure Double Opt-In' => __('How to Configure Double Opt-In', 'bit-form'),
+
+    'How to Configure Form Abandonment' => __('How to Configure Form Abandonment', 'bit-form'),
+
+    'How to Configure PDF Template' => __('How to Configure PDF Template', 'bit-form'),
+
+    'How to Setup FlowMattic integration' => __('How to Setup FlowMattic integration', 'bit-form'),
+
+    'How to Setup AutomatorWP integration' => __('How to Setup AutomatorWP integration', 'bit-form'),
+
+    'How to Setup Uncanny Automator integration' => __('How to Setup Uncanny Automator integration', 'bit-form'),
+
+    'How to Setup Automate Hub by Sperse.IO integration' => __('How to Setup Automate Hub by Sperse.IO integration', 'bit-form'),
+
+    'How to Setup Thrive Automator integration' => __('How to Setup Thrive Automator integration', 'bit-form'),
+
+    'How to Setup WP Webhooks integration' => __('How to Setup WP Webhooks integration', 'bit-form'),
+
+    'How to Setup Advanced Form Integration' => __('How to Setup Advanced Form Integration', 'bit-form'),
+
+    'How to Setup IFTTT integration' => __('How to Setup IFTTT integration', 'bit-form'),
+
+    'How to Setup n8n.io integration' => __('How to Setup n8n.io integration', 'bit-form'),
+
+    'How to Setup Sure Triggers integration' => __('How to Setup Sure Triggers integration', 'bit-form'),
+
+    'How to Configure WP User Registration' => __('How to Configure WP User Registration', 'bit-form'),
+
+    'Allow Only logged in users to view all entries' => __('Allow Only logged in users to view all entries', 'bit-form'),
+
+    'Allow logged in users to edit form entries' => __('Allow logged in users to edit form entries', 'bit-form'),
+
+    'Allow to Configure Global Validation Message' => __('Allow to Configure Global Validation Message', 'bit-form')
 );
 /* THIS IS THE END OF THE GENERATED FILE */

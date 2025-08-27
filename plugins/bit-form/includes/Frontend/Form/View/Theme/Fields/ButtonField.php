@@ -13,7 +13,7 @@ class ButtonField
 
   private static function getBtnClass($btnTyp)
   {
-    switch($btnTyp) {
+    switch ($btnTyp) {
       case 'save-draft':
         return 'bf-trigger-form-abandonment';
       case 'next-step':
@@ -26,7 +26,7 @@ class ButtonField
 
   private static function getBtnTyp($btnTyp)
   {
-    switch($btnTyp) {
+    switch ($btnTyp) {
       case 'submit':
       case 'reset':
         return $btnTyp;

@@ -3,10 +3,10 @@
  * Plugin Name: 1 Razorpay: Signup for FREE PG
  * Plugin URI: https://razorpay.com
  * Description: Razorpay Payment Gateway Integration for WooCommerce.Razorpay Welcome Back Offer: New to Razorpay? Sign up to enjoy FREE payments* of INR 2 lakh till March 31st! Transact before January 10th to grab the offer.
- * Version: 4.7.6
- * Stable tag: 4.7.6
+ * Version: 4.7.7
+ * Stable tag: 4.7.7
  * Author: Team Razorpay
- * WC tested up to: 9.1.2
+ * WC tested up to: 10.1.1
  * Author URI: https://razorpay.com
 */
 
@@ -2713,6 +2713,19 @@ EOT;
 
                 rzpLogInfo("updateOrderAddress function executed");
 
+                $email = $razorpayData['customer_details']['email'];
+
+                if (empty($email) === false)
+                {
+                    $user = get_user_by('email', $email);
+
+                    if ($user)
+                    {
+                        $user_id = $user->ID;
+                        $order->set_customer_id($user_id);
+                    }
+                }
+
                 $order->save();
             }
         }
@@ -3360,8 +3373,6 @@ function enqueueScriptsFor1cc()
     );
     wp_register_script('1cc_razorpay_checkout', RZP_CHECKOUTJS_URL, null, null);
     wp_enqueue_script('1cc_razorpay_checkout');
-    wp_register_style(RZP_1CC_CSS_SCRIPT, plugin_dir_url(__FILE__)  . 'public/css/1cc-product-checkout.css', null, null);
-    wp_enqueue_style(RZP_1CC_CSS_SCRIPT);
 
     wp_register_script('btn_1cc_checkout', BTN_CHECKOUTJS_URL, null, null);
     wp_localize_script('btn_1cc_checkout', 'rzp1ccCheckoutData', array(
@@ -3375,18 +3386,39 @@ function enqueueScriptsFor1cc()
     wp_enqueue_script('btn_1cc_checkout');
 }
 
+// Enqueue scripts for cart block 1CC 
+function enqueueCartBlockScriptsFor1cc()
+{
+    if (is_cart() && has_block('woocommerce/cart')) {
+        // Enqueue cart block specific script
+        wp_register_script('cart_block_1cc', plugin_dir_url(__FILE__) . 'public/js/cart-block-1cc.js', array('jquery'), null, true);
+        wp_enqueue_script('cart_block_1cc');
+    }
+}
+
 //To add 1CC button on cart page.
 add_action( 'woocommerce_proceed_to_checkout', 'addCheckoutButton');
 
 if(isRazorpayPluginEnabled() && is1ccEnabled()) {
    add_action('wp_head', 'injectMerchantKeyMeta', 1);
    add_action('wp_head', 'addRzpSpinner');
+   add_action('wp_enqueue_scripts', 'enqueueScriptsFor1ccConditionally');
+   // Add support for cart blocks
+   add_action( 'wp_footer', 'addCartBlockSupport');
+}
+
+function enqueueScriptsFor1ccConditionally()
+{
+    if (class_exists('WooCommerce'))
+    {
+        enqueueScriptsFor1cc();
+    }
+    // loading file as it contains spinner css
+    wp_enqueue_style(RZP_1CC_CSS_SCRIPT, plugin_dir_url(__FILE__)  . 'public/css/1cc-product-checkout.css', [], null);
 }
 
 function addCheckoutButton()
 {
-  add_action('wp_enqueue_scripts', 'enqueueScriptsFor1cc', 0);
-
   if (isRazorpayPluginEnabled() && is1ccEnabled() )
   {
     if (isTestModeEnabled()) {
@@ -3406,6 +3438,33 @@ function addCheckoutButton()
   }
 }
 
+// Adds Magic Checkout button on WooCommerce Cart Block pages
+function addCartBlockSupport()
+{
+    if (is_cart() && has_block('woocommerce/cart')) 
+    {
+        if (isTestModeEnabled()) {
+            $current_user = wp_get_current_user();
+            if (!($current_user->has_cap('administrator') || preg_match('/@razorpay.com$/i', $current_user->user_email))) {
+                return;
+            }
+        }
+        // Enqueue cart block specific scripts
+        enqueueCartBlockScriptsFor1cc();
+       ?>
+       <style type="text/css">
+       /* Hide default cart block buttons when Razorpay 1CC is active */
+       .wp-block-woocommerce-cart .wc-block-cart__submit-button:not(#btn-1cc),
+       .wp-block-woocommerce-cart .wc-block-components-checkout-button:not(#btn-1cc),
+       .wc-block-cart .wc-block-cart__submit-button:not(#btn-1cc),
+       .wc-block-cart .wc-block-components-checkout-button:not(#btn-1cc) {
+           display: none !important;
+       }
+       </style>
+       <?php
+    } 
+}
+
 //To add 1CC Mini cart checkout button
 if(isRazorpayPluginEnabled() && is1ccEnabled() && isMiniCartCheckoutEnabled())
 {
@@ -3415,8 +3474,6 @@ if(isRazorpayPluginEnabled() && is1ccEnabled() && isMiniCartCheckoutEnabled())
         // Removing Buttons
         remove_action( 'woocommerce_widget_shopping_cart_buttons', 'woocommerce_widget_shopping_cart_proceed_to_checkout', 20 );
 
-        add_action('woocommerce_cart_updated', 'enqueueScriptsFor1cc', 10);
-
         add_action( 'woocommerce_widget_shopping_cart_buttons', 'addMiniCheckoutButton', 20 );
 
     }, 1 );
@@ -3424,8 +3481,6 @@ if(isRazorpayPluginEnabled() && is1ccEnabled() && isMiniCartCheckoutEnabled())
 
 function addMiniCheckoutButton()
 {
-    add_action('wp_enqueue_scripts', 'enqueueScriptsFor1cc', 0);
-
     if (isTestModeEnabled()) {
       $current_user = wp_get_current_user();
       if ($current_user->has_cap( 'administrator' ) || preg_match( '/@razorpay.com$/i', $current_user->user_email )) {
@@ -3465,8 +3520,6 @@ function addRzpSpinner()
 
 function addPdpCheckoutButton()
 {
-    add_action('wp_enqueue_scripts', 'enqueueScriptsFor1cc', 0);
-
     if (isTestModeEnabled()) {
       $current_user = wp_get_current_user();
       if ($current_user->has_cap( 'administrator' ) || preg_match( '/@razorpay.com$/i', $current_user->user_email )) {
@@ -3509,7 +3562,6 @@ function disable_coupon_field_on_cart($enabled)
 if(is1ccEnabled())
 {
     add_filter('woocommerce_coupons_enabled', 'disable_coupon_field_on_cart');
-    add_action('woocommerce_cart_updated', 'enqueueScriptsFor1cc', 10);
     add_filter('woocommerce_order_needs_shipping_address', '__return_true');
 }
 

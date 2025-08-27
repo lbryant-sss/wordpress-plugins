@@ -59,8 +59,8 @@ class Admin_Bar
         $entriesCount = ' <span class="update-plugins">' . self::countUnreadEntries() . '</span>';
       }
 
-      $submenu['bitform'][] = [__('All Forms' . $entriesCount, 'bit-form'), $capability, 'admin.php?page=bitform#/'];
-      $submenu['bitform'][] = [__('Form Templates <span class="bf-template-new-badge">New</span>', 'bit-form'), $capability, 'admin.php?page=bitform#/form-templates'];
+      $submenu['bitform'][] = [__('All Forms', 'bit-form') . $entriesCount, $capability, 'admin.php?page=bitform#/'];
+      $submenu['bitform'][] = [__('Form Templates', 'bit-form') . '<span class="bf-template-new-badge">New</span>', $capability, 'admin.php?page=bitform#/form-templates'];
       $submenu['bitform'][] = [__('App Settings', 'bit-form'), $capability, 'admin.php?page=bitform#/app-settings/general'];
       $submenu['bitform'][] = [__('Integrations', 'bit-form'), $capability, 'admin.php?page=bitform#/app-settings/integrations'];
       $submenu['bitform'][] = [__('SMTP', 'bit-form'), $capability, 'admin.php?page=bitform#/app-settings/smtp'];
@@ -70,7 +70,7 @@ class Admin_Bar
       $submenu['bitform'][] = [__('Payments', 'bit-form'), $capability, 'admin.php?page=bitform#/app-settings/payments'];
       $submenu['bitform'][] = [__('Doc & Support', 'bit-form'), $capability, 'admin.php?page=bitform#/doc-support'];
       if (!Utilities::isPro()) {
-        $submenu['bitform'][] = [__('<span class="bf-pro-btn">Upgrade to Pro</span>', 'bit-form'), $capability, 'https://bit-form.com/#pricing', '_blank'];
+        $submenu['bitform'][] = ['<span class="bf-pro-btn">' . __('Upgrade to Pro', 'bit-form') . '</span>', $capability, 'https://bit-form.com/#pricing', '_blank'];
       }
     }
   }
@@ -93,49 +93,49 @@ class Admin_Bar
     $wp_admin_bar->add_node([
       'id'     => 'bitform-all-forms',
       'parent' => 'bitform',
-      'title'  => 'All Forms' . $indicator,
+      'title'  => __('All Forms', 'bit-form') . $indicator,
       'href'   => admin_url('admin.php?page=bitform#/'),
     ]);
     $wp_admin_bar->add_node([
       'id'     => 'bitform-form-templates',
       'parent' => 'bitform',
-      'title'  => 'Form Templates',
+      'title'  => __('Form Templates', 'bit-form'),
       'href'   => admin_url('admin.php?page=bitform#/form-templates'),
     ]);
     $wp_admin_bar->add_node([
       'id'     => 'bitform-app-settings',
       'parent' => 'bitform',
-      'title'  => 'App Settings',
+      'title'  => __('App Settings', 'bit-form'),
       'href'   => admin_url('admin.php?page=bitform#/app-settings/general'),
     ]);
     $wp_admin_bar->add_node([
       'id'     => 'bitform-smtp',
       'parent' => 'bitform',
-      'title'  => 'SMTP',
+      'title'  => __('SMTP', 'bit-form'),
       'href'   => admin_url('admin.php?page=bitform#/app-settings/smtp'),
     ]);
     $wp_admin_bar->add_node([
       'id'     => 'bitform-pdf-setting',
       'parent' => 'bitform',
-      'title'  => 'PDF Setting',
+      'title'  => __('PDF Setting', 'bit-form'),
       'href'   => admin_url('admin.php?page=bitform#/app-settings/pdf'),
     ]);
     $wp_admin_bar->add_node([
       'id'     => 'bitform-cpt',
       'parent' => 'bitform',
-      'title'  => 'CPT',
+      'title'  => __('CPT', 'bit-form'),
       'href'   => admin_url('admin.php?page=bitform#/app-settings/cpt'),
     ]);
     $wp_admin_bar->add_node([
       'id'     => 'bitform-api',
       'parent' => 'bitform',
-      'title'  => 'Bit Form API',
+      'title'  => __('Bit Form API', 'bit-form'),
       'href'   => admin_url('admin.php?page=bitform#/app-settings/api'),
     ]);
     $wp_admin_bar->add_node([
       'id'     => 'bitform-payments',
       'parent' => 'bitform',
-      'title'  => 'Payments',
+      'title'  => __('Payments', 'bit-form'),
       'href'   => admin_url('admin.php?page=bitform#/app-settings/payments'),
     ]);
   }
@@ -365,7 +365,7 @@ class Admin_Bar
       'bitforms_localized_script',
       $bits
     );
-    if ('en_US' !== get_locale() && file_exists(BITFORMS_PLUGIN_DIR_PATH . '/languages/generatedString.php')) {
+    if ('en_US' !== get_user_locale() && file_exists(BITFORMS_PLUGIN_DIR_PATH . '/languages/generatedString.php')) {
       include_once BITFORMS_PLUGIN_DIR_PATH . '/languages/generatedString.php';
       $bitforms['translations'] = $i18n_strings;
     }

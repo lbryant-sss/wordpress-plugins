@@ -1,7 +1,7 @@
 === Bit Form - Custom Contact Form, Multi Step, Conversational, Payment & Quiz Form builder ===
 Plugin Name: Bit Form - Custom Contact Form, Multi Step, Conversational, Payment & Quiz Form builder
-Version: 2.20.4
-Stable tag: 2.20.4
+Version: 2.20.5
+Stable tag: 2.20.5
 Author: Contact form builder by Bit form
 Author URI: https://www.bitapps.pro/
 Contributors: bitpressadmin, arif25897, mdrhmaruf, mdabbasuddin, akaioum 
@@ -33,14 +33,14 @@ Contact Form Builder plugin for creating fast, lightweight multi-step forms, con
 
 Bit Form ensures optimal web and server performance with its highly optimized size, varying based on the fields and settings used. It maintains your website's page speed, crucial for SEO, marketing, and conversions, making it one of the powerful WordPress contact form builder plugin.
 
-[Try Demo](https://towp.io/) | [Documentation](https://bitapps.pro/docs/bit-form/) | [Bit Form Repository](https://github.com/Bit-Apps-Pro/bit-form-frontend) | [Youtube Channel](https://www.youtube.com/@bit-apps) | [Support Chat](https://tawk.to/chat/60eac4b6d6e7610a49aab375/1faah0r3e) | [Facebook Community](https://www.facebook.com/groups/bitapps)
+[Try Demo](https://towp.io/) | [Documentation](https://bit-form.com/wp-docs/) | [Bit Form Repository](https://github.com/Bit-Apps-Pro/bit-form-frontend) | [Youtube Channel](https://www.youtube.com/@bit-apps) | [Support Chat](https://tawk.to/chat/60eac4b6d6e7610a49aab375/1faah0r3e) | [Facebook Community](https://www.facebook.com/groups/bitapps)
 
 #### A Feature-packed and Powerful Form Builder for WordPress [INCREDIBLE] | Mr Web
 
 [youtube https://youtu.be/GCBwWCBD-yA]
 
 > <strong>Bit Form Pro</strong><br />
-> Experience advanced features with Bit Form Pro, the premium upgrade of our contact form builder plugin. Beyond the impressive capabilities of our free version, Bit Form Pro offers <strong>Payment Fields (PayPal, Razorpay, Stripe and Mollie)</strong>, <strong>unlimited conditional logics</strong>, <strong>WP authentication</strong>, <strong>double opt-in</strong>, <strong>honeypot spam protection</strong>, <strong>Google ads integration</strong>, and <strong>custom post type (CPT)</strong> support. Visit our website to explore the full range of <a href="https://www.bitapps.pro/bit-form" target="_blank">Bit Form Pro's</a> features and elevate your WordPress contact forms today!
+> Experience advanced features with Bit Form Pro, the premium upgrade of our contact form builder plugin. Beyond the impressive capabilities of our free version, Bit Form Pro offers <strong>Payment Fields (PayPal, Razorpay, Stripe and Mollie)</strong>, <strong>unlimited conditional logics</strong>, <strong>WP authentication</strong>, <strong>double opt-in</strong>, <strong>honeypot spam protection</strong>, <strong>Google ads integration</strong>, and <strong>custom post type (CPT)</strong> support. Visit our website to explore the full range of <a href="https://bit-form.com/" target="_blank">Bit Form Pro's</a> features and elevate your WordPress contact forms today!
 
 ### Advanced contact form builder plugin - Bit Form
 
@@ -322,7 +322,7 @@ Can be created using the text editor. You can use a form field in the email temp
 
 == 🔄 Bit Form API: ==
 
-Bit Form's REST [API](https://bitapps.pro/docs/bit-form/api/) lets you effortlessly fetch and send data between our form plugin and other software. Utilize GET to transfer and edit information, POST to add and update records, and DELETE to remove them with ease.
+Bit Form's REST [API](https://bit-form.com/wp-docs/developer-docs/api/) lets you effortlessly fetch and send data between our form plugin and other software. Utilize GET to transfer and edit information, POST to add and update records, and DELETE to remove them with ease.
 
 
 == ❣ What our customers say about WordPress contact form builder plugin - Bit Form: ==
@@ -501,6 +501,21 @@ Yes, Bit Form has built-in spam protection better than any other Contact Form Bu
 6. Response table to view form entries
 
 == Changelog ==
+= 2.20.5 =
+*Release Date: 25 August, 2025*
+*New:
+    1. Smart Tag: Added ${bf_all_data.onlyValues} smart tag to include all form field values (excluding empty and hidden fields) in Email & PDF templates.
+    2. Conditional Logic: Introduced an Enable/Disable option for better control over conditional logic.
+    3. Language Support: Added new translations for Dutch, French, German, Italian, Portuguese, Spanish, Turkish, and 25+ additional languages.
+
+*Improvements:
+    1. Limit Form Submission: Enhanced by adding options to set submission limits per user/IP or per date/week/month.
+    2. Smart Tags: Added new week tokens for the Format Date Time smart tag.
+    3. File Upload: Improved file type validation for the advanced file upload field.
+
+*Fix:
+    1. Resolved an issue where '0' values were not being included in email content.
+
 = 2.20.4 =
 *Release Date: 12 August, 2025*
 *Fix:

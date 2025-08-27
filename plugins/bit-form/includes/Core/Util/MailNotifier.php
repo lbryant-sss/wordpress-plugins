@@ -7,7 +7,6 @@ use BitCode\BitForm\Core\Database\FormEntryMetaModel;
 use BitCode\BitForm\Core\Messages\EmailTemplateHandler;
 use BitCode\BitForm\Core\Messages\PdfTemplateHandler;
 use BitCode\BitFormPro\Admin\AppSetting\Pdf;
-use Error;
 
 final class MailNotifier
 {
@@ -66,6 +65,13 @@ final class MailNotifier
             'status'          => 'success',
             'code'            => 'pdf_generated',
             'message'         => 'PDF successfully generated',
+            'inputDetails'    => [
+              'notifyDetails' => $notifyDetails,
+              'formID'        => $formID,
+              'entryID'       => $entryID,
+              'isDblOptin'    => $isDblOptin,
+              'logId'         => $logId
+            ],
             'responseDetails' => $generatedPdf
           ]);
         } else {
@@ -74,6 +80,13 @@ final class MailNotifier
             'status'          => 'error',
             'code'            => 'pdf_generation_error',
             'message'         => 'Error in generating PDF',
+            'inputDetails'    => [
+              'notifyDetails' => $notifyDetails,
+              'formID'        => $formID,
+              'entryID'       => $entryID,
+              'isDblOptin'    => $isDblOptin,
+              'logId'         => $logId
+            ],
             'responseDetails' => $generatedPdf->get_error_message()
           ]);
         }
@@ -193,6 +206,18 @@ final class MailNotifier
               'status'          => 'error',
               'code'            => 'mail_not_sent',
               'message'         => 'Mail not sent',
+              'inputDetails'    => [
+                'to'            => $mailTo,
+                'subject'       => $mailSubject,
+                'body'          => $mailBody,
+                'headers'       => $mailHeaders,
+                'attachments'   => $attachments,
+                'notifyDetails' => $notifyDetails,
+                'formID'        => $formID,
+                'entryID'       => $entryID,
+                'isDblOptin'    => $isDblOptin,
+                'logId'         => $logId
+              ],
               'responseDetails' => $status
             ]);
             $apiResponse->apiResponse($logId, '', ['type' =>  'record', 'type_name' => 'smtp'], 'errors', 'Mail dose not send successfully', $entryDetails);
@@ -201,6 +226,18 @@ final class MailNotifier
               'status'          => 'success',
               'code'            => 'mail_sent',
               'message'         => 'Mail successfully sent',
+              'inputDetails'    => [
+                'to'            => $mailTo,
+                'subject'       => $mailSubject,
+                'body'          => $mailBody,
+                'headers'       => $mailHeaders,
+                'attachments'   => $attachments,
+                'notifyDetails' => $notifyDetails,
+                'formID'        => $formID,
+                'entryID'       => $entryID,
+                'isDblOptin'    => $isDblOptin,
+                'logId'         => $logId
+              ],
               'responseDetails' => $status
             ]);
             $apiResponse->apiResponse($logId, '', ['type' =>  'record', 'type_name' => 'smtp'], 'success', 'Mail successfully send.', $entryDetails);

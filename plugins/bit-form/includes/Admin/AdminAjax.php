@@ -1741,7 +1741,7 @@ class AdminAjax
       wp_send_json_error(
         __(
           'Token expired',
-          'bitformpro'
+          'bit-form'
         ),
         401
       );
@@ -1922,7 +1922,7 @@ class AdminAjax
       wp_send_json_error(
         __(
           'Token expired',
-          'bitformpro'
+          'bit-form'
         ),
         401
       );

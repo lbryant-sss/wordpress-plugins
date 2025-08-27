@@ -5,7 +5,7 @@ Requires at least: 5.4
 License: GPL3
 Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: 7.8.1
+Stable tag: 7.8.2
 
 Lifetime SSL solution - Install free SSL certificate & enable HTTPS redirect, HTTPS mail, fix SSL errors, SSL score, Advanced Security & SSL monitoring.
 
@@ -170,6 +170,9 @@ Security is an important subject regarding SSL/TLS certificates, of course. It i
 7. Mixed Content Scanner to identify insecure contents on HTTPS site
 
 == Changelog ==
+
+= 7.8.2 =
+* HTTPS setup wizard for free
 
 = 7.8.1 =
 * Free - admin notice to show new advanced security page

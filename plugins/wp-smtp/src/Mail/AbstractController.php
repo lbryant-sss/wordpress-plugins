@@ -20,11 +20,6 @@ abstract class AbstractController {
 	protected string $nonce_name = 'solid-wp-nonce';
 
 	/**
-	 * Option name for version
-	 */
-	const OPTION_VERSION_NAME = 'solid_smtp_version';
-
-	/**
 	 * Register hooks.
 	 *
 	 * Implementing classes should use this method to register hooks with WordPress or other systems.

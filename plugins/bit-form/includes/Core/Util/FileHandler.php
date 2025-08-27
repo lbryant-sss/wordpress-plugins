@@ -302,7 +302,6 @@ final class FileHandler
     }
 
     $fileName = sanitize_file_name((string)($file['name'] ?? ''));
-    error_log('fileName: ' . $fileName);
     if ('' === $fileName) {
       return ['message' => __('Empty filename', 'bit-form'), 'error_type' => 'file_type_error'];
     }
@@ -318,7 +317,7 @@ final class FileHandler
 
     // 2) Determine ext + MIME using WP + finfo
     $wpCheck = wp_check_filetype_and_ext($file['tmp_name'], $fileName); // ['ext'=>'jpg','type'=>'image/jpeg']
-    $fileExtension = strtolower((string)(empty($wpCheck['ext']) ? pathinfo($fileName, PATHINFO_EXTENSION) : empty($wpCheck['ext'])));
+    $fileExtension = strtolower((string)(empty($wpCheck['ext']) ? pathinfo($fileName, PATHINFO_EXTENSION) : $wpCheck['ext']));
     $wpExt = strtolower((string)(empty($wpCheck['ext']) ? $fileExtension : $wpCheck['ext']));
     $wpType = strtolower((string)($wpCheck['type'] ?? ''));
     $fi = function_exists('finfo_open') ? @finfo_open(FILEINFO_MIME_TYPE) : false;

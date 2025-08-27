@@ -25,7 +25,7 @@ final class WorkFlow
     $this->_actions = new Actions($formID);
   }
 
-  public function getWorkFlow($workFlowRun, $workFlowType, $workFlowIds = null, $orderColumn = 'id')
+  public function getWorkFlow($workFlowRun, $workFlowType, $workFlowIds = null, $orderColumn = 'id', $workFlowStatus = 1)
   {
     if (null === $workFlowIds) {
       $condition = [
@@ -55,6 +55,14 @@ final class WorkFlow
         ]
       );
     }
+    if (!empty($workFlowStatus)) {
+      $condition = \array_merge(
+        $condition,
+        [
+          'workflow_status' => $workFlowStatus,
+        ]
+      );
+    }
     $workFlows = static::$_workFlowModel->get(
       [
         'id',
@@ -64,6 +72,7 @@ final class WorkFlow
         'workflow_condition',
         'workflow_name',
         'workflow_order',
+        'workflow_status',
       ],
       $condition,
       null,
@@ -367,9 +376,11 @@ final class WorkFlow
             $logics = $condition->logics;
             $fieldData = Helper::smartFldMargeFormFld($logics, $fieldData);
             $conditionalLogic = new ConditionalLogic($logics, $fieldData);
-            $conditionStaus = $conditionalLogic->getConditionStatus();
+            $conditionStatus = $conditionalLogic->getConditionStatus();
 
-            if (($conditionStaus && in_array($type, ['if', 'else-if'])) || 'else' === $type) {
+            $conditionStatus = apply_filters('bitform_filter_workflow_condition_status', $conditionStatus, $condition, $fieldData, $this::$_formID);
+
+            if (($conditionStatus && in_array($type, ['if', 'else-if'])) || 'else' === $type) {
               $isExists = \array_search($entry->entry_id, $returnableEntries);
               if (!empty($actions->avoid_delete) && false !== $isExists) {
                 unset($returnableEntries[$isExists]);
@@ -397,6 +408,34 @@ final class WorkFlow
                 }
               }
               break;
+            }
+          }
+        } elseif ('always' === $conditionBehaviour) {
+          $actions = $workFlowBlock[0]->actions;
+          $isExists = \array_search($entry->entry_id, $returnableEntries);
+          if (!empty($actions->avoid_delete) && false !== $isExists) {
+            unset($returnableEntries[$isExists]);
+            $returnableEntries = array_values($returnableEntries);
+          } elseif (false === $isExists) {
+            $returnableEntries[] = $entry->entry_id;
+          }
+          if (!empty($actions->success)) {
+            foreach ($actions->success as $successActionDetail) {
+              switch ($successActionDetail->type) {
+                case 'webHooks':
+                  if (!empty($successActionDetail->details->id)) {
+                    $webHooks = $successActionDetail->details->id;
+                    Integrations::executeIntegrations($webHooks, $fieldValue, static::$_formID);
+                  }
+                  break;
+                case 'mailNotify':
+                  if (!empty($successActionDetail->details->id)) {
+                    MailNotifier::notify($successActionDetail->details, static::$_formID, $fieldValue, $entry->entry_id);
+                  }
+                  break;
+                default:
+                  break;
+              }
             }
           }
         }

@@ -38,7 +38,7 @@ class Report
     );
 
     $details = [
-      'report_name'   => 'All Entries',
+      'report_name'   => __('All Entries', 'bit-form'),
       'hiddenColumns' => [],
       'pageSize'      => 10,
       'sortBy'        => [],

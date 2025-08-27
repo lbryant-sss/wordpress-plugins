@@ -17,6 +17,7 @@ class WorkFlow
         'workflow_behaviour',
         'workflow_condition',
         'workflow_action',
+        'workflow_status',
       ],
       [],
       null,

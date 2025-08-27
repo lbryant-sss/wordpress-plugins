@@ -75,7 +75,7 @@ FIELDCONTENT;
 
   public function getField($field, $rowID, $field_name, $form_atomic_Cls_map, $error, $value, $formID)
   {
-    switch($field->typ) {
+    switch ($field->typ) {
       case 'text':
       case 'username':
       case 'number':

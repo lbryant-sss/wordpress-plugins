@@ -384,7 +384,7 @@ class ZohoCRMHandler
         wp_send_json_error(
           __(
             'Requested parameter is empty',
-            'bitformpro'
+            'bit-form'
           ),
           400
         );
@@ -438,7 +438,7 @@ class ZohoCRMHandler
       wp_send_json_error(
         __(
           'Token expired',
-          'bitformpro'
+          'bit-form'
         ),
         401
       );
@@ -465,7 +465,7 @@ class ZohoCRMHandler
         wp_send_json_error(
           __(
             'Requested parameter is empty',
-            'bitformpro'
+            'bit-form'
           ),
           400
         );
@@ -482,7 +482,7 @@ class ZohoCRMHandler
         $response['tags'] = $tagListApiResponse;
       } else {
         wp_send_json_error(
-          is_wp_error($tagListApiResponse) ? $tagListApiResponse->get_error_message() : (empty($tagListApiResponse) ? __('Tag is empty', 'bitformpro') : 'Unknown'),
+          is_wp_error($tagListApiResponse) ? $tagListApiResponse->get_error_message() : (empty($tagListApiResponse) ? __('Tag is empty', 'bit-form') : 'Unknown'),
           empty($tagListApiResponse) ? 204 : 400
         );
       }
@@ -494,7 +494,7 @@ class ZohoCRMHandler
       wp_send_json_error(
         __(
           'Token expired',
-          'bitformpro'
+          'bit-form'
         ),
         401
       );
@@ -521,7 +521,7 @@ class ZohoCRMHandler
         wp_send_json_error(
           __(
             'Requested parameter is empty',
-            'bitformpro'
+            'bit-form'
           ),
           400
         );
@@ -543,7 +543,7 @@ class ZohoCRMHandler
         wp_send_json_error(
           !empty($assignmentRulesResponse->status)
               && 'error' === $assignmentRulesResponse->status ?
-              $assignmentRulesResponse->message : (empty($assignmentRulesResponse) ? __('Assignment rules is empty', 'bitformpro') : 'Unknown'),
+              $assignmentRulesResponse->message : (empty($assignmentRulesResponse) ? __('Assignment rules is empty', 'bit-form') : 'Unknown'),
           empty($assignmentRulesResponse) ? 204 : 400
         );
       }
@@ -556,7 +556,7 @@ class ZohoCRMHandler
       wp_send_json_error(
         __(
           'Token expired',
-          'bitformpro'
+          'bit-form'
         ),
         401
       );
@@ -583,7 +583,7 @@ class ZohoCRMHandler
         wp_send_json_error(
           __(
             'Requested parameter is empty',
-            'bitformpro'
+            'bit-form'
           ),
           400
         );
@@ -605,7 +605,7 @@ class ZohoCRMHandler
         wp_send_json_error(
           !empty($relatedListResponse->status)
               && 'error' === $relatedListResponse->status ?
-              $relatedListResponse->message : (empty($relatedListResponse) ? __('RelatedList is empty', 'bitformpro') : 'Unknown'),
+              $relatedListResponse->message : (empty($relatedListResponse) ? __('RelatedList is empty', 'bit-form') : 'Unknown'),
           empty($relatedListResponse) ? 204 : 400
         );
       }
@@ -618,7 +618,7 @@ class ZohoCRMHandler
       wp_send_json_error(
         __(
           'Token expired',
-          'bitformpro'
+          'bit-form'
         ),
         401
       );
@@ -633,7 +633,7 @@ class ZohoCRMHandler
       $relatedListLayout = !empty($relatedlist->layout) ? $relatedlist->layout : '';
       $defaultDataConf = $integrationDetails->default;
       if (empty($relatedListModule) || empty($relatedListLayout)) {
-        return new WP_Error('REQ_FIELD_EMPTY', __('module, layout are required for zoho crm relatedlist', 'bitformpro'));
+        return new WP_Error('REQ_FIELD_EMPTY', __('module, layout are required for zoho crm relatedlist', 'bit-form'));
       }
       $module = $integrationDetails->module;
       $moduleSingular = \substr($module, 0, \strlen($module) - 1);

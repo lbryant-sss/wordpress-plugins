@@ -629,7 +629,7 @@ if ( !class_exists( 'PT_CV_Html' ) ) {
 				$meta	 = PT_CV_Functions::setting_value( PT_CV_PREFIX . 'topmeta-which' );
 				switch ( $meta ) {
 					case 'mtt_author':
-						$mtt = sprintf( '<a href="%s">%s</a>', get_the_author_link(), get_the_author() );
+						$mtt = sprintf( '<a href="%s">%s</a>', esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ), get_the_author() );
 						break;
 
 					case 'mtt_date':

@@ -31,7 +31,7 @@ class FormEntryLogModel extends Model
       if (isset($integrations->errors['result_empty'])) {
         $integrations = [];
       } else {
-        foreach ($logs as  $key => $log) {
+        foreach ($logs as $key => $log) {
           foreach ($integrations as $integration) {
             if ($integration->log_id === $log->id) {
               $logs[$key]->integration = true;

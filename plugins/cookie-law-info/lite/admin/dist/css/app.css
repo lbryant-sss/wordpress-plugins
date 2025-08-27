@@ -39,7 +39,7 @@
 .cky-app-wrap .cky-nav-menu-item {
   text-decoration: none !important;
   cursor: pointer;
-  color: rgb(79.625, 91, 102.375);
+  color: #505b66;
   padding: 15px 0;
   display: inline-block;
   margin: 0 10px;
@@ -582,20 +582,20 @@
   align-items: center;
 }
 .cky-app-wrap .cky-badge-info {
-  color: rgb(0, 157.5, 225);
+  color: #009ee1;
   background-color: #e1f6ff;
 }
 .cky-app-wrap .cky-badge-error {
   color: #E71D36;
-  background: rgb(240.792, 121.208, 136.008);
+  background: #f17988;
 }
 .cky-app-wrap .cky-badge-warning {
-  color: rgb(255, 157.4397905759, 13);
-  background: rgb(255, 219.1204188482, 166);
+  color: #ff9d0d;
+  background: #ffdba6;
 }
 .cky-app-wrap .cky-badge-success {
-  color: rgb(0, 150, 123.8805970149);
-  background: rgb(175.5, 255, 241.1567164179);
+  color: #00967c;
+  background: #b0fff1;
 }
 .cky-app-wrap .cky-icon-base {
   display: inline-flex;
@@ -1079,8 +1079,8 @@ to {
 .cky-app-wrap a.cky-button:focus,
 .cky-app-wrap button.cky-button:hover,
 .cky-app-wrap button.cky-button:focus {
-  background-color: rgb(7.173553719, 95.9462809917, 209.826446281);
-  border-color: rgb(7.173553719, 95.9462809917, 209.826446281);
+  background-color: #0760d2;
+  border-color: #0760d2;
 }
 .cky-app-wrap .cky-button.cky-button-secondary,
 .cky-app-wrap a.cky-button.cky-button-secondary,
@@ -1094,8 +1094,8 @@ to {
 .cky-app-wrap a.cky-button.cky-button-secondary:focus,
 .cky-app-wrap button.cky-button.cky-button-secondary:hover,
 .cky-app-wrap button.cky-button.cky-button-secondary:focus {
-  background-color: rgb(221.6666666667, 221.6666666667, 228.3333333333);
-  border-color: rgb(221.6666666667, 221.6666666667, 228.3333333333);
+  background-color: #dedee4;
+  border-color: #dedee4;
 }
 .cky-app-wrap .cky-button.cky-button-green,
 .cky-app-wrap a.cky-button.cky-button-green,
@@ -1108,8 +1108,8 @@ to {
 .cky-app-wrap a.cky-button.cky-button-green:focus,
 .cky-app-wrap button.cky-button.cky-button-green:hover,
 .cky-app-wrap button.cky-button.cky-button-green:focus {
-  background-color: rgb(18.1515957447, 144.3484042553, 71.7420212766);
-  border-color: rgb(18.1515957447, 144.3484042553, 71.7420212766);
+  background-color: #129048;
+  border-color: #129048;
 }
 .cky-app-wrap .cky-button.cky-button-danger,
 .cky-app-wrap a.cky-button.cky-button-danger,
@@ -1123,8 +1123,8 @@ to {
 .cky-app-wrap a.cky-button.cky-button-danger:focus,
 .cky-app-wrap button.cky-button.cky-button-danger:hover,
 .cky-app-wrap button.cky-button.cky-button-danger:focus {
-  background-color: rgb(188.936, 20.064, 40.964);
-  border-color: rgb(188.936, 20.064, 40.964);
+  background-color: #bd1429;
+  border-color: #bd1429;
 }
 .cky-app-wrap .cky-button.cky-button-medium,
 .cky-app-wrap a.cky-button.cky-button-medium,
@@ -1381,13 +1381,13 @@ to {
 .cky-app-wrap a.cky-button-no-style:hover, .cky-app-wrap a.cky-button-no-style:focus,
 .cky-app-wrap button.cky-button-no-style:hover,
 .cky-app-wrap button.cky-button-no-style:focus {
-  color: rgb(45.5, 45.5, 45.5);
+  color: #2e2e2e;
   background-color: transparent;
 }
 .cky-app-wrap a.cky-button-no-style:focus,
 .cky-app-wrap button.cky-button-no-style:focus {
   outline: none;
-  color: rgb(45.5, 45.5, 45.5);
+  color: #2e2e2e;
   background-color: transparent;
 }
 .cky-app-wrap .cky-button[data-type=icon] {
@@ -1910,7 +1910,7 @@ fieldset[disabled] .cky-app-wrap .cky-select {
 .cky-app-wrap .cky-nav-tab .cky-nav-tab-button {
   border: none;
   cursor: pointer;
-  color: rgb(79.625, 91, 102.375);
+  color: #505b66;
   background: transparent;
   font-weight: 500;
 }

@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit3b7e894c5b9051baf00cd4cc909376f7
+class ComposerStaticInit9ce077c0a8093fbafe06749678422c4c
 {
     public static $prefixLengthsPsr4 = array (
         'C' => 
@@ -1148,6 +1148,7 @@ class ComposerStaticInit3b7e894c5b9051baf00cd4cc909376f7
         'Yoast\\WP\\SEO\\Plans\\Domain\\Add_Ons\\Woo' => __DIR__ . '/../..' . '/src/plans/domain/add-ons/woo.php',
         'Yoast\\WP\\SEO\\Plans\\Infrastructure\\Add_Ons\\Managed_Add_On' => __DIR__ . '/../..' . '/src/plans/infrastructure/add-ons/managed-add-on.php',
         'Yoast\\WP\\SEO\\Plans\\User_Interface\\Plans_Page_Integration' => __DIR__ . '/../..' . '/src/plans/user-interface/plans-page-integration.php',
+        'Yoast\\WP\\SEO\\Plans\\User_Interface\\Upgrade_Sidebar_Menu_Integration' => __DIR__ . '/../..' . '/src/plans/user-interface/upgrade-sidebar-menu-integration.php',
         'Yoast\\WP\\SEO\\Presentations\\Abstract_Presentation' => __DIR__ . '/../..' . '/src/presentations/abstract-presentation.php',
         'Yoast\\WP\\SEO\\Presentations\\Archive_Adjacent' => __DIR__ . '/../..' . '/src/presentations/archive-adjacent-trait.php',
         'Yoast\\WP\\SEO\\Presentations\\Indexable_Author_Archive_Presentation' => __DIR__ . '/../..' . '/src/presentations/indexable-author-archive-presentation.php',
@@ -1337,9 +1338,9 @@ class ComposerStaticInit3b7e894c5b9051baf00cd4cc909376f7
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit3b7e894c5b9051baf00cd4cc909376f7::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit3b7e894c5b9051baf00cd4cc909376f7::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit3b7e894c5b9051baf00cd4cc909376f7::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit9ce077c0a8093fbafe06749678422c4c::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit9ce077c0a8093fbafe06749678422c4c::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit9ce077c0a8093fbafe06749678422c4c::$classMap;
 
         }, null, ClassLoader::class);
     }

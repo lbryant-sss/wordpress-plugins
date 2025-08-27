@@ -281,6 +281,12 @@ final class FieldValueHandler
               'message' => "File not found or unsupported file type: $fullPath",
             ]);
             return '';
+          } else {
+            Log::debug_log([
+              'status'  => 'success',
+              'code'    => 'file_found',
+              'message' => "File Found => location: {$fullPath}"
+            ]);
           }
           $mimeType = mime_content_type($fullPath);
           if (!in_array($mimeType, $allowedMimeTypes[$extension], true)) {
@@ -301,64 +307,143 @@ final class FieldValueHandler
 
   public static function replaceValueOfBf_all_data($stringToReplaceField, $fieldValues, $formId)
   {
-    $pattern = '/\$\{bf_all_data\}/'; // Corrected escaping
+    // $pattern = '/\$\{bf_all_data\}/'; // Corrected escaping
+    $pattern = '/\$\{bf_all_data(?:\.onlyValues)?\}/'; // Corrected escaping
 
     preg_match_all($pattern, $stringToReplaceField, $matches);
-    if (count($matches[0]) > 0) {
+    $matchesArray = $matches[0] ?? [];
+
+    if (count($matchesArray) > 0) {
       $formManager = FormManager::getInstance($formId);
       $formFields = $formManager->getFields();
-      $fields = self::bindFormData($formFields, $fieldValues, $formId);
-      $table = self::generateTable($fields, $formFields);
-      $stringToReplaceField = str_replace('${bf_all_data}', $table, $stringToReplaceField);
-    }
 
+      foreach ($matchesArray as $match) {
+        switch ($match) {
+          case '${bf_all_data}':
+            $fieldValues = self::bindFormData($formFields, $fieldValues, $formId);
+            $table = self::generateTable($fieldValues, $formFields);
+            $stringToReplaceField = str_replace('${bf_all_data}', $table, $stringToReplaceField);
+            break;
+
+          case '${bf_all_data.onlyValues}':
+            $fieldValues = self::bindFormData($formFields, $fieldValues, $formId, true);
+            $table = self::generateTable($fieldValues, $formFields);
+            $stringToReplaceField = str_replace('${bf_all_data.onlyValues}', $table, $stringToReplaceField);
+            break;
+          default:
+            Log::debug_log([
+              'status'  => 'error',
+              'code'    => 'unknown_placeholder',
+              'message' => "Unknown placeholder: $match",
+            ]);
+            break;
+        }
+      }
+    }
     return $stringToReplaceField;
   }
 
-  private static function bindFormData($formFields, $formData, $formId)
+  /**
+   * Ensures an <img> tag with a style attribute exists in the input.
+   *
+   * Behavior:
+   * - If the input is just an image filename (e.g., "1.png"), returns a complete <img> tag with the default style.
+   * - If the input is HTML with <img> tags:
+   *   - If any <img> has a style, returns the HTML as-is.
+   *   - If <img> exists without style, adds the default style to the first one found.
+   *   - If no <img> tag or image file is found, returns the input unchanged.
+   *
+   * @param string $input        Image filename or HTML string.
+   * @param string $defaultStyle Optional. The CSS style to apply if missing. Default: 'max-width: 100%; height: auto;'.
+   *
+   * @return string Modified HTML string with styled <img> tag if needed.
+   */
+  private static function ensureImgWithStyle($input, $defaultStyle = 'max-width: 100%; height: auto;')
+  {
+    $imgTagWithStylePattern = '/<img\b[^>]*\bstyle\s*=\s*["\'][^"\']*["\'][^>]*>/i';
+    $imgTagPattern = '/<img\b[^>]*>/i';
+    $filePattern = '/\.(jpg|jpeg|png|gif|webp)$/i';
+
+    if (preg_match($filePattern, trim($input)) && !preg_match('/<img\b/i', $input)) {
+      return '<img src="' . htmlspecialchars(trim($input)) . '" style="' . $defaultStyle . '" />';
+    }
+
+    if (preg_match($imgTagWithStylePattern, $input)) {
+      // <img> already has style, return as is
+      return $input;
+    } elseif (preg_match($imgTagPattern, $input, $match)) {
+      // <img> without style, add style
+      $updatedImg = preg_replace('/<img\b(.*?)(\/?)>/i', '<img$1 style="' . $defaultStyle . '" $2>', $match[0]);
+      return str_replace($match[0], $updatedImg, $input);
+    } else {
+      // No <img> tag found, return input
+      return $input;
+    }
+  }
+
+  private static function bindFormData($formFields, $formData, $formId, $isOnlyValues = false)
   {
     $entryID = isset($formData['entry_id']) ? $formData['entry_id'] : null;
     $encryptDirectory = Helpers::getEncryptedEntryId($entryID);
 
     $uploadPath = $formId . DIRECTORY_SEPARATOR . $encryptDirectory;
-
-    return array_reduce(array_keys($formFields), function ($filteredData, $key) use ($formFields, $formData) {
+    return array_reduce(array_keys($formFields), function ($filteredData, $key) use ($formFields, $formData, $isOnlyValues) {
       $field = $formFields[$key];
+
+      $fieldNewData = $filteredData;
 
       $ignoreFields = ['button', 'recaptcha', 'html', 'divider', 'spacer', 'section', 'file-up', 'turnstile', 'hcaptcha', 'advanced-file-up', 'image'];
 
       $arrayValueFldType = ['check', 'select', 'image-select'];
 
       if (in_array($field['type'], $ignoreFields)) {
-        return $filteredData;
+        return $fieldNewData;
+      }
+
+      // for hidden or empty fields, we can skip the processing
+
+      if ($isOnlyValues) {
+        if (empty($formData[$key]) || '' === $formData[$key]) {
+          return $fieldNewData;
+        }
+
+        if (isset($field['valid']['hide']) && $field['valid']['hide']) {
+          return $fieldNewData;
+        }
       }
 
       if (isset($formData[$key])) {
         if ('repeater' === $field['type']) {
-          $filteredData[$key] = is_string($formData[$key]) ? json_decode($formData[$key], true) : $formData[$key];
+          $repeater_data = is_string($formData[$key]) ? json_decode($formData[$key], true) : $formData[$key];
+          if ($isOnlyValues) {
+            $repeater_data = array_filter($repeater_data, function ($sub) {
+              return array_filter($sub, fn ($value) => '' !== $value);
+            });
+          }
+          $fieldNewData[$key] = $repeater_data;
         } elseif ('signature' === $field['type']) {
           $file_path = strpos($formData[$key], '/') ? $formData[$key] : $formData[$key];
-          $filteredData[$key] = '<img src="' . $file_path . '" style="max-width: 100%; height: auto;" />';
+          $fieldNewData[$key] = self::ensureImgWithStyle($file_path, 'max-width: 100%; height: auto;');
         } elseif (in_array($field['type'], $arrayValueFldType)) {
-          $filteredData[$key] = is_array($formData[$key]) ? implode(', ', $formData[$key]) : $formData[$key];
+          $fieldNewData[$key] = is_array($formData[$key]) ? implode(', ', $formData[$key]) : $formData[$key];
         } else {
-          $filteredData[$key] = $formData[$key];
+          $fieldNewData[$key] = $formData[$key];
         }
       }
 
-      return $filteredData;
+      return $fieldNewData;
     }, []);
   }
 
-  private static function generateTable($fields, $formFields)
+  private static function generateTable($fieldValues, $formFields)
   {
-    if (empty($fields)) {
+    if (empty($fieldValues)) {
       Log::debug_log([
         'status'     => 'error',
         'code'       => 'no_fields_found',
         'type'       => 'bf_all_data',
         'message'    => 'No fields found for bf_all_data',
-        'fields'     => $fields,
+        'fields'     => $fieldValues,
         'formFields' => $formFields,
       ]);
       return '<p>No data available.</p>';
@@ -366,7 +451,7 @@ final class FieldValueHandler
 
     $table = "<table style='font-family: arial, sans-serif; border-collapse: collapse; width: 100%;'>";
 
-    foreach ($fields as $fk => $value) {
+    foreach ($fieldValues as $fk => $value) {
       $fieldName = $formFields[$fk]['label'] ?? $fk;
       $table .= "<tr>
               <td style='border: 1px solid #dddddd; text-align: left; padding: 8px; font-weight: bold;'>{$fieldName}</td>
@@ -418,16 +503,17 @@ final class FieldValueHandler
     if (empty($matches[1])) {
       return $stringToReplaceField;
     }
-    // Clean field data
-    $dataCleaning = self::removeEmptyValues($fieldValues);
 
-    $flatFieldData = self::restructureRepeaterData($dataCleaning, $formManager);
+    // Clean field data
+    // $dataCleaning = self::removeEmptyValues($fieldValues);
+
+    $flatFieldData = self::restructureRepeaterData($fieldValues, $formManager);
     // generate table for repeater fields
     foreach ($matches[1] as $fk) {
       $repeaterFieldKey = $fk;
       $fieldType = isset($formFields[$repeaterFieldKey]['type']) && !empty($formFields[$repeaterFieldKey]['type']) ? $formFields[$repeaterFieldKey]['type'] : null;
       if ('repeater' === $fieldType) {
-        $repeaterMarkup = self::repeaterFieldTable($dataCleaning[$repeaterFieldKey] ?? [], $formFields, $repeaterFieldKey);
+        $repeaterMarkup = self::repeaterFieldTable($fieldValues[$repeaterFieldKey] ?? [], $formFields, $repeaterFieldKey);
         $stringToReplaceField = str_replace('${' . $fk . '}', $repeaterMarkup, $stringToReplaceField);
       } else {
         $repeaterFieldData = self::safeFlatString($flatFieldData[$repeaterFieldKey] ?? '');
@@ -491,7 +577,6 @@ final class FieldValueHandler
     if (is_null($data)) {
       return '';
     }
-
     return (string) $data;
   }
 
@@ -502,6 +587,10 @@ final class FieldValueHandler
     }
     // Remove empty values from the array
     return array_filter($fieldData, function ($value) {
+      // Check if the value is 0
+      if (0 === $value) {
+        return '0';
+      }
       return !empty($value);
     });
   }

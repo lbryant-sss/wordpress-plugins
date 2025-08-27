@@ -74,6 +74,7 @@ final class WorkFlowHandler
         'workflow_behaviour',
         'workflow_condition',
         'workflow_order',
+        'workflow_status',
       ],
       [
         'form_id' => static::$_formID,
@@ -94,7 +95,7 @@ final class WorkFlowHandler
       $workFlow['action_run'] = $value->workflow_run;
       $workFlow['action_behaviour'] = $value->workflow_behaviour;
       $workFlow['conditions'] = json_decode($value->workflow_condition);
-
+      $workFlow['status'] = (int) $value->workflow_status;
       foreach ($workFlow['conditions'] as $conIndex => $condition) {
         if (property_exists($condition, 'logics')) {
           $workFlow['conditions'][$conIndex]->logics = $condition->logics;
@@ -185,12 +186,13 @@ final class WorkFlowHandler
         'workflow_behaviour' => $workFlowDetails->action_behaviour,
         'workflow_condition' => wp_json_encode($conditions),
         // "workflow_action" => wp_json_encode($workFlowActions),
-        'workflow_order' => $workFlowOrder,
-        'user_id'        => $this->_user_details['id'],
-        'user_ip'        => $this->_user_details['ip'],
-        'user_location'  => '',
-        'user_device'    => $this->_user_details['device'],
-        'updated_at'     => $this->_user_details['time'],
+        'workflow_order'     => $workFlowOrder,
+        'workflow_status'    => $workFlowDetails->status,
+        'user_id'            => $this->_user_details['id'],
+        'user_ip'            => $this->_user_details['ip'],
+        'user_location'      => '',
+        'user_device'        => $this->_user_details['device'],
+        'updated_at'         => $this->_user_details['time'],
       ],
       [
         'id'      => $workFlowID,
@@ -265,6 +267,7 @@ final class WorkFlowHandler
         'workflow_behaviour' => $workFlowDetails->action_behaviour,
         'workflow_condition' => wp_json_encode($conditions),
         'workflow_order'     => $workFlowOrder,
+        'workflow_status'    => $workFlowDetails->status,
         'form_id'            => static::$_formID,
         'user_id'            => $this->_user_details['id'],
         'user_ip'            => $this->_user_details['ip'],
@@ -331,6 +334,7 @@ final class WorkFlowHandler
         'workflow_behaviour' => $workFlowDetails->action_behaviour,
         'workflow_condition' => wp_json_encode($workFlowDetails->conditions),
         // "workflow_action" => null,
+        'workflow_status'    => $workFlowDetails->status,
         'user_id'            => $this->_user_details['id'],
         'user_ip'            => $this->_user_details['ip'],
         'user_location'      => '',
@@ -348,7 +352,7 @@ final class WorkFlowHandler
   {
     $workFlowCols = [
       'workflow_name', 'workflow_type', 'workflow_run', 'workflow_behaviour',
-      'workflow_condition', 'workflow_action', 'form_id', 'user_id',
+      'workflow_condition', 'workflow_action', 'workflow_status', 'form_id', 'user_id',
       'user_ip', 'user_location', 'user_device', 'created_at', 'updated_at',
     ];
     $dupData = [
@@ -358,6 +362,7 @@ final class WorkFlowHandler
       'workflow_behaviour',
       'workflow_condition',
       'workflow_action',
+      'workflow_status',
       static::$_formID,
       $this->_user_details['id'],
       $this->_user_details['ip'],

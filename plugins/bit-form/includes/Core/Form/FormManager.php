@@ -337,6 +337,9 @@ class FormManager
         if (isset($field->valid->typMsg)) {
           $field_details[$key]['valid']['typMsg'] = $field->valid->typMsg;
         }
+        if (isset($field->valid->hide)) {
+          $field_details[$key]['valid']['hide'] = $field->valid->hide;
+        }
       }
       if ($this->isRepeatedField($key)) {
         $field_details[$key]['repeated'] = true;

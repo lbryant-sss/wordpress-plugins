@@ -9,6 +9,8 @@
 
 namespace BitCode\BitForm\Core\Database;
 
+use BitCode\BitForm\Core\Util\Log;
+
 /**
  * Database Migration
  */
@@ -79,6 +81,7 @@ final class DB
                 `workflow_behaviour` varchar(25) NOT NULL,
                 `workflow_condition` longtext DEFAULT NULL,
                 `workflow_order` int(11) unsigned DEFAULT NULL,
+                `workflow_status` tinyint(1) DEFAULT 1,/* 0 disable, 1 enable,  2 enable in field settings */
                 `form_id` bigint(20) unsigned DEFAULT NULL,
                 `user_id` bigint(20) unsigned DEFAULT NULL,
                 `user_ip` int(11) unsigned DEFAULT NULL,
@@ -202,59 +205,91 @@ final class DB
 
     $table_schema_update = [
       "ALTER TABLE `{$wpdb->prefix}bitforms_form_entry_log`
-                CHANGE COLUMN `log_type` `log_type` VARCHAR(50) NULL DEFAULT NULL,
-                ADD COLUMN `action_type` VARCHAR(50) NULL DEFAULT NULL,
+                MODIFY `log_type` VARCHAR(50) NULL DEFAULT NULL,
+                MODIFY `created_at` DATETIME NOT NULL,
                 CHANGE COLUMN `meta_key` `content` LONGTEXT NULL,
-                CHANGE COLUMN `created_at` `created_at` DATETIME NOT NULL",
+                ADD COLUMN `action_type` VARCHAR(50) NULL DEFAULT NULL,
+                ADD COLUMN `content` LONGTEXT NULL AFTER `action_type`",
       "ALTER TABLE `{$wpdb->prefix}bitforms_form_log_details`
-                CHANGE COLUMN `api_type` `api_type` VARCHAR(255) NULL DEFAULT NULL,
-                CHANGE COLUMN `response_obj` `response_obj` LONGTEXT NULL,
-                CHANGE COLUMN `created_at` `created_at` DATETIME NOT NULL",
+                MODIFY `api_type` VARCHAR(255) NULL DEFAULT NULL,
+                MODIFY `response_obj` LONGTEXT NULL,
+                MODIFY `created_at` DATETIME NOT NULL"
     ];
 
-    include_once ABSPATH . 'wp-admin/includes/upgrade.php';
-    foreach ($table_schema as $table) {
-      dbDelta($table);
-    }
-    $installed_db_version = get_site_option('bitforms_db_version');
-    if ($installed_db_version && version_compare('1.1', $installed_db_version, '>=')) {
-      // if new db version is equal or higher than 1.1
-      foreach ($table_schema_update as $table) {
-        $wpdb->query($table);
+    try {
+      include_once ABSPATH . 'wp-admin/includes/upgrade.php';
+      foreach ($table_schema as $table) {
+        dbDelta($table);
       }
-    }
-    if ($installed_db_version && version_compare('1.3', $installed_db_version, '>=')) {
-      // if new db version is equal or higher than 1.3
-      $wpdb->query("ALTER TABLE `{$wpdb->prefix}bitforms_form_entries` CHANGE `user_ip` `user_ip` VARCHAR(255) NULL DEFAULT NULL");
-    }
+      $installed_db_version = get_site_option('bitforms_db_version');
+      if ($installed_db_version && version_compare('1.1', $installed_db_version, '>=')) {
+        // if new db version is equal or higher than 1.1
+        foreach ($table_schema_update as $query) {
+          try {
+            $wpdb->query($query);
+          } catch (\Exception $e) {
+            Log::debug_log("Update failed: {$e->getMessage()} in query: {$query}");
+          }
+        }
+      }
+      if ($installed_db_version && version_compare('1.3', $installed_db_version, '>=')) {
+        // if new db version is equal or higher than 1.3
+        $wpdb->query("ALTER TABLE `{$wpdb->prefix}bitforms_form_entries` MODIFY `user_ip` VARCHAR(255) NULL DEFAULT NULL");
+      }
 
-    if ($installed_db_version && version_compare('2.0', $installed_db_version, '>=')) {
-      $wpdb->query(
-        "ALTER TABLE `{$wpdb->prefix}bitforms_success_messages`
-                ADD `message_config` LONGTEXT NULL AFTER `message_content`"
-      );
-      $wpdb->query(
-        "ALTER TABLE `{$wpdb->prefix}bitforms_form`
-                ADD `builder_helper_state` LONGTEXT NULL AFTER `form_content`,
-                ADD `atomic_class_map` LONGTEXT NULL AFTER `builder_helper_state`,
-                ADD `generated_script_page_ids` LONGTEXT NULL AFTER `atomic_class_map`"
-      );
-      $wpdb->query(
-        "ALTER TABLE `{$wpdb->prefix}bitforms_workflows` 
-                ADD `workflow_order` INT(11) DEFAULT NULL AFTER `workflow_condition`"
-      );
-    }
+      if ($installed_db_version && version_compare('2.0', $installed_db_version, '>=')) {
+        $table_name = $wpdb->prefix . 'bitforms_success_messages';
+        if (null === $wpdb->get_var("SHOW COLUMNS FROM `{$table_name}` LIKE 'message_config'")) {
+          $wpdb->query(
+            "ALTER TABLE `{$table_name}`
+                ADD COLUMN `message_config` LONGTEXT NULL AFTER `message_content`"
+          );
+        }
+        $table_name = $wpdb->prefix . 'bitforms_form';
+        if (null === $wpdb->get_var("SHOW COLUMNS FROM `{$table_name}` LIKE 'builder_helper_state'")) {
+          $wpdb->query(
+            "ALTER TABLE `{$table_name}`
+                ADD COLUMN `builder_helper_state` LONGTEXT NULL AFTER `form_content`,
+                ADD COLUMN `atomic_class_map` LONGTEXT NULL AFTER `builder_helper_state`,
+                ADD COLUMN `generated_script_page_ids` LONGTEXT NULL AFTER `atomic_class_map`"
+          );
+        }
+        $table_name = $wpdb->prefix . 'bitforms_workflows';
+        if (null === $wpdb->get_var("SHOW COLUMNS FROM `{$table_name}` LIKE 'workflow_order'")) {
+          $wpdb->query(
+            "ALTER TABLE `{$table_name}`
+                ADD COLUMN `workflow_order` INT(11) DEFAULT NULL AFTER `workflow_condition`"
+          );
+        }
+      }
 
-    if ($installed_db_version && version_compare('2.2', $installed_db_version, '>=')) {
-      $wpdb->query(
-        "ALTER TABLE `{$wpdb->prefix}bitforms_form_entries` 
-        MODIFY `referer` TEXT DEFAULT NULL"
-      );
-    }
+      if ($installed_db_version && version_compare('2.2', $installed_db_version, '>=')) {
+        $table_name = $wpdb->prefix . 'bitforms_form_entries';
+        if (null === $wpdb->get_var("SHOW COLUMNS FROM `{$table_name}` LIKE 'referer'")) {
+          $wpdb->query(
+            "ALTER TABLE `{$table_name}`
+                ADD COLUMN `referer` TEXT NULL DEFAULT NULL"
+          );
+        }
+      }
 
-    update_site_option(
-      'bitforms_db_version',
-      $bitforms_db_version
-    );
+      if ($installed_db_version && version_compare('2.4', $installed_db_version, '>=')) {
+        $table_name = $wpdb->prefix . 'bitforms_workflows';
+        if (null === $wpdb->get_var("SHOW COLUMNS FROM `{$table_name}` LIKE 'workflow_status'")) {
+          $wpdb->query(
+            "ALTER TABLE `{$table_name}`
+                ADD COLUMN `workflow_status` TINYINT(1) DEFAULT 1 NOT NULL AFTER `workflow_order`"
+          );
+        }
+      }
+
+      update_site_option(
+        'bitforms_db_version',
+        $bitforms_db_version
+      );
+    } catch (\Exception $e) {
+      // Log the error to a file or the database
+      Log::debug_log('Error during DB migration: ' . $e->getMessage());
+    }
   }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Provides Report Model Class
  */

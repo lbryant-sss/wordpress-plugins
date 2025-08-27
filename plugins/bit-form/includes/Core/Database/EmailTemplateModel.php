@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Provides Base Model Class
  */

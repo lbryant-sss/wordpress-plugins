@@ -462,7 +462,7 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
       }
       //wrokFlows [end]
       $details = [
-        'report_name'   => 'All Entries',
+        'report_name'   => __('All Entries', 'bit-form'),
         'hiddenColumns' => ['__user_id', '__user_ip', '__referer', '__user_device', '__created_at', '__updated_at'],
         'pageSize'      => 10,
         'sortBy'        => [],
@@ -1232,7 +1232,7 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
             $returnedReportData[$reportKey]->details = [];
           }
           if ('1' === (string) $reportData->isDefault) {
-            $returnedReportData[$reportKey]->details->report_name = 'All Entries';
+            $returnedReportData[$reportKey]->details->report_name = __('All Entries', 'bit-form');
           }
         }
         $reports = ['reports' => $returnedReportData];
@@ -1449,7 +1449,7 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
             $returnedReportData[$reportKey]->details = [];
           }
           if ('1' === (string) $reportData->isDefault) {
-            $returnedReportData[$reportKey]->details->report_name = 'All Entries';
+            $returnedReportData[$reportKey]->details->report_name = __('All Entries', 'bit-form');
           }
         }
         $reports = ['reports' => $returnedReportData];

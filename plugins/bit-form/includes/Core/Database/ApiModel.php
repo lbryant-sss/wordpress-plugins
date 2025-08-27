@@ -150,7 +150,7 @@ class ApiModel extends Model
 
   public function getOnSubmitWorkflow($formID)
   {
-    $sql = "SELECT `id`, `workflow_name`, `workflow_type`, `workflow_run`, `workflow_behaviour` 
+    $sql = "SELECT `id`, `workflow_name`, `workflow_type`, `workflow_run`, `workflow_behaviour`, `workflow_status`  
             FROM `{$this->_wpdb->prefix}bitforms_workflows` 
             WHERE `form_id`=$formID AND `workflow_type`='onsubmit' order by id desc";
     $result = $this->_wpdb->get_results($sql);

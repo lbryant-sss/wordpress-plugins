@@ -243,6 +243,7 @@ class ComposerStaticInitd9e0233255f82de3026744d6f2fe1094
         'BitCode\\BitForm\\Core\\Util\\ApiResponse' => __DIR__ . '/../..' . '/includes/Core/Util/ApiResponse.php',
         'BitCode\\BitForm\\Core\\Util\\DateTimeHelper' => __DIR__ . '/../..' . '/includes/Core/Util/DateTimeHelper.php',
         'BitCode\\BitForm\\Core\\Util\\Deactivation' => __DIR__ . '/../..' . '/includes/Core/Util/Deactivation.php',
+        'BitCode\\BitForm\\Core\\Util\\EntryLimitHelper' => __DIR__ . '/../..' . '/includes/Core/Util/EntryLimitHelper.php',
         'BitCode\\BitForm\\Core\\Util\\FieldValueHandler' => __DIR__ . '/../..' . '/includes/Core/Util/FieldValueHandler.php',
         'BitCode\\BitForm\\Core\\Util\\FileDownloadProvider' => __DIR__ . '/../..' . '/includes/Core/Util/FileDownloadProvider.php',
         'BitCode\\BitForm\\Core\\Util\\FileHandler' => __DIR__ . '/../..' . '/includes/Core/Util/FileHandler.php',

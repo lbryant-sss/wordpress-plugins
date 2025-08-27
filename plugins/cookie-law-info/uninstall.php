@@ -29,6 +29,8 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
 
+delete_option( 'cky_connect_notice' );
+
 if ( defined( 'CKY_REMOVE_ALL_DATA' ) && true === CKY_REMOVE_ALL_DATA ) {
 	try {
 		global $wpdb;

@@ -189,6 +189,7 @@ return array(
     'BitCode\\BitForm\\Core\\Util\\ApiResponse' => $baseDir . '/includes/Core/Util/ApiResponse.php',
     'BitCode\\BitForm\\Core\\Util\\DateTimeHelper' => $baseDir . '/includes/Core/Util/DateTimeHelper.php',
     'BitCode\\BitForm\\Core\\Util\\Deactivation' => $baseDir . '/includes/Core/Util/Deactivation.php',
+    'BitCode\\BitForm\\Core\\Util\\EntryLimitHelper' => $baseDir . '/includes/Core/Util/EntryLimitHelper.php',
     'BitCode\\BitForm\\Core\\Util\\FieldValueHandler' => $baseDir . '/includes/Core/Util/FieldValueHandler.php',
     'BitCode\\BitForm\\Core\\Util\\FileDownloadProvider' => $baseDir . '/includes/Core/Util/FileDownloadProvider.php',
     'BitCode\\BitForm\\Core\\Util\\FileHandler' => $baseDir . '/includes/Core/Util/FileHandler.php',

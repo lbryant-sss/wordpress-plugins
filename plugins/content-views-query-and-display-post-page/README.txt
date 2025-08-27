@@ -2,9 +2,9 @@
 Contributors: pt-guy
 Tags: post grid, blocks, elementor, gutenberg, recent posts, gutenberg blocks, grid, display posts, post list, post slider, post accordion, category post, news, magazine, portfolio, latest posts, related posts
 Requires at least: 3.3
-Tested up to: 6.7.2
+Tested up to: 6.8.2
 Requires PHP: 5.6
-Stable tag: 4.1
+Stable tag: 4.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -261,6 +261,10 @@ If you encounter any difficulties or if you have questions about Content Views, 
 
 
 == Changelog ==
+
+= 4.2 =
+* Fix: [ElementorWidget] sanitize the widget ID before showing in output for Elementor widgets
+* Fix: Author's link when showing as 'Top meta'
 
 = 4.1 =
 * Fix: pagination url issue when activating Polylang plugin and setting language from subdomain

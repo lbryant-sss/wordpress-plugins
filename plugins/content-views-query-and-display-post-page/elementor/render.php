@@ -27,7 +27,7 @@ if ( !class_exists( 'ContentViews_Elementor_Render' ) ) {
 			$GLOBALS[ 'cv_elementor_widgetID' ]	 = $_this->get_id();
 
 			$settings	 = $all_data[ 1 ];
-			$view_id	 = $_this->get_id();
+			$view_id	 = cv_sanitize_vid( $_this->get_id() );
 
 			self::show_widget_id( $view_id );
 

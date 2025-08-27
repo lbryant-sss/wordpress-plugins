@@ -5,7 +5,7 @@ Tags: cookie notice, cookie consent, cookie banner, eu cookie law, cookieyes
 Requires at least: 5.0.0
 Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 3.3.3
+Stable tag: 3.3.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -210,6 +210,10 @@ Every time we update the plugin, you will see a notification on the installed pl
 
 == Changelog ==
 
+= 3.3.4 =
+
+[Add] - Info notice before connecting to web app.
+
 = 3.3.3 =
 
 [Add] - Included expanded js and css code.
@@ -227,8 +231,6 @@ For the changelog of earlier versions, please refer to the [changelog.txt](https
 
 == Upgrade Notice ==
 
-= 3.3.3 =
+= 3.3.4 =
 
-[Add] - Included expanded js and css code.
-[Tweak] - Review link updated.
-[Fix] - Minor fixes.
+[Add] - Info notice before connecting to web app.

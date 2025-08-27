@@ -2,7 +2,6 @@
 
 namespace SolidWP\Mail\Migration;
 
-use SolidWP\Mail\AbstractController;
 use SolidWP\Mail\Repository\ProvidersRepository;
 use SolidWP\Mail\Service\ConnectionService;
 
@@ -11,7 +10,7 @@ use SolidWP\Mail\Service\ConnectionService;
  *
  * @package SolidWP\Mail\Migration
  */
-class MigrationVer210 extends AbstractController {
+class MigrationVer210 {
 	const FLAG_NAME = 'solid_mail_maybe_show_200210_notice';
 
 	/**
@@ -42,28 +41,16 @@ class MigrationVer210 extends AbstractController {
 	}
 
 	/**
-	 * Registers hooks for the migration.
-	 *
-	 * Hooks into the 'wp_loaded' action to run the migration logic after WordPress is loaded.
-	 *
-	 * @return void
-	 */
-	public function register_hooks() {
-		add_action( 'wp_loaded', [ $this, 'migration' ], 20 );
-	}
-
-	/**
 	 * Migration logic for version 2.1.0.
 	 *
 	 * Checks if the plugin version is 2.1.0, and if a bug caused the active SMTP provider to be turned off.
 	 * If certain conditions are met, it reactivates the legacy SMTP provider and updates the plugin version.
 	 *
+	 * @param string $version
+	 *
 	 * @return void
 	 */
-	public function migration() {
-		// Get the current plugin version from the WordPress options.
-		$version = get_option( self::OPTION_VERSION_NAME, '' );
-
+	public function migration( string $version ): void {
 		// Check if the current version is 2.1.0
 		if ( version_compare( $version, '2.1.0', '==' ) ) {
 
@@ -82,8 +69,5 @@ class MigrationVer210 extends AbstractController {
 				update_option( self::FLAG_NAME, 'yes' );
 			}
 		}
-
-		// Update the plugin version in the WordPress options to reflect the successful migration.
-		update_option( self::OPTION_VERSION_NAME, WPSMTP_VERSION );
 	}
 }
