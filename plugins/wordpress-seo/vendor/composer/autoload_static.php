@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit9ce077c0a8093fbafe06749678422c4c
+class ComposerStaticInit2ad71c14951c9dc3d279f1856f7c665a
 {
     public static $prefixLengthsPsr4 = array (
         'C' => 
@@ -1067,6 +1067,7 @@ class ComposerStaticInit9ce077c0a8093fbafe06749678422c4c
         'Yoast\\WP\\SEO\\Introductions\\Application\\AI_Brand_Insights_Pre_Launch' => __DIR__ . '/../..' . '/src/introductions/application/ai-brand-insights-pre-launch.php',
         'Yoast\\WP\\SEO\\Introductions\\Application\\Ai_Fix_Assessments_Upsell' => __DIR__ . '/../..' . '/src/introductions/application/ai-fix-assessments-upsell.php',
         'Yoast\\WP\\SEO\\Introductions\\Application\\Ai_Generate_Titles_And_Descriptions_Introduction_Upsell' => __DIR__ . '/../..' . '/src/deprecated/src/introductions/application/ai-generate-titles-and-descriptions-introduction-upsell.php',
+        'Yoast\\WP\\SEO\\Introductions\\Application\\Black_Friday_Announcement' => __DIR__ . '/../..' . '/src/introductions/application/black-friday-announcement.php',
         'Yoast\\WP\\SEO\\Introductions\\Application\\Current_Page_Trait' => __DIR__ . '/../..' . '/src/introductions/application/current-page-trait.php',
         'Yoast\\WP\\SEO\\Introductions\\Application\\Google_Docs_Addon_Upsell' => __DIR__ . '/../..' . '/src/introductions/application/google-docs-addon-upsell.php',
         'Yoast\\WP\\SEO\\Introductions\\Application\\Introductions_Collector' => __DIR__ . '/../..' . '/src/introductions/application/introductions-collector.php',
@@ -1338,9 +1339,9 @@ class ComposerStaticInit9ce077c0a8093fbafe06749678422c4c
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit9ce077c0a8093fbafe06749678422c4c::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit9ce077c0a8093fbafe06749678422c4c::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit9ce077c0a8093fbafe06749678422c4c::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit2ad71c14951c9dc3d279f1856f7c665a::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit2ad71c14951c9dc3d279f1856f7c665a::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit2ad71c14951c9dc3d279f1856f7c665a::$classMap;
 
         }, null, ClassLoader::class);
     }

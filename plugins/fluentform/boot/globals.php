@@ -89,6 +89,8 @@ function fluentFormSanitizer($input, $attribute = null, $fields = [])
             $input = strtolower(sanitize_text_field($input));
         } elseif ('input_url' === $element) {
             $input = sanitize_url($input);
+        } elseif ('input_password' === $element) {
+            $input = trim($input);
         } else {
             $input = sanitize_text_field($input);
         }

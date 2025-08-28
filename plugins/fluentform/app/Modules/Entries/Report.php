@@ -145,7 +145,7 @@ class Report
         $formattedReports = [];
         foreach ($reports as $report) {
             $formattedReports[$report->field_name]['reports'][] = [
-                'value'     => maybe_unserialize($report->field_value),
+                'value'     => Helper::safeUnserialize($report->field_value),
                 'count'     => $report->total_count,
                 'sub_field' => $report->sub_field_name,
             ];
@@ -214,7 +214,7 @@ class Report
 
     protected function setReportForSubInput($report, &$formattedReports)
     {
-        $filedValue = maybe_unserialize($report['field_value']);
+        $filedValue = Helper::safeUnserialize($report['field_value']);
 
         if (is_array($filedValue)) {
             foreach ($filedValue as $fVal) {

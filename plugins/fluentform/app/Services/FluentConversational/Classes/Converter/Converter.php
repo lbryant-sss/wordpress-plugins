@@ -97,12 +97,21 @@ class Converter
                     $fields = ArrayHelper::get($field, 'fields');
                     $field['fields'] = array_merge(array_flip($order), $fields);
                 }
+
+                $provider = ArrayHelper::get($field, 'settings.autocomplete_provider');
+                $isLegacyProvider = !ArrayHelper::has($field, 'settings.autocomplete_provider');
                 $googleAutoComplete = 'yes' === ArrayHelper::get($field, 'settings.enable_g_autocomplete');
-                if (defined('FLUENTFORMPRO') && $googleAutoComplete) {
+                if (defined('FLUENTFORMPRO') && ($provider === 'google' || ($isLegacyProvider && $googleAutoComplete))) {
                     $question['ff_map_autocomplete'] = true;
                     $question['ff_with_g_map'] = 'yes' == ArrayHelper::get($field, 'settings.enable_g_map');
                     $question['ff_with_auto_locate'] = ArrayHelper::get($field, 'settings.enable_auto_locate', false);
                     $question['GmapApiKey'] = apply_filters('fluentform/conversational_form_address_gmap_api_key', '');
+                }
+                
+                // Handle HTML5 geolocation
+                if ($provider === 'html5') {
+                    $question['ff_html5_geolocate'] = true;
+                    $question['ff_html5_locate'] = ArrayHelper::get($field, 'settings.enable_auto_locate', 'on_click');
                 }
                 
                 foreach ($field['fields'] as $item) {
@@ -329,10 +338,14 @@ class Converter
                 ];
                 
                 if ('terms_and_condition' === $field['element']) {
-                    $question['options'][] = [
-                        'label' => ArrayHelper::get($field, 'settings.tc_dis_agree_text', 'I don\'t accept'),
-                        'value' => 'off',
-                    ];
+                    $hideDisagreeOption = ArrayHelper::isTrue($field, 'settings.hide_disagree');
+                    
+                    if (!$hideDisagreeOption) {
+                        $question['options'][] = [
+                            'label' => ArrayHelper::get($field, 'settings.tc_dis_agree_text', 'I don\'t accept'),
+                            'value' => 'off',
+                        ];
+                    }
                 }
                 
                 $question['nextStepOnAnswer'] = true;
@@ -420,6 +433,11 @@ class Converter
                     $question['step'] = intval($step);
                 } else {
                     $question['step'] = 1;
+                }
+
+                $enabledQtyMapping = 'yes' === ArrayHelper::get($field, 'settings.enable_target_product');
+                if ($enabledQtyMapping && $targetProductName = ArrayHelper::get($field, 'settings.target_product')) {
+                    $question['targetProduct'] = $targetProductName;
                 }
                 
                 $question['is_calculable'] = true;

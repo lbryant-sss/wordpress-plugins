@@ -1,6 +1,6 @@
-# Orbit Fox Extra Modules: Duplicate Page, Menu Icons, SVG Support, Cookie Notice & More #
+# Orbit Fox: Duplicate Page, Menu Icons, SVG Support, Cookie Notice, Custom Fonts & More #
 **Contributors:** [themeisle](https://profiles.wordpress.org/themeisle/), [codeinwp](https://profiles.wordpress.org/codeinwp/), [rodicaelena](https://profiles.wordpress.org/rodicaelena/), [baicusandrei](https://profiles.wordpress.org/baicusandrei/), [hardeepasrani](https://profiles.wordpress.org/hardeepasrani/)  
-**Tags:** widget, admin, widgets, sharing, sections, themes, stock photos, custom icons, icons, menu icons, stock, templates, header, footer, scripts, custom fonts  
+**Tags:** duplicate page, cookie notice, share buttons, login customizer, svg support  
 **Requires at least:** 5.3  
 **Tested up to:** 6.8  
 **Requires PHP:** 7.4  
@@ -144,6 +144,13 @@ Activating the Orbit Fox plugin is just like any other plugin. If you've uploade
 7. Custom Fonts
 
 ## Changelog ##
+
+##### [Version 3.0.1](https://github.com/Codeinwp/themeisle-companion/compare/v3.0.0...v3.0.1) (2025-08-27)
+
+- Enhanced security
+
+
+
 
 #### [Version 3.0.0](https://github.com/Codeinwp/themeisle-companion/compare/v2.10.47...v3.0.0) (2025-08-14)
 

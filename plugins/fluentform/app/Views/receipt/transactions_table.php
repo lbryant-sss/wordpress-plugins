@@ -41,7 +41,11 @@
                 <td class="ff_td_id">#<?php echo $transaction->id;?></td>
                 <td class="ff_td_amount"><?php echo $transaction->formatted_amount; ?></td>
                 <td class="ff_td_status"><span class="ff_pay_status ff_pay_status_<?php echo $transaction->status; ?>"><?php echo ucfirst($transaction->status); ?></span></td>
-                <td class="ff_td_payment_method"><span class="ff_pay_method ff_pay_method_<?php echo $transaction->payment_method; ?>"><?php echo ucfirst($transaction->payment_method); ?></span></td>
+                <td class="ff_td_payment_method">
+                    <span class="ff_pay_method ff_pay_method_<?php echo $transaction->payment_method; ?>">
+                        <?php echo ucfirst(apply_filters('fluentform/payment_method_public_name_' . $transaction->payment_method, $transaction->payment_method)); ?>
+                    </span>
+                </td>
                 <td class="ff_td_date"><?php echo $transaction->formatted_date; ?></td>
                 <td class="ff_td_action">
                     <a class="ff_pat_action_view" href="<?php echo $transaction->view_url ?>"><?php echo $config['view_text']; ?></a>

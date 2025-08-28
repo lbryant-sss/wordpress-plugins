@@ -4,27 +4,28 @@ namespace FluentForm\App\Services\Settings;
 
 use Exception;
 use FluentForm\App\Models\FormMeta;
+use FluentForm\App\Helpers\Helper;
 use FluentForm\Framework\Support\Arr;
 
 class Customizer
 {
     public function get($formId, $metaKeys = ['_custom_form_css', '_custom_form_js'])
     {
-        return FormMeta::where('form_id', $formId)
-            ->whereIn('meta_key', $metaKeys)
-            ->get()
-            ->keyBy(function ($item) {
-                if ($item->meta_key === '_custom_form_css') {
-                    return 'css';
-                } elseif ($item->meta_key === '_custom_form_js') {
-                    return 'js';
-                } else {
-                    return $item->meta_key;
-                }
-            })
-            ->transform(function ($item) {
-                return $item->value;
-            })->toArray();
+        $result = [];
+        
+        foreach ($metaKeys as $metaKey) {
+            $value = Helper::getFormMeta($formId, $metaKey, '');
+            
+            if ($metaKey === '_custom_form_css') {
+                $result['css'] = $value;
+            } elseif ($metaKey === '_custom_form_js') {
+                $result['js'] = $value;
+            } else {
+                $result[$metaKey] = $value;
+            }
+        }
+        
+        return $result;
     }
 
     public function store($attributes = [])

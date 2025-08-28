@@ -8,6 +8,11 @@ use FluentForm\Framework\Helpers\ArrayHelper;
 
 class CalderaMigrator extends BaseMigrator
 {
+    
+    /**
+     * @var bool
+     */
+    protected $hasStep = false;
 
     public function __construct()
     {

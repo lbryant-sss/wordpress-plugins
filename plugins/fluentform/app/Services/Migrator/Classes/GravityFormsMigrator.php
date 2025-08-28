@@ -3,11 +3,16 @@
 namespace FluentForm\App\Services\Migrator\Classes;
 
 
+use FluentForm\App\Helpers\Helper;
 use FluentForm\App\Modules\Form\Form;
 use FluentForm\Framework\Helpers\ArrayHelper;
 
 class GravityFormsMigrator extends BaseMigrator
 {
+    /**
+     * @var bool
+     */
+    protected $hasStep = false;
 
     public function __construct()
     {
@@ -862,7 +867,7 @@ class GravityFormsMigrator extends BaseMigrator
                 if ("input_file" == $type && $value = $this->getSubmissionValue($id, $submission)) {
                     $finalValue = $this->migrateFilesAndGetUrls($value);
                 } elseif ("repeater_field" == $type && $value = $this->getSubmissionValue($id, $submission)) {
-                    if ($repeatData = (array)maybe_unserialize($value)) {
+                    if ($repeatData = (array)Helper::safeUnserialize($value)) {
                         $finalValue = [];
                         foreach ($repeatData as $data) {
                             $finalValue[] = array_values($data);

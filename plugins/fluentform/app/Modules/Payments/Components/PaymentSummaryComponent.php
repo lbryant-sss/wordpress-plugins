@@ -42,6 +42,13 @@ class PaymentSummaryComponent extends BaseFieldManager
 
             return $settings;
         });
+        
+        add_filter('fluentform/editor_init_element_payment_summary_component', function ($item) {
+            if (!isset($item['settings']['show_close_button'])) {
+                $item['settings']['show_close_button'] = false;
+            }
+            return $item;
+        });
 
 
        // add_filter('fluentform/supported_conditional_fields', array($this, 'pushConditionalSupport'));
@@ -57,6 +64,7 @@ class PaymentSummaryComponent extends BaseFieldManager
             'settings' => array(
                 'html_codes' => __('<p>Payment Summary will be shown here</p>', 'fluentform'),
                 'cart_empty_text' => __('No payment items has been selected yet', 'fluentform'),
+                'show_close_button' => false,
                 'conditional_logics' => array(),
                 'container_class' => ''
             ),
@@ -71,7 +79,8 @@ class PaymentSummaryComponent extends BaseFieldManager
     public function getGeneralEditorElements()
     {
         return [
-            'cart_empty_text'
+            'cart_empty_text',
+            'show_close_button'
         ];
     }
 
@@ -83,6 +92,15 @@ class PaymentSummaryComponent extends BaseFieldManager
                 'label' => __('Empty Payment Selected Text', 'fluentform'),
                 'help_text' => __('The provided text will show if no payment item is selected yet', 'fluentform'),
                 'hide_extra' => 'yes'
+            ],
+            'show_close_button' => [
+                'template' => 'inputCheckbox',
+                'options'  => [
+                    [
+                        'value' => false,
+                        'label' => __('Show close button for closing Payment Summary', 'fluentform'),
+                    ],
+                ]
             ]
         ];
     }
@@ -99,6 +117,17 @@ class PaymentSummaryComponent extends BaseFieldManager
     {
         $fallBack =  $data['settings']['cart_empty_text'];
         $data['settings']['html_codes'] = '<div class="ff_dynamic_value ff_dynamic_payment_summary" data-ref="payment_summary"><div class="ff_payment_summary"></div><div class="ff_payment_summary_fallback">'.$fallBack.'</div></div>';
+
+        add_filter('fluentform/payment_config', function($config, $formId) use ($data) {
+            $name = $data['attributes']['name'];
+
+            $config['payment_summary_config'][$name] = [
+                'show_close_button' => !empty($data['settings']['show_close_button'])
+            ];
+
+            return $config;
+        }, 10, 2);
+        
         return (new CustomHtml())->compile($data, $form);
     }
 }

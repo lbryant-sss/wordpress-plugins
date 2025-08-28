@@ -24,6 +24,7 @@ class SubmissionHandlerService
     protected $formData;
     protected $validationService;
     protected $submissionService;
+    protected $alreadyInsertedId;
     
     public function __construct()
     {
@@ -128,7 +129,7 @@ class SubmissionHandlerService
         );
         $this->formData = apply_filters('fluentform/insert_response_data', $formData, $formId, $inputConfigs);
         
-        $ipAddress = $this->app->request->getIp();
+        $ipAddress = sanitize_text_field($this->app->request->getIp());
 
         $disableIpLog = apply_filters_deprecated(
             'fluentform_disable_ip_logging',
@@ -154,6 +155,7 @@ class SubmissionHandlerService
             'user_id'       => get_current_user_id(),
             'browser'       => $browser->getBrowser(),
             'device'        => $browser->getPlatform(),
+            'country'       => apply_filters('fluentform/disable_submission_country_detection', false, $formId) ? null : Helper::getCountryCodeFromHeaders(),
             'ip'            => $ipAddress,
             'created_at'    => current_time('mysql'),
             'updated_at'    => current_time('mysql'),
@@ -448,6 +450,9 @@ class SubmissionHandlerService
                 'result'    => $this->getReturnData($insertId, $this->form, $this->formData),
             ];
         }
+        
+        // Set a property for already inserted data for spam
+        $this->alreadyInsertedId = $insertId;
 
         return false;
     }
@@ -545,6 +550,11 @@ class SubmissionHandlerService
                 'Use fluentform/before_insert_payment_form instead of fluentform_before_insert_payment_form.'
             );
             do_action('fluentform/before_insert_payment_form', $insertData, $formDataRaw, $this->form);
+        }
+        
+        // Check if we already have an inserted ID from spam processing
+        if (isset($this->alreadyInsertedId) && $this->alreadyInsertedId) {
+            return $this->alreadyInsertedId;
         }
         
         $insertId = Submission::insertGetId($insertData);

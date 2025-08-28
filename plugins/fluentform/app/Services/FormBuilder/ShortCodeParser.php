@@ -283,6 +283,11 @@ class ShortCodeParser
         if(empty($inputLabel)){
             $inputLabel = ArrayHelper::get(ArrayHelper::get(static::$formFields, $key, []), 'admin_label', '');
         }
+        if (empty($inputLabel) && isset($parentKey) && $parentKey) {
+            $inputLabel = ArrayHelper::get(ArrayHelper::get(static::$formFields, $parentKey, []), 'label', '');
+            $key = $parentKey;
+        }
+
         return apply_filters('fluentform/input_label_shortcode', $inputLabel, $key, static::getForm());
     }
 

@@ -160,10 +160,6 @@ class FormProperties
 
     public function __get($name)
     {
-        if (property_exists($this->form, $name)) {
-            return $this->form->{$name};
-        }
-
-        return false;
+        return $this->form->{$name} ?? null;
     }
 }

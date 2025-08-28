@@ -8,14 +8,12 @@ class EditorShortcodeParser
 {
     /**
      * Available dynamic short codes
-     *
      * @var null
      */
     private static $dynamicShortcodes = null;
 
     /**
      * mappings of methods to parse the shortcode
-     *
      * @var array
      */
     private static $handlers = [
@@ -45,6 +43,33 @@ class EditorShortcodeParser
         'get.param_name'           => 'parseRequestParam',
         'random_string.param_name' => 'parseRandomString',
     ];
+
+    /**
+     * Allow-list of user meta keys permitted in {user.meta.<key>} smart codes
+     * Filter: fluentform/editor_allowed_user_meta_keys
+     *
+     * @var array
+     */
+    private static $allowedUserMetaKeys = [
+        'first_name',
+        'last_name',
+        'nickname',
+        'description',
+    ];
+
+
+    /**
+     * Get allow-listed user meta keys with filter support
+     *
+     * @param mixed $form
+     * @return array
+     */
+    private static function getAllowedUserMetaKeys($form = null)
+    {
+        $keys = self::$allowedUserMetaKeys;
+        return (array) apply_filters('fluentform/editor_allowed_user_meta_keys', $keys, $form);
+    }
+
 
     /**
      * Filter dynamic shortcodes in input value
@@ -98,7 +123,7 @@ class EditorShortcodeParser
                 global $post;
                 if ($post) {
                     $value = get_post_meta($post->ID, $key, true);
-                    if (! is_array($value) && ! is_object($value)) {
+                    if (!is_array($value) && !is_object($value)) {
                         return esc_html($value);
                     }
                 }
@@ -157,7 +182,7 @@ class EditorShortcodeParser
     /**
      * Parse request query param.
      *
-     * @param string    $value
+     * @param string $value
      * @param \stdClass $form
      *
      * @return string
@@ -168,7 +193,7 @@ class EditorShortcodeParser
         $param = array_pop($exploded);
         $value = wpFluentForm('request')->get($param);
 
-        if (! $value) {
+        if (!$value) {
             return '';
         }
 
@@ -188,7 +213,7 @@ class EditorShortcodeParser
      */
     public static function parseValue($value)
     {
-        if (! is_array($value)) {
+        if (!is_array($value)) {
             return preg_split(
                 '/{(.*?)}/',
                 $value,
@@ -218,9 +243,16 @@ class EditorShortcodeParser
 
             if (false !== strpos($prop, 'meta.')) {
                 $metaKey = substr($prop, strlen('meta.'));
+                $metaKey = sanitize_key($metaKey);
+                
+                $allowedKeys = self::getAllowedUserMetaKeys($form);
+                if (!in_array($metaKey, $allowedKeys, true)) {
+                    return '';
+                }
+                
                 $userId = $user->ID;
                 $data = get_user_meta($userId, $metaKey, true);
-                $data = maybe_unserialize($data);
+                $data = Helper::safeUnserialize($data);
                 if (!is_array($data)) {
                     return esc_html($data);
                 }
@@ -243,7 +275,7 @@ class EditorShortcodeParser
     private static function parsePostProperties($value, $form = null)
     {
         global $post;
-        if (! $post) {
+        if (!$post) {
             return '';
         }
 
@@ -254,7 +286,7 @@ class EditorShortcodeParser
             $authorId = $post->post_author;
             if ($authorId) {
                 $data = get_the_author_meta($authorProperty, $authorId);
-                if (! is_array($data)) {
+                if (!is_array($data)) {
                     return esc_html($data);
                 }
             }
@@ -263,7 +295,7 @@ class EditorShortcodeParser
             $metaKey = substr($key, strlen('meta.'));
             $postId = $post->ID;
             $data = get_post_meta($postId, $metaKey, true);
-            if (! is_array($data)) {
+            if (!is_array($data)) {
                 return esc_html($data);
             }
             return '';
@@ -272,7 +304,7 @@ class EditorShortcodeParser
             $postId = $post->ID;
             if (function_exists('get_field')) {
                 $data = get_field($metaKey, $postId, true);
-                if (! is_array($data)) {
+                if (!is_array($data)) {
                     return esc_html($data);
                 }
                 return '';
@@ -342,7 +374,8 @@ class EditorShortcodeParser
      */
     private static function parseIp($value, $form = null)
     {
-        $ip = wpFluentForm('request')->getIp();
+        $rawIp = wpFluentForm('request')->getIp();
+        $ip = sanitize_text_field($rawIp);
         return $ip ? esc_html($ip) : $value;
     }
 
@@ -363,7 +396,7 @@ class EditorShortcodeParser
     /**
      * Parse request query param.
      *
-     * @param string    $value
+     * @param string $value
      * @param \stdClass $form
      *
      * @return string
@@ -374,7 +407,7 @@ class EditorShortcodeParser
         $param = array_pop($exploded);
         $value = wpFluentForm('request')->get($param);
 
-        if (! $value) {
+        if (!$value) {
             return '';
         }
 

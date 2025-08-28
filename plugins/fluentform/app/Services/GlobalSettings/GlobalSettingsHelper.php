@@ -22,7 +22,7 @@ class GlobalSettingsHelper
 
             return([
                 'message' => __('Your reCAPTCHA settings are deleted.', 'fluentform'),
-                'status'  => false,
+                'status'  => true,
             ]);
         }
 
@@ -88,7 +88,7 @@ class GlobalSettingsHelper
 
             return([
                 'message' => __('Your hCaptcha settings are deleted.', 'fluentform'),
-                'status'  => false,
+                'status'  => true,
             ]);
         }
 
@@ -149,7 +149,7 @@ class GlobalSettingsHelper
 
             return([
                 'message' => __('Your CleanTalk settings are deleted.', 'fluentform'),
-                'status'  => false,
+                'status'  => true,
             ]);
         }
 
@@ -208,7 +208,7 @@ class GlobalSettingsHelper
 
             return([
                 'message' => __('Your Turnstile settings are deleted.', 'fluentform'),
-                'status'  => false,
+                'status'  => true,
             ]);
         }
 

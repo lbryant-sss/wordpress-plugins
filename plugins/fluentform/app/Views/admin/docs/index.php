@@ -221,25 +221,36 @@
             do_action('fluentform/after_documentation_wrapper');
 
             wp_add_inline_script('fluent_forms_global', "
-
-                // For support Page Modal
-                let btnOpenEl = document.getElementById('ff_video_btn');
-                let btnCloseEl = document.getElementById('ff_close_btn');
-                let dialogEl = document.getElementById('ff_dialog_wrapper');
-    
-                dialogEl.classList.add('hidden');
-    
-                btnOpenEl.addEventListener('click', function(e){
-                    e.preventDefault();
-                    dialogEl.parentElement.classList.add('ff_backdrop');
-                    dialogEl.classList.remove('hidden');
-                    dialogEl.classList.add('dialog-fade-enter-active');
-                });
-    
-                btnCloseEl.addEventListener('click', function(){
-                    dialogEl.parentElement.classList.remove('ff_backdrop');
+                document.addEventListener('DOMContentLoaded', function() {
+                    // For support Page Modal
+                    let btnOpenEl = document.getElementById('ff_video_btn');
+                    let btnCloseEl = document.getElementById('ff_close_btn');
+                    let dialogEl = document.getElementById('ff_dialog_wrapper');
+        
                     dialogEl.classList.add('hidden');
-                    dialogEl.classList.remove('dialog-fade-enter-active');
+        
+                    btnOpenEl.addEventListener('click', function(e){
+                        e.preventDefault();
+                        dialogEl.parentElement.classList.add('ff_backdrop');
+                        dialogEl.classList.remove('hidden');
+                        dialogEl.classList.add('dialog-fade-enter-active');
+                    });
+        
+                    btnCloseEl.addEventListener('click', function(){
+                        dialogEl.parentElement.classList.remove('ff_backdrop');
+                        dialogEl.classList.add('hidden');
+                        dialogEl.classList.remove('dialog-fade-enter-active');
+                        
+                        const videoElement = dialogEl.querySelector('video, iframe');
+                        if (videoElement) {
+                            if (videoElement.tagName === 'VIDEO') {
+                                videoElement.pause();
+                                videoElement.currentTime = 0;
+                            } else if (videoElement.tagName === 'IFRAME') {
+                                videoElement.src = videoElement.src;
+                            }
+                        }
+                    });
                 });
             ");
             ?>

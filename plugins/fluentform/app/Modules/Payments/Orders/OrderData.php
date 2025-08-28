@@ -6,6 +6,7 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
+use FluentForm\App\Helpers\Helper;
 use FluentForm\App\Modules\Payments\PaymentHelper;
 
 class OrderData
@@ -69,7 +70,7 @@ class OrderData
 
         $formattedTransactions = [];
         foreach ($transactions as $transaction) {
-            $transaction->payment_note = maybe_unserialize($transaction->payment_note);
+            $transaction->payment_note = Helper::safeUnserialize($transaction->payment_note);
     
             $transaction = apply_filters_deprecated(
                 'fluentform_transaction_data_' . $transaction->payment_method,
@@ -100,7 +101,7 @@ class OrderData
 
         $formattedTransactions = [];
         foreach ($transactions as $transaction) {
-            $transaction->payment_note = maybe_unserialize($transaction->payment_note);
+            $transaction->payment_note = Helper::safeUnserialize($transaction->payment_note);
     
             $transaction = apply_filters_deprecated(
                 'fluentform_transaction_data_' . $transaction->payment_method,
@@ -149,8 +150,8 @@ class OrderData
 		$subscriptionPaymentTotal = 0;
 
 		foreach ($subscriptions as $subscription) {
-			$subscription->original_plan = maybe_unserialize($subscription->original_plan);
-			$subscription->vendor_response = maybe_unserialize($subscription->vendor_response);
+			$subscription->original_plan = Helper::safeUnserialize($subscription->original_plan);
+			$subscription->vendor_response = Helper::safeUnserialize($subscription->vendor_response);
 
 			$subscription->initial_amount_formatted = PaymentHelper::formatMoney($subscription->initial_amount, $submission->currency);
 			$subscription->recurring_amount_formatted = PaymentHelper::formatMoney($subscription->recurring_amount, $submission->currency);
@@ -166,7 +167,7 @@ class OrderData
 			->get();
 
 		foreach ($transactions as $transaction) {
-			$transaction->payment_note = maybe_unserialize($transaction->payment_note);
+			$transaction->payment_note = Helper::safeUnserialize($transaction->payment_note);
             
             $transaction->items = apply_filters_deprecated(
                 'fluentform_subscription_items_' . $transaction->payment_method,

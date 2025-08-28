@@ -162,6 +162,7 @@ class Entry extends Model
         return array_merge([
             'unread'  => 0,
             'read'    => 0,
+            'spam'    => 0,
             'trashed' => 0,
         ], $counts);
     }

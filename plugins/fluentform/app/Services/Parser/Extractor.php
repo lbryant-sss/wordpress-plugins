@@ -89,16 +89,19 @@ class Extractor
         foreach ($fields as $field) {
             // If the field is a Container (collection of other fields)
             // then we will recursively call this function to resolve.
-            if ($field['element'] === 'container') {
-                foreach ($field['columns'] as $item) {
-                    $this->looper($item['fields']);
+            if (Arr::get($field, 'element') === 'container') {
+                $columns = Arr::get($field, 'columns', []);
+                foreach ($columns as $item) {
+                    $itemFields = Arr::get($item, 'fields', []);
+                    $this->looper($itemFields);
                 }
             }
 
             // Now the field is supposed to be a flat field.
             // We can extract the desired keys as we want.
             else {
-                if (in_array($field['element'], $this->inputTypes)) {
+                $element = Arr::get($field, 'element');
+                if ($element && in_array($element, $this->inputTypes)) {
                     $this->extractField($field);
                 }
             }
@@ -116,7 +119,7 @@ class Extractor
 
         return $this->result;
     }
-    
+
     /**
      * The recursive looper method to loop each
      * of the fields and extract it's data.
@@ -136,16 +139,19 @@ class Extractor
 
             // If the field is a Container (collection of other fields)
             // then we will recursively call this function to resolve.
-            if ($field['element'] === 'container') {             
-                foreach ($field['columns'] as $item) {
-                    $this->looperEssential($formData, $item['fields']);
+            if (Arr::get($field, 'element') === 'container') {
+                $columns = Arr::get($field, 'columns', []);
+                foreach ($columns as $item) {
+                    $itemFields = Arr::get($item, 'fields', []);
+                    $this->looperEssential($formData, $itemFields);
                 }
             }
 
             // Now the field is supposed to be a flat field.
             // We can extract the desired keys as we want.
             else {
-                if (in_array($field['element'], $this->inputTypes)) {
+                $element = Arr::get($field, 'element');
+                if ($element && in_array($element, $this->inputTypes)) {
                     $this->extractField($field);
                 }
             }
@@ -205,7 +211,7 @@ class Extractor
      */
     protected function setElement()
     {
-        $this->result[$this->attribute]['element'] = $this->field['element'];
+        $this->result[$this->attribute]['element'] = Arr::get($this->field, 'element', '');
         return $this;
     }
 
@@ -360,65 +366,72 @@ class Extractor
     }
 
     /**
-     * Handle the child fields of the custom field.
+     * Handle the child fields of complex form fields (address, name, repeater).
+     *
+     * This method processes fields that have sub-fields (like address field having
+     * address_line_1, city, state, etc.) and prepares them for shortcode generation.
      *
      * @return $this
      */
-    protected function handleCustomField()
-    {
-        // If this field is a custom field we'll assume it has it's child fields
-        // under the `fields` key. Then we are gonna modify those child fields'
-        // attribute `name`, `label` & `conditional_logics` properties using
-        // the parent field. The current implementation will modify those
-        // properties in a way so that we can use dot notation to access.
-        $customFields = Arr::get($this->field, 'fields');
+	protected function handleCustomField()
+	{
+		// If this field is a custom field we'll assume it has it's child fields
+		// under the `fields` key. Then we are gonna modify those child fields'
+		// attribute `name`, `label` & `conditional_logics` properties using
+		// the parent field. The current implementation will modify those
+		// properties in a way so that we can use dot notation to access.
+		$customFields = Arr::get($this->field, 'fields');
+		
+		if ($customFields) {
+			$parentAttribute = Arr::get($this->field, 'attributes.name');
+			
+			$parentConditionalLogics = Arr::get($this->field, 'settings.conditional_logics', []);
+			
+			$isAddressOrNameField = in_array(Arr::get($this->field, 'element'), ['address', 'input_name']);
+			
+			$isRepeatField = Arr::get($this->field, 'element') === 'input_repeat' || Arr::get($this->field, 'element') == 'repeater_field';
 
-        if ($customFields) {
-            $parentAttribute = Arr::get($this->field, 'attributes.name');
+            // Allow plugins to modify custom fields before processing
+            $customFields = apply_filters('fluentform/extractor_parser_custom_fields', $customFields, $this->field);
+			
+			foreach ($customFields as $index => $customField) {
+				// If the current field is in fact `address` || `name` field
+				// then we have to only keep the enabled child fields
+				// by the user from the form editor settings.
+				if ($isAddressOrNameField) {
+                    $subFieldName = Arr::get($customField, 'attributes.name');
+					if (!Arr::get($customField, 'settings.visible', false) && !in_array($subFieldName, ['latitude', 'longitude'])) {
+						unset($customFields[$index]);
+						continue;
+					}
+				}
+				
+				// Depending on whether the parent field is a repeat field or not
+				// the modified attribute name of the child field will vary.
+				if ($isRepeatField) {
+					$modifiedAttribute = $parentAttribute.'['.$index.'].*';
+				} else {
+					$modifiedAttribute = $parentAttribute.'['.Arr::get($customField, 'attributes.name').']';
+				}
+				
+				$modifiedLabel = $parentAttribute.'['.Arr::get($customField, 'settings.label').']';
+				
+				$customField['attributes']['name'] = $modifiedAttribute;
+				
+				$customField['settings']['label'] = $modifiedLabel;
+				
+				// Now, we'll replace the `conditional_logics` property
+				$customField['settings']['conditional_logics'] = $parentConditionalLogics;
+				
+				// Now that this field's properties are handled we can pass
+				// it to the extract field method to extract it's data.
+				$this->extractField($customField);
+			}
+		}
+		
+		return $this;
+	}
 
-            $parentConditionalLogics = Arr::get($this->field, 'settings.conditional_logics', []);
-
-            $isAddressOrNameField = in_array(Arr::get($this->field, 'element'), ['address', 'input_name']);
-
-            $isRepeatField = Arr::get($this->field, 'element') === 'input_repeat' || Arr::get($this->field, 'element') == 'repeater_field';
-
-            foreach ($customFields as $index => $customField) {
-                // If the current field is in fact `address` || `name` field
-                // then we have to only keep the enabled child fields
-                // by the user from the form editor settings.
-                if ($isAddressOrNameField) {
-                    if (!Arr::get($customField, 'settings.visible', false)) {
-                        unset($customFields[$index]);
-                        continue;
-                    }
-                }
-
-                // Depending on whether the parent field is a repeat field or not
-                // the modified attribute name of the child field will vary.
-                if ($isRepeatField) {
-                    $modifiedAttribute = $parentAttribute.'['.$index.'].*';
-                } else {
-                    $modifiedAttribute = $parentAttribute.'['.Arr::get($customField, 'attributes.name').']';
-                }
-
-                $modifiedLabel = $parentAttribute.'['.Arr::get($customField, 'settings.label').']';
-
-                $customField['attributes']['name'] = $modifiedAttribute;
-
-                $customField['settings']['label'] = $modifiedLabel;
-
-                // Now, we'll replace the `conditional_logics` property
-                $customField['settings']['conditional_logics'] = $parentConditionalLogics;
-
-                // Now that this field's properties are handled we can pass
-                // it to the extract field method to extract it's data.
-                $this->extractField($customField);
-            }
-        }
-
-        return $this;
-    }
-    
 	/**
 	 * Set the raw field of the form field.
 	 *
@@ -429,7 +442,7 @@ class Extractor
 		if (in_array('raw', $this->with)) {
 			$this->result[$this->attribute]['raw'] = $this->field;
 		}
-
+		
 		return $this;
 	}
 }

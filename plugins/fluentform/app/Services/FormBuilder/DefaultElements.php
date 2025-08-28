@@ -363,6 +363,8 @@ $defaultElements = [
             'settings' => [
                 'label'                 => __('Address', 'fluentform'),
                 'enable_g_autocomplete' => 'no',
+                'autocomplete_provider' => 'none',
+                'enable_auto_locate'    => 'on_click',
                 'admin_field_label'     => 'Address',
                 'field_order'           => [
                     ['id' => 1, 'value' => 'address_line_1'],
@@ -1822,6 +1824,34 @@ if (! defined('FLUENTFORMPRO')) {
             'title'      => __('Color Picker', 'fluentform'),
             'icon_class' => 'ff-edit-tint',
             'template'   => 'inputText',
+        ],
+    ];
+}
+
+// Add coordinate fields to address elements when FluentFormPro is active
+if (defined('FLUENTFORMPRO')) {
+    $defaultElements['general']['address']['fields']['latitude'] = [
+        'element'    => 'input_hidden',
+        'attributes' => [
+            'type'  => 'hidden',
+            'name'  => 'latitude',
+            'value' => '',
+        ],
+        'settings' => [
+            'label'   => 'Latitude',
+            'visible' => false,
+        ],
+    ];
+    $defaultElements['general']['address']['fields']['longitude'] = [
+        'element'    => 'input_hidden',
+        'attributes' => [
+            'type'  => 'hidden',
+            'name'  => 'longitude',
+            'value' => '',
+        ],
+        'settings' => [
+            'label'   => 'Longitude',
+            'visible' => false,
         ],
     ];
 }

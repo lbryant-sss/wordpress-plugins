@@ -26,6 +26,13 @@ $page = sanitize_text_field($_GET['page']);
                 </a>
             <?php endif; ?>
         </li>
+        <li class="<?php echo ($page == 'fluent_forms_reports') ? 'active' : '' ?>">
+            <?php if (Acl::hasPermission('fluentform_entries_viewer')): ?>
+                <a href="<?php echo esc_url(admin_url('admin.php?page=fluent_forms_reports'));?>" class="ff_menu_link">
+                    <?php _e('Reports', 'fluentform'); ?>
+                </a>
+            <?php endif; ?>
+        </li>
         <li class="<?php echo ($page == 'fluent_forms_payment_entries') ? 'active' : '' ?>">
             <?php if ($show_payment_entries && Acl::hasPermission('fluentform_view_payments')): ?>
                 <a href="<?php echo esc_url(admin_url('admin.php?page=fluent_forms_payment_entries')); ?>" class="ff_menu_link">
@@ -92,7 +99,7 @@ $page = sanitize_text_field($_GET['page']);
     ?>
     <?php if($globalSearchActive == 'yes'):?>
         <button class="global-search-menu-button">
-            <span class="el-icon-search"></span> <span><?php _e('Search','fluentform') ?></span> <span class="shortcut"><?php echo esc_html($key)?>K </span>
+            <span class="el-icon-search"></span> <span class="shortcut"><?php echo esc_html($key)?>K </span>
         </button>
     <?php endif; ?>
     <?php

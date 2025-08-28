@@ -10,30 +10,28 @@ class DashboardWidgetModule
     public function showStat()
     {
         global $wpdb;
+        
         $stats = Submission::select([
-                'fluentform_forms.title',
-                'fluentform_submissions.form_id',
-                wpFluent()->raw('count(' . $wpdb->prefix . 'fluentform_submissions.id) as total'),
-                wpFluent()->raw('max(' . $wpdb->prefix . 'fluentform_submissions.id) as max_id'),
-            ])
-            ->orderBy('max_id', 'DESC')
-            ->groupBy('fluentform_submissions.form_id')
-            ->join('fluentform_forms', 'fluentform_forms.id', '=', 'fluentform_submissions.form_id')
-            ->limit(10)
-            ->get();
-
-        if (!$stats) {
+            'fluentform_forms.title',
+            'fluentform_submissions.form_id',
+            wpFluent()->raw('COUNT(' . $wpdb->prefix . 'fluentform_submissions.id) as total'),
+            wpFluent()->raw('MAX(' . $wpdb->prefix . 'fluentform_submissions.id) as max_id'),
+            wpFluent()->raw("SUM(CASE WHEN {$wpdb->prefix}fluentform_submissions.status = 'unread' THEN 1 ELSE 0 END) as unread_count"),
+        ])
+               ->join('fluentform_forms', 'fluentform_forms.id', '=', 'fluentform_submissions.form_id')
+               ->groupBy('fluentform_submissions.form_id')
+               ->orderBy('max_id', 'DESC')
+               ->limit(10)
+               ->get();
+        
+        if ( ! $stats || $stats->isEmpty()) {
             echo 'You can see your submission stats here';
             return;
         }
-
-        foreach ($stats as $stat) {
-            $stat->unreadCount = Helper::unreadCount($stat->form_id);
-        }
-
+        
         $this->printStats($stats);
-        return;
     }
+
 
     private function printStats($stats)
     {
@@ -44,7 +42,7 @@ class DashboardWidgetModule
                 <a
                     href="<?php echo esc_url(admin_url('admin.php?page=fluent_forms&route=entries&form_id=' . $stat->form_id)); ?>">
                     <?php echo esc_html($stat->title); ?>
-                    <span class="ff_total"><?php echo esc_attr($stat->unreadCount); ?>/<?php echo esc_attr($stat->total); ?></span>
+                    <span class="ff_total"><?php echo esc_attr($stat->unread_count); ?>/<?php echo esc_attr($stat->total); ?></span>
                 </a>
             </li>
             <?php endforeach; ?>

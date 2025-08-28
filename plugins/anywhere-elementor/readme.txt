@@ -2,8 +2,8 @@
 Contributors: wpvibes, webtechstreet, tejwanihemant
 Tags: page-builder, elementor, elementor addon
 Requires at least: 5.0
-Tested up to: 6.7
-Stable tag: 1.2.12
+Tested up to: 6.8
+Stable tag: 1.2.13
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,6 +53,9 @@ Note: This plugin is an addon of [Elementor Page Builder](https://wordpress.org/
 
 
 == Changelog ==
+
+= 1.2.13
+* Tested with the latest WordPress and Elementor Release.
 
 = 1.2.12 =
 * Fixed : Security issue.

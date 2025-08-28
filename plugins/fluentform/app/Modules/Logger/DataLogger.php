@@ -1,5 +1,6 @@
 <?php namespace FluentForm\App\Modules\Logger;
 
+use FluentForm\App\Helpers\Helper;
 use FluentForm\Database\Migrations\Logs;
 use FluentForm\App\Modules\Form\FormDataParser;
 use FluentForm\App\Modules\Form\FormFieldsParser;
@@ -336,7 +337,7 @@ class DataLogger
 
         $form = wpFluent()->table('fluentform_forms')->find($actionFeed->form_id);
 
-        $feed = maybe_unserialize($actionFeed->data);
+        $feed = Helper::safeUnserialize($actionFeed->data);
         $feed['scheduled_action_id'] = $actionFeed->id;
 
         $submission = wpFluent()->table('fluentform_submissions')->find($actionFeed->origin_id);

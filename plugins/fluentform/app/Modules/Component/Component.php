@@ -522,13 +522,9 @@ class Component
             return $feedText;
         }
         
-        $formSettings = wpFluent()
-            ->table('fluentform_form_meta')
-            ->where('form_id', $form->id)
-            ->where('meta_key', 'formSettings')
-            ->first();
+        $form->settings = Helper::getFormMeta($form->id, 'formSettings', []);
 
-        if (!$formSettings) {
+        if (empty($form->settings)) {
             return '';
         }
 
@@ -537,8 +533,6 @@ class Component
             return '';
         }
 
-        $form->settings = json_decode($formSettings->value, true);
-    
         $form = apply_filters_deprecated(
             'fluentform_rendering_form',
             [
@@ -548,13 +542,12 @@ class Component
             'fluentform/rendering_form',
             'Use fluentform/rendering_form instead of fluentform_rendering_form.'
         );
-
         $form = $this->app->applyFilters('fluentform/rendering_form', $form);
+        
         $isRenderable = [
             'status'  => true,
             'message' => '',
         ];
-        /* This filter is deprecated and will be removed soon */
         $isRenderable = apply_filters('fluentform_is_form_renderable', $isRenderable, $form);
         
         $isRenderable = $this->app->applyFilters('fluentform/is_form_renderable', $isRenderable, $form);

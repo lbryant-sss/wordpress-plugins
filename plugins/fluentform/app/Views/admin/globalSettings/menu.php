@@ -194,9 +194,9 @@ use FluentForm\Framework\Helpers\ArrayHelper;
                                     class="ff_list_button_link"
                                     data-hash="managers"
                                     href="<?php echo esc_url(Helper::makeMenuUrl('fluent_forms_settings', [
-                                        'hash' => 'managers'
+                                        'hash' => 'permissions'
                                     ])); ?>">
-                                <?php echo __('Managers'); ?>
+                                <?php echo __('Permissions'); ?>
                             </a>
                         </li>
                         <?php if ( ArrayHelper::get($components, 'admin_approval')) :?>

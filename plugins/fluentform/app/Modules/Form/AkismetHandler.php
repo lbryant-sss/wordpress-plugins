@@ -39,7 +39,7 @@ class AkismetHandler
     protected static function getAkismetFields($data, $form)
     {
         $app = wpFluentForm();
-        $ip = $app->request->getIp();
+        $ip = sanitize_text_field($app->request->getIp());
 
         $info = [
             'comment_type'         => 'contact-form',

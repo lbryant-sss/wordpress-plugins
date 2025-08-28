@@ -922,7 +922,7 @@ class FormHandler
         );
         $this->formData = apply_filters('fluentform/insert_response_data', $formData, $formId, $inputConfigs);
 
-        $ipAddress = $this->app->request->getIp();
+        $ipAddress = sanitize_text_field($this->app->request->getIp());
         $disableIpLogging = false;
         $disableIpLogging = apply_filters_deprecated(
             'fluentform_disable_ip_logging',
@@ -1007,9 +1007,10 @@ class FormHandler
 
             $interval = date('Y-m-d H:i:s', strtotime(current_time('mysql')) - $minSubmissionInterval);
 
+            $clientIp = sanitize_text_field($this->app->request->getIp());
             $submissionCount = wpFluent()->table('fluentform_submissions')
                 ->where('status', '!=', 'trashed')
-                ->where('ip', $this->app->request->getIp())
+                ->where('ip', $clientIp ?: '0.0.0.0')
                 ->where('created_at', '>=', $interval)
                 ->count();
 

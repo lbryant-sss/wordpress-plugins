@@ -2,6 +2,8 @@
 
 namespace FluentForm\App\Models;
 
+use FluentForm\App\Helpers\Helper;
+
 class SubmissionMeta extends Model
 {
     /**
@@ -41,7 +43,7 @@ class SubmissionMeta extends Model
             ->first();
 
         if ($meta && isset($meta->value)) {
-            return maybe_unserialize($meta->value);
+            return Helper::safeUnserialize($meta->value);
         }
 
         return $default;

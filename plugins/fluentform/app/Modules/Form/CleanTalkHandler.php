@@ -72,7 +72,7 @@ class CleanTalkHandler
         $cleanTalkRequest = [
             'method_name'     => 'check_message',
             'auth_key'        => $accessKey,
-            'sender_ip'       => wpFluentForm()->request->getIp(),
+            'sender_ip'       => sanitize_text_field(wpFluentForm()->request->getIp()),
             'event_token'     => $eventToken,
             'submit_time'     => $submitTime,
             'sender_info'     => json_encode([
@@ -180,7 +180,7 @@ class CleanTalkHandler
     {
         global $apbct;
         $app = wpFluentForm();
-        $ip = $app->request->getIp();
+        $ip = sanitize_text_field($app->request->getIp());
         
         $info = [
             'auth_key'             => $apbct->settings['apikey'],

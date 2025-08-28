@@ -412,6 +412,7 @@ class FormBuilder
             $gridRows = $item['settings']['grid_rows'];
             $gridType = $item['settings']['tabular_field_type'];
             foreach ($gridRows as $rowKey => $rowValue) {
+                $rowKey = trim(sanitize_text_field($rowKey));
                 if ('radio' == $gridType) {
                     $item['attributes']['name'] = $gridName . '[' . $rowKey . ']';
                     $this->extractValidationRule($item);
@@ -513,7 +514,7 @@ class FormBuilder
      *
      * @return void
      */
-    protected function extractConditionalLogic($item)
+    protected function extractConditionalLogic($item, $itemName = '')
     {
         // If container like element, then recurse
         if (isset($item['columns'])) {
@@ -527,31 +528,41 @@ class FormBuilder
                     }
                 }
             }
+            $parentName = ArrayHelper::get($item, 'attributes.name');
+            $isRepeaterContainer = ArrayHelper::get($item, 'element') === 'repeater_container';
 
-            foreach ($item['columns'] as $column) {
-                foreach ($column['fields'] as $field) {
+            foreach ($item['columns'] as $colIndex => $column) {
+                foreach ($column['fields'] as $fieldIndex => $field) {
                     if ($containerConditions) {
                         $field['container_conditions'] = $containerConditions;
                     }
-                    $this->extractConditionalLogic($field);
+                    if ($isRepeaterContainer) {
+                        $conditionName = $parentName . '_condition_' . $colIndex . '_' . $fieldIndex;
+                        $this->extractConditionalLogic($field, $conditionName);
+                    } else {
+                        $this->extractConditionalLogic($field);
+                    }
                 }
             }
         } elseif (isset($item['settings']['conditional_logics'])) {
             $conditionals = $item['settings']['conditional_logics'];
+            if (!$itemName) {
+                $itemName = $item['attributes']['data-name'];
+            }
             if (isset($conditionals['status'])) {
                 if ($conditionals['status'] && $conditionals['conditions']) {
-                    $this->conditions[$item['attributes']['data-name']] = $item['settings']['conditional_logics'];
+                    $this->conditions[$itemName] = $item['settings']['conditional_logics'];
                 }
             }
             if (isset($item['container_conditions'])) {
                 if (! isset($this->conditions[$item['attributes']['data-name']])) {
-                    $this->conditions[$item['attributes']['data-name']] = [
+                    $this->conditions[$itemName] = [
                         'conditions' => [],
                         'status'     => false,
                         'type'       => 'any',
                     ];
                 }
-                $this->conditions[$item['attributes']['data-name']]['container_condition'] = $item['container_conditions'];
+                $this->conditions[$itemName]['container_condition'] = $item['container_conditions'];
             }
         }
     }

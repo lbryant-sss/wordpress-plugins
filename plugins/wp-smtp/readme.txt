@@ -141,6 +141,10 @@ Now your website email deliverability is SOLID with Solid Mail!
 
 == Changelog ==
 
+= [2.2.1] 2025-08-26 =
+
+* Fix - Addressed an issue where the active connection was not marked as a default, and emails were not logged after upgrading to 2.2.0.
+
 = [2.2.0] 2025-08-18 =
 
 * Feature - Support multiple active connections, select the appropriate connection based on the outgoing email address.

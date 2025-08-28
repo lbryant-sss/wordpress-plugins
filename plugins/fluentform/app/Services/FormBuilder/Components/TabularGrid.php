@@ -103,6 +103,7 @@ class TabularGrid extends BaseComponent
         $columns = $data['settings']['grid_columns'];
 
         foreach ($rows as $rowKey => $rowValue) {
+            $rowKey = trim(sanitize_text_field($rowKey));
             $table[$rowKey] = [
                 'name'    => $rowKey,
                 'label'   => $rowValue,
@@ -110,6 +111,7 @@ class TabularGrid extends BaseComponent
             ];
 
             foreach ($columns as $columnKey => $columnValue) {
+                $columnKey = trim(sanitize_text_field($columnKey));
                 $table[$rowKey]['columns'][] = [
                     'name'  => $columnKey,
                     'label' => $columnValue,

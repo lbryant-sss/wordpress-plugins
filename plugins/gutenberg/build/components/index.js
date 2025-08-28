@@ -468,6 +468,10 @@ GradientParser.stringify = (function() {
       return node.value + 'px';
     },
 
+    'visit_calc': function(node) {
+      return 'calc(' + node.value + ')';
+    },
+
     'visit_literal': function(node) {
       return visitor.visit_color(node.value, node);
     },
@@ -482,6 +486,18 @@ GradientParser.stringify = (function() {
 
     'visit_rgba': function(node) {
       return visitor.visit_color('rgba(' + node.value.join(', ') + ')', node);
+    },
+
+    'visit_hsl': function(node) {
+      return visitor.visit_color('hsl(' + node.value[0] + ', ' + node.value[1] + '%, ' + node.value[2] + '%)', node);
+    },
+
+    'visit_hsla': function(node) {
+      return visitor.visit_color('hsla(' + node.value[0] + ', ' + node.value[1] + '%, ' + node.value[2] + '%, ' + node.value[3] + ')', node);
+    },
+
+    'visit_var': function(node) {
+      return visitor.visit_color('var(' + node.value + ')', node);
     },
 
     'visit_color': function(resultColor, node) {
@@ -516,6 +532,13 @@ GradientParser.stringify = (function() {
       return result;
     },
 
+    'visit_object': function(obj) {
+      if (obj.width && obj.height) {
+        return visitor.visit(obj.width) + ' ' + visitor.visit(obj.height);
+      }
+      return '';
+    },
+
     'visit': function(element) {
       if (!element) {
         return '';
@@ -523,7 +546,9 @@ GradientParser.stringify = (function() {
       var result = '';
 
       if (element instanceof Array) {
-        return visitor.visit_array(element, result);
+        return visitor.visit_array(element);
+      } else if (typeof element === 'object' && !element.type) {
+        return visitor.visit_object(element);
       } else if (element.type) {
         var nodeVisitor = visitor['visit_' + element.type];
         if (nodeVisitor) {
@@ -556,13 +581,14 @@ GradientParser.parse = (function() {
     repeatingLinearGradient: /^(\-(webkit|o|ms|moz)\-)?(repeating\-linear\-gradient)/i,
     radialGradient: /^(\-(webkit|o|ms|moz)\-)?(radial\-gradient)/i,
     repeatingRadialGradient: /^(\-(webkit|o|ms|moz)\-)?(repeating\-radial\-gradient)/i,
-    sideOrCorner: /^to (left (top|bottom)|right (top|bottom)|left|right|top|bottom)/i,
+    sideOrCorner: /^to (left (top|bottom)|right (top|bottom)|top (left|right)|bottom (left|right)|left|right|top|bottom)/i,
     extentKeywords: /^(closest\-side|closest\-corner|farthest\-side|farthest\-corner|contain|cover)/,
     positionKeywords: /^(left|center|right|top|bottom)/i,
     pixelValue: /^(-?(([0-9]*\.[0-9]+)|([0-9]+\.?)))px/,
     percentageValue: /^(-?(([0-9]*\.[0-9]+)|([0-9]+\.?)))\%/,
     emValue: /^(-?(([0-9]*\.[0-9]+)|([0-9]+\.?)))em/,
     angleValue: /^(-?(([0-9]*\.[0-9]+)|([0-9]+\.?)))deg/,
+    radianValue: /^(-?(([0-9]*\.[0-9]+)|([0-9]+\.?)))rad/,
     startCall: /^\(/,
     endCall: /^\)/,
     comma: /^,/,
@@ -570,7 +596,12 @@ GradientParser.parse = (function() {
     literalColor: /^([a-zA-Z]+)/,
     rgbColor: /^rgb/i,
     rgbaColor: /^rgba/i,
-    number: /^(([0-9]*\.[0-9]+)|([0-9]+\.?))/
+    varColor: /^var/i,
+    calcValue: /^calc/i,
+    variableName: /^(--[a-zA-Z0-9-,\s\#]+)/,
+    number: /^(([0-9]*\.[0-9]+)|([0-9]+\.?))/,
+    hslColor: /^hsl/i,
+    hslaColor: /^hsla/i,
   };
 
   var input = '';
@@ -654,8 +685,24 @@ GradientParser.parse = (function() {
   }
 
   function matchLinearOrientation() {
-    return matchSideOrCorner() ||
-      matchAngle();
+    // Check for standard CSS3 "to" direction
+    var sideOrCorner = matchSideOrCorner();
+    if (sideOrCorner) {
+      return sideOrCorner;
+    }
+    
+    // Check for legacy single keyword direction (e.g., "right", "top")
+    var legacyDirection = match('position-keyword', tokens.positionKeywords, 1);
+    if (legacyDirection) {
+      // For legacy syntax, we convert to the directional type
+      return {
+        type: 'directional',
+        value: legacyDirection.value
+      };
+    }
+    
+    // If neither, check for angle
+    return matchAngle();
   }
 
   function matchSideOrCorner() {
@@ -663,7 +710,8 @@ GradientParser.parse = (function() {
   }
 
   function matchAngle() {
-    return match('angular', tokens.angleValue, 1);
+    return match('angular', tokens.angleValue, 1) ||
+      match('angular', tokens.radianValue, 1);
   }
 
   function matchListRadialOrientations() {
@@ -704,12 +752,21 @@ GradientParser.parse = (function() {
           radialType.at = positionAt;
         }
       } else {
-        var defaultPosition = matchPositioning();
-        if (defaultPosition) {
+        // Check for "at" position first, which is a common browser output format
+        var atPosition = matchAtPosition();
+        if (atPosition) {
           radialType = {
             type: 'default-radial',
-            at: defaultPosition
+            at: atPosition
           };
+        } else {
+          var defaultPosition = matchPositioning();
+          if (defaultPosition) {
+            radialType = {
+              type: 'default-radial',
+              at: defaultPosition
+            };
+          }
         }
       }
     }
@@ -731,7 +788,7 @@ GradientParser.parse = (function() {
     var ellipse = match('shape', /^(ellipse)/i, 0);
 
     if (ellipse) {
-      ellipse.style =  matchDistance() || matchExtentKeyword();
+      ellipse.style = matchPositioning() || matchDistance() || matchExtentKeyword();
     }
 
     return ellipse;
@@ -803,8 +860,11 @@ GradientParser.parse = (function() {
 
   function matchColor() {
     return matchHexColor() ||
+      matchHSLAColor() ||
+      matchHSLColor() ||
       matchRGBAColor() ||
       matchRGBColor() ||
+      matchVarColor() ||
       matchLiteralColor();
   }
 
@@ -834,6 +894,70 @@ GradientParser.parse = (function() {
     });
   }
 
+  function matchVarColor() {
+    return matchCall(tokens.varColor, function () {
+      return {
+        type: 'var',
+        value: matchVariableName()
+      };
+    });
+  }
+
+  function matchHSLColor() {
+    return matchCall(tokens.hslColor, function() {
+      // Check for percentage before trying to parse the hue
+      var lookahead = scan(tokens.percentageValue);
+      if (lookahead) {
+        error('HSL hue value must be a number in degrees (0-360) or normalized (-360 to 360), not a percentage');
+      }
+      
+      var hue = matchNumber();
+      scan(tokens.comma);
+      var captures = scan(tokens.percentageValue);
+      var sat = captures ? captures[1] : null;
+      scan(tokens.comma);
+      captures = scan(tokens.percentageValue);
+      var light = captures ? captures[1] : null;
+      if (!sat || !light) {
+        error('Expected percentage value for saturation and lightness in HSL');
+      }
+      return {
+        type: 'hsl',
+        value: [hue, sat, light]
+      };
+    });
+  }
+
+  function matchHSLAColor() {
+    return matchCall(tokens.hslaColor, function() {
+      var hue = matchNumber();
+      scan(tokens.comma);
+      var captures = scan(tokens.percentageValue);
+      var sat = captures ? captures[1] : null;
+      scan(tokens.comma);
+      captures = scan(tokens.percentageValue);
+      var light = captures ? captures[1] : null;
+      scan(tokens.comma);
+      var alpha = matchNumber();
+      if (!sat || !light) {
+        error('Expected percentage value for saturation and lightness in HSLA');
+      }
+      return {
+        type: 'hsla',
+        value: [hue, sat, light, alpha]
+      };
+    });
+  }
+
+  function matchPercentage() {
+    var captures = scan(tokens.percentageValue);
+    return captures ? captures[1] : null;
+  }
+
+  function matchVariableName() {
+    return scan(tokens.variableName)[1];
+  }
+
   function matchNumber() {
     return scan(tokens.number)[1];
   }
@@ -841,11 +965,46 @@ GradientParser.parse = (function() {
   function matchDistance() {
     return match('%', tokens.percentageValue, 1) ||
       matchPositionKeyword() ||
+      matchCalc() ||
       matchLength();
   }
 
   function matchPositionKeyword() {
     return match('position-keyword', tokens.positionKeywords, 1);
+  }
+
+  function matchCalc() {
+    return matchCall(tokens.calcValue, function() {
+      var openParenCount = 1; // Start with the opening parenthesis from calc(
+      var i = 0;
+      
+      // Parse through the content looking for balanced parentheses
+      while (openParenCount > 0 && i < input.length) {
+        var char = input.charAt(i);
+        if (char === '(') {
+          openParenCount++;
+        } else if (char === ')') {
+          openParenCount--;
+        }
+        i++;
+      }
+      
+      // If we exited because we ran out of input but still have open parentheses, error
+      if (openParenCount > 0) {
+        error('Missing closing parenthesis in calc() expression');
+      }
+      
+      // Get the content inside the calc() without the last closing paren
+      var calcContent = input.substring(0, i - 1);
+      
+      // Consume the calc expression content
+      consume(i - 1); // -1 because we don't want to consume the closing parenthesis
+      
+      return {
+        type: 'calc',
+        value: calcContent
+      };
+    });
   }
 
   function matchLength() {
@@ -885,7 +1044,11 @@ GradientParser.parse = (function() {
   }
 
   return function(code) {
-    input = code.toString();
+    input = code.toString().trim();
+    // Remove trailing semicolon if present
+    if (input.endsWith(';')) {
+      input = input.slice(0, -1);
+    }
     return getAST();
   };
 })();
@@ -45478,6 +45641,17 @@ function serializeGradientColor({
   if (type === 'hex') {
     return `#${value}`;
   }
+  if (type === 'var') {
+    return `var(${value})`;
+  }
+  if (type === 'hsl') {
+    const [hue, saturation, lightness] = value;
+    return `hsl(${hue},${saturation}%,${lightness}%)`;
+  }
+  if (type === 'hsla') {
+    const [hue, saturation, lightness, alpha] = value;
+    return `hsla(${hue},${saturation}%,${lightness}%,${alpha})`;
+  }
   return `${type}(${value.join(',')})`;
 }
 function serializeGradientPosition(position) {
@@ -45488,6 +45662,9 @@ function serializeGradientPosition(position) {
     value,
     type
   } = position;
+  if (type === 'calc') {
+    return `calc(${value})`;
+  }
   return `${value}${type}`;
 }
 function serializeGradientColorStop({
@@ -45612,9 +45789,21 @@ function getStopCssColor(colorStop) {
       return `#${colorStop.value}`;
     case 'literal':
       return colorStop.value;
+    case 'var':
+      return `${colorStop.type}(${colorStop.value})`;
     case 'rgb':
     case 'rgba':
       return `${colorStop.type}(${colorStop.value.join(',')})`;
+    case 'hsl':
+      {
+        const [hue, saturation, lightness] = colorStop.value;
+        return `hsl(${hue},${saturation}%,${lightness}%)`;
+      }
+    case 'hsla':
+      {
+        const [hue, saturation, lightness, alpha] = colorStop.value;
+        return `hsla(${hue},${saturation}%,${lightness}%,${alpha})`;
+      }
     default:
       // Should be unreachable if passing an AST from gradient-parser.
       // See https://github.com/rafaelcaricio/gradient-parser#ast.
@@ -54505,6 +54694,7 @@ const useLilius = ({
 
 ;// ./packages/components/build-module/date-time/date/styles.js
 
+function date_styles_EMOTION_STRINGIFIED_CSS_ERROR_() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
 /**
  * External dependencies
  */
@@ -54518,28 +54708,36 @@ const useLilius = ({
 
 
 const styles_Wrapper = /*#__PURE__*/emotion_styled_base_browser_esm("div",  true ? {
-  target: "e105ri6r5"
+  target: "e105ri6r7"
 } : 0)(boxSizingReset, ";" + ( true ? "" : 0));
 const Navigator = /*#__PURE__*/emotion_styled_base_browser_esm(h_stack_component,  true ? {
+  target: "e105ri6r6"
+} : 0)("column-gap:", space(2), ";display:grid;grid-template-columns:0.5fr repeat( 5, 1fr ) 0.5fr;justify-items:center;margin-bottom:", space(4), ";" + ( true ? "" : 0));
+const ViewPreviousMonthButton = /*#__PURE__*/emotion_styled_base_browser_esm(build_module_button,  true ? {
+  target: "e105ri6r5"
+} : 0)( true ? {
+  name: "sarfoe",
+  styles: "grid-column:1/2"
+} : 0);
+const ViewNextMonthButton = /*#__PURE__*/emotion_styled_base_browser_esm(build_module_button,  true ? {
   target: "e105ri6r4"
-} : 0)("margin-bottom:", space(4), ";" + ( true ? "" : 0));
+} : 0)( true ? {
+  name: "1v98r3z",
+  styles: "grid-column:7/8"
+} : 0);
 const NavigatorHeading = /*#__PURE__*/emotion_styled_base_browser_esm(heading_component,  true ? {
   target: "e105ri6r3"
-} : 0)("font-size:", config_values.fontSize, ";font-weight:", config_values.fontWeight, ";strong{font-weight:", config_values.fontWeightHeading, ";}" + ( true ? "" : 0));
+} : 0)("font-size:", config_values.fontSize, ";font-weight:", config_values.fontWeight, ";grid-column:2/7;strong{font-weight:", config_values.fontWeightHeading, ";}" + ( true ? "" : 0));
 const Calendar = /*#__PURE__*/emotion_styled_base_browser_esm("div",  true ? {
   target: "e105ri6r2"
 } : 0)("column-gap:", space(2), ";display:grid;grid-template-columns:0.5fr repeat( 5, 1fr ) 0.5fr;justify-items:center;row-gap:", space(2), ";" + ( true ? "" : 0));
 const DayOfWeek = /*#__PURE__*/emotion_styled_base_browser_esm("div",  true ? {
   target: "e105ri6r1"
-} : 0)("color:", COLORS.theme.gray[700], ";font-size:", config_values.fontSize, ";line-height:", config_values.fontLineHeightBase, ";&:nth-of-type( 1 ){justify-self:start;}&:nth-of-type( 7 ){justify-self:end;}" + ( true ? "" : 0));
+} : 0)("color:", COLORS.theme.gray[700], ";font-size:", config_values.fontSize, ";line-height:", config_values.fontLineHeightBase, ";" + ( true ? "" : 0));
 const DayButton = /*#__PURE__*/emotion_styled_base_browser_esm(build_module_button,  true ? {
   shouldForwardProp: prop => !['column', 'isSelected', 'isToday', 'hasEvents'].includes(prop),
   target: "e105ri6r0"
-} : 0)("grid-column:", props => props.column, ";position:relative;justify-content:center;", props => props.column === 1 && `
-		justify-self: start;
-		`, " ", props => props.column === 7 && `
-		justify-self: end;
-		`, " ", props => props.disabled && `
+} : 0)("grid-column:", props => props.column, ";position:relative;justify-content:center;", props => props.disabled && `
 		pointer-events: none;
 		`, " &&&{border-radius:", config_values.radiusRound, ";height:", space(7), ";width:", space(7), ";", props => props.isSelected && `
 				background: ${COLORS.theme.accent};
@@ -54680,7 +54878,6 @@ const TIMEZONELESS_FORMAT = "yyyy-MM-dd'T'HH:mm:ss";
 
 
 
-
 /**
  * DatePicker is a React component that renders a calendar for date selection.
  *
@@ -54746,7 +54943,7 @@ function DatePicker({
     role: "application",
     "aria-label": (0,external_wp_i18n_namespaceObject.__)('Calendar'),
     children: [/*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsxs)(Navigator, {
-      children: [/*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(build_module_button, {
+      children: [/*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(ViewPreviousMonthButton, {
         icon: (0,external_wp_i18n_namespaceObject.isRTL)() ? arrow_right : arrow_left,
         variant: "tertiary",
         "aria-label": (0,external_wp_i18n_namespaceObject.__)('View previous month'),
@@ -54761,7 +54958,7 @@ function DatePicker({
         children: [/*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)("strong", {
           children: (0,external_wp_date_namespaceObject.dateI18n)('F', viewing, -viewing.getTimezoneOffset())
         }), ' ', (0,external_wp_date_namespaceObject.dateI18n)('Y', viewing, -viewing.getTimezoneOffset())]
-      }), /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(build_module_button, {
+      }), /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(ViewNextMonthButton, {
         icon: (0,external_wp_i18n_namespaceObject.isRTL)() ? arrow_left : arrow_right,
         variant: "tertiary",
         "aria-label": (0,external_wp_i18n_namespaceObject.__)('View next month'),
@@ -59115,6 +59312,7 @@ function UnforwardedMenuItem(props, ref) {
     role: role,
     icon: iconPosition === 'left' ? icon : undefined,
     className: className,
+    accessibleWhenDisabled: true,
     ...buttonProps,
     children: [/*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)("span", {
       className: "components-menu-item__item",
@@ -81152,11 +81350,48 @@ const DateRangeCalendar = ({
   });
 };
 
-;// ./packages/components/build-module/validated-form-controls/control-with-error.js
+;// ./packages/components/build-module/validated-form-controls/validity-indicator.js
+/**
+ * External dependencies
+ */
+
+
 /**
  * WordPress dependencies
  */
 
+
+/**
+ * Internal dependencies
+ */
+
+
+
+function ValidityIndicator({
+  type,
+  message
+}) {
+  const ICON = {
+    valid: library_published,
+    invalid: library_error
+  };
+  return /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsxs)("p", {
+    className: dist_clsx('components-validated-control__indicator', `is-${type}`),
+    children: [type === 'validating' ? /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(spinner, {
+      className: "components-validated-control__indicator-spinner"
+    }) : /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(build_module_icon, {
+      className: "components-validated-control__indicator-icon",
+      icon: ICON[type],
+      size: 16,
+      fill: "currentColor"
+    }), message]
+  });
+}
+
+;// ./packages/components/build-module/validated-form-controls/control-with-error.js
+/**
+ * WordPress dependencies
+ */
 
 
 /**
@@ -81196,11 +81431,13 @@ function appendRequiredIndicator(label, required, markWhenOptional) {
 function UnforwardedControlWithError({
   required,
   markWhenOptional,
-  customValidator,
+  onValidate,
+  customValidity,
   getValidityTarget,
   children
 }, forwardedRef) {
   const [errorMessage, setErrorMessage] = (0,external_wp_element_namespaceObject.useState)();
+  const [statusMessage, setStatusMessage] = (0,external_wp_element_namespaceObject.useState)();
   const [isTouched, setIsTouched] = (0,external_wp_element_namespaceObject.useState)(false);
 
   // Ensure that error messages are visible after user attemps to submit a form
@@ -81213,12 +81450,49 @@ function UnforwardedControlWithError({
       validityTarget?.removeEventListener('invalid', showValidationMessage);
     };
   });
-  const validate = () => {
-    const message = customValidator?.();
+  (0,external_wp_element_namespaceObject.useEffect)(() => {
+    if (!isTouched) {
+      return;
+    }
     const validityTarget = getValidityTarget();
-    validityTarget?.setCustomValidity(message !== null && message !== void 0 ? message : '');
-    setErrorMessage(validityTarget?.validationMessage);
-  };
+    if (!customValidity?.type) {
+      validityTarget?.setCustomValidity('');
+      setErrorMessage(validityTarget?.validationMessage);
+      setStatusMessage(undefined);
+      return;
+    }
+    switch (customValidity.type) {
+      case 'validating':
+        {
+          // Wait before showing a validating state.
+          const timer = setTimeout(() => {
+            setStatusMessage({
+              type: 'validating',
+              message: customValidity.message
+            });
+          }, 1000);
+          return () => clearTimeout(timer);
+        }
+      case 'valid':
+        {
+          validityTarget?.setCustomValidity('');
+          setErrorMessage(validityTarget?.validationMessage);
+          setStatusMessage({
+            type: 'valid',
+            message: customValidity.message
+          });
+          return;
+        }
+      case 'invalid':
+        {
+          var _customValidity$messa;
+          validityTarget?.setCustomValidity((_customValidity$messa = customValidity.message) !== null && _customValidity$messa !== void 0 ? _customValidity$messa : '');
+          setErrorMessage(validityTarget?.validationMessage);
+          setStatusMessage(undefined);
+          return undefined;
+        }
+    }
+  }, [isTouched, customValidity?.type, customValidity?.message, getValidityTarget]);
   const onBlur = event => {
     // Only consider "blurred from the component" if focus has fully left the wrapping div.
     // This prevents unnecessary blurs from components with multiple focusable elements.
@@ -81233,7 +81507,7 @@ function UnforwardedControlWithError({
         }
         return;
       }
-      validate();
+      onValidate?.();
     }
   };
   const onChange = (...args) => {
@@ -81242,14 +81516,14 @@ function UnforwardedControlWithError({
     // Only validate incrementally if the field has blurred at least once,
     // or currently has an error message.
     if (isTouched || errorMessage) {
-      validate();
+      onValidate?.();
     }
   };
   const onKeyDown = event => {
     // Ensures that custom validators are triggered when the user submits by pressing Enter,
     // without ever blurring the control.
     if (event.key === 'Enter') {
-      validate();
+      onValidate?.();
     }
   };
   return (
@@ -81265,17 +81539,15 @@ function UnforwardedControlWithError({
         label: appendRequiredIndicator(children.props.label, required, markWhenOptional),
         onChange,
         required
-      }), /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)("div", {
+      }), /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsxs)("div", {
         "aria-live": "polite",
-        children: errorMessage && /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsxs)("p", {
-          className: "components-validated-control__error",
-          children: [/*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(build_module_icon, {
-            className: "components-validated-control__error-icon",
-            icon: library_error,
-            size: 16,
-            fill: "currentColor"
-          }), errorMessage]
-        })
+        children: [errorMessage && /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(ValidityIndicator, {
+          type: "invalid",
+          message: errorMessage
+        }), !errorMessage && statusMessage && /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(ValidityIndicator, {
+          type: statusMessage.type,
+          message: statusMessage.message
+        })]
       })]
     })
   );
@@ -81297,7 +81569,8 @@ const ControlWithError = (0,external_wp_element_namespaceObject.forwardRef)(Unfo
 
 const UnforwardedValidatedNumberControl = ({
   required,
-  customValidator,
+  onValidate,
+  customValidity,
   onChange,
   markWhenOptional,
   ...restProps
@@ -81308,9 +81581,10 @@ const UnforwardedValidatedNumberControl = ({
   return /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(ControlWithError, {
     required: required,
     markWhenOptional: markWhenOptional,
-    customValidator: () => {
-      return customValidator?.(valueRef.current);
+    onValidate: () => {
+      return onValidate?.(valueRef.current);
     },
+    customValidity: customValidity,
     getValidityTarget: () => validityTargetRef.current,
     children: /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(number_control, {
       __next40pxDefaultSize: true,
@@ -81343,7 +81617,8 @@ const ValidatedNumberControl = (0,external_wp_element_namespaceObject.forwardRef
 
 const UnforwardedValidatedTextControl = ({
   required,
-  customValidator,
+  onValidate,
+  customValidity,
   onChange,
   markWhenOptional,
   ...restProps
@@ -81354,9 +81629,10 @@ const UnforwardedValidatedTextControl = ({
   return /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(ControlWithError, {
     required: required,
     markWhenOptional: markWhenOptional,
-    customValidator: () => {
-      return customValidator?.(valueRef.current);
+    onValidate: () => {
+      return onValidate?.(valueRef.current);
     },
+    customValidity: customValidity,
     getValidityTarget: () => validityTargetRef.current,
     children: /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(text_control, {
       __next40pxDefaultSize: true,
@@ -81389,7 +81665,8 @@ const ValidatedTextControl = (0,external_wp_element_namespaceObject.forwardRef)(
 
 const UnforwardedValidatedToggleControl = ({
   required,
-  customValidator,
+  onValidate,
+  customValidity,
   onChange,
   markWhenOptional,
   ...restProps
@@ -81408,9 +81685,10 @@ const UnforwardedValidatedToggleControl = ({
   return /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(ControlWithError, {
     required: required,
     markWhenOptional: markWhenOptional,
-    customValidator: () => {
-      return customValidator?.(valueRef.current);
+    onValidate: () => {
+      return onValidate?.(valueRef.current);
     },
+    customValidity: customValidity,
     getValidityTarget: () => validityTargetRef.current,
     children: /*#__PURE__*/(0,external_ReactJSXRuntime_namespaceObject.jsx)(toggle_control, {
       __nextHasNoMarginBottom: true,

@@ -9,7 +9,7 @@ use FluentForm\Framework\Validator\ValidationException;
 class Request
 {
     use FileHandler, Cleaner;
-
+    
     protected $app = null;
     protected $headers = array();
     protected $server = array();
@@ -20,20 +20,20 @@ class Request
     protected $files = array();
     protected $request = array();
     protected $wpRestRequest = false;
-
+    
     public function __construct(Application $app, $get, $post, $files)
     {
         $this->app = $app;
         $this->server = $_SERVER;
         $this->cookie = $_COOKIE;
         $this->files = $this->prepareFiles($files);
-
+        
         $this->request = array_merge(
             $this->get = $this->clean($get),
             $this->post = $this->clean($post)
         );
     }
-
+    
     /**
      * Variable exists
      * @param  string $key
@@ -43,7 +43,7 @@ class Request
     {
         return Arr::has($this->inputs(), $key);
     }
-
+    
     /**
      * Variable exists and has truthy value
      * @param  string $key
@@ -53,33 +53,33 @@ class Request
     {
         return $this->exists($key) && !empty(Arr::get($this->inputs(), $key));
     }
-
+    
     public function set($key, $value)
     {
         $this->request[$key] = $value;
-
+        
         return $this;
     }
-
+    
     public function all()
     {
         return $this->get();
     }
-
+    
     public function get($key = null, $default = null)
     {
         return Arr::get($this->inputs(), $key, $default);
     }
-
+    
     public function getSafe($key = null, $callback = null, $default = null)
     {
         $value = $this->get($key, $default);
-
+        
         $value = $callback ? $callback($value) : $value;
-
+        
         return $value;
     }
-
+    
     /**
      * Get the files from the request.
      *
@@ -89,34 +89,34 @@ class Request
     {
         return $this->files;
     }
-
+    
     public function query($key = null, $default = null)
     {
         return $key ? Arr::get($this->get, $key, $default) : $this->get;
     }
-
+    
     public function post($key = null, $default = null)
     {
         return $key ? Arr::get($this->post, $key, $default) : $this->post;
     }
-
+    
     public function only($keys)
     {
         return Arr::only($this->inputs(), $keys);
     }
-
+    
     public function except($args)
     {
         return Arr::except($this->inputs(), $args);
     }
-
+    
     public function merge(array $data = [])
     {
         $this->request = array_replace($this->inputs(), $data);
-
+        
         return $this;
     }
-
+    
     /**
      * Get all inputs
      * @return array $this->request
@@ -129,50 +129,55 @@ class Request
                 $this->request, $this->app->wprestrequest->get_params()
             );
         }
-
+        
         return $this->request;
     }
-
+    
     /**
      * Get user ip address
+     * @todo update framework and also check and update this code
      * @return string
      */
     public function getIp()
     {
-        // Prioritize REMOTE_ADDR as WordFence Suggestion
-        $ip = $this->server('REMOTE_ADDR');
-
-        if (empty($ip) && !empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-            $ip = $this->server('HTTP_X_FORWARDED_FOR');
+        // Nginx + Cloudflare setup
+        if (!empty($_SERVER['HTTP_CF_CONNECTING_IP'])) {
+            return $this->server('HTTP_CF_CONNECTING_IP');
         }
 
-        if (empty($ip) && !empty($_SERVER['HTTP_CLIENT_IP'])) {
-            $ip = $this->server('HTTP_CLIENT_IP');
+        if (!empty($_SERVER['HTTP_X_REAL_IP'])) {
+            return $this->server('HTTP_X_REAL_IP');
         }
 
-        // If no valid IP is found, return '0.0.0.0'
-        return !empty($ip) ? $ip : '0.0.0.0';
+        // Nginx is configured to use X-Forwarded-For
+        if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $ips = explode(',', $this->server('HTTP_X_FORWARDED_FOR'));
+            return trim($ips[0]); // First IP is typically the client
+        }
+
+        // Fallback to direct connection
+        return $this->server('REMOTE_ADDR') ? $this->server('REMOTE_ADDR') : '0.0.0.0';
     }
-
+    
     public function server($key = null, $default = null)
     {
         return $key ? Arr::get($this->server, $key, $default) : $this->server;
     }
-
+    
     public function header($key = null, $default = null)
     {
         if (!$this->headers) {
             $this->headers = $this->setHeaders();
         }
-
+        
         return $key ? Arr::get($this->headers, $key, $default) : $this->headers;
     }
-
+    
     public function cookie($key = null, $default = null)
     {
         return $key ? Arr::get($this->cookie, $key, $default) : $this->cookie;
     }
-
+    
     /**
      * Taken and modified from Symfony
      */
@@ -189,7 +194,7 @@ class Request
                 $headers[$key] = $value;
             }
         }
-
+        
         if (isset($parameters['PHP_AUTH_USER'])) {
             $headers['PHP_AUTH_USER'] = $parameters['PHP_AUTH_USER'];
             $headers['PHP_AUTH_PW'] = isset($parameters['PHP_AUTH_PW']) ? $parameters['PHP_AUTH_PW'] : '';
@@ -207,14 +212,14 @@ class Request
              * RewriteCond %{REQUEST_FILENAME} !-f
              * RewriteRule ^(.*)$ app.php [QSA,L]
              */
-
+            
             $authorizationHeader = null;
             if (isset($parameters['HTTP_AUTHORIZATION'])) {
                 $authorizationHeader = $parameters['HTTP_AUTHORIZATION'];
             } elseif (isset($parameters['REDIRECT_HTTP_AUTHORIZATION'])) {
                 $authorizationHeader = $parameters['REDIRECT_HTTP_AUTHORIZATION'];
             }
-
+            
             if (null !== $authorizationHeader) {
                 if (0 === stripos($authorizationHeader, 'basic ')) {
                     // Decode AUTHORIZATION header into PHP_AUTH_USER and PHP_AUTH_PW when authorization header is basic
@@ -236,26 +241,26 @@ class Request
                 }
             }
         }
-
+        
         if (isset($headers['AUTHORIZATION'])) {
             return $headers;
         }
-
+        
         // PHP_AUTH_USER/PHP_AUTH_PW
         if (isset($headers['PHP_AUTH_USER'])) {
             $headers['AUTHORIZATION'] = 'Basic '.base64_encode($headers['PHP_AUTH_USER'].':'.$headers['PHP_AUTH_PW']);
         } elseif (isset($headers['PHP_AUTH_DIGEST'])) {
             $headers['AUTHORIZATION'] = $headers['PHP_AUTH_DIGEST'];
         }
-
+        
         return $headers;
     }
-
+    
     public function method()
     {
         return $_SERVER['REQUEST_METHOD'];
     }
-
+    
     /**
      * Get the URL (no query string) for the request.
      *
@@ -265,7 +270,7 @@ class Request
     {
         return rtrim(preg_replace('/\?.*/', '', $_SERVER['REQUEST_URI']), '/');
     }
-
+    
     /**
      * Validate the request.
      *
@@ -275,16 +280,16 @@ class Request
     public function validate(array $rules, array $messages = [])
     {
         $instance = $this->app->make('validator');
-
+        
         $validator = $instance->make($this->all(), $rules, $messages);
-
+        
         if ($validator->validate()->fails()) {
             throw new ValidationException(
                 'Unprocessable Entity!', 422, null, $validator->errors()
             );
         }
     }
-
+    
     /**
      * Get an input element from the request.
      *
@@ -295,7 +300,7 @@ class Request
     {
         return $this->get($key);
     }
-
+    
     /**
      * Dynamyc method calls (specially for WP_rest_request)
      * @param  string $method
@@ -305,7 +310,7 @@ class Request
     public function __call($method, $params)
     {
         if ($this->app->bound('wprestrequest')) {
-
+            
             if ($method == 'route') {
                 return $this->app->route;
             }
@@ -315,7 +320,7 @@ class Request
                     preg_replace(['/([a-z\d])([A-Z])/', '/([^_])([A-Z][a-z])/'], '$1_$2', $method)
                 );
             }
-
+            
             return call_user_func_array([$this->app->wprestrequest, $method], $params);
         }
     }

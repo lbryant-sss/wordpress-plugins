@@ -1079,7 +1079,7 @@ class Builder
 
             $query->mergeModelDefinedRelationConstraints($relation->getQuery());
 
-            $this->selectSub($query->toBase(), snake_case($name).'_count');
+            $this->selectSub($query->toBase(), Str::snake($name).'_count');
         }
 
         return $this;

@@ -139,6 +139,11 @@ $element_customization_settings = [
         'template'  => 'inputYesNoCheckBox',
         'label'     => __('Enable Searchable Smart Options', 'fluentform'),
         'help_text' => __('If you enable this then options will be searchable by select2 js library', 'fluentform'),
+        'dependency' => [
+            'depends_on' => 'parent_container',
+            'operator'   => '!=',
+            'value'      => 'repeater_container',
+        ],
     ],
     'pricing_options' => [
         'template'  => 'pricingOptions',

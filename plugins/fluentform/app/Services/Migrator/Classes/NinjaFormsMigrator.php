@@ -3,6 +3,7 @@
 namespace FluentForm\App\Services\Migrator\Classes;
 
 
+use FluentForm\App\Helpers\Helper;
 use \FluentForm\App\Modules\Form\Form;
 use \FluentForm\Framework\Helpers\ArrayHelper;
 
@@ -599,7 +600,7 @@ class NinjaFormsMigrator extends BaseMigrator
         $formattedData = [];
         foreach ($values as $key => $value) {
             $key = str_replace('.', '_', $key);
-            $value = maybe_unserialize($value);
+            $value = Helper::safeUnserialize($value);
             $formattedData[$key] = $value;
             if (is_array($value)) {
                 $value = $this->formatEntries($value);

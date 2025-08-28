@@ -123,6 +123,7 @@ class Form
             'disable_branding'      => 'no',
             'hide_media_on_mobile'  => 'no',
             'key_hint'              => 'yes',
+            'enable_scroll_to_top'  => 'no',
             'asteriskPlacement'     => $this->getAsteriskPlacement($formId)
         ];
 
@@ -364,6 +365,7 @@ class Form
                         $existingSettings['tc_agree_text'] = __('I accept', 'fluentform');
                         if ('terms_and_condition' == $element) {
                             $existingSettings['tc_dis_agree_text'] = __('I don\'t accept', 'fluentform');
+                            $existingSettings['hide_disagree'] = false;
                         }
                         $field['settings'] = $existingSettings;
                     }
@@ -600,7 +602,7 @@ class Form
 
     public function maybeAlterPlacement($placements, $form)
     {
-        if (!Helper::isConversionForm($form->id) || empty($placements['terms_and_condition'])) {
+        if (!Helper::isConversionForm($form->id) || empty($placements['terms_and_condition']) || empty($placements['gdpr_agreement'])) {
             return $placements;
         }
 
@@ -620,6 +622,22 @@ class Form
             'tc_dis_agree_text' => [
                 'template' => 'inputText',
                 'label'    => 'Disagree Button Text',
+            ],
+            'hide_disagree' => [
+                'template' => 'inputCheckbox',
+                'options'  => [
+                    [
+                        'value' => false,
+                        'label' => __('Hide Disagree Button', 'fluentform'),
+                    ],
+                ],
+            ],
+        ];
+
+        $placements['gdpr_agreement']['generalExtras'] = [
+            'tc_agree_text'     => [
+                'template' => 'inputText',
+                'label'    => 'Agree Option Text',
             ],
         ];
 

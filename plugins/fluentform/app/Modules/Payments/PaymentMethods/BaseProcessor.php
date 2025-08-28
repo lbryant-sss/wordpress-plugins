@@ -6,6 +6,7 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
+use FluentForm\App\Helpers\Helper;
 use FluentForm\App\Modules\Payments\PaymentHelper;
 use FluentForm\Framework\Helpers\ArrayHelper;
 use FluentForm\App\Services\Form\SubmissionHandlerService;
@@ -403,7 +404,7 @@ abstract class BaseProcessor
             ->first();
 
         if ($meta && $meta->value) {
-            return maybe_unserialize($meta->value);
+            return Helper::safeUnserialize($meta->value);
         }
 
         return false;
@@ -708,8 +709,8 @@ abstract class BaseProcessor
             ->get();
 
         foreach ($subscriptions as $subscription) {
-            $subscription->original_plan = maybe_unserialize($subscription->original_plan);
-            $subscription->vendor_response = maybe_unserialize($subscription->vendor_response);
+            $subscription->original_plan = Helper::safeUnserialize($subscription->original_plan);
+            $subscription->vendor_response = Helper::safeUnserialize($subscription->vendor_response);
         }
 
         return $subscriptions;

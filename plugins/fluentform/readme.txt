@@ -4,7 +4,7 @@ Tags: contact form, wp forms, forms, form builder, custom form
 Requires at least: 4.5
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 6.0.4
+Stable tag: 6.1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -441,6 +441,36 @@ You can get support from our official support thread at <a href="https://wpmanag
 12. Asset Loading Comparison with Other Plugins
 
 == Changelog ==
+
+= 6.1.1 (Date: August 27, 2025) =
+- Adds Report module
+- Adds conversational forms scroll to top option
+- Adds close button to payment summary items
+- Adds keyboard shortcut for delete input field in the editor
+- Adds conversational forms terms and condition hide disagree button
+- Adds injectable custom Vue component on form editor field view
+- Improves Export entries fields by remembering last selected fields
+- Improves IP detection
+- Improves consistency of settings deletion of captcha
+- Fixes form API empty title retrieval issue
+- Fixes WPForm Migrator with empty forms
+- Fixes radio field customization UI default value selection
+- Fixes video playback in Support section
+- Fixes CleanTalk/Akismet protection spam submitting forms twice
+- Fixes integrations page sidebar menu selection indication on reload
+- Fixes conversational forms GDPR checkbox implementation
+- Fixes captcha conflict when global and form-specific settings differ
+- Fixes hide after submission option setting for conversational forms
+- Fixes Terms & Conditions field validation error messages for not Accepted
+- Removes un used Reset Form button from conversational forms form settings
+- Fixes payment method 'Test' Instead 'Offline' in payments shortcode
+- Fixes multiple address field autocomplete in conversational forms
+- Fixes submission on Enter key press with selected radio/checkbox using keyboard
+- Fixes entries chart date range filtering
+- Fixes database creation errors in WordPress Studio environments
+- Fixed trailing comma in keyword restriction that incorrectly blocked all submissions
+- Fixes WP Text Editor sanitizer removing links in success messages with search parameters
+- Fixes Object Injection Vulnerability unserialize issue when using user profile specific shortcodes
 
 = 6.0.4 (Date: May 29, 2025) =
 - Fixes the net promoter score field's zero (0) value in the visual report

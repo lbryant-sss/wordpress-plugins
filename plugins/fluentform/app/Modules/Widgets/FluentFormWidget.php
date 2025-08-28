@@ -599,7 +599,7 @@ class FluentFormWidget extends Widget_Base
         $this->start_controls_section(
             'section_form_fields_style',
             [
-                'label' => __('Input & Textarea', 'fluentform'),
+                'label' => __('Input & Text Area', 'fluentform'),
                 'tab'   => Controls_Manager::TAB_STYLE,
             ]
         );

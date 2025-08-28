@@ -875,7 +875,7 @@ class PaymentAction
             $subscriptionItems[$subIndex]['recurring_amount'] = intval($recurringAmount);
             $subscriptionItems[$subIndex]['initial_amount'] = intval($signupFee);
 
-            $originalPlan = maybe_unserialize($subscriptionItem['original_plan']);
+            $originalPlan = Helper::safeUnserialize($subscriptionItem['original_plan']);
 
             $originalPlan['subscription_amount'] = round($recurringAmount / 100, 2);
             $originalPlan['signup_fee'] = round($recurringAmount / 100, 2);

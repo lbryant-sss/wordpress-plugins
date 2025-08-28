@@ -126,16 +126,17 @@ class PaymentHandler
             
             wp_localize_script('fluentform-payment-handler', 'fluentform_payment_config', [
                 'i18n' => [
-                    'item'            => __('Item', 'fluentform'),
-                    'price'           => __('Price', 'fluentform'),
-                    'qty'             => __('Qty', 'fluentform'),
-                    'line_total'      => __('Line Total', 'fluentform'),
-                    'total'           => __('Total', 'fluentform'),
-                    'not_found'       => __('No payment item selected yet', 'fluentform'),
-                    'discount:'       => __('Discount:', 'fluentform'),
-                    'processing_text' => __('Processing payment. Please wait...', 'fluentform'),
-                    'confirming_text' => __('Confirming payment. Please wait...', 'fluentform'),
-                    'Signup Fee for'  => __('Signup Fee for', 'fluentform')
+                    'item'                     => __('Item', 'fluentform'),
+                    'price'                    => __('Price', 'fluentform'),
+                    'qty'                      => __('Qty', 'fluentform'),
+                    'line_total'               => __('Line Total', 'fluentform'),
+                    'total'                    => __('Total', 'fluentform'),
+                    'not_found'                => __('No payment item selected yet', 'fluentform'),
+                    'discount:'                => __('Discount:', 'fluentform'),
+                    'processing_text'          => __('Processing payment. Please wait...', 'fluentform'),
+                    'confirming_text'          => __('Confirming payment. Please wait...', 'fluentform'),
+                    'Signup Fee for %s'        => __('Signup Fee for %s', 'fluentform'),
+                    'Signup Fee for %1s - %2s' => __('Signup Fee for %1s - %2s', 'fluentform'),
                 ]
             ]);
             

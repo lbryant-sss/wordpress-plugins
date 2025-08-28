@@ -120,7 +120,7 @@ class StripeInlineProcessor extends StripeProcessor
                 'amount'      => $signupFee,
                 'currency'    => $submission->currency,
                 'customer'    => $customer->id,
-                'description' => __('Signup fee for ', 'fluentform') . $subscription->plan_name
+                'description' => __(sprintf('Signup fee for %s', $subscription->plan_name), 'fluentform'),
             ], $submission->form_id);
         }
 
