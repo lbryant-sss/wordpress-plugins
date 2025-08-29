@@ -36,7 +36,7 @@ $pro_installed = false;
 <div class="wt_wrap">
     <div class="wt_heading_section">
         <h2 class="wp-heading-inline">
-        <?php _e('Settings','print-invoices-packing-slip-labels-for-woocommerce');?>: <?php _e('Packing slip','print-invoices-packing-slip-labels-for-woocommerce');?>
+        <?php esc_html_e('Settings','print-invoices-packing-slip-labels-for-woocommerce');?>: <?php esc_html_e('Packing slip','print-invoices-packing-slip-labels-for-woocommerce');?>
         </h2>
         <?php
             //webtoffee branding
@@ -48,7 +48,7 @@ $pro_installed = false;
         <?php 
             if(!is_plugin_active($pro_invoice_path)){
                 echo '<div class="wt_customizer_promotion_popup_btn wt_customizer_promotion_tab">
-                <div style="display:flex;">'. __( 'Customize', 'print-invoices-packing-slip-labels-for-woocommerce' ) . '<img src="'. esc_url(WF_PKLIST_PLUGIN_URL.'admin/images/promote_crown.png') .'" style="width: 12px;height: 12px;background: #FFA800;padding: 5px;margin-left: 4px;border-radius: 25px;"></div>
+                <div style="display:flex;">'. esc_html__( 'Customize', 'print-invoices-packing-slip-labels-for-woocommerce' ) . '<img src="'. esc_url(WF_PKLIST_PLUGIN_URL.'admin/images/promote_crown.png') .'" style="width: 12px;height: 12px;background: #FFA800;padding: 5px;margin-left: 4px;border-radius: 25px;"></div>
                 </div>';
             }
         ?>

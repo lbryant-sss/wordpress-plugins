@@ -78,7 +78,7 @@ include_once WF_PKLIST_PLUGIN_PATH.'/admin/views/premium_extension_listing.php';
                                 <img src="<?php echo esc_url($wf_admin_img_path).'/gurantee_doc.png'; ?>">
                             </div>
                             <div class="wt_pro_addon_gurantee_pro_ad_column_2">
-                                <p><?php echo __("You are covered by our 30-Day Money Back Guarantee","print-invoices-packing-slip-labels-for-woocommerce"); ?></p>
+                                <p><?php echo esc_html__("You are covered by our 30-Day Money Back Guarantee","print-invoices-packing-slip-labels-for-woocommerce"); ?></p>
                             </div>
                         </div>
                     </li>
@@ -88,7 +88,7 @@ include_once WF_PKLIST_PLUGIN_PATH.'/admin/views/premium_extension_listing.php';
                                 <img src="<?php echo esc_url($wf_admin_img_path).'/cs_support_doc.png'; ?>">
                             </div>
                             <div class="wt_pro_addon_support_pro_ad_column_2">
-                                <p><?php _e("Supported by a team with 99% Customer Satisfaction Score","print-invoices-packing-slip-labels-for-woocommerce"); ?></p>
+                                <p><?php esc_html_e("Supported by a team with 99% Customer Satisfaction Score","print-invoices-packing-slip-labels-for-woocommerce"); ?></p>
                             </div>
                         </div>
                     </li>
@@ -111,7 +111,7 @@ include_once WF_PKLIST_PLUGIN_PATH.'/admin/views/premium_extension_listing.php';
                         }
                     }
                     $pro_plugin_list_arr = array_chunk($not_activated_plugin,3,true);
-                    echo '<div class="'.esc_attr($pl_key).'_pro_ad_list_div pro_list_div" style="float:left;width:100%;'.$dv_dis.'">';
+                    echo '<div class="'.esc_attr($pl_key).'_pro_ad_list_div pro_list_div" style="float:left;width:100%;'.esc_attr($dv_dis).'">';
                     foreach($pro_plugin_list_arr as $this_plugin_list){
                     echo '<div class="wt_pro_addon_tile_pro_ad_row">';
                         foreach($this_plugin_list as $this_pro_plugin){
@@ -138,12 +138,12 @@ include_once WF_PKLIST_PLUGIN_PATH.'/admin/views/premium_extension_listing.php';
                                 </ul>
                             </div>
                             <div class="wt_pro_show_more_less_pro_ad">
-                                <a class="wt_pro_addon_show_more_pro_ad"><p><? echo __("Show More","print-invoices-packing-slip-labels-for-woocommerce"); ?></p></a>
-                                <a class="wt_pro_addon_show_less_pro_ad"><p><? echo __("Show Less","print-invoices-packing-slip-labels-for-woocommerce"); ?></p></a>
+                                <a class="wt_pro_addon_show_more_pro_ad"><p><?php echo esc_html__("Show More","print-invoices-packing-slip-labels-for-woocommerce"); ?></p></a>
+                                <a class="wt_pro_addon_show_less_pro_ad"><p><?php echo esc_html__("Show Less","print-invoices-packing-slip-labels-for-woocommerce"); ?></p></a>
                             </div>
                         </div>
                         <a class="wt_pro_addon_premium_link_div_pro_ad" href="<?php echo esc_url($this_pro_plugin['page_link']); ?>" target="_blank">
-                            <?php _e("Checkout Premium","print-invoices-packing-slip-labels-for-woocommerce"); ?>
+                            <?php esc_html_e("Checkout Premium","print-invoices-packing-slip-labels-for-woocommerce"); ?>
                         </a>
                     </div>
                         <?php

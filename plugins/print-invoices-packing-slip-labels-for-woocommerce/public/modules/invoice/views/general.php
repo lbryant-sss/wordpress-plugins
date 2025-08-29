@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {
         <input type="hidden" value="invoice" class="wf_settings_base" />
         <input type="hidden" value="wf_save_settings" class="wf_settings_action" />
         <input type="hidden" value="wt_invoice_general" name="wt_tab_name" class="wt_tab_name" />
-        <p><?php _e('Configure the general settings required for the invoice.','print-invoices-packing-slip-labels-for-woocommerce');?></p>
+        <p><?php esc_html_e('Configure the general settings required for the invoice.','print-invoices-packing-slip-labels-for-woocommerce');?></p>
         <?php
         // Set nonce:
         if (function_exists('wp_nonce_field'))
@@ -286,56 +286,56 @@ if (!defined('ABSPATH')) {
         </table>
         <div class="wf_inv_num_frmt_hlp wf_pklist_popup">
             <div class="wf_pklist_popup_hd">
-                <span style="line-height:40px;" class="dashicons dashicons-calendar-alt"></span> <?php _e('Date formats','print-invoices-packing-slip-labels-for-woocommerce');?>
+                <span style="line-height:40px;" class="dashicons dashicons-calendar-alt"></span> <?php esc_html_e('Date formats','print-invoices-packing-slip-labels-for-woocommerce');?>
                 <div class="wf_pklist_popup_close">X</div>
             </div>
             <div class="wf_pklist_popup_body">
                 <table class="wp-list-table widefat striped">
                     <thead>
                         <tr>
-                            <th><?php _e('Format','print-invoices-packing-slip-labels-for-woocommerce');?></th><th><?php _e('Output','print-invoices-packing-slip-labels-for-woocommerce');?></th>
+                            <th><?php esc_html_e('Format','print-invoices-packing-slip-labels-for-woocommerce');?></th><th><?php esc_html_e('Output','print-invoices-packing-slip-labels-for-woocommerce');?></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><a class="wf_inv_num_frmt_append_btn" title="<?php echo $date_frmt_tooltip; ?>">[F]</a></td>
-                            <td><?php echo date('F'); ?></td>
+                            <td><a class="wf_inv_num_frmt_append_btn" title="<?php echo esc_attr($date_frmt_tooltip); ?>">[F]</a></td>
+                            <td><?php echo esc_html(gmdate('F')); ?></td>
                         </tr>
                         <tr>
-                            <td><a class="wf_inv_num_frmt_append_btn" title="<?php echo $date_frmt_tooltip; ?>">[dS]</a></td>
-                            <td><?php echo date('dS'); ?></td>
+                            <td><a class="wf_inv_num_frmt_append_btn" title="<?php echo esc_attr($date_frmt_tooltip); ?>">[dS]</a></td>
+                            <td><?php echo esc_html(gmdate('dS')); ?></td>
                         </tr>
                         <tr>
-                            <td><a class="wf_inv_num_frmt_append_btn" title="<?php echo $date_frmt_tooltip; ?>">[M]</a></td>
-                            <td><?php echo date('M'); ?></td>
+                            <td><a class="wf_inv_num_frmt_append_btn" title="<?php echo esc_attr($date_frmt_tooltip); ?>">[M]</a></td>
+                            <td><?php echo esc_html(gmdate('M')); ?></td>
                         </tr>
                         <tr>
-                            <td><a class="wf_inv_num_frmt_append_btn" title="<?php echo $date_frmt_tooltip; ?>">[m]</a></td>
-                            <td><?php echo date('m'); ?></td>
+                            <td><a class="wf_inv_num_frmt_append_btn" title="<?php echo esc_attr($date_frmt_tooltip); ?>">[m]</a></td>
+                            <td><?php echo esc_html(gmdate('m')); ?></td>
                         </tr>
                         <tr>
-                            <td><a class="wf_inv_num_frmt_append_btn" title="<?php echo $date_frmt_tooltip; ?>">[d]</a></td>
-                            <td><?php echo date('d'); ?></td>
+                            <td><a class="wf_inv_num_frmt_append_btn" title="<?php echo esc_attr($date_frmt_tooltip); ?>">[d]</a></td>
+                            <td><?php echo esc_html(gmdate('d')); ?></td>
                         </tr>
                         <tr>
-                            <td><a class="wf_inv_num_frmt_append_btn" title="<?php echo $date_frmt_tooltip; ?>">[D]</a></td>
-                            <td><?php echo date('D'); ?></td>
+                            <td><a class="wf_inv_num_frmt_append_btn" title="<?php echo esc_attr($date_frmt_tooltip); ?>">[D]</a></td>
+                            <td><?php echo esc_html(gmdate('D')); ?></td>
                         </tr>
                         <tr>
-                            <td><a class="wf_inv_num_frmt_append_btn" title="<?php echo $date_frmt_tooltip; ?>">[y]</a></td>
-                            <td><?php echo date('y'); ?></td>
+                            <td><a class="wf_inv_num_frmt_append_btn" title="<?php echo esc_attr($date_frmt_tooltip); ?>">[y]</a></td>
+                            <td><?php echo esc_html(gmdate('y')); ?></td>
                         </tr>
                         <tr>
-                            <td><a class="wf_inv_num_frmt_append_btn" title="<?php echo $date_frmt_tooltip; ?>">[Y]</a></td>
-                            <td><?php echo date('Y'); ?></td>
+                            <td><a class="wf_inv_num_frmt_append_btn" title="<?php echo esc_attr($date_frmt_tooltip); ?>">[Y]</a></td>
+                            <td><?php echo esc_html(gmdate('Y')); ?></td>
                         </tr>
                         <tr>
-                            <td><a class="wf_inv_num_frmt_append_btn" title="<?php echo $date_frmt_tooltip; ?>">[d/m/y]</a></td>
-                            <td><?php echo date('d/m/y'); ?></td>
+                            <td><a class="wf_inv_num_frmt_append_btn" title="<?php echo esc_attr($date_frmt_tooltip); ?>">[d/m/y]</a></td>
+                            <td><?php echo esc_html(gmdate('d/m/y')); ?></td>
                         </tr>
                         <tr>
-                            <td><a class="wf_inv_num_frmt_append_btn" title="<?php echo $date_frmt_tooltip; ?>">[d-m-Y]</a></td>
-                            <td><?php echo date('d-m-Y'); ?></td>
+                            <td><a class="wf_inv_num_frmt_append_btn" title="<?php echo esc_attr($date_frmt_tooltip); ?>">[d-m-Y]</a></td>
+                            <td><?php echo esc_html(gmdate('d-m-Y')); ?></td>
                         </tr>
                     </tbody>
                 </table>

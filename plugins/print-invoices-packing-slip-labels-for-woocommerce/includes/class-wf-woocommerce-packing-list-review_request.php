@@ -58,7 +58,9 @@ class Wf_Woocommerce_Packing_List_Review_Request
 	{
 
 		if ($this->check_condition()) /* checks the banner is active now */ {
+			/* translators: 1$s: HTML bold opening tag, 2$s: HTML bold closing tag, 3$s: HTML bold opening tag, 4$s: Plugin title, 5$s: HTML bold closing tag, 6$s: HTML line break */
 			$this->banner_message = sprintf(__('Hey, we at %1$s WebToffee %2$s would like to thank you for using %3$s %4$s %5$s. %6$s Less than a minute of your time will motivate us to keep doing what we do. We would really appreciate if you could take a moment to drop a quick review that motivate us to keep going.', 'print-invoices-packing-slip-labels-for-woocommerce'), '<b>', '</b>', '<b>', $this->plugin_title, '</b>', '<br />');
+			/* translators: 1$s: Star emoji, 2$s: HTML span opening tag, 3$s: HTML span closing tag, 4$s: HTML span opening tag, 5$s: HTML span closing tag */
 			$this->new_review_banner_title = sprintf(__('%1$s  %2$s  Loving %3$s  WooCommerce PDF Invoices, Packing Slips, Delivery Notes and Shipping Labels plugin? %4$s  Share Your Feedback! %5$s', 'print-invoices-packing-slip-labels-for-woocommerce'), '🌟', '<span style="font-weight:300;">', '</span>', '<span style="font-weight:300;">', '</span>');
 
 			/* button texts */
@@ -72,6 +74,7 @@ class Wf_Woocommerce_Packing_List_Review_Request
 			if (1000 <= $this->doc_created_count) {
 				$this->webtoffee_logo_url = "";
 				$round_count = floor($this->doc_created_count / 100) * 100;
+				/* translators: 1$s: Knock knock text, 2$s: You've just created text, 3$s: Round count number, 4$s: Commercial documents using text, 5$s: Plugin name, 6$s: Encouragement text */
 				$this->banner_message = sprintf(
 					'<b>%1$s</b> %2$s <b style="color:#FF6636;font-size: 14px;">%3$s +</b> %4$s <b style="color:#FF6636;font-size: 14px;">%5$s</b>. %6$s',
 					__("Knock, Knock!", 'print-invoices-packing-slip-labels-for-woocommerce'),
@@ -79,7 +82,7 @@ class Wf_Woocommerce_Packing_List_Review_Request
 					$round_count,
 					__("commercial documents using", "print-invoices-packing-slip-labels-for-woocommerce"),
 					__("Woocommerce PDF invoices, packing slips, delivery notes, and shipping labels", "print-invoices-packing-slip-labels-for-woocommerce"),
-					__("That’s awesome! We’d love it if you take a moment to share what you think and help spread the word.", "print-invoices-packing-slip-labels-for-woocommerce")
+					__("That's awesome! We'd love it if you take a moment to share what you think and help spread the word.", "print-invoices-packing-slip-labels-for-woocommerce")
 				);
 				$this->review_btn_text = __("Rate us now", 'print-invoices-packing-slip-labels-for-woocommerce');
 			}
@@ -185,7 +188,8 @@ class Wf_Woocommerce_Packing_List_Review_Request
 		} else {
 			$current_user = wp_get_current_user();
 			$user_first_name = !empty($current_user->first_name) ? $current_user->first_name : __('there', 'print-invoices-packing-slip-labels-for-woocommerce');
-			$this->new_review_banner_message = sprintf(__('Hi  %1$s, %2$s We’re thrilled to see you making great use of our WooCommerce PDF Invoices, Packing Slips, Delivery Notes and Shipping Labels plugin! It’s our mission to make %3$s invoicing as seamless %4$s and %5$s efficient %6$s as possible for you. %7$s If you found the plugin helpful, please leave us a quick %8$s 5-star review. %9$s It would mean the world to us. %10$s Warm regards, %11$s Team WebToffee %12$s', 'print-invoices-packing-slip-labels-for-woocommerce'), '<b>' . $user_first_name . '</b>', '<br>', '<b>', '</b>', '<b>', '</b>', '<br><br>', '<b>', '</b>', '<br><br>', '<br><b>', '</b>'); ?>
+			/* translators: 1$s: User name in bold HTML, 2$s: HTML line break, 3$s: HTML bold opening tag, 4$s: HTML bold closing tag, 5$s: HTML bold opening tag, 6$s: HTML bold closing tag, 7$s: Double HTML line break, 8$s: HTML bold opening tag, 9$s: HTML bold closing tag, 10$s: Double HTML line break, 11$s: HTML line break with bold opening tag, 12$s: HTML bold closing tag */
+			$this->new_review_banner_message = sprintf(__('Hi  %1$s, %2$s We\'re thrilled to see you making great use of our WooCommerce PDF Invoices, Packing Slips, Delivery Notes and Shipping Labels plugin! It\'s our mission to make %3$s invoicing as seamless %4$s and %5$s efficient %6$s as possible for you. %7$s If you found the plugin helpful, please leave us a quick %8$s 5-star review. %9$s It would mean the world to us. %10$s Warm regards, %11$s Team WebToffee %12$s', 'print-invoices-packing-slip-labels-for-woocommerce'), '<b>' . $user_first_name . '</b>', '<br>', '<b>', '</b>', '<b>', '</b>', '<br><br>', '<b>', '</b>', '<br><br>', '<br><b>', '</b>'); ?>
 			<div class="<?php echo esc_attr($this->banner_css_class); ?> notice-info notice is-dismissible ">
 				<?php
 				if ("" !== $this->webtoffee_logo_url) {

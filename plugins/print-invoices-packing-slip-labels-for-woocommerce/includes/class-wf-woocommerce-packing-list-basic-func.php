@@ -59,7 +59,8 @@ class Wf_Woocommerce_Packing_List_Basic_Common_Func {
             'msgs'=>array(
                 'settings_success'=>__('Settings updated.','print-invoices-packing-slip-labels-for-woocommerce'),
                 'all_fields_mandatory'=>__('All fields are mandatory','print-invoices-packing-slip-labels-for-woocommerce'),
-                'settings_error'=>sprintf(__('Unable to update settings due to an internal error. %s To troubleshoot please click %s here. %s', 'print-invoices-packing-slip-labels-for-woocommerce'), '<br />', '<a href="https://www.webtoffee.com/how-to-fix-the-unable-to-save-settings-issue/" target="_blank">', '</a>'),
+                /* translators: 1$s: HTML line break, 2$s: HTML link opening tag, 3$s: HTML link closing tag */
+                'settings_error'=>sprintf(__('Unable to update settings due to an internal error. %1$s To troubleshoot please click %2$s here. %3$s', 'print-invoices-packing-slip-labels-for-woocommerce'), '<br />', '<a href="https://www.webtoffee.com/how-to-fix-the-unable-to-save-settings-issue/" target="_blank">', '</a>'),
                 'select_orders_first'=>__('You have to select order(s) first!','print-invoices-packing-slip-labels-for-woocommerce'),
                 'invoice_not_gen_bulk'=>__('One or more order do not have invoice generated. Generate manually?','print-invoices-packing-slip-labels-for-woocommerce'),
                 'error'=>__('Error','print-invoices-packing-slip-labels-for-woocommerce'),
@@ -87,19 +88,19 @@ class Wf_Woocommerce_Packing_List_Basic_Common_Func {
         
         if(Wf_Woocommerce_Packing_List_Admin::check_write_access()) 
         {
-            if(isset($_POST['wt_pklist_custom_field_btn']))  
+            if(isset($_POST['wt_pklist_custom_field_btn'])) // phpcs:ignore WordPress.Security.NonceVerification.Missing
             {
                 //additional fields for checkout
-                if(isset($_POST['wt_pklist_new_custom_field_title']) && isset($_POST['wt_pklist_new_custom_field_key']) && isset($_POST['wt_pklist_custom_field_type'])) 
+                if(isset($_POST['wt_pklist_new_custom_field_title']) && isset($_POST['wt_pklist_new_custom_field_key']) && isset($_POST['wt_pklist_custom_field_type'])) // phpcs:ignore WordPress.Security.NonceVerification.Missing
                 {
-                    if("" !== trim($_POST['wt_pklist_new_custom_field_title']) && "" !== trim($_POST['wt_pklist_new_custom_field_key']))
+                    if("" !== trim($_POST['wt_pklist_new_custom_field_title']) && "" !== trim($_POST['wt_pklist_new_custom_field_key'])) // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
                     {
-                        $custom_field_type=sanitize_text_field($_POST['wt_pklist_custom_field_type']);
+                        $custom_field_type = sanitize_text_field(wp_unslash($_POST['wt_pklist_custom_field_type'])); // phpcs:ignore WordPress.Security.NonceVerification.Missing
                         if("order_meta" === $custom_field_type)
                         {
-                            $module_base=(isset($_POST['wt_pklist_settings_base']) ? sanitize_text_field($_POST['wt_pklist_settings_base']) : 'main');
+                            $module_base=(isset($_POST['wt_pklist_settings_base']) ? sanitize_text_field(wp_unslash($_POST['wt_pklist_settings_base'])) : 'main'); // phpcs:ignore WordPress.Security.NonceVerification.Missing
                             $module_id=("main" === $module_base ? '' : Wf_Woocommerce_Packing_List::get_module_id($module_base));
-                            $add_only=(isset($_POST['add_only']) ? true : false);
+                            $add_only=(isset($_POST['add_only']) ? true : false); // phpcs:ignore WordPress.Security.NonceVerification.Missing
                             $field_config=array(
                                 'order_meta'=>array(
                                     'list'=>'wf_additional_data_fields',
@@ -108,8 +109,8 @@ class Wf_Woocommerce_Packing_List_Basic_Common_Func {
                             );
 
                             /* form input */
-                            $new_meta_key=sanitize_text_field($_POST['wt_pklist_new_custom_field_key']);                    
-                            $new_meta_vl=sanitize_text_field($_POST['wt_pklist_new_custom_field_title']);
+                            $new_meta_key=sanitize_text_field(wp_unslash($_POST['wt_pklist_new_custom_field_key'])); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+                            $new_meta_vl=sanitize_text_field(wp_unslash($_POST['wt_pklist_new_custom_field_title'])); // phpcs:ignore WordPress.Security.NonceVerification.Missing
 
                             /* option key names for full list, selected list */
                             $list_field=$field_config[$custom_field_type]['list'];

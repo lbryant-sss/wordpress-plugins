@@ -82,7 +82,7 @@ class Wf_Woocommerce_Packing_List_Pdf_generator
 
         if(!is_dir($upload_dir))
         {
-            @mkdir($upload_dir, 0700);
+            wp_mkdir_p($upload_dir);
         }
 
         //document type specific subfolder
@@ -90,7 +90,7 @@ class Wf_Woocommerce_Packing_List_Pdf_generator
         $upload_url=$upload_url.'/'.$basedir;
         if(!is_dir($upload_dir))
         {
-            @mkdir($upload_dir, 0700);
+            wp_mkdir_p($upload_dir);
         }
 
         //if directory successfully created
@@ -104,7 +104,7 @@ class Wf_Woocommerce_Packing_List_Pdf_generator
             $is_preview=false;
             if("download" === $action || "preview" === $action)
             {  
-                $is_preview=(("preview" === $action || isset($_GET['debug'])) ? true : false );
+                $is_preview=(("preview" === $action || isset($_GET['debug'])) ? true : false ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- This is a safe use of isset.
             }
 
             $args=array();

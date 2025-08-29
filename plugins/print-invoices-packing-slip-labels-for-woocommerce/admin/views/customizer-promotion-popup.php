@@ -121,7 +121,7 @@ if ( $template_type === 'packinglist' ) {
 		</div>
 		<div class="wt_pklist_customizer_promotion_footer">
 				<a href="<?php echo esc_url($customizer_promotion_content[$template_type]['link']) ?>" class="wt_pklist_customizer_promotion_premium_btn" target="_blank">
-				<img src="<?php echo esc_url( WF_PKLIST_PLUGIN_URL.'admin/images/other_solutions/promote_crown.png' ); ?>" style="width: 14px;height: 13px;margin-right: 7px;"><?php  echo __( 'Upgrade To Premium', 'print-invoices-packing-slip-labels-for-woocommerce' ); ?>
+				<img src="<?php echo esc_url( WF_PKLIST_PLUGIN_URL.'admin/images/other_solutions/promote_crown.png' ); ?>" style="width: 14px;height: 13px;margin-right: 7px;"><?php  echo esc_html__( 'Upgrade To Premium', 'print-invoices-packing-slip-labels-for-woocommerce' ); ?>
 			</a>
 		</div>
 		<?php

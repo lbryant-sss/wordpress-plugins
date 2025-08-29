@@ -9,7 +9,7 @@ $print_preview=isset($the_options['woocommerce_wf_packinglist_preview']) ? $the_
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title><?php echo (isset($page_title) && $page_title!="" ? $page_title : WF_PKLIST_PLUGIN_DESCRIPTION); ?></title>
+		<title><?php echo esc_html(isset($page_title) && $page_title!="" ? $page_title : WF_PKLIST_PLUGIN_DESCRIPTION); ?></title>
 		<style>
 		body, html{margin:0px; padding:0px; }
 		.clearfix::after { display: block; clear: both; content: "";}
@@ -28,7 +28,7 @@ $print_preview=isset($the_options['woocommerce_wf_packinglist_preview']) ? $the_
 		<?php } ?>
 		</style>
 		<style>
-		<?php echo ( isset( $custom_css ) ? $custom_css : '' ); ?>
+		<?php echo wp_kses_post(isset( $custom_css ) ? $custom_css : ''); ?>
 		</style>
 		<style>
 		@media print {
@@ -45,8 +45,8 @@ $print_preview=isset($the_options['woocommerce_wf_packinglist_preview']) ? $the_
 			$document_action = '';
 			$print_orders = array();
 			
-			if ( isset( $_REQUEST['attaching_pdf']) && isset( $_REQUEST['button_location'] ) && 'email' === sanitize_text_field( $_REQUEST['button_location'] ) ) {
-				if ( isset( $_REQUEST['type'] ) && false !== strpos( sanitize_text_field( $_REQUEST['type'] ) , 'print_' ) ) {
+			if ( isset( $_REQUEST['attaching_pdf']) && isset( $_REQUEST['button_location'] ) && wp_verify_nonce($_REQUEST['_wpnonce'] ?? '', WF_PKLIST_PLUGIN_NAME) && 'email' === sanitize_text_field( wp_unslash( $_REQUEST['button_location'] ) ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized @codingStandardsIgnoreLine -- This is a safe use of isset.
+				if ( isset( $_REQUEST['type'] ) && wp_verify_nonce($_REQUEST['_wpnonce'] ?? '', WF_PKLIST_PLUGIN_NAME) && false !== strpos( sanitize_text_field( wp_unslash( $_REQUEST['type'] ) ) , 'print_' ) ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Nonce verification handles security
 					$document_action = 'print';
 				}
 			}

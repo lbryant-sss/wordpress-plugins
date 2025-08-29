@@ -42,8 +42,8 @@ class Wf_Woocommerce_Packing_List_Deactivator {
         // delete the schedule of generating invoice number for high number of orders
         as_unschedule_all_actions('wt_pklist_schedule_auto_generate_invoice_number', array(), "wt_pklist_invoice_number_auto_generation");
 
-		if(isset($_GET['delete_all_settings'])){
-			if(1 === $_GET['delete_all_settings'] || "1" === $_GET['delete_all_settings']){
+		if(isset($_GET['delete_all_settings'])){ // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- This is a safe use of isset.
+			if(1 === $_GET['delete_all_settings'] || "1" === $_GET['delete_all_settings']){ // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- This is a safe use of isset.
 				self::delete_all_plugin_settings();
 			}
 		}
@@ -83,8 +83,7 @@ class Wf_Woocommerce_Packing_List_Deactivator {
 		
 		// delete the template table
         global $wpdb;
-        $table_name=$wpdb->prefix.Wf_Woocommerce_Packing_List::$template_data_tb;
-        $wpdb->query("DROP TABLE $table_name");
+        $wpdb->query("DROP TABLE {$wpdb->prefix}wfpklist_template_data"); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching @codingStandardsIgnoreLine -- This is a safe use of DROP TABLE
     }
 
 }

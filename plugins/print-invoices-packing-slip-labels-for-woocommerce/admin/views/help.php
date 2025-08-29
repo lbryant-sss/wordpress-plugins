@@ -31,30 +31,30 @@ function wt_code_view_colors($txt)
   return $txt;
 }
 ?>
-<div class="wf-tab-content" data-id="<?php echo $target_id;?>">
+<div class="wf-tab-content" data-id="<?php echo esc_attr($target_id);?>">
 	<ul class="wf_sub_tab">
-		<li style="border-left:none; padding-left: 0px;" data-target="filters"><a><?php _e('Filters','print-invoices-packing-slip-labels-for-woocommerce');?></a></li>
-		<li data-target="help-links"><a><?php _e('Help Links','print-invoices-packing-slip-labels-for-woocommerce'); ?></a></li>
-		<li data-target="system-info"><a><?php _e('System Info','print-invoices-packing-slip-labels-for-woocommerce'); ?></a></li>
+		<li style="border-left:none; padding-left: 0px;" data-target="filters"><a><?php esc_html_e('Filters','print-invoices-packing-slip-labels-for-woocommerce');?></a></li>
+		<li data-target="help-links"><a><?php esc_html_e('Help Links','print-invoices-packing-slip-labels-for-woocommerce'); ?></a></li>
+		<li data-target="system-info"><a><?php esc_html_e('System Info','print-invoices-packing-slip-labels-for-woocommerce'); ?></a></li>
 	</ul>
 	<div class="wf_sub_tab_container">		
 		<div class="wf_sub_tab_content" data-id="help-links" style="display:block;">
-			<h3><?php _e('Help Links','print-invoices-packing-slip-labels-for-woocommerce'); ?></h3>
+			<h3><?php esc_html_e('Help Links','print-invoices-packing-slip-labels-for-woocommerce'); ?></h3>
 			<ul class="wf-help-links">
 			    <li>
-			        <img src="<?php echo WF_PKLIST_PLUGIN_URL;?>assets/images/documentation.png">
-			        <h3><?php _e('Documentation', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></h3>
-			        <p><?php _e('Refer to our documentation to setup and get started', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></p>
+			        <img src="<?php echo esc_url(WF_PKLIST_PLUGIN_URL);?>assets/images/documentation.png">
+			        <h3><?php esc_html_e('Documentation', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></h3>
+			        <p><?php esc_html_e('Refer to our documentation to setup and get started', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></p>
 			        <a target="_blank" href="https://www.webtoffee.com/woocommerce-pdf-invoices-packing-slips-delivery-notes-shipping-labels-userguide-free-version/" class="button button-primary">
-			            <?php _e('Documentation', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>        
+			            <?php esc_html_e('Documentation', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>        
 			        </a>
 			    </li>
 			    <li>
-			        <img src="<?php echo WF_PKLIST_PLUGIN_URL;?>assets/images/support.png">
-			        <h3><?php _e('Help and Support','print-invoices-packing-slip-labels-for-woocommerce'); ?></h3>
-			        <p><?php _e('We would love to help you on any queries or issues.','print-invoices-packing-slip-labels-for-woocommerce'); ?></p>
+			        <img src="<?php echo esc_url(WF_PKLIST_PLUGIN_URL);?>assets/images/support.png">
+			        <h3><?php esc_html_e('Help and Support','print-invoices-packing-slip-labels-for-woocommerce'); ?></h3>
+			        <p><?php esc_html_e('We would love to help you on any queries or issues.','print-invoices-packing-slip-labels-for-woocommerce'); ?></p>
 			        <a target="_blank" href="https://www.webtoffee.com/support/" class="button button-primary">
-			            <?php _e('Contact Us', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>
+			            <?php esc_html_e('Contact Us', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>
 			        </a>
 			    </li>               
 			</ul>

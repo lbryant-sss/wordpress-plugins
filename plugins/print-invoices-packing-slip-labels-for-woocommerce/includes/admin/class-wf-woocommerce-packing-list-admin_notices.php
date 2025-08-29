@@ -26,9 +26,9 @@ class Wf_Woocommerce_Packing_List_Admin_Notices
             $pending_actions_url = admin_url( 'admin.php?page=wc-status&tab=action-scheduler&s=wt_pklist_schedule_auto_generate_invoice_number');
             if (true === as_next_scheduled_action('wt_pklist_schedule_auto_generate_invoice_number', array(), $group)) {
                 echo '<div class="notice-info notice">
-                <h3 style="margin: 10px 0;">'.__("Invoice Generation In Progress","print-invoices-packing-slip-labels-for-woocommerce").'</h3>
-                <p>'.__("Invoice numbers are getting generated in the background. This process may take a little while, so please be patient.","print-invoices-packing-slip-labels-for-woocommerce").'</p>
-                <p><a class="button button-primary" href="'.esc_url($pending_actions_url).'">'.__("View progress","print-invoices-packing-slip-labels-for-woocommerce").'</a></p>
+                <h3 style="margin: 10px 0;">'.esc_html__("Invoice Generation In Progress","print-invoices-packing-slip-labels-for-woocommerce").'</h3>
+                <p>'.esc_html__("Invoice numbers are getting generated in the background. This process may take a little while, so please be patient.","print-invoices-packing-slip-labels-for-woocommerce").'</p>
+                <p><a class="button button-primary" href="'.esc_url($pending_actions_url).'">'.esc_html__("View progress","print-invoices-packing-slip-labels-for-woocommerce").'</a></p>
                 </div>';
             }
         }

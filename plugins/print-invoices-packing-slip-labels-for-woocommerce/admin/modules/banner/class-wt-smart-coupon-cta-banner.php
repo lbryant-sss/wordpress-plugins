@@ -87,36 +87,36 @@ if (!class_exists('\\Wtpdf\\Banners\\Wt_Smart_Coupon_Cta_Banner')) {
             <div class="wt-cta-banner">
                 <div class="wt-cta-content">
                     <div class="wt-cta-header">
-                        <img src="<?php echo esc_url($wt_admin_img_path . '/smart-coupon.svg'); ?>" alt="<?php _e('Smart Coupons for WooCommerce Pro', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>" class="wt-smart-coupon-cta-icon">
-                        <h3><?php _e('Create better coupon campaigns with advanced WooCommerce coupon features', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></h3>
+                        <img src="<?php echo esc_url($wt_admin_img_path . '/smart-coupon.svg'); ?>" alt="<?php esc_attr_e('Smart Coupons for WooCommerce Pro', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>" class="wt-smart-coupon-cta-icon">
+                        <h3><?php esc_html_e('Create better coupon campaigns with advanced WooCommerce coupon features', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></h3>
                     </div>
 
                     <div class="wt-cta-features-header">
-                        <h2 style="font-size: 13px; font-weight: 700; color: #4750CB;"><?php _e('Smart Coupons for WooCommerce Pro', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></h2>
+                        <h2 style="font-size: 13px; font-weight: 700; color: #4750CB;"><?php esc_html_e('Smart Coupons for WooCommerce Pro', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></h2>
                     </div>
 
                     <ul class="wt-cta-features">
-                        <li><?php _e('Auto-apply coupons', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
-                        <li><?php _e('Create attractive Buy X Get Y (BOGO) offers', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
-                        <li><?php _e('Create product quantity/subtotal based discounts', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
-                        <li><?php _e('Offer store credits and gift cards', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
-                        <li><?php _e('Set up smart giveaway campaigns', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
-                        <li><?php _e('Set advanced coupon rules and conditions', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
-                        <li class="hidden-feature"><?php _e('Bulk generate coupons', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
-                        <li class="hidden-feature"><?php _e('Shipping, purchase history, and payment method-based coupons', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
-                        <li class="hidden-feature"><?php _e('Sign up coupons', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
-                        <li class="hidden-feature"><?php _e('Cart abandonment coupons', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
-                        <li class="hidden-feature"><?php _e('Create day-specific deals', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
-                        <li class="hidden-feature"><?php _e('Display coupon banners and widgets', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
-                        <li class="hidden-feature"><?php _e('Import coupons', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+                        <li><?php esc_html_e('Auto-apply coupons', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+                        <li><?php esc_html_e('Create attractive Buy X Get Y (BOGO) offers', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+                        <li><?php esc_html_e('Create product quantity/subtotal based discounts', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+                        <li><?php esc_html_e('Offer store credits and gift cards', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+                        <li><?php esc_html_e('Set up smart giveaway campaigns', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+                        <li><?php esc_html_e('Set advanced coupon rules and conditions', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+                        <li class="hidden-feature"><?php esc_html_e('Bulk generate coupons', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+                        <li class="hidden-feature"><?php esc_html_e('Shipping, purchase history, and payment method-based coupons', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+                        <li class="hidden-feature"><?php esc_html_e('Sign up coupons', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+                        <li class="hidden-feature"><?php esc_html_e('Cart abandonment coupons', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+                        <li class="hidden-feature"><?php esc_html_e('Create day-specific deals', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+                        <li class="hidden-feature"><?php esc_html_e('Display coupon banners and widgets', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+                        <li class="hidden-feature"><?php esc_html_e('Import coupons', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
                     </ul>
 
                     <div class="wt-cta-footer">
                         <div class="wt-cta-footer-links">
-                            <a href="#" class="wt-cta-toggle" data-show-text="<?php esc_attr_e('View all premium features', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>" data-hide-text="<?php esc_attr_e('Show less', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>"><?php _e('View all premium features', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></a>
-                            <a href="<?php echo esc_url($plugin_url); ?>" class="wt-cta-button" target="_blank"><img src="<?php echo esc_url($wt_admin_img_path . '/promote_crown.png');?>" style="width: 15.01px; height: 10.08px; margin-right: 8px;"><?php _e('Get the plugin', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></a>
+                            <a href="#" class="wt-cta-toggle" data-show-text="<?php esc_attr_e('View all premium features', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>" data-hide-text="<?php esc_attr_e('Show less', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>"><?php esc_html_e('View all premium features', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></a>
+                            <a href="<?php echo esc_url($plugin_url); ?>" class="wt-cta-button" target="_blank"><img src="<?php echo esc_url($wt_admin_img_path . '/promote_crown.png');?>" style="width: 15.01px; height: 10.08px; margin-right: 8px;"><?php esc_html_e('Get the plugin', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></a>
                         </div>
-                        <a href="#" class="wt-cta-dismiss" style="display: block; text-align: center; margin-top: 15px; color: #666; text-decoration: none;"><?php _e('Dismiss', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></a>
+                        <a href="#" class="wt-cta-dismiss" style="display: block; text-align: center; margin-top: 15px; color: #666; text-decoration: none;"><?php esc_html_e('Dismiss', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></a>
                     </div>
                 </div>
             </div>
@@ -128,8 +128,7 @@ if (!class_exists('\\Wtpdf\\Banners\\Wt_Smart_Coupon_Cta_Banner')) {
          */
         public function dismiss_banner() {
             // Verify nonce for security
-            if (!wp_verify_nonce($_POST['nonce'], 'wt_dismiss_smart_coupon_cta_banner_nonce')) {
-                wp_send_json_error('Invalid nonce');
+            if (!isset($_POST['nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'])), 'wt_dismiss_smart_coupon_cta_banner_nonce')) {                wp_send_json_error('Invalid nonce');
             }
 
             // Check if user has permission

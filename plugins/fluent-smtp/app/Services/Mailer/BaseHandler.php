@@ -30,7 +30,7 @@ class BaseHandler
 
     protected $existing_row_id = null;
 
-    public function __construct(Application $app = null, Manager $manager = null)
+    public function __construct(?Application $app = null, ?Manager $manager = null)
     {
         $this->app = $app ?: fluentMail();
         $this->manager = $manager ?: fluentMail(Manager::class);
@@ -267,12 +267,16 @@ class BaseHandler
             $errorResponse = [
                 'code'    => $code,
                 'message' => $message,
-                'errors'  => $response->get_error_messages()
+                'errors'  => $response->get_error_data()
             ];
 
-            $this->processResponse($errorResponse, false);
+            $status = $this->processResponse($errorResponse, false);
 
-            throw new \PHPMailer\PHPMailer\Exception($message, $code); // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped
+            if ( !$status ) {
+                throw new \PHPMailer\PHPMailer\Exception($message, $code); // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped
+            } else {
+                return $status;
+            }
 
         } else {
             return $this->processResponse($response, true);
@@ -318,7 +322,7 @@ class BaseHandler
                 $logId = (new Logger)->add($data);
                 if(!$status) {
                     // We have to fire an action for this failed job
-                    do_action('fluentmail_email_sending_failed', $logId, $this, $data);
+                    $status = apply_filters('fluentmail_email_sending_failed', $status, $logId, $this, $data);
                 }
             }
         }

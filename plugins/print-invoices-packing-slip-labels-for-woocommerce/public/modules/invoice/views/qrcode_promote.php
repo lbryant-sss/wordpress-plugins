@@ -22,36 +22,36 @@ $wf_admin_img_path=WF_PKLIST_PLUGIN_URL . 'admin/images';
 <div class="wf-tab-content" data-id="<?php echo esc_attr($target_id);?>">
     <div style="display:flex;">
         <div class="wfte_qrcode_promotion_content">
-            <h3 style="font-size:1.7em;"><?php _e("QR Code Addon for WooCommerce PDF Invoices","print-invoices-packing-slip-labels-for-woocommerce"); ?></h3>
-            <p style="font-size: 14px;"><?php _e('To help you comply with invoice mandates that require QR Codes','print-invoices-packing-slip-labels-for-woocommerce'); ?></p>
+            <h3 style="font-size:1.7em;"><?php esc_html_e("QR Code Addon for WooCommerce PDF Invoices","print-invoices-packing-slip-labels-for-woocommerce"); ?></h3>
+            <p style="font-size: 14px;"><?php esc_html_e('To help you comply with invoice mandates that require QR Codes','print-invoices-packing-slip-labels-for-woocommerce'); ?></p>
             <ul class="wfte_qr_code_features_list">
-                <li><?php _e('Assign QR code to all of invoices generated for the orders in your store','print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
-                <li><?php _e('Assign different types of info in your QR code, including:','print-invoices-packing-slip-labels-for-woocommerce'); ?>
+                <li><?php esc_html_e('Assign QR code to all of invoices generated for the orders in your store','print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+                <li><?php esc_html_e('Assign different types of info in your QR code, including:','print-invoices-packing-slip-labels-for-woocommerce'); ?>
                     <ul class="wfte_qr_code_for">
-                        <li><?php _e('Order number (default)', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
-                        <li><?php _e('Invoice number','print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+                        <li><?php esc_html_e('Order number (default)', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+                        <li><?php esc_html_e('Invoice number','print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
                         <li>
-                            <?php _e('Custom details, as below:','print-invoices-packing-slip-labels-for-woocommerce'); ?>
+                            <?php esc_html_e('Custom details, as below:','print-invoices-packing-slip-labels-for-woocommerce'); ?>
                             <ul id="wfte_qrcode_pre_placeholders">
-                                <li><?php _e('Invoice number','print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
-                                <li><?php _e('Order number','print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
-                                <li><?php _e('Invoice date','print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
-                                <li><?php _e('Order date','print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
-                                <li><?php _e('Seller tax ID','print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
-                                <li><?php _e('Buyer name','print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
-                                <li><?php _e('Seller name','print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
-                                <li><?php _e('Invoice total','print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
-                                <li><?php _e('Invoice total tax','print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+                                <li><?php esc_html_e('Invoice number','print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+                                <li><?php esc_html_e('Order number','print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+                                <li><?php esc_html_e('Invoice date','print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+                                <li><?php esc_html_e('Order date','print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+                                <li><?php esc_html_e('Seller tax ID','print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+                                <li><?php esc_html_e('Buyer name','print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+                                <li><?php esc_html_e('Seller name','print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+                                <li><?php esc_html_e('Invoice total','print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+                                <li><?php esc_html_e('Invoice total tax','print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
                             </ul>
                         </li>
                     </ul>
                 </li>
-                <li><?php _e('Compatible with WooCommerce PDF Invoice, Packing Slips, Delivery Notes, and Shipping Label (Free and Pro versions)','print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+                <li><?php esc_html_e('Compatible with WooCommerce PDF Invoice, Packing Slips, Delivery Notes, and Shipping Label (Free and Pro versions)','print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
             </ul>
-            <a href="https://www.webtoffee.com/product/qr-code-addon-for-woocommerce-pdf-invoices/?utm_source=free_plugin_CTA&utm_medium=PDF_Invoice_basic&utm_campaign=QR_Code&utm_content=<?php echo WF_PKLIST_VERSION; ?>" class="wfte_buy_qrcode_btn" target="_blank"><?php echo __('Get Plugin','print-invoices-packing-slip-labels-for-woocommerce'); ?></a>
+                <a href="https://www.webtoffee.com/product/qr-code-addon-for-woocommerce-pdf-invoices/?utm_source=free_plugin_CTA&utm_medium=PDF_Invoice_basic&utm_campaign=QR_Code&utm_content=<?php echo esc_attr(WF_PKLIST_VERSION); ?>" class="wfte_buy_qrcode_btn" target="_blank"><?php echo esc_html__('Get Plugin','print-invoices-packing-slip-labels-for-woocommerce'); ?></a>
         </div>
         <div class="wfte_qrcode_promotion_img">
-            <img src="<?php echo $wf_admin_img_path; ?>/qrcode_promotion_img.png">
+            <img src="<?php echo esc_url($wf_admin_img_path); ?>/qrcode_promotion_img.png">
         </div>
     </div>
         

@@ -152,6 +152,7 @@ foreach ( $rates as $rate ) {
                                         // Check if this is the first iteration
                                         $table_class = $tax_table_first ? 'active' : ''; // Add 'active' class for the first item
                                         $tax_table_first = false; // Set the flag to false after the first iteration
+                                        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching @codingStandardsIgnoreLine -- This is a safe use of SELECT
                                         $results = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}woocommerce_tax_rates WHERE tax_rate_class = %s;", ( $slug == 'standard' ) ? '' : $slug ) );
                                         if ( ! empty( $results ) ) {
                                         ?>
@@ -165,7 +166,7 @@ foreach ( $rates as $rate ) {
                                                 <th ><?php echo esc_html__( 'Rate&nbsp;%', 'print-invoices-packing-slip-labels-for-woocommerce' ); ?></th>
                                                 <th  style="width:20%; padding:15px;">
                                                     <div style="display: flex;justify-content: space-between;">
-                                                        <p style="margin: 0;"><?php _e( 'Tax Scheme', 'print-invoices-packing-slip-labels-for-woocommerce' ); ?></p>
+                                                        <p style="margin: 0;"><?php esc_html_e( 'Tax Scheme', 'print-invoices-packing-slip-labels-for-woocommerce' ); ?></p>
                                                         <a href="https://service.unece.org/trade/untdid/d00a/tred/tred5153.htm" target="_blank" style="text-decoration: none;">
                                                             <?php echo esc_html__( 'Learn more', 'print-invoices-packing-slip-labels-for-woocommerce' ); ?> <span class="dashicons dashicons-external" style="font-size:16px;"></span>
                                                         </a>
@@ -173,7 +174,7 @@ foreach ( $rates as $rate ) {
                                                 </th>
                                                 <th style="width:20%; padding:15px;">
                                                     <div style="display: flex;justify-content: space-between;">
-                                                        <p style="margin: 0;"><?php _e( 'Tax Category', 'print-invoices-packing-slip-labels-for-woocommerce' ); ?></p>
+                                                        <p style="margin: 0;"><?php esc_html_e( 'Tax Category', 'print-invoices-packing-slip-labels-for-woocommerce' ); ?></p>
                                                         <a href="https://service.unece.org/trade/untdid/d97a/uncl/uncl5305.htm" target="_blank" style="text-decoration: none;">
                                                             <?php echo esc_html__( 'Learn more', 'print-invoices-packing-slip-labels-for-woocommerce' ); ?> <span class="dashicons dashicons-external" style="font-size:16px;"></span>
                                                         </a>
@@ -185,6 +186,7 @@ foreach ( $rates as $rate ) {
                                         <?php
                                             
                                                 foreach ( $results as $result ) {
+                                                    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching @codingStandardsIgnoreLine -- This is a safe use of SELECT
                                                     $locationResults = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}woocommerce_tax_rate_locations WHERE tax_rate_id = %d;", $result->tax_rate_id ) );
                                                     $postcode = $city = '';
                         
@@ -204,12 +206,14 @@ foreach ( $rates as $rate ) {
                                                     $category = isset( $tax_settings['rate'][ $result->tax_rate_id ]['category'] ) ? $tax_settings['rate'][ $result->tax_rate_id ]['category'] : '';
                         
                                                     echo '<tr>';
-                                                    echo '<td>'.$result->tax_rate_country.'</td>';
-                                                    echo '<td>'.$result->tax_rate_state.'</td>';
-                                                    echo '<td>'.$postcode.'</td>';
-                                                    echo '<td>'.$city.'</td>';
-                                                    echo '<td>'.$result->tax_rate.'</td>';
+                                                    echo '<td>'.esc_html($result->tax_rate_country).'</td>';
+                                                    echo '<td>'.esc_html($result->tax_rate_state).'</td>';
+                                                    echo '<td>'.esc_html($postcode).'</td>';
+                                                    echo '<td>'.esc_html($city).'</td>';
+                                                    echo '<td>'.esc_html($result->tax_rate).'</td>';
+                                                    // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- HTML select elements need to render as dropdowns
                                                     echo '<td>'.$this->render_select_option_for_schema( 'rate', $result->tax_rate_id, $scheme ).'</td>';
+                                                    // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- HTML select elements need to render as dropdowns
                                                     echo '<td>'.$this->render_select_option_for_category( 'rate', $result->tax_rate_id, $category ).'</td>';
                                                     echo '</tr>';
                                                 }

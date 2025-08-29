@@ -58,7 +58,7 @@ if ( !class_exists( '\\WtPdf\\Admin\\Modules' ) ) {
         }
 
         public function load_this_module() {
-            if ( isset( $_GET['page'] ) && 'wf_woocommerce_packing_list' === $_GET['page'] ) {
+            if ( isset( $_GET['page'] ) && 'wf_woocommerce_packing_list' === $_GET['page'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended @codingStandardsIgnoreLine -- This is a safe use of isset.
                 return true;
             }
             return false;
@@ -131,14 +131,14 @@ if ( !class_exists( '\\WtPdf\\Admin\\Modules' ) ) {
                 'status' => true,
                 'msg' => __('Error', 'print-invoices-packing-slip-labels-for-woocommerce'),
             );
-            $nonce = ( isset( $_REQUEST['_wpnonce'] ) ? sanitize_text_field( $_REQUEST['_wpnonce'] ) : '' );
+            $nonce = ( isset( $_REQUEST['_wpnonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['_wpnonce'] ) ) : '' ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized @codingStandardsIgnoreLine -- This is a safe use of isset.
 
             if( "" !== $nonce && wp_verify_nonce( $nonce, WF_PKLIST_PLUGIN_NAME ) ) 
             {
                 $er_msg = '';
-                $msg = isset( $_POST['wt_pdf_request_feature_msg'] ) ? sanitize_textarea_field( $_POST['wt_pdf_request_feature_msg'] ) : '';
-                $take_email = isset( $_POST['wt_pdf_request_feature_customer_email_enable'] ) ? sanitize_text_field( $_POST['wt_pdf_request_feature_customer_email_enable'] ) : 'no';
-                $email = isset( $_POST['wt_pdf_request_feature_email'] ) ? sanitize_email( $_POST['wt_pdf_request_feature_email'] ) : '';
+                $msg = isset( $_POST['wt_pdf_request_feature_msg'] ) ? sanitize_textarea_field( wp_unslash( $_POST['wt_pdf_request_feature_msg'] ) ) : '';
+                $take_email = isset( $_POST['wt_pdf_request_feature_customer_email_enable'] ) ? sanitize_text_field( wp_unslash( $_POST['wt_pdf_request_feature_customer_email_enable'] ) ) : 'no';
+                $email = isset( $_POST['wt_pdf_request_feature_email'] ) ? sanitize_email( wp_unslash( $_POST['wt_pdf_request_feature_email'] ) ) : '';
                 
 
                 if( '' === $msg ) {

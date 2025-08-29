@@ -35,6 +35,10 @@ $invoice_start_number = Wf_Woocommerce_Packing_List::get_option('woocommerce_wf_
 $invoice_no_length = Wf_Woocommerce_Packing_List::get_option('woocommerce_wf_invoice_padding_number', $invoice_module_id);
 $date_frmt_tooltip = __('Click to append with existing data', 'print-invoices-packing-slip-labels-for-woocommerce');
 $template_type = "invoice";
+
+// Get current invoice number for preview
+$current_invoice_number = (int) Wf_Woocommerce_Packing_List::get_option('woocommerce_wf_Current_Invoice_number', $invoice_module_id);
+$current_invoice_number_in_db = $current_invoice_number = ($current_invoice_number < 0 ? 0 : $current_invoice_number);
 ?>
 
 <style>
@@ -262,49 +266,49 @@ $template_type = "invoice";
                 wp_nonce_field('wt-pklist-form-wizard-' . WF_PKLIST_POST_TYPE);
             }
             ?>
-            <h2><?php _e("Hello there! Let’s begin with the basics", "print-invoices-packing-slip-labels-for-woocommerce") . '...'; ?></h2>
+            <h2><?php esc_html_e("Hello there! Let’s begin with the basics", "print-invoices-packing-slip-labels-for-woocommerce") . '...'; ?></h2>
             <div class="wt_wrap_wizard_form_outter">
                 <div class="wt_wrap_wizard_form_steps">
                     <div class="wt_wrap_wizard_form_steps_progress">
                         <ul class="wt_form_wizard_progress_bar progress-bar">
-                            <li class="wt_form_wizard_progress_step_1 step_active stop_active"><span><strong><?php _e("Step 1", "print-invoices-packing-slip-labels-for-woocommerce"); ?></strong></span></li>
-                            <li class="wt_form_wizard_progress_step_2"><span><strong><?php _e("Step 2", "print-invoices-packing-slip-labels-for-woocommerce"); ?></strong></span></li>
-                            <li class="wt_form_wizard_progress_step_3"><span><?php _e("Step 3", "print-invoices-packing-slip-labels-for-woocommerce"); ?></span></li>
+                            <li class="wt_form_wizard_progress_step_1 step_active stop_active"><span><strong><?php esc_html_e("Step 1", "print-invoices-packing-slip-labels-for-woocommerce"); ?></strong></span></li>
+                            <li class="wt_form_wizard_progress_step_2"><span><strong><?php esc_html_e("Step 2", "print-invoices-packing-slip-labels-for-woocommerce"); ?></strong></span></li>
+                            <li class="wt_form_wizard_progress_step_3"><span><?php esc_html_e("Step 3", "print-invoices-packing-slip-labels-for-woocommerce"); ?></span></li>
                         </ul>
                     </div>
                     <div class="wt_wrap_wizard_form_steps_fields" data-wizard-step="1">
-                        <h3><?php _e("Add shop details", "print-invoices-packing-slip-labels-for-woocommerce"); ?></h3>
+                        <h3><?php esc_html_e("Add shop details", "print-invoices-packing-slip-labels-for-woocommerce"); ?></h3>
                         <div class="wt_form_wizard_field_row">
                             <div class="wt_form_wizard_field_col_2 wt_form_wizard_field_col">
-                                <label><?php _e("Shop name", "print-invoices-packing-slip-labels-for-woocommerce"); ?></label>
-                                <input type="text" name="woocommerce_wf_packinglist_companyname" class="wt_pklist_form_wizard_field" value="<?php esc_attr_e($company_name); ?>">
+                                <label><?php esc_html_e("Shop name", "print-invoices-packing-slip-labels-for-woocommerce"); ?></label>
+                                <input type="text" name="woocommerce_wf_packinglist_companyname" class="wt_pklist_form_wizard_field" value="<?php echo esc_attr($company_name); ?>">
                             </div>
                         </div>
                         <div class="wt_form_wizard_field_row">
                             <div class="wt_form_wizard_field_col_2 wt_form_wizard_field_col">
-                                <label><?php _e("Address line 1", "print-invoices-packing-slip-labels-for-woocommerce"); ?></label>
-                                <input type="text" name="woocommerce_wf_packinglist_sender_address_line1" class="wt_pklist_form_wizard_field" value="<?php esc_attr_e($street); ?>">
+                                <label><?php esc_html_e("Address line 1", "print-invoices-packing-slip-labels-for-woocommerce"); ?></label>
+                                <input type="text" name="woocommerce_wf_packinglist_sender_address_line1" class="wt_pklist_form_wizard_field" value="<?php echo esc_attr($street); ?>">
                             </div>
                             <div class="wt_form_wizard_field_col_2 wt_form_wizard_field_col">
-                                <label><?php _e("Address line 2", "print-invoices-packing-slip-labels-for-woocommerce"); ?></label>
-                                <input type="text" name="woocommerce_wf_packinglist_sender_address_line2" class="wt_pklist_form_wizard_field" value="<?php esc_attr_e($street_line_2); ?>">
+                                <label><?php esc_html_e("Address line 2", "print-invoices-packing-slip-labels-for-woocommerce"); ?></label>
+                                <input type="text" name="woocommerce_wf_packinglist_sender_address_line2" class="wt_pklist_form_wizard_field" value="<?php echo esc_attr($street_line_2); ?>">
                             </div>
 
                         </div>
                         <div class="wt_form_wizard_field_row">
                             <div class="wt_form_wizard_field_col_2 wt_form_wizard_field_col">
-                                <label><?php _e("City", "print-invoices-packing-slip-labels-for-woocommerce"); ?></label>
-                                <input type="text" name="woocommerce_wf_packinglist_sender_city" class="wt_pklist_form_wizard_field" value="<?php esc_attr_e($city); ?>">
+                                <label><?php esc_html_e("City", "print-invoices-packing-slip-labels-for-woocommerce"); ?></label>
+                                <input type="text" name="woocommerce_wf_packinglist_sender_city" class="wt_pklist_form_wizard_field" value="<?php echo esc_attr($city); ?>">
                             </div>
                             <div class="wt_form_wizard_field_col_2 wt_form_wizard_field_col">
-                                <label><?php _e("Country/State", "print-invoices-packing-slip-labels-for-woocommerce"); ?></label>
+                                <label><?php esc_html_e("Country/State", "print-invoices-packing-slip-labels-for-woocommerce"); ?></label>
                                 <select name="wf_country" class="wt_pklist_form_wizard_field">
                                     <option value=""><?php esc_attr_e("Select country", "print-invoices-packing-slip-labels-for-woocommerce"); ?></option>
                                     <?php
                                     ob_start();
                                     WC()->countries->country_dropdown_options($country, $state);
                                     $html = ob_get_clean();
-                                    echo $html;
+                                    echo $html; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                     ?>
                                 </select>
                             </div>
@@ -315,43 +319,43 @@ $template_type = "invoice";
 
                         <div class="wt_form_wizard_field_row">
                             <div class="wt_form_wizard_field_col_4 wt_form_wizard_field_col">
-                                <label><?php _e("Postal code", "print-invoices-packing-slip-labels-for-woocommerce"); ?></label>
-                                <input type="text" name="woocommerce_wf_packinglist_sender_postalcode" class="wt_pklist_form_wizard_field" value="<?php esc_attr_e($postal_code); ?>">
+                                <label><?php esc_html_e("Postal code", "print-invoices-packing-slip-labels-for-woocommerce"); ?></label>
+                                <input type="text" name="woocommerce_wf_packinglist_sender_postalcode" class="wt_pklist_form_wizard_field" value="<?php echo esc_attr($postal_code); ?>">
                             </div>
                             <div class="wt_form_wizard_field_col_3 wt_form_wizard_field_col">
-                                <label><?php _e("Phone number", "print-invoices-packing-slip-labels-for-woocommerce"); ?></label>
-                                <input type="text" name="woocommerce_wf_packinglist_sender_contact_number" class="wt_pklist_form_wizard_field" value="<?php esc_attr_e($phone_no); ?>">
+                                <label><?php esc_html_e("Phone number", "print-invoices-packing-slip-labels-for-woocommerce"); ?></label>
+                                <input type="text" name="woocommerce_wf_packinglist_sender_contact_number" class="wt_pklist_form_wizard_field" value="<?php echo esc_attr($phone_no); ?>">
                             </div>
                         </div>
                         <div class="wt_form_wizard_field_row">
                             <div class="wt_form_wizard_field_col_2 wt_form_wizard_field_col">
-                                <label><?php _e("Tax ID", "print-invoices-packing-slip-labels-for-woocommerce"); ?></label>
-                                <input type="text" name="woocommerce_wf_packinglist_sender_vat" class="wt_pklist_form_wizard_field" value="<?php esc_attr_e($company_tax_id); ?>">
+                                <label><?php esc_html_e("Tax ID", "print-invoices-packing-slip-labels-for-woocommerce"); ?></label>
+                                <input type="text" name="woocommerce_wf_packinglist_sender_vat" class="wt_pklist_form_wizard_field" value="<?php echo esc_attr($company_tax_id); ?>">
                             </div>
                         </div>
                         <div class="wt_form_wizard_field_row">
                             <div class="wt_form_wizard_field_col_2 wt_form_wizard_field_col">
-                                <label><?php _e("Upload logo", "print-invoices-packing-slip-labels-for-woocommerce"); ?></label>
+                                <label><?php esc_html_e("Upload logo", "print-invoices-packing-slip-labels-for-woocommerce"); ?></label>
                                 <input id="woocommerce_wf_packinglist_logo" type="hidden" name="woocommerce_wf_packinglist_logo" value="<?php echo esc_url($company_logo); ?>">
                                 <div class="wf_file_attacher_dv">
                                     <div class="wf_file_attacher_inner_dv">
                                         <span class="dashicons dashicons-dismiss wt_logo_dismiss"></span>
                                         <img class="wf_image_preview_small" src="<?php echo esc_url($logo_url); ?>">
                                     </div>
-                                    <span class="size_rec"><?php _e("Recommended size is 150x50px.", "print-invoices-packing-slip-labels-for-woocommerce"); ?></span>
+                                    <span class="size_rec"><?php esc_html_e("Recommended size is 150x50px.", "print-invoices-packing-slip-labels-for-woocommerce"); ?></span>
                                     <input type="button" name="upload_image" class="wf_button button button-primary wf_file_attacher" wf_file_attacher_target="#woocommerce_wf_packinglist_logo" value="Upload">
                                 </div>
                             </div>
                         </div>
 
                         <div class="wt_form_wizard_footer">
-                            <a class="wt_form_wizard_next wt_pklist_btn wt_pklist_btn_primary" data-target-class="wt_wrap_wizard_form_steps_fields" data-wizard-step="1" data-wizard-next-step="2"><?php _e("Next", "print-invoices-packing-slip-labels-for-woocommerce"); ?></a>
-                            <a class="wt_form_wizard_invoice_setup_skip wt_pklist_btn wt_pklist_btn_empty" href="<?php echo admin_url('admin.php?page=wf_woocommerce_packing_list&skip_wizard=1'); ?>"><?php _e("Skip invoice setup", "print-invoices-packing-slip-labels-for-woocommerce"); ?></a>
+                            <a class="wt_form_wizard_next wt_pklist_btn wt_pklist_btn_primary" data-target-class="wt_wrap_wizard_form_steps_fields" data-wizard-step="1" data-wizard-next-step="2"><?php esc_html_e("Next", "print-invoices-packing-slip-labels-for-woocommerce"); ?></a>
+                            <a class="wt_form_wizard_invoice_setup_skip wt_pklist_btn wt_pklist_btn_empty" href="<?php echo esc_url(admin_url('admin.php?page=wf_woocommerce_packing_list&skip_wizard=1')); ?>"><?php esc_html_e("Skip invoice setup", "print-invoices-packing-slip-labels-for-woocommerce"); ?></a>
                         </div>
                     </div>
                     <div class="wt_wrap_wizard_form_steps_fields" data-wizard-step="2" style="display:none">
-                        <h3><?php _e("Choose emails for invoice attachment", "print-invoices-packing-slip-labels-for-woocommerce"); ?></h3>
-                        <p><?php _e("Choose the order emails to which you'd like to attach invoices for your customers", "print-invoices-packing-slip-labels-for-woocommerce"); ?></p>
+                        <h3><?php esc_html_e("Choose emails for invoice attachment", "print-invoices-packing-slip-labels-for-woocommerce"); ?></h3>
+                        <p><?php esc_html_e("Choose the order emails to which you'd like to attach invoices for your customers", "print-invoices-packing-slip-labels-for-woocommerce"); ?></p>
                         <div class="wt_form_wizard_field_row">
                             <div class="wt_form_wizard_field_col_2 wt_form_wizard_field_col">
                                 <?php
@@ -359,22 +363,22 @@ $template_type = "invoice";
                                     $checked = in_array($or_st, $attach_invoice) ? 'checked' : '';
                                 ?>
                                     <div class="wt_pklist_checkbox_div">
-                                        <input type="checkbox" name="wt_pdf_invoice_attachment_wc_email_classes[]" value="<?php esc_attr_e($or_st); ?>" id="<?php echo esc_attr('wt_pdf_invoice_attachment_wc_email_classes_label_' . $or_st); ?>" <?php echo esc_attr($checked); ?>>
-                                        <label class="wt_pdf_invoice_attachment_wc_email_classes_label" for="<?php echo esc_attr('wt_pdf_invoice_attachment_wc_email_classes_label_' . $or_st); ?>"> <?php esc_html_e($or_st_label); ?></label>
+                                        <input type="checkbox" name="wt_pdf_invoice_attachment_wc_email_classes[]" value="<?php echo esc_attr($or_st); ?>" id="<?php echo esc_attr('wt_pdf_invoice_attachment_wc_email_classes_label_' . $or_st); ?>" <?php echo esc_attr($checked); ?>>
+                                        <label class="wt_pdf_invoice_attachment_wc_email_classes_label" for="<?php echo esc_attr('wt_pdf_invoice_attachment_wc_email_classes_label_' . $or_st); ?>"> <?php echo esc_html($or_st_label); ?></label>
                                     </div>
                                 <?php } ?>
                             </div>
                         </div>
                         <div class="wt_form_wizard_footer">
-                            <a class="wt_form_wizard_next wt_pklist_btn wt_pklist_btn_primary" data-target-class="wt_wrap_wizard_form_steps_fields" data-wizard-step="2" data-wizard-next-step="3"><?php _e("Next", "print-invoices-packing-slip-labels-for-woocommerce"); ?></a>
-                            <a class="wt_form_wizard_prev wt_pklist_btn wt_pklist_btn_secondary" data-target-class="wt_wrap_wizard_form_steps_fields" data-wizard-step="2" data-wizard-prev-step="1"><?php _e("Back", "print-invoices-packing-slip-labels-for-woocommerce"); ?></a>
+                            <a class="wt_form_wizard_next wt_pklist_btn wt_pklist_btn_primary" data-target-class="wt_wrap_wizard_form_steps_fields" data-wizard-step="2" data-wizard-next-step="3"><?php esc_html_e("Next", "print-invoices-packing-slip-labels-for-woocommerce"); ?></a>
+                            <a class="wt_form_wizard_prev wt_pklist_btn wt_pklist_btn_secondary" data-target-class="wt_wrap_wizard_form_steps_fields" data-wizard-step="2" data-wizard-prev-step="1"><?php esc_html_e("Back", "print-invoices-packing-slip-labels-for-woocommerce"); ?></a>
                         </div>
                     </div>
                     <div class="wt_wrap_wizard_form_steps_fields" data-wizard-step="3" style="display:none">
-                        <h3><?php _e("Create your unique invoice numbering system", "print-invoices-packing-slip-labels-for-woocommerce"); ?></h3>
+                        <h3><?php esc_html_e("Create your unique invoice numbering system", "print-invoices-packing-slip-labels-for-woocommerce"); ?></h3>
                         <div class="wt_form_wizard_field_row" style="margin-bottom: 14px;">
                             <div class="wt_form_wizard_field_col_1 wt_form_wizard_field_col">
-                                <p><?php _e("Complete the invoice number format to suit your requirements", "print-invoices-packing-slip-labels-for-woocommerce"); ?></p>
+                                <p><?php esc_html_e("Complete the invoice number format to suit your requirements", "print-invoices-packing-slip-labels-for-woocommerce"); ?></p>
                             </div>
 
                             <div class="invoice-input-wrap-wizard">
@@ -388,8 +392,8 @@ $template_type = "invoice";
                                 </div>
                                 <div class="wf_invoice_number_select_pdf_fw_wizard">
                                     <select name="woocommerce_wf_invoice_as_ordernumber_pdf_fw">
-                                        <option value="Yes" <?php echo "Yes" === $invoice_no_type ? 'selected' : ''; ?>><?php _e("Order number", "print-invoices-packing-slip-labels-for-woocommerce"); ?></option>
-                                        <option value="No" <?php echo "No" === $invoice_no_type ? 'selected' : ''; ?>><?php _e("Custom number", "print-invoices-packing-slip-labels-for-woocommerce"); ?></option>
+                                        <option value="Yes" <?php echo "Yes" === $invoice_no_type ? 'selected' : ''; ?>><?php esc_html_e("Order number", "print-invoices-packing-slip-labels-for-woocommerce"); ?></option>
+                                        <option value="No" <?php echo "No" === $invoice_no_type ? 'selected' : ''; ?>><?php esc_html_e("Custom number", "print-invoices-packing-slip-labels-for-woocommerce"); ?></option>
                                     </select>
                                 </div>
                                 <div class="wf_invoice_number_postfix_pdf_fw_wizard">
@@ -401,7 +405,7 @@ $template_type = "invoice";
 
                             </div>
 
-                            <span class="help-text"><?php _e("Type in prefix/ suffix / date format if required", "print-invoices-packing-slip-labels-for-woocommerce"); ?></span>
+                            <span class="help-text"><?php esc_html_e("Type in prefix/ suffix / date format if required", "print-invoices-packing-slip-labels-for-woocommerce"); ?></span>
 
                         </div>
 
@@ -414,58 +418,58 @@ $template_type = "invoice";
                                     <table class="wp-list-table widefat choose_date_table">
                                         <thead>
                                             <tr>
-                                                <th class="wt-popup-heading"><?php _e('Supported shortcodes for date', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></th>
+                                                <th class="wt-popup-heading"><?php esc_html_e('Supported shortcodes for date', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></th>
 
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr class="wf_inv_num_frmt_fw_append_btn_tr">
-                                                <td><a class="wf_inv_num_frmt_fw_append_btn" title="<?php echo $date_frmt_tooltip ?>"
-                                                        data-format-val="[d-m-Y]">[d-m-Y]<span> <?php echo date('d-m-Y') ?></span></a></td>
+                                                <td><a class="wf_inv_num_frmt_fw_append_btn" title="<?php echo esc_attr($date_frmt_tooltip) ?>"
+                                                        data-format-val="[d-m-Y]">[d-m-Y]<span> <?php echo esc_html(gmdate('d-m-Y')); ?></span></a></td>
                                             </tr>
                                             <tr class="wf_inv_num_frmt_fw_append_btn_tr">
-                                                <td><a class="wf_inv_num_frmt_fw_append_btn" title="<?php echo $date_frmt_tooltip ?>"
-                                                        data-format-val="[d/m/y]">[d/m/y]<span> <?php echo date('d/m/y') ?></span></a></td>
+                                                <td><a class="wf_inv_num_frmt_fw_append_btn" title="<?php echo esc_attr($date_frmt_tooltip) ?>"
+                                                        data-format-val="[d/m/y]">[d/m/y]<span> <?php echo esc_html(gmdate('d/m/y')); ?></span></a></td>
 
                                             </tr>
                                             <tr class="wf_inv_num_frmt_fw_append_btn_tr">
-                                                <td><a class="wf_inv_num_frmt_fw_append_btn" title="<?php echo $date_frmt_tooltip ?>"
-                                                        data-format-val="[d]">[d]<span> <?php echo date('d') ?></span></a></td>
+                                                <td><a class="wf_inv_num_frmt_fw_append_btn" title="<?php echo esc_attr($date_frmt_tooltip) ?>"
+                                                        data-format-val="[d]">[d]<span> <?php echo esc_html(gmdate('d')); ?></span></a></td>
 
                                             </tr>
                                             <tr class="wf_inv_num_frmt_fw_append_btn_tr">
-                                                <td><a class="wf_inv_num_frmt_fw_append_btn" title="<?php echo $date_frmt_tooltip ?>"
-                                                        data-format-val="[D]">[D]<span> <?php echo date('D') ?></span></a></td>
+                                                <td><a class="wf_inv_num_frmt_fw_append_btn" title="<?php echo esc_attr($date_frmt_tooltip) ?>"
+                                                        data-format-val="[D]">[D]<span> <?php echo esc_html(gmdate('D')); ?></span></a></td>
 
                                             </tr>
                                             <tr class="wf_inv_num_frmt_fw_append_btn_tr">
-                                                <td><a class="wf_inv_num_frmt_fw_append_btn" title="<?php echo $date_frmt_tooltip ?>"
-                                                        data-format-val="[m]">[m]<span> <?php echo date('m') ?></span></a></td>
+                                                <td><a class="wf_inv_num_frmt_fw_append_btn" title="<?php echo esc_attr($date_frmt_tooltip) ?>"
+                                                        data-format-val="[m]">[m]<span> <?php echo esc_html(gmdate('m')); ?></span></a></td>
 
                                             </tr>
                                             <tr class="wf_inv_num_frmt_fw_append_btn_tr">
-                                                <td><a class="wf_inv_num_frmt_fw_append_btn" title="<?php echo $date_frmt_tooltip ?>"
-                                                        data-format-val="[M]">[M]<span> <?php echo date('M') ?></span></a></td>
+                                                <td><a class="wf_inv_num_frmt_fw_append_btn" title="<?php echo esc_attr($date_frmt_tooltip) ?>"
+                                                        data-format-val="[M]">[M]<span> <?php echo esc_html(gmdate('M')); ?></span></a></td>
 
                                             </tr>
                                             <tr class="wf_inv_num_frmt_fw_append_btn_tr">
-                                                <td><a class="wf_inv_num_frmt_fw_append_btn" title="<?php echo $date_frmt_tooltip ?>"
-                                                        data-format-val="[y]">[y]<span> <?php echo date('y') ?></span></a></td>
+                                                <td><a class="wf_inv_num_frmt_fw_append_btn" title="<?php echo esc_attr($date_frmt_tooltip) ?>"
+                                                        data-format-val="[y]">[y]<span> <?php echo esc_html(gmdate('y')); ?></span></a></td>
 
                                             </tr>
                                             <tr class="wf_inv_num_frmt_fw_append_btn_tr">
-                                                <td><a class="wf_inv_num_frmt_fw_append_btn" title="<?php echo $date_frmt_tooltip ?>"
-                                                        data-format-val="[Y]">[Y]<span> <?php echo date('Y') ?></span></a></td>
+                                                <td><a class="wf_inv_num_frmt_fw_append_btn" title="<?php echo esc_attr($date_frmt_tooltip) ?>"
+                                                        data-format-val="[Y]">[Y]<span> <?php echo esc_html(gmdate('Y')); ?></span></a></td>
 
                                             </tr>
                                             <tr class="wf_inv_num_frmt_fw_append_btn_tr">
-                                                <td><a class="wf_inv_num_frmt_fw_append_btn" title="<?php echo $date_frmt_tooltip ?>"
-                                                        data-format-val="[F]">[F]<span> <?php echo date('F') ?></span></a></td>
+                                                <td><a class="wf_inv_num_frmt_fw_append_btn" title="<?php echo esc_attr($date_frmt_tooltip) ?>"
+                                                        data-format-val="[F]">[F]<span> <?php echo esc_html(gmdate('F')); ?></span></a></td>
 
                                             </tr>
                                             <tr class="wf_inv_num_frmt_fw_append_btn_tr">
-                                                <td><a class="wf_inv_num_frmt_fw_append_btn" title="<?php echo $date_frmt_tooltip ?>"
-                                                        data-format-val="[dS]">[dS]<span> <?php echo date('dS') ?></span></a></td>
+                                                <td><a class="wf_inv_num_frmt_fw_append_btn" title="<?php echo esc_attr($date_frmt_tooltip) ?>"
+                                                        data-format-val="[dS]">[dS]<span> <?php echo esc_html(gmdate('dS')); ?></span></a></td>
 
                                             </tr>
                                         </tbody>
@@ -476,7 +480,7 @@ $template_type = "invoice";
 
                         <div class="wt_form_wizard_field_row wc_custom_no_div">
                             <div class="wt_form_wizard_field_col_1 wt_form_wizard_field_col">
-                                <p><?php _e("What should be the starting number for your invoices?", "print-invoices-packing-slip-labels-for-woocommerce"); ?></p>
+                                <p><?php esc_html_e("What should be the starting number for your invoices?", "print-invoices-packing-slip-labels-for-woocommerce"); ?></p>
                             </div>
                             <div class="wt_form_wizard_field_col_5 wt_form_wizard_field_col">
                                 <input type="number" name="woocommerce_wf_invoice_start_number_preview_pdf_fw" value="<?php echo esc_attr($invoice_start_number); ?>" min="0">
@@ -486,7 +490,7 @@ $template_type = "invoice";
                         </div>
                         <div class="wt_form_wizard_field_row" style="margin-bottom: 30px;">
                             <div class="wt_form_wizard_field_col_1 wt_form_wizard_field_col">
-                                <p><?php _e("What length would you prefer for your invoice number", "print-invoices-packing-slip-labels-for-woocommerce"); ?></p>
+                                <p><?php esc_html_e("What length would you prefer for your invoice number", "print-invoices-packing-slip-labels-for-woocommerce"); ?></p>
                             </div>
                             <div class="wt_form_wizard_field_col_5 wt_form_wizard_field_col">
                                 <input type="number" name="woocommerce_wf_invoice_padding_number_pdf_fw" value="<?php echo esc_attr($invoice_no_length); ?>" min="0">
@@ -509,8 +513,6 @@ $template_type = "invoice";
                                     $order_number = $order->get_order_number();
                                 }
 
-                                $current_invoice_number = (int) Wf_Woocommerce_Packing_List::get_option('woocommerce_wf_Current_Invoice_number', $invoice_module_id);
-                                $current_invoice_number_in_db = $current_invoice_number = ($current_invoice_number < 0 ? 0 : $current_invoice_number);
                                 $inv_num = ++$current_invoice_number;
                                 $use_wc_order_number = Wf_Woocommerce_Packing_List::get_option('woocommerce_wf_invoice_as_ordernumber', $invoice_module_id);
                                 ?>
@@ -520,25 +522,28 @@ $template_type = "invoice";
                                 <div id="invoice_number_prev_div" class="wt-invoice-preview">
                                     <div class="invoice-preview-header">
                                         <p class="preview-label">
-                                            <?php echo  __("PREVIEW", "print-invoices-packing-slip-labels-for-woocommerce"); ?>
+                                            <?php echo  esc_html__("PREVIEW", "print-invoices-packing-slip-labels-for-woocommerce"); ?>
                                         </p>
                                     </div>
                                     <div class="invoice-preview-body">
                                         <span id="preview_invoice_number_pdf_fw"></span>
                                         <p id="preview_invoice_number_text">
-                                            <?php echo  __("If the order number is", "print-invoices-packing-slip-labels-for-woocommerce") . ' ' .
-                                                $order_number . ',
+                                            <?php echo  esc_html__("If the order number is", "print-invoices-packing-slip-labels-for-woocommerce") . ' ' .
+                                                esc_html($order_number) . ',
                                             <br>
                                             ' . sprintf(
-                                                    __("the %s number would be", 'print-invoices-packing-slip-labels-for-woocommerce'),
-                                                    $template_type
+                                                    /* translators: %s: Document type (invoice, packing list, etc.) */
+                                                    esc_html__("the %s number would be", 'print-invoices-packing-slip-labels-for-woocommerce'),
+                                                    esc_html($template_type)
                                                 )  ?>
                                         </p>
                                         <p id="preview_invoice_number_text_custom">
-                                            <?php echo  sprintf(__(
+                                            <?php echo  sprintf(
+                                                /* translators: %s: Document type (invoice, packing list, etc.) */
+                                                esc_html__(
                                                 'Your next %s number would be',
                                                 'print-invoices-packing-slip-labels-for-woocommerce'
-                                            ), $template_type)  ?>
+                                            ), esc_html($template_type))  ?>
                                         </p>
 
                                     </div>
@@ -549,8 +554,8 @@ $template_type = "invoice";
                             </div>
                         </div>
                         <div class="wt_form_wizard_footer">
-                            <a class="wt_form_wizard_submit wt_pklist_btn wt_pklist_btn_primary"><?php _e("Finish setup", "print-invoices-packing-slip-labels-for-woocommerce"); ?></a>
-                            <a class="wt_form_wizard_prev wt_pklist_btn wt_pklist_btn_secondary" data-wizard-step="3" data-target-class="wt_wrap_wizard_form_steps_fields" data-wizard-prev-step="2"><?php _e("Back", "print-invoices-packing-slip-labels-for-woocommerce"); ?></a>
+                            <a class="wt_form_wizard_submit wt_pklist_btn wt_pklist_btn_primary"><?php esc_html_e("Finish setup", "print-invoices-packing-slip-labels-for-woocommerce"); ?></a>
+                            <a class="wt_form_wizard_prev wt_pklist_btn wt_pklist_btn_secondary" data-wizard-step="3" data-target-class="wt_wrap_wizard_form_steps_fields" data-wizard-prev-step="2"><?php esc_html_e("Back", "print-invoices-packing-slip-labels-for-woocommerce"); ?></a>
                         </div>
                     </div>
                 </div>
@@ -567,10 +572,10 @@ $template_type = "invoice";
             <img src="<?php echo esc_url(WF_PKLIST_PLUGIN_URL . 'admin/images/fm_wz_success.png'); ?>">
         </div>
         <div>
-            <p style="font-size: 16px;font-style: normal;font-weight: 600;line-height: 28px;"><?php _e("Invoice setup successfully", "print-invoices-packing-slip-labels-for-woocommerce"); ?>
+            <p style="font-size: 16px;font-style: normal;font-weight: 600;line-height: 28px;"><?php esc_html_e("Invoice setup successfully", "print-invoices-packing-slip-labels-for-woocommerce"); ?>
         </div>
         <div style="margin-bottom: 2em;">
-            <a href="<?php echo admin_url('admin.php?page=wf_woocommerce_packing_list&complete_wizard=1'); ?>" class="wt_pklist_btn wt_pklist_btn_primary"><?php _e("Close", "print-invoices-packing-slip-labels-for-woocommerce"); ?></a>
+            <a href="<?php echo esc_url(admin_url('admin.php?page=wf_woocommerce_packing_list&complete_wizard=1')); ?>" class="wt_pklist_btn wt_pklist_btn_primary"><?php esc_html_e("Close", "print-invoices-packing-slip-labels-for-woocommerce"); ?></a>
         </div>
     </div>
 </div>

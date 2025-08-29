@@ -27,7 +27,7 @@ $pro_installed = false;
 <div class="wt_wrap" style="float: initial;">
     <div class="wt_heading_section">
         <h2 class="wp-heading-inline">
-        <?php _e('Settings','print-invoices-packing-slip-labels-for-woocommerce');?>: <?php _e('Shipping label','print-invoices-packing-slip-labels-for-woocommerce');?>
+        <?php esc_html_e('Settings','print-invoices-packing-slip-labels-for-woocommerce');?>: <?php esc_html_e('Shipping label','print-invoices-packing-slip-labels-for-woocommerce');?>
         </h2>
         <?php
             //webtoffee branding
@@ -85,13 +85,13 @@ $pro_installed = false;
                         }
                     ?>
                     <div class="wt_pro_addon_widget_wrapper_doc">
-                        <p><?php _e('Get advanced features for your','print-invoices-packing-slip-labels-for-woocommerce'); ?></p>
+                        <p><?php esc_html_e('Get advanced features for your','print-invoices-packing-slip-labels-for-woocommerce'); ?></p>
                         <div class="wt_pro_addon_widget_wrapper_doc_logo_title">
                             <div class="wt_pro_addon_widget_wrapper_doc_logo_title_col_1">
                                 <img src="<?php echo esc_url(WF_PKLIST_PLUGIN_URL . 'admin/images/wt_sdd_logo.png'); ?>">
                             </div>
                             <div class="wt_pro_addon_widget_wrapper_doc_logo_title_col_2">
-                                <h4><?php echo __("Shipping labels, Dispatch labels and Delivery notes","print-invoices-packing-slip-labels-for-woocommerce"); ?></h4>
+                                <h4><?php echo esc_html__("Shipping labels, Dispatch labels and Delivery notes","print-invoices-packing-slip-labels-for-woocommerce"); ?></h4>
                             </div>
                         </div>
                     </div>
@@ -100,18 +100,18 @@ $pro_installed = false;
                             <?php
                                 foreach($sl_pro_features_list as $p_feature){
                                     ?>
-                                    <li><?php echo esc_html_e($p_feature); ?></li>
+                                    <li><?php echo esc_html($p_feature); ?></li>
                                     <?php
                                 }
                             ?>
                         </ul>
                     </div>
                     <div class="wt_pro_show_more_less_doc">
-                        <a class="wt_pro_addon_show_more_doc"><p><? echo __("Show More","print-invoices-packing-slip-labels-for-woocommerce"); ?></p></a>
-                        <a class="wt_pro_addon_show_less_doc"><p><? echo __("Show Less","print-invoices-packing-slip-labels-for-woocommerce"); ?></p></a>
+                        <a class="wt_pro_addon_show_more_doc"><p><?php echo esc_html__("Show More","print-invoices-packing-slip-labels-for-woocommerce"); ?></p></a>
+                        <a class="wt_pro_addon_show_less_doc"><p><?php echo esc_html__("Show Less","print-invoices-packing-slip-labels-for-woocommerce"); ?></p></a>
                     </div>
                     <a class="wt_pro_addon_premium_link_div_doc" href="<?php echo esc_url($sidebar_pro_link); ?>" target="_blank">
-                        <?php _e("View add-on","print-invoices-packing-slip-labels-for-woocommerce"); ?> <span class="dashicons dashicons-arrow-right-alt"></span>
+                        <?php esc_html_e("View add-on","print-invoices-packing-slip-labels-for-woocommerce"); ?> <span class="dashicons dashicons-arrow-right-alt"></span>
                     </a>
                 </div>
             </div>

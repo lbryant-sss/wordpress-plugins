@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) {
 
 <style type="text/css">
 	.wf_loader_bg {
-		background: rgba(255, 255, 255, .5) url(<?php echo WF_PKLIST_PLUGIN_URL; ?>assets/images/wt_logo_loading.gif) center no-repeat;
+		background: rgba(255, 255, 255, .5) url(<?php echo esc_url(WF_PKLIST_PLUGIN_URL); ?>assets/images/wt_logo_loading.gif) center no-repeat;
 	}
 
 	.wf_cst_loader {
@@ -588,12 +588,12 @@ if (!defined('ABSPATH')) {
 <div class="wf_cst_loader wf_loader_bg"></div>
 <div class="wf_my_template wf_pklist_popup">
 	<div class="wf_pklist_popup_hd">
-		<span style="line-height:40px;" class="dashicons dashicons-list-view"></span> <?php _e('Templates', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>
+		<span style="line-height:40px;" class="dashicons dashicons-list-view"></span> <?php esc_html_e('Templates', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>
 		<div class="wf_pklist_popup_close">X</div>
 	</div>
 	<div class="wf_my_template_main wf_pklist_popup_body">
 		<div style="float:left; box-sizing:border-box; width:100%; padding:0px 5px; margin-bottom:5px;">
-			<input placeholder="<?php _e('Type template name to search', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>" type="text" name="" class="wf_pklist_text_field wf_my_template_search">
+			<input placeholder="<?php esc_html_e('Type template name to search', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>" type="text" name="" class="wf_pklist_text_field wf_my_template_search">
 		</div>
 		<div class="wf_my_template_list">
 
@@ -605,17 +605,17 @@ if (!defined('ABSPATH')) {
 
 <div class="wf_default_template_list wf_pklist_popup">
 	<div class="wf_default_template_list_hd wf_pklist_popup_hd">
-		<span style="line-height:40px;" class="dashicons dashicons-admin-appearance"></span> <?php _e('Choose a layout.', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>
+		<span style="line-height:40px;" class="dashicons dashicons-admin-appearance"></span> <?php esc_html_e('Choose a layout.', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>
 		<div class="wf_pklist_popup_close">X</div>
 	</div>
 	<div class="wf_default_template_list_main wf_pklist_popup_body" style="max-height: 500px; overflow-y: auto;">
 		<div class="wf_cst_warn_box">
 			<div class="wf_cst_warn" style="line-height:26px;">
-				<?php _e('All unsaved changes will be lost upon switching to a new layout.', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>
+				<?php esc_html_e('All unsaved changes will be lost upon switching to a new layout.', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>
 				<br />
-				<span class="wf_new_template_wrn_sub"><?php _e('Save before you proceed.', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>
-					<span class="wf_pklist_save_theme_sub_loading"><?php _e('Saving...', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></span>
-					<button class="button button-secondary wf_pklist_save_theme_sub"><?php _e('Save', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></button> </span>
+				<span class="wf_new_template_wrn_sub"><?php esc_html_e('Save before you proceed.', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>
+					<span class="wf_pklist_save_theme_sub_loading"><?php esc_html_e('Saving...', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></span>
+					<button class="button button-secondary wf_pklist_save_theme_sub"><?php esc_html_e('Save', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></button> </span>
 			</div>
 		</div>
 		<?php
@@ -633,7 +633,7 @@ if (!defined('ABSPATH')) {
 					<img src="<?php echo esc_url($img_url); ?>">
 				<?php
 				} elseif (isset($def_template['preview_html']) && "" !== $def_template['preview_html']) {
-					echo $def_template['preview_html'];
+					echo wp_kses_post($def_template['preview_html']);
 				}
 				?>
 				<span class="wf_default_template_list_btn_main"></span>
@@ -660,7 +660,7 @@ if (!defined('ABSPATH')) {
 						? __('Get access to more shipping label templates.', 'print-invoices-packing-slip-labels-for-woocommerce')
 						: __('Get access to more invoice templates.', 'print-invoices-packing-slip-labels-for-woocommerce');
 		?>
-			<div class="wt-pro-cta-bar <?php echo esc_attr($banner_class); ?> wt_pklist_dismissible_banner_div wt_pklist_basic_template_banner" id="wt-pro-cta-bar"style="background: #eeedfa; <?php echo $border_style; ?> margin: 0 20px 20px 20px;">
+			<div class="wt-pro-cta-bar <?php echo esc_attr($banner_class); ?> wt_pklist_dismissible_banner_div wt_pklist_basic_template_banner" id="wt-pro-cta-bar"style="background: #eeedfa; <?php echo esc_attr($border_style); ?> margin: 0 20px 20px 20px;">
 				<span class="wt-pro-cta-lock">
 					<svg width="18" height="18" viewBox="0 0 24 24" fill="none">
 						<rect width="24" height="24" rx="6"/>
@@ -670,7 +670,7 @@ if (!defined('ABSPATH')) {
 				<span>
 					<?php echo esc_html($banner_message); ?>
 					<a href="<?php echo esc_url($cta_url); ?>" target="_blank">
-						<?php echo __('Upgrade to Pro', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>
+						<?php echo esc_html__('Upgrade to Pro', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>
 					</a>
 				</span>
 				<button class="banner_dismiss notice-dismiss" data-banner-class="<?php echo esc_attr($banner_class); ?>" data-banner-interval="0" data-banner-action="0"></button>
@@ -749,18 +749,18 @@ if (!defined('ABSPATH')) {
 	$close_button_style = $is_rtl ? 'float: left;' : 'float: right;';
 	?>
 	<div class="wf_cta_banner_box">
-		<div class="wt-pro-cta-bar adc_cta_banner_in_customizer_tab_top wt_pklist_dismissible_banner_div wt_pklist_customizer_banner" style="background: #eeedfa; <?php echo $border_style; ?> margin: 10px auto 14px 8px;">
+		<div class="wt-pro-cta-bar adc_cta_banner_in_customizer_tab_top wt_pklist_dismissible_banner_div wt_pklist_customizer_banner" style="background: #eeedfa; <?php echo esc_attr($border_style); ?> margin: 10px auto 14px 8px;">
 			<span><svg width="13" height="14" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<path d="M7.59664 13.1544H5.28993C5.05644 13.1544 4.86711 13.3437 4.86711 13.5772C4.86711 13.8107 5.05644 14 5.28993 14H7.59664C7.83013 14 8.01946 13.8107 8.01946 13.5772C8.01946 13.3437 7.83013 13.1544 7.59664 13.1544ZM6.44329 1.67342C6.67678 1.67342 6.86611 1.48409 6.86611 1.2506V0.422819C6.86611 0.189329 6.67678 0 6.44329 0C6.2098 0 6.02047 0.189329 6.02047 0.422819V1.2506C6.02047 1.48409 6.2098 1.67342 6.44329 1.67342ZM12.4638 5.54785H11.636C11.4025 5.54785 11.2132 5.73718 11.2132 5.97067C11.2132 6.20416 11.4025 6.39349 11.636 6.39349H12.4638C12.6972 6.39349 12.8866 6.20416 12.8866 5.97067C12.8866 5.73718 12.6977 5.54785 12.4638 5.54785ZM1.25013 5.54785H0.422819C0.189329 5.54785 0 5.73718 0 5.97067C0 6.20416 0.189329 6.39349 0.422819 6.39349H1.2506C1.48409 6.39349 1.67342 6.20416 1.67342 5.97067C1.67342 5.73718 1.48362 5.54785 1.25013 5.54785ZM2.80658 2.93201C2.88926 3.0147 2.99732 3.05604 3.10584 3.05604C3.21436 3.05604 3.32242 3.0147 3.4051 2.93201C3.57047 2.76711 3.57047 2.49933 3.4051 2.33443L2.81926 1.74859C2.65389 1.58322 2.38611 1.58322 2.22121 1.74859C2.05584 1.91349 2.05584 2.18128 2.22121 2.34617L2.80658 2.93201ZM10.0673 1.74859L9.48195 2.33396C9.31658 2.49886 9.31658 2.76664 9.48195 2.93154C9.56463 3.01423 9.67268 3.05557 9.78121 3.05557C9.88973 3.05557 9.99779 3.01423 10.0805 2.93154L10.6658 2.34617C10.8312 2.18128 10.8312 1.91349 10.6658 1.74859C10.5005 1.58369 10.2322 1.58369 10.0673 1.74859ZM6.44329 2.97946C4.31745 2.97617 2.58812 4.70503 2.58812 6.83463C2.58812 7.85973 2.99027 8.79228 3.64799 9.48054C4.08443 9.93765 4.3555 10.5272 4.3555 11.1591V11.5195C4.3555 11.7788 4.56597 11.9893 4.8253 11.9893H6.44329H8.06128C8.3206 11.9893 8.53107 11.7788 8.53107 11.5195V11.1591C8.53107 10.5272 8.80168 9.93765 9.23859 9.48054C9.89584 8.79228 10.2985 7.8602 10.2985 6.83463C10.2985 4.70503 8.56913 2.9757 6.44329 2.97946ZM6.0651 5.32658C5.51356 5.46376 5.07007 5.9096 4.93476 6.46255C4.88732 6.65564 4.71443 6.7853 4.52463 6.7853C4.49128 6.7853 4.45698 6.78107 4.42362 6.77309C4.19671 6.71765 4.05812 6.48886 4.11356 6.26195C4.32591 5.39423 4.99537 4.72148 5.86074 4.50584C6.08718 4.4504 6.31738 4.58711 6.37329 4.81403C6.42966 5.04094 6.29154 5.2702 6.0651 5.32658Z" fill="#5454A5"/>
 			</svg></span>
 			<span style="font-weight: 600; color: #5454A5; margin: 0 15px 0 5px;">Did you know?</span> 
 			<span style="color: #222; font-weight: 400; width: 60%; text-align: left; ">
-				You can unlock full <?php echo get_template_display_name($template_type); ?> customization with our Customizer.
+				You can unlock full <?php echo esc_html(get_template_display_name($template_type)); ?> customization with our Customizer.
 				<a href="https://www.webtoffee.com/product/customizer-for-woocommerce-pdf-invoice/?utm_source=free_plugin_customize_tab&utm_medium=pdf_premium&utm_campaign=PDF_Customizer" target="_blank" style="color: #5151CD; text-decoration: underline; font-weight: 500; display: inline-block; margin-top: 2px;">
 					Get Plugin Now
 				</a>
 			</span>
-			<button class="banner_dismiss notice-dismiss" data-banner-class="adc_cta_banner_in_customizer_tab_top" data-banner-interval="0" data-banner-action="0" style="<?php echo $close_button_style; ?>"></button>
+			<button class="banner_dismiss notice-dismiss" data-banner-class="adc_cta_banner_in_customizer_tab_top" data-banner-interval="0" data-banner-action="0" style="<?php echo esc_attr($close_button_style); ?>"></button>
 		</div>
 	</div>
 	<?php
@@ -777,32 +777,32 @@ if (!defined('ABSPATH')) {
 		<?php
 		$tooltip_conf = Wf_Woocommerce_Packing_List_Admin::get_tooltip_configs('create_new_template', Wf_Woocommerce_Packing_List_Customizer::$module_id_static);
 		?>
-		<a class="wf_pklist_new_template <?php echo esc_attr($tooltip_conf['class']); ?>" style="float:left; width:100%; padding-left:15px; cursor:pointer;" <?php echo $tooltip_conf['text']; ?>><?php _e('Change template', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></a>
+		<a class="wf_pklist_new_template <?php echo esc_attr($tooltip_conf['class']); ?>" style="float:left; width:100%; padding-left:15px; cursor:pointer;" <?php echo wp_kses_post($tooltip_conf['text']); ?>><?php esc_html_e('Change template', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></a>
 	</div>
 	<div style="float:right;  margin-right:-15px; display:flex;align-items: center;height: 100%; ">
 
 		<button type="button" name="" class="wf-btn-plain" onclick="window.location.reload(true);">
-			<?php _e('Cancel', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></button>
+			<?php esc_html_e('Cancel', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></button>
 		<button type="button" name="" class="wf-btn-primary wf_pklist_save_theme btn-disable" style="margin-right: 5px;">
-			<?php _e('Update template', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>
+			<?php esc_html_e('Update template', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>
 		</button>
 		<button type="button" name="" class="wf-btn-primary wf_template_create_btn" style="display:none; margin-right: 15px;">
-			<?php _e('Save template', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>
+			<?php esc_html_e('Save template', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>
 		</button>
 		<button type="button" class="wf_template_create_btn wt_save_activate wf-btn-success" style="display:none;">
-			<?php _e('Save and activate', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>
+			<?php esc_html_e('Save and activate', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>
 		</button>
 		<?php
 		$tooltip_conf = Wf_Woocommerce_Packing_List_Admin::get_tooltip_configs('dropdown_menu', Wf_Woocommerce_Packing_List_Customizer::$module_id_static);
 		?>
-		<button type="button" name="" class="wf-dot-btn button-secondary wf_customizer_drp_menu <?php echo esc_attr($tooltip_conf['class']); ?>" style="height: 28px;" <?php echo $tooltip_conf['text']; ?>>
+		<button type="button" name="" class="wf-dot-btn button-secondary wf_customizer_drp_menu <?php echo esc_attr($tooltip_conf['class']); ?>" style="height: 28px;" <?php echo wp_kses_post($tooltip_conf['text']); ?>>
 			<span class="dashicons dashicons-ellipsis" style="line-height: 28px;"></span>
 		</button>
 		<ul class="wf_dropdown" data-target="wf_customizer_drp_menu">
-			<li class="wf_activate_theme wf_activate_theme_current" data-id="<?php echo esc_attr($active_template_id); ?>"><?php _e('Activate', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
-			<li class="wf_delete_theme wf_delete_theme_current" data-id="<?php echo esc_attr($active_template_id); ?>"><?php _e('Delete', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
-			<li class="wf_pklist_new_template"><?php _e('Create new', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
-			<li class="wf_pklist_my_templates"><?php _e('My templates', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+			<li class="wf_activate_theme wf_activate_theme_current" data-id="<?php echo esc_attr($active_template_id); ?>"><?php esc_html_e('Activate', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+			<li class="wf_delete_theme wf_delete_theme_current" data-id="<?php echo esc_attr($active_template_id); ?>"><?php esc_html_e('Delete', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+			<li class="wf_pklist_new_template"><?php esc_html_e('Create new', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+			<li class="wf_pklist_my_templates"><?php esc_html_e('My templates', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
 		</ul>
 	</div>
 </div>
@@ -811,7 +811,7 @@ if (!defined('ABSPATH')) {
 <div class="customizer_template_warning_div">
 </div>
 <div class="wf_customizer_main">
-	<p class="template_qr_compatible_err" style="margin: 0 0 10px 0px;width: 68%;background: #ddd;padding: 10px;border-left: 5px solid red;font-size: 14px;display: none;"><?php echo __("This template is not comaptible with QR Code addon plugin", "print-invoices-packing-slip-labels-for-woocommerce"); ?></p>
+	<p class="template_qr_compatible_err" style="margin: 0 0 10px 0px;width: 68%;background: #ddd;padding: 10px;border-left: 5px solid red;font-size: 14px;display: none;"><?php echo esc_html__("This template is not comaptible with QR Code addon plugin", "print-invoices-packing-slip-labels-for-woocommerce"); ?></p>
 	<?php
 	$show_qrcode_placeholder = apply_filters('wt_pklist_show_qrcode_placeholder_in_template', false, $template_type);
 	$template_qr_compatible_err_val = 0;
@@ -838,16 +838,18 @@ if (!defined('ABSPATH')) {
 			if (true === $show_banner) {
 				$template_display_name = get_template_display_name($template_type);
 				echo '<div class="adc_cta_banner_in_customizer_tab wt_pklist_dismissible_banner_div wt_pklist_customizer_tab_banner">
-					<p>' . __("Unlock limitless possibilities of " . $template_display_name . " customization with the addon -", 'print-invoices-packing-slip-labels-for-woocommerce') . '
-					<a href="https://www.webtoffee.com/product/customizer-for-woocommerce-pdf-invoice/?utm_source=free_plugin_customizer_top&utm_medium=pdf_premium&utm_campaign=PDF_Customizer&utm_content=' . WF_PKLIST_VERSION . '" target="_blank">' . __("Customizer for WooCommerce PDF Invoices Plugin", "print-invoices-packing-slip-labels-for-woocommerce") . '</a>
+					<p>' . sprintf(
+					/* translators: %s: Template display name (invoice, packing list, etc.) */
+					esc_html__("Unlock limitless possibilities of %s customization with the addon -", 'print-invoices-packing-slip-labels-for-woocommerce'), esc_html($template_display_name)) . '
+					<a href="https://www.webtoffee.com/product/customizer-for-woocommerce-pdf-invoice/?utm_source=free_plugin_customizer_top&utm_medium=pdf_premium&utm_campaign=PDF_Customizer&utm_content=' . esc_attr(WF_PKLIST_VERSION) . '" target="_blank">' . esc_html__("Customizer for WooCommerce PDF Invoices Plugin", "print-invoices-packing-slip-labels-for-woocommerce") . '</a>
 					</p>
 					<button class="banner_dismiss notice-dismiss" data-banner-class="adc_cta_banner_in_customizer_tab" data-banner-interval="0" data-banner-action="0"></button>
 				</div>';
 			}
 			?>
 			<div class="wf_customizer_tabhead_inner">
-				<div class="wf_cst_tabhead_vis wf_cst_tabhead" data-target="wf_customize_vis_container"><?php _e('Visual', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></div>
-				<div class="wf_cst_tabhead_code wf_cst_tabhead" data-target="wf_customize_code_container"><?php _e('Code', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></div>
+				<div class="wf_cst_tabhead_vis wf_cst_tabhead" data-target="wf_customize_vis_container"><?php esc_html_e('Visual', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></div>
+				<div class="wf_cst_tabhead_code wf_cst_tabhead" data-target="wf_customize_code_container"><?php esc_html_e('Code', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></div>
 			</div>
 		</div>
 	<?php
@@ -857,10 +859,10 @@ if (!defined('ABSPATH')) {
 		<!--dummy code view for basic version -->
 		<div class="wf_customizer_tabhead_main">
 			<div class="wf_customizer_tabhead_inner">
-				<div class="wf_cst_tabhead_vis wf_cst_tabhead <?php echo esc_attr($tooltip_conf['class']); ?>" data-target="wf_customize_vis_container" <?php echo $tooltip_conf['text']; ?>><?php _e('Visual', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></div>
+				<div class="wf_cst_tabhead_vis wf_cst_tabhead <?php echo esc_attr($tooltip_conf['class']); ?>" data-target="wf_customize_vis_container" <?php echo wp_kses_post($tooltip_conf['text']); ?>><?php esc_html_e('Visual', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></div>
 				<?php if (apply_filters('wt_pklist_show_code_view_al', true, $template_type)) {
 				?>
-					<div class="wf_cst_tabhead_code wf_cst_tabhead wt_customizer_promotion_popup_btn" data-target="wf_customize_vis_container"><?php _e('Code', 'print-invoices-packing-slip-labels-for-woocommerce'); ?> <span class="wt_customizer_pro_text" style="color:red;">(<?php _e('Pro version', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>)</span></div>
+					<div class="wf_cst_tabhead_code wf_cst_tabhead wt_customizer_promotion_popup_btn" data-target="wf_customize_vis_container"><?php esc_html_e('Code', 'print-invoices-packing-slip-labels-for-woocommerce'); ?> <span class="wt_customizer_pro_text" style="color:red;">(<?php esc_html_e('Pro version', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>)</span></div>
 				<?php
 				} ?>
 			</div>

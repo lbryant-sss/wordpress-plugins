@@ -9,7 +9,7 @@ if (!defined('ABSPATH')) {
     <input type="hidden" value="wf_save_settings" class="wf_settings_action" />
     <input type="hidden" value="wt_shippinglabel_general" name="wt_tab_name" class="wt_tab_name" />
     
-        <p><?php _e('Configure the general settings required for the shipping label.','print-invoices-packing-slip-labels-for-woocommerce');?></p>
+        <p><?php esc_html_e('Configure the general settings required for the shipping label.','print-invoices-packing-slip-labels-for-woocommerce');?></p>
         <?php
         // Set nonce:
         if (function_exists('wp_nonce_field'))
@@ -60,7 +60,7 @@ if (!defined('ABSPATH')) {
 				?>
 				<div style="clear: both;"></div>
 				<span id="end_wf_setting_form" class="end_wf_setting_form"></span>
-				<input type="submit" name="update_admin_settings_form" value="<?php echo __('Update Settings', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>" class="button button-primary wt_pklist_update_settings_btn"/>
+				<input type="submit" name="update_admin_settings_form" value="<?php echo esc_html__('Update Settings', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>" class="button button-primary wt_pklist_update_settings_btn"/>
 				<span class="spinner" style="margin-top:11px"></span>
 				<?php
 			}else{

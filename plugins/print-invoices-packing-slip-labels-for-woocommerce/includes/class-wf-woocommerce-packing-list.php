@@ -116,8 +116,8 @@ class Wf_Woocommerce_Packing_List {
 			self::$base_version = WF_PKLIST_VERSION;
 		}else 
 		{
-			$this->version = '4.8.0';
-			self::$base_version = '4.8.0';
+			$this->version = '4.8.1';
+			self::$base_version = '4.8.1';
 		}
 		if(defined('WF_PKLIST_PLUGIN_NAME'))
 		{
@@ -279,22 +279,22 @@ class Wf_Woocommerce_Packing_List {
 			'wf_woocommerce_packing_list_proformainvoice',
 		);
 
-		if(isset($_GET['page']) && in_array($_GET['page'],$invoice_page_js_arr) && !class_exists('Wf_Woocommerce_Packing_List_Pro_Common_Func')){
+		if(isset($_GET['page']) && in_array($_GET['page'],$invoice_page_js_arr) && !class_exists('Wf_Woocommerce_Packing_List_Pro_Common_Func')){ // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- This is a safe use of isset.
 			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wf-woocommerce-packing-list-basic-func.php';
 			$this->basic_common_func = new Wf_Woocommerce_Packing_List_Basic_Common_Func( $this->get_plugin_name(), $this->get_version() );
 		}
 
-		if(isset($_GET['page']) && in_array($_GET['page'],$sdd_page_js_arr) && !class_exists('Wf_Woocommerce_Packing_List_Pro_Common_Func_SDD')){
+		if(isset($_GET['page']) && in_array($_GET['page'],$sdd_page_js_arr) && !class_exists('Wf_Woocommerce_Packing_List_Pro_Common_Func_SDD')){ // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- This is a safe use of isset.
 			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wf-woocommerce-packing-list-basic-func.php';
 			$this->basic_common_func = new Wf_Woocommerce_Packing_List_Basic_Common_Func( $this->get_plugin_name(), $this->get_version() );
 		}
 
-		if(isset($_GET['page']) && in_array($_GET['page'],$pkl_page_js_arr) && !class_exists('Wf_Woocommerce_Packing_List_Pro_Common_Func_PKL')){
+		if(isset($_GET['page']) && in_array($_GET['page'],$pkl_page_js_arr) && !class_exists('Wf_Woocommerce_Packing_List_Pro_Common_Func_PKL')){ // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- This is a safe use of isset.
 			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wf-woocommerce-packing-list-basic-func.php';
 			$this->basic_common_func = new Wf_Woocommerce_Packing_List_Basic_Common_Func( $this->get_plugin_name(), $this->get_version() );
 		}
 
-		if(isset($_GET['page']) && in_array($_GET['page'],$pi_page_js_arr) && !class_exists('Wf_Woocommerce_Packing_List_Pro_Common_Func_PI')){
+		if(isset($_GET['page']) && in_array($_GET['page'],$pi_page_js_arr) && !class_exists('Wf_Woocommerce_Packing_List_Pro_Common_Func_PI')){ // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- This is a safe use of isset.
 			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wf-woocommerce-packing-list-basic-func.php';
 			$this->basic_common_func = new Wf_Woocommerce_Packing_List_Basic_Common_Func( $this->get_plugin_name(), $this->get_version() );
 		}
@@ -305,9 +305,8 @@ class Wf_Woocommerce_Packing_List {
 	*/
 	public function switch_locale($locale)
 	{
-		if(isset($_GET['print_packinglist'])) 
-        {
-        	$lang	= ( isset( $_GET['lang'] ) ? sanitize_text_field( $_GET['lang'] ) : '' );
+		if(isset($_GET['print_packinglist'])) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- This is a safe use of isset.	
+        	$lang	= ( isset( $_GET['lang'] ) ? sanitize_text_field( wp_unslash( $_GET['lang'] ) ) : '' ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized @codingStandardsIgnoreLine -- This is a safe use of isset.
             $lang_list=Wf_Woocommerce_Packing_List_Admin::get_language_list();
             if("" !== $lang && isset($lang_list[$lang])) /* valid language code */
             {
@@ -547,7 +546,7 @@ class Wf_Woocommerce_Packing_List {
 				$v=(isset($v[2]) ? $v[2] : '').$v[0].' '.(isset($v[1]) ? $v[1] : '');
 			}
 		?>
-			<a class="nav-tab" href="#<?php echo $k;?>"><?php echo $v; ?></a>
+			<a class="nav-tab" href="#<?php echo esc_attr($k);?>"><?php echo wp_kses_post($v); ?></a>
 		<?php
 		}
 	}
@@ -623,7 +622,7 @@ class Wf_Woocommerce_Packing_List {
 				}
 			}
 			$button	= '<a class="button button-primary '.esc_attr( $button_class ).'" style="'.esc_attr($style).'" target="_blank" href="'.$invoice_url.'">'.wp_kses_post($label).'</a><br><br>';
-			echo $button;
+			echo wp_kses_post($button);
 		}
     }
 

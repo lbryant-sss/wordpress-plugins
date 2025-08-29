@@ -36,6 +36,7 @@ class Actions
         global $wpdb;
         $wpdb->query("TRUNCATE {$wpdb->prefix}koko_analytics_site_stats;");
         $wpdb->query("TRUNCATE {$wpdb->prefix}koko_analytics_post_stats;");
+        $wpdb->query("TRUNCATE {$wpdb->prefix}koko_analytics_paths;");
         $wpdb->query("TRUNCATE {$wpdb->prefix}koko_analytics_referrer_stats;");
         $wpdb->query("TRUNCATE {$wpdb->prefix}koko_analytics_referrer_urls;");
         delete_option('koko_analytics_realtime_pageview_count');
@@ -141,46 +142,51 @@ class Actions
         global $wpdb;
 
         $offset = 0;
-        $limit = 1000;
+        $limit = 500;
+        $home_url = home_url('/');
 
         do {
             // Select all rows with a post ID but no path ID
             $results = $wpdb->get_results($wpdb->prepare("SELECT DISTINCT(post_id) FROM {$wpdb->prefix}koko_analytics_post_stats WHERE post_id IS NOT NULL AND path_id IS NULL LIMIT %d OFFSET %d", [$limit, $offset]));
             $offset += $limit;
 
+            // Stop once there are no more rows in result set
             if (!$results) {
                 break;
             }
 
-            // process rows one by one
-            // this is slower, but the migration will continue and eventually finish over multiple requests
-            foreach ($results as $row) {
-                $post_id = $row->post_id;
-                $post_permalink = $post_id === "0" ? home_url('/') : get_permalink($post_id);
+            // create a mapping of post_id => path
+            $post_id_to_path_map = [];
+            foreach ($results as $r) {
+                $post_permalink = $r->post_id ? get_permalink($r->post_id) : $home_url;
                 if (!$post_permalink) {
-                    continue;
+                    $post_permalink = "$home_url?p={$r->post_id}";
                 }
 
                 $url_parts = parse_url($post_permalink);
-                $path = $url_parts['path'];
+                $path = $url_parts['path'] ?? '/';
                 if (!empty($url_parts['query'])) {
                     $path .= '?' . $url_parts['query'];
                 }
 
-                // Entry points to nowhere, skip it... (ie deleted post)
-                if (!$path) {
-                    continue;
-                }
+                $post_id_to_path_map[$r->post_id] = Normalizer::path($path);
+            }
 
-                // normalize path
-                $path = Normalizer::path($path);
+            // bulk insert all paths
+            $paths = array_values($post_id_to_path_map);
+            $placeholders = rtrim(str_repeat('(%s),', count($paths)), ',');
+            $wpdb->query($wpdb->prepare("INSERT INTO {$wpdb->prefix}koko_analytics_paths(path) VALUES {$placeholders}", $paths));
+            $last_insert_id = $wpdb->insert_id;
 
-                // insert path
-                // NOTE: We can't upsert here because we need a unique path_id for every date, post_id combination
-                $wpdb->query($wpdb->prepare("INSERT INTO {$wpdb->prefix}koko_analytics_paths (path) VALUES (%s)", [$path]));
-                $path_id = $wpdb->insert_id;
+            // create mapping of path to path_id
+            $path_to_path_id_map = [];
+            foreach (array_reverse($paths) as $path) {
+                $path_to_path_id_map[$path] = $last_insert_id--;
+            }
 
-                // update post_stats entry
+            // update post_stats table to point to paths we just inserted
+            foreach ($post_id_to_path_map as $post_id => $path) {
+                $path_id = $path_to_path_id_map[$path];
                 $wpdb->query($wpdb->prepare("UPDATE {$wpdb->prefix}koko_analytics_post_stats SET path_id = %d WHERE post_id = %d", [ $path_id, $post_id ]));
             }
         } while ($results);
@@ -204,8 +210,12 @@ class Actions
 
         // some of the UPDATE queries below can fail, we don't want to exit when that happens
         $wpdb->hide_errors();
+
+        // delete unused referrer URL's
+        $wpdb->query("DELETE FROM {$wpdb->prefix}koko_analytics_referrer_urls WHERE id NOT IN (SELECT DISTINCT(id) FROM {$wpdb->prefix}koko_analytics_referrer_stats )");
+
         $offset = 0;
-        $limit = 1000;
+        $limit = 500;
         do {
             $results = $wpdb->get_results($wpdb->prepare("SELECT id, url FROM {$wpdb->prefix}koko_analytics_referrer_urls WHERE url LIKE 'http://%' OR url LIKE 'https://%' LIMIT %d OFFSET %d", [$limit, $offset]));
             $offset += $limit;
@@ -216,20 +226,24 @@ class Actions
             foreach ($results as $row) {
                 $row->url = Normalizer::referrer($row->url);
 
-                // skip seriously malformed url's
+                //  if row is seriously malformed, delete it
                 if ($row->url === '') {
+                    $wpdb->query($wpdb->prepare("DELETE FROM {$wpdb->prefix}koko_analytics_referrer_stats WHERE id = %d", [ $row->id ]));
+                    $wpdb->query($wpdb->prepare("DELETE FROM {$wpdb->prefix}koko_analytics_referrer_urls WHERE id = %d", [ $row->id ]));
                     continue;
                 }
 
                 // check if normalized url already has an entry
-                $id = $wpdb->get_var($wpdb->prepare("SELECT id FROM {$wpdb->prefix}koko_analytics_referrer_urls WHERE url = %s", [$row->url]));
+                $id = $wpdb->get_var($wpdb->prepare("SELECT id FROM {$wpdb->prefix}koko_analytics_referrer_urls WHERE url = %s LIMIT 1", [$row->url]));
                 if ($id) {
                     // grab all rows in stats table pointing to old ID
                     $stats = $wpdb->get_results($wpdb->prepare("SELECT date, id, pageviews, visitors FROM {$wpdb->prefix}koko_analytics_referrer_stats WHERE id = %d", [$row->id]));
 
                     // update rows (if exist) with values from each date, id entry
                     foreach ($stats as $s) {
-                        $wpdb->query($wpdb->prepare("UPDATE {$wpdb->prefix}koko_analytics_referrer_stats SET visitors = visitors + %d, pageviews = pageviews + %d WHERE date = %s AND id = %d", [$s->visitors, $s->pageviews, $s->date, $id]));
+                        if ($wpdb->query($wpdb->prepare("UPDATE {$wpdb->prefix}koko_analytics_referrer_stats SET visitors = visitors + %d, pageviews = pageviews + %d WHERE date = %s AND id = %d", [$s->visitors, $s->pageviews, $s->date, $id]))) {
+                            $wpdb->query($wpdb->prepare("DELETE FROM {$wpdb->prefix}koko_analytics_referrer_stats WHERE date = %s AND id = %d", [$s->date, $s->id]));
+                        }
                     }
 
                     // try to update all rows to new id (this will fail for some rows)
@@ -237,9 +251,10 @@ class Actions
 
                     // delete rows that still have old ID at this point
                     $wpdb->query($wpdb->prepare("DELETE FROM {$wpdb->prefix}koko_analytics_referrer_stats WHERE id = %d", [ $row->id ]));
+                    $wpdb->query($wpdb->prepare("DELETE FROM {$wpdb->prefix}koko_analytics_referrer_urls WHERE id = %d", [ $row->id ]));
                 } else {
                     // otherwise change entry to normalized version
-                    $wpdb->query($wpdb->prepare("UPDATE {$wpdb->prefix}koko_analytics_referrer_urls SET url = %s WHERE id = %s LIMIT 1", [ $row->url, $row->id ]));
+                    $wpdb->query($wpdb->prepare("UPDATE {$wpdb->prefix}koko_analytics_referrer_urls SET url = %s WHERE id = %d", [ $row->url, $row->id ]));
                 }
             }
         } while ($results);

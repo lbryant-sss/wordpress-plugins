@@ -323,9 +323,9 @@ class Wt_Pklist_Common
             if(true === $delete_from_order_table){
                 global $wpdb;
                 $table_name = $wpdb->prefix.'wc_orders_meta';
-                if($wpdb->get_var("SHOW TABLES LIKE '$table_name'") === $table_name){
+                if($wpdb->get_var("SHOW TABLES LIKE '$table_name'") === $table_name){ // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared,WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared
                     $del_order_meta_query = "DELETE FROM $table_name WHERE `meta_key` IN('".esc_sql($meta_key)."')";
-                    $wpdb->query( $del_order_meta_query );
+                    $wpdb->query( $del_order_meta_query ); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared,WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
                 }
             }
         }
@@ -434,7 +434,7 @@ class Wt_Pklist_Common
     public static function meta_key_exists_in_wc_order_meta($order_id,$meta_key){
         global $wpdb;
         $table_name = $wpdb->prefix.'wc_orders_meta';
-        $search = $wpdb->get_row($wpdb->prepare("SELECT `id` from $table_name WHERE `meta_key` IN (%s) AND `order_id` = %d",array($meta_key,$order_id)));
+        $search = $wpdb->get_row($wpdb->prepare("SELECT `id` from $table_name WHERE `meta_key` IN (%s) AND `order_id` = %d",array($meta_key,$order_id))); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
         if(!$search){
             return false;
         }else{
@@ -445,29 +445,29 @@ class Wt_Pklist_Common
     public static function add_meta_to_wc_order_table($order,$meta_key,$value){
         global $wpdb;
         $table_name = $wpdb->prefix.'wc_orders_meta';
-        if($wpdb->get_var("SHOW TABLES LIKE '$table_name'") === $table_name){
+        if($wpdb->get_var("SHOW TABLES LIKE '$table_name'") === $table_name){ // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
             $order_id = self::get_order_id($order);
             $value = maybe_serialize( $value );
             
             if(self::meta_key_exists_in_wc_order_meta($order_id,$meta_key)){
-                $update_data        = array('meta_value' => $value);
+                $update_data        = array('meta_value' => $value); // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
                 $update_data_type   = array( '%s' );
                 $update_where       = array(
                     'order_id'  => $order_id,
-                    'meta_key'  => $meta_key
+                    'meta_key'  => $meta_key // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
                 );
                 $update_where_type  = array('%d','%s');
-                $wpdb->update($table_name,$update_data,$update_where,$update_data_type,$update_where_type);
+                $wpdb->update($table_name,$update_data,$update_where,$update_data_type,$update_where_type); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
             }else{
                 $insert_data = array(
                     'order_id'      =>  $order_id,
-                    'meta_key'      =>  $meta_key,
-                    'meta_value'    =>  $value
+                    'meta_key'      =>  $meta_key, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
+                    'meta_value'    =>  $value // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
                 );
                 $insert_data_type = array(
                     '%d','%s','%s'
                 );
-                $wpdb->insert($table_name,$insert_data,$insert_data_type);
+                $wpdb->insert($table_name,$insert_data,$insert_data_type); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
             }
         }
     }
@@ -481,9 +481,9 @@ class Wt_Pklist_Common
      */
     public static function is_hpos_orders_page()
     {
-        $basename = basename(parse_url($_SERVER['PHP_SELF'], PHP_URL_PATH));
-        $page = isset($_GET['page']) ? sanitize_text_field($_GET['page']) : ''; 
-        $action = isset($_GET['action']) ? sanitize_text_field($_GET['action']) : ''; 
+        $basename = isset($_SERVER['PHP_SELF']) ? basename(parse_url($_SERVER['PHP_SELF'], PHP_URL_PATH)) : ''; // phpcs:ignore WordPress.WP.AlternativeFunctions.parse_url_parse_url,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+        $page = isset($_GET['page']) ? sanitize_text_field(wp_unslash($_GET['page'])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+        $action = isset($_GET['action']) ? sanitize_text_field(wp_unslash($_GET['action'])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
         return ('admin.php' === $basename && 'wc-orders' === $page && ('' === $action || '-1' === $action));
     }
     /**
@@ -495,9 +495,9 @@ class Wt_Pklist_Common
      */
     public static function is_hpos_order_edit_page()
     {
-        $basename = basename(parse_url($_SERVER['PHP_SELF'], PHP_URL_PATH));
-        $page = isset($_GET['page']) ? sanitize_text_field($_GET['page']) : ''; 
-        $action = isset($_GET['action']) ? sanitize_text_field($_GET['action']) : ''; 
+        $basename = isset($_SERVER['PHP_SELF']) ? basename(parse_url($_SERVER['PHP_SELF'], PHP_URL_PATH)) : ''; // phpcs:ignore WordPress.WP.AlternativeFunctions.parse_url_parse_url,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+        $page = isset($_GET['page']) ? sanitize_text_field(wp_unslash($_GET['page'])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+        $action = isset($_GET['action']) ? sanitize_text_field(wp_unslash($_GET['action'])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
         return ('admin.php' === $basename && 'wc-orders' === $page && 'edit' === $action);
     }
 
@@ -624,8 +624,7 @@ class Wt_Pklist_Common
 	 * @return array
 	 */
 	public static function wt_pdf_get_wc_email_classes( $default_wc_emails_only = false ) {
-		if ( empty( $_GET['page'] ) || 
-            !in_array( $_GET['page'], self::wt_pdf_get_all_settings_page_slugs() ) ) {
+		if ( empty( $_GET['page'] ) || !in_array( $_GET['page'], self::wt_pdf_get_all_settings_page_slugs() ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			return array();
 		}
 

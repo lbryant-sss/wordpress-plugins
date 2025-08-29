@@ -40,14 +40,14 @@ function wt_pklist_gen_customize_form_field_sub($arg)
 	if("text" === $field_type)
 	{
 		?>
-		<input type="text" name="" class="wf_sidepanel_txt <?php echo esc_attr($event_class);?>" <?php echo $elm_props;?> />
+		<input type="text" name="" class="wf_sidepanel_txt <?php echo esc_attr($event_class);?>" <?php echo wp_kses_post($elm_props);?> />
 		<?php
 	}elseif("select" === $field_type)
 	{
 		$select_options=isset($arg['select_options']) ? $arg['select_options'] : array();
 		$disabled_options = isset($arg['disabled_options']) ? $arg['disabled_options'] : array();
 		?>
-		<select class="wf_sidepanel_sele <?php echo esc_attr($event_class);?>" <?php echo $elm_props;?> >
+		<select class="wf_sidepanel_sele <?php echo esc_attr($event_class);?>" <?php echo wp_kses_post($elm_props);?> >
 			<?php
 			foreach($select_options as $select_optionK=>$select_optionV)
 			{
@@ -57,7 +57,7 @@ function wt_pklist_gen_customize_form_field_sub($arg)
 					$disabled_attr = ''; 
 				}
 				?>
-				<option value="<?php echo esc_attr($select_optionK);?>" <?php echo $disabled_attr; ?>><?php echo wp_kses_post($select_optionV);?></option>
+				<option value="<?php echo esc_attr($select_optionK);?>" <?php echo esc_attr($disabled_attr); ?>><?php echo wp_kses_post($select_optionV);?></option>
 				<?php
 			}
 			?>
@@ -69,27 +69,27 @@ function wt_pklist_gen_customize_form_field_sub($arg)
 		$addonblock_vl=isset($arg['addonblock']) ? $arg['addonblock'] : 'px';
 		?>
 		<div class="wf_inptgrp">
-			<input type="text" name="" class="wf_sidepanel_txt <?php echo $event_class;?>" <?php echo $elm_props;?> >
-			<div class="addonblock"><input type="text" name="" value="<?php echo $addonblock_vl;?>"></div>
+			<input type="text" name="" class="wf_sidepanel_txt <?php echo esc_attr($event_class);?>" <?php echo wp_kses_post($elm_props);?> >
+			<div class="addonblock"><input type="text" name="" value="<?php echo esc_attr($addonblock_vl);?>"></div>
 		</div>
 		<?php
 	}
 	elseif("textarea" === $field_type)
 	{
 		?>
-		<textarea class="wf_sidepanel_txtarea <?php echo esc_attr($event_class);?>" <?php echo $elm_props;?> ></textarea>
+		<textarea class="wf_sidepanel_txtarea <?php echo esc_attr($event_class);?>" <?php echo wp_kses_post($elm_props);?> ></textarea>
 		<?php
 	}
 	elseif("color" === $field_type)
 	{
 		?>
-		<input type="text" name="" class="wf-color-field <?php echo esc_attr($event_class);?>" <?php echo $elm_props;?> >
+		<input type="text" name="" class="wf-color-field <?php echo esc_attr($event_class);?>" <?php echo wp_kses_post($elm_props);?> >
 		<?php
 	}
 	elseif("checkbox" === $field_type)
 	{
 		?>
-		<input type="checkbox" name="" class="wf-checkbox <?php echo esc_attr($event_class);?>" <?php echo $elm_props;?> >
+		<input type="checkbox" name="" class="wf-checkbox <?php echo esc_attr($event_class);?>" <?php echo wp_kses_post($elm_props);?> >
 		<?php
 	}
 	?>
@@ -764,12 +764,12 @@ if(!empty($template_type) && "addresslabel" !== $template_type){
 			</ul>
 		</div>
 		<div class="wt_pro_show_more_less_pro_ad">
-			<a class="wt_pro_addon_show_more_pro_ad"><p><? echo __("Show More","print-invoices-packing-slip-labels-for-woocommerce"); ?></p></a>
-			<a class="wt_pro_addon_show_less_pro_ad"><p><? echo __("Show Less","print-invoices-packing-slip-labels-for-woocommerce"); ?></p></a>
+			<a class="wt_pro_addon_show_more_pro_ad"><p><?php echo esc_html__("Show More","print-invoices-packing-slip-labels-for-woocommerce"); ?></p></a>
+			<a class="wt_pro_addon_show_less_pro_ad"><p><?php echo esc_html__("Show Less","print-invoices-packing-slip-labels-for-woocommerce"); ?></p></a>
 		</div>
 	</div>
-	<a class="wt_pro_addon_premium_link_div_pro_ad" href="https://www.webtoffee.com/product/customizer-for-woocommerce-pdf-invoice/?utm_source=free_plugin_customizer_bottom&utm_medium=pdf_premium&utm_campaign=PDF_Customizer&utm_content=<?php esc_attr_e(WF_PKLIST_VERSION); ?>" target="_blank">
-		<?php _e("Checkout Premium","print-invoices-packing-slip-labels-for-woocommerce"); ?>
+	<a class="wt_pro_addon_premium_link_div_pro_ad" href="https://www.webtoffee.com/product/customizer-for-woocommerce-pdf-invoice/?utm_source=free_plugin_customizer_bottom&utm_medium=pdf_premium&utm_campaign=PDF_Customizer&utm_content=<?php echo esc_attr(WF_PKLIST_VERSION); ?>" target="_blank">
+		<?php esc_html_e("Checkout Premium","print-invoices-packing-slip-labels-for-woocommerce"); ?>
 	</a>
 </div>
 			<?php

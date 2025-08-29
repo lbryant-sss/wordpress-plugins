@@ -1,5 +1,30 @@
 # Changelog
 
+### 2.0.9 - Aug 28, 2025
+
+- Automatically run the v2 data migration for tables with less than 25.000 total records.
+- Pageviews column should be at least 6 characters wide to allow for 6-figure numbers.
+- Improve performance of post stats migration script.
+- Ship aggregator class on old filesystem location to prevent error from old autoloader.
+
+
+### 2.0.8 - Aug 28, 2025
+
+- Add WP CLI command for initiating post stats migration to v2: wp koko-analytics migrate_post_stats_to_v2
+- Add WP CLI command for initiating referrer stats migration to v2: wp koko-analytics migrate_referrer_stats_to_v2
+- Slightly decrease font-size for analytics ashboard in general and chart tooltip.
+- Drop database tables on plugin uninstall.
+- Truncate new paths table when resetting statistics.
+- Switch to a single column grid at 1200px instead of 992px.
+
+
+### 2.0.7 - Aug 28, 2025
+
+- Run data migration at later hook so that custom post types have a chance to register.
+- Delete seriously malformed referrer URL's from stats.
+- Fix z-index of datepicker component.
+
+
 ### 2.0.5 - Aug 27, 2025
 
 - Failsafe against missing referrer URL in buffer file.

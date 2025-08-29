@@ -4,7 +4,7 @@ Donate link: https://www.kokoanalytics.com/pricing/
 Tags: statistics, analytics, stats, google analytics
 Requires at least: 6.0
 Tested up to: 6.8
-Stable tag: 1.8.6
+Stable tag: 2.0.9
 License: GPL-3.0-or-later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Requires PHP: 7.4
@@ -131,6 +131,31 @@ Example:
 
 
 == Changelog ==
+
+### 2.0.9 - Aug 28, 2025
+
+- Automatically run the v2 data migration for tables with less than 25.000 total records.
+- Pageviews column should be at least 6 characters wide to allow for 6-figure numbers.
+- Improve performance of post stats migration script.
+- Ship aggregator class on old filesystem location to prevent error from old autoloader.
+
+
+### 2.0.8 - Aug 28, 2025
+
+- Add WP CLI command for initiating post stats migration to v2: wp koko-analytics migrate_post_stats_to_v2
+- Add WP CLI command for initiating referrer stats migration to v2: wp koko-analytics migrate_referrer_stats_to_v2
+- Slightly decrease font-size for analytics ashboard in general and chart tooltip.
+- Drop database tables on plugin uninstall.
+- Truncate new paths table when resetting statistics.
+- Switch to a single column grid at 1200px instead of 992px.
+
+
+### 2.0.7 - Aug 28, 2025
+
+- Run data migration at later hook so that custom post types have a chance to register.
+- Delete seriously malformed referrer URL's from stats.
+- Fix z-index of datepicker component.
+
 
 ### 2.0.5 - Aug 27, 2025
 
@@ -741,35 +766,5 @@ If your WordPress root directory is not writable, go to the Koko Analytics setti
 
 #### 1.0.18 - Aug 25, 2020
 
-- Fix issue with tracking not working on AMP powered pages or issuing a request to a non-existing file on cdn.ampproject.org.
-
-
-#### 1.0.17 - Aug 19, 2020
-
-- Fix issue when using Modern color scheme introduced in WordPress 5.5.
-- Improve test for custom endpoint file by checking for exact response body.
-- Prevent horizontal scrollbar from showing when hovering chart near edge of screen.
-
-
-#### 1.0.16 - Jul 21, 2020
-
-- Fix blank screen on WordPress versions lower than 5.0.
-- Fix settings link showing despite user lacking required capability.
-- Fix code for custom referrer blocklist using filter `koko_analytics_referrer_blocklist`.
-- Do not use custom endpoint file when site URL differs from WordPress URL.
-- Improve test for custom endpoint file.
-
-
-#### 1.0.15 - Jun 22, 2020
-
-- Fix weird date for "this week" preset.
-- Fix weeknames in datepicker.
-- Fix translation files not being loaded. Hopefully...
-
-
-#### 1.0.14 - Jun 22, 2020
-
-- Do not use custom tracking endpoint on Multisite installations because it ignores the site-specifix database prefix.
-- Show errors in aggegration process if `WP_DEBUG` is enabled.
-- Update referrer ...
+- Fix issue with tracking not working on AMP powered pages or issuing ...
 

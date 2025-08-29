@@ -61,7 +61,7 @@ class Wf_Woocommerce_Packing_List_Customizer
 		if (Wf_Woocommerce_Packing_List_Admin::check_write_access($this->module_id)) //no error then proceed
 		{
 			$allowed_actions = array('get_template_data', 'update_from_codeview', 'save_theme', 'my_templates', 'prepare_sample_pdf');
-			$customizer_action = sanitize_text_field($_REQUEST['customizer_action']);
+			$customizer_action = (isset($_REQUEST['customizer_action'])) ? sanitize_text_field(wp_unslash($_REQUEST['customizer_action'])) : '';// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- This is a safe use of isset.
 			if (method_exists($this, $customizer_action)) {
 				$out = $this->{$customizer_action}();
 			}
@@ -77,9 +77,10 @@ class Wf_Woocommerce_Packing_List_Customizer
 	 */
 	public function prepare_sample_pdf()
 	{
-		$html = isset($_POST['codeview_html']) ? Wf_Woocommerce_Packing_List_Admin::strip_unwanted_tags($_POST['codeview_html']) : '';
-		if (isset($_POST['order_id'])) {
-			$order_id = self::get_post_id_by_meta_key_and_value('_order_number', $_POST['order_id']);
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Custom function handles validation
+		$html = isset($_POST['codeview_html']) ? Wf_Woocommerce_Packing_List_Admin::strip_unwanted_tags(wp_unslash($_POST['codeview_html'])) : '';
+		if (isset($_POST['order_id'])) { // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$order_id = self::get_post_id_by_meta_key_and_value('_order_number', $_POST['order_id']); // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized @codingStandardsIgnoreLine -- This is a safe use of isset.
 		} else {
 			$order_id = 0;
 		}
@@ -95,7 +96,7 @@ class Wf_Woocommerce_Packing_List_Customizer
 			exit();
 		}
 
-		$template_type = isset($_POST['template_type']) ? sanitize_text_field($_POST['template_type']) : '';
+		$template_type = isset($_POST['template_type']) ? sanitize_text_field(wp_unslash($_POST['template_type'])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 		if ("" !== $html && "" !== $template_type && $order_id > 0) {
 			/* save HTML for preview */
@@ -114,6 +115,7 @@ class Wf_Woocommerce_Packing_List_Customizer
 	public static function get_post_id_by_meta_key_and_value($key, $value)
 	{
 		global $wpdb;
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching @codingStandardsIgnoreLine -- This is a safe use of SELECT
 		$meta = $wpdb->get_results($wpdb->prepare("SELECT * FROM " . $wpdb->postmeta . " WHERE meta_key=%s AND meta_value=%s", esc_sql($key), esc_sql($value)));
 		if (is_array($meta) && !empty($meta) && isset($meta[0])) {
 			$meta = $meta[0];
@@ -280,7 +282,7 @@ class Wf_Woocommerce_Packing_List_Customizer
 		);
 
 		if (!$is_pro_customizer) {
-			wp_enqueue_script($this->module_id, plugin_dir_url(__FILE__) . 'assets/js/customize.js', array('jquery'), WF_PKLIST_VERSION);
+			wp_enqueue_script($this->module_id, plugin_dir_url(__FILE__) . 'assets/js/customize.js', array('jquery'), WF_PKLIST_VERSION, false);
 			wp_localize_script($this->module_id, $this->module_id, $params);
 		} else {
 			do_action('wf_pklist_load_customizer_js_pro', $this->module_id, $params, $this->to_customize);
@@ -342,15 +344,14 @@ class Wf_Woocommerce_Packing_List_Customizer
 	public function get_current_active_theme($base)
 	{
 		global $wpdb;
-		$table_name = $wpdb->prefix . Wf_Woocommerce_Packing_List::$template_data_tb;
-		return $wpdb->get_row("SELECT * FROM $table_name WHERE is_active=1 AND template_type='$base'");
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching @codingStandardsIgnoreLine -- This is a safe use of SELECT
+		return $wpdb->get_row($wpdb->prepare("SELECT * FROM `{$wpdb->prefix}wfpklist_template_data` WHERE is_active=1 AND template_type=%s", $base));
 	}
 	public function get_theme($id, $base)
 	{
 		global $wpdb;
-		$table_name = $wpdb->prefix . Wf_Woocommerce_Packing_List::$template_data_tb;
-		$qry = $wpdb->prepare("SELECT * FROM $table_name WHERE id_wfpklist_template_data=%d AND template_type=%s", array($id, $base));
-		return $wpdb->get_row($qry);
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching @codingStandardsIgnoreLine -- This is a safe use of SELECT
+		return $wpdb->get_row($wpdb->prepare("SELECT * FROM `{$wpdb->prefix}wfpklist_template_data` WHERE id_wfpklist_template_data=%d AND template_type=%s", $id, $base));
 	}
 	public function get_default_template_path($base, $type = 'path')
 	{
@@ -507,6 +508,7 @@ class Wf_Woocommerce_Packing_List_Customizer
 		$bs_td  = 'print-invoices-packing-slip-labels-for-woocommerce';
 
 		if (is_array($match) && isset($match[1]) && trim($match[1]) != "") {
+			// phpcs:disable WordPress.WP.I18n.NonSingularStringLiteralText @codingStandardsIgnoreStart
 			if (__($match[1], $bs_td) !== $match[1]) {
 				return __($match[1], $bs_td);
 			} elseif (__($match[1], $ipc_td) !== $match[1]) {
@@ -524,6 +526,7 @@ class Wf_Woocommerce_Packing_List_Customizer
 			} else {
 				return __($match[1], 'print-invoices-packing-slip-labels-for-woocommerce');
 			}
+			// phpcs:enable WordPress.WP.I18n.NonSingularStringLiteralText codingStandardsIgnoreEnd
 		} else {
 			return "";
 		}
@@ -544,6 +547,7 @@ class Wf_Woocommerce_Packing_List_Customizer
 		$custom_td = 'custom_wt_pdf_inovice';
 
 		if (is_array($match) && isset($match[1]) && trim($match[1]) != "") {
+			// phpcs:disable WordPress.WP.I18n.NonSingularStringLiteralText @codingStandardsIgnoreStart
 			if (__($match[1], $bs_td) !== $match[1]) {
 				return __($match[1], $bs_td);
 			} elseif (__($match[1], $ipc_td) !== $match[1]) {
@@ -564,6 +568,7 @@ class Wf_Woocommerce_Packing_List_Customizer
 			 else {
 				return __($match[1], 'print-invoices-packing-slip-labels-for-woocommerce');
 			}
+			// phpcs:enable WordPress.WP.I18n.NonSingularStringLiteralText codingStandardsIgnoreEnd
 		} else {
 			return "";
 		}

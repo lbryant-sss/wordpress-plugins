@@ -9,18 +9,18 @@
  * @package           Wf_Woocommerce_Packing_List
  *
  * @wordpress-plugin
- * Plugin Name:       WooCommerce PDF Invoices, Packing Slips, Delivery Notes and Shipping Labels
+ * Plugin Name:       WebToffee WooCommerce PDF Invoices, Packing Slips, Delivery Notes and Shipping Labels
  * Requires Plugins:  woocommerce
  * Plugin URI:        https://www.webtoffee.com/product/woocommerce-pdf-invoices-packing-slips/
  * Description:       Prints Packing List,Invoice,Delivery Note and Shipping Label.
- * Version:           4.8.0
+ * Version:           4.8.1
  * Author:            WebToffee
  * Author URI:        https://www.webtoffee.com/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       print-invoices-packing-slip-labels-for-woocommerce
  * Domain Path:       /languages
- * WC tested up to:   10.0.4
+ * WC tested up to:   10.1.2
  */
 // If this file is called directly, abort.
 if (! defined('WPINC')) {
@@ -45,7 +45,10 @@ if (is_plugin_active('wt-woocommerce-packing-list/wf-woocommerce-packing-list.ph
 if (!$wt_pklist_no_plugin_conflict) {
     //return;
     deactivate_plugins(plugin_basename(__FILE__));
-    wp_die(sprintf(__("The plugins %s and %s cannot be active in your store at the same time. Kindly deactivate one of these prior to activating the other.", 'print-invoices-packing-slip-labels-for-woocommerce'), $active_plugin_name, $current_plugin_name), "", array('link_url' => admin_url('plugins.php'), 'link_text' => __('Go to plugins page', 'print-invoices-packing-slip-labels-for-woocommerce')));
+    wp_die(sprintf(
+        /* translators: 1$s: Active plugin name, 2$s: Current plugin name */
+        // phpcs:ignore WordPress.WP.I18n.InterpolatedVariableText 
+        esc_html__("The plugins %1$s and %2$s cannot be active in your store at the same time. Kindly deactivate one of these prior to activating the other.", 'print-invoices-packing-slip-labels-for-woocommerce'), esc_html($active_plugin_name), esc_html($current_plugin_name)), "", array('link_url' => esc_url(admin_url('plugins.php')), 'link_text' => esc_html__('Go to plugins page', 'print-invoices-packing-slip-labels-for-woocommerce')));
 }
 
 if (!defined('WF_PKLIST_VERSION')) //check plugin file already included
@@ -67,7 +70,7 @@ if (!defined('WF_PKLIST_VERSION')) //check plugin file already included
     /**
      * Currently plugin version.
      */
-    define('WF_PKLIST_VERSION', '4.8.0');
+    define('WF_PKLIST_VERSION', '4.8.1');
 }
 
 
@@ -89,7 +92,7 @@ function wbte_packing_list_update_message($data, $response)
              #print-invoices-packing-slip-labels-for-woocommerce-update ul { list-style: disc; margin-left: 30px; }
              .wf-update-message { padding-left: 30px; }
          </style>
-         <div class="update-message wf-update-message">' . wpautop($msg) . '</div>';
+         <div class="update-message wf-update-message">' . wp_kses_post(wpautop($msg)) . '</div>';
     }
 }
 
@@ -178,10 +181,10 @@ if (!function_exists('woocommerce_packing_list_check_necessary')) {
     function woocommerce_packing_list_check_necessary()
     {
         global $wpdb;
-        $search_query = "SHOW TABLES LIKE %s";
         $tb = Wf_Woocommerce_Packing_List::$template_data_tb;
         $like = '%' . $wpdb->prefix . $tb . '%';
-        if (!$wpdb->get_results($wpdb->prepare($search_query, $like), ARRAY_N)) {
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching @codingStandardsIgnoreLine -- This is a safe use of SELECT
+        if (!$wpdb->get_results($wpdb->prepare("SHOW TABLES LIKE %s", $like), ARRAY_N)) {
             return false;
             //wp_die(_e('Plugin not installed correctly','print-invoices-packing-slip-labels-for-woocommerce'));
         }
@@ -199,7 +202,13 @@ if (function_exists('woocommerce_packing_list_check_necessary') && function_exis
             {
     ?>
                 <div class="error">
-                    <p><?php echo sprintf(__('%s WooCommerce PDF Invoices, Packing Slips, Delivery Notes & Shipping Labels (Basic) %s is enabled but not effective. It requires %s WooCommerce %s in order to work.', 'print-invoices-packing-slip-labels-for-woocommerce'), '<b>', '</b>', '<a href="https://wordpress.org/plugins/woocommerce/" target="_blank">', '</a>'); ?></p>
+                        <p><?php echo sprintf(
+                        /* translators: 1$s: Plugin name, 2$s: Plugin name, 3$s: WooCommerce link opening tag, 4$s: WooCommerce link closing tag */
+                        esc_html__('%1$s %2$s is enabled but not effective. It requires %3$s WooCommerce %4$s in order to work.', 'print-invoices-packing-slip-labels-for-woocommerce'),
+                        '<b>',
+                        '</b>',
+                        '<a href="https://wordpress.org/plugins/woocommerce/" target="_blank">',
+                        '</a>'); ?></p>
                 </div>
         <?php
             }
@@ -218,7 +227,7 @@ if (!function_exists('wf_woocommerce_packing_list_update_message')) {
             #print-invoices-packing-slip-labels-for-woocommerce-update ul{ list-style:disc; margin-left:30px;}
             .wf-update-message{ padding-left:30px;}
             </style>
-            <div class="update-message wf-update-message">' . wpautop($msg) . '</div>';
+            <div class="update-message wf-update-message">' . wp_kses_post(wpautop($msg)) . '</div>';
         }
     }
     add_action('in_plugin_update_message-print-invoices-packing-slip-labels-for-woocommerce/wf-woocommerce-packing-list.php', 'wf_woocommerce_packing_list_update_message', 10, 2);

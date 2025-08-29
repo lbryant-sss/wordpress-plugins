@@ -32,6 +32,9 @@ class Wf_Woocommerce_Packing_List_Uninstall_Feedback
 	}
     private function get_uninstall_reasons()
     {
+        $mpdf_plugin_data = Wf_Woocommerce_Packing_List_Admin::get_mpdf_plugin_data();
+        $mpdf_url = isset($mpdf_plugin_data['placeholder_arr']) ? $mpdf_plugin_data['placeholder_arr'] : '';
+        
         $reasons = array(
             array(
                 'id' => 'could-not-understand',
@@ -52,7 +55,8 @@ class Wf_Woocommerce_Packing_List_Uninstall_Feedback
                     ),
                     array(
                         'id' => 'language-support-in-pdf',
-                        'text'=>__('Missing RTL/Unicode language(e.g Chinese, Arabic etc) support for PDF document.', 'print-invoices-packing-slip-labels-for-woocommerce').'<br /><span style="padding-left:20px;">'.sprintf(__('Already tried the free %s WebToffee mPDF addon %s.', 'print-invoices-packing-slip-labels-for-woocommerce'), '<a href="https://wordpress.org/plugins/mpdf-addon-for-pdf-invoices/" target="_blank">', '</a>').'</span>',
+                        /* translators: 1$s: HTML link opening tag, 2$s: HTML link closing tag */
+                        'text'=>__('Missing RTL/Unicode language(e.g Chinese, Arabic etc) support for PDF document.', 'print-invoices-packing-slip-labels-for-woocommerce').'<br /><span style="padding-left:20px;">'.sprintf(__('Already tried the free %1$s WebToffee mPDF addon %2$s.', 'print-invoices-packing-slip-labels-for-woocommerce'), '<a href="'.$mpdf_url.'" target="_blank">', '</a>').'</span>' . __(' Click the link to activate the plugin and try printing the document again.', 'print-invoices-packing-slip-labels-for-woocommerce'),
                         'type' => 'text',
                         'placeholder' => __('Which language?', 'print-invoices-packing-slip-labels-for-woocommerce'),
                     )
@@ -118,7 +122,7 @@ class Wf_Woocommerce_Packing_List_Uninstall_Feedback
         <div class="wfinvoice-modal" id="wfinvoice-wfinvoice-modal">
             <div class="wfinvoice-modal-wrap">
                 <div class="wfinvoice-modal-header">
-                    <h3><?php _e('If you have a moment, please let us know why you are deactivating:', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></h3>
+                    <h3><?php esc_html_e('If you have a moment, please let us know why you are deactivating:', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></h3>
                 </div>
                 <div class="wfinvoice-modal-body">
                     <ul class="reasons">
@@ -127,18 +131,18 @@ class Wf_Woocommerce_Packing_List_Uninstall_Feedback
                         { 
                         ?>
                             <li data-type="<?php echo esc_attr($reason['type']); ?>" data-placeholder="<?php echo esc_attr(isset($reason['placeholder']) ? $reason['placeholder'] : ''); ?>">
-                                <label><input type="radio" name="selected-reason" value="<?php echo $reason['id']; ?>"><?php echo $reason['text']; ?></label>
+                                <label><input type="radio" name="selected-reason" value="<?php echo esc_attr($reason['id']); ?>"><?php echo esc_html($reason['text']); ?></label>
                                 <?php
                                 if($reason['type']=='main_reason')
                                 {
                                     ?>
-                                    <ul class="sub_reasons" data-parent="<?php echo $reason['id']; ?>">
+                                    <ul class="sub_reasons" data-parent="<?php echo esc_attr($reason['id']); ?>">
                                         <?php
                                         foreach($reason['sub_reason'] as $sub_reason)
                                         {
                                            ?>
                                             <li data-type="<?php echo esc_attr($sub_reason['type']); ?>" data-placeholder="<?php echo esc_attr($sub_reason['placeholder']); ?>">
-                                                <label><input type="radio" name="selected-sub-reason" value="<?php echo $sub_reason['id']; ?>"><?php echo $sub_reason['text']; ?></label>
+                                                <label><input type="radio" name="selected-sub-reason" value="<?php echo esc_attr($sub_reason['id']); ?>"><?php echo wp_kses_post($sub_reason['text']); ?></label>
                                             </li>
                                            <?php 
                                         }
@@ -156,27 +160,27 @@ class Wf_Woocommerce_Packing_List_Uninstall_Feedback
                     <label style="margin-bottom: 0;">
                         <span class="wt-checkbox-top-border"></span>
                         <input type="checkbox" id="wt_contact_me_checkbox" name="wt_contact_me_checkbox" value="1">
-                        <?php _e("WebToffee can contact me about this feedback.", "print-invoices-packing-slip-labels-for-woocommerce"); ?>
+                        <?php esc_html_e("WebToffee can contact me about this feedback.", "print-invoices-packing-slip-labels-for-woocommerce"); ?>
                     </label>
                     <div id="wt_email_field_wrap" style="display:none; margin-top:10px;">
-                        <label for="wt_contact_email" style="font-weight:bold;"><?php _e("Enter your email address.", "print-invoices-packing-slip-labels-for-woocommerce"); ?></label>
+                        <label for="wt_contact_email" style="font-weight:bold;"><?php esc_html_e("Enter your email address.", "print-invoices-packing-slip-labels-for-woocommerce"); ?></label>
                         <br>
                         <input type="email" id="wt_contact_email" name="wt_contact_email" class="input-text" style="width:75%; height: 40px; padding:2px; margin-top:10px; border-radius:5px; border:2px solid #2874ba; padding-left:15px;" placeholder="<?php esc_attr_e("Enter email address", "print-invoices-packing-slip-labels-for-woocommerce"); ?>">
                         <div id="wt_email_error" style="color:red; display:none; font-size:12px; margin-top:5px;"></div>
                     </div>
-                    <label style="display:block; margin-top:15px;"><input type="checkbox" id="wt_delete_all_settings" name="wt_delete_all_settings" value="1"> <?php _e("Delete all the settings made by this plugin","print-invoices-packing-slip-labels-for-woocommerce"); ?></label>
+                    <label style="display:block; margin-top:15px;"><input type="checkbox" id="wt_delete_all_settings" name="wt_delete_all_settings" value="1"> <?php esc_html_e("Delete all the settings made by this plugin","print-invoices-packing-slip-labels-for-woocommerce"); ?></label>
                     <div class="wt_pklist_policy_infobox">
-                        <?php _e("We do not collect any personal data when you submit this form. It's your feedback that we value.", "print-invoices-packing-slip-labels-for-woocommerce");?>
-                        <a href="https://www.webtoffee.com/privacy-policy/" target="_blank"><?php _e('Privacy Policy', 'print-invoices-packing-slip-labels-for-woocommerce');?></a>
+                        <?php esc_html_e("We do not collect any personal data when you submit this form. It's your feedback that we value.", "print-invoices-packing-slip-labels-for-woocommerce");?>
+                        <a href="https://www.webtoffee.com/privacy-policy/" target="_blank"><?php esc_html_e('Privacy Policy', 'print-invoices-packing-slip-labels-for-woocommerce');?></a>
                     </div>
                 </div>
                 <div class="wfinvoice-modal-footer">
                     <a class="button-primary" href="https://www.webtoffee.com/support/" target="_blank">
                         <span class="dashicons dashicons-external" style="margin-top:3px;"></span> 
-                        <?php _e('Go to support', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></a>
-                    <button class="button-primary wfinvoice-model-submit"><?php _e('Submit & Deactivate', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></button>
-                    <button class="button-secondary wfinvoice-model-cancel"><?php _e('Cancel', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></button>
-                    <a href="#" class="dont-bother-me"><?php _e('I rather wouldn\'t say', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></a>
+                        <?php esc_html_e('Go to support', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></a>
+                    <button class="button-primary wfinvoice-model-submit"><?php esc_html_e('Submit & Deactivate', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></button>
+                    <button class="button-secondary wfinvoice-model-cancel"><?php esc_html_e('Cancel', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></button>
+                    <a href="#" class="dont-bother-me"><?php esc_html_e('I rather wouldn\'t say', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></a>
                 </div>
             </div>
         </div>
@@ -312,7 +316,7 @@ class Wf_Woocommerce_Packing_List_Uninstall_Feedback
                             type: 'POST',
                             data: {
                                 action: 'wfinvoice_submit_uninstall_reason',
-                                _wpnonce: '<?php echo wp_create_nonce(WF_PKLIST_PLUGIN_NAME);?>',
+                                _wpnonce: '<?php echo esc_js(wp_create_nonce(WF_PKLIST_PLUGIN_NAME));?>',
                                 reason_id: reason_id,
                                 reason_info: reason_info,
                                 user_email: $('#wt_contact_me_checkbox').is(':checked') ? $('#wt_contact_email').val() : ''
@@ -344,7 +348,7 @@ class Wf_Woocommerce_Packing_List_Uninstall_Feedback
     public function send_uninstall_reason()
     {
         global $wpdb;
-        $nonce=isset($_POST['_wpnonce']) ? sanitize_text_field($_POST['_wpnonce']) : ''; 
+        $nonce=isset($_POST['_wpnonce']) ? sanitize_text_field(wp_unslash($_POST['_wpnonce'])) : ''; 
         if(!(wp_verify_nonce($nonce,WF_PKLIST_PLUGIN_NAME)))
         {   
             wp_send_json_error();
@@ -356,14 +360,14 @@ class Wf_Woocommerce_Packing_List_Uninstall_Feedback
         
         //$current_user = wp_get_current_user();
         $data = array(
-            'reason_id' => sanitize_text_field($_POST['reason_id']),
+            'reason_id' => sanitize_text_field(wp_unslash($_POST['reason_id'])),
             'plugin' =>$this->plugin_id,
             'auth' =>$this->auth_key,
             'date' => gmdate("M d, Y h:i:s A"),
             'url' => '',
             'user_email' => isset($_POST['user_email']) ? sanitize_email(wp_unslash($_POST['user_email'])) : '',
-            'reason_info' => isset($_REQUEST['reason_info']) ? trim(stripslashes(sanitize_text_field($_REQUEST['reason_info']))) : '',
-            'software' => $_SERVER['SERVER_SOFTWARE'],
+            'reason_info' => isset($_REQUEST['reason_info']) ? trim(stripslashes(sanitize_text_field(wp_unslash($_REQUEST['reason_info'])))) : '',
+            'software' => isset($_SERVER['SERVER_SOFTWARE']) ? sanitize_text_field(wp_unslash($_SERVER['SERVER_SOFTWARE'])) : '',
             'php_version' => phpversion(),
             'mysql_version' => $wpdb->db_version(),
             'wp_version' => get_bloginfo('version'),

@@ -85,8 +85,8 @@ $server_configs = array(
 	),
 	'upload_folder' => array(
 		'required' => esc_html__('Writable', 'print-invoices-packing-slip-labels-for-woocommerce'),
-		'value' => is_writable($upload_loc['path']) ? "Yes" : "No",
-		'result' => is_writable($upload_loc['path']),
+		'value' => wp_is_writable($upload_loc['path']) ? "Yes" : "No",
+		'result' => wp_is_writable($upload_loc['path']),
 	),
 );
 
@@ -130,7 +130,7 @@ if (($gm = extension_loaded('gmagick')) || ($im = extension_loaded('imagick'))) 
 		}
 	?>
 		<tr style="background:#FFF;border: 1px solid #CFCFCF;">
-			<td class="title wt_sys_info_border_right" width="35%"><?php echo $label; ?></td>
+			<td class="title wt_sys_info_border_right" width="35%"><?php echo esc_html($label); ?></td>
 			<td class="wt_sys_info_border_right"><?php echo ($server_config['required'] === true ? 'Yes' : esc_html($server_config['required'])); ?></td>
 			<td class="<?php echo esc_attr($sys_info_class); ?>">
 				<?php

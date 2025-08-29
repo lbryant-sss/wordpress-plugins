@@ -91,27 +91,27 @@ if (!class_exists('\\Wtpdf\\Banners\\Wt_Invoice_Cta_Banner')) {
             <div class="wt-cta-banner">
                 <div class="wt-cta-content">
                     <div class="wt-cta-header">
-                        <img src="<?php echo esc_url($wt_admin_img_path . '/pdf_invoice.svg'); ?>" alt="<?php _e('Product Import Export', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>" class="wt-cta-icon">
-                        <h3><?php _e('WooCommerce PDF Invoices, Packing Slips and Credit Notes', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></h3>
+                        <img src="<?php echo esc_url($wt_admin_img_path . '/pdf_invoice.svg'); ?>" alt="<?php esc_attr_e('Product Import Export', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>" class="wt-cta-icon">
+                        <h3><?php esc_html_e('WooCommerce PDF Invoices, Packing Slips and Credit Notes', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></h3>
                     </div>
 
                     <ul class="wt-cta-features">
-                        <li><?php _e('Automatically generate PDF invoices, packing slips, and credit notes', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
-                        <li><?php _e('Use ready-made, customizable templates to match your brand', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
-                        <li><?php _e('Print or download invoices individually or in bulk', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
-                        <li><?php _e('Set custom invoice numbering for better organization', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
-                        <li class="hidden-feature"><?php _e('Customize documents fully with visual or code editors', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
-                        <li class="hidden-feature"><?php _e('Include VAT, GST, ABN, and other tax details', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
-                        <li class="hidden-feature"><?php _e('Add "Pay Now" link on invoices', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
-                        <li class="hidden-feature"><?php _e('Add custom fields to any order document with ease', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+                        <li><?php esc_html_e('Automatically generate PDF invoices, packing slips, and credit notes', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+                        <li><?php esc_html_e('Use ready-made, customizable templates to match your brand', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+                        <li><?php esc_html_e('Print or download invoices individually or in bulk', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+                        <li><?php esc_html_e('Set custom invoice numbering for better organization', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+                        <li class="hidden-feature"><?php esc_html_e('Customize documents fully with visual or code editors', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+                        <li class="hidden-feature"><?php esc_html_e('Include VAT, GST, ABN, and other tax details', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+                        <li class="hidden-feature"><?php esc_html_e('Add "Pay Now" link on invoices', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
+                        <li class="hidden-feature"><?php esc_html_e('Add custom fields to any order document with ease', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></li>
                     </ul>
 
                     <div class="wt-cta-footer">
                         <div class="wt-cta-footer-links">
-                            <a href="#" class="wt-cta-toggle" data-show-text="<?php esc_attr_e('View all premium features', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>" data-hide-text="<?php esc_attr_e('Show less', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>"><?php _e('View all premium features', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></a>
-                            <a href="<?php echo esc_url($plugin_url); ?>" class="wt-cta-button" target="_blank"><img src="<?php echo esc_url($wt_admin_img_path . '/promote_crown.png');?>" style="width: 15.01px; height: 10.08px; margin-right: 8px;"><?php _e('Get the plugin', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></a>
+                            <a href="#" class="wt-cta-toggle" data-show-text="<?php esc_attr_e('View all premium features', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>" data-hide-text="<?php esc_attr_e('Show less', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>"><?php esc_html_e('View all premium features', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></a>
+                            <a href="<?php echo esc_url($plugin_url); ?>" class="wt-cta-button" target="_blank"><img src="<?php echo esc_url($wt_admin_img_path . '/promote_crown.png');?>" style="width: 15.01px; height: 10.08px; margin-right: 8px;"><?php esc_html_e('Get the plugin', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></a>
                         </div>
-                        <a href="#" class="wt-cta-dismiss" style="display: block; text-align: center; margin-top: 15px; color: #666; text-decoration: none;"><?php _e('Dismiss', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></a>
+                        <a href="#" class="wt-cta-dismiss" style="display: block; text-align: center; margin-top: 15px; color: #666; text-decoration: none;"><?php esc_html_e('Dismiss', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></a>
                     </div>
                 </div>
             </div>
@@ -123,7 +123,7 @@ if (!class_exists('\\Wtpdf\\Banners\\Wt_Invoice_Cta_Banner')) {
          */
         public function dismiss_banner() {
             // Verify nonce for security
-            if (!wp_verify_nonce($_POST['nonce'], 'wt_dismiss_invoice_cta_banner_nonce')) {
+            if (!isset($_POST['nonce']) || !wp_verify_nonce(wp_unslash($_POST['nonce']), 'wt_dismiss_invoice_cta_banner_nonce')) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized @codingStandardsIgnoreLine -- This is a safe use of isset.
                 wp_send_json_error('Invalid nonce');
             }
 

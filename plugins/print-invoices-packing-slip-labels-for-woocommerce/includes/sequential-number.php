@@ -105,8 +105,8 @@ class Wf_Woocommerce_Packing_List_Sequential_Number
 	    $wf_invoice_as_ordernumber =Wf_Woocommerce_Packing_List::get_option('woocommerce_wf_invoice_as_ordernumber', $module_id);
 	    $generate_invoice_for =Wf_Woocommerce_Packing_List::get_option('woocommerce_wf_generate_for_orderstatus', $module_id);
 
-	   	if(isset($_GET['type'])){
-    		if("preview_invoice" === $_GET['type'] || "preview_dispatchlabel" === $_GET['type']){
+			if(isset($_GET['type']) && wp_verify_nonce(wp_unslash($_GET['_wpnonce'] ?? ''), WF_PKLIST_PLUGIN_NAME)){ // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized @codingStandardsIgnoreLine -- This is a safe use of isset.
+    		if("preview_invoice" === sanitize_text_field(wp_unslash($_GET['type'])) || "preview_dispatchlabel" === sanitize_text_field(wp_unslash($_GET['type']))){
 	   			if((is_array($generate_invoice_for)) && (!in_array('wc-'.$order->get_status(), $generate_invoice_for))){
 	    			return "";
 	    		}else{
@@ -187,7 +187,7 @@ class Wf_Woocommerce_Packing_List_Sequential_Number
 				update_option('wt_pklist_installation_date',$install_date);
 			}
 	        $utc_timestamp = get_option('wt_pklist_installation_date');
-			$utc_timestamp_converted = date( 'Y-m-d h:i:s', $utc_timestamp );
+			$utc_timestamp_converted = gmdate( 'Y-m-d h:i:s', $utc_timestamp );
 			$local_timestamp = get_date_from_gmt( $utc_timestamp_converted, 'Y-m-d h:i:s' );
 	   		if($order_date < $local_timestamp){
 	   			return true;
@@ -229,11 +229,12 @@ class Wf_Woocommerce_Packing_List_Sequential_Number
         global $wpdb;
         $post_type = 'shop_order';
 
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Sequential number queries don't need caching
         $r = $wpdb->get_col($wpdb->prepare("
 	    SELECT pm.meta_value FROM {$wpdb->postmeta} pm
 	    LEFT JOIN {$wpdb->posts} p ON p.ID = pm.post_id
-	    WHERE pm.meta_key = '%s' 
-	    AND p.post_type = '%s'", $key, $post_type));
+	    WHERE pm.meta_key = %s 
+	    AND p.post_type = %s", $key, $post_type));
         return $r;
     }
 
@@ -247,18 +248,19 @@ class Wf_Woocommerce_Packing_List_Sequential_Number
 	{
 		global $wpdb;
 		if("order_table" === Wt_Pklist_Common::which_table_to_take()){
-			$table_name = $wpdb->prefix.'wc_orders_meta';
+			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Sequential number existence check doesn't need caching
 			$r = $wpdb->get_col($wpdb->prepare("
-			SELECT COUNT(om.meta_value) AS inv_exists FROM {$table_name} om
-			WHERE om.meta_key = '%s' AND om.meta_value = '%s'", $key,$invoice_number));
+			SELECT COUNT(om.meta_value) AS inv_exists FROM {$wpdb->prefix}wc_orders_meta om
+			WHERE om.meta_key = %s AND om.meta_value = %s", $key,$invoice_number));
 			return $r[0]>0 ? true : false;
 		}else{
 			$post_type = 'shop_order';
+			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Sequential number existence check doesn't need caching
 			$r = $wpdb->get_col($wpdb->prepare("
 			SELECT COUNT(pm.meta_value) AS inv_exists FROM {$wpdb->postmeta} pm
 			LEFT JOIN {$wpdb->posts} p ON p.ID = pm.post_id
-			WHERE pm.meta_key = '%s' 
-			AND p.post_type = '%s' AND pm.meta_value = '%s'", $key, $post_type,$invoice_number));
+			WHERE pm.meta_key = %s 
+			AND p.post_type = %s AND pm.meta_value = %s", $key, $post_type,$invoice_number));
 			return $r[0]>0 ? true : false;
 		}
 	}
@@ -341,7 +343,7 @@ class Wf_Woocommerce_Packing_List_Sequential_Number
 	            		}
 	            	}
 	            }
-	            $date=date($date_shortcode_format, $date_val);
+	            $date=gmdate($date_shortcode_format, $date_val);
 	            $shortcode_text=str_replace("[$date_shortcode]", $date, $shortcode_text); 
 	        }
 	    }

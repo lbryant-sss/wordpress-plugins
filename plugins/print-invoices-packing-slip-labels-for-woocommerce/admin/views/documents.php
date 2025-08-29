@@ -134,11 +134,11 @@ $document_module_labels=Wf_Woocommerce_Packing_List_Public::get_document_module_
                     <?php
                         if("wt_doc_col-3" !== $doc_mod['width'] && !is_plugin_active($doc_mod['file_path'])){
                             ?>
-                            <p class="wt_pklist_doc_module_type wt_pklist_free_addon_badge"><?php _e("Free version","print-invoices-packing-slip-labels-for-woocommerce"); ?></p>
+                            <p class="wt_pklist_doc_module_type wt_pklist_free_addon_badge"><?php esc_html_e("Free version","print-invoices-packing-slip-labels-for-woocommerce"); ?></p>
                             <?php
                         }elseif("wt_doc_col-3" !== $doc_mod['width'] && is_plugin_active($doc_mod['file_path'])){
                             ?>
-                            <p class="wt_pklist_doc_module_type wt_pklist_pro_addon_badge"><?php _e("Premium version","print-invoices-packing-slip-labels-for-woocommerce"); ?></p>
+                            <p class="wt_pklist_doc_module_type wt_pklist_pro_addon_badge"><?php esc_html_e("Premium version","print-invoices-packing-slip-labels-for-woocommerce"); ?></p>
                             <?php
                         }
                     ?>
@@ -147,7 +147,9 @@ $document_module_labels=Wf_Woocommerce_Packing_List_Public::get_document_module_
                     if("wt_doc_col-3" !== $doc_mod['width'] && !is_plugin_active($doc_mod['file_path'])){
                         ?>
                         <div style="float:left;width:100%;">
-                            <p style="margin:0;line-height: 24px;color: #525252;"><?php echo sprintf(__('You are using free version of %1$s. %2$s Checkout premium here %3$s.','print-invoices-packing-slip-labels-for-woocommerce'),esc_html(strtolower($doc_mod['title'])),'<a href="'.esc_url($doc_mod['page_link']).'" target="_blank">','</a>'); ?></p>
+                            <p style="margin:0;line-height: 24px;color: #525252;"><?php 
+                            /* translators: 1$s: Document module title, 2$s: HTML link opening tag, 3$s: HTML link closing tag */
+                            echo sprintf(esc_html__('You are using free version of %1$s. %2$s Checkout premium here %3$s.','print-invoices-packing-slip-labels-for-woocommerce'),esc_html(strtolower($doc_mod['title'])),'<a href="'.esc_url($doc_mod['page_link']).'" target="_blank">','</a>'); ?></p>
                         </div>
                         <?php
                     }
@@ -172,7 +174,7 @@ $document_module_labels=Wf_Woocommerce_Packing_List_Public::get_document_module_
                                             $target_attr = '';
                                         }
                                     ?>
-                                    <a class="doc_module_link" <?php echo $target_attr; ?> href="<?php echo esc_url($settings_url); ?>" data-href="<?php echo esc_url($settings_url); ?>" style="opacity: 1; cursor: pointer;">
+                                    <a class="doc_module_link" <?php echo esc_attr($target_attr); ?> href="<?php echo esc_url($settings_url); ?>" data-href="<?php echo esc_url($settings_url); ?>" style="opacity: 1; cursor: pointer;">
                                         <img src="<?php echo esc_url($wt_doc_logo_url); ?>" style="">
                                         <h3><?php echo esc_html($this_doc_mod['label']); ?></h3>
                                     </a>
@@ -182,7 +184,7 @@ $document_module_labels=Wf_Woocommerce_Packing_List_Public::get_document_module_
                                         <?php
                                             if("pro" === $this_doc_mod['module_type'] && !is_plugin_active($doc_mod['file_path'])){
                                                 ?>
-                                                <a href="<?php echo esc_url($settings_url); ?>" target="_blank"><?php _e("Get Add-on","print-invoices-packing-slip-labels-for-woocommerce"); ?></a>
+                                                <a href="<?php echo esc_url($settings_url); ?>" target="_blank"><?php esc_html_e("Get Add-on","print-invoices-packing-slip-labels-for-woocommerce"); ?></a>
                                                 <?php
                                             }else{
                                                 ?>

@@ -37,7 +37,8 @@ class Wf_Woocommerce_Packing_List_Activator {
         if(is_multisite()) 
         {   
             if(is_network_admin()){
-                // Get all blogs in the network and activate plugin on each one
+                // Get all blogs in the network and activate plugin on each one 
+                // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching @codingStandardsIgnoreLine -- This is a safe use of SELECT
                 $blog_ids = $wpdb->get_col( "SELECT blog_id FROM $wpdb->blogs" );
                 foreach($blog_ids as $blog_id ) 
                 {
@@ -111,10 +112,18 @@ class Wf_Woocommerce_Packing_List_Activator {
     */
     public static function secure_upload_dir()
     {
+        global $wp_filesystem;
+        
+        // Initialize the WordPress filesystem
+        if (empty($wp_filesystem)) {
+            require_once(ABSPATH . '/wp-admin/includes/file.php');
+            WP_Filesystem();
+        }
+        
         $upload_dir=Wf_Woocommerce_Packing_List::get_temp_dir('path');
         if(!is_dir($upload_dir))
         {
-            @mkdir($upload_dir, 0700);
+            wp_mkdir_p($upload_dir);
         }
 
         $files_to_create=array('.htaccess' => 'deny from all', 'index.php'=>'<?php // Silence is golden');
@@ -122,12 +131,7 @@ class Wf_Woocommerce_Packing_List_Activator {
         {
             if(!file_exists($upload_dir.'/'.$file))
             {
-                $fh=@fopen($upload_dir.'/'.$file, "w");
-                if(is_resource($fh))
-                {
-                    fwrite($fh,$file_content);
-                    fclose($fh);
-                }
+                $wp_filesystem->put_contents($upload_dir.'/'.$file, $file_content);
             }
         }    
     }
@@ -137,14 +141,15 @@ class Wf_Woocommerce_Packing_List_Activator {
 		global $wpdb;
 		//install necessary tables
 		//creating table for saving template data================
-        $search_query = "SHOW TABLES LIKE %s";
         $charset_collate = $wpdb->get_charset_collate();
         //$tb=Wf_Woocommerce_Packing_List::$template_data_tb;
         $tb='wfpklist_template_data';
         $like = '%' . $wpdb->prefix.$tb.'%';
         $table_name = $wpdb->prefix.$tb;
-        if(!$wpdb->get_results($wpdb->prepare($search_query, $like), ARRAY_N)) 
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Plugin activation requires checking table existence
+        if(!$wpdb->get_results($wpdb->prepare("SHOW TABLES LIKE %s", $like), ARRAY_N)) 
         {
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.SchemaChange -- Plugin activation requires table creation
             $sql_settings = "CREATE TABLE IF NOT EXISTS `$table_name` (
 			  `id_wfpklist_template_data` int(11) NOT NULL AUTO_INCREMENT,
 			  `template_name` varchar(200) NOT NULL,
@@ -160,10 +165,11 @@ class Wf_Woocommerce_Packing_List_Activator {
             dbDelta($sql_settings);
         }else
         {
-	        $search_query = "SHOW COLUMNS FROM `$table_name` LIKE 'is_dc_compatible'";
-	        if(!$wpdb->get_results($search_query,ARRAY_N)) 
+	        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Plugin activation requires checking column existence
+	        if(!$wpdb->get_results($wpdb->prepare("SHOW COLUMNS FROM `{$wpdb->prefix}wfpklist_template_data` LIKE %s", 'is_dc_compatible'), ARRAY_N)) 
 	        {
-	        	$wpdb->query("ALTER TABLE `$table_name` ADD `is_dc_compatible` int(11) NOT NULL DEFAULT '0' AFTER `template_from`");
+	        	// phpcs:ignore WordPress.DB.DirectDatabaseQuery.SchemaChange -- Plugin activation requires schema modification
+	        	$wpdb->query("ALTER TABLE `{$wpdb->prefix}wfpklist_template_data` ADD `is_dc_compatible` int(11) NOT NULL DEFAULT '0' AFTER `template_from`");
 	        }
         }
         //creating table for saving template data================

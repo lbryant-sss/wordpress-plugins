@@ -62,7 +62,8 @@ class Wf_Woocommerce_Packing_List_i18n {
 		load_textdomain( $text_domain, $custom_mo_file ); // Custom mo file location
 		
 		// load mo files from default location
-		load_plugin_textdomain($text_domain, FALSE, dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/');
+		// @codingStandardsIgnoreLine PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound -- Required for custom translation loading
+		load_plugin_textdomain($text_domain, false, dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/');
 
 		// load mo files from the Wordpress language file locations
 		load_textdomain( $text_domain, $dir . $text_domain . '/' . $text_domain .'-'. $locale .'.mo' ); 

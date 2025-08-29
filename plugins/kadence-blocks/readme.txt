@@ -4,7 +4,7 @@ Tags: gutenberg, blocks, page builder, editor, gutenberg blocks
 Donate link: https://www.kadencewp.com/about-us/
 Requires at least: 6.6
 Tested up to: 6.8.2
-Stable tag: 3.5.18
+Stable tag: 3.5.19
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -173,6 +173,13 @@ Please report security bugs found in the source code of the Kadence Blocks plugi
 Please report security bugs found in the Kadence Blocks plugin's source code through the Patchstack Vulnerability Disclosure Program https://patchstack.com/database/vdp/kadence-blocks. The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin.
 
 == Changelog ==
+
+= 3.5.19 =
+Release Date: 28th August 2025
+* Add: Subtitle color settings for Tabs block.
+* Add: Custom fonts added via filters now support labels.
+* Fix: Border color problem in the editor.
+* Fix: Tooltips now flip when there isn't room to show.
 
 = 3.5.18 =
 Release Date: 19th August 2025

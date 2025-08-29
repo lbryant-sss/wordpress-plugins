@@ -131,7 +131,8 @@ class Wf_Woocommerce_Packing_List_Admin {
 			'msgs'=>array(
 				'settings_success'=>__('Settings updated.','print-invoices-packing-slip-labels-for-woocommerce'),
 				'all_fields_mandatory'=>__('All fields are mandatory','print-invoices-packing-slip-labels-for-woocommerce'),
-				'settings_error'=>sprintf(__('Unable to update settings due to an internal error. %s To troubleshoot please click %s here. %s', 'print-invoices-packing-slip-labels-for-woocommerce'), '<br />', '<a href="https://www.webtoffee.com/how-to-fix-the-unable-to-save-settings-issue/" target="_blank">', '</a>'),
+				/* translators: 1$s: HTML line break, 2$s: HTML link opening tag, 3$s: HTML link closing tag */
+				'settings_error'=>sprintf(__('Unable to update settings due to an internal error. %1$s To troubleshoot please click %2$s here. %3$s', 'print-invoices-packing-slip-labels-for-woocommerce'), '<br />', '<a href="https://www.webtoffee.com/how-to-fix-the-unable-to-save-settings-issue/" target="_blank">', '</a>'),
 				'select_orders_first'=>__('You have to select order(s) first!','print-invoices-packing-slip-labels-for-woocommerce'),
 				'invoice_not_gen_bulk'=>__('One or more order do not have invoice generated. Generate manually?','print-invoices-packing-slip-labels-for-woocommerce'),
 				'error'=>__('Error','print-invoices-packing-slip-labels-for-woocommerce'),
@@ -224,6 +225,130 @@ class Wf_Woocommerce_Packing_List_Admin {
 	}
 
 	/**
+	 * Get mPDF addon plugin slug.
+	 *
+	 * @since    4.8.1
+	 * @return   string mPDF addon plugin slug.
+	 */
+	public static function get_mpdf_plugin_slug() {
+		return dirname( self::get_mpdf_plugin_path() );
+	}
+
+	/**
+	 * Get mPDF addon plugin path.
+	 *
+	 * @since    4.8.1
+	 * @return   string mPDF addon plugin path.
+	 */
+	public static function get_mpdf_plugin_path() {
+		return 'mpdf-addon-for-pdf-invoices/wt-woocommerce-packing-list-mpdf.php';
+	}
+
+	/**
+	 * Get the minimum required version number of mPDF addon plugin.
+	 *
+	 * @since    4.8.1
+	 * @return   string Minimum version of mPDF addon plugin
+	 */
+	public static function get_required_min_mpdf_version() {
+		return '1.0.7';
+	}
+
+	/**
+	 * Get installed version of mPDF addon plugin. The plugin not required to be activated.
+	 *
+	 * @since    4.8.1
+	 * @return   string|boolean mPDF addon plugin version if exists false if not.
+	 */
+	public static function get_installed_mpdf_version() {
+		if ( self::is_mpdf_plugin_exists() ) {
+			$plugin_data = get_plugin_data( WP_PLUGIN_DIR . '/' . self::get_mpdf_plugin_path() );
+			return $plugin_data['Version'];
+		}
+		return false;
+	}
+
+	/**
+	 * Check if mPDF addon plugin is active.
+	 *
+	 * @since    4.8.1
+	 * @return   boolean True if mPDF addon plugin is active.
+	 */
+	public static function is_mpdf_plugin_active() {
+		include_once ABSPATH . 'wp-admin/includes/plugin.php';
+		return is_plugin_active( self::get_mpdf_plugin_path() );
+	}
+
+	/**
+	 * Check if mPDF addon plugin folder exists in the plugin directory.
+	 *
+	 * @since    4.8.1
+	 * @return   boolean True if mPDF addon plugin folder exists in the plugin directory.
+	 */
+	public static function is_mpdf_plugin_exists() {
+		return file_exists( WP_PLUGIN_DIR . '/' . self::get_mpdf_plugin_path() );
+	}
+
+	/**
+	 * Get mPDF addon plugin page URL in wordpress.org.
+	 *
+	 * @since    4.8.1
+	 * @return   string mPDF addon plugin URL.
+	 */
+	public static function get_mpdf_plugin_url() {
+		return 'https://wordpress.org/plugins/' . self::get_mpdf_plugin_slug() . '/';
+	}
+
+	/**
+	 * Check if required version of mPDF addon plugin is installed.
+	 *
+	 * @since    4.8.1
+	 * @return   boolean True if required version of mPDF addon plugin is installed.
+	 */
+	public static function is_required_mpdf_version_installed() {
+		$installed_version = self::get_installed_mpdf_version();
+
+		if ( $installed_version && version_compare( $installed_version, self::get_required_min_mpdf_version(), '>=' ) ) {
+			return true;
+		}
+
+		return false;
+	}
+
+	public static function get_mpdf_plugin_data() {
+		$mpdf_slug                          = self::get_mpdf_plugin_slug();
+		$mpdf_path                          = self::get_mpdf_plugin_path();
+		$is_mpdf_active                     = self::is_mpdf_plugin_active();
+		$is_mpdf_exists                     = self::is_mpdf_plugin_exists();
+		$mpdf_wp_url                        = self::get_mpdf_plugin_url();
+		$is_required_mpdf_version_installed = self::is_required_mpdf_version_installed();
+
+		if ( current_user_can( 'install_plugins' ) && current_user_can( 'update_plugins' ) ) {
+            			if ( ! $is_mpdf_active && ! $is_mpdf_exists ) {
+				$placeholder_arr = esc_attr(wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=' . $mpdf_slug ), 'install-plugin_' . $mpdf_slug ));
+				/* translators: %1$s: HTML link opening tag, %2$s: HTML link closing tag */
+				$enable_mpdf_msg    = sprintf( __( 'For better RTL integration in PDF documents, click the link to install the %1$smPDF add-on%2$s by WebToffee (free).', 'print-invoices-packing-slip-labels-for-woocommerce' ), '<a href="' . $placeholder_arr . '">', '</a>' );
+			} elseif ( $is_mpdf_active && ! $is_required_mpdf_version_installed ) {
+				$placeholder_arr = esc_attr( wp_nonce_url( self_admin_url( 'update.php?action=upgrade-plugin&plugin=' . $mpdf_slug ), 'upgrade-plugin_' . $mpdf_slug ) );
+				/* translators: %1$s: HTML link opening tag, %2$s: HTML link closing tag */
+				$enable_mpdf_msg    = sprintf( __( 'For better RTL integration in PDF documents, click the link to update the %1$smPDF add-on%2$s by WebToffee (free).', 'print-invoices-packing-slip-labels-for-woocommerce' ), '<a href="' . $placeholder_arr . '">', '</a>' );
+			} elseif ( ! $is_mpdf_active && $is_mpdf_exists ) {
+				$placeholder_arr = esc_attr( wp_nonce_url( self_admin_url( 'plugins.php?action=activate&plugin=' . urlencode( $mpdf_path ) . '&plugin_status=all&paged=1&s' ), 'activate-plugin_' . $mpdf_path ) );
+				/* translators: %1$s: HTML link opening tag, %2$s: HTML link closing tag */
+				$enable_mpdf_msg    = sprintf( __( 'For better RTL integration in PDF documents, click the link to activate the %1$smPDF add-on%2$s by WebToffee (free).', 'print-invoices-packing-slip-labels-for-woocommerce' ), '<a href="' . $placeholder_arr . '">', '</a>' );
+			} else {
+				$enable_mpdf_msg = '';
+				$placeholder_arr = esc_url('https://wordpress.org/plugins/mpdf-addon-for-pdf-invoices/');
+			}
+
+            return array(
+                'enable_mpdf_msg' => $enable_mpdf_msg,
+                'placeholder_arr' => $placeholder_arr,
+            );
+        }
+	}
+
+	/**
 	 * Function to add Items to Orders Bulk action dropdown
 	 *
 	 * @since    2.5.0
@@ -250,10 +375,10 @@ class Wf_Woocommerce_Packing_List_Admin {
 	            foreach ($additional_options as $value)
 	            {
 	            	if(in_array($value,$basic_checkout_fields)){
-	            		$fields['billing']['billing_' . $value] = array(
+	            			            	$fields['billing']['billing_' . $value] = array(
 		                    'text' => 'text',
-		                    'label' => __(str_replace('_', ' ', $value), 'woocommerce'),
-		                    'placeholder' => _x('Enter ' . str_replace('_', ' ', $value), 'placeholder', 'woocommerce'),
+		                    'label' => __(str_replace('_', ' ', $value), 'print-invoices-packing-slip-labels-for-woocommerce'), // phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText @codingStandardsIgnoreLine
+		                    'placeholder' => _x('Enter ' . str_replace('_', ' ', $value), 'placeholder', 'print-invoices-packing-slip-labels-for-woocommerce'), // phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText @codingStandardsIgnoreLine
 		                    'required' => false,
 		                    'class' => array('form-row-wide', 'align-left'),
 		                    'clear' => true
@@ -364,7 +489,8 @@ class Wf_Woocommerce_Packing_List_Admin {
 	public static function get_print_url($order_id, $action)
 	{
 		$url=wp_nonce_url(admin_url('?print_packinglist=true&post='.($order_id).'&type='.$action), WF_PKLIST_PLUGIN_NAME);
-		$url=(isset($_GET['debug']) ? $url.'&debug' : $url);
+		$nonce = isset($_GET['_wpnonce']) ? sanitize_text_field(wp_unslash($_GET['_wpnonce'])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		$url=(isset($_GET['debug']) && wp_verify_nonce($nonce, 'debug_mode')) ? $url.'&debug' : $url;
 		return $url;
 	}
 
@@ -392,7 +518,7 @@ class Wf_Woocommerce_Packing_List_Admin {
         ?>
 		<tr>
 			<td>
-				<a class="button tips wf-packing-list-link" <?php echo $onclick;?> <?php echo $href_attr;?> target="_blank" data-tip="<?php echo strip_tags($label);?>" >
+				<a class="button tips wf-packing-list-link" <?php echo wp_kses_post($onclick);?> <?php echo wp_kses_post($href_attr);?> target="_blank" data-tip="<?php echo esc_attr(wp_strip_all_tags($label));?>" >
 				<?php
 				if("" !== $icon_url)
 				{
@@ -410,7 +536,7 @@ class Wf_Woocommerce_Packing_List_Admin {
         {
         ?>
 			<li>
-				<a class="<?php echo esc_attr($confirmation_clss);?>" data-id="<?php echo esc_attr($order_id);?>" <?php echo $onclick;?> <?php echo $href_attr;?> target="_blank"><?php echo wp_kses_post($label);?></a>
+				<a class="<?php echo esc_attr($confirmation_clss);?>" data-id="<?php echo esc_attr($order_id);?>" <?php echo wp_kses_post($onclick);?> <?php echo wp_kses_post($href_attr);?> target="_blank"><?php echo wp_kses_post($label);?></a>
 			</li>
 		<?php
         }
@@ -426,7 +552,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 	{
 		$order_details_screen = Wt_Pklist_Common::is_wc_hpos_enabled() ? wc_get_page_screen_id( 'shop-order' ) : 'shop_order';
 		add_meta_box('woocommerce-packinglist-box', __('Invoice/Packing','print-invoices-packing-slip-labels-for-woocommerce'), array($this,'create_metabox_content'),$order_details_screen, 'side', 'default');
-		if(isset($_GET['wt-pklist-debug'])){
+		if(isset($_GET['wt-pklist-debug'])){ // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- This is a safe use of isset.
 			add_meta_box('woocommerce-packinglist-box-debug', __('WT PDF Invoice Debug','print-invoices-packing-slip-labels-for-woocommerce'), array($this,'wt_pklist_debug_metabox_content'),$order_details_screen, 'normal', 'default');
 		}
 	}
@@ -504,7 +630,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 			?>
 			<tr>
 				<td style="font-weight:bold;">
-					<h4 style="margin:0px; padding-top:5px; padding-bottom:3px; border-bottom:dashed 1px #ccc;"><?php _e('Document details','print-invoices-packing-slip-labels-for-woocommerce'); ?></h4>
+					<h4 style="margin:0px; padding-top:5px; padding-bottom:3px; border-bottom:dashed 1px #ccc;"><?php esc_html_e('Document details','print-invoices-packing-slip-labels-for-woocommerce'); ?></h4>
 				</td>
 			</tr>
 			<tr>
@@ -514,9 +640,9 @@ class Wf_Woocommerce_Packing_List_Admin {
 					foreach($data_arr as $datav)
 					{
 						echo '<span style="font-weight:500;">';
-						echo ("" !== $datav['label'] ? $datav['label'].': ' : '');
+						echo ("" !== $datav['label'] ? esc_html($datav['label']).': ' : '');
 						echo '</span>';
-						echo $datav['value'].'<br />';
+						echo esc_html($datav['value']).'<br />';
 					}
 					?>
 				</td>
@@ -526,7 +652,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 			?>
 			<tr>
 				<td>
-					<h4 style="margin:0px; padding-top:5px; padding-bottom:3px; border-bottom:dashed 1px #ccc;"><?php _e('Print/Download','print-invoices-packing-slip-labels-for-woocommerce'); ?></h4>
+					<h4 style="margin:0px; padding-top:5px; padding-bottom:3px; border-bottom:dashed 1px #ccc;"><?php esc_html_e('Print/Download','print-invoices-packing-slip-labels-for-woocommerce'); ?></h4>
 				</td>
 			</tr>
 			<tr>
@@ -589,9 +715,9 @@ class Wf_Woocommerce_Packing_List_Admin {
 								$args['items']=array_reverse($args['items']);
 							}
 							?>
-							<div class="wt_pklist_<?php echo $button_type;?> <?php echo $css_class;?>" <?php echo $custom_attr;?> >
+							<div class="wt_pklist_<?php echo esc_attr($button_type);?> <?php echo esc_attr($css_class);?>" <?php echo wp_kses_post($custom_attr);?> >
 								<div class="wt_pklist_btn_text"><?php echo wp_kses_post($label);?></div>
-								<div class="wt_pklist_<?php echo $button_type;?>_content">
+								<div class="wt_pklist_<?php echo esc_attr($button_type);?>_content">
 									<?php
 									foreach($args['items'] as $btnkk => $btnvv)
 									{
@@ -682,7 +808,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 											$print_node_attr = 0;
 										}
 										?>
-										<a <?php echo $onclick;?> <?php echo $href_attr;?> target="_blank" data-id="<?php echo esc_attr($order_id);?>" class="<?php echo esc_attr($item_css_class);?>" <?php echo $item_custom_attr;?> title="<?php echo esc_attr($tooltip);?>" data-prompt="<?php echo esc_attr($print_node_attr); ?>"> <?php echo wp_kses_post($btn_label);?></a>
+										<a <?php echo wp_kses_post($onclick);?> <?php echo wp_kses_post($href_attr);?> target="_blank" data-id="<?php echo esc_attr($order_id);?>" class="<?php echo esc_attr($item_css_class);?>" <?php echo wp_kses_post($item_custom_attr);?> title="<?php echo esc_attr($tooltip);?>" data-prompt="<?php echo esc_attr($print_node_attr); ?>"> <?php echo wp_kses_post($btn_label);?></a>
 										<?php
 									}
 									?>
@@ -692,8 +818,8 @@ class Wf_Woocommerce_Packing_List_Admin {
 						}else
 						{
 						?>
-							<a class="button tips wf-packing-list-link <?php echo $css_class;?>" <?php echo $onclick;?> <?php echo $href_attr;?> target="_blank" data-tip="<?php echo esc_attr($tooltip);?>" data-id="<?php echo $order_id;?>" <?php echo $custom_attr;?> >
-								<?php echo $label;?>
+							<a class="button tips wf-packing-list-link <?php echo esc_attr($css_class);?>" <?php echo wp_kses_post($onclick);?> <?php echo wp_kses_post($href_attr);?> target="_blank" data-tip="<?php echo esc_attr($tooltip);?>" data-id="<?php echo esc_attr($order_id);?>" <?php echo wp_kses_post($custom_attr);?> >
+								<?php echo wp_kses_post($label);?>
 							</a>
 						<?php
 						}
@@ -713,7 +839,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 				}
 	        ?>
 				<li>
-					<a class="<?php echo esc_attr($confirmation_clss);?> <?php echo esc_attr($css_class);?>" data-id="<?php echo esc_attr($order_id);?>" <?php echo $onclick;?> <?php echo $href_attr;?> target="_blank" title="<?php echo esc_attr($tooltip);?>" <?php echo $custom_attr;?> ><?php echo wp_kses_post($label);?></a>
+					<a class="<?php echo esc_attr($confirmation_clss);?> <?php echo esc_attr($css_class);?>" data-id="<?php echo esc_attr($order_id);?>" <?php echo wp_kses_post($onclick);?> <?php echo wp_kses_post($href_attr);?> target="_blank" title="<?php echo esc_attr($tooltip);?>" <?php echo wp_kses_post($custom_attr);?> ><?php echo wp_kses_post($label);?></a>
 				</li>
 			<?php
 	        }
@@ -829,25 +955,30 @@ class Wf_Woocommerce_Packing_List_Admin {
 	 * @since 4.2.0 - print the document as per the input from the plugin settings page
 	 */
     public function print_window() {
-		if ( isset( $_REQUEST['print_packinglist']) ) {
+		$nonce = isset($_REQUEST['_wpnonce']) ? sanitize_text_field(wp_unslash($_REQUEST['_wpnonce'])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		if ( isset( $_REQUEST['print_packinglist']) && wp_verify_nonce($nonce, WF_PKLIST_PLUGIN_NAME) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$document_access_type	= Wf_Woocommerce_Packing_List::get_option('wt_pklist_print_button_access_for');
 			$wc_my_account_page 	= get_permalink( get_option('woocommerce_myaccount_page_id') );
 
+			$attaching_pdf = isset($_REQUEST['attaching_pdf']) ? sanitize_text_field(wp_unslash($_REQUEST['attaching_pdf'])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			if ( "logged_in" === $document_access_type ) {
-				if ( is_user_logged_in() && !isset( $_REQUEST['attaching_pdf'] ) ) {
+				
+				if ( is_user_logged_in() && empty( $attaching_pdf ) && wp_verify_nonce($nonce, WF_PKLIST_PLUGIN_NAME) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+					
 					// admin link
 					$this->print_document_from_the_admin_link();
-				} else if ( is_user_logged_in() && isset( $_REQUEST['attaching_pdf'] ) ) {
+					
+				} else if ( is_user_logged_in() && isset( $attaching_pdf ) && wp_verify_nonce($nonce, WF_PKLIST_PLUGIN_NAME) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 					// guest link
 					$this->print_document_from_the_mail_link();
 				} else {
-					
 					// not allowed for the guest user
 					$redirect_url = self::get_page_url_for_denied_document_access();
 					self::wt_pklist_safe_redirect_or_die( $redirect_url, __("You are not allowed to access this page","print-invoices-packing-slip-labels-for-woocommerce") );
 				}
 			} else {
-				if ( !isset( $_REQUEST['attaching_pdf'] ) ) {
+
+				if ( !isset( $attaching_pdf ) && wp_verify_nonce($nonce, WF_PKLIST_PLUGIN_NAME) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 					if ( is_user_logged_in() ) {
 						// admin link
 						$this->print_document_from_the_admin_link();
@@ -863,6 +994,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 			}
 		}
     }
+	
 
 	/**
 	 * Handles the admin side document link
@@ -870,7 +1002,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 	 * @return void
 	 */
 	public function print_document_from_the_admin_link() { 
-		$nonce	= isset( $_REQUEST['_wpnonce'] ) ? sanitize_text_field( $_REQUEST['_wpnonce'] ) : ''; 
+		$nonce	= isset( $_REQUEST['_wpnonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['_wpnonce'] ) ) : ''; 
 		$orders	= array();
 		$not_allowed_msg=__('You are not allowed to view this page.','print-invoices-packing-slip-labels-for-woocommerce');
 		$not_allowed_title=__('Access denied !!!.','print-invoices-packing-slip-labels-for-woocommerce');
@@ -884,7 +1016,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 			if ( !$user_access ) {
 				self::wt_pklist_safe_redirect_or_die( null, $not_allowed_title);	
 			}
-			$orders = explode(',', sanitize_text_field($_REQUEST['post']));
+			$orders = isset( $_REQUEST['post'] ) ? explode(',', sanitize_text_field( wp_unslash( $_REQUEST['post'] ) )) : array();
 		}
 		
 		// when doing the bulk print without permission
@@ -958,7 +1090,8 @@ class Wf_Woocommerce_Packing_List_Admin {
 			if(count($orders)>0)
 			{
 				remove_action('wp_footer', 'wp_admin_bar_render', 1000);
-				$action = (isset($_GET['type']) ? sanitize_text_field($_GET['type']) : '');
+				$nonce = isset($_GET['_wpnonce']) ? sanitize_text_field(wp_unslash($_GET['_wpnonce'])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+				$action = (isset($_GET['type']) && wp_verify_nonce($nonce, WF_PKLIST_PLUGIN_NAME)) ? sanitize_text_field(wp_unslash($_GET['type'])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
 				// Set the option to show the banner after the bulk print
 				$document_actions_for_banner = array(
@@ -996,10 +1129,9 @@ class Wf_Woocommerce_Packing_List_Admin {
 	 * @return void
 	 */
 	public function print_document_from_the_mail_link() {
-		$access_key 		= isset( $_REQUEST['access_key'] ) ? sanitize_text_field( $_REQUEST['access_key'] ) : '';
-		$encoded_order_id	= isset( $_REQUEST['post'] ) ? sanitize_text_field( $_REQUEST['post'] ) : '';
-		$mail_id			= isset( $_REQUEST['email'] ) ? sanitize_text_field( $_REQUEST['email'] ) : '';
-
+		$access_key 		= isset( $_REQUEST['access_key'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['access_key'] ) ) : '';
+		$encoded_order_id	= isset( $_REQUEST['post'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['post'] ) ) : '';
+		$mail_id			= isset( $_REQUEST['email'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['email'] ) ) : '';
 		if ( empty( $encoded_order_id ) ) {
 			self::wt_pklist_safe_redirect_or_die( null, __("Invalid order id","print-invoices-packing-slip-labels-for-woocommerce") );	
 		}
@@ -1098,7 +1230,8 @@ class Wf_Woocommerce_Packing_List_Admin {
 			if(count($orders)>0)
 			{
 				remove_action('wp_footer', 'wp_admin_bar_render', 1000);
-				$action = (isset($_GET['type']) ? sanitize_text_field($_GET['type']) : '');
+				$nonce = isset($_GET['_wpnonce']) ? sanitize_text_field(wp_unslash($_GET['_wpnonce'])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+				$action = (isset($_GET['type']) && wp_verify_nonce($nonce, WF_PKLIST_PLUGIN_NAME)) ? sanitize_text_field(wp_unslash($_GET['type'])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				
 				// Removes the WooCommerce filter, that is validating the quantity to be an int
 				remove_filter('woocommerce_stock_amount', 'intval');
@@ -1135,7 +1268,7 @@ class Wf_Woocommerce_Packing_List_Admin {
     				array(
     					'limit' => 1,
     					'return' => 'ids',
-    					'meta_query'=>array(
+    					'meta_query'=>array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
     						'key'=>'_order_number',
     						'value'=>$order_id,
     					)
@@ -1177,11 +1310,12 @@ class Wf_Woocommerce_Packing_List_Admin {
 	private function dismiss_notice()
 	{
 		$allowd_items=array();
-		if(isset($_GET['wf_pklist_notice_dismiss']) && "" !== trim($_GET['wf_pklist_notice_dismiss']))
+		if(isset($_GET['wf_pklist_notice_dismiss']) && "" !== trim($_GET['wf_pklist_notice_dismiss'])) // phpcs:ignore WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		{
-			if(in_array(sanitize_text_field($_GET['wf_pklist_notice_dismiss']),$allowd_items))
+			$wf_pklist_notice_dismiss = isset($_GET['wf_pklist_notice_dismiss']) ? sanitize_text_field(wp_unslash($_GET['wf_pklist_notice_dismiss'])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			if(in_array($wf_pklist_notice_dismiss,$allowd_items)) // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			{
-				update_option(sanitize_text_field($_GET['wf_pklist_notice_dismiss']),1);
+				update_option($wf_pklist_notice_dismiss,1); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			}
 		}
 	}
@@ -1205,11 +1339,11 @@ class Wf_Woocommerce_Packing_List_Admin {
 	 */
 	public function admin_settings_page()
 	{
-		if(isset($_GET['skip_wizard']) && 1 === absint($_GET['skip_wizard'])){
+		if(isset($_GET['skip_wizard']) && 1 === absint($_GET['skip_wizard'])){ // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			update_option('wt_pklist_new_install',0);
 		}
 
-		if(isset($_GET['complete_wizard']) && 1 === absint($_GET['complete_wizard'])){
+		if(isset($_GET['complete_wizard']) && 1 === absint($_GET['complete_wizard'])){ // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			update_option('wt_pklist_new_install',0);
 		}
 
@@ -1229,10 +1363,10 @@ class Wf_Woocommerce_Packing_List_Admin {
 
 		wp_enqueue_media();
 		wp_enqueue_script('wc-enhanced-select');
-		wp_enqueue_style('woocommerce_admin_styles', WC()->plugin_url() . '/assets/css/admin.css');
+		wp_enqueue_style('woocommerce_admin_styles', WC()->plugin_url() . '/assets/css/admin.css'); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 
 		/* enable/disable modules */
-		if(isset($_POST['wf_update_module_status']))
+		if(isset($_POST['wf_update_module_status'])) // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		{
 			// Check nonce:
 	        if(!Wf_Woocommerce_Packing_List_Admin::check_write_access()) 
@@ -1245,9 +1379,9 @@ class Wf_Woocommerce_Packing_List_Admin {
 		    {
 		        $wt_pklist_common_modules=array();
 		    }
-		    if(isset($_POST['wt_pklist_common_modules']))
+		    if(isset($_POST['wt_pklist_common_modules'])) // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		    {
-		        $wt_pklist_post=self::sanitize_text_arr($_POST['wt_pklist_common_modules']);
+		        $wt_pklist_post=self::sanitize_text_arr($_POST['wt_pklist_common_modules']);// phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		        foreach($wt_pklist_common_modules as $k=>$v)
 		        {
 		            if(isset($wt_pklist_post[$k]) && (1 === $wt_pklist_post[$k] || "1" === $wt_pklist_post[$k]))
@@ -1266,7 +1400,8 @@ class Wf_Woocommerce_Packing_List_Admin {
 		        }
 		    }
 		    update_option('wt_pklist_common_modules',$wt_pklist_common_modules);
-		    wp_redirect($_SERVER['REQUEST_URI']); exit();
+		    wp_redirect($_SERVER['REQUEST_URI']); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotValidated, WordPress.Security.ValidatedSanitizedInput.MissingUnslash
+			exit();
 		}
 
 		if( 0 === absint( get_option('wt_pklist_new_install') ) ){
@@ -1291,7 +1426,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 
     	if(true === $er) //no error then proceed
     	{
-    		$nonce=sanitize_text_field($_REQUEST['_wpnonce']);
+    		$nonce = isset($_REQUEST['_wpnonce']) ? sanitize_text_field(wp_unslash($_REQUEST['_wpnonce'])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
     		$nonce=(is_array($nonce) ? $nonce[0] : $nonce);
     		$nonce_id=("" === $nonce_id ? WF_PKLIST_PLUGIN_NAME : $nonce_id);
     		if(!(wp_verify_nonce($nonce, $nonce_id)))
@@ -1314,7 +1449,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 	*/
 	public function debug_save()
 	{	
-		if(isset($_POST['wt_pklist_admin_modules_btn']))
+		if(isset($_POST['wt_pklist_admin_modules_btn'])) // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		{
 		    if(!Wf_Woocommerce_Packing_List_Admin::check_write_access()) 
 	    	{
@@ -1326,9 +1461,9 @@ class Wf_Woocommerce_Packing_List_Admin {
 		    {
 		        $wt_pklist_common_modules=array();
 		    }
-		    if(isset($_POST['wt_pklist_common_modules']))
+		    if(isset($_POST['wt_pklist_common_modules'])) // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		    {
-		        $wt_pklist_post=self::sanitize_text_arr($_POST['wt_pklist_common_modules']);
+		        $wt_pklist_post=self::sanitize_text_arr($_POST['wt_pklist_common_modules']);// phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		        foreach($wt_pklist_common_modules as $k=>$v)
 		        {
 		            if(isset($wt_pklist_post[$k]) && (1 === $wt_pklist_post[$k] || "1" === $wt_pklist_post[$k]))
@@ -1352,9 +1487,9 @@ class Wf_Woocommerce_Packing_List_Admin {
 		    {
 		        $wt_pklist_admin_modules=array();
 		    }
-		    if(isset($_POST['wt_pklist_admin_modules']))
+		    if(isset($_POST['wt_pklist_admin_modules'])) // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		    {
-		        $wt_pklist_post=self::sanitize_text_arr($_POST['wt_pklist_admin_modules']);
+		        $wt_pklist_post=self::sanitize_text_arr($_POST['wt_pklist_admin_modules']);// phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		        foreach($wt_pklist_admin_modules as $k=>$v)
 		        {
 		            if(isset($wt_pklist_post[$k]) && (1 === $wt_pklist_post[$k] || "1" === $wt_pklist_post[$k]))
@@ -1374,7 +1509,8 @@ class Wf_Woocommerce_Packing_List_Admin {
 		    }
 		    update_option('wt_pklist_admin_modules',$wt_pklist_admin_modules);
 		    update_option('wt_pklist_common_modules',$wt_pklist_common_modules);
-		    wp_redirect($_SERVER['REQUEST_URI']); exit();
+		    wp_redirect($_SERVER['REQUEST_URI']); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotValidated, WordPress.Security.ValidatedSanitizedInput.MissingUnslash
+			exit();
 		}
 
 		if(Wf_Woocommerce_Packing_List_Admin::check_role_access()) //Check access
@@ -1484,14 +1620,14 @@ class Wf_Woocommerce_Packing_List_Admin {
 	{
 		extract($variables);
 	?>
-		<div class="wf-tab-content" data-id="<?php echo $target_id;?>">
+		<div class="wf-tab-content" data-id="<?php echo esc_attr($target_id);?>">
 			<?php
 			if("" !== $view_file && file_exists($view_file))
 			{
 				include_once $view_file;
 			}else
 			{
-				echo $html;
+				echo wp_kses_post($html);
 			}
 			?>
 			<?php 
@@ -1512,14 +1648,14 @@ class Wf_Woocommerce_Packing_List_Admin {
 	{
 		extract($variables);
 	?>
-		<div class="wf_sub_tab_content" data-id="<?php echo $target_id;?>">
+		<div class="wf_sub_tab_content" data-id="<?php echo esc_attr($target_id);?>">
 			<?php
 			if("" !== $view_file && file_exists($view_file))
 			{
 				include_once $view_file;
 			}else
 			{
-				echo $html;
+				echo wp_kses_post($html);
 			}
 			?>
 			<?php 
@@ -1597,9 +1733,9 @@ class Wf_Woocommerce_Packing_List_Admin {
 	*/
 	public function save_settings()
 	{
-		$base		= ( isset( $_POST['wf_settings_base'] ) ? sanitize_text_field( $_POST['wf_settings_base'] ) : 'main' );
+		$base		= ( isset( $_POST['wf_settings_base'] ) ? sanitize_text_field( wp_unslash( $_POST['wf_settings_base'] ) ) : 'main' ); // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		$base_id	= ( "main" === $base ? '' : Wf_Woocommerce_Packing_List::get_module_id( $base ) );
-		$tab_name 	= ( isset( $_POST['wt_tab_name'] ) ? sanitize_text_field( $_POST['wt_tab_name'] ) : "" );
+		$tab_name 	= ( isset( $_POST['wt_tab_name'] ) ? sanitize_text_field( wp_unslash( $_POST['wt_tab_name'] ) ) : "" ); // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		$out		= array(
 			'status'	=> false,
 			'msg'		=> __('Error', 'print-invoices-packing-slip-labels-for-woocommerce'),
@@ -1626,9 +1762,9 @@ class Wf_Woocommerce_Packing_List_Admin {
 	       	
 			$run_empty_count 			= false;
 	        //invoice number empty count trigger when changing the order status in invoice settings page
-	        if ( isset( $_POST['woocommerce_wf_generate_for_orderstatus'] ) ) {
-	        	if ( is_array( $the_options['woocommerce_wf_generate_for_orderstatus'] ) && is_array( $_POST['woocommerce_wf_generate_for_orderstatus'] ) ) {
-	        		$find_diff = array_merge( array_diff( $the_options['woocommerce_wf_generate_for_orderstatus'], $_POST['woocommerce_wf_generate_for_orderstatus'] ), array_diff( $_POST['woocommerce_wf_generate_for_orderstatus'], $the_options['woocommerce_wf_generate_for_orderstatus'] ) );
+	        if ( isset( $_POST['woocommerce_wf_generate_for_orderstatus'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+	        	if ( is_array( $the_options['woocommerce_wf_generate_for_orderstatus'] ) && is_array( $_POST['woocommerce_wf_generate_for_orderstatus'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+	        		$find_diff = array_merge( array_diff( $the_options['woocommerce_wf_generate_for_orderstatus'], $_POST['woocommerce_wf_generate_for_orderstatus'] ), array_diff( $_POST['woocommerce_wf_generate_for_orderstatus'], $the_options['woocommerce_wf_generate_for_orderstatus'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		        	if ( !empty( $find_diff ) ) {
 		        		$run_empty_count = true;
 		        	}
@@ -1637,7 +1773,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 
 	        // invoice number empty count trigger when enable or disable the old orders
 	        if ( isset( $the_options['wf_woocommerce_invoice_prev_install_orders'] ) ) {
-	        	$prev_val	= isset($_POST['wf_woocommerce_invoice_prev_install_orders']) ? sanitize_text_field($_POST['wf_woocommerce_invoice_prev_install_orders']) : "";
+	        	$prev_val	= isset($_POST['wf_woocommerce_invoice_prev_install_orders']) ? sanitize_text_field(wp_unslash($_POST['wf_woocommerce_invoice_prev_install_orders'])) : ""; // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 	        	if ( ( "" !== $prev_val ) && ( $prev_val !== $the_options['wf_woocommerce_invoice_prev_install_orders'] ) ) {
 	        		$run_empty_count = true;
 		        } elseif ( ( "" === $prev_val ) && ( "No" !== $the_options['wf_woocommerce_invoice_prev_install_orders'] ) ) {
@@ -1663,19 +1799,19 @@ class Wf_Woocommerce_Packing_List_Admin {
 	        foreach ( $the_options as $key => $value ) {
 				if ( in_array( $key, $invoice_number_keys ) ) {
 					$modified_key	= $key.'_pdf_fw';
-					$post_key		= isset( $_POST[$modified_key] ) ? $modified_key :  $key;
+					$post_key		= isset( $_POST[$modified_key] ) ? $modified_key :  $key; // phpcs:ignore WordPress.Security.NonceVerification.Missing
 				} else {
 					$post_key 		= $key;
 				}
 
-	            if ( isset( $_POST[$post_key] ) ) {
-	            	$the_options[$key]		= $this->validate_settings_data( $_POST[$post_key], $key, $validation_rule );
+	            if ( isset( $_POST[$post_key] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+	            	$the_options[$key]		= $this->validate_settings_data( $_POST[$post_key], $key, $validation_rule ); // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 	            	
 					if( "woocommerce_wf_packinglist_boxes" === $key ) {
-	            		$the_options[$key]	= $this->validate_box_packing_field( $_POST[$key] );
+	            		$the_options[$key]	= $this->validate_box_packing_field( $_POST[$key] ); // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.ValidatedSanitizedInput.InputNotValidated
 	            	}
 
-					if ( "wt_pklist_auto_temp_clear_interval" === $key && "" === trim( $_POST[$key] ) ) {
+					if ( "wt_pklist_auto_temp_clear_interval" === $key && "" === trim( $_POST[$key] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.ValidatedSanitizedInput.InputNotValidated
 						$the_options[$key] 	= 0;
 					}
 
@@ -1683,7 +1819,8 @@ class Wf_Woocommerce_Packing_List_Admin {
 	            		$the_options[$key] 	= apply_filters( 'wf_module_save_multi_checkbox_fields', $the_options[$key], $key, $multi_checkbox_fields, $base_id );
 	            	}
 	            } elseif ( array_key_exists( $key, $single_checkbox_fields ) ) {
-	            	if( !isset( $_POST['update_sequential_number'] ) ) { //since the settings of the invoice are divided into 2
+					// since the settings of the invoice are divided into 2
+	            	if( !isset( $_POST['update_sequential_number'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 	            		$the_options[$key] 	= $single_checkbox_fields[$key]; //if unchecked,PHP will not send the values, so get the unchecked value from the respective modules
 	            	}
 	            } elseif ( array_key_exists( $key, $multi_checkbox_fields ) ) {
@@ -1691,7 +1828,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 	            } else {
 	            	if ( array_key_exists( $key, $default_val_needed_fields ) ) {
 	            		/* Set a hidden field for every multi-select field in the form. This will be used to populate the multi-select field with an empty array when it does not have any value. */
-	            		if ( isset( $_POST[$key.'_hidden'] ) )
+	            		if ( isset( $_POST[$key.'_hidden'] ) ) // phpcs:ignore WordPress.Security.NonceVerification.Missing
 	            		{
 	            			$the_options[$key]	= $default_val_needed_fields[$key];
 	            		}
@@ -2147,12 +2284,12 @@ class Wf_Woocommerce_Packing_List_Admin {
 				}
 			}
 			/* translators: %s: method */
-			$shipping .= apply_filters( 'woocommerce_order_shipping_to_display_shipped_via', '&nbsp;<small class="shipped_via">' . sprintf( __( 'via %s', 'woocommerce' ), $order->get_shipping_method() ) . '</small>', $order );
+			$shipping .= apply_filters( 'woocommerce_order_shipping_to_display_shipped_via', '&nbsp;<small class="shipped_via">' . sprintf( __( 'via %s', 'print-invoices-packing-slip-labels-for-woocommerce' ), $order->get_shipping_method() ) . '</small>', $order );
 
 		} elseif ( $order->get_shipping_method() ) {
 			$shipping = $order->get_shipping_method();
 		} else {
-			$shipping = __( 'Free!', 'woocommerce' );
+			$shipping = __( 'Free!', 'print-invoices-packing-slip-labels-for-woocommerce' );
 		}
 		return $shipping;
 	}
@@ -2224,19 +2361,19 @@ class Wf_Woocommerce_Packing_List_Admin {
 		
 		if(Wf_Woocommerce_Packing_List_Admin::check_write_access()) 
     	{
-			if(isset($_POST['wt_pklist_custom_field_btn']))  
+			if(isset($_POST['wt_pklist_custom_field_btn'])) // phpcs:ignore WordPress.Security.NonceVerification.Missing
 			{
 			    //additional fields for checkout
-				if(isset($_POST['wt_pklist_new_custom_field_title']) && isset($_POST['wt_pklist_new_custom_field_key']) && isset($_POST['wt_pklist_custom_field_type'])) 
+				if(isset($_POST['wt_pklist_new_custom_field_title']) && isset($_POST['wt_pklist_new_custom_field_key']) && isset($_POST['wt_pklist_custom_field_type'])) // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		        {
-		        	if("" !== trim($_POST['wt_pklist_new_custom_field_title']) && "" !== trim($_POST['wt_pklist_new_custom_field_key']))
+		        	if("" !== trim($_POST['wt_pklist_new_custom_field_title']) && "" !== trim($_POST['wt_pklist_new_custom_field_key'])) // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		        	{
-		        		$custom_field_type=sanitize_text_field($_POST['wt_pklist_custom_field_type']);
+		        		$custom_field_type=sanitize_text_field(wp_unslash($_POST['wt_pklist_custom_field_type'])); // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		        		if("order_meta" === $custom_field_type)
 		        		{
-		        			$module_base = (isset($_POST['wt_pklist_settings_base']) ? sanitize_text_field($_POST['wt_pklist_settings_base']) : 'main');
+		        			$module_base = (isset($_POST['wt_pklist_settings_base']) ? sanitize_text_field(wp_unslash($_POST['wt_pklist_settings_base'])) : 'main'); // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 							$module_id = ("main" === $module_base ? '' : Wf_Woocommerce_Packing_List::get_module_id($module_base));
-							$add_only = (isset($_POST['add_only']) ? true : false);
+							$add_only = (isset($_POST['add_only']) ? true : false); // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		        			$field_config=array(
 		        				'order_meta'=>array(
 		        					'list'=>'wf_additional_data_fields',
@@ -2245,8 +2382,8 @@ class Wf_Woocommerce_Packing_List_Admin {
 		        			);
 
 		        			/* form input */
-		        			$new_meta_key=sanitize_text_field($_POST['wt_pklist_new_custom_field_key']);		            
-        					$new_meta_vl=sanitize_text_field($_POST['wt_pklist_new_custom_field_title']);
+		        			$new_meta_key=sanitize_text_field(wp_unslash($_POST['wt_pklist_new_custom_field_key'])); // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+        					$new_meta_vl=sanitize_text_field(wp_unslash($_POST['wt_pklist_new_custom_field_title'])); // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
         					/* option key names for full list, selected list */
         					$list_field=$field_config[$custom_field_type]['list'];
@@ -2326,8 +2463,8 @@ class Wf_Woocommerce_Packing_List_Admin {
 
     public static function order_meta_dropdown_list(){
     	$order_meta_query = array();
-    	if(isset($_GET['page'])){
-    		if("wf_woocommerce_packing_list_invoice" === $_GET['page']){
+    	if(isset($_GET['page'])){ // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+    		if("wf_woocommerce_packing_list_invoice" === $_GET['page']){ // phpcs:ignore WordPress.Security.NonceVerification.Recommended
     			global $wpdb;
 		    	$order_meta_selected_list = Wf_Woocommerce_Packing_List::get_option('wf_additional_data_fields');
 		    	$first_meta_key = function_exists('array_key_first') ? array_key_first($order_meta_selected_list): key( array_slice( $order_meta_selected_list, 0, 1, true ) );
@@ -2362,6 +2499,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 	public function wt_pklist_delete_all_invoice_numbers_tool($tools){
 		$article_url = "https://www.webtoffee.com/reset-delete-existing-invoice-numbers";
 
+		/* translators: 1$s: Tool description text, 2$s: Note label, 3$s: Article link opening tag, 4$s: Article link closing tag */
 		$tool_description = sprintf('%1$s<br><strong class="red">%2$s</strong>',__( 'This will remove all invoice numbers created by WooCommerce PDF Invoices, Packing Slips, Delivery Notes & Shipping Labels by WebToffee.', 'print-invoices-packing-slip-labels-for-woocommerce' ),__( 'Note:', 'print-invoices-packing-slip-labels-for-woocommerce' ))." ".sprintf(__( 'Before using this tool, please make sure you followed the steps described in this article %1$s how to reset/delete existing invoice numbers%2$s.', 'print-invoices-packing-slip-labels-for-woocommerce' ),'<a href="' . esc_url( $article_url ) . '">','</a>');
 		
 		$tools['wf_pklist_delete_all_invoice_number'] = array(
@@ -2427,18 +2565,18 @@ class Wf_Woocommerce_Packing_List_Admin {
 		$result = array('auto_generate' => false, 'order_empty_invoice_count' => 0, 'invoice_enabled' => false);
 		if(Wt_Pklist_Common::is_wc_hpos_enabled()){
 			// order listing page and order edit page will have these url parameters
-			if('admin.php' === $pagenow && isset($_GET['page']) && "wc-orders" === $_GET['page']){
+			if('admin.php' === $pagenow && isset($_GET['page']) && "wc-orders" === $_GET['page']){ // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				$result["auto_generate"] = true;
 			}
 		}else{
-			if('edit.php' === $pagenow && (isset($_GET['post_type']) && "shop_order" === $_GET['post_type'])){
+			if('edit.php' === $pagenow && (isset($_GET['post_type']) && "shop_order" === $_GET['post_type'])){ // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				$result["auto_generate"] = true;
 			}elseif('post.php' === $pagenow){
 				$req_type = "";
-				if ('post' === $typenow && isset($_GET['post']) && !empty($_GET['post'])) {
+				if ('post' === $typenow && isset($_GET['post']) && !empty($_GET['post'])) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 					$req_type = $post->post_type;
-				} elseif (empty($typenow) && !empty($_GET['post'])) {
-					$post = get_post($_GET['post']);
+				} elseif (empty($typenow) && !empty($_GET['post'])) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+					$post = get_post(absint($_GET['post'])); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 					$req_type = $post->post_type;
 				}
 
@@ -2477,7 +2615,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 					    'post_type' => 'shop_order',
 					    'post_status' => $generate_invoice_for,
 					    'fields' => 'ids',
-					    'meta_query' => array(
+					    'meta_query' => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
 						   'relation' => 'OR',
 						    array(
 						     'key' => 'wf_invoice_number',
@@ -2496,7 +2634,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 
 	   		if("No" === $invoice_for_prev_install_order){
 	   			$utc_timestamp = get_option('wt_pklist_installation_date');
-				$utc_timestamp_converted = date( 'Y-m-d h:i:s', $utc_timestamp );
+				$utc_timestamp_converted = gmdate( 'Y-m-d h:i:s', $utc_timestamp );
 				$local_timestamp = get_date_from_gmt( $utc_timestamp_converted, 'Y-m-d h:i:s' );
 				$args['date_query'] = array('after' => $local_timestamp);
 	   		}
@@ -2572,7 +2710,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 			update_option('wt_pklist_installation_date',$install_date);
 		}
         $utc_timestamp = get_option('wt_pklist_installation_date');
-		$utc_timestamp_converted = date( 'Y-m-d h:i:s', $utc_timestamp );
+		$utc_timestamp_converted = gmdate( 'Y-m-d h:i:s', $utc_timestamp );
 		$local_timestamp = get_date_from_gmt( $utc_timestamp_converted, 'Y-m-d h:i:s' );
    		if($order_date < $local_timestamp){
    			return true;
@@ -2599,10 +2737,10 @@ class Wf_Woocommerce_Packing_List_Admin {
 	    {
 	        $wt_pklist_common_modules=array();
 	    }
-	    if(isset($_POST['doc_module_name']))
+	    if(isset($_POST['doc_module_name'])) // phpcs:ignore WordPress.Security.NonceVerification.Missing
 	    {
-	    	$wt_pklist_post = explode('wt_pklist_',$_POST['doc_module_name']);
-	    	$wt_pklist_common_modules[$wt_pklist_post[1]]=$_POST['doc_module_set'];
+	    	$wt_pklist_post = explode('wt_pklist_',sanitize_text_field(wp_unslash($_POST['doc_module_name']))); // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+	    	$wt_pklist_common_modules[$wt_pklist_post[1]]=sanitize_text_field(wp_unslash($_POST['doc_module_set'])); // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.ValidatedSanitizedInput.InputNotValidated
 	    	$output['doc_set'] = 1;
 	    	$output['message'] = __('Updated','print-invoices-packing-slip-labels-for-woocommerce');	
 	    }else{
@@ -3972,16 +4110,16 @@ class Wf_Woocommerce_Packing_List_Admin {
 		$show_popup = false;
 		if(Wt_Pklist_Common::is_wc_hpos_enabled()){
 			// order listing page and order edit page will have these url parameters
-			if('admin.php' === $pagenow && isset($_GET['page']) && "wc-orders" === $_GET['page']){
+			if('admin.php' === $pagenow && isset($_GET['page']) && "wc-orders" === $_GET['page']){ // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				$show_popup = true;
 			}
 		}else{
-			if('edit.php' === $pagenow && (isset($_GET['post_type']) && "shop_order" === $_GET['post_type'])){
+			if('edit.php' === $pagenow && (isset($_GET['post_type']) && "shop_order" === $_GET['post_type'])){ // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				$show_popup = true;
 			}elseif('post.php' === $pagenow){
 				$req_type = "";
-				if(isset($_GET['post']) && !empty($_GET['post'])){
-					$post = get_post($_GET['post']);
+				if(isset($_GET['post']) && !empty($_GET['post'])){ // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+					$post = get_post(absint($_GET['post'])); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 					$req_type = $post->post_type;
 				}
 				if("shop_order" == $req_type){
@@ -4018,6 +4156,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 							'.__("Cancel","print-invoices-packing-slip-labels-for-woocommerce").'
 						</button>
 				</div>';
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Trusted form data that may contain checkboxes and other form elements
 			echo $data;
 
 			$data_ublinvoice = '<div class="wt_doc_create_confirm_popup_ublinvoice wf_pklist_popup" style="width:40%;text-align:left;">
@@ -4040,6 +4179,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 					</div>
 					</div>
 				</div>';
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Trusted form data that may contain checkboxes and other form elements
 			echo $data_ublinvoice;
 		}
 	}
@@ -4070,7 +4210,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 	}
 
 	public function wt_pklist_cta_banner_dismiss(){
-		$nonce	= isset($_POST['_wpnonce']) ? sanitize_text_field($_POST['_wpnonce']) : ''; 
+		$nonce	= isset($_POST['_wpnonce']) ? sanitize_text_field(wp_unslash($_POST['_wpnonce'])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		if(!(wp_verify_nonce($nonce,WF_PKLIST_PLUGIN_NAME)))
 		{
 			$result = array('status' => false, 'message' => __("You are not allowed to do this action","print-invoices-packing-slip-labels-for-woocommerce"));
@@ -4078,9 +4218,9 @@ class Wf_Woocommerce_Packing_List_Admin {
 			exit();
 		}
 		$banner_option	= get_option('wt_pklist_dismissible_banners');
-		$banner_class	= isset($_POST['banner_class']) ? sanitize_text_field($_POST['banner_class']) : "";
-		$banner_action 	= isset($_POST['banner_action']) ? sanitize_text_field($_POST['banner_action']) : 0;
-		$banner_interval	= isset($_POST['banner_interval']) ? sanitize_text_field($_POST['banner_interval']): 0;
+		$banner_class	= isset($_POST['banner_class']) ? sanitize_text_field(wp_unslash($_POST['banner_class'])) : ""; // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		$banner_action 	= isset($_POST['banner_action']) ? sanitize_text_field(wp_unslash($_POST['banner_action'])) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		$banner_interval	= isset($_POST['banner_interval']) ? sanitize_text_field(wp_unslash($_POST['banner_interval'])): 0; // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
 		if(!empty($banner_class)){
 			$banner_option[$banner_class] = array(
@@ -4109,10 +4249,10 @@ class Wf_Woocommerce_Packing_List_Admin {
 		$order = ( $post_or_order_object instanceof WP_Post ) ? wc_get_order( $post_or_order_object->ID ) : $post_or_order_object;
 		$debug_result_final = array();
 		$result = '';
-		if ( ! empty( $order ) && isset( $_GET['wt-pklist-debug'] ) && 1 === (int)$_GET['wt-pklist-debug'] ) {	
+		if ( ! empty( $order ) && isset( $_GET['wt-pklist-debug'] ) && 1 === (int)$_GET['wt-pklist-debug'] ) {	 // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$debug_result_final['order_details'] = $order;
 			$result = '<div style="overflow-x:auto;">';
-			$result .= '<pre>' . wp_kses_post( print_r( $debug_result_final, true ) ) . '</pre>';
+			$result .= '<pre>' . wp_kses_post( print_r( $debug_result_final, true ) ) . '</pre>'; // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
 			$result .= '</div>';
 		}
 
@@ -4184,7 +4324,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 	 * @return void
 	 */
 	public function wt_pklist_settings_json(){
-		$export_module_nonce = $_POST['_wpnonce'] ? sanitize_text_field( $_POST['_wpnonce'] ) : '';
+		$export_module_nonce = isset($_POST['_wpnonce']) ? sanitize_text_field( wp_unslash( $_POST['_wpnonce'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		if( !wp_verify_nonce( $export_module_nonce, WF_PKLIST_PLUGIN_NAME . '_debug_export_form' ) || !Wf_Woocommerce_Packing_List_Admin::check_role_access() ) {
 			echo json_encode( array( 'error' => __('You are not allowed to do this action', 'print-invoices-packing-slip-labels-for-woocommerce' ) ) );
 			die;
@@ -4204,8 +4344,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 
 			global $wpdb;
 			$table_name=$wpdb->prefix.Wf_Woocommerce_Packing_List::$template_data_tb;
-			$qry=$wpdb->prepare("SELECT * FROM $table_name");
-			$templates = $wpdb->get_results($qry);
+			$templates = $wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name")); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
 			foreach($templates as $temp){
 				$response['wfpklist_template_data'][] = array(
 					'template_name' => $temp->template_name,
@@ -4233,17 +4372,17 @@ class Wf_Woocommerce_Packing_List_Admin {
 	 * @return void
 	 */
 	public function wt_pklist_import_settings(){
-		if(isset($_POST['wt_pklist_settings_import_confirm_text']))
+		if(isset($_POST['wt_pklist_settings_import_confirm_text'])) // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		{
-			if("confirm" === $_POST['wt_pklist_settings_import_confirm_text']){
-				$import_module_nonce = isset( $_POST['_wtpdf_debug_settings_import_nonce'] ) ? sanitize_text_field( $_POST['_wtpdf_debug_settings_import_nonce'] ) : '';
+			if("confirm" === $_POST['wt_pklist_settings_import_confirm_text']){ // phpcs:ignore WordPress.Security.NonceVerification.Missing
+				$import_module_nonce = isset( $_POST['_wtpdf_debug_settings_import_nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['_wtpdf_debug_settings_import_nonce'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
  				if( !wp_verify_nonce( $import_module_nonce, WF_PKLIST_PLUGIN_NAME . '_debug_import_form' ) || !Wf_Woocommerce_Packing_List_Admin::check_role_access() ) {
 					self::wt_pklist_safe_redirect_or_die( null, __( 'You are not allowed to do this action', 'print-invoices-packing-slip-labels-for-woocommerce') );
 				} else {
-					$template_import = isset($_POST['template_import']) ? sanitize_text_field($_POST['template_import']) : 'append';
+					$template_import = isset($_POST['template_import']) ? sanitize_text_field(wp_unslash($_POST['template_import'])) : 'append'; // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 					require_once(ABSPATH . 'wp-load.php');
-					if ( $_FILES['wt_pklist_import_setting_file']['error'] === UPLOAD_ERR_OK ) {
-						$file = $_FILES['wt_pklist_import_setting_file']['tmp_name'];
+					if ( isset($_FILES['wt_pklist_import_setting_file']['error']) && UPLOAD_ERR_OK === $_FILES['wt_pklist_import_setting_file']['error'] ) {	
+						$file = $_FILES['wt_pklist_import_setting_file']['tmp_name']; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.ValidatedSanitizedInput.InputNotValidated
 						// Read the contents of the file
 						$contents = file_get_contents($file);
 					
@@ -4273,17 +4412,17 @@ class Wf_Woocommerce_Packing_List_Admin {
 												global $wpdb;
 												$table_name=$wpdb->prefix.Wf_Woocommerce_Packing_List::$template_data_tb;
 												if('override' === $template_import){
-													$wpdb->query("TRUNCATE TABLE $table_name");
+													$wpdb->query("TRUNCATE TABLE $table_name"); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
 												}
 												foreach($value as $row_key => $row_val){
-													$search_template_name = $wpdb->get_row($wpdb->prepare("SELECT `id_wfpklist_template_data` from $table_name WHERE `template_name` LIKE %s AND `template_type` LIKE %s",array(esc_sql($row_val['template_name']),esc_sql($row_val['template_type']))));
+													$search_template_name = $wpdb->get_row($wpdb->prepare("SELECT `id_wfpklist_template_data` from $table_name WHERE `template_name` LIKE %s AND `template_type` LIKE %s",array(esc_sql($row_val['template_name']),esc_sql($row_val['template_type'])))); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
 													if(!$search_template_name){
 														$template_name = $row_val['template_name'];
 													}else{
 														$template_name = $row_val['template_name'].'_'.time();
 													}
 
-													$search_is_active = $wpdb->get_row($wpdb->prepare("SELECT `id_wfpklist_template_data` from $table_name WHERE `is_active` = %d AND `template_type` LIKE %s",array(esc_sql($row_val['is_active']),esc_sql($row_val['template_type']))));
+													$search_is_active = $wpdb->get_row($wpdb->prepare("SELECT `id_wfpklist_template_data` from $table_name WHERE `is_active` = %d AND `template_type` LIKE %s",array(esc_sql($row_val['is_active']),esc_sql($row_val['template_type'])))); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
 													$is_active	= (!$search_is_active) ? $row_val['is_active'] : 0;
 													$insert_data=array(
 														'template_name'	=> $template_name,
@@ -4298,7 +4437,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 													$insert_data_type=array(
 														'%s','%s','%d','%s','%d','%d','%d','%d'
 													); 
-													$wpdb->insert($table_name,$insert_data,$insert_data_type);
+													$wpdb->insert($table_name,$insert_data,$insert_data_type); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
 												}
 											}
 										}
@@ -4321,7 +4460,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 						}
 					} else {
 						$error_message 	= __("Error uploading the file","print-invoices-packing-slip-labels-for-woocommerce");
-						$error_message .= $_FILES['file']['error'];
+						$error_message .= $_FILES['file']['error']; // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.ValidatedSanitizedInput.InputNotValidated
 						$error_code		= 1;
 					}
 
@@ -4355,7 +4494,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 
 		if(isset($_POST['wt_pklist_settings_reset_confirm_text'])){
 
-			$reset_nonce	= isset( $_POST['_wtpdf_debug_settings_reset_nonce'] ) ? sanitize_text_field( $_POST['_wtpdf_debug_settings_reset_nonce'] ) : '';
+			$reset_nonce	= isset( $_POST['_wtpdf_debug_settings_reset_nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['_wtpdf_debug_settings_reset_nonce'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			if( !wp_verify_nonce( $reset_nonce, WF_PKLIST_PLUGIN_NAME . '_debug_reset_form' ) || !Wf_Woocommerce_Packing_List_Admin::check_role_access() ) { // added nonce verification and capability check
 				
 				self::wt_pklist_safe_redirect_or_die( null, __( 'You are not allowed to do this action', 'print-invoices-packing-slip-labels-for-woocommerce') );	
@@ -4370,10 +4509,10 @@ class Wf_Woocommerce_Packing_List_Admin {
 					delete_option($option);
 				}
 
-				if(!isset($_POST['dont_reset_template'])){
+				if(!isset($_POST['dont_reset_template'])){ // phpcs:ignore WordPress.Security.NonceVerification.Missing
 					global $wpdb;
 					$table_name=$wpdb->prefix.Wf_Woocommerce_Packing_List::$template_data_tb;
-					$delete_the_template = $wpdb->query("TRUNCATE TABLE $table_name");
+					$delete_the_template = $wpdb->query("TRUNCATE TABLE $table_name"); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 				}else{
 					$delete_the_template = 0;
 					update_option('wf_pklist_templates_migrated',1);
@@ -4520,7 +4659,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 	    } 
 
 		$zip 		= new ZipArchive();
-		$doc_type 	= isset($_POST['doc_type']) ? sanitize_text_field($_POST['doc_type']) : 'total_files';
+		$doc_type 	= isset($_POST['doc_type']) ? sanitize_text_field(wp_unslash($_POST['doc_type'])) : 'total_files'; // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		$backup_dir	= Wf_Woocommerce_Packing_List::get_temp_dir('path');
 		$backup_url	= Wf_Woocommerce_Packing_List::get_temp_dir('url');
 		$doc_file_loc = Wf_Woocommerce_Packing_List::get_temp_dir('path');
@@ -4570,11 +4709,11 @@ class Wf_Woocommerce_Packing_List_Admin {
 	*/
 	public function download_temp_zip_file()
 	{
-		if(isset($_GET['wt_pklist_download_temp_zip']))
+		if(isset($_GET['wt_pklist_download_temp_zip'])) // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		{
 			if(self::check_write_access()) /* check nonce and role */
 			{
-				$file_name=(isset($_GET['file']) ? sanitize_text_field($_GET['file']) : '');
+				$file_name=(isset($_GET['file']) ? sanitize_text_field(wp_unslash($_GET['file'])) : ''); // phpcs:ignore WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 				if($file_name!="")
 				{
 					$file_arr=explode(".", $file_name);
@@ -4594,21 +4733,24 @@ class Wf_Woocommerce_Packing_List_Admin {
 						    header('Content-Type: application/zip');
 						    header('Content-Length: '.filesize($file_path));
 
-						    $chunk_size=1024 * 1024;
-						    $handle=@fopen($file_path, 'rb');
-
-							if ( ! $handle ) {
-								exit();
-							}
-
-						    while(!feof($handle))
-						    {
-						        $buffer = fread($handle, $chunk_size);
-						        echo $buffer;
-						        ob_flush();
-						        flush();
+						    global $wp_filesystem;
+						    
+						    // Initialize the WordPress filesystem
+						    if (empty($wp_filesystem)) {
+						        require_once(ABSPATH . '/wp-admin/includes/file.php');
+						        WP_Filesystem();
 						    }
-						    fclose($handle);
+						    
+						    // Read the entire file content
+						    $file_content = $wp_filesystem->get_contents($file_path);
+						    
+						    if (false === $file_content) {
+						        exit();
+						    }
+						    
+						    // Output binary content directly 
+						    // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Trusted file content
+						    echo $file_content;
 						    exit();
 						}
 					}
@@ -4634,7 +4776,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 	    	exit();
 	    }
 
-		$doc_type 	= isset($_POST['doc_type']) ? sanitize_text_field($_POST['doc_type']) : 'total_files';
+		$doc_type 	= isset($_POST['doc_type']) ? sanitize_text_field(wp_unslash($_POST['doc_type'])) : 'total_files'; // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 	    /* recrusively delete files */
 	    $this->delete_temp_files_recursively($doc_type,false);
 		$total_temp_files = self::get_total_temp_files(true);
@@ -4689,7 +4831,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 					$file_ext=end($file_ext_arr);
 					if(($file_ext==='pdf') || ($file_ext==='zip') || ($file_ext==='html')) //temp pdf files and zip files
 					{
-						@unlink($file);
+						wp_delete_file($file);
 					}
 				}
 			}
@@ -4707,7 +4849,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 						$file_ext=end($file_ext_arr);
 						if(($file_ext==='zip')) //temp pdf files and zip files
 						{
-							@unlink($file);
+							wp_delete_file($file);
 						}
 					}
 				}
@@ -4749,7 +4891,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 			wp_safe_redirect( $url );
 			exit;
 		} else {
-			wp_die( $message );
+			wp_die( wp_kses_post( $message ) );
 		}
 	}
 
@@ -4797,7 +4939,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 						<ul>';
 						$btn_arr=array();
 						$btn_arr=apply_filters('wt_print_actions', $btn_arr, $order, $order_id, 'list_page');
-						echo self::generate_print_button_html($btn_arr, $order, $order_id, 'list_page'); //generate buttons
+						echo wp_kses_post(self::generate_print_button_html($btn_arr, $order, $order_id, 'list_page')); //generate buttons
 						echo '</ul>
 					</div>
 					<div class="wf_arrow"></div>	
@@ -4845,7 +4987,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 			);
 
 			foreach($general_module_fields as $g_key){
-				$val = isset($_POST[$g_key]) ? sanitize_text_field($_POST[$g_key]) : '';
+				$val = isset($_POST[$g_key]) ? sanitize_text_field(wp_unslash($_POST[$g_key])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 				Wf_Woocommerce_Packing_List::update_option($g_key,$val);
 			}
 
@@ -4856,22 +4998,22 @@ class Wf_Woocommerce_Packing_List_Admin {
 					$invoice_gen_status = array('wc-completed','wc-processing');
 					$i_val = array();
 					
-					if(isset($_POST['wt_pdf_invoice_attachment_wc_email_classes'])){
+					if(isset($_POST['wt_pdf_invoice_attachment_wc_email_classes'])){ // phpcs:ignore WordPress.Security.NonceVerification.Missing
 						$order_status_wc_class_arr = Wt_Pklist_Common::wc_order_status_email_class_mapping();
 						if ( !empty( $order_status_wc_class_arr ) ) {
 							$invoice_gen_status = array();
 							foreach ( $order_status_wc_class_arr as $order_status => $wc_email_class ) {
-								if ( in_array( $wc_email_class, array_map('sanitize_text_field', $_POST['wt_pdf_invoice_attachment_wc_email_classes']) ) ) {
+								if ( in_array( $wc_email_class, array_map('sanitize_text_field', $_POST['wt_pdf_invoice_attachment_wc_email_classes']) ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 									$invoice_gen_status[] = $order_status;
 								}
 							}
 						}
-						$i_val = array_map('sanitize_text_field', $_POST['wt_pdf_invoice_attachment_wc_email_classes']);
+						$i_val = array_map('sanitize_text_field', $_POST['wt_pdf_invoice_attachment_wc_email_classes']); // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash
 					}
 
 					Wf_Woocommerce_Packing_List::update_option('woocommerce_wf_generate_for_orderstatus',$invoice_gen_status,$invoice_module_id);
 				}else{
-					$i_val = isset($_POST[$i_post_key]) ? sanitize_text_field($_POST[$i_post_key]) : '';
+					$i_val = isset($_POST[$i_post_key]) ? sanitize_text_field($_POST[$i_post_key]) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 				}
 				Wf_Woocommerce_Packing_List::update_option($i_key, $i_val, $invoice_module_id);
 			}
@@ -4890,7 +5032,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 	 * @return void
 	 */
 	public function update_plugin_settings_when_wc_update_settings(){
-		$current_wc_page	= isset( $_GET['page'] ) ? sanitize_text_field( $_GET['page'] ) : '';
+		$current_wc_page	= isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$wc_price_inc_tax	= get_option('woocommerce_prices_include_tax');
 		$wc_tax_enable		= ! function_exists( 'wc_tax_enabled' ) ? apply_filters( 'wc_tax_enabled', get_option( 'woocommerce_calc_taxes' ) === 'yes' ) : wc_tax_enabled();
 		
@@ -4926,10 +5068,10 @@ class Wf_Woocommerce_Packing_List_Admin {
 		);
 
 		if( true === $from_ajax ) {
-			$base		= ( isset( $_POST[ 'wf_settings_base' ] ) ? sanitize_text_field( $_POST[ 'wf_settings_base' ] ) : 'main' );
+			$base		= ( isset( $_POST[ 'wf_settings_base' ] ) ? sanitize_text_field( wp_unslash( $_POST[ 'wf_settings_base' ] ) ) : 'main' ); // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			$page_param	= ( "main" === $base ? '' : Wf_Woocommerce_Packing_List::get_module_id( $base ) );
 		} else {
-			$page_param = isset( $_GET['page'] ) ? sanitize_text_field( $_GET['page'] ): '';
+			$page_param = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		}
 
 		$wt_pklist_plugin_data = apply_filters('wt_pklist_get_plugin_data', $wt_pklist_plugin_data, $page_param);

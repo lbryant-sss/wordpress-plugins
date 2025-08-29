@@ -76,7 +76,7 @@ $pro_addons_list_details = array(
                     <p class="pro_plugin_title">
                         <b><span class="free_pro_show_more dashicons dashicons-arrow-down-alt2" style="display:<?php if(0 !== $i){echo "inline-block";}else{echo "none"; }; ?>"></span>
                             <span class="free_pro_show_less dashicons dashicons-arrow-up-alt2" style="display:<?php if(0 === $i){echo "inline-block";}else{echo "none"; }; ?>"></span>
-                            <?php _e($pro_addons_list_details[$current_addon]['title']); ?></b>
+                            <?php echo esc_html($pro_addons_list_details[$current_addon]['title']); ?></b>
                     </p>
                 </td>
             </tr>
@@ -84,9 +84,9 @@ $pro_addons_list_details = array(
                 <td>
                     <table class="wp-list-table fold-table-inner" width="100%" style="line-height:25px;">
                         <thead>
-                            <th style="width:40%;"><?php _e("Features","print-invoices-packing-slip-labels-for-woocommerce"); ?></th>
-                            <th style="width:30%;"><?php _e("Free","print-invoices-packing-slip-labels-for-woocommerce"); ?></th>
-                            <th style="width:30%;"><?php _e("Premium","print-invoices-packing-slip-labels-for-woocommerce"); ?></th>
+                            <th style="width:40%;"><?php esc_html_e("Features","print-invoices-packing-slip-labels-for-woocommerce"); ?></th>
+                            <th style="width:30%;"><?php esc_html_e("Free","print-invoices-packing-slip-labels-for-woocommerce"); ?></th>
+                            <th style="width:30%;"><?php esc_html_e("Premium","print-invoices-packing-slip-labels-for-woocommerce"); ?></th>
                         </thead>
                         <tbody>
                             <?php 
@@ -97,15 +97,15 @@ $pro_addons_list_details = array(
                                         ?>
                                         <tr class="bordered">
                                             <td>
-                                                <?php echo ($fea['feature_title']); ?>
+                                                <?php echo esc_html($fea['feature_title']); ?>
                                             </td>
                                             <td>
                                                 <ul>
                                                     <?php for($i = 0; $i<count($fea['free']); $i++){
                                                         echo '<li>';
                                                         printf('%1$s %2$s',
-                                                            (true === $fea['free'][$i]['v_status']) ? $yes_icon : $no_icon,
-                                                            isset($fea['free'][$i]['v_label']) ? $fea['free'][$i]['v_label'] : ""
+                                                            (true === $fea['free'][$i]['v_status']) ? wp_kses_post($yes_icon) : wp_kses_post($no_icon),
+                                                            isset($fea['free'][$i]['v_label']) ? esc_html($fea['free'][$i]['v_label']) : ""
                                                         );
                                                         echo '</li>';
                                                     }
@@ -117,8 +117,8 @@ $pro_addons_list_details = array(
                                                 <?php for($i = 0; $i<count($fea['pro']); $i++){
                                                     echo '<li>';
                                                     printf('%1$s %2$s',
-                                                        (true === $fea['pro'][$i]['v_status']) ? $yes_icon : $no_icon,
-                                                        isset($fea['pro'][$i]['v_label']) ? $fea['pro'][$i]['v_label'] : ""
+                                                        (true === $fea['pro'][$i]['v_status']) ? wp_kses_post($yes_icon) : wp_kses_post($no_icon),
+                                                        isset($fea['pro'][$i]['v_label']) ? esc_html($fea['pro'][$i]['v_label']) : ""
                                                     );
                                                     echo '</li>';
                                                 }
@@ -135,15 +135,15 @@ $pro_addons_list_details = array(
                     </table>
                     <div class="wt_addon_gurantee" style="width:60%;float: left;display: block;">
                         <ul style="display: inline-flex;margin: 5px;">
-                            <li class="wt_pro_addon_money_back" style="margin-right:12px;"><?php _e("30 Day Money Back Guarantee","print-invoices-packing-slip-labels-for-woocommerce"); ?></li>
-                            <li class="wt_pro_addon_support" style="margin-right:12px;"><?php _e("Fast and Superior Support","print-invoices-packing-slip-labels-for-woocommerce"); ?></li>
+                            <li class="wt_pro_addon_money_back" style="margin-right:12px;"><?php esc_html_e("30 Day Money Back Guarantee","print-invoices-packing-slip-labels-for-woocommerce"); ?></li>
+                            <li class="wt_pro_addon_support" style="margin-right:12px;"><?php esc_html_e("Fast and Superior Support","print-invoices-packing-slip-labels-for-woocommerce"); ?></li>
                         </ul>
                     </div>
                     <div class="wt_addon_btn" style="width:30%;float: right;display: block;margin: 20px 0;">
                         <div class="wt_addon_premium_btn">
                             <a href="<?php echo esc_url($pro_addon['page_link']); ?>" class="wt_pro_addon_premium_btn" target="_blank">
                                 <img src="<?php echo esc_url($wf_admin_img_path.'/other_solutions/promote_crown.png'); ?>" style="width: 14px;height: 13px;margin-right: 7px;"><?php 
-                                echo __("Upgrade To Premium","print-invoices-packing-slip-labels-for-woocommerce"); ?>
+                                echo esc_html__("Upgrade To Premium","print-invoices-packing-slip-labels-for-woocommerce"); ?>
                             </a>
                         </div>
                     </div>

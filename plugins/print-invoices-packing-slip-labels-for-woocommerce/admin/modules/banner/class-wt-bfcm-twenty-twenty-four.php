@@ -60,7 +60,7 @@ if ( !class_exists( '\\Wtpdf\\Banners\\Wt_Bfcm_Twenty_Twenty_Four' ) ) {
                     <div class="wt-bfcm-banner-2024 notice is-dismissible">
                         <div class="wt-bfcm-banner-body">
                             <div class="wt-bfcm-banner-body-img-section">
-                                <img src="<?php echo plugin_dir_url( __FILE__ ) . 'assets/images/black-friday-2024.svg'; ?>" alt="Black Friday Cyber Monday 2024">
+                                <img src="<?php echo esc_url(plugin_dir_url( __FILE__ ) . 'assets/images/black-friday-2024.svg'); ?>" alt="Black Friday Cyber Monday 2024">
                             </div>
                             <div class="wt-bfcm-banner-body-info">
                                 <div class="never-miss-this-deal">
@@ -69,13 +69,14 @@ if ( !class_exists( '\\Wtpdf\\Banners\\Wt_Bfcm_Twenty_Twenty_Four' ) ) {
                                 <div class="info">
                                     <p><?php 
                                         echo sprintf(
-                                                __( 'Your Last Chance to Avail %1$s on WebToffee Plugins. Grab the deal before it`s gone!', 'print-invoices-packing-slip-labels-for-woocommerce' ), 
-                                                '<span>30% '.__("OFF","print-invoices-packing-slip-labels-for-woocommerce").'</span>'
+                                                /* translators: 1$s: Discount percentage with HTML span tags */
+                                                esc_html__( 'Your Last Chance to Avail %1$s on WebToffee Plugins. Grab the deal before it`s gone!', 'print-invoices-packing-slip-labels-for-woocommerce' ), 
+                                                '<span>30% '.esc_html__("OFF","print-invoices-packing-slip-labels-for-woocommerce").'</span>'
                                             );
                                     ?></p>
                                 </div>
                                 <div class="info-button">
-                                    <a href="<?php echo self::$promotion_link; ?>" class="bfcm_cta_button" target="_blank"><?php echo esc_html__( 'View plugins', 'print-invoices-packing-slip-labels-for-woocommerce' ); ?> <span class="dashicons dashicons-arrow-right-alt"></span></a>
+                                    <a href="<?php echo esc_url(self::$promotion_link); ?>" class="bfcm_cta_button" target="_blank"><?php echo esc_html__( 'View plugins', 'print-invoices-packing-slip-labels-for-woocommerce' ); ?> <span class="dashicons dashicons-arrow-right-alt"></span></a>
                                 </div>
                             </div>
                         </div>
@@ -146,7 +147,7 @@ if ( !class_exists( '\\Wtpdf\\Banners\\Wt_Bfcm_Twenty_Twenty_Four' ) ) {
     		check_ajax_referer( 'wt_bfcm_twenty_twenty_four_banner_nonce' );
     		if ( isset( $_POST['wt_bfcm_twenty_twenty_four_banner_action_type'] ) ) {
 	            
-	            $action_type = absint( sanitize_text_field( $_POST['wt_bfcm_twenty_twenty_four_banner_action_type'] ) );
+	            $action_type = absint( sanitize_text_field( wp_unslash( $_POST['wt_bfcm_twenty_twenty_four_banner_action_type'] ) ) );
 	            // Current action is allowed?
 	            if ( in_array( $action_type, array( 2, 3 ) ) ) {
 	                update_option( self::$banner_state_option_name, $action_type );

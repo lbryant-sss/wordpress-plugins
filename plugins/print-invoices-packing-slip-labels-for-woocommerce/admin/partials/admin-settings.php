@@ -29,7 +29,7 @@ if(!empty(Wf_Woocommerce_Packing_List_Admin::not_activated_pro_addons('wt_qr_add
 $main_module_base = "";
 $main_module_id = "";
 $tab_items = apply_filters('wt_pklist_add_additional_tab_item_into_module',$tab_items,$main_module_base,$main_module_id);
-if(isset($_GET['debug']))
+if(isset($_GET['debug'])) // phpcs:ignore WordPress.Security.NonceVerification.Recommended @codingStandardsIgnoreLine -- This is a safe use of isset.
 {
     $tab_items['wf-debug']='Debug';
 }
@@ -37,8 +37,8 @@ if(isset($_GET['debug']))
 <div class="wt_wrap">
     <div class="wt_heading_section">
         <h2 class="wp-heading-inline">
-        <?php _e('Settings','print-invoices-packing-slip-labels-for-woocommerce');?>: 
-        <?php _e('WooCommerce PDF Invoices, Packing Slips, Delivery Notes and Shipping Labels', 'print-invoices-packing-slip-labels-for-woocommerce');?>
+        <?php esc_html_e('Settings','print-invoices-packing-slip-labels-for-woocommerce');?>: 
+        <?php esc_html_e('WooCommerce PDF Invoices, Packing Slips, Delivery Notes and Shipping Labels', 'print-invoices-packing-slip-labels-for-woocommerce');?>
         </h2>
         <?php
             //webtoffee branding

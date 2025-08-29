@@ -9,7 +9,7 @@ if (!defined('ABSPATH')) {
 			<input type="hidden" value="<?php echo esc_attr($this->module_base); ?>" class="wf_settings_base" />
 			<input type="hidden" value="wf_save_settings" class="wf_settings_action" />
 			<input type="hidden" value="wt_packinglist_general" name="wt_tab_name" class="wt_tab_name" />
-				<p><?php _e('Configure the general settings required for the packing slip.','print-invoices-packing-slip-labels-for-woocommerce');?></p>
+				<p><?php esc_html_e('Configure the general settings required for the packing slip.','print-invoices-packing-slip-labels-for-woocommerce');?></p>
 				<?php
 					// Set nonce:
 					if (function_exists('wp_nonce_field'))
@@ -90,7 +90,7 @@ if (!defined('ABSPATH')) {
 						?>
 						<div style="clear: both;"></div>
 						<span id="end_wf_setting_form" class="end_wf_setting_form"></span>
-						<input type="submit" name="update_admin_settings_form" value="<?php echo __('Update Settings', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>" class="button button-primary wt_pklist_update_settings_btn"/>
+						<input type="submit" name="update_admin_settings_form" value="<?php echo esc_html__('Update Settings', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>" class="button button-primary wt_pklist_update_settings_btn"/>
 						<span class="spinner" style="margin-top:11px"></span>
 						<?php
 					}else{
@@ -134,13 +134,13 @@ if (!defined('ABSPATH')) {
 						}
 					?>
 						<div class="wt_pro_addon_widget_wrapper_doc">
-							<p><?php _e('Get advanced features for your','print-invoices-packing-slip-labels-for-woocommerce'); ?></p>
+							<p><?php esc_html_e('Get advanced features for your','print-invoices-packing-slip-labels-for-woocommerce'); ?></p>
 							<div class="wt_pro_addon_widget_wrapper_doc_logo_title">
 								<div class="wt_pro_addon_widget_wrapper_doc_logo_title_col_1">
 									<img src="<?php echo esc_url(WF_PKLIST_PLUGIN_URL . 'admin/images/wt_ipc_logo.png'); ?>">
 								</div>
 								<div class="wt_pro_addon_widget_wrapper_doc_logo_title_col_2">
-									<h4><?php echo __("Invoices, Packing slips and Credit notes","print-invoices-packing-slip-labels-for-woocommerce"); ?></h4>
+									<h4><?php echo esc_html__("Invoices, Packing slips and Credit notes","print-invoices-packing-slip-labels-for-woocommerce"); ?></h4>
 								</div>
 							</div>
 						</div>
@@ -149,18 +149,18 @@ if (!defined('ABSPATH')) {
 								<?php
 									foreach($packinglist_pro_feature_list as $p_feature){
 										?>
-										<li><?php echo esc_html_e($p_feature); ?></li>
+										<li><?php echo esc_html($p_feature); ?></li>
 										<?php
 									}
 								?>
 							</ul>
 						</div>
 						<div class="wt_pro_show_more_less_doc">
-							<a class="wt_pro_addon_show_more_doc"><p><? echo __("Show More","print-invoices-packing-slip-labels-for-woocommerce"); ?></p></a>
-							<a class="wt_pro_addon_show_less_doc"><p><? echo __("Show Less","print-invoices-packing-slip-labels-for-woocommerce"); ?></p></a>
+							<a class="wt_pro_addon_show_more_doc"><p><?php echo esc_html__("Show More","print-invoices-packing-slip-labels-for-woocommerce"); ?></p></a>
+							<a class="wt_pro_addon_show_less_doc"><p><?php echo esc_html__("Show Less","print-invoices-packing-slip-labels-for-woocommerce"); ?></p></a>
 						</div>
 						<a class="wt_pro_addon_premium_link_div_doc" href="<?php echo esc_url($sidebar_pro_link); ?>" target="_blank">
-							<?php _e("View add-on","print-invoices-packing-slip-labels-for-woocommerce"); ?> <span class="dashicons dashicons-arrow-right-alt"></span>
+							<?php esc_html_e("View add-on","print-invoices-packing-slip-labels-for-woocommerce"); ?> <span class="dashicons dashicons-arrow-right-alt"></span>
 						</a>
 					</div>
 				</div>

@@ -246,6 +246,7 @@ class Tracking {
 			return $json;
 		}
 
+		$json['canAddUsageTracking']    = current_user_can( 'manage_options' );
 		$json['data']['usage_tracking'] = $this->optin->is_enabled();
 
 		return $json;
@@ -325,6 +326,6 @@ class Tracking {
 		}
 
 		$user = wp_get_current_user();
-		return $user->user_email;
+		return isset( $user->user_email ) ? (string) $user->user_email : '';
 	}
 }

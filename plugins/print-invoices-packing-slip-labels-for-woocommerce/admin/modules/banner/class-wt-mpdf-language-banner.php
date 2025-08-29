@@ -34,14 +34,14 @@ class Wt_Mpdf_Language_Banner {
         <div class="<?php echo esc_attr($banner_class); ?>" id="wt-mpdf-language-banner" style="display: flex; align-items: flex-start;<?php echo $is_rtl ? ' direction: rtl;' : ''; ?> padding: 10px 0 10px 0;">
             <span class="dashicons dashicons-info" style="font-size: 24px; color: #2271b1; margin: 4px 15px 4px 15px;<?php echo $is_rtl ? 'margin: 4px 10px 10px 16px;' : ''; ?>"></span>
             <div style="flex:1; min-width:0;">
-                <strong style="font-size:16px; color:#2271b1;"><?php _e('Language Detection Notice', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></strong><br>
+                <strong style="font-size:16px; color:#2271b1;"><?php esc_html_e('Language Detection Notice', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></strong><br>
                 <?php printf(
                     /* translators: %s: Detected language name */
                     esc_html__('Your site language is detected as %s. For better compatibility with your language we recommend installing the mPDF add-on.', 'print-invoices-packing-slip-labels-for-woocommerce'),
                     '<b>' . esc_html($lang_name) . '</b>'
                 ); ?>
                 <a class="wt-mpdf-banner-link" href="<?php echo esc_url($this->mpdf_url); ?>" target="_blank" style="color: #2271b1; text-decoration: underline; margin-left: 4px;">
-                    <?php _e('You may install the free mPDF add-on by clicking here.', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>
+                    <?php esc_html_e('You may install the free mPDF add-on by clicking here.', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>
                 </a>
             </div>
             <button type="button" class="notice-dismiss" onclick="wtPklistDismissMpdfBanner()" aria-label="<?php esc_attr_e('Dismiss this notice', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>"></button>
@@ -69,7 +69,7 @@ class Wt_Mpdf_Language_Banner {
             'wf_woocommerce_packing_list_dispatchlabel'
         );
         
-        if (!isset($_GET['page']) || !in_array($_GET['page'], $allowed_pages)) return false;
+        if (!isset($_GET['page']) || !in_array($_GET['page'], $allowed_pages)) return false; // phpcs:ignore WordPress.Security.NonceVerification.Recommended @codingStandardsIgnoreLine -- This is a safe use of isset.
         
         $user_id = get_current_user_id();
         if (get_user_meta($user_id, $this->dismiss_option_key . $user_id, true)) return false;

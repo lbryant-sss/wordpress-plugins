@@ -10,7 +10,7 @@ $print_separate_button_for_documents    = apply_filters('wt_pklist_individual_pr
         <input type="hidden" value="main" class="wf_settings_base" />
         <input type="hidden" value="wf_save_settings" class="wf_settings_action" />
         <input type="hidden" value="wt_main_general" name="wt_tab_name" class="wt_tab_name" />
-        <p><?php _e("The company name and the address details from this section will be used as the sender address in the invoice and other related documents.","print-invoices-packing-slip-labels-for-woocommerce");?></p>
+        <p><?php esc_html_e("The company name and the address details from this section will be used as the sender address in the invoice and other related documents.","print-invoices-packing-slip-labels-for-woocommerce");?></p>
         <?php
         // Set nonce:
         if (function_exists('wp_nonce_field'))
@@ -25,6 +25,10 @@ $print_separate_button_for_documents    = apply_filters('wt_pklist_individual_pr
         $tooltip_conf['text'],
         __('Load from WooCommerce','print-invoices-packing-slip-labels-for-woocommerce')
         );
+
+        $mpdf_plugin_data = Wf_Woocommerce_Packing_List_Admin::get_mpdf_plugin_data();
+        $mpdf_msg = isset($mpdf_plugin_data['enable_mpdf_msg']) ? $mpdf_plugin_data['enable_mpdf_msg'] : '';
+        
         ?>
         <table class="wf-form-table">
             <tbody>
@@ -209,11 +213,19 @@ $print_separate_button_for_documents    = apply_filters('wt_pklist_individual_pr
                             'checkbox_fields' => array('Yes'=> __("RTL support for documents","print-invoices-packing-slip-labels-for-woocommerce")),
                             'class' => "woocommerce_wf_add_rtl_support",
                             'col' => 3,
-                            'help_text' => sprintf('%1$s <a href="https://wordpress.org/plugins/mpdf-addon-for-pdf-invoices/">%2$s</a>.',
-                                __("For better RTL integration in PDF documents, please use our","print-invoices-packing-slip-labels-for-woocommerce"),
-                                __("mPDF add-on","print-invoices-packing-slip-labels-for-woocommerce")),
+                            'help_text' => sprintf('%1$s', $mpdf_msg), 
                         ),
                     );
+
+                    // Auto-set PDF library to Mpdf when RTL support is enabled and mPDF plugin is active
+                    $rtl_enabled = Wf_Woocommerce_Packing_List::get_option('woocommerce_wf_add_rtl_support');
+                    $mpdf_already_set = Wf_Woocommerce_Packing_List::get_option('active_pdf_library_is_mpdf');
+                    
+                    if($rtl_enabled === 'Yes' && Wf_Woocommerce_Packing_List_Admin::is_mpdf_plugin_active() && isset($pdf_libs['mpdf']) && $mpdf_already_set !== 'Yes') {
+                        Wf_Woocommerce_Packing_List::update_option('active_pdf_library', 'mpdf');
+                        Wf_Woocommerce_Packing_List::update_option('active_pdf_library_is_mpdf', 'Yes');
+                    }
+
                     if(is_array($pdf_libs) && count($pdf_libs)>1)
                     {
                         $pdf_libs_form_arr=array();

@@ -93,14 +93,15 @@ class Wf_Woocommerce_Packing_List_Update_Install
 		global $wpdb;
 		//install necessary tables
 		//creating table for saving template data================
-        $search_query = "SHOW TABLES LIKE %s";
         $charset_collate = $wpdb->get_charset_collate();
         //$tb=Wf_Woocommerce_Packing_List::$template_data_tb;
         $tb='wfpklist_template_data';
         $like = '%' . $wpdb->prefix.$tb.'%';
         $table_name = $wpdb->prefix.$tb;
-        if(!$wpdb->get_results($wpdb->prepare($search_query, $like), ARRAY_N)) 
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Plugin installation requires checking table existence
+        if(!$wpdb->get_results($wpdb->prepare("SHOW TABLES LIKE %s", $like), ARRAY_N)) 
         {
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.SchemaChange -- Plugin installation requires table creation
             $sql_settings = "CREATE TABLE IF NOT EXISTS `$table_name` (
 			  `id_wfpklist_template_data` int(11) NOT NULL AUTO_INCREMENT,
 			  `template_name` varchar(200) NOT NULL,
@@ -116,10 +117,11 @@ class Wf_Woocommerce_Packing_List_Update_Install
             dbDelta($sql_settings);
         }else
         {
-	        $search_query = "SHOW COLUMNS FROM `$table_name` LIKE 'is_dc_compatible'";
-	        if(!$wpdb->get_results($search_query,ARRAY_N)) 
+	        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Plugin update requires checking column existence
+	        if(!$wpdb->get_results($wpdb->prepare("SHOW COLUMNS FROM `{$wpdb->prefix}wfpklist_template_data` LIKE %s", 'is_dc_compatible'), ARRAY_N)) 
 	        {
-	        	$wpdb->query("ALTER TABLE `$table_name` ADD `is_dc_compatible` int(11) NOT NULL DEFAULT '0' AFTER `template_from`");
+	        	// phpcs:ignore WordPress.DB.DirectDatabaseQuery.SchemaChange -- Plugin update requires schema modification
+	        	$wpdb->query("ALTER TABLE `{$wpdb->prefix}wfpklist_template_data` ADD `is_dc_compatible` int(11) NOT NULL DEFAULT '0' AFTER `template_from`");
 	        }
         }
         //creating table for saving template data================

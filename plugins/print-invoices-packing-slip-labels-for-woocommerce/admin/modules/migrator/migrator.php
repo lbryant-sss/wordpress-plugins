@@ -185,10 +185,10 @@ class Wf_Woocommerce_Packing_List_Migrator
 			ob_start();
 			include plugin_dir_path(__FILE__).'data/data.invoice.migrator.template.php';
 			$base_html=ob_get_clean();
-
+			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching @codingStandardsIgnoreLine -- This is a safe use of SELECT
 			$template_data=$wpdb->get_results($wpdb->prepare("SELECT option_name,option_value FROM {$wpdb->prefix}options 
-			    WHERE option_name LIKE '%s' 
-			    ORDER BY option_name ASC",'wf_invoice_template_%'), ARRAY_A);
+			    WHERE option_name LIKE %s 
+			    ORDER BY option_name ASC",'wf_invoice_template_%'), ARRAY_A); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching @codingStandardsIgnoreLine -- This is a safe use of SELECT
 			if($template_data && is_array($template_data))
 			{
 			    $arr_key=array_column($template_data,'option_name');
@@ -221,6 +221,7 @@ class Wf_Woocommerce_Packing_List_Migrator
 			                $insert_data_type=array(
 			                    '%s','%s','%d','%s','%d','%d','%d'
 			                ); 
+			                // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching @codingStandardsIgnoreLine -- This is a safe use of INSERT
 			                $wpdb->insert($table_name,$insert_data,$insert_data_type);
 			            }
 			        }

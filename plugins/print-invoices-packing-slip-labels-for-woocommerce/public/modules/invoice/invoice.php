@@ -179,15 +179,15 @@ class Wf_Woocommerce_Packing_List_Invoice
 		$order_statuses = wc_get_order_statuses();
 		$wf_generate_invoice_for = Wf_Woocommerce_Packing_List::get_option('woocommerce_wf_generate_for_orderstatus', $this->module_id);
 		wp_enqueue_script('wc-enhanced-select');
-		wp_enqueue_style('woocommerce_admin_styles', WC()->plugin_url() . '/assets/css/admin.css');
+		wp_enqueue_style('woocommerce_admin_styles', WC()->plugin_url() . '/assets/css/admin.css'); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 		wp_enqueue_media();
 		if (!class_exists('Wf_Woocommerce_Packing_List_Pro_Common_Func')) {
-			wp_enqueue_script($this->module_id, plugin_dir_url(__FILE__) . 'assets/js/main.js', array('jquery'), WF_PKLIST_VERSION);
+			wp_enqueue_script($this->module_id, plugin_dir_url(__FILE__) . 'assets/js/main.js', array('jquery'), WF_PKLIST_VERSION); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.NotInFooter
 		}
-		if (!is_plugin_active('wt-woocommerce-invoice-addon/wt-woocommerce-invoice-addon.php') && isset($_GET['page']) && "wf_woocommerce_packing_list_invoice" === $_GET['page']) {
-			wp_enqueue_script($this->module_id . '-pro-cta-banner', plugin_dir_url(__FILE__) . 'assets/js/pro-cta-banner.js', array('jquery'), WF_PKLIST_VERSION);
+		if (!is_plugin_active('wt-woocommerce-invoice-addon/wt-woocommerce-invoice-addon.php') && isset($_GET['page']) && "wf_woocommerce_packing_list_invoice" === $_GET['page']) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			wp_enqueue_script($this->module_id . '-pro-cta-banner', plugin_dir_url(__FILE__) . 'assets/js/pro-cta-banner.js', array('jquery'), WF_PKLIST_VERSION); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.NotInFooter
 		}
-		wp_enqueue_script($this->module_id . '-common', plugin_dir_url(__FILE__) . 'assets/js/common.js', array('jquery'), WF_PKLIST_VERSION);
+		wp_enqueue_script($this->module_id . '-common', plugin_dir_url(__FILE__) . 'assets/js/common.js', array('jquery'), WF_PKLIST_VERSION); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.NotInFooter
 		$params = array(
 			'nonces' => array(
 				'main' => wp_create_nonce($this->module_id),
@@ -329,7 +329,9 @@ class Wf_Woocommerce_Packing_List_Invoice
 	{
 		if ($template_type === $this->module_base) {
 			if ("received_seal" === $type) {
-				$info_text = sprintf(__('You can control the visibility of the seal according to order status via filters. See filter documentation %s here. %s', 'print-invoices-packing-slip-labels-for-woocommerce'), '<a href="' . admin_url('admin.php?page=wf_woocommerce_packing_list#help#filters') . '" target="_blank">', '</a>');
+				$info_text = sprintf(
+					/* translators: 1$s: HTML link opening tag, 2$s: HTML link closing tag */
+					__('You can control the visibility of the seal according to order status via filters. See filter documentation %1$s here. %2$s', 'print-invoices-packing-slip-labels-for-woocommerce'), '<a href="' . admin_url('admin.php?page=wf_woocommerce_packing_list#help#filters') . '" target="_blank">', '</a>');
 				if (Wf_Woocommerce_Packing_List_Admin::check_if_mpdf_used()) {
 					$info_text .= '<span style="color:red;">' . __('This feature might not work in mPDF.', 'print-invoices-packing-slip-labels-for-woocommerce') . '</span>';
 				}
@@ -1031,7 +1033,9 @@ class Wf_Woocommerce_Packing_List_Invoice
 				$old_shipping_amount_formatted = Wf_Woocommerce_Packing_List_Admin::wf_display_price($user_currency, $order, $shipping_total_amount);
 				$new_shipping_total_amount_formatted = Wf_Woocommerce_Packing_List_Admin::wf_display_price($user_currency, $order, $new_shipping_amount);
 				$shipping = '<span><strike>' . $old_shipping_amount_formatted . '</strike> ' . $new_shipping_total_amount_formatted . '</span>' . $incl_tax_text;
-				$shipping .= apply_filters('woocommerce_order_shipping_to_display_shipped_via', '&nbsp;<small class="shipped_via">' . sprintf(__('via %s', 'woocommerce'), $order->get_shipping_method()) . '</small>', $order);
+				$shipping .= apply_filters('woocommerce_order_shipping_to_display_shipped_via', '&nbsp;<small class="shipped_via">' . sprintf(
+					/* translators: %s: Shipping method name */
+					__('via %s', 'print-invoices-packing-slip-labels-for-woocommerce'), $order->get_shipping_method()) . '</small>', $order);
 			}
 		}
 		return $shipping;
@@ -1092,7 +1096,7 @@ class Wf_Woocommerce_Packing_List_Invoice
 				wp_mkdir_p($lockFolderPath);
 			}
 			$lockFilePath	= $lockFolderPath . '/wt_pklist_sequence_number.lock';
-			$file 			= fopen($lockFilePath, "w");
+			$file 			= fopen($lockFilePath, "w"); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen
 			if ($file) {
 				if (flock($file, LOCK_EX)) {
 					$invoice_id =  Wf_Woocommerce_Packing_List_Sequential_Number::generate_sequential_number($order, self::$module_id_static, array('number' => 'wf_invoice_number', 'date' => 'wf_invoice_date', 'enable' => 'woocommerce_wf_enable_invoice'), $force_generate);
@@ -1141,7 +1145,7 @@ class Wf_Woocommerce_Packing_List_Invoice
 			$generate_invoice_for = Wf_Woocommerce_Packing_List::get_option('woocommerce_wf_generate_for_orderstatus', $this->module_id);
 			$force_generate = in_array('wc-' . $order_status, $generate_invoice_for) ? true : false;
 			$wf_invoice_id = Wt_Pklist_Common::get_order_meta($order_id, 'wf_invoice_number', true);
-			echo $wf_invoice_id;
+			echo esc_html($wf_invoice_id);
 		}
 	}
 
@@ -1375,7 +1379,7 @@ class Wf_Woocommerce_Packing_List_Invoice
 	public function save_multi_checkbox_fields($result, $key, $fields, $base_id)
 	{
 		if ($base_id === $this->module_id) {
-			$result = (isset($fields[$key]) && !isset($_POST[$key])) ? $fields[$key] : $result;
+			$result = (isset($fields[$key]) && !isset($_POST[$key])) ? $fields[$key] : $result; // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		}
 		return $result;
 	}
@@ -1513,6 +1517,9 @@ class Wf_Woocommerce_Packing_List_Invoice
 				(empty($generate_invoice_for) && !empty(Wt_Pklist_Common::get_order_meta($order_id, 'wf_invoice_number', true)))
 			) {
 				$attachments[] = $this->prepare_pdf_attachments($order_id);
+				if ( is_object( $order ) && is_a( $order, 'WC_Order' ) ) {
+					apply_filters('wt_upload_documets_to_cloud_storage', $order_id, $chosen_wc_email_classes, $this->module_base);
+				}
 			}
 		}
 
@@ -1564,7 +1571,7 @@ class Wf_Woocommerce_Packing_List_Invoice
 				$wf_invoice_id = Wt_Pklist_Common::get_order_meta($order_id, 'wf_invoice_number', true);
 				$show_print_button_for = Wf_Woocommerce_Packing_List::get_option('woocommerce_wf_generate_for_orderstatus', $this->module_id);
 				if ("" !== trim($wf_invoice_id) || in_array('wc-' . $order->get_status(), $show_print_button_for)) {
-					$email_btn_label	= apply_filters('wt_pklist_alter_document_button_label', __($this->print_btn_label, 'print-invoices-packing-slip-labels-for-woocommerce'), 'print', 'email', $template_type);
+					$email_btn_label	= apply_filters('wt_pklist_alter_document_button_label', $this->print_btn_label, 'print', 'email', $template_type);
 					Wf_Woocommerce_Packing_List::generate_print_button_for_user($order, $order_id, 'print_invoice', $email_btn_label, true);
 				}
 			}
@@ -1596,8 +1603,8 @@ class Wf_Woocommerce_Packing_List_Invoice
 				$wf_invoice_id = Wt_Pklist_Common::get_order_meta($order_id, 'wf_invoice_number', true);
 				$generate_invoice_for = Wf_Woocommerce_Packing_List::get_option('woocommerce_wf_generate_for_orderstatus', $this->module_id);
 				if ("" !== trim($wf_invoice_id) || in_array('wc-' . $order->get_status(), $generate_invoice_for)) {
-					$print_btn_label	= apply_filters('wt_pklist_alter_document_button_label', __($this->print_btn_label, 'print-invoices-packing-slip-labels-for-woocommerce'), 'print', 'my_account_order_details', $template_type);
-					$download_btn_label	= apply_filters('wt_pklist_alter_document_button_label', __($this->download_btn_label, 'print-invoices-packing-slip-labels-for-woocommerce'), 'download', 'my_account_order_details', $template_type);
+					$print_btn_label	= apply_filters('wt_pklist_alter_document_button_label',$this->print_btn_label, 'print', 'my_account_order_details', $template_type);
+					$download_btn_label	= apply_filters('wt_pklist_alter_document_button_label',$this->download_btn_label, 'download', 'my_account_order_details', $template_type);
 
 					if (true === apply_filters('wt_pklist_show_document_button', true, 'print', 'my_account_order_details', $template_type, $order)) {
 						Wf_Woocommerce_Packing_List::generate_print_button_for_user($order, $order_id, 'print_invoice', $print_btn_label);
@@ -1620,8 +1627,8 @@ class Wf_Woocommerce_Packing_List_Invoice
 	{
 		if ($this->is_show_frontend_print_button($order)) {
 			$wt_actions[$this->module_base] = array(
-				'print'		=> apply_filters('wt_pklist_alter_document_button_label', __($this->print_btn_label, 'print-invoices-packing-slip-labels-for-woocommerce'), 'print', 'my_account_order_listing', $this->module_base),
-				'download'	=> apply_filters('wt_pklist_alter_document_button_label', __($this->download_btn_label, 'print-invoices-packing-slip-labels-for-woocommerce'), 'download', 'my_account_order_listing', $this->module_base),
+				'print'		=> apply_filters('wt_pklist_alter_document_button_label', $this->print_btn_label, 'print', 'my_account_order_listing', $this->module_base),
+				'download'	=> apply_filters('wt_pklist_alter_document_button_label', $this->download_btn_label, 'download', 'my_account_order_listing', $this->module_base),
 			);
 		}
 		return $wt_actions;
@@ -1688,7 +1695,7 @@ class Wf_Woocommerce_Packing_List_Invoice
 
 				$pdf_name = $this->customizer->generate_pdf_name($this->module_base, $order_ids);
 				if ("download_invoice" === $action || "preview_invoice" === $action) {
-					if (!isset($_GET['dbg'])) {
+					if (!isset($_GET['dbg'])) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 						ob_start();
 					}
 					$this->customizer->template_for_pdf = true;
@@ -1702,22 +1709,23 @@ class Wf_Woocommerce_Packing_List_Invoice
 					$html = Wf_Woocommerce_Packing_List_Admin::qrcode_barcode_visibility($html, $template_type);
 					$action = str_replace('_' . $this->module_base, '', $action);
 					$this->customizer->generate_template_pdf($html, $this->module_base, $pdf_name, $action);
-					if (!isset($_GET['dbg'])) {
+					if (!isset($_GET['dbg'])) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 						ob_end_clean();
 					}
 				} else {
-					if (!isset($_GET['dbg'])) {
+					if (!isset($_GET['dbg'])) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 						ob_start();
 					}
 					$html = $this->generate_order_template($order_ids, $pdf_name, "", $action);
 					$html = Wf_Woocommerce_Packing_List_Admin::qrcode_barcode_visibility($html, $template_type);
-					if (!isset($_GET['dbg'])) {
+					if (!isset($_GET['dbg'])) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 						ob_end_clean();
 					}
+					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Trusted HTML generated by invoice module
 					echo $html;
 				}
 			} else {
-				_e('Customizer module is not active.', 'print-invoices-packing-slip-labels-for-woocommerce');
+				esc_html_e('Customizer module is not active.', 'print-invoices-packing-slip-labels-for-woocommerce');
 			}
 			exit();
 		}
@@ -1731,7 +1739,7 @@ class Wf_Woocommerce_Packing_List_Invoice
 		$out = '';
 
 		foreach ($orders as $order_id) {
-			$lang	= (isset($_GET['lang']) ? sanitize_text_field($_GET['lang']) : get_locale());
+			$lang	= (isset($_GET['lang']) ? sanitize_text_field(wp_unslash($_GET['lang'])) : get_locale()); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$lang	= apply_filters('wt_pklist_alter_document_language_for_' . $template_type, $lang, $template_type, $order_id);
 			$lang	= apply_filters('wt_pklist_alter_document_language', $lang, $template_type, $order_id);
 			do_action('wt_pklist_language_switcher_for_' . $template_type, $lang, $template_type, $order_id);
@@ -1779,14 +1787,14 @@ class Wf_Woocommerce_Packing_List_Invoice
 				$new_invoice_html_set = 1;
 			} else {
 				$new_invoice_html_set = 0;
-				$html_file = @fopen($file_loc, 'r');
+				$html_file = @fopen($file_loc, 'r'); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen
 				if ($html_file && filesize($file_loc) > 0) {
-					$html = fread($html_file, filesize($file_loc));
-					fclose($html_file);
+					$html = fread($html_file, filesize($file_loc)); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fread
+					fclose($html_file); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose
 				} else {
 					$new_invoice_html_set = 1;
 					if ($html_file) {
-						fclose($html_file);
+						fclose($html_file); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose
 					}
 				}
 			}
@@ -1810,7 +1818,7 @@ class Wf_Woocommerce_Packing_List_Invoice
 		} else {
 			$payment_method_slug	= $order->get_payment_method();
 			$paymethod_title	= $order->get_payment_method_title();
-			$paymethod_title	= __($paymethod_title, 'print-invoices-packing-slip-labels-for-woocommerce');
+			$paymethod_title	= __($paymethod_title, 'print-invoices-packing-slip-labels-for-woocommerce'); // phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText @codingStandardsIgnoreLine
 			$custom_payment_key = "custom_payment_key";
 			$custom_script_regex = '/<script id="custom_payment_key"[^>]*>[\s\S]*' . $custom_payment_key . '[\s\S]*?<\/script>/';
 
@@ -1855,14 +1863,14 @@ class Wf_Woocommerce_Packing_List_Invoice
 
 		if ($new_invoice_html_set === 1) {
 			if (!is_dir($upload_dir)) {
-				@mkdir($upload_dir, 0700);
+				@mkdir($upload_dir, 0700); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_mkdir
 			}
 
 			//document type specific subfolder
 			$upload_dir = $upload_dir . '/' . $template_type;
 			$upload_url = $upload_url . '/' . $template_type;
 			if (!is_dir($upload_dir)) {
-				@mkdir($upload_dir, 0700);
+				@mkdir($upload_dir, 0700); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_mkdir
 			}
 
 			//if directory successfully created
@@ -1871,10 +1879,10 @@ class Wf_Woocommerce_Packing_List_Invoice
 				$file_path = $upload_dir . '/' . $pdf_name . '.html';
 				$file_url = $upload_url . '/' . $pdf_name . '.html';
 				//$myfile = fopen($file_path, "w") or die("Unable to open file!");
-				$fh = @fopen($file_path, "w");
+				$fh = @fopen($file_path, "w"); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen
 				if (is_resource($fh)) {
-					fwrite($fh, $out);
-					fclose($fh);
+					fwrite($fh, $out); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fwrite
+					fclose($fh); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose
 				}
 				Wt_Pklist_Common::update_order_meta($order_id, 'wf_invoice_html', $file_name);
 			}
@@ -2004,7 +2012,7 @@ class Wf_Woocommerce_Packing_List_Invoice
 						}
 					}
 					$onlick = "return wf_Confirm_Notice_for_Manually_Creating_Invoicenumbers('" . esc_url_raw($print_url) . "',$is_show_prompt)";
-					echo '<a title="' . esc_attr($action_title) . '" class="button wc-action-button wc-action-button-' . esc_attr($btn_action_name) . ' ' . esc_attr($btn_action_name) . ' wt_pklist_action_btn" onclick="' . $onlick . '" aria-label="' . esc_attr($action_title) . '" target="_blank" style="padding:5px;"><img src="' . esc_url($img_url) . '" ></a>';
+					echo '<a title="' . esc_attr($action_title) . '" class="button wc-action-button wc-action-button-' . esc_attr($btn_action_name) . ' ' . esc_attr($btn_action_name) . ' wt_pklist_action_btn" onclick="' . esc_js($onlick) . '" aria-label="' . esc_attr($action_title) . '" target="_blank" style="padding:5px;"><img src="' . esc_url($img_url) . '" ></a>';
 					echo '<a class="wt_pklist_empty_number" data-template-type="' . esc_attr($this->module_base) . '" data-id="' . esc_attr($order_id) . '" style="display:none;"></a>';
 				}
 			}

@@ -11,12 +11,6 @@ Class Category {
     public $tax_categories = array();
 
     public function __construct() {
-        add_action('init', array($this, 'initialize_tax_categories'));
-
-    }
-
-    public function initialize_tax_categories() {
-        // This method is called on init.
         $this->tax_categories = $this->get_tax_categories();
     }
 

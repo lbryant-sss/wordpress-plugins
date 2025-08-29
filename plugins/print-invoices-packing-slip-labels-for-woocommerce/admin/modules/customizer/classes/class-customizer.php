@@ -200,7 +200,7 @@ class Wf_Woocommerce_Packing_List_CustomizerLib {
 				if ( ! empty( $shippingdetails ) ) {
 					$shipping                                      = Wf_Woocommerce_Packing_List_Admin::wf_shipping_formated_price( $order );
 					$shipping                                      = apply_filters( 'wf_pklist_alter_shipping_method', $shipping, $template_type, $order, 'product_table' );
-					$find_replace['[wfte_product_table_shipping]'] = __( $shipping, 'print-invoices-packing-slip-labels-for-woocommerce' );
+					$find_replace['[wfte_product_table_shipping]'] = __( $shipping, 'print-invoices-packing-slip-labels-for-woocommerce' ); // phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText @codingStandardsIgnoreLine
 				}
 			} else {
 				$find_replace['[wfte_product_table_shipping]'] = '';
@@ -383,7 +383,7 @@ class Wf_Woocommerce_Packing_List_CustomizerLib {
 
 			//payment info ==========================
 			$paymethod_title                                     = ( version_compare($wc_version, '2.7.0', '<') ? $order->payment_method_title : $order->get_payment_method_title() );
-			$paymethod_title                                     = __( $paymethod_title, 'print-invoices-packing-slip-labels-for-woocommerce' );
+			$paymethod_title                                     = __( $paymethod_title, 'print-invoices-packing-slip-labels-for-woocommerce' ); // phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText @codingStandardsIgnoreLine
 			$find_replace['[wfte_product_table_payment_method]'] = $paymethod_title;
 
 			//total amount ==========================
@@ -1173,7 +1173,7 @@ class Wf_Woocommerce_Packing_List_CustomizerLib {
 		foreach ( $columns_list_arr as $columns_key => $columns_value ) {
 			$is_hidden = ( '-' === $columns_key[0] ? 1 : 0 ); //column not enabled
 
-			if ( strip_tags( $columns_value ) == $columns_value ) {
+			if ( wp_strip_all_tags( $columns_value ) == $columns_value ) {
 				$coumn_key_real = ( 1 === $is_hidden || '1' === $is_hidden ) ? substr( $columns_key, 1 ) : $columns_key;
 				$columns_value  = '<th class="wfte_product_table_head_' . $coumn_key_real . ' wfte_product_table_head_bg wfte_table_head_color" col-type="' . esc_attr( $columns_key ) . '">' . wp_kses_post( $columns_value ) . '</th>';
 			}
@@ -1432,20 +1432,24 @@ class Wf_Woocommerce_Packing_List_CustomizerLib {
 				foreach ( $extra_fields as $ex_key => $ex_vl ) {
 					if ( ! in_array( $ex_key, $default_fields ) ) {
 						if ( is_string( $ex_vl ) && '' !== trim( $ex_vl ) ) {
+							// phpcs:disable WordPress.WP.I18n.NonSingularStringLiteralText @codingStandardsIgnoreStart
 							$ex_html .= '<div class="wfte_extra_fields">
 					            <span>' . __( ucfirst( $ex_key ), 'print-invoices-packing-slip-labels-for-woocommerce' ) . ':</span>
 					            <span>' . __( $ex_vl, 'print-invoices-packing-slip-labels-for-woocommerce' ) . '</span>
 					          </div>';
+							// phpcs:enable WordPress.WP.I18n.NonSingularStringLiteralText codingStandardsIgnoreEnd
 						}
 					} else {
 						$placeholder_key = isset( $default_fields_placeholder[ $ex_key ] ) ? $default_fields_placeholder[ $ex_key ] : $ex_key;
 						$placeholder     = '[wfte_' . $placeholder_key . ']';
 						if ( false === strpos( $html, $placeholder ) ) {
 							if ( '' !== trim( $ex_vl ) ) {
+								// phpcs:disable WordPress.WP.I18n.NonSingularStringLiteralText @codingStandardsIgnoreStart
 								$ex_html .= '<div class="wfte_extra_fields">
 						            <span>' . __( $default_fields_label[ $ex_key ], 'print-invoices-packing-slip-labels-for-woocommerce' ) . ':</span>
 						            <span>' . __( $ex_vl, 'print-invoices-packing-slip-labels-for-woocommerce' ) . '</span>
 						          </div>';
+								// phpcs:enable WordPress.WP.I18n.NonSingularStringLiteralText codingStandardsIgnoreEnd
 							}
 						}
 					}

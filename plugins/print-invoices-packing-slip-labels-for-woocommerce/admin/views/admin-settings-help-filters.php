@@ -25,11 +25,11 @@ include WF_PKLIST_PLUGIN_PATH.'/admin/data/data.filters-help.php';
 	.wf_filter_code_div .cmt_css{color:gray;}
 	.filter_code_copy{cursor: pointer;}
 </style>
-<h3><?php _e('Filters','print-invoices-packing-slip-labels-for-woocommerce'); ?></h3>
+<h3><?php esc_html_e('Filters','print-invoices-packing-slip-labels-for-woocommerce'); ?></h3>
 <p>
-	<?php _e("Some useful `filters` to extend plugin's functionality",'print-invoices-packing-slip-labels-for-woocommerce');?>
+	<?php esc_html_e("Some useful `filters` to extend plugin's functionality",'print-invoices-packing-slip-labels-for-woocommerce');?>
 </p>
-<input type="text" placeholder="<?php echo __('search filter','print-invoices-packing-slip-labels-for-woocommerce'); ?>" id="filter_search_input_updated" style="float: left;margin: 0 0 15px 0;width: 48%;border: 1px solid #ccc;">
+<input type="text" placeholder="<?php echo esc_attr__('search filter','print-invoices-packing-slip-labels-for-woocommerce'); ?>" id="filter_search_input_updated" style="float: left;margin: 0 0 15px 0;width: 48%;border: 1px solid #ccc;">
 <table class="fold-table wp-list-table fixed" id="wf_filters_doc_table_updated" width="100%"  style="border: 1px solid #c3c4c7;">
   	<tbody>
   		<?php
@@ -37,7 +37,7 @@ include WF_PKLIST_PLUGIN_PATH.'/admin/data/data.filters-help.php';
 			if(isset($wf_filters_help_doc_lists) && is_array($wf_filters_help_doc_lists) && array_key_exists($cat,$wf_filters_help_doc_lists))
 			{	
 				echo '<tr class="bordered filter_category">
-						<td colspan="2" style="vertical-align: top;padding: 0px 20px;background-color:#ececec;"><p><b>'.$cat_label.'</b></p></td>
+						<td colspan="2" style="vertical-align: top;padding: 0px 20px;background-color:#ececec;"><p><b>'.esc_html($cat_label).'</b></p></td>
 					</tr>';
 				foreach($wf_filters_help_doc_lists[$cat] as $key => $value) 
 				{
@@ -49,16 +49,16 @@ include WF_PKLIST_PLUGIN_PATH.'/admin/data/data.filters-help.php';
 								<b><?php 
 									if(isset($value['title']) && trim($value['title'])!="")
 									{
-										echo $value['title']; 
+										echo esc_html($value['title']); 
 									}elseif(isset($value['description']) && trim($value['description'])!="")
 									{
-										echo $value['description']; 
+										echo esc_html($value['description']); 
 									}; 
 								?></b>
 							</p>
 						</td>
 						<td class="filter_actions">
-							<span class="dashicons dashicons-arrow-down-alt2" title="<?php echo __('Example Code','print-invoices-packing-slip-labels-for-woocommerce');?>"></span>
+							<span class="dashicons dashicons-arrow-down-alt2" title="<?php echo esc_attr__('Example Code','print-invoices-packing-slip-labels-for-woocommerce');?>"></span>
 							<span class="dashicons dashicons-arrow-up-alt2 filter_hide"></span>
 						</td>
 					</tr>
@@ -68,7 +68,7 @@ include WF_PKLIST_PLUGIN_PATH.'/admin/data/data.filters-help.php';
 								<?php 
 									if(isset($value['description']) && trim($value['description'])!="")
 									{
-										echo $value['description']; 
+										echo wp_kses_post($value['description']); 
 									}
 								?>
 							</div>
@@ -80,7 +80,7 @@ include WF_PKLIST_PLUGIN_PATH.'/admin/data/data.filters-help.php';
 							?>
 								<div class="wf_filter_code_div" style="position:relative;">
 									<div class="filter_code_copy" style="float: left;text-align: right;position: relative;padding: 0;bottom: 0;position: absolute;right: 2px;opacity: 0.5;">
-										<img src="<?php echo WF_PKLIST_PLUGIN_URL.'admin/images/copy-code.png'; ?>" title="<?php echo __('Copy Code','print-invoices-packing-slip-labels-for-woocommerce');?>" style="width: 25px;display: inline-block;background: #2b3337;border-radius: 25px;height: 25px;padding: 5px;">
+											<img src="<?php echo esc_url(WF_PKLIST_PLUGIN_URL.'admin/images/copy-code.png'); ?>" title="<?php echo esc_attr__('Copy Code','print-invoices-packing-slip-labels-for-woocommerce');?>" style="width: 25px;display: inline-block;background: #2b3337;border-radius: 25px;height: 25px;padding: 5px;">
 									</div>
 								<?php 
 									$count=count(explode(" ",$value['params']));
@@ -88,7 +88,7 @@ include WF_PKLIST_PLUGIN_PATH.'/admin/data/data.filters-help.php';
 									$str.='function '.$value['function_name'].'(<span class={prms_css}>'.$value['params'].'</span>)<br />{ <br /> <div>'.(isset($value['function_code']) ? $value['function_code'] : '').'</div> }';
 									$str=wt_code_view_colors($str);
 									$str=str_replace(array('{prms_css}','{inbuilt_fn}','{fn_str}','{cmt_css}','{str_css}'),array('"wf_filter_doc_params"','"inbuilt_fn"','"fn_str"','"cmt_css"','"str_css"'),$str);
-									echo $str;
+									echo wp_kses_post($str);
 								?>
 								</div>
 
@@ -100,9 +100,9 @@ include WF_PKLIST_PLUGIN_PATH.'/admin/data/data.filters-help.php';
 										}elseif(isset($value['function_code'])){
 											$function_val = $value['function_code'];
 										}
-										echo "add_filter('".$key."','".$value['function_name']."',10,".$count.");<br>";
-										echo "function ".$value['function_name']."(".$value['params']."){<br>";
-										echo $function_val;
+										echo "add_filter('".esc_html($key)."','".esc_html($value['function_name'])."',10,".esc_html($count).");<br>";
+										echo "function ".esc_html($value['function_name'])."(".esc_html($value['params'])."){<br>";
+										echo wp_kses_post($function_val);
 										echo "}";
 									?>
 								</er>
