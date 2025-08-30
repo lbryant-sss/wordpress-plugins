@@ -31,7 +31,6 @@ if ( ! class_exists( 'ES_Router' ) ) {
 
 		public function register_hooks() {
 			add_action( 'wp_ajax_icegram-express', array( $this, 'handle_ajax_request' ) );
-			//add_action( 'wp_ajax_nopriv_icegram-express', array( $this, 'handle_ajax_request' ) ); //For testing with postman We need
 		}
 
 		/**
@@ -53,7 +52,7 @@ if ( ! class_exists( 'ES_Router' ) ) {
 			$can_access_workflows = ES_Common::ig_es_can_access( 'workflows' );
 			if ( ! ( $can_access_audience || $can_access_campaign || $can_access_forms || $can_access_sequence || $can_access_reports || $can_access_workflows ) ) {
 				return 0;
-			}
+ 			}
 			$response = array();
 			$request = $_REQUEST;
 			

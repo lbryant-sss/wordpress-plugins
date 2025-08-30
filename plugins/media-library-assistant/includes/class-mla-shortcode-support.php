@@ -283,6 +283,25 @@ class MLAShortcode_Support {
 	}
 
 	/**
+	 * Make sure $tag does not contain a "script" tag
+	 *
+	 * @since 3.29
+	 *
+	 * @param	string	$tag Tag value to be validated
+	 * @param	string	$default Tag value to replace "script"
+	 *
+	 * @return	string	validated tag
+	 */
+	public static function mla_esc_tag( $tag, $default ) {
+		$tag = strtolower( tag_escape( $tag ) );
+		if ( 'script' === $tag ) {
+			$tag = $default;
+		}
+		
+		return $tag;
+	}
+
+	/**
 	 * Make sure $attr is an array, repair line-break damage, merge with $content
 	 *
 	 * @since 2.20
@@ -1122,9 +1141,9 @@ class MLAShortcode_Support {
 		$style_values = array_merge( $page_values, array(
 			'mla_style' => $arguments['mla_style'],
 			'mla_markup' => $arguments['mla_markup'],
-			'itemtag' => tag_escape( $arguments['itemtag'] ),
-			'icontag' => tag_escape( $arguments['icontag'] ),
-			'captiontag' => tag_escape( $arguments['captiontag'] ),
+			'itemtag' => self::mla_esc_tag( $arguments['itemtag'], $html5 ? 'figure' : 'dl' ),
+			'icontag' => self::mla_esc_tag( $arguments['icontag'], $html5 ? 'div' : 'dt' ),
+			'captiontag' => self::mla_esc_tag( $arguments['captiontag'], $html5 ? 'figcaption' : 'dd' ),
 			'columns' => $columns,
 			'itemwidth' => $width_string,
 			'margin' => $margin_string,

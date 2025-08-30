@@ -1093,7 +1093,7 @@ class Sassy_Social_Share_Follow_Widget extends WP_Widget {
 			<label for="<?php echo $this->get_field_id( 'behance' ); ?>"><?php _e( 'Behance URL:', 'sassy-social-share' ); ?></label>
 			<input style="width: 95%" class="widefat" id="<?php echo $this->get_field_id( 'behance' ); ?>" name="<?php echo $this->get_field_name( 'behance' ); ?>" type="text" value="<?php echo $instance['behance']; ?>" /><br/>
 			<span>https://www.behance.net/ID</span><br/><br/>
-			<label for="<?php echo $this->get_field_id( 'bluesky' ); ?>"><?php _e( 'Bluesky URL:', 'sassy-social-share-premium' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'bluesky' ); ?>"><?php _e( 'Bluesky URL:', 'sassy-social-share' ); ?></label>
 			<input style="width: 95%" class="widefat" id="<?php echo $this->get_field_id( 'bluesky' ); ?>" name="<?php echo $this->get_field_name( 'bluesky' ); ?>" type="text" value="<?php echo $instance['bluesky']; ?>" /><br/>
 			<span>https://bsky.app/profile/ID.bsky.social</span><br/><br/>
 			<label for="<?php echo $this->get_field_id( 'facebook' ); ?>"><?php _e( 'Facebook URL:', 'sassy-social-share' ); ?></label> 
@@ -1121,9 +1121,6 @@ class Sassy_Social_Share_Follow_Widget extends WP_Widget {
 			<label for="<?php echo $this->get_field_id( 'instagram' ); ?>"><?php _e( 'Instagram URL:', 'sassy-social-share' ); ?></label> 
 			<input style="width: 95%" class="widefat" id="<?php echo $this->get_field_id( 'instagram' ); ?>" name="<?php echo $this->get_field_name( 'instagram' ); ?>" type="text" value="<?php echo $instance['instagram']; ?>" /><br/>
 			<span>https://www.instagram.com/ID</span><br/><br/>
-			<label for="<?php echo $this->get_field_id( 'koo' ); ?>"><?php _e( 'Koo URL:', 'sassy-social-share' ); ?></label> (<a href="https://www.heateor.com/sassy-social-share-premium/" target="_blank"><?php _e( "Unlock", 'sassy-social-share' ); ?></a>)
-			<input style="width: 95%" class="widefat" id="<?php echo $this->get_field_id( 'koo' ); ?>" name="<?php echo $this->get_field_name( 'koo' ); ?>" type="text" value="" disabled /><br/>
-			<span>https://www.kooapp.com/profile/ID</span><br/><br/>
 			<label for="<?php echo $this->get_field_id( 'line' ); ?>"><?php _e( 'Line URL:', 'sassy-social-share' ); ?></label> 
 			<input style="width: 95%" class="widefat" id="<?php echo $this->get_field_id( 'line' ); ?>" name="<?php echo $this->get_field_name( 'line' ); ?>" type="text" value="<?php echo $instance['line']; ?>" /><br/><br/>
 			<label for="<?php echo $this->get_field_id( 'linkedin' ); ?>"><?php _e( 'LinkedIn URL:', 'sassy-social-share' ); ?></label> 
@@ -1140,7 +1137,7 @@ class Sassy_Social_Share_Follow_Widget extends WP_Widget {
 			<label for="<?php echo $this->get_field_id( 'mewe' ); ?>"><?php _e( 'MeWe URL:', 'sassy-social-share' ); ?></label> 
 			<input style="width: 95%" class="widefat" id="<?php echo $this->get_field_id( 'mewe' ); ?>" name="<?php echo $this->get_field_name( 'mewe' ); ?>" type="text" value="<?php echo $instance['mewe']; ?>" /><br/>
 			<span>https://mewe.com/profile/ID</span><br/><br/>
-			<label for="<?php echo $this->get_field_id( 'micro.blog' ); ?>"><?php _e( 'Micro.blog URL:', 'sassy-social-share-premium' ); ?></label> 
+			<label for="<?php echo $this->get_field_id( 'micro.blog' ); ?>"><?php _e( 'Micro.blog URL:', 'sassy-social-share' ); ?></label> 
 			<input style="width: 95%" class="widefat" id="<?php echo $this->get_field_id( 'micro.blog' ); ?>" name="<?php echo $this->get_field_name( 'micro.blog' ); ?>" type="text" value="<?php echo $instance['micro.blog']; ?>" /><br/>
 			<span>https://micro.blog/ID</span><br/><br/>
 			<label for="<?php echo $this->get_field_id( 'minds' ); ?>"><?php _e( 'Minds URL:', 'sassy-social-share' ); ?></label> (<a href="https://www.heateor.com/sassy-social-share-premium/" target="_blank"><?php _e( "Unlock", 'sassy-social-share' ); ?></a>)

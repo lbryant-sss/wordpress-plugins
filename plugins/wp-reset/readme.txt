@@ -1,4 +1,4 @@
-=== WP Reset - Most Advanced WordPress Reset Tool ===
+=== WP Reset ===
 Tags: wordpress reset, reset database, reset wordpress, reset, advanced wordpress reset
 Contributors: WebFactory
 Requires at least: 4.0

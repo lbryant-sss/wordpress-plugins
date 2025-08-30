@@ -1,10 +1,10 @@
 === WebToffee WooCommerce PDF Invoices, Packing Slips, Delivery Notes and Shipping Labels ===
 Contributors: WebToffee
-Version: 4.8.1
+Version: 4.8.2
 Tags: WooCommerce PDF invoices, WooCommerce invoice, packing slips, shipping label, woocommerce print invoice
 Requires at least: 3.0.1
 Tested up to: 6.8
-Stable tag: 4.8.1
+Stable tag: 4.8.2
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -279,14 +279,10 @@ Yes. The plugin addresses the needs of a multilingual website and is compatible 
 
 == Changelog ==
 
-= 4.8.1 2025-08-28 =
-* [Add]: Automatically installs and activates the Mpdf plugin when the user clicks on the Mpdf plugin link.
-* [Compatibility] – PCP check
-* [Compatibility] – Tested OK with WooCommerce 10.1.2
+= 4.8.2 2025-08-29 =
+* [Fix]: Fixed error message “Invalid access key and mail ID” when attempting to print or download documents.
  
 == Upgrade Notice ==
 
-= 4.8.1 =
-* [Add]: Automatically installs and activates the Mpdf plugin when the user clicks on the Mpdf plugin link.
-* [Compatibility] – PCP check
-* [Compatibility] – Tested OK with WooCommerce 10.1.2
+= 4.8.2 =
+* [Fix]: Fixed error message “Invalid access key and mail ID” when attempting to print or download documents.

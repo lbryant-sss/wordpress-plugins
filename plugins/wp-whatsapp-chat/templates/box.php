@@ -14,7 +14,7 @@
 					</div>
 				<div class="qlwapp-body">
 					<?php if ( isset( $contacts[0] ) ) : ?>
-						<a class="qlwapp-account" data-action="open" data-phone="<?php echo qlwapp_format_phone( $contacts[0]['phone'] ); ?>" data-message="<?php echo esc_html( $button['message'] ); ?>" role="button" tabindex="0" target="_blank">
+						<a class="qlwapp-account" data-action="open" data-phone="<?php echo qlwapp_format_phone( $contacts[0]['phone'] ); ?>" data-message="<?php echo esc_html( $button['message'] ); ?>" data-whatsapp-link-type="<?php echo esc_attr( $button['whatsappLinkType'] ?? 'api' ); ?>" role="button" tabindex="0" target="_blank">
 							<?php if ( ! empty( $contacts[0]['avatar'] ) ) : ?>
 								<div class="qlwapp-avatar">
 									<div class="qlwapp-avatar-container">
@@ -37,7 +37,7 @@
 			</div>
 		<?php endif; ?>
 
-		<a class="qlwapp-toggle" data-action="<?php echo ( $button['box'] === 'yes' ? 'box' : 'open' ); ?>" data-phone="<?php echo qlwapp_format_phone( $button['phone'] ); ?>" data-message="<?php echo esc_html( $button['message'] ); ?>" role="button" tabindex="0" target="_blank">
+		<a class="qlwapp-toggle" data-action="<?php echo ( $button['box'] === 'yes' ? 'box' : 'open' ); ?>" data-phone="<?php echo qlwapp_format_phone( $button['phone'] ); ?>" data-message="<?php echo esc_html( $button['message'] ); ?>" data-whatsapp-link-type="<?php echo esc_attr( $button['whatsappLinkType'] ?? 'api' ); ?>" role="button" tabindex="0" target="_blank">
 			<?php if ( $button['icon'] ) : ?>
 				<i class="qlwapp-icon <?php echo esc_attr( $button['icon'] ); ?>"></i>
 			<?php endif; ?>

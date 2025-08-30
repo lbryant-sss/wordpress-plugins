@@ -33,6 +33,13 @@ class Pageview_Aggregator
             return;
         }
 
+        // Sanity check on $path, it could be coming from an 1.8.x buffer file
+        // TODO: Remove in 2.1.x
+        if (is_numeric($path)) {
+            [$timestamp, $post_id, $new_visitor, $unique_pageview, $referrer_url] = $params;
+            $path = parse_url(get_permalink($post_id), PHP_URL_PATH);
+        }
+
         // convert unix timestamp to local datetime
         $dt = new DateTime('', wp_timezone());
         $dt->setTimestamp($timestamp);
@@ -161,8 +168,8 @@ class Pageview_Aggregator
                 $placeholders = rtrim(str_repeat('(%s),', count($values)), ',');
                 $wpdb->query($wpdb->prepare("INSERT INTO {$wpdb->prefix}koko_analytics_referrer_urls(url) VALUES {$placeholders}", $values));
                 $last_insert_id = $wpdb->insert_id;
-                foreach (array_reverse($values) as $url) {
-                    $stats[ $url ]['id'] = $last_insert_id--;
+                foreach ($values as $url) {
+                    $stats[ $url ]['id'] = $last_insert_id++;
                 }
             }
 

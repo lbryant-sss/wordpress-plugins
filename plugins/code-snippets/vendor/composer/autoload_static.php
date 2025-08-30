@@ -21,7 +21,6 @@ class ComposerStaticInit32c628976156f02e2f24b767297ff314
     );
 
     public static $classMap = array (
-        'Code_Snippets\\Active_Snippets' => __DIR__ . '/../..' . '/php/class-active-snippets.php',
         'Code_Snippets\\Admin' => __DIR__ . '/../..' . '/php/class-admin.php',
         'Code_Snippets\\Admin_Menu' => __DIR__ . '/../..' . '/php/admin-menus/class-admin-menu.php',
         'Code_Snippets\\Cloud\\Cloud_API' => __DIR__ . '/../..' . '/php/cloud/class-cloud-api.php',
@@ -51,6 +50,8 @@ class ComposerStaticInit32c628976156f02e2f24b767297ff314
         'Code_Snippets\\Welcome_API' => __DIR__ . '/../..' . '/php/class-welcome-api.php',
         'Code_Snippets\\Welcome_Menu' => __DIR__ . '/../..' . '/php/admin-menus/class-welcome-menu.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Evaluation\\Evaluate_Content' => __DIR__ . '/../..' . '/php/evaluation/class-evaluate-content.php',
+        'Evaluation\\Evaluate_Functions' => __DIR__ . '/../..' . '/php/evaluation/class-evaluate-functions.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

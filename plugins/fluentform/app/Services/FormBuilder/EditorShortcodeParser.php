@@ -2,6 +2,7 @@
 
 namespace FluentForm\App\Services\FormBuilder;
 
+use FluentForm\App\Helpers\Helper;
 use FluentForm\App\Services\Browser\Browser;
 
 class EditorShortcodeParser

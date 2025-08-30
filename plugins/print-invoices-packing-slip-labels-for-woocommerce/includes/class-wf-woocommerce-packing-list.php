@@ -116,8 +116,8 @@ class Wf_Woocommerce_Packing_List {
 			self::$base_version = WF_PKLIST_VERSION;
 		}else 
 		{
-			$this->version = '4.8.1';
-			self::$base_version = '4.8.1';
+			$this->version = '4.8.2';
+			self::$base_version = '4.8.2';
 		}
 		if(defined('WF_PKLIST_PLUGIN_NAME'))
 		{

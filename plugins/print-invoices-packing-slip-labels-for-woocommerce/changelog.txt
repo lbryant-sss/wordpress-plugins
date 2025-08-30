@@ -1,5 +1,10 @@
 == Changelog ==
 
+= 4.8.1 2025-08-28 =
+* [Add]: Automatically installs and activates the Mpdf plugin when the user clicks on the Mpdf plugin link.
+* [Compatibility] – PCP check
+* [Compatibility] – Tested OK with WooCommerce 10.1.2
+
 = 4.8.0 2025-07-24 =
 * [Compatibility] – Tested OK with WordPress 6.8.2
 * [Compatibility] – Tested OK with WooCommerce 10.0.4

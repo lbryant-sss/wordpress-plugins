@@ -6,7 +6,6 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Code_Snippets\\Active_Snippets' => $baseDir . '/php/class-active-snippets.php',
     'Code_Snippets\\Admin' => $baseDir . '/php/class-admin.php',
     'Code_Snippets\\Admin_Menu' => $baseDir . '/php/admin-menus/class-admin-menu.php',
     'Code_Snippets\\Cloud\\Cloud_API' => $baseDir . '/php/cloud/class-cloud-api.php',
@@ -36,4 +35,6 @@ return array(
     'Code_Snippets\\Welcome_API' => $baseDir . '/php/class-welcome-api.php',
     'Code_Snippets\\Welcome_Menu' => $baseDir . '/php/admin-menus/class-welcome-menu.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'Evaluation\\Evaluate_Content' => $baseDir . '/php/evaluation/class-evaluate-content.php',
+    'Evaluation\\Evaluate_Functions' => $baseDir . '/php/evaluation/class-evaluate-functions.php',
 );

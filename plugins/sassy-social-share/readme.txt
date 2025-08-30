@@ -1,16 +1,16 @@
 === Social Sharing Plugin - Sassy Social Share ===
 Contributors: Heateor, kamirkhan, the_champ
 Donate link: https://www.heateor.com/donate/?action=Sassy+Social+Share
-Tags: social share, social sharing, social media, wordpress social share, share buttons, facebook share, facebook like, social share buttons, twitter tweet, whatsapp share, line share, gab share, gab social share, gab, parler share, parler social share, gettr, gettr share, gettr social share, mewe share, mewe social share, mewe, mastodon share, mastodon social share, mastodon, rutube share, rutube social share, rutube, google news, google news share, google news icon, RSS, RSS Feed, x, x share, yelp, google translate, Google maps, tiktok, Teams, flickr, threads, Gab, Gab share, Line, bluesky
+Tags: social share, grok, chatgpt, social media, social share buttons, facebook share, facebook like, twitter tweet, whatsapp share, line share, gab share, gab social share, gab, parler share, parler social share, gettr, gettr share, gettr social share, mewe share, mewe social share, mewe, mastodon share, mastodon social share, mastodon, rutube share, rutube social share, rutube, google news, google news share, google news icon, RSS, RSS Feed, x, x share, yelp, google translate, Google maps, tiktok, Teams, flickr, threads, Gab, Gab share, Line, bluesky
 Requires at least: 2.5.0
 Tested up to: 6.8.2
-Stable tag: 3.3.77
+Stable tag: 3.3.78
 License: GPLv2 or later
 
-Slickest, Simplest and Optimized Share buttons. Facebook, X, Reddit, Pinterest, Whatsapp, Gab, Gettr and over 100 more.
+The Simplest and Optimized Social Share buttons. Facebook, X, Reddit, Pinterest, Whatsapp, Grok, ChatGPT, Gab, Gettr and over 100 more.
 
 == Description ==
-Sassy Social Share allows your website visitors to share your content over Facebook, Twitter, Google, Linkedin, Whatsapp, Tumblr, Pinterest, Reddit, Gab, Gettr and over 110 more social sharing and bookmarking services.
+Allow the website visitors to share content over Facebook, Twitter, Google, Linkedin, Whatsapp, Tumblr, Pinterest, Reddit, Gab, Gettr and around 100 more social sharing and bookmarking services.
 
 This is the Simplest and Slickest Social Share plugin with optimized and great looking vector icons.
 
@@ -123,6 +123,9 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 4. **Social Share Services**: Over 100 Social Share and Bookmarking services
 
 == Changelog ==
+= 3.3.78 [29 August 2025] =
+* [New] Added new Social Share Networks - ChatGPT, Grok, Perplexity, Google AI, Claude
+
 = 3.3.77 [30 July 2025] =
 * [Improvement] Removed Webnews from the supported social share networks
 * [Improvement] Updated the official Facebook SDK being used throughout the plugin to the version 23.0
@@ -1547,3 +1550,6 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 = 3.3.77 [30 July 2025] =
 * [Improvement] Removed Webnews from the supported social share networks
 * [Improvement] Updated the official Facebook SDK being used throughout the plugin to the version 23.0
+
+= 3.3.78 [29 August 2025] =
+* [New] Added new Social Share Networks - ChatGPT, Grok, Perplexity, Google AI, Claude

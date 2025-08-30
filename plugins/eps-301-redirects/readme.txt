@@ -1,4 +1,4 @@
-=== 301 Redirects - Easy Redirect Manager ===
+=== 301 Redirects - Redirect Manager ===
 Contributors: WebFactory
 Tags: 301 redirect, redirect, 404 error log, redirection, redirects
 Requires at least: 4.0

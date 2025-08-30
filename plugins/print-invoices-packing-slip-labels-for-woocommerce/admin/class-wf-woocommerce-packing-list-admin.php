@@ -978,7 +978,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 				}
 			} else {
 
-				if ( !isset( $attaching_pdf ) && wp_verify_nonce($nonce, WF_PKLIST_PLUGIN_NAME) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+				if ( empty( $attaching_pdf ) && wp_verify_nonce($nonce, WF_PKLIST_PLUGIN_NAME) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 					if ( is_user_logged_in() ) {
 						// admin link
 						$this->print_document_from_the_admin_link();

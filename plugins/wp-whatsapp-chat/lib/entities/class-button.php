@@ -20,8 +20,11 @@ class Button extends SingleEntity {
 	public $timedays        = array();
 	public $timezone        = '';
 	public $visibility      = 'readonly';
-	public $animation_name  = '';
-	public $animation_delay = '';
+	public $animation_name     = '';
+	public $animation_delay    = '';
+	public $whatsappLinkType   = 'api';
+	public $notification_bubble = 'none';
+	public $notification_bubble_animation = 'none';
 
 	public function __construct() {
 		$this->text     = esc_html__( 'How can I help you?', 'wp-whatsapp-chat' );

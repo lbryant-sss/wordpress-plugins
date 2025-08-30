@@ -82,6 +82,16 @@ class EmailNotificationActions
 
     public function notify($feed, $formData, $entry, $form)
     {
+        // If this is a payment form and the feed is configured to run on payment_success,
+        // then do not send while the submission's payment status is still pending.
+        if (isset($form->has_payment) && $form->has_payment) {
+            $isTriggerOnPaymentSuccess = ArrayHelper::get($feed, 'processedValues.feed_trigger_event') === 'payment_success';
+            $isPaymentPending = isset($entry->payment_status) && $entry->payment_status === 'pending';
+            if ($isTriggerOnPaymentSuccess && $isPaymentPending) {
+                return;
+            }
+        }
+
         $notifier = $this->app->make(
             'FluentForm\App\Services\FormBuilder\Notifications\EmailNotification'
         );

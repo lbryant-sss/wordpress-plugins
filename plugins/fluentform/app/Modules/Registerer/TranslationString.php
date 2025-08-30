@@ -521,7 +521,6 @@ class TranslationString
             'Please Select when the email will be sent for Payment Forms' => __('Please Select when the email will be sent for Payment Forms', 'fluentform'),
             'After Payment Success' => __('After Payment Success', 'fluentform'),
             'After Form Submit' => __('After Form Submit', 'fluentform'),
-            'Please Note, for offline payment this settings will not work.Pending offline payment form notifications is sent instantly, we will remove this after our next major release, so this settings will also work for offline payments.' => __('Please Note, for offline payment this settings will not work.Pending offline payment form notifications is sent instantly, we will remove this after our next major release, so this settings will also work for offline payments.', 'fluentform'),
             'Enter the name you would like the notification email ' => __('Enter the name you would like the notification email ', 'fluentform'),
             'sent from, or select the name from available name fields.' => __('sent from, or select the name from available name fields.', 'fluentform'),
             'It will only be visible in the email if \"From Email\" value is available' => __('It will only be visible in the email if \"From Email\" value is available', 'fluentform'),
@@ -1429,6 +1428,8 @@ class TranslationString
             'Specify the ordering of the dynamically populate' => __('Specify the ordering of the dynamically populate', 'fluentform'),
             'We don\'t have Subscription Field support for %s' => __('We don\'t have Subscription Field support for %s', 'fluentform'),
             '%s Image ALT Text' => __('%s Image ALT Text', 'fluentform'),
+            'Address autocomplete with OpenStreetMap (Nominatim) is limited to 1 request per second across all users. Best for forms with low to moderate traffic. For high-traffic sites, consider Google Maps.' => __('Address autocomplete with OpenStreetMap (Nominatim) is limited to 1 request per second across all users. Best for forms with low to moderate traffic. For high-traffic sites, consider Google Maps.', 'fluentform'),
+            'If Terms and Conditions checkbox is hidden (appears unchecked), please avoid marking this field as required. This ensures your forms will submit properly without any issues.' => __('If Terms and Conditions checkbox is hidden (appears unchecked), please avoid marking this field as required. This ensures your forms will submit properly without any issues.', 'fluentform')
         );
 
         return apply_filters('fluentform/editor_i18n', $i18n);

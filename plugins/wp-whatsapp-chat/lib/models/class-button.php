@@ -76,6 +76,9 @@ class Button {
 		if ( isset( $settings['group'] ) ) {
 			$settings['group'] = sanitize_url( $settings['group'] );
 		}
+		if ( isset( $settings['whatsappLinkType'] ) ) {
+			$settings['whatsappLinkType'] = in_array( $settings['whatsappLinkType'], array( 'api', 'web' ) ) ? $settings['whatsappLinkType'] : 'api';
+		}
 
 		return $settings;
 	}

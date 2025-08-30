@@ -179,7 +179,8 @@ trait Vue {
 					'toc' => [
 						'hashPrefix' => apply_filters( 'aioseo_toc_hash_prefix', 'aioseo-' )
 					]
-				]
+				],
+				'vueComponentsDefaults' => $this->getVueComponentsDefaults(),
 			],
 			'user'               => [
 				'canManage'      => aioseo()->access->canManage(),
@@ -594,7 +595,7 @@ trait Vue {
 
 			foreach ( $entry->translations as $translation ) {
 				// If any of the translated strings contains an HTML line break, we need to ignore it. Otherwise, logging into the admin breaks.
-				// https://github.com/awesomemotive/aioseo/issues/2074
+
 				if ( preg_match( '/<br[\s\/\\\\]*>/', (string) $translation ) ) {
 					continue 2;
 				}
@@ -693,5 +694,64 @@ trait Vue {
 		}
 
 		return 'https://aioseo.com/';
+	}
+
+	/**
+	 * Clean sensitive data.
+	 *
+	 * @since 4.8.7
+	 *
+	 * @return void
+	 */
+	protected function cleanSensitiveData() {
+		// Hide Semrush tokens.
+		if ( ! empty( $this->data['internalOptions']['integrations']['semrush']['accessToken'] ) ) {
+			$this->data['internalOptions']['integrations']['semrush']['accessToken'] = '*****************';
+		}
+
+		if ( ! empty( $this->data['internalOptions']['integrations']['semrush']['refreshToken'] ) ) {
+			$this->data['internalOptions']['integrations']['semrush']['refreshToken'] = '*****************';
+		}
+
+		// Hide AI tokens.
+		if ( ! empty( $this->data['internalOptions']['internal']['ai']['accessToken'] ) ) {
+			$this->data['internalOptions']['internal']['ai']['accessToken'] = '*****************';
+		}
+
+		// Hide Search Statistics tokens.
+		if ( ! empty( $this->data['internalOptions']['internal']['searchStatistics']['profile']['key'] ) ) {
+			$this->data['internalOptions']['internal']['searchStatistics']['profile']['key'] = '*****************';
+		}
+
+		if ( ! empty( $this->data['internalOptions']['internal']['searchStatistics']['profile']['token'] ) ) {
+			$this->data['internalOptions']['internal']['searchStatistics']['profile']['token'] = '*****************';
+		}
+
+		if ( ! empty( $this->data['internalOptions']['internal']['searchStatistics']['trustToken'] ) ) {
+			$this->data['internalOptions']['internal']['searchStatistics']['trustToken'] = '*****************';
+		}
+
+		// Hide connect token.
+		if ( ! empty( $this->data['internalOptions']['internal']['siteAnalysis']['connectToken'] ) ) {
+			$this->data['internalOptions']['internal']['siteAnalysis']['connectToken'] = '*****************';
+		}
+	}
+
+	/**
+	 * Returns default values and settings for Vue components. These settings can be customized
+	 * by a filter.
+	 *
+	 * @since 4.8.7
+	 *
+	 * @return array The default values for Vue components.
+	 */
+	private function getVueComponentsDefaults() {
+		$defaults = [
+			'fieldGroupRepeater' => [
+				'maxGroups' => 50
+			]
+		];
+
+		return apply_filters( 'aioseo_vue_components_defaults', $defaults );
 	}
 }

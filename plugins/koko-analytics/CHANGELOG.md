@@ -1,5 +1,18 @@
 # Changelog
 
+### 2.0.11 - Aug 29, 2025
+
+- Add script to correctly map post ID to path for sites where this went wrong.
+
+
+### 2.0.10 - Aug 29, 2025
+
+- Show page title again for records that have one.
+- Fix the same path mapping to multiple entries in the `wp_koko_analytics_paths` table.
+- Defend against stale client-side configuration object due to aggressive full-page caching.
+- Drop database tables when using "reset statistics" button.
+
+
 ### 2.0.9 - Aug 28, 2025
 
 - Automatically run the v2 data migration for tables with less than 25.000 total records.

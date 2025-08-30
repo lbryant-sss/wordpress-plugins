@@ -200,7 +200,9 @@ All of the MLA source code has been annotated with "DocBlocks", a special type o
 == Changelog ==
 
 = 3.29 =
+* Fix: IMPORTANT: A Reflected Cross-Site Scripting security risk in all four shortcodes has been mitigated. 
 * Fix: For the "Featured image" Media Manager Modal (popup) Window, a PHP warning when filtering the content with a custom field view/query has been eliminated.
+* Fix: For the "Attachment details" Media Manager Modal (popup) Window, toggling of the taxonomy term areas is restricted to clicking the taxonomy name (not the blank area to the left of the terms, if present).
 
 = 3.28 =
 * Fix: **IMPORTANT: For the `[mla_term_list]` shortcode, a defect that caused the famous "There Has Been a Critical Error on This Website" error has been corrected.**
