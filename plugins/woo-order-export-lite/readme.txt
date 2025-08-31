@@ -117,6 +117,10 @@ Yes, you can email a request to aprokaev@gmail.com. We intensively develop this 
 
 == Changelog ==
 
+= 4.0.4 - 2025-09-01 =
+* Fixed bug - option "Skip fully refunded items" conflicted with mode "Export refunds"
+* Fixed bug - fatal error when exporting refunds (if main order is missing)
+
 = 4.0.3 - 2025-07-07 =
 * Mode "Export refunds" supports product filters
 * New option "Skip order having any excluded products" (>Filter by product)

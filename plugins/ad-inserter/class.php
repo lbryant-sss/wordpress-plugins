@@ -7028,6 +7028,8 @@ echo '</body>
 
           if ($active_paragraph_positions [$index] == 0) continue;
 
+          if (!isset ($paragraph_end_positions [$index])) continue;
+
           if ($multibyte) {
             $paragraph_code = mb_substr ($content, $paragraph_position, $paragraph_end_positions [$index] - $paragraph_position + 1);
           } else {
@@ -8119,6 +8121,8 @@ echo '</body>
         foreach ($paragraph_positions as $index => $paragraph_position) {
 
           if ($active_paragraph_positions [$index] == 0) continue;
+
+          if (!isset ($paragraph_start_positions [$index])) continue;
 
           if ($multibyte) {
             $paragraph_code = mb_substr ($content, $paragraph_start_positions [$index], $paragraph_position - $paragraph_start_positions [$index] + 1);
