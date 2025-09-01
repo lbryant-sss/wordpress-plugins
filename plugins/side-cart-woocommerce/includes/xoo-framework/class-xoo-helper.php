@@ -351,7 +351,7 @@ class Xoo_Helper{
 							}	
 						}
 
-						return new WP_Error( 'failed', __( 'Some files failed to upload', 'easy-login-woocommerce' ). ' - ' . $file['name'] . '('.$attachment_id->get_error_message().')' );
+						return new WP_Error( 'failed', 'Some files failed to upload'. ' - ' . $file['name'] . '('.$attachment_id->get_error_message().')' );
 					} 
 					else{
 						$attachmentIDS[ $field_id ][] = $attachment_id;

@@ -26,6 +26,10 @@ class SchemaFactory {
 		return (new Enum($label))->values($values);
 	}
 
+	public function computedEnum(callable $valueProvider, $label = null): Enum {
+		return (new Enum($label))->valueCallback($valueProvider);
+	}
+
 	public function struct(array $fieldSchemas, $label = null) {
 		return new Struct($fieldSchemas, $label);
 	}

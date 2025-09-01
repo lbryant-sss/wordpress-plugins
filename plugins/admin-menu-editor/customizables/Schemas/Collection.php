@@ -97,4 +97,15 @@ abstract class Collection extends CheckableSchema {
 			return $parsedValues;
 		}
 	}
+
+	/**
+	 * @return Schema
+	 */
+	public function getKeySchema() {
+		return $this->keySchema;
+	}
+
+	public function getItemSchema(): Schema {
+		return $this->itemSchema;
+	}
 }

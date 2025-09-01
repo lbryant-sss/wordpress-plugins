@@ -52,7 +52,7 @@
 
 				<label>Free Gift Products</label>
 
-				<select class="wc-product-search" multiple="multiple" name="<?php echo $id ?>[gift_ids][]" data-placeholder="<?php esc_attr_e( 'Search for a product&hellip;', 'woocommerce' ); ?>" data-action="woocommerce_json_search_products_and_variations">
+				<select class="wc-product-search" multiple="multiple" name="<?php echo $id ?>[gift_ids][]" data-placeholder="Search for a product" data-action="woocommerce_json_search_products_and_variations">
 				</select>
 
 				<div class="xoo-wsc-barpsearch-defaults">

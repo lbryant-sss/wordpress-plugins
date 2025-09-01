@@ -54,6 +54,19 @@ class Xoo_Wsc_Admin_Settings{
 
 		add_action( 'wp_ajax_xoo_wsc_el_install', array( $this, 'install_loginpopup' ) );
 		add_action( 'wp_ajax_xoo_wsc_el_request_just_to_init_save_settings',  array( $this, 'el_request_just_to_init_save_settings' ) );
+
+		add_action( 'xoo_admin_setting_field_callback_html', array( $this, 'header_layout_setting_html' ), 10, 4 );
+
+		add_action( 'xoo_admin_setting_field_callback_html', array( $this, 'toggle_old_header_layout_setting' ), 10, 4 );
+
+	}
+
+
+	public function toggle_old_header_layout_setting( $field, $field_id, $value, $args ){
+		if( $field_id === 'xoo-wsc-sy-options[sch-new-layout]' && get_option( 'xoo-wsc-old-header-layout',true ) !== "yes" ){
+			$field = '';
+		}
+		return $field;
 	}
 
 
@@ -138,6 +151,7 @@ class Xoo_Wsc_Admin_Settings{
 		
 		wp_enqueue_style( 'xoo-wsc-magic', XOO_WSC_URL.'/library/magic/dist/magic.min.css', array(), '1.0' );
 		wp_enqueue_script( 'masonry-js', 'https://unpkg.com/masonry-layout@4.2.2/dist/masonry.pkgd.min.js', array(), XOO_WSC_VERSION, array( 'strategy' => 'defer', 'in_footer' => true ) );
+		wp_enqueue_script( 'xoo-wsc-serializejson', XOO_WSC_URL . '/admin/assets/xoo-wsc-serializejson.js', array( 'jquery' ), '1.0', true );
 		
 
 		wp_enqueue_style( 'xoo-wsc-admin-fonts', XOO_WSC_URL . '/assets/css/xoo-wsc-fonts.css', array(), XOO_WSC_VERSION );
@@ -207,7 +221,8 @@ class Xoo_Wsc_Admin_Settings{
 					),
 
 				) 
-			)
+			),
+			'hasOldheader' => get_option( 'xoo-wsc-old-header-layout',true ) === "yes"
 		) );
 
 	}
@@ -382,7 +397,7 @@ class Xoo_Wsc_Admin_Settings{
 				<div>
 					<span class="xoo-wsc-adpopup-head">Choose your Product Layout</span>
 					<?php echo xoo_wsc_helper()->admin->get_setting_html_pop( 'style', 'sc_body', 'scb-playout' ); ?>
-					<span>You can change this later from "Style -> Side Cart Body"</span>
+					<span>You can change this later from "Style"</span>
 				</div>
 
 				<div>
@@ -414,6 +429,69 @@ class Xoo_Wsc_Admin_Settings{
 			<option value="<?php echo $option_value ?>" {{ data.<?php echo $name; ?> == '<?php echo $option_value ?>' ? 'selected' : '' }} ><?php echo $title ?></option>
 			<?php
 		}
+	}
+
+
+	public function header_layout_setting_html( $field, $field_id, $value, $args ){
+
+		if( $field_id !== 'xoo-wsc-sy-options[sch-layout]' ) return $field;
+
+		$defaults = array(
+			'left' 		=> array( 'basket', 'heading' ),
+			'center' 	=> array(),
+			'right'		=> array( 'save', 'close' ),
+		);
+
+		if( !$value || empty($value) ){
+			$value = $defaults;
+		}
+		else{
+			$defaults = array_map(function() {
+			    return array();
+			}, $defaults);
+			
+			$value = xoo_recursive_parse_args( $value, $defaults );
+		}
+
+		
+
+		$html = array(
+			'basket' 	=> '<span class="xoo-wsc-icon-shopping-bag1 xoo-wschl-icon"></span>',
+			'heading' 	=> 'Heading',
+			'save' 		=> '<span class="xoo-wsc-icon-heart1 xoo-wschl-icon"></span>',
+			'close' 	=> '<span class="xoo-wsc-icon-del1 xoo-wschl-icon"></span>',
+		);
+
+		ob_start();
+
+		?>
+
+		<div class="xoo-wsch-layout-cont xoo-as-setting xoo-as-has-preview">
+
+			<?php foreach ($value as $location => $elements ): ?>
+
+				<div>
+					<span><?php echo $location; ?></span>
+					<ul id="xooWscH-<?php echo $location; ?>" class="xooWscHconnectedSortable" data-name="<?php echo $location; ?>">
+
+						<?php foreach( $elements as $element ): ?>
+							<li>
+								<?php echo $html[ $element ] ?>
+								<input type="hidden" name="xoo-wsc-sy-options[sch-layout][<?php echo $location ?>][]" value="<?php echo $element ?>">
+							</li>
+
+						<?php endforeach; ?>
+					</ul>
+				</div>
+
+			<?php endforeach; ?>
+
+		</div>
+
+		<?php
+
+		return ob_get_clean();
+
 	}
 
 }

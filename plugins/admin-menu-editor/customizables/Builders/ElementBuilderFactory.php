@@ -119,6 +119,14 @@ class ElementBuilderFactory {
 
 	/**
 	 * @param Setting|null|string $idOrSetting
+	 * @return ControlBuilder
+	 */
+	public function checkBoxGroup($idOrSetting = null): ControlBuilder {
+		return $this->initControlBuilder(Controls\CheckBoxGroup::class, $idOrSetting);
+	}
+
+	/**
+	 * @param Setting|null|string $idOrSetting
 	 * @return ControlBuilder<\YahnisElsts\AdminMenuEditor\Customizable\Controls\SelectBox>
 	 */
 	public function select($idOrSetting = null) {

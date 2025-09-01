@@ -29,7 +29,7 @@ $sections = array(
 	),
 
 	array(
-		'title' => 'Cart Menu',
+		'title' => 'Cart Menu/ Shortcode',
 		'id' 	=> 'sh_bk',
 		'tab' 	=> 'general',
 		'desc' 	=> 'You can also use shortcode [xoo_wsc_cart] to generate basket icon anywhere.'

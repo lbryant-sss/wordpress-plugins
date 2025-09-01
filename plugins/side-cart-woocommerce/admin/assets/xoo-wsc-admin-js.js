@@ -118,8 +118,9 @@ jQuery(document).ready(function($){
 
 
 		setFormValues: function(){
-			var values 		= this.$form.serializeArray();
-			this.formValues = this.objectifyForm(values);
+			//var values 		= this.$form.serializeArray();
+			//this.formValues = this.objectifyForm(values);
+			this.formValues = this.$form.serializeJSON();
 		},
 
 		build: function(){
@@ -210,7 +211,7 @@ jQuery(document).ready(function($){
 			if( !this.previewSettingsRecorded ){
 				this.settingsInPreview.push( option+'['+key+']' )
 			}
-			return Customizer.formValues[ option+'['+key+']' ];
+			return Customizer.formValues[option][key];
 		},
 
 
@@ -250,8 +251,11 @@ jQuery(document).ready(function($){
 				'display': 	 		this.sy('sck-show-count') === 'yes' ? 'block' : 'none',
 				'background-color': this.sy('sck-count-bg'),
 				'color': 			this.sy('sck-count-color'),
-				[basketPosition === 'top_right' || basketPosition === 'top_left' ? 'top' : 'bottom']: '-12px',
-				[basketPosition === 'top_right' || basketPosition === 'bottom_right' ? 'right' : 'left']: '-12px'
+				[basketPosition === 'top_right' || basketPosition === 'top_left' ? 'top' : 'bottom']: '-9px',
+				[basketPosition === 'top_right' || basketPosition === 'bottom_right' ? 'right' : 'left']: '-8px',
+				'height': 			this.sy('sck-count-size','px'),
+				'line-height': 		this.sy('sck-count-size','px'),
+				'width': 			this.sy('sck-count-size','px')
 			}
 
 			var container = {
@@ -259,6 +263,15 @@ jQuery(document).ready(function($){
 				'right': 					'-'+this.sy('scm-width','px'),
 				'font-family': 				this.sy('scm-font'),
 				[this.sy('sck-position')]: 	'0'
+			}
+
+			var headerCloseIcon = {
+				'font-size': 					this.sy('sch-close-fsize','px'),
+				[this.sy('sch-close-align')]: 	'10px'
+			}
+
+			var headerTop = {
+				'justify-content': this.sy('sch-head-align')
 			}
 
 			if( this.sy('scm-height') === 'full' ){
@@ -280,14 +293,6 @@ jQuery(document).ready(function($){
 				'font-size': this.sy('sch-head-fsize','px')
 			}
 
-			var headerCloseIcon = {
-				'font-size': 					this.sy('sch-close-fsize','px'),
-				[this.sy('sch-close-align')]: 	'10px'
-			}
-
-			var headerTop = {
-				'justify-content': this.sy('sch-head-align')
-			}
 
 			var body = {
 				'background-color': this.sy('scb-bgcolor'),
@@ -435,7 +440,22 @@ jQuery(document).ready(function($){
 				'.xoo-wsc-footer': footer,
 				'.xoo-wsc-footer, .xoo-wsc-footer a, .xoo-wsc-footer .amount': footerFSize,
 				'.xoo-wsc-products:not(.xoo-wsc-pattern-card) .xoo-wsc-product': product,
-				'.xoo-wsc-products:not(.xoo-wsc-pattern-card) .xoo-wsc-img-col': productImgCol
+				'.xoo-wsc-products:not(.xoo-wsc-pattern-card) .xoo-wsc-img-col': productImgCol,
+				'.xoo-wsch-items-count, .xoo-wsch-save-count': {
+					'background-color': this.sy('sck-count-bg'),
+					'color': 			this.sy('sck-count-color')
+				},
+				'.xoo-wsch-new span.xoo-wsch-close': {
+					'font-size': this.sy('sch-close-fsize','px')
+				},
+				'span.xoo-wsch-bki': {
+					'font-size': this.sy('sch-basket-fsize','px')
+				},
+				'span.xoo-wsch-items-count': {
+					'width': this.sy('sch-count-size','px'),
+					'height': this.sy('sch-count-size','px'),
+					'line-height': this.sy('sch-count-size','px')
+				}
 			}
 
 			var gridCols = 'auto';
@@ -494,7 +514,7 @@ jQuery(document).ready(function($){
 
 			if( !this.previewSettingsRecorded ){
 				$.each( this.settingsInPreview, function( index, name ){
-					var $input = $('[name="'+name+'"]').parents('.xoo-as-setting');
+					var $input = $('[name="'+name+'"]').closest('.xoo-as-setting');
 					if( !$input.length ) return true;
 					$input.addClass( 'xoo-as-has-preview' );
 				} );
@@ -520,7 +540,9 @@ jQuery(document).ready(function($){
 					showBasketIcon: 			this.gl('sch-show').includes('basket'),
 					showCloseIcon: 				this.gl('sch-show').includes('close'),
 					closeIcon: 					this.sy('sch-close-icon'),
-					heading: 					this.gl('sct-cart-heading')
+					heading: 					this.gl('sct-cart-heading'),
+					layout: 					this.sy('sch-layout'),
+					oldLayout: 					xoo_wsc_admin_params.hasOldheader && this.sy('sch-new-layout') !== "yes"
 				},
 				product: {
 					layout: 				this.sy('scb-playout'),
@@ -532,6 +554,9 @@ jQuery(document).ready(function($){
 					showPmeta: 				this.gl('scb-show').includes('product_meta'),
 					showPprice: 			this.gl('scb-show').includes('product_price'),
 					showPqty: 				this.gl('scb-show').includes('product_qty'),
+					showPriceSavings: 		this.gl('scb-show').includes('product_price_save'),
+					showTotalSavings: 		this.gl('scb-show').includes('product_total_save'),
+					savingsUnit:  			this.gl('scb-prod-savings'),
 					qtyPriceDisplay: 		this.gl('scbp-qpdisplay'),
 					deletePosition: 		this.sy('scbp-delpos'),
 					deleteText: 			this.gl('sct-delete'),
@@ -542,19 +567,25 @@ jQuery(document).ready(function($){
 				},
 				card: {
 					backShow: {
-						name: 	this.sy('scbp-card-back').includes('name'),
-						price: 	this.sy('scbp-card-back').includes('price'),
-						qty: 	this.sy('scbp-card-back').includes('qty'),
-						total: 	this.sy('scbp-card-back').includes('total'),
-						meta: 	this.sy('scbp-card-back').includes('meta'),
-						link: 	this.sy('scbp-card-back').includes('link'),
+						name: 					this.sy('scbp-card-back').includes('name'),
+						price: 					this.sy('scbp-card-back').includes('price'),
+						qty: 					this.sy('scbp-card-back').includes('qty'),
+						total: 					this.sy('scbp-card-back').includes('total'),
+						meta: 					this.sy('scbp-card-back').includes('meta'),
+						link: 					this.sy('scbp-card-back').includes('link'),
+						price_save: 			this.sy('scbp-card-back').includes('price_save'),
+						total_save: 			this.sy('scbp-card-back').includes('total_save'),
 					},
 					visibility: this.sy('scbp-card-visible'),
 					hasBack: this.sy('scbp-card-visible') !== 'all_on_front' && (this.sy('scbp-card-back').length > 1)
 				},
 				footer: {
-					subtotal: 			this.gl('scf-show').includes('subtotal'),
+					totals: {
+						savings: 	this.gl('scf-show').includes('savings'),
+						subtotal: 	this.gl('scf-show').includes('subtotal'),
+					},
 					subtotalLabel: 		this.gl('sct-subtotal'),
+					savingLabel: 		this.gl('sct-savings'),
 					footerTxt: 			this.gl('sct-footer'),
 					checkoutTotal: 		this.gl('scf-chkbtntotal-en'),
 					buttonsPosition: 	this.sy('scf-button-pos'),
@@ -805,10 +836,25 @@ jQuery(document).ready(function($){
 	});
 	
 
+	$('ul[id^="xooWscH-"]').sortable({
+      connectWith: ".xooWscHconnectedSortable",
+       axis: "x",
+       update: function(event, ui) {
 
-	if( !xoo_wsc_admin_params.hasMenu ){
-		$('.xoo-ass-general-sh_bk').hide();
-	}
+       	if( ui.sender ){
+
+	       	var newName = ui.item.find('input').attr('name').replace(
+	       		'['+ui.sender.data('name')+']',
+	       		'['+ui.item.closest('ul').data('name')+']'
+	       	);
+
+	       	ui.item.find('input').attr('name',newName);
+	    }
+
+	    ui.item.find('input').trigger('change');
+
+       }
+    }).disableSelection();
 
 
 	$('body').on('click', '.xoo-wsc-acc-head', function(){
@@ -1108,5 +1154,30 @@ jQuery(document).ready(function($){
 	$(document).on('click', '.iconpicker-item', function(e) {
 	    e.preventDefault(); // stops "#" from being written
 	});
+
+
+	var $changeNewHeaderLayoutOption = $('input[name="xoo-wsc-sy-options[sch-new-layout]"]');
+
+	if( $changeNewHeaderLayoutOption.length ){
+
+		var $newLayoutSetting = $('.xoo-as-setting[data-field_id="xoo-wsc-sy-options[sch-layout]"] , .xoo-as-setting[data-field_id="xoo-wsc-sy-options[sch-count-size]"], .xoo-as-setting[data-field_id="xoo-wsc-sy-options[sch-count-size]"]'),
+				$prevLayoutSettings = $('.xoo-as-setting[data-field_id="xoo-wsc-sy-options[sch-head-align]"], .xoo-as-setting[data-field_id="xoo-wsc-sy-options[sch-close-align]"]');
+
+		$changeNewHeaderLayoutOption.on( 'change', function(){
+
+			if( $(this).prop('checked') ){
+				$newLayoutSetting.show();
+				$prevLayoutSettings.hide();
+			}
+			else{
+				$newLayoutSetting.hide();
+				$prevLayoutSettings.show();
+			}
+
+		} ).trigger('change');
+
+	}
+
+	
 	
 })
