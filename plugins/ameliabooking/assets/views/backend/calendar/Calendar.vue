@@ -363,7 +363,8 @@
           types: ['locations', 'employees', 'categories', 'custom_fields', 'tags', 'packages', 'resources', 'coupons'],
           page: 'calendar',
           isFrontEnd: false,
-          isPanel: false
+          isPanel: false,
+          dates: $this.params.dates
         })
       },
 
@@ -838,7 +839,7 @@
       },
 
       filterData () {
-        this.getCalendar()
+        this.getCalendarOptions(false)
       },
 
       eventSelected (event) {

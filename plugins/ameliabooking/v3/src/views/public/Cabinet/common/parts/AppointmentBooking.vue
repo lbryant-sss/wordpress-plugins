@@ -126,9 +126,13 @@
           :load-counter="loadCounter"
           :end-time="props.customizedOptions.endTimeVisibility.visibility"
           :time-zone="props.customizedOptions.timeZoneVisibility.visibility"
+          :show-estimated-pricing="props.appointment.id && 'estimatedPricingVisibility' in props.customizedOptions ? props.customizedOptions.estimatedPricingVisibility.visibility : false"
+          :show-indicator-pricing="props.appointment.id && 'indicatorPricingVisibility' in props.customizedOptions ? props.customizedOptions.indicatorPricingVisibility.visibility : false"
+          :show-slot-pricing="props.appointment.id && 'slotPricingVisibility' in props.customizedOptions ? props.customizedOptions.slotPricingVisibility.visibility : false"
           :label-slots-selected="labels.date_time_slots_selected"
           :fetched-slots="null"
-          :service-id="0"
+          :service-id="parseInt(props.appointment.serviceId)"
+          :is-package="props.appointment.bookings[0].packageCustomerService !== null"
           :date="props.appointment && props.appointment.bookingStart ? props.appointment.bookingStart.split(' ')[0] : ''"
           :slots-params="slotsProps"
         ></Calendar>
@@ -238,6 +242,10 @@ let props = defineProps({
     type: Object,
     default: () => {}
   },
+  isPackage: {
+    type: Boolean,
+    default: false
+  },
   labels: {
     type: Object,
     required: true
@@ -257,10 +265,10 @@ let filteredEmployees = computed(() => {
   if (queryEmployeeLower.value) {
     return props.employees.filter(item => {
       const fullName = `${item.firstName} ${item.lastName}`.toLowerCase()
-      return fullName.includes(queryEmployeeLower.value)
+      return fullName.includes(queryEmployeeLower.value) && item.show
     })
   }
-  return props.employees
+  return props.employees.filter(e => e.show)
 })
 
 let queryLocationLower = ref('')
@@ -693,6 +701,7 @@ function useSlotsCallback(
     return {
       calendarStartDate: dates[0],
       calendarEventSlots: [],
+      calendarEventDate: dates[0],
       calendarEventSlot: null,
     }
   }
@@ -702,6 +711,7 @@ function useSlotsCallback(
   return {
     calendarStartDate: bookingStartParts[0],
     calendarEventSlots: bookingStartParts[0] in slots ? Object.keys(slots[bookingStartParts[0]]) : [],
+    calendarEventDate: bookingStartParts[0],
     calendarEventSlot: bookingStartParts[1].slice(0, 5),
   }
 }
@@ -732,13 +742,13 @@ function setBookingData () {
   if (slots.length) {
     appointmentProviderId.value =
         appointmentTime.value && dateSlots.value[appointmentDate.value][appointmentTime.value] ?
-            dateSlots.value[appointmentDate.value][appointmentTime.value][0][0]
-            : dateSlots.value[appointmentDate.value][slots[0]][0][0]
+            dateSlots.value[appointmentDate.value][appointmentTime.value][0].e
+            : dateSlots.value[appointmentDate.value][slots[0]][0].e
 
     appointmentLocationId.value =
         appointmentTime.value && dateSlots.value[appointmentDate.value][appointmentTime.value] ?
-            dateSlots.value[appointmentDate.value][appointmentTime.value][0][1]
-            : dateSlots.value[appointmentDate.value][slots[0]][0][1]
+            dateSlots.value[appointmentDate.value][appointmentTime.value][0].l
+            : dateSlots.value[appointmentDate.value][slots[0]][0].l
   }
 }
 

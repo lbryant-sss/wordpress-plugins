@@ -70,6 +70,7 @@
       @clear="$emit('clear')"
       @blur="(e) => $emit('blur', e)"
       @focus="(e) => $emit('focus', e)"
+      @click="(e) => $emit('click', e)"
     >
       <template v-if="prefixIcon" #prefix>
         <component :is="prefixIcon" v-if="typeof prefixIcon === 'object'" />
@@ -415,6 +416,7 @@ const emits = defineEmits([
   'blur',
   'focus',
   'update:modelValue',
+  'click'
 ])
 
 /**

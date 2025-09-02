@@ -64,6 +64,18 @@
         ></component>
       </template>
 
+      <el-form-item
+          v-if="settings.mailchimp.subscribeFieldVisible && amCustomize.infoStep.options.email.visibility"
+          class="am-subscribe"
+      >
+        <AmCheckBox
+          v-model="subscribeToMailchimp"
+          :label="amLabels.subscribe_to_mailing_list"
+        >
+        </AmCheckBox>
+      </el-form-item>
+
+
       <!-- Custom Fields TODO - validation for custom fields isn't set-->
       <template v-if="availableCustomFields && allCustomFields">
         <el-form-item
@@ -422,6 +434,13 @@ let formFields = ref({
         store.commit('booking/setCustomerCountryPhoneIso', val ? val.toLowerCase() : "")
       }
     }
+  }
+})
+
+let subscribeToMailchimp = computed({
+  get: () => store.getters['booking/getCustomerSubscribe'],
+  set: (val) => {
+    store.commit('booking/setCustomerSubscribe', val)
   }
 })
 
@@ -846,6 +865,22 @@ export default {
 
           &.am-cf-width-100 {
             width: 100%;
+          }
+
+          &.am-subscribe {
+            width: 100%;
+            .el-checkbox {
+              &__input {
+                height: 32px;
+                line-height: 32px;
+                align-items: center;
+              }
+
+              &__label {
+                line-height: 32px;
+                align-items: center;
+              }
+            }
           }
         }
 

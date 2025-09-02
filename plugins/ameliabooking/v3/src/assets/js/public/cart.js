@@ -128,6 +128,7 @@ function useInitCartItem (store) {
           persons: 1,
           extras: [],
           duration: null,
+          price: null,
         }
       ],
     }

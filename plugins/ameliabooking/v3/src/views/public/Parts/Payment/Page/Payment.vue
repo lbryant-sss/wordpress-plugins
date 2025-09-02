@@ -46,10 +46,7 @@
       >
         {{ amLabels.payment_method }}
       </p>
-      <div
-        class="am-payments__method-cards"
-        :class="{'am-payments__method-cards-wrap': wrapCards}"
-      >
+      <div class="am-payments__method-cards">
         <template v-for="(available, gateway) in availablePayments">
           <div
             v-if="available && Object.keys(availablePayments).filter(item => availablePayments[item]).length > 1"
@@ -64,7 +61,7 @@
               :alt="gateway"
             >
             <div>
-              <p>{{ paymentsBtnText.filter(item => item.key === gateway)[0].text }}</p>
+              <p>{{ getPaymentBtnString(gateway) }}</p>
             </div>
           </div>
         </template>
@@ -413,12 +410,6 @@ const cssVars = computed(() => {
   }
 })
 
-let paymentsBtnText = []
-
-Object.keys(availablePayments.value).forEach(key => {
-  paymentsBtnText.push({key, text:getPaymentBtnString(key)})
-})
-
 function getPaymentBtnString (key) {
   switch(key) {
     case 'square':
@@ -444,7 +435,6 @@ let dWidth = inject('dialogWidth', ref(0))
 let responsiveClass = computed(() => {
   return useResponsiveClass(props.inDialog ? dWidth.value : cWidth.value)
 })
-let wrapCards = computed(() => cWidth.value < 450 || (cWidth.value > 560 && (cWidth.value - 240 < 450)))
 </script>
 
 <script>
@@ -555,15 +545,9 @@ export default {
 
       &-cards {
         display: flex;
+        gap: 6px;
         justify-items: center;
-
-        & > div {
-          margin: 0 6px 6px 0;
-        }
-
-        &-wrap {
-          flex-wrap: wrap;
-        }
+        flex-wrap: wrap;
       }
 
       &-button {
@@ -594,7 +578,7 @@ export default {
             color: var(--am-c-ps-text);
             margin: 0;
             text-align: center;
-            word-break: break-all;
+            word-break: break-word;
           }
           span {
             font-size: 12px;

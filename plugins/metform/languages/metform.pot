@@ -2,9 +2,9 @@
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: MetForm 4.0.5\n"
+"Project-Id-Version: MetForm 4.0.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/metform\n"
-"POT-Creation-Date: 2025-08-24 02:30:38+00:00\n"
+"POT-Creation-Date: 2025-09-01 14:52:26+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -913,31 +913,30 @@ msgid "metform-entry"
 msgstr ""
 
 #: core/entries/file-data-validation.php:40
-#: core/entries/file-data-validation.php:67
+#: core/entries/file-data-validation.php:78
 msgid "No File found"
 msgstr ""
 
-#: core/entries/file-data-validation.php:50
-#. translators: Error message for file size limit. %s is the input name, %u is
-#. the file size limit in kilobytes.
-msgid "%$1s size cannot exceed %2$u kb."
+#: core/entries/file-data-validation.php:55
+#: core/entries/file-data-validation.php:64
+msgid "%1$s size cannot exceed %2$u kb."
 msgstr ""
 
-#: core/entries/file-data-validation.php:93
+#: core/entries/file-data-validation.php:104
 #. translators: Error message for allowed file types. %1$s is the input name,
 #. %2$s is a list of allowed file types.
 msgid "%1$s only allow %2$s file types."
 msgstr ""
 
-#: core/entries/form-data.php:265 core/entries/form-data.php:498
+#: core/entries/form-data.php:268 core/entries/form-data.php:501
 msgid "Number:"
 msgstr ""
 
-#: core/entries/form-data.php:269 core/entries/form-data.php:502
+#: core/entries/form-data.php:272 core/entries/form-data.php:505
 msgid "Type:"
 msgstr ""
 
-#: core/entries/form-data.php:518 core/entries/meta-data.php:283
+#: core/entries/form-data.php:521 core/entries/meta-data.php:283
 msgid "Download"
 msgstr ""
 

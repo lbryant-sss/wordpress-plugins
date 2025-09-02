@@ -1,4 +1,5 @@
 import httpClient from "../../plugins/axios";
+import {settings} from "../../plugins/settings";
 
 export default {
   namespaced: true,
@@ -20,7 +21,8 @@ export default {
     customers: [],
     customersIds: [],
     wpUsers: [],
-    customFields: null
+    customFields: null,
+    subscribeToMailchimp: settings.mailchimp.checkedByDefault
   }),
 
   getters: {
@@ -104,6 +106,10 @@ export default {
 
     getWpUsers (state) {
       return state.wpUsers
+    },
+
+    getCustomerSubscribe (state) {
+      return state.subscribeToMailchimp
     },
 
     getCustomer (state) {
@@ -225,7 +231,11 @@ export default {
 
     setWpUsers (state, payload) {
       state.wpUsers = payload
-    }
+    },
+
+    setCustomerSubscribe (state, payload) {
+      state.subscribeToMailchimp = payload
+    },
   },
 
   actions: {

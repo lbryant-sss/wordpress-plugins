@@ -151,6 +151,18 @@
             <div class="am-cs-colors__item">
               <span>{{amLabels.init_cell_text}}</span> <AmColorPicker v-model="amCustomize[pageRenderKey].colors.colorCalCellText"></AmColorPicker>
             </div>
+            <div v-if="!licence.isStarter && !licence.isLite && !licence.isBasic" class="am-cs-colors__item">
+              <span>{{amLabels.init_cell}} {{amLabels.lower_price}}</span> <AmColorPicker v-model="amCustomize[pageRenderKey].colors.colorCalCellLow"></AmColorPicker>
+            </div>
+            <div v-if="!licence.isStarter && !licence.isLite && !licence.isBasic" class="am-cs-colors__item">
+              <span>{{amLabels.init_cell_text}} {{amLabels.lower_price}}</span> <AmColorPicker v-model="amCustomize[pageRenderKey].colors.colorCalCellLowText"></AmColorPicker>
+            </div>
+            <div v-if="!licence.isStarter && !licence.isLite && !licence.isBasic" class="am-cs-colors__item">
+              <span>{{amLabels.init_cell}} {{amLabels.higher_price}}</span> <AmColorPicker v-model="amCustomize[pageRenderKey].colors.colorCalCellHigh"></AmColorPicker>
+            </div>
+            <div v-if="!licence.isStarter && !licence.isLite && !licence.isBasic" class="am-cs-colors__item">
+              <span>{{amLabels.init_cell_text}} {{amLabels.higher_price}}</span> <AmColorPicker v-model="amCustomize[pageRenderKey].colors.colorCalCellHighText"></AmColorPicker>
+            </div>
             <div class="am-cs-colors__item">
               <span>{{amLabels.cell_selected_background}}</span> <AmColorPicker v-model="amCustomize[pageRenderKey].colors.colorCalCellSelected"></AmColorPicker>
             </div>

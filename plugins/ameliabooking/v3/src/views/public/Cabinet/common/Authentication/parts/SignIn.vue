@@ -88,6 +88,22 @@
         {{ amLabels.reset_password }}
       </span>
     </div>
+
+    <div
+      v-if="amSettings.general.googleRecaptcha.enabled && amSettings.roles[cabinetType + 'Cabinet'].googleRecaptcha"
+      id="am-recaptcha"
+      class="am-recaptcha-holder"
+    >
+      <vue-recaptcha
+        ref="recaptchaRef"
+        :size="amSettings.general.googleRecaptcha.invisible ? 'invisible' : null"
+        :load-recaptcha-script="true"
+        :sitekey="amSettings.general.googleRecaptcha.siteKey"
+        @verify="onRecaptchaVerify"
+        @expired="onRecaptchaExpired"
+      >
+      </vue-recaptcha>
+    </div>
   </div>
   <Skeleton
     v-else
@@ -109,6 +125,7 @@ import {
   onBeforeMount,
 } from 'vue'
 import VueAuthenticate from 'vue-authenticate'
+import {VueRecaptcha} from 'vue-recaptcha'
 
 // * Import from Vuex
 import { useStore } from 'vuex'
@@ -279,6 +296,34 @@ function setResponseData(response) {
     )
   }
 }
+
+/*************
+ * Recaptcha *
+ ************/
+
+let recaptchaRef = ref(null)
+
+let recaptchaValid = ref(false)
+
+let recaptchaResponse = ref(null)
+
+function onRecaptchaExpired () {
+  recaptchaValid.value = false
+
+  authError.value = true
+  authErrorMessage.value = amLabels.value.recaptcha_invalid_error
+}
+
+function onRecaptchaVerify (response) {
+  recaptchaValid.value = true
+
+  recaptchaResponse.value = response
+
+  if (amSettings.general.googleRecaptcha.invisible) {
+    continueWithAuthenticate()
+  }
+}
+
 /********
  * Form *
  ********/
@@ -454,6 +499,10 @@ function setEmployee (response) {
 function useAuthenticate (tokenValue, isUrlToken, checkIfWpUser, changePass) {
   let params = {cabinetType: cabinetType.value, changePass: changePass}
 
+  if (recaptchaResponse.value !== null) {
+    params.recaptcha = recaptchaResponse.value
+  }
+
   if (checkIfWpUser) {
     params.checkIfWpUser = true
   }
@@ -540,6 +589,11 @@ function useAuthenticate (tokenValue, isUrlToken, checkIfWpUser, changePass) {
       authError.value = true
       authErrorMessage.value = amLabels.value.invalid_credentials
     }
+
+    if ('recaptcha_error' in error.response.data.data) {
+      authError.value = true
+      authErrorMessage.value = amLabels.value.recaptcha_error
+    }
   }).finally(() => {
     store.commit('setLoading', false)
   })
@@ -549,13 +603,30 @@ function useAuthenticate (tokenValue, isUrlToken, checkIfWpUser, changePass) {
 function submitForm() {
   authFormRef.value.validate((valid) => {
     if (valid) {
-      store.commit('setLoading', true)
+      if (amSettings.general.googleRecaptcha.enabled && amSettings.roles[cabinetType.value + 'Cabinet'].googleRecaptcha) {
+        if (amSettings.general.googleRecaptcha.invisible) {
+          recaptchaRef.value.execute()
+        } else if (!recaptchaValid.value) {
+          authError.value = true
+          authErrorMessage.value = amLabels.value.recaptcha_error
 
-      useAuthenticate(null, false, false, false)
+          return false
+        } else {
+          continueWithAuthenticate()
+        }
+      } else {
+        continueWithAuthenticate()
+      }
     } else {
       return false
     }
   })
+}
+
+function continueWithAuthenticate () {
+  store.commit('setLoading', true)
+
+  useAuthenticate(null, false, false, false)
 }
 
 function authenticate () {
@@ -650,6 +721,10 @@ export default {
     padding: 32px 24px 24px;
     margin: 0 auto;
     font-family: var(--am-font-family), sans-serif;
+
+    .am-recaptcha-holder {
+      justify-items: center;
+    }
 
     * {
       font-family: var(--am-font-family), sans-serif;

@@ -22,6 +22,9 @@
       :end-time="amCustomize.dateTimeStep.options.endTimeVisibility.visibility"
       :time-zone="amCustomize.dateTimeStep.options.timeZoneVisibility.visibility"
       :show-busy-slots="busyTimeSlotsVisibility"
+      :show-estimated-pricing="estimatedPricingVisibility"
+      :show-indicator-pricing="indicatorPricingVisibility"
+      :show-slot-pricing="slotPricingVisibility"
       :label-slots-selected="amLabels.date_time_slots_selected"
       :fetched-slots="null"
       :service-id="cartItem ? cartItem.serviceId : 0"
@@ -30,6 +33,7 @@
       :tax-visibility="taxVisibility"
       :tax-label="amLabels.total_tax_colon"
       :tax-label-incl="amLabels.incl_tax"
+      :is-package="false"
     ></Calendar>
 
     <!-- Recurring Appointment -->
@@ -136,6 +140,33 @@ let busyTimeSlotsVisibility = computed(() => {
   }
 
   return defaultCustomizeSettings.sbsNew.dateTimeStep.options.busyTimeSlotsVisibility.visibility
+})
+
+// * Estimated Pricing Visibility
+let estimatedPricingVisibility = computed(() => {
+  if ('estimatedPricingVisibility' in amCustomize.dateTimeStep.options) {
+    return amCustomize.dateTimeStep.options.estimatedPricingVisibility.visibility
+  }
+
+  return defaultCustomizeSettings.sbsNew.dateTimeStep.options.estimatedPricingVisibility.visibility
+})
+
+// * Indicator Pricing Visibility
+let indicatorPricingVisibility = computed(() => {
+  if ('indicatorPricingVisibility' in amCustomize.dateTimeStep.options) {
+    return amCustomize.dateTimeStep.options.indicatorPricingVisibility.visibility
+  }
+
+  return defaultCustomizeSettings.sbsNew.dateTimeStep.options.indicatorPricingVisibility.visibility
+})
+
+// * Slot Pricing Visibility
+let slotPricingVisibility = computed(() => {
+  if ('slotPricingVisibility' in amCustomize.dateTimeStep.options) {
+    return amCustomize.dateTimeStep.options.slotPricingVisibility.visibility
+  }
+
+  return defaultCustomizeSettings.sbsNew.dateTimeStep.options.slotPricingVisibility.visibility
 })
 
 const store = useStore()
@@ -287,7 +318,7 @@ watchEffect(() => {
 
 watchEffect(() => {
   footerBtnDisabledUpdater(!date.value || !time.value)
-})
+}, { flush: 'post' })
 
 
 /*****************

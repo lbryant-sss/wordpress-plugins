@@ -17,7 +17,7 @@
         props.headingClass
       ]"
       :tabindex="props.side ? 0 : undefined"
-      @click="toggleContentHeading"
+      @click="props.collapsable ? toggleContentHeading() : () => {}"
       @keydown.enter="toggleContentHeading"
     >
       <slot name="heading"></slot>
@@ -104,6 +104,10 @@ let props = defineProps({
   delay: {
     type: Number,
     default: 500
+  },
+  collapsable: {
+    type: Boolean,
+    default: true
   },
   headingClass: {
     type: String,

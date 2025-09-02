@@ -31,12 +31,14 @@ import {
 
 let bookableType = inject('bookableType')
 
+let flowLayout = inject('flowLayout')
+
 let {
   goBackPath,
   handleClick,
   parentPath
 } = inject('sidebarFunctionality')
-goBackPath.value =  bookableType.value === 'event' ? 'info' : 'services'
+goBackPath.value =  bookableType.value === 'event' ? 'info' : flowLayout.value === 2 ? 'services' : 'init'
 parentPath.value = 'bringing'
 
 let subStepName = inject('subStepName')

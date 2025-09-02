@@ -30,23 +30,45 @@
         />
         <!-- /API KEY URL -->
 
-        <el-row type="flex" align="middle" :gutter="24" class="am-api-key-generate">
-          <el-col :span="18">
-            {{ $root.labels.your_api_key }}
-            <el-input :value="newApiKey" id="am-new-api-key" :placeholder="$root.labels.api_key_placeholder">
-              <i
-                  v-if="newApiKey"
-                  class="el-icon-copy-document"
-                  slot="suffix"
-                  @click="copyApiKey"
+        <el-row type="flex" :gutter="16">
+          <el-col :span="12">
+            <el-form-item :label="$root.labels.expiration_date">
+              <el-select
+                  v-model="expirationSelected"
               >
-              </i>
-            </el-input>
+                <el-option
+                    v-for="item in expirationOptions"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value"
+                >
+                </el-option>
+              </el-select>
+            </el-form-item>
           </el-col>
-          <el-col :span="6" class="align-right">
-            <el-button @click="generateApiKey()" type="primary">
-              {{ $root.labels.generate }}
-            </el-button>
+          <el-col :span="12" class="align-right">
+            <el-form-item>
+              <el-button @click="generateApiKey()" type="primary" style="width: 100%; margin-top: 27px">
+                {{ $root.labels.generate }}
+              </el-button>
+            </el-form-item>
+          </el-col>
+        </el-row>
+
+
+        <el-row type="flex" align="middle" :gutter="12" class="am-api-key-generate">
+          <el-col :span="24">
+            <el-form-item :label="$root.labels.your_api_key" class="am-api-key-generate-input">
+              <el-input :value="newApiKey" id="am-new-api-key" :placeholder="$root.labels.api_key_placeholder">
+                <i
+                    v-if="newApiKey"
+                    class="el-icon-copy-document"
+                    slot="suffix"
+                    @click="copyApiKey"
+                >
+                </i>
+              </el-input>
+            </el-form-item>
           </el-col>
         </el-row>
         <!-- API KEY -->
@@ -64,10 +86,8 @@
             title=""
             :description="$root.labels.generate_api_key_warning"
             :closable="false"
-            style="margin-bottom: 16px; margin-top: 8px"
+            style="margin-bottom: 16px"
         />
-
-
 
         <el-row v-if="apiKeys.apiKeys.length > 0" type="flex" align="middle"
                 class="am-api-key-heading">
@@ -85,8 +105,8 @@
         <el-row type="flex" align="middle" v-for="(apiKey, index) in apiKeys.apiKeys" :key="apiKey.id"
                 class="am-api-key-row"
                 :class="{
-                'expiration-close' : expirationDateClose(apiKey.expiration*1000),
-                'expiration-passed' : expirationDatePassed(apiKey.expiration*1000),
+                'expiration-close' : apiKey.expiration && expirationDateClose(apiKey.expiration*1000),
+                'expiration-passed' : apiKey.expiration && expirationDatePassed(apiKey.expiration*1000),
                 'am-api-key-row-first' : index === 0
               }"
         >
@@ -94,9 +114,9 @@
           <el-col :span="4">...{{ apiKey.last4 }}</el-col>
           <el-col :span="10"
                   :class="{
-                  'expiration-close-text' : expirationDateClose(apiKey.expiration*1000),
-                  'expiration-passed-text' : expirationDatePassed(apiKey.expiration*1000)}"
-          >{{ getFrontedFormattedDateTime(new Date(apiKey.expiration*1000)) }}</el-col>
+                  'expiration-close-text' : apiKey.expiration && expirationDateClose(apiKey.expiration*1000),
+                  'expiration-passed-text' : apiKey.expiration && expirationDatePassed(apiKey.expiration*1000)}"
+          >{{ !apiKey.expiration ? $root.labels.unlimited : getFrontedFormattedDateTime(new Date(apiKey.expiration*1000)) }}</el-col>
           <el-col :span="8">
             <!--          <el-button-->
             <!--              class="am-button-icon"-->
@@ -162,7 +182,14 @@ export default {
     return {
       newApiKey: null,
       settings: Object.assign({}, this.apiKeys),
-      copied: false
+      copied: false,
+      expirationOptions: [
+        {value: 1, label: this.$root.labels['1year']},
+        {value: 2, label: this.$root.labels['2years']},
+        {value: 3, label: this.$root.labels['3years']},
+        {value: 0, label: this.$root.labels['unlimited']}
+      ],
+      expirationSelected: 1
     }
   },
 
@@ -221,7 +248,7 @@ export default {
     generateApiKey () {
       const key = crypto.randomBytes(33).toString('base64')
       let lastId = this.settings.apiKeys.reduce((max, a) => max.id > a.id ? max : a, 0)
-      let apiKey = {id: (lastId ? lastId.id : 0) + 1, key: key, last4: key.slice(-4), expiration: moment().add(1, 'y').unix(), permissions: [], isNew: true}
+      let apiKey = {id: (lastId ? lastId.id : 0) + 1, key: key, last4: key.slice(-4), expiration: this.expirationSelected === 0 ? null : moment().add(this.expirationSelected, 'y').unix(), permissions: [], isNew: true}
       this.settings.apiKeys.push(apiKey)
       this.newApiKey = apiKey.key
       this.copied = false

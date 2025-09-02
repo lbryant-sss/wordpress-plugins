@@ -201,19 +201,22 @@ import MainContentFooter from "../../../common/SbsFormConstruction/MainContent/p
 import AddToCalendar from '../steps/parts/AddToCalendar.vue'
 
 // * Step components
-import InitStep from '../steps/InitStep.vue'
-import Extras from '../steps/Extras.vue'
-import DateTimeStep from '../steps/DateTimeStep.vue'
-import CartStep from '../steps/CartStep.vue'
-import RecurringStep from '../steps/RecurringStep.vue'
-import RecurringSummary from '../steps/RecurringSummary.vue'
-import InfoStep from '../steps/InfoStep.vue'
-import PaymentStep from '../steps/PaymentStep.vue'
-import Congratulations from '../steps/Congratulations.vue'
-import PackageStep from '../steps/PackageStep.vue'
-import PackageInfoStep from '../steps/PackageInfoStep.vue'
-import PackageAppointmentsStep from '../steps/PackageAppointmentsStep.vue'
-import PackageAppointmentsListStep from '../steps/PackageAppointmentsListStep.vue'
+import InitStep from '../steps/StepForm/InitStep.vue'
+import ServiceStep from '../steps/StepForm/ServiceStep.vue'
+import EmployeeStep from '../steps/StepForm/EmployeeStep.vue'
+import LocationStep from '../steps/StepForm/LocationStep.vue'
+import Extras from '../steps/StepForm/Extras.vue'
+import DateTimeStep from '../steps/StepForm/DateTimeStep.vue'
+import CartStep from '../steps/StepForm/CartStep.vue'
+import RecurringStep from '../steps/StepForm/RecurringStep.vue'
+import RecurringSummary from '../steps/StepForm/RecurringSummary.vue'
+import InfoStep from '../steps/StepForm/InfoStep.vue'
+import PaymentStep from '../steps/StepForm/PaymentStep.vue'
+import Congratulations from '../steps/StepForm/Congratulations.vue'
+import PackageStep from '../steps/StepForm/PackageStep.vue'
+import PackageInfoStep from '../steps/StepForm/PackageInfoStep.vue'
+import PackageAppointmentsStep from '../steps/StepForm/PackageAppointmentsStep.vue'
+import PackageAppointmentsListStep from '../steps/StepForm/PackageAppointmentsListStep.vue'
 
 // * Import from Vue
 import {
@@ -233,11 +236,16 @@ import { usePopulateMultiDimensionalObject } from '../../../../assets/js/common/
 import { defaultCustomizeSettings } from '../../../../assets/js/common/defaultCustomize.js'
 import { useLicenceMenuClass } from '../../../../assets/js/admin/labelsAndOptionsTreatment.js'
 
+import { useElementSize } from '@vueuse/core'
+
 // * Plugin Licence
 let licence = inject('licence')
 
 // * Base Urls
 const baseUrls = inject('baseUrls')
+
+// * Layout
+let flowLayout = inject('flowLayout', ref(1))
 
 const amLabels = inject('labels')
 let amTranslations = inject('translations')
@@ -267,17 +275,16 @@ watch(sidebarCollapsed ,(current) => {
 })
 
 let sidebarFooterRef = ref(null)
-let sidebarFooterHeight = ref(0)
+const { height: sideFooterHeight } = useElementSize(sidebarFooterRef)
 
-onMounted(() => {
-  if(sidebarFooterRef.value) {
-    setTimeout(() => {
-      sidebarFooterHeight.value = sidebarFooterRef.value.offsetHeight
-    }, 200)
-  }
+let sidebarFooterHeight = computed(() => {
+  return sideFooterHeight.value
 })
 
 const initStep = markRaw(InitStep)
+const serviceStep = markRaw(ServiceStep)
+const employeeStep = markRaw(EmployeeStep)
+const locationStep = markRaw(LocationStep)
 const extras = markRaw(Extras)
 const dateTimeStep = markRaw(DateTimeStep)
 const cartStep = markRaw(CartStep)
@@ -297,10 +304,24 @@ let footerButtonType = computed(() => {
     : 'text'
 })
 
-function getServiceFlow () {
+let bookableType = inject('bookableType')
+
+let stepOrder = computed(() => {
+  return amCustomize.value[pageRenderKey.value].order
+})
+
+let serviceFlow = computed(() => {
   let values = []
 
-  values.push(initStep)
+  if (flowLayout.value === 1) {
+    values.push(initStep)
+  } else {
+    stepOrder.value.forEach((item) => {
+      if (item.id === 'ServiceStep') values.push(serviceStep)
+      if (item.id === 'EmployeeStep') values.push(employeeStep)
+      if (item.id === 'LocationStep' && (licence.isBasic || licence.isPro || licence.isDeveloper)) values.push(locationStep)
+    })
+  }
 
   if (licence.isStarter || licence.isBasic || licence.isPro || licence.isDeveloper) {
     values.push(extras)
@@ -325,10 +346,7 @@ function getServiceFlow () {
   values.push(congratulationsStep)
 
   return values
-}
-
-let bookableType = inject('bookableType')
-let serviceFlow = getServiceFlow()
+})
 
 let packageFlow = [
   packageStep,
@@ -345,7 +363,7 @@ let stepsArray = computed(() => {
     return packageFlow
   }
 
-  return serviceFlow
+  return serviceFlow.value
 })
 
 // * Step index
@@ -423,9 +441,10 @@ function sidebarDataCreator () {
   })
 }
 
-watch(bookableType, () => {
+watch([bookableType, flowLayout, stepOrder], () => {
   sidebarSteps.value = []
   sidebarDataCreator()
+  stepIndex.value = 0
 })
 
 watchEffect( () => {
@@ -511,6 +530,8 @@ let sidebarVisibility = computed(() => {
   })
   return amCustomize.value.sbsNew.sidebar.options.self.visibility
 })
+
+
 
 /**
  * Lifecycle Hooks

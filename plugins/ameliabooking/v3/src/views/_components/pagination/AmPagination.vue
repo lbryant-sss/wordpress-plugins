@@ -19,7 +19,7 @@
     :disabled="props.disabled"
     :hide-on-single-page="props.hideOnSinglePage"
     :popper-class="props.popperClass"
-    :style="{...cssVars}"
+    :style="{ ...cssVars }"
     @size-change="(val) => emits('size-change', val)"
     @current-change="(val) => emits('current-change', val)"
     @prev-click="(val) => emits('prev-click', val)"
@@ -34,6 +34,8 @@ import {
   computed
 } from 'vue'
 import {useColorTransparency} from "../../../assets/js/common/colorManipulation";
+import IconArrowLeft from '../icons/IconArrowLeft.vue'
+import IconArrowRight from '../icons/IconArrowRight.vue'
 
 // * Component Props
 const props = defineProps({
@@ -84,7 +86,7 @@ const props = defineProps({
   },
   prevIcon: {
     type: [String, Object, Function],
-    default: 'ArrowLeft'
+    default: () => IconArrowLeft,
   },
   nextText: {
     type: String,
@@ -92,7 +94,7 @@ const props = defineProps({
   },
   nextIcon: {
     type: [String, Object, Function],
-    default: 'NextLeft'
+    default: () => IconArrowRight,
   },
   disabled: {
     type: Boolean,
@@ -104,7 +106,13 @@ const props = defineProps({
 })
 
 // * Component Emits
-const emits = defineEmits(['size-change', 'current-change', 'prev-click', 'next-click', 'update:current-page'])
+const emits = defineEmits([
+  'size-change',
+  'current-change',
+  'prev-click',
+  'next-click',
+  'update:current-page',
+])
 
 let currentPage = computed({
   get: () => {
@@ -143,7 +151,6 @@ let cssVars = computed(() => {
     '--am-font-family': amFonts.value.fontFamily,
   }
 })
-
 </script>
 
 <style lang="scss">
@@ -153,8 +160,6 @@ let cssVars = computed(() => {
     // -rad-  border radius
     // -fs-   font size
     // -bgr   background
-
-
 
     display: flex;
     align-items: center;
@@ -194,7 +199,8 @@ let cssVars = computed(() => {
         }
       }
 
-      .btn-quickprev, .btn-quicknext {
+      .btn-quickprev,
+      .btn-quicknext {
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -209,7 +215,8 @@ let cssVars = computed(() => {
       }
     }
 
-    .btn-next, .btn-prev {
+    .btn-next,
+    .btn-prev {
       color: var(--am-c-pagination-text);
       background-color: var(--am-c-pagination-bgr);
 

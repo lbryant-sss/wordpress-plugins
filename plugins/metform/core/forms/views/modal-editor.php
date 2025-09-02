@@ -322,7 +322,7 @@
                                         <label for="attr-input-label" class="attr-input-label">
                                             <span><?php esc_html_e('MailChimp List ID:', 'metform'); ?></span>
                                             <span class="refresh-icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" fill="none" class="metfrom-btn-refresh-hubsopt-list">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" fill="none" class="metfrom-btn-refresh-mailchimp-list">
                                                     <?php \MetForm\Utils\Util::metform_content_renderer( $refresh_icon_path); ?>
                                                 </svg>
                                             </span>
@@ -364,8 +364,8 @@
                                         </div>
                                         <div class="mf-input-group mf-google-sheets-selection" style="margin-bottom: 4px;">
                                             <label for="attr-input-label" class="attr-input-label"><?php esc_html_e('Sheets List:', 'metform'); ?>
-                                                <span class="refresh-icon metfrom-btn-refresh-google-sheets-list">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" fill="none" class="metfrom-btn-refresh-hubsopt-list">
+                                                <span class="refresh-icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" fill="none" class="metfrom-btn-refresh-google-sheets-list">
                                                         <?php \MetForm\Utils\Util::metform_content_renderer( $refresh_icon_path); ?>
                                                     </svg>
                                                 </span>
@@ -491,7 +491,7 @@
                                     <div class="mf-input-group mf-get_response mf-form-top-spacing">
                                         <label for="attr-input-label" class="attr-input-label"><?php esc_html_e('GetResponse List ID:', 'metform'); ?>
                                             <span class="refresh-icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" fill="none" class="metfrom-btn-refresh-hubsopt-list">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" fill="none" class="metfrom-btn-refresh-get-response-list">
                                                     <?php \MetForm\Utils\Util::metform_content_renderer( $refresh_icon_path); ?>
                                                 </svg>
                                             </span>

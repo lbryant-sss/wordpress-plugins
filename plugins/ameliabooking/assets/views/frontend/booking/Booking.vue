@@ -408,6 +408,8 @@
         calendar: '',
         calendarTimeSlots: {},
         occupiedTimeSlots: {},
+        pricedCalendarTimeSlots: {},
+        pricedOccupiedTimeSlots: {},
         bookedTimeSlots: {},
         calendarVisible: false,
         customer: {
@@ -710,7 +712,13 @@
           return {
             id: this.selectedService.id,
             name: this.selectedService.name,
-            price: this.getBookingServicePrice(this.selectedService, this.appointment.serviceDuration, this.appointment.bookings[0].persons),
+            price: this.getBookingServicePrice(
+              this.selectedService,
+              this.appointment.serviceDuration,
+              this.appointment.bookings[0].persons,
+              this.appointment.providerId,
+              this.appointment.bookingStart
+            ),
             depositData: this.selectedService.depositPayment !== 'disabled' ? {
               deposit: this.selectedService.deposit,
               depositPayment: this.selectedService.depositPayment,
@@ -1157,7 +1165,8 @@
               extras: JSON.stringify(extras),
               group: 1,
               page: 'booking',
-              persons: this.appointment.bookings[0].persons
+              persons: this.appointment.bookings[0].persons,
+              structured: true
             })
           }).then(response => {
             if (currentIndex < this.slotsIndexStarted) {
@@ -1190,8 +1199,39 @@
 
             this.showFirstEventMonth(minDate)
 
-            this.calendarTimeSlots = dateSlots
-            this.occupiedTimeSlots = occupiedSlots
+            let unstructuredTimeSlots = {}
+
+            Object.keys(dateSlots).forEach((date) => {
+              unstructuredTimeSlots[date] = {}
+
+              Object.keys(dateSlots[date]).forEach((time) => {
+                unstructuredTimeSlots[date][time] = []
+
+                dateSlots[date][time].forEach((slot) => {
+                  unstructuredTimeSlots[date][time].push([slot.e, slot.l].concat('c' in slot ? [slot.c, slot.s, slot.d] : []))
+                })
+              })
+            })
+
+            let unstructuredOccupiedTimeSlots = {}
+
+            Object.keys(occupiedSlots).forEach((date) => {
+              unstructuredOccupiedTimeSlots[date] = {}
+
+              Object.keys(occupiedSlots[date]).forEach((time) => {
+                unstructuredOccupiedTimeSlots[date][time] = []
+
+                occupiedSlots[date][time].forEach((slot) => {
+                  unstructuredOccupiedTimeSlots[date][time].push([slot.e, slot.l].concat('c' in slot ? [slot.c, slot.s, slot.d] : []))
+                })
+              })
+            })
+
+            this.pricedCalendarTimeSlots = dateSlots
+            this.pricedOccupiedTimeSlots = occupiedSlots
+
+            this.calendarTimeSlots = unstructuredTimeSlots
+            this.occupiedTimeSlots = unstructuredOccupiedTimeSlots
             this.disabledWeekdays = {weekdays: []}
             this.disabledWeekdays = (availableDates.length === 0) ? {weekdays: [1, 2, 3, 4, 5, 6, 7]} : null
             this.availableDates = availableDates

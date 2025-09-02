@@ -177,6 +177,8 @@ class LiteFrontendStrings
             'your_name_colon'              => __('Your Name', 'ameliabooking'),
 
             'service_selection'            => __('Service Selection', 'ameliabooking'),
+            'employee_selection'           => __('Employee Selection', 'ameliabooking'),
+            'location_selection'           => __('Location Selection', 'ameliabooking'),
             'service_colon'                => __('Service', 'ameliabooking'),
             'please_select_service'        => __('Please select service', 'ameliabooking'),
             'dropdown_category_heading'    => __('Category', 'ameliabooking'),
@@ -201,6 +203,9 @@ class LiteFrontendStrings
             'congrats_employee'            => __('Employee', 'ameliabooking'),
             'show_more'                    => __('Show more', 'ameliabooking'),
             'show_less'                    => __('Show less', 'ameliabooking'),
+            'learn_more'                   => __('Learn More', 'ameliabooking'),
+            'view_in_package'              => __('View in Package', 'ameliabooking'),
+            'service_information'          => __('Service information', 'ameliabooking'),
         ];
     }
 

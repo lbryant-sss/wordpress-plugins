@@ -9,7 +9,7 @@ defined( 'ABSPATH' ) || exit;
  * Description: The most advanced addons for Elementor with tons of widgets, Header builder, Footer builder, Mega menu builder, layout pack and powerful custom controls.
  * Plugin URI: https://wpmet.com/plugin/elementskit/
  * Author: Wpmet
- * Version: 3.6.1
+ * Version: 3.7.0
  * Author URI: https://wpmet.com/
  * License: GPLv3 or later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -34,7 +34,7 @@ final class ElementsKit_Lite {
 	 * @var string The plugin version.
 	 */
 	static function version() {
-		return '3.6.1';
+		return '3.7.0';
 	}
 
 	/**
@@ -368,7 +368,7 @@ final class ElementsKit_Lite {
 
 		\Oxaim\Libs\Notice::instance( 'elementskit-lite', 'unsupported-elementor-version' )
 		->set_type( 'error' )
-		->set_message( sprintf( '%1$s %2$s+, %3$s', 
+		->set_message( sprintf( '%1$s %2$s+, %3$s',
 				esc_html__( 'ElementsKit requires Elementor version', 'elementskit-lite' ),
 				self::min_el_version() ,
 				esc_html__( 'which is currently NOT RUNNING.', 'elementskit-lite' ),

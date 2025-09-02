@@ -91,6 +91,12 @@
       <span>{{ timeZoneString }}</span>
     </div>
 
+    <div v-if="props.periodPricing && props.periodPricing.price && props.showEstimatedPricing" class="am-advsc__period-pricing">
+      <span v-if="props.periodPricing.price.low !== null" class="period-pricing-low">{{ useFormattedPrice(props.periodPricing.price.low) }}{{ !props.periodPricing.price.uniqueMin ? '+' : '' }}</span>
+      <span v-if="props.periodPricing.price.mid !== null" class="period-pricing-mid">{{ useFormattedPrice(props.periodPricing.price.mid) }}{{ !props.periodPricing.price.uniqueMid ? '+' : '' }}</span>
+      <span v-if="props.periodPricing.price.high !== null" class="period-pricing-high">{{ useFormattedPrice(props.periodPricing.price.high) }}{{ !props.periodPricing.price.uniqueMax ? '+' : '' }}</span>
+    </div>
+
     <FullCalendar
       ref="advCalendarRef"
       class="am-advsc"
@@ -119,7 +125,11 @@
           :key="slot"
           class="am-advsc__slots-item"
           :class="[
-            { 'am-advsc__slots-item__selected': calendarEventSlot === slot },
+            {
+              'am-advsc__slots-item__selected': calendarEventSlot === slot,
+              'am-advsc__slots-item__low': calendarEventDate && props.periodPricing && props.periodPricing.dates && calendarEventDate in props.periodPricing.dates && slot in props.periodPricing.dates[calendarEventDate].slots && props.periodPricing.dates[calendarEventDate].slots[slot].type === 'low',
+              'am-advsc__slots-item__high': calendarEventDate && props.periodPricing && props.periodPricing.dates && calendarEventDate in props.periodPricing.dates && slot in props.periodPricing.dates[calendarEventDate].slots && props.periodPricing.dates[calendarEventDate].slots[slot].type === 'high',
+            },
             { 'am-advsc__slots-item-mobile': checkScreen },
             {
               'am-advsc__slots-item-disabled':
@@ -127,8 +137,17 @@
                 props.showBusySlots &&
                 !calendarEventSlots.includes(slot),
             },
+            {'am-width-full': props.showSlotPricing}
           ]"
+          tabindex="0"
           @click="
+            props.showBusySlots &&
+            calendarEventBusySlots.includes(slot) &&
+            !calendarEventSlots.includes(slot)
+              ? null
+              : slotSelected(slot)
+          "
+          @keydown.enter="
             props.showBusySlots &&
             calendarEventBusySlots.includes(slot) &&
             !calendarEventSlots.includes(slot)
@@ -147,6 +166,10 @@
                   : ''
               }`
             }}
+
+            <span v-if="props.showSlotPricing && calendarEventDate && props.periodPricing && props.periodPricing.dates && calendarEventDate in props.periodPricing.dates && slot in props.periodPricing.dates[calendarEventDate].slots && props.periodPricing.dates[calendarEventDate].slots[slot].price !== null">
+              {{ useFormattedPrice(props.periodPricing.dates[calendarEventDate].slots[slot].price) }}
+            </span>
           </div>
         </div>
       </div>
@@ -201,6 +224,7 @@ import { shortLocale } from '../../../plugins/settings.js'
 import { useColorTransparency } from '../../../assets/js/common/colorManipulation'
 import { useScrollTo } from '../../../assets/js/common/scrollElements.js'
 import { useSortedTimeStrings } from '../../../assets/js/common/helper.js'
+import { useFormattedPrice } from '../../../assets/js/common/formatting'
 
 /**
  * Component Props
@@ -210,6 +234,10 @@ const props = defineProps({
   initialView: {
     type: String,
     default: 'dayGridMonth',
+  },
+  periodPricing: {
+    type: Object,
+    default: () => {},
   },
   weekDaysVisibility: {
     type: Boolean,
@@ -252,6 +280,18 @@ const props = defineProps({
     default: true,
   },
   showBusySlots: {
+    type: Boolean,
+    default: false,
+  },
+  showEstimatedPricing: {
+    type: Boolean,
+    default: false,
+  },
+  showIndicatorPricing: {
+    type: Boolean,
+    default: false,
+  },
+  showSlotPricing: {
     type: Boolean,
     default: false,
   },
@@ -417,6 +457,84 @@ const options = ref({
   initialDate: calendarStartDate.value,
   plugins: [dayGridPlugin, interactionPlugin],
   initialView: props.initialView,
+  dayCellDidMount: function(info) {
+    if (!info.el.classList.contains('am-advsc__dayGridMonth-disabled')) {
+      info.el.setAttribute('tabindex', '0')
+      info.el.setAttribute('aria-label', `Select date ${info.date.toDateString()}`)
+      info.el.setAttribute('role', 'button')
+      info.el.setAttribute('aria-describedby', 'calendar-instructions')
+    }
+
+    // Enhanced keyboard navigation
+    info.el.addEventListener('keydown', (e) => {
+      const calendarApi = info.view.calendar
+
+      if (e.key === 'Enter' || e.keyCode === 13 || e.key === ' ') {
+        e.preventDefault()
+
+        // Check if this date cell is disabled
+        if (info.el.classList.contains('am-advsc__dayGridMonth-disabled')) {
+          return
+        }
+
+        // Use moment to format the date the same way as mouse clicks do
+        // This avoids timezone issues with toISOString()
+        const localDateStr = moment(info.date).format('YYYY-MM-DD')
+
+        // Build the event object manually (as FullCalendar would)
+        const dateClickEvent = {
+          date: info.date,
+          dateStr: localDateStr, // Use local date string instead of ISO string
+          allDay: true,
+          dayEl: info.el,
+          jsEvent: e,
+          view: info.view,
+        }
+
+        // First trigger dateClick
+        calendarApi.trigger('dateClick', dateClickEvent)
+
+        // Then check for events on this date and trigger eventClick
+        const events = calendarApi.getEvents()
+
+        // Find events that occur on this specific date
+        const matchingEvents = events.filter(event => {
+          if (!event.start) return false
+          // Use moment to format the event start date in the same way
+          const eventStartDate = moment(event.start).format('YYYY-MM-DD')
+          return eventStartDate === localDateStr
+        });
+
+        // If there are events on this date, trigger eventClick for the first one
+        if (matchingEvents.length > 0) {
+          const eventClickData = {
+            el: info.el,
+            event: matchingEvents[0],
+            jsEvent: e,
+            view: info.view,
+          }
+
+          // Trigger the eventClick handler
+          calendarApi.trigger('eventClick', eventClickData)
+        }
+      }
+    })
+
+    // Add focus and blur event handlers for better visual feedback
+    info.el.addEventListener('focus', () => {
+      if (!info.el.classList.contains('am-advsc__dayGridMonth-disabled')) {
+        info.el.style.outline = '1px solid var(--am-c-cal-init)'
+        info.el.style.outlineOffset = '-2px'
+        info.el.style.borderRadius = '6px'
+      }
+    })
+
+    info.el.addEventListener('blur', () => {
+      info.el.style.outline = ''
+      info.el.style.outlineOffset = ''
+      info.el.style.borderRadius = ''
+    })
+  },
   headerToolbar: false,
   views: {
     dayGridMonth: {},
@@ -469,6 +587,8 @@ const emits = defineEmits([
 
 let calendarEventSlots = inject('calendarEventSlots')
 
+let calendarEventDate = inject('calendarEventDate')
+
 let calendarEventBusySlots = inject('calendarEventBusySlots', [])
 
 let calendarEventSlot = inject('calendarEventSlot')
@@ -520,11 +640,11 @@ function calendarDayClassBuilder(data) {
     classCollector.push(`am-advsc__${data.view.type}-weekend`)
   }
 
+  let dateString = moment(data.date).format('YYYY-MM-DD')
+
   // * Determine which day has slots => [] - no slots || [...] has slots
   let eventIdentifier = options.value.events.filter(
-    (item) =>
-      moment(item.start).format('YYYY-MM-DD') ===
-      moment(data.date).format('YYYY-MM-DD')
+    (item) => moment(item.start).format('YYYY-MM-DD') === dateString
   )
 
   // TODO - this condition should be refactorized after implementation in the system
@@ -536,6 +656,12 @@ function calendarDayClassBuilder(data) {
     !eventIdentifier.length
   ) {
     classCollector.push(`am-advsc__${data.view.type}-disabled`)
+  } else if (props.periodPricing &&
+    props.periodPricing.dates &&
+    dateString in props.periodPricing.dates &&
+    (props.periodPricing.dates[dateString].type === 'low' || props.periodPricing.dates[dateString].type === 'high')
+  ) {
+    classCollector.push(`am-advsc__${data.view.type}-` + props.periodPricing.dates[dateString].type)
   }
 
   if (props.date && props.date === moment(data.date).format('YYYY-MM-DD')) {
@@ -787,6 +913,10 @@ let amColors = inject('amColors', {
       colorDropText: '#0E1920',
       colorCalCell: '#1246D6',
       colorCalCellText: '#1246D6',
+      colorCalCellLow: '#1246D6',
+      colorCalCellLowText: '#1246D6',
+      colorCalCellHigh: '#1246D6',
+      colorCalCellHighText: '#1246D6',
       colorCalCellSelected: '#1246D6',
       colorCalCellSelectedText: '#FFFFFF',
       colorCalCellDisabled: '#B4190F',
@@ -801,6 +931,51 @@ let amColors = inject('amColors', {
 
 const cssVars = computed(() => {
   return {
+    '--am-c-cal-indicator': 'showIndicatorPricing' in props && props.showIndicatorPricing ? 'visible' : 'hidden',
+    '--am-c-cal-low': 'colorCalCellLow' in amColors.value ? amColors.value.colorCalCellLow : amColors.value.colorCalCell,
+    '--am-c-cal-high': 'colorCalCellHigh' in amColors.value ? amColors.value.colorCalCellHigh : amColors.value.colorCalCell,
+    '--am-c-cal-low-text': 'colorCalCellLowText' in amColors.value ? amColors.value.colorCalCellLowText : amColors.value.colorCalCellText,
+    '--am-c-cal-high-text': 'colorCalCellHighText' in amColors.value ? amColors.value.colorCalCellHighText : amColors.value.colorCalCellText,
+    '--am-c-cal-low-op10': useColorTransparency(
+      'colorCalCellLow' in amColors.value ? amColors.value.colorCalCellLow : amColors.value.colorCalCell,
+      0.1
+    ),
+    '--am-c-cal-low-op20': useColorTransparency(
+      'colorCalCellLow' in amColors.value ? amColors.value.colorCalCellLow : amColors.value.colorCalCell,
+      0.2
+    ),
+    '--am-c-cal-low-op30': useColorTransparency(
+      'colorCalCellLow' in amColors.value ? amColors.value.colorCalCellLow : amColors.value.colorCalCell,
+      0.3
+    ),
+    '--am-c-cal-low-op60': useColorTransparency(
+      'colorCalCellLow' in amColors.value ? amColors.value.colorCalCellLow : amColors.value.colorCalCell,
+      0.6
+    ),
+    '--am-c-cal-low-op80': useColorTransparency(
+      'colorCalCellLow' in amColors.value ? amColors.value.colorCalCellLow : amColors.value.colorCalCell,
+      0.8
+    ),
+    '--am-c-cal-high-op10': useColorTransparency(
+      'colorCalCellHigh' in amColors.value ? amColors.value.colorCalCellHigh : amColors.value.colorCalCell,
+      0.1
+    ),
+    '--am-c-cal-high-op20': useColorTransparency(
+      'colorCalCellHigh' in amColors.value ? amColors.value.colorCalCellHigh : amColors.value.colorCalCell,
+      0.2
+    ),
+    '--am-c-cal-high-op30': useColorTransparency(
+      'colorCalCellHigh' in amColors.value ? amColors.value.colorCalCellHigh : amColors.value.colorCalCell,
+      0.3
+    ),
+    '--am-c-cal-high-op60': useColorTransparency(
+      'colorCalCellHigh' in amColors.value ? amColors.value.colorCalCellHigh : amColors.value.colorCalCell,
+      0.6
+    ),
+    '--am-c-cal-high-op80': useColorTransparency(
+      'colorCalCellHigh' in amColors.value ? amColors.value.colorCalCellHigh : amColors.value.colorCalCell,
+      0.8
+    ),
     '--am-c-advsc-bgr-op10': useColorTransparency(
       amColors.value.colorMainText,
       0.1
@@ -961,6 +1136,38 @@ $amCalClass: am-advsc;
       }
     }
 
+    &__period-pricing {
+      display: flex;
+      justify-content: right;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 12px 0 4px;
+
+      span {
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 1;
+        border-radius: 8px;
+        padding: 4px 8px;
+      }
+
+      span.period-pricing-low {
+        background-color: var(--am-c-cal-low-op10);
+        color: var(--am-c-cal-low-text);
+      }
+
+      span.period-pricing-mid {
+        background-color: var(--am-c-advsc-cell-bgr);
+        color: var(--am-c-advsc-cell-text);
+      }
+
+      span.period-pricing-high {
+        background-color: var(--am-c-cal-high-op10);
+        color: var(--am-c-cal-high-text);
+      }
+    }
+
     &__duration {
       margin-top: 10px;
     }
@@ -1097,6 +1304,59 @@ $amCalClass: am-advsc;
 
                     &-number {
                       --am-c-advsc-cell-text: var(--am-c-cal-disabled-text);
+                    }
+                  }
+                }
+
+                // Pricing cell
+                &__dayGridMonth-low {
+                  .fc-daygrid-day {
+                    &-frame {
+                      --am-c-advsc-cell-bgr: var(--am-c-cal-low-op10);
+                      --am-c-advsc-cell-border: var(--am-c-cal-low-op60);
+                      --am-c-advsc-cell-text: var(--am-c-cal-low-text);
+                      --am-c-advsc-cell-busy: var(--am-c-cal-low-op30);
+
+                      &:hover {
+                        --am-c-advsc-cell-bgr: var(--am-c-cal-low-op30);
+                      }
+                    }
+
+                    &-frame::before {
+                      visibility: var(--am-c-cal-indicator);
+                      content: "↘";
+                      position: absolute;
+                      top: -2px;
+                      left: 2px;
+                      font-size: 10px;
+                      color: var(--am-c-cal-low-op80);
+                      font-weight: bold;
+                    }
+                  }
+                }
+
+                &__dayGridMonth-high {
+                  .fc-daygrid-day {
+                    &-frame {
+                      --am-c-advsc-cell-bgr: var(--am-c-cal-high-op10);
+                      --am-c-advsc-cell-border: var(--am-c-cal-high-op60);
+                      --am-c-advsc-cell-text: var(--am-c-cal-high-text);
+                      --am-c-advsc-cell-busy: var(--am-c-cal-high-op30);
+
+                      &:hover {
+                        --am-c-advsc-cell-bgr: var(--am-c-cal-high-op30);
+                      }
+                    }
+
+                    &-frame::before {
+                      visibility: var(--am-c-cal-indicator);
+                      content: "↗";
+                      position: absolute;
+                      top: -2px;
+                      left: 2px;
+                      font-size: 10px;
+                      color: var(--am-c-cal-high-op80);
+                      font-weight: bold;
                     }
                   }
                 }
@@ -1287,6 +1547,7 @@ $amCalClass: am-advsc;
       align-items: center;
       justify-content: center;
       flex-wrap: wrap;
+      gap: 8px 12px;
 
       &-heading {
         font-size: var(--am-fs-advsc);
@@ -1299,10 +1560,28 @@ $amCalClass: am-advsc;
       &-item {
         --am-c-advsc-slot-bgr: var(--am-c-cal-init-op10);
         --am-c-advsc-slot-border: var(--am-c-cal-init-op60);
-        width: 100%;
-        flex: 50%;
-        padding: 0 6px;
-        margin-bottom: 8px;
+        display: inline-flex;
+        width: calc(50% - 6px);
+
+        &.am-width-full {
+          width: 100%;
+
+          &:last-child {
+            max-width: 100%;
+          }
+        }
+
+        &:focus {
+          .am-advsc__slots-item__inner {
+            --am-c-advsc-slot-border: var(--am-c-cal-selected);
+          }
+        }
+
+        span {
+          background-color: var(--am-c-cal-init-op10);
+          padding: 0 4px 0 4px;
+          border-radius: 4px;
+        }
 
         $count: 1000;
         @for $i from 0 through $count {
@@ -1320,6 +1599,30 @@ $amCalClass: am-advsc;
           max-width: 50%;
         }
 
+        &__low {
+          --am-c-advsc-slot-bgr: var(--am-c-cal-low-op10);
+          --am-c-advsc-slot-border: var(--am-c-cal-low-op60);
+          --am-c-advsc-slot-text: var(--am-c-cal-low-text);
+
+          span {
+            background-color: var(--am-c-cal-low-op10);
+            padding: 0 4px 0 4px;
+            border-radius: 4px;
+          }
+        }
+
+        &__high {
+          --am-c-advsc-slot-bgr: var(--am-c-cal-high-op10);
+          --am-c-advsc-slot-border: var(--am-c-cal-high-op60);
+          --am-c-advsc-slot-text: var(--am-c-cal-high-text);
+
+          span {
+            background-color: var(--am-c-cal-high-op10);
+            padding: 0 4px 0 4px;
+            border-radius: 4px;
+          }
+        }
+
         &__selected {
           --am-c-advsc-slot-bgr: var(--am-c-cal-selected);
           --am-c-advsc-slot-border: var(--am-c-cal-selected);
@@ -1328,8 +1631,11 @@ $amCalClass: am-advsc;
 
         &__inner {
           display: flex;
+          flex-wrap: wrap;
           align-items: center;
           justify-content: center;
+          gap: 0 12px;
+          width: 100%;
           font-size: var(--am-fs-asdvsc-slot);
           font-weight: 400;
           line-height: 1.6;

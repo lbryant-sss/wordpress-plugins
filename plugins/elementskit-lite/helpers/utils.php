@@ -195,8 +195,8 @@ class Utils {
 				'fill' => true,
 			),
 			'input'							=> array(
-				'class'		=> array(), 
-				'type'		=> array(), 
+				'class'		=> array(),
+				'type'		=> array(),
 				'value'		=> array()
 			)
 		);
@@ -238,7 +238,7 @@ class Utils {
 
 		return $options;
 	}
-	
+
 	public static function ekit_get_ninja_form() {
 		$options = array();
 
@@ -270,11 +270,11 @@ class Utils {
 			foreach ( $table_ids as $table_id ) {
 				// Load table, without table data, options, and visibility settings.
 				$table = \TablePress::$model_table->load( $table_id, false, false );
-	
+
 				if ( '' === trim( $table['name'] ) ) {
 					$table['name'] = __( '(no name)', 'elementskit-lite' );
 				}
-				
+
 				$table_options[ $table['id'] ] = $table['name'];
 			}
 		} else {
@@ -283,7 +283,7 @@ class Utils {
 
 		return $table_options;
 	}
-	
+
 	public static function ekit_do_shortcode( $tag, array $atts = array(), $content = null ) {
 		global $shortcode_tags;
 		if ( ! isset( $shortcode_tags[ $tag ] ) ) {
@@ -318,10 +318,10 @@ class Utils {
 		if ( ( 'internal' === get_option( 'elementor_css_print_method' ) ) || \Elementor\Plugin::$instance->preview->is_preview_mode() ) {
 			$has_css = true;
 		}
-		
+
 		return $elementor_instance->frontend->get_builder_content_for_display( $content_id, $has_css );
 	}
-	
+
 	public static function render( $content ) {
 		if ( stripos( $content, 'elementskit-has-lisence' ) !== false ) {
 			return null;
@@ -329,7 +329,7 @@ class Utils {
 
 		return $content;
 	}
-	
+
 	public static function render_tab_content( $content, $id ) {
 		return str_replace( '.elementor-' . $id . ' ', '#elementor .elementor-' . $id . ' ', $content );
 	}

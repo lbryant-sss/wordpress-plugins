@@ -68,6 +68,14 @@
           ></component>
         </template>
 
+        <el-form-item v-if="amSettings.mailchimp.subscribeFieldVisible && customizedOptions.email.visibility" class="am-elfci__item am-subscribe" >
+          <AmCheckbox
+            v-model="subscribeToMailchimp"
+            :label="amLabels.subscribe_to_mailing_list"
+          >
+          </AmCheckbox>
+        </el-form-item>
+
         <!-- Custom Fields -->
         <template v-for="(item, index) in eventCustomFieldsArray" :key="index">
           <component
@@ -138,6 +146,7 @@ import {settings} from "../../../../../plugins/settings";
 import httpClient from "../../../../../plugins/axios";
 import AmSocialButton from "../../../../common/FormFields/AmSocialButton.vue";
 import {SocialAuthOptions} from "../../../../../assets/js/admin/socialAuthOptions";
+import AmCheckbox from "../../../../_components/checkbox/AmCheckbox.vue";
 
 let props = defineProps({
   globalClass: {
@@ -402,6 +411,13 @@ let infoFormRules = ref({
       trigger: 'submit',
     }
   ],
+})
+
+let subscribeToMailchimp = computed({
+  get: () => store.getters['customerInfo/getCustomerSubscribe'],
+  set: (val) => {
+    store.commit('customerInfo/setCustomerSubscribe', val)
+  }
 })
 
 Object.keys(customFields.value).forEach((fieldKey) => {
@@ -830,6 +846,22 @@ export default {
 
         &.am-cf-width-100 {
           width: 100%;
+        }
+
+        &.am-subscribe {
+          width: 100%;
+          .el-checkbox {
+            &__input {
+              height: 32px;
+              line-height: 32px;
+              align-items: center;
+            }
+
+            &__label {
+              line-height: 32px;
+              align-items: center;
+            }
+          }
         }
 
         .el-form-item {

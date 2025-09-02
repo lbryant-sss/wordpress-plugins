@@ -5,11 +5,6 @@
         {{amLabels.layout_and_inputs}}
       </div>
       <div class="am-cs-part__content">
-        <AmArrowMenuItem v-if="!licence.isLite" @click="handleClick('order')">
-          <span class="am-cs-part__item">
-            <span class="am-icon-order"></span> {{amLabels.order}}
-          </span>
-        </AmArrowMenuItem>
         <AmArrowMenuItem @click="handleClick('options')">
           <span class="am-cs-part__item">
             <span class="am-icon-options"></span> {{amLabels.options}}

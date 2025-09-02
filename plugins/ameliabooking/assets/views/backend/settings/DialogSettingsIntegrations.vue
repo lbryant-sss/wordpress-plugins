@@ -114,10 +114,16 @@
             <LicenceBlockHeader :licence="'starter'"/>
 
             <marketing
+              ref="marketing"
               :class="licenceClassDisabled('starter')"
               :facebookPixel="facebookPixelSettings"
               :googleAnalytics="googleAnalyticsSettings"
+              :customFields="customFields"
               :googleTag="googleTagSettings"
+              :mailchimp="mailchimpSettings"
+              :mailchimp-lists="mailchimpLists"
+              :open-mailchimp-collapse="openMailchimpCollapse || openMailchimp"
+              @disconnectMailchimp="disconnectMailchimp"
             />
           </el-tab-pane>
           <!-- /Marketing -->
@@ -189,8 +195,8 @@
   import Zoom from './Integrations/IntegrationsZoom.vue'
   import Marketing from './Integrations/IntegrationsMarketing.vue'
   import LessonSpace from './Integrations/IntegrationsLessonSpace.vue'
-  import AppleCalendar from "./Integrations/IntegrationsAppleCalendar.vue";
-  import SocialLogin from "./Integrations/SocialLogin.vue";
+  import AppleCalendar from './Integrations/IntegrationsAppleCalendar.vue'
+  import SocialLogin from './Integrations/SocialLogin.vue'
 
   export default {
     components: {
@@ -230,7 +236,13 @@
       googleAnalytics: {
         type: Object
       },
+      customFields: {
+        default: []
+      },
       googleTag: {
+        type: Object
+      },
+      mailchimp: {
         type: Object
       },
       lessonSpace: {
@@ -238,6 +250,13 @@
       },
       socialLogin: {
         type: Object
+      },
+      mailchimpLists: {
+        type: Array
+      },
+      openMailchimpCollapse: {
+        type: Boolean,
+        default: false
       }
     },
 
@@ -256,21 +275,33 @@
         googleAnalyticsSettings: Object.assign({}, this.googleAnalytics),
         facebookPixelSettings: Object.assign({}, this.facebookPixel),
         googleTagSettings: Object.assign({}, this.googleTag),
+        mailchimpSettings: Object.assign({}, this.mailchimp),
         webHooksSettings: this.webHooks.map((webHook) => webHook),
         activeTab: this.notInLicence() ? 'marketing' : 'googleCalendar',
-        socialLoginSettings: Object.assign({}, this.socialLogin)
+        socialLoginSettings: Object.assign({}, this.socialLogin),
+        openMailchimp: false
       }
     },
 
     mounted () {
       if (this.outlookSignedIn) {
         this.activeTab = 'outlookCalendar'
+      } else if (this.openMailchimpCollapse) {
+        this.activeTab = 'marketing'
       } else {
         this.activeTab = this.notInLicence() ? 'marketing' : 'googleCalendar'
       }
     },
 
     methods: {
+      disconnectMailchimp () {
+        this.mailchimpSettings = {
+          accessToken: null,
+          server: null,
+          list: null
+        }
+      },
+
       openDialog (name) {
         this.$emit('openDialog', name)
       },
@@ -281,11 +312,26 @@
 
       async onSubmit () {
         let socialLoginValid = true
+        let mailchimpValid = true
         if (this.$refs.socialLogin && typeof this.$refs.socialLogin.validate === 'function') {
           socialLoginValid = await this.$refs.socialLogin.validate()
         }
-
         if (!socialLoginValid) {
+          this.activeTab = 'socialLogin'
+          return
+        }
+
+        if (this.$refs.marketing.$refs.mailchimpSettings && typeof this.$refs.marketing.$refs.mailchimpSettings.validate === 'function') {
+          try {
+            mailchimpValid = await this.$refs.marketing.$refs.mailchimpSettings.validate()
+          } catch (error) {
+            mailchimpValid = false
+          }
+        }
+
+        if (!mailchimpValid) {
+          this.activeTab = 'marketing'
+          this.openMailchimp = true
           return
         }
 
@@ -323,6 +369,7 @@
           'facebookPixel': this.facebookPixelSettings,
           'googleAnalytics': this.googleAnalyticsSettings,
           'googleTag': this.googleTagSettings,
+          'mailchimp': this.mailchimpSettings,
           'lessonSpace': this.lessonSpaceSettings,
           'socialLogin': this.socialLoginSettings
         })

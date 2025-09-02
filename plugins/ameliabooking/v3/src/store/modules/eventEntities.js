@@ -162,7 +162,7 @@ export default {
     },
 
     setEmployees (state, payload) {
-      state.employees = payload.filter(e => e.status !== 'hidden')
+      state.employees = payload.filter(e => e.status !== 'hidden' && e.show)
     },
 
     setLocations (state, payload) {

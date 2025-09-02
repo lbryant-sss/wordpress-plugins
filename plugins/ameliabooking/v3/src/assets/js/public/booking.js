@@ -169,6 +169,8 @@ function useBookingData (store, formData, mandatoryJson = false, paymentData = {
     })
   }
 
+  const gateway = bookableType !== 'event' ? store.getters['booking/getPaymentGateway'] : store.getters['payment/getPaymentGateway']
+
   let jsonData = {
     type: bookableType,
     bookings: [
@@ -184,6 +186,7 @@ function useBookingData (store, formData, mandatoryJson = false, paymentData = {
           lastName: bookableType !== 'event' ? store.getters['booking/getCustomerLastName'] : store.getters['customerInfo/getCustomerLastName'],
           email: bookableType !== 'event' ? store.getters['booking/getCustomerEmail'] : store.getters['customerInfo/getCustomerEmail'],
           phone: bookableType !== 'event' ? store.getters['booking/getCustomerPhone'] : store.getters['customerInfo/getCustomerPhone'],
+          subscribeToMailchimp: bookableType !== 'event' ? store.getters['booking/getCustomerSubscribe'] : store.getters['customerInfo/getCustomerSubscribe'],
           countryPhoneIso: bookableType !== 'event' ? store.getters['booking/getCustomerCountryPhoneIso'] : store.getters['customerInfo/getCustomerCountryPhoneIso'],
           externalId: bookableType !== 'event' ? store.getters['booking/getCustomerExternalId'] : store.getters['customerInfo/getCustomerExternalId'],
           translations: store.getters['booking/getCustomerTranslations'],
@@ -193,7 +196,7 @@ function useBookingData (store, formData, mandatoryJson = false, paymentData = {
     ],
     payment: Object.assign(
       {
-        gateway: bookableType !== 'event' ? store.getters['booking/getPaymentGateway'] : store.getters['payment/getPaymentGateway'],
+        gateway: gateway,
         currency: settings.payments.currencyCode,
       },
       {
@@ -287,6 +290,8 @@ function useBookingData (store, formData, mandatoryJson = false, paymentData = {
     })
   }
 
+  const cacheComponentProps = bookingData.componentProps
+
   if (Object.keys(attachments).length && !mandatoryJson) {
     bookingData = new FormData()
 
@@ -303,6 +308,10 @@ function useBookingData (store, formData, mandatoryJson = false, paymentData = {
         'Content-Type': 'multipart/form-data'
       }
     }
+  }
+
+  if (gateway === 'mollie' || gateway === 'wc' || gateway === 'barion') {
+    sessionStorage.setItem("ameliaCacheData", JSON.stringify({request: cacheComponentProps, paymentMethod: gateway, type: bookableType}));
   }
 
   return {

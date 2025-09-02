@@ -1,5 +1,12 @@
 <template>
-  <div class="am-settings-card" @click="(evt) => emits('click', evt)">
+  <div
+    class="am-settings-card"
+    :class="{ 'am-settings-card--draggable': props.draggable }"
+    @click="(evt) => emits('click', evt)"
+  >
+    <div v-if="props.draggable" class="am-settings-card__drag-handle">
+      <span class="am-icon-drag"></span>
+    </div>
     <div class="am-settings-card__inner am-settings-card__header">
       <span v-if="$slots.header">
         <slot name="header"></slot>
@@ -28,6 +35,10 @@ const props = defineProps({
   content: {
     type: String,
     default: ''
+  },
+  draggable: {
+    type: Boolean,
+    default: false
   }
 })
 const emits = defineEmits(['click'])
@@ -50,9 +61,27 @@ export default {
     box-sizing: border-box;
     cursor: pointer;
 
+    &--draggable {
+      position: relative;
+      padding-left: 32px;
+    }
+
     * {
       font-family: var(--am-font-family);
       box-sizing: border-box;
+    }
+
+    &__drag-handle {
+      position: absolute;
+      top: 50%;
+      left: 6px;
+      transform: translateY(-50%);
+      cursor: move;
+
+      .am-icon-drag {
+        font-size: 24px;
+        color: $shade-900;
+      }
     }
 
     &__inner {

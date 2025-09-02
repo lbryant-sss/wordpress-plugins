@@ -70,6 +70,11 @@ let basicLabelsTreatment = {
     },
   },
   sbsNew: {
+    serviceStep: {
+      card: [
+        'view_in_package'
+      ]
+    },
     paymentStep: {
       summarySegment: [
         'summary_package',
@@ -191,6 +196,16 @@ let starterLabelsTreatment = deepMerge(
         dropdown: [
           'total_tax_colon',
           'incl_tax',
+        ],
+      },
+      serviceStep: {
+        card: [
+          'total_tax_colon',
+          'incl_tax',
+          'multiple_locations'
+        ],
+        popup: [
+          'locations'
         ],
       },
       bringingAnyone: {
@@ -460,6 +475,19 @@ let liteLabelsTreatment = deepMerge(
 
 // * Specify which option to delete from customize
 let basicOptionsTreatment = {
+  sbsNew: {
+    serviceStep: ['packagesBtn'],
+    dateTimeStep: [
+      'estimatedPricingVisibility',
+      'slotPricingVisibility',
+      'indicatorPricingVisibility',
+    ],
+    recurringSummary: [
+      'estimatedPricingVisibility',
+      'slotPricingVisibility',
+      'indicatorPricingVisibility',
+    ],
+  },
   cbf: {
     categoriesList: ['packages'],
     categoryItemsList: [
@@ -489,7 +517,14 @@ let basicOptionsTreatment = {
   ecf: {
     calendar: ['waitingBtn'],
     info: ['waitingBtn']
-  }
+  },
+  capc: {
+    rescheduleAppointment: [
+      'estimatedPricingVisibility',
+      'slotPricingVisibility',
+      'indicatorPricingVisibility',
+    ],
+  },
 }
 
 let starterOptionsTreatment = deepMerge(
@@ -510,6 +545,10 @@ let starterOptionsTreatment = deepMerge(
       initStep: [
         'location',
         'tax',
+      ],
+      serviceStep: [
+        'tax',
+        'serviceLocation'
       ],
       bringingAnyone: [
         'bringingPrice',

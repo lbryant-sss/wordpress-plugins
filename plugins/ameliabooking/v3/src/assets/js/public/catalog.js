@@ -30,6 +30,7 @@ function useAvailableServiceIdsInCategory (shortcodeData, category, entities, em
         entities.employees.forEach(employee => {
           if (
             employee.id in entities.entitiesRelations
+            && employee.show
             && service.id in entities.entitiesRelations[employee.id]
             && (locationId ? entities.entitiesRelations[employee.id][service.id].find(a => a === locationId) : true)
             && service.status === 'visible'

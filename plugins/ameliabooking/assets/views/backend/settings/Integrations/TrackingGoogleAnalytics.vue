@@ -233,6 +233,12 @@ export default {
         return false
       }
 
+      if (!(type === 'Schedule' || type === 'Purchase' || type === 'InitiateCheckout') &&
+        (value.includes('%custom_field_') || value === '%number_of_persons%' || value === '%appointment_duration%')
+      ) {
+        return false
+      }
+
       return true
     },
 

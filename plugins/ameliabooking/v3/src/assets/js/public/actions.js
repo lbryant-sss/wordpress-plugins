@@ -2,6 +2,7 @@ import { event as gtEvent } from "vue-gtag";
 import { event as fpEvent } from "./facebookPixel";
 import { useCartItem } from "./cart";
 import {useAppointmentBookingData, usePackageBookingData} from "./booking";
+import { useSecondsToDuration } from '../common/date';
 
 function trackAmeliaData (data, marketing, type, action) {
   Object.keys(marketing).forEach((analytics) => {
@@ -47,6 +48,19 @@ function trackAmeliaData (data, marketing, type, action) {
             let referenceObject = pathParts[0] === 'window' ? window : (data === null ? window : data)
 
             if (pathParts.length > 1) {
+              if (value.includes('custom_field')) {
+                let fieldId = pathParts[pathParts.length - 1]
+                pathParts = ['booking', 'customFields', fieldId, 'value']
+              }
+
+              if (value.includes('appointment_duration')) {
+                pathParts = ['appointments', 0, 'duration']
+              }
+
+              if (value.includes('number_of_persons')) {
+                pathParts = ['appointments', 0, 'persons']
+              }
+
               pathParts.forEach((pathPart) => {
                 if (typeof referenceObject !== 'undefined' && pathPart in referenceObject && referenceObject[pathPart] !== null) {
                   referenceObject = referenceObject[pathPart]
@@ -62,6 +76,10 @@ function trackAmeliaData (data, marketing, type, action) {
                   property === 'value'
                 ) {
                   referenceObject = parseInt(referenceObject)
+                }
+
+                if (value === 'appointment_duration') {
+                  referenceObject = useSecondsToDuration(referenceObject, window.wpAmeliaLabels['h'], window.wpAmeliaLabels['min'])
                 }
 
                 originalValue = originalValue.split('%' + value + '%').join(referenceObject).trim()

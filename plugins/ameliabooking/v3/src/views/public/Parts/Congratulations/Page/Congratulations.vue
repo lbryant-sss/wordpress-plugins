@@ -108,8 +108,6 @@ let props = defineProps({
   }
 })
 
-console.log('props.booked ', props.booked)
-
 let event = computed(() => {
   if (props.booked.type === 'event') {
     return store.getters['eventEntities/getEvent'](props.booked.event.id)

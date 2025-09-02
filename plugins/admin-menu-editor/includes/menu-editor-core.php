@@ -396,12 +396,6 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 			'admin.php?page=dots_store'                  => 'submenu',
 		);
 
-		//Let other plugins add their own blacklisted URLs.
-		$this->menu_url_blacklist = apply_filters(
-			'admin_menu_editor-menu_url_blacklist',
-			$this->menu_url_blacklist
-		);
-
 		//AJAXify hints and warnings
 		add_action('wp_ajax_ws_ame_hide_hint', array($this, 'ajax_hide_hint'));
 		add_action(
@@ -707,7 +701,7 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 		$this->item_templates = $templateBuilder->build(
 			$this->default_wp_menu,
 			$this->default_wp_submenu,
-			$this->menu_url_blacklist
+			$this->get_menu_url_black_list()
 		);
 
 		//Store the default order for later. It will be used when (re)inserting unused items into the menu.
@@ -825,6 +819,21 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 			10,
 			2
 		);
+	}
+
+	private $is_menu_url_blacklist_filtered = false;
+
+	private function get_menu_url_black_list() {
+		if ( !$this->is_menu_url_blacklist_filtered ) {
+			$this->is_menu_url_blacklist_filtered = true; //Set early in case or unexpected recursion.
+
+			//Let other plugins add their own blacklisted URLs.
+			$this->menu_url_blacklist = apply_filters(
+				'admin_menu_editor-menu_url_blacklist',
+				$this->menu_url_blacklist
+			);
+		}
+		return $this->menu_url_blacklist;
 	}
 
 	/**
@@ -3301,7 +3310,11 @@ class WPMenuEditor extends MenuEd_ShadowPluginFramework {
 	 * @return array
 	 */
 	private function get_default_menu() {
-		$default_tree = ameMenu::wp2tree($this->default_wp_menu, $this->default_wp_submenu, $this->menu_url_blacklist);
+		$default_tree = ameMenu::wp2tree(
+			$this->default_wp_menu,
+			$this->default_wp_submenu,
+			$this->get_menu_url_black_list()
+		);
 		try {
 			$default_menu = ameMenu::load_array($default_tree);
 		} catch (InvalidMenuException $e) {

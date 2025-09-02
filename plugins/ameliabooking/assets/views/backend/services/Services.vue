@@ -328,17 +328,21 @@
                           </div>
                           <div class="am-service-data">
                             <el-row :gutter="10" class="am-appointments-flex-row-middle-align" style="margin-bottom: 0;">
-                              <el-col :lg="7" :md="7" style="margin: auto;">
-                                <span style="font-size: 16px; line-height: 1.5; font-weight: 500;  color: #354052;">
-                                  {{ pack.name }}
-                                  <span class="am-service-data-id"> ({{ $root.labels.id }}: {{ pack.id }})</span>
-                                </span>
-                              </el-col>
-                              <el-col :lg="3" :md="3" style="margin: auto; display: flex;">
-                                <p>{{ $root.labels.services }}: {{ pack.bookable.length }}</p>
-                              </el-col>
-                              <el-col :lg="4" :md="4" style="margin: auto; display: flex;">
-                                <p>{{ $root.labels.price }}: {{ getFormattedPrice(pack.calculatedPrice ? pack.price : pack.price - pack.price / 100 * pack.discount) }}</p>
+                              <el-col :lg="14" :md="14" style="margin: auto;">
+                                <el-row>
+                                  <el-col :lg="8" :md="8" style="margin: auto;">
+                                    <span class="am-service-data-name" style="font-size: 16px; line-height: 1.5; font-weight: 500;  color: #354052;">
+                                      {{ pack.name }}
+                                      <span class="am-service-data-id"> ({{ $root.labels.id }}: {{ pack.id }})</span>
+                                    </span>
+                                  </el-col>
+                                  <el-col :lg="8" :md="8" style="margin: auto; display: flex;">
+                                    <p>{{ $root.labels.services }}: {{ pack.bookable.length }}</p>
+                                  </el-col>
+                                  <el-col :lg="8" :md="8" style="margin: auto; display: flex;">
+                                    <p>{{ $root.labels.price }}: {{ getFormattedPrice(pack.calculatedPrice ? pack.price : pack.price - pack.price / 100 * pack.discount) }}</p>
+                                  </el-col>
+                                </el-row>
                               </el-col>
                               <el-col :lg="10" :md="10" :sm="12" class="align-right" style="margin: auto;">
                                 <div @click.stop>
@@ -1612,7 +1616,7 @@ export default {
           pictureFullPath: '',
           pictureThumbPath: '',
           price: 0,
-          customPricing: {enabled: null, durations: [], persons: []},
+          customPricing: {enabled: null, durations: [], persons: [], periods: {default: [], custom: []}},
           status: 'visible',
           timeAfter: '',
           timeBefore: '',

@@ -175,7 +175,7 @@ import moment from 'moment'
 
 // * Composables
 import { useTimeInSeconds } from '../../../../../../assets/js/common/date'
-import { useAppointmentSlots } from '../../../../../../assets/js/public/slots'
+import { useAppointmentSlots, useSlotsPricing } from '../../../../../../assets/js/public/slots'
 import { useAuthorizationHeaderObject } from '../../../../../../assets/js/public/panel'
 
 // * Components
@@ -228,6 +228,9 @@ let amLabels = inject('amLabels')
 
 // * Settings
 const amSettings = inject('settings')
+
+// * Plugin Licence
+let licence = inject('licence')
 
 /********
  * Tabs *
@@ -458,6 +461,9 @@ function filterOut(date, selectedDatesTimes, availableTimes) {
 /************
  * Calendar *
  ************/
+let slotsPricing = ref({})
+provide('slotsPricing', slotsPricing)
+
 let maximumBookingStartDate = ref('')
 
 let freeSlots = ref({})
@@ -469,7 +475,7 @@ function selectDate(date) {
 }
 
 function selectTime(time) {
-  let locationId = freeSlots.value[moment(store.getters['appointment/getStartDate']).format('YYYY-MM-DD')][time][0][1]
+  let locationId = freeSlots.value[moment(store.getters['appointment/getStartDate']).format('YYYY-MM-DD')][time][0].l
 
   if (locationId) {
     store.commit('appointment/setLocationId', locationId)
@@ -529,6 +535,7 @@ let slotsProps = computed(() => {
     timeZone: store.getters['cabinet/getTimeZone'],
     monthsLoad: 1,
     page: 'appointments',
+    structured: true,
   }
 })
 
@@ -600,6 +607,12 @@ function fetchSlots(selectedDate, recurringIndex = null, isNavigation = false, i
         } else {
           freeSlots.value = slots
         }
+
+        let slotsPricingResult = !licence.isLite && !licence.isStarter && !licence.isBasic
+         ? useSlotsPricing(store, slots, store.getters['appointment/getServiceId'])
+         : null
+
+        slotsPricing.value = slotsPricingResult ? slotsPricingResult.dates : {}
 
         slotsLoading.value = false
       },

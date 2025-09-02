@@ -20,24 +20,12 @@ export default {
       return providerService || this.getServiceById(appointment.serviceId)
     },
 
-    getAppointmentPrice (savedServiceId, service, bookings, isList, formatPrice = true) {
+    getAppointmentPrice (service, bookings, formatPrice = true) {
       let totalBookings = 0
-      let $this = this
 
-      let isChangedService = parseInt(savedServiceId) !== parseInt(service.id)
-
-      bookings.filter(i => i.packageCustomerService === null).forEach(function (booking) {
-        let isChangedBookingDuration = (booking.duration === null ? service.duration : booking.duration) !== service.duration
-
-        let servicePrice = $this.getBookingServicePrice(service, booking.duration, booking.persons)
-
-        // for old bookings use price from booking
-        if (booking.payments.length > 0) {
-          if (['approved', 'pending'].includes(booking.status)) {
-            totalBookings += $this.getBookingPrice(booking, isChangedService, isChangedService || isChangedBookingDuration ? servicePrice : booking.price, booking.aggregatedPrice, service.id)
-          }
-        } else if (!isList) {
-          totalBookings += $this.getBookingPrice(booking, true, servicePrice, service.aggregatedPrice, service.id)
+      bookings.filter(i => i.packageCustomerService === null).forEach((booking) => {
+        if (['approved', 'pending'].includes(booking.status)) {
+          totalBookings += this.getBookingPrice(booking, false, booking.price, booking.aggregatedPrice, service.id)
         }
       })
 

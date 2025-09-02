@@ -399,7 +399,9 @@ export default {
   methods: {
     getTotalPrice (app, key) {
       let isPackage = app.bookings[key].packageCustomerService && app.bookings[key].packageCustomerService.packageCustomer
-      let price = isPackage ? this.getPackagePrice(app, key) : this.getAppointmentPrice(app.serviceId, this.getAppointmentService(app), [app.bookings[key]], true, false)
+      let price = isPackage
+        ? this.getPackagePrice(app, key)
+        : this.getAppointmentPrice(this.getAppointmentService(app), [app.bookings[key]], false)
 
       price -= app.bookings[key].payments.filter(p => p.wcOrderId && p.wcItemCouponValue).reduce((partialSum, a) => partialSum + a.wcItemCouponValue, 0)
       return this.getFormattedPrice(price)

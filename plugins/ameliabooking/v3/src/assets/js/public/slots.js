@@ -55,6 +55,7 @@ function useAppointmentParams (store) {
     ),
     group: 1,
     page: 'booking',
+    structured: true,
     persons: store.getters['booking/getBookingPersons']
   }
 }
@@ -156,6 +157,8 @@ function useSlotsCallback(
     result['calendarStartDate'] = activeService.list[cartItem.index].date
       ? activeService.list[cartItem.index].date : (dates.length ? dates[0] : null)
 
+    result['calendarEventDate'] = activeService.list[cartItem.index].date ? activeService.list[cartItem.index].date : ''
+
     if (!(activeService.list[cartItem.index].date in slots)) {
       store.commit('booking/setMultipleAppointmentsDate', null)
       store.commit('booking/setMultipleAppointmentsTime', null)
@@ -193,6 +196,121 @@ function useSlotsCallback(
   return result
 }
 
+function useSlotsPricing (store, slots, serviceId) {
+  let employeesPrices = {}
+
+  store.getters['entities/getEmployees'].forEach((item) => {
+    let employeeService = item.serviceList.find(i => i.id === serviceId)
+
+    if (typeof employeeService !== 'undefined') {
+      employeesPrices[item.id] = item.serviceList.find(i => i.id === serviceId).price
+    }
+  })
+
+  let result = {}
+
+  let minPrice = null
+
+  let midPrice = null
+
+  let maxPrice = null
+
+  let multipleMin = false
+
+  let multipleMid = false
+
+  let multipleMax = false
+
+  Object.keys(slots).forEach((date) => {
+    result[date] = {slots: {}}
+
+    Object.keys(slots[date]).forEach((time) => {
+      let haveHigh = false
+
+      let haveLow = false
+
+      let haveMid = false
+
+      let minDatePrice = null
+
+      let maxDatePrice = null
+
+      slots[date][time].forEach((i) => {
+        let price = i.p === null ? employeesPrices[i.e] : i.p
+
+        if (minDatePrice === null || price < minDatePrice) {
+          minDatePrice = price
+        }
+
+        if (maxDatePrice === null || price > maxDatePrice) {
+          maxDatePrice = price
+        }
+
+        if (price === employeesPrices[i.e]) {
+          if (midPrice !== null && price !== midPrice) {
+            multipleMid = true
+          }
+
+          if (midPrice === null || price < midPrice) {
+            midPrice = price
+          }
+
+          haveMid = true
+        } else if (price < employeesPrices[i.e]) {
+          if (minPrice !== null && price !== minPrice) {
+            multipleMin = true
+          }
+
+          if (minPrice === null || minDatePrice < minPrice) {
+            minPrice = minDatePrice
+          }
+
+          haveLow = true
+        } else if (price > employeesPrices[i.e]) {
+          if (maxPrice !== null && price !== maxPrice) {
+            multipleMax = true
+          }
+
+          if (maxPrice === null || maxDatePrice < maxPrice) {
+            maxPrice = maxDatePrice
+          }
+
+          haveHigh = true
+        }
+      })
+
+      result[date].slots[time] = {
+        type: haveLow && !haveHigh && !haveMid ? 'low' : (haveHigh && !haveLow && !haveMid ? 'high' : 'mid'),
+        price: minDatePrice
+      }
+    })
+
+    result[date].price = Object.values(result[date].slots).filter(i => i.price === null).length === 0
+
+    let types = Object.values(result[date].slots).map(i => i.type)
+
+    if (types.filter(i => i === 'low').length === types.length) {
+      result[date].type = 'low'
+    } else if (types.filter(i => i === 'high').length === types.length) {
+      result[date].type = 'high'
+    } else {
+      result[date].type = 'mid'
+    }
+  })
+
+  return {
+    price: {
+      low: minPrice,
+      mid: midPrice,
+      high: maxPrice,
+      uniqueMin: !multipleMin,
+      uniqueMid: !multipleMid,
+      uniqueMax: !multipleMax
+    },
+    dates: result
+  }
+}
+
 export {
   useRange,
   useSelectedDuration,
@@ -202,4 +320,5 @@ export {
   useSlotsCallback,
   useAppointmentSlots,
   useAppointmentParams,
+  useSlotsPricing,
 }

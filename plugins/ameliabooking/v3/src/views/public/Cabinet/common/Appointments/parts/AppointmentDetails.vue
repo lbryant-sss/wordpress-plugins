@@ -138,6 +138,7 @@
         :disabled="!appointmentFormData.serviceId"
         :disabled-date="(date, monthOrYear) => {return props.isDisabledDate(date, null, true, monthOrYear)}"
         :popper-class="slotsLoading ? 'am-slots-loader' : ''"
+        :cell-class-name="getDateClass"
         @panel-change="(date) => {fetchSlots(date, null, true)}"
         @change="selectDate"
         @focus="appointmentFormData.serviceId && !appointmentFormData.startDate ? fetchSlots(null, null, true) : false"
@@ -164,7 +165,9 @@
           :key="slot"
           :value="slot"
           :label="slot"
-        />
+        >
+          {{ getFrontedFormattedTime(slot) }} <span style="float: right;">{{ getTimePrice(slot) }}</span>
+        </AmOption>
       </AmSelect>
     </el-form-item>
     <!-- /Select Start Time -->
@@ -244,6 +247,7 @@ import moment from 'moment'
 // * Import Composables
 import {
   momentDateFormat,
+  getFrontedFormattedTime,
 } from "../../../../../../assets/js/common/date";
 
 // * Import Components
@@ -301,6 +305,30 @@ const amSettings = inject('settings')
 
 // * Plugin Licence
 let licence = inject('licence')
+
+let slotsPricing = inject('slotsPricing')
+
+// let startDateString = computed(() => {
+//   return appointmentFormData.value.startDate ? moment(appointmentFormData.value.startDate).format('YYYY-MM-DD') : ''
+// })
+
+function getTimePrice (slot) {
+  // if (startDateString.value in slotsPricing.value && slot in slotsPricing.value[startDateString.value].slots) {
+  //   return useFormattedPrice(slotsPricing.value[startDateString.value].slots[slot].price)
+  // }
+
+  return ''
+}
+
+let getDateClass = (date) => {
+  let dateString = moment(date).format('YYYY-MM-DD')
+
+  if (dateString in slotsPricing.value) {
+    return 'am-slots-' + slotsPricing.value[dateString].type
+  }
+
+  return ''
+}
 
 // * Form Reference
 const detailsFormRef = ref(null)
@@ -682,6 +710,21 @@ defineExpose({
     }
   }
 }
+
+//.am-slots-low {
+//  background-color: rgba(196, 255, 201, 1);
+//  border-radius: 50%;
+//}
+//
+//.am-slots-mid {
+//  background-color: rgba(196, 235, 255, 1);
+//  border-radius: 50%;
+//}
+//
+//.am-slots-high {
+//  background-color: rgba(255, 196, 196, 1);
+//  border-radius: 50%;
+//}
 
 .am-slots-loader {
   &:before {

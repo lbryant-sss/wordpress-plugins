@@ -77,6 +77,10 @@ export default {
       }
     },
 
+    getSecondsInStringTime (seconds) {
+      return moment.utc(seconds * 1000).format('HH:mm')
+    },
+
     getStringTimeInSeconds (time) {
       return moment(time, 'HH:mm').diff(moment().startOf('day'), 'seconds')
     }

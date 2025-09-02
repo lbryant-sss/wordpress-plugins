@@ -5,7 +5,7 @@ Tags: admin, dashboard, menu, security, wpmu
 License: GPLv3
 Requires at least: 5.4
 Tested up to: 6.8.2
-Stable tag: 1.14
+Stable tag: 1.14.1
 
 Lets you edit the WordPress admin menu. You can re-order, hide or rename menus, add custom menus and more. 
 
@@ -83,6 +83,12 @@ Plugins installed in the `mu-plugins` directory are treated as "always on", so y
 3. Re-ordering menu items via drag and drop
 
 == Changelog ==
+
+= 1.14.1 =
+* Fixed the position of the dropdown button for the "Extra capability" field. Now the button should be vertically aligned with the field.
+* Fixed a dropdown potentially extending outside its parent dialog/popup when one of the items is very long.
+* Fixed a PHP warning "fgetcsv(): escape must be character" in PHP versions older than 7.4.
+* Fixed improper sanitization of the "placeholder" attribute for the "ame-user-info" shortcode.
 
 = 1.14 =
 * Increased the minimum required PHP version from 5.6 to 7.1.

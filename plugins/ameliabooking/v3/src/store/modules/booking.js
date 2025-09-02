@@ -18,6 +18,7 @@ export default {
           countryPhoneIso : '',
           translations: null,
           customFields: null,
+          subscribeToMailchimp: settings.mailchimp.checkedByDefault,
         },
         customFields: {},
         customerId: 0,
@@ -171,8 +172,8 @@ export default {
         for (let date in selection.slots) {
           for (let time in selection.slots[date]) {
             for (let i = 0; i < selection.slots[date][time].length; i++) {
-              if ((selection.providerId && selection.slots[date][time][i][0] === selection.providerId) ||
-                (selection.locationId && selection.slots[date][time][i][1] === selection.locationId)
+              if ((selection.providerId && selection.slots[date][time][i].e === selection.providerId) ||
+                (selection.locationId && selection.slots[date][time][i].l === selection.locationId)
               ) {
                 if (!(date in slots)) {
                   slots[date] = {}
@@ -276,6 +277,10 @@ export default {
 
     getCustomerCountryPhoneIso (state) {
       return state.appointment.bookings[0].customer.countryPhoneIso
+    },
+
+    getCustomerSubscribe (state) {
+      return state.appointment.bookings[0].customer.subscribeToMailchimp
     },
 
     getCustomerExternalId (state) {
@@ -447,6 +452,7 @@ export default {
           extras: state.appointments[i].services[state.appointments[i].serviceId].list[payload].extras,
           duration: null,
           slots: [],
+          price: null,
         }
       }
     },
@@ -611,6 +617,10 @@ export default {
 
     setCustomerCountryPhoneIso (state, payload) {
       state.appointment.bookings[0].customer.countryPhoneIso = payload
+    },
+
+    setCustomerSubscribe (state, payload) {
+      state.appointment.bookings[0].customer.subscribeToMailchimp = payload
     },
 
     setCustomerExternalId (state, payload) {

@@ -113,6 +113,30 @@
               </el-col>
             </el-row>
 
+
+            <!-- Show On Front -->
+            <div v-if="!$root.licence.isLite" :class="licenceClass('starter')" class="am-setting-box am-switch-box">
+              <el-row type="flex" align="middle" :gutter="24">
+                <el-col :span="19">
+                  {{ $root.labels.employee_show_on_site }}
+                  <el-tooltip placement="top">
+                    <div slot="content" v-html="$root.labels.employee_show_on_site_tooltip"></div>
+                    <i class="el-icon-question am-tooltip-icon"></i>
+                  </el-tooltip>
+                </el-col>
+                <el-col :span="5" class="align-right">
+                  <el-switch
+                      v-model="employee.show"
+                      :disabled="notInLicence('starter')"
+                  >
+                  </el-switch>
+                </el-col>
+              </el-row>
+
+              <LicenceBlock :licence="'starter'"/>
+            </div>
+
+
             <el-row :gutter="16">
               <el-col :sm="12">
 

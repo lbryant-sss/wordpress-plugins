@@ -4,44 +4,85 @@
       <PageHeader></PageHeader>
     </template>
 
-    <template v-if="pageRenderKey !== 'main' && pageRenderKey !== 'cbf' && pageRenderKey !== 'elf' && pageRenderKey !== 'ecf'" #filter>
-      <!-- Step by step select for page type -->
+    <template
+      v-if="
+        pageRenderKey !== 'main' &&
+        pageRenderKey !== 'cbf' &&
+        pageRenderKey !== 'elf' &&
+        pageRenderKey !== 'ecf'
+      "
+      #filter
+    >
       <div
         class="am-customize__fs-flow"
         :class="[
-          {'am-customize__capc-panel': pageRenderKey === 'capc' && pagesType === 'panel'},
-          {'am-customize__capc-auth': pageRenderKey === 'capc' && pagesType === 'auth'}
+          {
+            'am-customize__capc-panel':
+              pageRenderKey === 'capc' && pagesType === 'panel',
+          },
+          {
+            'am-customize__capc-auth':
+              pageRenderKey === 'capc' && pagesType === 'auth',
+          },
         ]"
       >
+        <!-- Step by step select for page type -->
         <div
-          v-if="!licence.isBasic && !licence.isStarter && !licence.isLite && pageRenderKey !== 'capc' && pageRenderKey !== 'cape'"
+          v-if="
+            !licence.isBasic &&
+            !licence.isStarter &&
+            !licence.isLite &&
+            pageRenderKey !== 'capc' &&
+            pageRenderKey !== 'cape'
+          "
           class="am-customize__fs-flow__inner"
         >
-          <div class="am-customize__fs-flow__label">
-            {{amLabels.steps}}:
-          </div>
-          <AmSelect
-            v-model="bookableType"
-            @change="handleClick('menu', 0)"
-          >
+          <div class="am-customize__fs-flow__label">{{ amLabels.steps }}:</div>
+          <AmSelect v-model="bookableType" @change="handleClick('menu', 0)">
             <AmOption value="appointment" :label="amLabels.service_option" />
             <AmOption value="package" :label="amLabels.package_option" />
           </AmSelect>
         </div>
         <!--/ Step by step select for page type -->
 
+        <!-- Step by step select for page type -->
+        <div
+          v-if="urlParams.get('current') !== 'cbf' && pageRenderKey !== 'capc' && pageRenderKey !== 'cape' && bookableType === 'appointment'"
+          class="am-customize__fs-flow__inner"
+          :class="{'am-right': !licence.isPro || !licence.isDeveloper }"
+        >
+          <div class="am-customize__fs-flow__label">{{ amLabels.layout }}:</div>
+          <AmButtonGroup class="am-customize__fs-flow__button-group">
+            <AmButton
+              :icon-only="true"
+              icon="text-align-center"
+              size="small"
+              :type="flowLayout === 1 ? 'filled' : 'plain'"
+              :category="flowLayout === 1 ? 'primary' : 'secondary'"
+              @click="chooseLayout(1)"
+            />
+            <AmButton
+              :icon-only="true"
+              icon="layout"
+              size="small"
+              :type="flowLayout === 2 ? 'filled' : 'plain'"
+              :category="flowLayout === 2 ? 'primary' : 'secondary'"
+              @click="chooseLayout(2)"
+            />
+          </AmButtonGroup>
+        </div>
+        <!--/ Step by step select for page type -->
+
         <!-- Cabinet select for page type -->
         <div
-          v-if="!licence.isLite && (pageRenderKey === 'capc' || pageRenderKey === 'cape')"
+          v-if="
+            !licence.isLite &&
+            (pageRenderKey === 'capc' || pageRenderKey === 'cape')
+          "
           class="am-customize__fs-flow__inner"
         >
-          <div class="am-customize__fs-flow__label">
-            {{amLabels.steps}}:
-          </div>
-          <AmSelect
-            v-model="pagesType"
-            @change="handleClick('menu', 0)"
-          >
+          <div class="am-customize__fs-flow__label">{{ amLabels.steps }}:</div>
+          <AmSelect v-model="pagesType" @change="handleClick('menu', 0)">
             <AmOption value="panel" label="Panel" />
             <AmOption value="auth" label="Login" />
           </AmSelect>
@@ -50,8 +91,12 @@
 
         <!-- Button that will redirect to Catalog form -->
         <AmButton
-          v-if="urlParams.get('current') !== 'sbsNew' && pageRenderKey !== 'capc' && pageRenderKey !== 'cape'"
-          :style="{margin: '0 0 0 auto'}"
+          v-if="
+            urlParams.get('current') !== 'sbsNew' &&
+            pageRenderKey !== 'capc' &&
+            pageRenderKey !== 'cape'
+          "
+          :style="{ margin: '0 0 0 auto' }"
           @click="handleClick('menu', 0, urlParams.get('current'))"
         >
           Go Back To Catalog Form
@@ -69,7 +114,10 @@
     </template>
 
     <template #menu>
-      <SettingsSidebar v-if="pageRenderKey !== 'main'" ref="sidebarRef"></SettingsSidebar>
+      <SettingsSidebar
+        v-if="pageRenderKey !== 'main'"
+        ref="sidebarRef"
+      ></SettingsSidebar>
     </template>
   </PageWrapper>
 </template>
@@ -78,20 +126,22 @@
 // * Components
 import AmSelect from '../../_components/select/AmSelect.vue'
 import AmOption from '../../_components/select/AmOption.vue'
+import AmButton from '../../_components/button/AmButton'
+import AmButtonGroup from '../../_components/button/AmButtonGroup.vue'
 
 // * Page Shell
-import PageWrapper from '../parts/PageWrapper';
-import PageHeader from '../parts/PageHeader';
-import SettingsSidebar from "./settings/SettingsSidebar.vue";
+import PageWrapper from '../parts/PageWrapper'
+import PageHeader from '../parts/PageHeader'
+import SettingsSidebar from './settings/SettingsSidebar.vue'
 
 // * Pages
-import CustomizeMainPage from './navigation/CustomizeMainPage.vue';
-import CustomizeStepNew from "./pages/CustomizeStepNew.vue";
-import CustomizeCatalog from "./pages/CustomizeCatalog.vue";
-import CustomizeEventList from "./pages/CustomizeEventList.vue";
-import CustomizeEventCalendar from "./pages/CustomizeEventCalendar.vue";
-import CustomizeCustomerPanel from "./pages/CustomizeCustomerPanel.vue";
-import CustomizeEmployeePanel from "./pages/CustomizeEmployeePanel.vue";
+import CustomizeMainPage from './navigation/CustomizeMainPage.vue'
+import CustomizeStepNew from './pages/CustomizeStepNew.vue'
+import CustomizeCatalog from './pages/CustomizeCatalog.vue'
+import CustomizeEventList from './pages/CustomizeEventList.vue'
+import CustomizeEventCalendar from './pages/CustomizeEventCalendar.vue'
+import CustomizeCustomerPanel from './pages/CustomizeCustomerPanel.vue'
+import CustomizeEmployeePanel from './pages/CustomizeEmployeePanel.vue'
 
 // * Import form Vue
 import {
@@ -102,8 +152,8 @@ import {
   reactive,
   computed,
   onMounted,
-  watchEffect
-} from 'vue';
+  watchEffect,
+} from 'vue'
 import { ElNotification } from 'element-plus'
 // * Deepmerge
 import deepMerge from 'deepmerge'
@@ -112,16 +162,18 @@ import httpClient from '../../../plugins/axios'
 // * Import Composables
 import {
   usePopulateMultiDimensionalObject,
-  useOverrideValuesOfOneObjectWithAnother
+  useOverrideValuesOfOneObjectWithAnother,
 } from '../../../assets/js/common/objectAndArrayManipulation'
 // * Default Customize Settings
-import { defaultCustomizeSettings, defaultTranslations } from '../../../assets/js/common/defaultCustomize.js'
-import AmButton from "../../_components/button/AmButton";
+import {
+  defaultCustomizeSettings,
+  defaultTranslations,
+} from '../../../assets/js/common/defaultCustomize.js'
 
 // * Plugin Licence
 let licence = inject('licence')
 
-function notify (title, message, type, customClass) {
+function notify(title, message, type, customClass) {
   if (typeof customClass === 'undefined') {
     customClass = ''
   }
@@ -131,12 +183,15 @@ function notify (title, message, type, customClass) {
     type: type,
     offset: 125,
     position: 'top-left',
-    appendTo: '#am-customize'
+    appendTo: '#am-customize',
   })
 }
 
 let bookableType = ref('appointment')
 provide('bookableType', bookableType)
+
+let flowLayout = ref(1)
+provide('flowLayout', flowLayout)
 
 let pagesType = ref('auth')
 provide('pagesType', pagesType)
@@ -156,13 +211,13 @@ let amLanguages = inject('languages')
 
 // * Languages that were selected in general settings
 let selectedLanguages = ref([])
-settings.general.usedLanguages.forEach(lang => {
+settings.general.usedLanguages.forEach((lang) => {
   selectedLanguages.value.push(amLanguages[lang])
 })
 
 provide('languageFunctionality', {
   langKey,
-  selectedLanguages
+  selectedLanguages,
 })
 
 // * Loading state
@@ -179,13 +234,13 @@ let stepIndex = ref(0)
 provide('stepIndex', stepIndex)
 
 // * Change name of the page in page header
-function pageNameHandler (name = '') {
+function pageNameHandler(name = '') {
   pageName.value = name ? name : 'Customize'
 }
 
 provide('headerFunctionality', {
   pageNameHandler,
-  pageName
+  pageName,
 })
 
 // * Step name
@@ -199,7 +254,7 @@ let componentKey = ref('menu')
 let goBackPath = ref('menu')
 let parentPath = ref('menu')
 
-function handleClick (data = '', index, pageKey = '') {
+function handleClick(data = '', index, pageKey = '') {
   componentKey.value = data ? data : goBackPath.value
   goBackPath.value = 'menu'
 
@@ -218,8 +273,14 @@ provide('sidebarFunctionality', {
   componentKey,
   parentPath,
   goBackPath,
-  handleClick
+  handleClick,
 })
+
+function chooseLayout(layout) {
+  flowLayout.value = layout
+
+  handleClick('menu', 0)
+}
 
 // * Pages that represents all form types
 let pagesObject = {
@@ -229,13 +290,15 @@ let pagesObject = {
   elf: markRaw(CustomizeEventList),
   ecf: markRaw(CustomizeEventCalendar),
   capc: markRaw(CustomizeCustomerPanel),
-  cape: markRaw(CustomizeEmployeePanel)
+  cape: markRaw(CustomizeEmployeePanel),
 }
 
 let urlParams = new URLSearchParams(window.location.search)
 
 // * Key that reference to page from type
-let pageRenderKey = ref(urlParams.get('current') ? urlParams.get('current') : 'sbsNew')
+let pageRenderKey = ref(
+  urlParams.get('current') ? urlParams.get('current') : 'sbsNew'
+)
 provide('pageRenderKey', pageRenderKey)
 
 // * Function that changes the pages ( value of pageRenderKey )
@@ -243,7 +306,7 @@ function changePages(pageString) {
   pageRenderKey.value = pageString
 }
 provide('pageFunctions', {
-  changePages
+  changePages,
 })
 
 watchEffect(() => {
@@ -270,8 +333,38 @@ const combineMerge = (target, source, options) => {
 
 if (settings.customizedData) {
   amCustomize.value = deepMerge.all([settings.customizedData, JSON.parse(JSON.stringify({...defaultCustomizeSettings})), settings.customizedData], {arrayMerge: combineMerge})
+
+  if ('sbsNew' in settings.customizedData &&
+    (
+      !('colorCalCellLow' in settings.customizedData.sbsNew.colors) ||
+      !('colorCalCellLowText' in settings.customizedData.sbsNew.colors)||
+      !('colorCalCellHigh' in settings.customizedData.sbsNew.colors) ||
+      !('colorCalCellHighText' in settings.customizedData.sbsNew.colors)
+    )
+  ) {
+    amCustomize.value.sbsNew.colors.colorCalCellLow = settings.customizedData.sbsNew.colors.colorCalCell
+    amCustomize.value.sbsNew.colors.colorCalCellLowText = settings.customizedData.sbsNew.colors.colorCalCellText
+    amCustomize.value.sbsNew.colors.colorCalCellHigh = settings.customizedData.sbsNew.colors.colorCalCell
+    amCustomize.value.sbsNew.colors.colorCalCellHighText = settings.customizedData.sbsNew.colors.colorCalCellText
+  }
+
+  if ('capc' in settings.customizedData &&
+    (
+      !('colorCalCellLow' in settings.customizedData.capc.colors) ||
+      !('colorCalCellLowText' in settings.customizedData.capc.colors)||
+      !('colorCalCellHigh' in settings.customizedData.capc.colors) ||
+      !('colorCalCellHighText' in settings.customizedData.capc.colors)
+    )
+  ) {
+    amCustomize.value.capc.colors.colorCalCellLow = settings.customizedData.capc.colors.colorCalCell
+    amCustomize.value.capc.colors.colorCalCellLowText = settings.customizedData.capc.colors.colorCalCellText
+    amCustomize.value.capc.colors.colorCalCellHigh = settings.customizedData.capc.colors.colorCalCell
+    amCustomize.value.capc.colors.colorCalCellHighText = settings.customizedData.capc.colors.colorCalCellText
+  }
 } else {
-  amCustomize.value = JSON.parse(JSON.stringify({...defaultCustomizeSettings}))
+  amCustomize.value = JSON.parse(
+    JSON.stringify({ ...defaultCustomizeSettings })
+  )
 }
 
 // * Customize data
@@ -279,15 +372,17 @@ provide('customize', amCustomize)
 
 // * Labels
 // * amTranslations object is used in sidebar segments
-let amTranslations = reactive(JSON.parse(JSON.stringify({...defaultTranslations})))
+let amTranslations = reactive(
+  JSON.parse(JSON.stringify({ ...defaultTranslations }))
+)
 
 // * Set selected languages and data from server
 function labelsKeysLanguages(labelObj) {
   Object.keys(labelObj).forEach((item) => {
     labelObj[item] = {
-      default : ''
+      default: '',
     }
-    settings.general.usedLanguages.forEach(lang => {
+    settings.general.usedLanguages.forEach((lang) => {
       labelObj[item][lang] = ''
     })
   })
@@ -296,11 +391,16 @@ usePopulateMultiDimensionalObject('labels', amTranslations, labelsKeysLanguages)
 
 provide('translations', amTranslations)
 
-function changeNamesInObject (a, b) {
+function changeNamesInObject(a, b) {
   b.name = a.name
 }
 onMounted(() => {
-  useOverrideValuesOfOneObjectWithAnother('name', defaultCustomizeSettings, amCustomize.value, changeNamesInObject)
+  useOverrideValuesOfOneObjectWithAnother(
+    'name',
+    defaultCustomizeSettings,
+    amCustomize.value,
+    changeNamesInObject
+  )
 })
 
 let stepKey = computed(() => {
@@ -309,18 +409,24 @@ let stepKey = computed(() => {
 
 let filterByKey = (key) => {
   return computed(() =>
-      amCustomize.value[key] ? { [key]: amCustomize.value[key], 'fonts': amCustomize.value['fonts'] } : amCustomize.value
+    amCustomize.value[key]
+      ? { [key]: amCustomize.value[key], fonts: amCustomize.value['fonts'] }
+      : amCustomize.value
   )
 }
 
-function updateCustomizeLabel (labelObj) {
+function updateCustomizeLabel(labelObj) {
   let parentObjKey = stepKey.value
   if (parentPath.value === 'sidebar') parentObjKey = parentPath.value
 
   if (
-    amCustomize.value[pageRenderKey.value][parentObjKey].translations === null
-    || (Array.isArray(amCustomize.value[pageRenderKey.value][parentObjKey].translations)
-      && amCustomize.value[pageRenderKey.value][parentObjKey].translations.length === 0)
+    amCustomize.value[pageRenderKey.value][parentObjKey].translations ===
+      null ||
+    (Array.isArray(
+      amCustomize.value[pageRenderKey.value][parentObjKey].translations
+    ) &&
+      amCustomize.value[pageRenderKey.value][parentObjKey].translations
+        .length === 0)
   ) {
     amCustomize.value[pageRenderKey.value][parentObjKey].translations = {}
   }
@@ -331,75 +437,115 @@ function updateCustomizeLabel (labelObj) {
       if (labelObj[label][lang]) {
         labelLangObj[label] = {}
         labelLangObj[label][lang] = labelObj[label][lang]
-        if (amCustomize.value[pageRenderKey.value][parentObjKey].translations[label]) {
-          Object.assign(amCustomize.value[pageRenderKey.value][parentObjKey].translations[label], labelLangObj[label])
+        if (
+          amCustomize.value[pageRenderKey.value][parentObjKey].translations[
+            label
+          ]
+        ) {
+          Object.assign(
+            amCustomize.value[pageRenderKey.value][parentObjKey].translations[
+              label
+            ],
+            labelLangObj[label]
+          )
         } else {
-          amCustomize.value[pageRenderKey.value][parentObjKey].translations[label] = labelLangObj[label]
+          amCustomize.value[pageRenderKey.value][parentObjKey].translations[
+            label
+          ] = labelLangObj[label]
         }
       } else if (
         !labelObj[label][lang] &&
         amCustomize.value[pageRenderKey.value][parentObjKey].translations &&
-        Object.keys(amCustomize.value[pageRenderKey.value][parentObjKey].translations).includes(label) &&
-        Object.keys(amCustomize.value[pageRenderKey.value][parentObjKey].translations[label]).includes(lang)
+        Object.keys(
+          amCustomize.value[pageRenderKey.value][parentObjKey].translations
+        ).includes(label) &&
+        Object.keys(
+          amCustomize.value[pageRenderKey.value][parentObjKey].translations[
+            label
+          ]
+        ).includes(lang)
       ) {
+        delete amCustomize.value[pageRenderKey.value][parentObjKey]
+          .translations[label][lang]
 
-        delete amCustomize.value[pageRenderKey.value][parentObjKey].translations[label][lang]
-
-        if (!Object.keys(amCustomize.value[pageRenderKey.value][parentObjKey].translations[label]).length) {
-          delete amCustomize.value[pageRenderKey.value][parentObjKey].translations[label]
+        if (
+          !Object.keys(
+            amCustomize.value[pageRenderKey.value][parentObjKey].translations[
+              label
+            ]
+          ).length
+        ) {
+          delete amCustomize.value[pageRenderKey.value][parentObjKey]
+            .translations[label]
         }
       }
     })
   })
 
-  if (!Object.keys(amCustomize.value[pageRenderKey.value][parentObjKey].translations).length) {
+  if (
+    !Object.keys(
+      amCustomize.value[pageRenderKey.value][parentObjKey].translations
+    ).length
+  ) {
     amCustomize.value[pageRenderKey.value][parentObjKey].translations = null
   }
 }
 
-function updateLabelObject () {
+function updateLabelObject() {
   let parentObjKey = stepKey.value
   if (parentPath.value === 'sidebar') parentObjKey = parentPath.value
 
-  usePopulateMultiDimensionalObject('labels', amTranslations[pageRenderKey.value][parentObjKey], updateCustomizeLabel)
+  usePopulateMultiDimensionalObject(
+    'labels',
+    amTranslations[pageRenderKey.value][parentObjKey],
+    updateCustomizeLabel
+  )
 }
 
 provide('updateLabelObject', updateLabelObject)
 
 // * Save Changes function
-function saveChanges () {
+function saveChanges() {
   let currentForm = filterByKey(pageRenderKey.value)
 
-  httpClient.post(
-    '/settings',
-    {customizedData: currentForm.value}
-  )
+  httpClient
+    .post('/settings', { customizedData: currentForm.value })
     .then(() => {
       notify(amLabels.success, amLabels.settings_saved, 'success')
     })
-    .catch(e => {
+    .catch((e) => {
       notify(amLabels.error, e.message, 'error')
     })
 }
 
-function resetChanges () {
-  amCustomize.value[pageRenderKey.value] = JSON.parse(JSON.stringify({...defaultCustomizeSettings[pageRenderKey.value]}))
-  amTranslations[pageRenderKey.value] = JSON.parse(JSON.stringify({...defaultTranslations[[pageRenderKey.value]]}))
-  amCustomize.value.fonts = JSON.parse(JSON.stringify({...defaultCustomizeSettings.fonts}))
-  usePopulateMultiDimensionalObject('labels', amTranslations[pageRenderKey.value], labelsKeysLanguages)
+function resetChanges() {
+  amCustomize.value[pageRenderKey.value] = JSON.parse(
+    JSON.stringify({ ...defaultCustomizeSettings[pageRenderKey.value] })
+  )
+  amTranslations[pageRenderKey.value] = JSON.parse(
+    JSON.stringify({ ...defaultTranslations[[pageRenderKey.value]] })
+  )
+  amCustomize.value.fonts = JSON.parse(
+    JSON.stringify({ ...defaultCustomizeSettings.fonts })
+  )
+  usePopulateMultiDimensionalObject(
+    'labels',
+    amTranslations[pageRenderKey.value],
+    labelsKeysLanguages
+  )
 
   saveChanges()
 }
 
 provide('customizeSaveFunctionality', {
   saveChanges,
-  resetChanges
+  resetChanges,
 })
 </script>
 
 <script>
 export default {
-  name: 'AmeliaCustomize'
+  name: 'AmeliaCustomize',
 }
 </script>
 
@@ -423,7 +569,7 @@ export default {
   --am-c-main-heading-text: #{$shade-800};
   --am-c-main-text: #{$shade-900};
   // sidebar container colors - left part of the form
-  --am-c-sb-bgr: #17295A;
+  --am-c-sb-bgr: #17295a;
   --am-c-sb-text: #{$am-white};
   // input global colors - usage input, textarea, checkbox, radio button, select input, adv select input
   --am-c-inp-bgr: #{$am-white};
@@ -485,12 +631,22 @@ export default {
         display: flex;
         align-items: center;
         gap: 10px;
+
+        &.am-right {
+          margin-left: auto;
+        }
       }
 
       .am-select-wrapper {
         max-width: 180px;
         width: 100%;
         flex: 0 0 180px;
+      }
+
+      &__button-group {
+        span[class^='am-icon-'] {
+          font-size: 20px;
+        }
       }
     }
   }
@@ -511,7 +667,7 @@ export default {
   --el-notification-title-font-size: 16px;
   --el-notification-title-color: var(--el-text-color-primary);
   --el-notification-close-color: var(--el-text-color-secondary);
-  --el-notification-close-hover-color: var(--el-text-color-regular)
+  --el-notification-close-hover-color: var(--el-text-color-regular);
 }
 
 .el-notification {
@@ -522,29 +678,32 @@ export default {
   box-sizing: border-box;
   border: 1px solid var(--el-notification-border-color);
   position: fixed;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   box-shadow: var(--el-notification-shadow);
-  transition: opacity var(--el-transition-duration),transform var(--el-transition-duration),left var(--el-transition-duration),right var(--el-transition-duration),top .4s,bottom var(--el-transition-duration);
+  transition: opacity var(--el-transition-duration),
+    transform var(--el-transition-duration), left var(--el-transition-duration),
+    right var(--el-transition-duration), top 0.4s,
+    bottom var(--el-transition-duration);
   overflow-wrap: anywhere;
   overflow: hidden;
-  z-index: 9999
+  z-index: 9999;
 }
 
 .el-notification.right {
-  right: 16px
+  right: 16px;
 }
 
 .el-notification.left {
   left: 175px;
   @include media-breakpoint-down($am-small-max) {
     --el-notification-width: 300;
-    left: 30px
+    left: 30px;
   }
 }
 
 .el-notification__group {
   margin-left: var(--el-notification-group-margin-left);
-  margin-right: var(--el-notification-group-margin-right)
+  margin-right: var(--el-notification-group-margin-right);
 }
 
 .el-notification__title {
@@ -552,7 +711,7 @@ export default {
   font-size: var(--el-notification-title-font-size);
   line-height: var(--el-notification-icon-size);
   color: var(--el-notification-title-color);
-  margin: 0
+  margin: 0;
 }
 
 .el-notification__content {
@@ -560,17 +719,17 @@ export default {
   line-height: 24px;
   margin: 6px 0 0;
   color: var(--el-notification-content-color);
-  text-align: justify
+  text-align: justify;
 }
 
 .el-notification__content p {
-  margin: 0
+  margin: 0;
 }
 
 .el-notification .el-notification__icon {
   height: var(--el-notification-icon-size);
   width: var(--el-notification-icon-size);
-  font-size: var(--el-notification-icon-size)
+  font-size: var(--el-notification-icon-size);
 }
 
 .el-notification .el-notification__closeBtn {
@@ -579,48 +738,48 @@ export default {
   right: 15px;
   cursor: pointer;
   color: var(--el-notification-close-color);
-  font-size: var(--el-notification-close-font-size)
+  font-size: var(--el-notification-close-font-size);
 }
 
 .el-notification .el-notification__closeBtn:hover {
-  color: var(--el-notification-close-hover-color)
+  color: var(--el-notification-close-hover-color);
 }
 
 .el-notification .el-notification--success {
   --el-notification-icon-color: var(--el-color-success);
-  color: var(--el-notification-icon-color)
+  color: var(--el-notification-icon-color);
 }
 
 .el-notification .el-notification--info {
   --el-notification-icon-color: var(--el-color-info);
-  color: var(--el-notification-icon-color)
+  color: var(--el-notification-icon-color);
 }
 
 .el-notification .el-notification--warning {
   --el-notification-icon-color: var(--el-color-warning);
-  color: var(--el-notification-icon-color)
+  color: var(--el-notification-icon-color);
 }
 
 .el-notification .el-notification--error {
   --el-notification-icon-color: var(--el-color-error);
-  color: var(--el-notification-icon-color)
+  color: var(--el-notification-icon-color);
 }
 
 .el-notification-fade-enter-from.right {
   right: 0;
-  transform: translate(100%)
+  transform: translate(100%);
 }
 
 .el-notification-fade-enter-from.left {
   left: 0;
-  transform: translate(-100%)
+  transform: translate(-100%);
 }
 
 .el-notification-fade-leave-to {
-  opacity: 0
+  opacity: 0;
 }
 
-#am-customize{
+#am-customize {
   .am-lite-version {
     display: none !important;
   }

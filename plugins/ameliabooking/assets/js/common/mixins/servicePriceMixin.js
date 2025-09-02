@@ -17,21 +17,26 @@ export default {
         'persons' in customPricing
     },
 
-    getPersonServicePrice (service, persons) {
-      if (this.isPersonPricingEnabled(service.customPricing)) {
-        return ' (' + this.getFormattedPrice(this.getBookingPersonPrice(service, persons), !this.$root.settings.payments.hideCurrencySymbolFrontend) + ')'
-      }
-
-      return ''
+    isPeriodPricingEnabled (customPricing) {
+      return customPricing !== null &&
+        (customPricing.enabled === 'period') &&
+        'periods' in customPricing &&
+        !this.$root.licence.isLite &&
+        !this.$root.licence.isStarter &&
+        !this.$root.licence.isBasic
     },
 
-    getBookingServicePrice (service, duration, persons) {
+    getBookingServicePrice (service, duration, persons, providerId, bookingStart) {
       if (this.isDurationPricingEnabled(service.customPricing)) {
         return this.getBookingDurationPrice(service, duration)
       }
 
       if (this.isPersonPricingEnabled(service.customPricing)) {
         return this.getBookingPersonPrice(service, persons)
+      }
+
+      if (this.isPeriodPricingEnabled(service.customPricing) && providerId && bookingStart) {
+        return this.getBookingPeriodPrice(service, parseInt(providerId), bookingStart)
       }
 
       return service.price
@@ -56,6 +61,20 @@ export default {
           : filteredRanges[0]
 
         return service.customPricing.persons.find(i => i.range === range).price
+      }
+
+      return service.price
+    },
+
+    getBookingPeriodPrice (service, providerId, bookingStart) {
+      let start = bookingStart.split(' ')
+
+      if (start[0] in this.pricedCalendarTimeSlots) {
+        if (start[1].substr(0, 5) in this.pricedCalendarTimeSlots[start[0]]) {
+          let slots = this.pricedCalendarTimeSlots[start[0]][start[1].substr(0, 5)].filter(i => i.e === providerId)
+
+          return slots.length ? slots[0].p : service.price
+        }
       }
 
       return service.price

@@ -1,13 +1,18 @@
 <template>
   <div ref="dateTimeRef" class="am-fs-dt__calendar">
     <AmAdvancedSlotCalendar
+      v-if="showCalendar"
       :id="0"
       :slots="calendarEvents"
       :calendar-minimum-date="moment().format('YYYY-MM-DD hh:mm')"
       :calendar-maximum-date="moment().add(1,'year').format('YYYY-MM-DD hh:mm')"
       :time-zone="amCustomize[pageRenderKey][stepRecognition].options.timeZoneVisibility.visibility"
       :end-time="amCustomize[pageRenderKey][stepRecognition].options.endTimeVisibility.visibility"
+      :show-estimated-pricing="stepRecognition === 'rescheduleAppointment' ? amCustomize[pageRenderKey][stepRecognition].options.estimatedPricingVisibility.visibility : false"
+      :show-indicator-pricing="stepRecognition === 'rescheduleAppointment' ? amCustomize[pageRenderKey][stepRecognition].options.indicatorPricingVisibility.visibility : false"
+      :show-slot-pricing="stepRecognition === 'rescheduleAppointment' ? amCustomize[pageRenderKey][stepRecognition].options.slotPricingVisibility.visibility : false"
       :label-slots-selected="labelsDisplay('date_time_slots_selected')"
+      :period-pricing="stepRecognition === 'rescheduleAppointment' ? periodPricing : {}"
       @selected-date="setSelectedDate"
       @selected-time="setSelectedTime"
       @unselect-date="unselectDate"
@@ -41,6 +46,9 @@ let langKey = inject('langKey')
 // * Global Labels
 let amLabels = inject('labels')
 
+// * Plugin Licence
+let licence = inject('licence')
+
 // * Step key name
 let stepName = inject('stepName')
 
@@ -62,10 +70,81 @@ let pageRenderKey = inject('pageRenderKey')
 /*****************
  * Calendar Data *
  ****************/
+let showCalendar = ref(false)
+
+let periodPricing = ref({})
+
+function getCustomPeriodsPricing () {
+  let result = {}
+  let today = moment()
+
+  let current = today.clone()
+
+  for (let i = 0; i <= 31; i++) {
+    let type = current.day() === 6 || current.day() === 0
+      ? 'high'
+      : (current.day() === 1 || current.day() === 2 ? 'low' : 'mid')
+
+    result[current.format('YYYY-MM-DD')] = {
+      type: type,
+      slots: {
+        '09:00': {
+          type: type === 'mid' ? 'low' : type,
+          price: type === 'mid' ? 5 : (type === 'low' ? 5 : 15)
+        },
+        '09:30': {
+          type: type === 'mid' ? 'low' : type,
+          price: type === 'mid' ? 5 : (type === 'low' ? 5 : 15)
+        },
+        '10:00': {
+          type: type,
+          price: type === 'mid' ? 10 : (type === 'low' ? 5 : 15)
+        },
+        '10:30': {
+          type: type,
+          price: type === 'mid' ? 10 : (type === 'low' ? 5 : 15)
+        },
+        '11:00': {
+          type: type,
+          price: type === 'mid' ? 10 : (type === 'low' ? 5 : 15)
+        },
+        '11:30': {
+          type: type,
+          price: type === 'mid' ? 10 : (type === 'low' ? 5 : 15)
+        },
+        '12:00': {
+          type: type === 'mid' ? 'high' : type,
+          price: type === 'mid' ? 15 : (type === 'high' ? 15 : 5)
+        },
+        '12:30': {
+          type: type === 'mid' ? 'high' : type,
+          price: type === 'mid' ? 15 : (type === 'high' ? 15 : 5)
+        },
+      }
+    }
+
+    current.add(1, 'day')
+  }
+
+  return {
+    price: {
+      low: 5,
+      mid: 10,
+      high: 15,
+      uniqueMin: true,
+      uniqueMid: true,
+      uniqueMax: true
+    },
+    dates: result
+  }
+}
+
 let dateTimeRef = ref(null)
 provide('formWrapper', dateTimeRef)
 
 let calendarEvents = ref([])
+
+let calendarEventDate = ref('')
 
 let calendarServiceDuration = ref('0')
 
@@ -100,6 +179,7 @@ let calendarStartDate = ref(moment().format('YYYY-MM-DD'))
 let calendarChangeSideBar = ref(true)
 
 provide('calendarEvents', calendarEvents)
+provide('calendarEventDate', calendarEventDate)
 provide('calendarEventSlots', calendarEventSlots)
 provide('calendarEventBusySlots', calendarEventBusySlots)
 provide('calendarEventSlot', calendarEventSlot)
@@ -124,13 +204,16 @@ function labelsDisplay (label) {
 }
 
 onMounted(() => {
+  periodPricing.value = !licence.isBasic && !licence.isStarter && !licence.isLite ? getCustomPeriodsPricing() : {}
+
+  showCalendar.value = true
 })
 
-function setSelectedDate () {
+function setSelectedDate (value) {
   unselectDate()
 
   for (let i = 0; i < 18; i++) {
-    if (i > 8 && i < 17) {
+    if (i > 8 && i < 13) {
       calendarEventSlots.value.push(`${i < 10 ? '0'+i:i}:00`)
       calendarEventSlots.value.push(`${i < 10 ? '0'+i:i}:30`)
     }
@@ -140,6 +223,8 @@ function setSelectedDate () {
   if (calendarEventSlots.value.length) {
     setSelectedTime(calendarEventSlots.value[0])
   }
+
+  calendarEventDate.value = value
 }
 
 function unselectDate () {
@@ -149,6 +234,8 @@ function unselectDate () {
   calendarEventSlots.value = []
 
   calendarEventSlot.value = ''
+
+  calendarEventDate.value = ''
 }
 
 function setSelectedTime (value) {

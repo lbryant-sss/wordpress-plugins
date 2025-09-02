@@ -5,6 +5,16 @@
     :style="cssVars"
   >
     <div class="am-asi__top">
+      <AmAlert
+        v-if="authError"
+        class="am-asi__top-message am-asi__top-message-error"
+        type="error"
+        :title="authErrorMessage"
+        :description="''"
+        :show-icon="true"
+        :closable="true"
+      ></AmAlert>
+
       <div class="am-asi__header">
         {{ amLabels.access_link_send }}
       </div>
@@ -45,6 +55,22 @@
         {{ amLabels.sign_in }}
       </span>
     </div>
+
+    <div
+      v-if="amSettings.general.googleRecaptcha.enabled && amSettings.roles[cabinetType + 'Cabinet'].googleRecaptcha"
+      id="am-recaptcha"
+      class="am-recaptcha-holder"
+    >
+      <vue-recaptcha
+        ref="recaptchaRef"
+        :size="amSettings.general.googleRecaptcha.invisible ? 'invisible' : null"
+        :load-recaptcha-script="true"
+        :sitekey="amSettings.general.googleRecaptcha.siteKey"
+        @verify="onRecaptchaVerify"
+        @expired="onRecaptchaExpired"
+      >
+      </vue-recaptcha>
+    </div>
   </div>
   <Skeleton v-else :count="4" :center-first="true" :main-class="'am-asi'"></Skeleton>
 </template>
@@ -57,6 +83,7 @@ import {
   computed,
   inject,
 } from 'vue'
+import {VueRecaptcha} from 'vue-recaptcha'
 
 // * Import from Vuex
 import { useStore } from 'vuex'
@@ -72,6 +99,7 @@ import { useColorTransparency } from '../../../../../../assets/js/common/colorMa
 import { formFieldsTemplates } from '../../../../../../assets/js/common/formFieldsTemplates'
 import AmButton from '../../../../../_components/button/AmButton.vue'
 import Skeleton from './Skeleton'
+import AmAlert from "../../../../../_components/alert/AmAlert.vue";
 
 // * Vars
 let store = useStore()
@@ -107,6 +135,37 @@ let amLabels = computed(() => {
   }
   return computedLabels
 })
+
+// * Sign in error alert
+let authError = ref(false)
+let authErrorMessage = ref('')
+
+/*************
+ * Recaptcha *
+ ************/
+
+let recaptchaRef = ref(null)
+
+let recaptchaValid = ref(false)
+
+let recaptchaResponse = ref(null)
+
+function onRecaptchaExpired () {
+  recaptchaValid.value = false
+
+  authError.value = true
+  authErrorMessage.value = amLabels.value.recaptcha_invalid_error
+}
+
+function onRecaptchaVerify (response) {
+  recaptchaValid.value = true
+
+  recaptchaResponse.value = response
+
+  if (amSettings.general.googleRecaptcha.invisible) {
+    reauthorize()
+  }
+}
 
 /********
  * Form *
@@ -164,24 +223,47 @@ let loading = computed(() => {
 function submitForm() {
   authFormRef.value.validate((valid) => {
     if (valid) {
-      store.commit('setLoading', true)
+      if (amSettings.general.googleRecaptcha.enabled && amSettings.roles[cabinetType.value + 'Cabinet'].googleRecaptcha) {
+        if (amSettings.general.googleRecaptcha.invisible) {
+          recaptchaRef.value.execute()
+        } else if (!recaptchaValid.value) {
+          authError.value = true
+          authErrorMessage.value = amLabels.value.recaptcha_error
 
-      httpClient.post(
-        '/users/customers/reauthorize',
-        {
-          email: store.getters['auth/getEmail'],
-          locale: window.localeLanguage[0],
-          cabinetType: cabinetType.value
+          return false
+        } else {
+          reauthorize()
         }
-      ).then(() => {
-        pageKey.value = 'sendAccessLinkProcess'
-      }).catch(() => {
-      }).finally(() => {
-        store.commit('setLoading', false)
-      })
+      } else {
+        reauthorize()
+      }
     } else {
       return false
     }
+  })
+}
+
+function reauthorize() {
+  store.commit('setLoading', true)
+
+  let params = {
+    email: store.getters['auth/getEmail'],
+    locale: window.localeLanguage[0],
+    cabinetType: cabinetType.value
+  }
+
+  if (recaptchaResponse.value !== null) {
+    params.recaptcha = recaptchaResponse.value
+  }
+
+  httpClient.post(
+    '/users/customers/reauthorize',
+    params
+  ).then(() => {
+    pageKey.value = 'sendAccessLinkProcess'
+  }).catch(() => {
+  }).finally(() => {
+    store.commit('setLoading', false)
   })
 }
 

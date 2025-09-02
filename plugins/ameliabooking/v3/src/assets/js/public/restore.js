@@ -10,7 +10,7 @@ import httpClient from "../../../plugins/axios";
 import {settings} from "../../../plugins/settings";
 
 function fixType (item, key) {
-  item[key] = !item[key] ? null : parseInt(item[key])
+  item[key] = (item[key] === undefined || item[key] === null || item[key] === '') ? null : parseInt(item[key])
 }
 
 function fixCacheData (data) {
@@ -67,8 +67,22 @@ function useRestore (store, shortcodeData) {
   let data = 'ameliaCache' in window && window.ameliaCache.length && window.ameliaCache[0] ?
     JSON.parse(window.ameliaCache[0]) : null
 
+  let userClickedBack = false
+
   if (!data || (parseInt(data.request.form.shortcode.counter) !== parseInt(shortcodeData.counter))) {
-    return null
+    let savedData = sessionStorage.getItem('ameliaCacheData')
+    const navEntries = performance.getEntriesByType("navigation");
+    const navType = navEntries && navEntries.length > 0 ? navEntries[0].type : performance.navigation.type;
+    if (savedData && JSON.parse(savedData) && (navType === 'back_forward' || navType === 2)) {
+      data = JSON.parse(savedData)
+      sessionStorage.setItem("ameliaCacheData", null)
+      userClickedBack = true
+    } else {
+      if (savedData) {
+        sessionStorage.setItem("ameliaCacheData", null)
+      }
+      return null
+    }
   }
 
   try {
@@ -110,9 +124,49 @@ function useRestore (store, shortcodeData) {
       store.dispatch('eventEntities/requestEvents', 'upcoming')
     } else {
       store.dispatch('eventEntities/requestEvents')
+
     }
+    store.dispatch('customFields/filterEventCustomFields')
+
   } else {
     store.state.booking = {...data.request.state }
+  }
+
+
+  if (userClickedBack) {
+    if ((data.paymentMethod === 'mollie' || data.paymentMethod === 'barion') && data.bookings) {
+      if (data.packageCustomer) {
+        httpClient.post(
+            '/bookings/delete/remotely/' + data.packageCustomer.id,
+            {
+              skipEventHandler: true,
+              type: 'package',
+              token: data.packageCustomer.token
+            }
+        ).catch(e => {
+          console.log(e.message)
+        })
+      } else {
+        data.bookings.forEach(booking => {
+          httpClient.post(
+              '/bookings/delete/remotely/' + booking.id,
+              {
+                skipEventHandler: true,
+                type: data.type,
+                token: booking.token
+              }
+          ).catch(e => {
+            console.log(e.message)
+          })
+        })
+      }
+    }
+
+    return {
+      result: 'error',
+      steps: data.request.form.steps,
+      sidebar: data.request.form.sidebar,
+    }
   }
 
   if (settings.payments.mollie.cancelBooking && data.status === null) {

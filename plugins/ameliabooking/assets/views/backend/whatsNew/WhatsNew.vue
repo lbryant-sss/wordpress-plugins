@@ -202,24 +202,24 @@ export default {
        isValidEmail: true,
        blogPosts: [],
        changelog: {
-         version: '8.4',
+         version: '8.5',
          starter: {
            feature: [
-               'GooglePay via Square - Expanded payment options through Square integration for greater flexibility',
+             'Option to display dropdowns in first step as separate steps, with customizable step order on Step-by-Step Booking form'
            ],
            improvement: [
-               'Updated Square integration - now works directly within the booking form, without redirecting to the external Square checkout page',
-               'Updated full-calendar library'
+             'Implemented Google reCAPTCHA on the Employee and Customer login panels to enhance security and prevent bot activity',
+             'Implemented “Show Employee on site” option - Allows hiding employees on the frontend while keeping them available for backend booking by admins or managers',
+             'Added quick status change option via dropdown in Frontend Employee Panel',
+             'Added additional placeholders to use with Google Analytics'
            ],
            translations: [
-               'Updated Korean translation'
            ],
            bugfix: [
-             'Fixed issue with preselecting an event via URL that includes a popup',
-             'Fixed issue with booking group appointments when creating a new customer',
-             'Fixed issue with event name translation on Congratulations',
-             'Fixed issue with left alignment when the alignment is changed in notifications',
-             'Fixed issue with wrong Attachment upload path in General settings'
+             'Fixed issue with additional white space on the Events form on smaller/mobile screen',
+             'Fixed issue with pagination on the Events list form',
+             'Fixed issue with keyboard navigation on SBS',
+             'Fixed issue with the form when service preselected in shortcode has the ‘Show service on site’ option disabled'
            ],
            other: [
              'Other small bug fixes and stability improvements'
@@ -227,35 +227,40 @@ export default {
          },
          basic: {
            feature: [
+             'Mailchimp Integration - Direct integration with Mailchimp allows users to automatically sync customer data with mailing lists'
            ],
            improvement: [
-             'Updated Stripe integration for better performance'
            ],
            translations: [
            ],
            bugfix: [
-             'Fixed the issue with coupon and Apple/Google Pay (Booking form)',
-             'Fixed issue with Woo variable products connected to Amelia services/events/packages',
-             'Fixed issue with admin booking ignoring limit settings',
-             'Fixed issue with Square and WooCommerce when the URL has a hashtag',
-             'Fixed issue with duplicating events with Custom pricing by date range',
-             'Fixed issue with CSV file of exported attendees and translations',
-             'Fixed the Select placeholder in custom fields is not translated'
+             'Fixed issue with incorrect extra quantity calculation on invoices for bookings with multiple persons when "Multiply by the number of persons" is disabled',
+             'Fixed issue with Issued date for invoices',
+             'Fixed issue with tax calculation for Extras when Excluded taxes are enabled',
+             'Fixed issue with appointment price and due amount placeholders on WooCommerce pages',
+             'Fixed issue with time zone discrepancy',
+             'Fixed issues with Stripe e-wallet/Link payments',
+             'Fixed issue with payment status in exported attendees CSV and WooCommerce',
+             'Fixed issue with going back from WooCommerce and Mollie',
+             'Fixed issue with price on Invoices when Included tax option is enabled and coupon is used'
            ],
            other: [
            ]
          },
          pro: {
            feature: [
-               'Custom pricing by the number of people - Offer flexible service pricing that automatically adjusts based on the number of people in one booking'
+             'Pricing by Specific Date & Time - Set different service prices for holidays, certain months, or custom date ranges',
+             'Pricing by Days of the Week - Apply different rates for weekdays, weekends, or specific hours'
            ],
            improvement: [
-               'Implement option to add coupon when booking package form Manage Package page'
+             'When a package purchase is cancelled (e.g., due to failed WooCommerce payment), all appointments within the package are now automatically cancelled'
            ],
            translations: [
            ],
            bugfix: [
-             'Fixed issue with missing Close button when booking events on waiting list if customer panel is disabled'
+             'Fixed issue with using coupons for Cart purchases',
+             'Fixed issue with booking/editing package appointments on the back-end with empty customer custom fields',
+             'Fixed issue with booking only the first service in the package'
            ],
            other: [
            ]
@@ -264,11 +269,11 @@ export default {
            feature: [
            ],
            improvement: [
+             'Added option to set custom API key expiration period when creating a key'
            ],
            translations: [
            ],
            bugfix: [
-               'Fixed issue with booking appointments via API when extras are not sent'
            ],
            other: [
            ]

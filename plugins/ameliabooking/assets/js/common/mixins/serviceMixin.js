@@ -1,4 +1,5 @@
 import servicePriceMixin from './servicePriceMixin'
+import moment from 'moment'
 
 export default {
   mixins: [
@@ -12,11 +13,15 @@ export default {
       let customPricing = null
 
       if (typeof data === 'undefined' || data === null || data === '') {
-        customPricing = {enabled: null, durations: {}, persons: {}}
+        customPricing = {enabled: null, durations: {}, persons: {}, periods: {default: [], custom: []}}
       } else if (typeof data === 'object') {
         if (Array.isArray(data.durations)) {
           if (!('persons' in data)) {
             data.persons = []
+          }
+
+          if (!('periods' in data)) {
+            data.periods = {default: [], custom: []}
           }
 
           if (data.enabled === true) {
@@ -36,6 +41,8 @@ export default {
       }
 
       customPricing.persons = 'persons' in customPricing ? customPricing.persons : []
+
+      customPricing.periods = 'periods' in customPricing ? customPricing.periods : {default: [], custom: []}
 
       let persons = []
 
@@ -69,10 +76,16 @@ export default {
         })
       })
 
+      customPricing.periods.custom.forEach((item) => {
+        item.dates.start = moment(item.dates.start).toDate()
+        item.dates.end = moment(item.dates.end).toDate()
+      })
+
       return {
         enabled: customPricing.enabled,
         durations: durations,
-        persons: persons
+        persons: persons,
+        periods: customPricing.periods
       }
     },
 
@@ -103,15 +116,59 @@ export default {
         })
       }
 
+      let defaultPeriods = []
+
+      customPricing.periods.default.filter(i => i.days.length).forEach((item) => {
+        item.ranges.forEach((range) => {
+          if (range.from === null) {
+            range.from = '00:00'
+          }
+
+          if (range.to === null) {
+            range.to = '24:00'
+          }
+        })
+
+        defaultPeriods.push(item)
+      })
+
+      let customPeriods = []
+
+      customPricing.periods.custom.filter(i => i.dates.start && i.dates.end).forEach((item) => {
+        item.ranges.forEach((range) => {
+          if (range.from === null) {
+            range.from = '00:00'
+          }
+
+          if (range.to === null) {
+            range.to = '24:00'
+          }
+        })
+
+        item.dates.start = moment(item.dates.start).format('YYYY-MM-DD')
+        item.dates.end = moment(item.dates.end).format('YYYY-MM-DD')
+
+        customPeriods.push(item)
+      })
+
       let enabled = null
 
       if (customPricing && this.isDurationPricingEnabled(customPricing)) {
         enabled = 'duration'
       } else if (customPricing && this.isPersonPricingEnabled(customPricing)) {
         enabled = 'person'
+      } else if (customPricing && this.isPeriodPricingEnabled(customPricing) &&
+        (defaultPeriods.length || customPeriods.length)
+      ) {
+        enabled = 'period'
       }
 
-      return JSON.stringify({enabled: enabled, durations: durations, persons: persons})
+      return JSON.stringify({
+        enabled: enabled,
+        durations: durations,
+        persons: persons,
+        periods: {default: defaultPeriods, custom: customPeriods}
+      })
     }
   }
 }

@@ -6,7 +6,7 @@ Donate link: https://wpamelia.com/
 Requires at least: 5.3
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.2.31
+Stable tag: 1.2.32
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -268,6 +268,10 @@ When you apply a new style (change colors and font styles for the booking form) 
 
 Some hosting providers don’t allow 3rd party SMTP settings (Gmail, Yahoo, Outlook, etc.) to be saved, and are intentionally blocking them because they use their own. If you configured the Notification Settings, and your emails are not being sent, please contact your hosting provider, and ask them if they are blocking the SMTP.
 
+**Where do I report security bugs found in this plugin?**
+
+Please report security bugs found in the source code of the Amelia plugin through the [Patchstack Vulnerability Disclosure Program](https://patchstack.com/database/vdp/911b6d06-79cf-4f64-9416-c38ebe2bf236). The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin.
+
 
 == Installation ==
 
@@ -287,6 +291,12 @@ Installing Amelia Lite WordPress Booking Plugin is as easy as 1-2-3!
 
 
 == Changelog ==
+V1.2.32
+* BugFix: Fixed issue with additional white space on the Events form on smaller/mobile screen
+* BugFix: Fixed issue with pagination on the Events list form
+* BugFix: Fixed issue with keyboard navigation on Step-by-step Booking form
+* Other small bug fixes and stability improvements
+
 V1.2.31
 * Small bug fixes and stability improvements
 

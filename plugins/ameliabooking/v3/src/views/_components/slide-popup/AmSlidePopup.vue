@@ -20,7 +20,7 @@
           <span class="am-icon-close" @click="emits('update:visibility', false)" />
         </div>
         <slot></slot>
-        <div class="am-slide-popup__block-footer">
+        <div v-if="props.footerVisibility" class="am-slide-popup__block-footer">
           <slot name="footer"></slot>
         </div>
       </div>
@@ -67,6 +67,10 @@ let props = defineProps({
   customCss: {
     type: Object,
     default: () => {}
+  },
+  footerVisibility: {
+    type: Boolean,
+    default: true
   }
 })
 

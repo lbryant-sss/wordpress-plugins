@@ -338,7 +338,7 @@ let employees = computed(() => {
     return unfilteredEmployees.filter(item =>
       availableEmployeesIds.indexOf(item.id) !== -1 &&
       employeesIds.indexOf(item.id) !== -1 &&
-      (store.getters['entities/getShowHidden'] || item.status === 'visible')
+      (store.getters['entities/getShowHidden'] || (item.status === 'visible' && item.show))
     )
   }
 
@@ -465,6 +465,7 @@ function bookAppointment () {
     serviceId: parseInt(selectedServiceId.value),
     group: 1,
     timeZone: store.getters['cabinet/getTimeZone'],
+    structured: true,
     page: 'cabinet'
   }
 

@@ -19,7 +19,9 @@
         @trigger-close="closeAlert"
       >
         <template #title>
-          <span class="am-icon-checkmark-circle-full"></span> {{ alertMessage }}
+          <span v-if="alertType === 'success'" class="am-icon-checkmark-circle-full"></span>
+          <span v-if="alertType === 'error'" class="am-icon-clearable"></span>
+          {{ alertMessage }}
         </template>
       </AmAlert>
 
@@ -57,6 +59,7 @@
           @canceled="getAppointments"
           @booked="getAppointments"
           @edit-appointment="editAppointment"
+          @status-change="appointmentStatusChange"
         ></AppointmentsList>
         <EmptyState
           v-else-if="!appointmentVisibility"
@@ -289,6 +292,7 @@ function getAppointments (passedData = null, page = 1) {
     if (passedData && 'message' in passedData) {
       alertVisibility.value = true
       alertMessage.value = passedData.message
+      alertType.value = 'success'
 
       if (pageContainer.value && alertContainer.value) {
         setTimeout(function () {
@@ -406,6 +410,7 @@ let appointmentVisibility = ref(false)
 function saveAppointmentCallback () {
   alertVisibility.value = true
   alertMessage.value = amLabels.value.appointment_saved
+  alertType.value = 'success'
 
   if (pageContainer.value && alertContainer.value) {
     setTimeout(function () {
@@ -416,6 +421,13 @@ function saveAppointmentCallback () {
   getAppointments()
 
   closeAppointment()
+}
+
+function appointmentStatusChange (message, status) {
+  alertMessage.value = message
+  alertType.value = status
+
+  alertVisibility.value = true
 }
 
 function addAppointment () {
@@ -490,6 +502,12 @@ export default {
             font-size: 28px;
             line-height: 1;
             color: var(--am-c-alerts-bgr);
+          }
+
+          .am-icon-clearable {
+            font-size: 28px;
+            line-height: 1;
+            color: var(--am-c-alerte-bgr);
           }
         }
       }

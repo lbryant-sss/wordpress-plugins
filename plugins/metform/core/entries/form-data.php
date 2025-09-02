@@ -176,28 +176,31 @@ class Form_Data
 
                         if (isset($value['widgetType']) && $value['widgetType'] == 'mf-image-select') {
                             $selected_value = isset($form_data[$key]) ? $form_data[$key] : '';
-                            $option_text = '';
-                            $option_value = '';
+                            $option_texts =  [];
+                            $option_values = [];
                         
+                            // Handle multiselect (comma-separated values)
+                            $selected_values = is_array($selected_value) ? $selected_value : explode(',', $selected_value);
+
                             foreach ($map_data[$key]['mf_input_list'] as $item) {
-                                if (isset($item['mf_input_option_value']) && $item['mf_input_option_value'] == $selected_value ) {
+                                if (isset($item['mf_input_option_value']) && in_array($item['mf_input_option_value'], $selected_values)) {
                                     if (isset($item['mf_image_select_title']) && $item['mf_image_select_title'] !== '') {
                                         // If mf_image_select_title is not empty, use it in the option text.
-                                        $option_text = $item['mf_image_select_title'] . ' - ' . $item['mf_input_option_value'];
+                                        $option_texts[] = $item['mf_image_select_title'] . ' - ' . $item['mf_input_option_value'];
                                     } else {
                                         // If mf_image_select_title is empty, use mf_input_option_value.
-                                        $option_text = $item['mf_input_option_value'];
+                                        $option_texts[] = $item['mf_input_option_value'];
                                     }
                                     
-                                    $option_value = $item['mf_input_option_value'];
+                                    $option_values[] = $item['mf_input_option_value'];
                         
                                 }
                             }
                         
                             if (isset($form_settings['mf_field_name_show']) && $form_settings['mf_field_name_show'] == 1) {
-                                echo "<td>" . esc_html($option_text) . "</td>";
+                                echo "<td>" . esc_html(implode(', ', $option_texts)) . "</td>";
                             } else {
-                                echo "<td>" . esc_html($option_value) . "</td>";
+                                echo "<td>" . esc_html(implode(', ', $option_values)) . "</td>";
                             }
                         }                      
                         

@@ -112,7 +112,7 @@
 
             <!-- Duration and Price -->
             <template
-              v-for="(item, durationIndex) in employee.serviceList[category.id][service.id].customPricing.enabled !== 'person'
+              v-for="(item, durationIndex) in employee.serviceList[category.id][service.id].customPricing.enabled === 'duration'
                 ? employee.serviceList[category.id][service.id].customPricing.durations
                 : []"
               :key="durationIndex"
@@ -152,14 +152,48 @@
               <!-- /Price -->
             </template>
 
-            <!-- Duration and Price -->
+            <div
+              v-if="employee.serviceList[category.id][service.id].customPricing.enabled === 'period' || employee.serviceList[category.id][service.id].customPricing.enabled === null"
+              class="am-caes__service-content__item"
+              :class="props.responsiveClass"
+            >
+              <div class="am-caes__service-content__text">
+                {{ amLabels.duration }}
+              </div>
+              <div class="am-caes__service-content__inner am-caes__service-content__disabled">
+                {{ useSecondsToDuration(service.duration, amLabels.h, amLabels.min) }}
+              </div>
+            </div>
+            <!-- /Duration -->
+
+            <!-- Price -->
+            <div
+              v-if="employee.serviceList[category.id][service.id].customPricing.enabled === 'period' || employee.serviceList[category.id][service.id].customPricing.enabled === null"
+              class="am-caes__service-content__item"
+              :class="props.responsiveClass"
+            >
+              <div class="am-caes__service-content__text">
+                {{ amLabels.price }}
+              </div>
+              <AmInput
+                v-model="employee.serviceList[category.id][service.id].price"
+                class="am-caes__service-content__inner"
+                placeholder=""
+                :aria-label="amLabels.price"
+                size="small"
+                :is-money="true"
+              />
+            </div>
+            <!-- /Price -->
+
+            <!-- Persons and Price -->
             <template
               v-for="(item, personIndex) in employee.serviceList[category.id][service.id].customPricing.enabled === 'person'
                 ? employee.serviceList[category.id][service.id].customPricing.persons
                 : []"
               :key="personIndex"
             >
-              <!-- Duration -->
+              <!-- Persons -->
               <div
                 class="am-caes__service-content__item"
                 :class="props.responsiveClass"
@@ -171,7 +205,7 @@
                   {{ item.from }} - {{ personIndex }}
                 </div>
               </div>
-              <!-- /Duration -->
+              <!-- /Persons -->
 
               <!-- Price -->
               <div
@@ -191,8 +225,117 @@
               </div>
               <!-- /Price -->
             </template>
-            <!-- /Duration and Price -->
+            <!-- /Persons and Price -->
+
           </div>
+
+          <!-- Periods and Price -->
+          <template v-if="employee.serviceList[category.id][service.id].customPricing.enabled === 'period' && !licence.isLite && !licence.isStarter && !licence.isBasic">
+            <el-tabs
+              class="am-caes__service-tabs"
+              :stretch="true"
+            >
+              <el-tab-pane
+                v-if="employee.serviceList[category.id][service.id].customPricing.periods.default.length"
+                :label="amLabels.week_days"
+              >
+                <div
+                  v-for="(periodsItem, periodsIndex) in employee.serviceList[category.id][service.id].customPricing.periods.default"
+                  :key="periodsIndex"
+                  class="am-caes__service__week"
+                >
+                  <div class="am-caes__service__week-days">
+                    <div
+                      v-for="(day, i) in weekDays"
+                      :key="i"
+                      class="am-caes__service__week-day"
+                      :class="{'am-caes__service__week-day-selected' : periodsItem.days.indexOf(day.value) !== -1}"
+                    >
+                      <span>{{ day.label }}</span>
+                    </div>
+                  </div>
+
+                  <div
+                    class="am-caes__service__week-periods"
+                  >
+                    <div
+                      v-for="(rangeItem, rangeIndex) in periodsItem.ranges"
+                      :key="rangeIndex"
+                      class="am-caes__service__week-periods-item"
+                    >
+                      <div
+                        class="am-caes__service__week-periods-item-range"
+                      >
+                        <span>{{ rangeItem.from }}</span> - <span>{{ rangeItem.to }}</span>
+                      </div>
+
+                      <!-- Price -->
+                      <div
+                        :class="props.responsiveClass"
+                        class="am-caes__service__week-periods-item-price"
+                      >
+                        <AmInput
+                          v-model="rangeItem.price"
+                          placeholder=""
+                          :aria-label="amLabels.price"
+                          size="small"
+                          :is-money="true"
+                        />
+                      </div>
+                      <!-- /Price -->
+                    </div>
+                  </div>
+                </div>
+              </el-tab-pane>
+
+              <el-tab-pane
+                v-if="employee.serviceList[category.id][service.id].customPricing.periods.custom.length"
+                :label="amLabels.custom_days"
+              >
+                <div
+                  v-for="(periodsItem, periodsIndex) in employee.serviceList[category.id][service.id].customPricing.periods.custom"
+                  :key="periodsIndex"
+                  class="am-caes__service__week"
+                >
+                  <div class="am-caes__service__date">
+                    <span class="am-icon-calendar"></span>{{ getFrontedFormattedDate(periodsItem.dates.start) }} - {{ getFrontedFormattedDate(periodsItem.dates.end) }}
+                  </div>
+
+                  <div
+                    class="am-caes__service__week-periods"
+                  >
+                    <div
+                      v-for="(rangeItem, rangeIndex) in periodsItem.ranges"
+                      :key="rangeIndex"
+                      class="am-caes__service__week-periods-item"
+                    >
+                      <div
+                        class="am-caes__service__week-periods-item-range"
+                      >
+                        <span>{{ rangeItem.from }}</span> - <span>{{ rangeItem.to }}</span>
+                      </div>
+
+                      <!-- Price -->
+                      <div
+                        :class="props.responsiveClass"
+                        class="am-caes__service__week-periods-item-price"
+                      >
+                        <AmInput
+                          v-model="rangeItem.price"
+                          placeholder=""
+                          :aria-label="amLabels.price"
+                          size="small"
+                          :is-money="true"
+                        />
+                      </div>
+                      <!-- /Price -->
+                    </div>
+                  </div>
+                </div>
+              </el-tab-pane>
+            </el-tabs>
+          </template>
+          <!-- /Periods and Price -->
         </el-collapse-item>
       </el-collapse>
     </el-collapse-item>
@@ -208,7 +351,12 @@ import { computed, inject, onMounted, ref } from 'vue'
 import { useStore } from 'vuex'
 
 // * Composables
-import { useSecondsToDuration } from '../../../../../../assets/js/common/date'
+import {
+  getFrontedFormattedDate,
+  useSecondsToDuration,
+  weekDaysLocale,
+  weekDaysShortLocale,
+} from '../../../../../../assets/js/common/date'
 import { useColorTransparency } from '../../../../../../assets/js/common/colorManipulation'
 
 // * Dedicated components
@@ -216,6 +364,7 @@ import AmCheckbox from '../../../../../_components/checkbox/AmCheckbox.vue'
 import AmInputNumber from '../../../../../_components/input-number/AmInputNumber.vue'
 import AmInput from "../../../../../_components/input/AmInput.vue";
 import IconComponent from "../../../../../_components/icons/IconComponent.vue";
+import { shortLocale } from "../../../../../../plugins/settings";
 
 // * Props
 const props = defineProps({
@@ -224,6 +373,9 @@ const props = defineProps({
     default: '',
   },
 })
+
+// * Plugin Licence
+let licence = inject('licence')
 
 // * Store
 let store = useStore()
@@ -237,6 +389,16 @@ let iconSearch = {
   components: {IconComponent},
   template: `<IconComponent icon="search"/>`
 }
+
+let weekDays = ref([
+  {label: 'Mon', labelFull: 'Monday', value: 0},
+  {label: 'Tue', labelFull: 'Tuesday', value: 1},
+  {label: 'Wed', labelFull: 'Wednesday', value: 2},
+  {label: 'Thu', labelFull: 'Thursday', value: 3},
+  {label: 'Fri', labelFull: 'Friday', value: 4},
+  {label: 'Sat', labelFull: 'Saturday', value: 5},
+  {label: 'Sun', labelFull: 'Sunday', value: 6}
+])
 
 // * Categories Checkbox
 let categoriesCheckbox = ref({})
@@ -280,6 +442,16 @@ function  toggleCategoryServices(value, category) {
 }
 
 onMounted(() => {
+  if (shortLocale) {
+    weekDays.value = weekDays.value.map((day, i) => {
+      return {
+        ...day,
+        label: weekDaysShortLocale[i],
+        labelFull: weekDaysLocale[i],
+      }
+    })
+  }
+
   categories.value.forEach((category) => {
     categoriesCheckbox.value[category.id] = category.serviceList.filter(service => employee.value.serviceList[category.id][service.id].enabled).length !== 0
   })
@@ -291,9 +463,12 @@ let amColors = inject('amColors')
 let cssVars = computed(() => {
   return {
     '--am-c-caes-primary': amColors.value.colorPrimary,
+    '--am-c-caes-primary-op03': useColorTransparency(amColors.value.colorPrimary, 0.3),
     '--am-c-caes-text': amColors.value.colorMainText,
     '--am-c-caes-text-op03': useColorTransparency(amColors.value.colorMainText, 0.03),
+    '--am-c-caes-text-op50': useColorTransparency(amColors.value.colorMainText, 0.5),
     '--am-c-caes-inp-bgr-op03': useColorTransparency(amColors.value.colorInpBgr, 0.03),
+    '--am-c-caes-border': amColors.value.colorInpBorder,
   }
 })
 </script>
@@ -363,6 +538,10 @@ export default {
       background-color: var(--am-c-main-bgr);
       border-radius: 8px;
 
+      &.is-active {
+        box-shadow: 0 0 0 1px var(--am-c-caes-primary);
+      }
+
       &-header {
         display: flex;
         align-items: center;
@@ -430,6 +609,98 @@ export default {
           box-shadow: 0 0 0 1px var(--am-c-inp-border);
           cursor: not-allowed;
         }
+      }
+
+      &-tabs {
+        margin-top: 16px;
+        padding: 8px 24px 0;
+        border-radius: 8px;
+        background-color: var(--am-c-caes-text-op03);
+      }
+
+      &__week:not(:last-child) {
+        border-bottom: 1px solid var(--am-c-inp-border);
+      }
+
+      &__week {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        margin-bottom: 10px;
+
+        &-days {
+          display: flex;
+          flex-wrap: nowrap;
+          gap: 6px;
+        }
+
+        &-day {
+          display: inline-flex;
+          flex: 1;
+          align-items: center;
+          justify-content: center;
+          padding: 4px 0;
+          font-weight: 400;
+          font-size: 15px;
+          line-height: 24px;
+          color: var(--am-c-main-text);
+          background-color: var(--am-c-main-bgr);
+          border: 1px solid var(--am-c-caes-border);
+          border-radius: 4px;
+
+          &-selected {
+            background-color: var(--am-c-caes-primary);
+            border-color: var(--am-c-caes-primary);
+            color: var(--am-c-main-bgr);
+          }
+        }
+
+        &-periods {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          width: 100%;
+          padding-bottom: 10px;
+
+          &-item {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+
+            &-range {
+              display: flex;
+              flex: 1 1 50%;
+              padding: 4px 10px;
+              color: var(--am-c-caes-text-op50);
+              background-color: var(--am-c-main-bgr);
+              box-shadow: 0 0 0 1px var(--am-c-inp-border);
+              border-radius: 6px;
+            }
+
+            &-price {
+              display: flex;
+              flex: 1 1 50%;
+            }
+          }
+        }
+      }
+
+      &__date {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 6px;
+        width: 100%;
+        padding: 4px 10px;
+        background-color: var(--am-c-main-bgr);
+        box-shadow: 0 0 0 1px var(--am-c-inp-border);
+        color: var(--am-c-caes-text-op50);
+        border-radius: 6px;
+
+         span {
+           font-size: 24px;
+         }
       }
     }
   }

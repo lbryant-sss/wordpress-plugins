@@ -1,1 +1,0 @@
-wpJsonpAmeliaBookingPlugin([23],{1072:function(n,e){n.exports={render:function(){var n=this.$createElement;return(this._self._c||n)("div")},staticRenderFns:[]}},1608:function(n,e,t){var l=t(90)(null,t(1072),!1,null,null,null);n.exports=l.exports}});

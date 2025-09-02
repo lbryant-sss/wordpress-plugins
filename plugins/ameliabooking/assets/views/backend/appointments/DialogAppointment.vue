@@ -467,6 +467,7 @@
                     }"
                     @update:fromPage="changedMonth"
                     @input="dateSelected"
+                    :attributes="attributes"
                   >
                   </v-date-picker>
                   <img :src="$root.getUrl+'public/img/oval-spinner.svg'" class="svg-amelia is-spinner is-spinner-right"/>
@@ -635,34 +636,34 @@
                     </el-col>
                   </el-row>
                 </div>
-                <div class="total">
-                  <el-row :gutter="10">
-                    <el-col :span="14" class="align-right">{{ $root.labels.price }}:</el-col>
-                    <el-col :span="10" class="align-right ">{{ getFormattedPrice(appointment.serviceTotalPrice) }}
-                    </el-col>
-                  </el-row>
-                  <el-row :gutter="10">
-                    <el-col :span="14" class="align-right">{{ $root.labels.extras }}:</el-col>
-                    <el-col :span="10" class="align-right ">{{ getFormattedPrice(appointment.extrasTotalPrice) }}
-                    </el-col>
-                  </el-row>
-                  <el-row :gutter="10" v-if="appointment.taxTotalPrice">
-                    <el-col :span="14" class="align-right">{{ $root.labels.tax }}:</el-col>
-                    <el-col :span="10" class="align-right ">{{ getFormattedPrice(appointment.taxTotalPrice) }}
-                    </el-col>
-                  </el-row>
-                  <el-row :gutter="10" v-if="appointment.discountTotalPrice">
-                    <el-col :span="14" class="align-right">{{ $root.labels.discount }}:</el-col>
-                    <el-col :span="10" class="align-right ">{{ getFormattedPrice(appointment.discountTotalPrice) }}
-                    </el-col>
-                  </el-row>
-                  <el-row class="am-strong" :gutter="10">
-                    <el-col :span="14" class="align-right">{{ $root.labels.total }}:</el-col>
-                    <el-col :span="10" class="align-right ">
-                      {{ getFormattedPrice(appointment.serviceTotalPrice + appointment.extrasTotalPrice - appointment.discountTotalPrice + appointment.taxTotalPrice) }}
-                    </el-col>
-                  </el-row>
-                </div>
+<!--                <div class="total">-->
+<!--                  <el-row :gutter="10">-->
+<!--                    <el-col :span="14" class="align-right">{{ $root.labels.price }}:</el-col>-->
+<!--                    <el-col :span="10" class="align-right ">{{ getFormattedPrice(appointment.serviceTotalPrice) }}-->
+<!--                    </el-col>-->
+<!--                  </el-row>-->
+<!--                  <el-row :gutter="10">-->
+<!--                    <el-col :span="14" class="align-right">{{ $root.labels.extras }}:</el-col>-->
+<!--                    <el-col :span="10" class="align-right ">{{ getFormattedPrice(appointment.extrasTotalPrice) }}-->
+<!--                    </el-col>-->
+<!--                  </el-row>-->
+<!--                  <el-row :gutter="10" v-if="appointment.taxTotalPrice">-->
+<!--                    <el-col :span="14" class="align-right">{{ $root.labels.tax }}:</el-col>-->
+<!--                    <el-col :span="10" class="align-right ">{{ getFormattedPrice(appointment.taxTotalPrice) }}-->
+<!--                    </el-col>-->
+<!--                  </el-row>-->
+<!--                  <el-row :gutter="10" v-if="appointment.discountTotalPrice">-->
+<!--                    <el-col :span="14" class="align-right">{{ $root.labels.discount }}:</el-col>-->
+<!--                    <el-col :span="10" class="align-right ">{{ getFormattedPrice(appointment.discountTotalPrice) }}-->
+<!--                    </el-col>-->
+<!--                  </el-row>-->
+<!--                  <el-row class="am-strong" :gutter="10">-->
+<!--                    <el-col :span="14" class="align-right">{{ $root.labels.total }}:</el-col>-->
+<!--                    <el-col :span="10" class="align-right ">-->
+<!--                      {{ getFormattedPrice(appointment.serviceTotalPrice + appointment.extrasTotalPrice - appointment.discountTotalPrice + appointment.taxTotalPrice) }}-->
+<!--                    </el-col>-->
+<!--                  </el-row>-->
+<!--                </div>-->
               </div>
               <div
                 v-else-if="appointment.serviceId && appointment.providerId && appointment.extrasCount === 0"
@@ -1036,6 +1037,10 @@
         serviceSpinnerActive: false,
         statusMessage: '',
         loadingTimeSlots: false,
+        pricedSlots: {},
+        pricedCalendarTimeSlots: {},
+        pricedOccupiedTimeSlots: {},
+        attributes: [],
         payment: {
           amount: 0,
           gateway: 'onSite'
@@ -2108,7 +2113,13 @@
                   (booking.duration === null ? providerService.duration : booking.duration) !== savedBooking.duration &&
                   $this.isDurationPricingEnabled(service.customPricing)
 
-                let providerServicePrice = $this.getBookingServicePrice(providerService, booking.duration, booking.persons)
+                let providerServicePrice = $this.getBookingServicePrice(
+                  providerService,
+                  booking.duration,
+                  booking.persons,
+                  $this.appointment.providerId,
+                  $this.appointment.bookingStart
+                )
 
                 let priceData = {
                   price: booking.id
@@ -2261,7 +2272,8 @@
                 : (this.appointment.selectedDate && this.appointment.selectedPeriod && this.appointment.selectedPeriod.time ? moment(this.getBookingStart(), 'YYYY-MM-DD HH:mm').subtract('1', 'days').format('YYYY-MM-DD HH:mm') : null),
               endDateTime: this.endDateTime,
               page: 'appointments',
-              persons: this.packageCustomer || !persons ? 1 : persons
+              persons: this.packageCustomer || !persons ? 1 : persons,
+              structured: true
             })
           })
             .then(response => {
@@ -2294,13 +2306,46 @@
                 ? this.getConvertedTimeSlots(response.data.data.occupied)
                 : response.data.data.occupied
 
-              if (appointment.providerId) {
-                this.setBookedTimeSlots(availableSlots, availableSlots, false)
+              let unstructuredTimeSlots = {}
 
-                this.setBookedTimeSlots(occupiedSlots, availableSlots, true)
+              Object.keys(availableSlots).forEach((date) => {
+                unstructuredTimeSlots[date] = {}
+
+                Object.keys(availableSlots[date]).forEach((time) => {
+                  unstructuredTimeSlots[date][time] = []
+
+                  availableSlots[date][time].forEach((slot) => {
+                    unstructuredTimeSlots[date][time].push([slot.e, slot.l].concat('c' in slot ? [slot.c, slot.s, slot.d] : []))
+                  })
+                })
+              })
+
+              let unstructuredOccupiedTimeSlots = {}
+
+              Object.keys(occupiedSlots).forEach((date) => {
+                unstructuredOccupiedTimeSlots[date] = {}
+
+                Object.keys(occupiedSlots[date]).forEach((time) => {
+                  unstructuredOccupiedTimeSlots[date][time] = []
+
+                  occupiedSlots[date][time].forEach((slot) => {
+                    unstructuredOccupiedTimeSlots[date][time].push([slot.e, slot.l].concat('c' in slot ? [slot.c, slot.s, slot.d] : []))
+                  })
+                })
+              })
+
+              this.pricedCalendarTimeSlots = availableSlots
+              this.pricedOccupiedTimeSlots = occupiedSlots
+
+              // this.setPeriodsPricing(appointment.serviceId)
+
+              if (appointment.providerId) {
+                this.setBookedTimeSlots(unstructuredTimeSlots, unstructuredTimeSlots, false)
+
+                this.setBookedTimeSlots(unstructuredOccupiedTimeSlots, unstructuredTimeSlots, true)
               }
 
-              callback(availableSlots, occupiedSlots)
+              callback(unstructuredTimeSlots, unstructuredOccupiedTimeSlots)
 
               this.dialogLoading = false
               this.loadingTimeSlots = false
@@ -2310,6 +2355,118 @@
               this.loadingTimeSlots = false
             })
         }
+      },
+
+      setPeriodsPricing (serviceId) {
+        let employeesPrices = {}
+
+        this.options.entities.employees.forEach((employee) => {
+          let service = employee.serviceList.find(i => i.id === parseInt(serviceId))
+
+          employeesPrices[employee.id] = service.price
+        })
+
+        let result = {}
+
+        Object.keys(this.pricedCalendarTimeSlots).forEach((date) => {
+          result[date] = {slots: {}}
+
+          Object.keys(this.pricedCalendarTimeSlots[date]).forEach((time) => {
+            let haveHigh = false
+
+            let haveLow = false
+
+            let haveMid = false
+
+            let minPrice = null
+
+            let maxPrice = null
+
+            this.pricedCalendarTimeSlots[date][time].forEach((i) => {
+              let price = i.p === null ? employeesPrices[i.e] : i.p
+
+              if (price === employeesPrices[i.e]) {
+                haveMid = true
+              } else if (price < employeesPrices[i.e]) {
+                haveLow = true
+              } else if (price > employeesPrices[i.e]) {
+                haveHigh = true
+              }
+
+              if (minPrice === null || price < minPrice) {
+                minPrice = price
+              }
+
+              if (maxPrice === null || price > maxPrice) {
+                maxPrice = price
+              }
+            })
+
+            result[date].slots[time] = {
+              type: haveLow && !haveHigh && !haveMid ? 'low' : (haveHigh && !haveLow && !haveMid ? 'high' : 'mid'),
+              price: minPrice === maxPrice ? minPrice : null
+            }
+          })
+
+          result[date].price = Object.values(result[date].slots).filter(i => i.price === null).length === 0
+
+          let types = Object.values(result[date].slots).map(i => i.type)
+
+          if (types.filter(i => i === 'low').length === types.length) {
+            result[date].type = 'low'
+          } else if (types.filter(i => i === 'high').length === types.length) {
+            result[date].type = 'high'
+          } else {
+            result[date].type = 'mid'
+          }
+        })
+
+        this.pricedSlots = result
+
+        let attributes = [
+          {
+            highlight: {
+              key: 'low',
+              backgroundColor: 'rgba(196, 255, 201, 1)'
+            },
+            dates: []
+          },
+          {
+            highlight: {
+              key: 'mid',
+              backgroundColor: 'rgba(196, 235, 255, 1)'
+            },
+            dates: []
+          },
+          {
+            highlight: {
+              key: 'high',
+              backgroundColor: 'rgba(255, 196, 196, 1)'
+            },
+            dates: []
+          }
+        ]
+
+        Object.keys(this.pricedSlots).forEach((date) => {
+          switch (this.pricedSlots[date].type) {
+            case 'low':
+              attributes[0].dates.push(moment(date).toDate())
+
+              break
+
+            case 'mid':
+              attributes[1].dates.push(moment(date).toDate())
+
+              break
+
+            case 'high':
+              attributes[2].dates.push(moment(date).toDate())
+
+              break
+          }
+        })
+
+        this.attributes = attributes
       },
 
       dateSelected () {
@@ -2498,6 +2655,9 @@
       getSlotLabel (item) {
         let suffix = ''
 
+        // price in label
+        // let price = ''
+
         if (this.appointment.providerId && this.appointment.selectedDate) {
           let selectedDateString = this.getStringFromDate(this.appointment.selectedDate)
 
@@ -2510,7 +2670,15 @@
           ) {
             suffix = ' <span style="float: right; font-style: italic;">' + this.$root.labels.booked + '</span>'
           }
+
+          // price in label
+          // if (selectedDateString in this.pricedSlots && item.time in this.pricedSlots[selectedDateString].slots) {
+          //   price = this.getFormattedPrice(this.pricedSlots[selectedDateString].slots[item.time].price)
+          // }
         }
+
+        // price in label
+        // return this.getFrontedFormattedTime(item.time + ':00') + (price ? '<span style="margin-left: 2.25em;">(' + price + ')</span>' : '') + suffix
 
         return this.getFrontedFormattedTime(item.time + ':00') + suffix
       },

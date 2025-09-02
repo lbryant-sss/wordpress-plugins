@@ -40,19 +40,30 @@ class File_Data_Validation
             self::$response[$input_name] = [esc_html__("No File found", 'metform')];
             return; 
         }
+        
         $field_setting = self::$fields_setting[$input_name];
-        $limit_status  = isset($field_setting->mf_input_file_size_status) && $field_setting->mf_input_file_size_status == 'on' ? true : false;
+        $limit_status = isset($field_setting->mf_input_file_size_status) && $field_setting->mf_input_file_size_status == 'on';
+        
         if ($limit_status) {
             $file_size_limit = isset($field_setting->mf_input_file_size_limit) ? $field_setting->mf_input_file_size_limit : 128;
-            $file_size       = is_array($file_data['size']) ? array_sum($file_data['size']) / 1024 : $file_data['size'] / 1024;
-            if ($file_size > $file_size_limit) {
-                // translators: Error message for file size limit. %s is the input name, %u is the file size limit in kilobytes.
-                $error_message = sprintf(esc_html__('%$1s size cannot exceed %2$u kb.','metform'),
-                    $input_name,         // Value for %s placeholder (input_name)
-                    $file_size_limit     // Value for %u placeholder (file_size_limit)
-                );
-
-                self::$response[$input_name] = [$error_message];
+            
+            if (is_array($file_data['size'])) {
+                // Multiple files - check each individually
+                foreach ($file_data['size'] as $index => $size) {
+                    if (($size / 1024) > $file_size_limit) {
+                        $file_name = $file_data['name'][$index] ?? "File " . ($index + 1);
+                        $error_message = sprintf(esc_html__('%1$s size cannot exceed %2$u kb.','metform'), $file_name, $file_size_limit);
+                        self::$response[$input_name] = [$error_message];
+                        return;
+                    }
+                }
+            } else {
+                // Single file
+                if (($file_data['size'] / 1024) > $file_size_limit) {
+                    $file_name = $file_data['name'] ?? $input_name;
+                    $error_message = sprintf(esc_html__('%1$s size cannot exceed %2$u kb.','metform'), $file_name, $file_size_limit);
+                    self::$response[$input_name] = [$error_message];
+                }
             }
         }
     }
@@ -232,18 +243,21 @@ class File_Data_Validation
                         return self::$response; 
                     }
                 }
-                // if multiple file upload is enabled
-                foreach ($s_files['error'] as $key => $sf) {
+                
+                // if multiple file upload is enabled - check if error array exists
+                if (isset($s_files['error']) && is_array($s_files['error'])) {
+                    foreach ($s_files['error'] as $key => $sf) {
 
-                    if (($sf) == UPLOAD_ERR_NO_FILE) {
-                        continue;
-                    }
-                    if (($sf) == UPLOAD_ERR_INI_SIZE) {
-                        self::$response['status'] = 0;
-                        self::$response['error'] = esc_html__($s_files['name'][$key] . ' file size exceeded ' . size_format(wp_max_upload_size(), 2), 'metform');
-                        return self::$response;
-                    }
+                        if (($sf) == UPLOAD_ERR_NO_FILE) {
+                            continue;
+                        }
+                        if (($sf) == UPLOAD_ERR_INI_SIZE) {
+                            self::$response['status'] = 0;
+                            self::$response['error'] = esc_html__($s_files['name'][$key] . ' file size exceeded ' . size_format(wp_max_upload_size(), 2), 'metform');
+                            return self::$response;
+                        }
 
+                    }
                 }
             }
             return self::$response;

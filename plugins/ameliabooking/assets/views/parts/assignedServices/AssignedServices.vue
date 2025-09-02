@@ -121,6 +121,14 @@
         </el-col>
         <!-- /Service Price -->
 
+        <!-- Service Price -->
+        <el-col :span="2" v-if="isPeriodPricingEnabled(item.customPricing)">
+          <span @click="togglePeriods(item)">
+            <img class="svg-amelia edit" width="16px" :src="$root.getUrl+'public/img/edit.svg'" style="cursor: pointer;">
+          </span>
+        </el-col>
+        <!-- /Service Price -->
+
         </el-row>
 
         <el-row v-if="isDurationPricingEnabled(item.customPricing)" style="margin-bottom: 0;">
@@ -158,6 +166,24 @@
           </div>
         </el-row>
 
+        <el-row v-if="isPeriodPricingEnabled(item.customPricing)" style="margin-bottom: 0;">
+          <div class="am-extra-item">
+
+            <el-collapse-transition>
+              <div v-if="showPeriods && editedPeriodsService.id === item.id">
+                <period-price
+                  :service="item"
+                  :enabledAdd="false"
+                  :enabledEdit="false"
+                  :enabledDelete="false"
+                >
+                </period-price>
+              </div>
+            </el-collapse-transition>
+
+          </div>
+        </el-row>
+
       </div>
       <!-- /Body -->
 
@@ -170,6 +196,7 @@
 <script>
   import CustomDuration from '../../parts/assignedServices/CustomDuration'
   import PersonPrice from '../../parts/assignedServices/PersonPrice'
+  import PeriodPrice from '../../parts/assignedServices/PeriodPrice'
   import notifyMixin from '../../../js/backend/mixins/notifyMixin'
   import priceMixin from '../../../js/common/mixins/priceMixin'
   import servicePriceMixin from '../../../js/common/mixins/servicePriceMixin'
@@ -181,6 +208,7 @@
     components: {
       CustomDuration,
       PersonPrice,
+      PeriodPrice,
       Money
     },
 
@@ -221,8 +249,10 @@
       return {
         editedDurationsService: null,
         editedPersonsService: null,
+        editedPeriodsService: null,
         showDurations: false,
-        showPersons: false
+        showPersons: false,
+        showPeriods: false
       }
     },
 
@@ -249,6 +279,15 @@
         this.editedPersonsService = selectedItem
 
         this.showPersons = !!selectedItem
+      },
+
+      togglePeriods (item) {
+        let selectedItem = (this.editedPeriodsService && this.editedPeriodsService.id !== item.id) ||
+        (!this.editedPeriodsService) ? item : null
+
+        this.editedPeriodsService = selectedItem
+
+        this.showPeriods = !!selectedItem
       },
 
       priceChanged (item) {

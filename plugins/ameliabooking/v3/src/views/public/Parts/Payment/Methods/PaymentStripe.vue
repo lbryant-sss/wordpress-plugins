@@ -63,7 +63,7 @@
 </template>
 
 <script setup>
-import {computed, onMounted, inject, watchEffect, ref, watch} from 'vue'
+import {computed, onMounted, inject, watchEffect, ref, watch, nextTick} from 'vue'
 import {
   usePaymentError,
   useBookingData,
@@ -178,7 +178,7 @@ async function initializeExpressCheckout(update = false) {
       amount: totalPriceInMinorUnits
     },
     requestPayerName: true,
-    requestPayerEmail: true,
+    requestPayerEmail: true
   })
 
   paymentRequest.canMakePayment().then(function (result) {
@@ -202,6 +202,9 @@ async function initializeExpressCheckout(update = false) {
     } else {
       paymentRequestAvailable.value = false
     }
+  }).catch(error => {
+    console.error('Error checking payment capabilities:', error)
+    paymentRequestAvailable.value = false
   })
 }
 
@@ -226,13 +229,17 @@ async function handleExpressCheckout(event) {
       ),
       function (response) {
         if (response.data.data.requiresAction) {
-          stripePaymentActionRequired(response.data.data)
+          stripePaymentActionRequired({
+            ...response.data.data,
+            expressCheckoutEvent: event
+          })
           return
         }
         event.complete('success')
         successBooking(response)
       },
       (response) => {
+        event.complete('fail')
         errorBooking(response)
       }
     )
@@ -339,9 +346,11 @@ async function stripePaymentCreate () {
   stripeObject.createPaymentMethod(
     'card',
     cardNum,
-    addressResult ? {
-      billing_details: addressResult.value
-    } : {}
+    {
+      billing_details: {
+        ...(addressResult ? addressResult.value : {})
+      }
+    }
   ).then(
     function (result) {
       if (stripeError(result, addressResult)) {
@@ -383,16 +392,21 @@ async function stripePaymentCreate () {
 }
 
 function stripePaymentActionRequired (response) {
+  const { expressCheckoutEvent } = response || {}
+  
   stripeObject.handleNextAction({
     clientSecret: response.paymentIntentClientSecret
   }).then(
     async function (result) {
       let addressResult = null
-      if (amSettings.payments.stripe.address && address) {
+      if (amSettings.payments.stripe.address && address && !expressCheckoutEvent) {
         addressResult = await address.getValue()
       }
 
       if (stripeError(result, addressResult)) {
+        if (expressCheckoutEvent) {
+          expressCheckoutEvent.complete('fail')
+        }
         return
       }
 
@@ -408,11 +422,26 @@ function stripePaymentActionRequired (response) {
           },
           null
         ),
-        successBooking,
-        errorBooking
+        function (response) {
+          if (expressCheckoutEvent) {
+            expressCheckoutEvent.complete('success')
+          }
+          successBooking(response)
+        },
+        function (error) {
+          if (expressCheckoutEvent) {
+            expressCheckoutEvent.complete('fail')
+          }
+          errorBooking(error)
+        }
       )
     }
-  )
+  ).catch((error) => {
+    if (expressCheckoutEvent) {
+      expressCheckoutEvent.complete('fail')
+    }
+    emits('payment-error', error.message || 'Authentication failed')
+  })
 }
 
 function stripeError (result, addressResult) {
@@ -484,15 +513,20 @@ watchEffect(() => {
   }
 }, {flush: 'post'})
 
-// * Watch coupon changes and update paymentRequest amount
+// * Watch coupon and payment deposit changes and update paymentRequest amount
 watch(
-  () => store.getters['coupon/getCoupon'],
-  async (newCoupon, oldCoupon) => {
-    if (paymentRequest && store.getters['coupon/getCouponValidated']) {
+  [() => store.getters['coupon/getCoupon'], () => store.getters['payment/getPaymentDeposit']],
+  async (newValues, oldValues) => {
+    const [newCoupon, newDeposit] = newValues || []
+    const [oldCoupon, oldDeposit] = oldValues || []
+
+    if (paymentRequest && ((newCoupon.deduction || newCoupon.discount) || newDeposit !== oldDeposit)) {
       if (paymentRequestButton) {
         paymentRequestButton.unmount();
         paymentRequestButton = null;
       }
+      // Wait for next tick to ensure DOM is updated
+      await nextTick()
       initializeExpressCheckout(true)
     }
   }

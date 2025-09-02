@@ -2,31 +2,49 @@
 
 ### This is a list detailing changes for all Jetpack releases.
 
+## 15.0-beta - 2025-09-01
+### Enhancements
+- Remove CRM installation nudge for Complete plan users [#45026]
+- Related Posts block: Update placeholder text for the site editor, and update the demo date. [#44937]
+
+### Bug fixes
+- Forms: Fix error wrapper when placing button inside a group block. [#44939]
+- Forms: Improve checkbox validation for older checkboxes. [#44931]
+- Social: Allow default image to be cleared. [#44994]
+
+### Other changes <!-- Non-user-facing changes go here. This section will not be copied to readme.txt. -->
+- Image CDN: Prevent PHP warnings when handling malformed data. [#45015]
+- Podcast player block: Add email rendering. [#45003]
+- Prevent PHP warnings when constants are already defined. [#44957]
+- Related Posts: Prevent PHP warnings when handling malformed data. [#44946]
+- Send JSON with built-in WordPress functions. [#45002]
+- Tiled gallery block: Add email rendering. [#44943]
+- Update package dependencies. [#44948]
+- Use `wp_rand()` instead of `rand()` and `mt_rand()`. [#44964]
+- Writing Settings: Add Instagram connection. [#44936]
+
 ## 15.0-a.7 - 2025-08-25
 ### Enhancements
-- Add LaTeX Block to render mathematical formula. [#44895]
-- Forms: Add MailPoet integration. [#44831]
-- Forms: Let MailPoet handle old/new form data. [#44930]
-- Forms: Preserve html ids when processing feedback. [#44760]
-- Forms: Save feedback entries in a new format [#44821]
+- Add LaTeX block (Beta) to render mathematical formula. [#44895]
+- Disallow inserting Simple Payments block via inserter. [#44724]
+- Forms: Add MailPoet integration. [#44831] [#44930]
+- Forms: Preserve HTML IDs when processing feedback. [#44760]
+- Forms: Save feedback entries in a new format. [#44821]
 - Forms: Show trash action alongside view action in inbox. [#44882]
-- No longer allow inserting Simple Payments block via inserter. [#44724]
 
 ### Bug fixes
 - Carousel: Improve image size processing to return higher quality images in additional situations. [#44900]
-- CDN: Gracefully handle an attempt to filter null. [#44874]
+- Image CDN: Prevent errors attempting to filter null. [#44874]
 - Search: Ensure images are loaded efficiently when on https sites. [#44851]
 - SEO settings: Update the default Open Graph image tag to match the one in use on the site. [#44800]
 
 ### Other changes <!-- Non-user-facing changes go here. This section will not be copied to readme.txt. -->
 - Resolve `PhanImpossibleCondition` violations. [#44869]
-- Editor assets endpoint: Disallow the VideoPress block type [#44848]
+- Editor assets endpoint: Disallow the VideoPress block type. [#44848]
 - Fix LaTex Block selector. [#44920]
 - Slideshow block: Add additional sanitization and validation. [#44917]
-- Slideshow block: add email rendering. [#44835]
-- Update package dependencies. [#44870]
-- Update package dependencies. [#44894]
-- Update package dependencies. [#44899]
+- Slideshow block: Add email rendering. [#44835]
+- Update package dependencies. [#44870] [#44894] [#44899]
 
 ## 15.0-a.5 - 2025-08-18
 ### Enhancements

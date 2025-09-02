@@ -30,7 +30,8 @@ export default {
         serviceList: [],
         weekDayList: this.getSettingsSchedule(),
         specialDayList: [],
-        dayOffList: []
+        dayOffList: [],
+        show: true
       }
     },
 

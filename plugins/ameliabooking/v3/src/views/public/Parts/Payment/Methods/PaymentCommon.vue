@@ -134,6 +134,13 @@ function continueWithBooking () {
         '/payment/mollie',
         bookingData,
         function (response) {
+          const bookings = response.data.data.bookings
+          if (sessionStorage.getItem('ameliaCacheData')) {
+            const ameliaCacheData = JSON.parse(sessionStorage.getItem('ameliaCacheData'))
+            ameliaCacheData.bookings = bookings
+            ameliaCacheData.packageCustomer = response.data.data.packageCustomer
+            sessionStorage.setItem('ameliaCacheData', JSON.stringify(ameliaCacheData))
+          }
           window.location = response.data.data.redirectUrl
         }
       )

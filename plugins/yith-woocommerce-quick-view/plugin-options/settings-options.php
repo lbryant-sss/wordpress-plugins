@@ -13,7 +13,7 @@ $settings = array(
 
 	'settings' => array(
 
-		'general-options'          => array(
+		'general-options' => array(
 			'title' => __( 'General Options', 'yith-woocommerce-quick-view' ),
 			'type'  => 'title',
 			'desc'  => '',
@@ -29,7 +29,7 @@ $settings = array(
 			'default'   => 'yes',
 		),
 
-		'quick-view-label'         => array(
+		'quick-view-label' => array(
 			'id'        => 'yith-wcqv-button-label',
 			'name'      => __( '"Quick view" button label', 'yith-woocommerce-quick-view' ),
 			'desc'      => __( '"Quick view" button label in the WooCommerce loop.', 'yith-woocommerce-quick-view' ),
@@ -38,7 +38,7 @@ $settings = array(
 			'default'   => __( 'Quick View', 'yith-woocommerce-quick-view' ),
 		),
 
-		'general-options-end'      => array(
+		'general-options-end' => array(
 			'type' => 'sectionend',
 			'id'   => 'yith-wcqv-general-options',
 		),
@@ -50,7 +50,7 @@ $settings = array(
 			'id'    => 'yith-wcqv-content-options',
 		),
 
-		'product-description'  => array(
+		'product-description' => array(
 			'id'        => 'yith-wcqv-product-description',
 			'name'      => __( 'Product description:', 'yith-woocommerce-quick-view' ),
 			'type'      => 'yith-field',
@@ -65,7 +65,16 @@ $settings = array(
 		'image-option' => array(
 			'id'         => 'yith-quick-view-product-image-dimensions',
 			'title'      => __( 'Product image dimensions', 'yith-woocommerce-quick-view' ),
-			'desc'       => sprintf( _x( 'Set the image size (in px). After changing these settings you may need to %sregenerate your thumbnails%s.', 'placeholders are html tags', 'yith-woocommerce-quick-view' ), '<a href="https://wordpress.org/plugins/regenerate-thumbnails/">', '</a>' ),
+			'desc'       => sprintf(
+			/* translators: %1$s and %2$s are opening and closing HTML <a> tags for the regenerate thumbnails link. */
+				_x(
+					'Set the image size (in px). After changing these settings you may need to %1$sregenerate your thumbnails%2$s.',
+					'placeholders are html tags',
+					'yith-woocommerce-quick-view'
+				),
+				'<a href="https://wordpress.org/plugins/regenerate-thumbnails/">',
+				'</a>'
+			),
 			'type'       => 'yith-field',
 			'yith-type'  => 'dimensions',
 			'dimensions' => array(
@@ -88,7 +97,7 @@ $settings = array(
 			),
 		),
 
-		'style-options-end'        => array(
+		'style-options-end' => array(
 			'type' => 'sectionend',
 			'id'   => 'yith-wcqv-style-options',
 		),

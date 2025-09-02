@@ -43,7 +43,10 @@ import CustomizationFonts from './parts/CustomizationFonts.vue'
 import CustomizationMenu from './menu/CustomizationMenu.vue'
 
 // Step by step
+import CustomizationInit from './parts/CustomizationInit.vue'
 import CustomizationServices from './parts/CustomizationServices.vue'
+import CustomizationEmployees from './parts/CustomizationEmployees.vue'
+import CustomizationLocations from './parts/CustomizationLocations.vue'
 import CustomizationBringing from './parts/CustomizationBringing.vue'
 import CustomizationPackages from './parts/CustomizationPackages.vue'
 import CustomizationPackageInfo from './parts/CustomizationPackageInfo.vue'
@@ -185,9 +188,27 @@ let sbsNewSettingsObj = ref({
     component: markRaw(CustomizationLabels),
     backBtnVisibility: true
   },
+  init: {
+    headingText: amLabels.csb_services,
+    component: markRaw(CustomizationInit),
+    backBtnVisibility: true,
+    globalColors: true,
+  },
   services: {
     headingText: amLabels.csb_services,
     component: markRaw(CustomizationServices),
+    backBtnVisibility: true,
+    globalColors: true,
+  },
+  employees: {
+    headingText: amLabels.csb_employees,
+    component: markRaw(CustomizationEmployees),
+    backBtnVisibility: true,
+    globalColors: true,
+  },
+  locations: {
+    headingText: amLabels.csb_locations,
+    component: markRaw(CustomizationLocations),
     backBtnVisibility: true,
     globalColors: true,
   },

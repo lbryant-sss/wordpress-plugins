@@ -88,7 +88,7 @@
     <!-- Packages Popup -->
     <PackagesPopup
       @continue-with-service="packagesVisibility = false"
-    ></PackagesPopup>
+    />
     <!--/ Packages Popup -->
   </div>
 </template>

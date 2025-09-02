@@ -89,7 +89,8 @@ function getCouponEntityIds (store) {
             ids = store.getters['eventBooking/getSelectedEventId']
             break
         case 'cart':
-            ids = useCart(store).filter(i => i.serviceId && (i.serviceId in i.services)).map(i => i.serviceId).join(',')
+            ids = useCart(store).filter(i => i.serviceId && (i.serviceId in i.services)).map(i => i.serviceId)
+            ids = [...new Set(ids)].join(',')
             break
         case 'appointment': case 'package':
             ids = store.getters['entities/getBookableFromBookableEntities'](

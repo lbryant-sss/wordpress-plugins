@@ -25,7 +25,8 @@ import coupon from "../../../store/modules/coupon.js";
 import auth from "../../../store/modules/auth.js";
 import cabinet from "../../../store/modules/cabinet.js";
 import cabinetFilters from "../../../store/modules/cabinetFilters.js"
-import eventWaitingListOptions from "../../../store/modules/eventWaitingListOptions";
+import eventWaitingListOptions from "../../../store/modules/eventWaitingListOptions"
+import stepByStepFilters from "../../../store/modules/stepByStepFilters.js"
 
 import {
   provide,
@@ -227,7 +228,13 @@ window.ameliaShortcodeData.forEach((item) => {
 })
 
 function createAmelia(shortcodeData) {
-  const settings = reactive(window.wpAmeliaSettings)
+  let wpAmeliaSettings = JSON.parse(JSON.stringify(window.wpAmeliaSettings))
+
+  if (window?.ameliaActions?.init) {
+    window.ameliaActions.init(shortcodeData, wpAmeliaSettings)
+  }
+
+  const settings = reactive(wpAmeliaSettings)
 
   let wpAmeliaTimeZones = 'wpAmeliaTimeZones' in window ? window.wpAmeliaTimeZones : []
 
@@ -253,20 +260,20 @@ function createAmelia(shortcodeData) {
 
   if (settings.googleTag.id) {
     app.use(VueGtag, {
-      config: {id: window.wpAmeliaSettings.googleTag.id}
+      config: {id: wpAmeliaSettings.googleTag.id}
     })
   }
 
   if (settings.googleAnalytics.id) {
     app.use(VueGtag, {
-      config: {id: window.wpAmeliaSettings.googleAnalytics.id}
+      config: {id: wpAmeliaSettings.googleAnalytics.id}
     })
   }
 
   if (settings.facebookPixel.id) {
     install()
 
-    init(window.wpAmeliaSettings.facebookPixel.id)
+    init(wpAmeliaSettings.facebookPixel.id)
   }
 
   let data = 'ameliaCache' in window && window.ameliaCache.length && window.ameliaCache[0]
@@ -285,7 +292,7 @@ function createAmelia(shortcodeData) {
         namespaced: true,
 
         state: () => ({
-          settings: reactive(window.wpAmeliaSettings),
+          settings: reactive(wpAmeliaSettings),
           labels: reactive(window.wpAmeliaLabels),
           localLanguage: ref(window.localeLanguage[0]),
           baseUrls: reactive(window.wpAmeliaUrls),
@@ -388,7 +395,8 @@ function createAmelia(shortcodeData) {
           auth,
           cabinet,
           cabinetFilters,
-          eventWaitingListOptions
+          eventWaitingListOptions,
+          stepByStepFilters,
         },
       })
     )

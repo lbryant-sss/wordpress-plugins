@@ -341,8 +341,12 @@
               :facebookPixel="settings.facebookPixel"
               :googleAnalytics="settings.googleAnalytics"
               :googleTag="settings.googleTag"
+              :mailchimp="settings.mailchimp"
               :webHooks="settings.webHooks"
+              :customFields="customFields"
               :social-login="settings.socialLogin"
+              :mailchimp-lists="mailchimpLists"
+              :open-mailchimp-collapse="mailchimpOpenCollapse"
           >
           </dialog-settings-integrations>
         </el-dialog>
@@ -583,6 +587,7 @@
   import DialogEmployee from './../employees/DialogEmployee.vue'
   import employeeMixin from '../../../js/common/mixins/employeeMixin'
   import settingsMixin from '../../../js/common/mixins/settingsMixin'
+  import dialogSettingsIntegrations from "./DialogSettingsIntegrations.vue";
 
   export default {
     components: {
@@ -658,8 +663,10 @@
         coupons: [],
         settings: {},
         squareLocations: [],
+        mailchimpLists: [],
         accessTokenSet: false,
-        squareOpenCollapse: false
+        squareOpenCollapse: false,
+        mailchimpOpenCollapse: false
       }
     },
 
@@ -1022,7 +1029,7 @@
         this.$http.get(`${this.$root.getAjaxUrl}/entities`, {
           params: this.getAppropriateUrlParams({
             lite: true,
-            types: ['custom_fields', 'categories', 'coupons', 'settings', 'employees', 'squareLocations']
+            types: ['custom_fields', 'categories', 'coupons', 'settings', 'employees', 'squareLocations', 'mailchimpLists']
           })
         }).then(response => {
           this.customFields = response.data.data.customFields
@@ -1032,6 +1039,9 @@
           this.employees = response.data.data.employees
           this.squareLocations = response.data.data.settings.squareLocations
           this.squareLocations = Array.isArray(this.squareLocations) ? this.squareLocations : Object.values(this.squareLocations)
+
+          this.mailchimpLists = response.data.data.settings.mailchimpLists
+          this.mailchimpLists = Array.isArray(this.mailchimpLists) ? this.mailchimpLists : Object.values(this.mailchimpLists)
         }).catch(e => {
           console.log(e.message)
         })
@@ -1153,6 +1163,15 @@
           history.pushState(null, null, redirectURL + '#/settings')
           this.dialogSettingsPayments = true
           this.squareOpenCollapse = true
+        } else if (queryParams['mailchimp']) {
+          if (queryParams['mailchimp_error']) {
+            this.notify(this.$root.labels.error, this.$root.labels.mailchimp_sign_in_failed, 'error')
+          }
+          let redirectURL = this.removeURLParameter(window.location.href, 'mailchimp_error')
+          redirectURL = this.removeURLParameter(redirectURL, 'mailchimp')
+          history.pushState(null, null, redirectURL + '#/settings')
+          this.dialogSettingsIntegrations = true
+          this.mailchimpOpenCollapse = true
         }
       },
 

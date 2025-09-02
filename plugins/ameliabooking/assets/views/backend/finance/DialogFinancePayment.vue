@@ -442,7 +442,8 @@ export default {
       sendInvoice () {
         this.invoiceLoading.send = true
         if (this.modalData.customer.email) {
-          this.$http.post(`${this.$root.getAjaxUrl}/invoices/${this.payments[0].id}`, {sendEmail: true})
+          let mainPayment = this.payments.find(p => p.parentId === null)
+          this.$http.post(`${this.$root.getAjaxUrl}/invoices/${mainPayment.id}`, {sendEmail: true})
             .then(response => {
               this.notify(this.$root.labels.success, this.$root.labels.invoice_sent, 'success')
               this.invoiceLoading.send = false
@@ -460,7 +461,8 @@ export default {
 
       previewInvoice () {
         this.invoiceLoading.preview = true
-        this.$http.post(`${this.$root.getAjaxUrl}/invoices/${this.payments[0].id}`)
+        let mainPayment = this.payments.find(p => p.parentId === null)
+        this.$http.post(`${this.$root.getAjaxUrl}/invoices/${mainPayment.id}`)
           .then(response => {
             window.open(this.createFileUrlFromResponse(response))
             this.invoiceLoading.preview = false
@@ -473,7 +475,8 @@ export default {
 
       downloadInvoice () {
         this.invoiceLoading.download = true
-        this.$http.post(`${this.$root.getAjaxUrl}/invoices/${this.payments[0].id}`)
+        let mainPayment = this.payments.find(p => p.parentId === null)
+        this.$http.post(`${this.$root.getAjaxUrl}/invoices/${mainPayment.id}`)
           .then(response => {
             let url = this.createFileUrlFromResponse(response)
             const a = document.createElement('a')

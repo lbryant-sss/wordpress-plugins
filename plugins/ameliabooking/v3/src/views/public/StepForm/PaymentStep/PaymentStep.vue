@@ -41,7 +41,7 @@
         {{ amLabels.payment_method }}
       </p>
       <div class="am-fs__payments-main">
-        <div class="am-fs__payments-main-cards" :class="{'am-fs__payments-main-cards-wrap':wrapCards}">
+        <div class="am-fs__payments-main-cards">
           <template v-for="(available, gateway) in availablePayments">
             <div
               v-if="available && Object.keys(availablePayments).filter(item => availablePayments[item]).length > 1"
@@ -461,10 +461,6 @@ function getPaymentSentence () {
     (paymentGateway.value === 'mollie' || paymentGateway.value === 'wc') ? amLabels.value.payment_wc_mollie_sentence : ''
 }
 
-// responsive
-let cWidth = inject('containerWidth', 0)
-let wrapCards = computed(() => cWidth.value < 450 || (cWidth.value > 560 && (cWidth.value - 240 < 450)))
-
 </script>
 
 <script>
@@ -581,23 +577,16 @@ export default {
     &-main {
       &-cards {
         display: flex;
-        //gap: 6px;
+        gap: 6px;
         justify-items: center;
-
-        & > div {
-          margin: 0 6px 6px 0;
-        }
-
-        &-wrap {
-          flex-wrap: wrap;
-        }
+        flex-wrap: wrap;
       }
 
       &-button {
         display: flex;
         align-items: center;
         gap: 2px;
-        width: 108px;
+        min-width: 108px;
         border: 1px solid var(--am-c-ps-text-op25);
         border-radius: 8px;
         box-shadow: 0 1px 1px var(--am-c-ps-text-op06);

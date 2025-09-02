@@ -3,6 +3,7 @@
 namespace AmeliaBooking\Application\Commands;
 
 use AmeliaBooking\Application\Commands\Booking\Appointment\AddBookingCommand;
+use AmeliaBooking\Application\Commands\Booking\Appointment\DeleteBookingRemotelyCommand;
 use AmeliaBooking\Application\Commands\Booking\Appointment\SuccessfulBookingCommand;
 use AmeliaBooking\Application\Commands\Notification\GetSMSNotificationsHistoryCommand;
 use AmeliaBooking\Application\Commands\Notification\UpdateSMSNotificationHistoryCommand;
@@ -187,6 +188,7 @@ abstract class Command
             !($this instanceof CalculatePaymentAmountCommand) &&
             !($this instanceof AddBookingCommand) &&
             !($this instanceof AddStatsCommand) &&
+            !($this instanceof DeleteBookingRemotelyCommand) &&
             !($this instanceof SquarePaymentCommand) &&
             !($this instanceof SquareRefundWebhookCommand) &&
             !($this instanceof DisconnectFromSquareAccountCommand) &&

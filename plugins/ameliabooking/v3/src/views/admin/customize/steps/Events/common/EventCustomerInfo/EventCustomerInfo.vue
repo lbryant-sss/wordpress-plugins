@@ -42,6 +42,17 @@
           v-bind="infoFormConstruction[item.id].props"
         ></component>
       </template>
+
+      <el-form-item
+          v-if="amSettings.mailchimp.subscribeFieldVisible && amCustomize[pageRenderKey].customerInfo.options.email.visibility"
+          class="am-elfci__item am-subscribe"
+      >
+        <AmCheckbox
+            :value="amSettings.mailchimp.checkedByDefault"
+            :label="labelsDisplay('subscribe_to_mailing_list')"
+        >
+        </AmCheckbox>
+      </el-form-item>
     </el-form>
   </div>
 </template>
@@ -59,6 +70,7 @@ import { formFieldsTemplates } from "../../../../../../../assets/js/common/formF
 
 // * Composables
 import { useResponsiveClass } from "../../../../../../../assets/js/common/responsive";
+import AmCheckbox from "../../../../../../_components/checkbox/AmCheckbox.vue";
 
 // * Components
 let props = defineProps({
@@ -316,6 +328,23 @@ export default {
 
       .am-elfci__item {
         width: calc(50% - 12px);
+
+        &.am-subscribe {
+          width: 100%;
+          .el-checkbox {
+            &__input {
+              height: 32px;
+              line-height: 32px;
+              align-items: center;
+            }
+
+            &__label {
+              line-height: 32px;
+              padding: 0;
+              align-items: center;
+            }
+          }
+        }
 
         .el-form-item {
           &__label {

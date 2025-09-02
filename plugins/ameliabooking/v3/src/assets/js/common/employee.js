@@ -5,7 +5,7 @@ import {useAppointmentServicePrice} from "./appointments";
 
 function useParsedCustomPricing (service) {
     if (!('customPricing' in service) || service.customPricing === null) {
-        service.customPricing = {enabled: null, durations: {}, persons: {}}
+        service.customPricing = {enabled: null, durations: {}, persons: {}, periods: {default: [], custom: []}}
 
         service.customPricing.durations[service.duration] = {price: service.price, rules: []}
     } else {
@@ -13,7 +13,12 @@ function useParsedCustomPricing (service) {
           ? service.customPricing
           : JSON.parse(service.customPricing)
 
-        service.customPricing = {enabled: null, durations: {}, persons: {}}
+        service.customPricing = {
+            enabled: null,
+            durations: {},
+            persons: {},
+            periods: 'periods' in customPricing ? customPricing.periods : {default: [], custom: []}
+        }
 
         service.customPricing.durations[service.duration] = {price: service.price, rules: []}
 
@@ -56,6 +61,8 @@ function useParsedCustomPricing (service) {
             service.customPricing.enabled = 'duration'
         } else if (customPricing.enabled === 'person') {
             service.customPricing.enabled = 'person'
+        } else if (customPricing.enabled === 'period') {
+            service.customPricing.enabled = 'period'
         }
     }
 
@@ -165,13 +172,13 @@ function useFrontendEmployeeServiceList (store, employeeServiceList) {
 
             serviceList[service.categoryId][service.id] = typeof employeeService === 'undefined' ? {
                 enabled: false,
-                price: service.price.toString(),
+                price: parseFloat(service.price),
                 minCapacity: service.minCapacity,
                 maxCapacity: service.maxCapacity,
                 customPricing: service.customPricing,
             } : {
                 enabled: true,
-                price: employeeService.price.toString(),
+                price: parseFloat(employeeService.price),
                 minCapacity: employeeService.minCapacity,
                 maxCapacity: employeeService.maxCapacity,
                 customPricing: employeeService.customPricing,
@@ -320,13 +327,9 @@ function useBackendEmployee (store, timeZone) {
             if (employee.serviceList[categoryId][serviceId].enabled) {
                 let service = store.getters['entities/getCategory'](categoryId).serviceList.find(i => i.id === parseInt(serviceId))
 
-                let price = employee.serviceList[categoryId][serviceId].customPricing.enabled === 'person'
-                  ? parseFloat(
-                    employee.serviceList[categoryId][serviceId].customPricing.persons[
-                      Object.keys(employee.serviceList[categoryId][serviceId].customPricing.persons)[0]
-                    ].price
-                  )
-                  : parseFloat(employee.serviceList[categoryId][serviceId].customPricing.durations[service.duration].price)
+                let price = employee.serviceList[categoryId][serviceId].customPricing.enabled === 'duration'
+                  ? parseFloat(employee.serviceList[categoryId][serviceId].customPricing.durations[service.duration].price)
+                  : parseFloat(employee.serviceList[categoryId][serviceId].price)
 
                 let employeeService = {
                     id: parseInt(serviceId),
@@ -337,6 +340,7 @@ function useBackendEmployee (store, timeZone) {
                         enabled: employee.serviceList[categoryId][serviceId].customPricing.enabled,
                         durations: {},
                         persons: {},
+                        periods: employee.serviceList[categoryId][serviceId].customPricing.periods,
                     },
                 }
 

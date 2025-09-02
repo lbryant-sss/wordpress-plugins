@@ -1,5 +1,8 @@
 <template>
-  <div class="am-adv-select__wrapper">
+  <div
+    ref="advSelectWrapperRef"
+    class="am-adv-select__wrapper"
+  >
     <el-cascader
       ref="advSelect"
       v-model="model"
@@ -124,6 +127,7 @@ import {
 } from 'vue'
 import { useColorTransparency } from "../../../assets/js/common/colorManipulation";
 import { useFormattedPrice } from '../../../assets/js/common/formatting'
+import { useElementSize } from '@vueuse/core'
 
 /**
  * Component Props
@@ -345,6 +349,11 @@ function taxVisibility (id) {
 let cWidth = inject('containerWidth', 0)
 let checkScreen = computed(() => cWidth.value < 560 || (cWidth.value > 560 && cWidth.value < 640))
 
+// * Element Wrapper Size
+const advSelectWrapperRef = ref(null)
+
+const {width: wrapperWidth} = useElementSize(advSelectWrapperRef)
+
 // * Component reference
 const advSelect = ref(null)
 
@@ -479,6 +488,7 @@ function handleVisibleChange(e) {
       advSelect.value.contentRef.style.setProperty('--am-c-advs-item-label-op65', useColorTransparency(amColors.value.colorDropText, 0.65))
       advSelect.value.contentRef.style.setProperty('--am-c-advs-item-border-op10', useColorTransparency(amColors.value.colorDropText, 0.1))
       advSelect.value.contentRef.style.setProperty('--am-font-family', amFonts.value.fontFamily)
+      advSelect.value.contentRef.style.setProperty('width', `${wrapperWidth.value}px`)
     }
   })
   emits('visible-change', e)

@@ -177,7 +177,7 @@ function setEntities ({ commit, rootState }, entities, types, licence, showHidde
           employee.badge = null
         }
 
-        if (showHidden || employee.status !== 'hidden') {
+        if (showHidden || (employee.status !== 'hidden' && employee.show)) {
           arr.push(employee)
         }
       })
@@ -672,9 +672,17 @@ export default {
     setPreselectedValues (state) {
       state.originalPreselected = JSON.parse(JSON.stringify(state.preselected))
 
-      state.employees = state.employees.filter(e => state.showHidden || e.status === 'visible')
-      state.services = state.services.filter(s => (state.showHidden ? true : s.status === 'visible' && s.show) && state.employees.filter(e => e.serviceList.find(eS => eS.id === s.id)).length)
+      state.employees = state.employees.filter(e => (state.showHidden || (e.status === 'visible' && e.show)))
+      state.services = state.services.filter(s => (state.showHidden ? true : (s.status === 'visible' && s.show)) && state.employees.filter(e => e.serviceList.find(eS => eS.id === s.id)).length)
       state.locations = state.locations.filter(l => state.showHidden || l.status === 'visible')
+
+      if (!state.showHidden) {
+        state.employees.forEach(e => {
+          if (!e.show) {
+            delete state.entitiesRelations[e.id]
+          }
+        })
+      }
 
       if ('category' in state.preselected && state.preselected.category.length > 0) {
         state.categories = state.categories.filter(c => state.preselected.category.map(id => parseInt(id)).includes(c.id))

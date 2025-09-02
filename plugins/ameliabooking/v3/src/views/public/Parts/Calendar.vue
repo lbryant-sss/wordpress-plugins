@@ -9,6 +9,9 @@
       :end-time="props.endTime"
       :time-zone="props.timeZone"
       :show-busy-slots="props.showBusySlots"
+      :show-estimated-pricing="props.showEstimatedPricing"
+      :show-indicator-pricing="props.showIndicatorPricing"
+      :show-slot-pricing="props.showSlotPricing"
       :nested-item="nested"
       :label-slots-selected="props.labelSlotsSelected"
       :busyness="busyness"
@@ -17,6 +20,7 @@
       :tax-visibility="props.taxVisibility"
       :tax-label="props.taxLabel"
       :tax-label-incl="props.taxLabelIncl"
+      :period-pricing="periodPricing"
       @selected-date="setSelectedDate"
       @selected-time="setSelectedTime"
       @changed-month="changeMonth"
@@ -68,7 +72,13 @@ import {
   useCalendarEvents,
   useDuration,
 } from "../../../assets/js/common/appointments.js";
-import { useAppointmentSlots } from "../../../assets/js/public/slots";
+import {
+  useAppointmentSlots,
+  useSlotsPricing,
+} from "../../../assets/js/public/slots";
+
+// * Plugin Licence
+let licence = inject('licence')
 
 // * Component props
 const props = defineProps({
@@ -121,6 +131,22 @@ const props = defineProps({
     default: false
   },
   showBusySlots: {
+    type: Boolean,
+    default: false
+  },
+  showEstimatedPricing: {
+    type: Boolean,
+    default: false
+  },
+  showIndicatorPricing: {
+    type: Boolean,
+    default: false
+  },
+  showSlotPricing: {
+    type: Boolean,
+    default: false
+  },
+  isPackage: {
     type: Boolean,
     default: false
   },
@@ -190,6 +216,8 @@ let calendarSlotsLoading = ref(true)
 
 let calendarEvents = ref([])
 
+let calendarEventDate = ref('')
+
 let calendarEventSlots = ref([])
 
 let calendarEventBusySlots = ref([])
@@ -214,6 +242,8 @@ let useRange = inject('useRange')
 
 provide('calendarEvents', calendarEvents)
 
+provide('calendarEventDate', calendarEventDate)
+
 provide('calendarEventSlots', calendarEventSlots)
 
 provide('calendarEventBusySlots', calendarEventBusySlots)
@@ -228,6 +258,8 @@ provide('calendarChangeSideBar', calendarChangeSideBar)
 /*********
  * Other *
  ********/
+
+let periodPricing = ref({})
 
 function setSelectedDuration (value) {
   store.commit('booking/setBookingDuration', value)
@@ -262,6 +294,8 @@ function setSelectedDate (value) {
   if (props.preselectSlot && calendarEventSlots.value.length) {
     setSelectedTime(calendarEventSlots.value[0])
   }
+
+  calendarEventDate.value = value
 }
 
 function setSelectedTime (value) {
@@ -276,6 +310,8 @@ function unselectDate () {
   calendarEventSlots.value = []
 
   calendarEventSlot.value = ''
+
+  calendarEventDate.value = ''
 }
 
 function changeMonth (yearMonth) {
@@ -309,6 +345,16 @@ function getSlotsCallback (slots, occupied, minimumDateTime, maximumDateTime, bu
     searchEnd
   )
 
+  if (props.serviceId) {
+    let service = store.getters['entities/getService'](props.serviceId)
+
+    let periodPricingResult = !props.isPackage && service.customPricing.enabled === 'period' && !licence.isLite && !licence.isStarter && !licence.isBasic
+      ? useSlotsPricing(store, slots, service.id)
+      : null
+
+    periodPricing.value = periodPricingResult ? periodPricingResult : null
+  }
+
   if ('calendarStartDate' in result) {
     calendarStartDate.value = selectedYearMonth.value ? selectedYearMonth.value + '-01' : result.calendarStartDate
   }
@@ -319,6 +365,10 @@ function getSlotsCallback (slots, occupied, minimumDateTime, maximumDateTime, bu
 
   if ('calendarEventSlots' in result) {
     calendarEventSlots.value = result.calendarEventSlots
+  }
+
+  if ('calendarEventDate' in result) {
+    calendarEventDate.value = result.calendarEventDate
   }
 
   nextTick(() => {

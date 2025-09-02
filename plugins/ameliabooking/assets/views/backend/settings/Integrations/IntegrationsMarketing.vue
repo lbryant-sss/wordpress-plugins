@@ -1,5 +1,5 @@
 <template>
-    <el-collapse accordion>
+      <el-collapse v-model="activeCollapse" accordion>
       <el-collapse-item class="am-setting-box" name="facebookPixel">
         <template slot="title">
           <p>{{ $root.labels.facebook_pixel }}:</p>
@@ -131,6 +131,65 @@
           <!-- /Form -->
         </template>
       </el-collapse-item>
+
+      <div :class="!$root.licence.isLite ? licenceClass() : ''">
+        <el-collapse-item  class="am-setting-box" :disabled="notInLicence()"  name="mailchimp" ref="mailchimp">
+          <template slot="title">
+            <p>{{ $root.labels.mailchimp }}:</p>
+          </template>
+
+          <template :gutter="24" style="margin-top: 10px">
+            <el-form :model="mailchimpSettings" ref="mailchimpSettings" :rules="rules" label-position="top" @submit.prevent="onSubmit" style="padding-top: 0;">
+              <el-form-item v-if="mailchimpSettings.accessToken">
+                <el-col :span="21">
+                  {{ $root.labels.mailchimp_default_checked }}
+                </el-col>
+                <el-col :span="3" style="text-align: right">
+                  <el-switch v-model="mailchimpSettings.checkedByDefault"></el-switch>
+                </el-col>
+              </el-form-item>
+
+              <el-form-item v-if="mailchimpSettings.accessToken" label="placeholder" prop="list" :label="$root.labels.mailchimp_select_list + ':'">
+                <label slot="label">
+                  {{ $root.labels.mailchimp_select_list }}:
+                </label>
+
+                <el-select
+                    v-model="mailchimpSettings.list"
+                    @change="validateMailchimp"
+                >
+                  <el-option
+                      v-for="item in mailchimpLists"
+                      :key="item.id"
+                      :label="item.name"
+                      :value="item.id"
+                  >
+                  </el-option>
+                </el-select>
+
+              </el-form-item>
+
+              <el-button
+                  class="am-mailchimp-button"
+                  :class="{ 'connected': mailchimpSettings.accessToken, }"
+                  type="primary"
+                  :loading="mailchimpLoading"
+                  @click="mailchimpSettings.accessToken ? disconnectFromMailchimp() : connectToMailchimp()"
+              >
+                <div class="am-mailchimp-button-image">
+                  <img class="" :src="$root.getUrl + 'public/img/mailchimp.svg'"/>
+                </div>
+                <span class="am-mailchimp-button-text">
+              {{ !mailchimpSettings.accessToken ? $root.labels.mailchimp_sign_in : $root.labels.mailchimp_sign_out }}
+            </span>
+              </el-button>
+            </el-form>
+          </template>
+        </el-collapse-item>
+
+        <LicenceBlock v-if="!$root.licence.isLite"/>
+      </div>
+
     </el-collapse>
 </template>
 
@@ -139,20 +198,35 @@ import imageMixin from '../../../../js/common/mixins/imageMixin'
 import TrackingGoogleTag from './TrackingGoogleTag.vue'
 import TrackingGoogleAnalytics from './TrackingGoogleAnalytics.vue'
 import TrackingFacebookPixel from './TrackingFacebookPixel.vue'
+import notifyMixin from '../../../../js/backend/mixins/notifyMixin'
+import licenceMixin from '../../../../js/common/mixins/licenceMixin'
 
 export default {
 
-  mixins: [imageMixin],
+  mixins: [imageMixin, notifyMixin, licenceMixin],
 
   props: {
     facebookPixel: {
       type: Object
+    },
+    customFields: {
+      default: []
     },
     googleAnalytics: {
       type: Object
     },
     googleTag: {
       type: Object
+    },
+    mailchimp: {
+      type: Object
+    },
+    mailchimpLists: {
+      type: Array
+    },
+    openMailchimpCollapse: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -232,6 +306,14 @@ export default {
             {
               value: '%payment_currency%',
               label: this.$root.labels.currency
+            },
+            {
+              value: '%number_of_persons%',
+              label: this.$root.labels.ph_number_of_persons
+            },
+            {
+              value: '%appointment_duration%',
+              label: this.$root.labels.ph_appointment_duration
             }
           ]
         },
@@ -253,6 +335,10 @@ export default {
             {
               value: '%payment_currency%',
               label: this.$root.labels.currency
+            },
+            {
+              value: '%number_of_persons%',
+              label: this.$root.labels.ph_number_of_persons
             }
           ]
         },
@@ -283,14 +369,83 @@ export default {
       activeGoogleTagTab: 'appointments',
       facebookPixelSettings: this.facebookPixel,
       googleAnalyticsSettings: this.googleAnalytics,
-      googleTagSettings: this.googleTag
+      googleTagSettings: this.googleTag,
+      mailchimpSettings: this.mailchimp,
+      mailchimpLoading: false,
+      activeCollapse: null,
+      rules: {
+        list: [
+          {required: !!this.mailchimp.accessToken, message: this.$root.labels.mailchimp_select_list, trigger: 'submit'}
+        ]
+      }
     }
   },
 
   mounted () {
+    // redirected from Mailchimp login page
+    if (this.openMailchimpCollapse && !this.$root.licence.isLite && !this.$root.licence.isStarter) {
+      this.activeCollapse = 'mailchimp'
+      if (this.$refs['mailchimp']) {
+        this.$refs['mailchimp'].$el.scrollIntoView({ behavior: 'smooth' })
+      }
+    }
   },
 
   methods: {
+    connectToMailchimp () {
+      this.mailchimpLoading = true
+      this.$http.get(`${this.$root.getAjaxUrl}/mailchimp/authorization/url`)
+      .then(response => {
+        window.location = response.data.data.authUrl
+      })
+      .catch(e => {
+        this.notify(this.$root.labels.error, e.message, 'error')
+      }).finally(() => {
+        this.mailchimpLoading = false
+      })
+    },
+
+    disconnectFromMailchimp () {
+      this.mailchimpLoading = true
+      this.$http.post(`${this.$root.getAjaxUrl}/mailchimp/disconnect`)
+        .then(() => {
+          this.notify(this.$root.labels.success, this.$root.labels.mailchimp_sign_out_success, 'success')
+          this.mailchimpSettings = {
+            accessToken: null,
+            server: null,
+            list: null
+          }
+          this.$emit('disconnectMailchimp')
+        })
+        .catch(e => {
+          this.notify(this.$root.labels.error, e.message, 'error')
+        })
+        .finally(() => {
+          this.mailchimpLoading = false
+      })
+    },
+
+    async validateMailchimp () {
+      if (this.$refs.mailchimpSettings) {
+        await this.$refs.mailchimpSettings.validate()
+      }
+    }
+  },
+
+  created () {
+    let customFieldsPlaceholders = []
+    for (let i = 0; i < this.customFields.length; i++) {
+      if (this.customFields[i].type !== 'file') {
+        customFieldsPlaceholders.push({
+          value: '%custom_field_' + this.customFields[i].id + '%',
+          label: this.customFields[i].label
+        })
+      }
+    }
+
+    Object.keys(this.marketingPlaceholders).forEach((type) => {
+      this.marketingPlaceholders[type].placeholders = [...this.marketingPlaceholders[type].placeholders, ...customFieldsPlaceholders]
+    })
   },
 
   components: {

@@ -161,7 +161,6 @@ const bookingData =  useBookingData(
     null
 )
 
-let paymentRequestAvailable = ref(false)
 let paymentStepRef = inject('paymentRef')
 
 const payments = window.Square.payments(squareClientId, squareLocationId)

@@ -24,6 +24,7 @@ class LiteBackendStrings
             'admin'                     => __('Admin', 'ameliabooking'),
             'add_date'                  => __('Add Date', 'ameliabooking'),
             'add_language'              => __('Add Language', 'ameliabooking'),
+            'add_period'                => __('Add Period', 'ameliabooking'),
             'all_services'              => __('All Services', 'ameliabooking'),
             'appointment'               => __('Appointment', 'ameliabooking'),
             'appointments'              => __('Appointments', 'ameliabooking'),
@@ -180,6 +181,10 @@ class LiteBackendStrings
             'view_list'                 => __('List View', 'ameliabooking'),
             'view_group'                => __('Group View', 'ameliabooking'),
             'whats_new'                 => __('What\'s new', 'ameliabooking'),
+            'layout_select_label'       => __('Choose layout version', 'ameliabooking'),
+            'layout_dropdown'           => __('Dropdown layout', 'ameliabooking'),
+            'layout_list'               => __('List layout', 'ameliabooking'),
+            'layout_description'        => __('Choosing layout of first step in step by step form', 'ameliabooking'),
         ];
     }
 
@@ -191,6 +196,7 @@ class LiteBackendStrings
     public static function getSettingsStrings()
     {
         return [
+            '1year'                                  => __('1 year', 'ameliabooking'),
             'activate'                               => __('Activate', 'ameliabooking'),
             'activation'                             => __('Activation', 'ameliabooking'),
             'activation_settings'                    => __('Activation Settings', 'ameliabooking'),
@@ -312,6 +318,7 @@ class LiteBackendStrings
             'envato_api_activate'                    => __('Activate with Envato', 'ameliabooking'),
             'event_title_and_description'            => __('Event Title and Description', 'ameliabooking'),
             'events'                                 => __('Events', 'ameliabooking'),
+            'mailchimp'                              => __('Mailchimp', 'ameliabooking'),
             'meeting_title'                          => __('Meeting Title', 'ameliabooking'),
             'meeting_agenda'                         => __('Meeting Agenda', 'ameliabooking'),
             'facebook_app_id'                        => __('Facebook App ID', 'ameliabooking'),
@@ -623,6 +630,7 @@ class LiteBackendStrings
             'ph_service_name'                        => __('Service name', 'ameliabooking'),
             'ph_service_price'                       => __('Service price', 'ameliabooking'),
             'ph_time_zone'                           => __('Time Zone', 'ameliabooking'),
+            'ph_number_of_persons'                   => __('Number of persons', 'ameliabooking'),
             'phone_colon'                            => __('Phone:', 'ameliabooking'),
             'sms_warning'                            => __('Effective September 30th, SMS providers will implement charges for failed message deliveries. To help minimize the occurrence of failed messages, please adhere to the following guidelines: <br>
                                                                <ol style="margin-left: 16px">
@@ -759,7 +767,6 @@ class LiteBackendStrings
         return [
             'add_day_off'                         => __('Add Day Off', 'ameliabooking'),
             'add_special_day'                     => __('Add Special Day', 'ameliabooking'),
-            'add_period'                          => __('Add Period', 'ameliabooking'),
             'apply_to_all_days'                   => __('Apply to All Days', 'ameliabooking'),
             'breaks'                              => __('Breaks', 'ameliabooking'),
             'days_off_add'                        => __('Add Day Off', 'ameliabooking'),
@@ -912,6 +919,8 @@ class LiteBackendStrings
             'capacity'                         => __('Capacity', 'ameliabooking'),
             'settings_employee'                => __('Provider Settings', 'ameliabooking'),
             'employee_saved'                   => __('Employee has been saved', 'ameliabooking'),
+            'employee_show_on_site'            => __('Show employee on site', 'ameliabooking'),
+            'employee_show_on_site_tooltip'    => __('If this option is disabled, employee will be available for booking from back-end pages only.', 'ameliabooking'),
             'employee_panel_password'          => __('Employee Panel Password', 'ameliabooking'),
             'period_services_filter'           => __('Applied for all assigned services', 'ameliabooking'),
             'period_services_filter1_tooltip'  => __('Select only specific services for this period.<br/>If no services are selected, then all assigned services for this employee<br/>will be available for booking in this period.', 'ameliabooking'),
@@ -1172,6 +1181,7 @@ class LiteBackendStrings
             'custom_pricing_enabled'             => __('Custom Pricing', 'ameliabooking'),
             'custom_duration_pricing_enabled'    => __('Custom Duration and Pricing', 'ameliabooking'),
             'custom_person_pricing_enabled'      => __('Pricing by the number of people', 'ameliabooking'),
+            'custom_period_pricing_enabled'      => __('Pricing by Day & Time', 'ameliabooking'),
             'custom_pricing'                     => __('Conditional Pricing', 'ameliabooking'),
         ];
     }
@@ -1373,6 +1383,8 @@ class LiteBackendStrings
             'form_flow'                          => __('Form Flow', 'ameliabooking'),
             'use_global_colors'                  => __('Use Global Colors', 'ameliabooking'),
             'service_selection'                  => __('Service Selection', 'ameliabooking'),
+            'employee_selection'                 => __('Employee Selection', 'ameliabooking'),
+            'location_selection'                 => __('Location Selection', 'ameliabooking'),
             'service_colon'                      => __('Service', 'ameliabooking'),
             'dropdown_category_heading'          => __('Category', 'ameliabooking'),
             'dropdown_items_heading'             => __('Service', 'ameliabooking'),
@@ -1430,6 +1442,8 @@ class LiteBackendStrings
             'dropdowns'                          => __('Dropdowns', 'ameliabooking'),
             'init_cell'                          => __('Init Cell', 'ameliabooking'),
             'init_cell_text'                     => __('Init Cell Text', 'ameliabooking'),
+            'lower_price'                        => __('(Lower Price)', 'ameliabooking'),
+            'higher_price'                       => __('(Higher Price)', 'ameliabooking'),
             'cell_selected_background'           => __('Cell Selected Background', 'ameliabooking'),
             'cell_selected_text'                 => __('Cell Selected Text', 'ameliabooking'),
             'cell_disabled_background'           => __('Cell Disabled Background', 'ameliabooking'),
@@ -1460,6 +1474,11 @@ class LiteBackendStrings
             'csb_sidebar_content'                => __('Set up Sidebar visibility and its content', 'ameliabooking'),
             'csb_services'                       => __('Service Selection', 'ameliabooking'),
             'csb_services_content'               => __('Set up Services, Locations, Employees selection options', 'ameliabooking'),
+            'csb_services_only_content'          => __('Set up Services selection options', 'ameliabooking'),
+            'csb_employees'                      => __('Employees Selection', 'ameliabooking'),
+            'csb_employees_only_content'         => __('Set up Employees selection options', 'ameliabooking'),
+            'csb_locations'                      => __('Locations Selection', 'ameliabooking'),
+            'csb_locations_only_content'         => __('Set up Locations selection options', 'ameliabooking'),
             'csb_date_time'                      => __('Date & Time Selection', 'ameliabooking'),
             'csb_date_time_content'              => __('Set up Calendar layout and Recurring popup options', 'ameliabooking'),
             'csb_info_step'                      => __('Customer Information', 'ameliabooking'),
@@ -1486,6 +1505,9 @@ class LiteBackendStrings
             'continue_button_type'               => __('Continue Button Type', 'ameliabooking'),
             'calendar_slot_end_time'             => __('Calendar Slot End Time', 'ameliabooking'),
             'show_busy_slots'                    => __('Show Busy Time Slots', 'ameliabooking'),
+            'show_estimated_pricing'             => __('Show Estimated Price', 'ameliabooking'),
+            'show_slot_pricing'                  => __('Show Time Slot Price', 'ameliabooking'),
+            'show_indicator_pricing'             => __('Show Price Indicators', 'ameliabooking'),
             'calendar_time_zone'                 => __('Calendar Time Zone', 'ameliabooking'),
             'first_name'                         => __('First Name', 'ameliabooking'),
             'last_name'                          => __('Last Name', 'ameliabooking'),
@@ -1610,6 +1632,12 @@ class LiteBackendStrings
 
             'summary_person'                     => __('person', 'ameliabooking'),
             'event_employees'                    => __('Event Employees', 'ameliabooking'),
+
+            'learn_more'                         => __('Learn More', 'ameliabooking'),
+            'service_information'                => __('Service information', 'ameliabooking'),
+            'learn_more_button'                  => __('Learn more button', 'ameliabooking'),
+            'location_address'                   => __('Location Address', 'ameliabooking'),
+            'no_results_found'                   => __('No results found...', 'ameliabooking'),
         ];
     }
 

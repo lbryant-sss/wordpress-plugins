@@ -129,7 +129,12 @@ async function getAmountToPay() {
   const IntegerPart = totalPriceParts.find((part) => part.type === 'integer')?.value || ''
   const fractionPart = totalPriceParts.find((part) => part.type === 'fraction')?.value || ''
   const decimalPart = totalPriceParts.find((part) => part.type === 'decimal')?.value || ''
-  return `${IntegerPart}${decimalPart}${fractionPart}`
+  const formattedAmount = `${IntegerPart}${decimalPart}${fractionPart}`
+  return {
+    formattedAmount,
+    rawAmount: checkoutPaymentData.amount,
+    countryCode: checkoutPaymentData.countryCode,
+  }
 }
 
 async function payingNow() {
@@ -156,7 +161,6 @@ const bookingData =  useBookingData(
     null
 )
 
-let paymentRequestAvailable = ref(false)
 let paymentStepRef = inject('paymentRef')
 
 
@@ -196,14 +200,15 @@ async function initSquarePayment() {
 
     if (googlePayButton) {
       googlePayButton.innerHTML = ''
-      const initialAmount = await payingNow()
-      paymentRequestAvailable.value = true
+
+      const paymentInfo = await payingNow()
+      if (!paymentInfo) return
 
       const initialRequest = payments.paymentRequest({
-        countryCode: amSettings.payments.square.countryCode,
+        countryCode: paymentInfo.countryCode,
         currencyCode: bookingData.data.payment.currency,
         total: {
-          amount: initialAmount.toString(),
+          amount: paymentInfo.formattedAmount.toString(),
           label: 'Total',
         },
       })
@@ -215,14 +220,14 @@ async function initSquarePayment() {
       googlePayButton.addEventListener('click', async function () {
         store.commit('setLoading', true)
 
-        // 🔄 Recalculate amount if needed
-        const updatedAmount = await payingNow()
+        const updatedInfo = await payingNow()
+        if (!updatedInfo) return
 
         const updatedPaymentRequest = payments.paymentRequest({
-          countryCode: amSettings.payments.square.countryCode,
+          countryCode: updatedInfo.countryCode,
           currencyCode: bookingData.data.payment.currency,
           total: {
-            amount: updatedAmount.toString(),
+            amount: updatedInfo.formattedAmount.toString(),
             label: 'Total',
           },
         })
@@ -248,7 +253,7 @@ const squareTokenize = async (payments) => {
   try {
     const totalAmount = await payingNow()
     const {token, status, errors} = await payments.tokenize({
-          amount: totalAmount.toString(),
+          amount: totalAmount.formattedAmount.toString(),
           billingContact: {
             familyName: bookingData.data.bookings[0].customer.lastName,
             givenName: bookingData.data.bookings[0].customer.firstName,

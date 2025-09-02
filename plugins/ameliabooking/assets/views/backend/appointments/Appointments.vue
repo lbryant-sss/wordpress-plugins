@@ -507,7 +507,7 @@
                                       >
                                       <span v-if="bookingTypeCountInPackage(app.bookings).regular" class="am-appointment-payment-wrap-price">
                                         <span style="vertical-align: middle">
-                                          {{ getAppointmentPrice(app.serviceId, getAppointmentService(app), app.bookings, true) }}
+                                          {{ getAppointmentPrice(getAppointmentService(app), app.bookings) }}
                                         </span>
                                         <span v-if="Object.keys(bookingTypeCountInPackage(app.bookings).package).length">+</span>
                                       </span>

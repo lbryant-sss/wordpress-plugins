@@ -3,7 +3,7 @@
     <div class="am-cs-menu__inner">
       <div class="am-cs-menu__inner-header">
         <span class="am-icon-settings"></span>
-        {{amLabels.settings}}
+        {{ amLabels.settings }}
       </div>
       <AmSettingsCard
         :header="amLabels.cb_global_settings_heading"
@@ -11,10 +11,17 @@
         @click="handleClick('global')"
       ></AmSettingsCard>
     </div>
-    <div v-if="pageRenderKey === 'sbsNew' || ((pageRenderKey === 'capc' || pageRenderKey === 'cape') && pagesType === 'panel')" class="am-cs-menu__inner">
+    <div
+      v-if="
+        pageRenderKey === 'sbsNew' ||
+        ((pageRenderKey === 'capc' || pageRenderKey === 'cape') &&
+          pagesType === 'panel')
+      "
+      class="am-cs-menu__inner"
+    >
       <div class="am-cs-menu__inner-header">
         <span class="am-icon-box"></span>
-        {{amLabels.cb_section}}
+        {{ amLabels.cb_section }}
       </div>
       <AmSettingsCard
         :header="amLabels.cb_sidebar"
@@ -25,34 +32,64 @@
     <div class="am-cs-menu__inner">
       <div class="am-cs-menu__inner-header">
         <span class="am-icon-steps"></span>
-        {{amLabels.steps}}
+        {{ amLabels.steps }}
       </div>
-      <AmSettingsCard
-        v-for="card in settingsCardArray"
-        :key="card.heading"
-        :class="useLicenceMenuClass(card.trigger, licence)"
-        class="am-cs-menu__card"
-        :header="card.heading"
-        :content="card.content"
-        @click="handleClick(card.trigger, card.index, card.goToPage)"
-      ></AmSettingsCard>
+      <template v-if="pageRenderKey === 'sbsNew' && bookableType === 'appointment' && flowLayout === 2">
+        <draggable
+          v-model="amCustomize[pageRenderKey].order"
+          v-bind="dragOptions"
+          class="am-cs-menu__inner-drag"
+          :item-key="pageRenderKey"
+        >
+          <template #item="{ element }">
+            <AmSettingsCard
+              v-if="sbsStepOrderElement(element.id)"
+              :header="sbsStepOrderElement(element.id).heading"
+              :content="sbsStepOrderElement(element.id).content"
+              class="am-cs-menu__card"
+              :draggable="true"
+              @click="handleClick(sbsStepOrderElement(element.id).trigger, sbsStepOrderElement(element.id).index, sbsStepOrderElement(element.id).goToPage)"
+            />
+          </template>
+        </draggable>
+        <AmSettingsCard
+          v-for="card in settingsCardArray"
+          :key="card.heading"
+          :class="useLicenceMenuClass(card.trigger, licence)"
+          class="am-cs-menu__card"
+          :header="card.heading"
+          :content="card.content"
+          @click="handleClick(card.trigger, card.index, card.goToPage)"
+        />
+      </template>
+      <template v-else>
+        <AmSettingsCard
+          v-for="card in settingsCardArray"
+          :key="card.heading"
+          :class="useLicenceMenuClass(card.trigger, licence)"
+          class="am-cs-menu__card"
+          :header="card.heading"
+          :content="card.content"
+          @click="handleClick(card.trigger, card.index, card.goToPage)"
+        />
+      </template>
     </div>
   </div>
 </template>
 
 <script setup>
-import AmSettingsCard from "../../../../_components/settings-card/AmSettingsCard";
+import draggable from 'vuedraggable'
+import AmSettingsCard from '../../../../_components/settings-card/AmSettingsCard'
 // * import from Vue
-import {
-  ref,
-  inject,
-  computed
-} from 'vue';
+import { ref, inject, computed } from 'vue'
 // * Import composables
 import { useLicenceMenuClass } from '../../../../../assets/js/admin/labelsAndOptionsTreatment.js'
 
 // * Labels
 let amLabels = inject('labels')
+
+// * Customize
+let amCustomize = inject('customize')
 
 // * Plugin Licence
 let licence = inject('licence')
@@ -60,20 +97,96 @@ let licence = inject('licence')
 // * Bookable type
 let bookableType = inject('bookableType')
 
+// * Layout
+let flowLayout = inject('flowLayout', ref(1))
+
 // * Pages Type
 let pagesType = inject('pagesType')
 let pageRenderKey = inject('pageRenderKey')
 
-function getServiceAppointmentArray () {
+let { handleClick, parentPath } = inject('sidebarFunctionality')
+parentPath.value = 'menu'
+
+let dragOptions = computed(() => {
+  return {
+    animation: 200,
+    group: 'description',
+    disabled: false,
+    ghostClass: 'am-ghost'
+  }
+})
+
+let sbsStepOrderTemplate = computed(() => {
+  if ('order' in amCustomize.value[pageRenderKey.value]) {
+    let array = []
+    let custOrder = [...amCustomize.value[pageRenderKey.value].order]
+
+    if (licence.isLite || licence.isStarter) {
+      custOrder = custOrder.filter((item) => item.id !== 'LocationStep')
+    }
+    custOrder.forEach((item, index) => {
+      if (item.id === 'ServiceStep') {
+        array.push({
+          id: item.id,
+          heading: amLabels.csb_services,
+          content: amLabels.csb_services_only_content,
+          index: index,
+          trigger: 'services',
+        })
+      }
+
+      if (item.id === 'EmployeeStep') {
+        array.push({
+          id: item.id,
+          heading: amLabels.csb_employees,
+          content: amLabels.csb_employees_only_content,
+          index: index,
+          trigger: 'employees',
+        })
+      }
+
+      if (item.id === 'LocationStep') {
+        array.push({
+          id: item.id,
+          heading: amLabels.csb_locations,
+          content: amLabels.csb_locations_only_content,
+          index: index,
+          trigger: 'locations',
+        })
+      }
+    })
+
+    return array
+  }
+
+  return []
+})
+
+function sbsStepOrderElement(id) {
+  let element = sbsStepOrderTemplate.value.find((item) => item.id === id)
+  if (element) {
+    return element
+  }
+
+  return null
+}
+let serviceAppointmentArray = computed(() => {
   let values = []
 
-  values.push({
-    heading: amLabels.csb_services,
-    content: amLabels.csb_services_content,
-    trigger: 'services',
-  })
+  if (flowLayout.value === 1) {
+    values.push({
+      heading: amLabels.csb_services,
+      content: amLabels.csb_services_content,
+      trigger: 'init',
+    })
+  }
 
-  if (licence.isStarter || licence.isBasic || licence.isPro || licence.isDeveloper) {
+  if (
+    licence.isStarter ||
+    licence.isBasic ||
+    licence.isPro ||
+    licence.isDeveloper
+  ) {
     values.push({
       heading: amLabels.csb_extras,
       content: amLabels.csb_extras_content,
@@ -128,60 +241,59 @@ function getServiceAppointmentArray () {
   })
 
   values.forEach((item, index) => {
-    item.index = index
+    if (flowLayout.value === 2) {
+      item.index = index + sbsStepOrderTemplate.value.length
+    } else {
+      item.index = index
+    }
   })
 
   return values
-}
-
-let { handleClick, parentPath } = inject('sidebarFunctionality')
-parentPath.value = 'menu'
-
-let serviceAppointmentArray = ref(getServiceAppointmentArray())
+})
 
 let packagesAppointmentArray = ref([
   {
     heading: amLabels.cpb_package,
     content: amLabels.cpb_package_content,
     trigger: 'packages',
-    index: 0
+    index: 0,
   },
   {
     heading: amLabels.cpb_package_info,
     content: amLabels.cpb_package_info_content,
     trigger: 'packageInfo',
-    index: 1
+    index: 1,
   },
   {
     heading: amLabels.cpb_appointments_preview,
     content: amLabels.cpb_appointments_preview_content,
     trigger: 'packageAppointments',
-    index: 2
+    index: 2,
   },
   {
     heading: amLabels.cpb_booking_overview,
     content: amLabels.cpb_booking_overview_content,
     trigger: 'packageAppointmentsList',
-    index: 3
+    index: 3,
   },
   {
     heading: amLabels.csb_info_step,
     content: amLabels.csb_info_step_content,
     trigger: 'info',
-    index: 4
+    index: 4,
   },
   {
     heading: amLabels.csb_payment,
     content: amLabels.csb_payment_content,
     trigger: 'payment',
-    index: 5
+    index: 5,
   },
   {
     heading: amLabels.cb_congratulations_heading,
     content: amLabels.cpb_congratulations_content,
     trigger: 'congrats',
-    index: 6
-  }
+    index: 6,
+  },
 ])
 
 // * sbs - Step By Step
@@ -202,8 +314,14 @@ let cbfMenuArr = ref([
     index: 0,
   },
   {
-    heading: !licence.isBasic && !licence.isStarter && !licence.isLite ? amLabels.csb_category_items : amLabels.csb_category_services,
-    content: !licence.isBasic && !licence.isStarter && !licence.isLite ? amLabels.csb_category_items_content : amLabels.csb_category_services_content,
+    heading:
+      !licence.isBasic && !licence.isStarter && !licence.isLite
+        ? amLabels.csb_category_items
+        : amLabels.csb_category_services,
+    content:
+      !licence.isBasic && !licence.isStarter && !licence.isLite
+        ? amLabels.csb_category_items_content
+        : amLabels.csb_category_services_content,
     trigger: 'categoryItems',
     index: 1,
   },
@@ -223,7 +341,7 @@ let cbfMenuArr = ref([
     heading: amLabels.booking_form,
     content: amLabels.booking_form_content,
     goToPage: 'sbsNew',
-  }
+  },
 ])
 
 if (pageRenderKey.value === 'cbf' && (licence.isStarter || licence.isLite)) {
@@ -246,32 +364,32 @@ let elfMenuArr = ref([
     heading: amLabels.csb_event_info,
     content: amLabels.csb_event_info_content,
     trigger: 'info',
-    index: 1
+    index: 1,
   },
   {
     heading: amLabels.csb_event_tickets,
     content: amLabels.csb_event_tickets_content,
     trigger: 'tickets',
-    index: 2
+    index: 2,
   },
   {
     heading: amLabels.csb_event_customer,
     content: amLabels.csb_event_customer_content,
     trigger: 'customerInfo',
-    index: 3
+    index: 3,
   },
   {
     heading: amLabels.csb_event_payment,
     content: amLabels.csb_event_payment_content,
     trigger: 'payment',
-    index: 4
+    index: 4,
   },
   {
     heading: amLabels.csb_event_congratulations,
     content: amLabels.csb_event_congratulations_content,
     trigger: 'congrats',
-    index: 5
-  }
+    index: 5,
+  },
 ])
 
 if (licence.isLite) {
@@ -294,26 +412,26 @@ let capcPanelMenuArr = ref([
     heading: amLabels.csb_cust_appointments,
     content: amLabels.csb_cust_appointments_content,
     trigger: 'appointments',
-    index: 1
+    index: 1,
   },
   {
     heading: amLabels.csb_cust_events,
     content: amLabels.csb_cust_events_content,
     trigger: 'events',
-    index: 2
+    index: 2,
   },
   {
     heading: amLabels.csb_cust_packages_list,
     content: amLabels.csb_cust_packages_list_content,
     trigger: 'packagesList',
-    index: 3
+    index: 3,
   },
   {
     heading: amLabels.csb_cust_package_appointments,
     content: amLabels.csb_cust_package_appointments_content,
     trigger: 'packageAppointments',
-    index: 4
-  }
+    index: 4,
+  },
 ])
 
 if (licence.isStarter || licence.isBasic) {
@@ -344,7 +462,7 @@ let capcAuthMenuArr = ref([
     content: amLabels.csb_cust_set_new_pass_content,
     trigger: 'setPass',
     index: 3,
-  }
+  },
 ])
 
 let capcMenuCards = computed(() => {
@@ -364,32 +482,32 @@ let ecfMenuArr = ref([
     heading: amLabels.csb_event_info,
     content: amLabels.csb_event_info_content,
     trigger: 'info',
-    index: 1
+    index: 1,
   },
   {
     heading: amLabels.csb_event_tickets,
     content: amLabels.csb_event_tickets_content,
     trigger: 'tickets',
-    index: 2
+    index: 2,
   },
   {
     heading: amLabels.csb_event_customer,
     content: amLabels.csb_event_customer_content,
     trigger: 'customerInfo',
-    index: 3
+    index: 3,
   },
   {
     heading: amLabels.csb_event_payment,
     content: amLabels.csb_event_payment_content,
     trigger: 'payment',
-    index: 4
+    index: 4,
   },
   {
     heading: amLabels.csb_event_congratulations,
     content: amLabels.csb_event_congratulations_content,
     trigger: 'congrats',
-    index: 5
-  }
+    index: 5,
+  },
 ])
 let ecfMenuCards = computed(() => {
   return ecfMenuArr.value
@@ -401,14 +519,14 @@ let capePanelMenuArr = ref([
     heading: amLabels.csb_cust_appointments,
     content: amLabels.csb_cust_appointments_content,
     trigger: 'appointments',
-    index: 0
+    index: 0,
   },
   {
     heading: amLabels.csb_cust_events,
     content: amLabels.csb_cust_events_content,
     trigger: 'events',
-    index: 1
-  }
+    index: 1,
+  },
 ])
 
 if (licence.isStarter || licence.isBasic) {
@@ -439,7 +557,7 @@ let capeAuthMenuArr = ref([
     content: amLabels.csb_cust_set_new_pass_content,
     trigger: 'setPass',
     index: 3,
-  }
+  },
 ])
 
 let capeMenuCards = computed(() => {
@@ -461,7 +579,7 @@ let settingsCardArray = computed(() => {
 
 <script>
 export default {
-  name: "CustomizationMenu"
+  name: 'CustomizationMenu',
 }
 </script>
 
@@ -494,6 +612,10 @@ export default {
           margin-right: 8px;
         }
       }
+
+      &-drag {
+        margin-bottom: 8px;
+      }
     }
 
     &__card {
@@ -502,7 +624,11 @@ export default {
       $count: 30;
       @for $i from 0 through $count {
         &:nth-child(#{$i + 1}) {
-          animation: 400ms cubic-bezier(.45,1,.4,1.2) #{$i*70}ms am-animation-slide-up;
+          animation: 400ms
+            cubic-bezier(0.45, 1, 0.4, 1.2)
+            #{$i *
+            70}ms
+            am-animation-slide-up;
           animation-fill-mode: both;
         }
       }

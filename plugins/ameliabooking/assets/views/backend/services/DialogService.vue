@@ -573,11 +573,8 @@
             <div id="am-service-pricing-person" class="am-setting-box am-switch-box" :class="licenceClass()" v-if="service.maxCapacity > 1">
               <!-- Person Pricing Enabled -->
               <el-row type="flex" align="middle" :gutter="24">
-                <el-col :span="19" style="display: flex; gap: 8px; align-items: center">
+                <el-col :span="19">
                   {{ $root.labels.custom_person_pricing_enabled }}
-                  <span class="am-custom-pricing-label-new">
-                    {{ $root.labels.new_caps }}
-                  </span>
                 </el-col>
                 <el-col :span="5" class="align-right">
                   <el-switch
@@ -601,6 +598,40 @@
               </person-price>
 
               <LicenceBlock/>
+            </div>
+
+            <div id="am-service-pricing-period"  class="am-setting-box am-switch-box" :class="licenceClass('pro')">
+              <!-- Person Pricing Enabled -->
+              <el-row type="flex" align="middle" :gutter="24">
+                <el-col :span="19" class="am-custom-pricing-label-new">
+                  {{ $root.labels.custom_period_pricing_enabled }}
+                  <span>
+                    {{ $root.labels.new_caps }}
+                  </span>
+                </el-col>
+                <el-col :span="5" class="align-right">
+                  <el-switch
+                    v-model="periodPricingEnabled"
+                    :disabled="notInLicence('pro')"
+                    active-text=""
+                    inactive-text=""
+                    @change="togglePeriodPricing"
+                  >
+                  </el-switch>
+                </el-col>
+              </el-row>
+
+              <period-price
+                v-if="isPeriodPricingEnabled(service.customPricing) && !$root.licence.isLite && !$root.licence.isStarter && !$root.licence.isBasic"
+                :service="service"
+                :enabledAdd="true"
+                :enabledEdit="true"
+                :enabledDelete="true"
+                @disable="periodPricingEnabled = false"
+              >
+              </period-price>
+
+              <LicenceBlock :licence="'pro'"/>
             </div>
 
             <div id="am-service-pricing-duration" class="am-setting-box am-switch-box" :class="licenceClass()" v-if="service.duration">
@@ -1115,6 +1146,7 @@
   import ContentBlock from '../parts/ContentBlock'
   import CustomDuration from '../../parts/assignedServices/CustomDuration'
   import PersonPrice from '../../parts/assignedServices/PersonPrice'
+  import PeriodPrice from '../../parts/assignedServices/PeriodPrice'
 
   export default {
     mixins: [
@@ -1161,6 +1193,7 @@
       return {
         durationPricingEnabled: false,
         personPricingEnabled: false,
+        periodPricingEnabled: false,
         durations: [],
         depositEnabled: false,
         mandatoryExtraEnabled: false,
@@ -1370,12 +1403,24 @@
         this.service.customPricing.enabled = this.durationPricingEnabled ? 'duration' : null
 
         this.personPricingEnabled = false
+
+        this.periodPricingEnabled = false
       },
 
       togglePersonPricing () {
         this.service.customPricing.enabled = this.personPricingEnabled ? 'person' : null
 
         this.durationPricingEnabled = false
+
+        this.periodPricingEnabled = false
+      },
+
+      togglePeriodPricing () {
+        this.service.customPricing.enabled = this.periodPricingEnabled ? 'period' : null
+
+        this.durationPricingEnabled = false
+
+        this.personPricingEnabled = false
       },
 
       changeCapacity () {
@@ -1423,6 +1468,12 @@
 
         if (this.isPersonPricingEnabled(this.service.customPricing)) {
           depositAvailable = depositAvailable || this.service.customPricing.persons.filter(i => i.price).length
+        }
+
+        if (this.isPeriodPricingEnabled(this.service.customPricing)) {
+          depositAvailable = depositAvailable ||
+            this.service.customPricing.periods.default.filter(i => i.ranges.filter(j => j.price > 0).length).length ||
+            this.service.customPricing.periods.custom.filter(i => i.ranges.filter(j => j.price > 0).length).length
         }
 
         return depositAvailable
@@ -1536,6 +1587,8 @@
 
           this.personPricingEnabled = this.isPersonPricingEnabled(this.service.customPricing)
 
+          this.periodPricingEnabled = this.isPeriodPricingEnabled(this.service.customPricing)
+
           this.dialogLoading = false
           this.executeUpdate = false
         }
@@ -1605,6 +1658,8 @@
 
         let customPersonsChanged = false
 
+        let customPeriodsChanged = false
+
         this.service.customPricing.durations = this.service.customPricing.durations.filter(item => item.duration)
 
         this.service.customPricing.durations.forEach((serviceItem) => {
@@ -1623,12 +1678,49 @@
           })
         })
 
+        this.service.customPricing.periods.default.forEach((dayData, indexService) => {
+          dayData.ranges.forEach((serviceRange) => {
+            this.passedService.customPricing.periods.default.forEach((passedServiceItem, indexProvider) => {
+              if (indexService === indexProvider) {
+                passedServiceItem.ranges.forEach((passedRange) => {
+                  if (serviceRange.from === passedRange.from &&
+                    serviceRange.to === passedRange.to &&
+                    serviceRange.price !== passedRange.price
+                  ) {
+                    customPeriodsChanged = true
+                  }
+                })
+              }
+            })
+          })
+        })
+
+        this.service.customPricing.periods.custom.forEach((dayData) => {
+          dayData.ranges.forEach((serviceRange) => {
+            this.passedService.customPricing.periods.custom.forEach((passedServiceItem) => {
+              if (dayData.dates.start === passedServiceItem.dates.start &&
+                dayData.dates.end === passedServiceItem.dates.end
+              ) {
+                passedServiceItem.ranges.forEach((passedRange) => {
+                  if (serviceRange.from === passedRange.from &&
+                    serviceRange.to === passedRange.to &&
+                    serviceRange.price !== passedRange.price
+                  ) {
+                    customPeriodsChanged = true
+                  }
+                })
+              }
+            })
+          })
+        })
+
         return this.service.id && (
           this.passedService.price !== this.service.price ||
           this.passedService.minCapacity !== this.service.minCapacity ||
           this.passedService.maxCapacity !== this.service.maxCapacity ||
           customDurationChanged ||
-          customPersonsChanged
+          customPersonsChanged ||
+          customPeriodsChanged
         )
       },
 
@@ -1911,7 +2003,8 @@
       ContentBlock,
       DialogActions,
       CustomDuration,
-      PersonPrice
+      PersonPrice,
+      PeriodPrice
     }
   }
 </script>

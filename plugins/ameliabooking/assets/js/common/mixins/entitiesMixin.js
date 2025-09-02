@@ -279,7 +279,7 @@ export default {
 
     getParsedCustomPricing (service) {
       if (service.customPricing === null) {
-        service.customPricing = {enabled: null, durations: [], persons: []}
+        service.customPricing = {enabled: null, durations: [], persons: [], periods: {default: [], custom: []}}
       } else if (typeof service.customPricing !== 'object') {
         service.customPricing = this.getArrayCustomPricing(service)
       }
@@ -561,7 +561,8 @@ export default {
       let config = {
         params: this.getAppropriateUrlParams({
           lite: true,
-          types: options.types
+          types: options.types,
+          dates: options.dates
         })
       }
 

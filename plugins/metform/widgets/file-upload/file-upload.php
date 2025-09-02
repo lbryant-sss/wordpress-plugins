@@ -537,7 +537,20 @@ Class MetForm_Input_File_Upload extends Widget_base{
 					?>
 				</label>
 				<div className="mf-file-name">
-					<span>${parent.getFileLabel( '<?php echo esc_attr($mf_input_name); ?>', '<?php echo esc_html($mf_input_no_file); ?>' )}</span>
+					${
+						(parent.state.formData['<?php echo esc_attr($mf_input_name); ?>'] || []).length > 0
+						? parent.state.formData['<?php echo esc_attr($mf_input_name); ?>'].map((file, idx) => html`
+							<span className="mf-file-name-item" key=${idx}>
+								<span>${file.name}</span>
+								<span 
+									className="mf-file-remove" 
+									onClick=${() => parent.removeUploadedFile('<?php echo esc_attr($mf_input_name); ?>', idx)}
+									title="Remove"
+								>×</span>
+							</span>
+						`)
+						: html`<span>${parent.getFileLabel('<?php echo esc_attr($mf_input_name); ?>', '<?php echo esc_html($mf_input_no_file); ?>')}</span>`
+					}
 				</div>
 				
 			</div>

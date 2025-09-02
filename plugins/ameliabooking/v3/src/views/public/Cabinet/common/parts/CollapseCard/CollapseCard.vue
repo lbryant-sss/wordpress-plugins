@@ -48,8 +48,15 @@
                   {{ `${props.customers[0].firstName} ${props.customers[0].lastName}` }}
                 </div>
 
+                <AppointmentStatus
+                  v-if="props.reservation && props.reservation.type === 'appointment' && shortcodeData.cabinetType === 'employee' && amSettings.roles.allowWriteAppointments && props.parentWidth <= 650"
+                  :id="props.reservation.id"
+                  :status="props.reservation.status"
+                  class="am-cc__status am-cc__status--dropdown"
+                  @status-change="(message, type) => emits('statusChange', message, type)"
+                />
                 <div
-                  v-if="(props.booking || shortcodeData.cabinetType === 'employee') && props.parentWidth <= 650"
+                  v-else-if="props.booking && props.parentWidth <= 650"
                   class="am-cc__status"
                   :class="`am-cc__status-${status.class}`"
                 >
@@ -81,8 +88,15 @@
                   {{ `${props.customers[0].firstName} ${props.customers[0].lastName}` }}
                 </div>
 
+                <AppointmentStatus
+                  v-if="props.reservation && props.reservation.type === 'appointment' && shortcodeData.cabinetType === 'employee' && amSettings.roles.allowWriteAppointments && props.parentWidth > 650"
+                  :id="props.reservation.id"
+                  :status="props.reservation.status"
+                  class="am-cc__status am-cc__status--dropdown"
+                  @status-change="(message, type) => emits('statusChange', message, type)"
+                />
                 <div
-                  v-if="(props.booking || shortcodeData.cabinetType === 'employee') && props.parentWidth > 650"
+                  v-else-if="props.booking && props.parentWidth > 650"
                   class="am-cc__status"
                   :class="`am-cc__status-${status.class}`"
                 >
@@ -451,6 +465,7 @@ import AmCollapse from "../../../../../_components/collapse/AmCollapse.vue";
 import AmCollapseItem from "../../../../../_components/collapse/AmCollapseItem.vue";
 import CollapseCardPopover from "./popover/CollapseCardPopover.vue";
 import PaymentButton from "../PaymentButton.vue";
+import AppointmentStatus from "../../Appointments/AppointmentStatus.vue";
 
 // * Composables
 import { useColorTransparency } from "../../../../../../assets/js/common/colorManipulation";
@@ -460,6 +475,10 @@ import { usePaymentFromCustomerPanel } from "../../../../../../assets/js/public/
 
 // * Component porps
 let props = defineProps({
+  id: {
+    type: Number,
+    default: 0
+  },
   start: {
     type: [String, Object, Array, Function],
     required: true
@@ -551,7 +570,15 @@ let props = defineProps({
 })
 
 // * Component emits
-let emits = defineEmits(['cancelBooking', 'rescheduling', 'editAppointment', 'editEvent', 'addEventAttendee', 'listEventAttendees'])
+let emits = defineEmits([
+  'cancelBooking',
+  'rescheduling',
+  'editAppointment',
+  'editEvent',
+  'addEventAttendee',
+  'listEventAttendees',
+  'statusChange',
+])
 
 // * Data in shortcode
 const shortcodeData = inject('shortcodeData')
@@ -691,6 +718,16 @@ let status = computed(() => {
   }
 })
 
+let dropdownStatusWidth = computed(() => {
+  if (props.reservation && props.reservation.type === 'appointment' && shortcodeData.value.cabinetType === 'employee' && amSettings.roles.allowWriteAppointments) {
+    if (props.parentWidth <= 440) return '70px'
+    if (props.parentWidth <= 690) return '130px'
+    return '160px'
+  }
+
+  return 'auto'
+})
+
 /*************
  * Customize *
  *************/
@@ -719,6 +756,7 @@ let cssVars = computed(() => {
     '--am-c-cc-text-op70': useColorTransparency(amColors.value.colorMainText, 0.7),
     '--am-c-cc-text-op90': useColorTransparency(amColors.value.colorMainText, 0.9),
     '--am-font-family': amFonts.value.fontFamily,
+    '--am-status-width': dropdownStatusWidth.value,
 
     // css properties
     '--am-rad-inp': '6px',
@@ -878,6 +916,17 @@ export default {
       line-height: 1.428571429;
       border-radius: 12px;
       padding: 2px 12px;
+
+
+      &--dropdown {
+        width: var(--am-status-width);
+        padding: 0;
+        border-radius: unset;
+
+        &:before {
+          display: none;
+        }
+      }
 
       &:before {
         content: '';

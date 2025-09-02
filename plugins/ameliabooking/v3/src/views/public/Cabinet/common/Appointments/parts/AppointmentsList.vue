@@ -47,6 +47,7 @@
           @cancel-booking="(data) => { targetBooking = data }"
           @rescheduling="rescheduling"
           @edit-appointment="(data) => {emits('editAppointment', data)}"
+          @status-change="(message, type) => emits('statusChange', message, type)"
         ></CollapseCard>
       </template>
     </div>
@@ -152,7 +153,12 @@ let props = defineProps({
 let store = useStore()
 
 // * Components emits
-let emits = defineEmits(['booked', 'canceled', 'editAppointment'])
+let emits = defineEmits([
+  'booked',
+  'canceled',
+  'editAppointment',
+  'statusChange'
+])
 
 let originKey = inject('originKey')
 
@@ -261,6 +267,7 @@ function rescheduling (data) {
     group: 1,
     timeZone: store.getters['cabinet/getTimeZone'],
     page: 'cabinet',
+    structured: true,
   }
 
   targetAppointment.value = data
