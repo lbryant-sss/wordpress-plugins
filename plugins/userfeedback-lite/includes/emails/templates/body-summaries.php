@@ -117,7 +117,7 @@
 							<tr>
 							  <td style="width:180px;">
 								<a href="<?php echo esc_url( get_site_url() ); ?>" target="_blank">
-								  <img alt="<?php echo esc_attr__( 'UserFeedback Summary', 'userfeedback' ); ?>" height="auto" src="<?php echo esc_url( $header_image['url'] ); ?>" srcset="<?php echo esc_url( $header_image['2x'] ) . ' 2x'; ?>" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="180">
+								  <img alt="<?php echo esc_attr__( 'UserFeedback Summary', 'userfeedback-lite' ); ?>" height="auto" src="<?php echo esc_url( $header_image['url'] ); ?>" srcset="<?php echo esc_url( $header_image['2x'] ) . ' 2x'; ?>" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="180">
 								</a>
 							  </td>
 							</tr>
@@ -135,7 +135,7 @@
 							<tr>
 							  <td style="width:180px;">
 								<a href="<?php echo esc_url( get_site_url() ); ?>" target="_blank">
-								  <img alt="<?php echo esc_attr__( 'UserFeedback Summary', 'userfeedback' ); ?>" height="auto" src="<?php echo esc_url( $header_image['url'] ); ?>" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="180">
+								  <img alt="<?php echo esc_attr__( 'UserFeedback Summary', 'userfeedback-lite' ); ?>" height="auto" src="<?php echo esc_url( $header_image['url'] ); ?>" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="180">
 								</a>
 							  </td>
 							</tr>
@@ -182,8 +182,8 @@
 							  <td align="left" class="summary-table" style="font-size:0px;padding:10px 25px;padding-top:40px;padding-right:0;padding-left:0;word-break:break-word;">
 								<table cellpadding="0" cellspacing="0" width="100%" border="0" style="color:#000000;font-family:Helvetica,Arial,sans-serif;font-size:13px;line-height:22px;table-layout:auto;width:100%;border:none;">
 								  <tr style="border-bottom: 1px solid #efefef; text-align: left;" align="left">
-									<th class="title" style="font-weight: bold; margin: 0; color: #4e4e4e; padding-bottom: 16px; font-size: 14px;"><?php echo esc_html__( 'Forms', 'userfeedback' ); ?></th>
-									<th class="title" style="font-weight: bold; margin: 0; color: #4e4e4e; padding-bottom: 16px; font-size: 14px;"><?php echo esc_html__( 'Responses', 'userfeedback' ); ?></th>
+									<th class="title" style="font-weight: bold; margin: 0; color: #4e4e4e; padding-bottom: 16px; font-size: 14px;"><?php echo esc_html__( 'Forms', 'userfeedback-lite' ); ?></th>
+									<th class="title" style="font-weight: bold; margin: 0; color: #4e4e4e; padding-bottom: 16px; font-size: 14px;"><?php echo esc_html__( 'Responses', 'userfeedback-lite' ); ?></th>
 								  </tr>
 								  <?php foreach ( $summaries as $survey ) : ?>
                                  <tr>
@@ -225,7 +225,7 @@
 						  <tbody>
 							<tr>
 							  <td align="center" style="font-size:0px;padding:0;padding-right:0;padding-bottom:0;padding-left:0;word-break:break-word;">
-								<div style="font-family: Helvetica,Arial,sans-serif; font-size: 13px; line-height: 1; text-align: center; color: #989898;"><?php echo esc_html__( 'Sent from ', 'userfeedback' ); ?> <a style="color: #989898" target="_blank" href="<?php echo esc_url( get_site_url() ); ?>"><?php echo esc_url( get_site_url() ); ?></a></div>
+								<div style="font-family: Helvetica,Arial,sans-serif; font-size: 13px; line-height: 1; text-align: center; color: #989898;"><?php echo esc_html__( 'Sent from ', 'userfeedback-lite' ); ?> <a style="color: #989898" target="_blank" href="<?php echo esc_url( get_site_url() ); ?>"><?php echo esc_url( get_site_url() ); ?></a></div>
 							  </td>
 							</tr>
 						  </tbody>

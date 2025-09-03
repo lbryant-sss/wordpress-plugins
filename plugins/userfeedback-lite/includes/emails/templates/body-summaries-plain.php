@@ -35,6 +35,6 @@ if ( ! empty( $summaries ) ) {
 echo "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n";
 
 echo sprintf(
-	esc_html__( 'Sent from %s', 'userfeedback' ),
+	esc_html__( 'Sent from %s', 'userfeedback-lite' ),
 	esc_url_raw(get_site_url())
 );

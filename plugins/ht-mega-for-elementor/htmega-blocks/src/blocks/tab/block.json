@@ -1,7 +1,9 @@
 {
   "name": "htmega/tab",
   "category": "htmega-blocks",
+  "keywords": [ "tab", "htmega", "ht mega", "widget" ],
   "title": "Tabs",
+  "description": "Organize content in tabbed sections for easy navigation and clean presentation.",
   "example": {
     "attributes": {
       "preview": true

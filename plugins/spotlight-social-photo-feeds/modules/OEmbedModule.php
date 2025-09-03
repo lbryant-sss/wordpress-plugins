@@ -2,11 +2,11 @@
 
 namespace RebelCode\Spotlight\Instagram\Modules;
 
-use Dhii\Services\Factories\Constructor;
-use Dhii\Services\Factories\Value;
-use Psr\Container\ContainerInterface;
-use RebelCode\Spotlight\Instagram\Actions\OEmbedHandler;
 use RebelCode\Spotlight\Instagram\Module;
+use RebelCode\Spotlight\Instagram\Actions\OEmbedHandler;
+use Psr\Container\ContainerInterface;
+use Dhii\Services\Factories\Value;
+use Dhii\Services\Factories\Constructor;
 
 class OEmbedModule extends Module
 {
@@ -25,7 +25,7 @@ class OEmbedModule extends Module
             // The ID of the handler
             'id' => new Value('sl_instagram_embed'),
             // The base URL to use to request embeds from Facebook's API
-            'url' => new Value('https://graph.facebook.com/v10.0/instagram_oembed'),
+            'url' => new Value('https://graph.facebook.com/v22.0/instagram_oembed'),
             // The regex to match Instagram post URLs
             'regex' => new Value('#https?://((m|www)\.)?instagram\.com/p/(.*)#i'),
             // The handler function that creates the HTML string

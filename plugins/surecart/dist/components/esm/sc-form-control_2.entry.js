@@ -19,7 +19,7 @@ const ScFormControl = class {
         this.helpId = undefined;
     }
     render() {
-        return (h("div", { key: '9e70ad7914115982a0b2b42d5e6a2116033750d0', part: "form-control", class: {
+        return (h("div", { key: '19de3ea2d4dff87848e2856116036653e12abbb0', part: "form-control", class: {
                 'form-control': true,
                 'form-control--small': this.size === 'small',
                 'form-control--medium': this.size === 'medium',
@@ -28,7 +28,7 @@ const ScFormControl = class {
                 'form-control--has-help-text': !!this.help,
                 'form-control--is-required': !!this.required,
                 'form-control--is-rtl': isRtl(),
-            } }, h("label", { key: '767856f4a7cd7d0b38f5dc2f0197cd0288612d09', part: "label", id: this.labelId, class: "form-control__label", htmlFor: this.inputId, "aria-hidden": !!this.label ? 'false' : 'true' }, h("slot", { key: 'ec5fe7559cef588dc29af8bafcd0fe9dd569a6bf', name: "label" }, this.label), h("slot", { key: 'e8c39df2168ca958e5d4e0d2fcf360b65305b0fd', name: "label-end" }), !!this.required && (h("span", { key: '9ae6ab439ee7b2636dca56e7c12da6c86e214279', "aria-hidden": "true", class: "required" }, ' ', "*")), h("sc-visually-hidden", { key: '33d83460f7de4835a21ac9263468d458e368f15c' }, !!this.required ? wp.i18n.__('required', 'surecart') : '')), h("div", { key: '466219e9ca613628e61c9c50f7b61f816f00b7d2', part: "input", class: "form-control__input" }, h("slot", { key: 'dc9f6dab875b48b31fa24ac6a0e6ceba8ad80e9c' })), this.help && (h("div", { key: 'a6780fbeaf504f444717272edbee31adf4434642', part: "help-text", id: this.helpId, class: "form-control__help-text" }, h("slot", { key: '7657d49dd6ade0df7aa0b9ed13140e5e26122e9d', name: "help-text" }, this.help)))));
+            } }, h("label", { key: '09435a5a3886be34e61acd920b781a7727be6e7d', part: "label", id: this.labelId, class: "form-control__label", htmlFor: this.inputId, "aria-hidden": !!this.label ? 'false' : 'true' }, h("slot", { key: '183d8f7362426adb3a2548ff42cef9744fcd7e72', name: "label" }, this.label), h("slot", { key: 'da0c1cee8a09f7b09e3aad7c3dc0cc1bbbdb65db', name: "label-end" }), !!this.required && (h("span", { key: 'e0633d36d6dc144d93972f2382d6402216e99cb2', "aria-hidden": "true", class: "required" }, ' ', "*")), h("sc-visually-hidden", { key: '94ee412cb7d02e28494012626b0685b4d43245b4' }, !!this.required ? wp.i18n.__('required', 'surecart') : '')), h("div", { key: 'dc6e3f87ed5436f75c7d8956bba6ef2aa6d6dd3c', part: "input", class: "form-control__input" }, h("slot", { key: '2480c1df16fa6c746ebfa2a14233d372b7bb08a9' })), this.help && (h("div", { key: '0f539eae0a6dd7e57323ef25c5412a8a1cb23183', part: "help-text", id: this.helpId, class: "form-control__help-text" }, h("slot", { key: '3d6373c7afbe791a547028786fbf3ba035dc9c3a', name: "help-text" }, this.help)))));
     }
     get el() { return getElement(this); }
 };
@@ -158,7 +158,7 @@ const ScInput = class {
     }
     render() {
         var _a;
-        return (h(Host, { key: '6955dc2d21ad664c5bda1a044e4e0ccebe7353a2', hidden: this.hidden }, h("sc-form-control", { key: 'd85d264d9ca5b9a9b4aa026b3e5b548ed99afa9f', exportparts: "label, help-text, form-control", size: this.size, required: this.required, label: this.label, showLabel: this.showLabel, help: this.help, inputId: this.inputId, helpId: this.helpId, labelId: this.labelId, name: this.name }, h("slot", { key: 'dd322f457910274ad670e50d0118aa1635e6ece3', name: "label-end", slot: "label-end" }), h("div", { key: '32997d5ed60ca3620852683653b48e9bd5323921', part: "base", class: {
+        return (h(Host, { key: '2a3730094108d958de7b5e951b95abde0dd90977', hidden: this.hidden }, h("sc-form-control", { key: 'd04cade321a4b2e7ef07126ce8e946cf24bc2de8', exportparts: "label, help-text, form-control", size: this.size, required: this.required, label: this.label, showLabel: this.showLabel, help: this.help, inputId: this.inputId, helpId: this.helpId, labelId: this.labelId, name: this.name }, h("slot", { key: '8c553dec751ebfc1a9a84c9368b9cd1be4e408a5', name: "label-end", slot: "label-end" }), h("div", { key: 'eb730eff534e43fcd2eab49218cb6abb51fdfbbd', part: "base", class: {
                 'input': true,
                 // Sizes
                 'input--small': this.size === 'small',
@@ -173,7 +173,7 @@ const ScInput = class {
                 'input--squared-top': this.squaredTop,
                 'input--squared-left': this.squaredLeft,
                 'input--squared-right': this.squaredRight,
-            } }, h("span", { key: '6fe1196f6d9444e0c1e0ee8bdc4ac3b836d70269', part: "prefix", class: "input__prefix" }, h("slot", { key: '43a93047c30321ad2fb4e547eb893c34e69a6da4', name: "prefix" })), h("slot", { key: '67d7dea77972b50ec78e30241d38c15402a6adf9' }, h("input", { key: '666ba24f8aeb8df5e878fafb11551eb1430e59db', part: "input", id: this.inputId, class: "input__control", ref: el => (this.input = el), type: this.type === 'password' && this.isPasswordVisible ? 'text' : this.type, name: this.name, disabled: this.disabled, readonly: this.readonly, required: this.required, placeholder: this.placeholder, minlength: this.minlength, maxlength: this.maxlength, min: this.min, max: this.max, step: this.step,
+            } }, h("span", { key: 'c5fdfddc5a125ab8b87fddf41d78af5c0205eafb', part: "prefix", class: "input__prefix" }, h("slot", { key: 'ffd28d37e7df3e3b1d232641ef00de85e212bd42', name: "prefix" })), h("slot", { key: '03eb494c09aca6f59ac2844a81238ef232be9648' }, h("input", { key: '7f794ec733a26f5c466590ea2cca7676e35164f6', part: "input", id: this.inputId, class: "input__control", ref: el => (this.input = el), type: this.type === 'password' && this.isPasswordVisible ? 'text' : this.type, name: this.name, disabled: this.disabled, readonly: this.readonly, required: this.required, placeholder: this.placeholder, minlength: this.minlength, maxlength: this.maxlength, min: this.min, max: this.max, step: this.step,
             // TODO: Test These below
             autocomplete: this.autocomplete, autocorrect: this.autocorrect, autofocus: this.autofocus, spellcheck: this.spellcheck, pattern: this.pattern, inputmode: this.inputmode, "aria-label": this.label, "aria-labelledby": this.labelId, "aria-invalid": this.invalid ? true : false, value: this.value, onChange: () => this.handleChange(), onInput: () => this.handleInput(),
             // onInvalid={this.handleInvalid}
@@ -182,7 +182,7 @@ const ScInput = class {
                 if (!['Enter', 'ArrowRight', 'ArrowLeft', 'ArrowUp', 'ArrowDown', 'Tab'].includes(e.key)) {
                     e.stopPropagation();
                 }
-            } })), h("span", { key: '269c7d81fb285b412184f84dbcad56b64f34a9f9', part: "suffix", class: "input__suffix" }, h("slot", { key: '908e436f0d207ce3e9163d8145b5dd7cbef55ea3', name: "suffix" })), this.clearable && ((_a = this.value) === null || _a === void 0 ? void 0 : _a.length) > 0 && (h("button", { key: '29819b931aed796fbf47c93cfac817437e5e86f5', part: "clear-button", class: "input__clear", type: "button", onClick: e => this.handleClearClick(e), tabindex: "-1" }, h("slot", { key: '377633a0d7720f976821e08b829871828bf84c6d', name: "clear-icon" }, h("svg", { key: '593bba70fd812a2a72e85a2048cedd5ea685f360', xmlns: "http://www.w3.org/2000/svg", width: "16", height: "16", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", "stroke-width": "2", "stroke-linecap": "round", "stroke-linejoin": "round", class: "feather feather-x" }, h("line", { key: '283890c9d5c7bee961f827d2a1885917bc891fbc', x1: "18", y1: "6", x2: "6", y2: "18" }), h("line", { key: '956b8d4e8bdc250bb786dba5e4f91db29d5fe9ce', x1: "6", y1: "6", x2: "18", y2: "18" })))))))));
+            } })), h("span", { key: '4862907b86a31c6c8945df19fc01fcb1894720ea', part: "suffix", class: "input__suffix" }, h("slot", { key: '588fee0dde4d7d1cb48c0edb26811e17e7b8082e', name: "suffix" })), this.clearable && ((_a = this.value) === null || _a === void 0 ? void 0 : _a.length) > 0 && (h("button", { key: 'aa2fe837178809caa07c3dc5c4761f1f56c4ec26', part: "clear-button", class: "input__clear", type: "button", onClick: e => this.handleClearClick(e), tabindex: "-1" }, h("slot", { key: 'd17c3d672c2482f109e90feaaf8ba5b5461ebc27', name: "clear-icon" }, h("svg", { key: 'acebbbe753726036cb56b5b4063f87dd4598d194', xmlns: "http://www.w3.org/2000/svg", width: "16", height: "16", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", "stroke-width": "2", "stroke-linecap": "round", "stroke-linejoin": "round", class: "feather feather-x" }, h("line", { key: 'bd06f1eb960b6fc2b696072efaede66705be9f65', x1: "18", y1: "6", x2: "6", y2: "18" }), h("line", { key: '847298b8fc590da2cbcb1b5a1d6548cec8cd8f69', x1: "6", y1: "6", x2: "18", y2: "18" })))))))));
     }
     get el() { return getElement(this); }
     static get watchers() { return {

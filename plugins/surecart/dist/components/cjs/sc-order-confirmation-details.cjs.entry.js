@@ -28,7 +28,7 @@ const ScOrderConfirmationDetails = class {
         }
         if (!((_a = this.order) === null || _a === void 0 ? void 0 : _a.number))
             return;
-        return (index.h("sc-dashboard-module", { class: "order" }, index.h("span", { slot: "heading" }, wp.i18n.sprintf(wp.i18n.__('Order #%s', 'surecart'), (_b = this.order) === null || _b === void 0 ? void 0 : _b.number)), index.h("span", { slot: "end" }, this.renderOrderStatus()), index.h("sc-card", null, index.h("sc-order-confirmation-line-items", null), index.h("sc-divider", null), index.h("sc-order-confirmation-totals", null))));
+        return (index.h("sc-dashboard-module", { class: "order" }, index.h("span", { slot: "heading" }, wp.i18n.sprintf(wp.i18n.__('Order #%s', 'surecart'), (_b = this.order) === null || _b === void 0 ? void 0 : _b.number)), index.h("span", { slot: "end" }, this.renderOrderStatus()), index.h("sc-card", null, index.h("sc-order-confirmation-line-items", null), index.h("sc-order-confirmation-totals", null))));
     }
 };
 consumer.openWormhole(ScOrderConfirmationDetails, ['order', 'loading'], false);

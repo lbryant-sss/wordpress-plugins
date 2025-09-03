@@ -1,6 +1,8 @@
 {
   "name": "htmega/button",
   "category": "htmega-blocks",
+  "keywords": [ "button", "htmega", "ht mega", "widget" ],
+  "description": "Add customizable buttons for quick links or calls to action.",
   "parent": [
     "htmega/buttons"
   ],

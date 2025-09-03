@@ -1,7 +1,9 @@
 {
   "name": "htmega/testimonial",
   "category": "htmega-blocks",
+  "keywords": [ "testimonial", "htmega", "ht mega", "widget" ],
   "title": "Testimonial",
+  "description": "Showcase customer testimonials in a stylish and engaging layout.",
   "example": {
     "attributes": {
       "preview": true

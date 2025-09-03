@@ -184,7 +184,7 @@ class UserFeedback_Email_Response_Notification {
 		$site_url_parsed = parse_url( $site_url );
 
 		// Translators: The domain of the site is appended to the subject.
-		$subject = sprintf( __( 'New UserFeedback Response - %s', 'userfeedback' ), $this->survey->title );
+		$subject = sprintf( __( 'New UserFeedback Response - %s', 'userfeedback-lite' ), $this->survey->title );
 
 		return apply_filters( 'userfeedback_emails_new_response_subject', $subject, $this->survey, $this->response );
 	}
@@ -236,7 +236,7 @@ class UserFeedback_Email_Response_Notification {
 		$args['survey_id']     = $this->survey->id;
 		$args['survey_title']  = $this->survey->title;
 		$args['title']         = sprintf(
-			esc_html__( 'New Response to <b>%s</b>', 'userfeedback' ),
+			esc_html__( 'New Response to <b>%s</b>', 'userfeedback-lite' ),
 			$this->survey->title
 		);
 
@@ -245,7 +245,7 @@ class UserFeedback_Email_Response_Notification {
 
 		$args['description'] =
 			sprintf(
-				esc_html__( 'You are receiving this UserFeedback survey notification from <b>%1$s</b>. <a href="%2$s">Adjust your settings here</a>.', 'userfeedback' ),
+				esc_html__( 'You are receiving this UserFeedback survey notification from <b>%1$s</b>. <a href="%2$s">Adjust your settings here</a>.', 'userfeedback-lite' ),
 				get_bloginfo( 'name' ),
 				$notification_config_url
 			);
@@ -304,7 +304,7 @@ class UserFeedback_Email_Response_Notification {
 		$found_answer = $this->get_question_answer( $question->id );
 
 		$skipped_content = sprintf(
-			__( '%1$sSkipped%2$s', 'userfeedback' ),
+			__( '%1$sSkipped%2$s', 'userfeedback-lite' ),
 			'<small><i>',
 			'</i></small>'
 		);
@@ -331,7 +331,7 @@ class UserFeedback_Email_Response_Notification {
 		} elseif ( $question->type === 'checkbox' ) {
 			$value = implode( ', ', $value );
 		} elseif ( $question->type === 'star-rating' ) {
-			$value = sprintf( __( '%s stars', 'userfeedback' ), $value );
+			$value = sprintf( __( '%s stars', 'userfeedback-lite' ), $value );
 		}
 
 		if ( ! empty( $found_answer->extra ) ) {

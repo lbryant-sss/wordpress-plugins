@@ -60,6 +60,9 @@ class HTMega_Elementor_Widget_Image_Magnifier extends Widget_Base {
                     'default' => [
                         'url' => Utils::get_placeholder_image_src(),
                     ],
+                    'dynamic' => [
+                        'active' => true,
+                    ],
                 ]
             );
 

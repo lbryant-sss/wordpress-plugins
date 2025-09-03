@@ -46,7 +46,7 @@ const ScOrderStatusBadge = class {
         }
     }
     render() {
-        return (h("sc-tag", { key: 'a11f0a433c28c9fff2076999b462963a5e83e3aa', type: this.getType(), pill: this.pill }, this.getText()));
+        return (h("sc-tag", { key: '2b9d17b7ff3d3e0fd295fae4564cc8d25c239e3c', type: this.getType(), pill: this.pill }, this.getText()));
     }
 };
 ScOrderStatusBadge.style = ScOrderStatusBadgeStyle0;

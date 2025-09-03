@@ -11,6 +11,6 @@ export declare class ScSubscriptionStatusBadge {
     /** Makes the tag clearable. */
     clearable: boolean;
     getType(): "info" | "success" | "warning" | "danger";
-    getText(): any;
+    getText(): string;
     render(): any;
 }

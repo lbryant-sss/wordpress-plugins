@@ -169,12 +169,12 @@ const ScSubscriptionPaymentMethod = class {
     }
     render() {
         var _a;
-        return (h("sc-dashboard-module", { key: 'ff20bdf6cf0e0db193260cee6349eb1460040646', heading: this.heading || wp.i18n.__('Update Payment Method', 'surecart'), class: "subscription", error: this.error }, h("sc-button", { key: '4c4ab1b3f78a00f1fa1a77209bb27678c69a73cf', slot: "end", type: "link", href: addQueryArgs(window.location.href, {
+        return (h("sc-dashboard-module", { key: '68f4fcb3fa41930b31b4eca3e20f36ea56923607', heading: this.heading || wp.i18n.__('Update Payment Method', 'surecart'), class: "subscription", error: this.error }, h("sc-button", { key: 'd1d64a29aabf443a4fb56f843d4ad52c43355f67', slot: "end", type: "link", href: addQueryArgs(window.location.href, {
                 action: 'create',
                 model: 'payment_method',
                 ...(((_a = this.subscription) === null || _a === void 0 ? void 0 : _a.live_mode) === false ? { live_mode: false } : {}),
                 success_url: window.location.href,
-            }) }, h("sc-icon", { key: 'd1cc9365f2ed704049c03468e85e9325361ced3e', name: "plus", slot: "prefix" }), wp.i18n.__('Add New', 'surecart')), this.renderContent(), this.busy && h("sc-block-ui", { key: '8687c50f08d169d54543450c58f4cb2b9aedfb5a', spinner: true })));
+            }) }, h("sc-icon", { key: '1c90c6664d0d8e9a3e04b9f7d03146088dd3e851', name: "plus", slot: "prefix" }), wp.i18n.__('Add New', 'surecart')), this.renderContent(), this.busy && h("sc-block-ui", { key: 'a6572fdf665ee0604ceb8da0e2cf1f69e3fefbb5', spinner: true })));
     }
     get el() { return getElement(this); }
 };

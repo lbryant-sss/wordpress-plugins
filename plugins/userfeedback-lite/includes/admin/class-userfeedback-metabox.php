@@ -159,7 +159,7 @@ if (!class_exists('UserFeedback_Metabox')) {
             $survey_options = [
                 [
                     'value' => 0,
-                    'label' => __('None', 'userfeedback'),
+                    'label' => __('None', 'userfeedback-lite'),
                 ]
             ];
             $surveys = array_map(function ($survey) {
@@ -176,11 +176,11 @@ if (!class_exists('UserFeedback_Metabox')) {
                 <div class="userfeedback-metabox-input-checkbox">
                     <label class="">
                         <input type="checkbox" name="_uf_disable_surveys" value="1" <?php checked($disable_surveys); ?> <?php disabled(!userfeedback_is_pro_version()); ?>>
-                        <span class="userfeedback-metabox-input-checkbox-label"><?php _e('Disable All UserFeedback Surveys', 'userfeedback'); ?></span>
+                        <span class="userfeedback-metabox-input-checkbox-label"><?php _e('Disable All UserFeedback Surveys', 'userfeedback-lite'); ?></span>
                     </label>
                 </div>
                 <div class="userfeedback-metabox-helper">
-                    <?php _e('Toggle to disable all surveys on this page.', 'userfeedback'); ?>
+                    <?php _e('Toggle to disable all surveys on this page.', 'userfeedback-lite'); ?>
                 </div>
             </div>
 
@@ -190,12 +190,12 @@ if (!class_exists('UserFeedback_Metabox')) {
                         <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M6.57617 1.08203L4.92578 4.45898L1.19336 4.99219C0.533203 5.09375 0.279297 5.90625 0.761719 6.38867L3.42773 9.00391L2.79297 12.6855C2.69141 13.3457 3.40234 13.8535 3.98633 13.5488L7.3125 11.7969L10.6133 13.5488C11.1973 13.8535 11.9082 13.3457 11.8066 12.6855L11.1719 9.00391L13.8379 6.38867C14.3203 5.90625 14.0664 5.09375 13.4062 4.99219L9.69922 4.45898L8.02344 1.08203C7.74414 0.498047 6.88086 0.472656 6.57617 1.08203Z" fill="#31862D" />
                         </svg>
-                        <?php _e('This is a PRO feature.', 'userfeedback'); ?>
+                        <?php _e('This is a PRO feature.', 'userfeedback-lite'); ?>
                     </span>
                     <div class="userfeedback-metabox-pro-badge-upgrade">
                         <a href="<?php echo userfeedback_get_upgrade_link('disable-all-surveys', 'lite-metabox', "https://www.userfeedback.com/lite/"); 
                                     ?>" target="_blank" rel="noopener">
-                            <?php _e('Upgrade', 'userfeedback'); ?>
+                            <?php _e('Upgrade', 'userfeedback-lite'); ?>
                         </a>
                     </div>
                 </div>
@@ -205,7 +205,7 @@ if (!class_exists('UserFeedback_Metabox')) {
             <div class="userfeedback-metabox" id="userfeedback-metabox-specific-survey">
                 <div class="userfeedback-metabox-input-select">
                     <label class="">
-                        <div class="userfeedback-metabox-label"><?php _e('Show Specific Survey', 'userfeedback') ?></div>
+                        <div class="userfeedback-metabox-label"><?php _e('Show Specific Survey', 'userfeedback-lite') ?></div>
                         <select name="_uf_show_specific_survey" <?php disabled(!userfeedback_is_pro_version() || !$addons['targeting']->active); ?>>
                             <?php
                             foreach ($survey_options as $survey) {
@@ -217,7 +217,7 @@ if (!class_exists('UserFeedback_Metabox')) {
                     </label>
                 </div>
                 <div class="userfeedback-metabox-helper">
-                    <?php _e('Toggle to disable all surveys on this page.', 'userfeedback'); ?>
+                    <?php _e('Toggle to disable all surveys on this page.', 'userfeedback-lite'); ?>
                 </div>
             </div>
 
@@ -230,12 +230,12 @@ if (!class_exists('UserFeedback_Metabox')) {
 								d="M6.57617 1.08203L4.92578 4.45898L1.19336 4.99219C0.533203 5.09375 0.279297 5.90625 0.761719 6.38867L3.42773 9.00391L2.79297 12.6855C2.69141 13.3457 3.40234 13.8535 3.98633 13.5488L7.3125 11.7969L10.6133 13.5488C11.1973 13.8535 11.9082 13.3457 11.8066 12.6855L11.1719 9.00391L13.8379 6.38867C14.3203 5.90625 14.0664 5.09375 13.4062 4.99219L9.69922 4.45898L8.02344 1.08203C7.74414 0.498047 6.88086 0.472656 6.57617 1.08203Z"
 								fill="#31862D"/>
                             </svg>
-                            <?php _e( 'Page Targeting is a Pro feature.', 'userfeedback' ); ?>
+                            <?php _e( 'Page Targeting is a Pro feature.', 'userfeedback-lite' ); ?>
                         </span>
 					<div class="userfeedback-metabox-pro-badge-upgrade">
 						<a href="<?php echo userfeedback_get_upgrade_link( 'show-specific-survey', 'lite-metabox', "https://www.userfeedback.com/lite/" ); ?>"
 						   target="_blank" rel="noopener">
-							<?php _e( 'Upgrade', 'userfeedback' ); ?>
+							<?php _e( 'Upgrade', 'userfeedback-lite' ); ?>
 						</a>
 					</div>
 				</div>
@@ -251,12 +251,12 @@ if (!class_exists('UserFeedback_Metabox')) {
 								d="M6.57617 1.08203L4.92578 4.45898L1.19336 4.99219C0.533203 5.09375 0.279297 5.90625 0.761719 6.38867L3.42773 9.00391L2.79297 12.6855C2.69141 13.3457 3.40234 13.8535 3.98633 13.5488L7.3125 11.7969L10.6133 13.5488C11.1973 13.8535 11.9082 13.3457 11.8066 12.6855L11.1719 9.00391L13.8379 6.38867C14.3203 5.90625 14.0664 5.09375 13.4062 4.99219L9.69922 4.45898L8.02344 1.08203C7.74414 0.498047 6.88086 0.472656 6.57617 1.08203Z"
 								fill="#31862D"/>
                             </svg>
-                            <?php _e( 'Activate Targeting Addon.', 'userfeedback' ); ?>
+                            <?php _e( 'Activate Targeting Addon.', 'userfeedback-lite' ); ?>
                         </span>
 					<div class="userfeedback-metabox-pro-badge-upgrade">
 						<a href="<?php echo esc_url(admin_url('admin.php??page=userfeedback_addons')); ?>"
 						   target="_blank" rel="noopener">
-							<?php _e( 'Activate', 'userfeedback' ); ?>
+							<?php _e( 'Activate', 'userfeedback-lite' ); ?>
 						</a>
 					</div>
 				</div>

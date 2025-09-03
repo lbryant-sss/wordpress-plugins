@@ -1,7 +1,9 @@
 {
   "name": "htmega/section-title",
   "category": "htmega-blocks",
+  "keywords": [ "section title", "htmega", "ht mega", "widget" ],
   "title": "Section Title",
+  "description": "Design eye-catching section titles with custom fonts and sizes",
   "example": {
     "attributes": {
       "preview": true

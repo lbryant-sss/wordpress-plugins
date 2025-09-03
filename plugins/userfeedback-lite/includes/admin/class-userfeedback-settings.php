@@ -92,6 +92,8 @@ class UserFeedback_Settings {
 		$did_save = userfeedback_save_options( $settings );
 
 		if ( $did_save ) {
+			do_action( 'userfeedback_settings_saved' );
+
 			return new WP_REST_Response(
 				array(
 					'success' => true,

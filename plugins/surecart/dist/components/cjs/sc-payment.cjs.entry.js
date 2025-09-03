@@ -4,7 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-8acc3c89.js');
 const mutations = require('./mutations-10a18c83.js');
-require('./watchers-f70e33a5.js');
+require('./watchers-06121df7.js');
 const getters = require('./getters-ae03ef93.js');
 const watchers = require('./watchers-2ad3abd1.js');
 const MockProcessor = require('./MockProcessor-48b83649.js');
@@ -32,7 +32,10 @@ const ScPayment = class {
         this.hideTestModeBadge = undefined;
     }
     componentWillLoad() {
-        getters.state.disabled.processors = this.disabledProcessorTypes;
+        getters.state.disabled = {
+            ...getters.state.disabled,
+            processors: this.disabledProcessorTypes
+        };
     }
     renderStripe(processor) {
         const title = getters.hasOtherAvailableCreditCardProcessor('stripe') ? wp.i18n.__('Credit Card (Stripe)', 'surecart') : wp.i18n.__('Credit Card', 'surecart');

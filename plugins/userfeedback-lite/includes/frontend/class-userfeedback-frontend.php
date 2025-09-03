@@ -97,7 +97,7 @@ class UserFeedback_Frontend
 					'is_valid' => false,
 					'errors'   => array(
 						sprintf(
-							__("Question [%s] can't take an array as value.", 'userfeedback'),
+							__("Question [%s] can't take an array as value.", 'userfeedback-lite'),
 							$question->id
 						),
 					),
@@ -124,7 +124,7 @@ class UserFeedback_Frontend
 			// Check if string has less than 400 characters
 			if (strlen($value) > 400) {
 				$is_valid = false;
-				$errors[] = __('Value exceeds 400 characters.', 'userfeedback');
+				$errors[] = __('Value exceeds 400 characters.', 'userfeedback-lite');
 			}
 
 			// If question accepts multiple values, check if $value is a valid option
@@ -138,7 +138,7 @@ class UserFeedback_Frontend
 
 				if (!$value_is_allowed) {
 					$errors[] = sprintf(
-						__('Value "%s" is not allowed', 'userfeedback'),
+						__('Value "%s" is not allowed', 'userfeedback-lite'),
 						$value
 					);
 				}
@@ -149,7 +149,7 @@ class UserFeedback_Frontend
 				if (empty($filtered_email)) {
 					$is_valid = false;
 					$errors[] = sprintf(
-						__('The provided email is not valid', 'userfeedback'),
+						__('The provided email is not valid', 'userfeedback-lite'),
 						$value
 					);
 				}
@@ -189,7 +189,7 @@ class UserFeedback_Frontend
 				'success' => false,
 				'errors'  => array(
 					sprintf(
-						__('Survey with id %s does not exist.', 'userfeedback'),
+						__('Survey with id %s does not exist.', 'userfeedback-lite'),
 						$survey_id
 					),
 				),
@@ -242,7 +242,7 @@ class UserFeedback_Frontend
 				array(
 					'success' => false,
 					'errors'  => array(
-						__('Survey is not available at the moment.', 'userfeedback'),
+						__('Survey is not available at the moment.', 'userfeedback-lite'),
 					),
 				),
 				400
@@ -494,16 +494,16 @@ class UserFeedback_Frontend
 				}
 
 				case 'taxonomy_term_is': {
-					$taxonomy_term = userfeedback_get_term();
+					$taxonomy_term_ids = userfeedback_get_current_post_terms();
 
-					$result[] = isset($taxonomy_term) && $value === $taxonomy_term;
+					$result[] = isset( $value ) && is_array( $taxonomy_term_ids ) && in_array( $value, $taxonomy_term_ids, true );
 					break;
 				}
 
 				case 'taxonomy_term_is_not': {
-					$taxonomy_term = userfeedback_get_term();
+					$taxonomy_term_ids = userfeedback_get_current_post_terms();
 
-					$result[] = isset($taxonomy_term) && $value !== $taxonomy_term;
+					$result[] = isset( $value ) && is_array( $taxonomy_term_ids ) && ! in_array( $value, $taxonomy_term_ids, true );
 					break;
 				}
 

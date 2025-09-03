@@ -1,6 +1,8 @@
 {
   "name": "htmega/image-grid",
   "category": "htmega-blocks",
+  "keywords": [ "image grid", "htmega", "ht mega", "widget" ],
+  "description": "Display images in a clean, responsive grid layout for galleries or portfolios.",
   "title": "Image Grid",
   "example": {
     "attributes": {

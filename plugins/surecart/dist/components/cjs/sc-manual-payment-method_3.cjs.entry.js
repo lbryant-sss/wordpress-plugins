@@ -15,7 +15,7 @@ const ScManualPaymentMethod = class {
     }
     render() {
         var _a, _b;
-        return (index.h("div", { key: '42b9b0d9b9345b96fbd8cb1b8c0887044e0ed824', class: "manual-payment-method", part: "card" }, index.h("div", { key: '8dad8699bc27eec00ac4d0b718ab64824984b01a', class: "payment-method__title" }, (_a = this.paymentMethod) === null || _a === void 0 ? void 0 : _a.name), this.showDescription && index.h("sc-prose", { key: 'ad59f63b9669362787193cd1b7c2d6fedc762b09', class: "payment-method__description", innerHTML: (_b = this.paymentMethod) === null || _b === void 0 ? void 0 : _b.description })));
+        return (index.h("div", { key: '165f343af61ca921d950aa556a222c6afe4679da', class: "manual-payment-method", part: "card" }, index.h("div", { key: '022b612269eec1460ce2f6dbd1aa1d6530f19da7', class: "payment-method__title" }, (_a = this.paymentMethod) === null || _a === void 0 ? void 0 : _a.name), this.showDescription && index.h("sc-prose", { key: '47c812d584eaf91f9785b63b06cc4dd34e10db19', class: "payment-method__description", innerHTML: (_b = this.paymentMethod) === null || _b === void 0 ? void 0 : _b.description })));
     }
 };
 ScManualPaymentMethod.style = ScManualPaymentMethodStyle0;
@@ -79,7 +79,7 @@ const ScProse = class {
         index.registerInstance(this, hostRef);
     }
     render() {
-        return (index.h(index.Host, { key: '3ed566f2b9003a65b5e2a927e2b9ceb91b791e18' }, index.h("slot", { key: 'd4d58a17ac6e1ef0d2db29a0816b04e496b57f31' })));
+        return (index.h(index.Host, { key: 'f65e2cb9a72b8129809fc5afeebfcaf9540ad41e' }, index.h("slot", { key: '441eaba012363d33d9c5147a91732a7029e9a497' })));
     }
 };
 ScProse.style = ScProseStyle0;

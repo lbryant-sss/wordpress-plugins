@@ -75,8 +75,8 @@ class UserFeedback_Survey_Templates {
 			'ecommerce',
 			array(
 				'key'         => 'ecommerce',
-				'name'        => __( 'eCommerce Store Survey (PRO)', 'userfeedback' ),
-				'description' => __( 'Uncover why your visitors purchased from your store.', 'userfeedback' ),
+				'name'        => __( 'eCommerce Store Survey (PRO)', 'userfeedback-lite' ),
+				'description' => __( 'Uncover why your visitors purchased from your store.', 'userfeedback-lite' ),
 			)
 		);
 
@@ -85,8 +85,8 @@ class UserFeedback_Survey_Templates {
 			'b2b',
 			array(
 				'key'         => 'b2b',
-				'name'        => __( 'B2B Satisfaction Survey (PRO)', 'userfeedback' ),
-				'description' => __( 'See what customers think about your product or service and find ways to improve.', 'userfeedback' ),
+				'name'        => __( 'B2B Satisfaction Survey (PRO)', 'userfeedback-lite' ),
+				'description' => __( 'See what customers think about your product or service and find ways to improve.', 'userfeedback-lite' ),
 			)
 		);
 
@@ -95,8 +95,8 @@ class UserFeedback_Survey_Templates {
 			'nps',
 			array(
 				'key'         => 'nps',
-				'name'        => __( 'NPS Survey (PRO)', 'userfeedback' ),
-				'description' => __( 'See how likely a customer is to refer a friend or colleague.', 'userfeedback' ),
+				'name'        => __( 'NPS Survey (PRO)', 'userfeedback-lite' ),
+				'description' => __( 'See how likely a customer is to refer a friend or colleague.', 'userfeedback-lite' ),
 			)
 		);
 
@@ -105,8 +105,8 @@ class UserFeedback_Survey_Templates {
 			'ecommerce-experience',
 			array(
 				'key'         => 'ecommerce-experience',
-				'name'        => __( 'eCommerce Store Experience (PRO)', 'userfeedback' ),
-				'description' => __( 'Quickly see how customers rate your store with a 1-5 scale.', 'userfeedback' ),
+				'name'        => __( 'eCommerce Store Experience (PRO)', 'userfeedback-lite' ),
+				'description' => __( 'Quickly see how customers rate your store with a 1-5 scale.', 'userfeedback-lite' ),
 			)
 		);
 
@@ -114,8 +114,8 @@ class UserFeedback_Survey_Templates {
 			'website-design',
 			array(
 				'key'         => 'website-design',
-				'name'        => __( 'Website Design Feedback (PRO)', 'userfeedback' ),
-				'description' => __( 'Find out how much your website users enjoy using your website. Get feedback on how to improve.', 'userfeedback' ),
+				'name'        => __( 'Website Design Feedback (PRO)', 'userfeedback-lite' ),
+				'description' => __( 'Find out how much your website users enjoy using your website. Get feedback on how to improve.', 'userfeedback-lite' ),
 			)
 		);
 
@@ -123,8 +123,8 @@ class UserFeedback_Survey_Templates {
 			'ecommerce-conversion-optimization',
 			array(
 				'key'         => 'ecommerce-conversion-optimization',
-				'name'        => __( 'eCommerce Conversion Optimization (PRO)', 'userfeedback' ),
-				'description' => __( 'Understand why users are not making purchases, and collect their email address.', 'userfeedback' ),
+				'name'        => __( 'eCommerce Conversion Optimization (PRO)', 'userfeedback-lite' ),
+				'description' => __( 'Understand why users are not making purchases, and collect their email address.', 'userfeedback-lite' ),
 			)
 		);
 
@@ -132,8 +132,8 @@ class UserFeedback_Survey_Templates {
 			'nps-product-feedback',
 			array(
 				'key'         => 'nps-product-feedback',
-				'name'        => __( 'NPS (R) Product Feedback (PRO)', 'userfeedback' ),
-				'description' => __( 'Find out how likely customers are likely to refer your product, and what can be improved.', 'userfeedback' ),
+				'name'        => __( 'NPS (R) Product Feedback (PRO)', 'userfeedback-lite' ),
+				'description' => __( 'Find out how likely customers are likely to refer your product, and what can be improved.', 'userfeedback-lite' ),
 			)
 		);
 
@@ -141,8 +141,8 @@ class UserFeedback_Survey_Templates {
 			'b2b-buyer-survey',
 			array(
 				'key'         => 'b2b-buyer-survey',
-				'name'        => __( 'B2B Buyer Persona Survey (PRO)', 'userfeedback' ),
-				'description' => __( 'Learn more about the buyers shopping at your eCommerce store.', 'userfeedback' ),
+				'name'        => __( 'B2B Buyer Persona Survey (PRO)', 'userfeedback-lite' ),
+				'description' => __( 'Learn more about the buyers shopping at your eCommerce store.', 'userfeedback-lite' ),
 			)
 		);
 
@@ -150,8 +150,8 @@ class UserFeedback_Survey_Templates {
 			'post-purchase',
 			array(
 				'key'         => 'post-purchase',
-				'name'        => __( 'Post Purchase Review (PRO)', 'userfeedback' ),
-				'description' => __( 'Increase conversions by understanding how easy your checkout process is to complete.', 'userfeedback' ),
+				'name'        => __( 'Post Purchase Review (PRO)', 'userfeedback-lite' ),
+				'description' => __( 'Increase conversions by understanding how easy your checkout process is to complete.', 'userfeedback-lite' ),
 			)
 		);
 
@@ -159,8 +159,8 @@ class UserFeedback_Survey_Templates {
 			'product-usage',
 			array(
 				'key'         => 'product-usage',
-				'name'        => __( 'Product Usage Survey (PRO)', 'userfeedback' ),
-				'description' => __( 'Uncover how often your product or service is actually used.', 'userfeedback' ),
+				'name'        => __( 'Product Usage Survey (PRO)', 'userfeedback-lite' ),
+				'description' => __( 'Uncover how often your product or service is actually used.', 'userfeedback-lite' ),
 			)
 		);
 
@@ -168,17 +168,8 @@ class UserFeedback_Survey_Templates {
 			'pricing-page-info',
 			array(
 				'key'         => 'pricing-page-info',
-				'name'        => __( 'Pricing Page Information (PRO)', 'userfeedback' ),
-				'description' => __( 'Determine what questions can be answered from your pricing page to maximize conversions.', 'userfeedback' ),
-			)
-		);
-
-		$this->register_template(
-			'product-usage-info',
-			array(
-				'key'         => 'product-usage-info',
-				'name'        => __( 'Product Usage Information (PRO)', 'userfeedback' ),
-				'description' => __( 'See how where and how often your product or service is being used.', 'userfeedback' ),
+				'name'        => __( 'Pricing Page Information (PRO)', 'userfeedback-lite' ),
+				'description' => __( 'Determine what questions can be answered from your pricing page to maximize conversions.', 'userfeedback-lite' ),
 			)
 		);
 
@@ -186,8 +177,8 @@ class UserFeedback_Survey_Templates {
 			'buyer-journey',
 			array(
 				'key'         => 'buyer-journey',
-				'name'        => __( 'Buyer Journey Research (PRO)', 'userfeedback' ),
-				'description' => __( 'Learn how users find your website, so you can maximize your marketing budget.', 'userfeedback' ),
+				'name'        => __( 'Buyer Journey Research (PRO)', 'userfeedback-lite' ),
+				'description' => __( 'Learn how users find your website, so you can maximize your marketing budget.', 'userfeedback-lite' ),
 			)
 		);
 
@@ -195,8 +186,8 @@ class UserFeedback_Survey_Templates {
 			'beta-opt-in',
 			array(
 				'key'         => 'beta-opt-in',
-				'name'        => __( 'User Beta Testing Opt-in (PRO)', 'userfeedback' ),
-				'description' => __( 'Easily find users for your latest feature or beta testing period.', 'userfeedback' ),
+				'name'        => __( 'User Beta Testing Opt-in (PRO)', 'userfeedback-lite' ),
+				'description' => __( 'Easily find users for your latest feature or beta testing period.', 'userfeedback-lite' ),
 			)
 		);
 
@@ -204,8 +195,8 @@ class UserFeedback_Survey_Templates {
 			'product-offering',
 			array(
 				'key'         => 'product-offering',
-				'name'        => __( 'Product Offering Intelligence (PRO)', 'userfeedback' ),
-				'description' => __( "Find out why someone didn't purchase from you, and collect their email address.", 'userfeedback' ),
+				'name'        => __( 'Product Offering Intelligence (PRO)', 'userfeedback-lite' ),
+				'description' => __( "Find out why someone didn't purchase from you, and collect their email address.", 'userfeedback-lite' ),
 			)
 		);
 
@@ -213,8 +204,8 @@ class UserFeedback_Survey_Templates {
 			'feature-research',
 			array(
 				'key'         => 'feature-research',
-				'name'        => __( 'Website Feature Research (PRO)', 'userfeedback' ),
-				'description' => __( 'Target website features to add to maximize your conversion rates.', 'userfeedback' ),
+				'name'        => __( 'Website Feature Research (PRO)', 'userfeedback-lite' ),
+				'description' => __( 'Target website features to add to maximize your conversion rates.', 'userfeedback-lite' ),
 			)
 		);
 
@@ -222,8 +213,8 @@ class UserFeedback_Survey_Templates {
 			'competitive-research',
 			array(
 				'key'         => 'competitive-research',
-				'name'        => __( 'Competitive Research (PRO)', 'userfeedback' ),
-				'description' => __( 'Find out why customers choose your brand over another.', 'userfeedback' ),
+				'name'        => __( 'Competitive Research (PRO)', 'userfeedback-lite' ),
+				'description' => __( 'Find out why customers choose your brand over another.', 'userfeedback-lite' ),
 			)
 		);
 
@@ -231,8 +222,8 @@ class UserFeedback_Survey_Templates {
 			'content-research',
 			array(
 				'key'         => 'competitive-research',
-				'name'        => __( 'Content Research (PRO)', 'userfeedback' ),
-				'description' => __( 'Learn which content is engaging, and what content to create.', 'userfeedback' ),
+				'name'        => __( 'Content Research (PRO)', 'userfeedback-lite' ),
+				'description' => __( 'Learn which content is engaging, and what content to create.', 'userfeedback-lite' ),
 			)
 		);
 
@@ -240,8 +231,8 @@ class UserFeedback_Survey_Templates {
 			'product-research',
 			array(
 				'key'         => 'product-research',
-				'name'        => __( 'Product Research (PRO)', 'userfeedback' ),
-				'description' => __( 'Determine what features you should stop advertising.', 'userfeedback' ),
+				'name'        => __( 'Product Research (PRO)', 'userfeedback-lite' ),
+				'description' => __( 'Determine what features you should stop advertising.', 'userfeedback-lite' ),
 			)
 		);
 
@@ -249,8 +240,8 @@ class UserFeedback_Survey_Templates {
 			'saas-feedback',
 			array(
 				'key'         => 'saas-feedback',
-				'name'        => __( 'SAAS Feature Feedback (PRO)', 'userfeedback' ),
-				'description' => __( 'Uncover which features are missing from your offering so that you can attract more customers.', 'userfeedback' ),
+				'name'        => __( 'SAAS Feature Feedback (PRO)', 'userfeedback-lite' ),
+				'description' => __( 'Uncover which features are missing from your offering so that you can attract more customers.', 'userfeedback-lite' ),
 			)
 		);
 	}
@@ -292,7 +283,7 @@ class UserFeedback_Survey_Templates {
 	 * @return void
 	 */
 	public function __clone() {
-		_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheatin&#8217; huh?', 'userfeedback' ), '1.0.0' );
+		_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheatin&#8217; huh?', 'userfeedback-lite' ), '1.0.0' );
 	}
 
 	/**
@@ -304,6 +295,6 @@ class UserFeedback_Survey_Templates {
 	 * @return void
 	 */
 	public function __wakeup() {
-		_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheatin&#8217; huh?', 'userfeedback' ), '1.0.0' );
+		_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheatin&#8217; huh?', 'userfeedback-lite' ), '1.0.0' );
 	}
 }

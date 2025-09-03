@@ -311,6 +311,7 @@ class UserFeedback_Surveys {
 		}
 
 		$params = $request->get_params();
+		$params = apply_filters('userfeedback_save_survey_params', $params, $survey_id);
 		$survey_count = UserFeedback_Survey::count();
 
 		if(isset($params['title']) && 'First Survey' === $params['title'] && $survey_count > 0) {
@@ -328,7 +329,7 @@ class UserFeedback_Surveys {
 			$number_of_surveys = UserFeedback_Survey::count();
 			$new_survey_title  =
 				empty( $params['title'] ) ?
-					sprintf( __( 'Survey #%d', 'userfeedback' ), $number_of_surveys + 1 ) : $params['title'];
+					sprintf( __( 'Survey #%d', 'userfeedback-lite' ), $number_of_surveys + 1 ) : $params['title'];
 
 			/**
 			 * Add type for nps surveys
@@ -370,7 +371,7 @@ class UserFeedback_Surveys {
 			array_merge(
 				(array) $survey,
 				array(
-					'title'  => sprintf( __( 'Copy of %s', 'userfeedback' ), $survey->title ),
+					'title'  => sprintf( __( 'Copy of %s', 'userfeedback-lite' ), $survey->title ),
 					'status' => 'draft',
 				)
 			)
@@ -462,29 +463,29 @@ class UserFeedback_Surveys {
 
 		$links = [
 			[
-				'text' => __( 'Support', 'userfeedback' ),
+				'text' => __( 'Support', 'userfeedback-lite' ),
 				'link' => $is_pro ? userfeedback_get_url('footer_link', 'made-with-love', 'https://www.userfeedback.com/contact/') : 'https://wordpress.org/support/plugin/userfeedback-lite/',
 				'target' => '_blank',
 			],
 			[
-				'text' => __( 'Docs', 'userfeedback' ),
+				'text' => __( 'Docs', 'userfeedback-lite' ),
 				'link' => userfeedback_get_url('footer_link', 'made-with-love', 'https://www.userfeedback.com/docs/'),
 				'target' => '_blank',
 			],
 			[
-				'text' => __( 'Free Plugins', 'userfeedback' ),
+				'text' => __( 'Free Plugins', 'userfeedback-lite' ),
 				'link' => admin_url('admin.php?page=userfeedback_settings#/about'),
 				'target' => '_self',
 			],
 			[
-				'text' => __( 'Suggest a Feature', 'userfeedback' ),
+				'text' => __( 'Suggest a Feature', 'userfeedback-lite' ),
 				'link' => userfeedback_get_url('footer_link', 'made-with-love', 'https://www.userfeedback.com/suggest-feature/'),
 				'target' => '_blank',
 			],
 		];
 		if(!empty($links)){
 			echo '<div class="userfeedback-love">';
-			echo esc_html__('Made with ♥ by the UserFeedback Team', 'userfeedback');
+			echo esc_html__('Made with ♥ by the UserFeedback Team', 'userfeedback-lite');
 			$links_output = [];
 			foreach($links as $link){
 				$links_output[] = '<a target="'.esc_attr($link['target']).'" href="'.esc_url($link['link']).'">' . esc_html($link['text']) . '</a>';

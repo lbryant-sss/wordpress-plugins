@@ -164,7 +164,7 @@ class UserFeedback_Onboarding_Wizard {
 			<head>
 				<meta name="viewport" content="width=device-width"/>
 				<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-				<title><?php esc_html_e( 'UserFeedback &rsaquo; Onboarding Wizard', 'userfeedback' ); ?></title>
+				<title><?php esc_html_e( 'UserFeedback &rsaquo; Onboarding Wizard', 'userfeedback-lite' ); ?></title>
 				<?php do_action( 'admin_print_styles' ); ?>
 				<?php do_action( 'admin_print_scripts' ); ?>
 				<?php do_action( 'admin_head' ); ?>

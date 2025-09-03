@@ -91,7 +91,7 @@ if (!class_exists('UserFeedbackGutenberg')) {
 			$survey_options = [
 				[
 					'value' => 0,
-					'label' => __('None', 'userfeedback'),
+					'label' => __('None', 'userfeedback-lite'),
 				]
 			];
 			$surveys = array_map(function ($survey) {
@@ -112,7 +112,7 @@ if (!class_exists('UserFeedbackGutenberg')) {
 					'nonce'                        => wp_create_nonce('userfeedback_gutenberg_headline_nonce'),
 					'allowed_post_types'           => apply_filters('userfeedback_metabox_post_types', array('post')),
 					'current_post_type'            => $posttype,
-					'translations'                 => wp_get_jed_locale_data(userfeedback_is_pro_version() ? 'userfeedback-premium' : 'userfeedback'),
+					'translations'                 => wp_get_jed_locale_data(userfeedback_is_pro_version() ? 'userfeedback-premium' : 'userfeedback-lite'),
 					'vue_assets_path'              => plugins_url($version_path . '/assets/vue/', USERFEEDBACK_PLUGIN_FILE),
 					'license_type'                 => (UserFeedback()->license->get_license_type()) ? 'pro' : 'lite',
 					'supports_custom_fields'       => post_type_supports($posttype, 'custom-fields'),

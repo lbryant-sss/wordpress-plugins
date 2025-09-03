@@ -17,14 +17,14 @@ class UserFeedback_Survey_Template_Content_Engagement extends UserFeedback_Surve
 	 * @inheritdoc
 	 */
 	public function get_name() {
-		return __( 'Content Engagement', 'userfeedback' );
+		return __( 'Content Engagement', 'userfeedback-lite' );
 	}
 
 	/**
 	 * @inheritdoc
 	 */
 	public function get_description() {
-		return __( 'Measure what content is engaging, and what content to create.', 'userfeedback' );
+		return __( 'Measure what content is engaging, and what content to create.', 'userfeedback-lite' );
 	}
 
 	/**
@@ -37,17 +37,17 @@ class UserFeedback_Survey_Template_Content_Engagement extends UserFeedback_Surve
 			'questions' => array(
 				array(
 					'type'   => 'radio-button',
-					'title'  => __( 'Did you find this content engaging?', 'userfeedback' ),
+					'title'  => __( 'Did you find this content engaging?', 'userfeedback-lite' ),
 					'config' => array(
 						'options' => array(
-							__( 'Yes', 'userfeedback' ),
-							__( 'No', 'userfeedback' ),
+							__( 'Yes', 'userfeedback-lite' ),
+							__( 'No', 'userfeedback-lite' ),
 						),
 					),
 				),
 				array(
 					'type'  => 'long-text',
-					'title' => __( 'What content would you like us to create?', 'userfeedback' ),
+					'title' => __( 'What content would you like us to create?', 'userfeedback-lite' ),
 				),
 			),
 		);

@@ -73,14 +73,14 @@ const ScProductBuyButton = class {
     }
     render() {
         var _a, _b;
-        return (h(Host, { key: 'f0a2bcfca4d423833c052cf222864069893a1dbc', class: {
+        return (h(Host, { key: '5aeb7e1cb84d33f5eb914168be277d02397e1af8', class: {
                 'is-busy': ((_a = state[this.productId]) === null || _a === void 0 ? void 0 : _a.busy) && !!this.addToCart,
                 'is-disabled': (_b = state[this.productId]) === null || _b === void 0 ? void 0 : _b.disabled,
                 'is-sold-out': isProductOutOfStock(this.productId) && !isSelectedVariantMissing(this.productId),
                 'is-unavailable': isSelectedVariantMissing(this.productId),
-            }, onClick: e => this.handleCartClick(e) }, !!this.error && (h("sc-alert", { key: '99f8fdeb43f53ec697114bdd2ea2fe2149847b71', onClick: event => {
+            }, onClick: e => this.handleCartClick(e) }, !!this.error && (h("sc-alert", { key: '09881cc0ca0689de423624131c7dcfb648641a7b', onClick: event => {
                 event.stopPropagation();
-            }, type: "danger", scrollOnOpen: true, open: !!this.error, closable: false }, !!getTopLevelError(this.error) && h("span", { key: '96532621b9db52b646b0a1491f9cd80f42f0ec60', slot: "title", innerHTML: getTopLevelError(this.error) }), (getAdditionalErrorMessages(this.error) || []).map((message, index) => (h("div", { innerHTML: message, key: index }))))), h("slot", { key: '60ed01cfba9379cc0c6e63b1ecec78d88e3a2b5c' })));
+            }, type: "danger", scrollOnOpen: true, open: !!this.error, closable: false }, !!getTopLevelError(this.error) && h("span", { key: 'a4600aa6606a8326d81df8f0e6b07f59bb2605c7', slot: "title", innerHTML: getTopLevelError(this.error) }), (getAdditionalErrorMessages(this.error) || []).map((message, index) => (h("div", { innerHTML: message, key: index }))))), h("slot", { key: '0d1ea96966d67f039a2954e16f545e96aebb1d44' })));
     }
     get el() { return getElement(this); }
 };

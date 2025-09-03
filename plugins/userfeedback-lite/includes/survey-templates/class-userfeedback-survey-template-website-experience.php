@@ -17,14 +17,14 @@ class UserFeedback_Survey_Template_Web_Experience extends UserFeedback_Survey_Te
 	 * @inheritdoc
 	 */
 	public function get_name() {
-		return __( 'Website Experience', 'userfeedback' );
+		return __( 'Website Experience', 'userfeedback-lite' );
 	}
 
 	/**
 	 * @inheritdoc
 	 */
 	public function get_description() {
-		return __( 'Learn how customers currently rate your website experience.', 'userfeedback' );
+		return __( 'Learn how customers currently rate your website experience.', 'userfeedback-lite' );
 	}
 
 	/**
@@ -37,7 +37,7 @@ class UserFeedback_Survey_Template_Web_Experience extends UserFeedback_Survey_Te
 			'questions' => array(
 				array(
 					'type'   => 'radio-button',
-					'title'  => __( 'On a scale of 1-5, how would you rate your experience? ', 'userfeedback' ),
+					'title'  => __( 'On a scale of 1-5, how would you rate your experience? ', 'userfeedback-lite' ),
 					'config' => array(
 						'options' => array( 1, 2, 3, 4, 5 ),
 					),

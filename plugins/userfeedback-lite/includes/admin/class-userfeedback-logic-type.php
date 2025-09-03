@@ -96,11 +96,11 @@ class UserFeedback_Logic_Type
 		$data = array(
 			array(
 				'id' => 'user_logged_in',
-				'label' => __('Logged-in', 'userfeedback'),
+				'label' => __('Logged-in', 'userfeedback-lite'),
 			),
 			array(
 				'id' => 'user_logged_out',
-				'label' => __('Logged-out', 'userfeedback'),
+				'label' => __('Logged-out', 'userfeedback-lite'),
 			),
 		);
 
@@ -121,27 +121,27 @@ class UserFeedback_Logic_Type
 		$data = array(
 			array(
 				'id' => 'is_front_page',
-				'label' => __('Homepage', 'userfeedback'),
+				'label' => __('Homepage', 'userfeedback-lite'),
 			),
 			array(
 				'id' => 'is_archive',
-				'label' => __('Archive', 'userfeedback'),
+				'label' => __('Archive', 'userfeedback-lite'),
 			),
 			array(
 				'id' => 'is_single',
-				'label' => __('Single post/page', 'userfeedback'),
+				'label' => __('Single post/page', 'userfeedback-lite'),
 			),
 			array(
 				'id' => 'is_search',
-				'label' => __('Search page', 'userfeedback'),
+				'label' => __('Search page', 'userfeedback-lite'),
 			),
 			array(
 				'id' => 'is_404',
-				'label' => __('404 page', 'userfeedback'),
+				'label' => __('404 page', 'userfeedback-lite'),
 			),
 			array(
 				'id' => 'is_author',
-				'label' => __('Author page', 'userfeedback'),
+				'label' => __('Author page', 'userfeedback-lite'),
 			),
 		);
 

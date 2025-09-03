@@ -1,7 +1,9 @@
 {
   "name": "htmega/accordion",
   "category": "htmega-blocks",
+  "keywords": [ "accordion", "htmega", "ht mega", "widget", "faq" ],
   "title": "Accordion",
+  "description": "Add collapsible accordion sections for organized, space-saving content",
   "example": {
     "attributes": {
       "preview": true

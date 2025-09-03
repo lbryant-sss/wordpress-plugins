@@ -1,7 +1,9 @@
 {
   "name": "htmega/brand",
   "category": "htmega-blocks",
+  "keywords": [ "brand", "htmega", "ht mega", "widget" ],
   "title": "Brand Logo",
+  "description": "Show off your brand’s logos in a grid or slider layout. Great for partner logos, brand associations, or certification display.",
   "example": {
     "attributes": {
       "preview": true

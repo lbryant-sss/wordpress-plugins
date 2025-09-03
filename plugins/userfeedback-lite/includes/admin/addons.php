@@ -175,7 +175,7 @@ function userfeedback_ajax_deactivate_addon() {
 	if ( ! current_user_can( 'deactivate_plugins' ) ) {
 		wp_send_json(
 			array(
-				'error' => esc_html__( 'You are not allowed to deactivate plugins', 'userfeedback' ),
+				'error' => esc_html__( 'You are not allowed to deactivate plugins', 'userfeedback-lite' ),
 			)
 		);
 	}
@@ -208,7 +208,7 @@ function userfeedback_ajax_install_addon() {
 	if ( ! userfeedback_can_install_plugins() ) {
 		wp_send_json(
 			array(
-				'error' => esc_html__( 'You are not allowed to install plugins', 'userfeedback' ),
+				'error' => esc_html__( 'You are not allowed to install plugins', 'userfeedback-lite' ),
 			)
 		);
 	}
@@ -286,7 +286,7 @@ function userfeedback_ajax_activate_addon() {
 	if ( ! current_user_can( 'activate_plugins' ) ) {
 		wp_send_json(
 			array(
-				'error' => esc_html__( 'You are not allowed to activate plugins', 'userfeedback' ),
+				'error' => esc_html__( 'You are not allowed to activate plugins', 'userfeedback-lite' ),
 			)
 		);
 	}

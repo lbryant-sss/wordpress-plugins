@@ -1,6 +1,8 @@
 {
   "name": "htmega/cta",
   "category": "htmega-blocks",
+  "keywords": [ "cta", "htmega", "ht mega", "widget" ],
+  "description": "Create attention-grabbing CTAs to encourage user action with customizable buttons.",
   "title": "Call TO Action",
   "example": {
     "attributes": {

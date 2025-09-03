@@ -17,14 +17,14 @@ class UserFeedback_Survey_Template_Blank extends UserFeedback_Survey_Template {
 	 * @inheritdoc
 	 */
 	public function get_name() {
-		return __( 'Start From Scratch', 'userfeedback' );
+		return __( 'Start From Scratch', 'userfeedback-lite' );
 	}
 
 	/**
 	 * @inheritdoc
 	 */
 	public function get_description() {
-		return __( 'Create a completely custom UserFeedback survey.', 'userfeedback' );
+		return __( 'Create a completely custom UserFeedback survey.', 'userfeedback-lite' );
 	}
 
 	/**

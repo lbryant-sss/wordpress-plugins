@@ -461,7 +461,7 @@ function userfeedback_get_frontend_widget_settings()
 
 	$use_custom_logo = userfeedback_is_pro_version() && userfeedback_is_licensed();
 	$custom_logo     = !empty($userfeedback_settings['widget_custom_logo']) ? $userfeedback_settings['widget_custom_logo'] : '';
-	
+
 	return array(
 		'start_minimized'      => ! empty( $userfeedback_settings['widget_start_minimized'] ) ? boolval( $userfeedback_settings['widget_start_minimized'] ) : false,
 		'show_logo'            => boolval( userfeedback_show_logo($userfeedback_settings ) ),
@@ -477,14 +477,14 @@ function userfeedback_get_frontend_widget_settings()
 		'default_widget_color' => '#ffffff',
 		'default_text_color'   => '#23282d',
 		'default_button_color' => '#2d87f1',
-		'skip_text'            => ! empty( $userfeedback_settings['skip_text'] ) ? $userfeedback_settings['skip_text'] : __( 'Skip', 'userfeedback' ),
-		'next_text'            => ! empty( $userfeedback_settings['next_text'] ) ? $userfeedback_settings['next_text'] : __( 'Next', 'userfeedback' ),
+		'skip_text'            => ! empty( $userfeedback_settings['skip_text'] ) ? $userfeedback_settings['skip_text'] : __( 'Skip', 'userfeedback-lite' ),
+		'next_text'            => ! empty( $userfeedback_settings['next_text'] ) ? $userfeedback_settings['next_text'] : __( 'Next', 'userfeedback-lite' ),
 	);
 }
 
 function userfeedback_show_logo($userfeedback_settings)
 {
-	
+
 	if (isset($userfeedback_settings['logo_type'])) {
 		if ($userfeedback_settings['logo_type'] == 'none') {
 			return false;
@@ -628,11 +628,41 @@ if (!function_exists('userfeedback_get_taxonomy')) {
 	}
 }
 
-if (!function_exists('userfeedback_get_term')) {
-	function userfeedback_get_term()
+if (!function_exists('userfeedback_get_current_post_terms')) {
+	/**
+	 * Get the term ids for the current post.
+	 * Example: [ 1, 2, 3 ]
+	 *
+	 * @return array
+	 */
+	function userfeedback_get_current_post_terms()
 	{
-		$object = get_queried_object();
-		return ( ! empty( $object->term_id ) ) ? $object->term_id : false;
+		if ( is_single() ) {
+			global $post;
+
+			$transient_key = '_userfeedback_post_' . $post->ID . '_terms_ids';
+
+			$post_terms_ids = get_transient( $transient_key );
+			
+			if ( ! empty( $post_terms_ids ) ) {
+				return $post_terms_ids;
+			}
+		
+			$taxonomies = get_object_taxonomies( $post->post_type );
+			
+			if ( ! empty( $taxonomies ) ) {
+				$post_terms_ids = wp_get_object_terms( $post->ID, $taxonomies, array(
+					'fields' => 'ids',
+				) );
+
+				// Cache the post terms ids for 1 hour to avoid multiple calls to the database.
+				set_transient( $transient_key, $post_terms_ids, HOUR_IN_SECONDS );
+			}
+		
+			return $post_terms_ids;
+		}
+
+		return false;
 	}
 }
 
@@ -678,14 +708,14 @@ function userfeedback_get_admin_menu_tooltip() {
 		<div class="userfeedback-admin-menu-tooltip-header">
 			<span class="userfeedback-admin-menu-tooltip-icon"><span
 					class="dashicons dashicons-megaphone"></span></span>
-			<?php esc_html_e( 'Get Feedback Now!', 'userfeedback' ); ?>
+			<?php esc_html_e( 'Get Feedback Now!', 'userfeedback-lite' ); ?>
 			<span class="userfeedback-admin-menu-tooltip-close"><span
 					class="dashicons dashicons-dismiss"></span></span>
 		</div>
 		<div class="userfeedback-admin-menu-tooltip-content">
-			<?php esc_html_e( "👋 Hey you're not collecting any website feedback! Launch a UserFeedback survey now.", 'userfeedback' ); ?>
+			<?php esc_html_e( "👋 Hey you're not collecting any website feedback! Launch a UserFeedback survey now.", 'userfeedback-lite' ); ?>
 			<p>
-				<button id="userfeedback-admin-menu-launch-survery-tooltip-button" data-url="<?php echo esc_url($url); ?>" class="button button-primary"><?php esc_html_e('Launch Survey', 'userfeedback'); ?></button>
+				<button id="userfeedback-admin-menu-launch-survery-tooltip-button" data-url="<?php echo esc_url($url); ?>" class="button button-primary"><?php esc_html_e('Launch Survey', 'userfeedback-lite'); ?></button>
 			</p>
 		</div>
 	</div>
@@ -834,7 +864,7 @@ function userfeedback_get_admin_menu_tooltip() {
 					window.location = url;
 					return false;
 				});
-				
+
 				$('.userfeedback-admin-menu-tooltip-close').on('click', function(e) {
 					e.preventDefault();
 					hideTooltip();

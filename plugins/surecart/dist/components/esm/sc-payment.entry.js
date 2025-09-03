@@ -1,6 +1,6 @@
 import { r as registerInstance, h, F as Fragment, H as Host, a as getElement } from './index-745b6bec.js';
 import { s as state$1 } from './mutations-6bbbe793.js';
-import './watchers-d507e55a.js';
+import './watchers-cee9e5e9.js';
 import { s as state, h as hasOtherAvailableCreditCardProcessor, d as hasMultipleProcessorChoices, e as getAvailableProcessor, a as availableProcessors, b as availableManualPaymentMethods } from './getters-b5084f91.js';
 import { s as state$2 } from './watchers-38693c1f.js';
 import { M as ManualPaymentMethods, a as MockProcessor } from './MockProcessor-498b60c5.js';
@@ -28,7 +28,10 @@ const ScPayment = class {
         this.hideTestModeBadge = undefined;
     }
     componentWillLoad() {
-        state.disabled.processors = this.disabledProcessorTypes;
+        state.disabled = {
+            ...state.disabled,
+            processors: this.disabledProcessorTypes
+        };
     }
     renderStripe(processor) {
         const title = hasOtherAvailableCreditCardProcessor('stripe') ? wp.i18n.__('Credit Card (Stripe)', 'surecart') : wp.i18n.__('Credit Card', 'surecart');

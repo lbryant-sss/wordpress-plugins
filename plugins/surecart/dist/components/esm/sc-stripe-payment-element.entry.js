@@ -3,7 +3,7 @@ import { p as pure } from './pure-963214cb.js';
 import { s as state$2 } from './watchers-38693c1f.js';
 import { o as onChange, s as state, u as updateFormState } from './mutations-6bbbe793.js';
 import { o as onChange$1 } from './store-627acec4.js';
-import './watchers-d507e55a.js';
+import './watchers-cee9e5e9.js';
 import { s as state$1, g as getProcessorByType } from './getters-b5084f91.js';
 import { c as currentFormState } from './getters-487612aa.js';
 import { c as createErrorNotice } from './mutations-ed6d0770.js';
@@ -30,6 +30,8 @@ const ScStripePaymentElement = class {
         this.scPaymentInfoAdded = createEvent(this, "scPaymentInfoAdded", 7);
         this.error = undefined;
         this.confirming = false;
+        this.isInitializingStripe = false;
+        this.isCreatingUpdatingStripeElement = false;
         this.loaded = false;
         this.styles = undefined;
     }
@@ -70,9 +72,10 @@ const ScStripePaymentElement = class {
     }
     async initializeStripe() {
         var _a, _b;
-        if (typeof ((_a = state === null || state === void 0 ? void 0 : state.checkout) === null || _a === void 0 ? void 0 : _a.live_mode) === 'undefined' || ((_b = state$1 === null || state$1 === void 0 ? void 0 : state$1.instances) === null || _b === void 0 ? void 0 : _b.stripe)) {
+        if (typeof ((_a = state === null || state === void 0 ? void 0 : state.checkout) === null || _a === void 0 ? void 0 : _a.live_mode) === 'undefined' || ((_b = state$1 === null || state$1 === void 0 ? void 0 : state$1.instances) === null || _b === void 0 ? void 0 : _b.stripe) || this.isInitializingStripe) {
             return;
         }
+        this.isInitializingStripe = true;
         const { processor_data } = getProcessorByType('stripe') || {};
         try {
             state$1.instances.stripe = await pure.loadStripe(processor_data === null || processor_data === void 0 ? void 0 : processor_data.publishable_key, { stripeAccount: processor_data === null || processor_data === void 0 ? void 0 : processor_data.account_id });
@@ -80,6 +83,7 @@ const ScStripePaymentElement = class {
         }
         catch (e) {
             this.error = (e === null || e === void 0 ? void 0 : e.message) || wp.i18n.__('Stripe could not be loaded', 'surecart');
+            this.isInitializingStripe = false;
             // don't continue.
             return;
         }
@@ -100,10 +104,32 @@ const ScStripePaymentElement = class {
                 this.maybeConfirmOrder();
             }
         });
+        this.isInitializingStripe = false;
+    }
+    clearStripeInstances() {
+        var _a, _b, _c, _d;
+        this.isInitializingStripe = false;
+        this.isCreatingUpdatingStripeElement = false;
+        if (this === null || this === void 0 ? void 0 : this.element) {
+            try {
+                (_b = (_a = this.element) === null || _a === void 0 ? void 0 : _a.unmount) === null || _b === void 0 ? void 0 : _b.call(_a); // If Stripe provides this method
+            }
+            catch (e) {
+                console.warn('Could not unmount Stripe element:', e);
+            }
+            this.element = null;
+        }
+        if ((_c = state$1 === null || state$1 === void 0 ? void 0 : state$1.instances) === null || _c === void 0 ? void 0 : _c.stripeElements) {
+            state$1.instances.stripeElements = null;
+        }
+        if ((_d = state$1 === null || state$1 === void 0 ? void 0 : state$1.instances) === null || _d === void 0 ? void 0 : _d.stripe) {
+            state$1.instances.stripe = null;
+        }
     }
     disconnectedCallback() {
         this.unlistenToFormState();
         this.unlistenToCheckout();
+        this.clearStripeInstances();
     }
     getElementsConfig() {
         var _a, _b, _c, _d;
@@ -151,10 +177,11 @@ const ScStripePaymentElement = class {
         // need an order amount, etc.
         if (!((_a = state === null || state === void 0 ? void 0 : state.checkout) === null || _a === void 0 ? void 0 : _a.payment_method_required))
             return;
-        if (!state$1.instances.stripe)
+        if (!state$1.instances.stripe || this.isCreatingUpdatingStripeElement)
             return;
         if (((_b = state.checkout) === null || _b === void 0 ? void 0 : _b.status) && ['paid', 'processing'].includes((_c = state.checkout) === null || _c === void 0 ? void 0 : _c.status))
             return;
+        this.isCreatingUpdatingStripeElement = true;
         // create the elements if they have not yet been created.
         if (!state$1.instances.stripeElements) {
             // we have what we need, load elements.
@@ -198,9 +225,11 @@ const ScStripePaymentElement = class {
                     });
                 }
             });
+            this.isCreatingUpdatingStripeElement = false;
             return;
         }
         state$1.instances.stripeElements.update(this.getElementsConfig());
+        this.isCreatingUpdatingStripeElement = false;
     }
     /** Update the default attributes of the element when they cahnge. */
     handleUpdateElement() {
@@ -318,11 +347,11 @@ const ScStripePaymentElement = class {
         }
     }
     render() {
-        return (h("div", { key: 'c896a9d3f9ca59167ebeeb6cc28e63677bd2cb02', class: "sc-stripe-payment-element", "data-testid": "stripe-payment-element" }, !!this.error && (h("sc-text", { key: 'dff97bc4c5ad57d534f9f19dc3f4abaaf74be3fe', style: {
+        return (h("div", { key: '638a2c4435eb37179bde3662be86f6328b03ab9d', class: "sc-stripe-payment-element", "data-testid": "stripe-payment-element" }, !!this.error && (h("sc-text", { key: '5818ef589db0e79c0ca31ed282a1da4ae13fac3a', style: {
                 'color': 'var(--sc-color-danger-500)',
                 '--font-size': 'var(--sc-font-size-small)',
                 'marginBottom': '0.5em',
-            } }, this.error)), h("div", { key: '83818eda6b0219d8bc2deac72297f249f314ce95', class: "loader", hidden: this.loaded }, h("div", { key: 'cc3fbe59a2f5226fc522694a8d1fabe346c4732a', class: "loader__row" }, h("div", { key: 'c304009b1f28e385901a020640202d75626af239', style: { width: '50%' } }, h("sc-skeleton", { key: 'f87d4157b3516da7a486c8cba127f4f005aa4a3b', style: { width: '50%', marginBottom: '0.5em' } }), h("sc-skeleton", { key: '59819df5bb64e0725130bbd45e855f91e1766a02' })), h("div", { key: 'f81181a747c77a914225888f7248a381916c1be0', style: { flex: '1' } }, h("sc-skeleton", { key: '8319f116262ff9ee3d4411f4d1e12471ac955fe9', style: { width: '50%', marginBottom: '0.5em' } }), h("sc-skeleton", { key: 'db8cca4168ad5f0077184465482d23e37ee40e1e' })), h("div", { key: '9cb7c07247ac0dd7a18688001006c643db2cb844', style: { flex: '1' } }, h("sc-skeleton", { key: '340995922f6fbaae291ecc7cd2e9dfb27b9f5bcc', style: { width: '50%', marginBottom: '0.5em' } }), h("sc-skeleton", { key: '38778fc5811dc1b41d22c7fb722037ae66826ec9' }))), h("div", { key: '8f2851b53058e5ff9e6c0ac7cc098c34f76513da', class: "loader__details" }, h("sc-skeleton", { key: 'f193c3bf2559330ff5a386b43256e6bdae778837', style: { height: '1rem' } }), h("sc-skeleton", { key: '16c8123b5527a042c1e74c6517e2823ed898783a', style: { height: '1rem', width: '30%' } }))), h("div", { key: '9ee37ec2a78c5c9bbc5dc95ed7d5db428a6d0a82', hidden: !this.loaded, class: "sc-payment-element-container", ref: el => (this.container = el) })));
+            } }, this.error)), h("div", { key: 'fb05259dc675480a2ccc8855938c5d55c53e06d4', class: "loader", hidden: this.loaded }, h("div", { key: '1a0925fa5d398efcf0ec2a19a7a276f2e775d345', class: "loader__row" }, h("div", { key: '8d08392e27112efdbc2cc5d70800ae1289bcf3c2', style: { width: '50%' } }, h("sc-skeleton", { key: '6e94c472619107ccd9b4690983367e5d9eb749b7', style: { width: '50%', marginBottom: '0.5em' } }), h("sc-skeleton", { key: 'b1cc82d1a8648a9f222c57725303d09b8e18c977' })), h("div", { key: '1952231caba575300ee3b4dc8f255af241f1907e', style: { flex: '1' } }, h("sc-skeleton", { key: 'e14e3b99d95ad0ed07757d95de65e17ba488d08f', style: { width: '50%', marginBottom: '0.5em' } }), h("sc-skeleton", { key: 'e371afeab1a75c30d0f794a5fcb82a1d859e61a5' })), h("div", { key: 'd1e6de3606ad2005d1b9de6724a0c3c66eb740d4', style: { flex: '1' } }, h("sc-skeleton", { key: '9911e279201280153c53edf6b431ae79ea63a93b', style: { width: '50%', marginBottom: '0.5em' } }), h("sc-skeleton", { key: '16dbe4f7595d1f80b6aacd011f7f512b4616c945' }))), h("div", { key: 'e9e80791bc6269903cb971628b630936811d40c8', class: "loader__details" }, h("sc-skeleton", { key: '97161624fa12b197f50ea83d578fd06e364281db', style: { height: '1rem' } }), h("sc-skeleton", { key: '1e86e0cc589b0e1449e921448e6b98289b86e975', style: { height: '1rem', width: '30%' } }))), h("div", { key: 'b79024afb7b78f8a00bbe0e3b85479b381778cad', hidden: !this.loaded, class: "sc-payment-element-container", ref: el => (this.container = el) })));
     }
     get el() { return getElement(this); }
     static get watchers() { return {

@@ -65,7 +65,7 @@ class UserFeedback_Results {
 					'response_ids' => array(
 						'required'          => true,
 						'type'              => 'array',
-						'description'       => __('Survey response ids.', 'userfeedback'),
+						'description'       => __('Survey response ids.', 'userfeedback-lite'),
 						'sanitize_callback' => function($ids) {
 							return array_map('esc_attr', $ids);
 						},
@@ -86,7 +86,7 @@ class UserFeedback_Results {
 					'response_ids' => array(
 						'required'          => true,
 						'type'              => 'array',
-						'description'       => __('Survey response ids.', 'userfeedback'),
+						'description'       => __('Survey response ids.', 'userfeedback-lite'),
 						'sanitize_callback' => function($ids) {
 							return array_map('esc_attr', $ids);
 						},
@@ -107,7 +107,7 @@ class UserFeedback_Results {
 					'response_ids' => array(
 						'required'          => true,
 						'type'              => 'array',
-						'description'       => __('Survey response ids.', 'userfeedback'),
+						'description'       => __('Survey response ids.', 'userfeedback-lite'),
 						'sanitize_callback' => function($ids) {
 							return array_map('esc_attr', $ids);
 						},

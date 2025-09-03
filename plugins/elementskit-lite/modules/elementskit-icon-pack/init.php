@@ -13,7 +13,10 @@ class Init {
 	}
 
 	public function __construct() {
-		// removed 'elementor/frontend/before_enqueue_scripts'
+		if (!self::is_svg_icon_experiment()) {
+			add_action('elementor/frontend/before_enqueue_scripts', array($this, 'enqueue_frontend'));
+		}
+
 		add_action('elementor/preview/enqueue_styles', array($this, 'enqueue_frontend'));
 		add_filter('elementor/icons_manager/additional_tabs', array($this, 'register_icon_pack_to_elementor'));
 		add_filter('elementor/widget/render_content', array($this, 'filter_widget_content'), 10, 2);
@@ -35,8 +38,7 @@ class Init {
 			'native'        => true,
 		);
 
-		$ekit_svg_icon = self::is_svg_icon_experiment();
-		if (!$ekit_svg_icon) {
+		if (!self::is_svg_icon_experiment()) {
 			$font_new['ekiticons']['url'] = self::get_url() . 'assets/css/ekiticons.css';
 		} else {
 			$font_new['ekiticons']['enqueue'] = [self::get_url() . 'assets/css/ekiticons.css'];

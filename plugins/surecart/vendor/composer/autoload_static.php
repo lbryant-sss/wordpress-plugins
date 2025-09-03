@@ -739,6 +739,7 @@ class ComposerStaticInitde6168bc7e17873548173e515fd8b9ef
         'SureCart\\Integrations\\Bricks\\Elements\\PriceData' => __DIR__ . '/../..' . '/app/src/Integrations/Bricks/Elements/PriceData.php',
         'SureCart\\Integrations\\Bricks\\Elements\\Product' => __DIR__ . '/../..' . '/app/src/Integrations/Bricks/Elements/Product.php',
         'SureCart\\Integrations\\Bricks\\Elements\\ProductCard' => __DIR__ . '/../..' . '/app/src/Integrations/Bricks/Elements/ProductCard.php',
+        'SureCart\\Integrations\\Bricks\\Elements\\ProductContent' => __DIR__ . '/../..' . '/app/src/Integrations/Bricks/Elements/ProductContent.php',
         'SureCart\\Integrations\\Bricks\\Elements\\ProductData' => __DIR__ . '/../..' . '/app/src/Integrations/Bricks/Elements/ProductData.php',
         'SureCart\\Integrations\\Bricks\\Elements\\Quantity' => __DIR__ . '/../..' . '/app/src/Integrations/Bricks/Elements/Quantity.php',
         'SureCart\\Integrations\\Bricks\\Elements\\SaleBadge' => __DIR__ . '/../..' . '/app/src/Integrations/Bricks/Elements/SaleBadge.php',

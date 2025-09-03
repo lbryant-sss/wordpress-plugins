@@ -17,14 +17,14 @@ class UserFeedback_Survey_Template_Restaurant_Menu extends UserFeedback_Survey_T
 	 * @inheritdoc
 	 */
 	public function get_name() {
-		return __( 'Restaurant Menu Survey', 'userfeedback' );
+		return __( 'Restaurant Menu Survey', 'userfeedback-lite' );
 	}
 
 	/**
 	 * @inheritdoc
 	 */
 	public function get_description() {
-		return __( 'See which items to add to your menu.', 'userfeedback' );
+		return __( 'See which items to add to your menu.', 'userfeedback-lite' );
 	}
 
 	/**
@@ -37,7 +37,7 @@ class UserFeedback_Survey_Template_Restaurant_Menu extends UserFeedback_Survey_T
 			'questions' => array(
 				array(
 					'type'  => 'long-text',
-					'title' => __( 'What items should we add to our menu? ', 'userfeedback' ),
+					'title' => __( 'What items should we add to our menu? ', 'userfeedback-lite' ),
 				),
 			),
 		);

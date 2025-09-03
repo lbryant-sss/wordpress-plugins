@@ -20,7 +20,7 @@ if (!class_exists('UserFeedback_Base')) {
 		 * @access public
 		 * @var string $version Plugin version
 		 */
-		public $version = '1.7.0';
+		public $version = '1.8.0';
 
 		/**
 		 * Plugin file.
@@ -179,7 +179,7 @@ if (!class_exists('UserFeedback_Base')) {
 				}
 
 				// Load the plugin textdomain.
-				add_action('plugins_loaded', array(self::$instance, 'load_plugin_textdomain'), 15);
+				add_action('init', array(self::$instance, 'load_plugin_textdomain'), 15);
 
 				// Load admin only components.
 				if (is_admin() || (defined('DOING_CRON') && DOING_CRON)) {
@@ -423,6 +423,8 @@ if (!class_exists('UserFeedback_Base')) {
 			// Metaboxes
 			require_once USERFEEDBACK_PLUGIN_DIR . 'includes/admin/class-userfeedback-metabox.php';
 			require_once USERFEEDBACK_PLUGIN_DIR . 'includes/gutenberg/gutenberg.php';
+			// Task management
+			require_once USERFEEDBACK_PLUGIN_DIR . 'includes/class-userfeedback-task.php';
 		}
 
 		/**
@@ -521,7 +523,7 @@ if (!class_exists('UserFeedback_Base')) {
 		 */
 		public function __clone()
 		{
-			_doing_it_wrong(__FUNCTION__, esc_html__('Cheatin&#8217; huh?', 'userfeedback'), '1.0.0');
+			_doing_it_wrong(__FUNCTION__, esc_html__('Cheatin&#8217; huh?', 'userfeedback-lite'), '1.0.0');
 		}
 
 		/**
@@ -535,7 +537,7 @@ if (!class_exists('UserFeedback_Base')) {
 		 */
 		public function __wakeup()
 		{
-			_doing_it_wrong(__FUNCTION__, esc_html__('Cheatin&#8217; huh?', 'userfeedback'), '1.0.0');
+			_doing_it_wrong(__FUNCTION__, esc_html__('Cheatin&#8217; huh?', 'userfeedback-lite'), '1.0.0');
 		}
 
 		public function fix_db_timestamp_column()
@@ -618,6 +620,16 @@ if (!function_exists('userfeedback_maybe_redirect_to_onboarding')) {
 	}
 }
 add_action('admin_init', 'userfeedback_maybe_redirect_to_onboarding', 9999);
+
+
+if (!function_exists('userfeedback_load_action_scheduler')) {
+	function userfeedback_load_action_scheduler() {
+		require_once plugin_dir_path(__FILE__) . 'includes/lib/action-scheduler/action-scheduler.php';
+	}
+}
+
+// Load Action Scheduler, it requires a special loading procedure.
+add_action('plugins_loaded', 'userfeedback_load_action_scheduler', -10);
 
 /**
  * Returns the UserFeedback combined object that you can use for both

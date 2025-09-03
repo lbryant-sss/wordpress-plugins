@@ -272,7 +272,7 @@ class Userfeedback_AI_Survey_Summary {
 			return rest_ensure_response(
 				array(
 					'success' => false,
-					'error'   => __( 'We don\'t have enough data to process this survey.', 'userfeedback' ),
+					'error'   => __( 'We don\'t have enough data to process this survey.', 'userfeedback-lite' ),
 				)
 			);
 		}
@@ -324,7 +324,7 @@ class Userfeedback_AI_Survey_Summary {
 			return rest_ensure_response(
 				array(
 					'success' => false,
-					'error'   => __( 'We don\'t have enough data to process this survey.', 'userfeedback' ),
+					'error'   => __( 'We don\'t have enough data to process this survey.', 'userfeedback-lite' ),
 				)
 			);
 		}
@@ -333,7 +333,7 @@ class Userfeedback_AI_Survey_Summary {
 			return rest_ensure_response(
 				array(
 					'success' => false,
-					'error'   => __( 'The survey exceeds our server capacity.', 'userfeedback' ),
+					'error'   => __( 'The survey exceeds our server capacity.', 'userfeedback-lite' ),
 				)
 			);
 		}
@@ -359,7 +359,7 @@ class Userfeedback_AI_Survey_Summary {
 			return rest_ensure_response(
 				array(
 					'success' => false,
-					'error'   => __( 'An error occurred while trying to get the AI Summary.', 'userfeedback' ),
+					'error'   => __( 'An error occurred while trying to get the AI Summary.', 'userfeedback-lite' ),
 				)
 			);
 		}
@@ -390,7 +390,7 @@ class Userfeedback_AI_Survey_Summary {
 				default:
 					return rest_ensure_response( array(
 						'success' => false,
-						'error'   => __( 'An error occurred while trying to get the AI Summary.', 'userfeedback' ),
+						'error'   => __( 'An error occurred while trying to get the AI Summary.', 'userfeedback-lite' ),
 					));
 					break;
 			}
@@ -401,7 +401,7 @@ class Userfeedback_AI_Survey_Summary {
 			return rest_ensure_response(
 				array(
 					'success' => false,
-					'error'   => __( 'An error occurred while trying to get the AI Summary.', 'userfeedback' ),
+					'error'   => __( 'An error occurred while trying to get the AI Summary.', 'userfeedback-lite' ),
 				)
 			);
 		}

@@ -490,7 +490,7 @@ function userfeedback_get_common_script_localization_object() {
 			'roles'                     => userfeedback_get_roles(),
 			'roles_manage_options'      => userfeedback_get_manage_options_roles(),
 			'plugin_version'            => USERFEEDBACK_VERSION,
-			'translations'              => wp_get_jed_locale_data( 'userfeedback' ),
+			'translations'              => wp_get_jed_locale_data( 'userfeedback-lite' ),
 			'assets'                    => plugins_url( '/assets/vue', USERFEEDBACK_PLUGIN_FILE ),
 			'uf_assets'                 => plugins_url( '/assets', USERFEEDBACK_PLUGIN_FILE ),
 			'integrations'              => array(),

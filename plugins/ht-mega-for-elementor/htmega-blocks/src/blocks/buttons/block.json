@@ -1,6 +1,8 @@
 {
   "name": "htmega/buttons",
   "category": "htmega-blocks",
+  "keywords": [ "buttons", "htmega", "ht mega", "widget" ],
+  "description": "Design Interactive Buttons with Unique Styles & Effects.",
   "title": "Buttons",
   "example": {
     "attributes": {

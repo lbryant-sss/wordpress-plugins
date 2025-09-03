@@ -2,11 +2,11 @@
 
 namespace RebelCode\Spotlight\Instagram\Actions;
 
-use Psr\Http\Client\ClientExceptionInterface;
-use Psr\Http\Client\ClientInterface;
-use RebelCode\Psr7\Request;
-use RebelCode\Spotlight\Instagram\PostTypes\AccountPostType;
 use RebelCode\Spotlight\Instagram\Wp\PostType;
+use RebelCode\Spotlight\Instagram\PostTypes\AccountPostType;
+use RebelCode\Psr7\Request;
+use Psr\Http\Client\ClientInterface;
+use Psr\Http\Client\ClientExceptionInterface;
 
 class OEmbedHandler
 {
@@ -41,12 +41,15 @@ class OEmbedHandler
         // User must have a business account connected
         if ($account === null) {
             if (is_user_logged_in() && current_user_can('edit_posts')) {
-                $msg = sprintf(
-                    'A free %s is required to embed Instagram posts. Kindly connect one and try again. (This message is only visible to logged-in users.)',
-                    '<a href="https://docs.spotlightwp.com/article/555-how-to-switch-to-an-instagram-business-account" target="_blank">Business account</a>'
+                $message = sprintf(
+                    'An %1$s is required to embed Instagram posts. This requires a %2$s or %3$s account connected to a Facebook Page. %4$s (This message is only visible to logged-in users.)',
+                    '<b>Advanced connection</b>',
+                    '<a href="https://docs.spotlightwp.com/article/886-what-is-an-instagram-creator-account" target="_blank">Creator</a>',
+                    '<a href="https://docs.spotlightwp.com/article/885-what-is-an-instagram-business-account" target="_blank">Business</a>',
+                    '<a href="https://docs.spotlightwp.com/article/905-what-is-an-advanced-account" target="_blank">Learn more →</a>'
                 );
 
-                return "<p><b>Spotlight</b>: $msg</p>";
+                return "<p><b>Spotlight</b>: $message</p>";
             } else {
                 return '';
             }

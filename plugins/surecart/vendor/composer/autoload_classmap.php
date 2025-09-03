@@ -649,6 +649,7 @@ return array(
     'SureCart\\Integrations\\Bricks\\Elements\\PriceData' => $baseDir . '/app/src/Integrations/Bricks/Elements/PriceData.php',
     'SureCart\\Integrations\\Bricks\\Elements\\Product' => $baseDir . '/app/src/Integrations/Bricks/Elements/Product.php',
     'SureCart\\Integrations\\Bricks\\Elements\\ProductCard' => $baseDir . '/app/src/Integrations/Bricks/Elements/ProductCard.php',
+    'SureCart\\Integrations\\Bricks\\Elements\\ProductContent' => $baseDir . '/app/src/Integrations/Bricks/Elements/ProductContent.php',
     'SureCart\\Integrations\\Bricks\\Elements\\ProductData' => $baseDir . '/app/src/Integrations/Bricks/Elements/ProductData.php',
     'SureCart\\Integrations\\Bricks\\Elements\\Quantity' => $baseDir . '/app/src/Integrations/Bricks/Elements/Quantity.php',
     'SureCart\\Integrations\\Bricks\\Elements\\SaleBadge' => $baseDir . '/app/src/Integrations/Bricks/Elements/SaleBadge.php',

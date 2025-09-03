@@ -1470,6 +1470,24 @@ function ur_admin_form_settings_fields( $form_id ) {
 				'product'           => 'user-registration/user-registration.php',
 			),
 			array(
+				'type'              => 'toggle',
+				'label'             => __( 'Enable Spam Protection (Akismet)', 'user-registration' ),
+				'required'          => false,
+				'id'                => 'user_registration_enable_akismet',
+				'class'             => array( '' ),
+				'custom_attributes' => array(),
+				'default'           => ur_get_single_post_meta( $form_id, 'user_registration_enable_akismet', false ),
+				'tip'               => __( 'Stop spam sign-ups using the Akismet plugin.', 'user-registration' ),
+				'default_value'     => false,
+				'product'           => 'user-registration/user-registration.php',
+			),
+			array(
+				'type'        => 'label',
+				'id'          => 'user_registration_akismet_warning',
+				'description' => ur_check_akismet_installation(),
+				'product'     => 'user-registration/user-registration.php',
+			),
+			array(
 				'type'              => 'select',
 				'label'             => __( 'Redirect After Registration', 'user-registration' ),
 				'description'       => '',
@@ -1500,6 +1518,21 @@ function ur_admin_form_settings_fields( $form_id ) {
 				'product'           => 'user-registration/user-registration.php',
 			),
 			array(
+				'type'              => 'number',
+				'label'             => __( 'Delay Before Redirect ( Seconds )', 'user-registration' ),
+				'description'       => '',
+				'required'          => false,
+				'id'                => 'user_registration_form_setting_redirect_after',
+				'class'             => array('ur-input-field'),
+				'input_class'       => array(),
+				'custom_attributes' => array(),
+				'min'               => '0',
+				'default'           => ur_get_single_post_meta( $form_id, 'user_registration_form_setting_redirect_after', '2' ),
+				'tip'               => __( 'How many seconds to wait before sending the user to another page.', 'user-registration' ),
+				'default_value'     => '2',
+				'product'           => 'user-registration/user-registration.php',
+			),
+			array(
 				'type'              => 'select',
 				'label'             => __( 'Redirect to Page', 'user-registration' ),
 				'description'       => '',
@@ -1526,39 +1559,6 @@ function ur_admin_form_settings_fields( $form_id ) {
 				// Getting redirect options from global settings for backward compatibility.
 				'default_value'     => get_option( 'user_registration_general_setting_redirect_options', '' ),
 				'product'           => 'user-registration/user-registration.php',
-			),
-			array(
-				'type'              => 'number',
-				'label'             => __( 'Delay Before Redirect ( Seconds )', 'user-registration' ),
-				'description'       => '',
-				'required'          => false,
-				'id'                => 'user_registration_form_setting_redirect_after',
-				'class'             => array('ur-input-field'),
-				'input_class'       => array(),
-				'custom_attributes' => array(),
-				'min'               => '0',
-				'default'           => ur_get_single_post_meta( $form_id, 'user_registration_form_setting_redirect_after', '2' ),
-				'tip'               => __( 'How many seconds to wait before sending the user to another page.', 'user-registration' ),
-				'default_value'     => '2',
-				'product'           => 'user-registration/user-registration.php',
-			),
-			array(
-				'type'              => 'toggle',
-				'label'             => __( 'Enable Spam Protection (Akismet)', 'user-registration' ),
-				'required'          => false,
-				'id'                => 'user_registration_enable_akismet',
-				'class'             => array( '' ),
-				'custom_attributes' => array(),
-				'default'           => ur_get_single_post_meta( $form_id, 'user_registration_enable_akismet', false ),
-				'tip'               => __( 'Stop spam sign-ups using the Akismet plugin.', 'user-registration' ),
-				'default_value'     => false,
-				'product'           => 'user-registration/user-registration.php',
-			),
-			array(
-				'type'        => 'label',
-				'id'          => 'user_registration_akismet_warning',
-				'description' => ur_check_akismet_installation(),
-				'product'     => 'user-registration/user-registration.php',
 			),
 		),
 	);
@@ -4368,18 +4368,18 @@ if ( ! function_exists( 'ur_process_login' ) ) {
 				$error_message = apply_filters( 'login_errors', $message );
 				$error_key = 'ur_login_error_' . uniqid();
 				set_transient( $error_key, $error_message, 300 ); // 5 minutes
-				
+
 				/**
 				 * Triggered when a user fails to log in during the user registration process.
 				 */
 				do_action( 'user_registration_login_failed' );
 
-				
+
 				$redirect_url = wp_get_raw_referer() ? wp_get_raw_referer() : ur_get_my_account_url();
 				$redirect_url = add_query_arg( 'urm_error', $error_key, $redirect_url );
 				wp_redirect( $redirect_url );
 				exit;
-				
+
 			}
 		}
 	}
@@ -6810,14 +6810,14 @@ if ( ! function_exists( 'ur_email_send_failed_notice' ) ) {
 						'title'  => __( 'I have a query', 'user-registration' ),
 						'icon'   => 'dashicons-testimonial',
 						'link'   => 'https://wpuserregistration.com/support',
-						'class'  => 'button button-secondary notice-have-query',
+						'class'  => 'button-secondary notice-have-query',
 						'target' => '_blank',
 					),
 					array(
 						'title'  => __( 'Visit Documentation', 'user-registration' ),
 						'icon'   => 'dashicons-media-document',
 						'link'   => 'https://docs.wpuserregistration.com/docs/emails-are-not-being-delivered/',
-						'class'  => 'button button-secondary notice-have-query',
+						'class'  => 'button-secondary notice-have-query',
 						'target' => '_blank',
 					),
 				),
@@ -6926,14 +6926,14 @@ if ( ! function_exists( 'ur_spam_users_detected' ) ) {
 						'title'  => __( 'I have a query', 'user-registration' ),
 						'icon'   => 'dashicons-testimonial',
 						'link'   => 'https://wpuserregistration.com/support',
-						'class'  => 'button button-secondary notice-have-query',
+						'class'  => 'button-secondary notice-have-query',
 						'target' => '_blank',
 					),
 					array(
 						'title'  => __( 'Visit Documentation', 'user-registration' ),
 						'icon'   => 'dashicons-media-document',
 						'link'   => 'https://docs.wpuserregistration.com/docs/how-to-integrate-google-recaptcha/',
-						'class'  => 'button button-secondary',
+						'class'  => 'button-secondary',
 						'target' => '_blank',
 					),
 				),
@@ -8316,8 +8316,8 @@ if ( ! function_exists( 'render_login_option_settings' ) ) {
 					$settings .= '<label for="' . esc_attr( $value['id'] ) . '">' . esc_attr( $value['title'] ) . ' ' . wp_kses_post( $tooltip_html ) . '</label>';
 					$settings .= '<div class="user-registration-login-form-global-settings--field">';
 					$settings .= '<img src="' . esc_attr( $option_value ) . '" alt="' . esc_attr__( 'Header Logo', 'user-registration' ) . '" class="ur-image-uploader" height="auto" width="20%">';
-					$settings .= '<button type="button" class="ur-image-uploader ur-button button button-secondary" ' . ( empty( $option_value ) ? '' : 'style = "display:none"' ) . '>' . esc_html__( 'Upload Image', 'user-registration' ) . '</button>';
-					$settings .= '<button type="button" class="ur-image-remover ur-button button button-secondary" ' . ( ! empty( $option_value ) ? '' : 'style = "display:none"' ) . '>' . esc_html__( 'Remove Image', 'user-registration' ) . '</button>';
+					$settings .= '<button type="button" class="ur-image-uploader ur-button button-secondary" ' . ( empty( $option_value ) ? '' : 'style = "display:none"' ) . '>' . esc_html__( 'Upload Image', 'user-registration' ) . '</button>';
+					$settings .= '<button type="button" class="ur-image-remover ur-button button-secondary" ' . ( ! empty( $option_value ) ? '' : 'style = "display:none"' ) . '>' . esc_html__( 'Remove Image', 'user-registration' ) . '</button>';
 
 					$settings .= '	<input
 							name="' . esc_attr( $value['id'] ) . '"

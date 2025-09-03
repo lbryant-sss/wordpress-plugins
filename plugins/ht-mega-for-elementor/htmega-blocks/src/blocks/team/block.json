@@ -1,7 +1,9 @@
 {
   "name": "htmega/team",
   "category": "htmega-blocks",
+  "keywords": [ "team", "team member", "htmega", "ht mega", "widget" ],
   "title": "Team",
+  "description": "Introduce your team members with a simple, customizable profile layout.",
   "example": {
     "attributes": {
       "preview": true

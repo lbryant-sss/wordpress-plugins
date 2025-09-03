@@ -267,6 +267,220 @@ __( "Service", "woocommerce-services" ), // dist/chunks/47f9ee924cfe750baf9d.min
 __( "Price adjustment", "woocommerce-services" ), // dist/chunks/47f9ee924cfe750baf9d.min.js:1
 __( "Increase the rates calculated by the carrier to account for packaging and handling costs. You can also add a negative amount to save your customers money.", "woocommerce-services" ), // dist/chunks/47f9ee924cfe750baf9d.min.js:1
 __( "Which package would you like to track?", "woocommerce-services" ), // dist/chunks/690ab8043240b20d7cf4.min.js:1
+__( "Validating address\\u2026", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Invalid address", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "You've edited the address, please revalidate it for accurate rates", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "One of the address data has non-roman character(s) that might not be printed properly!", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Name", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Company", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Phone", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "%(message)s. Please modify the address and try again.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Address", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "City", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "State", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Select one\\u2026", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "State", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "ZIP/Postal code", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Country", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Verify address", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Use address as entered", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "We have slightly modified the address entered. If correct, please use the suggested address to ensure accurate delivery.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Address entered", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Suggested address", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Use selected address", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Edit address", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "We were unable to automatically verify the address \\u2014 %(error)s.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "We were unable to automatically verify the address.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Address entered", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Automatic verification failed for this address. It may still be a valid address \\u2014 use the tools below to manually verify.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Verify with USPS", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "View on Google Maps", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Edit address", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Use address as entered", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Packaging", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "No packages selected", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "1 item in 1 package: %(weight)s %(unit)s total", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "%(itemsCount)d items in 1 package: %(weight)s %(unit)s total", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "%(itemsCount)d items in %(packageCount)d packages: %(weight)s %(unit)s total", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Use these packages", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Packages to be Shipped", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Add items", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Items to fulfill", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Weight", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "QTY", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "There are no items in this package.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Total Weight (with package)", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "0", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Move", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Individually Shipped Item", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Item Dimensions", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Package details", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Add package", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Select a package type", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Please select a package", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "{{itemLink/}} is currently saved for a later shipment.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "{{itemLink/}} is currently shipped in its original packaging.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "{{itemLink/}} is currently in {{pckg/}}.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Cancel", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Submit", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Move item", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Where would you like to move it?", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Add to a New Package", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Ship in original packaging", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "%(item)s from {{pckg/}}", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Close", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Add", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Add item", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Which items would you like to add to {{pckg/}}?", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Are you shipping dangerous goods or hazardous materials?", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Potentially hazardous material includes items such as batteries, dry ice, flammable liquids, aerosols, ammunition, fireworks, nail polish, perfume, paint, solvents, and more. Hazardous items must ship in separate packages.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Learn how to securely package, label, and ship HAZMAT through USPS{{registeredMark/}} at {{uspsHazmatTutorial/}}. Determine your product's mailability using the {{hazmatSearchTool/}}.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "USPS HAZMAT Search Tool", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "WooCommerce Shipping does not currently support HAZMAT shipments through {{dhlExpress/}}.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "DHL Express", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Select a category", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Select a hazardous or dangerous material category", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Customs information valid", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Customs", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Save customs form", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Return to sender if package is unable to be delivered", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Contents type", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Merchandise", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Documents", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Gift", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Sample", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Other\\u2026", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Details", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Restriction type", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "None", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Quarantine", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Sanitary / Phytosanitary inspection", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Other\\u2026", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Details", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "ITN", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "more info", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Weight (per unit)", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Value (per unit)", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Unsaved changes made to packages", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "No rates found", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "%(serviceName)s: %(rate)s", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Total rate: %(total)s", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Customer paid a {{shippingMethod/}} of {{shippingCost/}} for shipping", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Your customer selected {{shippingMethod/}}", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Shipping rates", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "The service and rate chosen by the customer at checkout is not available. Please choose another.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Choose rate: %(pckg)s", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Signature required", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Adult signature required", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Shipping summary", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Shipping summary", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Paper size", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Notify the customer with shipment details", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Mark this order as complete and notify the customer", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "WooCommerce Shipping gives you access to USPS Commercial Pricing, which is discounted over Retail rates.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "You save %s with WooCommerce Shipping", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Package %(index)s \\u2013 %(title)s", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Your UPS account will be charged", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Total", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Shipping from", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Edit", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+_n( "shipping label ready", "shipping labels ready", 1, "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Choose credit card", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "To print this shipping label, {{a}}choose a credit card to add to your account{{/a}}.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Add credit card", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "To print this shipping label, {{a}}add a credit card to your account{{/a}}.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Print", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Purchasing\\u2026", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+_n( "Buy shipping label", "Buy shipping labels", 1, "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "The new plugin is missing a feature I rely on.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "I'm concerned switching will be difficult or disrupt my current workflow.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "I tried the new WooCommerce Shipping before and had a problem or found it confusing.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "I wasn't aware there was a new WooCommerce Shipping plugin.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "I'm not sure what the benefits of switching are.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "I just haven't had time to look into it.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Other", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Could you tell us which feature is most important to you? Your feedback directly helps us prioritize what to build next.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "What is your biggest concern about the switching process? This will help us make sure you can migrate with confidence and ease.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Could you briefly describe the problem you ran into? This helps us fix bugs and improve the design.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "What's the most important thing to you when it comes to shipping? (e.g. saving money, saving time, carrier options)", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "What's the most important thing to you when it comes to shipping? (e.g. saving money, saving time, carrier options)", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Knowing the switch takes less than five minutes, what's one thing that would convince you to try it?", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "We'd love to hear more. Could you please share your reason with us?", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Thank you!", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Close", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Your feedback is incredibly valuable. We want to make sure the new WooCommerce Shipping is an excellent replacement for you before we officially retire the shipping functionality in this plugin.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "P.S. While we work on improvements, did you know the new WooCommerce Shipping includes discounted UPS rates? You can print USPS, DHL, and now UPS labels right from your dashboard \\u2013 no separate accounts needed. Want to see how easy it is?", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Read the migration guide.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Close after submitting feedback", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Close", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "A Quick Question About Shipping", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Close survey", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Thanks for shipping with Woo! We are preparing to transition to the new WooCommerce Shipping plugin as our single officially supported shipping solution. To help us make it a great experience for you, could you answer one quick question?", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "What's the main reason you're still using WooCommerce Shipping & Tax as your shipping tool?", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Skip", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Skip", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Try WooCommerce Shipping", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "A new WooCommerce Shipping experience is now available", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "We'll ensure a seamless transition by allowing you to migrate all your compatible settings and shipping labels when you update.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Here's what you can expect from the new shipping experience:", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "A seamless transition", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Automatically migrate all your compatible settings and shipment history to the new extension.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Print and save", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Speed up label creation with a streamlined process to print and save your label preferences.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "USPS and DHL Express", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Ship your productss using trusted shipping carriers like USPS and DHL Express at discounted rates, with more options and carriers coming soon.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Enhanced label purchase flow", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Experience a smoother label purchasing process with our updated interface.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Maybe later", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+_n( "Create shipping label", "Create shipping labels", 1, "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Origin address", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Destination address", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Required", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Optional", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Dismiss", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Dismiss", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Saving\\u2026", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Save Settings", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "More", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Untitled", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Expand", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Your shipping packages have been saved.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Unable to save your shipping packages. Please try again.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+_n( "Add package", "Add packages", 1, "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Done", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Cancel", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "{{icon/}} Delete this package", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Invalid value.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "This field is required.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Type of package", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Box", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Envelope", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Package name", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Unique package name", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "This field must be unique", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Dimensions (L x W x H)", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Weight of empty package", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "0.0", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+/* translators: Length placeholder for dimensions input */
+__( "L", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+/* translators: Width placeholder for dimensions input */
+__( "W", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+/* translators: Height placeholder for dimensions input */
+__( "H", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "All packages selected", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+_n( "%(selectedCount)d package selected", "%(selectedCount)d packages selected", 1, "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Expand Services", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "When shipping to countries that follow European Union (EU) customs rules, you must provide a clear, specific description on every item.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "For example, if you are sending clothing, you must indicate what type of clothing (e.g. men's shirts, girl's vest, boy's jacket) for the description to be acceptable.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Otherwise, shipments may be delayed or interrupted at customs.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Learn more about customs rules", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Description", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "HS Tariff number", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "more info", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Origin country", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Country where the product was manufactured or assembled.", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Weight (%s per unit)", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
+__( "Value ($ per unit)", "woocommerce-services" ), // dist/chunks/8b5407954a3fba0aef3d.min.js:1
 __( "Saving\\u2026", "woocommerce-services" ), // dist/chunks/a89f5ab75651115b3564.min.js:1
 __( "Save Settings", "woocommerce-services" ), // dist/chunks/a89f5ab75651115b3564.min.js:1
 __( "Required", "woocommerce-services" ), // dist/chunks/cb8685cca25d7f7f0f0f.min.js:1
@@ -311,240 +525,26 @@ __( "Request was made %s - check logs below or {{a}}edit service settings{{/a}}"
 __( "Edit service settings", "woocommerce-services" ), // dist/chunks/cb8685cca25d7f7f0f0f.min.js:1
 __( "Services", "woocommerce-services" ), // dist/chunks/cb8685cca25d7f7f0f0f.min.js:1
 __( "No services configured. {{a}}Add a shipping service{{/a}}", "woocommerce-services" ), // dist/chunks/cb8685cca25d7f7f0f0f.min.js:1
-__( "Validating address\\u2026", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Invalid address", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "You've edited the address, please revalidate it for accurate rates", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "One of the address data has non-roman character(s) that might not be printed properly!", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Name", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Company", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Phone", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "%(message)s. Please modify the address and try again.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Address", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "City", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "State", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Select one\\u2026", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "State", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "ZIP/Postal code", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Country", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Verify address", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Use address as entered", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "We have slightly modified the address entered. If correct, please use the suggested address to ensure accurate delivery.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Address entered", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Suggested address", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Use selected address", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Edit address", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "We were unable to automatically verify the address \\u2014 %(error)s.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "We were unable to automatically verify the address.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Address entered", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Automatic verification failed for this address. It may still be a valid address \\u2014 use the tools below to manually verify.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Verify with USPS", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "View on Google Maps", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Edit address", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Use address as entered", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Packaging", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "No packages selected", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "1 item in 1 package: %(weight)s %(unit)s total", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "%(itemsCount)d items in 1 package: %(weight)s %(unit)s total", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "%(itemsCount)d items in %(packageCount)d packages: %(weight)s %(unit)s total", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Use these packages", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Packages to be Shipped", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Add items", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Items to fulfill", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Weight", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "QTY", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "There are no items in this package.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Total Weight (with package)", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "0", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Move", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Individually Shipped Item", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Item Dimensions", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Package details", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Add package", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Select a package type", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Please select a package", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "{{itemLink/}} is currently saved for a later shipment.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "{{itemLink/}} is currently shipped in its original packaging.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "{{itemLink/}} is currently in {{pckg/}}.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Cancel", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Submit", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Move item", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Where would you like to move it?", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Add to a New Package", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Ship in original packaging", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "%(item)s from {{pckg/}}", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Close", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Add", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Add item", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Which items would you like to add to {{pckg/}}?", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Are you shipping dangerous goods or hazardous materials?", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Potentially hazardous material includes items such as batteries, dry ice, flammable liquids, aerosols, ammunition, fireworks, nail polish, perfume, paint, solvents, and more. Hazardous items must ship in separate packages.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Learn how to securely package, label, and ship HAZMAT through USPS{{registeredMark/}} at {{uspsHazmatTutorial/}}. Determine your product's mailability using the {{hazmatSearchTool/}}.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "USPS HAZMAT Search Tool", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "WooCommerce Shipping does not currently support HAZMAT shipments through {{dhlExpress/}}.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "DHL Express", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Select a category", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Select a hazardous or dangerous material category", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Customs information valid", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Customs", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Save customs form", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Return to sender if package is unable to be delivered", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Contents type", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Merchandise", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Documents", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Gift", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Sample", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Other\\u2026", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Details", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Restriction type", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "None", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Quarantine", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Sanitary / Phytosanitary inspection", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Other\\u2026", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Details", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "ITN", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "more info", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Weight (per unit)", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Value (per unit)", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Unsaved changes made to packages", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "No rates found", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "%(serviceName)s: %(rate)s", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Total rate: %(total)s", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Customer paid a {{shippingMethod/}} of {{shippingCost/}} for shipping", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Your customer selected {{shippingMethod/}}", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Shipping rates", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "The service and rate chosen by the customer at checkout is not available. Please choose another.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Choose rate: %(pckg)s", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Signature required", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Adult signature required", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Shipping summary", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Shipping summary", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Paper size", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Notify the customer with shipment details", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Mark this order as complete and notify the customer", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "WooCommerce Shipping gives you access to USPS Commercial Pricing, which is discounted over Retail rates.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "You save %s with WooCommerce Shipping", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Package %(index)s \\u2013 %(title)s", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Your UPS account will be charged", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Total", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Shipping from", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Edit", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-_n( "shipping label ready", "shipping labels ready", 1, "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Choose credit card", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "To print this shipping label, {{a}}choose a credit card to add to your account{{/a}}.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Add credit card", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "To print this shipping label, {{a}}add a credit card to your account{{/a}}.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Print", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Purchasing\\u2026", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-_n( "Buy shipping label", "Buy shipping labels", 1, "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "The new plugin is missing a feature I rely on.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "I'm concerned switching will be difficult or disrupt my current workflow.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "I tried the new WooCommerce Shipping before and had a problem or found it confusing.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "I wasn't aware there was a new WooCommerce Shipping plugin.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "I'm not sure what the benefits of switching are.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "I just haven't had time to look into it.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Other", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Could you tell us which feature is most important to you? Your feedback directly helps us prioritize what to build next.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "What is your biggest concern about the switching process? This will help us make sure you can migrate with confidence and ease.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Could you briefly describe the problem you ran into? This helps us fix bugs and improve the design.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "What's the most important thing to you when it comes to shipping? (e.g. saving money, saving time, carrier options)", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "What's the most important thing to you when it comes to shipping? (e.g. saving money, saving time, carrier options)", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Knowing the switch takes less than five minutes, what's one thing that would convince you to try it?", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "We'd love to hear more. Could you please share your reason with us?", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Thank you!", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Close", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Your feedback is incredibly valuable. We want to make sure the new WooCommerce Shipping is an excellent replacement for you before we officially retire the shipping functionality in this plugin.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "P.S. While we work on improvements, did you know the new WooCommerce Shipping includes discounted UPS rates? You can print USPS, DHL, and now UPS labels right from your dashboard \\u2013 no separate accounts needed. Want to see how easy it is?", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Read the step-by-step migration guide.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Close after submitting feedback", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Close", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "A Quick Question About Shipping", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Close survey", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Thanks for shipping with Woo! We are preparing to transition to the new WooCommerce Shipping plugin as our single officially supported shipping solution. To help us make it a great experience for you, could you answer one quick question?", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "What's the main reason you're still using WooCommerce Shipping & Tax as your shipping tool?", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Skip", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Skip", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Try WooCommerce Shipping", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "A new WooCommerce Shipping experience is now available", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "We'll ensure a seamless transition by allowing you to migrate all your compatible settings and shipping labels when you update.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Here's what you can expect from the new shipping experience:", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "A seamless transition", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Automatically migrate all your compatible settings and shipment history to the new extension.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Print and save", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Speed up label creation with a streamlined process to print and save your label preferences.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "USPS and DHL Express", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Ship your productss using trusted shipping carriers like USPS and DHL Express at discounted rates, with more options and carriers coming soon.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Enhanced label purchase flow", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Experience a smoother label purchasing process with our updated interface.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Maybe later", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-_n( "Create shipping label", "Create shipping labels", 1, "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Origin address", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Destination address", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Required", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Optional", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Dismiss", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Dismiss", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Saving\\u2026", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Save Settings", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "More", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Untitled", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Expand", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Your shipping packages have been saved.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Unable to save your shipping packages. Please try again.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-_n( "Add package", "Add packages", 1, "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Done", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Cancel", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "{{icon/}} Delete this package", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Invalid value.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "This field is required.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Type of package", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Box", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Envelope", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Package name", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Unique package name", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "This field must be unique", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Dimensions (L x W x H)", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Weight of empty package", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "0.0", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-/* translators: Length placeholder for dimensions input */
-__( "L", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-/* translators: Width placeholder for dimensions input */
-__( "W", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-/* translators: Height placeholder for dimensions input */
-__( "H", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "All packages selected", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-_n( "%(selectedCount)d package selected", "%(selectedCount)d packages selected", 1, "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Expand Services", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "When shipping to countries that follow European Union (EU) customs rules, you must provide a clear, specific description on every item.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "For example, if you are sending clothing, you must indicate what type of clothing (e.g. men's shirts, girl's vest, boy's jacket) for the description to be acceptable.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Otherwise, shipments may be delayed or interrupted at customs.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Learn more about customs rules", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Description", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "HS Tariff number", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "more info", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Origin country", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Country where the product was manufactured or assembled.", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Weight (%s per unit)", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Value ($ per unit)", "woocommerce-services" ), // dist/chunks/ea2ac8ccb2b694b84a5f.min.js:1
-__( "Try WooCommerce Shipping", "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.9.js:1
-__( "A new WooCommerce Shipping experience is now available", "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.9.js:1
-__( "We'll ensure a seamless transition by allowing you to migrate all your compatible settings and shipping labels when you update.", "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.9.js:1
-__( "Here's what you can expect from the new shipping experience:", "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.9.js:1
-__( "A seamless transition", "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.9.js:1
-__( "Automatically migrate all your compatible settings and shipment history to the new extension.", "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.9.js:1
-__( "Print and save", "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.9.js:1
-__( "Speed up label creation with a streamlined process to print and save your label preferences.", "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.9.js:1
-__( "USPS and DHL Express", "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.9.js:1
-__( "Ship your productss using trusted shipping carriers like USPS and DHL Express at discounted rates, with more options and carriers coming soon.", "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.9.js:1
-__( "Enhanced label purchase flow", "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.9.js:1
-__( "Experience a smoother label purchasing process with our updated interface.", "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.9.js:1
-__( "Maybe later", "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.9.js:1
-__( "Create shipping label", "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.9.js:1
-_n( "Track Package", "Track Packages", 1, "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.9.js:1
-__( "Create new label", "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.9.js:1
-_n( "Track Package", "Track Packages", 1, "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.9.js:1
-__( "Create shipping label", "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.9.js:1
-__( "Connection error: unable to create label at this time", "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.9.js:1
-_n( "%(itemCount)d item was fulfilled on {{span}}%(createdDate)s{{/span}}", "%(itemCount)d items were fulfilled on {{span}}%(createdDate)s{{/span}}", 1, "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.9.js:1
-_n( "%(itemCount)d item is ready to be fulfilled", "%(itemCount)d items are ready to be fulfilled", 1, "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.9.js:1
+__( "Try WooCommerce Shipping", "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.10.js:1
+__( "A new WooCommerce Shipping experience is now available", "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.10.js:1
+__( "We'll ensure a seamless transition by allowing you to migrate all your compatible settings and shipping labels when you update.", "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.10.js:1
+__( "Here's what you can expect from the new shipping experience:", "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.10.js:1
+__( "A seamless transition", "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.10.js:1
+__( "Automatically migrate all your compatible settings and shipment history to the new extension.", "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.10.js:1
+__( "Print and save", "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.10.js:1
+__( "Speed up label creation with a streamlined process to print and save your label preferences.", "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.10.js:1
+__( "USPS and DHL Express", "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.10.js:1
+__( "Ship your productss using trusted shipping carriers like USPS and DHL Express at discounted rates, with more options and carriers coming soon.", "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.10.js:1
+__( "Enhanced label purchase flow", "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.10.js:1
+__( "Experience a smoother label purchasing process with our updated interface.", "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.10.js:1
+__( "Maybe later", "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.10.js:1
+__( "Create shipping label", "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.10.js:1
+_n( "Track Package", "Track Packages", 1, "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.10.js:1
+__( "Create new label", "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.10.js:1
+_n( "Track Package", "Track Packages", 1, "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.10.js:1
+__( "Create shipping label", "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.10.js:1
+__( "Connection error: unable to create label at this time", "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.10.js:1
+_n( "%(itemCount)d item was fulfilled on {{span}}%(createdDate)s{{/span}}", "%(itemCount)d items were fulfilled on {{span}}%(createdDate)s{{/span}}", 1, "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.10.js:1
+_n( "%(itemCount)d item is ready to be fulfilled", "%(itemCount)d items are ready to be fulfilled", 1, "woocommerce-services" ), // dist/woocommerce-services-wcshipping-migration-admin-notice-3.0.10.js:1
 );
 /* THIS IS THE END OF THE GENERATED FILE */

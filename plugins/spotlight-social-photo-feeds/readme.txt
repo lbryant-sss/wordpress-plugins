@@ -1,12 +1,12 @@
 === Spotlight Social Feeds - Block, Shortcode, and Widget ===
 
-Contributors: RebelCode, spotlightsocialfeeds, markzahra, Mekku, jeangalea, gabygalea
+Contributors: RebelCode, spotlightsocialfeeds, markzahra, Mekku, jeangalea, gabygalea, omidakhavan
 Plugin URI: https://spotlightwp.com
 Tags: Instagram, Instagram feed, Instagram embed, Instagram widget, Instagram block
 Requires at least: 5.7
 Requires PHP: 7.1
 Tested up to: 6.8
-Stable tag: 1.7.2
+Stable tag: 1.7.3
 License: GPLv3
 
 Instagram feeds made easy. Responsive, customizable, accessible, and SEO-friendly out of the box. Includes Instagram blocks & oEmbed support.
@@ -266,6 +266,12 @@ Yes, aside from the customisation options provided by Spotlight itself, the plug
 7. [Premium] Create shoppable Instagram Feeds and Instagram bio link pages in seconds. Link Instagram posts to articles, products, recipes, and much more.
 
 == Changelog ==
+
+= 1.7.3 (2025-09-02) =
+
+**Changed**
+- Spotlight now supports Meta’s oEmbed API v22.0.
+- This ensures continued compatibility after Meta’s removal of certain oEmbed fields and the deprecation of the Facebook Page Post oEmbed endpoint (effective October 1, 2025).
 
 = 1.7.2 (2025-02-11) =
 

@@ -13,7 +13,7 @@ const ScEmpty = class {
         this.icon = undefined;
     }
     render() {
-        return (index.h("div", { key: '5b34b35d37989e57bc48015052e4da0fd6ed9c9e', part: "base", class: "empty" }, !!this.icon && index.h("sc-icon", { key: '3545085dcf5ca46169d147f3ed48f20320d72490', exportparts: "base:icon", name: this.icon }), index.h("slot", { key: '25ff1dde75e2e0b9f90b947ec717781de3f4fdb7' })));
+        return (index.h("div", { key: 'a9a79a6829a6b0c0cd813b34309c4f3dd1fcb509', part: "base", class: "empty" }, !!this.icon && index.h("sc-icon", { key: '4cab24882e6679e284f9a723aa5a4a4a69f3e663', exportparts: "base:icon", name: this.icon }), index.h("slot", { key: 'a39dc8fb17cfa8b9d37a079d5e98f21d542ef336' })));
     }
 };
 ScEmpty.style = ScEmptyStyle0;

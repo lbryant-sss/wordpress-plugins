@@ -1,7 +1,9 @@
 {
   "name": "htmega/info-box",
   "category": "htmega-blocks",
+  "keywords": [ "info box", "htmega", "ht mega", "widget" ],
   "title": "Info Box",
+  "description": "Highlight important information with an attractive, customizable info box.",
   "example": {
     "attributes": {
       "preview": true

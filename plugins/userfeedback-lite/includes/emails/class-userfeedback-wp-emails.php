@@ -365,7 +365,7 @@ class UserFeedback_WP_Emails {
 	public function send( $to, $subject, $message = null, $attachments = array() ) {
 
 		if ( ! did_action( 'init' ) && ! did_action( 'admin_init' ) ) {
-			_doing_it_wrong( __FUNCTION__, esc_html__( 'You cannot send emails with MI_WP_Emails() until init/admin_init has been reached.', 'userfeedback' ), null );
+			_doing_it_wrong( __FUNCTION__, esc_html__( 'You cannot send emails with MI_WP_Emails() until init/admin_init has been reached.', 'userfeedback-lite' ), null );
 
 			return false;
 		}

@@ -2,9 +2,9 @@
 # This file is distributed under the GPLv3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: ElementsKit Lite 3.7.0\n"
+"Project-Id-Version: ElementsKit Lite 3.7.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/elementskit-lite\n"
-"POT-Creation-Date: 2025-08-31 11:32:15+00:00\n"
+"POT-Creation-Date: 2025-09-02 08:20:55+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1133,7 +1133,7 @@ msgid "elementskit_content"
 msgstr ""
 
 #: modules/elementskit-icon-pack/icons.php:21
-#: modules/elementskit-icon-pack/init.php:29
+#: modules/elementskit-icon-pack/init.php:32
 msgid "ElementsKit Icon Pack"
 msgstr ""
 

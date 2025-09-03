@@ -78,7 +78,7 @@ ob_start();
             <?php echo esc_html__('Video Tutorial', 'htmega-addons'); ?>
         </div>
 
-        <h2 class="htmega-video-title"><?php echo esc_html__('How to Use Our PRO Modules?', 'htmega-addons');?></h2>
+        <h2 class="htmega-video-title"><?php echo esc_html__('Discover HT Mega Modules?', 'htmega-addons');?></h2>
 
         <div class="htmega-video-grid">
             <div class="htmega-video-item">

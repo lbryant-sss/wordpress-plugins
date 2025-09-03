@@ -64,6 +64,9 @@ class HTMega_Elementor_Widget_Special_day_Banner extends Widget_Base {
                     'default' => [
                         'url' => Utils::get_placeholder_image_src(),
                     ],
+                    'dynamic' => [
+                        'active' => true,
+                    ],
                 ]
             );
 
@@ -82,6 +85,9 @@ class HTMega_Elementor_Widget_Special_day_Banner extends Widget_Base {
                     'label' => __( 'Title', 'htmega-addons' ),
                     'type' => Controls_Manager::TEXT,
                     'placeholder' => __( 'Banner Title', 'htmega-addons' ),
+                    'dynamic' => [
+                        'active' => true,
+                    ],
                 ]
             );
 
@@ -91,6 +97,9 @@ class HTMega_Elementor_Widget_Special_day_Banner extends Widget_Base {
                     'label' => __( 'Sub Title', 'htmega-addons' ),
                     'type' => Controls_Manager::TEXT,
                     'placeholder' => __( 'Banner Sub Title', 'htmega-addons' ),
+                    'dynamic' => [
+                        'active' => true,
+                    ],
                 ]
             );
 
@@ -100,6 +109,9 @@ class HTMega_Elementor_Widget_Special_day_Banner extends Widget_Base {
                     'label' => __( 'Description', 'htmega-addons' ),
                     'type' => Controls_Manager::TEXTAREA,
                     'placeholder' => __( 'Banner Description', 'htmega-addons' ),
+                    'dynamic' => [
+                        'active' => true,
+                    ],
                 ]
             );
 
@@ -109,6 +121,9 @@ class HTMega_Elementor_Widget_Special_day_Banner extends Widget_Base {
                     'label' => __( 'Offer Amount', 'htmega-addons' ),
                     'type' => Controls_Manager::TEXT,
                     'placeholder' => __( '50%', 'htmega-addons' ),
+                    'dynamic' => [
+                        'active' => true,
+                    ],
                 ]
             );
 
@@ -118,6 +133,9 @@ class HTMega_Elementor_Widget_Special_day_Banner extends Widget_Base {
                     'label' => __( 'Offer Tag Line', 'htmega-addons' ),
                     'type' => Controls_Manager::TEXT,
                     'placeholder' => __( 'Off', 'htmega-addons' ),
+                    'dynamic' => [
+                        'active' => true,
+                    ],
                 ]
             );
 
@@ -133,6 +151,9 @@ class HTMega_Elementor_Widget_Special_day_Banner extends Widget_Base {
                         'is_external' => false,
                         'nofollow' => false,
                     ],
+                    'dynamic' => [
+                        'active' => true,
+                    ],
                 ]
             );
 
@@ -142,6 +163,9 @@ class HTMega_Elementor_Widget_Special_day_Banner extends Widget_Base {
                     'label' => __( 'Button Text', 'htmega-addons' ),
                     'type' => Controls_Manager::TEXT,
                     'placeholder' => __( 'Button Text', 'htmega-addons' ),
+                    'dynamic' => [
+                        'active' => true,
+                    ],
                 ]
             );
 
@@ -160,6 +184,9 @@ class HTMega_Elementor_Widget_Special_day_Banner extends Widget_Base {
                     [
                         'label' => __( 'Badge Image', 'htmega-addons' ),
                         'type' => Controls_Manager::MEDIA,
+                        'dynamic' => [
+                            'active' => true,
+                        ],
                     ]
                 );
 

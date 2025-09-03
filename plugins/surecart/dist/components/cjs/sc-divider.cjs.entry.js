@@ -12,7 +12,7 @@ const ScDivider = class {
         index.registerInstance(this, hostRef);
     }
     render() {
-        return (index.h("div", { key: 'b471253c1892c94c8ab530bb7d816dbb49a807e0', class: "divider", part: "base" }, index.h("div", { key: 'bb6c0f573120246693adbc9439b9d5b57e8e8f2d', class: "line__container", "aria-hidden": "true", part: "line-container" }, index.h("div", { key: '4d64c37d28041e3fcaf6d1f8c6dce7a5a5fc8b10', class: "line", part: "line" })), index.h("div", { key: '57a30214b8861512c14ba4760f67d200080f37af', class: "text__container", part: "text-container" }, index.h("span", { key: 'bc0da08d9bb5470e3399d81d3aaf577b7b4dd219', class: "text", part: "text" }, index.h("slot", { key: '2ea224b149cb83882d09e25aeb80b5c785e613b6' })))));
+        return (index.h("div", { key: 'ae7483aab453e66780c81ba6943e34b451e371ab', class: "divider", part: "base" }, index.h("div", { key: '06056aadc09fccbeef602e37051c72d725910028', class: "line__container", "aria-hidden": "true", part: "line-container" }, index.h("div", { key: '9bbde66d3820e7fc7dab80ed5c0293a721c44697', class: "line", part: "line" })), index.h("div", { key: '94d1d3b518d2ffdb875f9671eb76460ccd1e31fe', class: "text__container", part: "text-container" }, index.h("span", { key: 'a75f53039b66bffaffa1c100c41874f85e4deef2', class: "text", part: "text" }, index.h("slot", { key: '4f016e08c25126f8efcb1c40602bbf0d90815f7c' })))));
     }
 };
 ScDivider.style = ScDividerStyle0;

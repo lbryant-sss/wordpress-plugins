@@ -23,24 +23,30 @@ class UserFeedback_Notification_Popular_Survey extends UserFeedback_Notification
 			->group_by( 'survey_id' )
 			->sort( 'count', 'desc' );
 		$largest_survey_count = $query->single();
+		
+		if ( empty( $largest_survey_count ) ) {
+			return null;
+		}
+		
 		$survey = (new UserFeedback_Survey)->find($largest_survey_count->survey_id);
-		if ( empty( $largest_survey_count ) || $largest_survey_count->count < 25 || is_null($survey) ) {
+
+		if ( $largest_survey_count->count < 25 || is_null($survey) ) {
 			// Shouldn't show, bail
 			return null;
 		}
 		
 		if(isset($survey->title)){
 			$this->title   = sprintf(
-				__( 'Wow! Your %s is Popular!', 'userfeedback' ),
+				__( 'Wow! Your %s is Popular!', 'userfeedback-lite' ),
 				$survey->title
 			);
 			$this->content = sprintf(
-				__( 'Your Survey, %s is popular! See what your visitors are saying', 'userfeedback' ),
+				__( 'Your Survey, %s is popular! See what your visitors are saying', 'userfeedback-lite' ),
 				$survey->title
 			);
 	
 			$this->buttons[] = array(
-				'text' => __( 'See Responses', 'userfeedback' ),
+				'text' => __( 'See Responses', 'userfeedback-lite' ),
 				'url'  => userfeedback_get_screen_url(
 					'userfeedback_results',
 					"survey/{$largest_survey_count->survey_id}/responses"

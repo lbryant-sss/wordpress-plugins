@@ -206,7 +206,7 @@ class UserFeedback_Email_Summaries {
 	public function add_weekly_cron_schedule( $schedules ) {
 		$schedules['userfeedback_email_summaries_weekly'] = array(
 			'interval' => WEEK_IN_SECONDS,
-			'display'  => esc_html__( 'Weekly UserFeedback Email Summaries', 'userfeedback' ),
+			'display'  => esc_html__( 'Weekly UserFeedback Email Summaries', 'userfeedback-lite' ),
 		);
 
 		return $schedules;
@@ -224,7 +224,7 @@ class UserFeedback_Email_Summaries {
 		$site_url        = isset( $site_url_parsed['host'] ) ? $site_url_parsed['host'] : $site_url;
 
 		// Translators: The domain of the site is appended to the subject.
-		$subject = sprintf( __( 'UserFeedback Summary - %s', 'userfeedback' ), $site_url );
+		$subject = sprintf( __( 'UserFeedback Summary - %s', 'userfeedback-lite' ), $site_url );
 
 		return apply_filters( 'userfeedback_emails_summaries_cron_subject', $subject );
 	}
@@ -366,10 +366,10 @@ class UserFeedback_Email_Summaries {
 
 		$args['body']['preview_title']    = $this->get_email_subject();
 		$args['body']['header_image']     = $this->get_header_image();
-		$args['body']['title']            = esc_html__( 'Hi there!', 'userfeedback' );
+		$args['body']['title']            = esc_html__( 'Hi there!', 'userfeedback-lite' );
 		$args['body']['description']      =
 			sprintf(
-				esc_html__( 'Below is the total number of survey responses for each active survey from the week of %s ', 'userfeedback' ),
+				esc_html__( 'Below is the total number of survey responses for each active survey from the week of %s ', 'userfeedback-lite' ),
 				date( 'F j, Y', strtotime( $start_date ) ) . ' - ' . date( 'F j, Y', strtotime( $end_date ) )
 			);
 
@@ -378,7 +378,7 @@ class UserFeedback_Email_Summaries {
 
         if ( empty( $summaries ) ) {
             $args['body']['description'] = sprintf(
-                esc_html__( 'No responses were recorded in any of your UserFeedback surveys the week of %s ', 'userfeedback' ),
+                esc_html__( 'No responses were recorded in any of your UserFeedback surveys the week of %s ', 'userfeedback-lite' ),
                 date( 'F j, Y', strtotime( $start_date ) ) . ' - ' . date( 'F j, Y', strtotime( $end_date ) )
             );
         }

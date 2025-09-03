@@ -175,7 +175,7 @@ const ScLicense = class {
         return (index.h("sc-dialog", { open: this.showConfirmDelete, style: { '--body-spacing': 'var(--sc-spacing-x-large)' }, noHeader: true, onScRequestClose: this.onCloseDeleteModal }, index.h("sc-button", { class: "close__button", type: "text", circle: true, onClick: this.onCloseDeleteModal, disabled: this.loading }, index.h("sc-icon", { name: "x" })), index.h("sc-dashboard-module", { heading: wp.i18n.__('Delete Activation', 'surecart'), class: "license-cancel", error: this.error, style: { '--sc-dashboard-module-spacing': '1em' } }, index.h("span", { slot: "description" }, wp.i18n.__('Are you sure you want to delete activation?', 'surecart')), index.h("sc-flex", { justifyContent: "flex-start" }, index.h("sc-button", { type: "primary", disabled: this.loading || this.busy, onClick: this.deleteActivation }, wp.i18n.__('Delete Activation', 'surecart')), index.h("sc-button", { style: { color: 'var(--sc-color-gray-500' }, type: "text", onClick: this.onCloseDeleteModal, disabled: this.loading || this.busy }, wp.i18n.__('Cancel', 'surecart'))), this.busy && index.h("sc-block-ui", { style: { '--sc-block-ui-opacity': '0.75' }, spinner: true }))));
     }
     render() {
-        return (index.h("sc-spacing", { key: 'da57ed27b125dec776f28176d9527c3d020616d8', style: { '--spacing': 'var(--sc-spacing-large)' } }, this.renderContent(), this.renderConfirmDelete()));
+        return (index.h("sc-spacing", { key: 'c4ec74570eb30fc9ad2a29dc2b82392942528028', style: { '--spacing': 'var(--sc-spacing-large)' } }, this.renderContent(), this.renderConfirmDelete()));
     }
     get el() { return index.getElement(this); }
 };

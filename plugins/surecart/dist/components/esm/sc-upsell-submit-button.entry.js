@@ -32,13 +32,13 @@ const ScUpsellSubmitButton = class {
         accept();
     }
     render() {
-        return (h(Host, { key: '0cf139dcf3983df26a9147496b8900669e213a3f', class: {
+        return (h(Host, { key: 'b149b28a392d059f87a9f0ba8c4d925c237e148c', class: {
                 'is-busy': isBusy(),
                 'is-disabled': state.disabled,
                 // TODO: change this to out of stock error message.
                 'is-sold-out': (isProductOutOfStock(this.getUpsellProductId()) && !isSelectedVariantMissing(this.getUpsellProductId())) || (state$1 === null || state$1 === void 0 ? void 0 : state$1.code) === 'out_of_stock',
                 'is-unavailable': isSelectedVariantMissing(this.getUpsellProductId()) || (state$1 === null || state$1 === void 0 ? void 0 : state$1.code) === 'expired',
-            }, onClick: e => this.handleAddToOrderClick(e) }, h("slot", { key: '430d13b9b60794b31a85ce7bce63426c33496d28' })));
+            }, onClick: e => this.handleAddToOrderClick(e) }, h("slot", { key: '836f06edbef879e6d8cbcd71743ec5f715540040' })));
     }
     get el() { return getElement(this); }
 };

@@ -47,7 +47,7 @@ const ScDashboardCustomerDetails = class {
         }
     }
     render() {
-        return (h("sc-customer-details", { key: 'e261bfb13595f72fbf62e7df53604c6491823937', exportparts: "base, heading, heading-text, heading-title, heading-description, error__base, error__icon, error__text, error__title, error__message, test-tag__base, test-tag__content, button__base, button__label, button__prefix", customer: this.customer, loading: this.loading, error: this.error, heading: this.heading, "edit-link": addQueryArgs(window.location.href, {
+        return (h("sc-customer-details", { key: 'daa6010b4f0b5ace8987b50dfdaa0818df7fd0f8', exportparts: "base, heading, heading-text, heading-title, heading-description, error__base, error__icon, error__text, error__title, error__message, test-tag__base, test-tag__content, button__base, button__label, button__prefix", customer: this.customer, loading: this.loading, error: this.error, heading: this.heading, "edit-link": addQueryArgs(window.location.href, {
                 action: 'edit',
                 model: 'customer',
                 id: this.customerId,

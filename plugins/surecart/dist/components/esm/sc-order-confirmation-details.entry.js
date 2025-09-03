@@ -24,7 +24,7 @@ const ScOrderConfirmationDetails = class {
         }
         if (!((_a = this.order) === null || _a === void 0 ? void 0 : _a.number))
             return;
-        return (h("sc-dashboard-module", { class: "order" }, h("span", { slot: "heading" }, wp.i18n.sprintf(wp.i18n.__('Order #%s', 'surecart'), (_b = this.order) === null || _b === void 0 ? void 0 : _b.number)), h("span", { slot: "end" }, this.renderOrderStatus()), h("sc-card", null, h("sc-order-confirmation-line-items", null), h("sc-divider", null), h("sc-order-confirmation-totals", null))));
+        return (h("sc-dashboard-module", { class: "order" }, h("span", { slot: "heading" }, wp.i18n.sprintf(wp.i18n.__('Order #%s', 'surecart'), (_b = this.order) === null || _b === void 0 ? void 0 : _b.number)), h("span", { slot: "end" }, this.renderOrderStatus()), h("sc-card", null, h("sc-order-confirmation-line-items", null), h("sc-order-confirmation-totals", null))));
     }
 };
 openWormhole(ScOrderConfirmationDetails, ['order', 'loading'], false);

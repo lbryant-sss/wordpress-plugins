@@ -9,12 +9,12 @@ const ScHeading = class {
         this.size = 'medium';
     }
     render() {
-        return (h("div", { key: '5622e37d1931a7f91edec9ad503dd0d5f18ea406', part: "base", class: {
+        return (h("div", { key: '46a8064b7e929b1b38e5e042825e9d6b139da8a8', part: "base", class: {
                 'heading': true,
                 'heading--small': this.size === 'small',
                 'heading--medium': this.size === 'medium',
                 'heading--large': this.size === 'large',
-            } }, h("div", { key: '076084414563ea0eabcf7335dacd70b03fa3ec4e', class: { heading__text: true } }, h("div", { key: '4a54cfc78fb007ae4f22199e35238bd3db3da77f', class: "heading__title", part: "title" }, h("slot", { key: 'd1e5bf78dce01cb3e42e633960790c6e0a079a05' })), h("div", { key: '3407175ee5031ebed0b3e324f076dca304aca450', class: "heading__description", part: "description" }, h("slot", { key: 'c34b1e75e83b24b0be4de7df385fde8a64ebfac6', name: "description" }))), h("slot", { key: '5a856191764a21e72351497d306cd01f4120642b', name: "end" })));
+            } }, h("div", { key: '9c0cabaa5553c59cc375a5e9e105829a61478781', class: { heading__text: true } }, h("div", { key: '69b5a96d1fd1a64ad24c259f399331058b087fdc', class: "heading__title", part: "title" }, h("slot", { key: 'af929231f23a796359f76455fe519cdec6bac65e' })), h("div", { key: '926d4d8253193eb4aa9e5354cdd485fcbff821cf', class: "heading__description", part: "description" }, h("slot", { key: '8b893b04743c8ae0c5107073914d7cd6a848587e', name: "description" }))), h("slot", { key: '5c60966952e60bf83ea1f2e5fb3a4a6f9f6e070a', name: "end" })));
     }
     get el() { return getElement(this); }
 };
@@ -48,7 +48,7 @@ const ScOrderConfirmComponentsValidator = class {
         this.hasManualInstructions = !!this.el.querySelector('sc-order-manual-instructions');
     }
     render() {
-        return h("slot", { key: '0f08b5f913d0e1cc1af86d0c267e72e0b6422776' });
+        return h("slot", { key: 'dc86b9dc0945488adaca74b65a593b91712f594a' });
     }
     get el() { return getElement(this); }
     static get watchers() { return {

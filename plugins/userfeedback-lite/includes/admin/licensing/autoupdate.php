@@ -54,13 +54,13 @@ function userfeedback_modify_wordpress_autoupdater_setting( $html, $plugin_file,
 				'upgrade-to-autoupdate',
 				'https://www.userfeedback.com/docs/go-lite-pro'
 			),
-			__( 'Enable the UserFeedback PRO plugin to manage auto-updates', 'userfeedback' )
+			__( 'Enable the UserFeedback PRO plugin to manage auto-updates', 'userfeedback-lite' )
 		);
 		add_filter( "userfeedback_is_autoupdate_setting_html_filtered_{$plugin_file}", '__return_true' );
 	} elseif ( $has_permission &&
 			   ( $is_main_free || $is_main_pro || ( $is_addon && $is_pro ) )
 	) {
-		$text  = __( 'Manage auto-updates', 'userfeedback' );
+		$text  = __( 'Manage auto-updates', 'userfeedback-lite' );
 		$html .= '<br>' . sprintf( '<a href="%s"">%s</a>', admin_url( 'admin.php?page=userfeedback_settings#/misc' ), $text );
 		add_filter( "userfeedback_is_autoupdate_setting_html_filtered_{$plugin_file}", '__return_true' );
 	}
