@@ -1,20 +1,26 @@
 <?php
 /**
  * Plugin Name: Email Log
- * Plugin URI: https://wpemaillog.com
+ * Plugin URI: https://wpemaillog.com/
  * Description: Logs every email sent through WordPress
- * Donate Link: http://sudarmuthu.com/if-you-wanna-thank-me
- * Author: Sudar
- * Version: 2.4.9
- * Author URI: http://sudarmuthu.com/
+ * Author: WebFactory Ltd
+ * Version: 2.6
+ * Author URI: https://www.webfactoryltd.com/
  * Text Domain: email-log
- * Domain Path: languages/
- * === RELEASE NOTES ===
- * Check readme file for full release notes.
+ * License: GPLv2 or later
+ * Requires at least: 4.0
+ * Tested up to: 6.8
+ * Requires PHP: 5.6
  */
 
 /**
- * Copyright 2009  Sudar Muthu  (email : sudar@sudarmuthu.com)
+ * Copyright 2025 WebFactory Ltd
+ *
+ * Sudar Muthu https://github.com/sudar
+ * samuelaguilera https://github.com/samuelaguilera
+ * ChuckMac https://github.com/ChuckMac
+ * Maria Daniel Deepak https://github.com/mariadanieldeepak
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, version 2, as
  * published by the Free Software Foundation.
@@ -26,8 +32,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA.
  */
+
 defined( 'ABSPATH' ) || exit; // Exit if accessed directly.
 
+// @Alex this is ancient think we can remove it
 // Include the stub of the old `EmailLog` class, so that old add-ons don't generate a fatal error.
 require_once plugin_dir_path( __FILE__ ) . 'include/compatibility/EmailLog.php';
 
@@ -39,7 +47,6 @@ if ( version_compare( PHP_VERSION, '5.6.0', '<' ) ) {
 	 * If you are still struck with PHP 5.2 and can't update, then use v1.9.1 of the plugin.
 	 * But note that some add-ons may not work.
 	 *
-	 * @see   http://sudarmuthu.com/blog/why-i-am-dropping-support-for-php-5-2-in-my-wordpress-plugins/
 	 * @since 2.0
 	 */
 	function email_log_compatibility_notice() {
@@ -77,5 +84,6 @@ if ( version_compare( PHP_VERSION, '5.6.0', '<' ) ) {
 require_once 'load-email-log.php';
 load_email_log( __FILE__ );
 
+// @Alex probably not needed anymore, it was a bug 5y ago
 // Fix compatibility issues with wpmandrill plugin.
 require_once plugin_dir_path( __FILE__ ) . 'include/compatibility/wpmandrill.php';

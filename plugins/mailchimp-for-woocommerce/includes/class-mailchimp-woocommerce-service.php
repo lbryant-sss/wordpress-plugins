@@ -284,8 +284,10 @@ class MailChimp_Service extends MailChimp_WooCommerce_Options
                 // get user language or default to admin main language
                 $language = $this->user_language ?: substr(get_locale(), 0, 2);
 
+                $session_id = function_exists('WC') ? WC()->session->get_customer_id() : null;
+
                 // fire up the job handler
-                $handler = new MailChimp_WooCommerce_Cart_Update($uid, $user_email, $this->cart, $language);
+                $handler = new MailChimp_WooCommerce_Cart_Update($uid, $user_email, $this->cart, $language, $session_id);
 
                 // if they had the checkbox checked - go ahead and subscribe them if this is the first post.
                 //$handler->setStatus($this->cart_subscribe);
@@ -367,8 +369,12 @@ class MailChimp_Service extends MailChimp_WooCommerce_Options
      * @param WP_Post $post_before The post object as it exists after the update
      * @return void
      */
-    public function handleProductUpdated( int $post_ID, WP_Post $post_after, WP_Post $post_before )
+    public function handleProductUpdated( int $post_ID, ?WP_Post $post_after, ?WP_Post $post_before )
     {
+        if (is_null($post_after) || is_null($post_before)) {
+            return;
+        }
+
         if ('product' !== $post_after->post_type) {
             return;
         }
@@ -549,6 +555,19 @@ class MailChimp_Service extends MailChimp_WooCommerce_Options
 			mailchimp_error('delete product variation', $e->getMessage());
 		}
 	}
+
+    public function handleProductVariationUpdated($variation_id, $product)
+    {
+        try {
+            if (!mailchimp_is_configured()) {
+                return;
+            }
+
+            mailchimp_handle_or_queue(new MailChimp_WooCommerce_Single_Product_Variation($variation_id), 5);
+        } catch (Exception $e) {
+            mailchimp_error('update product variation', $e->getMessage());
+        }
+    }
 
     /**
      * Fire new order and order save handling/queueing events when a shop_order post is saved.

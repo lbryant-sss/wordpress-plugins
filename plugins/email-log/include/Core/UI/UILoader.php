@@ -82,7 +82,7 @@ class UILoader implements Loadie {
 	protected function initialize_pages() {
 		$this->pages['log_list_page']    = new Page\LogListPage();
 		$this->pages['settings_page']    = new Page\SettingsPage();
-		$this->pages['addon_list_page']  = new Page\AddonListPage();
+		$this->pages['addons_page']      = new Page\AddonsPage();
 		$this->pages['system_info_page'] = new Page\SystemInfoPage();
 	}
 }

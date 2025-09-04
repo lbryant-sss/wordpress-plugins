@@ -128,16 +128,87 @@ class OptimizerWebPageCacheWP
         if (!is_writable($this->wp_config_file_path) || !is_readable($this->wp_config_file_path)) {
             return false;
         }
-        $file_content = file_get_contents($this->wp_config_file_path); // phpcs:ignore
+
+        // Save untouched version of the file
+        $original_file_content = file_get_contents($this->wp_config_file_path); // phpcs:ignore
+
+        if ($original_file_content === false) {
+            error_log('10Web Speed Optimizer: Failed to read original wp-config.php file'); // phpcs:ignore
+
+            return false;
+        }
+
+        $file_content = $original_file_content;
+
         // Remove our constants to clear the file in case if somebody removed the WP_CACHE define
         $file_content = preg_replace('/# BEGIN WP Cache by 10Web[\s\S]*# END WP Cache by 10Web/', '', $file_content);
+
+        if ($file_content === null) {
+            error_log('10Web Speed Optimizer: Failed to remove existing WP Cache constants'); // phpcs:ignore
+
+            return false;
+        }
+
         // Remove WP_CACHE defined by others
         $file_content = OptimizerUtils::delete_define('WP_CACHE', $file_content);
+
+        if (strpos($file_content, '<?php') === false) {
+            // Restore original file content
+            file_put_contents($this->wp_config_file_path, $original_file_content); // phpcs:ignore
+            error_log('10Web Speed Optimizer: Failed to remove existing WP_CACHE define'); // phpcs:ignore
+
+            return false;
+        }
+
         // Add new defines
         $replacement = "<?php\n# BEGIN WP Cache by 10Web\n" . $this->wp_cache_define . "\n# END WP Cache by 10Web\n";
         $file_content = preg_replace('@<\?php\s*@i', $replacement, $file_content, 1);
 
-        return (bool) file_put_contents($this->wp_config_file_path, $file_content); // phpcs:ignore
+        if ($file_content === null) {
+            // Restore original file content
+            file_put_contents($this->wp_config_file_path, $original_file_content); // phpcs:ignore
+            error_log('10Web Speed Optimizer: Failed to add new WP Cache constants'); // phpcs:ignore
+
+            return false;
+        }
+
+        // Ensure essential WordPress constants are still present
+        if (strpos($file_content, 'require_once') === false ||
+            strpos($file_content, 'ABSPATH') === false) {
+            file_put_contents($this->wp_config_file_path, $original_file_content); // phpcs:ignore
+            error_log('10Web Speed Optimizer: Essential WordPress constants missing after modification'); // phpcs:ignore
+
+            return false;
+        }
+
+        // Write to temporary file first for atomic operation
+        $temp_file = $this->wp_config_file_path . '.tmp.' . uniqid();
+        $write_result = file_put_contents($temp_file, $file_content); // phpcs:ignore
+
+        if ($write_result === false) {
+            // Clean up temp file and restore original content
+            if (file_exists($temp_file)) {
+                unlink($temp_file); // phpcs:ignore
+            }
+            file_put_contents($this->wp_config_file_path, $original_file_content); // phpcs:ignore
+            error_log('10Web Speed Optimizer: Failed to write modified content to temporary file'); // phpcs:ignore
+
+            return false;
+        }
+
+        // Atomic rename operation
+        $rename_result = rename($temp_file, $this->wp_config_file_path); // phpcs:ignore
+
+        if (!$rename_result) {
+            // Clean up temp file and restore original content
+            unlink($temp_file); // phpcs:ignore
+            file_put_contents($this->wp_config_file_path, $original_file_content); // phpcs:ignore
+            error_log('10Web Speed Optimizer: Failed to rename temporary file to wp-config.php'); // phpcs:ignore
+
+            return false;
+        }
+
+        return true;
     }
 
     public function remove_wp_cache_constant()
@@ -147,10 +218,52 @@ class OptimizerWebPageCacheWP
             return false;
         }
 
-        $file_content = file_get_contents($this->wp_config_file_path); // phpcs:ignore
+        // Save untouched version of the file
+        $original_file_content = file_get_contents($this->wp_config_file_path); // phpcs:ignore
+
+        if ($original_file_content === false) {
+            error_log('10Web Speed Optimizer: Failed to read original wp-config.php file'); // phpcs:ignore
+
+            return false;
+        }
+
+        $file_content = $original_file_content;
         $file_content = preg_replace('/# BEGIN WP Cache by 10Web[\s\S]*# END WP Cache by 10Web/', '', $file_content);
 
-        return (bool) file_put_contents($this->wp_config_file_path, $file_content); // phpcs:ignore
+        if ($file_content === null) {
+            error_log('10Web Speed Optimizer: Failed to remove WP Cache constants'); // phpcs:ignore
+
+            return false;
+        }
+
+        // Write to temporary file first for atomic operation
+        $temp_file = $this->wp_config_file_path . '.tmp.' . uniqid();
+        $write_result = file_put_contents($temp_file, $file_content); // phpcs:ignore
+
+        if ($write_result === false) {
+            // Clean up temp file and restore original content
+            if (file_exists($temp_file)) {
+                unlink($temp_file); // phpcs:ignore
+            }
+            file_put_contents($this->wp_config_file_path, $original_file_content); // phpcs:ignore
+            error_log('10Web Speed Optimizer: Failed to write modified content to temporary file'); // phpcs:ignore
+
+            return false;
+        }
+
+        // Atomic rename operation
+        $rename_result = rename($temp_file, $this->wp_config_file_path); // phpcs:ignore
+
+        if (!$rename_result) {
+            // Clean up temp file and restore original content
+            unlink($temp_file); // phpcs:ignore
+            file_put_contents($this->wp_config_file_path, $original_file_content); // phpcs:ignore
+            error_log('10Web Speed Optimizer: Failed to rename temporary file to wp-config.php'); // phpcs:ignore
+
+            return false;
+        }
+
+        return true;
     }
 
     public function store_page_cache_configs()

@@ -67,7 +67,7 @@ class SystemInfoPage extends BasePage {
 			<div class="updated">
 				<p>
 					<strong>
-						<?php _e( 'Please include this information when posting support requests.', 'email-log' ); ?>
+						<?php esc_html_e( 'Please include this information when posting support requests.', 'email-log' ); ?>
 					</strong>
 				</p>
 			</div>
@@ -75,13 +75,16 @@ class SystemInfoPage extends BasePage {
 			<?php if ( defined( 'DISABLE_WP_CRON' ) && DISABLE_WP_CRON ) : ?>
 				<div class="notice notice-warning">
 					<p><strong>
-						<?php printf( __( 'DISABLE_WP_CRON is <a href="%s" rel="noopener" target="_blank">enabled</a>. This prevents scheduler from running.', 'email-log' ), 'https://codex.wordpress.org/Editing_wp-config.php#Disable_Cron_and_Cron_Timeout' ); ?>
+						<?php 
+                        /* translators: %s link to disable cron for email log */
+                        \EmailLog\Core\EmailLog::wp_kses_wf(sprintf(__( 'DISABLE_WP_CRON is <a href="%s" rel="noopener" target="_blank">enabled</a>. This prevents scheduler from running.', 'email-log' ), 'https://codex.wordpress.org/Editing_wp-config.php#Disable_Cron_and_Cron_Timeout' )); 
+                        ?>
 					</strong></p>
 				</div>
 			<?php endif; ?>
 
 			<div class="wrap">
-				<h1><?php _e( 'Email Log  - System Info', 'email-log' ); ?></h1>
+				<h1><?php esc_html_e( 'Email Log  - System Info', 'email-log' ); ?></h1>
 
 				<?php
 					$this->system_info->render();

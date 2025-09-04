@@ -2,10 +2,10 @@
 Contributors: algolplus
 Donate link: 
 Tags: order export,export orders,woocommerce,order,export
-Requires PHP: 8.1.0
+Requires PHP: 7.4.0
 Requires at least: 4.7
 Tested up to: 6.8
-Stable tag: 4.0.4
+Stable tag: 4.0.5
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -117,6 +117,10 @@ Yes, you can email a request to aprokaev@gmail.com. We intensively develop this 
 
 == Changelog ==
 
+= 4.0.5 - 2025-09-03 =
+* Requires PHP 7.4+
+* Updated library used to generate Excel files
+
 = 4.0.4 - 2025-09-01 =
 * Fixed bug - option "Skip fully refunded items" conflicted with mode "Export refunds"
 * Fixed bug - fatal error when exporting refunds (if main order is missing)
@@ -135,7 +139,6 @@ Yes, you can email a request to aprokaev@gmail.com. We intensively develop this 
 * Fixed critical bug - conflict with other plugins used outdated versions of same libraries ("FileBird Pro" and etc)
 
 = 4.0.1 - 2025-03-26 =
-* Requires PHP 8.1+
 * Uses new library to generate Excel files. If you created custom code to format Excel files - please migrate from [PHPExcel to PhpSpreadsheet](https://phpspreadsheet.readthedocs.io/en/latest/topics/migration-from-PHPExcel/#manual-changes)
 * Fixed broken bulk actions
 

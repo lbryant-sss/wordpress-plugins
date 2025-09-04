@@ -3,7 +3,7 @@
         'name' => 'plugins/tenweb-speed-optimizer',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '4a46f13556e14a4e0c3797c2f1b35c8150219496',
+        'reference' => '97cde8df265038b5a9d74d05fc7f87c8ca492480',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -162,7 +162,7 @@
         'plugins/tenweb-speed-optimizer' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '4a46f13556e14a4e0c3797c2f1b35c8150219496',
+            'reference' => '97cde8df265038b5a9d74d05fc7f87c8ca492480',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

@@ -104,7 +104,7 @@ class TableManager implements Loadie {
 		global $wpdb;
 
 		$table_name = $this->get_log_table_name();
-		$wpdb->insert( $table_name, $data );
+		$wpdb->insert( $table_name, $data ); //phpcs:ignore
 	}
 
 	/**
@@ -122,7 +122,7 @@ class TableManager implements Loadie {
 		// Can't use wpdb->prepare for the below query. If used it results in this bug // https://github.com/sudar/email-log/issues/13.
 		$ids = esc_sql( $ids );
 
-		return $wpdb->query( "DELETE FROM {$table_name} where id IN ( {$ids} )" ); //@codingStandardsIgnoreLine
+		return $wpdb->query( "DELETE FROM {$table_name} where id IN ( {$ids} )" ); //phpcs:ignore
 	}
 
 	/**
@@ -149,8 +149,7 @@ class TableManager implements Loadie {
 		global $wpdb;
 		$table_name = $this->get_log_table_name();
 
-		$query              = $wpdb->prepare( "DELETE FROM {$table_name} WHERE sent_date < DATE_SUB( CURDATE(), INTERVAL %d DAY )", $interval_in_days );
-		$deleted_rows_count = $wpdb->query( $query );
+		$deleted_rows_count = $wpdb->query( $wpdb->prepare( "DELETE FROM {$table_name} WHERE sent_date < DATE_SUB( CURDATE(), INTERVAL %d DAY )", $interval_in_days ) ); //phpcs:ignore
 
 		return $deleted_rows_count;
 	}
@@ -319,7 +318,7 @@ class TableManager implements Loadie {
 
 		// Find total number of items.
 		$count_query = $count_query . $query_cond;
-		$total_items = $wpdb->get_var( $count_query );
+		$total_items = $wpdb->get_var( $count_query ); //phpcs:ignore
 
 		// Adjust the query to take pagination into account.
 		if ( ! empty( $current_page_no ) && ! empty( $per_page ) ) {
@@ -329,7 +328,7 @@ class TableManager implements Loadie {
 
 		// Fetch the items.
 		$query = $query . $query_cond;
-		$items = $wpdb->get_results( $query );
+		$items = $wpdb->get_results( $query ); //phpcs:ignore
 
 		return array( $items, $total_items );
 	}
@@ -344,7 +343,7 @@ class TableManager implements Loadie {
 
 		$table_name = $this->get_log_table_name();
 
-		if ( $wpdb->get_var( "show tables like '{$table_name}'" ) != $table_name ) {
+		if ( $wpdb->get_var( "show tables like '{$table_name}'" ) != $table_name ) { //phpcs:ignore
 
 			$sql = $this->get_create_table_query();
 
@@ -363,9 +362,7 @@ class TableManager implements Loadie {
 	public function get_logs_count() {
 		global $wpdb;
 
-		$query = 'SELECT count(*) FROM ' . $this->get_log_table_name();
-
-		return $wpdb->get_var( $query );
+		return $wpdb->get_var( 'SELECT count(*) FROM ' . $this->get_log_table_name() ); //phpcs:ignore
 	}
 
 	/**
@@ -429,7 +426,7 @@ class TableManager implements Loadie {
 
 		$query = $query . $query_cond;
 
-		return absint( $wpdb->get_var( $query ) );
+		return absint( $wpdb->get_var( $query ) ); //phpcs:ignore
 	}
 
 	/**
@@ -449,7 +446,7 @@ class TableManager implements Loadie {
 		global $wpdb;
 		$table_name = $this->get_log_table_name();
 
-		$wpdb->update(
+		$wpdb->update( //phpcs:ignore
 			$table_name,
 			array(
 				'result'        => '0',
@@ -578,7 +575,7 @@ class TableManager implements Loadie {
 
 			$query = $query . $query_cond;
 
-			return $wpdb->get_results( $query );
+			return $wpdb->get_results( $query ); //phpcs:ignore
 		}
 	}
 }

@@ -156,7 +156,6 @@ class OptimizerMain
         if (!defined('TWO_CACHE_DIR')) {
             define('TWO_CACHE_DIR', OptimizerCache::get_path());
         }
-
         global $TwoSettings;
         $this->TwoSettings = $TwoSettings;
         $lazy_load_type = $this->TwoSettings->get_settings('lazy_load_type');
@@ -1220,6 +1219,13 @@ class OptimizerMain
 
         if ($this->two_test_mode === 'on' && !isset($_GET['twbooster'])) { // phpcs:ignore
             return 'test mode is enabled';
+        }
+
+        // Check for error status codes
+        $http_response_code = http_response_code();
+
+        if ($http_response_code && in_array($http_response_code, TWO_NOT_OPTIMIZED_STATUS_LIST)) {
+            return 'HTTP status code is: ' . $http_response_code;
         }
 
         return \TenWebOptimizer\OptimizerUrl::urlIsOptimizableWithReason();

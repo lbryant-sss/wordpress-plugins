@@ -36,7 +36,8 @@ class LogListAction implements Loadie {
 			wp_die();
 		}
 
-		$id = absint( $_GET['log_id'] );
+        //nonce not needed as can be called directly
+		$id = absint( $_GET['log_id'] ); //phpcs:ignore
 
 		if ( $id <= 0 ) {
 			wp_die();
@@ -61,15 +62,15 @@ class LogListAction implements Loadie {
 			?>
 			<table style="width: 100%;">
 				<tr style="background: #eee;">
-					<td style="padding: 5px;"><?php _e( 'Sent at', 'email-log' ); ?>:</td>
+					<td style="padding: 5px;"><?php esc_html_e( 'Sent at', 'email-log' ); ?>:</td>
 					<td style="padding: 5px;"><?php echo esc_html( $log_item['sent_date'] ); ?></td>
 				</tr>
 				<tr style="background: #eee;">
-					<td style="padding: 5px;"><?php _e( 'To', 'email-log' ); ?>:</td>
+					<td style="padding: 5px;"><?php esc_html_e( 'To', 'email-log' ); ?>:</td>
 					<td style="padding: 5px;"><?php echo esc_html( $log_item['to_email'] ); ?></td>
 				</tr>
 				<tr style="background: #eee;">
-					<td style="padding: 5px;"><?php _e( 'Subject', 'email-log' ); ?>:</td>
+					<td style="padding: 5px;"><?php esc_html_e( 'Subject', 'email-log' ); ?>:</td>
 					<td style="padding: 5px;"><?php echo esc_html( $log_item['subject'] ); ?></td>
 				</tr>
 
@@ -89,8 +90,8 @@ class LogListAction implements Loadie {
 
 			<div id="tabs">
 				<ul data-active-tab="<?php echo absint( $active_tab ); ?>">
-					<li><a href="#tabs-text"><?php _e( 'Raw Email Content', 'email-log' ); ?></a></li>
-					<li><a href="#tabs-preview"><?php _e( 'Preview Content as HTML', 'email-log' ); ?></a></li>
+					<li><a href="#tabs-text"><?php esc_html_e( 'Raw Email Content', 'email-log' ); ?></a></li>
+					<li><a href="#tabs-preview"><?php esc_html_e( 'Preview Content as HTML', 'email-log' ); ?></a></li>
 				</ul>
 
 				<div id="tabs-text">
@@ -103,11 +104,11 @@ class LogListAction implements Loadie {
 			</div>
 
 			<div id="view-message-footer">
-				<a href="#" class="button action" id="thickbox-footer-close"><?php _e( 'Close', 'email-log' ); ?></a>
+				<a href="#" class="button action" id="thickbox-footer-close"><?php esc_html_e( 'Close', 'email-log' ); ?></a>
 			</div>
 
 			<?php
-			echo ob_get_clean();
+			\EmailLog\Core\EmailLog::wp_kses_wf(ob_get_clean());
 		}
 
 		wp_die(); // this is required to return a proper result.
@@ -182,7 +183,8 @@ class LogListAction implements Loadie {
 		$type    = 'error';
 
 		if ( absint( $logs_deleted ) > 0 ) {
-			$message = sprintf( _n( '1 email log deleted.', '%s email logs deleted', $logs_deleted, 'email-log' ), $logs_deleted );
+            /* translators: %s number of logs deleted */
+			$message = sprintf( _n( '%s email log deleted.', '%s email logs deleted', $logs_deleted, 'email-log' ), $logs_deleted );
 			$type    = 'updated';
 		}
 

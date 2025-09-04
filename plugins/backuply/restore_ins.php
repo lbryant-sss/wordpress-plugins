@@ -2935,6 +2935,7 @@ function restore_curl($data) {
 	
 	$data['restore_key'] = urlencode($config['RESTORE_KEY']);
 	$data['site_url'] = backuply_optPOST('site_url');
+	$data['home_url'] = backuply_optPOST('home_url');
 	$data['backup_site_url'] = backuply_optPOST('backup_site_url');
 	$data['backup_site_path'] = backuply_optPOST('backup_site_path');
 	$data['ajax_url'] = backuply_optPOST('ajax_url');
@@ -2980,9 +2981,9 @@ function remote_archive_download_loop(){
 	// }
 	
 	$url = parse_url($data['remote_tar']);
-	
+
 	if(!class_exists($url['scheme'])){
-		
+
 		$did_register = backuply_stream_wrapper_register($url['scheme'], $url['scheme']);
 
 		if(empty($did_register)){
@@ -3012,20 +3013,20 @@ function remote_archive_download_loop(){
 	if(method_exists($url['scheme'], 'download_file_loop')){
 
 		$obj = new $url['scheme'];
-		
+
 		//Delete the local file if the process is starting afresh and the file already exists
 		if(file_exists($data['local_tar']) && empty($data['l_readbytes'])){
 			@unlink($data['local_tar']);
 		}
-		
+
 		//backuply_log('invoked download function, org_tar : '.$this->_orig_tar.' , local : '.$this->_local_tar);
 		$obj->download_file_loop($data['remote_tar'], $data['local_tar'], $data['l_readbytes']);
-		
+
 		if(!empty($error)){
 			backuply_die('download_error');
 		}
 	}else{
-		
+
 		// Open the file pointer if not opened
 		$remote_fp = @fopen($data['remote_tar'], 'rb');
 		$fp = @fopen($data['local_tar'], 'ab');
@@ -3133,16 +3134,21 @@ function updating_config_file(){
 		'DB_NAME' => $data['softdb'],
 		'DB_USER' => $data['softdbuser'],
 		'DB_PASSWORD' => $data['softdbpass'],
-		'DB_HOST' => $data['softdbhost']
+		'DB_HOST' => $data['softdbhost'],
+		'WP_HOME' => $data['home_url'],
+		'WP_SITEURL' => $data['site_url']
 	];
 	
 	$matches = [];
 	
 	foreach($replace_list as $con => $val){
 		preg_match_all('/\ndefine\((\s*?)("|\')'.preg_quote($con).'("|\')(\s*?),(\s*?)("|\')(.*?)("|\')(\s*?)\);/is', $config_cont, $match);
-		$replacement = str_replace($match[7], $val, $match[0]);
+		
+		if($match[7] !== $replace_list[$con]){
+			$replacement = str_replace($match[7], $val, $match[0]);
 
-		$config_cont = str_replace($match[0], $replacement, $config_cont);
+			$config_cont = str_replace($match[0], $replacement, $config_cont);
+		}
 		
 	}
 
@@ -3251,6 +3257,7 @@ $data['l_readbytes'] = backuply_optPOST('l_readbytes');
 $data['size'] = backuply_optPOST('size');
 $data['restore_loop'] = (empty(backuply_optPOST('restore_loop'))) ? 1 : ( (int) backuply_optPOST('restore_loop') + 1);
 $data['site_url'] = backuply_optPOST('site_url');
+$data['home_url'] = backuply_optPOST('home_url');
 $data['backup_site_url'] = backuply_optPOST('backup_site_url');
 $data['backup_site_path'] = backuply_optPOST('backup_site_path');
 $data['tbl_prefix'] = backuply_optPOST('tbl_prefix');

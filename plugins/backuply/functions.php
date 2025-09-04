@@ -1619,6 +1619,7 @@ function backuply_restore_curl($info = array()) {
 
 	$backup_file_loc = $info['backup_file_loc'];
 	$info['site_url'] = site_url();
+	$info['home_url'] = home_url();
 	$info['to_email'] = get_option('backuply_notify_email_address');
 	$info['admin_email'] = get_option('admin_email');
 	$info['ajax_url'] = admin_url('admin-ajax.php');

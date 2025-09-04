@@ -21,7 +21,7 @@
 		$('#backuply_free-trial').hide();
 		
 		// Save this preference
-		$.post(backuply_promo.ajax + '?backuply_trial_promo=0&security='+backuply_promo.nonce, data, function(response) {
+		$.post(backuply_promo.ajax + '?action=backuply_trial_promo&security='+backuply_promo.nonce, data, function(response) {
 			//alert(response);
 		});
 	});

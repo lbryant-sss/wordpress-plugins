@@ -70,7 +70,7 @@ class CoreSetting extends Setting {
 		?>
 
 		<p>
-			<input type="checkbox" checked disabled><?php _e( 'Administrator', 'email-log' ); ?>
+			<input type="checkbox" checked disabled><?php esc_html_e( 'Administrator', 'email-log' ); ?>
 		</p>
 
 		<?php foreach ( $available_roles as $role_id => $role ) : ?>
@@ -78,14 +78,14 @@ class CoreSetting extends Setting {
 				<input type="checkbox" name="<?php echo esc_attr( $field_name ); ?>" value="<?php echo esc_attr( $role_id ); ?>"
 					<?php \EmailLog\Util\checked_array( $selected_roles, $role_id ); ?>>
 
-				<?php echo $role['name']; ?>
+				<?php echo esc_html($role['name']); ?>
 			</p>
 		<?php endforeach; ?>
 
 		<p>
 			<em>
-				<?php _e( '<strong>Note:</strong> Users with the above User Roles can view Email Logs.', 'email-log' ); ?>
-				<?php _e( 'Administrator role always has access and cannot be disabled.', 'email-log' ); ?>
+				<?php \EmailLog\Core\EmailLog::wp_kses_wf(__( '<strong>Note:</strong> Users with the above User Roles can view Email Logs.', 'email-log' )); ?>
+				<?php \EmailLog\Core\EmailLog::wp_kses_wf(__( 'Administrator role always has access and cannot be disabled.', 'email-log' )); ?>
 			</em>
 		</p>
 
@@ -120,14 +120,14 @@ class CoreSetting extends Setting {
 		?>
 
 		<input type="checkbox" name="<?php echo esc_attr( $field_name ); ?>" value="true" <?php checked( 'true', $remove_data ); ?>>
-		<?php _e( 'Check this box if you would like to completely remove all of its data when the plugin is deleted.', 'email-log' ) ?>
+		<?php esc_html_e( 'Check this box if you would like to completely remove all of its data when the plugin is deleted.', 'email-log' ) ?>
 
 		<p>
 			<em>
-				<?php printf(
-					__( '<strong>Note:</strong> You can also export the Email Logs using our <a href="%s" rel="noopener noreferrer" target="_blank">Export Logs</a> add-on.', 'email-log' ),
-					'https://wpemaillog.com/addons/export-logs/?utm_campaign=Upsell&utm_medium=wpadmin&utm_source=settings&utm_content=el'
-				); ?>
+				<?php 
+                /* translators: %s export logs link */
+                \EmailLog\Core\EmailLog::wp_kses_wf(sprintf(__( '<strong>Note:</strong> You can also export the Email Logs using our <a href="%s" rel="noopener noreferrer" target="_blank">Export Logs</a> add-on.', 'email-log' ),
+					'https://wpemaillog.com/addons/export-logs/?utm_campaign=Upsell&utm_medium=wpadmin&utm_source=settings&utm_content=el')); ?>
 			</em>
 		</p>
 
@@ -213,11 +213,11 @@ class CoreSetting extends Setting {
 		?>
 
 		<input type="checkbox" name="<?php echo esc_attr( $field_name ); ?>" value="true" <?php checked( 'true', $hide_dashboard_widget ); ?>>
-		<?php _e( 'Check this box if you would like to disable dashboard widget.', 'email-log' ) ?>
+		<?php esc_html_e( 'Check this box if you would like to disable dashboard widget.', 'email-log' ) ?>
 
 		<p>
 			<em>
-				<?php printf(
+				<?php \EmailLog\Core\EmailLog::wp_kses_wf(
 					__( '<strong>Note:</strong> Each users can also disable dashboard widget using screen options', 'email-log' )
 				); ?>
 			</em>
@@ -259,27 +259,30 @@ class CoreSetting extends Setting {
 		checked( true, $db_size_notification_data['notify'] ); ?> />
 		<?php
 		// The values within each field are already escaped.
-		printf( __( 'Notify %1$s if there are more than %2$s logs.', 'email-log' ),
+        /* translators: %1$s admin email, %2$s number of logs */
+		\EmailLog\Core\EmailLog::wp_kses_wf(sprintf(__( 'Notify %1$s if there are more than %2$s logs.', 'email-log' ),
 			$admin_email_input_field,
 			$logs_threshold_input_field
-		);
+		));
 		?>
         <p>
             <em>
-				<?php printf(
-					__( '%1$s There are %2$s email logs currently logged in the database.', 'email-log' ),
+				<?php 
+                /* translators: %1$s bold Note HTML, %2$s number of logs */
+                \EmailLog\Core\EmailLog::wp_kses_wf(sprintf(__( '%1$s There are %2$s email logs currently logged in the database.', 'email-log' ),
 					'<strong>Note:</strong>',
 					'<strong>' . esc_attr( $logs_count ) . '</strong>'
-				); ?>
+				)); ?>
             </em>
         </p>
 		<?php if ( ! empty( $db_size_notification_data['threshold_email_last_sent'] ) ) : ?>
             <p>
-				<?php printf(
-					__( 'Last notification email was sent on %1$s. Click %2$s button to reset sending the notification.', 'email-log' ),
-					'<strong>' . get_date_from_gmt( date( 'Y-m-d H:i:s', $db_size_notification_data['threshold_email_last_sent'] ), \EmailLog\Util\get_user_defined_date_time_format() ) . '</strong>',
+				<?php 
+                    /* translators: %1$s date, %2$s Save button html */
+                    \EmailLog\Core\EmailLog::wp_kses_wf(sprintf(__( 'Last notification email was sent on %1$s. Click %2$s button to reset sending the notification.', 'email-log' ),
+					'<strong>' . get_date_from_gmt( gmdate( 'Y-m-d H:i:s', $db_size_notification_data['threshold_email_last_sent'] ), \EmailLog\Util\get_user_defined_date_time_format() ) . '</strong>',
 					'<b>Save</b>'
-				); ?>
+				)); ?>
             </p>
 		<?php
 		endif;
@@ -437,12 +440,9 @@ class CoreSetting extends Setting {
 		$this->register_threshold_met_admin_notice();
 
 		if ( $is_notification_enabled && is_email( $admin_email ) ) {
+            /* translators: %s numer of emails */
 			$subject = sprintf( __( 'Email Log Plugin: Your log threshold of %s has been met', 'email-log' ), $logs_threshold );
-			$message = <<<EOT
-<p>This email is generated by the Email Log plugin.</p>
-<p>Your log threshold of $logs_threshold has been met. You may manually delete the logs to keep your database table in size.</p>
-<p>Also, consider using our <a href="https://wpemaillog.com/addons/auto-delete-logs/">Auto Delete Logs</a> plugin to delete the logs automatically.</p>
-EOT;
+			$message = '<p>This email is generated by the Email Log plugin.</p><p>Your log threshold of $logs_threshold has been met. You may manually delete the logs to keep your database table in size.</p><p>Also, consider using our <a href="https://wpemaillog.com/addons/auto-delete-logs/">Auto Delete Logs</a> plugin to delete the logs automatically.</p>';
 			$headers = array( 'Content-Type: text/html; charset=UTF-8' );
 
 			/**
@@ -489,6 +489,7 @@ EOT;
 	public function render_log_threshold_met_notice() {
 		$email_log      = email_log();
 		$logs_count     = absint( $email_log->table_manager->get_logs_count() );
+        /* translators: %1$s number of emails, %2$s settings page name, %3$s addon name */
 		$notice_message = sprintf( __( 'Currently there are %1$s logged, which is more than the threshold that is set in the %2$s screen. You can delete some logs or increase the threshold. You can also use our %3$s add-on to automatically delete logs', 'email-log' ),
 			$logs_count . _n( ' email log', ' email logs', $logs_count, 'email-log' ),
 			'<a href="' . esc_url( admin_url( 'admin.php?page=' . SettingsPage::PAGE_SLUG ) ) . '">settings</a> screen',
@@ -496,7 +497,7 @@ EOT;
 			 );
 		?>
         <div class="notice notice-warning is-dismissible">
-            <p><?php echo $notice_message; ?></p>
+            <p><?php echo esc_html($notice_message); ?></p>
         </div>
 		<?php
 	}

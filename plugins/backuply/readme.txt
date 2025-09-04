@@ -4,7 +4,7 @@ Tags: backup, restore, database backup, cloud backup, wordpress backup, migratio
 Requires at least: 4.7
 Tested up to: 6.8
 Requires PHP: 5.5
-Stable tag: 1.4.7
+Stable tag: 1.4.8
 License: LGPL v2.1
 License URI: http://www.gnu.org/licenses/lgpl-2.1.html
 
@@ -85,7 +85,12 @@ Go To your WordPress install -> Plugins -> Add New Button -> In Search Box searc
 
 == Changelog ==
 
-= 1.4.7 (23 July 2025) =
+= 1.4.8 (2nd September 2025) =
+* [Bug-Fix] There was an issue with migration, when WP_HOME and WP_SITEURL constants were set in the wp-config.php of the backup.
+* [Task] All .log files will be excluded form backups.
+* [Task] Minor refactor of the code.
+
+= 1.4.7 (23rd July 2025) =
 * [Bug-Fix Pro] For some cases, upload to OneDrive was getting stuck because OneDrive's servers were either breaking the request abruptly or not responding. This has been fixed.
 * [Bug-Fix] In certain cases, the info file and version file were not getting added to the backup; this has been fixed.
 * [Bug-Fix] Size of a file uploaded through FTP was showing wrong when the backup size was more than 2GB; this has been fixed.

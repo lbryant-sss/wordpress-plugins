@@ -50,7 +50,7 @@ function backuply_tar_archive($tarname, $file_list, $handle_remote = false){
 	backuply_log('Archiving your WP INSTALL Now');
 
 	$tar_archive = new backuply_tar($tarname, '', $handle_remote);
-	$tar_archive->setIgnoreList(['debug.log', 'wp-content/cache']);
+	$tar_archive->setIgnoreList(['debug.log', 'wp-content/cache', '*.\.log', 'error-log']);
 
 	$res = $tar_archive->createModify($file_list, '', '');
 	

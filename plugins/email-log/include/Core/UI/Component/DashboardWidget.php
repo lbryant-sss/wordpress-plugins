@@ -40,7 +40,7 @@ class DashboardWidget implements Loadie {
 		?>
 
 		<p>
-			<?php _e( 'Total number of emails logged' , 'email-log' ); ?>: <strong><?php echo number_format( absint( $logs_count ), 0, ',', ',' ); ?></strong>
+			<?php esc_html_e( 'Total number of emails logged' , 'email-log' ); ?>: <strong><?php echo number_format( absint( $logs_count ), 0, ',', ',' ); ?></strong>
 		</p>
 
 		<?php
@@ -54,9 +54,12 @@ class DashboardWidget implements Loadie {
 		?>
 
 		<ul class="subsubsub" style="float: none">
-			<li><?php printf( __( '<a href="%s">Email Logs</a>', 'email-log' ), 'admin.php?page=email-log' ); ?> <span style="color: #ddd"> | </span></li>
-			<li><?php printf( __( '<a href="%s">Settings</a>', 'email-log' ), 'admin.php?page=email-log-settings' ); ?> <span style="color: #ddd"> | </span></li>
-			<li><?php printf( __( '<a href="%s">Addons</a>', 'email-log' ), 'admin.php?page=email-log-addons' ); ?></li>
+			<li><?php 
+            /* translators: %s email logs page link */
+            \EmailLog\Core\EmailLog::wp_kses_wf(sprintf(__( '<a href="%s">Email Logs</a>', 'email-log' ), 'admin.php?page=email-log' )); ?> <span style="color: #ddd"> | </span></li>
+			<li><?php 
+            /* translators: %s settings page link */
+            \EmailLog\Core\EmailLog::wp_kses_wf(sprintf(__( '<a href="%s">Settings</a>', 'email-log' ), 'admin.php?page=email-log-settings' )); ?> <span style="color: #ddd"> | </span></li>
 		</ul>
 
 		<?php

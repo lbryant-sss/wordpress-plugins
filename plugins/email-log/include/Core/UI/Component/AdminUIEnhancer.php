@@ -52,7 +52,7 @@ class AdminUIEnhancer {
 		add_action( 'el_admin_footer', array( $this, 'hook_footer_links' ) );
 	}
 
-	/**
+    /**
 	 * Add link to Add-ons store.
 	 *
 	 * @see  Additional links in the Plugin listing is based on
@@ -105,11 +105,11 @@ class AdminUIEnhancer {
 	 */
 	public function add_credit_links() {
 		$plugin_data = get_plugin_data( $this->plugin_file );
-		printf(
+		\EmailLog\Core\EmailLog::wp_kses_wf(sprintf(
 			'%1$s ' . __( 'plugin', 'email-log' ) . ' | ' . __( 'Version', 'email-log' ) . ' %2$s | ' . __( 'by', 'email-log' ) . ' %3$s<br />',
 			$plugin_data['Title'],
 			$plugin_data['Version'],
 			$plugin_data['Author']
-		);
+        ));
 	}
 }

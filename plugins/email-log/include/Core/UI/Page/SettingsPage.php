@@ -108,7 +108,7 @@ class SettingsPage extends BasePage {
 	public function render_page() {
 		?>
 		<div class="wrap">
-			<h1><?php _e( 'Email Log Settings', 'email-log' ); ?></h1>
+			<h1><?php esc_html_e( 'Email Log Settings', 'email-log' ); ?></h1>
 
 			<form method="post" action="options.php">
 				<?php

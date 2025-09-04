@@ -48,6 +48,8 @@ add_action('wp_ajax_backuply_backup_upload', 'backuply_backup_upload');
 add_action('wp_ajax_nopriv_backuply_restore_status_log', 'backuply_restore_status_log');
 add_action('wp_ajax_backuply_restore_status_log', 'backuply_restore_status_log');
 add_action('wp_ajax_backuply_close_litespeed_notice', 'backuply_close_litespeed_notice');
+add_action('wp_ajax_backuply_close_update_notice', 'backuply_close_update_notice');
+add_action('wp_ajax_backuply_trial_promo', 'backuply_close_trial_promo');
 
 // Backuply CLoud
 add_action('wp_ajax_bcloud_trial', 'backuply_bcloud_trial');
@@ -1172,4 +1174,44 @@ function backuply_close_litespeed_notice(){
 	
 	update_option('backuply_litespeed_notice', time()+MONTH_IN_SECONDS);
 
+}
+
+function backuply_close_update_notice(){
+
+	if(!wp_verify_nonce($_GET['security'], 'backuply_promo_nonce')){
+		wp_send_json_error('Security Check failed!');
+	}
+	
+	if(!current_user_can('manage_options')){
+		wp_send_json_error('You don\'t have privilege to close this notice!');
+	}
+	
+	$plugin_update_notice = get_option('softaculous_plugin_update_notice', []);
+	$available_update_list = get_site_transient('update_plugins');
+	$to_update_plugins = apply_filters('softaculous_plugin_update_notice', []);
+	
+	if(empty($available_update_list) || empty($available_update_list->response)){
+		return;
+	}
+	
+	foreach($to_update_plugins as $plugin_path => $plugin_name){
+		if(isset($available_update_list->response[$plugin_path])){
+			$plugin_update_notice[$plugin_path] = $available_update_list->response[$plugin_path]->new_version;
+		}
+	}
+
+	update_option('softaculous_plugin_update_notice', $plugin_update_notice);
+}
+
+function backuply_close_trial_promo(){
+	if(!wp_verify_nonce(backuply_optreq('security'), 'backuply_trial_nonce')) {
+		die('Security Check Failed');
+	}
+	
+	if(!current_user_can('manage_options')){
+		wp_send_json_error('You don\'t have privilege to close this notice!');
+	}
+	
+	update_option('backuply_hide_trial', (0 - time()), false);
+	die('DONE');
 }

@@ -36,7 +36,7 @@ class NonceChecker implements Loadie {
 		}
 
 		if ( isset( $_POST['el-action'] ) ) {
-			$action = sanitize_text_field( $_POST['el-action'] );
+			$action = sanitize_text_field( wp_unslash($_POST['el-action']) );
 
 			$allowed_actions = [
 				'el-download-system-info',
@@ -57,20 +57,20 @@ class NonceChecker implements Loadie {
 				return;
 			}
 
-			if ( ! wp_verify_nonce( $_POST[ $action . '_nonce' ], $action ) ) {
+			if ( ! wp_verify_nonce( sanitize_text_field(wp_unslash($_POST[ $action . '_nonce' ] ?? '')), $action ) ) {
 				return;
 			}
 		}
 
 		if ( isset( $_REQUEST['action'] ) || isset( $_REQUEST['action2'] ) ) {
-			$action = sanitize_text_field( $_REQUEST['action'] );
+			$action = sanitize_text_field( wp_unslash($_REQUEST['action']) );
 
 			if ( '-1' === $action ) {
 				if ( ! isset( $_REQUEST['action2'] ) ) {
 					return;
 				}
 
-				$action = sanitize_text_field( $_REQUEST['action2'] );
+				$action = sanitize_text_field( wp_unslash($_REQUEST['action2']) );
 			}
 
 			if ( strpos( $action, 'el-log-list-' ) !== 0 && strpos( $action, 'el-cron-' ) !== 0 ) {
@@ -82,7 +82,7 @@ class NonceChecker implements Loadie {
 					return;
 				}
 
-				if ( ! wp_verify_nonce( $_REQUEST[ LogListPage::LOG_LIST_ACTION_NONCE_FIELD ], LogListPage::LOG_LIST_ACTION_NONCE ) ) {
+				if ( ! wp_verify_nonce( sanitize_text_field( wp_unslash($_REQUEST[ LogListPage::LOG_LIST_ACTION_NONCE_FIELD ] ?? '')), LogListPage::LOG_LIST_ACTION_NONCE ) ) {
 					return;
 				}
 			}
@@ -92,7 +92,7 @@ class NonceChecker implements Loadie {
 					return;
 				}
 
-				if ( ! wp_verify_nonce( $_REQUEST[ $action . '-nonce-field' ], $action . '-nonce' ) ) {
+				if ( ! wp_verify_nonce( sanitize_text_field( wp_unslash($_REQUEST[ $action . '-nonce-field' ] ?? '' )), $action . '-nonce' ) ) {
 					return;
 				}
 			}

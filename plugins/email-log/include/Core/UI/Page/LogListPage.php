@@ -97,7 +97,7 @@ class LogListPage extends BasePage {
 		$this->log_list_table->prepare_items();
 		?>
 		<div class="wrap">
-			<h2><?php _e( 'Email Logs', 'email-log' ); ?></h2>
+			<h2><?php esc_html_e( 'Email Logs', 'email-log' ); ?></h2>
 			<?php settings_errors(); ?>
 
 			<form id="email-logs-list" method="get">

@@ -33,9 +33,9 @@ class Email_Log_List_Table extends WP_List_Table {
 		if ( 'top' == $which ) {
 			// The code that goes before the table is here.
 			echo '<span id = "el-pro-msg">';
-			_e( 'More fields are available in Pro addon. ', 'email-log' );
-			echo '<a href = "http://sudarmuthu.com/out/buy-email-log-more-fields-addon" style = "color:red">';
-			_e( 'Buy Now', 'email-log' );
+			esc_attr_e( 'More fields are available in Pro addon. ', 'email-log' );
+			echo '<a href = "https://wpemaillog.com/addons/more-fields/" style = "color:red">';
+			esc_attr_e( 'Buy Now', 'email-log' );
 			echo '</a>';
 			echo '</span>';
 		}
@@ -46,30 +46,30 @@ class Email_Log_List_Table extends WP_List_Table {
 			echo '<p>&nbsp;</p>';
 
 			echo '<p>';
-			_e( 'The following are the list of pro addons that are currently available for purchase.', 'email-log' );
+			esc_attr_e( 'The following are the list of pro addons that are currently available for purchase.', 'email-log' );
 			echo '</p>';
 
 			echo '<ul style="list-style:disc; padding-left:35px">';
 
 			echo '<li>';
-			echo '<strong>', __( 'Email Log - Resend Email', 'email-log' ), '</strong>', ' - ';
-			echo __( 'Adds the ability to resend email from logs.', 'email-log' );
-			echo ' <a href = "http://sudarmuthu.com/wordpress/email-log/pro-addons#resend-email-addon">', __( 'More Info', 'email-log' ), '</a>.';
-			echo ' <a href = "http://sudarmuthu.com/out/buy-email-log-resend-email-addon">', __( 'Buy now', 'email-log' ), '</a>';
+			echo '<strong>', esc_attr__( 'Email Log - Resend Email', 'email-log' ), '</strong>', ' - ';
+			echo esc_attr__( 'Adds the ability to resend email from logs.', 'email-log' );
+			echo ' <a href = "https://wpemaillog.com/addons/resend-email/">', esc_attr__( 'More Info', 'email-log' ), '</a>.';
+			echo ' <a href = "https://wpemaillog.com/addons/resend-email/">', esc_attr__( 'Buy now', 'email-log' ), '</a>';
 			echo '</li>';
 
 			echo '<li>';
-			echo '<strong>', __( 'Email Log - More fields', 'email-log' ), '</strong>', ' - ';
-			echo __( 'Adds more fields (From, CC, BCC, Reply To, Attachment) to the logs page.', 'email-log' );
-			echo ' <a href = "http://sudarmuthu.com/wordpress/email-log/pro-addons#more-fields-addon">', __( 'More Info', 'email-log' ), '</a>.';
-			echo ' <a href = "http://sudarmuthu.com/out/buy-email-log-more-fields-addon">', __( 'Buy now', 'email-log' ), '</a>';
+			echo '<strong>', esc_attr__( 'Email Log - More fields', 'email-log' ), '</strong>', ' - ';
+			echo esc_attr__( 'Adds more fields (From, CC, BCC, Reply To, Attachment) to the logs page.', 'email-log' );
+			echo ' <a href = "https://wpemaillog.com/addons/more-fields">', esc_attr__( 'More Info', 'email-log' ), '</a>.';
+			echo ' <a href = "https://wpemaillog.com/addons/more-fields/">', esc_attr__( 'Buy now', 'email-log' ), '</a>';
 			echo '</li>';
 
 			echo '<li>';
-			echo '<strong>', __( 'Email Log - Forward Email', 'email-log' ), '</strong>', ' - ';
-			echo __( 'This addon allows you to send a copy of all emails send from WordPress to another email address', 'email-log' );
-			echo ' <a href = "http://sudarmuthu.com/wordpress/email-log/pro-addons#forward-email-addon">', __( 'More Info', 'email-log' ), '</a>.';
-			echo ' <a href = "http://sudarmuthu.com/out/buy-email-log-forward-email-addon">', __( 'Buy now', 'email-log' ), '</a>';
+			echo '<strong>', esc_attr__( 'Email Log - Forward Email', 'email-log' ), '</strong>', ' - ';
+			echo esc_attr__( 'This addon allows you to send a copy of all emails send from WordPress to another email address', 'email-log' );
+			echo ' <a href = "https://wpemaillog.com/addons/forward-email/">', esc_attr__( 'More Info', 'email-log' ), '</a>.';
+			echo ' <a href = "https://wpemaillog.com/addons/forward-email/">', esc_attr__( 'Buy now', 'email-log' ), '</a>';
 			echo '</li>';
 
 			echo '</ul>';
@@ -132,7 +132,8 @@ class Email_Log_List_Table extends WP_List_Table {
 	 */
 	protected function column_sent_date( $item ) {
 		$email_date = mysql2date(
-			sprintf( __( '%s @ %s', 'email-log' ), get_option( 'date_format', 'F j, Y' ), get_option( 'time_format', 'g:i A' ) ),
+            /* translators: %1$s is the date the email message was sent, %2$s is the time */
+			sprintf( __( '%1$s @ %2$s', 'email-log' ), get_option( 'date_format', 'F j, Y' ), get_option( 'time_format', 'g:i A' ) ),
 			$item->sent_date
 		);
 
@@ -155,9 +156,10 @@ class Email_Log_List_Table extends WP_List_Table {
 			__( 'View Content', 'email-log' )
 		);
 
+        //phpcs:ignore nonce not needed as it can be called directly
 		$delete_url = add_query_arg(
 			array(
-				'page'                           => $_REQUEST['page'],
+				'page'                           => sanitize_text_field(wp_unslash($_REQUEST['page'] ?? '')), //phpcs:ignore
 				'action'                         => 'delete',
 				$this->_args['singular']         => $item->id,
 				EmailLog::DELETE_LOG_NONCE_FIELD => wp_create_nonce( EmailLog::DELETE_LOG_ACTION ),
@@ -248,15 +250,14 @@ class Email_Log_List_Table extends WP_List_Table {
 	 */
 	public function process_bulk_action() {
 		global $wpdb;
-		global $EmailLog; //@codingStandardsIgnoreLine
+		global $EmailLog; 
 
 		if ( 'delete' === $this->current_action() ) {
 			// Delete a list of logs by id.
 
-			$nonce = $_REQUEST[ EmailLog::DELETE_LOG_NONCE_FIELD ];
-			if ( wp_verify_nonce( $nonce, EmailLog::DELETE_LOG_ACTION ) ) {
+			if ( wp_verify_nonce( sanitize_text_field(wp_unslash($_REQUEST[ EmailLog::DELETE_LOG_NONCE_FIELD ] ?? '')), EmailLog::DELETE_LOG_ACTION ) ) {
 
-				$ids = $_GET[ $this->_args['singular'] ];
+				$ids = sanitize_text_field(wp_unslash($_GET[ $this->_args['singular'] ] ?? ''));
 
 				if ( is_array( $ids ) ) {
 					$selected_ids = implode( ',', $ids );
@@ -276,8 +277,7 @@ class Email_Log_List_Table extends WP_List_Table {
 			}
 		} elseif ( 'delete-all' === $this->current_action() ) {
 			// Delete all logs.
-			$nonce = $_REQUEST[ EmailLog::DELETE_LOG_NONCE_FIELD ];
-			if ( wp_verify_nonce( $nonce, EmailLog::DELETE_LOG_ACTION ) ) {
+			if ( wp_verify_nonce( sanitize_text_field(wp_unslash($_REQUEST[ EmailLog::DELETE_LOG_NONCE_FIELD ] ?? '')), EmailLog::DELETE_LOG_ACTION ) ) {
 				$table_name = $wpdb->prefix . EmailLog::TABLE_NAME;
 				$EmailLog->logs_deleted = $wpdb->query( "DELETE FROM $table_name" ); //@codingStandardsIgnoreLine
 			} else {
@@ -305,14 +305,15 @@ class Email_Log_List_Table extends WP_List_Table {
 		$count_query = 'SELECT count(*) FROM ' . $table_name;
 		$query_cond = '';
 
-		if ( isset( $_GET['s'] ) ) {
-			$search_term = trim( esc_sql( $_GET['s'] ) );
+        //nonce not needed as can be linked directly
+		if ( isset( $_GET['s'] ) ) { //phpcs:ignore
+			$search_term = trim( esc_sql( wp_unslash($_GET['s']) ) ); //phpcs:ignore
 			$query_cond .= " WHERE to_email LIKE '%$search_term%' OR subject LIKE '%$search_term%' ";
 		}
 
 		// Ordering parameters.
-		$orderby = ! empty( $_GET['orderby'] ) ? esc_sql( $_GET['orderby'] ) : 'sent_date';
-		$order   = ! empty( $_GET['order'] ) ? esc_sql( $_GET['order'] ) : 'DESC';
+		$orderby = ! empty( $_GET['orderby'] ) ? esc_sql( $_GET['orderby'] ) : 'sent_date'; //phpcs:ignore 
+		$order   = ! empty( $_GET['order'] ) ? esc_sql( $_GET['order'] ) : 'DESC'; //phpcs:ignore
 
 		if ( ! empty( $orderby ) & ! empty( $order ) ) {
 			$query_cond .= ' ORDER BY ' . $orderby . ' ' . $order;
@@ -320,7 +321,7 @@ class Email_Log_List_Table extends WP_List_Table {
 
 		// Find total number of items.
 		$count_query = $count_query . $query_cond;
-		$total_items = $wpdb->get_var( $count_query );
+		$total_items = $wpdb->get_var( $count_query ); //phpcs:ignore
 
 		// Adjust the query to take pagination into account.
 		$per_page = EmailLog::get_per_page();
@@ -331,7 +332,7 @@ class Email_Log_List_Table extends WP_List_Table {
 
 		// Fetch the items.
 		$query = $query . $query_cond;
-		$this->items = $wpdb->get_results( $query );
+		$this->items = $wpdb->get_results( $query ); //phpcs:ignore
 
 		// Register pagination options & calculations.
 		$this->set_pagination_args( array(
@@ -345,7 +346,7 @@ class Email_Log_List_Table extends WP_List_Table {
 	 * Displays default message when no items are found.
 	 */
 	public function no_items() {
-		_e( 'Your email log is empty', 'email-log' );
+		esc_attr_e( 'Your email log is empty', 'email-log' );
 	}
 }
 ?>

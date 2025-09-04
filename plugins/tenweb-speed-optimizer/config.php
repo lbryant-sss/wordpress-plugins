@@ -1,6 +1,6 @@
 <?php
 
-define('TENWEB_SO_VERSION', '2.32.4');
+define('TENWEB_SO_VERSION', '2.32.7');
 define('TENWEB_SO_CONNECTED_FROM', 'speed_optimizer');
 define('TENWEB_SO_DIR', plugin_dir_path(TWO_PLUGIN_FILE));
 define('TENWEB_SO_PLUGIN_DIR', plugin_dir_path(TWO_PLUGIN_FILE));
@@ -52,6 +52,10 @@ if (!defined('TENWEB_CACHE_STRUCTURE_ALLOWED_SIZE')) {
 
 if (!function_exists('get_plugins')) {
     require_once ABSPATH . 'wp-admin/includes/plugin.php';
+}
+
+if (!defined('TWO_NOT_OPTIMIZED_STATUS_LIST')) {
+    define('TWO_NOT_OPTIMIZED_STATUS_LIST', [404, 403, 500, 502, 504]);
 }
 
 $tenweb_so_mu_plugins = get_mu_plugins();

@@ -130,9 +130,7 @@ function checked_array( $values, $current ) {
  * @return string Failure icon markup.
  */
 function get_failure_icon() {
-	return <<<EOT
-<span class="dashicons dashicons-dismiss"></span>
-EOT;
+	return '<span class="dashicons dashicons-dismiss"></span>';
 }
 
 /**
@@ -143,9 +141,7 @@ EOT;
  * @return string Success icon markup.
  */
 function get_success_icon() {
-	return <<<EOT
-<span class="dashicons dashicons-yes-alt"></span>
-EOT;
+	return '<span class="dashicons dashicons-yes-alt"></span>';
 
 }
 

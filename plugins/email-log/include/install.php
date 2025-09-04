@@ -34,7 +34,7 @@ class Email_Log_Init {
 			$current_blog = $wpdb->blogid;
 
 			// Get all blogs in the network and activate plugin on each one
-			$blog_ids = $wpdb->get_col( "SELECT blog_id FROM $wpdb->blogs" );
+			$blog_ids = $wpdb->get_col( "SELECT blog_id FROM $wpdb->blogs" ); //phpcs:ignore
 			foreach ( $blog_ids as $blog_id ) {
 				switch_to_blog( $blog_id );
 				self::create_emaillog_table();
@@ -92,9 +92,9 @@ class Email_Log_Init {
 		$table_name = $wpdb->prefix . EmailLog::TABLE_NAME;
 		$charset_collate = $wpdb->get_charset_collate();
 
-		if ( $wpdb->get_var( "show tables like '{$table_name}'" ) != $table_name ) {
+		if ( $wpdb->get_var( "show tables like '{$table_name}'" ) != $table_name ) { //phpcs:ignore
 
-			$sql = 'CREATE TABLE ' . $table_name . ' (
+			$sql = 'CREATE TABLE ' . $table_name . ' ( 
 				id mediumint(9) NOT NULL AUTO_INCREMENT,
 				to_email VARCHAR(100) NOT NULL,
 				subject VARCHAR(250) NOT NULL,
@@ -103,10 +103,10 @@ class Email_Log_Init {
 				attachments TEXT NOT NULL,
 				sent_date timestamp NOT NULL,
 				PRIMARY KEY  (id)
-			) ' . $charset_collate . ' ;';
+			) ' . $charset_collate . ' ;'; 
 
 			require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-			dbDelta( $sql );
+			dbDelta( $sql ); 
 
 			add_option( EmailLog::DB_OPTION_NAME, EmailLog::DB_VERSION );
 		}

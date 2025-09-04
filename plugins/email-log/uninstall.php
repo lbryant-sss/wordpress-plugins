@@ -49,8 +49,8 @@ function email_log_delete_db_data() {
 	$table_name = $wpdb->prefix . 'email_log';
 
 	if ( $remove_data_on_uninstall ) {
-		if ( $wpdb->get_var( "SHOW TABLES LIKE '{$table_name}'" ) == $table_name ) {
-			$wpdb->query( "DROP TABLE $table_name" );
+		if ( $wpdb->get_var( "SHOW TABLES LIKE '{$table_name}'" ) == $table_name ) { //phpcs:ignore
+			$wpdb->query( "DROP TABLE $table_name" ); //phpcs:ignore
 		}
 
 		delete_option( 'email-log-db' );
@@ -68,6 +68,6 @@ function email_log_delete_db_data() {
 		delete_option( 'el_mask_fields' );
 
 		delete_option( 'el_bundle_license' );
-		$wpdb->query( "DELETE FROM {$wpdb->options} WHERE option_name LIKE 'el_license_%'" );
+		$wpdb->query( "DELETE FROM {$wpdb->options} WHERE option_name LIKE 'el_license_%'" ); //phpcs:ignore
 	}
 }

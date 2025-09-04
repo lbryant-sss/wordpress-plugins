@@ -80,22 +80,12 @@ class EmailLog {
 	public $table_manager;
 
 	/**
-	 * Add-on Licenser.
-	 * For non-admin requests it will not be set.
-	 *
-	 * @since 2.0
-	 *
-	 * @var \EmailLog\Addon\License\Licenser
-	 */
-	private $licenser = null;
-
-	/**
 	 * List of loadies.
 	 *
 	 * @var Loadie[]
 	 */
 	private $loadies = array();
-
+    private $loadies_init = array();
 	/**
 	 * Initialize the plugin.
 	 *
@@ -114,26 +104,6 @@ class EmailLog {
 	}
 
 	/**
-	 * Set Licenser.
-	 *
-	 * @param \EmailLog\Addon\License\Licenser $licenser Add-on Licenser.
-	 */
-	public function set_licenser( $licenser ) {
-		if ( $this->add_loadie( $licenser ) ) {
-			$this->licenser = $licenser;
-		}
-	}
-
-	/**
-	 * Get Licenser.
-	 *
-	 * @return \EmailLog\Addon\License\Licenser|null
-	 */
-	public function get_licenser() {
-		return $this->licenser;
-	}
-
-	/**
 	 * Add an Email Log Loadie.
 	 * The `load()` method of the Loadies will be called when Email Log is loaded.
 	 *
@@ -141,7 +111,7 @@ class EmailLog {
 	 *
 	 * @return bool False if Email Log is already loaded or if $loadie is not of `Loadie` type. True otherwise.
 	 */
-	public function add_loadie( $loadie ) {
+	public function add_loadie( $loadie, $loadie_init = false ) {
 		if ( $this->loaded ) {
 			return false;
 		}
@@ -149,8 +119,12 @@ class EmailLog {
 		if ( ! $loadie instanceof Loadie ) {
 			return false;
 		}
-
-		$this->loadies[] = $loadie;
+		
+        if($loadie_init === true){
+            $this->loadies_init[] = $loadie;
+        } else {
+            $this->loadies[] = $loadie;
+        }
 
 		return true;
 	}
@@ -168,7 +142,11 @@ class EmailLog {
 		$this->table_manager->load();
 
 		foreach ( $this->loadies as $loadie ) {
-			$loadie->load();
+            $loadie->load();
+		}
+
+        foreach ( $this->loadies_init as $loadie_init ) {
+            add_action('init', array($loadie_init, 'load'));
 		}
 
 		$this->loaded = true;
@@ -240,4 +218,327 @@ class EmailLog {
 	public function get_store_url() {
 		return self::STORE_URL;
 	}
+
+    public static function wp_kses_wf($html)
+    {
+        add_filter('safe_style_css', function ($styles) {
+            $styles_wf = array(
+                'text-align',
+                'margin',
+                'color',
+                'float',
+                'border',
+                'background',
+                'background-color',
+                'border-bottom',
+                'border-bottom-color',
+                'border-bottom-style',
+                'border-bottom-width',
+                'border-collapse',
+                'border-color',
+                'border-left',
+                'border-left-color',
+                'border-left-style',
+                'border-left-width',
+                'border-right',
+                'border-right-color',
+                'border-right-style',
+                'border-right-width',
+                'border-spacing',
+                'border-style',
+                'border-top',
+                'border-top-color',
+                'border-top-style',
+                'border-top-width',
+                'border-width',
+                'caption-side',
+                'clear',
+                'cursor',
+                'direction',
+                'font',
+                'font-family',
+                'font-size',
+                'font-style',
+                'font-variant',
+                'font-weight',
+                'height',
+                'letter-spacing',
+                'line-height',
+                'margin-bottom',
+                'margin-left',
+                'margin-right',
+                'margin-top',
+                'overflow',
+                'padding',
+                'padding-bottom',
+                'padding-left',
+                'padding-right',
+                'padding-top',
+                'text-decoration',
+                'text-indent',
+                'vertical-align',
+                'width',
+                'display',
+            );
+
+            foreach ($styles_wf as $style_wf) {
+                $styles[] = $style_wf;
+            }
+            return $styles;
+        });
+
+        $allowed_tags = wp_kses_allowed_html('post');
+        $allowed_tags['input'] = array(
+            'type' => true,
+            'style' => true,
+            'class' => true,
+            'id' => true,
+            'checked' => true,
+            'disabled' => true,
+            'name' => true,
+            'size' => true,
+            'placeholder' => true,
+            'value' => true,
+            'data-*' => true,
+            'size' => true,
+            'disabled' => true
+        );
+
+        $allowed_tags['textarea'] = array(
+            'type' => true,
+            'style' => true,
+            'class' => true,
+            'id' => true,
+            'checked' => true,
+            'disabled' => true,
+            'name' => true,
+            'size' => true,
+            'placeholder' => true,
+            'value' => true,
+            'data-*' => true,
+            'cols' => true,
+            'rows' => true,
+            'disabled' => true,
+            'autocomplete' => true
+        );
+
+        $allowed_tags['select'] = array(
+            'type' => true,
+            'style' => true,
+            'class' => true,
+            'id' => true,
+            'checked' => true,
+            'disabled' => true,
+            'name' => true,
+            'size' => true,
+            'placeholder' => true,
+            'value' => true,
+            'data-*' => true,
+            'multiple' => true,
+            'disabled' => true
+        );
+
+        $allowed_tags['option'] = array(
+            'type' => true,
+            'style' => true,
+            'class' => true,
+            'id' => true,
+            'checked' => true,
+            'disabled' => true,
+            'name' => true,
+            'size' => true,
+            'placeholder' => true,
+            'value' => true,
+            'selected' => true,
+            'data-*' => true
+        );
+        $allowed_tags['optgroup'] = array(
+            'type' => true,
+            'style' => true,
+            'class' => true,
+            'id' => true,
+            'checked' => true,
+            'disabled' => true,
+            'name' => true,
+            'size' => true,
+            'placeholder' => true,
+            'value' => true,
+            'selected' => true,
+            'data-*' => true,
+            'label' => true
+        );
+
+        $allowed_tags['a'] = array(
+            'href' => true,
+            'data-*' => true,
+            'class' => true,
+            'style' => true,
+            'id' => true,
+            'target' => true,
+            'data-*' => true,
+            'role' => true,
+            'aria-controls' => true,
+            'aria-selected' => true,
+            'disabled' => true
+        );
+
+        $allowed_tags['div'] = array(
+            'style' => true,
+            'class' => true,
+            'id' => true,
+            'data-*' => true,
+            'role' => true,
+            'aria-labelledby' => true,
+            'value' => true,
+            'aria-modal' => true,
+            'tabindex' => true
+        );
+
+        $allowed_tags['li'] = array(
+            'style' => true,
+            'class' => true,
+            'id' => true,
+            'data-*' => true,
+            'role' => true,
+            'aria-labelledby' => true,
+            'value' => true,
+            'aria-modal' => true,
+            'tabindex' => true
+        );
+
+        $allowed_tags['span'] = array(
+            'style' => true,
+            'class' => true,
+            'id' => true,
+            'data-*' => true,
+            'aria-hidden' => true
+        );
+
+        $allowed_tags['style'] = array(
+            'class' => true,
+            'id' => true,
+            'type' => true,
+            'style' => true
+        );
+
+        $allowed_tags['fieldset'] = array(
+            'class' => true,
+            'id' => true,
+            'type' => true,
+            'style' => true
+        );
+
+        $allowed_tags['link'] = array(
+            'class' => true,
+            'id' => true,
+            'type' => true,
+            'rel' => true,
+            'href' => true,
+            'media' => true,
+            'style' => true
+        );
+
+        $allowed_tags['form'] = array(
+            'style' => true,
+            'class' => true,
+            'id' => true,
+            'method' => true,
+            'action' => true,
+            'data-*' => true,
+            'style' => true
+        );
+
+        $allowed_tags['script'] = array(
+            'class' => true,
+            'id' => true,
+            'type' => true,
+            'src' => true,
+            'style' => true
+        );
+
+        $allowed_tags['table'] = array(
+            'class' => true,
+            'id' => true,
+            'type' => true,
+            'cellpadding' => true,
+            'cellspacing' => true,
+            'border' => true,
+            'style' => true
+        );
+
+        $allowed_tags['canvas'] = array(
+            'class' => true,
+            'id' => true,
+            'style' => true
+        );
+
+        echo wp_kses($html, $allowed_tags);
+
+        add_filter('safe_style_css', function ($styles) {
+            $styles_wf = array(
+                'text-align',
+                'margin',
+                'color',
+                'float',
+                'border',
+                'background',
+                'background-color',
+                'border-bottom',
+                'border-bottom-color',
+                'border-bottom-style',
+                'border-bottom-width',
+                'border-collapse',
+                'border-color',
+                'border-left',
+                'border-left-color',
+                'border-left-style',
+                'border-left-width',
+                'border-right',
+                'border-right-color',
+                'border-right-style',
+                'border-right-width',
+                'border-spacing',
+                'border-style',
+                'border-top',
+                'border-top-color',
+                'border-top-style',
+                'border-top-width',
+                'border-width',
+                'caption-side',
+                'clear',
+                'cursor',
+                'direction',
+                'font',
+                'font-family',
+                'font-size',
+                'font-style',
+                'font-variant',
+                'font-weight',
+                'height',
+                'letter-spacing',
+                'line-height',
+                'margin-bottom',
+                'margin-left',
+                'margin-right',
+                'margin-top',
+                'overflow',
+                'padding',
+                'padding-bottom',
+                'padding-left',
+                'padding-right',
+                'padding-top',
+                'text-decoration',
+                'text-indent',
+                'vertical-align',
+                'width'
+            );
+
+            foreach ($styles_wf as $style_wf) {
+                if (($key = array_search($style_wf, $styles)) !== false) {
+                    unset($styles[$key]);
+                }
+            }
+            return $styles;
+        });
+    }
 }
