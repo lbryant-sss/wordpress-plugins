@@ -9,6 +9,7 @@
  */
 
 require_once __DIR__ . '/includes/fbutils.php';
+require_once __DIR__ . '/includes/fbcollection.php';
 
 use Automattic\WooCommerce\Admin\Features\Features as WooAdminFeatures;
 use Automattic\WooCommerce\Admin\Features\OnboardingTasks\TaskLists;
@@ -64,6 +65,9 @@ class WC_Facebookcommerce extends WooCommerce\Facebook\Framework\Plugin {
 	/** @var WooCommerce\Facebook\Admin\Enhanced_Settings */
 	private $admin_enhanced_settings;
 
+	/** @var WooCommerce\Facebook\Admin\WhatsApp_Integration_Settings */
+	private $wa_admin_settings;
+
 	/** @var WooCommerce\Facebook\AJAX Ajax handler instance */
 	private $ajax;
 
@@ -96,6 +100,9 @@ class WC_Facebookcommerce extends WooCommerce\Facebook\Framework\Plugin {
 
 	/** @var WooCommerce\Facebook\Handlers\Connection connection handler */
 	private $connection_handler;
+
+	/** @var WooCommerce\Facebook\Handlers\WhatsAppConnection connection handler */
+	private $whatsapp_connection_handler;
 
 	/** @var WooCommerce\Facebook\Handlers\PluginRender plugin update handler */
 	private $plugin_render_handler;
@@ -184,7 +191,9 @@ class WC_Facebookcommerce extends WooCommerce\Facebook\Framework\Plugin {
 		// Hook the setup task. The hook admin_init is not triggered when the WC fetches the tasks using the endpoint: wp-json/wc-admin/onboarding/tasks and hence hooking into init.
 		add_action( 'init', array( $this, 'add_setup_task' ), 20 );
 		add_action( 'admin_notices', array( $this, 'add_inbox_notes' ) );
-
+		if ( class_exists( '\Facebook\WooCommerce\Commerce_Page_Override' ) ) {
+			new \Facebook\WooCommerce\Commerce_Page_Override();
+		}
 		add_filter(
 			'wc_' . self::PLUGIN_ID . '_http_request_args',
 			array( $this, 'force_user_agent_in_latin' )
@@ -230,7 +239,9 @@ class WC_Facebookcommerce extends WooCommerce\Facebook\Framework\Plugin {
 			new WooCommerce\Facebook\API\Plugin\InitializeRestAPI();
 			WooCommerce\Facebook\OfferManagement\OfferManagementEndpointBase::register_endpoints();
 
-			$this->connection_handler = new WooCommerce\Facebook\Handlers\Connection( $this );
+			$this->connection_handler          = new WooCommerce\Facebook\Handlers\Connection( $this );
+			$this->whatsapp_connection_handler = new WooCommerce\Facebook\Handlers\WhatsAppConnection( $this );
+			new WooCommerce\Facebook\Handlers\WhatsAppExtension();
 			new WooCommerce\Facebook\Handlers\MetaExtension();
 			$this->webhook_handler          = new WooCommerce\Facebook\Handlers\WebHook();
 			$this->whatsapp_webhook_handler = new WooCommerce\Facebook\Handlers\Whatsapp_Webhook();
@@ -251,6 +262,7 @@ class WC_Facebookcommerce extends WooCommerce\Facebook\Framework\Plugin {
 				} else {
 					$this->admin_settings = new WooCommerce\Facebook\Admin\Settings( $this );
 				}
+				$this->wa_admin_settings     = new WooCommerce\Facebook\Admin\WhatsApp_Integration_Settings( $this );
 				$this->plugin_render_handler = new \WooCommerce\Facebook\Handlers\PluginRender( $this );
 			}
 		}
@@ -524,6 +536,17 @@ class WC_Facebookcommerce extends WooCommerce\Facebook\Framework\Plugin {
 	}
 
 	/**
+	 * Gets the whatsapp connection handler.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @return WooCommerce\Facebook\Handlers\WhatsAppConnection
+	 */
+	public function get_whatsapp_connection_handler() {
+		return $this->whatsapp_connection_handler;
+	}
+
+	/**
 	 * Gets the Plugin update handler.
 	 *
 	 * @since 2.0.0
@@ -705,7 +728,8 @@ class WC_Facebookcommerce extends WooCommerce\Facebook\Framework\Plugin {
 	 * @return bool
 	 */
 	public function is_plugin_settings() {
-		return is_admin() && WooCommerce\Facebook\Admin\Settings::PAGE_ID === Helper::get_requested_value( 'page' );
+		$page_value = Helper::get_requested_value( 'page' );
+		return is_admin() && in_array( $page_value, [ WooCommerce\Facebook\Admin\Settings::PAGE_ID, WooCommerce\Facebook\Admin\WhatsApp_Integration_Settings::PAGE_ID ] );
 	}
 
 	/** Utility methods *******************************************************************************************/

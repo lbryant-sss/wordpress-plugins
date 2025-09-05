@@ -49,6 +49,9 @@ function pfd_init_plugin() {
 	require_once DIVI_POPUP_PATH . 'includes/assets/hooks.php';
 	require_once DIVI_POPUP_PATH . 'includes/builder/functions.php';
 	require_once DIVI_POPUP_PATH . 'includes/builder/hooks.php';
+	
+	require_once DIVI_POPUP_PATH . 'includes/builder-5/functions.php';
+	require_once DIVI_POPUP_PATH . 'includes/builder-5/hooks.php';
 
 	// Integrations and compatibility.
 	require_once DIVI_POPUP_PATH . 'includes/integrations/ie.php';

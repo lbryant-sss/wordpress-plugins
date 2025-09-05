@@ -1,5 +1,8 @@
 == Changelog ==
 
+= 4.8.2 2025-08-29 =
+* [Fix]: Fixed error message “Invalid access key and mail ID” when attempting to print or download documents.
+
 = 4.8.1 2025-08-28 =
 * [Add]: Automatically installs and activates the Mpdf plugin when the user clicks on the Mpdf plugin link.
 * [Compatibility] – PCP check

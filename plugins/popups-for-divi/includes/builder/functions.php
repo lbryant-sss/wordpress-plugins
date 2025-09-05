@@ -25,6 +25,13 @@ defined( 'ABSPATH' ) || exit;
  * @return void
  */
 function pfd_builder_add_hooks() {
+	
+	// Divi 5
+	if ( function_exists( 'et_builder_d5_enabled' ) 
+		&& et_builder_d5_enabled() ) {
+			
+		return;
+	}
 
 	add_filter( 'et_pb_all_fields_unprocessed_et_pb_section', 'pfd_builder_add_section_config' );
 

@@ -27,7 +27,7 @@ class FolderAlreadyExistsException extends Exception
      * @param int $code
      * @param \Exception $previous
      */
-    public function __construct($parent, $name, $code = 0, Exception $previous = null)
+    public function __construct($parent, $name, $code = 0, $previous = null)
     {
         parent::__construct(
             // translators:

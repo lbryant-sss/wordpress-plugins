@@ -41,10 +41,28 @@ function pfd_assets_enqueue_js_library() {
 		return;
 	}
 
+	// Divi 5
+	$et_builder_d5_enabled = false;
+	if ( function_exists( 'et_builder_d5_enabled' ) 
+		&& et_builder_d5_enabled() ) {
+			
+		$et_builder_d5_enabled = true;
+	}
+	
 	if ( pfd_is_visual_builder() ) {
+		
 		$base_name = 'builder';
+		
+		
 	} elseif ( pfd_assets_need_js_api() ) {
+		
 		$base_name = 'front';
+		
+		if ( ! is_preview() ) {
+			
+			$et_builder_d5_enabled = false;
+		}
+		
 	} else {
 		// Not in builder mode, but also no front-end document: Do not load API.
 		return;
@@ -384,12 +402,9 @@ function pfd_assets_enqueue_js_library() {
 	$js_data['sys'] = apply_filters( 'divimode_debug_infos', [] );
 	
 	$load_loader_module = true;
-	if ( function_exists( 'et_builder_d5_enabled' ) ) {
+	if ( $et_builder_d5_enabled ) {
 		
-		if ( et_builder_d5_enabled() && is_preview() ) {
-		
-			$load_loader_module = false;
-		}
+		$load_loader_module = false;
 	}
 
 	if ( $load_loader_module ) {

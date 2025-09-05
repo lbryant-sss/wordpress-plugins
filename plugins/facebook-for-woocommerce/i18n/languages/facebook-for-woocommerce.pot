@@ -2,21 +2,21 @@
 # This file is distributed under the same license as the Facebook for WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Facebook for WooCommerce 3.5.6\n"
+"Project-Id-Version: Facebook for WooCommerce 3.5.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/facebook-for-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-08-20T12:07:55+00:00\n"
+"POT-Creation-Date: 2025-09-04T08:49:26+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: facebook-for-woocommerce\n"
 
 #. Plugin Name of the plugin
 #: facebook-for-woocommerce.php
-#: class-wc-facebookcommerce.php:675
+#: class-wc-facebookcommerce.php:698
 #: facebook-commerce.php:241
 #: includes/Admin.php:1361
 #: includes/Admin.php:1698
@@ -52,7 +52,7 @@ msgid "https://www.facebook.com/"
 msgstr ""
 
 #. translators: %s property name.
-#: class-wc-facebookcommerce.php:166
+#: class-wc-facebookcommerce.php:173
 #: facebook-commerce.php:393
 #: includes/Admin/Enhanced_Catalog_Attribute_Fields.php:68
 #: includes/fbbackground.php:47
@@ -60,7 +60,7 @@ msgstr ""
 msgid "The %s property is private and should not be accessed outside its class."
 msgstr ""
 
-#: class-wc-facebookcommerce.php:440
+#: class-wc-facebookcommerce.php:452
 msgid "Cannot create the API instance because the access token is missing."
 msgstr ""
 
@@ -120,7 +120,7 @@ msgid "Dismiss this notice."
 msgstr ""
 
 #. translators: Placeholders %1$s - original error message from Facebook API
-#: facebook-commerce.php:3015
+#: facebook-commerce.php:3073
 msgid "There was an issue connecting to the Facebook API: %s"
 msgstr ""
 
@@ -333,7 +333,7 @@ msgid "Manufacturer Part Number (MPN) of the item"
 msgstr ""
 
 #: includes/Admin.php:1196
-#: includes/fbproduct.php:2878
+#: includes/fbproduct.php:2886
 msgid "Brand"
 msgstr ""
 
@@ -342,7 +342,7 @@ msgid "Brand name of the item"
 msgstr ""
 
 #: includes/Admin.php:1209
-#: includes/fbproduct.php:2884
+#: includes/fbproduct.php:2892
 msgid "Condition"
 msgstr ""
 
@@ -353,20 +353,20 @@ msgid "Select"
 msgstr ""
 
 #: includes/Admin.php:1212
-#: includes/fbproduct.php:2865
-#: includes/fbproduct.php:2906
+#: includes/fbproduct.php:2873
+#: includes/fbproduct.php:2914
 msgid "New"
 msgstr ""
 
 #: includes/Admin.php:1213
-#: includes/fbproduct.php:2866
-#: includes/fbproduct.php:2907
+#: includes/fbproduct.php:2874
+#: includes/fbproduct.php:2915
 msgid "Refurbished"
 msgstr ""
 
 #: includes/Admin.php:1214
-#: includes/fbproduct.php:2867
-#: includes/fbproduct.php:2908
+#: includes/fbproduct.php:2875
+#: includes/fbproduct.php:2916
 msgid "Used"
 msgstr ""
 
@@ -375,7 +375,7 @@ msgid "This refers to the condition of your product. Supported values are new, r
 msgstr ""
 
 #: includes/Admin.php:1225
-#: includes/fbproduct.php:2881
+#: includes/fbproduct.php:2889
 msgid "Size"
 msgstr ""
 
@@ -384,7 +384,7 @@ msgid "Size of the product item"
 msgstr ""
 
 #: includes/Admin.php:1240
-#: includes/fbproduct.php:2880
+#: includes/fbproduct.php:2888
 msgid "Color"
 msgstr ""
 
@@ -393,49 +393,49 @@ msgid "Color of the product item"
 msgstr ""
 
 #: includes/Admin.php:1254
-#: includes/fbproduct.php:2877
+#: includes/fbproduct.php:2885
 msgid "Age Group"
 msgstr ""
 
 #: includes/Admin.php:1257
-#: includes/fbproduct.php:2851
-#: includes/fbproduct.php:2892
+#: includes/fbproduct.php:2859
+#: includes/fbproduct.php:2900
 msgid "Adult"
 msgstr ""
 
 #: includes/Admin.php:1258
-#: includes/fbproduct.php:2852
-#: includes/fbproduct.php:2893
+#: includes/fbproduct.php:2860
+#: includes/fbproduct.php:2901
 msgid "All Ages"
 msgstr ""
 
 #: includes/Admin.php:1259
-#: includes/fbproduct.php:2854
-#: includes/fbproduct.php:2895
+#: includes/fbproduct.php:2862
+#: includes/fbproduct.php:2903
 msgid "Teen"
 msgstr ""
 
 #: includes/Admin.php:1260
-#: includes/fbproduct.php:2853
-#: includes/fbproduct.php:2894
+#: includes/fbproduct.php:2861
+#: includes/fbproduct.php:2902
 msgid "Kids"
 msgstr ""
 
 #: includes/Admin.php:1261
-#: includes/fbproduct.php:2857
-#: includes/fbproduct.php:2898
+#: includes/fbproduct.php:2865
+#: includes/fbproduct.php:2906
 msgid "Toddler"
 msgstr ""
 
 #: includes/Admin.php:1262
-#: includes/fbproduct.php:2855
-#: includes/fbproduct.php:2896
+#: includes/fbproduct.php:2863
+#: includes/fbproduct.php:2904
 msgid "Infant"
 msgstr ""
 
 #: includes/Admin.php:1263
-#: includes/fbproduct.php:2856
-#: includes/fbproduct.php:2897
+#: includes/fbproduct.php:2864
+#: includes/fbproduct.php:2905
 msgid "Newborn"
 msgstr ""
 
@@ -444,25 +444,25 @@ msgid "Select the age group for this product."
 msgstr ""
 
 #: includes/Admin.php:1275
-#: includes/fbproduct.php:2879
+#: includes/fbproduct.php:2887
 msgid "Gender"
 msgstr ""
 
 #: includes/Admin.php:1278
-#: includes/fbproduct.php:2860
-#: includes/fbproduct.php:2901
+#: includes/fbproduct.php:2868
+#: includes/fbproduct.php:2909
 msgid "Female"
 msgstr ""
 
 #: includes/Admin.php:1279
-#: includes/fbproduct.php:2861
-#: includes/fbproduct.php:2902
+#: includes/fbproduct.php:2869
+#: includes/fbproduct.php:2910
 msgid "Male"
 msgstr ""
 
 #: includes/Admin.php:1280
-#: includes/fbproduct.php:2862
-#: includes/fbproduct.php:2903
+#: includes/fbproduct.php:2870
+#: includes/fbproduct.php:2911
 msgid "Unisex"
 msgstr ""
 
@@ -471,7 +471,7 @@ msgid "Select the gender for this product."
 msgstr ""
 
 #: includes/Admin.php:1291
-#: includes/fbproduct.php:2882
+#: includes/fbproduct.php:2890
 msgid "Material"
 msgstr ""
 
@@ -480,7 +480,7 @@ msgid "Material of the product item"
 msgstr ""
 
 #: includes/Admin.php:1305
-#: includes/fbproduct.php:2883
+#: includes/fbproduct.php:2891
 msgid "Pattern"
 msgstr ""
 
@@ -1138,6 +1138,14 @@ msgstr ""
 msgid "20 minutes"
 msgstr ""
 
+#: includes/Admin/WhatsApp_Integration_Settings.php:97
+msgid "WhatsApp for WooCommerce"
+msgstr ""
+
+#: includes/Admin/WhatsApp_Integration_Settings.php:98
+msgid "WhatsApp"
+msgstr ""
+
 #: includes/AJAX.php:140
 msgid "Full product sync disabled by filter."
 msgstr ""
@@ -1240,14 +1248,35 @@ msgid "Missing merchant access token"
 msgstr ""
 
 #: includes/API/Plugin/Settings/Update/Request.php:112
+#: includes/API/Plugin/WhatsAppSettings/Update/Request.php:104
 msgid "Missing access token"
 msgstr ""
 
-#: includes/fbproduct.php:2887
+#: includes/API/Plugin/WhatsAppSettings/Handler.php:74
+msgid "WhatsApp settings updated successfully"
+msgstr ""
+
+#: includes/API/Plugin/WhatsAppSettings/Update/Request.php:112
+msgid "Missing business id"
+msgstr ""
+
+#: includes/API/Plugin/WhatsAppSettings/Update/Request.php:120
+msgid "Missing phone number id"
+msgstr ""
+
+#: includes/API/Plugin/WhatsAppSettings/Update/Request.php:128
+msgid "Missing waba id"
+msgstr ""
+
+#: includes/API/Plugin/WhatsAppSettings/Update/Request.php:136
+msgid "Missing wa installation id"
+msgstr ""
+
+#: includes/fbproduct.php:2895
 msgid "MPN (Manufacturer Part Number)"
 msgstr ""
 
-#: includes/fbproduct.php:2888
+#: includes/fbproduct.php:2896
 msgid "GTIN (Global Trade Item Number)"
 msgstr ""
 

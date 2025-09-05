@@ -130,7 +130,7 @@ if (($gm = extension_loaded('gmagick')) || ($im = extension_loaded('imagick'))) 
 		}
 	?>
 		<tr style="background:#FFF;border: 1px solid #CFCFCF;">
-			<td class="title wt_sys_info_border_right" width="35%"><?php echo esc_html($label); ?></td>
+			<td class="title wt_sys_info_border_right" width="35%"><?php echo wp_kses_post($label); ?></td>
 			<td class="wt_sys_info_border_right"><?php echo ($server_config['required'] === true ? 'Yes' : esc_html($server_config['required'])); ?></td>
 			<td class="<?php echo esc_attr($sys_info_class); ?>">
 				<?php

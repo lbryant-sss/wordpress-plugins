@@ -3,6 +3,112 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 5.2.1 (2025-09-04)
+
+
+### Bug Fixes
+
+* compatibility with WP Grid Builder maps (CU-1y25df6)
+* in rare cases the cookie banner is frozen after clicking on Accept all (CU-869a875re)
+
+
+### Documentation
+
+* slovenian and croatian as supported languages (CU-869a071q6)
+
+
+<details><summary>Dependency updates @devowl-wp/cookie-consent-web-client 1.0.25</summary>
+
+
+**_Purpose of dependency:_** _Apply cookies consent (opt-in, opt-out) to the current webpage._
+##### Bug Fixes
+
+* deprecated tag manager events are not put into dataLayer when using the GTM4WP service (CU-31mpbvp)</details>
+
+<details><summary>Dependency updates @devowl-wp/fast-html-tag 1.2.23</summary>
+
+
+**_Purpose of dependency:_** _Find tags within HTML content and modify it in speed of light_
+##### Bug Fixes
+
+* modifyAny should return an object/array if passed as object/array (CU-1y25df6)</details>
+
+<details><summary>Dependency updates @devowl-wp/react-cookie-banner-admin 1.1.15</summary>
+
+
+**_Purpose of dependency:_** _Provide admin UI for a cookie banner and content blocker for multiple services._
+##### Bug Fixes
+
+* deprecated tag manager events are not put into dataLayer when using the GTM4WP service (CU-31mpbvp)</details>
+
+<details><summary>Development dependency update @devowl-wp/api 1.3.0</summary>
+
+
+**_Purpose of dependency:_** _Shared typings for all Node.js backends and frontends._
+##### Bug Fixes
+
+* a fetch client need to pass the API version (CU-869a8xjjf)
+* run guard schema validations isolated from complete contract schema validation (CU-8699z5dt7)
+
+
+##### Code Refactoring
+
+* migrate from @devowl-wp/api-request to new fetch client (CU-869a8xjjf)
+
+
+##### Documentation
+
+* add README for contract-first instroductions (CU-8699z5dt7)
+
+
+##### Features
+
+* introduce type-safe createFetchClient from all contracts (CU-869a8xjjf)
+
+
+##### Tests
+
+* add Vitest test runner for our contracts and introduce a first draft for a RPC client type generator (CU-869a8xjjf)</details>
+
+<details><summary>Development dependency update @devowl-wp/api-real-product-manager 1.0.15</summary>
+
+
+**_Purpose of dependency:_** _Shared typings for all Real Commerce backend._
+##### Bug Fixes
+
+* a fetch client need to pass the API version (CU-869a8xjjf)
+
+
+##### Code Refactoring
+
+* migrate from @devowl-wp/api-request to new fetch client (CU-869a8xjjf)
+* migrate from @devowl-wp/api-request to new fetch client and remove @devowl-wp/api-request (CU-869a8xjjf)</details>
+
+<details><summary>Development dependency update @devowl-wp/continuous-integration 0.7.9</summary>
+
+
+**_Purpose of dependency:_** _DevOps macros, job templates and jobs for Gitlab CI and @devowl-wp/node-gitlab-ci._
+##### Build System
+
+* introduce Complyforce API backend (CU-8699tdjp0)
+
+
+##### Continuous Integration
+
+* pnpm-lock.yaml should be considered as common file change (CU-869a875re)</details>
+
+<details><summary>Development dependency update @devowl-wp/eslint-config 0.2.18</summary>
+
+
+**_Purpose of dependency:_** _Provide eslint configuration for our complete monorepo._
+##### Bug Fixes
+
+* switch from node fetch to undici request and make it work with streams and content encoding (CU-86997627z)</details>
+
+
+
+
+
 # 5.2.0 (2025-08-25)
 
 

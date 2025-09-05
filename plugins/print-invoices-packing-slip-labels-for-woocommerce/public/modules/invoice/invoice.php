@@ -2011,9 +2011,10 @@ class Wf_Woocommerce_Packing_List_Invoice
 							$is_show_prompt = 2;
 						}
 					}
-					$onlick = "return wf_Confirm_Notice_for_Manually_Creating_Invoicenumbers('" . esc_url_raw($print_url) . "',$is_show_prompt)";
-					echo '<a title="' . esc_attr($action_title) . '" class="button wc-action-button wc-action-button-' . esc_attr($btn_action_name) . ' ' . esc_attr($btn_action_name) . ' wt_pklist_action_btn" onclick="' . esc_js($onlick) . '" aria-label="' . esc_attr($action_title) . '" target="_blank" style="padding:5px;"><img src="' . esc_url($img_url) . '" ></a>';
+					$onclick = "return wf_Confirm_Notice_for_Manually_Creating_Invoicenumbers('" . esc_url_raw($print_url) . "',$is_show_prompt)";
+					echo '<a title="' . esc_attr($action_title) . '" class="button wc-action-button wc-action-button-' . esc_attr($btn_action_name) . ' ' . esc_attr($btn_action_name) . ' wt_pklist_action_btn" onclick="' . esc_attr($onclick) . '" aria-label="' . esc_attr($action_title) . '" target="_blank" style="padding:5px;"><img src="' . esc_url($img_url) . '" ></a>';
 					echo '<a class="wt_pklist_empty_number" data-template-type="' . esc_attr($this->module_base) . '" data-id="' . esc_attr($order_id) . '" style="display:none;"></a>';
+					
 				}
 			}
 		}

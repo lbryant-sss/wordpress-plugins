@@ -1,4 +1,4 @@
-=== Ultimate Blocks - WordPress Blocks Plugin ===
+=== Ultimate Blocks – 25+ Gutenberg Blocks for Block Editor ===
 Contributors: dotcamp, ultimateblocks, imtiazrayhan, istiakrayhan, erdembircan, alexius08
 Tags: blocks, gutenberg blocks, gutenberg, block editor, free
 Requires at least: 5.8

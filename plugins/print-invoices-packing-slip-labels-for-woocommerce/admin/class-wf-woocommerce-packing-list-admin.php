@@ -671,6 +671,12 @@ class Wf_Woocommerce_Packing_List_Admin {
 	{
 		/* filter for customers to alter buttons */
 		$btn_arr=apply_filters('wt_pklist_alter_print_actions',$btn_arr, $order, $order_id, $button_location);
+		
+		// Start output buffering only for list_page (which expects return value)
+		if ('list_page' === $button_location) {
+			ob_start();
+		}
+		
 		foreach($btn_arr as $btn_key=>$args)
 		{
 			$action=$args['action'];
@@ -844,6 +850,12 @@ class Wf_Woocommerce_Packing_List_Admin {
 			<?php
 	        }
 	    }
+		
+		// Return HTML if we were called in a context that expects it
+		if ('list_page' === $button_location) {
+			$html = ob_get_clean();
+			return $html;
+		}
 	}
 
 	/**
@@ -948,37 +960,34 @@ class Wf_Woocommerce_Packing_List_Admin {
     	}
     	return $is_allowed;
 	}
-
+	
 	/**
 	 * function to render printing window
 	 *
 	 * @since 4.2.0 - print the document as per the input from the plugin settings page
 	 */
     public function print_window() {
-		$nonce = isset($_REQUEST['_wpnonce']) ? sanitize_text_field(wp_unslash($_REQUEST['_wpnonce'])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-		if ( isset( $_REQUEST['print_packinglist']) && wp_verify_nonce($nonce, WF_PKLIST_PLUGIN_NAME) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( isset( $_REQUEST['print_packinglist']) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized reason : guest users also need to print the document from the mail link
 			$document_access_type	= Wf_Woocommerce_Packing_List::get_option('wt_pklist_print_button_access_for');
 			$wc_my_account_page 	= get_permalink( get_option('woocommerce_myaccount_page_id') );
-
 			$attaching_pdf = isset($_REQUEST['attaching_pdf']) ? sanitize_text_field(wp_unslash($_REQUEST['attaching_pdf'])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+
 			if ( "logged_in" === $document_access_type ) {
-				
-				if ( is_user_logged_in() && empty( $attaching_pdf ) && wp_verify_nonce($nonce, WF_PKLIST_PLUGIN_NAME) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-					
+				$nonce = isset( $_REQUEST['_wpnonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['_wpnonce'] ) ) : '';
+				if ( is_user_logged_in() && empty( $attaching_pdf ) && wp_verify_nonce( $nonce, WF_PKLIST_PLUGIN_NAME ) ) { 
 					// admin link
 					$this->print_document_from_the_admin_link();
-					
-				} else if ( is_user_logged_in() && isset( $attaching_pdf ) && wp_verify_nonce($nonce, WF_PKLIST_PLUGIN_NAME) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+				} else if ( is_user_logged_in() && isset( $attaching_pdf ) && wp_verify_nonce( $nonce, WF_PKLIST_PLUGIN_NAME ) ) { 
 					// guest link
 					$this->print_document_from_the_mail_link();
 				} else {
+					
 					// not allowed for the guest user
 					$redirect_url = self::get_page_url_for_denied_document_access();
 					self::wt_pklist_safe_redirect_or_die( $redirect_url, __("You are not allowed to access this page","print-invoices-packing-slip-labels-for-woocommerce") );
 				}
 			} else {
-
-				if ( empty( $attaching_pdf ) && wp_verify_nonce($nonce, WF_PKLIST_PLUGIN_NAME) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+				if ( empty( $attaching_pdf ) ) {
 					if ( is_user_logged_in() ) {
 						// admin link
 						$this->print_document_from_the_admin_link();
@@ -994,7 +1003,6 @@ class Wf_Woocommerce_Packing_List_Admin {
 			}
 		}
     }
-	
 
 	/**
 	 * Handles the admin side document link
@@ -1090,8 +1098,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 			if(count($orders)>0)
 			{
 				remove_action('wp_footer', 'wp_admin_bar_render', 1000);
-				$nonce = isset($_GET['_wpnonce']) ? sanitize_text_field(wp_unslash($_GET['_wpnonce'])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-				$action = (isset($_GET['type']) && wp_verify_nonce($nonce, WF_PKLIST_PLUGIN_NAME)) ? sanitize_text_field(wp_unslash($_GET['type'])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+				$action = (isset($_GET['type']) ? sanitize_text_field(wp_unslash($_GET['type'])) : ''); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
 				// Set the option to show the banner after the bulk print
 				$document_actions_for_banner = array(
@@ -1129,9 +1136,9 @@ class Wf_Woocommerce_Packing_List_Admin {
 	 * @return void
 	 */
 	public function print_document_from_the_mail_link() {
-		$access_key 		= isset( $_REQUEST['access_key'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['access_key'] ) ) : '';
-		$encoded_order_id	= isset( $_REQUEST['post'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['post'] ) ) : '';
-		$mail_id			= isset( $_REQUEST['email'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['email'] ) ) : '';
+		$access_key 		= isset( $_REQUEST['access_key'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['access_key'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$encoded_order_id	= isset( $_REQUEST['post'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['post'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$mail_id			= isset( $_REQUEST['email'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['email'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if ( empty( $encoded_order_id ) ) {
 			self::wt_pklist_safe_redirect_or_die( null, __("Invalid order id","print-invoices-packing-slip-labels-for-woocommerce") );	
 		}
@@ -1231,7 +1238,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 			{
 				remove_action('wp_footer', 'wp_admin_bar_render', 1000);
 				$nonce = isset($_GET['_wpnonce']) ? sanitize_text_field(wp_unslash($_GET['_wpnonce'])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-				$action = (isset($_GET['type']) && wp_verify_nonce($nonce, WF_PKLIST_PLUGIN_NAME)) ? sanitize_text_field(wp_unslash($_GET['type'])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+				$action = (isset($_GET['type'])) ? sanitize_text_field(wp_unslash($_GET['type'])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				
 				// Removes the WooCommerce filter, that is validating the quantity to be an int
 				remove_filter('woocommerce_stock_amount', 'intval');

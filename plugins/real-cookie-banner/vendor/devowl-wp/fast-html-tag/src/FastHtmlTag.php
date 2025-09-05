@@ -85,7 +85,7 @@ class FastHtmlTag
      * Allows to parse and modify any content. This could be e.g. a JSON string
      * (each value gets iterated and parsed if it is a HTML).
      *
-     * @param string $mixed
+     * @param mixed $mixed
      */
     public function modifyAny($mixed)
     {
@@ -109,6 +109,10 @@ class FastHtmlTag
                         $value = $this->modifyHtml($value);
                     }
                 });
+            }
+            if (\is_array($mixed)) {
+                // The original passed parameter is an array, so we return the modified JSON array
+                return $json;
             }
             return \json_encode($json);
         } elseif (\is_string($mixed)) {

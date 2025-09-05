@@ -30,6 +30,8 @@ function pfd_integration_ie_polyfill() {
 	} else {
 		$cache_version = DIVI_POPUP_VERSION;
 	}
+	
+	if ( ! is_preview() ) {
 
 	wp_enqueue_script(
 		'dap-ie',
@@ -37,6 +39,8 @@ function pfd_integration_ie_polyfill() {
 		[],
 		$cache_version
 	);
+	
+	}
 }
 
 add_action( 'wp_enqueue_scripts', 'pfd_integration_ie_polyfill' );

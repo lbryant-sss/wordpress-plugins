@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Give - Donation Plugin plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Give - Donation Plugin 4.7.0\n"
+"Project-Id-Version: Give - Donation Plugin 4.7.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/givewp\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-08-20T14:06:15+00:00\n"
+"POT-Creation-Date: 2025-09-04T15:02:45+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: give\n"
@@ -32,6 +32,7 @@ msgstr ""
 #. Author of the plugin
 #: give.php
 #: includes/admin/upgrades/class-give-updates.php:225
+#: src/ThirdPartySupport/Elementor/ServiceProvider.php:63
 #: build/assets/dist/js/admin-onboarding-wizard.js:1
 #: build/assets/dist/js/admin-upsell-addons-page.js:1
 msgid "GiveWP"
@@ -3329,6 +3330,7 @@ msgstr ""
 #: build/donationFormBlock.js:1
 #: build/donationFormBlockApp.js:1
 #: build/elementorDonationFormWidget.js:1
+#: build/elementorLegacyGiveFormWidget.js:1
 #: build/formBuilderApp.js:13
 #: build/formEntity.js:1
 msgid "Donation Form"
@@ -3357,7 +3359,7 @@ msgstr ""
 #: includes/admin/tools/export/give-export-donations-exporter.php:228
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:144
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:240
-#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:118
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:119
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveGoalWidget.php:111
 #: build/adminBlocks.js:1
 #: build/formBuilderApp.js:13
@@ -4237,9 +4239,9 @@ msgstr ""
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:320
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:332
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:367
-#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:132
-#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:153
-#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:166
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:133
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:154
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:167
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveGoalWidget.php:123
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveGoalWidget.php:135
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:114
@@ -5469,9 +5471,9 @@ msgstr ""
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:321
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:333
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:368
-#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:133
-#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:154
-#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:167
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:134
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:155
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:168
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveGoalWidget.php:124
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveGoalWidget.php:136
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:115
@@ -5734,7 +5736,7 @@ msgid "Do you want to display the form title?"
 msgstr ""
 
 #: includes/admin/shortcodes/shortcode-give-form.php:80
-#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:150
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:151
 #: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignGridWidget/ElementorCampaignGridWidget.php:158
 #: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignWidget/ElementorCampaignWidget.php:153
 #: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:371
@@ -5785,7 +5787,7 @@ msgstr ""
 
 #: includes/admin/shortcodes/shortcode-give-form.php:108
 #: includes/forms/widget.php:229
-#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:192
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:193
 #: src/Views/Form/Templates/Legacy/optionConfig.php:16
 #: build/adminBlocks.js:1
 #: build/campaignBlocks.js:1
@@ -20440,7 +20442,7 @@ msgstr ""
 msgid "GiveWP (Legacy)"
 msgstr ""
 
-#: src/ThirdPartySupport/Elementor/ServiceProvider.php:101
+#: src/ThirdPartySupport/Elementor/ServiceProvider.php:109
 msgid "GiveWP now includes Elementor widgets! You can safely deactivate and remove the GiveWP Elementor Widgets plugin as it is no longer needed. Rest assured, all of your widgets currently being used will remain working properly."
 msgstr ""
 
@@ -20912,7 +20914,7 @@ msgid "Closest to Goal"
 msgstr ""
 
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:281
-#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:129
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:130
 msgid "Show Form Title"
 msgstr ""
 
@@ -21017,87 +21019,87 @@ msgstr ""
 msgid "Visit the GiveWP Docs for more info on the GiveWP Form Grid."
 msgstr ""
 
-#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:46
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:47
 msgid "Give Donation Form (Legacy)"
 msgstr ""
 
-#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:110
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:111
 msgid "GiveWP Form Widget"
 msgstr ""
 
-#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:120
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:121
 msgid "Choose the GiveWP Form you want to embed."
 msgstr ""
 
-#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:131
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:132
 msgid "Show/hide the GiveWP form title."
 msgstr ""
 
-#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:152
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:153
 msgid "Show/hide the progress bar and goal for this form."
 msgstr ""
 
-#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:163
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:164
 msgid "Show Form Content"
 msgstr ""
 
-#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:165
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:166
 msgid "Show/hide the content of this form."
 msgstr ""
 
-#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:185
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:186
 msgid "Form Display Style"
 msgstr ""
 
-#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:187
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:188
 msgid "Choose which display to use for this GiveWP form."
 msgstr ""
 
-#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:189
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:190
 #: build/adminBlocks.js:1
 #: build/donationFormBlock.js:1
 msgid "Full Form"
 msgstr ""
 
-#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:190
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:191
 msgid "Button Only"
 msgstr ""
 
-#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:191
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:192
 msgid "Modal Reveal"
 msgstr ""
 
-#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:201
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:202
 msgid "Reveal Button Text"
 msgstr ""
 
-#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:203
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:204
 msgid "Text on the button that reveals the form."
 msgstr ""
 
-#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:204
-#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:277
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:205
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:278
 #: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormWidget/ElementorDonationFormWidget.php:143
 msgid "Continue to Donate"
 msgstr ""
 
-#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:214
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:215
 msgid "Important Note"
 msgstr ""
 
-#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:216
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:217
 msgid "Form Display Style changes will not be visible for Donation forms created using the Visual Form Builder. Save the page and view it on the front end."
 msgstr ""
 
-#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:242
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:243
 msgid "GIVEWP FORM WIDGET"
 msgstr ""
 
-#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:243
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:244
 msgid "This is the GiveWP Form widget. Choose which form you want to embed on this page with it's form \"ID\"."
 msgstr ""
 
-#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:248
+#: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:249
 msgid "Visit the GiveWP Docs for more info on the GiveWP Form."
 msgstr ""
 
@@ -22690,6 +22692,7 @@ msgstr ""
 #: build/donationFormBlock.js:1
 #: build/donationFormBlockApp.js:1
 #: build/elementorDonationFormWidget.js:1
+#: build/elementorLegacyGiveFormWidget.js:1
 msgid "Loading donation form"
 msgstr ""
 
@@ -22698,6 +22701,7 @@ msgstr ""
 #: build/donationFormBlock.js:1
 #: build/donationFormBlockApp.js:1
 #: build/elementorDonationFormWidget.js:1
+#: build/elementorLegacyGiveFormWidget.js:1
 msgid "Open donation form"
 msgstr ""
 
@@ -22706,6 +22710,7 @@ msgstr ""
 #: build/donationFormBlock.js:1
 #: build/donationFormBlockApp.js:1
 #: build/elementorDonationFormWidget.js:1
+#: build/elementorLegacyGiveFormWidget.js:1
 msgid "In progress"
 msgstr ""
 
@@ -22714,6 +22719,7 @@ msgstr ""
 #: build/donationFormBlock.js:1
 #: build/donationFormBlockApp.js:1
 #: build/elementorDonationFormWidget.js:1
+#: build/elementorLegacyGiveFormWidget.js:1
 msgid "Close donation form"
 msgstr ""
 
@@ -26157,6 +26163,7 @@ msgstr ""
 
 #: build/donationFormBlockApp.js:1
 #: build/elementorDonationFormWidget.js:1
+#: build/elementorLegacyGiveFormWidget.js:1
 msgid "Opens in a new tab"
 msgstr ""
 

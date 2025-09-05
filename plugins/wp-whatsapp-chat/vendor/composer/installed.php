@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'quadlayers/wp-whatsapp-chat',
-        'pretty_version' => 'v7.8.5',
-        'version' => '7.8.5.0',
-        'reference' => '19fc27d3cc4f655d84869fc8be816e3a44c3e700',
+        'pretty_version' => 'v7.8.6',
+        'version' => '7.8.6.0',
+        'reference' => '596066ba74ff03825fca19bc913f9e0b62d684a0',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'automattic/jetpack-assets' => array(
             'pretty_version' => 'dev-trunk',
             'version' => 'dev-trunk',
-            'reference' => '679c94d3d8d3efffb6eb2ac525c693e9c699b109',
+            'reference' => 'dd52e510e66654c68e0c94823558bf91309d4bc2',
             'type' => 'jetpack-library',
             'install_path' => __DIR__ . '/../../jetpack_vendor/automattic/jetpack-assets',
             'aliases' => array(
@@ -46,7 +46,7 @@
         'automattic/jetpack-status' => array(
             'pretty_version' => 'dev-trunk',
             'version' => 'dev-trunk',
-            'reference' => '34c1e382e1d0a45e15df6e9e831c0e1e9ce78de8',
+            'reference' => '607b781266ca6aa3e147bee121e9ceb5d0fa7e8c',
             'type' => 'jetpack-library',
             'install_path' => __DIR__ . '/../../jetpack_vendor/automattic/jetpack-status',
             'aliases' => array(
@@ -66,39 +66,13 @@
             'dev_requirement' => false,
         ),
         'franmastromarino/wp-plugin-feedback' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'reference' => 'a9d74330be65452c106dde40e7f940134af45909',
+            'pretty_version' => 'dev-php7.2',
+            'version' => 'dev-php7.2',
+            'reference' => '118f28eb1e0bcd141bb2005106375ec168dd273f',
             'type' => 'project',
             'install_path' => __DIR__ . '/../franmastromarino/wp-plugin-feedback',
-            'aliases' => array(
-                0 => '9999999-dev',
-            ),
-            'dev_requirement' => false,
-        ),
-        'monolog/monolog' => array(
-            'pretty_version' => '2.x-dev',
-            'version' => '2.9999999.9999999.9999999-dev',
-            'reference' => 'cd82b5069148dd811ef54b4b92ce1b3aad84209b',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../monolog/monolog',
             'aliases' => array(),
             'dev_requirement' => false,
-        ),
-        'psr/log' => array(
-            'pretty_version' => '1.1.4',
-            'version' => '1.1.4.0',
-            'reference' => 'd49695b909c3b7628b6289db5479a1c204601f11',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../psr/log',
-            'aliases' => array(),
-            'dev_requirement' => false,
-        ),
-        'psr/log-implementation' => array(
-            'dev_requirement' => false,
-            'provided' => array(
-                0 => '1.0.0 || 2.0.0 || 3.0.0',
-            ),
         ),
         'quadlayers/wp-dashboard-widget-news' => array(
             'pretty_version' => 'dev-main',
@@ -167,9 +141,9 @@
             'dev_requirement' => false,
         ),
         'quadlayers/wp-whatsapp-chat' => array(
-            'pretty_version' => 'v7.8.5',
-            'version' => '7.8.5.0',
-            'reference' => '19fc27d3cc4f655d84869fc8be816e3a44c3e700',
+            'pretty_version' => 'v7.8.6',
+            'version' => '7.8.6.0',
+            'reference' => '596066ba74ff03825fca19bc913f9e0b62d684a0',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

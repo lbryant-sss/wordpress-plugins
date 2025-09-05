@@ -1,3 +1,6 @@
+= 11.3.20 (2025-08-26) =
+* Update error handling to avoid serialization problems
+
 = 11.3.16 (2025-07-15) =
 * Fix bug causing duplicate scheduled cron events
 
@@ -297,7 +300,4 @@
 
 = 8.12.33 (2022-05-27) =
 * Replaced some whitelisted URLs with regex
-
-= 8.12.0 (2022-05-24) =
-* Added Gutenberg block preview image
 

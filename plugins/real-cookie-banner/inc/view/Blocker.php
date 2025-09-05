@@ -220,7 +220,7 @@ class Blocker
      *
      * If you want to use this functionality in your plugin, please use the filter `Consent/Block/HTML` instead!
      *
-     * @param string $html
+     * @param mixed $html
      */
     public function replace($html)
     {
@@ -312,6 +312,11 @@ class Blocker
      */
     protected function isAdminAjaxAction()
     {
+        $doingAjax = \wp_doing_ajax();
+        // Special case: WP Grid Builder and adding the `DOING_AJAX` constant manually.
+        if ($doingAjax && isset($_POST['wpgb'])) {
+            return \true;
+        }
         /**
          * Run the content blocker over `admin-ajax.php` responses.
          *
@@ -340,7 +345,7 @@ class Blocker
             // [Plugin Comp] https://core.pixfort.com/
             'pix_get_popup_content',
         ]);
-        return \wp_doing_ajax() && isset($_REQUEST['action']) && \in_array($_REQUEST['action'], $actions, \true);
+        return $doingAjax && isset($_REQUEST['action']) && \in_array($_REQUEST['action'], $actions, \true);
     }
     /**
      * Hook into every HTTP request made by the WordPress instance and add script tags to the final HTML output

@@ -192,8 +192,8 @@ Please note: To access templates and AI features, you’ll need a ZipWP account.
 = Fun Facts About Starter Templates =
 
 ➜ Over 5,000 websites are built with Starter Templates every day.
-➜ The plugin has been installed on more than 1.6 million websites.
-➜ Starter Templates has more than 4,000 five-star reviews.
+➜ The plugin has been installed on more than 2 million websites.
+➜ Starter Templates has more than 4,500 five-star reviews.
 ➜ Our team of dedicated full-time WordPress experts help and support hundreds of users daily.
 ➜ A devoted team full-time designers keep the design library up to date.
 ➜ Our plugin offers more than 100 free Elementor templates.
