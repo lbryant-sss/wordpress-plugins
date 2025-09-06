@@ -9,6 +9,8 @@
 
 namespace WebberZone\Contextual_Related_Posts\Admin;
 
+use WebberZone\Contextual_Related_Posts\Util\Hook_Registry;
+
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
@@ -32,10 +34,10 @@ class Tools_Page {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
-		add_action( 'admin_init', array( $this, 'process_settings_export' ) );
-		add_action( 'admin_init', array( $this, 'process_settings_import' ), 9 );
-		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+		Hook_Registry::add_action( 'admin_menu', array( $this, 'admin_menu' ) );
+		Hook_Registry::add_action( 'admin_init', array( $this, 'process_settings_export' ) );
+		Hook_Registry::add_action( 'admin_init', array( $this, 'process_settings_import' ), 9 );
+		Hook_Registry::add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 	}
 
 	/**
@@ -67,7 +69,7 @@ class Tools_Page {
 		if ( ( isset( $_POST['crp_recreate_indices'] ) ) && ( check_admin_referer( 'crp-tools-settings' ) ) ) {
 			Db::delete_fulltext_indexes();
 			Db::create_fulltext_indexes();
-			add_settings_error( 'crp-notices', '', esc_html__( 'Indices have been recreated', 'contextual-related-posts' ), 'updated' );
+			add_settings_error( 'crp-notices', '', esc_html__( 'Indices have been recreated', 'contextual-related-posts' ), 'success' );
 		}
 
 		/* Message for successful file import */
@@ -93,7 +95,7 @@ class Tools_Page {
 		<div id="post-body-content">
 
 			<div class="postbox">
-				<h2 class="hndle"><span><?php esc_html_e( 'Clear cache', 'contextual-related-posts' ); ?></span></h2>
+				<h2><span><?php esc_html_e( 'Clear cache', 'contextual-related-posts' ); ?></span></h2>
 				<div class="inside">
 					<p>
 						<button type="button" name="cache_clear" id="cache_clear" class="button button-secondary" onclick="return crpClearCache();">
@@ -107,15 +109,22 @@ class Tools_Page {
 			</div>
 
 			<div class="postbox">
-				<h2 class="hndle"><span><?php esc_html_e( 'Recreate Indices', 'contextual-related-posts' ); ?></span></h2>
+				<h2><span><?php esc_html_e( 'Recreate FULLTEXT index', 'contextual-related-posts' ); ?></span></h2>
 				<div class="inside">
 					<form method="post">
 						<p>
-							<input name="crp_recreate_indices" type="submit" id="crp_recreate_indices" value="<?php esc_attr_e( 'Recreate Indices', 'contextual-related-posts' ); ?>" class="button button-secondary" />
+							<?php
+								printf(
+									'<input name="crp_recreate_indices" type="submit" id="crp_recreate_indices" class="button button-secondary" value="%2$s" onclick="if ( ! confirm(\'%1$s\') ) return false;" />',
+									esc_attr__( 'Are you sure you want to recreate the index?', 'contextual-related-posts' ),
+									esc_attr__( 'Recreate Index', 'contextual-related-posts' )
+								);
+							?>
 						</p>
 						<p class="description">
-						<?php esc_html_e( 'Deletes and recreates the FULLTEXT index in the posts table. If the above function gives an error, then you can run the below code in phpMyAdmin or Adminer. Remember to backup your database first!', 'contextual-related-posts' ); ?>
+							<?php esc_html_e( 'Recreate the FULLTEXT index that Contextual Related Posts uses to get the relevant related posts. This might take a lot of time to regenerate if you have a lot of posts.', 'contextual-related-posts' ); ?>
 						</p>
+						<p class="description"><?php esc_html_e( 'If the Recreate Index button fails, please run the following queries in phpMyAdmin or Adminer. Remember to backup your database first!', 'contextual-related-posts' ); ?></p>
 						<div class="crp-code-wrapper">
 							<?php $sql_queries = self::recreate_indices_sql(); ?>
 							<pre id="crp-indices-sql"><code><?php echo implode( "\n", array_map( 'esc_html', $sql_queries ) ); ?></code></pre>
@@ -131,7 +140,7 @@ class Tools_Page {
 			</div>
 
 			<div class="postbox">
-				<h2 class="hndle"><span><?php esc_html_e( 'Export/Import settings', 'contextual-related-posts' ); ?></span></h2>
+				<h2><span><?php esc_html_e( 'Export/Import settings', 'contextual-related-posts' ); ?></span></h2>
 				<div class="inside">
 					<form method="post">
 						<p class="description">
@@ -189,21 +198,32 @@ class Tools_Page {
 	}
 
 	/**
-	 * Retrieves the SQL code to recreate the PRIMARY KEY.
+	 * Retrieves the SQL code to recreate the fulltext indexes.
 	 *
 	 * @since 3.5.0
 	 */
 	public static function recreate_indices_sql() {
 		global $wpdb;
 
-		$sql = array(
-			"ALTER TABLE {$wpdb->posts} DROP INDEX crp_related;",
-			"ALTER TABLE {$wpdb->posts} ADD FULLTEXT crp_related (post_title, post_content);",
-			"ALTER TABLE {$wpdb->posts} DROP INDEX crp_related_title;",
-			"ALTER TABLE {$wpdb->posts} ADD FULLTEXT crp_related_title (post_title);",
-			"ALTER TABLE {$wpdb->posts} DROP INDEX crp_related_content;",
-			"ALTER TABLE {$wpdb->posts} ADD FULLTEXT crp_related_content (post_content);",
-		);
+		$old_indexes = Db::get_old_fulltext_indexes();
+		$new_indexes = Db::get_fulltext_indexes();
+		$all_indexes = array_keys( array_merge( $old_indexes, $new_indexes ) );
+
+		$sql = array();
+
+		// Add DROP statements for all possible indexes.
+		foreach ( $all_indexes as $index ) {
+			if ( Db::is_index_installed( $index ) ) {
+				$sql[] = "ALTER TABLE {$wpdb->posts} DROP INDEX {$index};";
+			}
+		}
+
+		// Add ADD statements only for the new indexes.
+		if ( ! empty( $new_indexes ) ) {
+			foreach ( $new_indexes as $index => $value ) {
+				$sql[] = "ALTER TABLE {$wpdb->posts} ADD FULLTEXT {$index} {$value};";
+			}
+		}
 
 		/**
 		 * Filter the SQL code to recreate the Fulltext indices.

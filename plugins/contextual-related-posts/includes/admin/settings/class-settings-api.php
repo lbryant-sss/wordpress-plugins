@@ -21,7 +21,7 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Settings API wrapper class
  *
- * @version 2.5.1
+ * @version 2.6.0
  */
 #[\AllowDynamicProperties]
 class Settings_API {
@@ -31,7 +31,7 @@ class Settings_API {
 	 *
 	 * @var   string
 	 */
-	const VERSION = '2.5.1';
+	const VERSION = '2.6.0';
 
 	/**
 	 * Settings Key.
@@ -183,6 +183,22 @@ class Settings_API {
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 		add_filter( 'admin_footer_text', array( $this, 'admin_footer_text' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+		add_filter( 'admin_body_class', array( $this, 'admin_body_class' ) );
+	}
+
+	/**
+	 * Filters the CSS classes for the body tag in the admin.
+	 *
+	 * @param string $classes Space-separated list of CSS classes.
+	 * @return string Space-separated list of CSS classes.
+	 */
+	public function admin_body_class( $classes ) {
+		$current_screen = get_current_screen();
+
+		if ( in_array( $current_screen->id, $this->menu_pages, true ) ) {
+			$classes .= ' ' . $this->prefix . '-dashboard-page';
+		}
+		return $classes;
 	}
 
 	/**
@@ -239,12 +255,12 @@ class Settings_API {
 		// Args prefixed with an underscore are reserved for internal use.
 		$defaults = array(
 			'page_header'          => '',
-			'reset_message'        => __( 'Settings have been reset to their default values. Reload this page to view the updated settings.' ),
-			'success_message'      => __( 'Settings updated.' ),
-			'save_changes'         => __( 'Save Changes' ),
-			'reset_settings'       => __( 'Reset all settings' ),
-			'reset_button_confirm' => __( 'Do you really want to reset all these settings to their default values?' ),
-			'checkbox_modified'    => __( 'Modified from default setting' ),
+			'reset_message'        => 'Settings have been reset to their default values. Reload this page to view the updated settings.',
+			'success_message'      => 'Settings updated.',
+			'save_changes'         => 'Save Changes',
+			'reset_settings'       => 'Reset all settings',
+			'reset_button_confirm' => 'Do you really want to reset all these settings to their default values?',
+			'checkbox_modified'    => 'Modified from default setting',
 		);
 
 		$strings = wp_parse_args( $strings, $defaults );
@@ -333,7 +349,7 @@ class Settings_API {
 			'parent_slug' => 'options-general.php',
 			'page_title'  => '',
 			'menu_title'  => '',
-			'capability'  => 'manage_options',
+			'capability'  => $this->get_capability_for_menu(),
 			'menu_slug'   => '',
 			'function'    => array( $this, 'plugin_settings' ),
 
@@ -417,11 +433,79 @@ class Settings_API {
 	}
 
 	/**
+	 * Get the appropriate capability for the menu based on the user's roles and settings.
+	 *
+	 * @param array    $roles Array of roles to check.
+	 * @param string   $base_capability The default capability.
+	 * @param \WP_User $current_user The current user object.
+	 * @param array    $role_capabilities Array of role capabilities.
+	 * @return string The capability to use for the menu.
+	 */
+	public static function get_capability_for_menu( $roles = array(), $base_capability = 'manage_options', $current_user = null, $role_capabilities = array() ) {
+		if ( ! $current_user ) {
+			$current_user = wp_get_current_user();
+		}
+
+		if ( empty( $roles ) || in_array( 'administrator', $current_user->roles, true ) ) {
+			return $base_capability;
+		}
+
+		if ( empty( $role_capabilities ) ) {
+			$role_capabilities = array(
+				'editor'      => 'edit_others_posts',
+				'author'      => 'publish_posts',
+				'contributor' => 'edit_posts',
+				'subscriber'  => 'read',
+			);
+		}
+
+		foreach ( $current_user->roles as $role ) {
+			if ( in_array( $role, $roles, true ) && isset( $role_capabilities[ $role ] ) ) {
+				return $role_capabilities[ $role ];
+			}
+		}
+
+		return $base_capability;
+	}
+
+	/**
 	 * Enqueue scripts and styles.
 	 *
 	 * @param string $hook The current admin page.
 	 */
 	public function admin_enqueue_scripts( $hook ) {
+
+		$minimize = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+
+		// Settings API scripts.
+		wp_register_script(
+			'wz-admin-js',
+			plugins_url( 'js/settings-admin-scripts' . $minimize . '.js', __FILE__ ),
+			array( 'jquery' ),
+			self::VERSION,
+			true
+		);
+		wp_register_script(
+			'wz-codemirror-js',
+			plugins_url( 'js/apply-cm' . $minimize . '.js', __FILE__ ),
+			array( 'jquery' ),
+			self::VERSION,
+			true
+		);
+		wp_register_script(
+			'wz-taxonomy-suggest-js',
+			plugins_url( 'js/taxonomy-suggest' . $minimize . '.js', __FILE__ ),
+			array( 'jquery' ),
+			self::VERSION,
+			true
+		);
+		wp_register_script(
+			'wz-media-selector-js',
+			plugins_url( 'js/media-selector' . $minimize . '.js', __FILE__ ),
+			array( 'jquery' ),
+			self::VERSION,
+			true
+		);
 
 		if ( $hook === $this->settings_page ) {
 			self::enqueue_scripts_styles();
@@ -432,8 +516,6 @@ class Settings_API {
 	 * Enqueues all scripts, styles, settings, and templates necessary to use the Settings API.
 	 */
 	public static function enqueue_scripts_styles() {
-
-		$minimize = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
 		wp_enqueue_style( 'wp-color-picker' );
 
@@ -453,27 +535,9 @@ class Settings_API {
 			)
 		);
 
-		wp_enqueue_script(
-			'wz-admin-js',
-			plugins_url( 'js/admin-scripts' . $minimize . '.js', __FILE__ ),
-			array( 'jquery' ),
-			self::VERSION,
-			true
-		);
-		wp_enqueue_script(
-			'wz-codemirror-js',
-			plugins_url( 'js/apply-codemirror' . $minimize . '.js', __FILE__ ),
-			array( 'jquery' ),
-			self::VERSION,
-			true
-		);
-		wp_enqueue_script(
-			'wz-taxonomy-suggest-js',
-			plugins_url( 'js/taxonomy-suggest' . $minimize . '.js', __FILE__ ),
-			array( 'jquery' ),
-			self::VERSION,
-			true
-		);
+		wp_enqueue_script( 'wz-admin-js' );
+		wp_enqueue_script( 'wz-codemirror-js' );
+		wp_enqueue_script( 'wz-taxonomy-suggest-js' );
 	}
 
 	/**
@@ -596,18 +660,33 @@ class Settings_API {
 		// Populate some default values.
 		foreach ( $this->registered_settings as $tab => $settings ) {
 			foreach ( $settings as $option ) {
-				// When checkbox is set to true, set this to 1.
-				if ( 'checkbox' === $option['type'] && ! empty( $option['options'] ) ) {
-					$options[ $option['id'] ] = 1;
-				} else {
-					$options[ $option['id'] ] = 0;
+				/**
+				 * Skip settings that are not really settings.
+				 *
+				 * @param  array $non_setting_types Array of types which are not settings.
+				 */
+				$non_setting_types = apply_filters( $this->prefix . '_non_setting_types', array( 'header', 'descriptive_text' ) );
+
+				if ( in_array( $option['type'], $non_setting_types, true ) ) {
+					continue;
 				}
-				// If an option is set.
-				if ( in_array( $option['type'], array( 'textarea', 'css', 'html', 'text', 'url', 'csv', 'color', 'numbercsv', 'postids', 'posttypes', 'number', 'wysiwyg', 'file', 'password' ), true ) && isset( $option['options'] ) ) {
-					$options[ $option['id'] ] = $option['options'];
-				}
-				if ( in_array( $option['type'], array( 'multicheck', 'radio', 'select', 'radiodesc', 'thumbsizes' ), true ) && isset( $option['default'] ) ) {
+
+				// Base default per type.
+				$options[ $option['id'] ] = ( 'checkbox' === $option['type'] ) ? 0 : '';
+
+				// Prefer the explicit 'default' key when provided.
+				if ( isset( $option['default'] ) ) {
 					$options[ $option['id'] ] = $option['default'];
+				} else {
+					// Back-compat for legacy configs that used 'options' to store default values for text-like fields.
+					if ( in_array( $option['type'], array( 'textarea', 'css', 'html', 'text', 'url', 'csv', 'color', 'numbercsv', 'postids', 'posttypes', 'number', 'wysiwyg', 'file', 'password' ), true ) && isset( $option['options'] ) ) {
+						$options[ $option['id'] ] = $option['options'];
+					}
+
+					// Back-compat: when checkbox used 'options' truthy to indicate checked by default.
+					if ( 'checkbox' === $option['type'] && ! empty( $option['options'] ) ) {
+						$options[ $option['id'] ] = 1;
+					}
 				}
 			}
 		}
@@ -676,7 +755,7 @@ class Settings_API {
 			$this->settings_reset();
 			$settings = get_option( $this->settings_key );
 
-			add_settings_error( $this->prefix . '-notices', '', $this->translation_strings['reset_message'], 'error' );
+			add_settings_error( $this->prefix . '-notices', '', $this->translation_strings['reset_message'], 'warning' );
 
 			return $settings;
 		}
@@ -686,7 +765,7 @@ class Settings_API {
 		$settings_types = $this->get_registered_settings_types();
 
 		// Get the tab. This is also our settings' section.
-		$tab = isset( $referrer['tab'] ) ? $referrer['tab'] : $this->default_tab;
+		$tab = $referrer['tab'] ?? $this->default_tab;
 
 		$input = $input ? $input : array();
 
@@ -695,7 +774,7 @@ class Settings_API {
 		 *
 		 * @param  array $input Input unclean array
 		 */
-		$input = apply_filters( $this->prefix . '_settings_' . $tab . '_sanitize', $input );
+		$input = apply_filters( "{$this->prefix}_settings_{$tab}_sanitize", $input );
 
 		// Create an output array by merging the existing settings with the ones submitted.
 		$output = array_merge( $settings, $input );
@@ -795,6 +874,7 @@ class Settings_API {
 		ob_start();
 		?>
 			<div class="wrap">
+				<?php do_action( $this->prefix . '_settings_page_header_before' ); ?>
 				<h1><?php echo esc_html( $this->translation_strings['page_header'] ); ?></h1>
 				<?php do_action( $this->prefix . '_settings_page_header' ); ?>
 

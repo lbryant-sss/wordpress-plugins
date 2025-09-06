@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the YITH WooCommerce Quick View package.
 msgid ""
 msgstr ""
-"Project-Id-Version: YITH WooCommerce Quick View 2.7.1\n"
+"Project-Id-Version: YITH WooCommerce Quick View 2.7.2\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/yith-woocommerce-quick-view\n"
-"POT-Creation-Date: 2025-09-01 09:53:01+00:00\n"
+"POT-Creation-Date: 2025-09-05 13:14:46+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"

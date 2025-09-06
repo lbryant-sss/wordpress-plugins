@@ -3,8 +3,8 @@ Contributors: yithemes
 Tags: woocommerce, quick view, woocommerce quick view, products quick view
 Requires PHP: 7.4
 Requires at least: 6.6
-Tested up to: 6.8.2
-Stable tag: 2.7.1
+Tested up to: 6.8
+Stable tag: 2.7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -80,7 +80,10 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 == Changelog ==
 
-= 2.7.1 = Released 1 September 2025
+= 2.7.2 = Released 05 September 2025
+* Dev: Security fix
+
+= 2.7.1 = Released 01 September 2025
 * Dev: Security fix
 
 = 2.7.0 = Released 22 August 2025

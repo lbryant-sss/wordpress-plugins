@@ -213,10 +213,8 @@ if ( ! class_exists( 'YITH_WCQV_Frontend' ) ) {
 					$label = $this->get_button_label();
 				}
 
-				$label_escaped = esc_html( $label );
-
-				$button = '<a href="#" class="button yith-wcqv-button" data-product_id="' . esc_attr( $product_id ) . '">' . $label_escaped . '</a>';
-				$button = apply_filters( 'yith_add_quick_view_button_html', $button, $label_escaped, $product );
+				$button = '<a href="#" class="button yith-wcqv-button" data-product_id="' . esc_attr( $product_id ) . '">' . esc_html( $label ) . '</a>';
+				$button = apply_filters( 'yith_add_quick_view_button_html', $button, $label, $product );
 			}
 
 			if ( $return ) {
@@ -429,8 +427,8 @@ if ( ! class_exists( 'YITH_WCQV_Frontend' ) ) {
 				$atts
 			);
 
-			$product_id = intval( $atts['product_id'] );
-			$label      = sanitize_text_field( $atts['label'] );
+			$product_id = $atts['product_id'];
+			$label      = $atts['label'];
 
 			return $this->yith_add_quick_view_button( intval( $product_id ), $label, true );
 		}
