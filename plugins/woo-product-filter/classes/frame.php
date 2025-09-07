@@ -84,7 +84,7 @@ class FrameWpf {
 	private function _checkPromoModName( $activeModules ) {
 		foreach ($activeModules as $i => $m) {
 			if ('supsystic_promo' == $m['code']) { // Well, rename it ;)
-				$activeModules[$i]['code'] = 'promo';
+				$activeModules[$i]['code']  = 'promo';
 				$activeModules[$i]['label'] = 'promo';
 				DbWpf::query("UPDATE `@__modules` SET code = 'promo', label = 'promo' WHERE code = 'supsystic_promo'");
 			}
@@ -241,8 +241,15 @@ class FrameWpf {
 					}
 					if (array_key_exists($action, $permissions[WPF_METHODS])) {        // Permission for this method exists
 						$currentUserPosition = self::_()->getModule('user')->getCurrentUserPosition();
-						if ( ( is_array($permissions[ WPF_METHODS ][ $action ] ) && !in_array($currentUserPosition, $permissions[ WPF_METHODS ][ $action ]) )
-							|| ( !is_array($permissions[ WPF_METHODS ][ $action ]) && $permissions[WPF_METHODS][$action] != $currentUserPosition )
+						if (
+							(
+								is_array($permissions[ WPF_METHODS ][ $action ] ) &&
+								!in_array($currentUserPosition, $permissions[ WPF_METHODS ][ $action ])
+							) ||
+							(
+								!is_array($permissions[ WPF_METHODS ][ $action ]) &&
+								$permissions[WPF_METHODS][$action] != $currentUserPosition
+							)
 						) {
 							$res = false;
 						}
@@ -344,7 +351,7 @@ class FrameWpf {
 		if ($mod && $this->checkPermissions($this->_mod, $this->_action)) {
 			switch (ReqWpf::getVar('reqType')) {
 				case 'ajax':
-					add_action('wp_ajax_' . $this->_action, array($mod->getController(), $this->_action));
+					add_action('wp_ajax_'        . $this->_action, array($mod->getController(), $this->_action));
 					add_action('wp_ajax_nopriv_' . $this->_action, array($mod->getController(), $this->_action));
 					break;
 				default:
@@ -452,12 +459,12 @@ class FrameWpf {
 			wp_enqueue_script($handle, $src, $deps, $ver, $in_footer);
 		} else {
 			$this->_scripts[] = array(
-				'handle' => $handle,
-				'src' => $src,
-				'deps' => $deps,
-				'ver' => $ver,
+				'handle'    => $handle,
+				'src'       => $src,
+				'deps'      => $deps,
+				'ver'       => $ver,
 				'in_footer' => $in_footer,
-				'vars' => $vars,
+				'vars'      => $vars,
 			);
 		}
 	}
@@ -582,7 +589,12 @@ class FrameWpf {
 	 */
 	public function isAdminPlugOptsPage() {
 		$page = ReqWpf::getVar('page');
-		if (is_admin() && !empty($page) && is_string($page) && strpos($page, self::_()->getModule('adminmenu')->getMainSlug()) !== false) {
+		if (
+			is_admin() &&
+			!empty($page) &&
+			is_string($page) &&
+			strpos($page, self::_()->getModule('adminmenu')->getMainSlug()) !== false
+		) {
 			return true;
 		}
 		return false;

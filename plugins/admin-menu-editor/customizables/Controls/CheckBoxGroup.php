@@ -9,6 +9,8 @@ use YahnisElsts\AdminMenuEditor\Customizable\Schemas\Record;
 use YahnisElsts\AdminMenuEditor\Customizable\Settings\WithSchema\SingularSetting;
 
 class CheckBoxGroup extends ClassicControl {
+	protected $declinesExternalLineBreaks = true;
+
 	/**
 	 * @var CollectionControlOption[]|null
 	 */

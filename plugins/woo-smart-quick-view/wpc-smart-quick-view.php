@@ -3,7 +3,7 @@
 Plugin Name: WPC Smart Quick View for WooCommerce
 Plugin URI: https://wpclever.net/
 Description: WPC Smart Quick View allows users to get a quick look of products without opening the product page.
-Version: 4.2.2
+Version: 4.2.3
 Author: WPClever
 Author URI: https://wpclever.net
 Text Domain: woo-smart-quick-view
@@ -19,7 +19,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 defined( 'ABSPATH' ) || exit;
 
-! defined( 'WOOSQ_VERSION' ) && define( 'WOOSQ_VERSION', '4.2.2' );
+! defined( 'WOOSQ_VERSION' ) && define( 'WOOSQ_VERSION', '4.2.3' );
 ! defined( 'WOOSQ_LITE' ) && define( 'WOOSQ_LITE', __FILE__ );
 ! defined( 'WOOSQ_FILE' ) && define( 'WOOSQ_FILE', __FILE__ );
 ! defined( 'WOOSQ_URI' ) && define( 'WOOSQ_URI', plugin_dir_url( __FILE__ ) );
@@ -371,9 +371,23 @@ if ( ! function_exists( 'woosq_init' ) ) {
 														do_action( 'woosq_after_price', $product );
 														break;
 													case 'excerpt':
+														do_action( 'woosq_before_short_description', $product );
 														do_action( 'woosq_before_excerpt', $product );
-														woocommerce_template_single_excerpt();
+
+														if ( is_a( $product, 'WC_Product_Variation' ) ) {
+															$excerpt = $product->get_description();
+														} else {
+															$excerpt = $product->get_short_description();
+														}
+
+														$excerpt = apply_filters( 'woosq_product_short_description', $excerpt, $product );
+
+														if ( ! empty( $excerpt ) ) {
+															echo '<div class="product-short-description product-excerpt">' . do_shortcode( $excerpt ) . '</div>';
+														}
+
 														do_action( 'woosq_after_excerpt', $product );
+														do_action( 'woosq_after_short_description', $product );
 														break;
 													case 'add_to_cart':
 														do_action( 'woosq_before_add_to_cart', $product );
@@ -394,7 +408,7 @@ if ( ! function_exists( 'woosq_init' ) ) {
 													case 'description':
 														do_action( 'woosq_before_description', $product );
 
-														$description = $product->get_description();
+														$description = apply_filters( 'woosq_product_description', $product->get_description(), $product );
 
 														if ( ! empty( $description ) ) {
 															echo '<div class="product-description">' . do_shortcode( $description ) . '</div>';
@@ -1288,7 +1302,7 @@ if ( ! function_exists( 'woosq_init' ) ) {
 						'jquery',
 						'wc-add-to-cart-variation'
 					], WOOSQ_VERSION, true );
-					wp_localize_script( 'woosq-frontend', 'woosq_vars', [
+					wp_localize_script( 'woosq-frontend', 'woosq_vars', apply_filters( 'woosq_vars', [
 							'wc_ajax_url'             => WC_AJAX::get_endpoint( '%%endpoint%%' ),
 							'nonce'                   => wp_create_nonce( 'woosq-security' ),
 							'view'                    => self::get_setting( 'view', 'popup' ),
@@ -1324,7 +1338,7 @@ if ( ! function_exists( 'woosq_init' ) ) {
 								'magnify'  => 1
 							] ) ) ),
 							'quick_view'              => absint( sanitize_key( $_REQUEST['quick-view'] ?? 0 ) ),
-						]
+						] )
 					);
 				}
 

@@ -3,7 +3,7 @@
 Plugin Name: WPC Smart Compare for WooCommerce
 Plugin URI: https://wpclever.net/
 Description: Smart products compare for WooCommerce.
-Version: 6.4.8
+Version: 6.4.9
 Author: WPClever
 Author URI: https://wpclever.net
 Text Domain: woo-smart-compare
@@ -12,14 +12,14 @@ Requires Plugins: woocommerce
 Requires at least: 4.0
 Tested up to: 6.8
 WC requires at least: 3.0
-WC tested up to: 10.0
+WC tested up to: 10.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 defined( 'ABSPATH' ) || exit;
 
-! defined( 'WOOSC_VERSION' ) && define( 'WOOSC_VERSION', '6.4.8' );
+! defined( 'WOOSC_VERSION' ) && define( 'WOOSC_VERSION', '6.4.9' );
 ! defined( 'WOOSC_LITE' ) && define( 'WOOSC_LITE', __FILE__ );
 ! defined( 'WOOSC_FILE' ) && define( 'WOOSC_FILE', __FILE__ );
 ! defined( 'WOOSC_URI' ) && define( 'WOOSC_URI', plugin_dir_url( __FILE__ ) );
@@ -2559,8 +2559,8 @@ if ( ! function_exists( 'woosc_init' ) ) {
 								$key = self::generate_key();
 							}
 
-							update_option( 'woosc_hash_' . $hash, $key );
-							update_option( 'woosc_list_' . $key, $products );
+							update_option( 'woosc_hash_' . $hash, $key, false );
+							update_option( 'woosc_list_' . $key, $products, false );
 						}
 
 						$url = self::get_share_url( $key );
@@ -3026,7 +3026,8 @@ if ( ! function_exists( 'woosc_init' ) ) {
 					}
 
 					$product_id = $product->get_id();
-					$related    = wc_get_related_products( $product_id );
+					$limit      = apply_filters( 'woosc_quick_table_limit', 5 );
+					$related    = wc_get_related_products( $product_id, $limit );
 
 					if ( empty( $related ) ) {
 						return '';

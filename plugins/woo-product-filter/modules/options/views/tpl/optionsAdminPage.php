@@ -1,3 +1,16 @@
+<?php
+/**
+ * Product Filter by WBW - Options Admin Page
+ *
+ * @version 2.9.7
+ *
+ * @author  woobewoo
+ */
+
+defined( 'ABSPATH' ) || exit;
+
+?>
+
 <style type="text/css">
 .woobewoo-main {
 	display:none;
@@ -19,7 +32,7 @@
 			<nav class="woobewoo-navigation woobewoo-sticky <?php DispatcherWpf::doAction('adminMainNavClassAdd'); ?>">
 				<ul>
 					<?php foreach ($this->tabs as $tabKey => $t) { ?>
-						<?php 
+						<?php
 						if (isset($t['hidden']) && $t['hidden']) {
 							continue;
 						}
@@ -77,12 +90,12 @@
 				</div>
 			</div>
 		</div>
-        <div id="wpfDuplicateDialog" class="woobewoo-plugin woobewoo-hidden" title="<?php echo esc_attr__('Duplicate product filter', 'woo-product-filter'); ?>" data-button="<?php echo esc_attr__('Duplicate', 'woo-product-filter'); ?>">
+		<div id="wpfDuplicateDialog" class="woobewoo-plugin woobewoo-hidden" title="<?php echo esc_attr__('Duplicate product filter', 'woo-product-filter'); ?>" data-button="<?php echo esc_attr__('Duplicate', 'woo-product-filter'); ?>">
 			<div>
 				<form id="tableForm">
 					<div class="wpfPopupBlock">
 						<label class="wpfPopupLabel"><?php esc_html_e('Filter name', 'woo-product-filter'); ?></label>
-						<input id="addDialog_title" class="woobewoo-text woobewoo-width-full" type="text"/>
+						<input id="addDialog_titleDuplicate" class="woobewoo-text woobewoo-width-full" type="text"/>
 					</div>
 					<input type="hidden" id="addDialog_duplicateid" class="woobewoo-text woobewoo-width-full"/>
 				</form>
@@ -96,4 +109,4 @@
 		<div>Loading...<i class="fa fa-spinner fa-spin"></i></div>
 	</div>
 </div>
-<?php DispatcherWpf::doAction('afterWoobewooWrap'); ?>
+<?php DispatcherWpf::doAction('afterWoobewooWrap');
