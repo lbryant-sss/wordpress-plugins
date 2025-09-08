@@ -3,7 +3,7 @@
  * Plugin Name:       Microsoft Clarity
  * Plugin URI:        https://clarity.microsoft.com/
  * Description:       With data and session replay from Clarity, you'll see how people are using your site — where they get stuck and what they love.
- * Version:           0.10.5
+ * Version:           0.10.7
  * Author:            Microsoft
  * Author URI:        https://www.microsoft.com/en-us/
  * License:           MIT
@@ -171,7 +171,7 @@ function clarity_send_request_info() {
 			'projectId'     => $p_id_option,
 			'sessionId'     => "",
 			'integrationId' => $clarity_wp_site,
-			'version'       => 'WordPress-0.10.5',
+			'version'       => 'WordPress-0.10.7',
 			);
 
 			$analytics = array(
@@ -189,10 +189,10 @@ function clarity_send_request_info() {
 
 			$args = array(
 				'body'        => json_encode($body),
-				'timeout'     => '2',
+				'timeout'     => '1',
 				'redirection' => '5',
 				'httpversion' => '1.0',
-				'blocking'    => true,
+				'blocking'    => false,
 				'headers'     => array( 'Content-Type' => 'application/json' ),
 				'cookies'     => array(),
 			);
