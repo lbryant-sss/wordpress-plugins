@@ -28,10 +28,6 @@ class Pro_Widget_Promotion extends Widget_Base {
 		return $this->widget_data['widget_title'];
 	}
 
-	public function get_categories() {
-		return [ 'general', 'pro-elements' ];
-	}
-
 	public function on_import( $element ) {
 		$element['settings']['__should_import'] = true;
 

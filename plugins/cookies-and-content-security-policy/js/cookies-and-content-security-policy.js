@@ -147,7 +147,8 @@ function saveCookiesAndContentPolicySettings() {
 					data: {
 						action: 'cacsp_insert_consent_data',
 						accepted_cookies: acceptedCookies.toString(),
-						expires: expires
+						expires: expires,
+						nonce: cacsp_ajax_object.nonce
 					},
 					complete: function () {
 						location.reload(true);

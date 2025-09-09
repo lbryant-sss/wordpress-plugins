@@ -44,6 +44,7 @@ use WPDesk\FS\Blocks\FreeShipping\FreeShippingStoreEndpointData;
 use WPDesk\FS\Helpers\FlexibleShippingMethodsChecker;
 use WPDesk\FS\Helpers\WooSettingsPageChecker;
 use WPDesk\FS\Integration\ExternalPluginAccess;
+use WPDesk\FS\Newsletter\SubscriptionForm;
 use WPDesk\FS\Onboarding\TableRate\FinishOption;
 use WPDesk\FS\Onboarding\TableRate\Onboarding;
 use WPDesk\FS\Onboarding\TableRate\OptionAjaxUpdater;
@@ -356,6 +357,9 @@ class Flexible_Shipping_Plugin extends AbstractPlugin implements HookableCollect
 				new \FSVendor\WPDesk\ShowDecision\WooCommerce\ShippingMethodInstanceStrategy( new \WC_Shipping_Zones(), 'flexible_shipping_single' )
 			)
 		);
+
+		// Newsletter
+		$this->add_hookable( new SubscriptionForm() );
 	}
 
 	/**

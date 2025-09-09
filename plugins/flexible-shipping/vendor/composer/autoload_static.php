@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitfd7c0ba20e19ed9b153e131de9cc5ae7
+class ComposerStaticInit2967f98637f639fef9aff2b1bf250071
 {
     public static $prefixLengthsPsr4 = array (
         'W' => 
@@ -516,6 +516,7 @@ class ComposerStaticInitfd7c0ba20e19ed9b153e131de9cc5ae7
         'WPDesk\\FS\\Info\\WooCommerceABC' => __DIR__ . '/../..' . '/src/WPDesk/FS/Info/WooCommerceABC.php',
         'WPDesk\\FS\\Info\\WooCommerceABCPL' => __DIR__ . '/../..' . '/src/WPDesk/FS/Info/WooCommerceABCPL.php',
         'WPDesk\\FS\\Integration\\ExternalPluginAccess' => __DIR__ . '/../..' . '/src/WPDesk/FS/Integration/ExternalPluginAccess.php',
+        'WPDesk\\FS\\Newsletter\\SubscriptionForm' => __DIR__ . '/../..' . '/src/WPDesk/FS/Newsletter/SubscriptionForm.php',
         'WPDesk\\FS\\Onboarding\\TableRate\\FinishOption' => __DIR__ . '/../..' . '/src/WPDesk/FS/Onboarding/TableRate/FinishOption.php',
         'WPDesk\\FS\\Onboarding\\TableRate\\Onboarding' => __DIR__ . '/../..' . '/src/WPDesk/FS/Onboarding/TableRate/Onboarding.php',
         'WPDesk\\FS\\Onboarding\\TableRate\\OptionAjaxUpdater' => __DIR__ . '/../..' . '/src/WPDesk/FS/Onboarding/TableRate/OptionAjaxUpdater.php',
@@ -695,9 +696,9 @@ class ComposerStaticInitfd7c0ba20e19ed9b153e131de9cc5ae7
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitfd7c0ba20e19ed9b153e131de9cc5ae7::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitfd7c0ba20e19ed9b153e131de9cc5ae7::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitfd7c0ba20e19ed9b153e131de9cc5ae7::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit2967f98637f639fef9aff2b1bf250071::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit2967f98637f639fef9aff2b1bf250071::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit2967f98637f639fef9aff2b1bf250071::$classMap;
 
         }, null, ClassLoader::class);
     }

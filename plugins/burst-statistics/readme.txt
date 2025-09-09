@@ -97,6 +97,17 @@ Absolutely! Both free and premium plugin can be managed with composer. Read the 
 We value your feedback. You can [submit a support request on the WordPress forums](https://wordpress.org/support/plugin/burst-statistics/), and we will respond promptly.
 
 == Change log ==
+= 2.2.6 =
+* Improvement: pass post_id to javascript using a data attribute in the body element, to improve accuracy of the page specific pageviews.
+* Improvement: dropped usage of the imprecise post_meta pageviews metric entirely.
+* Improvement: made it possible to track hook goals with cookieless tracking.
+* Improvement: migrated all remaining css to tailwind css.
+* Fix: Group by on parameters overview should group by combination of parameter and value.
+
+= 2.2.5 =
+* Fix: incorrect calculation of bounces and bounce rate.
+* Fix: upgrade link on archiving not working.
+
 = 2.2.4 =
 * New: debug information in Site Health Info.
 * New: wildcard filtering on page URL in advanced filters, by adding an asterisk behind your string.

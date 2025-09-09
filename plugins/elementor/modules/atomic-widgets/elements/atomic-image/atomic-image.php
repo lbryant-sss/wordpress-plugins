@@ -8,12 +8,11 @@ use Elementor\Modules\AtomicWidgets\PropTypes\Image_Prop_Type;
 use Elementor\Modules\AtomicWidgets\PropTypes\Link_Prop_Type;
 use Elementor\Modules\AtomicWidgets\Controls\Section;
 use Elementor\Modules\AtomicWidgets\Elements\Atomic_Widget_Base;
-use Elementor\Modules\AtomicWidgets\PropTypes\Attributes_Prop_Type;
+use Elementor\Modules\AtomicWidgets\PropTypes\Key_Value_Array_Prop_Type;
 use Elementor\Modules\AtomicWidgets\Controls\Types\Image_Control;
 use Elementor\Modules\AtomicWidgets\Image\Placeholder_Image;
 use Elementor\Modules\AtomicWidgets\Styles\Style_Definition;
 use Elementor\Modules\AtomicWidgets\Styles\Style_Variant;
-use Elementor\Modules\AtomicWidgets\Controls\Types\Text_Control;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -52,7 +51,7 @@ class Atomic_Image extends Atomic_Widget_Base {
 
 			'link' => Link_Prop_Type::make(),
 
-			'attributes' => Attributes_Prop_Type::make(),
+			'attributes' => Key_Value_Array_Prop_Type::make(),
 		];
 
 		return $props;
@@ -64,30 +63,23 @@ class Atomic_Image extends Atomic_Widget_Base {
 				->set_label( esc_html__( 'Content', 'elementor' ) )
 				->set_items( [
 					Image_Control::bind_to( 'image' )
-						->set_show_mode( 'media' )
-						->set_label( __( 'Image', 'elementor' ) ),
+						->set_label( __( 'Image', 'elementor' ) )
+						->set_show_mode( 'media' ),
 				] ),
-			Section::make()
-				->set_label( __( 'Settings', 'elementor' ) )
-				->set_id( 'settings' )
-				->set_items( $this->get_settings_controls() ),
 		];
 	}
 
 	protected function get_settings_controls(): array {
 		return [
 			Image_Control::bind_to( 'image' )
-				->set_show_mode( 'sizes' )
 				->set_label( __( 'Image resolution', 'elementor' ) )
+				->set_show_mode( 'sizes' )
 				->set_meta( [ 'layout' => 'two-columns' ] ),
 			Link_Control::bind_to( 'link' )
 				->set_label( __( 'Link', 'elementor' ) )
 				->set_meta( [
 					'topDivider' => true,
 				] ),
-			Text_Control::bind_to( '_cssid' )
-				->set_label( __( 'ID', 'elementor' ) )
-				->set_meta( $this->get_css_id_control_meta() ),
 		];
 	}
 

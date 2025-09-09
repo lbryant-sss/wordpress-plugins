@@ -5,7 +5,6 @@ namespace Elementor\App\Modules\ImportExportCustomization\Processes;
 use Elementor\App\Modules\ImportExportCustomization\Compatibility\Base_Adapter;
 use Elementor\App\Modules\ImportExportCustomization\Compatibility\Envato;
 use Elementor\App\Modules\ImportExportCustomization\Compatibility\Kit_Library;
-use Elementor\App\Modules\ImportExportCustomization\Compatibility\Customization;
 use Elementor\App\Modules\ImportExportCustomization\Utils;
 use Elementor\Core\Base\Document;
 use Elementor\Core\Kits\Documents\Kit;
@@ -125,13 +124,6 @@ class Import {
 	private $settings_selected_plugins;
 
 	/**
-	 * Customization settings for selective import.
-	 *
-	 * @var array
-	 */
-	private $settings_customization;
-
-	/**
 	 * The imported data output.
 	 *
 	 * @var array
@@ -177,10 +169,9 @@ class Import {
 			$this->settings_include = ! empty( $settings['include'] ) ? $settings['include'] : null;
 
 			// Using isset and not empty is important since empty array is valid option.
-			$this->settings_selected_override_conditions = $settings['customization']['templates']['themeBuilder']['overrideConditions'] ?? null;
-			$this->settings_selected_custom_post_types = $settings['customization']['content']['customPostTypes'] ?? null;
+			$this->settings_selected_override_conditions = $settings['overrideConditions'] ?? null;
+			$this->settings_selected_custom_post_types = $settings['selectedCustomPostTypes'] ?? null;
 			$this->settings_selected_plugins = $settings['plugins'] ?? null;
-			$this->settings_customization = $settings['customization'] ?? null;
 
 			$this->manifest = $this->read_manifest_json();
 			$this->site_settings = $this->read_site_settings_json();
@@ -217,7 +208,6 @@ class Import {
 		$this->settings_selected_override_conditions = $instance_data['settings_selected_override_conditions'];
 		$this->settings_selected_custom_post_types = $instance_data['settings_selected_custom_post_types'];
 		$this->settings_selected_plugins = $instance_data['settings_selected_plugins'];
-		$this->settings_customization = $instance_data['settings_customization'];
 
 		$this->documents_data = $instance_data['documents_data'];
 		$this->imported_data = $instance_data['imported_data'];
@@ -286,10 +276,6 @@ class Import {
 		if ( ! is_array( $this->get_settings_selected_plugins() ) ) {
 			$this->settings_selected_plugins( $this->get_default_settings_plugins() );
 		}
-
-		if ( ! is_array( $this->get_settings_customization() ) ) {
-			$this->settings_customization( $this->get_default_settings_customization() );
-		}
 	}
 
 	/**
@@ -310,7 +296,6 @@ class Import {
 			'manifest' => $this->manifest,
 			'site_settings' => $this->site_settings,
 			'selected_plugins' => $this->settings_selected_plugins,
-			'customization' => $this->settings_customization,
 			'extracted_directory_path' => $this->extracted_directory_path,
 			'selected_custom_post_types' => $this->settings_selected_custom_post_types,
 		];
@@ -365,7 +350,6 @@ class Import {
 			'manifest' => $this->manifest,
 			'site_settings' => $this->site_settings,
 			'selected_plugins' => $this->settings_selected_plugins,
-			'customization' => $this->settings_customization,
 			'extracted_directory_path' => $this->extracted_directory_path,
 			'selected_custom_post_types' => $this->settings_selected_custom_post_types,
 		];
@@ -404,7 +388,6 @@ class Import {
 		return [
 			'status' => 'success',
 			'runner' => $runner_name,
-			'imported_data' => $this->imported_data,
 		];
 	}
 
@@ -441,7 +424,6 @@ class Import {
 				'settings_selected_override_conditions' => $this->settings_selected_override_conditions,
 				'settings_selected_custom_post_types' => $this->settings_selected_custom_post_types,
 				'settings_selected_plugins' => $this->settings_selected_plugins,
-				'settings_customization' => $this->settings_customization,
 
 				'documents_data' => $this->documents_data,
 				'imported_data' => $this->imported_data,
@@ -508,9 +490,6 @@ class Import {
 
 			case 'plugins':
 				return $this->get_settings_selected_plugins();
-
-			case 'customization':
-				return $this->get_settings_customization();
 
 			default:
 				return [];
@@ -651,7 +630,7 @@ class Import {
 		$this->adapters = [];
 
 		/** @var Base_Adapter[] $adapter_types */
-		$adapter_types = [ Customization::class, Envato::class, Kit_Library::class ];
+		$adapter_types = [ Envato::class, Kit_Library::class ];
 
 		foreach ( $adapter_types as $adapter_type ) {
 			if ( $adapter_type::is_compatibility_needed( $manifest_data, [ 'referrer' => $this->get_settings_referrer() ] ) ) {
@@ -685,15 +664,9 @@ class Import {
 			return [];
 		}
 
-		$excluded = [ 'page', 'nav_menu_item' ];
-
-		if ( empty( $this->manifest['content']['post'] ?? [] ) && empty( $this->manifest['wp-content']['post'] ?? [] ) ) {
-			$excluded[] = 'post';
-		}
-
 		$manifest_post_types = array_keys( $this->manifest['custom-post-type-title'] );
 
-		return array_merge( $manifest_post_types, Utils::get_builtin_wp_post_types( $excluded ) );
+		return array_diff( $manifest_post_types, Utils::get_builtin_wp_post_types() );
 	}
 
 	/**
@@ -738,24 +711,6 @@ class Import {
 	 */
 	private function get_default_settings_include() {
 		return [ 'templates', 'plugins', 'content', 'settings' ];
-	}
-
-	public function settings_customization( $customization ) {
-		$this->settings_customization = $customization;
-		return $this;
-	}
-
-	public function get_settings_customization() {
-		return $this->settings_customization;
-	}
-
-	private function get_default_settings_customization() {
-		return [
-			'settings' => null,
-			'templates' => null,
-			'content' => null,
-			'plugins' => null,
-		];
 	}
 
 	/**

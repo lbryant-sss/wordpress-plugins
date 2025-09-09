@@ -22,8 +22,6 @@
 
 /*! ../../../styles-inheritance/components/ui-providers */
 
-/*! ../../../utils/get-recently-used-styles */
-
 /*! ../../../utils/get-styles-provider-color */
 
 /*! ../../add-or-remove-content */
@@ -97,8 +95,6 @@
 /*! ../errors */
 
 /*! ../hooks/use-active-style-def-id */
-
-/*! ../hooks/use-custom-css */
 
 /*! ../hooks/use-default-panel-settings */
 
@@ -182,11 +178,7 @@
 
 /*! ./components/background-control-dynamic-tag */
 
-/*! ./components/css-classes/css-class-convert-local */
-
 /*! ./components/css-classes/css-class-selector */
-
-/*! ./components/custom-css */
 
 /*! ./components/dynamic-selection-control */
 
@@ -195,8 +187,6 @@
 /*! ./components/editing-panel-hooks */
 
 /*! ./components/popover-body */
-
-/*! ./components/section-content */
 
 /*! ./components/style-sections/typography-section/hooks/use-font-families */
 
@@ -216,8 +206,6 @@
 
 /*! ./controls-registry */
 
-/*! ./controls-registry/controls-registry */
-
 /*! ./creatable-autocomplete */
 
 /*! ./create-snapshots-manager */
@@ -226,15 +214,11 @@
 
 /*! ./css-class-context */
 
-/*! ./css-class-convert-local */
-
 /*! ./css-class-item */
 
 /*! ./css-class-menu */
 
 /*! ./css-classes/css-class-selector */
-
-/*! ./custom-css */
 
 /*! ./dimensions-field */
 
@@ -272,8 +256,6 @@
 
 /*! ./get-elementor-config */
 
-/*! ./hooks/use-custom-css */
-
 /*! ./hooks/use-dynamic-tag */
 
 /*! ./hooks/use-font-families */
@@ -293,8 +275,6 @@
 /*! ./letter-spacing-field */
 
 /*! ./line-height-field */
-
-/*! ./local-class-sub-menu */
 
 /*! ./object-fit-field */
 
@@ -381,8 +361,6 @@
 /*! ./use-autocomplete-change */
 
 /*! ./use-autocomplete-states */
-
-/*! ./use-can-convert-local-class-to-global */
 
 /*! ./use-create-option */
 
@@ -596,17 +574,9 @@
   !*** ./packages/packages/core/editor-editing-panel/src/control-replacement.tsx ***!
   \*********************************************************************************/
 
-/*!*********************************************************************************!*\
-  !*** ./packages/packages/core/editor-editing-panel/src/hooks/use-custom-css.ts ***!
-  \*********************************************************************************/
-
 /*!**********************************************************************************!*\
   !*** ./packages/packages/core/editor-editing-panel/src/components/style-tab.tsx ***!
   \**********************************************************************************/
-
-/*!***********************************************************************************!*\
-  !*** ./packages/packages/core/editor-editing-panel/src/components/custom-css.tsx ***!
-  \***********************************************************************************/
 
 /*!***********************************************************************************!*\
   !*** ./packages/packages/core/editor-editing-panel/src/hooks/use-styles-field.ts ***!
@@ -744,10 +714,6 @@
   !*** ./packages/packages/core/editor-editing-panel/src/sync/is-atomic-widget-selected.ts ***!
   \*******************************************************************************************/
 
-/*!*******************************************************************************************!*\
-  !*** ./packages/packages/core/editor-editing-panel/src/utils/get-recently-used-styles.ts ***!
-  \*******************************************************************************************/
-
 /*!********************************************************************************************!*\
   !*** ./packages/packages/core/editor-editing-panel/src/components/collapsible-content.tsx ***!
   \********************************************************************************************/
@@ -861,10 +827,6 @@
   \********************************************************************************************************/
 
 /*!*********************************************************************************************************!*\
-  !*** ./packages/packages/core/editor-editing-panel/src/components/css-classes/local-class-sub-menu.tsx ***!
-  \*********************************************************************************************************/
-
-/*!*********************************************************************************************************!*\
   !*** ./packages/packages/core/editor-editing-panel/src/styles-inheritance/create-styles-inheritance.ts ***!
   \*********************************************************************************************************/
 
@@ -875,10 +837,6 @@
 /*!***********************************************************************************************************!*\
   !*** ./packages/packages/core/editor-editing-panel/src/dynamics/components/dynamic-selection-control.tsx ***!
   \***********************************************************************************************************/
-
-/*!************************************************************************************************************!*\
-  !*** ./packages/packages/core/editor-editing-panel/src/components/css-classes/css-class-convert-local.tsx ***!
-  \************************************************************************************************************/
 
 /*!**************************************************************************************************************!*\
   !*** ./packages/packages/core/editor-editing-panel/src/styles-inheritance/components/infotip/label-chip.tsx ***!
@@ -1003,10 +961,6 @@
 /*!************************************************************************************************************************!*\
   !*** ./packages/packages/core/editor-editing-panel/src/styles-inheritance/components/styles-inheritance-indicator.tsx ***!
   \************************************************************************************************************************/
-
-/*!*************************************************************************************************************************!*\
-  !*** ./packages/packages/core/editor-editing-panel/src/components/css-classes/use-can-convert-local-class-to-global.ts ***!
-  \*************************************************************************************************************************/
 
 /*!*************************************************************************************************************************!*\
   !*** ./packages/packages/core/editor-editing-panel/src/components/style-sections/border-section/border-color-field.tsx ***!

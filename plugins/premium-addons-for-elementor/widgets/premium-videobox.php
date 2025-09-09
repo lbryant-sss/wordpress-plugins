@@ -18,11 +18,11 @@ use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Box_Shadow;
-use Elementor\Group_Control_Background;
 
 // PremiumAddons Classes.
 use PremiumAddons\Admin\Includes\Admin_Helper;
 use PremiumAddons\Includes\Helper_Functions;
+use PremiumAddons\Includes\Controls\Premium_Background;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // If this file is called directly, abort.
@@ -1916,7 +1916,7 @@ class Premium_Videobox extends Widget_Base {
 		);
 
 		$this->add_group_control(
-			Group_Control_Background::get_type(),
+			Premium_Background::get_type(),
 			array(
 				'name'     => 'premium_video_box_play_icon_background_color',
 				'types'    => array( 'classic', 'gradient' ),
@@ -3537,17 +3537,14 @@ class Premium_Videobox extends Widget_Base {
 
 		$transient_name = sprintf( 'pa_videos_%s_%s', $source, $widget_id );
 
-		$response_json = false;
+		$response_json = get_transient( $transient_name );
 
 		if ( false === $response_json ) {
 
-			sleep( 2 );
+			$api_response = wp_remote_get( $api_url );
 
-			$api_response = rplg_urlopen( $api_url );
-
-			$response_data = $api_response['data'];
-
-			$response_json = rplg_json_decode( $response_data );
+			$response_json = wp_remote_retrieve_body( $api_response );
+			$response_json = json_decode( $response_json );
 
 			$transient = $settings['reload'];
 

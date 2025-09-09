@@ -58,11 +58,7 @@ class NestedTabs extends Widget_Nested_Base {
 		return [
 			'elType' => 'container',
 			'settings' => [
-				'_title' => sprintf(
-					/* translators: %d: Tab index. */
-					__( 'Tab #%d', 'elementor' ),
-					$index
-				),
+				'_title' => sprintf( __( 'Tab #%s', 'elementor' ), $index ),
 				'content_width' => 'full',
 			],
 		];
@@ -81,7 +77,6 @@ class NestedTabs extends Widget_Nested_Base {
 	}
 
 	protected function get_default_children_title() {
-		/* translators: %d: Tab index. */
 		return esc_html__( 'Tab #%d', 'elementor' );
 	}
 

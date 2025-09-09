@@ -42,7 +42,6 @@ abstract class Widget_Nested_Base extends Widget_Base {
 	 * @return string
 	 */
 	protected function get_default_children_title() {
-		/* translators: %d: Item index. */
 		return esc_html__( 'Item #%d', 'elementor' );
 	}
 

@@ -501,6 +501,7 @@ return array(
     'WPDesk\\FS\\Info\\WooCommerceABC' => $baseDir . '/src/WPDesk/FS/Info/WooCommerceABC.php',
     'WPDesk\\FS\\Info\\WooCommerceABCPL' => $baseDir . '/src/WPDesk/FS/Info/WooCommerceABCPL.php',
     'WPDesk\\FS\\Integration\\ExternalPluginAccess' => $baseDir . '/src/WPDesk/FS/Integration/ExternalPluginAccess.php',
+    'WPDesk\\FS\\Newsletter\\SubscriptionForm' => $baseDir . '/src/WPDesk/FS/Newsletter/SubscriptionForm.php',
     'WPDesk\\FS\\Onboarding\\TableRate\\FinishOption' => $baseDir . '/src/WPDesk/FS/Onboarding/TableRate/FinishOption.php',
     'WPDesk\\FS\\Onboarding\\TableRate\\Onboarding' => $baseDir . '/src/WPDesk/FS/Onboarding/TableRate/Onboarding.php',
     'WPDesk\\FS\\Onboarding\\TableRate\\OptionAjaxUpdater' => $baseDir . '/src/WPDesk/FS/Onboarding/TableRate/OptionAjaxUpdater.php',

@@ -1,8 +1,4 @@
-/*! ../../../../hooks/use-filtered-css-class-usage */
-
 /*! ../../../hooks/use-css-class-usage-by-id */
-
-/*! ../../context */
 
 /*! ../../global-classes-styles-provider */
 
@@ -11,8 +7,6 @@
 /*! ../../hooks/use-css-class-usage-by-id */
 
 /*! ../../hooks/use-dirty-state */
-
-/*! ../../hooks/use-filters */
 
 /*! ../../hooks/use-ordered-classes */
 
@@ -28,19 +22,7 @@
 
 /*! ../components/css-class-usage/types */
 
-/*! ../components/search-and-filter/context */
-
 /*! ../css-class-usage/components */
-
-/*! ../global-classes-styles-provider */
-
-/*! ../search-and-filter/components/filter/active-filters */
-
-/*! ../search-and-filter/components/filter/css-class-filter */
-
-/*! ../search-and-filter/components/search/class-manager-search */
-
-/*! ../search-and-filter/context */
 
 /*! ../src/api */
 
@@ -54,17 +36,17 @@
 
 /*! ./class-item */
 
+/*! ./class-manager-class-not-found */
+
 /*! ./class-manager-introduction */
 
 /*! ./class-manager-panel */
 
-/*! ./clear-icon-button */
+/*! ./class-manager-search */
 
 /*! ./components/class-manager/class-manager-button */
 
 /*! ./components/class-manager/class-manager-panel */
-
-/*! ./components/convert-local-class-to-global-class */
 
 /*! ./components/populate-store */
 
@@ -78,8 +60,6 @@
 
 /*! ./errors */
 
-/*! ./filter-list */
-
 /*! ./flipped-color-swatch-icon */
 
 /*! ./global-classes-list */
@@ -87,8 +67,6 @@
 /*! ./global-classes-styles-provider */
 
 /*! ./init */
-
-/*! ./not-found */
 
 /*! ./panel-interactions */
 
@@ -103,10 +81,6 @@
 /*! ./sync-with-document-save */
 
 /*! ./use-css-class-usage */
-
-/*! ./use-empty-css-class */
-
-/*! ./use-filtered-css-class-usage */
 
 /*! ./utils/snapshot-history */
 
@@ -242,10 +216,6 @@
   !*** ./packages/packages/core/editor-global-classes/src/capabilities.ts ***!
   \**************************************************************************/
 
-/*!*******************************************************************************!*\
-  !*** ./packages/packages/core/editor-global-classes/src/hooks/use-filters.ts ***!
-  \*******************************************************************************/
-
 /*!*********************************************************************************!*\
   !*** ./packages/packages/core/editor-global-classes/src/save-global-classes.ts ***!
   \*********************************************************************************/
@@ -268,10 +238,6 @@
 
 /*!***************************************************************************************!*\
   !*** ./packages/packages/core/editor-global-classes/src/hooks/use-css-class-usage.ts ***!
-  \***************************************************************************************/
-
-/*!***************************************************************************************!*\
-  !*** ./packages/packages/core/editor-global-classes/src/hooks/use-empty-css-class.ts ***!
   \***************************************************************************************/
 
 /*!***************************************************************************************!*\
@@ -310,24 +276,12 @@
   !*** ./packages/packages/core/editor-global-classes/src/hooks/use-prefetch-css-class-usage.ts ***!
   \************************************************************************************************/
 
-/*!*************************************************************************************************!*\
-  !*** ./packages/packages/core/editor-global-classes/src/components/class-manager/not-found.tsx ***!
-  \*************************************************************************************************/
-
-/*!*************************************************************************************************!*\
-  !*** ./packages/packages/core/editor-global-classes/src/hooks/use-filtered-css-class-usage.tsx ***!
-  \*************************************************************************************************/
-
 /*!**************************************************************************************************!*\
   !*** ./packages/packages/core/editor-global-classes/src/components/class-manager/class-item.tsx ***!
   \**************************************************************************************************/
 
 /*!***************************************************************************************************!*\
   !*** ./packages/packages/core/editor-global-classes/src/components/class-manager/delete-class.ts ***!
-  \***************************************************************************************************/
-
-/*!***************************************************************************************************!*\
-  !*** ./packages/packages/core/editor-global-classes/src/components/search-and-filter/context.tsx ***!
   \***************************************************************************************************/
 
 /*!*********************************************************************************************************!*\
@@ -354,9 +308,9 @@
   !*** ./packages/packages/core/editor-global-classes/src/components/class-manager/class-manager-button.tsx ***!
   \************************************************************************************************************/
 
-/*!*************************************************************************************************************!*\
-  !*** ./packages/packages/core/editor-global-classes/src/components/convert-local-class-to-global-class.tsx ***!
-  \*************************************************************************************************************/
+/*!************************************************************************************************************!*\
+  !*** ./packages/packages/core/editor-global-classes/src/components/class-manager/class-manager-search.tsx ***!
+  \************************************************************************************************************/
 
 /*!*****************************************************************************************************************!*\
   !*** ./packages/packages/core/editor-global-classes/src/components/class-manager/flipped-color-swatch-icon.tsx ***!
@@ -370,9 +324,9 @@
   !*** ./packages/packages/core/editor-global-classes/src/components/class-manager/delete-confirmation-dialog.tsx ***!
   \******************************************************************************************************************/
 
-/*!*************************************************************************************************************************!*\
-  !*** ./packages/packages/core/editor-global-classes/src/components/search-and-filter/components/filter/filter-list.tsx ***!
-  \*************************************************************************************************************************/
+/*!*********************************************************************************************************************!*\
+  !*** ./packages/packages/core/editor-global-classes/src/components/class-manager/class-manager-class-not-found.tsx ***!
+  \*********************************************************************************************************************/
 
 /*!****************************************************************************************************************************!*\
   !*** ./packages/packages/core/editor-global-classes/src/components/css-class-usage/components/css-class-usage-popover.tsx ***!
@@ -381,19 +335,3 @@
 /*!****************************************************************************************************************************!*\
   !*** ./packages/packages/core/editor-global-classes/src/components/css-class-usage/components/css-class-usage-trigger.tsx ***!
   \****************************************************************************************************************************/
-
-/*!****************************************************************************************************************************!*\
-  !*** ./packages/packages/core/editor-global-classes/src/components/search-and-filter/components/filter/active-filters.tsx ***!
-  \****************************************************************************************************************************/
-
-/*!******************************************************************************************************************************!*\
-  !*** ./packages/packages/core/editor-global-classes/src/components/search-and-filter/components/filter/css-class-filter.tsx ***!
-  \******************************************************************************************************************************/
-
-/*!*******************************************************************************************************************************!*\
-  !*** ./packages/packages/core/editor-global-classes/src/components/search-and-filter/components/filter/clear-icon-button.tsx ***!
-  \*******************************************************************************************************************************/
-
-/*!**********************************************************************************************************************************!*\
-  !*** ./packages/packages/core/editor-global-classes/src/components/search-and-filter/components/search/class-manager-search.tsx ***!
-  \**********************************************************************************************************************************/

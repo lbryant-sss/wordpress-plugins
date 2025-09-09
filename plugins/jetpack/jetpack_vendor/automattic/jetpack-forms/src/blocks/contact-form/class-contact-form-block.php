@@ -227,81 +227,76 @@ class Contact_Form_Block {
 			)
 		);
 
-		if ( Blocks::get_variation() === 'experimental' ) {
-			Blocks::jetpack_register_block(
-				'jetpack/input-rating',
-				array(
-					'supports' => array(
-						'color'      => array(
-							'text'       => true,
-							'background' => false,
-						),
-						'typography' => array(
-							'fontSize' => true,
-						),
+		Blocks::jetpack_register_block(
+			'jetpack/phone-input',
+			array(
+				'supports'     => array(
+					'__experimentalBorder' => array(
+						'color'  => true,
+						'radius' => true,
+						'style'  => true,
+						'width'  => true,
 					),
-				)
-			);
+					'color'                => array(
+						'text'       => true,
+						'background' => true,
+						'gradients'  => false,
+					),
+					'typography'           => array(
+						'fontSize'                     => true,
+						'lineHeight'                   => true,
+						'__experimentalFontFamily'     => true,
+						'__experimentalFontWeight'     => true,
+						'__experimentalFontStyle'      => true,
+						'__experimentalTextTransform'  => true,
+						'__experimentalTextDecoration' => true,
+						'__experimentalLetterSpacing'  => true,
+					),
+				),
+				'uses_context' => array(
+					'jetpack/field-share-attributes',
+					'jetpack/field-prefix-options',
+					'jetpack/field-prefix-default',
+					'jetpack/field-prefix-onChange',
+				),
+			)
+		);
 
-			Blocks::jetpack_register_block(
-				'jetpack/input-range',
-				array(
-					'supports' => array(
-						'color'      => array(
-							'text'       => true,
-							'background' => false,
-						),
-						'typography' => array(
-							'fontSize'                     => true,
-							'__experimentalFontFamily'     => true,
-							'__experimentalFontWeight'     => true,
-							'__experimentalFontStyle'      => true,
-							'__experimentalTextTransform'  => true,
-							'__experimentalTextDecoration' => true,
-							'__experimentalLetterSpacing'  => true,
-						),
+		Blocks::jetpack_register_block(
+			'jetpack/input-rating',
+			array(
+				'supports' => array(
+					'color'      => array(
+						'text'       => true,
+						'background' => false,
 					),
-				)
-			);
-		}
+					'typography' => array(
+						'fontSize' => true,
+					),
+				),
+			)
+		);
 
-		if ( Blocks::get_variation() === 'beta' ) {
-
-			Blocks::jetpack_register_block(
-				'jetpack/phone-input',
-				array(
-					'supports'     => array(
-						'__experimentalBorder' => array(
-							'color'  => true,
-							'radius' => true,
-							'style'  => true,
-							'width'  => true,
-						),
-						'color'                => array(
-							'text'       => true,
-							'background' => true,
-							'gradients'  => false,
-						),
-						'typography'           => array(
-							'fontSize'                     => true,
-							'lineHeight'                   => true,
-							'__experimentalFontFamily'     => true,
-							'__experimentalFontWeight'     => true,
-							'__experimentalFontStyle'      => true,
-							'__experimentalTextTransform'  => true,
-							'__experimentalTextDecoration' => true,
-							'__experimentalLetterSpacing'  => true,
-						),
+		Blocks::jetpack_register_block(
+			'jetpack/input-range',
+			array(
+				'supports' => array(
+					'color'      => array(
+						'text'       => true,
+						'background' => false,
 					),
-					'uses_context' => array(
-						'jetpack/field-share-attributes',
-						'jetpack/field-prefix-options',
-						'jetpack/field-prefix-default',
-						'jetpack/field-prefix-onChange',
+					'typography' => array(
+						'fontSize'                     => true,
+						'__experimentalFontFamily'     => true,
+						'__experimentalFontWeight'     => true,
+						'__experimentalFontStyle'      => true,
+						'__experimentalTextTransform'  => true,
+						'__experimentalTextDecoration' => true,
+						'__experimentalLetterSpacing'  => true,
 					),
-				)
-			);
-		}
+				),
+			)
+		);
 
 		// Field render methods.
 		Blocks::jetpack_register_block(
@@ -346,7 +341,24 @@ class Contact_Form_Block {
 			'jetpack/field-telephone',
 			array(
 				'render_callback'  => array( Contact_Form_Plugin::class, 'gutenblock_render_field_telephone' ),
-				'provides_context' => array( 'jetpack/field-required' => 'required' ),
+				'attributes'       => array(
+					'showCountrySelector' => array(
+						'type' => 'boolean',
+					),
+					'default'             => array(
+						'type' => 'string',
+						'role' => 'content',
+					),
+				),
+				'supports'         => array(
+					'interactivity' => true,
+				),
+				'provides_context' => array(
+					'jetpack/field-share-attributes'     => 'shareAttributes',
+					'jetpack/field-required'             => 'required',
+					'jetpack/field-prefix-default'       => 'default',
+					'jetpack/field-phone-country-toggle' => 'showCountrySelector',
+				),
 			)
 		);
 		Blocks::jetpack_register_block(
@@ -431,25 +443,32 @@ class Contact_Form_Block {
 			)
 		);
 
-		if ( Blocks::get_variation() === 'experimental' ) {
+		if ( Blocks::get_variation() === 'beta' ) {
 			Blocks::jetpack_register_block(
-				'jetpack/field-rating',
+				'jetpack/field-hidden',
 				array(
-					'render_callback'  => array( Contact_Form_Plugin::class, 'gutenblock_render_field_rating' ),
-					'provides_context' => array(
-						'jetpack/field-required' => 'required',
-					),
-				)
-			);
-
-			Blocks::jetpack_register_block(
-				'jetpack/field-slider',
-				array(
-					'render_callback'  => array( Contact_Form_Plugin::class, 'gutenblock_render_field_slider' ),
-					'provides_context' => array( 'jetpack/field-required' => 'required' ),
+					'render_callback' => array( Contact_Form_Plugin::class, 'gutenblock_render_field_hidden' ),
 				)
 			);
 		}
+
+		Blocks::jetpack_register_block(
+			'jetpack/field-rating',
+			array(
+				'render_callback'  => array( Contact_Form_Plugin::class, 'gutenblock_render_field_rating' ),
+				'provides_context' => array(
+					'jetpack/field-required' => 'required',
+				),
+			)
+		);
+
+		Blocks::jetpack_register_block(
+			'jetpack/field-slider',
+			array(
+				'render_callback'  => array( Contact_Form_Plugin::class, 'gutenblock_render_field_slider' ),
+				'provides_context' => array( 'jetpack/field-required' => 'required' ),
+			)
+		);
 
 		if ( Blocks::get_variation() === 'beta' ) {
 			Blocks::jetpack_register_block(
@@ -457,31 +476,6 @@ class Contact_Form_Block {
 				array(
 					'render_callback'  => array( Contact_Form_Plugin::class, 'gutenblock_render_field_time' ),
 					'provides_context' => array( 'jetpack/field-required' => 'required' ),
-				)
-			);
-
-			Blocks::jetpack_register_block(
-				'jetpack/field-phone',
-				array(
-					'render_callback'  => array( Contact_Form_Plugin::class, 'gutenblock_render_field_phone' ),
-					'attributes'       => array(
-						'showCountrySelector' => array(
-							'type'    => 'boolean',
-							'default' => true,
-						),
-						'default'             => array(
-							'type'    => 'string',
-							'default' => '',
-							'role'    => 'content',
-						),
-					),
-					'supports'         => array(
-						'interactivity' => true,
-					),
-					'provides_context' => array(
-						'jetpack/field-required'       => 'required',
-						'jetpack/field-prefix-default' => 'default',
-					),
 				)
 			);
 		}

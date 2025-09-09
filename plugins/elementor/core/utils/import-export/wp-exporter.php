@@ -31,7 +31,6 @@ class WP_Exporter {
 		'offset' => 0,
 		'limit' => -1,
 		'meta_query' => [], // If specified `meta_key` then will include all post(s) that have this meta_key.
-		'include' => [], // Array of post IDs to include in the export.
 	];
 
 	/**
@@ -45,8 +44,6 @@ class WP_Exporter {
 	private $wpdb;
 
 	private $terms;
-
-	private $exported_posts = [];
 
 	/**
 	 * Run export, by requested args.
@@ -103,12 +100,6 @@ class WP_Exporter {
 			$limit = 'LIMIT ' . (int) $this->args['limit'] . ' OFFSET ' . (int) $this->args['offset'];
 		}
 
-		if ( ! empty( $this->args['include'] ) ) {
-			$include_ids = array_map( 'absint', $this->args['include'] );
-			$include_placeholders = implode( ',', array_fill( 0, count( $include_ids ), '%d' ) );
-			$where .= $this->wpdb->prepare( " AND {$this->wpdb->posts}.ID IN ($include_placeholders)", $include_ids ); // phpcs:ignore
-		}
-
 		if ( ! empty( $this->args['meta_query'] ) ) {
 			if ( $join ) {
 				$join .= ' ';
@@ -145,7 +136,6 @@ class WP_Exporter {
 		return [
 			'ids' => $post_ids,
 			'xml' => $this->get_xml_export( array_merge( $post_ids, $thumbnail_ids ) ),
-			'posts' => $this->exported_posts,
 		];
 	}
 
@@ -466,11 +456,6 @@ class WP_Exporter {
 				// Begin Loop.
 				foreach ( $posts as $post ) {
 					setup_postdata( $post );
-
-					$this->exported_posts[ $post->ID ] = [
-						'id' => $post->ID,
-						'title' => $post->post_title,
-					];
 
 					$title = apply_filters( 'the_title_rss', $post->post_title );
 

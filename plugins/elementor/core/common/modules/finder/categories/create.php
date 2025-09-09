@@ -83,11 +83,7 @@ class Create extends Base_Category {
 		}
 
 		return $this->get_create_new_template(
-			sprintf(
-				/* translators: %s: Post type singular name. */
-				__( 'Add New %s', 'elementor' ),
-				$post_type_object->labels->singular_name
-			),
+			sprintf( __( 'Add New %s', 'elementor' ), $post_type_object->labels->singular_name ),
 			Plugin::$instance->documents->get_create_new_post_url( $post_type )
 		);
 	}

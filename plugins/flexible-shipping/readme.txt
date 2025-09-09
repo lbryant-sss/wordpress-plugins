@@ -4,7 +4,7 @@ Donate link: https://octol.io/fs-repo-up
 Tags: woocommerce shipping, table rate shipping, woocommerce table rate shipping, advanced shipping, flexible shipping woocommerce
 Requires at least: 5.8
 Tested up to: 6.8
-Stable tag: 6.3.0
+Stable tag: 6.4.0
 Requires PHP: 7.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -238,8 +238,12 @@ If you are upgrading from the old Flexible Shipping version (1.3.2, woo-flexible
 
 == Changelog ==
 
+= 6.4.0 - 2025-09-08 =
+* Added newsletter subscription in the Flexible Shipping Info tab
+* Added WC_Shipping_Method class existence checking
+
 = 6.3.0 - 2025-08-18 =
-* Added new AI chat version
+* Added a new AI chat version
 
 = 6.2.4 - 2025-08-11 =
 * Added support for WooCommerce 10.2

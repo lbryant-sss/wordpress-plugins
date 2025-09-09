@@ -1,10 +1,10 @@
 <?php
 /*
 * Plugin Name: Weglot Translate
-* Plugin URI: http://wordpress.org/plugins/weglot/
+* Plugin URI: https://www.weglot.com/integrations/wordpress-translation-plugin
 * Description: Translate your website into multiple languages in minutes without doing any coding. Fully SEO compatible.
 * Author: Weglot Translate team
-* Author URI: https://weglot.com/
+* Author URI: https://www.weglot.com/
 * Text Domain: weglot
 * Domain Path: /languages/
 * WC requires at least: 4.0

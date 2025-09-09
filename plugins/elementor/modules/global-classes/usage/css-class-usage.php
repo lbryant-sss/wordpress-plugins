@@ -7,6 +7,7 @@ namespace Elementor\Modules\GlobalClasses\Usage;
  */
 class Css_Class_Usage {
 
+
 	/** @var string */
 	private string $class_id;
 

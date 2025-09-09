@@ -4,7 +4,7 @@ Tags: email, log, log email, resend email, email log
 Requires PHP: 5.6
 Requires at least: 4.0
 Tested up to: 6.8
-Stable tag: 2.6
+Stable tag: 2.61
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -100,8 +100,13 @@ Meanwhile, I have added a hack to handle this condition in v1.7.3 of my plugin. 
 
 
 == Changelog ==
+= v2.61 – 2025-09-08 =
+- System info bug fix
 
-= v2.5 – (2025-09-03) =
+= v2.6 – 2025-09-03 =
+- code cleanup and fixes
+
+= v2.5 – 2025-09-03 =
 - WebFactory took over development
 - minor code tweaks
 

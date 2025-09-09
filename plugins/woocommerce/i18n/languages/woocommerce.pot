@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce 10.2.0-beta.1\n"
+"Project-Id-Version: WooCommerce 10.2.0-beta.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-09-01T19:21:48+00:00\n"
+"POT-Creation-Date: 2025-09-08T12:58:25+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: woocommerce\n"
@@ -48510,7 +48510,6 @@ msgstr ""
 
 #: assets/client/admin/app/index.js:2
 #: assets/client/admin/chunks/activity-panels-setup.js:1
-#: assets/client/admin/chunks/settings-payments-main.js:1
 #: assets/client/admin/chunks/shipping-recommendations.js:1
 msgid "opens in a new tab"
 msgstr ""
@@ -54440,7 +54439,7 @@ msgid "%s: There was a problem connecting your WordPress.com account — please 
 msgstr ""
 
 #: assets/client/admin/chunks/settings-payments-main.js:1
-msgid "Visit {{Link}}the WooCommerce Marketplace{{/Link}} to find additional payment options."
+msgid "More payment options"
 msgstr ""
 
 #: assets/client/admin/chunks/shipping-recommendations.js:1

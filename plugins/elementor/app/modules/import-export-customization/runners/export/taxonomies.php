@@ -17,37 +17,9 @@ class Taxonomies extends Export_Runner_Base {
 	}
 
 	public function export( array $data ) {
-		$customization = $data['customization']['content'] ?? null;
-		if ( $customization ) {
-			return $this->export_customization( $data, $customization );
-		}
-
-		return $this->export_all( $data );
-	}
-
-	public function export_customization( array $data, array $customization ) {
-		$result = apply_filters( 'elementor/import-export-customization/export/taxonomies/customization', null, $data, $customization, $this );
-
-		if ( is_array( $result ) ) {
-			return $result;
-		}
-
-		return $this->export_all( $data );
-	}
-
-	public function export_all( array $data ) {
-		$selected_custom_post_types = $data['selected_custom_post_types'] ?? null;
-		$exclude_post_types = [];
-
-		if ( is_array( $selected_custom_post_types ) && ! in_array( 'post', $selected_custom_post_types, true ) ) {
-			$exclude_post_types[] = 'post';
-		}
-
-		$wp_builtin_post_types = ImportExportUtils::get_builtin_wp_post_types( $exclude_post_types );
-
-		$post_types = is_array( $selected_custom_post_types )
-			? array_merge( $wp_builtin_post_types, $selected_custom_post_types )
-			: $wp_builtin_post_types;
+		$wp_builtin_post_types = ImportExportUtils::get_builtin_wp_post_types();
+		$selected_custom_post_types = isset( $data['selected_custom_post_types'] ) ? $data['selected_custom_post_types'] : [];
+		$post_types = array_merge( $wp_builtin_post_types, $selected_custom_post_types );
 
 		$export = $this->export_taxonomies( $post_types );
 
@@ -68,8 +40,7 @@ class Taxonomies extends Export_Runner_Base {
 		$taxonomies = get_taxonomies();
 
 		foreach ( $taxonomies as $taxonomy ) {
-			$taxonomy_obj = get_taxonomy( $taxonomy );
-			$taxonomy_post_types = $taxonomy_obj->object_type;
+			$taxonomy_post_types = get_taxonomy( $taxonomy )->object_type;
 			$intersected_post_types = array_intersect( $taxonomy_post_types, $post_types );
 
 			if ( empty( $intersected_post_types ) ) {
@@ -83,10 +54,7 @@ class Taxonomies extends Export_Runner_Base {
 			}
 
 			foreach ( $intersected_post_types as $post_type ) {
-				$manifest[ $post_type ][] = [
-					'name'  => $taxonomy,
-					'label' => $taxonomy_obj->label,
-				];
+				$manifest[ $post_type ][] = $taxonomy;
 			}
 
 			$files[] = [
@@ -101,7 +69,7 @@ class Taxonomies extends Export_Runner_Base {
 		];
 	}
 
-	public function export_terms( $taxonomy ) {
+	private function export_terms( $taxonomy ) {
 		$terms = get_terms( [
 			'taxonomy' => (array) $taxonomy,
 			'hide_empty' => true,

@@ -185,6 +185,7 @@ class LiteBackendStrings
             'layout_dropdown'           => __('Dropdown layout', 'ameliabooking'),
             'layout_list'               => __('List layout', 'ameliabooking'),
             'layout_description'        => __('Choosing layout of first step in step by step form', 'ameliabooking'),
+            'new_caps'                  => __('NEW', 'ameliabooking'),
         ];
     }
 

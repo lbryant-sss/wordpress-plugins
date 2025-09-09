@@ -211,9 +211,28 @@ function cacsp_get_error_message_js_dir() {
 }
 
 function cacsp_insert_consent_data() {
+	check_ajax_referer( 'cacsp_insert', 'nonce' );
+
+	// Force same URL
+	$site_host = wp_parse_url( home_url(), PHP_URL_HOST );
+	foreach ( ['HTTP_ORIGIN','HTTP_REFERER'] as $h ) {
+        if ( ! empty($_SERVER[$h]) ) {
+            $host = wp_parse_url( $_SERVER[$h], PHP_URL_HOST );
+            if ( $host && ! hash_equals( $site_host, $host ) ) {
+                wp_send_json_error( ['message' => 'Forbidden'], 403 );
+				return;
+            }
+        }
+    }
+
 	global $wpdb;
 	$table_name = $wpdb->prefix . 'cacsp_consent';
 	$accepted_cookies = str_replace( 'markerting', 'marketing', $_POST['accepted_cookies'] );
+	// Max lenth all accepted
+	if ( strlen( $accepted_cookies ) > 32 ) {
+		wp_send_json_error( ['message' => 'Forbidden'], 403 );
+		return;
+	}
 	$expires = $_POST['expires'];
 	if ( is_multisite() ) {
 		$blog_id = get_current_blog_id();
@@ -225,7 +244,7 @@ function cacsp_insert_consent_data() {
 		array( 
 			'time' => sanitize_text_field( current_time( 'mysql' ) ), 
 			'ip' => sanitize_text_field( $_SERVER['REMOTE_ADDR'] ), 
-			'accepted_cookies' => sanitize_text_field( $accepted_cookies ) . ' ' . $inloggad, 
+			'accepted_cookies' => sanitize_text_field( $accepted_cookies ), 
 			'expires' => sanitize_text_field( $expires ), 
 			'site' => sanitize_text_field( $blog_id ), 
 		) 

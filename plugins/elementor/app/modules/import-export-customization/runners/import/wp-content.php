@@ -32,7 +32,7 @@ class Wp_Content extends Import_Runner_Base {
 
 		$path = $data['extracted_directory_path'] . 'wp-content/';
 
-		$post_types = $this->filter_post_types( $data );
+		$post_types = $this->filter_post_types( $data['selected_custom_post_types'] );
 
 		$taxonomies = $imported_data['taxonomies'] ?? [];
 		$imported_terms = ImportExportUtils::map_old_new_term_ids( $imported_data );
@@ -45,8 +45,7 @@ class Wp_Content extends Import_Runner_Base {
 				$post_type,
 				$imported_data,
 				$taxonomies,
-				$imported_terms,
-				$data['customization']['content'] ?? null
+				$imported_terms
 			);
 
 			if ( empty( $import ) ) {
@@ -60,7 +59,7 @@ class Wp_Content extends Import_Runner_Base {
 		return $result;
 	}
 
-	private function import_wp_post_type( $path, $post_type, array $imported_data, array $taxonomies, array $imported_terms, $customization ) {
+	private function import_wp_post_type( $path, $post_type, array $imported_data, array $taxonomies, array $imported_terms ) {
 		$args = [
 			'fetch_attachments' => true,
 			'posts' => ImportExportUtils::map_old_new_post_ids( $imported_data ),
@@ -72,10 +71,7 @@ class Wp_Content extends Import_Runner_Base {
 			'terms_meta' => [
 				static::META_KEY_ELEMENTOR_IMPORT_SESSION_ID => $this->import_session_id,
 			],
-			'include' => 'page' === $post_type ? $customization['pages'] ?? null : null,
 		];
-
-		$args = apply_filters( 'elementor/import-export-customization/import/wp-content/query-args/customization', $args, $post_type, $customization );
 
 		$file = $path . $post_type . '/' . $post_type . '.xml';
 
@@ -89,16 +85,8 @@ class Wp_Content extends Import_Runner_Base {
 		return $result['summary']['posts'];
 	}
 
-	private function filter_post_types( $data ) {
-		$selected_custom_post_types = $data['selected_custom_post_types'];
-		$customization = $data['customization']['content'] ?? null;
-		$exclude = [];
-
-		if ( ! empty( $selected_custom_post_types ) && in_array( 'post', $selected_custom_post_types, true ) ) {
-			$exclude[] = 'post';
-		}
-
-		$wp_builtin_post_types = ImportExportUtils::get_builtin_wp_post_types( $exclude );
+	private function filter_post_types( $selected_custom_post_types = [] ) {
+		$wp_builtin_post_types = ImportExportUtils::get_builtin_wp_post_types();
 
 		foreach ( $selected_custom_post_types as $custom_post_type ) {
 			if ( post_type_exists( $custom_post_type ) ) {
@@ -107,9 +95,6 @@ class Wp_Content extends Import_Runner_Base {
 		}
 
 		$post_types = array_merge( $wp_builtin_post_types, $this->selected_custom_post_types );
-
-		$post_types = apply_filters( 'elementor/import-export-customization/wp-content/post-types/customization', $post_types, $data, $customization );
-
 		$post_types = $this->force_element_to_be_last_by_value( $post_types, 'nav_menu_item' );
 
 		return $post_types;

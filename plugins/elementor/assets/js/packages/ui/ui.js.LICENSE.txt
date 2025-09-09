@@ -86,8 +86,6 @@ object-assign
 
 /*! ../../constants/dimensions */
 
-/*! ../../hooks/useSortableItem */
-
 /*! ../../locales/enUS */
 
 /*! ../../utils */
@@ -274,7 +272,7 @@ object-assign
 
 /*! ../SnackbarContent */
 
-/*! ../SortableProvider/SortableProvider */
+/*! ../SortableProvider */
 
 /*! ../Stack */
 
@@ -357,8 +355,6 @@ object-assign
 /*! ../colors/purple */
 
 /*! ../colors/red */
-
-/*! ../components/SortableProvider */
 
 /*! ../composeClasses */
 
@@ -1322,8 +1318,6 @@ object-assign
 
 /*! ./components/ColorPopover */
 
-/*! ./components/DropZone */
-
 /*! ./components/FloatingActionBar */
 
 /*! ./components/GradientBox */
@@ -1519,8 +1513,6 @@ object-assign
 /*! ./hide.js */
 
 /*! ./hooks/useColorState */
-
-/*! ./hooks/useDropZone */
 
 /*! ./hooks/useGradientUtils */
 
@@ -1789,10 +1781,6 @@ object-assign
 /*! ./theme-config/light */
 
 /*! ./theme-config/overrides */
-
-/*! ./theme-config/palette-overrides/argon-beta-dark-palette */
-
-/*! ./theme-config/palette-overrides/argon-beta-light-palette */
 
 /*! ./theme-config/palette-overrides/hub-palette */
 
@@ -5723,10 +5711,6 @@ object-assign
   \**********************************************************************/
 
 /*!**********************************************************************!*\
-  !*** ./node_modules/@elementor/ui/unstable/hooks/useSortableItem.js ***!
-  \**********************************************************************/
-
-/*!**********************************************************************!*\
   !*** ./node_modules/@mui/material/AvatarGroup/avatarGroupClasses.js ***!
   \**********************************************************************/
 
@@ -6471,10 +6455,6 @@ object-assign
   \*****************************************************************************/
 
 /*!*****************************************************************************!*\
-  !*** ./node_modules/@elementor/ui/unstable/components/DropZone/DropZone.js ***!
-  \*****************************************************************************/
-
-/*!*****************************************************************************!*\
   !*** ./node_modules/@emotion/weak-memoize/dist/emotion-weak-memoize.esm.js ***!
   \*****************************************************************************/
 
@@ -6540,10 +6520,6 @@ object-assign
 
 /*!******************************************************************************!*\
   !*** ./node_modules/@elementor/ui/styles/style-configs/MuiTableRow.style.js ***!
-  \******************************************************************************/
-
-/*!******************************************************************************!*\
-  !*** ./node_modules/@elementor/ui/unstable/hooks/useDropZone/useDropZone.js ***!
   \******************************************************************************/
 
 /*!******************************************************************************!*\
@@ -7271,10 +7247,6 @@ object-assign
   \****************************************************************************************************/
 
 /*!*****************************************************************************************************!*\
-  !*** ./node_modules/@elementor/ui/styles/theme-config/palette-overrides/argon-beta-dark-palette.js ***!
-  \*****************************************************************************************************/
-
-/*!*****************************************************************************************************!*\
   !*** ./node_modules/@elementor/ui/styles/theme-config/palette-overrides/marketing-suite-palette.js ***!
   \*****************************************************************************************************/
 
@@ -7285,10 +7257,6 @@ object-assign
 /*!*****************************************************************************************************!*\
   !*** ./node_modules/@mui/x-date-pickers/MultiSectionDigitalClock/MultiSectionDigitalClock.utils.js ***!
   \*****************************************************************************************************/
-
-/*!******************************************************************************************************!*\
-  !*** ./node_modules/@elementor/ui/styles/theme-config/palette-overrides/argon-beta-light-palette.js ***!
-  \******************************************************************************************************/
 
 /*!******************************************************************************************************!*\
   !*** ./node_modules/@mui/x-date-pickers/MultiSectionDigitalClock/MultiSectionDigitalClockSection.js ***!

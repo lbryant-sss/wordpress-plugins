@@ -1,14 +1,10 @@
-/*! ../../../utils/create-prop-utils */
-
-/*! ../../number */
-
-/*! ../../utils */
-
 /*! ../../utils/create-prop-utils */
 
-/*! ../string */
+/*! ../number */
 
-/*! ../types */
+/*! ../size */
+
+/*! ../string */
 
 /*! ../utils */
 
@@ -56,27 +52,11 @@
 
 /*! ./filter */
 
-/*! ./filter-functions/blur-filter */
-
-/*! ./filter-functions/color-tone-filter */
-
-/*! ./filter-functions/hue-rotate-filter */
-
-/*! ./filter-functions/intensity-filter */
-
 /*! ./filter-prop-types/backdrop-filter */
 
 /*! ./filter-prop-types/drop-shadow-filter */
 
 /*! ./filter-prop-types/filter */
-
-/*! ./filter-prop-types/filter-functions/blur-filter */
-
-/*! ./filter-prop-types/filter-functions/color-tone-filter */
-
-/*! ./filter-prop-types/filter-functions/hue-rotate-filter */
-
-/*! ./filter-prop-types/filter-functions/intensity-filter */
 
 /*! ./flex */
 
@@ -96,45 +76,37 @@
 
 /*! ./link */
 
+/*! ./move-transform */
+
 /*! ./number */
 
 /*! ./position */
 
 /*! ./prop-types */
 
-/*! ./selection-size */
+/*! ./rotate-transform */
+
+/*! ./scale-transform */
 
 /*! ./shadow */
 
 /*! ./size */
 
+/*! ./skew-transform */
+
 /*! ./string */
 
 /*! ./stroke */
 
-/*! ./transform-functions/move-transform */
+/*! ./transform-prop-types/move-transform */
 
-/*! ./transform-functions/rotate-transform */
+/*! ./transform-prop-types/rotate-transform */
 
-/*! ./transform-functions/scale-transform */
+/*! ./transform-prop-types/scale-transform */
 
-/*! ./transform-functions/skew-transform */
-
-/*! ./transform-prop-types/perspective-origin */
+/*! ./transform-prop-types/skew-transform */
 
 /*! ./transform-prop-types/transform */
-
-/*! ./transform-prop-types/transform-functions */
-
-/*! ./transform-prop-types/transform-functions/move-transform */
-
-/*! ./transform-prop-types/transform-functions/rotate-transform */
-
-/*! ./transform-prop-types/transform-functions/scale-transform */
-
-/*! ./transform-prop-types/transform-functions/skew-transform */
-
-/*! ./transform-prop-types/transform-origin */
 
 /*! ./types */
 
@@ -267,10 +239,6 @@
   \*****************************************************************************/
 
 /*!******************************************************************************!*\
-  !*** ./packages/packages/libs/editor-props/src/prop-types/selection-size.ts ***!
-  \******************************************************************************/
-
-/*!******************************************************************************!*\
   !*** ./packages/packages/libs/editor-props/src/utils/filter-empty-values.ts ***!
   \******************************************************************************/
 
@@ -310,24 +278,28 @@
   !*** ./packages/packages/libs/editor-props/src/prop-types/filter-prop-types/backdrop-filter.ts ***!
   \*************************************************************************************************/
 
+/*!***************************************************************************************************!*\
+  !*** ./packages/packages/libs/editor-props/src/prop-types/transform-prop-types/move-transform.ts ***!
+  \***************************************************************************************************/
+
+/*!***************************************************************************************************!*\
+  !*** ./packages/packages/libs/editor-props/src/prop-types/transform-prop-types/skew-transform.ts ***!
+  \***************************************************************************************************/
+
 /*!****************************************************************************************************!*\
   !*** ./packages/packages/libs/editor-props/src/prop-types/filter-prop-types/drop-shadow-filter.ts ***!
   \****************************************************************************************************/
 
-/*!*****************************************************************************************************!*\
-  !*** ./packages/packages/libs/editor-props/src/prop-types/transform-prop-types/transform-origin.ts ***!
-  \*****************************************************************************************************/
+/*!****************************************************************************************************!*\
+  !*** ./packages/packages/libs/editor-props/src/prop-types/transform-prop-types/scale-transform.ts ***!
+  \****************************************************************************************************/
 
-/*!*******************************************************************************************************!*\
-  !*** ./packages/packages/libs/editor-props/src/prop-types/transform-prop-types/perspective-origin.ts ***!
-  \*******************************************************************************************************/
+/*!*****************************************************************************************************!*\
+  !*** ./packages/packages/libs/editor-props/src/prop-types/transform-prop-types/rotate-transform.ts ***!
+  \*****************************************************************************************************/
 
 /*!********************************************************************************************************!*\
   !*** ./packages/packages/libs/editor-props/src/prop-types/background-prop-types/background-overlay.ts ***!
-  \********************************************************************************************************/
-
-/*!********************************************************************************************************!*\
-  !*** ./packages/packages/libs/editor-props/src/prop-types/transform-prop-types/transform-functions.ts ***!
   \********************************************************************************************************/
 
 /*!**************************************************************************************************************!*\
@@ -338,10 +310,6 @@
   !*** ./packages/packages/libs/editor-props/src/prop-types/background-prop-types/background-image-overlay.ts ***!
   \**************************************************************************************************************/
 
-/*!**************************************************************************************************************!*\
-  !*** ./packages/packages/libs/editor-props/src/prop-types/filter-prop-types/filter-functions/blur-filter.ts ***!
-  \**************************************************************************************************************/
-
 /*!*****************************************************************************************************************!*\
   !*** ./packages/packages/libs/editor-props/src/prop-types/background-prop-types/background-gradient-overlay.ts ***!
   \*****************************************************************************************************************/
@@ -350,34 +318,6 @@
   !*** ./packages/packages/libs/editor-props/src/prop-types/background-prop-types/background-image-size-scale.ts ***!
   \*****************************************************************************************************************/
 
-/*!*******************************************************************************************************************!*\
-  !*** ./packages/packages/libs/editor-props/src/prop-types/filter-prop-types/filter-functions/intensity-filter.ts ***!
-  \*******************************************************************************************************************/
-
-/*!********************************************************************************************************************!*\
-  !*** ./packages/packages/libs/editor-props/src/prop-types/filter-prop-types/filter-functions/color-tone-filter.ts ***!
-  \********************************************************************************************************************/
-
-/*!********************************************************************************************************************!*\
-  !*** ./packages/packages/libs/editor-props/src/prop-types/filter-prop-types/filter-functions/hue-rotate-filter.ts ***!
-  \********************************************************************************************************************/
-
 /*!**********************************************************************************************************************!*\
   !*** ./packages/packages/libs/editor-props/src/prop-types/background-prop-types/background-image-position-offset.ts ***!
   \**********************************************************************************************************************/
-
-/*!***********************************************************************************************************************!*\
-  !*** ./packages/packages/libs/editor-props/src/prop-types/transform-prop-types/transform-functions/move-transform.ts ***!
-  \***********************************************************************************************************************/
-
-/*!***********************************************************************************************************************!*\
-  !*** ./packages/packages/libs/editor-props/src/prop-types/transform-prop-types/transform-functions/skew-transform.ts ***!
-  \***********************************************************************************************************************/
-
-/*!************************************************************************************************************************!*\
-  !*** ./packages/packages/libs/editor-props/src/prop-types/transform-prop-types/transform-functions/scale-transform.ts ***!
-  \************************************************************************************************************************/
-
-/*!*************************************************************************************************************************!*\
-  !*** ./packages/packages/libs/editor-props/src/prop-types/transform-prop-types/transform-functions/rotate-transform.ts ***!
-  \*************************************************************************************************************************/

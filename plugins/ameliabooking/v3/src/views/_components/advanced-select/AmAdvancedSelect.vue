@@ -744,6 +744,7 @@ let cssTeleport = computed(() => {
     // Panel sides (columns) - Menu
     &-menu {
       width: 100%;
+      min-width: 170px;
 
       // First column
       &:nth-child(1) {
