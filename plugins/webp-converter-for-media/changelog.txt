@@ -1,5 +1,8 @@
 == Changelog ==
 
+= 6.2.4 (2025-09-09) =
+* `[Fixed]` Deprecated notice for implicitly nullable parameter when converting images
+
 = 6.2.3 (2025-09-02) =
 * `[Fixed]` Unknown error when converting images when file is unavailable or file size verification failed
 

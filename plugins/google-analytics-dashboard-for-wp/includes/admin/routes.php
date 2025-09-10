@@ -145,6 +145,10 @@ class ExactMetrics_Rest_Routes {
 			}
 		}
 
+		if (class_exists('ExactMetrics_Google_Ads')) {
+			$options['google_ads'] = ExactMetrics_Google_Ads::get_settings();
+		}
+
 		//add email summaries options
 		if ( exactmetrics_is_pro_version() ) {
 			$default_email = array(
@@ -445,7 +449,7 @@ class ExactMetrics_Rest_Routes {
 		);
 		// Complianz.
 		$parsed_addons['complianz'] = array(
-			'active' => defined( 'cmplz_plugin' ) || defined( 'cmplz_premium' ),
+			'active' => defined( 'cmplz_plugin' ) || defined( 'cmplz_premium' ) || defined( 'cmplz_free' ),
 		);
 		// Cookie Yes
 		$parsed_addons['cookie_yes'] = array(

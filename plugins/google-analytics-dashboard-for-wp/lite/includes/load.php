@@ -52,6 +52,12 @@ add_action('init', function () {
 		require_once EXACTMETRICS_PLUGIN_DIR . 'lite/includes/emails/summaries-infoblocks.php';
 		require_once EXACTMETRICS_PLUGIN_DIR . 'lite/includes/emails/summaries.php';
 		new ExactMetrics_Email_Summaries();
+
+		// Load API classes
+		require_once EXACTMETRICS_PLUGIN_DIR . 'includes/api/class-exactmetrics-api-error.php';
+		require_once EXACTMETRICS_PLUGIN_DIR . 'includes/api/class-exactmetrics-api.php';
+		require_once EXACTMETRICS_PLUGIN_DIR . 'includes/api/class-exactmetrics-api-reports.php';
+		require_once EXACTMETRICS_PLUGIN_DIR . 'includes/api/class-exactmetrics-api-tracking.php';
 	}
 
 	if ( is_admin() ) {

@@ -3,7 +3,7 @@
 /*
 Plugin Name: Koko Analytics
 Plugin URI: https://www.kokoanalytics.com/#utm_source=wp-plugin&utm_medium=koko-analytics&utm_campaign=plugins-page
-Version: 2.0.11
+Version: 2.0.12
 Description: Privacy-friendly and efficient statistics for your WordPress site.
 Author: ibericode
 Author URI: https://www.ibericode.com/
@@ -38,7 +38,7 @@ use KokoAnalytics\Shortcodes\Most_Viewed_Posts;
 use KokoAnalytics\Shortcodes\Site_Counter;
 use KokoAnalytics\Widgets\Most_Viewed_Posts_Widget;
 
-\define('KOKO_ANALYTICS_VERSION', '2.0.11');
+\define('KOKO_ANALYTICS_VERSION', '2.0.12');
 \define('KOKO_ANALYTICS_PLUGIN_FILE', __FILE__);
 \define('KOKO_ANALYTICS_PLUGIN_DIR', __DIR__);
 
@@ -52,11 +52,10 @@ if (PHP_VERSION_ID < 70400 || ! \defined('ABSPATH')) {
 }
 
 // Maybe run any pending database migrations
-// We schedule this at hook priority 1000 so that most plugins will have registered their custom post types
-add_action('init', function () {
+add_action('wp_loaded', function () {
     $migrations = new Migrations('koko_analytics', KOKO_ANALYTICS_VERSION, KOKO_ANALYTICS_PLUGIN_DIR . '/migrations/');
     $migrations->maybe_run();
-}, 1000, 0);
+}, 10, 0);
 
 // aggregator
 add_filter('cron_schedules', function ($schedules) {

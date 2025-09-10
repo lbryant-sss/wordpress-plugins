@@ -83,7 +83,7 @@ abstract class BaseRenderer implements IMailRenderer {
                     </div>
 
                     <?php
-                    if ( $key === 'message') {
+                    if ( $key === 'message' ) {
                         $this->render_message_value( $item, $settings['preferred-mail-format'] );
                     } else {
                         $this->render_column_value( $key, $value );
@@ -103,6 +103,7 @@ abstract class BaseRenderer implements IMailRenderer {
      * Render the message value.
      *
      * @since 1.11.0
+     * @since 1.15.0 Added dynamic DOM class for the message container.
      *
      * @param array  $mail           Mail data in context.
      * @param string $default_format Default format of the message to render.
@@ -112,7 +113,7 @@ abstract class BaseRenderer implements IMailRenderer {
     private function render_message_value( $mail, $default_format = 'html' ) {
         $format = empty( $_POST['format'] ) ? $default_format : $_POST['format'];
         ?>
-        <div class="wp-mail-logging-modal-row-html-container">
+        <div class="wp-mail-logging-modal-row-html-container wp-mail-logging-modal-row-html-container--<?php echo esc_attr( $format ); ?>">
             <?php
             if ( $format === 'raw' ) {
                 echo nl2br( esc_html( $mail['message'] ) );
@@ -149,6 +150,7 @@ abstract class BaseRenderer implements IMailRenderer {
      *
      * @since 1.11.0
      * @since 1.12.0
+     * @since 1.15.0 Used `esc_html()` on Subject, Receiver, and Headers columns.
      *
      * @param string $key   Key of the value to render.
      * @param string $value Value to be rendered.
@@ -172,7 +174,13 @@ abstract class BaseRenderer implements IMailRenderer {
                 } catch ( \Exception $e ) {}
             }
 
-            if ( $key === WPML_ColumnManager::COLUMN_SUBJECT ) {
+            $values_to_escape = [
+                WPML_ColumnManager::COLUMN_SUBJECT,
+                WPML_ColumnManager::COLUMN_RECEIVER,
+                WPML_ColumnManager::COLUMN_HEADERS,
+            ];
+
+            if ( in_array( $key, $values_to_escape, true ) ) {
                 echo esc_html( $value );
             } else {
                 echo wp_kses_post( $value );

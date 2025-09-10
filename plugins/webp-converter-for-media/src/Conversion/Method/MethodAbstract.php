@@ -148,7 +148,7 @@ abstract class MethodAbstract implements MethodInterface {
 	 * @throws Exception\SourcePathException
 	 * @throws Exception\FilesizeOversizeException
 	 */
-	protected function check_image_source_path( string $source_path, int $max_filesize = null ): void {
+	protected function check_image_source_path( string $source_path, ?int $max_filesize = null ): void {
 		if ( ! is_readable( $source_path ) ) {
 			throw new Exception\SourcePathException( $source_path );
 		} elseif ( ( $max_filesize !== null ) && ( filesize( $source_path ) > $max_filesize ) ) {

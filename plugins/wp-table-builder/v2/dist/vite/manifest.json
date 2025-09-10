@@ -1,6 +1,6 @@
 {
-  "_index-BU_qzdfp.js": {
-    "file": "assets/index-BU_qzdfp.js",
+  "_index-97y4ihRA.js": {
+    "file": "assets/index-97y4ihRA.js",
     "name": "index"
   },
   "src/editor.scss": {
@@ -14,7 +14,7 @@
     "src": "src/index.tsx",
     "isEntry": true,
     "imports": [
-      "_index-BU_qzdfp.js"
+      "_index-97y4ihRA.js"
     ]
   },
   "src/public/i18n.ts": {
@@ -34,7 +34,7 @@
     "src": "src/wptb-common.ts",
     "isEntry": true,
     "imports": [
-      "_index-BU_qzdfp.js"
+      "_index-97y4ihRA.js"
     ]
   }
 }

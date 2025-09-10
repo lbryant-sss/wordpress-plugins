@@ -35,11 +35,11 @@ class Actions
 
         /** @var \wpdb $wpdb */
         global $wpdb;
-        $wpdb->query("DROP TABLE {$wpdb->prefix}koko_analytics_site_stats;");
-        $wpdb->query("DROP TABLE {$wpdb->prefix}koko_analytics_post_stats;");
-        $wpdb->query("DROP TABLE {$wpdb->prefix}koko_analytics_paths;");
-        $wpdb->query("DROP TABLE {$wpdb->prefix}koko_analytics_referrer_stats;");
-        $wpdb->query("DROP TABLE {$wpdb->prefix}koko_analytics_referrer_urls;");
+        $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}koko_analytics_site_stats;");
+        $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}koko_analytics_post_stats;");
+        $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}koko_analytics_paths;");
+        $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}koko_analytics_referrer_stats;");
+        $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}koko_analytics_referrer_urls;");
         delete_option('koko_analytics_realtime_pageview_count');
 
         // delete version option so that migrations re-create all database tables on next page load
@@ -147,7 +147,6 @@ class Actions
 
         $offset = 0;
         $limit = 500;
-        $home_url = home_url('/');
 
         do {
             // Select all rows with a post ID but no path ID
@@ -270,7 +269,7 @@ class Actions
         $limit = 500;
 
         do {
-            $results = $wpdb->get_results($wpdb->prepare("SELECT post_id, path_id, p.path FROM {$wpdb->prefix}koko_analytics_post_stats s JOIN {$wpdb->prefix}koko_analytics_paths p ON p.id = s.path_id WHERE post_id != 0 AND date <= '2025-08-29' GROUP BY post_id LIMIT %d OFFSET %d", [$limit, $offset]));
+            $results = $wpdb->get_results($wpdb->prepare("SELECT post_id, path_id, p.path FROM {$wpdb->prefix}koko_analytics_post_stats s JOIN {$wpdb->prefix}koko_analytics_paths p ON p.id = s.path_id WHERE post_is IS NOT NULL AND post_id != 0 AND date <= '2025-08-29' GROUP BY post_id LIMIT %d OFFSET %d", [$limit, $offset]));
             $offset += $limit;
             if (!$results) {
                 break;
