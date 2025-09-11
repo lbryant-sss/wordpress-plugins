@@ -18,11 +18,13 @@ class Package {
 	 *
 	 * @var string
 	 */
-	const VERSION = '4.6.0';
+	const VERSION = '4.7.0';
 
 	public static $upload_dir_suffix = '';
 
 	protected static $iso = null;
+
+	protected static $street_formats = null;
 
 	protected static $locale = array();
 
@@ -64,8 +66,6 @@ class Package {
 		add_action( 'init', array( __CLASS__, 'check_version' ), 10 );
 		add_action( 'init', array( __CLASS__, 'load_plugin_textdomain' ) );
 		add_action( 'init', array( __CLASS__, 'load_fallback_compatibility' ) );
-
-		add_filter( 'woocommerce_shipping_method_add_rate_args', array( __CLASS__, 'manipulate_shipping_rates' ), 1000, 2 );
 	}
 
 	public static function load_plugin_textdomain() {
@@ -225,14 +225,6 @@ class Package {
 		}
 	}
 
-	public static function manipulate_shipping_rates( $args, $method ) {
-		if ( $method = wc_stc_get_shipping_provider_method( $method ) ) {
-			$args['meta_data']['_shipping_provider'] = $method->get_shipping_provider();
-		}
-
-		return $args;
-	}
-
 	public static function add_return_shipment_guest_endpoints( $template, $template_name ) {
 		global $wp;
 
@@ -248,7 +240,6 @@ class Package {
 				}
 
 				if ( $callback && $order_id && ( $order_shipment = wc_stc_get_shipment_order( $order_id ) ) && ! empty( $key ) ) {
-
 					// Order return key is invalid.
 					if ( ! wc_stc_customer_can_add_return_shipment( $order_id ) ) {
 						throw new Exception( esc_html_x( 'Sorry, this order is invalid and cannot be returned.', 'shipments', 'woocommerce-germanized' ) );
@@ -397,6 +388,14 @@ class Package {
 		return (array) self::$iso;
 	}
 
+	protected static function get_countries_street_formats() {
+		if ( is_null( self::$street_formats ) ) {
+			self::$street_formats = include self::get_path() . '/i18n/street-formats.php';
+		}
+
+		return (array) self::$street_formats;
+	}
+
 	public static function get_country_iso_alpha2( $country_code ) {
 		$country_code = strtoupper( $country_code );
 		$iso          = self::get_countries_iso_alpha3();
@@ -406,6 +405,17 @@ class Package {
 		}
 
 		return $country_code;
+	}
+
+	public static function get_country_street_format( $country_code ) {
+		$country_code   = strtoupper( $country_code );
+		$street_formats = self::get_countries_street_formats();
+
+		if ( array_key_exists( $country_code, $street_formats ) ) {
+			return $street_formats[ $country_code ];
+		}
+
+		return null;
 	}
 
 	public static function get_base_country() {
@@ -833,6 +843,20 @@ class Package {
 		if ( file_exists( $default_template_path ) ) {
 			$template_path = self::get_template_path();
 
+			if ( 'myaccount/add-return-shipment.php' === $template_name ) {
+				self::register_script( 'wc-shiptastic-returns', 'static/returns.js', array( 'jquery', 'woocommerce' ) );
+
+				wp_localize_script(
+					'wc-shiptastic-returns',
+					'wc_shiptastic_returns_params',
+					array(
+						'wc_ajax_url' => \WC_AJAX::get_endpoint( '%%endpoint%%' ),
+					)
+				);
+
+				wp_enqueue_script( 'wc-shiptastic-returns' );
+			}
+
 			// Check for Theme overrides
 			$theme_template = locate_template(
 				apply_filters(
@@ -955,13 +979,13 @@ class Package {
 	}
 
 	public static function get_assets_url( $script_or_style ) {
-		$assets_url = self::get_url() . '/build';
+		$assets_url = self::get_url( 'build' );
 		$is_debug   = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG;
 		$is_style   = '.css' === substr( $script_or_style, -4 );
 		$is_static  = strstr( $script_or_style, 'static/' );
 
 		if ( $is_debug && $is_static && ! $is_style ) {
-			$assets_url = self::get_url() . '/assets/js';
+			$assets_url = self::get_url( 'assets/js' );
 		}
 
 		return trailingslashit( $assets_url ) . $script_or_style;

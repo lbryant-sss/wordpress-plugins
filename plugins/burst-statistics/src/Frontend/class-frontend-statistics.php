@@ -711,13 +711,13 @@ class Frontend_Statistics {
 		global $wpdb;
 		// Get posts sorted by pageviews.
 		$sql = $wpdb->prepare(
-			"SELECT s.page_id, COUNT(*) as pageview_count
+			"SELECT page_id, COUNT(*) as pageview_count
              FROM {$wpdb->prefix}burst_statistics
              WHERE page_id > 0
                AND time >= %d
                AND time <= %d
                AND page_type = %s
-             GROUP BY s.page_id
+             GROUP BY page_id
              ORDER BY pageview_count DESC
              LIMIT %d",
 			$start_time,

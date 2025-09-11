@@ -71,11 +71,11 @@ if (!class_exists('\\Wtieruser\\Banners\\Wtier_Bfcm_Twenty_Twenty_Four')) {
                 if ('webtoffee-import-export-basic_page_wt_iew_scheduled_job' === $screen_id) {
                     $extra_class = ' wtier-bfcm-banner-2024-scheduled-job'; // Add this class for additional styling
                 }
-?>
+            ?>
                 <div class="wtier-bfcm-banner-2024 notice is-dismissible<?php echo esc_attr($extra_class); ?>">
                     <div class="wtier-bfcm-banner-body">
                         <div class="wtier-bfcm-banner-body-img-section">
-                            <img src="<?php echo plugin_dir_url(__FILE__) . 'assets/images/black-friday-2024.svg'; ?>" alt="Black Friday Cyber Monday 2024">
+                            <img src="<?php echo esc_url(plugin_dir_url(__FILE__) . 'assets/images/black-friday-2024.svg'); ?>" alt="Black Friday Cyber Monday 2024">
                         </div>
                         <div class="wtier-bfcm-banner-body-info">
                             <div class="never-miss-this-deal">
@@ -92,14 +92,16 @@ if (!class_exists('\\Wtieruser\\Banners\\Wtier_Bfcm_Twenty_Twenty_Four')) {
                                     if ('webtoffee-import-export-basic_page_wt_iew_scheduled_job' === $screen_id) {
                                         // Add a line break for this specific screen
                                         echo sprintf(
-                                            __('Your Last Chance to Avail %1$s on<br>WebToffee Plugins. Grab the deal before it`s gone!', 'users-customers-import-export-for-wp-woocommerce'),
-                                            '<span>30% ' . __("OFF", "users-customers-import-export-for-wp-woocommerce") . '</span>'
+                                            /* translators: $1: 30% OFF */
+                                            esc_html__('Your Last Chance to Avail %1$s on<br>WebToffee Plugins. Grab the deal before it`s gone!', 'users-customers-import-export-for-wp-woocommerce'),
+                                            '<span>30% ' . esc_html__("OFF", "users-customers-import-export-for-wp-woocommerce") . '</span>'
                                         );
                                     } else {
                                         // Regular display for other screens
                                         echo sprintf(
-                                            __('Your Last Chance to Avail %1$s on WebToffee Plugins. Grab the deal before it`s gone!', 'users-customers-import-export-for-wp-woocommerce'),
-                                            '<span>30% ' . __("OFF", "users-customers-import-export-for-wp-woocommerce") . '</span>'
+                                            /* translators: $1: 30% OFF */
+                                            esc_html__('Your Last Chance to Avail %1$s on WebToffee Plugins. Grab the deal before it`s gone!', 'users-customers-import-export-for-wp-woocommerce'),
+                                            '<span>30% ' . esc_html__("OFF", "users-customers-import-export-for-wp-woocommerce") . '</span>'
                                         );
                                     }
                                     ?>
@@ -111,7 +113,7 @@ if (!class_exists('\\Wtieruser\\Banners\\Wtier_Bfcm_Twenty_Twenty_Four')) {
                         </div>
                     </div>
                 </div>
-<?php
+            <?php
             }
         }
 
@@ -181,7 +183,7 @@ if (!class_exists('\\Wtieruser\\Banners\\Wtier_Bfcm_Twenty_Twenty_Four')) {
             check_ajax_referer('wtier_bfcm_twenty_twenty_four_banner_nonce');
             if (isset($_POST['wtier_bfcm_twenty_twenty_four_banner_action_type'])) {
 
-                $action_type = absint(sanitize_text_field($_POST['wtier_bfcm_twenty_twenty_four_banner_action_type']));
+                $action_type = isset($_POST['wtier_bfcm_twenty_twenty_four_banner_action_type']) ? absint($_POST['wtier_bfcm_twenty_twenty_four_banner_action_type']) : 0;
                 // Current action is allowed?
                 if (in_array($action_type, array(2, 3))) {
                     update_option(self::$banner_state_option_name, $action_type);

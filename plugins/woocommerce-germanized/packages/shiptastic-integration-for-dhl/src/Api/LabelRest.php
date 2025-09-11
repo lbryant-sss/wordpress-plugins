@@ -165,7 +165,7 @@ class LabelRest extends PaketRest {
 					'name2'         => wc_shiptastic_substring( $label->get_return_company() ? $label->get_return_formatted_full_name() : '', 0, 50 ),
 					'addressStreet' => wc_shiptastic_substring( $label->get_return_street() . ' ' . $label->get_return_street_number(), 0, 50 ),
 					'postalCode'    => $label->get_return_postcode(),
-					'city'          => $label->get_return_city(),
+					'city'          => wc_shiptastic_substring( $label->get_return_city(), 0, 40 ),
 					'state'         => wc_shiptastic_substring( wc_stc_dhl_format_label_state( $label->get_return_state(), $label->get_return_country() ), 0, 20 ),
 					'contactName'   => wc_shiptastic_substring( $label->get_return_formatted_full_name(), 0, 80 ),
 					'phone'         => $label->get_return_phone(),
@@ -282,18 +282,18 @@ class LabelRest extends PaketRest {
 		if ( 'DE' === $shipment->get_country() && $shipment->send_to_external_pickup() ) {
 			if ( $shipment->send_to_external_pickup( 'locker' ) ) {
 				$shipment_request['consignee'] = array(
-					'name'       => $shipment->get_formatted_full_name(),
+					'name'       => wc_shiptastic_substring( $shipment->get_formatted_full_name(), 0, 50 ),
 					'lockerID'   => (int) wc_stc_parse_pickup_location_code( $shipment->get_pickup_location_code() ),
 					'postNumber' => $shipment->get_pickup_location_customer_number(),
-					'city'       => $shipment->get_city(),
+					'city'       => wc_shiptastic_substring( $shipment->get_city(), 0, 40 ),
 					'postalCode' => $shipment->get_postcode(),
 					'country'    => wc_stc_country_to_alpha3( $shipment->get_country() ),
 				);
 			} else {
 				$shipment_request['consignee'] = array(
-					'name'       => $shipment->get_formatted_full_name(),
+					'name'       => wc_shiptastic_substring( $shipment->get_formatted_full_name(), 0, 50 ),
 					'retailID'   => (int) $shipment->get_pickup_location_code(),
-					'city'       => $shipment->get_city(),
+					'city'       => wc_shiptastic_substring( $shipment->get_city(), 0, 40 ),
 					'postalCode' => $shipment->get_postcode(),
 					'country'    => wc_stc_country_to_alpha3( $shipment->get_country() ),
 				);
@@ -324,7 +324,7 @@ class LabelRest extends PaketRest {
 				'addressStreet'                 => $address_components['address_1'],
 				'additionalAddressInformation1' => wc_shiptastic_substring( apply_filters( 'woocommerce_shiptastic_dhl_label_api_receiver_address_information', '', $label ), 0, 60 ),
 				'postalCode'                    => $shipment->get_postcode(),
-				'city'                          => $shipment->get_city(),
+				'city'                          => wc_shiptastic_substring( $shipment->get_city(), 0, 40 ),
 				'state'                         => wc_shiptastic_substring( wc_stc_dhl_format_label_state( $shipment->get_state(), $shipment->get_country() ), 0, 20 ),
 				'country'                       => wc_stc_country_to_alpha3( $shipment->get_country() ),
 				/**
@@ -650,6 +650,35 @@ class LabelRest extends PaketRest {
 		 * @package Vendidero/Shiptastic/DHL
 		 */
 		return apply_filters( 'woocommerce_shiptastic_dhl_label_api_export_type', strtoupper( $export_type ), $label );
+	}
+
+	protected function get_headers( $headers = array() ) {
+		$headers = parent::get_headers( $headers );
+
+		$headers['Accept-Language'] = $this->get_language();
+
+		return $headers;
+	}
+
+	protected function get_language() {
+		$languages = array(
+			'DE' => 'de-DE',
+			'EN' => 'en-US',
+		);
+
+		if ( function_exists( 'determine_locale' ) ) {
+			$locale = determine_locale();
+		} else {
+			$locale = is_admin() ? get_user_locale() : get_locale();
+		}
+
+		$lang = strtoupper( substr( $locale, 0, 2 ) );
+
+		if ( array_key_exists( $lang, $languages ) ) {
+			return $languages[ $lang ];
+		} else {
+			return 'en-US';
+		}
 	}
 
 	public function test_connection() {

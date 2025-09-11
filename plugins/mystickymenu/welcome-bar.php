@@ -98,7 +98,7 @@ function mysticky_welcome_bar_backend() {
 					</div>
 					<div class="mysticky-welcomebar-setting-content mysticky-welcomebar-setting-position">
 						<label><?php esc_html_e('Position', 'myStickymenu'); ?><span class="mysticky-custom-fields-tooltip">
-									<a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">Choose if you want to show the bar on top or at the bottom of your site</p></span></label>
+									<a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">Choose if you want to show the bar on top or at the bottom of your site</p></span></label>
 						<div class="mysticky-welcomebar-setting-content-right setting-content-relative">
 							<label>
 								<input name="mysticky_option_welcomebar[mysticky_welcomebar_position]" value= "top" type="radio" <?php checked( @$welcomebar['mysticky_welcomebar_position'], 'top' );?> />
@@ -113,7 +113,7 @@ function mysticky_welcome_bar_backend() {
 					</div>
 					<div class="mysticky-welcomebar-setting-content height-setting" <?php if(isset($welcomebar['mysticky_welcomebar_enable_lead']) && $welcomebar['mysticky_welcomebar_enable_lead'] == 1):?> style="display:none;"<?php endif;?>>
 						<label><?php esc_html_e('Height', 'myStickymenu'); ?>
-							<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">Choose the size of your bar in pixels</p></span>
+							<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">Choose the size of your bar in pixels</p></span>
 						</label>
 						<div class="mysticky-welcomebar-setting-content-right setting-content-relative">
 							<div class="px-wrap">
@@ -132,7 +132,7 @@ function mysticky_welcome_bar_backend() {
 					<div class="mysticky-welcomebar-setting-content">
 						<label>
 							<?php _e('Bar background image', 'myStickymenu'); ?>
-							<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e('Choose a custom image as the background for your welcome bar', 'myStickymenu');?><br><img src="<?php echo MYSTICKYMENU_URL ?>/images/bar-background-image.png" style="width:100%;"/></p></span>
+							<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e('Choose a custom image as the background for your welcome bar', 'myStickymenu');?><br><img src="<?php echo MYSTICKYMENU_URL ?>/images/bar-background-image.png" style="width:100%;"/></p></span>
 						</label>
 						<div class="mysticky-welcomebar-setting-content-right mysticky-welcomebar-colorpicker setting-content-relative">
 							<a href="<?php echo esc_url($upgarde_url); ?>" class="welcomebar-background-image" id="welcomebar-background-image"><?php esc_html_e('Upload Background', 'myStickymenu');?></a>
@@ -181,7 +181,7 @@ function mysticky_welcome_bar_backend() {
 								<input id="welcomebar_sliding_text" class="welcomebar_sliding_text"  name="mysticky_option_welcomebar[mysticky_welcomebar_text_type]" value="sliding_text" type="radio" <?php checked( @$welcomebar['mysticky_welcomebar_text_type'], 'sliding_text' );?> />
 								<span>
 									<?php esc_html_e("Sliding Texts", 'mystickymenu'); ?>
-									<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e('Enhance Your Sticky Menu with Sliding Text. Display multiple lines of content that can scroll automatically in your desired direction.', 'mystickymenu');?><br><img src="<?php echo esc_url(MYSTICKYMENU_URL) ?>/images/sliding-text.gif" style="width:100%;"/></p></span>
+									<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e('Enhance Your Sticky Menu with Sliding Text. Display multiple lines of content that can scroll automatically in your desired direction.', 'mystickymenu');?><br><img src="<?php echo esc_url(MYSTICKYMENU_URL) ?>/images/sliding-text.gif" style="width:100%;"/></p></span>
 								</span>
 							</label>
 						</div>
@@ -282,7 +282,7 @@ function mysticky_welcome_bar_backend() {
 					
 					<div class="mysticky-welcomebar-setting-content">
 						<label><?php esc_html_e('Show an X Button', 'myStickymenu'); ?>
-							<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e('Choose if you want to show an X button to close the bar or not or desktop and mobile devices', 'mystickymenu');?></p></span>	
+							<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e('Choose if you want to show an X button to close the bar or not or desktop and mobile devices', 'mystickymenu');?></p></span>	
 						</label>
 						<div class="mysticky-welcomebar-setting-content-right">
 							<label>
@@ -300,7 +300,7 @@ function mysticky_welcome_bar_backend() {
 					</div>
 					<div class="mysticky-welcomebar-setting-content">						
 						<label><?php esc_html_e('Countdown', 'myStickymenu'); ?> <span class="dashicons dashicons-clock" style="margin-left:5px;color:#a8aeaf;"></span> 
-						<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e("Add a countdown timer element to your Bar to increase conversion rate, announce flash sales, and more","mystickymenu");?><br><img src="<?php echo esc_url(MYSTICKYMENU_URL) ?>/images/countdown.gif" style="width:100%;"/></p></span>
+						<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e("Add a countdown timer element to your Bar to increase conversion rate, announce flash sales, and more","mystickymenu");?><br><img src="<?php echo esc_url(MYSTICKYMENU_URL) ?>/images/countdown.gif" style="width:100%;"/></p></span>
 						</label>
 						<div class="mysticky-welcomebar-setting-content-right mysticky-welcomebar-close-automatically-sec">
 							<label for="mysticky-welcomebar-countdown-enabled" class="mysticky-welcomebar-switch">
@@ -315,7 +315,7 @@ function mysticky_welcome_bar_backend() {
 					<div class="mysticky-welcomebar-setting-content">
 						<label style="position:relative;"><?php esc_html_e('Collect leads', 'myStickymenu'); ?>&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16" style="fill: #a8aeaf;position: absolute;top: 3px"><path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"></path></svg> 
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php echo sprintf(esc_html__(" Collect the visitor's details such as Name, email address or phone number from the bar. Collected visitor details can be viewed on the %1\$s page","mystickymenu"), '<a href="' . esc_url(admin_url("admin.php?page=my-sticky-menu-leads")). '" target="_blank">' . esc_html__( 'Contact Form Leads', 'mystickymenu') .'</a>');?></p></span>
+						<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php echo sprintf(esc_html__(" Collect the visitor's details such as Name, email address or phone number from the bar. Collected visitor details can be viewed on the %1\$s page","mystickymenu"), '<a href="' . esc_url(admin_url("admin.php?page=my-sticky-menu-leads")). '" target="_blank">' . esc_html__( 'Contact Form Leads', 'mystickymenu') .'</a>');?></p></span>
 						</label>
 						<div class="mysticky-welcomebar-setting-content-right">
 							<label for="mysticky-welcomebar-collectlead-enabled" class="mysticky-welcomebar-switch collect-lead-switch">
@@ -400,7 +400,7 @@ function mysticky_welcome_bar_backend() {
 					<!-- Coupon Section Start  -->
 					<div class="mysticky-welcomebar-setting-content">
 						<label class="bagicon"><?php esc_html_e('Show Coupons', 'myStickymenu'); ?> &nbsp;<img src="<?php echo esc_url(MYSTICKYMENU_URL); ?>/images/shopyicon.svg" />
-						<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e("Add a coupon to your bar. Users can click on the coupon, copy it and use it on your website","mystickymenu");?><br><img src="<?php echo esc_url(esc_url(MYSTICKYMENU_URL)) ?>/images/show-coupon-ss.png" style="width:100%;"/></p></span>
+						<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e("Add a coupon to your bar. Users can click on the coupon, copy it and use it on your website","mystickymenu");?><br><img src="<?php echo esc_url(esc_url(MYSTICKYMENU_URL)) ?>/images/show-coupon-ss.png" style="width:100%;"/></p></span>
 					</label>
 						<div class="mysticky-welcomebar-setting-content-right" style="margin-top: 8px;">
 							<label for="mysticky-welcomebar-showcoupon-enabled" class="mysticky-welcomebar-switch showcoupon-switch">
@@ -417,7 +417,7 @@ function mysticky_welcome_bar_backend() {
 					</div>
 					<div class="mysticky-welcomebar-setting-content">
 						<label><?php esc_html_e('Show a Button On', 'myStickymenu'); ?>
-							<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">Choose whether you want to display a button on your bar or not on desktop and mobile devices</p></span>	
+							<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">Choose whether you want to display a button on your bar or not on desktop and mobile devices</p></span>	
 						</label>
 						<div class="mysticky-welcomebar-setting-content-right">
 							<label>
@@ -524,7 +524,7 @@ function mysticky_welcome_bar_backend() {
 					<!-- -->
 					<div class="mysticky-welcomebar-setting-content">
 						<label><?php esc_html_e('Action On Button Click', 'myStickymenu'); ?>
-							<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">Select what you'd like to happen when a visitor clicks on the button <br/>Redirect the visitor to another URL - your visitor will be redirected to another URL after they click on the button (for example, a specific product or latest collection) <br/>Close the Bar - after they user clicks on the button, the Bar will be closed <br/>Launch a Poptin pop-up - when the user clicks on the button, a Poptin pop-up will be launched. You need to first create a free Poptin account (link on "free Poptin account" to <a href='https://www.poptin.com/?utm_source=msm' target="_blank">https://www.poptin.com/?utm_source=msm</a>) and set up your pop-ups <br/>Show a thank-you screen - show a thank you screen after the user clicks on a button with different text from your Bar text</p></span>		
+							<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">Select what you'd like to happen when a visitor clicks on the button <br/>Redirect the visitor to another URL - your visitor will be redirected to another URL after they click on the button (for example, a specific product or latest collection) <br/>Close the Bar - after they user clicks on the button, the Bar will be closed <br/>Launch a Poptin pop-up - when the user clicks on the button, a Poptin pop-up will be launched. You need to first create a free Poptin account (link on "free Poptin account" to <a href='https://www.poptin.com/?utm_source=msm' target="_blank">https://www.poptin.com/?utm_source=msm</a>) and set up your pop-ups <br/>Show a thank-you screen - show a thank you screen after the user clicks on a button with different text from your Bar text</p></span>		
 						</label>
 						<div class="mysticky-welcomebar-setting-content-right mysticky-welcomebar-setting-redirect-wrap">
 							<div class="mysticky-welcomebar-setting-action">
@@ -580,7 +580,7 @@ function mysticky_welcome_bar_backend() {
 					<div class="mysticky-welcomebar-setting-content mysticky-welcomebar-redirect-container" <?php if ( $welcomebar['mysticky_welcomebar_actionselect'] != 'redirect_to_url' ) : ?> style="display:none;" <?php endif;?>>
 						<label><?php esc_html_e('rel Attribute', 'myStickymenu'); ?>
 							<span class="mysticky-custom-fields-tooltip">
-								<a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a>
+								<a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a>
 								<p><?php esc_html_e("Add a \"rel\" attribute to the button link. You can use it to add a rel=\"nofollow\", \"sponsored\", or any other \"rel\" attribute option","mystickymenu");?></p>
 							</span>
 						</label>
@@ -592,7 +592,7 @@ function mysticky_welcome_bar_backend() {
 					<!-- -->
 					<div class="mysticky-welcomebar-setting-content">
 						<label><?php esc_html_e('Bar Appearance After Button Click', 'myStickymenu'); ?>
-							<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e("Choose bar display settings after a visitor click on the button. The \"Don't show the Bar again for the user\" option is the preferable option if you don't want to annoy your visitors by showing the bar over and over","mystickymenu");?></p></span>
+							<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e("Choose bar display settings after a visitor click on the button. The \"Don't show the Bar again for the user\" option is the preferable option if you don't want to annoy your visitors by showing the bar over and over","mystickymenu");?></p></span>
 						</label>
 						<div class="mysticky-welcomebar-setting-content-right">
 							<div class="mysticky-welcomebar-setting-action">
@@ -607,7 +607,7 @@ function mysticky_welcome_bar_backend() {
 					<!-- -->
 					<div class="mysticky-welcomebar-setting-content">
 						<label><?php esc_html_e('Close Bar Automatically After Click', 'myStickymenu'); ?>
-							<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e("Choose if you'd like the bar to be closed automatically after button submission",'mystickymenu');?></p></span>
+							<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e("Choose if you'd like the bar to be closed automatically after button submission",'mystickymenu');?></p></span>
 						</label>
 						<div class="mysticky-welcomebar-setting-content-right mysticky-welcomebar-close-automatically-sec">
 							<label for="mysticky-welcomebar-close-automatically-enabled" class="mysticky-welcomebar-switch">
@@ -628,7 +628,7 @@ function mysticky_welcome_bar_backend() {
 				<div class="mysticky-welcomebar-setting-block">
 					<div class="mysticky-welcomebar-subheader-title" style="display:flex;">
 						<h4><?php esc_html_e('Display Rules', 'myStickymenu'); ?></h4>
-						<span class="mysticky-custom-fields-tooltip" style="margin-top:5px;"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">Choose if you want to show the bar on desktop or mobile only, or on both</p></span>
+						<span class="mysticky-custom-fields-tooltip" style="margin-top:5px;"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">Choose if you want to show the bar on desktop or mobile only, or on both</p></span>
 					</div>
 					<div class="mysticky-welcomebar-setting-content">
 						<label><?php esc_html_e('Entry effect', 'myStickymenu'); ?></label>
@@ -660,7 +660,7 @@ function mysticky_welcome_bar_backend() {
 						</div>
 						<div class="mysticky-welcomebar-setting-content">
 							<label><?php esc_html_e('Trigger', 'myStickymenu'); ?>
-								<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">Choose when you'd like the bar to appear on your site</p></span>
+								<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">Choose when you'd like the bar to appear on your site</p></span>
 							</label>
 							<div class="mysticky-welcomebar-setting-content-right">
 								<div class="mysticky-welcomebar-setting-action mysticky-welcomebar-trigger-wrap">
@@ -681,7 +681,7 @@ function mysticky_welcome_bar_backend() {
 						</div>
 						<div class="mysticky-welcomebar-setting-content show-on-apper">
 							<label><?php _e('Date Scheduling', 'myStickymenu'); ?>
-								<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e('Set the date and time for when you want the widget to start showing and the time you would like it to stop showing. You can add up to 12 combinations of "on and off" triggers. This feature may be useful when you have an upcoming limited-time offer.',"mystickymenu");?></p></span>
+								<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e('Set the date and time for when you want the widget to start showing and the time you would like it to stop showing. You can add up to 12 combinations of "on and off" triggers. This feature may be useful when you have an upcoming limited-time offer.',"mystickymenu");?></p></span>
 							</label>
 							<div class="mysticky-welcomebar-setting-content-right">
 								<div class="mysticky-welcomebar-date-schedule-options" id="mysticky-welcomebar-date-schedule-options" style="display:none;" >
@@ -697,7 +697,7 @@ function mysticky_welcome_bar_backend() {
 												<div class="date-select-option">
 													<label>
 														<?php esc_html_e( 'Start date ', 'mystickymenu');?>
-														<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e('Schedule a date from which the widget will be displayed (the starting date is included)',"mystickymenu");?></p></span>
+														<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e('Schedule a date from which the widget will be displayed (the starting date is included)',"mystickymenu");?></p></span>
 													</label>
 													<input autocomplete="off" type="text" class="welcomebar-datepicker" id="date_schedule___count___start_date">
 												</div>
@@ -710,7 +710,7 @@ function mysticky_welcome_bar_backend() {
 												<div class="date-select-option">
 													<label>
 														<?php esc_html_e( 'End date ', 'mystickymenu');?>
-														<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e('Schedule a date from which the widget will stop being displayed (the end date is included)',"mystickymenu");?></p></span>
+														<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e('Schedule a date from which the widget will stop being displayed (the end date is included)',"mystickymenu");?></p></span>
 													</label>
 													<input autocomplete="off" type="text" class="welcomebar-datepicker" id="date_schedule___count___end_date">
 												</div>
@@ -719,7 +719,7 @@ function mysticky_welcome_bar_backend() {
 													<input autocomplete="off" type="text"  id="date_schedule___count___end_time">
 												</div>
 												<div class="mysticky-welcomebar-url-buttons">
-													<a class="mysticky-welcomebar-remove-date-schedule" href="javascript:void(0);">x</a>
+													<a class="mysticky-welcomebar-remove-date-schedule" href="#">x</a>
 												</div>
 											</div>
 											
@@ -732,17 +732,17 @@ function mysticky_welcome_bar_backend() {
 									</div>
 								</div>
 								<span style="width: 100%;display: block;">
-									<a href="javascript:void(0);" class="create-rule" id="add-date-schedule-option"><?php esc_html_e( "Add Rule", "mystickymenu" );?></a>
+									<a href="#" class="create-rule" id="add-date-schedule-option"><?php esc_html_e( "Add Rule", "mystickymenu" );?></a>
 								</span>
 							</div>
 						</div>
 						<div class="mysticky-welcomebar-setting-content show-on-apper">
 							<label><?php esc_html_e('Page targeting', 'myStickymenu'); ?>
-								<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">
+								<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">
 									<?php esc_html_e(" Add page targeting to ensure the bar only appears or doesn't appear for the selected pages only","mystickymenu");?></p></span>
 							</label>
 							<div class="mysticky-welcomebar-setting-content-right">
-								<a href="javascript:void(0);" class="create-rule" id="create-rule"><?php esc_html_e( "Add Rule", "mystickyelements" );?></a>
+								<a href="#" class="create-rule" id="create-rule"><?php esc_html_e( "Add Rule", "mystickyelements" );?></a>
 							</div>
 							<?php 
 							$url_options = array(
@@ -792,7 +792,7 @@ function mysticky_welcome_bar_backend() {
 						</div>
 						<div class="mysticky-welcomebar-setting-content show-on-apper">
 							<label><?php _e('User targeting', 'myStickymenu'); ?>
-								<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e("Add a rule if you want to show the welcome bar for logged in or logged out users of your WordPress website selectively","mystickymenu");?></p></span>
+								<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e("Add a rule if you want to show the welcome bar for logged in or logged out users of your WordPress website selectively","mystickymenu");?></p></span>
 							</label>
 							<div class="mysticky-welcomebar-setting-content-right">
 								<div class=" mystickymenu-country-inputs">
@@ -812,7 +812,7 @@ function mysticky_welcome_bar_backend() {
 						</div>
 						<div class="mysticky-welcomebar-setting-content">
 							<label><?php esc_html_e('Country targeting', 'myStickymenu'); ?>
-								<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">
+								<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">
 									<?php esc_html_e("Add country targeting to ensure the bar only appears for the selected countries only","mystickymenu");?></p></span>
 							</label>	
 							<div class="mysticky-welcomebar-setting-content-right">
@@ -872,7 +872,7 @@ function mysticky_welcome_bar_backend() {
 									$mysticky_welcomebar_btn_text =  isset($welcomebar['mysticky_welcomebar_btn_text']) ? stripslashes($welcomebar['mysticky_welcomebar_btn_text']) : "Got it!";
 								?>
 										
-								<a href="javascript:void(0)"><?php echo stripslashes($mysticky_welcomebar_btn_text);?></a>
+								<a href="#"><?php echo stripslashes($mysticky_welcomebar_btn_text);?></a>
 							</div>
 							<?php 
 								$x_color = (isset($welcomebar['mysticky_welcomebar_x_color'])) ? esc_attr($welcomebar['mysticky_welcomebar_x_color']) : '#000000';
@@ -882,7 +882,7 @@ function mysticky_welcome_bar_backend() {
 					</div>
 				</div>
 				<div class="timer-message" <?php if(isset($welcomebar['mysticky_welcomebar_enable_lead']) && $welcomebar['mysticky_welcomebar_enable_lead'] != 1):?> style="display:none;"<?php endif;?>>
-					<p><span class="dashicons dashicons-info"></span> The elements will be displayed in 1-line on your actual website. <a class="save_change" href="javascript:void(0);">Save changes</a> and <a href="<?php echo esc_url(site_url());?>" target="_blank" class="visit_site_link"><span class="dashicons dashicons-migrate" style="color: #2271b1 !important;"></span> visit your website</a> to check how it’d look like</p>
+					<p><span class="dashicons dashicons-info"></span> The elements will be displayed in 1-line on your actual website. <a class="save_change" href="#">Save changes</a> and <a href="<?php echo esc_url(site_url());?>" target="_blank" class="visit_site_link"><span class="dashicons dashicons-migrate" style="color: #2271b1 !important;"></span> visit your website</a> to check how it’d look like</p>
 				</div>
 				<div class="mysticky-welcomebar-full-screen">
 					<button type="button" class="welcomebar-full-screen-btn">
@@ -1544,7 +1544,7 @@ function mysticky_welcome_bar_frontend(){
 		} else if( $welcomebar['mysticky_welcomebar_actionselect'] == 'poptin_popup'){
 			$mysticky_welcomebar_actionselect_url = esc_url( $welcomebar['mysticky_welcomebar_poptin_popup_link'] );
 		} else {
-			$mysticky_welcomebar_actionselect_url = 'javascript:void(0)';
+			$mysticky_welcomebar_actionselect_url = '#';
 		}
 	}
 	
@@ -2579,6 +2579,8 @@ function mysticky_welcome_bar_frontend_styles() {
 }
 add_action('wp_head', 'mysticky_welcome_bar_frontend_styles',99);
 
-function mysticky_welcomebar_slider_text_sort( $a, $b ) {
-	return strlen($b)-strlen($a);
+if( !function_exists( 'mysticky_welcomebar_slider_text_sort' ) ) {
+	function mysticky_welcomebar_slider_text_sort( $a, $b ) {
+		return strlen($b)-strlen($a);
+	}
 }

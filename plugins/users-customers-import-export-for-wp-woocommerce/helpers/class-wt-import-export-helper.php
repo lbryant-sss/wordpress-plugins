@@ -18,11 +18,11 @@ if(!class_exists('Wt_Iew_IE_Basic_Helper'))
 		public static function _get_csv_delimiters()
 		{
 			return array(
-				'comma'=>array('value'=>__('Comma'), 'val'=>","),
-				'semicolon'=>array('value'=>__('Semicolon'), 'val'=>";"),
-				'tab'=>array('value'=>__('Tab'), 'val'=>"\t"),
-				'space'=>array('value'=>__('Space'), 'val'=>" "),
-				'other'=>array('value'=>__('Other'), 'val'=>""),
+				'comma'=>array('value'=>__('Comma', 'users-customers-import-export-for-wp-woocommerce'), 'val'=>","),
+				'semicolon'=>array('value'=>__('Semicolon', 'users-customers-import-export-for-wp-woocommerce'), 'val'=>";"),
+				'tab'=>array('value'=>__('Tab', 'users-customers-import-export-for-wp-woocommerce'), 'val'=>"\t"),
+				'space'=>array('value'=>__('Space', 'users-customers-import-export-for-wp-woocommerce'), 'val'=>" "),
+				'other'=>array('value'=>__('Other', 'users-customers-import-export-for-wp-woocommerce'), 'val'=>""),
 			);
 		}
 		public static function _get_local_file_path($file_url)
@@ -184,12 +184,12 @@ if(!class_exists('Wt_Iew_IE_Basic_Helper'))
 			{
 				$debug_panel_btns=array(
 					'refresh_step'=>array(
-						'title'=>__('Refresh the step'),
+						'title'=>__('Refresh the step', 'users-customers-import-export-for-wp-woocommerce'),
 						'icon'=>'dashicons dashicons-update',
 						'onclick'=>'wt_iew_basic_'.$module_base.'.refresh_step();',
 					),
 					'console_form_data'=>array(
-						'title'=>__('Console form data'),
+						'title'=>__('Console form data', 'users-customers-import-export-for-wp-woocommerce'),
 						'icon'=>'dashicons dashicons-code-standards',
 						'onclick'=>'wt_iew_basic_'.$module_base.'.console_formdata();',
 					),
@@ -200,15 +200,15 @@ if(!class_exists('Wt_Iew_IE_Basic_Helper'))
 			if(defined('WT_IEW_DEBUG_BASIC') && WT_IEW_DEBUG_BASIC && is_array($debug_panel_btns) && count($debug_panel_btns)>0)
 			{
 				?>
-				<div class="wt_iew_debug_panel" title="<?php _e('For debugging process');?>">
-					<div class="wt_iew_debug_panel_hd"><?php _e('Debug panel');?></div>
+				<div class="wt_iew_debug_panel" title="<?php esc_html_e('For debugging process', 'users-customers-import-export-for-wp-woocommerce');?>">
+					<div class="wt_iew_debug_panel_hd"><?php esc_html_e('Debug panel', 'users-customers-import-export-for-wp-woocommerce');?></div>
 					<div class="wt_iew_debug_panel_con">
 						<?php
 						foreach ($debug_panel_btns as $btn) 
 						{
 							?>
-							<a onclick="<?php echo $btn['onclick'];?>" title="<?php echo $btn['title'];?>">
-								<span class="<?php echo $btn['icon'];?>"></span>
+							<a onclick="<?php echo esc_attr($btn['onclick']);?>" title="<?php echo esc_attr($btn['title']);?>">
+								<span class="<?php echo esc_attr($btn['icon']);?>"></span>
 							</a>
 							<?php
 						}

@@ -23,25 +23,28 @@ class Wt_Import_Export_For_Woo_Basic_Logwriter extends Wt_Import_Export_For_Woo_
 	{
 		self::$file_path=$file_path;
 		self::$mode=$mode;
+		// phpcs:disable WordPress.WP.AlternativeFunctions.file_system_operations_fopen
 		self::$file_pointer=@fopen($file_path, $mode);
+		// phpcs:enable WordPress.WP.AlternativeFunctions.file_system_operations_fopen
 	}
 	public static function write_row($text, $is_writing_finished=false)
 	{
-		if(is_null(self::$file_pointer))
-		{
+		if(is_null(self::$file_pointer)) {
 			return;
 		}
+		// phpcs:disable WordPress.WP.AlternativeFunctions.file_system_operations_fwrite
 		@fwrite(self::$file_pointer, $text.PHP_EOL);
-		if($is_writing_finished)
-		{
+		// phpcs:enable WordPress.WP.AlternativeFunctions.file_system_operations_fwrite
+		if($is_writing_finished) {
 			self::close_file_pointer();
 		}
 	}
 	public static function close_file_pointer()
 	{
-		if(self::$file_pointer!=null)
-		{
+		if(self::$file_pointer!=null) {
+			// phpcs:disable WordPress.WP.AlternativeFunctions.file_system_operations_fclose
 			fclose(self::$file_pointer);
+			// phpcs:enable WordPress.WP.AlternativeFunctions.file_system_operations_fclose
 		}
 	}
 	

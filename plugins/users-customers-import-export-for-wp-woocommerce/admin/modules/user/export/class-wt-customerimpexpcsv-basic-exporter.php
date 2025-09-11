@@ -15,25 +15,31 @@ class Wt_Import_Export_For_Woo_Basic_User_Bulk_Export {
 
 		$csv_columns = include_once( __DIR__ . '/../data/data-user-columns.php' );
 
-		$user_columns_name = !empty($_POST['columns_name']) ? $_POST['columns_name'] : $csv_columns;
-		$export_columns = !empty($_POST['columns']) ? $_POST['columns'] : array();
-		$delimiter = !empty($_POST['delimiter']) ? $_POST['delimiter'] : ',';
-
+		// phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce verification already done in the wt_process_user_bulk_actions() method
+		$user_columns_name = !empty($_POST['columns_name']) ? array_map('sanitize_text_field', wp_unslash($_POST['columns_name'])) : $csv_columns;
+		$export_columns = !empty($_POST['columns']) ? array_map('sanitize_text_field', wp_unslash($_POST['columns'])) : array();
+		$delimiter = !empty($_POST['delimiter']) ? sanitize_text_field(wp_unslash($_POST['delimiter'])) : ',';
+		// phpcs:enable WordPress.Security.NonceVerification.Missing
+		
 		$wpdb->hide_errors();
+		// phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged
 		@set_time_limit(0);
 		if (function_exists('apache_setenv'))
 			@apache_setenv('no-gzip', 1);
+		// phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged
 		@ini_set('zlib.output_compression', 0);
 		@ob_end_clean();
 
-		$file_name = apply_filters('wt_iew_product_bulk_export_user_filename', 'user_export_' . date('Y-m-d-h-i-s') . '.csv');
+		$file_name = apply_filters('wt_iew_product_bulk_export_user_filename', 'user_export_' . gmdate('Y-m-d-h-i-s') . '.csv');
 
 		header('Content-Type: text/csv; charset=UTF-8');
 		header('Content-Disposition: attachment; filename=' . $file_name);
 		header('Pragma: no-cache');
 		header('Expires: 0');
 
+		// phpcs:disable WordPress.WP.AlternativeFunctions.file_system_operations_fopen
 		$fp = fopen('php://output', 'w');
+		// phpcs:enable WordPress.WP.AlternativeFunctions.file_system_operations_fopen
 
 		$args = array(
 			'fields' => 'ID'
@@ -58,7 +64,9 @@ class Wt_Import_Export_For_Woo_Basic_User_Bulk_Export {
 		}
 
 		$row = array_map('Wt_Import_Export_For_Woo_Basic_User_Bulk_Export::wrap_column', apply_filters('wt_user_alter_csv_header', $row));
+		// phpcs:disable WordPress.WP.AlternativeFunctions.file_system_operations_fwrite
 		fwrite($fp, implode($delimiter, $row) . "\n");
+		// phpcs:enable WordPress.WP.AlternativeFunctions.file_system_operations_fwrite
 		$header_row = $row;
 		unset($row);
 
@@ -67,14 +75,16 @@ class Wt_Import_Export_For_Woo_Basic_User_Bulk_Export {
 			$data = self::get_customers_csv_row($user, $export_columns, $csv_columns, $header_row);
 			$data = apply_filters('hf_customer_csv_exclude_admin', $data);
 			$row = array_map('Wt_Import_Export_For_Woo_Basic_User_Bulk_Export::wrap_column', $data);
+			// phpcs:disable WordPress.WP.AlternativeFunctions.file_system_operations_fwrite
 			fwrite($fp, implode($delimiter, $row) . "\n");
+			// phpcs:enable WordPress.WP.AlternativeFunctions.file_system_operations_fwrite
 			unset($row);
 			unset($data);
 		}
 
-
-
+		// phpcs:disable WordPress.WP.AlternativeFunctions.file_system_operations_fclose
 		fclose($fp);
+		// phpcs:enable WordPress.WP.AlternativeFunctions.file_system_operations_fclose
 		exit;
 	}
 

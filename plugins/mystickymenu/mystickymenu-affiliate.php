@@ -125,7 +125,7 @@ class MyStickyMenu_affiliate_program {
             }
         </style>
         <div class="notice notice-info premio-affiliate <?php echo esc_attr($this->plugin) ?>-premio-affiliate">
-            <p>Hi there, you've been using My Sticky Bar for a while now. Do you know that <b>My Sticky Bar</b> has an affiliate program? Join now and get <b>25% lifetime commission</b> <a href="javascript:;" class="dismiss-btn"><span class="dashicons dashicons-no-alt"></span> Dismiss</a></p>
+            <p>Hi there, you've been using My Sticky Bar for a while now. Do you know that <b>My Sticky Bar</b> has an affiliate program? Join now and get <b>25% lifetime commission</b> <a href="#" class="dismiss-btn"><span class="dashicons dashicons-no-alt"></span> Dismiss</a></p>
             <div class="clear clearfix"></div>
             <a class="button button-primary affiliate-btn" target="_blank" href="https://premio.io/affiliates/?utm_source=inapp&plugin=mystickymenu&domain=<?php echo esc_attr($_SERVER['HTTP_HOST']); ?>">Tell me more <span class="dashicons dashicons-arrow-right-alt"></span></a>
         </div>
@@ -134,9 +134,9 @@ class MyStickyMenu_affiliate_program {
                 <button class="close-affiliate-popup"><span class="dashicons dashicons-no-alt"></span></button>
                 <div class="affiliate-title">Would you like us to remind you about this later?</div>
                 <div class="affiliate-options">
-                    <a href="javascript:;" data-days="3">Remind me in 3 days</a>
-                    <a href="javascript:;" data-days="10">Remind me in 10 days</a>
-                    <a href="javascript:;" data-days="-1" class="dismiss">Don't remind me about this</a>
+                    <a href="#" data-days="3">Remind me in 3 days</a>
+                    <a href="#" data-days="10">Remind me in 10 days</a>
+                    <a href="#" data-days="-1" class="dismiss">Don't remind me about this</a>
                 </div>
             </div>
         </div>

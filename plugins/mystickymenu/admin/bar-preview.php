@@ -52,7 +52,7 @@ if ( $button_postion_relative_text == 1 ) {
 							$mysticky_welcomebar_btn_text =  isset($welcomebar['mysticky_welcomebar_btn_text']) ? stripslashes($welcomebar['mysticky_welcomebar_btn_text']) : "Got it!";
 						?>
 								
-						<a href="javascript:void(0)"><?php echo stripslashes($mysticky_welcomebar_btn_text);?></a>
+						<a href="#"><?php echo stripslashes($mysticky_welcomebar_btn_text);?></a>
 					</div>
 					<?php 
 						$x_color = (isset($welcomebar['mysticky_welcomebar_x_color'])) ? esc_attr($welcomebar['mysticky_welcomebar_x_color']) : '#000000';
@@ -62,7 +62,7 @@ if ( $button_postion_relative_text == 1 ) {
 			</div>
 		</div>
 		<div class="timer-message" <?php if(isset($welcomebar['mysticky_welcomebar_enable_lead']) && $welcomebar['mysticky_welcomebar_enable_lead'] != 1):?> style="display:none;"<?php endif;?>>
-			<p><span class="dashicons dashicons-info"></span> The elements will be displayed in 1-line on your actual website. <a class="save_change" href="javascript:void(0);">Save changes</a> and <a href="<?php echo esc_url(site_url());?>" target="_blank" class="visit_site_link"><span class="dashicons dashicons-migrate" style="color: #2271b1 !important;"></span> visit your website</a> to check how it’d look like</p>
+			<p><span class="dashicons dashicons-info"></span> The elements will be displayed in 1-line on your actual website. <a class="save_change" href="#">Save changes</a> and <a href="<?php echo esc_url(site_url());?>" target="_blank" class="visit_site_link"><span class="dashicons dashicons-migrate" style="color: #2271b1 !important;"></span> visit your website</a> to check how it’d look like</p>
 		</div>
 		<div class="mysticky-welcomebar-full-screen">
 			<button type="button" class="welcomebar-full-screen-btn">

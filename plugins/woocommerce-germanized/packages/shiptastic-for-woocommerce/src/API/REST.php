@@ -29,6 +29,10 @@ abstract class REST extends \Vendidero\Shiptastic\API\Api {
 			$content_type = $this->get_content_type();
 		}
 
+		if ( is_array( $body_args ) ) {
+			$body_args = $this->encode_body( $body_args );
+		}
+
 		if ( 'application/json' === $content_type ) {
 			return wp_json_encode( $body_args, JSON_PRETTY_PRINT );
 		} elseif ( 'application/x-www-form-urlencoded' === $content_type ) {
@@ -107,6 +111,8 @@ abstract class REST extends \Vendidero\Shiptastic\API\Api {
 				if ( Package::is_debug_mode() ) {
 					Package::log( sprintf( '%s error during REST (%s) call to %s:', $response->get_error_code(), $type, $url ), 'info', $this->get_title() );
 					Package::log( wc_print_r( $response->get_error_messages(), true ), 'info', $this->get_title() );
+					Package::log( 'Body:', 'info', $this->get_title() );
+					Package::log( wc_print_r( $body_args, true ), 'info', $this->get_title() );
 				}
 
 				return new Response( 500, array(), array(), $response );
@@ -133,6 +139,8 @@ abstract class REST extends \Vendidero\Shiptastic\API\Api {
 				if ( $response->is_error() && Package::is_debug_mode() ) {
 					Package::log( sprintf( '%s error during REST (%s) call to %s:', $response->get_code(), $type, $url ), 'info', $this->get_title() );
 					Package::log( wc_print_r( $response->get_error()->get_error_messages(), true ), 'info', $this->get_title() );
+					Package::log( 'Body:', 'info', $this->get_title() );
+					Package::log( wc_print_r( $body_args, true ), 'info', $this->get_title() );
 				}
 
 				return $response;
@@ -243,5 +251,31 @@ abstract class REST extends \Vendidero\Shiptastic\API\Api {
 
 	protected function decode( $str ) {
 		return function_exists( 'mb_convert_encoding' ) ? mb_convert_encoding( $str, 'UTF-8', mb_detect_encoding( $str ) ) : $str;
+	}
+
+	/**
+	 * @param string $str
+	 *
+	 * @return string
+	 */
+	protected function encode( $str ) {
+		return wc_shiptastic_decode_html( $str );
+	}
+
+	/**
+	 * Encode body args by converting html entities (e.g. &amp;) to utf-8.
+	 *
+	 * @param array|string $body_args
+	 *
+	 * @return array|string
+	 */
+	protected function encode_body( $body_args ) {
+		if ( is_array( $body_args ) ) {
+			return array_map( array( $this, 'encode_body' ), $body_args );
+		} elseif ( is_scalar( $body_args ) ) {
+			return $this->encode( $body_args );
+		} else {
+			return $body_args;
+		}
 	}
 }

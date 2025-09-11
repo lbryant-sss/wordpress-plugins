@@ -358,10 +358,18 @@ class WC_GZD_Order_Helper {
 
 			$fee_props->name      = $item->get_name();
 			$fee_props->tax_class = $item->get_tax_class();
-			$fee_props->taxable   = 'taxable' === $item->get_tax_status();
+			$fee_props->taxable   = ( 'taxable' === $item->get_tax_status() && '0' !== $item->get_tax_class() );
 			$fee_props->amount    = $item->get_amount();
 			$fee_props->id        = $item->get_meta( '_voucher_id' ) ? sanitize_title( $item->get_meta( '_voucher_id' ) ) : sanitize_title( $fee_props->name );
 			$fee_props->object    = $fee_props;
+
+			/**
+			 * Older voucher fees may be missing the _voucher_id meta.
+			 * Make sure that our voucher helper is able to detect the fee as a voucher.
+			 */
+			if ( 'yes' === $item->get_meta( '_is_voucher' ) ) {
+				$fee_props->id = 'voucher_' . $item->get_meta( '_code' );
+			}
 
 			if ( ! apply_filters( 'woocommerce_gzd_force_fee_tax_calculation', true, $fee_props ) ) {
 				return;
@@ -766,6 +774,7 @@ class WC_GZD_Order_Helper {
 		array_push( $metas, '_deposit_quantity' );
 		array_push( $metas, '_deposit_amount_per_unit' );
 		array_push( $metas, '_deposit_net_amount_per_unit' );
+		array_push( $metas, '_deposit_tax_status' );
 		array_push( $metas, '_deposit_packaging_type' );
 
 		return $metas;
@@ -810,6 +819,7 @@ class WC_GZD_Order_Helper {
 					$gzd_item->set_deposit_net_amount( $gzd_product->get_deposit_amount( 'view', 'excl' ) );
 
 					$gzd_item->set_deposit_packaging_type( $gzd_product->get_deposit_packaging_type() );
+					$gzd_item->set_deposit_tax_status( $gzd_product->get_deposit_tax_status() );
 				}
 
 				/**

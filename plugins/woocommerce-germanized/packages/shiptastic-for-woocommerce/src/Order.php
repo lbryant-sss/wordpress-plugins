@@ -9,6 +9,7 @@ use Vendidero\Shiptastic\Packing\ItemList;
 use Vendidero\Shiptastic\Packing\OrderItem;
 use Vendidero\Shiptastic\ShippingMethod\MethodHelper;
 use Vendidero\Shiptastic\ShippingMethod\ProviderMethod;
+use Vendidero\Shiptastic\Utilities\NumberUtil;
 use WC_DateTime;
 use DateTimeZone;
 use WC_Order;
@@ -125,7 +126,7 @@ class Order {
 		$last_shipment = false;
 
 		foreach ( array_reverse( $this->get_simple_shipments( true ) ) as $shipment ) {
-			if ( $shipment->has_tracking() ) {
+			if ( $shipment->has_tracking() && ! $shipment->has_status( 'delivered' ) ) {
 				$last_shipment = $shipment;
 				break;
 			}
@@ -326,30 +327,84 @@ class Order {
 		return apply_filters( 'woocommerce_shiptastic_order_item_product', $s_product, $order_item );
 	}
 
-	public function get_available_items_for_packing() {
-		return apply_filters( 'woocommerce_shiptastic_shipment_order_available_items_for_packing', $this->get_available_items_for_shipment(), $this );
+	public function get_available_items_for_packing( $shipping_method_id = '' ) {
+		return apply_filters( 'woocommerce_shiptastic_shipment_order_available_items_for_packing', $this->get_available_items_for_shipment( array( 'shipping_method_id' => $shipping_method_id ) ), $this );
 	}
 
-	protected function get_package_data() {
-		if ( is_null( $this->package_data ) ) {
-			$items        = $this->get_available_items_for_packing();
-			$package_data = array(
-				'total'                        => 0.0,
-				'subtotal'                     => 0.0,
-				'weight'                       => 0.0,
-				'volume'                       => 0.0,
-				'products'                     => array(),
-				'shipping_classes'             => array(),
-				'has_missing_shipping_classes' => false,
-				'item_count'                   => 0,
-				'items'                        => new ItemList(),
+	public function get_available_return_items_for_packing( $shipping_method_id = '' ) {
+		return apply_filters( 'woocommerce_shiptastic_shipment_order_available_return_items_for_packing', $this->get_available_items_for_return( array( 'shipping_method_id' => $shipping_method_id ) ), $this );
+	}
+
+	protected function get_return_packages( $items_requested = array() ) {
+		$return_package_data = array();
+		$method_ids          = array();
+
+		if ( $this->has_multiple_packages() ) {
+			foreach ( $this->get_order()->get_shipping_methods() as $method ) {
+				if ( $this->shipping_method_is_separate_package( $method ) ) {
+					$method_ids[] = $method->get_id();
+				}
+			}
+		}
+
+		$method_ids[] = '';
+		$all_items    = $this->get_available_items_for_return(
+			array(
+				'shipping_method_id' => '',
+				'items_requested'    => $items_requested,
+			)
+		);
+
+		foreach ( $method_ids as $method_id ) {
+			$items = '' === $method_id ? $all_items : $this->get_available_items_for_return(
+				array(
+					'shipping_method_id' => $method_id,
+					'items_requested'    => $items_requested,
+				)
 			);
 
-			foreach ( $items as $order_item_id => $item ) {
-				if ( ! $order_item = $this->get_order()->get_item( $order_item_id ) ) {
-					continue;
-				}
+			if ( empty( $items ) ) {
+				continue;
+			}
 
+			$package_data = $this->get_package_data( $items );
+
+			foreach ( $package_data['item_map'] as $order_item_id => $quantity ) {
+				if ( ! empty( $method_id ) && array_key_exists( $order_item_id, $all_items ) ) {
+					$all_items[ $order_item_id ]['max_quantity'] -= $quantity;
+
+					if ( $all_items[ $order_item_id ]['max_quantity'] <= 0 ) {
+						unset( $all_items[ $order_item_id ] );
+					}
+				}
+			}
+
+			$return_package_data[ $method_id ] = $package_data;
+		}
+
+		return apply_filters( 'woocommerce_shiptastic_shipment_order_return_package_data', $return_package_data, $this );
+	}
+
+	protected function get_package_data( $items ) {
+		$package_data = array(
+			'total'                        => 0.0,
+			'subtotal'                     => 0.0,
+			'weight'                       => 0.0,
+			'volume'                       => 0.0,
+			'products'                     => array(),
+			'shipping_classes'             => array(),
+			'item_map'                     => array(),
+			'has_missing_shipping_classes' => false,
+			'item_count'                   => 0,
+			'items'                        => Package::is_packing_supported() ? new ItemList() : array(),
+		);
+
+		foreach ( $items as $order_item_id => $item ) {
+			if ( ! $order_item = $this->get_order()->get_item( $order_item_id ) ) {
+				continue;
+			}
+
+			try {
 				$line_total    = (float) $order_item->get_total();
 				$line_subtotal = (float) $order_item->get_subtotal();
 
@@ -384,14 +439,350 @@ class Order {
 				$package_data['subtotal']   += $line_subtotal;
 				$package_data['item_count'] += $quantity;
 
-				$box_item = new Packing\OrderItem( $order_item );
-				$package_data['items']->insert( $box_item, $quantity );
+				$package_data['item_map'][ $order_item_id ] = $quantity;
+
+				if ( Package::is_packing_supported() ) {
+					$box_item = new Packing\OrderItem( $order_item );
+					$package_data['items']->insert( $box_item, $quantity );
+				}
+			} catch ( \Exception $e ) {
+				continue;
+			}
+		}
+
+		return $package_data;
+	}
+
+	protected function get_packages() {
+		if ( is_null( $this->package_data ) || ! isset( $this->package_data[''] ) ) {
+			if ( ! is_array( $this->package_data ) ) {
+				$this->package_data = array();
 			}
 
-			$this->package_data = $package_data;
+			$method_ids = array();
+
+			if ( $this->has_multiple_packages() ) {
+				foreach ( $this->get_order()->get_shipping_methods() as $method ) {
+					if ( $this->shipping_method_is_separate_package( $method ) ) {
+						$method_ids[] = $method->get_id();
+					}
+				}
+			}
+
+			$method_ids[] = '';
+			$all_items    = $this->get_available_items_for_packing( '' );
+
+			foreach ( $method_ids as $method_id ) {
+				$items = '' === $method_id ? $all_items : $this->get_available_items_for_packing( $method_id );
+
+				if ( empty( $items ) ) {
+					continue;
+				}
+
+				$package_data = $this->get_package_data( $items );
+
+				foreach ( $package_data['item_map'] as $order_item_id => $quantity ) {
+					if ( ! empty( $method_id ) && array_key_exists( $order_item_id, $all_items ) ) {
+						$all_items[ $order_item_id ]['max_quantity'] -= $quantity;
+
+						if ( $all_items[ $order_item_id ]['max_quantity'] <= 0 ) {
+							unset( $all_items[ $order_item_id ] );
+						}
+					}
+				}
+
+				$this->package_data[ $method_id ] = $package_data;
+			}
 		}
 
 		return apply_filters( 'woocommerce_shiptastic_shipment_order_package_data', $this->package_data, $this );
+	}
+
+	/**
+	 * @param $items
+	 *
+	 * @return float|\WP_Error
+	 */
+	public function get_return_costs( $items, $tax_display = '', $round = true ) {
+		$returns     = $this->create_returns_as_draft( $items );
+		$tax_display = $tax_display ? $tax_display : get_option( 'woocommerce_tax_display_cart' );
+		$costs       = 0.0;
+
+		if ( is_wp_error( $returns ) ) {
+			return $returns;
+		} else {
+			foreach ( $returns as $return_shipment ) {
+				$costs += $return_shipment->get_return_costs();
+			}
+
+			$tax_rates = $this->get_return_costs_tax_rates();
+
+			if ( ! empty( $tax_rates ) && wc_tax_enabled() ) {
+				$incl_tax = $this->return_costs_include_taxes();
+
+				if ( 'excl' === $tax_display && $incl_tax ) {
+					$taxes     = \WC_Tax::calc_tax( $costs, $tax_rates, $incl_tax );
+					$tax_total = array_sum( $taxes );
+					$costs     = NumberUtil::round( $costs - $tax_total, wc_get_rounding_precision() );
+				} elseif ( 'incl' === $tax_display && ! $incl_tax ) {
+					$taxes     = \WC_Tax::calc_tax( $costs, $tax_rates, $incl_tax );
+					$tax_total = array_sum( $taxes );
+					$costs     = NumberUtil::round( $costs + $tax_total, wc_get_rounding_precision() );
+				}
+			}
+		}
+
+		$costs = apply_filters( 'woocommerce_shiptastic_shipment_order_return_costs', $costs, $items, $this );
+
+		if ( $round ) {
+			$costs = NumberUtil::round_to_precision( $costs, wc_get_price_decimals() );
+		}
+
+		return $costs;
+	}
+
+	public function return_costs_include_taxes() {
+		return apply_filters( 'woocommerce_shiptastic_shipment_order_return_costs_include_taxes', $this->get_order()->get_prices_include_tax(), $this );
+	}
+
+	public function get_return_costs_tax_rates() {
+		$taxes                = $this->get_order()->get_taxes();
+		$main_tax_rate        = array();
+		$main_tax_rate_amount = null;
+		$tax_rates            = array();
+
+		/**
+		 * By default, use the highest total tax amount to determine
+		 * the tax rate for the fee to be added.
+		 */
+		foreach ( $taxes as $tax_id => $tax_item ) {
+			if ( is_null( $main_tax_rate_amount ) ) {
+				$main_tax_rate_amount = $tax_item->get_tax_total();
+			}
+
+			if ( $tax_item->get_tax_total() >= $main_tax_rate_amount ) {
+				$main_tax_rate = array(
+					'rate_id'   => $tax_item->get_rate_id(),
+					'rate'      => $tax_item->get_rate_percent(),
+					'compound'  => wc_bool_to_string( $tax_item->get_compound() ),
+					'tax_class' => $tax_item->get_tax_class(),
+				);
+
+				if ( $tax_rate = \WC_Tax::_get_tax_rate( $tax_item->get_rate_id() ) ) {
+					$main_tax_rate['tax_class'] = $tax_rate['tax_rate_class'];
+
+					if ( empty( $main_tax_rate['rate'] ) ) {
+						$main_tax_rate['rate'] = $tax_rate['tax_rate'];
+					}
+				}
+			}
+		}
+
+		if ( ! empty( $main_tax_rate ) && wc_tax_enabled() ) {
+			$tax_rates = array( $main_tax_rate );
+		}
+
+		return apply_filters( 'woocommerce_shiptastic_shipment_order_return_costs_tax_rates', $tax_rates, $this );
+	}
+
+	/**
+	 * Creates draft returns based on items requested.
+	 *
+	 * @param array $return_items
+	 * @param $props
+	 *
+	 * @return ReturnShipment[]|\WP_Error
+	 */
+	protected function create_returns_as_draft( $original_items, $props = array() ) {
+		$shipments_created = array();
+		$errors            = new \WP_Error();
+		$return_items      = array();
+
+		foreach ( $original_items as $order_item_id => $item ) {
+			if ( is_array( $item ) ) {
+				$item = wp_parse_args(
+					$item,
+					array(
+						'quantity'           => 1,
+						'return_reason_code' => '',
+					)
+				);
+			} else {
+				$item = array(
+					'quantity'           => absint( $item ),
+					'return_reason_code' => '',
+				);
+			}
+
+			$return_items[ $order_item_id ] = $item;
+		}
+
+		$props = wp_parse_args(
+			$props,
+			array(
+				'is_customer_requested' => false,
+				'default_status'        => 'processing',
+			)
+		);
+
+		if ( $this->needs_return() ) {
+			$packages = $this->get_return_packages( $return_items );
+
+			if ( empty( $packages ) ) {
+				$errors->add( 'return_items_missing', _x( 'Please choose one or more items from the list.', 'shipments', 'woocommerce-germanized' ) );
+			}
+
+			if ( wc_stc_shipment_wp_error_has_errors( $errors ) ) {
+				return $errors;
+			}
+
+			foreach ( $packages as $method_id => $package ) {
+				$packaging_boxes       = array();
+				$has_created_shipments = false;
+
+				foreach ( $this->get_simple_shipments( true ) as $shipment ) {
+					if ( ! empty( $method_id ) && $shipment->get_shipping_method() !== $this->get_shipping_method_id( $method_id ) ) {
+						continue;
+					}
+
+					if ( $packaging = $shipment->get_packaging() ) {
+						$packaging_boxes[ $shipment->get_packaging_id() ] = $packaging;
+					}
+				}
+
+				if ( empty( $packaging_boxes ) && ( $method = $this->get_builtin_shipping_method( $method_id ) ) ) {
+					$packaging_boxes = $method->get_method()->get_available_packaging_boxes( $package );
+				}
+
+				if ( empty( $packaging_boxes ) ) {
+					$packaging_boxes = wc_stc_get_packaging_list();
+
+					if ( $provider = $this->get_shipping_provider( $method_id ) ) {
+						$packaging_boxes = wc_stc_get_packaging_list( array( 'shipping_provider' => $provider->get_name() ) );
+					}
+				}
+
+				if ( $this->has_auto_packing( $method_id ) ) {
+					$packed_boxes = Helper::pack( $package['items'], $packaging_boxes, 'order' );
+
+					if ( 0 !== count( $packed_boxes ) ) {
+						foreach ( $packed_boxes as $box ) {
+							$packaging      = $box->getBox();
+							$items          = $box->getItems();
+							$shipment_items = array();
+
+							foreach ( $items as $item ) {
+								$order_item = $item->getItem();
+
+								if ( ! isset( $shipment_items[ $order_item->get_id() ] ) ) {
+									$shipment_items[ $order_item->get_id() ] = array(
+										'quantity' => 1,
+										'return_reason_code' => isset( $return_items[ $order_item->get_id() ] ) ? $return_items[ $order_item->get_id() ]['return_reason_code'] : '',
+									);
+								} else {
+									++$shipment_items[ $order_item->get_id() ]['quantity'];
+								}
+							}
+
+							$shipment = wc_stc_create_return_shipment(
+								$this,
+								array(
+									'items' => $shipment_items,
+									'props' => array_replace_recursive(
+										$props,
+										array(
+											'packaging_id' => $packaging->get_id(),
+											'shipping_method' => $this->get_shipping_method_id( $method_id ),
+										)
+									),
+									'save'  => false,
+								)
+							);
+
+							if ( ! is_wp_error( $shipment ) ) {
+								$shipments_created[]   = $shipment;
+								$has_created_shipments = true;
+							} else {
+								$shipments_created = array();
+
+								foreach ( $shipment->get_error_messages() as $code => $message ) {
+									$errors->add( $code, $message );
+								}
+							}
+						}
+					}
+				}
+
+				if ( wc_stc_shipment_wp_error_has_errors( $errors ) ) {
+					return $errors;
+				}
+
+				if ( ! $has_created_shipments ) {
+					$shipment_items = array();
+
+					foreach ( $package['item_map'] as $order_item_id => $quantity ) {
+						$shipment_items[ $order_item_id ] = array(
+							'quantity'           => $quantity,
+							'return_reason_code' => isset( $return_items[ $order_item_id ] ) ? $return_items[ $order_item_id ]['return_reason_code'] : '',
+						);
+					}
+
+					$shipment = wc_stc_create_return_shipment(
+						$this,
+						array(
+							'props' => array_replace_recursive(
+								$props,
+								array(
+									'shipping_method' => $this->get_shipping_method_id( $method_id ),
+								)
+							),
+							'items' => $shipment_items,
+							'save'  => false,
+						)
+					);
+
+					if ( ! is_wp_error( $shipment ) ) {
+						$has_created_shipments = true;
+						$shipments_created[]   = $shipment;
+					} else {
+						foreach ( $shipment->get_error_messages() as $code => $message ) {
+							$errors->add( $code, $message );
+						}
+					}
+				}
+			}
+		}
+
+		if ( wc_stc_shipment_wp_error_has_errors( $errors ) ) {
+			return $errors;
+		} else {
+			return $shipments_created;
+		}
+	}
+
+	/**
+	 * @param $items
+	 * @param $props
+	 *
+	 * @return ReturnShipment[]|\WP_Error
+	 */
+	public function create_returns( $items, $props = array() ) {
+		$map     = $this->create_returns_as_draft( $items, $props );
+		$returns = array();
+
+		if ( is_wp_error( $map ) ) {
+			return $map;
+		} else {
+			foreach ( $map as $return_shipment ) {
+				$return_shipment->save();
+
+				$this->add_shipment( $return_shipment );
+
+				$returns[ $return_shipment->get_id() ] = $return_shipment;
+			}
+		}
+
+		return $returns;
 	}
 
 	/**
@@ -406,24 +797,100 @@ class Order {
 		$errors            = new \WP_Error();
 
 		if ( $this->needs_shipping() ) {
-			if ( $this->has_auto_packing() ) {
-				if ( $method = $this->get_builtin_shipping_method() ) {
-					$packaging_boxes = $method->get_method()->get_available_packaging_boxes( $this->get_package_data() );
-				} else {
-					$available_packaging = wc_stc_get_packaging_list();
+			foreach ( $this->get_packages() as $method_id => $package ) {
+				if ( $this->has_auto_packing( $method_id ) ) {
+					if ( $method = $this->get_builtin_shipping_method( $method_id ) ) {
+						$packaging_boxes = $method->get_method()->get_available_packaging_boxes( $package );
+					} else {
+						$available_packaging = wc_stc_get_packaging_list();
 
-					if ( $provider = $this->get_shipping_provider() ) {
-						$available_packaging = wc_stc_get_packaging_list( array( 'shipping_provider' => $provider->get_name() ) );
+						if ( $provider = $this->get_shipping_provider( $method_id ) ) {
+							$available_packaging = wc_stc_get_packaging_list( array( 'shipping_provider' => $provider->get_name() ) );
+						}
+
+						$packaging_boxes = Helper::get_packaging_boxes( $available_packaging );
 					}
 
-					$packaging_boxes = Helper::get_packaging_boxes( $available_packaging );
-				}
+					$items        = $package['items'];
+					$packed_boxes = Helper::pack( $items, $packaging_boxes, 'order' );
 
-				$items        = $this->get_items_to_pack_left_for_shipping();
-				$packed_boxes = Helper::pack( $items, $packaging_boxes, 'order' );
+					if ( empty( $packaging_boxes ) && 0 === count( $packed_boxes ) ) {
+						$shipment = wc_stc_create_shipment(
+							$this,
+							array(
+								'items' => $package['item_map'],
+								'props' => array(
+									'status'          => $default_status,
+									'shipping_method' => $this->get_shipping_method_id( $method_id ),
+								),
+							)
+						);
 
-				if ( empty( $packaging_boxes ) && 0 === count( $packed_boxes ) ) {
-					$shipment = wc_stc_create_shipment( $this, array( 'props' => array( 'status' => $default_status ) ) );
+						if ( ! is_wp_error( $shipment ) ) {
+							$this->add_shipment( $shipment );
+							$shipments_created[ $shipment->get_id() ] = $shipment;
+						} else {
+							foreach ( $shipment->get_error_messages() as $code => $message ) {
+								$errors->add( $code, $message );
+							}
+						}
+					} elseif ( 0 === count( $packed_boxes ) ) {
+						$errors->add( 404, sprintf( _x( 'Seems like none of your <a href="%1$s">packaging options</a> is available for this order.', 'shipments', 'woocommerce-germanized' ), Settings::get_settings_url( 'packaging' ) ) );
+					} else {
+						foreach ( $packed_boxes as $box ) {
+							$packaging      = $box->getBox();
+							$items          = $box->getItems();
+							$shipment_items = array();
+
+							foreach ( $items as $item ) {
+								$order_item = $item->getItem();
+
+								if ( ! isset( $shipment_items[ $order_item->get_id() ] ) ) {
+									$shipment_items[ $order_item->get_id() ] = 1;
+								} else {
+									++$shipment_items[ $order_item->get_id() ];
+								}
+							}
+
+							$shipment = wc_stc_create_shipment(
+								$this,
+								array(
+									'items' => $shipment_items,
+									'props' => array(
+										'packaging_id'    => $packaging->get_id(),
+										'status'          => $default_status,
+										'shipping_method' => $this->get_shipping_method_id( $method_id ),
+									),
+								)
+							);
+
+							if ( ! is_wp_error( $shipment ) ) {
+								$this->add_shipment( $shipment );
+
+								$shipments_created[ $shipment->get_id() ] = $shipment;
+							} else {
+								foreach ( $shipments_created as $id => $shipment_created ) {
+									$shipment_created->delete( true );
+									$this->remove_shipment( $id );
+								}
+
+								foreach ( $shipment->get_error_messages() as $code => $message ) {
+									$errors->add( $code, $message );
+								}
+							}
+						}
+					}
+				} else {
+					$shipment = wc_stc_create_shipment(
+						$this,
+						array(
+							'items' => $package['item_map'],
+							'props' => array(
+								'status'          => $default_status,
+								'shipping_method' => $this->get_shipping_method_id( $method_id ),
+							),
+						)
+					);
 
 					if ( ! is_wp_error( $shipment ) ) {
 						$this->add_shipment( $shipment );
@@ -432,61 +899,6 @@ class Order {
 						foreach ( $shipment->get_error_messages() as $code => $message ) {
 							$errors->add( $code, $message );
 						}
-					}
-				} elseif ( 0 === count( $packed_boxes ) ) {
-					$errors->add( 404, sprintf( _x( 'Seems like none of your <a href="%1$s">packaging options</a> is available for this order.', 'shipments', 'woocommerce-germanized' ), Settings::get_settings_url( 'packaging' ) ) );
-				} else {
-					foreach ( $packed_boxes as $box ) {
-						$packaging      = $box->getBox();
-						$items          = $box->getItems();
-						$shipment_items = array();
-
-						foreach ( $items as $item ) {
-							$order_item = $item->getItem();
-
-							if ( ! isset( $shipment_items[ $order_item->get_id() ] ) ) {
-								$shipment_items[ $order_item->get_id() ] = 1;
-							} else {
-								++$shipment_items[ $order_item->get_id() ];
-							}
-						}
-
-						$shipment = wc_stc_create_shipment(
-							$this,
-							array(
-								'items' => $shipment_items,
-								'props' => array(
-									'packaging_id' => $packaging->get_id(),
-									'status'       => $default_status,
-								),
-							)
-						);
-
-						if ( ! is_wp_error( $shipment ) ) {
-							$this->add_shipment( $shipment );
-
-							$shipments_created[ $shipment->get_id() ] = $shipment;
-						} else {
-							foreach ( $shipments_created as $id => $shipment_created ) {
-								$shipment_created->delete( true );
-								$this->remove_shipment( $id );
-							}
-
-							foreach ( $shipment->get_error_messages() as $code => $message ) {
-								$errors->add( $code, $message );
-							}
-						}
-					}
-				}
-			} else {
-				$shipment = wc_stc_create_shipment( $this, array( 'props' => array( 'status' => $default_status ) ) );
-
-				if ( ! is_wp_error( $shipment ) ) {
-					$this->add_shipment( $shipment );
-					$shipments_created[ $shipment->get_id() ] = $shipment;
-				} else {
-					foreach ( $shipment->get_error_messages() as $code => $message ) {
-						$errors->add( $code, $message );
 					}
 				}
 			}
@@ -846,8 +1258,7 @@ class Order {
 
 	public function add_shipment( &$shipment ) {
 		$this->package_data = null;
-
-		$shipments = $this->get_shipments();
+		$shipments          = $this->get_shipments();
 
 		$this->shipments[] = $shipment;
 	}
@@ -895,6 +1306,7 @@ class Order {
 				'sent_only'                => false,
 				'shipment_id'              => 0,
 				'exclude_current_shipment' => false,
+				'shipping_method_id'       => '',
 			)
 		);
 
@@ -904,6 +1316,11 @@ class Order {
 
 		if ( $order_item ) {
 			$quantity_left = $this->get_shippable_item_quantity( $order_item );
+
+			if ( ! empty( $args['shipping_method_id'] ) && $this->shipping_method_is_separate_package( $args['shipping_method_id'] ) ) {
+				$quantity      = $this->get_shipping_method_item_quantity( $args['shipping_method_id'], $order_item );
+				$quantity_left = min( $quantity_left, $quantity );
+			}
 
 			foreach ( $this->get_shipments() as $shipment ) {
 				if ( $args['sent_only'] && ! $shipment->is_shipped() ) {
@@ -985,6 +1402,8 @@ class Order {
 				'delivered_only'           => false,
 				'shipment_id'              => 0,
 				'exclude_current_shipment' => false,
+				'shipping_method_id'       => '',
+				'items_requested'          => array(),
 			)
 		);
 
@@ -992,6 +1411,36 @@ class Order {
 
 		if ( $this->order_item_is_non_returnable( $order_item_id ) ) {
 			$quantity_left = 0;
+		}
+
+		if ( ! empty( $args['shipping_method_id'] ) && $this->shipping_method_is_separate_package( $args['shipping_method_id'] ) ) {
+			if ( $order_item = $this->get_order()->get_item( $order_item_id, false ) ) {
+				$quantity      = $this->get_shipping_method_item_quantity( $args['shipping_method_id'], $order_item );
+				$quantity_left = min( $quantity_left, $quantity );
+			}
+		}
+
+		if ( ! empty( $args['items_requested'] ) ) {
+			if ( array_key_exists( $order_item_id, $args['items_requested'] ) ) {
+				$item_data = $args['items_requested'][ $order_item_id ];
+
+				if ( is_numeric( $item_data ) ) {
+					$item_data = array(
+						'quantity' => absint( $item_data ),
+					);
+				} else {
+					$item_data = wp_parse_args(
+						$item_data,
+						array(
+							'quantity' => 1,
+						)
+					);
+				}
+
+				$quantity_left = min( $quantity_left, $item_data['quantity'] );
+			} else {
+				$quantity_left = 0;
+			}
 		}
 
 		foreach ( $this->get_return_shipments() as $shipment ) {
@@ -1030,13 +1479,71 @@ class Order {
 	 * @return ItemList|OrderItem[]
 	 */
 	public function get_items_to_pack_left_for_shipping( $legacy_group_by_product_group = null ) {
-		$items_to_be_packed = $this->get_package_data()['items'];
+		$items_to_be_packed = $this->get_packages()['']['items'];
 
-		return apply_filters( 'woocommerce_shiptastic_shipment_order_items_to_pack_left_for_shipping', $items_to_be_packed );
+		return $items_to_be_packed;
 	}
 
 	public function get_selectable_items_for_shipment( $args = array() ) {
 		return apply_filters( 'woocommerce_shiptastic_shipment_order_selectable_items_for_shipment', $this->get_available_items_for_shipment( $args ), $args, $this );
+	}
+
+	protected function shipping_method_is_separate_package( $shipping_method_id ) {
+		$items = $this->get_shipping_method_items( $shipping_method_id );
+
+		return apply_filters( 'woocommerce_shiptastic_order_shipping_method_is_separate_package', ! empty( $items ), $this, $shipping_method_id );
+	}
+
+	protected function has_multiple_packages() {
+		$methods      = $this->get_order()->get_shipping_methods();
+		$has_packages = false;
+
+		if ( count( $methods ) > 1 ) {
+			foreach ( $this->get_order()->get_shipping_methods() as $method ) {
+				if ( $this->shipping_method_is_separate_package( $method->get_id() ) ) {
+					$has_packages = true;
+					break;
+				}
+			}
+		}
+
+		return apply_filters( 'woocommerce_shiptastic_order_has_multiple_packages', $has_packages, $this );
+	}
+
+	protected function get_shipping_method_items( $shipping_method_id ) {
+		$map = array();
+
+		if ( $method = $this->get_shipping_method_by_id( $shipping_method_id ) ) {
+			$map = array_filter( (array) $method->get_meta( '_packaged_items' ) );
+		}
+
+		return apply_filters( 'woocommerce_shiptastic_order_shipping_method_items', $map, $shipping_method_id, $this );
+	}
+
+	/**
+	 * @param $shipping_method_id
+	 * @param \WC_Order_Item $order_item
+	 *
+	 * @return integer
+	 */
+	protected function get_shipping_method_item_quantity( $shipping_method_id, $order_item ) {
+		$method_items = $this->get_shipping_method_items( $shipping_method_id );
+
+		if ( ! empty( $method_items ) ) {
+			if ( is_callable( array( $order_item, 'get_product_id' ) ) ) {
+				$product_id = $order_item->get_product_id();
+
+				if ( is_callable( array( $order_item, 'get_variation_id' ) ) ) {
+					$product_id = $order_item->get_variation_id() ? $order_item->get_variation_id() : $product_id;
+				}
+
+				if ( array_key_exists( $product_id, $method_items ) ) {
+					return absint( $method_items[ $product_id ] );
+				}
+			}
+		}
+
+		return 0;
 	}
 
 	/**
@@ -1052,6 +1559,7 @@ class Order {
 				'shipment_id'              => 0,
 				'sent_only'                => false,
 				'exclude_current_shipment' => false,
+				'shipping_method_id'       => '',
 			)
 		);
 
@@ -1137,6 +1645,8 @@ class Order {
 				'delivered_only'           => false,
 				'exclude_current_shipment' => false,
 				'exclude_children'         => true,
+				'shipping_method_id'       => '',
+				'items_requested'          => array(),
 			)
 		);
 
@@ -1426,43 +1936,49 @@ class Order {
 			if ( ! is_callable( array( $item, 'get_product' ) ) ) {
 				continue;
 			}
-			if ( $product = $item->get_product() ) {
-				$s_product = apply_filters( 'woocommerce_shiptastic_shipment_order_item_product', wc_shiptastic_get_product( $product ), $item );
-				if ( $s_product ) {
-					$width      = empty( $s_product->get_shipping_width() ) ? 0 : (float) wc_format_decimal( $s_product->get_shipping_width() );
-					$length     = empty( $s_product->get_shipping_length() ) ? 0 : (float) wc_format_decimal( $s_product->get_shipping_length() );
-					$height     = empty( $s_product->get_shipping_height() ) ? 0 : (float) wc_format_decimal( $s_product->get_shipping_height() );
-					$dimensions = array(
-						'width'  => (float) wc_get_dimension( $width, wc_stc_get_packaging_dimension_unit() ),
-						'length' => (float) wc_get_dimension( $length, wc_stc_get_packaging_dimension_unit() ),
-						'height' => (float) wc_get_dimension( $height, wc_stc_get_packaging_dimension_unit() ),
-					);
-					if ( $dimensions['width'] > $args['max_dimensions']['width'] ) {
-						$args['max_dimensions']['width'] = $dimensions['width'];
-					}
-					if ( $dimensions['length'] > $args['max_dimensions']['length'] ) {
-						$args['max_dimensions']['length'] = $dimensions['length'];
-					}
-					if ( $dimensions['height'] > $args['max_dimensions']['height'] ) {
-						$args['max_dimensions']['height'] = $dimensions['height'];
-					}
-					$weight = empty( $product->get_weight() ) ? 0 : (float) wc_format_decimal( $product->get_weight() );
-					$weight = (float) wc_get_weight( $weight, wc_stc_get_packaging_weight_unit() );
-					if ( $weight > $args['max_weight'] ) {
-						$args['max_weight'] = $weight;
-					}
+
+			if ( $product = $this->get_order_item_product( $item ) ) {
+				$width      = empty( $product->get_shipping_width() ) ? 0 : (float) wc_format_decimal( $product->get_shipping_width() );
+				$length     = empty( $product->get_shipping_length() ) ? 0 : (float) wc_format_decimal( $product->get_shipping_length() );
+				$height     = empty( $product->get_shipping_height() ) ? 0 : (float) wc_format_decimal( $product->get_shipping_height() );
+				$dimensions = array(
+					'width'  => (float) wc_get_dimension( $width, wc_stc_get_packaging_dimension_unit() ),
+					'length' => (float) wc_get_dimension( $length, wc_stc_get_packaging_dimension_unit() ),
+					'height' => (float) wc_get_dimension( $height, wc_stc_get_packaging_dimension_unit() ),
+				);
+
+				if ( $dimensions['width'] > $args['max_dimensions']['width'] ) {
+					$args['max_dimensions']['width'] = $dimensions['width'];
+				}
+
+				if ( $dimensions['length'] > $args['max_dimensions']['length'] ) {
+					$args['max_dimensions']['length'] = $dimensions['length'];
+				}
+
+				if ( $dimensions['height'] > $args['max_dimensions']['height'] ) {
+					$args['max_dimensions']['height'] = $dimensions['height'];
+				}
+
+				$weight = empty( $product->get_weight() ) ? 0 : (float) wc_format_decimal( $product->get_weight() );
+				$weight = (float) wc_get_weight( $weight, wc_stc_get_packaging_weight_unit() );
+
+				if ( $weight > $args['max_weight'] ) {
+					$args['max_weight'] = $weight;
 				}
 			}
 		}
+
 		return $args;
 	}
 
 	public function supports_pickup_location() {
 		$supports_pickup_location = false;
 
-		if ( $provider = $this->get_shipping_provider() ) {
-			if ( is_a( $provider, 'Vendidero\Shiptastic\Interfaces\ShippingProviderAuto' ) ) {
-				$supports_pickup_location = $provider->supports_pickup_location_delivery( $this->get_order()->get_address( 'shipping' ), $this->get_pickup_delivery_args() );
+		if ( ! $this->has_multiple_packages() ) {
+			if ( $provider = $this->get_shipping_provider() ) {
+				if ( is_a( $provider, 'Vendidero\Shiptastic\Interfaces\ShippingProviderAuto' ) ) {
+					$supports_pickup_location = $provider->supports_pickup_location_delivery( $this->get_order()->get_address( 'shipping' ), $this->get_pickup_delivery_args() );
+				}
 			}
 		}
 
@@ -1476,18 +1992,79 @@ class Order {
 	/**
 	 * @return ProviderMethod|false
 	 */
-	public function get_shipping_method() {
-		$shipping_method_id = wc_stc_get_shipment_order_shipping_method_id( $this->get_order() );
-		$method             = MethodHelper::get_provider_method( $shipping_method_id );
+	public function get_shipping_method( $method_id = '' ) {
+		$shipping_method = false;
+		$method          = false;
+
+		foreach ( $this->get_order()->get_shipping_methods() as $order_shipping_method ) {
+			if ( empty( $method_id ) ) {
+				$shipping_method = $order_shipping_method;
+				break;
+			} elseif ( $method_id === $order_shipping_method->get_id() ) {
+				$shipping_method = $order_shipping_method;
+				break;
+			}
+		}
+
+		if ( $shipping_method && is_a( $shipping_method, 'WC_Order_Item_Shipping' ) ) {
+			$shipping_method_id = $shipping_method->get_method_id() . ':' . $shipping_method->get_instance_id();
+			$method             = MethodHelper::get_provider_method( $shipping_method_id );
+		}
 
 		return $method;
+	}
+
+	public function get_shipping_method_id( $method_id = '' ) {
+		$id = '';
+
+		if ( $method = $this->get_shipping_method_by_id( $method_id ) ) {
+			$id = $method->get_method_id() . ':' . $method->get_instance_id();
+		}
+
+		return $id;
+	}
+
+	/**
+	 * Finds the corresponding shipping method based on id.
+	 * The id can be empty (use first shipping method), an order item id or the method_id + instance_id.
+	 *
+	 * @param string $method_id
+	 *
+	 * @return false|\WC_Order_Item_Shipping
+	 */
+	public function get_shipping_method_by_id( $method_id = '' ) {
+		$item = false;
+
+		if ( is_a( $method_id, 'WC_Order_Item_Shipping' ) ) {
+			$item = $method_id;
+		} elseif ( empty( $method_id ) ) {
+			foreach ( $this->get_order()->get_shipping_methods() as $method ) {
+				if ( empty( $method_id ) ) {
+					$item = $method;
+					break;
+				}
+			}
+		} elseif ( is_numeric( $method_id ) ) {
+				$item = $this->get_order()->get_item( $method_id, false );
+		} else {
+			foreach ( $this->get_order()->get_shipping_methods() as $method ) {
+				$the_method_id = $method->get_method_id() . ':' . $method->get_instance_id();
+
+				if ( $the_method_id === $method_id ) {
+					$item = $method;
+					break;
+				}
+			}
+		}
+
+		return is_a( $item, 'WC_Order_Item_Shipping' ) ? $item : false;
 	}
 
 	/**
 	 * @return bool|Interfaces\ShippingProvider
 	 */
-	public function get_shipping_provider() {
-		return wc_stc_get_order_shipping_provider( $this->order );
+	public function get_shipping_provider( $method_id = '' ) {
+		return wc_stc_get_order_shipping_provider( $this->order, $method_id );
 	}
 
 	public function has_pickup_location() {
@@ -1543,18 +2120,16 @@ class Order {
 	}
 
 	/**
+	 * @param string shipping method id
+	 *
 	 * @return ProviderMethod|false
 	 */
-	public function get_builtin_shipping_method() {
+	public function get_builtin_shipping_method( $method_id = '' ) {
 		$method = false;
 
 		if ( Package::is_packing_supported() ) {
-			$shipping_method_id = wc_stc_get_shipment_order_shipping_method_id( $this->get_order() );
-
-			if ( 'shipping_provider_' === substr( $shipping_method_id, 0, 18 ) ) {
-				$the_method = $this->get_shipping_method();
-
-				if ( $the_method && $the_method->is_builtin_method() ) {
+			if ( $the_method = $this->get_shipping_method( $method_id ) ) {
+				if ( $the_method->is_builtin_method() ) {
 					return $the_method;
 				}
 			}
@@ -1563,14 +2138,14 @@ class Order {
 		return $method;
 	}
 
-	public function has_auto_packing() {
+	public function has_auto_packing( $method_id = '' ) {
 		$has_auto_packing = false;
 
 		if ( Package::is_packing_supported() ) {
 			$has_auto_packing = Helper::enable_auto_packing();
 
 			if ( ! $has_auto_packing ) {
-				if ( self::get_builtin_shipping_method() ) {
+				if ( $this->get_builtin_shipping_method( $method_id ) ) {
 					$has_auto_packing = true;
 				}
 			}

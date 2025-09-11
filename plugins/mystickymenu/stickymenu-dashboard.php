@@ -75,7 +75,7 @@
 								
 							<div class="tooltip">
 								<span class="tooltiptext"><?php esc_html_e('Delete','mystickymenu');?></span>
-								<a href="javascript:void(0);" class="mystickymenu-delete-widget" id="delete-widget-0" data-widget-id="0"><img src="<?php echo esc_url(MYSTICKYMENU_URL); ?>/images/delete-icon.svg" /></a>
+								<a href="#" class="mystickymenu-delete-widget" id="delete-widget-0" data-widget-id="0"><img src="<?php echo esc_url(MYSTICKYMENU_URL); ?>/images/delete-icon.svg" /></a>
 							</div>
 							
 							
@@ -217,7 +217,7 @@
 							<?php if(isset($mysticky_options['stickymenu_enable']) && $mysticky_options['stickymenu_enable'] == 1):
 							?>
 							<a href="<?php echo esc_url(admin_url("admin.php?page=my-stickymenu-settings"));?>" id="btn-config-settings" style="color:#6559f6;border-color:#c7c2fb;"><?php esc_html_e("Settings","mystickymenu"); ?></a>
-							<a href="javascript:void(0);" id="btn-config-disable" style="color:#d3465c;border-color:#efbcc4;"><?php esc_html_e("Disable","mystickymenu"); ?></a>
+							<a href="#" id="btn-config-disable" style="color:#d3465c;border-color:#efbcc4;"><?php esc_html_e("Disable","mystickymenu"); ?></a>
 							<?php else : ?>
 							<a href="<?php echo esc_url(admin_url("admin.php?page=my-stickymenu-settings"));?>"><?php esc_html_e("Configure","mystickymenu"); ?></a>
 							<?php endif; ?>

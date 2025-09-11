@@ -683,17 +683,17 @@
         },
         {
             "name": "vendidero/shiptastic-for-woocommerce",
-            "version": "4.6.0",
-            "version_normalized": "4.6.0.0",
+            "version": "4.7.0",
+            "version_normalized": "4.7.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vendidero/shiptastic-for-woocommerce.git",
-                "reference": "5cd0939f7a02a34ab490834d2a842d9ef08aa5ba"
+                "reference": "62d857bc4dd041087850e3cd76d2e3dc9a02349d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vendidero/shiptastic-for-woocommerce/zipball/5cd0939f7a02a34ab490834d2a842d9ef08aa5ba",
-                "reference": "5cd0939f7a02a34ab490834d2a842d9ef08aa5ba",
+                "url": "https://api.github.com/repos/vendidero/shiptastic-for-woocommerce/zipball/62d857bc4dd041087850e3cd76d2e3dc9a02349d",
+                "reference": "62d857bc4dd041087850e3cd76d2e3dc9a02349d",
                 "shasum": ""
             },
             "require": {
@@ -707,7 +707,7 @@
                 "woocommerce/woocommerce-sniffs": "^1.0.0",
                 "yoast/phpunit-polyfills": "^3.0"
             },
-            "time": "2025-08-12T08:33:12+00:00",
+            "time": "2025-09-09T11:03:52+00:00",
             "type": "wordpress-plugin",
             "installation-source": "dist",
             "autoload": {
@@ -738,23 +738,23 @@
             "description": "Shiptastic for WooCommerce",
             "homepage": "https://vendidero.de",
             "support": {
-                "source": "https://github.com/vendidero/shiptastic-for-woocommerce/tree/v4.6.0"
+                "source": "https://github.com/vendidero/shiptastic-for-woocommerce/tree/v4.7.0"
             },
             "install-path": "../../packages/shiptastic-for-woocommerce"
         },
         {
             "name": "vendidero/shiptastic-integration-for-dhl",
-            "version": "4.1.2",
-            "version_normalized": "4.1.2.0",
+            "version": "4.1.3",
+            "version_normalized": "4.1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vendidero/shiptastic-integration-for-dhl.git",
-                "reference": "4dc59951bee5502071f9d3b5e5dbed1c139917ec"
+                "reference": "9a381b484b9059b9be136ca2c4e1700a7e56e849"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vendidero/shiptastic-integration-for-dhl/zipball/4dc59951bee5502071f9d3b5e5dbed1c139917ec",
-                "reference": "4dc59951bee5502071f9d3b5e5dbed1c139917ec",
+                "url": "https://api.github.com/repos/vendidero/shiptastic-integration-for-dhl/zipball/9a381b484b9059b9be136ca2c4e1700a7e56e849",
+                "reference": "9a381b484b9059b9be136ca2c4e1700a7e56e849",
                 "shasum": ""
             },
             "require": {
@@ -765,7 +765,7 @@
             "require-dev": {
                 "woocommerce/woocommerce-sniffs": "^1.0.0"
             },
-            "time": "2025-08-01T09:38:56+00:00",
+            "time": "2025-09-08T08:37:44+00:00",
             "type": "wordpress-plugin",
             "installation-source": "dist",
             "autoload": {
@@ -798,23 +798,23 @@
             "description": "DHL & Deutsche Post integration for Shiptastic",
             "homepage": "https://github.com/vendidero/shiptastic-integration-for-dhl",
             "support": {
-                "source": "https://github.com/vendidero/shiptastic-integration-for-dhl/tree/v4.1.2"
+                "source": "https://github.com/vendidero/shiptastic-integration-for-dhl/tree/v4.1.3"
             },
             "install-path": "../../packages/shiptastic-integration-for-dhl"
         },
         {
             "name": "vendidero/woocommerce-eu-tax-helper",
-            "version": "2.0.7",
-            "version_normalized": "2.0.7.0",
+            "version": "2.0.8",
+            "version_normalized": "2.0.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vendidero/woocommerce-eu-tax-helper.git",
-                "reference": "a6861d57e49ed01a85a2020b84042305d17766e4"
+                "reference": "95158ef45418a35fe9ca56b408abc9f3ba17edea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vendidero/woocommerce-eu-tax-helper/zipball/a6861d57e49ed01a85a2020b84042305d17766e4",
-                "reference": "a6861d57e49ed01a85a2020b84042305d17766e4",
+                "url": "https://api.github.com/repos/vendidero/woocommerce-eu-tax-helper/zipball/95158ef45418a35fe9ca56b408abc9f3ba17edea",
+                "reference": "95158ef45418a35fe9ca56b408abc9f3ba17edea",
                 "shasum": ""
             },
             "require": {
@@ -825,7 +825,7 @@
                 "myclabs/deep-copy": "^1.7.0",
                 "woocommerce/woocommerce-sniffs": "^1.0.0"
             },
-            "time": "2025-02-07T10:21:15+00:00",
+            "time": "2025-08-25T08:51:35+00:00",
             "type": "wordpress-plugin",
             "installation-source": "dist",
             "autoload": {
@@ -853,7 +853,7 @@
             "description": "EU tax helper for WooCommerce",
             "homepage": "https://vendidero.de/",
             "support": {
-                "source": "https://github.com/vendidero/woocommerce-eu-tax-helper/tree/v2.0.7",
+                "source": "https://github.com/vendidero/woocommerce-eu-tax-helper/tree/v2.0.8",
                 "issues": "https://github.com/vendidero/woocommerce-eu-tax-helper/issues"
             },
             "install-path": "../../packages/woocommerce-eu-tax-helper"

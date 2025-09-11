@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Give - Donation Plugin plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Give - Donation Plugin 4.7.1\n"
+"Project-Id-Version: Give - Donation Plugin 4.8.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/givewp\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-09-04T15:02:45+00:00\n"
+"POT-Creation-Date: 2025-09-10T13:32:52+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: give\n"
@@ -108,6 +108,7 @@ msgstr ""
 #: includes/admin/class-give-html-elements.php:385
 #: includes/api/class-give-api.php:1002
 #: includes/class-give-cli-commands.php:470
+#: build/donationDetails.js:10
 msgid "No donors found."
 msgstr ""
 
@@ -455,7 +456,7 @@ msgstr ""
 #: includes/admin/admin-actions.php:663
 #: src/DonationForms/V2/DonationFormsAdminPage.php:285
 #: src/Donors/DonorsAdminPage.php:77
-#: src/Subscriptions/SubscriptionsAdminPage.php:111
+#: src/Subscriptions/SubscriptionsAdminPage.php:65
 msgid "Switch to New View"
 msgstr ""
 
@@ -488,6 +489,7 @@ msgstr ""
 #: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:324
 #: templates/history-donations.php:70
 #: templates/shortcode-receipt.php:47
+#: build/donationDetails.js:10
 #: build/donorEntity.js:1
 msgid "Donor"
 msgstr ""
@@ -826,7 +828,7 @@ msgstr ""
 
 #: includes/admin/class-give-html-elements.php:305
 #: build/campaignBlock.js:1
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 #: build/campaignBlocksLandingPage.js:1
 #: build/campaignDonateButtonBlock.js:1
 #: build/campaignFormBlock.js:1
@@ -861,7 +863,7 @@ msgstr ""
 #: includes/admin/forms/class-metabox-form-data.php:422
 #: includes/admin/payments/view-payment-details.php:486
 #: includes/forms/widget.php:262
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "None"
 msgstr ""
 
@@ -925,10 +927,21 @@ msgstr ""
 #: build/assets/dist/js/give-admin-donation-forms.js:4
 #: build/assets/dist/js/give-admin-donations.js:4
 #: build/assets/dist/js/give-admin-donors.js:4
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/assets/dist/js/give-admin-event-tickets.js:4
 #: build/assets/dist/js/give-admin-subscriptions.js:4
+#: build/assets/dist/js/give-log-list-table-app.js:4
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
+#: build/assets/dist/js/orphaned-forms-list-table.js:4
+#: build/campaignBlocks.js:4
 #: build/campaignDetails.js:10
+#: build/campaignGridApp.js:4
+#: build/campaignGridBlock.js:4
 #: build/campaignListTable.js:4
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/elementorCampaignGridWidget.js:4
+#: build/subscriptionDetails.js:10
 msgid "Search"
 msgstr ""
 
@@ -944,7 +957,7 @@ msgstr ""
 #: src/Exports/resources/views/export-donors-table-row.php:23
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:147
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:247
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/formBuilderApp.js:13
 msgid "Start Date"
 msgstr ""
@@ -961,7 +974,7 @@ msgstr ""
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveMultiFormGoalWidget.php:158
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:159
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:250
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/formBuilderApp.js:13
 msgid "End Date"
 msgstr ""
@@ -976,7 +989,7 @@ msgstr ""
 #: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:147
 #: build/assets/dist/js/donor-dashboards-app.js:1
 #: build/campaignBlocksLandingPage.js:1
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Form"
 msgstr ""
 
@@ -986,10 +999,21 @@ msgstr ""
 #: build/assets/dist/js/give-admin-donation-forms.js:4
 #: build/assets/dist/js/give-admin-donations.js:4
 #: build/assets/dist/js/give-admin-donors.js:4
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/assets/dist/js/give-admin-event-tickets.js:4
 #: build/assets/dist/js/give-admin-subscriptions.js:4
+#: build/assets/dist/js/give-log-list-table-app.js:4
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
+#: build/assets/dist/js/orphaned-forms-list-table.js:4
+#: build/campaignBlocks.js:4
 #: build/campaignDetails.js:10
+#: build/campaignGridApp.js:4
+#: build/campaignGridBlock.js:4
 #: build/campaignListTable.js:4
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/elementorCampaignGridWidget.js:4
+#: build/subscriptionDetails.js:10
 msgid "Apply"
 msgstr ""
 
@@ -1013,8 +1037,8 @@ msgstr ""
 #: src/Campaigns/ListTable/Columns/TitleColumn.php:28
 #: src/DonationForms/V2/ListTable/Columns/TitleColumn.php:38
 #: src/Exports/DonorsExport.php:181
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
-#: build/donorDetails.js:7
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
+#: build/donorDetails.js:10
 msgid "Name"
 msgstr ""
 
@@ -1027,9 +1051,9 @@ msgstr ""
 #: includes/admin/tools/export/export-functions.php:154
 #: src/Exports/DonorsExport.php:182
 #: templates/shortcode-register.php:39
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
 #: build/formBuilderApp.js:13
 #: build/formBuilderRegistrars.js:1
 msgid "Email"
@@ -1057,6 +1081,7 @@ msgstr ""
 #: src/Donors/ListTable/Columns/DonationCountColumn.php:37
 #: build/assets/dist/js/donor-dashboards-app.js:1
 #: build/assets/dist/js/give-admin-donations.js:4
+#: build/subscriptionDetails.js:10
 msgid "Donations"
 msgstr ""
 
@@ -1076,7 +1101,7 @@ msgstr ""
 #: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignGridWidget/ElementorCampaignGridWidget.php:173
 #: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:164
 #: build/adminBlocks.js:1
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 msgid "Date Created"
 msgstr ""
 
@@ -1104,12 +1129,13 @@ msgstr ""
 #: build/assets/dist/js/give-admin-donation-forms.js:4
 #: build/assets/dist/js/give-admin-donations.js:4
 #: build/assets/dist/js/give-admin-donors.js:4
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/assets/dist/js/give-admin-event-tickets.js:4
 #: build/assets/dist/js/give-admin-subscriptions.js:4
 #: build/campaignDetails.js:10
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "Delete"
 msgstr ""
 
@@ -1139,17 +1165,23 @@ msgstr ""
 #: build/assets/dist/js/give-admin-donation-forms.js:4
 #: build/assets/dist/js/give-admin-donations.js:4
 #: build/assets/dist/js/give-admin-donors.js:4
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/assets/dist/js/give-admin-event-tickets.js:4
 #: build/assets/dist/js/give-admin-subscriptions.js:4
-#: build/assets/dist/js/give-log-list-table-app.js:1
-#: build/assets/dist/js/give-migrations-list-table-app.js:1
-#: build/assets/dist/js/orphaned-forms-list-table.js:1
+#: build/assets/dist/js/give-log-list-table-app.js:4
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
+#: build/assets/dist/js/orphaned-forms-list-table.js:4
+#: build/campaignBlocks.js:4
 #: build/campaignDetails.js:10
+#: build/campaignGridApp.js:4
+#: build/campaignGridBlock.js:4
 #: build/campaignListTable.js:4
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 #: build/donationFormRegistrars.js:1
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
+#: build/elementorCampaignGridWidget.js:4
 #: build/formBuilderApp.js:13
+#: build/subscriptionDetails.js:10
 msgid "Cancel"
 msgstr ""
 
@@ -1344,7 +1376,7 @@ msgstr ""
 
 #: includes/admin/donors/donor-functions.php:77
 #: includes/admin/donors/donors.php:1190
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Delete Donor"
 msgstr ""
 
@@ -1355,13 +1387,14 @@ msgstr ""
 #: build/assets/dist/js/give-admin-donation-forms.js:4
 #: build/assets/dist/js/give-admin-donations.js:4
 #: build/assets/dist/js/give-admin-donors.js:4
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/assets/dist/js/give-admin-event-tickets.js:4
 #: build/assets/dist/js/give-admin-subscriptions.js:4
 #: build/campaignDetails.js:10
 #: build/campaignListTable.js:4
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "Edit"
 msgstr ""
 
@@ -1500,8 +1533,8 @@ msgstr ""
 
 #: includes/admin/donors/donors.php:674
 #: includes/admin/payments/view-payment-details.php:806
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
 msgid "Select a country"
 msgstr ""
 
@@ -1537,8 +1570,9 @@ msgstr ""
 
 #: includes/admin/donors/donors.php:773
 #: build/assets/dist/js/admin.js:1
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "Save"
 msgstr ""
 
@@ -1555,11 +1589,22 @@ msgstr ""
 #: build/assets/dist/js/give-admin-donations.js:1
 #: build/assets/dist/js/give-admin-donors.js:1
 #: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/assets/dist/js/give-admin-event-tickets.js:1
 #: build/assets/dist/js/give-admin-subscriptions.js:1
+#: build/assets/dist/js/give-log-list-table-app.js:1
 #: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
+#: build/assets/dist/js/orphaned-forms-list-table.js:1
+#: build/campaignBlocks.js:1
 #: build/campaignDetails.js:7
+#: build/campaignGridApp.js:1
+#: build/campaignGridBlock.js:1
 #: build/campaignListTable.js:1
+#: build/donationDetails.js:7
+#: build/donorDetails.js:7
+#: build/elementorCampaignGridWidget.js:1
+#: build/subscriptionDetails.js:7
 msgid "Actions"
 msgstr ""
 
@@ -1580,7 +1625,7 @@ msgstr ""
 #: src/Receipt/DonationReceipt.php:78
 #: templates/email-login-form.php:108
 #: templates/shortcode-profile-editor.php:118
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Email Address"
 msgstr ""
 
@@ -1614,7 +1659,7 @@ msgstr ""
 #: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:111
 #: templates/history-donations.php:68
 #: build/assets/dist/js/donor-dashboards-app.js:1
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 msgid "ID"
 msgstr ""
 
@@ -1628,7 +1673,8 @@ msgstr ""
 #: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:147
 #: templates/history-donations.php:71
 #: build/assets/dist/js/donor-dashboards-app.js:1
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "Amount"
 msgstr ""
 
@@ -1640,8 +1686,10 @@ msgstr ""
 #: includes/admin/tools/export/class-export-earnings.php:68
 #: includes/admin/tools/export/class-export.php:82
 #: src/API/Endpoints/Reports/IncomeBreakdown.php:82
-#: src/API/REST/V3/Routes/Donations/DonationController.php:940
-#: src/API/REST/V3/Routes/Donations/DonationController.php:961
+#: src/API/REST/V3/Routes/Donations/DonationController.php:1024
+#: src/API/REST/V3/Routes/Donations/DonationController.php:1056
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:125
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:157
 #: src/Campaigns/ListTable/Columns/DateColumn.php:28
 #: src/DonationForms/V2/ListTable/Columns/DateCreatedColumn.php:37
 #: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:123
@@ -1650,6 +1698,7 @@ msgstr ""
 #: templates/history-donations.php:69
 #: templates/shortcode-receipt.php:69
 #: build/assets/dist/js/donor-dashboards-app.js:1
+#: build/subscriptionDetails.js:10
 msgid "Date"
 msgstr ""
 
@@ -1658,7 +1707,7 @@ msgstr ""
 #: includes/admin/payments/class-payments-table.php:417
 #: src/Campaigns/ListTable/Columns/StatusColumn.php:26
 #: src/DonationForms/V2/ListTable/Columns/StatusColumn.php:36
-#: src/Donations/ListTable/Columns/StatusColumn.php:36
+#: src/Donations/ListTable/Columns/StatusColumn.php:37
 #: src/Subscriptions/ListTable/Columns/StatusColumn.php:36
 #: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:159
 #: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:193
@@ -1666,9 +1715,9 @@ msgstr ""
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:238
 #: templates/history-donations.php:72
 #: build/assets/dist/js/donor-dashboards-app.js:1
-#: build/assets/dist/js/give-log-list-table-app.js:1
-#: build/assets/dist/js/give-migrations-list-table-app.js:1
-#: build/donationDetails.js:7
+#: build/assets/dist/js/give-log-list-table-app.js:4
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
+#: build/donationDetails.js:10
 msgid "Status"
 msgstr ""
 
@@ -1717,7 +1766,7 @@ msgid "No donor notes found."
 msgstr ""
 
 #: includes/admin/donors/donors.php:1153
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Are you sure you want to delete this donor?"
 msgstr ""
 
@@ -2634,14 +2683,14 @@ msgstr ""
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:238
 #: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:167
 #: build/adminBlocks.js:1
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 #: build/formBuilderRegistrars.js:1
 msgid "Number of Donations"
 msgstr ""
 
 #: includes/admin/forms/class-metabox-form-data.php:476
 #: src/FormBuilder/ViewModels/FormBuilderViewModel.php:177
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 msgid "Number of Donors"
 msgstr ""
 
@@ -2948,7 +2997,7 @@ msgstr ""
 #: includes/admin/import-functions.php:411
 #: includes/admin/tools/export/give-export-donations-exporter.php:175
 #: includes/admin/tools/export/give-export-donations-functions.php:257
-#: src/API/REST/V3/Routes/Donations/DonationController.php:809
+#: src/API/REST/V3/Routes/Donations/DonationController.php:837
 #: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:359
 #: templates/shortcode-receipt.php:100
 msgid "Donation ID"
@@ -2981,7 +3030,7 @@ msgid "Donation Total"
 msgstr ""
 
 #: includes/admin/import-functions.php:416
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Total"
 msgstr ""
 
@@ -3080,7 +3129,7 @@ msgstr ""
 
 #: includes/admin/import-functions.php:452
 #: build/assets/dist/js/donor-dashboards-app.js:1
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 #: build/formBuilderRegistrars.js:1
 msgid "Company"
 msgstr ""
@@ -3089,8 +3138,8 @@ msgstr ""
 #: includes/admin/tools/export/give-export-donations-exporter.php:196
 #: includes/forms/template.php:1283
 #: build/assets/dist/js/donor-dashboards-app.js:1
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
 #: build/formBuilderRegistrars.js:1
 msgid "Address 1"
 msgstr ""
@@ -3099,7 +3148,7 @@ msgstr ""
 #: includes/admin/tools/export/class-batch-export-donors.php:187
 #: includes/admin/tools/export/export-functions.php:155
 #: src/Exports/DonorsExport.php:189
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Address"
 msgstr ""
 
@@ -3109,8 +3158,8 @@ msgstr ""
 #: includes/forms/template.php:1306
 #: src/Exports/DonorsExport.php:190
 #: build/assets/dist/js/donor-dashboards-app.js:1
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
 #: build/formBuilderRegistrars.js:1
 msgid "Address 2"
 msgstr ""
@@ -3125,8 +3174,8 @@ msgstr ""
 #: src/FormMigration/Concerns/Blocks/BlockFactory.php:92
 #: src/Framework/FieldsAPI/BillingAddress.php:66
 #: build/assets/dist/js/donor-dashboards-app.js:1
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
 #: build/formBuilderRegistrars.js:1
 msgid "City"
 msgstr ""
@@ -3142,9 +3191,9 @@ msgstr ""
 #: includes/forms/template.php:1349
 #: src/Exports/DonorsExport.php:192
 #: build/assets/dist/js/donor-dashboards-app.js:1
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 #: build/donationFormRegistrars.js:1
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "State"
 msgstr ""
 
@@ -3184,8 +3233,8 @@ msgstr ""
 #: src/Framework/FieldsAPI/BillingAddress.php:54
 #: build/assets/dist/js/admin-onboarding-wizard.js:1
 #: build/assets/dist/js/donor-dashboards-app.js:1
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
 #: build/formBuilderRegistrars.js:1
 msgid "Country"
 msgstr ""
@@ -3253,11 +3302,14 @@ msgstr ""
 #: includes/admin/reports/class-gateways-reports-table.php:143
 #: includes/admin/settings/class-settings-gateways.php:489
 #: src/Donations/ListTable/Columns/GatewayColumn.php:37
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "Gateway"
 msgstr ""
 
 #: includes/admin/import-functions.php:490
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:93
+#: build/subscriptionDetails.js:10
 msgid "Transaction ID"
 msgstr ""
 
@@ -3299,8 +3351,9 @@ msgstr ""
 #: includes/admin/import-functions.php:522
 #: includes/admin/tools/export/give-export-donations-exporter.php:249
 #: includes/admin/tools/export/give-export-donations-functions.php:504
-#: src/API/REST/V3/Routes/Donations/DonationController.php:813
-#: src/API/REST/V3/Routes/Donors/DonorController.php:343
+#: src/API/REST/V3/Routes/Donations/DonationController.php:844
+#: src/API/REST/V3/Routes/Donors/DonorController.php:354
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:28
 #: build/adminBlocks.js:1
 msgid "Donor ID"
 msgstr ""
@@ -3325,7 +3378,7 @@ msgstr ""
 #: src/DonationForms/Properties/FormSettings.php:306
 #: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormWidget/ElementorDonationFormWidget.php:115
 #: build/adminBlocks.js:1
-#: build/assets/dist/js/orphaned-forms-list-table.js:1
+#: build/assets/dist/js/orphaned-forms-list-table.js:4
 #: build/campaignBlocks.js:1
 #: build/donationFormBlock.js:1
 #: build/donationFormBlockApp.js:1
@@ -3357,6 +3410,7 @@ msgstr ""
 
 #: includes/admin/import-functions.php:557
 #: includes/admin/tools/export/give-export-donations-exporter.php:228
+#: src/API/REST/V3/Routes/Donations/DonationController.php:958
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:144
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:240
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:119
@@ -3432,7 +3486,8 @@ msgstr ""
 #: src/Donations/ValueObjects/DonationStatus.php:63
 #: src/Onboarding/Setup/templates/index.html.php:61
 #: src/Onboarding/Setup/templates/index.html.php:94
-#: src/Subscriptions/ValueObjects/SubscriptionStatus.php:64
+#: src/Subscriptions/ValueObjects/SubscriptionStatus.php:67
+#: build/subscriptionDetails.js:10
 msgid "Completed"
 msgstr ""
 
@@ -3444,9 +3499,9 @@ msgstr ""
 #: src/Donations/ValueObjects/DonationStatus.php:61
 #: src/MigrationLog/MigrationLogStatus.php:38
 #: src/MigrationLog/MigrationLogStatus.php:41
-#: src/Subscriptions/ValueObjects/SubscriptionStatus.php:61
+#: src/Subscriptions/ValueObjects/SubscriptionStatus.php:64
 #: build/assets/dist/js/give-admin-donation-forms.js:4
-#: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
 #: build/campaignDetails.js:10
 msgid "Pending"
 msgstr ""
@@ -3463,7 +3518,7 @@ msgstr ""
 #: includes/post-types.php:345
 #: src/API/Endpoints/Reports/PaymentStatuses.php:95
 #: src/Donations/ValueObjects/DonationStatus.php:64
-#: src/Subscriptions/ValueObjects/SubscriptionStatus.php:65
+#: src/Subscriptions/ValueObjects/SubscriptionStatus.php:68
 #: build/assets/dist/js/admin-reports.js:1
 msgid "Refunded"
 msgstr ""
@@ -3483,7 +3538,7 @@ msgstr ""
 #: src/Campaigns/ListTable/Columns/StatusColumn.php:56
 #: src/Donations/ValueObjects/DonationStatus.php:65
 #: src/MigrationLog/MigrationLogStatus.php:37
-#: src/Subscriptions/ValueObjects/SubscriptionStatus.php:66
+#: src/Subscriptions/ValueObjects/SubscriptionStatus.php:69
 #: src/Views/Form/Templates/Classic/resources/views/receipt.php:38
 msgid "Failed"
 msgstr ""
@@ -3493,7 +3548,7 @@ msgstr ""
 #: includes/post-types.php:378
 #: src/API/Endpoints/Reports/PaymentStatuses.php:105
 #: src/Donations/ValueObjects/DonationStatus.php:66
-#: src/Subscriptions/ValueObjects/SubscriptionStatus.php:67
+#: src/Subscriptions/ValueObjects/SubscriptionStatus.php:70
 #: build/assets/dist/js/admin-reports.js:1
 msgid "Cancelled"
 msgstr ""
@@ -3503,7 +3558,7 @@ msgstr ""
 #: includes/post-types.php:389
 #: src/API/Endpoints/Reports/PaymentStatuses.php:100
 #: src/Donations/ValueObjects/DonationStatus.php:67
-#: src/Subscriptions/ValueObjects/SubscriptionStatus.php:68
+#: src/Subscriptions/ValueObjects/SubscriptionStatus.php:71
 #: build/assets/dist/js/admin-reports.js:1
 msgid "Abandoned"
 msgstr ""
@@ -3538,20 +3593,20 @@ msgstr[1] ""
 #: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignWidget/ElementorCampaignWidget.php:120
 #: build/assets/dist/js/donor-dashboards-app.js:1
 #: build/campaignBlock.js:1
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 #: build/campaignBlocksLandingPage.js:1
 #: build/campaignDonateButtonBlock.js:1
 #: build/campaignEntity.js:1
 #: build/campaignFormBlock.js:1
 #: build/campaignGoalBlock.js:1
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Campaign"
 msgstr ""
 
 #: includes/admin/payments/class-payments-table.php:423
 #: templates/history-donations.php:74
-#: build/assets/dist/js/give-log-list-table-app.js:1
-#: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/give-log-list-table-app.js:4
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
 msgid "Details"
 msgstr ""
 
@@ -3588,7 +3643,7 @@ msgstr ""
 
 #: includes/admin/payments/class-payments-table.php:618
 #: includes/admin/payments/view-payment-details.php:273
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Resend Receipt"
 msgstr ""
 
@@ -3715,7 +3770,7 @@ msgstr ""
 #: src/PaymentGateways/Gateways/TestGateway/TestGateway.php:75
 #: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:366
 #: build/assets/dist/js/donor-dashboards-app.js:1
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Test Donation"
 msgstr ""
 
@@ -3808,7 +3863,7 @@ msgstr ""
 
 #: includes/admin/payments/view-payment-details.php:472
 #: includes/ajax-functions.php:635
-#: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
 msgid "n/a"
 msgstr ""
 
@@ -3824,7 +3879,7 @@ msgstr ""
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:131
 #: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:137
 #: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:309
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Yes"
 msgstr ""
 
@@ -3836,7 +3891,7 @@ msgstr ""
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:135
 #: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:138
 #: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:310
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "No"
 msgstr ""
 
@@ -3917,7 +3972,7 @@ msgid "Donor Comment"
 msgstr ""
 
 #: includes/admin/payments/view-payment-details.php:970
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Add a comment"
 msgstr ""
 
@@ -4468,7 +4523,7 @@ msgstr ""
 #: includes/post-types.php:58
 #: src/DonationForms/V2/DonationFormsAdminPage.php:69
 #: build/assets/dist/js/give-admin-donation-forms.js:4
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/campaignDetails.js:10
 msgid "Donation Forms"
 msgstr ""
@@ -4825,7 +4880,7 @@ msgstr ""
 
 #: includes/admin/settings/class-settings-general.php:32
 #: includes/admin/settings/class-settings-general.php:568
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 #: build/formBuilderApp.js:13
 msgid "General"
 msgstr ""
@@ -5228,6 +5283,7 @@ msgstr ""
 #: includes/class-give-scripts.php:306
 #: build/formBuilderApp.js:13
 #: build/formBuilderRegistrars.js:1
+#: build/subscriptionDetails.js:10
 msgid "Close"
 msgstr ""
 
@@ -5359,7 +5415,7 @@ msgstr ""
 #: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:185
 #: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:180
 #: build/adminBlocks.js:1
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 msgid "Ascending"
 msgstr ""
 
@@ -5371,7 +5427,7 @@ msgstr ""
 #: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:184
 #: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:179
 #: build/adminBlocks.js:1
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 msgid "Descending"
 msgstr ""
 
@@ -6037,8 +6093,8 @@ msgid "System Info"
 msgstr ""
 
 #: includes/admin/tools/data/class-give-tools-delete-donations.php:156
-#: src/API/REST/V3/Routes/Donations/DonationController.php:717
-#: src/API/REST/V3/Routes/Donations/DonationController.php:733
+#: src/API/REST/V3/Routes/Donations/DonationController.php:744
+#: src/API/REST/V3/Routes/Donations/DonationController.php:760
 msgid "You do not have permission to delete donations."
 msgstr ""
 
@@ -6233,6 +6289,7 @@ msgid "Currency Symbol"
 msgstr ""
 
 #: includes/admin/tools/export/give-export-donations-exporter.php:234
+#: src/API/REST/V3/Routes/Donations/DonationController.php:972
 msgid "Level ID"
 msgstr ""
 
@@ -6348,7 +6405,7 @@ msgid "Table View"
 msgstr ""
 
 #: includes/admin/tools/export/pdf-reports.php:101
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 msgid "Price"
 msgstr ""
 
@@ -6813,10 +6870,12 @@ msgid "Select Form"
 msgstr ""
 
 #: includes/admin/tools/views/html-admin-page-data.php:73
+#: build/subscriptionDetails.js:10
 msgid "Start date"
 msgstr ""
 
 #: includes/admin/tools/views/html-admin-page-data.php:82
+#: build/subscriptionDetails.js:10
 msgid "End date"
 msgstr ""
 
@@ -7142,7 +7201,7 @@ msgstr ""
 
 #: includes/admin/tools/views/html-admin-page-system-info.php:196
 #: src/DonorDashboards/Repositories/Donations.php:378
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 msgid "Unknown"
 msgstr ""
 
@@ -7832,10 +7891,11 @@ msgid "View remaining setting tabs"
 msgstr ""
 
 #: includes/admin/views/html-admin-settings.php:180
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/assets/dist/js/give-admin-event-tickets.js:4
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "Save changes"
 msgstr ""
 
@@ -8344,8 +8404,9 @@ msgid "Are you sure you want to <strong>permanently</strong> delete this donatio
 msgstr ""
 
 #: includes/class-give-scripts.php:293
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "Are you sure you want to delete this note?"
 msgstr ""
 
@@ -8358,7 +8419,7 @@ msgid "Are you sure you want to regenerate this API key?"
 msgstr ""
 
 #: includes/class-give-scripts.php:296
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Are you sure you want to resend the donation receipt?"
 msgstr ""
 
@@ -8383,26 +8444,27 @@ msgstr ""
 #: build/assets/dist/js/give-admin-donation-forms.js:4
 #: build/assets/dist/js/give-admin-donations.js:4
 #: build/assets/dist/js/give-admin-donors.js:4
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/assets/dist/js/give-admin-event-tickets.js:4
 #: build/assets/dist/js/give-admin-subscriptions.js:4
-#: build/assets/dist/js/give-log-list-table-app.js:1
-#: build/assets/dist/js/give-migrations-list-table-app.js:1
-#: build/assets/dist/js/orphaned-forms-list-table.js:1
+#: build/assets/dist/js/give-log-list-table-app.js:4
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
+#: build/assets/dist/js/orphaned-forms-list-table.js:4
 #: build/campaignBlock.js:1
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 #: build/campaignBlocksLandingPage.js:1
 #: build/campaignDetails.js:10
 #: build/campaignDonateButtonBlock.js:1
 #: build/campaignFormBlock.js:1
 #: build/campaignGoalBlock.js:1
-#: build/campaignGridApp.js:1
-#: build/campaignGridBlock.js:1
+#: build/campaignGridApp.js:4
+#: build/campaignGridBlock.js:4
 #: build/campaignListTable.js:4
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 #: build/donationFormBlock.js:1
-#: build/donorDetails.js:7
-#: build/elementorCampaignGridWidget.js:1
+#: build/donorDetails.js:10
+#: build/elementorCampaignGridWidget.js:4
+#: build/subscriptionDetails.js:10
 msgid "Confirm"
 msgstr ""
 
@@ -8651,6 +8713,7 @@ msgstr ""
 #: build/assets/dist/js/donor-dashboards-app.js:1
 #: build/campaignBlock.js:1
 #: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 #: build/campaignBlocksLandingPage.js:1
 #: build/campaignDonateButtonBlock.js:1
 #: build/campaignFormBlock.js:1
@@ -13744,7 +13807,7 @@ msgid "Reset your password"
 msgstr ""
 
 #: includes/emails/class-give-email-tags.php:1514
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Anonymous donation"
 msgstr ""
 
@@ -13858,14 +13921,24 @@ msgstr ""
 #: build/assets/dist/js/give-admin-donation-forms.js:4
 #: build/assets/dist/js/give-admin-donations.js:4
 #: build/assets/dist/js/give-admin-donors.js:4
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/assets/dist/js/give-admin-event-tickets.js:4
 #: build/assets/dist/js/give-admin-subscriptions.js:4
 #: build/assets/dist/js/give-log-list-table-app.js:1
+#: build/assets/dist/js/give-log-list-table-app.js:4
 #: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
 #: build/assets/dist/js/orphaned-forms-list-table.js:1
+#: build/assets/dist/js/orphaned-forms-list-table.js:4
+#: build/campaignBlocks.js:4
 #: build/campaignDetails.js:10
+#: build/campaignGridApp.js:4
+#: build/campaignGridBlock.js:4
 #: build/campaignListTable.js:4
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/elementorCampaignGridWidget.js:4
+#: build/subscriptionDetails.js:10
 msgid "of"
 msgstr ""
 
@@ -15849,7 +15922,7 @@ msgid "You dont have the right permissions to view Migrations"
 msgstr ""
 
 #: src/API/Endpoints/Migrations/RunMigration.php:150
-#: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
 msgid "Migration ID"
 msgstr ""
 
@@ -15942,6 +16015,7 @@ msgid "Total Refunds"
 msgstr ""
 
 #: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:299
+#: src/API/REST/V3/Routes/Donations/DonationController.php:954
 #: build/assets/dist/js/give-admin-donation-forms.js:4
 #: build/campaignDetails.js:10
 msgid "Campaign ID"
@@ -16020,23 +16094,70 @@ msgstr ""
 msgid "Number of recurring donors must be greater than 0"
 msgstr ""
 
-#: src/API/REST/V3/Routes/CURIE.php:52
-msgid "The $rel value should be a unique identifier, not a full URL."
+#: src/API/REST/V3/Routes/Donations/DataTransferObjects/DonationCreateData.php:81
+msgid "Cannot create single donation for renewal type"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Donations/DataTransferObjects/DonationCreateData.php:92
+#: src/API/REST/V3/Routes/Donations/DataTransferObjects/DonationCreateData.php:122
+#, php-format
+msgid "Missing required field: %s"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Donations/DataTransferObjects/DonationCreateData.php:111
+msgid "Cannot create renewal donation for non-renewal type"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Donations/DataTransferObjects/DonationCreateData.php:133
+#: src/API/REST/V3/Routes/Donations/DataTransferObjects/DonationCreateData.php:172
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionController.php:251
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionController.php:322
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionController.php:382
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionController.php:426
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionController.php:469
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionNotesController.php:100
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionNotesController.php:162
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionNotesController.php:196
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionNotesController.php:224
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionNotesController.php:270
+#: src/Subscriptions/SubscriptionsAdminPage.php:32
+msgid "Subscription not found"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Donations/DataTransferObjects/DonationCreateData.php:142
+msgid "Cannot create donation: subscription installments limit reached"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Donations/DataTransferObjects/DonationCreateData.php:162
+msgid "When subscriptionId is provided, type must be \"subscription\" or \"renewal\""
+msgstr ""
+
+#: src/API/REST/V3/Routes/Donations/DataTransferObjects/DonationCreateData.php:182
+msgid "A subscription donation already exists for this subscription"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Donations/DataTransferObjects/DonationCreateData.php:193
+msgid "Gateway ID must match the subscription gateway for subscription and renewal donations"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Donations/DataTransferObjects/DonationCreateData.php:203
+msgid "When subscriptionId is zero, type can only be \"single\""
 msgstr ""
 
 #: src/API/REST/V3/Routes/Donations/DonationController.php:61
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionController.php:109
 msgid "Whether to embed related resources in the response. It can be true when we want to embed all available resources, or a string like \"givewp:donor\" when we wish to embed only a specific one."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:129
+#: src/API/REST/V3/Routes/Donations/DonationController.php:136
 msgid "Array of donation IDs to delete"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:263
-#: src/API/REST/V3/Routes/Donations/DonationController.php:289
-#: src/API/REST/V3/Routes/Donations/DonationController.php:346
-#: src/API/REST/V3/Routes/Donations/DonationController.php:430
-#: src/API/REST/V3/Routes/Donations/DonationController.php:474
+#: src/API/REST/V3/Routes/Donations/DonationController.php:274
+#: src/API/REST/V3/Routes/Donations/DonationController.php:333
+#: src/API/REST/V3/Routes/Donations/DonationController.php:391
+#: src/API/REST/V3/Routes/Donations/DonationController.php:428
+#: src/API/REST/V3/Routes/Donations/DonationController.php:472
 #: src/API/REST/V3/Routes/Donations/DonationNotesController.php:96
 #: src/API/REST/V3/Routes/Donations/DonationNotesController.php:157
 #: src/API/REST/V3/Routes/Donations/DonationNotesController.php:190
@@ -16046,139 +16167,191 @@ msgstr ""
 msgid "Donation not found"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:352
+#: src/API/REST/V3/Routes/Donations/DonationController.php:314
+msgid "Failed to create donation"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Donations/DonationController.php:397
 msgid "Refunds are not supported for this gateway"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:368
-#: build/donationDetails.js:7
+#: src/API/REST/V3/Routes/Donations/DonationController.php:413
+#: build/donationDetails.js:10
 msgid "Failed to refund donation"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:443
-#: src/API/REST/V3/Routes/Donations/DonationController.php:487
+#: src/API/REST/V3/Routes/Donations/DonationController.php:441
+#: src/API/REST/V3/Routes/Donations/DonationController.php:485
 msgid "Failed to delete donation"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:451
-#: src/API/REST/V3/Routes/Donations/DonationController.php:495
+#: src/API/REST/V3/Routes/Donations/DonationController.php:449
+#: src/API/REST/V3/Routes/Donations/DonationController.php:493
 msgid "Failed to trash donation"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:670
-#: src/API/REST/V3/Routes/Donors/DonorController.php:546
+#: src/API/REST/V3/Routes/Donations/DonationController.php:681
+#: src/API/REST/V3/Routes/Donors/DonorController.php:559
+#: src/API/REST/V3/Routes/Subscriptions/Permissions/SubscriptionPermissions.php:61
 msgid "You do not have permission to include sensitive data."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:681
+#: src/API/REST/V3/Routes/Donations/DonationController.php:692
 msgid "You do not have permission to include anonymous donations."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:701
+#: src/API/REST/V3/Routes/Donations/DonationController.php:712
 msgid "You do not have permission to update donations."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:749
+#: src/API/REST/V3/Routes/Donations/DonationController.php:728
+msgid "You do not have permission to create donations."
+msgstr ""
+
+#: src/API/REST/V3/Routes/Donations/DonationController.php:776
 msgid "You do not have permission to refund donations."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:817
-#: src/API/REST/V3/Routes/Donors/DonorController.php:353
+#: src/API/REST/V3/Routes/Donations/DonationController.php:848
+#: src/API/REST/V3/Routes/Donors/DonorController.php:364
 msgid "Donor first name"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:822
-#: src/API/REST/V3/Routes/Donors/DonorController.php:361
+#: src/API/REST/V3/Routes/Donations/DonationController.php:853
+#: src/API/REST/V3/Routes/Donors/DonorController.php:373
 msgid "Donor last name"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:827
+#: src/API/REST/V3/Routes/Donations/DonationController.php:858
 msgid "Donor honorific/prefix"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:832
-#: src/API/REST/V3/Routes/Donors/DonorController.php:369
+#: src/API/REST/V3/Routes/Donations/DonationController.php:863
+#: src/API/REST/V3/Routes/Donors/DonorController.php:382
 msgid "Donor email"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:837
-#: src/API/REST/V3/Routes/Donors/DonorController.php:382
+#: src/API/REST/V3/Routes/Donations/DonationController.php:868
+#: src/API/REST/V3/Routes/Donors/DonorController.php:396
 msgid "Donor phone"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:842
-#: src/API/REST/V3/Routes/Donors/DonorController.php:387
+#: src/API/REST/V3/Routes/Donations/DonationController.php:873
+#: src/API/REST/V3/Routes/Donors/DonorController.php:401
 msgid "Donor company"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:859
-#: build/donationDetails.js:7
+#: src/API/REST/V3/Routes/Donations/DonationController.php:890
+#: build/donationDetails.js:10
 msgid "Donation amount"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:875
+#: src/API/REST/V3/Routes/Donations/DonationController.php:906
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:67
 msgid "Fee amount recovered"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:892
+#: src/API/REST/V3/Routes/Donations/DonationController.php:923
 msgid "Event tickets amount"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:896
+#: src/API/REST/V3/Routes/Donations/DonationController.php:927
 msgid "Donation status"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:901
+#: src/API/REST/V3/Routes/Donations/DonationController.php:933
+msgid "Donation type"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Donations/DonationController.php:939
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:98
 msgid "Payment gateway ID"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:906
+#: src/API/REST/V3/Routes/Donations/DonationController.php:944
 msgid "Donation mode (live or test)"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:911
+#: src/API/REST/V3/Routes/Donations/DonationController.php:949
 msgid "Whether the donation is anonymous"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:915
+#: src/API/REST/V3/Routes/Donations/DonationController.php:962
+msgid "Form title"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Donations/DonationController.php:967
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:24
+msgid "Subscription ID"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Donations/DonationController.php:977
+msgid "Gateway transaction ID"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Donations/DonationController.php:982
+msgid "Exchange rate"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Donations/DonationController.php:987
+msgid "Donation comment"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Donations/DonationController.php:992
 msgid "Billing address"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:927
+#: src/API/REST/V3/Routes/Donations/DonationController.php:1004
 msgid "Donor IP address (sensitive data)"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:932
+#: src/API/REST/V3/Routes/Donations/DonationController.php:1009
 msgid "Purchase key (sensitive data)"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:945
-#: src/API/REST/V3/Routes/Donations/DonationController.php:966
+#: src/API/REST/V3/Routes/Donations/DonationController.php:1016
+msgid "Donation creation date as ISO string"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Donations/DonationController.php:1029
+#: src/API/REST/V3/Routes/Donations/DonationController.php:1061
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:130
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:162
 msgid "Timezone of the date"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:950
-#: src/API/REST/V3/Routes/Donations/DonationController.php:971
+#: src/API/REST/V3/Routes/Donations/DonationController.php:1034
+#: src/API/REST/V3/Routes/Donations/DonationController.php:1066
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:135
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:167
 msgid "Timezone type"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:953
+#: src/API/REST/V3/Routes/Donations/DonationController.php:1037
 msgid "Donation creation date"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:974
+#: src/API/REST/V3/Routes/Donations/DonationController.php:1048
+msgid "Donation last update date as ISO string"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Donations/DonationController.php:1069
 msgid "Donation last update date"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:980
+#: src/API/REST/V3/Routes/Donations/DonationController.php:1078
+msgid "Whether to update the subscription renewal date with the createdAt date when creating subscription or renewal donations"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Donations/DonationController.php:1084
 msgid "Custom fields (sensitive data)"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:986
+#: src/API/REST/V3/Routes/Donations/DonationController.php:1090
 msgid "Field label"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:991
+#: src/API/REST/V3/Routes/Donations/DonationController.php:1095
 msgid "Field value"
 msgstr ""
 
@@ -16193,11 +16366,15 @@ msgstr ""
 #: src/API/REST/V3/Routes/Donors/DonorNotesController.php:191
 #: src/API/REST/V3/Routes/Donors/DonorNotesController.php:219
 #: src/API/REST/V3/Routes/Donors/DonorNotesController.php:263
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionNotesController.php:201
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionNotesController.php:229
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionNotesController.php:275
 msgid "Note not found"
 msgstr ""
 
 #: src/API/REST/V3/Routes/Donations/DonationNotesController.php:379
 #: src/API/REST/V3/Routes/Donors/DonorNotesController.php:375
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionNotesController.php:388
 msgid "Unique identifier for the note."
 msgstr ""
 
@@ -16205,6 +16382,8 @@ msgstr ""
 #: src/API/REST/V3/Routes/Donations/DonationNotesController.php:468
 #: src/API/REST/V3/Routes/Donors/DonorNotesController.php:385
 #: src/API/REST/V3/Routes/Donors/DonorNotesController.php:464
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionNotesController.php:393
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionNotesController.php:470
 msgid "The content of the note."
 msgstr ""
 
@@ -16212,11 +16391,14 @@ msgstr ""
 #: src/API/REST/V3/Routes/Donations/DonationNotesController.php:476
 #: src/API/REST/V3/Routes/Donors/DonorNotesController.php:391
 #: src/API/REST/V3/Routes/Donors/DonorNotesController.php:472
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionNotesController.php:404
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionNotesController.php:477
 msgid "The type of the note."
 msgstr ""
 
 #: src/API/REST/V3/Routes/Donations/DonationNotesController.php:402
 #: src/API/REST/V3/Routes/Donors/DonorNotesController.php:397
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionNotesController.php:410
 msgid "The date the note was created."
 msgstr ""
 
@@ -16232,6 +16414,7 @@ msgstr ""
 
 #: src/API/REST/V3/Routes/Donations/DonationNotesController.php:455
 #: src/API/REST/V3/Routes/Donors/DonorNotesController.php:451
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionNotesController.php:457
 msgid "The note ID."
 msgstr ""
 
@@ -16252,8 +16435,8 @@ msgstr ""
 msgid "The ID of the campaign to filter donors by - zero or empty mean \"all campaigns\" (it only gets applied when \"_embed\" is set)."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:195
-#: src/API/REST/V3/Routes/Donors/DonorController.php:217
+#: src/API/REST/V3/Routes/Donors/DonorController.php:201
+#: src/API/REST/V3/Routes/Donors/DonorController.php:224
 #: src/API/REST/V3/Routes/Donors/DonorNotesController.php:96
 #: src/API/REST/V3/Routes/Donors/DonorNotesController.php:158
 #: src/API/REST/V3/Routes/Donors/DonorNotesController.php:186
@@ -16264,97 +16447,100 @@ msgstr ""
 msgid "Donor not found"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:297
+#: src/API/REST/V3/Routes/Donors/DonorController.php:308
 msgid "You do not have permission to update donors."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:348
+#: src/API/REST/V3/Routes/Donors/DonorController.php:359
 msgid "Donor prefix"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:356
+#: src/API/REST/V3/Routes/Donors/DonorController.php:367
 msgid "First name is required"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:364
+#: src/API/REST/V3/Routes/Donors/DonorController.php:376
 msgid "Last name is required"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:374
+#: src/API/REST/V3/Routes/Donors/DonorController.php:388
 msgid "Donor additional emails"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:392
+#: src/API/REST/V3/Routes/Donors/DonorController.php:406
 msgid "Donor avatar ID"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:394
+#: src/API/REST/V3/Routes/Donors/DonorController.php:408
 msgid "Invalid avatar ID"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:398
-#: build/donorDetails.js:7
+#: src/API/REST/V3/Routes/Donors/DonorController.php:412
+#: build/donorDetails.js:10
 msgid "Donor addresses"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:401
-#: build/donorDetails.js:7
+#: src/API/REST/V3/Routes/Donors/DonorController.php:415
+#: build/donorDetails.js:10
 msgid "Donor address"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:405
+#: src/API/REST/V3/Routes/Donors/DonorController.php:419
 msgid "Donor address line 1"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:410
+#: src/API/REST/V3/Routes/Donors/DonorController.php:424
 msgid "Donor address line 2"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:415
+#: src/API/REST/V3/Routes/Donors/DonorController.php:429
 msgid "Donor address city"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:420
+#: src/API/REST/V3/Routes/Donors/DonorController.php:434
 msgid "Donor address state"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:425
+#: src/API/REST/V3/Routes/Donors/DonorController.php:439
 msgid "Donor address country"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:430
+#: src/API/REST/V3/Routes/Donors/DonorController.php:444
 msgid "Donor address zip"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:459
+#: src/API/REST/V3/Routes/Donors/DonorController.php:472
 msgid "The field by which to sort the donors."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:473
+#: src/API/REST/V3/Routes/Donors/DonorController.php:486
 msgid "The direction of sorting: ascending (ASC) or descending (DESC)."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:479
+#: src/API/REST/V3/Routes/Donors/DonorController.php:492
 msgid "Whether to include only donors who have made donations."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:484
+#: src/API/REST/V3/Routes/Donors/DonorController.php:497
 msgid "The mode of donations to filter by \"live\" or \"test\" (it only gets applied when \"onlyWithDonations\" is set to true)."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:493
+#: src/API/REST/V3/Routes/Donors/DonorController.php:506
 msgid "The ID of the campaign to filter donors by - zero or empty mean \"all campaigns\" (it only gets applied when \"onlyWithDonations\" is set to true)."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:512
+#: src/API/REST/V3/Routes/Donors/DonorController.php:525
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionSharedParamsForGetMethods.php:17
 msgid "Include or not include data that can be used to contact or locate the donors, such as phone number, email, billing address, etc. (require proper permissions)"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:520
+#: src/API/REST/V3/Routes/Donors/DonorController.php:533
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionSharedParamsForGetMethods.php:23
 msgid "Exclude, include, or redact data that can be used to identify the donors, such as ID, first name, last name, etc (require proper permissions)."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:556
+#: src/API/REST/V3/Routes/Donors/DonorController.php:569
+#: src/API/REST/V3/Routes/Subscriptions/Permissions/SubscriptionPermissions.php:71
 msgid "You do not have permission to include anonymous donors."
 msgstr ""
 
@@ -16369,6 +16555,143 @@ msgstr ""
 
 #: src/API/REST/V3/Routes/Donors/DonorStatisticsController.php:55
 msgid "The ID of the campaign to filter donors by - zero or empty mean \"all campaigns\"."
+msgstr ""
+
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionCollectionParams.php:19
+msgid "Sort field for subscription results"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionCollectionParams.php:35
+msgid "Sort direction for subscription results"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionCollectionParams.php:41
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:109
+msgid "Subscription mode (live or test)"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionCollectionParams.php:47
+msgid "Filter subscriptions by status"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionCollectionParams.php:56
+msgid "Filter subscriptions by campaign ID"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionCollectionParams.php:61
+msgid "Filter subscriptions by donor ID"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:33
+msgid "Donation form ID"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:50
+msgid "Subscription amount"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:71
+msgid "Subscription status"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:77
+msgid "Subscription billing period"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:83
+msgid "Billing frequency"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:88
+msgid "Number of installments (0 for unlimited)"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:104
+msgid "Gateway subscription ID"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:117
+msgid "Subscription creation date as ISO string"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:138
+msgid "Subscription creation date"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:149
+msgid "Next renewal date as ISO string"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:170
+msgid "Next renewal date"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:191
+msgid "Projected annual revenue for this subscription"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Subscriptions/Permissions/SubscriptionPermissions.php:92
+msgid "You do not have permission to update subscriptions."
+msgstr ""
+
+#: src/API/REST/V3/Routes/Subscriptions/Permissions/SubscriptionPermissions.php:112
+msgid "You do not have permission to delete subscriptions."
+msgstr ""
+
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionController.php:80
+msgid "Array of subscription IDs to delete"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionController.php:88
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionController.php:140
+msgid "Whether to permanently delete (force=true) or move to trash (force=false, default)."
+msgstr ""
+
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionController.php:104
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionController.php:135
+msgid "The subscription ID."
+msgstr ""
+
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionController.php:162
+msgid "Whether to also move the subscription to trash (trash=true) instead of just canceling it."
+msgstr ""
+
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionController.php:293
+#, php-format
+msgid "Failed to create subscription: %s"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionController.php:391
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionController.php:437
+msgid "Failed to delete subscription"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionController.php:397
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionController.php:445
+msgid "Failed to trash subscription"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionController.php:491
+#: build/subscriptionDetails.js:10
+msgid "Failed to cancel subscription"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionController.php:600
+#, php-format
+msgid "Error while preparing subscription for response: %s"
+msgstr ""
+
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionNotesController.php:42
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionNotesController.php:399
+msgid "The ID of the subscription this note belongs to."
+msgstr ""
+
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionNotesController.php:434
+msgid "HATEOAS links for the subscription note."
+msgstr ""
+
+#: src/API/REST/V3/Support/CURIE.php:52
+msgid "The $rel value should be a unique identifier, not a full URL."
 msgstr ""
 
 #: src/BetaFeatures/Actions/RegisterSettings.php:29
@@ -16399,6 +16722,7 @@ msgstr ""
 #: src/Campaigns/Actions/AddNewBadgeToAdminMenuItem.php:35
 #: src/Promotions/resources/views/CampaignWelcomeBanner.php:20
 #: build/campaignListTable.js:4
+#: build/subscriptionDetails.js:10
 msgid "NEW"
 msgstr ""
 
@@ -16438,6 +16762,7 @@ msgid "Be the first"
 msgstr ""
 
 #: src/Campaigns/Blocks/CampaignDonations/resources/views/render.php:82
+#: build/subscriptionDetails.js:10
 msgid "Donation icon"
 msgstr ""
 
@@ -16508,12 +16833,12 @@ msgstr ""
 
 #: src/Campaigns/CampaignsAdminPage.php:39
 #: src/Campaigns/Controllers/CampaignRequestController.php:39
-#: src/Campaigns/Controllers/CampaignRequestController.php:141
-#: src/Campaigns/Controllers/CampaignRequestController.php:202
+#: src/Campaigns/Controllers/CampaignRequestController.php:140
+#: src/Campaigns/Controllers/CampaignRequestController.php:201
 msgid "Campaign not found"
 msgstr ""
 
-#: src/Campaigns/Controllers/CampaignRequestController.php:273
+#: src/Campaigns/Controllers/CampaignRequestController.php:272
 #, php-format
 msgid "%s (copy)"
 msgstr ""
@@ -16570,7 +16895,7 @@ msgid "Visit form reports page"
 msgstr ""
 
 #: src/Campaigns/ListTable/Columns/StatusColumn.php:38
-#: src/Subscriptions/ValueObjects/SubscriptionStatus.php:62
+#: src/Subscriptions/ValueObjects/SubscriptionStatus.php:65
 #: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:400
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:264
 #: build/campaignDetails.js:10
@@ -16593,7 +16918,7 @@ msgstr ""
 #: src/DonationForms/V2/ValueObjects/DonationFormStatus.php:43
 #: build/assets/dist/js/give-admin-donation-forms.js:4
 #: build/campaignBlock.js:1
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 #: build/campaignBlocksLandingPage.js:1
 #: build/campaignDetails.js:10
 #: build/campaignDonateButtonBlock.js:1
@@ -16604,7 +16929,7 @@ msgid "Draft"
 msgstr ""
 
 #: src/Campaigns/ListTable/Columns/TitleColumn.php:41
-#: src/Donations/ListTable/Columns/CampaignColumn.php:49
+#: src/Donations/ListTable/Columns/CampaignColumn.php:50
 msgid "Visit campaign page"
 msgstr ""
 
@@ -16816,6 +17141,7 @@ msgstr ""
 #: build/assets/dist/js/give-admin-donation-forms.js:4
 #: build/assets/dist/js/give-admin-donations.js:4
 #: build/campaignDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "Trash"
 msgstr ""
 
@@ -16840,13 +17166,13 @@ msgstr ""
 
 #: src/Donations/Actions/LoadDonationsListTableAssets.php:87
 #: src/Donors/Actions/LoadDonorsListTableAssets.php:83
-#: src/Subscriptions/SubscriptionsAdminPage.php:84
+#: src/Subscriptions/Actions/LoadSubscriptionsListTableAssets.php:84
 msgid "Any"
 msgstr ""
 
 #: src/Donations/CustomFields/Views/DonationDetailsView.php:52
 #: src/Donors/CustomFields/Views/DonorDetailsView.php:60
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 #: build/formBuilderApp.js:13
 msgid "Custom Fields"
 msgstr ""
@@ -16904,16 +17230,31 @@ msgstr ""
 msgid "one-time"
 msgstr ""
 
+#: src/Donations/ListTable/Columns/SubscriptionDonationTypeColumn.php:35
+msgid "Subscription Donation Type"
+msgstr ""
+
+#: src/Donations/ListTable/Columns/SubscriptionDonationTypeColumn.php:50
+msgid "One-time donation"
+msgstr ""
+
+#: src/Donations/ListTable/Columns/SubscriptionDonationTypeColumn.php:54
+msgid "Initial donation"
+msgstr ""
+
+#: src/Donations/ListTable/Columns/SubscriptionDonationTypeColumn.php:58
+#: src/Donations/ValueObjects/DonationStatus.php:70
+#: build/subscriptionDetails.js:10
+msgid "Renewal"
+msgstr ""
+
 #: src/Donations/ValueObjects/DonationStatus.php:68
 msgid "Preapproval"
 msgstr ""
 
-#: src/Donations/ValueObjects/DonationStatus.php:70
-msgid "Renewal"
-msgstr ""
-
-#: src/Donations/ViewModels/DonationViewModel.php:108
+#: src/Donations/ViewModels/DonationViewModel.php:109
 #: src/Donors/ViewModels/DonorViewModel.php:124
+#: src/Subscriptions/ViewModels/SubscriptionViewModel.php:94
 msgid "anonymous"
 msgstr ""
 
@@ -17105,7 +17446,7 @@ msgid "Repeat"
 msgstr ""
 
 #: src/Donors/DonorStatisticsQuery.php:195
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "One-time"
 msgstr ""
 
@@ -17131,7 +17472,7 @@ msgid "Donor Information"
 msgstr ""
 
 #: src/Donors/ListTable/Columns/DonorTypeColumn.php:35
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Donor Type"
 msgstr ""
 
@@ -17199,9 +17540,9 @@ msgstr ""
 #: src/Views/Form/Templates/Sequoia/optionConfig.php:98
 #: src/Views/Form/Templates/Sequoia/optionConfig.php:216
 #: src/Views/Form/Templates/Sequoia/optionConfig.php:290
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/assets/dist/js/give-admin-event-tickets.js:4
-#: build/assets/dist/js/give-log-list-table-app.js:1
+#: build/assets/dist/js/give-log-list-table-app.js:4
 #: build/formBuilderApp.js:1
 #: build/formBuilderApp.js:13
 msgid "Description"
@@ -17212,7 +17553,7 @@ msgid "Ticket Sales"
 msgstr ""
 
 #: src/EventTickets/ListTable/Columns/SalesCountColumn.php:34
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 msgid "No. of tickets sold"
 msgstr ""
 
@@ -17222,7 +17563,7 @@ msgid "%1$d out of %2$d"
 msgstr ""
 
 #: src/EventTickets/ListTable/Columns/TitleColumn.php:36
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/eventTicketsBlock.js:1
 msgid "Event"
 msgstr ""
@@ -17429,8 +17770,8 @@ msgid "Mrs"
 msgstr ""
 
 #: src/FormBuilder/Actions/GenerateDefaultDonationFormBlockCollection.php:109
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
 #: build/formBuilderRegistrars.js:1
 msgid "First name"
 msgstr ""
@@ -17441,8 +17782,8 @@ msgid "John"
 msgstr ""
 
 #: src/FormBuilder/Actions/GenerateDefaultDonationFormBlockCollection.php:111
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
 #: build/formBuilderRegistrars.js:1
 msgid "Last name"
 msgstr ""
@@ -17793,6 +18134,7 @@ msgstr ""
 #: src/Framework/Receipts/Actions/GenerateConfirmationPageReceipt.php:261
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:236
 #: build/assets/dist/js/donor-dashboards-app.js:1
+#: build/subscriptionEntity.js:1
 msgid "Subscription"
 msgstr ""
 
@@ -17819,6 +18161,7 @@ msgstr ""
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:275
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveSubscriptionsWidget.php:285
 #: build/formBuilderRegistrars.js:1
+#: build/subscriptionDetails.js:10
 msgid "Ongoing"
 msgstr ""
 
@@ -17994,7 +18337,7 @@ msgid "Warning"
 msgstr ""
 
 #: src/Log/ValueObjects/LogType.php:50
-#: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
 msgid "Notice"
 msgstr ""
 
@@ -18600,11 +18943,11 @@ msgstr ""
 msgid "Payment refunded in Stripe."
 msgstr ""
 
-#: src/PaymentGateways/Gateways/Stripe/StripePaymentElementGateway/Webhooks/Listeners/InvoicePaymentFailed.php:85
+#: src/PaymentGateways/Gateways/Stripe/StripePaymentElementGateway/Webhooks/Listeners/InvoicePaymentFailed.php:90
 msgid "Subscription - Renewal Payment Failed"
 msgstr ""
 
-#: src/PaymentGateways/Gateways/Stripe/StripePaymentElementGateway/Webhooks/Listeners/InvoicePaymentSucceeded.php:108
+#: src/PaymentGateways/Gateways/Stripe/StripePaymentElementGateway/Webhooks/Listeners/InvoicePaymentSucceeded.php:123
 #: src/PaymentGateways/Gateways/Stripe/StripePaymentElementGateway/Webhooks/Listeners/PaymentIntentSucceeded.php:63
 msgid "Payment succeeded in Stripe."
 msgstr ""
@@ -20263,7 +20606,7 @@ msgid "Explore campaigns"
 msgstr ""
 
 #: src/Receipt/DonationReceipt.php:103
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 #: build/donationFormRegistrars.js:1
 msgid "Donation Details"
 msgstr ""
@@ -20322,6 +20665,7 @@ msgid "Donor name"
 msgstr ""
 
 #: src/Subscriptions/ListTable/Columns/FormColumn.php:36
+#: build/subscriptionDetails.js:10
 msgid "Donation form"
 msgstr ""
 
@@ -20426,16 +20770,20 @@ msgstr ""
 msgid "Every %d years"
 msgstr ""
 
-#: src/Subscriptions/ValueObjects/SubscriptionStatus.php:63
+#: src/Subscriptions/ValueObjects/SubscriptionStatus.php:66
 msgid "Expired"
 msgstr ""
 
-#: src/Subscriptions/ValueObjects/SubscriptionStatus.php:69
+#: src/Subscriptions/ValueObjects/SubscriptionStatus.php:72
 msgid "Suspended"
 msgstr ""
 
-#: src/Subscriptions/ValueObjects/SubscriptionStatus.php:70
+#: src/Subscriptions/ValueObjects/SubscriptionStatus.php:73
 msgid "Paused"
+msgstr ""
+
+#: src/Subscriptions/ValueObjects/SubscriptionStatus.php:74
+msgid "Trashed"
 msgstr ""
 
 #: src/ThirdPartySupport/Elementor/ServiceProvider.php:55
@@ -20624,6 +20972,7 @@ msgstr ""
 
 #: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:384
 #: build/donationFormRegistrars.js:1
+#: build/subscriptionDetails.js:10
 msgid "Subscription Details"
 msgstr ""
 
@@ -20686,7 +21035,7 @@ msgstr ""
 #: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:160
 #: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:161
 #: build/adminBlocks.js:1
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 msgid "Order By"
 msgstr ""
 
@@ -21228,8 +21577,9 @@ msgstr ""
 
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveMultiFormGoalWidget.php:200
 #: build/adminBlocks.js:1
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 #: build/formBuilderApp.js:13
+#: build/subscriptionDetails.js:10
 msgid "Summary"
 msgstr ""
 
@@ -21510,7 +21860,7 @@ msgstr ""
 
 #: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignGridWidget/ElementorCampaignGridWidget.php:120
 #: build/adminBlocks.js:1
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 #: build/formBuilderApp.js:13
 msgid "Layout"
 msgstr ""
@@ -21521,13 +21871,13 @@ msgstr ""
 
 #: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignGridWidget/ElementorCampaignGridWidget.php:124
 #: build/adminBlocks.js:1
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 msgid "Double"
 msgstr ""
 
 #: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorCampaignGridWidget/ElementorCampaignGridWidget.php:125
 #: build/adminBlocks.js:1
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 msgid "Triple"
 msgstr ""
 
@@ -21546,7 +21896,7 @@ msgstr ""
 #: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonationFormGridWidget/ElementorDonationFormGridWidget.php:180
 #: src/ThirdPartySupport/Elementor/Widgets/V2/ElementorDonorWallWidget/ElementorDonorWallWidget.php:175
 #: build/adminBlocks.js:1
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 msgid "Order"
 msgstr ""
 
@@ -21931,10 +22281,11 @@ msgstr ""
 #: src/Views/Admin/Pages/templates/reports-template.php:50
 #: build/assets/dist/js/admin-reports-widget.js:1
 #: build/assets/dist/js/admin-reports.js:1
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/campaignDetails.js:10
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "Overview"
 msgstr ""
 
@@ -22382,6 +22733,7 @@ msgid "Process Donation"
 msgstr ""
 
 #: src/Views/Form/Templates/Sequoia/Sequoia.php:371
+#: build/subscriptionDetails.js:10
 msgid "optional"
 msgstr ""
 
@@ -22526,7 +22878,7 @@ msgid "Your profile has been updated."
 msgstr ""
 
 #: templates/shortcode-profile-editor.php:45
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Profile"
 msgstr ""
 
@@ -22650,7 +23002,7 @@ msgstr ""
 #: build/adminBlocks.js:1
 #: build/assets/dist/js/donor-dashboards-app.js:1
 #: build/campaignBlock.js:1
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 #: build/campaignBlocksLandingPage.js:1
 #: build/campaignDonateButtonBlock.js:1
 #: build/campaignFormBlock.js:1
@@ -22738,7 +23090,7 @@ msgid "Loading Donation Forms..."
 msgstr ""
 
 #: build/adminBlocks.js:1
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 msgid "Full Width"
 msgstr ""
 
@@ -22752,6 +23104,7 @@ msgstr ""
 
 #: build/adminBlocks.js:1
 #: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 #: build/campaignBlocksLandingPage.js:1
 msgid "Display Elements"
 msgstr ""
@@ -22761,7 +23114,7 @@ msgid "Featured image height. Default \"auto\". Accepts valid heights in px, em,
 msgstr ""
 
 #: build/adminBlocks.js:1
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 msgid "Grid Settings"
 msgstr ""
 
@@ -22948,7 +23301,7 @@ msgid "Filter by categories"
 msgstr ""
 
 #: build/adminBlocks.js:1
-#: build/assets/dist/js/give-log-list-table-app.js:1
+#: build/assets/dist/js/give-log-list-table-app.js:4
 msgid "All categories"
 msgstr ""
 
@@ -23501,17 +23854,17 @@ msgid "Back to Donation History"
 msgstr ""
 
 #: build/assets/dist/js/donor-dashboards-app.js:1
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Total Donations"
 msgstr ""
 
 #: build/assets/dist/js/donor-dashboards-app.js:1
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Lifetime donations"
 msgstr ""
 
 #: build/assets/dist/js/donor-dashboards-app.js:1
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Average donation"
 msgstr ""
 
@@ -23576,7 +23929,7 @@ msgid "Profile Information"
 msgstr ""
 
 #: build/assets/dist/js/donor-dashboards-app.js:1
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Additional Info"
 msgstr ""
 
@@ -23621,28 +23974,30 @@ msgstr ""
 #: build/assets/dist/js/donor-dashboards-app.js:1
 #: build/assets/dist/js/give-add-v2form.js:1
 #: build/assets/dist/js/give-admin-donation-forms.js:4
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/assets/dist/js/give-admin-event-tickets.js:4
 #: build/assets/dist/js/give-edit-v2form.js:1
 #: build/campaignDetails.js:10
 #: build/campaignListTable.js:4
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
 #: build/formBuilderApp.js:13
+#: build/subscriptionDetails.js:10
 msgid "Close dialog"
 msgstr ""
 
 #: build/assets/dist/js/donor-dashboards-app.js:1
 #: build/assets/dist/js/give-add-v2form.js:1
 #: build/assets/dist/js/give-admin-donation-forms.js:4
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/assets/dist/js/give-admin-event-tickets.js:4
 #: build/assets/dist/js/give-edit-v2form.js:1
 #: build/campaignDetails.js:10
 #: build/campaignListTable.js:4
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
 #: build/formBuilderApp.js:13
+#: build/subscriptionDetails.js:10
 msgid "Close dialog icon"
 msgstr ""
 
@@ -23893,6 +24248,7 @@ msgstr ""
 #: build/donationDetails.js:7
 #: build/donorDetails.js:7
 #: build/elementorCampaignGridWidget.js:1
+#: build/subscriptionDetails.js:7
 msgid "No data"
 msgstr ""
 
@@ -23913,6 +24269,7 @@ msgstr ""
 #: build/donationDetails.js:7
 #: build/donorDetails.js:7
 #: build/elementorCampaignGridWidget.js:1
+#: build/subscriptionDetails.js:7
 msgid "Error details"
 msgstr ""
 
@@ -23933,16 +24290,28 @@ msgstr ""
 #: build/donationDetails.js:7
 #: build/donorDetails.js:7
 #: build/elementorCampaignGridWidget.js:1
+#: build/subscriptionDetails.js:7
 msgid "Additional context"
 msgstr ""
 
 #: build/assets/dist/js/give-admin-donation-forms.js:1
 #: build/assets/dist/js/give-admin-donations.js:1
 #: build/assets/dist/js/give-admin-donors.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:1
 #: build/assets/dist/js/give-admin-event-tickets.js:1
 #: build/assets/dist/js/give-admin-subscriptions.js:1
+#: build/assets/dist/js/give-log-list-table-app.js:1
+#: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/orphaned-forms-list-table.js:1
+#: build/campaignBlocks.js:1
 #: build/campaignDetails.js:7
+#: build/campaignGridApp.js:1
+#: build/campaignGridBlock.js:1
 #: build/campaignListTable.js:1
+#: build/donationDetails.js:7
+#: build/donorDetails.js:7
+#: build/elementorCampaignGridWidget.js:1
+#: build/subscriptionDetails.js:7
 #, js-format
 msgid "Select %1s %2s"
 msgstr ""
@@ -23950,10 +24319,21 @@ msgstr ""
 #: build/assets/dist/js/give-admin-donation-forms.js:1
 #: build/assets/dist/js/give-admin-donations.js:1
 #: build/assets/dist/js/give-admin-donors.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:1
 #: build/assets/dist/js/give-admin-event-tickets.js:1
 #: build/assets/dist/js/give-admin-subscriptions.js:1
+#: build/assets/dist/js/give-log-list-table-app.js:1
+#: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/orphaned-forms-list-table.js:1
+#: build/campaignBlocks.js:1
 #: build/campaignDetails.js:7
+#: build/campaignGridApp.js:1
+#: build/campaignGridBlock.js:1
 #: build/campaignListTable.js:1
+#: build/donationDetails.js:7
+#: build/donorDetails.js:7
+#: build/elementorCampaignGridWidget.js:1
+#: build/subscriptionDetails.js:7
 #, js-format
 msgid "Select all %s"
 msgstr ""
@@ -23964,14 +24344,36 @@ msgstr ""
 #: build/assets/dist/js/give-admin-donations.js:4
 #: build/assets/dist/js/give-admin-donors.js:1
 #: build/assets/dist/js/give-admin-donors.js:4
+#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/assets/dist/js/give-admin-event-tickets.js:1
 #: build/assets/dist/js/give-admin-event-tickets.js:4
 #: build/assets/dist/js/give-admin-subscriptions.js:1
 #: build/assets/dist/js/give-admin-subscriptions.js:4
+#: build/assets/dist/js/give-log-list-table-app.js:1
+#: build/assets/dist/js/give-log-list-table-app.js:4
+#: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
+#: build/assets/dist/js/orphaned-forms-list-table.js:1
+#: build/assets/dist/js/orphaned-forms-list-table.js:4
+#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 #: build/campaignDetails.js:7
 #: build/campaignDetails.js:10
+#: build/campaignGridApp.js:1
+#: build/campaignGridApp.js:4
+#: build/campaignGridBlock.js:1
+#: build/campaignGridBlock.js:4
 #: build/campaignListTable.js:1
 #: build/campaignListTable.js:4
+#: build/donationDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:7
+#: build/donorDetails.js:10
+#: build/elementorCampaignGridWidget.js:1
+#: build/elementorCampaignGridWidget.js:4
+#: build/subscriptionDetails.js:7
+#: build/subscriptionDetails.js:10
 msgid "item"
 msgstr ""
 
@@ -23981,24 +24383,57 @@ msgstr ""
 #: build/assets/dist/js/give-admin-donations.js:4
 #: build/assets/dist/js/give-admin-donors.js:1
 #: build/assets/dist/js/give-admin-donors.js:4
+#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/assets/dist/js/give-admin-event-tickets.js:1
 #: build/assets/dist/js/give-admin-event-tickets.js:4
 #: build/assets/dist/js/give-admin-subscriptions.js:1
 #: build/assets/dist/js/give-admin-subscriptions.js:4
+#: build/assets/dist/js/give-log-list-table-app.js:1
+#: build/assets/dist/js/give-log-list-table-app.js:4
+#: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
+#: build/assets/dist/js/orphaned-forms-list-table.js:1
+#: build/assets/dist/js/orphaned-forms-list-table.js:4
+#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 #: build/campaignDetails.js:7
 #: build/campaignDetails.js:10
+#: build/campaignGridApp.js:1
+#: build/campaignGridApp.js:4
+#: build/campaignGridBlock.js:1
+#: build/campaignGridBlock.js:4
 #: build/campaignListTable.js:1
 #: build/campaignListTable.js:4
+#: build/donationDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:7
+#: build/donorDetails.js:10
+#: build/elementorCampaignGridWidget.js:1
+#: build/elementorCampaignGridWidget.js:4
+#: build/subscriptionDetails.js:7
+#: build/subscriptionDetails.js:10
 msgid "items"
 msgstr ""
 
 #: build/assets/dist/js/give-admin-donation-forms.js:1
 #: build/assets/dist/js/give-admin-donations.js:1
 #: build/assets/dist/js/give-admin-donors.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:1
 #: build/assets/dist/js/give-admin-event-tickets.js:1
 #: build/assets/dist/js/give-admin-subscriptions.js:1
+#: build/assets/dist/js/give-log-list-table-app.js:1
+#: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/orphaned-forms-list-table.js:1
+#: build/campaignBlocks.js:1
 #: build/campaignDetails.js:7
+#: build/campaignGridApp.js:1
+#: build/campaignGridBlock.js:1
 #: build/campaignListTable.js:1
+#: build/donationDetails.js:7
+#: build/donorDetails.js:7
+#: build/elementorCampaignGridWidget.js:1
+#: build/subscriptionDetails.js:7
 #, js-format
 msgid "Loading %s"
 msgstr ""
@@ -24007,20 +24442,42 @@ msgstr ""
 #: build/assets/dist/js/give-admin-donation-forms.js:4
 #: build/assets/dist/js/give-admin-donations.js:4
 #: build/assets/dist/js/give-admin-donors.js:4
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/assets/dist/js/give-admin-event-tickets.js:4
 #: build/assets/dist/js/give-admin-subscriptions.js:4
+#: build/assets/dist/js/give-log-list-table-app.js:4
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
+#: build/assets/dist/js/orphaned-forms-list-table.js:4
+#: build/campaignBlocks.js:4
 #: build/campaignDetails.js:10
+#: build/campaignGridApp.js:4
+#: build/campaignGridBlock.js:4
 #: build/campaignListTable.js:4
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/elementorCampaignGridWidget.js:4
+#: build/subscriptionDetails.js:10
 msgid "dismiss"
 msgstr ""
 
 #: build/assets/dist/js/give-admin-donation-forms.js:4
 #: build/assets/dist/js/give-admin-donations.js:4
 #: build/assets/dist/js/give-admin-donors.js:4
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/assets/dist/js/give-admin-event-tickets.js:4
 #: build/assets/dist/js/give-admin-subscriptions.js:4
+#: build/assets/dist/js/give-log-list-table-app.js:4
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
+#: build/assets/dist/js/orphaned-forms-list-table.js:4
+#: build/campaignBlocks.js:4
 #: build/campaignDetails.js:10
+#: build/campaignGridApp.js:4
+#: build/campaignGridBlock.js:4
 #: build/campaignListTable.js:4
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/elementorCampaignGridWidget.js:4
+#: build/subscriptionDetails.js:10
 #, js-format
 msgid "There was a problem retrieving the %s."
 msgstr ""
@@ -24028,20 +24485,42 @@ msgstr ""
 #: build/assets/dist/js/give-admin-donation-forms.js:4
 #: build/assets/dist/js/give-admin-donations.js:4
 #: build/assets/dist/js/give-admin-donors.js:4
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/assets/dist/js/give-admin-event-tickets.js:4
 #: build/assets/dist/js/give-admin-subscriptions.js:4
+#: build/assets/dist/js/give-log-list-table-app.js:4
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
+#: build/assets/dist/js/orphaned-forms-list-table.js:4
+#: build/campaignBlocks.js:4
 #: build/campaignDetails.js:10
+#: build/campaignGridApp.js:4
+#: build/campaignGridBlock.js:4
 #: build/campaignListTable.js:4
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/elementorCampaignGridWidget.js:4
+#: build/subscriptionDetails.js:10
 msgid "Click here to reload the page."
 msgstr ""
 
 #: build/assets/dist/js/give-admin-donation-forms.js:4
 #: build/assets/dist/js/give-admin-donations.js:4
 #: build/assets/dist/js/give-admin-donors.js:4
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/assets/dist/js/give-admin-event-tickets.js:4
 #: build/assets/dist/js/give-admin-subscriptions.js:4
+#: build/assets/dist/js/give-log-list-table-app.js:4
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
+#: build/assets/dist/js/orphaned-forms-list-table.js:4
+#: build/campaignBlocks.js:4
 #: build/campaignDetails.js:10
+#: build/campaignGridApp.js:4
+#: build/campaignGridBlock.js:4
 #: build/campaignListTable.js:4
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/elementorCampaignGridWidget.js:4
+#: build/subscriptionDetails.js:10
 #, js-format
 msgid "%s table"
 msgstr ""
@@ -24049,53 +24528,108 @@ msgstr ""
 #: build/assets/dist/js/give-admin-donation-forms.js:4
 #: build/assets/dist/js/give-admin-donations.js:4
 #: build/assets/dist/js/give-admin-donors.js:4
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/assets/dist/js/give-admin-event-tickets.js:4
 #: build/assets/dist/js/give-admin-subscriptions.js:4
 #: build/assets/dist/js/give-log-list-table-app.js:1
+#: build/assets/dist/js/give-log-list-table-app.js:4
 #: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
 #: build/assets/dist/js/orphaned-forms-list-table.js:1
+#: build/assets/dist/js/orphaned-forms-list-table.js:4
+#: build/campaignBlocks.js:4
 #: build/campaignDetails.js:10
+#: build/campaignGridApp.js:4
+#: build/campaignGridBlock.js:4
 #: build/campaignListTable.js:4
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/elementorCampaignGridWidget.js:4
+#: build/subscriptionDetails.js:10
 msgid "Current Page"
 msgstr ""
 
 #: build/assets/dist/js/give-admin-donation-forms.js:4
 #: build/assets/dist/js/give-admin-donations.js:4
 #: build/assets/dist/js/give-admin-donors.js:4
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/assets/dist/js/give-admin-event-tickets.js:4
 #: build/assets/dist/js/give-admin-subscriptions.js:4
+#: build/assets/dist/js/give-log-list-table-app.js:4
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
+#: build/assets/dist/js/orphaned-forms-list-table.js:4
+#: build/campaignBlocks.js:4
 #: build/campaignDetails.js:10
+#: build/campaignGridApp.js:4
+#: build/campaignGridBlock.js:4
 #: build/campaignListTable.js:4
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/elementorCampaignGridWidget.js:4
+#: build/subscriptionDetails.js:10
 msgid "Bulk Actions"
 msgstr ""
 
 #: build/assets/dist/js/give-admin-donation-forms.js:4
 #: build/assets/dist/js/give-admin-donations.js:4
 #: build/assets/dist/js/give-admin-donors.js:4
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/assets/dist/js/give-admin-event-tickets.js:4
 #: build/assets/dist/js/give-admin-subscriptions.js:4
+#: build/assets/dist/js/give-log-list-table-app.js:4
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
+#: build/assets/dist/js/orphaned-forms-list-table.js:4
+#: build/campaignBlocks.js:4
 #: build/campaignDetails.js:10
+#: build/campaignGridApp.js:4
+#: build/campaignGridBlock.js:4
 #: build/campaignListTable.js:4
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/elementorCampaignGridWidget.js:4
+#: build/subscriptionDetails.js:10
 msgid "An error occurred while performing this action."
 msgstr ""
 
 #: build/assets/dist/js/give-admin-donation-forms.js:4
 #: build/assets/dist/js/give-admin-donations.js:4
 #: build/assets/dist/js/give-admin-donors.js:4
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/assets/dist/js/give-admin-event-tickets.js:4
 #: build/assets/dist/js/give-admin-subscriptions.js:4
+#: build/assets/dist/js/give-log-list-table-app.js:4
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
+#: build/assets/dist/js/orphaned-forms-list-table.js:4
+#: build/campaignBlocks.js:4
 #: build/campaignDetails.js:10
+#: build/campaignGridApp.js:4
+#: build/campaignGridBlock.js:4
 #: build/campaignListTable.js:4
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/elementorCampaignGridWidget.js:4
+#: build/subscriptionDetails.js:10
 msgid "You don't have permission to perform this action."
 msgstr ""
 
 #: build/assets/dist/js/give-admin-donation-forms.js:4
 #: build/assets/dist/js/give-admin-donations.js:4
 #: build/assets/dist/js/give-admin-donors.js:4
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/assets/dist/js/give-admin-event-tickets.js:4
 #: build/assets/dist/js/give-admin-subscriptions.js:4
+#: build/assets/dist/js/give-log-list-table-app.js:4
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
+#: build/assets/dist/js/orphaned-forms-list-table.js:4
+#: build/campaignBlocks.js:4
 #: build/campaignDetails.js:10
+#: build/campaignGridApp.js:4
+#: build/campaignGridBlock.js:4
 #: build/campaignListTable.js:4
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/elementorCampaignGridWidget.js:4
+#: build/subscriptionDetails.js:10
 msgid "Access denied. You don't have permission to perform this action."
 msgstr ""
 
@@ -24113,6 +24647,7 @@ msgstr ""
 #: build/campaignDetails.js:10
 #: build/campaignListTable.js:4
 #: build/formBuilderApp.js:13
+#: build/subscriptionDetails.js:10
 msgid "Proceed"
 msgstr ""
 
@@ -24222,6 +24757,7 @@ msgstr ""
 #: build/assets/dist/js/give-admin-donors.js:4
 #: build/assets/dist/js/give-admin-subscriptions.js:4
 #: build/campaignDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "Need help? Learn more about"
 msgstr ""
 
@@ -24278,8 +24814,9 @@ msgstr ""
 
 #: build/assets/dist/js/give-admin-donation-forms.js:4
 #: build/campaignDetails.js:10
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "Upgrade"
 msgstr ""
 
@@ -24323,17 +24860,20 @@ msgid "Switch to Legacy View"
 msgstr ""
 
 #: build/assets/dist/js/give-admin-donations.js:4
+#: build/subscriptionDetails.js:10
 #, js-format
-msgid "Are you sure you want to move donation #%d to the trash? You can restore it later if needed."
+msgid "Are you sure you want to move donation #%d to the trash?"
 msgstr ""
 
 #: build/assets/dist/js/give-admin-donations.js:4
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "Move donation to trash"
 msgstr ""
 
 #: build/assets/dist/js/give-admin-donations.js:4
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "Trash Donation"
 msgstr ""
 
@@ -24375,10 +24915,12 @@ msgid "Resend Email Receipts for following donations?"
 msgstr ""
 
 #: build/assets/dist/js/give-admin-donations.js:4
+#: build/subscriptionDetails.js:10
 msgid "No donations found"
 msgstr ""
 
 #: build/assets/dist/js/give-admin-donations.js:4
+#: build/subscriptionDetails.js:10
 msgid "GiveWP Donations."
 msgstr ""
 
@@ -24438,165 +24980,165 @@ msgstr ""
 msgid " 90% of donors opt to give more to help cover transaction fees when given the opportunity. Give donors that opportunity."
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/assets/dist/js/give-admin-event-tickets.js:4
 #: build/eventTicketsBlock.js:1
 msgid "Event Name"
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/assets/dist/js/give-admin-event-tickets.js:4
 msgid "The event must have a name!"
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/assets/dist/js/give-admin-event-tickets.js:4
 msgid "Enter event name"
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/assets/dist/js/give-admin-event-tickets.js:4
 msgid "Briefly describe the details of your event"
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/assets/dist/js/give-admin-event-tickets.js:4
 msgid "Start date and time"
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/assets/dist/js/give-admin-event-tickets.js:4
 msgid "The event must have a start date!"
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/assets/dist/js/give-admin-event-tickets.js:4
 msgid "End date and time"
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/assets/dist/js/give-admin-event-tickets.js:4
 msgid "Save event"
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 msgctxt "Date format for event details page"
 msgid "MM/dd/yyyy 'at' h:mmaaa"
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 msgid "Edit your event"
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 msgid "Edit ticket"
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 msgid "Create ticket"
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 msgid "Ticket Name"
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 msgid "The ticket name is required."
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 msgid "Enter ticket name"
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 msgid "Leave empty for"
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 msgid "free"
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 msgid "Capacity"
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 msgid "The ticket capacity is required."
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 msgid "Save ticket"
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 msgid "This ticket type cannot be deleted because it has donations associated with it."
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #, js-format
 msgid "Really delete ticket #%d?"
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 msgid "No ticket created yet"
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 msgid "Create a ticket to complete your event setup."
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 msgid "Ticket"
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #, js-format
 msgid "%d of %s"
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 #: build/eventTicketsBlock.js:1
 #: build/eventTicketsTemplate.js:1
 msgid "Free"
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 msgid "Tickets"
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 msgid "Add Ticket"
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 msgid "<a>To link an event to a donation form</a>, add an event block to a donation form in the visual form builder."
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 msgid "No linked form yet"
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 msgid "No attendees yet"
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 msgid "Ticket Type"
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 msgid "Purchase Date"
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 msgid "Attendees"
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 msgid "Event details"
 msgstr ""
 
-#: build/assets/dist/js/give-admin-event-tickets-details.js:1
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
 msgid "Go to events list"
 msgstr ""
 
@@ -24727,145 +25269,145 @@ msgstr ""
 msgid "Upgrade this form"
 msgstr ""
 
-#: build/assets/dist/js/give-log-list-table-app.js:1
+#: build/assets/dist/js/give-log-list-table-app.js:4
 msgid "Category"
 msgstr ""
 
-#: build/assets/dist/js/give-log-list-table-app.js:1
-#: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/give-log-list-table-app.js:4
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
 msgid "Source"
 msgstr ""
 
-#: build/assets/dist/js/give-log-list-table-app.js:1
+#: build/assets/dist/js/give-log-list-table-app.js:4
 msgid "Date/Time"
 msgstr ""
 
-#: build/assets/dist/js/give-log-list-table-app.js:1
+#: build/assets/dist/js/give-log-list-table-app.js:4
 msgid "Loading log activity"
 msgstr ""
 
-#: build/assets/dist/js/give-log-list-table-app.js:1
-#: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/give-log-list-table-app.js:4
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
 msgid "Something went wrong!"
 msgstr ""
 
-#: build/assets/dist/js/give-log-list-table-app.js:1
+#: build/assets/dist/js/give-log-list-table-app.js:4
 msgid "All statuses"
 msgstr ""
 
-#: build/assets/dist/js/give-log-list-table-app.js:1
+#: build/assets/dist/js/give-log-list-table-app.js:4
 msgid "All sources"
 msgstr ""
 
-#: build/assets/dist/js/give-log-list-table-app.js:1
+#: build/assets/dist/js/give-log-list-table-app.js:4
 #: build/donationFormRegistrars.js:1
 #: build/formBuilderApp.js:13
 #: build/formBuilderRegistrars.js:1
 msgid "Reset"
 msgstr ""
 
-#: build/assets/dist/js/give-log-list-table-app.js:1
+#: build/assets/dist/js/give-log-list-table-app.js:4
 msgid "Flush all logs"
 msgstr ""
 
-#: build/assets/dist/js/give-log-list-table-app.js:1
+#: build/assets/dist/js/give-log-list-table-app.js:4
 msgid "Log ID"
 msgstr ""
 
-#: build/assets/dist/js/give-log-list-table-app.js:1
+#: build/assets/dist/js/give-log-list-table-app.js:4
 msgid "Date & Time"
 msgstr ""
 
-#: build/assets/dist/js/give-log-list-table-app.js:1
+#: build/assets/dist/js/give-log-list-table-app.js:4
 msgid "Flushing logs"
 msgstr ""
 
-#: build/assets/dist/js/give-log-list-table-app.js:1
+#: build/assets/dist/js/give-log-list-table-app.js:4
 msgid "Do you want to flush all logs?"
 msgstr ""
 
-#: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
 msgid "Migration Title"
 msgstr ""
 
-#: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
 msgid "Last run"
 msgstr ""
 
-#: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
 msgid "Run Order"
 msgstr ""
 
-#: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
 msgid "Continue Update"
 msgstr ""
 
-#: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
 msgid "Re-run Update"
 msgstr ""
 
-#: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
 msgid "Reverse Update"
 msgstr ""
 
-#: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
 msgid "Loading updates activity"
 msgstr ""
 
-#: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
 msgid "Migration Failed"
 msgstr ""
 
-#: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
 msgid "Database update failed!"
 msgstr ""
 
-#: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
 msgid "Check migration details for more information"
 msgstr ""
 
-#: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
 msgid "Running Update"
 msgstr ""
 
-#: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
 msgid "Create a Backup Before Running Database Update"
 msgstr ""
 
-#: build/assets/dist/js/give-migrations-list-table-app.js:1
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
 msgid "We strongly recommend you create a complete backup of your WordPress files and database prior to performing an update. We are not responsible for any misuse, deletions, white screens, fatal errors, or any other issue resulting from the use of this plugin."
 msgstr ""
 
-#: build/assets/dist/js/orphaned-forms-list-table.js:1
+#: build/assets/dist/js/orphaned-forms-list-table.js:4
 msgctxt "Date format"
 msgid "MM/dd/yyyy 'at' h:mmaaa"
 msgstr ""
 
-#: build/assets/dist/js/orphaned-forms-list-table.js:1
+#: build/assets/dist/js/orphaned-forms-list-table.js:4
 msgid "Date created"
 msgstr ""
 
-#: build/assets/dist/js/orphaned-forms-list-table.js:1
+#: build/assets/dist/js/orphaned-forms-list-table.js:4
 msgid "Associate forms"
 msgstr ""
 
-#: build/assets/dist/js/orphaned-forms-list-table.js:1
+#: build/assets/dist/js/orphaned-forms-list-table.js:4
 msgid "Associate forms with campaign"
 msgstr ""
 
-#: build/assets/dist/js/orphaned-forms-list-table.js:1
+#: build/assets/dist/js/orphaned-forms-list-table.js:4
 msgid "Selected forms"
 msgstr ""
 
-#: build/assets/dist/js/orphaned-forms-list-table.js:1
+#: build/assets/dist/js/orphaned-forms-list-table.js:4
 msgid "Select campaign"
 msgstr ""
 
-#: build/assets/dist/js/orphaned-forms-list-table.js:1
+#: build/assets/dist/js/orphaned-forms-list-table.js:4
 msgid "Associate forms "
 msgstr ""
 
-#: build/assets/dist/js/orphaned-forms-list-table.js:1
+#: build/assets/dist/js/orphaned-forms-list-table.js:4
 msgid "Loading donation forms"
 msgstr ""
 
@@ -24926,6 +25468,7 @@ msgid "See exactly what your form looks like for potential donors using the “D
 msgstr ""
 
 #: build/assets/dist/js/welcome-banner.js:1
+#: build/subscriptionDetails.js:10
 msgid "UPDATED"
 msgstr ""
 
@@ -25006,7 +25549,7 @@ msgstr ""
 
 #: build/campaignBlock.js:1
 #: build/campaignBlockApp.js:1
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 #: build/campaignBlocksLandingPage.js:1
 #: build/campaignGoalBlockApp.js:1
 #: build/campaignGridApp.js:1
@@ -25018,7 +25561,7 @@ msgid "Our goal"
 msgstr ""
 
 #: build/campaignBlock.js:1
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 #: build/campaignBlocksLandingPage.js:1
 #: build/campaignDonateButtonBlock.js:1
 #: build/campaignFormBlock.js:1
@@ -25027,7 +25570,7 @@ msgid "Select a Campaign"
 msgstr ""
 
 #: build/campaignBlock.js:1
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 #: build/campaignBlocksLandingPage.js:1
 #: build/campaignDonateButtonBlock.js:1
 #: build/campaignFormBlock.js:1
@@ -25036,7 +25579,7 @@ msgid "Select a campaign to display."
 msgstr ""
 
 #: build/campaignBlock.js:1
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 #: build/campaignBlocksLandingPage.js:1
 #: build/campaignDonateButtonBlock.js:1
 #: build/campaignFormBlock.js:1
@@ -25045,7 +25588,7 @@ msgid "Edit campaign settings in a new tab"
 msgstr ""
 
 #: build/campaignBlock.js:1
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 #: build/campaignBlocksLandingPage.js:1
 #: build/campaignDonateButtonBlock.js:1
 #: build/campaignFormBlock.js:1
@@ -25054,7 +25597,7 @@ msgid "Edit campaign"
 msgstr ""
 
 #: build/campaignBlock.js:1
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 #: build/campaignBlocksLandingPage.js:1
 #: build/campaignDonateButtonBlock.js:1
 #: build/campaignFormBlock.js:1
@@ -25063,7 +25606,7 @@ msgid "Select a campaign"
 msgstr ""
 
 #: build/campaignBlock.js:1
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 #: build/campaignBlocksLandingPage.js:1
 #: build/campaignDonateButtonBlock.js:1
 #: build/campaignFormBlock.js:1
@@ -25072,7 +25615,7 @@ msgid "Choose a campaign"
 msgstr ""
 
 #: build/campaignBlock.js:1
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 #: build/campaignBlocksLandingPage.js:1
 #: build/campaignDonateButtonBlock.js:1
 #: build/campaignFormBlock.js:1
@@ -25081,7 +25624,7 @@ msgid "No campaigns were found."
 msgstr ""
 
 #: build/campaignBlock.js:1
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 #: build/campaignBlocksLandingPage.js:1
 #: build/campaignDonateButtonBlock.js:1
 #: build/campaignFormBlock.js:1
@@ -25102,14 +25645,17 @@ msgid "Create campaign page."
 msgstr ""
 
 #: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 msgid "Show campaign image"
 msgstr ""
 
 #: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 msgid "Show description"
 msgstr ""
 
 #: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 msgid "Show goal"
 msgstr ""
 
@@ -25165,39 +25711,39 @@ msgstr ""
 msgid "Next page"
 msgstr ""
 
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 msgid "Grid"
 msgstr ""
 
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 msgid "The order campaigns are displayed in."
 msgstr ""
 
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 msgid "Total Amount Raised"
 msgstr ""
 
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 msgid "Choose whether the campaign order ascends or descends."
 msgstr ""
 
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 msgid "Filter by Campaign"
 msgstr ""
 
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 msgid "Campaigns per page"
 msgstr ""
 
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 msgid "Set the number of campaigns to be displayed on the first page load."
 msgstr ""
 
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 msgid "Show pagination"
 msgstr ""
 
-#: build/campaignBlocks.js:1
+#: build/campaignBlocks.js:4
 msgid "All campaigns will be spread across multiple pages."
 msgstr ""
 
@@ -25322,14 +25868,16 @@ msgid "Your campaign page and blocks will collect donations through this form by
 msgstr ""
 
 #: build/campaignDetails.js:10
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "An error occurred. The error message is:"
 msgstr ""
 
 #: build/campaignDetails.js:10
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "Reload page"
 msgstr ""
 
@@ -25395,33 +25943,33 @@ msgstr ""
 
 #: build/campaignDetails.js:10
 #: build/campaignListTable.js:4
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Upload Media"
 msgstr ""
 
 #: build/campaignDetails.js:10
 #: build/campaignListTable.js:4
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Please select an image file only."
 msgstr ""
 
 #: build/campaignDetails.js:10
 #: build/campaignListTable.js:4
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 #: build/formBuilderApp.js:13
 msgid "uploaded image"
 msgstr ""
 
 #: build/campaignDetails.js:10
 #: build/campaignListTable.js:4
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 #, js-format
 msgid "Remove %s"
 msgstr ""
 
 #: build/campaignDetails.js:10
 #: build/campaignListTable.js:4
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 #, js-format
 msgid "Change %s"
 msgstr ""
@@ -25879,246 +26427,298 @@ msgstr ""
 msgid "Read documentation on what we changed"
 msgstr ""
 
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "Saving changes"
 msgstr ""
 
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "Keep 100% of your fundraising revenue by providing donors with the option to cover the credit card processing fees"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Event ticket"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Fees recovered"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "Campaign name"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "Associated donor"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "No donor associated with this donation"
 msgstr ""
 
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/subscriptionDetails.js:10
+msgid "Gateway Details Unavailable"
+msgstr ""
+
+#: build/donationDetails.js:10
+#: build/subscriptionDetails.js:10
+msgid "This donation's gateway is not active on your site. Install the matching payment gateway to see full details."
+msgstr ""
+
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
 msgid "Recurring"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Donation summary"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Donation info"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "View details"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "View donation on gateway"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Fee Recovered"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Currency breakdown"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Donation ID not found."
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Resending"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Failed to resend receipt"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Receipt has been resent successfully"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Resend donation receipt to email"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Resend receipt"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Below is a detailed breakdown of this donation."
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Donation breakdown"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Billing information"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Receipt actions"
 msgstr ""
 
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "Private Note"
 msgstr ""
 
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "This note will be seen by only admins"
 msgstr ""
 
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "Add note"
 msgstr ""
 
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "You added a private note"
 msgstr ""
 
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "Private note deleted successfully"
 msgstr ""
 
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "Private note edited"
 msgstr ""
 
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "No notes yet"
 msgstr ""
 
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "Show more"
 msgstr ""
 
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "Delete Note"
 msgstr ""
 
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "Delete note"
 msgstr ""
 
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
 msgid "Phone number"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Donation details"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "This includes the donation information"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "Enter amount"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Donation date and time"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Donor comment"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Enter company"
 msgstr ""
 
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
 msgid "Phone"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
+msgid "Manage the donor connected to this donation"
+msgstr ""
+
+#: build/donationDetails.js:10
+msgid "Link the donation to the selected donor"
+msgstr ""
+
+#: build/donationDetails.js:10
+msgid "Error loading donors. Please try again."
+msgstr ""
+
+#: build/donationDetails.js:10
+msgid "Search for a donor..."
+msgstr ""
+
+#: build/donationDetails.js:10
+msgid "Loading donors..."
+msgstr ""
+
+#: build/donationDetails.js:10
+msgid "Select a donor"
+msgstr ""
+
+#: build/donationDetails.js:10
 msgid "Billing details"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "This includes the billing name, email and address"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 #, js-format
 msgid "Select a %s"
 msgstr ""
 
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
 msgid "Zip/Postal code"
 msgstr ""
 
-#: build/donationDetails.js:7
-#: build/donorDetails.js:7
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
 msgid "No custom fields added yet"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Custom form fields"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Manage the custom fields filled by the donor"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "Records"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Refund completed successfully"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Refund"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Trash donation"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Refund Donation"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 #, js-format
 msgid "Refund <strong>%s</strong> to <strong>%s</strong>"
 msgstr ""
 
-#: build/donationDetails.js:7
+#: build/donationDetails.js:10
 msgid "Are you sure you want to move this donation to the trash? You can restore it later if needed."
 msgstr ""
 
@@ -26169,8 +26769,11 @@ msgstr ""
 
 #: build/donationFormRegistrars.js:1
 #: build/formBuilderRegistrars.js:1
+#: build/subscriptionDetails.js:10
 msgid "day"
-msgstr ""
+msgid_plural "days"
+msgstr[0] ""
+msgstr[1] ""
 
 #: build/donationFormRegistrars.js:1
 #: build/formBuilderRegistrars.js:1
@@ -26179,8 +26782,11 @@ msgstr ""
 
 #: build/donationFormRegistrars.js:1
 #: build/formBuilderRegistrars.js:1
+#: build/subscriptionDetails.js:10
 msgid "week"
-msgstr ""
+msgid_plural "weeks"
+msgstr[0] ""
+msgstr[1] ""
 
 #: build/donationFormRegistrars.js:1
 #: build/formBuilderRegistrars.js:1
@@ -26194,8 +26800,11 @@ msgstr ""
 
 #: build/donationFormRegistrars.js:1
 #: build/formBuilderRegistrars.js:1
+#: build/subscriptionDetails.js:10
 msgid "month"
-msgstr ""
+msgid_plural "months"
+msgstr[0] ""
+msgstr[1] ""
 
 #: build/donationFormRegistrars.js:1
 #: build/formBuilderRegistrars.js:1
@@ -26209,8 +26818,11 @@ msgstr ""
 
 #: build/donationFormRegistrars.js:1
 #: build/formBuilderRegistrars.js:1
+#: build/subscriptionDetails.js:10
 msgid "quarter"
-msgstr ""
+msgid_plural "quarters"
+msgstr[0] ""
+msgstr[1] ""
 
 #: build/donationFormRegistrars.js:1
 #: build/formBuilderRegistrars.js:1
@@ -26224,8 +26836,11 @@ msgstr ""
 
 #: build/donationFormRegistrars.js:1
 #: build/formBuilderRegistrars.js:1
+#: build/subscriptionDetails.js:10
 msgid "year"
-msgstr ""
+msgid_plural "years"
+msgstr[0] ""
+msgstr[1] ""
 
 #: build/donationFormRegistrars.js:1
 #: build/formBuilderRegistrars.js:1
@@ -26337,330 +26952,331 @@ msgstr ""
 msgid "The following error occurred when submitting the form:"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Recent Transactions"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Shows the five recent transactions"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "View All Transactions"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Donor Since"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Last Contributed"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Never"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "First Contribution"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Preferred Method"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Additional information about the donor"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Highest donation"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Contributions"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Shows the donor's contribution over time"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Edit address"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Add an address"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Country is required"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Address 1 is required"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "City is required"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Zip/Postal code is required"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Update address"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Add address"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "Please fill in all required fields to continue"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Delete address"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 #, js-format
 msgid "Are you sure you want to delete Billing Address <strong>%s</strong>?"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Address to be deleted"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Cancel deletion"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 #, js-format
 msgid "Confirm deletion of Billing Address %s"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Delete billing address"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "This donor does not have any address saved."
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Billing Address:"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 #, js-format
 msgid "Billing Address %s"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Primary address badge"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Primary"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Address actions for"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Actions for address"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Set as primary"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Manage the address of the donor"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Add the first address for this donor"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Add new address. Currently"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "address"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "addresses"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "total"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Custom fields filled by the donor"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Add an email"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Email is required"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Set as primary email address for this donor"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 #: build/formBuilderApp.js:13
 msgid "Add email"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Please fix the email validation errors before submitting"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Please enter an email address to continue"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Delete email address"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 #, js-format
 msgid "Are you sure you want to delete <strong>%s</strong>?"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 #, js-format
 msgid "Confirm deletion of %s"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Manage the email address of the donor"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Donor email addresses"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Primary email address"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Email address:"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Primary email badge"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Additional email address"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Email actions for"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Actions for email"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Set"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "as primary email"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Delete email"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Add new email address. Currently"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "email"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "emails"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 #, js-format
 msgid "Upload %s"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Personal Details"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "This includes profile photo, name, phone, etc."
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Photo"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Title prefix"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Company name"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Current"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Prospective"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Retained"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Lapsed"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "New"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Recaptured"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Send email to donor"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "Send Email"
 msgstr ""
 
-#: build/donorDetails.js:7
+#: build/donorDetails.js:10
 msgid "View WordPress profile"
 msgstr ""
 
@@ -28081,6 +28697,222 @@ msgstr ""
 
 #: build/stripePaymentElementGateway.js:1
 msgid "Donation amount must be greater than zero to proceed."
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Total contribution so far"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Payments completed"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Unlimited"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Limited"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Subscription details"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Next payment"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "View subscription on gateway"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Information about the initial recurring donation"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Projected Annual Revenue"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Estimated yearly contribution based on billing amount."
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Estimated contribution"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Renewal donation"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Amount is required"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Date is required"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Update renewal date"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Adding renewal"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Add renewal"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Please note that this will not charge the donor nor create the renewal at the gateway."
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Dismiss notice"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Show all recurring donations under this subscription."
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "result"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "results"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Renewal added successfully"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Failed to add renewal"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Some changes made to this subscription will only affect future renewals."
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "No records found"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Accurate synchronization details"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Platform"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Payment synchronization successful"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "OLD"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Accurate payment synchronization details"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "A donation of <PaymentAmount/> has been added."
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Payment details"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "ACCURATE"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Subscription cancelled and moved to trash"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Subscription cancelled successfully"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Cancel subscription"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Proceed anyway"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "If you cancel this subscription, you won't receive any more payments from this subscription. Do you want to proceed?"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "This will not cancel the subscription at the gateway. Do you want to proceed anyway?"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Move subscription to trash after cancelling"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Subscription gateway isn’t active on your site."
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Test Subscription"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "every"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Sync subscription"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Trash subscription"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Move subscription to trash"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Trash Subscription"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Are you sure you want to move this subscription to the trash? You can restore it later if needed."
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Sync subscription details"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Syncing"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Resync"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "Proceed to sync"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "This will update the subscription details using the most recent data from the gateway. However, no changes will be made to existing payments."
 msgstr ""
 
 #: build/Campaigns/Blocks/Campaign/block.json

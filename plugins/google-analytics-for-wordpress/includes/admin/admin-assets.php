@@ -101,7 +101,7 @@ class MonsterInsights_Admin_Assets {
 		// For the settings pages, load the Vue app scripts.
 		if ( monsterinsights_is_settings_page() ) {
 			if ( ! defined( 'MONSTERINSIGHTS_LOCAL_JS_URL' ) ) {
-				+$this->enqueue_script_specific_css( 'src/modules/settings/settings.js' );
+				$this->enqueue_script_specific_css( 'src/modules/settings/settings.js' );
 			}
 
 			// Don't load other scripts on the settings page.
@@ -144,12 +144,12 @@ class MonsterInsights_Admin_Assets {
 
 		// Get current screen.
 		$screen = get_current_screen();
-
+		
 		// Bail if we're not on a MonsterInsights screen.
 		if ( empty( $screen->id ) || strpos( $screen->id, 'monsterinsights' ) === false ) {
 			return;
 		}
-
+		
 		$version_path = monsterinsights_is_pro_version() ? 'pro' : 'lite';
 		$text_domain  = monsterinsights_is_pro_version() ? 'google-analytics-premium' : 'google-analytics-for-wordpress';
 
@@ -230,6 +230,7 @@ class MonsterInsights_Admin_Assets {
 					'is_admin'                        => true,
 					'admin_email'                     => get_option( 'admin_email' ),
 					'site_url'                        => get_site_url(),
+					'site_name'                       => get_bloginfo( 'name' ),
 					'reports_url'                     => add_query_arg( 'page', 'monsterinsights_reports', admin_url( 'admin.php' ) ),
 					'landing_pages_top_reports_url'   => add_query_arg( 'page', 'monsterinsights_reports#/top-landing-pages', admin_url( 'admin.php' ) ),
 					'ecommerce_report_url'            => add_query_arg( 'page', 'monsterinsights_reports#/ecommerce', admin_url( 'admin.php' ) ),
@@ -318,7 +319,7 @@ class MonsterInsights_Admin_Assets {
 
 			return;
 		}
-
+		
 		// ublock notice
 		add_action( 'admin_print_footer_scripts', array( $this, 'monsterinsights_settings_ublock_error_js' ), 9999999 );
 	}

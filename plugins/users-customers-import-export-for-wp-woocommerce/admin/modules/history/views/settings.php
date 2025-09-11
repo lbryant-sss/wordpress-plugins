@@ -28,21 +28,22 @@ select.wt_iew_bulk_action{ float:left; width:auto; height:20px; margin-right:10p
 .log_list_tb .log_file_name_col{ text-align:left; }
 </style>
 <?php
+// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce verification not required.
 if(isset($_GET['page']) && $_GET['page']==$this->module_id.'_log')
 {
 	$page =$this->module_id.'_log';
-        $popup_hd_label = 'Log';
+    $popup_hd_label = __('Log Details', 'users-customers-import-export-for-wp-woocommerce');
 }else
 {
 	$page =$this->module_id;
-        $popup_hd_label = 'History';
+    $popup_hd_label = __('History Details', 'users-customers-import-export-for-wp-woocommerce');
 }
 ?>
 
 <div class="wt_iew_view_log wt_iew_popup">
 	<div class="wt_iew_popup_hd">
 		<span style="line-height:40px;" class="dashicons dashicons-media-text"></span>
-		<span class="wt_iew_popup_hd_label"><?php _e($popup_hd_label.' Details');?></span>
+		<span class="wt_iew_popup_hd_label"><?php echo esc_html($popup_hd_label);?></span>
 		<div class="wt_iew_popup_close">X</div>
 	</div>
 	<div class="wt_iew_log_container">
@@ -50,7 +51,7 @@ if(isset($_GET['page']) && $_GET['page']==$this->module_id.'_log')
 	</div>
 </div>
 <?php
-if($page==$this->module_id.'_log')
+if($this->module_id.'_log' === $page)
 {
 	include plugin_dir_path(__FILE__)."/_log_list.php";
 }else
@@ -58,5 +59,3 @@ if($page==$this->module_id.'_log')
 	include plugin_dir_path(__FILE__)."/_history_list.php";	
 }
 include $wf_admin_view_path."admin-header-and-help.php";
-
-?>

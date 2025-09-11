@@ -2,7 +2,6 @@
 
 namespace Vendidero\Shiptastic\ShippingMethod;
 
-use Vendidero\Shiptastic\Compatibility\Bundles;
 use Vendidero\Shiptastic\Extensions;
 use Vendidero\Shiptastic\Package;
 use Vendidero\Shiptastic\Packing\CartItem;
@@ -24,7 +23,7 @@ class MethodHelper {
 	public static function init() {
 		// Use a high priority here to make sure we are hooking even after plugins such as flexible shipping
 		add_filter( 'woocommerce_shipping_methods', array( __CLASS__, 'set_method_filters' ), 5000, 1 );
-		add_filter( 'woocommerce_package_rates', array( __CLASS__, 'maybe_disable_provider_combination' ), 300 );
+		add_filter( 'woocommerce_package_rates', array( __CLASS__, 'maybe_disable_rates' ), 300, 2 );
 
 		add_filter( 'woocommerce_generate_shipping_provider_method_tabs_html', array( __CLASS__, 'render_method_tabs' ), 10, 4 );
 		add_filter( 'woocommerce_generate_shipping_provider_method_zone_override_open_html', array( __CLASS__, 'render_zone_override' ), 10, 4 );
@@ -33,14 +32,44 @@ class MethodHelper {
 		add_filter( 'woocommerce_generate_shipping_provider_method_tabs_close_html', array( __CLASS__, 'render_method_tab_content_close' ), 10, 4 );
 		add_filter( 'woocommerce_generate_shipping_provider_method_configuration_sets_html', array( __CLASS__, 'render_method_configuration_sets' ), 10 );
 
+		add_filter( 'woocommerce_cart_shipping_packages', array( __CLASS__, 'split_cart_packages' ), 1 );
 		add_filter( 'woocommerce_cart_shipping_packages', array( __CLASS__, 'register_cart_items_to_pack' ) );
 		add_filter( 'woocommerce_shipping_methods', array( __CLASS__, 'register_shipping_methods' ) );
 		add_filter( 'woocommerce_hidden_order_itemmeta', array( __CLASS__, 'set_shipping_order_meta_hidden' ) );
+
+		add_filter( 'woocommerce_shipping_method_add_rate', array( __CLASS__, 'register_rate_meta' ), 1000, 3 );
 	}
 
-	public static function maybe_disable_provider_combination( $rates ) {
-		$provider_map = array();
-		$excluded_map = array();
+	public static function register_rate_meta( $rate, $args, $method ) {
+		/**
+		 * Store a map of cart items with their corresponding quantity
+		 * to allow retrieving packages after checkout.
+		 */
+		if ( $args['package'] ) {
+			$items_in_package = array();
+
+			foreach ( $args['package']['contents'] as $cart_item_key => $item ) {
+				if ( $product = $item['data'] ) {
+					$items_in_package[ $product->get_id() ] = array(
+						'quantity' => $item['quantity'],
+					);
+				}
+			}
+
+			$rate->add_meta_data( '_packaged_items', $items_in_package );
+		}
+
+		if ( $method = wc_stc_get_shipping_provider_method( $method ) ) {
+			$rate->add_meta_data( '_shipping_provider', $method->get_shipping_provider() );
+		}
+
+		return $rate;
+	}
+
+	public static function maybe_disable_rates( $rates, $package ) {
+		$provider_map     = array();
+		$excluded_map     = array();
+		$package_provider = isset( $package['shipping_provider'] ) ? $package['shipping_provider'] : false;
 
 		foreach ( $rates as $rate_key => $rate ) {
 			if ( is_a( $rate, 'WC_Shipping_Rate' ) ) {
@@ -49,14 +78,18 @@ class MethodHelper {
 						$provider_map[ $method->get_shipping_provider() ] = array();
 					}
 
-					$provider_map[ $method->get_shipping_provider() ][] = $rate_key;
+					if ( $package_provider && $method->get_shipping_provider() !== $package_provider ) {
+						unset( $rates[ $rate_key ] );
+					} else {
+						$provider_map[ $method->get_shipping_provider() ][] = $rate_key;
 
-					if ( $method->is_builtin_method() ) {
-						if ( $disable_if = $method->get_method()->get_disable_if_providers_available() ) {
-							$excluded_map[ $rate_key ] = array(
-								'provider'   => $method->get_shipping_provider(),
-								'disable_if' => $disable_if,
-							);
+						if ( $method->is_builtin_method() ) {
+							if ( $disable_if = $method->get_method()->get_disable_if_providers_available() ) {
+								$excluded_map[ $rate_key ] = array(
+									'provider'   => $method->get_shipping_provider(),
+									'disable_if' => $disable_if,
+								);
+							}
 						}
 					}
 				}
@@ -107,12 +140,59 @@ class MethodHelper {
 		return $methods;
 	}
 
-	public static function register_cart_items_to_pack( $cart_contents ) {
-		if ( ! Package::is_packing_supported() || apply_filters( 'woocommerce_shiptastic_disable_cart_packing', false ) ) {
-			return $cart_contents;
+	public static function split_cart_packages( $packages ) {
+		$new_packages = array();
+
+		foreach ( $packages as $index => $package_details ) {
+			foreach ( $package_details['contents'] as $content_key => $item ) {
+				$product = $item['data'];
+
+				if ( ! is_a( $product, 'WC_Product' ) ) {
+					continue;
+				} elseif ( ! $product->needs_shipping() ) {
+					continue;
+				}
+
+				$s_product = wc_shiptastic_get_product( $product );
+
+				if ( $s_product->is_shipped_separately() ) {
+					$provider_name = $s_product->get_ship_separately_via();
+
+					if ( ! isset( $new_packages[ $provider_name ] ) ) {
+						$new_packages[ $provider_name ] = $package_details;
+
+						$new_packages[ $provider_name ]['contents']          = array();
+						$new_packages[ $provider_name ]['shipping_provider'] = $provider_name;
+						$new_packages[ $provider_name ]['applied_coupons']   = array();
+						$new_packages[ $provider_name ]['contents_cost']     = 0.0;
+					}
+
+					$new_packages[ $provider_name ]['contents'][ $content_key ] = $item;
+					$new_packages[ $provider_name ]['contents_cost']           += $item['line_total'];
+
+					$packages[ $index ]['contents_cost'] -= $item['line_total'];
+					unset( $packages[ $index ]['contents'][ $content_key ] );
+
+					if ( empty( $packages[ $index ]['contents'] ) ) {
+						unset( $packages[ $index ] );
+					}
+				}
+			}
 		}
 
-		foreach ( $cart_contents as $index => $content ) {
+		if ( ! empty( $new_packages ) ) {
+			$packages = array_merge( $packages, array_values( $new_packages ) );
+		}
+
+		return $packages;
+	}
+
+	public static function register_cart_items_to_pack( $packages ) {
+		if ( ! Package::is_packing_supported() || apply_filters( 'woocommerce_shiptastic_disable_cart_packing', false ) ) {
+			return $packages;
+		}
+
+		foreach ( $packages as $index => $package_details ) {
 			$package_data = array(
 				'total'                        => 0.0,
 				'subtotal'                     => 0.0,
@@ -128,7 +208,7 @@ class MethodHelper {
 
 			do_action( 'woocommerce_shiptastic_before_prepare_cart_contents' );
 
-			foreach ( $content['contents'] as $content_key => $item ) {
+			foreach ( $package_details['contents'] as $content_key => $item ) {
 				$item    = apply_filters( 'woocommerce_shiptastic_cart_item', $item, $content_key );
 				$product = $item['data'];
 
@@ -185,25 +265,25 @@ class MethodHelper {
 			 * as Woo does not pass the current $cart object to the filter used here. Within the shipping package data there is unfortunately
 			 * no item total amount (incl taxes) available.
 			 */
-			if ( isset( $cart_contents[ $index ]['cart_subtotal'] ) && 0 !== $cart_contents[ $index ]['cart_subtotal'] && apply_filters( 'shiptastic_prefer_cart_totals_over_cart_item_totals', false, $cart_contents ) ) {
+			if ( isset( $package_details['cart_subtotal'] ) && 0 !== $package_details['cart_subtotal'] && apply_filters( 'shiptastic_prefer_cart_totals_over_cart_item_totals', false, $packages ) ) {
 				$cart  = WC()->cart;
 				$total = (float) $cart->get_cart_contents_total();
 
 				if ( $cart->display_prices_including_tax() ) {
 					$total += (float) $cart->get_cart_contents_tax();
 				} else {
-					$total = (float) $cart_contents[ $index ]['contents_cost']; // this is excl tax
+					$total = (float) $package_details['contents_cost']; // this is excl tax
 				}
 
 				$package_data['total']    = NumberUtil::round_to_precision( $total ); // item total after discounts
-				$package_data['subtotal'] = NumberUtil::round_to_precision( (float) $cart_contents[ $index ]['cart_subtotal'] ); // item total before discounts
+				$package_data['subtotal'] = NumberUtil::round_to_precision( (float) $package_details['cart_subtotal'] ); // item total before discounts
 			}
 
-			$cart_contents[ $index ]['package_data']  = $package_data;
-			$cart_contents[ $index ]['items_to_pack'] = $items;
+			$packages[ $index ]['package_data']  = $package_data;
+			$packages[ $index ]['items_to_pack'] = $items;
 		}
 
-		return $cart_contents;
+		return $packages;
 	}
 
 	public static function render_method_configuration_sets() {
@@ -227,7 +307,25 @@ class MethodHelper {
 			 * implications (e.g. the WC_Shipping_Method::get_instance_form_fields() is called on every option retrieval).
 			 */
 			add_filter( 'woocommerce_shipping_' . $method . '_instance_option', array( __CLASS__, 'inject_method_instance_settings' ), 10, 3 );
-			add_filter( 'woocommerce_shipping_instance_form_fields_' . $method, array( __CLASS__, 'add_method_settings' ), 10, 1 );
+			add_filter(
+				'woocommerce_shipping_instance_form_fields_' . $method,
+				function ( $p_settings ) use ( $method ) {
+					$p_settings = self::add_method_settings( $p_settings );
+
+					if ( self::is_builtin_method( $method ) ) {
+						if ( $provider_method = MethodHelper::get_provider_method( $method ) ) {
+							if ( isset( $p_settings['label_configuration_set_shipping_provider_title'] ) && $provider_method->get_shipping_provider_instance() ) {
+								$p_settings['label_configuration_set_shipping_provider_title']['title']       = _x( 'Additional Settings', 'shipments', 'woocommerce-germanized' );
+								$p_settings['label_configuration_set_shipping_provider_title']['description'] = sprintf( _x( 'Adjust additional settings and configure %s labels.', 'shipments', 'woocommerce-germanized' ), $provider_method->get_shipping_provider_instance()->get_title() );
+							}
+						}
+					}
+
+					return $p_settings;
+				},
+				10,
+				1
+			);
 
 			/**
 			 * Lazy-load option values
@@ -379,13 +477,15 @@ class MethodHelper {
 		return self::$methods[ $method_key ];
 	}
 
+	public static function is_builtin_method( $method ) {
+		return 'shipping_provider_' === substr( $method, 0, 18 ) ? true : false;
+	}
+
 	public static function method_is_excluded( $method ) {
 		$is_excluded = false;
 		$excluded    = apply_filters( 'woocommerce_shiptastic_get_methods_excluded_from_provider_settings', array( 'pr_dhl_paket', 'flexible_shipping_info' ) );
 
 		if ( in_array( $method, $excluded, true ) ) {
-			$is_excluded = true;
-		} elseif ( 'shipping_provider_' === substr( $method, 0, 18 ) ) {
 			$is_excluded = true;
 		}
 
@@ -405,6 +505,10 @@ class MethodHelper {
 	 */
 	public static function filter_method_option_value( $value, $setting_id, $method ) {
 		$shipping_method = self::get_provider_method( $method );
+
+		if ( $shipping_method->is_builtin_method() && 'shipping_provider' === $setting_id ) {
+			$value = $shipping_method->get_shipping_provider();
+		}
 
 		if ( $shipping_method->is_configuration_set_setting( $setting_id ) ) {
 			if ( $configuration_set = $shipping_method->get_configuration_set( $setting_id ) ) {
@@ -429,9 +533,11 @@ class MethodHelper {
 	 */
 	public static function filter_method_settings( $p_settings, $shipping_method ) {
 		$shipping_provider = isset( $p_settings['shipping_provider'] ) ? $p_settings['shipping_provider'] : '';
+		$return_costs      = isset( $p_settings['return_costs'] ) ? $p_settings['return_costs'] : '';
 		$method            = self::get_provider_method( $shipping_method );
 
 		$method->set_shipping_provider( $shipping_provider );
+		$method->set_return_costs( $return_costs );
 
 		foreach ( $p_settings as $setting_id => $setting_val ) {
 			if ( 'configuration_sets' === $setting_id ) {
@@ -529,6 +635,13 @@ class MethodHelper {
 				'default'     => apply_filters( 'woocommerce_shiptastic_shipping_provider_method_default_provider', '' ),
 				'options'     => wc_stc_get_shipping_provider_select(),
 				'description' => _x( 'Choose a shipping service provider which will be selected by default for an eligible shipment.', 'shipments', 'woocommerce-germanized' ),
+			),
+			'return_costs'       => array(
+				'title'       => _x( 'Return costs', 'shipments', 'woocommerce-germanized' ),
+				'type'        => 'text',
+				'class'       => 'wc_input_decimal',
+				'default'     => '',
+				'description' => _x( 'Choose whether returns are subject to a fee for your customers. Leave empty to use the return costs configured for the shipping provider instead.', 'shipments', 'woocommerce-germanized' ),
 			),
 			'configuration_sets' => array(
 				'title'   => '',

@@ -387,7 +387,7 @@ $popup_data = MYSTICKYMENU_UPDATE_POPUP_CONTENT; // get Data from update class,
             </div>
             <p id="suggestion"></p>
             <div class="popup-update-btn-wrap">
-                <button href="javascript:;" class="update-popup-btn submit-popup yes"> <?php esc_html_e('Count Me In', 'mystickyelements')?>
+                <button href="#" class="update-popup-btn submit-popup yes"> <?php esc_html_e('Count Me In', 'mystickyelements')?>
                     <span class="icon">
                         <img class="arrow-right" src="<?php echo esc_url($popup_data['arrow_right']) ?>" alt="arrow right">
                         <img id="pre-loader" style="display: none;" src="<?php echo esc_url($popup_data['pre_loader']) ?>" alt="pre loader">
@@ -395,7 +395,7 @@ $popup_data = MYSTICKYMENU_UPDATE_POPUP_CONTENT; // get Data from update class,
                     </span>
                      
                 </button>
-                <button href="javascript:;" class="update-popup-btn close-popup no"> <?php esc_html_e('Maybe Later', 'mystickyelements')?> </button>
+                <button href="#" class="update-popup-btn close-popup no"> <?php esc_html_e('Maybe Later', 'mystickyelements')?> </button>
             </div>
           
        </div>

@@ -34,7 +34,7 @@ Wt_Iew_IE_Basic_Helper::debug_panel($this->module_base);
 	{
 		?>
 		<div class="wt_iew_warn wt_iew_rerun_warn">
-			<?php _e('Unable to handle Re-Run request.');?>
+			<?php esc_html_e('Unable to handle Re-Run request.', 'users-customers-import-export-for-wp-woocommerce'); ?>
 		</div>
 		<?php
 	}
@@ -47,13 +47,13 @@ Wt_Iew_IE_Basic_Helper::debug_panel($this->module_base);
 	
 	<div class="wt-something-went-wrong" style="position:relative;display:none;">		
 		<div class="wt-something-went-wrong-wrap">			
-			<p class="wt_iew_popup_close" style="float:right;margin-top: -15px !important;margin-right: -15px !important;line-height: 0;"><a href="javascript:void(0)"><img src="<?php echo WT_U_IEW_PLUGIN_URL.'/assets/images/wt-close-button.png';?>"/></a></p>
-			<img src="<?php echo WT_U_IEW_PLUGIN_URL.'/assets/images/wt-error-icon.png';?>"/>
-			<h3><?php esc_html_e('Something went wrong'); ?></h3>
-			<p style="color:#000;text-align: left;"><?php esc_html_e('We are unable to complete your request.Try reducing the import batch count to 5 or less and increasing the Maximum execution time in the '); ?><a target="_blank" href="<?php echo admin_url('admin.php?page=wt_import_export_for_woo_basic') ?>"><?php esc_html_e('General settings'); ?></a>.</p>
-			<p style="color:#000;text-align: left;"><?php esc_html_e(' If not resolved, contact the');?> <a target="_blank" href="https://www.webtoffee.com/contact/"><?php esc_html_e('support team'); ?></a> <?php esc_html_e('with the');?> <a target="_blank" href="<?php echo admin_url('admin.php?page=wc-status&tab=logs') ?>"><?php esc_html_e('WooCommerce fatal error log'); ?></a>, <?php esc_html_e('if any'); ?>.</p>
+			<p class="wt_iew_popup_close" style="float:right;margin-top: -15px !important;margin-right: -15px !important;line-height: 0;"><a href="javascript:void(0)"><img src="<?php echo esc_url(WT_U_IEW_PLUGIN_URL.'/assets/images/wt-close-button.png');?>"/></a></p>
+			<img src="<?php echo esc_url(WT_U_IEW_PLUGIN_URL.'/assets/images/wt-error-icon.png');?>"/>
+			<h3><?php esc_html_e('Something went wrong', 'users-customers-import-export-for-wp-woocommerce'); ?></h3>
+			<p style="color:#000;text-align: left;"><?php esc_html_e('We are unable to complete your request.Try reducing the import batch count to 5 or less and increasing the Maximum execution time in the ', 'users-customers-import-export-for-wp-woocommerce'); ?><a target="_blank" href="<?php echo esc_url(admin_url('admin.php?page=wt_import_export_for_woo_basic')); ?>"><?php esc_html_e('General settings', 'users-customers-import-export-for-wp-woocommerce'); ?></a>.</p>
+			<p style="color:#000;text-align: left;"><?php esc_html_e(' If not resolved, contact the', 'users-customers-import-export-for-wp-woocommerce');?> <a target="_blank" href="https://www.webtoffee.com/contact/"><?php esc_html_e('support team', 'users-customers-import-export-for-wp-woocommerce'); ?></a> <?php esc_html_e('with the', 'users-customers-import-export-for-wp-woocommerce');?> <a target="_blank" href="<?php echo esc_url(admin_url('admin.php?page=wc-status&tab=logs')); ?>"><?php esc_html_e('WooCommerce fatal error log', 'users-customers-import-export-for-wp-woocommerce'); ?></a>, <?php esc_html_e('if any', 'users-customers-import-export-for-wp-woocommerce'); ?>.</p>
 			<br/>
-			<a href="javascript:void(0)" onclick='wt_iew_basic_export.refresh_export_page();' class="button button-primary"><?php esc_html_e('Try again'); ?></a>
+			<a href="javascript:void(0)" onclick='wt_iew_basic_export.refresh_export_page();' class="button button-primary"><?php esc_html_e('Try again', 'users-customers-import-export-for-wp-woocommerce'); ?></a>
 		</div>
 	</div>	
 	
@@ -63,7 +63,7 @@ Wt_Iew_IE_Basic_Helper::debug_panel($this->module_base);
 	foreach($this->steps as $stepk=>$stepv)
 	{
 		?>
-		<div class="wt_iew_export_step wt_iew_export_step_<?php echo $stepk;?>" data-loaded="0"></div>
+		<div class="wt_iew_export_step wt_iew_export_step_<?php echo esc_attr($stepk);?>" data-loaded="0"></div>
 		<?php
 	}
 	?>	

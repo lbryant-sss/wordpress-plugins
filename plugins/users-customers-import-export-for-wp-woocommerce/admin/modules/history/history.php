@@ -32,15 +32,14 @@ class Wt_Import_Export_For_Woo_Basic_History
 		);
 		
 		self::$status_label_arr=array(
-			0=>__('Running/Incomplete'),
-			1=>__('Finished'),
-			2=>__('Failed'),
+			0=>__('Running/Incomplete', 'users-customers-import-export-for-wp-woocommerce'),
+			1=>__('Finished', 'users-customers-import-export-for-wp-woocommerce'),
+			2=>__('Failed', 'users-customers-import-export-for-wp-woocommerce'),
 		);
 
 		self::$action_label_arr=array(
-			'export'=>__('Export'),
-			'import'=>__('Import'),
-//			'export_image'=>__('Image Export'),
+			'export'=>__('Export', 'users-customers-import-export-for-wp-woocommerce'),
+			'import'=>__('Import', 'users-customers-import-export-for-wp-woocommerce'),
 		);
 
 		/* Admin menu for hostory listing */
@@ -68,8 +67,8 @@ class Wt_Import_Export_For_Woo_Basic_History
 		$menus[$this->module_base]=array(
 			'submenu',
 			WT_IEW_PLUGIN_ID_BASIC,
-			__('History'),
-			__('History'),
+			__('History', 'users-customers-import-export-for-wp-woocommerce'),
+			__('History', 'users-customers-import-export-for-wp-woocommerce'),
 			apply_filters('wt_import_export_allowed_capability', 'import'),
 			$this->module_id,
 			array($this, 'admin_settings_page')
@@ -77,8 +76,8 @@ class Wt_Import_Export_For_Woo_Basic_History
 		$menus[$this->module_base.'_log']=array(
 			'submenu',
 			WT_IEW_PLUGIN_ID_BASIC,
-			__('Import Logs'),
-			__('Import Logs'),
+			__('Import Logs', 'users-customers-import-export-for-wp-woocommerce'),
+			__('Import Logs', 'users-customers-import-export-for-wp-woocommerce'),
 			apply_filters('wt_import_export_allowed_capability', 'import'),
 			$this->module_id.'_log',
 			array($this, 'admin_log_page')
@@ -94,11 +93,13 @@ class Wt_Import_Export_For_Woo_Basic_History
 
 			$out=array(
 				'status'=>0,
-				'msg'=>__('Error'),
+				'msg'=>__('Error', 'users-customers-import-export-for-wp-woocommerce'),
 			);
 
-			$history_action=Wt_Iew_Sh::sanitize_item($_POST['history_action'], 'text');
-			$data_type=Wt_Iew_Sh::sanitize_item($_POST['data_type'], 'text');
+			// phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce verification already done in the Wt_Iew_Sh::check_write_access() method
+			$history_action=isset($_POST['history_action']) ? sanitize_text_field(wp_unslash($_POST['history_action'])) : '';
+			$data_type=isset($_POST['data_type']) ? sanitize_text_field(wp_unslash($_POST['data_type'])) : '';
+			// phpcs:enable WordPress.Security.NonceVerification.Missing -- Nonce verification already done in the Wt_Iew_Sh::check_write_access() method
 
 			if(method_exists($this, $history_action) && in_array($history_action, $allowed_ajax_actions))
 			{
@@ -114,17 +115,19 @@ class Wt_Import_Export_For_Woo_Basic_History
 	}
 
 	/**
-	*	Ajax sub function to display logs
-	*
-	*/
+	 *	Ajax sub function to display logs
+	 *
+	 */
 	private function view_log($out)
 	{
-		$history_id=(isset($_POST['history_id']) ? absint($_POST['history_id']) : 0);
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verification already done in the ajax_main() method
+		$history_id=(isset($_POST['history_id']) ? absint(wp_unslash($_POST['history_id'])) : 0);
 		$out['html']='';
 	
 		if($history_id>0)
 		{
-			$offset=(isset($_POST['offset']) ? absint($_POST['offset']) : 0);
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verification already done in the ajax_main() method
+			$offset=(isset($_POST['offset']) ? absint(wp_unslash($_POST['offset'])) : 0);
 			$out['offset']=$offset;
 			$out['history_id']=$history_id;
 
@@ -163,14 +166,16 @@ class Wt_Import_Export_For_Woo_Basic_History
 							$out['html']=ob_get_clean();
 						}
 					}else{
-                                            $out['status']=1;                                            
-                                            $out['html']= sprintf( __( 'Please check the Generate import log is enabled under <a target = "_blank" href="%s">settings</a>' ), admin_url('admin.php?page=wt_import_export_for_woo_basic'));
-                                        }
+						$out['status']=1; 
+						// translators: %s is the link to the settings page.
+						$out['html']= sprintf( __( 'Please check the Generate import log is enabled under <a target = "_blank" href="%s">settings</a>', 'users-customers-import-export-for-wp-woocommerce' ), esc_url(admin_url('admin.php?page=wt_import_export_for_woo_basic')));
+					}
 				}
 			}
 		}else /* raw log viewing */
 		{
-			$log_file_name=(isset($_POST['log_file']) ? sanitize_text_field($_POST['log_file']) : '');
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verification already done in the ajax_main() method
+			$log_file_name=(isset($_POST['log_file']) ? sanitize_text_field(wp_unslash($_POST['log_file'])) : '');
 			if($log_file_name!="")
 			{
 				$ext_arr=explode(".", $log_file_name);
@@ -185,7 +190,7 @@ class Wt_Import_Export_For_Woo_Basic_History
 						$response=$reader->get_full_data($log_file_path);
 
 						$out['status']=1;
-						$out['html']='<div class="wt_iew_raw_log">'.nl2br(esc_html__($response['data_str'])).'</div>';
+						$out['html']='<div class="wt_iew_raw_log">'.nl2br(esc_html($response['data_str'])).'</div>';
 					}
 				}
 			}
@@ -202,18 +207,18 @@ class Wt_Import_Export_For_Woo_Basic_History
 	{
 		$fields['advanced_field_head'] =array(
 				'type'=>'field_group_head', //field type
-				'head'=>__('Advanced options'),
+				'head'=>__('Advanced options', 'users-customers-import-export-for-wp-woocommerce'),
 				'group_id'=>'advanced_field', //field group id
 				'show_on_default'=>0,
 			);
 		$fields['enable_history_auto_delete']=array(
-			'label'=>__("Auto delete history"),
+			'label'=>__("Auto delete history", 'users-customers-import-export-for-wp-woocommerce'),
 			'type'=>'checkbox',
-			'checkbox_fields' => array( 1 => __( 'Enable' ) ),
+			'checkbox_fields' => array( 1 => __( 'Enable', 'users-customers-import-export-for-wp-woocommerce' ) ),
 			'value' => 1,
 			'field_name'=>'enable_history_auto_delete',
 			'field_group'=>'advanced_field',
-			'help_text'=>__('Enabling this option will delete records from the history section upon reaching the count mentioned in Maximum entries.'),
+			'help_text'=>__('Enabling this option will delete records from the history section upon reaching the count mentioned in Maximum entries.', 'users-customers-import-export-for-wp-woocommerce'),
 			'validation_rule'=>array('type'=>'absint'),
 			'form_toggler'=>array(
 				'type'=>'parent',
@@ -222,7 +227,7 @@ class Wt_Import_Export_For_Woo_Basic_History
 		);
 
 		$fields['auto_delete_history_count']=array(
-			'label'=>__("Maximum entries"),
+			'label'=>__("Maximum entries", 'users-customers-import-export-for-wp-woocommerce'),
 			'type'=>'number',
             'value' =>100,
             'attr' =>array(
@@ -230,7 +235,7 @@ class Wt_Import_Export_For_Woo_Basic_History
             ),
 			'field_name'=>'auto_delete_history_count',
 			'field_group'=>'advanced_field',
-			'help_text'=>__('Indicates the maximum records to retain in history. Limit the number of records with status ‘Finished’. E.g On giving an input of 50, the system will retain(not delete) the latest 50 records with status ‘Finished’. Any other record with a different status will not be retained.'),
+			'help_text'=>__('Indicates the maximum records to retain in history. Limit the number of records with status ‘Finished’. E.g On giving an input of 50, the system will retain(not delete) the latest 50 records with status ‘Finished’. Any other record with a different status will not be retained.', 'users-customers-import-export-for-wp-woocommerce'),
 			'validation_rule'=>array('type'=>'absint'),
 			'form_toggler'=>array(
 				'type'=>'child',
@@ -246,11 +251,13 @@ class Wt_Import_Export_For_Woo_Basic_History
 	public function admin_log_page($args)
 	{	
 		/* delete action */
-		if(isset($_GET['wt_iew_delete_log'])) 
+		if(isset($_GET['wt_iew_delete_log'])) // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce verification performed in check_write_access function.
 		{
-			if(Wt_Iew_Sh::check_write_access(WT_IEW_PLUGIN_ID_BASIC))
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce verification performed in check_write_access function.
+			if(Wt_Iew_Sh::check_write_access(WT_IEW_PLUGIN_ID_BASIC)) // @codingStandardsIgnoreLine
 			{
-				$log_file_arr = isset($_GET['wt_iew_log_file']) ? explode(",", $_GET['wt_iew_log_file']) : array();
+				// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce verification performed in check_write_access function.
+				$log_file_arr = isset($_GET['wt_iew_log_file']) ? explode(",", sanitize_text_field(wp_unslash($_GET['wt_iew_log_file']))) : array();
 				$log_file_arr = Wt_Iew_Sh::sanitize_item($log_file_arr, 'text_arr');
 
 				if (is_array($log_file_arr)) {
@@ -270,7 +277,7 @@ class Wt_Import_Export_For_Woo_Basic_History
 							
 							// Validate the file is within allowed directory and is actually a file
 							if($real_path && $real_log_dir && strpos($real_path, $real_log_dir) === 0 && file_exists($real_path) && is_file($real_path)) {
-								@unlink($real_path);
+								wp_delete_file($real_path);
 							}
 						}
 					}
@@ -286,7 +293,8 @@ class Wt_Import_Export_For_Woo_Basic_History
 		$download_url=wp_nonce_url(admin_url('admin.php?wt_iew_log_download=1&file=_log_file_'), WT_IEW_PLUGIN_ID_BASIC);
 
 		//enqueue script
-		if(isset($_GET['page']) && $this->module_id.'_log' == $_GET['page'])
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce verification not required.
+		if(isset($_GET['page']) && $this->module_id.'_log' === $_GET['page'])
 		{
 			$this->enqueue_scripts($delete_url);
 		}
@@ -302,12 +310,15 @@ class Wt_Import_Export_For_Woo_Basic_History
 		global $wpdb;
 
 		/* delete action */
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce verification performed in check_write_access function.
 		if(isset($_GET['wt_iew_delete_history'])) 
 		{
-			if(Wt_Iew_Sh::check_write_access(WT_IEW_PLUGIN_ID_BASIC))
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce verification performed in check_write_access function.
+			if(Wt_Iew_Sh::check_write_access(WT_IEW_PLUGIN_ID_BASIC)) // @codingStandardsIgnoreLine
 			{
-				$history_id_arr=isset($_GET['wt_iew_history_id']) ? explode(",", $_GET['wt_iew_history_id']) : array();
-				$history_id_arr=Wt_Iew_Sh::sanitize_item($history_id_arr, 'absint_arr');
+				// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce verification performed in check_write_access function.
+				$history_id_arr=isset($_GET['wt_iew_history_id']) ? explode(",", sanitize_text_field(wp_unslash($_GET['wt_iew_history_id']))) : array();
+				$history_id_arr=array_map('absint', $history_id_arr);
 				if(count($history_id_arr)>0)
 				{
 					self::delete_history_by_id($history_id_arr);
@@ -320,9 +331,9 @@ class Wt_Import_Export_For_Woo_Basic_History
 		*/
 		$tb=$wpdb->prefix.Wt_Import_Export_For_Woo_Basic::$history_tb;
 
-		$post_type_arr=self::get_disticnt_items('item_type');
-		$action_type_arr=self::get_disticnt_items('template_type');
-		$status_arr=self::get_disticnt_items('status');
+		$post_type_arr=self::get_distinct_items('item_type');
+		$action_type_arr=self::get_distinct_items('template_type');
+		$status_arr=self::get_distinct_items('status');
 
 		$importer_post_types=apply_filters('wt_iew_importer_post_types_basic', array());
 		$exporter_post_types=apply_filters('wt_iew_exporter_post_types_basic', array());
@@ -332,6 +343,7 @@ class Wt_Import_Export_For_Woo_Basic_History
 		/**
 		*	Get history entries by Schedule ID
 		*/
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce verification not required.
 		$cron_id=(isset($_GET['wt_iew_cron_id']) ? absint($_GET['wt_iew_cron_id']) : 0);
 		$history_arr=array();
 		$list_by_cron=false;
@@ -367,21 +379,21 @@ class Wt_Import_Export_For_Woo_Basic_History
 		*/ 
 		$filter_by=array(
 			'item_type'=>array(
-				'label'=>__('Post type'),
+				'label'=>__('Post type', 'users-customers-import-export-for-wp-woocommerce'),
 				'values'=>$post_type_arr,
 				'val_labels'=>$post_type_label_arr,
 				'val_type'=>'%s',
 				'selected_val'=>'',
 			),
 			'template_type'=>array(
-				'label'=>__('Action type'),
+				'label'=>__('Action type', 'users-customers-import-export-for-wp-woocommerce'),
 				'values'=>$action_type_arr,
 				'val_labels'=>self::$action_label_arr,
 				'val_type'=>'%s',
 				'selected_val'=>'',
 			),
 			'status'=>array(
-				'label'=>__('Status'),
+				'label'=>__('Status', 'users-customers-import-export-for-wp-woocommerce'),
 				'values'=>$status_arr,
 				'val_labels'=>self::$status_label_arr,
 				'validation_rule'=>array('type'=>'absint'),
@@ -401,12 +413,12 @@ class Wt_Import_Export_For_Woo_Basic_History
 		*	Order by field vals
 		*/
 		$order_by=array(
-			'date_desc'=>array('label'=>__('Date descending'), 'sql'=>'created_at DESC'),
-			'date_asc'=>array('label'=>__('Date ascending'), 'sql'=>'created_at ASC'),
+			'date_desc'=>array('label'=>__('Date descending', 'users-customers-import-export-for-wp-woocommerce'), 'sql'=>'created_at DESC'),
+			'date_asc'=>array('label'=>__('Date ascending', 'users-customers-import-export-for-wp-woocommerce'), 'sql'=>'created_at ASC'),
 		);
 
-		/* just applying a text validation */
-		$conf_arr=isset($_GET['wt_iew_history']) ? Wt_Iew_Sh::sanitize_item($_GET['wt_iew_history'], 'text_arr') : array();
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce verification not required.
+		$conf_arr=isset($_GET['wt_iew_history']) ? array_map('sanitize_text_field', wp_unslash((array) $_GET['wt_iew_history'])) : array();
 		$url_params_allowed=array(); //this array will only include the allowed $_GET params. This will use in pagination section
 
 		/**
@@ -455,6 +467,7 @@ class Wt_Import_Export_For_Woo_Basic_History
 		$max_data=(isset($conf_arr['max_data']) ? absint($conf_arr['max_data']) : $this->max_records);
 		$this->max_records=($max_data>0 ? $max_data : $this->max_records);
 		
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce verification not required.
 		$offset=(isset($_GET['offset']) ? absint($_GET['offset']) : 0);
 		$url_params_allowed['max_data']=$this->max_records;
 		$pagination_url_params=array('wt_iew_history'=>$url_params_allowed, 'page'=>$this->module_id);
@@ -489,8 +502,10 @@ class Wt_Import_Export_For_Woo_Basic_History
 
 		if(count($where_qry_format_arr)>0)
 		{
+			// phpcs:disable WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 			$num_sql=$wpdb->prepare($num_sql, $where_qry_val_arr);
 			$list_sql=$wpdb->prepare($list_sql, $where_qry_val_arr);
+			// phpcs:enable WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 		}
 
 		if($no_records) /* in list_by cron, history IDs are not available */
@@ -499,10 +514,14 @@ class Wt_Import_Export_For_Woo_Basic_History
 			$history_list=array();
 		}else
 		{
+			// phpcs:disable WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 			$total_records=$wpdb->get_row($num_sql, ARRAY_A);
+			// phpcs:enable WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 			$total_records=($total_records && isset($total_records['total_records']) ? $total_records['total_records'] : 0);
 
+			// phpcs:disable WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 			$history_list=$wpdb->get_results($list_sql, ARRAY_A);
+			// phpcs:enable WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 			$history_list=($history_list ? $history_list : array());
 		}
 
@@ -512,29 +531,28 @@ class Wt_Import_Export_For_Woo_Basic_History
 		$delete_url_params['offset']=$offset;
 		$delete_url=wp_nonce_url(admin_url('admin.php?'.http_build_query($delete_url_params)), WT_IEW_PLUGIN_ID_BASIC);
 
-		//enqueue script
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce verification not required.
 		if(isset($_GET['page']) && $this->module_id == $_GET['page'])
 		{
 			$this->enqueue_scripts($delete_url);
 		}
-
 
 		include plugin_dir_path(__FILE__).'views/settings.php';
 	}	
 
 	private function enqueue_scripts($delete_url)
 	{
-            if(Wt_Import_Export_For_Woo_Basic_Common_Helper::wt_is_screen_allowed()){
-		wp_enqueue_script($this->module_id, plugin_dir_url(__FILE__).'assets/js/main.js', array('jquery'), WT_U_IEW_VERSION, false);
+        if(Wt_Import_Export_For_Woo_Basic_Common_Helper::wt_is_screen_allowed()){
+			wp_enqueue_script($this->module_id, plugin_dir_url(__FILE__).'assets/js/main.js', array('jquery'), WT_U_IEW_VERSION, false);
 
-		$params=array(
-			'delete_url'=>$delete_url,
-			'msgs'=>array(
-				'sure'=>__('Are you sure?'),
-			)
-		); 
-		wp_localize_script($this->module_id, 'wt_iew_history_basic_params', $params); 
-            }
+			$params=array(
+				'delete_url'=>$delete_url,
+				'msgs'=>array(
+					'sure'=>__('Are you sure?', 'users-customers-import-export-for-wp-woocommerce'),
+				)
+			); 
+			wp_localize_script($this->module_id, 'wt_iew_history_basic_params', $params); 
+        }
 	}
 
 	public static function record_failure($history_id, $msg)
@@ -558,15 +576,7 @@ class Wt_Import_Export_For_Woo_Basic_History
 	{
 		global $wpdb;
 		$tb=$wpdb->prefix.Wt_Import_Export_For_Woo_Basic::$history_tb;
-		if(is_array($id))
-		{
-			$where=" IN(".implode(",", array_fill(0, count($id), '%d')).")";
-			$where_data=$id;
-		}else
-		{
-			$where="=%d";
-			$where_data=array($id);
-		}
+		$where_data = is_array($id) ? $id : array($id);
 
 		//first remove files associated with it. give argument as array then no need to check the result array type
 		$allowed_ext_arr=array('csv', 'xml'); //please update this array if new file types introduced
@@ -586,7 +596,7 @@ class Wt_Import_Export_For_Woo_Basic_History
 							$file_path=Wt_Import_Export_For_Woo_Basic_Export::get_file_path($listv['file_name']);
 							if($file_path && file_exists($file_path))
 							{
-								@unlink($file_path);
+								wp_delete_file($file_path);
 							}
 						}					
 					}
@@ -598,22 +608,20 @@ class Wt_Import_Export_For_Woo_Basic_History
 					$log_file_path=$action_module_obj->get_file_path($log_file_name);
 					if(file_exists($log_file_path))
 					{
-						@unlink($log_file_path);
+						wp_delete_file($log_file_path);
 					}
 					$log_path=Wt_Import_Export_For_Woo_Basic_Log::$log_dir;
 					$wt_log_path = glob($log_path.'/'.$listv['id'].'_*.log');
 					if(isset($wt_log_path[0]) && !empty($wt_log_path[0]) && file_exists($wt_log_path[0]))
 					{
-						@unlink($wt_log_path[0]);
+						wp_delete_file($wt_log_path[0]);
 					}
 				}
 			}	
 		}
 
-
-		$wpdb->query( 
-		    $wpdb->prepare("DELETE FROM $tb WHERE id".$where, $where_data)
-		);
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+		$wpdb->query( $wpdb->prepare("DELETE FROM {$tb} WHERE id IN(" . implode(",", array_fill(0, count($where_data), '%d')) . ")", $where_data ) );
 	}
 
 	public static function update_history_entry($history_id, $update_data, $update_data_type)
@@ -627,10 +635,12 @@ class Wt_Import_Export_For_Woo_Basic_History
 		$update_where_type=array(
 			'%d'
 		);
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 		if($wpdb->update($tb, $update_data, $update_where, $update_data_type, $update_where_type)!==false)
 		{
 			return true;
 		}
+		// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 		return false;
 	}
 
@@ -668,9 +678,9 @@ class Wt_Import_Export_For_Woo_Basic_History
 	 	{
 	 		global $wpdb;
 			$tb=$wpdb->prefix.Wt_Import_Export_For_Woo_Basic::$history_tb;
-			
-			$data=$wpdb->get_results("SELECT * FROM $tb WHERE status=".self::$status_arr['finished']." AND id<(SELECT id FROM $tb ORDER BY id DESC LIMIT ".($record_count-1).",1)", ARRAY_A);
-			
+			// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+			$data = $wpdb->get_results($wpdb->prepare("SELECT * FROM {$tb} WHERE status=%s AND id < ( SELECT id FROM {$tb} ORDER BY id DESC LIMIT %d,1)", self::$status_arr['finished'], ($record_count-1)), ARRAY_A);
+			// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 			if($data && is_array($data))
 			{
 				$id_arr=array_column($data, 'id');
@@ -705,8 +715,9 @@ class Wt_Import_Export_For_Woo_Basic_History
 		$insert_data_type=array(
 			'%s','%s','%s','%d','%s','%d','%d','%d'
 		);
-		
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 		$insert_response=$wpdb->insert($tb, $insert_data, $insert_data_type);
+		// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 		
 		/* check for auto delete */
 		self::auto_delete_history_entry();
@@ -723,11 +734,13 @@ class Wt_Import_Export_For_Woo_Basic_History
 	*	@param string $column table column name
 	*	@return array array of distinct column values
 	*/
-	private static function get_disticnt_items($column)
+	private static function get_distinct_items($column)
 	{
 		global $wpdb;
 		$tb=$wpdb->prefix.Wt_Import_Export_For_Woo_Basic::$history_tb;
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 		$data=$wpdb->get_results("SELECT DISTINCT $column FROM $tb ORDER BY $column ASC", ARRAY_A);
+		// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 		$data=is_array($data) ? $data : array();
 		return array_column($data, $column);
 	}
@@ -739,24 +752,21 @@ class Wt_Import_Export_For_Woo_Basic_History
 	{
 		global $wpdb;
 		$tb=$wpdb->prefix.Wt_Import_Export_For_Woo_Basic::$history_tb;
-		if(is_array($id))
-		{
-			$where=" IN(".implode(",", array_fill(0, count($id), '%d')).")";
-			$where_data=$id;
-		}else
-		{
-			$where="=%d";
-			$where_data=array($id);
-		}
-		$qry=$wpdb->prepare("SELECT * FROM $tb WHERE id".$where, $where_data);
+		$where_data= is_array($id) ? $id : array($id);
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+		$results = $wpdb->get_results( $wpdb->prepare("SELECT * FROM $tb WHERE id IN(" . implode(",", array_fill(0, count($where_data), '%d')) . ")", $where_data), ARRAY_A );
+		// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 
-		if(!is_array($id))
-		{
-			return $wpdb->get_row($qry, ARRAY_A);
-		}else
-		{
-			return $wpdb->get_results($qry, ARRAY_A);
-		} 
+		if ( is_array( $results ) && ! empty( $results ) ) {
+			if ( ! is_array( $id ) ) {
+				return $results[0];
+			}else
+			{
+				return $results;
+			}
+		} else {
+			return array();
+		}
 	}
 
 
@@ -765,10 +775,12 @@ class Wt_Import_Export_For_Woo_Basic_History
 	*/
 	public function download_file()
 	{
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce verification performed in check_write_access function.
 		if(isset($_GET['wt_iew_log_download'])) { 
 
 			if(Wt_Iew_Sh::check_write_access(WT_IEW_PLUGIN_ID_BASIC)) { /* check nonce and role */
 			
+				// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce verification performed in check_write_access function.
 				$file_name = (isset($_GET['file']) ? sanitize_text_field(wp_unslash($_GET['file'])) : '');
 				if($file_name != "") {
 
@@ -788,7 +800,9 @@ class Wt_Import_Export_For_Woo_Basic_History
 						if($file_path && $real_log_dir && strpos($file_path, $real_log_dir) === 0 && file_exists($file_path)) {
 
 							// Disable error display and logging
+							// phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged
 							ini_set('display_errors', 0);
+							// phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged
 							ini_set('error_reporting', 0);
 							
 							// Clean ALL output buffers
@@ -815,16 +829,22 @@ class Wt_Import_Export_For_Woo_Basic_History
 							flush();
 							
 							// Read file in binary mode
+							// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_readfile
 							if(readfile($file_path) === false) {
 								$chunk_size = 1024 * 1024;
 								// Fallback to chunked reading if readfile fails
+								// phpcs:disable WordPress.WP.AlternativeFunctions.file_system_operations_fopen
 								$handle = fopen($file_path, 'rb');
+								// phpcs:enable WordPress.WP.AlternativeFunctions.file_system_operations_fopen
 								while (!feof($handle)) {
-									echo fread($handle, $chunk_size);
+									// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+									echo fread($handle, $chunk_size); // @codingStandardsIgnoreLine
 									ob_flush();
 									flush();
 								}
+								// phpcs:disable WordPress.WP.AlternativeFunctions.file_system_operations_fclose
 								fclose($handle);
+								// phpcs:enable WordPress.WP.AlternativeFunctions.file_system_operations_fclose
 							}
 							exit();
 						}
@@ -865,7 +885,7 @@ class Wt_Import_Export_For_Woo_Basic_History
 			$pgend=$ttpg;
 		}
 
-		$html='<span class="wt_iew_pagination_total_info">'.$total.__(' record(s)').'</span>';
+		$html='<span class="wt_iew_pagination_total_info">'.$total.__(' record(s)', 'users-customers-import-export-for-wp-woocommerce').'</span>';
 		$url_params_string=http_build_query($url_params);
 		$url_params_string=$url_params_string!="" ? '&'.$url_params_string : '';
 		$url=(strpos($url, '?')!==false ? $url.'&' : $url.'?');

@@ -269,7 +269,7 @@ function wc_stc_get_shipping_provider_method( $instance_id ) {
  * @return false|string
  */
 function wc_stc_get_current_shipping_method_id() {
-	$chosen_shipping_methods = WC()->session ? WC()->session->get( 'chosen_shipping_methods' ) : array();
+	$chosen_shipping_methods = wc_stc_get_current_shipping_method_ids();
 
 	if ( ! empty( $chosen_shipping_methods ) ) {
 		return reset( $chosen_shipping_methods );
@@ -278,12 +278,50 @@ function wc_stc_get_current_shipping_method_id() {
 	return false;
 }
 
+/**
+ * Checks whether the current cart/checkout contains multiple packages.
+ *
+ * @return bool
+ */
+function wc_stc_cart_has_multiple_packages() {
+	return count( WC()->shipping()->get_packages() ) > 1;
+}
+
+/**
+ * @return array
+ */
+function wc_stc_get_current_shipping_method_ids() {
+	return WC()->session ? (array) WC()->session->get( 'chosen_shipping_methods' ) : array();
+}
+
 function wc_stc_get_current_shipping_provider_method() {
 	if ( $current = wc_stc_get_current_shipping_method_id() ) {
-		return wc_stc_get_shipping_provider_method( $current );
+		if ( $method = wc_stc_get_shipping_provider_method( $current ) ) {
+			if ( wc_stc_cart_has_multiple_packages() ) {
+				$method = clone $method;
+				$method->set_provider_is_disabled( true );
+			}
+
+			return $method;
+		}
 	}
 
 	return false;
+}
+
+/**
+ * @return \Vendidero\Shiptastic\ShippingMethod\ProviderMethod[]
+ */
+function wc_stc_get_current_shipping_provider_methods() {
+	$methods = array();
+
+	foreach ( wc_stc_get_current_shipping_method_ids() as $shipping_method_id ) {
+		if ( $method = wc_stc_get_shipping_provider_method( $shipping_method_id ) ) {
+			$methods[ $shipping_method_id ] = $method;
+		}
+	}
+
+	return $methods;
 }
 
 function wc_stc_get_prefixed_shipment_status_name( $status ) {
@@ -429,7 +467,6 @@ function wc_stc_get_shipment_selectable_statuses( $shipment ) {
  */
 function wc_stc_create_return_shipment( $order_shipment, $args = array() ) {
 	try {
-
 		if ( ! $order_shipment || ! is_a( $order_shipment, 'Vendidero\Shiptastic\Order' ) ) {
 			throw new Exception( esc_html_x( 'Invalid order.', 'shipments', 'woocommerce-germanized' ) );
 		}
@@ -443,6 +480,7 @@ function wc_stc_create_return_shipment( $order_shipment, $args = array() ) {
 			array(
 				'items' => array(),
 				'props' => array(),
+				'save'  => true,
 			)
 		);
 
@@ -456,7 +494,11 @@ function wc_stc_create_return_shipment( $order_shipment, $args = array() ) {
 		$shipment->set_order_shipment( $order_shipment );
 		$shipment->sync( $args['props'] );
 		$shipment->sync_items( $args );
-		$shipment->save();
+		$shipment->calculate_return_costs();
+
+		if ( $args['save'] ) {
+			$shipment->save();
+		}
 	} catch ( Exception $e ) {
 		return new WP_Error( 'error', $e->getMessage() );
 	}
@@ -690,6 +732,90 @@ function wc_stc_get_address_from_street_and_number( $street, $number, $country )
 	}
 
 	return $address;
+}
+
+/**
+ * Formats address_1 and address_2 based on known formats for certain countries.
+ * Falls back to searching house number in address_2 if house number is not provided in address_1 line.
+ *
+ * @param array|string $address
+ * @param string $country
+ *
+ * @return array
+ */
+function wc_stc_get_formatted_address_data( $address, $country ) {
+	if ( is_string( $address ) ) {
+		$address = array(
+			'address_1' => $address,
+			'address_2' => '',
+		);
+	}
+
+	$address = wp_parse_args(
+		(array) $address,
+		array(
+			'address_1'                 => '',
+			'address_2'                 => '',
+			'house_number_in_address_2' => false,
+		)
+	);
+
+	$format = Package::get_country_street_format( $country );
+
+	if ( $format && ! empty( $address['address_1'] ) ) {
+		$split = wc_stc_split_shipment_street( $address['address_1'] );
+
+		/**
+		 * Fallback to searching for house number in both address_1 and address_2.
+		 */
+		if ( empty( $split['number'] ) ) {
+			$full_split = wc_stc_split_shipment_street( wc_stc_format_address_line( $format, $address['address_2'], $address['address_1'] ) );
+
+			if ( ! empty( $full_split['number'] ) ) {
+				$address['house_number_in_address_2'] = true;
+				$split                                = $full_split;
+			}
+		}
+
+		if ( ! empty( $split['number'] ) ) {
+			$address_addition     = $split['addition'] . ( ! empty( $split['addition_2'] ) ? ' ' . $split['addition_2'] : '' );
+			$address['address_1'] = wc_stc_format_address_line( $format, $split['number'], $split['street'], $address_addition );
+
+			if ( ! empty( $address_addition ) ) {
+				$address['address_2'] = $address_addition . ', ' . $address['address_2'];
+
+				/**
+				 * Override address_2 field with address addition in case house number is in address_2
+				 */
+				if ( $address['house_number_in_address_2'] ) {
+					$address['address_2'] = $address_addition;
+
+					/**
+					 * Address addition (which contains house number) has already been added to address_1
+					 */
+					if ( strstr( $format, '%sa' ) ) {
+						$address['address_2'] = '';
+					}
+				}
+			}
+
+			/**
+			 * Remove trailing comma + (duplicate) whitespace
+			 */
+			$address['address_2'] = preg_replace( '/\s+/', ' ', rtrim( $address['address_2'], ', ' ) );
+		}
+	}
+
+	return $address;
+}
+
+function wc_stc_format_address_line( $format, $number, $street, $street_addition = '' ) {
+	$formatted_address_line = str_replace( array( '%n', '%sa', '%s' ), array( $number, $street_addition, $street ), $format );
+
+	/**
+	 * Remove trailing comma + (duplicate) whitespace
+	 */
+	return preg_replace( '/\s+/', ' ', rtrim( $formatted_address_line, ', ' ) );
 }
 
 function wc_stc_split_shipment_street( $street_str ) {
@@ -1004,20 +1130,23 @@ function wc_stc_get_shipment_return_address( $shipment_order = false ) {
 }
 
 /**
- * @param WC_Order $order
+ * @param WC_Order|\Vendidero\Shiptastic\Order $order
+ * @param string $method_id
+ *
  * @return WC_Order_Item_Shipping|false
  */
-function wc_stc_get_shipment_order_shipping_method( $order ) {
-	$methods = $order->get_shipping_methods();
-	$method  = false;
+function wc_stc_get_shipment_order_shipping_method( $order, $method_id = '' ) {
+	$method = false;
 
-	if ( ! empty( $methods ) ) {
-		$method_data = array_values( $methods );
-		$method      = array_shift( $method_data );
+	if ( is_a( $order, '\Vendidero\Shiptastic\Order' ) ) {
+		$shipment_order = $order;
+		$order          = $order->get_order();
+	} else {
+		$shipment_order = wc_stc_get_shipment_order( $order );
+	}
 
-		if ( ! $method ) {
-			$method = false;
-		}
+	if ( $shipment_order ) {
+		$method = $shipment_order->get_shipping_method( $method_id );
 	}
 
 	/**
@@ -1025,19 +1154,23 @@ function wc_stc_get_shipment_order_shipping_method( $order ) {
 	 *
 	 * @param WC_Order_Item_Shipping|false $method The order item.
 	 * @param WC_Order $order The order object.
+	 * @param string $method_id The shipping method if, if available
 	 *
 	 * @package Vendidero/Shiptastic
 	 */
-	return apply_filters( 'woocommerce_shiptastic_shipment_order_shipping_method', $method, $order );
+	return apply_filters( 'woocommerce_shiptastic_shipment_order_shipping_method', $method, $order, $method_id );
 }
 
 /**
- * @param WC_Order $order
+ * @param WC_Order|\Vendidero\Shiptastic\Order $order
+ * @param string $method_id
+ *
+ * @return string
  */
-function wc_stc_get_shipment_order_shipping_method_id( $order ) {
+function wc_stc_get_shipment_order_shipping_method_id( $order, $method_id = '' ) {
 	$id = '';
 
-	if ( $method = wc_stc_get_shipment_order_shipping_method( $order ) ) {
+	if ( $method = wc_stc_get_shipment_order_shipping_method( $order, $method_id ) ) {
 		$id = $method->get_method_id() . ':' . $method->get_instance_id();
 	}
 
@@ -1046,10 +1179,11 @@ function wc_stc_get_shipment_order_shipping_method_id( $order ) {
 	 *
 	 * @param string   $id The shipping method id.
 	 * @param WC_Order $order The order object.
+	 * @param string   $method_id The shipping method id, if available
 	 *
 	 * @package Vendidero/Shiptastic
 	 */
-	return apply_filters( 'woocommerce_shiptastic_shipment_order_shipping_method_id', $id, $order );
+	return apply_filters( 'woocommerce_shiptastic_shipment_order_shipping_method_id', $id, $order, $method_id );
 }
 
 function wc_stc_render_shipment_action_buttons( $actions ) {
@@ -1443,20 +1577,44 @@ function wc_stc_order_is_customer_returnable( $order, $check_date = true ) {
  *
  * @return bool|\Vendidero\Shiptastic\Interfaces\ShippingProvider
  */
-function wc_stc_get_order_shipping_provider( $order ) {
+function wc_stc_get_order_shipping_provider( $order, $method_id = '' ) {
+	$shipment_order = false;
+
 	if ( is_numeric( $order ) ) {
 		$order = wc_get_order( $order );
 	} elseif ( is_a( $order, '\Vendidero\Shiptastic\Order' ) ) {
-		$order = $order->get_order();
+		$shipment_order = $order;
+		$order          = $shipment_order->get_order();
 	}
 
-	if ( ! $order ) {
+	if ( ! is_a( $order, 'WC_Order' ) ) {
 		return false;
 	}
 
-	$provider = false;
+	if ( ! $shipment_order ) {
+		$shipment_order = wc_stc_get_shipment_order( $order );
+	}
 
-	foreach ( array_reverse( wc_stc_get_shipment_order( $order )->get_shipments() ) as $shipment ) {
+	$provider        = false;
+	$shipping_method = $shipment_order->get_shipping_method_by_id( $method_id );
+
+	if ( is_a( $shipping_method, 'WC_Order_Item_Shipping' ) ) {
+		$provider_name = $shipping_method->get_meta( '_shipping_provider' );
+
+		if ( ! empty( $provider_name ) && ( $provider_instance = wc_stc_get_shipping_provider( $provider_name ) ) ) {
+			$provider = $provider_instance;
+		}
+	}
+
+	/**
+	 * Allow the actual shipping provider to be overridden in case shipments have
+	 * already been created (manually).
+	 */
+	foreach ( array_reverse( $shipment_order->get_shipments() ) as $shipment ) {
+		if ( ! empty( $method_id ) && $shipment->get_shipping_method() !== $method_id ) {
+			continue;
+		}
+
 		if ( $shipment->get_shipping_provider_instance() ) {
 			$provider = $shipment->get_shipping_provider_instance();
 			break;
@@ -1464,9 +1622,7 @@ function wc_stc_get_order_shipping_provider( $order ) {
 	}
 
 	if ( ! $provider ) {
-		$method_id = wc_stc_get_shipment_order_shipping_method_id( $order );
-
-		if ( $method = wc_stc_get_shipping_provider_method( $method_id ) ) {
+		if ( $method = $shipment_order->get_shipping_method( $method_id ) ) {
 			$provider = $method->get_shipping_provider_instance();
 		}
 	}
@@ -1476,10 +1632,11 @@ function wc_stc_get_order_shipping_provider( $order ) {
 	 *
 	 * @param bool|\Vendidero\Shiptastic\Interfaces\ShippingProvider $provider The shipping provider instance.
 	 * @param WC_Order              $order The order instance.
+	 * @param string                $method_id The order item shipping id, if available
 	 *
 	 * @package Vendidero/Shiptastic
 	 */
-	return apply_filters( 'woocommerce_shiptastic_get_order_shipping_provider', $provider, $order );
+	return apply_filters( 'woocommerce_shiptastic_get_order_shipping_provider', $provider, $order, $method_id );
 }
 
 function wc_stc_get_customer_order_return_request_key() {
@@ -1499,7 +1656,6 @@ function wc_stc_customer_can_add_return_shipment( $order_id ) {
 		$key = wc_stc_get_customer_order_return_request_key();
 
 		if ( ( $order_shipment = wc_stc_get_shipment_order( $order_id ) ) && ! empty( $key ) ) {
-
 			if ( hash_equals( $order_shipment->get_order_return_request_key(), $key ) ) {
 				$can_view_shipments = true;
 			}
@@ -1690,11 +1846,58 @@ function wc_stc_get_shipment_error( $error ) {
 }
 
 function wc_shiptastic_substring( $str, $start, $length = null ) {
-	if ( function_exists( 'mb_substr' ) ) {
-		$str = mb_substr( $str, $start, $length );
-	} else {
-		$str = substr( $str, $start, $length );
-	}
+	if ( is_array( $str ) ) {
+		return array_map( 'wc_shiptastic_substring', $str );
+	} elseif ( is_scalar( $str ) ) {
+		if ( function_exists( 'mb_substr' ) ) {
+			$str = mb_substr( $str, $start, $length );
+		} else {
+			$str = substr( $str, $start, $length );
+		}
 
-	return $str;
+		return $str;
+	} else {
+		return $str;
+	}
+}
+
+/**
+ *
+ * Remove any special char except dash and whitespace.
+ *
+ * @param string|array $str
+ *
+ * @return string|array
+ */
+function wc_shiptastic_get_alphanumeric_string( $str ) {
+	if ( is_array( $str ) ) {
+		return array_map( 'wc_shiptastic_get_alphanumeric_string', $str );
+	} elseif ( is_scalar( $str ) ) {
+		$str = wc_shiptastic_decode_html( $str );
+		$str = remove_accents( $str );
+		$str = preg_replace( '/[^ \w-]/', ' ', $str );
+		$str = preg_replace( '/\s+/', ' ', $str );
+
+		return wc_clean( $str );
+	} else {
+		return $str;
+	}
+}
+
+/**
+ * Convert html entities, e.g. &amp; to utf-8.
+ * Do not call html_entity_decode on bool as that would transform true => 1.
+ *
+ * @param string|array $str
+ *
+ * @return string|array
+ */
+function wc_shiptastic_decode_html( $str ) {
+	if ( is_array( $str ) ) {
+		return array_map( 'wc_shiptastic_decode_html', $str );
+	} elseif ( is_scalar( $str ) && ! is_bool( $str ) ) {
+		return html_entity_decode( $str, ENT_QUOTES | ENT_HTML5, 'UTF-8' );
+	} else {
+		return $str;
+	}
 }

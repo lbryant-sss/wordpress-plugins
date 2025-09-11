@@ -3,7 +3,7 @@ Contributors: tomeraharon, galdub, premio
 Tags:notification bar, floating bar, sticky menu, sticky header, sticky bar
 Requires at least: 3.5.1
 Tested up to: 6.8
-Stable tag: 2.8.2
+Stable tag: 2.8.3
 License: GPLv3
 
 🔔 Create a welcome notification bar for your website. Also, My Sticky Bar plugin can make your menu or header sticky to the top when scrolled 📌
@@ -350,6 +350,9 @@ After installing the plugin, you’ll have the option to turn on the welcome bar
 
 
 == Changelog ==
+
+= 2.8.3 =
+WordPress Playground widget creation bug fixed
 
 = 2.8.2 =
 Improved support flow

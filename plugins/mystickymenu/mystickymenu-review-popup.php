@@ -20,7 +20,7 @@ if( $page_views >= 1 && $reviewStatus ) { ?>
 		<div class="popup-form-content upgrade-modal rating-modal">
 			<div class="popup-content" style="position: relative;">
 				<div class="close-popup-button">
-					<a class="hide-upgrade-modal" href="javascript:;" ><span></span></a>
+					<a class="hide-upgrade-modal" href="#" ><span></span></a>
 				</div>				
 				<div class="rating-modal-steps active" id="step-1">
 					<div class="upgrade-title"><?php esc_html_e("Seems like My Sticky Bar is bringing you value  🥳", "mystickymenu"); ?></div>

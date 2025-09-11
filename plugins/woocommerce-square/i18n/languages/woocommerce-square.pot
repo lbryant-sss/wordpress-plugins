@@ -2,10 +2,10 @@
 # This file is distributed under the GPL-3.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce Square 4.9.8\n"
+"Project-Id-Version: WooCommerce Square 5.0.0\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/woocommerce-square\n"
-"POT-Creation-Date: 2025-08-21 16:22:02+00:00\n"
+"POT-Creation-Date: 2025-09-10 00:10:16+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -81,7 +81,7 @@ msgid "Stock must be fetched from Square before editing stock quantity"
 msgstr ""
 
 #: includes/Admin/Privacy.php:53 includes/Admin/Settings_Page.php:54
-#: includes/Gateway.php:93 includes/Settings.php:872
+#: includes/Gateway.php:93 includes/Settings.php:890
 msgid "Square"
 msgstr ""
 
@@ -188,7 +188,7 @@ msgid ""
 msgstr ""
 
 #: includes/Admin/Rest/WC_REST_Square_Credit_Card_Payment_Settings_Controller.php:134
-#: includes/Gateway.php:727
+#: includes/Gateway.php:739
 msgid ""
 "This setting only applies to the Apple Pay button. When Google Pay is "
 "available, the Google Pay button will always have the \"Buy with\" button "
@@ -217,58 +217,64 @@ msgstr ""
 msgid "ID of the placeholder media."
 msgstr ""
 
-#: includes/Admin/Rest/WC_REST_Square_Settings_Controller.php:89
+#: includes/Admin/Rest/WC_REST_Square_Settings_Controller.php:90
 msgid "Application ID for the Sandbox Application."
 msgstr ""
 
-#: includes/Admin/Rest/WC_REST_Square_Settings_Controller.php:94
+#: includes/Admin/Rest/WC_REST_Square_Settings_Controller.php:95
 msgid "Access Token for the Sandbox Test Account."
 msgstr ""
 
-#: includes/Admin/Rest/WC_REST_Square_Settings_Controller.php:99
+#: includes/Admin/Rest/WC_REST_Square_Settings_Controller.php:100
 msgid "Square sandbox ID."
 msgstr ""
 
-#: includes/Admin/Rest/WC_REST_Square_Settings_Controller.php:104
+#: includes/Admin/Rest/WC_REST_Square_Settings_Controller.php:105
 msgid "Log debug messages to the WooCommerce status log."
 msgstr ""
 
-#: includes/Admin/Rest/WC_REST_Square_Settings_Controller.php:109
+#: includes/Admin/Rest/WC_REST_Square_Settings_Controller.php:110
 msgid "Square location ID. (Sandbox)"
 msgstr ""
 
-#: includes/Admin/Rest/WC_REST_Square_Settings_Controller.php:114
+#: includes/Admin/Rest/WC_REST_Square_Settings_Controller.php:115
 msgid "Square location ID."
 msgstr ""
 
-#: includes/Admin/Rest/WC_REST_Square_Settings_Controller.php:119
+#: includes/Admin/Rest/WC_REST_Square_Settings_Controller.php:120
 msgid "Choose where data will be updated for synced products."
 msgstr ""
 
-#: includes/Admin/Rest/WC_REST_Square_Settings_Controller.php:124
+#: includes/Admin/Rest/WC_REST_Square_Settings_Controller.php:125
 msgid "Enable to fetch inventory changes from Square."
 msgstr ""
 
-#: includes/Admin/Rest/WC_REST_Square_Settings_Controller.php:129
+#: includes/Admin/Rest/WC_REST_Square_Settings_Controller.php:130
 msgid "Enable to override Product images from Square."
 msgstr ""
 
-#: includes/Admin/Rest/WC_REST_Square_Settings_Controller.php:134
+#: includes/Admin/Rest/WC_REST_Square_Settings_Controller.php:135
 msgid "Hide synced products when not found in Square."
 msgstr ""
 
-#: includes/Admin/Rest/WC_REST_Square_Settings_Controller.php:139
+#: includes/Admin/Rest/WC_REST_Square_Settings_Controller.php:140
 msgid "Frequency for how regularly WooCommerce will sync products with Square."
 msgstr ""
 
-#: includes/Admin/Rest/WC_REST_Square_Settings_Controller.php:144
+#: includes/Admin/Rest/WC_REST_Square_Settings_Controller.php:145
 msgid "Type of debug mode."
 msgstr ""
 
-#: includes/Admin/Rest/WC_REST_Square_Settings_Controller.php:149
+#: includes/Admin/Rest/WC_REST_Square_Settings_Controller.php:150
 msgid ""
 "Enable detailed decline messages to the customer during checkout when "
 "possible, rather than a generic decline message."
+msgstr ""
+
+#: includes/Admin/Rest/WC_REST_Square_Settings_Controller.php:155
+msgid ""
+"Enable bidirectional fulfillment synchronization between WooCommerce and "
+"Square orders."
 msgstr ""
 
 #: includes/Admin/Settings_Page.php:144
@@ -510,47 +516,48 @@ msgstr ""
 msgid "Too many attributes, maximum allowed are 6."
 msgstr ""
 
-#: includes/Admin.php:163
-msgid "Too many attribute values, maximum allowed are 250"
+#: includes/Admin.php:164
+#. translators: %d - maximum allowed attribute values
+msgid "Too many attribute values: %d (max 250)"
 msgstr ""
 
-#: includes/Admin.php:164
+#: includes/Admin.php:165
 msgid "Too many variations, maximum allowed are 250."
 msgstr ""
 
-#: includes/Admin.php:210 includes/Sync/Records/Record.php:208
+#: includes/Admin.php:211 includes/Sync/Records/Record.php:208
 msgid "Resolved"
 msgstr ""
 
-#: includes/Admin.php:211
+#: includes/Admin.php:212
 msgid "No records found"
 msgstr ""
 
-#: includes/Admin.php:212
+#: includes/Admin.php:213
 msgid "Skipped"
 msgstr ""
 
-#: includes/Admin.php:213
+#: includes/Admin.php:214
 msgid "Updated"
 msgstr ""
 
-#: includes/Admin.php:214
+#: includes/Admin.php:215
 msgid "Imported"
 msgstr ""
 
-#: includes/Admin.php:216
+#: includes/Admin.php:217
 msgid "Enable to fetch inventory changes from Square"
 msgstr ""
 
-#: includes/Admin.php:217
+#: includes/Admin.php:218
 msgid "Enable to push inventory changes to Square"
 msgstr ""
 
-#: includes/Admin.php:220
+#: includes/Admin.php:221
 msgid "Inventory is fetched from Square periodically and updated in WooCommerce"
 msgstr ""
 
-#: includes/Admin.php:223
+#: includes/Admin.php:224
 #. translators: Placeholders: %1$s - <strong> tag, %2$s - </strong> tag
 msgid ""
 "Inventory is %1$salways fetched from Square%2$s periodically to account for "
@@ -1092,7 +1099,7 @@ msgid "Subtotal"
 msgstr ""
 
 #: includes/Framework/PaymentGateway/ApplePay/Payment_Gateway_Apple_Pay.php:548
-#: includes/Gateway/API/Requests/Orders.php:319
+#: includes/Gateway/API/Requests/Orders.php:412
 #: includes/Gateway/Cash_App_Pay_Gateway.php:852
 #: includes/Gateway/Digital_Wallet.php:615
 msgid "Discount"
@@ -1121,7 +1128,7 @@ msgstr ""
 
 #: includes/Framework/PaymentGateway/ApplePay/Payment_Gateway_Apple_Pay_Admin.php:103
 #: includes/Framework/PaymentGateway/Payment_Gateway.php:1183
-#: includes/Gateway.php:717
+#: includes/Gateway.php:729
 msgid "Enable / Disable"
 msgstr ""
 
@@ -1380,10 +1387,10 @@ msgstr ""
 #: includes/Gateway/Blocks_Handler.php:126
 #: includes/Gateway/Cash_App_Pay_Blocks_Handler.php:115
 #: includes/Gateway/Cash_App_Pay_Gateway.php:183
-#: includes/Gateway/Cash_App_Pay_Gateway.php:1236
+#: includes/Gateway/Cash_App_Pay_Gateway.php:1248
 #: includes/Gateway/Digital_Wallet.php:145 includes/Gateway/Gift_Card.php:369
 #: includes/Gateway/Payment_Form.php:221 includes/Gateway.php:324
-#: includes/Gateway.php:1066 includes/Gateway.php:1146
+#: includes/Gateway.php:1078 includes/Gateway.php:1158
 msgid "An error occurred, please try again or try an alternate form of payment."
 msgstr ""
 
@@ -1741,7 +1748,7 @@ msgid "%1$s Refund Failed: %2$s"
 msgstr ""
 
 #: includes/Framework/PaymentGateway/Payment_Gateway.php:2644
-#: includes/Gateway/Cash_App_Pay_Gateway.php:647 includes/Gateway.php:1241
+#: includes/Gateway/Cash_App_Pay_Gateway.php:647 includes/Gateway.php:1253
 #. translators: Placeholders: %s - payment gateway title (such as
 #. Authorize.net, Braintree, etc)
 msgid "%s Order completely refunded."
@@ -2165,12 +2172,12 @@ msgstr ""
 msgid "Every %d Minutes"
 msgstr ""
 
-#: includes/Gateway/API/Requests/Orders.php:355
+#: includes/Gateway/API/Requests/Orders.php:448
 msgid " - (Adjusted Tax for) - "
 msgstr ""
 
-#: includes/Gateway/API/Requests/Orders.php:458
-#: includes/Gateway/API/Requests/Orders.php:497
+#: includes/Gateway/API/Requests/Orders.php:551
+#: includes/Gateway/API/Requests/Orders.php:590
 msgid "Adjustment"
 msgstr ""
 
@@ -2247,6 +2254,11 @@ msgstr ""
 msgid "Failed to make request updateOrder."
 msgstr ""
 
+#: includes/Gateway/API.php:751
+#. translators: %s: Error details from the searchOrders request.
+msgid "Failed to make request searchOrders: %s"
+msgstr ""
+
 #: includes/Gateway/Blocks_Handler.php:240
 #. translators: %1$s - opening bold HTML tag, %2$s - closing bold HTML tag,
 #. %3$s - version number
@@ -2289,12 +2301,12 @@ msgstr ""
 msgid "Pay securely using Cash App Pay."
 msgstr ""
 
-#: includes/Gateway/Cash_App_Pay_Gateway.php:494 includes/Gateway.php:548
+#: includes/Gateway/Cash_App_Pay_Gateway.php:494 includes/Gateway.php:560
 #. translators: %s maximum refund date.
 msgid "Refunds must be made within %s of the original payment date."
 msgstr ""
 
-#: includes/Gateway/Cash_App_Pay_Gateway.php:518 includes/Gateway.php:572
+#: includes/Gateway/Cash_App_Pay_Gateway.php:518 includes/Gateway.php:584
 msgid ""
 "Could not find original transaction tender. Please refund this transaction "
 "from your Square dashboard."
@@ -2321,6 +2333,12 @@ msgstr ""
 #. ("Test"), %3$s - transaction type (authorization/charge), %4$s - card type
 #. (mastercard, visa, ...), %5$s - last four digits of the card
 msgid "%1$s %2$s %3$s Approved for an amount of %4$s"
+msgstr ""
+
+#: includes/Gateway/Cash_App_Pay_Gateway.php:1218 includes/Gateway.php:506
+#. translators: %s is the Square order ID linked to the Square order in the
+#. admin.
+msgid "Square Order ID: %s"
 msgstr ""
 
 #: includes/Gateway/Digital_Wallet.php:183
@@ -2500,29 +2518,29 @@ msgstr ""
 msgid "No payment token exists for this ID."
 msgstr ""
 
-#: includes/Gateway.php:651
+#: includes/Gateway.php:663
 msgid "Customer Profiles"
 msgstr ""
 
-#: includes/Gateway.php:652
+#: includes/Gateway.php:664
 msgid ""
 "Check to enable tokenization and allow customers to securely save their "
 "payment details for future checkout."
 msgstr ""
 
-#: includes/Gateway.php:690
+#: includes/Gateway.php:702
 msgid "UnionPay"
 msgstr ""
 
-#: includes/Gateway.php:711
+#: includes/Gateway.php:723
 msgid "Digital Wallet Settings"
 msgstr ""
 
-#: includes/Gateway.php:712
+#: includes/Gateway.php:724
 msgid "Take payments on your store with Apple Pay and Google Pay."
 msgstr ""
 
-#: includes/Gateway.php:719
+#: includes/Gateway.php:731
 #. translators: Placeholders: %1$s - <a> tag, %2$s - </a> tag
 msgid ""
 "Allow customers to pay with Apple Pay or Google Pay from your Product, Cart "
@@ -2530,51 +2548,51 @@ msgid ""
 "our %1$sdocumentation%2$s."
 msgstr ""
 
-#: includes/Gateway.php:722
+#: includes/Gateway.php:734
 msgid "Enable digital wallets"
 msgstr ""
 
-#: includes/Gateway.php:726
+#: includes/Gateway.php:738
 msgid "Button Type"
 msgstr ""
 
-#: includes/Gateway.php:728
+#: includes/Gateway.php:740
 msgid "Select which text is displayed on the digital wallet buttons."
 msgstr ""
 
-#: includes/Gateway.php:740
+#: includes/Gateway.php:752
 msgid "Apple Pay Button Color"
 msgstr ""
 
-#: includes/Gateway.php:741
+#: includes/Gateway.php:753
 msgid "Select the color of the Apple Pay button."
 msgstr ""
 
-#: includes/Gateway.php:753
+#: includes/Gateway.php:765
 msgid "Google Pay Button Color"
 msgstr ""
 
-#: includes/Gateway.php:754
+#: includes/Gateway.php:766
 msgid "Select the color of the Google Pay button."
 msgstr ""
 
-#: includes/Gateway.php:765
+#: includes/Gateway.php:777
 msgid "Hide Digital Wallet Buttons"
 msgstr ""
 
-#: includes/Gateway.php:766
+#: includes/Gateway.php:778
 msgid ""
 "Select any digital wallet buttons you don't want to be displayed on your "
 "store."
 msgstr ""
 
-#: includes/Gateway.php:1122
+#: includes/Gateway.php:1134
 msgid ""
 "Your cart contains a Square Gift Card product which can only be purchased "
 "using the Square payment gateway."
 msgstr ""
 
-#: includes/Gateway.php:1292
+#: includes/Gateway.php:1304
 msgid "Order not found."
 msgstr ""
 
@@ -2846,7 +2864,7 @@ msgstr ""
 msgid "Gateway settings migration from %1$s to %2$s completed."
 msgstr ""
 
-#: includes/Plugin.php:319
+#: includes/Plugin.php:344
 #. translators: Placeholders: %1$s - <a> tag, %2$s - </a> tag
 msgid ""
 "Heads up! There may be a problem with your connection to Square. In order "
@@ -2854,24 +2872,24 @@ msgid ""
 "site%2$s."
 msgstr ""
 
-#: includes/Plugin.php:336
+#: includes/Plugin.php:361
 msgid "You are connected to Square!"
 msgstr ""
 
-#: includes/Plugin.php:343
+#: includes/Plugin.php:368
 msgid "To get started, set your business location."
 msgstr ""
 
-#: includes/Plugin.php:349
+#: includes/Plugin.php:374
 #. translators: Placeholders: %1$s - <a> tag, %2$s - </a> tag
 msgid "Visit the %1$splugin settings%2$s to set your business location."
 msgstr ""
 
-#: includes/Plugin.php:359
+#: includes/Plugin.php:384
 msgid "You are ready to sync products!"
 msgstr ""
 
-#: includes/Plugin.php:365
+#: includes/Plugin.php:390
 #. translators: Placeholders: %1$s - <strong> tag, %2$s - product count, %3$s -
 #. </strong> tag, %4$s - <a> tag, %5$s - </a> tag
 msgid ""
@@ -2879,7 +2897,7 @@ msgid ""
 "now &raquo;%5$s"
 msgstr ""
 
-#: includes/Plugin.php:377
+#: includes/Plugin.php:402
 #. translators: Placeholders: %1$s - <strong> tag, %2$s - </strong> tag, %3$s -
 #. <a> tag, %4$s - </a> tag
 msgid ""
@@ -2887,7 +2905,7 @@ msgid ""
 "products to sync data &raquo;%4$s"
 msgstr ""
 
-#: includes/Plugin.php:393
+#: includes/Plugin.php:418
 #. translators: Placeholders: %1$s - <a> tag, %2$s - </a> tag
 msgid ""
 "Heads up! Square is configured to sync product inventory, but WooCommerce "
@@ -2895,7 +2913,7 @@ msgid ""
 "ensure product inventory counts are kept in sync."
 msgstr ""
 
-#: includes/Plugin.php:422
+#: includes/Plugin.php:447
 #. translators: Placeholders: %1$s - plugin name, %2$ - plugin version number,
 #. %3$s - opening <a> HTML link tag, %4$s - closing </a> HTML link tag,  %5$s -
 #. opening <a> HTML link tag, %6$s - closing </a> HTML link tag
@@ -2906,7 +2924,7 @@ msgid ""
 "%5$supdated documentation%6$s."
 msgstr ""
 
-#: includes/Plugin.php:462
+#: includes/Plugin.php:487
 #. translators: Placeholders: %1$s - <strong> tag, %2$s - </strong> tag, %3$s -
 #. 2-character country code, %4$s - comma separated list of 2-character country
 #. codes
@@ -2915,7 +2933,7 @@ msgid ""
 "accept transactions from merchants outside of %4$s."
 msgstr ""
 
-#: includes/Plugin.php:505
+#: includes/Plugin.php:530
 #. translators: Placeholders: %1$s - <strong> tag, %2$s - </strong> tag, %3$s -
 #. <a> tag, %4$s - </a> tag
 msgid ""
@@ -2923,7 +2941,7 @@ msgid ""
 "Square is inactive. Please disconnect and reconnect to resolve."
 msgstr ""
 
-#: includes/Plugin.php:540
+#: includes/Plugin.php:565
 #. translators: Placeholders: %1$s = <strong> tag, %2$s = </strong> tag
 msgid ""
 "%1$sWooCommerce Square:%2$s Product prices are entered inclusive of tax, "
@@ -2931,7 +2949,7 @@ msgid ""
 "your Square tax rates match your WooCommerce tax rates."
 msgstr ""
 
-#: includes/Plugin.php:573
+#: includes/Plugin.php:598
 #. translators: Placeholders: %1$s = store currency, %2$s = configured Square
 #. business location currency, %3$s = <a> tag, %4$s = </a> tag, %5$s = <a> tag,
 #. %6$s = </a> tag
@@ -3035,6 +3053,28 @@ msgstr ""
 msgid ""
 "[Pull Inventory] The product does not exist in the WooCommerce store for "
 "the item variation: %1$s."
+msgstr ""
+
+#: includes/Sync/Order_Importer.php:56
+#. translators: %s is the Square state.
+msgid "Order status updated from Square. Square state: %s"
+msgstr ""
+
+#: includes/Sync/Order_Importer.php:77
+msgid "Fulfillment completed in Square Dashboard/POS."
+msgstr ""
+
+#: includes/Sync/Order_Importer.php:172
+msgid "Order fulfillment completed in Square."
+msgstr ""
+
+#: includes/Sync/Order_Importer.php:175
+#. translators: %s is the tracking number.
+msgid " Tracking: %s"
+msgstr ""
+
+#: includes/Sync/Order_Importer.php:197
+msgid "Order pickup completed in Square."
 msgstr ""
 
 #: includes/Sync/Product_Import.php:647
@@ -3188,21 +3228,21 @@ msgstr ""
 msgid "%1$s has a message for you: \"%2$s\""
 msgstr ""
 
-#: woocommerce-square.php:334
+#: woocommerce-square.php:338
 #. translators: plugin name
 msgid ""
 "<strong>All features in %1$s have been disabled</strong> due to unsupported "
 "settings:<br>"
 msgstr ""
 
-#: woocommerce-square.php:342
+#: woocommerce-square.php:346
 #. translators: minimum PHP version, current PHP version
 msgid ""
 "&bull;&nbsp;<strong>Invalid PHP version: </strong>The minimum PHP version "
 "required is %1$s. You are running %2$s.<br>"
 msgstr ""
 
-#: woocommerce-square.php:351
+#: woocommerce-square.php:355
 #. translators: link to documentation
 msgid ""
 "&bull;&nbsp;<strong>Invalid OPcache config: </strong><a href=\"%s\" "
@@ -3211,7 +3251,7 @@ msgid ""
 "caching options."
 msgstr ""
 
-#: woocommerce-square.php:360
+#: woocommerce-square.php:364
 #. translators: 1: Minimum required WooCommerce version.
 msgid ""
 "&bull;&nbsp;<strong>WooCommerce is not installed: </strong>The plugin "

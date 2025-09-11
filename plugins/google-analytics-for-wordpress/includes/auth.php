@@ -241,6 +241,14 @@ final class MonsterInsights_Auth {
 	public function get_network_v4_id() {
 		return ! empty( $this->network['v4'] ) ? monsterinsights_is_valid_v4_id( $this->network['v4'] ) : '';
 	}
+	
+	public function get_site_hash() {
+		return ! empty( $this->profile['site_hash'] ) ? $this->profile['site_hash'] : '';
+	}
+	
+	public function get_network_site_hash() {
+		return ! empty( $this->network['site_hash'] ) ? $this->network['site_hash'] : '';
+	}
 
 	public function get_viewname() {
 		return ! empty( $this->profile['viewname'] ) ? $this->profile['viewname'] : '';

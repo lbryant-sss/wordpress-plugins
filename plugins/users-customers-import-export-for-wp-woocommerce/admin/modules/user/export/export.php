@@ -70,7 +70,8 @@ class Wt_Import_Export_For_Woo_basic_User_Export {
                     'number' => $limit,
                     'offset' => $real_offset,
                     'orderby' => 'meta_value',
-                    'meta_key' => $wt_export_sortby,
+                    // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
+                    'meta_key' => $wt_export_sortby, // @codingStandardsIgnoreLine
                     'order' => $export_sort_order,
                     'date_query' => array(
                         array(
@@ -141,7 +142,8 @@ class Wt_Import_Export_For_Woo_basic_User_Export {
                     'post_status' => 'any',
                     'posts_per_page' => -1,
                 );
-                $query_args['meta_query'] = array(array(
+                // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
+                $query_args['meta_query'] = array(array( // @codingStandardsIgnoreLine
                         'key' => '_customer_user',
                         'value' => 0,
                         'compare' => '',
@@ -177,7 +179,7 @@ class Wt_Import_Export_For_Woo_basic_User_Export {
             $return['total'] = $total_records;
             $return['data'] = $data_array;
             if( 0 == $batch_offset && 0 == $total_records ){
-				$return['no_post'] = __( 'Nothing to export under the selected criteria.' );
+				$return['no_post'] = __( 'Nothing to export under the selected criteria.', 'users-customers-import-export-for-wp-woocommerce' );
 		    }
             return $return;
         }
@@ -244,7 +246,7 @@ class Wt_Import_Export_For_Woo_basic_User_Export {
                     $customer_data[$key] = '';
                 }
                 elseif(strtotime($date_in_timestamp) == false){
-                    $customer_data[$key] = date('Y-m-d H:i:s', $date_in_timestamp);
+                    $customer_data[$key] = gmdate('Y-m-d H:i:s', $date_in_timestamp);
                 }else{
                     $customer_data[$key] = $date_in_timestamp ? gmdate( 'Y-m-d', $date_in_timestamp ) : $date_in_timestamp;
                 }
@@ -256,7 +258,7 @@ class Wt_Import_Export_For_Woo_basic_User_Export {
                     $customer_data[$key] = '';
                 }
                 elseif(strtotime($date_in_timestamp) ==false){
-                    $customer_data[$key] = date('Y-m-d', $date_in_timestamp);
+                    $customer_data[$key] = gmdate('Y-m-d', $date_in_timestamp);
                 }else{
                     $customer_data[$key] = $date_in_timestamp ? gmdate( 'Y-m-d', $date_in_timestamp ) : $date_in_timestamp;
                 }

@@ -2,6 +2,12 @@
 	"use strict";
 
 	jQuery(document).ready(function($){
+		
+		// Prevent default behavior of anchor tags with href="#"
+        $("a[href='#']").click(function(e){  
+            e.preventDefault();
+        });
+
 		var handle = $( "#custom-handle" );
 		$( "#slider" ).slider({
 		  create: function() {
@@ -737,6 +743,7 @@
 			$('#stickymenu_status_ok').attr('data-clickfrom', 'dashboard');
 			$('#stickymenu_status_dolater').attr('data-clickfrom', 'dashboard');
 		}
+		clearMSBStorageItems();
 	});
 
 	jQuery(document).on("click","#stickymenu_status_ok",function(){
@@ -1219,5 +1226,17 @@
 		});
 		
 	});
+
+	function clearMSBStorageItems(){  
+        localStorage.removeItem('welcomebar_close');   
+        sessionStorage.removeItem('welcomebar_close');   
+        sessionStorage.removeItem('is_close_trigger');   
+        for (let i = 0; i <= 20; i++) {  
+            localStorage.removeItem('welcomebar_close_' + i);    
+            sessionStorage.removeItem('welcomebar_close_' + i);    
+            localStorage.removeItem('is_close_trigger_' + i);    
+            sessionStorage.removeItem('is_close_trigger_' + i);    
+        } 
+    }
 	
 })(jQuery);

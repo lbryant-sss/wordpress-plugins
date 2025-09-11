@@ -124,7 +124,7 @@ class MonsterInsights_EEA_Compliance {
 	 */
 	private function is_cmp_plugin_active() {
 		// Complianz
-		if ( defined( 'cmplz_plugin' ) || defined( 'cmplz_premium' ) ) {
+		if ( defined( 'cmplz_plugin' ) || defined( 'cmplz_premium' ) || defined( 'cmplz_free' ) ) {
 			return true;
 		}
 

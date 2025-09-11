@@ -2,19 +2,28 @@
 # This file is distributed under the GPL v3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Google Analytics for WordPress by MonsterInsights 9.7.0\n"
+"Project-Id-Version: Google Analytics for WordPress by MonsterInsights 9.8.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/google-analytics-for-wordpress-working-dir\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-08-07T16:12:19+00:00\n"
+"POT-Creation-Date: 2025-09-10T14:37:10+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.12.0\n"
+"X-Generator: WP-CLI 2.13.0-alpha\n"
 "X-Domain: google-analytics-for-wordpress\n"
 
+msgid " across Google—including Search, YouTube, Gmail, and more—wherever they are searching or browsing for what you offer "
+msgstr ""
+
 msgid " and add a new one."
+msgstr ""
+
+msgid " and track conversions all within MonsterInsights"
+msgstr ""
+
+msgid " to help you connect with the right audience and high intent customers"
 msgstr ""
 
 msgid " visitors"
@@ -27,6 +36,9 @@ msgid "...and MUCH More!"
 msgstr ""
 
 msgid "(Updates automatically)"
+msgstr ""
+
+msgid "*By clicking \"Get Started\" you agree with MonsterInsights' Terms and Conditions and %sGoogle Ads Policies%s."
 msgstr ""
 
 msgid "& Many More!"
@@ -169,6 +181,15 @@ msgid "%s Visitors"
 msgstr ""
 
 msgid "%s Year in Review"
+msgstr ""
+
+msgid "%sGoogle for WooCommerce Plugin user?%s <br><br> To maximize your Google Ads performance, we recommend launching an Ads campaign with Google for WooCommerce. Get started in a few easy steps %shere%s!"
+msgstr ""
+
+msgid "%sSelling digital goods or services?%s <br><br> Great! Launch a Performance Max campaign in just a few minutes by clicking on the Get Started button on the next page."
+msgstr ""
+
+msgid "%sSelling physical products?%s <br><br> For the best campaign results, we recommend using the %sGoogle Ads%s platform directly, as this app has limited capabilities for e-commerce businesses."
 msgstr ""
 
 msgid "© MonsterInsights, %s MonsterInsights, LLC"
@@ -345,8 +366,8 @@ msgstr ""
 msgid "Abandonments"
 msgstr ""
 
-#: includes/admin/admin.php:138
-#: includes/admin/admin.php:297
+#: includes/admin/admin.php:141
+#: includes/admin/admin.php:300
 msgid "About Us"
 msgstr ""
 
@@ -356,7 +377,7 @@ msgstr ""
 msgid "activate"
 msgstr ""
 
-#: includes/admin/admin.php:1011
+#: includes/admin/admin.php:1014
 msgid "Activate"
 msgstr ""
 
@@ -456,6 +477,9 @@ msgstr ""
 msgid "Add your MonsterInsights license key from the email receipt or account area. %1$sRetrieve your license key%2$s."
 msgstr ""
 
+msgid "Add-to-carts & drop-offs"
+msgstr ""
+
 msgid "Additional Information"
 msgstr ""
 
@@ -525,6 +549,24 @@ msgstr ""
 msgid "AI Insights"
 msgstr ""
 
+msgid "AI Source"
+msgstr ""
+
+msgid "AI Sources"
+msgstr ""
+
+msgid "AI Traffic"
+msgstr ""
+
+msgid "AI Traffic Overview Report"
+msgstr ""
+
+msgid "AI Traffic Report"
+msgstr ""
+
+msgid "AI-Powered Insights"
+msgstr ""
+
 msgid "AIOSEO is the DIY Solution for Managing your SEO"
 msgstr ""
 
@@ -582,6 +624,9 @@ msgstr ""
 msgid "All WPConsent data is stored right on your own servers guaranteeing you maximum privacy and data security."
 msgstr ""
 
+msgid "All your key eCommerce metrics - in one powerful dashboard.%1$sNo guesswork. No coding. No hassle. Just data that drives results."
+msgstr ""
+
 msgid "All-in-One SEO is a great product. I have been using it on all my WP sites for several years. I highly recommend it."
 msgstr ""
 
@@ -610,6 +655,9 @@ msgid "AMP Support"
 msgstr ""
 
 msgid "An unknown error has occurred."
+msgstr ""
+
+msgid "An unknown error occurred while fetching the access token."
 msgstr ""
 
 msgid "Analyze your entire WordPress site to detect critical errors and get actionable insights to boost your SEO and get more traffic."
@@ -651,6 +699,9 @@ msgid "Ask for specific metrics or trends over time"
 msgstr ""
 
 msgid "Ask open ended questions, run polls or surveys, gather ratings, and more with an easy survey builder"
+msgstr ""
+
+msgid "Ask questions about your store performance and get instant answers - no need to dig through reports or spreadsheets."
 msgstr ""
 
 msgid "Ask visitors questions about your website and content to learn how you can improve and grow your business."
@@ -710,10 +761,16 @@ msgstr ""
 msgid "Automatically generate a WordPress XML sitemap and notify all search engines of any updates."
 msgstr ""
 
+msgid "Automatically identify and showcase your top-performing products anywhere on your site to boost visibility and drive more sales."
+msgstr ""
+
 msgid "Automatically migrate all of your SEO settings with just 1 click!"
 msgstr ""
 
 msgid "Automatically monetize your website content with affiliate links added automatically to your content."
+msgstr ""
+
+msgid "Automatically set up Google Ads and conversion tracking inside MonsterInsights"
 msgstr ""
 
 msgid "Automatically show related products to increase conversion rates and increase cart sizes on your eCommerce website."
@@ -826,6 +883,9 @@ msgstr ""
 msgid "Behavior"
 msgstr ""
 
+msgid "Best-Selling Products Highlights"
+msgstr ""
+
 msgid "Better Reporting"
 msgstr ""
 
@@ -896,6 +956,9 @@ msgstr ""
 msgid "Campaign"
 msgstr ""
 
+msgid "Campaign & UTM Tracking"
+msgstr ""
+
 msgid "Campaign Alerts"
 msgstr ""
 
@@ -911,9 +974,6 @@ msgstr ""
 msgid "Campaign Insights"
 msgstr ""
 
-msgid "Campaign Measurement"
-msgstr ""
-
 msgid "Campaign Medium"
 msgstr ""
 
@@ -921,6 +981,9 @@ msgid "Campaign Name"
 msgstr ""
 
 msgid "Campaign Names"
+msgstr ""
+
+msgid "Campaign performance"
 msgstr ""
 
 msgid "Campaign Source"
@@ -1130,6 +1193,7 @@ msgstr ""
 msgid "Clicks"
 msgstr ""
 
+#: includes/admin/class-monsterinsights-am-deactivation-survey.php:405
 msgid "Close"
 msgstr ""
 
@@ -1158,6 +1222,12 @@ msgid "Compare to Previous"
 msgstr ""
 
 msgid "Complete Custom Dimensions Tracking"
+msgstr ""
+
+msgid "Complete Customer Journey"
+msgstr ""
+
+msgid "Complete customer journeys"
 msgstr ""
 
 msgid "Complete documentation on usage tracking is available %1$shere%2$s."
@@ -1340,6 +1410,9 @@ msgstr ""
 msgid "Create amazing email marketing campaigns with drag and drop simplicity. Exclusive Offer: Save 20%."
 msgstr ""
 
+msgid "Create campaigns"
+msgstr ""
+
 msgid "Create charts and graphs for easy analysis"
 msgstr ""
 
@@ -1409,9 +1482,6 @@ msgid "Custom Dimensions show you popular categories, best time to publish, focu
 msgstr ""
 
 msgid "Custom Google Analytics Link Tracking"
-msgstr ""
-
-msgid "Customer Insights"
 msgstr ""
 
 msgid "Customer Profiles"
@@ -1534,9 +1604,6 @@ msgstr ""
 msgid "Device Types"
 msgstr ""
 
-msgid "Did the login/registration step of the checkout put users off?"
-msgstr ""
-
 msgid "Did you know over 25 million websites use our plugins?"
 msgstr ""
 
@@ -1616,6 +1683,9 @@ msgstr ""
 msgid "Displays a small banner on your website to collect user consent for advertising and personalization through Google Ads and Google Analytics."
 msgstr ""
 
+msgid "Do you sell physical products?"
+msgstr ""
+
 msgid "Domain (example: %s)"
 msgstr ""
 
@@ -1644,6 +1714,9 @@ msgid "Downloading and rendering web fonts can cause layout shifts. If you are u
 msgstr ""
 
 msgid "Draft"
+msgstr ""
+
+msgid "Drive better results from a single campaign with Google Ads"
 msgstr ""
 
 msgid "Duplicate values are not allowed."
@@ -1689,6 +1762,12 @@ msgid "Easy Digital Downloads"
 msgstr ""
 
 msgid "Easy Filtering"
+msgstr ""
+
+msgid "Easy Reporting"
+msgstr ""
+
+msgid "Easy Setup"
 msgstr ""
 
 #: lite/includes/admin/reports/report-ecommerce.php:22
@@ -1934,6 +2013,9 @@ msgstr ""
 msgid "Events Tracking is enabled the moment you set up MonsterInsights"
 msgstr ""
 
+msgid "Ever wonder:"
+msgstr ""
+
 msgid "Example: %s"
 msgstr ""
 
@@ -2008,7 +2090,22 @@ msgstr ""
 msgid "Facebook Group"
 msgstr ""
 
+msgid "Failed to fetch Google Ads settings."
+msgstr ""
+
+msgid "Failed to load Google Ads integration script. Please check your internet connection and try again."
+msgstr ""
+
+msgid "Failed to load Google Ads integration. Please check your internet connection and try again."
+msgstr ""
+
 msgid "Failed to load report: %1$s, %2$s"
+msgstr ""
+
+msgid "Failed to update setting."
+msgstr ""
+
+msgid "Failed to update settings."
 msgstr ""
 
 msgid "Feature"
@@ -2051,6 +2148,9 @@ msgid "Finally, a WordPress SEO Plugin that’s Easy and Powerful!"
 msgstr ""
 
 msgid "Find out which pages are making your first impression."
+msgstr ""
+
+msgid "Find out which products get left behind most often - and take action to recover lost sales and boost conversions."
 msgstr ""
 
 msgid "Finish Setup & Exit Wizard"
@@ -2174,7 +2274,10 @@ msgstr ""
 msgid "Get an Answer to All Your Top Ecommerce Questions From a Single Report"
 msgstr ""
 
-msgid "Get Answers to the important questions %1$syou should know."
+msgid "Get Clear Answers to the%1$sQuestions That Matter"
+msgstr ""
+
+msgid "Get detailed insights into who your buyers are, how they find you, and what products or content they love. Personalize your marketing for higher repeat sales."
 msgstr ""
 
 msgid "Get detailed stats for each post and page, so you can see the most popular posts, pages, and sections of your site."
@@ -2192,7 +2295,7 @@ msgstr ""
 msgid "Get insights about your website by simply asking"
 msgstr ""
 
-#: includes/admin/admin.php:391
+#: includes/admin/admin.php:394
 #: includes/admin/notifications/notification-upgrade-eu-traffic.php:86
 #: includes/admin/notifications/notification-upgrade-for-custom-dimensions.php:31
 #: includes/admin/notifications/notification-upgrade-for-email-summaries.php:36
@@ -2214,6 +2317,9 @@ msgstr ""
 msgid "Get Page Insights to see important metrics for individual posts / pages in WordPress."
 msgstr ""
 
+msgid "Get personalized recommendations"
+msgstr ""
+
 msgid "Get real-time Google Analytics report right inside your WordPress dashboard."
 msgstr ""
 
@@ -2229,7 +2335,7 @@ msgstr ""
 msgid "Get Started"
 msgstr ""
 
-msgid "Get stats WooCommerce doesn’t give you like: Conversion Sources, Avg. Order Value, Revenue per Source, Total Add to Carts & More!"
+msgid "Get started with Google Ads in minutes"
 msgstr ""
 
 msgid "Get the #1 conversion optimization plugin to convert your growing website traffic into subscribers, leads and sales."
@@ -2248,9 +2354,6 @@ msgid "Get the most out of MonsterInsights by upgrading to Pro and unlocking all
 msgstr ""
 
 msgid "Get the reports and stats that matter right inside your WordPress Dashboard."
-msgstr ""
-
-msgid "Get The Unique Metrics Neccessary for Growth"
 msgstr ""
 
 msgid "Get weekly traffic reports directly in your inbox."
@@ -2272,6 +2375,16 @@ msgid "Go to the Analytics Dashboard"
 msgstr ""
 
 msgid "Goal:"
+msgstr ""
+
+#: includes/admin/admin.php:121
+msgid "Google Ads"
+msgstr ""
+
+msgid "Google Ads integration failed to initialize properly. Please try again."
+msgstr ""
+
+msgid "Google Ads Setup"
 msgstr ""
 
 msgid "Google AMP"
@@ -2305,6 +2418,9 @@ msgid "Google Search Console"
 msgstr ""
 
 msgid "Grab your campaign link and paste it into the Target URL field."
+msgstr ""
+
+msgid "Grow your Business with Google Ads"
 msgstr ""
 
 msgid "Grow your business with our growth tools"
@@ -2417,6 +2533,9 @@ msgstr ""
 msgid "If you have any questions or issues just %slet us know%s."
 msgstr ""
 
+msgid "If you sell products, make sure you have a Merchant Center Account before starting a campaign so you can promote your products with Google Shopping Ads and achieve the best performance."
+msgstr ""
+
 msgid "If you would like to use a different license for this subsite, you can enter it below."
 msgstr ""
 
@@ -2522,9 +2641,9 @@ msgstr ""
 
 #: includes/admin/admin.php:55
 #: includes/admin/admin.php:69
-#: includes/admin/admin.php:233
 #: includes/admin/admin.php:236
-#: includes/admin/admin.php:277
+#: includes/admin/admin.php:239
+#: includes/admin/admin.php:280
 msgid "Insights"
 msgstr ""
 
@@ -2555,8 +2674,8 @@ msgstr ""
 msgid "Install MonsterInsights"
 msgstr ""
 
-#: includes/admin/admin.php:891
-#: includes/admin/admin.php:1013
+#: includes/admin/admin.php:894
+#: includes/admin/admin.php:1016
 msgid "Install Now"
 msgstr ""
 
@@ -2647,6 +2766,9 @@ msgstr ""
 msgid "Instantly enable enhanced eCommerce tracking, so you can measure conversions, sales, and revenue stats. Works with WooCommerce, Easy Digital Downloads, MemberPress, and more."
 msgstr ""
 
+msgid "Instantly see clear reports with conversion rate, transactions, revenue, AOV, refunds, coupon performance, and more - all from your WordPress dashboard."
+msgstr ""
+
 msgid "Integrations"
 msgstr ""
 
@@ -2713,10 +2835,16 @@ msgstr ""
 msgid "June"
 msgstr ""
 
+msgid "Just install and connect - MonsterInsights handles the rest. No coding, no developers, no hassle."
+msgstr ""
+
 msgid "Keep track of important website events with Site Notes. Site Notes can help you track and monitor changes to your website traffic, clicks, or conversion rates over a period of time."
 msgstr ""
 
 msgid "Know More"
+msgstr ""
+
+msgid "Know where your buyers are coming from - search, social, email, referral, or paid. Focus your efforts where they count."
 msgstr ""
 
 msgid "Label"
@@ -2849,11 +2977,11 @@ msgstr ""
 msgid "Learn how visitors arrive to your website and which are the most engaged or profitable."
 msgstr ""
 
-#: includes/admin/admin.php:526
-#: includes/admin/admin.php:1017
-#: includes/admin/common.php:646
-#: includes/admin/common.php:672
-#: includes/admin/common.php:704
+#: includes/admin/admin.php:529
+#: includes/admin/admin.php:1020
+#: includes/admin/common.php:659
+#: includes/admin/common.php:685
+#: includes/admin/common.php:717
 #: includes/admin/notifications/notification-audience.php:55
 #: includes/admin/notifications/notification-bounce-rate.php:52
 #: includes/admin/notifications/notification-headline-analyzer.php:39
@@ -2884,7 +3012,7 @@ msgstr ""
 msgid "Let's get you set up."
 msgstr ""
 
-msgid "Level-up Your eCommerce store with %1$sMonsterInsights + WooCommerce!%1$s"
+msgid "Level-up Your eCommerce store with %1$sMonsterInsights"
 msgstr ""
 
 msgid "License Expired"
@@ -2920,6 +3048,9 @@ msgstr ""
 msgid "Lite vs Pro"
 msgstr ""
 
+msgid "Loading Google Ads..."
+msgstr ""
+
 msgid "Loading Journeys"
 msgstr ""
 
@@ -2950,6 +3081,9 @@ msgstr ""
 msgid "Looks like your last message was not sent. Please try again."
 msgstr ""
 
+msgid "Lost Revenue"
+msgstr ""
+
 msgid "Make Google Analytics compliant with GDPR and other privacy regulations automatically."
 msgstr ""
 
@@ -2968,7 +3102,7 @@ msgstr ""
 msgid "Make your MonsterInsights campaign links prettier with Pretty Links!"
 msgstr ""
 
-#: includes/admin/admin.php:1005
+#: includes/admin/admin.php:1008
 msgid "Make Your Website Analytics Compliant with Privacy Laws"
 msgstr ""
 
@@ -2979,6 +3113,9 @@ msgid "Male"
 msgstr ""
 
 msgid "Manage all your affiliate links with features designed to help make bloggers more money."
+msgstr ""
+
+msgid "Manage your campaign performance"
 msgstr ""
 
 msgid "Manual %1$s- Manually place the widget using Gutenberg blocks or using our shortcode.%2$s"
@@ -3061,6 +3198,9 @@ msgid "MonsterInsights encountered an error loading your report data"
 msgstr ""
 
 msgid "MonsterInsights Features & Addons"
+msgstr ""
+
+msgid "MonsterInsights gives you the %1$swhat behind the why%2$s."
 msgstr ""
 
 msgid "MonsterInsights has detected that your site is running an outdated version of WordPress (%s). MonsterInsights will stop supporting WordPress versions lower than 4.9 in 2020.  Updating WordPress takes just a few minutes and will also solve many bugs that exist in your WordPress install."
@@ -3189,6 +3329,9 @@ msgstr ""
 msgid "New Sessions"
 msgstr ""
 
+msgid "New to Google? Get $500 in ad credits when you spend your first $500 within 60 days* (%sT&Cs apply%s)."
+msgstr ""
+
 msgid "New Users"
 msgstr ""
 
@@ -3213,7 +3356,13 @@ msgstr ""
 msgid "No affiliate link clicks detected for this time period."
 msgstr ""
 
+msgid "No AI traffic data currently available."
+msgstr ""
+
 msgid "No change"
+msgstr ""
+
+msgid "No Code Set up"
 msgstr ""
 
 msgid "No conversion sources tracked during this time period."
@@ -3271,6 +3420,9 @@ msgid "No landing pages tracked during this time period."
 msgstr ""
 
 msgid "No license key activated on this subsite"
+msgstr ""
+
+msgid "No more confusing or incomplete reports. Track what matters - directly from your dashboard."
 msgstr ""
 
 msgid "No Notifications"
@@ -3337,7 +3489,7 @@ msgstr ""
 msgid "Note: You will be transfered to %1$s.com to complete the setup wizard."
 msgstr ""
 
-#: includes/admin/admin.php:528
+#: includes/admin/admin.php:531
 #: lite/includes/admin/dashboard-widget.php:150
 msgid "Note: You will be transfered to MonsterInsights.com to complete the setup wizard."
 msgstr ""
@@ -3389,6 +3541,9 @@ msgid "On-Demand Audits"
 msgstr ""
 
 msgid "On-Page SEO in WordPress: The Complete Guide"
+msgstr ""
+
+msgid "One Powerful Dashboard"
 msgstr ""
 
 msgid "One-click Complete eCommerce tracking"
@@ -3665,9 +3820,6 @@ msgstr ""
 msgid "Percent of Total"
 msgstr ""
 
-msgid "Perform SEO and content marketing research, track keywords, and much more. Special Offer: First 14 Days Free."
-msgstr ""
-
 msgid "Performance"
 msgstr ""
 
@@ -3728,7 +3880,7 @@ msgstr ""
 msgid "Please set up custom dimension \"%s\" for this report to work."
 msgstr ""
 
-#: includes/admin/admin.php:523
+#: includes/admin/admin.php:526
 msgid "Please Setup Website Analytics to See Audience Insights"
 msgstr ""
 
@@ -3826,7 +3978,7 @@ msgstr ""
 msgid "Privacy Guard"
 msgstr ""
 
-#: includes/admin/admin.php:1006
+#: includes/admin/admin.php:1009
 msgid "Privacy laws like GDPR, CCPA, and others require user consent before you can track visitors. Our sister plugin, WPConsent, helps you add a smart cookie consent banner for better privacy compliance with Google Analytics."
 msgstr ""
 
@@ -3990,6 +4142,9 @@ msgstr ""
 msgid "Reconnect MonsterInsights"
 msgstr ""
 
+msgid "reconnect to MonsterInsights"
+msgstr ""
+
 msgid "Recurring"
 msgstr ""
 
@@ -4048,7 +4203,7 @@ msgid "Report Unavailable"
 msgstr ""
 
 #: includes/admin/admin.php:62
-#: includes/admin/admin.php:281
+#: includes/admin/admin.php:284
 msgid "Reports"
 msgstr ""
 
@@ -4095,6 +4250,9 @@ msgid "Revenue / User"
 msgstr ""
 
 msgid "Revenue Abandoned"
+msgstr ""
+
+msgid "Revenue by traffic source"
 msgstr ""
 
 msgid "Revenue Changes"
@@ -4197,16 +4355,13 @@ msgstr ""
 msgid "See a Sample Report"
 msgstr ""
 
+msgid "See AI Tool Traffic Stats."
+msgstr ""
+
 msgid "See All Features"
 msgstr ""
 
 msgid "See All Reports"
-msgstr ""
-
-msgid "See all the critical eCommerce data you need at a glance: your conversion rate, transactions, %1$srevenue, and average order value, and more."
-msgstr ""
-
-msgid "See all the critical eCommerce data you need at a glance: your conversion rate, transactions, revenue, and average order value, and more."
 msgstr ""
 
 msgid "See All Your Important Store Metrics in One Place"
@@ -4216,6 +4371,9 @@ msgid "See all your important store metrics in one place with Enhanced Ecommerce
 msgstr ""
 
 msgid "See Exactly How Visitors Find Your Website From Google."
+msgstr ""
+
+msgid "See exactly which campaigns drive revenue - not just clicks. Break it down by source, medium, content, and campaign to double down on what works."
 msgstr ""
 
 msgid "See Full Report"
@@ -4251,10 +4409,16 @@ msgstr ""
 msgid "See the first page visitors land when visiting your website."
 msgstr ""
 
+msgid "See the Metrics That Actually Grow Your Store"
+msgstr ""
+
 msgid "See the top %sTraffic Sources%s and %sTop Pages%s for the Month of %s in the Overview Report to replicate your success."
 msgstr ""
 
 msgid "See What Your Website Visitors Are %1$sReally%2$s Thinking!"
+msgstr ""
+
+msgid "See Which AI Sources are Making You Money."
 msgstr ""
 
 msgid "See which countries your visitors come from."
@@ -4322,9 +4486,6 @@ msgid "Select the position of the badge in your website’s footer."
 msgstr ""
 
 msgid "Select up to 7 metrics"
-msgstr ""
-
-msgid "SEMRUSH"
 msgstr ""
 
 msgid "Send Feedback"
@@ -4427,7 +4588,7 @@ msgid "Set Up WPConsent"
 msgstr ""
 
 #: includes/admin/admin.php:66
-#: includes/admin/admin.php:384
+#: includes/admin/admin.php:387
 msgid "Settings"
 msgstr ""
 
@@ -4611,6 +4772,9 @@ msgstr ""
 msgid "Sources"
 msgstr ""
 
+msgid "Special Offers"
+msgstr ""
+
 msgid "Standard Analytics & Reports"
 msgstr ""
 
@@ -4623,7 +4787,7 @@ msgstr ""
 msgid "Start a conversation with %s"
 msgstr ""
 
-#: includes/admin/routes.php:766
+#: includes/admin/routes.php:770
 msgid "Start accepting one-time and recurring payments on your WordPress site without setting up a shopping cart. No code required."
 msgstr ""
 
@@ -4699,9 +4863,9 @@ msgstr ""
 msgid "Sun"
 msgstr ""
 
-#: includes/admin/admin.php:374
 #: includes/admin/admin.php:377
-#: includes/admin/admin.php:939
+#: includes/admin/admin.php:380
+#: includes/admin/admin.php:942
 msgid "Support"
 msgstr ""
 
@@ -5107,6 +5271,12 @@ msgstr ""
 msgid "To unlock the selected features, please upgrade to Pro and enter your license key below."
 msgstr ""
 
+msgid "To use this feature, please"
+msgstr ""
+
+msgid "To use this feature, please reconnect to MonsterInsights."
+msgstr ""
+
 msgid "Today"
 msgstr ""
 
@@ -5225,16 +5395,25 @@ msgstr ""
 msgid "Track all of your form conversion rates"
 msgstr ""
 
-msgid "Track all-new metrics!"
+msgid "Track and measure by the Author, Post Type, Category, Tag, SEO Score, Focus Keyword, Logged-in User, User ID and Published Time of each post and page"
 msgstr ""
 
-msgid "Track and measure by the Author, Post Type, Category, Tag, SEO Score, Focus Keyword, Logged-in User, User ID and Published Time of each post and page"
+msgid "Track every step - from add to cart, to checkout, to completed order - so you can spot where shoppers drop off and fix friction points. No setup needed."
+msgstr ""
+
+msgid "Track every step - from first visit to final purchase. Understand how visitors browse, engage, and convert to optimize the full shopping experience."
 msgstr ""
 
 msgid "Track Every Type of Web Form and Gain Visibility Into Your Customer Journey."
 msgstr ""
 
+msgid "Track Form leads"
+msgstr ""
+
 msgid "Track how your users interact with videos on your website."
+msgstr ""
+
+msgid "Track purchases"
 msgstr ""
 
 msgid "Tracking Code Installed"
@@ -5264,6 +5443,9 @@ msgstr ""
 msgid "Traffic Report"
 msgstr ""
 
+msgid "Traffic Sources"
+msgstr ""
+
 msgid "Traffic Tools"
 msgstr ""
 
@@ -5274,9 +5456,6 @@ msgid "Trash"
 msgstr ""
 
 msgid "Trashed successfully."
-msgstr ""
-
-msgid "Truly Understand Your%1$s Customers With %2$sMonsterInsights%3$s"
 msgstr ""
 
 msgid "TruSEO On-Page Analysis"
@@ -5312,6 +5491,9 @@ msgstr ""
 msgid "Understand exactly why visitors left your website, what convinced them to make a purchase, why they signed up for a newsletter, and more with real verbatim feedback"
 msgstr ""
 
+msgid "Understand Your Customers%1$sLike Never Before"
+msgstr ""
+
 msgid "Understand your marketing ROI"
 msgstr ""
 
@@ -5345,6 +5527,9 @@ msgstr ""
 msgid "Unlock powerful insights with the Dimensions addon!"
 msgstr ""
 
+msgid "Unlock powerful insights WooCommerce doesn’t show you:"
+msgstr ""
+
 msgid "Unlock PRO Features Now"
 msgstr ""
 
@@ -5364,10 +5549,13 @@ msgstr ""
 msgid "Upgrade"
 msgstr ""
 
+msgid "Upgrade & Unlock"
+msgstr ""
+
 msgid "Upgrade and Unlock"
 msgstr ""
 
-#: includes/admin/admin.php:895
+#: includes/admin/admin.php:898
 #: includes/admin/notifications/notification-upgrade-for-form-conversion.php:31
 #: includes/admin/notifications/notification-upgrade-for-search-console.php:32
 #: includes/admin/notifications/notification-upgrade-to-pro-five-hundred-session.php:44
@@ -5395,7 +5583,7 @@ msgstr ""
 msgid "Upgrade to MonsterInsights Pro to Unlock More Actionable Insights"
 msgstr ""
 
-#: includes/admin/admin.php:155
+#: includes/admin/admin.php:158
 #: includes/admin/notifications/notification-upgrade-to-pro-high-traffic.php:41
 #: includes/admin/notifications/notification-upgrade-to-pro.php:33
 msgid "Upgrade to Pro"
@@ -5494,7 +5682,7 @@ msgstr ""
 msgid "User Journey Report"
 msgstr ""
 
-#: includes/admin/admin.php:132
+#: includes/admin/admin.php:135
 msgid "UserFeedback"
 msgstr ""
 
@@ -5820,7 +6008,13 @@ msgstr ""
 msgid "What’s in the %s?"
 msgstr ""
 
-msgid "Which ad campaign is driving the most revenue?"
+msgid "What's inside Google Ads ? "
+msgstr ""
+
+msgid "Where do customers drop off in the checkout?"
+msgstr ""
+
+msgid "Which campaigns actually drive revenue?"
 msgstr ""
 
 msgid "Which category best describes your website?"
@@ -5829,10 +6023,10 @@ msgstr ""
 msgid "Which website features would you like to enable?"
 msgstr ""
 
-msgid "Who Can See Reports"
+msgid "Who are your top buyers - and how did they find you?"
 msgstr ""
 
-msgid "Who is my typical customer?"
+msgid "Who Can See Reports"
 msgstr ""
 
 msgid "Whoops, something went wrong and we weren't able to connect to MonsterInsights. Please enter your GA4 Measurement ID manually."
@@ -5853,6 +6047,12 @@ msgstr ""
 msgid "Widget Title"
 msgstr ""
 
+msgid "With a Performance Max campaign, reach customers most likely to buy from you"
+msgstr ""
+
+msgid "With MonsterInsights Pro, uncover what’s%1$sdriving sales and where you’re losing customers."
+msgstr ""
+
 msgid "With MonsterInsights Pro, you can easily measure individual affiliate performance inside Google Analytics, no coding needed. Track clicks, revenue, and more."
 msgstr ""
 
@@ -5863,6 +6063,9 @@ msgid "WooCommerce"
 msgstr ""
 
 msgid "WooCommerce SEO"
+msgstr ""
+
+msgid "WooCommerce shows you orders. MonsterInsights%1$sshows you why they happen - or don’t."
 msgstr ""
 
 msgid "WordPress Admin Area Reports"
@@ -6002,9 +6205,6 @@ msgstr ""
 msgid "You need to %1$sconnect MonsterInsights%2$s first"
 msgstr ""
 
-msgid "You never truly understand your customers until you used Enhanced %1$s eCommerce from MonsterInsights!"
-msgstr ""
-
 msgid "You should be aiming for 0.1 or less."
 msgstr ""
 
@@ -6047,12 +6247,12 @@ msgstr ""
 msgid "Your license has expired."
 msgstr ""
 
-#: includes/admin/admin.php:554
+#: includes/admin/admin.php:557
 msgid "Your license key for MonsterInsights has been disabled. Please use a different key."
 msgstr ""
 
-#: includes/admin/admin.php:556
-#: includes/admin/api-auth.php:305
+#: includes/admin/admin.php:559
+#: includes/admin/api-auth.php:311
 msgid "Your license key for MonsterInsights is invalid. The key no longer exists or the user associated with the key has been deleted. Please use a different key."
 msgstr ""
 
@@ -7144,7 +7344,7 @@ msgstr ""
 
 #: includes/admin/admin.php:62
 #: includes/admin/admin.php:69
-#: includes/admin/admin.php:281
+#: includes/admin/admin.php:284
 msgid "General Reports:"
 msgstr ""
 
@@ -7187,239 +7387,239 @@ msgid "User Journey"
 msgstr ""
 
 #: includes/admin/admin.php:118
-#: includes/admin/admin.php:289
+#: includes/admin/admin.php:292
 msgid "SEO"
 msgstr ""
 
-#: includes/admin/admin.php:121
+#: includes/admin/admin.php:124
 msgid "Tools:"
 msgstr ""
 
-#: includes/admin/admin.php:121
+#: includes/admin/admin.php:124
 msgid "Tools"
 msgstr ""
 
-#: includes/admin/admin.php:126
-#: includes/admin/admin.php:292
+#: includes/admin/admin.php:129
+#: includes/admin/admin.php:295
 msgid "Addons:"
 msgstr ""
 
-#: includes/admin/admin.php:126
-#: includes/admin/admin.php:292
+#: includes/admin/admin.php:129
+#: includes/admin/admin.php:295
 msgid "Addons"
 msgstr ""
 
-#: includes/admin/admin.php:131
+#: includes/admin/admin.php:134
 msgid "UserFeedback:"
 msgstr ""
 
-#: includes/admin/admin.php:138
-#: includes/admin/admin.php:297
+#: includes/admin/admin.php:141
+#: includes/admin/admin.php:300
 msgid "About Us:"
 msgstr ""
 
-#: includes/admin/admin.php:142
+#: includes/admin/admin.php:145
 msgid "WPConsent:"
 msgstr ""
 
-#: includes/admin/admin.php:143
+#: includes/admin/admin.php:146
 msgid "WPConsent"
 msgstr ""
 
-#: includes/admin/admin.php:155
+#: includes/admin/admin.php:158
 msgid "Upgrade to Pro:"
 msgstr ""
 
-#: includes/admin/admin.php:168
+#: includes/admin/admin.php:171
 msgid "Earth Day"
 msgstr ""
 
-#: includes/admin/admin.php:176
+#: includes/admin/admin.php:179
 msgid "Cinco De Mayo!"
 msgstr ""
 
-#: includes/admin/admin.php:184
+#: includes/admin/admin.php:187
 msgid "Upgrade to GA4"
 msgstr ""
 
-#: includes/admin/admin.php:192
+#: includes/admin/admin.php:195
 msgid "Summer Sale"
 msgstr ""
 
-#: includes/admin/admin.php:200
+#: includes/admin/admin.php:203
 msgid "Fortune Cookie Day"
 msgstr ""
 
-#: includes/admin/admin.php:208
+#: includes/admin/admin.php:211
 msgid "Halloween Sale"
 msgstr ""
 
-#: includes/admin/admin.php:277
-#: includes/admin/admin.php:279
+#: includes/admin/admin.php:280
+#: includes/admin/admin.php:282
 msgid "Network Settings:"
 msgstr ""
 
-#: includes/admin/admin.php:279
-#: includes/admin/admin.php:382
+#: includes/admin/admin.php:282
+#: includes/admin/admin.php:385
 msgid "Network Settings"
 msgstr ""
 
-#: includes/admin/admin.php:289
+#: includes/admin/admin.php:292
 msgid "SEO:"
 msgstr ""
 
-#: includes/admin/admin.php:369
+#: includes/admin/admin.php:372
 msgid "MonsterInsights Knowledge Base"
 msgstr ""
 
-#: includes/admin/admin.php:369
+#: includes/admin/admin.php:372
 msgid "Documentation"
 msgstr ""
 
 #. Translators: Placeholders add a link to the wordpress.org repository.
-#: includes/admin/admin.php:464
+#: includes/admin/admin.php:467
 #, php-format
 msgid "Please rate %1$sMonsterInsights%2$s on %3$s %4$sWordPress.org%5$s to help us spread the word."
 msgstr ""
 
-#: includes/admin/admin.php:495
+#: includes/admin/admin.php:498
 msgid "Urgent: Your Website is Not Tracking Any Google Analytics Data!"
 msgstr ""
 
-#: includes/admin/admin.php:496
+#: includes/admin/admin.php:499
 msgid "Google Analytics 3 (UA) and support was sunset on July 1, 2023. Your website is currently NOT tracking any analytics. </br>Create or connect a new Google Analytics 4 property immediately to start tracking."
 msgstr ""
 
-#: includes/admin/admin.php:506
+#: includes/admin/admin.php:509
 msgid "Learn How to Create a GA4 Property"
 msgstr ""
 
-#: includes/admin/admin.php:509
+#: includes/admin/admin.php:512
 msgid "Connect a Property"
 msgstr ""
 
-#: includes/admin/admin.php:524
+#: includes/admin/admin.php:527
 msgid "Please Connect Your Website to MonsterInsights"
 msgstr ""
 
-#: includes/admin/admin.php:529
+#: includes/admin/admin.php:532
 msgid "MonsterInsights, the #1 WordPress Analytics Plugin, helps you easily connect your website to Google Analytics, so that you can see how people find and use your website. Over 3 million website owners use MonsterInsights to see the stats that matter and grow their business."
 msgstr ""
 
 #. Translators: Adds a link to retrieve the license.
-#: includes/admin/admin.php:540
+#: includes/admin/admin.php:543
 #, php-format
 msgid "Warning: No valid license key has been entered for MonsterInsights. You are currently not getting updates, and are not able to view reports. %1$sPlease click here to enter your license key and begin receiving updates and reports.%2$s"
 msgstr ""
 
 #. Translators: Adds a link to the license renewal.
-#: includes/admin/admin.php:552
+#: includes/admin/admin.php:555
 #, php-format
 msgid "Your license key for MonsterInsights has expired. %1$sPlease click here to renew your license key.%2$s"
 msgstr ""
 
 #. Translators: Adds a link to renew license.
-#: includes/admin/admin.php:561
+#: includes/admin/admin.php:564
 #, php-format
 msgid "Your network license key for MonsterInsights has expired. %1$sPlease click here to renew your license key.%2$s"
 msgstr ""
 
-#: includes/admin/admin.php:563
+#: includes/admin/admin.php:566
 msgid "Your network license key for MonsterInsights has been disabled. Please use a different key."
 msgstr ""
 
-#: includes/admin/admin.php:565
+#: includes/admin/admin.php:568
 msgid "Your network license key for MonsterInsights is invalid. The key no longer exists or the user associated with the key has been deleted. Please use a different key."
-msgstr ""
-
-#. Translators: Placeholders add the PHP version, a link to the MonsterInsights blog and a line break.
-#: includes/admin/admin.php:587
-#, php-format
-msgid "Your site is running an outdated, insecure version of PHP (%1$s), which could be putting your site at risk for being hacked.%4$sWordPress stopped supporting your PHP version in April, 2019.%4$sUpdating PHP only takes a few minutes and will make your website significantly faster and more secure.%4$s%2$sLearn more about updating PHP%3$s"
 msgstr ""
 
 #. Translators: Placeholders add the PHP version, a link to the MonsterInsights blog and a line break.
 #: includes/admin/admin.php:590
 #, php-format
-msgid "Your site is running an outdated, insecure version of PHP (%1$s), which could be putting your site at risk for being hacked.%4$sWordPress stopped supporting your PHP version in November, 2019.%4$sUpdating PHP only takes a few minutes and will make your website significantly faster and more secure.%4$s%2$sLearn more about updating PHP%3$s"
+msgid "Your site is running an outdated, insecure version of PHP (%1$s), which could be putting your site at risk for being hacked.%4$sWordPress stopped supporting your PHP version in April, 2019.%4$sUpdating PHP only takes a few minutes and will make your website significantly faster and more secure.%4$s%2$sLearn more about updating PHP%3$s"
 msgstr ""
 
 #. Translators: Placeholders add the PHP version, a link to the MonsterInsights blog and a line break.
 #: includes/admin/admin.php:593
 #, php-format
+msgid "Your site is running an outdated, insecure version of PHP (%1$s), which could be putting your site at risk for being hacked.%4$sWordPress stopped supporting your PHP version in November, 2019.%4$sUpdating PHP only takes a few minutes and will make your website significantly faster and more secure.%4$s%2$sLearn more about updating PHP%3$s"
+msgstr ""
+
+#. Translators: Placeholders add the PHP version, a link to the MonsterInsights blog and a line break.
+#: includes/admin/admin.php:596
+#, php-format
 msgid "Your site is running an outdated, insecure version of PHP (%1$s), which could be putting your site at risk for being hacked.%4$sWordPress is working towards discontinuing support for your PHP version.%4$sUpdating PHP only takes a few minutes and will make your website significantly faster and more secure.%4$s%2$sLearn more about updating PHP%3$s"
 msgstr ""
 
 #. Translators: Placeholders add links to the settings panel.
-#: includes/admin/admin.php:671
+#: includes/admin/admin.php:674
 #, php-format
 msgid "Important: You are currently using manual GA4 Measurement ID output. We highly recommend %1$sauthenticating with MonsterInsights%2$s so that you can access our new reporting area and take advantage of new MonsterInsights features."
 msgstr ""
 
 #. Translators: Placeholders add links to the settings panel.
-#: includes/admin/admin.php:676
+#: includes/admin/admin.php:679
 #, php-format
 msgid "Click %1$shere%2$s to reauthenticate to be able to access reports. For more information why this is required, see our %3$sblog post%4$s."
 msgstr ""
 
 #. Translators: Placeholders add a link to the MonsterInsights website.
-#: includes/admin/admin.php:723
-#: includes/admin/admin.php:775
+#: includes/admin/admin.php:726
+#: includes/admin/admin.php:778
 #, php-format
 msgid "%1$sGet MonsterInsights Pro%2$s"
 msgstr ""
 
-#: includes/admin/admin.php:730
+#: includes/admin/admin.php:733
 msgid "Save <span>50%</span> Off MonsterInsights Pro"
 msgstr ""
 
-#: includes/admin/admin.php:741
+#: includes/admin/admin.php:744
 msgid "Add eCommerce Analytics to your WooCommerce Store"
 msgstr ""
 
-#: includes/admin/admin.php:742
+#: includes/admin/admin.php:745
 msgid "Unlock all of our advanced eCommerce features specifically designed to help your store make more money.."
 msgstr ""
 
-#: includes/admin/admin.php:743
+#: includes/admin/admin.php:746
 msgid "MonsterInsights Pro users instantly gain access to valuable insights such as average order value, conversion rates, as well as marketing performance with UTM tracking."
 msgstr ""
 
-#: includes/admin/admin.php:744
+#: includes/admin/admin.php:747
 msgid "And by upgrading, Pro users also get enhanced tracking for Forms, User Journeys, PPC Pixels, Custom UserID tracking, SEO Reports, and much more."
 msgstr ""
 
-#: includes/admin/admin.php:745
+#: includes/admin/admin.php:748
 msgid "Start making better data-driven decisions today!"
 msgstr ""
 
 #. Translators: Adds a link to the settings panel.
-#: includes/admin/admin.php:791
+#: includes/admin/admin.php:794
 #, php-format
 msgid "Warning: MonsterInsights found cross-domain settings in the custom code field and converted them to the new settings structure.  %1$sPlease click here to review and remove the code no longer needed.%2$s"
 msgstr ""
 
 #. translators: Placeholders add a link to an article.
-#: includes/admin/admin.php:868
+#: includes/admin/admin.php:871
 #, php-format
 msgid "Your Measurement Protocol API Secret is currently left blank. To see more advanced analytics please enter a Measurement API Secret. %1$sLearn how to find your API Secret%2$s."
 msgstr ""
 
 #. translators: Placeholders link to addons page.
-#: includes/admin/admin.php:901
+#: includes/admin/admin.php:904
 #, php-format
 msgid "We've detected you have our %1$sMonsterInsights Ads%2$s addon activated. Please activate our %3$sPPC Tracking%4$s addon for more advanced features and powerful integrations."
 msgstr ""
 
-#: includes/admin/admin.php:944
+#: includes/admin/admin.php:947
 msgid "Docs"
 msgstr ""
 
-#: includes/admin/admin.php:949
+#: includes/admin/admin.php:952
 msgid "Free Plugins"
 msgstr ""
 
-#: includes/admin/admin.php:956
+#: includes/admin/admin.php:959
 #, php-format
 msgid "Made with %1$s by the MonsterInsights Team"
 msgstr ""
@@ -7446,136 +7646,136 @@ msgid "You don't have the correct WordPress user permissions to authenticate int
 msgstr ""
 
 #: includes/admin/api-auth.php:105
-#: includes/admin/api-auth.php:858
+#: includes/admin/api-auth.php:875
 msgid "Cannot authenticate. Please enter a valid, active license key for MonsterInsights Pro into the settings page."
 msgstr ""
 
 #: includes/admin/api-auth.php:113
 #: includes/admin/api-auth.php:121
-#: includes/admin/api-auth.php:865
-#: includes/admin/api-auth.php:873
+#: includes/admin/api-auth.php:882
+#: includes/admin/api-auth.php:890
 #, php-format
 msgid "Oops! There has been an error authenticating. Please try again in a few minutes. If the problem persists, please %1$scontact our support%2$s team."
 msgstr ""
 
-#: includes/admin/api-auth.php:290
+#: includes/admin/api-auth.php:296
 #, php-format
 msgid "You don't have the correct WordPress user permissions to re-authenticate into MonsterInsights. Please check with your site administrator that your role is included in the MonsterInsights permissions settings. %1$sClick here for more information%2$s."
 msgstr ""
 
-#: includes/admin/api-auth.php:313
-#: includes/admin/api-auth.php:323
+#: includes/admin/api-auth.php:319
+#: includes/admin/api-auth.php:329
 #, php-format
 msgid "Oops! There was a problem while re-authenticating. Please try to complete the MonsterInsights %1$ssetup wizard%2$s again. If the problem persists, please %3$scontact our support%4$s team."
 msgstr ""
 
-#: includes/admin/api-auth.php:451
+#: includes/admin/api-auth.php:463
 #, php-format
 msgid "You don't have the correct user permissions to verify the MonsterInsights license you are trying to use. Please check with your site administrator that your role is included in the MonsterInsights permissions settings. %1$sClick here for more information%2$s."
 msgstr ""
 
-#: includes/admin/api-auth.php:466
-#: includes/admin/api-auth.php:474
+#: includes/admin/api-auth.php:478
 #: includes/admin/api-auth.php:486
+#: includes/admin/api-auth.php:498
 #, php-format
 msgid "Please enter a valid license within the MonsterInsights settings panel. You can check your license by logging into your MonsterInsights account by %1$sclicking here%2$s."
 msgstr ""
 
-#: includes/admin/api-auth.php:496
+#: includes/admin/api-auth.php:508
 msgid "Successfully verified."
 msgstr ""
 
-#: includes/admin/api-auth.php:500
-#: includes/admin/api-auth.php:514
+#: includes/admin/api-auth.php:512
+#: includes/admin/api-auth.php:526
 #, php-format
 msgid "Oops! There has been an error while trying to verify your license. Please try again or contact our support team by %1$sclicking here%2$s."
 msgstr ""
 
-#: includes/admin/api-auth.php:551
+#: includes/admin/api-auth.php:563
 #, php-format
 msgid "You don't have the correct WordPress user permissions to deauthenticate into MonsterInsights. Please check with your site administrator that your role is included in the MonsterInsights permissions settings. %1$sClick here for more information%2$s."
 msgstr ""
 
-#: includes/admin/api-auth.php:566
-#: includes/admin/api-auth.php:576
+#: includes/admin/api-auth.php:578
+#: includes/admin/api-auth.php:588
 #, php-format
 msgid "Could not disconnect as you are not currently authenticated properly. Please try to authenticate again with our MonsterInsights %1$ssetup wizard%2$s.  If you are still having problems, please %3$scontact our support%4$s team."
 msgstr ""
 
-#: includes/admin/api-auth.php:590
+#: includes/admin/api-auth.php:602
 #, php-format
 msgid "Could not disconnect your account, as you are not currently authenticated properly. Please try to authenticate again with our %1$sMonsterInsights setup wizard%2$s.  If you are still having problems, please %3$scontact our support%4$s team."
 msgstr ""
 
-#: includes/admin/api-auth.php:604
+#: includes/admin/api-auth.php:621
 msgid "Successfully deauthenticated."
 msgstr ""
 
-#: includes/admin/api-auth.php:607
+#: includes/admin/api-auth.php:624
 msgid "Successfully force deauthenticated."
 msgstr ""
 
-#: includes/admin/api-auth.php:611
+#: includes/admin/api-auth.php:628
 #, php-format
 msgid "Oops! There has been an error while trying to deauthenticate. Please try again. If the issue persists, please %1$scontact our support%2$s team."
 msgstr ""
 
-#: includes/admin/api-auth.php:826
+#: includes/admin/api-auth.php:843
 msgid "Website & Google Analytics Timezone Mismatch"
 msgstr ""
 
-#: includes/admin/api-auth.php:829
+#: includes/admin/api-auth.php:846
 #, php-format
 msgid "We detected your Google Analytics property is set to a different timezone than your website. This may slightly impact your stats, especially when comparing day over day performance. You may want to adjust your website's time zone %1$shere%2$s."
 msgstr ""
 
-#: includes/admin/class-monsterinsights-am-deactivation-survey.php:210
+#: includes/admin/class-monsterinsights-am-deactivation-survey.php:233
 msgid "Please select an option"
 msgstr ""
 
-#: includes/admin/class-monsterinsights-am-deactivation-survey.php:341
+#: includes/admin/class-monsterinsights-am-deactivation-survey.php:384
 msgid "I no longer need the plugin"
 msgstr ""
 
-#: includes/admin/class-monsterinsights-am-deactivation-survey.php:344
+#: includes/admin/class-monsterinsights-am-deactivation-survey.php:387
 msgid "I'm switching to a different plugin"
 msgstr ""
 
-#: includes/admin/class-monsterinsights-am-deactivation-survey.php:345
+#: includes/admin/class-monsterinsights-am-deactivation-survey.php:388
 msgid "Please share which plugin"
 msgstr ""
 
-#: includes/admin/class-monsterinsights-am-deactivation-survey.php:348
+#: includes/admin/class-monsterinsights-am-deactivation-survey.php:391
 msgid "I couldn't get the plugin to work"
 msgstr ""
 
-#: includes/admin/class-monsterinsights-am-deactivation-survey.php:351
+#: includes/admin/class-monsterinsights-am-deactivation-survey.php:394
 msgid "It's a temporary deactivation"
 msgstr ""
 
-#: includes/admin/class-monsterinsights-am-deactivation-survey.php:354
+#: includes/admin/class-monsterinsights-am-deactivation-survey.php:397
 msgid "Other"
 msgstr ""
 
-#: includes/admin/class-monsterinsights-am-deactivation-survey.php:355
+#: includes/admin/class-monsterinsights-am-deactivation-survey.php:398
 msgid "Please share the reason"
 msgstr ""
 
-#: includes/admin/class-monsterinsights-am-deactivation-survey.php:362
+#: includes/admin/class-monsterinsights-am-deactivation-survey.php:406
 msgid "Quick Feedback"
 msgstr ""
 
-#: includes/admin/class-monsterinsights-am-deactivation-survey.php:363
+#: includes/admin/class-monsterinsights-am-deactivation-survey.php:407
 #, php-format
 msgid "If you have a moment, please share why you are deactivating %s:"
 msgstr ""
 
-#: includes/admin/class-monsterinsights-am-deactivation-survey.php:378
+#: includes/admin/class-monsterinsights-am-deactivation-survey.php:422
 #, php-format
 msgid "Submit %s Deactivate"
 msgstr ""
 
-#: includes/admin/class-monsterinsights-am-deactivation-survey.php:379
+#: includes/admin/class-monsterinsights-am-deactivation-survey.php:423
 #, php-format
 msgid "Skip %s Deactivate"
 msgstr ""
@@ -7595,60 +7795,60 @@ msgid "There was an error connecting to the remote key API. Please try again lat
 msgstr ""
 
 #. Translators: Placeholders are for links to fix the issue.
-#: includes/admin/common.php:508
+#: includes/admin/common.php:521
 #, php-format
 msgid "MonsterInsights has detected that it's files are being blocked. This is usually caused by a adblock browser plugin (particularly uBlock Origin), or a conflicting WordPress theme or plugin. This issue only affects the admin side of MonsterInsights. To solve this, ensure MonsterInsights is whitelisted for your website URL in any adblock browser plugin you use. For step by step directions on how to do this, %1$sclick here%2$s. If this doesn't solve the issue (rare), send us a ticket %3$shere%2$s and we'll be happy to help diagnose the issue."
 msgstr ""
 
-#: includes/admin/common.php:627
+#: includes/admin/common.php:640
 msgid "ACTION REQUIRED: Your PHP version is putting your site at risk!"
 msgstr ""
 
-#: includes/admin/common.php:629
+#: includes/admin/common.php:642
 msgid "ACTION REQUIRED: Speed your website up 400% with a single email!"
 msgstr ""
 
 #. Translators: Placeholder is for the current PHP version.
-#: includes/admin/common.php:636
+#: includes/admin/common.php:649
 #, php-format
 msgid "In the next major release of MonsterInsights we are planning to remove support for the version of PHP you are using (%s). This insecure version is no longer supported by WordPress itself, so you are already missing out on the latest features of WordPress along with critical updates for security and performance (modern PHP versions make websites much faster)."
 msgstr ""
 
 #. Translators: Placeholders add a link to an article.
-#: includes/admin/common.php:639
+#: includes/admin/common.php:652
 #, php-format
 msgid "To ensure MonsterInsights and other plugins on your site continue to function properly, and avoid putting your site at risk, please take a few minutes to ask your website hosting provider to upgrade the version of PHP to a modern PHP version (7.2 or newer). We provide helpful templates for how to ask them %1$shere%2$s."
 msgstr ""
 
-#: includes/admin/common.php:640
+#: includes/admin/common.php:653
 msgid "Upgrading your PHP version will make sure you are able to continue using WordPress without issues in the future, keep your site secure, and will also make your website up to 400% faster!"
 msgstr ""
 
-#: includes/admin/common.php:659
+#: includes/admin/common.php:672
 msgid "ACTION REQUIRED: Your WordPress version is putting your site at risk!"
 msgstr ""
 
 #. Translators: Placeholder is for the current WordPress version.
-#: includes/admin/common.php:662
+#: includes/admin/common.php:675
 #, php-format
 msgid "In the next major release of MonsterInsights we are planning to remove support for the version of WordPress you are using (version %s). This version is several years out of date, and most plugins do not support this version anymore, so you could be missing out on critical updates for performance and security already!"
 msgstr ""
 
-#: includes/admin/common.php:664
+#: includes/admin/common.php:677
 msgid "The good news: updating WordPress has never been easier and only takes a few moments."
 msgstr ""
 
 #. Translators: Placeholders add links to articles.
-#: includes/admin/common.php:666
+#: includes/admin/common.php:679
 #, php-format
 msgid "To update, we recommend following this %1$sstep by step guide for updating WordPress%2$s from IsItWP and afterwards check out %3$sWhy You Should Always Use the Latest Version of WordPress%4$s on WPBeginner."
 msgstr ""
 
-#: includes/admin/common.php:699
+#: includes/admin/common.php:712
 msgid "View 2024 Year in Review report!"
 msgstr ""
 
-#: includes/admin/common.php:700
+#: includes/admin/common.php:713
 msgid "See how your website performed this year and find tips along the way to help grow even more in 2024!"
 msgstr ""
 
@@ -8110,193 +8310,193 @@ msgstr ""
 msgid "Hey - we noticed you've been using %1$s for a while - that's great! Could you do us a BIG favor and give it a 5-star review on WordPress to help us spread the word and boost our motivation?"
 msgstr ""
 
-#: includes/admin/routes.php:354
+#: includes/admin/routes.php:358
 msgid "The best WordPress eCommerce plugin for selling digital downloads. Start selling eBooks, software, music, digital art, and more within minutes. Accept payments, manage subscriptions, advanced access control, and more."
 msgstr ""
 
-#: includes/admin/routes.php:388
-#: includes/admin/routes.php:733
+#: includes/admin/routes.php:392
+#: includes/admin/routes.php:737
 msgid "Top-rated WordPress donation and fundraising plugin. Over 10,000+ non-profit organizations and website owners use Charitable to create fundraising campaigns and raise more money online."
 msgstr ""
 
-#: includes/admin/routes.php:400
-#: includes/admin/routes.php:744
+#: includes/admin/routes.php:404
+#: includes/admin/routes.php:748
 msgid "Future proof your WordPress customizations with the most popular code snippet management plugin for WordPress. Trusted by over 1,500,000+ websites for easily adding code to WordPress right from the admin area."
 msgstr ""
 
-#: includes/admin/routes.php:423
-#: includes/admin/routes.php:755
+#: includes/admin/routes.php:427
+#: includes/admin/routes.php:759
 msgid "Leading WordPress backup & site migration plugin. Over 1,500,000+ smart website owners use Duplicator to make reliable and secure WordPress backups to protect their websites. It also makes website migration really easy."
 msgstr ""
 
-#: includes/admin/routes.php:472
+#: includes/admin/routes.php:476
 msgid "The #1 affiliate management plugin for WordPress. Easily create an affiliate program for your eCommerce store or membership site within minutes and start growing your sales with the power of referral marketing."
 msgstr ""
 
-#: includes/admin/routes.php:485
+#: includes/admin/routes.php:489
 msgid "The #1 Stripe payments plugin for WordPress. Start accepting one-time and recurring payments on your WordPress site without setting up a shopping cart. No code required."
 msgstr ""
 
-#: includes/admin/routes.php:497
-#: includes/admin/routes.php:722
+#: includes/admin/routes.php:501
+#: includes/admin/routes.php:726
 msgid "A simple & powerful event calendar plugin for WordPress that comes with all the event management features including payments, scheduling, timezones, ticketing, recurring events, and more."
 msgstr ""
 
-#: includes/admin/routes.php:509
+#: includes/admin/routes.php:513
 msgid "The best drag & drop WordPress form builder. Easily create beautiful contact forms, surveys, payment forms, and more with our 1000+ form templates. Trusted by over 6 million websites as the best forms plugin."
 msgstr ""
 
-#: includes/admin/routes.php:521
+#: includes/admin/routes.php:525
 msgid "Ask visitors questions about how they use your website or what features can make you more money."
 msgstr ""
 
-#: includes/admin/routes.php:533
+#: includes/admin/routes.php:537
 msgid "The original WordPress SEO plugin and toolkit that improves your website’s search rankings. Comes with all the SEO features like Local SEO, WooCommerce SEO, sitemaps, SEO optimizer, schema, and more."
 msgstr ""
 
-#: includes/admin/routes.php:545
+#: includes/admin/routes.php:549
 msgid "Stripe Payment Gateway for WooCommerce is an integrated solution that lets you accept payments on your online store for web and mobile."
 msgstr ""
 
-#: includes/admin/routes.php:560
+#: includes/admin/routes.php:564
 msgid "Improve your WordPress email deliverability and make sure that your website emails reach user’s inbox with the #1 SMTP plugin for WordPress. Over 3 million websites use it to fix WordPress email issues."
 msgstr ""
 
-#: includes/admin/routes.php:570
+#: includes/admin/routes.php:574
 msgid "The fastest drag & drop landing page builder for WordPress. Create custom landing pages without writing code, connect them with your CRM, collect subscribers, and grow your audience. Trusted by 1 million sites."
 msgstr ""
 
-#: includes/admin/routes.php:581
+#: includes/admin/routes.php:585
 msgid "Turn your website visitors into brand ambassadors! Easily grow your email list, website traffic, and social media followers with the most powerful giveaways & contests plugin for WordPress."
 msgstr ""
 
-#: includes/admin/routes.php:592
+#: includes/admin/routes.php:596
 msgid "Boost your sales and conversions by up to 15% with real-time social proof notifications. TrustPulse helps you show live user activity and purchases to help convince other users to purchase."
 msgstr ""
 
-#: includes/admin/routes.php:605
-#: includes/admin/routes.php:711
+#: includes/admin/routes.php:609
+#: includes/admin/routes.php:715
 msgid "The most advanced WordPress search plugin. Customize your WordPress search algorithm, reorder search results, track search metrics, and everything you need to leverage search to grow your business."
 msgstr ""
 
-#: includes/admin/routes.php:617
+#: includes/admin/routes.php:621
 msgid "Easily display Instagram content on your WordPress site without writing any code. Comes with multiple templates, ability to show content from multiple accounts, hashtags, and more. Trusted by 1 million websites."
 msgstr ""
 
-#: includes/admin/routes.php:631
+#: includes/admin/routes.php:635
 msgid "Easily display Facebook content on your WordPress site without writing any code. Comes with multiple templates, ability to embed albums, group content, reviews, live videos, comments, and reactions."
 msgstr ""
 
-#: includes/admin/routes.php:645
+#: includes/admin/routes.php:649
 msgid "Easily display YouTube videos on your WordPress site without writing any code. Comes with multiple layouts, ability to embed live streams, video filtering, ability to combine multiple channel videos, and more."
 msgstr ""
 
-#: includes/admin/routes.php:660
+#: includes/admin/routes.php:664
 msgid "Easily display Twitter content in WordPress without writing any code. Comes with multiple layouts, ability to combine multiple Twitter feeds, Twitter card support, tweet moderation, and more."
 msgstr ""
 
-#: includes/admin/routes.php:675
+#: includes/admin/routes.php:679
 msgid "Connect with your visitors after they leave your website with the leading web push notification software. Over 10,000+ businesses worldwide use PushEngage to send 15 billion notifications each month."
 msgstr ""
 
-#: includes/admin/routes.php:686
+#: includes/admin/routes.php:690
 msgid "Automate everything with the #1 no-code Automation tool for WordPress."
 msgstr ""
 
-#: includes/admin/routes.php:700
+#: includes/admin/routes.php:704
 msgid "Pretty Links helps you shrink, beautify, track, manage and share any URL on or off of your WordPress website. Create links that look how you want using your own domain name!"
 msgstr ""
 
-#: includes/admin/routes.php:778
+#: includes/admin/routes.php:782
 msgid "Advanced Coupons for WooCommerce (Free Version) gives WooCommerce store owners extra coupon features so they can market their stores better."
 msgstr ""
 
-#: includes/admin/routes.php:791
+#: includes/admin/routes.php:795
 msgid "See what your analytics software isn’t telling you with powerful UserFeedback surveys."
 msgstr ""
 
-#: includes/admin/routes.php:912
+#: includes/admin/routes.php:916
 #, php-format
 msgid "Oops! Please enter a valid Google Analytics 4 Measurement ID. %1$sLearn how to find your Measurement ID%2$s."
 msgstr ""
 
-#: includes/admin/routes.php:987
+#: includes/admin/routes.php:991
 msgid "Please upload a valid .json file"
 msgstr ""
 
-#: includes/admin/routes.php:995
+#: includes/admin/routes.php:999
 msgid "Please select a valid file to upload."
 msgstr ""
 
-#: includes/admin/routes.php:1045
+#: includes/admin/routes.php:1049
 #, php-format
 msgid "Oops! You don not have permissions to view MonsterInsights reporting. Please check with your site administrator that your role is included in the MonsterInsights permissions settings. %1$sClick here for more information%2$s."
 msgstr ""
 
-#: includes/admin/routes.php:1064
+#: includes/admin/routes.php:1068
 #, php-format
 msgid "Oops! You cannot view MonsterInsights reports because you are not licensed. Please try again in a few minutes. If the issue continues, please %1$scontact our support%2$s team."
 msgstr ""
 
-#: includes/admin/routes.php:1070
-#: includes/admin/routes.php:1484
+#: includes/admin/routes.php:1074
+#: includes/admin/routes.php:1488
 msgid "Add your license"
 msgstr ""
 
-#: includes/admin/routes.php:1079
+#: includes/admin/routes.php:1083
 #, php-format
 msgid "Oops! We had a problem due to a license key error. Please try again in a few minutes. If the problem persists, please %1$scontact our support%2$s team."
 msgstr ""
 
-#: includes/admin/routes.php:1099
+#: includes/admin/routes.php:1103
 #, php-format
 msgid "You need to authenticate into MonsterInsights before viewing reports. Please run our %1$ssetup wizard%2$s."
 msgstr ""
 
-#: includes/admin/routes.php:1111
+#: includes/admin/routes.php:1115
 #, php-format
 msgid "Oops! We ran into a problem displaying this report. Please %1$scontact our support%2$s team if this issue persists."
 msgstr ""
 
-#: includes/admin/routes.php:1176
-#: includes/admin/routes.php:1525
-#: includes/admin/routes.php:1579
+#: includes/admin/routes.php:1180
+#: includes/admin/routes.php:1529
+#: includes/admin/routes.php:1583
 #, php-format
 msgid "Oops! We encountered an error while generating your reports. Please wait a few minutes and try again. If the issue persists, please %1$scontact our support%2$s team."
 msgstr ""
 
-#: includes/admin/routes.php:1191
+#: includes/admin/routes.php:1195
 msgid "Oops! You are not allowed to install plugins. Please contact your website administrator for further assistance."
 msgstr ""
 
-#: includes/admin/routes.php:1199
+#: includes/admin/routes.php:1203
 msgid "Missing plugin name."
 msgstr ""
 
-#: includes/admin/routes.php:1205
+#: includes/admin/routes.php:1209
 msgid "Plugin already installed."
 msgstr ""
 
-#: includes/admin/routes.php:1365
+#: includes/admin/routes.php:1369
 msgid "Homepage"
 msgstr ""
 
-#: includes/admin/routes.php:1455
+#: includes/admin/routes.php:1459
 #, php-format
 msgid "Oops! You don not have permissions to view or access Popular Posts. Please check with your site administrator that your role is included in the MonsterInsights permissions settings. %1$sClick here for more information%2$s."
 msgstr ""
 
-#: includes/admin/routes.php:1478
+#: includes/admin/routes.php:1482
 #, php-format
 msgid "Oops! We could not find a valid license key for MonsterInsights. Please %1$senter a valid license key%2$s to view this report."
 msgstr ""
 
-#: includes/admin/routes.php:1493
+#: includes/admin/routes.php:1497
 #, php-format
 msgid "Oops! We could not find a valid license key. Please enter a valid license key to view this report. You can find your license by logging into your %1$sMonsterInsights account%2$s."
 msgstr ""
 
-#: includes/admin/routes.php:1513
+#: includes/admin/routes.php:1517
 #, php-format
 msgid "You need to authenticate into MonsterInsights before viewing reports. Please complete the setup by going through our %1$ssetup wizard%2$s."
 msgstr ""
@@ -11027,12 +11227,12 @@ msgid "United States"
 msgstr ""
 
 #: includes/helpers.php:479
-#: includes/helpers.php:2132
+#: includes/helpers.php:2179
 msgid "Canada"
 msgstr ""
 
 #: includes/helpers.php:480
-#: includes/helpers.php:2177
+#: includes/helpers.php:2224
 msgid "United Kingdom"
 msgstr ""
 
@@ -11073,7 +11273,7 @@ msgid "Antarctica"
 msgstr ""
 
 #: includes/helpers.php:490
-#: includes/helpers.php:2125
+#: includes/helpers.php:2172
 msgid "Antigua and Barbuda"
 msgstr ""
 
@@ -11090,7 +11290,7 @@ msgid "Aruba"
 msgstr ""
 
 #: includes/helpers.php:494
-#: includes/helpers.php:2126
+#: includes/helpers.php:2173
 msgid "Australia"
 msgstr ""
 
@@ -11115,7 +11315,7 @@ msgid "Bangladesh"
 msgstr ""
 
 #: includes/helpers.php:500
-#: includes/helpers.php:2127
+#: includes/helpers.php:2174
 msgid "Barbados"
 msgstr ""
 
@@ -11128,7 +11328,7 @@ msgid "Belgium"
 msgstr ""
 
 #: includes/helpers.php:503
-#: includes/helpers.php:2128
+#: includes/helpers.php:2175
 msgid "Belize"
 msgstr ""
 
@@ -11157,7 +11357,7 @@ msgid "Bosnia and Herzegovina"
 msgstr ""
 
 #: includes/helpers.php:510
-#: includes/helpers.php:2129
+#: includes/helpers.php:2176
 msgid "Botswana"
 msgstr ""
 
@@ -11186,7 +11386,7 @@ msgid "Burkina Faso"
 msgstr ""
 
 #: includes/helpers.php:517
-#: includes/helpers.php:2130
+#: includes/helpers.php:2177
 msgid "Burundi"
 msgstr ""
 
@@ -11195,7 +11395,7 @@ msgid "Cambodia"
 msgstr ""
 
 #: includes/helpers.php:519
-#: includes/helpers.php:2131
+#: includes/helpers.php:2178
 msgid "Cameroon"
 msgstr ""
 
@@ -11288,7 +11488,7 @@ msgid "Djibouti"
 msgstr ""
 
 #: includes/helpers.php:542
-#: includes/helpers.php:2133
+#: includes/helpers.php:2180
 msgid "Dominica"
 msgstr ""
 
@@ -11337,7 +11537,7 @@ msgid "Faroe Islands"
 msgstr ""
 
 #: includes/helpers.php:554
-#: includes/helpers.php:2134
+#: includes/helpers.php:2181
 msgid "Fiji"
 msgstr ""
 
@@ -11366,7 +11566,7 @@ msgid "Gabon"
 msgstr ""
 
 #: includes/helpers.php:561
-#: includes/helpers.php:2137
+#: includes/helpers.php:2184
 msgid "Gambia"
 msgstr ""
 
@@ -11383,7 +11583,7 @@ msgid "Greece"
 msgstr ""
 
 #: includes/helpers.php:565
-#: includes/helpers.php:2138
+#: includes/helpers.php:2185
 msgid "Ghana"
 msgstr ""
 
@@ -11396,7 +11596,7 @@ msgid "Greenland"
 msgstr ""
 
 #: includes/helpers.php:568
-#: includes/helpers.php:2135
+#: includes/helpers.php:2182
 msgid "Grenada"
 msgstr ""
 
@@ -11425,7 +11625,7 @@ msgid "Guinea-Bissau"
 msgstr ""
 
 #: includes/helpers.php:575
-#: includes/helpers.php:2136
+#: includes/helpers.php:2183
 msgid "Guyana"
 msgstr ""
 
@@ -11458,7 +11658,7 @@ msgid "Iceland"
 msgstr ""
 
 #: includes/helpers.php:583
-#: includes/helpers.php:2140
+#: includes/helpers.php:2187
 #: includes/popular-posts/class-popular-posts-themes.php:296
 msgid "India"
 msgstr ""
@@ -11476,7 +11676,7 @@ msgid "Iraq"
 msgstr ""
 
 #: includes/helpers.php:587
-#: includes/helpers.php:2139
+#: includes/helpers.php:2186
 msgid "Ireland"
 msgstr ""
 
@@ -11493,7 +11693,7 @@ msgid "Italy"
 msgstr ""
 
 #: includes/helpers.php:591
-#: includes/helpers.php:2141
+#: includes/helpers.php:2188
 msgid "Jamaica"
 msgstr ""
 
@@ -11514,12 +11714,12 @@ msgid "Kazakhstan"
 msgstr ""
 
 #: includes/helpers.php:596
-#: includes/helpers.php:2142
+#: includes/helpers.php:2189
 msgid "Kenya"
 msgstr ""
 
 #: includes/helpers.php:597
-#: includes/helpers.php:2143
+#: includes/helpers.php:2190
 msgid "Kiribati"
 msgstr ""
 
@@ -11544,12 +11744,12 @@ msgid "Lebanon"
 msgstr ""
 
 #: includes/helpers.php:603
-#: includes/helpers.php:2144
+#: includes/helpers.php:2191
 msgid "Lesotho"
 msgstr ""
 
 #: includes/helpers.php:604
-#: includes/helpers.php:2145
+#: includes/helpers.php:2192
 msgid "Liberia"
 msgstr ""
 
@@ -11582,7 +11782,7 @@ msgid "Madagascar"
 msgstr ""
 
 #: includes/helpers.php:612
-#: includes/helpers.php:2146
+#: includes/helpers.php:2193
 msgid "Malawi"
 msgstr ""
 
@@ -11599,12 +11799,12 @@ msgid "Mali"
 msgstr ""
 
 #: includes/helpers.php:616
-#: includes/helpers.php:2147
+#: includes/helpers.php:2194
 msgid "Malta"
 msgstr ""
 
 #: includes/helpers.php:617
-#: includes/helpers.php:2148
+#: includes/helpers.php:2195
 msgid "Marshall Islands"
 msgstr ""
 
@@ -11617,7 +11817,7 @@ msgid "Mauritania"
 msgstr ""
 
 #: includes/helpers.php:620
-#: includes/helpers.php:2149
+#: includes/helpers.php:2196
 msgid "Mauritius"
 msgstr ""
 
@@ -11630,7 +11830,7 @@ msgid "Mexico"
 msgstr ""
 
 #: includes/helpers.php:623
-#: includes/helpers.php:2150
+#: includes/helpers.php:2197
 msgid "Micronesia"
 msgstr ""
 
@@ -11667,12 +11867,12 @@ msgid "Myanmar"
 msgstr ""
 
 #: includes/helpers.php:632
-#: includes/helpers.php:2152
+#: includes/helpers.php:2199
 msgid "Namibia"
 msgstr ""
 
 #: includes/helpers.php:633
-#: includes/helpers.php:2153
+#: includes/helpers.php:2200
 msgid "Nauru"
 msgstr ""
 
@@ -11693,7 +11893,7 @@ msgid "New Caledonia"
 msgstr ""
 
 #: includes/helpers.php:638
-#: includes/helpers.php:2151
+#: includes/helpers.php:2198
 msgid "New Zealand"
 msgstr ""
 
@@ -11706,7 +11906,7 @@ msgid "Niger"
 msgstr ""
 
 #: includes/helpers.php:641
-#: includes/helpers.php:2154
+#: includes/helpers.php:2201
 msgid "Nigeria"
 msgstr ""
 
@@ -11735,12 +11935,12 @@ msgid "Oman"
 msgstr ""
 
 #: includes/helpers.php:648
-#: includes/helpers.php:2155
+#: includes/helpers.php:2202
 msgid "Pakistan"
 msgstr ""
 
 #: includes/helpers.php:649
-#: includes/helpers.php:2156
+#: includes/helpers.php:2203
 msgid "Palau"
 msgstr ""
 
@@ -11753,7 +11953,7 @@ msgid "Panama"
 msgstr ""
 
 #: includes/helpers.php:652
-#: includes/helpers.php:2157
+#: includes/helpers.php:2204
 msgid "Papua New Guinea"
 msgstr ""
 
@@ -11766,7 +11966,7 @@ msgid "Peru"
 msgstr ""
 
 #: includes/helpers.php:655
-#: includes/helpers.php:2158
+#: includes/helpers.php:2205
 msgid "Philippines"
 msgstr ""
 
@@ -11807,7 +12007,7 @@ msgid "Russian Federation"
 msgstr ""
 
 #: includes/helpers.php:665
-#: includes/helpers.php:2159
+#: includes/helpers.php:2206
 msgid "Rwanda"
 msgstr ""
 
@@ -11864,17 +12064,17 @@ msgid "Serbia"
 msgstr ""
 
 #: includes/helpers.php:679
-#: includes/helpers.php:2166
+#: includes/helpers.php:2213
 msgid "Seychelles"
 msgstr ""
 
 #: includes/helpers.php:680
-#: includes/helpers.php:2167
+#: includes/helpers.php:2214
 msgid "Sierra Leone"
 msgstr ""
 
 #: includes/helpers.php:681
-#: includes/helpers.php:2160
+#: includes/helpers.php:2207
 msgid "Singapore"
 msgstr ""
 
@@ -11887,7 +12087,7 @@ msgid "Slovenia"
 msgstr ""
 
 #: includes/helpers.php:684
-#: includes/helpers.php:2168
+#: includes/helpers.php:2215
 msgid "Solomon Islands"
 msgstr ""
 
@@ -11896,7 +12096,7 @@ msgid "Somalia"
 msgstr ""
 
 #: includes/helpers.php:686
-#: includes/helpers.php:2169
+#: includes/helpers.php:2216
 msgid "South Africa"
 msgstr ""
 
@@ -11909,7 +12109,7 @@ msgid "South Korea"
 msgstr ""
 
 #: includes/helpers.php:689
-#: includes/helpers.php:2170
+#: includes/helpers.php:2217
 msgid "South Sudan"
 msgstr ""
 
@@ -11922,7 +12122,7 @@ msgid "Sri Lanka"
 msgstr ""
 
 #: includes/helpers.php:692
-#: includes/helpers.php:2171
+#: includes/helpers.php:2218
 msgid "Sudan"
 msgstr ""
 
@@ -11935,7 +12135,7 @@ msgid "Svalbard and Jan Mayen Islands"
 msgstr ""
 
 #: includes/helpers.php:695
-#: includes/helpers.php:2164
+#: includes/helpers.php:2211
 msgid "Swaziland"
 msgstr ""
 
@@ -11960,7 +12160,7 @@ msgid "Tajikistan"
 msgstr ""
 
 #: includes/helpers.php:701
-#: includes/helpers.php:2174
+#: includes/helpers.php:2221
 msgid "Tanzania"
 msgstr ""
 
@@ -11981,12 +12181,12 @@ msgid "Tokelau"
 msgstr ""
 
 #: includes/helpers.php:706
-#: includes/helpers.php:2175
+#: includes/helpers.php:2222
 msgid "Tonga"
 msgstr ""
 
 #: includes/helpers.php:707
-#: includes/helpers.php:2172
+#: includes/helpers.php:2219
 msgid "Trinidad and Tobago"
 msgstr ""
 
@@ -12007,12 +12207,12 @@ msgid "Turks and Caicos Islands"
 msgstr ""
 
 #: includes/helpers.php:712
-#: includes/helpers.php:2176
+#: includes/helpers.php:2223
 msgid "Tuvalu"
 msgstr ""
 
 #: includes/helpers.php:713
-#: includes/helpers.php:2179
+#: includes/helpers.php:2226
 msgid "Uganda"
 msgstr ""
 
@@ -12037,7 +12237,7 @@ msgid "Uzbekistan"
 msgstr ""
 
 #: includes/helpers.php:719
-#: includes/helpers.php:2180
+#: includes/helpers.php:2227
 msgid "Vanuatu"
 msgstr ""
 
@@ -12074,12 +12274,12 @@ msgid "Yemen"
 msgstr ""
 
 #: includes/helpers.php:728
-#: includes/helpers.php:2181
+#: includes/helpers.php:2228
 msgid "Zambia"
 msgstr ""
 
 #: includes/helpers.php:729
-#: includes/helpers.php:2182
+#: includes/helpers.php:2229
 msgid "Zimbabwe"
 msgstr ""
 
@@ -12087,38 +12287,38 @@ msgstr ""
 msgid "Unknown Country"
 msgstr ""
 
-#: includes/helpers.php:1542
+#: includes/helpers.php:1589
 #, php-format
 msgid "%1$sWe noticed you're using a caching plugin or caching from your hosting provider.%2$s Be sure to clear the cache to ensure the tracking appears on all pages and posts. %3$s(See this guide on how to clear cache)%4$s."
 msgstr ""
 
 #. Translators: The placeholders are for making the "We have detected multiple tracking codes" text bold & adding a link to support.
-#: includes/helpers.php:1605
+#: includes/helpers.php:1652
 #, php-format
 msgid "%1$sWe have detected multiple tracking codes%2$s! You should remove non-MonsterInsights ones. If you need help finding them please %3$sread this article%4$s."
 msgstr ""
 
-#: includes/helpers.php:2161
+#: includes/helpers.php:2208
 msgid "St Kitts and Nevis"
 msgstr ""
 
-#: includes/helpers.php:2162
+#: includes/helpers.php:2209
 msgid "St Lucia"
 msgstr ""
 
-#: includes/helpers.php:2163
+#: includes/helpers.php:2210
 msgid "St Vincent and the Grenadines"
 msgstr ""
 
-#: includes/helpers.php:2165
+#: includes/helpers.php:2212
 msgid "Samoa"
 msgstr ""
 
-#: includes/helpers.php:2173
+#: includes/helpers.php:2220
 msgid "The Bahamas"
 msgstr ""
 
-#: includes/helpers.php:2178
+#: includes/helpers.php:2225
 msgid "United States of America"
 msgstr ""
 

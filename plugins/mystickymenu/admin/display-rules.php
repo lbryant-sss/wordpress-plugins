@@ -50,7 +50,7 @@ if (defined('ABSPATH') === false) {
 
 				<div class="mysticky-welcomebar-setting-content align-top">
 					<label><?php esc_html_e('Trigger', 'myStickymenu'); ?>
-						<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">Choose when you'd like the bar to appear on your site</p></span>
+						<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">Choose when you'd like the bar to appear on your site</p></span>
 					</label>
 					<div class="mysticky-welcomebar-setting-content-right trigger-wrap gap-x-px flex-inline">
 						<div class="mysticky-welcomebar-setting-action flex-1">
@@ -76,7 +76,7 @@ if (defined('ABSPATH') === false) {
 			<div class="mysticky-welcomebar-setting-block">
 				<div class="mysticky-welcomebar-setting-content align-top">
 					<label><?php _e('Date Scheduling', 'myStickymenu'); ?>
-						<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e('Set the date and time for when you want the widget to start showing and the time you would like it to stop showing. You can add up to 12 combinations of "on and off" triggers. This feature may be useful when you have an upcoming limited-time offer.',"mystickymenu");?></p></span>
+						<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e('Set the date and time for when you want the widget to start showing and the time you would like it to stop showing. You can add up to 12 combinations of "on and off" triggers. This feature may be useful when you have an upcoming limited-time offer.',"mystickymenu");?></p></span>
 					</label>
 					<div class="mysticky-welcomebar-setting-content-right">
 						<div class="mysticky-welcomebar-date-schedule-options" id="mysticky-welcomebar-date-schedule-options" style="display:none;" >
@@ -92,7 +92,7 @@ if (defined('ABSPATH') === false) {
 										<div class="date-select-option">
 											<label>
 												<?php esc_html_e( 'Start date ', 'mystickymenu');?>
-												<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e('Schedule a date from which the widget will be displayed (the starting date is included)',"mystickymenu");?></p></span>
+												<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e('Schedule a date from which the widget will be displayed (the starting date is included)',"mystickymenu");?></p></span>
 											</label>
 											<input autocomplete="off" type="text" class="welcomebar-datepicker" id="date_schedule___count___start_date">
 										</div>
@@ -105,7 +105,7 @@ if (defined('ABSPATH') === false) {
 										<div class="date-select-option">
 											<label>
 												<?php esc_html_e( 'End date ', 'mystickymenu');?>
-												<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e('Schedule a date from which the widget will stop being displayed (the end date is included)',"mystickymenu");?></p></span>
+												<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e('Schedule a date from which the widget will stop being displayed (the end date is included)',"mystickymenu");?></p></span>
 											</label>
 											<input autocomplete="off" type="text" class="welcomebar-datepicker" id="date_schedule___count___end_date">
 										</div>
@@ -114,7 +114,7 @@ if (defined('ABSPATH') === false) {
 											<input autocomplete="off" type="text"  id="date_schedule___count___end_time">
 										</div>
 										<div class="mysticky-welcomebar-url-buttons">
-											<a class="mysticky-welcomebar-remove-date-schedule" href="javascript:void(0);">x</a>
+											<a class="mysticky-welcomebar-remove-date-schedule" href="#">x</a>
 										</div>
 									</div>
 
@@ -127,17 +127,17 @@ if (defined('ABSPATH') === false) {
 							</div>
 						</div>
 						<span style="width: 100%;display: block;">
-							<a href="javascript:void(0);" class="create-rule" id="add-date-schedule-option"><?php esc_html_e( "Add Rule", "mystickymenu" );?></a>
+							<a href="#" class="create-rule" id="add-date-schedule-option"><?php esc_html_e( "Add Rule", "mystickymenu" );?></a>
 						</span>
 					</div>
 				</div>
 				<div class="mysticky-welcomebar-setting-content show-on-apper flex-column gap-x-px">
 					<label><?php esc_html_e('Page targeting', 'myStickymenu'); ?>
-						<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">
+						<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">
 							<?php esc_html_e(" Add page targeting to ensure the bar only appears or doesn't appear for the selected pages only","mystickymenu");?></p></span>
 					</label>
 					<div class="mysticky-welcomebar-setting-content-right absolute">
-						<a href="javascript:void(0);" class="create-rule" id="create-rule"><?php esc_html_e( "Add Rule", "mystickyelements" );?></a>
+						<a href="#" class="create-rule" id="create-rule"><?php esc_html_e( "Add Rule", "mystickyelements" );?></a>
 					</div>
 					<?php
 					$url_options = array(
@@ -187,7 +187,7 @@ if (defined('ABSPATH') === false) {
 				</div>
 				<div class="mysticky-welcomebar-setting-content show-on-apper">
 					<label><?php _e('User targeting', 'myStickymenu'); ?>
-						<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e("Add a rule if you want to show the welcome bar for logged in or logged out users of your WordPress website selectively","mystickymenu");?></p></span>
+						<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e("Add a rule if you want to show the welcome bar for logged in or logged out users of your WordPress website selectively","mystickymenu");?></p></span>
 					</label>
 					<div class="mysticky-welcomebar-setting-content-right">
 						<div class=" mystickymenu-country-inputs">
@@ -207,7 +207,7 @@ if (defined('ABSPATH') === false) {
 				</div>
 				<div class="mysticky-welcomebar-setting-content">
 					<label><?php esc_html_e('Country targeting', 'myStickymenu'); ?>
-						<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">
+						<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">
 							<?php esc_html_e("Add country targeting to ensure the bar only appears for the selected countries only","mystickymenu");?></p></span>
 					</label>
 					<div class="mysticky-welcomebar-setting-content-right">

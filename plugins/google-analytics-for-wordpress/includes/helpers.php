@@ -1340,7 +1340,17 @@ function monsterinsights_get_jed_locale_data( $domain ) {
  * @return string
  */
 function monsterinsights_get_printable_translations( $domain ) {
-	$locale = determine_locale();
+	// Validate domain parameter
+	if ( empty( $domain ) || ! is_string( $domain ) ) {
+		return '';
+	}
+
+	// Get locale with backward compatibility
+	if ( function_exists( 'determine_locale' ) ) {
+		$locale = determine_locale();
+	} else {
+		$locale = is_admin() && function_exists( 'get_user_locale' ) ? get_user_locale() : get_locale();
+	}
 
 	if ( 'en_US' == $locale ) {
 		return '';
@@ -1352,19 +1362,49 @@ function monsterinsights_get_printable_translations( $domain ) {
 		return '';
 	}
 
-	$json_translations = wp_json_encode( $locale_data );
 
-	$output = <<<JS
-( function( domain, translations ) {
-	var localeData = translations.locale_data[ domain ] || translations.locale_data.messages;
-	localeData[""].domain = domain;
-	wp.i18n.setLocaleData( localeData, domain );
-} )( "{$domain}", {$json_translations} );
-JS;
+	// Encode with proper handling for Spanish characters
+	$json_translations = wp_json_encode( $locale_data, JSON_UNESCAPED_UNICODE );
+	
+	// Fallback if wp_json_encode fails
+	if ( false === $json_translations ) {
+		return '';
+	}
 
-	return $output;
+	// Verify JSON is valid before outputting
+	if ( json_last_error() !== JSON_ERROR_NONE ) {
+		return '';
+	}
+
+	// Check if JSON is too large (> 100KB to prevent browser issues)
+	if ( strlen( $json_translations ) > 102400 ) {
+		// If still too large, return empty to prevent page breaking
+		return '';
+	}
+
+	// Use WordPress recommended approach for inline scripts
+	$script = sprintf(
+		'( function( domain, translations ) {
+			try {
+				if ( typeof wp !== "undefined" && wp.i18n && typeof wp.i18n.setLocaleData === "function" ) {
+					var localeData = translations.locale_data[ domain ] || translations.locale_data.messages;
+					if ( localeData && localeData[""] ) {
+						localeData[""].domain = domain;
+						wp.i18n.setLocaleData( localeData, domain );
+					}
+				}
+			} catch( e ) {
+				if ( window.console && console.warn ) {
+					console.warn( "MonsterInsights: Error setting locale data for domain " + domain, e );
+				}
+			}
+		} )( %s, %s );',
+		wp_json_encode( $domain ),
+		$json_translations
+	);
+
+	return "\n<script type=\"text/javascript\">\n" . $script . "\n</script>\n";
 }
-
 function monsterinsights_get_inline_menu_icon() {
 	$scheme          = get_user_option( 'admin_color', get_current_user_id() );
 	$use_dark_scheme = $scheme === 'light';
@@ -1407,7 +1447,14 @@ function monsterinsights_get_shareasale_id() {
 	return $shareasale_id;
 }
 
-// Passed in with mandatory default redirect and shareasaleid from monsterinsights_get_upgrade_link
+/**
+ * Passed in with mandatory default redirect and shareasaleid from monsterinsights_get_upgrade_link
+ * @deprecated
+ * @param $shareasale_id
+ * @param $shareasale_redirect
+ *
+ * @return mixed|null
+ */
 function monsterinsights_get_shareasale_url( $shareasale_id, $shareasale_redirect ) {
 	// Check if there's a constant.
 	$custom = false;
@@ -1424,8 +1471,8 @@ function monsterinsights_get_shareasale_url( $shareasale_id, $shareasale_redirec
 
 	// Whether we have an ID or not, filter the ID.
 	$shareasale_redirect = apply_filters( 'monsterinsights_shareasale_redirect_url', $shareasale_redirect, $custom );
-	$shareasale_url      = sprintf( 'https://www.shareasale.com/r.cfm?B=971799&U=%s&M=69975&urllink=%s', $shareasale_id, $shareasale_redirect );
-	$shareasale_url      = apply_filters( 'monsterinsights_shareasale_redirect_entire_url', $shareasale_url, $shareasale_id, $shareasale_redirect );
+	$shareasale_url      = "https://www.monsterinsights.com/ref/590/";
+	$shareasale_url      = apply_filters( 'monsterinsights_shareasale_redirect_entire_url', $shareasale_url);
 
 	return $shareasale_url;
 }

@@ -117,6 +117,9 @@ function monsterinsights_admin_menu()
 	// then SEO
 	add_submenu_page($parent_slug, __('SEO', 'google-analytics-for-wordpress'), __('SEO', 'google-analytics-for-wordpress'), 'manage_options', $seo_url);
 
+	// Google PAX
+	add_submenu_page($parent_slug, __('Google Ads', 'google-analytics-for-wordpress'), __('Google Ads', 'google-analytics-for-wordpress'), 'monsterinsights_view_dashboard', $submenu_base . '#/google-ads');
+
 	// then tools
 	add_submenu_page($parent_slug, __('Tools:', 'google-analytics-for-wordpress'), __('Tools', 'google-analytics-for-wordpress'), 'manage_options', $submenu_base . '#/tools');
 

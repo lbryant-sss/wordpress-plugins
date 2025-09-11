@@ -192,16 +192,39 @@ class MonsterInsights_AM_Deactivation_Survey {
 						$form.find('.am-deactivate-survey-option:first-of-type input[type=radio]').focus();
 					});
 					// Survey radio option selected.
-					$form.on('change', 'input[type=radio]', function(event) {
+					$form.on('change', 'input[type=radio]', function(event) {	
 						event.preventDefault();
 						$form.find('input[type=text], .error').hide();
 						$form.find('.am-deactivate-survey-option').removeClass('selected');
 						$(this).closest('.am-deactivate-survey-option').addClass('selected').find('input[type=text]').show();
+						
+						// Check if option 3 is selected
+						if ($(this).val() === '3') {
+							// Remove existing reason description elements if they exist
+							$form.find('.reason-description-container').remove();
+							
+							// Create and append the reason description elements
+							var reasonDescriptionHtml = '<div class="reason-description-container">' +
+								'<input type="text" id="reason_description" name="reason_description" class="am-deactivate-survey-option-details" placeholder="We\'re sorry to hear. Can you let us know what didn\'t work?" />' +
+								'</div>';
+							$(this).closest('.am-deactivate-survey-option').append(reasonDescriptionHtml);
+							$form.find('#reason_description').show();
+						} else {
+							// Hide reason description if other option is selected
+							$form.find('.reason-description-container').remove();
+						}
 					});
 					// Survey Skip & Deactivate.
 					$form.on('click', '.am-deactivate-survey-deactivate', function(event) {
 						event.preventDefault();
 						location.href = $deactivateLink.attr('href');
+					});
+					// Survey close button.
+					$form.on('click', '.am-deactivate-survey-close', function(event) {
+						event.preventDefault();
+						$overlay.hide();
+						formOpen = false;
+						$deactivateLink.focus();
 					});
 					// Survey submit.
 					$form.submit(function(event) {
@@ -218,6 +241,7 @@ class MonsterInsights_AM_Deactivation_Survey {
 							site: '<?php echo esc_url( home_url() ); ?>',
 							plugin: '<?php echo sanitize_key( $this->name ); ?>'
 						}
+
 
 						var submitSurvey = $.post(
 							'<?php echo esc_url($this->api_url); ?>',
@@ -276,6 +300,25 @@ class MonsterInsights_AM_Deactivation_Survey {
 				margin: 0 auto;
 				padding: 30px;
 				text-align: left;
+				position: relative;
+			}
+			.am-deactivate-survey-close {
+				position: absolute;
+				top: 15px;
+				right: 15px;
+				width: 30px;
+				height: 30px;
+				background: none;
+				border: none;
+				font-size: 18px;
+				font-weight: bold;
+				color: #999;
+				cursor: pointer;
+				line-height: 1;
+				padding: 0;
+			}
+			.am-deactivate-survey-close:hover {
+				color: #333;
 			}
 			.am-deactivate-survey .error {
 				display: block;
@@ -359,6 +402,7 @@ class MonsterInsights_AM_Deactivation_Survey {
 		<div class="am-deactivate-survey-modal" id="am-deactivate-survey-<?php echo esc_attr($this->plugin); ?>">
 			<div class="am-deactivate-survey-wrap">
 				<form class="am-deactivate-survey" method="post">
+					<button type="button" class="am-deactivate-survey-close" aria-label="<?php echo esc_attr__( 'Close', 'google-analytics-for-wordpress' ); ?>">×</button>
 					<span class="am-deactivate-survey-title"><span class="dashicons dashicons-testimonial"></span><?php echo ' ' . esc_html__( 'Quick Feedback', 'google-analytics-for-wordpress' ); ?></span>
 					<span class="am-deactivate-survey-desc"><?php printf( esc_html__( 'If you have a moment, please share why you are deactivating %s:', 'google-analytics-for-wordpress' ), $this->name ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- false positive  ?></span>
 					<div class="am-deactivate-survey-options">

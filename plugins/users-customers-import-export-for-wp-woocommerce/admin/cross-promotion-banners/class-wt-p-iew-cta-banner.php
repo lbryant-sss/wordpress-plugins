@@ -60,6 +60,7 @@ if ( ! class_exists('Wt_P_IEW_Cta_Banner') ) {
         public function add_meta_box() {
             global $wpdb;
 
+            // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
             $total_products = $wpdb->get_var("
                 SELECT COUNT(ID)
                 FROM {$wpdb->posts}
@@ -99,27 +100,27 @@ if ( ! class_exists('Wt_P_IEW_Cta_Banner') ) {
             <div class="wt-cta-banner">
                 <div class="wt-cta-content">
                     <div class="wt-cta-header">
-                        <img src="<?php echo esc_url($wt_admin_img_path . '/product-ie.svg'); ?>" alt="<?php _e('Product Import Export'); ?>" class="wt-cta-icon">
-                        <h3><?php _e('Product Import Export for WooCommerce'); ?></h3>
+                        <img src="<?php echo esc_url($wt_admin_img_path . '/product-ie.svg'); ?>" alt="<?php esc_html_e('Product Import Export', 'users-customers-import-export-for-wp-woocommerce'); ?>" class="wt-cta-icon">
+                        <h3><?php esc_html_e('Product Import Export for WooCommerce', 'users-customers-import-export-for-wp-woocommerce'); ?></h3>
                     </div>
 
                     <ul class="wt-cta-features">
-                        <li><?php _e('Import, export, or update WooCommerce products'); ?></li>
-                        <li><?php _e('Supports all types of products (Simple, variable, subscription grouped, and external)'); ?></li>
-                        <li><?php _e('Multiple file formats - CSV, XML, Excel, and TSV'); ?></li>
-                        <li><?php _e('Advanced filters and customizations for better control'); ?></li>
-                        <li class="hidden-feature"><?php _e('Bulk update WooCommerce product data'); ?></li>
-                        <li class="hidden-feature"><?php _e('Import via FTP/SFTP and URL'); ?></li>
-                        <li class="hidden-feature"><?php _e('Schedule automated import & export'); ?></li>
-                        <li class="hidden-feature"><?php _e('Export and Import custom fields and third-party plugin fields'); ?></li>
+                        <li><?php esc_html_e('Import, export, or update WooCommerce products', 'users-customers-import-export-for-wp-woocommerce'); ?></li>
+                        <li><?php esc_html_e('Supports all types of products (Simple, variable, subscription grouped, and external)', 'users-customers-import-export-for-wp-woocommerce'); ?></li>
+                        <li><?php esc_html_e('Multiple file formats - CSV, XML, Excel, and TSV', 'users-customers-import-export-for-wp-woocommerce'); ?></li>
+                        <li><?php esc_html_e('Advanced filters and customizations for better control', 'users-customers-import-export-for-wp-woocommerce'); ?></li>
+                        <li class="hidden-feature"><?php esc_html_e('Bulk update WooCommerce product data', 'users-customers-import-export-for-wp-woocommerce'); ?></li>
+                        <li class="hidden-feature"><?php esc_html_e('Import via FTP/SFTP and URL', 'users-customers-import-export-for-wp-woocommerce'); ?></li>
+                        <li class="hidden-feature"><?php esc_html_e('Schedule automated import & export', 'users-customers-import-export-for-wp-woocommerce'); ?></li>
+                        <li class="hidden-feature"><?php esc_html_e('Export and Import custom fields and third-party plugin fields', 'users-customers-import-export-for-wp-woocommerce'); ?></li>
                     </ul>
 
                     <div class="wt-cta-footer">
                         <div class="wt-cta-footer-links">
-                            <a href="#" class="wt-cta-toggle" data-show-text="<?php esc_attr_e('View all premium features'); ?>" data-hide-text="<?php esc_attr_e('Show less'); ?>"><?php _e('View all premium features'); ?></a>
-                            <a href="<?php echo esc_url($plugin_url); ?>" class="wt-cta-button" target="_blank"><img src="<?php echo esc_url($wt_admin_img_path . '/promote_crown.png');?>" style="width: 15.01px; height: 10.08px; margin-right: 8px;"><?php _e('Get the plugin'); ?></a>
+                            <a href="#" class="wt-cta-toggle" data-show-text="<?php esc_attr_e('View all premium features', 'users-customers-import-export-for-wp-woocommerce'); ?>" data-hide-text="<?php esc_attr_e('Show less', 'users-customers-import-export-for-wp-woocommerce'); ?>"><?php esc_html_e('View all premium features', 'users-customers-import-export-for-wp-woocommerce'); ?></a>
+                            <a href="<?php echo esc_url($plugin_url); ?>" class="wt-cta-button" target="_blank"><img src="<?php echo esc_url($wt_admin_img_path . '/promote_crown.png');?>" style="width: 15.01px; height: 10.08px; margin-right: 8px;"><?php esc_html_e('Get the plugin', 'users-customers-import-export-for-wp-woocommerce'); ?></a>
                         </div>
-                        <a href="#" class="wt-cta-dismiss" style="display: block; text-align: center; margin-top: 15px; color: #666; text-decoration: none;"><?php _e('Dismiss'); ?></a>
+                        <a href="#" class="wt-cta-dismiss" style="display: block; text-align: center; margin-top: 15px; color: #666; text-decoration: none;"><?php esc_html_e('Dismiss', 'users-customers-import-export-for-wp-woocommerce'); ?></a>
                     </div>
                 </div>
             </div>
@@ -131,7 +132,8 @@ if ( ! class_exists('Wt_P_IEW_Cta_Banner') ) {
          */
         public function dismiss_banner() {
             // Verify nonce for security
-            if (!wp_verify_nonce($_POST['nonce'], 'wt_dismiss_product_ie_cta_banner_nonce')) {
+            $nonce = isset($_POST['nonce']) ? sanitize_text_field(wp_unslash($_POST['nonce'])) : '';
+            if (!wp_verify_nonce($nonce, 'wt_dismiss_product_ie_cta_banner_nonce')) {
                 wp_send_json_error('Invalid nonce');
             }
 

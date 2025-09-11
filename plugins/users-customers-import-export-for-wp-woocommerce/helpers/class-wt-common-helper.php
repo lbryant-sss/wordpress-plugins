@@ -11,7 +11,7 @@ class Wt_Import_Export_For_Woo_Basic_Common_Helper
     * @return string the base name of the given URL (File name).
     */
    public static function wt_wc_get_filename_from_url( $file_url ) {
-       $parts = parse_url( $file_url );
+       $parts = wp_parse_url( $file_url );
        if ( isset( $parts['path'] ) ) {
            return basename( $parts['path'] );
        }
@@ -30,13 +30,15 @@ class Wt_Import_Export_For_Woo_Basic_Common_Helper
 
    public static function wt_get_product_id_by_sku($sku){
        global $wpdb;
+       // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
        $post_exists_sku = $wpdb->get_var($wpdb->prepare("
                    SELECT $wpdb->posts.ID
                    FROM $wpdb->posts
                    LEFT JOIN $wpdb->postmeta ON ( $wpdb->posts.ID = $wpdb->postmeta.post_id )
                    WHERE $wpdb->posts.post_status IN ( 'publish', 'private', 'draft', 'pending', 'future' )
-                   AND $wpdb->postmeta.meta_key = '_sku' AND $wpdb->postmeta.meta_value = '%s'
-                   ", $sku));   
+                   AND $wpdb->postmeta.meta_key = '_sku' AND $wpdb->postmeta.meta_value = %s
+                   ", $sku));
+       // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
        if ($post_exists_sku) {
            return $post_exists_sku;
        }
@@ -67,7 +69,8 @@ class Wt_Import_Export_For_Woo_Basic_Common_Helper
         $warn_icon='<span class="dashicons dashicons-warning"></span>&nbsp;';
         if(!version_compare(WT_U_IEW_VERSION, $min_version, '>=')) /* not matching the min version */
         {
-            self::$min_version_msg.=$warn_icon.sprintf(__("The %s requires a minimum version of %s %s. Please upgrade the %s accordingly."), "<b>$post_type_title</b>", "<b>".WT_U_IEW_PLUGIN_NAME."</b>", "<b>v$min_version</b>", "<b>".WT_U_IEW_PLUGIN_NAME."</b>").'<br />';
+            /* translators: $1: Post type title, $2: Plugin name, $3: Minimum version, $4: Plugin name */
+            self::$min_version_msg.=$warn_icon.sprintf(__('The %1$s requires a minimum version of %2$s %3$s. Please upgrade the %4$s accordingly.', 'users-customers-import-export-for-wp-woocommerce'), "<b>$post_type_title</b>", "<b>".WT_U_IEW_PLUGIN_NAME."</b>", "<b>v$min_version</b>", "<b>".WT_U_IEW_PLUGIN_NAME."</b>").'<br />';
             add_action('admin_notices', array(__CLASS__, 'no_minimum_base_version') );
             return false;
         }
@@ -84,7 +87,7 @@ class Wt_Import_Export_For_Woo_Basic_Common_Helper
         <div class="notice notice-warning">
             <p>
                 <?php 
-                echo self::$min_version_msg;
+                echo wp_kses_post(self::$min_version_msg);
                 ?>
             </p>
         </div>
@@ -339,11 +342,9 @@ class Wt_Import_Export_For_Woo_Basic_Common_Helper
         return apply_filters('wt_iew_allowed_screens_basic', $screens);
 
     }
-    public static function wt_get_current_page(){        
-        if (isset($_GET['page'])) {
-            return $_GET['page'];
-        }
-        return '';
+    public static function wt_get_current_page(){   
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce not required.
+        return isset($_GET['page']) ? sanitize_text_field(wp_unslash($_GET['page'])) : '';
     }
     
     public static function wt_is_screen_allowed(){
@@ -481,11 +482,11 @@ function wt_wp_star_rating( $args = array() ) {
 
 	if ( $parsed_args['number'] ) {
 		/* translators: 1: The rating, 2: The number of ratings. */
-		$format = _n( '%1$s rating based on %2$s rating', '%1$s rating based on %2$s ratings', $parsed_args['number'] );
+		$format = _n( '%1$s rating based on %2$s rating', '%1$s rating based on %2$s ratings', $parsed_args['number'], 'users-customers-import-export-for-wp-woocommerce' );
 		$title  = sprintf( $format, number_format_i18n( $rating, 1 ), number_format_i18n( $parsed_args['number'] ) );
 	} else {
 		/* translators: %s: The rating. */
-		$title = sprintf( __( '%s rating' ), number_format_i18n( $rating, 1 ) );
+		$title = sprintf( __( '%s rating', 'users-customers-import-export-for-wp-woocommerce' ), number_format_i18n( $rating, 1 ) );
 	}
 
 	$output  = '<div class="wt-star-rating">';
@@ -496,7 +497,7 @@ function wt_wp_star_rating( $args = array() ) {
 	$output .= '</div>';
 
 	if ( $parsed_args['echo'] ) {
-		echo $output;
+		echo wp_kses_post($output);
 	}
 
 	return $output;

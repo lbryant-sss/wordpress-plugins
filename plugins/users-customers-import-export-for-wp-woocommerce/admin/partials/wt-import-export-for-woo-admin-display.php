@@ -5,21 +5,22 @@ if (!defined('ABSPATH')) {
 $wf_admin_view_path=WT_U_IEW_PLUGIN_PATH.'admin/views/';
 $wf_img_path=WT_U_IEW_PLUGIN_URL.'images/';
 ?>
-<div class="wrap" id="<?php echo WT_IEW_PLUGIN_ID_BASIC;?>">
+<div class="wrap" id="<?php echo esc_attr(WT_IEW_PLUGIN_ID_BASIC);?>">
     <h2 class="wp-heading-inline">
-    <?php _e('Import Export for WooCommerce');?>
+    <?php esc_html_e('Import Export for WooCommerce', 'users-customers-import-export-for-wp-woocommerce');?>
     </h2>
     <div class="nav-tab-wrapper wp-clearfix wt-iew-tab-head">
         <?php
         $tab_head_arr=array(
-            'wt-advanced'=>__('General'),
-            'wt-help'=>__('Help Guide'),
-            'wt-pro-upgrade'=>__('Pro Upgrade'),
-			'wt-other-solutions' => __('Other Solutions')
+            'wt-advanced'=>esc_html__('General', 'users-customers-import-export-for-wp-woocommerce'),
+            'wt-help'=>esc_html__('Help Guide', 'users-customers-import-export-for-wp-woocommerce'),
+            'wt-pro-upgrade'=>esc_html__('Pro Upgrade', 'users-customers-import-export-for-wp-woocommerce'),
+			'wt-other-solutions' => esc_html__('Other Solutions', 'users-customers-import-export-for-wp-woocommerce')
         );
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Nonce verification not required.
         if(isset($_GET['debug']))
         {
-            $tab_head_arr['wt-debug']='Debug';
+            $tab_head_arr['wt-debug']=esc_html__('Debug', 'users-customers-import-export-for-wp-woocommerce');
         }
         Wt_Import_Export_For_Woo_Basic::generate_settings_tabhead($tab_head_arr);
         ?>
@@ -37,7 +38,8 @@ $wf_img_path=WT_U_IEW_PLUGIN_URL.'images/';
 			'wt-other-solutions'=>'admin-settings-other-solutions.php'
         );
         $setting_views_b['wt-pro-upgrade']='admin-settings-marketing.php';
-        if(isset($_GET['debug']))
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Nonce verification not required for debug mode.
+        if(isset($_GET['debug'])) // @codingStandardsIgnoreLine
         {
             $setting_views_b['wt-debug']='admin-settings-debug.php';
         }

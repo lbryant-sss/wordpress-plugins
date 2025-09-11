@@ -79,16 +79,16 @@ class Wt_Import_Export_For_Woo_basic_User_Import {
                     if($this->is_user_exist){
                         $msg = 'User updated successfully.';
                     }
-                    $this->import_results[$row] = array('row'=>$row, 'message'=>$msg, 'status'=>true, 'status_msg' => __( 'Success' ), 'post_id'=>$result['id'], 'post_link' => Wt_Import_Export_For_Woo_basic_User::get_item_link_by_id($result['id'])); 
+                    $this->import_results[$row] = array('row'=>$row, 'message'=>$msg, 'status'=>true, 'status_msg' => __( 'Success', 'users-customers-import-export-for-wp-woocommerce' ), 'post_id'=>$result['id'], 'post_link' => Wt_Import_Export_For_Woo_basic_User::get_item_link_by_id($result['id'])); 
                     Wt_Import_Export_For_Woo_Basic_Logwriter::write_log($this->parent_module->module_base, 'import', "Row :$row - ".$msg);
                     $success++;                     
                 }else{
-                   $this->import_results[$row] = array('row'=>$row, 'message'=>$result->get_error_message(), 'status'=>false, 'status_msg' => __( 'Failed/Skipped' ), 'post_id'=>'', 'post_link' => array( 'title' => __( 'Untitled' ), 'edit_url' => false ) );
+                   $this->import_results[$row] = array('row'=>$row, 'message'=>$result->get_error_message(), 'status'=>false, 'status_msg' => __( 'Failed/Skipped', 'users-customers-import-export-for-wp-woocommerce' ), 'post_id'=>'', 'post_link' => array( 'title' => __( 'Untitled', 'users-customers-import-export-for-wp-woocommerce' ), 'edit_url' => false ) );
                    Wt_Import_Export_For_Woo_Basic_Logwriter::write_log($this->parent_module->module_base, 'import', "Row :$row - Processing failed. Reason: ".$result->get_error_message());
                    $failed++;
                 }  
            }else{
-               $this->import_results[$row] = array('row'=>$row, 'message'=>$parsed_data->get_error_message(), 'status'=>false, 'status_msg' => __( 'Failed/Skipped' ), 'post_id'=>'', 'post_link' => array( 'title' => __( 'Untitled' ), 'edit_url' => false ) );
+               $this->import_results[$row] = array('row'=>$row, 'message'=>$parsed_data->get_error_message(), 'status'=>false, 'status_msg' => __( 'Failed/Skipped', 'users-customers-import-export-for-wp-woocommerce' ), 'post_id'=>'', 'post_link' => array( 'title' => __( 'Untitled', 'users-customers-import-export-for-wp-woocommerce' ), 'edit_url' => false ) );
                Wt_Import_Export_For_Woo_Basic_Logwriter::write_log($this->parent_module->module_base, 'import', "Row :$row - Parsing failed. Reason: ".$parsed_data->get_error_message());
                 $failed++; 
            }           
@@ -212,13 +212,14 @@ class Wt_Import_Export_For_Woo_basic_User_Import {
             if (!$this->is_user_exist) {
                     $create_user_without_email = apply_filters('wt_create_user_without_email', FALSE);  // create user without email address
                     if (empty($email) && $create_user_without_email === FALSE) {
-                        $this->hf_log_data_change('user-csv-import', __('> skipped: cannot insert user without email.'));
+                        $this->hf_log_data_change('user-csv-import', __('> skipped: cannot insert user without email.', 'users-customers-import-export-for-wp-woocommerce'));
                         unset($item);
-                        return new WP_Error('parse-error', __('> skipped: cannot insert user without email.'));
+                        return new WP_Error('parse-error', __('> skipped: cannot insert user without email.', 'users-customers-import-export-for-wp-woocommerce'));
                     } elseif (!is_email($email) && $create_user_without_email === FALSE) {
-                        $this->hf_log_data_change('user-csv-import', sprintf(__('> skipped: Email is not valid. %s'), $item['user_email']));
+                        // translators: %s is the email address
+                        $this->hf_log_data_change('user-csv-import', sprintf(__('> skipped: Email is not valid. %s', 'users-customers-import-export-for-wp-woocommerce'), $item['user_email']));
                         unset($item);
-                        return new WP_Error('parse-error', __('>  skipped: Email is not valid.'));
+                        return new WP_Error('parse-error', __('>  skipped: Email is not valid.', 'users-customers-import-export-for-wp-woocommerce'));
                     }
             }
 
@@ -264,7 +265,7 @@ class Wt_Import_Export_For_Woo_basic_User_Import {
         try{            
             global $wpdb;
 
-            $this->hf_log_data_change('user-csv-import', __('Processing users.'));
+            $this->hf_log_data_change('user-csv-import', __('Processing users.', 'users-customers-import-export-for-wp-woocommerce'));
 
             $user_id = !empty($post['user_details']['ID']) && $post['user_details']['ID'] ? $post['user_details']['ID'] : 0;  
             
@@ -274,9 +275,11 @@ class Wt_Import_Export_For_Woo_basic_User_Import {
             if ($user_id && $this->merge) {
                 $current_user = $this->current_user;
                 if ($current_user == $user_id) {
-                    $this->hf_log_data_change('user-csv-import', sprintf(__('> &#8220;%s&#8221; This user is currently logged in hence we cannot update.'), $user_id), true);
+                    // translators: %s is the user ID.
+                    $this->hf_log_data_change('user-csv-import', sprintf(__('> &#8220;%s&#8221; This user is currently logged in hence we cannot update.', 'users-customers-import-export-for-wp-woocommerce'), $user_id), true);
                     unset($post);
-                return new WP_Error( 'parse-error',sprintf(__('> &#8220;%s&#8221; This user is currently logged in hence we cannot update.'), $user_id));
+                    // translators: %s is the user ID.
+                    return new WP_Error( 'parse-error',sprintf(__('> &#8220;%s&#8221; This user is currently logged in hence we cannot update.', 'users-customers-import-export-for-wp-woocommerce'), $user_id));
                 }
                 $user = get_userdata($user_id);
                 $roles = $user->roles;
@@ -285,7 +288,8 @@ class Wt_Import_Export_For_Woo_basic_User_Import {
                     $current_user = get_userdata($current_user);
                     $current_roles = $current_user->roles;
                     if(!in_array('administrator', $current_roles)){
-                        return new WP_Error( 'parse-error',sprintf(__('> &#8220;%s&#8221; Only a user with an Administrator role has the capability to update a user with an Administrator role.'), $user_id)); 
+                        // translators: %s is the user ID.
+                        return new WP_Error( 'parse-error',sprintf(__('> &#8220;%s&#8221; Only a user with an Administrator role has the capability to update a user with an Administrator role.', 'users-customers-import-export-for-wp-woocommerce'), $user_id)); 
                     }
                 }
 
@@ -295,27 +299,32 @@ class Wt_Import_Export_For_Woo_basic_User_Import {
                 $user_id = $this->hf_create_customer($post);
                 $new_added = true;
                 if (is_wp_error($user_id)) {
-
-                    $this->hf_log_data_change('user-csv-import', sprintf(__('> Error inserting %s: %s'), 1, $user_id->get_error_message()), true);
+                    // translators: %s is the error message.
+                    $this->hf_log_data_change('user-csv-import', sprintf(__('> Error inserting : %s', 'users-customers-import-export-for-wp-woocommerce'), $user_id->get_error_message()), true);
                     //$skipped++;
                     unset($post);
-                        return new WP_Error( 'parse-error',sprintf(__('> Error inserting %s: %s'), 1, $user_id->get_error_message()));
+                    // translators: %s is the error message.
+                    return new WP_Error( 'parse-error',sprintf(__('> Error inserting: %s', 'users-customers-import-export-for-wp-woocommerce'), $user_id->get_error_message()));
                 } elseif (empty($user_id)) {
                     
                     //$skipped++;
                     unset($post);
-                    return new WP_Error( 'parse-error',__('An error occurred with the customer information provided.'));
+                    return new WP_Error( 'parse-error',__('An error occurred with the customer information provided.', 'users-customers-import-export-for-wp-woocommerce'));
                 }
             }
 
-            if ($this->merge && !$new_added)
-                $out_msg = "User updated successfully. ID:$user_id";
-            else
-                $out_msg = "User imported successfully. ID:$user_id";
-            
-            $this->hf_log_data_change('user-csv-import', sprintf(__('> &#8220;%s&#8221;' . $out_msg), $user_id), true);
-            
-            $this->hf_log_data_change('user-csv-import', sprintf(__('> Finished importing user %s'), $user_id ));
+            if ($this->merge && !$new_added) {
+                // translators: %s is the user ID.
+                $out_msg = sprintf(__('User updated successfully. ID:%s', 'users-customers-import-export-for-wp-woocommerce'), $user_id);
+            } else {
+                // translators: %s is the user ID.
+                $out_msg = sprintf(__('User imported successfully. ID:%s', 'users-customers-import-export-for-wp-woocommerce'), $user_id);
+            }
+          
+            $this->hf_log_data_change('user-csv-import', sprintf('> &#8220;%s&#8221;', $user_id) . $out_msg, true);
+
+            // translators: %s is the user ID.
+            $this->hf_log_data_change('user-csv-import', sprintf(__('> Finished importing user %s', 'users-customers-import-export-for-wp-woocommerce'), $user_id ));
             
             do_action('wt_customer_csv_import_data', $parsed_item, $user_id);
             unset($post);
@@ -333,9 +342,9 @@ class Wt_Import_Export_For_Woo_basic_User_Import {
         $username = (!empty($data['user_details']['user_login']) ) ? $data['user_details']['user_login'] : '';
         $customer_id = (!empty($data['user_details']['customer_id']) ) ? $data['user_details']['customer_id'] : '';
         $insertion_id = (!empty($data['user_details']['ID']) ) ? $data['user_details']['ID'] : '';
-        $merge_empty_cells = apply_filters('wt_user_import_empty_csv_column', FALSE); 
+        $merge_empty_cells = apply_filters('wt_user_import_empty_csv_column', false); 
         
-		if('email' == $this->merge_with){
+		if('email' === $this->merge_with){
 			$insertion_id = '';
 		}
                
@@ -388,7 +397,9 @@ class Wt_Import_Export_For_Woo_basic_User_Import {
                 if($password_generated){
                     $password = wp_hash_password($password);
                 }
+                // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
                 $result = $wpdb->insert($wpdb->users, array('ID' => $insertion_id, 'user_login' => $username, 'user_email' => $customer_email, 'user_pass' => $password));
+                // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
                 if ($result) {
                     $found_customer = $insertion_id;
                 }
@@ -457,7 +468,7 @@ class Wt_Import_Export_For_Woo_basic_User_Import {
                     'first_name' => $first_name,
                     'last_name' => $last_name,
                     'user_status' => $user_status,
-                        )
+                    )
                 );
 
                 //unset($this->user_meta_fields['role']);
@@ -486,7 +497,7 @@ class Wt_Import_Export_For_Woo_basic_User_Import {
 
             }
         } else {
-            $found_customer = new WP_Error('hf_invalid_customer', sprintf(__('User could not be created without Email.'), $customer_id));
+            $found_customer = new WP_Error('hf_invalid_customer', sprintf(__('User could not be created without Email.', 'users-customers-import-export-for-wp-woocommerce'), $customer_id));
         }
         return apply_filters('xa_user_impexp_alter_user_meta', $found_customer, $this->user_meta_fields, $meta_array);
     }
@@ -504,7 +515,7 @@ class Wt_Import_Export_For_Woo_basic_User_Import {
             $new_roles = array_intersect($new_roles, array_keys($roles));
             $roles_to_remove = array();
             $user_roles = array_intersect(array_values($wp_user_object->roles), array_keys($roles));
-            $merge_empty_cells = apply_filters('wt_user_import_empty_csv_column', FALSE); 
+            $merge_empty_cells = apply_filters('wt_user_import_empty_csv_column', false); 
             if (!$new_roles) {
                 // If there are no roles, delete all of the user's roles
                 $roles_to_remove = $user_roles;
@@ -602,7 +613,7 @@ class Wt_Import_Export_For_Woo_basic_User_Import {
             }
 
         } else {
-            $found_customer = new WP_Error('hf_invalid_customer', sprintf(__('User could not be found with given Email or username.'), $customer_email));
+            $found_customer = new WP_Error('hf_invalid_customer', sprintf(__('User could not be found with given Email or username.', 'users-customers-import-export-for-wp-woocommerce'), $customer_email));
         }        
         return apply_filters('xa_user_impexp_alter_user_meta', $found_customer, $this->user_meta_fields, $meta_array);
     }

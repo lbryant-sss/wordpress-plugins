@@ -80,7 +80,7 @@ class Wt_Import_Export_For_Woo_Basic {
 		if ( defined( 'WT_U_IEW_VERSION' ) ) {
 			$this->version = WT_U_IEW_VERSION;
 		} else {
-			$this->version = '2.6.5';
+			$this->version = '2.6.6';
 		}
 		$this->plugin_name = 'wt-import-export-for-woo-basic';
 
@@ -172,6 +172,12 @@ class Wt_Import_Export_For_Woo_Basic {
 		 */
 		require_once WT_U_IEW_PLUGIN_PATH . 'admin/classes/class-log.php';
 		require_once WT_U_IEW_PLUGIN_PATH . 'admin/classes/class-logwriter.php';
+
+
+		/**
+		 * 	Add a notice for non-apache servers for securing folder.
+		 */
+		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-wt-non-apache-info.php';
 
 		$this->loader = new Wt_Import_Export_For_Woo_Loader_Basic();
 		$this->plugin_admin = new Wt_Import_Export_For_Woo_Admin_Basic( $this->get_plugin_name(), $this->get_version() );
@@ -322,7 +328,7 @@ class Wt_Import_Export_For_Woo_Basic {
 				$v=(isset($v[2]) ? $v[2] : '').$v[0].' '.(isset($v[1]) ? $v[1] : '');
 			}
 		?>
-			<a class="nav-tab" href="#<?php echo $k;?>"><?php echo $v; ?></a>
+			<a class="nav-tab" href="#<?php echo esc_attr($k);?>"><?php echo esc_html($v); ?></a>
 		<?php
 		}
 	}

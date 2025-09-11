@@ -48,7 +48,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 		
 		/* allowed file types */
 		$this->allowed_import_file_type=array(
-			'csv'=>__('CSV'),
+			'csv'=>__('CSV', 'users-customers-import-export-for-wp-woocommerce'),
 
 		);
 		$this->allowed_import_file_type_mime=array(
@@ -64,27 +64,27 @@ class Wt_Import_Export_For_Woo_Basic_Import
 		/* default step list */
 		$this->steps=array(
 			'post_type'=>array(
-				'title'=>__('Select a post type'),
-				'description'=>__('Use a CSV file to import data. As a first step, select the post type.'),
+				'title'=>__('Select a post type', 'users-customers-import-export-for-wp-woocommerce'),
+				'description'=>__('Use a CSV file to import data. As a first step, select the post type.', 'users-customers-import-export-for-wp-woocommerce'),
 			),
 			'method_import'=>array(
-				'title'=>__('Select import method'),
-				'description'=>__('Choose from the options below to continue with your import: quick import, based on a pre-saved template or a new import with advanced options.'),
+				'title'=>__('Select import method', 'users-customers-import-export-for-wp-woocommerce'),
+				'description'=>__('Choose from the options below to continue with your import: quick import, based on a pre-saved template or a new import with advanced options.', 'users-customers-import-export-for-wp-woocommerce'),
 			), 
 			'mapping'=>array(
-				'title'=>__('Map import columns'),
-				'description'=>__('Map the standard columns with your CSV column names.'),
+				'title'=>__('Map import columns', 'users-customers-import-export-for-wp-woocommerce'),
+				'description'=>__('Map the standard columns with your CSV column names.', 'users-customers-import-export-for-wp-woocommerce'),
 			),
 			'advanced'=>array(
-				'title'=>__('Advanced options/Batch import'),
-				'description'=>__('Use advanced options from below to decide on the delimiter options, updates to existing products, batch import count or schedule an import. You can also save the template file for future imports.'),
+				'title'=>__('Advanced options/Batch import', 'users-customers-import-export-for-wp-woocommerce'),
+				'description'=>__('Use advanced options from below to decide on the delimiter options, updates to existing products, batch import count or schedule an import. You can also save the template file for future imports.', 'users-customers-import-export-for-wp-woocommerce'),
 			),
 		);
 
 		$this->import_methods=array(
-			'quick'=>array('title'=>__('Quick import'), 'description'=> __('Use this option primarily if you exported the input file using the same plugin.')),
-			'template'=>array('title'=>__('Pre-saved template'), 'description'=> __('Retains the filter parameters and column specifications as per the chosen template and imports data accordingly.')),
-			'new'=>array('title'=>__('Advanced Import'), 'description'=> __('Imports data after a detailed process of filtration, column selection and advanced options. The configured settings can be saved as a template for future imports.')),
+			'quick'=>array('title'=>__('Quick import', 'users-customers-import-export-for-wp-woocommerce'), 'description'=> __('Use this option primarily if you exported the input file using the same plugin.', 'users-customers-import-export-for-wp-woocommerce')),
+			'template'=>array('title'=>__('Pre-saved template', 'users-customers-import-export-for-wp-woocommerce'), 'description'=> __('Retains the filter parameters and column specifications as per the chosen template and imports data accordingly.', 'users-customers-import-export-for-wp-woocommerce')),
+			'new'=>array('title'=>__('Advanced Import', 'users-customers-import-export-for-wp-woocommerce'), 'description'=> __('Imports data after a detailed process of filtration, column selection and advanced options. The configured settings can be saved as a template for future imports.', 'users-customers-import-export-for-wp-woocommerce')),
 		);
 
 		$this->step_need_validation_filter=array('method_import', 'mapping', 'advanced');
@@ -117,41 +117,42 @@ class Wt_Import_Export_For_Woo_Basic_Import
 	{
 		
                 $fields['maximum_execution_time'] = array(
-                        'label' => __("Maximum execution time"),
+                        'label' => __("Maximum execution time", 'users-customers-import-export-for-wp-woocommerce'),
                         'type' => 'number',
                         'value' => ini_get('max_execution_time'), /* Default max_execution_time settings value */
                         'field_name' => 'maximum_execution_time',
                         'field_group' => 'advanced_field',
-                        'help_text' => __('The maximum execution time, in seconds(eg:- 300, 600, 1800, 3600). If set to zero, no time limit is imposed. Increasing this will reduce the chance of export/import timeouts.'),
+                        'help_text' => __('The maximum execution time, in seconds(eg:- 300, 600, 1800, 3600). If set to zero, no time limit is imposed. Increasing this will reduce the chance of export/import timeouts.', 'users-customers-import-export-for-wp-woocommerce'),
                         'validation_rule' => array('type' => 'int'),
                 );                        
                 $fields['enable_import_log']=array(
-						'label'=>__("Generate Import log"),
+						'label'=>__("Generate Import log", 'users-customers-import-export-for-wp-woocommerce'),
 						'type' => 'checkbox',
-						'checkbox_fields' => array( 1 => __( 'Enable' ) ),
+						'checkbox_fields' => array( 1 => __( 'Enable', 'users-customers-import-export-for-wp-woocommerce' ) ),
 						'value' =>1,
 						'field_name'=>'enable_import_log',
-						'field_group'=>'advanced_field',			
-						'help_text'=>__("You can view the logs in the <a href=" . admin_url('admin.php?page=wt_import_export_for_woo_basic_history_log') . "><b>Import Logs</b></a> section or in History > View logs."),
+						'field_group'=>'advanced_field',
+						// translators: %s is the link to the import logs page.
+						'help_text'=>sprintf( __('You can view the logs in the <a href="%s"><b>Import Logs</b></a> section or in History > View logs.', 'users-customers-import-export-for-wp-woocommerce'), esc_url( admin_url( 'admin.php?page=wt_import_export_for_woo_basic_history_log' ) ) ),
 						'validation_rule'=>array('type'=>'absint'),
 				);
 
 		$import_methods=array_map(function($vl){ return $vl['title']; }, $this->import_methods);
 		$fields['default_import_method']=array(
-			'label'=>__("Default Import method"),
+			'label'=>__("Default Import method", 'users-customers-import-export-for-wp-woocommerce'),
 			'type'=>'select',
 			'sele_vals'=>$import_methods,
             'value' =>'new',
 			'field_name'=>'default_import_method',
 			'field_group'=>'advanced_field',
-			'help_text'=>__('Select the default method of import.'),
+			'help_text'=>__('Select the default method of import.', 'users-customers-import-export-for-wp-woocommerce'),
 		);
 		$fields['default_import_batch']=array(
-			'label'=>__("Default Import batch count"),
+			'label'=>__("Default Import batch count", 'users-customers-import-export-for-wp-woocommerce'),
 			'type'=>'number',
             'value' =>10, /* If altering then please also change batch count field help text section */
 			'field_name'=>'default_import_batch',
-			'help_text'=>__('Provide the default number of records to be imported in a batch.'),
+			'help_text'=>__('Provide the default number of records to be imported in a batch.', 'users-customers-import-export-for-wp-woocommerce'),
 			'validation_rule'=>array('type'=>'absint'),
 			'attr' => array('min' => 1, 'max' => 50),
 		);
@@ -168,11 +169,11 @@ class Wt_Import_Export_For_Woo_Basic_Import
 			
 
 			'batch_count'=>array(
-				'label'=>__("Import in batches of"),
+				'label'=>__("Import in batches of", 'users-customers-import-export-for-wp-woocommerce'),
 				'type'=>'text',
 				'value'=>$this->default_batch_count,
 				'field_name'=>'batch_count',
-				'help_text'=>__('The number of records that the server will process for every iteration within the configured timeout interval. If the import fails due to timeout you can lower this number accordingly and try again.'),
+				'help_text'=>__('The number of records that the server will process for every iteration within the configured timeout interval. If the import fails due to timeout you can lower this number accordingly and try again.', 'users-customers-import-export-for-wp-woocommerce'),
 				'validation_rule'=>array('type'=>'absint'),
 			)
 		);
@@ -188,7 +189,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 	public function get_method_import_screen_fields($method_import_form_data)
 	{
 		$file_from_arr=array(
-			'local'=>__('Local'),
+			'local'=>__('Local', 'users-customers-import-export-for-wp-woocommerce'),
 
 		);
 
@@ -205,7 +206,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 
 		//prepare file from field type based on remote type adapters
 		$file_from_field_arr=array(
-			'label'=>__("Choose file for Import").' [<a href"#" target="_blank" id="sample-csv-file">'. __('Sample CSV').'</a>]',
+			'label'=>__("Choose file for Import", 'users-customers-import-export-for-wp-woocommerce').' [<a href"#" target="_blank" id="sample-csv-file">'. __('Sample CSV', 'users-customers-import-export-for-wp-woocommerce').'</a>]',
 			'type'=>'select',
 			'tr_class'=>'wt-iew-import-method-options wt-iew-import-method-options-quick wt-iew-import-method-options-new wt-iew-import-method-options-template',
 			'sele_vals'=>$file_from_arr,
@@ -221,7 +222,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 		$method_import_screen_fields=array(
 			'file_from'=>$file_from_field_arr,
 			'local_file'=>array(
-				'label'=>__("Select a file"),
+				'label'=>__("Select a file", 'users-customers-import-export-for-wp-woocommerce'),
 				'type'=>'dropzone',
 				'merge_left'=>true,
 				'merge_right'=>true,
@@ -243,7 +244,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 
 
 		$method_import_screen_fields['delimiter']=array(
-			'label'=>__("Delimiter"),
+			'label'=>__("Delimiter", 'users-customers-import-export-for-wp-woocommerce'),
 			'type'=>'select',
 			'value'=>",",
 			'css_class'=>"wt_iew_delimiter_preset",
@@ -251,7 +252,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 			'tr_class'=>$file_from_field_arr['tr_class'], //add tr class from parent.Because we need to toggle the tr when parent tr toggles.
 			'field_name'=>'delimiter_preset',
 			'sele_vals'=>Wt_Iew_IE_Basic_Helper::_get_csv_delimiters(),
-			'help_text'=>__('The character used to separate columns in the CSV file. Takes comma (,) by default.'),
+			'help_text'=>__('The character used to separate columns in the CSV file. Takes comma (,) by default.', 'users-customers-import-export-for-wp-woocommerce'),
 			'validation_rule'=>array('type'=>'skip'),
                         'after_form_field'=>'<input type="text" class="wt_iew_custom_delimiter" name="wt_iew_delimiter" value="'.(!empty($method_import_form_data['wt_iew_delimiter']) ? $method_import_form_data['wt_iew_delimiter'] : ",").'" />',
 
@@ -274,8 +275,8 @@ class Wt_Import_Export_For_Woo_Basic_Import
 			$this->module_base=>array(
 				'submenu',
 				WT_IEW_PLUGIN_ID_BASIC,
-				__('Import'),
-				__('Import'),
+				__('Import', 'users-customers-import-export-for-wp-woocommerce'),
+				__('Import', 'users-customers-import-export-for-wp-woocommerce'),
 				apply_filters('wt_import_export_allowed_capability', 'import'),
 				$this->module_id,
 				array($this, 'admin_settings_page')
@@ -294,6 +295,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 		/**
 		*	Check it is a rerun call
 		*/
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce not required.
 		$requested_rerun_id=(isset($_GET['wt_iew_rerun']) ? absint($_GET['wt_iew_rerun']) : 0);
 		$this->_process_rerun($requested_rerun_id);
 		
@@ -313,7 +315,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
    					{
    						if(basename($temp_file)!=$this->temp_import_file)
    						{
-   							@unlink($temp_file); //delete it
+   							wp_delete_file($temp_file); //delete it
    						}
    					}
    				} 
@@ -374,9 +376,9 @@ class Wt_Import_Export_For_Woo_Basic_Import
 	{
             if(Wt_Import_Export_For_Woo_Basic_Common_Helper::wt_is_screen_allowed()){
 		/* adding dropzone JS */
-		wp_enqueue_script(WT_IEW_PLUGIN_ID_BASIC.'-dropzone', WT_U_IEW_PLUGIN_URL.'admin/js/dropzone.min.js', array('jquery'), WT_U_IEW_VERSION);
+		wp_enqueue_script(WT_IEW_PLUGIN_ID_BASIC.'-dropzone', WT_U_IEW_PLUGIN_URL.'admin/js/dropzone.min.js', array('jquery'), WT_U_IEW_VERSION, true);
 
-		wp_enqueue_script($this->module_id, plugin_dir_url(__FILE__).'assets/js/main.js', array('jquery', 'jquery-ui-sortable', 'jquery-ui-datepicker'), WT_U_IEW_VERSION);
+		wp_enqueue_script($this->module_id, plugin_dir_url(__FILE__).'assets/js/main.js', array('jquery', 'jquery-ui-sortable', 'jquery-ui-datepicker'), WT_U_IEW_VERSION, true);
 		wp_enqueue_style('jquery-ui-datepicker');
 		//wp_enqueue_media();
 
@@ -405,57 +407,59 @@ class Wt_Import_Export_For_Woo_Basic_Import
 			'max_import_file_size'=>$this->max_import_file_size,
                         'wt_iew_prefix'=>Wt_Import_Export_For_Woo_Admin_Basic::$wt_iew_prefix,
 			'msgs'=>array(
-				'choosed_template'=>__('Choosed template: '),
-				'choose_import_method'=>__('Please select an import method.'),
-				'choose_template'=>__('Please select an import template.'),
-				'step'=>__('Step'),
-				'choose_ftp_profile'=>__('Please select an FTP profile.'),
-				'choose_import_from'=>__('Please choose import from.'),
-				'choose_a_file'=>__('Please choose an import file.'),
-				'select_an_import_template'=>__('Please select an import template.'),
-				'validating_file'=>__('Creating temp file and validating.'),
-				'processing_file'=>__('Processing input file...'), 
-				'column_not_in_the_list'=>__('This column is not present in the import list. Please tick the checkbox to include.'),
-				'uploading'=>__('Uploading...'),
-				'outdated'=>__('You are using an outdated browser. Please upgarde your browser.'),
-				'server_error'=>__('An error occured.'),
-				'invalid_file'=>sprintf(__('Invalid file type. Only %s are allowed'), implode(", ", array_values($this->allowed_import_file_type))),
-				'drop_upload'=>__('Drop files here or click to upload'),
-				'upload_done'=>sprintf(__('%s Done.'), '<span class="dashicons dashicons-yes-alt" style="color:#3fa847;"></span>'),
-				'remove'=>__('Remove'),
-				'no_columns_mapped'=>__('No columns have been mapped. Please map the required fields to proceed with the import.'),
+				'choosed_template'=>__('Choosed template: ', 'users-customers-import-export-for-wp-woocommerce'),
+				'choose_import_method'=>__('Please select an import method.', 'users-customers-import-export-for-wp-woocommerce'),
+				'choose_template'=>__('Please select an import template.', 'users-customers-import-export-for-wp-woocommerce'),
+				'step'=>__('Step', 'users-customers-import-export-for-wp-woocommerce'),
+				'choose_ftp_profile'=>__('Please select an FTP profile.', 'users-customers-import-export-for-wp-woocommerce'),
+				'choose_import_from'=>__('Please choose import from.', 'users-customers-import-export-for-wp-woocommerce'),
+				'choose_a_file'=>__('Please choose an import file.', 'users-customers-import-export-for-wp-woocommerce'),
+				'select_an_import_template'=>__('Please select an import template.', 'users-customers-import-export-for-wp-woocommerce'),
+				'validating_file'=>__('Creating temp file and validating.', 'users-customers-import-export-for-wp-woocommerce'),
+				'processing_file'=>__('Processing input file...', 'users-customers-import-export-for-wp-woocommerce'), 
+				'column_not_in_the_list'=>__('This column is not present in the import list. Please tick the checkbox to include.', 'users-customers-import-export-for-wp-woocommerce'),
+				'uploading'=>__('Uploading...', 'users-customers-import-export-for-wp-woocommerce'),
+				'outdated'=>__('You are using an outdated browser. Please upgarde your browser.', 'users-customers-import-export-for-wp-woocommerce'),
+				'server_error'=>__('An error occured.', 'users-customers-import-export-for-wp-woocommerce'),
+				// translators: %s is the list of allowed file types.
+				'invalid_file'=>sprintf(__('Invalid file type. Only %s are allowed', 'users-customers-import-export-for-wp-woocommerce'), implode(", ", array_values($this->allowed_import_file_type))),
+				'drop_upload'=>__('Drop files here or click to upload', 'users-customers-import-export-for-wp-woocommerce'),
+				// translators: %s is the icon for success.
+				'upload_done'=>sprintf(__('%s Done.', 'users-customers-import-export-for-wp-woocommerce'), '<span class="dashicons dashicons-yes-alt" style="color:#3fa847;"></span>'),
+				'remove'=>__('Remove', 'users-customers-import-export-for-wp-woocommerce'),
+				'no_columns_mapped'=>__('No columns have been mapped. Please map the required fields to proceed with the import.', 'users-customers-import-export-for-wp-woocommerce'),
 			),
 			'addons' => array(
 				'product' => array(
-					'text' => __( 'View Products' ),
+					'text' => __( 'View Products', 'users-customers-import-export-for-wp-woocommerce' ),
 					'page_link' => admin_url('edit.php?post_type=product')
 				),
 				'product_categories' => array(
-					'text' => __( 'View Product categories' ),
+					'text' => __( 'View Product categories', 'users-customers-import-export-for-wp-woocommerce' ),
 					'page_link' => admin_url('edit-tags.php?taxonomy=product_cat&post_type=product')
 				),
 				'product_tags' => array(
-					'text' => __( 'View Product tags' ),
+					'text' => __( 'View Product tags', 'users-customers-import-export-for-wp-woocommerce' ),
 					'page_link' => admin_url('edit-tags.php?taxonomy=product_tag&post_type=product')
 				),
 				'product_review' => array(
-					'text' => __( 'View Product reviews' ),
+					'text' => __( 'View Product reviews', 'users-customers-import-export-for-wp-woocommerce' ),
 					'page_link' => admin_url('edit-comments.php')
 				),
 				'order' => array(
-					'text' => __( 'View Orders' ),
+					'text' => __( 'View Orders', 'users-customers-import-export-for-wp-woocommerce' ),
 					'page_link' => admin_url('edit.php?post_type=shop_order')
 				),
 				'coupon' => array(					
-					'text' => __( 'View Coupons' ),
+					'text' => __( 'View Coupons', 'users-customers-import-export-for-wp-woocommerce' ),
 					'page_link' => admin_url('edit.php?post_type=shop_coupon')
 				),
 				'user' => array(
-					'text' => __( 'View Users' ),
+					'text' => __( 'View Users', 'users-customers-import-export-for-wp-woocommerce' ),
 					'page_link' => admin_url('users.php')
 				),
 				'subscription' => array(
-					'text' => __( 'View Subscriptions' ),
+					'text' => __( 'View Subscriptions', 'users-customers-import-export-for-wp-woocommerce' ),
 					'page_link' => admin_url('edit.php?post_type=shop_subscription')
 				)				
 			)
@@ -480,7 +484,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 		if(is_plugin_active('woocommerce/woocommerce.php'))
 		{ 
 			wp_enqueue_script('wc-enhanced-select');
-			wp_enqueue_style('woocommerce_admin_styles', WC()->plugin_url().'/assets/css/admin.css');
+			wp_enqueue_style('woocommerce_admin_styles', WC()->plugin_url().'/assets/css/admin.css', array(), WC()->version, 'all');
 		}else
 		{
 			wp_enqueue_style(WT_IEW_PLUGIN_ID_BASIC.'-select2', WT_U_IEW_PLUGIN_URL. 'admin/css/select2.css', array(), WT_U_IEW_VERSION, 'all' );
@@ -565,7 +569,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 									'msg' => '',
 								);
 							} else {
-								$out['msg']=__('Unable to create temp file.');
+								$out['msg']=__('Unable to create temp file.', 'users-customers-import-export-for-wp-woocommerce');
 							}
 						} else {
 							$file_data = $this->remote_get($file_url);
@@ -579,20 +583,20 @@ class Wt_Import_Export_For_Woo_Basic_Import
 										'msg' => '',
 									);
 								} else {
-									$out['msg']=__('Unable to create temp file.');
+									$out['msg']=__('Unable to create temp file.', 'users-customers-import-export-for-wp-woocommerce');
 								}
 							} else {
-								$out['msg']=__('Unable to fetch file data.');
+								$out['msg']=__('Unable to fetch file data.', 'users-customers-import-export-for-wp-woocommerce');
 							}
 						}						
 					} else {
-						$out['msg']=__('Unable to create temp directory.');
+						$out['msg']=__('Unable to create temp directory.', 'users-customers-import-export-for-wp-woocommerce');
 					}				
 				} else {
-					$out['msg']=__('File type not allowed.');
+					$out['msg']=__('File type not allowed.', 'users-customers-import-export-for-wp-woocommerce');
 				}
 			} else {
-				$out['msg']=__('File not found.');
+				$out['msg']=__('File not found.', 'users-customers-import-export-for-wp-woocommerce');
 			}		
 		} else {
 			$out['response']=true;
@@ -603,9 +607,9 @@ class Wt_Import_Export_For_Woo_Basic_Import
 				$remote_adapter=Wt_Import_Export_For_Woo_Basic::get_remote_adapters('import', $file_from);
 				
 				if(is_null($remote_adapter)) { /* adapter object not found */
-				
-					$msg=sprintf('Unable to initailize %s', $file_from);
-					$out['msg']=__($msg);
+					// translators: %s is the file adapter class.
+					$msg=sprintf(__('Unable to initailize %s', 'users-customers-import-export-for-wp-woocommerce'), $file_from);
+					$out['msg']= $msg;
 					$out['response']=false;
 				} else {
 					/* download the file */
@@ -627,7 +631,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 				*/
 			$out['file_name']=apply_filters('wt_iew_alter_import_file_basic', $out['file_name'], $file_path);
 			} else {
-				$out['msg'] = __('Invalid file path');
+				$out['msg'] = __('Invalid file path', 'users-customers-import-export-for-wp-woocommerce');
 				$out['response'] = false;
 				return $out;
 			}
@@ -709,7 +713,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 		{	
 			if($this->is_extension_allowed($file_url))/* file type is in allowed list */ 
 			{
-				@unlink($file_path);
+				wp_delete_file($file_path);
 				return true;
 			}
 		}
@@ -722,29 +726,39 @@ class Wt_Import_Export_For_Woo_Basic_Import
 	*/
 	public static function get_file_path($file_name="")
 	{
-		if(!is_dir(self::$import_dir))
-        {
-            if(!mkdir(self::$import_dir, 0700))
-            {
-            	return false;
-            }else
-            {
-            	$files_to_create=array('.htaccess' => 'deny from all', 'index.php'=>'<?php // Silence is golden');
-		        foreach($files_to_create as $file=>$file_content)
-		        {
-		        	if(!file_exists(self::$import_dir.'/'.$file))
-			        {
-			            $fh=@fopen(self::$import_dir.'/'.$file, "w");
-			            if(is_resource($fh))
-			            {
-			                fwrite($fh, $file_content);
-			                fclose($fh);
-			            }
-			        }
-		        } 
-            }
-        }
-        return self::$import_dir.'/'.$file_name;
+		global $wp_filesystem;
+		
+		// Initialize WP_Filesystem
+		if (!function_exists('WP_Filesystem')) {
+			require_once(ABSPATH . 'wp-admin/includes/file.php');
+		}
+		WP_Filesystem();
+		
+		// Create directory using WP_Filesystem
+		if (!$wp_filesystem->is_dir(self::$import_dir)) {
+			if (!$wp_filesystem->mkdir(self::$import_dir, FS_CHMOD_DIR)) {
+				return false;
+			}
+		}
+		
+		// Ensure proper permissions and add index.php for security
+		$wp_filesystem->chmod(self::$import_dir, FS_CHMOD_DIR);
+		
+		// Add security files to prevent directory listing and direct access
+		$security_files = array(
+			'index.php' => '<?php' . PHP_EOL . '// Silence is golden',
+			'.htaccess' => 'deny from all'
+		);
+		
+		foreach ($security_files as $file => $content) {
+			if (!$wp_filesystem->exists(self::$import_dir . '/' . $file)) {
+				$wp_filesystem->put_contents(
+					self::$import_dir . '/' . $file,
+					$content
+				);
+			}
+		}
+		return self::$import_dir.'/'.$file_name;
 	}
 
 	/**
@@ -782,9 +796,9 @@ class Wt_Import_Export_For_Woo_Basic_Import
 					$this->temp_import_file=$file_name;
 				}else
 				{
-					$msg='Error occurred while processing the file';
+					$msg=__('Error occurred while processing the file', 'users-customers-import-export-for-wp-woocommerce');
 					Wt_Import_Export_For_Woo_Basic_History::record_failure($import_id, $msg);
-		            $out['msg']=__($msg);
+		            $out['msg']= $msg;
 					return $out;
 				}
 			}
@@ -806,7 +820,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 						}
 					}else
 					{
-						$out['msg']=__('Temp file missing.');
+						$out['msg']=__('Temp file missing.', 'users-customers-import-export-for-wp-woocommerce');
 						return $out;
 					}
 				}else /* in scheduled import need to prepare the temp file */
@@ -880,7 +894,8 @@ class Wt_Import_Export_For_Woo_Basic_Import
 			'history_id'=>$import_id, //same as that of import id
 			'total_records'=>$total_records,
 			'temp_import_file'=>$this->temp_import_file,
-			'msg'=>sprintf(__('Importing...(%d processed)'), 0),
+			// translators: %d is the number of records processed.
+			'msg'=>sprintf(__('Importing...(%d processed)', 'users-customers-import-export-for-wp-woocommerce'), 0),
 		);
 	}
 
@@ -939,18 +954,18 @@ class Wt_Import_Export_For_Woo_Basic_Import
 		{
 			if(!file_exists($file_path))
 			{
-				$msg='Temp file missing';					
-				//no need to add translation function in message
+				$msg=__('Temp file missing', 'users-customers-import-export-for-wp-woocommerce');					
+				
 				Wt_Import_Export_For_Woo_Basic_History::record_failure($import_id, $msg);
-	            $out['msg']=__($msg);
+	            $out['msg']= $msg;
 	            return $out;
         	}
 		}else
 		{
-			$msg='Temp file missing';					
-			//no need to add translation function in message
+			$msg=__('Temp file missing', 'users-customers-import-export-for-wp-woocommerce');					
+			
 			Wt_Import_Export_For_Woo_Basic_History::record_failure($import_id, $msg);
-            $out['msg']=__($msg);
+            $out['msg']= $msg;
             return $out;
 		} 
 
@@ -984,16 +999,15 @@ class Wt_Import_Export_For_Woo_Basic_Import
 		$input_data=$reader->get_data_as_batch($file_path, $offset, $batch_count, $this, $form_data);
 		
 		if(empty($input_data['data_arr'])){			
-			$out['msg']=__('CSV is empty');
+			$out['msg']=__('CSV is empty', 'users-customers-import-export-for-wp-woocommerce');
             return $out;
 		}
 				
 		if(!$input_data || !is_array($input_data))
 		{
-			$msg='Unable to process the file';					
-			//no need to add translation function in message
+			$msg=__('Unable to process the file', 'users-customers-import-export-for-wp-woocommerce');					
 			Wt_Import_Export_For_Woo_Basic_History::record_failure($import_id, $msg);
-            $out['msg']=__($msg);
+            $out['msg']= $msg;
             return $out;
 		}
 
@@ -1010,6 +1024,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 		* 	In case of non schedule import. Offset row count. 
 		*	The real internal offset is in bytes, This offset is total row processed.
 		*/
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verification already done in the Wt_Import_Export_For_Woo_Basic_Export_Ajax:ajax_main() method
 		$offset_count=(isset($_POST['offset_count']) ? absint($_POST['offset_count']) : 0);
 
 		/* giving full data */
@@ -1022,10 +1037,9 @@ class Wt_Import_Export_For_Woo_Basic_Import
                 /* no form data to process/Couldnt get any data from csv */
 //                if($this->import_method == 'quick'){  
                     if(empty($form_data['mapping_form_data']['mapping_fields'])){
-                        $msg='Invalid data/Delimter not right';					
-			//no need to add translation function in message
-			Wt_Import_Export_For_Woo_Basic_History::record_failure($import_id, $msg);
-                        $out['msg']=__($msg);
+                        $msg=__('Invalid data/Delimter not right', 'users-customers-import-export-for-wp-woocommerce');					
+						Wt_Import_Export_For_Woo_Basic_History::record_failure($import_id, $msg);
+                        $out['msg']= $msg;
                         return $out;
                         
                     }                    
@@ -1074,8 +1088,10 @@ class Wt_Import_Export_For_Woo_Basic_Import
 		$out['response']=true;
 		
 		/* In case of non schedule import. total success, totla failed count */
+		// phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce verification already done in the Wt_Import_Export_For_Woo_Basic_Export_Ajax:ajax_main() method
 		$total_success=(isset($_POST['total_success']) ? absint($_POST['total_success']) : 0);
 		$total_failed=(isset($_POST['total_failed']) ? absint($_POST['total_failed']) : 0);
+		// phpcs:enable WordPress.Security.NonceVerification.Missing -- Nonce verification already done in the Wt_Import_Export_For_Woo_Basic_Export_Ajax:ajax_main() method
 
 		$out['total_success']=(isset($import_response['total_success']) ? $import_response['total_success'] : 0)+$total_success;
 		$out['total_failed']=(isset($import_response['total_failed']) ? $import_response['total_failed'] : 0)+$total_failed;
@@ -1084,7 +1100,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 		if($is_last_offset) //finished
 		{
 			/* delete the temp file */
-			@unlink($file_path);
+			wp_delete_file($file_path);
 
 			$log_summary_msg=$this->generate_log_summary($out, $is_last_offset);
 
@@ -1129,19 +1145,20 @@ class Wt_Import_Export_For_Woo_Basic_Import
 	{
 		if($is_last_offset)
 		{
-			$msg='<span class="wt_iew_info_box_title">'.__('Finished').'</span>';
-                        $msg.='<span class="wt_iew_popup_close" style="line-height:10px;width:auto" onclick="wt_iew_basic_import.hide_import_info_box();">X</span>';
+			$msg='<span class="wt_iew_info_box_title">'.__('Finished', 'users-customers-import-export-for-wp-woocommerce').'</span>';
+            $msg.='<span class="wt_iew_popup_close" style="line-height:10px;width:auto" onclick="wt_iew_basic_import.hide_import_info_box();">X</span>';
 		}else
 		{
-			$msg='<span class="wt_iew_info_box_title">'.sprintf(__('Importing...(%d processed)'), $data['offset_count']).'</span>';
+			// translators: %d is the number of records processed.
+			$msg='<span class="wt_iew_info_box_title">'.sprintf(__('Importing...(%d processed)', 'users-customers-import-export-for-wp-woocommerce'), $data['offset_count']).'</span>';
 		}
-		$msg.='<br />'.__('Total success: ').$data['total_success'].'<br />'.__('Total failed: ').$data['total_failed'];
+		$msg.='<br />'.__('Total success: ', 'users-customers-import-export-for-wp-woocommerce').$data['total_success'].'<br />'.__('Total failed: ', 'users-customers-import-export-for-wp-woocommerce').$data['total_failed'];
 		if($is_last_offset)
 		{
 			$msg.='<span class="wt_iew_info_box_finished_text" style="display:block">';
 			if(Wt_Import_Export_For_Woo_Admin_Basic::module_exists('history'))
 			{
-				$msg.='<a class="button button-secondary wt_iew_view_log_btn" style="margin-top:10px;" data-history-id="'. $data['history_id'] .'" onclick="wt_iew_basic_import.hide_import_info_box();">'.__('View Details').'</a></span>';
+				$msg.='<a class="button button-secondary wt_iew_view_log_btn" style="margin-top:10px;" data-history-id="'. $data['history_id'] .'" onclick="wt_iew_basic_import.hide_import_info_box();">'.__('View Details', 'users-customers-import-export-for-wp-woocommerce').'</a></span>';
 			}
 		}
 		return $msg;
@@ -1153,30 +1170,34 @@ class Wt_Import_Export_For_Woo_Basic_Import
 	public function ajax_main()
 	{
 		include_once plugin_dir_path(__FILE__).'classes/class-import-ajax.php';
-		if(Wt_Iew_Sh::check_write_access(WT_IEW_PLUGIN_ID_BASIC))
+		if(Wt_Iew_Sh::check_write_access(WT_IEW_PLUGIN_ID_BASIC)) // Nonce and role check
 		{
 			/**
 			*	Check it is a rerun call
 			*/
+			// phpcs:disable WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Recommended -- Nonce already verified in the Wt_Iew_Sh::check_write_access() method
 			if(!$this->_process_rerun((isset($_POST['rerun_id']) ? absint($_POST['rerun_id']) : 0)))
 			{
-				$this->import_method=(isset($_POST['import_method']) ? Wt_Iew_Sh::sanitize_item($_POST['import_method'], 'text') : '');
-				$this->to_import=(isset($_POST['to_import']) ? Wt_Iew_Sh::sanitize_item($_POST['to_import'], 'text') : '');
-				$this->selected_template=(isset($_POST['selected_template']) ? Wt_Iew_Sh::sanitize_item($_POST['selected_template'], 'int') : 0);
+				$this->import_method=(isset($_POST['import_method']) ? sanitize_text_field(wp_unslash($_POST['import_method'])) : '');
+				$this->to_import=(isset($_POST['to_import']) ? sanitize_text_field(wp_unslash($_POST['to_import'])) : '');
+				$this->selected_template=(isset($_POST['selected_template']) ? absint(wp_unslash($_POST['selected_template'])) : 0);
 			}
+			// phpcs:enable WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Recommended -- Nonce already verified in the Wt_Iew_Sh::check_write_access() method
 			
 			$this->get_steps();
 
 			$ajax_obj=new Wt_Import_Export_For_Woo_Basic_Import_Ajax($this, $this->to_import, $this->steps, $this->import_method, $this->selected_template, $this->rerun_id);
 			
-			$import_action=Wt_Iew_Sh::sanitize_item($_POST['import_action'], 'text');
-			$data_type=Wt_Iew_Sh::sanitize_item($_POST['data_type'], 'text');
+			// phpcs:disable WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Recommended -- Nonce already verified in the Wt_Iew_Sh::check_write_access() method
+			$import_action=isset($_POST['import_action']) ? sanitize_text_field(wp_unslash($_POST['import_action'])) : '';
+			$data_type=isset($_POST['data_type']) ? sanitize_text_field(wp_unslash($_POST['data_type'])) : '';
+			// phpcs:enable WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Recommended -- Nonce already verified in the Wt_Iew_Sh::check_write_access() method
 			
 			$allowed_ajax_actions=array('get_steps', 'validate_file', 'get_meta_mapping_fields', 'save_template', 'save_template_as', 'update_template', 'download', 'import', 'upload_import_file', 'delete_import_file');
 
 			$out=array(
 				'status'=>0,
-				'msg'=>__('Error'),
+				'msg'=>__('Error', 'users-customers-import-export-for-wp-woocommerce'),
 			);
 
 			if(method_exists($ajax_obj, $import_action) && in_array($import_action, $allowed_ajax_actions))
@@ -1186,7 +1207,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 
 			if($data_type=='json')
 			{
-				echo json_encode($out);
+				echo wp_json_encode($out); 
 			}
 		}
 		exit();
@@ -1243,10 +1264,10 @@ class Wt_Import_Export_For_Woo_Basic_Import
 	}
 	protected function evaluate_data($key, $value, $data_row, $mapping_fields, $input_date_format)
 	{
-                $maping_key = '';
-                if (preg_match('/{(.*?)}/', $value, $match) == 1) {
-                       $maping_key = $match[1] ? $match[1]:'';
-                }
+		$maping_key = '';
+		if (preg_match('/{(.*?)}/', $value, $match) == 1) {
+			$maping_key = $match[1] ? $match[1]:'';
+		}
 		$value=$this->add_input_file_data($key, $value, $data_row, $mapping_fields, $input_date_format);
 		$value= !empty($data_row[$maping_key]) ? $this->do_arithmetic($value) : $value;
 		$data_row=null;
@@ -1268,7 +1289,8 @@ class Wt_Import_Export_For_Woo_Basic_Import
 					$synatx=$this->validate_syntax($value[1]);
 					if($synatx)
 					{
-						$replace[]=eval('return '.$synatx.';');
+						// phpcs:ignore Generic.PHP.ForbiddenFunctions.Found -- The input is sanitized and validated.
+						$replace[] = eval('return '.$synatx.';');
 					}else
 					{
 						$replace[]='';
@@ -1347,7 +1369,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 				if(isset($data_row[$data_key]))
 				{
 //					$output_val=sanitize_text_field($data_row[$data_key]);   sanitize_text_field stripping html content
-                                        $output_val=($data_row[$data_key]);   
+                    $output_val=($data_row[$data_key]);   
 				}
 
 				/**
@@ -1364,7 +1386,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 						}
 					}else
 					{
-						$output_val=date("Y-m-d H:i:s", strtotime(trim(str_replace('/', '-', str_replace('-', '', $output_val)))));
+						$output_val=gmdate("Y-m-d H:i:s", strtotime(trim(str_replace('/', '-', str_replace('-', '', $output_val)))));
 					}
 				}
 

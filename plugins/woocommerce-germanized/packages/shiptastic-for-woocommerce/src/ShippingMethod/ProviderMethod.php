@@ -24,6 +24,8 @@ class ProviderMethod implements LabelConfigurationSet {
 
 	protected $instance_id = 0;
 
+	protected $provider_is_disabled = false;
+
 	protected $is_placeholder = false;
 
 	/**
@@ -79,10 +81,22 @@ class ProviderMethod implements LabelConfigurationSet {
 		return $this->method;
 	}
 
+	public function provider_is_disabled() {
+		return $this->provider_is_disabled;
+	}
+
+	public function set_provider_is_disabled( $provider_is_disabled ) {
+		$this->provider_is_disabled = wc_string_to_bool( $provider_is_disabled );
+	}
+
 	/**
 	 * @return false|ShippingProvider
 	 */
 	public function get_shipping_provider_instance() {
+		if ( $this->provider_is_disabled() ) {
+			return false;
+		}
+
 		if ( $this->is_builtin_method() ) {
 			return $this->method->get_shipping_provider();
 		}
@@ -107,6 +121,10 @@ class ProviderMethod implements LabelConfigurationSet {
 	}
 
 	public function get_shipping_provider() {
+		if ( $this->provider_is_disabled() ) {
+			return '';
+		}
+
 		if ( $this->is_builtin_method() ) {
 			$provider_slug = $this->method->get_shipping_provider()->get_name();
 		} else {
@@ -138,13 +156,33 @@ class ProviderMethod implements LabelConfigurationSet {
 		return in_array( $this->get_shipping_provider(), $shipping_provider_name, true );
 	}
 
+	public function get_return_costs() {
+		$costs = $this->get_prop( 'return_costs' );
+
+		if ( '' !== $costs ) {
+			return wc_format_decimal( $costs, wc_get_price_decimals() );
+		} else {
+			return '';
+		}
+	}
+
+	public function has_return_costs() {
+		return '' === $this->get_return_costs() ? false : true;
+	}
+
+	public function set_return_costs( $return_costs ) {
+		$this->set_prop( 'return_costs', $return_costs );
+	}
+
 	public function get_prop( $key, $context = 'view' ) {
 		$default = '';
 
 		if ( 'configuration_sets' === $key ) {
 			$default = array();
 		} elseif ( 'shipping_provider' === $key ) {
-			$default = wc_stc_get_default_shipping_provider();
+			$default = $this->is_builtin_method() ? $this->method->get_shipping_provider()->get_name() : wc_stc_get_default_shipping_provider();
+		} elseif ( 'return_costs' === $key ) {
+			$default = '';
 		}
 
 		if ( ! $this->is_placeholder() && ! MethodHelper::method_is_excluded( $this->get_id() ) ) {

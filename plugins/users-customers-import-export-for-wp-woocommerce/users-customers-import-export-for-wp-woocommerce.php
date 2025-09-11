@@ -1,15 +1,15 @@
 <?php
 /*
-  Plugin Name: Import Export WordPress Users and WooCommerce Customers
+  Plugin Name: Export and Import Users and Customers
   Plugin URI: https://wordpress.org/plugins/users-customers-import-export-for-wp-woocommerce/
   Description: Export and Import User/Customers details From and To your WordPress/WooCommerce.
   Author: WebToffee
   Author URI: https://www.webtoffee.com/product/wordpress-users-woocommerce-customers-import-export/
-  Version: 2.6.5
+  Version: 2.6.6
   Text Domain: users-customers-import-export-for-wp-woocommerce
   Domain Path: /languages
-  WC tested up to: 10.1.0
-  Requires at least: 3.0
+  WC tested up to: 10.1.2
+  Requires at least: 3.0.1
   Requires PHP: 5.6
   License: GPLv3
   License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -54,7 +54,7 @@ if ( ! defined( 'WBTE_UIEW_CROSS_PROMO_BANNER_VERSION' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define('WT_U_IEW_VERSION', '2.6.5');
+define('WT_U_IEW_VERSION', '2.6.6');
 
 /**
  * The code that runs during plugin activation.
@@ -93,7 +93,8 @@ $advanced_settings = get_option('wt_iew_advanced_settings', array());
 $ier_get_max_execution_time = (isset($advanced_settings['wt_iew_maximum_execution_time']) && $advanced_settings['wt_iew_maximum_execution_time'] != '') ? $advanced_settings['wt_iew_maximum_execution_time'] : ini_get('max_execution_time');
 
 if (strpos(@ini_get('disable_functions'), 'set_time_limit') === false) {
-        @set_time_limit($ier_get_max_execution_time);
+    // phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged -- Ini set is not a success.
+    @set_time_limit($ier_get_max_execution_time);
 }
 
 /**
@@ -132,11 +133,11 @@ add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'wt_uiew_plugin_a
 function wt_uiew_plugin_action_links_basic_user($links) {
 
     $plugin_links = array(
-        '<a href="' . admin_url('admin.php?page=wt_import_export_for_woo_basic_export') . '">' . __('Export') . '</a>',
-		'<a href="' . admin_url('admin.php?page=wt_import_export_for_woo_basic_import') . '">' . __('Import') . '</a>',
-        '<a href="https://www.webtoffee.com/user-import-export-plugin-wordpress-user-guide/" target="_blank">' . __('Documentation') . '</a>',
-        '<a target="_blank" href="https://wordpress.org/support/plugin/users-customers-import-export-for-wp-woocommerce/">' . __('Support') . '</a>',
-        '<a target="_blank" href="https://www.webtoffee.com/product/wordpress-users-woocommerce-customers-import-export/?utm_source=free_plugin_listing&utm_medium=user_imp_exp_basic&utm_campaign=User_Import_Export&utm_content=' . WT_U_IEW_VERSION . '" style="color:#3db634;">' . __('Premium Upgrade') . '</a>'
+        '<a href="' . esc_url(admin_url('admin.php?page=wt_import_export_for_woo_basic_export')) . '">' . __('Export', 'users-customers-import-export-for-wp-woocommerce') . '</a>',
+		'<a href="' . esc_url(admin_url('admin.php?page=wt_import_export_for_woo_basic_import')) . '">' . __('Import', 'users-customers-import-export-for-wp-woocommerce') . '</a>',
+        '<a href="https://www.webtoffee.com/user-import-export-plugin-wordpress-user-guide/" target="_blank">' . __('Documentation', 'users-customers-import-export-for-wp-woocommerce') . '</a>',
+        '<a target="_blank" href="https://wordpress.org/support/plugin/users-customers-import-export-for-wp-woocommerce/">' . __('Support', 'users-customers-import-export-for-wp-woocommerce') . '</a>',
+        '<a target="_blank" href="https://www.webtoffee.com/product/wordpress-users-woocommerce-customers-import-export/?utm_source=free_plugin_listing&utm_medium=user_imp_exp_basic&utm_campaign=User_Import_Export&utm_content=' . WT_U_IEW_VERSION . '" style="color:#3db634;">' . __('Premium Upgrade', 'users-customers-import-export-for-wp-woocommerce') . '</a>'
     );
 
     if (array_key_exists('deactivate', $links)) {
@@ -158,7 +159,7 @@ function wt_users_customers_import_export_for_wp_woocommerce_update_message($dat
             #users-customers-import-export-for-wp-woocommerce-update ul{ list-style:disc; margin-left:30px;}
             .wf-update-message{ padding-left:30px;}
             </style>
-            <div class="update-message wf-update-message">' . wpautop($msg) . '</div>';
+            <div class="update-message wf-update-message">' . wp_kses_post(wpautop($msg)) . '</div>';
     }
 }
 
@@ -172,7 +173,7 @@ if (!function_exists('wt_users_customers_imex_plugin_screen_update_js')) {
             (function ($) {
                 var update_dv = $('#users-customers-import-export-for-wp-woocommerce-update');
                 update_dv.find('.wf-update-message').next('p').remove();
-                update_dv.find('a.update-link:eq(0)').click(function () {
+                update_dv.find('a.update-link:eq(0)').on('click', function () {
                     $('.wf-update-message').remove();
                 });
             })(jQuery);
@@ -191,23 +192,17 @@ if ( ! class_exists( 'Wt_Import_Export_For_Woo_Basic_Common_Helper' ) ) {
     require_once plugin_dir_path( __FILE__ ) . 'helpers/class-wt-common-helper.php';
 }
 
-// Add dismissible server info for file restrictions
-include_once plugin_dir_path(__FILE__) . 'includes/class-wt-non-apache-info.php';
-$inform_server_secure = new wt_inform_server_secure('user');
-$inform_server_secure->plugin_title = "User Import Export";
-$inform_server_secure->banner_message = sprintf(__("The <b>%s</b> plugin uploads the imported file into <b>wp-content/webtoffee_import</b> folder. Please ensure that public access restrictions are set in your server for this folder."), $inform_server_secure->plugin_title);
-
 add_action('wt_user_addon_basic_help_content', 'wt_user_import_basic_help_content');
 
 function wt_user_import_basic_help_content() {
     if (defined('WT_IEW_PLUGIN_ID_BASIC')) {
         ?>
         <li>
-            <img src="<?php echo WT_U_IEW_PLUGIN_URL; ?>assets/images/sample-csv.png">
-            <h3><?php _e('Sample User CSV'); ?></h3>
-            <p><?php _e('Familiarize yourself with the sample CSV.'); ?></p>
+            <img src="<?php echo esc_url(WT_U_IEW_PLUGIN_URL); ?>assets/images/sample-csv.png">
+            <h3><?php esc_html_e('Sample User CSV', 'users-customers-import-export-for-wp-woocommerce'); ?></h3>
+            <p><?php esc_html_e('Familiarize yourself with the sample CSV.', 'users-customers-import-export-for-wp-woocommerce'); ?></p>
             <a target="_blank" href="https://www.webtoffee.com/wp-content/uploads/2020/10/Sample_Users.csv" class="button button-primary">
-        <?php _e('Get User CSV'); ?>        
+        <?php esc_html_e('Get User CSV', 'users-customers-import-export-for-wp-woocommerce'); ?>        
             </a>
         </li>
         <?php
@@ -222,21 +217,21 @@ function wt_user_addon_basic_gopro_content() {
     ?>
                 <div class="wt-ier-user wt-ier-gopro-cta wt-ierpro-features" style="display: none;">                    
                     <ul class="ticked-list wt-ierpro-allfeat">                        
-						<li><?php _e('Import and export in XLS and XLSX formats'); ?><span class="wt-iew-upgrade-to-pro-new-feature"><?php esc_html_e( 'New' ); ?></span></li>
-						<li><?php _e('All free version features'); ?></li>
-						<li><?php _e('XML file type support'); ?></li>	
-                        <li><?php _e('Export and import custom fields and third-party plugin fields'); ?></li> 
-                        <li><?php _e('Option to send emails to new users on import'); ?></li>
-						<li><?php _e('Customize email send to new users on import'); ?></li>
-                        <li><?php _e('Import from URL, FTP/SFTP'); ?></li>
-                        <li><?php _e('Export to FTP/SFTP'); ?></li>
-						<li><?php _e('Run scheduled automatic import and export '); ?></li>
-                        <li><?php _e('Tested compatibility with major third-party plugins.'); ?></li>
+						<li><?php esc_html_e('Import and export in XLS and XLSX formats', 'users-customers-import-export-for-wp-woocommerce'); ?><span class="wt-iew-upgrade-to-pro-new-feature"><?php esc_html_e( 'New', 'users-customers-import-export-for-wp-woocommerce' ); ?></span></li>
+						<li><?php esc_html_e('All free version features', 'users-customers-import-export-for-wp-woocommerce'); ?></li>
+						<li><?php esc_html_e('XML file type support', 'users-customers-import-export-for-wp-woocommerce'); ?></li>	
+                        <li><?php esc_html_e('Export and import custom fields and third-party plugin fields', 'users-customers-import-export-for-wp-woocommerce'); ?></li> 
+                        <li><?php esc_html_e('Option to send emails to new users on import', 'users-customers-import-export-for-wp-woocommerce'); ?></li>
+						<li><?php esc_html_e('Customize email send to new users on import', 'users-customers-import-export-for-wp-woocommerce'); ?></li>
+                        <li><?php esc_html_e('Import from URL, FTP/SFTP', 'users-customers-import-export-for-wp-woocommerce'); ?></li>
+                        <li><?php esc_html_e('Export to FTP/SFTP', 'users-customers-import-export-for-wp-woocommerce'); ?></li>
+						<li><?php esc_html_e('Run scheduled automatic import and export ', 'users-customers-import-export-for-wp-woocommerce'); ?></li>
+                        <li><?php esc_html_e('Tested compatibility with major third-party plugins.', 'users-customers-import-export-for-wp-woocommerce'); ?></li>
                     </ul>    
                     <div class="wt-ierpro-btn-wrapper"> 
-                        <a href="<?php echo "https://www.webtoffee.com/product/wordpress-users-woocommerce-customers-import-export/?utm_source=free_plugin_revamp&utm_medium=basic_revamp&utm_campaign=User_Import_Export&utm_content=" . WT_U_IEW_VERSION; ?>" target="_blank"  class="wt-ierpro-outline-btn"><?php _e('UPGRADE TO PREMIUM'); ?></a>
+                        <a href="<?php echo esc_url("https://www.webtoffee.com/product/wordpress-users-woocommerce-customers-import-export/?utm_source=free_plugin_revamp&utm_medium=basic_revamp&utm_campaign=User_Import_Export&utm_content=" . WT_U_IEW_VERSION); ?>" target="_blank"  class="wt-ierpro-outline-btn"><?php esc_html_e('UPGRADE TO PREMIUM', 'users-customers-import-export-for-wp-woocommerce'); ?></a>
                     </div>
-                    <p style="padding-left:25px;"><b><a href="<?php echo admin_url('admin.php?page=wt_import_export_for_woo_basic#wt-pro-upgrade'); ?>" target="_blank"><?php _e('Get more import export addons >>'); ?></a></b></p>
+                    <p style="padding-left:25px;"><b><a href="<?php echo esc_url(admin_url('admin.php?page=wt_import_export_for_woo_basic#wt-pro-upgrade')); ?>" target="_blank"><?php esc_html_e('Get more import export addons >>', 'users-customers-import-export-for-wp-woocommerce'); ?></a></b></p>
                 </div>
     <?php
 	}
@@ -252,7 +247,7 @@ function export_csv_linkin_user_listing_page($which) {
 	$currentScreen = get_current_screen();
 
 	if ('users' === $currentScreen->id && !is_plugin_active( 'wt-import-export-for-woo/wt-import-export-for-woo.php' ) ) {
-		echo '<a target="_blank" href="' . admin_url('admin.php?page=wt_import_export_for_woo_basic_export&wt_to_export=user') . '" class="button" >' . __('Export to CSV') . ' </a>';
+		echo '<a target="_blank" href="' . esc_url(admin_url('admin.php?page=wt_import_export_for_woo_basic_export&wt_to_export=user')) . '" class="button" >' . esc_html__('Export to CSV', 'users-customers-import-export-for-wp-woocommerce') . ' </a>';
 	}
 }
 
@@ -296,7 +291,9 @@ function wt_user_imp_exp_basic_migrate_serialized_data_to_json() {
     $success = true;
         
     foreach ($tables as $table_type => $table_name) {
+        // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
         $rows = $wpdb->get_results("SELECT id, data FROM {$table_name}", ARRAY_A);
+        // phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
             
         if ($rows) {
             foreach ($rows as $row) {
@@ -313,6 +310,7 @@ function wt_user_imp_exp_basic_migrate_serialized_data_to_json() {
                     $unserialized_data = Wt_Import_Export_For_Woo_Basic_Common_Helper::wt_unserialize_safe($row['data']);
                     if ($unserialized_data !== false) {
                         $json_data = wp_json_encode($unserialized_data);
+                        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
                         $update_result = $wpdb->update(
                             $table_name,
                             array('data' => $json_data),
@@ -320,6 +318,7 @@ function wt_user_imp_exp_basic_migrate_serialized_data_to_json() {
                             array('%s'),
                             array('%d')
                         );
+                        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
                         if ($update_result === false) {
                             $success = false;
                             break 2; // Break both loops if update fails

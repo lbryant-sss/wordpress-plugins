@@ -28,14 +28,14 @@
       "_vendor-0853f02f.min.js"
     ]
   },
-  "_WelcomeOverlay-60497c35.min.js": {
+  "_WelcomeOverlay-35410814.min.js": {
     "css": [
       "css/WelcomeOverlay.css"
     ],
-    "file": "js/chunks/WelcomeOverlay-60497c35.min.js",
+    "file": "js/chunks/WelcomeOverlay-35410814.min.js",
     "imports": [
       "_vendor-0853f02f.min.js",
-      "_index-274c2db9.min.js",
+      "_index-eccfa762.min.js",
       "_SettingsInfoTooltip-4f19e286.min.js",
       "_SlideDownUp-22dab176.min.js"
     ]
@@ -46,11 +46,11 @@
       "_vendor-0853f02f.min.js"
     ]
   },
-  "_date-intervals-06faccd9.min.js": {
-    "file": "js/chunks/date-intervals-06faccd9.min.js",
+  "_date-intervals-9e769ed2.min.js": {
+    "file": "js/chunks/date-intervals-9e769ed2.min.js",
     "imports": [
       "_vendor-0853f02f.min.js",
-      "_index-274c2db9.min.js"
+      "_index-eccfa762.min.js"
     ]
   },
   "_html2canvas-09a676fb.min.js": {
@@ -60,13 +60,13 @@
     ],
     "isDynamicEntry": true
   },
-  "_index-274c2db9.min.js": {
-    "file": "js/chunks/index-274c2db9.min.js",
+  "_index-eccfa762.min.js": {
+    "file": "js/chunks/index-eccfa762.min.js",
     "imports": [
       "_vendor-0853f02f.min.js"
     ]
   },
-  "_index-b8c94c8b.min.js": {
+  "_index-fa2d70c1.min.js": {
     "assets": [
       "img/logo-MonsterInsights.png",
       "img/logo-MonsterInsights@2x.png",
@@ -94,10 +94,10 @@
     "css": [
       "css/index.css"
     ],
-    "file": "js/chunks/index-b8c94c8b.min.js",
+    "file": "js/chunks/index-fa2d70c1.min.js",
     "imports": [
       "_vendor-0853f02f.min.js",
-      "_index-274c2db9.min.js",
+      "_index-eccfa762.min.js",
       "_SlideDownUp-22dab176.min.js"
     ]
   },
@@ -319,10 +319,6 @@
     "file": "img/easy-digital-downloads.png",
     "src": "src/assets/img/easy-digital-downloads.png"
   },
-  "src/assets/img/ecommerce-report.png": {
-    "file": "img/ecommerce-report.png",
-    "src": "src/assets/img/ecommerce-report.png"
-  },
   "src/assets/img/em-ai-insights.svg": {
     "file": "img/em-ai-insights.svg",
     "src": "src/assets/img/em-ai-insights.svg"
@@ -334,6 +330,10 @@
   "src/assets/img/give-wp.png": {
     "file": "img/give-wp.png",
     "src": "src/assets/img/give-wp.png"
+  },
+  "src/assets/img/google-ads-welcome.png": {
+    "file": "img/google-ads-welcome.png",
+    "src": "src/assets/img/google-ads-welcome.png"
   },
   "src/assets/img/icon-addon-ads.png": {
     "file": "img/icon-addon-ads.png",
@@ -667,6 +667,10 @@
     "file": "img/bg-sitespeed@2x.png",
     "src": "src/assets/img/reports/lite-modals/bg-sitespeed@2x.png"
   },
+  "src/assets/img/reports/lite-modals/bg-traffic-ai.jpeg": {
+    "file": "img/bg-traffic-ai.jpeg",
+    "src": "src/assets/img/reports/lite-modals/bg-traffic-ai.jpeg"
+  },
   "src/assets/img/reports/lite-modals/bg-traffic-campaigns@2x.png": {
     "file": "img/bg-traffic-campaigns@2x.png",
     "src": "src/assets/img/reports/lite-modals/bg-traffic-campaigns@2x.png"
@@ -734,10 +738,6 @@
   "src/assets/img/restrict-content-pro.png": {
     "file": "img/restrict-content-pro.png",
     "src": "src/assets/img/restrict-content-pro.png"
-  },
-  "src/assets/img/right-arrow-black.png": {
-    "file": "img/right-arrow-black.png",
-    "src": "src/assets/img/right-arrow-black.png"
   },
   "src/assets/img/site-notes-category-upsell-mi.png": {
     "file": "img/site-notes-category-upsell-mi.png",
@@ -863,9 +863,21 @@
     "file": "img/wpforms.png",
     "src": "src/assets/img/wizard-onboarding/wpforms.png"
   },
+  "src/assets/img/woo-insights-ecommerce-report-image.png": {
+    "file": "img/woo-insights-ecommerce-report-image.png",
+    "src": "src/assets/img/woo-insights-ecommerce-report-image.png"
+  },
   "src/assets/img/woo-insights-hero-image.png": {
     "file": "img/woo-insights-hero-image.png",
     "src": "src/assets/img/woo-insights-hero-image.png"
+  },
+  "src/assets/img/woo-insights-save-60-badge.svg": {
+    "file": "img/woo-insights-save-60-badge.svg",
+    "src": "src/assets/img/woo-insights-save-60-badge.svg"
+  },
+  "src/assets/img/woo-insights-sessions-revenue.png": {
+    "file": "img/woo-insights-sessions-revenue.png",
+    "src": "src/assets/img/woo-insights-sessions-revenue.png"
   },
   "src/assets/img/woocommerce.png": {
     "file": "img/woocommerce.png",
@@ -1029,10 +1041,10 @@
     "file": "js/frontend.min.js",
     "imports": [
       "_vendor-0853f02f.min.js",
-      "_date-intervals-06faccd9.min.js",
+      "_date-intervals-9e769ed2.min.js",
       "_WidgetReportError-b3fe6132.min.js",
       "_LaunchWizardButton-0eeb5248.min.js",
-      "_index-274c2db9.min.js"
+      "_index-eccfa762.min.js"
     ],
     "isEntry": true,
     "src": "src/modules/frontend/frontend.js"
@@ -1099,11 +1111,6 @@
       "img/bg-user-journey.svg",
       "img/bullet.svg",
       "img/icon-lock.svg",
-      "img/report-arrow-down-red.png",
-      "img/report-arrow-down-green.png",
-      "img/report-arrow-up-green.png",
-      "img/report-arrow-up-red.png",
-      "img/reports-upsell-bg.png",
       "img/bg-publisher@2x.png",
       "img/bg-queries@2x.png",
       "img/bg-forms@2x.png",
@@ -1126,7 +1133,13 @@
       "img/social-media-report@2x.png",
       "img/exceptions-report.png",
       "img/bg-ai-insights.png",
-      "img/bg-conversations-ai.png"
+      "img/bg-conversations-ai.png",
+      "img/report-arrow-down-red.png",
+      "img/report-arrow-down-green.png",
+      "img/report-arrow-up-green.png",
+      "img/report-arrow-up-red.png",
+      "img/reports-upsell-bg.png",
+      "img/bg-traffic-ai.jpeg"
     ],
     "css": [
       "css/reports.css"
@@ -1134,11 +1147,11 @@
     "file": "js/reports.min.js",
     "imports": [
       "_vendor-0853f02f.min.js",
-      "_date-intervals-06faccd9.min.js",
+      "_date-intervals-9e769ed2.min.js",
       "_SettingsInfoTooltip-4f19e286.min.js",
       "_report-table-helper-39dc7ff9.min.js",
-      "_index-b8c94c8b.min.js",
-      "_index-274c2db9.min.js",
+      "_index-fa2d70c1.min.js",
+      "_index-eccfa762.min.js",
       "_LaunchWizardButton-0eeb5248.min.js",
       "_SlideDownUp-22dab176.min.js"
     ],
@@ -1151,8 +1164,11 @@
   },
   "src/modules/settings/settings.js": {
     "assets": [
-      "img/ecommerce-report.png",
+      "img/woo-insights-save-60-badge.svg",
+      "img/woo-insights-ecommerce-report-image.png",
+      "img/woo-insights-sessions-revenue.png",
       "img/wpconsent-page-feature-image.png",
+      "img/google-ads-welcome.png",
       "img/monsterinsights-addons-upsell-logo.svg",
       "img/prettylinks-ad-bg.png",
       "img/icon-download.png",
@@ -1227,7 +1243,6 @@
       "img/woo-insights-hero-image.png",
       "img/underline.png",
       "img/underline-small.png",
-      "img/right-arrow-black.png",
       "img/star.svg",
       "img/star-empty.svg",
       "img/icon-media.svg",
@@ -1235,6 +1250,31 @@
       "img/site-notes-category-upsell-mi.png",
       "img/site-notes-integration-upsell.png",
       "img/icon-plus.svg",
+      "img/bullet.svg",
+      "img/icon-lock.svg",
+      "img/bg-publisher@2x.png",
+      "img/bg-queries@2x.png",
+      "img/bg-forms@2x.png",
+      "img/bg-realtime@2x.png",
+      "img/bg-ecommerce@2x.png",
+      "img/ecommerce-funnel@2x.png",
+      "img/bg-dimensions@2x.png",
+      "img/bg-sitespeed@2x.png",
+      "img/bg-media-upsell.svg",
+      "img/bg-traffic-overview@2x.png",
+      "img/bg-traffic-landing-page@2x.png",
+      "img/bg-traffic-technology@2x.png",
+      "img/bg-traffic-source-medium@2x.png",
+      "img/bg-traffic-campaigns@2x.png",
+      "img/bg-ecommerce-product-sales@2x.png",
+      "img/bg-ecommerce-coupons@2x.png",
+      "img/bg-cart-abandonment@2x.png",
+      "img/bg-engagement-pages@2x.png",
+      "img/bg-countries.png",
+      "img/social-media-report@2x.png",
+      "img/exceptions-report.png",
+      "img/bg-ai-insights.png",
+      "img/bg-conversations-ai.png",
       "img/icon-warning.png",
       "img/monsterinsights-setup-checklist-site-note.png",
       "img/icon-site-notes-settings.svg",
@@ -1266,12 +1306,12 @@
     "file": "js/settings.min.js",
     "imports": [
       "_vendor-0853f02f.min.js",
-      "_index-274c2db9.min.js",
+      "_index-eccfa762.min.js",
       "_SlideDownUp-22dab176.min.js",
-      "_WelcomeOverlay-60497c35.min.js",
+      "_WelcomeOverlay-35410814.min.js",
       "_LaunchWizardButton-0eeb5248.min.js",
       "_SettingsInfoTooltip-4f19e286.min.js",
-      "_index-b8c94c8b.min.js"
+      "_index-fa2d70c1.min.js"
     ],
     "isEntry": true,
     "src": "src/modules/settings/settings.js"
@@ -1334,11 +1374,6 @@
       "img/bg-user-journey.svg",
       "img/bullet.svg",
       "img/icon-lock.svg",
-      "img/report-arrow-down-red.png",
-      "img/report-arrow-down-green.png",
-      "img/report-arrow-up-green.png",
-      "img/report-arrow-up-red.png",
-      "img/reports-upsell-bg.png",
       "img/bg-publisher@2x.png",
       "img/bg-queries@2x.png",
       "img/bg-forms@2x.png",
@@ -1362,6 +1397,12 @@
       "img/exceptions-report.png",
       "img/bg-ai-insights.png",
       "img/bg-conversations-ai.png",
+      "img/report-arrow-down-red.png",
+      "img/report-arrow-down-green.png",
+      "img/report-arrow-up-green.png",
+      "img/report-arrow-up-red.png",
+      "img/reports-upsell-bg.png",
+      "img/bg-traffic-ai.jpeg",
       "img/mascot.png"
     ],
     "css": [
@@ -1370,11 +1411,11 @@
     "file": "js/widget.min.js",
     "imports": [
       "_vendor-0853f02f.min.js",
-      "_date-intervals-06faccd9.min.js",
+      "_date-intervals-9e769ed2.min.js",
       "_report-table-helper-39dc7ff9.min.js",
       "_SettingsInfoTooltip-4f19e286.min.js",
       "_WidgetReportError-b3fe6132.min.js",
-      "_index-274c2db9.min.js"
+      "_index-eccfa762.min.js"
     ],
     "isEntry": true,
     "src": "src/modules/widget/widget.js"
@@ -1423,9 +1464,9 @@
     "file": "js/wizard.min.js",
     "imports": [
       "_vendor-0853f02f.min.js",
-      "_WelcomeOverlay-60497c35.min.js",
+      "_WelcomeOverlay-35410814.min.js",
       "_SettingsInfoTooltip-4f19e286.min.js",
-      "_index-274c2db9.min.js",
+      "_index-eccfa762.min.js",
       "_LaunchWizardButton-0eeb5248.min.js",
       "_SlideDownUp-22dab176.min.js"
     ],

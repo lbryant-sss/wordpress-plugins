@@ -357,7 +357,7 @@ class MonsterInsights_Popular_Posts {
 				'srcset'      => $post_image_srcset,
 				'image_id'    => $post_thumbnail,
 				'author'      => $post->post_author,
-				'author_name' => $author_data->display_name,
+				'author_name' => $author_data ? $author_data->display_name : '',
 				'date'        => get_the_date( '', $post->ID ),
 				'comments'    => get_comments_number( $post->ID ),
 			);

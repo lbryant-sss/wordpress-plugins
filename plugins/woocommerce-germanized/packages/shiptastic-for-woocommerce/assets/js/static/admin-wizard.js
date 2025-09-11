@@ -20,7 +20,7 @@ window.shiptastic.admin = window.shiptastic.admin || {};
                 $mainButton = $( '#wc-shiptastic-wizard-links' ).find( '.button-submit' ),
                 data = $form.serialize();
 
-            $errorWrapper.find( ".message" ).remove();
+            $errorWrapper.find( ".notice" ).remove();
             $form.addClass( 'loading' );
             $form.find( ':input:not(.disabled):not([type=hidden])' ).prop( 'disabled', true );
             $mainButton.prop( 'disabled', true ).addClass( 'loading' );

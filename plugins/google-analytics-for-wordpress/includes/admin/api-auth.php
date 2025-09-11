@@ -240,6 +240,7 @@ final class MonsterInsights_API_Auth {
 			'a'             => sanitize_text_field( $_REQUEST['a'] ), // AccountID
 			'w'             => sanitize_text_field( $_REQUEST['w'] ), // PropertyID
 			'p'             => sanitize_text_field( $_REQUEST['p'] ), // View ID
+			'site_hash'     => !empty($_REQUEST['site_hash']) ? sanitize_text_field( $_REQUEST['site_hash'] ) : '', // Site Hash
 			'siteurl'       => home_url(),
 			'neturl'        => network_admin_url(),
 		);
@@ -261,6 +262,11 @@ final class MonsterInsights_API_Auth {
 		// Clear cache
 		$where = $this->is_network_admin() ? 'network' : 'site';
 		MonsterInsights()->reporting->delete_aggregate_data( $where );
+		
+		if ( class_exists( 'MonsterInsights_Google_Ads' ) ) {
+			// Clear any Google Ads stored data
+			MonsterInsights_Google_Ads::clear_data();
+		}
 
 		// Check site and property timezone.
 		$this->check_property_timezone();
@@ -406,6 +412,7 @@ final class MonsterInsights_API_Auth {
 			'a'             => sanitize_text_field( $_REQUEST['a'] ),
 			'w'             => sanitize_text_field( $_REQUEST['w'] ),
 			'p'             => sanitize_text_field( $_REQUEST['p'] ),
+			'site_hash'     => !empty($_REQUEST['site_hash']) ? sanitize_text_field( $_REQUEST['site_hash'] ) : '', // Site Hash
 			'v4'            => $existing['v4'],
 			'siteurl'       => home_url(),
 			'neturl'        => network_admin_url(),
@@ -423,6 +430,11 @@ final class MonsterInsights_API_Auth {
 		// Clear cache
 		$where = $this->is_network_admin() ? 'network' : 'site';
 		MonsterInsights()->reporting->delete_aggregate_data( $where );
+		
+		if ( class_exists( 'MonsterInsights_Google_Ads' ) ) {
+			// Clear any Google Ads stored data
+			MonsterInsights_Google_Ads::clear_data();
+		}
 
 		// Check site and property timezone.
 		$this->check_property_timezone();
@@ -601,6 +613,11 @@ final class MonsterInsights_API_Auth {
 
 		$worked = $this->delete_auth( $force );
 		if ( $worked && ! is_wp_error( $worked ) ) {
+			if ( class_exists( 'MonsterInsights_Google_Ads' ) ) {
+				// Clear any Google Ads stored data
+				MonsterInsights_Google_Ads::clear_data();
+			}
+			
 			wp_send_json_success( array( 'message' => __( "Successfully deauthenticated.", 'google-analytics-for-wordpress' ) ) );
 		} else {
 			if ( $force ) {

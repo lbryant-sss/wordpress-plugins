@@ -38,6 +38,7 @@ class Wt_Import_Export_For_Woo_Basic_Activator_User {
         if(is_multisite()) 
         {
             // Get all blogs in the network and activate plugin on each one
+			// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
             $blog_ids = $wpdb->get_col( "SELECT blog_id FROM $wpdb->blogs" );
             foreach($blog_ids as $blog_id ) 
             {
@@ -80,11 +81,10 @@ class Wt_Import_Export_For_Woo_Basic_Activator_User {
 		//install necessary tables
 		
 		//creating table for saving template data================
-        $search_query = "SHOW TABLES LIKE %s";
-        $tb='wt_iew_mapping_template';
-        $table_name = $wpdb->prefix.$tb;
-        if(!$wpdb->get_results($wpdb->prepare($search_query, $table_name), ARRAY_N)) 
+        $table_name = $wpdb->prefix . 'wt_iew_mapping_template';
+        if(!$wpdb->get_results($wpdb->prepare("SHOW TABLES LIKE %s", $table_name), ARRAY_N)) 
         {
+			// phpcs:disable WordPress.DB.DirectDatabaseQuery.SchemaChange
             $sql_settings = "CREATE TABLE IF NOT EXISTS `$table_name` (
 				`id` INT NOT NULL AUTO_INCREMENT, 
 				`template_type` VARCHAR(255) NOT NULL, 
@@ -94,15 +94,15 @@ class Wt_Import_Export_For_Woo_Basic_Activator_User {
 				PRIMARY KEY (`id`)
 			) $charset_collate;";
             dbDelta($sql_settings);
+			// phpcs:enable WordPress.DB.DirectDatabaseQuery.SchemaChange
         }
         //creating table for saving template data================
 
         //creating table for saving export/import history================
-        $search_query = "SHOW TABLES LIKE %s";
-        $tb='wt_iew_action_history';
-        $table_name = $wpdb->prefix.$tb;
-        if(!$wpdb->get_results($wpdb->prepare($search_query, $table_name), ARRAY_N)) 
+        $table_name = $wpdb->prefix . 'wt_iew_action_history';
+        if(!$wpdb->get_results($wpdb->prepare("SHOW TABLES LIKE %s", $table_name), ARRAY_N)) 
         {
+			// phpcs:disable WordPress.DB.DirectDatabaseQuery.SchemaChange
             $sql_settings = "CREATE TABLE IF NOT EXISTS `$table_name` (
 				`id` INT NOT NULL AUTO_INCREMENT, 
 				`template_type` VARCHAR(255) NOT NULL, 
@@ -117,6 +117,7 @@ class Wt_Import_Export_For_Woo_Basic_Activator_User {
 				PRIMARY KEY (`id`)
 			) $charset_collate;";
             dbDelta($sql_settings);
+			// phpcs:enable WordPress.DB.DirectDatabaseQuery.SchemaChange
         }
         //creating table for saving export/import history================
 

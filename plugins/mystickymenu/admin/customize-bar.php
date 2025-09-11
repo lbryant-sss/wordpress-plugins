@@ -19,7 +19,7 @@ if (defined('ABSPATH') === false) {
 			<label for="mysticky-welcomebar-contact-form-enabled">
 				<?php esc_html_e('Bar visibility', 'myStickymenu'); ?>
 				<span class="mysticky-custom-fields-tooltip">
-					<a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">When the toggle is on, the notification will appear on your website</p>
+					<a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">When the toggle is on, the notification will appear on your website</p>
 				</span>
 			</label>
 			<label for="mysticky-welcomebar-contact-form-enabled" class="mysticky-welcomebar-switch mysticky-custom-fields-tooltip">
@@ -41,7 +41,7 @@ if (defined('ABSPATH') === false) {
 			<div class="mysticky-welcomebar-setting-block">
 				<div class="mysticky-welcomebar-setting-content mysticky-welcomebar-setting-position">
 					<label><?php esc_html_e('Position', 'myStickymenu'); ?><span class="mysticky-custom-fields-tooltip">
-								<a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">Choose if you want to show the bar on top or at the bottom of your site</p></span></label>
+								<a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">Choose if you want to show the bar on top or at the bottom of your site</p></span></label>
 					<div class="mysticky-welcomebar-setting-content-right setting-content-relative">
 						<label>
 							<input name="mysticky_option_welcomebar[mysticky_welcomebar_position]" value= "top" type="radio" <?php checked( @$welcomebar['mysticky_welcomebar_position'], 'top' );?> />
@@ -56,7 +56,7 @@ if (defined('ABSPATH') === false) {
 				</div>
 				<div class="mysticky-welcomebar-setting-content height-setting" <?php if(isset($welcomebar['mysticky_welcomebar_enable_lead']) && $welcomebar['mysticky_welcomebar_enable_lead'] == 1):?> style="display:none;"<?php endif;?>>
 					<label><?php esc_html_e('Height', 'myStickymenu'); ?>
-						<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">Choose the size of your bar in pixels</p></span>
+						<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">Choose the size of your bar in pixels</p></span>
 					</label>
 					<div class="mysticky-welcomebar-setting-content-right setting-content-relative">
 						<div class="px-wrap">
@@ -75,7 +75,7 @@ if (defined('ABSPATH') === false) {
 				<div class="mysticky-welcomebar-setting-content">
 					<label>
 						<?php _e('Bar background image', 'myStickymenu'); ?>
-						<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e('Choose a custom image as the background for your welcome bar', 'myStickymenu');?><br><img src="<?php echo MYSTICKYMENU_URL ?>/images/bar-background-image.png" style="width:100%;"/></p></span>
+						<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e('Choose a custom image as the background for your welcome bar', 'myStickymenu');?><br><img src="<?php echo MYSTICKYMENU_URL ?>/images/bar-background-image.png" style="width:100%;"/></p></span>
 					</label>
 					<div class="mysticky-welcomebar-setting-content-right mysticky-welcomebar-colorpicker setting-content-relative">
 						<a href="<?php echo esc_url($upgarde_url); ?>" class="welcomebar-background-image" id="welcomebar-background-image"><?php esc_html_e('Upload Background', 'myStickymenu');?></a>
@@ -124,7 +124,7 @@ if (defined('ABSPATH') === false) {
 							<input id="welcomebar_sliding_text" class="welcomebar_sliding_text"  name="mysticky_option_welcomebar[mysticky_welcomebar_text_type]" value="sliding_text" type="radio" <?php checked( @$welcomebar['mysticky_welcomebar_text_type'], 'sliding_text' );?> />
 							<span>
 								<?php esc_html_e("Sliding Texts", 'mystickymenu'); ?>
-								<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e('Enhance Your Sticky Menu with Sliding Text. Display multiple lines of content that can scroll automatically in your desired direction.', 'mystickymenu');?><br><img src="<?php echo esc_url(MYSTICKYMENU_URL) ?>/images/sliding-text.gif" style="width:100%;"/></p></span>
+								<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e('Enhance Your Sticky Menu with Sliding Text. Display multiple lines of content that can scroll automatically in your desired direction.', 'mystickymenu');?><br><img src="<?php echo esc_url(MYSTICKYMENU_URL) ?>/images/sliding-text.gif" style="width:100%;"/></p></span>
 							</span>
 						</label>
 					</div>
@@ -211,7 +211,7 @@ if (defined('ABSPATH') === false) {
 				</div>
 				<div class="mysticky-welcomebar-setting-content">
 					<label><?php esc_html_e('Show an X Button', 'myStickymenu'); ?>
-						<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e('Choose if you want to show an X button to close the bar or not or desktop and mobile devices', 'mystickymenu');?></p></span>	
+						<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e('Choose if you want to show an X button to close the bar or not or desktop and mobile devices', 'mystickymenu');?></p></span>	
 					</label>
 					<div class="mysticky-welcomebar-setting-content-right">
 						<label>
@@ -229,7 +229,7 @@ if (defined('ABSPATH') === false) {
 				</div>
 				<div class="mysticky-welcomebar-setting-content">						
 					<label><?php esc_html_e('Countdown', 'myStickymenu'); ?> <span class="dashicons dashicons-clock" style="margin-left:5px;color:#a8aeaf;"></span> 
-					<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e("Add a countdown timer element to your Bar to increase conversion rate, announce flash sales, and more","mystickymenu");?><br><img src="<?php echo esc_url(MYSTICKYMENU_URL) ?>/images/countdown.gif" style="width:100%;"/></p></span>
+					<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e("Add a countdown timer element to your Bar to increase conversion rate, announce flash sales, and more","mystickymenu");?><br><img src="<?php echo esc_url(MYSTICKYMENU_URL) ?>/images/countdown.gif" style="width:100%;"/></p></span>
 					</label>
 					<div class="mysticky-welcomebar-setting-content-right mysticky-welcomebar-close-automatically-sec">
 						<label for="mysticky-welcomebar-countdown-enabled" class="mysticky-welcomebar-switch">
@@ -244,7 +244,7 @@ if (defined('ABSPATH') === false) {
 				<div class="mysticky-welcomebar-setting-content">
 					<label style="position:relative;"><?php esc_html_e('Collect leads', 'myStickymenu'); ?>&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16" style="fill: #a8aeaf;position: absolute;top: 3px"><path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"></path></svg> 
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php echo sprintf(esc_html__(" Collect the visitor's details such as Name, email address or phone number from the bar. Collected visitor details can be viewed on the %1\$s page","mystickymenu"), '<a href="' . esc_url(admin_url("admin.php?page=my-sticky-menu-leads")). '" target="_blank">' . esc_html__( 'Contact Form Leads', 'mystickymenu') .'</a>');?></p></span>
+					<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php echo sprintf(esc_html__(" Collect the visitor's details such as Name, email address or phone number from the bar. Collected visitor details can be viewed on the %1\$s page","mystickymenu"), '<a href="' . esc_url(admin_url("admin.php?page=my-sticky-menu-leads")). '" target="_blank">' . esc_html__( 'Contact Form Leads', 'mystickymenu') .'</a>');?></p></span>
 					</label>
 					<div class="mysticky-welcomebar-setting-content-right">
 						<label for="mysticky-welcomebar-collectlead-enabled" class="mysticky-welcomebar-switch collect-lead-switch">
@@ -329,7 +329,7 @@ if (defined('ABSPATH') === false) {
 				<!-- Coupon Section Start  -->
 				<div class="mysticky-welcomebar-setting-content">
 					<label class="bagicon"><?php esc_html_e('Show Coupons', 'myStickymenu'); ?> &nbsp;<img src="<?php echo esc_url(MYSTICKYMENU_URL); ?>/images/shopyicon.svg" />
-					<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e("Add a coupon to your bar. Users can click on the coupon, copy it and use it on your website","mystickymenu");?><br><img src="<?php echo esc_url(esc_url(MYSTICKYMENU_URL)) ?>/images/show-coupon-ss.png" style="width:100%;"/></p></span>
+					<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e("Add a coupon to your bar. Users can click on the coupon, copy it and use it on your website","mystickymenu");?><br><img src="<?php echo esc_url(esc_url(MYSTICKYMENU_URL)) ?>/images/show-coupon-ss.png" style="width:100%;"/></p></span>
 					</label>
 					<div class="mysticky-welcomebar-setting-content-right" style="margin-top: 8px;">
 						<label for="mysticky-welcomebar-showcoupon-enabled" class="mysticky-welcomebar-switch showcoupon-switch">
@@ -348,7 +348,7 @@ if (defined('ABSPATH') === false) {
 			<div class="mysticky-welcomebar-setting-block">
 				<div class="mysticky-welcomebar-setting-content">
 					<label><?php esc_html_e('Show a Button On', 'myStickymenu'); ?>
-						<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">Choose whether you want to display a button on your bar or not on desktop and mobile devices</p></span>	
+						<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">Choose whether you want to display a button on your bar or not on desktop and mobile devices</p></span>	
 					</label>
 					<div class="mysticky-welcomebar-setting-content-right">
 						<label>
@@ -363,7 +363,7 @@ if (defined('ABSPATH') === false) {
 				</div>
 				<div class="mysticky-welcomebar-setting-content">
 					<label for="mysticky-welcomebar-postion-relative-text"><?php esc_html_e('Set the button\'s position relative to the text', 'myStickymenu'); ?>
-						<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">Customize the position of the button and the text to match your design preference.</p></span>
+						<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">Customize the position of the button and the text to match your design preference.</p></span>
 					</label>
 					<div class="mysticky-welcomebar-setting-content-right">
 						<label for="mysticky-welcomebar-postion-relative-text" class="mysticky-welcomebar-switch">
@@ -375,7 +375,7 @@ if (defined('ABSPATH') === false) {
 				
 				<div id="mysticky-welcomebar-button-text-postion" class="mysticky-welcomebar-setting-content" <?php if( isset($welcomebar['mysticky_welcomebar_button_postion_relative_text']) && $welcomebar['mysticky_welcomebar_button_postion_relative_text'] != 1 ):?> style="display:none;" <?php endif;?>>
 					<label for="mysticky-welcomebar-button-text-postion"><?php esc_html_e('Position', 'myStickymenu'); ?>
-						<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">Position the button and text to the right, left, or center of the bar.</p></span>
+						<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">Position the button and text to the right, left, or center of the bar.</p></span>
 					</label>
 					<div class="mysticky-welcomebar-setting-content-right setting-content-relative">
 						<label>
@@ -479,7 +479,7 @@ if (defined('ABSPATH') === false) {
 				</div>
 				<div class="mysticky-welcomebar-setting-content">
 					<label><?php esc_html_e('Action On Button Click', 'myStickymenu'); ?>
-						<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">Select what you'd like to happen when a visitor clicks on the button <br/>Redirect the visitor to another URL - your visitor will be redirected to another URL after they click on the button (for example, a specific product or latest collection) <br/>Close the Bar - after they user clicks on the button, the Bar will be closed <br/>Launch a Poptin pop-up - when the user clicks on the button, a Poptin pop-up will be launched. You need to first create a free Poptin account (link on "free Poptin account" to <a href='https://www.poptin.com/?utm_source=msm' target="_blank">https://www.poptin.com/?utm_source=msm</a>) and set up your pop-ups <br/>Show a thank-you screen - show a thank you screen after the user clicks on a button with different text from your Bar text</p></span>		
+						<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;">Select what you'd like to happen when a visitor clicks on the button <br/>Redirect the visitor to another URL - your visitor will be redirected to another URL after they click on the button (for example, a specific product or latest collection) <br/>Close the Bar - after they user clicks on the button, the Bar will be closed <br/>Launch a Poptin pop-up - when the user clicks on the button, a Poptin pop-up will be launched. You need to first create a free Poptin account (link on "free Poptin account" to <a href='https://www.poptin.com/?utm_source=msm' target="_blank">https://www.poptin.com/?utm_source=msm</a>) and set up your pop-ups <br/>Show a thank-you screen - show a thank you screen after the user clicks on a button with different text from your Bar text</p></span>		
 					</label>
 					<div class="mysticky-welcomebar-setting-content-right mysticky-welcomebar-setting-redirect-wrap">
 						<div class="mysticky-welcomebar-setting-action">
@@ -526,7 +526,7 @@ if (defined('ABSPATH') === false) {
 				<div class="mysticky-welcomebar-setting-content mysticky-welcomebar-redirect-container" <?php if ( $welcomebar['mysticky_welcomebar_actionselect'] != 'redirect_to_url' ) : ?> style="display:none;" <?php endif;?>>
 					<label><?php esc_html_e('rel Attribute', 'myStickymenu'); ?>
 						<span class="mysticky-custom-fields-tooltip">
-							<a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a>
+							<a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a>
 							<p><?php esc_html_e("Add a \"rel\" attribute to the button link. You can use it to add a rel=\"nofollow\", \"sponsored\", or any other \"rel\" attribute option","mystickymenu");?></p>
 						</span>
 					</label>
@@ -537,7 +537,7 @@ if (defined('ABSPATH') === false) {
 				</div>
 				<div class="mysticky-welcomebar-setting-content">
 					<label><?php esc_html_e('Bar Appearance After Button Click', 'myStickymenu'); ?>
-						<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e("Choose bar display settings after a visitor click on the button. The \"Don't show the Bar again for the user\" option is the preferable option if you don't want to annoy your visitors by showing the bar over and over","mystickymenu");?></p></span>
+						<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e("Choose bar display settings after a visitor click on the button. The \"Don't show the Bar again for the user\" option is the preferable option if you don't want to annoy your visitors by showing the bar over and over","mystickymenu");?></p></span>
 					</label>
 					<div class="mysticky-welcomebar-setting-content-right">
 						<div class="mysticky-welcomebar-setting-action">
@@ -551,7 +551,7 @@ if (defined('ABSPATH') === false) {
 				</div>
 				<div class="mysticky-welcomebar-setting-content">
 					<label><?php esc_html_e('Close Bar Automatically After Click', 'myStickymenu'); ?>
-						<span class="mysticky-custom-fields-tooltip"><a href="javascript:void(0);" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e("Choose if you'd like the bar to be closed automatically after button submission",'mystickymenu');?></p></span>
+						<span class="mysticky-custom-fields-tooltip"><a href="#" class="mysticky-tooltip mysticky-new-custom-btn"><i class="dashicons dashicons-editor-help"></i></a><p style="z-index: 99999;"><?php esc_html_e("Choose if you'd like the bar to be closed automatically after button submission",'mystickymenu');?></p></span>
 					</label>
 					<div class="mysticky-welcomebar-setting-content-right mysticky-welcomebar-close-automatically-sec">
 						<label for="mysticky-welcomebar-close-automatically-enabled" class="mysticky-welcomebar-switch">

@@ -3,7 +3,7 @@
 Plugin Name: My Sticky Bar
 Plugin URI: https://premio.io/
 Description: Create a notification bar for your website with My Sticky Bar. You can customize the design, collect leads, and enjoy other advanced features. You can also make your menu sticky using My Sticky Bar.
-Version: 2.8.2
+Version: 2.8.3
 Author: Premio
 Author URI: https://premio.io/downloads/mystickymenu/
 Text Domain: mystickymenu
@@ -12,7 +12,7 @@ License: GPLv3
 */
 
 defined('ABSPATH') or die("Cannot access pages directly.");
-define('MYSTICKY_VERSION', '2.8.2');
+define('MYSTICKY_VERSION', '2.8.3');
 define('MYSTICKYMENU_URL', plugins_url('/', __FILE__));  // Define Plugin URL
 define('MYSTICKYMENU_PATH', plugin_dir_path(__FILE__));  // Define Plugin Directory Path
 define('MYSTICKYMENU_BASE', plugin_basename(__FILE__));
@@ -813,7 +813,7 @@ class MyStickyMenuBackend
 														<input type="text" value="<?php echo esc_attr($option['value']) ?>" name="mysticky_option_name[mysticky_page_settings][<?php echo esc_attr($count); ?>][value]" id="url_rules_<?php echo esc_attr($count);; ?>_value" />
 													</div>
 													<div class="mysticky-welcomebar-url-buttons">
-														<a class="mysticky-remove-rule" href="javascript:;">x</a>
+														<a class="mysticky-remove-rule" href="#">x</a>
 													</div>
 													<div class="clear"></div>
 												</div>
@@ -823,7 +823,7 @@ class MyStickyMenuBackend
 									}
 									?>
 								</div>
-								<a href="javascript:void(0);" class="create-rule" id="mysticky_create-rule"><?php esc_html_e( "Add Rule", "mystickymenu" );?></a>
+								<a href="#" class="create-rule" id="mysticky_create-rule"><?php esc_html_e( "Add Rule", "mystickymenu" );?></a>
 							</div>
 							<input type="hidden" id="mysticky_welcomebar_site_url" value="<?php echo esc_url(site_url("/")) ?>" />
 							<div class="mysticky-page-options-html" style="display: none;">
@@ -1198,7 +1198,7 @@ class MyStickyMenuBackend
 									
 							</div>
 							<div class="popup-modul-close-btn firstwidget-model">
-								<a href="javascript:void(0)" class="close-chaty-maxvisitor-popup" id="close-first-popup">
+								<a href="#" class="close-chaty-maxvisitor-popup" id="close-first-popup">
 									<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 5L5 15" stroke="#4A4A4A" stroke-width="2.08" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 5L15 15" stroke="#4A4A4A" stroke-width="2.08" stroke-linecap="round" stroke-linejoin="round"/></svg>
 								</a>
 							</div>
@@ -1243,7 +1243,7 @@ class MyStickyMenuBackend
 	public function mystickymenu_manage_poptin_plugin() {
 		?>
 			<script>
-				window.location.href= '<?php echo admin_url( "admin.php?page=Poptin" )?>'
+				window.location.href= '<?php echo admin_url( "admin.php?page=poptin" )?>'
 			</script>
 			<?php
 			exit;
