@@ -1,5 +1,17 @@
 
 
+
+version 1.5.150:
+
+* Update: updated freemius sdk to newest version
+* Fix: fixed bug in background widgets second condition
+* Fix: fixed some double js init with elementor popups
+* Fix: fixed avoid duplicates in post related widgets with filters
+* Fix: fixed svg output instead of url in some cases
+* Fix: fixed some bug with wpml inside loop and elementor grid
+* Fix: prepared the plugin for elementor class optimization
+
+
 version 1.5.149:
 
 * Feature - acf fields now get taxonomies array

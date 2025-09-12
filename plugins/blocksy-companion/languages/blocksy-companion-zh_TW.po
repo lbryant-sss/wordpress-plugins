@@ -5693,7 +5693,7 @@ msgstr "安裝子佈景主題"
 
 #: static/js/dashboard/screens/DemoInstall/Wizzard/ChildTheme.js:98
 msgid "Activate Child Theme"
-msgstr "啟用子佈景主��"
+msgstr "啟用子佈景主題"
 
 #: static/js/dashboard/screens/DemoInstall/Wizzard/Content.js:56
 msgid "Import Content"
@@ -6076,7 +6076,7 @@ msgstr "標籤可見度"
 #: framework/premium/extensions/woocommerce-extra/features/compare/header-items/compare/options.php:122,
 #: framework/premium/extensions/woocommerce-extra/features/wish-list/header-items/wish-list/options.php:123
 msgid "Label Position"
-msgstr "���籤位置"
+msgstr "標籤位置"
 
 #: framework/premium/extensions/shortcuts/customizer.php:888,
 #: framework/premium/features/content-blocks/hooks-manager.php:477,

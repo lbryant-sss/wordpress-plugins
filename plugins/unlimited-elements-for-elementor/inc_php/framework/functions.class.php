@@ -989,6 +989,13 @@ class UniteFunctionsUC{
 	public static function z_____________STRINGS_____________(){}
 	
 	/**
+	 * Remove http:// or https:// from a string
+	 */
+	public static function removeHttpHttps($str){
+		return preg_replace('#^https?://#i', '', $str);
+	}
+	
+	/**
 	 * comma sparated to array
 	 */
 	public static function csvToArray($strCsv){

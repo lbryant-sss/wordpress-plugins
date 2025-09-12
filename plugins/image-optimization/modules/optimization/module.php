@@ -50,6 +50,8 @@ class Module extends Module_Base {
 			wp_enqueue_style( $style );
 		}
 
+		add_thickbox();
+
 		wp_enqueue_style(
 			'image-optimization-control',
 			$this->get_css_assets_url( 'control' ),

@@ -52,8 +52,14 @@ class UniteCreatorWpmlIntegrate{
 		if($this->isInited == true)
 			return(false);
 		
-		$this->arrLanguages = apply_filters( 'wpml_active_languages',NULL);
 		
+		global $sitepress;
+		
+		if(!empty($sitepress))
+		  $this->arrLanguages = $sitepress->get_active_languages();
+		else
+		   $this->arrLanguages = apply_filters( 'wpml_active_languages',NULL);
+				
 		if(empty($this->arrLanguages))
 			$this->arrLanguages = array();
 		

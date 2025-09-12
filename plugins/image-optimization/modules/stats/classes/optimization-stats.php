@@ -31,7 +31,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class Optimization_Stats {
-	const PAGING_SIZE = 25000;
+	const PAGING_SIZE = 2000;
 	const STATS_CALCULATION_DELAY = 60 * 15;
 
 	/**
@@ -128,9 +128,14 @@ class Optimization_Stats {
 
 			$meta = new Image_Meta( $attachment_id );
 			$image_sizes = $wp_meta->get_size_keys();
+			$sizes_enabled = Settings::get( Settings::CUSTOM_SIZES_OPTION_NAME );
 
 			foreach ( $image_sizes as $image_size ) {
 				if ( ! $image->file_exists( $image_size ) ) {
+					continue;
+				}
+
+				if ( 'all' !== $sizes_enabled && in_array( $image_size, $sizes_enabled, true ) ) {
 					continue;
 				}
 

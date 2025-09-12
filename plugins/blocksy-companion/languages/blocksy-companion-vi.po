@@ -320,7 +320,7 @@ msgstr "Đừng lo! Vui lòng nhập địa chỉ email của bạn và chúng t
 
 #: framework/premium/extensions/woocommerce-extra/features/product-waitlist/includes/views/form.php:69
 msgid "Great! You have been added to the waitlist for this product. Please check your inbox and confirm the subscription to this waitlist."
-msgstr "Tuyệt vời! Bạn đã được thêm vào danh sách chờ cho sản phẩm này. Vui lòng kiểm tra hộp thư đến và x��c nhận đăng ký danh sách chờ này."
+msgstr "Tuyệt vời! Bạn đã được thêm vào danh sách chờ cho sản phẩm này. Vui lòng kiểm tra hộp thư đến và xác nhận đăng ký danh sách chờ này."
 
 #: framework/premium/extensions/woocommerce-extra/features/product-waitlist/includes/views/form.php:97
 msgid "Great! You have been added to the waitlist for this product. You will receive an email as soon as the item is back in stock."

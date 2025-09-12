@@ -939,6 +939,45 @@ The choice depends on your design preferences. If you want complete control, go 
 == Changelog ==
 
 
+version 1.5.150 - 2025-09-10 =
+
+Plugin Changes:
+
+* Update: updated freemius sdk to newest version
+* Fix: fixed bug in background widgets second condition
+* Fix: fixed some double js init with elementor popups
+* Fix: fixed avoid duplicates in post related widgets with filters
+* Fix: fixed svg output instead of url in some cases
+* Fix: fixed some bug with wpml inside loop and elementor grid
+* Fix: prepared the plugin for elementor class optimization
+
+
+Widgets Changes: 
+
+* Feature: Content Toggle (Free) - Added an Open Tab Based on URL option, allowing specific tabs to be activated automatically when accessing a page via a direct link.
+* Feature: Age Verification (Free) - Added a Date Inputs Order option, allowing customization of the display order for date input fields to better match regional formats and preferences.
+* Feature: Content Toggle (Free) - Added an Enable Cookie option that allows the selected Content Toggle Item to be remembered, ensuring user choice is preserved across sessions.
+* Feature: Flip Box Carousel (Pro) - Added a Front Image Source option within the Source settings, allowing more flexibility in selecting and managing front image content.
+* Feature: Flip Box (Free) - Added a Front Image Border Radius option, allowing customization of corner rounding for the front image to enhance design flexibility.
+* Feature: Before After (Free) - Before/After slider is now fully keyboard accessible: users can Tab to the handle and move it with arrow keys, while aria-valuenow attribute updates dynamically for screen readers.
+* Feature: Off Canvas Filters (Pro) - Added the possibility to manually add filters into the Off Canvas Filters popup using Items by simply specifying the CSS ID of the desired filter.
+* Feature: Mega Menu (Pro) - Allowed the use of HTML in the Item Title options, enabling richer formatting and enhanced customization of item titles.
+* Feature: Hotspots (Free) - Added an Activate On Page Load option, allowing a specific item to be activated automatically when the page loads for improved user experience and control.
+* Feature: Audio Player (Pro) - Added a Controls Wrap Mode option, allowing better management and layout of control elements within the widget for improved flexibility and appearance.
+* Feature: Breadcrumbs (Free) - Allowed the use of HTML tags in Breadcrumbs text elements, enabling richer formatting and improved customization options.
+* Feature: Hexagon Grid (Pro) - Added a Show Second Background Image option, allowing a secondary image to appear on hover for enhanced visual interactivity and design flexibility.
+* Change: Multi Step Form (Free) - Changed the target Elementor container from `elementor-widget-container` to `.elementor-widget` to ensure the widget functions correctly following the Elementor 3.32 version release.
+* Change: Submit Button (Free) - Changed the target Elementor container from elementor-widget-container to .elementor-widget to ensure the widget functions correctly following the Elementor 3.32 version release.
+* Change: Content Toggle (Free) - Renamed Cookie options into Open Tab Rules
+* Change: Audio Player (Pro) - Changed the source type of the audio library for the widget from CDN to self-hosted, improving performance, reliability, and control over asset loading.
+* Fix: Age Verification (Free) - Fixed an issue where the Load After Delay option was not functioning correctly, ensuring proper delayed loading behavior.
+* Fix: Off Canvas Filters (Pro) - Fixed an issue where the Off Canvas Filter widget was not appending the Accordion Filter widget under its container, ensuring proper structure and functionality.
+* Fix: Flip Box (Free) - Improved accessibility across the widget, enhancing usability for all users, including those relying on assistive technologies.
+* Fix: Masonry &amp; Justified Gallery (Pro) - Fixed an issue related to video playback in the Lightbox when the pagination option was enabled, ensuring smooth and uninterrupted video functionality.
+* Fix: Icon Box Hover Effect (Free) - Added protection to prevent SVG icons from disappearing on hover, ensuring consistent visibility and proper styling.
+* Fix: Background Switcher (Pro) - Fixed an issue where the Item Height option was not working in Vertical Mode on mobile devices, ensuring proper display and responsiveness.
+
+
 version 1.5.149 - 2025-08-21 =
 
 Plugin Changes:

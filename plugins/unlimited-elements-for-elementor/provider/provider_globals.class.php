@@ -43,7 +43,10 @@ class GlobalsProviderUC{
 	public static $isUnderAjaxSearch = false;
 	public static $isUnderRenderPostItem = false;
 	public static $isUnderItem = false;
+	
 	public static $lastItemParams = array();
+	public static $lastWidgetParams = array();
+	
 	public static $lastObjectID = null;
 	public static $isUnderDynamicTemplateLoop = false;
 	public static $isUnderNoWidgetsToDisplay = false;

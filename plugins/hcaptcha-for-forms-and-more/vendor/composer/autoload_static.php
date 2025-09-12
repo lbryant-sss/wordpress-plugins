@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInite907ee6af17ec21150d2317fc40abfc9
+class ComposerStaticInit0948d9ad69a9f4852d35c417b9397c22
 {
     public static $prefixLengthsPsr4 = array (
         'K' => 
@@ -51,6 +51,7 @@ class ComposerStaticInite907ee6af17ec21150d2317fc40abfc9
         'HCaptcha\\Affiliates\\Login' => __DIR__ . '/../..' . '/src/php/Affiliates/Login.php',
         'HCaptcha\\Affiliates\\Register' => __DIR__ . '/../..' . '/src/php/Affiliates/Register.php',
         'HCaptcha\\AntiSpam\\AntiSpam' => __DIR__ . '/../..' . '/src/php/AntiSpam/AntiSpam.php',
+        'HCaptcha\\AntiSpam\\Honeypot' => __DIR__ . '/../..' . '/src/php/AntiSpam/Honeypot.php',
         'HCaptcha\\AntiSpam\\ProviderBase' => __DIR__ . '/../..' . '/src/php/AntiSpam/ProviderBase.php',
         'HCaptcha\\Asgaros\\Base' => __DIR__ . '/../..' . '/src/php/Asgaros/Base.php',
         'HCaptcha\\Asgaros\\Form' => __DIR__ . '/../..' . '/src/php/Asgaros/Form.php',
@@ -120,6 +121,7 @@ class ComposerStaticInite907ee6af17ec21150d2317fc40abfc9
         'HCaptcha\\HTMLForms\\Form' => __DIR__ . '/../..' . '/src/php/HTMLForms/Form.php',
         'HCaptcha\\Helpers\\API' => __DIR__ . '/../..' . '/src/php/Helpers/API.php',
         'HCaptcha\\Helpers\\DB' => __DIR__ . '/../..' . '/src/php/Helpers/DB.php',
+        'HCaptcha\\Helpers\\FormSubmitTime' => __DIR__ . '/../..' . '/src/php/Helpers/FormSubmitTime.php',
         'HCaptcha\\Helpers\\HCaptcha' => __DIR__ . '/../..' . '/src/php/Helpers/HCaptcha.php',
         'HCaptcha\\Helpers\\Minify\\CSS' => __DIR__ . '/../..' . '/src/php/Helpers/Minify/CSS.php',
         'HCaptcha\\Helpers\\Minify\\JS' => __DIR__ . '/../..' . '/src/php/Helpers/Minify/JS.php',
@@ -239,9 +241,9 @@ class ComposerStaticInite907ee6af17ec21150d2317fc40abfc9
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInite907ee6af17ec21150d2317fc40abfc9::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInite907ee6af17ec21150d2317fc40abfc9::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInite907ee6af17ec21150d2317fc40abfc9::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit0948d9ad69a9f4852d35c417b9397c22::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit0948d9ad69a9f4852d35c417b9397c22::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit0948d9ad69a9f4852d35c417b9397c22::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -1371,11 +1371,10 @@ function <?php echo esc_attr($widgetID)?>_start(){
 			endif;
 			
 			?>
-}if(jQuery("#<?php echo esc_attr($widgetID)?>").length) <?php echo esc_attr($widgetID)?>_start();
+}if(jQuery("#<?php echo esc_attr($widgetID)?>").length && !jQuery("#<?php echo esc_attr($widgetID)?>").parents('[data-elementor-type="popup"]').length) <?php echo esc_attr($widgetID)?>_start();
 	jQuery( document ).on( 'elementor/popup/show', (event, id, objPopup) => {
-	if(objPopup.$element.has(jQuery("#<?php echo esc_attr($widgetID)?>")).length) <?php echo esc_attr($widgetID)?>_start();});
+	if(objPopup.$element.has(jQuery("#<?php echo esc_attr($widgetID)?>")).length) <?php echo esc_attr($widgetID)?>_start()});
 });
-
 			<?php
 
 		}

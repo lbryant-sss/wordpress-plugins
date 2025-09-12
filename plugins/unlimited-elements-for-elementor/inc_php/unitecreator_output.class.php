@@ -2000,8 +2000,7 @@ $css
 				$arrItemsForShow[] = $item;
 				continue;
 			}
-
-
+			
 			$item = UniteFunctionsUC::getVal($item, "item");
 
 			$itemFirstValue = UniteFunctionsUC::getArrFirstValue($item);

@@ -523,7 +523,7 @@ msgstr ""
 
 #: framework/premium/extensions/woocommerce-extra/features/added-to-cart-popup/view.php:95
 msgid "Product succesfully added to your cart!"
-msgstr "Товар успішно додано до кошика!"
+msgstr "Т��вар успішно додано до кошика!"
 
 #: framework/premium/extensions/woocommerce-extra/features/added-to-cart-popup/view.php:102
 msgid "Close Modal"
@@ -549,7 +549,7 @@ msgstr ""
 
 #: framework/premium/extensions/woocommerce-extra/features/added-to-cart-popup/views/added-product.php:245
 msgid "Cart Total"
-msgstr "Загал��на сума"
+msgstr "Загальна сума"
 
 #: framework/premium/extensions/woocommerce-extra/features/added-to-cart-popup/views/product-actions.php:24
 msgid "View Cart"

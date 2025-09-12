@@ -34,9 +34,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 		 * heck if debug by url
 		 */
 		public static function isDebug(){
-
+			
 			$debug = UniteFunctionsUC::getGetVar("ucdebug","",UniteFunctionsUC::SANITIZE_KEY);
-
+			
 			if(empty($debug))
 				return(false);
 
@@ -617,28 +617,34 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 			return($url);
 		}
 
-
+		
 		/**
 		 * convert some url to relative
 		 */
 		public static function URLtoRelative($url, $isAssets = false){
-
+			
 			$replaceString = GlobalsUC::$url_base;
 			if($isAssets == true)
 				$replaceString = GlobalsUC::$url_assets;
-
+			
+			//$replaceString = UniteFunctionsUC::removeHttpHttps($replaceString);
+				
 			//in case of array take "url" from the array
 			if(is_array($url)){
 
 				$strUrl = UniteFunctionsUC::getVal($url, "url");
 				if(empty($strUrl))
 					return($url);
-
+			
+				//$strUrl = UniteFunctionsUC::removeHttpHttps($strUrl);
+					
 				$url["url"] = str_replace($replaceString, "", $strUrl);
 
 				return($url);
 			}
-
+			
+			//$url = UniteFunctionsUC::removeHttpHttps($url);
+			
 			$url = str_replace($replaceString, "", $url);
 
 			return($url);
@@ -981,7 +987,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 	 * get url content
 	 */
 	public static function getFileContentByUrl($url, $filterExtention = null){
-
+	
 		if(!empty($filterExtention)){
 			$info = pathinfo($url);
 			$ext = UniteFunctionsUC::getVal($info, "extension");
@@ -990,9 +996,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 			if($ext != $filterExtention)
 				return (null);
 		}
-
+		
 		$pathFile = self::urlToPath($url);
-
+		
 		if(empty($pathFile))
 			return (null);
 

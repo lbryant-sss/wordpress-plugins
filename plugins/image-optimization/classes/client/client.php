@@ -21,6 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Client {
 	const BASE_URL = 'https://my.elementor.com/api/v2/image-optimizer/';
+	const BASE_URL_FEEDBACK = 'https://feedback-api.prod.apps.elementor.red/apps/api/v1/';
 	const STATUS_CHECK = 'status/check';
 	const SITE_INFO = 'site/info';
 	const SITE_INFO_TRANSIENT = 'image_optimizer_site_info_transient';
@@ -135,8 +136,16 @@ class Client {
 		return ( new Client_Response( $response ) )->handle();
 	}
 
+	public static function get_feedback_base_url() {
+		return apply_filters( 'image_optimizer_feedback_base_url', self::BASE_URL_FEEDBACK );
+	}
+
 	private static function get_remote_url( $endpoint ): string {
 		$base_url = apply_filters( 'image_optimizer_client_get_base_url', self::BASE_URL );
+
+		if ( strpos( $endpoint, 'feedback/' ) !== false ) {
+			return self::get_feedback_base_url() . $endpoint;
+		}
 
 		return $base_url . $endpoint;
 	}
@@ -218,7 +227,7 @@ class Client {
 			}
 		}
 
-		if ( 200 !== $response_code ) {
+		if ( ! in_array( $response_code, [ 200, 201 ], true ) ) {
 			// In case $as_array = true.
 			$message = $body->message ?? wp_remote_retrieve_response_message( $response );
 			$message = is_array( $message ) ? join( ', ', $message ) : $message;

@@ -3284,7 +3284,8 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 		HelperUC::addDebug("getPostList param", $param);
 
 		$source = UniteFunctionsUC::getVal($value, "{$name}_source");
-
+		
+		
 		$useForListing = UniteFunctionsUC::getVal($param, "use_for_listing");
 		$useForListing = UniteFunctionsUC::strToBool($useForListing);
 
@@ -3299,6 +3300,7 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 
 		$arrPosts = array();
 		
+		
 		switch($source){
 			case "ue_templates":
 
@@ -3308,7 +3310,7 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 			case "manual":
 
 				$arrPosts = $this->getPostListData_manualSelection($value, $name, $data, $nameListing);
-
+			
 			break;
 			case "current":
 
@@ -5624,7 +5626,7 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 	 * get processed param data, function with override
 	 */
 	public function getProcessedParamData($data, $value, $param, $processType){
-
+				
 		$type = UniteFunctionsUC::getVal($param, "type");
 		$name = UniteFunctionsUC::getVal($param, "name");
 

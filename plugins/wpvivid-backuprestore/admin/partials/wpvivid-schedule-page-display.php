@@ -42,8 +42,10 @@ function wpvivid_schedule_settings()
                             <div>
                                 <?php
                                 $time = '00:00:00';
-                                $utime = strtotime($time);
-                                echo '<p>1) '.'Scheduled job will start at <strong>UTC</strong> time:'.'&nbsp'.esc_html(gmdate('H:i:s', $utime)).'</p>';
+                                $utime_1 = strtotime($time);
+                                $time = '00:00:15';
+                                $utime_2 = strtotime($time);
+                                echo '<p>1) '.'Backup schedule will start at a random time between '.esc_html(gmdate('H:i:s', $utime_1)).' and '.esc_html(gmdate('H:i:s', $utime_2)).' <strong>UTC</strong> to prevent possible server overload from simultaneous backups of many sites.</p>';
                                 echo '<p>2) ';
                                 esc_html_e('Being subjected to mechanisms of PHP, a scheduled backup task for your site will be triggered only when the site receives at least a visit at any page.', 'wpvivid-backuprestore');
                                 echo '</p>';

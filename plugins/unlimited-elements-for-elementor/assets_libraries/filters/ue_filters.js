@@ -72,7 +72,6 @@ function UEDynamicFilters(){
 		REFRESH_MODE_LOADMORE: "loadmore",
 		trashold_handle:null,
 		class_widget_wrapper:"elementor-widget",
-		class_widget_container:"elementor-widget-container",
 		current_postid:null,
 		ucpage_url:null,
 	};
@@ -805,17 +804,14 @@ function UEDynamicFilters(){
 	function getFilterWrapper(objFilter){
 		
 		var objParent = objFilter.parent();		
-		
-		var objElementorParent = objParent.parents(".elementor-widget-container");
-		if(objElementorParent.length == 1)
-			return(objElementorParent);
-		
+				
 		if(objParent.hasClass("uc-checkbox-filter-accordion-container"))
 			objParent = objParent.parent();
 		
 		return(objParent);
 	}
 
+	
 	/**
 	 * get filter type
 	 */
@@ -1965,7 +1961,7 @@ function UEDynamicFilters(){
 		if(!htmlDebug)
 			return(false);
 		
-		var gridParent = objGrid.parents("." + g_vars.class_widget_container);
+		var gridParent = objGrid.parents("." + g_vars.class_widget_wrapper);
 		
 		var objDebug = gridParent.find(".uc-debug-query-wrapper");
 
@@ -2228,7 +2224,7 @@ function UEDynamicFilters(){
 				var htmlDebug = getVal(objHtmlDebug, widgetID);
 
 			if(htmlDebug){
-				var objParent = objFilter.parents("." + g_vars.class_widget_container);
+				var objParent = objFilter.parents("." + g_vars.class_widget_wrapper);
 				var objDebug = objParent.find(".uc-div-ajax-debug");
 
 				if(objDebug.length)
@@ -3601,23 +3597,26 @@ function UEDynamicFilters(){
 		
 		//avoid duplicates - exclude, disable the offset
 		
-		if(objGrid.hasClass("uc-avoid-duplicates") && isLoadMoreMode == true){
+		if(objGrid.hasClass("uc-avoid-duplicates")){
 			
-			var objCurrentGridForExclude = null;
-			if(isPaginationClicked == true)
-				objCurrentGridForExclude = objGrid;
-						
-			var strExcludePostIDs = getExcludePostIDs(objCurrentGridForExclude);
+			var objCurrentGrid = objGrid;
+			if(isLoadMoreMode == true)
+				objCurrentGrid = null;		//load with exclude but without offset
+			
+			var strExcludePostIDs = getExcludePostIDs(objCurrentGrid);		//exclude current grid
 			
 			if(strExcludePostIDs){
 				urlAjax += "&ucexclude="+strExcludePostIDs;
-				offset = null;
-
+				
+				if(isLoadMoreMode == true)
+					offset = null;
+	
 				urlFilterString = addUrlParam(urlFilterString, "ucexclude=" + strExcludePostIDs);
 			}
-
+		
 		}
-
+		
+		
 		if(offset){
 			urlAjax += "&ucoffset="+offset;
 
@@ -3749,7 +3748,6 @@ function UEDynamicFilters(){
 		if(platform == "gutenberg"){
 			g_isGutenberg = true;
 			g_vars.class_widget_wrapper = "ue-widget-root";
-			g_vars.class_widget_container = "ue-widget-root"; 
 			g_vars.current_postid = getVal(g_filtersData, "postid");
 		}
 		

@@ -96,6 +96,51 @@ class Module extends Module_Base {
 		<?php
 	}
 
+	public function maybe_add_80_quota_reached_notice() {
+
+		// @var ImageOptimizer/Modules/ConnectManager/Module
+		$module = Plugin::instance()->modules_manager->get_modules( 'connect-manager' );
+
+		$connect_status = $module->connect_instance->get_connect_status();
+
+		if ( ! isset( $connect_status->quota ) && ! isset( $connect_status->used_quota ) ) {
+			return;
+		}
+
+		$usage = $connect_status->used_quota / $connect_status->quota * 100;
+
+		if ( ! $module->connect_instance->get_connect_status() || ( $usage < 80 || $usage === 100 ) ) {
+			return;
+		}
+
+		?>
+		<div class="notice notice-warning notice image-optimizer__notice image-optimizer__notice--warning">
+			<p>
+				<b>
+					<?php esc_html_e(
+						'You’ve used 80% of your plan quota.',
+						'image-optimization'
+					); ?>
+				</b>
+
+				<span>
+					<?php esc_html_e(
+						'Upgrade now to avoid interruptions.',
+						'image-optimization'
+					); ?>
+
+					<a href="https://go.elementor.com/io-quota-upgrade/">
+						<?php esc_html_e(
+							'Upgrade plan now',
+							'image-optimization'
+						); ?>
+					</a>
+				</span>
+			</p>
+		</div>
+		<?php
+	}
+
 	public function maybe_add_url_mismatch_notice() {
 		// @var ImageOptimizer/Modules/ConnectManager/Module
 		$module = Plugin::instance()->modules_manager->get_modules( 'connect-manager' );
@@ -189,8 +234,6 @@ class Module extends Module_Base {
 		foreach ( $asset_file['dependencies'] as $style ) {
 			wp_enqueue_style( $style );
 		}
-
-		wp_enqueue_style( 'thickbox' );
 
 		wp_enqueue_script(
 			'image-optimization-admin',
@@ -362,6 +405,7 @@ class Module extends Module_Base {
 			}
 
 			add_action( 'admin_notices', [ $this, 'maybe_add_quota_reached_notice' ] );
+			add_action( 'admin_notices', [ $this, 'maybe_add_80_quota_reached_notice' ] );
 			add_action( 'admin_notices', [ $this, 'maybe_add_url_mismatch_notice' ] );
 
 			if ( Utils::is_media_page() ) {

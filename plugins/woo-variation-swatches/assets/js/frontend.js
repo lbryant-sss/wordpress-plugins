@@ -2,7 +2,7 @@
  * Variation Swatches for WooCommerce
  *
  * Author: Emran Ahmed ( emran.bd.08@gmail.com )
- * Date: 2/16/2025, 5:38:38 PM
+ * Date: 9/11/2025, 5:36:23 PM
  * Released under the GPLv3 license.
  */
 /******/ (function() { // webpackBootstrap
@@ -159,7 +159,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
           // Append Selected Item Template
           if (filterBoolean(woo_variation_swatches_options.show_variation_label)) {
             this.$element.find('.variations .label').each(function (index, el) {
-              $(el).append(_this.selected_item_template);
+              // To fix Composite product re insert label issue.
+              if ($(el).find('.woo-selected-variation-item-name').length === 0) {
+                $(el).append(_this.selected_item_template);
+              }
             });
           }
         }
@@ -469,7 +472,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
           this.$element.on('wvs-selected-item.wvs', function (event, attribute_name, attribute_value) {
             var _this4$getChosenAttri = _this4.getChosenAttributes(),
               data = _this4$getChosenAttri.data;
-            var currentAttribute = _objectSpread(_objectSpread({}, data), {}, _defineProperty({}, attribute_name, attribute_value));
+            var currentAttribute = _objectSpread(_objectSpread({}, data), {}, _defineProperty({}, attribute_name, attribute_value.toString()));
             var unavailableAttributes = _this4.getUnavailableAttributes(currentAttribute, attribute_name);
             if (unavailableAttributes.length > 0) {
               var _iterator2 = _createForOfIteratorHelper(unavailableAttributes),

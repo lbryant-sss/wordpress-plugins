@@ -4,7 +4,7 @@ BackWPupHelpers::component("closable-heading", [
   'title' => __("Jobs Settings", 'backwpup'),
   'type' => 'sidebar'
 ]);
-$archiveformat = get_site_option('backwpup_archiveformat', '.tar');;
+$archiveformat = get_site_option('backwpup_archiveformat', '.tar');
 ?>
 
 <p>
@@ -66,16 +66,9 @@ BackWPupHelpers::component("form/text", [
 ?>
 
 <?php
-BackWPupHelpers::component("form/select", [
-  "name" => "archiveformat",
-  "label" => __("Archive format", 'backwpup'),
-  "withEmpty" => false,
-  "value" => $archiveformat,
-  "options" => [
-    '.zip' => '.zip',
-    '.tar' => '.tar',
-    '.tar.gz' => '.tar.gz',
-  ],
+BackWPupHelpers::children("sidebar/parts/archive-format-selector", false, [
+  "label" => __("Default Archive format", 'backwpup'),
+  "archiveformat" => $archiveformat,
 ]);
 ?>
 
@@ -129,6 +122,19 @@ BackWPupHelpers::component("form/checkbox", [
   "tooltip_pos" => "left",
   "value" => "1",
 ]);
+?>
+
+<?php
+if ( ! BackWPup::is_pro() ) {
+  BackWPupHelpers::component("form/checkbox", [
+    "name" => "beta",
+    "checked" => (bool) get_option('backwpup_beta_optin', false),
+    "label" => __("Receive beta updates", 'backwpup'),
+    "tooltip" => __('With this option, you will receive beta updates of the BackWPUp plugin. Beta versions might be unstable and their use is discouraged on production websites.', 'backwpup'),
+    "tooltip_pos" => "left",
+    "value" => "0",
+  ]);
+}
 ?>
 
 <?php

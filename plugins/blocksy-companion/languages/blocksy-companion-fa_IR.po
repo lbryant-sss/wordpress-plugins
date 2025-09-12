@@ -2287,7 +2287,7 @@ msgstr ""
 
 #: static/js/dashboard/NoTheme.js:31
 msgid "In order to take full advantage of all features it has to offer - please install and activate the Blocksy theme also."
-msgstr "به منظور بهره‌مندی کامل از تمام ویژگی‌ها باید پوسته‌ی Blocky را نیز نصب و فعال کنید."
+msgstr "به منظور بهره‌مندی کامل از تمام ویژگ��‌ها باید پوسته‌ی Blocky را نیز نصب و فعال کنید."
 
 #: static/js/dashboard/NoTheme.js:65
 msgid "Install and activate the Blocksy theme"
@@ -5534,7 +5534,7 @@ msgstr "نصب"
 
 #: static/js/dashboard/screens/DemoInstall/DemoToInstall.js:347
 msgid "Next"
-msgstr "ب��دی"
+msgstr "بعدی"
 
 #: static/js/dashboard/screens/DemoInstall/SingleDemo.js:182
 msgid "Import"
@@ -8525,7 +8525,7 @@ msgstr "یوتیوب"
 #: framework/theme-integration.php:230,
 #: framework/premium/features/media-video/options.php:15
 msgid "Vimeo"
-msgstr "ویم��و"
+msgstr "ویمئو"
 
 #: framework/theme-integration.php:231,
 #: framework/features/blocks/share-box/options.php:55

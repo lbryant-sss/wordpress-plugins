@@ -188,7 +188,9 @@ class WPvivid_Schedule
             if($key == $time['type']){
                 foreach ($display_array as $display_key => $display_value){
                     if($value == $display_key){
-                        return strtotime($display_value);
+                        $base_ts = strtotime($display_value);
+                        $jitter = function_exists('wp_rand') ? wp_rand(0, 15 * 60) : rand(0, 15 * 60);
+                        return $base_ts + $jitter;
                     }
                 }
             }

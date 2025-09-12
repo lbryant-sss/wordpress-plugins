@@ -2,9 +2,9 @@
 Contributors: ocdi, smub, jaredatch, capuderg
 Tags: import, content, widgets, settings, theme options
 Requires at least: 5.5
-Tested up to: 6.6
-Requires PHP: 5.6
-Stable tag: 3.3.0
+Tested up to: 6.8
+Requires PHP: 7.4
+Stable tag: 3.4.0
 License: GPLv3 or later
 
 Import your demo content, widgets and theme settings with one click. Theme authors! Enable simple theme demo import for your users.
@@ -358,6 +358,12 @@ Please visit this [docs page](https://github.com/awesomemotive/one-click-demo-im
 4. How the Recommended & Required theme plugins step looks like, just before the import step.
 
 == Changelog ==
+
+= 3.4.0 =
+*Release Date - 11 September 2025*
+
+* Fixed a PHP fatal error on some imports. The fatal error happens when the passed `$widget` is not the expected array data type.
+* Changed the minimum required PHP version to PHP v7.4.
 
 = 3.3.0 =
 *Release Date - 10th October 2024*

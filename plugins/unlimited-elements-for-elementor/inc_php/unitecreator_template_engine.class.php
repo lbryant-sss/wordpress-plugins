@@ -17,7 +17,7 @@ class UniteCreatorTemplateEngineWork{
 	protected $addon = null;
 	protected $objParamsProcessor;
 	protected $isItemsFromPosts = false;
-
+	
 	private static $arrSetVarsCache = array();
 	private static $urlBaseCache = null;
 	private static $isPostIDSaved = false;
@@ -688,7 +688,7 @@ class UniteCreatorTemplateEngineWork{
 	 * get all data
 	 */
 	public function getData(){
-
+		
 		$data = $this->arrParams;
 
 		return($data);
@@ -1871,8 +1871,8 @@ class UniteCreatorTemplateEngineWork{
 
 		$arrOptions = array();
 		$arrOptions["debug"] = true;
-
-
+		
+		
 		if(class_exists("Twig\\Environment") == false){
 
 			$version = "";
@@ -1965,7 +1965,10 @@ class UniteCreatorTemplateEngineWork{
 	public function setParams($params){
 
 		$this->arrParams = $params;
-
+				
+		//some small hack
+		GlobalsProviderUC::$lastWidgetParams = $params;	
+		
 	}
 
 	/**

@@ -1082,6 +1082,7 @@ class UniteCreatorParamsProcessorWork{
 
 				if($putAs == "svg")
 					$svgContent = HelperUC::getFileContentByUrl($value, "svg");
+				
 			}
 
 		}

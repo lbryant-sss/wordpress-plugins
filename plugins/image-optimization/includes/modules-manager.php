@@ -25,6 +25,8 @@ final class Manager {
 			'optimization',
 			'backups',
 			'whats-new',
+			'Deactivation',
+			'reviews',
 		];
 	}
 

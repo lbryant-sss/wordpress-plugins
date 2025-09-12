@@ -2073,7 +2073,7 @@ class UniteCreatorElementorWidget extends Widget_Base {
     			//add regular control
 
     			$arrControl = $this->getControlArrayUC($param);
-
+								
     			$type = UniteFunctionsUC::getVal($param, "type");
 
 				if(self::DEBUG_CONTROLS && $this->isBGWidget == false){
@@ -4157,7 +4157,7 @@ class UniteCreatorElementorWidget extends Widget_Base {
      * render the HTML
      */
     protected function render() {
-
+				
     	if(UniteCreatorElementorIntegrate::$isSaveBuilderMode == true){
 
     		uelm_echo("skip render: ".$this->get_name());
