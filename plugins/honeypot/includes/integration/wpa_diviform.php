@@ -20,7 +20,8 @@ if (!function_exists('wpae_get_blocked_integrations') || !in_array('diviform', w
 			$fields_data_array = json_decode( $fields_data_json, true );
 			if (is_array($fields_data_array)) {
 				$filteredArray = array_filter($fields_data_array, function ($item) {
-				    return $item['field_id'] !== 'alt_s';
+				    return $item['field_id'] !== 'alt_s' 
+            && $item['field_id'] !== $GLOBALS['wpa_field_name'];
 				});
 				$_POST['et_pb_contact_email_fields'.$divi_form_additional] = json_encode( $filteredArray, JSON_UNESCAPED_UNICODE );
 			}

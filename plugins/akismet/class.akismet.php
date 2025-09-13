@@ -864,7 +864,7 @@ class Akismet {
 
 	/**
 	 * Get the full comment history for a given comment, as an array in reverse chronological order.
-	 * Each entry will have an 'event', a 'time', and possible a 'message' member (if the entry is old enough).
+	 * Each entry will have an 'event', a 'time', and possibly a 'message' member (if the entry is old enough).
 	 * Some entries will also have a 'user' or 'meta' member.
 	 *
 	 * @param int $comment_id The relevant comment ID.
@@ -915,7 +915,17 @@ class Akismet {
 		$history[] = array( 'time' => 445856427, 'event' => 'webhook-ham-noaction' );
 		*/
 
-		usort( $history, array( 'Akismet', '_cmp_time' ) );
+		// Validate history entries to guard against malformed data.
+		// In one case, serialized data was returned in $entry instead of an array.
+		$history = array_filter(
+			$history,
+			function ( $entry ) {
+				return is_array( $entry ) && isset( $entry['time'] ) && is_numeric( $entry['time'] );
+			}
+		);
+
+		usort( $history, 'Akismet::_cmp_time' );
+
 		return $history;
 	}
 

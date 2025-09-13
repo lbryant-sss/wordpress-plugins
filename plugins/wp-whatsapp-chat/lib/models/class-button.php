@@ -68,7 +68,16 @@ class Button {
 			$settings['message'] = sanitize_textarea_field( $settings['message'] );
 		}
 		if ( isset( $settings['icon'] ) ) {
-			$settings['icon'] = sanitize_html_class( $settings['icon'] );
+			// Check if it's a URL (for custom images) or a CSS class (for font icons)
+			if ( filter_var( $settings['icon'], FILTER_VALIDATE_URL ) || 
+				 ( strpos( $settings['icon'], 'http' ) === 0 ) || 
+				 ( strpos( $settings['icon'], '.' ) !== false && preg_match( '/\.(jpg|jpeg|png|gif|svg|webp)$/i', $settings['icon'] ) ) ) {
+				// It's an image URL, sanitize as URL
+				$settings['icon'] = sanitize_url( $settings['icon'] );
+			} else {
+				// It's a CSS class, sanitize as HTML class
+				$settings['icon'] = sanitize_html_class( $settings['icon'] );
+			}
 		}
 		if ( isset( $settings['phone'] ) ) {
 			$settings['phone'] = qlwapp_format_phone( $settings['phone'] );

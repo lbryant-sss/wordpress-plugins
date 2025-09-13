@@ -3,8 +3,8 @@ Contributors: wpclever
 Donate link: https://wpclever.net
 Tags: woocommerce, wpc, compare, comparison
 Tested up to: 6.8
-Version: 6.4.9
-Stable tag: 6.4.9
+Version: 6.5.0
+Stable tag: 6.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -85,6 +85,10 @@ Example:
 `echo do_shortcode('[woosc id="99"]');`
 
 == Changelog ==
+
+= 6.5.0 =
+* Fixed: Minor CSS/JS issue
+* Added: Hide comparison bar when closed
 
 = 6.4.9 =
 * Added: Filter hook 'woosc_quick_table_limit'

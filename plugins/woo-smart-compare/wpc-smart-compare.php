@@ -3,7 +3,7 @@
 Plugin Name: WPC Smart Compare for WooCommerce
 Plugin URI: https://wpclever.net/
 Description: Smart products compare for WooCommerce.
-Version: 6.4.9
+Version: 6.5.0
 Author: WPClever
 Author URI: https://wpclever.net
 Text Domain: woo-smart-compare
@@ -19,7 +19,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 defined( 'ABSPATH' ) || exit;
 
-! defined( 'WOOSC_VERSION' ) && define( 'WOOSC_VERSION', '6.4.9' );
+! defined( 'WOOSC_VERSION' ) && define( 'WOOSC_VERSION', '6.5.0' );
 ! defined( 'WOOSC_LITE' ) && define( 'WOOSC_LITE', __FILE__ );
 ! defined( 'WOOSC_FILE' ) && define( 'WOOSC_FILE', __FILE__ );
 ! defined( 'WOOSC_URI' ) && define( 'WOOSC_URI', plugin_dir_url( __FILE__ ) );
@@ -312,6 +312,7 @@ if ( ! function_exists( 'woosc_init' ) ) {
 							'click_again'        => self::get_setting( 'click_again', 'no' ),
 							'hide_empty'         => self::get_setting( 'hide_empty', 'no' ),
 							'click_outside'      => self::get_setting( 'click_outside', 'yes' ),
+							'hide_closed'        => self::get_setting( 'hide_closed', 'no' ),
 							'freeze_column'      => self::get_setting( 'freeze_column', 'yes' ),
 							'freeze_row'         => self::get_setting( 'freeze_row', 'yes' ),
 							'scrollbar'          => self::get_setting( 'perfect_scrollbar', 'yes' ),
@@ -483,6 +484,7 @@ if ( ! function_exists( 'woosc_init' ) ) {
 								$bar_pos                 = self::get_setting( 'bar_pos', 'bottom' );
 								$bar_align               = self::get_setting( 'bar_align', 'right' );
 								$click_outside           = self::get_setting( 'click_outside', 'yes' );
+								$hide_closed             = self::get_setting( 'hide_closed', 'no' );
 								$quick_table_enable      = self::get_setting( 'quick_table_enable', 'no' );
 								$quick_table_position    = self::get_setting( 'quick_table_position', 'above_related' );
 								$quick_table_label       = self::get_setting( 'quick_table_label', 'no' );
@@ -1149,6 +1151,15 @@ if ( ! function_exists( 'woosc_init' ) ) {
                                                         <option value="yes" <?php selected( $click_outside, 'yes' ); ?>><?php esc_html_e( 'Yes', 'woo-smart-compare' ); ?></option>
                                                         <option value="yes_empty" <?php selected( $click_outside, 'yes_empty' ); ?>><?php esc_html_e( 'Yes if empty', 'woo-smart-compare' ); ?></option>
                                                         <option value="no" <?php selected( $click_outside, 'no' ); ?>><?php esc_html_e( 'No', 'woo-smart-compare' ); ?></option>
+                                                    </select> </label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"><?php esc_html_e( 'Hide when closed', 'woo-smart-compare' ); ?></th>
+                                            <td>
+                                                <label> <select name="woosc_settings[hide_closed]">
+                                                        <option value="yes" <?php selected( $hide_closed, 'yes' ); ?>><?php esc_html_e( 'Yes', 'woo-smart-compare' ); ?></option>
+                                                        <option value="no" <?php selected( $hide_closed, 'no' ); ?>><?php esc_html_e( 'No', 'woo-smart-compare' ); ?></option>
                                                     </select> </label>
                                             </td>
                                         </tr>
@@ -2727,7 +2738,7 @@ if ( ! function_exists( 'woosc_init' ) ) {
 					}
 
 					$class = 'woosc-area';
-					$class .= ' woosc-bar-' . self::get_setting( 'bar_pos', 'bottom' ) . ' woosc-bar-' . self::get_setting( 'bar_align', 'right' ) . ' woosc-bar-click-outside-' . str_replace( '_', '-', self::get_setting( 'click_outside', 'yes' ) );
+					$class .= ' woosc-bar-' . self::get_setting( 'bar_pos', 'bottom' ) . ' woosc-bar-' . self::get_setting( 'bar_align', 'right' ) . ' woosc-bar-hide-closed-' . self::get_setting( 'hide_closed', 'no' ) . ' woosc-bar-click-outside-' . str_replace( '_', '-', self::get_setting( 'click_outside', 'yes' ) );
 
 					if ( self::get_setting( 'hide_checkout', 'yes' ) === 'yes' ) {
 						$class .= ' woosc-hide-checkout';

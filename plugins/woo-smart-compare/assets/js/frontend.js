@@ -879,6 +879,10 @@
             $('.woosc-bar').addClass('woosc-bar-bubble');
         }
 
+        if (woosc_vars.hide_closed === 'yes') {
+            woosc_close_bar();
+        }
+
         $(document.body).trigger('woosc_table_close');
     }
 

@@ -41,6 +41,17 @@
         </td>
     </tr>
 
+    <tr>
+        <td>Disable jQuery?</td>
+        <td>
+            <select name="wpa_disable_jquery">
+                <option value="no" <?php echo get_option('wpa_disable_jquery') == 'no' ? 'selected="selected"' : ''; ?> >No</option>
+                <option value="yes" <?php echo get_option('wpa_disable_jquery') == 'yes' ? 'selected="selected"' : ''; ?> >Yes</option>
+            </select>
+            <em>⚠️ This is a new feature. Please test carefully before using on a live site.</em>
+        </td>
+    </tr>
+
     <?php if (current_user_can('manage_options')) { ?>       
         <tr>        
             <td colspan="2">

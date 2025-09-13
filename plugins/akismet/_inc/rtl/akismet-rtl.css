@@ -1,4 +1,4 @@
-/* This file was automatically generated on Jun 19 2025 22:00:12 */
+/* This file was automatically generated on Aug 28 2025 23:50:16 */
 
 .wp-admin.jetpack_page_akismet-key-config, .wp-admin.settings_page_akismet-key-config {
 	background-color:#f3f6f8;
@@ -432,10 +432,6 @@ table.comments td.comment p a:after {
 
 .akismet-section-header__actions {
 	line-height: 1.75rem;
-}
-
-.akismet-setup-instructions {
-	text-align: center;
 }
 
 .akismet-setup-instructions form {

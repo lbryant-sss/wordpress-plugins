@@ -432,10 +432,6 @@ table.comments td.comment p a:after {
 	line-height: 1.75rem;
 }
 
-.akismet-setup-instructions {
-	text-align: center;
-}
-
 .akismet-setup-instructions form {
 	padding-bottom: 1.5rem;
 }

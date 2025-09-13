@@ -1041,6 +1041,7 @@ return array(
     'Yoast\\WP\\SEO\\Introductions\\Application\\Ai_Fix_Assessments_Upsell' => $baseDir . '/src/introductions/application/ai-fix-assessments-upsell.php',
     'Yoast\\WP\\SEO\\Introductions\\Application\\Black_Friday_Announcement' => $baseDir . '/src/introductions/application/black-friday-announcement.php',
     'Yoast\\WP\\SEO\\Introductions\\Application\\Current_Page_Trait' => $baseDir . '/src/introductions/application/current-page-trait.php',
+    'Yoast\\WP\\SEO\\Introductions\\Application\\Delayed_Premium_Upsell' => $baseDir . '/src/introductions/application/delayed-premium-upsell.php',
     'Yoast\\WP\\SEO\\Introductions\\Application\\Google_Docs_Addon_Upsell' => $baseDir . '/src/introductions/application/google-docs-addon-upsell.php',
     'Yoast\\WP\\SEO\\Introductions\\Application\\Introductions_Collector' => $baseDir . '/src/introductions/application/introductions-collector.php',
     'Yoast\\WP\\SEO\\Introductions\\Application\\User_Allowed_Trait' => $baseDir . '/src/introductions/application/user-allowed-trait.php',

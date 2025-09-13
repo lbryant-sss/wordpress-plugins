@@ -1,9 +1,15 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
-function wpa_load_scripts(){	
-	wp_enqueue_script( 'wpascript',  plugins_url( '/js/wpa.js', __FILE__ ), array ( 'jquery' ), $GLOBALS['wpa_version'], true);
-	wp_add_inline_script( 'wpascript', 'wpa_field_info = '.json_encode(wpa_field_info()));
-	wp_enqueue_style( 'wpa-css', plugins_url( '/css/wpa.css', __FILE__ ), array(), $GLOBALS['wpa_version']);
+
+function wpa_load_scripts(){
+    if( get_option('wpa_disable_jquery') === 'yes' ) {
+        wp_enqueue_script( 'wpascript', plugins_url( '/js/wpa_vanilla.js', __FILE__ ), array(), $GLOBALS['wpa_version'], true );
+    } else {
+        wp_enqueue_script( 'wpascript', plugins_url( '/js/wpa.js', __FILE__ ), array('jquery'), $GLOBALS['wpa_version'], true );
+    }
+
+    wp_add_inline_script( 'wpascript', 'wpa_field_info = '.json_encode(wpa_field_info()));
+    wp_enqueue_style( 'wpa-css', plugins_url( '/css/wpa.css', __FILE__ ), array(), $GLOBALS['wpa_version']);
 }
 
 function wpa_plugin_menu(){
@@ -31,6 +37,7 @@ function wpa_save_settings(){
 			update_option('wpa_field_name',sanitize_title_with_dashes($_POST['wpa_field_name']));
 			update_option('wpa_error_message',sanitize_text_field(stripslashes($_POST['wpa_error_message'])));
 			update_option('wpa_disable_test_widget',sanitize_text_field($_POST['wpa_disable_test_widget']));
+			update_option('wpa_disable_jquery', sanitize_text_field($_POST['wpa_disable_jquery']));
 
 			$GLOBALS['wpa_field_name'] 				= get_option('wpa_field_name');
 			$GLOBALS['wpa_error_message'] 			= get_option('wpa_error_message');

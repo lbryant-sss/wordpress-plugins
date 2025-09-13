@@ -1,4 +1,4 @@
-/* This file was automatically generated on Jun 19 2025 22:31:12 */
+/* This file was automatically generated on Aug 29 2025 01:35:40 */
 
 body {
 	--akismet-color-charcoal: #272635;
@@ -340,6 +340,71 @@ body {
 .akismet-alert-info {
 	text-wrap: pretty;
 	margin: 0.5em 0;
+}
+
+/* Setup */
+.akismet-setup-instructions__heading {
+	font-size: 1.375rem;
+	font-weight: 700;
+	padding-block-end: 0;
+}
+
+h3.akismet-setup-instructions__subheading {
+	color: var(--akismet-color-dark-grey);
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	margin: 0 0 1.25rem;
+	padding-block-start: 1rem;
+}
+
+.akismet-setup-instructions__feature-list {
+	list-style: none;
+	margin: 1rem 0.5rem 1.5rem;
+	max-width: 640px;
+	padding: 0 1rem;
+}
+
+.akismet-setup-instructions__feature {
+	align-items: start;
+	display: flex;
+	margin-block-end: 1rem;
+	text-align: right;
+}
+
+.akismet-setup-instructions__icon {
+	height: 20px;
+	width: 20px;
+}
+
+.akismet-setup-instructions__body {
+	flex: 1;
+	padding-inline-start: 0.5rem;
+}
+
+.akismet-setup-instructions__title {
+	color: #1d2327;
+	font-size: 1rem;
+	font-weight: 600;
+	line-height: 1.3;
+	margin: 0;
+	text-align: right;
+}
+
+p.akismet-setup-instructions__text {
+	color: var(--akismet-color-grey-80);
+	font-size: 0.875rem;
+	line-height: 1.5;
+	margin: 0.25rem 0 0;
+	padding: 0;
+	text-align: right;
+}
+
+.akismet-setup-instructions__button,
+.akismet-setup-instructions__button:hover,
+.akismet-setup-instructions__button:visited {
+	font-size: 1rem;
+	margin-inline-start: 1.5rem;
 }
 
 /* Setup - API key input */
