@@ -9,9 +9,9 @@ class Permalink_Manager_URI_Functions_Post {
 		add_action( 'admin_init', array( $this, 'admin_init' ), 99, 3 );
 
 		add_filter( '_get_page_link', array( $this, 'custom_post_permalinks' ), 99, 2 );
-		add_filter( 'page_link', array( $this, 'custom_post_permalinks' ), 99, 2 );
-		add_filter( 'post_link', array( $this, 'custom_post_permalinks' ), 99, 2 );
-		add_filter( 'post_type_link', array( $this, 'custom_post_permalinks' ), 99, 2 );
+		add_filter( 'page_link', array( $this, 'custom_post_permalinks' ), 99, 3 );
+		add_filter( 'post_link', array( $this, 'custom_post_permalinks' ), 99, 3 );
+		add_filter( 'post_type_link', array( $this, 'custom_post_permalinks' ), 99, 3 );
 		add_filter( 'attachment_link', array( $this, 'custom_post_permalinks' ), 99, 2 );
 
 		add_filter( 'permalink_manager_uris', array( $this, 'exclude_homepage' ), 99 );
@@ -49,7 +49,7 @@ class Permalink_Manager_URI_Functions_Post {
 	 *
 	 * @return string
 	 */
-	static function custom_post_permalinks( $permalink, $post ) {
+	static function custom_post_permalinks( $permalink, $post, $leavename = false ) {
 		global $permalink_manager_uris, $permalink_manager_options, $permalink_manager_ignore_permalink_filters;
 
 		// Do not filter permalinks in Customizer
@@ -100,7 +100,7 @@ class Permalink_Manager_URI_Functions_Post {
 			return $permalink;
 		}
 
-		// 3. Save the old permalink to separate variable
+		// 3. Save the old permalink to a separate variable
 		$old_permalink = $permalink;
 
 		// 4. Filter only the posts with custom permalink assigned
@@ -113,6 +113,14 @@ class Permalink_Manager_URI_Functions_Post {
 			}
 		} else if ( $post->post_type == 'attachment' && $post->post_parent > 0 && $post->post_parent != $post->ID && ! empty( $permalink_manager_uris[ $post->post_parent ] ) ) {
 			$permalink = "{$home_url}/{$permalink_manager_uris[$post->post_parent]}/attachment/{$post->post_name}";
+		}
+
+		// Keep the slug editor in Block Editor wherever it may help
+		if ( $leavename ) {
+			$placeholder   = Permalink_Manager_Permastructure_Functions::get_post_tag( $post->post_type );
+			$post_name_esc = preg_quote( $post->post_name, '/' );
+
+			$permalink = preg_replace("/\/({$post_name_esc})\/?$/", "/{$placeholder}/", $permalink);
 		}
 
 		return apply_filters( 'permalink_manager_filter_final_post_permalink', $permalink, $post, $old_permalink );

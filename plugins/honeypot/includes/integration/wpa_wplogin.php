@@ -25,7 +25,7 @@ if (!function_exists('wpae_get_blocked_integrations') || !in_array('wp_login_for
 		}
 		//return $user;
 	}
-	add_filter( 'authenticate', 'wpae_wplogin_extra_validation', 30, 3 );
+	add_filter( 'authenticate', 'wpae_wplogin_extra_validation', 10, 3 );
 
 
 	function wpae_lostpassword_extra_validation( $errors ) {
