@@ -3,7 +3,7 @@ Contributors: marketingfire
 Tags: after registration redirect, login redirect, logout redirect
 Requires at least: 4.9
 Requires PHP: 7.4
-Tested up to: 6.6
+Tested up to: 6.7
 Stable tag: 3.0.8.6
 License: GPL-2.0+
 0ddcemmihs4a843ekhaoofzosrunf4bl
