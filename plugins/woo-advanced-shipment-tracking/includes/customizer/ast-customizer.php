@@ -311,7 +311,7 @@ class Ast_Customizer {
 		$customizer_defaults = array(
 			'wcast_preview_order_id' => 'mockup',
 			'display_tracking_info_at' => 'before_order',
-			'header_text_change' => '',
+			'header_text_change' => __( 'Tracking Information', 'woo-advanced-shipment-tracking' ),
 			'additional_header_text' => '',
 			'fluid_table_layout' => 2,
 			'fluid_display_shipped_header' => 1,

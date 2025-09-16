@@ -636,6 +636,7 @@ BFGLOBALSSCRIPT;
 
   private function getFieldsValue($formID, $entryID)
   {
+    $FrontendFormManager = FrontendFormManager::getInstance($formID, 1);
     $formEntryModel = new FormEntryMetaModel();
     $metaValues = $formEntryModel->get(
       [
@@ -646,6 +647,7 @@ BFGLOBALSSCRIPT;
         'bitforms_form_entry_id' => $entryID,
       ]
     );
+    $formFields = $FrontendFormManager->getFields();
     $fldsData = (object) [];
     if (!is_wp_error($metaValues)) {
       foreach ($metaValues as $metaValue) {
@@ -665,6 +667,9 @@ BFGLOBALSSCRIPT;
           $fldsData->{$metaKey} = '';
         }
         $fldsData->{$metaKey} = $metaVal;
+        if (isset($formFields[$metaKey]['type']) && in_array($formFields[$metaKey]['type'], ['file-up', 'advanced-file-up'])) {
+          $fldsData->{$metaKey} = $metaValue->meta_value;
+        }
       }
     }
 

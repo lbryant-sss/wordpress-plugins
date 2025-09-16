@@ -279,6 +279,22 @@ class Contact_Form_Plugin {
 			)
 		);
 
+		// Add "jp-temp-feedback" as a post status for temporary storage when saveResponses is 'no'.
+		// We want these responses skip the inbox but we still need to keep them in the database so that
+		// filters and integrations continue to work.
+		register_post_status(
+			'jp-temp-feedback',
+			array(
+				'label'                  => 'Temporary Feedback Status',
+				'public'                 => false,
+				'internal'               => true,
+				'exclude_from_search'    => true,
+				'show_in_admin_all_list' => false,
+				'protected'              => true,
+				'_builtin'               => false,
+			)
+		);
+
 		// POST handler
 		if (
 			isset( $_SERVER['REQUEST_METHOD'] ) && 'POST' === strtoupper( sanitize_text_field( wp_unslash( $_SERVER['REQUEST_METHOD'] ) ) )
@@ -510,6 +526,10 @@ class Contact_Form_Plugin {
 				// This input is exclusively used by the new telephone field.
 				if ( 'jetpack/phone-input' === $block_name ) {
 					$atts['placeholder'] = $inner_block['attrs']['placeholder'] ?? '';
+
+					if ( ! isset( $atts['showCountrySelector'] ) || ! $atts['showCountrySelector'] ) {
+						unset( $atts['default'] );
+					}
 
 					if ( ! isset( $atts['showCountrySelector'] ) || ! $atts['showCountrySelector'] ) {
 						unset( $atts['default'] );
@@ -1671,13 +1691,9 @@ class Contact_Form_Plugin {
 	 */
 	public function ajax_request() {
 		$submission_result = self::process_form_submission();
+		$accepts_json      = isset( $_SERVER['HTTP_ACCEPT'] ) && false !== strpos( strtolower( sanitize_text_field( wp_unslash( $_SERVER['HTTP_ACCEPT'] ) ) ), 'application/json' );
 
 		if ( ! $submission_result ) {
-			header( 'HTTP/1.1 500 Server Error', true, 500 );
-			echo '<div class="form-error"><ul class="form-errors"><li class="form-error-message">';
-			esc_html_e( 'An error occurred. Please try again later.', 'jetpack-forms' );
-			echo '</li></ul></div>';
-
 			/**
 			 * Action when we want to log a jetpack_forms event.
 			 *
@@ -1686,25 +1702,47 @@ class Contact_Form_Plugin {
 			 * @param string $log_message The log message.
 			 */
 			do_action( 'jetpack_forms_log', 'submission_failed' );
+			$accepts_json && wp_send_json_error(
+				array(
+					'error' => __( 'An error occurred. Please try again later.', 'jetpack-forms' ),
+				),
+				500
+			);
+
+			// Non-JSON request, output the error message directly.
+			header( 'HTTP/1.1 500 Server Error', true, 500 );
+			echo '<div class="form-error"><ul class="form-errors"><li class="form-error-message">';
+			esc_html_e( 'An error occurred. Please try again later.', 'jetpack-forms' );
+			echo '</li></ul></div>';
+			die();
+
 		} elseif ( is_wp_error( $submission_result ) ) {
+			do_action( 'jetpack_forms_log', $submission_result->get_error_message() );
+			$accepts_json && wp_send_json_error(
+				array(
+					'error' => $submission_result->get_error_message(),
+				),
+				400
+			);
+
+			// Non-JSON request, output the error message directly.
 			header( 'HTTP/1.1 400 Bad Request', true, 403 );
 			echo '<div class="form-error"><ul class="form-errors"><li class="form-error-message">';
 			echo esc_html( $submission_result->get_error_message() );
 			echo '</li></ul></div>';
-
-			do_action( 'jetpack_forms_log', $submission_result->get_error_message() );
-		} else {
-			echo '<h4>' . esc_html__( 'Your message has been sent', 'jetpack-forms' ) . '</h4>' . wp_kses(
-				$submission_result,
-				array(
-					'br'         => array(),
-					'blockquote' => array( 'class' => array() ),
-					'p'          => array(),
-				)
-			);
+			die();
 		}
 
-		die( 0 );
+		// Success case.
+		echo '<h4>' . esc_html__( 'Your message has been sent', 'jetpack-forms' ) . '</h4>' . wp_kses(
+			$submission_result,
+			array(
+				'br'         => array(),
+				'blockquote' => array( 'class' => array() ),
+				'p'          => array(),
+			)
+		);
+		die();
 	}
 
 	/**
@@ -3174,7 +3212,7 @@ class Contact_Form_Plugin {
 	 * @param string $print_r_output The array string to be reverted. Needs to being with 'Array'.
 	 * @param bool   $parse_html Whether to run html_entity_decode on each line.
 	 *                           As strings are stored right now, they are all escaped, so '=>' are '&gt;'.
-	 * @return array|string Array when succesfully reconstructed, string otherwise. Output will always be esc_html'd.
+	 * @return array|string Array when successfully reconstructed, string otherwise. Output will always be esc_html'd.
 	 */
 	public static function reverse_that_print( $print_r_output, $parse_html = false ) {
 		$lines = explode( "\n", trim( $print_r_output ) );

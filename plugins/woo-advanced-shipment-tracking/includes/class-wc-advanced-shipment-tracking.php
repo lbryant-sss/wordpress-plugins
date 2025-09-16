@@ -320,7 +320,14 @@ class WC_Advanced_Shipment_Tracking_Actions {
 					<?php if ( strlen( $formatted['ast_tracking_link'] ) > 0 ) { ?>
 						- 
 						<?php 							
-						echo sprintf( '<a href="%s" target="_blank" title="' . esc_attr( __( 'Track Shipment', 'woo-advanced-shipment-tracking' ) ) . '">' . esc_html( $item['tracking_number'] ) . '</a>', esc_url( $formatted['ast_tracking_link'] ) ); 
+						// echo sprintf( '<a href="%s" target="_blank" title="' . esc_attr( __( 'Track Shipment', 'woo-advanced-shipment-tracking' ) ) . '">' . esc_html( $item['tracking_number'] ) . '</a>', esc_url( $formatted['ast_tracking_link'] ) ); 
+						echo sprintf(
+							'<a href="%s" target="_blank" title="%s">%s</a>',
+							esc_url( $formatted['ast_tracking_link'] ),
+							esc_attr__( 'Track Shipment', 'woo-advanced-shipment-tracking' ),
+							esc_html( $item['tracking_number'] )
+						);
+						
 						?>
 					<?php } else { ?>
 						<span> - <?php echo esc_html( $item['tracking_number'] ); ?></span>

@@ -469,4 +469,47 @@ final class FileHandler
     }
     return false;
   }
+
+  public static function processRepeaterAttachment($repeaterKey, $fileKey, $fieldValue, $basePath, &$attachments)
+  {
+    if (!isset($fieldValue[$repeaterKey]) || !is_array($fieldValue[$repeaterKey])) {
+      return;
+    }
+
+    foreach ($fieldValue[$repeaterKey] as $repeaterRow) {
+      if (!isset($repeaterRow[$fileKey]) || empty($repeaterRow[$fileKey])) {
+        continue;
+      }
+
+      $fileValue = $repeaterRow[$fileKey];
+      self::addAttachmentFiles($fileValue, $basePath, $attachments);
+    }
+  }
+
+  public static function processRegularAttachment($fileKey, $fieldValue, $basePath, &$attachments)
+  {
+    if (!isset($fieldValue[$fileKey]) || empty($fieldValue[$fileKey])) {
+      return;
+    }
+
+    $fileValue = $fieldValue[$fileKey];
+    self::addAttachmentFiles($fileValue, $basePath, $attachments);
+  }
+
+  private static function addAttachmentFiles($fileValue, $basePath, &$attachments)
+  {
+    if (is_array($fileValue)) {
+      foreach ($fileValue as $singleFile) {
+        $filePath = $basePath . $singleFile;
+        if (is_readable($filePath)) {
+          $attachments[] = $filePath;
+        }
+      }
+    } else {
+      $filePath = $basePath . $fileValue;
+      if (is_readable($filePath)) {
+        $attachments[] = $filePath;
+      }
+    }
+  }
 }

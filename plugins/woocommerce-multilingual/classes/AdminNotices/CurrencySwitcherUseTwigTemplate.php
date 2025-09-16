@@ -46,7 +46,7 @@ class CurrencySwitcherUseTwigTemplate implements \IWPML_Backend_Action, \IWPML_D
 		}
 
 		$text = '<h2>' . esc_html__( 'Important: Action Needed for Your Currency Switcher', 'woocommerce-multilingual' ) . '</h2>';
-		$text .= '<p>' . esc_html__( 'We detected that your site is using a Currency Switcher built with Twig templates. For security reasons, support for Twig-based templates will be discontinued in the upcoming version of WooCommerce Multilingual 5.6.', 'woocommerce-multilingual' ) . '</p>';
+		$text .= '<p>' . esc_html__( 'We detected that your site is using a Currency Switcher built with Twig templates. For security reasons, support for Twig-based templates will be discontinued in the upcoming version of WPML Multilingual & Multicurrency for WooCommerce 5.6.', 'woocommerce-multilingual' ) . '</p>';
 		$text .= '<p>' . esc_html__( 'To ensure your Currency Switcher continues working smoothly:', 'woocommerce-multilingual' ) . '</p>';
 
 		$text .= '<ul>';
@@ -67,7 +67,7 @@ class CurrencySwitcherUseTwigTemplate implements \IWPML_Backend_Action, \IWPML_D
 		);
 		$text .= '</li>';
 		$text .= '</ul>';
-		$text .= '<p>' . esc_html__( 'We recommend updating your Currency Switcher as soon as possible to avoid disruptions when the new version of WooCommerce Multilingual is released.', 'woocommerce-multilingual' ) . '</p>';
+		$text .= '<p>' . esc_html__( 'We recommend updating your Currency Switcher as soon as possible to avoid disruptions when the new version of WPML Multilingual & Multicurrency for WooCommerce is released.', 'woocommerce-multilingual' ) . '</p>';
 
 		$notice = $this->notices->create_notice( self::NOTICE_ID, $text );
 		$notice->set_css_class_types( 'notice-warning' );

@@ -2115,6 +2115,10 @@ $i18n_strings = array(
 
     'Close On Select:' => __('Close On Select:', 'bit-form'),
 
+    'Validate as Entry Unique' => __('Validate as Entry Unique', 'bit-form'),
+
+    'Enabling this option will check from the entry database whether its value is duplicate.' => __('Enabling this option will check from the entry database whether its value is duplicate.', 'bit-form'),
+
     'Add Options List' => __('Add Options List', 'bit-form'),
 
     'Add More' => __('Add More', 'bit-form'),
@@ -2226,10 +2230,6 @@ $i18n_strings = array(
     'Edit the HTML field content by clicking on edit icon' => __('Edit the HTML field content by clicking on edit icon', 'bit-form'),
 
     'Add/Edit Options' => __('Add/Edit Options', 'bit-form'),
-
-    'Validate as Entry Unique' => __('Validate as Entry Unique', 'bit-form'),
-
-    'Enabling this option will check from the entry database whether its value is duplicate.' => __('Enabling this option will check from the entry database whether its value is duplicate.', 'bit-form'),
 
     'Allow Multiple' => __('Allow Multiple', 'bit-form'),
 
@@ -2366,6 +2366,8 @@ $i18n_strings = array(
     'Custom Validation (RegEx) Pattern' => __('Custom Validation (RegEx) Pattern', 'bit-form'),
 
     'Expression' => __('Expression', 'bit-form'),
+
+    'Fields' => __('Fields', 'bit-form'),
 
     'Flags:' => __('Flags:', 'bit-form'),
 
@@ -2757,11 +2759,13 @@ $i18n_strings = array(
 
     'Shadow Style' => __('Shadow Style', 'bit-form'),
 
+    'Pattern not matched' => __('Pattern not matched', 'bit-form'),
+
     'Input mode' => __('Input mode', 'bit-form'),
 
-    'RegEx Pattern' => __('RegEx Pattern', 'bit-form'),
+    'Input Mask' => __('Input Mask', 'bit-form'),
 
-    'Fields' => __('Fields', 'bit-form'),
+    'RegEx Pattern' => __('RegEx Pattern', 'bit-form'),
 
     'Validations' => __('Validations', 'bit-form'),
 
@@ -3009,6 +3013,8 @@ $i18n_strings = array(
 
     'Razorpay Client ID is missing' => __('Razorpay Client ID is missing', 'bit-form'),
 
+    'Drag and drop fields here' => __('Drag and drop fields here', 'bit-form'),
+
     'Stripe publishable key is missing' => __('Stripe publishable key is missing', 'bit-form'),
 
     'History Empty' => __('History Empty', 'bit-form'),
@@ -3126,6 +3132,8 @@ $i18n_strings = array(
     'Minimum Value' => __('Minimum Value', 'bit-form'),
 
     'Maximum Value' => __('Maximum Value', 'bit-form'),
+
+    'Input mask' => __('Input mask', 'bit-form'),
 
     'Regex Pattern' => __('Regex Pattern', 'bit-form'),
 
@@ -4478,6 +4486,8 @@ $i18n_strings = array(
     'Placeholder is the text that appears inside the field before your user enters their own content. You can show or hide the field placeholder by toggling this option.' => __('Placeholder is the text that appears inside the field before your user enters their own content. You can show or hide the field placeholder by toggling this option.', 'bit-form'),
 
     'This allows browser to display an appropriate virtual keyboard if needed. <a target=\'_blank\' href=\'https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode\'>Learn more</a>' => __('This allows browser to display an appropriate virtual keyboard if needed. <a target=\'_blank\' href=\'https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode\'>Learn more</a>', 'bit-form'),
+
+    'Input Mask allows you to specify a pattern for the input field, helping users enter data in the correct format.<a target=\'_blank\' href=\'https://bit-form.com/wp-docs/form-fields/bit-form-input-mask/\'>Learn more</a>' => __('Input Mask allows you to specify a pattern for the input field, helping users enter data in the correct format.<a target=\'_blank\' href=\'https://bit-form.com/wp-docs/form-fields/bit-form-input-mask/\'>Learn more</a>', 'bit-form'),
 
     'Set a regular expression pattern that the input value should match for the field.' => __('Set a regular expression pattern that the input value should match for the field.', 'bit-form'),
 

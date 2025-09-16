@@ -7,12 +7,12 @@ class Linked extends SynchronizerForMeta {
 	const LINKED_META_KEYS = [
 		'_upsell_ids',
 		'_cross_sell_ids',
-		'_children'
+		'_children',
 	];
 
 	const TRANSIENTS_PREFIXES = [
-		'wc_product_children_%s',// Note that this is also remove din the Stock management (!?)
-		'_transient_wc_product_children_ids_%',
+		'wc_product_children_%s', // Note that this is also removed in the Stock management (!?).
+		'_transient_wc_product_children_ids_%s',
 	];
 
 	/**
@@ -50,7 +50,7 @@ class Linked extends SynchronizerForMeta {
 			$this->clearTranslationsValue( $translationsIdsToClear, $metaKey );
 			return;
 		}
-	
+
 		if ( empty( $productLinks ) ) {
 			$this->spreadEmptyValue( $translationsIds, $storedLinks, $metaKey );
 			return;

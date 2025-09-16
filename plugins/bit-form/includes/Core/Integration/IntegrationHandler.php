@@ -361,7 +361,7 @@ final class IntegrationHandler
         return $workFlowReturnedData;
       }
 
-      if (isset($triggerData['mail'])) {
+      if (isset($triggerData['mail']) && !empty($triggerData['mail'])) {
         $formManager = new AdminFormManager($triggerData['formID']);
         $formContent = $formManager->getFormContent();
         $submitted_fields = $formContent->fields;

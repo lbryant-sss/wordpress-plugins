@@ -68,17 +68,13 @@ function kubio_api_prepare_contact_form_plugin( WP_REST_Request $request ) {
 		}
 
 		$errors = ob_get_clean();
-		if ( ! empty( $errors ) ) {
-			error_log( $errors );
-		}
+
 
 		wp_send_json_success( $forms );
 
 	} catch ( Exception $e ) {
 		$errors = ob_get_clean();
-		if ( ! empty( $errors ) ) {
-			error_log( $errors );
-		}
+
 		wp_send_json_error( $e->getMessage(), 400 );
 	}
 }

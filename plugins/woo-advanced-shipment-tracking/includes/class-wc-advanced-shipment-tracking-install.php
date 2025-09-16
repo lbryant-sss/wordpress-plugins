@@ -364,6 +364,11 @@ class WC_Advanced_Shipment_Tracking_Install {
 				update_option( 'wc_advanced_shipment_tracking', '4.4' );
 			}
 
+			if ( version_compare( get_option( 'wc_advanced_shipment_tracking', '4.4' ), '4.5', '<' ) ) {
+				delete_option( 'zorem_return_update_ignore_385' );
+				update_option( 'wc_advanced_shipment_tracking', '4.5' );
+			}
+
 		}
 	}		
 	

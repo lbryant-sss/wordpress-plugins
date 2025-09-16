@@ -13,7 +13,7 @@ $ast_customizer = Ast_Customizer::get_instance();
 
 //Widget header option
 $hide_trackig_header = $ast->get_checkbox_option_value_from_array( 'tracking_info_settings', 'hide_trackig_header', '' );
-$shipment_tracking_header = $ast->get_option_value_from_array( 'tracking_info_settings', 'header_text_change', 'Tracking Information' );
+$shipment_tracking_header = $ast->get_option_value_from_array( 'tracking_info_settings', 'header_text_change', $ast_customizer->defaults['header_text_change'] );
 $shipment_tracking_header_text = $ast->get_option_value_from_array( 'tracking_info_settings', 'additional_header_text', '' );
 
 // Tracking widget background/border color and radius option

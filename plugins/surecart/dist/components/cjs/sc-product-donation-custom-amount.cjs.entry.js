@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-8acc3c89.js');
-const watchers = require('./watchers-62c58d13.js');
+const watchers = require('./watchers-856f6d74.js');
 require('./index-bcdafe6e.js');
 require('./utils-2e91d46c.js');
 require('./getters-66ca11f9.js');
@@ -17,9 +17,9 @@ require('./store-4a539aea.js');
 require('./price-5b1afcfe.js');
 require('./address-4c70d641.js');
 require('./util-b877b2bd.js');
-require('./mutations-2cb33668.js');
+require('./mutations-f5c4fd54.js');
 require('./mutations-11c8f9a8.js');
-require('./index-9cef574e.js');
+require('./index-c916634a.js');
 require('./fetch-d644cebd.js');
 
 const scProductDonationCustomAmountCss = "sc-product-donation-custom-amount sc-price-input sc-button{margin-right:-10px !important}.sc-product-donation-custom-amount sc-button{opacity:0;visibility:hidden;transition:opacity var(--sc-transition-fast) ease-in-out, visibility var(--sc-transition-fast) ease-in-out}.sc-product-donation-custom-amount--has-value sc-button{opacity:1;visibility:visible}";

@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-08-16T16:44:03+03:00\n"
+"POT-Creation-Date: 2025-09-11T11:33:25+03:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language: \n"
 "X-Generator: WP-CLI 2.12.0\n"
@@ -91,7 +91,7 @@ msgstr "Posts about %s"
 #: lib/kubio-editor.php:160
 #: lib/src/Core/Activation.php:427
 #: lib/src/Core/Activation.php:611
-#: lib/src/Core/KubioFrontPageRevertNotice.php:556
+#: lib/src/Core/KubioFrontPageRevertNotice.php:559
 #: build/editor/index.js:21
 msgid "Blog"
 msgstr "Blog"
@@ -919,18 +919,22 @@ msgid "Api key not found"
 msgstr "API key not found"
 
 #: lib/api/recommendations/bubble-chat.php:64
-#: lib/api/recommendations/bubble-chat.php:122
+#: lib/api/recommendations/bubble-chat.php:116
 msgid "Required plugin is missing"
 msgstr "Required plugin is missing"
 
 #: lib/api/recommendations/bubble-chat.php:70
-#: lib/api/recommendations/bubble-chat.php:128
+#: lib/api/recommendations/bubble-chat.php:122
 msgid "Required class or functions are missing"
 msgstr "Required class or functions are missing"
 
-#: lib/api/recommendations/bubble-chat.php:95
+#: lib/api/recommendations/bubble-chat.php:93
 msgid "Kubio Widget"
 msgstr "Kubio Widget"
+
+#: lib/api/recommendations/bubble-chat.php:143
+msgid "Widget not found"
+msgstr "Widget not found"
 
 #: lib/api/recommendations/contact-forms.php:47
 msgid "Contact Form plugin is not active!"
@@ -1459,9 +1463,9 @@ msgstr "Kubio color %s"
 #: lib/integrations/third-party-themes/templates-importer.php:323
 #: lib/src/Core/Activation.php:494
 #: lib/src/Core/Activation.php:597
-#: lib/src/Core/KubioFrontPageRevertNotice.php:481
-#: lib/src/Core/KubioFrontPageRevertNotice.php:530
-#: lib/src/Core/KubioFrontPageRevertNotice.php:543
+#: lib/src/Core/KubioFrontPageRevertNotice.php:484
+#: lib/src/Core/KubioFrontPageRevertNotice.php:533
+#: lib/src/Core/KubioFrontPageRevertNotice.php:546
 msgid "Home"
 msgstr "Home"
 
@@ -1990,28 +1994,28 @@ msgstr "Once you've installed the Kubio builder, all site editing will be carrie
 msgid " Please use the button below to open the Kubio editor."
 msgstr "Please use the button below to open the Kubio editor."
 
-#: lib/src/Core/KubioFrontPageRevertNotice.php:710
+#: lib/src/Core/KubioFrontPageRevertNotice.php:727
 msgid "Keep the new home page?"
 msgstr "Keep the new home page?"
 
-#: lib/src/Core/KubioFrontPageRevertNotice.php:714
+#: lib/src/Core/KubioFrontPageRevertNotice.php:731
 msgid " We created a new home page for you. If you don't like it you can restore your previous home page."
 msgstr "We've made a new home page for you. If you're not a fan, you can always go back to your previous home page."
 
-#: lib/src/Core/KubioFrontPageRevertNotice.php:718
+#: lib/src/Core/KubioFrontPageRevertNotice.php:735
 msgid "Yes, keep my new home page"
 msgstr "Yes, keep my new home page"
 
-#: lib/src/Core/KubioFrontPageRevertNotice.php:721
+#: lib/src/Core/KubioFrontPageRevertNotice.php:738
 msgid "Restore my previous home page"
 msgstr "Restore my previous home page"
 
-#: lib/src/Core/KubioFrontPageRevertNotice.php:748
+#: lib/src/Core/KubioFrontPageRevertNotice.php:765
 #: build/editor/index.js:1
 msgid "Your previous home page was showing the most recent blog posts. Are you sure you want to restore your previous home page?"
 msgstr "Your previous home page was showing the most recent blog posts. Are you sure you want to restore your previous home page?"
 
-#: lib/src/Core/KubioFrontPageRevertNotice.php:750
+#: lib/src/Core/KubioFrontPageRevertNotice.php:767
 #: build/editor/index.js:1
 msgid "Are you sure you want to restore your previous home page?"
 msgstr "Are you sure you want to restore your previous home page?"

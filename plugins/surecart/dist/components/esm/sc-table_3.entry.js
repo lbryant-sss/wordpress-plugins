@@ -8,12 +8,12 @@ const ScTable = class {
         registerInstance(this, hostRef);
     }
     render() {
-        return (h(Host, { key: 'ec3d449331537e38ee527d97d1feababd22716a6' }, h("slot", { key: '5ba4ef3bdde20ddde1fec0e65a65ccfc0e81b42f', name: "head" }), h("slot", { key: 'efd6d10328ff12efea24182e2858eb0dad3fbe5e' }), h("slot", { key: 'ba03fad437ad2055abc5bab67b6b9dce0976422b', name: "footer" })));
+        return (h(Host, { key: '8ab2bf8d70e55c44ed4186375600f56b248eae4c' }, h("slot", { key: '7556b3b4b4131200a15c6d93230fb222e18ad5ba', name: "head" }), h("slot", { key: 'a7f23c9d6b87df0344ac73b822f856aa8eaa9776' }), h("slot", { key: 'eafea06958dd710fea81e4319941a43b3859311d', name: "footer" })));
     }
 };
 ScTable.style = ScTableStyle0;
 
-const scTableCellCss = ":host{display:table-cell;font-size:var(--sc-font-size-medium);padding:var(--sc-table-cell-spacing, var(--sc-spacing-small)) var(--sc-table-cell-spacing, var(--sc-spacing-large)) !important;vertical-align:middle}:host([slot=head]){background:var(--sc-table-cell-background-color, var(--sc-color-gray-50));font-size:var(--sc-font-size-x-small);padding:var(--sc-table-cell-spacing, var(--sc-spacing-small));text-transform:uppercase;font-weight:var(--sc-font-weight-semibold);letter-spacing:var(--sc-letter-spacing-loose);color:var(--sc-color-gray-500)}:host(:last-child){text-align:right}sc-table-cell{display:table-cell;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}";
+const scTableCellCss = ":host{display:table-cell;font-size:var(--sc-font-size-medium);padding:var(--sc-table-cell-spacing, var(--sc-spacing-small)) var(--sc-table-cell-spacing, var(--sc-spacing-large)) !important;vertical-align:var(--sc-table-cell-vertical-align, middle)}:host([slot=head]){background:var(--sc-table-cell-background-color, var(--sc-color-gray-50));font-size:var(--sc-font-size-x-small);padding:var(--sc-table-cell-spacing, var(--sc-spacing-small));text-transform:uppercase;font-weight:var(--sc-font-weight-semibold);letter-spacing:var(--sc-letter-spacing-loose);color:var(--sc-color-gray-500)}:host(:last-child){text-align:right}sc-table-cell{display:table-cell;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}";
 const ScTableCellStyle0 = scTableCellCss;
 
 const ScTableScll = class {
@@ -21,7 +21,7 @@ const ScTableScll = class {
         registerInstance(this, hostRef);
     }
     render() {
-        return (h(Host, { key: '29f4d8661b123516e20dffc6de56cc05453c7c43' }, h("slot", { key: 'c1a52f4878d0ad0398b03453220326da7644c8d9' })));
+        return (h(Host, { key: '07d64de5e31c68ef900d567a02a5fa7116865cc2' }, h("slot", { key: 'eacb809ecf0b86f4c2187126479259ac5d813b3b' })));
     }
 };
 ScTableScll.style = ScTableCellStyle0;
@@ -35,7 +35,7 @@ const ScTableRow = class {
         this.href = undefined;
     }
     render() {
-        return (h(Host, { key: 'ba3e69e4b72bbbe4558067139e64e0395fa79fc8' }, h("slot", { key: 'e61639b27199f5382200af6da1140db8acc6cb6f' })));
+        return (h(Host, { key: 'dd159046fc79cd4799877c027873b1fed106bddb' }, h("slot", { key: 'c585ef785faedcecfc66f12818603e121e0d14de' })));
     }
 };
 ScTableRow.style = ScTableRowStyle0;

@@ -191,7 +191,7 @@ class ExportImport implements \IWPML_Backend_Action, \IWPML_DIC_Action {
 	 */
 	private function getWcmlLink() {
 		$url   = self::WCML_URL;
-		$title = esc_html__( 'WooCommerce Multilingual', 'woocommerce-multilingual' );
+		$title = esc_html__( 'WPML Multilingual & Multicurrency for WooCommerce', 'woocommerce-multilingual' );
 		return '<a class="wpml-external-link" href="' . esc_url( $url ) . '" title="' . esc_attr( $title ) . '" target="_blank">'
 			. esc_html( $title )
 			. '</a>';

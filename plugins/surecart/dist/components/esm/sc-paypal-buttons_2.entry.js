@@ -1,7 +1,7 @@
 import { r as registerInstance, c as createEvent, h, a as getElement } from './index-745b6bec.js';
 import { l as loadScript, g as getScriptLoadParams } from './functions-2a4a4ba3.js';
 import { a as apiFetch } from './fetch-8ecbbe53.js';
-import { g as fetchCheckout } from './index-a2617916.js';
+import { g as fetchCheckout } from './index-b401ec1a.js';
 import { c as createErrorNotice } from './mutations-ed6d0770.js';
 import './add-query-args-0e2a8393.js';
 import './remove-query-args-938c53ea.js';
@@ -196,7 +196,7 @@ const ScSecureNotice = class {
         registerInstance(this, hostRef);
     }
     render() {
-        return (h("div", { key: '1a0109bfbd15f551a8f94eebac2c64909584c84a', class: "notice", part: "base" }, h("svg", { key: 'f4e37cb61bacc66b6ac0709a8dc407cfb826f208', class: "notice__icon", part: "icon", xmlns: "http://www.w3.org/2000/svg", width: "16", height: "16", viewBox: "0 0 512 512", fill: "currentColor" }, h("path", { key: '423d2d72924ade8672a052774c26048d5a62d351', d: "M368,192H352V112a96,96,0,1,0-192,0v80H144a64.07,64.07,0,0,0-64,64V432a64.07,64.07,0,0,0,64,64H368a64.07,64.07,0,0,0,64-64V256A64.07,64.07,0,0,0,368,192Zm-48,0H192V112a64,64,0,1,1,128,0Z" })), h("span", { key: 'c41b897bc64d2a9008623ae3f39079c87dc5f5bd', class: "notice__text", part: "text" }, h("slot", { key: 'c09b834f13d9c3d668449897d89fe14832da3508', name: "prefix" }), h("slot", { key: '097b906f27962f100249c2e4d65e10dedb9c9050' }), h("slot", { key: '16d756fd2f04b7978697db30d5df657f983f8e1b', name: "suffix" }))));
+        return (h("div", { key: 'a275d5ef1aa653b2f76bb8bf5a9b2fad6a93fb9e', class: "notice", part: "base" }, h("svg", { key: '492ec9dd223822133a633df5ebcb53da2c6686ac', class: "notice__icon", part: "icon", xmlns: "http://www.w3.org/2000/svg", width: "16", height: "16", viewBox: "0 0 512 512", fill: "currentColor" }, h("path", { key: '2d01859df7a974d069d3e16bc950022488365950', d: "M368,192H352V112a96,96,0,1,0-192,0v80H144a64.07,64.07,0,0,0-64,64V432a64.07,64.07,0,0,0,64,64H368a64.07,64.07,0,0,0,64-64V256A64.07,64.07,0,0,0,368,192Zm-48,0H192V112a64,64,0,1,1,128,0Z" })), h("span", { key: '6b80a7c1a455edd1011798dbe06dedb00f729611', class: "notice__text", part: "text" }, h("slot", { key: '449542355dfeed853f9176796db0e0bac5d1b06c', name: "prefix" }), h("slot", { key: 'cef20974c2988f0143771912a29e44727557a3de' }), h("slot", { key: '0b6b0a8e901f6a6cb76f5a1de050f72368f96084', name: "suffix" }))));
     }
 };
 ScSecureNotice.style = ScSecureNoticeStyle0;

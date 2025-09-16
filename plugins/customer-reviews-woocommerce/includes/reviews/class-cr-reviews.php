@@ -671,7 +671,7 @@ if ( ! class_exists( 'CR_Reviews' ) ) :
 			'status' => 'approve',
 			'parent' => 0,
 			'count' => true,
-			'type__not_in' => 'cr_qna'
+			'type__not_in' => array( 'cr_qna' )
 		);
 		if( 0 === $rating ) {
 			$args['meta_query'][] = array(

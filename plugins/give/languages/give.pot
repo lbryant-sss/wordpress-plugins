@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Give - Donation Plugin plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Give - Donation Plugin 4.8.0\n"
+"Project-Id-Version: Give - Donation Plugin 4.8.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/givewp\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-09-10T13:32:52+00:00\n"
+"POT-Creation-Date: 2025-09-15T21:32:13+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: give\n"
@@ -1686,8 +1686,8 @@ msgstr ""
 #: includes/admin/tools/export/class-export-earnings.php:68
 #: includes/admin/tools/export/class-export.php:82
 #: src/API/Endpoints/Reports/IncomeBreakdown.php:82
-#: src/API/REST/V3/Routes/Donations/DonationController.php:1024
-#: src/API/REST/V3/Routes/Donations/DonationController.php:1056
+#: src/API/REST/V3/Routes/Donations/DonationController.php:1023
+#: src/API/REST/V3/Routes/Donations/DonationController.php:1055
 #: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:125
 #: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:157
 #: src/Campaigns/ListTable/Columns/DateColumn.php:28
@@ -2997,7 +2997,7 @@ msgstr ""
 #: includes/admin/import-functions.php:411
 #: includes/admin/tools/export/give-export-donations-exporter.php:175
 #: includes/admin/tools/export/give-export-donations-functions.php:257
-#: src/API/REST/V3/Routes/Donations/DonationController.php:837
+#: src/API/REST/V3/Routes/Donations/DonationController.php:836
 #: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:359
 #: templates/shortcode-receipt.php:100
 msgid "Donation ID"
@@ -3351,7 +3351,7 @@ msgstr ""
 #: includes/admin/import-functions.php:522
 #: includes/admin/tools/export/give-export-donations-exporter.php:249
 #: includes/admin/tools/export/give-export-donations-functions.php:504
-#: src/API/REST/V3/Routes/Donations/DonationController.php:844
+#: src/API/REST/V3/Routes/Donations/DonationController.php:843
 #: src/API/REST/V3/Routes/Donors/DonorController.php:354
 #: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:28
 #: build/adminBlocks.js:1
@@ -3410,7 +3410,7 @@ msgstr ""
 
 #: includes/admin/import-functions.php:557
 #: includes/admin/tools/export/give-export-donations-exporter.php:228
-#: src/API/REST/V3/Routes/Donations/DonationController.php:958
+#: src/API/REST/V3/Routes/Donations/DonationController.php:957
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveDonorWallWidget.php:144
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormGridWidget.php:240
 #: src/ThirdPartySupport/Elementor/Widgets/V1/GiveFormWidget.php:119
@@ -6093,8 +6093,8 @@ msgid "System Info"
 msgstr ""
 
 #: includes/admin/tools/data/class-give-tools-delete-donations.php:156
-#: src/API/REST/V3/Routes/Donations/DonationController.php:744
-#: src/API/REST/V3/Routes/Donations/DonationController.php:760
+#: src/API/REST/V3/Routes/Donations/DonationController.php:743
+#: src/API/REST/V3/Routes/Donations/DonationController.php:759
 msgid "You do not have permission to delete donations."
 msgstr ""
 
@@ -6289,7 +6289,7 @@ msgid "Currency Symbol"
 msgstr ""
 
 #: includes/admin/tools/export/give-export-donations-exporter.php:234
-#: src/API/REST/V3/Routes/Donations/DonationController.php:972
+#: src/API/REST/V3/Routes/Donations/DonationController.php:971
 msgid "Level ID"
 msgstr ""
 
@@ -16015,7 +16015,7 @@ msgid "Total Refunds"
 msgstr ""
 
 #: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:299
-#: src/API/REST/V3/Routes/Donations/DonationController.php:954
+#: src/API/REST/V3/Routes/Donations/DonationController.php:953
 #: build/assets/dist/js/give-admin-donation-forms.js:4
 #: build/campaignDetails.js:10
 msgid "Campaign ID"
@@ -16155,9 +16155,9 @@ msgstr ""
 
 #: src/API/REST/V3/Routes/Donations/DonationController.php:274
 #: src/API/REST/V3/Routes/Donations/DonationController.php:333
-#: src/API/REST/V3/Routes/Donations/DonationController.php:391
-#: src/API/REST/V3/Routes/Donations/DonationController.php:428
-#: src/API/REST/V3/Routes/Donations/DonationController.php:472
+#: src/API/REST/V3/Routes/Donations/DonationController.php:390
+#: src/API/REST/V3/Routes/Donations/DonationController.php:427
+#: src/API/REST/V3/Routes/Donations/DonationController.php:471
 #: src/API/REST/V3/Routes/Donations/DonationNotesController.php:96
 #: src/API/REST/V3/Routes/Donations/DonationNotesController.php:157
 #: src/API/REST/V3/Routes/Donations/DonationNotesController.php:190
@@ -16171,187 +16171,187 @@ msgstr ""
 msgid "Failed to create donation"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:397
+#: src/API/REST/V3/Routes/Donations/DonationController.php:396
 msgid "Refunds are not supported for this gateway"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:413
+#: src/API/REST/V3/Routes/Donations/DonationController.php:412
 #: build/donationDetails.js:10
 msgid "Failed to refund donation"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:441
-#: src/API/REST/V3/Routes/Donations/DonationController.php:485
+#: src/API/REST/V3/Routes/Donations/DonationController.php:440
+#: src/API/REST/V3/Routes/Donations/DonationController.php:484
 msgid "Failed to delete donation"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:449
-#: src/API/REST/V3/Routes/Donations/DonationController.php:493
+#: src/API/REST/V3/Routes/Donations/DonationController.php:448
+#: src/API/REST/V3/Routes/Donations/DonationController.php:492
 msgid "Failed to trash donation"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:681
+#: src/API/REST/V3/Routes/Donations/DonationController.php:680
 #: src/API/REST/V3/Routes/Donors/DonorController.php:559
 #: src/API/REST/V3/Routes/Subscriptions/Permissions/SubscriptionPermissions.php:61
 msgid "You do not have permission to include sensitive data."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:692
+#: src/API/REST/V3/Routes/Donations/DonationController.php:691
 msgid "You do not have permission to include anonymous donations."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:712
+#: src/API/REST/V3/Routes/Donations/DonationController.php:711
 msgid "You do not have permission to update donations."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:728
+#: src/API/REST/V3/Routes/Donations/DonationController.php:727
 msgid "You do not have permission to create donations."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:776
+#: src/API/REST/V3/Routes/Donations/DonationController.php:775
 msgid "You do not have permission to refund donations."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:848
+#: src/API/REST/V3/Routes/Donations/DonationController.php:847
 #: src/API/REST/V3/Routes/Donors/DonorController.php:364
 msgid "Donor first name"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:853
+#: src/API/REST/V3/Routes/Donations/DonationController.php:852
 #: src/API/REST/V3/Routes/Donors/DonorController.php:373
 msgid "Donor last name"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:858
+#: src/API/REST/V3/Routes/Donations/DonationController.php:857
 msgid "Donor honorific/prefix"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:863
+#: src/API/REST/V3/Routes/Donations/DonationController.php:862
 #: src/API/REST/V3/Routes/Donors/DonorController.php:382
 msgid "Donor email"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:868
+#: src/API/REST/V3/Routes/Donations/DonationController.php:867
 #: src/API/REST/V3/Routes/Donors/DonorController.php:396
 msgid "Donor phone"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:873
+#: src/API/REST/V3/Routes/Donations/DonationController.php:872
 #: src/API/REST/V3/Routes/Donors/DonorController.php:401
 msgid "Donor company"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:890
+#: src/API/REST/V3/Routes/Donations/DonationController.php:889
 #: build/donationDetails.js:10
 msgid "Donation amount"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:906
+#: src/API/REST/V3/Routes/Donations/DonationController.php:905
 #: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:67
 msgid "Fee amount recovered"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:923
+#: src/API/REST/V3/Routes/Donations/DonationController.php:922
 msgid "Event tickets amount"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:927
+#: src/API/REST/V3/Routes/Donations/DonationController.php:926
 msgid "Donation status"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:933
+#: src/API/REST/V3/Routes/Donations/DonationController.php:932
 msgid "Donation type"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:939
+#: src/API/REST/V3/Routes/Donations/DonationController.php:938
 #: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:98
 msgid "Payment gateway ID"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:944
+#: src/API/REST/V3/Routes/Donations/DonationController.php:943
 msgid "Donation mode (live or test)"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:949
+#: src/API/REST/V3/Routes/Donations/DonationController.php:948
 msgid "Whether the donation is anonymous"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:962
+#: src/API/REST/V3/Routes/Donations/DonationController.php:961
 msgid "Form title"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:967
+#: src/API/REST/V3/Routes/Donations/DonationController.php:966
 #: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:24
 msgid "Subscription ID"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:977
+#: src/API/REST/V3/Routes/Donations/DonationController.php:976
 msgid "Gateway transaction ID"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:982
+#: src/API/REST/V3/Routes/Donations/DonationController.php:981
 msgid "Exchange rate"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:987
+#: src/API/REST/V3/Routes/Donations/DonationController.php:986
 msgid "Donation comment"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:992
+#: src/API/REST/V3/Routes/Donations/DonationController.php:991
 msgid "Billing address"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:1004
+#: src/API/REST/V3/Routes/Donations/DonationController.php:1003
 msgid "Donor IP address (sensitive data)"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:1009
+#: src/API/REST/V3/Routes/Donations/DonationController.php:1008
 msgid "Purchase key (sensitive data)"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:1016
+#: src/API/REST/V3/Routes/Donations/DonationController.php:1015
 msgid "Donation creation date as ISO string"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:1029
-#: src/API/REST/V3/Routes/Donations/DonationController.php:1061
+#: src/API/REST/V3/Routes/Donations/DonationController.php:1028
+#: src/API/REST/V3/Routes/Donations/DonationController.php:1060
 #: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:130
 #: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:162
 msgid "Timezone of the date"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:1034
-#: src/API/REST/V3/Routes/Donations/DonationController.php:1066
+#: src/API/REST/V3/Routes/Donations/DonationController.php:1033
+#: src/API/REST/V3/Routes/Donations/DonationController.php:1065
 #: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:135
 #: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:167
 msgid "Timezone type"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:1037
+#: src/API/REST/V3/Routes/Donations/DonationController.php:1036
 msgid "Donation creation date"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:1048
+#: src/API/REST/V3/Routes/Donations/DonationController.php:1047
 msgid "Donation last update date as ISO string"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:1069
+#: src/API/REST/V3/Routes/Donations/DonationController.php:1068
 msgid "Donation last update date"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:1078
+#: src/API/REST/V3/Routes/Donations/DonationController.php:1077
 msgid "Whether to update the subscription renewal date with the createdAt date when creating subscription or renewal donations"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:1084
+#: src/API/REST/V3/Routes/Donations/DonationController.php:1083
 msgid "Custom fields (sensitive data)"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:1090
+#: src/API/REST/V3/Routes/Donations/DonationController.php:1089
 msgid "Field label"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donations/DonationController.php:1095
+#: src/API/REST/V3/Routes/Donations/DonationController.php:1094
 msgid "Field value"
 msgstr ""
 

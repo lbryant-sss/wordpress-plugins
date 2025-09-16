@@ -28,7 +28,7 @@ const ScSpinner = class {
         index.registerInstance(this, hostRef);
     }
     render() {
-        return index.h("span", { key: '9dd3e00c5319047109ff2b596ef4ff24f7fb70a6', part: "base", class: "spinner", "aria-busy": "true", "aria-live": "polite" });
+        return index.h("span", { key: 'a292b4c6644fd1295560b9dc61303d885ee72ad3', part: "base", class: "spinner", "aria-busy": "true", "aria-live": "polite" });
     }
 };
 ScSpinner.style = ScSpinnerStyle0;

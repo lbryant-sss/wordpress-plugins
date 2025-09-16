@@ -29,6 +29,7 @@ function kubio_get_fluent_booking_events() {
 	$calendar_slot_table = $wpdb->prefix . $calendar_slot_model->getTable();
 	$calendar_table      = $wpdb->prefix . $calendar_model->getTable();
 
+	// phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared, 	WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 	$calendars = $wpdb->get_results( "SELECT * FROM $calendar_table WHERE user_id = 1", ARRAY_A );
 
 	if ( $calendars === false || ! is_array( $calendars ) || $wpdb->last_error ) {
@@ -40,7 +41,7 @@ function kubio_get_fluent_booking_events() {
 	if ( empty( $calendar_id ) ) {
 		return array();
 	}
-
+	// phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared, 	WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 	$events = $wpdb->get_results( "SELECT * FROM $calendar_slot_table WHERE calendar_id = $calendar_id", ARRAY_A );
 
 	if ( $events === false || ! is_array( $events ) || $wpdb->last_error ) {
@@ -81,6 +82,7 @@ function kubio_get_fluent_booking_calendar_id() {
 	$calendar_model = new \FluentBooking\App\Models\Calendar();
 	$calendar_table = $wpdb->prefix . $calendar_model->getTable();
 
+	// phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared, 	WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 	$calendars = $wpdb->get_results( "SELECT * FROM $calendar_table WHERE user_id = 1", OBJECT );
 
 	$calendar_id = 1;
@@ -89,9 +91,6 @@ function kubio_get_fluent_booking_calendar_id() {
 	}
 
 	$errors = ob_get_clean();
-	if ( ! empty( $errors ) ) {
-		error_log( $errors );
-	}
 
 	return $calendar_id;
 }

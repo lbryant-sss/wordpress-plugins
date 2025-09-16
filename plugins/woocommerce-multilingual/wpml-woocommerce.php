@@ -1,15 +1,15 @@
 <?php
 /**
- * Plugin Name: WooCommerce Multilingual & Multicurrency
+ * Plugin Name: WPML Multilingual & Multicurrency for WooCommerce
  * Plugin URI: https://wpml.org/documentation/related-projects/woocommerce-multilingual/?utm_source=plugin&utm_medium=gui&utm_campaign=wcml
  * Description: Make your store multilingual and enable multiple currencies | <a href="https://wpml.org/documentation/related-projects/woocommerce-multilingual/?utm_source=plugin&utm_medium=gui&utm_campaign=wcml">Documentation</a>
  * Author: OnTheGoSystems
  * Author URI: http://www.onthegosystems.com/
  * Text Domain: woocommerce-multilingual
- * Version: 5.5.1
+ * Version: 5.5.1.1
  * Plugin Slug: woocommerce-multilingual
  * WC requires at least: 3.9
- * WC tested up to: 10.0
+ * WC tested up to: 10.2
  *
  * @package WCML
  * @author  OnTheGoSystems
@@ -27,7 +27,7 @@ require_once 'vendor/wpml-shared/wpml-lib-dependencies/src/dependencies/class-wp
 
 $wpml_php_version_check = new WPML_PHP_Version_Check(
 	'5.6',
-	'WooCommerce Multilingual & Multicurrency',
+	'WPML Multilingual & Multicurrency for WooCommerce',
 	__FILE__,
 	'woocommerce-multilingual'
 );
@@ -35,7 +35,7 @@ if ( ! $wpml_php_version_check->is_ok() ) {
 	return;
 }
 
-define( 'WCML_VERSION', '5.5.1' );
+define( 'WCML_VERSION', '5.5.1.1' );
 define( 'WCML_PLUGIN_PATH', dirname( __FILE__ ) );
 define( 'WCML_PLUGIN_FOLDER', basename( WCML_PLUGIN_PATH ) );
 define( 'WCML_LOCALE_PATH', WCML_PLUGIN_PATH . '/locale' );
@@ -76,7 +76,7 @@ if ( WPML_Core_Version_Check::is_ok( WCML_PLUGIN_PATH . '/wpml-dependencies.json
 }
 
 /**
- * Load WooCommerce Multilingual after WPML is loaded
+ * Load WPML Multilingual & Multicurrency for WooCommerce after WPML is loaded
  */
 function wcml_loader() {
 	if ( ! class_exists( 'WooCommerce' ) ) {
@@ -154,7 +154,7 @@ if ( WCML\Rest\Functions::isRestApiRequest() ) {
 }
 
 /**
- * Load WooCommerce Multilingual when WPML is NOT active.
+ * Load WPML Multilingual & Multicurrency for WooCommerce when WPML is NOT active.
  */
 function load_wcml_without_wpml() {
 	if ( ! did_action( 'wpml_loaded' ) ) {

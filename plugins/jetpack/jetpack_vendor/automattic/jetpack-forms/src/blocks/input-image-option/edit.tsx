@@ -38,7 +38,12 @@ export default function ImageOptionInputEdit( props ) {
 
 	useSyncedAttributes( name, isSynced, SYNCED_ATTRIBUTE_KEYS, attributes, setAttributes );
 
-	const { isInnerBlockSelected, imageBlockAttributes, positionLetter } = useSelect(
+	const {
+		'jetpack/field-image-select-is-supersized': isSupersized,
+		'jetpack/field-image-options-type': selectionType = 'radio',
+	} = context || {};
+
+	const { isInnerBlockSelected, imageBlockAttributes, positionLetter, rowOptionsCount } = useSelect(
 		select => {
 			const blockEditor = select( blockEditorStore ) as BlockEditorStoreSelect;
 			const { getBlock, hasSelectedInnerBlock } = blockEditor;
@@ -55,20 +60,21 @@ export default function ImageOptionInputEdit( props ) {
 			const position =
 				parentBlock.innerBlocks.findIndex( block => block.clientId === clientId ) + 1;
 
+			// Compute the number of options per row to set the element width
+			const totalOptionsCount = parentBlock.innerBlocks.length;
+			// Those values are halved on mobile via CSS media query
+			const maxImagesPerRow = isSupersized ? 2 : 4;
+			const rowSiblingCount = Math.min( totalOptionsCount, maxImagesPerRow );
+
 			return {
 				isInnerBlockSelected: hasSelectedInnerBlock( clientId, true ),
 				imageBlockAttributes: currentBlock?.innerBlocks[ 1 ]?.attributes,
 				positionLetter: getImageOptionLetter( position ),
+				rowOptionsCount: rowSiblingCount,
 			};
 		},
-		[ clientId ]
+		[ clientId, isSupersized ]
 	);
-
-	const {
-		'jetpack/field-image-select-is-supersized': isSupersized,
-		'jetpack/field-image-select-show-labels': showLabels,
-		'jetpack/field-image-options-type': selectionType = 'radio',
-	} = context || {};
 
 	// Use the block's own synced attributes for styling
 	const { blockStyle } = useJetpackFieldStyles( attributes );
@@ -80,14 +86,11 @@ export default function ImageOptionInputEdit( props ) {
 			[ `is-${ selectionType }` ]: !! selectionType,
 			'is-supersized': isSupersized,
 		} ),
-		style: blockStyle,
+		style: {
+			...blockStyle,
+			'--row-options-count': rowOptionsCount >= 1 ? rowOptionsCount : 1,
+		},
 	} );
-
-	const labelClassName = useMemo( () => {
-		return clsx( 'jetpack-input-image-option__label', {
-			'visually-hidden': ! showLabels,
-		} );
-	}, [ showLabels ] );
 
 	const template = useMemo( () => {
 		return [
@@ -117,7 +120,7 @@ export default function ImageOptionInputEdit( props ) {
 				<div className="jetpack-input-image-option__label-code">{ positionLetter }</div>
 				<RichText
 					tagName="span"
-					className={ labelClassName }
+					className="jetpack-input-image-option__label"
 					value={ label }
 					placeholder={ __( 'Add option…', 'jetpack-forms' ) }
 					__unstableDisableFormats

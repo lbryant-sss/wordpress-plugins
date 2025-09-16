@@ -1,10 +1,5 @@
 <?php
 /**
- * @license GPL-2.0+
- *
- * Modified by popupmaker on 14-August-2025 using {@see https://github.com/BrianHenryIE/strauss}.
- */
-/**
  * Includes the composer Autoloader used for packages and classes in the classes/ directory.
  *
  * @package CodeAtlantic\Autoloader

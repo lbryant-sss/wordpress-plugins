@@ -40,7 +40,7 @@
     "width": {
       "type": "string"
     },
-    "show_thumbs": {
+    "show_thumbnails": {
       "type": "boolean",
       "default": true
     },
@@ -104,5 +104,6 @@
   ],
   "style": [
     "file:./style-index.css"
-  ]
+  ],
+  "viewScriptModule": "@surecart/product-media"
 }

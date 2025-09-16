@@ -779,7 +779,7 @@ class DB_Upgrade {
 		$posts      = get_posts(
 			[
 				'post_type'   => $post_types,
-				'post_status' => 'any',
+				'post_status' => 'publish',
 				'numberposts' => 5,
 				'meta_query'  => [
 					[

@@ -266,16 +266,28 @@ GLOBALOBJ;
         $validationScriptFileMapping = ScriptFilePriorityManager::validationScriptFileMapping($fldData->typ);
         if ($validationScriptFileMapping) {
           foreach ($validationScriptFileMapping as $key => $value) {
-            foreach ($value['paths'] as $path) {
+            $paths = $value['paths'] ?? [];
+            $hasMatchingPath = false;
+            foreach ($paths as $path) {
               if (Helpers::property_exists_nested($fldData, $path)) {
-                $file = $this->_validationJsFilesNeeded[$key];
-                $this->addScriptInLoadedScriptsList($file);
+                $hasMatchingPath = true;
+                break; // one match is enough
               }
             }
-            if (isset($value['dependencies'])) {
-              foreach ($value['dependencies'] as $dependency) {
-                $dependencyFile = $this->_validationJsFilesNeeded[$dependency];
-                $this->addScriptInLoadedScriptsList($dependencyFile);
+
+            if (!$hasMatchingPath) {
+              continue;
+            }
+
+            // Add the main script once
+            if (!empty($this->_validationJsFilesNeeded[$key])) {
+              $this->addScriptInLoadedScriptsList($this->_validationJsFilesNeeded[$key]);
+            }
+
+            // Add dependencies once each
+            foreach (($value['dependencies'] ?? []) as $dep) {
+              if (!empty($this->_validationJsFilesNeeded[$dep])) {
+                $this->addScriptInLoadedScriptsList($this->_validationJsFilesNeeded[$dep]);
               }
             }
           }

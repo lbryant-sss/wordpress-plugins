@@ -832,29 +832,63 @@ class FormManager
         }
       }
       foreach ($file_fields as $field_key) {
+        $repeaterFldKey = $this->isRepeatedField($field_key);
         if (isset($updatedValue[$field_key . '_old'])) {
-          $file_exists = $entryMeta->get(
-            'meta_value',
-            [
-              'bitforms_form_entry_id' => $entryID,
-              'meta_key'               => $field_key,
-            ]
-          );
-          if (!is_wp_error($file_exists) && count($file_exists) > 0) {
-            $files_in_db = json_decode($file_exists[0]->meta_value);
-            $files_old = empty($updatedValue[$field_key . '_old']) ? [] : explode(',', $updatedValue[$field_key . '_old']);
-            $deleted_file = array_diff($files_in_db, $files_old);
-            if (count($deleted_file) > 0) {
-              $fileHandler->deleteFiles($formID, $entryID, $deleted_file);
+          // Handle file deletion for repeater fields
+          if ($repeaterFldKey) {
+            $repeaterExistData = $entryMeta->get(
+              'meta_value',
+              [
+                'bitforms_form_entry_id' => $entryID,
+                'meta_key'               => $repeaterFldKey,
+              ]
+            );
+            if (!is_wp_error($repeaterExistData)) {
+              // restructor json
+              $repeaterExistData = json_decode($repeaterExistData[0]->meta_value, true);
+              $repeaterExistFiles = [];
+              $repeaterDeleted_files = [];
+              $repeaterFiles_old = [];
+              foreach ($repeaterExistData as $index => $repeaterRow) {
+                $repeaterExistFiles[$index] = [];
+                if (isset($repeaterRow[$field_key]) && !empty($repeaterRow[$field_key])) {
+                  $repeaterExistFiles[$index] = json_decode($repeaterRow[$field_key], true);
+                }
+                $repeaterFiles_old[$index] = empty($updatedValue[$field_key . '_old'][$index]) ? [] : explode(',', $updatedValue[$field_key . '_old'][$index]);
+                $repeaterDeleted_files[$index] = array_diff($repeaterExistFiles[$index], $repeaterFiles_old[$index]);
+                $fileHandler->deleteFiles($formID, $entryID, $repeaterDeleted_files[$index]);
+              }
             }
-            $updatedValue[$field_key] = wp_json_encode($files_old);
+          } else {
+            // Handle file deletion for non-repeater fields
+            $file_exists = $entryMeta->get(
+              'meta_value',
+              [
+                'bitforms_form_entry_id' => $entryID,
+                'meta_key'               => $field_key,
+              ]
+            );
+            if (!is_wp_error($file_exists) && count($file_exists) > 0) {
+              $files_in_db = json_decode($file_exists[0]->meta_value);
+              $files_old = empty($updatedValue[$field_key . '_old']) ? [] : explode(',', $updatedValue[$field_key . '_old']);
+              $deleted_file = array_diff($files_in_db, $files_old);
+              if (count($deleted_file) > 0) {
+                $fileHandler->deleteFiles($formID, $entryID, $deleted_file);
+              }
+              $updatedValue[$field_key] = wp_json_encode($files_old);
+            }
           }
         }
         if (!empty($_FILES[$field_key]['name'])) {
-          $repeaterFldKey = $this->isRepeatedField($field_key);
           if ($repeaterFldKey) {
+            // Handle repeater field files
             $file_details = $_FILES[$field_key];
             foreach ($file_details['name'] as $index => $file) {
+              // Retrieve existing old files for this specific repeater index
+              if (isset($repeaterFiles_old[$index - 1]) && count($repeaterFiles_old[$index - 1]) > 0) {
+                $old_meta_value = empty($repeaterFiles_old[$index - 1]) ? [] : $repeaterFiles_old[$index - 1];
+                $updatedValue[$repeaterFldKey][$index - 1][$field_key] = wp_json_encode($old_meta_value);
+              }
               $repeateFileDetails = [
                 'name'     => $file_details['name'][$index],
                 'type'     => $file_details['type'][$index],
@@ -864,16 +898,17 @@ class FormManager
               ];
               $meta_value = $fileHandler->moveUploadedFiles($repeateFileDetails, $formID, $entryID, $index);
               if (!empty($meta_value)) {
-                $updatedValue[$repeaterFldKey][$index - 1][$field_key] = wp_json_encode($meta_value);
-                $_FILES[$field_key]['new_name'][$index - 1] = $meta_value;
+                $mergedMetaValueWithOld = isset($old_meta_value) ? array_merge($old_meta_value, (array) $meta_value) : (array) $meta_value;
+                $updatedValue[$repeaterFldKey][$index - 1][$field_key] = wp_json_encode($mergedMetaValueWithOld);
+                $_FILES[$field_key]['new_name'][$index - 1] = $mergedMetaValueWithOld;
                 // $_FILES[$field_key]['file_path'][$index - 1] = $common_file_path . DIRECTORY_SEPARATOR . $meta_value;
               }
             }
           } else {
+            // Handle non-repeater field files
             $meta_value = $fileHandler->moveUploadedFiles($_FILES[$field_key], $formID, $entryID);
             if (!empty($meta_value)) {
               $_FILES[$field_key]['new_name'] = $meta_value;
-              // $_FILES[$field_key]['file_path'] = $common_file_path . DIRECTORY_SEPARATOR . $meta_value;
               if (isset($updatedValue[$field_key . '_old']) && !is_wp_error($file_exists) && count($file_exists) > 0) {
                 $meta_value = empty($files_old) ? $meta_value : array_merge($meta_value, $files_old);
                 $updatedValue[$field_key] = $meta_value;
@@ -1023,6 +1058,17 @@ class FormManager
       }
     }
     return false;
+  }
+
+  public function getParentRepeaterField($fieldKey)
+  {
+    $repeatedFields = $this->getRepeaterFields();
+    foreach ($repeatedFields as $repeaterKey => $repeaterFields) {
+      if (in_array($fieldKey, $repeaterFields)) {
+        return $repeaterKey;
+      }
+    }
+    return null;
   }
 
   public function isRepeaterField($fieldKey)

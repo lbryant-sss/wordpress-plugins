@@ -366,7 +366,7 @@ add_action(
 						'kubioRemoteContent'             => Utils::getSnippetsURL( '/globals' ),
 						'kubioLocalContentFile'          => kubio_url( 'static/patterns/content-converted.json' ),
 						'kubioEditorURL'                 => add_query_arg( 'page', 'kubio', admin_url( 'admin.php' ) ),
-						'showFreeImagesTab'				 => Flags::getSetting('showFreeImagesTab') || Utils::getIsImageHubPluginActive(),
+						'showFreeImagesTab'				 => Utils::getIsImageHubPluginActive(),
 						'patternsOnTheFly'               => ( defined( 'KUBIO_PATTERNS_ON_THE_FLY' ) && KUBIO_PATTERNS_ON_THE_FLY ) ? KUBIO_PATTERNS_ON_THE_FLY : '',
 						'base_url'                       => site_url(),
 						'admin_url'                      => admin_url(),

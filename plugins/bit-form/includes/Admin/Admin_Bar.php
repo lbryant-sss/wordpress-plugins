@@ -365,9 +365,14 @@ class Admin_Bar
       'bitforms_localized_script',
       $bits
     );
-    if ('en_US' !== get_user_locale() && file_exists(BITFORMS_PLUGIN_DIR_PATH . '/languages/generatedString.php')) {
+
+    $allowBitFormTranslation = apply_filters('bitforms_filter_allow_translation', true);
+    if ($allowBitFormTranslation && 'en_US' !== get_user_locale() && file_exists(BITFORMS_PLUGIN_DIR_PATH . '/languages/generatedString.php')) {
       include_once BITFORMS_PLUGIN_DIR_PATH . '/languages/generatedString.php';
       $bitforms['translations'] = $i18n_strings;
+
+      // Apply a filter to allow user/custom translations to modify the $bitforms translations
+      $bitforms['translations'] = apply_filters('bitform_filter_translations', $bitforms['translations']);
     }
     wp_localize_script('index-BITFORM-MODULE', 'bits', $bitforms);
     // !BIT_DEV && wp_localize_script('bitforms-admin-script', 'bits', $bitforms);

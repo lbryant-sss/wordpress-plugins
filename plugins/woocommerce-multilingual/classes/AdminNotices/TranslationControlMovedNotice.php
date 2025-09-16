@@ -56,7 +56,7 @@ class TranslationControlMovedNotice implements IWPML_Backend_Action, IWPML_Front
 		$text = '';
 		$text .= '<h2>' . esc_html__( 'The Translation Controls Have Moved', 'woocommerce-multilingual' ) . '</h2>';
 
-		$text .= '<p>' . esc_html__( 'We updated WooCommerce Multilingual to streamline your translation work.', 'woocommerce-multilingual' ) . '</p>';
+		$text .= '<p>' . esc_html__( 'We updated WPML Multilingual & Multicurrency for WooCommerce to streamline your translation work.', 'woocommerce-multilingual' ) . '</p>';
 
 		$text .= '<p><strong>';
 

@@ -290,6 +290,7 @@ class ScriptFilePriorityManager
         'classNames'    => ['path' => 'customClasses'],
         'attributes'    => ['path' => 'customAttributes'],
         'fieldName'     => ['path' => 'fieldName'],
+        'contentId'     => ['var' => 'contentId'],
       ],
       'paypal' => [
         'payIntegID'         => ['path' => 'payIntegID'],
@@ -439,6 +440,9 @@ class ScriptFilePriorityManager
       'generateBackslashPattern'         => ['priority' => 700, 'filename' => 'generateBackslashPattern.min.js'],
       'nmbrFldValidation'                => ['priority' => 702, 'filename' => 'nmbrFldValidation.min.js'],
       'regexPatternValidation'           => ['priority' => 701, 'filename' => 'regexPatternValidation.min.js'], // load before generateBackslashPattern file, then load  regexPatternValidation
+      'inputMaskValidation'              => ['priority' => 701, 'filename' => 'inputMaskValidation.min.js'], // load before generateBackslashPattern file, then load  inputMaskValidation
+      'bit-input-mask'                   => ['priority' => 701, 'filename' => 'bit-input-mask.min.js'], // load before generateBackslashPattern file, then load  bit-input-mask
+      'setBitInputMaskToInput'           => ['priority' => 702, 'filename' => 'setBitInputMaskToInput.min.js'], // load before generateBackslashPattern file, then load  setBitInputMaskToInput
       'requiredFldValidation'            => ['priority' => 700, 'filename' => 'requiredFldValidation.min.js'],
       'urlFldValidation'                 => ['priority' => 702, 'filename' => 'urlFldValidation.min.js'],
       'validation'                       => ['priority' => 705, 'filename' => 'validateForm.min.js'], // last priority for validation script
@@ -462,6 +466,40 @@ class ScriptFilePriorityManager
             'paths'        => ['valid->regexr'],
             'dependencies' => [
               'generateBackslashPattern'
+            ]
+          ],
+          'bit-input-mask' => [
+            'paths' => ['valid->inputMask'],
+          ],
+          'inputMaskValidation' => [
+            'paths'        => ['valid->inputMask'],
+            'dependencies' => [
+              'generateBackslashPattern',
+              'validation',
+            ]
+          ],
+          'setBitInputMaskToInput' => [
+            'paths'        => ['valid->inputMask'],
+            'dependencies' => [
+              'bit-input-mask'
+            ]
+          ]
+        ],
+        'textarea' => [
+          'bit-input-mask' => [
+            'paths' => ['valid->inputMask'],
+          ],
+          'inputMaskValidation' => [
+            'paths'        => ['valid->inputMask'],
+            'dependencies' => [
+              'generateBackslashPattern',
+              'validation',
+            ]
+          ],
+          'setBitInputMaskToInput' => [
+            'paths'        => ['valid->inputMask'],
+            'dependencies' => [
+              'bit-input-mask'
             ]
           ]
         ],
@@ -526,6 +564,22 @@ class ScriptFilePriorityManager
             'paths'        => ['err->invalid->show'],
             'dependencies' => [
               'generateBackslashPattern'
+            ]
+          ],
+          'bit-input-mask' => [
+            'paths' => ['valid->inputMask'],
+          ],
+          'inputMaskValidation' => [
+            'paths'        => ['valid->inputMask'],
+            'dependencies' => [
+              'generateBackslashPattern',
+              'validation',
+            ]
+          ],
+          'setBitInputMaskToInput' => [
+            'paths'        => ['valid->inputMask'],
+            'dependencies' => [
+              'bit-input-mask'
             ]
           ]
         ],

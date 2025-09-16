@@ -111,7 +111,7 @@ class WCML_Dependencies {
 			printf(
 				/* translators: %1$s is a URL and %2$s is a version number */
 				__(
-					'WooCommerce Multilingual & Multicurrency is enabled but not effective. It is not compatible with  <a href="%1$s">WPML</a> versions prior %2$s.',
+					'WPML Multilingual & Multicurrency for WooCommerce is enabled but not effective. It is not compatible with  <a href="%1$s">WPML</a> versions prior %2$s.',
 					'woocommerce-multilingual'
 				),
 				$this->tracking_link->getWpmlHome(),
@@ -126,7 +126,7 @@ class WCML_Dependencies {
 	public function _wpml_not_installed_warning() {
 		?>
 		<div class="message error">
-			<p><?php printf( __( 'WooCommerce Multilingual & Multicurrency is enabled but not effective. Please finish the installation of WPML first.', 'woocommerce-multilingual' ) ); ?></p>
+			<p><?php printf( __( 'WPML Multilingual & Multicurrency for WooCommerce is enabled but not effective. Please finish the installation of WPML first.', 'woocommerce-multilingual' ) ); ?></p>
 		</div>
 		<?php
 	}
@@ -139,7 +139,7 @@ class WCML_Dependencies {
 			printf(
 				/* translators: %1$s is a URL and %2$s is a version number */
 				__(
-					'WooCommerce Multilingual & Multicurrency is enabled but not effective. It is not compatible with  <a href="%1$s">Woocommerce</a> versions prior %2$s.',
+					'WPML Multilingual & Multicurrency for WooCommerce is enabled but not effective. It is not compatible with  <a href="%1$s">Woocommerce</a> versions prior %2$s.',
 					'woocommerce-multilingual'
 				),
 				'http://www.woothemes.com/woocommerce/',
@@ -159,7 +159,7 @@ class WCML_Dependencies {
 			printf(
 				/* translators: %1$s is a URL and %2$s is a version number */
 				__(
-					'WooCommerce Multilingual & Multicurrency is enabled but not effective. It is not compatible with  <a href="%1$s">WPML String Translation</a> versions prior %2$s.',
+					'WPML Multilingual & Multicurrency for WooCommerce is enabled but not effective. It is not compatible with  <a href="%1$s">WPML String Translation</a> versions prior %2$s.',
 					'woocommerce-multilingual'
 				),
 				$this->tracking_link->getWpmlHome(),
@@ -238,7 +238,7 @@ class WCML_Dependencies {
 			<div class="message error">
 				<p><?php
 					/* translators: %s is a list of plugin names  */
-					printf( __( 'WooCommerce Multilingual & Multicurrency is enabled but not effective. It requires %s in order to work.', 'woocommerce-multilingual' ), $missing );
+					printf( __( 'WPML Multilingual & Multicurrency for WooCommerce is enabled but not effective. It requires %s in order to work.', 'woocommerce-multilingual' ), $missing );
 				?></p>
 			</div>
 			<?php
@@ -300,7 +300,7 @@ class WCML_Dependencies {
 
 		$file = realpath( WCML_PLUGIN_PATH . '/wpml-config.xml' );
 		if ( ! file_exists( $file ) ) {
-			$this->xml_config_errors[] = __( 'wpml-config.xml file missing from WooCommerce Multilingual & Multicurrency folder.', 'woocommerce-multilingual' );
+			$this->xml_config_errors[] = __( 'wpml-config.xml file missing from WPML Multilingual & Multicurrency for WooCommerce folder.', 'woocommerce-multilingual' );
 		} else {
 			$config = icl_xml2array( file_get_contents( $file ) );
 

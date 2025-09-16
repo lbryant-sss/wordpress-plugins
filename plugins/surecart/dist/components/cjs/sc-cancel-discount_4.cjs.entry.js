@@ -388,12 +388,12 @@ const ScTextarea = class {
     }
     render() {
         var _a;
-        return (index.h("div", { key: '7bba0798d0d6466040a45c5b5aab6effd6a4c422', part: "form-control", class: {
+        return (index.h("div", { key: '574885b3edc91930d1b7757f042cc2680fb728b1', part: "form-control", class: {
                 'form-control': true,
                 'form-control--small': this.size === 'small',
                 'form-control--medium': this.size === 'medium',
                 'form-control--large': this.size === 'large',
-            } }, index.h("sc-form-control", { key: 'e9a20a7491f226849fc3447d131f53483bdd1aa1', exportparts: "label, help-text, form-control", size: this.size, required: this.required, label: this.label, showLabel: this.showLabel, help: this.help, inputId: this.inputId, helpId: this.helpId, labelId: this.labelId, name: this.name }, index.h("div", { key: '8a63260bdeca4eab13d94986c2e41f85acf9454d', part: "form-control-input", class: "form-control-input" }, index.h("div", { key: '7202b30449a46a61dcc3602fba9becc9a86146f2', part: "base", class: {
+            } }, index.h("sc-form-control", { key: 'ef76e51d8785c5aa79e878ad46449415501c9e3e', exportparts: "label, help-text, form-control", size: this.size, required: this.required, label: this.label, showLabel: this.showLabel, help: this.help, inputId: this.inputId, helpId: this.helpId, labelId: this.labelId, name: this.name }, index.h("div", { key: 'd6c5e2aea1f8bffefcc888f1b03232c55ea84385', part: "form-control-input", class: "form-control-input" }, index.h("div", { key: '476e73e7f5cb4e70956e5074eedf67f5ce28ffc8', part: "base", class: {
                 'textarea': true,
                 'textarea--small': this.size === 'small',
                 'textarea--medium': this.size === 'medium',
@@ -407,7 +407,7 @@ const ScTextarea = class {
                 'textarea--resize-none': this.resize === 'none',
                 'textarea--resize-vertical': this.resize === 'vertical',
                 'textarea--resize-auto': this.resize === 'auto',
-            } }, index.h("textarea", { key: '067814b9971e08506b46aec529f0dc8e345369de', part: "textarea", ref: el => (this.input = el), id: "input", class: "textarea__control", name: this.name, value: this.value, disabled: this.disabled, readonly: this.readonly, required: this.required, placeholder: this.placeholder, rows: this.rows, minlength: this.minlength, maxlength: this.maxlength, autocapitalize: this.autocapitalize, autocorrect: this.autocorrect, autofocus: this.autofocus, spellcheck: this.spellcheck, enterkeyhint: this.enterkeyhint, inputmode: this.inputmode, "aria-describedby": "help-text", onChange: () => this.handleChange(), onInput: () => this.handleInput(), onFocus: () => this.handleFocus(), onBlur: () => this.handleBlur(), onKeyDown: (e) => e.stopPropagation() })), this.showCharLimit && (index.h("div", { key: 'cec5d46b67a3163f99f33e949593c265b7c8e1c6', slot: "help", class: 'textarea__char-limit-warning' }, wp.i18n.sprintf(wp.i18n.__('%d characters remaining', 'surecart'), this.maxlength && ((_a = this.input) === null || _a === void 0 ? void 0 : _a.value) ? this.maxlength - this.input.value.length : this.maxlength)))))));
+            } }, index.h("textarea", { key: '2713ee445fae3cbf87481321ad22214ddfa84f16', part: "textarea", ref: el => (this.input = el), id: "input", class: "textarea__control", name: this.name, value: this.value, disabled: this.disabled, readonly: this.readonly, required: this.required, placeholder: this.placeholder, rows: this.rows, minlength: this.minlength, maxlength: this.maxlength, autocapitalize: this.autocapitalize, autocorrect: this.autocorrect, autofocus: this.autofocus, spellcheck: this.spellcheck, enterkeyhint: this.enterkeyhint, inputmode: this.inputmode, "aria-describedby": "help-text", onChange: () => this.handleChange(), onInput: () => this.handleInput(), onFocus: () => this.handleFocus(), onBlur: () => this.handleBlur(), onKeyDown: (e) => e.stopPropagation() })), this.showCharLimit && (index.h("div", { key: '484c312bcda22502acbe2d2bc5814f97b3447dba', slot: "help", class: 'textarea__char-limit-warning' }, wp.i18n.sprintf(wp.i18n.__('%d characters remaining', 'surecart'), this.maxlength && ((_a = this.input) === null || _a === void 0 ? void 0 : _a.value) ? this.maxlength - this.input.value.length : this.maxlength)))))));
     }
     get el() { return index.getElement(this); }
     static get watchers() { return {

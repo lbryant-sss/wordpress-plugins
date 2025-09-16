@@ -244,7 +244,7 @@ const ScSubscriptionStatusBadge = class {
         }
     }
     render() {
-        return (h("sc-tag", { key: '2140d64014fb434d1f01f55365aa84dc3a303d8e', "aria-label": wp.i18n.sprintf(wp.i18n.__('Plan Status - %s', 'surecart'), this.getText()), type: this.getType() }, this.getText()));
+        return (h("sc-tag", { key: '34a7ae3550d503bb4787b8314194db68277c6214', "aria-label": wp.i18n.sprintf(wp.i18n.__('Plan Status - %s', 'surecart'), this.getText()), type: this.getType() }, this.getText()));
     }
 };
 ScSubscriptionStatusBadge.style = ScSubscriptionStatusBadgeStyle0;

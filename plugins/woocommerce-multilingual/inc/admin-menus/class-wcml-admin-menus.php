@@ -355,6 +355,6 @@ class WCML_Admin_Menus {
 	 * @return string
 	 */
 	public static function getWcmlLabel() {
-		return __( 'WooCommerce Multilingual & Multicurrency', 'woocommerce-multilingual' );
+		return __( 'WPML Multilingual & Multicurrency for WooCommerce', 'woocommerce-multilingual' );
 	}
 }

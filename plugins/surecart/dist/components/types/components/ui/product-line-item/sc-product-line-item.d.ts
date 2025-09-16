@@ -57,6 +57,8 @@ export declare class ScProductLineItem {
     sku: string;
     /** The purchasable status display */
     purchasableStatus: string;
+    /** The line item note */
+    note: string;
     /** Emitted when the quantity changes. */
     scUpdateQuantity: EventEmitter<number>;
     /** Emitted when the quantity changes. */

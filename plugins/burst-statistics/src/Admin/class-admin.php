@@ -60,7 +60,8 @@ class Admin {
 		add_action( 'burst_daily', [ $this, 'create_js_file' ] );
 		add_action( 'wp_initialize_site', [ $this, 'create_js_file' ], 10, 1 );
 		add_action( 'admin_init', [ $this, 'activation' ] );
-		add_action( 'burst_activation', [ $this, 'run_table_init_hook' ], 10, 1 );
+        add_action( 'burst_run_database_upgrade_single_event', [ $this, 'run_table_init_hook' ], 10, 1 );
+        add_action( 'burst_activation', [ $this, 'run_table_init_hook' ], 10, 1 );
 		add_action( 'burst_activation', [ $this, 'setup_defaults' ], 20, 1 );
 		add_action( 'after_reset_stats', [ $this, 'run_table_init_hook' ], 10, 1 );
 		add_action( 'upgrader_process_complete', [ $this, 'after_plugin_upgrade' ], 10, 2 );
@@ -540,6 +541,7 @@ class Admin {
 				}
 			}
 		}
+        delete_transient( 'burst_running_upgrade' );
 	}
 
 	/**

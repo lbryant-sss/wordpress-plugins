@@ -55,7 +55,7 @@ class Hooks implements \IWPML_REST_Action {
 			if ( 'post/product' === $itemSection['id'] ) {
 				$itemSection['note'] = sprintf(
 					/* translators: %1$s and %2$s are opening and closing HTML link tags */
-					esc_html__( 'To translate product details, including their taxonomy, use this dashboard. If you need to translate taxonomy independently or adjust store and currency settings, visit: %1$sWooCommerce Multilingual documentation%2$s.', 'woocommerce-multilingual' ),
+					esc_html__( 'To translate product details, including their taxonomy, use this dashboard. If you need to translate taxonomy independently or adjust store and currency settings, visit: %1$sWPML Multilingual & Multicurrency for WooCommerce documentation%2$s.', 'woocommerce-multilingual' ),
 					sprintf( '<a href="%s" target="_blank">', \WCML_Tracking_Link::getWcmlMainDoc() ),
 					'</a>'
 				);

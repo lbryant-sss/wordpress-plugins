@@ -4,7 +4,7 @@ Donate link: https://www.heateor.com/donate/?action=Sassy+Social+Share
 Tags: social share, grok, chatgpt, social media, social share buttons, facebook share, facebook like, twitter tweet, whatsapp share, line share, gab share, gab social share, gab, parler share, parler social share, gettr, gettr share, gettr social share, mewe share, mewe social share, mewe, mastodon share, mastodon social share, mastodon, rutube share, rutube social share, rutube, google news, google news share, google news icon, RSS, RSS Feed, x, x share, yelp, google translate, Google maps, tiktok, Teams, flickr, threads, Gab, Gab share, Line, bluesky
 Requires at least: 2.5.0
 Tested up to: 6.8.2
-Stable tag: 3.3.78
+Stable tag: 3.3.79
 License: GPLv2 or later
 
 The Simplest and Optimized Social Share buttons. Facebook, X, Reddit, Pinterest, Whatsapp, Grok, ChatGPT, Gab, Gettr and over 100 more.
@@ -123,6 +123,9 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 4. **Social Share Services**: Over 100 Social Share and Bookmarking services
 
 == Changelog ==
+= 3.3.79 [15 September 2025] =
+* [Improvement] AI platforms are now summarizing the web page in the same language
+
 = 3.3.78 [29 August 2025] =
 * [New] Added new Social Share Networks - ChatGPT, Grok, Perplexity, Google AI, Claude
 
@@ -1553,3 +1556,6 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 
 = 3.3.78 [29 August 2025] =
 * [New] Added new Social Share Networks - ChatGPT, Grok, Perplexity, Google AI, Claude
+
+= 3.3.79 [15 September 2025] =
+* [Improvement] AI platforms are now summarizing the web page in the same language

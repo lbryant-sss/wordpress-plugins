@@ -168,6 +168,7 @@
     "components/ui/price/sc-price.js",
     "components/ui/price-input/sc-price-input.js",
     "components/ui/product-line-item/sc-product-line-item.js",
+    "components/ui/product-line-item-note/sc-product-line-item-note.js",
     "components/ui/purchase-downloads-list/sc-purchase-downloads-list.js",
     "components/ui/quantity-select/sc-quantity-select.js",
     "components/ui/radio/sc-radio.js",

@@ -45,10 +45,10 @@ const ScButtonGroup = class {
         });
     }
     render() {
-        return (h("sc-form-control", { key: 'f413de0a8661f659473fe1c669e888725e5b95a5', part: "base", class: {
+        return (h("sc-form-control", { key: '26d009715ed44a80dde820f8bfe3b80d47b78bd4', part: "base", class: {
                 'button-group': true,
                 'button-group--separate': this.separate,
-            }, role: "group", "aria-label": this.label, onFocusout: e => this.handleBlur(e), onFocusin: e => this.handleFocus(e), onMouseOver: e => this.handleMouseOver(e), onMouseOut: e => this.handleMouseOut(e), label: this.label }, h("slot", { key: '02040a44c420e5a43162df51e00a68fa5546866f', onSlotchange: () => this.handleSlotChange() })));
+            }, role: "group", "aria-label": this.label, onFocusout: e => this.handleBlur(e), onFocusin: e => this.handleFocus(e), onMouseOver: e => this.handleMouseOver(e), onMouseOut: e => this.handleMouseOut(e), label: this.label }, h("slot", { key: '4e335b691136e8323a2126180daa27761b1a1afa', onSlotchange: () => this.handleSlotChange() })));
     }
     get el() { return getElement(this); }
 };

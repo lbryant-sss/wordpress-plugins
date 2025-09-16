@@ -44,7 +44,7 @@ class WC_Advanced_Shipment_Tracking_Admin_Notice {
 
 		if ( 'woocommerce-advanced-shipment-tracking' != $page ) {
 			// Zorem Return For WooCommerce PRO Notice
-			add_action( 'admin_notices', array( $this, 'zorem_return_admin_notice' ) );
+			add_action( 'admin_notices', array( $this, 'zorem_ast_pro_admin_notice_386' ) );
 
 		}
 
@@ -69,11 +69,11 @@ class WC_Advanced_Shipment_Tracking_Admin_Notice {
 	* Dismiss admin notice for trackship
 	*/
 	public function ast_pro_notice_ignore_cb() {
-		if ( isset( $_GET['zorem-return-update-notice'] ) ) {
+		if ( isset( $_GET['zorem-ast-pro-update-notice-386'] ) ) {
 			if (isset($_GET['nonce'])) {
 				$nonce = sanitize_text_field($_GET['nonce']);
-				if (wp_verify_nonce($nonce, 'zorem_return_dismiss_notice')) {
-					update_option('zorem_return_update_ignore_385', 'true');
+				if (wp_verify_nonce($nonce, 'zorem_ast_pro_dismiss_notice_386')) {
+					update_option('zorem_ast_pro_update_ignore_386', 'true');
 				}
 			}
 		}
@@ -82,30 +82,30 @@ class WC_Advanced_Shipment_Tracking_Admin_Notice {
 	/*
 	* Display admin notice on plugin install or update
 	*/
-	public function zorem_return_admin_notice() {
+	public function zorem_ast_pro_admin_notice_386() {
 		
-		if ( get_option('zorem_return_update_ignore_385') ) {
+		if ( get_option('zorem_ast_pro_update_ignore_386') ) {
 			return;
 		}
 		
-		$nonce = wp_create_nonce('zorem_return_dismiss_notice');
-		$dismissable_url = esc_url(add_query_arg(['zorem-return-update-notice' => 'true', 'nonce' => $nonce]));
+		$nonce = wp_create_nonce('zorem_ast_pro_dismiss_notice_386');
+		$dismissable_url = esc_url(add_query_arg(['zorem-ast-pro-update-notice-386' => 'true', 'nonce' => $nonce]));
 
 		?>
 		<style>		
-		.wp-core-ui .notice.zorem-return-dismissable-notice{
+		.wp-core-ui .notice.zorem-ast-pro-dismissable-notice{
 			position: relative;
 			padding-right: 38px;
 			border-left-color: #3b64d3;
 		}
-		.wp-core-ui .notice.zorem-return-dismissable-notice h3{
+		.wp-core-ui .notice.zorem-ast-pro-dismissable-notice h3{
 			margin-bottom: 5px;
 		} 
-		.wp-core-ui .notice.zorem-return-dismissable-notice a.notice-dismiss{
+		.wp-core-ui .notice.zorem-ast-pro-dismissable-notice a.notice-dismiss{
 			padding: 9px;
 			text-decoration: none;
 		} 
-		.wp-core-ui .button-primary.zorem_return_notice_btn {
+		.wp-core-ui .button-primary.zorem_ast_pro_notice_btn_386 {
 			background: #3b64d3;
 			color: #fff;
 			border-color: #3b64d3;
@@ -116,18 +116,23 @@ class WC_Advanced_Shipment_Tracking_Admin_Notice {
 			line-height: 28px;
 			margin: 5px 0 10px;
 		}
-		.zorem-return-dismissable-notice strong{
+		.zorem-ast-pro-dismissable-notice strong{
 			font-weight:bold;
 		}
 		</style>
-		<div class="notice updated notice-success zorem-return-dismissable-notice">
+		<div class="notice updated notice-success zorem-ast-pro-dismissable-notice">
 			<a href="<?php esc_html_e( $dismissable_url ); ?>" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></a>
-			<h2>🔁 Simplify Returns with Zorem Returns for WooCommerce!</h2>
-			<p>Let your customers easily request returns or exchanges directly from their account. With features like return approvals, customizable return reasons, and automated status updates, the Zorem Returns plugin helps you manage post-purchase experiences more efficiently.</p>
-			
-			<p><strong>🎁 Special Offer:</strong> Get <strong>20% OFF</strong> with coupon code <strong>RETURNS20!</strong></p>
-			<a class="button-primary zorem_return_notice_btn" target="blank" href="https://www.zorem.com/product/zorem-returns/">👉 Learn More & Get Zorem Returns</a>
-			<a class="button-primary zorem_return_notice_btn" href="<?php esc_html_e( $dismissable_url ); ?>">Dismiss</a>
+			<h2>🚀 Ready to Take the Manual Work Out of Shipping? Meet AST PRO!</h2>
+			<p>Say goodbye to copy-pasting tracking numbers. With Advanced Shipment Tracking PRO, you can:</p>
+			<ul>
+				<li>✅ Integrating with 50+ shipping solutions like ShipStation, WooCommerce Shipping, and more</li>
+				<li>✅ Automatically importing tracking info from your shipping tools</li>
+				<li>✅ Update orders and notify customers in a single click</li>
+				<li>✅ Manage everything from a unified dashboard in WooCommerce</li>
+			</ul>
+			<p><strong>🎁 New customer offer:</strong> Use code <strong>ASTPRO20</strong> at checkout to get <strong>20% OFF</strong></p>
+			<a class="button-primary zorem_ast_pro_notice_btn_386" target="blank" href="https://www.zorem.com/product/woocommerce-advanced-shipment-tracking/">Upgrade to AST PRO</a>
+			<a class="button-primary zorem_ast_pro_notice_btn_386" href="<?php esc_html_e( $dismissable_url ); ?>">Dismiss</a>
 		</div>
 		<?php
 	}

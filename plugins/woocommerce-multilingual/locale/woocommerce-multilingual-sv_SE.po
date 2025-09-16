@@ -1,23 +1,25 @@
 # Copyright (C) 2025 OnTheGoSystems
-# This file is distributed under the same license as the WooCommerce Multilingual & Multicurrency plugin.
+# This file is distributed under the same license as the WPML Multilingual & Multicurrency for WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce Multilingual & Multicurrency 5.5.0\n"
+"Project-Id-Version: WPML Multilingual & Multicurrency for WooCommerce 5.5.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce-multilingual\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-06-20T11:43:42-03:00\n"
+"POT-Creation-Date: 2025-09-08T14:03:48-03:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: woocommerce-multilingual\n"
+"Language: sv\n"
 
 #. Plugin Name of the plugin
+#: classes/AdminNotices/ExportImport.php:194
 #: inc/admin-menus/class-wcml-admin-menus.php:358
-msgid "WooCommerce Multilingual & Multicurrency"
-msgstr "WooCommerce Multilingual & Multicurrency"
+msgid "WPML Multilingual & Multicurrency for WooCommerce"
+msgstr "WPML Multilingual & Multicurrency for WooCommerce"
 
 #. Plugin URI of the plugin
 msgid "https://wpml.org/documentation/related-projects/woocommerce-multilingual/?utm_source=plugin&utm_medium=gui&utm_campaign=wcml"
@@ -36,8 +38,8 @@ msgid "http://www.onthegosystems.com/"
 msgstr "http://www.onthegosystems.com/"
 
 #: classes/AdminNotices/CachePlugins.php:33
-msgid "WooCommerce Multilingual & Multicurrency detected an active cache plugin on your site."
-msgstr "WooCommerce Multilingual & Multicurrency upptäckte ett aktivt insticksprogram på din webbplats."
+msgid "WPML Multilingual & Multicurrency for WooCommerce detected an active cache plugin on your site."
+msgstr "WPML Multilingual & Multicurrency for WooCommerce upptäckte ett aktivt cache-tillägg på din webbplats."
 
 #: classes/AdminNotices/CachePlugins.php:34
 msgid "Caching may cause currency display issues for your customers if you are using the multicurrency feature."
@@ -52,8 +54,8 @@ msgid "Important: Action Needed for Your Currency Switcher"
 msgstr "Viktigt: åtgärd krävs för din valutaväxlare"
 
 #: classes/AdminNotices/CurrencySwitcherUseTwigTemplate.php:49
-msgid "We detected that your site is using a Currency Switcher built with Twig templates. For security reasons, support for Twig-based templates will be discontinued in the upcoming version of WooCommerce Multilingual 5.6."
-msgstr "Vi har upptäckt att din webbplats använder en valutaväxlare byggd med Twig-mallar. Av säkerhetsskäl kommer stödet för Twig-baserade mallar att upphöra i den kommande versionen av WooCommerce Multilingual 5.6."
+msgid "We detected that your site is using a Currency Switcher built with Twig templates. For security reasons, support for Twig-based templates will be discontinued in the upcoming version of WPML Multilingual & Multicurrency for WooCommerce 5.6."
+msgstr "Vi upptäckte att din webbplats använder en valutaväxlare byggd med Twig-mallar. Av säkerhetsskäl kommer stöd för Twig-baserade mallar att upphöra i den kommande versionen av WPML Multilingual & Multicurrency for WooCommerce 5.6."
 
 #: classes/AdminNotices/CurrencySwitcherUseTwigTemplate.php:50
 msgid "To ensure your Currency Switcher continues working smoothly:"
@@ -70,8 +72,8 @@ msgid "- Need a custom solution? %1$sContact our support%2$s - we’re here to h
 msgstr "- Behöver du en skräddarsydd lösning? %1$sKontakta vår support%2$s - vi finns här för att hjälpa dig migrera säkert."
 
 #: classes/AdminNotices/CurrencySwitcherUseTwigTemplate.php:70
-msgid "We recommend updating your Currency Switcher as soon as possible to avoid disruptions when the new version of WooCommerce Multilingual is released."
-msgstr "Vi rekommenderar att du uppdaterar din valutaväxlare så snart som möjligt för att undvika störningar när den nya versionen av WooCommerce Multilingual släpps."
+msgid "We recommend updating your Currency Switcher as soon as possible to avoid disruptions when the new version of WPML Multilingual & Multicurrency for WooCommerce is released."
+msgstr "Vi rekommenderar att du uppdaterar din valutaväxlare så snart som möjligt för att undvika störningar när den nya versionen av WPML Multilingual & Multicurrency for WooCommerce släpps."
 
 #. translators: %s is a link.
 #: classes/AdminNotices/ExportImport.php:161
@@ -87,10 +89,6 @@ msgstr "Vill du importera din flerspråkiga butik? Med %1$s och %2$s på både d
 msgid "WPML Export and Import"
 msgstr "WPML-export och -import"
 
-#: classes/AdminNotices/ExportImport.php:194
-msgid "WooCommerce Multilingual"
-msgstr "WooCommerce Flerspråkig"
-
 #: classes/AdminNotices/MultiCurrencyMissing.php:45
 msgid "You haven't added any secondary currencies"
 msgstr "Du har inte lagt till några sekundära valutor"
@@ -104,8 +102,8 @@ msgid "Configure multicurrency mode"
 msgstr "Konfigurera läge för flera valutor"
 
 #: classes/AdminNotices/Review.php:47
-msgid "Review WooCommerce Multilingual & Multicurrency"
-msgstr "Recensera WooCommerce Multilingual & Multicurrency"
+msgid "Review WPML Multilingual & Multicurrency for WooCommerce"
+msgstr "Recensera WPML Multilingual & Multicurrency for WooCommerce"
 
 #: classes/AdminNotices/Review.php:58
 msgid "Congrats on making your first multicurrency sale!"
@@ -113,16 +111,16 @@ msgstr "Grattis till din första försäljning i flera valutor!"
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
 #: classes/AdminNotices/Review.php:64
-msgid "Want to help <strong>WooCommerce Multilingual & Multicurrency</strong> plugin? %1$sGive us a review%2$s!"
-msgstr "Vill du hjälpa <strong>WooCommerce Multilingual & Multicurrency</strong> plugin? %1$sGe oss en recension%2$s!"
+msgid "Want to help <strong>WPML Multilingual & Multicurrency for WooCommerce</strong> plugin? %1$sGive us a review%2$s!"
+msgstr "Vill du hjälpa tillägget <strong>WPML Multilingual & Multicurrency for WooCommerce</strong>? %1$sGe oss en recension%2$s!"
 
 #: classes/AdminNotices/TranslationControlMovedNotice.php:57
 msgid "The Translation Controls Have Moved"
 msgstr "Översättningskontrollerna har flyttats"
 
 #: classes/AdminNotices/TranslationControlMovedNotice.php:59
-msgid "We updated WooCommerce Multilingual to streamline your translation work."
-msgstr "Vi har uppdaterat WooCommerce Multilingual för att effektivisera ditt översättningsarbete."
+msgid "We updated WPML Multilingual & Multicurrency for WooCommerce to streamline your translation work."
+msgstr "Vi har uppdaterat WPML Multilingual & Multicurrency for WooCommerce för att effektivisera ditt översättningsarbete."
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
 #: classes/AdminNotices/TranslationControlMovedNotice.php:65
@@ -248,8 +246,8 @@ msgid "Costs and values in custom currencies"
 msgstr "Kostnader och värden i anpassade valutor"
 
 #: classes/Multicurrency/Shipping/AdminHooks.php:74
-msgid "WooCommerce Multilingual & Multicurrency by default will multiply all your costs and values defined above by currency exchange rates. If you don't want this and you prefer static values instead, you can define them here."
-msgstr "WooCommerce Multilingual & Multicurrency kommer som standard att multiplicera alla kostnader och värden som definieras ovan med aktuell valutakurs. Om du inte vill det och föredrar statiska värden kan du ställa in dem här."
+msgid "WPML Multilingual & Multicurrency for WooCommerce by default will multiply all your costs and values defined above by currency exchange rates. If you don't want this and you prefer static values instead, you can define them here."
+msgstr "WPML Multilingual & Multicurrency for WooCommerce kommer som standard att multiplicera alla dina kostnader och värden som definierats ovan med valutakurser. Om du inte vill detta och föredrar statiska värden istället, kan du definiera dem här."
 
 #: classes/Multicurrency/Shipping/AdminHooks.php:88
 msgid "Enable costs in custom currencies"
@@ -629,8 +627,8 @@ msgid "Error saving settings."
 msgstr "Fel vid lagring av inställningar."
 
 #: classes/PaymentGateways/Hooks.php:257
-msgid "We noticed that you're using WooCommerce Gateways Country Limiter plugin which is now integrated into WooCommerce Multilingual & Multicurrency. Please remove it!"
-msgstr "Vi ser att du använder insticksprogrammet WooCommerce Gateways Country Limiter som nu är integrerat i WooCommerce Multilingual & Multicurrency. Avinstallera det!"
+msgid "We noticed that you're using WooCommerce Gateways Country Limiter plugin which is now integrated into WPML Multilingual & Multicurrency for WooCommerce. Please remove it!"
+msgstr "Vi har märkt att du använder tillägget WooCommerce Gateways Country Limiter som nu är integrerat i WPML Multilingual & Multicurrency for WooCommerce. Vänligen ta bort det!"
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
 #: classes/PaymentGateways/Strings.php:33
@@ -639,13 +637,13 @@ msgstr "Om du vill översätta anpassad text för betalningsmetoder går du till
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
 #: classes/Permalinks/Settings/TranslationControls.php:63
-msgid "To translate permalinks for product taxonomies, go to %1$sWooCommerce Multilingual & Multicurrency → Store URLs%2$s."
-msgstr "Om du vill översätta permalänkar för produkttaxonomier går du till %1$sWooCommerce Multilingual & Multicurrency → Butikswebbadresser%2$s."
+msgid "To translate permalinks for product taxonomies, go to %1$sWPML Multilingual & Multicurrency for WooCommerce → Store URLs%2$s."
+msgstr "För att översätta permalänkar för produkttaxonomier, gå till %1$sWPML Multilingual & Multicurrency for WooCommerce → Butiks-URL:er%2$s."
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
 #: classes/Permalinks/Settings/TranslationControls.php:71
-msgid "To translate product permalinks, go to %1$sWooCommerce Multilingual & Multicurrency → Store URLs%2$s."
-msgstr "Om du vill översätta permalänkar för produkter går du till %1$sWooCommerce Multilingual & Multicurrency → URL:er för butiker%2$s."
+msgid "To translate product permalinks, go to %1$sWPML Multilingual & Multicurrency for WooCommerce → Store URLs%2$s."
+msgstr "För att översätta produktpermalänkar, gå till %1$sWPML Multilingual & Multicurrency for WooCommerce → Butiks-URL:er%2$s."
 
 #: classes/Permalinks/Settings/TranslationControls.php:81
 msgid "How to translate permalinks for product taxonomies"
@@ -677,12 +675,12 @@ msgid "How to translate this?"
 msgstr "Hur översätter jag detta?"
 
 #: classes/privacy/class-wcml-privacy-content.php:20
-msgid "WooCommerce Multilingual & Multicurrency will use cookies to understand the basket info when using languages in domains and to transfer data between the domains."
-msgstr "WooCommerce Multilingual & Multicurrency använder cookies för att förstå korginformationen när språk används på domäner och för att överföra data mellan domäner."
+msgid "WPML Multilingual & Multicurrency for WooCommerce will use cookies to understand the basket info when using languages in domains and to transfer data between the domains."
+msgstr "WPML Multilingual & Multicurrency for WooCommerce kommer att använda cookies för att förstå varukorgens information när språk används i domäner och för att överföra data mellan domänerna."
 
 #: classes/privacy/class-wcml-privacy-content.php:21
-msgid "WooCommerce Multilingual & Multicurrency will also use cookies to identify the language and currency of each customer’s order as well as the currency of the reports created by WooCommerce. WooCommerce Multilingual extends these reports by adding the currency’s information."
-msgstr "WooCommerce Multilingual & Multicurrency använder också cookies för att identifiera respektive kunds språk och valuta, samt valutan för rapporter som skapas av WooCommerce. WooCommerce Multilingual utökar dessa rapporter genom att lägga till valutainformation."
+msgid "WPML Multilingual & Multicurrency for WooCommerce will also use cookies to identify the language and currency of each customer’s order as well as the currency of the reports created by WooCommerce. WPML Multilingual & Multicurrency for WooCommerce extends these reports by adding the currency’s information."
+msgstr "WPML Multilingual & Multicurrency for WooCommerce kommer också att använda cookies för att identifiera språk och valuta för varje kunds order samt valutan för rapporter som skapats av WooCommerce. WPML Multilingual & Multicurrency for WooCommerce utökar dessa rapporter genom att lägga till valutainformation."
 
 #. translators: $s is a currency code
 #: classes/Rest/Exceptions/InvalidCurrency.php:16
@@ -751,8 +749,8 @@ msgstr "Översätter %1$s? Använd tabellen %2$s för enklare översättning."
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
 #: classes/TMDashboard/Hooks.php:58
-msgid "To translate product details, including their taxonomy, use this dashboard. If you need to translate taxonomy independently or adjust store and currency settings, visit: %1$sWooCommerce Multilingual documentation%2$s."
-msgstr "Använd den här kontrollpanelen för att översätta produktdetaljer, inklusive deras taxonomi. Om du behöver översätta taxonomi oberoende eller justera butiks- och valutainställningar, besök: %1$sWooCommerce Multilingual documentation%2$s."
+msgid "To translate product details, including their taxonomy, use this dashboard. If you need to translate taxonomy independently or adjust store and currency settings, visit: %1$sWPML Multilingual & Multicurrency for WooCommerce documentation%2$s."
+msgstr "För att översätta produktdetaljer, inklusive deras taxonomi, använd denna kontrollpanel. Om du behöver översätta taxonomi separat eller justera butiks- och valutainställningar, besök: %1$sWPML Multilingual & Multicurrency for WooCommerce dokumentation%2$s."
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
 #: classes/TranslationControls/Hooks.php:123
@@ -858,12 +856,12 @@ msgid "Resources label"
 msgstr "Etikett för resurser"
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
-#: compatibility/WcBookings/class-wcml-bookings.php:1382
+#: compatibility/WcBookings/class-wcml-bookings.php:1428
 msgid "To translate Resources, go to the %1$sTranslation Dashboard%2$s and send the associated product for translation."
 msgstr "För att översätta resurser går du till %1$sTranslation Dashboard%2$s och skickar den tillhörande produkten för översättning."
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
-#: compatibility/WcBookings/class-wcml-bookings.php:1395
+#: compatibility/WcBookings/class-wcml-bookings.php:1441
 msgid "To translate Person Types, go to the %1$sTranslation Dashboard%2$s and send the associated product for translation."
 msgstr "För att översätta persontyper går du till %1$sTranslation Dashboard%2$s och skickar den tillhörande produkten för översättning."
 
@@ -1036,8 +1034,8 @@ msgid "It is recommended that you %s with the option to reset the cart in a situ
 msgstr "Det rekommenderas att du %s med alternativet att återställa varukorgen i en sådan här situation."
 
 #: inc/class-wcml-cart-sync-warnings.php:77
-msgid "configure WooCommerce Multilingual & Multicurrency"
-msgstr "Konfigurera WooCommerce Multilingual & Multicurrency"
+msgid "configure WPML Multilingual & Multicurrency for WooCommerce"
+msgstr "konfigurera WPML Multilingual & Multicurrency for WooCommerce"
 
 #: inc/class-wcml-cart-sync-warnings.php:84
 msgid "More details"
@@ -1076,22 +1074,22 @@ msgstr "översatt"
 
 #. translators: %1$s is a URL and %2$s is a version number
 #: inc/class-wcml-dependencies.php:113
-msgid "WooCommerce Multilingual & Multicurrency is enabled but not effective. It is not compatible with  <a href=\"%1$s\">WPML</a> versions prior %2$s."
-msgstr "WooCommerce Multilingual & Multicurrency är aktiverat men inte effektivt. Det är inte kompatibelt med <a href=\"%1$s\">WPML</a><;/a>-versioner före %2$s."
+msgid "WPML Multilingual & Multicurrency for WooCommerce is enabled but not effective. It is not compatible with  <a href=\"%1$s\">WPML</a> versions prior %2$s."
+msgstr "WPML Multilingual & Multicurrency for WooCommerce är aktiverat men inte effektivt. Det är inte kompatibelt med <a href=\"%1$s\">WPML</a>-versioner före %2$s."
 
 #: inc/class-wcml-dependencies.php:129
-msgid "WooCommerce Multilingual & Multicurrency is enabled but not effective. Please finish the installation of WPML first."
-msgstr "WooCommerce Multilingual & Multicurrency är aktiverat men inte effektivt. Slutför installationen av WPML först."
+msgid "WPML Multilingual & Multicurrency for WooCommerce is enabled but not effective. Please finish the installation of WPML first."
+msgstr "WPML Multilingual & Multicurrency for WooCommerce är aktiverat men inte effektivt. Vänligen slutför installationen av WPML först."
 
 #. translators: %1$s is a URL and %2$s is a version number
 #: inc/class-wcml-dependencies.php:141
-msgid "WooCommerce Multilingual & Multicurrency is enabled but not effective. It is not compatible with  <a href=\"%1$s\">Woocommerce</a> versions prior %2$s."
-msgstr "WooCommerce Multilingual & Multicurrency är aktiverat men inte effektivt. Det är inte kompatibelt med <a href=\"%1$s\">WooCommerce</a><;/a>-versioner före %2$s."
+msgid "WPML Multilingual & Multicurrency for WooCommerce is enabled but not effective. It is not compatible with  <a href=\"%1$s\">Woocommerce</a> versions prior %2$s."
+msgstr "WPML Multilingual & Multicurrency for WooCommerce är aktiverat men inte effektivt. Det är inte kompatibelt med <a href=\"%1$s\">Woocommerce</a>-versioner före %2$s."
 
 #. translators: %1$s is a URL and %2$s is a version number
 #: inc/class-wcml-dependencies.php:161
-msgid "WooCommerce Multilingual & Multicurrency is enabled but not effective. It is not compatible with  <a href=\"%1$s\">WPML String Translation</a> versions prior %2$s."
-msgstr "WooCommerce Multilingual & Multicurrency är aktiverat men inte effektivt. Det är inte kompatibelt med <a href=\"%1$s\">WPML String Translation</a><;/a>-versioner före %2$s."
+msgid "WPML Multilingual & Multicurrency for WooCommerce is enabled but not effective. It is not compatible with  <a href=\"%1$s\">WPML String Translation</a> versions prior %2$s."
+msgstr "WPML Multilingual & Multicurrency for WooCommerce är aktiverat men inte effektivt. Det är inte kompatibelt med <a href=\"%1$s\">WPML String Translation</a>-versioner före %2$s."
 
 #: inc/class-wcml-dependencies.php:190
 msgid "WPML support"
@@ -1139,8 +1137,8 @@ msgstr "och"
 
 #. translators: %s is a list of plugin names
 #: inc/class-wcml-dependencies.php:241
-msgid "WooCommerce Multilingual & Multicurrency is enabled but not effective. It requires %s in order to work."
-msgstr "WooCommerce Multilingual & Multicurrency är aktiverat men inte effektivt. Det behöver %s för att fungera."
+msgid "WPML Multilingual & Multicurrency for WooCommerce is enabled but not effective. It requires %s in order to work."
+msgstr "WPML Multilingual & Multicurrency for WooCommerce är aktiverat men inte effektivt. Det kräver %s för att fungera."
 
 #: inc/class-wcml-dependencies.php:266
 msgid "Because this site uses the default permalink structure, you cannot use slug translation for product permalinks."
@@ -1159,8 +1157,8 @@ msgid "Configure products slug translation"
 msgstr "Konfigurera översättning för produktslugg"
 
 #: inc/class-wcml-dependencies.php:303
-msgid "wpml-config.xml file missing from WooCommerce Multilingual & Multicurrency folder."
-msgstr "Filen wpml-config.xml saknas i mappen WooCommerce Multilingual & Multicurrency."
+msgid "wpml-config.xml file missing from WPML Multilingual & Multicurrency for WooCommerce folder."
+msgstr "wpml-config.xml-fil saknas från WPML Multilingual & Multicurrency for WooCommerce-mappen."
 
 #. translators: %s is a field name
 #: inc/class-wcml-dependencies.php:331
@@ -1184,8 +1182,8 @@ msgstr "Vi har upptäckt ett problem med din WPML-konfiguration: taxonomin %1$sp
 
 #. translators: %1$s and %2$s are opening and closing HTML italic tags and %3$s and %4$s are opening and closing HTML link tags
 #: inc/class-wcml-install.php:291
-msgid "We detected that the %1$sproduct_type%2$s field was set incorrectly for some product translations. This happened because the product_type taxonomy was translated. You can fix this in the WooCommerce Multilingual & Multicurrency %3$stroubleshooting page%4$s."
-msgstr "Vi har upptäckt att fältet %1$sproduct_type%2$s är fel inställt för vissa produktöversättningar. Detta beror på att taxonomin product_type har översatts. Du kan åtgärda felet på sidan WooCommerce Multilingual & Multicurrency %3$sfelsökning%4$s."
+msgid "We detected that the %1$sproduct_type%2$s field was set incorrectly for some product translations. This happened because the product_type taxonomy was translated. You can fix this in the WPML Multilingual & Multicurrency for WooCommerce %3$stroubleshooting page%4$s."
+msgstr "Vi upptäckte att fältet %1$sproduct_type%2$s var felaktigt inställt för vissa produktöversättningar. Detta hände eftersom product_type-taxonomin översattes. Du kan åtgärda detta på WPML Multilingual & Multicurrency for WooCommerce %3$sfelsökningssida%4$s."
 
 #: inc/class-wcml-languages-upgrader.php:248
 msgid "Downloading translations... Please don't close this page."
@@ -1195,25 +1193,25 @@ msgstr "Laddar ner översättningar... Stäng inte den här sidan."
 msgid "All the products will be removed from the current order in order to change the language"
 msgstr "Alla produkter kommer att tas bort från den aktuella beställningen för att kunna ändra språket"
 
-#: inc/class-wcml-products.php:196
+#: inc/class-wcml-products.php:200
 #: inc/template-classes/store-urls/class-wcml-store-urls-translation-statuses-ui.php:56
 msgid "Original language"
 msgstr "Originalspråk"
 
-#: inc/class-wcml-products.php:235
+#: inc/class-wcml-products.php:239
 msgid "Translation in progress"
 msgstr "Översättning pågår"
 
-#: inc/class-wcml-products.php:251
+#: inc/class-wcml-products.php:255
 msgid "Take this and edit"
 msgstr "Ta denna och redigera"
 
 #. translators: %s is the post title
-#: inc/class-wcml-products.php:314
+#: inc/class-wcml-products.php:318
 msgid "Quick edit \"%s\" inline"
 msgstr "Snabbredigera \"%s\" inline"
 
-#: inc/class-wcml-products.php:318
+#: inc/class-wcml-products.php:322
 msgid "Quick Edit"
 msgstr "Snabbändring"
 
@@ -1296,8 +1294,8 @@ msgstr "För att snabböversätta denna och andra butikssidor i WooCommerce, kö
 
 #. translators: %1$s/%2$s and %3$s/%4$s are opening and closing HTML link tags
 #: inc/class-wcml-terms.php:96
-msgid "To translate %1$s please use the %2$s translation%3$s page, inside the %4$sWooCommerce Multilingual & Multicurrency admin%5$s."
-msgstr "För att översätta %1$s går du till sidan %2$s översättning%3$s i %4$sWooCommerce Multilingual & Multicurrency administration%5$s."
+msgid "To translate %1$s please use the %2$s translation%3$s page, inside the %4$sWPML Multilingual & Multicurrency for WooCommerce admin%5$s."
+msgstr "För att översätta %1$s, använd %2$s översättnings%3$s-sidan, inuti %4$sWPML Multilingual & Multicurrency for WooCommerce admin%5$s."
 
 #. translators: %d is a number of products
 #: inc/class-wcml-terms.php:467
@@ -1335,8 +1333,8 @@ msgid "Successfully updated %1$s for all translated %2$s."
 msgstr "%1$s har uppdaterats för alla översatta %2$s."
 
 #: inc/class-wcml-upgrade.php:71
-msgid "Looks like you are upgrading from a previous version of WooCommerce Multilingual & Multicurrency. Would you like to automatically create translated variations and images?"
-msgstr "Det verkar som du uppdaterar från en tidigare version av WooCommerce Multilingual & Multicurrency. Vill du skapa översatta varianter och bilder automatiskt?"
+msgid "Looks like you are upgrading from a previous version of WPML Multilingual & Multicurrency for WooCommerce. Would you like to automatically create translated variations and images?"
+msgstr "Det verkar som att du uppgraderar från en tidigare version av WPML Multilingual & Multicurrency for WooCommerce. Vill du automatiskt skapa översatta variationer och bilder?"
 
 #: inc/class-wcml-upgrade.php:73
 msgid "Yes, go to the troubleshooting page"
@@ -1527,8 +1525,8 @@ msgid "Translatable?"
 msgstr "Översättningsbar?"
 
 #: inc/template-classes/class-wcml-not-translatable-attributes.php:32
-msgid "Enable this if you want to translate attribute values with WooCommerce Multilingual & Multicurrency"
-msgstr "Aktivera detta om du vill översätta attributvärden med WooCommerce Multilingual & Multicurrency"
+msgid "Enable this if you want to translate attribute values with WPML Multilingual & Multicurrency for WooCommerce"
+msgstr "Aktivera detta om du vill översätta attributvärden med WPML Multilingual & Multicurrency for WooCommerce"
 
 #: inc/template-classes/class-wcml-not-translatable-attributes.php:33
 msgid "Existing translations and variations associated will be deleted."
@@ -1662,8 +1660,8 @@ msgstr "Avbryt (fortsätt med översättningsredigeraren)"
 
 #. translators: %s is a taxonomy name
 #: inc/template-classes/class-wcml-st-taxonomy-ui.php:19
-msgid "Set different slugs in different languages for %s on WooCommerce Multilingual & Multicurrency URLs translations page"
-msgstr "Ställ in olika sluggar för olika språk för %s på WooCommerce Multilingual & Multicurrency URL-översättningssida"
+msgid "Set different slugs in different languages for %s on WPML Multilingual & Multicurrency for WooCommerce URLs translations page"
+msgstr "Ställ in olika permalänkar på olika språk för %s på WPML Multilingual & Multicurrency for WooCommerce URL-översättningssida"
 
 #. translators: %s is an attribute name
 #: inc/template-classes/class-wcml-st-taxonomy-ui.php:27
@@ -1791,8 +1789,8 @@ msgid "Processing"
 msgstr "Bearbetar"
 
 #: inc/template-classes/class-wcml-troubleshooting-ui.php:104
-msgid "WooCommerce Multilingual & Multicurrency settings"
-msgstr "WooCommerce Multilingual & Multicurrency-inställningar"
+msgid "WPML Multilingual & Multicurrency for WooCommerce settings"
+msgstr "WPML Multilingual & Multicurrency for WooCommerce-inställningar"
 
 #. translators: The placeholder is the number of processed items.
 #: inc/template-classes/class-wcml-troubleshooting-ui.php:109
@@ -2259,8 +2257,8 @@ msgid "Finish"
 msgstr "Avsluta"
 
 #: inc/template-classes/setup/class-wcml-setup-header.php:38
-msgid "WooCommerce Multilingual & Multicurrency › Setup Wizard"
-msgstr "WooCommerce Multilingual & Multicurrency › Installationsguide"
+msgid "WPML Multilingual & Multicurrency for WooCommerce › Setup Wizard"
+msgstr "WPML Multilingual & Multicurrency for WooCommerce › Installationsguide"
 
 #: inc/template-classes/setup/class-wcml-setup-introduction-ui.php:11
 msgid "Let's make your WooCommerce store multilingual"
@@ -2333,8 +2331,8 @@ msgstr "Gör din butik flerspråkig"
 
 #. translators: %1$s and %2$s are opening and closing HTML strong tags
 #: inc/template-classes/setup/class-wcml-setup-notice.php:15
-msgid "Set up %1$sWooCommerce Multilingual & Multicurrency%2$s to translate your store and add more currencies."
-msgstr "Ställ in %1$sWooCommerce Multilingual & Multicurrency%2$s för att översätta din butik och lägga till fler valutor."
+msgid "Set up %1$sWPML Multilingual & Multicurrency for WooCommerce%2$s to translate your store and add more currencies."
+msgstr "Konfigurera %1$sWPML Multilingual & Multicurrency for WooCommerce%2$s för att översätta din butik och lägga till fler valutor."
 
 #: inc/template-classes/setup/class-wcml-setup-notice.php:19
 msgid "Start the Setup Wizard"
@@ -2365,8 +2363,8 @@ msgid "Translate URLs"
 msgstr "Översätt URL:er"
 
 #: inc/template-classes/status/class-wcml-status-config-warnings-ui.php:51
-msgid "Running WooCommerce Multilingual & Multicurrency with default language other than English."
-msgstr "WooCommerce Multilingual & Multicurrency körs på ett standardspråk som inte är engelska."
+msgid "Running WPML Multilingual & Multicurrency for WooCommerce with default language other than English."
+msgstr "Kör WPML Multilingual & Multicurrency for WooCommerce med annat standardspråk än engelska."
 
 #: inc/template-classes/status/class-wcml-status-config-warnings-ui.php:52
 msgid "This may cause problems with URLs in different languages."
@@ -2381,8 +2379,8 @@ msgid "There are some settings that require careful attention."
 msgstr "Det finns vissa inställningar som kräver extra uppmärksamhet."
 
 #: inc/template-classes/status/class-wcml-status-config-warnings-ui.php:55
-msgid "Some settings from the WooCommerce Multilingual & Multicurrency wpml-config.xml file have been overwritten."
-msgstr "Vissa inställningar i filen wpml-config.xml för WooCommerce Multilingual & Multicurrency har skrivits över."
+msgid "Some settings from the WPML Multilingual & Multicurrency for WooCommerce wpml-config.xml file have been overwritten."
+msgstr "Vissa inställningar från WPML Multilingual & Multicurrency for WooCommerce wpml-config.xml-filen har skrivits över."
 
 #. translators: %s is link to Multilingual Content Setup
 #: inc/template-classes/status/class-wcml-status-config-warnings-ui.php:57
@@ -2404,8 +2402,8 @@ msgstr "%s är inte aktiv."
 
 #. translators: %s is a plugin name
 #: inc/template-classes/status/class-wcml-status-media-ui.php:31
-msgid "%s is not required in order to run WooCommerce Multilingual & Multicurrency but it’s recommended if you want to use separate product images and galleries for different languages."
-msgstr "%s behövs inte för att köra WooCommerce Multilingual & Multicurrency men rekommenderas om du vill använda separata produktbilder och gallerier för olika språk."
+msgid "%s is not required in order to run WPML Multilingual & Multicurrency for WooCommerce but it’s recommended if you want to use separate product images and galleries for different languages."
+msgstr "%s krävs inte för att köra WPML Multilingual & Multicurrency for WooCommerce men rekommenderas om du vill använda separata produktbilder och gallerier för olika språk."
 
 #. translators: %s is a plugin name
 #: inc/template-classes/status/class-wcml-status-media-ui.php:33
@@ -2459,8 +2457,8 @@ msgid "%s is not set up."
 msgstr "%s har inte ställts in."
 
 #: inc/template-classes/status/class-wcml-status-status-ui.php:37
-msgid "WooCommerce Multilingual & Multicurrency depends on several plugins to work. If any required plugin is missing, you should install and activate it."
-msgstr "WooCommerce Multilingual & Multicurrency är beroende av olika insticksprogram för att fungera. Om något av dessa program saknas bör du installera och aktivera det."
+msgid "WPML Multilingual & Multicurrency for WooCommerce depends on several plugins to work. If any required plugin is missing, you should install and activate it."
+msgstr "WPML Multilingual & Multicurrency for WooCommerce är beroende av flera tillägg för att fungera. Om något nödvändigt tillägg saknas bör du installera och aktivera det."
 
 #: inc/template-classes/status/class-wcml-status-store-pages-ui.php:40
 msgid "WooCommerce Store Pages"

@@ -3802,6 +3802,10 @@ return array(
 		'version' => '10.2.0.0',
 		'path'    => $baseDir . '/src/Internal/Admin/Settings/PaymentsProviders/Antom.php'
 	),
+	'Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsProviders\\Eway' => array(
+		'version' => '10.2.0.0',
+		'path'    => $baseDir . '/src/Internal/Admin/Settings/PaymentsProviders/Eway.php'
+	),
 	'Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsProviders\\GoCardless' => array(
 		'version' => '10.2.0.0',
 		'path'    => $baseDir . '/src/Internal/Admin/Settings/PaymentsProviders/GoCardless.php'
@@ -3829,6 +3833,10 @@ return array(
 	'Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsProviders\\Monei' => array(
 		'version' => '10.2.0.0',
 		'path'    => $baseDir . '/src/Internal/Admin/Settings/PaymentsProviders/Monei.php'
+	),
+	'Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsProviders\\NexiCheckout' => array(
+		'version' => '10.2.0.0',
+		'path'    => $baseDir . '/src/Internal/Admin/Settings/PaymentsProviders/NexiCheckout.php'
 	),
 	'Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsProviders\\PayPal' => array(
 		'version' => '10.2.0.0',
@@ -3877,6 +3885,10 @@ return array(
 	'Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsProviders\\Tilopay' => array(
 		'version' => '10.2.0.0',
 		'path'    => $baseDir . '/src/Internal/Admin/Settings/PaymentsProviders/Tilopay.php'
+	),
+	'Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsProviders\\Visa' => array(
+		'version' => '10.2.0.0',
+		'path'    => $baseDir . '/src/Internal/Admin/Settings/PaymentsProviders/Visa.php'
 	),
 	'Automattic\\WooCommerce\\Internal\\Admin\\Settings\\PaymentsProviders\\Vivacom' => array(
 		'version' => '10.2.0.0',

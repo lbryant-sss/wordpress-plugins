@@ -1359,7 +1359,7 @@ function kubio_load_block_bindings_sources() {
 		?>
 		<script>
 			(function() {
-				var kubioBindingSources = JSON.parse('<?php echo $encoded_data; ?>');
+				var kubioBindingSources = JSON.parse('<?php echo wp_kses_post($encoded_data); ?>');
 
 				let bindingSourcesAreSupported = wp.blocks && wp.blocks.getBlockBindingsSource && wp.blocks.registerBlockBindingsSource;
 				if (!bindingSourcesAreSupported) {
@@ -1371,6 +1371,8 @@ function kubio_load_block_bindings_sources() {
 			})()
 		</script>
 		<?php
+
+		// phpcs:disable WordPress.WP.AlternativeFunctions.strip_tags_strip_tags
 		$script = strip_tags( ob_get_clean() );
 		wp_add_inline_script(
 			'wp-blocks',

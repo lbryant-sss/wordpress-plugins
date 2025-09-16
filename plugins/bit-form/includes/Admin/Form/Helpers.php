@@ -563,6 +563,7 @@ LOAD_SECRIPT;
           'mn' => '<p style="margin:0">' . __('Select at least ${field.minimum} option(s)', 'bit-form') . '</p>',
           'mx' => '<p style="margin:0">' . __('Please, select no more than ${field.maximum} option(s)', 'bit-form') . '</p>',
         ],
+        'inputMask'   => '<p style="margin:0">' . __('Input does not match the required pattern', 'bit-form') . '</p>',
         'regexr'      => '<p style="margin:0">' . __('Input does not match the required pattern', 'bit-form') . '</p>',
         'minFile'     => '<p style="margin:0">' . __('Minimum ${field.minimum_file} file(s) required', 'bit-form') . '</p>',
         'maxFile'     => '<p style="margin:0">' . __('Maximum ${field.maximum_file} file(s) allowed', 'bit-form') . '</p>',

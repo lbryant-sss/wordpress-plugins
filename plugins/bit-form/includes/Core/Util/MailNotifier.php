@@ -4,6 +4,7 @@ namespace BitCode\BitForm\Core\Util;
 
 use BitCode\BitForm\Admin\Form\Helpers;
 use BitCode\BitForm\Core\Database\FormEntryMetaModel;
+use BitCode\BitForm\Core\Form\FormManager;
 use BitCode\BitForm\Core\Messages\EmailTemplateHandler;
 use BitCode\BitForm\Core\Messages\PdfTemplateHandler;
 use BitCode\BitFormPro\Admin\AppSetting\Pdf;
@@ -13,6 +14,7 @@ final class MailNotifier
   public static function notify($notifyDetails, $formID, $fieldValue, $entryID, $isDblOptin = false, $logId = '')
   {
     $apiResponse = new ApiResponse();
+    $formManager = FormManager::getInstance($formID);
     $entryDetails = ['formId' => $formID, 'entryId' => $entryID, 'fieldValues' => $fieldValue];
     $emailTemplateHandler = new EmailTemplateHandler($formID);
     $attachments = [];
@@ -48,12 +50,37 @@ final class MailNotifier
         }
         if (isset($pdfSetting->pdfFileName)) {
           $pdfSetting->pdfFileName = FieldValueHandler::replaceFieldWithValue($pdfSetting->pdfFileName, $fieldValue);
+          // allow developers to modify PDF filename
+          $pdfSetting->pdfFileName = apply_filters(
+            'bitform_filter_pdf_filename',
+            $pdfSetting->pdfFileName,
+            [
+              'form_id'      => $formID,
+              'entry_id'     => $entryID,
+              'field_values' => $fieldValue,
+              'pdf_setting'  => $pdfSetting,
+              'template'     => $pdfTemplate[0] ?? null,
+            ]
+          );
         }
 
         $fieldValue['entry_id'] = $entryID;
 
         $pdfBody = FieldValueHandler::replaceFieldWithValue($pdfTemplate[0]->body, $fieldValue, $formID);
         $pdfBody = FieldValueHandler::changeImagePathInHTMLString($pdfBody, $serverPath);
+
+        // allow developers to modify PDF body
+        $pdfBody = apply_filters(
+          'bitform_filter_pdf_body',
+          $pdfBody,
+          [
+            'form_id'      => $formID,
+            'entry_id'     => $entryID,
+            'field_values' => $fieldValue,
+            'pdf_setting'  => $pdfSetting,
+            'template'     => $pdfTemplate[0] ?? null,
+          ]
+        );
 
         $generatedPdf = Pdf::getInstance()->generator($pdfSetting, $pdfBody, $path, $entryID, 'F');
 
@@ -117,6 +144,19 @@ final class MailNotifier
           (new MailConfig())->sendMail(['from_name' => $from_name, 'from_email' => $from_mail]);
           $mailSubject = FieldValueHandler::replaceFieldWithValue($mailTemplate[0]->sub, $fieldValue, $formID);
 
+          // allow developers to modify email subject
+          $mailSubject = apply_filters(
+            'bitform_filter_email_subject',
+            $mailSubject,
+            [
+              'form_id'         => $formID,
+              'entry_id'        => $entryID,
+              'field_values'    => $fieldValue,
+              'template'        => $mailTemplate[0] ?? null,
+              'is_double_optin' => (bool) $isDblOptin,
+            ]
+          );
+
           $mailBody = $mailTemplate[0]->body;
           if (class_exists('\BitCode\BitFormPro\Admin\DownloadFile')) {
             $downloadFile = new \BitCode\BitFormPro\Admin\DownloadFile();
@@ -128,6 +168,18 @@ final class MailNotifier
           $webUrl = BITFORMS_UPLOAD_BASE_URL . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . $formID . DIRECTORY_SEPARATOR . Helpers::getEncryptedEntryId($entryID) . DIRECTORY_SEPARATOR;
           $mailBody = FieldValueHandler::changeImagePathInHTMLString($mailBody, $webUrl);
 
+          // allow developers to modify email body
+          $mailBody = apply_filters(
+            'bitform_filter_email_body',
+            $mailBody,
+            [
+              'form_id'         => $formID,
+              'entry_id'        => $entryID,
+              'field_values'    => $fieldValue,
+              'template'        => $mailTemplate[0] ?? null,
+              'is_double_optin' => (bool) $isDblOptin,
+            ]
+          );
           if (!empty($notifyDetails->replyto)) {
             $mailReplyTo = FieldValueHandler::validateMailArry($notifyDetails->replyto, $fieldValue);
             if (is_array($mailReplyTo)) {
@@ -167,32 +219,32 @@ final class MailNotifier
             }
           }
           if (!empty($notifyDetails->attachment)) {
-            $files = $notifyDetails->attachment;
+            $fileFldKeys = $notifyDetails->attachment;
             $fileBasePath = FileHandler::getEntriesFileUploadDir($formID, $entryID) . DIRECTORY_SEPARATOR;
 
-            if (is_array($files)) {
-              foreach ($files as $file) {
-                if (isset($fieldValue[$file])) {
-                  if (is_array($fieldValue[$file])) {
-                    foreach ($fieldValue[$file] as $singleFile) {
-                      if (\is_readable("{$fileBasePath}{$singleFile}")) {
-                        $attachments[] = "{$fileBasePath}{$singleFile}";
-                      }
-                    }
-                  } elseif (\is_readable("{$fileBasePath}{$fieldValue[$file]}")) {
-                    $attachments[] = "{$fileBasePath}{$fieldValue[$file]}";
-                  }
-                }
-              }
-            } elseif (isset($fieldValue[$files])) {
-              if (is_array($fieldValue[$files])) {
-                foreach ($fieldValue[$files] as $singleFile) {
-                  if (\is_readable("{$fileBasePath}{$singleFile}")) {
-                    $attachments[] = "{$fileBasePath}{$singleFile}";
-                  }
-                }
-              } elseif (\is_readable("{$fileBasePath}{$fieldValue[$files]}")) {
-                $attachments[] = "{$fileBasePath}{$fieldValue[$files]}";
+            // Normalize to array for consistent processing
+            $fileFldKeys = is_array($fileFldKeys) ? $fileFldKeys : [$fileFldKeys];
+
+            foreach ($fileFldKeys as $fldKey) {
+              $repeaterFieldKey = $formManager->isRepeatedField($fldKey);
+
+              if ($repeaterFieldKey) {
+                // Handle repeated file field
+                FileHandler::processRepeaterAttachment(
+                  $repeaterFieldKey,
+                  $fldKey,
+                  $fieldValue,
+                  $fileBasePath,
+                  $attachments
+                );
+              } else {
+                // Handle regular file field
+                FileHandler::processRegularAttachment(
+                  $fldKey,
+                  $fieldValue,
+                  $fileBasePath,
+                  $attachments
+                );
               }
             }
           }

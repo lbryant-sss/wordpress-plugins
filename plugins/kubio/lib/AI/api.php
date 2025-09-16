@@ -971,6 +971,7 @@ function kubio_ai_check_pages_exist( WP_REST_Request $request ) {
 	if ( ! empty( $pages ) ) {
 		foreach ( $pages as $page ) {
 			// get wp post by title
+			// phpcs:disable WordPress.WP.DeprecatedFunctions.get_page_by_titleFound
 			$post = get_page_by_title( $page, OBJECT, 'page' );
 
 			if ( $post ) {

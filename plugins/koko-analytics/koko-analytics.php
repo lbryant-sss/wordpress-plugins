@@ -3,7 +3,7 @@
 /*
 Plugin Name: Koko Analytics
 Plugin URI: https://www.kokoanalytics.com/#utm_source=wp-plugin&utm_medium=koko-analytics&utm_campaign=plugins-page
-Version: 2.0.13
+Version: 2.0.14
 Description: Privacy-friendly and efficient statistics for your WordPress site.
 Author: ibericode
 Author URI: https://www.ibericode.com/
@@ -38,7 +38,7 @@ use KokoAnalytics\Shortcodes\Most_Viewed_Posts;
 use KokoAnalytics\Shortcodes\Site_Counter;
 use KokoAnalytics\Widgets\Most_Viewed_Posts_Widget;
 
-\define('KOKO_ANALYTICS_VERSION', '2.0.13');
+\define('KOKO_ANALYTICS_VERSION', '2.0.14');
 \define('KOKO_ANALYTICS_PLUGIN_FILE', __FILE__);
 \define('KOKO_ANALYTICS_PLUGIN_DIR', __DIR__);
 
@@ -111,6 +111,11 @@ add_action('wp', function () {
 
     $settings = get_settings();
     if (!$settings['is_dashboard_public'] && !current_user_can('view_koko_analytics')) {
+        return;
+    }
+
+    // don't serve public dashboard to anything that looks like a bot or crawler
+    if (empty($_SERVER['HTTP_USER_AGENT']) || \preg_match("/bot|crawl|spider/", strtolower($_SERVER['HTTP_USER_AGENT']))) {
         return;
     }
 

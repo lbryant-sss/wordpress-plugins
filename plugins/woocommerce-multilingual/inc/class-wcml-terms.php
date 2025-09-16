@@ -93,7 +93,7 @@ class WCML_Terms {
 			$taxonomy_obj = get_taxonomy( $taxonomy );
 			$message      = sprintf(
 				/* translators: %1$s/%2$s and %3$s/%4$s are opening and closing HTML link tags */
-				__( 'To translate %1$s please use the %2$s translation%3$s page, inside the %4$sWooCommerce Multilingual & Multicurrency admin%5$s.', 'woocommerce-multilingual' ),
+				__( 'To translate %1$s please use the %2$s translation%3$s page, inside the %4$sWPML Multilingual & Multicurrency for WooCommerce admin%5$s.', 'woocommerce-multilingual' ),
 				$taxonomy_obj->labels->name,
 				'<strong><a href="' . \WCML\Utilities\AdminUrl::getTab( $taxonomy ) . '">' . $taxonomy_obj->labels->singular_name,
 				'</a></strong>',

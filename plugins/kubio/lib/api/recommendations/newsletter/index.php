@@ -72,16 +72,11 @@ function kubio_api_prepare_newsletter_plugin( WP_REST_Request $request ) {
 		$popups = kubio_get_recommendation_newsletters();
 
 		$errors = ob_get_clean();
-		if ( ! empty( $errors ) ) {
-			error_log( $errors );
-		}
 
 		wp_send_json_success( $popups );
 	} catch ( Exception $e ) {
 		$errors = ob_get_clean();
-		if ( ! empty( $errors ) ) {
-			error_log( $errors );
-		}
+
 		wp_send_json_error( $e->getMessage(), 400 );
 	}
 }

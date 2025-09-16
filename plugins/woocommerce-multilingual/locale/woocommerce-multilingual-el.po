@@ -1,23 +1,25 @@
 # Copyright (C) 2025 OnTheGoSystems
-# This file is distributed under the same license as the WooCommerce Multilingual & Multicurrency plugin.
+# This file is distributed under the same license as the WPML Multilingual & Multicurrency for WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce Multilingual & Multicurrency 5.5.0\n"
+"Project-Id-Version: WPML Multilingual & Multicurrency for WooCommerce 5.5.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce-multilingual\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-06-20T11:43:42-03:00\n"
+"POT-Creation-Date: 2025-09-08T14:03:48-03:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: woocommerce-multilingual\n"
+"Language: el\n"
 
 #. Plugin Name of the plugin
+#: classes/AdminNotices/ExportImport.php:194
 #: inc/admin-menus/class-wcml-admin-menus.php:358
-msgid "WooCommerce Multilingual & Multicurrency"
-msgstr "WooCommerce Πολύγλωσσο & Πολυνομισματικό"
+msgid "WPML Multilingual & Multicurrency for WooCommerce"
+msgstr "WPML Multilingual & Multicurrency for WooCommerce"
 
 #. Plugin URI of the plugin
 msgid "https://wpml.org/documentation/related-projects/woocommerce-multilingual/?utm_source=plugin&utm_medium=gui&utm_campaign=wcml"
@@ -36,8 +38,8 @@ msgid "http://www.onthegosystems.com/"
 msgstr "http://www.onthegosystems.com/"
 
 #: classes/AdminNotices/CachePlugins.php:33
-msgid "WooCommerce Multilingual & Multicurrency detected an active cache plugin on your site."
-msgstr "Το WooCommerce Multilingual & Multicurrency εντόπισε ένα ενεργό πρόσθετο κρυφής μνήμης (cache) στον ιστότοπό σας."
+msgid "WPML Multilingual & Multicurrency for WooCommerce detected an active cache plugin on your site."
+msgstr "Το WPML Multilingual & Multicurrency for WooCommerce εντόπισε ένα ενεργό πρόσθετο προσωρινής μνήμης στον ιστότοπό σας."
 
 #: classes/AdminNotices/CachePlugins.php:34
 msgid "Caching may cause currency display issues for your customers if you are using the multicurrency feature."
@@ -52,8 +54,8 @@ msgid "Important: Action Needed for Your Currency Switcher"
 msgstr "Σημαντικό: ενέργεια που απαιτείται για την αλλαγή νομίσματος"
 
 #: classes/AdminNotices/CurrencySwitcherUseTwigTemplate.php:49
-msgid "We detected that your site is using a Currency Switcher built with Twig templates. For security reasons, support for Twig-based templates will be discontinued in the upcoming version of WooCommerce Multilingual 5.6."
-msgstr "Εντοπίσαμε ότι ο ιστότοπός σας χρησιμοποιεί έναν Εναλλάκτη Νομίσματος που έχει δημιουργηθεί με πρότυπα Twig. Για λόγους ασφαλείας, η υποστήριξη για πρότυπα βασισμένα σε Twig θα διακοπεί στην επερχόμενη έκδοση του WooCommerce Multilingual 5.6."
+msgid "We detected that your site is using a Currency Switcher built with Twig templates. For security reasons, support for Twig-based templates will be discontinued in the upcoming version of WPML Multilingual & Multicurrency for WooCommerce 5.6."
+msgstr "Εντοπίσαμε ότι ο ιστότοπός σας χρησιμοποιεί έναν Εναλλάκτη Νομισμάτων που έχει δημιουργηθεί με πρότυπα Twig. Για λόγους ασφαλείας, η υποστήριξη για πρότυπα βασισμένα σε Twig θα διακοπεί στην επερχόμενη έκδοση του WPML Multilingual & Multicurrency for WooCommerce 5.6."
 
 #: classes/AdminNotices/CurrencySwitcherUseTwigTemplate.php:50
 msgid "To ensure your Currency Switcher continues working smoothly:"
@@ -70,8 +72,8 @@ msgid "- Need a custom solution? %1$sContact our support%2$s - we’re here to h
 msgstr "- Χρειάζεστε μια προσαρμοσμένη λύση; %1$sΕπικοινωνήστε με την υποστήριξή μας%2$s - είμαστε εδώ για να σας βοηθήσουμε να μεταβείτε με ασφάλεια."
 
 #: classes/AdminNotices/CurrencySwitcherUseTwigTemplate.php:70
-msgid "We recommend updating your Currency Switcher as soon as possible to avoid disruptions when the new version of WooCommerce Multilingual is released."
-msgstr "Συνιστούμε να ενημερώσετε τον Εναλλάκτη Νομίσματος σας το συντομότερο δυνατό για να αποφύγετε διαταραχές όταν κυκλοφορήσει η νέα έκδοση του WooCommerce Multilingual."
+msgid "We recommend updating your Currency Switcher as soon as possible to avoid disruptions when the new version of WPML Multilingual & Multicurrency for WooCommerce is released."
+msgstr "Συνιστούμε να ενημερώσετε τον Εναλλάκτη Νομισμάτων σας το συντομότερο δυνατό για να αποφύγετε διακοπές όταν κυκλοφορήσει η νέα έκδοση του WPML Multilingual & Multicurrency for WooCommerce."
 
 #. translators: %s is a link.
 #: classes/AdminNotices/ExportImport.php:161
@@ -87,10 +89,6 @@ msgstr "Θέλετε να εισάγετε το πολύγλωσσο κατάσ�
 msgid "WPML Export and Import"
 msgstr "Εξαγωγή και Εισαγωγή WPML"
 
-#: classes/AdminNotices/ExportImport.php:194
-msgid "WooCommerce Multilingual"
-msgstr "Πολύγλωσσο WooCommerce"
-
 #: classes/AdminNotices/MultiCurrencyMissing.php:45
 msgid "You haven't added any secondary currencies"
 msgstr "Δεν έχει προσθέσει κανένα δευτερεύον νόμισμα"
@@ -104,8 +102,8 @@ msgid "Configure multicurrency mode"
 msgstr "Ρυθμίστε την λειτουργία πολλαπλών νομισμάτων"
 
 #: classes/AdminNotices/Review.php:47
-msgid "Review WooCommerce Multilingual & Multicurrency"
-msgstr "Αξιολογήστε το WooCommerce Multilingual & Multicurrency"
+msgid "Review WPML Multilingual & Multicurrency for WooCommerce"
+msgstr "Αξιολογήστε το WPML Multilingual & Multicurrency for WooCommerce"
 
 #: classes/AdminNotices/Review.php:58
 msgid "Congrats on making your first multicurrency sale!"
@@ -113,16 +111,16 @@ msgstr "Συγχαρητήρια για την πρώτη σας πολυνομ�
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
 #: classes/AdminNotices/Review.php:64
-msgid "Want to help <strong>WooCommerce Multilingual & Multicurrency</strong> plugin? %1$sGive us a review%2$s!"
-msgstr "Θέλετε να βοηθήσετε το πρόσθετο <strong>WooCommerce Πολύγλωσσο & Πολυνομισματικό</strong>; %1$sΔώστε μας μια κριτική%2$s!"
+msgid "Want to help <strong>WPML Multilingual & Multicurrency for WooCommerce</strong> plugin? %1$sGive us a review%2$s!"
+msgstr "Θέλετε να βοηθήσετε το πρόσθετο <strong>WPML Multilingual & Multicurrency for WooCommerce</strong>; %1$sΔώστε μας μια αξιολόγηση%2$s!"
 
 #: classes/AdminNotices/TranslationControlMovedNotice.php:57
 msgid "The Translation Controls Have Moved"
 msgstr "Τα Στοιχεία Ελέγχου Μετάφρασης Έχουν Μετακινηθεί"
 
 #: classes/AdminNotices/TranslationControlMovedNotice.php:59
-msgid "We updated WooCommerce Multilingual to streamline your translation work."
-msgstr "Ενημερώσαμε το WooCommerce Multilingual για να απλοποιήσουμε τη διαδικασία μετάφρασης."
+msgid "We updated WPML Multilingual & Multicurrency for WooCommerce to streamline your translation work."
+msgstr "Ενημερώσαμε το WPML Multilingual & Multicurrency for WooCommerce για να απλοποιήσουμε την εργασία μετάφρασής σας."
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
 #: classes/AdminNotices/TranslationControlMovedNotice.php:65
@@ -248,8 +246,8 @@ msgid "Costs and values in custom currencies"
 msgstr "Κόστος και αξίες σε προσαρμοσμένα νομίσματα"
 
 #: classes/Multicurrency/Shipping/AdminHooks.php:74
-msgid "WooCommerce Multilingual & Multicurrency by default will multiply all your costs and values defined above by currency exchange rates. If you don't want this and you prefer static values instead, you can define them here."
-msgstr "Το Woocommerce Multilingual & Multicurrency θα πολλαπλασιάζει από προεπιλογή όλα τα κόστη σας και τις τιμές που έχουν οριστεί παραπάνω με τις συναλλαγματικές ισοτιμίες. Αν δεν θέλετε να γίνεται αυτό και προτιμάτε στατικές τιμές, μπορείτε να τις ορίσετε εδώ."
+msgid "WPML Multilingual & Multicurrency for WooCommerce by default will multiply all your costs and values defined above by currency exchange rates. If you don't want this and you prefer static values instead, you can define them here."
+msgstr "Το WPML Multilingual & Multicurrency for WooCommerce από προεπιλογή θα πολλαπλασιάζει όλα τα κόστη και τις τιμές που ορίζονται παραπάνω με τις συναλλαγματικές ισοτιμίες. Αν δεν το επιθυμείτε αυτό και προτιμάτε στατικές τιμές, μπορείτε να τις ορίσετε εδώ."
 
 #: classes/Multicurrency/Shipping/AdminHooks.php:88
 msgid "Enable costs in custom currencies"
@@ -629,8 +627,8 @@ msgid "Error saving settings."
 msgstr "Σφάλμα κατά την αποθήκευση των ρυθμίσεων."
 
 #: classes/PaymentGateways/Hooks.php:257
-msgid "We noticed that you're using WooCommerce Gateways Country Limiter plugin which is now integrated into WooCommerce Multilingual & Multicurrency. Please remove it!"
-msgstr "Παρατηρήσαμε ότι χρησιμοποιείτε το πρόσθετο WooCommerce Gateways Country Limiter, το οποίο πλέον είναι ενσωματωμένο στο WooCommerce Multilingual & Multicurrency. Αφαιρέστε το!"
+msgid "We noticed that you're using WooCommerce Gateways Country Limiter plugin which is now integrated into WPML Multilingual & Multicurrency for WooCommerce. Please remove it!"
+msgstr "Παρατηρήσαμε ότι χρησιμοποιείτε το πρόσθετο WooCommerce Gateways Country Limiter, το οποίο τώρα είναι ενσωματωμένο στο WPML Multilingual & Multicurrency for WooCommerce. Παρακαλούμε αφαιρέστε το!"
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
 #: classes/PaymentGateways/Strings.php:33
@@ -639,13 +637,13 @@ msgstr "Για να μεταφράσετε προσαρμοσμένο κείμε
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
 #: classes/Permalinks/Settings/TranslationControls.php:63
-msgid "To translate permalinks for product taxonomies, go to %1$sWooCommerce Multilingual & Multicurrency → Store URLs%2$s."
-msgstr "Για να μεταφράσετε τους μόνιμους συνδέσμους για τις ταξινομίες προϊόντων, πηγαίνετε στο %1$sWooCommerce Πολύγλωσσο & Πολυνομισματικό → URL Καταστήματος%2$s."
+msgid "To translate permalinks for product taxonomies, go to %1$sWPML Multilingual & Multicurrency for WooCommerce → Store URLs%2$s."
+msgstr "Για να μεταφράσετε μόνιμους συνδέσμους για ταξινομίες προϊόντων, μεταβείτε στο %1$sWPML Multilingual & Multicurrency for WooCommerce → Διευθύνσεις URL καταστήματος%2$s."
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
 #: classes/Permalinks/Settings/TranslationControls.php:71
-msgid "To translate product permalinks, go to %1$sWooCommerce Multilingual & Multicurrency → Store URLs%2$s."
-msgstr "Για να μεταφράσετε τους μόνιμους συνδέσμους προϊόντων, πηγαίνετε στο %1$sWooCommerce Πολύγλωσσο & Πολυνομισματικό → URL Καταστήματος%2$s."
+msgid "To translate product permalinks, go to %1$sWPML Multilingual & Multicurrency for WooCommerce → Store URLs%2$s."
+msgstr "Για να μεταφράσετε μόνιμους συνδέσμους προϊόντων, μεταβείτε στο %1$sWPML Multilingual & Multicurrency for WooCommerce → Διευθύνσεις URL καταστήματος%2$s."
 
 #: classes/Permalinks/Settings/TranslationControls.php:81
 msgid "How to translate permalinks for product taxonomies"
@@ -677,12 +675,12 @@ msgid "How to translate this?"
 msgstr "Πώς να μεταφραστεί αυτό;"
 
 #: classes/privacy/class-wcml-privacy-content.php:20
-msgid "WooCommerce Multilingual & Multicurrency will use cookies to understand the basket info when using languages in domains and to transfer data between the domains."
-msgstr "Το WooCommerce Multilingual & Multicurrency θα χρησιμοποιεί cookie για να κατανοεί τα στοιχεία του καλαθιού αγορών όταν χρησιμοποιούνται γλώσσες σε τομείς και για τη μεταφορά δεδομένων μεταξύ των τομέων."
+msgid "WPML Multilingual & Multicurrency for WooCommerce will use cookies to understand the basket info when using languages in domains and to transfer data between the domains."
+msgstr "Το WPML Multilingual & Multicurrency for WooCommerce θα χρησιμοποιεί cookies για να κατανοήσει τις πληροφορίες του καλαθιού όταν χρησιμοποιούνται γλώσσες σε τομείς και για να μεταφέρει δεδομένα μεταξύ των τομέων."
 
 #: classes/privacy/class-wcml-privacy-content.php:21
-msgid "WooCommerce Multilingual & Multicurrency will also use cookies to identify the language and currency of each customer’s order as well as the currency of the reports created by WooCommerce. WooCommerce Multilingual extends these reports by adding the currency’s information."
-msgstr "Το WooCommerce Multilingual & Multicurrency θα χρησιμοποιεί επίσης cookie για να αναγνωρίζει τη γλώσσα και το νόμισμα της παραγγελίας κάθε πελάτη, καθώς και το νόμισμα των αναφορών που δημιουργεί το WooCommerce. Το WooCommerce Multilingual επεκτείνει αυτές τις αναφορές, προσθέτοντας τα στοιχεία του νομίσματος."
+msgid "WPML Multilingual & Multicurrency for WooCommerce will also use cookies to identify the language and currency of each customer’s order as well as the currency of the reports created by WooCommerce. WPML Multilingual & Multicurrency for WooCommerce extends these reports by adding the currency’s information."
+msgstr "Το WPML Multilingual & Multicurrency for WooCommerce θα χρησιμοποιεί επίσης cookies για να αναγνωρίζει τη γλώσσα και το νόμισμα κάθε παραγγελίας πελάτη καθώς και το νόμισμα των αναφορών που δημιουργούνται από το WooCommerce. Το WPML Multilingual & Multicurrency for WooCommerce επεκτείνει αυτές τις αναφορές προσθέτοντας τις πληροφορίες του νομίσματος."
 
 #. translators: $s is a currency code
 #: classes/Rest/Exceptions/InvalidCurrency.php:16
@@ -751,8 +749,8 @@ msgstr "Μεταφράζετε%1$s; Χρησιμοποιήστε τον πίνα
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
 #: classes/TMDashboard/Hooks.php:58
-msgid "To translate product details, including their taxonomy, use this dashboard. If you need to translate taxonomy independently or adjust store and currency settings, visit: %1$sWooCommerce Multilingual documentation%2$s."
-msgstr "Για να μεταφράσετε λεπτομέρειες προϊόντων, συμπεριλαμβανομένης της ταξινομίας τους, χρησιμοποιήστε αυτόν τον πίνακα ελέγχου. Εάν χρειάζεται να μεταφράσετε την ταξινομία ανεξάρτητα ή να προσαρμόσετε τις ρυθμίσεις καταστήματος και νομίσματος, επισκεφθείτε: %1$sΤεκμηρίωση WooCommerce Multilingual%2$s."
+msgid "To translate product details, including their taxonomy, use this dashboard. If you need to translate taxonomy independently or adjust store and currency settings, visit: %1$sWPML Multilingual & Multicurrency for WooCommerce documentation%2$s."
+msgstr "Για να μεταφράσετε λεπτομέρειες προϊόντων, συμπεριλαμβανομένης της ταξινομίας τους, χρησιμοποιήστε αυτόν τον πίνακα ελέγχου. Εάν χρειάζεται να μεταφράσετε την ταξινομία ανεξάρτητα ή να προσαρμόσετε τις ρυθμίσεις καταστήματος και νομίσματος, επισκεφθείτε: %1$sτεκμηρίωση του WPML Multilingual & Multicurrency for WooCommerce%2$s."
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
 #: classes/TranslationControls/Hooks.php:123
@@ -858,12 +856,12 @@ msgid "Resources label"
 msgstr "Ετικέτα πόρων"
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
-#: compatibility/WcBookings/class-wcml-bookings.php:1382
+#: compatibility/WcBookings/class-wcml-bookings.php:1428
 msgid "To translate Resources, go to the %1$sTranslation Dashboard%2$s and send the associated product for translation."
 msgstr "Για να μεταφράσετε Πόρους, μεταβείτε στον %1$sΠίνακα Ελέγχου Μετάφρασης%2$s και στείλτε το σχετικό προϊόν για μετάφραση."
 
 #. translators: %1$s and %2$s are opening and closing HTML link tags
-#: compatibility/WcBookings/class-wcml-bookings.php:1395
+#: compatibility/WcBookings/class-wcml-bookings.php:1441
 msgid "To translate Person Types, go to the %1$sTranslation Dashboard%2$s and send the associated product for translation."
 msgstr "Για να μεταφράσετε Τύπους Προσώπων, μεταβείτε στον %1$sΠίνακα Ελέγχου Μετάφρασης%2$s και στείλτε το σχετικό προϊόν για μετάφραση."
 
@@ -1036,8 +1034,8 @@ msgid "It is recommended that you %s with the option to reset the cart in a situ
 msgstr "Σε τέτοιες περιπτώσεις, προτείνεται να %s με την επιλογή επαναφοράς του καλαθιού."
 
 #: inc/class-wcml-cart-sync-warnings.php:77
-msgid "configure WooCommerce Multilingual & Multicurrency"
-msgstr "διαμορφώστε το WooCommerce Multilingual & Multicurrency"
+msgid "configure WPML Multilingual & Multicurrency for WooCommerce"
+msgstr "διαμόρφωση του WPML Multilingual & Multicurrency for WooCommerce"
 
 #: inc/class-wcml-cart-sync-warnings.php:84
 msgid "More details"
@@ -1076,22 +1074,22 @@ msgstr "μεταφράστηκε"
 
 #. translators: %1$s is a URL and %2$s is a version number
 #: inc/class-wcml-dependencies.php:113
-msgid "WooCommerce Multilingual & Multicurrency is enabled but not effective. It is not compatible with  <a href=\"%1$s\">WPML</a> versions prior %2$s."
-msgstr "Το WooCommerce Multilingual & Multicurrency έχει ενεργοποιηθεί αλλά δεν έχει τεθεί σε ισχύ. Δεν είναι συμβατό με εκδόσεις του <a href=\"%1$s\">WPML</a> πριν το %2$s."
+msgid "WPML Multilingual & Multicurrency for WooCommerce is enabled but not effective. It is not compatible with  <a href=\"%1$s\">WPML</a> versions prior %2$s."
+msgstr "Το WPML Multilingual & Multicurrency for WooCommerce είναι ενεργοποιημένο αλλά δεν είναι αποτελεσματικό. Δεν είναι συμβατό με εκδόσεις <a href=\"%1$s\">WPML</a> πριν από την %2$s."
 
 #: inc/class-wcml-dependencies.php:129
-msgid "WooCommerce Multilingual & Multicurrency is enabled but not effective. Please finish the installation of WPML first."
-msgstr "Το WooCommerce Multilingual & Multicurrency έχει ενεργοποιηθεί αλλά δεν έχει τεθεί σε ισχύ. Ολοκληρώστε πρώτα την εγκατάσταση του WPML."
+msgid "WPML Multilingual & Multicurrency for WooCommerce is enabled but not effective. Please finish the installation of WPML first."
+msgstr "Το WPML Multilingual & Multicurrency for WooCommerce είναι ενεργοποιημένο αλλά δεν είναι αποτελεσματικό. Παρακαλούμε ολοκληρώστε πρώτα την εγκατάσταση του WPML."
 
 #. translators: %1$s is a URL and %2$s is a version number
 #: inc/class-wcml-dependencies.php:141
-msgid "WooCommerce Multilingual & Multicurrency is enabled but not effective. It is not compatible with  <a href=\"%1$s\">Woocommerce</a> versions prior %2$s."
-msgstr "Το WooCommerce Multilingual & Multicurrency έχει ενεργοποιηθεί αλλά δεν έχει τεθεί σε ισχύ. Δεν είναι συμβατό με εκδόσεις του <a href=\"%1$s\">Woocommerce</a> πριν το %2$s."
+msgid "WPML Multilingual & Multicurrency for WooCommerce is enabled but not effective. It is not compatible with  <a href=\"%1$s\">Woocommerce</a> versions prior %2$s."
+msgstr "Το WPML Multilingual & Multicurrency for WooCommerce είναι ενεργοποιημένο αλλά δεν είναι αποτελεσματικό. Δεν είναι συμβατό με εκδόσεις <a href=\"%1$s\">Woocommerce</a> πριν από την %2$s."
 
 #. translators: %1$s is a URL and %2$s is a version number
 #: inc/class-wcml-dependencies.php:161
-msgid "WooCommerce Multilingual & Multicurrency is enabled but not effective. It is not compatible with  <a href=\"%1$s\">WPML String Translation</a> versions prior %2$s."
-msgstr "Το WooCommerce Multilingual & Multicurrency έχει ενεργοποιηθεί αλλά δεν έχει τεθεί σε ισχύ. Δεν είναι συμβατό με εκδόσεις του <a href=\"%1$s\">WPML String Translation</a> πριν το %2$s."
+msgid "WPML Multilingual & Multicurrency for WooCommerce is enabled but not effective. It is not compatible with  <a href=\"%1$s\">WPML String Translation</a> versions prior %2$s."
+msgstr "Το WPML Multilingual & Multicurrency for WooCommerce είναι ενεργοποιημένο αλλά δεν είναι αποτελεσματικό. Δεν είναι συμβατό με εκδόσεις <a href=\"%1$s\">WPML String Translation</a> πριν από την %2$s."
 
 #: inc/class-wcml-dependencies.php:190
 msgid "WPML support"
@@ -1139,8 +1137,8 @@ msgstr "και"
 
 #. translators: %s is a list of plugin names
 #: inc/class-wcml-dependencies.php:241
-msgid "WooCommerce Multilingual & Multicurrency is enabled but not effective. It requires %s in order to work."
-msgstr "Το WooCommerce Multilingual & Multicurrency έχει ενεργοποιηθεί αλλά δεν έχει τεθεί σε ισχύ. Απαιτείται %s για να είναι δυνατή η λειτουργία του."
+msgid "WPML Multilingual & Multicurrency for WooCommerce is enabled but not effective. It requires %s in order to work."
+msgstr "Το WPML Multilingual & Multicurrency for WooCommerce είναι ενεργοποιημένο αλλά δεν είναι αποτελεσματικό. Απαιτεί %s για να λειτουργήσει."
 
 #: inc/class-wcml-dependencies.php:266
 msgid "Because this site uses the default permalink structure, you cannot use slug translation for product permalinks."
@@ -1159,8 +1157,8 @@ msgid "Configure products slug translation"
 msgstr "Διαμόρφωση μετάφρασης μόνιμων συνδέσμων προϊόντων"
 
 #: inc/class-wcml-dependencies.php:303
-msgid "wpml-config.xml file missing from WooCommerce Multilingual & Multicurrency folder."
-msgstr "Το αρχείο wpml-config.xml λείπει από τον φάκελο WooCommerce Multilingual & Multicurrency."
+msgid "wpml-config.xml file missing from WPML Multilingual & Multicurrency for WooCommerce folder."
+msgstr "Το αρχείο wpml-config.xml λείπει από τον φάκελο του WPML Multilingual & Multicurrency for WooCommerce."
 
 #. translators: %s is a field name
 #: inc/class-wcml-dependencies.php:331
@@ -1184,8 +1182,8 @@ msgstr "Εντοπίσαμε ένα πρόβλημα στις ρυθμίσεις
 
 #. translators: %1$s and %2$s are opening and closing HTML italic tags and %3$s and %4$s are opening and closing HTML link tags
 #: inc/class-wcml-install.php:291
-msgid "We detected that the %1$sproduct_type%2$s field was set incorrectly for some product translations. This happened because the product_type taxonomy was translated. You can fix this in the WooCommerce Multilingual & Multicurrency %3$stroubleshooting page%4$s."
-msgstr "Εντοπίσαμε ότι το πεδίο %1$sproduct_type%2$s είχε οριστεί λανθασμένα για μερικές μεταφράσεις προϊόντων. Αυτό συνέβη επειδή η ταξινομία product_type είχε μεταφραστεί. Μπορείτε να διορθώσετε αυτό το πρόβλημα στη %3$sσελίδα αντιμετώπισης προβλημάτων%4$s του WooCommerce Multilingual & Multicurrency."
+msgid "We detected that the %1$sproduct_type%2$s field was set incorrectly for some product translations. This happened because the product_type taxonomy was translated. You can fix this in the WPML Multilingual & Multicurrency for WooCommerce %3$stroubleshooting page%4$s."
+msgstr "Εντοπίσαμε ότι το πεδίο %1$sproduct_type%2$s είχε οριστεί λανθασμένα για ορισμένες μεταφράσεις προϊόντων. Αυτό συνέβη επειδή η ταξινομία product_type μεταφράστηκε. Μπορείτε να το διορθώσετε στη σελίδα αντιμετώπισης προβλημάτων του WPML Multilingual & Multicurrency for WooCommerce %3$sσελίδα αντιμετώπισης προβλημάτων%4$s."
 
 #: inc/class-wcml-languages-upgrader.php:248
 msgid "Downloading translations... Please don't close this page."
@@ -1195,25 +1193,25 @@ msgstr "Γίνεται λήψη μεταφράσεων... Μην κλείσετ�
 msgid "All the products will be removed from the current order in order to change the language"
 msgstr "Όλα τα προϊόντα θα απομακρυνθούν από την τρέχουσα σειρά προκειμένου να γίνει αλλαγή γλώσσας"
 
-#: inc/class-wcml-products.php:196
+#: inc/class-wcml-products.php:200
 #: inc/template-classes/store-urls/class-wcml-store-urls-translation-statuses-ui.php:56
 msgid "Original language"
 msgstr "Αρχική γλώσσα"
 
-#: inc/class-wcml-products.php:235
+#: inc/class-wcml-products.php:239
 msgid "Translation in progress"
 msgstr "Μετάφραση σε εξέλιξη"
 
-#: inc/class-wcml-products.php:251
+#: inc/class-wcml-products.php:255
 msgid "Take this and edit"
 msgstr "Αποδοχή εργασίας και μετάφραση"
 
 #. translators: %s is the post title
-#: inc/class-wcml-products.php:314
+#: inc/class-wcml-products.php:318
 msgid "Quick edit \"%s\" inline"
 msgstr "Γρήγορη επεξεργασία “%s” inline"
 
-#: inc/class-wcml-products.php:318
+#: inc/class-wcml-products.php:322
 msgid "Quick Edit"
 msgstr "Γρήγορη επεξεργασία"
 
@@ -1296,8 +1294,8 @@ msgstr "Για να μεταφράσετε γρήγορα αυτήν και άλ
 
 #. translators: %1$s/%2$s and %3$s/%4$s are opening and closing HTML link tags
 #: inc/class-wcml-terms.php:96
-msgid "To translate %1$s please use the %2$s translation%3$s page, inside the %4$sWooCommerce Multilingual & Multicurrency admin%5$s."
-msgstr "Για να μεταφράσετε %1$s χρησιμοποιήστε τη σελίδα %2$s μετάφρασης%3$s, εντός της %4$sδιαχείρισης του WooCommerce Multilingual & Multicurrency%5$s."
+msgid "To translate %1$s please use the %2$s translation%3$s page, inside the %4$sWPML Multilingual & Multicurrency for WooCommerce admin%5$s."
+msgstr "Για να μεταφράσετε %1$s παρακαλούμε χρησιμοποιήστε τη σελίδα μετάφρασης %2$s%3$s, μέσα στο %4$sδιαχειριστικό του WPML Multilingual & Multicurrency for WooCommerce%5$s."
 
 #. translators: %d is a number of products
 #: inc/class-wcml-terms.php:467
@@ -1335,8 +1333,8 @@ msgid "Successfully updated %1$s for all translated %2$s."
 msgstr "Το %1$s ενημερώθηκε επιτυχώς για όλα τα μεταφρασμένα %2$s."
 
 #: inc/class-wcml-upgrade.php:71
-msgid "Looks like you are upgrading from a previous version of WooCommerce Multilingual & Multicurrency. Would you like to automatically create translated variations and images?"
-msgstr "Φαίνεται πως αναβαθμίζετε μια παλαιότερη έκδοση του WooCommerce Multilingual & Multicurrency. Θα θέλατε να δημιουργηθούν αυτόματα μεταφρασμένες παραλλαγές και εικόνες;"
+msgid "Looks like you are upgrading from a previous version of WPML Multilingual & Multicurrency for WooCommerce. Would you like to automatically create translated variations and images?"
+msgstr "Φαίνεται ότι κάνετε αναβάθμιση από μια προηγούμενη έκδοση του WPML Multilingual & Multicurrency for WooCommerce. Θα θέλατε να δημιουργήσετε αυτόματα μεταφρασμένες παραλλαγές και εικόνες;"
 
 #: inc/class-wcml-upgrade.php:73
 msgid "Yes, go to the troubleshooting page"
@@ -1527,8 +1525,8 @@ msgid "Translatable?"
 msgstr "Μεταφράσιμο;"
 
 #: inc/template-classes/class-wcml-not-translatable-attributes.php:32
-msgid "Enable this if you want to translate attribute values with WooCommerce Multilingual & Multicurrency"
-msgstr "Ενεργοποιήστε το αν θέλετε να μεταφράζετε τιμές χαρακτηριστικών με το WooCommerce Multilingual & Multicurrency"
+msgid "Enable this if you want to translate attribute values with WPML Multilingual & Multicurrency for WooCommerce"
+msgstr "Ενεργοποιήστε αυτό αν θέλετε να μεταφράσετε τιμές χαρακτηριστικών με το WPML Multilingual & Multicurrency for WooCommerce"
 
 #: inc/template-classes/class-wcml-not-translatable-attributes.php:33
 msgid "Existing translations and variations associated will be deleted."
@@ -1662,8 +1660,8 @@ msgstr "Άκυρο (παραμονή με τον Επεξεργαστή μετα
 
 #. translators: %s is a taxonomy name
 #: inc/template-classes/class-wcml-st-taxonomy-ui.php:19
-msgid "Set different slugs in different languages for %s on WooCommerce Multilingual & Multicurrency URLs translations page"
-msgstr "Ορισμός διαφορετικών μόνιμων συνδέσμων σε διαφορετικές γλώσσες για %s στη σελίδα μεταφράσεων URL του WooCommerce Multilingual & Multicurrency"
+msgid "Set different slugs in different languages for %s on WPML Multilingual & Multicurrency for WooCommerce URLs translations page"
+msgstr "Ορίστε διαφορετικά slugs σε διαφορετικές γλώσσες για %s στη σελίδα μεταφράσεων διευθύνσεων URL του WPML Multilingual & Multicurrency for WooCommerce"
 
 #. translators: %s is an attribute name
 #: inc/template-classes/class-wcml-st-taxonomy-ui.php:27
@@ -1791,8 +1789,8 @@ msgid "Processing"
 msgstr "Επεξεργασία"
 
 #: inc/template-classes/class-wcml-troubleshooting-ui.php:104
-msgid "WooCommerce Multilingual & Multicurrency settings"
-msgstr "Ρυθμίσεις WooCommerce Multilingual & Multicurrency"
+msgid "WPML Multilingual & Multicurrency for WooCommerce settings"
+msgstr "Ρυθμίσεις WPML Multilingual & Multicurrency for WooCommerce"
 
 #. translators: The placeholder is the number of processed items.
 #: inc/template-classes/class-wcml-troubleshooting-ui.php:109
@@ -2259,8 +2257,8 @@ msgid "Finish"
 msgstr "ολοκλήρωση"
 
 #: inc/template-classes/setup/class-wcml-setup-header.php:38
-msgid "WooCommerce Multilingual & Multicurrency › Setup Wizard"
-msgstr "WooCommerce Multilingual & Multicurrency › Οδηγός εγκατάστασης"
+msgid "WPML Multilingual & Multicurrency for WooCommerce › Setup Wizard"
+msgstr "WPML Multilingual & Multicurrency for WooCommerce › Οδηγός εγκατάστασης"
 
 #: inc/template-classes/setup/class-wcml-setup-introduction-ui.php:11
 msgid "Let's make your WooCommerce store multilingual"
@@ -2333,8 +2331,8 @@ msgstr "Κάντε το κατάστημά σας πολύγλωσσο"
 
 #. translators: %1$s and %2$s are opening and closing HTML strong tags
 #: inc/template-classes/setup/class-wcml-setup-notice.php:15
-msgid "Set up %1$sWooCommerce Multilingual & Multicurrency%2$s to translate your store and add more currencies."
-msgstr "Ρυθμίστε το %1$sWooCommerce Multilingual & Multicurrency%2$s να μεταφράζει το κατάστημά σας και να προσθέτει περισσότερα νομίσματα."
+msgid "Set up %1$sWPML Multilingual & Multicurrency for WooCommerce%2$s to translate your store and add more currencies."
+msgstr "Ρυθμίστε το %1$sWPML Multilingual & Multicurrency for WooCommerce%2$s για να μεταφράσετε το κατάστημά σας και να προσθέσετε περισσότερα νομίσματα."
 
 #: inc/template-classes/setup/class-wcml-setup-notice.php:19
 msgid "Start the Setup Wizard"
@@ -2365,8 +2363,8 @@ msgid "Translate URLs"
 msgstr "Μετάφραση των URL"
 
 #: inc/template-classes/status/class-wcml-status-config-warnings-ui.php:51
-msgid "Running WooCommerce Multilingual & Multicurrency with default language other than English."
-msgstr "Εκτέλεση του WooCommerce Multilingual & Multicurrency με προεπιλεγμένη μια γλώσσα άλλη εκτός των αγγλικών."
+msgid "Running WPML Multilingual & Multicurrency for WooCommerce with default language other than English."
+msgstr "Εκτέλεση του WPML Multilingual & Multicurrency for WooCommerce με προεπιλεγμένη γλώσσα διαφορετική από τα Αγγλικά."
 
 #: inc/template-classes/status/class-wcml-status-config-warnings-ui.php:52
 msgid "This may cause problems with URLs in different languages."
@@ -2381,8 +2379,8 @@ msgid "There are some settings that require careful attention."
 msgstr "Υπάρχουν μερικές ρυθμίσεις που απαιτούν αυξημένη προσοχή."
 
 #: inc/template-classes/status/class-wcml-status-config-warnings-ui.php:55
-msgid "Some settings from the WooCommerce Multilingual & Multicurrency wpml-config.xml file have been overwritten."
-msgstr "Ορισμένες ρυθμίσεις από το WooCommerce Multilingual & Multicurrency wpml-config. xml έχουν αντικατασταθεί."
+msgid "Some settings from the WPML Multilingual & Multicurrency for WooCommerce wpml-config.xml file have been overwritten."
+msgstr "Ορισμένες ρυθμίσεις από το αρχείο wpml-config.xml του WPML Multilingual & Multicurrency for WooCommerce έχουν αντικατασταθεί."
 
 #. translators: %s is link to Multilingual Content Setup
 #: inc/template-classes/status/class-wcml-status-config-warnings-ui.php:57
@@ -2404,8 +2402,8 @@ msgstr "Το %s δεν είναι ενεργό."
 
 #. translators: %s is a plugin name
 #: inc/template-classes/status/class-wcml-status-media-ui.php:31
-msgid "%s is not required in order to run WooCommerce Multilingual & Multicurrency but it’s recommended if you want to use separate product images and galleries for different languages."
-msgstr "Δεν απαιτείται το %s για να τρέξετε το WooCommerce Multilingual & Multicurrency, αλλά ενδείκνυται εάν θέλετε να χρησιμοποιήσετε χωριστές εικόνες προϊόντων και συλλογές για διαφορετικές γλώσσες."
+msgid "%s is not required in order to run WPML Multilingual & Multicurrency for WooCommerce but it’s recommended if you want to use separate product images and galleries for different languages."
+msgstr "Το %s δεν απαιτείται για την εκτέλεση του WPML Multilingual & Multicurrency for WooCommerce, αλλά συνιστάται αν θέλετε να χρησιμοποιήσετε ξεχωριστές εικόνες προϊόντων και συλλογές για διαφορετικές γλώσσες."
 
 #. translators: %s is a plugin name
 #: inc/template-classes/status/class-wcml-status-media-ui.php:33
@@ -2459,8 +2457,8 @@ msgid "%s is not set up."
 msgstr "%s δεν έχει ρυθμιστεί."
 
 #: inc/template-classes/status/class-wcml-status-status-ui.php:37
-msgid "WooCommerce Multilingual & Multicurrency depends on several plugins to work. If any required plugin is missing, you should install and activate it."
-msgstr "Η λειτουργία του WooCommerce Multilingual & Multicurrency εξαρτάται από διάφορα πρόσθετα. Αν λείπει κάποιο απαιτούμενο πρόσθετο, θα πρέπει να το εγκαταστήσετε και να το ενεργοποιήσετε."
+msgid "WPML Multilingual & Multicurrency for WooCommerce depends on several plugins to work. If any required plugin is missing, you should install and activate it."
+msgstr "Το WPML Multilingual & Multicurrency for WooCommerce εξαρτάται από διάφορα πρόσθετα για να λειτουργήσει. Εάν λείπει κάποιο απαιτούμενο πρόσθετο, θα πρέπει να το εγκαταστήσετε και να το ενεργοποιήσετε."
 
 #: inc/template-classes/status/class-wcml-status-store-pages-ui.php:40
 msgid "WooCommerce Store Pages"

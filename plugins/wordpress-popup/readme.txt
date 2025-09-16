@@ -1,6 +1,6 @@
 === Hustle - Free Popup Builder & Optin Plugin for Email Marketing & Lead Generation Popups ===
 Plugin Name: Hustle - Free Popup Builder & Optin Plugin for Email Marketing & Lead Generation Popups
-Version: 7.8.7
+Version: 7.8.8
 Author: WPMU DEV
 Author URI: https://wpmudev.com/
 Contributors: WPMUDEV
@@ -8,7 +8,7 @@ Tags: popup,lead generation,marketing,optin,popups
 Requires at least: 6.4
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 7.8.7
+Stable tag: 7.8.8
 License: GPL v3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -214,6 +214,14 @@ We take plugin security incredibly seriously; if you have a bug or vulnerability
 6. Schema Type Builder
 
 == Changelog ==
+
+ = 7.8.8 ( 2025-09-08 )
+
+- Improve: Accessibility enhancements across plugin admin screens for better screen reader support.
+- Improve: Adjusted color contrast on UI elements to meet WCAG 2 AA standards.
+- Fix: Corrected ARIA attributes on form fields and buttons.
+- Fix: Conversion tracking not working when only a CTA button is present.
+- Fix: "Never see this again" cookie expiration date incorrectly tied to Closing behavior setting.
 
 = 7.8.7 ( 2025-04-25 ) =
 

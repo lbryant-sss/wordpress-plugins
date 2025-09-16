@@ -1,20 +1,16 @@
-=== WooCommerce Multilingual & Multicurrency with WPML ===
+=== WPML Multilingual & Multicurrency for WooCommerce ===
 Contributors: AmirHelzer, strategio, dgwatkins, andrewp-2
 Tags: commerce, ecommerce, woocommerce, multilingual, multicurrency
 License: GPLv2
 Requires at least: 6.0
 Tested up to: 6.8
-Stable tag: 5.5.1
+Stable tag: 5.5.1.1
 Requires PHP: 7.2
 
 Make your store multilingual and enable multiple currencies.
 
 == Description ==
 Everything you need to start selling internationally is in this plugin. Easily set up and manage products in multiple currencies, no matter the size of your store or the team running it. Or, upgrade by purchasing WPML and translate your entire store to reach new customers all over the world.
-
-See how it works in this short video:
-
-https://www.youtube.com/watch?v=NxkzEywVZSA
 
 = Free Multi-Currency Features =
 
@@ -28,7 +24,7 @@ This is the **only free plugin** that includes all of the following [multi-curre
 
 = Add WPML to Make Your Store Multilingual =
 
-Translate your entire store and unlock even more multicurrency features by pairing WooCommerce Multilingual & Multicurrency with [WPML](https://wpml.org) - the most popular translation plugin for WordPress sites:
+Translate your entire store and unlock even more multicurrency features by pairing WPML Multilingual & Multicurrency for WooCommerce with [WPML](https://wpml.org) - the most popular translation plugin for WordPress sites:
 
 * Translate all WooCommerce products (simple, variable, grouped, external)
 * Translate all store URLs and endpoints
@@ -44,11 +40,11 @@ Translate your entire store and unlock even more multicurrency features by pairi
 
 To get all multilingual features, you will need a [WPML Multilingual CMS or Multilingual Agency account type](https://wpml.org/purchase).
 
-Read more about [translating your WooCommerce store with WPML and WooCommerce Multilingual](https://wpml.org/documentation/related-projects/woocommerce-multilingual/).
+Read more about [translating your WooCommerce store with WPML and WPML Multilingual & Multicurrency for WooCommerce](https://wpml.org/documentation/related-projects/woocommerce-multilingual/).
 
 = Compatibility With Woocommerce Extensions =
 
-Almost every WooCommerce store uses some extensions. WooCommerce Multilingual is fully compatible with popular extensions, including:
+Almost every WooCommerce store uses some extensions. WPML Multilingual & Multicurrency for WooCommerce is fully compatible with popular extensions, including:
 
 * [WooCommerce Subscriptions](https://wpml.org/documentation/woocommerce-extensions-compatibility/translating-woocommerce-subscriptions-woocommerce-multilingual/)
 * [WooCommerce Product Add-ons](https://wpml.org/documentation/woocommerce-extensions-compatibility/translating-woocommerce-product-add-ons-woocommerce-multilingual/)
@@ -62,14 +58,14 @@ Looking for other extensions that are tested and compatible with WPML? See the c
 
 == Screenshots ==
 1. Currency switcher on the front-end
-2. WooCommerce Multicurrency
+2. Multicurrency
 3. Adding a currency
 4. Adding currency switchers
 5. Currency switcher options
 6. Setting automatic exchange rates
 7. Setting custom prices in different currencies
 8. Setting custom shipping rates
-9. WCML standalone mode
+9. WPML Multilingual & Multicurrency for WooCommerce in standalone mode
 
 == Frequently Asked Questions ==
 = Does this work with other e-commerce plugins? =
@@ -108,7 +104,7 @@ Yes. By default, each currency will be available for all languages, but you can 
 
 = Is this plugin compatible with other WooCommerce extensions? =
 
-WooCommerce Multilingual is compatible with all major WooCommerce extensions. We’re continuously working on checking and maintaining compatibility and collaborate closely with the authors of these extensions.
+WPML Multilingual & Multicurrency for WooCommerce is compatible with all major WooCommerce extensions. We’re continuously working on checking and maintaining compatibility and collaborate closely with the authors of these extensions.
 
 == Installation ==
 = Minimum Requirements =
@@ -120,9 +116,9 @@ WooCommerce Multilingual is compatible with all major WooCommerce extensions. We
 
 = Setup =
 
-Install and activate “WooCommerce Multilingual & Multicurrency” on your WordPress site. Then, go to **WooCommerce &rarr; WooCommerce Multilingual & Multicurrency** and enable the multi-currency mode to add more currencies to your store. Read more about [setting up multiple currencies for your online store](https://wpml.org/documentation/related-projects/woocommerce-multilingual/multi-currency-support-woocommerce/).
+Install and activate “WPML Multilingual & Multicurrency for WooCommerce” on your WordPress site. Then, go to **WooCommerce &rarr; WPML Multilingual & Multicurrency for WooCommerce** and enable the multi-currency mode to add more currencies to your store. Read more about [setting up multiple currencies for your online store](https://wpml.org/documentation/related-projects/woocommerce-multilingual/multi-currency-support-woocommerce/).
 
 If you also use the WPML plugin for multilingual functionality, follow the setup wizard to translate the store pages, configure what attributes should be translated, enable the multi-currency mode and more. Read more about [translating your online store](https://wpml.org/documentation/related-projects/woocommerce-multilingual/).
 
 == Changelog ==
-<a href="https://wpml.org/download/woocommerce-multilingual-multicurrency/?section=changelog">https://wpml.org/download/woocommerce-multilingual-multicurrency/?section=changelog</a>
+<a href="https://wpml.org/download/wpml-multilingual-multicurrency-for-woocommerce/?section=changelog">https://wpml.org/download/wpml-multilingual-multicurrency-for-woocommerce/?section=changelog</a>

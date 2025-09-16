@@ -9,8 +9,7 @@
   "icon": "media-interactive",
   "example": {},
   "ancestor": [
-    "surecart/product-buy-buttons",
-    "surecart/product-template"
+    "surecart/product-buy-buttons"
   ],
   "usesContext": [
     "surecart/product",
@@ -87,6 +86,21 @@
         "radius": true,
         "style": true,
         "width": true
+      }
+    },
+    "__experimentalStyle": {
+      "variations": {
+        "outline": {
+          "border": {
+            "color": "currentColor",
+            "width": "2px",
+            "style": "solid"
+          },
+          "color": {
+            "text": "currentColor",
+            "gradient": "transparent none"
+          }
+        }
       }
     }
   },

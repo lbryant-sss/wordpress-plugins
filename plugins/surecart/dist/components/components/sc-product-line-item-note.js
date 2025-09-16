@@ -1,0 +1,1 @@
+import{S as ScProductLineItemNote$1,d as defineCustomElement$1}from"./sc-product-line-item-note2.js";const ScProductLineItemNote=ScProductLineItemNote$1,defineCustomElement=defineCustomElement$1;export{ScProductLineItemNote,defineCustomElement};

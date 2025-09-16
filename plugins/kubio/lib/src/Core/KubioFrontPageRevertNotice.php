@@ -19,6 +19,7 @@ class KubioFrontPageRevertNotice
 
     protected function __construct()
     {
+		add_action('wp_enqueue_scripts', array($this, 'onPrintNoticeAssetsWithCheck'));
         add_action('wp_footer', array($this, 'onPrintNoticeWithCheck'));
         add_action('wp_ajax_kubio_front_page_revert_action', array($this, 'onKeepKubioFrontPage'));
         add_action('wp_ajax_kubio_restore_front_page', array($this, 'onRestoreUserFrontPage'));
@@ -60,7 +61,9 @@ class KubioFrontPageRevertNotice
 
     public function getEditorNoticeHtml() {
         ob_start();
-        echo $this->getRestoreNoticeHTML();
+        echo wp_kses_post($this->getRestoreNoticeHTML());
+
+		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
         echo $this->getRestoreNoticeStyle();
         $content = ob_get_clean();
         return  new \WP_REST_Response($content, 200);
@@ -679,26 +682,40 @@ class KubioFrontPageRevertNotice
         return static::getInstance();
     }
 
+	public function getShouldPrintNotice() {
+		if (!is_front_page() || !$this->getCurrentUserIsAdmin()) {
+			return false;
+		}
+		if (!$this->shouldShowRestoreNotice() || !$this->getHasFrontPageBackupData()) {
+			return false;
+		}
+		return true;
+	}
 	public function onPrintNoticeWithCheck()
 	{
 
-		if (!is_front_page() || !$this->getCurrentUserIsAdmin()) {
+		if(!$this->getShouldPrintNotice()) {
 			return;
-		}
-		if (!$this->shouldShowRestoreNotice() || !$this->getHasFrontPageBackupData()) {
-			return;
-		}
 
-
-		$this->printRestoreNotice();
+		}
+		echo wp_kses_post($this->getRestoreNoticeHTML());
 	}
 
-	public function printRestoreNotice()
-	{
-		echo $this->getRestoreNoticeHTML();
-		echo $this->getRestoreNoticeStyle();
-		echo $this->getRestoreNoticeScript();
+	public function onPrintNoticeAssetsWithCheck() {
+		if(!$this->getShouldPrintNotice()) {
+			return;
+		}
+
+		//phpcs:ignore WordPress.WP.AlternativeFunctions.strip_tags_strip_tags
+		$style =  strip_tags($this->getRestoreNoticeStyle());
+		wp_add_inline_style( 'kubio-block-library', $style);
+
+		//phpcs:ignore WordPress.WP.AlternativeFunctions.strip_tags_strip_tags
+		$script = strip_tags($this->getRestoreNoticeScript());
+		wp_add_inline_script( 'jquery', $script, 'after' );
 	}
+
+
 	public function getRestoreNoticeHTML()
 	{
 		ob_start();
@@ -707,18 +724,18 @@ class KubioFrontPageRevertNotice
 		<div class="kubio-front-page-revert-popup__parent">
 			<div class="kubio-front-page-revert-notice">
 				<div class="kubio-front-page-revert-notice__header">
-					<?php echo __('Keep the new home page?', 'kubio'); ?>
-					<span class="kubio-front-page-revert-notice__header__close">&times</span>
+					<?php echo esc_html__('Keep the new home page?', 'kubio'); ?>
+					<span class="kubio-front-page-revert-notice__header__close">×</span>
 				</div>
 				<div class="kubio-front-page-revert-notice__content">
-					<?php echo __(" We created a new home page for you. If you don't like it you can restore your previous home page.", 'kubio'); ?>
+					<?php echo esc_html__(" We created a new home page for you. If you don't like it you can restore your previous home page.", 'kubio'); ?>
 				</div>
 				<div class="kubio-front-page-revert-notice__footer">
 					<button class="kubio-front-page-revert-notice__button kubio-front-page-revert-notice__footer__keep">
-						<?php echo __("Yes, keep my new home page", 'kubio'); ?>
+						<?php echo esc_html__("Yes, keep my new home page", 'kubio'); ?>
 					</button>
 					<button class="kubio-front-page-revert-notice__button kubio-front-page-revert-notice__footer__restore">
-						<?php echo __("Restore my previous home page", 'kubio'); ?>
+						<?php echo esc_html__("Restore my previous home page", 'kubio'); ?>
 					</button>
 				</div>
 			</div>
@@ -745,9 +762,9 @@ class KubioFrontPageRevertNotice
         $blogOnFront = $showOnFront === 'posts';
         $confirmMessage;
         if($blogOnFront) {
-            $confirmMessage =  __('Your previous home page was showing the most recent blog posts. Are you sure you want to restore your previous home page?', 'kubio');
+            $confirmMessage =  esc_html__('Your previous home page was showing the most recent blog posts. Are you sure you want to restore your previous home page?', 'kubio');
         } else {
-            $confirmMessage =   __('Are you sure you want to restore your previous home page?', 'kubio');
+            $confirmMessage =   esc_html__('Are you sure you want to restore your previous home page?', 'kubio');
         }
         $fetchUrl = add_query_arg(
             array(
@@ -765,7 +782,7 @@ class KubioFrontPageRevertNotice
 
                 $(document).ready(function() {
 
-                    const baseUrl = "<?php echo $fetchUrl; ?>";
+                    const baseUrl = "<?php echo esc_url($fetchUrl); ?>";
 
                     const getUrl = function(action) {
                         try {
@@ -800,7 +817,7 @@ class KubioFrontPageRevertNotice
 
                     }
                     const onRestoreFrontPage = function() {
-                        if (!confirm("<?php echo $confirmMessage; ?>")) {
+                        if (!confirm("<?php echo esc_html($confirmMessage); ?>")) {
                             return
                         }
                         if (pending) {
@@ -812,7 +829,7 @@ class KubioFrontPageRevertNotice
                         const url = getUrl('kubio_restore_front_page');
                         window.fetch(url)
                             .finally((result) => {
-                                window.location.href = "<?php echo home_url(); ?>"
+                                window.location.href = "<?php echo esc_url(home_url()); ?>"
                             })
 
                     }

@@ -9,11 +9,15 @@ namespace Automattic\Jetpack\Forms\ContactForm;
 
 use Automattic\Jetpack\Connection\Manager as Connection_Manager;
 use Automattic\Jetpack\External_Connections;
+use Automattic\Jetpack\Forms\Dashboard\Dashboard as Forms_Dashboard;
 use Automattic\Jetpack\Forms\Dashboard\Dashboard_View_Switch;
+use Automattic\Jetpack\Forms\Jetpack_Forms;
 use Automattic\Jetpack\Forms\Service\Google_Drive;
 use Automattic\Jetpack\Forms\Service\MailPoet_Integration;
 use Automattic\Jetpack\Redirect;
+use Automattic\Jetpack\Status;
 use Automattic\Jetpack\Status\Host;
+use Jetpack_AI_Helper;
 use WP_Error;
 use WP_REST_Request;
 use WP_REST_Response;
@@ -88,6 +92,23 @@ class Contact_Form_Endpoint extends \WP_REST_Posts_Controller {
 	 * @return array Filtered list of supported integrations
 	 */
 	private function get_supported_integrations() {
+		/**
+		 * Filters the list of supported integrations available in Jetpack Forms.
+		 *
+		 * Use this filter to add, modify, or remove integrations. Removing an
+		 * integration here will prevent it from being returned by the REST
+		 * integrations endpoints and from being displayed in the UI.
+		 *
+		 * @since 6.4.0
+		 *
+		 * @param array $supported_integrations Associative array of integration
+		 *                                     configurations keyed by slug. Each
+		 *                                     configuration supports the following keys:
+		 *                                     - type (string)                  : 'plugin' or 'service'.
+		 *                                     - file (string|null)             : Plugin file path for plugins; null for services.
+		 *                                     - settings_url (string|null)     : Relative admin URL for settings, or null.
+		 *                                     - marketing_redirect_slug (string|null) : Redirect slug for marketing links, or null.
+		 */
 		return apply_filters( 'jetpack_forms_supported_integrations', $this->supported_integrations );
 	}
 
@@ -210,6 +231,17 @@ class Contact_Form_Endpoint extends \WP_REST_Posts_Controller {
 						'default'  => 'trash',
 					),
 				),
+			)
+		);
+
+		// Forms config endpoint.
+		register_rest_route(
+			$this->namespace,
+			$this->rest_base . '/config',
+			array(
+				'methods'             => \WP_REST_Server::READABLE,
+				'permission_callback' => array( $this, 'get_items_permissions_check' ),
+				'callback'            => array( $this, 'get_forms_config' ),
 			)
 		);
 	}
@@ -985,5 +1017,44 @@ class Contact_Form_Endpoint extends \WP_REST_Posts_Controller {
 		}
 		$is_deleted = External_Connections::delete_connection( $slug );
 		return rest_ensure_response( array( 'deleted' => $is_deleted ) );
+	}
+
+	/**
+	 * Return consolidated Forms config payload.
+	 *
+	 * @param WP_REST_Request $request Request.
+	 * @return WP_REST_Response
+	 */
+	public function get_forms_config( WP_REST_Request $request ) { // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable
+		$switch = new Dashboard_View_Switch();
+		$has_ai = false;
+		if ( class_exists( 'Jetpack_AI_Helper' ) ) {
+			$feature = Jetpack_AI_Helper::get_ai_assistance_feature();
+			$has_ai  = ! is_wp_error( $feature ) ? ( $feature['has-feature'] ?? false ) : false;
+		}
+
+		$config = array(
+			// From jpFormsBlocks in class-contact-form-block.php.
+			'formsResponsesUrl'       => $switch->get_forms_admin_url(),
+			'preferredView'           => $switch->get_preferred_view(),
+			'isMailPoetEnabled'       => Jetpack_Forms::is_mailpoet_enabled(),
+			// From config in class-dashboard.php.
+			'blogId'                  => get_current_blog_id(),
+			'gdriveConnectSupportURL' => esc_url( Redirect::get_url( 'jetpack-support-contact-form-export' ) ),
+			'pluginAssetsURL'         => Jetpack_Forms::assets_url(),
+			'siteURL'                 => ( new Status() )->get_site_suffix(),
+			'hasFeedback'             => ( new Forms_Dashboard() )->has_feedback(),
+			'hasAI'                   => $has_ai,
+			'isIntegrationsEnabled'   => Jetpack_Forms::is_integrations_enabled(),
+			'renderMigrationPage'     => $switch->is_jetpack_forms_announcing_new_menu(),
+			'dashboardURL'            => add_query_arg( 'jetpack_forms_migration_announcement_seen', 'yes', $switch->get_forms_admin_url() ),
+			// New data.
+			'canInstallPlugins'       => current_user_can( 'install_plugins' ),
+			'canActivatePlugins'      => current_user_can( 'activate_plugins' ),
+			'exportNonce'             => wp_create_nonce( 'feedback_export' ),
+			'newFormNonce'            => wp_create_nonce( 'create_new_form' ),
+		);
+
+		return rest_ensure_response( $config );
 	}
 }

@@ -98,19 +98,19 @@ class ShopContent {
 		$product->set_slug( sanitize_title( $product_details['title'] ) );
 
 		// random price
-		$regular_price = \rand( 10, 300 );
+		$regular_price = \wp_rand( 10, 300 );
 		$product->set_regular_price( $regular_price ); // in current shop currency
 
 		$product->set_sale_price( $regular_price * 0.75 );
 
 		$product->set_short_description(
 			self::generate_ipsum(
-				rand( 1, 2 )
+				wp_rand( 1, 2 )
 			)
 		);
 		$product->set_description(
 			self::generate_ipsum(
-				rand( 5, 8 )
+				wp_rand( 5, 8 )
 			)
 		);
 

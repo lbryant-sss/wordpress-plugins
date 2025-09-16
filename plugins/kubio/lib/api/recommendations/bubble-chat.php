@@ -84,9 +84,7 @@ function kubio_api_prepare_bubble_chat_plugin( WP_REST_Request $request ) {
 		if(!empty($widgets)) {
 
 			$errors = ob_get_clean();
-			if(!empty($errors)) {
-				error_log($errors);
-			}
+
 
 			return $widgets;
 		}
@@ -98,17 +96,13 @@ function kubio_api_prepare_bubble_chat_plugin( WP_REST_Request $request ) {
 		$result = kubio_get_bubble_chat_widgets();
 
 		$errors = ob_get_clean();
-		if(!empty($errors)) {
-			error_log($errors);
-		}
+
 
 		wp_send_json_success($result);
 
 	} catch ( Exception $e ) {
 		$errors = ob_get_clean();
-		if(!empty($errors)) {
-			error_log($errors);
-		}
+
 		wp_send_json_error($e->getMessage(), 400);
 	}
 }
@@ -146,7 +140,7 @@ function kubio_api_update_bubble_chat_widget_data( WP_REST_Request $request ) {
 			$widget = \FloatingContact\Features\Widgets\FCWidget::findById($id);
 
 			if(!$widget) {
-				wp_send_json_error(__('Widget not found'), 404);
+				wp_send_json_error(__('Widget not found', 'kubio'), 404);
 			}
 			$widget->updateParams($widgetParams);
 

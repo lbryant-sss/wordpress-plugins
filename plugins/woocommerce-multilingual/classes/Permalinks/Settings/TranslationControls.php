@@ -60,7 +60,7 @@ class TranslationControls extends TranslationControlsBase {
 			case self::INSTRUCTIONS_FOR_PRODUCT_TAXONOMIES:
 				return sprintf(
 					/* translators: %1$s and %2$s are opening and closing HTML link tags */
-					esc_html__( 'To translate permalinks for product taxonomies, go to %1$sWooCommerce Multilingual & Multicurrency → Store URLs%2$s.', 'woocommerce-multilingual' ),
+					esc_html__( 'To translate permalinks for product taxonomies, go to %1$sWPML Multilingual & Multicurrency for WooCommerce → Store URLs%2$s.', 'woocommerce-multilingual' ),
 					'<a href="' . esc_url( $this->getInstructionsLink( Strings::TRANSLATION_DOMAIN ) ) . '">',
 					'</a>'
 				);
@@ -68,7 +68,7 @@ class TranslationControls extends TranslationControlsBase {
 			default:
 				return sprintf(
 					/* translators: %1$s and %2$s are opening and closing HTML link tags */
-					esc_html__( 'To translate product permalinks, go to %1$sWooCommerce Multilingual & Multicurrency → Store URLs%2$s.', 'woocommerce-multilingual' ),
+					esc_html__( 'To translate product permalinks, go to %1$sWPML Multilingual & Multicurrency for WooCommerce → Store URLs%2$s.', 'woocommerce-multilingual' ),
 					'<a href="' . esc_url( $this->getInstructionsLink( Strings::TRANSLATION_DOMAIN ) ) . '">',
 					'</a>'
 				);

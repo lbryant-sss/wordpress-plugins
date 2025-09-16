@@ -12,7 +12,7 @@ class KubioImageHubIntegration {
 		ThirdPartyPluginAssetLoaderInEditor::addPlugin('image-hub', array($this, 'getIsPluginActive'), false);
 
 		// no need to show the modal if we already have the plugin or if not enabled yet
-		if ( $this->getIsPluginActive() || !Flags::getSetting('showFreeImagesTab') ) {
+		if ( $this->getIsPluginActive()) {
 			return;
 		}
 
@@ -65,7 +65,9 @@ class KubioImageHubIntegration {
 
 	public function install_image_hub_plugin() {
 		check_ajax_referer( 'kubio_ajax_nonce' );
-
+		if(!current_user_can( 'install_plugins' )) {
+			wp_send_json_error('Not allowed');
+		}
 		$plugin_manager = PluginsManager::getInstance();
 		$plugin_manager->installPlugin( self::$PLUGIN_SLUG );
 		$plugin_manager->activatePlugin( self::$PLUGIN_SLUG, false );

@@ -18,7 +18,7 @@ const ScTag = class {
     }
     render() {
         const Tag = this.clearable ? 'button' : 'span';
-        return (h(Tag, { key: 'e6a29a4b61500795caf94f3262d6a49655a31ded', part: "base", onClick: () => this.handleClearClick(), class: {
+        return (h(Tag, { key: '60727c0078736f38272ce7e79f7fa28b7ad096c8', part: "base", onClick: () => this.handleClearClick(), class: {
                 'tag': true,
                 // Types
                 'tag--primary': this.type === 'primary',
@@ -34,7 +34,7 @@ const ScTag = class {
                 // Modifers
                 'tag--pill': this.pill,
                 'tag--clearable': this.clearable,
-            }, "aria-label": this.ariaLabel }, h("span", { key: '2cb8844d302eb9f635ce3fd4152ff51ca8b13406', part: "content", class: "tag__content" }, h("slot", { key: '3d018ece40584a5a03eae41ef92934dc861f279c' })), !!this.clearable && (h("svg", { key: 'cac26e4d01641db7d2960efa931b44fc5949c815', xmlns: "http://www.w3.org/2000/svg", width: "16", height: "16", fill: "currentColor", class: "bi bi-x", viewBox: "0 0 16 16" }, h("path", { key: 'bd63299df22d607eca4a575c0d386f240d4dd1fc', d: "M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" })))));
+            }, "aria-label": this.ariaLabel }, h("span", { key: '28eea8f64cfa863b4c2b5d3b7ed27a167c24cc7d', part: "content", class: "tag__content" }, h("slot", { key: 'c7f6e1433737d9f5dc9de706230cd2bda13e2908' })), !!this.clearable && (h("svg", { key: '8fd89bb5624a5530c5f7e2f8f5ace30377ec3762', xmlns: "http://www.w3.org/2000/svg", width: "16", height: "16", fill: "currentColor", class: "bi bi-x", viewBox: "0 0 16 16" }, h("path", { key: 'ab09f487f694334c1954ebe6303f9ae0af9d2bea', d: "M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" })))));
     }
 };
 ScTag.style = ScTagStyle0;

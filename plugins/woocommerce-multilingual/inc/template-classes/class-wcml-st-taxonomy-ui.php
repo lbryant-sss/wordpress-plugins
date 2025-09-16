@@ -16,7 +16,7 @@ class WCML_St_Taxonomy_UI extends WCML_Templates_Factory {
 			$model = [
 				'link_url'   => \WCML\Utilities\AdminUrl::getStoreURLTab(),
 				/* translators: %s is a taxonomy name */
-				'link_label' => sprintf( __( 'Set different slugs in different languages for %s on WooCommerce Multilingual & Multicurrency URLs translations page',
+				'link_label' => sprintf( __( 'Set different slugs in different languages for %s on WPML Multilingual & Multicurrency for WooCommerce URLs translations page',
 				'woocommerce-multilingual' ), $this->taxonomy_obj->labels->name ),
 			];
 		} else {

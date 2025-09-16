@@ -4,7 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-8acc3c89.js');
 const index$1 = require('./index-3d000d76.js');
-const index$2 = require('./index-9cef574e.js');
+const index$2 = require('./index-c916634a.js');
 const mutations = require('./mutations-10a18c83.js');
 require('./fetch-d644cebd.js');
 require('./add-query-args-49dcb630.js');

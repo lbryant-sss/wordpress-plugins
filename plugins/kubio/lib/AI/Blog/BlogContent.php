@@ -13,7 +13,7 @@ class BlogContent {
 		if ( ! empty( $articles ) ) {
 			foreach ( $articles as $article ) {
 				$content = self::generate_ipsum(
-					rand( 5, 8 )
+					wp_rand( 5, 8 )
 				);
 
 				$post_id = wp_insert_post(

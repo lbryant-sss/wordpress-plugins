@@ -101,7 +101,7 @@ class WCML_Troubleshooting_UI extends WCML_Templates_Factory {
 				'running' => __( 'Processing', 'woocommerce-multilingual' ),
 			],
 			'settings' => [
-				'title' => __( 'WooCommerce Multilingual & Multicurrency settings', 'woocommerce-multilingual' ),
+				'title' => __( 'WPML Multilingual & Multicurrency for WooCommerce settings', 'woocommerce-multilingual' ),
 				'data'  => esc_html( $wcmlSettings ),
 			],
 			'counter' => sprintf(

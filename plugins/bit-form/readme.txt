@@ -1,7 +1,7 @@
 === Bit Form - Custom Contact Form, Multi Step, Conversational, Payment & Quiz Form builder ===
 Plugin Name: Bit Form - Custom Contact Form, Multi Step, Conversational, Payment & Quiz Form builder
-Version: 2.20.5
-Stable tag: 2.20.5
+Version: 2.20.6
+Stable tag: 2.20.6
 Author: Contact form builder by Bit form
 Author URI: https://www.bitapps.pro/
 Contributors: bitpressadmin, arif25897, mdrhmaruf, mdabbasuddin, akaioum 
@@ -501,6 +501,22 @@ Yes, Bit Form has built-in spam protection better than any other Contact Form Bu
 6. Response table to view form entries
 
 == Changelog ==
+= 2.20.6 =
+*Release Date: 15 September, 2025*
+*New:
+    1. Input Mask: Added input mask format option for Text, Username, URL and Multiline text fields to enhance data consistency and user input accuracy.
+    2. Developer Filter Hooks (PDF & Email): Introduced bitform_filter_pdf_filename, bitform_filter_pdf_body, bitform_filter_email_subject, and bitform_filter_email_body filter hooks for customizing PDF and email content.
+    3. Developer FilterHooks (Translations): Added bitforms_filter_allow_translation and bitform_filter_translations filter hooks to disable or modify plugin translations.
+
+*Improvements:
+    1. Form Abandonment: Enhanced handling of partial form submissions by improving uploaded file visibility and triggering selected checkboxes actions.
+    2. Phone Field: Added support for landline numbers in the Phone Number field with custom regex pattern support.
+
+*Fixes:
+    1. Resolved repeated file field attachment issues in email templates.
+    2. Fixed issue where default conditional logic was not being disabled properly.
+    3. Fixed form save issues when the plugin was translated into other languages.
+
 = 2.20.5 =
 *Release Date: 25 August, 2025*
 *New:
@@ -686,89 +702,6 @@ Yes, Bit Form has built-in spam protection better than any other Contact Form Bu
     1. Fixed the loading spinner issue on the Draft button.
     2. Resolved multiple signature issues with PDF attachments.
 
-= 2.17.8 =
-*Release Date: 12 February, 2025*
-*New:
-    1. Introduced new action hooks (bitform_integration_api_response_error, bitform_integration_api_response_success) for improved integration response handling.
-
-*Improvements:
-    1. Added "Logged In User" option in the Meta Box integration edit section.
-
-*Fix:
-    1. Fixed a form update error when a section field was duplicated in a multi-step form.
-
-= 2.17.7 =
-*Release Date: 02 February, 2025*
-*Fix:
-    1. Resolve Static From Mail issue with the SMTP configuration.
-
-= 2.17.6 =
-*Release Date: 01 February, 2025*
-*Improvements:
-    1. Enhanced security for accessing uploaded files.
-    2. Improved user experience by displaying validation error messages when the dropdown and country fields lose focus.
-
-*Fix:
-    1. Fixed backend validation issue for the URL field.
-
-= 2.17.5 =
-*Release Date: 23 January, 2025*
-*Improvements:
-    1. Improved backend validation for the URL field.
-    2. Enhanced validation for webhook integration links.
-
-*Fix:
-    1. Fixed an issue where the field background color changed on hover when the global border color was modified.
-    2. Resolved an issue with sending emails via MailerLite integration.
-    3. Addressed a validation issue with field mapping in Elastic Email integration.
-    4. Fixed email notification problems in the WP User Registration Form.
-    5. Resolved Missing "Advanced File Upload" Field in Meta Box integration.
-
-= 2.17.4 =
-*Release Date: 18 December, 2024*
-*Improvement:
-    1. Enabled displaying images in the Frontend Data View.
-    2. Enhanced the "Edit Access" functionality for entry edit requests.
-
-= 2.17.3 =
-*Release Date: 12 December, 2024*
-*Improvement:
-    1. Added fonts category in PDF global and individual settings.
-
-= 2.17.2 =
-*Release Date: 09 December, 2024*
-*Improvement:
-    1. Strengthened security for entry edit requests.
-    2. Added support for viewing signature images in the Frontend Entry View.
-
-*Fix:
-    1. Addressed file upload attachment issues in email notifications.
-    2. Resolved integration issues with PODS.
-
-= 2.17.1 =
-*Release Date: 02 December, 2024*
-*New:
-    1. Introduced a new action hook for custom payment gateway compatibility.
-
-*Improvements:
-    1. Added "Default Phone Number" field setting in the Phone Number field.
-    2. Enhanced the Builder History feature for Section, Repeater fields and Multi step form.
-    3. Introduced the "manage_bitform" capability for user role management.
-
-*Fix:
-    1. Resolved the duplicate entry issue with Razorpay.
-    2. Fixed the Signature field image issue in PDF attachments.
-    3. Addressed the issue where empty Date fields were replaced with the current date and time.
-
-= 2.17.0 =
-*Release Date: 19 November, 2024*
-*New:
-    1. Added new fields: First Name, Last Name, and Shortcode.
-    2. Include the "Job Application" form template.
-*Improvements:
-    1. Enhanced UI: Added labels to section navigation in the top bar of the form builder.
-*Fix:
-    1. Resolved invalid placeholder image link issue on initial load in the image field.
 
 
 == Upgrade Notice ==

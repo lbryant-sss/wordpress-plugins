@@ -28,6 +28,7 @@ class ThirdPartyPluginAssetLoaderInEditor
 
 	//to not cause weird issues
 	public function dequeueKubioScriptsInIframeRequest() {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if (!isset($_GET['kubio-get-3rd-party-plugin-assets'])) {
 			return;
 		}
@@ -84,12 +85,14 @@ class ThirdPartyPluginAssetLoaderInEditor
 	}
 	public function printAssetsList()
 	{
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if (!isset($_GET['kubio-get-3rd-party-plugin-assets'])) {
 			return;
 		}
 
 		//search for a part of the plugin folder name in the url to find assets
-		$pluginPathSearch = $_GET['kubio-get-3rd-party-plugin-assets'];
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$pluginPathSearch =  sanitize_text_field( wp_unslash($_GET['kubio-get-3rd-party-plugin-assets'] ) )  ;
 		global $wp_scripts;
 
 

@@ -221,12 +221,12 @@ final class WorkFlowHandler
 
                 $value = $this->maybeGetSuccessActionID($actionIntegrationID, $actionIntegrationDetails, $actionValue->type);
 
-                $workFlowDetails->conditions[$conIndex]->actions->success[$actionKey]->details->id[$key] = $value ? wp_json_encode(['id' => "$value"]) : $value;
+                $workFlowDetails->conditions[$conIndex]->actions->success[$actionKey]->details->id[$key] = false === $value ? $id : wp_json_encode(['id' => "$value"]);
               }
             } else {
               $actionIntegrationID = \json_decode($detailIds);
               $value = $this->maybeGetSuccessActionID($actionIntegrationID, $actionIntegrationDetails, $actionValue->type);
-              $workFlowDetails->conditions[$conIndex]->actions->success[$actionKey]->details->id = $value ? wp_json_encode(['id' => "$value"]) : $actionValue->details->id;
+              $workFlowDetails->conditions[$conIndex]->actions->success[$actionKey]->details->id = false === $value ? $actionValue->details->id : wp_json_encode(['id' => "$value"]);
             }
           }
 
@@ -236,7 +236,7 @@ final class WorkFlowHandler
             $actionIntegrationID = \json_decode($pdfDetailId);
             $value = $this->maybeGetSuccessActionID($actionIntegrationID, $actionIntegrationDetails, 'pdfTem');
 
-            $workFlowDetails->conditions[$conIndex]->actions->success[$actionKey]->details->pdfId = $value;
+            $workFlowDetails->conditions[$conIndex]->actions->success[$actionKey]->details->pdfId = false === $value ? $pdfDetailId : wp_json_encode(['id' => "$value"]);
           }
         }
       }
@@ -267,7 +267,7 @@ final class WorkFlowHandler
         'workflow_behaviour' => $workFlowDetails->action_behaviour,
         'workflow_condition' => wp_json_encode($conditions),
         'workflow_order'     => $workFlowOrder,
-        'workflow_status'    => $workFlowDetails->status,
+        'workflow_status'    => isset($workFlowDetails->status) ? $workFlowDetails->status : 1,
         'form_id'            => static::$_formID,
         'user_id'            => $this->_user_details['id'],
         'user_ip'            => $this->_user_details['ip'],

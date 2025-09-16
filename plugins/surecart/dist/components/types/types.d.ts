@@ -514,6 +514,8 @@ export interface LineItem extends Object {
     locked: boolean;
     swap?: Swap;
     is_swappable?: boolean;
+    note?: string;
+    display_note?: string;
 }
 export interface DeletedItem {
     cache_status: string;
@@ -1266,6 +1268,7 @@ export interface ProductState {
         option_3?: string;
     };
     isProductPage?: boolean;
+    note?: string;
 }
 export interface FeaturedProductMediaAttributes {
     alt: string;
