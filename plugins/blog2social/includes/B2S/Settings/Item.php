@@ -364,20 +364,45 @@ class B2S_Settings_Item {
             $defaultTemplate = unserialize(B2S_PLUGIN_NETWORK_SETTINGS_TEMPLATE_DEFAULT);
         }
         $optionPostFormat = $this->options->_getOption('post_template');
+     
         $content = "<input type='hidden' class='b2sNetworkSettingsPostFormatText' value='" . json_encode(array('post' => array(__('Link Post', 'blog2social'), __('Image Post', 'blog2social')), 'image' => array(__('Image with frame', 'blog2social'), __('Image cut out', 'blog2social')))) . "'/>";
-        foreach (array(1, 2, 3, 12, 19, 15, 17, 24, 43, 44, 45) as $n => $networkId) { //FB,TW,LI,IN
+        foreach (array(1, 2, 3, 4, 12, 19, 15, 17, 24, 43, 44, 45) as $n => $networkId) { //FB,TW,LI,IN
             $postFormatType = ($networkId == 12) ? 'image' : 'post';
             $type = ($networkId == 1 || $networkId == 17) ? array(0, 1, 2) : (($networkId == 3 || $networkId == 19) ? array(0, 1) : (($networkId == 12) ? array(1) : array(0)));
-            foreach ($type as $t => $typeId) { //Profile,Page,Group                
-                if (!isset($optionPostFormat[$networkId][$typeId]['format']) || (int) $optionPostFormat[$networkId][$typeId]['format'] < 0 || (int) $optionPostFormat[$networkId][$typeId]['format'] > 1) { //DEFAULT
-                    if (is_array($defaultTemplate) && isset($defaultTemplate[$networkId][$typeId]['format']) && $defaultTemplate[$networkId][$typeId]['format'] >= 0 && $defaultTemplate[$networkId][$typeId]['format'] <= 1) {
-                        $value = $defaultTemplate[$networkId][$typeId]['format'];
+            foreach ($type as $t => $typeId) { //Profile,Page,Group    
+
+                //Tumblr Special Post Format
+                if($networkId == 4 ){
+                    
+                    if (!isset($optionPostFormat[$networkId][$typeId]['format']) || !in_array((int) $optionPostFormat[$networkId][$typeId]['format'], array(1,2,3)) ) { //DEFAULT
+                        
+                
+                        if(!isset($defaultTemplate[$networkId][$typeId]['format']) || !in_array((int) $defaultTemplate[$networkId][$typeId]['format'], array(1,2,3)) ){
+                            $value = 0; //default tumblr to html
+                        }else
+                        {
+                            $value = $defaultTemplate[$networkId][$typeId]['format'];
+                        }
+
                     } else {
-                        $value = ($networkId == 2 || $networkId == 43 || $networkId == 45) ? 1 : 0;  //default see B2S_PLUGIN_NETWORK_SETTINGS_TEMPLATE_DEFAULT
+
+                        $value = $optionPostFormat[$networkId][$typeId]['format'];
                     }
-                } else {
-                    $value = $optionPostFormat[$networkId][$typeId]['format'];
+                   
+                }else{
+
+                    if (!isset($optionPostFormat[$networkId][$typeId]['format']) || (int) $optionPostFormat[$networkId][$typeId]['format'] < 0 || ((int) $optionPostFormat[$networkId][$typeId]['format'] > 1)) { //DEFAULT
+                    
+                        if (is_array($defaultTemplate) && isset($defaultTemplate[$networkId][$typeId]['format']) && $defaultTemplate[$networkId][$typeId]['format'] >= 0 && $defaultTemplate[$networkId][$typeId]['format'] <= 1) {
+                            $value = $defaultTemplate[$networkId][$typeId]['format'];
+                        } else {
+                            $value = ($networkId == 2 || $networkId == 43 || $networkId == 45) ? 1 : 0;  //default see B2S_PLUGIN_NETWORK_SETTINGS_TEMPLATE_DEFAULT
+                        }
+                    } else {
+                        $value = $optionPostFormat[$networkId][$typeId]['format'];
+                    }
                 }
+                
                 $content .= "<input type='hidden' class='b2sNetworkSettingsPostFormatCurrent' data-post-format-type='" . esc_attr($postFormatType) . "' data-network-id='" . esc_attr($networkId) . "' data-network-type='" . esc_attr($typeId) . "' value='" . (int) esc_attr($value) . "' />";
             }
         }

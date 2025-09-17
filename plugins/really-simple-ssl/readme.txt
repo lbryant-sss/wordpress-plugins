@@ -161,6 +161,11 @@ Really Simple Security and WordFence greatly overlap in term of functionality. I
 
 == Changelog ==
 
+= 9.5.1 =
+Improvement: standardized REST namespaces to really-simple-security
+Fix: added a check for the getmyuid function to prevent errors in case this function was missing
+Fix: Right-To-Left CSS now works correctly when SCRIPT_DEBUG is enabled
+
 = 9.5.0.2 =
 * Fix: Prevent empty content to be written into htaccess
 

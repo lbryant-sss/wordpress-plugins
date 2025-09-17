@@ -1,4 +1,4 @@
-=== Element Pack Elementor Addons and Templates ===
+=== Element Pack Addons and Templates for Elementor ===
 Contributors: bdthemes, selimmw, mohammaadfarid, maudud, abutalib, sohanurrahman, rakibulpk, muhammadasik, tauhidalam
 Donate link: http://bdthemes.com/
 Tags: elementor, elementor addons, widgets, header footer builder, templates

@@ -7,6 +7,7 @@ export { default as DevicesIcon } from './devices_icon.svg';
 export { default as EmailError } from './email_error.svg';
 export { default as EmailSent } from './email_sent.svg';
 export { default as ExploitedIcon } from './exploited_icon.svg';
+export { default as ExternalLink } from './external_link.svg';
 export { default as FirewallBasic } from './firewall-basic.svg';
 export { default as FirewallNoRules } from './firewall-no-rules.svg';
 export { default as Gear } from './gear.svg';

@@ -506,7 +506,6 @@ class Admin {
 		}
 
 		$this->run_table_init_hook();
-		$this->create_js_file();
 	}
 	/**
 	 * On Multisite site creation, run table init hook as well.
@@ -982,20 +981,16 @@ class Admin {
 		return apply_filters(
 			'burst_all_tables',
 			[
-				'burst_statistics',
-				'burst_campaigns',
-				'burst_locations',
-				'burst_sessions',
-				'burst_goals',
-				'burst_goal_statistics',
-				'burst_summary',
-				'burst_archived_months',
-				'burst_parameters',
-				'burst_browsers',
-				'burst_browser_versions',
-				'burst_platforms',
-				'burst_devices',
-				'burst_referrers',
+                'burst_statistics',
+                'burst_sessions',
+                'burst_goals',
+                'burst_goal_statistics',
+                'burst_summary',
+                'burst_browsers',
+                'burst_browser_versions',
+                'burst_platforms',
+                'burst_devices',
+                'burst_referrers',
 			],
 		);
 	}

@@ -151,6 +151,66 @@ $isImagePro = (B2S_PLUGIN_USER_VERSION < 2) ? ' <span class="label label-success
 
                                 </div>
                                 <div class="col-md-4 hidden-sm">
+
+                                    <div id="b2s-curation-preview" class="b2s-curation-preview">
+                                        <div class="panel panel-default" style="max-width: 500px; margin: 6px auto;">
+                                            <div class="panel-body">
+                                             
+                                                <div class="media">
+                                                    <div  id="b2s-curation-preview-body-account-img" class="b2s-curation-preview-body-account-img">
+
+                                                        <div style="display: flex; ">
+                                                            <img style="margin-bottom: 5px; margin-right: 5px; width: 20px;" class="media-object img-circle" src="<?php echo esc_url(plugins_url('/assets/images/b2s_icon.png', B2S_PLUGIN_FILE)); ?>" alt="Blog2Social">
+                                                            <h4 class="media-heading"> 
+                                                            Blog2Social
+                                                            <small> <i>now</i>
+                                                            </small>
+                                                        </h4>
+                                                      
+                                                        </div>
+                                                    </div>
+                                                    <div class="media-body">
+                                                      
+                                                        <!-- Title Section -->
+                                                        <div class="b2-preview-post-title" style="font-weight: bold; font-size: 18px; margin-bottom: 3px;margin-top: 3px;">
+                                                        </div>
+                                                        <!-- Text Section -->
+                                                        <div id="b2s-curation-preview-body-text" class="b2s-curation-preview-body-text">
+                                                            <?php esc_html_e('Write something...', 'blog2social') ?>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Link Preview Section -->
+                                                    <div class="b2s-curation-link-preview" style="margin-top: 10px; border: 1px solid lightgray;">
+                                                        <a class="b2s-curation-link-preview-url-snippet" href="" target="_blank" style="text-decoration: none; color: inherit;">
+                                                            <div >
+                                                                <div class="">
+                                                                    <img src="<?php echo esc_url(plugins_url('/assets/images/no-image.png', B2S_PLUGIN_FILE)); ?>" class="img-responsive b2s-curation-link-preview-image" alt="Link-Preview">
+                                                                </div>
+                                                                <div style="margin-top: 5px; margin-left: 5px;">
+                                                                    <strong style="margin-top: 3px;" class="b2s-curation-link-preview-title"></strong><br>
+                                                                    <small class="b2s-curation-link-preview-description" ></small>
+                                                                    
+                                                                </div>
+                                                                <span style="margin-left: 5px;" class="b2s-post-item-details-preview-url">
+                                                                    <a style="margin-top: -5px;" href="" target="_blank" class="b2s-curation-link-preview-url btn btn-link del-padding-left b2s-break-word"></a>
+                                                                </span>
+                                                                <span class="glyphicon glyphicon-pencil b2s-btn-change-url-preview"></span>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel-footer" style="background-color: #fff;">
+                                                <div class="row text-center text-muted">
+                                                    <div class="col-xs-4"><i class="glyphicon glyphicon-thumbs-up"></i> Like</div>
+                                                    <div class="col-xs-4"><i class="glyphicon glyphicon-comment"></i> Comment</div>
+                                                    <div class="col-xs-4"><i class="glyphicon glyphicon-share"></i> Share</div>
+                                                </div>  
+                                            </div>
+                                        </div>        
+                                    </div>
+
+                                    <!--
                                     <div id="b2s-curation-preview" class="b2s-curation-preview">
                                         <div id="b2s-curation-preview-header" class="b2s-bold">
 
@@ -179,6 +239,7 @@ $isImagePro = (B2S_PLUGIN_USER_VERSION < 2) ? ' <span class="label label-success
                                             </div>
                                         </div>
                                     </div>
+                                    !-->
                                 </div>
                             </div>
                         </div>

@@ -12,8 +12,8 @@ namespace SolidWP\Mail\Admin;
 
 use SolidWP\Mail\Container;
 use SolidWP\Mail\AbstractController;
+use SolidWP\Mail\Hooks\PHPMailer;
 use SolidWP\Mail\Service\ConnectionService;
-use SolidWP\Mail\SolidMailer;
 
 /**
  * Class ConnectionScreenController
@@ -139,7 +139,7 @@ class ScreenConnectors extends AbstractController {
 
 		$this->test_from_email = null;
 
-		if ( ! SolidMailer::is_solid_mail_configured() ) {
+		if ( ! PHPMailer::is_solid_mail_configured() ) {
 			wp_send_json_error(
 				[
 					'message' => __( 'Solid Mail did not process the test email.', 'LION' ),

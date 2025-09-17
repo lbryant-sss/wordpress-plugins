@@ -213,6 +213,13 @@ class Upgrade {
 			update_option( 'burst_db_upgrade_add_page_ids', true, false );
 			delete_post_meta_by_key( 'burst_total_pageviews_count' );
 		}
+
+        if ( $prev_version && version_compare( $prev_version, '2.2.6.1', '<' ) ) {
+            if ( ! wp_next_scheduled( 'burst_validate_tasks' ) ) {
+                wp_schedule_single_event( time() + 30, 'burst_validate_tasks' );
+            }
+        }
+
         $admin = new Admin();
         $admin->run_table_init_hook();
         $admin->create_js_file();

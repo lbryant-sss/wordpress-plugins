@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Plugin Name: Solid Mail
  * Description: Solid Mail can help us to send emails via SMTP instead of the PHP mail() function and email logger built-in.
- * Version: 2.2.1
+ * Version: 2.2.2
  * Author: SolidWP
  * Author URI: https://www.solidwp.com/
  * Text Domain: wp-smtp
@@ -41,7 +41,7 @@ define( 'WPSMTP_PATH', plugin_dir_path( WPSMTP__FILE__ ) );
 define( 'WPSMTP_URL', plugins_url( '/', WPSMTP__FILE__ ) );
 define( 'WPSMTP_ASSETS_PATH', WPSMTP_PATH . 'assets/' );
 define( 'WPSMTP_ASSETS_URL', WPSMTP_URL . 'assets/' );
-define( 'WPSMTP_VERSION', '2.2.1' );
+define( 'WPSMTP_VERSION', '2.2.2' );
 
 require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/vendor/vendor-prefixed/autoload.php';

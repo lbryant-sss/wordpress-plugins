@@ -528,6 +528,12 @@ $networkData = $networkItem->getData();
             <div class="modal-body">
                 <div class="b2s-network-auth-settings-content">
                     <?php if (B2S_PLUGIN_USER_VERSION >= 3) { ?>
+                        <div  style="display: none;" class="b2-share-settings">
+                            <div class=""><h4><?php esc_html_e('Share Settings', 'blog2social') ?></h4></div>
+                            <div class= "b2-share-settings-content">
+
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-md-12 b2s-text-bold"><h4><?php esc_html_e('URL Parameters', 'blog2social') ?></h4></div>
                             <div class="col-md-12"><div class="alert alert-danger b2s-url-parameter-error" data-error-reason="save" style="display:none;"><span class="glyphicon glyphicon-remove glyphicon-danger"></span> <?php esc_html_e('The parameters could not be saved. Please try again.', 'blog2social') ?></div></div>

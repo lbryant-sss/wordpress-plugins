@@ -196,8 +196,8 @@ Widget Options is a featured pack fully lightweight plugin. Using Query Monitor 
 
 = 4.1.2 =
 
-* Fix: Added validation for PHP code in Display Logic to block dangerous patterns when saving settings via Ajax
-
+* Fix: Added validation for PHP code in Display Logic to prevent unsafe patterns when saving settings via Ajax
+* Tweak: Restricted the Display Logic feature to administrators only, as code execution was flagged as a potential security risk
 
 = 4.1.1 =
 

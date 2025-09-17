@@ -2000,7 +2000,6 @@ class MLAShortcode_Support {
 
 				// Conditional caption tag to replicate WP 4.1+, now used in the default markup template.
 				if ( $item_values['captiontag'] && trim( $item_values['caption'] ) ) {
-//					$item_values['captiontag_content'] = '<' . $item_values['captiontag'] . " class='wp-caption-text gallery-caption' id='" . $item_values['selector'] . '-' . $item_values['attachment_ID'] . "'>\n\t\t" . $item_values['caption'] . "\n\t</" . $item_values['captiontag'] . ">\n";
 					$item_values['captiontag_content'] = '<' . $item_values['captiontag'] . " class='wp-caption-text gallery-caption' id='" . $item_values['selector'] . '-' . $item_values['attachment_ID'] . "'>\n\t" . $item_values['caption'] . "\n\t</" . $item_values['captiontag'] . ">";
 				} else {
 					$item_values['captiontag_content'] = '';

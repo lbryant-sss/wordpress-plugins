@@ -7,6 +7,7 @@
 
 namespace SolidWP\Mail\Repository;
 
+use JsonException;
 use SolidWP\Mail\App;
 
 /**
@@ -221,13 +222,25 @@ class LogsRepository {
 	}
 
 	protected function parse_log( array $raw ) {
+		try {
+			$to = json_decode( $raw['to'], true, 512, JSON_THROW_ON_ERROR );
+		} catch ( JsonException $e ) {
+			$to = [ $raw['to'] ];
+		}
+
+		try {
+			$headers = json_decode( $raw['headers'], true, 512, JSON_THROW_ON_ERROR );
+		} catch ( JsonException $e ) {
+			$headers = $raw['headers'];
+		}
+
 		return [
 			'mail_id'       => $raw['mail_id'],
 			'timestamp'     => $raw['timestamp'],
-			'to'            => json_decode( $raw['to'], true ) ?: [ $raw['to'] ],
+			'to'            => $to,
 			'subject'       => $raw['subject'],
 			'message'       => $raw['message'],
-			'headers'       => json_decode( $raw['headers'], true ) ?: $raw['headers'],
+			'headers'       => $headers,
 			'content_type'  => $raw['content_type'],
 			'error'         => $raw['error'],
 			'connection_id' => $raw['connection_id'],

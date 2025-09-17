@@ -4,6 +4,7 @@ namespace Integration\Mail;
 
 use IntegrationTester;
 use lucatume\WPBrowser\TestCase\WPTestCase;
+use SolidWP\Mail\Hooks\PHPMailer;
 use SolidWP\Mail\SolidMailer;
 
 /**
@@ -29,7 +30,7 @@ class SolidMailerInitializationTest extends WPTestCase {
 		wp_mail( 'test@test.com', 'Subject', 'Test' );
 		/** @var SolidMailer $php_mailer */
 		$php_mailer = tests_retrieve_phpmailer_instance();
-		$this->assertInstanceOf( SolidMailer::class, $php_mailer );
+		$this->tester->seeSolidMailer();
 		$this->assertEquals( 'solid@solidwp.com', $php_mailer->From );
 		$this->assertEquals( 'SolidWP', $php_mailer->FromName );
 	}
@@ -45,8 +46,22 @@ class SolidMailerInitializationTest extends WPTestCase {
 		);
 
 		wp_mail( 'test@test.com', 'Subject', 'Test' );
-		$php_mailer = tests_retrieve_phpmailer_instance();
-		
-		$this->assertNotInstanceOf( SolidMailer::class, $php_mailer );
+
+		$this->tester->dontSeeSolidMailer();
+	}
+
+	/**
+	 * @runInSeparateProcess
+	 */
+	public function testNoConnections(): void {
+		wp_mail( 'test@test.com', 'Subject', 'Test' );
+		$this->tester->dontSeeSolidMailer();
+	}
+
+	/**
+	 * @runInSeparateProcess
+	 */
+	public function testIsConfiguredReturnsFalseWhenNoConnections(): void {
+		$this->assertFalse( PHPMailer::is_solid_mail_configured() );
 	}
 }

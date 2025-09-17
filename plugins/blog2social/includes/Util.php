@@ -635,7 +635,7 @@ class B2S_Util {
         $hour = substr($rand, 0, 2);
         $minute = substr($rand, 2, 2);
         $timeSlots = array('00', '15', '30', '45');
-        $minuteRound = $timeSlots[($minute % 5)];
+        $minuteRound = $timeSlots[($minute % 4)];
         return $hour . ':' . $minuteRound;
     }
 

@@ -273,42 +273,65 @@ $metaSettings = get_option('B2S_PLUGIN_GENERAL_OPTIONS');
                                 'data-network-type' => array()
                             )
                         ));
-                        echo wp_kses($settingsItem->getNetworkSettingsHtml(), array(
-                            'div' => array(
-                                'class' => array(),
-                                'data-post-format-type' => array(),
-                                'data-network-type' => array(),
-                                'data-network-id' => array(),
-                                'data-network-title' => array(),
-                                'style' => array()
-                            ),
-                            'b' => array(),
-                            'br' => array(),
-                            'a' => array(
-                                'target' => array(),
-                                'href' => array()
-                            ),
-                            'hr' => array(),
-                            'span' => array(
-                                'class' => array()
-                            ),
-                            'label' => array(),
-                            'input' => array(
-                                'type' => array(),
-                                'name' => array(),
-                                'value' => array(),
-                                'class' => array(),
-                                'data-post-wp-type' => array(),
-                                'data-post-format-type' => array(),
-                                'data-network-type' => array(),
-                                'data-network-id' => array(),
-                                'data-post-format' => array()
-                            ),
-                            'img' => array(
-                                'class' => array(),
-                                'src' => array()
-                            )
-                        ));
+                         echo wp_kses($settingsItem->getNetworkSettingsHtml(), array(
+                                                        'div' => array(
+                                                            'class' => array(),
+                                                            'data-post-format-type' => array(),
+                                                            'data-network-type' => array(),
+                                                            'data-network-id' => array(),
+                                                            'data-network-title' => array(),
+                                                            'style' => array()
+                                                        ),
+                                                        'b' => array(),
+                                                        'br' => array(),
+                                                        'a' => array(
+                                                            'target' => array(),
+                                                            'href' => array(),
+                                                            'class' => array()
+                                                        ),
+                                                        'hr' => array(),
+                                                        'span' => array(
+                                                            'class' => array()
+                                                        ),
+                                                        'label' => array(
+                                                            'class' => array()
+                                                        ),
+                                                        'input' => array(
+                                                            'type' => array(),
+                                                            'name' => array(),
+                                                            'value' => array(),
+                                                            'class' => array(),
+                                                            'data-post-wp-type' => array(),
+                                                            'data-post-format-type' => array(),
+                                                            'data-network-type' => array(),
+                                                            'data-network-id' => array(),
+                                                            'data-post-format' => array(),
+                                                            'data-network-count' => array(),
+                                                            'identifier'=>array()
+                                                        ),
+                                                        'img' => array(
+                                                            'class' => array(),
+                                                            'src' => array(),
+                                                            'identifier'=>array(),
+                                                            'data-post-format' => array(),
+                                                            'data-post-wp-type' => array(),
+                                                            'data-post-format-type' => array(),
+                                                            'data-network-type' => array(),
+                                                            'data-network-id' => array(),
+                                                            'data-post-format' => array(),
+                                                        ),
+                                                        'button' => array(
+                                                            'type' => array(),
+                                                            'class' => array(),
+                                                            'data-post-wp-type' => array(),
+                                                            'data-post-format-type' => array(),
+                                                            'data-network-type' => array(),
+                                                            'data-network-id' => array(),
+                                                            'data-post-format' => array(),
+                                                            'data-network-count' => array(),
+                                                            'identifier'=>array()
+                                                        )
+                                                    ));
                         ?>
                     </div>
                 </div>

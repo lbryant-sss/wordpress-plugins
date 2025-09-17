@@ -5,6 +5,7 @@ namespace Integration\Mail;
 use IntegrationTester;
 use lucatume\WPBrowser\TestCase\WPTestCase;
 use SolidWP\Mail\Admin\SettingsScreen;
+use SolidWP\Mail\Hooks\PHPMailer;
 use SolidWP\Mail\SolidMailer;
 
 /**
@@ -55,7 +56,7 @@ class SolidMailerRoutingTest extends WPTestCase {
 		$php_mailer = tests_retrieve_phpmailer_instance();
 		
 		$this->assertInstanceOf( SolidMailer::class, $php_mailer );
-		$this->assertTrue( SolidMailer::is_solid_mail_configured() );
+		$this->assertTrue( PHPMailer::is_solid_mail_configured() );
 		$this->assertEquals( 'connection2@example.com', $php_mailer->From );
 		$this->assertEquals( 'Custom Name', $php_mailer->FromName );
 	}
@@ -91,7 +92,7 @@ class SolidMailerRoutingTest extends WPTestCase {
 		$php_mailer = tests_retrieve_phpmailer_instance();
 		
 		$this->assertInstanceOf( SolidMailer::class, $php_mailer );
-		$this->assertTrue( SolidMailer::is_solid_mail_configured() );
+		$this->assertTrue( PHPMailer::is_solid_mail_configured() );
 		$this->assertEquals( 'default@example.com', $php_mailer->From );
 		$this->assertEquals( 'Default Connection', $php_mailer->FromName );
 	}
@@ -127,7 +128,7 @@ class SolidMailerRoutingTest extends WPTestCase {
 		$php_mailer = tests_retrieve_phpmailer_instance();
 		
 		$this->assertInstanceOf( SolidMailer::class, $php_mailer );
-		$this->assertTrue( SolidMailer::is_solid_mail_configured() );
+		$this->assertTrue( PHPMailer::is_solid_mail_configured() );
 		$this->assertEquals( 'active@example.com', $php_mailer->From );
 		$this->assertEquals( 'Active Connection', $php_mailer->FromName );
 	}
@@ -163,7 +164,7 @@ class SolidMailerRoutingTest extends WPTestCase {
 		$php_mailer = tests_retrieve_phpmailer_instance();
 		
 		$this->assertInstanceOf( SolidMailer::class, $php_mailer );
-		$this->assertTrue( SolidMailer::is_solid_mail_configured() );
+		$this->assertTrue( PHPMailer::is_solid_mail_configured() );
 		$this->assertEquals( 'valid@example.com', $php_mailer->From );
 		$this->assertEquals( 'Valid Connection', $php_mailer->FromName );
 	}
@@ -208,7 +209,7 @@ class SolidMailerRoutingTest extends WPTestCase {
 		$php_mailer = tests_retrieve_phpmailer_instance();
 		
 		$this->assertInstanceOf( SolidMailer::class, $php_mailer );
-		$this->assertTrue( SolidMailer::is_solid_mail_configured() );
+		$this->assertTrue( PHPMailer::is_solid_mail_configured() );
 		$this->assertSame( 'priority@example.com', $php_mailer->From );
 		$this->assertSame( 'Priority Connection', $php_mailer->FromName );
 	}
@@ -245,7 +246,22 @@ class SolidMailerRoutingTest extends WPTestCase {
 		$php_mailer = tests_retrieve_phpmailer_instance();
 
 		$this->assertInstanceOf( SolidMailer::class, $php_mailer );
-		$this->assertFalse( SolidMailer::is_solid_mail_configured() );
+		$this->assertFalse( PHPMailer::is_solid_mail_configured() );
+	}
+
+	/**
+	 * @runInSeparateProcess
+	 */
+	public function testFallbackToRegularWpMailWhenNoActiveConnections(): void {
+		wp_mail( 'recipient@test.com', 'Test Subject', 'Test Body' );
+
+		/** @var \MockPHPMailer $php_mailer */
+		$php_mailer = tests_retrieve_phpmailer_instance();
+
+		$this->tester->dontSeeSolidMailer();
+		$this->assertFalse( PHPMailer::is_solid_mail_configured() );
+		$this->assertSame( 'recipient@test.com', $php_mailer->get_recipient( 'to' )->address );
+		$this->assertSame( 'Test Subject', $php_mailer->get_sent()->subject );
 	}
 
 	public function testUseUnmatchedConnections(): void {
@@ -286,7 +302,7 @@ class SolidMailerRoutingTest extends WPTestCase {
 		$php_mailer = tests_retrieve_phpmailer_instance();
 
 		$this->assertInstanceOf( SolidMailer::class, $php_mailer );
-		$this->assertTrue( SolidMailer::is_solid_mail_configured() );
+		$this->assertTrue( PHPMailer::is_solid_mail_configured() );
 		$this->assertSame( 'priority1@example.com', $php_mailer->From );
 	}
 }

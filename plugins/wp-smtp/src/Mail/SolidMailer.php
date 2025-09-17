@@ -17,6 +17,9 @@ use WP_Error;
  * methods for configuring API connections and formatting email data for API
  * transmission.
  *
+ * To support compatibility with WordPress < 6.8, this class should not be used
+ * in static or regular context without requiring `inc/wp-phpmailer-compatibility.php` helper.
+ *
  * @since   2.1.3
  * @package SolidWP\Mail\Pro
  * @extends \WP_PHPMailer
@@ -38,34 +41,36 @@ class SolidMailer extends \WP_PHPMailer {
 	protected ?ConnectionPool $connection_pool = null;
 
 	/**
-	 * The email "from name" that the user passed.
-	 *
-	 * @var string
+	 * @var array The initial settings from wp_mail().
 	 */
-	protected string $initial_from_name = '';
+	private array $initial_settings = [
+		'From'         => '',
+		'FromName'     => '',
+		'ReplyTo'      => [],
+		'ReplyToQueue' => [],
+	];
 
-	/**
-	 * Sets the SMTP connector instance.
-	 *
-	 * @param ConnectionPool|null $connection_pool Pool of connections available for the mail sending.
-	 *                                          or null to reset the pool.
-	 *
-	 * @since 2.1.3
-	 * @return void
-	 */
-	public function set_pool( ConnectionPool $connection_pool ): void {
-		$this->connection_pool = $connection_pool;
+	public function __construct() {
+		parent::__construct( true );
 	}
 
 	/**
-	 * Define the initial "from name" for the current email request.
+	 * Init connection pool for sending emails.
 	 *
-	 * @param string $initial_from_name
+	 * @param ConnectionPool $connection_pool Pool of connections available for the mail sending.
 	 *
 	 * @return void
 	 */
-	public function set_initial_from_name( string $initial_from_name ): void {
-		$this->initial_from_name = $initial_from_name;
+	public function init_pool( ConnectionPool $connection_pool ): void {
+		$this->connection_pool = $connection_pool;
+
+		// This setting will be modified during the sending process. So we need to capture initial values.
+		$this->initial_settings = [
+			'From'         => $this->From,
+			'FromName'     => $this->FromName,
+			'ReplyTo'      => $this->ReplyTo,
+			'ReplyToQueue' => $this->ReplyToQueue,
+		];
 	}
 
 	/**
@@ -83,22 +88,11 @@ class SolidMailer extends \WP_PHPMailer {
 	}
 
 	/**
-	 * If Solid Mail is used for the current request
-	 *
-	 * @return bool
-	 */
-	public static function is_solid_mail_configured(): bool {
-		global $phpmailer;
-		return $phpmailer instanceof self && $phpmailer->get_connection() instanceof ConnectorSMTP;
-	}
-
-	/**
 	 * Create a message and send it.
 	 * Uses the sending method specified by $Mailer.
 	 *
-	 * @throws Exception
-	 *
 	 * @return bool false on error - See the ErrorInfo property for details of the error
+	 * @throws Exception
 	 */
 	public function send(): bool {
 		if ( ! $this->connection_pool instanceof ConnectionPool || $this->connection_pool->count() === 0 ) {
@@ -137,31 +131,80 @@ class SolidMailer extends \WP_PHPMailer {
 	}
 
 	private function configure_for_connection( ConnectorSMTP $connection ): void {
-		// now bind the SMTP info to wp phpmailer.
-		$this->Mailer = $connection->isAPI() ? 'api' : 'smtp';
-		$this->From   = $connection->get_from_email();
-		// Don't override from name if it was defined already
-		$this->FromName = $this->initial_from_name === 'WordPress' ? $connection->get_from_name() : $this->initial_from_name;
-		$this->Sender   = $this->From;
-		$this->clearReplyTos();
-		$this->AddReplyTo( $this->From, $this->FromName );
+		$this->Mailer     = $connection->isAPI() ? 'api' : 'smtp';
 		$this->Host       = $connection->get_host();
 		$this->SMTPSecure = $connection->get_secure();
 		$this->Port       = $connection->get_port();
 		$this->SMTPAuth   = $connection->is_authentication();
 		$this->Username   = $this->SMTPAuth ? $connection->get_username() : '';
 		$this->Password   = $this->SMTPAuth ? $connection->get_password() : '';
+		$this->From       = $connection->get_from_email();
+		$this->Sender     = $this->From;
+
+		$this->maybe_update_default_settings( $connection );
+	}
+
+	private function maybe_update_default_settings( ConnectorSMTP $connection ): void {
+		$default_settings = $this->wordpress_default_settings();
+
+		if ( $this->initial_settings['FromName'] === $default_settings['FromName'] ) {
+			// Change the default `WordPress` to connection from name.
+			$this->FromName = $connection->get_from_name();
+		}
+
+		if ( count( $this->initial_settings['ReplyTo'] ) > 0 || count( $this->initial_settings['ReplyToQueue'] ) > 0 ) {
+			// The ReplyTo was provided by wp_mail already. We don't need to change it.
+			return;
+		}
+
+		if ( $this->initial_settings['From'] === $default_settings['From'] ) {
+			// Adding Reply-To with the default WordPress email does not make sense.
+			return;
+		}
+
+		if ( $this->initial_settings['From'] === $this->From ) {
+			// We don't want to add Reply-To with the same email as From.
+			return;
+		}
+
+		$this->clearReplyTos();
+		$this->AddReplyTo( $this->initial_settings['From'], $this->FromName );
+	}
+
+	/**
+	 * Returns the default settings for WordPress.
+	 *
+	 * @return string[]
+	 * @phpstan-return array{FromName: string, From: string}
+	 * @see wp_mail()
+	 */
+	private function wordpress_default_settings(): array {
+		$sitename   = wp_parse_url( network_home_url(), PHP_URL_HOST );
+		$from_email = 'wordpress@';
+
+		if ( null !== $sitename ) {
+			if ( str_starts_with( $sitename, 'www.' ) ) {
+				$sitename = substr( $sitename, 4 );
+			}
+
+			$from_email .= $sitename;
+		}
+
+		return [
+			'FromName' => 'WordPress',
+			'From'     => $from_email,
+		];
 	}
 
 	/**
 	 * Sends an email using the API connector.
 	 *
 	 * @param string $header The email headers
-	 * @param string $body   The email body
+	 * @param string $body The email body
 	 *
-	 * @since 2.1.3
 	 * @return bool | WP_Error The result from the API send operation
 	 * @throws \Exception
+	 * @since 2.1.3
 	 */
 	public function apiSend( $header, $body ) {
 		$connector = $this->get_connection();
@@ -187,9 +230,7 @@ class SolidMailer extends \WP_PHPMailer {
 	 * This method extracts and organizes all relevant email sending information.
 	 *
 	 * @param string $header The email headers.
-	 * @param string $body   The email body content.
-	 *
-	 * @since 2.1.3
+	 * @param string $body The email body content.
 	 *
 	 * @return WP_Error | array{
 	 *     to: array<array{0: string, 1: string}>,
@@ -204,6 +245,7 @@ class SolidMailer extends \WP_PHPMailer {
 	 *     reply_to: array<array{0: string, 1: string}>,
 	 *     all_recipients: array<string>
 	 * }
+	 * @since 2.1.3
 	 */
 	protected function getEmailData( string $header, string $body ): array {
 		// Format header with proper line endings

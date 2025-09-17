@@ -750,7 +750,7 @@ if (isset($_GET['page']) && !empty($_GET['page']) && !in_array($_GET['page'], un
                             <label for="b2s-ass-auth-email-other"> <?php esc_html_e('Use different email for verification', 'blog2social') ?></label>
                         </div>
                         <div class="pull-right"> 
-                            <button id="b2s-ass-auth-step1-btn" data-url="<?php echo esc_html(B2S_PLUGIN_SERVER_URL . '/auth/assistini.php?b2s_token=' . B2S_PLUGIN_TOKEN . '&sprache=' . substr(B2S_LANGUAGE, 0, 2)); ?>" data-auth-title="<?php echo esc_attr('Assistini Authorization', 'blog2social'); ?>" class="btn b2s-ass-btn"><?php esc_html_e('Send verification code', 'blog2social') ?></button>
+                            <button id="b2s-ass-auth-step1-btn" data-url="<?php echo esc_html(B2S_PLUGIN_API_ASS_ENDPOINT_AUTH . 'auth/assistini.php?b2s_token=' . B2S_PLUGIN_TOKEN . '&sprache=' . substr(B2S_LANGUAGE, 0, 2)); ?>" data-auth-title="<?php echo esc_attr('Assistini Authorization', 'blog2social'); ?>" class="btn b2s-ass-btn"><?php esc_html_e('Send verification code', 'blog2social') ?></button>
                         </div>
                     </div>
                     <div class="b2s-ass-auth-step-3-content" style="display:none;">

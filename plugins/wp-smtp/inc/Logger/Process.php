@@ -2,6 +2,7 @@
 
 namespace WPSMTP\Logger;
 
+use PHPMailer\PHPMailer\PHPMailer;
 use SolidWP\Mail\Admin\SettingsScreen;
 use SolidWP\Mail\Connectors\ConnectorSMTP;
 use SolidWP\Mail\SolidMailer;
@@ -20,10 +21,6 @@ class Process {
 	}
 
 	public function log_mail_success( $mail_data ) {
-		if ( ! SolidMailer::is_solid_mail_configured() ) {
-			return;
-		}
-
 		unset( $mail_data['attachments'] );
 
 		Db::get_instance()->insert(
@@ -35,10 +32,6 @@ class Process {
 	 * @param WP_Error $wp_error
 	 */
 	public function log_mail_failure( $wp_error ) {
-		if ( ! SolidMailer::is_solid_mail_configured() ) {
-			return;
-		}
-
 		$data = $wp_error->get_error_data( 'wp_mail_failed' );
 		unset( $data['phpmailer_exception_code'], $data['attachments'] );
 		$data['error'] = $wp_error->get_error_message();
@@ -49,12 +42,12 @@ class Process {
 	}
 
 	private function add_solid_mail_data( array $data ): array {
-		/** @var SolidMailer $phpmailer */
+		/** @var PHPMailer $phpmailer */
 		global $phpmailer;
 
-		/** @var ConnectorSMTP $connection */
-		$connection            = $phpmailer->get_connection();
-		$data['connection_id'] = $connection->get_id();
+		$connection = $phpmailer instanceof SolidMailer ? $phpmailer->get_connection() : null;
+		// `external` does mean the email was sent outside Solid Mail.
+		$data['connection_id'] = $connection instanceof ConnectorSMTP ? $connection->get_id() : 'external';
 		$data['from_email']    = $phpmailer->From;
 		$data['from_name']     = $phpmailer->FromName;
 		$data['content_type']  = $phpmailer->ContentType;

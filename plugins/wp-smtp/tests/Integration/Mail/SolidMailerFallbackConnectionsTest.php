@@ -5,6 +5,7 @@ namespace Integration\Mail;
 use IntegrationTester;
 use lucatume\WPBrowser\TestCase\WPTestCase;
 use SolidWP\Mail\Admin\SettingsScreen;
+use SolidWP\Mail\Hooks\PHPMailer;
 use SolidWP\Mail\SolidMailer;
 
 /**
@@ -57,18 +58,10 @@ class SolidMailerFallbackConnectionsTest extends WPTestCase {
 		$php_mailer = tests_retrieve_phpmailer_instance();
 
 		$this->assertInstanceOf( SolidMailer::class, $php_mailer );
-		$this->assertTrue( SolidMailer::is_solid_mail_configured() );
+		$this->assertTrue( PHPMailer::is_solid_mail_configured() );
 		$this->assertSame( 'connection1@example.com', $php_mailer->From );
 		$this->assertSame( 'Alternative Connection', $php_mailer->FromName );
-		$this->assertSame(
-			[
-				'connection1@example.com' => [
-					'connection1@example.com',
-					'Alternative Connection',
-				],
-			],
-			$php_mailer->getReplyToAddresses() 
-		);
+		$this->assertCount( 0, $php_mailer->getReplyToAddresses() );
 	}
 
 	public function testUseDefaultConnectionFirst(): void {
@@ -118,13 +111,13 @@ class SolidMailerFallbackConnectionsTest extends WPTestCase {
 		$php_mailer = tests_retrieve_phpmailer_instance();
 
 		$this->assertInstanceOf( SolidMailer::class, $php_mailer );
-		$this->assertTrue( SolidMailer::is_solid_mail_configured() );
+		$this->assertTrue( PHPMailer::is_solid_mail_configured() );
 		$this->assertSame( 'default@example.com', $php_mailer->From );
 		$this->assertSame( 'Default Connection', $php_mailer->FromName );
 		$this->assertSame(
 			[
-				'default@example.com' => [
-					'default@example.com',
+				'connection1@example.com' => [
+					'connection1@example.com',
 					'Default Connection',
 				],
 			],
@@ -179,13 +172,13 @@ class SolidMailerFallbackConnectionsTest extends WPTestCase {
 		$php_mailer = tests_retrieve_phpmailer_instance();
 
 		$this->assertInstanceOf( SolidMailer::class, $php_mailer );
-		$this->assertTrue( SolidMailer::is_solid_mail_configured() );
+		$this->assertTrue( PHPMailer::is_solid_mail_configured() );
 		$this->assertSame( 'connection2@example.com', $php_mailer->From );
 		$this->assertSame( 'Connection 2', $php_mailer->FromName );
 		$this->assertSame(
 			[
-				'connection2@example.com' => [
-					'connection2@example.com',
+				'unmatched@example.com' => [
+					'unmatched@example.com',
 					'Connection 2',
 				],
 			],

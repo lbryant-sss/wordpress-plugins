@@ -75,6 +75,7 @@ class Ajax_Get {
 
         if (isset($_POST['url']) && !empty($_POST['url'])) {
             $data = B2S_Util::scrapeUrl(esc_url_raw(wp_unslash($_POST['url'])));
+           
             $scrapeError = ($data !== false) ? false : true;
             require_once (B2S_PLUGIN_DIR . 'includes/B2S/Curation/View.php');
             $curation = new B2S_Curation_View();
@@ -114,13 +115,13 @@ class Ajax_Get {
                                 }
                             }
                         }
-                        echo json_encode(array('result' => true, 'preview' => $preview, 'scrapeError' => $scrapeError, 'settings' => $curation->getShippingDetails($result->data->mandant, $result->data->auth)));
+                        echo json_encode(array('result' => true, 'ogdata'=> json_encode($data),  'preview' => $preview, 'scrapeError' => $scrapeError, 'settings' => $curation->getShippingDetails($result->data->mandant, $result->data->auth)));
                         wp_die();
                     }
-                    echo json_encode(array('result' => false, 'preview' => $preview, 'scrapeError' => $scrapeError, 'error' => 'NO_AUTH'));
+                    echo json_encode(array('result' => false, 'ogdata'=> json_encode($data), 'preview' => $preview, 'scrapeError' => $scrapeError, 'error' => 'NO_AUTH'));
                     wp_die();
                 } else {
-                    echo json_encode(array('result' => true, 'preview' => $preview, 'scrapeError' => $scrapeError));
+                    echo json_encode(array('result' => true,  'ogdata'=> json_encode($data), 'preview' => $preview, 'scrapeError' => $scrapeError));
                     wp_die();
                 }
             }
@@ -1004,6 +1005,7 @@ class Ajax_Get {
 
         $result = array();
         require_once (B2S_PLUGIN_DIR . 'includes/B2S/Network/Item.php');
+        require_once (B2S_PLUGIN_DIR . 'includes/B2S/Settings/Share.php');
         $networkItem = new B2S_Network_Item();
         if (isset($_GET['owner']) && (int) $_GET['owner'] > 0) {
             $owner = stripslashes(get_user_by('id', (int) $_GET['owner'])->display_name);
@@ -1027,6 +1029,11 @@ class Ajax_Get {
         if (isset($_GET['networkAuthId']) && (int) $_GET['networkAuthId'] > 0) {
             $result['urlParameter'] = $networkItem->getUrlParameterSettings((int) $_GET['networkAuthId'], (int) $_GET['networkId']);
         }
+
+        $options = new B2S_Options(B2S_PLUGIN_BLOG_USER_ID);
+        $currentShareSettings = $options->_getOption("share_settings");
+        $shareSettingsItem = new B2S_Settings_Share($networkAuthId, $networkId, $currentShareSettings);
+        $result['shareSettings'] = $shareSettingsItem->getShareSettingsHtml();
 
         echo json_encode(array('result' => true, 'data' => json_encode($result)));
         wp_die();

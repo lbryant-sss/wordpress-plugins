@@ -142,7 +142,16 @@ class PHPMailer extends AbstractController {
 			}
 		}
 
-		$phpmailer->set_pool( $connection_pool );
-		$phpmailer->set_initial_from_name( $phpmailer->FromName );
+		$phpmailer->init_pool( $connection_pool );
+	}
+
+	/**
+	 * If Solid Mail is used for the current request
+	 *
+	 * @return bool
+	 */
+	public static function is_solid_mail_configured(): bool {
+		global $phpmailer;
+		return $phpmailer instanceof SolidMailer && $phpmailer->get_connection() instanceof ConnectorSMTP;
 	}
 }

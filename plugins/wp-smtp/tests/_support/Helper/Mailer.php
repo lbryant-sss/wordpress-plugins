@@ -7,6 +7,7 @@ use Codeception\TestInterface;
 use SolidWP\Mail\Connectors\ConnectorPostmark;
 use SolidWP\Mail\Connectors\ConnectorSMTP;
 use SolidWP\Mail\Repository\ProvidersRepository;
+use SolidWP\Mail\SolidMailer;
 use WP_Error;
 
 class Mailer extends Module {
@@ -51,10 +52,18 @@ class Mailer extends Module {
 						'code' => 200,
 					],
 					'body'     => wp_json_encode( [ 'MessageID' => '1' ] ),
-				] : new WP_Error( 'error', 'Error' );
+				] : new WP_Error( 'error', 'Fake Error' );
 			},
 			10,
 			3
 		);
+	}
+
+	public function seeSolidMailer(): bool {
+		return $GLOBALS['phpmailer'] instanceof SolidMailer;
+	}
+
+	public function dontSeeSolidMailer(): bool {
+		return ! $GLOBALS['phpmailer'] instanceof SolidMailer;
 	}
 }

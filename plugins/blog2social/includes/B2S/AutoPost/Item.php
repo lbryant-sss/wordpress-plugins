@@ -253,7 +253,7 @@ class B2S_AutoPost_Item {
 
         $content .= '</form>';
         if (B2S_PLUGIN_USER_VERSION > 0) {
-            $content .= '<button class="pull-right btn btn-primary btn-sm" id="b2s-auto-post-settings-btn" type="submit">';
+            $content .= '<button class="pull-right btn btn-primary btn-sm" id="b2s-auto-post-settings-btn" type="button">';
         } else {
             $content .= '<button class="pull-right btn btn-primary btn-sm b2s-btn-disabled b2s-save-settings-pro-info b2sInfoAutoPosterMModalBtn">';
         }

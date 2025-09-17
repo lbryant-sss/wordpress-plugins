@@ -299,6 +299,7 @@ class B2S_Ship_Save {
         $this->postData['version'] = B2S_PLUGIN_VERSION;
         $postData = $this->postData['post'];
         $this->postData['post'] = serialize($this->postData['post']);
+    
         $result = json_decode(B2S_Api_Post::post(B2S_PLUGIN_API_ENDPOINT, $this->postData, 90));
         $errorText = unserialize(B2S_PLUGIN_NETWORK_ERROR);
         $insertInsights = true;
@@ -360,12 +361,12 @@ class B2S_Ship_Save {
                                 $content[] = array('networkAuthId' => $post->network_auth_id, 'html' => $this->getItemHtml($networkId, $errorCode, $post->publishUrl, $printDelayDates, true, $isVideo));
                             }
                         } else {
-                         
+                            $shareMode = (isset($v['share_settings']['mode']) && !empty($v['share_settings']['mode'])) ? (int) $v['share_settings']['mode'] : 0; 
                             if (!$quickShare) {
-                                 $shareMode = (isset($v['share_settings']['mode']) && !empty($v['share_settings']['mode'])) ? (int) $v['share_settings']['mode'] : 0; 
+                                
                                 $content[] = array('networkAuthId' => $post->network_auth_id, 'html' => $this->getItemHtml($networkId, $errorCode, $post->publishUrl, $printDelayDates, true, $isVideo, $shareMode));
                             } else {
-                                $content[] = array('networkAuthId' => $post->network_auth_id, 'networkDisplayName' => $v['network_display_name'], 'networkId' => $v['network_id'], 'networkType' => $v['network_type'], 'html' => $this->getItemHtml($networkId, $errorCode, $post->publishUrl, $printDelayDates, true));
+                                $content[] = array('networkAuthId' => $post->network_auth_id, 'networkDisplayName' => $v['network_display_name'], 'networkId' => $v['network_id'], 'networkType' => $v['network_type'], 'html' => $this->getItemHtml($networkId, $errorCode, $post->publishUrl, $printDelayDates, true, 0, $shareMode));
                             }
                         }
 

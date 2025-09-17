@@ -4,7 +4,7 @@ Donate link: https://solidwp.com/email
 Tags: wordpress smtp, email, email log, smtp
 Requires at least: 6.4
 Tested up to: 6.8
-Stable tag: 2.2.1
+Stable tag: 2.2.2
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -140,6 +140,12 @@ Now your website email deliverability is SOLID with Solid Mail!
 3. See a comprehensive log of all emails sent from your WordPress website at a glance
 
 == Changelog ==
+
+= [2.2.2] 2025-09-16 =
+
+* Fix - All emails are now logged, even if no connection is configured or the email was sent without Solid Mail.
+* Fix - Addressed an email sending error on WordPress below 6.8 when no connection is configured.
+* Fix - Don't add unnecessary Reply-To headers and preserve passed Reply-To headers.
 
 = [2.2.1] 2025-08-26 =
 

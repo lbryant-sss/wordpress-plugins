@@ -10,7 +10,7 @@ class B2S_Loader {
     }
 
     public function load() {
-
+        // phpcs:ignore PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound
         load_plugin_textdomain('blog2social', false, B2S_PLUGIN_LANGUAGE_PATH);
 
         $b2sCheck = new B2S_System();
@@ -54,7 +54,7 @@ class B2S_Loader {
         define('B2S_PLUGIN_NETWORK_ALLOW_PROFILE', serialize(array(1, 2, 3, 4, 7, 9, 11, 14, 15, 16, 17, 18, 19, 21, 24, 25, 26, 27, 32, 35, 36, 37, 38, 39, 42, 43, 44, 45, 46)));
         define('B2S_PLUGIN_NETWORK_ALLOW_PAGE', serialize(array(1, 3, 6, 12, 17, 19, 42)));
         define('B2S_PLUGIN_NETWORK_ALLOW_GROUP', serialize(array(11, 17)));
-        define('B2S_PLUGIN_NETWORK_SUPPORT_VIDEO', serialize(array(1, 2, 3, 6, 7, 12, 32, 35, 36, 38, 39, 44, 45)));
+        define('B2S_PLUGIN_NETWORK_SUPPORT_VIDEO', serialize(array(1, 2, 3, 4, 6, 7, 12, 32, 35, 36, 38, 39, 44, 45)));
         define('B2S_PLUGIN_NETWORK_SUPPORT_SOCIAL', serialize(array(1, 2, 3, 4, 6, 7, 9, 11, 12, 14, 15, 16, 17, 18, 19, 21, 24, 25, 26, 27, 36, 37, 38, 39, 42, 43, 44, 45, 46)));
         define('B2S_PLUGIN_NETWORK_CROSSPOSTING_LIMIT', serialize(array(19 => array(2 => 3)))); //2=group
         define('B2S_PLUGIN_NETWORK_ALLOW_MODIFY_BOARD_AND_GROUP', serialize(array(6 => array('TYPE' => array(1), 'TITLE' => esc_html__('Modify pin board', 'blog2social')), 8 => array('TYPE' => array(2), 'TITLE' => esc_html__('Edit group settings', 'blog2social')), 15 => array('TYPE' => array(0), 'TITLE' => esc_html__('Modify subreddit', 'blog2social')))));
@@ -67,10 +67,10 @@ class B2S_Loader {
         define('B2S_PLUGIN_ALLOW_ADD_LINK', serialize(array(1, 2, 3, 12, 43, 44, 45, 46)));
         define('B2S_PLUGIN_REMOVE_PAGE_TITLE', serialize(array('blog2social', 'blog2social-video', 'blog2social-onboarding', 'blog2social-curation', 'blog2social-ship')));
         define('B2S_PLUGIN_CHANGELOG_CONTENT', serialize(array(
-            'version_info' => esc_html__('Blog2Social Version 8.4 (April 2025)', 'blog2social'),
-            'new' => array(esc_html__('Post Facebook Stories – Share content directly to your Facebook pages with scheduled and automated Story posts.', 'blog2social'), esc_html__('TikTok Photo & Carousel Posts – With Blog2Social Pro, plan and auto-publish single-images or multi-image slideshows on TikTok.', 'blog2social')),
+            'version_info' => esc_html__('Blog2Social Version 8.6 (September 2025)', 'blog2social'),
+            'new' => array(esc_html__('TikTok: Post TikTok videos & images faster – Share your visual content directly on TikTok (no extra steps needed) and schedule posts on TikTok for specific dates and times.', 'blog2social'), esc_html__('Video Add-on: Tumblr was added for your video posts', 'blog2social'), esc_html__('Tumbr: Individual templates for links, text and image posts', 'blog2social')),
             'improvements' => array(),
-            'fixed' => array(),
+            'fixed' => array(esc_html__('Tumblr: Post preview optimized', 'blog2social'), esc_html__('Tumblr: Post preview optimized', 'blog2social'), esc_html__('Facebook: Gallery posts fixed', 'blog2social'), esc_html__('Re-sharer: "No post found" fixed', 'blog2social'), esc_html__('Threads: Choose between image and link post', 'blog2social')),
             'upcoming' => array()
         )));
 
@@ -82,7 +82,7 @@ class B2S_Loader {
             3 => array(0 => array('short_text' => array('active' => 0, 'range_min' => 200, 'range_max' => 400, 'excerpt_range_min' => 200, 'excerpt_range_max' => 400, 'limit' => 3000), 'content' => "{CONTENT}\n{KEYWORDS}", 'format' => 0, 'addLink' => true),
                 1 => array('short_text' => array('active' => 0, 'range_min' => 200, 'range_max' => 400, 'excerpt_range_min' => 200, 'excerpt_range_max' => 400, 'limit' => 3000), 'content' => "{CONTENT}\n{KEYWORDS}", 'format' => 0, 'addLink' => true),
             ),
-            4 => array(0 => array('short_text' => array('active' => 0, 'range_min' => 1000, 'range_max' => 20000, 'excerpt_range_min' => 1000, 'excerpt_range_max' => 20000, 'limit' => 0), 'content' => '{CONTENT}', 'format' => false, 'disableKeywords' => true)),
+            4 => array(0 => array('short_text' => array('active' => 0, 'range_min' => 1000, 'range_max' => 20000, 'excerpt_range_min' => 1000, 'excerpt_range_max' => 20000, 'limit' => 0), 'content' => '{CONTENT}', 'format' => 0, 'separateKeywords' => true)), //tumblr 0->defaults to text/html
             6 => array(0 => array('short_text' => array('active' => 0, 'range_min' => 350, 'range_max' => 421, 'excerpt_range_min' => 350, 'excerpt_range_max' => 421, 'limit' => 495), 'content' => "{CONTENT}\n{KEYWORDS}", 'format' => false),
                 1 => array('short_text' => array('active' => 0, 'range_min' => 350, 'range_max' => 421, 'excerpt_range_min' => 350, 'excerpt_range_max' => 421, 'limit' => 495), 'content' => "{CONTENT}\n{KEYWORDS}", 'format' => false)),
             7 => array(0 => array('short_text' => array('active' => 0, 'range_min' => 1000, 'range_max' => 1500, 'excerpt_range_min' => 1000, 'excerpt_range_max' => 1500, 'limit' => 0), 'content' => '{CONTENT}', 'format' => false, 'disableKeywords' => true)),
@@ -124,7 +124,7 @@ class B2S_Loader {
         define('B2S_PLUGIN_SYSTEMREQUIREMENT_PHPMBSTRING', true);
         define('B2S_PLUGIN_SYSTEMREQUIREMENT_PHPDOM', true);
         define('B2S_PLUGIN_SYSTEMREQUIREMENT_HOTLINKPROTECTION', true);
-        define('B2S_PLUGIN_SYSTEMREQUIREMENT_PLUGINWARNING_WORDS', serialize(array('hotlink', 'firewall', 'total cache', 'security', 'heartbeat', 'disable')));
+        define('B2S_PLUGIN_SYSTEMREQUIREMENT_PLUGINWARNING_WORDS', serialize(array('hotlink', 'firewall', 'total cache', 'security', 'heartbeat', 'disable', 'buy me a coffee')));
         define('B2S_PLUGIN_SYSTEMREQUIREMENT_WPJSON', true);
         define('B2S_PLUGIN_SYSTEMREQUIREMENT_OPENSSL', true);
         define('B2S_PLUGIN_PAGE_SLUG', serialize(array('blog2social', 'blog2social-post', 'blog2social-calendar', 'blog2social-curation', 'blog2social-network', 'blog2social-settings', 'prg-post', 'blog2social-support', 'blog2social-premium', 'blog2social-sched', 'blog2social-approve', 'blog2social-publish', 'blog2social-notice', 'blog2social-ship', 'blog2social-video', 'blog2social-curation-draft', 'blog2social-draft-post', 'prg-login', 'prg-ship')));
@@ -670,9 +670,9 @@ class B2S_Loader {
     }
 
     public function b2s_save_post_box() {
-     
-        if (isset($_POST['b2s-meta-box-nonce']) && wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['b2s-meta-box-nonce'])), 'b2s-meta-box-nonce-post-area') && isset($_POST['post_ID']) && !wp_is_post_autosave((int) $_POST['post_ID']) ) {
-      
+
+        if (isset($_POST['b2s-meta-box-nonce']) && wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['b2s-meta-box-nonce'])), 'b2s-meta-box-nonce-post-area') && isset($_POST['post_ID']) && !wp_is_post_autosave((int) $_POST['post_ID'])) {
+
             if (!isset($_POST['wphb-clear-cache'])) {  // WP-Hummingbird  BTN clear cache - protection
                 if (!isset($_POST['wp-preview']) || (isset($_POST['wp-preview']) && sanitize_text_field(wp_unslash($_POST['wp-preview'])) != 'dopreview')) {
                     if (isset($_POST['post_ID']) && (int) $_POST['post_ID'] > 0) {
@@ -1253,6 +1253,7 @@ class B2S_Loader {
             'NETWORK_12_NOT_BUSINESS' => sprintf(__('Please change your Instagram account type into a Business account type. Learn more about how to convert your account in the <a target="_blank" href="%s">Instagram guide</a>.', 'blog2social'), esc_url(B2S_Tools::getSupportLink('NETWORK_12_NOT_BUSINESS'))),
             'NETWORK_18_LOCATION_NOT_PROVIDED' => esc_html__('Your Google Account does not have access to this provided location. You must ensure that the location is verified and available in Google.', 'blog2social'),
             'NETWORK_18_ACCOUNT_INVALID' => esc_html__('Your Google Account does not have access to this provided location because your Google Account is not verified.', 'blog2social'),
+            'NETWORK_36_SHARE_SETTINGS_MISMATCH' => esc_html__('Your TikTok share settings don’t match your TikTok account. Please update under your Blog2Social network settings or in your TikTok profile.', 'blog2social'),
             'SERVICE_LIMIT' => esc_html__("The post limit for your App has been reached. Please check the settings of your API app in your developer account and consider an upgrade if necessary.", "blog2social"),
             'NETWORK_APP_ACCOUNT_PERMISSON' => esc_html__('An issue with your API App has been detected. Please check the settings for your API App on your developer account of the respective social platform.', 'blog2social'),
             'NETWORK_APP_RIGHT' => esc_html__('Your network app does not have permission for this action. Please check your network app settings in your network developer portal.', 'blog2social'),

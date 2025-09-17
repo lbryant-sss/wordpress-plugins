@@ -1120,13 +1120,23 @@ class B2S_Post_Item {
                     }
 
                     $addPostFormat = '';
+                 
                     $isVideo = '';
                     if (isset($var->post_format) && $var->post_format != null && (int) $var->post_format >= 0) {
                         $addPostFormat = esc_html__('post format', 'blog2social') . ': ';
                         if ((int) $var->post_format == 0) {
-                            $addPostFormat .= esc_html__('Link Post', 'blog2social');
+                            if($var->network_id==4){
+
+                                $addPostFormat .= esc_html__('Text Post', 'blog2social');
+                            }else
+                            {
+                                $addPostFormat .= esc_html__('Link Post', 'blog2social');
+                            }
+                          
                         } else if ((int) $var->post_format == 1) {
                             $addPostFormat .= esc_html__('Image Post', 'blog2social');
+                        } else if ((int) $var->post_format == 3) {
+                            $addPostFormat .= esc_html__('Link Post', 'blog2social');
                         } else {
                             $addPostFormat .= esc_html__('Video Post', 'blog2social');
                             $isVideo = '&isVideo=1';
@@ -1523,10 +1533,17 @@ class B2S_Post_Item {
                         if (isset($var->post_format) && $var->post_format != null && (int) $var->post_format >= 0) {
                             $addPostFormat = esc_html__('post format', 'blog2social') . ': ';
                             if ((int) $var->post_format == 0) {
+                                if($var->network_id==4){
+                                    $addPostFormat .= esc_html__('Text Post', 'blog2social');
+                                }else
+                                {
                                 $addPostFormat .= esc_html__('Link Post', 'blog2social');
+                                }
                             } else if ((int) $var->post_format == 1) {
                                 $addPostFormat .= esc_html__('Image Post', 'blog2social');
-                            } else {
+                            } else if ((int) $var->post_format == 3) {
+                            $addPostFormat .= esc_html__('Link Post', 'blog2social');
+                            } else{
                                 $addPostFormat .= esc_html__('Video Post', 'blog2social');
                                 $isVideo = '&isVideo=1';
                             }

@@ -41,6 +41,10 @@ function LogDetail() {
 	);
 	const connectorDisplayName = useSelect(
 		(select) => {
+			if (selectedLog.connection_id === 'external') {
+				return __('Without Solid Mail connection', 'LION');
+			}
+
 			const connection = select(connectionsStore).getConnectionById(
 				selectedLog.connection_id
 			);

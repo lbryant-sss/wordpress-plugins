@@ -817,6 +817,7 @@ jQuery(document).on("click", ".b2s-network-select-btn", function () {
                     var postFormatText = JSON.parse(jQuery('.b2sNetworkSettingsPostFormatText').val());
                     var postFormatType = jQuery('.b2sNetworkSettingsPostFormatCurrent[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"]').attr('data-post-format-type');
                     if (jQuery('#user_version').val() >= 2) {
+                        
                         jQuery('.b2s-post-ship-item-post-format-text[data-network-auth-id="' + networkAuthId + '"]').html(postFormatText[postFormatType][jQuery('.b2sNetworkSettingsPostFormatCurrent[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"]').val()]);
                         jQuery('.b2s-post-item-details-post-format[data-network-auth-id="' + networkAuthId + '"]').val(jQuery('.b2sNetworkSettingsPostFormatCurrent[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"]').val());
                         //if linkpost then show btn meta tags
@@ -887,6 +888,7 @@ jQuery(document).on("click", ".b2s-network-select-btn", function () {
                         }
 
                     } else {
+                        
                         jQuery('.b2s-post-ship-item-post-format-text[data-network-id="' + networkId + '"]').html(postFormatText[postFormatType][jQuery('.b2sNetworkSettingsPostFormatCurrent[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"]').val()]);
                         jQuery('.b2s-post-item-details-post-format[data-network-id="' + networkId + '"]').val(jQuery('.b2sNetworkSettingsPostFormatCurrent[data-network-type="' + networkType + '"][data-network-id="' + networkId + '"]').val());
                     }
@@ -1117,6 +1119,7 @@ jQuery(document).on("click", ".b2s-network-select-btn", function () {
                                         if ((jQuery('.b2sNetworkSettingsPostFormatCurrent[data-network-type="' + data.networkType + '"][data-network-id="' + data.networkId + '"]').val() == 1 && ((data.networkId == 1 && (data.networkType == 1 || data.networkType == 2)) || (data.networkId == 3 && (data.networkType == 0 || data.networkType == 1)) || (data.networkId == 2))) || data.networkId == 12 || data.networkId == 45) {
                                             jQuery('.b2s-multi-image-area[data-network-auth-id="' + data.networkAuthId + '"]').show();
                                         }
+                                        
                                         jQuery('.b2s-post-ship-item-post-format-text[data-network-auth-id="' + data.networkAuthId + '"]').html(postFormatText[postFormatType][jQuery('.b2sNetworkSettingsPostFormatCurrent[data-network-type="' + data.networkType + '"][data-network-id="' + data.networkId + '"]').val()]);
                                         jQuery('.b2s-post-item-details-post-format[data-network-auth-id="' + data.networkAuthId + '"]').val(jQuery('.b2sNetworkSettingsPostFormatCurrent[data-network-type="' + data.networkType + '"][data-network-id="' + data.networkId + '"]').val());
 
@@ -1274,23 +1277,41 @@ jQuery(document).on("click", ".b2s-network-select-btn", function () {
                                     }
                                 }
 
-                                if (data.networkId == 4 && (jQuery('#b2sExPostFormat').val() == 0 || jQuery('#b2sExPostFormat').val() == 1 || jQuery('#b2sExPostFormat').val() == 2)) {
+                                //Tumblr Set Post Format
+                                if (data.networkId == 4 && (jQuery('#b2sExPostFormat').val() == 0 || jQuery('#b2sExPostFormat').val() == 1 || jQuery('#b2sExPostFormat').val() == 2) || jQuery('#b2sExPostFormat').val() == 3) {
+                                    
                                     if (jQuery('#user_version').val() >= 1) {
-                                        var exPostFormat = jQuery('#b2sExPostFormat').val();
-                                        if (exPostFormat == 1) {
-                                            exPostFormat = 0;
+                                       
+                                        var postFormat =  jQuery('.b2sNetworkSettingsPostFormatCurrent[data-network-id="4"]').val();
+
+                                        //If not from settings default to HTML/Text
+                                        if(postFormat == undefined){
+                                            postFormat = 0;
                                         }
-                                        jQuery('.b2s-post-item-details-post-format[data-network-auth-id="' + data.networkAuthId + '"] option[value="' + 0 + '"]').removeAttr('selected');
-                                        jQuery('.b2s-post-item-details-post-format[data-network-auth-id="' + data.networkAuthId + '"] option[value="' + 1 + '"]').removeAttr('selected');
-                                        jQuery('.b2s-post-item-details-post-format[data-network-auth-id="' + data.networkAuthId + '"] option[value="' + 2 + '"]').removeAttr('selected');
-                                        jQuery('.b2s-post-item-details-post-format[data-network-auth-id="' + data.networkAuthId + '"] option[value="' + exPostFormat + '"]').attr('selected', 'selected').change();
+
+                                        if (data.draft == true) {
+                                            if(data.draftActions.post_format == "0" || data.draftActions.post_format == "1" || data.draftActions.post_format == "3") {
+                                                postFormat = data.draftActions.post_format;
+                                            }
+                                        }
+                                      
+                                    }else
+                                    {
+                                        postFormat = 0;
                                     }
+
+                                    jQuery('.b2s-post-item-details-post-format[data-network-auth-id="' + data.networkAuthId + '"] option[value="' + 0 + '"]').removeAttr('selected');
+                                    jQuery('.b2s-post-item-details-post-format[data-network-auth-id="' + data.networkAuthId + '"] option[value="' + 1 + '"]').removeAttr('selected');
+                                    jQuery('.b2s-post-item-details-post-format[data-network-auth-id="' + data.networkAuthId + '"] option[value="' + 3 + '"]').removeAttr('selected');
+                                    jQuery('.b2s-post-item-details-post-format[data-network-auth-id="' + data.networkAuthId + '"] option[value="' + postFormat + '"]').attr('selected', 'selected').change();
                                 }
 
                                 //Draft
                                 if (data.draft == true) {
+                            
                                     if (data.draftActions.post_format == "0" || data.draftActions.post_format == "1") {
-                                        jQuery('.b2s-post-ship-item-post-format[data-network-auth-id="' + data.networkAuthId + '"]').trigger('click');
+
+                                        jQuery('.b2s-post-ship-item-post-format[data-network-auth-id="' + data.networkAuthId + '"]').trigger('click', [true]);
                                         jQuery('.b2s-post-item-details-preview-url-reload[data-network-auth-id="' + data.networkAuthId + '"]').addClass('disabled');
                                         jQuery('.b2s-user-network-settings-post-format[value="' + data.draftActions.post_format + '"][data-network-auth-id="' + data.networkAuthId + '"][data-network-id="' + networkId + '"][data-network-type="' + networkType + '"]').trigger('click');
                                     }
@@ -1588,8 +1609,21 @@ jQuery(document).on("click", ".b2s-network-select-btn", function () {
                                 }
                             }
                             checkGifAnimation(data.networkAuthId, data.networkId);
+
+                            if(data.networkId==36){
+                                var toggleOn= jQuery("#b2s\\["+data.networkAuthId+"\\]\\[b2s-tiktok-toggle-on\\]").html();
+                                
+                                if(toggleOn == '1'){
+                                    jQuery('.toggle[name="b2s['+data.networkAuthId+'][b2s-tiktok-disclose-toggle]"]').click();
+                                    
+                                }
+                            }
                         }
+                        
+                        
                     }
+
+                   
                 });
             }
         } else {
@@ -1638,11 +1672,17 @@ jQuery(document).on('click', '.b2s-post-item-details-url-image', function () {
 jQuery(document).on('click', '.b2s-submit-btn-scroll', function () {
     jQuery('.b2s-submit-btn').trigger('click');
 });
-jQuery(document).on('click', '.b2s-post-ship-item-post-format', function () {
-    openPostFormat(jQuery(this).attr('data-network-id'), jQuery(this).attr('data-network-type'), jQuery(this).attr('data-network-auth-id'), jQuery(this).attr('data-post-wp-type'), true);
+jQuery(document).on('click', '.b2s-post-ship-item-post-format', function (e, openedFromDraft) {
+    
+    var openModal= true;
+    if(openedFromDraft){
+        openModal = false;
+    }
+    openPostFormat(jQuery(this).attr('data-network-id'), jQuery(this).attr('data-network-type'), jQuery(this).attr('data-network-auth-id'), jQuery(this).attr('data-post-wp-type'), openModal);
     return false;
 });
 jQuery(document).on('click', '.b2s-btn-trigger-post-ship-item-post-format', function () {
+   
     jQuery('.b2s-post-ship-item-post-format[data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"]').trigger('click');
     return false;
 });
@@ -1692,8 +1732,9 @@ jQuery(document).on('change', '.b2s-post-item-details-release-input-date-select'
 
     var dataNetworkCount = 0;
     var hideTextareaAfter = false;
-
+ 
     if (jQuery(this).val() == 0) {
+       
         // start - enable assistini buttons for main textare of this network
         if (this.getAttribute('data-network-id') != 4) { // special case tumblr
 
@@ -1716,11 +1757,13 @@ jQuery(document).on('change', '.b2s-post-item-details-release-input-date-select'
         if (jQuery(this).attr('data-network-id') == 2 || jQuery(this).attr('data-network-id') == 45) {
             jQuery('.b2s-network-tos-sched-warning[data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"]').hide();
         }
+        
         if (jQuery('.b2s-post-item-details-post-format[data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"]').val() == 1 || jQuery(this).attr('data-network-id') == 12  || jQuery(this).attr('data-network-id') == 36) {
             jQuery('.b2s-multi-image-area[data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"][data-network-count="-1"]').show();
         }
     }
     if (jQuery(this).val() == 2) {
+     
         // start - enable assistini buttons for main textare of this network
         if (this.getAttribute('data-network-id') != 4) { // special case tumblr
             var networkAuthId = jQuery(this).data('network-auth-id');
@@ -1764,7 +1807,7 @@ jQuery(document).on('change', '.b2s-post-item-details-release-input-date-select'
         }
     }
     if (jQuery(this).val() == 1) {
-
+       
         // start - disable assistini buttons for main textarea of this network
         if (! ( this.getAttribute('data-network-id') == 4 || this.getAttribute('data-network-id') == 11 ||  this.getAttribute('data-network-id') == 27 || this.getAttribute('data-network-id') == 38 || this.getAttribute('data-network-id') == 39 ) ) { // special case tumblr
             var networkAuthId = jQuery(this).data('network-auth-id');
@@ -1798,17 +1841,22 @@ jQuery(document).on('change', '.b2s-post-item-details-release-input-date-select'
                 jQuery('.b2s-post-item-details-release-input-add[data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"][data-network-count="0"]').hide();
                 jQuery('.b2s-post-item-details-release-input-hide[data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"][data-network-count="1"').show();
             }
+         
+            if (!(jQuery(this).attr('data-network-id')==36)){
 
-            jQuery('.b2s-multi-image-area[data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"][data-network-count="-1"]').hide();
+                jQuery('.b2s-multi-image-area[data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"][data-network-count="-1"]').hide();
+            }
         }
 
         if (jQuery(this).attr('data-network-id') == 12 || jQuery(this).attr('data-network-id') == 1) {
             jQuery('.b2s-post-item-details-item-url-input[data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"]').parent().show();
         }
     }
-    releaseChoose(jQuery(this).val(), jQuery(this).attr('data-network-auth-id'), dataNetworkCount);
+  
+    releaseChoose(jQuery(this).val(), jQuery(this).attr('data-network-auth-id'), dataNetworkCount,jQuery(this).attr('data-network-id'));
 
     if (hideTextareaAfter == true) { // in case of "share_as_story" hide textarea
+        
         jQuery('.b2s-post-item-details-item-message-area[data-network-auth-id="' + networkAuthId + '"][data-network-count="-1"]').first().hide();
         jQuery('.b2s-post-item-ass-auth-btn[data-network-auth-id="' + networkAuthId + '"][data-network-count="-1"]').first().hide();
         jQuery('.b2s-multi-image-area[data-network-auth-id="' + jQuery(this).attr('data-network-auth-id') + '"][data-network-count="-1"]').hide();
@@ -2007,6 +2055,18 @@ jQuery(document).on('click', '.b2s-post-item-details-preview-url-reload', functi
                 if (data.result == true) {
                     jQuery('.b2s-post-item-details-preview-title[data-network-auth-id="' + data.networkAuthId + '"]').val(data.title);
                     jQuery('.b2s-post-item-details-preview-desc[data-network-auth-id="' + data.networkAuthId + '"]').val(data.description);
+
+                    //Tumblr Link Field special
+                    var networkId= jQuery('.b2s-post-item-details-post-format[data-network-auth-id="' + data.networkAuthId + '"]').data("network-id");
+                    if(networkId==4){
+                       
+                        var postFormat= jQuery('.b2s-post-item-details-post-format[data-network-auth-id="' + networkAuthId + '"]').val();
+                        if(postFormat == 3){
+                            jQuery('.b2s-post-item-details-item-title-input[data-network-auth-id="' + data.networkAuthId + '"]').val(data.title);
+                            jQuery('.tumblr-link-textarea-input[data-network-auth-id="' + data.networkAuthId + '"]').val(data.description);
+                        }
+                    }
+                    
                     if (jQuery('.b2s-post-item-details-url-image[data-network-auth-id="' + data.networkAuthId + '"]').attr('data-network-image-change') == '0') {
                         jQuery('.b2s-post-item-details-url-image[data-network-auth-id="' + data.networkAuthId + '"]').attr('src', data.image);
                     }
@@ -2072,7 +2132,7 @@ jQuery(document).on('click', '.b2s-select-image-modal-open', function () {
     jQuery('#b2sInsertImageType').val("0");
     if (typeof metaType !== 'undefined') {
         jQuery('.b2s-image-change-this-network').attr('data-meta-type', metaType);
-
+   
         if (postFormat != "1") {
             var activeMetaNetworks = {};
             var inactiveMetaNetworks = {};
@@ -2099,7 +2159,7 @@ jQuery(document).on('click', '.b2s-select-image-modal-open', function () {
             jQuery(document).on('click', '.b2s-image-change-meta-network', function () {
                 currentOGImage = jQuery('input[name=image_url]:checked').val();
                 changedOGImage = true;
-
+                
                 if (typeof jQuery('.b2s-content-info-image[data-network-id="' + networkId + '"][data-network-auth-id="' + authId + '"]') != typeof undefined) {
                     jQuery.ajax({
                         url: ajaxurl,
@@ -2236,13 +2296,14 @@ jQuery(document).on('click', '.b2s-image-remove-btn', function () {
     return false;
 });
 jQuery(document).on('click', '.b2s-image-change-this-network', function () {
+    
     var networkAuthId = jQuery(this).attr('data-network-auth-id');
     var networkCountId = jQuery(this).attr('data-network-count');
     var networkId = jQuery(this).attr('data-network-id');
     var currentImage = jQuery('input[name=image_url]:checked').val();
     var label = jQuery("label[for='" + jQuery('input[name=image_url]:checked').attr('id') + "'] :first-child");
     var alt = label.attr('alt');
-
+ 
     if (typeof jQuery('.b2s-content-info-image[data-network-id="' + networkId + '"][data-network-auth-id="' + networkAuthId + '"]') != typeof undefined) {
         jQuery.ajax({
             url: ajaxurl,
@@ -2272,6 +2333,7 @@ jQuery(document).on('click', '.b2s-image-change-this-network', function () {
             }
         });
     }
+    
     if (jQuery('#b2sInsertImageType').val() == '1') { //HTML-Network
         var sceditor = jQuery('.b2s-post-item-details-item-message-input-allow-html[data-network-auth-id="' + networkAuthId + '"]').sceditor('instance');
         sceditor.insert("<br /><img src='" + currentImage + "'/><br />");
@@ -2305,7 +2367,7 @@ jQuery(document).on('click', '.b2s-image-change-this-network', function () {
         if (jQuery(this).attr('data-meta-type') == "card") {
             jQuery('#b2sChangeCardMeta').val("1");
         }
-
+       
         //add check linkpost change meta tag image for this network
         var postFormat = jQuery('.b2s-post-item-details-post-format[data-network-auth-id=' + networkAuthId + ']').val();
         var networkId = jQuery('.b2s-network-select-btn[data-network-auth-id=' + networkAuthId + ']').attr('data-network-id');
@@ -2663,6 +2725,7 @@ jQuery.validator.addMethod("unique", function (value, element, params) {
 jQuery.validator.classRuleSettings.unique = {
     unique: true
 };
+
 jQuery.validator.addMethod("checkTags", function (value, element, test) {
     var allowed_tags = ['p', 'h1', 'h2', 'br', 'i', 'em', 'b', 'a', 'img', 'span'];
     var tags = value.match(/(<([^>]+)>)/ig);
@@ -2686,6 +2749,7 @@ jQuery.validator.addMethod("checkTags", function (value, element, test) {
     }
     return true;
 });
+
 jQuery.validator.addClassRules('b2s-post-item-details-item-message-input', {'checkTags': true});
 jQuery.validator.addClassRules('b2s-post-item-details-release-input-date-select', {'checkSched': true});
 jQuery.validator.addClassRules('b2s-post-item-details-item-title-input', {required: true});
@@ -2751,6 +2815,7 @@ jQuery("#b2sNetworkSent").validate({
         if (checkImageByImageNetworks() == false) {
             return false;
         }
+        var send= jQuery(form).serialize() + '&b2s_security_nonce=' + jQuery('#b2s_security_nonce').val();
 
         var userDate = new Date();
         var pubDate = userDate.getFullYear() + "-" + padDate(userDate.getMonth() + 1) + "-" + padDate(userDate.getDate()) + " " + padDate(userDate.getHours()) + ":" + padDate(userDate.getMinutes()) + ":" + padDate(userDate.getSeconds());
@@ -3143,6 +3208,7 @@ function init(firstrun) {
             submitArea();
         });
         jQuery('.b2s-post-item-details-release-input-date-select').each(function () {
+          
             releaseChoose(jQuery(this).val(), jQuery(this).attr('data-network-auth-id'), 0);
         });
 
@@ -3182,6 +3248,16 @@ function initSceditor(networkAuthId) {
         jQuery('.b2s-post-item-countChar[data-network-auth-id="' + networkAuthId + '"]').html(jQuery('.b2s-post-item-details-item-message-input-allow-html[data-network-auth-id="' + networkAuthId + '"]').prev('.b2s-post-item-details-item-message-input').prevObject[0]._sceditor.getBody().textContent.length);
     }
 
+    sceditor.bind("valuechanged", function() {
+       
+        let content = sceditor.val();
+        var contentBefore= content;
+        content = content.replace(/<(?!\/?(h1|h2|p|br|i|em|b|a|img|span)\b)[^>]*>/gi, "");
+        if(contentBefore != content){ 
+            sceditor.val(content);
+        }
+        
+    });
 
 }
 
@@ -3396,7 +3472,8 @@ function checkImageByImageNetworks() {
 }
 
 
-function releaseChoose(choose, dataNetworkAuthId, dataNetworkCount) {
+function releaseChoose(choose, dataNetworkAuthId, dataNetworkCount, networkId=0) {
+
 
     var selectorInput = '[data-network-auth-id="' + dataNetworkAuthId + '"]';
     jQuery('.b2s-post-item-details-release-area-details-row' + selectorInput).hide();
@@ -3468,6 +3545,7 @@ function releaseChoose(choose, dataNetworkAuthId, dataNetworkCount) {
         jQuery('.b2s-post-item-details-release-area-div-day' + selectorInput).hide();
     } else if (choose == 1) {
 
+
         //Take text char count from default text area
         var $source = jQuery(".b2s-post-item-countChar[data-network-count=-1][data-network-auth-id='" + dataNetworkAuthId + "']");
         var $target = jQuery(".b2s-post-item-countChar[data-network-count=0][data-network-auth-id='" + dataNetworkAuthId + "']");
@@ -3483,10 +3561,15 @@ function releaseChoose(choose, dataNetworkAuthId, dataNetworkCount) {
         if (jQuery('.b2s-post-item-details-release-input-date-select' + selectorInput).attr('data-network-customize-content') == "1") {
             jQuery('.b2s-post-item-details-item-message-input' + selectorInput + '[data-network-count="-1"]').prop('disabled', true);
             jQuery('.b2s-post-item-details-item-message-area' + selectorInput + '[data-network-count="-1"]').hide();
-            jQuery('.b2s-post-item-details-url-image' + selectorInput + '[data-network-count="-1"]').hide();
-            jQuery('.b2s-select-image-modal-open' + selectorInput + '[data-network-count="-1"]').hide();
-            jQuery('.b2s-image-remove-btn' + selectorInput + '[data-network-count="-1"]').hide();
-            jQuery('.cropper-open' + selectorInput + '[data-network-count="-1"]').hide();
+            
+            if(networkId != 36){
+                
+                jQuery('.b2s-post-item-details-url-image' + selectorInput + '[data-network-count="-1"]').hide();
+                jQuery('.b2s-select-image-modal-open' + selectorInput + '[data-network-count="-1"]').hide();
+                jQuery('.b2s-image-remove-btn' + selectorInput + '[data-network-count="-1"]').hide();
+                jQuery('.cropper-open' + selectorInput + '[data-network-count="-1"]').hide();
+
+            }
             jQuery('.b2s-post-original-area' + selectorInput).removeClass('col-sm-7').removeClass('col-lg-9');
             jQuery('.b2s-post-tool-area' + selectorInput).hide();
             //TOS Network Twitter
@@ -3714,8 +3797,30 @@ function releaseChooseInterval(interval, selectorInput, dataCount) {
         jQuery('.b2s-post-item-details-release-input-select-day[data-network-count="' + dataCount + '"]' + selectorInput).hide();
     }
 }
+function removeAllTags(networkAuthId) {
+    jQuery('.b2s-post-item-details-tag-input-elem[data-network-auth-id="' + networkAuthId + '"]').remove();
+}
 
+function addTagwithContent(networkAuthId, content) {
+    var selector = ".b2s-post-item-details-tag-input-elem[data-network-auth-id='" + networkAuthId + "']";
+    var container = jQuery(".b2s-post-item-details-tag-input[data-network-auth-id='" + networkAuthId + "']");
+    
+    if(jQuery(selector).length > 0) {     
+        jQuery(selector).last().after('<input class="form-control b2s-post-item-details-tag-input-elem" data-network-auth-id="' + networkAuthId + '" value="'+content+'" name="b2s[' + networkAuthId + '][tags][]">');
+    }else
+    {
+        container.append('<input class="form-control b2s-post-item-details-tag-input-elem" data-network-auth-id="' + networkAuthId + '" value="'+content+'" name="b2s[' + networkAuthId + '][tags][]">');
+    }
+ 
+    jQuery(".remove-tag-btn[data-network-auth-id='" + networkAuthId + "'").show();
+    var limit = jQuery(".b2s-post-item-details-tag-limit[data-network-auth-id='" + networkAuthId + "']").val();
 
+    if (typeof limit !== typeof undefined && limit !== false) {
+        if (jQuery(selector).length >= limit) {
+            jQuery(".ad-tag-btn[data-network-auth-id='" + networkAuthId + "'").hide();
+        }
+    }
+}
 
 function addTag(networkAuthId) {
     var selector = ".b2s-post-item-details-tag-input-elem[data-network-auth-id='" + networkAuthId + "']";
@@ -3950,7 +4055,7 @@ function getNetwork43UrlLength(url = "") {
 }
 
 function networkCount(networkAuthId) {
-
+    
     var twitterLimit = 280;
     var networkCountId = -1; //default;
     if (jQuery(':focus').length > 0) {
@@ -3961,6 +4066,8 @@ function networkCount(networkAuthId) {
     }
     var url = jQuery(".b2s-post-item-details-item-url-input[data-network-auth-id='" + networkAuthId + "']").val();
     var text = jQuery(".b2s-post-item-details-item-message-input[data-network-count='" + networkCountId + "'][data-network-auth-id='" + networkAuthId + "']").val();
+
+    var tumblr= jQuery(".b2s-post-item-details-item-message-input[data-network-count='" + networkCountId + "'][data-network-auth-id='" + networkAuthId + "']").prop("data-network-id");
 
     jQuery(".b2s-post-item-details-item-url-input[data-network-auth-id='" + networkAuthId + "']").removeClass("error");
     if (typeof url !== typeof undefined && url !== false) {
@@ -4733,7 +4840,6 @@ function openPostFormat(networkId, networkType, networkAuthId, wpType, showModal
 }
 
 function changePostFormat(networkId, networkType, postFormat, networkAuthId, postFormatType, postType, closeModal) {
-
     jQuery('.b2s-settings-user-success').hide();
     jQuery('.b2s-settings-user-error').hide();
     jQuery('.b2s-server-connection-fail').hide();
@@ -4887,7 +4993,7 @@ function changePostFormat(networkId, networkType, postFormat, networkAuthId, pos
     }
     checkGifAnimation(networkAuthId, networkId);
     //Multi Image
-    if (((postFormat == 1 && ((networkId == 1 && (networkType == 1 || networkType == 2)) || (networkId == 2) || (networkId == 45) (networkId == 3 && (networkType == 0 || networkType == 1)))) || networkId == 12 )  && jQuery('.b2s-post-item-details-release-input-date-select[data-network-auth-id="' + networkAuthId + '"]').val() != 1) {
+    if (((postFormat == 1 && ((networkId == 1 && (networkType == 1 || networkType == 2)) || (networkId == 2) || (networkId == 45) || (networkId == 3 && (networkType == 0 || networkType == 1)))) || networkId == 12 )  && jQuery('.b2s-post-item-details-release-input-date-select[data-network-auth-id="' + networkAuthId + '"]').val() != 1) {
         jQuery('.b2s-multi-image-area[data-network-auth-id="' + networkAuthId + '"][data-network-count="-1"]').show();
     } else {
         jQuery('.b2s-multi-image-area[data-network-auth-id="' + networkAuthId + '"][data-network-count="-1"]').hide();
@@ -4959,34 +5065,107 @@ function changePostFormat(networkId, networkType, postFormat, networkAuthId, pos
 
 //Network: Tumblr post format
 jQuery(document).on('change', '.b2s-post-item-details-post-format[data-network-id="4"]', function () {
+
     var type = jQuery(this).val();
     var networkAuthId = jQuery(this).data('network-auth-id');
-    if (type == 2) {
-        jQuery('.b2s-format-area-tumblr-image[data-network-auth-id="' + networkAuthId + '"]').hide();
+    var networkCountId = -1;
+   
+    if(type==0 || type==1){
+      
+        jQuery('.b2s-post-item-details-item-url-input[data-network-auth-id="' + networkAuthId + '"]').prop("disabled", true);
+    }else
+    {
+        jQuery('.b2s-post-item-details-item-url-input[data-network-auth-id="' + networkAuthId + '"]').prop("disabled", false);
+    }
+
+
+    if (type == 3) {
+
+        jQuery('.b2s-format-area-tumblr-image[data-network-auth-id="' + networkAuthId + '"]').show();
         jQuery('.b2s-format-area-tumblr-link[data-network-auth-id="' + networkAuthId + '"]').show();
         jQuery('.b2s-post-item-details-item-message-area[data-network-auth-id="' + networkAuthId + '"]').show();
+        jQuery('.b2s-post-original-area[data-network-auth-id="' + networkAuthId + '"]').show();
+        
+        //Change Linkpost View
+        jQuery('.b2s-post-item-details-item-message-area[data-network-auth-id="' + networkAuthId + '"]').children('.sceditor-container').hide();
+        jQuery('.tumblr-textarea-input[data-network-auth-id="' + networkAuthId + '"]').hide();
+        jQuery('.tumblr-link-textarea-input[data-network-auth-id="' + networkAuthId + '"]').show();
+        jQuery('.tumblr-link-textarea-input[data-network-auth-id="' + networkAuthId + '"]').prop('disabled', false);
+        jQuery('.b2s-post-item-details-preview-desc[data-network-auth-id="' + networkAuthId + '"]').prop('disabled', true);
+        jQuery('.b2s-post-item-details-preview-title[data-network-auth-id="' + networkAuthId + '"]').prop('disabled', true);
+        jQuery('.alert-warning[data-network-auth-id="' + networkAuthId + '"]').show();
 
-        // show assistini buttons
+        if(jQuery('.link-textarea-initialized[data-network-auth-id="' + networkAuthId + '"]').data("linktextarea-initialized")==0){
+            //Handle Text shorten link strip tags etc.
+            var text = jQuery('.tumblr-textarea-input[data-network-auth-id="' + networkAuthId + '"]').val();
+            text= stripTags(text);
+            text= cutAfterWord(text, 125);
+
+            jQuery('.tumblr-link-textarea-input[data-network-auth-id="' + networkAuthId + '"]').val(text);
+            jQuery('.b2s-post-item-details-preview-desc[data-network-auth-id="' + networkAuthId + '"]').val(text);
+            //jQuery(".b2s-post-item-countChar[data-network-count='" + networkCountId + "'][data-network-auth-id='" + networkAuthId + "']").html(text.length);
+            jQuery('.link-textarea-initialized[data-network-auth-id="' + networkAuthId + '"]').data("linktextarea-initialized", 1);
+        }
+        var length=   jQuery('.tumblr-link-textarea-input[data-network-auth-id="' + networkAuthId + '"]').val().length;
+        jQuery(".b2s-post-item-countChar[data-network-count='" + networkCountId + "'][data-network-auth-id='" + networkAuthId + "']").html(length);
+        jQuery('.tumblr-link-textarea-input[data-network-auth-id="' + networkAuthId + '"]').attr('style', 'min-height: 8em !important;');
+        
+
         showAssButtons(networkAuthId);
     }
     if (type == 1) {
+        jQuery('.alert-warning[data-network-auth-id="' + networkAuthId + '"]').hide();
         jQuery('.b2s-format-area-tumblr-link[data-network-auth-id="' + networkAuthId + '"]').show();
         jQuery('.b2s-format-area-tumblr-image[data-network-auth-id="' + networkAuthId + '"]').show();
         jQuery('.b2s-post-item-details-item-message-area[data-network-auth-id="' + networkAuthId + '"]').hide();
-
+        jQuery('.b2s-post-original-area[data-network-auth-id="' + networkAuthId + '"]').hide();
+        jQuery('.b2s-post-item-countChar-from[data-network-auth-id="' + networkAuthId + '"]').hide();
+       
         // hide assistini buttons
         hideAssButtons(networkAuthId);
     }
     if (type == 0) {
+        jQuery('.alert-warning[data-network-auth-id="' + networkAuthId + '"]').hide();
         jQuery('.b2s-format-area-tumblr-link[data-network-auth-id="' + networkAuthId + '"]').hide();
         jQuery('.b2s-format-area-tumblr-image[data-network-auth-id="' + networkAuthId + '"]').hide();
         jQuery('.b2s-post-item-details-item-message-area[data-network-auth-id="' + networkAuthId + '"]').show();
-
+        jQuery('.b2s-post-item-details-item-message-area[data-network-auth-id="' + networkAuthId + '"]').children('.sceditor-container').show();
+        jQuery('.b2s-post-item-details-item-message-input[data-network-auth-id="' + networkAuthId + '"]').hide();
+        jQuery('.b2s-post-original-area[data-network-auth-id="' + networkAuthId + '"]').hide();
+        jQuery('.b2s-post-item-countChar-from[data-network-auth-id="' + networkAuthId + '"]').hide();
+        jQuery('.tumblr-link-textarea-input[data-network-auth-id="' + networkAuthId + '"]').hide();
+        jQuery('.tumblr-link-textarea-input[data-network-auth-id="' + networkAuthId + '"]').prop('disabled', true);
+    
         // show assistini buttons
         showAssButtons(networkAuthId);
+
+        var sceditor = jQuery('.b2s-post-item-details-item-message-input-allow-html[data-network-auth-id="' + networkAuthId + '"]').sceditor('instance');
+        if (sceditor) {
+            var plainText = sceditor.getBody().innerHTML;   // Gets plain text (no HTML)
+            var textLength = plainText.length;      // Character count
+             jQuery(".b2s-post-item-countChar[data-network-count='" + networkCountId + "'][data-network-auth-id='" + networkAuthId + "']").html(textLength);
+        }
     }
 });
 
+jQuery(document).on('input change', '.tumblr-link-textarea-input', function(){
+
+    var currentText= jQuery(this).val();
+    var networkAuthId = jQuery(this).data('network-auth-id');
+    jQuery('.b2s-post-item-details-preview-desc[data-network-auth-id="' + networkAuthId + '"]').val(currentText);
+    //jQuery('.tumblr-textarea-input[data-network-auth-id="' + networkAuthId + '"]').val(currentText);
+    jQuery('.b2s-post-item-countChar[data-network-auth-id="' + networkAuthId + '"]').html(currentText.length);
+}   
+);
+
+jQuery(document).on('input change', '.b2s-post-item-details-item-title-input', function(){
+
+    var currentText= jQuery(this).val();
+    var networkAuthId = jQuery(this).data('network-auth-id');
+    jQuery('.b2s-post-item-details-preview-title[data-network-auth-id="' + networkAuthId + '"]').val(currentText);
+   
+}
+);
 
 jQuery(document).on('click', '.b2s-multi-image-zoom-btn', function () {
     var img = jQuery(this).closest('.text-center').find('.b2s-post-item-details-url-image-multi').attr('src');
@@ -5530,8 +5709,10 @@ function assGenerateText(networkAuthId, networkName, schedCount = false) {
                     sceditorBody[0].classList.remove('b2s-post-item-sceditor-disabled');
                 }
             }
-            loaderElm.hide();
+        
+            
             var data = JSON.parse(data);
+        
             if (data.error == 'nonce') {
                 jQuery('.b2s-nonce-check-fail').show();
             } else if (data.error == 3001) {
@@ -5543,7 +5724,40 @@ function assGenerateText(networkAuthId, networkName, schedCount = false) {
                     jQuery('#b2sAssNoContentModal').modal('show');
                 }
             } else if (data.result == true && data.ass_text != '') {
+                var tumblrLink=false;
                 if (textareaElm[0].classList.contains('b2s-post-item-details-item-message-input-allow-html')) { // is html network
+                
+                    //Tumbr Linkpost
+                    var networkId= jQuery('.b2s-post-item-details-post-format[data-network-auth-id="' + networkAuthId + '"]').data("network-id");
+                    if(networkId== 4 ){
+                        
+                        //Handle Tags from Assistini
+                        removeAllTags(networkAuthId);
+                        var ass_hashtags = [...data.ass_hashtags.matchAll(/#([\p{L}\p{N}_]+)/gu)].map(match => match[1]);
+                        ass_hashtags.forEach(element => {
+                           
+                            addTagwithContent(networkAuthId, element);
+                        });
+                        
+            
+                        var postFormat = jQuery('.b2s-post-item-details-post-format[data-network-auth-id="' + networkAuthId + '"]').val();
+
+                        if(postFormat == 3){
+                           
+                            loaderElm.hide();
+                            tumblrLink= true;
+                            var text= data.ass_text;
+                            text= stripTags(text);
+                            text= cutAfterWord(text, 125);
+                            
+                            jQuery('.tumblr-link-textarea-input[data-network-auth-id="' + networkAuthId + '"]').val(text);
+                            var networkCountId = '-1';
+                            jQuery(".b2s-post-item-countChar[data-network-count='" + networkCountId + "'][data-network-auth-id='" + networkAuthId + "']").html(text.length);
+                            jQuery('.b2s-post-item-details-preview-desc[data-network-auth-id="' + networkAuthId + '"]').val(text);
+                           
+                        }
+                    }
+
                     var sceditor = jQuery('.b2s-post-item-details-item-message-input-allow-html[data-network-auth-id="' + networkAuthId + '"]').sceditor('instance');
                     if (sceditor != undefined && typeof sceditor.insert === 'function') {
                         sceditor.val('');
@@ -5554,14 +5768,20 @@ function assGenerateText(networkAuthId, networkName, schedCount = false) {
                         }
                         sceditor.insert(data.ass_text);
                     }
+                       loaderElm.hide();
+                  
                 } else { // no html network
+                       
                     textareaElm.val(data.ass_text);
+                    loaderElm.hide();
                 }
                 var networkCountId = '-1';
                 if (schedCount !== false) {
                     networkCountId = schedCount;
                 }
-                jQuery(".b2s-post-item-countChar[data-network-count='" + networkCountId + "'][data-network-auth-id='" + networkAuthId + "']").html(data.ass_text.length);
+                if(!tumblrLink){
+                    jQuery(".b2s-post-item-countChar[data-network-count='" + networkCountId + "'][data-network-auth-id='" + networkAuthId + "']").html(data.ass_text.length);
+                }
                 jQuery('#sidebar_ship_ass_words_open').text(data.ass_words_open);
             } else {
                 jQuery('#b2sAssDefaultErrorModal').modal('show');
@@ -5725,6 +5945,34 @@ function get3YearsMax(type, dataNetworkAuthId, count) {
     return false;
 }
 
+function cutAfterWord(str, maxChars) {
+  if (str.length <= maxChars) return str;
+
+  const words = str.split(' ');
+  let result = '';
+  let length = 0;
+
+  for (let i = 0; i < words.length; i++) {
+    const word = words[i];
+    if (length + word.length + (i > 0 ? 1 : 0) > maxChars) {
+      // Stop before adding this word if it would exceed maxChars,
+      // but still add it once to finish the word
+      if (result) result += ' ';
+      result += word;
+      break;
+    }
+    if (result) result += ' ';
+    result += word;
+    length = result.length;
+  }
+  return result;
+}
+
+function stripTags(input) {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = input;
+    return tempDiv.textContent || tempDiv.innerText || '';
+}
 
 /////////New TikTok Direct Review///////////////////////////////
 
@@ -5771,7 +6019,7 @@ jQuery(document).on('change', '.b2s-tiktok-form-select', function () {
     if(mode == 0){
         //share as draft
      
-        jQuery('.tikttok-share-settings-view[data-network-auth-id="'+authId+'"]').hide();
+        jQuery('.tiktok-share-settings[data-network-auth-id="'+authId+'"]').hide();
         jQuery('.b2s-tiktok-draft-note[data-network-auth-id="'+authId+'"]').show();
 
         var isVideo= jQuery('.tiktok-video-preview[data-network-auth-id="'+authId+'"]').data("is-video");
@@ -5790,12 +6038,13 @@ jQuery(document).on('change', '.b2s-tiktok-form-select', function () {
             jQuery('.tiktok-text-input-fields[data-network-auth-id="'+authId+'"]').show();
         }
         //share directly
-        jQuery('.tikttok-share-settings-view[data-network-auth-id="'+authId+'"]').show();
+        jQuery('.tiktok-share-settings[data-network-auth-id="'+authId+'"]').show();
         jQuery('.b2s-tiktok-draft-note[data-network-auth-id="'+authId+'"]').hide();
       
        
     }
 });
+
 jQuery(document).on('change', '.b2s-tiktok-status_privacy', function () {
     var authId = jQuery(this).attr("data-network-auth-id");
     var mode = jQuery(this).val();
@@ -5813,10 +6062,11 @@ jQuery(document).on('change', '.b2s-tiktok-status_privacy', function () {
     }
 });
 
-jQuery(document).on('click', '.toggle', function () {
+jQuery(document).on('click', '.tiktok-promotional-toggle', function () {
    
+
     jQuery(this).toggleClass('off'); 
- 
+
     var authId = jQuery(this).attr("data-network-auth-id");
 
     var options = jQuery('.b2s-tiktok-promotion-options[data-network-auth-id="'+jQuery(this).attr('data-network-auth-id')+'"]');
@@ -5883,12 +6133,12 @@ jQuery(document).on('click', '.toggle', function () {
         jQuery('.tiktok-music-confirmation[data-network-auth-id="'+authId+'"]').show();
         jQuery('.tiktok-music-brand-confirmation[data-network-auth-id="'+authId+'"]').hide();
        
-        options.hide()
+        options.hide();
         self_only_option.attr("disabled", false);
         self_only_option.text(jQuery(".b2s-tiktok-self-only-text").val());
 
-        submitButton.prop('disabled', false)
-        submitButtonScroll.prop('disabled', false)
+        submitButton.prop('disabled', false);
+        submitButtonScroll.prop('disabled', false);
         submitButton.removeAttr('title');
         submitButtonScroll.removeAttr('title');  
         submitButton.unbind('mouseenter mouseleave');

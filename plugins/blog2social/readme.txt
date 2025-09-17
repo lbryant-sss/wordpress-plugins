@@ -6,7 +6,7 @@ Donate link: https://paypal.me/adenion
 Requires at least: 6.2
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 8.5.1
+Stable tag: 8.6.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,7 +19,7 @@ Blog2Social automatically creates social media posts for your content and auto-p
 
 _Compatible with WooCommerce, Gutenberg Editor, Hummingbird, Bitly, Rebrand.ly, Sniply, WP Automatic Plugin, Page Builder & RSS Importer._
 
-* New: TikTok Direct Post Intergation
+* New: Share content directly on TikTok
 
 Download Blog2Social today to make your social media marketing easier than ever for your WordPress site or blog. Blog2Social is a freemium plugin, with a free comprehensive basic version and premium plans offering more advanced features. To ensure compliance with the high quality standards of the new networks’ API rules and community guidelines, some functions of the auto-poster are premium features and not part of the free version. 
 The Blog2Social free version offers you a wide range of features. ([See what’s included in the free version](https://wordpress.org/plugins/blog2social/#faq "Blog2Social Free Features")). 
@@ -49,7 +49,7 @@ To benefit from all the advanced features for automatic sharing and scheduling y
 * **Ravelry** - Post to your Ravelry account (from Smart)
 * **Youtube** - Publish your videos on your Youtube channel (add-on)
 * **Vimeo** - Publish your videos on your Vimeo channel (add-on)
-* **TikTok** - Share your videos on TikTok (add-on) and photo posts or carousels with multiple images (from Pro)
+* **TikTok** - Share your blog posts, images, and videos directly on TikTok (add-on) and photo posts or carousels with multiple images (from Pro)
 * **Mastodon** - Post to your Mastodon account (from Pro)
 * **Discord** - Post to your Discord servers (from Smart)
 * **HumHub** - Post to your profile and space (add-on)
@@ -274,6 +274,8 @@ To get started with the basics of Blog2Social and maybe find some useful tips an
 
 
 == Changelog ==
+= 8.6.0 =
+Usability Optimization
 = 8.5.1 =
 Usability Optimization
 = 8.5.0 =
@@ -370,6 +372,8 @@ Bugfix: Autoposting
 Publish and share videos
 
 == Upgrade Notice ==
+= 8.6.0 =
+Usability Optimization
 = 8.5.1 =
 Usability Optimization
 = 8.5.0 =
