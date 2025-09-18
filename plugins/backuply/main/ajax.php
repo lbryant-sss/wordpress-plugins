@@ -113,6 +113,7 @@ function backuply_multi_backup_delete() {
 	}
 	
 	$backup = backuply_optpost('backup_name');
+	$backup = backuply_sanitize_filename($backup);
 	
 	if(empty($backup)) {
 		wp_send_json(array('success' => false, 'message' => 'No File was provided to be deleted'));
@@ -247,7 +248,23 @@ function backuply_restore_curl_query(){
 	backuply_ajax_nonce_verify();
 
 	if(!empty($_POST['fname'])) {
-		$info = map_deep($_POST, 'sanitize_text_field');
+		$info = [];
+		$backup_name = backuply_sanitize_filename($_POST['fname']);
+		$backup_info = backuply_get_backup_info($backup_name);
+		$info['restore_dir'] = !empty($backup_info['backup_dir']);
+		$info['restore_db'] = !empty($backup_info['backup_db']);
+		$info['backup_backup_dir'] = wp_normalize_path(BACKUPLY_BACKUP_DIR);
+		$info['softpath'] = wp_normalize_path(get_home_path());
+		$info['fname'] = $backup_name;
+		$info['size'] = (int) sanitize_text_field($backup_info['size']);
+		$info['backup_site_url'] = sanitize_url($backup_info['backup_site_url']);
+		$info['backup_site_path'] = wp_normalize_path($backup_info['backup_site_path']);
+		$info['sess_key'] = sanitize_text_field($_POST['sess_key']);
+		$info['security'] = sanitize_text_field($_POST['security']);
+
+		if(!empty($info['restore_db'])){
+			$info['dbexist'] = 'softsql.sql';
+		}
 
 		backuply_init_restore($info);
 		exit();

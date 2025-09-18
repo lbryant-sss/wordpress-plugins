@@ -202,7 +202,9 @@ function backuply_page_backup(){
 			return false;
 		}
 		
-		$res = backuply_delete_backup(backuply_optpost('tar_file'));
+		$backup_file = backuply_optpost('tar_file');
+		$backup_file = backuply_sanitize_filename($backup_file);
+		$res = backuply_delete_backup($backup_file);
 		
 		if($res) {
 			$success = __('The backup was deleted successfully.', 'backuply');
@@ -1221,6 +1223,9 @@ if(file_exists(BACKUPLY_BACKUP_DIR . 'restoration/restoration.php')){
 
 									if(!empty($v['s3_compatible'])){
 										$logo = esc_attr($v['s3_compatible']).'.svg';
+										if($v['s3_compatible'] == 'custom'){
+										    $logo = 'caws.svg';
+										}
 									}
 
 								?>
@@ -1372,7 +1377,7 @@ if(file_exists(BACKUPLY_BACKUP_DIR . 'restoration/restoration.php')){
 				
 					<select name="s3_compatible" class="form-control" id="s3_compatible" value="<?php echo esc_attr($protocol); ?>">
 						<?php
-						$s3_comp = array('digitalocean' => 'DigitalOcean Spaces', 'linode' => 'Linode Object Storage', 'vultr' => 'Vultr Object Storage', 'cloudflare' => 'Cloudflare R2', 'wasabi' => 'Wasabi Object Storage');
+						$s3_comp = array('digitalocean' => 'DigitalOcean Spaces', 'linode' => 'Linode Object Storage', 'vultr' => 'Vultr Object Storage', 'cloudflare' => 'Cloudflare R2', 'wasabi' => 'Wasabi Object Storage', 'custom' => 'Custom');
 						
 						foreach($s3_comp as $key => $remote_loc) {
 							$selected = (isset($s3_compatible) && $s3_compatible == $key) ? ' selected' : '';
@@ -1892,6 +1897,10 @@ if(file_exists(BACKUPLY_BACKUP_DIR . 'restoration/restoration.php')){
 						$remote_icon = $backup_protocol;
 						if(!empty($s3_compat)){
 							$remote_icon = $s3_compat;
+
+							if($s3_compat == 'custom'){
+								$remote_icon = 'caws';
+							}
 						}
 
 						echo '<td>
@@ -1914,19 +1923,7 @@ if(file_exists(BACKUPLY_BACKUP_DIR . 'restoration/restoration.php')){
 							<td style="text-align:right;">
 					
 								<form id="restoreform_<?php echo esc_attr($count); ?>" data-protocol="<?php echo esc_attr($backup_protocol); ?>" data-bak-name="<?php echo esc_attr($backup_loc_name); ?>">
-						
-									<input type="hidden" name="loc_id" value="<?php echo isset($all_info->backup_location) ? esc_attr($all_info->backup_location) : ''; ?>" />
-									<input type="hidden" name="restore_dir" value="<?php echo esc_attr($all_info->backup_dir); ?>" />
-									<input type="hidden" name="restore_db" value="<?php echo esc_attr($all_info->backup_db); ?>" />
-									<input type="hidden" name="backup_backup_dir" value="<?php echo esc_attr(BACKUPLY_BACKUP_DIR); ?>" />
 									<input type="hidden" name="fname" value="<?php echo esc_attr($all_info->name .'.'. $all_info->ext); ?>" />
-									<input type="hidden" name="softpath" value="<?php echo esc_attr($dir_path); ?>" />
-									<input type="hidden" name="dbexist" value="<?php if($all_info->backup_db != 0){echo 'softsql.sql';} ?>" />
-									<input type="hidden" name="soft_version" value="yes" />
-									<input type="hidden" name="backup_file_loc" value="<?php echo esc_attr($backup_file_loc); ?>" />
-									<input type="hidden" name="size" value="<?php echo esc_attr($all_info->size); ?>" />
-									<input type="hidden" name="backup_site_url" value="<?php echo esc_attr($all_info->backup_site_url); ?>" />
-									<input type="hidden" name="backup_site_path" value="<?php echo esc_attr($all_info->backup_site_path); ?>" />
 									
 									<input name="backuply_restore_submit" class="button button-primary action" value="<?php esc_html_e('Restore', 'backuply'); ?>" onclick="backuply_restorequery('#restoreform_<?php echo esc_attr($count); ?>')" type="submit" />
 							

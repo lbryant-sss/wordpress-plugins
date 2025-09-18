@@ -209,15 +209,20 @@ class Summary {
 	/**
 	 * Get analytics summary.
 	 *
+	 * @param WP_REST_Request $request Full details about the request.
 	 * @return object
 	 */
-	public function get_analytics_summary() {
+	public function get_analytics_summary( $request = null ) {
 		$args = [
 			'start_date'         => $this->start_date,
 			'end_date'           => $this->end_date,
 			'compare_start_date' => $this->compare_start_date,
 			'compare_end_date'   => $this->compare_end_date,
 		];
+
+		if ( $request ) {
+			$args = array_merge( $args, $request->get_params() );
+		}
 
 		$cache_group = 'rank_math_analytics_summary';
 		$cache_key   = $this->generate_hash( $args );
@@ -269,9 +274,9 @@ class Summary {
 			'difference' => is_null( $old_stats->position ) || is_null( $old_stats->position ) ? 'n/a' : (float) \number_format( $stats->position - $old_stats->position, 2 ),
 		];
 		$stats->keywords = $this->get_keywords_summary();
-		$stats->graph    = $this->get_analytics_summary_graph();
+		$stats->graph    = $this->get_analytics_summary_graph( $request );
 
-		$stats = apply_filters( 'rank_math/analytics/summary', $stats );
+		$stats = apply_filters( 'rank_math/analytics/summary', $stats, $request );
 
 		$stats = array_filter( (array) $stats );
 
@@ -279,17 +284,22 @@ class Summary {
 
 		return $stats;
 	}
+
 	/**
 	 * Get posts summary.
 	 *
-	 * @param string $post_type Selected Post Type.
+	 * @param WP_REST_Request $request Full details about the request.
 	 *
 	 * @return object
 	 */
-	public function get_posts_summary( $post_type = '' ) {
+	public function get_posts_summary( $request = null ) {
+		$post_type = '';
+		if ( $request ) {
+			$post_type = sanitize_key( $request->get_param( 'postType' ) );
+		}
+
 		$cache_key = $this->get_cache_key( 'posts_summary', $this->days . 'days' );
 		$cache     = ! $post_type ? get_transient( $cache_key ) : false;
-
 		if ( false !== $cache ) {
 			return $cache;
 		}
@@ -302,7 +312,7 @@ class Summary {
 			->selectAvg( 'ctr', 'ctr' )
 			->whereBetween( $wpdb->prefix . 'rank_math_analytics_gsc.created', [ $this->start_date, $this->end_date ] );
 		$summary = $query->one();
-		$summary = apply_filters( 'rank_math/analytics/posts_summary', $summary, $post_type, $query );
+		$summary = apply_filters( 'rank_math/analytics/posts_summary', $summary, $post_type, $query, $request );
 		$summary = wp_parse_args(
 			array_filter( (array) $summary ),
 			[
@@ -360,9 +370,10 @@ class Summary {
 	/**
 	 * Get analytics graph data.
 	 *
+	 * @param WP_REST_Request $request Full details about the request.
 	 * @return array
 	 */
-	public function get_analytics_summary_graph() {
+	public function get_analytics_summary_graph( $request = null ) {
 		global $wpdb;
 
 		$data = new \stdClass();
@@ -426,7 +437,7 @@ class Summary {
 		$data->merged = $this->get_merge_data_graph( $data->analytics, $data->merged, $intervals['map'] );
 
 		// For developers.
-		$data = apply_filters( 'rank_math/analytics/analytics_summary_graph', $data, $intervals );
+		$data = apply_filters( 'rank_math/analytics/analytics_summary_graph', $data, $intervals, $request );
 
 		$data->merged = $this->get_graph_data_flat( $data->merged );
 		$data->merged = array_values( $data->merged );

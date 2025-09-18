@@ -1,8 +1,17 @@
 # Changelog
 
+### 2.0.15 - Sep 17, 2025
+
+- Fix count of total number of rows in table for grouped result.
+- Fix compatibility with Borlabs Cookie library script.
+- Add `koko_analytics_write_data_export` action hook.
+- Show success/error message after certain user-initiated admin actions.
+- Minor performance gain on dashboard.
+
+
 ### 2.0.14 - Sep 15, 2025
 
-- Fix issue in v2 data migration for sites with over 500 distinct posts.
+- Fix issue in v2 data migration for sites with over 500 distinct public posts.
 - Fix pagination showing up despite there being no more items.
 - Fix styling of file upload button on settings page.
 - Disallow access to public dashboard for anything resembling a bot or crawler.

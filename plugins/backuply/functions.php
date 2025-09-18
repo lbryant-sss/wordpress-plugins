@@ -870,6 +870,17 @@ function backuply_get_backups_info(){
 	return $backup_infos;
 }
 
+function backuply_get_backup_info($backup_name){
+	$backup_info_dir = backuply_glob('backups_info');
+	$backup_name_base = basename($backup_name, '.tar.gz');
+	
+	$file = file($backup_info_dir.'/'.$backup_name_base.'.php');
+	unset($file[0]);
+	$info = json_decode(implode('', $file), true);
+	
+	return $info;
+}
+
 // Deletes backups
 function backuply_delete_backup($tar_file) {
 	
@@ -1617,7 +1628,6 @@ function backuply_init_restore($info){
 function backuply_restore_curl($info = array()) {
 	global $wpdb, $backuply;
 
-	$backup_file_loc = $info['backup_file_loc'];
 	$info['site_url'] = site_url();
 	$info['home_url'] = home_url();
 	$info['to_email'] = get_option('backuply_notify_email_address');

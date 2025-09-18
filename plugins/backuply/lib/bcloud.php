@@ -262,7 +262,7 @@ class S3
 	{
 		self::$endpoint = $endpoint;
 		
-		if(strpos($endpoint, 'amazon') === FALSE && strpos($endpoint, 'cloudflare') === FALSE && strpos($endpoint, 'backblaze') === FALSE && strpos($endpoint, 'wasabi') === FALSE && strpos($endpoint, 'backuply') === FALSE) {
+		if(strpos($endpoint, 'digitaloceanspaces') !== FALSE){
 			self::setSignatureVersion('v2');
 		}
 

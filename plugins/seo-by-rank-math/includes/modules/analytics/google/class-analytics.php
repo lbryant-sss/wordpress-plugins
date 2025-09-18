@@ -13,6 +13,7 @@ namespace RankMath\Google;
 defined( 'ABSPATH' ) || exit;
 
 use WP_Error;
+use RankMath\Helper;
 use RankMath\Google\Api;
 use RankMath\Helpers\Str;
 use RankMath\Analytics\Workflow\Base;
@@ -234,20 +235,17 @@ class Analytics extends Request {
 			$args = wp_parse_args(
 				[
 					'dimensions' => [
-						[ 'name' => 'hostname' ],
 						[ 'name' => 'pagePath' ],
-						[ 'name' => 'countryId' ],
-						[ 'name' => 'sessionMedium' ],
+						[ 'name' => 'pageReferrer' ],
 					],
 					'metrics'    => [
 						[ 'name' => 'screenPageViews' ],
-						[ 'name' => 'totalUsers' ],
 					],
 				],
 				$args
 			);
 
-			// Include country.
+			// Include country filter (no dimension needed).
 			if ( $country ) {
 				$args['dimensionFilter']['andGroup']['expressions'][] = [
 					'filter' => [
@@ -259,10 +257,25 @@ class Analytics extends Request {
 					],
 				];
 			}
+
+			// Add hostname filter for multisite.
+			if ( is_multisite() ) {
+				$args['dimensionFilter']['andGroup']['expressions'][] = [
+					'filter' => [
+						'fieldName'    => 'hostname',
+						'stringFilter' => [
+							'matchType' => 'EXACT',
+							'value'     => preg_replace( '#^https?://(www\.)?#i', '', Helper::get_home_url() ),
+						],
+					],
+				];
+			}
 		}
 
 		$workflow = 'analytics';
 		Api::get()->set_workflow( $workflow );
+
+		// Request.
 		$response = Api::get()->http_post(
 			'https://analyticsdata.googleapis.com/v1beta/properties/' . $property_id . ':runReport',
 			$args
@@ -278,7 +291,29 @@ class Analytics extends Request {
 			return false;
 		}
 
-		return $response['rows'];
+		$dimensions = isset( $response['dimensionHeaders'] ) ? array_column( $response['dimensionHeaders'], 'name' ) : [];
+		$metrics    = isset( $response['metricHeaders'] ) ? array_column( $response['metricHeaders'], 'name' ) : [];
+
+		$rows = [];
+		foreach ( $response['rows'] as $row ) {
+			$item = [];
+
+			if ( isset( $row['dimensionValues'] ) ) {
+				foreach ( $row['dimensionValues'] as $i => $dim ) {
+					$item[ $dimensions[ $i ] ] = $dim['value'];
+				}
+			}
+
+			if ( isset( $row['metricValues'] ) ) {
+				foreach ( $row['metricValues'] as $i => $met ) {
+					$item[ $metrics[ $i ] ] = (int) $met['value'];
+				}
+			}
+
+			$rows[] = $item;
+		}
+
+		return $rows;
 	}
 
 	/**

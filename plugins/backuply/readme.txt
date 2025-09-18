@@ -4,7 +4,7 @@ Tags: backup, restore, database backup, cloud backup, wordpress backup, migratio
 Requires at least: 4.7
 Tested up to: 6.8
 Requires PHP: 5.5
-Stable tag: 1.4.8
+Stable tag: 1.4.9
 License: LGPL v2.1
 License URI: http://www.gnu.org/licenses/lgpl-2.1.html
 
@@ -84,6 +84,10 @@ Go To your WordPress install -> Plugins -> Add New Button -> In Search Box searc
 7. **Backup Process** easy to understand backup progress.
 
 == Changelog ==
+
+= 1.4.9 (17th September 2025) =
+* [Improvement Pro] Now you can use any S3 Compatible storage with Backuply.
+* [Bug Fix] Improved variable sanitization.
 
 = 1.4.8 (2nd September 2025) =
 * [Bug-Fix] There was an issue with migration, when WP_HOME and WP_SITEURL constants were set in the wp-config.php of the backup.

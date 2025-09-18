@@ -2,7 +2,7 @@
 Tags: contact form, anti-spam, spam protection, captcha, honeypot
 Requires at least: 4.8
 Tested up to: 6.8
-Stable tag: 3.0.1
+Stable tag: 3.1.0
 Requires PHP: 5.6
 Contributors: wpexpertsio
 License: GPLv2 or later
@@ -25,6 +25,7 @@ Right out of the box, CF7 Apps includes:
 
 ✅ **Honeypot App**
 ✅ **hCaptcha App**
+✅ **Database Entries App**
 💡 **[Suggest a Feature](https://cf7apps.com/submit-idea/?utm_source=wp_org&utm_medium=readme&utm_campaign=suggest_a_feature)**
 
 And that’s just the beginning.
@@ -107,6 +108,7 @@ You sure can, and many users have indicated this helps stop even more spam, as i
 Yep! See the **Installation** section for more details and [this Gist](https://gist.github.com/nocean/953b1362b63bd3ecf68c) for examples.
 
 = Where do I report security bugs found in this plugin? =
+
 Please report security bugs found in the source code of the CF7 Apps – [Honeypot and hCAPTCHA for Contact Form 7] plugin through the [Patchstack Vulnerability Disclosure Program](https://patchstack.com/database/vdp/e58fd0b7-60aa-4ba8-aeeb-61889936d10c). The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin.
 
 = Disclaimer =
@@ -122,6 +124,10 @@ CF7 Apps is a third-party plugin and is not officially associated with or endors
 5. CF7 Apps Tags.
 
 == Changelog ==
+
+= 3.1.0 - September 17, 2025 =
+* NEW - Introducing Database Entries.
+* IMPROVEMENT - Moved CF7 Apps under Contact Form 7.
 
 = 3.0.1 - Sep 02, 2025 =
 * Code Optimization
