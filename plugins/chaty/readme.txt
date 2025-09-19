@@ -17,8 +17,8 @@ License: GPLv3
 <a href="https://premio.io/?utm_source=wordpressorg" target="_blank" title="WordPress plugins">Recommended Plugins</a> | <a href="https://premio.io/downloads/chaty/?utm_source=wordpressorg" target="_blank" title="Chaty Pro"><strong>Upgrade to Pro ⭐</strong></a>
 
 * Get WhatsApp, Facebook Messenger & 20+ chat channels
-* Chat with your visitors via their favorite channels like Facebook Messenger, WhatsApp, WhatsApp Business, Viber, Slack, Telegram, Instagram Direct Messenger, TikTok, Line Messenger, and more chat channels
-* Better customer support
+* Chat with your visitors on their favorite channels like Facebook Messenger, WhatsApp, WhatsApp Business, Viber, Slack, Telegram, Instagram Direct Messenger, TikTok, Line Messenger, and more chat channels
+* Better customer support using chat buttons
 
 [youtube  https://www.youtube.com/watch?v=i6t05AeuyWg]
 

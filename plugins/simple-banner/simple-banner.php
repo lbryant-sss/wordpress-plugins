@@ -3,20 +3,32 @@
  * Plugin Name: Simple Banner
  * Plugin URI: https://github.com/rpetersen29/simple-banner
  * Description: Display a simple banner at the top or bottom of your website. Now with multi-banner support
- * Version: 3.0.10
+ * Version: 3.1.0
  * Author: Ryan Petersen
  * Author URI: http://rpetersen29.github.io/
  * License: GPLv3
  *
  * @package Simple Banner
- * @version 3.0.10
+ * @version 3.1.0
  * @author Ryan Petersen <rpetersen.dev@gmail.com>
  */
-define ('SB_VERSION', '3.0.10');
+
+// Prevent direct access
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+define ('SB_VERSION', '3.1.0');
+define('SB_PLUGIN_DIR', plugin_dir_path(__FILE__));
+define('SB_PLUGIN_URL', plugin_dir_url(__FILE__));
 
 register_activation_hook( __FILE__, 'simple_banner_activate' );
 function simple_banner_activate() {
 	add_action('admin_menu', 'simple_banner_menu');
+}
+
+function is_checked($option_value) {
+	return $option_value ? 'checked ' : '';
 }
 
 // Disabled Pages/Posts functions
@@ -70,7 +82,7 @@ function get_disabled_on_current_page($banner_id) {
 add_action( 'wp_enqueue_scripts', 'simple_banner' );
 function simple_banner() {
     // Enqueue the style
-	wp_register_style('simple-banner-style',  plugin_dir_url( __FILE__ ) .'simple-banner.css', '', SB_VERSION);
+	wp_register_style('simple-banner-style',  SB_PLUGIN_URL .'simple-banner.css', '', SB_VERSION);
     wp_enqueue_style('simple-banner-style');
 
 
@@ -131,7 +143,7 @@ function simple_banner() {
 	}
 	$script_params['banner_params'] = $banner_params;
 	// Enqueue the script
-    wp_register_script('simple-banner-script', plugin_dir_url( __FILE__ ) . 'simple-banner.js', array( 'jquery' ), SB_VERSION);
+    wp_register_script('simple-banner-script', SB_PLUGIN_URL . 'simple-banner.js', array( 'jquery' ), SB_VERSION);
     wp_add_inline_script('simple-banner-script', 'const simpleBannerScriptParams = ' . wp_json_encode($script_params), 'before');
     wp_enqueue_script('simple-banner-script');
 }
@@ -586,112 +598,93 @@ function simple_banner_settings_page() {
 		update_option('pro_version_enabled', $is_verified);
 	?>
 
-	<style type="text/css" id="settings_stylesheet">
-		.simple-banner-settings-form th {width: 30%;}
-		.simple-banner-settings-form th div {font-size: 13px;font-weight: 400;}
-		.simple-banner-settings-form th div code {font-size: 12px;}
-		#mobile-alert {
-			padding: 10px;
-			margin: 10px 0;
-			border: 2px solid red;
-			border-radius: 10px;
-			background-color: white;
-			color: red;
-			font-size: medium;
-			font-weight: bold;
-			text-align: center;
-		}
-	</style>
-	<script type="text/javascript" src="<?php echo plugin_dir_url( __FILE__ ) .'vendors/purify.min.js' ?>"></script>
+	<!-- Simple Banner Default Stylesheet -->
+	<link rel="stylesheet" href="<?php echo SB_PLUGIN_URL .'simple-banner.css' ?>"></script>
+	<!-- Admin Styles -->
+	<link rel="stylesheet" href="<?php echo SB_PLUGIN_URL .'admin/styles/main.css' ?>"></script>
+	<link rel="stylesheet" href="<?php echo SB_PLUGIN_URL .'admin/styles/preview-banner.css' ?>"></script>
+	<script type="text/javascript" src="<?php echo SB_PLUGIN_URL .'vendors/purify.min.js' ?>"></script>
 
-	<div class="wrap">
-		<div style="display: flex;justify-content: space-between;">
-			<h1 style="font-weight: 700;">Simple Banner Settings</h1>
-			<a class="button button-primary button-hero" style="font-weight: 700;" href="https://www.paypal.me/rpetersenDev" target="_blank">DONATE</a>
+	<div class="wrap simple-banner-admin">
+		<div class="sb-header">
+			<h1>Simple Banner Settings</h1>
+			<a class="button button-primary button-hero" href="https://www.paypal.me/rpetersenDev" target="_blank">
+				Donate
+			</a>
 		</div>
 
-		<p>Links in the banner text must be typed in with HTML <code>&lt;a&gt;</code> tags.
-		<br />e.g. <code>This is a &lt;a href=&#34;http:&#47;&#47;www.wordpress.com&#34;&gt;Link to Wordpress&lt;&#47;a&gt;</code>.</p>
+		<div class="sb-intro">
+			<p>Create and manage banners for your website.</p>
+			<p>Links must use HTML <code>&lt;a&gt;</code> tags. e.g. <code>This is a &lt;a href="http://www.wordpress.com"&gt;Link to Wordpress&lt;/a&gt;</code>.</p>
+		</div>
 
-		<!-- Preview Banner -->
-		<?php
-            for ($i = 1; $i <= get_num_banners(); $i++) {
-				$banner_id = get_banner_id($i);
-                include 'preview_banner.php';
-            }
-       	?>
-		<br>
-		<span><b><i>Note: Font and text styles subject to change based on chosen theme CSS.</i></b></span>
+		<!-- Banner Previews -->
+		<div class="sb-previews">
+				<?php for ($i = 1; $i <= get_num_banners(); $i++) {
+						$banner_id = get_banner_id($i);
+						include 'preview_banner.php';
+				} ?>
+				<p class="sb-note"><em>Note: Styles may vary based on your theme's CSS.</em></p>
+		</div>
 
 		<!-- Settings Form -->
-		<form class="simple-banner-settings-form" method="post" action="options.php">
+		<form class="sb-settings-form" method="post" action="options.php">
 			<?php settings_fields( 'simple-banner-settings-group' ); ?>
 
-			<div style="display:flex;flex-direction: column;margin: 10px 0;padding: 0 10px 10px 10px;border: 2px solid gold;border-radius: 10px;background-color: #fafafa;">
-				<h3 style="margin-bottom:0.2em;">Multi-banner support</h3>
-				<div style="margin-bottom:1em;">Display up to 5 banners on your site.</div>
-
-				<div style="display:flex;align-items:center;gap:5px;padding: 10px;">
-					<span style="font-size: 14px;font-weight: bold;">Select Banner</span>
-	                <!-- Put select box here -->
-	                <select id="banner_selector">
-					  <?php
-                        for ($i = 1; $i <= get_num_banners(); $i++) {
-                        	if ($i === 1) {
-                        		echo '<option value="">Banner #1</option>';
-                        	} else {
-                            	echo '<option value="_' . $i . '">Banner #'. $i . '</option>';
-                        	}
-                        }
-	                   ?>
-					</select>
-
-					<?php
-			            if (!get_option('pro_version_enabled')) {
-			                echo '<a class="button-primary" href="https://rpetersendev.gumroad.com/l/simple-banner" target="_blank">Purchase Pro License</a>';
-			            }
-			        ?>
-                </div>
-			</div>
+			<!-- Multi-banner Selector -->
+			<?php if (get_num_banners() > 1): ?>
+				<div class="sb-banner-selector">
+					<h3>Multi-Banner Support</h3>
+					<p>Display up to 5 banners on your site.</p>
+					
+					<div class="sb-selector-controls">
+						<label for="banner_selector">Select Banner:</label>
+						<select id="banner_selector">
+							<?php for ($i = 1; $i <= get_num_banners(); $i++) {
+								$value = $i === 1 ? '' : '_' . $i;
+								echo '<option value="' . $value . '">Banner #' . $i . '</option>';
+							} ?>
+						</select>
+						
+						<?php if (!get_option('pro_version_enabled')): ?>
+							<a class="button-primary" href="https://rpetersendev.gumroad.com/l/simple-banner" target="_blank">
+								Purchase Pro License
+							</a>
+						<?php endif; ?>
+					</div>
+				</div>
+			<?php endif; ?>
 
 			<?php
-                for ($i = 1; $i <= get_num_banners(); $i++) {
-    				$banner_id = get_banner_id($i);
-                    include 'free_features.php';
-                }
-           	?>
+				for ($i = 1; $i <= get_num_banners(); $i++) {
+					$banner_id = get_banner_id($i);
+					include 'free_features.php';
+					include 'pro_features.php';
+				}
+			?>
 
-			<div id="mobile-alert">
-				Always make sure you test your banner in mobile views, theme headers often change their css for mobile.
+			<?php include 'pro_features_general_settings.php' ?>
+
+			<!-- Mobile Alert -->
+			<div class="sb-mobile-alert">
+				<strong>Mobile Testing Reminder:</strong> Always test your banners on mobile devices as theme headers often change their CSS for mobile views.
 			</div>
 
+			<!-- Cache Clear Hidden Field -->
 			<?php
-                for ($i = 1; $i <= get_num_banners(); $i++) {
-    				$banner_id = get_banner_id($i);
-                    include 'pro_features.php';
-                }
-           	?>
+				// Flip value to ensure changed value on every save
+				$cache_value = get_option('simple_banner_clear_cache') ? '' : '1';
+				echo '<input type="hidden" name="simple_banner_clear_cache" value="' . $cache_value . '" />';
+			?>
 
-           	<?php include 'pro_features_general_settings.php' ?>
-
-            <?php
-                // Flip value to ensure changed value on every save
-                $value = get_option('simple_banner_clear_cache') ? '' : '1';
-                echo '<input hidden type="text" value="'. $value . '" name="simple_banner_clear_cache" />';
-            ?>
 			<!-- Save Changes Button -->
+			<!-- <?php submit_button('Save Changes', 'primary', 'submit', false, array('class' => 'sb-save-button')); ?> -->
 			<?php submit_button(); ?>
 		</form>
 	</div>
 
 	<!-- Script to apply styles to Preview Banner -->
 	<script type="text/javascript">
-		// Simple Banner Default Stylesheet
-		const simple_banner_css = document.createElement('link');
-		simple_banner_css.id = 'simple-banner-stylesheet';
-		simple_banner_css.rel = 'stylesheet';
-		simple_banner_css.href = "<?php echo plugin_dir_url( __FILE__ ) .'simple-banner.css' ?>";
-		document.getElementsByTagName('head')[0].appendChild(simple_banner_css);
 
 		// START MULTI BANNER
 		const num_banners = <?php echo get_num_banners(); ?>;
@@ -950,11 +943,11 @@ function simple_banner_settings_page() {
 				const elementTarget = document.getElementById(`preview_banner_inner_container${banner_id}`);
 				if (window.scrollY > (elementContainer.offsetTop)) {
 					elementTarget.style.position = 'fixed';
-					elementTarget.style.width = '83.111%';
+					elementTarget.style.width = '80.5%';
 					elementTarget.style.top = '40px';
 				} else {
 					elementTarget.style.position = 'relative';
-					elementTarget.style.width = '100%';
+					elementTarget.style.width = '';
 					elementTarget.style.top = '0';
 				}
 			}

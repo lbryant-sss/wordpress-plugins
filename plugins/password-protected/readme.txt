@@ -1,4 +1,4 @@
-=== Password Protected – Password Protect your WordPress Site, Pages, & WooCommerce Products - Restrict Content, Protect WooCommerce Category and more ===
+=== Password Protected — Lock Entire Site, Pages, Posts, Categories, and Partial Content ===
 Contributors: wpexpertsio
 Tags: password protection, maintenance mode, password protect page, password protect, restrict content
 Requires at least: 4.6

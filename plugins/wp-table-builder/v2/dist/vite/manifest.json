@@ -1,6 +1,6 @@
 {
-  "_index-97y4ihRA.js": {
-    "file": "assets/index-97y4ihRA.js",
+  "_index-BF-1tZFt.js": {
+    "file": "assets/index-BF-1tZFt.js",
     "name": "index"
   },
   "src/editor.scss": {
@@ -14,7 +14,7 @@
     "src": "src/index.tsx",
     "isEntry": true,
     "imports": [
-      "_index-97y4ihRA.js"
+      "_index-BF-1tZFt.js"
     ]
   },
   "src/public/i18n.ts": {
@@ -34,7 +34,7 @@
     "src": "src/wptb-common.ts",
     "isEntry": true,
     "imports": [
-      "_index-97y4ihRA.js"
+      "_index-BF-1tZFt.js"
     ]
   }
 }

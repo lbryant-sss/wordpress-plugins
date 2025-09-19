@@ -15,7 +15,7 @@ if (! class_exists('TWAEFeedbackNotice')) {
 
 			if (is_admin()) {
 				add_action('admin_notices', array($this, 'twae_admin_notice_for_reviews'));
-				add_action('admin_print_scripts', array($this, 'twae_load_script'));
+				add_action('admin_enqueue_scripts', array($this, 'twae_load_script'));
 				add_action('wp_ajax_twae_dismiss_notice', array($this, 'twae_dismiss_review_notice'));
 			}
 		}
@@ -33,66 +33,10 @@ if (! class_exists('TWAEFeedbackNotice')) {
 			if ($alreadyRated == 'yes') {
 				return;
 			}
-			$twae_review_css = '.cool-feedback-notice-wrapper.notice.notice-info.is-dismissible {
-            padding: 4px;
-            display: block;
-            width: unset;
-			
 
-        }
-        .cool-feedback-notice-wrapper .logo_container {
-            width:80px;
-            display:inline-block;
-            margin-right: 10px;
-            vertical-align: top;
-        }
-        .cool-feedback-notice-wrapper .logo_container img {
-            width:100%;
-            height:auto;
-        }
-        .cool-feedback-notice-wrapper .message_container {
-            width: calc(100% - 120px);
-            display: inline-block;
-            margin: 0;
-            vertical-align: top;
-        }
-        .cool-feedback-notice-wrapper ul li {
-            float: left;
-            margin: 0px 5px;
-        }
-        .clrfix{
-            clear:both;
-        }';
+			wp_register_style( 'twae-feedback-notice', TWAE_URL . 'admin/feedback-notice/assets/css/twae-feedback-notice.css', array(), TWAE_VERSION, 'all' );
 
-            echo '<style>' . wp_kses( $twae_review_css, array() ) . '</style>';
-			add_action(
-				'admin_print_footer_scripts',
-				function () {
-?>
-				<script>
-					jQuery(document).ready(function($) {
-						$('.twae_dismiss_notice').on('click', function(event) {
-							var $this = $(this);
-							var wrapper = $this.parents('.cool-feedback-notice-wrapper');
-							var ajaxURL = wrapper.data('ajax-url');
-							var ajaxCallback = wrapper.data('ajax-callback');
-
-							// Use nonce for security
-							var nonce = '<?php echo wp_create_nonce('twae_dismiss_nonce'); ?>';
-
-							$.post(ajaxURL, {
-								'action': ajaxCallback,
-								'nonce': nonce
-							}, function(data) {
-								wrapper.slideUp('fast');
-							}, "json");
-
-						});
-					});
-				</script>
-<?php
-				}
-			);
+			wp_register_script( 'twae-admin-notice', TWAE_URL . 'admin/feedback-notice/assets/js/twae-feedback-notice.js', array( 'jquery' ), TWAE_VERSION, true );
 		}
 		// ajax callback for review notice
 		public function twae_dismiss_review_notice()
@@ -128,6 +72,8 @@ if (! class_exists('TWAEFeedbackNotice')) {
 
 			// check if installation days is greator then week
 			if (isset($diff_days) && $diff_days >= 3) {
+				wp_enqueue_style( 'twae-feedback-notice' );
+            	wp_enqueue_script( 'twae-admin-notice' );
 				echo $this->twae_create_notice_content();
 			}
 		}
@@ -135,17 +81,18 @@ if (! class_exists('TWAEFeedbackNotice')) {
 		// generated review notice HTML
 		function twae_create_notice_content()
 		{
+			$wp_nonce = wp_create_nonce('twae_dismiss_nonce');
 			$ajax_url      = esc_url( admin_url( 'admin-ajax.php' ) );
 			$ajax_callback      = 'twae_dismiss_notice';
 			$wrap_cls           = 'notice notice-info is-dismissible';
 			$img_path      = esc_url( TWAE_URL . 'assets/images/timeline-widget-logo.png' );
 			$p_name             = esc_html('Timeline Widget Addon For Elementor');
 			$like_it_text       =  esc_html('Rate Now! ★★★★★');
-			$already_rated_text = esc_html__('I already rated it', 'cool-timeline');
+			$already_rated_text = esc_html__('Already Reviewed', 'cool-timeline');
 			$not_interested     = esc_html__('Not Interested', 'ect');
 			$not_like_it_text   = esc_html__('No, not good enough, i do not like to rate it!', 'cool-timeline');
 			$p_link             = esc_url('https://wordpress.org/support/plugin/timeline-widget-addon-for-elementor/reviews/#new-post');
-			$pro_url            = esc_url('https://1.envato.market/c/1258464/275988/4415?u=https%3A%2F%2Fcodecanyon.net%2Fitem%2Fthe-events-calendar-templates-and-shortcode-wordpress-plugin%2F20143286');
+			$pro_url            = esc_url('https://cooltimeline.com/plugin/elementor-timeline-widget-pro/');
 
 			$raw_message = "Thanks for using <b>$p_name</b> WordPress plugin. We hope it meets your expectations! <br/>Please give us a quick rating, it works as a boost for us to keep working on more <a href='https://coolplugins.net' target='_blank'><strong>Cool Plugins</strong></a>!<br/>";
 
@@ -162,8 +109,7 @@ if (! class_exists('TWAEFeedbackNotice')) {
 			$message = wp_kses($raw_message, $allowed_html);
 
 
-			$html = '<div data-ajax-url="%8$s"  data-ajax-callback="%9$s" class="cool-feedback-notice-wrapper %1$s">
-        <div class="logo_container"><a href="%5$s"><img src="%2$s" alt="%3$s"></a></div>
+			$html = '<div data-ajax-url="%8$s"  data-ajax-callback="%9$s" class="cool-feedback-notice-wrapper %1$s" data-wp-nonce="%12$s">
         <div class="message_container">%4$s
         <div class="callto_action">
         <ul>
@@ -189,7 +135,8 @@ if (! class_exists('TWAEFeedbackNotice')) {
 				$ajax_url, // 8
 				$ajax_callback, // 9
 				$pro_url, // 10
-				$not_interested
+				$not_interested,
+				$wp_nonce
 			);
 		}
 	} //class end

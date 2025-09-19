@@ -45,7 +45,7 @@ if (! class_exists('Twae_Marketing_Controllers')) {
 			
 			$active_plugins = get_option( 'active_plugins', [] );
 
-			if ( in_array( 'elementor-pro/elementor-pro.php', $active_plugins ) ) {
+			if ( in_array( 'elementor-pro/elementor-pro.php', $active_plugins ) || in_array( 'pro-elements/pro-elements.php', $active_plugins )) {
 
 				add_action('elementor/init', [$this, 'twae_init_hooks']);
 				
@@ -134,7 +134,7 @@ if (! class_exists('Twae_Marketing_Controllers')) {
 						'type'      => \Elementor\Controls_Manager::RAW_HTML,
 						'raw'       => '<div class="elementor-control-raw-html cool-form-wrp"><div class="elementor-control-notice elementor-control-notice-type-info">
 										<div class="elementor-control-notice-icon">
-										<img class="twae-highlight-icon" src="'.esc_url( TWAE_URL . 'admin/assets/images/twae-highlight-icon.svg' ).'" width="250" alt="Highlight Icon" />
+										<img class="twae-highlight-icon" src="'.esc_url( TWAE_URL . 'admin/marketing/images/twae-highlight-icon.svg' ).'" width="250" alt="Highlight Icon" />
 										</div>
 										<div class="elementor-control-notice-main">
 										<div class="elementor-control-notice-main-content">Enable smart taxonomy filters for your Elementor loop grid.</div>
@@ -171,25 +171,31 @@ if (! class_exists('Twae_Marketing_Controllers')) {
 
 			wp_enqueue_script(
 					'coolplugin-editor-js',
-					plugin_dir_url(__FILE__) . 'assets/js/twae-form-marketing.js',
+					plugin_dir_url(__FILE__) . 'js/twae-form-marketing.js',
 					['jquery'],
 					TWAE_VERSION,
 					true
 			);
 
 			// Check if it's tribe_events post type or tec settings page
-			$is_tribe_post = isset($_GET['post_type']) && sanitize_key( $_GET['post_type'] ) === 'tribe_events';
-            $is_tec_settings = isset($_GET['page']) && sanitize_key( $_GET['page'] ) === 'tec-events-settings';
+			$get_page     = isset( $_GET['page'] ) ? sanitize_key( $_GET['page'] ) : '';
+			$get_posttype = isset( $_GET['post_type'] ) ? sanitize_key( $_GET['post_type'] ) : '';
+			$is_taxonomy  = isset( $_GET['taxonomy'] );
+			$blocked_pages = array('tribe-app-shop','tec-troubleshooting','first-time-setup','tec-events-help-hub','aggregator');
+			$on_tribe_events_list = ( $get_posttype === 'tribe_events' ) && ! $is_taxonomy; 
+			$on_tec_settings      = ( $get_page === 'tec-events-settings' );
+			$on_twae_welcome      = ( $get_page === 'twae-welcome-page' );
 
-			if ($is_tribe_post || $is_tec_settings) {
-
+			if(in_array($get_page,$blocked_pages)){
+				return;
+			}
+			if (  ( $on_tribe_events_list || $on_tec_settings || $on_twae_welcome ) ) {
 				?>
-		
 				<div class="notice notice-info is-dismissible twae-tec-notice"
                      data-notice="tec_notice"
                      data-nonce="<?php echo esc_attr( wp_create_nonce( 'twae_dismiss_nonce_tec_notice' ) ); ?>">
      
-                    <p class="ect-notice-widget">
+                    <p class="twae_ect-notice-widget">
                        <button class="button button-primary twae-install-plugin"
                                data-plugin="events-widget"
                                data-notice="tec_notice"
@@ -246,7 +252,7 @@ if (! class_exists('Twae_Marketing_Controllers')) {
 						'label'     => '',
 						'type'      => \Elementor\Controls_Manager::RAW_HTML,
 							'raw'       => '<div class="elementor-control-raw-html cool-form-wrp"><div class="elementor-control-notice elementor-control-notice-type-info">
-											<div class="elementor-control-notice-icon"><img class="twae-highlight-icon" src="'.esc_url( TWAE_URL . 'admin/assets/images/twae-highlight-icon.svg' ).'" width="250" alt="Highlight Icon" />
+											<div class="elementor-control-notice-icon"><img class="twae-highlight-icon" src="'.esc_url( TWAE_URL . 'admin/marketing/images/twae-highlight-icon.svg' ).'" width="250" alt="Highlight Icon" />
 											</div>
 											<div class="elementor-control-notice-main">
 											<div class="elementor-control-notice-main-content">Display ACF Repeater fields in your Elementor loop grid.</div>
@@ -270,7 +276,7 @@ if (! class_exists('Twae_Marketing_Controllers')) {
 
 			wp_enqueue_script(
 				'coolplugin-editor-js',
-				plugin_dir_url(__FILE__) . 'assets/js/twae-form-marketing.js',
+				plugin_dir_url(__FILE__) . 'js/twae-form-marketing.js',
 				['jquery'],
 				TWAE_VERSION,
 				true
@@ -285,7 +291,7 @@ if (! class_exists('Twae_Marketing_Controllers')) {
 
 			wp_enqueue_style(
 				'coolplugin-editor-css',
-				plugin_dir_url(__FILE__) . 'assets/css/twae-mkt.css',
+				plugin_dir_url(__FILE__) . 'css/twae-mkt.css',
 				[],
 				TWAE_VERSION
 			);
@@ -326,102 +332,121 @@ if (! class_exists('Twae_Marketing_Controllers')) {
 			require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
 			require_once ABSPATH . 'wp-admin/includes/plugin.php';
 			
-			$api = plugins_api( 'plugin_information', array(
-				'slug'   => $plugin_slug,
-				'fields' => array(
-					'sections' => false,
-				),
-			));
+			if ($plugin_slug == 'conditional-fields-for-elementor-form-pro') {
 
-			if ( is_wp_error( $api ) ) {
-				$status['errorMessage'] = $api->get_error_message();
-				wp_send_json_error( $status );
-			}
+				if (! current_user_can('activate_plugin', $plugin_slug)) {
+					wp_send_json_error(['message' => 'Permission denied']);
+				}
 
-			$status['pluginName'] = $api->name;
-			
-			$skin     = new WP_Ajax_Upgrader_Skin();
-			$upgrader = new Plugin_Upgrader( $skin );
-			$result   = $upgrader->install( $api->download_link );
-			
-			if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-				$status['debug'] = $skin->get_upgrade_messages();
-			}
+				$conditional_pro_plugin_file = 'conditional-fields-for-elementor-form-pro/class-conditional-fields-for-elementor-form-pro.php';
 
-			if ( is_wp_error( $result ) ) {
+				$pagenow        = isset($_POST['pagenow']) ? sanitize_key($_POST['pagenow']) : '';
+				$network_wide = (is_multisite() && 'import' !== $pagenow);
+				$activation_result = activate_plugin($conditional_pro_plugin_file, '', $network_wide);
 
-				$status['errorCode']    = $result->get_error_code();
-				$status['errorMessage'] = $result->get_error_message();
-				wp_send_json_error( $status );
+				if (is_wp_error($activation_result)) {
+					wp_send_json_error(['message' => $activation_result->get_error_message()]);
+				}
 
-			} elseif ( is_wp_error( $skin->result ) ) {
+				wp_send_json_success(['message' => 'Plugin activated successfully']);
+			}else{
+				$api = plugins_api( 'plugin_information', array(
+					'slug'   => $plugin_slug,
+					'fields' => array(
+						'sections' => false,
+					),
+				));
+
+				if ( is_wp_error( $api ) ) {
+					$status['errorMessage'] = $api->get_error_message();
+					wp_send_json_error( $status );
+				}
+
+				$status['pluginName'] = $api->name;
 				
-				if($skin->result->get_error_message() === 'Destination folder already exists.'){
-						
-					$install_status = install_plugin_install_status( $api );
-					$pagenow        = isset( $_POST['pagenow'] ) ? sanitize_key( $_POST['pagenow'] ) : '';
+				$skin     = new WP_Ajax_Upgrader_Skin();
+				$upgrader = new Plugin_Upgrader( $skin );
+				$result   = $upgrader->install( $api->download_link );
+				
+				if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+					$status['debug'] = $skin->get_upgrade_messages();
+				}
 
-					if ( current_user_can( 'activate_plugin', $install_status['file'] )) {
+				if ( is_wp_error( $result ) ) {
 
-						$network_wide = ( is_multisite() && 'import' !== $pagenow );
-						$activation_result = activate_plugin( $install_status['file'], '', $network_wide );
-						if ( is_wp_error( $activation_result ) ) {
+					$status['errorCode']    = $result->get_error_code();
+					$status['errorMessage'] = $result->get_error_message();
+					wp_send_json_error( $status );
+
+				} elseif ( is_wp_error( $skin->result ) ) {
+					
+					if($skin->result->get_error_message() === 'Destination folder already exists.'){
 							
-							$status['errorCode']    = $activation_result->get_error_code();
-							$status['errorMessage'] = $activation_result->get_error_message();
-							wp_send_json_error( $status );
+						$install_status = install_plugin_install_status( $api );
+						$pagenow        = isset( $_POST['pagenow'] ) ? sanitize_key( $_POST['pagenow'] ) : '';
 
-						} else {
+						if ( current_user_can( 'activate_plugin', $install_status['file'] )) {
 
-							$status['activated'] = true;
-							
+							$network_wide = ( is_multisite() && 'import' !== $pagenow );
+							$activation_result = activate_plugin( $install_status['file'], '', $network_wide );
+							if ( is_wp_error( $activation_result ) ) {
+								
+								$status['errorCode']    = $activation_result->get_error_code();
+								$status['errorMessage'] = $activation_result->get_error_message();
+								wp_send_json_error( $status );
+
+							} else {
+
+								$status['activated'] = true;
+								
+							}
+							wp_send_json_success( $status );
 						}
-						wp_send_json_success( $status );
+					}else{
+					
+						$status['errorCode']    = $skin->result->get_error_code();
+						$status['errorMessage'] = $skin->result->get_error_message();
+						wp_send_json_error( $status );
 					}
-				}else{
-				
-					$status['errorCode']    = $skin->result->get_error_code();
-					$status['errorMessage'] = $skin->result->get_error_message();
+					
+				} elseif ( $skin->get_errors()->has_errors() ) {
+
+					$status['errorMessage'] = $skin->get_error_messages();
+					wp_send_json_error( $status );
+
+				} elseif ( is_null( $result ) ) {
+
+					global $wp_filesystem;
+
+					$status['errorCode']    = 'unable_to_connect_to_filesystem';
+					$status['errorMessage'] = __( 'Unable to connect to the filesystem. Please confirm your credentials.' );
+
+					if ( $wp_filesystem instanceof WP_Filesystem_Base && is_wp_error( $wp_filesystem->errors ) && $wp_filesystem->errors->has_errors() ) {
+						$status['errorMessage'] = esc_html( $wp_filesystem->errors->get_error_message() );
+					}
+
 					wp_send_json_error( $status );
 				}
-				
-			} elseif ( $skin->get_errors()->has_errors() ) {
 
-				$status['errorMessage'] = $skin->get_error_messages();
-				wp_send_json_error( $status );
+				$install_status = install_plugin_install_status( $api );
+				$pagenow        = isset( $_POST['pagenow'] ) ? sanitize_key( $_POST['pagenow'] ) : '';
 
-			} elseif ( is_null( $result ) ) {
+				// 🔄 Auto-activate the plugin right after successful install
+				if ( current_user_can( 'activate_plugin', $install_status['file'] ) && is_plugin_inactive( $install_status['file'] ) ) {
 
-				global $wp_filesystem;
+					$network_wide = ( is_multisite() && 'import' !== $pagenow );
+					$activation_result = activate_plugin( $install_status['file'], '', $network_wide );
 
-				$status['errorCode']    = 'unable_to_connect_to_filesystem';
-				$status['errorMessage'] = __( 'Unable to connect to the filesystem. Please confirm your credentials.' );
-
-				if ( $wp_filesystem instanceof WP_Filesystem_Base && is_wp_error( $wp_filesystem->errors ) && $wp_filesystem->errors->has_errors() ) {
-					$status['errorMessage'] = esc_html( $wp_filesystem->errors->get_error_message() );
+					if ( is_wp_error( $activation_result ) ) {
+						$status['errorCode']    = $activation_result->get_error_code();
+						$status['errorMessage'] = $activation_result->get_error_message();
+						wp_send_json_error( $status );
+					} else {
+						$status['activated'] = true;
+					}
 				}
-
-				wp_send_json_error( $status );
+				wp_send_json_success( $status );
 			}
-
-			$install_status = install_plugin_install_status( $api );
-			$pagenow        = isset( $_POST['pagenow'] ) ? sanitize_key( $_POST['pagenow'] ) : '';
-
-			// 🔄 Auto-activate the plugin right after successful install
-			if ( current_user_can( 'activate_plugin', $install_status['file'] ) && is_plugin_inactive( $install_status['file'] ) ) {
-
-				$network_wide = ( is_multisite() && 'import' !== $pagenow );
-				$activation_result = activate_plugin( $install_status['file'], '', $network_wide );
-
-				if ( is_wp_error( $activation_result ) ) {
-					$status['errorCode']    = $activation_result->get_error_code();
-					$status['errorMessage'] = $activation_result->get_error_message();
-					wp_send_json_error( $status );
-				} else {
-					$status['activated'] = true;
-				}
-			}
-			wp_send_json_success( $status );
 		}
 
 
@@ -449,7 +474,7 @@ if (! class_exists('Twae_Marketing_Controllers')) {
 							'label'     => '',
 							'type'      => \Elementor\Controls_Manager::RAW_HTML,
 							'raw'       => '<div class="elementor-control-raw-html cool-form-wrp"><div class="elementor-control-notice elementor-control-notice-type-info">
-											<div class="elementor-control-notice-icon"><img class="twae-highlight-icon" src="'.esc_url( TWAE_URL . 'admin/assets/images/twae-highlight-icon.svg' ).'" width="250" alt="Highlight Icon" /></div>
+											<div class="elementor-control-notice-icon"><img class="twae-highlight-icon" src="'.esc_url( TWAE_URL . 'admin/marketing/images/twae-highlight-icon.svg' ).'" width="250" alt="Highlight Icon" /></div>
 											<div class="elementor-control-notice-main">
 												
 												<div class="elementor-control-notice-main-content">Add advanced fields & features to your Elementor forms.</div>
@@ -496,7 +521,7 @@ if (! class_exists('Twae_Marketing_Controllers')) {
 						'type'            => \Elementor\Controls_Manager::RAW_HTML,
 						
 						'raw'             => '<div class="elementor-control-raw-html cool-form-wrp"><div class="elementor-control-notice elementor-control-notice-type-info">
-											<div class="elementor-control-notice-icon"><img class="twae-highlight-icon" src="'.esc_url( TWAE_URL . 'admin/assets/images/twae-highlight-icon.svg' ).'" width="250" alt="Highlight Icon" /></div>
+											<div class="elementor-control-notice-icon"><img class="twae-highlight-icon" src="'.esc_url( TWAE_URL . 'admin/marketing/images/twae-highlight-icon.svg' ).'" width="250" alt="Highlight Icon" /></div>
 											<div class="elementor-control-notice-main">
 				
 											<div class="elementor-control-notice-main-content">Add a country code dropdown to your phone field.</div>
@@ -514,7 +539,19 @@ if (! class_exists('Twae_Marketing_Controllers')) {
 						'inner_tab'       => 'form_fields_content_tab',
 						'tabs_wrapper'    => 'form_fields_tabs',
 					)
-				);
+			);
+
+
+			$conditional_pro_path = 'conditional-fields-for-elementor-form-pro/class-conditional-fields-for-elementor-form-pro.php';
+
+			$all_plugins = get_plugins();
+			$is_conditinal_pro_installed = isset($all_plugins[$conditional_pro_path]);
+
+			if ($is_conditinal_pro_installed) {
+				$button_html = '<button type="button" class="elementor-button e-btn e-info e-btn-1 twae-install-plugin"  data-plugin="conditional-pro" data-nonce="' . esc_attr(wp_create_nonce('twae_install_nonce')) . '">Activate Conditional Fields</button>';
+			} else {
+				$button_html = '<button type="button" class="elementor-button e-btn e-info e-btn-1 twae-install-plugin"  data-plugin="conditional" data-nonce="' . esc_attr(wp_create_nonce('twae_install_nonce')) . '">Install Conditional Fields</button>';
+			}
 		
 				$conditional_logic_controls = array(
 
@@ -542,12 +579,13 @@ if (! class_exists('Twae_Marketing_Controllers')) {
 
 						'raw' => '<div class="elementor-control-raw-html cool-form-wrp"><div class="elementor-control-notice elementor-control-notice-type-info">
 								<div class="elementor-control-notice-icon">
-									<img class="twae-highlight-icon" src="'.esc_url( TWAE_URL . 'admin/assets/images/twae-highlight-icon.svg' ).'" width="250" alt="Highlight Icon" />
+									<img class="twae-highlight-icon" src="'.esc_url( TWAE_URL . 'admin/marketing/images/twae-highlight-icon.svg' ).'" width="250" alt="Highlight Icon" />
 								</div>
 								<div class="elementor-control-notice-main">
 									<div class="elementor-control-notice-main-content">Show or hide form fields using conditional logic.</div>
 									<div class="elementor-control-notice-main-actions">
-									<button type="button" class="elementor-button e-btn e-info e-btn-1 twae-install-plugin"  data-plugin="conditional" data-nonce="' . esc_attr(wp_create_nonce('twae_install_nonce')) . '">Install Conditional Fields</button></button></div></div></div>
+									' . $button_html . '
+									</div></div></div>
 								</div>',
 
 						'tab'             => 'content',

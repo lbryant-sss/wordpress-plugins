@@ -4,7 +4,7 @@ Donate link:
 Tags: Gutenberg,FAQ,alert
 Requires at least: 6.5
 Tested up to: 6.8
-Stable tag: 1.110.0.1
+Stable tag: 1.111.0.2
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -107,6 +107,16 @@ e.g.
 1. VK Blocks examples.
 
 == Changelog ==
+
+= 1.111.0 =
+[ Add function ][ Core Query (Pro) ] Added "Modified date" as an option for post order. (Pro only)
+[ Add function ][ Table of Contents (Pro) ] Added support for detecting headings from Border Box blocks. Border Box headings (h3-h6) can now be included in the Table of Contents.
+[ Bug fix ] Fix link to FontAwesome icon list to correctly point to the free icons page.
+
+= 1.110.1 =
+[ Bug fix ][ Table of Contents (Pro) ] Fixed an issue where Basic Auth login screen would not disappear on sites with Basic Auth enabled.
+[ Design bug fix ][ Animation ( Pro ) / Fixed Display ( Pro ) ] Fixed overlapping of the top-right label and the "Add block" button in the editor screen.
+[ Design bug fix ][ Core Group ] Fixed an issue where text color settings in group blocks were not inherited by child elements for classic theme.
 
 = 1.110.0 =
 [ Add function ][ Tab (Pro) ] Added tab anchor link functionality.

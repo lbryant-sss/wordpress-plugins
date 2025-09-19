@@ -13,7 +13,7 @@ License: GPLv3
 
 <a href="https://premio.io/help/folders/?utm_source=wordpressorg" target="_blank" title="Support">Support</a> | <a href="https://demo.premio.io/folders/?utm_source=wordpressorg" target="_blank" title="Premio.io demo site">Demo</a> | <a href="https://premio.io/?utm_source=wordpressorg" target="_blank" title="WordPress plugins">Recommended Plugins</a> | <a href="https://premio.io/downloads/folders/?utm_source=wordpressorg" target="_blank" title="Folders Pro"><strong>Upgrade to Pro ⭐</strong></a>
 
-Create <strong>Unlimited Folders</strong> In The Free Version 🎉
+= Create <strong>Unlimited Folders</strong> with The Free Folders Plugin Version 🎉 =
 
 Folders is a WordPress plugin that enables users to organize all of their Pages, Posts, and Media files in folders. Easily drag and drop items into directories and change the folders tree view (hierarchy). Check out <a href="https://premio.io/downloads/folders" target="_blank" title="Folders pro plans"><strong>Folders Pro Plans</strong></a>.
 

@@ -427,3 +427,17 @@ Important fix for pagination issues. Update recommended for all users experienci
 
 = 2.0.x =
 NEW MAJOR VERSION! Includes advanced optimizations like automatic critical CSS, deferred CSS loading, automatic preconnect, native lazy loading, database optimizations and much more. Fully backward compatible. Update for maximum performance!
+
+== Support ==
+
+= Need help or have suggestions? =
+* [Official website](https://servicios.ayudawp.com/)
+* [WordPress support forum](https://wordpress.org/support/plugin/wpo-tweaks/)
+* [YouTube channel](https://www.youtube.com/AyudaWordPressES)
+* [Documentation and tutorials](https://ayudawp.com/)
+
+**Love the plugin?** Please leave us a 5-star review and help spread the word!
+
+== About AyudaWP ==
+
+We are specialists in WordPress security, SEO, and performance optimization plugins. We create tools that solve real problems for WordPress site owners while maintaining the highest coding standards and accessibility requirements.

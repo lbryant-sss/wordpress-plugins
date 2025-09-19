@@ -78,7 +78,7 @@ jQuery(document).ready(function($) {
                     if (slug === 'events-widgets-for-elementor-and-the-events-calendar') {
 
                         successMessage = 'Events Widget is now active! Design your Events page with Elementor to access powerful new features.';
-                        jQuery('.ect-notice-widget').text(successMessage);
+                        jQuery('.twae_ect-notice-widget').text(successMessage);
 
                     } else {
 
@@ -102,7 +102,7 @@ jQuery(document).ready(function($) {
                     $wrapper.find('.elementor-button-warning').remove();
                     if (slug === 'events-widget') {
                         //
-                        jQuery('.ect-notice-widget').text(errorMessage)
+                        jQuery('.twae_ect-notice-widget').text(errorMessage)
                     } else {
 
                         $wrapper.find('.elementor-control-notice-main-actions').after(
@@ -122,7 +122,8 @@ jQuery(document).ready(function($) {
             'conditional': 'conditional-fields-for-elementor-form',
             'country-code': 'country-code-field-for-elementor-form',
             'loop-grid': 'loop-grid-extender-for-elementor-pro',
-            'events-widget': 'events-widgets-for-elementor-and-the-events-calendar'
+            'events-widget': 'events-widgets-for-elementor-and-the-events-calendar',
+            'conditional-pro': 'conditional-fields-for-elementor-form-pro',
         };
         return slugs[plugin];
     }
