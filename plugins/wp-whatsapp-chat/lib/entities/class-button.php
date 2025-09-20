@@ -22,7 +22,7 @@ class Button extends SingleEntity {
 	public $visibility      = 'readonly';
 	public $animation_name     = '';
 	public $animation_delay    = '';
-	public $whatsappLinkType   = 'api';
+	public $whatsapp_link_type   = 'web';
 	public $notification_bubble = 'none';
 	public $notification_bubble_animation = 'none';
 

@@ -717,7 +717,7 @@ if ( ! function_exists( 'qi_addons_for_elementor_get_placeholder_image' ) ) {
 
 		$placeholder = get_option( 'qi_addons_for_elementor_placeholder_image', $default_value );
 
-		if ( is_int( $placeholder['id'] ) && wp_attachment_is_image( $placeholder['id'] ) ) {
+		if ( is_array( $placeholder ) && is_int( $placeholder['id'] ) && wp_attachment_is_image( $placeholder['id'] ) ) {
 			return $placeholder;
 		} else {
 			return $default_value;

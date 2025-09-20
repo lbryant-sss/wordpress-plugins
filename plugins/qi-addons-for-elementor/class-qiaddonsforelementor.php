@@ -5,10 +5,10 @@
  * Author: Qode Interactive
  * Author URI: https://qodeinteractive.com/
  * Plugin URI: https://qodeinteractive.com/qi-addons-for-elementor/
- * Version: 1.9.3
+ * Version: 1.9.4
  * Text Domain: qi-addons-for-elementor
- * Elementor tested up to: 3.30.3
- * Elementor Pro tested up to: 3.30.1
+ * Elementor tested up to: 3.32.2
+ * Elementor Pro tested up to: 3.32.1
  */
 
 if ( ! class_exists( 'QiAddonsForElementor' ) ) {

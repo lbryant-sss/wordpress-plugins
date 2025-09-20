@@ -143,10 +143,18 @@ class WpdiscuzHelperAjax implements WpDiscuzConstants {
     }
 
     public function deactivate() {
+        if (!current_user_can("manage_options")) {
+            wp_send_json_error();
+        }
+
         $response = ["code" => 0];
         $json     = filter_input(INPUT_POST, "deactivateData");
         if ($json) {
             parse_str($json, $data);
+            if (!wp_verify_nonce($data['_wpnonce'], self::DEACTIVATION_NONCE_ACTION)) {
+                wp_send_json_error();
+            }
+
             if (isset($data["never_show"]) && ($v = intval($data["never_show"]))) {
                 update_option(self::OPTION_SLUG_DEACTIVATION, $v);
                 $response["code"] = "dismiss_and_deactivate";

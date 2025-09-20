@@ -19,8 +19,7 @@ class QiAddonsForElementor_Framework_Shortcodes {
 				add_action( 'elementor/widgets/widgets_registered', array( $this, 'register' ), 5 );
 			}
 		} else {
-			// Permission 0 is set in order to register shortcodes before widgets, because widgets using shortcodes options.
-			add_action( 'init', array( $this, 'register' ), 0 );
+			add_action( 'elementor/widgets/register', array( $this, 'register' ), 5 );
 		}
 	}
 

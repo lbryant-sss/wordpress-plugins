@@ -941,11 +941,11 @@ __('Number of days to use for pageviews column', 'koko-analytics');
 // ../koko-analytics-pro/includes/class-posts-table.php#101
 __('Pageviews', 'koko-analytics');
 
-// ../koko-analytics-pro/includes/class-updates.php#143
+// ../koko-analytics-pro/includes/class-updates.php#150
 __('Please activate Koko Analytics Pro in order to use it and download plugin updates.', 'koko-analytics');
 
-// ../koko-analytics-pro/includes/class-updates.php#144
+// ../koko-analytics-pro/includes/class-updates.php#151
 __('Activate now', 'koko-analytics');
 
-// ../koko-analytics-pro/includes/class-updates.php#157
+// ../koko-analytics-pro/includes/class-updates.php#164
 __('Success! You now have full access to Koko Analytics Pro.', 'koko-analytics');

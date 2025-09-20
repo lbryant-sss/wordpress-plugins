@@ -164,6 +164,7 @@ class Contact_Form_Field extends Contact_Form_Shortcode {
 				'iconstyle'                => null, // For rating field icon style (lowercase for shortcode compatibility)
 				// full phone field attributes, might become a standalone country list input block
 				'showcountryselector'      => false,
+				'searchplaceholder'        => false,
 				// Image select field attributes
 				'ismultiple'               => null,
 				'showlabels'               => null,
@@ -992,6 +993,7 @@ class Contact_Form_Field extends Contact_Form_Shortcode {
 	public function render_telephone_field( $id, $label, $value, $class, $required, $required_field_text, $placeholder ) {
 		$show_country_selector = $this->get_attribute( 'showcountryselector' );
 		$default_country       = $this->get_attribute( 'default' );
+		$search_placeholder    = $this->get_attribute( 'searchplaceholder' );
 
 		if ( ! $show_country_selector ) {
 			// old telephone field treatment
@@ -999,6 +1001,10 @@ class Contact_Form_Field extends Contact_Form_Shortcode {
 			$label = $this->render_label( 'telephone', $id, $label, $required, $required_field_text );
 			$field = $this->render_input_field( 'tel', $id, $value, $class, $placeholder, $required );
 			return $label . $field;
+		}
+
+		if ( empty( $search_placeholder ) ) {
+			$search_placeholder = __( 'Search countries…', 'jetpack-forms' );
 		}
 
 		$this->enqueue_phone_field_assets();
@@ -1058,41 +1064,41 @@ class Contact_Form_Field extends Contact_Form_Shortcode {
 					data-wp-init="callbacks.initializePhoneFieldCustomComboBox"
 					data-wp-on-document--click="actions.phoneComboboxDocumentClickHandler">
 					<div class="jetpack-custom-combobox">
-						
-						<button 
+
+						<button
 							class="jetpack-combobox-trigger"
 							type="button"
 							data-wp-on--click="actions.phoneComboboxToggle"
 							data-wp-bind--aria-expanded="context.comboboxOpen">
-							<span 
+							<span
 								class="jetpack-combobox-selected"
 								data-wp-text="context.selectedCountry.flag"></span>
-							<span 
+							<span
 								class="jetpack-combobox-trigger-arrow"
 								data-wp-class--is-open="context.comboboxOpen">
 								<svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 								</svg>
 							</span>
-							<span 
+							<span
 								class="jetpack-combobox-selected"
 								data-wp-text="context.selectedCountry.value"></span>
 						</button>
-						<div 
+						<div
 							class="jetpack-combobox-dropdown <?php echo esc_attr( $this->get_attribute( 'stylevariationclasses' ) ); ?>"
 							style="<?php echo ( ! empty( $this->field_styles ) && is_string( $this->field_styles ) ? esc_attr( $this->field_styles ) : '' ); ?>"
 							data-wp-bind--hidden="!context.comboboxOpen">
 							<input
-								class="jetpack-combobox-search" 
-								type="text" 
-								placeholder="<?php echo esc_attr__( 'Search countries...', 'jetpack-forms' ); ?>"
+								class="jetpack-combobox-search"
+								type="text"
+								placeholder="<?php echo esc_attr( $search_placeholder ); ?>"
 								data-wp-on--input="actions.phoneComboboxInputHandler"
 								data-wp-on--keydown="actions.phoneComboboxKeydownHandler">
 							<div class="jetpack-combobox-options">
 								<template
 									data-wp-each--filtered="context.filteredCountries"
 									data-wp-each-key="context.filtered.code">
-									<div 
+									<div
 										class="jetpack-combobox-option"
 										data-wp-key="context.filtered.code"
 										data-wp-class--jetpack-combobox-option-selected="context.filtered.selected"
@@ -1977,9 +1983,7 @@ class Contact_Form_Field extends Contact_Form_Shortcode {
 
 		$field = "<div class='jetpack-field jetpack-field-image-select'>";
 
-		$form_style        = $this->get_form_style();
-		$is_outlined_style = 'outlined' === $form_style; // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- TODO: Implement style variations
-		$fieldset_id       = "id='" . esc_attr( "$id-label" ) . "'";
+		$fieldset_id = "id='" . esc_attr( "$id-label" ) . "'";
 
 		$field .= "<fieldset {$fieldset_id} data-wp-bind--aria-invalid='state.fieldHasErrors' >";
 
@@ -3161,9 +3165,10 @@ class Contact_Form_Field extends Contact_Form_Shortcode {
 	private function enqueue_phone_field_assets() {
 		$version = defined( 'JETPACK__VERSION' ) ? \JETPACK__VERSION : '0.1';
 
-		// TODO: remove this manual cache busting
-		// SEE: p1757517146878719-slack-C01U2KGS2PQ
-		$version .= '-jetpack-combobox-v1';
+		// extra cache busting strategy for view.js, seems they are left out of cache clearing on deploys
+		$asset_file = plugin_dir_path( __FILE__ ) . '../../dist/modules/field-phone/view.asset.php';
+		$asset      = file_exists( $asset_file ) ? require $asset_file : null;
+		$version   .= $asset['version'] ?? '';
 
 		// combobox styles
 		\wp_enqueue_style(

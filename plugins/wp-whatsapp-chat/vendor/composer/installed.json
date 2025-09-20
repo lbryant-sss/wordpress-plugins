@@ -7,12 +7,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Automattic/jetpack-assets.git",
-                "reference": "f545752d25a6d07b34b9687665700beb2f6bc39d"
+                "reference": "be4444ead87f351f5197709e7ced9144e6ed0fcf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Automattic/jetpack-assets/zipball/f545752d25a6d07b34b9687665700beb2f6bc39d",
-                "reference": "f545752d25a6d07b34b9687665700beb2f6bc39d",
+                "url": "https://api.github.com/repos/Automattic/jetpack-assets/zipball/be4444ead87f351f5197709e7ced9144e6ed0fcf",
+                "reference": "be4444ead87f351f5197709e7ced9144e6ed0fcf",
                 "shasum": ""
             },
             "require": {
@@ -21,7 +21,7 @@
                 "php": ">=7.2"
             },
             "require-dev": {
-                "automattic/jetpack-changelogger": "^6.0.6",
+                "automattic/jetpack-changelogger": "^6.0.7",
                 "automattic/phpunit-select-config": "^1.0.3",
                 "brain/monkey": "^2.6.2",
                 "wikimedia/testing-access-wrapper": "^1.0 || ^2.0 || ^3.0",
@@ -30,7 +30,7 @@
             "suggest": {
                 "automattic/jetpack-autoloader": "Allow for better interoperability with other plugins that use this package."
             },
-            "time": "2025-09-08T19:09:58+00:00",
+            "time": "2025-09-19T10:42:02+00:00",
             "default-branch": true,
             "type": "jetpack-library",
             "extra": {
@@ -70,12 +70,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Automattic/jetpack-composer-plugin.git",
-                "reference": "bf24b4fc188971d6209caf03a681617de5b58982"
+                "reference": "89cb6203ceb9034a4273d5a3c4ad79a10d2459e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Automattic/jetpack-composer-plugin/zipball/bf24b4fc188971d6209caf03a681617de5b58982",
-                "reference": "bf24b4fc188971d6209caf03a681617de5b58982",
+                "url": "https://api.github.com/repos/Automattic/jetpack-composer-plugin/zipball/89cb6203ceb9034a4273d5a3c4ad79a10d2459e4",
+                "reference": "89cb6203ceb9034a4273d5a3c4ad79a10d2459e4",
                 "shasum": ""
             },
             "require": {
@@ -83,12 +83,12 @@
                 "php": ">=7.2"
             },
             "require-dev": {
-                "automattic/jetpack-changelogger": "^6.0.6",
+                "automattic/jetpack-changelogger": "^6.0.7",
                 "automattic/phpunit-select-config": "^1.0.3",
                 "composer/composer": "^2.2",
                 "yoast/phpunit-polyfills": "^4.0.0"
             },
-            "time": "2025-08-13T03:20:46+00:00",
+            "time": "2025-09-15T15:25:10+00:00",
             "default-branch": true,
             "type": "composer-plugin",
             "extra": {
@@ -132,19 +132,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Automattic/jetpack-constants.git",
-                "reference": "b68dcb42d0ee7f9a4f29849bc667aa6dbd4d2ebb"
+                "reference": "0ca00de892c9a82f7f0516bfc9a41ce3c8478c78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Automattic/jetpack-constants/zipball/b68dcb42d0ee7f9a4f29849bc667aa6dbd4d2ebb",
-                "reference": "b68dcb42d0ee7f9a4f29849bc667aa6dbd4d2ebb",
+                "url": "https://api.github.com/repos/Automattic/jetpack-constants/zipball/0ca00de892c9a82f7f0516bfc9a41ce3c8478c78",
+                "reference": "0ca00de892c9a82f7f0516bfc9a41ce3c8478c78",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2"
             },
             "require-dev": {
-                "automattic/jetpack-changelogger": "^6.0.6",
+                "automattic/jetpack-changelogger": "^6.0.7",
                 "automattic/phpunit-select-config": "^1.0.3",
                 "brain/monkey": "^2.6.2",
                 "yoast/phpunit-polyfills": "^4.0.0"
@@ -152,7 +152,7 @@
             "suggest": {
                 "automattic/jetpack-autoloader": "Allow for better interoperability with other plugins that use this package."
             },
-            "time": "2025-08-13T03:20:36+00:00",
+            "time": "2025-09-15T15:25:09+00:00",
             "default-branch": true,
             "type": "jetpack-library",
             "extra": {
@@ -188,12 +188,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Automattic/jetpack-status.git",
-                "reference": "8d02db626419fab955d240cf5898b7ad36077ae8"
+                "reference": "31d29bb9c88cb9360bbdbe3793bb106ffe865440"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Automattic/jetpack-status/zipball/8d02db626419fab955d240cf5898b7ad36077ae8",
-                "reference": "8d02db626419fab955d240cf5898b7ad36077ae8",
+                "url": "https://api.github.com/repos/Automattic/jetpack-status/zipball/31d29bb9c88cb9360bbdbe3793bb106ffe865440",
+                "reference": "31d29bb9c88cb9360bbdbe3793bb106ffe865440",
                 "shasum": ""
             },
             "require": {
@@ -201,7 +201,7 @@
                 "php": ">=7.2"
             },
             "require-dev": {
-                "automattic/jetpack-changelogger": "^6.0.6",
+                "automattic/jetpack-changelogger": "^6.0.7",
                 "automattic/jetpack-connection": "@dev",
                 "automattic/jetpack-ip": "^0.4.10",
                 "automattic/jetpack-plans": "@dev",
@@ -212,7 +212,7 @@
             "suggest": {
                 "automattic/jetpack-autoloader": "Allow for better interoperability with other plugins that use this package."
             },
-            "time": "2025-09-08T19:09:29+00:00",
+            "time": "2025-09-15T15:25:29+00:00",
             "default-branch": true,
             "type": "jetpack-library",
             "extra": {

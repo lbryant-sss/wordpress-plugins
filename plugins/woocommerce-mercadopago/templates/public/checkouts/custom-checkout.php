@@ -65,7 +65,7 @@ if (!defined('ABSPATH')) {
                     </div>
 
                     <div class='mp-wallet-button-button'>
-                        <button id="mp-wallet-button" onclick="submitWalletButton(event)">
+                        <button id="mp-wallet-button">
                             <img src="<?= esc_url($wallet_button_image); ?>">
                         </button>
                     </div>
@@ -246,5 +246,6 @@ if (!defined('ABSPATH')) {
         jQuery('#mp_checkout_type').val('wallet_button');
         jQuery('form.checkout, form#order_review').submit();
     }
-</script>
 
+    document.getElementById('mp-wallet-button')?.addEventListener('click', submitWalletButton);
+</script>

@@ -84,11 +84,14 @@ class Actions
             exit;
         }
 
+        // try to increase time limit
+        @set_time_limit(300);
+
         // read SQL from upload file
         $sql = file_get_contents($_FILES['import-file']['tmp_name']);
 
         // verify file looks like a Koko Analytics export file
-        if (!str_starts_with($sql, 'INSERT INTO ') && !str_starts_with($sql, 'TRUNCATE ')) {
+        if (!preg_match('/^(--|DELETE|SELECT|INSERT|TRUNCATE)/', $sql)) {
             wp_safe_redirect(add_query_arg(['notice' => ['type' => 'warning', 'message' => __('Sorry, the uploaded import file does not look like a Koko Analytics export file', 'koko-analytics') ]], $settings_page));
             exit;
         }
@@ -177,6 +180,7 @@ class Actions
             }
         } while (true);
 
+        $wpdb->query("DROP TABLE IF EXISTS {$wpdb->prefix}koko_analytics_post_stats_old");
         $wpdb->query("RENAME TABLE {$wpdb->prefix}koko_analytics_post_stats TO {$wpdb->prefix}koko_analytics_post_stats_old");
 
         $wpdb->query("CREATE TABLE {$wpdb->prefix}koko_analytics_post_stats (

@@ -1408,7 +1408,9 @@ class WpdiscuzHelper implements WpDiscuzConstants {
                 return true;
             }
             if ($children = $comment->get_children()) {
-                return $this->isUnapprovedInTree($children);
+                if ($this->isUnapprovedInTree($children)) {
+                    return true;
+                }
             }
         }
 

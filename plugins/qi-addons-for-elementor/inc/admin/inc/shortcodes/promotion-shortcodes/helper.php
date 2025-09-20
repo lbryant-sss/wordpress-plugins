@@ -34,6 +34,16 @@ if ( ! function_exists( 'qi_addons_for_elementor_promotion_shortcodes_list' ) ) 
 				'active'        => false,
 				'icon'          => 'qodef-custom-elementor-icon qi-addons-for-elementor-premium-advanced-toggle',
 			),
+			'qi_addons_for_elementor_premium_album_gallery' => array(
+				'base'          => 'content-slider',
+				'title'         => esc_html__( 'Album Gallery', 'qi-addons-for-elementor' ),
+				'subcategory'   => esc_html__( 'Showcase', 'qi-addons-for-elementor' ),
+				'demo'          => 'https://qodeinteractive.com/qi-addons-for-elementor/album-gallery/',
+				'documentation' => 'https://qodeinteractive.com/qi-addons-for-elementor/documentation/#album_gallery',
+				'premium'       => true,
+				'active'        => false,
+				'icon'          => 'qodef-custom-elementor-icon qi-addons-for-elementor-premium-album-gallery',
+			),
 			'qi_addons_for_elementor_premium_animated_device_slider' => array(
 				'base'          => 'animated-device-slider',
 				'title'         => esc_html__( 'Animated Device Slider', 'qi-addons-for-elementor' ),

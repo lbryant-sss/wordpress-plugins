@@ -347,7 +347,8 @@ class WpdiscuzHelperEmail implements WpDiscuzConstants {
     public function emailSender($emailData, $commentId, $subject, $message, $subscriptionType) {
         global $wp_rewrite;
         $comment    = get_comment($commentId);
-        $post       = get_post($comment->comment_post_ID);
+        $postId     = $comment->comment_post_ID;
+        $post       = get_post($postId);
         $postAuthor = get_userdata($post->post_author);
 
         if (!apply_filters("wpdiscuz_email_notification", true, $emailData, $comment, $subscriptionType)) {
@@ -357,6 +358,8 @@ class WpdiscuzHelperEmail implements WpDiscuzConstants {
         if ($emailData["email"] === $postAuthor->user_email && ((get_option("moderation_notify") && $comment->comment_approved !== "1") || (get_option("comments_notify") && $comment->comment_approved === "1"))) {
             return;
         }
+
+        $email = $emailData["email"];
 
         $unsubscribeUrl = site_url('/wpdiscuzsubscription/unsubscribe/');
         $unsubscribeUrl .= "?wpdiscuzSubscribeID=" . $emailData["id"] . "&key=" . $emailData["activation_key"];
@@ -368,7 +371,7 @@ class WpdiscuzHelperEmail implements WpDiscuzConstants {
             $parentComment = get_comment($comment->comment_parent);
             $subscriber    = $parentComment && $parentComment->comment_author ? $parentComment->comment_author : $this->options->getPhrase("wc_anonymous");
         } else {
-            $user       = get_user_by("email", $emailData["email"]);
+            $user       = get_user_by("email", $email);
             $subscriber = $user && $user->display_name ? $user->display_name : "";
         }
 
@@ -411,8 +414,9 @@ class WpdiscuzHelperEmail implements WpDiscuzConstants {
             $message = str_replace("[UNSUBSCRIBE_URL]", $unsubscribeUrl, $message);
         }
 
-        $subject = apply_filters("wpdiscuz_email_subject", $subject, $comment, $emailData);
-        $message = apply_filters("wpdiscuz_email_content", $message, $comment, $emailData);
+        $subject     = apply_filters("wpdiscuz_email_subject", $subject, $comment, $emailData);
+        $message     = apply_filters("wpdiscuz_email_content", $message, $comment, $emailData);
+        $attachments = apply_filters("wpdiscuz_email_attachments", [], $comment, $postId, $email);
 
         $headers   = [];
         $fromName  = html_entity_decode($blogTitle, ENT_QUOTES);
@@ -423,7 +427,7 @@ class WpdiscuzHelperEmail implements WpDiscuzConstants {
         $headers[] = "From: " . $fromName . " <" . $fromEmail . "> \r\n";
         $subject   = html_entity_decode($subject, ENT_QUOTES);
         $message   = html_entity_decode($message, ENT_QUOTES);
-        wp_mail($emailData["email"], $subject, do_shortcode($message), $headers);
+        wp_mail($email, $subject, do_shortcode($message), $headers, $attachments);
     }
 
     /**
@@ -656,8 +660,9 @@ class WpdiscuzHelperEmail implements WpDiscuzConstants {
                     ], $subject);
                     $message = str_replace($search, $replace, $message);
 
-                    $subject = apply_filters("wpdiscuz_comment_approved_email_subject", $subject, $postId, $email);
-                    $message = apply_filters("wpdiscuz_comment_approved_email_content", $message, $postId, $email);
+                    $subject     = apply_filters("wpdiscuz_comment_approved_email_subject", $subject, $postId, $email);
+                    $message     = apply_filters("wpdiscuz_comment_approved_email_content", $message, $postId, $email);
+                    $attachments = apply_filters("wpdiscuz_approved_email_attachments", [], $comment, $postId, $email);
 
                     $headers   = [];
                     $fromName  = html_entity_decode($blogTitle, ENT_QUOTES);
@@ -668,7 +673,7 @@ class WpdiscuzHelperEmail implements WpDiscuzConstants {
                     $headers[] = "From: " . $fromName . " <" . $fromEmail . "> \r\n";
                     $subject   = html_entity_decode($subject, ENT_QUOTES);
                     $message   = html_entity_decode($message, ENT_QUOTES);
-                    wp_mail($email, $subject, do_shortcode($message), $headers);
+                    wp_mail($email, $subject, do_shortcode($message), $headers, $attachments);
                 }
             }
         }
@@ -746,8 +751,9 @@ class WpdiscuzHelperEmail implements WpDiscuzConstants {
         $subject = str_replace(["[BLOG_TITLE]", "[POST_TITLE]"], [$blogTitle, $postTitle], $subject);
         $message = str_replace($search, $replace, $message);
 
-        $subject = apply_filters("wpdiscuz_follow_email_subject", $subject, $postId, $email);
-        $message = apply_filters("wpdiscuz_follow_email_content", $message, $postId, $email);
+        $subject     = apply_filters("wpdiscuz_follow_email_subject", $subject, $postId, $email);
+        $message     = apply_filters("wpdiscuz_follow_email_content", $message, $postId, $email);
+        $attachments = apply_filters("wpdiscuz_follow_email_attachments", [], $comment, $postId, $email);
 
         $fromName  = html_entity_decode($blogTitle, ENT_QUOTES);
         $parsedUrl = parse_url($siteUrl);
@@ -770,12 +776,12 @@ class WpdiscuzHelperEmail implements WpDiscuzConstants {
                 $followerData["user_name"],
                 $followerData["follower_name"]
             ], $message);
-            $this->emailToFollower($followerData, $comment, $subject, $body, $data);
+            $this->emailToFollower($followerData, $comment, $subject, $body, $data, $attachments);
             do_action("wpdiscuz_notify_followers", $comment, $followerData);
         }
     }
 
-    private function emailToFollower($followerData, $comment, $subject, $message, $data) {
+    private function emailToFollower($followerData, $comment, $subject, $message, $data, $attachments) {
 
         if (!apply_filters("wpdiscuz_follow_email_notification", true, $followerData, $comment)) {
             return;
@@ -793,7 +799,7 @@ class WpdiscuzHelperEmail implements WpDiscuzConstants {
         $headers[]       = "From: " . $data["from_name"] . " <" . $data["from_email"] . "> \r\n";
         $subject         = html_entity_decode($subject, ENT_QUOTES);
         $message         = html_entity_decode($message, ENT_QUOTES);
-        wp_mail($followerData["follower_email"], $subject, do_shortcode($message), $headers);
+        wp_mail($followerData["follower_email"], $subject, do_shortcode($message), $headers, $attachments);
 
     }
 
@@ -838,17 +844,19 @@ class WpdiscuzHelperEmail implements WpDiscuzConstants {
         foreach ($users as $k => $user) {
             if ($user["email"] !== $comment->comment_author_email) {
                 if (apply_filters("wpducm_mail_to_mentioned_user", true, $user, $comment)) {
+                    $email      = $user["email"];
                     $replace[4] = $user["name"];
                     $message    = str_replace($search, $replace, $message);
 
                     $subject = apply_filters("wpdiscuz_mentioned_user_mail_subject", $subject, $user, $comment);
                     $message = apply_filters("wpdiscuz_mentioned_user_mail_body", $message, $user, $comment);
 
-                    $subject = apply_filters("wpdiscuz_mentioned_user_email_subject", $subject, $postId);
-                    $message = apply_filters("wpdiscuz_mentioned_user_email_content", $message, $postId);
+                    $subject     = apply_filters("wpdiscuz_mentioned_user_email_subject", $subject, $postId);
+                    $message     = apply_filters("wpdiscuz_mentioned_user_email_content", $message, $postId);
+                    $attachments = apply_filters("wpdiscuz_mentioned_email_attachments", [], $comment, $postId, $email);
 
                     if ($subject && $message) {
-                        wp_mail($user["email"], $subject, $message, $headers);
+                        wp_mail($email, $subject, $message, $headers, $attachments);
                     }
                 }
             }

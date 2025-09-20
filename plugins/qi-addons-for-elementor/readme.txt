@@ -4,7 +4,7 @@ Tags: elementor, elementor addons, elementor widgets, elementor elements, addons
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 1.9.3
+Stable tag: 1.9.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -343,6 +343,10 @@ From wordpress.org
 
 
 == Changelog ==
+
+= 1.9.4 - 19-09-2025 =
+- Fixed potential problem with widget loading
+- Minor improvements
 
 = 1.9.3 - 29-07-2025 =
 - Added support for setting custom units in size controls

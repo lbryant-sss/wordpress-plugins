@@ -5,7 +5,7 @@ Tags: whatsapp, whatsapp business, whatsapp chat, woocommerce whatsapp, click to
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 6.8
-Stable tag: 7.8.7
+Stable tag: 7.8.8
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -118,7 +118,7 @@ Yes, this option is available in our premium version
 
 = Social Chat is GDPR compatible? =
 
-Yes, Social Chat WP don't save any personal data and don't use cookies.
+Yes, Social Chat WP does not store any personal data. If needed, you can enable the consent message option, which displays a checkbox in the chat box where you can add your own customized GDPR notice.
 
 = Will my WhatsApp number be visible to all users? =
 
@@ -136,6 +136,9 @@ Don't use: +001-(555)1234567
 * Brazilian Portuguese (thanks to [Dionizio Bach](@djio))
 
 == Changelog ==
+
+= 7.8.8 =
+* Feat GDPR consent message
 
 = 7.8.7 =
 * Feat custom image support

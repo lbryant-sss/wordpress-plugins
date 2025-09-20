@@ -2,7 +2,7 @@
 /*
  * Plugin Name: wpDiscuz
  * Description: #1 WordPress Comment Plugin. Innovative, modern and feature-rich comment system to supercharge your website comment section.
- * Version: 7.6.33
+ * Version: 7.6.34
  * Author: gVectors Team
  * Author URI: https://gvectors.com/
  * Plugin URI: https://wpdiscuz.com/
@@ -1271,7 +1271,8 @@ class WpdiscuzCore implements WpDiscuzConstants {
             $reasonArgs = [
                 "msgReasonRequired"     => esc_html__("Please check one of reasons before sending feedback!", "wpdiscuz"),
                 "msgReasonDescRequired" => esc_html__("Please provide more information", "wpdiscuz"),
-                "adminUrl"              => get_admin_url()
+                "adminUrl"              => get_admin_url(),
+                "deactivationNonce"     => wp_create_nonce(self::DEACTIVATION_NONCE_ACTION),
             ];
             wp_register_style("wpdiscuz-lity-css", plugins_url(WPDISCUZ_DIR_NAME . "/assets/third-party/lity/lity.css"), null, $this->version);
             wp_enqueue_style("wpdiscuz-lity-css");
@@ -1281,7 +1282,7 @@ class WpdiscuzCore implements WpDiscuzConstants {
             wp_enqueue_style("wpdiscuz-deactivation-css");
             wp_register_script("wpdiscuz-deactivation-js", plugins_url(WPDISCUZ_DIR_NAME . "/assets/js/wpdiscuz-deactivation.js"), ["jquery"], $this->version);
             wp_enqueue_script("wpdiscuz-deactivation-js");
-            wp_localize_script("wpdiscuz-deactivation-js", "deactivationObj", $reasonArgs);
+            wp_localize_script("wpdiscuz-deactivation-js", "wpdDeactivationObj", $reasonArgs);
         }
         wp_register_script(self::WPDISCUZ_FEEDBACK_SHORTCODE . "-shortcode-js", '');
         wp_enqueue_script(self::WPDISCUZ_FEEDBACK_SHORTCODE . "-shortcode-js");

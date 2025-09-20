@@ -5,7 +5,7 @@ Tags: Google Analytics, Related Posts, sitemap, Facebook Page Plugin, OG tags
 Requires at least: 6.4
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 9.111.0.1
+Stable tag: 9.112.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -80,6 +80,10 @@ e.g.
 2. This is an example of SNS cooperation setting screen.
 
 == Changelog ==
+
+= 9.112.0 =
+[ Add function ][ Title Tag ] Add taxonomy title tag setting functionality for archive pages of categories, tags, and custom taxonomies.
+[ Bug Fix ][ Default Thumbnail ] Fix an issue where post_thumbnail_id() returns null even when a default thumbnail is specified, in cases where no featured image is set.
 
 = 9.111.0 =
 [ Specification Change ][ sitemap ] Terms and taxonomies with zero articles will no longer be displayed.

@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitf11009ded9fc4592b6a05b61ce272b3c_jetpackⓥ15_1_a_3
+class ComposerStaticInitf11009ded9fc4592b6a05b61ce272b3c_jetpackⓥ15_1_a_5
 {
     public static $files = array (
         '3773ef3f09c37da5478d578e32b03a4b' => __DIR__ . '/../..' . '/jetpack_vendor/automattic/jetpack-assets/actions.php',
@@ -487,6 +487,8 @@ class ComposerStaticInitf11009ded9fc4592b6a05b61ce272b3c_jetpackⓥ15_1_a_3
         'Automattic\\Woocommerce_Analytics' => __DIR__ . '/../..' . '/jetpack_vendor/automattic/woocommerce-analytics/src/class-woocommerce-analytics.php',
         'Automattic\\Woocommerce_Analytics\\My_Account' => __DIR__ . '/../..' . '/jetpack_vendor/automattic/woocommerce-analytics/src/class-my-account.php',
         'Automattic\\Woocommerce_Analytics\\Universal' => __DIR__ . '/../..' . '/jetpack_vendor/automattic/woocommerce-analytics/src/class-universal.php',
+        'Automattic\\Woocommerce_Analytics\\WC_Analytics_Ch_Event' => __DIR__ . '/../..' . '/jetpack_vendor/automattic/woocommerce-analytics/src/class-wc-analytics-ch-event.php',
+        'Automattic\\Woocommerce_Analytics\\WC_Analytics_Tracking' => __DIR__ . '/../..' . '/jetpack_vendor/automattic/woocommerce-analytics/src/class-wc-analytics-tracking.php',
         'Automattic\\Woocommerce_Analytics\\Woo_Analytics_Trait' => __DIR__ . '/../..' . '/jetpack_vendor/automattic/woocommerce-analytics/src/class-woo-analytics-trait.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Jetpack_Customize_Control_Title' => __DIR__ . '/../..' . '/jetpack_vendor/automattic/jetpack-classic-theme-helper/src/content-options/customizer.php',
@@ -564,9 +566,9 @@ class ComposerStaticInitf11009ded9fc4592b6a05b61ce272b3c_jetpackⓥ15_1_a_3
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitf11009ded9fc4592b6a05b61ce272b3c_jetpackⓥ15_1_a_3::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitf11009ded9fc4592b6a05b61ce272b3c_jetpackⓥ15_1_a_3::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitf11009ded9fc4592b6a05b61ce272b3c_jetpackⓥ15_1_a_3::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitf11009ded9fc4592b6a05b61ce272b3c_jetpackⓥ15_1_a_5::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitf11009ded9fc4592b6a05b61ce272b3c_jetpackⓥ15_1_a_5::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitf11009ded9fc4592b6a05b61ce272b3c_jetpackⓥ15_1_a_5::$classMap;
 
         }, null, ClassLoader::class);
     }

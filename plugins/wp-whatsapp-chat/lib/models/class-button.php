@@ -65,7 +65,9 @@ class Button {
 			$settings['text'] = sanitize_text_field( $settings['text'] );
 		}
 		if ( isset( $settings['message'] ) ) {
-			$settings['message'] = sanitize_textarea_field( $settings['message'] );
+			// Preserve line breaks while sanitizing the message
+			$settings['message'] = wp_kses( $settings['message'], array() );
+			$settings['message'] = wp_unslash( $settings['message'] );
 		}
 		if ( isset( $settings['icon'] ) ) {
 			// Check if it's a URL (for custom images) or a CSS class (for font icons)
@@ -85,8 +87,8 @@ class Button {
 		if ( isset( $settings['group'] ) ) {
 			$settings['group'] = sanitize_url( $settings['group'] );
 		}
-		if ( isset( $settings['whatsappLinkType'] ) ) {
-			$settings['whatsappLinkType'] = in_array( $settings['whatsappLinkType'], array( 'api', 'web' ) ) ? $settings['whatsappLinkType'] : 'api';
+		if ( isset( $settings['whatsapp_link_type'] ) ) {
+			$settings['whatsapp_link_type'] = in_array( $settings['whatsapp_link_type'], array( 'api', 'web' ) ) ? $settings['whatsapp_link_type'] : 'web';
 		}
 
 		return $settings;
