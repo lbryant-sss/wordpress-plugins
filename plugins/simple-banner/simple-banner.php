@@ -3,13 +3,13 @@
  * Plugin Name: Simple Banner
  * Plugin URI: https://github.com/rpetersen29/simple-banner
  * Description: Display a simple banner at the top or bottom of your website. Now with multi-banner support
- * Version: 3.1.0
+ * Version: 3.1.1
  * Author: Ryan Petersen
  * Author URI: http://rpetersen29.github.io/
  * License: GPLv3
  *
  * @package Simple Banner
- * @version 3.1.0
+ * @version 3.1.1
  * @author Ryan Petersen <rpetersen.dev@gmail.com>
  */
 
@@ -18,7 +18,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define ('SB_VERSION', '3.1.0');
+define ('SB_VERSION', '3.1.1');
 define('SB_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('SB_PLUGIN_URL', plugin_dir_url(__FILE__));
 
@@ -87,7 +87,7 @@ function simple_banner() {
 
 
 	// Set Script parameters
-    $script_params = array(
+	$script_params = array(
 		// General settings
 		'pro_version_enabled' => get_option('pro_version_enabled'),
 		// debug specific parameters
@@ -143,9 +143,9 @@ function simple_banner() {
 	}
 	$script_params['banner_params'] = $banner_params;
 	// Enqueue the script
-    wp_register_script('simple-banner-script', SB_PLUGIN_URL . 'simple-banner.js', array( 'jquery' ), SB_VERSION);
-    wp_add_inline_script('simple-banner-script', 'const simpleBannerScriptParams = ' . wp_json_encode($script_params), 'before');
-    wp_enqueue_script('simple-banner-script');
+	wp_register_script('simple-banner-script', SB_PLUGIN_URL . 'simple-banner.js', array( 'jquery' ), SB_VERSION);
+	wp_add_inline_script('simple-banner-script', 'const simpleBannerScriptParams = ' . wp_json_encode($script_params), 'before');
+	wp_enqueue_script('simple-banner-script');
 }
 
 // Use `wp_body_open` action
@@ -632,28 +632,26 @@ function simple_banner_settings_page() {
 			<?php settings_fields( 'simple-banner-settings-group' ); ?>
 
 			<!-- Multi-banner Selector -->
-			<?php if (get_num_banners() > 1): ?>
-				<div class="sb-banner-selector">
-					<h3>Multi-Banner Support</h3>
-					<p>Display up to 5 banners on your site.</p>
+			<div class="sb-banner-selector">
+				<h3>Multi-Banner Support</h3>
+				<p>Display up to 5 banners on your site.</p>
+				
+				<div class="sb-selector-controls">
+					<label for="banner_selector">Select Banner:</label>
+					<select id="banner_selector" <?php echo get_num_banners() === 1 ? 'disabled' : '' ?>>
+						<?php for ($i = 1; $i <= get_num_banners(); $i++) {
+							$value = $i === 1 ? '' : '_' . $i;
+							echo '<option value="' . $value . '">Banner #' . $i . '</option>';
+						} ?>
+					</select>
 					
-					<div class="sb-selector-controls">
-						<label for="banner_selector">Select Banner:</label>
-						<select id="banner_selector">
-							<?php for ($i = 1; $i <= get_num_banners(); $i++) {
-								$value = $i === 1 ? '' : '_' . $i;
-								echo '<option value="' . $value . '">Banner #' . $i . '</option>';
-							} ?>
-						</select>
-						
-						<?php if (!get_option('pro_version_enabled')): ?>
-							<a class="button-primary" href="https://rpetersendev.gumroad.com/l/simple-banner" target="_blank">
-								Purchase Pro License
-							</a>
-						<?php endif; ?>
-					</div>
+					<?php if (!get_option('pro_version_enabled')): ?>
+						<a class="button-primary" href="https://rpetersendev.gumroad.com/l/simple-banner" target="_blank">
+							Purchase Pro License
+						</a>
+					<?php endif; ?>
 				</div>
-			<?php endif; ?>
+			</div>
 
 			<?php
 				for ($i = 1; $i <= get_num_banners(); $i++) {

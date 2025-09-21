@@ -172,18 +172,12 @@ class Persian_Woocommerce_Zibal extends WC_Payment_Gateway {
 	 */
 	public function process_payment( $order_id ) {
 
-		$order    = wc_get_order( $order_id );
-		$currency = $order->get_currency();
-		$amount   = intval( $order->get_total() );
-		$amount   = $this->convert_to_rial( $currency, $amount );
+		$order = wc_get_order( $order_id );
 
-		$callback_url = add_query_arg( 'wc_order', $order_id, WC()->api_request_url( $this->id ) );
-
-		// Zibal Hash Secure Code
-		$hash         = md5( $order_id . NONCE_SALT );
-		$callback_url = add_query_arg( 'secure', $hash, $callback_url );
-
-		$description = 'خریدار: ' . $order->get_formatted_billing_full_name();
+		$callback_url = add_query_arg( [
+			'wc_order' => $order_id,
+			'secure'   => md5( $order_id . NONCE_SALT ),
+		], WC()->api_request_url( $this->id ) );
 
 		$mobile = $order->get_billing_phone();
 
@@ -196,9 +190,23 @@ class Persian_Woocommerce_Zibal extends WC_Payment_Gateway {
 			}
 		}
 
+		$products = [];
+
+		foreach ( $order->get_items() as $item ) {
+
+			$name       = $item->get_name();
+			$qty        = $item->get_quantity();
+			$products[] = "{$name} ({$qty})";
+
+		}
+
+		$products    = implode( ' - ', $products );
+		$full_name   = $order->get_formatted_billing_full_name();
+		$description = "خریدار: {$full_name} | محصولات: {$products}";
+
 		$data = [
 			'merchant'    => $this->merchant,
-			'amount'      => $amount,
+			'amount'      => $this->get_order_total_rial( $order ),
 			'orderId'     => strval( $order->get_id() ),
 			'callbackUrl' => $callback_url,
 			'description' => $description,
@@ -235,30 +243,26 @@ class Persian_Woocommerce_Zibal extends WC_Payment_Gateway {
 	}
 
 	/**
-	 * Convert the given amount to Iranian Rials based on the order currency type.
+	 * @param WC_Order $order
 	 *
-	 * This function checks the currency type and converts the amount to Rials.
-	 *
-	 * @param string $currency The currency type ('irr', 'irt', 'irht', 'irhr').
-	 * @param int    $amount   The amount to be converted.
-	 *
-	 * @return int The equivalent amount in Iranian Rials.
+	 * @return int
 	 */
-	public function convert_to_rial( string $currency, int $amount ): int {
-		$rial_amount = $amount;
-		$currency    = strtolower( $currency );
+	public function get_order_total_rial( WC_Order $order ): int {
+
+		$currency = $order->get_currency();
+		$amount   = intval( $order->get_total() );
+
+		$currency = strtolower( $currency );
 
 		if ( $currency == 'irt' ) {
-			$rial_amount = $amount * 10;
+			$amount *= 10;
 		} elseif ( $currency == 'irht' ) {
-			$rial_amount = $amount * 1000 * 10;
+			$amount *= 10_000;
 		} elseif ( $currency == 'irhr' ) {
-			$rial_amount = $amount * 1000;
-		} else {
-			return $rial_amount;
+			$amount *= 1_000;
 		}
 
-		return trim( $rial_amount );
+		return $amount;
 	}
 
 	/**
@@ -304,8 +308,8 @@ class Persian_Woocommerce_Zibal extends WC_Payment_Gateway {
 
 	public function webhook() {
 
-		$order_id = sanitize_text_field( $_GET['wc_order'] ?? 0 );
-		$success  = sanitize_text_field( $_GET['success'] ?? 0 );
+		$order_id = intval( $_GET['wc_order'] ?? 0 );
+		$success  = intval( $_GET['success'] ?? 0 );
 		$track_id = sanitize_text_field( $_GET['trackId'] ?? 0 );
 		$secure   = sanitize_text_field( $_GET['secure'] ?? 0 );
 
@@ -324,14 +328,10 @@ class Persian_Woocommerce_Zibal extends WC_Payment_Gateway {
 		$hash = md5( $order_id . NONCE_SALT );
 
 		if ( $secure != $hash ) {
-			wp_die( 'سفارش وجود ندارد.' );
+			wp_die( 'کلید امنیتی معتبر نمی‌باشد.' );
 		}
 
-		$order    = wc_get_order( $order_id );
-		$currency = $order->get_currency();
-		$amount   = intval( $order->get_total() );
-		$amount   = $this->convert_to_rial( $currency, $amount );
-
+		$order = wc_get_order( $order_id );
 
 		if ( $order->is_paid() ) {
 
@@ -344,7 +344,7 @@ class Persian_Woocommerce_Zibal extends WC_Payment_Gateway {
 			exit;
 		}
 
-		if ( $success !== '1' ) {
+		if ( $success !== 1 ) {
 			$fault   = '';
 			$message = 'تراکنش انجام نشد.';
 			$this->handle_failed_payment( $order, $message, $track_id, $fault );
@@ -366,7 +366,7 @@ class Persian_Woocommerce_Zibal extends WC_Payment_Gateway {
 			exit;
 		}
 
-		if ( $result['result'] === 100 && $result['amount'] === $amount ) {
+		if ( $result['result'] === 100 && $result['amount'] === $this->get_order_total_rial( $order ) ) {
 			// Successful payment
 			$card_number = $result['cardNumber'] ?? '';
 			$ref_number  = $result['refNumber'] ?? '';
@@ -380,7 +380,7 @@ class Persian_Woocommerce_Zibal extends WC_Payment_Gateway {
 			$note    = wpautop( wptexturize( $message ) );
 
 			wc_add_notice( $note );
-			$order->update_status( 'success', $note );
+
 			wp_redirect( add_query_arg( 'wc_status', 'success', $this->get_return_url( $order ) ) );
 			exit;
 		}

@@ -96,36 +96,38 @@ class Persian_Woocommerce_Tools extends Persian_Woocommerce_Core {
 		$id       = md5( $value['id'] );
 		$display  = ! empty( $value['value'] ) ? 'inline-block' : 'none';
 		?>
-        <tr class="<?php echo esc_attr( $value['row_class'] ); ?> pw_file_input_row" data-uploader-id="<?php echo $id; ?>">
-            <th scope="row" class="titledesc">
-                <label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
-            </th>
+		<tr class="<?php echo esc_attr( $value['row_class'] ); ?> pw_file_input_row" data-uploader-id="<?php echo esc_attr($id); ?>">
+			<th scope="row" class="titledesc">
+				<label for="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_html( $value['title'] ); ?></label>
+			</th>
 
-            <td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
-                <img id="<?php echo $id; ?>_image"
-                     src="<?php echo $value['value']; ?>"
-                     class="pw_file_uploader_image">
+			<td class="forminp forminp-<?php echo esc_attr( sanitize_title( $value['type'] ) ); ?>">
+				<img id="<?php echo esc_attr($id); ?>_image"
+				     src="<?php echo esc_url($value['value']); ?>"
+				     class="pw_file_uploader_image">
 
-                <input type="text" name="<?php echo $value['id']; ?>"
-                       id="<?php echo $value['id']; ?>"
-                       class="<?php echo $id; ?>_input"
-                       value="<?php echo esc_attr( $value['value'] ); ?>"
-                       style="display:none;">
+				<input type="text" name="<?php echo esc_attr($value['id']); ?>"
+				       id="<?php echo esc_attr($value['id']); ?>"
+				       class="<?php echo esc_attr($id); ?>_input"
+				       value="<?php echo esc_attr( $value['value'] ); ?>"
+				       style="display:none;">
 
-                <div class="pw_file_uploader_buttons">
-                    <a href="#" id="<?php echo $id; ?>_upload_button" class="button">
+				<div class="pw_file_uploader_buttons">
+					<a href="#" id="<?php echo esc_attr($id); ?>_upload_button" class="button">
 						<?php echo esc_attr( $value['button'] ); ?>
-                    </a>
+					</a>
 
-                    <a href="#" id="<?php echo $id; ?>_remove_button"
-                       class="pw_file_uploader_remove_button"
-                       style="--animation-delaydisplay: <?php echo $display; ?> ">
-                        حذف تصویر
-                    </a>
-                </div>
+					<?php if( !empty($value['value']) ): ?>
+						<a href="#" id="<?php echo esc_attr($id); ?>_remove_button"
+						   class="pw_file_uploader_remove_button"
+						   style="--animation-delaydisplay: <?php echo $display; ?> ">
+							حذف تصویر
+						</a>
+					<?php endif; ?>
+				</div>
 				<?php echo esc_html( $value['suffix'] ?? null ); ?><?php echo $value['desc']; // WPCS: XSS ok. ?>
-            </td>
-        </tr>
+			</td>
+		</tr>
 		<?php
 	}
 
@@ -530,7 +532,7 @@ class Persian_Woocommerce_Tools extends Persian_Woocommerce_Core {
 
         <div class="wrap persian-woocommerce">
             <h2>ابزارهای ووکامرس فارسی</h2>
-
+            <a href="<?php echo esc_url( Persian_Woocommerce_Changelog::get_page_url() ) ?>" target="_blank" class="button button-primary float-left-buttons">تاریخچه تغییرات</a>
 			<?php
 			$updated = intval( $_GET['updated'] ?? 0 );
 
@@ -654,3 +656,4 @@ require_once 'tools/class-checkout.php';
 require_once 'tools/class-super-admin.php';
 require_once 'tools/class-wc-admin.php';
 require_once 'tools/class-design.php';
+require_once 'tools/class-forminator.php';

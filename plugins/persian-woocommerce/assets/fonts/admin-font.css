@@ -21,6 +21,9 @@ body#tinymce.wp-editor.content dt, body, a, p, div, input, span, h1, h2, h3, h4,
     font-family: var(--pw-admin-font-family) !important;
 }
 
-
+/* Yoast seo preview title vanishes with custom fonts */
+#yoast-snippet-preview-container * {
+    font-family: sans-serif !important;
+}
 
 

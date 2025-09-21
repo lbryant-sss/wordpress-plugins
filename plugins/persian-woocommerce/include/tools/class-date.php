@@ -427,19 +427,6 @@ class Persian_Woocommerce_Date {
 		<?php
 	}
 
-	public function date_i18n( $date, $format, $timestamp, $gmt ) {
-
-		$timezone = get_option( 'timezone_string', 'Asia/Tehran' );
-
-		if ( empty( $timezone ) ) {
-			$timezone = 'Asia/Tehran';
-		}
-
-		$timezone = new \DateTimeZone( $timezone );
-
-		return $this->wp_date( $date, $format, $timestamp, $timezone );
-	}
-
 	public function wp_date( $date, $format, $timestamp, $timezone ) {
 
 		$format = str_replace( 'M', 'F', $format );
