@@ -563,7 +563,12 @@ GNU General Public License for more details.
                              "trashed_contents" => 0,
                              "trashed_spam_comments" => 0,
                              "trackback_pingback" => 0,
-                             "transient_options" => 0
+                             "transient_options" => 0,
+                             "orphaned_post_meta" => 0,
+                             "orphaned_comment_meta" => 0,
+                             "orphaned_user_meta" => 0,
+                             "orphaned_term_meta" => 0,
+                             "orphaned_term_relationships" => 0
                             );
 
 
@@ -582,6 +587,26 @@ GNU General Public License for more details.
             $element = "SELECT COUNT(*) FROM `$wpdb->options` WHERE option_name LIKE '%\_transient\_%' ;";
             $statics["transient_options"] = $wpdb->get_var( $element ) > 100 ? $wpdb->get_var( $element ) : 0;
             $statics["all_warnings"] = $statics["all_warnings"] + $statics["transient_options"];
+
+
+
+            $statics["orphaned_post_meta"] = $wpdb->get_var("SELECT COUNT(pm.meta_id) FROM {$wpdb->postmeta} pm LEFT JOIN {$wpdb->posts} p ON p.ID = pm.post_id WHERE p.ID IS NULL");
+			$statics["all_warnings"] += $statics["orphaned_post_meta"];
+
+			$statics["orphaned_comment_meta"] = $wpdb->get_var("SELECT COUNT(cm.meta_id) FROM {$wpdb->commentmeta} cm LEFT JOIN {$wpdb->comments} c ON c.comment_ID = cm.comment_id WHERE c.comment_ID IS NULL");
+			$statics["all_warnings"] += $statics["orphaned_comment_meta"];
+
+			$statics["orphaned_user_meta"] = $wpdb->get_var("SELECT COUNT(um.umeta_id) FROM {$wpdb->usermeta} um LEFT JOIN {$wpdb->users} u ON u.ID = um.user_id WHERE u.ID IS NULL");
+			$statics["all_warnings"] += $statics["orphaned_user_meta"];
+
+			$statics["orphaned_term_meta"] = $wpdb->get_var("SELECT COUNT(tm.meta_id) FROM {$wpdb->termmeta} tm LEFT JOIN {$wpdb->terms} t ON t.term_id = tm.term_id WHERE t.term_id IS NULL");
+			$statics["all_warnings"] += $statics["orphaned_term_meta"];
+
+			$statics["orphaned_term_relationships"] = $wpdb->get_var("SELECT COUNT(tr.object_id) FROM {$wpdb->term_relationships} tr LEFT JOIN {$wpdb->posts} p ON p.ID = tr.object_id WHERE p.ID IS NULL");
+			$statics["all_warnings"] += $statics["orphaned_term_relationships"];
+
+
+
 
             die(json_encode($statics));
 		}

@@ -61,6 +61,9 @@ class HTMega_Elementor_Widget_Dropcaps extends Widget_Base {
                     'default'       => __( 'Lorem ipsum dolor sit amet, consec adipisicing elit, sed do eiusmod tempor incidid ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip exl Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incidid ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.', 'htmega-addons' ),
                     'placeholder'   => __( 'Enter Your Dropcaps Content.', 'htmega-addons' ),
                     'separator'=>'before',
+                    'dynamic' => [
+                        'active' => true,
+                    ],
                 ]
             );
             

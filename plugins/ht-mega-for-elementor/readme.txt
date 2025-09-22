@@ -3,7 +3,7 @@ Contributors: hasthemes, htplugins, devitemsllc, tarekht, zenaulislam, aslamhasi
 Tags: elementor, elementor addons, elementor widgets, page builder, elementor templates, mega menu, addons for elementor, post grid, elements, header footer builder
 Requires at least: 5.0
 Tested up to: 6.8
-Stable tag: 2.9.5
+Stable tag: 2.9.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,7 +17,7 @@ Are you tired of Elementor's limitations holding back your creativity? **HT Mega
 
 Join WordPress professionals who’ve already transformed their workflow and build stunning websites 73% faster than before.
 
-**[Live Demo](https://wphtmega.com/)** | **[Documentation](https://wphtmega.com/docs/)** | **[Video Tutorials](https://www.youtube.com/watch?v=z_9Z9VWhaEQ&list=PLk25BQFrj7wEEGUHn9x2zwOql990bZAo_&index=71)** | **[Get Pro](https://wphtmega.com/pricing/)** | **[Get Support](https://hasthemes.com/contact-us/)**
+**[Live Demo](https://wphtmega.com/)** | **[Documentation](https://wphtmega.com/docs/)** | **[Video Tutorials](https://www.youtube.com/watch?v=z_9Z9VWhaEQ&list=PLk25BQFrj7wEEGUHn9x2zwOql990bZAo_&index=71)** | **[Get Pro](https://wphtmega.com/pricing/)** | **[Get Support](https://wphtmega.com/contact/)**
 
 ### 📹 Watch HT Mega in Action
 
@@ -213,7 +213,7 @@ SaaS, Medical, Construction, Law Firm, Real Estate, Agency, Education, Corporate
 * **[Extensive Documentation](https://wphtmega.com/docs/)** with step-by-step guides
 * **[Video Tutorial Library](https://www.youtube.com/watch?v=z_9Z9VWhaEQ&list=PLk25BQFrj7wEEGUHn9x2zwOql990bZAo_&index=71)** on YouTube
 * **[Privacy Policy](https://wphtmega.com/privacy-policy/)** - Your data is safe with us
-* **[Missing Any Feature?](https://hasthemes.com/contact-us/)** - Let us know what you need
+* **[Missing Any Feature?](https://wphtmega.com/contact/)** - Let us know what you need
 
 
 ### 🔥 WHAT'S NEXT
@@ -236,6 +236,11 @@ SaaS, Medical, Construction, Law Firm, Real Estate, Agency, Education, Corporate
 
 
 == Changelog ==
+
+= Version 2.9.6 - Date: 2025-09-21 =
+* Added: Dynamic tag support in Counter, Dropcaps and Countdown Widgets.
+* Fixed: A few minor issues.
+* Tested: Compatibility with the latest version of Elementor.
 
 = Version 2.9.5 - Date: 2025-09-02 =
 * Added: Dynamic tag support in Add Banner, Image Comparison, Image Magnifier, and Special Day Offer Widgets.

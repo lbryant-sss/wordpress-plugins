@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Customer Reviews for WooCommerce 5.83.2\n"
+"Project-Id-Version: Customer Reviews for WooCommerce 5.83.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/customer-reviews-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-09-17T21:25:09+00:00\n"
+"POT-Creation-Date: 2025-09-21T20:30:23+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.8.1\n"
 "X-Domain: customer-reviews-woocommerce\n"
@@ -124,7 +124,7 @@ msgstr ""
 #: includes/analytics/class-cr-reminders-log.php:397
 #: includes/reminders/class-cr-manual.php:370
 #: includes/settings/class-cr-settings-emails.php:113
-#: includes/settings/class-cr-settings-review-discount.php:959
+#: includes/settings/class-cr-settings-review-discount.php:965
 #: includes/settings/class-cr-settings-review-reminder.php:1225
 #: templates/cr-review-form.php:114
 #: templates/cr-review-form.php:116
@@ -4433,7 +4433,7 @@ msgid "Incentivized Review Badge"
 msgstr ""
 
 #: includes/settings/class-cr-settings-review-discount.php:106
-#: includes/settings/class-cr-settings-review-discount.php:869
+#: includes/settings/class-cr-settings-review-discount.php:875
 msgid "Display a badge next to reviews for which customers received discount coupons. Disclosing incentivized reviews helps build trust between customers and your business. It can also be a legal requirement in some jurisdictions."
 msgstr ""
 
@@ -4528,35 +4528,35 @@ msgstr ""
 msgid "Coupons are not enabled in any of the discount tiers for reviews with %d uploaded media file(s)"
 msgstr ""
 
-#: includes/settings/class-cr-settings-review-discount.php:863
-msgid "Please re-save settings and try again"
+#: includes/settings/class-cr-settings-review-discount.php:864
+msgid "Test email could not be sent because settings for discounts are not saved; please save them on the <a href=\"%s\">Review for Discount</a> page and then try again."
 msgstr ""
 
-#: includes/settings/class-cr-settings-review-discount.php:874
+#: includes/settings/class-cr-settings-review-discount.php:880
 msgid "Customize label of the incentivized review badge"
 msgstr ""
 
-#: includes/settings/class-cr-settings-review-discount.php:910
+#: includes/settings/class-cr-settings-review-discount.php:916
 msgid "Incentivized Badge Label"
 msgstr ""
 
-#: includes/settings/class-cr-settings-review-discount.php:930
+#: includes/settings/class-cr-settings-review-discount.php:936
 msgid "Reviewer received an unconditional discount coupon on future purchases"
 msgstr ""
 
-#: includes/settings/class-cr-settings-review-discount.php:939
+#: includes/settings/class-cr-settings-review-discount.php:945
 msgid "Aggregated review form"
 msgstr ""
 
-#: includes/settings/class-cr-settings-review-discount.php:940
+#: includes/settings/class-cr-settings-review-discount.php:946
 msgid "Reviews submitted via aggregated review forms"
 msgstr ""
 
-#: includes/settings/class-cr-settings-review-discount.php:944
+#: includes/settings/class-cr-settings-review-discount.php:950
 msgid "On-site review form"
 msgstr ""
 
-#: includes/settings/class-cr-settings-review-discount.php:945
+#: includes/settings/class-cr-settings-review-discount.php:951
 msgid "Reviews submitted via on-site review forms"
 msgstr ""
 

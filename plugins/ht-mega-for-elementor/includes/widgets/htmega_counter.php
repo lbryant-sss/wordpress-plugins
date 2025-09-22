@@ -156,6 +156,9 @@ class HTMega_Elementor_Widget_Counter extends Widget_Base {
                     'type' => Controls_Manager::TEXT,
                     'default' => __( 'Happy Clients', 'htmega-addons' ),
                     'placeholder' => __( 'Type your title here', 'htmega-addons' ),
+                    'dynamic' => [
+                        'active' => true,
+                    ],
                 ]
             );
 
@@ -165,6 +168,9 @@ class HTMega_Elementor_Widget_Counter extends Widget_Base {
                     'label' => __( 'Target Number', 'htmega-addons' ),
                     'type' => Controls_Manager::NUMBER,
                     'default' => 100,
+                    'dynamic' => [
+                        'active' => true,
+                    ],
                 ]
             );
 
@@ -174,6 +180,9 @@ class HTMega_Elementor_Widget_Counter extends Widget_Base {
                     'label' => __( 'Number Prefix', 'htmega-addons' ),
                     'type' => Controls_Manager::TEXT,
                     'placeholder' => __( '$', 'htmega-addons' ),
+                    'dynamic' => [
+                        'active' => true,
+                    ],
                 ]
             );
 
@@ -183,6 +192,9 @@ class HTMega_Elementor_Widget_Counter extends Widget_Base {
                     'label' => __( 'Number Suffix', 'htmega-addons' ),
                     'type' => Controls_Manager::TEXT,
                     'placeholder' => __( '+', 'htmega-addons' ),
+                    'dynamic' => [
+                        'active' => true,
+                    ],
                 ]
             );
 

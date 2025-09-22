@@ -113,7 +113,10 @@ class HTMega_Elementor_Widget_Countdown extends Widget_Base {
                     'default'     => gmdate( 'Y/m/d', strtotime( '+1 month' ) + ( get_option( 'gmt_offset' ) * HOUR_IN_SECONDS ) ),
                     'condition'=>[
                         'show_event_list!'=>'yes',
-                    ]
+                    ],
+                    'dynamic' => [
+                        'active' => true,
+                    ],
                 ]
             );
 
