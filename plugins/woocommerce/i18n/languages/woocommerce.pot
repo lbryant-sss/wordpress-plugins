@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce 10.2.0\n"
+"Project-Id-Version: WooCommerce 10.2.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-09-17T07:37:51+00:00\n"
+"POT-Creation-Date: 2025-09-22T10:59:58+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: woocommerce\n"
@@ -10966,7 +10966,7 @@ msgstr ""
 #: includes/admin/views/html-admin-page-status-report.php:698
 #: includes/class-wc-install.php:2351
 #: includes/react-admin/connect-existing-pages.php:35
-#: src/Internal/Admin/Analytics.php:293
+#: src/Internal/Admin/Analytics.php:266
 #: src/Internal/Admin/Logging/PageController.php:212
 #: assets/client/admin/app/index.js:2
 #: assets/client/admin/chunks/9336.js:1
@@ -11757,7 +11757,7 @@ msgstr ""
 #: src/Admin/API/Reports/Taxes/Controller.php:235
 #: src/Admin/API/Reports/Variations/Controller.php:376
 #: src/Admin/ReportCSVEmail.php:70
-#: src/Internal/Admin/Analytics.php:245
+#: src/Internal/Admin/Analytics.php:218
 #: assets/client/admin/app/index.js:2
 #: assets/client/admin/chunks/2304.js:1
 #: assets/client/admin/chunks/analytics-report-categories.js:1
@@ -11798,7 +11798,7 @@ msgstr ""
 #: includes/admin/class-wc-admin-reports.php:126
 #: includes/admin/settings/class-wc-settings-emails.php:546
 #: src/Admin/ReportCSVEmail.php:68
-#: src/Internal/Admin/Analytics.php:287
+#: src/Internal/Admin/Analytics.php:260
 #: src/Internal/Admin/Orders/ListTable.php:1796
 #: assets/client/admin/app/index.js:2
 #: assets/client/admin/chunks/analytics-report-customers.js:1
@@ -11822,7 +11822,7 @@ msgstr ""
 #: src/Admin/API/Reports/Stock/Controller.php:497
 #: src/Admin/API/Reports/Variations/Controller.php:381
 #: src/Admin/ReportCSVEmail.php:73
-#: src/Internal/Admin/Analytics.php:281
+#: src/Internal/Admin/Analytics.php:254
 #: assets/client/admin/app/index.js:2
 #: assets/client/admin/chunks/analytics-report-categories.js:1
 #: assets/client/admin/chunks/analytics-report-products.js:1
@@ -11845,7 +11845,7 @@ msgstr ""
 #: includes/admin/class-wc-admin-reports.php:169
 #: src/Admin/API/Reports/Revenue/Stats/Controller.php:280
 #: src/Admin/ReportCSVEmail.php:74
-#: src/Internal/Admin/Analytics.php:269
+#: src/Internal/Admin/Analytics.php:242
 #: src/Internal/ReceiptRendering/ReceiptRenderingEngine.php:360
 #: assets/client/admin/app/index.js:2
 #: assets/client/admin/chunks/analytics-report-revenue.js:1
@@ -12809,7 +12809,7 @@ msgstr ""
 #: src/Admin/API/Reports/Categories/Controller.php:248
 #: src/Admin/Features/Blueprint/Exporters/ExportWCSettingsProducts.php:34
 #: src/Admin/ReportCSVEmail.php:71
-#: src/Internal/Admin/Analytics.php:233
+#: src/Internal/Admin/Analytics.php:206
 #: src/Internal/Admin/Orders/ListTable.php:1797
 #: assets/client/admin/app/index.js:2
 #: assets/client/admin/chunks/4706.js:1
@@ -13093,7 +13093,7 @@ msgstr ""
 #: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:171
 #: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:180
 #: includes/rest-api/Controllers/Version2/class-wc-rest-system-status-tools-v2-controller.php:189
-#: src/Internal/Admin/Analytics.php:165
+#: src/Internal/Admin/Analytics.php:159
 #: src/Internal/ProductDownloads/ApprovedDirectories/Admin/SyncUI.php:68
 #: templates/single-product/add-to-cart/variable.php:55
 msgid "Clear"
@@ -13883,7 +13883,7 @@ msgstr ""
 #: includes/class-wc-post-types.php:97
 #: includes/export/class-wc-product-csv-exporter.php:160
 #: src/Admin/ReportCSVEmail.php:66
-#: src/Internal/Admin/Analytics.php:257
+#: src/Internal/Admin/Analytics.php:230
 #: src/Internal/Features/ProductBlockEditor/ProductTemplates/SimpleProductTemplate.php:553
 #: assets/client/admin/app/index.js:2
 #: assets/client/admin/chunks/analytics-report-categories.js:1
@@ -14134,7 +14134,7 @@ msgstr ""
 #: src/Admin/API/Reports/Downloads/Stats/Controller.php:106
 #: src/Admin/ReportCSVEmail.php:69
 #: src/Blocks/BlockTypesController.php:184
-#: src/Internal/Admin/Analytics.php:275
+#: src/Internal/Admin/Analytics.php:248
 #: src/Internal/Admin/Onboarding/OnboardingProducts.php:37
 #: src/Internal/Features/ProductBlockEditor/ProductTemplates/DownloadableProductTrait.php:56
 #: templates/emails/email-downloads.php:24
@@ -15345,7 +15345,7 @@ msgstr ""
 #: includes/class-wc-post-types.php:448
 #: src/Admin/API/Reports/Products/Controller.php:328
 #: src/Admin/ReportCSVEmail.php:75
-#: src/Internal/Admin/Analytics.php:251
+#: src/Internal/Admin/Analytics.php:224
 #: src/Internal/Features/ProductBlockEditor/ProductTemplates/SimpleProductTemplate.php:95
 #: src/Internal/Features/ProductBlockEditor/ProductTemplates/SimpleProductTemplate.php:1111
 #: assets/client/admin/app/index.js:2
@@ -23196,7 +23196,7 @@ msgstr ""
 #: includes/react-admin/connect-existing-pages.php:177
 #: src/Admin/API/Reports/Revenue/Stats/Controller.php:278
 #: src/Admin/ReportCSVEmail.php:67
-#: src/Internal/Admin/Analytics.php:263
+#: src/Internal/Admin/Analytics.php:236
 #: src/Internal/Admin/Coupons.php:69
 #: src/Internal/Admin/Coupons.php:70
 #: assets/client/admin/app/index.js:2
@@ -37831,7 +37831,7 @@ msgid "Invalid plugin slug provided in the plugins activated rule."
 msgstr ""
 
 #: src/Admin/ReportCSVEmail.php:72
-#: src/Internal/Admin/Analytics.php:239
+#: src/Internal/Admin/Analytics.php:212
 #: assets/client/admin/app/index.js:2
 #: assets/client/admin/chunks/analytics-report-revenue.js:1
 msgid "Revenue"
@@ -39634,46 +39634,30 @@ msgstr ""
 msgid "Compatibility mode disabled."
 msgstr ""
 
-#: src/Internal/Admin/Analytics.php:164
+#: src/Internal/Admin/Analytics.php:158
 msgid "Clear analytics cache"
 msgstr ""
 
 #. translators: 1: opening link tag, 2: closing tag
-#: src/Internal/Admin/Analytics.php:168
+#: src/Internal/Admin/Analytics.php:162
 #, php-format
 msgid "This tool will reset the cached values used in WooCommerce Analytics. If numbers still look off, try %1$sReimporting Historical Data%2$s."
 msgstr ""
 
 #: src/Internal/Admin/Analytics.php:190
-msgid "Fix analytics full refund data"
-msgstr ""
-
-#: src/Internal/Admin/Analytics.php:191
-msgid "Fix"
-msgstr ""
-
-#: src/Internal/Admin/Analytics.php:192
-msgid "This tool will fix the full refund data used in WooCommerce Analytics and re-import all the refunded historical data."
-msgstr ""
-
-#: src/Internal/Admin/Analytics.php:217
 #: src/Internal/Features/FeaturesController.php:288
 #: assets/client/admin/app/index.js:2
 msgid "Analytics"
 msgstr ""
 
-#: src/Internal/Admin/Analytics.php:227
+#: src/Internal/Admin/Analytics.php:200
 #: src/Internal/Admin/Marketing.php:143
 #: assets/client/admin/app/index.js:2
 msgid "Overview"
 msgstr ""
 
-#: src/Internal/Admin/Analytics.php:313
+#: src/Internal/Admin/Analytics.php:286
 msgid "Analytics cache cleared."
-msgstr ""
-
-#: src/Internal/Admin/Analytics.php:349
-msgid "Re-importing refunded orders, full refund data will be updated shortly."
 msgstr ""
 
 #. translators: 1: WC_Logger::log 2: level

@@ -691,7 +691,13 @@ function loginizer_add_social_js($page_type){
 				target_url += "&lz_api=1";
 			}
 			
-			target_url += "&ref='.esc_url((is_ssl() ? 'https://' : 'http://').$_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']).'"
+			let redirect_to = "'.(!empty($_GET['redirect_to']) ? wp_validate_redirect(esc_url($_GET['redirect_to'])) : '') .'";
+			
+			if(redirect_to.length){
+				target_url += "&ref="+redirect_to;
+			} else {
+				target_url += "&ref='.esc_url((is_ssl() ? 'https://' : 'http://').$_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']).'"
+			}
 
 			if(lz_target_window == "same"){
 				jQuery("#loginizer-social-loader-wrap").css("display", "flex");

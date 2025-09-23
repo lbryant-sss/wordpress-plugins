@@ -63,7 +63,7 @@ final class CssDocument
     private function hasNestedAtRule(string $css): bool
     {
         return (new Preg())
-                ->match('/@(?:media|supports|(?:-webkit-|-moz-|-ms-|-o-)?+(keyframes|document))\\b/', $css) !== 0;
+            ->match('/@(?:media|supports|(?:-webkit-|-moz-|-ms-|-o-)?+(keyframes|document))\\b/', $css) !== 0;
     }
 
     /**
@@ -76,10 +76,12 @@ final class CssDocument
     public function getStyleRulesData(array $allowedMediaTypes): array
     {
         $ruleMatches = [];
+        /** @var CssRenderable $rule */
         foreach ($this->sabberwormCssDocument->getContents() as $rule) {
             if ($rule instanceof CssAtRuleBlockList) {
                 $containingAtRule = $this->getFilteredAtIdentifierAndRule($rule, $allowedMediaTypes);
                 if (\is_string($containingAtRule)) {
+                    /** @var CssRenderable $nestedRule */
                     foreach ($rule->getContents() as $nestedRule) {
                         if ($nestedRule instanceof CssDeclarationBlock) {
                             $ruleMatches[] = new StyleRule($nestedRule, $containingAtRule);

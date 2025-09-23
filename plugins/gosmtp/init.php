@@ -9,7 +9,7 @@
 if (!defined('ABSPATH')) exit;
 
 define('GOSMTP_BASE', plugin_basename(GOSMTP_FILE));
-define('GOSMTP_VERSION', '1.1.4');
+define('GOSMTP_VERSION', '1.1.5');
 define('GOSMTP_DIR', dirname(GOSMTP_FILE));
 define('GOSMTP_SLUG', 'gosmtp');
 define('GOSMTP_URL', plugins_url('', GOSMTP_FILE));
@@ -310,4 +310,9 @@ add_action( 'admin_init', 'gosmtp_admin_init');
 function gosmtp_admin_init(){
 	wp_register_style( 'gosmtp-admin', GOSMTP_URL .'/css/admin.css', array(), GOSMTP_VERSION);
 	wp_register_script( 'gosmtp-admin', GOSMTP_URL .'/js/admin.js', array('jquery'), GOSMTP_VERSION);
+	
+	include_once GOSMTP_DIR .'/main/admin.php';
+	
+	gosmtp_admin_hooks();
+	
 }

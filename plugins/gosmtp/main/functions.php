@@ -27,7 +27,8 @@ function gosmtp_get_mailer_list(){
 		'sendgrid' => [ 'title' => __('Sendgrid'), 'class' => 'GOSMTP\Mailer\Sendgrid'],
 		'sparkpost' => [ 'title' => __('Sparkpost'), 'class' => 'GOSMTP\Mailer\Sparkpost'],
 		'elasticemail' => [ 'title' => __('Elastic Email', 'gosmtp'), 'class' => 'GOSMTP\Mailer\ElasticEmail'],
-		'smtp2go' => [ 'title' => __('SMTP2Go', 'gosmtp'), 'class' => 'GOSMTP\Mailer\SMTP2Go']
+		'smtp2go' => [ 'title' => __('SMTP2Go', 'gosmtp'), 'class' => 'GOSMTP\Mailer\SMTP2Go'],
+		'maileroo' => [ 'title' => __('Maileroo', 'gosmtp'), 'class' => 'GOSMTP\Mailer\Maileroo'],
 	);
 	
 	return apply_filters( 'gosmtp_get_mailer_list', $list );

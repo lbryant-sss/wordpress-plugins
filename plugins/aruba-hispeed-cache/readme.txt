@@ -68,6 +68,11 @@ wordpress_no_cache, comment_author, wordpress_logged_in_, yith_wcwl_products, wp
 
 == Changelog ==
 
+= 3.0.0 =
+* Frontend revisioned.
+* Add object cache managment.
+* Various fixes.
+
 = 2.0.24 =
 * Manage WP_CRON Timeout.
 * Various minor bug fixes.
@@ -213,6 +218,7 @@ wordpress_no_cache, comment_author, wordpress_logged_in_, yith_wcwl_products, wp
 
 == Upgrade Notice ==
 
-= 2.0.24 =
-* Manage WP_CRON Timeout.
-* Various minor bug fixes.
+= 3.0.0 =
+* Frontend revisioned.
+* Add object cache managment.
+* Various fixes.

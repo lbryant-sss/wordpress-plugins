@@ -4,7 +4,7 @@ Tags: woocommerce, quick view, woocommerce quick view, products quick view
 Requires PHP: 7.4
 Requires at least: 6.6
 Tested up to: 6.8
-Stable tag: 2.7.2
+Stable tag: 2.8.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -79,6 +79,9 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 3. The quick view modal.
 
 == Changelog ==
+
+= 2.8.0 = Released 22 September 2025
+* New: support for WooCommerce 10.2
 
 = 2.7.2 = Released 05 September 2025
 * Dev: Security fix

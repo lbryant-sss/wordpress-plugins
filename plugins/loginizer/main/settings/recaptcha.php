@@ -83,6 +83,11 @@ function loginizer_page_recaptcha(){
 	// Sizes
 	$lz_env['size']['normal'] = 'Normal';
 	$lz_env['size']['compact'] = 'Compact';
+	
+	// Size cloudflare (turnstile)
+	$lz_env['turnstile_size']['normal'] = 'Normal';
+	$lz_env['turnstile_size']['compact'] = 'Compact';
+	$lz_env['turnstile_size']['flexible'] = 'Flexible';
 
 	// reCAPTCHA Domains
 	$lz_env['captcha_domains']['www.google.com'] = 'google.com';
@@ -149,6 +154,7 @@ function loginizer_page_recaptcha(){
 			$option['captcha_register'] = (int) lz_optpost('captcha_register');
 			$option['captcha_comment'] = (int) lz_optpost('captcha_comment');
 			$option['captcha_wc_checkout'] = (int) lz_optpost('captcha_wc_checkout');
+			$option['captcha_wc_checkout_pos'] = lz_optpost('captcha_wc_checkout_pos');
 			
 			// Are we to use Math Captcha ?
 			if(!empty($_POST['captcha_status']) && $_POST['captcha_status'] == 2){
@@ -203,7 +209,7 @@ function loginizer_page_recaptcha(){
 				}
 				
 				// Is size valid ?
-				if(empty($lz_env['size'][$option['turn_captcha_size']])){
+				if(empty($lz_env['turnstile_size'][$option['turn_captcha_size']])){
 					$lz_error['turn_captcha_size'] = __('The Turnstile size is invalid', 'loginizer');
 				}
 				
@@ -508,12 +514,12 @@ input[type="text"], textarea, select {
 					</select>
 				</td>
 			</tr>
-			<tr class="lz_turnstile_cap lz_google_cap_size">
+			<tr class="lz_turnstile_cap">
 				<td scope="row" valign="top"><label for="turn_captcha_size"><b><?php echo __('Size', 'loginizer'); ?></b></label></td>
 				<td>
 					<select name="turn_captcha_size" id="turn_captcha_size">
 						<?php
-							foreach($lz_env['size'] as $k => $v){
+							foreach($lz_env['turnstile_size'] as $k => $v){
 								echo '<option '.lz_POSTselect('turn_captcha_size', $k, ((!empty($loginizer['turn_captcha_size']) && $loginizer['turn_captcha_size'] == $k) ? true : false)).' value="'.$k.'">'.$v.'</option>';								
 							}
 						?>
@@ -607,8 +613,17 @@ input[type="text"], textarea, select {
 						echo '<tr>
 							<td><label for="captcha_wc_checkout">'.__('WooCommerce Checkout', 'loginizer').'</label></td>
 							<td><input type="checkbox" value="1" name="captcha_wc_checkout" id="captcha_wc_checkout" '.lz_POSTchecked('captcha_wc_checkout', (empty($loginizer['captcha_wc_checkout']) ? false : true)).' /></td>
-						</tr>';
+						</tr>
 						
+						<tr>
+							<td><label for="captcha_wc_checkout_pos">'.__('WooCommerce Checkout Position', 'loginizer').'</label></td>
+							<td>
+								<select value="'.lz_optpost('captcha_wc_checkout_pos').'" name="captcha_wc_checkout_pos" id="captcha_wc_checkout_pos"  />
+									<option value="" '.(isset($loginizer['captcha_wc_checkout_pos']) ? selected($loginizer['captcha_wc_checkout_pos'], '', false) : '').'>'.__('Before Payment', 'loginizer').'</option>
+									<option value="before_submit" '.(isset($loginizer['captcha_wc_checkout_pos']) ? selected($loginizer['captcha_wc_checkout_pos'], 'before_submit', false) : '').'>'.__('Before Order Button', 'loginizer').'</option>
+								</select>
+							</td>
+						</tr>';
 						}
 						
 						?>

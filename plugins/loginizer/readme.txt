@@ -4,7 +4,7 @@ Tags: security, access, admin, Loginizer, login, logs, ban ip, failed login, ip,
 Requires at least: 3.0
 Tested up to: 6.8
 Requires PHP: 5.5
-Stable tag: 2.0.2
+Stable tag: 2.0.3
 License: LGPLv2.1
 License URI: http://www.gnu.org/licenses/lgpl-2.1.html
 
@@ -85,6 +85,14 @@ That's it. You're done!
 3. Loginizer Brute Force Settings page
 
 == Changelog ==
+
+= 2.0.3 =
+* [Improvement Pro] 2FA via Email now supports HTML content type for the content of the email.
+* [Improvement Pro] Added an option to choose the location of Captcha on WooCommerce checkout page.
+* [Improvement Pro] Trunstile captcha now supports Flexible size.
+* [Bug-Fix Pro] There was an issue with TwitchTV social login, that has been fixed.
+* [Bug-Fix] There was an issue with redirection if redirect_to was set on login, this has been fixed.
+* [Bug-Fix] There was a notice with a Promo notice that has been fixed.
 
 = 2.0.2 =
 * [Improvement Pro] reCAPTCHA v3 now supports score based threshold, making the v3 reCAPTCHA even more effective in blocking bots.

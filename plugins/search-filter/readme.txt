@@ -1,10 +1,10 @@
 === Search & Filter ===
 Contributors: DesignsAndCode, codeamp
 Donate link:
-Tags: category, filter, taxonomy, search, wordpress, post type, post date
+Tags: category, filter, taxonomy, search, tag
 Requires at least: 3.5
 Tested up to: 6.8
-Stable tag: 1.2.17
+Stable tag: 1.2.18
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,6 +37,9 @@ The documentation has been updated to include examples almost all configurable o
 4. Example of Search & Filter using a post type filter
 
 == Changelog ==
+
+= 1.2.18 =
+* Security enhancement - prevent unauthorised redirects when submitting the form.
 
 = 1.2.17 =
 * Fixed - PHP notice about frmqreserved not being initialised.

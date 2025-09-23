@@ -122,6 +122,7 @@ class Loginizer_Social_Base{
 		global $loginizer;
 
 		// Check if the URL is safe to use.
+		$redirect_to = '';
 		if(!empty(self::$ref)){
 			$redirect_to = self::handle_redirect(self::$ref);
 		}
@@ -289,9 +290,8 @@ class Loginizer_Social_Base{
 	
 	protected static function handle_redirect($url){
 
-		$redirect = '';
 		if(empty($url)){
-			return $redirect;
+			return '';
 		}
 		
 		$url = rawurldecode($url);
@@ -308,11 +308,7 @@ class Loginizer_Social_Base{
 
 		// Reloading the page wont show the admin page so we need to redirect it to the admin page.
 		if($parsed_url['scheme'].'://'.$parsed_url['host'] . $parsed_url['path'] == wp_login_url()){
-			return $redirect;
-		}
-
-		if(strpos(wp_login_url(), $parsed_url['path']) !== FALSE){
-		    return $redirect;
+			return admin_url();
 		}
 
 		// If none of the above happens then we will just make the page reload.

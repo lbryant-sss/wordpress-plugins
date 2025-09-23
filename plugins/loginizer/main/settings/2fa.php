@@ -119,6 +119,7 @@ function loginizer_page_2fa(){
 		// In the future there can be more settings
 		$option['2fa_email_sub'] = @stripslashes($_POST['lz_2fa_email_sub']);
 		$option['2fa_email_msg'] = @stripslashes($_POST['lz_2fa_email_msg']);
+		$option['2fa_email_html'] = isset($_POST['lz_2fa_email_html']);
 		
 		// Is there an error ?
 		if(!empty($lz_error)){
@@ -450,6 +451,14 @@ lz_roles_handle();
 					<br />$user_login  - Username
 					<br />$first_name  - Users First Name
 					<br />$last_name  - Users Last Name
+				</td>
+			</tr>
+			<tr>
+				<td scope="row" valign="top" style="width:350px !important">
+					<label for="loginizer_2fa_html_mail"><?php echo __('Send email as HTML', 'loginizer'); ?></label>
+				</td>
+				<td>
+					<input type="checkbox" value="1" name="lz_2fa_email_html" id="lz_2fa_email_html" <?php echo lz_POSTchecked('lz_2fa_email_html', (empty($loginizer['2fa_email_html']) ? false : true)); ?> />
 				</td>
 			</tr>
 		</table><br />

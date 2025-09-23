@@ -55,7 +55,9 @@ class Postmark extends Loader{
 			$body['Cc'] = $cc;
 		}
 
-		if($phpmailer->ContentType == 'text/html'){
+		if($phpmailer->ContentType == 'text/plain'){
+			$body['TextBody'] = $phpmailer->Body;
+		} else {
 			$body['HtmlBody'] = $phpmailer->Body;
 
 			// TODO: create stting and if is true then set this to true
@@ -63,11 +65,13 @@ class Postmark extends Loader{
 
 			// TODO: create stting and if is true then set this to HtmlOnly
 			$body['TrackLinks'] = 'HtmlOnly';
-		}else{
-			$body['TextBody'] = $phpmailer->Body;
 		}
 
-		if(!empty($phpmailer->getAttachments())){ 
+		if(!empty($phpmailer->AltBody)){
+			$body['TextBody'] = $phpmailer->AltBody;
+		}
+
+		if(!empty($phpmailer->getAttachments())){
 			$body['Attachments'] = $this->getAttachments();
 		}
 

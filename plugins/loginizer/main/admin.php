@@ -17,12 +17,12 @@ function loginizer_admin_hooks(){
 function loginizer_admin_promo_hooks(){
 	global $loginizer;
 	
-	if(!current_user_can('activate_plugins')){
+	if(!current_user_can('activate_plugins') || defined('SITEPAD')){
 		return;
 	}
 
 	// Is the premium features there ?
-	if(defined('LOGINIZER_PREMIUM')){
+	if(!defined('LOGINIZER_PREMIUM')){
 		// The promo time
 		$loginizer['promo_time'] = get_option('loginizer_promo_time');
 		if(empty($loginizer['promo_time'])){

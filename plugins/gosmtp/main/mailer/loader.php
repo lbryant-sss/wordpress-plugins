@@ -339,17 +339,17 @@ class Loader{
 		
 		$data = array(
 			'site_id' => get_current_blog_id(),
-			'to' => maybe_serialize($phpmailer->getToAddresses()),
+			'to' => maybe_serialize($this->sanitize_response($phpmailer->getToAddresses(), 'email')),
 			'message_id' => $this->RandomString(16),
-			'from' => $phpmailer->From,
-			'subject' => $phpmailer->Subject,
+			'from' => sanitize_email($phpmailer->From),
+			'subject' => sanitize_text_field($phpmailer->Subject),
 			'body' => $phpmailer->Body,
-			'attachments' => maybe_serialize( $attachments ),
+			'attachments' => maybe_serialize($this->sanitize_response($attachments)),
 			'status' => $status ? 'sent' : 'failed',
-			'response' => maybe_serialize($message),
-			'headers' => maybe_serialize($headers),
-			'provider' => $this->mailer,
-			'source' => $source,
+			'response' => maybe_serialize($this->sanitize_response($message)),
+			'headers' => maybe_serialize($this->sanitize_response($headers)),
+			'provider' => sanitize_text_field($this->mailer),
+			'source' => sanitize_text_field($source),
 			'created_at' => current_time( 'mysql' )
 		);
 		
@@ -378,6 +378,37 @@ class Loader{
 		}
 
 		return $status;
+	}
+
+	protected function sanitize_response($data, $field_type = ''){
+		if(empty($data)){
+			return $data;
+		}
+
+		if($field_type == 'email'){
+			return map_deep($data, 'sanitize_email');
+		}
+
+		foreach($data as $key => $item){
+			if(is_array($item)){
+				$data[$key] = $this->sanitize_response($item);
+			}
+
+			if(is_object($item) || is_resource($item)){
+				continue;
+			}
+
+			if(is_string($item)){
+				if(filter_var($item, FILTER_VALIDATE_EMAIL)){
+					$data[$key] = sanitize_email($item);
+				} elseif(filter_var($item, FILTER_VALIDATE_URL)){
+					$data[$key] = esc_url_raw($item);
+				} else{
+					$data[$key] = sanitize_text_field($item);
+				}
+			}
+		}
+		return $data;
 	}
 
 	public function message_formatting($msg, $key = '', $desc = ''){
@@ -437,7 +468,9 @@ class Loader{
 		}
 		
 		if(!function_exists( 'get_plugins')){
-			include ABSPATH . '/wp-admin/includes/plugin.php';
+			$plugin_file = ABSPATH . 'site-admin/includes/plugin.php';
+			$plugin_file = file_exists($plugin_file) ? $plugin_file : ABSPATH . 'wp-admin/includes/plugin.php';
+			require_once( $plugin_file );
 		}
 		
 		$plugins = get_plugins();

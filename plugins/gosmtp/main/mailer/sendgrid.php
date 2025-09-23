@@ -60,14 +60,16 @@ class Sendgrid extends Loader{
 		}else{
 			$responseBody = wp_remote_retrieve_body($response);
 			$responseCode = wp_remote_retrieve_response_code($response);
-			$responseBody = \json_decode($responseBody, true);
-
+			$responseBody = !empty($responseBody) ? \json_decode($responseBody, true) : '';
+			$responseHeaders = wp_remote_retrieve_headers($response);
+			$messageId = isset($responseHeaders['x-message-id']) ?  $responseHeaders['x-message-id'] : '';
+			
 			if($responseCode == 202) {
 
 				$returnResponse = [
 					'status' => true,
 					'code' => 202,
-					'messageId' => $responseBody['id'],
+					'messageId' => $messageId,
 					'message' => __('Mail Sent successfully'),
 				];
 				
@@ -192,11 +194,22 @@ class Sendgrid extends Loader{
 		global $phpmailer;
 		
 		$content = array(
-				'value' => $phpmailer->Body,
-				'type' => $phpmailer->ContentType
-			);
+			'value' => $phpmailer->Body,
+			'type' => $phpmailer->ContentType
+		);
 		
-		return array($content);
+		if($phpmailer->ContentType !== 'text/plain'){
+			$content['type'] = 'text/html';
+		}
+		
+		if(!empty($phpmailer->AltBody)){
+			$content[] = [
+				'value' => $phpmailer->AltBody,
+				'type' => 'text/plain',
+			];
+		}
+
+		return [$content];
 	}
 
 	public function load_field(){
