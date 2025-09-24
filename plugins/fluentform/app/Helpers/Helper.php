@@ -1350,4 +1350,16 @@ class Helper
         }
         return $data;
     }
+
+	/**
+	 * If elementor editor is open
+	 * @return bool
+	 */
+    public static function isElementorEditor()
+    {
+        return defined('ELEMENTOR_VERSION') && 
+            class_exists('\Elementor\Plugin') && 
+            isset(\Elementor\Plugin::$instance) &&
+            \Elementor\Plugin::$instance->editor->is_edit_mode();
+    }
 }

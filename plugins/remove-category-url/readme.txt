@@ -1,5 +1,5 @@
 === Remove Category URL ===
-Contributors: valeriosza, Ñreativemotion
+Contributors: themeisle
 Tags: categories, category base, category, permalinks, URL structure, links, seo, cms, wpml, URL
 Requires at least: 3.1
 Tested up to: 5.3

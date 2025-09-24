@@ -1,10 +1,9 @@
 === Post Types Order  ===
 Contributors: nsp-code, tdgu
-Donate link: http://www.nsp-code.com/donate.php
 Tags: post order, posts order, post sort, posts sort, post types order
 Requires at least: 2.8
 Tested up to: 6.8.2
-Stable tag: 2.3.7
+Stable tag: 2.4
 Requires PHP: 5.6
 License: GPLv2 or later
 
@@ -116,6 +115,12 @@ Consider upgrading to our advanced version of this plugin, which offers these fe
 
 
 == Changelog ==
+
+= 2.4 = 
+ - If query already sorting by FIELD, ignore the custom order. 
+ - Compatibility class file changes. 
+ - Compatibility file for Advanced Custom Fields PRO
+ 
 
 = 2.3.7 = 
  - Code improvements.

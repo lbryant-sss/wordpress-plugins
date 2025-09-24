@@ -3,6 +3,7 @@
 namespace FluentForm\App\Services\FormBuilder\Notifications;
 
 use FluentForm\App\Helpers\Helper;
+use FluentForm\App\Modules\Form\FormFieldsParser;
 use FluentForm\App\Services\FormBuilder\ShortCodeParser;
 use FluentForm\Framework\Foundation\Application;
 use FluentForm\Framework\Helpers\ArrayHelper;
@@ -85,10 +86,12 @@ class EmailNotificationActions
         // If this is a payment form and the feed is configured to run on payment_success,
         // then do not send while the submission's payment status is still pending.
         if (isset($form->has_payment) && $form->has_payment) {
-            $isTriggerOnPaymentSuccess = ArrayHelper::get($feed, 'processedValues.feed_trigger_event') === 'payment_success';
-            $isPaymentPending = isset($entry->payment_status) && $entry->payment_status === 'pending';
-            if ($isTriggerOnPaymentSuccess && $isPaymentPending) {
-                return;
+            if (FormFieldsParser::hasElement($form, 'payment_method')) {
+                $isTriggerOnPaymentSuccess = ArrayHelper::get($feed, 'processedValues.feed_trigger_event') === 'payment_success';
+                $isPaymentPending = isset($entry->payment_status) && $entry->payment_status === 'pending';
+                if ($isTriggerOnPaymentSuccess && $isPaymentPending) {
+                    return;
+                }
             }
         }
 

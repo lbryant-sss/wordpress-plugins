@@ -1,5 +1,5 @@
 === Auto Featured Image (Auto Post Thumbnail) ===
-Contributors: creativemotion
+Contributors: themeisle
 Tags: post thumbnails, featured image, elementor, thumbnails, featured image from title
 Requires at least: 5.6
 Tested up to: 6.7

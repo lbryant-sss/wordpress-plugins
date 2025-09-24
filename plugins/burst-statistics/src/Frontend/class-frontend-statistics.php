@@ -28,28 +28,28 @@ class Frontend_Statistics {
 	 *
 	 * @var array<string>
 	 */
-	private $allowed_metrics;
+	private array $allowed_metrics;
 
 	/**
 	 * Store allowed filter keys for reuse across methods
 	 *
 	 * @var array<string>
 	 */
-	private $allowed_filter_keys;
+	private array $allowed_filter_keys;
 
 	/**
 	 * Store allowed group_by values
 	 *
 	 * @var array<string>
 	 */
-	private $allowed_group_by;
+	private array $allowed_group_by;
 
 	/**
 	 * Store allowed order_by values
 	 *
 	 * @var array<string>
 	 */
-	private $allowed_order_by;
+	private array $allowed_order_by;
 
 	/**
 	 * Constructor to initialize class properties

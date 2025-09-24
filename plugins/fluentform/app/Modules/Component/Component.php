@@ -150,7 +150,7 @@ class Component
         $fluentFormIds = get_post_meta($postId, '_has_fluentform', true);
         $hasFluentformMeta = is_a($post, 'WP_Post') && $fluentFormIds;
 
-        $loadStyle =  apply_filters_deprecated(
+        $loadStyle = apply_filters_deprecated(
             'fluentform_load_styles',
             [
                 false,
@@ -191,7 +191,9 @@ class Component
 
             $this->app->doAction('fluentform/pre_load_scripts', $post);
 
-            wp_enqueue_script('fluent-form-submission');
+            if (!Helper::isElementorEditor()) {
+                wp_enqueue_script('fluent-form-submission');
+            }
         }
     }
 
@@ -562,7 +564,9 @@ class Component
         $form->instance_index = Helper::$formInstance;
 
         if ('conversational' == $atts['type']) {
-            $this->addInlineVars();
+            if (!Helper::isElementorEditor()) {
+                $this->addInlineVars();
+            }
             return (new \FluentForm\App\Services\FluentConversational\Classes\Form())->renderShortcode($form);
         }
 
@@ -599,7 +603,9 @@ class Component
          * We will load fluentform-advanced if the form has certain fields or feature
          */
         $this->maybeHasAdvandedFields($form, $formBuilder);
-        wp_enqueue_script('fluent-form-submission');
+        if (!Helper::isElementorEditor()) {
+            wp_enqueue_script('fluent-form-submission');
+        }
 
         $stepText = __('Step %activeStep% of %totalStep% - %stepTitle%', 'fluentform');
     
@@ -657,7 +663,9 @@ class Component
 
         $vars = apply_filters('fluentform/global_form_vars', $data);
 
-        wp_localize_script('fluent-form-submission', 'fluentFormVars', $vars);
+        if (!Helper::isElementorEditor()) {
+            wp_localize_script('fluent-form-submission', 'fluentFormVars', $vars);
+        }
 
         $formSettings = $form->settings;
 
@@ -706,26 +714,31 @@ class Component
         if (!$otherScriptsRenderImmediately) {
             ob_start();
         }
-        ?>
-        <script type="text/javascript">
-            window.fluent_form_<?php echo esc_attr($instanceCssClass); ?> = <?php echo wp_json_encode($form_vars); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $form_vars is escaped before being passed in.?>;
-            <?php if (wp_doing_ajax()): ?>
-            function initFFInstance_<?php echo esc_attr($form_vars['id']); ?>() {
-                if (!window.fluentFormApp) {
-                    console.log('No fluentFormApp found');
-                    return;
+          
+        if (!Helper::isElementorEditor()) {
+            ?>
+            <script type="text/javascript">
+                window.fluent_form_<?php echo esc_attr($instanceCssClass); ?> = <?php echo wp_json_encode($form_vars); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $form_vars is escaped before being passed in.?>;
+                <?php if (wp_doing_ajax()): ?>
+                function initFFInstance_<?php echo esc_attr($form_vars['id']); ?>() {
+                    if (!window.fluentFormApp) {
+                        console.log('No fluentFormApp found');
+                        return;
+                    }
+                    var ajax_formInstance = window.fluentFormApp(jQuery('form.<?php echo esc_attr($form_vars['form_instance']); ?>'));
+                    if (ajax_formInstance) {
+                        ajax_formInstance.initFormHandlers();
+                    }
                 }
-                var ajax_formInstance = window.fluentFormApp(jQuery('form.<?php echo esc_attr($form_vars['form_instance']); ?>'));
-                if (ajax_formInstance) {
-                    ajax_formInstance.initFormHandlers();
-                }
-            }
-
-            initFFInstance_<?php echo esc_attr($form_vars['id']); ?>();
-            <?php endif; ?>
-        </script>
-        <?php
-        $this->addInlineVars();
+                
+                initFFInstance_<?php echo esc_attr($form_vars['id']); ?>();
+                <?php endif; ?>
+            </script>
+            <?php
+        }
+        if (!Helper::isElementorEditor()) {
+            $this->addInlineVars();
+        }
         if (!$otherScriptsRenderImmediately) {
             $otherScripts .= ob_get_clean();
         }
@@ -1189,7 +1202,8 @@ class Component
         ];
         $advancedFields = apply_filters('fluentform/fields_requiring_advanced_script', $advancedFields);
         
-        if ($formBuilder->conditions || array_intersect($formBuilder->fieldLists, $advancedFields)) {
+        // Only enqueue advanced script if NOT in Elementor editor mode
+        if (!Helper::isElementorEditor() && ($formBuilder->conditions || array_intersect($formBuilder->fieldLists, $advancedFields))) {
             wp_enqueue_script('fluentform-advanced');
         }
     }

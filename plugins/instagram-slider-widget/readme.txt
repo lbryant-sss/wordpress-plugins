@@ -1,5 +1,5 @@
 === Social Slider Feed ===
-Contributors: creativemotion
+Contributors: themeisle
 Tags: instagram, instagram feed, instagram gallery, instagram photos, Instagram widget
 Requires at least: 5.6
 Tested up to: 6.7

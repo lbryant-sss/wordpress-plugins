@@ -1,6 +1,6 @@
 === Disable Admin Notices individually  ===
 Tags: notices, notification, notifications, disable, upgrade, nag
-Contributors: webcraftic, alexkovalevv, creativemotion
+Contributors: themeisle
 Donate link: https://clearfy.pro/disable-admin-notices/
 Requires at least: 5.6
 Tested up to: 6.7

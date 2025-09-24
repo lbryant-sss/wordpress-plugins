@@ -46,33 +46,6 @@ class EditorShortcodeParser
     ];
 
     /**
-     * Allow-list of user meta keys permitted in {user.meta.<key>} smart codes
-     * Filter: fluentform/editor_allowed_user_meta_keys
-     *
-     * @var array
-     */
-    private static $allowedUserMetaKeys = [
-        'first_name',
-        'last_name',
-        'nickname',
-        'description',
-    ];
-
-
-    /**
-     * Get allow-listed user meta keys with filter support
-     *
-     * @param mixed $form
-     * @return array
-     */
-    private static function getAllowedUserMetaKeys($form = null)
-    {
-        $keys = self::$allowedUserMetaKeys;
-        return (array) apply_filters('fluentform/editor_allowed_user_meta_keys', $keys, $form);
-    }
-
-
-    /**
      * Filter dynamic shortcodes in input value
      *
      * @param string $value
@@ -245,12 +218,6 @@ class EditorShortcodeParser
             if (false !== strpos($prop, 'meta.')) {
                 $metaKey = substr($prop, strlen('meta.'));
                 $metaKey = sanitize_key($metaKey);
-                
-                $allowedKeys = self::getAllowedUserMetaKeys($form);
-                if (!in_array($metaKey, $allowedKeys, true)) {
-                    return '';
-                }
-                
                 $userId = $user->ID;
                 $data = get_user_meta($userId, $metaKey, true);
                 $data = Helper::safeUnserialize($data);

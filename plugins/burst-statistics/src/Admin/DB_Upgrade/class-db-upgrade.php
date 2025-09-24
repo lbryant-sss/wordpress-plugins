@@ -14,8 +14,8 @@ class DB_Upgrade {
 	use Helper;
 	use Sanitize;
 
-	private $cron_interval = MINUTE_IN_SECONDS;
-	private $batch         = 100000;
+	private int $cron_interval = MINUTE_IN_SECONDS;
+	private int $batch         = 100000;
 
 	/**
 	 * DB_Upgrade constructor.
@@ -756,10 +756,8 @@ class DB_Upgrade {
 
 	/**
 	 * Upgrade the database to use page_ids for pages.
-	 *
-	 * @return void
 	 */
-	private function upgrade_add_page_ids() {
+	private function upgrade_add_page_ids(): void {
 		if ( ! $this->has_admin_access() ) {
 			return;
 		}

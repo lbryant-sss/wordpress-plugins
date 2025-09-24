@@ -1,6 +1,6 @@
 === Robin image optimizer — save money on image compression  ===
 Tags: image, optimizer, image optimization, resmush.it, smush, jpg, png, gif, optimization, compression, Compress, Images, Pictures, Reduce Image Size
-Contributors: webcraftic, creativemotion
+Contributors: themeisle
 Requires at least: 5.6
 Tested up to: 6.7
 Requires PHP: 7.3

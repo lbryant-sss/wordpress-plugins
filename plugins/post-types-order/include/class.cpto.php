@@ -16,15 +16,13 @@
                 {
 
                     $this->functions    =   new CptoFunctions();
+                    $this->compatibility();
                    
                     $is_configured = get_option('CPT_configured');
                     if ($is_configured == '')
                         add_action( 'admin_notices', array ( $this, 'admin_configure_notices'));
-                        
                     
-                    add_filter('init',          array ( $this, 'on_init'));
-                    add_filter('init',          array ( $this, 'compatibility'));
-                    
+                    add_filter('init',                      array ( $this, 'on_init'));
                     
                     add_filter('pre_get_posts', array ( $this, 'pre_get_posts'));
                     add_filter('posts_orderby', array ( $this, 'posts_orderby'), 99, 2);                        
@@ -172,14 +170,18 @@
                     if (  apply_filters('pto/posts_orderby', $orderBy, $query )  === FALSE )
                         return $orderBy;
                         
-                    $ignore =   apply_filters('pto/posts_orderby/ignore', FALSE, $orderBy, $query);
+                    $ignore =   apply_filters('pto/posts_orderby/ignore', FALSE, $orderBy, $query );
                     if( boolval( $ignore )  === TRUE )
                         return $orderBy;
                     
                     //ignore search
                     if( $query->is_search()  &&  isset( $query->query['s'] )   &&  ! empty ( $query->query['s'] ) )
                         return( $orderBy );
-                    
+                        
+                    //If already sorted by FIELD return as is
+                    if ( preg_match('/FIELD\s*\(/i', $orderBy ))
+                        return( $orderBy );
+                                        
                     if ( ( is_admin() &&  !wp_doing_ajax() )    ||  ( wp_doing_ajax() && isset($_REQUEST['action']) && $_REQUEST['action'] === 'query-attachments') )
                             {
                                 

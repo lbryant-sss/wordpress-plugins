@@ -1,5 +1,5 @@
 === Woody code snippets - Insert Header Footer Code, AdSense Ads ===
-Contributors: WillBontrager, creativemotion
+Contributors: themeisle
 Donate link: https://woodysnippet.com
 Tags: code snippets, woocommerce, shortcode, adsense, header
 Requires at least: 5.6

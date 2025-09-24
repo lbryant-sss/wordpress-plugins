@@ -1,5 +1,5 @@
 === Titan Anti-spam & Security ===
-Contributors: creativemotion
+Contributors: themeisle
 Tags: antispam, firewall, malware scanner, security, antivirus, firewall, malware, scan, spam
 Requires at least: 5.6
 Tested up to: 6.6

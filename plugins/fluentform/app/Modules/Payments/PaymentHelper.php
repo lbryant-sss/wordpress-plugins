@@ -616,7 +616,7 @@ class PaymentHelper
         $inputs = FormFieldsParser::getInputs($formId, ['element', 'settings']);
         foreach ($inputs as $field) {
             if ($field['element'] == 'payment_method') {
-                $methods = ArrayHelper::get($field, 'settings.payment_methods');
+                $methods = ArrayHelper::get($field, 'settings.payment_methods') ?:  ArrayHelper::get($field, 'raw.settings.payment_methods');
                 if (is_array($methods)) {
                     return array_filter($methods, function ($method) {
                         return $method['enabled'] == 'yes';

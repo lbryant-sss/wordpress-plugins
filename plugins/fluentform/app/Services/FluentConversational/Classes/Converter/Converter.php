@@ -422,14 +422,6 @@ class Converter
                 
                 $question['requiredPerRow'] = ArrayHelper::get($field, 'settings.validation_rules.required.per_row');
             } elseif ('rangeslider' === $field['element']) {
-                if (!ArrayHelper::exists($question, 'answer')) {
-                    if ($field['attributes']['value'] == '') {
-                        $question['answer'] = 0;
-                    } else {
-                        $question['answer'] = +$field['attributes']['value'];
-                    }
-                }
-                
                 $question['min'] = intval($field['attributes']['min']);
                 $question['max'] = intval($field['attributes']['max']);
                 

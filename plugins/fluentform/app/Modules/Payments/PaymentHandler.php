@@ -101,6 +101,10 @@ class PaymentHandler
         add_filter('fluentform/all_entry_labels_with_payment', array($this, 'modifySingleEntryLabels'), 10, 3);
         
         add_action('fluentform/rendering_payment_form', function ($form) {
+            if (Helper::isElementorEditor()) {
+                return;
+            }
+
             $src = fluentformMix('js/payment_handler.js');
             $version = FLUENTFORM_VERSION;
 
