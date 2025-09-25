@@ -13,6 +13,8 @@ class Init {
 	}
 
 	public function __construct() {
+		add_action( 'admin_enqueue_scripts', [$this, 'enqueue_admin_icon_css'] );
+
 		if (!self::is_svg_icon_experiment()) {
 			add_action('elementor/frontend/before_enqueue_scripts', array($this, 'enqueue_frontend'));
 		}
@@ -21,6 +23,19 @@ class Init {
 		add_filter('elementor/icons_manager/additional_tabs', array($this, 'register_icon_pack_to_elementor'));
 		add_filter('elementor/widget/render_content', array($this, 'filter_widget_content'), 10, 2);
 	}
+
+	// Enqueue admin CSS for widget icons
+	public function enqueue_admin_icon_css( $hook ) {
+		if ( $hook !== 'elementor_page_elementor-element-manager' ) {
+			return;
+		}
+
+		wp_enqueue_style( 'widget-icons', \ElementsKit_Lite::widget_url() . 'init/assets/css/editor.css', [], \ElementsKit_Lite::version() );
+
+		// Inline CSS to adjust icon display in Elementor's Element Manager
+		$css = 'td .ekit-widget-icon{max-width:13px;overflow:hidden;min-height:auto;font-size:inherit;}td .ekit-widget-icon:after{display:none}';
+		wp_add_inline_style( 'widget-icons', $css );
+}
 
 	public function enqueue_frontend() {
 		wp_enqueue_style( 'elementor-icons-ekiticons', self::get_url() . 'assets/css/ekiticons.css', array(), \ElementsKit_Lite::version() );

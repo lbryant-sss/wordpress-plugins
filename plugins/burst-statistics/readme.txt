@@ -6,7 +6,7 @@ Requires at least: 6.2
 License: GPL2
 Requires PHP: 7.4
 Tested up to: 6.8
-Stable tag: 2.2.6.1
+Stable tag: 2.2.7
 
 Self-hosted, privacy-friendly stats for WordPress. Simple interface, no setup. Get detailed analytics with Burst Statistics.
 
@@ -101,7 +101,7 @@ We value your feedback. You can [submit a support request on the WordPress forum
 * New: Detailed live visitors tab
 * Improvement: responsiveness on mobile, restored 1280px breakpoint
 * Improvement: suspicious data (over 1000 visits from 1 user) is now only detected and the admin notified, not automatically removed.
-* Fix: on multisite with Burst network activated, the endpoint incorrectly did not detect Burst as active, which prevents tracking from occuring.
+* Fix: on multisite with Burst network activated, the endpoint incorrectly did not detect Burst as active, which prevents tracking from occurring.
 
 = 2.2.6.1 =
 * Fix: remove false positive notice about missing tables.

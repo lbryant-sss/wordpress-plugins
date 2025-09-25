@@ -116,8 +116,8 @@ class Wf_Woocommerce_Packing_List {
 			self::$base_version = WF_PKLIST_VERSION;
 		}else 
 		{
-			$this->version = '4.8.3';
-			self::$base_version = '4.8.3';
+			$this->version = '4.8.4';
+			self::$base_version = '4.8.4';
 		}
 		if(defined('WF_PKLIST_PLUGIN_NAME'))
 		{
@@ -404,6 +404,7 @@ class Wf_Woocommerce_Packing_List {
 
 		$this->loader->add_action('wp_ajax_wt_pklist_cta_banner_dismiss',$this->plugin_admin,'wt_pklist_cta_banner_dismiss');
 		$this->loader->add_action('wp_ajax_wt_pklist_settings_json',$this->plugin_admin,'wt_pklist_settings_json');
+		$this->loader->add_action('wp_ajax_wt_hide_newsletter_banner',$this->plugin_admin,'wt_hide_newsletter_banner');
 		$this->loader->add_action('admin_init', $this->plugin_admin, 'wt_pklist_import_settings');
 		$this->loader->add_action('admin_init', $this->plugin_admin, 'wt_pklist_reset_settings');
 

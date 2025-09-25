@@ -250,6 +250,114 @@ $current_invoice_number_in_db = $current_invoice_number = ($current_invoice_numb
     .wt_pklist_checkbox_div {
         margin-bottom: 10px;
     }
+
+    /* Skip Wizard Confirmation Popup Styles */
+    .wt_skip_wizard_confirm_popup {
+        border-radius: 8px !important;
+        border: none !important;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+        overflow: hidden;
+    }
+
+    .wt_skip_wizard_confirm_popup .wf_pklist_popup_hd {
+        display: none !important;
+    }
+
+    .wt_skip_wizard_confirm_popup .wf_pklist_popup_body {
+        padding: 24px;
+        border-radius: 12px 12px 0 0;
+        position: relative;
+    }
+
+    .wt_skip_wizard_confirm_popup .popup-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .wt_skip_wizard_confirm_popup .popup-title {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .wt_skip_wizard_confirm_popup .popup-close {
+        width: 28px;
+        height: 28px;
+        text-align: center;
+        line-height: 24px;
+        cursor: pointer;
+        font-size: 20px;
+        color: #666;
+        font-weight: normal;
+        border: none;
+        background: none;
+    }
+
+    .wt_skip_wizard_confirm_popup .popup-close:hover {
+        color: #333;
+    }
+
+    .wt_skip_wizard_confirm_popup .message {
+        text-align: left;
+    }
+
+    .wt_skip_wizard_confirm_popup .message p {
+        margin-bottom: 0;
+        line-height: 1.5;
+        font-size: 15px;
+        color: #333;
+        text-align: left;
+    }
+
+    .wt_skip_wizard_confirm_popup .wf_pklist_popup_footer.wf_pklist_popup_footer{
+        width: 76%;
+    }
+
+    .wt_skip_wizard_confirm_popup .wf_pklist_popup_footer {
+        text-align: center;
+        border-top: none;
+        border-radius: 5px;
+        padding: 6px 2px 4px 150px;
+    }
+
+    .wt_skip_wizard_confirm_popup .wf_pklist_popup_footer button {
+        margin-right: 12px;
+        margin-left: 0;
+        border-radius: 4px;
+        padding: 8px 20px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+    }
+
+    .wt_skip_wizard_confirm_popup .wf_pklist_popup_footer button:hover {
+        /* Removed animation effects */
+    }
+
+    .wt_skip_wizard_confirm_popup .wf_pklist_popup_footer .button-secondary {
+        background: #fff !important;
+        color: #3157A6 !important;
+        border: none !important;
+        font-size: 14px !important;
+    }
+
+    .wt_skip_wizard_confirm_popup .wf_pklist_popup_footer .button-secondary:hover {
+        background: #f0f4ff !important;
+        border: none !important;
+        color: #3157A6 !important;
+    }
+
+    .wt_skip_wizard_confirm_popup .wf_pklist_popup_footer .button-primary {
+        background: #3157A6 !important;
+        color: #fff !important;
+        border: 1px solid #3157A6 !important;
+    }
+    .wt_skip_wizard_confirm_popup .wf_pklist_popup_footer .button-primary:hover {
+        background:rgb(30, 56, 113) !important;
+    }
+    
 </style>
 <div class="wt_wrap">
     <div class="wt_heading_section">
@@ -350,7 +458,7 @@ $current_invoice_number_in_db = $current_invoice_number = ($current_invoice_numb
 
                         <div class="wt_form_wizard_footer">
                             <a class="wt_form_wizard_next wt_pklist_btn wt_pklist_btn_primary" data-target-class="wt_wrap_wizard_form_steps_fields" data-wizard-step="1" data-wizard-next-step="2"><?php esc_html_e("Next", "print-invoices-packing-slip-labels-for-woocommerce"); ?></a>
-                            <a class="wt_form_wizard_invoice_setup_skip wt_pklist_btn wt_pklist_btn_empty" href="<?php echo esc_url(admin_url('admin.php?page=wf_woocommerce_packing_list&skip_wizard=1')); ?>"><?php esc_html_e("Skip invoice setup", "print-invoices-packing-slip-labels-for-woocommerce"); ?></a>
+                            <a class="wt_form_wizard_invoice_setup_skip wt_pklist_btn wt_pklist_btn_empty" href="<?php echo esc_url(admin_url('admin.php?page=wf_woocommerce_packing_list&skip_wizard=1')); ?>" data-wf_popup="wt_skip_wizard_confirm_popup"><?php esc_html_e("Skip invoice setup", "print-invoices-packing-slip-labels-for-woocommerce"); ?></a>
                         </div>
                     </div>
                     <div class="wt_wrap_wizard_form_steps_fields" data-wizard-step="2" style="display:none">
@@ -577,5 +685,28 @@ $current_invoice_number_in_db = $current_invoice_number = ($current_invoice_numb
         <div style="margin-bottom: 2em;">
             <a href="<?php echo esc_url(admin_url('admin.php?page=wf_woocommerce_packing_list&complete_wizard=1')); ?>" class="wt_pklist_btn wt_pklist_btn_primary"><?php esc_html_e("Close", "print-invoices-packing-slip-labels-for-woocommerce"); ?></a>
         </div>
+    </div>
+</div>
+
+<!-- Skip Wizard Confirmation Popup -->
+<div class="wt_skip_wizard_confirm_popup wf_pklist_popup" style="width: 590px; height: 200px;">
+    <div class="wt_skip_wizard_confirm_popup_main wf_pklist_popup_body">
+        <div class="popup-header">
+            <span class="popup-title"><?php esc_html_e("Skip setup?", "print-invoices-packing-slip-labels-for-woocommerce"); ?></span>
+            <button type="button" class="popup-close wf_pklist_popup_cancel">×</button>
+        </div>
+        
+        <div class="message">
+            <p><?php esc_html_e("We recommend completing the setup to ensure the plugin works properly.", "print-invoices-packing-slip-labels-for-woocommerce"); ?></p>
+        </div>
+    </div>
+    
+    <div class="wt_skip_wizard_confirm_popup_footer wf_pklist_popup_footer">
+        <button type="button" name="" class="button-secondary wt_skip_wizard_confirm_popup_yes">
+            <?php esc_html_e("Skip anyway", "print-invoices-packing-slip-labels-for-woocommerce"); ?>
+        </button>
+        <button type="button" name="" class="button-primary wt_skip_wizard_confirm_popup_finish">
+            <?php esc_html_e("Finish setup", "print-invoices-packing-slip-labels-for-woocommerce"); ?>
+        </button>	
     </div>
 </div>

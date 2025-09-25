@@ -125,33 +125,39 @@ class Wf_Woocommerce_Packing_List_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name.'_public', plugin_dir_url( __FILE__ ) . 'js/wf-woocommerce-packing-list-public.js', array( 'jquery' ), $this->version, false );
-		$user_id = get_current_user_id();
-		$dont_show_again = false;
-		if(0 !== $user_id){
-			if(1 == get_user_meta($user_id, 'wt_pklist_doc_create_dont_show_popup',true) || "1" === get_user_meta($user_id, 'wt_pklist_doc_create_dont_show_popup',true)){
-				$dont_show_again = true;
+		$option = get_option('wf_woocommerce_packing_list_invoice');
+		$show_print_button_arr = isset($option['wf_woocommerce_invoice_show_print_button']) ? $option['wf_woocommerce_invoice_show_print_button'] : array();
+ 
+		if (!empty($show_print_button_arr)) {
+
+			wp_enqueue_script( $this->plugin_name.'_public', plugin_dir_url( __FILE__ ) . 'js/wf-woocommerce-packing-list-public.js', array( 'jquery' ), $this->version, false );
+			$user_id = get_current_user_id();
+			$dont_show_again = false;
+			if(0 !== $user_id){
+				if(1 == get_user_meta($user_id, 'wt_pklist_doc_create_dont_show_popup',true) || "1" === get_user_meta($user_id, 'wt_pklist_doc_create_dont_show_popup',true)){
+					$dont_show_again = true;
+				}
 			}
+			$params=array(
+				'show_document_preview' => Wf_Woocommerce_Packing_List::get_option( 'woocommerce_wf_packinglist_preview' ),
+				'document_access_type'	=> Wf_Woocommerce_Packing_List::get_option('wt_pklist_print_button_access_for'),
+				'is_user_logged_in'	=> is_user_logged_in(),
+				'msgs'=>array(
+					'invoice_number_prompt_free_order' => __("‘Generate invoice for free orders’ is disabled in Invoice settings > Advanced. You are attempting to generate invoice for this free order. Proceed?",'print-invoices-packing-slip-labels-for-woocommerce'),
+					'creditnote_number_prompt' => __("Refund in this order seems not having credit number yet. Do you want to manually generate one ?",'print-invoices-packing-slip-labels-for-woocommerce'),
+					'invoice_number_prompt_no_from_addr' => __("Please fill the `from address` in the plugin's general settings.",'print-invoices-packing-slip-labels-for-woocommerce'),
+					'invoice_title_prompt' => __("Invoice",'print-invoices-packing-slip-labels-for-woocommerce'),
+					'invoice_number_prompt' => __("number has not been generated yet. Do you want to manually generate one ?",'print-invoices-packing-slip-labels-for-woocommerce'),
+					'pop_dont_show_again' => $dont_show_again,	
+					'request_error' => __('Request error.','print-invoices-packing-slip-labels-for-woocommerce'),
+					'error_loading_data' => __('Error loading data.','print-invoices-packing-slip-labels-for-woocommerce'),
+					'min_value_error' => __( 'minimum value should be', 'print-invoices-packing-slip-labels-for-woocommerce'),
+					'generating_document_text' => __( 'Generating document...', 'print-invoices-packing-slip-labels-for-woocommerce' ),
+					'new_tab_open_error' => __( 'Failed to open new tab. Please check your browser settings.', 'print-invoices-packing-slip-labels-for-woocommerce' ),
+				)
+			);
+			wp_localize_script($this->plugin_name.'_public', 'wf_pklist_params_public', $params);
 		}
-		$params=array(
-			'show_document_preview' => Wf_Woocommerce_Packing_List::get_option( 'woocommerce_wf_packinglist_preview' ),
-			'document_access_type'	=> Wf_Woocommerce_Packing_List::get_option('wt_pklist_print_button_access_for'),
-			'is_user_logged_in'	=> is_user_logged_in(),
-			'msgs'=>array(
-				'invoice_number_prompt_free_order' => __("‘Generate invoice for free orders’ is disabled in Invoice settings > Advanced. You are attempting to generate invoice for this free order. Proceed?",'print-invoices-packing-slip-labels-for-woocommerce'),
-				'creditnote_number_prompt' => __("Refund in this order seems not having credit number yet. Do you want to manually generate one ?",'print-invoices-packing-slip-labels-for-woocommerce'),
-				'invoice_number_prompt_no_from_addr' => __("Please fill the `from address` in the plugin's general settings.",'print-invoices-packing-slip-labels-for-woocommerce'),
-				'invoice_title_prompt' => __("Invoice",'print-invoices-packing-slip-labels-for-woocommerce'),
-				'invoice_number_prompt' => __("number has not been generated yet. Do you want to manually generate one ?",'print-invoices-packing-slip-labels-for-woocommerce'),
-				'pop_dont_show_again' => $dont_show_again,	
-				'request_error' => __('Request error.','print-invoices-packing-slip-labels-for-woocommerce'),
-				'error_loading_data' => __('Error loading data.','print-invoices-packing-slip-labels-for-woocommerce'),
-				'min_value_error' => __( 'minimum value should be', 'print-invoices-packing-slip-labels-for-woocommerce'),
-				'generating_document_text' => __( 'Generating document...', 'print-invoices-packing-slip-labels-for-woocommerce' ),
-				'new_tab_open_error' => __( 'Failed to open new tab. Please check your browser settings.', 'print-invoices-packing-slip-labels-for-woocommerce' ),
-			)
-		);
-		wp_localize_script($this->plugin_name.'_public', 'wf_pklist_params_public', $params);
 	}
 
 	/**

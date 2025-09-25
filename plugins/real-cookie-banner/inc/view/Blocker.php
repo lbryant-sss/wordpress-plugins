@@ -22,6 +22,9 @@ use WP_Scripts;
 use WP_Dependencies;
 use WP_Error;
 use WP_Query;
+use WP_REST_Request;
+use WP_REST_Response;
+use WP_REST_Server;
 // @codeCoverageIgnoreStart
 \defined('ABSPATH') or die('No script kiddies please!');
 // Avoid direct file request
@@ -367,7 +370,7 @@ class Blocker
         }
         static $truncated_path;
         $backtrace = \debug_backtrace(\DEBUG_BACKTRACE_IGNORE_ARGS, 15);
-        if (!\is_array($backtrace)) {
+        if (!\is_array($backtrace) || !\is_string($url)) {
             return $response;
         }
         if (isset($this->currentRequestUrlQueue[$url]) && $this->currentRequestUrlQueue[$url]) {
@@ -514,6 +517,31 @@ wordpress-filter:pre_http_request
             ['fl_builder' => '1'],
             $url
         );
+    }
+    /**
+     * Filter REST API responses to disable content blocking for specific endpoints.
+     *
+     * @param WP_REST_Response $response
+     * @param WP_REST_Server $server
+     * @param WP_REST_Request $request
+     * @return WP_REST_Response
+     */
+    public function skipContentBlockerOnRestAPIEndpoint($response, $server, $request)
+    {
+        // Check if this is the OptimizePress 3 page builder data endpoint
+        $route = $request->get_route();
+        if (\preg_match('/^\\/op3\\/v1\\/pages\\/\\d+\\/data/', $route)) {
+            $data = $response->get_data();
+            // Add the skip property to disable content blocking
+            if (\is_array($data)) {
+                $data['$$skipFastHtmlTag'] = ['HeadlessContentBlocker'];
+                $response->set_data($data);
+            } elseif (\is_object($data)) {
+                $data->{'$$skipFastHtmlTag'} = ['HeadlessContentBlocker'];
+                $response->set_data($data);
+            }
+        }
+        return $response;
     }
     /**
      * Modify the HTML of an oEmbed HTML and keep the original pasted URL as attribute

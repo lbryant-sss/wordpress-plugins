@@ -99,7 +99,7 @@ if ( !class_exists( '\\WtPdf\\Admin\\Modules' ) ) {
                             <span class="form_label_caption"><?php echo esc_html__( "More the details you share, the better.", "print-invoices-packing-slip-labels-for-woocommerce" ); ?></span>
                             <textarea name="wt_pdf_request_feature_msg" placeholder="<?php esc_attr_e( 'I would like...', 'print-invoices-packing-slip-labels-for-woocommerce' );?>"></textarea>
                             <div class="wt_pdf_request_feature_checkbox_container">
-                                <input type="checkbox" name="wt_pdf_request_feature_customer_email_enable" id="wt_pdf_request_feature_customer_email_enable" value="yes"> <label for="wt_pdf_request_feature_customer_email_enable"><?php echo esc_html__( "Webtoffee can contact me about this feedback", "print-invoices-packing-slip-labels-for-woocommerce" ); ?></label>
+                                <input type="checkbox" name="wt_pdf_request_feature_customer_email_enable" id="wt_pdf_request_feature_customer_email_enable" value="yes"> <label for="wt_pdf_request_feature_customer_email_enable"><?php echo esc_html__( "WebToffee can contact me about this feedback", "print-invoices-packing-slip-labels-for-woocommerce" ); ?></label>
                             </div>
                             <!-- Email field -->
                             <div class="wt_pdf_request_feature_email_container">

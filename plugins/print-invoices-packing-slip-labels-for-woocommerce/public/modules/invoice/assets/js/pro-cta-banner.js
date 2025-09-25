@@ -6,6 +6,7 @@
             $('.wf-tab-head').css('width','100%');
             $('.wt_pro_addon_tile_doc').parent().show();
             $('.wt_pro_addon_tile_doc').css('top','5em');
+            $('.wt_newsletter_subscription_widget').css('top','54em');
         }else if("" !== location_hash){
             $('.wf-tab-head').css('width','auto');
             $('.wt_pro_addon_tile_doc').parent().hide();

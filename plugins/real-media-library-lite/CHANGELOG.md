@@ -3,6 +3,103 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 4.22.57 (2025-09-24)
+
+
+### Documentation
+
+* access to source files of plugin (CU-869ad3694)
+
+
+<details><summary>Development dependency update @devowl-wp/continuous-integration 0.7.10</summary>
+
+
+**_Purpose of dependency:_** _DevOps macros, job templates and jobs for Gitlab CI and @devowl-wp/node-gitlab-ci._
+##### Continuous Integration
+
+* oss-extract only in master pipeline (CU-869ad3694)</details>
+
+<details><summary>Development dependency update @devowl-wp/eslint-config 0.2.19</summary>
+
+
+**_Purpose of dependency:_** _Provide eslint configuration for our complete monorepo._
+##### Build System
+
+* introduce .oss.ts and oss-extract CLI (CU-869ad3694)</details>
+
+<details><summary>Development dependency update @devowl-wp/monorepo-utils 0.2.19</summary>
+
+
+**_Purpose of dependency:_** _Predefined monorepo utilities and tasks._
+##### Build System
+
+* introduce .oss.ts and oss-extract CLI (CU-869ad3694)</details>
+
+<details><summary>Development dependency update @devowl-wp/webpack-config 0.2.49</summary>
+
+
+**_Purpose of dependency:_** _Webpack config builder for multiple ecosystems like standalone React frontends, Antd, Preact and WordPress._
+##### Build System
+
+* introduce .oss.ts and oss-extract CLI (CU-869ad3694)</details>
+
+
+
+
+
+## 4.22.56 (2025-09-12) (not released)
+
+**Note:** This version of the package has not (yet) been released publicly. This happens if changes have been made in dependencies that do not affect this package (e.g. changes for the development of the package). The changes will be rolled out with the next official update.
+
+**Note:** This package (@devowl-wp/real-media-library) has been updated because a dependency, which is also shipped with this package, has changed.
+
+
+<details><summary>Development dependency update @devowl-wp/api 1.3.2</summary>
+
+
+**_Purpose of dependency:_** _Shared typings for all Node.js backends and frontends._
+##### Bug Fixes
+
+* allow v1, v2, ... versioning beside semantic versioning for contract (CU-8699tgz5g)
+* remove undefined values from URLSearchParams (CU-869ad2n4f)
+
+
+##### Documentation
+
+* add another example for multiple nested recursion objects (CU-8699tgz5g)
+* uncaught Error: Cannot find module 'node:async_hooks'</details>
+
+<details><summary>Development dependency update @devowl-wp/continuous-localization 0.8.26</summary>
+
+
+**_Purpose of dependency:_** _Provide a CLI to push and pull localization files from different translation management systems._
+##### Bug Fixes
+
+* correctly check when a missing language already existed before (CU-8699tdjp0)</details>
+
+
+
+
+
+## 4.22.55 (2025-09-04) (not released)
+
+**Note:** This version of the package has not (yet) been released publicly. This happens if changes have been made in dependencies that do not affect this package (e.g. changes for the development of the package). The changes will be rolled out with the next official update.
+
+**Note:** This package (@devowl-wp/real-media-library) has been updated because a dependency, which is also shipped with this package, has changed.
+
+
+<details><summary>Development dependency update @devowl-wp/api 1.3.1</summary>
+
+
+**_Purpose of dependency:_** _Shared typings for all Node.js backends and frontends._
+##### Bug Fixes
+
+* content length is not always respond by server if using e.g. Cloudflare with Transfer-Encoding: chunked (CU-869ac6g7m)</details>
+
+
+
+
+
 ## 4.22.54 (2025-09-04)
 
 

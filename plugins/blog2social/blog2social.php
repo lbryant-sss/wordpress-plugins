@@ -1,9 +1,9 @@
 <?php
 
 /*
- * Plugin Name:Blog2Social: Social Media Auto Post & Scheduler
+ * Plugin Name: Blog2Social: Social Media Auto Post & Scheduler for Facebook, X (Twitter), Instagram, TikTok, LinkedIn & Reddit
  * Plugin URI: https://www.blog2social.com
- * Description:Auto publish, schedule & share posts on social media: Facebook, X, XING, LinkedIn, Instagram, ... crosspost to pages & groups
+ * Description: Automatically share and schedule your WordPress content on top social platforms like Facebook, Instagram, LinkedIn, TikTok, and more.
  * Author: Blog2Social, miaadenion
  * Text Domain: blog2social
  * Domain Path: /languages

@@ -533,6 +533,12 @@ a.button.wc-action-button.wc-action-button-wf_pklist_print_document_packinglist_
   margin-right: -15px;
   margin-bottom: 0px;
   padding: 9px 15px;
+  z-index: 100000002;
+}
+
+/* Ensure toolbar appears above newsletter banner */
+.wf-plugin-toolbar.bottom[style*="position: fixed"] {
+  z-index: 100000002 !important;
 }
 
 .wf-plugin-toolbar.top {
@@ -2111,6 +2117,14 @@ td.wt_pklist_dash_btn_row {
   border-radius: 50%;
 }
 
+.wt_newsletter_subscription_box #mc_embed_signup input[type=checkbox] {
+  background-color: #FFFFFF;
+}
+
+#consent-checkbox.indicates-required{
+  margin-left: 5px;
+}
+
 .wf_width_50 {
   width: 50% !important;
 }
@@ -2243,3 +2257,196 @@ body.rtl  .wbtf_review_background_img_wrap {
   transform: scale(-1, 1) !important;
   right: unset;
 }
+
+/* MailChimp Form Embed Code */
+
+.wt_newsletter_subscription_box #mc_embed_signup form {display:block; position:relative; text-align:left; margin: 20px}
+
+.wt_newsletter_subscription_widget {
+  z-index: 1000;
+  background: #FFFFFF;
+  border-radius: 0px 7px 7px 7px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  width: 27.6%;
+  float: right;
+  box-sizing: border-box;
+  margin: 10px 0px 20px 0px;
+}
+
+.wt_newsletter_subscription_box {
+  border: 1px solid #e8e8e8;
+  background-color: #f5f8fc;
+  position: absolute;
+  display: block;
+  border-radius: 10px;
+}
+
+
+.wt_newsletter_header {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 18px;
+  padding: 18px 17px 8px 17px;
+  border-radius: 0px 7px 0px 7px;
+}
+.wt_newsletter_icon {
+  margin-right: 16px;
+  margin-left: 5px;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+.wt_newsletter_title h3 {
+  margin: 0 0 4px 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1d2327;
+  line-height: 1.2;
+}
+.wt_newsletter_title p {
+  margin: 0;
+  font-size: 14px;
+  color: #646970;
+  line-height: 1.4;
+  font-weight: 400;
+}
+.wt_newsletter_subscription_box #mc_embed_signup {
+  background: transparent;
+  clear: left;
+  font: 14px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  width: 100%;
+}
+.wt_newsletter_subscription_box #mc_embed_signup h2 {
+  display: none;
+}
+.wt_newsletter_subscription_box .indicates-required {
+  display: none;
+}
+.wt_newsletter_subscription_box .mc-field-group {
+  /* margin-bottom: 16px; */
+}
+.wt_newsletter_subscription_box .mc-field-group label {
+  display: none;
+}
+
+.wt_newsletter_subscription_box #mc_embed_signup input[type=checkbox]{
+  border-color: #4034e0;
+}
+
+.wt_newsletter_subscription_box #mc_embed_signup .mc-field-group input {
+  display:block; 
+  width:100%; 
+  padding:8px 0; 
+  text-indent: 5%;
+  border-color: #4034e0;
+}
+
+.wt_newsletter_subscription_box .mc-field-group input[type="email"] {
+  background: #fff;
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 6px;
+  border: 1px solid #1a6dc5;
+  font-size: 14px;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  transition: border-color 0.2s ease;
+  text-indent: 9%;
+}
+.wt_newsletter_subscription_box .mc-field-group input[type="email"]:focus {
+  border-color: #0073aa;
+  outline: none;
+  box-shadow: 0 0 0 1px #0073aa;
+}
+.wt_newsletter_subscription_box .mc-field-group input[type="email"]::placeholder {
+  /* color: #8c8f94; */
+}
+/* Override MailChimp button styles with higher specificity */
+.wt_newsletter_subscription_box #mc_embed_signup .clear input[type="submit"],
+.wt_newsletter_subscription_box #mc_embed_signup .button,
+.wt_newsletter_subscription_box .clear input[type="submit"] {
+  background: #fff !important;
+  color: #4034e0 !important;
+  border: 1px solid #4034e0 !important;
+  padding: 12px 24px !important;
+  border-radius: 6px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  width: 100% !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  transition: all 0.2s ease !important;
+  height: auto !important;
+  line-height: normal !important;
+  margin: 0 !important;
+  display: block !important;
+}
+.wt_newsletter_subscription_box #mc_embed_signup .clear input[type="submit"]:hover,
+.wt_newsletter_subscription_box #mc_embed_signup .button:hover,
+.wt_newsletter_subscription_box .clear input[type="submit"]:hover {
+  background: #3157A6 !important;
+  color: #fff !important;
+}
+.wt_newsletter_subscription_box #mc_embed_signup .clear input[type="submit"]:disabled,
+.wt_newsletter_subscription_box #mc_embed_signup .button:disabled,
+.wt_newsletter_subscription_box .clear input[type="submit"]:disabled {
+  background: #fff !important;
+  color: #4034e0 !important;
+  border-color: #4034e0 !important;
+  cursor: not-allowed !important;
+}
+.wt_newsletter_subscription_box .consent-checkbox {
+  margin: 16px 0 20px 0;
+  display: flex;
+  align-items: flex-start; 
+  gap: 5px;
+}
+
+.wt_newsletter_subscription_box .consent-checkbox input[type="checkbox"] {
+  margin-right: 8px;
+  margin-top: 2px;
+  vertical-align: top;
+}
+.wt_newsletter_subscription_box .consent-checkbox label {
+  font-size: 13px;
+  color: #646970;
+  line-height: 1.4;
+  cursor: pointer;
+  font-weight: 400;
+}
+.wt_newsletter_subscription_box .consent-checkbox label a {
+  color: #4034e0;
+  text-decoration: underline;
+}
+.wt_newsletter_subscription_box .consent-checkbox label a:hover {
+  color: #4034e0;
+}
+.wt_newsletter_subscription_box #mce-responses {
+  margin-top: 12px;
+}
+.wt_newsletter_subscription_box .response {
+  font-size: 13px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+.wt_newsletter_subscription_box #mce-error-response {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+.wt_newsletter_subscription_box #mce-success-response {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  margin-bottom: 24px;
+}
+.wt_newsletter_subscription_box #mc_embed_signup #mc-embedded-subscribe-form div.mce_inline_error { margin:2px 0 1em 0; padding:3px; background-color: transparent; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; font-size:14px; font-weight:normal; z-index:1; color:#e85c41;}
+.wt_newsletter_subscription_box #mc_embed_signup #mc-embedded-subscribe-form input.mce_inline_error {border:1px solid #e85c41;}
+
+
+
+

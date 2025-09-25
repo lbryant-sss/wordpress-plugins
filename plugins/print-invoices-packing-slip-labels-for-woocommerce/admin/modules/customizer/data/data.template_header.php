@@ -21,6 +21,12 @@ $print_preview=isset($the_options['woocommerce_wf_packinglist_preview']) ? $the_
 		.no-page-break {page-break-after: avoid;}
 		.wt_pdf_currency_symbol{font-family: 'Currencies' !important;font-weight: normal;}
 		.wfte_product_table_category_row td{ font-weight: bold;}
+		.wfte_product_table_head th.wfte_text_right{ text-align:right !important; }
+		.wfte_product_table_head th.wfte_text_left{ text-align:left !important; }
+		.wfte_product_table_head th.wfte_text_center{ text-align:center !important; }
+		.wfte_payment_summary_table_row td.wfte_text_right{ text-align:right !important; }
+		.wfte_payment_summary_table_row td.wfte_text_left{ text-align:left !important; }
+		.wfte_payment_summary_table_row td.wfte_text_center{ text-align:center !important; }
 		</style>
 		<style id="template_font_style">
 		<?php if( isset( $template_for_pdf ) && true === $template_for_pdf ) { ?>

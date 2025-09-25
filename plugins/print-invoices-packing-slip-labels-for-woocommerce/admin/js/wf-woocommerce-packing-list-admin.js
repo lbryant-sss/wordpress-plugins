@@ -5,6 +5,37 @@
 
 		$(".wt-tips").tipTip({ 'attribute': 'data-wt-tip' });
 
+		// Newsletter subscription success handler (works with both base and pro plugins)
+		function checkForNewsletterSuccess() {
+			var successResponse = $('#mce-success-response');
+			if (successResponse.length && successResponse.text().trim() === 'Thank you for subscribing!') {
+				// Hide the newsletter banner
+				$('.wt_newsletter_subscription_widget').fadeOut(500);
+				
+				// Store flag in options table via AJAX
+				$.ajax({
+					url: wf_pklist_params.ajaxurl,
+					type: 'POST',
+					data: {
+						action: 'wt_hide_newsletter_banner',
+						nonce: wf_pklist_params.nonces.wf_packlist
+					},
+					success: function(response) {
+						console.log('Newsletter banner hidden permanently');
+					},
+					error: function() {
+						console.log('Error hiding newsletter banner');
+					}
+				});
+			}
+		}
+		
+		// Check for newsletter success periodically
+		if (window.location.href.indexOf('wf_woocommerce_packing_list_invoice') !== -1) {
+			checkForNewsletterSuccess();
+			setInterval(checkForNewsletterSuccess, 1000);
+		}
+
 		/* filter documentation  */
 		$('.wf_filters_doc_detail').filter(function () { return $(this).find('.wf_filter_doc_eg').length > 0; }).find('.wt_is_code_eg').css({ 'cursor': 'pointer' });
 		$('.wt_is_code_eg').on('click', function (e) {
@@ -870,10 +901,28 @@ wf_popup = {
 	},
 	showPopup: function (popup_elm) {
 		var pw = popup_elm.outerWidth();
+		var ph = popup_elm.outerHeight();
 		var wh = jQuery(window).height();
-		var ph = wh - 200;
-		popup_elm.css({ 'margin-left': ((pw / 2) * -1), 'display': 'block', 'top': '20px' }).animate({ 'top': '50px' });
-		popup_elm.find('.wf_pklist_popup_body').css({ 'max-height': ph + 'px', 'overflow': 'auto' });
+		var ww = jQuery(window).width();
+		
+		// Calculate center position
+		var centerTop = (wh - ph) / 2;
+		var centerLeft = (ww - pw) / 2;
+		
+		// Ensure minimum top position
+		if (centerTop < 50) {
+			centerTop = 50;
+		}
+		
+		popup_elm.css({ 
+			'margin-left': ((pw / 2) * -1), 
+			'display': 'block', 
+			'top': '20px' 
+		}).animate({ 
+			'top': '50px'
+		});
+		
+		popup_elm.find('.wf_pklist_popup_body').css({ 'max-height': (wh - 200) + 'px', 'overflow': 'auto' });
 		jQuery('.wf_cst_overlay').show();
 	},
 	hidePopup: function () {
@@ -1259,7 +1308,7 @@ var wt_save_button_fixed = {
 						} else {
 							wf_tab_elm.find(".wf-plugin-toolbar.bottom").css({ 'right': '0%' });
 						}
-						wf_tab_elm.find(".wf-plugin-toolbar.bottom").css({ 'bottom': '0', 'position': 'fixed', 'background': 'transparent', 'border': 'none', 'width': 'auto' });
+						wf_tab_elm.find(".wf-plugin-toolbar.bottom").css({ 'bottom': '0', 'position': 'fixed', 'background': 'transparent', 'border': 'none', 'width': 'auto', 'z-index': '100000002' });
 						wf_tab_elm.find(".wf-plugin-toolbar").children().find(".button-primary").css({ 'box-shadow': ' 0px 4px 10px rgba(122, 141, 159, 0.7)' });
 					}
 				}

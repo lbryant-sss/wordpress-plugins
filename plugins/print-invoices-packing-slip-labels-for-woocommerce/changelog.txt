@@ -1,5 +1,8 @@
 == Changelog ==
 
+= 4.8.3 2025-09-04 =
+* [Fix]: Print invoice button not working in order listing and order email.
+
 = 4.8.2 2025-08-29 =
 * [Fix]: Fixed error message “Invalid access key and mail ID” when attempting to print or download documents.
 

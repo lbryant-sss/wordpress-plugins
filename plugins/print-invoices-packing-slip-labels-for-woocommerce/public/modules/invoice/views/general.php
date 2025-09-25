@@ -3,6 +3,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 ?>
+
 <div class="wf-tab-content" data-id="<?php echo esc_attr($target_id); ?>">
     <style type="text/css">
     .wf_inv_num_frmt_hlp_btn{ cursor:pointer; }
@@ -11,6 +12,75 @@ if (!defined('ABSPATH')) {
     .wf_inv_num_frmt_hlp .wf_pklist_popup_body{min-width:300px; padding:20px;}
     .wf_inv_num_frmt_append_btn{ cursor:pointer; }
     </style>
+    <!-- Newsletter Subscription Box - Sidebar  -->
+<?php 
+// Check if newsletter banner should be hidden
+
+$pro_invoice_path = 'wt-woocommerce-invoice-addon/wt-woocommerce-invoice-addon.php';
+$margin_top = is_plugin_active( $pro_invoice_path ) ? 'top: 140px;' : ''; 
+
+$newsletter_banner_hidden = get_option('wt_newsletter_banner_hidden', false); 
+
+if (!$newsletter_banner_hidden) : 
+    ?>
+    <div class="wt_newsletter_subscription_widget" style="position:relative; <?php echo is_rtl() ? 'left:0;' : 'right:0;'; echo esc_attr($margin_top);?>">
+        <div class="wt_newsletter_subscription_box" ">
+            <div class="wt_newsletter_header">
+                <div class="wt_newsletter_icon">
+                <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <mask id="mask0_11201_2391" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="38" height="38">
+                        <path d="M38 0H0V38H38V0Z" fill="white"/>
+                    </mask>
+                    <g mask="url(#mask0_11201_2391)">
+                        <path d="M36.4832 16.3331L21.6513 1.50126C21.1882 1.03814 20.5113 1.10939 20.0482 1.57251L1.54695 19.8125C1.08382 20.2756 1.06007 21.2137 1.5232 21.6769L16.3076 36.4612C16.7707 36.9244 17.5307 36.9362 17.9938 36.4731L36.4713 17.9956C36.9345 17.5325 36.9463 16.7962 36.4832 16.3331Z" fill="#FFC44D"/>
+                        <path d="M28.501 32.0684H36.8135M34.4385 27.3184H36.8135M7.12598 21.381H20.1885C20.819 21.381 21.376 20.862 21.376 20.1935V8.31843M16.626 26.1309V29.6934M29.6885 16.6309H26.126M36.4806 16.3329C36.9449 16.7972 36.9307 17.5346 36.4664 17.9978L17.9936 36.4717C17.5293 36.936 16.7729 36.9313 16.3097 36.4669L1.52181 21.679C1.0575 21.2147 1.086 20.2766 1.55031 19.8134L20.0456 1.57699C20.5099 1.11386 21.1821 1.0343 21.6464 1.49861L36.4806 16.3329Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </g>
+                </svg>
+                </div>
+                <div class="wt_newsletter_title">
+                <h3><?php esc_html_e('Subscribe to our newsletter for exclusive offers & updates', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></h3>
+                </div>
+            </div>
+                
+            <div id="mc_embed_shell">
+                <div id="mc_embed_signup">
+                    <form action="https://list-manage.us5.list-manage.com/subscribe/post?u=10e843cdec17dd1d2e769ead6&amp;id=d9d25110b9&amp;f_id=0020b8edf0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+                        <div id="mc_embed_signup_scroll"><h2><?php esc_html_e('Subscribe', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></h2>
+                            <div class="indicates-required"><span class="asterisk">*</span> <?php esc_html_e('indicates required', 'print-invoices-packing-slip-labels-for-woocommerce'); ?></div>
+                            <div class="mc-field-group"><label for="mce-EMAIL"></label><input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value="" placeholder="<?php esc_attr_e('Enter your email address', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>"></div>
+                            <div class="consent-checkbox">
+                                <input type="checkbox" id="consent-checkbox" name="CONSENT" class="required checkbox" required>
+                                <label for="consent-checkbox">
+                                <?php 
+                                    // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment, WordPress.WP.I18n.UnorderedPlaceholdersText
+                                    printf(esc_html__(
+                                            'I consent to receive newsletters and exclusive offers from WebToffee and agree to the %1$sPrivacy Policy%2$s.',
+                                            'print-invoices-packing-slip-labels-for-woocommerce'
+                                        ),
+                                        '<a href="https://www.webtoffee.com/privacy-policy/" target="_blank">',
+                                        '</a>'
+                                    );
+                                    ?>
+                                </label>
+                            </div>
+                            <div hidden=""><input type="hidden" name="tags" value="4545901"></div>
+                            <div id="mce-responses" class="clear">
+                            <div class="response" id="mce-error-response" style="display: none;"></div>
+                            <div class="response" id="mce-success-response" style="display: none;"></div>
+                            </div>
+                            <div aria-hidden="true" style="position: absolute; left: -5000px;"><input type="text" name="b_10e843cdec17dd1d2e769ead6_d9d25110b9" tabindex="-1" value=""></div><div class="clear"><input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="<?php esc_attr_e('Subscribe', 'print-invoices-packing-slip-labels-for-woocommerce'); ?>"></div>
+                        </div>
+                    </form>
+                </div>
+                <?php 
+                // phpcs:ignore PluginCheck.CodeAnalysis.Offloading.OffloadedContent WordPress.WP.EnqueuedResources.NonEnqueuedScript @codingStandardsIgnoreStart
+                ?>
+                <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script><script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';fnames[6]='MMERGE6';ftypes[6]='text';fnames[7]='IS_BOARD';ftypes[7]='text';fnames[8]='IS_CONF';ftypes[8]='text';fnames[9]='IS_CONT';ftypes[9]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+                <?php // phpcs:ignore PluginCheck.CodeAnalysis.Offloading.OffloadedContent WordPress.WP.EnqueuedResources.NonEnqueuedScript codingStandardsIgnoreEnd ?>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
     <form method="post" class="wf_settings_form">
         <input type="hidden" value="invoice" class="wf_settings_base" />
         <input type="hidden" value="wf_save_settings" class="wf_settings_action" />
@@ -344,6 +414,7 @@ if (!defined('ABSPATH')) {
         <?php 
             include plugin_dir_path( WF_PKLIST_PLUGIN_FILENAME )."admin/views/admin-settings-save-button.php";
         ?>
+        
     </form>
 </div>
 <?php 

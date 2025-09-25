@@ -41,6 +41,9 @@ class Ajax {
 				$widget_prepared_list[ $widget_slug ] = $widget;
 			}
 
+			// Allow to filter widget status
+			apply_filters( 'elementskit/widgets/status/update', $widget_prepared_list );
+
 			$this->utils->save_option( 'widget_list', $widget_prepared_list );
 		}
 
@@ -67,7 +70,7 @@ class Ajax {
 		}
 
 		if ( isset( $_POST['settings'] ) ) {
-			$this->utils->save_settings( empty( $_POST['settings'] ) ? array() : map_deep( wp_unslash( $_POST['settings'] ) , 'sanitize_text_field' )  ); 
+			$this->utils->save_settings( empty( $_POST['settings'] ) ? array() : map_deep( wp_unslash( $_POST['settings'] ) , 'sanitize_text_field' )  );
 		}
 
 		do_action( 'elementskit/admin/after_save' );

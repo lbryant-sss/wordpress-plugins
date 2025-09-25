@@ -89,7 +89,7 @@ class FastHtmlTag
      */
     public function modifyAny($mixed)
     {
-        $json = Utils::isJson($mixed);
+        $json = Utils::isJson($mixed, \false, \false);
         // Avoid JSON primitives to be replaced
         if (\is_int($json) || $json === \true || \is_float($json) || Utils::isBinary($mixed)) {
             return $mixed;
@@ -101,17 +101,17 @@ class FastHtmlTag
             }
             // We have now a complete JSON array, let's walk it recursively and apply content blocker
             if ($json !== null) {
-                if (isset($json['$$skipFastHtmlTag']) && \is_array($json['$$skipFastHtmlTag']) && \in_array($this->name, $json['$$skipFastHtmlTag'], \true)) {
+                if (isset($json->{'$$skipFastHtmlTag'}) && \is_array($json->{'$$skipFastHtmlTag'}) && \in_array($this->name, $json->{'$$skipFastHtmlTag'}, \true)) {
                     return $mixed;
                 }
-                \array_walk_recursive($json, function (&$value) {
+                Utils::array_and_object_walk_recursive($json, function (&$value) {
                     if (Utils::isHtml($value)) {
                         $value = $this->modifyHtml($value);
                     }
                 });
             }
-            if (\is_array($mixed)) {
-                // The original passed parameter is an array, so we return the modified JSON array
+            if (\is_array($mixed) || \is_object($mixed)) {
+                // The original passed parameter is an array or object, so we return the modified JSON array or object
                 return $json;
             }
             return \json_encode($json);

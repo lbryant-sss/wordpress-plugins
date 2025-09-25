@@ -13,43 +13,44 @@
  * Requires Plugins:  woocommerce
  * Plugin URI:        https://www.webtoffee.com/product/woocommerce-pdf-invoices-packing-slips/
  * Description:       Prints Packing List,Invoice,Delivery Note and Shipping Label.
- * Version:           4.8.3
+ * Version:           4.8.4
  * Author:            WebToffee
  * Author URI:        https://www.webtoffee.com/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       print-invoices-packing-slip-labels-for-woocommerce
  * Domain Path:       /languages
- * WC tested up to:   10.1.2
+ * WC tested up to:   10.2.1
  */
 // If this file is called directly, abort.
 if (! defined('WPINC')) {
     die;
 }
 
-
 include_once(ABSPATH . 'wp-admin/includes/plugin.php');
 
-$current_plugin_name = 'WooCommerce PDF Invoices, Packing Slips, Delivery Notes and Shipping Labels (Basic)';
-$wt_pklist_no_plugin_conflict = true;
+add_action( 'init', function() {
 
-//check if premium version is there
-if (is_plugin_active('wt-woocommerce-packing-list/wf-woocommerce-packing-list.php')) {
-    $active_plugin_name = 'WooCommerce PDF Invoices, Packing Slips, Delivery Notes and Shipping Labels (Pro)';
-    $wt_pklist_no_plugin_conflict = false;
-} else if (is_plugin_active('shipping-labels-for-woo/wf-woocommerce-packing-list.php')) {
-    $active_plugin_name = 'WooCommerce Shipping Label (Basic)';
-    $wt_pklist_no_plugin_conflict = false;
-}
+    $current_plugin_name = 'WooCommerce PDF Invoices, Packing Slips, Delivery Notes and Shipping Labels (Basic)';
+    $wt_pklist_no_plugin_conflict = true;
 
-if (!$wt_pklist_no_plugin_conflict) {
-    //return;
-    deactivate_plugins(plugin_basename(__FILE__));
-    wp_die(sprintf(
-        /* translators: 1$s: Active plugin name, 2$s: Current plugin name */
-        // phpcs:ignore WordPress.WP.I18n.InterpolatedVariableText 
-        esc_html__("The plugins %1$s and %2$s cannot be active in your store at the same time. Kindly deactivate one of these prior to activating the other.", 'print-invoices-packing-slip-labels-for-woocommerce'), esc_html($active_plugin_name), esc_html($current_plugin_name)), "", array('link_url' => esc_url(admin_url('plugins.php')), 'link_text' => esc_html__('Go to plugins page', 'print-invoices-packing-slip-labels-for-woocommerce')));
-}
+    //check if premium version is there
+    if (is_plugin_active('wt-woocommerce-packing-list/wf-woocommerce-packing-list.php')) {
+        $active_plugin_name = 'WooCommerce PDF Invoices, Packing Slips, Delivery Notes and Shipping Labels (Pro)';
+        $wt_pklist_no_plugin_conflict = false;
+    } else if (is_plugin_active('shipping-labels-for-woo/wf-woocommerce-packing-list.php')) {
+        $active_plugin_name = 'WooCommerce Shipping Label (Basic)';
+        $wt_pklist_no_plugin_conflict = false;
+    }
+
+    if (!$wt_pklist_no_plugin_conflict) {
+        //return;
+        deactivate_plugins(plugin_basename(__FILE__));
+        wp_die(sprintf(
+            /* translators: 1$s: Active plugin name, 2$s: Current plugin name */
+            esc_html__( 'The plugins %1$s and %2$s cannot be active in your store at the same time. Kindly deactivate one of these prior to activating the other.', 'print-invoices-packing-slip-labels-for-woocommerce' ),esc_html( $active_plugin_name ), esc_html( $current_plugin_name )), "", array('link_url' => esc_url(admin_url('plugins.php')), 'link_text' => esc_html__('Go to plugins page', 'print-invoices-packing-slip-labels-for-woocommerce')));
+    }
+});
 
 if (!defined('WF_PKLIST_VERSION')) //check plugin file already included
 {
@@ -70,7 +71,7 @@ if (!defined('WF_PKLIST_VERSION')) //check plugin file already included
     /**
      * Currently plugin version.
      */
-    define('WF_PKLIST_VERSION', '4.8.3');
+    define('WF_PKLIST_VERSION', '4.8.4');
 }
 
 

@@ -118,6 +118,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 			'nonces' => array(
 		            'wf_packlist' => wp_create_nonce(WF_PKLIST_PLUGIN_NAME),
 		     ),
+			'newsletter_banner_nonce' => wp_create_nonce('wt_newsletter_banner_nonce'),
 			'ajaxurl' => admin_url('admin-ajax.php'),
 			'no_image'=>$wf_admin_img_path,
 			'bulk_actions'=>array_keys($this->bulk_actions),
@@ -1968,6 +1969,30 @@ class Wf_Woocommerce_Packing_List_Admin {
 			if ( !empty( $wmc_order_info ) && is_array( $wmc_order_info ) && isset( $wmc_order_info[$user_currency] ) ) {
 				$currency_pos 		= isset( $wmc_order_info[$user_currency]['pos'] ) ? isset( $wmc_order_info[$user_currency]['pos'] ) : $currency_pos;
 				$decimal 			= isset( $wmc_order_info[$user_currency]['decimals'] ) ? $wmc_order_info[$user_currency]['decimals'] : $decimal;
+			}
+		} elseif ( is_plugin_active( 'woocommerce-multilingual/wpml-woocommerce.php' ) ) {  
+			// Handle WooCommerce Multilingual currency.
+			global $woocommerce_wpml;
+			
+			if ( class_exists( 'WCML\Orders\Helper' ) ) {
+				// Get the order currency using WCML helper.
+				$order_currency = \WCML\Orders\Helper::getCurrency( $order_id );
+				
+				if ( $order_currency && $order_currency !== $user_currency ) {
+					$user_currency = $order_currency;
+				} 
+			}
+			
+			// Get currency details from WCML settings.
+			if ( $woocommerce_wpml && isset( $woocommerce_wpml->multi_currency ) ) {
+				$currency_details = $woocommerce_wpml->multi_currency->get_currency_details_by_code( $user_currency );
+				
+				if ( $currency_details ) {
+					$currency_pos = isset( $currency_details['position'] ) ? $currency_details['position'] : $currency_pos;
+					$decimal = isset( $currency_details['num_decimals'] ) ? $currency_details['num_decimals'] : $decimal;
+
+					$wc_currency_symbol = isset( $symbols[ $user_currency ] ) ? $symbols[ $user_currency ] : $user_currency;
+				}
 			}
 		}
 
@@ -5173,5 +5198,25 @@ class Wf_Woocommerce_Packing_List_Admin {
 		}
 	
 		return $actions;
+	}
+
+	/**
+	 * AJAX handler to hide newsletter banner permanently
+	 */
+	public function wt_hide_newsletter_banner() {
+		// Check if user has admin capabilities
+		if (!current_user_can('manage_options')) {
+			wp_die('Insufficient permissions');
+		}
+		
+		// Verify nonce
+		if (!isset($_POST['nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['nonce'])), WF_PKLIST_PLUGIN_NAME)) {
+			wp_die('Security check failed');
+		}
+		
+		// Store flag in options table to hide newsletter banner
+		update_option('wt_newsletter_banner_hidden', true);
+		
+		wp_send_json_success('Newsletter banner hidden permanently');
 	}
 }

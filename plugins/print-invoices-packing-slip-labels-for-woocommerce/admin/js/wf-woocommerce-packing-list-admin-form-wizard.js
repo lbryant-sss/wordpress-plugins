@@ -109,6 +109,19 @@
                     wt_pklist_setup_wizard.wt_wrap_wizard_form_submit('wt_form_wizard_submit');
                 });
 
+                // Handle skip wizard confirmation popup
+                $('.wt_skip_wizard_confirm_popup_yes').on('click', function () {
+                    var skipUrl = $('.wt_form_wizard_invoice_setup_skip').attr('href');
+                    window.location.href = skipUrl;
+                });
+
+                // Handle finish setup button in skip wizard popup
+                $('.wt_skip_wizard_confirm_popup_finish').on('click', function () {
+                    // Close the popup
+                    wf_popup.hidePopup();
+                    // Continue with the wizard (do nothing, just close popup)
+                });
+
 
                 $('.invoice-input-wrap .choose_date_div [name="woocommerce_wf_invoice_number_postfix_pdf_fw"]').on('click', function () {
                     if ($(this).val() === "") {
