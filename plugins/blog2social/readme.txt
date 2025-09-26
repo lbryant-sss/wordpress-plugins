@@ -1,4 +1,4 @@
-===Blog2Social: Social Media Auto Post & Scheduler for Facebook, X (Twitter), Instagram, TikTok, LinkedIn & Reddit===
+===Blog2Social: Social Media Auto Post & Scheduler===
 Contributors: Blog2Social, miaadenion
 Requires PHP: 5.5.3
 Tags: social media automation, auto post, cross-posting, auto repost, social media scheduler, social media plugin
@@ -93,16 +93,16 @@ BLOG2SOCIAL PREMIUM
 
 10 REASONS FOR CHOOSING BLOG2SOCIAL PREMIUM
 
-**#1 Easy Social Media Scheduling** – Auto-Post and Auto-Schedule with ready-to-use Best Time Manager or define your own times.  
-**#2 Cross-Posting and Cross-Promotion** – Customize posts with hashtags, handles, emojis, images, GIFs, and choose formats.  
-**#3 Social Media Calendar** – Organize, edit and reschedule with drag & drop. Filter per network.  
-**#4 Social Media Autoposting** – Automatically share new and updated posts. Assign settings to users. Import and autopost RSS feeds.  
-**#5 Create and Share Content from Any Source** – Share text, links, images or videos from anywhere.  
-**#6 Share and Schedule Video Posts** – Publish to YouTube, Vimeo, TikTok, Facebook, Instagram, LinkedIn. Schedule Reels & Stories.  
-**#7 Social-Media-Ready Website Content** – Add and edit Open Graph and X Card tags for optimized link previews.  
-**#8 Tracking with URL Parameters** – Add UTM parameters for Google Analytics and other tools.  
-**#9 Re-Share and Re-Schedule Old Posts** – Revive evergreen content and keep feeds active.  
-**#10 More Features** – URL shorteners (Bitly, Rebrandly, Sniply), AI text assistant Assistini, Threads and Retweets for X.
+1. **Easy Social Media Scheduling** – Auto-post and schedule your content with the built-in Best Time Manager or set your own custom times.  
+2. **Cross-Posting and Cross-Promotion** – Customize each post per network with hashtags, @handles, emojis, images, GIFs, and post format options.  
+3. **Social Media Calendar** – Manage, organize, edit, and reschedule your posts via drag & drop. Filter by network or date.  
+4. **Social Media Autoposting** – Automatically share new and updated blog posts. Assign posting rules to users or import RSS feeds.  
+5. **Share Content from Any Source** – Create and publish posts from links, texts, images, or videos—right from your browser or clipboard.  
+6. **Video Post Sharing and Scheduling** – Publish and schedule videos for YouTube, Vimeo, TikTok, Facebook, Instagram, LinkedIn, and more. Reels & Stories included.  
+7. **Social-Media-Ready Website Content** – Edit and enhance link previews by customizing Open Graph and X Card tags for every post or page.  
+8. **URL Tracking with Analytics Parameters** – Add UTM or other URL parameters for detailed tracking in Google Analytics and similar tools.  
+9. **Re-Share and Re-Schedule Evergreen Content** – Keep your social feeds active by repurposing and reusing older posts.  
+10. **Extended Tools and more Features** – Access URL shorteners (Bitly, Rebrandly, Sniply), AI text assistant Assistini, share to Threads, retweet on X, and more.
 
 = Supported Languages =
 
@@ -125,22 +125,17 @@ English, German, French, Portuguese, Russian, Spanish, Italian, Swedish, Korean
 = Is Blog2Social free to use for WordPress? =  
 Yes. Blog2Social offers a free version with comprehensive basic features and Premium plans for advanced automation.  
 
-
 = What can I do with the free version of Blog2Social? =  
 Share blog posts and content on 14 networks, customize posts, manage pages and users, re-post old content, generate hashtags, edit meta tags, and use the free browser extension.  
-
 
 = How can I start the free Premium Trial? =  
 Register at [Premium Trial](https://www.blog2social.com/en/plugin/wordpress/premium-trial/). You’ll receive a license key via email.  
 
-
 = Do I have to cancel my free trial? =  
 No. After 30 days your account switches back to Blog2Social Free automatically.  
 
-
 = What are the benefits of Blog2Social Premium for WordPress users? =  
 Access to 20+ networks, social media calendar, auto-posting, team management, multiple accounts per network, advanced scheduling, tracking and priority support.  
-
 
 = Do I need special folder permissions? =  
 No. Default WordPress plugin permissions (755) are sufficient.  

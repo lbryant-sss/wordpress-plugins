@@ -84,7 +84,7 @@ class WhatsApp_Integration_Settings {
 	public function add_menu_item() {
 		$rollout_switches                           = $this->plugin->get_rollout_switches();
 		$is_connected                               = $this->plugin->get_connection_handler()->is_connected();
-		$is_whatsapp_utility_messaging_beta_enabled = $rollout_switches->is_switch_enabled( RolloutSwitches::WHATSAPP_UTILITY_MESSAGING_BETA_EXPERIENCE_DOGFOODING ); // TODO: update to prod GK during launch
+		$is_whatsapp_utility_messaging_beta_enabled = $rollout_switches->is_switch_enabled( RolloutSwitches::WHATSAPP_UTILITY_MESSAGING_BETA_EXPERIENCE );
 
 		if ( ! $is_connected || ! $is_whatsapp_utility_messaging_beta_enabled ) {
 			return;
@@ -101,6 +101,28 @@ class WhatsApp_Integration_Settings {
 			[ $this, 'render' ],
 			5
 		);
+
+		$this->connect_to_enhanced_admin( $this->is_marketing_enabled() ? 'marketing_page_wc-whatsapp' : 'woocommerce_page_wc-whatsapp' );
+	}
+
+	/**
+	 * Enables admin support for the main WhatsApp settings page.
+	 *
+	 * @since 3.5.0
+	 *
+	 * @param string $screen_id
+	 */
+	private function connect_to_enhanced_admin( $screen_id ) {
+		if ( is_callable( 'wc_admin_connect_page' ) ) {
+			wc_admin_connect_page(
+				array(
+					'id'        => self::PAGE_ID,
+					'screen_id' => $screen_id,
+					'path'      => add_query_arg( 'page', self::PAGE_ID, 'admin.php' ),
+					'title'     => [ __( 'WhatsApp for WooCommerce', 'facebook-for-woocommerce' ) ],
+				)
+			);
+		}
 	}
 
 	/**
@@ -115,8 +137,8 @@ class WhatsApp_Integration_Settings {
 			return WooAdminFeatures::is_enabled( 'marketing' );
 		}
 
-		return is_callable( '\Automattic\WooCommerce\Admin\Loader::is_feature_enabled' )
-				&& \Automattic\WooCommerce\Admin\Loader::is_feature_enabled( 'marketing' );
+		return is_callable( '\Automattic\WooCommerce\Admin\Features\Features::is_enabled' )
+				&& \Automattic\WooCommerce\Admin\Features\Features::is_enabled( 'marketing' );
 	}
 
 	/**
@@ -164,7 +186,7 @@ class WhatsApp_Integration_Settings {
 		}
 
 		if ( empty( $iframe_url ) ) {
-			return;
+			return $this->error_banner();
 		}
 		?>
 		<div class="facebook-whatsapp-iframe-container">
@@ -173,6 +195,51 @@ class WhatsApp_Integration_Settings {
 				src="<?php echo esc_url( $iframe_url ); ?>"
 				></iframe>
 		</div>
+		<?php
+	}
+
+	private function error_banner() {
+		?>
+		<div class="facebook-whatsapp-iframe-error-container">
+			<div class="notice notice-error" style="margin: 0; padding-bottom: 20px;">
+				<h3><?php esc_html_e( 'WhatsApp Utility Connection Error', 'facebook-for-woocommerce' ); ?></h3>
+				<p><?php esc_html_e( 'There was an error loading the WhatsApp Utility Message Integration. Please try reloading the page or resetting your settings.', 'facebook-for-woocommerce' ); ?></p>
+				<div style="margin-top: 15px;">
+					<button
+						type="button"
+						class="button button-primary"
+						onclick="window.location.reload();"
+						style="margin-right: 10px;"
+					>
+						<?php esc_html_e( 'Reload Page', 'facebook-for-woocommerce' ); ?>
+					</button>
+					<button
+						type="button"
+						class="button button-secondary"
+						onclick="if(confirm('<?php echo esc_js( __( 'Are you sure you want to reset WhatsApp settings? This action cannot be undone and you will have to re-onboard.', 'facebook-for-woocommerce' ) ); ?>')) { resetWhatsAppSettings(); }"
+					>
+						<?php esc_html_e( 'Reset Settings', 'facebook-for-woocommerce' ); ?>
+					</button>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			function resetWhatsAppSettings() {
+				// Use the same API client that's available on the page
+				if (typeof whatsAppAPI !== 'undefined') {
+					whatsAppAPI.uninstallWhatsAppSettings()
+						.then(function(response) {
+							if (response.success) {
+								window.location.reload();
+							}
+						})
+						.catch(function(error) {
+							console.error('Error during settings reset:', error);
+							alert('<?php echo esc_js( __( 'Error resetting settings. Please try again or contact support.', 'facebook-for-woocommerce' ) ); ?>');
+						});
+				}
+			}
+		</script>
 		<?php
 	}
 
@@ -195,14 +262,13 @@ class WhatsApp_Integration_Settings {
 				const messageEvent = message.event;
 
 				if (messageEvent === 'CommerceExtension::WA_INSTALL' && message.success) {
-				console.log('success');
 
 					const requestBody = {
 						access_token: message.access_token,
 						business_id: message.business_id,
 						phone_number_id: message.phone_number_id,
 						waba_id: message.waba_id,
-						wa_installation_id: 'xxx',
+						wa_installation_id: message.wa_installation_id,
 					};
 
 					whatsAppAPI.updateWhatsAppSettings(requestBody)
@@ -215,6 +281,31 @@ class WhatsApp_Integration_Settings {
 						})
 						.catch(function(error) {
 							console.error('Error during settings update:', error);
+						});
+				}
+
+				if (messageEvent === 'CommerceExtension::WA_RESIZE') {
+					const iframe = document.getElementById('facebook-whatsapp-iframe-enhanced');
+					if ( iframe ) {
+						if ( message.height ) {
+							iframe.height = message.height;
+						}
+						if ( message.width ) {
+							iframe.width = message.width;
+						}
+					}
+				}
+
+				if (messageEvent === 'CommerceExtension::WA_UNINSTALL') {
+					whatsAppAPI.uninstallWhatsAppSettings()
+						.then(function(response) {
+							if (response.success) {
+								window.location.reload();
+							}
+						})
+						.catch(function(error) {
+							console.error('Error during uninstall:', error);
+							window.location.reload();
 						});
 				}
 			});

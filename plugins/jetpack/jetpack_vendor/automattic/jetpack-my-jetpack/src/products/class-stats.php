@@ -14,10 +14,6 @@ use Automattic\Jetpack\My_Jetpack\Wpcom_Products;
 use Automattic\Jetpack\Status\Host;
 use Jetpack_Options;
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit( 0 );
-}
-
 /**
  * Class responsible for handling the Jetpack Stats product
  */

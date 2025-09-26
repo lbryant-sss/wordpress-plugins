@@ -626,9 +626,29 @@ var CustomCSS = function CustomCSS() {
     }
   }
 
+  function editorCustomCss(css, context) {
+    if (!context) {
+      return;
+    }
+
+    var model = context.model,
+        editCustomCSS = model.get('settings').get('raven_custom_css');
+    var selector = '.elementor-element.elementor-element-' + model.get('id');
+
+    if ('document' === model.get('elType')) {
+      selector = elementor.config.document.settings.cssWrapperSelector;
+    }
+
+    if (editCustomCSS) {
+      css += editCustomCSS.replace(/selector/g, selector);
+    }
+
+    return css;
+  }
+
   function init() {
     elementor.on('preview:loaded', customCSS);
-    elementor.settings.page.model.on('change', customCSS);
+    elementor.hooks.addFilter('editor/style/styleText', editorCustomCss);
   }
 
   return {
@@ -1750,7 +1770,7 @@ var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
         'raven-post-carousel': checkWidgetIsActive('posts') && require('./widgets/posts')["default"],
         'raven-flip-box': checkWidgetIsActive('flip-box') && require('./widgets/flip-box')["default"],
         'raven-my-account': checkWidgetIsActive('my-account') && require('./widgets/my-account')["default"],
-        'raven-stripe-button': checkWidgetIsActive('payments') && require('./widgets/stripe-button')["default"],
+        'raven-stripe-button': checkWidgetIsActive('stripe') && require('./widgets/stripe-button')["default"],
         'raven-advanced-nav-menu': checkWidgetIsActive('advanced-nav-menu') && require('./widgets/advanced-nav-menu')["default"],
         'raven-media-gallery': checkWidgetIsActive('media-gallery') && require('./widgets/media-gallery')["default"],
         'raven-shopping-cart': checkWidgetIsActive('shopping-cart') && require('./widgets/shopping-cart')["default"],
@@ -1758,6 +1778,10 @@ var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
       };
 
       for (var widget in widgets) {
+        if (widget === 'raven-register') {
+          elementor.hooks.addAction("panel/open_editor/widget/".concat(widget), widgets['raven-form']);
+        }
+
         elementor.hooks.addAction("panel/open_editor/widget/".concat(widget), widgets[widget]);
       }
     } // Some widgets require a rerender after preview loaded,
@@ -4757,6 +4781,11 @@ function _default(panel, model, view) {
     },
     clearFieldMapping: function clearFieldMapping() {
       var fieldsMapControlView = this.getControlView('activecampaign_fields_mapping');
+
+      if (!fieldsMapControlView) {
+        return;
+      }
+
       fieldsMapControlView.collection.each(function (modelItem) {
         if (modelItem) {
           modelItem.destroy();
@@ -4800,11 +4829,6 @@ function _default(panel, model, view) {
           activecampaign_api_key: this.getControlValue('activecampaign_api_key'),
           activecampaign_api_url: this.getControlValue('activecampaign_api_url')
         });
-      }
-
-      if (setting === 'mailchimp_list') {
-        this.clearFieldMapping();
-        this.onListUpdate();
       }
     },
     getRemoteFields: function getRemoteFields() {
@@ -5012,6 +5036,10 @@ var _default = _module["default"].extend({
   },
   updateControls: function updateControls() {
     var _this3 = this;
+
+    if (!this.mappingRepeater) {
+      return;
+    }
 
     this.mappingRepeater.children.each(function (row) {
       row.children.each(function (control) {
@@ -5534,6 +5562,11 @@ function _default(panel, model, view) {
     },
     clearFieldMapping: function clearFieldMapping() {
       var fieldsMapControlView = this.getControlView('mailchimp_fields_mapping');
+
+      if (!fieldsMapControlView) {
+        return;
+      }
+
       fieldsMapControlView.collection.each(function (modelItem) {
         if (modelItem) {
           modelItem.destroy();

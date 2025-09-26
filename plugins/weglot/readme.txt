@@ -272,16 +272,14 @@ See changelog for upgrade changes.
 
 
 == Changelog ==
-= 5.0 (16/07/2025) =
-* Major: Update minimum PHP requirement to 7.4 to align with WordPress requirements
-* Improvement: Add prefix to Weglot CSS to prevent conflicts with other styles
-* Improvement: Introduce escape_vue_attributes and preserve_attributes methods for attribute escaping
-* Improvement: Rename inline CSS ID from Weglot to weglot_custom_style
-* Improvement: Add missing keys for WooCommerce JSON (variation cart)
-* Improvement: Add reverse_translate method to TranslateService
-* Improvement: Enhance recursivelyConvertToUtf8 usage
-* Improvement: Control payload size and truncate when exceeding limits
-* Quality: Maintain PHPStan at level 6
+= 5.1 (30/09/2025) =
+* Improvement: Added support for Brazilian Portuguese (pt-br) as an original language.
+* Improvement: The translation engine now defaults to version 3 if not specified in the settings.
+* Improvement: Updated the plugin URI from wordpress.org to https://www.weglot.com/.
+* Improvement: Added a new filter to prevent the translation of search results.
+* Improvement: Updated translation files to align with WordPress standards.
+* Quality: Increased overall code quality by reaching PHPStan Level 7.
+* Quality: Improved quality checks in the CI pipeline.
 
 = Older versions =
 

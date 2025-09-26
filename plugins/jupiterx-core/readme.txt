@@ -3,7 +3,7 @@ Contributors: artbees
 Tags: jupiter, jupiterx
 Requires at least: 5.6
 Tested up to: 6.7
-Stable tag: 4.10.1
+Stable tag: 4.11.0
 Requires PHP: 7.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -29,8 +29,17 @@ It's worth mentioning that, some of the features are disabled for the Jupiter X 
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 
 == Changelog ==
+= 4.11.0 =
+* Improved Animated Heading widget: clip animation, layout/width handling, animation fixes, SCSS refinements.
+* Improved Advanced Posts to support custom fields across widgets and carousel; improved taxonomy/tag generation and rendering when default meta disabled.
+* Improved Advanced Nav Menu: better mobile submenu behavior, arrow rotation/state, and guard for empty href links.
+* Fixed Stripe and payments: stricter tax rate validation/unserialization; updated tax rate handling in Stripe widget.
+* Fixed Video widget autoplay on iPhone.
+* Fixed WooCommerce My Account Addresses tab style issue.
+* Fixed a security vulnerability.
+
 = 4.10.1 =
-* Added New Feature to Support for new bulk license added.
+* Added a New Feature to Support new bulk license.
 * Fixed keeping history of pagination in Advanced Post.
 * Fixed displaying of Bundle & virtual product on overlay layout on product carousel.
 * Fixed closing Condition modal in elementor editor.

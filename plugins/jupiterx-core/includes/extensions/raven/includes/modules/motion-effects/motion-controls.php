@@ -19,7 +19,7 @@ class Motion_Controls extends Group_Control_Base {
 	 * Get group control type.
 	 * (an override of Group_Control_Base)
 	 *
-	 * @since  NEXT
+	 * @since 2.5.0
 	 * @access public
 	 * @static
 	 */
@@ -31,7 +31,7 @@ class Motion_Controls extends Group_Control_Base {
 	 * Get default options.
 	 * (an override of Group_Control_Base)
 	 *
-	 * @since  NEXT
+	 * @since 2.5.0
 	 * @access protected
 	 */
 	protected function get_default_options() {
@@ -44,7 +44,7 @@ class Motion_Controls extends Group_Control_Base {
 	 * Initialize group control fields.
 	 * (an override of Group_Control_Base)
 	 *
-	 * @since  NEXT
+	 * @since 2.5.0
 	 * @access protected
 	 */
 	protected function init_fields() {

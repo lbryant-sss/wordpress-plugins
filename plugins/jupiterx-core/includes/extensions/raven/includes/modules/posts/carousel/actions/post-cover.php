@@ -92,6 +92,11 @@ class Post_Cover extends Post_Base {
 							'operator' => '===',
 							'value' => 'classic',
 						],
+						[
+							'name' => $this->skin->get_control_id( 'show_custom_field' ),
+							'operator' => '===',
+							'value' => 'yes',
+						],
 					],
 				],
 			],

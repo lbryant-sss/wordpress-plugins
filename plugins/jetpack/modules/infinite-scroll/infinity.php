@@ -4,10 +4,6 @@
 
 use Automattic\Jetpack\Assets;
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit( 0 );
-}
-
 /*
 Plugin Name: The Neverending Home Page.
 Plugin URI: https://automattic.com/

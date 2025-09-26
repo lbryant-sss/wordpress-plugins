@@ -273,7 +273,17 @@ class MLA_Ajax {
 		if ( empty( $_REQUEST['mla_item'] ) ) {
 			$download_args['error'] = 'ERROR: mla_item argument not set.';
 		} else {
-			$item_name = sanitize_title( isset( $_REQUEST['mla_item'] ) ? wp_unslash( $_REQUEST['mla_item'] ) : '' );
+			$args = explode( ',', isset( $_REQUEST['mla_item'] ) ? MLACore::mla_decrypt_named_transfer_item( wp_unslash( $_REQUEST['mla_item'] ) ) : '' );
+			if ( ! empty( $args ) && ( 3 === count($args) ) ) {
+				$item_name = sanitize_title( $args[0] );
+				$item_id = absint( $args[1] );
+				$item_date = sanitize_text_field( $args[2] );
+			} else {
+				$item_name = '';
+				$item_id = 0;
+				$item_date = '';
+			}
+			
 			$args = array(
 				'name'           => $item_name,
 				'post_type'      => 'attachment',
@@ -281,19 +291,22 @@ class MLA_Ajax {
 				'posts_per_page' => 1
 			);
 
-			$items = get_posts( $args );
-
-			if( $items ) {
-				$file = get_attached_file( $items[0]->ID );
-				if ( !empty( $file ) ) {
-					$download_args['mla_download_file'] = $file;
-					$download_args['mla_download_type'] = $items[0]->post_mime_type;
-					
-					if ( !empty( $_REQUEST['mla_disposition'] ) ) {
-						$download_args['mla_disposition'] = sanitize_text_field( wp_unslash( $_REQUEST['mla_disposition'] ) );
+			$item = get_post( $item_id );
+			if( $item ) {
+				if ( ( $item_name === $item->post_name ) && ( $item_date === $item->post_date ) ) {
+					$file = get_attached_file( $item->ID );
+					if ( !empty( $file ) ) {
+						$download_args['mla_download_file'] = $file;
+						$download_args['mla_download_type'] = $item->post_mime_type;
+						
+						if ( !empty( $_REQUEST['mla_disposition'] ) ) {
+							$download_args['mla_disposition'] = sanitize_text_field( wp_unslash( $_REQUEST['mla_disposition'] ) );
+						}
+					} else {
+						$download_args['error'] = 'ERROR: mla_item no attached file.';
 					}
 				} else {
-					$download_args['error'] = 'ERROR: mla_item no attached file.';
+					$download_args['error'] = 'ERROR: invalid mla_item.';
 				}
 			} else {
 				$download_args['error'] = 'ERROR: mla_item not found.';

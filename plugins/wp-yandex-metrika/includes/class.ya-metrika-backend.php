@@ -437,7 +437,7 @@ class YaMetrikaBackend
 
                         $field['attrs']['class'] .= ' yam-repeater-field__input';
                     ?>
-                        <div class="yam-repeater-field__input-wrap<?php echo $field['flex-wrap'] ? ' yam-repeater-field__input-wrap--large' : ''; ?>">
+                        <div class="yam-repeater-field__input-wrap<?php echo isset($field['flex-wrap']) ? ' yam-repeater-field__input-wrap--large' : ''; ?>">
                             <?php $field['callback']($field, !empty($args['check_for'])); ?>
                         </div>
                     <?php } ?>
@@ -475,7 +475,7 @@ class YaMetrikaBackend
 
                             $field['attrs']['class'] .= ' yam-repeater-field__input';
                         ?>
-                            <div class="yam-repeater-field__input-wrap<?php echo $field['flex-wrap'] ? ' yam-repeater-field__input-wrap--large' : ''; ?>">
+                            <div class="yam-repeater-field__input-wrap<?php echo isset($field['flex-wrap']) ? ' yam-repeater-field__input-wrap--large' : ''; ?>">
                                 <?php $field['callback']($field, $disableTextInputs); ?>
                             </div>
                         <?php } ?>

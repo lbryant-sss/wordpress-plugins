@@ -77,7 +77,13 @@ if (! is_dir($nfw_['log_dir']) ) {
 }
 
 /**
- * Select whether we want to use PHP or NinjaFirewall sessions.
+ * 2025-09-03: We temporarily force NinjaFirewall session on all new installs.
+ */
+if ( is_file( "{$nfw_['log_dir']}/ninjasession" ) && ! defined('NFWSESSION') ) {
+	define('NFWSESSION', true );
+}
+/**
+ * Select whether we want to use PHP or NinjaFirewall session.
  */
 if ( defined('NFWSESSION') ) {
 	if (! defined('NFWSESSION_DIR') ) {
@@ -498,14 +504,32 @@ function nfw_get_data( $what ) {
 			}
 		// Options
 		} else {
-			if (! $nfw_['result'] = @$nfw_['mysqli']->query('SELECT * FROM `' . $nfw_['mysqli']->real_escape_string($nfw_['table_prefix']) . "options` WHERE `option_name` = 'nfw_options'") ) {
-
-			// Maybe this is an old multisite install where the main site
-			// options table is named 'wp_1_options' instead of 'wp_options'
-				if (! $nfw_['result'] = @$nfw_['mysqli']->query('SELECT * FROM `' . $nfw_['mysqli']->real_escape_string($nfw_['table_prefix']) . "1_options` WHERE `option_name` = 'nfw_options'") ) {
+			/**
+			 * Since PHP 8.1, MySQLi extension throws an Exception on errors
+			 */
+			try {
+				$nfw_['result'] = @$nfw_['mysqli']->query('SELECT * FROM `' .
+					$nfw_['mysqli']->real_escape_string( $nfw_['table_prefix'] ) .
+					"options` WHERE `option_name` = 'nfw_options'"
+				);
+			}
+			catch ( Exception $e ) {
+				/**
+				 * Maybe this is an old multisite install where the main site
+				 * options table is named 'wp_1_options' instead of 'wp_options'
+				 */
+				try {
+					$nfw_['result'] = @$nfw_['mysqli']->query('SELECT * FROM `' .
+						$nfw_['mysqli']->real_escape_string( $nfw_['table_prefix'] ) .
+						"1_options` WHERE `option_name` = 'nfw_options'"
+					);
+				}
+				catch ( Exception $e ) {
 					return 5;
 				}
-				// Change the table prefix to match 'wp_1_options'
+				/**
+				 * Change the table prefix to match 'wp_1_options'
+				 */
 				$nfw_['table_prefix'] = "{$nfw_['table_prefix']}1_";
 			}
 			if (! $nfw_['options'] = @$nfw_['result']->fetch_object() ) {
@@ -1314,7 +1338,8 @@ function nfw_check_b64( $key, $string ) {
 	}
 
 	$whitelist = [
-		'fpd_print_order' // Fancy Product Designer
+		'fpd_print_order',		// Fancy Product Designer
+		'g-recaptcha-response'	// reCAPTCHA
 	];
 	if ( in_array( $key, $whitelist ) ) {
 		return;
@@ -1816,7 +1841,7 @@ function nfw_check_auth( $auth_name, $auth_pass, $auth_msgtxt, $bf_rand, $b64, $
 		$bf_nosig = '';
 	}
 	if ( $bf_type == 0 ) {
-		$message = '<html><head><title>'. $bf_nosig  .'</title><link rel="stylesheet" href="./wp-includes/css/buttons.min.css" type="text/css"><link rel="stylesheet" href="./wp-admin/css/login.min.css" type="text/css"><link rel="stylesheet" href="./wp-admin/css/forms.min.css" type="text/css"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body class="login wp-core-ui" style="color:#444"><div id="login"><center><h2>' . $auth_msgtxt . '</h2><form method="post"><label>'. $bf_nosig  .'</label><br><br><p><input class="input" type="text" name="u" placeholder="Username"></p><p><input class="input" type="password" name="p" placeholder="Password"></p><p align="right"><input type="submit" value="Login Page&nbsp;&#187;" class="button-secondary"></p><input type="hidden" name="reauth" value="1"></form></center></div></body></html>';
+		$message = '<html><head><title>'. $bf_nosig  .'</title><link rel="stylesheet" href="./wp-includes/css/buttons.min.css" type="text/css"><link rel="stylesheet" href="./wp-admin/css/login.min.css" type="text/css"><link rel="stylesheet" href="./wp-admin/css/forms.min.css" type="text/css"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body class="login wp-core-ui" style="color:#444"><div id="login"><center><h2>' . $auth_msgtxt . '</h2><form method="post"><label>'. $bf_nosig  .'</label><br><br><p><input class="input" type="text" name="u" placeholder="Username" autofocus></p><p><input class="input" type="password" name="p" placeholder="Password"></p><p align="right"><input type="submit" value="Login Page&nbsp;&#187;" class="button-secondary"></p><input type="hidden" name="reauth" value="1"></form></center></div></body></html>';
 	} else {
 		$captcha = nfw_get_captcha();
 		if ( $captcha === false ) {

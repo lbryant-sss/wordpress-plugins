@@ -3,7 +3,7 @@
 Plugin Name: NinjaFirewall (WP Edition)
 Plugin URI: https://nintechnet.com/
 Description: A true Web Application Firewall to protect and secure WordPress.
-Version: 4.7.5
+Version: 4.8
 Author: The Ninja Technologies Network
 Author URI: https://nintechnet.com/
 License: GPLv3 or later
@@ -11,7 +11,7 @@ Network: true
 Text Domain: ninjafirewall
 Domain Path: /languages
 */
-define('NFW_ENGINE_VERSION', '4.7.5');
+define('NFW_ENGINE_VERSION', '4.8');
 /*
  +=====================================================================+
  |    _   _ _        _       _____ _                        _ _        |
@@ -59,7 +59,13 @@ if (! empty( $_SERVER['DOCUMENT_ROOT'] ) && $_SERVER['DOCUMENT_ROOT'] != '/') {
 /* ------------------------------------------------------------------ */
 
 /**
- * Select whether we want to use PHP or NF sessions.
+ * 2025-09-03: We temporarily force NinjaFirewall session on all new installs.
+ */
+if ( is_file( NFW_LOG_DIR .'/nfwlog/ninjasession') && ! defined('NFWSESSION') ) {
+	define('NFWSESSION', true );
+}
+/**
+ * Select whether we want to use PHP or NF session.
  */
 if ( defined('NFWSESSION') ) {
 	if (! defined('NFWSESSION_DIR') ) {
@@ -791,24 +797,6 @@ function nfw_save_waf_exclusionlist( $input ) {
 	require_once __DIR__ .'/lib/install_default.php';
 	nfw_create_loader();
 
-}
-
-/* ------------------------------------------------------------------ */
-// Welcome screen.
-
-add_action( 'wp_ajax_nfw_welcomescreen', 'nfw_welcomescreen' );
-
-function nfw_welcomescreen() {
-
-	nf_not_allowed( 'block', __LINE__ );
-
-	if (! check_ajax_referer( 'welcome_save', 'nonce', false ) ) {
-		esc_html_e('Error: Security nonces do not match. Reload the page and try again.', 'ninjafirewall');
-		wp_die();
-	}
-	$nfw_options = nfw_get_option( 'nfw_options' );
-	unset( $nfw_options['welcome'] );
-	nfw_update_option( 'nfw_options', $nfw_options);
 }
 
 /* ------------------------------------------------------------------ */

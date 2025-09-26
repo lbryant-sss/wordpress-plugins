@@ -1447,7 +1447,9 @@ class Video extends Base_Widget {
 				$settings['hosted_link_webm']['id']  = apply_filters( 'wpml_object_id', $settings['hosted_link_webm']['id'], 'attachment', true );
 				$settings['hosted_link_webm']['url'] = wp_get_attachment_url( $settings['hosted_link_webm']['id'] );
 
-				$url = $settings['hosted_link']['url'] ?: $settings['hosted_link_webm']['url'];
+				$url = ! empty( $settings['hosted_link']['url'] )
+						? $settings['hosted_link']['url']
+						: ( ! empty( $settings['hosted_link_webm']['url'] ) ? $settings['hosted_link_webm']['url'] : '' );
 
 				if ( $settings['start_time'] || $settings['end_time'] ) {
 					$url .= '#t=';
@@ -1534,7 +1536,8 @@ class Video extends Base_Widget {
 			$params['style']  = 'max-width: 100%; height: 100% !important; width: 100% !important;';
 
 			if ( $settings['hosted_autoplay'] ) {
-				$params['muted'] = '1';
+				$params['muted']       = '1';
+				$params['playsinline'] = '1';
 			}
 		}
 

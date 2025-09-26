@@ -26,7 +26,7 @@ class NinjaFirewall_session {
 
 
 	/**
-	 * Start a PHP session.
+	 * Start a NinjaFirewall session.
 	 */
 	public static function start() {
 		/**
@@ -84,7 +84,7 @@ class NinjaFirewall_session {
 			unset( $_COOKIE[ self::$SESSION_NAME ] );
 		}
 		/**
-		 * Create a session ID and the corresponding file.
+		 * Create a session ID and its corresponding file.
 		 */
 		self::$session_status	= true;
 		self::$SESSION_DATA		= [];

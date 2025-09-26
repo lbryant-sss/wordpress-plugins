@@ -1328,6 +1328,7 @@ class Nav_Menu extends Base_Widget {
 					'{{WRAPPER}} .raven-menu-item i._mi' => 'font-size: {{SIZE}}{{UNIT}} !important;',
 					'{{WRAPPER}} .raven-submenu-item i._mi' => 'font-size: {{SIZE}}{{UNIT}} !important;',
 					'{{WRAPPER}} .raven-menu-item .sub-arrow svg' => 'width: {{SIZE}}{{UNIT}} !important;height: {{SIZE}}{{UNIT}} !important;',
+					'{{WRAPPER}} .raven-submenu-item .sub-arrow svg' => 'width: {{SIZE}}{{UNIT}} !important;height: {{SIZE}}{{UNIT}} !important;',
 				],
 			]
 		);
@@ -1350,6 +1351,7 @@ class Nav_Menu extends Base_Widget {
 					'{{WRAPPER}} .raven-menu-item i._mi' => 'color: {{VALUE}};',
 					'{{WRAPPER}} .raven-submenu-item i._mi' => 'color: {{VALUE}};',
 					'{{WRAPPER}} .raven-menu-item .sub-arrow' => 'color: {{VALUE}};fill: {{VALUE}};',
+					'{{WRAPPER}} .raven-submenu-item .sub-arrow' => 'color: {{VALUE}};fill: {{VALUE}};',
 				],
 			]
 		);
@@ -1372,6 +1374,7 @@ class Nav_Menu extends Base_Widget {
 					'{{WRAPPER}} .raven-menu-item:hover i._mi' => 'color: {{VALUE}};',
 					'{{WRAPPER}} .raven-submenu-item:hover i._mi' => 'color: {{VALUE}};',
 					'{{WRAPPER}} .raven-menu-item:hover .sub-arrow' => 'color: {{VALUE}};fill: {{VALUE}};',
+					'{{WRAPPER}} .raven-submenu-item:hover .sub-arrow' => 'color: {{VALUE}};fill: {{VALUE}};',
 				],
 			]
 		);
@@ -1379,6 +1382,41 @@ class Nav_Menu extends Base_Widget {
 		$this->end_controls_tab();
 
 		$this->end_controls_tabs();
+
+		$this->add_responsive_control(
+			'icons_angle',
+			[
+				'label' => __( 'Menu Icon Angle', 'jupiterx-core' ),
+				'type' => 'slider',
+				'separator' => 'before',
+				'range' => [
+					'deg' => [
+						'min' => -360,
+						'max' => 360,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .raven-menu-item.has-submenu > .sub-arrow > svg' => 'transform: rotate({{SIZE}}deg) !important',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'submenu_icons_angle',
+			[
+				'label' => __( 'Submenu Icon Angle', 'jupiterx-core' ),
+				'type' => 'slider',
+				'range' => [
+					'deg' => [
+						'min' => -360,
+						'max' => 360,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .raven-submenu-item.has-submenu > .sub-arrow > svg' => 'transform: rotate({{SIZE}}deg) !important',
+				],
+			]
+		);
 
 		$this->end_controls_section();
 	}

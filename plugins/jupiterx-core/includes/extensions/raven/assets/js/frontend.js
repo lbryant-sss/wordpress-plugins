@@ -1352,9 +1352,8 @@ var DetectrJs = function detecterjs($) {
     /**
      * Checks if given string is present on the userAgent.
      *
-     * @param str
-     * @param string  str
-     * @return {boolean}
+     * @param {string} str String to search for in the UA
+     * @return {boolean} Returns true when the substring exists in the user agent
      */
 
     var is = function is(str) {
@@ -5172,6 +5171,7 @@ var AdvancedNavMenu = _module["default"].extend({
     this.inPageMenuClick();
     this.mobileMenuScroll();
     this.handleLinksOnSubmenu();
+    this.bindEmptyHrefGuard();
   },
   bindEvents: function bindEvents() {
     // Main menu events.
@@ -5215,7 +5215,28 @@ var AdvancedNavMenu = _module["default"].extend({
     if ('full-screen' === mobileLayout) {
       this.elements.$toggleButton.on('click', this.toggleMenu.bind(this));
       this.elements.$closeButton.on('click', this.toggleMenu.bind(this));
-    }
+    } // Ensure only the currently opened submenu arrow rotates on mobile by toggling a dedicated class.
+    // Hook into SmartMenus show/hide events to mark the parent link of the submenu.
+
+
+    this.elements.$menus.on('show.smapi', function (event, submenu) {
+      var $sub = $(submenu);
+      var $parentLink = $sub.dataSM ? $sub.dataSM('parent-a') : null;
+
+      if ($parentLink && $parentLink.length) {
+        $parentLink.addClass('submenu-opened');
+        $parentLink.closest('li').addClass('submenu-opened');
+      }
+    });
+    this.elements.$menus.on('hide.smapi', function (event, submenu) {
+      var $sub = $(submenu);
+      var $parentLink = $sub.dataSM ? $sub.dataSM('parent-a') : null;
+
+      if ($parentLink && $parentLink.length) {
+        $parentLink.removeClass('submenu-opened');
+        $parentLink.closest('li').removeClass('submenu-opened');
+      }
+    });
   },
   initMainSmartMenu: function initMainSmartMenu() {
     var _this$$element,
@@ -5357,7 +5378,15 @@ var AdvancedNavMenu = _module["default"].extend({
     var options = {
       subIndicators: false,
       subMenusMaxWidth: '1500px',
-      rightToLeftSubMenus: this.isRtl
+      rightToLeftSubMenus: this.isRtl,
+      // Prevent document-level click handler from closing all submenus when tapping
+      // on a parent link; allows multiple submenus to remain open simultaneously.
+      hideOnClick: false,
+      // Enable showOnClick for mobile menu toggling
+      showOnClick: true,
+      // Set collapsible behavior to 'toggle' so entire parent item acts as toggle button
+      // This makes both text and icon clicks toggle the submenu
+      collapsibleBehavior: 'toggle'
     };
     this.elements.$mobileMenu.smartmenus(options);
   },
@@ -5401,7 +5430,6 @@ var AdvancedNavMenu = _module["default"].extend({
       if (!overlayed) {
         this.elements.$body.addClass('raven-adnav-menu-effect-overlayed');
         this.togglePrepareParentForPushEffect();
-        return;
       }
 
       setTimeout(function () {
@@ -5498,6 +5526,30 @@ var AdvancedNavMenu = _module["default"].extend({
   handleLinksOnSubmenu: function handleLinksOnSubmenu() {
     this.elements.$submenuLinks.on('click', function (event) {
       event.stopPropagation();
+    });
+  },
+  bindEmptyHrefGuard: function bindEmptyHrefGuard() {
+    var $mobileMenu = this.elements.$mobileMenu;
+
+    if (!$mobileMenu.length) {
+      return;
+    } // Guard to handle different link types properly
+    // With collapsibleBehavior: 'toggle', SmartMenus handles toggling, we handle navigation blocking
+
+
+    $mobileMenu.off('click.adnavGuard').on('click.adnavGuard', 'a.raven-menu-item.has-submenu', function (event) {
+      var $link = $(event.currentTarget);
+      var href = ($link.attr('href') || '').trim().toLowerCase();
+      var isPlaceholder = href === '' || href === '#' || href === 'javascript:void(0)' || href === 'javascript:;'; // Always prevent navigation for placeholder links - these should only toggle
+
+      if (isPlaceholder) {
+        event.preventDefault();
+        return;
+      } // For valid links: with 'toggle' behavior, the link should act as toggle only
+      // If you want valid links to navigate, change collapsibleBehavior to 'default'
+
+
+      event.preventDefault();
     });
   },
 
@@ -5820,7 +5872,9 @@ var AdvancedNavMenu = _module["default"].extend({
     this.elements.$parentSegment.removeClass('raven-adnav-menu-parent-segment');
     this.elements.$mainNav.removeClass('raven-adnav-menu-active');
     this.elements.$mobileNav.removeClass('raven-adnav-menu-active');
-    this.elements.$toggleButton.find('.hamburger').removeClass('is-active');
+    this.elements.$toggleButton.find('.hamburger').removeClass('is-active'); // Reset any submenu-opened state on full deactivation.
+
+    this.elements.$menus.find('a.raven-menu-item').removeClass('submenu-opened');
 
     if ('dropdown' === this.mobileLayout) {
       this.elements.$mobileNav.slideUp(250);
@@ -6808,6 +6862,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = _default;
 
+var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
+
+var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
+
 var _module = _interopRequireDefault(require("../utils/module"));
 
 var $ = jQuery;
@@ -6833,7 +6891,51 @@ var AnimatedHeading = _module["default"].extend({
       }
     };
     this.isLoopMode = 'yes' === this.getElementSettings('loop');
+    this._headingInitialized = false;
+    this._clipLoopToken = 0; // noop
+
     this.activateScrollListener();
+  },
+  applyBaseStyles: function applyBaseStyles() {
+    // Ensure inline flow by default; for clip, use inline-block so width affects layout.
+    var animType = this.getElementSettings('animation_type');
+    var isClip = animType === 'clip';
+    var overlayAnimations = ['flip', 'slide', 'slide-down', 'drop-in'];
+    var isOverlay = overlayAnimations.indexOf(animType) !== -1;
+    this.elements.$dynamicWrapper.css({
+      display: 'inline-block',
+      overflow: isClip ? 'hidden' : 'visible',
+      whiteSpace: 'normal',
+      width: '',
+      minWidth: '',
+      height: '',
+      minHeight: '',
+      position: isClip ? 'relative' : 'static',
+      verticalAlign: 'baseline'
+    }); // Ensure the surrounding text wrapper aligns to baseline too
+
+    this.$element.find('.raven-heading-text-wrapper').css({
+      verticalAlign: 'baseline'
+    }); // Do not override display/position for overlay animations so SCSS can
+    // apply inline-block + 3D transform rules correctly.
+
+    if (isOverlay) {
+      this.elements.$dynamicText.css({
+        display: '',
+        position: '',
+        whiteSpace: 'inherit',
+        lineHeight: 'inherit',
+        verticalAlign: 'baseline'
+      });
+    } else {
+      this.elements.$dynamicText.css({
+        display: 'inline',
+        position: 'static',
+        whiteSpace: 'inherit',
+        lineHeight: 'inherit',
+        verticalAlign: 'baseline'
+      });
+    }
   },
   getDefaultSettings: function getDefaultSettings() {
     var iterationDelay = this.getElementSettings('rotate_iteration_delay'),
@@ -6841,10 +6943,9 @@ var AnimatedHeading = _module["default"].extend({
       animationDelay: iterationDelay || 2500,
       // Letters effect.
       lettersDelay: iterationDelay * 0.02 || 50,
-      // Typing effect.
+      // Typing/Clip effect unified timings.
       typeLettersDelay: iterationDelay * 0.06 || 150,
       selectionDuration: iterationDelay * 0.2 || 500,
-      // Clip effect.
       revealDuration: iterationDelay * 0.24 || 600,
       revealAnimationDelay: iterationDelay * 0.6 || 1500,
       // Highlighted heading.
@@ -6867,7 +6968,9 @@ var AnimatedHeading = _module["default"].extend({
       typeSelected: 'raven-heading-typing-selected',
       activateHighlight: 'raven-animated',
       hideHighlight: 'raven-hide-highlight',
-      typingCursor: 'raven-heading-typing-cursor'
+      typingCursor: 'raven-heading-typing-cursor',
+      clipRail: 'raven-heading-clip-rail',
+      clipCursor: 'raven-heading-clip-cursor'
     };
     return settings;
   },
@@ -6879,31 +6982,695 @@ var AnimatedHeading = _module["default"].extend({
       $dynamicText: this.$element.find(selectors.dynamicText)
     };
   },
+  // Ensure an inner wrapper for clip effect that animates width smoothly while
+  // keeping natural inline flow and multiline support.
+  ensureClipInner: function ensureClipInner($word) {
+    var $inner = $word.children('.raven-clip-inner');
+
+    if (!$inner.length) {
+      $inner = $('<span>', {
+        "class": 'raven-clip-inner'
+      });
+      $inner.append($word.contents());
+      $word.append($inner);
+      $inner.css({
+        display: 'inline-block',
+        whiteSpace: 'inherit',
+        overflow: 'visible',
+        verticalAlign: 'baseline',
+        position: 'relative'
+      });
+    }
+
+    return $inner;
+  },
+  ensureClipOverlay: function ensureClipOverlay($inner) {
+    var $overlay = $inner.children('.raven-clip-overlay');
+
+    if (!$overlay.length) {
+      $overlay = $('<span>', {
+        "class": 'raven-clip-overlay'
+      });
+      $inner.append($overlay);
+      $overlay.css({
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: 0,
+        height: 0,
+        backgroundColor: 'transparent',
+        borderRight: 'none',
+        borderLeft: 'none',
+        pointerEvents: 'none',
+        zIndex: 2,
+        willChange: 'left,width,right'
+      });
+      $inner.css({
+        position: 'relative',
+        zIndex: 1
+      });
+    } // Ensure a visible caret at the moving edge with solid border for consistent visibility
+
+
+    $overlay.css({
+      boxShadow: 'none',
+      borderLeft: '2px solid currentColor',
+      borderRight: '0'
+    });
+    return $overlay;
+  },
+  // Helper veil to hide lines below current line so next line does not show early
+  ensureClipVeil: function ensureClipVeil($inner, $word) {
+    var $veil = $inner.children('.raven-clip-veil');
+
+    if (!$veil.length) {
+      $veil = $('<span>', {
+        "class": 'raven-clip-veil'
+      });
+      $inner.append($veil);
+      var bg = this.getEffectiveBackgroundColor($word[0]);
+      $veil.css({
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        height: 0,
+        backgroundColor: bg,
+        pointerEvents: 'none',
+        zIndex: 1
+      });
+      $inner.css({
+        position: 'relative'
+      });
+    }
+
+    return $veil;
+  },
+  ensureClipCustomCss: function ensureClipCustomCss() {
+    if (document.getElementById('raven-clip-custom-style')) {
+      return;
+    }
+
+    var style = document.createElement('style');
+    style.id = 'raven-clip-custom-style';
+    style.textContent = '.raven-heading-animation-type-clip .raven-heading-dynamic-wrapper.raven-clip-custom::after{display:none!important;content:none!important;}';
+    document.head.appendChild(style);
+  },
+  getLineRectsRelative: function getLineRectsRelative($inner) {
+    var rects = [];
+    var el = $inner[0];
+
+    if (!el || !el.firstChild) {
+      return rects;
+    } // Temporarily hide helper overlays so they don't affect measurements
+
+
+    var $helpers = $inner.children('.raven-clip-overlay, .raven-clip-veil');
+    var previousDisplays = [];
+    $helpers.each(function () {
+      previousDisplays.push(this.style.display);
+      this.style.display = 'none';
+    });
+    var range = document.createRange();
+    range.selectNodeContents(el);
+    var clientRects = range.getClientRects();
+    var base = el.getBoundingClientRect();
+
+    for (var i = 0; i < clientRects.length; i++) {
+      var r = clientRects[i];
+      rects.push({
+        top: r.top - base.top,
+        bottom: r.bottom - base.top,
+        left: r.left - base.left,
+        right: r.right - base.left,
+        width: r.width,
+        height: r.height
+      });
+    }
+
+    range.detach(); // Restore helper overlays visibility
+
+    $helpers.each(function (idx) {
+      this.style.display = previousDisplays[idx] || '';
+    });
+    return rects;
+  },
+  // Merge fragmented rects per visual line (caused by inline elements) into one rect per line
+  normalizeLineRects: function normalizeLineRects(rects) {
+    if (!rects || !rects.length) {
+      return [];
+    }
+
+    var epsilon = 0.75; // px tolerance to consider the same line
+
+    var byTop = rects.slice().filter(function (r) {
+      return r.width > 0.5 && r.height > 0.5;
+    }).sort(function (a, b) {
+      return a.top - b.top || a.left - b.left;
+    });
+    var groups = [];
+    byTop.forEach(function (r) {
+      var rMid = r.top + r.height / 2;
+      var found = null;
+
+      for (var i = 0; i < groups.length; i++) {
+        var g = groups[i];
+        var gMid = g.top + g.height / 2;
+
+        if (Math.abs(rMid - gMid) <= epsilon) {
+          found = g;
+          break;
+        }
+      }
+
+      if (found) {
+        found.left = Math.min(found.left, r.left);
+        found.right = Math.max(found.right, r.right);
+        found.width = found.right - found.left;
+        found.top = Math.min(found.top, r.top);
+        found.bottom = Math.max(found.bottom, r.bottom);
+        found.height = found.bottom - found.top;
+      } else {
+        groups.push({
+          top: r.top,
+          bottom: r.bottom,
+          left: r.left,
+          right: r.right,
+          width: r.width,
+          height: r.height
+        });
+      }
+    });
+    return groups.sort(function (a, b) {
+      return a.top - b.top;
+    });
+  },
+  getInlineDirection: function getInlineDirection($el) {
+    try {
+      var dir = window.getComputedStyle($el[0]).direction;
+      return 'rtl' === dir ? 'rtl' : 'ltr';
+    } catch (e) {
+      return 'ltr';
+    }
+  },
+  // Resolve an effective non-transparent background color for overlay masking
+  getEffectiveBackgroundColor: function getEffectiveBackgroundColor(el) {
+    var node = el;
+
+    var isTransparent = function isTransparent(color) {
+      if (!color) {
+        return true;
+      }
+
+      var c = String(color).trim().toLowerCase();
+
+      if (c === 'transparent') {
+        return true;
+      }
+
+      return /^rgba\([^,]+,[^,]+,[^,]+,\s*0\s*\)$/.test(c);
+    };
+
+    while (node) {
+      try {
+        var bg = window.getComputedStyle(node).backgroundColor;
+
+        if (!isTransparent(bg)) {
+          return bg;
+        }
+      } catch (e) {}
+
+      node = node.parentElement;
+    }
+
+    try {
+      var bodyBg = window.getComputedStyle(document.body).backgroundColor;
+
+      if (!isTransparent(bodyBg)) {
+        return bodyBg;
+      }
+    } catch (e) {}
+
+    return '#ffffff';
+  },
+  animateClip: function animateClip($inner, fromPercent, toPercent, duration, onStep, done) {
+    var start = Date.now();
+
+    var step = function step() {
+      var now = Date.now();
+      var t = Math.min(1, (now - start) / duration);
+      var delta = toPercent - fromPercent;
+      var val = fromPercent + delta * t;
+      var inset = 'inset(0 ' + (100 - val) + '% 0 0)';
+      $inner.css({
+        clipPath: inset,
+        WebkitClipPath: inset
+      });
+
+      if (onStep) {
+        onStep(val);
+      }
+
+      if (t < 1) {
+        setTimeout(step, 16);
+      } else if (done) {
+        done();
+      }
+    }; // Initialize
+
+
+    var initInset = 'inset(0 ' + (100 - fromPercent) + '% 0 0)';
+    $inner.css({
+      clipPath: initInset,
+      WebkitClipPath: initInset
+    });
+    setTimeout(step, 0);
+  },
+  getNaturalOuterWidth: function getNaturalOuterWidth($el) {
+    var $clone = $el.clone();
+    $clone.css({
+      position: 'absolute',
+      visibility: 'hidden',
+      left: '-9999px',
+      top: '-9999px',
+      display: 'inline-block',
+      whiteSpace: 'normal',
+      width: 'auto'
+    });
+    $(document.body).append($clone);
+    var w = $clone.outerWidth();
+    $clone.remove();
+    return w;
+  },
+  // Measure the word's width inline within the wrapper flow without affecting layout.
+  getInlineFlowWidth: function getInlineFlowWidth($word) {
+    if (!$word || !$word.length) {
+      return 0;
+    }
+
+    var prev = {
+      display: $word[0].style.display,
+      visibility: $word[0].style.visibility,
+      position: $word[0].style.position,
+      left: $word[0].style.left,
+      top: $word[0].style.top
+    };
+    $word.css({
+      display: 'inline',
+      visibility: 'hidden',
+      position: 'static',
+      left: '',
+      top: ''
+    });
+    var w = $word.outerWidth();
+    $word[0].style.display = prev.display || '';
+    $word[0].style.visibility = prev.visibility || '';
+    $word[0].style.position = prev.position || '';
+    $word[0].style.left = prev.left || '';
+    $word[0].style.top = prev.top || '';
+    return w;
+  },
+  // Measure the wrapper's width with width:auto while the given word would be active,
+  // so line breaks are computed as if the dynamic text is part of the whole text.
+  getWrapperAutoWidthForWord: function getWrapperAutoWidthForWord($word) {
+    var $wrapper = this.elements.$dynamicWrapper;
+
+    if (!$wrapper || !$wrapper.length) {
+      return 0;
+    }
+
+    var target = $word && $word.length ? $word : this.elements.$dynamicText.filter('.' + this.getSettings('classes').textActive).eq(0);
+
+    if (!target.length) {
+      var fallback = Math.max(0, $wrapper.outerWidth() || 0);
+      return fallback;
+    } // Save previous inline styles to restore later.
+
+
+    var prevWrapperStyle = {
+      width: $wrapper[0].style.width,
+      visibility: $wrapper[0].style.visibility,
+      position: $wrapper[0].style.position,
+      display: $wrapper[0].style.display
+    };
+    var prevTargetDisplay = target[0].style.display;
+
+    try {
+      // Keep wrapper in flow but prevent visual flicker during the synchronous measure.
+      $wrapper.css({
+        width: 'auto',
+        visibility: 'hidden',
+        display: 'inline-block'
+      }); // Ensure target word participates in layout as inline content.
+
+      target.css({
+        display: 'inline'
+      }); // Force reflow, then read width.
+      // eslint-disable-next-line no-unused-expressions
+
+      $wrapper[0].offsetWidth;
+      var rect = $wrapper[0].getBoundingClientRect();
+      var measured = Math.max(0, Math.ceil(rect.width) + 1);
+      return measured;
+    } finally {
+      // Restore previous styles.
+      $wrapper[0].style.width = prevWrapperStyle.width || '';
+      $wrapper[0].style.visibility = prevWrapperStyle.visibility || '';
+      $wrapper[0].style.position = prevWrapperStyle.position || '';
+      $wrapper[0].style.display = prevWrapperStyle.display || '';
+      target[0].style.display = prevTargetDisplay || '';
+    }
+  },
+  // Promise helpers for precise chronology
+  sleep: function sleep(ms) {
+    return new Promise(function (resolve) {
+      setTimeout(resolve, ms);
+    });
+  },
+  waitForAnimationEnd: function waitForAnimationEnd($el, fallbackMs) {
+    return new Promise(function (resolve) {
+      var done = false;
+
+      var finish = function finish() {
+        if (done) {
+          return;
+        }
+
+        done = true;
+        $el.off('animationend.ravenEngine animationcancel.ravenEngine');
+        resolve();
+      };
+
+      $el.off('animationend.ravenEngine animationcancel.ravenEngine').one('animationend.ravenEngine animationcancel.ravenEngine', finish);
+
+      if (fallbackMs) {
+        setTimeout(finish, fallbackMs + 50);
+      }
+    });
+  },
+  waitForWidthTransition: function waitForWidthTransition($el, fallbackMs) {
+    return new Promise(function (resolve) {
+      var done = false;
+
+      var handler = function handler(e) {
+        if (done) {
+          return;
+        }
+
+        if (!e || e.propertyName === 'width') {
+          done = true;
+          $el.off('transitionend.ravenEngine');
+          resolve();
+        }
+      };
+
+      $el.off('transitionend.ravenEngine').one('transitionend.ravenEngine', handler);
+
+      if (fallbackMs) {
+        setTimeout(handler, fallbackMs + 50);
+      }
+    });
+  },
+  // Clip animation: reveal forward line-by-line, then hide backward, then swap.
+  showClipWord: function showClipWord($word) {
+    var _this = this;
+
+    var settings = this.getSettings(); // noop
+
+    $word.addClass(settings.classes.textActive).removeClass(settings.classes.textInactive);
+    $word.css({
+      display: 'inline',
+      position: 'static',
+      opacity: 1,
+      verticalAlign: 'baseline'
+    });
+    $word.siblings(this.getSettings('selectors').dynamicText).css({
+      display: 'none'
+    });
+    var $inner = this.ensureClipInner($word);
+    var $overlay = this.ensureClipOverlay($inner);
+    $overlay.stop(true);
+    $overlay.css({
+      display: 'block',
+      height: '100%'
+    }); // Transparent, flowing clip-path engine (single horizontal rail like typing)
+
+    var inlineDir = this.getInlineDirection($word);
+    var rtl = 'rtl' === inlineDir;
+    var naturalWidth = this.getNaturalOuterWidth($word);
+    $inner.css({
+      willChange: 'clip-path, -webkit-clip-path',
+      display: 'inline-block'
+    });
+
+    var onStep = function onStep(percent) {
+      var innerRect = $inner[0] ? $inner[0].getBoundingClientRect() : null;
+      var innerWidthNow = innerRect ? innerRect.width : naturalWidth;
+      var edge = Math.max(0, innerWidthNow * percent / 100);
+      var visualEdgePx = Math.round(edge);
+      var caretOffset = 1;
+      var targetWidth = Math.max(2, visualEdgePx + 2);
+
+      _this.elements.$dynamicWrapper.width(targetWidth);
+
+      if (rtl) {
+        var rightPos = Math.max(0, Math.round(innerWidthNow - edge) - caretOffset);
+        $overlay.css({
+          left: 'auto',
+          right: rightPos,
+          width: 0
+        });
+      } else {
+        var leftPos = Math.max(0, visualEdgePx - caretOffset);
+        $overlay.css({
+          left: leftPos,
+          right: 'auto',
+          width: 0
+        });
+      }
+    };
+
+    var playForward = function playForward() {
+      _this.animateClip($inner, 0, 100, settings.revealDuration, onStep, function () {
+        setTimeout(function () {
+          return playBackward();
+        }, settings.selectionDuration);
+      });
+    };
+
+    var playBackward = function playBackward() {
+      _this.animateClip($inner, 100, 0, settings.revealDuration, onStep, function () {
+        var nextWord = _this.getNextWord($word);
+
+        $word.css({
+          display: 'none'
+        });
+
+        _this.switchWord($word, nextWord);
+
+        _this.showClipWord(nextWord);
+      });
+    };
+
+    this.elements.$dynamicWrapper.width(2);
+    playForward();
+  },
+  // Debug removed in production
+  debugLog: function debugLog() {},
+  // Debug removed in production
+  getComputedSnapshot: function getComputedSnapshot($el) {
+    try {
+      if (!$el || !$el[0]) {
+        return {
+          exists: false
+        };
+      }
+
+      var node = $el[0];
+      var rect = node.getBoundingClientRect();
+      return {
+        exists: true,
+        tag: node.tagName,
+        className: node.className,
+        rect: {
+          top: Math.round(rect.top),
+          left: Math.round(rect.left),
+          width: Math.round(rect.width),
+          height: Math.round(rect.height)
+        }
+      };
+    } catch (e) {
+      return {
+        exists: false
+      };
+    }
+  },
+  forceReflow: function forceReflow($el) {
+    try {
+      if ($el && $el[0]) {
+        // eslint-disable-next-line no-unused-expressions
+        $el[0].offsetWidth;
+      }
+    } catch (e) {}
+  },
+  getWordsSnapshot: function getWordsSnapshot() {
+    return [];
+  },
+  logOverlayState: function logOverlayState() {// Debug removed in production
+  },
+  // Measure natural sizes of each rotating item, accounting for multiline content.
+  computeNaturalSizes: function computeNaturalSizes() {
+    var classes = this.getSettings('classes');
+    var maxHeight = 0;
+    var maxWidth = 0;
+    this.elements.$dynamicText.each(function () {
+      var $word = $(this);
+      var $clone = $word.clone();
+      $clone.removeClass(classes.textActive + ' ' + classes.textInactive + ' ' + classes.animationIn);
+      $clone.find('.' + classes.dynamicLetter).removeClass(classes.animationIn);
+      $clone.css({
+        position: 'absolute',
+        visibility: 'hidden',
+        left: '-9999px',
+        top: '-9999px',
+        width: 'auto',
+        height: 'auto',
+        whiteSpace: 'normal',
+        display: 'inline-block'
+      });
+      $(document.body).append($clone);
+      var naturalWidth = $clone.outerWidth();
+      var naturalHeight = $clone.outerHeight();
+      $word.data('natural-width', naturalWidth);
+      $word.data('natural-height', naturalHeight);
+
+      if (naturalHeight > maxHeight) {
+        maxHeight = naturalHeight;
+      }
+
+      if (naturalWidth > maxWidth) {
+        maxWidth = naturalWidth;
+      }
+
+      $clone.remove();
+    }); // Restore wrapper overflow rules per animation type; for clip keep wrapper inline
+    // so it can blend and line-break with surrounding text. The inner rail handles clip.
+
+    var animType = this.getElementSettings('animation_type');
+
+    if (animType === 'clip') {
+      this.elements.$dynamicWrapper.css({
+        display: 'inline',
+        minWidth: '',
+        width: '',
+        overflow: 'visible'
+      });
+    } else {
+      this.elements.$dynamicWrapper.css({
+        display: 'inline-block',
+        minWidth: '',
+        width: '',
+        overflow: 'visible'
+      });
+    }
+
+    this.maxWordHeight = maxHeight;
+  },
   getNextWord: function getNextWord($word) {
     return $word.is(':last-child') ? $word.parent().children().eq(0) : $word.next();
   },
   switchWord: function switchWord($oldWord, $newWord) {
     $oldWord.removeClass('raven-heading-text-active').addClass('raven-heading-text-inactive');
     $newWord.removeClass('raven-heading-text-inactive').addClass('raven-heading-text-active');
+    var isLetters = this.elements.$heading.hasClass(this.getSettings('classes').letters);
+    var animationType = this.getElementSettings('animation_type');
+    var overlayAnimations = ['flip', 'slide', 'slide-down', 'drop-in'];
+
+    if (isLetters || overlayAnimations.indexOf(animationType) !== -1) {
+      // Overlap words to allow out/in animations to play
+      $oldWord.css({
+        position: 'absolute',
+        left: 0,
+        top: 0,
+        display: 'inline',
+        pointerEvents: 'none'
+      });
+      $newWord.css({
+        position: 'static',
+        display: 'inline',
+        pointerEvents: ''
+      });
+    } else {
+      $oldWord.css({
+        display: 'none',
+        position: '',
+        visibility: ''
+      });
+      $newWord.css({
+        display: 'inline',
+        position: '',
+        visibility: ''
+      });
+    } // Animate wrapper width between words for non-overlay/non-letters excluding clip/typing
+
+
+    var shouldAnimateWidth = !isLetters && overlayAnimations.indexOf(animationType) === -1 && animationType !== 'clip' && animationType !== 'typing';
+
+    if (shouldAnimateWidth) {
+      this.setDynamicWrapperWidth($newWord, true);
+    } // Force reflow so the browser recalculates layout with the new active item
+
+
+    if ($newWord && $newWord[0]) {
+      // eslint-disable-next-line no-unused-expressions
+      $newWord[0].offsetWidth;
+    }
+
+    if (this.elements.$dynamicWrapper && this.elements.$dynamicWrapper[0]) {
+      // eslint-disable-next-line no-unused-expressions
+      this.elements.$dynamicWrapper[0].offsetWidth;
+    }
+
+    this.debugLog('switchWord', {
+      from: $oldWord && $oldWord.text && $oldWord.text(),
+      to: $newWord && $newWord.text && $newWord.text()
+    });
     this.setDynamicWrapperWidth($newWord);
   },
+  // Split text nodes into per-letter spans while preserving <br> and any nested markup.
   singleLetters: function singleLetters() {
     var classes = this.getSettings('classes');
     this.elements.$dynamicText.each(function () {
       var $word = $(this),
-          letters = $word.text().split(''),
-          isActive = $word.hasClass(classes.textActive);
+          isActive = $word.hasClass(classes.textActive),
+          originalNodes = $word.contents().toArray();
       $word.empty();
-      letters.forEach(function (letter) {
-        var $letter = $('<span>', {
-          "class": classes.dynamicLetter
-        }).text(letter);
+      originalNodes.forEach(function (node) {
+        if (node.nodeType === 3) {
+          // Text node
+          var text = node.nodeValue;
+          text.split('').forEach(function (ch) {
+            var $letter = $('<span>', {
+              "class": classes.dynamicLetter
+            });
 
-        if (isActive) {
-          $letter.addClass(classes.animationIn);
+            if (ch === ' ') {
+              $letter.html('&nbsp;');
+            } else {
+              $letter.text(ch);
+            }
+
+            if (isActive) {
+              $letter.addClass(classes.animationIn);
+            }
+
+            $word.append($letter);
+          });
+        } else if (node.nodeType === 1 && node.nodeName === 'BR') {
+          $word.append('<br>');
+        } else if (node.nodeType === 1) {
+          $word.append($(node).clone());
         }
-
-        $word.append($letter);
       });
       $word.css('opacity', 1);
     }); // Create cursor for typing animation
@@ -6915,7 +7682,7 @@ var AnimatedHeading = _module["default"].extend({
   createTypingCursor: function createTypingCursor() {
     var classes = this.getSettings('classes'); // Remove any existing cursor
 
-    this.elements.$dynamicWrapper.find('.' + classes.typingCursor).remove(); // Create new cursor element
+    this.elements.$dynamicWrapper.find('.' + classes.typingCursor).remove(); // Create new cursor element (uses text caret)
 
     this.$cursor = $('<span>', {
       "class": classes.typingCursor,
@@ -6945,6 +7712,11 @@ var AnimatedHeading = _module["default"].extend({
       $activeWord.prepend(this.$cursor);
     }
   },
+  // Find next dynamic letter sibling, skipping non-letter nodes (e.g., cursor or <br>).
+  getNextLetter: function getNextLetter($letter) {
+    var classes = this.getSettings('classes');
+    return $letter.nextAll('.' + classes.dynamicLetter).eq(0);
+  },
   showLetter: function showLetter($letter, $word, thisWordHasBiggerLength, duration) {
     var self = this,
         classes = this.getSettings('classes');
@@ -6954,9 +7726,11 @@ var AnimatedHeading = _module["default"].extend({
       this.positionCursor();
     }
 
-    if (!$letter.is(':last-child')) {
+    var $nextLetter = this.getNextLetter($letter);
+
+    if ($nextLetter && $nextLetter.length) {
       setTimeout(function () {
-        self.showLetter($letter.next(), $word, thisWordHasBiggerLength, duration);
+        self.showLetter($nextLetter, $word, thisWordHasBiggerLength, duration);
       }, duration);
       return;
     }
@@ -6976,9 +7750,11 @@ var AnimatedHeading = _module["default"].extend({
       this.positionCursor();
     }
 
-    if (!$letter.is(':last-child')) {
+    var $nextLetter = this.getNextLetter($letter);
+
+    if ($nextLetter && $nextLetter.length) {
       setTimeout(function () {
-        self.hideLetter($letter.next(), $word, thisWordHasBiggerLength, duration);
+        self.hideLetter($nextLetter, $word, thisWordHasBiggerLength, duration);
       }, duration);
       return;
     }
@@ -6987,29 +7763,44 @@ var AnimatedHeading = _module["default"].extend({
       setTimeout(function () {
         self.hideWord(self.getNextWord($word));
       }, self.getSettings('animationDelay'));
-    }
+    } // After finishing hiding this word's letters, ensure it doesn't occupy space.
+
+
+    $word.css({
+      position: 'absolute',
+      left: 0,
+      top: 0,
+      opacity: 0,
+      display: 'inline',
+      pointerEvents: 'none'
+    });
   },
   showWord: function showWord($word, $duration) {
     var self = this,
         settings = self.getSettings(),
-        animationType = self.getElementSettings('animation_type');
+        animationType = self.getElementSettings('animation_type'); // noop
 
     if ('typing' === animationType) {
+      // Ensure the word is visible and in the flow before typing begins
+      $word.css({
+        display: 'inline',
+        position: 'static',
+        opacity: 1,
+        pointerEvents: ''
+      }); // Unlock wrapper width so it can expand with letters
+
+      this.elements.$dynamicWrapper.css('width', ''); // Hide other variants so they don't interfere
+
+      $word.siblings(settings.selectors && settings.selectors.dynamicText ? settings.selectors.dynamicText : '.' + settings.classes.dynamicText).css({
+        display: 'none'
+      });
       self.showLetter($word.find('.' + settings.classes.dynamicLetter).eq(0), $word, false, $duration);
       $word.addClass(settings.classes.textActive).removeClass(settings.classes.textInactive);
       return;
     }
 
     if ('clip' === animationType) {
-      // Store the word's natural width before animation constrains it
-      var naturalWidth = $word.data('natural-width') || $word.width();
-      self.elements.$dynamicWrapper.animate({
-        width: naturalWidth + 10
-      }, settings.revealDuration, function () {
-        setTimeout(function () {
-          self.hideWord($word);
-        }, settings.revealAnimationDelay);
-      });
+      return this.showClipWord($word);
     }
   },
   hideWord: function hideWord($word) {
@@ -7018,14 +7809,23 @@ var AnimatedHeading = _module["default"].extend({
         classes = settings.classes,
         letterSelector = '.' + classes.dynamicLetter,
         animationType = self.getElementSettings('animation_type'),
-        nextWord = self.getNextWord($word);
+        nextWord = self.getNextWord($word); // noop
 
     if (!this.isLoopMode && $word.is(':last-child')) {
       return;
     }
 
     if ('typing' === animationType) {
-      // Hide cursor during selection
+      // Prepare next word to be visible before typing it in
+      nextWord.css({
+        display: 'inline',
+        position: 'static',
+        opacity: 1,
+        pointerEvents: ''
+      }); // Allow wrapper to naturally resize during selection and next typing
+
+      this.elements.$dynamicWrapper.css('width', ''); // Hide cursor during selection
+
       if (self.$cursor) {
         self.$cursor.hide();
       }
@@ -7046,19 +7846,85 @@ var AnimatedHeading = _module["default"].extend({
     }
 
     if (self.elements.$heading.hasClass(classes.letters)) {
-      var thisWordHasBiggerLength = $word.children(letterSelector).length >= nextWord.children(letterSelector).length;
+      // Toggle active/inactive classes for consistency
+      $word.removeClass(classes.textActive).addClass(classes.textInactive);
+      nextWord.removeClass(classes.textInactive).addClass(classes.textActive); // Ensure next word is visible and current word is removed from flow immediately.
+
+      nextWord.css({
+        position: 'static',
+        opacity: 1,
+        display: 'inline',
+        pointerEvents: ''
+      });
+      $word.css({
+        display: 'none',
+        position: 'absolute',
+        left: 0,
+        top: 0,
+        opacity: 0,
+        pointerEvents: 'none'
+      });
+      var thisWordHasBiggerLength = $word.children(letterSelector).length >= nextWord.children(letterSelector).length; // Continue both paths: hide letters of current (works even when hidden) and show letters of next
+
       self.hideLetter($word.find(letterSelector).eq(0), $word, thisWordHasBiggerLength, settings.lettersDelay);
       self.showLetter(nextWord.find(letterSelector).eq(0), nextWord, thisWordHasBiggerLength, settings.lettersDelay);
-      self.setDynamicWrapperWidth(nextWord);
+      self.setDynamicWrapperWidth(nextWord); // noop
+
       return;
     }
 
     if ('clip' === animationType) {
-      self.elements.$dynamicWrapper.animate({
-        width: '2px'
-      }, settings.revealDuration, function () {
-        self.switchWord($word, nextWord);
-        self.showWord(nextWord);
+      // For clip, old word is removed, show next after rail animation ends
+      $word.css({
+        display: 'none'
+      });
+      self.switchWord($word, nextWord);
+      self.showWord(nextWord);
+      return;
+    } // For overlay-based animations (flip/slide/slide-down/drop-in), animate old inline, swap on animationend.
+
+
+    var overlayAnimations = ['flip', 'slide', 'slide-down', 'drop-in'];
+
+    if (overlayAnimations.indexOf(animationType) !== -1) {
+      var oldWidth = $word.data('natural-width') || self.getNaturalOuterWidth($word);
+      var newWidth = nextWord.data('natural-width') || self.getNaturalOuterWidth(nextWord); // Lock wrapper to current word's width during out animation
+
+      self.elements.$dynamicWrapper.css('width', Math.max(2, oldWidth)); // Ensure only current word is inline; prepare next as hidden and inactive
+
+      nextWord.removeClass(classes.textActive).addClass(classes.textInactive);
+      nextWord.css({
+        display: 'none',
+        position: 'static',
+        opacity: 1,
+        pointerEvents: ''
+      }); // Trigger out by toggling classes only on current word
+
+      $word.removeClass(classes.textActive).addClass(classes.textInactive); // Clean old handlers and listen for out animation end
+
+      $word.off('animationend.ravenAH').one('animationend.ravenAH', function () {
+        // Hide old from layout
+        $word.css({
+          display: 'none'
+        }); // Show next inline first, then force reflow, then activate to trigger animation
+
+        nextWord.css({
+          display: 'inline'
+        }); // Force reflow so flip-in keyframes start from base state
+
+        if (nextWord[0]) {
+          /* eslint-disable no-unused-expressions */
+          nextWord[0].offsetWidth;
+          /* eslint-enable no-unused-expressions */
+        }
+
+        nextWord.removeClass(classes.textInactive).addClass(classes.textActive); // Transition wrapper to new width
+
+        self.elements.$dynamicWrapper.css('width', Math.max(2, newWidth)); // After width transition, continue cycle
+
+        setTimeout(function () {
+          self.hideWord(nextWord);
+        }, 500); // matches SCSS width transition
       });
       return;
     }
@@ -7069,33 +7935,96 @@ var AnimatedHeading = _module["default"].extend({
     }, settings.animationDelay);
   },
   setDynamicWrapperWidth: function setDynamicWrapperWidth($word) {
+    var animate = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
     var animationType = this.getElementSettings('animation_type');
 
-    if ('clip' !== animationType && 'typing' !== animationType) {
-      this.elements.$dynamicWrapper.css('width', $word.width());
+    if ('clip' === animationType || 'typing' === animationType) {
+      // Clip updates width continuously during reveal; skip here.
+      return;
+    }
+
+    if (!this.elements.$dynamicWrapper || !this.elements.$dynamicWrapper[0]) {
+      return;
+    }
+
+    var $wrapper = this.elements.$dynamicWrapper;
+    var $target = $word && $word.length ? $word : this.elements.$dynamicText.filter('.' + this.getSettings('classes').textActive).eq(0);
+    var isLetters = this.elements.$heading.hasClass(this.getSettings('classes').letters);
+    var targetWidth = Math.max(2, this.getWrapperAutoWidthForWord($target) + (isLetters ? 2 : 0));
+    var styleWidth = parseFloat($wrapper[0].style.width) || 0;
+    var computedWidth = Math.max(2, Math.round($wrapper[0].getBoundingClientRect().width || 0));
+
+    if (animate && !isLetters) {
+      // If style width isn't set, set it to current computed first to avoid auto->px jump
+      if (!styleWidth) {
+        $wrapper.css('width', computedWidth); // eslint-disable-next-line no-unused-expressions
+
+        $wrapper[0].offsetWidth;
+      }
+
+      $wrapper.off('transitionend.ahWidth').on('transitionend.ahWidth', function (e) {
+        if (!e || e.propertyName === 'width') {
+          $wrapper.off('transitionend.ahWidth');
+        }
+      });
+      (window.requestAnimationFrame || window.setTimeout)(function () {
+        $wrapper.css('width', targetWidth);
+      }, 16);
+    } else {
+      $wrapper.css('width', targetWidth);
     }
   },
   animateHeading: function animateHeading() {
     var self = this,
         animationType = self.getElementSettings('animation_type'),
-        $dynamicWrapper = self.elements.$dynamicWrapper; // Store natural widths of all words before animations start
+        $dynamicWrapper = self.elements.$dynamicWrapper; // Measure natural sizes for all items (handles multiline & variable sizes)
 
-    if ('clip' === animationType) {
-      self.elements.$dynamicText.each(function () {
-        var $word = $(this);
-        $word.data('natural-width', $word.width());
-      });
+    self.computeNaturalSizes(); // For non-clip & non-typing animations, set wrapper to active word width so flow isn't broken
+
+    if ('clip' !== animationType && 'typing' !== animationType) {
+      var $active = self.elements.$dynamicText.filter('.' + self.getSettings('classes').textActive);
+      self.setDynamicWrapperWidth($active.length ? $active : self.elements.$dynamicText.eq(0));
+    } else if ('clip' === animationType) {
+      // Clip uses width animation; seed with measured natural width of first word
+      var firstWidth = self.elements.$dynamicText.eq(0).data('natural-width') || self.elements.$dynamicText.eq(0).outerWidth();
+      self.elements.$dynamicWrapper.width(Math.max(2, firstWidth + 10));
+    } else {
+      // typing
+      // Let typing grow/shrink naturally with visible letters
+      self.elements.$dynamicWrapper.css('width', '');
     }
 
     if ('clip' === animationType) {
-      $dynamicWrapper.width($dynamicWrapper.width() + 10);
-    } else if ('typing' !== animationType) {
-      self.setDynamicWrapperWidth(self.elements.$dynamicText);
-    } // Trigger animation.
+      // Ensure clip rail has a bit of extra space to prevent line wrap jitter
+      $dynamicWrapper.width(Math.max(2, $dynamicWrapper.width() + 10));
+    } // Trigger animation: for clip start revealing immediately; others follow legacy flow
 
+
+    var $first = self.elements.$dynamicText.eq(0);
+    var $next = self.getNextWord($first); // Ensure a clean initial state for overlay: only first is active, others have no state class
+
+    if (['flip', 'slide', 'slide-down', 'drop-in'].indexOf(animationType) !== -1) {
+      self.elements.$dynamicText.not($first).removeClass(self.getSettings('classes').textActive + ' ' + self.getSettings('classes').textInactive);
+    }
+
+    $next.addClass(self.getSettings('classes').textInactive).removeClass(self.getSettings('classes').textActive);
+
+    if ('clip' === animationType) {
+      self.elements.$dynamicText.not($first).css({
+        display: 'none'
+      });
+      self.showWord($first);
+      return;
+    }
+
+    $first.addClass(self.getSettings('classes').textActive).removeClass(self.getSettings('classes').textInactive);
+
+    if (self.elements.$heading.hasClass(self.getSettings('classes').letters)) {
+      $first.find('.' + self.getSettings('classes').dynamicLetter).addClass(self.getSettings('classes').animationIn);
+    }
 
     setTimeout(function () {
-      self.hideWord(self.elements.$dynamicText.eq(0));
+      self.hideWord($first);
     }, self.getSettings('animationDelay'));
   },
   getSvgPaths: function getSvgPaths(pathName) {
@@ -7118,29 +8047,302 @@ var AnimatedHeading = _module["default"].extend({
     this.elements.$dynamicWrapper.append($svg[0].outerHTML);
   },
   rotateHeading: function rotateHeading() {
-    var settings = this.getSettings(); // Insert <span> for each letter of a changing word.
+    var settings = this.getSettings(); // noop
+    // Insert <span> for each letter of a changing word.
 
     if (this.elements.$heading.hasClass(settings.classes.letters)) {
       this.singleLetters();
-    } // Initialise heading animation.
+    } // Ensure base inline styles and visibility.
+
+
+    this.applyBaseStyles();
+
+    if (this.elements.$heading.hasClass(settings.classes.letters)) {
+      // Letter-based animations need next word present but not occupying space.
+      this.elements.$dynamicWrapper.css({
+        position: 'relative'
+      });
+      this.elements.$dynamicText.not('.' + settings.classes.textActive).css({
+        display: 'inline',
+        position: 'absolute',
+        left: 0,
+        top: 0,
+        opacity: 0,
+        pointerEvents: 'none'
+      });
+      this.elements.$dynamicText.filter('.' + settings.classes.textActive).css({
+        display: 'inline',
+        position: 'static',
+        opacity: 1,
+        whiteSpace: 'normal',
+        maxWidth: '100%',
+        overflow: 'visible'
+      });
+    } else {
+      // Non-letter: only show the active word initially.
+      this.elements.$dynamicText.not('.' + settings.classes.textActive).css({
+        display: 'none',
+        position: '',
+        visibility: ''
+      });
+      this.elements.$dynamicText.filter('.' + settings.classes.textActive).css({
+        display: 'inline',
+        position: 'static',
+        visibility: '',
+        whiteSpace: 'normal',
+        maxWidth: '100%',
+        overflow: 'visible'
+      }); // For overlay animations (flip/slide/slide-down/drop-in), overlap words to allow in/out animations on multiline.
+
+      var _overlayAnimations = ['flip', 'slide', 'slide-down', 'drop-in'];
+
+      if (_overlayAnimations.indexOf(this.getElementSettings('animation_type')) !== -1) {
+        this.elements.$dynamicWrapper.css({
+          position: 'relative'
+        });
+        var $active = this.elements.$dynamicText.filter('.' + settings.classes.textActive);
+
+        if (!$active.length) {
+          $active = this.elements.$dynamicText.eq(0).addClass(settings.classes.textActive);
+        } // Ensure only current has the active class; remove inactive from others so they stay hidden (base state)
+
+
+        this.elements.$dynamicText.not($active).removeClass(settings.classes.textActive + ' ' + settings.classes.textInactive);
+        this.elements.$dynamicText.not($active).css({
+          // Let SCSS control display (inline-block for flip), only stack for overlap
+          display: '',
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          pointerEvents: 'none'
+        });
+        $active.css({
+          display: '',
+          position: 'static',
+          pointerEvents: ''
+        });
+      }
+    } // Disable default caret pseudo-element for clip to avoid double cursor
+
+
+    if (this.getElementSettings('animation_type') === 'clip') {
+      this.elements.$dynamicWrapper.addClass('raven-clip-custom');
+      this.ensureClipCustomCss();
+    } // Choose engine by animation type
+
+
+    var animType = this.getElementSettings('animation_type');
+    var overlayAnimations = ['flip', 'slide', 'slide-down', 'drop-in'];
+
+    if (overlayAnimations.indexOf(animType) !== -1) {
+      return this.runOverlayLoop();
+    } // Initialise heading animation for typing/clip and letter-based (swirl/blinds/wave)
 
 
     this.animateHeading();
   },
+  // Duration map for overlay animations' hide phase (ms)
+  getOverlayOutDurationMs: function getOverlayOutDurationMs() {
+    switch (this.getElementSettings('animation_type')) {
+      case 'flip':
+        return 1200;
+
+      case 'slide':
+      case 'slide-down':
+        return 600;
+
+      case 'drop-in':
+        return 800;
+
+      default:
+        return 800;
+    }
+  },
+  // Rotation engine with explicit show/hide phases and inline width transitions
+  runOverlayLoop: function runOverlayLoop() {
+    var _this2 = this;
+
+    return (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee() {
+      var settings, classes, animType, $words, $current, outMs, $next;
+      return _regenerator["default"].wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              settings = _this2.getSettings();
+              classes = settings.classes; // Read animation type where needed to avoid unused variable
+
+              animType = _this2.getElementSettings('animation_type');
+              $words = _this2.elements.$dynamicText;
+              $current = $words.filter('.' + classes.textActive).eq(0);
+
+              if (!$current.length) {
+                $current = $words.eq(0);
+                $current.addClass(classes.textActive).removeClass(classes.textInactive);
+              } // For overlay animations, stack non-active words absolutely so only the
+              // active word participates in inline flow; let SCSS control display.
+
+
+              if (['flip', 'slide', 'slide-down', 'drop-in'].indexOf(animType) !== -1) {
+                $words.not($current).css({
+                  position: 'absolute',
+                  left: 0,
+                  top: 0,
+                  pointerEvents: 'none'
+                });
+                $current.css({
+                  position: 'static',
+                  pointerEvents: ''
+                });
+              } else {
+                $words.not($current).css({
+                  display: 'none',
+                  position: 'static',
+                  opacity: 1
+                });
+                $current.css({
+                  display: 'inline',
+                  position: 'static',
+                  opacity: 1
+                });
+              } // Keep wrapper natural so dynamic text stays inline with before/after
+
+
+              _this2.elements.$dynamicWrapper.css('width', '');
+
+              outMs = _this2.getOverlayOutDurationMs(); // noop
+              // eslint-disable-next-line no-constant-condition
+
+            case 9:
+              if (!true) {
+                _context.next = 27;
+                break;
+              }
+
+              $next = _this2.getNextWord($current);
+
+              if (['flip', 'slide', 'slide-down', 'drop-in'].indexOf(animType) !== -1) {
+                // Reset any previous state leakage
+                _this2.elements.$dynamicText.not($current).removeClass(classes.textActive + ' ' + classes.textInactive);
+
+                $next.removeClass(classes.textActive + ' ' + classes.textInactive); // Keep next out of flow initially to avoid width inflation; we'll place it inline at reveal time
+
+                $next.css({
+                  position: 'absolute',
+                  left: 0,
+                  top: 0,
+                  pointerEvents: 'none'
+                });
+              } else {
+                $next.removeClass(classes.textActive).addClass(classes.textInactive).css({
+                  display: 'none',
+                  position: 'static',
+                  opacity: 1
+                });
+              }
+
+              _context.next = 14;
+              return _this2.sleep(_this2.getSettings('animationDelay'));
+
+            case 14:
+              // noop
+              $current.removeClass(classes.textActive).addClass(classes.textInactive);
+              _context.next = 17;
+              return _this2.waitForAnimationEnd($current, outMs);
+
+            case 17:
+              // noop
+              // Do not forcibly hide for overlay types; SCSS keyframes handle visibility.
+              if (['flip', 'slide', 'slide-down', 'drop-in'].indexOf(animType) === -1) {
+                $current.css({
+                  display: 'none'
+                });
+              } // Reveal next inline and trigger its in-keyframe
+
+
+              if (['flip', 'slide', 'slide-down', 'drop-in'].indexOf(animType) !== -1) {
+                // Prepare next for animation while kept out of flow
+                _this2.forceReflow($next);
+              } else {
+                $next.css({
+                  display: 'inline',
+                  position: 'static',
+                  opacity: 1,
+                  pointerEvents: ''
+                });
+              } // noop
+
+
+              if ($next[0]) {
+                /* eslint-disable no-unused-expressions */
+                $next[0].offsetWidth;
+                /* eslint-enable no-unused-expressions */
+              }
+
+              $next.removeClass(classes.textInactive).addClass(classes.textActive);
+
+              if (['flip', 'slide', 'slide-down', 'drop-in'].indexOf(animType) !== -1) {
+                // Force keyframes to start; then take current out of flow and place next inline
+                _this2.forceReflow($next);
+
+                $current.css({
+                  position: 'absolute',
+                  left: 0,
+                  top: 0,
+                  pointerEvents: 'none'
+                });
+                $next.css({
+                  position: 'static',
+                  pointerEvents: ''
+                });
+              } // noop
+
+
+              $current = $next;
+
+              if (!(!_this2.isLoopMode && $current.is(':last-child'))) {
+                _context.next = 25;
+                break;
+              }
+
+              return _context.abrupt("break", 27);
+
+            case 25:
+              _context.next = 9;
+              break;
+
+            case 27:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }))();
+  },
   initHeading: function initHeading() {
     var headingStyle = this.getElementSettings('heading_style');
 
+    if (this._headingInitialized) {
+      return;
+    }
+
     if ('rotate' === headingStyle) {
+      try {// noop
+      } catch (e) {}
+
       this.rotateHeading();
     } else if ('highlight' === headingStyle) {
+      try {// noop
+      } catch (e) {}
+
       this.addHighlight();
       this.activateHighlightAnimation();
     }
 
     this.deactivateScrollListener();
+    this._headingInitialized = true;
   },
   activateHighlightAnimation: function activateHighlightAnimation() {
-    var _this = this;
+    var _this3 = this;
 
     var settings = this.getSettings(),
         classes = settings.classes,
@@ -7155,26 +8357,42 @@ var AnimatedHeading = _module["default"].extend({
       $heading.removeClass(classes.activateHighlight).addClass(classes.hideHighlight);
     }, settings.highlightAnimationDuration + settings.highlightAnimationDelay * .8);
     setTimeout(function () {
-      _this.activateHighlightAnimation(false);
+      _this3.activateHighlightAnimation(false);
     }, settings.highlightAnimationDuration + settings.highlightAnimationDelay);
   },
   activateScrollListener: function activateScrollListener() {
-    var _this2 = this;
+    var _this4 = this;
 
     var scrollBuffer = -100;
+
+    if (!this.elements.$heading || !this.elements.$heading.length) {
+      return;
+    }
+
     this.intersectionObservers.startAnimation.observer = elementorModules.utils.Scroll.scrollObserver({
       offset: "0px 0px ".concat(scrollBuffer, "px"),
       callback: function callback(event) {
+        try {// noop
+        } catch (e) {}
+
         if (event.isInViewport) {
-          _this2.initHeading();
+          _this4.initHeading();
         }
       }
     });
     this.intersectionObservers.startAnimation.element = this.elements.$heading[0];
-    this.intersectionObservers.startAnimation.observer.observe(this.intersectionObservers.startAnimation.element);
+
+    if (this.intersectionObservers.startAnimation.element) {
+      this.intersectionObservers.startAnimation.observer.observe(this.intersectionObservers.startAnimation.element);
+    }
   },
   deactivateScrollListener: function deactivateScrollListener() {
-    this.intersectionObservers.startAnimation.observer.unobserve(this.intersectionObservers.startAnimation.element);
+    var obs = this.intersectionObservers.startAnimation && this.intersectionObservers.startAnimation.observer;
+    var el = this.intersectionObservers.startAnimation && this.intersectionObservers.startAnimation.element;
+
+    if (obs && el) {
+      obs.unobserve(el);
+    }
   }
 });
 
@@ -7184,7 +8402,7 @@ function _default($scope) {
   });
 }
 
-},{"../utils/module":9,"@babel/runtime/helpers/interopRequireDefault":96}],31:[function(require,module,exports){
+},{"../utils/module":9,"@babel/runtime/helpers/asyncToGenerator":89,"@babel/runtime/helpers/interopRequireDefault":96,"@babel/runtime/regenerator":108}],31:[function(require,module,exports){
 "use strict";
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");

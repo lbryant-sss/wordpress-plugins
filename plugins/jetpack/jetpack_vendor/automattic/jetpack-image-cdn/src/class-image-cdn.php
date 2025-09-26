@@ -12,7 +12,7 @@ namespace Automattic\Jetpack\Image_CDN;
  */
 final class Image_CDN {
 
-	const PACKAGE_VERSION = '0.7.21';
+	const PACKAGE_VERSION = '0.7.18';
 
 	/**
 	 * Singleton.
@@ -60,7 +60,7 @@ final class Image_CDN {
 	 * @return object
 	 */
 	public static function instance() {
-		if ( ! self::$instance instanceof self ) {
+		if ( ! is_a( self::$instance, self::class ) ) {
 			self::$instance = new self();
 			self::$instance->setup();
 			self::$is_enabled = true;

@@ -34,6 +34,7 @@ class Testimonial_Carousel extends Base {
 	}
 
 	protected function register_controls() {
+		parent::child_class_name( 'testimonial-carousel' );
 		$this->register_controls_section_slides();
 		$this->register_controls_section_additional_options();
 		$this->register_controls_section_slides_style();
@@ -233,22 +234,6 @@ class Testimonial_Carousel extends Base {
 					],
 				],
 				'prefix_class' => 'raven-testimonial-%s-align-',
-			]
-		);
-
-		$this->end_injection();
-
-		$this->start_injection( [
-			'at' => 'after',
-			'of' => 'slide_border_color',
-		] );
-
-		$this->add_group_control(
-			'box-shadow',
-			[
-				'name' => 'slide_box_shadow',
-				'label' => esc_html__( 'Box Shadow', 'jupiterx-core' ),
-				'selector' => '{{WRAPPER}} .raven-main-swiper .swiper-slide',
 			]
 		);
 

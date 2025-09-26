@@ -38,7 +38,7 @@ class Module extends Module_Base {
 	/**
 	 * Get module name.
 	 *
-	 * @since  NEXT
+	 * @since 2.5.0
 	 * @access public
 	 *
 	 * @return string Module name.

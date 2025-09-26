@@ -120,7 +120,7 @@ class Login extends Action_Base {
 		wp_set_auth_cookie( $result->ID );
 
 		// Check if we need to set remember me cookie.
-		if ( 'on' === $ajax_handler->record['remember-me'] ) {
+		if ( isset( $ajax_handler->record['remember-me'] ) && 'on' === $ajax_handler->record['remember-me'] ) {
 			wp_set_auth_cookie( $result->ID, 1, is_ssl() );
 		}
 

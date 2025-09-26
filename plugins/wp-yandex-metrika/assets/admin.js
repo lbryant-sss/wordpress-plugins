@@ -159,10 +159,7 @@ jQuery(function($){
     }
 
     function formatSelection (state) {
-        const $state = $(
-            `<span>${state.text}</span>`
-        );
-        return $state;
+        return state.text;
     }
 
     function formatSelectOption (state) {

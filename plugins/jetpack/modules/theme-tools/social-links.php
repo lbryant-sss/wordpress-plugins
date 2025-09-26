@@ -15,10 +15,6 @@
 
 use Automattic\Jetpack\Status\Host;
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit( 0 );
-}
-
 // phpcs:disable Universal.Files.SeparateFunctionsFromOO.Mixed -- TODO: Move classes to appropriately-named class files.
 
 if ( ! function_exists( 'jetpack_theme_supports_social_links' ) ) {

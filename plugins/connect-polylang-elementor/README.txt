@@ -1,11 +1,11 @@
 === Connect Polylang for Elementor ===
 Contributors: creapuntome, pacotole, daveshine, p4fbradjohnson
 Donate link: https://github.com/sponsors/creame
-Tags: elementor, polylang, multilingual, language switcher, languages, templates, widget, finder, dynamic tags
+Tags: elementor, polylang, multilingual, language switcher, dynamic tags
 Requires at least: 5.4
 Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 2.5.0
+Stable tag: 2.5.1
 License: GPL-2.0-or-later
 License URI: https://opensource.org/licenses/GPL-2.0
 
@@ -200,6 +200,9 @@ There are quite a few:
 
 
 == Changelog ==
+
+= 2.5.1 =
+* Fix New Search widget (Elem. >= 3.24) use correct search url (thanks to [@giovanni-caprilli](https://github.com/giovanni-caprilli))
 
 = 2.5.0 =
 * **NEW editor language switcher controls** for Elementor Editor Top Bar 3.25.0 and later (not v4).

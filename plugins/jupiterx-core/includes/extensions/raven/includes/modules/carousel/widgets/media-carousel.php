@@ -57,6 +57,7 @@ class Media_Carousel extends Base {
 	}
 
 	protected function register_controls() {
+		parent::child_class_name( 'media-carousel' );
 		parent::register_controls();
 
 		$this->start_controls_section(
@@ -447,25 +448,6 @@ class Media_Carousel extends Base {
 		$this->end_injection();
 
 		$this->start_injection( [
-			'of' => 'slide_padding',
-		] );
-
-		$this->add_group_control(
-			'box-shadow',
-			[
-				'name' => 'slide_box_shadow',
-				'label' => esc_html__( 'Box Shadow', 'jupiterx-core' ),
-				'selector' => '{{WRAPPER}} .raven-main-swiper .swiper-slide',
-				'condition' => [
-					'skin' => [ 'carousel', 'coverflow' ],
-					'effect!' => 'fade',
-				],
-			]
-		);
-
-		$this->end_injection();
-
-		$this->start_injection( [
 			'of' => 'pagination_color',
 		] );
 
@@ -508,13 +490,18 @@ class Media_Carousel extends Base {
 		);
 
 		$this->add_group_control(
-			Group_Control_Text_Shadow::get_type(),
+			'text-shadow',
 			[
 				'name' => 'play_icon_text_shadow',
-				'selector' => '{{WRAPPER}} .elementor-custom-embed-play i',
 				'fields_options' => [
 					'text_shadow_type' => [
-						'label' => _x( 'Shadow', 'Text Shadow Control', 'jupiterx-core' ),
+						'label' => esc_html__( 'Shadow', 'jupiterx-core' ),
+					],
+					'text_shadow' => [
+						'selectors' => [
+							'{{WRAPPER}} .elementor-custom-embed-play i' => 'text-shadow: {{HORIZONTAL}}px {{VERTICAL}}px {{BLUR}}px {{COLOR}};',
+							'{{WRAPPER}} .elementor-custom-embed-play > svg' => 'filter: drop-shadow({{HORIZONTAL}}px {{VERTICAL}}px {{BLUR}}px {{COLOR}});',
+						],
 					],
 				],
 			]

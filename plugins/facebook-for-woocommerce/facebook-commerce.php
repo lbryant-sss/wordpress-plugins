@@ -106,6 +106,30 @@ class WC_Facebookcommerce_Integration extends WC_Integration {
 	/** @var string request headers in the debug log */
 	const SETTING_REQUEST_HEADERS_IN_DEBUG_MODE = 'wc_facebook_request_headers_in_debug_log';
 
+	/** @var array Meta keys that affect Facebook sync and should trigger last change time update */
+	const PRODUCT_ATTRIBUTE_SYNC_RELEVANT_META_KEYS = [
+		'_regular_price',                     // -> price
+		'_sale_price',                        // -> sale_price
+		'_stock',                             // -> availability
+		'_stock_status',                      // -> availability
+		'_thumbnail_id',                      // -> image_link
+		'_price',                             // -> price (calculated field)
+		'fb_visibility',                      // -> visibility
+		'fb_product_description',             // -> description
+		'fb_rich_text_description',           // -> rich_text_description
+		'fb_brand',                           // -> brand
+		'fb_mpn',                             // -> mpn
+		'fb_size',                            // -> size
+		'fb_color',                           // -> color
+		'fb_material',                        // -> material
+		'fb_pattern',                         // -> pattern
+		'fb_age_group',                       // -> age_group
+		'fb_gender',                          // -> gender
+		'fb_product_condition',               // -> condition
+		'_wc_facebook_sync_enabled',          // -> sync settings
+		'_wc_facebook_product_image_source',  // -> sync settings
+	];
+
 	/** @var string the WordPress option name where the access token is stored */
 	const OPTION_ACCESS_TOKEN = 'wc_facebook_access_token';
 
@@ -202,6 +226,13 @@ class WC_Facebookcommerce_Integration extends WC_Integration {
 	public const FB_PRIORITY_MID     = 9;
 
 	/**
+	 * Static flag to prevent infinite loops when updating last change time.
+	 *
+	 * @var bool
+	 */
+	private static $is_updating_last_change_time = false;
+
+	/**
 	 * Facebook exception test mode switch.
 	 *
 	 * @var bool
@@ -222,6 +253,9 @@ class WC_Facebookcommerce_Integration extends WC_Integration {
 
 	/** @var WC_Facebookcommerce_Whatsapp_Utility_Event instance. */
 	private $wa_utility_event_processor;
+
+	/** @var WC_Facebookcommerce_Iframe_Whatsapp_Utility_Event instance. */
+	private $wa_iframe_utility_event_processor;
 
 	/**
 	 * Init and hook in the integration.
@@ -376,6 +410,12 @@ class WC_Facebookcommerce_Integration extends WC_Integration {
 
 		// Init Whatsapp Utility Event Processor
 		$this->wa_utility_event_processor = $this->load_whatsapp_utility_event_processor();
+
+		// Track programmatic changes that don't update post_modified
+		add_action( 'updated_post_meta', array( $this, 'update_product_last_change_time' ), 10, 4 );
+
+		// Init Whatsapp Iframe Utility Event Processor
+		$this->wa_iframe_utility_event_processor = $this->load_whatsapp_iframe_utility_event_processor();
 	}
 
 	/**
@@ -1274,72 +1314,6 @@ class WC_Facebookcommerce_Integration extends WC_Integration {
 	}
 
 	/**
-	 * Update existing product group (variant data only)
-	 *
-	 * @deprecated as we are no longer calling an update
-	 * We create everytime and it will be handled in the backend
-	 * TO_BE_DELETED
-	 *
-	 * @param WC_Facebook_Product $woo_product
-	 **/
-	public function update_product_group( WC_Facebook_Product $woo_product ) {
-		$fb_product_group_id = $this->get_product_fbid(
-			self::FB_PRODUCT_GROUP_ID,
-			$woo_product->get_id(),
-			$woo_product
-		);
-
-		if ( ! $fb_product_group_id ) {
-			return;
-		}
-
-		$variants = $woo_product->prepare_variants_for_group();
-
-		if ( ! $variants ) {
-			return;
-		}
-
-		$product_group_data = [
-			'variants' => $variants,
-		];
-
-		// Figure out the matching default variation.
-		$default_product_fbid = $this->get_product_group_default_variation( $woo_product, $fb_product_group_id );
-
-		if ( $default_product_fbid ) {
-			$product_group_data['default_product_id'] = $default_product_fbid;
-		}
-
-		try {
-			$response = $this->facebook_for_woocommerce->get_api()->update_product_group( $fb_product_group_id, $product_group_data );
-			if ( $response->success ) {
-				$this->display_success_message(
-					'Updated product group <a href="https://facebook.com/' .
-					$fb_product_group_id . '" target="_blank">' . $fb_product_group_id .
-					'</a> on Facebook.'
-				);
-			} else {
-				$this->display_error_message(
-					'Updating product group <a href="https://facebook.com/' .
-					$fb_product_group_id . '" target="_blank">' . $fb_product_group_id .
-					'</a> on Facebook has failed.'
-				);
-			}
-		} catch ( ApiException $e ) {
-			$message = sprintf( 'There was an error trying to update Product Group %s: %s', $fb_product_group_id, $e->getMessage() );
-			Logger::log(
-				$message,
-				[],
-				array(
-					'should_send_log_to_meta'        => false,
-					'should_save_log_in_woocommerce' => true,
-					'woocommerce_log_level'          => \WC_Log_Levels::ERROR,
-				)
-			);
-		}
-	}
-
-	/**
 	 * Creates a product item using the facebook Catalog Batch API. This replaces existing functionality,
 	 * which is currently using facebook Product Item API implemented by `WC_Facebookcommerce_Integration::create_product_item`
 	 *
@@ -1592,54 +1566,6 @@ class WC_Facebookcommerce_Integration extends WC_Integration {
 					'woocommerce_log_level'          => \WC_Log_Levels::ERROR,
 				)
 			);
-		}
-	}
-
-	/**
-	 * Displays Batch API completed message on simple_product_publish.
-	 * This is called by the hook `add_meta_boxes_product` because that is sufficient time
-	 * to retrieve product_item_id for the product item created via batch API.
-	 *
-	 * Some sanity checks are added before displaying the message after publish
-	 *  - product_item_id : if exists, means product was created else not and don't display
-	 *  - should_sync: Don't display if the product is not supposed to be synced.
-	 *
-	 * @param WP_Post $post WordPress Post
-	 * @return void
-	 */
-	public function display_batch_api_completed( $post ) {
-		$fb_product         = new \WC_Facebook_Product( $post->ID );
-		$fb_product_item_id = null;
-		$should_sync        = true;
-
-		// Bail if this is not a WooCommerce product.
-		if ( ! $fb_product->woo_product instanceof \WC_Product ) {
-			return;
-		}
-
-		try {
-			facebook_for_woocommerce()->get_product_sync_validator( $fb_product->woo_product )->validate();
-		} catch ( \Exception $e ) {
-			$should_sync = false;
-		}
-
-		if ( $should_sync ) {
-			if ( $fb_product->woo_product->is_type( 'variable' ) ) {
-				$fb_product_item_id = $this->get_product_fbid( self::FB_PRODUCT_GROUP_ID, $post->ID, $fb_product->woo_product );
-			} else {
-				$fb_product_item_id = $this->get_product_fbid( self::FB_PRODUCT_ITEM_ID, $post->ID, $fb_product->woo_product );
-			}
-		}
-
-		if ( $fb_product_item_id ) {
-			$this->display_success_message(
-				'<a href="https://business.facebook.com/commerce/catalogs/' .
-					$this->get_product_catalog_id() .
-					'/products/" target="_blank">View product on Meta catalog</a>'
-			);
-
-			// Display unmapped attributes banner if there are any
-			$this->display_unmapped_attributes_banner( $fb_product->woo_product );
 		}
 	}
 
@@ -2033,6 +1959,150 @@ class WC_Facebookcommerce_Integration extends WC_Integration {
 		ob_end_clean();
 
 		return wp_json_encode( [ $items ] );
+	}
+
+	/**
+	 * Checks if a meta key affects Facebook sync and should trigger last change time update.
+	 *
+	 * @param string $meta_key Meta key to check.
+	 * @return bool True if the meta key is relevant to Facebook sync.
+	 * @since 3.5.8
+	 */
+	private function is_product_attribute_sync_relevant( $meta_key ) {
+		// Skip our own meta keys to prevent infinite loops
+		if ( in_array( $meta_key, [ '_last_change_time', '_fb_sync_last_time' ], true ) ) {
+			return false;
+		}
+
+		// Skip WordPress internal meta keys
+		if ( strpos( $meta_key, '_wp_' ) === 0 || strpos( $meta_key, '_edit_' ) === 0 ) {
+			return false;
+		}
+
+		return in_array( $meta_key, self::PRODUCT_ATTRIBUTE_SYNC_RELEVANT_META_KEYS, true );
+	}
+
+	/**
+	 * Validates if the product and meta key should trigger a last change time update.
+	 *
+	 * @param int    $product_id Product ID.
+	 * @param string $meta_key   Meta key.
+	 * @return bool True if update should proceed, false otherwise.
+	 * @since 3.5.8
+	 */
+	private function should_update_product_change_time( $product_id, $meta_key ) {
+		$product_id = absint( $product_id );
+		$meta_key   = sanitize_key( $meta_key );
+
+		// Check if this is a WooCommerce product
+		$product = wc_get_product( $product_id );
+		if ( ! $product instanceof WC_Product ) {
+			return false;
+		}
+
+		// Check if meta key is relevant for Facebook sync
+		if ( ! $this->is_product_attribute_sync_relevant( $meta_key ) ) {
+			return false;
+		}
+
+		// Check rate limiting
+		if ( $this->is_last_change_time_update_rate_limited( $product_id ) ) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Performs the actual product last change time update with proper flag management.
+	 *
+	 * @param int $product_id Product ID.
+	 * @since 3.5.8
+	 */
+	private function perform_product_last_change_time_update( $product_id ) {
+		// Set flag to prevent infinite loops
+		self::$is_updating_last_change_time = true;
+
+		try {
+			$current_time = time();
+
+			// Update the database
+			update_post_meta( $product_id, '_last_change_time', $current_time );
+
+			// Update cache for rate limiting
+			$this->set_last_change_time_cache( $product_id, $current_time );
+
+		} finally {
+			// Always reset flag, even if update fails
+			self::$is_updating_last_change_time = false;
+		}
+	}
+
+	/**
+	 * Updates the _last_change_time meta field when wp_postmeta table is updated.
+	 *
+	 * @param int    $meta_id    ID of the metadata entry to update.
+	 * @param int    $product_id  Post ID.
+	 * @param string $meta_key   Meta key.
+	 * @param mixed  $meta_value Meta value.
+	 * @since 3.5.8
+	 */
+	public function update_product_last_change_time( $meta_id, $product_id, $meta_key, $meta_value ) {
+		// Guard against infinite loops
+		if ( self::$is_updating_last_change_time ) {
+			return;
+		}
+
+		try {
+			// Run all validation checks first
+			if ( ! $this->should_update_product_change_time( $product_id, $meta_key ) ) {
+				return;
+			}
+
+			// All checks passed - proceed with update
+			$this->perform_product_last_change_time_update( $product_id );
+
+		} catch ( \Exception $e ) {
+			// Ensure flag is reset even on exception
+			self::$is_updating_last_change_time = false;
+		}
+	}
+
+	/**
+	 * Checks if the last change time update is rate limited for a product.
+	 *
+	 * @param int $product_id Product ID.
+	 * @return bool True if rate limited, false otherwise.
+	 * @since 3.5.8
+	 */
+	private function is_last_change_time_update_rate_limited( $product_id ) {
+		$cache_key   = "last_change_time_{$product_id}";
+		$cached_time = wp_cache_get( $cache_key, 'facebook_for_woocommerce' );
+
+		// If no cached time, allow update
+		if ( false === $cached_time ) {
+			return false;
+		}
+
+		// Rate limit to once every 60 seconds (1 minute)
+		$rate_limit_window = 60;
+		$current_time      = time();
+
+		// If the last update was within the rate limit window, prevent update
+		return ( $current_time - $cached_time ) < $rate_limit_window;
+	}
+
+	/**
+	 * Sets the last change time in cache for rate limiting.
+	 *
+	 * @param int $product_id Product ID.
+	 * @param int $timestamp Timestamp to cache.
+	 * @since 3.5.8
+	 */
+	private function set_last_change_time_cache( $product_id, $timestamp ) {
+		$cache_key = "last_change_time_{$product_id}";
+		// Cache for 2 minutes (120 seconds) to ensure it persists longer than the rate limit window
+		wp_cache_set( $cache_key, $timestamp, 'facebook_for_woocommerce', 120 );
 	}
 
 	/**
@@ -3117,6 +3187,21 @@ class WC_Facebookcommerce_Integration extends WC_Integration {
 		if ( class_exists( 'WC_Facebookcommerce_Whatsapp_Utility_Event' ) ) {
 			if ( ! isset( $this->wa_utility_event_processor ) ) {
 				$this->wa_utility_event_processor = new WC_Facebookcommerce_Whatsapp_Utility_Event( $this );
+			}
+		}
+	}
+
+	/**
+	 * Init WhatsApp Utility Event Processor.
+	 *
+	 * @return void
+	 */
+	public function load_whatsapp_iframe_utility_event_processor() {
+		// Attempt to load Iframe WhatsApp Utility Event Processor
+		include_once 'facebook-commerce-iframe-whatsapp-utility-event.php';
+		if ( class_exists( 'WC_Facebookcommerce_Iframe_Whatsapp_Utility_Event' ) ) {
+			if ( ! isset( $this->wa_iframe_utility_event_processor ) ) {
+				$this->wa_iframe_utility_event_processor = new WC_Facebookcommerce_Iframe_Whatsapp_Utility_Event( $this->facebook_for_woocommerce );
 			}
 		}
 	}

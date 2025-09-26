@@ -322,7 +322,12 @@ class Frontend {
 			'reading_time',
 		];
 
-		$meta_stack = $this->get_render_stack( $meta_list );
+		$meta_stack    = $this->get_render_stack( $meta_list );
+		$custom_fields = $this->get_render_custom_fields();
+
+		if ( ! empty( $custom_fields ) ) {
+			$meta_stack = array_merge( $meta_stack, $custom_fields );
+		}
 
 		if ( empty( $meta_stack ) ) {
 			return;
@@ -572,6 +577,105 @@ class Frontend {
 			esc_attr( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
 			esc_html__( 'By', 'jupiterx-core' )
 		);
+	}
+
+	/**
+	 * Render Custom Fields
+	 *
+	 * @since 4.11.0
+	 *
+	 * @SuppressWarnings(PHPMD.NPathComplexity)
+	 * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+	 */
+	protected function get_render_custom_fields() {
+		$show_custom_field = $this->settings['show_custom_field'];
+
+		if ( 'yes' !== $show_custom_field ) {
+			return;
+		}
+
+		$selected_custom_fields = $this->settings['custom_fields_list'];
+
+		if ( empty( $selected_custom_fields ) ) {
+			return [];
+		}
+
+		$output = [];
+
+		foreach ( $selected_custom_fields as $field ) {
+			$key        = trim( $field['field_title'] );
+			$meta_value = '';
+
+			if ( ! $key && 'taxonomy' !== $field['item_type'] ) {
+				continue;
+			}
+
+			if ( 'taxonomy' === $field['item_type'] ) {
+
+				$tax = 'custom' !== $field['taxonomy_type'] ? $field['taxonomy_type'] : $field['taxonomy_slug'];
+
+				if ( ! $tax ) {
+					continue;
+				}
+
+				$terms = get_the_terms( get_the_ID(), $tax );
+
+				if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+
+					$meta_value = Utils::generate_term_item( $terms, $field, 'advanced-post' );
+				}
+			} else {
+				$meta_value = get_post_meta( get_the_ID(), $key, true );
+			}
+
+			if ( ! $meta_value ) {
+				continue;
+			}
+
+			if ( 'taxonomy' === $field['item_type'] && 'yes' === $field['show_as_link'] ) {
+
+				foreach ( $meta_value as $value ) {
+					$output[] = $value;
+				}
+				continue;
+			}
+
+			if ( ( 'array' === $field['field_type'] && 'array' === gettype( $meta_value ) ) || 'array' === gettype( $meta_value ) ) {
+				$meta_value = implode( ', ', $meta_value );
+			}
+
+			if ( 'date' === $field['field_type'] ) {
+				$date = \DateTime::createFromFormat( 'Ymd', $meta_value );
+
+				if ( $date instanceof \DateTime ) {
+					$meta_value = $date->format( $field['date_type'] );
+				}
+			}
+
+			if ( ! empty( $field['field_url']['url'] ) && 'meta' === $field['item_type'] ) {
+				$links = [];
+				$items = [];
+				if ( 'date' !== $field['field_type'] ) {
+					$items = explode( ',', $meta_value );
+				} else {
+					$items[] = $meta_value;
+				}
+
+				foreach ( $items as $value ) {
+					if ( 'date' === $field['field_type'] ) {
+						$value = str_replace( '-', ',', $value );
+					}
+					$link    = Utils::generate_link( $field['field_url'], trim( $value ), 'post' );
+					$links[] = PHP_EOL . $link . PHP_EOL;
+				}
+
+				$output[] = implode( ', ', $links );
+				continue;
+			}
+
+			$output[] = PHP_EOL . '<span class="raven-post-meta-item raven-post-custom-fields">' . esc_html( $meta_value ) . '</span>' . PHP_EOL;
+		}
+		return $output;
 	}
 
 	/**

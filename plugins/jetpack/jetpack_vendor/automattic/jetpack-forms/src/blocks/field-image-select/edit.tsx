@@ -27,15 +27,18 @@ import './editor.scss';
 import type { Block, BlockEditorStoreSelect } from '../../types';
 
 export default function ImageSelectFieldEdit( props ) {
-	const { attributes, clientId, setAttributes, name } = props;
+	const { attributes, clientId, isSelected, setAttributes, name } = props;
 	const { id, required, width } = attributes;
 	const { blockStyle } = useJetpackFieldStyles( attributes );
 
-	const { optionsBlock } = useSelect(
+	const { isInnerBlockSelected, optionsBlock } = useSelect(
 		select => {
-			const { getBlock } = select( blockEditorStore ) as BlockEditorStoreSelect;
+			const { hasSelectedInnerBlock, getBlock } = select(
+				blockEditorStore
+			) as BlockEditorStoreSelect;
 
 			return {
+				isInnerBlockSelected: hasSelectedInnerBlock( clientId, true ),
 				optionsBlock: getBlock( clientId )?.innerBlocks.find(
 					( block: Block ) => block.name === 'jetpack/fieldset-image-options'
 				),
@@ -50,9 +53,9 @@ export default function ImageSelectFieldEdit( props ) {
 	const { addOption } = useAddImageOption( optionsBlock?.clientId );
 
 	const blockProps = useBlockProps( {
-		className: clsx(
-			'jetpack-field jetpack-field-image-select is-non-animated-label is-non-outlined-block'
-		),
+		className: clsx( 'jetpack-field jetpack-field-image-select', {
+			'is-selected': isSelected || isInnerBlockSelected,
+		} ),
 		style: blockStyle,
 	} );
 
@@ -89,9 +92,7 @@ export default function ImageSelectFieldEdit( props ) {
 
 			<BlockControls>
 				<ToolbarGroup>
-					<ToolbarButton onClick={ addOption }>
-						{ __( 'Add choice', 'jetpack-forms' ) }
-					</ToolbarButton>
+					<ToolbarButton onClick={ addOption }>{ __( 'Add', 'jetpack-forms' ) }</ToolbarButton>
 				</ToolbarGroup>
 			</BlockControls>
 
@@ -147,6 +148,18 @@ export default function ImageSelectFieldEdit( props ) {
 								label={ __( 'Randomize', 'jetpack-forms' ) }
 								checked={ attributes?.randomizeOptions }
 								onChange={ ( value: boolean ) => setAttributes( { randomizeOptions: value } ) }
+							/>
+						),
+					},
+					{
+						index: 5,
+						element: (
+							<ToggleControl
+								__nextHasNoMarginBottom
+								key="show-other-option"
+								label={ __( '"Other" option', 'jetpack-forms' ) }
+								checked={ attributes?.showOtherOption }
+								onChange={ ( value: boolean ) => setAttributes( { showOtherOption: value } ) }
 							/>
 						),
 					},

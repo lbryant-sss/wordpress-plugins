@@ -15,6 +15,8 @@ abstract class Base extends Base_Widget {
 
 	private $slide_prints_count = 0;
 
+	private $child_class_name = '';
+
 	public function get_script_depends() {
 		return [ 'imagesloaded' ];
 	}
@@ -30,6 +32,10 @@ abstract class Base extends Base_Widget {
 		$this->register_controls_section_additional_options();
 		$this->register_controls_section_slides_style();
 		$this->register_controls_section_navigation();
+	}
+
+	protected function child_class_name( string $name ) {
+		$this->child_class_name = $name;
 	}
 
 	protected function register_controls_section_slides() {
@@ -381,6 +387,30 @@ abstract class Base extends Base_Widget {
 				],
 			]
 		);
+
+		if ( 'media-carousel' === $this->child_class_name ) {
+			$this->add_group_control(
+				'box-shadow',
+				[
+					'name' => 'slide_box_shadow',
+					'label' => esc_html__( 'Box Shadow', 'jupiterx-core' ),
+					'selector' => '{{WRAPPER}} .raven-main-swiper .swiper-slide',
+					'condition' => [
+						'skin' => [ 'carousel', 'coverflow' ],
+						'effect!' => 'fade',
+					],
+				]
+			);
+		} elseif ( 'testimonial-carousel' === $this->child_class_name ) {
+			$this->add_group_control(
+				'box-shadow',
+				[
+					'name' => 'slide_box_shadow',
+					'label' => esc_html__( 'Box Shadow', 'jupiterx-core' ),
+					'selector' => '{{WRAPPER}} .raven-main-swiper .swiper-slide',
+				]
+			);
+		}
 
 		$this->add_responsive_control(
 			'slide_padding',

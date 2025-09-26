@@ -2,9 +2,9 @@
 Contributors: yandexmetrika
 Tags: яндекс.метрика, яндекс, метрика, metrica, yandex, ecommerce, commerce, e-commerce, wordpress ecommerce, tracking, yandex metrics, metrik, stats, statistics, tools, analytics, analytics tool
 Requires at least: 5.2.9
-Tested up to: 6.5.3
+Tested up to: 6.8.2
 Requires PHP: 5.6.20
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -112,6 +112,9 @@ These fields are needed to correctly send the brand value of the product.
 Session Replay technology offers an entirely new level of detail for analyzing the behavior of site users. You can replay their actions exactly as they occurred to see what happens on each page and how users navigate, right down to every mouse movement, keystroke, and click. Enable Session Replay using the checkbox next to the tag field.
 
 == Changelog ==
+
+= 1.2.2 =
+Some minor bugfixes
 
 = 1.2.1 =
 Some minor bugfixes

@@ -2,69 +2,13 @@
 
 ### This is a list detailing changes for all Jetpack releases.
 
-## 15.1-a.7 - 2025-09-22
-### Other changes <!-- Non-user-facing changes go here. This section will not be copied to readme.txt. -->
-- Internal updates.
-
-## 15.1-a.5 - 2025-09-19
-### Enhancements
-- Forms: Add hidden field. [#45104]
-- Forms: Add scheduled deletion for submissions that skip the submission's inbox and are stored as temporary feedback. [#45178]
-- Forms: Allow enabling integration by default. [#45201]
-- Forms: Return integration titles from endpoint. [#45151]
-
-### Improved compatibility
-- Change the location of the Jetpack -> Stats submenu item to a new top-level admin menu item called "Stats". [#44524]
-
+## 15.0.2 - 2025-09-25
 ### Bug fixes
-- Forms: Fix slider min/max editing. [#45219]
-- Forms: Fix slider value position. [#45218]
+- Resolved conflict with WordPress 6.7.3
 
-### Other changes <!-- Non-user-facing changes go here. This section will not be copied to readme.txt. -->
-- On Dotcom Simple site, show all sharing settings even when the site is using a block theme, so that the sharing buttons filter can be disabled. [#45176]
-- Subscriptions: Always link to WP Admin in Newsletter widget. [#45180]
-- Update package dependencies. [#45173] [#45200] [#45229]
-- Widgets: Prevent PHP warnings when handling malformed data. [#45185]
-
-## 15.1-a.3 - 2025-09-15
-### Enhancements
-- Forms: Add new block toggle to skip saving form submisions on WP Admin. [#45072]
-- Forms: Add integrations permissions check. [#45063]
-- Forms: Add preloaded config endpoint. [#45091]
-- Forms: Improve supported integrations filter. [#45123]
-- Forms: Phone field can now contain a country selector combobox. [#45120]
-
-### Improved compatibility
-- Forms: Add integrations feature flag. [#45037]
-- Site Accelerator (Image CDN): Add support for images added via Breakdance blocks. [#45059]
-
+## 15.0.1 - 2025-09-25
 ### Bug fixes
-- AI Assistant: Fix spacing on Forms block. [#45143]
-- Forms: Fix MailPoet string warning. [#45114]
-- Widget Visibility: Prevent PHP error under specific block conditions. [#45087]
-
-### Other changes <!-- Non-user-facing changes go here. This section will not be copied to readme.txt. -->
-- Prevent a PHP error when fetching a non-existing menu in JSON API. [#45147]
-- Garden Sites: Expose the Garden flags and information on the site endpoint. [#45107]
-- Sharing: Prevent PHP warnings when dealing with unexpected data. [#45165]
-- Shortcodes: Load Recipe dependency via PNPM. [#45089] [#45134] [#45140]
-- Update package dependencies. [#45127] [#45128]
-
-## 15.1-a.1 - 2025-09-08
-### Enhancements
-- Forms: Add hidden input field block. [#44079]
-- Forms: Make rating and slider fields available to self-hosted users. [#45094]
-
-### Bug fixes
-- Sharing: Fix Facebook sharing URL. [#45083]
-
-### Other changes <!-- Non-user-facing changes go here. This section will not be copied to readme.txt. -->
-- Add MCP abilities title to site settings. [#45064]
-- Block editor: Update allowed block types for the mobile editor. [#45039]
-- Forms: Track form submission failure. [#45090]
-- Subscribe and Button blocks: Add email rendering for the WooCommerce Email Editor. [#45006]
-- Update package dependencies. [#45027] [#45096] [#45097]
-- Writing Settings: Add Mailchimp connection. [#44999]
+- Forms: prevent a conflict between the phone field and WordPress 6.7. [#45120]
 
 ## 15.0 - 2025-09-04
 ### Enhancements
@@ -82,7 +26,7 @@
 - Forms: Save feedback entries in a new format. [#44821]
 - Forms: Show trash action alongside view action in inbox. [#44882]
 - Related Posts block: Update placeholder text for the site editor, and update the demo date. [#44937]
-- Remove CRM installation nudge for Complete plan users. [#45026]
+- Remove CRM installation nudge for Complete plan users [#45026]
 - Shortcodes: Update embed reversal code to only run when content is inserted in the admin. [#44741]
 - Site Accelerator: Ignore images from openlibrary.org. [#44627]
 - Sitemaps: Add filter to allow suspending object cache addition during generation. [#44732]
@@ -122,7 +66,7 @@
 - Editor assets endpoint: Disallow the VideoPress block type. [#44848]
 - Editor assets endpoint: Expand allowed block types. [#44616]
 - Fix JavaScript in one-image Slideshow shortcodes. [#44643]
-- Fix LaTeX Block selector. [#44920]
+- Fix LaTex Block selector. [#44920]
 - I18n: Improve context hints in comments for translators. [#44686]
 - Image CDN: Prevent PHP warnings when handling malformed data. [#45015]
 - Memberships: Fix JSON parsing error. [#44812]
@@ -141,7 +85,10 @@
 - Slideshow block: Add email rendering. [#44835]
 - Tiled Gallery: Add initial state tests. [#44591]
 - Tiled gallery block: Add email rendering. [#44943]
-- Update package dependencies. [#44677] [#44701] [#44725] [#44870] [#44894] [#44899] [#44948]
+- Update package dependencies. [#44677]
+- Update package dependencies. [#44701] [#44725]
+- Update package dependencies. [#44870] [#44894] [#44899]
+- Update package dependencies. [#44948]
 - Use `wp_rand()` instead of `rand()` and `mt_rand()`. [#44964]
 - Writing Settings: Add Instagram connection. [#44936]
 
@@ -2180,7 +2127,7 @@
 - Jetpack AI: Add transcription post-processing example to Voice-to-Content block. [#35734]
 - Jetpack AI: include audio transcription usage example to Voice-to-Content block. [#35691]
 - Jetpack AI Voice to content: Update to modal UI [#35698]
-- Move user customization to separate file [#35277]
+- Move user customization to seperate file [#35277]
 - Persist user-new.php custom message form field after submission with errors [#35277]
 - Related Posts: remove duplicated HTML attributes [#35686]
 - Rename status column to sso status and add tooltip [#35277]
@@ -8239,7 +8186,7 @@
 - Related Posts: improve HTML markup for related posts, with emphasis on accessibility.
 - Search: add an easy way to see the raw Jetpack Search query results in the search page's source code.
 - Shortcodes: allow links in Quiz shortcode explanations.
-- Widgets: improve the text for the Blog Stats widget when stats data cannot be retrieved from WordPress.com.
+- Widgets: improve the text for the Blog Stats widget when stats data can not be retrieved from WordPress.com.
 
 ### Improved compatibility
 - General: require WordPress 5.0! To celebrate, we cleaned out some compatibility code that supported older versions. We know how to party.

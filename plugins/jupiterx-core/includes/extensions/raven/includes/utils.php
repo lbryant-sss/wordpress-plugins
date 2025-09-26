@@ -924,4 +924,108 @@ class Utils {
 
 		return $new_type;
 	}
+
+	/**
+	 * Generate slug
+	 *
+	 * @since 4.11.0
+	 */
+	public static function create_slug( $text ) {
+		$slug = strtolower( $text );
+		$slug = str_replace( [ ' ', ',', '@', '.' ], '-', $slug );
+		$slug = preg_replace( '/[^a-z0-9]+/', '-', $slug );
+
+		return $slug;
+	}
+
+	/**
+	 * Generate Link
+	 *
+	 * @since 4.11.0
+	 *
+	 * @SuppressWarnings(PHPMD.NPathComplexity)
+	 */
+	public static function generate_link( $settings, $value, $widget ) {
+		$url        = $settings['url'];
+		$attributes = [];
+
+		if ( 'post' === $widget || 'advanced-post' === $widget ) {
+			$attributes[] = 'class="raven-post-meta-item raven-post-custom-fields"';
+		}
+
+		if ( 'post-meta' === $widget ) {
+			$attributes[] = 'class="raven-post-meta-item raven-post-meta-item-type-custom-fields"';
+		}
+
+		// Add target attribute if external
+		if ( isset( $settings['is_external'] ) && 'on' === $settings['is_external'] ) {
+			$attributes[] = 'target="_blank"';
+		}
+
+		// Handle rel attribute
+		$rel_values = [];
+		if ( isset( $settings['nofollow'] ) && 'on' === $settings['nofollow'] ) {
+			$rel_values[] = 'nofollow';
+		}
+
+		if ( isset( $settings['is_external'] ) && 'on' === $settings['is_external'] ) {
+			$rel_values[] = 'noopener';
+		}
+
+		if ( ! empty( $rel_values ) ) {
+			$attributes[] = 'rel="' . implode( ' ', $rel_values ) . '"';
+		}
+
+		// Process custom attributes
+		if ( ! empty( $settings['custom_attributes'] ) ) {
+			$custom_attrs = explode( ',', $settings['custom_attributes'] );
+
+			foreach ( $custom_attrs as $attr ) {
+				$parts = explode( '|', $attr );
+					if ( count( $parts ) === 2 ) {
+					$attributes[] = $parts[0] . '="' . $parts[1] . '"';
+				}
+			}
+		}
+
+		// Build the final link
+		$link = '<a href="' . esc_html( $url ) . esc_html( self::create_slug( $value ) ) . '/"';
+		if ( ! empty( $attributes ) ) {
+			$link .= ' ' . implode( ' ', $attributes );
+		}
+		$link .= '>';
+		$link .= esc_html( $value );
+		$link .= '</a>';
+
+		return $link;
+	}
+
+	/**
+	 * Generate term link for taxonomy
+	 *
+	 * @since 4.11.0
+	 */
+	public static function generate_term_item( $terms, $field, $widget ) {
+		$term_list = [];
+		$class     = '';
+
+		if ( 'post' === $widget || 'advanced-post' === $widget ) {
+			$class = 'class="raven-post-meta-item raven-post-custom-fields"';
+		}
+
+		if ( 'post-meta' === $widget ) {
+			$class = 'class="raven-post-meta-item raven-post-meta-item-type-custom-fields"';
+		}
+
+		foreach ( $terms as $term ) {
+			if ( 'yes' === $field['show_as_link'] ) {
+				$term_link   = get_term_link( $term );
+				$link        = '<a href="' . esc_url( $term_link ) . '" ' . $class . '>' . esc_html( $term->name ) . '</a>';
+				$term_list[] = PHP_EOL . $link . PHP_EOL;
+			} else {
+				$term_list[] = $term->name;
+			}
+		}
+		return $term_list;
+	}
 }

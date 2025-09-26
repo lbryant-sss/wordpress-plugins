@@ -72,7 +72,7 @@ class YaMetrikaFrontend
         }
     }
 
-    public function printCounter($number, $webvisor = true, $dataLayer)
+    public function printCounter($number, $webvisor = true, $dataLayer = "DataLayer")
     {
         ?>
         <!-- Yandex.Metrica counter -->

@@ -508,6 +508,7 @@ class Animated_Heading extends Base_Widget {
 		$tag      = Utils::validate_html_tag( $settings['tag'] );
 
 		$this->add_render_attribute( 'heading', 'class', 'raven-heading' );
+		$this->add_render_attribute( 'heading', 'role', 'text' );
 
 		if ( 'rotate' === $settings['heading_style'] ) {
 			$this->add_render_attribute( 'heading', 'class', 'raven-heading-animation-type-' . $settings['animation_type'] );
@@ -546,23 +547,22 @@ class Animated_Heading extends Base_Widget {
 					<span class="raven-heading-plain-text raven-heading-text-wrapper">{{{ settings.before_text }}}</span>
 				<# } #>
 
-				<# if ( settings.rotating_text ) { #>
-					<span class="raven-heading-dynamic-wrapper raven-heading-text-wrapper">
-						<# if ( 'rotate' === settings.heading_style && settings.rotating_text ) {
-							var rotatingText = ( settings.rotating_text || '' ).split( '\n' );
-							for ( var i = 0; i < rotatingText.length; i++ ) {
-								var statusClass = 0 === i ? 'raven-heading-text-active' : ''; #>
-								<span class="raven-heading-dynamic-text {{ statusClass }}">
-									{{{ rotatingText[ i ] }}}
-								</span>
-							<# }
-						}
-
-						else if ( 'highlight' === settings.heading_style && settings.highlighted_text ) { #>
-							<span class="raven-heading-dynamic-text raven-heading-text-active">{{{ settings.highlighted_text }}}</span>
-						<# } #>
-					</span>
-				<# } #>
+				<span class="raven-heading-dynamic-wrapper raven-heading-text-wrapper" aria-live="polite" aria-atomic="true">
+					<# if ( 'rotate' === settings.heading_style ) {
+						var rotatingText = ( settings.rotating_text || '' )
+							.split( '\n' )
+							.map( function( s ) { return s.trim(); } )
+							.filter( function( s ) { return s.length; } );
+						for ( var i = 0; i < rotatingText.length; i++ ) {
+							var statusClass = 0 === i ? 'raven-heading-text-active' : ''; #>
+							<span class="raven-heading-dynamic-text {{ statusClass }}">
+								{{{ rotatingText[ i ] }}}
+							</span>
+						<# }
+					} else if ( 'highlight' === settings.heading_style && settings.highlighted_text ) { #>
+						<span class="raven-heading-dynamic-text raven-heading-text-active">{{{ settings.highlighted_text }}}</span>
+					<# } #>
+				</span>
 
 				<# if ( settings.after_text ) { #>
 					<span class="raven-heading-plain-text raven-heading-text-wrapper">{{{ settings.after_text }}}</span>
@@ -586,9 +586,10 @@ class Animated_Heading extends Base_Widget {
 		<?php if ( ! empty( $settings['before_text'] ) ) : ?>
 			<span class="raven-heading-plain-text raven-heading-text-wrapper"><?php $this->print_unescaped_setting( 'before_text' ); ?></span>
 		<?php endif; ?>
-		<span class="raven-heading-dynamic-wrapper raven-heading-text-wrapper">
+		<span class="raven-heading-dynamic-wrapper raven-heading-text-wrapper" aria-live="polite" aria-atomic="true">
 		<?php if ( 'rotate' === $settings['heading_style'] && $settings['rotating_text'] ) :
-			$rotating_text = explode( "\n", $settings['rotating_text'] );
+			$rotating_text = preg_split( "/\r\n|\n|\r/", $settings['rotating_text'] );
+			$rotating_text = array_filter( array_map( 'trim', $rotating_text ), 'strlen' );
 			foreach ( $rotating_text as $key => $text ) :
 				$status_class = 1 > $key ? 'raven-heading-text-active' : ''; ?>
 				<span class="raven-heading-dynamic-text <?php echo esc_attr( $status_class ); ?>">

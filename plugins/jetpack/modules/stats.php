@@ -252,7 +252,9 @@ function stats_admin_menu() {
 		add_action( "load-$hook", 'stats_reports_load' );
 	} else {
 		// Enable the new Odyssey Stats experience.
-		Stats_Dashboard::init();
+		$stats_dashboard = new Stats_Dashboard();
+		$hook            = Admin_Menu::add_menu( __( 'Stats', 'jetpack' ), __( 'Stats', 'jetpack' ), 'view_stats', 'stats', array( $stats_dashboard, 'render' ), 1 );
+		add_action( "load-$hook", array( $stats_dashboard, 'admin_init' ) );
 	}
 }
 

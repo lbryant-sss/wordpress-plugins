@@ -5,7 +5,7 @@
  * Description: The official WordPress plugin from the Yandex Metrica team. The plugin is a free tool for connecting tags based on the WordPress CMS. It provides the ability to transfer data about user sessions and e-commerce events directly to the Yandex Metrica dashboard.
  * Author: Yandex
  * Author URI: https://metrika.yandex.ru
- * Version: 1.2.1
+ * Version: 1.2.2
  * Requires at least: 5.2.9
  * Requires PHP: 5.6.20
  * Text Domain: wp-yandex-metrika
@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 require_once ABSPATH . 'wp-admin/includes/plugin.php';
 
 define('YAM_SLUG', basename(__FILE__, '.php'));
-define('YAM_VER', get_plugin_data(__FILE__)['Version']);
+define('YAM_VER', get_plugin_data(__FILE__,false,false)['Version']);
 define('YAM_PAGE_SLUG', 'yam_settings');
 define('YAM_DATA_LAYER', 'yam_settings');
 define('YAM_OPTIONS_SLUG', 'yam_options');

@@ -273,7 +273,7 @@ class JupiterX_Core_Control_Panel_Custom_Snippets {
 
 	public function bulk_action() {
 		$posts  = filter_input( INPUT_POST, 'posts', FILTER_DEFAULT, FILTER_FORCE_ARRAY );
-		$action = filter_input( INPUT_POST, 'bulk_action', FILTER_SANITIZE_STRING );
+		$action = filter_input( INPUT_POST, 'bulk_action', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
 		global $wpdb;
 
 		if ( 'remove' === $action ) {
@@ -282,23 +282,25 @@ class JupiterX_Core_Control_Panel_Custom_Snippets {
 			}
 		}
 
-		$string_posts = implode( ',', array_map( 'intval', $posts ) );
+		$placeholders = implode( ',', array_fill( 0, count( $posts ), '%d' ) );
 
 		//phpcs:disable
 		if ( 'inactive' === $action ) {
-			$wpdb->query(
-				$wpdb->prepare(
-					"UPDATE $wpdb->posts set post_status='draft' WHERE ID IN ( $string_posts )"
-				)
-			);
+    		$query = $wpdb->prepare( 
+					"UPDATE $wpdb->posts SET post_status = 'draft' WHERE ID IN ( $placeholders )"
+					, ...$posts 
+				);
+
+			$wpdb->query( $query );
 		}
 
 		if ( 'active' === $action ) {
-			$wpdb->query(
-				$wpdb->prepare(
-					"UPDATE $wpdb->posts set post_status='publish' WHERE ID IN ( $string_posts )"
-				)
+    		$query = $wpdb->prepare(
+				"UPDATE $wpdb->posts SET post_status = 'publish' WHERE ID IN ( $placeholders )"
+				, ...$posts
 			);
+
+			$wpdb->query( $query );
 		}
 		//phpcs:enable
 

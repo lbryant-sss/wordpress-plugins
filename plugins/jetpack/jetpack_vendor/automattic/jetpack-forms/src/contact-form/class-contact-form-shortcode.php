@@ -168,6 +168,7 @@ class Contact_Form_Shortcode {
 	 */
 	public function __toString() {
 		$r = "[{$this->shortcode_name} ";
+
 		foreach ( $this->attributes as $key => $value ) {
 			if ( ! $value ) {
 				continue;

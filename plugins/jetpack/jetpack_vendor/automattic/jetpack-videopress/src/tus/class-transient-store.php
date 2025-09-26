@@ -61,7 +61,7 @@ class Transient_Store extends Tus_Abstract_Cache {
 	 *
 	 * @param string $prefix Prefix.
 	 *
-	 * @return mixed
+	 * @return array
 	 */
 	public function cache_keys( $prefix ) {
 		return get_transient( $prefix );

@@ -48,8 +48,8 @@ const SalesforceDashboardCard = ( {
 
 	return (
 		<IntegrationCard
-			title={ data?.title }
-			description={ data?.subtitle }
+			title={ __( 'Salesforce', 'jetpack-forms' ) }
+			description={ __( 'Send form contacts to Salesforce', 'jetpack-forms' ) }
 			icon={ <SalesforceIcon width={ 32 } height={ 32 } /> }
 			isExpanded={ isExpanded }
 			onToggle={ onToggle }

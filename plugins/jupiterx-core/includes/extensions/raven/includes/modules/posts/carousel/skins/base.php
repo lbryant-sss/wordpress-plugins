@@ -217,6 +217,8 @@ abstract class Base extends Skin_Base {
 			]
 		);
 
+		$this->custom_fields_controls();
+
 		$this->end_injection();
 	}
 
@@ -274,6 +276,148 @@ abstract class Base extends Skin_Base {
 		);
 
 		$this->end_injection();
+	}
+
+	/**
+	 * Register custom fields controls
+	 *
+	 * @since 4.11.0
+	 */
+	public function custom_fields_controls() {
+			$this->add_control(
+			'show_custom_field',
+			[
+				'label' => __( 'Display Custom Fields', 'jupiterx-core' ),
+				'type' => 'switcher',
+				'default' => '',
+				'label_on' => __( 'Yes', 'jupiterx-core' ),
+				'label_off' => __( 'No', 'jupiterx-core' ),
+				'frontend_available' => true,
+			]
+		);
+
+		$this->add_control(
+			'custom_fields_list',
+			[
+				'label' => esc_html__( 'Custom Fields', 'jupiterx-core' ),
+				'show_label' => false,
+				'type' => 'repeater',
+				'prevent_empty' => false,
+				'condition' => [
+					$this->get_control_id( 'show_custom_field' ) => 'yes',
+				],
+				'fields' => [
+					[
+						'name' => 'item_type',
+						'label' => esc_html__( 'Item Type', 'jupiterx-core' ),
+						'type' => 'select',
+						'options' => [
+							'meta' => esc_html__( 'Metafield', 'jupiterx-core' ),
+							'taxonomy' => esc_html__( 'Taxonomy', 'jupiterx-core' ),
+						],
+						'default' => 'meta',
+						'label_block' => true,
+					],
+					[
+						'name' => 'field_title',
+						'label' => esc_html__( 'Custom field key', 'jupiterx-core' ),
+						'type' => 'text',
+						'label_block' => true,
+						'condition' => [ 'item_type' => 'meta' ],
+					],
+					[
+						'name' => 'field_type',
+						'label' => esc_html__( 'Field Type', 'jupiterx-core' ),
+						'type' => 'select',
+						'options' => [
+							'string' => esc_html__( 'Text', 'jupiterx-core' ),
+							'array' => esc_html__( 'Array', 'jupiterx-core' ),
+							'date' => esc_html__( 'Date', 'jupiterx-core' ),
+						],
+						'default' => 'string',
+						'label_block' => true,
+						'condition' => [ 'item_type' => 'meta' ],
+					],
+					[
+						'name' => 'date_type',
+						'label' => esc_html__( 'Date Type', 'jupiterx-core' ),
+						'type' => 'select',
+						'options' => [
+							'F j, Y' => esc_html__( 'Standard Date', 'jupiterx-core' ),
+							'F j, Y, g:i a' => esc_html__( 'Full Date & Time', 'jupiterx-core' ),
+							'm/d/Y' => esc_html__( 'Short Date', 'jupiterx-core' ),
+							'd/m/Y' => esc_html__( 'European Date', 'jupiterx-core' ),
+							'l, F j, Y' => esc_html__( 'Day of Week', 'jupiterx-core' ),
+							'Y-m-d' => esc_html__( 'ISO Format', 'jupiterx-core' ),
+						],
+						'default' => 'F j, Y',
+						'label_block' => true,
+						'condition' => [ 
+							'field_type' => 'date',
+							'item_type' => 'meta',
+						],
+					],
+					[
+						'name' => 'taxonomy_type',
+						'label' => esc_html__( 'Taxonomy Type', 'jupiterx-core' ),
+						'type' => 'select',
+						'options' => [
+							'post_tag' => esc_html__( 'Tag', 'jupiterx-core' ),
+							'category' => esc_html__( 'Category', 'jupiterx-core' ),
+							'custom' => esc_html__( 'Custom', 'jupiterx-core' ),
+						],
+						'default' => 'post_tag',
+						'label_block' => true,
+						'condition' => [ 'item_type' => 'taxonomy' ],
+					],
+					[
+						'name' => 'taxonomy_slug',
+						'label' => esc_html__( 'Taxonomy Slug', 'jupiterx-core' ),
+						'type' => 'text',
+						'label_block' => true,
+						'condition' => [ 
+							'taxonomy_type' => 'custom',
+							'item_type' => 'taxonomy',
+						 ],
+					],
+					[
+						'name' => 'field_url',
+						'label' => esc_html__( 'Base Link', 'jupiterx-core' ),
+						'type' => 'url',
+						'options' => [ 'url', 'is_external', 'nofollow' ],
+						'default' => [
+							'url' => '',
+							'is_external' => false,
+							'nofollow' => false,
+						],
+						'label_block' => true,
+						'condition' => [ 'item_type' => 'meta' ],
+					],
+					[
+						'name' => 'show_as_link',
+						'label' => __( 'Show as link', 'jupiterx-core' ),
+						'type' => 'switcher',
+						'default' => '',
+						'label_on' => __( 'Yes', 'jupiterx-core' ),
+						'label_off' => __( 'No', 'jupiterx-core' ),
+						'condition' => [ 'item_type' => 'taxonomy' ],
+					],
+				],
+				'default' => [
+					[
+						'field_title' => '',
+						'field_type' => 'string',
+						'field_url' => [
+							'url' => '',
+							'is_external' => false,
+							'nofollow' => false,
+						],
+					],
+
+				],
+				'title_field' => '{{{ item_type }}}',
+			]
+		);
 	}
 
 	/**

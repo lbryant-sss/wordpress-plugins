@@ -482,6 +482,14 @@ class Login extends Form {
 	}
 
 	private function remember_me_box() {
+		static $already_added_remember_me = false;
+
+		if ( $already_added_remember_me ) {
+			return;
+		}
+
+		$already_added_remember_me = true;
+
 		add_action( 'elementor/element/raven-login/section_style_checkbox/after_section_start', function( $element ) {
 			$element->add_control(
 				'remember_me_position_login',

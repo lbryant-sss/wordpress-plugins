@@ -77,7 +77,7 @@ function jupiterx_wc_loadmore_ajax_handler() {
 	$query               = sanitize_text_field( $_POST['query'] ); // phpcs:ignore WordPress.Security
 	$page                = sanitize_text_field( $_POST['page'] ); // phpcs:ignore WordPress.Security
 	$args                = json_decode( stripslashes( $query ), true );
-	$order_by            = filter_input( INPUT_POST, 'orderby', FILTER_SANITIZE_STRING );
+	$order_by            = filter_input( INPUT_POST, 'orderby', FILTER_SANITIZE_FULL_SPECIAL_CHARS );
 	$args['paged']       = intval( $page ) + 1; // phpcs:ignore WordPress.Security
 	$args['post_status'] = 'publish';
 

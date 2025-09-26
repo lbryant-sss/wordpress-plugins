@@ -138,9 +138,6 @@ if ( ! class_exists( 'WC_Facebookcommerce_EventsTracker' ) ) :
 			add_action( 'woocommerce_process_shop_order_meta', array( $this, 'inject_purchase_event' ), 20 );
 			add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'inject_purchase_event' ), 30 );
 			add_action( 'woocommerce_thankyou', array( $this, 'inject_purchase_event' ), 40 );
-			add_action( 'woocommerce_payment_complete', array( $this, 'inject_purchase_event' ), 50 );
-			add_action( 'woocommerce_order_status_processing', array( $this, 'inject_purchase_event' ), 60 );
-			add_action( 'woocommerce_order_status_completed', array( $this, 'inject_purchase_event' ), 70 );
 
 			// Lead events through Contact Form 7
 			add_action( 'wpcf7_contact_form', array( $this, 'inject_lead_event_hook' ), 11 );
@@ -429,7 +426,13 @@ if ( ! class_exists( 'WC_Facebookcommerce_EventsTracker' ) ) :
 		 */
 		public function send_search_event() {
 
-			$this->send_api_event( $this->get_search_event() );
+			$event = $this->get_search_event();
+
+			if ( null === $event ) {
+				return;
+			}
+
+			$this->send_api_event( $event );
 		}
 
 
@@ -452,6 +455,10 @@ if ( ! class_exists( 'WC_Facebookcommerce_EventsTracker' ) ) :
 				$product_ids  = array();
 				$contents     = array();
 				$total_value  = 0.00;
+
+				if ( empty( $wp_query->posts ) ) {
+					return null;
+				}
 
 				foreach ( $wp_query->posts as $post ) {
 
@@ -503,6 +510,10 @@ if ( ! class_exists( 'WC_Facebookcommerce_EventsTracker' ) ) :
 		public function actually_inject_search_event() {
 
 			$event = $this->get_search_event();
+
+			if ( null === $event ) {
+				return;
+			}
 
 			$this->send_api_event( $event );
 
@@ -848,7 +859,7 @@ if ( ! class_exists( 'WC_Facebookcommerce_EventsTracker' ) ) :
 
 			$event_name = 'Purchase';
 
-			$valid_purchase_order_states = array( 'processing', 'completed' );
+			$valid_purchase_order_states = array( 'processing', 'completed', 'on-hold', 'pending' );
 
 			if ( ! $this->is_pixel_enabled() ) {
 				return;

@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Facebook for WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Facebook for WooCommerce 3.5.7\n"
+"Project-Id-Version: Facebook for WooCommerce 3.5.8\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/facebook-for-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-09-04T08:49:26+00:00\n"
+"POT-Creation-Date: 2025-09-25T13:13:43+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: facebook-for-woocommerce\n"
@@ -17,7 +17,7 @@ msgstr ""
 #. Plugin Name of the plugin
 #: facebook-for-woocommerce.php
 #: class-wc-facebookcommerce.php:698
-#: facebook-commerce.php:241
+#: facebook-commerce.php:275
 #: includes/Admin.php:1361
 #: includes/Admin.php:1698
 #: includes/Admin/Enhanced_Settings.php:120
@@ -53,7 +53,7 @@ msgstr ""
 
 #. translators: %s property name.
 #: class-wc-facebookcommerce.php:173
-#: facebook-commerce.php:393
+#: facebook-commerce.php:433
 #: includes/Admin/Enhanced_Catalog_Attribute_Fields.php:68
 #: includes/fbbackground.php:47
 #: includes/fbproduct.php:292
@@ -70,8 +70,14 @@ msgid "WhatsApp order tracking is now available for testing. <a href='%s'>Sign u
 msgstr ""
 
 #. translators: %s $order_id
+#: facebook-commerce-iframe-whatsapp-utility-event.php:75
 #: facebook-commerce-whatsapp-utility-event.php:65
 msgid "Processing Order id %1$s to send Whatsapp Utility messages"
+msgstr ""
+
+#. translators: %s $order_id
+#: facebook-commerce-iframe-whatsapp-utility-event.php:101
+msgid "Customer Events Post API call for Order id %1$s skipped due to missing Order info"
 msgstr ""
 
 #. translators: %s $order_id
@@ -94,33 +100,33 @@ msgstr ""
 msgid "WhatsApp Consent info for user  $block_billing_consent_value: %1$s, $block_shipping_consent_value: %2$s, $classic_billing_consent_value: %3$s, $classic_shipping_consent_value: %4$s"
 msgstr ""
 
-#: facebook-commerce.php:245
+#: facebook-commerce.php:279
 msgid "Facebook Commerce and Dynamic Ads (Pixel) Extension"
 msgstr ""
 
 #. translators: %d: number of additional unmapped attributes
-#: facebook-commerce.php:1688
+#: facebook-commerce.php:1614
 msgid " and %d more"
 msgstr ""
 
 #. translators: %1$s - attribute list, %2$d - count, %3$s - link start, %4$s - link end
-#: facebook-commerce.php:1702
+#: facebook-commerce.php:1628
 msgid "%3$s%2$d attribute \"%1$s\" is not mapped to Meta.%4$s Use the %3$sattribute mapper%4$s to map this attribute and improve your product visibility in Meta ads."
 msgid_plural "%3$s%2$d attributes (%1$s) are not mapped to Meta.%4$s Use the %3$sattribute mapper%4$s to map these attributes and improve your product visibility in Meta ads."
 msgstr[0] ""
 msgstr[1] ""
 
-#: facebook-commerce.php:2732
+#: facebook-commerce.php:2802
 msgid "Facebook for WooCommerce error:"
 msgstr ""
 
-#: facebook-commerce.php:2779
+#: facebook-commerce.php:2849
 #: includes/Admin/Settings_Screens/Product_Attributes.php:985
 msgid "Dismiss this notice."
 msgstr ""
 
 #. translators: Placeholders %1$s - original error message from Facebook API
-#: facebook-commerce.php:3073
+#: facebook-commerce.php:3143
 msgid "There was an issue connecting to the Facebook API: %s"
 msgstr ""
 
@@ -333,7 +339,7 @@ msgid "Manufacturer Part Number (MPN) of the item"
 msgstr ""
 
 #: includes/Admin.php:1196
-#: includes/fbproduct.php:2886
+#: includes/fbproduct.php:2894
 msgid "Brand"
 msgstr ""
 
@@ -342,7 +348,7 @@ msgid "Brand name of the item"
 msgstr ""
 
 #: includes/Admin.php:1209
-#: includes/fbproduct.php:2892
+#: includes/fbproduct.php:2900
 msgid "Condition"
 msgstr ""
 
@@ -353,20 +359,20 @@ msgid "Select"
 msgstr ""
 
 #: includes/Admin.php:1212
-#: includes/fbproduct.php:2873
-#: includes/fbproduct.php:2914
+#: includes/fbproduct.php:2881
+#: includes/fbproduct.php:2922
 msgid "New"
 msgstr ""
 
 #: includes/Admin.php:1213
-#: includes/fbproduct.php:2874
-#: includes/fbproduct.php:2915
+#: includes/fbproduct.php:2882
+#: includes/fbproduct.php:2923
 msgid "Refurbished"
 msgstr ""
 
 #: includes/Admin.php:1214
-#: includes/fbproduct.php:2875
-#: includes/fbproduct.php:2916
+#: includes/fbproduct.php:2883
+#: includes/fbproduct.php:2924
 msgid "Used"
 msgstr ""
 
@@ -375,7 +381,7 @@ msgid "This refers to the condition of your product. Supported values are new, r
 msgstr ""
 
 #: includes/Admin.php:1225
-#: includes/fbproduct.php:2889
+#: includes/fbproduct.php:2897
 msgid "Size"
 msgstr ""
 
@@ -384,7 +390,7 @@ msgid "Size of the product item"
 msgstr ""
 
 #: includes/Admin.php:1240
-#: includes/fbproduct.php:2888
+#: includes/fbproduct.php:2896
 msgid "Color"
 msgstr ""
 
@@ -393,49 +399,49 @@ msgid "Color of the product item"
 msgstr ""
 
 #: includes/Admin.php:1254
-#: includes/fbproduct.php:2885
+#: includes/fbproduct.php:2893
 msgid "Age Group"
 msgstr ""
 
 #: includes/Admin.php:1257
-#: includes/fbproduct.php:2859
-#: includes/fbproduct.php:2900
+#: includes/fbproduct.php:2867
+#: includes/fbproduct.php:2908
 msgid "Adult"
 msgstr ""
 
 #: includes/Admin.php:1258
-#: includes/fbproduct.php:2860
-#: includes/fbproduct.php:2901
+#: includes/fbproduct.php:2868
+#: includes/fbproduct.php:2909
 msgid "All Ages"
 msgstr ""
 
 #: includes/Admin.php:1259
-#: includes/fbproduct.php:2862
-#: includes/fbproduct.php:2903
+#: includes/fbproduct.php:2870
+#: includes/fbproduct.php:2911
 msgid "Teen"
 msgstr ""
 
 #: includes/Admin.php:1260
-#: includes/fbproduct.php:2861
-#: includes/fbproduct.php:2902
+#: includes/fbproduct.php:2869
+#: includes/fbproduct.php:2910
 msgid "Kids"
 msgstr ""
 
 #: includes/Admin.php:1261
-#: includes/fbproduct.php:2865
-#: includes/fbproduct.php:2906
+#: includes/fbproduct.php:2873
+#: includes/fbproduct.php:2914
 msgid "Toddler"
 msgstr ""
 
 #: includes/Admin.php:1262
-#: includes/fbproduct.php:2863
-#: includes/fbproduct.php:2904
+#: includes/fbproduct.php:2871
+#: includes/fbproduct.php:2912
 msgid "Infant"
 msgstr ""
 
 #: includes/Admin.php:1263
-#: includes/fbproduct.php:2864
-#: includes/fbproduct.php:2905
+#: includes/fbproduct.php:2872
+#: includes/fbproduct.php:2913
 msgid "Newborn"
 msgstr ""
 
@@ -444,25 +450,25 @@ msgid "Select the age group for this product."
 msgstr ""
 
 #: includes/Admin.php:1275
-#: includes/fbproduct.php:2887
+#: includes/fbproduct.php:2895
 msgid "Gender"
 msgstr ""
 
 #: includes/Admin.php:1278
-#: includes/fbproduct.php:2868
-#: includes/fbproduct.php:2909
+#: includes/fbproduct.php:2876
+#: includes/fbproduct.php:2917
 msgid "Female"
 msgstr ""
 
 #: includes/Admin.php:1279
-#: includes/fbproduct.php:2869
-#: includes/fbproduct.php:2910
+#: includes/fbproduct.php:2877
+#: includes/fbproduct.php:2918
 msgid "Male"
 msgstr ""
 
 #: includes/Admin.php:1280
-#: includes/fbproduct.php:2870
-#: includes/fbproduct.php:2911
+#: includes/fbproduct.php:2878
+#: includes/fbproduct.php:2919
 msgid "Unisex"
 msgstr ""
 
@@ -471,7 +477,7 @@ msgid "Select the gender for this product."
 msgstr ""
 
 #: includes/Admin.php:1291
-#: includes/fbproduct.php:2890
+#: includes/fbproduct.php:2898
 msgid "Material"
 msgstr ""
 
@@ -480,7 +486,7 @@ msgid "Material of the product item"
 msgstr ""
 
 #: includes/Admin.php:1305
-#: includes/fbproduct.php:2891
+#: includes/fbproduct.php:2899
 msgid "Pattern"
 msgstr ""
 
@@ -1139,11 +1145,36 @@ msgid "20 minutes"
 msgstr ""
 
 #: includes/Admin/WhatsApp_Integration_Settings.php:97
+#: includes/Admin/WhatsApp_Integration_Settings.php:122
 msgid "WhatsApp for WooCommerce"
 msgstr ""
 
 #: includes/Admin/WhatsApp_Integration_Settings.php:98
 msgid "WhatsApp"
+msgstr ""
+
+#: includes/Admin/WhatsApp_Integration_Settings.php:205
+msgid "WhatsApp Utility Connection Error"
+msgstr ""
+
+#: includes/Admin/WhatsApp_Integration_Settings.php:206
+msgid "There was an error loading the WhatsApp Utility Message Integration. Please try reloading the page or resetting your settings."
+msgstr ""
+
+#: includes/Admin/WhatsApp_Integration_Settings.php:214
+msgid "Reload Page"
+msgstr ""
+
+#: includes/Admin/WhatsApp_Integration_Settings.php:219
+msgid "Are you sure you want to reset WhatsApp settings? This action cannot be undone and you will have to re-onboard."
+msgstr ""
+
+#: includes/Admin/WhatsApp_Integration_Settings.php:221
+msgid "Reset Settings"
+msgstr ""
+
+#: includes/Admin/WhatsApp_Integration_Settings.php:238
+msgid "Error resetting settings. Please try again or contact support."
 msgstr ""
 
 #: includes/AJAX.php:140
@@ -1248,35 +1279,78 @@ msgid "Missing merchant access token"
 msgstr ""
 
 #: includes/API/Plugin/Settings/Update/Request.php:112
-#: includes/API/Plugin/WhatsAppSettings/Update/Request.php:104
+#: includes/API/Plugin/WhatsAppSettings/Update/Request.php:109
 msgid "Missing access token"
 msgstr ""
 
-#: includes/API/Plugin/WhatsAppSettings/Handler.php:74
+#: includes/API/Plugin/WhatsAppSettings/Handler.php:84
+msgid "Update Settings for WhatsApp Utility Messages Integration Successful."
+msgstr ""
+
+#: includes/API/Plugin/WhatsAppSettings/Handler.php:90
 msgid "WhatsApp settings updated successfully"
 msgstr ""
 
-#: includes/API/Plugin/WhatsAppSettings/Update/Request.php:112
+#. translators: %s $error_message
+#: includes/API/Plugin/WhatsAppSettings/Handler.php:97
+msgid "Failed to handle_update for WhatsApp Utility Messages Integration. Exception: %1%s"
+msgstr ""
+
+#. translators: %s $error_message
+#: includes/API/Plugin/WhatsAppSettings/Handler.php:199
+#: includes/API/Plugin/WhatsAppSettings/Handler.php:227
+msgid "Failed to handle_uninstall for WhatsApp Utility Messages Integration. Exception: %1%s"
+msgstr ""
+
+#: includes/API/Plugin/WhatsAppSettings/Handler.php:214
+msgid "Uninstall successful for WhatsApp Utility Messages Integration."
+msgstr ""
+
+#: includes/API/Plugin/WhatsAppSettings/Handler.php:220
+msgid "WhatsApp integration successfully uninstalled"
+msgstr ""
+
+#: includes/API/Plugin/WhatsAppSettings/Update/Request.php:104
+msgid "Failed to updateWhatsAppSettings since access_token param is missing."
+msgstr ""
+
+#: includes/API/Plugin/WhatsAppSettings/Update/Request.php:117
+msgid "Failed to updateWhatsAppSettings since business_id param is missing."
+msgstr ""
+
+#: includes/API/Plugin/WhatsAppSettings/Update/Request.php:122
 msgid "Missing business id"
 msgstr ""
 
-#: includes/API/Plugin/WhatsAppSettings/Update/Request.php:120
+#: includes/API/Plugin/WhatsAppSettings/Update/Request.php:130
+msgid "Failed to updateWhatsAppSettings since phone_number_id param is missing."
+msgstr ""
+
+#: includes/API/Plugin/WhatsAppSettings/Update/Request.php:135
 msgid "Missing phone number id"
 msgstr ""
 
-#: includes/API/Plugin/WhatsAppSettings/Update/Request.php:128
+#: includes/API/Plugin/WhatsAppSettings/Update/Request.php:143
+msgid "Failed to updateWhatsAppSettings since waba_id param is missing."
+msgstr ""
+
+#: includes/API/Plugin/WhatsAppSettings/Update/Request.php:148
 msgid "Missing waba id"
 msgstr ""
 
-#: includes/API/Plugin/WhatsAppSettings/Update/Request.php:136
+#: includes/API/Plugin/WhatsAppSettings/Update/Request.php:156
+msgid "Failed to updateWhatsAppSettings since wa_installation_id param is missing."
+msgstr ""
+
+#: includes/API/Plugin/WhatsAppSettings/Update/Request.php:161
 msgid "Missing wa installation id"
 msgstr ""
 
-#: includes/fbproduct.php:2895
+#: includes/fbproduct.php:2903
 msgid "MPN (Manufacturer Part Number)"
 msgstr ""
 
-#: includes/fbproduct.php:2896
+#: includes/fbproduct.php:2904
 msgid "GTIN (Global Trade Item Number)"
 msgstr ""
 
@@ -1477,6 +1551,38 @@ msgstr ""
 msgid "You do not have permission to finish App Store login."
 msgstr ""
 
+#: includes/Handlers/WhatsAppExtension.php:57
+msgid "WhatsApp Utility Messages Iframe Splash Url Fetched."
+msgstr ""
+
+#: includes/Handlers/WhatsAppExtension.php:86
+msgid "WhatsApp Utility Messages Iframe Management Url failed to fetch due to failed WhatsApp connection"
+msgstr ""
+
+#. translators: %s $wa_installation_id %s $error_message
+#: includes/Handlers/WhatsAppExtension.php:117
+msgid "Failed to fetch iframe Management URI. wa_installation_id: %1$s, error message: %2$s"
+msgstr ""
+
+#: includes/Handlers/WhatsAppExtension.php:126
+msgid "WhatsApp Utility Messages Iframe Management Url successfully fetched"
+msgstr ""
+
+#. translators: %s $order_id
+#: includes/Handlers/WhatsAppExtension.php:166
+msgid "Customer Events Post API call for Order id %1$s Failed due to failed connection "
+msgstr ""
+
+#. translators: %s $order_id %s $error_message
+#: includes/Handlers/WhatsAppExtension.php:213
+msgid "Customer Events Post API call for Order id %1$s Failed %2$s "
+msgstr ""
+
+#. translators: %s $order_id
+#: includes/Handlers/WhatsAppExtension.php:222
+msgid "Customer Events Post API call for Order id %1$s Succeeded."
+msgstr ""
+
 #: includes/Handlers/WhatsAppUtilityConnection.php:74
 msgid "In Template Library Get API call "
 msgstr ""
@@ -1641,7 +1747,7 @@ msgstr ""
 msgid "Product excluded by wc_facebook_should_sync_product filter."
 msgstr ""
 
-#: includes/ProductSync/ProductValidator.php:398
+#: includes/ProductSync/ProductValidator.php:399
 msgid "Too many attributes selected for product. Use 4 or less."
 msgstr ""
 

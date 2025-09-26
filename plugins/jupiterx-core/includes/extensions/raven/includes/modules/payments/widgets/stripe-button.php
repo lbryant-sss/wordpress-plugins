@@ -407,7 +407,7 @@ class Stripe_Button extends Payment_Button {
 				'condition' => [
 					'sandbox_mode[value]' => 'yes',
 				],
-				'description' => esc_html__( 'To manage these options, go to your Stripe account > Products >  Tax Rates.', 'jupiterx-core' ),
+				'description' => esc_html__( 'To manage these options, go to your Stripe account > Product catalog >  Tax Rates.', 'jupiterx-core' ),
 			]
 		);
 
@@ -420,7 +420,7 @@ class Stripe_Button extends Payment_Button {
 				'condition' => [
 					'sandbox_mode[value]!' => 'yes',
 				],
-				'description' => esc_html__( 'To manage these options, go to your Stripe account > Products >  Tax Rates.', 'jupiterx-core' ),
+				'description' => esc_html__( 'To manage these options, go to your Stripe account > Product catalog >  Tax Rates.', 'jupiterx-core' ),
 			]
 		);
 

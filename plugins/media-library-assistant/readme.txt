@@ -199,6 +199,10 @@ All of the MLA source code has been annotated with "DocBlocks", a special type o
 
 == Changelog ==
 
+= 3.30 =
+* Fix: IMPORTANT: The "Transfer by Item Name" feature has been redesigned to mitigate an Insecure Direct Object Reference security issue. This fix also requires you to manually update the "MLA Item Transfer Pretty Links" example plugin if your site uses it.
+* Fix: IMPORTANT: The "MLA Item Transfer Pretty Links" example plugin has been updated to use the new "Transfer by Item Name" method. **You must manually update the example plugin** if your site uses it.
+
 = 3.29 =
 * Fix: IMPORTANT: A Reflected Cross-Site Scripting security risk in all four shortcodes has been mitigated.
 * Fix: For the Media/Assistant submenu table, the "Download" rollover action has been repaired. This corrects a defect introduced in the MLA 3.28 update.

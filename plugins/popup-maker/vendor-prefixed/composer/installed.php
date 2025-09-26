@@ -4,7 +4,7 @@
     'name' => 'popupmaker/popup-maker',
     'pretty_version' => 'dev-develop',
     'version' => 'dev-develop',
-    'reference' => '831fcb51f0f39ec2a2126e690307b718946910e9',
+    'reference' => 'ca462be7e3d4a98e99916c78a52608de10e6fadc',
     'type' => 'wordpress-plugin',
     'install_path' => __DIR__ . '/../',
     'aliases' => 

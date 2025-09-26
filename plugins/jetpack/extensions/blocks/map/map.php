@@ -62,7 +62,7 @@ function wpcom_load_event( $access_token_source ) {
 /**
  * Function to determine which map provider to choose
  *
- * @param string $html The block's HTML - needed for the class name.
+ * @param array $html The block's HTML - needed for the class name.
  *
  * @return string The name of the map provider.
  */

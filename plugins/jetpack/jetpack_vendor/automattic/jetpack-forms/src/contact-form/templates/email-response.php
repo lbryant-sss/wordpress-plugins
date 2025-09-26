@@ -14,10 +14,6 @@
  * @package automattic/jetpack
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit( 0 );
-}
-
 // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.UnusedVariable -- used in class-contact-form.php
 $template = '
 <!DOCTYPE html>

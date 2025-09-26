@@ -350,14 +350,15 @@ class Module extends Module_Base {
 			$body['shipping_options'][0]['shipping_rate_data']['display_name']             = esc_html__( 'shipping fee', 'jupiterx-core' );
 		}
 
-		if ( isset( $args['tax_rates'] ) ) {
-			$tax_rate     = unserialize( $args['tax_rates'] );
-			$tax_id       = [ $tax_rate[0] ];
-			$tax_behavior = $tax_rate[1];
-
-			if ( ! empty( $tax_behavior ) && ! empty( $tax_id ) ) {
-				$body['line_items'][0]['price_data']['tax_behavior'] = $tax_behavior;
-				$body['line_items'][0]['tax_rates']                  = $tax_id;
+		if ( isset( $args['tax_rates'] ) && is_string( $args['tax_rates'] ) ) {
+			$tax_rate = @unserialize( $args['tax_rates'], [ 'allowed_classes' => false ] ); // phpcs:disable
+			if ( is_array( $tax_rate ) && isset( $tax_rate[0], $tax_rate[1] ) ) {
+				$tax_id       = [ $tax_rate[0] ];
+				$tax_behavior = $tax_rate[1];
+				if ( ! empty( $tax_behavior ) && ! empty( $tax_id ) ) {
+					$body['line_items'][0]['price_data']['tax_behavior'] = $tax_behavior;
+					$body['line_items'][0]['tax_rates']                  = $tax_id;
+				}
 			}
 		}
 

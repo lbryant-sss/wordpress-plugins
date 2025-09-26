@@ -18,8 +18,6 @@ import { __ } from '@wordpress/i18n';
 import PayPalIcon from './icon';
 import './editor.scss';
 
-const BUTTON_ID_PATTERN = '[A-Za-z0-9_-]+';
-
 const extractScriptSrc = codeHead => {
 	const match = codeHead.match(
 		/src="(https:\/\/(www\.)?(sandbox\.)?paypal\.com\/sdk\/js\?[^"]+)"/
@@ -28,43 +26,46 @@ const extractScriptSrc = codeHead => {
 };
 
 const extractHostedButtonId = codeBody => {
-	let buttonId = '';
-
 	// Try to extract from hostedButtonId property first (stacked buttons)
-	const hostedButtonMatch = codeBody.match(
-		new RegExp( `hostedButtonId:\\s*["'](${ BUTTON_ID_PATTERN })["']` )
-	);
+	const hostedButtonMatch = codeBody.match( /hostedButtonId:\s*["']([^"']+)["']/ );
 	if ( hostedButtonMatch ) {
-		buttonId = hostedButtonMatch[ 1 ];
+		return hostedButtonMatch[ 1 ];
+	}
+
+	// Try to extract from container ID (stacked buttons)
+	const containerMatch = codeBody.match( /paypal-container-([^"']+)/ );
+	if ( containerMatch ) {
+		return containerMatch[ 1 ];
 	}
 
 	// Try to extract from form action URL (single buttons)
-	// Support international domains, protocol-relative URLs, and case-insensitive domain matching
-	// Extract ID before any query parameters or spaces
-	if ( ! buttonId ) {
-		const actionMatch = codeBody.match(
-			/action\s*=\s*["'](?:https?:)?\/\/(?:www\.)?(?:sandbox\.)?paypal\.[a-z.]+\/ncp\/payment\/([A-Za-z0-9_-]+)\s*(?:\?[^"']*)?["']/i
-		);
-		if ( actionMatch ) {
-			buttonId = actionMatch[ 1 ];
-		}
+	const actionMatch = codeBody.match(
+		/action=["']https:\/\/www\.paypal\.com\/ncp\/payment\/([^"']+)["']/
+	);
+	if ( actionMatch ) {
+		return actionMatch[ 1 ];
 	}
 
-	return buttonId.trim();
+	// Try to extract from CSS class (single buttons)
+	const cssMatch = codeBody.match( /\.pp-([A-Z0-9]+)/ );
+	if ( cssMatch ) {
+		return cssMatch[ 1 ];
+	}
+
+	return '';
 };
 
 const extractButtonText = codeBody => {
 	// Extract button text from input value attribute (single buttons)
-	// Support spaces around equals sign and both self-closing and non-self-closing tags
-	const inputMatch = codeBody.match( /<input[^>]*value\s*=\s*["']([^"']+)["'][^>]*\/?>/ );
-	return inputMatch ? inputMatch[ 1 ].trim() : '';
+	const inputMatch = codeBody.match( /<input[^>]*value=["']([^"']+)["'][^>]*\/>/ );
+	return inputMatch ? inputMatch[ 1 ] : '';
 };
 
 const generateHeadCode = scriptSrc => {
 	if ( ! scriptSrc ) {
 		return '';
 	}
-	return `<script src="${ scriptSrc }" data-namespace="paypal_payment_buttons"></script>`;
+	return `<script src="${ scriptSrc }"></script>`;
 };
 
 const generateBodyCode = ( hostedButtonId, buttonType = 'stacked', buttonText = '' ) => {
@@ -83,7 +84,7 @@ const generateBodyCode = ( hostedButtonId, buttonType = 'stacked', buttonText = 
 
 	return `<div id="paypal-container-${ hostedButtonId }"></div>
 <script>
-  (window.paypal_payment_buttons || window.paypal).HostedButtons({
+  paypal.HostedButtons({
     hostedButtonId: "${ hostedButtonId }",
   }).render("#paypal-container-${ hostedButtonId }")
 </script>`;
@@ -92,10 +93,7 @@ const generateBodyCode = ( hostedButtonId, buttonType = 'stacked', buttonText = 
 const validScriptSrc = scriptSrc =>
 	/^https:\/\/(www\.)?(sandbox\.)?paypal\.com\/sdk\/js\?client-id=/.test( scriptSrc );
 
-const validHostedButtonId = hostedButtonId => {
-	// Validate the button ID format
-	return new RegExp( `^${ BUTTON_ID_PATTERN }$` ).test( hostedButtonId );
-};
+const validHostedButtonId = hostedButtonId => /^[A-Z0-9]+$/.test( hostedButtonId );
 
 const validButtonText = buttonText =>
 	buttonText && buttonText.trim().length > 0 && buttonText.length <= 50;

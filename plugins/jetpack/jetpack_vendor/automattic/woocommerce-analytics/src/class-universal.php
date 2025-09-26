@@ -28,6 +28,9 @@ class Universal {
 		$this->additional_blocks_on_cart_page     = $this->get_additional_blocks_on_page( 'cart' );
 		$this->additional_blocks_on_checkout_page = $this->get_additional_blocks_on_page( 'checkout' );
 
+		// delayed events stored in session (can be add_to_carts, product_views...)
+		add_action( 'wp_head', array( $this, 'loop_session_events' ), 2 );
+
 		// Capture search
 		add_action( 'template_redirect', array( $this, 'capture_search_query' ), 11 );
 
@@ -74,6 +77,27 @@ class Universal {
 	}
 
 	/**
+	 * On product lists or other non-product pages, add an event listener to "Add to Cart" button click
+	 */
+	public function loop_session_events() {
+		// Check for previous events queued in session data.
+		if ( is_object( WC()->session ) ) {
+			$data = WC()->session->get( 'wca_session_data' );
+			if ( ! empty( $data ) ) {
+				foreach ( $data as $data_instance ) {
+					$this->record_event(
+						$data_instance['event'],
+						$data_instance['properties'] ?? array(),
+						$data_instance['product_id']
+					);
+				}
+				// Clear data, now that these events have been recorded.
+				WC()->session->set( 'wca_session_data', '' );
+			}
+		}
+	}
+
+	/**
 	 * On the cart page, add an event listener for removal of product click
 	 */
 	public function remove_from_cart() {
@@ -112,16 +136,7 @@ class Universal {
 	 */
 	public function capture_remove_from_cart( $cart_item_key, $cart ) {
 		$item = $cart->removed_cart_contents[ $cart_item_key ] ?? null;
-
-		WC_Analytics_Tracking::record_event(
-			'remove_from_cart',
-			$this->get_cart_checkout_event_properties(
-				array(
-					'pi' => (int) $item['product_id'],
-					'pq' => (int) $item['quantity'],
-				)
-			)
-		);
+		$this->capture_event_in_session_data( 'woocommerceanalytics_remove_from_cart', (int) $item['product_id'], (int) $item['quantity'] );
 	}
 
 	/**
@@ -137,29 +152,13 @@ class Universal {
 	public function capture_cart_quantity_update( $cart_item_key, $quantity, $old_quantity, $cart ) {
 		$product_id = $cart->cart_contents[ $cart_item_key ]['product_id'];
 		if ( $quantity > $old_quantity ) {
-			WC_Analytics_Tracking::record_event(
-				'add_to_cart',
-				$this->get_cart_checkout_event_properties(
-					array(
-						'pi' => $product_id,
-						'pq' => $quantity,
-					)
-				)
-			);
+			$this->capture_event_in_session_data( 'woocommerceanalytics_add_to_cart', $product_id, $quantity );
 			$this->lock_add_to_cart_events = true;
 			return;
 		}
 
 		if ( $quantity < $old_quantity ) {
-			WC_Analytics_Tracking::record_event(
-				'remove_from_cart',
-				$this->get_cart_checkout_event_properties(
-					array(
-						'pi' => $product_id,
-						'pq' => $quantity,
-					)
-				)
-			);
+			$this->capture_event_in_session_data( 'woocommerceanalytics_remove_from_cart', $product_id, $quantity );
 			return;
 		}
 	}
@@ -348,29 +347,28 @@ class Universal {
 				$order_coupons_count = count( $order_coupons );
 			}
 
-			WC_Analytics_Tracking::record_event(
-				'product_purchase',
-				$this->get_cart_checkout_event_properties(
-					array(
-						'oi'                       => $order->get_order_number(),
-						'pi'                       => $product_id,
-						'pq'                       => $order_item->get_quantity(),
-						'payment_option'           => $payment_option,
-						'create_account'           => $create_account,
-						'guest_checkout'           => $guest_checkout,
-						'delayed_account_creation' => $delayed_account_creation,
-						'express_checkout'         => $express_checkout,
-						'coupon_used'              => $order_coupons_count,
-						'products_count'           => $order_items_count,
-						'order_value'              => $order->get_subtotal(),
-						'order_total'              => $order->get_total(),
-						'total_discount'           => $order->get_discount_total(),
-						'total_taxes'              => $order->get_total_tax(),
-						'total_shipping'           => $order->get_shipping_total(),
-						'from_checkout'            => $checkout_page_used,
-						'checkout_page_contains_checkout_block' => $checkout_page_contains_checkout_block,
-						'checkout_page_contains_checkout_shortcode' => $checkout_page_contains_checkout_shortcode,
-					)
+			$this->capture_event_in_session_data(
+				'woocommerceanalytics_product_purchase',
+				$product_id,
+				$order_item->get_quantity(),
+				array(
+					'oi'                       => $order->get_order_number(),
+					'pq'                       => $order_item->get_quantity(),
+					'payment_option'           => $payment_option,
+					'create_account'           => $create_account,
+					'guest_checkout'           => $guest_checkout,
+					'delayed_account_creation' => $delayed_account_creation,
+					'express_checkout'         => $express_checkout,
+					'coupon_used'              => $order_coupons_count,
+					'products_count'           => $order_items_count,
+					'order_value'              => $order->get_subtotal(),
+					'order_total'              => $order->get_total(),
+					'total_discount'           => $order->get_discount_total(),
+					'total_taxes'              => $order->get_total_tax(),
+					'total_shipping'           => $order->get_shipping_total(),
+					'from_checkout'            => $checkout_page_used,
+					'checkout_page_contains_checkout_block' => $checkout_page_contains_checkout_block,
+					'checkout_page_contains_checkout_shortcode' => $checkout_page_contains_checkout_shortcode,
 				)
 			);
 		}
@@ -446,46 +444,56 @@ class Universal {
 		if ( $this->lock_add_to_cart_events ) {
 			return;
 		}
-		WC_Analytics_Tracking::record_event(
-			'add_to_cart',
-			$this->get_cart_checkout_event_properties(
-				array(
-					'pi' => $product_id,
-					'pq' => $quantity,
-				)
-			)
-		);
+		$this->capture_event_in_session_data( 'woocommerceanalytics_add_to_cart', $product_id, $quantity );
 	}
 
 	/**
-	 * Get the event properties for the cart and checkout events.
+	 * Track in-session data.
 	 *
-	 * @param array $event_properties Event properties.
+	 * @param string $event Fired event.
+	 * @param int    $product_id Product ID.
+	 * @param int    $quantity Quantity.
+	 * @param array  $properties Event properties.
 	 */
-	public function get_cart_checkout_event_properties( $event_properties = array() ) {
-		if ( isset( $event_properties['pq'] ) ) {
-			$event_properties['pq'] = 0 === $event_properties['pq'] ? 1 : $event_properties['pq'];
-			$event_properties['pq'] = (string) $event_properties['pq'];
+	public function capture_event_in_session_data( $event, $product_id, $quantity, $properties = array() ) {
+
+		$product = wc_get_product( $product_id );
+		if ( ! $product instanceof WC_Product ) {
+			return;
 		}
-		$product         = isset( $event_properties['pi'] ) ? wc_get_product( $event_properties['pi'] ) : null;
-		$product_details = $product instanceof WC_Product ? $this->get_product_details( $product ) : array();
+		$quantity = ( 0 === $quantity ) ? 1 : $quantity;
 
-		$checkout_cart_details = array(
-			'template_used'                      => $this->cart_checkout_templates_in_use ? '1' : '0',
-			'additional_blocks_on_cart_page'     => $this->additional_blocks_on_cart_page,
-			'additional_blocks_on_checkout_page' => $this->additional_blocks_on_checkout_page,
-			'order_value'                        => $this->get_cart_subtotal(),
-			'order_total'                        => $this->get_cart_total(),
-			'total_tax'                          => $this->get_cart_taxes(),
-			'total_discount'                     => $this->get_total_discounts(),
-			'total_shipping'                     => $this->get_cart_shipping_total(),
-			'products_count'                     => $this->get_cart_items_count(),
+		// check for existing data.
+		if ( is_object( WC()->session ) ) {
+			$data = WC()->session->get( 'wca_session_data' );
+			if ( empty( $data ) || ! is_array( $data ) ) {
+				$data = array();
+			}
+		} else {
+			$data = array();
+		}
+
+		$event_properties = array_merge(
+			array(
+				'pq'           => isset( $quantity ) ? (string) $quantity : null,
+				'session_id'   => $this->get_session_id(),
+				'landing_page' => $this->get_landing_page(),
+				'is_engaged'   => $this->is_engaged_session(),
+			),
+			$properties
 		);
-		$cart_checkout_info    = $this->get_cart_checkout_info();
 
-		$event_properties = array_merge( $event_properties, $product_details, $checkout_cart_details, $cart_checkout_info );
+		// extract new event data.
+		$new_data = array(
+			'event'      => $event,
+			'product_id' => (string) $product_id,
+			'properties' => $event_properties,
+		);
 
-		return $event_properties;
+		// append new data.
+		$data[] = $new_data;
+
+		WC()->session->set( 'wca_session_data', $data );
 	}
 
 	/**

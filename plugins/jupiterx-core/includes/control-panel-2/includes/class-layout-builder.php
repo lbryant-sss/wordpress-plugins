@@ -245,7 +245,7 @@ class JupiterX_Core_Control_Panel_Layout_Builder {
 	}
 
 	private function filter_inactive_conditions( $data ) {
-		if ( ! defined( 'ICL_SITEPRESS_VERSION' ) ) {
+		if ( ! defined( 'ICL_SITEPRESS_VERSION' ) && ! empty( $data->conditions ) ) {
 			foreach ( $data->conditions as $key => $condition ) {
 				if ( 'wpml' === $condition['conditionB'] ) {
 					unset( $data->conditions[ $key ] );

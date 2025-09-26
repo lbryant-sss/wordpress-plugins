@@ -833,7 +833,9 @@ class Search_Widget extends \WP_Widget {
 
 			<?php if ( ! $hide_filters ) : ?>
 				<script class="jetpack-search-filters-widget__filter-template" type="text/template">
-					<?php $this->render_widget_edit_filter( array(), true ); ?>
+					<?php
+					echo $this->render_widget_edit_filter( array(), true ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					?>
 				</script>
 				<div class="jetpack-search-filters-widget__filters">
 					<?php foreach ( (array) $instance['filters'] as $filter ) : ?>
@@ -847,7 +849,7 @@ class Search_Widget extends \WP_Widget {
 				</p>
 				<noscript>
 					<p class="jetpack-search-filters-help">
-						<?php esc_html_e( 'Adding filters requires JavaScript!', 'jetpack-search-pkg' ); ?>
+						<?php echo esc_html_e( 'Adding filters requires JavaScript!', 'jetpack-search-pkg' ); ?>
 					</p>
 				</noscript>
 				<?php if ( is_customize_preview() ) : ?>
@@ -905,7 +907,7 @@ class Search_Widget extends \WP_Widget {
 				</script>
 				<noscript>
 					<p class="jetpack-search-filters-help">
-						<?php esc_html_e( 'Adding filters requires JavaScript!', 'jetpack-search-pkg' ); ?>
+						<?php echo esc_html_e( 'Adding filters requires JavaScript!', 'jetpack-search-pkg' ); ?>
 					</p>
 				</noscript>
 			<?php endif; ?>

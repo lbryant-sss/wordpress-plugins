@@ -6,10 +6,6 @@
  * @since 13.5
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit( 0 );
-}
-
 /**
  * Jetpack_Subscribe_Overlay class.
  */

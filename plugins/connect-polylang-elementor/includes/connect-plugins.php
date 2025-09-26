@@ -590,7 +590,7 @@ class ConnectPlugins {
 	 */
 	public function add_search_form_home_url_filter( $element ) {
 
-		if ( 'search-form' === $element->get_name() ) {
+		if ( 'search' === $element->get_name() || 'search-form' === $element->get_name() ) {
 			add_filter( 'home_url', array( $this, 'search_form_home_url_filter' ), 10, 2 );
 		}
 
@@ -606,7 +606,7 @@ class ConnectPlugins {
 	 */
 	public function remove_search_form_home_url_filter( $element ) {
 
-		if ( 'search-form' === $element->get_name() ) {
+		if ( 'search' === $element->get_name() || 'search-form' === $element->get_name() ) {
 			remove_filter( 'home_url', array( $this, 'search_form_home_url_filter' ) );
 		}
 
