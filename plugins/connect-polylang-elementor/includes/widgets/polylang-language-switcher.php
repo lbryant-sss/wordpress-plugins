@@ -737,13 +737,6 @@ class PolylangLanguageSwitcher extends Widget_Base {
 
 			$lang_links = array();
 
-			$svg_replaces = array(
-				'"' => "'",
-				'#' => '%23',
-				'<' => '%3C',
-				'>' => '%3E',
-			);
-
 			foreach ( $languages as $lang_code => $language ) {
 
 				// Hide the current language.
@@ -775,7 +768,7 @@ class PolylangLanguageSwitcher extends Widget_Base {
 						// If data uri encoded flags are preferred.
 						if ( ! defined( 'PLL_ENCODED_FLAGS' ) || PLL_ENCODED_FLAGS ) {
 							$file_contents   = file_get_contents( CPEL_DIR . $flag_svg['path'] ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
-							$flag_svg['src'] = 'data:image/svg+xml;utf8,' . str_replace( array_keys( $svg_replaces ), $svg_replaces, $file_contents );
+							$flag_svg['src'] = 'data:image/svg+xml;base64,' . base64_encode( $file_contents );
 						} else {
 							$flag_svg['src'] = $flag_svg['url'];
 						}

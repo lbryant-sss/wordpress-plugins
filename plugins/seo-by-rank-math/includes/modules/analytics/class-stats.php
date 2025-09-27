@@ -499,7 +499,6 @@ class Stats extends Keywords {
 				'type'      => '',
 				'offset'    => 0,
 				'perpage'   => 5,
-				'request'   => null,
 			]
 		);
 
@@ -510,7 +509,6 @@ class Stats extends Keywords {
 		$perpage        = $args['perpage'];
 		$order_by_field = $args['orderBy'];
 		$sub_where      = $args['sub_where'];
-		$request        = $args['request'];
 
 		$order_position_fields = [ 'position', 'diffPosition' ];
 		$order_metrics_fields  = [ 'clicks', 'diffClicks', 'impressions', 'diffImpressions', 'ctr', 'diffCtr' ];
@@ -623,7 +621,7 @@ class Stats extends Keywords {
 			}
 		}
 
-		return $this->do_filter( 'analytics/rows', $rows, $args, $page_urls, $request );
+		return $this->do_filter( 'analytics/rows', $rows, $args, $page_urls );
 	}
 
 	/**

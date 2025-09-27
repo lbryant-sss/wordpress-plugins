@@ -18,7 +18,7 @@ License: GPLv3
 
 Change Log
 
-Ad Inserter 2.8.7 - 2025-09-21
+Ad Inserter 2.8.7 - 2025-09-26
 - Few minor bug fixes, cosmetic changes and code improvements
 
 Ad Inserter 2.8.6 - 2025-08-30

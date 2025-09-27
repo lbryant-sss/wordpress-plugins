@@ -80,7 +80,6 @@ class Posts extends Objects {
 				'offset'    => 0, // Here offset should always zero.
 				'perpage'   => $objects['rowsFound'],
 				'sub_where' => " AND page IN ('" . join( "', '", $pages ) . "')",
-				'request'   => $request,
 			]
 		);
 

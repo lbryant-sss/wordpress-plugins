@@ -107,7 +107,7 @@ The FAQs are maintained at https://rocketgeek.com/plugins/wp-members/docs/faqs/
 
 == Upgrade Notice ==
 
-WP-Members 3.5.4.3 is a security patch. WP-Members 3.5.4 is a feature update release. It fixes some minor bugs and adds new filters and some additional features. WP-Members 3.5.0 is a major update. See changelog for a list of updates. Minimum WP version is 4.0.
+WP-Members 3.5.5 is a feature update release. It fixes some minor bugs and adds new filters and some additional features. WP-Members 3.5.0 is a major update. See changelog for a list of updates. Minimum WP version is 4.0.
 
 
 == Screenshots ==
@@ -131,17 +131,16 @@ WP-Members 3.5.4.3 is a security patch. WP-Members 3.5.4 is a feature update rel
 
 == Changelog ==
 
-= 3.5.4.3 =
+= 3.5.5 =
 
-* This is a security patch. See release announcement for more detail.
-
-= 3.5.4.2 =
-
-* This is a security patch. See release announcement for more detail.
-
-= 3.5.4.1 =
-
-* This is a security patch. See release announcement for more detail.
+* Bug fix for `wpmem_get_user_count_by_role()` that causes it to return a total count of all users no matter the role requested.
+* Bug fix for image field display in profile.
+* Add support to switch WP-Members password reset link over to WooCommerce link (adds new setting, updates db version).
+* Add sorting to [wpmem_user_membership_posts] shortcode.
+* Add sorting arguments to `wpmem_get_membership_post_list()` function.
+* Add `wpmem_show_membership_posts_sc_list_item` filter for [wpmem_user_membership_posts] shortcode output.
+* Code improvement to consolidate `wpmem_logout_link` filter instances into `wpmem_logout_link()` function. 
+* Security patches from 3.5.4.1, 3.5.4.2, and 3.4.5.3.
 
 = 3.5.4 =
 
@@ -153,7 +152,7 @@ WP-Members 3.5.4.3 is a security patch. WP-Members 3.5.4 is a feature update rel
 * Add additional form support for form field label links (native WP reg, WC forms, dashboard profile, [wpmem_field] shortcode).
 * New API functions for user counts: `wpmem_user_count()`, `wpmem_get_user_count_by_meta()`, `wpmem_get_user_count_by_role()`.
 * New API function for import: `wpmem_csv_to_array()`.
-* Improve radio field type display in native WP and WC My Account reg forms.
+* Code improvement to radio field type display in native WP and WC My Account reg forms.
 * Allow native WC fields in WC My Account reg form.
 * Updates to WP CLI commands: All @alias are now @subcommand (changes all underscore commands to dash/hyphen. example:  <wp mem user get_role> is now <wp mem user get-role>).
 * Updates to WP CLI commands: Improve and debug `wp mem import memberships` command.

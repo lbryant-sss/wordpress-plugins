@@ -1,9 +1,0 @@
-{
-	"bracketSpacing": true,
-	"singleQuote": true,
-	"tabWidth": 2,
-	"plugins": [
-		"prettier-plugin-organize-imports"
-	],
-	"printWidth": 100
-}

@@ -248,13 +248,12 @@ class Rest extends WP_REST_Controller {
 	/**
 	 * Get dashboard data.
 	 *
-	 * @param WP_REST_Request $request Full details about the request.
 	 * @return WP_REST_Response|WP_Error Response object on success, or WP_Error object on failure.
 	 */
-	public function get_dashboard( $request ) {
+	public function get_dashboard() {
 		return rest_ensure_response(
 			[
-				'stats'        => Stats::get()->get_analytics_summary( $request ),
+				'stats'        => Stats::get()->get_analytics_summary(),
 				'optimization' => Stats::get()->get_optimization_summary(),
 			]
 		);
@@ -271,7 +270,7 @@ class Rest extends WP_REST_Controller {
 		$post_type = sanitize_key( $request->get_param( 'postType' ) );
 		return rest_ensure_response(
 			[
-				'summary'      => Stats::get()->get_posts_summary( $request ),
+				'summary'      => Stats::get()->get_posts_summary( $post_type ),
 				'optimization' => Stats::get()->get_optimization_summary( $post_type ),
 			]
 		);

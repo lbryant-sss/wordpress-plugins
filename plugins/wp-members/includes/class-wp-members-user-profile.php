@@ -143,23 +143,24 @@ class WP_Members_User_Profile {
 					// Is this an image or a file?
 					if ( 'file' == $field['type'] || 'image' == $field['type'] ) {
 						$empty_file = '<span class="description">' . esc_html__( 'None' ) . '</span>';
+						$sanitized_val = intval( $val );
 						if ( 'file' == $field['type'] ) {
-							$attachment_url = wp_get_attachment_url( $val );
+							$attachment_url = wp_get_attachment_url( $sanitized_val );
 							$input = ( $attachment_url ) ? '<a href="' . esc_url( $attachment_url ) . '">' . esc_url_raw( $attachment_url ) . '</a>' : $empty_file;
 						} else {
-							$attachment_url = wp_get_attachment_image( $val, 'medium' );
+							$attachment_url = wp_get_attachment_image( $sanitized_val, 'medium' );
 							if ( 'admin' == $display ) {
-								$edit_url = admin_url( 'upload.php?item=' . $val );
-								$input = ( $attachment_url ) ? '<a href="' . esc_url( $edit_url ) . '">' . esc_url_raw( $attachment_url ) . '</a>' : $empty_file;
+								$edit_url = admin_url( 'upload.php?item=' . $sanitized_val );
+								$input = ( $attachment_url ) ? '<a href="' . esc_url( $edit_url ) . '">' . wp_kses_post( $attachment_url ) . '</a>' : $empty_file;
 							} else {
-								$input = ( $attachment_url ) ? esc_url_raw( $attachment_url ) : $empty_file;
+								$input = ( $attachment_url ) ? wp_kses_post( $attachment_url ) : $empty_file;
 							}
 						}
 						$input.= '<br />' . wpmem_get_text( 'profile_upload' ) . '<br />';
 						$input.= wpmem_form_field( array(
 							'name'    => $meta, 
 							'type'    => $field['type'], 
-							'value'   => $val, 
+							'value'   => $sanitized_val, 
 							'compare' => $valtochk,
 						) );
 					} else {
@@ -433,7 +434,7 @@ class WP_Members_User_Profile {
 				}
 			}
 
-			if ( defined( 'WPMEM_EXP_MODULE' ) && $wpmem->use_exp == 1 ) {
+			if ( wpmem_is_exp_enabled() && $wpmem->use_exp == 1 ) {
 				if ( function_exists( 'wpmem_a_extenduser' ) ) {
 					wpmem_a_extenduser( $user_id );
 				}
@@ -562,7 +563,7 @@ class WP_Members_User_Profile {
 		 * If registration is moderated, this doesn't show 
 		 * if user is not active yet.
 		 */
-		if ( defined( 'WPMEM_EXP_MODULE' ) && $wpmem->use_exp == 1 ) {
+		if ( wpmem_is_exp_enabled() && $wpmem->use_exp == 1 ) {
 			if ( ( $wpmem->mod_reg == 1 &&  get_user_meta( $user_id, 'active', true ) == 1 ) || ( $wpmem->mod_reg != 1 ) ) {
 				if ( function_exists( 'wpmem_a_extend_user' ) ) {
 					wpmem_a_extend_user( $user_id );

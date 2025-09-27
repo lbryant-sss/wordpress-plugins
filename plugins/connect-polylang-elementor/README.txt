@@ -5,7 +5,7 @@ Tags: elementor, polylang, multilingual, language switcher, dynamic tags
 Requires at least: 5.4
 Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 2.5.1
+Stable tag: 2.5.2
 License: GPL-2.0-or-later
 License URI: https://opensource.org/licenses/GPL-2.0
 
@@ -200,6 +200,9 @@ There are quite a few:
 
 
 == Changelog ==
+
+= 2.5.2 =
+* Fix SVG flags use base64 encode.
 
 = 2.5.1 =
 * Fix New Search widget (Elem. >= 3.24) use correct search url (thanks to [@giovanni-caprilli](https://github.com/giovanni-caprilli))
