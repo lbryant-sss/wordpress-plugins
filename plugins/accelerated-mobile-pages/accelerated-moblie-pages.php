@@ -3,7 +3,7 @@
 Plugin Name: Accelerated Mobile Pages
 Plugin URI: https://wordpress.org/plugins/accelerated-mobile-pages/
 Description: AMP for WP - Accelerated Mobile Pages for WordPress
-Version: 1.1.7
+Version: 1.1.7.1
 Author: Ahmed Kaludi, Mohammed Kaludi
 Author URI: https://ampforwp.com/
 Donate link: https://www.paypal.me/Kaludi/25
@@ -20,7 +20,7 @@ define('AMPFORWP_PLUGIN_DIR_URI', plugin_dir_url(__FILE__));
 define('AMPFORWP_DISQUS_URL',plugin_dir_url(__FILE__).'includes/disqus.html');
 define('AMPFORWP_IMAGE_DIR',plugin_dir_url(__FILE__).'images');
 define('AMPFORWP_MAIN_PLUGIN_DIR', plugin_dir_path( __DIR__ ) );
-define('AMPFORWP_VERSION','1.1.7');
+define('AMPFORWP_VERSION','1.1.7.1');
 define('AMPFORWP_EXTENSION_DIR',plugin_dir_path(__FILE__).'includes/options/extensions');
 define('AMPFORWP_ANALYTICS_URL',plugin_dir_url(__FILE__).'includes/features/analytics');
 if(!defined('AMPFROWP_HOST_NAME')){
@@ -565,15 +565,13 @@ if( !function_exists('ampforwp_upcomming_layouts_demo') ){
 	}
 }
 
-// Load Redux framework and options files when needed
-add_action( 'init', 'ampforwp_load_admin_files', 1 );
-function ampforwp_load_admin_files() {
+require_once dirname( __FILE__ ).'/includes/options/redux-core/framework.php';
+require_once dirname( __FILE__ ).'/includes/options/extensions/loader.php';
+add_action('after_setup_theme', 'ampforwp_include_options_file' );
+
+function ampforwp_include_options_file(){	
 	if ( is_admin() ) {
-		// Load Redux framework first
-		require_once dirname( __FILE__ ).'/includes/options/redux-core/framework.php';
-		require_once dirname( __FILE__ ).'/includes/options/extensions/loader.php';
-		
-		// Then load options files
+		// Register all the main options	
 		require_once dirname( __FILE__ ).'/includes/options/admin-config.php';
 		require_once dirname( __FILE__ ).'/templates/report-bugs.php';
 		// Global UX Fields
@@ -874,46 +872,33 @@ if ( ! defined('AMP_FRAMEWORK_COMOPNENT_DIR_PATH') ) {
 	define('AMP_FRAMEWORK_COMOPNENT_DIR_PATH', AMPFORWP_PLUGIN_DIR ."/components"); 
 }
 require_once( AMP_FRAMEWORK_COMOPNENT_DIR_PATH . '/components-core.php' );
-
-// Load install/index.php only in admin and when needed
-add_action( 'admin_init', 'ampforwp_load_install_file' );
-function ampforwp_load_install_file() {
-	if ( is_admin() && current_user_can( 'manage_options' ) ) {
-		require_once( AMPFORWP_PLUGIN_DIR.'/install/index.php' );
-	}
-}
-
+require ( AMPFORWP_PLUGIN_DIR.'/install/index.php' );
 if ( !function_exists('amp_activate') ) {
 	require_once(  AMPFORWP_PLUGIN_DIR. 'base_remover/base_remover.php' );
 	require_once(  AMPFORWP_PLUGIN_DIR. 'includes/thirdparty-compatibility.php' );
-	
-	// Load page builder only when needed
-	add_action( 'init', 'ampforwp_load_pagebuilder' );
-	function ampforwp_load_pagebuilder() {
-		$enablePb = false;
-		if(is_admin()){
-			global $pagenow;
-			if( is_multisite() ){
-			/* phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash */
-			$current_url = ( isset( $_SERVER['REQUEST_URI'] ) ) ? sanitize_text_field( esc_url_raw( $_SERVER['REQUEST_URI'] ) ) : "";
-			$post_old = preg_match('/post\.php/', $current_url);
-			$post_new = preg_match('/post-new\.php/', $current_url);
-				if($post_old || $post_new){ 
-					$enablePb = true;
-				}
-			}elseif( ('post.php' || 'post-new.php') == $pagenow ) {
+	$enablePb = false;
+	if(is_admin()){
+		global $pagenow;
+		if( is_multisite() ){
+		/* phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash */
+		$current_url = ( isset( $_SERVER['REQUEST_URI'] ) ) ? sanitize_text_field( esc_url_raw( $_SERVER['REQUEST_URI'] ) ) : "";
+		$post_old = preg_match('/post\.php/', $current_url);
+		$post_new = preg_match('/post-new\.php/', $current_url);
+			if($post_old || $post_new){ 
 				$enablePb = true;
 			}
-			if (defined('DOING_AJAX') && DOING_AJAX) {
-				$enablePb = true;
-			}
-		}else{
+		}elseif( ('post.php' || 'post-new.php') == $pagenow ) {
 			$enablePb = true;
 		}
-		if ($enablePb && ampforwp_get_setting('ampforwp-pagebuilder')== true ){	
-			require_once(  AMPFORWP_PLUGIN_DIR. 'pagebuilder/amp-page-builder.php');
-		} 
+		if (defined('DOING_AJAX') && DOING_AJAX) {
+			$enablePb = true;
+		}
+	}else{
+		$enablePb = true;
 	}
+	if ($enablePb && ampforwp_get_setting('ampforwp-pagebuilder')== true ){	
+		require_once(  AMPFORWP_PLUGIN_DIR. 'pagebuilder/amp-page-builder.php');
+	} 
 }
 if(is_admin()){
 	require_once(  AMPFORWP_PLUGIN_DIR. 'includes/modules-upgrade.php' );
