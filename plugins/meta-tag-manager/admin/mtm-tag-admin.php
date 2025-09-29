@@ -25,8 +25,18 @@ class MTM_Tag_Admin extends MTM_Tag {
 		//go through all non-empty values and wp_kses it
 		foreach( $values as $k => $v ){
 			if( $k == 'content'){
-				$values_cleaned[$k] = wp_unslash($v);
-			}else{
+				// handle refresh specifically
+				if ( $values['type'] ?? '' == 'http-equiv' && $values['value'] ?? '' == 'refresh' ) {
+					// if user is an admin, allow urls, otherwise only numbers
+					if ( current_user_can( 'manage_options' ) ) {
+						$values_cleaned[$k] = wp_kses( wp_unslash( $v ), array( 'http' => array( 'url' => true ) ) );
+					} else {
+						$values_cleaned[$k] = absint($v);
+					}
+				} else {
+					$values_cleaned[$k] = wp_unslash($v);
+				}
+			} else{
 				$values_cleaned[$k] = wp_kses(wp_unslash($v), array());
 			}
 		}

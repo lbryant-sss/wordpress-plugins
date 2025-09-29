@@ -4,7 +4,7 @@ Plugin Name: Meta Tag Manager
 Plugin URI: https://metatagmanager.com
 Description: A simple plugin to manage meta tags and other meta data that appear on aread of your site or individual posts. This can be used for verifiying google adding open graph tags, SEO meta and more.
 Author: Pixelite
-Version: 3.2
+Version: 3.3
 Author URI: https://pixelite.com/?utm_source=plugin-header&utm_medium=plugin&utm_campaign=plugin
 Text Domain: meta-tag-manager
 */
@@ -26,7 +26,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 if( !defined('ABSPATH') ) exit;
 
-define('MTM_VERSION', '3.2');
+define('MTM_VERSION', '3.3');
 define('MTM_DIR_URL', trailingslashit(plugin_dir_url(__FILE__)));
 define('MTM_DIR', dirname( __FILE__ )); //an absolute path to this directory
 

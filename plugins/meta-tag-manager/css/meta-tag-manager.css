@@ -430,7 +430,8 @@ table.features tr td:not(:first-child) {
   width: 16px;
   height: 6px;
 }
-.selectize-control.plugin-drag_drop.multi > .selectize-input > div.ui-sortable-placeholder {
+.mtm-builder {
+  .selectize-control.plugin-drag_drop.multi > .selectize-input > div.ui-sortable-placeholder {
   visibility: visible !important;
   background: #f2f2f2 !important;
   background: rgba(0, 0, 0, 0.06) !important;
@@ -751,6 +752,7 @@ table.features tr td:not(:first-child) {
   background-color: #fafafa;
 }
 /*# sourceMappingURL=selectize.css.map */
+}
 .mtm-modal-overlay {
   display: none;
 }

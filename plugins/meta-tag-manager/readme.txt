@@ -3,8 +3,8 @@ Contributors: pxlite, msykes, netweblogic
 Tags: meta, tags, meta tags, open graph, seo
 Text Domain: meta-tag-manager
 Requires at least: 3.6
-Tested up to: 6.8
-Stable tag: 3.2
+Tested up to: 6.8.2
+Stable tag: 3.3
 License: GPLv2
 
 Easily add and manage custom meta tags to various parts of your site or on individual posts, such as Yahoo and Google verification tags.
@@ -80,6 +80,10 @@ Please visit our <a href="https://wordpress.org/support/plugin/meta-tag-manager"
 3. If enabled you can add meta tags to a specific post in it's own meta box
 
 == Changelog ==
+= 3.3 =
+* scoped selectize CSS to avoid conflicts with other plugins using selectize
+* fixed low-severuty vulnerability allowing unauthorized redirects to other sites in posts created by editors or lower
+
 = 3.2 =
 * fixed security vulnerability CVE-2025-22260 reported by Rafie Muhammad via PatchStack
 
