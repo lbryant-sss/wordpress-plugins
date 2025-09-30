@@ -12,7 +12,6 @@
 
 defined( 'ABSPATH' ) || exit;
 
-if ( defined( 'WP_ROCKET_VERSION' ) ) :
 
 /**
  * Instructs Caching plugins to NOT combine our loader script. 
@@ -129,4 +128,3 @@ if ( $nowprocket || $no_optimize ) {
 	} );
 }
 
-endif;

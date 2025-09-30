@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nextend-facebook-connect\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-29 11:36+0200\n"
-"PO-Revision-Date: 2025-07-29 11:36+0200\n"
+"POT-Creation-Date: 2025-09-29 14:06+0200\n"
+"PO-Revision-Date: 2025-09-29 14:06+0200\n"
 "Last-Translator: \n"
 "Language-Team: 日本語\n"
 "Language: ja\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.7\n"
 "X-Poedit-Basepath: ../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: "
@@ -4656,65 +4656,77 @@ msgstr "<b>Twitch</b>とアカウントを連携"
 msgid "Unlink account from <b>Twitch</b>"
 msgstr "<b>Twitch</b>からアカウント連携を解除する"
 
-msgid "Click on the \"<b>Manage</b>\" button next to the associated App."
+#, fuzzy
+#| msgid "Click on the name of your %s App."
+msgid "Click on the card associated with your App."
+msgstr "あなたの%s Appの名前をクリックします。"
+
+#, php-format
+msgid ""
+"Select the %s option from the side bar on the left side, if it is not "
+"selected already."
 msgstr ""
-"関連するアプリの横にある「<b>管理(Manage)</b>」ボタンをクリックします。"
 
-msgid "Go to the \"<b>Settings</b>\" menu"
-msgstr "「<b>設定</b>」メニューに移動します。"
-
-msgid "Click on \"<b>Update</b>\" to save the changes"
+#, fuzzy, php-format
+#| msgid "Click on \"<b>Update</b>\" to save the changes"
+msgid "Click on %s button to save the changes."
 msgstr "「<b>更新(Update)</b>」をクリックし、変更を保存します。"
 
-msgid "Locate the blue \"<b>Create app</b>\" button and click on it."
-msgstr "青い「<b>アプリを作成する</b>」ボタンを探してクリックします。"
-
-msgid ""
-"Enter the <b>Title</b> for your App and select \"<b>Website</b>\" as "
-"platform."
+#, php-format
+msgid "Open the %s page"
 msgstr ""
-"アプリの<b>タイトル</b>を入力し、プラットフォームとして「<b>ウェブサイト</"
-"b>」を選択します。"
+
+#, fuzzy, php-format
+#| msgid ""
+#| "On the top left side, click on the “<b>%1$s</b>” menu point, then click "
+#| "“<b>%2$s</b>”."
+msgid ""
+"In the sidebar on the left side, click on %1$s then click on the %2$s button."
+msgstr ""
+"左上の「<b>%1$s</b>」というメニューポイントをクリックし、「<b>%2$s</b>」をク"
+"リックします。"
 
 #, php-format
 msgid ""
-"Fill \"<b>Website address</b>\" with the url of your homepage, probably: "
+"%1$s If you don't have a developer account connected already, then you will "
+"need to continue with your VK account, authorize VK, select an account type "
+"and complete some forms in order to create a developer account."
+msgstr ""
+
+#, fuzzy, php-format
+#| msgid "Click on the %s button."
+msgid "Click the %s button."
+msgstr "%s ボタンをクリックします。"
+
+#, php-format
+msgid "Enter a name for your app, and at the platforms, enable the %s option"
+msgstr ""
+
+#, fuzzy, php-format
+#| msgid "To generate a %1$s, click on the %2$s button."
+msgid "Select an image, then click on the%s button!"
+msgstr "%1$sを生成するには、%2$sボタンをクリックします。"
+
+#, fuzzy, php-format
+#| msgid ""
+#| "Fill \"<b>Website</b>\" with the url of your homepage, probably: <b>%s</b>"
+msgid "Fill the %1$s field with your domain name, probably: %2$s"
+msgstr ""
+"「<b>ホームページ</b>」には、あなたのホームページのurlを記入してください。"
 "<b>%s</b>"
-msgstr ""
-"「<b>ホームページアドレス</b>」には、あなたのホームページのurlを記入してくだ"
-"さい。<b>%s</b>"
 
 #, php-format
 msgid ""
-"Fill the \"<b>Base domain</b>\" field with your domain, probably: <b>%s</b>"
+"Click on the %s link ( as you don't need those widgets, we have our own "
+"buttons )."
 msgstr ""
-"「<b>ベースドメイン</b>」の欄には、おそらくあなたのドメインを記入してくださ"
-"い。<b>%s</b>"
 
-msgid "When all fields are filled, click the \"<b>Upload app</b>\" button."
-msgstr ""
-"すべての項目が入力されたら、「<b>アプリをアップロードする</b>」ボタンをクリッ"
-"クします。"
-
+#, php-format
 msgid ""
-"<b>Fill the information form</b> of your app, <b>upload an app icon</b> then "
-"click <b>Save</b>."
+"You will end up on the %1$s page, scroll down to the %2$s section where you "
+"can find the %3$s and %4$s. You will need these for the fields with the same "
+"name on our %5$s tab."
 msgstr ""
-"<b>アプリの情報フォーム</b>に必要事項を入力し、<b>アプリのアイコンをアップ"
-"ロードし、<b>保存</b>をクリックしてください。"
-
-msgid "Pick <b>Settings</b> at the left-hand menu "
-msgstr "左側のメニューから<b>設定</b>を選ぶ"
-
-msgid "<b>Save</b> your app"
-msgstr "<b>アプリを保存</b>する"
-
-msgid ""
-"Find the necessary \"<b>App ID</b>\" and \"<b>Secure key</b>\" at the top of "
-"the Settings page where you just hit the save button."
-msgstr ""
-"必要な「<b>アプリID</b>」と「<b>セキュアキー</b>」は、先ほど保存ボタンを押し"
-"た設定ページの上部に記載されています。"
 
 msgid "Secure key"
 msgstr "セキュアキー"
@@ -4731,10 +4743,30 @@ msgstr "<b>VK</b>とアカウントを連携"
 msgid "Unlink account from <b>VK</b>"
 msgstr "<b>VK</b>からアカウント連携を解除する"
 
+#, php-format
+msgid ""
+"%1$s: %2$s introduced new App types and modified their endpoints which are "
+"not compatible with the old Apps.%3$sWe detected that, you are currently "
+"using an old %2$s App, so we had to disable your %2$s configuration. To "
+"resolve the problem, please create a new App based on our %4$s guide, and "
+"replace the credentials on the %5$s tab with your new App credentials."
+msgstr ""
+
+msgid "VKontakte"
+msgstr ""
+
+#, fuzzy, php-format
+#| msgid "Select the %1$s option for %2$s."
+msgid "Open %1$s - %2$s"
+msgstr "%2$s の %1$s オプションを選択します。"
+
 msgid "Click \"<b>Manage Settings</b>\" under the Tools section!"
 msgstr ""
 "「ツール(Tools)」セクションの「<b>設定の管理 (Manage Settings)</b>」をクリッ"
 "ク!"
+
+msgid "Click on \"<b>Update</b>\" to save the changes"
+msgstr "「<b>更新(Update)</b>」をクリックし、変更を保存します。"
 
 msgid "Click on the \"<b>Create New Application</b>\" button."
 msgstr ""
@@ -4871,6 +4903,64 @@ msgstr "パスワードの確認"
 
 msgid "Username"
 msgstr "ユーザー名（ユーザーID）"
+
+#~ msgid "Click on the \"<b>Manage</b>\" button next to the associated App."
+#~ msgstr ""
+#~ "関連するアプリの横にある「<b>管理(Manage)</b>」ボタンをクリックします。"
+
+#~ msgid "Go to the \"<b>Settings</b>\" menu"
+#~ msgstr "「<b>設定</b>」メニューに移動します。"
+
+#~ msgid "Locate the blue \"<b>Create app</b>\" button and click on it."
+#~ msgstr "青い「<b>アプリを作成する</b>」ボタンを探してクリックします。"
+
+#~ msgid ""
+#~ "Enter the <b>Title</b> for your App and select \"<b>Website</b>\" as "
+#~ "platform."
+#~ msgstr ""
+#~ "アプリの<b>タイトル</b>を入力し、プラットフォームとして「<b>ウェブサイト</"
+#~ "b>」を選択します。"
+
+#, php-format
+#~ msgid ""
+#~ "Fill \"<b>Website address</b>\" with the url of your homepage, probably: "
+#~ "<b>%s</b>"
+#~ msgstr ""
+#~ "「<b>ホームページアドレス</b>」には、あなたのホームページのurlを記入してく"
+#~ "ださい。<b>%s</b>"
+
+#, php-format
+#~ msgid ""
+#~ "Fill the \"<b>Base domain</b>\" field with your domain, probably: <b>%s</"
+#~ "b>"
+#~ msgstr ""
+#~ "「<b>ベースドメイン</b>」の欄には、おそらくあなたのドメインを記入してくだ"
+#~ "さい。<b>%s</b>"
+
+#~ msgid "When all fields are filled, click the \"<b>Upload app</b>\" button."
+#~ msgstr ""
+#~ "すべての項目が入力されたら、「<b>アプリをアップロードする</b>」ボタンをク"
+#~ "リックします。"
+
+#~ msgid ""
+#~ "<b>Fill the information form</b> of your app, <b>upload an app icon</b> "
+#~ "then click <b>Save</b>."
+#~ msgstr ""
+#~ "<b>アプリの情報フォーム</b>に必要事項を入力し、<b>アプリのアイコンをアップ"
+#~ "ロードし、<b>保存</b>をクリックしてください。"
+
+#~ msgid "Pick <b>Settings</b> at the left-hand menu "
+#~ msgstr "左側のメニューから<b>設定</b>を選ぶ"
+
+#~ msgid "<b>Save</b> your app"
+#~ msgstr "<b>アプリを保存</b>する"
+
+#~ msgid ""
+#~ "Find the necessary \"<b>App ID</b>\" and \"<b>Secure key</b>\" at the top "
+#~ "of the Settings page where you just hit the save button."
+#~ msgstr ""
+#~ "必要な「<b>アプリID</b>」と「<b>セキュアキー</b>」は、先ほど保存ボタンを押"
+#~ "した設定ページの上部に記載されています。"
 
 #~ msgid "Uniform - Legacy"
 #~ msgstr "公式デザイン - （古い）"

@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: nextend-facebook-connect\n"
-"POT-Creation-Date: 2025-07-29 11:37+0200\n"
+"POT-Creation-Date: 2025-09-29 14:07+0200\n"
 "PO-Revision-Date: 2020-06-29 13:58+0200\n"
 "Last-Translator: \n"
 "Language-Team: nextend-facebook-connect\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.7\n"
 "X-Poedit-Basepath: ../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: "
@@ -3922,53 +3922,65 @@ msgstr ""
 msgid "Unlink account from <b>Twitch</b>"
 msgstr ""
 
-msgid "Click on the \"<b>Manage</b>\" button next to the associated App."
-msgstr ""
-
-msgid "Go to the \"<b>Settings</b>\" menu"
-msgstr ""
-
-msgid "Click on \"<b>Update</b>\" to save the changes"
-msgstr ""
-
-msgid "Locate the blue \"<b>Create app</b>\" button and click on it."
-msgstr ""
-
-msgid ""
-"Enter the <b>Title</b> for your App and select \"<b>Website</b>\" as "
-"platform."
+msgid "Click on the card associated with your App."
 msgstr ""
 
 #, php-format
 msgid ""
-"Fill \"<b>Website address</b>\" with the url of your homepage, "
-"probably: <b>%s</b>"
+"Select the %s option from the side bar on the left side, if it is not "
+"selected already."
+msgstr ""
+
+#, php-format
+msgid "Click on %s button to save the changes."
+msgstr ""
+
+#, php-format
+msgid "Open the %s page"
 msgstr ""
 
 #, php-format
 msgid ""
-"Fill the \"<b>Base domain</b>\" field with your domain, probably: "
-"<b>%s</b>"
+"In the sidebar on the left side, click on %1$s then click on the %2$s "
+"button."
 msgstr ""
 
+#, php-format
 msgid ""
-"When all fields are filled, click the \"<b>Upload app</b>\" button."
+"%1$s If you don't have a developer account connected already, then you "
+"will need to continue with your VK account, authorize VK, select an "
+"account type and complete some forms in order to create a developer "
+"account."
 msgstr ""
 
+#, php-format
+msgid "Click the %s button."
+msgstr ""
+
+#, php-format
 msgid ""
-"<b>Fill the information form</b> of your app, <b>upload an app icon</"
-"b> then click <b>Save</b>."
+"Enter a name for your app, and at the platforms, enable the %s option"
 msgstr ""
 
-msgid "Pick <b>Settings</b> at the left-hand menu "
+#, php-format
+msgid "Select an image, then click on the%s button!"
 msgstr ""
 
-msgid "<b>Save</b> your app"
+#, php-format
+msgid "Fill the %1$s field with your domain name, probably: %2$s"
 msgstr ""
 
+#, php-format
 msgid ""
-"Find the necessary \"<b>App ID</b>\" and \"<b>Secure key</b>\" at the "
-"top of the Settings page where you just hit the save button."
+"Click on the %s link ( as you don't need those widgets, we have our "
+"own buttons )."
+msgstr ""
+
+#, php-format
+msgid ""
+"You will end up on the %1$s page, scroll down to the %2$s section "
+"where you can find the %3$s and %4$s. You will need these for the "
+"fields with the same name on our %5$s tab."
 msgstr ""
 
 msgid "Secure key"
@@ -3986,7 +3998,27 @@ msgstr ""
 msgid "Unlink account from <b>VK</b>"
 msgstr ""
 
+#, php-format
+msgid ""
+"%1$s: %2$s introduced new App types and modified their endpoints which "
+"are not compatible with the old Apps.%3$sWe detected that, you are "
+"currently using an old %2$s App, so we had to disable your %2$s "
+"configuration. To resolve the problem, please create a new App based "
+"on our %4$s guide, and replace the credentials on the %5$s tab with "
+"your new App credentials."
+msgstr ""
+
+msgid "VKontakte"
+msgstr ""
+
+#, php-format
+msgid "Open %1$s - %2$s"
+msgstr ""
+
 msgid "Click \"<b>Manage Settings</b>\" under the Tools section!"
+msgstr ""
+
+msgid "Click on \"<b>Update</b>\" to save the changes"
 msgstr ""
 
 msgid "Click on the \"<b>Create New Application</b>\" button."

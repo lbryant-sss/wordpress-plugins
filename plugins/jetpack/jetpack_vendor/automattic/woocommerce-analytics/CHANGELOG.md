@@ -5,6 +5,35 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.9.1] - 2025-09-29
+### Changed
+- Internal updates.
+
+## [0.9.0] - 2025-09-25
+### Added
+- Add experimental API-based event tracking [#45279]
+- Add IP-based visitor tracking as fallback when proxy tracking is enabled and cookies are unavailable [#45279]
+- Add proxy speed module to enhance proxy API performance [#45243]
+- Implement client-side analytics tracking [#45268]
+
+### Changed
+- Update build scripts for production [#45296]
+
+## [0.8.0] - 2025-09-22
+### Added
+- Implement on-site pixel API endpoint with POST support. [#45227]
+
+## [0.7.0] - 2025-09-19
+### Added
+- Add server-side tracking. [#45208]
+
+### Changed
+- Implement server-side direct event delivery. [#45209]
+
+## [0.6.2] - 2025-09-15
+### Changed
+- Internal updates.
+
 ## [0.6.1] - 2025-09-01
 ### Fixed
 - Fix duplicate product purchase events on order confirmation page. [#44973]
@@ -143,6 +172,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix namespace issue with WooCommerce class reference. [#35857]
 - General: bail early when WooCommerce is not active. [#36278]
 
+[0.9.1]: https://github.com/Automattic/woocommerce-analytics/compare/v0.9.0...v0.9.1
+[0.9.0]: https://github.com/Automattic/woocommerce-analytics/compare/v0.8.0...v0.9.0
+[0.8.0]: https://github.com/Automattic/woocommerce-analytics/compare/v0.7.0...v0.8.0
+[0.7.0]: https://github.com/Automattic/woocommerce-analytics/compare/v0.6.2...v0.7.0
+[0.6.2]: https://github.com/Automattic/woocommerce-analytics/compare/v0.6.1...v0.6.2
 [0.6.1]: https://github.com/Automattic/woocommerce-analytics/compare/v0.6.0...v0.6.1
 [0.6.0]: https://github.com/Automattic/woocommerce-analytics/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/Automattic/woocommerce-analytics/compare/v0.4.9...v0.5.0

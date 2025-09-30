@@ -9,8 +9,6 @@ declare(strict_types=1);
 //   ./tools/deploy-wporg.php
 // Flags (optional):
 //   --tag <git-tag>      Prefill tag prompt with this tag
-//   --node <major>       Node major version for build (default: 12)
-//   --skip-build         Skip npm build step
 // The script prompts for tag, messages, then SVN credentials.
 
 // Load root autoloader (required)
@@ -20,10 +18,6 @@ if ($__root_bootstrap && file_exists($__root_bootstrap.'/vendor/autoload.php')) 
     require_once $__root_bootstrap.'/vendor/autoload.php';
 }
 use function Termwind\render;
-use function Laravel\Prompts\select;
-use function Laravel\Prompts\text;
-use function Laravel\Prompts\password;
-use function Laravel\Prompts\confirm;
 
 if (!function_exists('Termwind\\render')
     || !function_exists('Laravel\\Prompts\\select')
@@ -67,6 +61,35 @@ function run(string $cmd, ?string $cwd = null, bool $allowFail = false): array {
     return [$code, $out, $err];
 }
 
+function runStream(string $cmd, ?string $cwd = null, bool $allowFail = false): array {
+    $descriptors = [1 => ['pipe','w'], 2 => ['pipe','w']];
+    $proc = proc_open($cmd, $descriptors, $pipes, $cwd ?: null, null);
+    if (!\is_resource($proc)) {
+        if ($allowFail) return [1, '', ''];
+        diex("Failed to start command: $cmd");
+    }
+    stream_set_blocking($pipes[1], false);
+    stream_set_blocking($pipes[2], false);
+    $bufOut = '';
+    $bufErr = '';
+    while (true) {
+        $o = stream_get_contents($pipes[1]);
+        if ($o !== false && $o !== '') { $bufOut .= $o; echo $o; }
+        $e = stream_get_contents($pipes[2]);
+        if ($e !== false && $e !== '') { $bufErr .= $e; echo $e; }
+        $status = proc_get_status($proc);
+        if (!$status['running']) { break; }
+        usleep(100000);
+    }
+    fclose($pipes[1]);
+    fclose($pipes[2]);
+    $code = proc_close($proc);
+    if ($code !== 0 && !$allowFail) {
+        diex("Command failed ($code): $cmd\n".trim($bufErr));
+    }
+    return [$code, $bufOut, $bufErr];
+}
+
 function ensureCmd(string $cmd, string $hint = ''): void {
     [$code] = run("command -v ".$cmd, null, true);
     if ($code !== 0) {
@@ -99,6 +122,41 @@ function promptDefault(string $label, string $default): string {
     return $val === '' ? $default : $val;
 }
 
+function promptMasked(string $label): string {
+    Termwind\render("<div><span class='text-yellow-600'>".htmlspecialchars($label)."</span></div>");
+    if (stripos(PHP_OS, 'WIN') === 0) {
+        // Fallback on Windows: no masking
+        $line = fgets(STDIN);
+        return $line === false ? '' : rtrim($line, "\r\n");
+    }
+    $buffer = '';
+    terminalRawMode(true);
+    try {
+        while (true) {
+            $ch = fread(STDIN, 1);
+            if ($ch === "\n" || $ch === "\r") { break; }
+            if ($ch === "\x7F" || $ch === "\b") {
+                if ($buffer !== '') {
+                    $buffer = substr($buffer, 0, -1);
+                    fwrite(STDOUT, "\x08 \x08"); // backspace, erase, backspace
+                }
+                continue;
+            }
+            if ($ch === "\x03") { // Ctrl-C
+                terminalRawMode(false);
+                exit(1);
+            }
+            if ($ch === '' || ord($ch) < 32) { continue; }
+            $buffer .= $ch;
+            fwrite(STDOUT, '*');
+        }
+    } finally {
+        terminalRawMode(false);
+        fwrite(STDOUT, "\n");
+    }
+    return $buffer;
+}
+
 function gitTags(string $root, int $limit = 15): array {
     [$code, $out] = run('git tag --sort=-creatordate', $root, true);
     if ($code !== 0 || trim($out) === '') return [];
@@ -113,6 +171,13 @@ function terminalRawMode(bool $enable): void {
     } else {
         shell_exec('stty sane');
     }
+}
+
+function isInteractiveTty(): bool {
+    if (function_exists('stream_isatty')) {
+        return @stream_isatty(STDIN) && @stream_isatty(STDOUT);
+    }
+    return false;
 }
 
 function selectInteractive(string $title, array $options, int $defaultIndex = 0): int {
@@ -160,16 +225,8 @@ function selectInteractive(string $title, array $options, int $defaultIndex = 0)
 
 $argv = $_SERVER['argv']; array_shift($argv);
 $tag = '';
-$skipBuild = false;
-$nodeMajor = 12;
 for ($i = 0; $i < count($argv); $i++) {
     if ($argv[$i] === '--tag' && isset($argv[$i+1])) { $tag = $argv[$i+1]; $i++; continue; }
-    if ($argv[$i] === '--node' && isset($argv[$i+1])) {
-        $val = (int)$argv[$i+1];
-        if ($val < 8 || $val > 22) { diex('Invalid --node value. Provide a major version like 12, 14, 16, 18.'); }
-        $nodeMajor = $val; $i++; continue;
-    }
-    if ($argv[$i] === '--skip-build') { $skipBuild = true; continue; }
 }
 
 $root = realpath(__DIR__.'/..') ?: diex('Cannot resolve root directory');
@@ -178,8 +235,6 @@ $slug = 'jupiterx-core';
 ensureCmd('svn', 'Install Subversion (e.g., apt install subversion).');
 ensureCmd('rsync', 'Install rsync (e.g., apt install rsync).');
 ensureCmd('git', 'Install git (e.g., apt install git).');
-ensureCmd('node', 'Install Node.js (e.g., nvm use 12).');
-ensureCmd('npm', 'Install Node.js/npm. Use nvm to switch versions.');
 ensureCmd('composer', 'Install Composer (e.g., https://getcomposer.org/download/).');
 ensureCmd('unzip', 'Install unzip (e.g., apt install unzip).');
 
@@ -230,6 +285,10 @@ if ($stableTag === null) diex('Could not find Stable tag in readme.txt');
 
 if ($versionPhp !== $stableTag) diex("Version mismatch between main file ($versionPhp) and readme Stable tag ($stableTag)");
 $version = $versionPhp;
+// Validate version format (WordPress.org requirement)
+if (!preg_match('/^[0-9]+\.[0-9]+(\.[0-9]+)?(-[a-zA-Z0-9\.\-]+)?$/', $version)) {
+    diex('Invalid version format: '.$version.' (WordPress.org requires semantic versioning like 1.2.3)');
+}
 
 // Abort if SVN tag already exists
 $svnBaseUrl = 'https://plugins.svn.wordpress.org/'.$slug;
@@ -241,26 +300,26 @@ if ($svnTagCode === 0) {
 // Ask for commit and tag messages with sensible defaults
 $defaultCommit = 'Release '.$slug.' '.$version;
 $defaultTagMsg = 'Tag '.$slug.' '.$version;
+Termwind\render("<div class='mt-1 text-gray-500'>Default commit message: ".htmlspecialchars($defaultCommit)."</div>");
+Termwind\render("<div class='mb-1 text-gray-500'>Default tag message: ".htmlspecialchars($defaultTagMsg)."</div>");
 if (function_exists('Laravel\\Prompts\\text')) {
     $commitMsg = (string)\Laravel\Prompts\text('SVN commit message', $defaultCommit);
+    if ($commitMsg === '') { $commitMsg = $defaultCommit; }
     $tagMsg = (string)\Laravel\Prompts\text('SVN tag message', $defaultTagMsg);
+    if ($tagMsg === '') { $tagMsg = $defaultTagMsg; }
 } else {
     $commitMsg = promptDefault('SVN commit message', $defaultCommit);
     $tagMsg = promptDefault('SVN tag message', $defaultTagMsg);
 }
 
-// Build is a separate process; validate Node and guide if mismatch
-[$_, $nodeOut] = run('node -v', null, true);
-if (!empty($nodeOut) && !preg_match('/^v'.((int)$nodeMajor).'\./', trim($nodeOut))) {
-    warn('Detected '.trim($nodeOut).'. Build should be done with Node '.$nodeMajor.' (nvm use '.$nodeMajor.').');
-}
+// Build is a separate process handled externally
 
 say('Preparing clean export from built ZIP');
 $defaultZipVersioned = $root.'/jupiterx-core-'.$version.'.zip';
 $defaultZip = is_file($defaultZipVersioned) ? $defaultZipVersioned : ($root.'/jupiterx-core.zip');
 $zipPath = promptDefault('Path to built ZIP (from gulp release)', is_file($defaultZip) ? $defaultZip : '');
 if ($zipPath === '' || !is_file($zipPath)) {
-    diex('Built ZIP not found. Run the build first: nvm use '.$nodeMajor.' && npm ci && npx gulp release');
+    diex('Built ZIP not found. Run the build first: npm ci && npx gulp release');
 }
 $unzipDir = $workdir.'/unzipped';
 if (!mkdir($unzipDir, 0755, true) && !is_dir($unzipDir)) diex('Failed to create unzip directory');
@@ -331,37 +390,66 @@ if (!empty($badRoot)) {
     diex('Built ZIP should not contain dev files at root: '.implode(', ', $badNames));
 }
 
-say('Creating temp SVN checkout');
+say('Checking out SVN trunk');
 $svnUrl = 'https://plugins.svn.wordpress.org/'.$slug;
 $svnDir = $workdir.'/svn';
-if (!mkdir($svnDir, 0755, true) && !is_dir($svnDir)) diex('Failed to create svn directory');
-run(sprintf('svn checkout --depth=immediates %s %s', escapeshellarg($svnUrl), escapeshellarg($svnDir)));
-run(sprintf('svn checkout --depth=immediates %s %s', escapeshellarg($svnUrl.'/trunk'), escapeshellarg($svnDir.'/trunk')));
-run(sprintf('svn checkout --depth=empty %s %s', escapeshellarg($svnUrl.'/tags'), escapeshellarg($svnDir.'/tags')));
+if (!mkdir($svnDir, 0755, true) && !is_dir($svnDir)) diex('Failed to create SVN directory');
+run(sprintf('svn checkout %s %s', escapeshellarg($svnUrl.'/trunk'), escapeshellarg($svnDir.'/trunk')));
+
+// Check current trunk version
+$trunkMainFile = $svnDir.'/trunk/jupiterx-core.php';
+if (is_file($trunkMainFile)) {
+    $trunkContent = file_get_contents($trunkMainFile) ?: '';
+    if (preg_match('/\n\s*\*\s*Version:\s*([0-9.]+)/', $trunkContent, $tm)) {
+        $trunkVersion = $tm[1];
+        say('Current trunk version: '.$trunkVersion);
+        if ($trunkVersion === $version) {
+            warn('Trunk already contains version '.$version.' - this might explain why no changes are detected');
+        }
+    }
+} else {
+    warn('Main plugin file not found in trunk - this might be a fresh repository');
+}
 
 say('Syncing trunk');
-run(sprintf('rsync -rc --delete %s %s', escapeshellarg($buildDir.'/'), escapeshellarg($svnDir.'/trunk/')));
+// Show what we're syncing
+Termwind\render("<div class='text-gray-500'>Syncing from: ".htmlspecialchars($buildDir)."</div>");
+Termwind\render("<div class='text-gray-500'>Syncing to: ".htmlspecialchars($svnDir.'/trunk')."</div>");
+// Verify source directory has content
+$sourceFiles = glob($buildDir.'/*');
+if (empty($sourceFiles)) {
+    diex('Source build directory is empty: '.$buildDir);
+}
+say('Source contains '.count($sourceFiles).' items');
+// Run rsync with verbose output to see what's being synced
+[$rsyncCode, $rsyncOut, $rsyncErr] = run(sprintf('rsync -rlptgoD --delete --compress --exclude=.svn/ --itemize-changes %s %s', escapeshellarg($buildDir.'/'), escapeshellarg($svnDir.'/trunk/')), null, true);
+if ($rsyncCode !== 0) {
+    diex('Rsync failed: '.$rsyncErr);
+}
+if (trim($rsyncOut) === '') {
+    warn('Rsync completed but no changes were made - files might already be identical');
+} else {
+    Termwind\render("<div class='text-gray-500'>Rsync changes:</div>");
+    echo $rsyncOut."\n";
+}
 
 // No assets sync here; deploy exactly ZIP contents
 
-// svn add/remove missing in trunk and assets
-foreach (['trunk'] as $sub) {
-    if ($sub === null) continue;
-    $path = $svnDir.'/'.$sub;
-    // add
-    run('svn add --force .', $path, true);
-    // remove missing
-    [$code, $out] = run('svn status', $path, true);
-    if ($code === 0 && $out !== '') {
-        foreach (preg_split('/\r?\n/', trim($out)) as $line) {
-            if ($line === '') continue;
-            if ($line[0] === '!') {
-                $file = trim(substr($line, 1));
-                run('svn rm --force '.escapeshellarg($file), $path, true);
-            }
+// svn add/remove missing in trunk
+$path = $svnDir.'/trunk';
+run('svn add --force .', $path, true);
+[$code, $out] = run('svn status', $path, true);
+if ($code === 0 && $out !== '') {
+    foreach (preg_split('/\r?\n/', trim($out)) as $line) {
+        if ($line === '') continue;
+        if ($line[0] === '!') {
+            $file = trim(substr($line, 1));
+            run('svn rm --force '.escapeshellarg($file), $path, true);
         }
     }
 }
+// Final add to catch any remaining untracked files
+run('svn add --force .', $path, true);
 
 // Present a summary and confirm before committing
 Termwind\render("<div class='mt-1'><span class='font-bold'>Summary</span></div>");
@@ -383,24 +471,159 @@ if (!in_array($confirm, ['y','yes'], true)) {
 
 // Collect SVN credentials interactively
 $svnUser = prompt('SVN username:');
-$svnPassword = prompt('SVN password (hidden):', true);
-$svnFlags = ' --non-interactive --no-auth-cache';
-if ($svnPassword !== '') { $svnFlags .= sprintf(' --password %s', escapeshellarg($svnPassword)); }
+$svnPassword = promptMasked('SVN password (pasteable, masked):');
+$svnFlags = '';
+// Track flags we will use for tag step as well
+$svnFlagsEffective = '';
+$isTty = isInteractiveTty();
+if ($svnPassword === '' && !$isTty) {
+    diex('No password provided and no interactive TTY available for SVN auth. Provide a password or run from an interactive terminal.');
+}
+// If a password is provided, use non-interactive mode without caching; otherwise allow interactive prompts
+if ($svnPassword !== '') {
+    $svnFlags = ' --non-interactive --no-auth-cache'.sprintf(' --password %s', escapeshellarg($svnPassword));
+}
+$svnFlagsEffective = $svnFlags;
 
 say('Committing trunk');
-[$commitCode, , $commitErr] = run(sprintf('svn commit --username %s%s -m %s trunk', escapeshellarg($svnUser), $svnFlags, escapeshellarg($commitMsg)), $svnDir, true);
-if ($commitCode !== 0 && stripos($commitErr, 'No changes to commit') === false) {
-    diex('SVN commit failed: '.$commitErr);
+// Quick diagnostic check
+[$statusCode, $statusOut] = run('svn status', $svnDir.'/trunk', true);
+if ($statusCode === 0 && trim($statusOut) !== '') {
+    Termwind\render("<div class='text-gray-500'>SVN status before commit:</div>");
+    echo $statusOut."\n";
+    Termwind\render("<div class='text-gray-500'>svn commit (showing progress)...</div>");
+    [$commitCode, $commitOut, $commitErr] = runStream(sprintf('svn commit --config-option servers:global:http-timeout=600 --username %s%s -m %s .', escapeshellarg($svnUser), $svnFlags, escapeshellarg($commitMsg)), $svnDir.'/trunk', true);
+} else {
+    say('No changes detected - trunk is already up to date, skipping commit');
+    $commitCode = 0; // Treat as success since trunk is current
+    $commitErr = '';
+}
+
+if ($commitCode !== 0) {
+    // Show detailed error information
+    $errorDetails = trim($commitErr ?: $commitOut);
+    if ($errorDetails === '') {
+        $errorDetails = 'No error details captured (exit code: '.$commitCode.')';
+    }
+    warn('SVN commit failed with details: '.$errorDetails);
+    // Attempt to resolve out-of-date errors by updating and restaging
+    if (stripos($commitErr, 'E155011') !== false || stripos($commitErr, 'E160020') !== false) {
+        warn('SVN working copy out of date. Recreating from fresh checkout and resyncing...');
+        // Clean approach: start fresh to avoid complex conflict resolution
+        run(sprintf('rm -rf %s', escapeshellarg($svnDir.'/trunk')), null, true);
+        run(sprintf('svn checkout %s %s', escapeshellarg($svnUrl.'/trunk'), escapeshellarg($svnDir.'/trunk')));
+        say('Re-syncing trunk after fresh checkout');
+        run(sprintf('rsync -rlptgoD --delete --compress --exclude=.svn/ %s %s', escapeshellarg($buildDir.'/'), escapeshellarg($svnDir.'/trunk/')));
+        run('svn add --force .', $svnDir.'/trunk', true);
+        [$statusCode, $statusOut] = run('svn status', $svnDir.'/trunk', true);
+        if ($statusCode === 0 && $statusOut !== '') {
+            foreach (preg_split('/\r?\n/', trim($statusOut)) as $line) {
+                if ($line === '') continue;
+                if ($line[0] === '!') {
+                    $file = trim(substr($line, 1));
+                    run('svn rm --force '.escapeshellarg($file), $svnDir.'/trunk', true);
+                }
+            }
+        }
+        Termwind\render("<div class='text-gray-500'>svn commit retry (after fresh sync)...</div>");
+        [$commitCode, , $commitErr] = runStream(sprintf('svn commit --config-option servers:global:http-timeout=600 --username %s%s -m %s .', escapeshellarg($svnUser), $svnFlags, escapeshellarg($commitMsg)), $svnDir.'/trunk', true);
+    }
+    if (stripos($commitErr, 'No changes to commit') !== false) {
+        // continue
+    } elseif (stripos($commitErr, 'E215004') !== false) {
+        if ($isTty) {
+            warn('SVN authentication failed in non-interactive mode. Retrying interactively (no password flags)...');
+            $svnFlagsEffective = '';
+            Termwind\render("<div class='text-gray-500'>svn commit retry (interactive)...</div>");
+            [$retryCode, , $retryErr] = runStream(sprintf('svn commit --config-option servers:global:http-timeout=600 --username %s -m %s .', escapeshellarg($svnUser), escapeshellarg($commitMsg)), $svnDir.'/trunk', true);
+            if ($retryCode !== 0 && stripos($retryErr, 'No changes to commit') === false) {
+                diex("SVN commit failed after interactive retry. Details:\n".trim($retryErr));
+            }
+        } else {
+            diex("SVN authentication failed in non-interactive mode and no TTY available for interactive retry. Details:\n".trim($commitErr));
+        }
+    } elseif (stripos($commitErr, 'E155015') !== false || stripos($commitErr, 'remains in conflict') !== false) {
+        warn('SVN working copy remains in conflict. Recreating trunk and retrying...');
+        run('svn revert -R .', $svnDir.'/trunk', true);
+        run('svn cleanup --remove-unversioned --vacuum-pristines', $svnDir.'/trunk', true);
+        Termwind\render("<div class='text-gray-500'>svn update (clean)…</div>");
+        runStream('svn update --non-interactive', $svnDir.'/trunk', true);
+        say('Re-syncing trunk after cleanup');
+        run(sprintf('rsync -rc --delete %s %s', escapeshellarg($buildDir.'/'), escapeshellarg($svnDir.'/trunk/')));
+        run('svn add --force .', $svnDir.'/trunk', true);
+        [$statusCode2, $statusOut2] = run('svn status', $svnDir.'/trunk', true);
+        if ($statusCode2 === 0 && $statusOut2 !== '') {
+            foreach (preg_split('/\r?\n/', trim($statusOut2)) as $line2) {
+                if ($line2 === '') continue;
+                if ($line2[0] === '!') {
+                    $file2 = trim(substr($line2, 1));
+                    run('svn rm --force '.escapeshellarg($file2), $svnDir.'/trunk', true);
+                }
+            }
+        }
+        [$commitCode, , $commitErr] = run(sprintf('svn commit --username %s%s -m %s .', escapeshellarg($svnUser), $svnFlags, escapeshellarg($commitMsg)), $svnDir.'/trunk', true);
+    } else {
+        diex('SVN commit failed: '.trim($commitErr));
+    }
 }
 
 say('Tagging '.$version);
-run(sprintf('svn copy %s %s -m %s --username %s%s',
+Termwind\render("<div class='text-gray-500'>svn copy (tagging)...</div>");
+[$tagCode, $tagOut, $tagErr] = runStream(sprintf('svn copy %s %s -m %s --username %s%s --config-option servers:global:http-timeout=600',
     escapeshellarg($svnUrl.'/trunk'),
     escapeshellarg($svnUrl.'/tags/'.$version),
     escapeshellarg($tagMsg),
     escapeshellarg($svnUser),
-    $svnFlags
-));
+    $svnFlagsEffective
+), null, true);
+
+// Check for successful commit in output even if exit code is non-zero
+$isSuccess = false;
+if ($tagCode === 0) {
+    $isSuccess = true;
+} elseif (stripos($tagOut, 'Committed revision') !== false || stripos($tagErr, 'Committed revision') !== false) {
+    // SVN sometimes returns non-zero exit codes even on successful commits
+    $isSuccess = true;
+    say('Tag created successfully despite non-zero exit code');
+}
+
+if (!$isSuccess) {
+    if (stripos($tagErr, 'E215004') !== false) {
+        if ($isTty) {
+            warn('SVN authentication failed during tagging in non-interactive mode. Retrying interactively...');
+            [$retryTagCode, , $retryTagErr] = runStream(sprintf('svn copy %s %s -m %s --username %s --config-option servers:global:http-timeout=600',
+                escapeshellarg($svnUrl.'/trunk'),
+                escapeshellarg($svnUrl.'/tags/'.$version),
+                escapeshellarg($tagMsg),
+                escapeshellarg($svnUser)
+            ), null, true);
+            if ($retryTagCode !== 0) {
+                diex('SVN tag failed after interactive retry: '.trim($retryTagErr));
+            }
+        } else {
+            diex('SVN tag failed (authentication) and no TTY available for interactive retry: '.trim($tagErr));
+        }
+    } else {
+        diex('SVN tag failed: '.trim($tagErr));
+    }
+}
+
+// Verify deployment
+say('Verifying deployment');
+[$verifyTagCode] = run(sprintf('svn ls %s', escapeshellarg($svnUrl.'/tags/'.$version)), null, true);
+if ($verifyTagCode !== 0) {
+    warn('Tag verification failed - tag may not be visible yet (SVN sync delay)');
+} else {
+    say('Tag verified: '.$svnUrl.'/tags/'.$version);
+}
+
+// Quick trunk verification
+[$verifyTrunkCode, $verifyOut] = run(sprintf('svn ls %s', escapeshellarg($svnUrl.'/trunk')), null, true);
+if ($verifyTrunkCode === 0 && strpos($verifyOut, 'jupiterx-core.php') !== false) {
+    say('Trunk updated successfully');
+} else {
+    warn('Trunk verification inconclusive');
+}
 
 // Clean up worktree
 run(sprintf('git worktree remove --force %s', escapeshellarg($srcDir)), $root, true);
@@ -409,5 +632,6 @@ run(sprintf('rm -rf %s', escapeshellarg($workdir)), null, true);
 
 say('Deploy complete.');
 say('Verify at: '.$svnUrl);
+say('WordPress.org will process the tag within 15-30 minutes.');
 
 

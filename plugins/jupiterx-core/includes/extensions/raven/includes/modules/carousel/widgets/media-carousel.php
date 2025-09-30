@@ -140,6 +140,8 @@ class Media_Carousel extends Base {
 
 		$this->add_slideshow_injections();
 
+		$this->add_play_icon_section();
+
 		$this->update_controls();
 	}
 
@@ -442,68 +444,6 @@ class Media_Carousel extends Base {
 				'separator' => 'before',
 				'frontend_available' => true,
 				'render_type' => 'template',
-			]
-		);
-
-		$this->end_injection();
-
-		$this->start_injection( [
-			'of' => 'pagination_color',
-		] );
-
-		$this->add_control(
-			'play_icon_title',
-			[
-				'label' => esc_html__( 'Play Icon', 'jupiterx-core' ),
-				'type' => Controls_Manager::HEADING,
-			]
-		);
-
-		$this->add_control(
-			'play_icon_color',
-			[
-				'label' => esc_html__( 'Color', 'jupiterx-core' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .elementor-custom-embed-play i' => 'color: {{VALUE}}',
-					'{{WRAPPER}} .elementor-custom-embed-play svg' => 'fill: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_responsive_control(
-			'play_icon_size',
-			[
-				'label' => esc_html__( 'Size', 'jupiterx-core' ),
-				'type' => Controls_Manager::SLIDER,
-				'range' => [
-					'px' => [
-						'min' => 20,
-						'max' => 150,
-					],
-				],
-				'selectors' => [
-					'{{WRAPPER}} .elementor-custom-embed-play i' => 'font-size: {{SIZE}}{{UNIT}}',
-					'{{WRAPPER}} .elementor-custom-embed-play svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
-				],
-			]
-		);
-
-		$this->add_group_control(
-			'text-shadow',
-			[
-				'name' => 'play_icon_text_shadow',
-				'fields_options' => [
-					'text_shadow_type' => [
-						'label' => esc_html__( 'Shadow', 'jupiterx-core' ),
-					],
-					'text_shadow' => [
-						'selectors' => [
-							'{{WRAPPER}} .elementor-custom-embed-play i' => 'text-shadow: {{HORIZONTAL}}px {{VERTICAL}}px {{BLUR}}px {{COLOR}};',
-							'{{WRAPPER}} .elementor-custom-embed-play > svg' => 'filter: drop-shadow({{HORIZONTAL}}px {{VERTICAL}}px {{BLUR}}px {{COLOR}});',
-						],
-					],
-				],
 			]
 		);
 
@@ -877,5 +817,65 @@ class Media_Carousel extends Base {
 		];
 
 		Icons_Manager::render_icon( $icon );
+	}
+
+	private function add_play_icon_section() {
+		$this->start_controls_section(
+			'section_play_icon',
+			[
+				'label' => esc_html__( 'Play Icon', 'jupiterx-core' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'play_icon_color',
+			[
+				'label' => esc_html__( 'Color', 'jupiterx-core' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .elementor-custom-embed-play i' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .elementor-custom-embed-play svg' => 'fill: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'play_icon_size',
+			[
+				'label' => esc_html__( 'Size', 'jupiterx-core' ),
+				'type' => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min' => 20,
+						'max' => 150,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .elementor-custom-embed-play i' => 'font-size: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} .elementor-custom-embed-play svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			'text-shadow',
+			[
+				'name' => 'text_shadow',
+				'fields_options' => [
+					'text_shadow_type' => [
+						'label' => esc_html__( 'Shadow', 'jupiterx-core' ),
+					],
+					'text_shadow' => [
+						'selectors' => [
+							'{{WRAPPER}} .elementor-custom-embed-play i' => 'text-shadow: {{HORIZONTAL}}px {{VERTICAL}}px {{BLUR}}px {{COLOR}};',
+							'{{WRAPPER}} .elementor-custom-embed-play > svg' => 'filter: drop-shadow({{HORIZONTAL}}px {{VERTICAL}}px {{BLUR}}px {{COLOR}});',
+						],
+					],
+				],
+			]
+		);
+
+		$this->end_controls_section();
 	}
 }

@@ -24711,6 +24711,43 @@ body.jupiterx-woocommerce-notices-style-initialized .woocommerce-error:before {
   opacity: 1;
 }
 
+.elementor-widget-raven-advanced-posts .raven-posts-grid .raven-posts-item.raven-posts-empty-item,
+.elementor-widget-raven-advanced-posts .raven-posts-masonry .raven-posts-item.raven-posts-empty-item,
+.elementor-widget-raven-advanced-posts .raven-posts-metro .raven-posts-item.raven-posts-empty-item,
+.elementor-widget-raven-advanced-posts .raven-posts-matrix .raven-posts-item.raven-posts-empty-item {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+  width: 100%;
+  max-width: 100%;
+}
+
+.elementor-widget-raven-advanced-posts .raven-posts-grid .raven-posts-item.raven-posts-empty-item .raven-post-wrapper,
+.elementor-widget-raven-advanced-posts .raven-posts-masonry .raven-posts-item.raven-posts-empty-item .raven-post-wrapper,
+.elementor-widget-raven-advanced-posts .raven-posts-metro .raven-posts-item.raven-posts-empty-item .raven-post-wrapper,
+.elementor-widget-raven-advanced-posts .raven-posts-matrix .raven-posts-item.raven-posts-empty-item .raven-post-wrapper {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.elementor-widget-raven-advanced-posts .raven-posts-grid .raven-posts-item.raven-posts-empty-item .raven-post,
+.elementor-widget-raven-advanced-posts .raven-posts-masonry .raven-posts-item.raven-posts-empty-item .raven-post,
+.elementor-widget-raven-advanced-posts .raven-posts-metro .raven-posts-item.raven-posts-empty-item .raven-post,
+.elementor-widget-raven-advanced-posts .raven-posts-matrix .raven-posts-item.raven-posts-empty-item .raven-post {
+  padding: 0;
+  background: transparent;
+}
+
+.elementor-widget-raven-advanced-posts .raven-posts-grid .raven-posts-item.raven-posts-empty-item .raven-posts-empty,
+.elementor-widget-raven-advanced-posts .raven-posts-masonry .raven-posts-item.raven-posts-empty-item .raven-posts-empty,
+.elementor-widget-raven-advanced-posts .raven-posts-metro .raven-posts-item.raven-posts-empty-item .raven-posts-empty,
+.elementor-widget-raven-advanced-posts .raven-posts-matrix .raven-posts-item.raven-posts-empty-item .raven-posts-empty {
+  display: block;
+  min-height: 0;
+  padding: 0;
+}
+
 .elementor-widget-raven-advanced-posts .raven-posts-grid .raven-post.raven-post-inside,
 .elementor-widget-raven-advanced-posts .raven-posts-masonry .raven-post.raven-post-inside,
 .elementor-widget-raven-advanced-posts .raven-posts-metro .raven-post.raven-post-inside,

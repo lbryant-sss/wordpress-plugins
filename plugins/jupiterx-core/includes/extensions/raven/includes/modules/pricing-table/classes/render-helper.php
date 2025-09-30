@@ -247,8 +247,11 @@ class Render_Helper {
 
 		$this->widget->add_render_attribute( 'ribbon-wrapper', 'class', 'raven-pricing-table__ribbon' );
 		if ( ! empty( $settings['ribbon_horizontal_position'] ) ) :
-			$this->widget->add_render_attribute( 'ribbon-wrapper', 'class',
-			'raven-ribbon-' . $settings['ribbon_horizontal_position'] );
+			$allowed_positions = [ 'left', 'right' ];
+			$position          = in_array( $settings['ribbon_horizontal_position'], $allowed_positions, true ) ? $settings['ribbon_horizontal_position'] : '';
+			if ( ! empty( $position ) ) {
+				$this->widget->add_render_attribute( 'ribbon-wrapper', 'class', 'raven-ribbon-' . esc_attr( $position ) );
+			}
 		endif;
 		?>
 		<div <?php $this->widget->print_render_attribute_string( 'ribbon-wrapper' ); ?>>

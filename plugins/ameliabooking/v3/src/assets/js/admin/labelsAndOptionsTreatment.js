@@ -548,7 +548,8 @@ let starterOptionsTreatment = deepMerge(
       ],
       serviceStep: [
         'tax',
-        'serviceLocation'
+        'serviceLocation',
+        'serviceCapacity'
       ],
       bringingAnyone: [
         'bringingPrice',

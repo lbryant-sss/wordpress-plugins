@@ -61,7 +61,7 @@ class CF7Apps_Rest_API_WP_Admin_V1 extends CF7Apps_Base_Rest_API {
 
 		register_rest_route(
 			'cf7apps/v1',
-			'get-cf7-entries',
+			'/get-cf7-entries',
 			array(
 				'methods'             => 'GET',
 				'callback'            => array( $this, 'get_cf7_entries' ),
@@ -70,8 +70,8 @@ class CF7Apps_Rest_API_WP_Admin_V1 extends CF7Apps_Base_Rest_API {
 		);
 
 		register_rest_route(
-			'cf7apps/v1/',
-			'delete-cf7-entries',
+			'cf7apps/v1',
+			'/delete-cf7-entries',
 			array(
 				'methods'             => 'GET',
 				'callback'            => array( $this, 'delete_cf7_entries' ),
@@ -80,8 +80,8 @@ class CF7Apps_Rest_API_WP_Admin_V1 extends CF7Apps_Base_Rest_API {
 		);
 
 		register_rest_route(
-			'cf7apps/v1/',
-			'get-all-cf7-forms',
+			'cf7apps/v1',
+			'/get-all-cf7-forms',
 			array(
 				'methods'             => 'GET',
 				'callback'            => array( $this, 'get_all_cf7_forms' ),

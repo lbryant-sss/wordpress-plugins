@@ -454,10 +454,10 @@
                 </el-col>
                 <el-col :span="4" class="align-right">
                   <el-switch
-                      v-model="settings.allowCustomerCancelPackages"
-                      :disabled="notInLicence('pro')"
-                      active-text=""
-                      inactive-text=""
+                    v-model="settings.allowCustomerCancelPackages"
+                    :disabled="notInLicence('pro')"
+                    active-text=""
+                    inactive-text=""
                   >
                   </el-switch>
                 </el-col>
@@ -617,9 +617,8 @@
                 </el-col>
               </el-row>
 
-              <LicenceBlock/>
+              <LicenceBlock :licence="'pro'"/>
             </div>
-
 
             <!-- Limit Appointments per Customer for Events -->
             <div class="am-setting-box am-switch-box" :class="licenceClass()">
@@ -804,7 +803,6 @@
 
           </el-tab-pane>
           <!-- /Admin -->
-
 
         </el-tabs>
       </el-form>

@@ -124,6 +124,9 @@ let sbsStepOrderTemplate = computed(() => {
     if (licence.isLite || licence.isStarter) {
       custOrder = custOrder.filter((item) => item.id !== 'LocationStep')
     }
+    if (licence.isLite) {
+      custOrder = custOrder.filter((item) => item.id !== 'EmployeeStep')
+    }
     custOrder.forEach((item, index) => {
       if (item.id === 'ServiceStep') {
         array.push({

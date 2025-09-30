@@ -1,8 +1,8 @@
 === CF7 Apps – [Honeypot and hCAPTCHA for Contact Form 7] ===
-Tags: contact form, anti-spam, spam protection, captcha, honeypot
+Tags: anti-spam, spam protection, captcha, honeypot, cf7 database
 Requires at least: 4.8
 Tested up to: 6.8
-Stable tag: 3.1.0
+Stable tag: 3.1.1
 Requires PHP: 5.6
 Contributors: wpexpertsio
 License: GPLv2 or later
@@ -142,11 +142,18 @@ CF7 Apps is a third-party plugin and is not officially associated with or endors
 
 == Changelog ==
 
+= 3.1.1 - September 29, 2025 =
+* IMPROVEMENT – Added Collapse Icon On CF7 Apps All Apps Menu
+* IMPROVEMENT - Added validation on CF7 Apps Installation before Contact Form 7
+* FIX – Database Entries Pagination was not working in some cases 
+* FIX - PHP error when upgrading from older versions
+* FIX - Database Entries tab was not visible in some cases
+
 = 3.1.0 - September 17, 2025 =
 * NEW - Introducing Database Entries.
 * IMPROVEMENT - Moved CF7 Apps under Contact Form 7.
 
-= 3.0.1 - Sep 02, 2025 =
+= 3.0.1 - September 02, 2025 =
 * Code Optimization
 
 = 3.0.0 - July 16, 2025 =

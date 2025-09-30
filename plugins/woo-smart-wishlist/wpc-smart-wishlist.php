@@ -2,8 +2,8 @@
 /*
 Plugin Name: WPC Smart Wishlist for WooCommerce
 Plugin URI: https://wpclever.net/
-Description: WPC Smart Wishlist is a simple but powerful tool that can help your customer save products for buy later.
-Version: 5.0.2
+Description: WPC Smart Wishlist is a simple but powerful tool that can help your customer save products for buying later.
+Version: 5.0.3
 Author: WPClever
 Author URI: https://wpclever.net
 Text Domain: woo-smart-wishlist
@@ -12,14 +12,14 @@ Requires Plugins: woocommerce
 Requires at least: 4.0
 Tested up to: 6.8
 WC requires at least: 3.0
-WC tested up to: 10.0
+WC tested up to: 10.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 defined( 'ABSPATH' ) || exit;
 
-! defined( 'WOOSW_VERSION' ) && define( 'WOOSW_VERSION', '5.0.2' );
+! defined( 'WOOSW_VERSION' ) && define( 'WOOSW_VERSION', '5.0.3' );
 ! defined( 'WOOSW_LITE' ) && define( 'WOOSW_LITE', __FILE__ );
 ! defined( 'WOOSW_FILE' ) && define( 'WOOSW_FILE', __FILE__ );
 ! defined( 'WOOSW_URI' ) && define( 'WOOSW_URI', plugin_dir_url( __FILE__ ) );
@@ -189,6 +189,7 @@ if ( ! function_exists( 'woosw_init' ) ) {
 					add_shortcode( 'woosw_btn', [ $this, 'shortcode_btn' ] );
 					add_shortcode( 'woosw_link', [ $this, 'shortcode_link' ] );
 					add_shortcode( 'woosw_list', [ $this, 'shortcode_list' ] );
+					add_shortcode( 'woosw_table', [ $this, 'shortcode_list' ] );
 
 					// add button for archive
 					$button_position_archive = apply_filters( 'woosw_button_position_archive', self::get_setting( 'button_position_archive', apply_filters( 'woosw_button_position_archive_default', 'after_add_to_cart' ) ) );

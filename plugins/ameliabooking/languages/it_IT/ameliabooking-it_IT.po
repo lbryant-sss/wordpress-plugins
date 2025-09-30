@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Amelia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-05 13:38+0200\n"
+"POT-Creation-Date: 2025-09-26 15:48+0200\n"
 "PO-Revision-Date: 2025-08-19 13:35+0200\n"
 "Last-Translator: \n"
 "Language-Team: Amelia\n"
@@ -88,7 +88,7 @@ msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:39
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1602
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:227
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:228
 msgid "Close"
 msgstr "Chiudi"
 
@@ -107,7 +107,7 @@ msgid "Comma (,)"
 msgstr "Virgola (,)"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:43
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:167
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:168
 msgid "Continue"
 msgstr "Continua"
 
@@ -167,7 +167,7 @@ msgstr "Anni"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:57
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1424
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:200
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:201
 msgid "Date"
 msgstr "Data"
 
@@ -176,7 +176,7 @@ msgid "Delete"
 msgstr "Elimina"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:59
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:257
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:258
 msgid "Description"
 msgstr "Descrizione"
 
@@ -211,12 +211,13 @@ msgstr "esempio@mail.com"
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:378
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:647
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1427
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:203
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:204
 msgid "Employee"
 msgstr "Dipendente"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:67
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:379
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1644
 msgid "Employees"
 msgstr "Dipendenti"
 
@@ -266,7 +267,7 @@ msgstr "Errore"
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:77
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:651
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1604
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:196
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:197
 msgid "Event"
 msgstr "Evento"
 
@@ -470,7 +471,7 @@ msgid "No"
 msgstr "No"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:120
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:283
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:284
 msgid "There are no results..."
 msgstr "Non ci sono risultati..."
 
@@ -548,8 +549,8 @@ msgstr "Parzialmente Pagato"
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1420
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1588
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1609
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:199
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:229
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:200
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:230
 msgid "Payment"
 msgstr "Pagamento"
 
@@ -618,10 +619,10 @@ msgstr "Seleziona un Orario"
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1391
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1426
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1566
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:182
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:185
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:202
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:266
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:183
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:186
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:203
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:267
 msgid "Service"
 msgstr "Servizio"
 
@@ -629,8 +630,8 @@ msgstr "Servizio"
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:381
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1412
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1567
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:193
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:267
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:194
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:268
 msgid "Services"
 msgstr "Servizi"
 
@@ -1152,7 +1153,7 @@ msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:269
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1288
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1689
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1696
 msgid "Calendar"
 msgstr "Calendario"
 
@@ -1779,7 +1780,7 @@ msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:413
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1075
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:192
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:193
 msgid "Payments"
 msgstr "Pagamenti"
 
@@ -2621,7 +2622,7 @@ msgstr "Descrizione dell'evento"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:613
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1366
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:243
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:244
 msgid "Event Location"
 msgstr "Sede dell'Evento"
 
@@ -2639,7 +2640,7 @@ msgstr "Ora di conclusione dell'evento"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:617
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1605
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:198
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:199
 #, fuzzy
 msgid "Event ID"
 msgstr "Giorno Evento"
@@ -2752,7 +2753,7 @@ msgstr ""
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:648
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1128
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1390
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:184
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:185
 msgid "Category"
 msgstr "Categoria"
 
@@ -3167,7 +3168,7 @@ msgid "Hide"
 msgstr "Nascondi"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:797
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1669
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1676
 msgid "Show"
 msgstr "Mostra"
 
@@ -3214,7 +3215,7 @@ msgstr "Aggiungi Risorsa"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:830
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1523
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:255
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:256
 msgid "Categories"
 msgstr "Categorie"
 
@@ -3991,7 +3992,7 @@ msgstr "Prezzo Servizio"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1103
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1415
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:286
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:287
 msgid "Subtotal"
 msgstr "Subtotale"
 
@@ -4070,12 +4071,12 @@ msgid "Create Customer"
 msgstr "Crea Cliente"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1134
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:281
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:282
 msgid "Generate payment links"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1135
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:282
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:283
 msgid ""
 "Check this box to generate a payment link.<br> To include it in the "
 "notification, add the payment link placeholder."
@@ -4190,18 +4191,19 @@ msgstr "Extra selesionati"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1157
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1334
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1663
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:285
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1670
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:286
 msgid "Select Service"
 msgstr "Seleziona Servizio"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1158
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1325
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:183
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:184
 msgid "Please select service"
 msgstr "Si prega di selezionare il servizio"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1159
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1648
 msgid "Select Service Category"
 msgstr "Seleziona la Categoria di Servizio"
 
@@ -4751,7 +4753,7 @@ msgstr "Campo di Input Telefono"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1360
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1541
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:265
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:266
 msgid "Go Back"
 msgstr "Torna Indietro"
 
@@ -4774,6 +4776,7 @@ msgstr "Tipo Evento"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1370
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1569
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:145
 msgid "Free"
 msgstr "Gratuito"
 
@@ -4808,12 +4811,12 @@ msgid "Event Status"
 msgstr "Stato dell'Evento"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1380
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:223
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:224
 msgid "Filters"
 msgstr "Filtri"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1381
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:220
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:221
 msgid "Book event"
 msgstr "Prenota evento"
 
@@ -4831,18 +4834,18 @@ msgstr "Usa Colori Globali"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1386
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1476
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:179
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:180
 msgid "Service Selection"
 msgstr "Selezione Servizio"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1387
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:180
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:181
 #, fuzzy
 msgid "Employee Selection"
 msgstr "Descrizione del dipendente"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1388
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:181
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:182
 #, fuzzy
 msgid "Location Selection"
 msgstr "Descrizione della sede"
@@ -4856,19 +4859,19 @@ msgid "Bringing Anyone With You"
 msgstr "Porta Chiunque con Te"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1395
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:204
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:242
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:205
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:243
 msgid "Show more"
 msgstr "Mostra di più"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1396
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:205
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:241
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:206
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:242
 msgid "Show less"
 msgstr "Mostra meno"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1398
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:186
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:187
 msgid "Date & Time"
 msgstr "Data & Ora"
 
@@ -4878,23 +4881,23 @@ msgstr "Tutte le fasce orarie sono selezionate"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1400
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1603
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:187
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:230
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:188
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:231
 msgid "Your Information"
 msgstr "Le Tue Informazioni"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1401
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:188
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:189
 msgid "Enter first name"
 msgstr "Inserisci il nome"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1403
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:189
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:190
 msgid "Enter last name"
 msgstr "Inserisci il cognome"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1405
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:190
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:191
 msgid "Enter email"
 msgstr "Inserisci l'email"
 
@@ -4903,7 +4906,7 @@ msgid "Please enter valid email"
 msgstr "Inserisci un indirizzo email valido"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1407
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:191
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:192
 msgid "Enter phone"
 msgstr "Inserisci il telefono"
 
@@ -4912,7 +4915,7 @@ msgid "Please enter phone"
 msgstr "Si prega di inserire il telefono"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1411
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:175
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:176
 msgid "Summary"
 msgstr "Sommario"
 
@@ -4921,7 +4924,7 @@ msgid "Service Subtotal"
 msgstr "Subtotale del Servizio"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1414
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:195
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:196
 msgid "people"
 msgstr "persone"
 
@@ -4931,32 +4934,32 @@ msgid "Total Amount"
 msgstr "Importo Totale"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1417
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:171
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:172
 msgid "The payment will be done on-site."
 msgstr "Il pagamento verrà effettuato in loco."
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1418
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:197
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:198
 msgid "Appointment ID"
 msgstr "ID Appuntamento"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1421
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:177
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:178
 msgid "Your Name"
 msgstr "Il Tuo Nome"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1422
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:168
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:169
 msgid "Email Address"
 msgstr "Indirizzo Email"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1423
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:172
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:173
 msgid "Phone Number"
 msgstr "Numero di Telefono"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1425
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:201
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:202
 msgid "Local Time"
 msgstr "Ora Locale"
 
@@ -5233,7 +5236,7 @@ msgstr "Ordine dei Campi"
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1590
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1610
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:101
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:228
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:229
 msgid "Congratulations"
 msgstr "Congratulazioni"
 
@@ -5242,7 +5245,7 @@ msgid "Footer"
 msgstr "Footer"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1499
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:169
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:170
 msgid "Get in Touch"
 msgstr "Contattaci"
 
@@ -5297,7 +5300,7 @@ msgid "Publish Form"
 msgstr "Pubblica Modulo"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1522
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:260
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:261
 msgid "View All"
 msgstr "Vedi Tutto"
 
@@ -5407,7 +5410,7 @@ msgstr "Durata Servizio"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1559
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1571
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:263
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:264
 msgid "About Service"
 msgstr "Info Servizio"
 
@@ -5425,12 +5428,12 @@ msgid "Page Scroll Visibility"
 msgstr "Visibilità Barra Laterale"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1564
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:261
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:262
 msgid "Search"
 msgstr "Ricerca"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1565
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:279
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:280
 msgid "Available"
 msgstr "Disponibile"
 
@@ -5439,12 +5442,12 @@ msgid "No results"
 msgstr "Nessun risultato"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1570
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:262
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:263
 msgid "Book Now"
 msgstr "Prenota Ora"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1572
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:264
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:265
 msgid "View all photos"
 msgstr "Visualizza tutte le foto"
 
@@ -5498,13 +5501,13 @@ msgid "Customer Info"
 msgstr "Note sul cliente"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1593
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:232
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:233
 #, fuzzy
 msgid "Events Available"
 msgstr "Extra disponibili"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1594
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:233
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:234
 #, fuzzy
 msgid "Event Available"
 msgstr "Disponibile"
@@ -5515,7 +5518,7 @@ msgid "Page"
 msgstr "URL Pagina Pannello Clienti"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1596
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:234
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:235
 #, fuzzy
 msgid "Search for Events"
 msgstr "Ricerca Eventi…"
@@ -5525,25 +5528,25 @@ msgid "Begins"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1598
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:235
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:236
 #, fuzzy
 msgid "slot left"
 msgstr "posto libero"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1599
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:236
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:237
 #, fuzzy
 msgid "slots left"
 msgstr "posti liberi"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1600
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:237
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:238
 #, fuzzy
 msgid "Learn more"
 msgstr "Ulteriori Informazioni"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1601
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:238
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:239
 #, fuzzy
 msgid "Read more"
 msgstr "Vedi di più"
@@ -5553,36 +5556,36 @@ msgid "About"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1608
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:239
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:240
 #, fuzzy
 msgid "Timetable"
 msgstr "Timeline"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1611
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:231
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:232
 #, fuzzy
 msgid "About Event"
 msgstr "Informazioni su questo Evento"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1612
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:224
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:225
 #, fuzzy
 msgid "Event Starts"
 msgstr "Stato dell'Evento"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1613
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:225
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:226
 #, fuzzy
 msgid "Event Ends"
 msgstr "Eventi"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1614
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:226
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:227
 msgid "at"
 msgstr "a"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1615
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:240
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:241
 msgid "How many attendees do you want to book event for?"
 msgstr ""
 
@@ -5659,7 +5662,7 @@ msgid "Event Description"
 msgstr "Descrizione dell'Evento"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1634
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:194
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:195
 msgid "person"
 msgstr "persona"
 
@@ -5669,12 +5672,12 @@ msgid "Event Employees"
 msgstr "Dipendente Evento"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1637
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:206
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:207
 msgid "Learn More"
 msgstr "Ulteriori Informazioni"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1638
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:208
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:209
 #, fuzzy
 msgid "Service information"
 msgstr "Sede Servizio"
@@ -5692,86 +5695,108 @@ msgstr "Indirizzo Sede"
 msgid "No results found..."
 msgstr "Nessun risultato trovato…"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1651
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1642
+msgid "Card Field"
+msgstr "Campo Tessera"
+
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1643
+msgid "Popup Content"
+msgstr "Contenuto Popup"
+
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1645
+msgid "Layout"
+msgstr "Layout"
+
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1646
+#, fuzzy
+msgid "Search Input Field"
+msgstr "Campo Input"
+
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1647
+#, fuzzy
+msgid "Category Input Field"
+msgstr "Campo Input Sede"
+
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1658
 msgid "Catalog"
 msgstr "Catalogo"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1652
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1659
 msgid "Choose Category"
 msgstr "Scegli Categoria"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1653
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1660
 msgid "Choose Service"
 msgstr "Scegli Servizio"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1654
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1661
 msgid "Choose Package"
 msgstr "Scegli Pacchetto"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1655
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1662
 msgid "Preselect Booking Parameters"
 msgstr "Preseleziona i Parametri di Prenotazione"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1656
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1663
 #, fuzzy
 msgid "Skip Categories step"
 msgstr "Categorie"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1657
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1664
 msgid "Insert Amelia Booking Shortcode"
 msgstr "Inserisci lo Shortcode di Prenotazione Amelia"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1658
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1665
 msgid "Select Catalog View"
 msgstr "Seleziona Vista Catalogo"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1659
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1666
 msgid "Select Category"
 msgstr "Seleziona Categoria"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1660
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1667
 msgid "Select Employee"
 msgstr "Seleziona Dipendete"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1661
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1668
 msgid "Select Location"
 msgstr "Seleziona Sede"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1662
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1669
 msgid "Select Package"
 msgstr "Seleziona Pacchetto"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1664
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1671
 msgid "Select Event"
 msgstr "Seleziona Evento"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1665
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1672
 #, fuzzy
 msgid "Select Events"
 msgstr "Seleziona Evento"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1666
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1673
 msgid "Select Tag"
 msgstr "Seleziona Tag"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1667
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1674
 #, fuzzy
 msgid "Select Tags"
 msgstr "Seleziona Tag"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1668
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1675
 msgid "Select View"
 msgstr "Seleziona Vista"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1670
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1677
 msgid "Show All"
 msgstr "Mostra Tutto"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1671
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1678
 msgid "Load booking form manually"
 msgstr "Carica manualmente il modulo di prenotazione"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1672
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1679
 msgid ""
 "Add element (button, link...) ID, that will manually load amelia shortcode "
 "content"
@@ -5779,157 +5804,157 @@ msgstr ""
 "Aggiungi elemento (pulsante, link...) ID, che caricherà manualmente il "
 "contenuto dello shortcode amelia"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1673
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1680
 msgid "For multiselect: hold CTRL / Command (⌘)."
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1674
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1681
 msgid "Show all categories"
 msgstr "Mostra tutte le categorie"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1675
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1682
 msgid "Show all employees"
 msgstr "Mostra tutti i dipendenti"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1676
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1683
 msgid "Show all locations"
 msgstr "Mostra tutte le sedi"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1677
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1684
 msgid "Show all services"
 msgstr "Mostra tutto i servizi"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1678
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1685
 msgid "Show all events"
 msgstr "Mostra tutti gli eventi"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1679
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1686
 msgid "Show all packages"
 msgstr "Mostra tutti i pacchetti"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1680
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1687
 msgid "Show all tags"
 msgstr "Mostra tutti i tag"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1681
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1688
 msgid "Show catalog of all categories"
 msgstr "Mostra catalogo di tutte le categorie"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1682
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1689
 msgid "Show specific category"
 msgstr "Mostra categoria specifica"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1683
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1690
 #, fuzzy
 msgid "Show specific categories"
 msgstr "Mostra categoria specifica"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1684
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1691
 msgid "Show specific package"
 msgstr "Mostra pacchetto specifico"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1685
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1692
 #, fuzzy
 msgid "Show specific packages"
 msgstr "Mostra pacchetto specifico"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1686
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1693
 msgid "Show event"
 msgstr "Mostra evento"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1687
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1694
 msgid "Show Type"
 msgstr "Mostra Tipo"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1688
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1695
 msgid "List (default)"
 msgstr "Lista (default)"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1690
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1697
 msgid "Show tag"
 msgstr "Mostra tag"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1691
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1698
 msgid "Show specific service"
 msgstr "Mostra servizio specifico"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1692
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1699
 #, fuzzy
 msgid "Show specific services"
 msgstr "Mostra servizio specifico"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1693
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1700
 msgid "Trigger type"
 msgstr "Tipo di attivatore"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1694
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1701
 msgid "Id"
 msgstr "Id"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1695
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1702
 msgid "Class"
 msgstr "Classe"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1696
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1703
 msgid "Trigger by attribute"
 msgstr "Attivato da attributo"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1697
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1704
 msgid "Step Booking"
 msgstr "Fase di Prenotazione"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1698
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1705
 msgid "Catalog Booking"
 msgstr "Catalogo Prenotazione"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1699
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1706
 #, fuzzy
 msgid "Events List Booking"
 msgstr "Modulo di Prenotazione Lista Eventi"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1700
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1707
 msgid "Show recurring events"
 msgstr "Mostra eventi ricorrenti"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1701
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1708
 #, fuzzy
 msgid "Show in Amelia Popup"
 msgstr "con il Supporto di Amelia"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1703
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1710
 msgid "AM - Booking view"
 msgstr "AM - Vista Prenotazione"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1704
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1711
 msgid "AM - Step Booking"
 msgstr "AM - Fase di Prenotazione"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1705
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1712
 msgid "AM - Catalog Booking"
 msgstr "AM - Catalogo Prenotazioni"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1706
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1713
 msgid "AM - Catalog view"
 msgstr "AM - Vista Catalogo"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1707
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1714
 msgid "AM - Events view"
 msgstr "AM - Vista Eventi"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1708
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1715
 #, fuzzy
 msgid "AM - Events List Booking"
 msgstr "Modulo di Prenotazione Lista Eventi"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1709
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1716
 msgid "AM - Events Calendar Booking"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1711
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1718
 msgid "Amelia - Booking view"
 msgstr "Amelia - Vista Prenotazione"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1712
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1719
 msgid ""
 "Step-By-Step Booking Wizard gives your customers the option to choose "
 "everything about the booking in a few steps"
@@ -5937,11 +5962,11 @@ msgstr ""
 "La Prenotazione Guidata Passo-Passo offre ai clienti la possibilità di "
 "scegliere tutto ciò che riguarda la prenotazione in pochi passaggi"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1715
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1722
 msgid "Amelia - Step-By-Step Booking"
 msgstr "Amelia - Prenotazione Passo-Passo"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1716
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1723
 msgid ""
 "Step-by-Step booking view guides the customers through several steps in "
 "order to make their bookings."
@@ -5949,11 +5974,11 @@ msgstr ""
 "La vista Prenotazione Passo-Passo guida i clienti attraverso diversi "
 "passaggi per effettuare le loro prenotazioni."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1719
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1726
 msgid "Amelia - Catalog Booking"
 msgstr "Amelia - Catalogo Prenotazioni"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1720
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1727
 msgid ""
 "Front-end Booking Catalog is shortcode when you want to show your service in "
 "a form of a catalog"
@@ -5961,11 +5986,11 @@ msgstr ""
 "Il Catalogo Prenotazioni nel Front-End è una scorciatoia quando si desideri "
 "mostrare il tuo servizio sotto forma di catalogo"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1723
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1730
 msgid "Amelia - Catalog view"
 msgstr "Amelia - Vista Catalogo"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1724
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1731
 msgid ""
 "Front-end Booking Catalog is shortcode when you want to show your service in "
 "a form of a cataloge"
@@ -5973,12 +5998,12 @@ msgstr ""
 "Il Catalogo Prenotazioni nel Front-End è una scorciatoia da utilizzare "
 "quando desideri visualizzare il tuo servizio sotto forma di catalogo"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1727
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1734
 msgid "Amelia - Events"
 msgstr "Amelia - Eventi"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1728
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1732
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1735
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1739
 msgid ""
 "Event Booking is shortcode that gives your customers the option to book one "
 "of the events that you've created on the back-end in a simple event list "
@@ -5988,27 +6013,27 @@ msgstr ""
 "prenotare uno degli eventi che hai creato nel back-end in una semplice "
 "visualizzazione di lista eventi."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1731
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1738
 #, fuzzy
 msgid "Amelia - Events List"
 msgstr "Amelia - Eventi"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1735
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1742
 msgid "Amelia - Events Calendar"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1736
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1743
 msgid ""
 "Event Booking is shortcode that gives your customers the option to book one "
 "of the events that you've created on the back-end in a simple event calendar "
 "view."
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1738
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1745
 msgid "You are using a form that will be outdated soon!"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1757
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1764
 msgid "Recurring Appointments"
 msgstr "Appuntamenti Ricorrenti"
 
@@ -6053,7 +6078,7 @@ msgid "Maximum bookings reached"
 msgstr "Numero Massimo di Prenotazioni Richieste"
 
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:93
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:222
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:223
 msgid "Capacity:"
 msgstr "Capacità:"
 
@@ -6144,48 +6169,48 @@ msgstr "Numero Totale di Persone:"
 msgid "Select"
 msgstr "Seleziona"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:170
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:171
 msgid "Collapse menu"
 msgstr "Comprimi Menu"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:173
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:174
 msgid "Pick date & time:"
 msgstr "Scegli data & ora:"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:174
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:175
 msgid "Please select"
 msgstr "Si prega di selezionare"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:176
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:177
 msgid "Total Amount:"
 msgstr "Importo Totale:"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:207
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:208
 #, fuzzy
 msgid "View in Package"
 msgstr "Visualizza Più Pacchetti"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:221
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:222
 msgid "Book this event"
 msgstr "Prenota questo evento"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:256
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:257
 msgid "Category:"
 msgstr "Categoria:"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:258
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:259
 msgid "Info"
 msgstr "Info"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:259
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:260
 msgid "View More"
 msgstr "Scopri di più"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:280
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:281
 msgid "Booking can't be canceled"
 msgstr "La prenotazione non può essere annullata"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:284
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:285
 msgid "Select Customer"
 msgstr "Seleziona Cliente"
 
@@ -10261,9 +10286,6 @@ msgstr "Seleziona Cliente"
 #~ msgid "Location Information"
 #~ msgstr "Le Tue Informazioni"
 
-#~ msgid "Layout"
-#~ msgstr "Layout"
-
 #~ msgid "Change Colors"
 #~ msgstr "Cambia Colori"
 
@@ -10285,9 +10307,6 @@ msgstr "Seleziona Cliente"
 #~ msgid "Page Content"
 #~ msgstr "Contenuto Pagina"
 
-#~ msgid "Card Field"
-#~ msgstr "Campo Tessera"
-
 #~ msgid "Card Content"
 #~ msgstr "Contenuto Tessera"
 
@@ -10296,9 +10315,6 @@ msgstr "Seleziona Cliente"
 
 #~ msgid "Popup Title"
 #~ msgstr "Titolo Popup"
-
-#~ msgid "Popup Content"
-#~ msgstr "Contenuto Popup"
 
 #~ msgid "Popup Buttons"
 #~ msgstr "Pulsanti Popup"
@@ -10393,16 +10409,6 @@ msgstr "Seleziona Cliente"
 
 #~ msgid "Payment type, deposit payment..."
 #~ msgstr "Tipo di pagamento, pagamento con acconto…"
-
-#, fuzzy
-#~| msgid "Input Field"
-#~ msgid "Search Input Field"
-#~ msgstr "Campo Input"
-
-#, fuzzy
-#~| msgid "Location Input Field"
-#~ msgid "Category Input Field"
-#~ msgstr "Campo Input Sede"
 
 #, fuzzy
 #~| msgid "Input Field"

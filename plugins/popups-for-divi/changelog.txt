@@ -1,3 +1,7 @@
+= Version 3.2.1 =
+* Improve: Compatibility with WP Rocket.
+* Fix: Popup showing before the page is loaded
+
 = Version 3.2.0 =
 * New: Full Support Divi 5
 * Improve: Compatibility with WP Rocket.

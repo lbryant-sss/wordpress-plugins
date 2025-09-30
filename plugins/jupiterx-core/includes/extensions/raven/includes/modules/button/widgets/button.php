@@ -1081,7 +1081,7 @@ class Button extends Base_Widget {
 				]
 			);
 		} elseif ( ! empty( $settings['link']['url'] ) && 'yes' !== $settings['turn_to_popup_action_button'] ) {
-			$this->add_render_attribute( 'button', 'href', $settings['link']['url'] );
+			$this->add_render_attribute( 'button', 'href', esc_url( $settings['link']['url'] ) );
 
 			$this->add_render_attribute( 'button', 'class', 'raven-button-link' );
 
@@ -1091,6 +1091,7 @@ class Button extends Base_Widget {
 	}
 
 	protected function render_breakpoint_attributes() {
+		$settings = $this->get_settings_for_display();
 		foreach ( Elementor::$instance->breakpoints->get_active_breakpoints() as $breakpoint ) {
 			$breakpoint_name = $breakpoint->get_name();
 

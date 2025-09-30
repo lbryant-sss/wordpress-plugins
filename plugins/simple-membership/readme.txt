@@ -5,7 +5,7 @@ Tags: member, members, members only, membership, memberships, register, WordPres
 Requires at least: 6.0
 Requires PHP: 7.4
 Tested up to: 6.8
-Stable tag: 4.6.7
+Stable tag: 4.6.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -115,6 +115,7 @@ You can create a free forum account to ask your questions.
 * Option to configure PayPal payment buttons for memberships (one-time and recurring payments).
 * Option to configure Stripe payment buttons for memberships (one-time and recurring payments).
 * Option to configure Braintree payment buttons for memberships (one-time payments).
+* Free Social Login addon that lets users log in with their Google or Facebook accounts.
 * The plugin is actively maintained and we are working on new features for the plugin.
 * Browse the [plugin documentation](https://simple-membership-plugin.com/simple-membership-documentation/) to learn more about the features of this plugin.
 
@@ -179,6 +180,16 @@ You can find the full documentation for this plugin on the [Simple Membership pl
 5. Example of membership level management.
 
 == Changelog ==
+
+= 4.6.8 =
+- Added a new free social login addon to allow users to log in using their social media accounts. Refer to [this documentation](https://simple-membership-plugin.com/simple-membership-social-login-addon/) for more information.
+- Added a payment button shortcode field in the button edit interface for easy copy-and-paste.
+- Introduced a new filter hook 'swpm_after_login_form_output' to display custom content below the login form on the login page.
+- Updated the French language translation file. Thanks to David Ramery for the update.
+- Updated the code to remove a minor PHP notice issue.
+- Improved the WooCommerce page protection message HTML.
+- Enhanced the date selector UI with a button to quickly return to the current month.
+- Added a new filter hook 'swpm_edit_profile_form_before_submit' to allow custom code to display content before the submit button in the profile form of admin dashboard.
 
 = 4.6.7 =
 - Improved the renewal logic to include a check for account inactivity so access starts date is calculated correctly.

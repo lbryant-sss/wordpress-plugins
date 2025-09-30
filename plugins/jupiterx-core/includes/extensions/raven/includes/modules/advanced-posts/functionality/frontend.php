@@ -79,6 +79,23 @@ class Frontend {
 			remove_filter( 'excerpt_length', [ $this, 'excerpt_length' ], PHP_INT_MAX );
 
 			remove_filter( 'excerpt_more', [ $this, 'excerpt_more' ], PHP_INT_MAX );
+		} else {
+			// Empty state for no results. Prefer user-defined message if present.
+			$empty_message      = ! empty( $this->settings['empty_state_text'] ) ? $this->settings['empty_state_text'] : esc_html__( 'No results found.', 'jupiterx-core' );
+			$layout_item_class  = 'raven-' . $this->layout_type . '-item';
+			$additional_classes = ' raven-posts-empty-item';
+			// Styles for the empty item are handled in the stylesheet.
+
+			if ( in_array( $this->layout_type, [ 'matrix', 'metro' ], true ) ) {
+				$additional_classes .= ' raven-posts-full-width';
+			}
+
+			printf(
+				'<div class="raven-posts-item %1$s%2$s"><div class="raven-post-wrapper"><div class="raven-post"><div class="raven-posts-empty">%3$s</div></div></div></div>',
+				esc_attr( $layout_item_class ),
+				esc_attr( $additional_classes ),
+				esc_html( $empty_message )
+			);
 		}
 
 		wp_reset_postdata();
@@ -121,6 +138,27 @@ class Frontend {
 			remove_filter( 'excerpt_length', [ $this, 'excerpt_length' ], PHP_INT_MAX );
 
 			remove_filter( 'excerpt_more', [ $this, 'excerpt_more' ], PHP_INT_MAX );
+		} else {
+			// Provide empty markup for AJAX consumers with translatable message.
+			$empty_message      = ! empty( $this->settings['empty_state_text'] ) ? $this->settings['empty_state_text'] : esc_html__( 'No results found.', 'jupiterx-core' );
+			$layout_item_class  = 'raven-' . $this->layout_type . '-item';
+			$additional_classes = ' raven-posts-empty-item';
+			// Styles for empty state are defined in SCSS; no inline styles here.
+
+			if ( in_array( $this->layout_type, [ 'matrix', 'metro' ], true ) ) {
+				$additional_classes .= ' raven-posts-full-width';
+			}
+
+			// Width and fit for grid/masonry empty item are handled via CSS.
+
+			$queried_posts['max_num_pages'] = 1;
+			$queried_posts['total_posts']   = 0;
+			$queried_posts['posts'][]       = sprintf(
+				'<div class="raven-posts-item %1$s%2$s"><div class="raven-post-wrapper"><div class="raven-post"><div class="raven-posts-empty">%3$s</div></div></div></div>',
+				esc_attr( $layout_item_class ),
+				esc_attr( $additional_classes ),
+				esc_html( $empty_message )
+			);
 		}
 
 		wp_reset_postdata();
@@ -265,8 +303,8 @@ class Frontend {
 		}
 
 		$settings = [
-			'image_size' => $this->settings['image_size'],
-			'image' => [
+			'image_size'             => $this->settings['image_size'],
+			'image'                  => [
 				'id' => get_post_thumbnail_id(),
 			],
 			'image_custom_dimension' => $this->settings['image_custom_dimension'],
@@ -436,7 +474,7 @@ class Frontend {
 		$valid_post_types = apply_filters(
 			'jupitex_raven_valid_post_types_taxonomies',
 			[
-				'post' => 'category',
+				'post'      => 'category',
 				'portfolio' => 'portfolio_category',
 			],
 			'advanced_posts'
@@ -749,7 +787,7 @@ class Frontend {
 		}
 
 		$classes = [
-			'item' => [
+			'item'    => [
 				'raven-posts-item',
 				"raven-{$type}-item",
 				$block_hover_animation,
@@ -841,8 +879,8 @@ class Frontend {
 
 		$settings = [
 			'posts_per_page' => $this->settings['query_posts_per_page'],
-			'total_pages' => $this->wp_query->max_num_pages,
-			'pages_visible' => $this->settings['page_based_pages_visible'],
+			'total_pages'    => $this->wp_query->max_num_pages,
+			'pages_visible'  => $this->settings['page_based_pages_visible'],
 		];
 
 		$is_archive_template = $this->settings['is_archive_template'];

@@ -2,7 +2,7 @@
   <div
     v-if="props.ready && !props.loading && !props.loadingUpcoming"
     class="am-elf__footer"
-    :class="{'am-congrats' : isCongratzStep}"
+    :class="{'am-congrats' : isCongratzStep && props.secondButtonShow}"
   >
     <AmButton
       v-if="props.secondButtonShow"

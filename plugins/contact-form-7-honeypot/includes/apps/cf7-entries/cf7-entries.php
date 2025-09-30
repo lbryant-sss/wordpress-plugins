@@ -100,8 +100,6 @@ if ( ! class_exists( 'CF7Apps_Entries_App' ) && class_exists( 'CF7Apps_App' ) ) 
 				}
 			}
 
-			$data['ip'] = $_SERVER['REMOTE_ADDR'];
-
 			$entry = new CF7Apps_Form_Entries();
 
 			$entry->form_id   = $form->id();

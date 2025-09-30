@@ -2,8 +2,8 @@
 Contributors: artbees
 Tags: jupiter, jupiterx
 Requires at least: 5.6
-Tested up to: 6.7
-Stable tag: 4.11.0
+Tested up to: 6.8
+Stable tag: 4.11.1
 Requires PHP: 7.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -29,6 +29,11 @@ It's worth mentioning that, some of the features are disabled for the Jupiter X 
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 
 == Changelog ==
+= 4.11.1 =
+* Fixed a security issue.
+* Added Play Icon section to the Media Carousel widget style tab.
+* Added empty state handling for advanced posts widget.
+
 = 4.11.0 =
 * Improved Animated Heading widget: clip animation, layout/width handling, animation fixes, SCSS refinements.
 * Improved Advanced Posts to support custom fields across widgets and carousel; improved taxonomy/tag generation and rendering when default meta disabled.

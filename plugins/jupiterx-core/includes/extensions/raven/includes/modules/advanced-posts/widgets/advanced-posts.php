@@ -65,6 +65,98 @@ class Advanced_Posts extends Base_Widget {
 		$this->register_sortable_style();
 		$this->register_author_apotlight_style();
 		$this->register_tags_style();
+		$this->register_empty_state_style();
+	}
+
+	protected function register_empty_state_style() {
+		$this->start_controls_section(
+			'empty_state_style',
+			[
+				'label' => esc_html__( 'No Results', 'jupiterx-core' ),
+				'tab'   => 'style',
+			]
+		);
+
+		$this->add_responsive_control(
+			'empty_state_alignment',
+			[
+				'label' => esc_html__( 'Alignment', 'jupiterx-core' ),
+				'type' => 'choose',
+				'default' => 'center',
+				'options' => [
+					'left' => [
+						'title' => esc_html__( 'Left', 'jupiterx-core' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'jupiterx-core' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'jupiterx-core' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .raven-posts-empty' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			'typography',
+			[
+				'name' => 'empty_state_typography',
+				'selector' => '{{WRAPPER}} .raven-posts-empty',
+			]
+		);
+
+		$this->add_control(
+			'empty_state_color',
+			[
+				'label' => esc_html__( 'Text Color', 'jupiterx-core' ),
+				'type' => 'color',
+				'selectors' => [
+					'{{WRAPPER}} .raven-posts-empty' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'empty_state_margin',
+			[
+				'label' => esc_html__( 'Margin', 'jupiterx-core' ),
+				'type' => 'dimensions',
+				'size_units' => [ 'px', '%', 'em' ],
+				'selectors' => [
+					'{{WRAPPER}} .raven-posts-empty' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->end_controls_section();
+	}
+
+	protected function register_no_results_controls_inside_query() {
+		// Appended to Query section; this method is called at end of register_query_controls()
+		$this->add_control(
+			'no_results_separator',
+			[
+				'type' => 'divider',
+				'style' => 'thick',
+			]
+		);
+
+		$this->add_control(
+			'empty_state_text',
+			[
+				'label' => esc_html__( 'No results message', 'jupiterx-core' ),
+				'type' => 'text',
+				'default' => esc_html__( 'No results found.', 'jupiterx-core' ),
+				'label_block' => true,
+				'dynamic' => [ 'active' => true ],
+			]
+		);
 	}
 
 	/**
@@ -914,6 +1006,9 @@ class Advanced_Posts extends Base_Widget {
 				],
 			]
 		);
+
+		// Append No Results controls to the end of Query section
+		$this->register_no_results_controls_inside_query();
 
 		$this->end_controls_section();
 	}
@@ -5129,9 +5224,6 @@ class Advanced_Posts extends Base_Widget {
 				'label' => esc_html__( 'Border Radius', 'jupiterx-core' ),
 				'type' => 'dimensions',
 				'size_units' => [ 'px', '%' ],
-				'default' => [
-					'unit' => 'px',
-				],
 				'default' => [
 					'top' => '4',
 					'right' => '4',

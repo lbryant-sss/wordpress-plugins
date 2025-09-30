@@ -453,8 +453,12 @@ return array(
     'Automattic\\Jetpack\\Waf\\Waf_Stats' => $baseDir . '/jetpack_vendor/automattic/jetpack-waf/src/class-waf-stats.php',
     'Automattic\\Jetpack\\Waf\\Waf_Transforms' => $baseDir . '/jetpack_vendor/automattic/jetpack-waf/src/class-waf-transforms.php',
     'Automattic\\Woocommerce_Analytics' => $baseDir . '/jetpack_vendor/automattic/woocommerce-analytics/src/class-woocommerce-analytics.php',
+    'Automattic\\Woocommerce_Analytics\\Features' => $baseDir . '/jetpack_vendor/automattic/woocommerce-analytics/src/class-features.php',
     'Automattic\\Woocommerce_Analytics\\My_Account' => $baseDir . '/jetpack_vendor/automattic/woocommerce-analytics/src/class-my-account.php',
     'Automattic\\Woocommerce_Analytics\\Universal' => $baseDir . '/jetpack_vendor/automattic/woocommerce-analytics/src/class-universal.php',
+    'Automattic\\Woocommerce_Analytics\\WC_Analytics_Ch_Event' => $baseDir . '/jetpack_vendor/automattic/woocommerce-analytics/src/class-wc-analytics-ch-event.php',
+    'Automattic\\Woocommerce_Analytics\\WC_Analytics_Tracking' => $baseDir . '/jetpack_vendor/automattic/woocommerce-analytics/src/class-wc-analytics-tracking.php',
+    'Automattic\\Woocommerce_Analytics\\WC_Analytics_Tracking_Proxy' => $baseDir . '/jetpack_vendor/automattic/woocommerce-analytics/src/API/class-wc-analytics-tracking-proxy.php',
     'Automattic\\Woocommerce_Analytics\\Woo_Analytics_Trait' => $baseDir . '/jetpack_vendor/automattic/woocommerce-analytics/src/class-woo-analytics-trait.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'Jetpack_Customize_Control_Title' => $baseDir . '/jetpack_vendor/automattic/jetpack-classic-theme-helper/src/content-options/customizer.php',
@@ -527,4 +531,5 @@ return array(
     'VideoPressUploader\\Tus_File' => $baseDir . '/jetpack_vendor/automattic/jetpack-videopress/src/tus/class-tus-file.php',
     'VideoPress_Divi_Extension' => $baseDir . '/jetpack_vendor/automattic/jetpack-videopress/src/videopress-divi/class-videopress-divi-extension.php',
     'VideoPress_Divi_Module' => $baseDir . '/jetpack_vendor/automattic/jetpack-videopress/src/videopress-divi/class-videopress-divi-module.php',
+    'WooCommerceAnalyticsProxySpeed' => $baseDir . '/jetpack_vendor/automattic/woocommerce-analytics/src/mu-plugin/woocommerce-analytics-proxy-speed-module.php',
 );

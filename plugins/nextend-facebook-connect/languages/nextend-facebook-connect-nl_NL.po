@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: nextend-facebook-connect\n"
-"POT-Creation-Date: 2025-07-29 11:37+0200\n"
-"PO-Revision-Date: 2025-07-29 11:37+0200\n"
+"POT-Creation-Date: 2025-09-29 14:07+0200\n"
+"PO-Revision-Date: 2025-09-29 14:07+0200\n"
 "Last-Translator: Erik Molenaar <info@erikmolenaar.nl>\n"
 "Language-Team: nextend-facebook-connect\n"
 "Language: nl_NL\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.7\n"
 "X-Poedit-Basepath: ../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: "
@@ -4656,82 +4656,70 @@ msgid "Unlink account from <b>Twitch</b>"
 msgstr "Ontkoppel van <b>Twitter</b>"
 
 #, fuzzy
-#| msgid "Click on the Manage button at the App"
-msgid "Click on the \"<b>Manage</b>\" button next to the associated App."
-msgstr "Klik op de knop Beheer bij de App"
+#| msgid "Click on the name of your %s App."
+msgid "Click on the card associated with your App."
+msgstr "Klik op de naam van je %s App."
 
-#, fuzzy
-#| msgid "Go to the Settings menu"
-msgid "Go to the \"<b>Settings</b>\" menu"
-msgstr "Ga naar het menu Instellingen"
+#, php-format
+msgid ""
+"Select the %s option from the side bar on the left side, if it is not "
+"selected already."
+msgstr ""
 
-#, fuzzy
+#, fuzzy, php-format
 #| msgid "Hit update to save the changes"
-msgid "Click on \"<b>Update</b>\" to save the changes"
+msgid "Click on %s button to save the changes."
 msgstr "Klik op update om de wijzigingen op te slaan"
 
-#, fuzzy
-#| msgid "Locate the \"Create app\" button and click on it."
-msgid "Locate the blue \"<b>Create app</b>\" button and click on it."
-msgstr "Zoek de knop \"App maken\" op en klik erop."
-
-#, fuzzy
-#| msgid "Enter the title of your app and select \"Website\"."
-msgid ""
-"Enter the <b>Title</b> for your App and select \"<b>Website</b>\" as "
-"platform."
-msgstr "Voer de titel van je app in en selecteer \"Website\"."
+#, php-format
+msgid "Open the %s page"
+msgstr ""
 
 #, fuzzy, php-format
-#| msgid ""
-#| "Fill \"Site address\" with the url of your homepage, probably: <b>%s</b>"
+#| msgid "Name your project and then click on the Create button again"
 msgid ""
-"Fill \"<b>Website address</b>\" with the url of your homepage, probably: "
-"<b>%s</b>"
+"In the sidebar on the left side, click on %1$s then click on the %2$s button."
+msgstr "Geef je project een naam en klik dan opnieuw op de knop Aanmaken"
+
+#, php-format
+msgid ""
+"%1$s If you don't have a developer account connected already, then you will "
+"need to continue with your VK account, authorize VK, select an account type "
+"and complete some forms in order to create a developer account."
 msgstr ""
-"Vul \"Siteadres\" in met de url van je homepage, waarschijnlijk: <b>%s</b>"
 
 #, fuzzy, php-format
-#| msgid "Fill the \"Base domain\" field with your domain, probably: <b>%s</b>"
-msgid ""
-"Fill the \"<b>Base domain</b>\" field with your domain, probably: <b>%s</b>"
+#| msgid "Click on the Create button"
+msgid "Click the %s button."
+msgstr "Klik op de knop Aanmaken"
+
+#, php-format
+msgid "Enter a name for your app, and at the platforms, enable the %s option"
 msgstr ""
-"Vul het veld \"Basisdomein\" in met je domein, waarschijnlijk: <b>%s</b>"
 
-#, fuzzy
-#| msgid "When all fields are filled, click \"Save\"."
-msgid "When all fields are filled, click the \"<b>Upload app</b>\" button."
-msgstr "Wanneer alle velden zijn ingevuld, klik je op \"Opslaan\"."
+#, fuzzy, php-format
+#| msgid "Name your project and then click on the Create button again"
+msgid "Select an image, then click on the%s button!"
+msgstr "Geef je project een naam en klik dan opnieuw op de knop Aanmaken"
 
-#, fuzzy
-#| msgid "Fill the form for your app and upload an app icon then hit Save."
-msgid ""
-"<b>Fill the information form</b> of your app, <b>upload an app icon</b> then "
-"click <b>Save</b>."
+#, fuzzy, php-format
+#| msgid "Fill \"Website\" with the url of your homepage, probably: <b>%s</b>"
+msgid "Fill the %1$s field with your domain name, probably: %2$s"
 msgstr ""
-"Vul het formulier in voor je app en upload een app-icoontje en klik "
-"vervolgens op Opslaan."
+"Vul \"Website\" in met de url van je homepage, waarschijnlijk: <b>%s</b>"
 
-#, fuzzy
-#| msgid "Pick Settings at the left-hand menu "
-msgid "Pick <b>Settings</b> at the left-hand menu "
-msgstr "Kies Instellingen in het linker menu "
-
-#, fuzzy
-#| msgid "Save your app"
-msgid "<b>Save</b> your app"
-msgstr "Bewaar je app"
-
-#, fuzzy
-#| msgid ""
-#| "Find the necessary Application ID and Secure key at the top of the "
-#| "Settings page where you just hit the save button."
+#, php-format
 msgid ""
-"Find the necessary \"<b>App ID</b>\" and \"<b>Secure key</b>\" at the top of "
-"the Settings page where you just hit the save button."
+"Click on the %s link ( as you don't need those widgets, we have our own "
+"buttons )."
 msgstr ""
-"Vind de benodigde Applicatie-ID en Secure sleutel bovenaan de Instellingen-"
-"pagina waar je zojuist op de Opslaan knop hebt gedrukt."
+
+#, php-format
+msgid ""
+"You will end up on the %1$s page, scroll down to the %2$s section where you "
+"can find the %3$s and %4$s. You will need these for the fields with the same "
+"name on our %5$s tab."
+msgstr ""
 
 msgid "Secure key"
 msgstr "Beveiligde sleutel"
@@ -4750,10 +4738,32 @@ msgstr "Koppel met <b>VK</b>"
 msgid "Unlink account from <b>VK</b>"
 msgstr "Ontkoppel van <b>VK</b>"
 
+#, php-format
+msgid ""
+"%1$s: %2$s introduced new App types and modified their endpoints which are "
+"not compatible with the old Apps.%3$sWe detected that, you are currently "
+"using an old %2$s App, so we had to disable your %2$s configuration. To "
+"resolve the problem, please create a new App based on our %4$s guide, and "
+"replace the credentials on the %5$s tab with your new App credentials."
+msgstr ""
+
+msgid "VKontakte"
+msgstr ""
+
+#, fuzzy, php-format
+#| msgid "Click on the Create button"
+msgid "Open %1$s - %2$s"
+msgstr "Klik op de knop Aanmaken"
+
 #, fuzzy
 #| msgid "Click \"Manage Settings\" under the Tools section!"
 msgid "Click \"<b>Manage Settings</b>\" under the Tools section!"
 msgstr "Klik op \"Instellingen Beheren\" onder de sectie \"Gereedschappen\"!"
+
+#, fuzzy
+#| msgid "Hit update to save the changes"
+msgid "Click on \"<b>Update</b>\" to save the changes"
+msgstr "Klik op update om de wijzigingen op te slaan"
 
 #, fuzzy
 #| msgid "Click on the \"Create New Application\" button."
@@ -4918,6 +4928,81 @@ msgstr "Bevestig wachtwoord"
 
 msgid "Username"
 msgstr "Gebruikersnaam"
+
+#, fuzzy
+#~| msgid "Click on the Manage button at the App"
+#~ msgid "Click on the \"<b>Manage</b>\" button next to the associated App."
+#~ msgstr "Klik op de knop Beheer bij de App"
+
+#, fuzzy
+#~| msgid "Go to the Settings menu"
+#~ msgid "Go to the \"<b>Settings</b>\" menu"
+#~ msgstr "Ga naar het menu Instellingen"
+
+#, fuzzy
+#~| msgid "Locate the \"Create app\" button and click on it."
+#~ msgid "Locate the blue \"<b>Create app</b>\" button and click on it."
+#~ msgstr "Zoek de knop \"App maken\" op en klik erop."
+
+#, fuzzy
+#~| msgid "Enter the title of your app and select \"Website\"."
+#~ msgid ""
+#~ "Enter the <b>Title</b> for your App and select \"<b>Website</b>\" as "
+#~ "platform."
+#~ msgstr "Voer de titel van je app in en selecteer \"Website\"."
+
+#, fuzzy, php-format
+#~| msgid ""
+#~| "Fill \"Site address\" with the url of your homepage, probably: <b>%s</b>"
+#~ msgid ""
+#~ "Fill \"<b>Website address</b>\" with the url of your homepage, probably: "
+#~ "<b>%s</b>"
+#~ msgstr ""
+#~ "Vul \"Siteadres\" in met de url van je homepage, waarschijnlijk: <b>%s</b>"
+
+#, fuzzy, php-format
+#~| msgid ""
+#~| "Fill the \"Base domain\" field with your domain, probably: <b>%s</b>"
+#~ msgid ""
+#~ "Fill the \"<b>Base domain</b>\" field with your domain, probably: <b>%s</"
+#~ "b>"
+#~ msgstr ""
+#~ "Vul het veld \"Basisdomein\" in met je domein, waarschijnlijk: <b>%s</b>"
+
+#, fuzzy
+#~| msgid "When all fields are filled, click \"Save\"."
+#~ msgid "When all fields are filled, click the \"<b>Upload app</b>\" button."
+#~ msgstr "Wanneer alle velden zijn ingevuld, klik je op \"Opslaan\"."
+
+#, fuzzy
+#~| msgid "Fill the form for your app and upload an app icon then hit Save."
+#~ msgid ""
+#~ "<b>Fill the information form</b> of your app, <b>upload an app icon</b> "
+#~ "then click <b>Save</b>."
+#~ msgstr ""
+#~ "Vul het formulier in voor je app en upload een app-icoontje en klik "
+#~ "vervolgens op Opslaan."
+
+#, fuzzy
+#~| msgid "Pick Settings at the left-hand menu "
+#~ msgid "Pick <b>Settings</b> at the left-hand menu "
+#~ msgstr "Kies Instellingen in het linker menu "
+
+#, fuzzy
+#~| msgid "Save your app"
+#~ msgid "<b>Save</b> your app"
+#~ msgstr "Bewaar je app"
+
+#, fuzzy
+#~| msgid ""
+#~| "Find the necessary Application ID and Secure key at the top of the "
+#~| "Settings page where you just hit the save button."
+#~ msgid ""
+#~ "Find the necessary \"<b>App ID</b>\" and \"<b>Secure key</b>\" at the top "
+#~ "of the Settings page where you just hit the save button."
+#~ msgstr ""
+#~ "Vind de benodigde Applicatie-ID en Secure sleutel bovenaan de "
+#~ "Instellingen-pagina waar je zojuist op de Opslaan knop hebt gedrukt."
 
 #, fuzzy
 #~| msgid "Uniform"

@@ -330,7 +330,7 @@ watchEffect(() => {
     })
   }
 
-  if (!serviceCustomizeOptions.value.serviceCapacity.visibility) {
+  if (!serviceCustomizeOptions.value.serviceCapacity.visibility || (licence.isStarter || licence.isLite)) {
     serviceOptions.value.forEach((service) => {
       if (service.infoItems.some((item) => item.icon === 'user')) {
         service.infoItems = service.infoItems.filter(

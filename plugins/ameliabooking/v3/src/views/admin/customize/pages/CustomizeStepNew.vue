@@ -318,7 +318,7 @@ let serviceFlow = computed(() => {
   } else {
     stepOrder.value.forEach((item) => {
       if (item.id === 'ServiceStep') values.push(serviceStep)
-      if (item.id === 'EmployeeStep') values.push(employeeStep)
+      if (item.id === 'EmployeeStep' && (licence.isStarter || licence.isBasic || licence.isPro || licence.isDeveloper)) values.push(employeeStep)
       if (item.id === 'LocationStep' && (licence.isBasic || licence.isPro || licence.isDeveloper)) values.push(locationStep)
     })
   }

@@ -20,9 +20,9 @@ require_once(NSL_PATH . '/compat.php');
 
 class NextendSocialLogin {
 
-    public static $version = '3.1.19';
+    public static $version = '3.1.20';
 
-    public static $nslPROMinVersion = '3.1.19';
+    public static $nslPROMinVersion = '3.1.20';
 
     public static $proxyPage = false;
 
@@ -1043,13 +1043,12 @@ class NextendSocialLogin {
      * @return string
      */
     public static function renderLinkAndUnlinkButtons($heading = '', $link = true, $unlink = true, $align = "left", $providers = false, $style = "default") {
-        if (count(self::$enabledProviders) && is_user_logged_in()) {
+        if (is_user_logged_in()) {
 
             /**
              * If the NSL_DISABLE_IN_AMP_REQUESTS constant is defined, we shouldn't display the link/unlink buttons on the AMP pages.
              */
             if (defined('NSL_DISABLE_IN_AMP_REQUESTS') && NextendSocialLogin::isAMPRequest()) {
-
                 return '';
             }
 
@@ -1060,15 +1059,6 @@ class NextendSocialLogin {
                 $style = 'default';
             }
 
-            $buttons = '';
-            if ($heading !== false) {
-                if (empty($heading)) {
-                    $heading = __('Social Login', 'nextend-facebook-connect');
-                }
-                $buttons = '<h2>' . $heading . '</h2>';
-            }
-
-
             if ($unlink) {
                 //Filter to disable unlinking social accounts
                 $isUnlinkAllowed = apply_filters('nsl_allow_unlink', true);
@@ -1076,7 +1066,6 @@ class NextendSocialLogin {
                     $unlink = false;
                 }
             }
-
 
             $enabledProviders = false;
             if (is_array($providers)) {
@@ -1105,10 +1094,15 @@ class NextendSocialLogin {
                     }
                 }
 
+                if (!empty($heading)) {
+                    $heading = '<h2 class="nsl-heading">' . $heading . '</h2>';
+                } else {
+                    $heading = '';
+                }
+
                 $buttons = '<div class="nsl-container-buttons">' . $buttons . '</div>';
 
-                return '<div class="nsl-container ' . self::$styles[$style]['container'] . '"' . ($style !== 'fullwidth' ? ' data-align="' . esc_attr($align) . '"' : '') . '>' . $buttons . '</div>';
-
+                return '<div class="nsl-container ' . self::$styles[$style]['container'] . '"' . ($style !== 'fullwidth' ? ' data-align="' . esc_attr($align) . '"' : '') . '>' . wp_kses_post($heading) . $buttons . '</div>';
             }
         }
 
@@ -1233,14 +1227,14 @@ class NextendSocialLogin {
                 }
 
                 if (!empty($heading)) {
-                    $heading = '<h2>' . $heading . '</h2>';
+                    $heading = '<h2 class="nsl-heading">' . $heading . '</h2>';
                 } else {
                     $heading = '';
                 }
 
                 $buttons = '<div class="nsl-container-buttons">' . $buttons . '</div>';
 
-                $ret = '<div class="nsl-container ' . self::$styles[$style]['container'] . '"' . ($style !== 'fullwidth' ? ' data-align="' . esc_attr($align) . '"' : '') . '>' . $heading . $buttons . '</div>';
+                $ret = '<div class="nsl-container ' . self::$styles[$style]['container'] . '"' . ($style !== 'fullwidth' ? ' data-align="' . esc_attr($align) . '"' : '') . '>' . wp_kses_post($heading) . $buttons . '</div>';
                 if (defined('DOING_AJAX') && DOING_AJAX) {
                     $id  = md5(uniqid('nsl-ajax-'));
                     $ret = '<div id="' . $id . '">' . $ret . '</div>';

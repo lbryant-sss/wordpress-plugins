@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: nextend-facebook-connect\n"
-"POT-Creation-Date: 2025-07-29 11:36+0200\n"
-"PO-Revision-Date: 2025-07-29 11:36+0200\n"
+"POT-Creation-Date: 2025-09-29 14:06+0200\n"
+"PO-Revision-Date: 2025-09-29 14:06+0200\n"
 "Last-Translator: \n"
 "Language-Team: nextend-facebook-connect\n"
 "Language: it_IT\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.7\n"
 "X-Poedit-Basepath: ../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: "
@@ -4687,63 +4687,77 @@ msgstr "Collega account con <b>Twitter</b>"
 msgid "Unlink account from <b>Twitch</b>"
 msgstr "Scollega account da <b>Twitter</b>"
 
-msgid "Click on the \"<b>Manage</b>\" button next to the associated App."
-msgstr "Clicca sul bottone \"<b>Gestisci</b>\" vicino l'App associata."
-
-msgid "Go to the \"<b>Settings</b>\" menu"
-msgstr "Vai al menu \"<b>Settaggi</b>\""
-
-msgid "Click on \"<b>Update</b>\" to save the changes"
-msgstr "Clicca su \"<b>Aggiorna</b>\" per salvare le modifiche"
-
-msgid "Locate the blue \"<b>Create app</b>\" button and click on it."
-msgstr "Cerca il bottone \"<b>Crea app</b>\" e cliccaci."
-
-msgid ""
-"Enter the <b>Title</b> for your App and select \"<b>Website</b>\" as "
-"platform."
-msgstr ""
-"Inserisci il <b>Titolo</b> per la tua App e seleziona \"<b>Sito internet</"
-"b>\" come piattaforma."
+#, fuzzy
+#| msgid "Click on the name of your %s App."
+msgid "Click on the card associated with your App."
+msgstr "Clicca sul nome della tua %s App."
 
 #, php-format
 msgid ""
-"Fill \"<b>Website address</b>\" with the url of your homepage, probably: "
-"<b>%s</b>"
+"Select the %s option from the side bar on the left side, if it is not "
+"selected already."
 msgstr ""
-"Compila \"<b>Indirizzo sito internet</b>\" con l'url della tua homepage, "
+
+#, fuzzy, php-format
+#| msgid "Click on \"<b>Update</b>\" to save the changes"
+msgid "Click on %s button to save the changes."
+msgstr "Clicca su \"<b>Aggiorna</b>\" per salvare le modifiche"
+
+#, php-format
+msgid "Open the %s page"
+msgstr ""
+
+#, fuzzy, php-format
+#| msgid ""
+#| "On the top left side, click on the “<b>%1$s</b>” menu point, then click "
+#| "“<b>%2$s</b>”."
+msgid ""
+"In the sidebar on the left side, click on %1$s then click on the %2$s button."
+msgstr ""
+"In alto a sinistra, clicca nel menù su “<b>%1$s</b>”, quindi clicca "
+"“<b>%2$s</b>”."
+
+#, php-format
+msgid ""
+"%1$s If you don't have a developer account connected already, then you will "
+"need to continue with your VK account, authorize VK, select an account type "
+"and complete some forms in order to create a developer account."
+msgstr ""
+
+#, fuzzy, php-format
+#| msgid "Click on the \"<b>Create</b>\" button"
+msgid "Click the %s button."
+msgstr "Clicca sul bottone \"<b>Crea</b>\""
+
+#, php-format
+msgid "Enter a name for your app, and at the platforms, enable the %s option"
+msgstr ""
+
+#, fuzzy, php-format
+#| msgid "Switch on the \"<b>%s</b>\" option."
+msgid "Select an image, then click on the%s button!"
+msgstr "Scegli l'opzione \"<b>%s</b>\"."
+
+#, fuzzy, php-format
+#| msgid ""
+#| "Fill \"<b>Website</b>\" with the url of your homepage, probably: <b>%s</b>"
+msgid "Fill the %1$s field with your domain name, probably: %2$s"
+msgstr ""
+"Compila \"<b>Sito Internet</b>\" con la url della tua homepage, "
 "probabilmente: <b>%s</b>"
 
 #, php-format
 msgid ""
-"Fill the \"<b>Base domain</b>\" field with your domain, probably: <b>%s</b>"
+"Click on the %s link ( as you don't need those widgets, we have our own "
+"buttons )."
 msgstr ""
-"Compila il campo \"<b>Dominio base</b>\" col tuo dominio, probabilmente: "
-"<b>%s</b>"
 
-msgid "When all fields are filled, click the \"<b>Upload app</b>\" button."
-msgstr ""
-"Quando tutti i campi sono compilati, clicca il bottone \"<b>Carica app</b>\"."
-
+#, php-format
 msgid ""
-"<b>Fill the information form</b> of your app, <b>upload an app icon</b> then "
-"click <b>Save</b>."
+"You will end up on the %1$s page, scroll down to the %2$s section where you "
+"can find the %3$s and %4$s. You will need these for the fields with the same "
+"name on our %5$s tab."
 msgstr ""
-"<b>Compila il form delle informazioni</b> della tua app, <b>carica una icona "
-"per l'app</b> e poi clicca su <b>Salva</b>."
-
-msgid "Pick <b>Settings</b> at the left-hand menu "
-msgstr "Seleziona <b>Settaggi</b> nel menu a sinistra "
-
-msgid "<b>Save</b> your app"
-msgstr "<b>Salva</b> la tua app"
-
-msgid ""
-"Find the necessary \"<b>App ID</b>\" and \"<b>Secure key</b>\" at the top of "
-"the Settings page where you just hit the save button."
-msgstr ""
-"Cerca l'\"<b>App ID</b>\" e la \"<b>Secure key</b>\" richieste in alta nella "
-"pagina Settaggi dove hai premuto il bottone per il salvataggio."
 
 msgid "Secure key"
 msgstr "Secure key"
@@ -4762,8 +4776,28 @@ msgstr "Collega account con <b>VK</b>"
 msgid "Unlink account from <b>VK</b>"
 msgstr "Scollega account da <b>VK</b>"
 
+#, php-format
+msgid ""
+"%1$s: %2$s introduced new App types and modified their endpoints which are "
+"not compatible with the old Apps.%3$sWe detected that, you are currently "
+"using an old %2$s App, so we had to disable your %2$s configuration. To "
+"resolve the problem, please create a new App based on our %4$s guide, and "
+"replace the credentials on the %5$s tab with your new App credentials."
+msgstr ""
+
+msgid "VKontakte"
+msgstr ""
+
+#, fuzzy, php-format
+#| msgid "Choose the \"<b>OAuth client ID</b>\" option."
+msgid "Open %1$s - %2$s"
+msgstr "Scegli l'opzione \"<b>OAuth client ID</b>\"."
+
 msgid "Click \"<b>Manage Settings</b>\" under the Tools section!"
 msgstr "Clicca \"<b>Gestisci Settaggi</b>\" sotto la sezione Strumenti!"
+
+msgid "Click on \"<b>Update</b>\" to save the changes"
+msgstr "Clicca su \"<b>Aggiorna</b>\" per salvare le modifiche"
 
 msgid "Click on the \"<b>Create New Application</b>\" button."
 msgstr "Clicca sul bottone \"<b>Crea Nuova Applicazione</b>\"."
@@ -4904,6 +4938,63 @@ msgstr "Conferma password"
 
 msgid "Username"
 msgstr "Username"
+
+#~ msgid "Click on the \"<b>Manage</b>\" button next to the associated App."
+#~ msgstr "Clicca sul bottone \"<b>Gestisci</b>\" vicino l'App associata."
+
+#~ msgid "Go to the \"<b>Settings</b>\" menu"
+#~ msgstr "Vai al menu \"<b>Settaggi</b>\""
+
+#~ msgid "Locate the blue \"<b>Create app</b>\" button and click on it."
+#~ msgstr "Cerca il bottone \"<b>Crea app</b>\" e cliccaci."
+
+#~ msgid ""
+#~ "Enter the <b>Title</b> for your App and select \"<b>Website</b>\" as "
+#~ "platform."
+#~ msgstr ""
+#~ "Inserisci il <b>Titolo</b> per la tua App e seleziona \"<b>Sito internet</"
+#~ "b>\" come piattaforma."
+
+#, php-format
+#~ msgid ""
+#~ "Fill \"<b>Website address</b>\" with the url of your homepage, probably: "
+#~ "<b>%s</b>"
+#~ msgstr ""
+#~ "Compila \"<b>Indirizzo sito internet</b>\" con l'url della tua homepage, "
+#~ "probabilmente: <b>%s</b>"
+
+#, php-format
+#~ msgid ""
+#~ "Fill the \"<b>Base domain</b>\" field with your domain, probably: <b>%s</"
+#~ "b>"
+#~ msgstr ""
+#~ "Compila il campo \"<b>Dominio base</b>\" col tuo dominio, probabilmente: "
+#~ "<b>%s</b>"
+
+#~ msgid "When all fields are filled, click the \"<b>Upload app</b>\" button."
+#~ msgstr ""
+#~ "Quando tutti i campi sono compilati, clicca il bottone \"<b>Carica app</"
+#~ "b>\"."
+
+#~ msgid ""
+#~ "<b>Fill the information form</b> of your app, <b>upload an app icon</b> "
+#~ "then click <b>Save</b>."
+#~ msgstr ""
+#~ "<b>Compila il form delle informazioni</b> della tua app, <b>carica una "
+#~ "icona per l'app</b> e poi clicca su <b>Salva</b>."
+
+#~ msgid "Pick <b>Settings</b> at the left-hand menu "
+#~ msgstr "Seleziona <b>Settaggi</b> nel menu a sinistra "
+
+#~ msgid "<b>Save</b> your app"
+#~ msgstr "<b>Salva</b> la tua app"
+
+#~ msgid ""
+#~ "Find the necessary \"<b>App ID</b>\" and \"<b>Secure key</b>\" at the top "
+#~ "of the Settings page where you just hit the save button."
+#~ msgstr ""
+#~ "Cerca l'\"<b>App ID</b>\" e la \"<b>Secure key</b>\" richieste in alta "
+#~ "nella pagina Settaggi dove hai premuto il bottone per il salvataggio."
 
 #, php-format
 #~ msgid "Click the “<b>%1$s</b>” button on the left hand side."

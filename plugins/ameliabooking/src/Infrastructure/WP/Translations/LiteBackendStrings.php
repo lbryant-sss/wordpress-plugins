@@ -1639,6 +1639,13 @@ class LiteBackendStrings
             'learn_more_button'                  => __('Learn more button', 'ameliabooking'),
             'location_address'                   => __('Location Address', 'ameliabooking'),
             'no_results_found'                   => __('No results found...', 'ameliabooking'),
+            'card_field'                         => __('Card Field', 'ameliabooking'),
+            'popup_content'                      => __('Popup Content', 'ameliabooking'),
+            'employees'                          => __('Employees', 'ameliabooking'),
+            'layout'                             => __('Layout', 'ameliabooking'),
+            'search_input_field'                 => __('Search Input Field', 'ameliabooking'),
+            'category_input_field'               => __('Category Input Field', 'ameliabooking'),
+            'select_service_category'            => __('Select Service Category', 'ameliabooking'),
         ];
     }
 

@@ -223,6 +223,8 @@ button:focus {
     float: left;
     width: 250px;
     padding-top: 18px;
+    position: relative;
+    transition: all 0.3s;
 }
 
 .cf7apps-right-bar {
@@ -764,4 +766,29 @@ select.cf7apps-form-input {
 
 .cf7apps-entries-pagination button[ disabled ] {
     cursor: not-allowed;
+}
+
+.cf7apps-clearfix {
+    clear: both;
+}
+
+.cf7apps-expand-menu-btn {
+    float: right;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    border: none !important;
+    color: rgba( 0, 0, 0, 0.54 ) !important;
+    background-color: transparent !important;
+    border-radius: 50px !important;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.cf7apps-expand-menu-btn:hover {
+    background-color: #DAE5F1 !important;
+    color: #218BAC !important;
 }

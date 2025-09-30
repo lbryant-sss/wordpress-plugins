@@ -36,7 +36,8 @@
 				otherButton = button.siblings( '.tml-license-button' ),
 				input = button.siblings( '.tml-license-field' ),
 				spinner = button.siblings( '.spinner' ),
-				status = button.siblings( '.tml-license-status' );
+				status = button.siblings( '.tml-license-status' ),
+				nonce = button.closest("form").find("#_wpnonce").val();
 
 			e.preventDefault();
 
@@ -46,7 +47,8 @@
 			$.post( tmlAdmin.ajaxUrl, {
 				action: 'tml-' + action + '-extension-license',
 				extension: button.data( 'extension' ),
-				key: input.val()
+				key: input.val(),
+				_wpnonce: nonce
 			} ).done( function( response ) {
 				if ( response.success ) {
 					otherButton.show();

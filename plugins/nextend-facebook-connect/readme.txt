@@ -4,7 +4,7 @@ Tags: social login, facebook, google, twitter, x, linkedin, register, login, soc
 Donate link: https://www.facebook.com/nextendweb
 Requires at least: 4.9
 Tested up to: 6.8.2
-Stable tag: 3.1.19
+Stable tag: 3.1.20
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -124,6 +124,12 @@ Using the Pro Addon you can set where the login buttons should appear on the Reg
 4. The Settings page of the Facebook provider.
 
 == Changelog ==
+
+= 3.1.20 =
+* Improvement: Shortcode security improvement.
+* Fix: Fixed an issue where the "heading" shortcode parameter was not working in case of the link/unlink buttons.
+* PRO: Improvement: [VKontakte](https://social-login.nextendweb.com/documentation/providers/vkontakte/) Endpoints and App creation/configuration process updated to match new requirements.
+
 
 = 3.1.19 =
 * Improvement: [Google](https://social-login.nextendweb.com/documentation/providers/google/#guidelines) Button skins updated to match design guidelines.

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Amelia\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-05 13:38+0200\n"
+"POT-Creation-Date: 2025-09-26 15:47+0200\n"
 "PO-Revision-Date: 2025-08-19 13:34+0200\n"
 "Last-Translator: \n"
 "Language-Team: Amelia\n"
@@ -90,7 +90,7 @@ msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:39
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1602
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:227
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:228
 msgid "Close"
 msgstr "Lezár"
 
@@ -109,7 +109,7 @@ msgid "Comma (,)"
 msgstr "Vessző (,)"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:43
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:167
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:168
 msgid "Continue"
 msgstr "Folytatás"
 
@@ -171,7 +171,7 @@ msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:57
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1424
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:200
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:201
 msgid "Date"
 msgstr "Dátum"
 
@@ -180,7 +180,7 @@ msgid "Delete"
 msgstr "Töröl"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:59
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:257
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:258
 msgid "Description"
 msgstr "Leírás"
 
@@ -215,12 +215,13 @@ msgstr "example@mail.com"
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:378
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:647
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1427
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:203
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:204
 msgid "Employee"
 msgstr "Munkatárs"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:67
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:379
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1644
 msgid "Employees"
 msgstr "Munkatársak"
 
@@ -267,7 +268,7 @@ msgstr "Hiba"
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:77
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:651
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1604
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:196
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:197
 msgid "Event"
 msgstr "Esemény"
 
@@ -464,7 +465,7 @@ msgid "No"
 msgstr "Nem"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:120
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:283
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:284
 msgid "There are no results..."
 msgstr "Nincs találat..."
 
@@ -543,8 +544,8 @@ msgstr ""
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1420
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1588
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1609
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:199
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:229
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:200
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:230
 msgid "Payment"
 msgstr "Fizetés"
 
@@ -614,10 +615,10 @@ msgstr "Válasszon időt"
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1391
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1426
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1566
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:182
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:185
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:202
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:266
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:183
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:186
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:203
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:267
 msgid "Service"
 msgstr "Szolgáltatás"
 
@@ -625,8 +626,8 @@ msgstr "Szolgáltatás"
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:381
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1412
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1567
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:193
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:267
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:194
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:268
 msgid "Services"
 msgstr "Szolgáltatások"
 
@@ -1130,7 +1131,7 @@ msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:269
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1288
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1689
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1696
 msgid "Calendar"
 msgstr "Naptár"
 
@@ -1736,7 +1737,7 @@ msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:413
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1075
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:192
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:193
 msgid "Payments"
 msgstr "Fizetések"
 
@@ -2572,7 +2573,7 @@ msgstr "Esemény leírása"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:613
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1366
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:243
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:244
 msgid "Event Location"
 msgstr ""
 
@@ -2590,7 +2591,7 @@ msgstr "Esemény végének időpontja"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:617
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1605
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:198
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:199
 #, fuzzy
 msgid "Event ID"
 msgstr "Esemény dátum"
@@ -2701,7 +2702,7 @@ msgstr ""
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:648
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1128
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1390
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:184
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:185
 msgid "Category"
 msgstr "Kategória"
 
@@ -3111,7 +3112,7 @@ msgid "Hide"
 msgstr "Elrejt"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:797
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1669
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1676
 msgid "Show"
 msgstr "Megmutat"
 
@@ -3158,7 +3159,7 @@ msgstr "Szolgáltatás hozzáadása"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:830
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1523
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:255
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:256
 msgid "Categories"
 msgstr "Kategóriák"
 
@@ -3918,7 +3919,7 @@ msgstr "Szolgáltatás ára"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1103
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1415
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:286
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:287
 msgid "Subtotal"
 msgstr "Részösszeg"
 
@@ -3997,12 +3998,12 @@ msgid "Create Customer"
 msgstr "Ügyfél létrehozása"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1134
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:281
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:282
 msgid "Generate payment links"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1135
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:282
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:283
 msgid ""
 "Check this box to generate a payment link.<br> To include it in the "
 "notification, add the payment link placeholder."
@@ -4116,18 +4117,19 @@ msgstr "Esemény kiválasztása"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1157
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1334
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1663
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:285
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1670
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:286
 msgid "Select Service"
 msgstr "Szolgáltatás kiválasztása"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1158
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1325
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:183
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:184
 msgid "Please select service"
 msgstr "Kérem válasszon szolgáltatást"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1159
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1648
 msgid "Select Service Category"
 msgstr "Válasszon szolgáltatáskategóriát"
 
@@ -4674,7 +4676,7 @@ msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1360
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1541
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:265
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:266
 msgid "Go Back"
 msgstr ""
 
@@ -4697,6 +4699,7 @@ msgstr "Eseménytípus"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1370
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1569
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:145
 msgid "Free"
 msgstr "Szabad"
 
@@ -4732,12 +4735,12 @@ msgid "Event Status"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1380
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:223
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:224
 msgid "Filters"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1381
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:220
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:221
 msgid "Book event"
 msgstr ""
 
@@ -4755,18 +4758,18 @@ msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1386
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1476
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:179
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:180
 msgid "Service Selection"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1387
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:180
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:181
 #, fuzzy
 msgid "Employee Selection"
 msgstr "Munkatárs e-mailcíme"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1388
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:181
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:182
 #, fuzzy
 msgid "Location Selection"
 msgstr "Helyszín leírása"
@@ -4781,19 +4784,19 @@ msgid "Bringing Anyone With You"
 msgstr "Hoz magával valakit?"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1395
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:204
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:242
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:205
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:243
 msgid "Show more"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1396
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:205
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:241
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:206
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:242
 msgid "Show less"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1398
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:186
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:187
 #, fuzzy
 msgid "Date & Time"
 msgstr "Esemény végének dátuma és időpontja"
@@ -4804,25 +4807,25 @@ msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1400
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1603
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:187
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:230
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:188
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:231
 msgid "Your Information"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1401
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:188
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:189
 #, fuzzy
 msgid "Enter first name"
 msgstr "Kérjük adja meg a keresztnevet"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1403
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:189
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:190
 #, fuzzy
 msgid "Enter last name"
 msgstr "Kérjük adja meg a vezetéknevet"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1405
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:190
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:191
 #, fuzzy
 msgid "Enter email"
 msgstr "Kérem adja meg az e-mailcímet"
@@ -4832,7 +4835,7 @@ msgid "Please enter valid email"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1407
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:191
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:192
 msgid "Enter phone"
 msgstr ""
 
@@ -4842,7 +4845,7 @@ msgid "Please enter phone"
 msgstr "Kérjük adjon meg telefonszámot"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1411
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:175
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:176
 msgid "Summary"
 msgstr ""
 
@@ -4851,7 +4854,7 @@ msgid "Service Subtotal"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1414
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:195
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:196
 #, fuzzy
 msgid "people"
 msgstr "Az ár a résztvevők számával beszorzásra kerül"
@@ -4862,34 +4865,34 @@ msgid "Total Amount"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1417
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:171
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:172
 msgid "The payment will be done on-site."
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1418
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:197
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:198
 msgid "Appointment ID"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1421
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:177
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:178
 msgid "Your Name"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1422
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:168
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:169
 #, fuzzy
 msgid "Email Address"
 msgstr "Kérem adjon meg egy érvényes e-mail címet"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1423
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:172
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:173
 #, fuzzy
 msgid "Phone Number"
 msgstr "A telefonszámot kötelező mezőként állítsa be"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1425
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:201
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:202
 #, fuzzy
 msgid "Local Time"
 msgstr "Helyi idő:"
@@ -5162,7 +5165,7 @@ msgstr ""
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1590
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1610
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:101
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:228
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:229
 msgid "Congratulations"
 msgstr "Gratulálunk"
 
@@ -5171,7 +5174,7 @@ msgid "Footer"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1499
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:169
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:170
 msgid "Get in Touch"
 msgstr ""
 
@@ -5226,7 +5229,7 @@ msgid "Publish Form"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1522
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:260
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:261
 msgid "View All"
 msgstr "Nézet"
 
@@ -5336,7 +5339,7 @@ msgstr "Szolgáltatás Időtartama"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1559
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1571
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:263
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:264
 msgid "About Service"
 msgstr "Szolgáltatás hozzáadása"
 
@@ -5353,12 +5356,12 @@ msgid "Page Scroll Visibility"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1564
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:261
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:262
 msgid "Search"
 msgstr "Keresés"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1565
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:279
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:280
 msgid "Available"
 msgstr "Rendelkezésre áll"
 
@@ -5367,12 +5370,12 @@ msgid "No results"
 msgstr "eredmények"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1570
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:262
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:263
 msgid "Book Now"
 msgstr "Foglalás"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1572
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:264
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:265
 msgid "View all photos"
 msgstr "Összes helyszín kiválasztása"
 
@@ -5426,13 +5429,13 @@ msgid "Customer Info"
 msgstr "Ügyfél megjegyzés"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1593
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:232
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:233
 #, fuzzy
 msgid "Events Available"
 msgstr "Rendelkezésre áll"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1594
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:233
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:234
 #, fuzzy
 msgid "Event Available"
 msgstr "Rendelkezésre áll"
@@ -5442,7 +5445,7 @@ msgid "Page"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1596
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:234
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:235
 #, fuzzy
 msgid "Search for Events"
 msgstr "Esemény keresése..."
@@ -5452,23 +5455,23 @@ msgid "Begins"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1598
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:235
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:236
 msgid "slot left"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1599
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:236
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:237
 msgid "slots left"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1600
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:237
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:238
 #, fuzzy
 msgid "Learn more"
 msgstr "Továbbiak megtekintése"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1601
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:238
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:239
 #, fuzzy
 msgid "Read more"
 msgstr "Továbbiak megtekintése"
@@ -5478,36 +5481,36 @@ msgid "About"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1608
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:239
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:240
 #, fuzzy
 msgid "Timetable"
 msgstr "Idővonal"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1611
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:231
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:232
 #, fuzzy
 msgid "About Event"
 msgstr "Erről az eseményről"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1612
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:224
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:225
 #, fuzzy
 msgid "Event Starts"
 msgstr "Esemény dátum"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1613
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:225
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:226
 #, fuzzy
 msgid "Event Ends"
 msgstr "Események"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1614
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:226
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:227
 msgid "at"
 msgstr "Dátum"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1615
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:240
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:241
 msgid "How many attendees do you want to book event for?"
 msgstr ""
 
@@ -5582,7 +5585,7 @@ msgid "Event Description"
 msgstr "Esemény leírása"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1634
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:194
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:195
 #, fuzzy
 msgid "person"
 msgstr "Személy"
@@ -5593,12 +5596,12 @@ msgid "Event Employees"
 msgstr "Munkatárs szerkesztése"
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1637
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:206
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:207
 msgid "Learn More"
 msgstr ""
 
 #: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1638
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:208
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:209
 #, fuzzy
 msgid "Service information"
 msgstr "Szolgáltatás Időtartama"
@@ -5616,243 +5619,265 @@ msgstr "Helyszín címe"
 msgid "No results found..."
 msgstr "Nincs találat..."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1651
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1642
+msgid "Card Field"
+msgstr ""
+
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1643
+msgid "Popup Content"
+msgstr ""
+
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1645
+msgid "Layout"
+msgstr ""
+
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1646
+#, fuzzy
+msgid "Search Input Field"
+msgstr "Munkatárs megjegyzés"
+
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1647
+#, fuzzy
+msgid "Category Input Field"
+msgstr "Helyszín megnevezése"
+
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1658
 msgid "Catalog"
 msgstr "Katalógus"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1652
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1659
 msgid "Choose Category"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1653
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1660
 msgid "Choose Service"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1654
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1661
 msgid "Choose Package"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1655
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1662
 msgid "Preselect Booking Parameters"
 msgstr "Foglalási paraméterek előre megadása"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1656
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1663
 #, fuzzy
 msgid "Skip Categories step"
 msgstr "Kategóriák"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1657
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1664
 msgid "Insert Amelia Booking Shortcode"
 msgstr "Írja be az Amelia Booking Shortcode-ot"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1658
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1665
 msgid "Select Catalog View"
 msgstr "Katalógus-nézet kiválasztása"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1659
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1666
 msgid "Select Category"
 msgstr "Kategória kiválasztása"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1660
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1667
 msgid "Select Employee"
 msgstr "Munkatárs kiválasztása"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1661
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1668
 msgid "Select Location"
 msgstr "Helyszín kiválasztása"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1662
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1669
 msgid "Select Package"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1664
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1671
 msgid "Select Event"
 msgstr "Esemény kiválasztása"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1665
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1672
 #, fuzzy
 msgid "Select Events"
 msgstr "Esemény kiválasztása"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1666
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1673
 msgid "Select Tag"
 msgstr "Címke kiválasztása"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1667
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1674
 #, fuzzy
 msgid "Select Tags"
 msgstr "Címke kiválasztása"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1668
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1675
 msgid "Select View"
 msgstr "Nézet kiválasztása"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1670
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1677
 #, fuzzy
 msgid "Show All"
 msgstr "Összes tag kiválasztása"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1671
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1678
 msgid "Load booking form manually"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1672
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1679
 msgid ""
 "Add element (button, link...) ID, that will manually load amelia shortcode "
 "content"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1673
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1680
 msgid "For multiselect: hold CTRL / Command (⌘)."
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1674
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1681
 msgid "Show all categories"
 msgstr "Összes kategória kiválasztása"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1675
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1682
 msgid "Show all employees"
 msgstr "Összes alkalmazott kiválasztása"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1676
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1683
 msgid "Show all locations"
 msgstr "Összes helyszín kiválasztása"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1677
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1684
 msgid "Show all services"
 msgstr "Összes szolgáltatás kiválasztása"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1678
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1685
 msgid "Show all events"
 msgstr "Összes esemény kiválasztása"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1679
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1686
 msgid "Show all packages"
 msgstr "Összes tag kiválasztása"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1680
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1687
 msgid "Show all tags"
 msgstr "Összes tag kiválasztása"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1681
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1688
 msgid "Show catalog of all categories"
 msgstr "Összes kategória katalógusának megjelenítése"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1682
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1689
 msgid "Show specific category"
 msgstr "Specifikus kategória megjelenítése"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1683
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1690
 #, fuzzy
 msgid "Show specific categories"
 msgstr "Specifikus kategória megjelenítése"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1684
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1691
 msgid "Show specific package"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1685
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1692
 #, fuzzy
 msgid "Show specific packages"
 msgstr "Specifikus kategória megjelenítése"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1686
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1693
 msgid "Show event"
 msgstr "Esemény megjelenítése"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1687
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1694
 msgid "Show Type"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1688
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1695
 msgid "List (default)"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1690
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1697
 msgid "Show tag"
 msgstr "Címke megjelenítése"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1691
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1698
 msgid "Show specific service"
 msgstr "Specifikus szolgáltatás megjelenítése"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1692
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1699
 #, fuzzy
 msgid "Show specific services"
 msgstr "Specifikus szolgáltatás megjelenítése"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1693
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1700
 msgid "Trigger type"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1694
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1701
 #, fuzzy
 msgid "Id"
 msgstr "Alfanumerikus küldőazonosító módosítása"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1695
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1702
 msgid "Class"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1696
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1703
 msgid "Trigger by attribute"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1697
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1704
 msgid "Step Booking"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1698
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1705
 msgid "Catalog Booking"
 msgstr "Átlagos foglalásszám"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1699
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1706
 #, fuzzy
 msgid "Events List Booking"
 msgstr "Esemény foglalva"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1700
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1707
 msgid "Show recurring events"
 msgstr "Ismétlődő események megjelenítése"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1701
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1708
 msgid "Show in Amelia Popup"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1703
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1710
 msgid "AM - Booking view"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1704
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1711
 msgid "AM - Step Booking"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1705
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1712
 msgid "AM - Catalog Booking"
 msgstr "Amelia - Katalógus nézet"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1706
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1713
 msgid "AM - Catalog view"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1707
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1714
 msgid "AM - Events view"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1708
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1715
 #, fuzzy
 msgid "AM - Events List Booking"
 msgstr "Amelia - Katalógus nézet"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1709
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1716
 msgid "AM - Events Calendar Booking"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1711
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1718
 msgid "Amelia - Booking view"
 msgstr "Amelia - Foglalás nézet"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1712
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1719
 msgid ""
 "Step-By-Step Booking Wizard gives your customers the option to choose "
 "everything about the booking in a few steps"
@@ -5860,21 +5885,21 @@ msgstr ""
 "A Lépésről Lépésre Foglalási Varázsló lehetővé teszi ügyfeleinek, hogy "
 "minden opciót kiválasszanak a foglalás során, néhány lépésben"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1715
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1722
 msgid "Amelia - Step-By-Step Booking"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1716
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1723
 msgid ""
 "Step-by-Step booking view guides the customers through several steps in "
 "order to make their bookings."
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1719
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1726
 msgid "Amelia - Catalog Booking"
 msgstr "Amelia - Katalógus nézet"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1720
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1727
 msgid ""
 "Front-end Booking Catalog is shortcode when you want to show your service in "
 "a form of a catalog"
@@ -5882,11 +5907,11 @@ msgstr ""
 "A front-end booking catalog egy shortcode, ami szolgáltatásait katalógus "
 "formájában jeleníti meg."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1723
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1730
 msgid "Amelia - Catalog view"
 msgstr "Amelia - Katalógus nézet"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1724
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1731
 msgid ""
 "Front-end Booking Catalog is shortcode when you want to show your service in "
 "a form of a cataloge"
@@ -5894,12 +5919,12 @@ msgstr ""
 "A front-end booking catalog egy shortcode, ami szolgáltatásait katalógus "
 "formájában jeleníti meg."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1727
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1734
 msgid "Amelia - Events"
 msgstr "Amelia - Események"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1728
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1732
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1735
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1739
 msgid ""
 "Event Booking is shortcode that gives your customers the option to book one "
 "of the events that you've created on the back-end in a simple event list "
@@ -5909,27 +5934,27 @@ msgstr ""
 "az Ön által a back-enden létrehozott események közül valamelyikre foglalást "
 "végezzen egy egyszerű lista nézetben."
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1731
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1738
 #, fuzzy
 msgid "Amelia - Events List"
 msgstr "Amelia - Események"
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1735
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1742
 msgid "Amelia - Events Calendar"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1736
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1743
 msgid ""
 "Event Booking is shortcode that gives your customers the option to book one "
 "of the events that you've created on the back-end in a simple event calendar "
 "view."
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1738
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1745
 msgid "You are using a form that will be outdated soon!"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1757
+#: src/Infrastructure/WP/Translations/LiteBackendStrings.php:1764
 msgid "Recurring Appointments"
 msgstr "Függő találkozók"
 
@@ -5973,7 +5998,7 @@ msgid "Maximum bookings reached"
 msgstr "Elérte a maximális kapacitást"
 
 #: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:93
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:222
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:223
 msgid "Capacity:"
 msgstr "Kapacitás:"
 
@@ -6065,48 +6090,48 @@ msgstr ""
 msgid "Select"
 msgstr "Kiválaszt"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:170
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:171
 msgid "Collapse menu"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:173
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:174
 msgid "Pick date & time:"
 msgstr "Válasszon dátumot és időt:"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:174
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:175
 msgid "Please select"
 msgstr "Kérem válasszon"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:176
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:177
 msgid "Total Amount:"
 msgstr ""
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:207
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:208
 #, fuzzy
 msgid "View in Package"
 msgstr "Továbbiak megtekintése"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:221
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:222
 msgid "Book this event"
 msgstr "Ezen esemény foglalása"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:256
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:257
 msgid "Category:"
 msgstr "Kategória:"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:258
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:259
 msgid "Info"
 msgstr "Info"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:259
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:260
 msgid "View More"
 msgstr "Továbbiak megtekintése"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:280
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:281
 msgid "Booking can't be canceled"
 msgstr "A foglalást nem lehet lemondani"
 
-#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:284
+#: src/Infrastructure/WP/Translations/LiteFrontendStrings.php:285
 msgid "Select Customer"
 msgstr "Ügyfél/ügyfelek kiválasztása"
 
@@ -8434,16 +8459,6 @@ msgstr "Ügyfél/ügyfelek kiválasztása"
 
 #~ msgid "Booked Appointments Preview"
 #~ msgstr "Találkozó foglalása"
-
-#, fuzzy
-#~| msgid "Employee Input Field"
-#~ msgid "Search Input Field"
-#~ msgstr "Munkatárs megjegyzés"
-
-#, fuzzy
-#~| msgid "Location Input Field"
-#~ msgid "Category Input Field"
-#~ msgstr "Helyszín megnevezése"
 
 #, fuzzy
 #~| msgid "Employee Input Field"

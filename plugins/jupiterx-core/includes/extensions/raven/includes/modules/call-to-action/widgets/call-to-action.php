@@ -1616,11 +1616,13 @@ class Call_To_Action extends Base_Widget {
 
 		if ( ! empty( $settings['ribbon_title'] ) ) {
 			ob_start();
-			if ( empty( $settings['ribbon_horizontal_position'] ) ) {
+			$allowed_positions = [ 'left', 'right' ];
+			$position          = in_array( $settings['ribbon_horizontal_position'], $allowed_positions, true ) ? $settings['ribbon_horizontal_position'] : '';
+			if ( empty( $position ) ) {
 				echo '<div class="raven-ribbon">';
 			} else {
-				echo '<div class="raven-ribbon raven-ribbon-' . $settings['ribbon_horizontal_position'] . '">';
-				echo '<div class="raven-ribbon-inner">' . $settings['ribbon_title'] . '</div>';
+				echo '<div class="raven-ribbon raven-ribbon-' . esc_attr( $position ) . '">';
+				echo '<div class="raven-ribbon-inner">' . esc_html( $settings['ribbon_title'] ) . '</div>';
 			}
 			echo '</div>';
 
