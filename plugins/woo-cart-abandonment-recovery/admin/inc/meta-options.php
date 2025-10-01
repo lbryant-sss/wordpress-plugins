@@ -142,157 +142,6 @@ class Meta_Options {
 				],
 				'priority' => 10,
 			],
-			'webhook-settings'         => [
-				'title'    => __( 'Webhook', 'woo-cart-abandonment-recovery' ),
-				'slug'     => 'webhook-settings',
-				'fields'   => [
-					'wcf-ca-zapier-tracking-status'        => [
-						'type'         => 'toggle',
-						'label'        => __( 'Enable Webhook', 'woo-cart-abandonment-recovery' ),
-						'name'         => 'wcf_ca_zapier_tracking_status',
-						'value'        => wcf_ca()->utils->wcar_get_option( 'wcf_ca_zapier_tracking_status' ),
-						'desc'         => __( 'Allows you to trigger webhook automatically upon cart abandonment and recovery.', 'woo-cart-abandonment-recovery' ),
-						'is_fullwidth' => true,
-					],
-					'wcf-ca-zapier-cart-abandoned-webhook' => [
-						'type'         => 'webhook-url',
-						'label'        => __( 'Webhook URL', 'woo-cart-abandonment-recovery' ),
-						'name'         => 'wcf_ca_zapier_cart_abandoned_webhook',
-						'value'        => wcf_ca()->utils->wcar_get_option( 'wcf_ca_zapier_cart_abandoned_webhook' ),
-						'desc'         => __( 'Add the Webhook URL below.', 'woo-cart-abandonment-recovery' ),
-						'is_fullwidth' => true,
-						'conditions'   => [
-							'fields' => [
-								[
-									'name'     => 'wcf_ca_zapier_tracking_status',
-									'operator' => '==',
-									'value'    => 'on',
-								],
-							],
-						],
-					],
-					'wcf-ca-coupon-code-status'            => [
-						'type'         => 'toggle',
-						'label'        => __( 'Create Coupon Code', 'woo-cart-abandonment-recovery' ),
-						'name'         => 'wcf_ca_coupon_code_status',
-						'value'        => wcf_ca()->utils->wcar_get_option( 'wcf_ca_coupon_code_status' ),
-						'desc'         => __( 'Auto-create the special coupon for the abandoned cart to send over the emails.', 'woo-cart-abandonment-recovery' ),
-						'is_fullwidth' => true,
-						'conditions'   => [
-							'fields' => [
-								[
-									'name'     => 'wcf_ca_zapier_tracking_status',
-									'operator' => '==',
-									'value'    => 'on',
-								],
-							],
-						],
-					],
-					'wcf-ca-discount-type'                 => [
-						'type'         => 'select',
-						'label'        => __( 'Discount Type', 'woo-cart-abandonment-recovery' ),
-						'name'         => 'wcf_ca_discount_type',
-						'value'        => wcf_ca()->utils->wcar_get_option( 'wcf_ca_discount_type' ),
-						'desc'         => __( 'Select the Discount Type.', 'woo-cart-abandonment-recovery' ),
-						'options'      => [
-							[
-								'id'   => 'percent',
-								'name' => __( 'Percentage Discount', 'woo-cart-abandonment-recovery' ),
-							],
-							[
-								'id'   => 'fixed_cart',
-								'name' => __( 'Fixed Cart Discount', 'woo-cart-abandonment-recovery' ),
-							],
-						],
-						'is_fullwidth' => true,
-						'conditions'   => [
-							'fields' => [
-								[
-									'name'     => 'wcf_ca_zapier_tracking_status',
-									'operator' => '==',
-									'value'    => 'on',
-								],
-								[
-									'name'     => 'wcf_ca_coupon_code_status',
-									'operator' => '==',
-									'value'    => 'on',
-								],
-							],
-						],
-					],
-					'wcf-ca-coupon-amount'                 => [
-						'type'         => 'number',
-						'label'        => __( 'Coupon Amount', 'woo-cart-abandonment-recovery' ),
-						'name'         => 'wcf_ca_coupon_amount',
-						'value'        => wcf_ca()->utils->wcar_get_option( 'wcf_ca_coupon_amount' ),
-						'desc'         => __( 'Consider cart abandoned after above entered minutes of item being added to cart and order not placed.', 'woo-cart-abandonment-recovery' ),
-						'is_fullwidth' => true,
-						'conditions'   => [
-							'fields' => [
-								[
-									'name'     => 'wcf_ca_zapier_tracking_status',
-									'operator' => '==',
-									'value'    => 'on',
-								],
-								[
-									'name'     => 'wcf_ca_coupon_code_status',
-									'operator' => '==',
-									'value'    => 'on',
-								],
-							],
-						],
-					],
-					'wcf-ca-coupon-expiry'                 => [
-						'type'         => 'time',
-						'label'        => __( 'Coupon Expires After', 'woo-cart-abandonment-recovery' ),
-						'fields'       => [
-							'wcf_ca_coupon_expiry'      => [
-								'type'         => 'number',
-								'label'        => '',
-								'default_unit' => 30,
-								'value'        => wcf_ca()->utils->wcar_get_option( 'wcf_ca_coupon_expiry' ),
-								'name'         => 'wcf_ca_coupon_expiry',
-								'autoSave'     => true,
-							],
-							'wcf_ca_coupon_expiry_unit' => [
-								'type'         => 'select',
-								'label'        => '',
-								'name'         => 'wcf_ca_coupon_expiry_unit',
-								'value'        => wcf_ca()->utils->wcar_get_option( 'wcf_ca_coupon_expiry_unit' ),
-								'default_unit' => 'minute',
-								'autoSave'     => true,
-								'options'      => [
-									[
-										'id'   => 'hours',
-										'name' => __( 'Hour(s)', 'woo-cart-abandonment-recovery' ),
-									],
-									[
-										'id'   => 'days',
-										'name' => __( 'Days(s)', 'woo-cart-abandonment-recovery' ),
-									],
-								],
-							],
-						],
-						'desc'         => __( 'Set the expiry time for the coupon.', 'woo-cart-abandonment-recovery' ),
-						'is_fullwidth' => true,
-						'conditions'   => [
-							'fields' => [
-								[
-									'name'     => 'wcf_ca_zapier_tracking_status',
-									'operator' => '==',
-									'value'    => 'on',
-								],
-								[
-									'name'     => 'wcf_ca_coupon_code_status',
-									'operator' => '==',
-									'value'    => 'on',
-								],
-							],
-						],
-					],
-				],
-				'priority' => 10,
-			],
 			'coupon-settings'          => [
 				'title'    => __( 'Coupon', 'woo-cart-abandonment-recovery' ),
 				'slug'     => 'coupon-settings',
@@ -593,7 +442,7 @@ class Meta_Options {
 									],
 									[
 										'id'   => 'days',
-										'name' => __( 'Days(s)', 'woo-cart-abandonment-recovery' ),
+										'name' => __( 'Day(s)', 'woo-cart-abandonment-recovery' ),
 									],
 								],
 							],
@@ -673,6 +522,7 @@ class Meta_Options {
 				'name'         => 'is_activated',
 				'desc'         => '',
 				'is_fullwidth' => true,
+				'priority'     => 10,
 			],
 			'template_name'             => [
 				'type'         => 'text',
@@ -680,6 +530,7 @@ class Meta_Options {
 				'name'         => 'template_name',
 				'desc'         => '',
 				'is_fullwidth' => true,
+				'priority'     => 20,
 			],
 			'email_subject'             => [
 				'type'         => 'subject_field',
@@ -713,6 +564,7 @@ class Meta_Options {
 					],
 				],
 				'is_fullwidth' => true,
+				'priority'     => 30,
 			],
 			'email_body'                => [
 				'type'         => 'richtext',
@@ -721,6 +573,7 @@ class Meta_Options {
 				'name'         => 'email_body',
 				'desc'         => __( 'Enter the email body.', 'woo-cart-abandonment-recovery' ),
 				'is_fullwidth' => true,
+				'priority'     => 40,
 			],
 			'email_send_time_frequency' => [
 				'type'         => 'time',
@@ -730,6 +583,7 @@ class Meta_Options {
 						'type'         => 'number',
 						'label'        => '',
 						'default_unit' => 30,
+						'min'          => 1,
 						'name'         => 'email_frequency',
 					],
 					'email_send_frequency' => [
@@ -755,6 +609,7 @@ class Meta_Options {
 				],
 				'desc'         => __( 'Time after cart is abandoned to send this email.', 'woo-cart-abandonment-recovery' ),
 				'is_fullwidth' => true,
+				'priority'     => 50,
 			],
 			'use_woo_email_style'       => [
 				'type'         => 'toggle',
@@ -763,6 +618,7 @@ class Meta_Options {
 				'desc'         => __( 'Email will be sent in WooCommerce email format.', 'woo-cart-abandonment-recovery' ),
 				'is_fullwidth' => true,
 				'group'        => 'woo_style',
+				'priority'     => 60,
 			],
 			'send_test_email'           => [
 				'type'         => 'test_email',
@@ -770,6 +626,7 @@ class Meta_Options {
 				'name'         => 'send_test_email',
 				'desc'         => '',
 				'is_fullwidth' => true,
+				'priority'     => 70,
 			],
 			'override_global_coupon'    => [
 				'type'         => 'toggle',
@@ -778,6 +635,7 @@ class Meta_Options {
 				'desc'         => __( 'Auto-create a special coupon for the abandoned cart.', 'woo-cart-abandonment-recovery' ),
 				'is_fullwidth' => true,
 				'group'        => 'coupon',
+				'priority'     => 80,
 			],
 			'discount_type'             => [
 				'type'         => 'select',
@@ -804,6 +662,7 @@ class Meta_Options {
 						],
 					],
 				],
+				'priority'     => 90,
 			],
 			'coupon_amount'             => [
 				'type'         => 'number',
@@ -820,6 +679,7 @@ class Meta_Options {
 						],
 					],
 				],
+				'priority'     => 100,
 			],
 			'coupon_expiry'             => [
 				'type'         => 'time',
@@ -843,7 +703,7 @@ class Meta_Options {
 							],
 							[
 								'id'   => 'days',
-								'name' => __( 'Days(s)', 'woo-cart-abandonment-recovery' ),
+								'name' => __( 'Day(s)', 'woo-cart-abandonment-recovery' ),
 							],
 						],
 					],
@@ -859,6 +719,7 @@ class Meta_Options {
 					],
 				],
 				'group'        => 'coupon',
+				'priority'     => 110,
 			],
 			'free_shipping_coupon'      => [
 				'type'         => 'toggle',
@@ -875,6 +736,7 @@ class Meta_Options {
 						],
 					],
 				],
+				'priority'     => 120,
 			],
 			'individual_use_only'       => [
 				'type'         => 'toggle',
@@ -892,6 +754,7 @@ class Meta_Options {
 					],
 				],
 				'group'        => 'coupon',
+				'priority'     => 130,
 			],
 			'auto_coupon'               => [
 				'type'         => 'toggle',
@@ -908,8 +771,55 @@ class Meta_Options {
 						],
 					],
 				],
+				'priority'     => 140,
 			],
 		];
-		return apply_filters( 'wcar_admin_email_template_fields', $fields );
+
+		$fields = array_merge( $fields, self::get_pro_email_template_fields() );
+
+		$fields = apply_filters( 'wcar_admin_email_template_fields', $fields );
+
+		return $fields;
+	}
+
+	/**
+	 * Get email template pro fields.
+	 */
+	public static function get_pro_email_template_fields() {
+		if ( _is_wcar_pro_license_activated() ) {
+			return [];
+		}
+		return [
+			'exclude_product_ids'      => [
+				'type'                => 'product-search',
+				'label'               => __( 'Exclude Products', 'woo-cart-abandonment-recovery-pro' ),
+				'name'                => 'exclude_product_ids',
+				'desc'                => __( 'Select products for which the coupon should not be created.', 'woo-cart-abandonment-recovery-pro' ),
+				'placeholder'         => __( 'Type to search a product', 'woo-cart-abandonment-recovery-pro' ),
+				'conditions'          => [
+					'fields' => [
+						[
+							'name'     => 'override_global_coupon',
+							'operator' => '==',
+							'value'    => true,
+						],
+					],
+				],
+				'is_pro'              => true,
+				'pro_upgrade_message' => 'Exclude Products gives you flexibility by keeping certain products out of coupon offers.',
+				'priority'            => 150,
+			],
+			'enable_email_rule_engine' => [
+				'type'                => 'toggle',
+				'label'               => __( 'Dynamic Conditions', 'woo-cart-abandonment-recovery-pro' ),
+				'name'                => 'enable_email_rule_engine',
+				'desc'                => __( 'Set conditions to automatically control when this email is sent.', 'woo-cart-abandonment-recovery-pro' ),
+				'is_fullwidth'        => true,
+				'group'               => 'rule_engine',
+				'is_pro'              => true,
+				'pro_upgrade_message' => 'Dynamic Conditions let you control exactly when emails are sent for smarter recovery.',
+				'priority'            => 51,
+			],
+		];
 	}
 }

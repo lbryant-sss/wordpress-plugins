@@ -4,7 +4,7 @@ Tags: backup, restore, database backup, cloud backup, wordpress backup, migratio
 Requires at least: 4.7
 Tested up to: 6.8
 Requires PHP: 5.5
-Stable tag: 1.4.9
+Stable tag: 1.5.0
 License: LGPL v2.1
 License URI: http://www.gnu.org/licenses/lgpl-2.1.html
 
@@ -84,6 +84,10 @@ Go To your WordPress install -> Plugins -> Add New Button -> In Search Box searc
 7. **Backup Process** easy to understand backup progress.
 
 == Changelog ==
+
+= 1.5.0 (30th September 2025) =
+* [Bug-Fix Pro] Custom cron key was getting updated on every update which was breaking Auto Backups for the users who were using Custom cron, this has been fixed.
+* [Bug-Fix] There was an issue with restore from custom locations, this has been fixed.
 
 = 1.4.9 (17th September 2025) =
 * [Improvement Pro] Now you can use any S3 Compatible storage with Backuply.

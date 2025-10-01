@@ -1,5 +1,9 @@
 import { Table, Button, Title, Loader, Badge } from '@bsf/force-ui';
-import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
+import AppTooltip from '@Components/common/AppTooltip';
+import {
+	ExclamationTriangleIcon,
+	ExclamationCircleIcon,
+} from '@heroicons/react/24/outline';
 import { __ } from '@wordpress/i18n';
 
 import SectionWrapper from '@Components/common/SectionWrapper';
@@ -18,6 +22,10 @@ const EmailDetails = ( {
 				label: __( 'Not Sent', 'woo-cart-abandonment-recovery' ),
 				variant: 'red',
 			},
+			'-2': {
+				label: __( 'Not Sent', 'woo-cart-abandonment-recovery' ),
+				variant: 'red',
+			},
 			0: {
 				label: __( 'Scheduled', 'woo-cart-abandonment-recovery' ),
 				variant: 'yellow',
@@ -27,13 +35,33 @@ const EmailDetails = ( {
 				variant: 'green',
 			},
 		};
+		if ( String( status ) === '-2' ) {
+			return (
+				<AppTooltip
+					content={ __(
+						'Rule Condition Failed',
+						'woo-cart-abandonment-recovery'
+					) }
+					position="top"
+				>
+					<Badge
+						icon={ <ExclamationCircleIcon className="" /> }
+						label={ config[ status ].label }
+						size="sm"
+						type="pill"
+						variant={ config[ status ].variant }
+						className="w-fit cursor-pointer"
+					/>
+				</AppTooltip>
+			);
+		}
 		return (
 			<Badge
 				label={ config[ status ].label }
 				size="sm"
 				type="pill"
 				variant={ config[ status ].variant }
-				className="w-fit"
+				className="w-fit cursor-default"
 			/>
 		);
 	};
@@ -115,7 +143,11 @@ const EmailDetails = ( {
 							<Table.Row key={ index }>
 								<Table.Cell>{ item.template_name }</Table.Cell>
 								<Table.Cell>{ item.email_subject }</Table.Cell>
-								<Table.Cell>{ item.coupon_code }</Table.Cell>
+								<Table.Cell>
+									{ item.coupon_code
+										? item.coupon_code
+										: '-' }
+								</Table.Cell>
 								<Table.Cell>
 									{ emailStatus( item.email_sent ) }
 								</Table.Cell>

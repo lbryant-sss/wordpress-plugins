@@ -145,7 +145,7 @@ class Dashboard extends ApiBase {
 			'product_report'           => [],
 		];
 
-		$response = apply_filters( 'wcar_dashboard_stats_data', $response, $date_range );
+		$response = apply_filters( 'wcar_dashboard_stats_data', $response );
 
 		return rest_ensure_response( $response );
 	}

@@ -4,6 +4,7 @@ import { __ } from '@wordpress/i18n';
 import { useStateValue } from '@Store';
 import useDebounceDispatch from '@Utils/debounceDispatch';
 import FieldWrapper from '@Components/common/FieldWrapper';
+import { useProAccess } from '@Components/pro/useProAccess';
 
 const SelectField = ( {
 	title,
@@ -15,8 +16,12 @@ const SelectField = ( {
 	handleChange,
 	autoSave = true,
 	disableStyle,
+	isPro = false,
+	proUpgradeMessage = '',
 } ) => {
 	const [ state, dispatch ] = useStateValue();
+	const { shouldBlockProFeatures } = useProAccess();
+	const isFeatureBlocked = shouldBlockProFeatures();
 	const settingsData = state.settingsData || {};
 	const settingsValues = settingsData.values || {};
 
@@ -84,6 +89,8 @@ const SelectField = ( {
 			description={ description }
 			type="inline"
 			disableStyle={ disableStyle }
+			isPro={ isPro }
+			proUpgradeMessage={ proUpgradeMessage }
 		>
 			<div>
 				<Select
@@ -91,6 +98,7 @@ const SelectField = ( {
 					size="md"
 					name={ name }
 					value={ selectValue?.name }
+					disabled={ isPro && isFeatureBlocked }
 				>
 					<Select.Button
 						placeholder={

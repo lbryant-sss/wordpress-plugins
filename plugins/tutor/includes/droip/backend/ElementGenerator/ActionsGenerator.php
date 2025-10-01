@@ -175,8 +175,13 @@ trait ActionsGenerator
 						return '';
 					}
 
-					$certificate_url = '';
 					if (tutils()->is_addon_enabled(TUTOR_CERT()->basename)) {
+						$has_course_certificate_template = (new Certificate(true))->has_course_certificate_template($course_id);
+						if (!$has_course_certificate_template) {
+							return "";
+						}
+
+						$certificate_url = '';
 						$certificate_url = (new Certificate(true))->get_certificate($course_id);
 
 						$extra_attributes .= " data-certificate_url='" . $certificate_url . "'";
@@ -290,7 +295,10 @@ trait ActionsGenerator
 					$selling_option = Course::SELLING_OPTION_ALL;
 				}
 				if ($selling_option === Course::SELLING_OPTION_MEMBERSHIP || $selling_option === Course::SELLING_OPTION_ALL) {
-					$entry_box_button_logic->show_membership_btn = true;
+					$active_membership_plans     = $plan_model->get_membership_plans(PlanModel::STATUS_ACTIVE);
+					if (count($active_membership_plans) > 0) {
+						$entry_box_button_logic->show_membership_btn = true;
+					}
 				}
 			}
 

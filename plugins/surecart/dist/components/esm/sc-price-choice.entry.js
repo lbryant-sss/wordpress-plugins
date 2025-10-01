@@ -534,6 +534,7 @@ const entities = {
 	invoice: new schema.Entity('invoice'),
 	current_period: new schema.Entity('current_period'),
 	refund: new schema.Entity('refund'),
+	dispute: new schema.Entity('dispute'),
 	charge: new schema.Entity('charge'),
 	coupon: new schema.Entity('coupon'),
 	promotion: new schema.Entity('promotion'),

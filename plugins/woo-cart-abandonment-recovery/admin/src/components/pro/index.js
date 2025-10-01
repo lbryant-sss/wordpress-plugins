@@ -9,6 +9,3 @@
 // Components being used
 export { default as ProUpgradeCta } from './ProUpgradeCta';
 export { default as ProductReportDummyData } from './ProductReportDummyData';
-
-// Pro Status Functions being used
-export { canAccessProFeatures, shouldBlockProFeatures } from './proStatus';

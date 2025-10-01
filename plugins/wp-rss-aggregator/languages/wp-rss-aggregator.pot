@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-3.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: WP RSS Aggregator 5.0.3\n"
+"Project-Id-Version: WP RSS Aggregator 5.0.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-rss-aggregator\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-09-16T07:58:02+00:00\n"
+"POT-Creation-Date: 2025-09-30T08:09:10+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: wp-rss-aggregator\n"
@@ -100,38 +100,38 @@ msgstr ""
 msgid "Logs"
 msgstr ""
 
-#: core/modules/admin.php:290
+#: core/modules/admin.php:291
 msgid "One-time only manual update required for Aggregator Premium plugin"
 msgstr ""
 
-#: core/modules/admin.php:291
+#: core/modules/admin.php:292
 msgid "You’ve successfully updated the free plugin to v5.0.2."
 msgstr ""
 
-#: core/modules/admin.php:294
+#: core/modules/admin.php:295
 #, php-format
 msgid "However, we detected that you’re still using Aggregator Premium v%1$s. Due to a configuration issue in v%2$s, premium updates are not being detected."
 msgstr ""
 
-#: core/modules/admin.php:299
+#: core/modules/admin.php:300
 msgid "This has been fixed in Premium v5.0.2, but you’ll need to perform a one-time only manual update of the Premium plugin to restore update checks."
 msgstr ""
 
-#: core/modules/admin.php:302
+#: core/modules/admin.php:303
 #, php-format
 msgid "Your settings and data will remain intact. If you have any questions, please <a href=\"%1$s\" target=\"_blank\" rel=\"noopener noreferrer\">contact support</a> for help."
 msgstr ""
 
-#: core/modules/admin.php:309
+#: core/modules/admin.php:310
 msgid "After updating Premium to v5.0.2, premium update checks will resume as normal."
 msgstr ""
 
-#: core/modules/admin.php:344
+#: core/modules/admin.php:345
 #: core/js/dist/admin.js:21
 msgid "Download Premium v5.0.2"
 msgstr ""
 
-#: core/modules/admin.php:347
+#: core/modules/admin.php:348
 #: core/js/dist/admin.js:21
 msgid "Step-by-step instructions"
 msgstr ""
@@ -762,25 +762,30 @@ msgid "Rejected after deletion: %s"
 msgstr ""
 
 #: core/src/Tier.php:16
+#: core/js/dist/admin.js:13
 msgid "Free"
 msgstr ""
 
 #: core/src/Tier.php:18
+#: core/js/dist/admin.js:13
 #: core/js/dist/admin.js:107
 msgid "Basic"
 msgstr ""
 
 #: core/src/Tier.php:20
+#: core/js/dist/admin.js:13
 #: core/js/dist/admin.js:107
 msgid "Plus"
 msgstr ""
 
 #: core/src/Tier.php:22
+#: core/js/dist/admin.js:13
 #: core/js/dist/admin.js:107
 msgid "Pro"
 msgstr ""
 
 #: core/src/Tier.php:24
+#: core/js/dist/admin.js:13
 #: core/js/dist/admin.js:107
 msgid "Elite"
 msgstr ""
@@ -904,6 +909,15 @@ msgstr ""
 msgid "One-time only manual update required for Premium plugin"
 msgstr ""
 
+#: core/js/dist/admin.js:21
+#: core/js/dist/admin.js:37
+msgid "Close notice"
+msgstr ""
+
+#: core/js/dist/admin.js:21
+msgid "<strong>Plugin Version Mismatch.</strong> Your free and premium Aggregator plugins are running different versions, so Premium features are temporarily paused. <updateLink>Please update</updateLink> both plugins to the same version to restore full compatibility. <learnMoreLink>Learn more</learnMoreLink>"
+msgstr ""
+
 #: core/js/dist/admin.js:23
 #: core/js/dist/admin.js:37
 msgid "Premium"
@@ -923,6 +937,13 @@ msgstr ""
 
 #: core/js/dist/admin.js:23
 msgid "Excerpts"
+msgstr ""
+
+#: core/js/dist/admin.js:23
+#: core/js/dist/admin.js:37
+#: core/js/dist/admin.js:77
+#: core/js/dist/admin.js:107
+msgid "New display"
 msgstr ""
 
 #: core/js/dist/admin.js:23
@@ -1701,12 +1722,6 @@ msgid "Learn how to make the most of your Folders."
 msgstr ""
 
 #: core/js/dist/admin.js:37
-#: core/js/dist/admin.js:77
-#: core/js/dist/admin.js:107
-msgid "New display"
-msgstr ""
-
-#: core/js/dist/admin.js:37
 msgid "Delete folder?"
 msgid_plural "Delete %d folders?"
 msgstr[0] ""
@@ -2168,6 +2183,18 @@ msgid "Author"
 msgstr ""
 
 #: core/js/dist/admin.js:37
+msgid "New source"
+msgstr ""
+
+#: core/js/dist/admin.js:37
+msgid "Latest imported posts"
+msgstr ""
+
+#: core/js/dist/admin.js:37
+msgid "Settings saved"
+msgstr ""
+
+#: core/js/dist/admin.js:37
 msgid "Pending Approval"
 msgstr ""
 
@@ -2276,6 +2303,7 @@ msgid "Pending Items"
 msgstr ""
 
 #: core/js/dist/admin.js:37
+#: core/js/dist/admin.js:113
 msgid "Rejected Items"
 msgstr ""
 
@@ -4511,6 +4539,80 @@ msgid "Cancel migration and stay on v4"
 msgstr ""
 
 #: core/js/dist/admin.js:113
+msgid "You have unsaved changes. Are you sure you want to leave?"
+msgstr ""
+
+#: core/js/dist/admin.js:113
+msgid "Add a source"
+msgstr ""
+
+#: core/js/dist/admin.js:113
+msgid "Enter a feed URL"
+msgstr ""
+
+#: core/js/dist/admin.js:113
+msgid "Choose a layout"
+msgstr ""
+
+#: core/js/dist/admin.js:113
+msgid "Select a layout for your display"
+msgstr ""
+
+#: core/js/dist/admin.js:113
+msgid "Embed your display"
+msgstr ""
+
+#: core/js/dist/admin.js:113
+msgid "Add the imported items to your site"
+msgstr ""
+
+#: core/js/dist/admin.js:113
+msgid "Set import status"
+msgstr ""
+
+#: core/js/dist/admin.js:113
+msgid "Choose between Draft or Published"
+msgstr ""
+
+#: core/js/dist/admin.js:113
+msgid "Add a link to the source"
+msgstr ""
+
+#: core/js/dist/admin.js:113
+msgid "Provide attribution to the creators"
+msgstr ""
+
+#: core/js/dist/admin.js:113
+msgid "Aggregate or curate"
+msgstr ""
+
+#: core/js/dist/admin.js:113
+msgid "Select your preferred method"
+msgstr ""
+
+#: core/js/dist/admin.js:113
+msgid "The feed source was not created properly."
+msgstr ""
+
+#: core/js/dist/admin.js:113
+msgctxt "Name of the display created during onboarding"
+msgid "My Display"
+msgstr ""
+
+#: core/js/dist/admin.js:113
+msgctxt "Name of page created during onboarding"
+msgid "Aggregator"
+msgstr ""
+
+#: core/js/dist/admin.js:113
+msgid "The page was not created properly."
+msgstr ""
+
+#: core/js/dist/admin.js:113
+msgid "Aggregator Blog"
+msgstr ""
+
+#: core/js/dist/admin.js:113
 msgid "Skip and go to your Hub"
 msgstr ""
 
@@ -4692,6 +4794,10 @@ msgstr ""
 
 #: core/js/dist/admin.js:113
 msgid "Set up integrations"
+msgstr ""
+
+#: core/js/dist/admin.js:113
+msgid "An unknown error occurred."
 msgstr ""
 
 #: core/js/dist/admin.js:113

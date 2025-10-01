@@ -3,6 +3,7 @@ import { Select } from '@bsf/force-ui';
 import { useStateValue } from '@Store';
 import useDebounceDispatch from '@Utils/debounceDispatch';
 import FieldWrapper from '@Components/common/FieldWrapper';
+import { useProAccess } from '@Components/pro/useProAccess';
 
 const MultiSelectField = ( {
 	title,
@@ -11,8 +12,15 @@ const MultiSelectField = ( {
 	value,
 	optionsArray,
 	placeholder,
+	handleChange,
+	autoSave = true,
+	disableStyle,
+	isPro = false,
+	proUpgradeMessage = '',
 } ) => {
 	const [ state, dispatch ] = useStateValue();
+	const { shouldBlockProFeatures } = useProAccess();
+	const isFeatureBlocked = shouldBlockProFeatures();
 	const settingsData = state.settingsData || {};
 	const settingsValues = settingsData.values || {};
 
@@ -40,6 +48,10 @@ const MultiSelectField = ( {
 		setMultiValue( selectedValues );
 		const selectedIds = selectedValues.map( ( option ) => option.id );
 		// Update global state immediately
+		if ( handleChange && ! autoSave ) {
+			handleChange( name, selectedIds );
+			return;
+		}
 		dispatch( {
 			type: 'UPDATE_SETTINGS_DATA',
 			payload: {
@@ -53,13 +65,21 @@ const MultiSelectField = ( {
 	}
 
 	return (
-		<FieldWrapper title={ title } description={ description } type="block">
+		<FieldWrapper
+			title={ title }
+			description={ description }
+			disableStyle={ disableStyle }
+			type="block"
+			isPro={ isPro }
+			proUpgradeMessage={ proUpgradeMessage }
+		>
 			<Select
 				multiple
 				onChange={ handleOnChange }
 				size="md"
 				name={ name }
 				value={ multiValue }
+				disabled={ isPro && isFeatureBlocked }
 			>
 				<Select.Button
 					placeholder={ placeholder }

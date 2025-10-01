@@ -37,7 +37,10 @@ const FollowUp = () => {
 	const [ currentPage, setCurrentPage ] = useState( 1 );
 	const [ itemsPerPage, setItemsPerPage ] = useState( 20 );
 	const [ searchText, setSearchText ] = useState( '' );
-	const [ selectedOption, setSelectedOption ] = useState( 'All' );
+	const [ selectedOption, setSelectedOption ] = useState( {
+		id: 'all',
+		title: __( 'All', 'woo-cart-abandonment-recovery' ),
+	} );
 	const [ selectedRange, setSelectedRange ] = useState( {
 		from: null,
 		to: null,
@@ -111,20 +114,20 @@ const FollowUp = () => {
 
 	const filterOptions = [
 		{
-			id: 1,
-			title: 'All',
+			id: 'all',
+			title: __( 'All', 'woo-cart-abandonment-recovery' ),
 		},
 		{
-			id: 2,
-			title: 'Abandoned Orders',
+			id: 'abandoned_orders',
+			title: __( 'Abandoned Orders', 'woo-cart-abandonment-recovery' ),
 		},
 		{
-			id: 3,
-			title: 'Recovered Orders',
+			id: 'recovered_orders',
+			title: __( 'Recovered Orders', 'woo-cart-abandonment-recovery' ),
 		},
 		{
-			id: 4,
-			title: 'Lost Orders',
+			id: 'lost_orders',
+			title: __( 'Lost Orders', 'woo-cart-abandonment-recovery' ),
 		},
 	];
 
@@ -138,15 +141,15 @@ const FollowUp = () => {
 
 		// Status filter
 		let statusMatch = true;
-		if ( selectedOption !== 'All' ) {
-			switch ( selectedOption ) {
-				case 'Abandoned Orders':
+		if ( selectedOption?.id !== 'all' ) {
+			switch ( selectedOption.id ) {
+				case 'abandoned_orders':
 					statusMatch = item.orderStatus === 'Abandoned';
 					break;
-				case 'Recovered Orders':
+				case 'recovered_orders':
 					statusMatch = item.orderStatus === 'Successful';
 					break;
-				case 'Lost Orders':
+				case 'lost_orders':
 					statusMatch = item.orderStatus === 'Failed';
 					break;
 				default:
@@ -186,12 +189,15 @@ const FollowUp = () => {
 
 	const filtersApplied =
 		searchText !== '' ||
-		selectedOption !== 'All' ||
+		selectedOption?.id !== 'all' ||
 		selectedRange.from ||
 		selectedRange.to;
 
 	const handleClearFilters = () => {
-		setSelectedOption( 'All' );
+		setSelectedOption( {
+			id: 'all',
+			title: __( 'All', 'woo-cart-abandonment-recovery' ),
+		} );
 		setSearchText( '' );
 		setSelectedRange( {
 			from: undefined,
@@ -425,7 +431,10 @@ const FollowUp = () => {
 						<Title
 							size="sm"
 							tag="h1"
-							title="Follow Up Reports"
+							title={ __(
+								'Follow Up Reports',
+								'woo-cart-abandonment-recovery'
+							) }
 							className="[&_h2]:text-gray-900"
 						/>
 						{ ! isLoading && selected.length > 0 && (
@@ -440,7 +449,13 @@ const FollowUp = () => {
 									onClick={ handleCancelSelect }
 								/>
 								<span className="text-sm font-normal text-gray-500">
-									{ selected.length } Selected
+									{ sprintf(
+										__(
+											'%d Selected',
+											'woo-cart-abandonment-recovery'
+										),
+										selected.length
+									) }
 								</span>
 								<Button
 									className="py-2 px-4 bg-red-50 text-red-600 outline-red-600 hover:bg-red-50 hover:outline-red-600"
@@ -465,9 +480,15 @@ const FollowUp = () => {
 								icon={ <XMarkIcon className="h-4 w-4" /> }
 								onClick={ handleClearFilters }
 								className="text-red-500 no-underline whitespace-nowrap focus:ring-0 [box-shadow:none] focus:[box-shadow:none] hover:no-underline hover:text-red-500"
-								aria-label="Clear Filters"
+								aria-label={ __(
+									'Clear Filters',
+									'woo-cart-abandonment-recovery'
+								) }
 							>
-								Clear Filters
+								{ __(
+									'Clear Filters',
+									'woo-cart-abandonment-recovery'
+								) }
 							</Button>
 						) }
 
@@ -478,7 +499,10 @@ const FollowUp = () => {
 							}
 							size="sm"
 							type="text"
-							aria-label="Search"
+							aria-label={ __(
+								'Search',
+								'woo-cart-abandonment-recovery'
+							) }
 							value={ searchText }
 							onChange={ handleSearch }
 							className="w-full lg:w-52"
@@ -487,7 +511,7 @@ const FollowUp = () => {
 						<Select
 							onChange={ handleSelectedOptionChange }
 							size="sm"
-							value={ selectedOption }
+							value={ selectedOption.title }
 							disabled={ isLoading }
 						>
 							<Select.Button className="w-full lg:w-52 text-gray-500" />
@@ -495,7 +519,7 @@ const FollowUp = () => {
 								{ filterOptions.map( ( option ) => (
 									<Select.Option
 										key={ option.id }
-										value={ option.title }
+										value={ option }
 									>
 										{ option.title }
 									</Select.Option>
@@ -548,13 +572,41 @@ const FollowUp = () => {
 								selected.length < filteredData.length
 							}
 						>
-							<Table.HeadCell>User Name</Table.HeadCell>
-							<Table.HeadCell>Email To</Table.HeadCell>
-							<Table.HeadCell>Cart Total</Table.HeadCell>
-							<Table.HeadCell>Order Status</Table.HeadCell>
-							<Table.HeadCell>Date & Time</Table.HeadCell>
 							<Table.HeadCell>
-								<span className="sr-only">Actions</span>
+								{ __(
+									'User Name',
+									'woo-cart-abandonment-recovery'
+								) }
+							</Table.HeadCell>
+							<Table.HeadCell>
+								{ __(
+									'Email To',
+									'woo-cart-abandonment-recovery'
+								) }
+							</Table.HeadCell>
+							<Table.HeadCell>
+								{ __(
+									'Cart Total',
+									'woo-cart-abandonment-recovery'
+								) }
+							</Table.HeadCell>
+							<Table.HeadCell>
+								{ __(
+									'Order Status',
+									'woo-cart-abandonment-recovery'
+								) }
+							</Table.HeadCell>
+							<Table.HeadCell>
+								{ __(
+									'Date & Time',
+									'woo-cart-abandonment-recovery'
+								) }
+							</Table.HeadCell>
+							<Table.HeadCell className="text-right">
+								{ __(
+									'Actions',
+									'woo-cart-abandonment-recovery'
+								) }
 							</Table.HeadCell>
 						</Table.Head>
 						{ currentItems.length > 0 ? (
@@ -637,7 +689,10 @@ const FollowUp = () => {
 												</AppTooltip>
 												{ 0 === item.unsubscribed && (
 													<AppTooltip
-														content="Unsubscribe"
+														content={ __(
+															'Unsubscribe',
+															'woo-cart-abandonment-recovery'
+														) }
 														position="top"
 													>
 														<Button
@@ -647,7 +702,10 @@ const FollowUp = () => {
 															}
 															size="xs"
 															className="text-gray-500 hover:text-flamingo-400"
-															aria-label="Unsubscribe"
+															aria-label={ __(
+																'Unsubscribe',
+																'woo-cart-abandonment-recovery'
+															) }
 															onClick={ () =>
 																handleUnsubscribe(
 																	item.id
@@ -699,7 +757,10 @@ const FollowUp = () => {
 							<div className="flex items-center justify-between w-full">
 								<div className="flex items-center gap-2">
 									<span className="text-sm font-normal leading-5 text-text-secondary whitespace-nowrap">
-										Items per page:
+										{ __(
+											'Items per page:',
+											'woo-cart-abandonment-recovery'
+										) }
 									</span>
 									<Select
 										onChange={ handleItemsPerPageChange }

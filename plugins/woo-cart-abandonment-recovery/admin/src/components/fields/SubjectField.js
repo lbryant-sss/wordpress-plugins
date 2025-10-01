@@ -4,6 +4,7 @@ import useDebounceDispatch from '@Utils/debounceDispatch';
 import { Input, Button, DropdownMenu } from '@bsf/force-ui';
 import { EllipsisVerticalIcon } from '@heroicons/react/24/outline';
 import FieldWrapper from '@Components/common/FieldWrapper';
+import { useProAccess } from '@Components/pro/useProAccess';
 
 const SubjectField = ( {
 	title,
@@ -15,8 +16,12 @@ const SubjectField = ( {
 	options = [],
 	autoSave = true,
 	error,
+	isPro = false,
+	proUpgradeMessage,
 } ) => {
 	const [ state, dispatch ] = useStateValue();
+	const { shouldBlockProFeatures } = useProAccess();
+	const isFeatureBlocked = shouldBlockProFeatures();
 	const settingsData = state.settingsData || {};
 	const settingsValues = settingsData.values || {};
 
@@ -86,7 +91,13 @@ const SubjectField = ( {
 	};
 
 	return (
-		<FieldWrapper title={ title } description={ description } type="block">
+		<FieldWrapper
+			title={ title }
+			description={ description }
+			type="block"
+			isPro={ isPro }
+			proUpgradeMessage={ proUpgradeMessage }
+		>
 			<div className="flex gap-2">
 				<div className="grow">
 					<Input
@@ -99,6 +110,7 @@ const SubjectField = ( {
 						ref={ inputRef }
 						value={ textValue }
 						onChange={ handleOnChange }
+						disabled={ isPro && isFeatureBlocked }
 					/>
 					{ error && (
 						<p className="text-red-500 text-sm mt-1">{ error }</p>

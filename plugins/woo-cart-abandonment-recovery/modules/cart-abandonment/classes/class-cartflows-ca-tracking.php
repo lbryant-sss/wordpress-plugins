@@ -244,6 +244,8 @@ class Cartflows_Ca_Tracking {
 					[ 'session_id' => $session_id ]
 				); // db call ok; no cache ok.
 
+				do_action( 'wcar_after_unsubscribe_cart_abandonment_emails', $token_data );
+
 				$unsubscribe_notice = apply_filters(
 					'woo_ca_recovery_email_unsubscribe_notice',
 					__( 'You have successfully unsubscribed from our email list.', 'woo-cart-abandonment-recovery' )
@@ -339,6 +341,7 @@ class Cartflows_Ca_Tracking {
 				// Update the Cart Contents. This will be useful when there are product addons fields added in the cart data.
 				$woocommerce->cart->set_cart_contents( $cart_content );
 
+				do_action( 'wcar_after_restore_cart_abandonment_data', $token_data );
 			}
 		}
 	}
@@ -476,10 +479,20 @@ class Cartflows_Ca_Tracking {
 					$coupon_expiry_unit   = get_option( 'wcf_ca_coupon_expiry_unit' );
 					$coupon_expiry_date   = $coupon_expiry_date ? strtotime( $wp_current_datetime . ' +' . $coupon_expiry_date . ' ' . $coupon_expiry_unit ) : '';
 					$free_shipping_coupon = get_option( 'wcf_ca_free_shipping_coupon' );
-					$free_shipping        = isset( $free_shipping_coupon ) && ( $free_shipping_coupon->meta_value ) ? 'yes' : 'no';
+					
+					if ( is_object( $free_shipping_coupon ) && isset( $free_shipping_coupon->meta_value ) ) {
+						$free_shipping = $free_shipping_coupon->meta_value ? 'yes' : 'no';
+					} else {
+						$free_shipping = $free_shipping_coupon ? 'yes' : 'no';
+					}
 
 					$individual_use_only = get_option( 'wcf_ca_individual_use_only' );
-					$individual_use      = isset( $individual_use_only ) && ( $individual_use_only->meta_value ) ? 'yes' : 'no';
+
+					if ( is_object( $individual_use_only ) && isset( $individual_use_only->meta_value ) ) {
+						$individual_use = $individual_use_only->meta_value ? 'yes' : 'no';
+					} else {
+						$individual_use = $individual_use_only ? 'yes' : 'no';
+					}
 
 					$coupon_code = $email_instance->generate_coupon_code( $discount_type, $amount, $coupon_expiry_date, $free_shipping, $individual_use );
 				}
@@ -504,6 +517,7 @@ class Cartflows_Ca_Tracking {
 		 * Send scheduled emails.
 		 */
 		$this->send_emails_to_callback();
+		do_action( 'wcf_ca_send_notices' );
 
 		// Update order status to lost after campaign complete.
 		// Can't use placeholders for table/column names, it will be wrapped by a single quote (') instead of a backquote (`).

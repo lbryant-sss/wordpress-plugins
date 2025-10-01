@@ -137,6 +137,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 								$icon       = '<span class="dashicons dashicons-dismiss wp-ui-text-highlight" ></span>';
 								$title_text = esc_html__( 'The email has been unscheduled due to the complete order and won\'t be sent further.', 'woo-cart-abandonment-recovery' );
 								break;
+							case -2:
+								$icon       = '<span class="dashicons dashicons-warning" style="color: #d63638;"></span>';
+								$title_text = esc_html__( 'Email not sent - Rule conditions not satisfied.', 'woo-cart-abandonment-recovery' );
+								break;
 						}
 
 						$scheduled_time = gmdate( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), strtotime( $scheduled_email->scheduled_time ) );

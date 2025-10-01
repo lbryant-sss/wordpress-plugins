@@ -11,6 +11,7 @@
 import FieldWrapper from '@Components/common/FieldWrapper';
 import { Badge, SearchBox } from '@bsf/force-ui';
 import { useEffect, useState } from 'react';
+import { useProAccess } from '@Components/pro/useProAccess';
 
 const ProductSearchField = ( {
 	title,
@@ -18,8 +19,12 @@ const ProductSearchField = ( {
 	name,
 	value,
 	handleChange,
-	disabled = false,
+	disableStyle = false,
+	isPro = false,
+	proUpgradeMessage = '',
 } ) => {
+	const { shouldBlockProFeatures } = useProAccess();
+	const isFeatureBlocked = shouldBlockProFeatures();
 	const [ selectedProductIDs, setSelectedProductIDs ] = useState( [] );
 	const [ selectedProducts, setSelectedProducts ] = useState( [] );
 	const [ searchTerm, setSearchTerm ] = useState( '' );
@@ -29,11 +34,12 @@ const ProductSearchField = ( {
 
 	// Load selected products on mount or value change
 	useEffect( () => {
-		if ( value ) {
-			const valueIds = value ? value.split( ',' ) : [];
-			setSelectedProductIDs( valueIds );
-			loadSelectedProducts( valueIds );
+		let valueIds = [];
+		if ( value && typeof value === 'string' ) {
+			valueIds = value.split( ',' );
 		}
+		setSelectedProductIDs( valueIds );
+		loadSelectedProducts( valueIds );
 	}, [ value ] );
 
 	useEffect( () => {
@@ -133,75 +139,81 @@ const ProductSearchField = ( {
 
 	return (
 		<FieldWrapper
-			disabled={ disabled }
 			type="block"
 			title={ title }
 			description={ description }
 			name={ name }
+			disableStyle={ disableStyle }
+			isPro={ isPro }
+			proUpgradeMessage={ proUpgradeMessage }
 		>
-			<SearchBox
-				variant="secondary"
-				closeAfterSelect={ false }
-				loading={ loading }
-				setOpen={ setOpen }
-				open={ open }
-				size="md"
-			>
-				<SearchBox.Input
-					className="w-[97%] [&_span]:hidden"
-					onChange={ ( val ) =>
-						setSearchTerm(
-							val && val.target ? val.target.value : val
-						)
-					}
-					value={ searchTerm }
-				/>
-				<SearchBox.Portal id={ `wcar-${ name }` }>
-					<SearchBox.Content className="z-10">
-						<SearchBox.List>
-							{ products ? (
-								products.map( ( product ) => {
-									const isSelected =
-										selectedProductIDs.includes(
-											String( product.id )
-										);
-									return (
-										<SearchBox.Item
-											className={
-												isSelected &&
-												'opacity-50 cursor-not-allowed'
-											}
-											key={ product.id }
-											onClick={ () => {
-												if ( ! isSelected ) {
-													addProduct( product );
+			{ ! ( isPro && isFeatureBlocked ) && (
+				<SearchBox
+					variant="secondary"
+					closeAfterSelect={ false }
+					loading={ loading }
+					setOpen={ setOpen }
+					open={ open }
+					size="md"
+				>
+					<SearchBox.Input
+						className="w-[97%] [&_span]:hidden"
+						onChange={ ( val ) =>
+							setSearchTerm(
+								val && val.target ? val.target.value : val
+							)
+						}
+						value={ searchTerm }
+					/>
+					<SearchBox.Portal id={ `wcar-${ name }` }>
+						<SearchBox.Content className="z-10">
+							<SearchBox.List>
+								{ products ? (
+									products.map( ( product ) => {
+										const isSelected =
+											selectedProductIDs.includes(
+												String( product.id )
+											);
+										return (
+											<SearchBox.Item
+												className={
+													isSelected &&
+													'opacity-50 cursor-not-allowed'
 												}
-											} }
-											icon={
-												product.image && (
-													<img
-														src={ product.image }
-														alt={ product.name }
-														className="w-10 h-10 object-cover rounded"
-													/>
-												)
-											}
-										>
-											{ product.name }
-										</SearchBox.Item>
-									);
-								} )
-							) : (
-								<SearchBox.Empty>
-									{ searchTerm.length < 3
-										? 'Type at least 3 letters to search'
-										: 'No products found' }
-								</SearchBox.Empty>
-							) }
-						</SearchBox.List>
-					</SearchBox.Content>
-				</SearchBox.Portal>
-			</SearchBox>
+												key={ product.id }
+												onClick={ () => {
+													if ( ! isSelected ) {
+														addProduct( product );
+													}
+												} }
+												icon={
+													product.image && (
+														<img
+															src={
+																product.image
+															}
+															alt={ product.name }
+															className="w-10 h-10 object-cover rounded"
+														/>
+													)
+												}
+											>
+												{ product.name }
+											</SearchBox.Item>
+										);
+									} )
+								) : (
+									<SearchBox.Empty>
+										{ searchTerm.length < 3
+											? 'Type at least 3 letters to search'
+											: 'No products found' }
+									</SearchBox.Empty>
+								) }
+							</SearchBox.List>
+						</SearchBox.Content>
+					</SearchBox.Portal>
+				</SearchBox>
+			) }
 
 			{ /* Selected Products */ }
 			{ selectedProducts.length > 0 && (
@@ -226,3 +238,4 @@ const ProductSearchField = ( {
 };
 
 export default ProductSearchField;
+

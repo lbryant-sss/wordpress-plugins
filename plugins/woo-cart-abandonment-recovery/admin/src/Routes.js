@@ -9,8 +9,8 @@ import FollowUp from '@Admin/pages/FollowUp';
 import Product from '@Admin/pages/Product';
 import DetailedReport from '@Admin/pages/DetailedReport';
 import FollowUpEmails from '@Admin/pages/FollowUpEmails';
-// import Integrations from '@Admin/pages/Integrations';
-import Ottokit from '@Admin/components/integrations/Ottokit';
+import Integrations from '@Admin/pages/Integrations';
+// import Ottokit from '@Admin/components/integrations/Ottokit';
 
 const Routes = () => {
 	const urlParams = new URLSearchParams( useLocation().search );
@@ -48,7 +48,7 @@ const Routes = () => {
 		},
 		{
 			path: 'integrations',
-			component: <Ottokit />,
+			component: <Integrations />,
 		},
 	];
 

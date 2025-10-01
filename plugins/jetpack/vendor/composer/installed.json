@@ -1407,17 +1407,17 @@
         },
         {
             "name": "automattic/jetpack-forms",
-            "version": "v6.6.0",
-            "version_normalized": "6.6.0.0",
+            "version": "v6.7.0",
+            "version_normalized": "6.7.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Automattic/jetpack-forms.git",
-                "reference": "b78470971f0951f6070f54aea887c3cd29bfe28a"
+                "reference": "6302aa89511f64c29d8b1eea9b7b473221faa1de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Automattic/jetpack-forms/zipball/b78470971f0951f6070f54aea887c3cd29bfe28a",
-                "reference": "b78470971f0951f6070f54aea887c3cd29bfe28a",
+                "url": "https://api.github.com/repos/Automattic/jetpack-forms/zipball/6302aa89511f64c29d8b1eea9b7b473221faa1de",
+                "reference": "6302aa89511f64c29d8b1eea9b7b473221faa1de",
                 "shasum": ""
             },
             "require": {
@@ -1443,14 +1443,14 @@
             "suggest": {
                 "automattic/jetpack-autoloader": "Allow for better interoperability with other plugins that use this package."
             },
-            "time": "2025-09-29T07:02:19+00:00",
+            "time": "2025-09-30T17:23:07+00:00",
             "type": "jetpack-library",
             "extra": {
                 "autotagger": true,
                 "textdomain": "jetpack-forms",
                 "mirror-repo": "Automattic/jetpack-forms",
                 "branch-alias": {
-                    "dev-trunk": "6.6.x-dev"
+                    "dev-trunk": "6.7.x-dev"
                 },
                 "changelogger": {
                     "link-template": "https://github.com/automattic/jetpack-forms/compare/v${old}...v${new}"
@@ -1471,7 +1471,7 @@
             ],
             "description": "Jetpack Forms",
             "support": {
-                "source": "https://github.com/Automattic/jetpack-forms/tree/v6.6.0"
+                "source": "https://github.com/Automattic/jetpack-forms/tree/v6.7.0"
             },
             "install-path": "../../jetpack_vendor/automattic/jetpack-forms"
         },
@@ -3161,17 +3161,17 @@
         },
         {
             "name": "automattic/woocommerce-analytics",
-            "version": "v0.9.1",
-            "version_normalized": "0.9.1.0",
+            "version": "v0.9.2",
+            "version_normalized": "0.9.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Automattic/woocommerce-analytics.git",
-                "reference": "6cea7d83006895487e7b186dc204840016e9270d"
+                "reference": "9c8b181564b62de05e64d1944aa998ddd86dc434"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Automattic/woocommerce-analytics/zipball/6cea7d83006895487e7b186dc204840016e9270d",
-                "reference": "6cea7d83006895487e7b186dc204840016e9270d",
+                "url": "https://api.github.com/repos/Automattic/woocommerce-analytics/zipball/9c8b181564b62de05e64d1944aa998ddd86dc434",
+                "reference": "9c8b181564b62de05e64d1944aa998ddd86dc434",
                 "shasum": ""
             },
             "require": {
@@ -3189,7 +3189,7 @@
             "suggest": {
                 "automattic/jetpack-autoloader": "Allow for better interoperability with other plugins that use this package."
             },
-            "time": "2025-09-29T07:02:01+00:00",
+            "time": "2025-09-30T17:22:55+00:00",
             "type": "jetpack-library",
             "extra": {
                 "autotagger": true,
@@ -3217,7 +3217,7 @@
             ],
             "description": "Enhanced analytics for WooCommerce users.",
             "support": {
-                "source": "https://github.com/Automattic/woocommerce-analytics/tree/v0.9.1"
+                "source": "https://github.com/Automattic/woocommerce-analytics/tree/v0.9.2"
             },
             "install-path": "../../jetpack_vendor/automattic/woocommerce-analytics"
         },

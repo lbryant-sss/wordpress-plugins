@@ -3,6 +3,7 @@ import { useStateValue } from '@Store';
 import useDebounceDispatch from '@Utils/debounceDispatch';
 import { Input } from '@bsf/force-ui';
 import FieldWrapper from '@Components/common/FieldWrapper';
+import { useProAccess } from '@Components/pro/useProAccess';
 
 const NumberField = ( {
 	title,
@@ -17,8 +18,12 @@ const NumberField = ( {
 	autoSave = true,
 	disableStyle,
 	className = '',
+	isPro = false,
+	proUpgradeMessage = '',
 } ) => {
 	const [ state, dispatch ] = useStateValue();
+	const { shouldBlockProFeatures } = useProAccess();
+	const isFeatureBlocked = shouldBlockProFeatures();
 	const settingsData = state.settingsData || {};
 	const settingsValues = settingsData.values || {};
 
@@ -68,6 +73,8 @@ const NumberField = ( {
 			description={ description }
 			type="inline"
 			disableStyle={ disableStyle }
+			isPro={ isPro }
+			proUpgradeMessage={ proUpgradeMessage }
 		>
 			<div className="flex sm:justify-end items-center gap-2">
 				<Input
@@ -87,6 +94,7 @@ const NumberField = ( {
 					value={ numberValue }
 					onChange={ handleOnChange }
 					min={ min || 0 }
+					disabled={ isPro && isFeatureBlocked }
 				/>
 				{ after && (
 					<span className="text-badge-color-gray p-0.5 text-center text-xs font-medium">

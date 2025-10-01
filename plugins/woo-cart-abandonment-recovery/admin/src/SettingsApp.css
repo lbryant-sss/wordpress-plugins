@@ -86,6 +86,10 @@ a:focus-visible {
 	border-radius: 0;
 }
 
+#wcar-admin-app .recharts-tooltip-wrapper {
+	text-transform: capitalize;
+}
+
 @media ( max-width: 1024px ) {
 	#wcar-admin-app .sidebar::after {
 		width: 225px;

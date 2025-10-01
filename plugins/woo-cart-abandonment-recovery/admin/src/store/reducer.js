@@ -8,6 +8,7 @@ export const initialState = {
 		values: cart_abandonment_admin?.settings || {},
 		fields: cart_abandonment_admin?.settings_fields || {},
 	},
+	licenseStatus: cart_abandonment_admin?.license_status || '',
 	dashboardData: '',
 	isDashboardLoading: false,
 	dashboardError: '',
@@ -81,6 +82,11 @@ export const reducer = ( state = initialState, action ) => {
 			return {
 				...state,
 				productData: action.productData,
+			};
+		case ActionTypes.UPDATE_LICENSE_STATUS:
+			return {
+				...state,
+				licenseStatus: action.payload,
 			};
 		default:
 			return state;

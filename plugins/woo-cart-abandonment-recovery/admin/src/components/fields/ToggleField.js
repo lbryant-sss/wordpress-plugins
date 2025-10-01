@@ -3,6 +3,7 @@ import { Switch } from '@bsf/force-ui';
 import { useStateValue } from '@Store';
 import useDebounceDispatch from '@Utils/debounceDispatch';
 import FieldWrapper from '@Components/common/FieldWrapper';
+import { useProAccess } from '@Components/pro/useProAccess';
 
 /**
  * Normalizes toggle values to handle both old checkbox values ('on'/'off') and new toggle values ('true'/'false')
@@ -39,8 +40,12 @@ const ToggleField = ( {
 	manageState,
 	handleChange,
 	autoSave = true,
+	isPro = false,
+	proUpgradeMessage = '',
 } ) => {
 	const [ state, dispatch ] = useStateValue();
+	const { shouldBlockProFeatures } = useProAccess();
+	const isFeatureBlocked = shouldBlockProFeatures();
 	const settingsData = state.settingsData || {};
 	const settingsValues = settingsData.values || {};
 
@@ -108,6 +113,8 @@ const ToggleField = ( {
 			title={ title }
 			description={ description }
 			tooltip={ tooltip }
+			isPro={ isPro }
+			proUpgradeMessage={ proUpgradeMessage }
 		>
 			<div>
 				<Switch
@@ -131,6 +138,7 @@ const ToggleField = ( {
 					size="md"
 					className="border-none moderncart-toggle-field"
 					role="switch"
+					disabled={ isPro && isFeatureBlocked }
 				/>
 			</div>
 		</FieldWrapper>

@@ -80,7 +80,7 @@ class Cartflows_Ca_Email_Schedule {
 				if ( ! $this->check_if_already_purchased_by_email_product_ids( $email_data, $email_data->cart_contents ) ) {
 					return false;
 				}
-
+				
 				/**
 				 * Filter to determine if email should be sent.
 				 *
@@ -113,10 +113,12 @@ class Cartflows_Ca_Email_Schedule {
 			$subject_email_preview = str_replace( '{{customer.firstname}}', $user_first_name, $subject_email_preview );
 			$subject_email_preview = str_replace( '{{customer.lastname}}', $user_last_name, $subject_email_preview );
 			$subject_email_preview = str_replace( '{{customer.fullname}}', $user_full_name, $subject_email_preview );
-			$body_email_preview    = convert_smilies( $email_data->email_body );
-			$body_email_preview    = str_replace( '{{customer.firstname}}', $user_first_name, $body_email_preview );
-			$body_email_preview    = str_replace( '{{customer.lastname}}', $user_last_name, $body_email_preview );
-			$body_email_preview    = str_replace( '{{customer.fullname}}', $user_full_name, $body_email_preview );
+			
+			$body_email_preview = html_entity_decode( $email_data->email_body, ENT_QUOTES, 'UTF-8' );
+			$body_email_preview = convert_smilies( $body_email_preview );
+			$body_email_preview = str_replace( '{{customer.firstname}}', $user_first_name, $body_email_preview );
+			$body_email_preview = str_replace( '{{customer.lastname}}', $user_last_name, $body_email_preview );
+			$body_email_preview = str_replace( '{{customer.fullname}}', $user_full_name, $body_email_preview );
 
 			$email_instance = Cartflows_Ca_Email_Templates::get_instance();
 			if ( $preview_email ) {
@@ -139,6 +141,9 @@ class Cartflows_Ca_Email_Schedule {
 				'wcf_preview_email' => $preview_email ? true : false,
 			];
 
+			// Filter to modify token data.
+			$token_data = apply_filters( 'wcar_add_token_data', $token_data, $email_data );
+
 			$checkout_url = Cartflows_Ca_Helper::get_instance()->get_checkout_url( $email_data->checkout_id, $token_data );
 
 			$subject_email_preview = str_replace( '{{cart.coupon_code}}', $coupon_code, $subject_email_preview );
@@ -151,6 +156,7 @@ class Cartflows_Ca_Email_Schedule {
 			$body_email_preview    = str_replace( '{{cart.unsubscribe}}', $unsubscribe_element, $body_email_preview );
 			$body_email_preview    = str_replace( 'http://{{cart.checkout_url}}', '{{cart.checkout_url}}', $body_email_preview );
 			$body_email_preview    = str_replace( 'https://{{cart.checkout_url}}', '{{cart.checkout_url}}', $body_email_preview );
+			$body_email_preview    = str_replace( "'{{cart.checkout_url}}'", '{{cart.checkout_url}}', $body_email_preview );
 			$body_email_preview    = str_replace( '{{cart.checkout_url}}', $checkout_url, $body_email_preview );
 			$host                  = wp_parse_url( get_site_url() );
 			$body_email_preview    = str_replace( '{{site.url}}', $host['host'], $body_email_preview );
@@ -566,7 +572,7 @@ class Cartflows_Ca_Email_Schedule {
 	 * @param array $cart_items Cart items array.
 	 * @return bool
 	 */
-	private function cart_contains_out_of_stock_products( $cart_items ) {
+	public function cart_contains_out_of_stock_products( $cart_items ) {
 		if ( empty( $cart_items ) || ! is_array( $cart_items ) ) {
 			return false;
 		}

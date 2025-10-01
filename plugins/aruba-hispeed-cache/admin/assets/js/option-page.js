@@ -137,6 +137,12 @@ console.log(" cancella cache -> "+this.configs.ahsc_ajax_url);
 
 managePurge(){
 
+		if (!jQuery("#ahsc_enable_purge").is(':checked')) {
+			let field = document.querySelectorAll('#automatic-options,.ahsc_cache_warmer');
+			for (let j = 0; j < field.length; j++) {
+				field[j].classList.toggle("hidden");
+			}
+		}
 	jQuery("#ahsc_enable_purge").on('click',function(event){
 		event.preventDefault();
 		//console.log("status: "+jQuery(this).is(':checked'));

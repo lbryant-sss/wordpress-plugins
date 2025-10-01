@@ -261,6 +261,7 @@ function backuply_restore_curl_query(){
 		$info['backup_site_path'] = wp_normalize_path($backup_info['backup_site_path']);
 		$info['sess_key'] = sanitize_text_field($_POST['sess_key']);
 		$info['security'] = sanitize_text_field($_POST['security']);
+		$info['loc_id'] = !empty($backup_info['backup_location']) ? (int) $backup_info['backup_location'] : '';
 
 		if(!empty($info['restore_db'])){
 			$info['dbexist'] = 'softsql.sql';

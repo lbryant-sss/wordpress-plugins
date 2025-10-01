@@ -4,6 +4,7 @@ import useDebounceDispatch from '@Utils/debounceDispatch';
 import { Input, Select } from '@bsf/force-ui';
 import FieldWrapper from '../common/FieldWrapper';
 import RenderFields from '../RenderFields';
+import { useProAccess } from '@Components/pro/useProAccess';
 
 const TimeField = ( {
 	title,
@@ -18,9 +19,13 @@ const TimeField = ( {
 	handleChange,
 	autoSave = true,
 	onSaved,
+	isPro = false,
+	proUpgradeMessage = '',
 } ) => {
 	// All hooks must be called at the top level
 	const [ state, dispatch ] = useStateValue();
+	const { shouldBlockProFeatures } = useProAccess();
+	const isFeatureBlocked = shouldBlockProFeatures();
 	const settingsData = state.settingsData || {};
 	const settingsValues = settingsData.values || {};
 	const initialValue = settingsValues[ name ]?.value ?? value;
@@ -54,6 +59,8 @@ const TimeField = ( {
 				title={ title }
 				description={ description }
 				type="inline"
+				isPro={ isPro }
+				proUpgradeMessage={ proUpgradeMessage }
 			>
 				<div className="flex gap-2 items-center">
 					{ Object.entries( fields ).map(
@@ -121,7 +128,13 @@ const TimeField = ( {
 	}
 
 	return (
-		<FieldWrapper title={ title } description={ description } type="inline">
+		<FieldWrapper
+			title={ title }
+			description={ description }
+			type="inline"
+			isPro={ isPro }
+			proUpgradeMessage={ proUpgradeMessage }
+		>
 			<div className="flex gap-2 items-center">
 				<Input
 					type="number"
@@ -131,12 +144,14 @@ const TimeField = ( {
 					name={ name }
 					value={ inputValue }
 					onChange={ handleValueChange }
+					disabled={ isPro && isFeatureBlocked }
 				/>
 				<Select
 					name={ `${ name }-unit` }
 					value={ selectedUnit.name }
 					onChange={ handleUnitChange }
 					size="md"
+					disabled={ isPro && isFeatureBlocked }
 				>
 					<Select.Button />
 					<Select.Options>

@@ -33,7 +33,6 @@
 			<h2 class="nav-tab-wrapper ahsc-settings-nav">
 				<a class="nav-tab nav-tab-active" data-tab="#general"><?php esc_html_e( 'Cache', 'aruba-hispeed-cache' ); ?></a>
                 <a class="nav-tab " data-tab="#performance"><?php esc_html_e( 'Performance', 'aruba-hispeed-cache' ); ?></a>
-                <!--a class="nav-tab " data-tab="#cdn"><?php esc_html_e( 'CDN', 'aruba-hispeed-cache' ); ?></a-->
 				<?php if (WP_DEBUG  && is_dir(AHSC_CONSTANT['ARUBA_HISPEED_CACHE_BASEPATH']."/Debug")) : ?>
 					<a class="nav-tab" data-tab="#debug"><?php esc_html_e( 'Debug', 'aruba-hispeed-cache' ); ?></a>
 				<?php
@@ -49,31 +48,18 @@
 		</div>
 		<div id="general" class="ahsc-tab ahsc-options-wrapper">
             <div style="padding-top:30px;padding-bottom:30px;">
-			<!--form id="ahsc-settings-form" method="post" action="#" name="ahsc-settings-form" class="clearfix" encoding="multipart/form-data"-->
-				<!--input type="hidden" name="ahs-settings-nonce" value="<?php echo esc_attr( \wp_create_nonce( 'ahs-save-settings-nonce' ) ); ?>" /-->
-				<?php
+		     <?php
 				require AHSC_CONSTANT['ARUBA_HISPEED_CACHE_BASEPATH'] . 'admin' . DIRECTORY_SEPARATOR .'pages'.DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR  . 'partials' . DIRECTORY_SEPARATOR . 'admin-tab-general-new.php'; ?>
-			<!--/form-->
+
             </div>
 		</div>
         <div id="performance" class="ahsc-tab hidden ahsc-options-wrapper">
             <div style="padding-top:30px; padding-bottom:30px;">
-            <!--form id="ahsc-settings-form" method="post" action="#" name="ahsc-settings-form" class="clearfix" encoding="multipart/form-data"-->
-            <!--input type="hidden" name="ahs-settings-nonce" value="<?php echo esc_attr( \wp_create_nonce( 'ahs-save-settings-nonce' ) ); ?>" /-->
-			<?php
+           <?php
 			require AHSC_CONSTANT['ARUBA_HISPEED_CACHE_BASEPATH'] . 'admin' . DIRECTORY_SEPARATOR .'pages'.DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR  . 'partials' . DIRECTORY_SEPARATOR . 'admin-tab-performance.php'; ?>
-            <!--/form-->
             </div>
         </div>
 
-        <!--div id="cdn" class="ahsc-tab hidden ahsc-options-wrapper">
-            <div style="padding-top:30px;padding-bottom:30px;">
-	            <?php
-	            //require AHSC_CONSTANT['ARUBA_HISPEED_CACHE_BASEPATH'] . 'admin' . DIRECTORY_SEPARATOR .'pages'.DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR  . 'partials' . DIRECTORY_SEPARATOR . 'admin-tab-cdn.php';
-                ?>
-
-            </div>
-        </div-->
 		<?php if ( WP_DEBUG && is_dir(AHSC_CONSTANT['ARUBA_HISPEED_CACHE_BASEPATH']."/Debug") ) : ?>
 
 			<div id="debug" class="ahsc-tab hidden">
@@ -89,12 +75,8 @@
 
             <div id="apc" class="ahsc-tab hidden ahsc-options-wrapper">
                 <div style="padding-top:30px; padding-bottom:30px;">
-                    <!--form id="ahsc-settings-form" method="post" action="#" name="ahsc-settings-form" class="clearfix" encoding="multipart/form-data"-->
-                    <!--input type="hidden" name="ahs-settings-nonce" value="<?php echo esc_attr( \wp_create_nonce( 'ahs-save-settings-nonce' ) ); ?>" /-->
-					<?php
-
+                   <?php
 					require AHSC_CONSTANT['ARUBA_HISPEED_CACHE_BASEPATH'] . 'Debug'.DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR  . 'partials' . DIRECTORY_SEPARATOR . 'admin-tab-apc.php'; ?>
-                    <!--/form-->
                 </div>
             </div>
 

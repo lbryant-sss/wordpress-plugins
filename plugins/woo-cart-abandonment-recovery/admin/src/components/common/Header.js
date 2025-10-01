@@ -7,10 +7,13 @@ import React from 'react';
 import WcarLogo from '@Images/wcar-icon.svg';
 import WhatsNew from '@Components/whats-new';
 import KnowledgeBase from '@Components/common/KnowledgeBase';
+import { useStateValue } from '@Store';
 
 const Header = () => {
+	const [ state ] = useStateValue();
 	const urlParams = new URLSearchParams( useLocation().search );
 	const currentPath = urlParams.get( 'path' ) || 'dashboard';
+	const isLicenseActivated = state?.licenseStatus === '1' ? true : false;
 
 	const menus = [
 		{
@@ -54,10 +57,10 @@ const Header = () => {
 							menu.path !== 'reports' ? (
 								<Link
 									key={ menu.path }
-									to={ {
-										location: `${ cart_abandonment_admin.site_url }/wp-admin/admin.php`,
-										search: `?page=woo-cart-abandonment-recovery&path=${ menu.path }`,
-									} }
+									to={
+										cart_abandonment_admin.admin_url +
+										`&path=${ menu.path }`
+									}
 									className={ `px-4 py-2 text-sm inline-flex items-center border-b-2 ${
 										currentPath === menu.path
 											? 'text-gray-900 border-flamingo-400'
@@ -101,13 +104,13 @@ const Header = () => {
 									<DropdownMenu.ContentWrapper className="z-999999">
 										<DropdownMenu.Content>
 											<DropdownMenu.List>
-												<DropdownMenu.Item>
+												<DropdownMenu.Item className="p-0 [&>*:not(svg)]:m-0">
 													<Link
-														to={ {
-															location: `${ cart_abandonment_admin.site_url }/wp-admin/admin.php`,
-															search: `?page=woo-cart-abandonment-recovery&path=follow-up`,
-														} }
-														className={ `text-sm inline-flex items-center text-gray-600 hover:text-gray-900 font-medium box-border no-underline transition-colors duration-200` }
+														to={
+															cart_abandonment_admin.admin_url +
+															'&path=follow-up'
+														}
+														className={ `p-2 w-full text-sm inline-flex items-center text-gray-600 hover:text-gray-900 font-medium box-border no-underline transition-colors duration-200` }
 													>
 														{ __(
 															'Follow Up',
@@ -115,13 +118,13 @@ const Header = () => {
 														) }
 													</Link>
 												</DropdownMenu.Item>
-												<DropdownMenu.Item>
+												<DropdownMenu.Item className="p-0 [&>*:not(svg)]:m-0">
 													<Link
-														to={ {
-															location: `${ cart_abandonment_admin.site_url }/wp-admin/admin.php`,
-															search: `?page=woo-cart-abandonment-recovery&path=product`,
-														} }
-														className={ `text-sm inline-flex items-center text-gray-600 hover:text-gray-900 font-medium box-border no-underline transition-colors duration-200` }
+														to={
+															cart_abandonment_admin.admin_url +
+															'&path=product'
+														}
+														className={ `p-2 text-sm w-full inline-flex items-center text-gray-600 hover:text-gray-900 font-medium box-border no-underline transition-colors duration-200` }
 													>
 														{ __(
 															'Product',
@@ -138,9 +141,27 @@ const Header = () => {
 					</Topbar.Item>
 				</Topbar.Middle>
 				<Topbar.Right>
+					{ cart_abandonment_admin?.is_pro_active && (
+						<Topbar.Item>
+							<Badge
+								label={
+									isLicenseActivated
+										? 'Valid License'
+										: 'Activate License'
+								}
+								size="xs"
+								variant={ isLicenseActivated ? 'green' : 'red' }
+							/>
+						</Topbar.Item>
+					) }
 					<Topbar.Item>
 						<Badge
-							label={ `v${ cart_abandonment_admin?.wcar_current_version }` }
+							label={
+								cart_abandonment_admin?.is_pro_active &&
+								isLicenseActivated
+									? 'Pro'
+									: 'Core'
+							}
 							size="xs"
 							variant="neutral"
 						/>
@@ -166,10 +187,10 @@ const Header = () => {
 											tag="div"
 										>
 											<Link
-												to={ {
-													location: `${ cart_abandonment_admin.site_url }/wp-admin/admin.php`,
-													search: `?page=woo-cart-abandonment-recovery&path=${ menu.path }`,
-												} }
+												to={
+													cart_abandonment_admin.admin_url +
+													`&path=${ menu.path }`
+												}
 												className={ `${
 													currentPath === menu.path
 														? 'text-gray-900'
@@ -183,10 +204,10 @@ const Header = () => {
 										<React.Fragment key={ menu.path }>
 											<HamburgerMenu.Option tag="div">
 												<Link
-													to={ {
-														location: `${ cart_abandonment_admin.site_url }/wp-admin/admin.php`,
-														search: `?page=woo-cart-abandonment-recovery&path=follow-up`,
-													} }
+													to={
+														cart_abandonment_admin.admin_url +
+														'&path=follow-up'
+													}
 													className={ `${
 														[
 															'follow-up',
@@ -207,10 +228,10 @@ const Header = () => {
 											</HamburgerMenu.Option>
 											<HamburgerMenu.Option tag="div">
 												<Link
-													to={ {
-														location: `${ cart_abandonment_admin.site_url }/wp-admin/admin.php`,
-														search: `?page=woo-cart-abandonment-recovery&path=product`,
-													} }
+													to={
+														cart_abandonment_admin.admin_url +
+														'&path=product'
+													}
 													className={ `${
 														[
 															'follow-up',

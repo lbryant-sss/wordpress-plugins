@@ -85,9 +85,12 @@ class Cartflows_Ca_Helper {
 	public function get_acceptable_order_statuses() {
 
 		$excluded_order_statuses = get_option( 'wcf_ca_excludes_orders', [] );
-		$all_statuses            = function_exists( 'wc_get_order_statuses' ) ? str_replace( 'wc-', '', array_keys( wc_get_order_statuses() ) ) : [];
-		$all_statuses            = array_diff( $all_statuses, [ 'refunded', 'checkout-draft', 'cancelled' ] );
-		$acceptable_statuses     = array_values( array_diff( $all_statuses, $excluded_order_statuses ) );
+		if ( ! is_array( $excluded_order_statuses ) ) {
+			$excluded_order_statuses = [];
+		}
+		$all_statuses        = function_exists( 'wc_get_order_statuses' ) ? str_replace( 'wc-', '', array_keys( wc_get_order_statuses() ) ) : [];
+		$all_statuses        = array_diff( $all_statuses, [ 'refunded', 'checkout-draft', 'cancelled' ] );
+		$acceptable_statuses = array_values( array_diff( $all_statuses, $excluded_order_statuses ) );
 		
 		return $acceptable_statuses;
 	}
@@ -379,7 +382,7 @@ class Cartflows_Ca_Helper {
 	 * @param string $custom_url The Another URL if wish to send.
 	 * @return string $url The modified URL.
 	 */
-	public static function get_upgrade_to_pro_url( $page = '', $custom_url = '' ) {
+	public static function get_upgrade_to_pro_url( $page = 'cart-abandonment', $custom_url = '' ) {
 
 		$custom_page = $page ? $page . '/' : '';
 
@@ -395,7 +398,7 @@ class Cartflows_Ca_Helper {
 
 		// Modify the utm_source parameter using the UTM ready link function to include tracking information.
 		if ( class_exists( '\BSF_UTM_Analytics' ) && is_callable( '\BSF_UTM_Analytics::get_utm_ready_link' ) ) {
-			$url = \BSF_UTM_Analytics::get_utm_ready_link( $url, 'cartflows_ca' );
+			$url = \BSF_UTM_Analytics::get_utm_ready_link( $url, 'woo-cart-abandonment-recovery' );
 		}
 
 		return esc_url( $url );
@@ -429,39 +432,10 @@ if ( ! function_exists( '_is_wcar_pro_license_activated' ) ) {
 	 * @return bool True if license is activated, false otherwise.
 	 */
 	function _is_wcar_pro_license_activated() {
-		if ( _is_wcar_pro() && class_exists( 'WCAR_Pro_License' ) ) {
-			$license_instance = WCAR_Pro_License::get_instance();
-			if ( method_exists( $license_instance, 'get_license_status' ) ) {
-				return 'activated' === strtolower( $license_instance->get_license_status() );
-			}
+		if ( _is_wcar_pro() && class_exists( 'WCAR_Pro_Licence' ) ) {
+			return 'activated' === strtolower( WCAR_Pro_Licence::get_instance()->activate_status );
 		}
 		
-		return true; // Default to true for development/testing.
-	}
-}
-
-if ( ! function_exists( 'get_wcar_pro_plugin_status' ) ) {
-	/**
-	 * Get WCAR Pro plugin installation status.
-	 * Similar to CartFlows get_cartflows_pro_plugin_status() function.
-	 *
-	 * @return string Plugin status: 'not-installed', 'inactive', or 'active'
-	 */
-	function get_wcar_pro_plugin_status() {
-		$plugin_path = 'woo-cart-abandonment-recovery-pro/woo-cart-abandonment-recovery-pro.php';
-		
-		if ( ! function_exists( 'get_plugins' ) ) {
-			require_once ABSPATH . 'wp-admin/includes/plugin.php';
-		}
-		
-		$installed_plugins = get_plugins();
-		
-		if ( ! isset( $installed_plugins[ $plugin_path ] ) ) {
-			return 'not-installed';
-		} elseif ( is_plugin_active( $plugin_path ) ) {
-			return 'active';
-		} else {
-			return 'inactive';
-		}
+		return false;
 	}
 }

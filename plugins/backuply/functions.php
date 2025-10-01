@@ -278,11 +278,14 @@ function backuply_timeout_check($is_restore) {
 
 // Create a config file and set it with a key
 function backuply_set_config() {
-	
-	$write['BACKUPLY_KEY'] = backuply_csrf_get_token();
-	// $write['RESTORE_KEY'] = backuply_csrf_get_token();
-	
-	update_option('backuply_config_keys', $write);
+	$cron = get_option('backuply_cron_settings', []);
+
+	if(empty($cron) || empty($cron['backuply_cron_schedule']) || $cron['backuply_cron_schedule'] !== 'custom'){
+		$write['BACKUPLY_KEY'] = backuply_csrf_get_token();
+		// $write['RESTORE_KEY'] = backuply_csrf_get_token();
+
+		update_option('backuply_config_keys', $write);
+	}
 }
 
 function backuply_set_config_file(){

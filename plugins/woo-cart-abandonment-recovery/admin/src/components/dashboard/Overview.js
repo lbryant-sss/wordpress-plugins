@@ -177,7 +177,7 @@ const Overview = ( {
 									<div className="h-3 w-3 bg-amber-400"></div>
 									<span className="text-gray-500 text-sm font-medium">
 										{ __(
-											'Recoverable Revenue',
+											'Recovered Revenue',
 											'woo-cart-abandonment-recovery'
 										) }
 									</span>

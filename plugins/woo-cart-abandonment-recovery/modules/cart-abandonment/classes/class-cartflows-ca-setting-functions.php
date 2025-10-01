@@ -25,7 +25,7 @@ class Cartflows_Ca_Setting_Functions {
 	 */
 	public function __construct() {
 
-		$page = Cartflows_Ca_Helper::get_instance()->sanitize_text_filter( 'page', 'GET' );
+		$page = wcf_ca()->helper->sanitize_text_filter( 'page', 'GET' );
 
 		if ( WCF_CA_PAGE_NAME === $page ) {
 			// Adding filter to add new button to add custom fields.
@@ -74,7 +74,7 @@ class Cartflows_Ca_Setting_Functions {
 	 */
 	public function wcf_filter_mce_plugin( $plugins ) {
 
-		$file_ext = Cartflows_Ca_Helper::get_instance()->get_js_file_ext();
+		$file_ext = wcf_ca()->helper->get_js_file_ext();
 
 		$plugins['cartflows_ac'] = CARTFLOWS_CA_URL . 'admin/assets/' . $file_ext['folder'] . '/admin-mce.' . $file_ext['file_ext'];
 		return $plugins;

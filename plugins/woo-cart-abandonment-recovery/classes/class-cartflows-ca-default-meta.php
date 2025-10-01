@@ -291,7 +291,7 @@ class Cartflows_Ca_Default_Meta {
 			],
 			// TODO: Remove this after new UI is enabled by default.
 			'cartflows_ca_use_new_ui'                     => [
-				'default'  => '',
+				'default'  => false,
 				'sanitize' => 'FILTER_SANITIZE_STRING',
 			],
 		];
@@ -359,30 +359,51 @@ class Cartflows_Ca_Default_Meta {
 		if ( ! $sanitize_method ) {
 			$sanitize_method = 'FILTER_SANITIZE_STRING';
 		}
+		
+		$meta_value = '';
 
 		// Handle different sanitization methods.
 		switch ( $sanitize_method ) {
 			case 'FILTER_SANITIZE_URL':
-				return esc_url_raw( $value );
+				$meta_value = esc_url_raw( $value );
+				break;
 
 			case 'FILTER_SANITIZE_NUMBER_INT':
-				return absint( $value );
+				$meta_value = absint( $value );
+				break;
 
 			case 'FILTER_SANITIZE_FULL_SPECIAL_CHARS':
 				// For email body content - allows HTML but sanitizes it.
 				$sanitized = filter_var( wp_unslash( $value ), FILTER_SANITIZE_FULL_SPECIAL_CHARS );
 				// Decode HTML entities for email body.
-				return html_entity_decode( $sanitized, ENT_COMPAT, 'UTF-8' );
+				$meta_value = html_entity_decode( $sanitized, ENT_COMPAT, 'UTF-8' );
+				break;
 
 			case 'FILTER_SANITIZE_STRING':
-			default:
-				// Handle arrays (like multi-select fields).
 				if ( is_array( $value ) ) {
-					return array_map( 'sanitize_text_field', array_map( 'wp_unslash', $value ) );
+					$meta_value = array_map( 'sanitize_text_field', array_map( 'wp_unslash', $value ) );
+				} else {
+					$meta_value = sanitize_text_field( wp_unslash( $value ) );
 				}
-				// Handle regular strings.
-				return sanitize_text_field( wp_unslash( $value ) );
+
+				break;
+			
+			case 'FILTER_SANITIZE_ARRAY':
+				if ( is_array( $value ) ) {
+					$meta_value = array_map( 'sanitize_text_field', array_map( 'wp_unslash', $value ) );
+				}
+				break;
+
+			default:
+				if ( 'FILTER_DEFAULT' === $sanitize_method ) {
+					$meta_value = sanitize_text_field( wp_unslash( $value ) );
+				} else {
+					$meta_value = apply_filters( 'wcar_sanitize_settings_values', $value, $setting_key, $sanitize_method );
+				}
+				break;
 		}
+
+		return $meta_value;
 	}
 
 	/**

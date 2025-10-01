@@ -11,7 +11,7 @@ import {
 	ExclamationTriangleIcon,
 } from '@heroicons/react/24/outline';
 import { doApiFetch } from '@Store';
-import { shouldBlockProFeatures } from '@Components/pro/proStatus';
+import { useProAccess } from '@Components/pro/useProAccess';
 
 import SectionWrapper from '@Components/common/SectionWrapper';
 import SkeletonLoader from '@Components/common/skeletons/SkeletonLoader';
@@ -35,6 +35,7 @@ const FollowUpEmails = () => {
 	} );
 	const [ isDeleting, setIsDeleting ] = useState( false );
 	const [ dummyMetrics, setDummyMetrics ] = useState( {} );
+	const { shouldBlockProFeatures } = useProAccess();
 	const isFeatureBlocked = shouldBlockProFeatures();
 
 	useEffect( () => {
@@ -631,12 +632,14 @@ const FollowUpEmails = () => {
 											'Sent',
 											'woo-cart-abandonment-recovery'
 										) }
-										<FeatureBadge
-											feature={ __(
-												'PRO',
-												'woo-cart-abandonment-recovery'
-											) }
-										/>
+										{ isFeatureBlocked && (
+											<FeatureBadge
+												feature={ __(
+													'PRO',
+													'woo-cart-abandonment-recovery'
+												) }
+											/>
+										) }
 									</div>
 								</Table.HeadCell>
 								<Table.HeadCell>
@@ -645,12 +648,14 @@ const FollowUpEmails = () => {
 											'Open Rate',
 											'woo-cart-abandonment-recovery'
 										) }
-										<FeatureBadge
-											feature={ __(
-												'PRO',
-												'woo-cart-abandonment-recovery'
-											) }
-										/>
+										{ isFeatureBlocked && (
+											<FeatureBadge
+												feature={ __(
+													'PRO',
+													'woo-cart-abandonment-recovery'
+												) }
+											/>
+										) }
 									</div>
 								</Table.HeadCell>
 								<Table.HeadCell>
@@ -659,12 +664,14 @@ const FollowUpEmails = () => {
 											'Click Rate',
 											'woo-cart-abandonment-recovery'
 										) }
-										<FeatureBadge
-											feature={ __(
-												'PRO',
-												'woo-cart-abandonment-recovery'
-											) }
-										/>
+										{ isFeatureBlocked && (
+											<FeatureBadge
+												feature={ __(
+													'PRO',
+													'woo-cart-abandonment-recovery'
+												) }
+											/>
+										) }
 									</div>
 								</Table.HeadCell>
 								<Table.HeadCell>
@@ -673,12 +680,14 @@ const FollowUpEmails = () => {
 											'Unsubscribed',
 											'woo-cart-abandonment-recovery'
 										) }
-										<FeatureBadge
-											feature={ __(
-												'PRO',
-												'woo-cart-abandonment-recovery'
-											) }
-										/>
+										{ isFeatureBlocked && (
+											<FeatureBadge
+												feature={ __(
+													'PRO',
+													'woo-cart-abandonment-recovery'
+												) }
+											/>
+										) }
 									</div>
 								</Table.HeadCell>
 								<Table.HeadCell>
@@ -687,8 +696,11 @@ const FollowUpEmails = () => {
 										'woo-cart-abandonment-recovery'
 									) }
 								</Table.HeadCell>
-								<Table.HeadCell>
-									<span className="sr-only">Actions</span>
+								<Table.HeadCell className="text-right">
+									{ __(
+										'Actions',
+										'woo-cart-abandonment-recovery'
+									) }
 								</Table.HeadCell>
 							</Table.Head>
 							<Table.Body>

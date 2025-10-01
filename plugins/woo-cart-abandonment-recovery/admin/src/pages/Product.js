@@ -14,6 +14,7 @@ import {
 	MagnifyingGlassIcon,
 	XMarkIcon,
 	ExclamationTriangleIcon,
+	EyeIcon,
 } from '@heroicons/react/24/outline';
 import { __, sprintf } from '@wordpress/i18n';
 
@@ -24,12 +25,8 @@ import { EmptyBlock } from '@Components/common/empty-blocks';
 import ExportToExcel from '@Components/common/ExportToExcel';
 import AppTooltip from '@Components/common/AppTooltip';
 import ConfirmationModal from '@Components/common/ConfirmationModal';
-import {
-	ProUpgradeCta,
-	ProductReportDummyData,
-	canAccessProFeatures,
-	shouldBlockProFeatures,
-} from '@Components/pro';
+import { ProUpgradeCta, ProductReportDummyData } from '@Components/pro';
+import { useProAccess } from '@Components/pro/useProAccess';
 
 const Product = () => {
 	const [ selected, setSelected ] = useState( [] );
@@ -39,7 +36,9 @@ const Product = () => {
 	const [ isLoading, setIsLoading ] = useState( true );
 	const [ data, setData ] = useState( [] );
 	const [ state, dispatch ] = useStateValue();
+	const { canAccessProFeatures, shouldBlockProFeatures } = useProAccess();
 	const storeProductData = state?.productData || null;
+
 	const [ deleteModal, setDeleteModal ] = useState( {
 		isOpen: false,
 		type: null,
@@ -257,6 +256,10 @@ const Product = () => {
 		setSelected( [] );
 	};
 
+	const handleViewClick = ( productLink ) => {
+		window.open( productLink, '_blank' );
+	};
+
 	return (
 		<div className="p-4 md:p-8">
 			<SectionWrapper className="flex flex-col gap-4">
@@ -330,15 +333,15 @@ const Product = () => {
 						<ProUpgradeCta
 							isVisible={ true }
 							highlightText={ __(
-								'Coming Soon',
+								'Unlock Pro Features',
 								'woo-cart-abandonment-recovery'
 							) }
 							mainTitle={ __(
-								'Cart Abandonment Recovery Pro is Coming Soon 🔥',
+								'Cart Abandonment Recovery Pro is Here 🔥',
 								'woo-cart-abandonment-recovery'
 							) }
 							description={ __(
-								"You're already bringing shoppers back with smart recovery emails.  Imagine what you could do with:",
+								"You've seen how emails bring shoppers back. With Pro, you'll unlock advanced tools that recover more carts, boost profits, and grow your store faster.",
 								'woo-cart-abandonment-recovery'
 							) }
 							usps={ [
@@ -355,10 +358,6 @@ const Product = () => {
 									'woo-cart-abandonment-recovery'
 								),
 								__(
-									'A/B Testing',
-									'woo-cart-abandonment-recovery'
-								),
-								__(
 									'Advanced Automations',
 									'woo-cart-abandonment-recovery'
 								),
@@ -368,13 +367,9 @@ const Product = () => {
 								),
 							] }
 							actionBtnUrlArgs={
-								'utm_source=wcar-products-report&utm_medium=free-wcar&utm_campaign=go-pro'
+								'utm_source=wcar-dashboard&utm_medium=free-wcar&utm_campaign=go-wcar-pro'
 							}
 							footerMessage={ '' }
-							actionBtnText={ __(
-								'Get Notified',
-								'woo-cart-abandonment-recovert'
-							) }
 						/>
 					</div>
 				) : data.length === 0 ? (
@@ -402,11 +397,31 @@ const Product = () => {
 								selected.length < filteredData.length
 							}
 						>
-							<Table.HeadCell>Product Name</Table.HeadCell>
-							<Table.HeadCell>Times Abandoned</Table.HeadCell>
-							<Table.HeadCell>Times Recovered</Table.HeadCell>
 							<Table.HeadCell>
-								<span className="sr-only">Actions</span>
+								{ __(
+									'Product Name',
+									'woo-cart-abandonment-recovery'
+								) }
+							</Table.HeadCell>
+							<Table.HeadCell>
+								{ __(
+									'Times Abandoned',
+									'woo-cart-abandonment-recovery'
+								) }
+							</Table.HeadCell>
+							<Table.HeadCell>
+								{ __(
+									'Times Recovered',
+									'woo-cart-abandonment-recovery'
+								) }
+							</Table.HeadCell>
+							<Table.HeadCell className="text-right">
+								<span className="">
+									{ __(
+										'Actions',
+										'woo-cart-abandonment-recovery'
+									) }
+								</span>
 							</Table.HeadCell>
 						</Table.Head>
 
@@ -424,7 +439,22 @@ const Product = () => {
 										}
 									>
 										<Table.Cell>
-											{ item.productName }
+											<a
+												href={ item?.productLink }
+												className="w-fit flex gap-2 items-center cursor-pointer no-underline text-inherit hover:text-flamingo-400 focus-visible:text-flamingo-400"
+												target="_blank"
+												rel="noreferrer"
+											>
+												<img
+													src={ item?.imageUrl }
+													alt=""
+													className="w-12 h-12 object-cover rounded-md border border-solid border-gray-200"
+												/>
+												<span>
+													{ item.productName } (#
+													{ item.id })
+												</span>
+											</a>
 										</Table.Cell>
 										<Table.Cell>
 											{ item.abandoned }
@@ -433,27 +463,60 @@ const Product = () => {
 											{ item.recovered }
 										</Table.Cell>
 										<Table.Cell>
-											<AppTooltip
-												content="Delete"
-												position="top"
-											>
-												<Button
-													variant="ghost"
-													icon={
-														<TrashIcon className="h-6 w-6" />
-													}
-													size="xs"
-													className="text-gray-500 hover:text-red-600"
-													aria-label="Delete"
-													onClick={ () =>
-														setDeleteModal( {
-															isOpen: true,
-															type: 'single',
-															id: item.id,
-														} )
-													}
-												/>
-											</AppTooltip>
+											<div className="flex items-center justify-end gap-2">
+												<AppTooltip
+													content={ __(
+														'View',
+														'woo-cart-abandonment-recovery'
+													) }
+													position="top"
+												>
+													<Button
+														variant="ghost"
+														icon={
+															<EyeIcon className="h-6 w-6" />
+														}
+														size="xs"
+														className="text-gray-500 hover:text-flamingo-400"
+														aria-label={ __(
+															'View',
+															'woo-cart-abandonment-recovery'
+														) }
+														onClick={ () =>
+															handleViewClick(
+																item?.productLink
+															)
+														}
+													/>
+												</AppTooltip>
+												<AppTooltip
+													content={ __(
+														'Delete',
+														'woo-cart-abandonment-recovery'
+													) }
+													position="top"
+												>
+													<Button
+														variant="ghost"
+														icon={
+															<TrashIcon className="h-6 w-6" />
+														}
+														size="xs"
+														className="text-gray-500 hover:text-red-600"
+														aria-label={ __(
+															'Delete',
+															'woo-cart-abandonment-recovery'
+														) }
+														onClick={ () =>
+															setDeleteModal( {
+																isOpen: true,
+																type: 'single',
+																id: item.id,
+															} )
+														}
+													/>
+												</AppTooltip>
+											</div>
 										</Table.Cell>
 									</Table.Row>
 								) ) }
@@ -476,7 +539,10 @@ const Product = () => {
 							<div className="flex items-center justify-between w-full">
 								<div className="flex items-center gap-2">
 									<span className="text-sm font-normal leading-5 text-text-secondary whitespace-nowrap">
-										Items per page:
+										{ __(
+											'Items per page:',
+											'woo-cart-abandonment-recovery'
+										) }
 									</span>
 									<Select
 										onChange={ handleItemsPerPageChange }
@@ -597,3 +663,4 @@ const Product = () => {
 };
 
 export default Product;
+

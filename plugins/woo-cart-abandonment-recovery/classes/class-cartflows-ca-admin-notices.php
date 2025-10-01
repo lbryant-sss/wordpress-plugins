@@ -124,7 +124,7 @@ class Cartflows_Ca_Admin_Notices {
 
 					// Step 1 i.e rating input.
 					'logo'                  => esc_url( CARTFLOWS_CA_URL . 'admin/assets/images/wcar-icon.svg' ),
-					'plugin_name'           => __( 'WooCommerce Cart Abandonment Recovery', 'woo-cart-abandonment-recovery' ),
+					'plugin_name'           => __( 'Cart Abandonment Recovery', 'woo-cart-abandonment-recovery' ),
 					'nps_rating_message'    => __( 'How likely are you to recommend #pluginname to your friends or colleagues?', 'woo-cart-abandonment-recovery' ),
 
 					// Step 2A i.e. positive.
@@ -134,6 +134,9 @@ class Cartflows_Ca_Admin_Notices {
 					// Step 2B i.e. negative.
 					'plugin_rating_title'   => __( 'Thank you for your feedback', 'woo-cart-abandonment-recovery' ),
 					'plugin_rating_content' => __( 'We value your input. How can we improve your experience?', 'woo-cart-abandonment-recovery' ),
+				),
+				'privacy_policy'   => array(
+					'url' => 'https://cartflows.com/privacy-policy/',
 				),
 			)
 		);

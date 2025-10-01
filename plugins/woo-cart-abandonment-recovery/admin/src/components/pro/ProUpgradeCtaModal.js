@@ -11,11 +11,7 @@
 import React from 'react';
 import { Title, Text, Button } from '@bsf/force-ui';
 import ctaBanner from '@Images/cta-banner.svg';
-import {
-	getUpgradeMessage,
-	getUpgradeToProUrl,
-	getActionButtonText,
-} from './proStatus';
+import { useProAccess } from '@Components/pro/useProAccess';
 
 import { CheckIcon, BoltIcon } from '@heroicons/react/24/outline';
 
@@ -28,6 +24,8 @@ import { CheckIcon, BoltIcon } from '@heroicons/react/24/outline';
  * @param {Object} root0.props - Props object containing all component props
  */
 const ProUpgradeCtaModal = ( { props } ) => {
+	const { getUpgradeMessage, getActionButtonText, upgradeActionButton } =
+		useProAccess();
 	// Destructure props from the props object
 	const {
 		highlightText,
@@ -116,13 +114,10 @@ const ProUpgradeCtaModal = ( { props } ) => {
 						size="md"
 						className="px-8 py-3 w-full mt-2.5"
 						onClick={ () => {
-							const finalUrl = getUpgradeToProUrl(
+							upgradeActionButton(
 								actionBtnUrlArgs,
 								actionbtnUrl
 							);
-							if ( finalUrl ) {
-								window.open( finalUrl, '_blank' );
-							}
 						} }
 					>
 						{ actionBtnText

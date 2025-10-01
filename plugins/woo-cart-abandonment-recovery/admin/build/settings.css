@@ -258,6 +258,9 @@
 :is(#wcar-admin-app) .top-4 {
 	top: 1rem;
 }
+:is(#wcar-admin-app) .top-\[0\.3rem\] {
+	top: 0.3rem;
+}
 :is(#wcar-admin-app) .top-full {
 	top: 100%;
 }
@@ -284,6 +287,9 @@
 }
 :is(#wcar-admin-app) .z-\[1\] {
 	z-index: 1;
+}
+:is(#wcar-admin-app) .z-\[9\] {
+	z-index: 9;
 }
 :is(#wcar-admin-app) .z-auto {
 	z-index: auto;
@@ -442,10 +448,6 @@
 	margin-top: 0.5rem;
 	margin-bottom: 0.5rem;
 }
-:is(#wcar-admin-app) .my-3 {
-	margin-top: 0.75rem;
-	margin-bottom: 0.75rem;
-}
 :is(#wcar-admin-app) .my-5 {
 	margin-top: 1.25rem;
 	margin-bottom: 1.25rem;
@@ -471,6 +473,9 @@
 }
 :is(#wcar-admin-app) .mb-4 {
 	margin-bottom: 1rem;
+}
+:is(#wcar-admin-app) .mb-5 {
+	margin-bottom: 1.25rem;
 }
 :is(#wcar-admin-app) .mb-6 {
 	margin-bottom: 1.5rem;
@@ -541,6 +546,9 @@
 :is(#wcar-admin-app) .mt-4 {
 	margin-top: 1rem;
 }
+:is(#wcar-admin-app) .mt-7 {
+	margin-top: 1.75rem;
+}
 :is(#wcar-admin-app) .mt-8 {
 	margin-top: 2rem;
 }
@@ -555,6 +563,9 @@
 }
 :is(#wcar-admin-app) .box-border {
 	box-sizing: border-box;
+}
+:is(#wcar-admin-app) .box-content {
+	box-sizing: content-box;
 }
 :is(#wcar-admin-app) .block {
 	display: block;
@@ -685,6 +696,9 @@
 :is(#wcar-admin-app) .h-80 {
 	height: 20rem;
 }
+:is(#wcar-admin-app) .h-9 {
+	height: 2.25rem;
+}
 :is(#wcar-admin-app) .h-\[52px\] {
 	height: 52px;
 }
@@ -706,6 +720,12 @@
 }
 :is(#wcar-admin-app) .h-screen {
 	height: 100vh;
+}
+:is(#wcar-admin-app) .max-h-0 {
+	max-height: 0px;
+}
+:is(#wcar-admin-app) .max-h-10 {
+	max-height: 2.5rem;
 }
 :is(#wcar-admin-app) .max-h-\[10\.75rem\] {
 	max-height: 10.75rem;
@@ -1477,6 +1497,10 @@
 :is(#wcar-admin-app) .border-none {
 	border-style: none;
 }
+:is(#wcar-admin-app) .\!border-red-300 {
+	--tw-border-opacity: 1 !important;
+	border-color: rgb(252 165 165 / var(--tw-border-opacity, 1)) !important;
+}
 :is(#wcar-admin-app) .border-alert-border-danger {
 	--tw-border-opacity: 1;
 	border-color: rgb(254 202 202 / var(--tw-border-opacity, 1));
@@ -1553,6 +1577,10 @@
 	--tw-border-opacity: 1;
 	border-color: rgb(37 99 235 / var(--tw-border-opacity, 1));
 }
+:is(#wcar-admin-app) .border-flamingo-200 {
+	--tw-border-opacity: 1;
+	border-color: rgb(250 200 174 / var(--tw-border-opacity, 1));
+}
 :is(#wcar-admin-app) .border-flamingo-400 {
 	--tw-border-opacity: 1;
 	border-color: rgb(240 100 52 / var(--tw-border-opacity, 1));
@@ -1583,6 +1611,10 @@
 }
 :is(#wcar-admin-app) .border-transparent {
 	border-color: transparent;
+}
+:is(#wcar-admin-app) .bg-\[\#FDE6D7\] {
+	--tw-bg-opacity: 1;
+	background-color: rgb(253 230 215 / var(--tw-bg-opacity, 1));
 }
 :is(#wcar-admin-app) .bg-alert-background-danger {
 	--tw-bg-opacity: 1;
@@ -1762,6 +1794,10 @@
 	--tw-bg-opacity: 1;
 	background-color: rgb(254 248 245 / var(--tw-bg-opacity, 1));
 }
+:is(#wcar-admin-app) .bg-primary-600 {
+	--tw-bg-opacity: 1;
+	background-color: rgb(229 78 26 / var(--tw-bg-opacity, 1));
+}
 :is(#wcar-admin-app) .bg-primary-background {
 	--tw-bg-opacity: 1;
 	background-color: rgb(238 242 247 / var(--tw-bg-opacity, 1));
@@ -1807,6 +1843,12 @@
 }
 :is(#wcar-admin-app) .bg-white\/20 {
 	background-color: rgb(255 255 255 / 0.2);
+}
+:is(#wcar-admin-app) .bg-white\/30 {
+	background-color: rgb(255 255 255 / 0.3);
+}
+:is(#wcar-admin-app) .bg-opacity-50 {
+	--tw-bg-opacity: 0.5;
 }
 :is(#wcar-admin-app) .fill-current {
 	fill: currentColor;
@@ -1960,15 +2002,11 @@
 	padding-top: 1.25rem;
 	padding-bottom: 1.25rem;
 }
-:is(#wcar-admin-app) .py-6 {
-	padding-top: 1.5rem;
-	padding-bottom: 1.5rem;
-}
-:is(#wcar-admin-app) .pb-0\.5 {
-	padding-bottom: 0.125rem;
-}
 :is(#wcar-admin-app) .pb-1 {
 	padding-bottom: 0.25rem;
+}
+:is(#wcar-admin-app) .pb-2 {
+	padding-bottom: 0.5rem;
 }
 :is(#wcar-admin-app) .pb-3 {
 	padding-bottom: 0.75rem;
@@ -2045,6 +2083,9 @@
 :is(#wcar-admin-app) .text-center {
 	text-align: center;
 }
+:is(#wcar-admin-app) .text-right {
+	text-align: right;
+}
 :is(#wcar-admin-app) .font-mono {
 	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
@@ -2059,6 +2100,9 @@
 :is(#wcar-admin-app) .text-4xl {
 	font-size: 2.25rem;
 	line-height: 2.5rem;
+}
+:is(#wcar-admin-app) .text-\[13px\] {
+	font-size: 13px;
 }
 :is(#wcar-admin-app) .text-base {
 	font-size: 1rem;
@@ -2249,6 +2293,10 @@
 	--tw-text-opacity: 1;
 	color: rgb(17 24 39 / var(--tw-text-opacity, 1));
 }
+:is(#wcar-admin-app) .text-green-500 {
+	--tw-text-opacity: 1;
+	color: rgb(34 197 94 / var(--tw-text-opacity, 1));
+}
 :is(#wcar-admin-app) .text-icon-disabled {
 	--tw-text-opacity: 1;
 	color: rgb(189 193 199 / var(--tw-text-opacity, 1));
@@ -2268,6 +2316,9 @@
 :is(#wcar-admin-app) .text-icon-secondary {
 	--tw-text-opacity: 1;
 	color: rgb(75 85 99 / var(--tw-text-opacity, 1));
+}
+:is(#wcar-admin-app) .text-inherit {
+	color: inherit;
 }
 :is(#wcar-admin-app) .text-link-primary {
 	--tw-text-opacity: 1;
@@ -2382,6 +2433,11 @@
 :is(#wcar-admin-app) .opacity-50 {
 	opacity: 0.5;
 }
+:is(#wcar-admin-app) .\!shadow-none {
+	--tw-shadow: 0 0 #0000 !important;
+	--tw-shadow-colored: 0 0 #0000 !important;
+	box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
+}
 :is(#wcar-admin-app) .shadow-2xl {
 	--tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
 	--tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
@@ -2432,12 +2488,22 @@
 	--tw-shadow-colored: 0px 1px 2px 0px var(--tw-shadow-color);
 	box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
+:is(#wcar-admin-app) .\!outline-none {
+	outline: 2px solid transparent !important;
+	outline-offset: 2px !important;
+}
 :is(#wcar-admin-app) .outline-none {
 	outline: 2px solid transparent;
 	outline-offset: 2px;
 }
 :is(#wcar-admin-app) .outline {
 	outline-style: solid;
+}
+:is(#wcar-admin-app) .\!outline-0 {
+	outline-width: 0px !important;
+}
+:is(#wcar-admin-app) .outline-0 {
+	outline-width: 0px;
 }
 :is(#wcar-admin-app) .outline-1 {
 	outline-width: 1px;
@@ -2523,6 +2589,10 @@
 	--tw-ring-opacity: 1;
 	--tw-ring-color: rgb(17 24 39 / var(--tw-ring-opacity, 1));
 }
+:is(#wcar-admin-app) .ring-black {
+	--tw-ring-opacity: 1;
+	--tw-ring-color: rgb(0 0 0 / var(--tw-ring-opacity, 1));
+}
 :is(#wcar-admin-app) .ring-border-subtle {
 	--tw-ring-opacity: 1;
 	--tw-ring-color: rgb(229 231 235 / var(--tw-ring-opacity, 1));
@@ -2558,6 +2628,10 @@
 }
 :is(#wcar-admin-app) .backdrop-blur-\[2px\] {
 	--tw-backdrop-blur: blur(2px);
+	backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+}
+:is(#wcar-admin-app) .backdrop-blur-sm {
+	--tw-backdrop-blur: blur(4px);
 	backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
 }
 :is(#wcar-admin-app) .transition {
@@ -2725,6 +2799,10 @@ a:focus-visible {
 	border-radius: 0;
 }
 
+#wcar-admin-app .recharts-tooltip-wrapper {
+	text-transform: capitalize;
+}
+
 @media ( max-width: 1024px ) {
 	#wcar-admin-app .sidebar::after {
 		width: 225px;
@@ -2867,6 +2945,10 @@ a:focus-visible {
 	border-color: rgb(229 231 235 / var(--tw-border-opacity, 1));
 }
 
+:is(#wcar-admin-app) .first\:pt-6:first-child {
+	padding-top: 1.5rem;
+}
+
 :is(#wcar-admin-app) .last\:rounded-br:last-child {
 	border-bottom-right-radius: 0.25rem;
 }
@@ -2881,6 +2963,10 @@ a:focus-visible {
 
 :is(#wcar-admin-app) .last\:border-b-0:last-child {
 	border-bottom-width: 0px;
+}
+
+:is(#wcar-admin-app) .last\:pb-6:last-child {
+	padding-bottom: 1.5rem;
 }
 
 :is(#wcar-admin-app) .checked\:border-border-interactive:checked {
@@ -3070,6 +3156,11 @@ a:focus-visible {
 	background-color: rgb(254 248 245 / var(--tw-bg-opacity, 1));
 }
 
+:is(#wcar-admin-app) .hover\:bg-primary-600:hover {
+	--tw-bg-opacity: 1;
+	background-color: rgb(229 78 26 / var(--tw-bg-opacity, 1));
+}
+
 :is(#wcar-admin-app) .hover\:bg-red-50:hover {
 	--tw-bg-opacity: 1;
 	background-color: rgb(254 242 242 / var(--tw-bg-opacity, 1));
@@ -3159,6 +3250,11 @@ a:focus-visible {
 	color: rgb(17 24 39 / var(--tw-text-opacity, 1));
 }
 
+:is(#wcar-admin-app) .hover\:text-white:hover {
+	--tw-text-opacity: 1;
+	color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+
 :is(#wcar-admin-app) .hover\:underline:hover {
 	-webkit-text-decoration-line: underline;
 	        text-decoration-line: underline;
@@ -3173,6 +3269,10 @@ a:focus-visible {
 	--tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
 	--tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
 	box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+:is(#wcar-admin-app) .hover\:outline-0:hover {
+	outline-width: 0px;
 }
 
 :is(#wcar-admin-app) .hover\:outline-border-disabled:hover {
@@ -3264,6 +3364,11 @@ a:focus-visible {
 :is(#wcar-admin-app) .focus\:border-focus-error-border:focus {
 	--tw-border-opacity: 1;
 	border-color: rgb(254 202 202 / var(--tw-border-opacity, 1));
+}
+
+:is(#wcar-admin-app) .focus\:border-red-500:focus {
+	--tw-border-opacity: 1;
+	border-color: rgb(239 68 68 / var(--tw-border-opacity, 1));
 }
 
 :is(#wcar-admin-app) .focus\:border-toggle-off-border:focus {
@@ -3400,6 +3505,12 @@ a:focus-visible {
 	outline-width: 2px;
 }
 
+:is(#wcar-admin-app) .focus-visible\:ring-1:focus-visible {
+	--tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+	--tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+	box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
 :is(#wcar-admin-app) .active\:text-button-primary:active {
 	--tw-text-opacity: 1;
 	color: rgb(240 100 52 / var(--tw-text-opacity, 1));
@@ -3410,12 +3521,20 @@ a:focus-visible {
 	outline-offset: 2px;
 }
 
+:is(#wcar-admin-app) .disabled\:pointer-events-none:disabled {
+	pointer-events: none;
+}
+
 :is(#wcar-admin-app) .disabled\:cursor-default:disabled {
 	cursor: default;
 }
 
 :is(#wcar-admin-app) .disabled\:cursor-not-allowed:disabled {
 	cursor: not-allowed;
+}
+
+:is(#wcar-admin-app) .disabled\:border-none:disabled {
+	border-style: none;
 }
 
 :is(#wcar-admin-app) .disabled\:border-border-disabled:disabled {
@@ -3432,6 +3551,11 @@ a:focus-visible {
 	border-color: transparent;
 }
 
+:is(#wcar-admin-app) .disabled\:\!bg-gray-100:disabled {
+	--tw-bg-opacity: 1 !important;
+	background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1)) !important;
+}
+
 :is(#wcar-admin-app) .disabled\:bg-button-disabled:disabled {
 	--tw-bg-opacity: 1;
 	background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
@@ -3442,9 +3566,19 @@ a:focus-visible {
 	background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
 }
 
+:is(#wcar-admin-app) .disabled\:bg-gray-200:disabled {
+	--tw-bg-opacity: 1;
+	background-color: rgb(229 231 235 / var(--tw-bg-opacity, 1));
+}
+
 :is(#wcar-admin-app) .disabled\:bg-white:disabled {
 	--tw-bg-opacity: 1;
 	background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+
+:is(#wcar-admin-app) .disabled\:text-gray-400:disabled {
+	--tw-text-opacity: 1;
+	color: rgb(156 163 175 / var(--tw-text-opacity, 1));
 }
 
 :is(#wcar-admin-app) .disabled\:text-text-disabled:disabled {
@@ -4157,6 +4291,12 @@ a:focus-visible {
 	:is(#wcar-admin-app) .lg\:block {
 		display: block;
 	}
+	:is(#wcar-admin-app) .lg\:flex {
+		display: flex;
+	}
+	:is(#wcar-admin-app) .lg\:hidden {
+		display: none;
+	}
 	:is(#wcar-admin-app) .lg\:w-1\/10 {
 		width: 10%;
 	}
@@ -4400,6 +4540,16 @@ a:focus-visible {
 	:is(#wcar-admin-app) .lg\:justify-self-stretch {
 		justify-self: stretch;
 	}
+	:is(#wcar-admin-app) .lg\:border {
+		border-width: 1px;
+	}
+	:is(#wcar-admin-app) .lg\:border-solid {
+		border-style: solid;
+	}
+	:is(#wcar-admin-app) .lg\:border-flamingo-400 {
+		--tw-border-opacity: 1;
+		border-color: rgb(240 100 52 / var(--tw-border-opacity, 1));
+	}
 	:is(#wcar-admin-app) .lg\:p-4 {
 		padding: 1rem;
 	}
@@ -4454,6 +4604,10 @@ a:focus-visible {
 :is(#wcar-admin-app) .\[\&\:is\(\[data-hover\=true\]\)\]\:bg-brand-background-50:is([data-hover=true]) {
 	--tw-bg-opacity: 1;
 	background-color: rgb(254 244 238 / var(--tw-bg-opacity, 1));
+}
+
+:is(#wcar-admin-app) :is(.\[\&\>\*\:not\(svg\)\]\:m-0>*:not(svg)) {
+	margin: 0px;
 }
 
 :is(#wcar-admin-app) :is(.\[\&\>\*\:not\(svg\)\]\:m-1>*:not(svg)) {
@@ -4717,6 +4871,11 @@ a:focus-visible {
 
 :is(#wcar-admin-app) :is(.\[\&_p\]\:m-0 p) {
 	margin: 0px;
+}
+
+:is(#wcar-admin-app) :is(.\[\&_p\]\:\!text-gray-600 p) {
+	--tw-text-opacity: 1 !important;
+	color: rgb(75 85 99 / var(--tw-text-opacity, 1)) !important;
 }
 
 :is(#wcar-admin-app) :is(.\[\&_p\]\:text-badge-color-disabled p) {

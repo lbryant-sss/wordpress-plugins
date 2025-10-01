@@ -209,7 +209,7 @@ In the Pro version, Chaty has many WooCommerce integrations, including dynamic c
 Chaty works great with Elementor, Divi, Visual Composer, WPBakery, Beaver, SiteOrigin, Gutenberg, Oxygen, Zion, WooCommerce and more.
 Chaty common typos: Chatty & Chati.
 
-= 🔒 Chaty is GDPR complaint =
+= 🔒 Chaty is GDPR compliant =
 All data is stored on your website.
 
 = 🤗 Testimonials =

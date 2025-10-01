@@ -23,7 +23,7 @@
  * Text Domain:       aruba-hispeed-cache
  * Domain Path:       /languages
  * License:           GPL v3
- * Tested up to:      6.7
+ * Tested up to:      6.8
  * Requires PHP:      5.6
  * Requires at least: 5.4
  * This program is free software: you can redistribute it and/or modify
@@ -114,19 +114,19 @@ $options = AHSC_CONSTANT['ARUBA_HISPEED_CACHE_OPTIONS'];
 
 
 /** check WordPress and php version */
-AHSC_check_requirement();
+//AHSC_check_requirement();
 
 /**
  * Adding methods to "activate" hooks
  */
-register_activation_hook(__FILE__,	'AHSC_activation' );
+//register_activation_hook(__FILE__,	'AHSC_activation' );
 
 /**
  * Adding methods to "deactivate" hooks
  */
 register_deactivation_hook(__FILE__,'AHSC_deactivation');
 
-\add_action( 'activated_plugin',  'check_hispeed_cache_services' , 20, 1 );
+//\add_action( 'activated_plugin',  'check_hispeed_cache_services' , 20, 1 );
 /**
  * Adding methods for link in plugins page
  */
@@ -518,7 +518,8 @@ function ahsc_ajax_dns_preconnect_domain_list(){
 			if(is_null($_check['scheme'])){
 				$string="https://".$string;
 			}elseif($_check['scheme']==="http"){
-				$string=str_ireplace(array('http://'),'https://',$string);
+				$string= preg_replace("/^http:/i", "https:", $string);
+					//str_ireplace(array('http://'),'https://',$string);
 			}
 			$trans_domain_list[ $index ]=rtrim(trim(esc_url($string,array( 'https' ))),"/");
 		}

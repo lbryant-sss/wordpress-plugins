@@ -4,22 +4,18 @@ import {
 	ArrowUpRightIcon,
 	ExclamationTriangleIcon,
 } from '@heroicons/react/24/outline';
-import { __, sprintf } from '@wordpress/i18n';
+import { __ } from '@wordpress/i18n';
 import parse from 'html-react-parser';
 
 import SectionWrapper from '@Components/common/SectionWrapper';
 import SkeletonLoader from '@Components/common/skeletons/SkeletonLoader';
 import { EmptyBlock } from '@Components/common/empty-blocks';
 import { BASE_URL } from '@Admin/constants';
-import {
-	ProUpgradeCta,
-	shouldBlockProFeatures,
-	ProductReportDummyData,
-} from '@Components/pro';
-
-import { getUpgradeToProUrl } from '../pro/proStatus';
+import { ProUpgradeCta, ProductReportDummyData } from '@Components/pro';
+import { useProAccess } from '@Components/pro/useProAccess';
 
 const ProductReport = ( { dashboardData, isDashboardLoading } ) => {
+	const { shouldBlockProFeatures } = useProAccess();
 	// Check if product report data exists and has items
 	const hasProductData =
 		dashboardData?.product_report &&
@@ -37,7 +33,7 @@ const ProductReport = ( { dashboardData, isDashboardLoading } ) => {
 						size="xs"
 						tag="h2"
 						title={ __(
-							'Product Report',
+							'Product Reports',
 							'woo-cart-abandonment-recovery'
 						) }
 						className="[&>*]:text-gray-900"
@@ -63,24 +59,16 @@ const ProductReport = ( { dashboardData, isDashboardLoading } ) => {
 								mainTitle=""
 								subTitle=""
 								variation="message"
-								description={ sprintf(
+								description={
 									/* translators: %%1$s: Link HTML Start and %2$sof: Link HTML End. */
 									__(
-										'Recovering sales already? Pro is coming soon to supercharge it. %1$sGet Notified%2$s',
+										'Product Report shows you which items bring the most recoveries and sales.',
 										'woo-cart-abandonment-recovery'
-									),
-									'<a href="' +
-										getUpgradeToProUrl(
-											'utm_source=wcar-dashboard&utm_medium=free-wcar&utm_campaign=go-pro'
-										) +
-										'" class="wcar-link no-underline text-flamingo-400 font-medium" target="_blank" alt="' +
-										__(
-											'Upgrade to pro',
-											'woo-cart-abandonment-recovery'
-										) +
-										'">',
-									'</a>'
-								) }
+									)
+								}
+								actionBtnUrlArgs={
+									'utm_source=wcar-dashboard&utm_medium=free-wcar&utm_campaign=go-wcar-pro'
+								}
 							/>
 							<ProductReportDummyData minified={ true } />
 						</div>
@@ -146,3 +134,4 @@ const ProductReport = ( { dashboardData, isDashboardLoading } ) => {
 };
 
 export default ProductReport;
+

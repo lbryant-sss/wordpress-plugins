@@ -3,6 +3,7 @@ import { useStateValue } from '@Store';
 import useDebounceDispatch from '@Utils/debounceDispatch';
 import { Input } from '@bsf/force-ui';
 import FieldWrapper from '@Components/common/FieldWrapper';
+import { useProAccess } from '@Components/pro/useProAccess';
 
 const TextField = ( {
 	title,
@@ -13,8 +14,12 @@ const TextField = ( {
 	handleChange,
 	autoSave = true,
 	error,
+	isPro = false,
+	proUpgradeMessage = '',
 } ) => {
 	const [ state, dispatch ] = useStateValue();
+	const { shouldBlockProFeatures } = useProAccess();
+	const isFeatureBlocked = shouldBlockProFeatures();
 	const settingsData = state.settingsData || {};
 	const settingsValues = settingsData.values || {};
 
@@ -57,7 +62,13 @@ const TextField = ( {
 	}
 
 	return (
-		<FieldWrapper title={ title } description={ description } type="block">
+		<FieldWrapper
+			title={ title }
+			description={ description }
+			type="block"
+			isPro={ isPro }
+			proUpgradeMessage={ proUpgradeMessage }
+		>
 			<div>
 				<Input
 					className={ `${
@@ -70,6 +81,7 @@ const TextField = ( {
 					name={ name }
 					value={ textValue }
 					onChange={ handleOnChange }
+					disabled={ isPro && isFeatureBlocked }
 				/>
 				{ error && (
 					<p className="text-red-500 text-sm mt-1">{ error }</p>

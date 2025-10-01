@@ -3,9 +3,20 @@ import { useStateValue } from '@Store';
 import useDebounceDispatch from '@Utils/debounceDispatch';
 import { TextArea } from '@bsf/force-ui';
 import FieldWrapper from '@Components/common/FieldWrapper';
+import { useProAccess } from '@Components/pro/useProAccess';
 
-const TextAreaField = ( { title, description, name, value, onSaved } ) => {
+const TextAreaField = ( {
+	title,
+	description,
+	name,
+	value,
+	onSaved,
+	isPro = false,
+	proUpgradeMessage = '',
+} ) => {
 	const [ state, dispatch ] = useStateValue();
+	const { shouldBlockProFeatures } = useProAccess();
+	const isFeatureBlocked = shouldBlockProFeatures();
 	const settingsData = state.settingsData || {};
 	const settingsValues = settingsData.values || {};
 	const initial = settingsValues[ name ] ?? value;
@@ -28,7 +39,13 @@ const TextAreaField = ( { title, description, name, value, onSaved } ) => {
 	}
 
 	return (
-		<FieldWrapper title={ title } description={ description } type="block">
+		<FieldWrapper
+			title={ title }
+			description={ description }
+			type="block"
+			isPro={ isPro }
+			proUpgradeMessage={ proUpgradeMessage }
+		>
 			<TextArea
 				className="w-full focus:[&>input]:ring-focus"
 				type="text"
@@ -36,6 +53,7 @@ const TextAreaField = ( { title, description, name, value, onSaved } ) => {
 				name={ name }
 				value={ textValue }
 				onChange={ handleOnChange }
+				disabled={ isPro && isFeatureBlocked }
 			/>
 		</FieldWrapper>
 	);

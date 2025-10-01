@@ -10,6 +10,7 @@ namespace TutorLMSDroip;
 
 use TUTOR\Course;
 use Tutor\Models\CartModel;
+use TUTOR_CERT\Certificate;
 use TutorLMSDroip\ElementGenerator\CourseMetaGenerator;
 
 if (! defined('ABSPATH')) {
@@ -793,7 +794,11 @@ class VisibilityCondition
 			case 'is_certificate_enabled': {
 					$addon_config = tutor_utils()->get_addon_config('tutor-pro/addons/tutor-certificate/tutor-certificate.php');
 					$is_enabled   = (bool) tutor_utils()->avalue_dot('is_enable', $addon_config);
-					return $is_enabled;
+					if ($is_enabled) {
+						$has_course_certificate_template = (new Certificate(true))->has_course_certificate_template($course_id);
+						return $has_course_certificate_template;
+					}
+					return false;
 				}
 		}
 	}

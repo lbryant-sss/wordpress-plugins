@@ -93,7 +93,8 @@ if ( ! class_exists( 'CARTFLOWS_CA_Loader' ) ) {
 			define( 'CARTFLOWS_CA_BASE', plugin_basename( CARTFLOWS_CA_FILE ) );
 			define( 'CARTFLOWS_CA_DIR', plugin_dir_path( CARTFLOWS_CA_FILE ) );
 			define( 'CARTFLOWS_CA_URL', plugins_url( '/', CARTFLOWS_CA_FILE ) );
-			define( 'CARTFLOWS_CA_VER', '2.0.0' );
+			define( 'CARTFLOWS_CA_VER', '2.0.1' );
+			define( 'CARTFLOWS_CA_REQ_PRO_VER', '1.0.0' );
 
 			define( 'CARTFLOWS_CA_SLUG', 'cartflows_ca' );
 
@@ -102,7 +103,7 @@ if ( ! class_exists( 'CARTFLOWS_CA_Loader' ) ) {
 			define( 'CARTFLOWS_CA_EMAIL_HISTORY_TABLE', 'cartflows_ca_email_history' );
 			define( 'CARTFLOWS_CA_EMAIL_TEMPLATE_META_TABLE', 'cartflows_ca_email_templates_meta' );
 
-			define( 'CARTFLOWS_CA_DOMAIN_URL', 'https://cartflows.com/cart-abandonment-pro-launch-waitlist/' );
+			define( 'CARTFLOWS_CA_DOMAIN_URL', 'https://cartflows.com/' );
 			define( 'CARTFLOWS_CA_NPS_WEBHOOK_URL', 'https://webhook.ottokit.com/ottokit/c883bcf8-1f86-4a16-9b81-7fd4cfaa3a49' );
 		}
 
@@ -307,9 +308,9 @@ if ( ! class_exists( 'CARTFLOWS_CA_Loader' ) ) {
 									'popup_logo'        => CARTFLOWS_CA_URL . 'admin/assets/images/wcar-icon.svg',
 									'plugin_version'    => CARTFLOWS_CA_VER,
 									'plugin_slug'       => 'woo-cart-abandonment-recovery',
-									'popup_title'       => __( 'Quick Feedback', 'woo-cart-abandonment-recovery' ),
+									'popup_title'       => 'Quick Feedback',
 									'support_url'       => 'https://cartflows.com/contact/',
-									'popup_description' => __( 'If you have a moment, please share why you are deactivating Cart Abandonment Recovery:', 'woo-cart-abandonment-recovery' ),
+									'popup_description' => 'If you have a moment, please share why you are deactivating Cart Abandonment Recovery:',
 									'show_on_screens'   => array( 'plugins' ),
 								),
 							)
@@ -321,6 +322,11 @@ if ( ! class_exists( 'CARTFLOWS_CA_Loader' ) ) {
 			// Load the NPS Survey library.
 			if ( ! class_exists( 'Cartflows_Ca_Nps_Survey' ) ) {
 				require_once CARTFLOWS_CA_DIR . 'lib/class-cartflows-ca-nps-survey.php';
+			}
+
+			// Load BSF Library to send the data.
+			if ( ! class_exists( 'Cartflows_Ca_Bsf_Analytics' ) ) {
+				require_once CARTFLOWS_CA_DIR . 'lib/class-cartflows-ca-bsf-analytics.php';
 			}
 		}
 
@@ -500,7 +506,7 @@ if ( ! class_exists( 'CARTFLOWS_CA_Loader' ) ) {
 			$user_opted_in = get_option( 'cartflows_ca_use_new_ui', false );
 
 			// Don't show notice if user already opted in.
-			if ( $user_opted_in ) {
+			if ( ! empty( $user_opted_in ) && boolval( $user_opted_in ) ) {
 				return false;
 			}
 

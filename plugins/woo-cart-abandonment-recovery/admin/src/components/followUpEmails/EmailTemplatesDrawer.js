@@ -8,8 +8,10 @@ import { doApiFetch } from '@Store';
 
 import SettingsDrawerBody from '@Components/followUpEmails/EmailTemplatesDrawerBody';
 import SkeletonLoader from '@Components/common/skeletons/SkeletonLoader';
+import { useProAccess } from '@Components/pro/useProAccess';
 
 const EmailTemplatesDrawer = ( { open, setOpen, template, onSave } ) => {
+	const { canAccessProFeatures } = useProAccess();
 	const [ formState, setFormState ] = useState( {
 		template_name: '',
 		email_subject: '',
@@ -91,19 +93,75 @@ const EmailTemplatesDrawer = ( { open, setOpen, template, onSave } ) => {
 		}
 	};
 
+	const isEmptyStringOrArray = ( val ) => {
+		return (
+			( typeof val === 'string' && val.trim() === '' ) ||
+			( Array.isArray( val ) && val.length === 0 )
+		);
+	};
+
 	const validateForm = () => {
 		const newErrors = {};
 
 		if ( ! formState.template_name.trim() ) {
-			newErrors.template_name = 'Template name is required';
+			newErrors.template_name = __(
+				'Template name is required',
+				'woo-cart-abandonment-recovery'
+			);
 		}
 
 		if ( ! formState.email_subject.trim() ) {
-			newErrors.email_subject = 'Email subject is required';
+			newErrors.email_subject = __(
+				'Email subject is required',
+				'woo-cart-abandonment-recovery'
+			);
 		}
 
 		if ( ! formState.email_body.trim() ) {
-			newErrors.email_body = 'Email body is required';
+			newErrors.email_body = __(
+				'Email body is required',
+				'woo-cart-abandonment-recovery'
+			);
+		}
+		if ( formState.email_frequency < 1 ) {
+			newErrors.email_frequency = __(
+				'Time should be minimum 1 min.',
+				'woo-cart-abandonment-recovery'
+			);
+		}
+
+		// Validate email rule engine
+		if ( canAccessProFeatures() && formState?.enable_email_rule_engine ) {
+			let rules = formState.email_rule_engine || [];
+			if ( typeof rules === 'string' ) {
+				try {
+					rules = JSON.parse( rules );
+				} catch ( e ) {
+					newErrors.email_rule_engine = __(
+						'Invalid JSON in rule engine',
+						'woo-cart-abandonment-recovery'
+					);
+					return false;
+				}
+			}
+			if (
+				rules.length === 0 ||
+				rules.some(
+					( group ) =>
+						group.rules &&
+						group.rules.some(
+							( rule ) =>
+								isEmptyStringOrArray( rule.condition ) ||
+								isEmptyStringOrArray( rule.value ) ||
+								isEmptyStringOrArray( rule.operator )
+						)
+				)
+			) {
+				newErrors.email_rule_engine = __(
+					'Missing fields in rule: condition, operator, or value.',
+					'woo-cart-abandonment-recovery'
+				);
+			}
 		}
 
 		setErrors( newErrors );
@@ -170,11 +228,11 @@ const EmailTemplatesDrawer = ( { open, setOpen, template, onSave } ) => {
 		// Add rule engine fields
 		formData.append(
 			'wcf_enable_email_rule_engine',
-			formState.enable_email_rule_engine ? '1' : ''
+			formState?.enable_email_rule_engine ? '1' : ''
 		);
 		formData.append(
 			'wcf_email_rule_engine',
-			JSON.stringify( formState.email_rule_engine || [] )
+			JSON.stringify( formState?.email_rule_engine || [] )
 		);
 
 		// Add template ID if editing
@@ -254,7 +312,7 @@ const EmailTemplatesDrawer = ( { open, setOpen, template, onSave } ) => {
 			className="z-[100000]"
 		>
 			<Drawer.Panel className="w-full md:w-4/5 lg:w-2/5">
-				<Drawer.Header className="flex flex-col gpa-2">
+				<Drawer.Header className="flex flex-col gpa-2 z-10 bg-white">
 					<div className="flex items-center justify-between">
 						{ isLoading ? (
 							<>
@@ -269,7 +327,7 @@ const EmailTemplatesDrawer = ( { open, setOpen, template, onSave } ) => {
 							</>
 						) : (
 							<>
-								<Drawer.Title className="text-lg text-gray-900">
+								<Drawer.Title className="text-lg text-gray-900 z-10">
 									{ truncateText(
 										formState?.template_name
 											? formState.template_name

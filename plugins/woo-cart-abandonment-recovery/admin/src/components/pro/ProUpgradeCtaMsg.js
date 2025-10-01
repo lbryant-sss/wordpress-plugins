@@ -10,7 +10,7 @@
 
 import React from 'react';
 import { Title } from '@bsf/force-ui';
-import parse from 'html-react-parser';
+import { useProAccess } from './useProAccess';
 
 /**
  * ProUpgradeCtaMsg Component - Simplified with ForceUI
@@ -21,8 +21,10 @@ import parse from 'html-react-parser';
  * @param {Object} root0.props - Props object containing all component props
  */
 const ProUpgradeCtaMsg = ( { props } ) => {
+	const { getActionButtonText, upgradeActionButton } = useProAccess();
 	// Destructure props from the props object
-	const { mainTitle, subTitle, description } = props;
+	const { mainTitle, subTitle, description, actionBtnUrlArgs, actionbtnUrl } =
+		props;
 
 	return (
 		<div className="absolute inset-0 z-10 flex items-center justify-center">
@@ -50,9 +52,31 @@ const ProUpgradeCtaMsg = ( { props } ) => {
 					{ /* Short Message */ }
 					{ description && (
 						<p className="text-sm text-gray-500 m-0">
-							{ parse( description ) }
+							{ description }
 						</p>
 					) }
+
+					<span
+						className="text-flamingo-400 font-semibold underline cursor-pointer"
+						onKeyDown={ ( e ) => {
+							if ( e.key === 'Enter' ) {
+								upgradeActionButton(
+									actionBtnUrlArgs,
+									actionbtnUrl
+								);
+							}
+						} }
+						onClick={ () =>
+							upgradeActionButton(
+								actionBtnUrlArgs,
+								actionbtnUrl
+							)
+						}
+						role="button"
+						tabIndex="0"
+					>
+						{ getActionButtonText() }
+					</span>
 				</div>
 			</div>
 		</div>

@@ -4,15 +4,19 @@ import { PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
 import { __ } from '@wordpress/i18n';
 import ProductSearchField from '@Components/fields/ProductSearchField';
 import MultiSelectField from '@Components/fields/MultiSelectField';
+import { useProAccess } from '@Components/pro/useProAccess';
 
-const RulesRepeater = ( { value = [], onChange } ) => {
+const RulesRepeater = ( { value = [], onChange, isPro = false } ) => {
+	const { shouldBlockProFeatures } = useProAccess();
+	const isFeatureBlocked = shouldBlockProFeatures();
 	// Initialize with default structure following CartFlows Pro pattern
 	const getDefaultRules = () => [
 		{
-			group_id: Math.random().toString( 36 ).substring( 2, 3 ),
+			group_id: 'g-' + Math.random().toString( 36 ).substring( 2, 5 ),
 			rules: [
 				{
-					rule_id: Math.random().toString( 36 ).substring( 2, 3 ),
+					rule_id:
+						'r-' + Math.random().toString( 36 ).substring( 2, 5 ),
 					condition: 'cart_total',
 					operator: '',
 					value: '',
@@ -25,7 +29,12 @@ const RulesRepeater = ( { value = [], onChange } ) => {
 	const parseValue = ( val ) => {
 		if ( typeof val === 'string' ) {
 			try {
-				const parsed = JSON.parse( val );
+				let parsed = JSON.parse( val );
+
+				// If the parsed value is still a string, parse again
+				if ( typeof parsed === 'string' ) {
+					parsed = JSON.parse( parsed );
+				}
 				return Array.isArray( parsed ) ? parsed : getDefaultRules();
 			} catch ( e ) {
 				return getDefaultRules();
@@ -42,9 +51,9 @@ const RulesRepeater = ( { value = [], onChange } ) => {
 	const fieldData = ruleConfig.field_data || {};
 
 	useEffect( () => {
-		// Convert rules array to JSON string before passing to parent
-		onChange( JSON.stringify( rules ) );
-	}, [ rules ] );
+		const parsed = parseValue( value );
+		setRules( parsed );
+	}, [ value ] );
 
 	const getOperatorsForCondition = ( condition ) => {
 		const conditionData = fieldData[ condition ];
@@ -84,28 +93,49 @@ const RulesRepeater = ( { value = [], onChange } ) => {
 		}
 
 		setRules( newRules );
+		onChange( newRules );
+	};
+
+	const addRule = ( groupIndex ) => {
+		const newRules = [ ...rules ];
+		newRules[ groupIndex ].rules.push( {
+			rule_id: 'r-' + Math.random().toString( 36 ).substring( 2, 5 ),
+			condition: '',
+			operator: '',
+			value: '',
+		} );
+		setRules( newRules );
+		onChange( newRules );
 	};
 
 	const removeRule = ( groupIndex, ruleIndex ) => {
-		const newRules = [ ...rules ];
-		if ( newRules[ groupIndex ].rules.length > 1 ) {
-			newRules[ groupIndex ].rules.splice( ruleIndex, 1 );
+		let newRules = [ ...rules ];
+		const group = { ...newRules[ groupIndex ] };
+		const rulesInGroup = [ ...group.rules ];
+
+		if ( rulesInGroup.length > 1 ) {
+			rulesInGroup.splice( ruleIndex, 1 );
+			group.rules = rulesInGroup;
+			newRules[ groupIndex ] = group;
 		} else {
-			// Remove the group if it's the last rule
 			newRules.splice( groupIndex, 1 );
 		}
-		// Ensure at least one group exists
-		setRules( newRules.length > 0 ? newRules : getDefaultRules() );
+
+		newRules = newRules.length > 0 ? newRules : getDefaultRules();
+		setRules( newRules );
+		onChange( newRules );
 	};
 
 	const addGroup = () => {
 		const newRules = [
 			...rules,
 			{
-				group_id: Math.random().toString( 36 ).substring( 2, 3 ),
+				group_id: 'g-' + Math.random().toString( 36 ).substring( 2, 5 ),
 				rules: [
 					{
-						rule_id: Math.random().toString( 36 ).substring( 2, 3 ),
+						rule_id:
+							'r-' +
+							Math.random().toString( 36 ).substring( 2, 5 ),
 						condition: '',
 						operator: '',
 						value: '',
@@ -114,6 +144,7 @@ const RulesRepeater = ( { value = [], onChange } ) => {
 			},
 		];
 		setRules( newRules );
+		onChange( newRules );
 	};
 
 	const renderValueField = ( rule, groupIndex, ruleIndex ) => {
@@ -129,7 +160,7 @@ const RulesRepeater = ( { value = [], onChange } ) => {
 		const fieldType = getFieldType( rule.condition );
 
 		switch ( fieldType ) {
-			case 'select':
+			case 'select': {
 				const options = getFieldOptions( rule.condition );
 				const selectedOption = options.find(
 					( opt ) => opt.id === rule.value
@@ -146,6 +177,7 @@ const RulesRepeater = ( { value = [], onChange } ) => {
 							)
 						}
 						size="md"
+						disabled={ isPro && isFeatureBlocked }
 					>
 						<Select.Button
 							placeholder={ __(
@@ -165,6 +197,7 @@ const RulesRepeater = ( { value = [], onChange } ) => {
 						</Select.Options>
 					</Select>
 				);
+			}
 
 			case 'multiselect':
 				return (
@@ -182,10 +215,11 @@ const RulesRepeater = ( { value = [], onChange } ) => {
 						}
 						autoSave={ false }
 						disableStyle={ true }
+						isPro={ isPro }
 					/>
 				);
 
-			case 'products':
+			case 'product_search':
 				return (
 					<ProductSearchField
 						id={ `rule_value_${ groupIndex }_${ ruleIndex }` }
@@ -195,16 +229,17 @@ const RulesRepeater = ( { value = [], onChange } ) => {
 							'Search products…',
 							'woo-cart-abandonment-recovery'
 						) }
-						handleChange={ ( name, chngValue ) =>
+						handleChange={ ( name, changedValue ) =>
 							updateRule(
 								groupIndex,
 								ruleIndex,
 								'value',
-								chngValue
+								changedValue
 							)
 						}
 						autoSave={ false }
 						disableStyle={ true }
+						isPro={ isPro }
 					/>
 				);
 
@@ -229,6 +264,8 @@ const RulesRepeater = ( { value = [], onChange } ) => {
 							'Enter value',
 							'woo-cart-abandonment-recovery'
 						) }
+						min={ 0 }
+						disabled={ isPro && isFeatureBlocked }
 					/>
 				);
 
@@ -248,13 +285,14 @@ const RulesRepeater = ( { value = [], onChange } ) => {
 							'Enter value',
 							'woo-cart-abandonment-recovery'
 						) }
+						disabled={ isPro && isFeatureBlocked }
 					/>
 				);
 		}
 	};
 
 	return (
-		<Container className="space-y-4 py-4" direction="column">
+		<Container className="py-4" direction="column">
 			{ rules.map( ( group, groupIndex ) => (
 				<Container.Item key={ group.group_id }>
 					<Container
@@ -264,7 +302,7 @@ const RulesRepeater = ( { value = [], onChange } ) => {
 						{ group.rules.map( ( rule, ruleIndex ) => (
 							<Container.Item key={ rule.rule_id }>
 								{ ruleIndex > 0 && (
-									<Container.Item className="my-2 text-center text-gray-500 text-sm">
+									<Container.Item className="mb-5 text-center text-gray-500 text-sm font-medium">
 										{ __(
 											'AND',
 											'woo-cart-abandonment-recovery'
@@ -296,6 +334,10 @@ const RulesRepeater = ( { value = [], onChange } ) => {
 														)
 													}
 													size="md"
+													disabled={
+														isPro &&
+														isFeatureBlocked
+													}
 												>
 													<Select.Button
 														placeholder={ __(
@@ -345,7 +387,9 @@ const RulesRepeater = ( { value = [], onChange } ) => {
 													}
 													size="md"
 													disabled={
-														! rule.condition
+														! rule.condition ||
+														( isPro &&
+															isFeatureBlocked )
 													}
 												>
 													<Select.Button
@@ -385,39 +429,48 @@ const RulesRepeater = ( { value = [], onChange } ) => {
 										</Container>
 									</Container.Item>
 
-									<Container.Item className="flex-shrink-0">
-										<Button
-											size="sm"
-											variant="ghost"
-											className="text-red-600"
-											onClick={ () =>
-												removeRule(
-													groupIndex,
-													ruleIndex
-												)
-											}
-										>
-											<TrashIcon className="h-4 w-4" />
-										</Button>
-									</Container.Item>
+									{ ( group.rules.length > 1 ||
+										rules.length > 1 ) && (
+										<Container.Item className="flex-shrink-0">
+											<Button
+												size="sm"
+												variant="ghost"
+												className="text-red-600"
+												onClick={ () =>
+													removeRule(
+														groupIndex,
+														ruleIndex
+													)
+												}
+											>
+												<TrashIcon className="h-4 w-4" />
+											</Button>
+										</Container.Item>
+									) }
 								</Container>
 							</Container.Item>
 						) ) }
 
-						{ /* <Container.Item>
+						<Container.Item>
 							<Button
-								icon={<PlusIcon aria-label="icon" role="img"/>}
+								icon={
+									<PlusIcon aria-label="icon" role="img" />
+								}
 								size="sm"
 								variant="ghost"
-								onClick={() => addRule(groupIndex)}
+								onClick={ () => addRule( groupIndex ) }
+								disabled={ isPro && isFeatureBlocked }
 							>
-								{__('Add Condition', 'woo-cart-abandonment-recovery')}
+								{ __(
+									'Add Condition',
+									'woo-cart-abandonment-recovery'
+								) }
 							</Button>
-						</Container.Item> */ }
+						</Container.Item>
 					</Container>
 
 					{ groupIndex < rules.length - 1 && (
-						<Container.Item className="my-3 text-center text-gray-500 text-sm pt-4">
+						<Container.Item className="mt-4 text-center text-gray-500 text-sm font-medium">
 							{ __( 'OR', 'woo-cart-abandonment-recovery' ) }
 						</Container.Item>
 					) }
@@ -431,6 +484,7 @@ const RulesRepeater = ( { value = [], onChange } ) => {
 					size="md"
 					variant="ghost"
 					onClick={ addGroup }
+					disabled={ isPro && isFeatureBlocked }
 				>
 					{ __( 'Add Rule', 'woo-cart-abandonment-recovery' ) }
 				</Button>

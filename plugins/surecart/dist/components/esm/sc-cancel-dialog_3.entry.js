@@ -222,12 +222,12 @@ const ScSubscriptionReactivate = class {
     render() {
         var _a, _b, _c;
         return (h("sc-dialog", { key: '90c7bda8e1fab2340e273607fcc8b357371a8223', noHeader: true, open: this.open, style: { '--width': '600px', '--body-spacing': 'var(--sc-spacing-xxx-large)' } }, h("sc-dashboard-module", { key: '4d94f9622a06df54d50e8425d490eff039e8d5aa', loading: this.loading, heading: wp.i18n.__('Resubscribe', 'surecart'), class: "subscription-reactivate", error: this.error, style: { '--sc-dashboard-module-spacing': '1em' } }, this.loading ? (this.renderLoading()) : (h(Fragment, null, h("div", { slot: "description" }, h("sc-alert", { open: true, type: "warning", title: wp.i18n.__('Confirm Charge', 'surecart') }, wp.i18n.__('You will be charged', 'surecart'), " ", (_b = (_a = this.upcomingPeriod) === null || _a === void 0 ? void 0 : _a.checkout) === null || _b === void 0 ? void 0 :
-            _b.amount_due_display_amount, wp.i18n.__('immediately for your subscription.', 'surecart')), h("sc-text", { style: {
+            _b.amount_due_display_amount, ' ', wp.i18n.__('immediately for your subscription.', 'surecart')), h("sc-text", { style: {
                 '--font-size': 'var(--sc-font-size-medium)',
                 '--color': 'var(--sc-input-label-color)',
                 '--line-height': 'var(--sc-line-height-dense)',
                 'margin-top': 'var(--sc-spacing-medium)',
-            } }, wp.i18n.__('Your subscription will be reactivated and will renew automatically on', 'surecart'), " ", h("strong", null, (_c = this.upcomingPeriod) === null || _c === void 0 ? void 0 : _c.end_at_date))), h("sc-flex", { justifyContent: "flex-start" }, h("sc-button", { type: "primary", loading: this.busy, disabled: this.busy, onClick: () => this.reactivateSubscription() }, wp.i18n.__('Yes, Reactivate', 'surecart')), h("sc-button", { disabled: this.busy, style: { color: 'var(--sc-color-gray-500)' }, type: "text", onClick: () => this.scRequestClose.emit() }, wp.i18n.__('No, Keep Inactive', 'surecart'))))), this.busy && h("sc-block-ui", { key: '81c19af54954f660617567e7c409d83c82a603aa' }))));
+            } }, wp.i18n.__('Your subscription will be reactivated and will renew automatically on', 'surecart'), " ", h("strong", null, (_c = this.upcomingPeriod) === null || _c === void 0 ? void 0 : _c.end_at_date))), h("sc-flex", { justifyContent: "flex-start" }, h("sc-button", { type: "primary", loading: this.busy, disabled: this.busy, onClick: () => this.reactivateSubscription() }, wp.i18n.__('Yes, Reactivate', 'surecart')), h("sc-button", { disabled: this.busy, style: { color: 'var(--sc-color-gray-500)' }, type: "text", onClick: () => this.scRequestClose.emit() }, wp.i18n.__('No, Keep Inactive', 'surecart'))))), this.busy && h("sc-block-ui", { key: 'aaece49196b03fdbcc195dd2995269d151c5dc3a' }))));
     }
     static get watchers() { return {
         "open": ["openChanged"]

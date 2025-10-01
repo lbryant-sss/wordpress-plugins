@@ -15,6 +15,9 @@ import SubjectField from '@Components/fields/SubjectField';
 import RulesRepeater from '@Components/RuleEngine/RulesRepeater';
 import EmailField from '@Components/fields/EmailField';
 import UiSwitch from '@Components/fields/UiSwitch';
+import TestSms from '@Components/fields/TestSms';
+import TextareaDropdownField from '@Components/fields/TextareaDropdownField';
+import PasswordField from '@Components/fields/PasswordField';
 
 const RenderFields = ( {
 	data,
@@ -37,6 +40,8 @@ const RenderFields = ( {
 					description={ data.desc }
 					name={ data.name }
 					value={ value }
+					isPro={ data?.is_pro }
+					proUpgradeMessage={ data?.pro_upgrade_message }
 					{ ...( handleChange && { handleChange } ) }
 					{ ...( autoSave !== undefined && { autoSave } ) }
 					{ ...( disableStyle !== undefined && { disableStyle } ) }
@@ -50,6 +55,8 @@ const RenderFields = ( {
 					name={ data.name }
 					value={ value }
 					options={ data?.options || [] }
+					isPro={ data?.is_pro }
+					proUpgradeMessage={ data?.pro_upgrade_message }
 					{ ...( handleChange && { handleChange } ) }
 					{ ...( errors &&
 						errors[ data.name ] && {
@@ -67,6 +74,8 @@ const RenderFields = ( {
 					name={ data.name }
 					value={ value }
 					options={ data?.options || [] }
+					isPro={ data?.is_pro }
+					proUpgradeMessage={ data?.pro_upgrade_message }
 					{ ...( handleChange && { handleChange } ) }
 					{ ...( errors &&
 						errors[ data.name ] && {
@@ -83,6 +92,8 @@ const RenderFields = ( {
 					description={ data.desc }
 					name={ data.name }
 					value={ value }
+					isPro={ data?.is_pro }
+					proUpgradeMessage={ data?.pro_upgrade_message }
 					{ ...( handleChange && { handleChange } ) }
 					{ ...( autoSave !== undefined && { autoSave } ) }
 					{ ...( disableStyle !== undefined && { disableStyle } ) }
@@ -112,6 +123,8 @@ const RenderFields = ( {
 					value={ value }
 					min={ data.min }
 					after={ data.after }
+					isPro={ data?.is_pro }
+					proUpgradeMessage={ data?.pro_upgrade_message }
 					{ ...( handleChange && { handleChange } ) }
 					{ ...( autoSave !== undefined && { autoSave } ) }
 					{ ...( disableStyle !== undefined && { disableStyle } ) }
@@ -126,6 +139,8 @@ const RenderFields = ( {
 					name={ data.name }
 					value={ value }
 					optionsArray={ data.options }
+					isPro={ data?.is_pro }
+					proUpgradeMessage={ data?.pro_upgrade_message }
 					{ ...( handleChange && { handleChange } ) }
 					{ ...( autoSave !== undefined && { autoSave } ) }
 					{ ...( disableStyle !== undefined && { disableStyle } ) }
@@ -140,6 +155,8 @@ const RenderFields = ( {
 					value={ value }
 					optionsArray={ data.options }
 					placeholder={ data.placeholder }
+					proUpgradeMessage={ data?.pro_upgrade_message }
+					isPro={ data?.is_pro }
 					{ ...( handleChange && { handleChange } ) }
 					{ ...( autoSave !== undefined && { autoSave } ) }
 					{ ...( disableStyle !== undefined && { disableStyle } ) }
@@ -167,6 +184,8 @@ const RenderFields = ( {
 					unitOptions={ data.unit_options }
 					fields={ data.fields }
 					min={ data.min }
+					isPro={ data?.is_pro }
+					proUpgradeMessage={ data?.pro_upgrade_message }
 					{ ...( handleChange && { handleChange } ) }
 					{ ...( autoSave !== undefined && { autoSave } ) }
 					{ ...( disableStyle !== undefined && { disableStyle } ) }
@@ -188,6 +207,8 @@ const RenderFields = ( {
 					name={ data.name }
 					value={ value }
 					placeholder={ data.placeholder }
+					isPro={ data?.is_pro }
+					proUpgradeMessage={ data?.pro_upgrade_message }
 					{ ...( handleChange && { handleChange } ) }
 					{ ...( autoSave !== undefined && { autoSave } ) }
 					{ ...( disableStyle !== undefined && { disableStyle } ) }
@@ -200,6 +221,8 @@ const RenderFields = ( {
 					onChange={ ( rules ) =>
 						handleChange && handleChange( data.name, rules )
 					}
+					isPro={ data?.is_pro }
+					proUpgradeMessage={ data?.pro_upgrade_message }
 				/>
 			);
 		case 'test_email':
@@ -237,6 +260,50 @@ const RenderFields = ( {
 					title={ data.label }
 					description={ data.desc }
 					name={ data.name }
+				/>
+			);
+		case 'test_sms':
+			return (
+				<TestSms
+					title={ data.label }
+					description={ data.desc }
+					name={ data.name }
+					value={ value }
+				/>
+			);
+		case 'textarea_dropdown':
+			return (
+				<TextareaDropdownField
+					title={ data.label }
+					description={ data.desc }
+					name={ data.name }
+					value={ value }
+					options={ data?.options || [] }
+					{ ...( handleChange && { handleChange } ) }
+					{ ...( errors &&
+						errors[ data.name ] && {
+						error: errors[ data.name ],
+					} ) }
+					{ ...( autoSave !== undefined && { autoSave } ) }
+					{ ...( disableStyle !== undefined && { disableStyle } ) }
+				/>
+			);
+		case 'password':
+			return (
+				<PasswordField
+					title={ data.label }
+					description={ data.desc }
+					name={ data.name }
+					value={ value }
+					isPro={ data?.is_pro }
+					proUpgradeMessage={ data?.pro_upgrade_message }
+					{ ...( handleChange && { handleChange } ) }
+					{ ...( errors &&
+						errors[ data.name ] && {
+						error: errors[ data.name ],
+					} ) }
+					{ ...( autoSave !== undefined && { autoSave } ) }
+					{ ...( disableStyle !== undefined && { disableStyle } ) }
 				/>
 			);
 		default:

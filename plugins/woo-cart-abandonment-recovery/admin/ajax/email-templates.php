@@ -264,16 +264,15 @@ class Email_Templates extends Ajax_Base {
 
 		if ( $existing_meta ) {
 			// Update existing meta.
-			$wpdb->update(
-				$wpdb->prefix . 'cartflows_ca_email_templates_meta',
-				array(
-					'meta_value' => sanitize_text_field( $meta_value ), //phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
-				),
-				array(
-					'email_template_id' => $email_template_id,
-					'meta_key'          => sanitize_text_field( $meta_key ),
+			$cart_abandonment_template_meta_table_name = $wpdb->prefix . CARTFLOWS_CA_EMAIL_TEMPLATE_META_TABLE;
+			$wpdb->query(
+				$wpdb->prepare(
+					"UPDATE {$cart_abandonment_template_meta_table_name} SET meta_value = %s WHERE email_template_id = %d AND meta_key = %s", //phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+					$meta_value,
+					$email_template_id,
+					sanitize_text_field( $meta_key )
 				)
-			);
+			); // db call ok; no cache ok.
 		} else {
 			// Insert new meta.
 			$this->add_email_template_meta( $email_template_id, $meta_key, $meta_value );
@@ -378,12 +377,13 @@ class Email_Templates extends Ajax_Base {
 	 */
 	public function add_email_template_meta( $email_template_id, $meta_key, $meta_value ) {
 		global $wpdb;
-		$wpdb->insert(
-			$wpdb->prefix . 'cartflows_ca_email_templates_meta',
-			array(
-				'email_template_id' => $email_template_id,
-				'meta_key'          => sanitize_text_field( $meta_key ),
-				'meta_value'        => sanitize_text_field( $meta_value ), //phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
+		$cart_abandonment_template_meta_table_name = $wpdb->prefix . CARTFLOWS_CA_EMAIL_TEMPLATE_META_TABLE;
+		$wpdb->query(
+			$wpdb->prepare(
+				"INSERT INTO {$cart_abandonment_template_meta_table_name} (email_template_id, meta_key, meta_value) VALUES (%d, %s, %s)", //phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+				$email_template_id,
+				sanitize_text_field( $meta_key ),
+				sanitize_text_field( $meta_value )
 			)
 		); // db call ok; no cache ok.
 	}
@@ -635,45 +635,125 @@ class Email_Templates extends Ajax_Base {
 		$product_ids    = isset( $_POST['product_ids'] ) ? sanitize_text_field( wp_unslash( $_POST['product_ids'] ) ) : '';
 		$posts_per_page = isset( $_POST['posts_per_page'] ) ? absint( wp_unslash( $_POST['posts_per_page'] ) ) : 20;
 		
-		// Build query args based on input.
-		$args = [
-			'post_type'      => 'product',
-			'post_status'    => 'publish',
-			'posts_per_page' => $posts_per_page,
-			'fields'         => 'ids',
-		];
-		
-		// Add search paramater if present and length is greater than 3.
-		if ( ! empty( $term ) && strlen( $term ) >= 3 ) {
-			$args['s'] = $term;
-		} elseif ( ! empty( $product_ids ) ) {
-			// Get the selected product Info based on IDs provided.
-			$ids_array = array_filter( array_map( 'intval', explode( ',', $product_ids ) ) );
-			if ( ! empty( $ids_array ) ) {
-				$args['post__in']       = $ids_array;
-				$args['posts_per_page'] = -1;
-				$args['orderby']        = 'post__in';
-			}
-		}
-		
-		// Fetch the products based on the args. Such as search term and provided Product Ids.
-		$query    = new \WP_Query( $args );
 		$products = [];
 		
-		// Prepare the array of products.
-		if ( $query->have_posts() ) {
-			foreach ( $query->posts as $product_id ) {
-				$image_id   = get_post_thumbnail_id( $product_id );
-				$image_url  = $image_id ? wp_get_attachment_image_url( $image_id, 'thumbnail' ) : '';
-				$products[] = [
-					'value' => (string) $product_id,
-					'label' => get_the_title( $product_id ),
-					'image' => $image_url,
-				];
+		if ( ! empty( $term ) && strlen( $term ) >= 3 ) {
+			// Use WooCommerce's search method to search the products.
+			$data = \WC_Data_Store::load( 'product' );
+			$ids  = $data->search_products( $term, '', true, false, $posts_per_page );
+			
+			// Get all product objects including variations.
+			$product_objects = array_filter( array_map( 'wc_get_product', $ids ), 'wc_products_array_filter_readable' );
+			
+			foreach ( $product_objects as $product_object ) {
+				if ( ! $product_object ) {
+					continue;
+				}
+				
+				$products[] = $this->format_product_data( $product_object );
+			}
+		} elseif ( ! empty( $product_ids ) ) {
+			// Get products by IDs.
+			$ids_array = array_filter( array_map( 'intval', explode( ',', $product_ids ) ) );
+			if ( ! empty( $ids_array ) ) {
+				foreach ( $ids_array as $product_id ) {
+					$product_object = wc_get_product( $product_id );
+					if ( $product_object ) {
+						$products[] = $this->format_product_data( $product_object );
+					}
+				}
 			}
 		}
 		
 		wp_send_json_success( $products );
+	}
+
+	/**
+	 * Format product data for response.
+	 *
+	 * @param WC_Product $product_object Product object.
+	 * @return array Formatted product data.
+	 */
+	private function format_product_data( $product_object ) {
+		$product_id = $product_object->get_id();
+		$image_id   = get_post_thumbnail_id( $product_id );
+		$image_url  = $image_id ? wp_get_attachment_image_url( $image_id, 'thumbnail' ) : '';
+		
+		$managing_stock = $product_object->managing_stock();
+		$is_in_stock    = $product_object->is_in_stock();
+		$product_type   = $product_object->get_type();
+		
+		$availibility_text   = $this->get_stock_availability_text( $product_object );
+		$product_price_range = $this->get_formatted_product_price_range( $product_object );
+		
+		// Format name for variations.
+		$formatted_name = $product_object->get_name();
+
+		// phpcs:disable
+		/*
+		 if ( $product_type === 'variation' ) {
+			 $formatted_name = $formatted_name . ' - ' . __( 'Variation', 'woo-cart-abandonment-recovery' );
+		} */
+		// phpcs:enable
+		
+		return [
+			'value'          => (string) $product_id,
+			'label'          => $formatted_name,
+			'image'          => $image_url,
+			'original_price' => $product_object->get_price(),
+			'product_name'   => $product_object->get_name(),
+			'product_type'   => $product_type,
+			'stock_status'   => $availibility_text,
+			'in_stock'       => $is_in_stock,
+			'price_range'    => $product_price_range,
+		];
+	}
+
+	/**
+	 * Get stock availability text for product.
+	 *
+	 * @param WC_Product $product_object Product object.
+	 * @return string Stock availability text.
+	 */
+	private function get_stock_availability_text( $product_object ) {
+		if ( ! $product_object->is_in_stock() ) {
+			return __( 'Out of stock', 'woo-cart-abandonment-recovery' );
+		}
+		
+		if ( $product_object->managing_stock() ) {
+			$stock_quantity = $product_object->get_stock_quantity();
+			if ( $stock_quantity <= 0 ) {
+				return __( 'Out of stock', 'woo-cart-abandonment-recovery' );
+			}
+			return sprintf( 
+				// translators: %d: Number of items in stock.
+				__( '%d in stock', 'woo-cart-abandonment-recovery' ), 
+				$stock_quantity
+			);
+		}
+		
+		return __( 'In stock', 'woo-cart-abandonment-recovery' );
+	}
+
+	/**
+	 * Get formatted product price range.
+	 *
+	 * @param WC_Product $product_object Product object.
+	 * @return string Formatted price range.
+	 */
+	private function get_formatted_product_price_range( $product_object ) {
+		if ( $product_object->is_type( 'variable' ) ) {
+			$prices = $product_object->get_variation_prices( true );
+			if ( ! empty( $prices['price'] ) ) {
+				$min_price = current( $prices['price'] );
+				$max_price = end( $prices['price'] );
+				if ( $min_price !== $max_price ) {
+					return wc_format_price_range( $min_price, $max_price );
+				}
+			}
+		}
+		
+		return $product_object->get_price_html();
 	}
 
 	/**

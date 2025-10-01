@@ -1,5 +1,5 @@
 === Email Encoder - Protect Email Addresses and Phone Numbers ===
-Contributors: ironikus
+Contributors: onlineoptimisation
 Tags: anti spam, protect, encode, encrypt, hide, antispam, phone number, spambot, secure, e-mail, email, mail
 Requires at least: 4.7
 Requires PHP: 5.1
@@ -9,8 +9,8 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Author URI: https://wpemailencoder.com/
 Plugin URI: https://wordpress.org/plugins/email-encoder-bundle/
-Contributors: ironikus
-Donate link: https://paypal.me/ironikus
+Contributors: onlineoptimisation
+Donate link: https://paypal.me/onlineoptimisation
 
 Protect email addresses and phone numbers on your site and hide them from spambots. Easy to use & flexible.
 
