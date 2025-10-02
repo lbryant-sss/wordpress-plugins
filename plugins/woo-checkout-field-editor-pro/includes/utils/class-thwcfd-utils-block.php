@@ -333,7 +333,7 @@ class THWCFD_Utils_Block {
 				'index'         => 1,
 			],
 			'first_name' => [
-				'label'          => __( 'First namezmnbmbmz', 'woocommerce' ),
+				'label'          => __( 'First name', 'woocommerce' ),
 				'optionalLabel'  => __(
 					'First name (optional)',
 					'woocommerce'

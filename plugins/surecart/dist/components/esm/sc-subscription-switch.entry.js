@@ -1,5 +1,5 @@
 import { r as registerInstance, h, F as Fragment, a as getElement } from './index-745b6bec.js';
-import { a as apiFetch } from './fetch-8ecbbe53.js';
+import { a as apiFetch } from './fetch-bc141774.js';
 import { o as onFirstVisible } from './lazy-deb42890.js';
 import { i as intervalString } from './price-af9f0dbf.js';
 import { a as addQueryArgs } from './add-query-args-0e2a8393.js';

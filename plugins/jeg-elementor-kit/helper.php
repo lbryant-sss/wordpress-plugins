@@ -1,8 +1,8 @@
 <?php
 /**
- * Jeg Elementor Kit Helper
+ * Jeg Kit Helper
  *
- * @package jeg-elementor-kit
+ * @package jeg-kit
  * @author Jegtheme
  * @since 1.0.0
  */
@@ -308,7 +308,7 @@ if ( ! function_exists( 'jkit_get_public_post_type_array' ) ) {
 
 if ( ! function_exists( 'jkit_get_element_data' ) ) {
 	/**
-	 * JKit Get Element Data
+	 * Jeg Kit Get Element Data
 	 *
 	 * @param $type
 	 * @param $meta
@@ -325,7 +325,7 @@ if ( ! function_exists( 'jkit_get_element_data' ) ) {
 
 if ( ! function_exists( 'jkit_get_element' ) ) {
 	/**
-	 * JKit Get Element
+	 * Jeg Kit Get Element
 	 *
 	 * @param $status
 	 * @param $type
@@ -374,7 +374,7 @@ if ( ! function_exists( 'jkit_get_element' ) ) {
 }
 if ( ! function_exists( 'get_jkit_template_classes' ) ) {
 	/**
-	 * Get JKit additional temlpate classes
+	 * Get Jeg Kit additional temlpate classes
 	 *
 	 * @param $template
 	 *
@@ -540,7 +540,7 @@ if ( ! function_exists( 'jkit_is_preview_mode' ) ) {
 if ( ! function_exists( 'jkit_remove_form_control' ) ) {
 	/**
 	 * Remove Form Control.
-	 * Conditions for not using the Form Control from the Jeg Elementor Kit. Usually used when there is a conflict with another version of Bootstrap.
+	 * Conditions for not using the Form Control from the Jeg Kit. Usually used when there is a conflict with another version of Bootstrap.
 	 *
 	 * @return bool
 	 */
@@ -626,7 +626,7 @@ if ( ! function_exists( 'jkit_allowed_html' ) ) {
 	add_filter( 'wp_kses_allowed_html', 'jkit_allowed_html', 99 );
 
 	/**
-	 * Allowed HTML List by Jeg Elementor Kit
+	 * Allowed HTML List by Jeg Kit
 	 */
 	function jkit_allowed_html( $allowedtags = array() ) {
 		$allowedtags['img'] = array_merge(

@@ -80,6 +80,15 @@ function pfd_assets_enqueue_js_library() {
 		// Divi 2.x or non-Divi theme. Limited support.
 		$is_divi_v3 = false;
 	}
+	
+	/**
+	* Check for 3rd party services fetch to show/hide popup by default
+	*
+	*/
+	// phpcs:disable WordPress.Security.NonceVerification
+	$nowprocket = isset( $_GET['nowprocket'] ) && '1' === $_GET['nowprocket'];
+	$no_optimize = isset( $_GET['no_optimize'] ) && '1' === $_GET['no_optimize'];
+	
 
 	$js_data = [];
 
@@ -428,10 +437,26 @@ function pfd_assets_enqueue_js_library() {
 		'all'
 	);
 	
+	if ( !$nowprocket && !$no_optimize ) {
+		
+		wp_register_style(
+			'css-divi-area-popuphidden',
+			pfd_url( 'styles/front-popuphidden.min.css' ),
+			[],
+			$cache_version,
+			'all'
+		);
+	}
+	
 	}
 
 	wp_enqueue_script( 'js-divi-area' );
 	wp_enqueue_style( 'css-divi-area' );
+	
+	if ( !$nowprocket && !$no_optimize ) {
+		
+		wp_enqueue_style( 'css-divi-area-popuphidden' );
+	}
 
 	if ( 'front' === $base_name ) {
 		$inline_css = sprintf(

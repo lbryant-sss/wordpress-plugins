@@ -2,7 +2,7 @@
 /**
  * Fun Fact Elementor Class
  *
- * @package jeg-elementor-kit
+ * @package jeg-kit
  * @author Jegtheme
  * @since 1.0.0
  */

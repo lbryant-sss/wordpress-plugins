@@ -719,10 +719,19 @@ function pfd_divi5_filter_wrapper_render( $module_wrapper, $args ): string {
         return et_core_esc_previously( $module_wrapper );
     }
 	
+    $html = $module_wrapper;
+	
+    // Set meta charset as UTF-8
+    $metacharset = '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
+	
+    // Prepend meta charset declaration to treat string as UTF-8
+    $html = $metacharset . $html;
+	
     // Create a new DOMDocument instance and load the HTML content of the module wrapper.
     $dom = new \DOMDocument();
     libxml_use_internal_errors( true ); // Suppress warnings for invalid HTML.
-    $dom->loadHTML( $module_wrapper, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD );
+    $dom->preserveWhiteSpace = true;
+    $dom->loadHTML( $html, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD );
     libxml_clear_errors();
 
     // Bail early if the Section module content element doesn't exist.
@@ -738,11 +747,12 @@ function pfd_divi5_filter_wrapper_render( $module_wrapper, $args ): string {
         return et_core_esc_previously( $module_wrapper );
     }
 	
+	// Bail early if section module Popup ID doesn't exist.
 	$popup_id = $module_attrs['da_popup_slug']['innerContent']['desktop']['value'] ?? false;
 	
 	if ( ! $popup_id ) {
 		
-		return et_core_esc_previously( $module_element );
+		return et_core_esc_previously( $module_wrapper );
 	}
 	
 	foreach( $content_element as $node ) {
@@ -750,10 +760,12 @@ function pfd_divi5_filter_wrapper_render( $module_wrapper, $args ): string {
 		$node->setAttribute( 'id', $popup_id );
 	}
 	
-    // Save the updated HTML content of the module wrapper.
-    $module_wrapper = $dom->saveHTML();
+    $popup = $dom->getElementById( $popup_id );
 	
-	return et_core_esc_previously( $module_wrapper );
+    // Save the updated HTML content of the module wrapper.
+    $htmlUpdated = $dom->saveHTML( $popup );
+	
+	return et_core_esc_previously( $htmlUpdated );
 }
 
 

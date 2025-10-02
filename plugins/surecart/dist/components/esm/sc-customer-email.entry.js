@@ -1,9 +1,9 @@
 import { r as registerInstance, c as createEvent, h, H as Host } from './index-745b6bec.js';
-import { c as createOrUpdateCheckout } from './index-b401ec1a.js';
+import { c as createOrUpdateCheckout } from './index-5c73a1a2.js';
 import { a as getValueFromUrl } from './util-50af2a83.js';
 import { s as state$1 } from './store-f54d1b1f.js';
 import { s as state, o as onChange } from './mutations-6bbbe793.js';
-import './fetch-8ecbbe53.js';
+import './fetch-bc141774.js';
 import './add-query-args-0e2a8393.js';
 import './remove-query-args-938c53ea.js';
 import './index-06061d4e.js';

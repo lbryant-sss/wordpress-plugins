@@ -4,7 +4,7 @@
  *
  * @author Jegtheme
  * @since 1.6.0
- * @package jeg-elementor-kit
+ * @package jeg-kit
  */
 
 namespace Jeg\Elementor_Kit\Elements\Elementor;

@@ -1,8 +1,8 @@
 <?php
 /**
- * Jeg Elementor Kit Banner Class
+ * Jeg Kit Banner Class
  *
- * @package jeg-elementor-kit
+ * @package jeg-kit
  * @author Jegtheme
  * @since 2.5.5
  */
@@ -14,7 +14,7 @@ use Jeg\Elementor_Kit\Init;
 /**
  * Class Banner
  *
- * @package jeg-elementor-kit
+ * @package jeg-kit
  */
 class Banner {
 	/**

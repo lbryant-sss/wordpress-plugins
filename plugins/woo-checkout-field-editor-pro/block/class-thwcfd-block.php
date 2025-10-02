@@ -66,10 +66,11 @@ class THWCFD_Block {
         $remove_optional = apply_filters('thwcfe_remove_optional_label', false);
         $additional_fields = array_diff_key($fieldset, $default_address_fields);
         foreach ($additional_fields as $field_data) {
-			if($field_data['type'] === 'checkbox'){
-				//checkbox field required not supported
-				$field_data['required'] = false;
-			}
+			
+            // WooCommerce < 9.8.0 does not support required checkboxes
+            if((version_compare(THWCFD_Utils::get_wc_version(), '9.8.0', "<")) && $field_data['type'] === 'checkbox') {
+                $field_data['required'] = false;
+            }
             
             if (isset($field_data['label'])) {
                 $field_data['label'] = __($field_data['label'], 'woo-checkout-field-editor-pro');
@@ -170,16 +171,20 @@ class THWCFD_Block {
             }
             if (isset($field_set[$key])) {
                 $field['index'] = $field_set[$key]['priority'] ?? $field['index'];
-                $field['label'] = $field_set[$key]['label']?? $field['label'];
-                if($remove_optional){
-                    $field['optionalLabel'] = $field_set[$key]['label']?? $field['optionalLabel'];
-                }else{
-                    //$field['optionalLabel'] = $field_set[$key]['label']? $field_set[$key]['label'].' (optional)' : $field['optionalLabel'];
-                    $field['optionalLabel'] = !empty($field_set[$key]['label']) ? sprintf(
-                        /* translators: %s Field label. */
-                        __( '%s (optional)', 'woo-checkout-field-editor-pro' ),
-                        $field_set[$key]['label']
-                    ) : $field['optionalLabel'];
+               
+                if(apply_filters('thwcfe_block_address_field_dynamic_label', true)){
+                    $field['label'] = $field_set[$key]['label']?? $field['label'];
+                
+                    if($remove_optional){
+                        $field['optionalLabel'] = $field_set[$key]['label']?? $field['optionalLabel'];
+                    }else{
+                        //$field['optionalLabel'] = $field_set[$key]['label']? $field_set[$key]['label'].' (optional)' : $field['optionalLabel'];
+                        $field['optionalLabel'] = !empty($field_set[$key]['label']) ? sprintf(
+                            /* translators: %s Field label. */
+                            __( '%s (optional)', 'woo-checkout-field-editor-pro' ),
+                            $field_set[$key]['label']
+                        ) : $field['optionalLabel'];
+                    }
                 }
                 $field['required'] = $field_set[$key]['required'] ?? $field['required'];
                 
@@ -347,6 +352,7 @@ class THWCFD_Block {
                 continue;
             }
             $order_meta_fields = array();
+            $user_meta_fields = array();
             foreach($section_fields as $field_key => $field_value){
                 if (!isset($section->fields[$field_key])) {
                     continue;
@@ -363,10 +369,12 @@ class THWCFD_Block {
                 }
                 if (($field->property_set['user_meta'])) {
                     $user_meta_updates[$field_key] = $field_value;
+                    $user_meta_fields[$field_key] = $field_value;
                 }
                 
             }
             $order_meta_updates[$section_key] = $order_meta_fields;
+            $user_meta_updates[$section_key] = $user_meta_fields;
 		}
         if (!empty($order_meta_updates)) {
             foreach ($order_meta_updates as $key => $value) {
@@ -376,7 +384,7 @@ class THWCFD_Block {
         }
         if (!empty($user_meta_updates)) {
             $user_id = $order->get_user_id();
-            foreach ($order_meta_updates as $key => $value) {
+            foreach ($user_meta_updates as $key => $value) {
                 update_user_meta($user_id, $key, $value );
             }
         }

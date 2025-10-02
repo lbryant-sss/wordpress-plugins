@@ -1,4 +1,4 @@
-/* This file was automatically generated on Aug 29 2025 01:35:40 */
+/* This file was automatically generated on Sep 23 2025 23:38:44 */
 
 body {
 	--akismet-color-charcoal: #272635;
@@ -33,6 +33,7 @@ body {
 #akismet-plugin-container {
 	background-color: var(--akismet-color-light-grey);
 	font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen-Sans', 'Ubuntu', 'Cantarell', 'Helvetica Neue', sans-serif;
+	-webkit-font-smoothing: antialiased;
 }
 
 #akismet-plugin-container a {
@@ -86,9 +87,13 @@ body {
 	text-transform: none;
 }
 
-.akismet-new-snapshot .akismet-new-snapshot__number {
+.akismet-new-snapshot__number {
 	color: var(--akismet-color-charcoal);
+	display: block;
+	font-size: 32px;
+	font-weight: 400;
 	letter-spacing: -1px;
+	line-height: 1.5em;
 	text-align: right;
 }
 
@@ -405,6 +410,17 @@ p.akismet-setup-instructions__text {
 .akismet-setup-instructions__button:visited {
 	font-size: 1rem;
 	margin-inline-start: 1.5rem;
+}
+
+.akismet-toggles button {
+	background: none;
+	border: none;
+	padding: 0;
+	margin: 0;
+	color: var(--akismet-color-mid-green);
+	font: inherit;
+	text-decoration: underline;
+	cursor: pointer;
 }
 
 /* Setup - API key input */

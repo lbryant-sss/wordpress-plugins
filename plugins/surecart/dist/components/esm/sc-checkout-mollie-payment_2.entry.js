@@ -4,8 +4,8 @@ import './watchers-cee9e5e9.js';
 import { s as state$1, c as availableMethodTypes, f as hasMultipleMethodChoices, e as getAvailableProcessor, b as availableManualPaymentMethods } from './getters-b5084f91.js';
 import { e as on, s as state$2, u as updateFormState } from './mutations-6bbbe793.js';
 import { a as checkoutIsLocked } from './getters-970cdda4.js';
-import { l as lockCheckout, b as unLockCheckout } from './mutations-3826cde0.js';
-import { a as apiFetch } from './fetch-8ecbbe53.js';
+import { l as lockCheckout, b as unLockCheckout } from './mutations-766c6622.js';
+import { a as apiFetch } from './fetch-bc141774.js';
 import { a as MockProcessor, M as ManualPaymentMethods } from './MockProcessor-498b60c5.js';
 import { c as createErrorNotice } from './mutations-ed6d0770.js';
 import { a as addQueryArgs } from './add-query-args-0e2a8393.js';
@@ -21,7 +21,7 @@ import './google-a86aa761.js';
 import './currency-a0c9bff4.js';
 import './price-af9f0dbf.js';
 import './address-b892540d.js';
-import './index-b401ec1a.js';
+import './index-5c73a1a2.js';
 
 const listenTo = (prop, propKey, callback) => on('set', (key, newValue, oldValue) => {
     // ignore non-keys

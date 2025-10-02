@@ -1,8 +1,8 @@
 <?php
 /**
- * Jeg Elementor Kit Class
+ * Jeg Kit Class
  *
- * @package jeg-elementor-kit
+ * @package jeg-kit
  * @author Jegtheme
  * @since 1.2.0
  */
@@ -451,7 +451,7 @@ class Ajax {
 	}
 
 	/**
-	 * JKit Update Sequence
+	 * Jeg Kit Update Sequence
 	 *
 	 * @param $ids
 	 */

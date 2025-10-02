@@ -1,8 +1,8 @@
 <?php
 /**
- * Jeg Elementor Kit Class
+ * Jeg Kit Class
  *
- * @package jeg-elementor-kit
+ * @package jeg-kit
  * @author Jegtheme
  * @since 1.0.0
  */
@@ -110,7 +110,7 @@ class Init {
 	}
 
 	/**
-	 * Upgrader Elementor Data from Jeg Elementor Kit due to conflict with Metform plugin
+	 * Upgrader Elementor Data from Jeg Kit due to conflict with Metform plugin
 	 *
 	 * @since 2.5.11
 	 */

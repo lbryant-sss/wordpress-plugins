@@ -3,8 +3,8 @@
 		<img src="<?php echo esc_url( JEG_ELEMENTOR_KIT_URL . '/assets/img/admin/icon-dashboard.svg' ); ?>" width="24px" height="24px" alt="<?php echo JEG_ELEMENTOR_KIT_NAME; ?>" loading="lazy">
 	</div>
 	<div class="jkit-notice-banner-content">
-		<h2><?php esc_html_e( 'Jeg Elementor Kit Updated!', 'jeg-elementor-kit' ); ?></h2>
-		<p><?php esc_html_e( 'Hi there! Thanks for updating and sticking with the Jeg Elementor Kit. We hope our plugin is proving helpful in building your website. If you can spare a few moments, please let us know what you think of Jeg Elementor Kit by leaving a rating, we\'d be super grateful — Thanks a lot!', 'jeg-elementor-kit' ); ?></p>
+		<h2><?php esc_html_e( 'Jeg Kit Updated!', 'jeg-elementor-kit' ); ?></h2>
+		<p><?php esc_html_e( 'Hi there! Thanks for updating and sticking with the Jeg Kit. We hope our plugin is proving helpful in building your website. If you can spare a few moments, please let us know what you think of Jeg Kit by leaving a rating, we\'d be super grateful — Thanks a lot!', 'jeg-elementor-kit' ); ?></p>
 		<div class="jkit-notice-action">
 			<div class="jkit-notice-action-left">
 				<a href="https://wordpress.org/support/plugin/jeg-elementor-kit/reviews/#new-post" target="_blank" class="jkit-notice-action-button">

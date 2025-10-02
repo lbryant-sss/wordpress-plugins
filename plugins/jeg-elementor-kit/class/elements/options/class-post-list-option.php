@@ -2,7 +2,7 @@
 /**
  * Post List Option Class
  *
- * @package jeg-elementor-kit
+ * @package jeg-kit
  * @author Jegtheme
  * @since 1.2.0
  */
@@ -59,7 +59,7 @@ class Post_List_Option extends Option_Abstract {
 	 * @return string
 	 */
 	public function get_element_name() {
-		return esc_html__( 'JKit - Post List', 'jeg-elementor-kit' );
+		return esc_html__( 'Jeg Kit - Post List', 'jeg-elementor-kit' );
 	}
 
 	/**
@@ -68,7 +68,7 @@ class Post_List_Option extends Option_Abstract {
 	 * @return string
 	 */
 	public function get_category() {
-		return esc_html__( 'Jeg Elementor Kit', 'jeg-elementor-kit' );
+		return esc_html__( 'Jeg Kit', 'jeg-elementor-kit' );
 	}
 
 	/**

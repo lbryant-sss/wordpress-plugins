@@ -2,7 +2,7 @@
 /**
  * Product Categories Class
  *
- * @package jeg-elementor-kit
+ * @package jeg-kit
  * @author Jegtheme
  * @since 2.4.0
  */
@@ -58,7 +58,7 @@ class Product_Categories_Option extends Option_WooCommerce_Abstract {
 	 * @return string
 	 */
 	public function get_element_name() {
-		return esc_html__( 'JKit - Product Categories', 'jeg-elementor-kit' );
+		return esc_html__( 'Jeg Kit - Product Categories', 'jeg-elementor-kit' );
 	}
 
 	/**
@@ -67,7 +67,7 @@ class Product_Categories_Option extends Option_WooCommerce_Abstract {
 	 * @return string
 	 */
 	public function get_category() {
-		return esc_html__( 'Jeg Elementor Kit', 'jeg-elementor-kit' );
+		return esc_html__( 'Jeg Kit', 'jeg-elementor-kit' );
 	}
 
 	/**

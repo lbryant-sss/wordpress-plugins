@@ -1,8 +1,8 @@
 <?php
 /**
- * Jeg Elementor Kit Class
+ * Jeg Kit Class
  *
- * @package jeg-elementor-kit
+ * @package jeg-kit
  * @author Jegtheme
  * @since 1.2.0
  */
@@ -54,7 +54,7 @@ class Asset {
 	 * Setup Hooks
 	 */
 	private function setup_hook() {
-		add_filter( 'wp_handle_upload_prefilter', array( $this, 'svg_upload_handler' ) );
+		add_filter( 'wp_handle_upload', array( $this, 'svg_upload_handler' ) );
 
 		add_action( 'admin_init', array( $this, 'remove_form_control' ), 99 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_frontend_scripts' ), 98 );
@@ -1183,7 +1183,7 @@ class Asset {
 	public function register_icons( $icons ) {
 		$icons['jkiticon'] = array(
 			'name'          => 'jkiticon',
-			'label'         => esc_html__( 'JKit - Icons', 'jeg-elementor-kit' ),
+			'label'         => esc_html__( 'Jeg Kit - Icons', 'jeg-elementor-kit' ),
 			'url'           => JEG_ELEMENTOR_KIT_URL . '/assets/fonts/jkiticon/jkiticon.css',
 			'enqueue'       => array(),
 			'prefix'        => 'jki-',
@@ -1226,36 +1226,32 @@ class Asset {
 	}
 
 	/**
+	 * SVG Upload Handler
+	 * 
 	 * Check if the file is an SVG, if so handle appropriately
 	 *
-	 * @param array $file An array of data for a single file.
+	 * @param array $data An array of data for a single file.
 	 *
 	 * @return mixed
 	 */
-	public function svg_upload_handler( $file ) {
-		if ( ! isset( $file['tmp_name'] ) ) {
-			return $file;
-		}
+	public function svg_upload_handler( $data ) {
+		if ( isset( $data['type'] ) && 'image/svg+xml' === $data['type'] ) {
+			$sanitized = $this->svg_sanitizer( $data['file'] );
 
-		$file_name   = isset( $file['name'] ) ? $file['name'] : '';
-		$wp_filetype = wp_check_filetype_and_ext( $file['tmp_name'], $file_name );
-		$type        = ! empty( $wp_filetype['type'] ) ? $wp_filetype['type'] : '';
-
-		if ( 'image/svg+xml' === $type ) {
-			if ( ! $this->svg_sanitizer( $file['tmp_name'] ) ) {
-				$file['error'] = esc_html__( 'This file cannot be sanitized; therefore, it cannot be checked for security and cannot be uploaded for security reasons. For further inquiries, please contact Jeg Elementor Kit support.', 'jeg-elementor-kit' );
+			if ( ! $sanitized ) {
+				$data['error'] = esc_html__( 'This file cannot be sanitized; therefore, it cannot be checked for security and cannot be uploaded for security reasons. For further inquiries, please contact Jeg Kit support.', 'jeg-elementor-kit' );
 			}
 		}
 
-		return $file;
+		return $data;
 	}
 
 	/**
 	 * Sanitize the SVG
 	 *
-	 * @param string $path Temp file path.
+	 * @param string $path File path.
 	 *
-	 * @return bool|int
+	 * @return strng|false Sanitized SVG content or false on failure
 	 */
 	protected function svg_sanitizer( $path ) {
 		$svg_sanitizer = new \enshrined\svgSanitize\Sanitizer();
@@ -1263,12 +1259,10 @@ class Asset {
 		$file = file_get_contents( $path );
 		$file = $svg_sanitizer->sanitize( $file );
 
-		if ( false === $file ) {
-			return false;
+		if ( $file ) {
+			file_put_contents( $path, $file );
 		}
 
-		file_put_contents( $path, $file );
-
-		return true;
+		return $file;
 	}
 }

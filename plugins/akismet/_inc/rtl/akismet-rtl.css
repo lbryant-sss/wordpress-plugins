@@ -1,4 +1,4 @@
-/* This file was automatically generated on Aug 28 2025 23:50:16 */
+/* This file was automatically generated on Sep 10 2025 03:13:18 */
 
 .wp-admin.jetpack_page_akismet-key-config, .wp-admin.settings_page_akismet-key-config {
 	background-color:#f3f6f8;
@@ -120,12 +120,6 @@ table.comments td.comment p a:after {
 	box-sizing: border-box;
 }
 
-.akismet-new-snapshot__number {
-	display: block;
-	font-size: 32px;
-	font-weight: lighter;
-	line-height: 1.5em;
-}
 
 .akismet-settings th:first-child {
 	vertical-align: top;

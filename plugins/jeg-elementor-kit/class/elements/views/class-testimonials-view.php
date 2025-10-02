@@ -2,7 +2,7 @@
 /**
  * Testimonials View Class
  *
- * @package jeg-elementor-kit
+ * @package jeg-kit
  * @author Jegtheme
  * @since 1.0.0
  */
@@ -433,10 +433,14 @@ class Testimonials_View extends View_Abstract {
 
 			if ( isset( $this->attribute[ 'sg_setting_slide_show_responsive_' . $breakpoint['key'] ] ) ) {
 				$responsive[ $breakpoint['key'] ]['items'] = ! empty( $this->attribute[ 'sg_setting_slide_show_responsive_' . $breakpoint['key'] ]['size'] ) ? $this->attribute[ 'sg_setting_slide_show_responsive_' . $breakpoint['key'] ]['size'] : $responsive[ $prev_key ]['items'];
+			} elseif ( in_array( $breakpoint['key'], array( 'tablet', 'mobile' ) ) ) {
+				$responsive[ $breakpoint['key'] ]['items'] = $default[ $breakpoint['key'] ]['items'];
 			}
 
 			if ( isset( $this->attribute[ 'sg_setting_margin_responsive_' . $breakpoint['key'] ] ) ) {
 				$responsive[ $breakpoint['key'] ]['margin'] = ! empty( $this->attribute[ 'sg_setting_margin_responsive_' . $breakpoint['key'] ]['margin'] ) ? $this->attribute[ 'sg_setting_margin_responsive_' . $breakpoint['key'] ]['margin'] : $responsive[ $prev_key ]['margin'];
+			} elseif ( in_array( $breakpoint['key'], array( 'tablet', 'mobile' ) ) ) {
+				$responsive[ $breakpoint['key'] ]['margin'] = $default[ $breakpoint['key'] ]['margin'];
 			}
 
 			$prev_key = $breakpoint['key'];

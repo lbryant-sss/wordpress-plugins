@@ -2,7 +2,7 @@
 /**
  * Pie Chart Option Class
  *
- * @package jeg-elementor-kit
+ * @package jeg-kit
  * @author Jegtheme
  * @since 1.1.0
  */
@@ -45,7 +45,7 @@ class Pie_Chart_Option extends Option_Abstract {
 	 * @return string
 	 */
 	public function get_element_name() {
-		return esc_html__( 'JKit - Pie Chart', 'jeg-elementor-kit' );
+		return esc_html__( 'Jeg Kit - Pie Chart', 'jeg-elementor-kit' );
 	}
 
 	/**
@@ -54,7 +54,7 @@ class Pie_Chart_Option extends Option_Abstract {
 	 * @return string
 	 */
 	public function get_category() {
-		return esc_html__( 'Jeg Elementor Kit', 'jeg-elementor-kit' );
+		return esc_html__( 'Jeg Kit', 'jeg-elementor-kit' );
 	}
 
 	/**

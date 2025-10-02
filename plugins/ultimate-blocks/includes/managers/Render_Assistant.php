@@ -14,55 +14,45 @@ use function add_filter;
  * Assistant to improve render operations of plugin blocks.
  */
 class Render_Assistant {
-	use Manager_Base_Trait;
+    use Manager_Base_Trait;
 
-	/**
-	 * Main process that will be called during initialization of manager.
-	 *
-	 * @return void
-	 */
-	protected function init_process() {
-		add_filter( 'render_block_data', array( $this, 'inject_render_data' ), 10, 1 );
-	}
+    private $defaultValues = [];
 
-	/**
-	 * Inject render data to plugin blocks.
-	 *
-	 * @param array $block array representation of block.
-	 *
-	 * @return array block render data
-	 */
-	public function inject_render_data( $block ) {
-		$block_name      = $block['blockName'];
-		$is_plugin_block = ! is_null( $block_name ) && preg_match( '/^ub\/(.+)$/', $block_name );
+    protected function init_process() {
+        // Load defaults once here
+        $defaults_file = trailingslashit( ULTIMATE_BLOCKS_PATH ) . 'src/defaults.php';
+        if ( file_exists( $defaults_file ) ) {
+            require $defaults_file;
+            if ( isset( $defaultValues ) && is_array( $defaultValues ) ) {
+                $this->defaultValues = $defaultValues;
+            }
+        }
 
-		// only inject render data to plugin blocks.
-		if ( $is_plugin_block ) {
-			require trailingslashit( ULTIMATE_BLOCKS_PATH ) . 'src/defaults.php';
+        add_filter( 'render_block_data', array( $this, 'inject_render_data' ), 10, 1 );
+    }
 
-			// inject data if default values are available.
-			if ( isset( $defaultValues[ $block_name ]['attributes'] ) ) {
-				$block_default_attrs = $defaultValues[ $block_name ]['attributes'];
-				unset( $block_default_attrs['blockID'] );
+    public function inject_render_data( $block ) {
+        $block_name      = $block['blockName'];
+        $is_plugin_block = ! is_null( $block_name ) && preg_match( '/^ub\/(.+)$/', $block_name );
 
-				// parse default attrs into key=>value format.
-				$parsed_default_attrs = array_reduce(
-					array_keys( $block_default_attrs ),
-					function ( $carry, $attr_id ) use ( $block_default_attrs ) {
-						if ( isset( $block_default_attrs[ $attr_id ]['default'] ) ) {
-							$carry[ $attr_id ] = $block_default_attrs[ $attr_id ]['default'];
-						}
+        if ( $is_plugin_block && isset( $this->defaultValues[ $block_name ]['attributes'] ) ) {
+            $block_default_attrs = $this->defaultValues[ $block_name ]['attributes'];
+            unset( $block_default_attrs['blockID'] );
 
-						return $carry;
-					},
-					array()
-				);
+            $parsed_default_attrs = array_reduce(
+                array_keys( $block_default_attrs ),
+                function ( $carry, $attr_id ) use ( $block_default_attrs ) {
+                    if ( isset( $block_default_attrs[ $attr_id ]['default'] ) ) {
+                        $carry[ $attr_id ] = $block_default_attrs[ $attr_id ]['default'];
+                    }
+                    return $carry;
+                },
+                array()
+            );
 
-				// inject default block attributes into supplied ones.
-				$block['attrs'] = array_merge( $parsed_default_attrs, isset($block['attrs']) ? $block['attrs'] : array() );
-			}
-		}
+            $block['attrs'] = array_merge( $parsed_default_attrs, isset($block['attrs']) ? $block['attrs'] : array() );
+        }
 
-		return $block;
-	}
+        return $block;
+    }
 }

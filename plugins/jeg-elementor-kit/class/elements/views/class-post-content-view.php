@@ -2,7 +2,7 @@
 /**
  * Post Content View Class
  *
- * @package jeg-elementor-kit
+ * @package jeg-kit
  * @author Jegtheme
  * @since 2.2.0
  */

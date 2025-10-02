@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Give - Donation Plugin plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Give - Donation Plugin 4.9.0\n"
+"Project-Id-Version: Give - Donation Plugin 4.10.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/givewp\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-09-17T16:45:55+00:00\n"
+"POT-Creation-Date: 2025-10-01T11:29:11+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: give\n"
@@ -449,7 +449,6 @@ msgstr ""
 #: includes/admin/admin-actions.php:648
 #: includes/admin/tools/views/html-admin-page-import-donations.php:25
 #: includes/admin/tools/views/html-admin-page-imports.php:47
-#: build/assets/dist/js/give-admin-donations.js:4
 msgid "Import Donations"
 msgstr ""
 
@@ -483,6 +482,7 @@ msgstr ""
 #: includes/admin/emails/class-donor-register-email.php:41
 #: includes/admin/emails/class-email-access-email.php:42
 #: includes/admin/reports/class-donor-reports-table.php:67
+#: src/Donations/ListTable/Columns/DonorColumn.php:38
 #: src/Email/Notifications/DonationProcessingReceipt.php:27
 #: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:135
 #: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:145
@@ -823,6 +823,7 @@ msgid "Untitled (#%s)"
 msgstr ""
 
 #: includes/admin/class-give-html-elements.php:245
+#: build/assets/dist/js/give-admin-donors.js:4
 msgid "All Campaigns"
 msgstr ""
 
@@ -924,24 +925,6 @@ msgstr ""
 #: includes/admin/forms/dashboard-columns.php:501
 #: includes/admin/payments/class-payments-table.php:166
 #: src/Helpers/IntlTelInput.php:52
-#: build/assets/dist/js/give-admin-donation-forms.js:4
-#: build/assets/dist/js/give-admin-donations.js:4
-#: build/assets/dist/js/give-admin-donors.js:4
-#: build/assets/dist/js/give-admin-event-tickets-details.js:4
-#: build/assets/dist/js/give-admin-event-tickets.js:4
-#: build/assets/dist/js/give-admin-subscriptions.js:4
-#: build/assets/dist/js/give-log-list-table-app.js:4
-#: build/assets/dist/js/give-migrations-list-table-app.js:4
-#: build/assets/dist/js/orphaned-forms-list-table.js:4
-#: build/campaignBlocks.js:4
-#: build/campaignDetails.js:10
-#: build/campaignGridApp.js:4
-#: build/campaignGridBlock.js:4
-#: build/campaignListTable.js:4
-#: build/donationDetails.js:10
-#: build/donorDetails.js:10
-#: build/elementorCampaignGridWidget.js:4
-#: build/subscriptionDetails.js:10
 msgid "Search"
 msgstr ""
 
@@ -1233,7 +1216,7 @@ msgstr ""
 #: includes/admin/tools/data/class-give-tools-recount-form-stats.php:219
 #: includes/admin/tools/data/class-give-tools-recount-income.php:187
 #: includes/admin/tools/data/class-give-tools-recount-single-donor-stats.php:161
-#: includes/admin/tools/data/class-give-tools-reset-stats.php:237
+#: includes/admin/tools/data/class-give-tools-reset-stats.php:295
 #: includes/admin/tools/export/class-batch-export.php:158
 #: includes/admin/tools/export/class-core-settings-export.php:81
 #: includes/admin/tools/export/class-export.php:186
@@ -1249,7 +1232,7 @@ msgstr ""
 #: includes/api/class-give-api.php:2004
 #: includes/class-give-scripts.php:305
 #: includes/class-notices.php:630
-#: includes/formatting.php:789
+#: includes/formatting.php:829
 #: includes/gateways/stripe/includes/admin/admin-actions.php:183
 #: src/LegacyPaymentGateways/Adapters/LegacyPaymentGatewayAdapter.php:282
 #: src/LegacyPaymentGateways/Adapters/LegacyPaymentGatewayAdapter.php:303
@@ -1311,8 +1294,8 @@ msgstr ""
 #: includes/admin/tools/export/export-actions.php:31
 #: includes/admin/tools/export/pdf-reports.php:35
 #: includes/api/class-give-api.php:1961
-#: includes/formatting.php:785
-#: includes/formatting.php:827
+#: includes/formatting.php:825
+#: includes/formatting.php:867
 #: includes/gateways/actions.php:48
 #: includes/process-donation.php:913
 #: src/LegacyPaymentGateways/Adapters/LegacyPaymentGatewayAdapter.php:278
@@ -1668,7 +1651,7 @@ msgstr ""
 #: includes/admin/forms/dashboard-columns.php:38
 #: includes/admin/import-functions.php:414
 #: includes/admin/payments/class-payments-table.php:419
-#: src/Donations/ListTable/Columns/AmountColumn.php:35
+#: src/Donations/ListTable/Columns/AmountColumn.php:37
 #: src/Subscriptions/ListTable/Columns/AmountColumn.php:35
 #: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:147
 #: templates/history-donations.php:71
@@ -1690,6 +1673,7 @@ msgstr ""
 #: src/API/REST/V3/Routes/Donations/DonationController.php:1053
 #: src/Campaigns/ListTable/Columns/DateColumn.php:28
 #: src/DonationForms/V2/ListTable/Columns/DateCreatedColumn.php:37
+#: src/Donations/ListTable/Columns/CreatedAtColumn.php:38
 #: src/ThirdPartySupport/Elementor/Widgets/V1/DonationHistoryWidget.php:123
 #: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:157
 #: src/ThirdPartySupport/Elementor/Widgets/V1/DonationReceiptWidget.php:336
@@ -1716,6 +1700,7 @@ msgstr ""
 #: build/assets/dist/js/give-log-list-table-app.js:4
 #: build/assets/dist/js/give-migrations-list-table-app.js:4
 #: build/donationDetails.js:10
+#: build/subscriptionDetails.js:10
 msgid "Status"
 msgstr ""
 
@@ -2275,7 +2260,6 @@ msgstr ""
 #: includes/admin/emails/class-new-donation-email.php:44
 #: includes/post-types.php:119
 #: src/Onboarding/DefaultFormFactory.php:82
-#: build/assets/dist/js/give-admin-donations.js:4
 msgid "New Donation"
 msgstr ""
 
@@ -3384,6 +3368,7 @@ msgstr ""
 #: build/elementorLegacyGiveFormWidget.js:1
 #: build/formBuilderApp.js:13
 #: build/formEntity.js:1
+#: build/subscriptionDetails.js:10
 msgid "Donation Form"
 msgstr ""
 
@@ -3845,6 +3830,7 @@ msgstr ""
 
 #: includes/admin/payments/view-payment-details.php:455
 #: build/assets/dist/js/give-admin-donations.js:4
+#: build/assets/dist/js/give-admin-subscriptions.js:4
 msgid "Select Campaign"
 msgstr ""
 
@@ -3987,67 +3973,67 @@ msgstr ""
 msgid "Add-ons"
 msgstr ""
 
-#: includes/admin/plugins.php:470
+#: includes/admin/plugins.php:471
 msgid "GiveWP Deactivation"
 msgstr ""
 
-#: includes/admin/plugins.php:473
+#: includes/admin/plugins.php:474
 msgid "If you have a moment, please let us know why you are deactivating Give. All submissions are anonymous and we only use this feedback to improve this plugin."
 msgstr ""
 
-#: includes/admin/plugins.php:478
+#: includes/admin/plugins.php:479
 msgid "I'm only deactivating temporarily"
 msgstr ""
 
-#: includes/admin/plugins.php:485
+#: includes/admin/plugins.php:486
 msgid "I no longer need the plugin"
 msgstr ""
 
-#: includes/admin/plugins.php:492
+#: includes/admin/plugins.php:493
 msgid "I found a better plugin"
 msgstr ""
 
-#: includes/admin/plugins.php:496
+#: includes/admin/plugins.php:497
 msgid "What is the name of the plugin?"
 msgstr ""
 
-#: includes/admin/plugins.php:504
+#: includes/admin/plugins.php:505
 msgid "I only needed the plugin for a short period"
 msgstr ""
 
-#: includes/admin/plugins.php:511
+#: includes/admin/plugins.php:512
 msgid "The plugin broke my site"
 msgstr ""
 
-#: includes/admin/plugins.php:519
-#: includes/admin/plugins.php:540
+#: includes/admin/plugins.php:520
+#: includes/admin/plugins.php:541
 msgid "We're sorry to hear that, check"
 msgstr ""
 
-#: includes/admin/plugins.php:521
-#: includes/admin/plugins.php:542
+#: includes/admin/plugins.php:522
+#: includes/admin/plugins.php:543
 msgid "Can you describe the issue?"
 msgstr ""
 
-#: includes/admin/plugins.php:532
+#: includes/admin/plugins.php:533
 msgid "The plugin suddenly stopped working"
 msgstr ""
 
-#: includes/admin/plugins.php:553
+#: includes/admin/plugins.php:554
 #: src/Onboarding/Config/CauseTypes.php:10
 #: build/assets/dist/js/admin-onboarding-wizard.js:1
 msgid "Other"
 msgstr ""
 
-#: includes/admin/plugins.php:557
+#: includes/admin/plugins.php:558
 msgid "Please describe why you're deactivating Give"
 msgstr ""
 
-#: includes/admin/plugins.php:566
+#: includes/admin/plugins.php:567
 msgid "Would you like to delete all GiveWP data?"
 msgstr ""
 
-#: includes/admin/plugins.php:569
+#: includes/admin/plugins.php:570
 msgid "By default the custom roles, GiveWP options, and database entries are not deleted when you deactivate Give. If you are deleting GiveWP completely from your website and want those items removed as well check this option. Note: This will permanently delete all GiveWP data from your database."
 msgstr ""
 
@@ -6150,12 +6136,12 @@ msgstr ""
 msgid "Revenue stats have been successfully recounted."
 msgstr ""
 
-#: includes/admin/tools/data/class-give-tools-reset-stats.php:236
+#: includes/admin/tools/data/class-give-tools-reset-stats.php:294
 msgid "You do not have permission to reset data."
 msgstr ""
 
-#: includes/admin/tools/data/class-give-tools-reset-stats.php:257
-msgid "Donation forms, revenue, donations counts, and logs successfully reset."
+#: includes/admin/tools/data/class-give-tools-reset-stats.php:315
+msgid "Successfully reset data for campaigns, campaign pages, donation forms, subscriptions, events, revenue, donation counts, logs, etc."
 msgstr ""
 
 #: includes/admin/tools/export/class-batch-export.php:157
@@ -6864,7 +6850,6 @@ msgid "Delete All Data"
 msgstr ""
 
 #: includes/admin/tools/views/html-admin-page-data.php:61
-#: build/assets/dist/js/give-admin-subscriptions.js:4
 msgid "Select Form"
 msgstr ""
 
@@ -8359,22 +8344,22 @@ msgid "GiveWP Donor"
 msgstr ""
 
 #: includes/class-give-scripts.php:229
-#: src/Onboarding/Setup/Page.php:106
+#: src/Onboarding/Setup/Page.php:107
 msgid "Sorry, you entered an invalid key."
 msgstr ""
 
 #: includes/class-give-scripts.php:230
-#: src/Onboarding/Setup/Page.php:107
+#: src/Onboarding/Setup/Page.php:108
 msgid "Success! You have activated your license key and are receiving updates and priority support. <a href=\"{link}\">Click here</a> to download your add-on."
 msgstr ""
 
 #: includes/class-give-scripts.php:231
-#: src/Onboarding/Setup/Page.php:108
+#: src/Onboarding/Setup/Page.php:109
 msgid "{pluginName} add-on activated successfully."
 msgstr ""
 
 #: includes/class-give-scripts.php:232
-#: src/Onboarding/Setup/Page.php:109
+#: src/Onboarding/Setup/Page.php:110
 msgid "The add-on did not activate successfully."
 msgstr ""
 
@@ -12854,806 +12839,855 @@ msgstr ""
 msgid "Zaragoza"
 msgstr ""
 
-#: includes/currencies-list.php:15
+#: includes/currencies-list.php:36
 #, php-format
 msgid "US Dollars (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:25
+#: includes/currencies-list.php:46
 #, php-format
 msgid "Euros (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:35
+#: includes/currencies-list.php:56
 #, php-format
 msgid "Pounds Sterling (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:45
+#: includes/currencies-list.php:66
 #, php-format
 msgid "Australian Dollars (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:55
+#: includes/currencies-list.php:76
 #, php-format
 msgid "Brazilian Real (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:65
+#: includes/currencies-list.php:86
 #, php-format
 msgid "Canadian Dollars (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:75
+#: includes/currencies-list.php:96
 #, php-format
 msgid "Czech Koruna (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:85
+#: includes/currencies-list.php:106
 #, php-format
 msgid "Danish Krone (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:95
+#: includes/currencies-list.php:116
 #, php-format
 msgid "Hong Kong Dollar (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:105
+#: includes/currencies-list.php:126
 #, php-format
 msgid "Hungarian Forint (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:115
+#: includes/currencies-list.php:136
 #, php-format
 msgid "Israeli Shekel (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:125
+#: includes/currencies-list.php:146
 #, php-format
 msgid "Japanese Yen (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:135
+#: includes/currencies-list.php:156
 #, php-format
 msgid "Malaysian Ringgits (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:145
+#: includes/currencies-list.php:166
 #, php-format
 msgid "Mexican Peso (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:155
+#: includes/currencies-list.php:176
 #, php-format
 msgid "Moroccan Dirham (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:165
+#: includes/currencies-list.php:186
 #, php-format
 msgid "New Zealand Dollar (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:175
+#: includes/currencies-list.php:196
 #, php-format
 msgid "Norwegian Krone (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:185
+#: includes/currencies-list.php:206
 #, php-format
 msgid "Philippine Pesos (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:195
+#: includes/currencies-list.php:216
 #, php-format
 msgid "Polish Zloty (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:205
+#: includes/currencies-list.php:226
 #, php-format
 msgid "Singapore Dollar (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:215
+#: includes/currencies-list.php:236
 #, php-format
 msgid "South Korean Won (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:225
+#: includes/currencies-list.php:246
 #, php-format
 msgid "South African Rand (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:235
+#: includes/currencies-list.php:256
 #, php-format
 msgid "Swedish Krona (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:245
+#: includes/currencies-list.php:266
 #, php-format
 msgid "Swiss Franc (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:255
+#: includes/currencies-list.php:276
 #, php-format
 msgid "Taiwan New Dollars (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:265
+#: includes/currencies-list.php:286
 #, php-format
 msgid "Thai Baht (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:275
+#: includes/currencies-list.php:296
 #, php-format
 msgid "Indian Rupee (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:285
+#: includes/currencies-list.php:306
 #, php-format
 msgid "Turkish Lira (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:295
+#: includes/currencies-list.php:316
 #, php-format
 msgid "Iranian Rial (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:305
+#: includes/currencies-list.php:326
 #, php-format
 msgid "Russian Rubles (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:315
+#: includes/currencies-list.php:336
 #, php-format
 msgid "United Arab Emirates dirham (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:325
+#: includes/currencies-list.php:346
 #, php-format
 msgid "Armenian dram (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:335
+#: includes/currencies-list.php:356
 #, php-format
 msgid "Netherlands Antillean guilder (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:345
+#: includes/currencies-list.php:366
 #, php-format
 msgid "Argentine peso (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:355
+#: includes/currencies-list.php:376
 #, php-format
 msgid "Aruban florin (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:365
+#: includes/currencies-list.php:386
 #, php-format
 msgid "Bosnia and Herzegovina convertible mark (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:375
+#: includes/currencies-list.php:396
 #, php-format
 msgid "Bangladeshi taka (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:385
+#: includes/currencies-list.php:406
 #, php-format
 msgid "Bahraini dinar (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:395
+#: includes/currencies-list.php:416
 #, php-format
 msgid "Bermudian dollar (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:405
+#: includes/currencies-list.php:426
 #, php-format
 msgid "Brunei dollar (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:415
+#: includes/currencies-list.php:436
 #, php-format
 msgid "Bolivian boliviano (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:425
+#: includes/currencies-list.php:446
 #, php-format
 msgid "Bahamian dollar (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:435
+#: includes/currencies-list.php:456
 #, php-format
 msgid "Botswana pula (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:445
+#: includes/currencies-list.php:466
 #, php-format
 msgid "Belizean dollar (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:455
+#: includes/currencies-list.php:476
 #, php-format
 msgid "Chilean peso (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:465
+#: includes/currencies-list.php:486
 #, php-format
 msgid "Chinese yuan (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:475
+#: includes/currencies-list.php:496
 #, php-format
 msgid "Colombian peso (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:485
+#: includes/currencies-list.php:506
 #, php-format
 msgid "Costa Rican colón (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:495
-#: includes/currencies-list.php:505
+#: includes/currencies-list.php:516
+#: includes/currencies-list.php:526
 #, php-format
 msgid "Cuban convertible peso (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:515
+#: includes/currencies-list.php:536
 #, php-format
 msgid "Dominican peso (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:525
+#: includes/currencies-list.php:546
 #, php-format
 msgid "Egyptian pound (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:535
+#: includes/currencies-list.php:556
 #, php-format
 msgid "Gibraltar pound (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:545
+#: includes/currencies-list.php:566
 #, php-format
 msgid "Guatemalan quetzal (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:555
+#: includes/currencies-list.php:576
 #, php-format
 msgid "Honduran lempira (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:565
+#: includes/currencies-list.php:586
 #, php-format
 msgid "Croatian kuna (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:575
+#: includes/currencies-list.php:596
 #, php-format
 msgid "Indonesian rupiah (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:585
+#: includes/currencies-list.php:606
 #, php-format
 msgid "Icelandic króna (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:595
+#: includes/currencies-list.php:616
 #, php-format
 msgid "Jamaican dollar (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:605
+#: includes/currencies-list.php:626
 #, php-format
 msgid "Jordanian dinar (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:615
+#: includes/currencies-list.php:636
 #, php-format
 msgid "Kenyan shilling (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:625
+#: includes/currencies-list.php:646
 #, php-format
 msgid "Kuwaiti dinar (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:635
+#: includes/currencies-list.php:656
 #, php-format
 msgid "Cayman Islands dollar (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:645
+#: includes/currencies-list.php:666
 #, php-format
 msgid "Macedonian denar (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:655
+#: includes/currencies-list.php:676
 #, php-format
 msgid "Nepalese rupee (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:665
+#: includes/currencies-list.php:686
 #, php-format
 msgid "Omani rial (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:675
+#: includes/currencies-list.php:696
 #, php-format
 msgid "Peruvian nuevo sol (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:685
+#: includes/currencies-list.php:706
 #, php-format
 msgid "Pakistani rupee (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:695
+#: includes/currencies-list.php:716
 #, php-format
 msgid "Romanian New Leu (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:705
+#: includes/currencies-list.php:726
 #, php-format
 msgid "Saudi riyal (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:715
+#: includes/currencies-list.php:736
 #, php-format
 msgid "Swazi lilangeni (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:725
+#: includes/currencies-list.php:746
 #, php-format
 msgid "Tongan paʻanga (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:735
+#: includes/currencies-list.php:756
 #, php-format
 msgid "Tanzanian shilling (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:745
+#: includes/currencies-list.php:766
+#, php-format
+msgid "Tuvaluan dollar (%1$s)"
+msgstr ""
+
+#: includes/currencies-list.php:776
 #, php-format
 msgid "Ukrainian hryvnia (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:755
+#: includes/currencies-list.php:786
 #, php-format
 msgid "Uruguayan peso (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:765
+#: includes/currencies-list.php:796
 #, php-format
-msgid "Venezuelan bolívar (%1$s)"
+msgid "Venezuelan bolívar (old) (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:775
+#: includes/currencies-list.php:806
+#, php-format
+msgid "Venezuelan bolívar soberano (%1$s)"
+msgstr ""
+
+#: includes/currencies-list.php:816
+#, php-format
+msgid "Venezuelan bolívar digital (%1$s)"
+msgstr ""
+
+#: includes/currencies-list.php:826
 #, php-format
 msgid "East Caribbean dollar (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:785
+#: includes/currencies-list.php:836
+#, php-format
+msgid "Special Drawing Rights (%1$s)"
+msgstr ""
+
+#: includes/currencies-list.php:846
 #, php-format
 msgid "Afghan afghani (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:795
+#: includes/currencies-list.php:856
 #, php-format
 msgid "Albanian lek (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:805
+#: includes/currencies-list.php:866
 #, php-format
 msgid "Angolan kwanza (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:815
+#: includes/currencies-list.php:876
 #, php-format
 msgid "Azerbaijani manat (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:825
+#: includes/currencies-list.php:886
 #, php-format
 msgid "Barbadian dollar (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:835
+#: includes/currencies-list.php:896
 #, php-format
 msgid "Bulgarian lev (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:845
+#: includes/currencies-list.php:906
 #, php-format
 msgid "Burundian franc (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:855
+#: includes/currencies-list.php:916
 #, php-format
 msgid "Bitcoin (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:865
+#: includes/currencies-list.php:926
 #, php-format
 msgid "Bhutanese ngultrum (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:875
+#: includes/currencies-list.php:936
 #, php-format
 msgid "Belarusian ruble (old) (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:885
+#: includes/currencies-list.php:946
 #, php-format
 msgid "Belarusian ruble (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:895
+#: includes/currencies-list.php:956
 #, php-format
 msgid "Congolese franc (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:905
+#: includes/currencies-list.php:966
 #, php-format
 msgid "Cape Verdean escudo (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:915
+#: includes/currencies-list.php:976
 #, php-format
 msgid "Djiboutian franc (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:925
+#: includes/currencies-list.php:986
 #, php-format
 msgid "Algerian dinar (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:935
+#: includes/currencies-list.php:996
 #, php-format
 msgid "Eritrean nakfa (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:945
+#: includes/currencies-list.php:1006
 #, php-format
 msgid "Ethiopian birr (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:955
+#: includes/currencies-list.php:1016
 #, php-format
 msgid "Fijian dollar (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:965
+#: includes/currencies-list.php:1026
 #, php-format
 msgid "Falkland Islands pound (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:975
+#: includes/currencies-list.php:1036
 #, php-format
 msgid "Georgian lari (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:985
+#: includes/currencies-list.php:1046
 #, php-format
 msgid "Guernsey pound (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:995
+#: includes/currencies-list.php:1056
 #, php-format
 msgid "Ghana cedi (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1005
+#: includes/currencies-list.php:1066
 #, php-format
 msgid "Gambian dalasi (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1015
+#: includes/currencies-list.php:1076
 #, php-format
 msgid "Guinean franc (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1025
+#: includes/currencies-list.php:1086
 #, php-format
 msgid "Guyanese dollar (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1035
+#: includes/currencies-list.php:1096
 #, php-format
 msgid "Haitian gourde (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1045
+#: includes/currencies-list.php:1106
 #, php-format
 msgid "Manx pound (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1055
+#: includes/currencies-list.php:1116
 #, php-format
 msgid "Iraqi dinar (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1065
+#: includes/currencies-list.php:1126
 #, php-format
 msgid "Iranian toman (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1075
+#: includes/currencies-list.php:1136
 #, php-format
 msgid "Jersey pound (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1085
+#: includes/currencies-list.php:1146
 #, php-format
 msgid "Kyrgyzstani som (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1095
+#: includes/currencies-list.php:1156
 #, php-format
 msgid "Cambodian riel (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1105
+#: includes/currencies-list.php:1166
 #, php-format
 msgid "Comorian franc (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1115
+#: includes/currencies-list.php:1176
 #, php-format
 msgid "North Korean won (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1125
+#: includes/currencies-list.php:1186
 #, php-format
 msgid "Kazakhstani tenge (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1135
+#: includes/currencies-list.php:1196
 #, php-format
 msgid "Lao kip (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1145
+#: includes/currencies-list.php:1206
 #, php-format
 msgid "Lebanese pound (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1155
+#: includes/currencies-list.php:1216
 #, php-format
 msgid "Sri Lankan rupee (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1165
+#: includes/currencies-list.php:1226
 #, php-format
 msgid "Liberian dollar (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1175
+#: includes/currencies-list.php:1236
 #, php-format
 msgid "Lesotho loti (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1185
+#: includes/currencies-list.php:1246
 #, php-format
 msgid "Libyan dinar (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1195
+#: includes/currencies-list.php:1256
 #, php-format
 msgid "Moldovan leu (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1205
+#: includes/currencies-list.php:1266
 #, php-format
 msgid "Malagasy ariary (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1215
+#: includes/currencies-list.php:1276
 #, php-format
 msgid "Burmese kyat (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1225
+#: includes/currencies-list.php:1286
 #, php-format
 msgid "Mongolian tögrög (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1235
+#: includes/currencies-list.php:1296
 #, php-format
 msgid "Macanese pataca (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1245
+#: includes/currencies-list.php:1306
+#, php-format
+msgid "Mauritanian ouguiya (old) (%1$s)"
+msgstr ""
+
+#: includes/currencies-list.php:1316
 #, php-format
 msgid "Mauritanian ouguiya (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1255
+#: includes/currencies-list.php:1326
 #, php-format
 msgid "Mauritian rupee (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1265
+#: includes/currencies-list.php:1336
 #, php-format
 msgid "Maldivian rufiyaa (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1275
+#: includes/currencies-list.php:1346
 #, php-format
 msgid "Malawian kwacha (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1285
+#: includes/currencies-list.php:1356
 #, php-format
 msgid "Mozambican metical (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1295
+#: includes/currencies-list.php:1366
 #, php-format
 msgid "Namibian dollar (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1305
+#: includes/currencies-list.php:1376
 #, php-format
 msgid "Nigerian naira (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1315
+#: includes/currencies-list.php:1386
 #, php-format
 msgid "Nicaraguan córdoba (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1325
+#: includes/currencies-list.php:1396
 #, php-format
 msgid "Panamanian balboa (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1335
+#: includes/currencies-list.php:1406
 #, php-format
 msgid "Papua New Guinean kina (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1345
+#: includes/currencies-list.php:1416
 #, php-format
 msgid "Transnistrian ruble (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1355
+#: includes/currencies-list.php:1426
 #, php-format
 msgid "Paraguayan guaraní (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1365
+#: includes/currencies-list.php:1436
 #, php-format
 msgid "Qatari riyal (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1375
+#: includes/currencies-list.php:1446
 #, php-format
 msgid "Serbian dinar (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1385
+#: includes/currencies-list.php:1456
 #, php-format
 msgid "Rwandan franc (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1395
+#: includes/currencies-list.php:1466
 #, php-format
 msgid "Solomon Islands dollar (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1405
+#: includes/currencies-list.php:1476
 #, php-format
 msgid "Seychellois rupee (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1415
+#: includes/currencies-list.php:1486
 #, php-format
 msgid "Sudanese pound (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1425
+#: includes/currencies-list.php:1496
 #, php-format
 msgid "Saint Helena pound (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1435
+#: includes/currencies-list.php:1506
+#, php-format
+msgid "Sierra Leonean leone (old) (%1$s)"
+msgstr ""
+
+#: includes/currencies-list.php:1516
 #, php-format
 msgid "Sierra Leonean leone (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1445
+#: includes/currencies-list.php:1526
 #, php-format
 msgid "Somali shilling (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1455
+#: includes/currencies-list.php:1536
 #, php-format
 msgid "Surinamese dollar (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1465
+#: includes/currencies-list.php:1546
 #, php-format
 msgid "South Sudanese pound (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1475
+#: includes/currencies-list.php:1556
+#, php-format
+msgid "São Tomé and Príncipe dobra (old) (%1$s)"
+msgstr ""
+
+#: includes/currencies-list.php:1566
 #, php-format
 msgid "São Tomé and Príncipe dobra (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1485
+#: includes/currencies-list.php:1576
+#, php-format
+msgid "Salvadoran colón (%1$s)"
+msgstr ""
+
+#: includes/currencies-list.php:1586
 #, php-format
 msgid "Syrian pound (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1495
+#: includes/currencies-list.php:1596
 #, php-format
 msgid "Tajikistani somoni (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1505
-#: includes/currencies-list.php:1515
+#: includes/currencies-list.php:1606
 #, php-format
 msgid "Turkmenistan manat (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1525
+#: includes/currencies-list.php:1616
+#, php-format
+msgid "Tunisian Dinar (%1$s)"
+msgstr ""
+
+#: includes/currencies-list.php:1626
 #, php-format
 msgid "Trinidad and Tobago dollar (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1535
+#: includes/currencies-list.php:1636
 #, php-format
 msgid "Ugandan shilling (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1545
+#: includes/currencies-list.php:1646
 #, php-format
 msgid "Uzbekistani som (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1555
+#: includes/currencies-list.php:1656
 #, php-format
 msgid "Vietnamese đồng (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1565
+#: includes/currencies-list.php:1666
 #, php-format
 msgid "Vanuatu vatu (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1575
+#: includes/currencies-list.php:1676
 #, php-format
 msgid "Samoan tālā (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1585
+#: includes/currencies-list.php:1686
 #, php-format
 msgid "Central African CFA franc (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1595
+#: includes/currencies-list.php:1696
 #, php-format
 msgid "West African CFA franc (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1605
+#: includes/currencies-list.php:1706
 #, php-format
 msgid "CFP franc (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1615
+#: includes/currencies-list.php:1716
 #, php-format
 msgid "Yemeni rial (%1$s)"
 msgstr ""
 
-#: includes/currencies-list.php:1625
+#: includes/currencies-list.php:1726
 #, php-format
 msgid "Zambian kwacha (%1$s)"
+msgstr ""
+
+#: includes/currencies-list.php:1736
+#, php-format
+msgid "Zimbabwean dollar (%1$s)"
 msgstr ""
 
 #. translators: %s: action name.
@@ -13882,32 +13916,32 @@ msgstr ""
 msgid "Response"
 msgstr ""
 
-#: includes/formatting.php:546
+#: includes/formatting.php:572
 #, php-format
 msgid "%s arab"
 msgstr ""
 
-#: includes/formatting.php:550
+#: includes/formatting.php:576
 #, php-format
 msgid "%s crore"
 msgstr ""
 
-#: includes/formatting.php:552
+#: includes/formatting.php:578
 #, php-format
 msgid "%s lakh"
 msgstr ""
 
-#: includes/formatting.php:559
+#: includes/formatting.php:585
 #, php-format
 msgid "%s trillion"
 msgstr ""
 
-#: includes/formatting.php:564
+#: includes/formatting.php:590
 #, php-format
 msgid "%s billion"
 msgstr ""
 
-#: includes/formatting.php:569
+#: includes/formatting.php:595
 #, php-format
 msgid "%s million"
 msgstr ""
@@ -16021,83 +16055,84 @@ msgstr ""
 msgid "The amount of revenue received on the given date."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:304
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:308
 #: src/API/REST/V3/Routes/Donations/DonationController.php:951
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:201
 #: build/assets/dist/js/give-admin-donation-forms.js:4
 #: build/campaignDetails.js:10
 msgid "Campaign ID"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:308
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:312
 msgid "Campaign title"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:311
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:315
 msgid "Campaign title is required"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:315
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:319
 msgid "Campaign status"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:319
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:323
 #: src/Campaigns/Factories/CampaignFactory.php:30
 msgid "Campaign short description"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:324
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:328
 msgid "Primary color for the campaign"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:328
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:332
 msgid "Secondary color for the campaign"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:332
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:336
 msgid "Campaign goal"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:333
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:337
 msgid "Must be a number"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:337
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:341
 msgid "Campaign goal progress"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:348
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:352
 msgid "Campaign goal type"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:352
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:356
 msgid "Default campaign form ID"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:356
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:360
 msgid "Campaign page ID"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:378
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:382
 msgid "Goal amount must be greater than 0"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:400
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:404
 msgid "Number of donations must be greater than 0"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:422
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:426
 msgid "Number of donors must be greater than 0"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:444
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:448
 msgid "Goal recurring amount must be greater than 0"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:466
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:470
 msgid "Number of recurring donations must be greater than 0"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:488
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:492
 msgid "Number of recurring donors must be greater than 0"
 msgstr ""
 
@@ -16171,6 +16206,7 @@ msgstr ""
 #: src/API/REST/V3/Routes/Donations/DonationNotesController.php:216
 #: src/API/REST/V3/Routes/Donations/DonationNotesController.php:260
 #: src/Donations/DonationsAdminPage.php:64
+#: src/Donations/Endpoints/DonationActions.php:128
 msgid "Donation not found"
 msgstr ""
 
@@ -16189,16 +16225,18 @@ msgstr ""
 
 #: src/API/REST/V3/Routes/Donations/DonationController.php:439
 #: src/API/REST/V3/Routes/Donations/DonationController.php:482
+#: src/Donations/Endpoints/DonationActions.php:135
 msgid "Failed to delete donation"
 msgstr ""
 
 #: src/API/REST/V3/Routes/Donations/DonationController.php:446
 #: src/API/REST/V3/Routes/Donations/DonationController.php:490
+#: src/Donations/Endpoints/DonationActions.php:141
 msgid "Failed to trash donation"
 msgstr ""
 
 #: src/API/REST/V3/Routes/Donations/DonationController.php:678
-#: src/API/REST/V3/Routes/Donors/DonorController.php:561
+#: src/API/REST/V3/Routes/Donors/DonorController.php:581
 #: src/API/REST/V3/Routes/Subscriptions/Permissions/SubscriptionPermissions.php:61
 msgid "You do not have permission to include sensitive data."
 msgstr ""
@@ -16254,7 +16292,7 @@ msgid "Donation amount"
 msgstr ""
 
 #: src/API/REST/V3/Routes/Donations/DonationController.php:903
-#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:90
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:91
 msgid "Fee amount recovered"
 msgstr ""
 
@@ -16271,7 +16309,7 @@ msgid "Donation type"
 msgstr ""
 
 #: src/API/REST/V3/Routes/Donations/DonationController.php:936
-#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:126
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:127
 msgid "Payment gateway ID"
 msgstr ""
 
@@ -16288,7 +16326,7 @@ msgid "Form title"
 msgstr ""
 
 #: src/API/REST/V3/Routes/Donations/DonationController.php:964
-#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:25
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:26
 msgid "Subscription ID"
 msgstr ""
 
@@ -16347,21 +16385,24 @@ msgid "Whether to update the subscription renewal date with the createdAt date w
 msgstr ""
 
 #: src/API/REST/V3/Routes/Donations/DonationController.php:1081
+#: src/API/REST/V3/Routes/Donors/DonorController.php:455
 msgid "Custom fields (sensitive data)"
 msgstr ""
 
 #: src/API/REST/V3/Routes/Donations/DonationController.php:1087
+#: src/API/REST/V3/Routes/Donors/DonorController.php:461
 msgid "Field label"
 msgstr ""
 
 #: src/API/REST/V3/Routes/Donations/DonationController.php:1092
+#: src/API/REST/V3/Routes/Donors/DonorController.php:466
 msgid "Field value"
 msgstr ""
 
 #: src/API/REST/V3/Routes/Donations/DonationController.php:1117
 #: src/Donations/ViewModels/DonationViewModel.php:111
 #: src/Donors/ViewModels/DonorViewModel.php:124
-#: src/Subscriptions/ViewModels/SubscriptionViewModel.php:94
+#: src/Subscriptions/ViewModels/SubscriptionViewModel.php:96
 msgid "anonymous"
 msgstr ""
 
@@ -16519,37 +16560,37 @@ msgstr ""
 msgid "Donor address zip"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:474
+#: src/API/REST/V3/Routes/Donors/DonorController.php:494
 msgid "The field by which to sort the donors."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:488
+#: src/API/REST/V3/Routes/Donors/DonorController.php:508
 msgid "The direction of sorting: ascending (ASC) or descending (DESC)."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:494
+#: src/API/REST/V3/Routes/Donors/DonorController.php:514
 msgid "Whether to include only donors who have made donations."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:499
+#: src/API/REST/V3/Routes/Donors/DonorController.php:519
 msgid "The mode of donations to filter by \"live\" or \"test\" (it only gets applied when \"onlyWithDonations\" is set to true)."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:508
+#: src/API/REST/V3/Routes/Donors/DonorController.php:528
 msgid "The ID of the campaign to filter donors by - zero or empty mean \"all campaigns\" (it only gets applied when \"onlyWithDonations\" is set to true)."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:527
+#: src/API/REST/V3/Routes/Donors/DonorController.php:547
 #: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionSharedParamsForGetMethods.php:17
 msgid "Include or not include data that can be used to contact or locate the donors, such as phone number, email, billing address, etc. (require proper permissions)"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:535
+#: src/API/REST/V3/Routes/Donors/DonorController.php:555
 #: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionSharedParamsForGetMethods.php:23
 msgid "Exclude, include, or redact data that can be used to identify the donors, such as ID, first name, last name, etc (require proper permissions)."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Donors/DonorController.php:571
+#: src/API/REST/V3/Routes/Donors/DonorController.php:591
 #: src/API/REST/V3/Routes/Subscriptions/Permissions/SubscriptionPermissions.php:71
 msgid "You do not have permission to include anonymous donors."
 msgstr ""
@@ -16576,7 +16617,7 @@ msgid "Sort direction for subscription results"
 msgstr ""
 
 #: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionCollectionParams.php:41
-#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:29
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:30
 msgid "Subscription mode (live or test)"
 msgstr ""
 
@@ -16592,117 +16633,117 @@ msgstr ""
 msgid "Filter subscriptions by donor ID"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:35
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:36
 msgid "Donation form ID"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:40
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:41
 msgid "Donor ID. Returns 0 for anonymous donors when data is redacted."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:45
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:46
 msgid "Donor first name. Returns \"anonymous\" for anonymous donors when data is redacted."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:50
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:51
 msgid "Donor last name. Returns \"anonymous\" for anonymous donors when data is redacted."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:58
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:59
 msgid "Amount in decimal format"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:62
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:63
 msgid "Amount in minor units (cents)"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:67
-#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:87
-#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:192
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:68
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:88
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:193
 msgid "Currency code (e.g., USD, EUR)"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:70
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:71
 msgid "Subscription amount"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:78
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:79
 msgid "Fee amount in decimal format"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:82
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:83
 msgid "Fee amount in minor units (cents)"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:94
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:95
 msgid "Subscription status"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:100
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:101
 msgid "Subscription billing period"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:106
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:107
 msgid "Billing frequency"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:111
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:112
 msgid "Number of installments (0 for unlimited)"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:116
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:117
 msgid "Transaction ID. Returns empty string when sensitive data is excluded."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:121
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:122
 msgid "Gateway subscription ID. Returns empty string when sensitive data is excluded."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:135
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:136
 msgid "Gateway ID"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:139
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:140
 msgid "Gateway name"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:143
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:144
 msgid "Payment method label"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:148
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:149
 msgid "Gateway dashboard subscription URL"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:152
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:153
 msgid "Whether the gateway supports transaction synchronization"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:155
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:156
 msgid "Payment gateway details. Returns null when gateway is not available or not registered."
 msgstr ""
 
 #. translators: %s: WordPress documentation URL
-#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:162
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:163
 #, php-format
 msgid "Subscription creation date in ISO 8601 format. Follows WordPress REST API date format standards. See %s for more information."
 msgstr ""
 
 #. translators: %s: WordPress documentation URL
-#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:172
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:173
 #, php-format
 msgid "Next renewal date in ISO 8601 format. Follows WordPress REST API date format standards. See %s for more information."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:183
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:184
 msgid "Projected annual revenue in decimal format"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:187
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:188
 msgid "Projected annual revenue in minor units (cents)"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:195
+#: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:196
 msgid "Projected annual revenue for this subscription"
 msgstr ""
 
@@ -16752,7 +16793,7 @@ msgstr ""
 msgid "Failed to cancel subscription"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Subscriptions/SubscriptionController.php:605
+#: src/API/REST/V3/Routes/Subscriptions/SubscriptionController.php:623
 #, php-format
 msgid "Error while preparing subscription for response: %s"
 msgstr ""
@@ -16909,12 +16950,12 @@ msgstr ""
 
 #: src/Campaigns/CampaignsAdminPage.php:39
 #: src/Campaigns/Controllers/CampaignRequestController.php:39
-#: src/Campaigns/Controllers/CampaignRequestController.php:140
-#: src/Campaigns/Controllers/CampaignRequestController.php:201
+#: src/Campaigns/Controllers/CampaignRequestController.php:145
+#: src/Campaigns/Controllers/CampaignRequestController.php:206
 msgid "Campaign not found"
 msgstr ""
 
-#: src/Campaigns/Controllers/CampaignRequestController.php:272
+#: src/Campaigns/Controllers/CampaignRequestController.php:277
 #, php-format
 msgid "%s (copy)"
 msgstr ""
@@ -17024,12 +17065,12 @@ msgstr ""
 msgid "Show terms"
 msgstr ""
 
-#: src/DonationForms/Actions/ConvertDonationAmountBlockToFieldsApi.php:154
+#: src/DonationForms/Actions/ConvertDonationAmountBlockToFieldsApi.php:156
 #: build/formBuilderRegistrars.js:1
 msgid "One Time"
 msgstr ""
 
-#: src/DonationForms/Actions/ConvertDonationAmountBlockToFieldsApi.php:169
+#: src/DonationForms/Actions/ConvertDonationAmountBlockToFieldsApi.php:171
 msgid "Choose your donation frequency"
 msgstr ""
 
@@ -17129,6 +17170,16 @@ msgstr ""
 msgid "Zip required."
 msgstr ""
 
+#: src/DonationForms/Rules/CurrencyRule.php:48
+#, php-format
+msgid "%s must be a valid 3-letter currency code in uppercase format (example: USD)"
+msgstr ""
+
+#: src/DonationForms/Rules/CurrencyRule.php:55
+#, php-format
+msgid "%s must be a valid currency. Provided: %s"
+msgstr ""
+
 #: src/DonationForms/Rules/DonationTypeRule.php:39
 #, php-format
 msgid "%s must be a valid donation type.  Valid types are: %s"
@@ -17179,7 +17230,7 @@ msgid "You don't have permission to edit Donation Forms"
 msgstr ""
 
 #: src/DonationForms/V2/ListTable/Columns/DateCreatedColumn.php:49
-#: src/Donations/ListTable/Columns/CreatedAtColumn.php:49
+#: src/Donations/ListTable/Columns/CreatedAtColumn.php:50
 #: src/Donors/ListTable/Columns/DateCreatedColumn.php:49
 #: src/Donors/ListTable/Columns/LatestDonationColumn.php:55
 msgctxt "human-readable datetime format"
@@ -17232,6 +17283,7 @@ msgstr ""
 #: src/Onboarding/Setup/templates/index.html.php:253
 #: build/assets/dist/js/admin-onboarding-wizard.js:1
 #: build/assets/dist/js/donor-dashboards-app.js:1
+#: build/assets/dist/js/give-admin-donations.js:4
 #: build/formBuilderRegistrars.js:1
 msgid "Recurring Donations"
 msgstr ""
@@ -17240,7 +17292,7 @@ msgstr ""
 msgid "Counted"
 msgstr ""
 
-#: src/Donations/Actions/LoadDonationsListTableAssets.php:87
+#: src/Donations/Actions/LoadDonationsListTableAssets.php:88
 #: src/Donors/Actions/LoadDonorsListTableAssets.php:83
 #: src/Subscriptions/Actions/LoadSubscriptionsListTableAssets.php:84
 msgid "Any"
@@ -17253,15 +17305,15 @@ msgstr ""
 msgid "Custom Fields"
 msgstr ""
 
-#: src/Donations/Endpoints/DonationActions.php:84
+#: src/Donations/Endpoints/DonationActions.php:92
 msgid "You don't have permission to edit Donations"
 msgstr ""
 
-#: src/Donations/Endpoints/DonationActions.php:110
+#: src/Donations/Endpoints/DonationActions.php:119
 msgid "You don't have permission to delete Donations"
 msgstr ""
 
-#: src/Donations/Endpoints/DonationActions.php:129
+#: src/Donations/Endpoints/DonationActions.php:157
 msgid "You don't have permission to change donation statuses"
 msgstr ""
 
@@ -17269,56 +17321,40 @@ msgstr ""
 msgid "You don't have permission to view Donations"
 msgstr ""
 
-#: src/Donations/ListTable/Columns/CreatedAtColumn.php:37
-msgid "Created At"
-msgstr ""
-
-#: src/Donations/ListTable/Columns/DonorColumn.php:37
-#: src/Framework/Receipts/Actions/GenerateConfirmationPageReceipt.php:178
-#: src/Receipt/DonationReceipt.php:71
-#: build/formBuilderRegistrars.js:1
-msgid "Donor Name"
-msgstr ""
-
-#: src/Donations/ListTable/Columns/DonorColumn.php:52
+#: src/Donations/ListTable/Columns/DonorColumn.php:53
 #: src/Subscriptions/ListTable/Columns/DonorColumn.php:55
 msgid "View donor information"
 msgstr ""
 
-#: src/Donations/ListTable/Columns/PaymentTypeColumn.php:34
+#: src/Donations/ListTable/Columns/PaymentTypeColumn.php:35
 msgid "Payment Type"
 msgstr ""
 
-#: src/Donations/ListTable/Columns/PaymentTypeColumn.php:59
-msgid "Recurring donation icon"
+#: src/Donations/ListTable/Columns/PaymentTypeColumn.php:51
+#: src/Donors/ValueObjects/DonorType.php:36
+#: build/donationDetails.js:10
+msgid "One-time"
 msgstr ""
 
-#: src/Donations/ListTable/Columns/PaymentTypeColumn.php:60
-msgid "recurring"
-msgstr ""
-
-#: src/Donations/ListTable/Columns/PaymentTypeColumn.php:69
-msgid "One-time donation icon"
-msgstr ""
-
-#: src/Donations/ListTable/Columns/PaymentTypeColumn.php:70
-#: build/formBuilderRegistrars.js:1
-msgid "one-time"
+#: src/Donations/ListTable/Columns/PaymentTypeColumn.php:55
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+msgid "Recurring"
 msgstr ""
 
 #: src/Donations/ListTable/Columns/SubscriptionDonationTypeColumn.php:35
 msgid "Subscription Donation Type"
 msgstr ""
 
-#: src/Donations/ListTable/Columns/SubscriptionDonationTypeColumn.php:50
+#: src/Donations/ListTable/Columns/SubscriptionDonationTypeColumn.php:51
 msgid "One-time donation"
 msgstr ""
 
-#: src/Donations/ListTable/Columns/SubscriptionDonationTypeColumn.php:54
+#: src/Donations/ListTable/Columns/SubscriptionDonationTypeColumn.php:55
 msgid "Initial donation"
 msgstr ""
 
-#: src/Donations/ListTable/Columns/SubscriptionDonationTypeColumn.php:58
+#: src/Donations/ListTable/Columns/SubscriptionDonationTypeColumn.php:59
 #: src/Donations/ValueObjects/DonationStatus.php:70
 #: build/subscriptionDetails.js:10
 msgid "Renewal"
@@ -17469,15 +17505,15 @@ msgstr ""
 msgid "Email sent. If not received, make sure it is a valid donor email."
 msgstr ""
 
-#: src/DonorDashboards/Tabs/Contracts/Route.php:82
+#: src/DonorDashboards/Tabs/Contracts/Route.php:86
 msgid "An error occurred while validating donor ID on request."
 msgstr ""
 
-#: src/DonorDashboards/Tabs/Contracts/Route.php:90
+#: src/DonorDashboards/Tabs/Contracts/Route.php:94
 msgid "Donor ID could not be validated for request."
 msgstr ""
 
-#: src/DonorDashboards/Tabs/Contracts/Route.php:100
+#: src/DonorDashboards/Tabs/Contracts/Route.php:104
 msgid "An error occurred while retrieving your donation records. Contact a site administrator and have them search the logs at Donations > Tools > Logs for a more specific cause of the problem."
 msgstr ""
 
@@ -17499,25 +17535,6 @@ msgstr ""
 
 #: src/DonorDashboards/Tabs/EditProfileTab/AvatarRoute.php:117
 msgid "No file with an upload URL was found"
-msgstr ""
-
-#: src/Donors/DonorStatisticsQuery.php:189
-#: src/Donors/ValueObjects/DonorType.php:32
-msgid "No Donations"
-msgstr ""
-
-#: src/Donors/DonorStatisticsQuery.php:191
-#: src/Donors/ValueObjects/DonorType.php:33
-msgid "Subscriber"
-msgstr ""
-
-#: src/Donors/DonorStatisticsQuery.php:193
-msgid "Repeat"
-msgstr ""
-
-#: src/Donors/DonorStatisticsQuery.php:195
-#: build/donationDetails.js:10
-msgid "One-time"
 msgstr ""
 
 #: src/Donors/Endpoints/DeleteDonor.php:71
@@ -17546,21 +17563,20 @@ msgstr ""
 msgid "Donor Type"
 msgstr ""
 
-#: src/Donors/ListTable/Columns/DonorTypeColumn.php:68
-#, php-format
-msgid "%s icon"
-msgstr ""
-
 #: src/Donors/ListTable/Columns/LatestDonationColumn.php:37
 msgid "Latest Donation"
 msgstr ""
 
+#: src/Donors/ValueObjects/DonorType.php:33
+msgid "No Donations"
+msgstr ""
+
 #: src/Donors/ValueObjects/DonorType.php:34
-msgid "Repeat Donor"
+msgid "Subscriber"
 msgstr ""
 
 #: src/Donors/ValueObjects/DonorType.php:35
-msgid "One-time Donor"
+msgid "Repeat donor"
 msgstr ""
 
 #: src/Email/Notifications/DonationProcessingReceipt.php:22
@@ -18211,6 +18227,12 @@ msgstr ""
 msgid "Processing Fee"
 msgstr ""
 
+#: src/Framework/Receipts/Actions/GenerateConfirmationPageReceipt.php:178
+#: src/Receipt/DonationReceipt.php:71
+#: build/formBuilderRegistrars.js:1
+msgid "Donor Name"
+msgstr ""
+
 #: src/Framework/Receipts/Actions/GenerateConfirmationPageReceipt.php:189
 #: build/formBuilderRegistrars.js:1
 msgid "Phone Number"
@@ -18637,11 +18659,11 @@ msgstr ""
 msgid "A short alphabetic geographical code representing a country."
 msgstr ""
 
-#: src/Onboarding/Setup/Page.php:62
+#: src/Onboarding/Setup/Page.php:63
 msgid "Set up GiveWP"
 msgstr ""
 
-#: src/Onboarding/Setup/Page.php:63
+#: src/Onboarding/Setup/Page.php:64
 msgid "Setup"
 msgstr ""
 
@@ -23765,8 +23787,6 @@ msgid "Get the Fee Recovery add-on today"
 msgstr ""
 
 #: build/assets/dist/js/admin-reports.js:1
-#: build/assets/dist/js/give-admin-donations.js:4
-#: build/assets/dist/js/give-admin-donors.js:4
 msgid "<strong>PRO TIP: </strong> <message />"
 msgstr ""
 
@@ -23954,6 +23974,7 @@ msgid "Back to Donation History"
 msgstr ""
 
 #: build/assets/dist/js/donor-dashboards-app.js:1
+#: build/assets/dist/js/give-admin-donations.js:4
 #: build/donorDetails.js:10
 msgid "Total Donations"
 msgstr ""
@@ -24688,6 +24709,90 @@ msgstr ""
 #: build/donorDetails.js:10
 #: build/elementorCampaignGridWidget.js:4
 #: build/subscriptionDetails.js:10
+msgid "Upgrade"
+msgstr ""
+
+#: build/assets/dist/js/give-admin-donation-forms.js:4
+#: build/assets/dist/js/give-admin-donations.js:4
+#: build/assets/dist/js/give-admin-donors.js:4
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
+#: build/assets/dist/js/give-admin-event-tickets.js:4
+#: build/assets/dist/js/give-admin-subscriptions.js:4
+#: build/assets/dist/js/give-log-list-table-app.js:4
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
+#: build/assets/dist/js/orphaned-forms-list-table.js:4
+#: build/campaignBlocks.js:4
+#: build/campaignDetails.js:10
+#: build/campaignGridApp.js:4
+#: build/campaignGridBlock.js:4
+#: build/campaignListTable.js:4
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/elementorCampaignGridWidget.js:4
+#: build/subscriptionDetails.js:10
+msgid "Donation statistics"
+msgstr ""
+
+#: build/assets/dist/js/give-admin-donation-forms.js:4
+#: build/assets/dist/js/give-admin-donations.js:4
+#: build/assets/dist/js/give-admin-donors.js:4
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
+#: build/assets/dist/js/give-admin-event-tickets.js:4
+#: build/assets/dist/js/give-admin-subscriptions.js:4
+#: build/assets/dist/js/give-log-list-table-app.js:4
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
+#: build/assets/dist/js/orphaned-forms-list-table.js:4
+#: build/campaignBlocks.js:4
+#: build/campaignDetails.js:10
+#: build/campaignGridApp.js:4
+#: build/campaignGridBlock.js:4
+#: build/campaignListTable.js:4
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/elementorCampaignGridWidget.js:4
+#: build/subscriptionDetails.js:10
+msgid "result"
+msgstr ""
+
+#: build/assets/dist/js/give-admin-donation-forms.js:4
+#: build/assets/dist/js/give-admin-donations.js:4
+#: build/assets/dist/js/give-admin-donors.js:4
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
+#: build/assets/dist/js/give-admin-event-tickets.js:4
+#: build/assets/dist/js/give-admin-subscriptions.js:4
+#: build/assets/dist/js/give-log-list-table-app.js:4
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
+#: build/assets/dist/js/orphaned-forms-list-table.js:4
+#: build/campaignBlocks.js:4
+#: build/campaignDetails.js:10
+#: build/campaignGridApp.js:4
+#: build/campaignGridBlock.js:4
+#: build/campaignListTable.js:4
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/elementorCampaignGridWidget.js:4
+#: build/subscriptionDetails.js:10
+msgid "results"
+msgstr ""
+
+#: build/assets/dist/js/give-admin-donation-forms.js:4
+#: build/assets/dist/js/give-admin-donations.js:4
+#: build/assets/dist/js/give-admin-donors.js:4
+#: build/assets/dist/js/give-admin-event-tickets-details.js:4
+#: build/assets/dist/js/give-admin-event-tickets.js:4
+#: build/assets/dist/js/give-admin-subscriptions.js:4
+#: build/assets/dist/js/give-log-list-table-app.js:4
+#: build/assets/dist/js/give-migrations-list-table-app.js:4
+#: build/assets/dist/js/orphaned-forms-list-table.js:4
+#: build/campaignBlocks.js:4
+#: build/campaignDetails.js:10
+#: build/campaignGridApp.js:4
+#: build/campaignGridBlock.js:4
+#: build/campaignListTable.js:4
+#: build/donationDetails.js:10
+#: build/donorDetails.js:10
+#: build/elementorCampaignGridWidget.js:4
+#: build/subscriptionDetails.js:10
 msgid "An error occurred while performing this action."
 msgstr ""
 
@@ -24774,7 +24879,6 @@ msgid "status"
 msgstr ""
 
 #: build/assets/dist/js/give-admin-donation-forms.js:4
-#: build/assets/dist/js/give-admin-donors.js:4
 #: build/campaignDetails.js:10
 msgid "Filter donation forms by status"
 msgstr ""
@@ -24914,14 +25018,6 @@ msgstr ""
 
 #: build/assets/dist/js/give-admin-donation-forms.js:4
 #: build/campaignDetails.js:10
-#: build/donationDetails.js:10
-#: build/donorDetails.js:10
-#: build/subscriptionDetails.js:10
-msgid "Upgrade"
-msgstr ""
-
-#: build/assets/dist/js/give-admin-donation-forms.js:4
-#: build/campaignDetails.js:10
 #, js-format
 msgid "The shortcode for Donation Form #%d has been copied to your clipboard!"
 msgstr ""
@@ -24966,6 +25062,12 @@ msgid "Are you sure you want to move donation #%d to the trash?"
 msgstr ""
 
 #: build/assets/dist/js/give-admin-donations.js:4
+#: build/subscriptionDetails.js:10
+#, js-format
+msgid "Edit donation #%d"
+msgstr ""
+
+#: build/assets/dist/js/give-admin-donations.js:4
 #: build/donationDetails.js:10
 #: build/subscriptionDetails.js:10
 msgid "Move donation to trash"
@@ -24978,11 +25080,21 @@ msgid "Trash Donation"
 msgstr ""
 
 #: build/assets/dist/js/give-admin-donations.js:4
+#: build/subscriptionDetails.js:10
+#, js-format
+msgid "Move donation #%d to trash"
+msgstr ""
+
+#: build/assets/dist/js/give-admin-donations.js:4
+#: build/assets/dist/js/give-admin-donors.js:4
+msgid "PRO TIP: "
+msgstr ""
+
+#: build/assets/dist/js/give-admin-donations.js:4
 msgid "filter donations by campaign"
 msgstr ""
 
 #: build/assets/dist/js/give-admin-donations.js:4
-#: build/assets/dist/js/give-admin-subscriptions.js:4
 msgid "search donations"
 msgstr ""
 
@@ -25001,7 +25113,6 @@ msgid "from "
 msgstr ""
 
 #: build/assets/dist/js/give-admin-donations.js:4
-#: build/assets/dist/js/give-admin-subscriptions.js:4
 msgid "Set status for the following donations?"
 msgstr ""
 
@@ -25037,15 +25148,47 @@ msgid "Start creating designated funds"
 msgstr ""
 
 #: build/assets/dist/js/give-admin-donations.js:4
+msgid "One-Time Donations"
+msgstr ""
+
+#: build/assets/dist/js/give-admin-donations.js:4
+msgid "Create a new donation record"
+msgstr ""
+
+#: build/assets/dist/js/give-admin-donations.js:4
+msgid "New donation"
+msgstr ""
+
+#: build/assets/dist/js/give-admin-donations.js:4
+msgid "Learn about Manual Donations add-on (opens in new tab)"
+msgstr ""
+
+#: build/assets/dist/js/give-admin-donations.js:4
 msgid "ADD-ON"
 msgstr ""
 
 #: build/assets/dist/js/give-admin-donations.js:4
-msgid "Enter Donations"
+msgid "Enter donations"
+msgstr ""
+
+#: build/assets/dist/js/give-admin-donations.js:4
+msgid "Information"
 msgstr ""
 
 #: build/assets/dist/js/give-admin-donations.js:4
 msgid "Need to add in a record for a donation received elsewhere, or reconcile with the payment gateway? Add donation records with the Manual Donations add-on!"
+msgstr ""
+
+#: build/assets/dist/js/give-admin-donations.js:4
+msgid "Import donations from external source"
+msgstr ""
+
+#: build/assets/dist/js/give-admin-donations.js:4
+msgid "Import donations"
+msgstr ""
+
+#: build/assets/dist/js/give-admin-donations.js:4
+msgid "Switch to the legacy donations table view"
 msgstr ""
 
 #: build/assets/dist/js/give-admin-donors.js:4
@@ -25057,7 +25200,7 @@ msgid "Delete all associated donations and records"
 msgstr ""
 
 #: build/assets/dist/js/give-admin-donors.js:4
-msgid "All Donation Forms"
+msgid "Filter donors by campaign"
 msgstr ""
 
 #: build/assets/dist/js/give-admin-donors.js:4
@@ -25310,11 +25453,15 @@ msgid "Really delete donation #%d?"
 msgstr ""
 
 #: build/assets/dist/js/give-admin-subscriptions.js:4
-msgid "filter donation forms by status"
+msgid "filter subscriptions by campaign"
 msgstr ""
 
 #: build/assets/dist/js/give-admin-subscriptions.js:4
-msgid "Name, Email, or  ID"
+msgid "Name, Email, or Subscription ID"
+msgstr ""
+
+#: build/assets/dist/js/give-admin-subscriptions.js:4
+msgid "search subscriptions"
 msgstr ""
 
 #: build/assets/dist/js/give-admin-subscriptions.js:4
@@ -25339,6 +25486,10 @@ msgstr ""
 
 #: build/assets/dist/js/give-admin-subscriptions.js:4
 msgid "Set To Suspended"
+msgstr ""
+
+#: build/assets/dist/js/give-admin-subscriptions.js:4
+msgid "Set status for the following subscriptions?"
 msgstr ""
 
 #: build/assets/dist/js/give-admin-subscriptions.js:4
@@ -26692,17 +26843,15 @@ msgid "Saving changes"
 msgstr ""
 
 #: build/donationDetails.js:10
-#: build/donorDetails.js:10
-#: build/subscriptionDetails.js:10
-msgid "Keep 100% of your fundraising revenue by providing donors with the option to cover the credit card processing fees"
-msgstr ""
-
-#: build/donationDetails.js:10
 msgid "Event ticket"
 msgstr ""
 
 #: build/donationDetails.js:10
 msgid "Fees recovered"
+msgstr ""
+
+#: build/donationDetails.js:10
+msgid "Keep 100% of your fundraising revenue by providing donors with the option to cover the credit card processing fees."
 msgstr ""
 
 #: build/donationDetails.js:10
@@ -26716,7 +26865,6 @@ msgid "Associated donor"
 msgstr ""
 
 #: build/donationDetails.js:10
-#: build/subscriptionDetails.js:10
 msgid "No donor associated with this donation"
 msgstr ""
 
@@ -26728,11 +26876,6 @@ msgstr ""
 #: build/donationDetails.js:10
 #: build/subscriptionDetails.js:10
 msgid "This donation's gateway is not active on your site. Install the matching payment gateway to see full details."
-msgstr ""
-
-#: build/donationDetails.js:10
-#: build/donorDetails.js:10
-msgid "Recurring"
 msgstr ""
 
 #: build/donationDetails.js:10
@@ -26863,6 +27006,16 @@ msgstr ""
 #: build/donationDetails.js:10
 #: build/donorDetails.js:10
 msgid "Phone number"
+msgstr ""
+
+#: build/donationDetails.js:10
+#: build/subscriptionDetails.js:10
+msgid "Dismiss notice"
+msgstr ""
+
+#: build/donationDetails.js:10
+#: build/subscriptionDetails.js:10
+msgid "This will not change the status at the gateway."
 msgstr ""
 
 #: build/donationDetails.js:10
@@ -28635,6 +28788,10 @@ msgid "Shows a donation summary in real-time for donors to review before donatin
 msgstr ""
 
 #: build/formBuilderRegistrars.js:1
+msgid "one-time"
+msgstr ""
+
+#: build/formBuilderRegistrars.js:1
 msgid "Once"
 msgstr ""
 
@@ -28966,6 +29123,10 @@ msgid "Payments completed"
 msgstr ""
 
 #: build/subscriptionDetails.js:10
+msgid "No donor associated with this subscription"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
 msgid "Unlimited"
 msgstr ""
 
@@ -29030,19 +29191,15 @@ msgid "Please note that this will not charge the donor nor create the renewal at
 msgstr ""
 
 #: build/subscriptionDetails.js:10
-msgid "Dismiss notice"
+msgid "This includes the subscription information"
+msgstr ""
+
+#: build/subscriptionDetails.js:10
+msgid "No subscription found"
 msgstr ""
 
 #: build/subscriptionDetails.js:10
 msgid "Show all recurring donations under this subscription."
-msgstr ""
-
-#: build/subscriptionDetails.js:10
-msgid "result"
-msgstr ""
-
-#: build/subscriptionDetails.js:10
-msgid "results"
 msgstr ""
 
 #: build/subscriptionDetails.js:10
@@ -29055,10 +29212,6 @@ msgstr ""
 
 #: build/subscriptionDetails.js:10
 msgid "Some changes made to this subscription will only affect future renewals."
-msgstr ""
-
-#: build/subscriptionDetails.js:10
-msgid "No records found"
 msgstr ""
 
 #: build/subscriptionDetails.js:10

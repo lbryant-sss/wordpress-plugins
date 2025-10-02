@@ -1,4 +1,14 @@
 == Changelog ==
+= 2.1.5 =
+* Added required validation for the checkbox field in the block checkout (WC 9.8+).
+* Fixed radio button styling issues with default WordPress block themes (e.g., Twenty Twenty-Four, Twenty Twenty-Five).
+* Added WooCommerce 10.2 compatibility.
+
+= 2.1.4 =
+* Fixed shipping calculation issue when "Hide shipping costs until an address is entered" is enabled (WooCommerce 9.8+ compatibility).
+* Added WooCommerce 9.8 compatibility.
+* Added WordPress 6.8 compatibility.
+
 = 2.1.3 =
 * Improved the address fields functionality in the Checkout block.
 * Added WooCommerce 9.7 compatibility.

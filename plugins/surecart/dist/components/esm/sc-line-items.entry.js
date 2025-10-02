@@ -1,6 +1,6 @@
 import { r as registerInstance, h } from './index-745b6bec.js';
 import { s as state } from './mutations-6bbbe793.js';
-import { u as updateCheckoutLineItem, r as removeCheckoutLineItem } from './mutations-3826cde0.js';
+import { u as updateCheckoutLineItem, r as removeCheckoutLineItem } from './mutations-766c6622.js';
 import { f as formBusy } from './getters-487612aa.js';
 import { g as getMaxStockQuantity } from './quantity-1f39f750.js';
 import './index-06061d4e.js';
@@ -13,8 +13,8 @@ import './currency-a0c9bff4.js';
 import './store-627acec4.js';
 import './price-af9f0dbf.js';
 import './mutations-ed6d0770.js';
-import './index-b401ec1a.js';
-import './fetch-8ecbbe53.js';
+import './index-5c73a1a2.js';
+import './fetch-bc141774.js';
 
 const scLineItemsCss = ":host{display:block}:slotted(*~*){margin-top:20px}.line-items{display:grid;gap:var(--sc-form-row-spacing)}.line-item{display:grid;gap:var(--sc-spacing-small)}.line-item--has-swap{border:1px solid var(--sc-input-border-color);background:var(--sc-card-background-color, var(--sc-color-white));border-radius:var(--sc-border-radius-medium);gap:0;border-radius:var(--sc-input-border-radius-medium);overflow:hidden}.line-item--has-swap sc-product-line-item{padding:var(--sc-spacing-medium);border-bottom:solid var(--sc-input-border-width) var(--sc-input-border-color)}.line-item--has-swap sc-swap{padding:var(--sc-spacing-medium);background:var(--sc-card-background-color, var(--sc-color-gray-50))}sc-swap{font-size:var(--sc-font-size-small);line-height:var(--sc-line-height-dense);color:var(--sc-input-label-color)}.fee__description{opacity:0.75}";
 const ScLineItemsStyle0 = scLineItemsCss;

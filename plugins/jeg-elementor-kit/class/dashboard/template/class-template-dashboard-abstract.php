@@ -4,7 +4,7 @@
  *
  * @author Jegtheme
  * @since 2.0.0
- * @package jeg-elementor-kit
+ * @package jeg-kit
  */
 
 namespace Jeg\Elementor_Kit\Dashboard\Template;
@@ -14,7 +14,7 @@ use Jeg\Elementor_Kit\Dashboard\Dashboard;
 /**
  * Class Template_Dashboard_Abstract
  *
- * @package jeg-elementor-kit
+ * @package jeg-kit
  */
 abstract class Template_Dashboard_Abstract {
 	/**

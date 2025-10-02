@@ -1,18 +1,18 @@
-=== Jeg Elementor Kit ===
+=== Jeg Kit for Elementor ===
 Contributors: Jegtheme
 Tags: elementor, elements, addons, widgets, templates
 Requires at least: 5.0
-Tested up to: 6.8.2
+Tested up to: 6.8.3
 Requires PHP: 7.4
-Stable tag: 2.6.14
+Stable tag: 2.7.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Additional widgets for Elementor page builder. It has 40 highly customizable widgets.
+Jeg Kit for Elementor (formerly Jeg Elementor Kit) is additional widgets for Elementor page builder. It has 40 highly customizable widgets.
 
 == Description ==
 
-Additional widgets for Elementor page builder. It has 40 highly customizable widgets.
+Jeg Kit for Elementor (formerly Jeg Elementor Kit) is additional widgets for Elementor page builder. It has 40 highly customizable widgets.
 
 == Essential Widgets ==
 We include widgets that you can customize to your as you want.
@@ -85,9 +85,15 @@ Please try to regenerate CSS via Elementor > Tools > Regenerate CSS option on ad
 **My Elementor editor isn't loading. What should I do?**
 
 Please make sure the WP Memory Limit on your site has set to 128 MB or greater. You can check your site status on Elementor > System Info. Please read this article for further reading
-https://elementor.com/help/requirements/ Also you can disable some widgets that you don't need from Jeg Elementor Kit > Elements dashboard to reduce memory usage.
+https://elementor.com/help/requirements/ Also you can disable some widgets that you don't need from Jeg Kit > Elements dashboard to reduce memory usage.
 
 == Changelog ==
+
+= 2.7.0 - 01-10-2025 =
+* Improvement: Security issues
+* Fix: Slide to Show default data not working in responsive mode in Testimonial widget
+* Tweak: Fix Dark mode Icon color on Elementor Editor 
+* Tweak: Plugin renamed to "Jeg Kit" in compliance with Elementor’s trademark policy
 
 = 2.6.14 - 28-07-2025 =
 * Improvement: Add FAQ Schema feature for SEO in Accordion widget

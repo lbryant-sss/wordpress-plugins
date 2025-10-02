@@ -398,24 +398,31 @@ jQuery( function ( $ ) {
 	/**
 	 * Hides the Connect with Jetpack form | Shows the Activate Akismet Account form
 	 */
-	$( 'a.toggle-ak-connect' ).on( 'click', function ( e ) {
+	var slideAnimation = {
+	  duration: 250,
+	  easing: 'swing'
+	};
+
+	$( 'button.toggle-ak-connect' ).on( 'click', function ( e ) {
 		e.preventDefault();
 
-		$( '.akismet-ak-connect' ).slideToggle('slow');
-		$( 'a.toggle-ak-connect' ).hide();
+		$( '.akismet-title' ).hide();
+		$( '.akismet-ak-connect' ).slideToggle( slideAnimation );
+		$( 'button.toggle-ak-connect' ).hide();
 		$( '.akismet-jp-connect' ).hide();
-		$( 'a.toggle-jp-connect' ).show();
+		$( 'button.toggle-jp-connect' ).show();
 	} );
 
 	/**
 	 * Shows the Connect with Jetpack form | Hides the Activate Akismet Account form
 	 */
-	$( 'a.toggle-jp-connect' ).on( 'click', function ( e ) {
+	$( 'button.toggle-jp-connect' ).on( 'click', function ( e ) {
 		e.preventDefault();
 
-		$( '.akismet-jp-connect' ).slideToggle('slow');
-		$( 'a.toggle-jp-connect' ).hide();
+		$( '.akismet-title' ).show();
+		$( '.akismet-jp-connect' ).slideToggle( slideAnimation );
+		$( 'button.toggle-jp-connect' ).hide();
 		$( '.akismet-ak-connect' ).hide();
-		$( 'a.toggle-ak-connect' ).show();
+		$( 'button.toggle-ak-connect' ).show();
 	} );
 });

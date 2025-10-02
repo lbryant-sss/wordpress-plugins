@@ -3,7 +3,7 @@
         'name' => 'jegstudio/jeg-elementor-kit',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '009e22d686672ae2ffcd39e9447213d15620a7e1',
+        'reference' => '37cc89815ec7a938e754430fef5bd8a6b3a1f92d',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'enshrined/svg-sanitize' => array(
-            'pretty_version' => '0.19.0',
-            'version' => '0.19.0.0',
-            'reference' => 'e95cd17be68e45f523cbfb0fe50cdd891b0cf20e',
+            'pretty_version' => '0.22.0',
+            'version' => '0.22.0.0',
+            'reference' => '0afa95ea74be155a7bcd6c6fb60c276c39984500',
             'type' => 'library',
             'install_path' => __DIR__ . '/../enshrined/svg-sanitize',
             'aliases' => array(),
@@ -22,7 +22,7 @@
         'jegstudio/jeg-elementor-kit' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '009e22d686672ae2ffcd39e9447213d15620a7e1',
+            'reference' => '37cc89815ec7a938e754430fef5bd8a6b3a1f92d',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

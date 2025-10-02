@@ -803,6 +803,8 @@ class ComposerStaticInitde6168bc7e17873548173e515fd8b9ef
         'SureCart\\Integrations\\Elementor\\Widgets\\SaleBadge' => __DIR__ . '/../..' . '/app/src/Integrations/Elementor/Widgets/SaleBadge.php',
         'SureCart\\Integrations\\Elementor\\Widgets\\SelectedPriceAdHocAmount' => __DIR__ . '/../..' . '/app/src/Integrations/Elementor/Widgets/SelectedPriceAdHocAmount.php',
         'SureCart\\Integrations\\Elementor\\Widgets\\VariantPills' => __DIR__ . '/../..' . '/app/src/Integrations/Elementor/Widgets/VariantPills.php',
+        'SureCart\\Integrations\\Etch\\EtchService' => __DIR__ . '/../..' . '/app/src/Integrations/Etch/EtchService.php',
+        'SureCart\\Integrations\\Etch\\EtchServiceProvider' => __DIR__ . '/../..' . '/app/src/Integrations/Etch/EtchServiceProvider.php',
         'SureCart\\Integrations\\HelpWidget\\HelpWidget' => __DIR__ . '/../..' . '/app/src/Integrations/HelpWidget/HelpWidget.php',
         'SureCart\\Integrations\\HelpWidget\\HelpWidgetServiceProvider' => __DIR__ . '/../..' . '/app/src/Integrations/HelpWidget/HelpWidgetServiceProvider.php',
         'SureCart\\Integrations\\IntegrationService' => __DIR__ . '/../..' . '/app/src/Integrations/IntegrationService.php',

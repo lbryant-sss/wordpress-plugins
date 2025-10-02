@@ -4,7 +4,7 @@
  *
  * @author Jegtheme
  * @since 1.6.0
- * @package jeg-elementor-kit
+ * @package jeg-kit
  */
 
 namespace Jeg\Elementor_Kit\Elements\Options;
@@ -45,7 +45,7 @@ class Social_Share_Option extends Option_Abstract {
 	 * @return string
 	 */
 	public function get_element_name() {
-		return esc_html__( 'JKit - Social Share', 'jeg-elementor-kit' );
+		return esc_html__( 'Jeg Kit - Social Share', 'jeg-elementor-kit' );
 	}
 
 	/**
@@ -54,7 +54,7 @@ class Social_Share_Option extends Option_Abstract {
 	 * @return string
 	 */
 	public function get_category() {
-		return esc_html__( 'Jeg Elementor Kit', 'jeg-elementor-kit' );
+		return esc_html__( 'Jeg Kit', 'jeg-elementor-kit' );
 	}
 
 	/**

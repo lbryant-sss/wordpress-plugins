@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-8acc3c89.js');
-const watchers = require('./watchers-856f6d74.js');
+const watchers = require('./watchers-6944a021.js');
 require('./index-bcdafe6e.js');
 require('./utils-2e91d46c.js');
 require('./getters-66ca11f9.js');
@@ -17,10 +17,10 @@ require('./store-4a539aea.js');
 require('./price-5b1afcfe.js');
 require('./address-4c70d641.js');
 require('./util-b877b2bd.js');
-require('./mutations-f5c4fd54.js');
+require('./mutations-2db027c4.js');
 require('./mutations-11c8f9a8.js');
-require('./index-c916634a.js');
-require('./fetch-d644cebd.js');
+require('./index-1f9e4c8e.js');
+require('./fetch-d374a251.js');
 
 const scProductDonationChoicesCss = ":host{display:block}.sc-product-donation-choices{display:grid;gap:2em;position:relative;--columns:4}.sc-product-donation-choices__form{display:grid;gap:var(--sc-spacing-small)}.sc-donation-recurring-choices{display:grid;gap:var(--sc-spacing-small);position:relative;--columns:2}";
 const ScProductDonationChoicesStyle0 = scProductDonationChoicesCss;

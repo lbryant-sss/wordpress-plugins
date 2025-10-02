@@ -3,7 +3,7 @@ Contributors: dotcamp, ultimateblocks, imtiazrayhan, istiakrayhan, erdembircan, 
 Tags: blocks, gutenberg blocks, gutenberg, block editor, free
 Requires at least: 5.8
 Tested up to: 6.8
-Stable tag: 3.4.1
+Stable tag: 3.4.2
 Requires PHP: 7.2
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
@@ -149,6 +149,15 @@ That's it. You're done!
 3. Tabbed Content Block.
 
 == Changelog ==
+
+= 3.4.2 =
+
+* FIX: Disabling extension is not working.
+* FIX: Button automatically adds noopener noreferrer.
+* FIX: Memory exhausted issue.
+* FIX: Free version shows settings tab on core blocks like paragraph.
+* IMPROVE: Update plugin name in readme.
+* IMPROVE: Remove unnecessary metadata.
 
 = 3.4.1 =
 

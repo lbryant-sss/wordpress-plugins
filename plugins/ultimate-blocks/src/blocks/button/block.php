@@ -44,11 +44,18 @@ function ub_multi_buttons_parse($b){
 		$icon = '';
 	}
 
-	$link_rel = sprintf(
-		'noopener noreferrer %1$s %2$s',
-		$addNofollow ? ' nofollow' : '',
-		$addSponsored ? ' sponsored' : ''
-	);
+	$link_rel_parts = [];
+	if ($openInNewTab) {
+		$link_rel_parts[] = 'noopener';
+		$link_rel_parts[] = 'noreferrer';
+	}
+	if ($addNofollow) {
+		$link_rel_parts[] = 'nofollow';
+	}
+	if ($addSponsored) {
+		$link_rel_parts[] = 'sponsored';
+	}
+	$link_rel = implode(' ', $link_rel_parts);
 
 	$link_class = sprintf(
 		'ub-button-block-main %1$s %2$s',
@@ -189,7 +196,7 @@ function ub_multi_buttons_parse($b){
 
 	return sprintf(
 		'<div class="ub-button-container%1$s">
-			<a href="%2$s" target="%3$s" rel="%4$s" class="%5$s" role="button" style="%9$s">
+			<a href="%2$s" target="%3$s"%4$s class="%5$s" role="button" style="%9$s">
 				<div class="ub-button-content-holder" style="flex-direction: %8$s">
 					%6$s<span class="ub-button-block-btn">%7$s</span>
 				</div>
@@ -198,7 +205,7 @@ function ub_multi_buttons_parse($b){
 		($buttonWidth === 'full' ? ' ub-button-full-container' : ''),
 		esc_url($url),
 		($openInNewTab ? '_blank' : '_self'),
-		$link_rel,
+		(!empty($link_rel) ? ' rel="' . $link_rel . '"' : ''),
 		$link_class,
 		$icon,
 		$buttonText,
@@ -319,11 +326,24 @@ function ub_single_button_parse($b) {
 	$button_padding_styles['padding-left'] =  $button_padding_css['left'];
 	$link_style .= Ultimate_Blocks\includes\generate_css_string($button_padding_styles);
 
+	$link_rel_parts = [];
+	if ($openInNewTab) {
+		$link_rel_parts[] = 'noopener';
+		$link_rel_parts[] = 'noreferrer';
+	}
+	if ($addNofollow) {
+		$link_rel_parts[] = 'nofollow';
+	}
+	if (isset($addSponsored) && $addSponsored) {
+		$link_rel_parts[] = 'sponsored';
+	}
+	$link_rel = implode(' ', $link_rel_parts);
+
 	$link_attrs = sprintf(
-		'href="%1$s" target="%2$s" rel="noopener noreferrer%3$s" class="%4$s" style="%5$s"',
+		'href="%s" target="%s"%s class="%s" style="%s"',
 		esc_url($url),
 		($openInNewTab ? '_blank' : '_self'),
-		($addNofollow ? ' nofollow' : ''),
+		(!empty($link_rel) ? ' rel="' . $link_rel . '"' : ''),
 		$link_class,
 		$link_style
 	);

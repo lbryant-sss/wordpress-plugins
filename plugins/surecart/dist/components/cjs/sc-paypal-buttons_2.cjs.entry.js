@@ -4,8 +4,8 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-8acc3c89.js');
 const functions = require('./functions-b63256c8.js');
-const fetch = require('./fetch-d644cebd.js');
-const index$1 = require('./index-c916634a.js');
+const fetch = require('./fetch-d374a251.js');
+const index$1 = require('./index-1f9e4c8e.js');
 const mutations = require('./mutations-11c8f9a8.js');
 require('./add-query-args-49dcb630.js');
 require('./remove-query-args-b57e8cd3.js');

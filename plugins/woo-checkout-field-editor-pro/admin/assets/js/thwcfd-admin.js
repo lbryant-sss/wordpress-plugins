@@ -1214,6 +1214,40 @@ var thwcfd_settings = (function($, window, document) {
 	        feature_popup[0].style.display = "flex";
 	    }
 	});
+
+	$(document).ready(function(){
+
+		const referrerUrl = document.referrer;
+		var clicked = false; 
+		if (referrerUrl.includes('thwcfd-welcome')) {
+			$("#infoBox").show();
+			clicked = true;
+		}else{
+			clicked = false;
+			$("#infoBox").hide();
+		}
+		$("#th_info_container").on("click", function(){
+			if (!clicked) {
+				$("#infoBox").show();
+			} else {
+				$("#infoBox").hide();
+			}
+			clicked = !clicked;
+		});
+		
+		$("#th_info_container").on("mouseenter", function(){
+			if (!clicked) {
+				$("#infoBox").show();
+			}
+		});
+		// Hide on mouseleave only if not clicked
+		$("#th_info_container").on("mouseleave", function(){
+			if (!clicked) {
+				$("#infoBox").hide();
+			}
+		});
+		
+	});
    
 	function select_all_fields(elm){
 		var checkAll = $(elm).prop('checked');

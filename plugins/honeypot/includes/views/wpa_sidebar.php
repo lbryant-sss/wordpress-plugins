@@ -1,8 +1,15 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit;  ?>
 <style type="text/css">
 ul.uaf_list{ list-style-type:square;margin-left: 2em;}
+.sidebar_image{max-width: 100%;}
 </style>
 <br/>
+
+<?php if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) { ?>
+<a href="https://hcn.im/routepricing" target="_blank"><img class="sidebar_image" src="<?php echo plugin_dir_url( dirname( __FILE__ ) ) . 'img/route_pricing.jpg'; ?>" /></a>
+<br/><br/>
+<?php } ?>
+
 <table class="wp-list-table widefat fixed bookmarks">
     <thead>
     <tr>

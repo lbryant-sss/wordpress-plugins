@@ -118,12 +118,6 @@ table.comments td.comment p a:after {
 	box-sizing: border-box;
 }
 
-.akismet-new-snapshot__number {
-	display: block;
-	font-size: 32px;
-	font-weight: lighter;
-	line-height: 1.5em;
-}
 
 .akismet-settings th:first-child {
 	vertical-align: top;

@@ -2,7 +2,7 @@
 /**
  * Mailchimp Option Class
  *
- * @package jeg-elementor-kit
+ * @package jeg-kit
  * @author Jegtheme
  * @since 1.3.0
  */
@@ -45,7 +45,7 @@ class Mailchimp_Option extends Option_Abstract {
 	 * @return string
 	 */
 	public function get_element_name() {
-		return esc_html__( 'JKit - Mailchimp', 'jeg-elementor-kit' );
+		return esc_html__( 'Jeg Kit - Mailchimp', 'jeg-elementor-kit' );
 	}
 
 	/**
@@ -54,7 +54,7 @@ class Mailchimp_Option extends Option_Abstract {
 	 * @return string
 	 */
 	public function get_category() {
-		return esc_html__( 'Jeg Elementor Kit', 'jeg-elementor-kit' );
+		return esc_html__( 'Jeg Kit', 'jeg-elementor-kit' );
 	}
 
 	/**
@@ -168,7 +168,7 @@ class Mailchimp_Option extends Option_Abstract {
 				'type'        => 'alert',
 				'title'       => '',
 				'segment'     => 'segment_form',
-				'description' => esc_html__( 'Please set Mailchimp API Key in Jeg Elementor Kit admin dashboard.', 'jeg-elementor-kit' ),
+				'description' => esc_html__( 'Please set Mailchimp API Key in Jeg Kit admin dashboard.', 'jeg-elementor-kit' ),
 			);
 		}
 

@@ -713,6 +713,8 @@ return array(
     'SureCart\\Integrations\\Elementor\\Widgets\\SaleBadge' => $baseDir . '/app/src/Integrations/Elementor/Widgets/SaleBadge.php',
     'SureCart\\Integrations\\Elementor\\Widgets\\SelectedPriceAdHocAmount' => $baseDir . '/app/src/Integrations/Elementor/Widgets/SelectedPriceAdHocAmount.php',
     'SureCart\\Integrations\\Elementor\\Widgets\\VariantPills' => $baseDir . '/app/src/Integrations/Elementor/Widgets/VariantPills.php',
+    'SureCart\\Integrations\\Etch\\EtchService' => $baseDir . '/app/src/Integrations/Etch/EtchService.php',
+    'SureCart\\Integrations\\Etch\\EtchServiceProvider' => $baseDir . '/app/src/Integrations/Etch/EtchServiceProvider.php',
     'SureCart\\Integrations\\HelpWidget\\HelpWidget' => $baseDir . '/app/src/Integrations/HelpWidget/HelpWidget.php',
     'SureCart\\Integrations\\HelpWidget\\HelpWidgetServiceProvider' => $baseDir . '/app/src/Integrations/HelpWidget/HelpWidgetServiceProvider.php',
     'SureCart\\Integrations\\IntegrationService' => $baseDir . '/app/src/Integrations/IntegrationService.php',

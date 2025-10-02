@@ -2,7 +2,7 @@
 /**
  * Post Content Option Class
  *
- * @package jeg-elementor-kit
+ * @package jeg-kit
  * @author Jegtheme
  * @since 2.2.0
  */
@@ -45,7 +45,7 @@ class Post_Content_Option extends Option_Abstract {
 	 * @return string
 	 */
 	public function get_element_name() {
-		return esc_html__( 'JKit - Post Content', 'jeg-elementor-kit' );
+		return esc_html__( 'Jeg Kit - Post Content', 'jeg-elementor-kit' );
 	}
 
 	/**
@@ -54,7 +54,7 @@ class Post_Content_Option extends Option_Abstract {
 	 * @return string
 	 */
 	public function get_category() {
-		return esc_html__( 'Jeg Elementor Kit - Single Post', 'jeg-elementor-kit' );
+		return esc_html__( 'Jeg Kit - Single Post', 'jeg-elementor-kit' );
 	}
 
 	/**

@@ -390,7 +390,7 @@ class THWCFD_Admin_Form_Block_Field extends THWCFD_Admin_Form{
 			if( $section != 'address' ){
 				$this->render_form_elm_row_cb($this->field_props['checked']);
 			}
-			//$this->render_form_elm_row_cb($this->field_props['required']);
+			$this->render_form_elm_row_cb($this->field_props['required']);
 			$this->render_form_elm_row_cb($this->field_props['enabled']);
 
 			$this->render_form_elm_row_cb($this->field_props['order_meta'], array(), $section);

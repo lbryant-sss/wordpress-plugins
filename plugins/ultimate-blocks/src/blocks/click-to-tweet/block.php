@@ -4,18 +4,6 @@
  */
 
 /**
- * Registering meta for the tweet.
- */
-function ub_register_meta() {
-	register_meta( 'post', 'ub_ctt_via', array(
-		'show_in_rest' => true,
-		'single' => true
-	) );
-}
-
-add_action( 'init', 'ub_register_meta' );
-
-/**
  * Rendering the block dynamically.
  *
  * @param $attributes

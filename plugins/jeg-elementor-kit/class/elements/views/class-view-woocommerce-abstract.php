@@ -2,7 +2,7 @@
 /**
  * Elements WooCommerce Abstract Class
  *
- * @package jeg-elementor-kit
+ * @package jeg-kit
  * @author Jegtheme
  * @since 2.4.0
  */

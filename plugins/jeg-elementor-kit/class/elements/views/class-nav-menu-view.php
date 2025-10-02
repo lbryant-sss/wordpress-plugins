@@ -2,7 +2,7 @@
 /**
  * Nav Menu View Class
  *
- * @package jeg-elementor-kit
+ * @package jeg-kit
  * @author Jegtheme
  * @since 1.0.0
  */
@@ -35,7 +35,7 @@ class Nav_Menu_View extends View_Abstract {
 		add_filter( 'walker_nav_menu_start_el', array( $this, 'add_jkit_mega_menu' ), 10, 4 );
 
 		/**
-		 * TODO: must create custom menu walker for jeg elementor kit menu
+		 * TODO: must create custom menu walker for Jeg Kit menu
 		 */
 		$menu = wp_nav_menu(
 			array(

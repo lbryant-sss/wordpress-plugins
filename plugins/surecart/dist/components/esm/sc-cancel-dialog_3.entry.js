@@ -1,5 +1,5 @@
 import { r as registerInstance, c as createEvent, h, H as Host, F as Fragment } from './index-745b6bec.js';
-import { a as apiFetch } from './fetch-8ecbbe53.js';
+import { a as apiFetch } from './fetch-bc141774.js';
 import { f as formatTaxDisplay } from './tax-a03623ca.js';
 import { a as addQueryArgs } from './add-query-args-0e2a8393.js';
 import './remove-query-args-938c53ea.js';

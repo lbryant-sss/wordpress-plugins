@@ -4,7 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 const index = require('./index-8acc3c89.js');
 const mutations = require('./mutations-10a18c83.js');
-const index$1 = require('./index-c916634a.js');
+const index$1 = require('./index-1f9e4c8e.js');
 const mutations$1 = require('./mutations-11c8f9a8.js');
 require('./index-bcdafe6e.js');
 require('./utils-2e91d46c.js');
@@ -15,7 +15,7 @@ require('./google-59d23803.js');
 require('./currency-71fce0f0.js');
 require('./store-4a539aea.js');
 require('./price-5b1afcfe.js');
-require('./fetch-d644cebd.js');
+require('./fetch-d374a251.js');
 
 const scSwapCss = ".swap{display:flex;align-items:baseline;justify-content:space-between}.swap__price{color:var(--sc-swap-price-color, var(--sc-input-label-color));line-height:var(--sc-line-height-dense);font-size:var(--sc-font-size-small);white-space:nowrap}";
 const ScSwapStyle0 = scSwapCss;

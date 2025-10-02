@@ -54,6 +54,9 @@ class THWCFD_Admin {
 	public function admin_menu() {
 		$capability = THWCFD_Utils::wcfd_capability();
 		$this->screen_id = add_submenu_page('woocommerce', __('WooCommerce Checkout Field Editor', 'woo-checkout-field-editor-pro'), __('Checkout Form', 'woo-checkout-field-editor-pro'), $capability, 'checkout_form_designer', array($this, 'output_settings'));
+
+		// Add setup wizard page admin access.
+		add_dashboard_page( '', '', 'manage_options', 'thwcfd-welcome', );
 	}
 	
 	public function add_screen_id($ids) {
@@ -92,6 +95,7 @@ class THWCFD_Admin {
 		
 		echo '<h2>'. esc_html__('Checkout Form', 'woo-checkout-field-editor-pro') .'</h2>';
 		$tab = $this->get_current_tab();
+		$c_type = isset( $_GET['c_type'] ) ? esc_attr( $_GET['c_type'] ) : 'classic';
 
 		echo '<div class="thwcfd-wrap">';
 		//Block Compatibility Warning
@@ -100,9 +104,6 @@ class THWCFD_Admin {
 		if($tab === 'advanced_settings'){			
 			$advanced_settings = THWCFD_Admin_Settings_Advanced::instance();	
 			$advanced_settings->render_page();
-		}elseif($tab === 'block_fields'){
-			$block_fields = THWCFD_Admin_Settings_Block_Fields::instance();	
-			$block_fields->init();
 		}elseif($tab === 'pro'){
 			$pro_details = THWCFD_Admin_Settings_Pro::instance();	
 			$pro_details->render_page();
@@ -110,8 +111,15 @@ class THWCFD_Admin {
 			$themehigh_plugins = THWCFD_Admin_Settings_Themehigh_Plugins::instance();	
 			$themehigh_plugins->render_page();
 		}else{
-			$general_settings = THWCFD_Admin_Settings_General::instance();	
-			$general_settings->init();
+
+			if($c_type === 'block'){
+				$block_settings = THWCFD_Admin_Settings_Block_Fields::instance();	
+				$block_settings->init();
+			}else{
+
+				$general_settings = THWCFD_Admin_Settings_General::instance();	
+				$general_settings->init();
+			}
 		}
 		echo '</div>';
 		echo '</div>';
@@ -123,13 +131,7 @@ class THWCFD_Admin {
 		<div id="th_block_warning" class="th-block-warning-msg">
             <div class="th-warning-message-panel__text th-warning-message-panel__text--center">
                 <div class = "th-warning-img">
-					<svg width="30" height="30" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M9.65703 0H0.496145C0.221904 0 0 0.208925 0 0.467124V2.30211C0 2.55966 0.221904 2.76924 0.496145 2.76924H9.65773C9.93127 2.76924 10.1539 2.56031 10.1539 2.30211V0.467124C10.1539 0.209582 9.93197 0 9.65773 0H9.65703Z" fill="white"/>
-						<path d="M14.737 4.61539H3.72396C3.45206 4.61539 3.2308 4.82431 3.2308 5.08251V6.9175C3.2308 7.17504 3.45137 7.38462 3.72396 7.38462H14.7377C15.0096 7.38462 15.2308 7.1757 15.2308 6.9175V5.08251C15.2308 4.82497 15.0103 4.61539 14.7377 4.61539H14.737Z" fill="white"/>
-						<path d="M14.7172 9.23077H12.0522C11.769 9.23077 11.5386 9.4397 11.5386 9.6979V11.5329C11.5386 11.7904 11.7683 12 12.0522 12H14.7172C15.0004 12 15.2309 11.7911 15.2309 11.5329V9.6979C15.2309 9.44036 15.0012 9.23077 14.7172 9.23077Z" fill="white"/>
-						<path d="M9.64009 9.23077H6.97526C6.69202 9.23077 6.46152 9.4397 6.46152 9.6979V11.5329C6.46152 11.7904 6.69129 12 6.97526 12H9.64009C9.92333 12 10.1538 11.7911 10.1538 11.5329V9.6979C10.1538 9.44036 9.92406 9.23077 9.64009 9.23077Z" fill="white"/>
-						<path d="M14.7172 0H12.0522C11.769 0 11.5386 0.208925 11.5386 0.467124V2.30211C11.5386 2.55966 11.7683 2.76924 12.0522 2.76924H14.7172C15.0004 2.76924 15.2309 2.56031 15.2309 2.30211V0.467124C15.2309 0.209582 15.0012 0 14.7172 0Z" fill="white"/>
-					</svg>
+					<img src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/logo.svg'); ?>" alt="Themehigh Logo" />
 				</div>
 				<div class="th-warning">
              	
@@ -243,7 +245,7 @@ class THWCFD_Admin {
 		?>
         <style>
 			.thwcfd-custom-background {
-			    background: linear-gradient(92.22deg, #6E55FF 39.76%, #845DE2 101.58%);
+			    background: #ffffff;
 			}
 
 			.notice.thpladmin-notice.thwcfd-review-wrapper {
@@ -266,10 +268,10 @@ class THWCFD_Admin {
 			    position: relative;
 			    border-radius: 1rem;
 			    gap: 1rem;
-			    padding: 1.5rem 1rem;
-			    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+			    padding: 0.5rem 1rem;
 			    width: 100%;
-			    color: white;
+			    color: #1E2327;
+				border: 1px solid #E7E7E7;
 			}
 
 			.thwcfd-text-content {
@@ -292,13 +294,6 @@ class THWCFD_Admin {
 			    margin-top: -0.1rem;
 			}
 
-			.thwcfd-line-img {
-			    position: absolute;
-			    top: 1rem;
-			    left: 0;
-			    right: 0;
-			}
-
 			.thwcfd-rating-img {
 			    width: 1.2rem;
 			    height: 1.2rem;
@@ -306,35 +301,13 @@ class THWCFD_Admin {
 			}
 
 			.thwcfd-main-content-wrapper h1 {
-			    color: white;
 			    font-weight: 700;
 			    font-size: 16px;
 			}
 
 			.thwcfd-themehigh-logo {
-			    width: 4rem;
-			    height: 4rem;
-				margin-left: 40px;
-			}
-
-			.thwcfd-greeting-container {
-			    display: flex;
-			    flex-direction: column;
-			    align-items: start;
-			}
-
-			.thwcfd-greeting-container h1 {
-			    color: white;
-			    font-weight: bold;
-			    font-size: 16px;
-			    line-height: 12px;
-			}
-
-			.thwcfd-vertical-divider {
-			    min-height: 3rem;
-			    width: 0.125rem;
-			    background-color: white;
-			    opacity: 0.4;
+			    width: 2.4rem;
+			    height: 2.4rem;
 			}
 
 			.thwcfd-sub-content-wrapper {
@@ -349,59 +322,56 @@ class THWCFD_Admin {
 			    grid-template-columns: repeat(2, 1fr);
 			    color: white;
 			    gap: 0.5rem;
-			    margin-top: 1.25rem;
+			    margin-top: 0.25rem;
 			}
 
 			.thwcfd-buttons a {
-			    padding: 0.3rem 0.8rem;
-			    border-radius: 0.375rem;
+			    padding: 0.5rem 0.8rem;
+			    border-radius: 2px;
 			    font-size: 13px;
-			    background-color: #6A43E5;
+			    background-color: #6A56F626;
 			    text-decoration: none;
-			    color: white;
+			    color: #24232B;
 			    text-align: center;
 			}
 
 			.thwcfd-buttons a:hover {
-			    background: #5327E0;
+			    background: #6A56F640;
 			    box-shadow: 0px 0px 0.9px 0px #00000040;
 			    cursor: pointer;
 			}
 
 			.thwcfd-buttons a:first-child {
-			    color: black; 
-			    background-color: white;
+			    color: #FFFFFF; 
+			    background-color: #6A56F6;
 			    cursor: pointer;
 			}
 
 			.thwcfd-buttons a:first-child:hover {
-			    color: #7759F4;
+			    background-color: #5036E5;
 			    box-shadow: 0px 0px 6.5px 0px #00000040;
 			}
 
 			.thwcfd-banner {
-			    position: absolute;
-			    top: 0;
-			    right: 8.5rem;
 			    background-color: white;
-			    border-bottom-right-radius: 14px; 
-			    border-bottom-left-radius: 14px; 
 				padding: 2px 10px;
 			}
 
 			.thwcfd-banner h1 {
 			    font-size: 12px;
-			    font-weight: 500;
+			    font-weight: 400;
 				margin-top: -5px;
+				color: #9D9D9D;
 			}
 
 			.thwcfd-banner span {
 			    font-weight: bold;
+				color: #111933;
 			}
 
 			.thwcfd-close a {
 			    position: absolute;
-			    top: 1rem;
+			    top: 2rem;
 			    right: 2rem;
 			    cursor: pointer;
 			}
@@ -410,12 +380,12 @@ class THWCFD_Admin {
 			@media (min-width: 1024px) {
 			    .thwcfd-content {
 			        gap: 2rem;
-			        padding: 2.5rem;
+			        padding: 1.5rem;
 			    }
 
 			    .thwcfd-themehigh-logo {
-			        width: 4rem;
-			        height: 4rem;
+			        width: 2.4rem;
+			        height: 2.4rem;
 			    }
 
 			    .thwcfd-sub-content-wrapper {
@@ -432,22 +402,14 @@ class THWCFD_Admin {
 			/* md */
 			@media (min-width: 768px) {
 			    .thwcfd-content {
-			        padding: 1.5rem;
+			        padding: 0.5rem 1rem;
 			        gap: 2rem;
 			    }
 			}
 
 			/* xl */
 			@media (min-width: 1920px) and (max-width: 2560px) {
-			    .thwcfd-greeting-container h1 {
-					color: white;
-					font-weight: bold;
-					font-size: 17px;
-					line-height: 12px;
-				}
-
 				.thwcfd-main-content-wrapper h1 {
-					color: white;
 					font-weight: 700;
 					font-size: 17px;
 				}
@@ -470,14 +432,6 @@ class THWCFD_Admin {
 		<div class="notice notice-info thpladmin-notice thwcfd-review-wrapper "  data-nonce="<?php echo esc_attr(wp_create_nonce( 'thwcfd_notice_security')); ?>">
       	   <div class="thwcfd-custom-background thwcfd-content">
        		<img src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/logo.svg'); ?>" alt="Themehigh Logo" class="thwcfd-themehigh-logo" />
-        	<div class="thwcfd-greeting-container">
-          		<div class="thwcfd-text-content">
-            		<h1>Hey</h1>
-            		<img src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/review-notice/hi.png'); ?>" alt="Hi" class="thwcfd-hi-img" />
-          		</div>
-          		<h1>There!</h1>
-        	</div>
-        	<div class="thwcfd-vertical-divider"></div>
         	<div class="thwcfd-main-content-wrapper">
           		<h1>Redefining your checkout pages with our plugin?</h1>
           		<div class="thwcfd-sub-content-wrapper">
@@ -486,9 +440,8 @@ class THWCFD_Admin {
               			<img src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/review-notice/smile.png'); ?>" alt="Smile" class="thwcfd-smile-img" />
             		</div>
             		<div class="thwcfd-text-content" style="margin-left: 4px;">
-              			<p>Give us a quick <span style="position: relative;">review
-              				<img src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/review-notice/line.svg'); ?>" alt="Underline" class="thwcfd-line-img" />
-							</span>
+              			<p>Give us a quick 
+							<span style="position: relative;">review</span>
 						</p>
 						<img src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/review-notice/star.png'); ?>" alt="Star Rating" class="thwcfd-rating-img" />
             		</div>
@@ -509,10 +462,10 @@ class THWCFD_Admin {
 				</a>
         	</div>
         	<div class="thwcfd-banner">
-          		<h1>Checkout field editor by <span>themehigh</span></h1>
+          		<h1>Checkout field editor </br>by <span>themehigh</span></h1>
         	</div>
         	<div class="thwcfd-close">
-          		<a href="<?php echo esc_url($dismiss_url); ?>"><img src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/close.png'); ?>" alt="Close" /></a>
+          		<a href="<?php echo esc_url($dismiss_url); ?>"><img src="<?php echo esc_url(THWCFD_URL .'admin/assets/images/close-dark.png'); ?>" alt="Close" /></a>
         	</div>
 			
       	   </div>
@@ -653,7 +606,7 @@ class THWCFD_Admin {
 									</svg>
 
                     			</div>
-                    			<a href="https://app.loopedin.io/checkout-field-editor-for-woocommerce" target="_blank" class="quick-widget-doc-link">Request a feature</a></li>
+                    			<a href="https://app.loopedin.io/checkout-field-editor-for-woocommerce/boards" target="_blank" class="quick-widget-doc-link">Request a feature</a></li>
                			 	<li>
                			 		<div class="list_icon" style="background-color: rgba(255, 183, 67, 0.15);">
         							<svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -726,6 +679,51 @@ class THWCFD_Admin {
             </div>
             </div>
         <?php
+	}
+
+	/**
+	 * Landing page.
+	 *
+	 * @since    2.1.5
+	*/
+	public function redirect_to_landing_page() {
+		if ( ! is_admin() ) {
+			return;
+		}
+		if ( $this->is_existing_user() ) {
+			return;
+		}
+		$transient_value = get_transient('thwcfd_activation_redirect');
+		if ( $transient_value  === false ) {
+			return;
+		}
+		wp_safe_redirect( esc_url_raw( admin_url( 'index.php?page=thwcfd-welcome' ) ) );
+		exit();
+	}
+
+	public function landing_page(){
+		if ( empty( $_GET['page'] ) || 'thwcfd-welcome' !== $_GET['page'] ) {
+			return;
+		}
+		add_filter('deprecated_function_trigger_error', '__return_false');
+		$this->enqueue_landing_page_styles();
+		ob_start();
+		include_once THWCFD_ABSPATH . '/admin/thwcfd-landing-page.php';
+	}
+
+	public function enqueue_landing_page_styles() {
+		wp_enqueue_style( 'thwcfd-landing-page', THWCFD_ASSETS_URL_ADMIN . 'css/landing-page.min.css', array(), $this->version);
+	}
+
+	private function is_existing_user() {
+		
+		$thwcfd_since = get_option('thwcfd_since', false);
+		if ( ! $thwcfd_since ) {
+			$now = time();
+			update_option( 'thwcfd_since', $now, 'no' );
+			return false;
+		}
+		return true;
 	}
 }
 

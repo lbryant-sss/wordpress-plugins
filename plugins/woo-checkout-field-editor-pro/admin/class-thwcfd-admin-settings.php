@@ -14,6 +14,7 @@ if(!class_exists('THWCFD_Admin_Settings')):
 
 abstract class THWCFD_Admin_Settings{
 	protected $page_id = '';
+	protected $c_type 	  = '';
 	protected $section_id = '';
 	
 	protected $tabs = '';
@@ -21,8 +22,8 @@ abstract class THWCFD_Admin_Settings{
 
 	public function __construct() {
 		$this->tabs = array(
-			'fields' => __('Classic Checkout Fields', 'woo-checkout-field-editor-pro'),
-			'block_fields' => __('Block Checkout Fields', 'woo-checkout-field-editor-pro'),
+			'fields' => __('Checkout Fields', 'woo-checkout-field-editor-pro'),
+			//'block_fields' => __('Block Checkout Fields', 'woo-checkout-field-editor-pro'),
 			'advanced_settings' => __('Advanced Settings', 'woo-checkout-field-editor-pro'),
 			'pro' => __('Premium Features', 'woo-checkout-field-editor-pro'),
 			'themehigh_plugins' => __('Other Free Plugins', 'woo-checkout-field-editor-pro'),
@@ -35,6 +36,10 @@ abstract class THWCFD_Admin_Settings{
 
 	public function get_current_tab(){
 		return $this->page_id;
+	}
+
+	public function get_current_c_type(){
+		return isset( $_GET['c_type'] ) ? sanitize_key( $_GET['c_type'] ) : 'classic';
 	}
 	
 	public function get_current_section(){
@@ -77,10 +82,13 @@ abstract class THWCFD_Admin_Settings{
 	// 	echo '</ul>';
 	// }	
 	
-	public function get_admin_url($tab = false, $section = false){
+	public function get_admin_url($tab = false, $c_type = false,$section = false){
 		$url = 'admin.php?page=checkout_form_designer';
 		if($tab && !empty($tab)){
 			$url .= '&tab='. $tab;
+		}
+		if($c_type && !empty($c_type)){
+			$url .= '&c_type='. $c_type;
 		}
 		if($section && !empty($section)){
 			$url .= '&section='. $section;

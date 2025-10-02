@@ -485,7 +485,11 @@ class Ultimate_Blocks_Admin {
 	public function update_new_extensions(){
 		$extensions = $this->extensions();
 
-		update_option( 'ultimate_blocks_extensions', $extensions );
+		$registered_extensions = get_option( 'ultimate_blocks_extensions', false );
+
+		if ( ! $registered_extensions ) {
+			update_option( 'ultimate_blocks_extensions', $extensions );
+		}
 	}
 	/**
 	 * Insert Blocks Settings as a Js Global variable.

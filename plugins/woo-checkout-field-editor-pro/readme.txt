@@ -5,7 +5,7 @@ Tags: Checkout  Manager, Checkout Field Editor, WooCommerce Checkout, WooCommerc
 Requires at least: 4.9
 Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 2.1.4
+Stable tag: 2.1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -337,6 +337,13 @@ No, the free version does not support this feature. However, with the pro versio
 9. Locale override settings
 
 == Changelog ==
+
+= 2.1.5 =
+* Added required validation for the checkbox field in the block checkout (WC 9.8+).
+* Fixed radio button styling issues with default WordPress block themes (e.g., Twenty Twenty-Four, Twenty Twenty-Five).
+* Added WooCommerce 10.2 compatibility.
+
+
 = 2.1.4 =
 * Fixed shipping calculation issue when "Hide shipping costs until an address is entered" is enabled (WooCommerce 9.8+ compatibility).
 * Added WooCommerce 9.8 compatibility.

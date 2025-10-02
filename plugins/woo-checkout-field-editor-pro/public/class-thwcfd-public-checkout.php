@@ -716,15 +716,15 @@ class THWCFD_Public_Checkout {
 						}
 						if(is_account_page()){
 							if(apply_filters( 'thwcfd_view_order_customer_details_table_view', true )){
-								$fields_html .= '<tr><th>'. $label .':</th><td>'. esc_html($value) .'</td></tr>';
+								$fields_html .= '<tr><th>'. $label .':</th><td>'. wptexturize($value) .'</td></tr>';
 							}else{
 								$fields_html .= '<br/><dt>'. $label .':</dt><dd>'. $value .'</dd>';
 							}
 						}else{
 							if(apply_filters( 'thwcfd_thankyou_customer_details_table_view', true )){
-								$fields_html .= '<tr><th>'. $label .':</th><td>'. esc_html($value) .'</td></tr>';
+								$fields_html .= '<tr><th>'. $label .':</th><td>'. wptexturize($value) .'</td></tr>';
 							}else{
-								$fields_html .= '<br/><dt>'. $label .':</dt><dd>'. esc_html($value) .'</dd>';
+								$fields_html .= '<br/><dt>'. $label .':</dt><dd>'. wptexturize($value) .'</dd>';
 							}
 						}
 					}

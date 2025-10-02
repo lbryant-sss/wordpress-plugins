@@ -25,7 +25,8 @@ class THWCFD_Admin_Settings_Block_Fields extends THWCFD_Admin_Settings{
 
 	public function __construct() {
 		parent::__construct();
-		$this->page_id    = 'block_fields';
+		$this->page_id    = 'fields';
+		$this->c_type     = 'block';
 		$this->section_id = 'contact';
 	}
 
@@ -45,6 +46,7 @@ class THWCFD_Admin_Settings_Block_Fields extends THWCFD_Admin_Settings{
 
 	public function render_page(){
 		$this->output_tabs();
+		$this->output_checkout_types();
 		$this->output_sections();
 		$this->output_content();
 	}
@@ -67,7 +69,7 @@ class THWCFD_Admin_Settings_Block_Fields extends THWCFD_Admin_Settings{
 	public function render_actions_row($section){
 		?>
         <th colspan="6">
-            <button type="button" class="button button-primary" onclick="thwcfdOpenNewFieldForm('<?php echo esc_js($section); ?>')">+ <?php esc_html_e( 'Add field', 'woo-checkout-field-editor-pro' ); ?></button>
+            <button type="button" class="button button-primary" onclick="thwcfdOpenNewFieldForm('<?php echo esc_js($section); ?>', 'block')">+ <?php esc_html_e( 'Add field', 'woo-checkout-field-editor-pro' ); ?></button>
             <button type="button" class="button" onclick="thwcfdRemoveSelectedFields()"><?php esc_html_e('Remove', 'woo-checkout-field-editor-pro'); ?></button>
             <button type="button" class="button" onclick="thwcfdEnableSelectedFields()"><?php esc_html_e('Enable', 'woo-checkout-field-editor-pro'); ?></button>
             <button type="button" class="button" onclick="thwcfdDisableSelectedFields()"><?php esc_html_e('Disable', 'woo-checkout-field-editor-pro'); ?></button>
@@ -491,16 +493,46 @@ class THWCFD_Admin_Settings_Block_Fields extends THWCFD_Admin_Settings{
 	/******* TABS & SECTIONS *******/
 	/*******************************/
 	public function get_current_tab(){
-		return isset( $_GET['tab'] ) ? sanitize_key( $_GET['tab'] ) : 'block_fields';
+		return isset( $_GET['tab'] ) ? sanitize_key( $_GET['tab'] ) : 'fields';
+	}
+
+	public function get_current_c_type(){
+		return isset( $_GET['c_type'] ) ? sanitize_key( $_GET['c_type'] ) : 'block';
 	}
 	
 	public function get_current_section(){
 		$tab = $this->get_current_tab();
+		$c_type = $this->get_current_c_type();
 		$section = '';
-		if($tab === 'block_fields'){
+		if($tab === 'fields' && $c_type === 'block'){
 			$section = isset( $_GET['section'] ) ? sanitize_key( $_GET['section'] ) : 'contact';
 		}
 		return $section;
+	}
+
+	public function output_checkout_types(){
+		$selected_checkout = $this->get_current_c_type();
+		$c_url = $this->get_admin_url($this->page_id, 'classic');
+		$b_url = $this->get_admin_url($this->page_id, 'block');
+		$tt_content = esc_html("You're on the Classic Checkout Field Editor right now. If your store is not using Classic Checkout, fields you add here won’t appear on the checkout page. Unsure which checkout type your store is using?", 'woocommerce-checkout-field-editor-pro');
+		if ( !empty( $_GET['c_type'] ) && 'block' == $_GET['c_type'] ) {
+			$tt_content = esc_html("You're on the Block Checkout Field Editor right now. If your store is not using Block Checkout, fields you add here won’t appear on the checkout page. Unsure which checkout type your store is using?", 'woocommerce-checkout-field-editor-pro');
+		}
+		?>
+		<div class="th-ct-wrap">
+			<div class="th-ct-tabs">
+				<a href="<?php echo esc_url($c_url); ?>" class="ct-tab <?php echo $selected_checkout === 'classic' ? 'active' : ''; ?>">Classic Checkout</a>
+				<a href="<?php echo esc_url($b_url); ?>" class="ct-tab <?php echo $selected_checkout === 'block' ? 'active' : ''; ?>">Block Checkout</a>
+			</div>
+			<div class="ct-info" id="th_info_container">
+				<img src="<?php echo esc_url(THWCFD_ASSETS_URL_ADMIN . 'images/info.svg'); ?>" alt="Block Checkout">
+				<div class="ct-info-box" id="infoBox" style="display: none;">
+					<p> <?php echo esc_html($tt_content); ?> <a href="https://www.themehigh.com/docs/classic-vs-block-checkout/" target="_blank" rel="noopener noreferrer">Click here to find out!</a>.</p>
+				</div>
+			</div>
+		</div>
+		
+		<?php
 	}
 
 	public function output_tabs(){
@@ -546,7 +578,7 @@ class THWCFD_Admin_Settings_Block_Fields extends THWCFD_Admin_Settings{
 				// section will add after available block area in Additional order info block
 				continue;
 			}
-			$url = $this->get_admin_url($this->page_id, sanitize_title($name));
+			$url = $this->get_admin_url($this->page_id, $this->c_type, sanitize_title($name));
 			$props_json = htmlspecialchars(THWCFD_Utils_Section::get_property_json($section, 'block'));
 			$title = wp_strip_all_tags($section->get_property('title'));
 			
@@ -596,10 +628,13 @@ class THWCFD_Admin_Settings_Block_Fields extends THWCFD_Admin_Settings{
 		}	
 	}
 	
-	public function get_admin_url($tab = false, $section = false){
+	public function get_admin_url($tab = false, $c_type = false, $section = false){
 		$url = 'admin.php?page=checkout_form_designer';
 		if($tab && !empty($tab)){
 			$url .= '&tab='. $tab;
+		}
+		if($c_type && !empty($c_type)){
+			$url .= '&c_type='. $c_type;
 		}
 		if($section && !empty($section)){
 			$url .= '&section='. $section;

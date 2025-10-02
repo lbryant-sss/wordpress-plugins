@@ -1,21 +1,21 @@
 <?php
 /**
- * Plugin Name: Jeg Elementor Kit
+ * Plugin Name: Jeg Kit for Elementor
  * Plugin URI: http://jegtheme.com/
- * Description: Additional highly customizable widgets for Elementor page builder
+ * Description: Jeg Kit for Elementor (formerly Jeg Elementor Kit) provides powerful, customizable widgets and extensions to enhance your Elementor page-building experience.
  * Requires Plugins: elementor
- * Version: 2.6.14
+ * Version: 2.7.0
  * Author: Jegtheme
  * Author URI: http://jegtheme.com
  * License: GPLv3
  * Text Domain: jeg-elementor-kit
  *
- * Elementor tested up to: 3.30.3
- * Elementor Pro tested up to: 3.30.1
+ * Elementor tested up to: 3.32.3
+ * Elementor Pro tested up to: 3.32.2
  *
  * @author: Jegtheme
  * @since 1.0.0
- * @package jeg-elementor-kit
+ * @package jeg-kit
  */
 
 /**
@@ -25,8 +25,8 @@ add_action(
 	'plugins_loaded',
 	function () {
 		defined( 'JEG_ELEMENTOR_KIT' ) || define( 'JEG_ELEMENTOR_KIT', 'jeg-elementor-kit' );
-		defined( 'JEG_ELEMENTOR_KIT_NAME' ) || define( 'JEG_ELEMENTOR_KIT_NAME', 'Jeg Elementor Kit' );
-		defined( 'JEG_ELEMENTOR_KIT_VERSION' ) || define( 'JEG_ELEMENTOR_KIT_VERSION', '2.6.14' );
+		defined( 'JEG_ELEMENTOR_KIT_NAME' ) || define( 'JEG_ELEMENTOR_KIT_NAME', 'Jeg Kit' );
+		defined( 'JEG_ELEMENTOR_KIT_VERSION' ) || define( 'JEG_ELEMENTOR_KIT_VERSION', '2.7.0' );
 		defined( 'JEG_ELEMENTOR_KIT_URL' ) || define( 'JEG_ELEMENTOR_KIT_URL', plugins_url( JEG_ELEMENTOR_KIT ) );
 		defined( 'JEG_ELEMENTOR_KIT_FILE' ) || define( 'JEG_ELEMENTOR_KIT_FILE', __FILE__ );
 		defined( 'JEG_ELEMENTOR_KIT_BASE' ) || define( 'JEG_ELEMENTOR_KIT_BASE', plugin_basename( __FILE__ ) );
@@ -100,7 +100,7 @@ add_action( 'upgrader_process_complete', 'jkit_update_complete', 10, 2 );
  * @param string $package_type The package type ('plugin' or 'theme').
  */
 function jkit_overide_complete( $package, $data, $package_type ) {
-	if ( 'plugin' === $package_type && isset( $data['Name'] ) && 'Jeg Elementor Kit' === $data['Name'] ) {
+	if ( 'plugin' === $package_type && isset( $data['Name'] ) && 'Jeg Kit for Elementor' === $data['Name'] ) {
 		\Jeg\Elementor_Kit\Banner\Banner::instance()->register_active_banner();
 	}
 }

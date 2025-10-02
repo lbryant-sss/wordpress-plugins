@@ -1,13 +1,13 @@
-# Copyright (C) 2025 Jeg Elementor Kit
-# This file is distributed under the same license as the Jeg Elementor Kit package.
+# Copyright (C) 2025 Jeg Kit
+# This file is distributed under the same license as the Jeg Kit package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Jeg Elementor Kit\n"
+"Project-Id-Version: Jeg Kit\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: Jegtheme <support@jegtheme.com>\n"
-"POT-Creation-Date: 2025-07-28 08:37+0000\n"
+"POT-Creation-Date: 2025-10-01 03:23+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -49,23 +49,23 @@ msgid "Clone"
 msgstr ""
 
 #: jeg-elementor-kit/class/assets/class-asset.php:1186
-msgid "JKit - Icons"
+msgid "Jeg Kit - Icons"
 msgstr ""
 
-#: jeg-elementor-kit/class/assets/class-asset.php:1246
-msgid "This file cannot be sanitized; therefore, it cannot be checked for security and cannot be uploaded for security reasons. For further inquiries, please contact Jeg Elementor Kit support."
+#: jeg-elementor-kit/class/assets/class-asset.php:1242
+msgid "This file cannot be sanitized; therefore, it cannot be checked for security and cannot be uploaded for security reasons. For further inquiries, please contact Jeg Kit support."
 msgstr ""
 
 #: jeg-elementor-kit/class/dashboard/class-dashboard.php:214
-msgid "JKIT - Header "
+msgid "Jeg Kit - Header "
 msgstr ""
 
 #: jeg-elementor-kit/class/dashboard/class-dashboard.php:217
-msgid "JKIT - Footer "
+msgid "Jeg Kit - Footer "
 msgstr ""
 
 #: jeg-elementor-kit/class/dashboard/class-dashboard.php:220
-msgid "JKIT - Template "
+msgid "Jeg Kit - Template "
 msgstr ""
 
 #: jeg-elementor-kit/class/dashboard/class-dashboard.php:257, jeg-elementor-kit/class/dashboard/class-dashboard.php:258
@@ -97,7 +97,7 @@ msgid "Not Found 404"
 msgstr ""
 
 #: jeg-elementor-kit/class/dashboard/class-dashboard.php:343, jeg-elementor-kit/class/dashboard/class-dashboard.php:344, jeg-elementor-kit/class/elements/options/class-accordion-option.php:57, jeg-elementor-kit/class/elements/options/class-animated-text-option.php:57, jeg-elementor-kit/class/elements/options/class-banner-option.php:57, jeg-elementor-kit/class/elements/options/class-button-option.php:57, jeg-elementor-kit/class/elements/options/class-category-list-option.php:71, jeg-elementor-kit/class/elements/options/class-client-logo-option.php:57, jeg-elementor-kit/class/elements/options/class-contact-form-7-option.php:57, jeg-elementor-kit/class/elements/options/class-countdown-option.php:57, jeg-elementor-kit/class/elements/options/class-dual-button-option.php:57, jeg-elementor-kit/class/elements/options/class-feature-list-option.php:57, jeg-elementor-kit/class/elements/options/class-fun-fact-option.php:57, jeg-elementor-kit/class/elements/options/class-gallery-option.php:57, jeg-elementor-kit/class/elements/options/class-heading-option.php:57, jeg-elementor-kit/class/elements/options/class-icon-box-option.php:57, jeg-elementor-kit/class/elements/options/class-image-box-option.php:57, jeg-elementor-kit/class/elements/options/class-mailchimp-option.php:57, jeg-elementor-kit/class/elements/options/class-nav-menu-option.php:57, jeg-elementor-kit/class/elements/options/class-off-canvas-option.php:57, jeg-elementor-kit/class/elements/options/class-option-abstract.php:92, jeg-elementor-kit/class/elements/options/class-pie-chart-option.php:57, jeg-elementor-kit/class/elements/options/class-portfolio-gallery-option.php:57, jeg-elementor-kit/class/elements/options/class-post-block-option.php:71, jeg-elementor-kit/class/elements/options/class-post-list-option.php:71, jeg-elementor-kit/class/elements/options/class-product-carousel-option.php:70, jeg-elementor-kit/class/elements/options/class-product-categories-option.php:70, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:63, jeg-elementor-kit/class/elements/options/class-progress-bar-option.php:57, jeg-elementor-kit/class/elements/options/class-search-option.php:57, jeg-elementor-kit/class/elements/options/class-social-share-option.php:57, jeg-elementor-kit/class/elements/options/class-tabs-option.php:57, jeg-elementor-kit/class/elements/options/class-team-option.php:57, jeg-elementor-kit/class/elements/options/class-testimonials-option.php:57, jeg-elementor-kit/class/elements/options/class-video-button-option.php:57
-msgid "Jeg Elementor Kit"
+msgid "Jeg Kit"
 msgstr ""
 
 #: jeg-elementor-kit/class/dashboard/class-dashboard.php:519, jeg-elementor-kit/class/elements/views/class-mailchimp-view.php:47, jeg-elementor-kit/class/elements/views/class-mailchimp-view.php:296, jeg-elementor-kit/class/elements/views/class-mailchimp-view.php:315
@@ -121,7 +121,7 @@ msgid "Modify"
 msgstr ""
 
 #: jeg-elementor-kit/class/dashboard/class-dashboard.php:665
-msgid "Hello <b>%1$s</b>, thank you for using <a href=\"%2$s\" target=\"_blank\">Jeg Elementor Kit</a> v%4$s. Please take a second to <a href=\"%3$s\" target=\"_blank\"> leave us a <span>★★★★★</span> rating</a>. We'd really appreciate your support!"
+msgid "Hello <b>%1$s</b>, thank you for using <a href=\"%2$s\" target=\"_blank\">Jeg Kit</a> v%4$s. Please take a second to <a href=\"%3$s\" target=\"_blank\"> leave us a <span>★★★★★</span> rating</a>. We'd really appreciate your support!"
 msgstr ""
 
 #: jeg-elementor-kit/class/dashboard/class-dashboard.php:686
@@ -233,11 +233,11 @@ msgid "Box Shadow"
 msgstr ""
 
 #: jeg-elementor-kit/templates/banner/notice-banner.php:6
-msgid "Jeg Elementor Kit Updated!"
+msgid "Jeg Kit Updated!"
 msgstr ""
 
 #: jeg-elementor-kit/templates/banner/notice-banner.php:7
-msgid "Hi there! Thanks for updating and sticking with the Jeg Elementor Kit. We hope our plugin is proving helpful in building your website. If you can spare a few moments, please let us know what you think of Jeg Elementor Kit by leaving a rating, we'd be super grateful — Thanks a lot!"
+msgid "Hi there! Thanks for updating and sticking with the Jeg Kit. We hope our plugin is proving helpful in building your website. If you can spare a few moments, please let us know what you think of Jeg Kit by leaving a rating, we'd be super grateful — Thanks a lot!"
 msgstr ""
 
 #: jeg-elementor-kit/templates/banner/notice-banner.php:11
@@ -585,7 +585,7 @@ msgid "Loading..."
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-accordion-option.php:48
-msgid "JKit - Accordion"
+msgid "Jeg Kit - Accordion"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-accordion-option.php:75
@@ -825,7 +825,7 @@ msgid "Overide Icon Style"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-animated-text-option.php:48
-msgid "JKit - Animated Text"
+msgid "Jeg Kit - Animated Text"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-animated-text-option.php:75, jeg-elementor-kit/class/elements/options/class-animated-text-option.php:343, jeg-elementor-kit/class/elements/options/class-banner-option.php:247, jeg-elementor-kit/class/elements/options/class-banner-option.php:615, jeg-elementor-kit/class/elements/options/class-category-list-option.php:109, jeg-elementor-kit/class/elements/options/class-dual-button-option.php:211, jeg-elementor-kit/class/elements/options/class-dual-button-option.php:287, jeg-elementor-kit/class/elements/options/class-icon-box-option.php:471, jeg-elementor-kit/class/elements/options/class-off-canvas-option.php:153, jeg-elementor-kit/class/elements/options/class-off-canvas-option.php:160, jeg-elementor-kit/class/elements/options/class-option-abstract.php:243, jeg-elementor-kit/class/elements/options/class-option-abstract.php:453, jeg-elementor-kit/class/elements/options/class-product-categories-option.php:114, jeg-elementor-kit/class/elements/options/class-search-option.php:157, jeg-elementor-kit/class/elements/options/class-search-option.php:163, jeg-elementor-kit/class/elements/options/class-social-share-option.php:106, jeg-elementor-kit/class/elements/options/class-video-button-option.php:136
@@ -993,7 +993,7 @@ msgid "Clip Color"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-banner-option.php:48
-msgid "JKit - Banner"
+msgid "Jeg Kit - Banner"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-banner-option.php:75, jeg-elementor-kit/class/elements/options/class-banner-option.php:102
@@ -1205,7 +1205,7 @@ msgid "Spacing Horizontal"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-button-option.php:48
-msgid "JKit - Button"
+msgid "Jeg Kit - Button"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-button-option.php:99, jeg-elementor-kit/class/elements/options/class-progress-bar-option.php:235, jeg-elementor-kit/class/elements/options/class-progress-bar-option.php:362, jeg-elementor-kit/class/elements/options/class-video-button-option.php:105
@@ -1265,7 +1265,7 @@ msgid "Icon Spacing"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-category-list-option.php:62
-msgid "JKit - Category List"
+msgid "Jeg Kit - Category List"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-category-list-option.php:91, jeg-elementor-kit/class/elements/options/class-post-block-option.php:93, jeg-elementor-kit/class/elements/options/class-post-list-option.php:93, jeg-elementor-kit/class/elements/options/class-product-carousel-option.php:96, jeg-elementor-kit/class/elements/options/class-product-categories-option.php:91, jeg-elementor-kit/class/elements/options/class-product-grid-option.php:83
@@ -1349,7 +1349,7 @@ msgid "Line Height"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-client-logo-option.php:48
-msgid "JKit - Client Logo"
+msgid "Jeg Kit - Client Logo"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-client-logo-option.php:75, jeg-elementor-kit/class/elements/options/class-contact-form-7-option.php:99, jeg-elementor-kit/class/elements/options/class-feature-list-option.php:75, jeg-elementor-kit/class/elements/options/class-fun-fact-option.php:75, jeg-elementor-kit/class/elements/options/class-gallery-option.php:75, jeg-elementor-kit/class/elements/options/class-icon-box-option.php:75, jeg-elementor-kit/class/elements/options/class-off-canvas-option.php:75, jeg-elementor-kit/class/elements/options/class-portfolio-gallery-option.php:75, jeg-elementor-kit/class/elements/options/class-testimonials-option.php:75, jeg-elementor-kit/lib/jeg-element/includes/class/elementor/class-elementor-abstract.php:116
@@ -1537,7 +1537,7 @@ msgid "Active Color"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-contact-form-7-option.php:48
-msgid "JKit - Contact Form 7"
+msgid "Jeg Kit - Contact Form 7"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-contact-form-7-option.php:123, jeg-elementor-kit/class/elements/options/class-mailchimp-option.php:131
@@ -1601,7 +1601,7 @@ msgid "Hover Title Shadow"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-countdown-option.php:48
-msgid "JKit - Countdown"
+msgid "Jeg Kit - Countdown"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-countdown-option.php:104
@@ -1757,7 +1757,7 @@ msgid "Content Alignment"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-dual-button-option.php:48
-msgid "JKit - Dual Button"
+msgid "Jeg Kit - Dual Button"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-dual-button-option.php:75
@@ -1797,7 +1797,7 @@ msgid "Enable Icon"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-feature-list-option.php:48
-msgid "JKit - Feature List"
+msgid "Jeg Kit - Feature List"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-feature-list-option.php:87, jeg-elementor-kit/class/elements/options/class-product-categories-option.php:143
@@ -1917,7 +1917,7 @@ msgid "Bottom Space"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-fun-fact-option.php:48
-msgid "JKit - Fun Fact"
+msgid "Jeg Kit - Fun Fact"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-fun-fact-option.php:116, jeg-elementor-kit/class/elements/options/class-fun-fact-option.php:394
@@ -2081,7 +2081,7 @@ msgid "Arise"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-gallery-option.php:48
-msgid "JKit - Gallery"
+msgid "Jeg Kit - Gallery"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-gallery-option.php:80, jeg-elementor-kit/class/elements/options/class-gallery-option.php:292, jeg-elementor-kit/class/elements/options/class-gallery-option.php:296
@@ -2441,7 +2441,7 @@ msgid "Dropdown"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-heading-option.php:48
-msgid "JKit - Heading"
+msgid "Jeg Kit - Heading"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-heading-option.php:90, jeg-elementor-kit/class/elements/options/class-heading-option.php:164
@@ -2605,7 +2605,7 @@ msgid "Outline"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-icon-box-option.php:48
-msgid "JKit - Icon Box"
+msgid "Jeg Kit - Icon Box"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-icon-box-option.php:80, jeg-elementor-kit/class/elements/options/class-icon-box-option.php:340
@@ -2761,7 +2761,7 @@ msgid "Button Icon Spacing"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-image-box-option.php:48
-msgid "JKit - Image Box"
+msgid "Jeg Kit - Image Box"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-image-box-option.php:80, jeg-elementor-kit/class/elements/options/class-image-box-option.php:103
@@ -2825,7 +2825,7 @@ msgid "Hover Height"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-mailchimp-option.php:48
-msgid "JKit - Mailchimp"
+msgid "Jeg Kit - Mailchimp"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-mailchimp-option.php:66, jeg-elementor-kit/class/elements/options/class-mailchimp-option.php:177
@@ -2837,7 +2837,7 @@ msgid "Input Icon"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-mailchimp-option.php:171
-msgid "Please set Mailchimp API Key in Jeg Elementor Kit admin dashboard."
+msgid "Please set Mailchimp API Key in Jeg Kit admin dashboard."
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-mailchimp-option.php:185
@@ -2901,7 +2901,7 @@ msgid "Error"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-nav-menu-option.php:48
-msgid "JKit - Nav Menu"
+msgid "Jeg Kit - Nav Menu"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-nav-menu-option.php:75
@@ -3193,7 +3193,7 @@ msgid "Max Width"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-off-canvas-option.php:48
-msgid "JKit - Off-Canvas"
+msgid "Jeg Kit - Off-Canvas"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-off-canvas-option.php:87
@@ -3229,7 +3229,7 @@ msgid "Content Padding"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-option-abstract.php:83
-msgid "JKit - Elements"
+msgid "Jeg Kit - Elements"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-option-abstract.php:114, jeg-elementor-kit/lib/jeg-element/includes/class/elements/class-elements-option-abstract.php:570
@@ -3546,7 +3546,7 @@ msgid "Star Size"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-pie-chart-option.php:48
-msgid "JKit - Pie Chart"
+msgid "Jeg Kit - Pie Chart"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-pie-chart-option.php:93, jeg-elementor-kit/class/elements/options/class-pie-chart-option.php:308
@@ -3642,7 +3642,7 @@ msgid "Image Width (%)"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-portfolio-gallery-option.php:48
-msgid "JKit - Portfolio Gallery"
+msgid "Jeg Kit - Portfolio Gallery"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-portfolio-gallery-option.php:104, jeg-elementor-kit/class/elements/options/class-portfolio-gallery-option.php:209
@@ -3730,11 +3730,11 @@ msgid "Sub Title Hover Shadow"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-post-author-option.php:48
-msgid "JKit - Post Author"
+msgid "Jeg Kit - Post Author"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-post-author-option.php:57, jeg-elementor-kit/class/elements/options/class-post-comment-option.php:57, jeg-elementor-kit/class/elements/options/class-post-content-option.php:57, jeg-elementor-kit/class/elements/options/class-post-date-option.php:57, jeg-elementor-kit/class/elements/options/class-post-excerpt-option.php:57, jeg-elementor-kit/class/elements/options/class-post-featured-image-option.php:57, jeg-elementor-kit/class/elements/options/class-post-terms-option.php:57, jeg-elementor-kit/class/elements/options/class-post-title-option.php:57
-msgid "Jeg Elementor Kit - Single Post"
+msgid "Jeg Kit - Single Post"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-post-author-option.php:75, jeg-elementor-kit/class/elements/options/class-post-author-option.php:87
@@ -3782,7 +3782,7 @@ msgid "Author URL"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-post-block-option.php:62
-msgid "JKit - Post Block"
+msgid "Jeg Kit - Post Block"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-post-block-option.php:112
@@ -4019,7 +4019,7 @@ msgid "Disabled"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-post-comment-option.php:48
-msgid "JKit - Post Comment"
+msgid "Jeg Kit - Post Comment"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-post-comment-option.php:75
@@ -4059,7 +4059,7 @@ msgid "Button Shadow"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-post-content-option.php:48
-msgid "JKit - Post Content"
+msgid "Jeg Kit - Post Content"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-post-content-option.php:74
@@ -4067,7 +4067,7 @@ msgid "Post Content Style"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-post-date-option.php:48
-msgid "JKit - Post Date"
+msgid "Jeg Kit - Post Date"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-post-date-option.php:75, jeg-elementor-kit/class/elements/options/class-post-date-option.php:87
@@ -4079,7 +4079,7 @@ msgid "Date URL"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-post-excerpt-option.php:48
-msgid "JKit - Post Excerpt"
+msgid "Jeg Kit - Post Excerpt"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-post-excerpt-option.php:75, jeg-elementor-kit/class/elements/options/class-post-excerpt-option.php:87
@@ -4087,7 +4087,7 @@ msgid "Post Excerpt"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-post-featured-image-option.php:48
-msgid "JKit - Post Featured Image"
+msgid "Jeg Kit - Post Featured Image"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-post-featured-image-option.php:75, jeg-elementor-kit/class/elements/options/class-post-featured-image-option.php:87
@@ -4099,7 +4099,7 @@ msgid "Media URL"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-post-list-option.php:62
-msgid "JKit - Post List"
+msgid "Jeg Kit - Post List"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-post-list-option.php:247
@@ -4135,7 +4135,7 @@ msgid "Image Overlay"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-post-terms-option.php:48
-msgid "JKit - Post Terms"
+msgid "Jeg Kit - Post Terms"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-post-terms-option.php:75, jeg-elementor-kit/class/elements/options/class-post-terms-option.php:87
@@ -4155,7 +4155,7 @@ msgid "Terms"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-post-title-option.php:48
-msgid "JKit - Post Title"
+msgid "Jeg Kit - Post Title"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-post-title-option.php:75, jeg-elementor-kit/class/elements/options/class-post-title-option.php:87
@@ -4163,7 +4163,7 @@ msgid "Post Title"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-product-carousel-option.php:61
-msgid "JKit - Product Carousel"
+msgid "Jeg Kit - Product Carousel"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-product-carousel-option.php:91
@@ -4207,7 +4207,7 @@ msgid "Right Arrow"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-product-categories-option.php:61
-msgid "JKit - Product Categories"
+msgid "Jeg Kit - Product Categories"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-product-categories-option.php:139, jeg-elementor-kit/class/elements/options/class-social-share-option.php:455, jeg-elementor-kit/class/elements/options/class-team-option.php:1348, jeg-elementor-kit/class/elements/options/class-team-option.php:1689
@@ -4259,7 +4259,7 @@ msgid "Hidden"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-product-grid-option.php:54
-msgid "JKit - Product Grid"
+msgid "Jeg Kit - Product Grid"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-product-grid-option.php:156
@@ -4299,7 +4299,7 @@ msgid "Font Color"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-progress-bar-option.php:48
-msgid "JKit - Progress Bar"
+msgid "Jeg Kit - Progress Bar"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-progress-bar-option.php:75
@@ -4383,7 +4383,7 @@ msgid "Right Position"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-search-option.php:48
-msgid "JKit - Search"
+msgid "Jeg Kit - Search"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-search-option.php:87
@@ -4427,7 +4427,7 @@ msgid "Placeholder Typography"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-social-share-option.php:48
-msgid "JKit - Social Share"
+msgid "Jeg Kit - Social Share"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-social-share-option.php:75, jeg-elementor-kit/class/elements/options/class-social-share-option.php:87, jeg-elementor-kit/class/elements/options/class-social-share-option.php:217
@@ -4563,7 +4563,7 @@ msgid "Block"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-tabs-option.php:48
-msgid "JKit - Tabs"
+msgid "Jeg Kit - Tabs"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-tabs-option.php:98
@@ -4691,7 +4691,7 @@ msgid "Enable Caret on Active Tab"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-team-option.php:48
-msgid "JKit - Team"
+msgid "Jeg Kit - Team"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-team-option.php:75
@@ -4815,7 +4815,7 @@ msgid "Phone and Email"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-testimonials-option.php:48
-msgid "JKit - Testimonial"
+msgid "Jeg Kit - Testimonial"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-testimonials-option.php:85, jeg-elementor-kit/class/elements/options/class-testimonials-option.php:531
@@ -4939,7 +4939,7 @@ msgid "This option corresponds to the Reverse Position option in the Quote secti
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-video-button-option.php:48
-msgid "JKit - Video Button"
+msgid "Jeg Kit - Video Button"
 msgstr ""
 
 #: jeg-elementor-kit/class/elements/options/class-video-button-option.php:75

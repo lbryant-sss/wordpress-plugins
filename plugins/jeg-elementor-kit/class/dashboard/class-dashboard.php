@@ -1,8 +1,8 @@
 <?php
 /**
- * Jeg Elementor Kit Class
+ * Jeg Kit Class
  *
- * @package jeg-elementor-kit
+ * @package jeg-kit
  *
  * @author Jegtheme
  *
@@ -21,56 +21,56 @@ use Jeg\Elementor_Kit\Dashboard\Template\Footer_Dashboard_Template;
  */
 class Dashboard {
 	/**
-	 * Slug Default JKit Dashboard
+	 * Slug Default Jeg Kit Dashboard
 	 *
 	 * @var string
 	 */
 	public static $slug_default;
 
 	/**
-	 * Slug for accessing JKit Dashboard
+	 * Slug for accessing Jeg Kit Dashboard
 	 *
 	 * @var string
 	 */
 	public static $dashboard = 'jkit-dashboard';
 
 	/**
-	 * Slug for accessing JKit Settings
+	 * Slug for accessing Jeg Kit Settings
 	 *
 	 * @var string
 	 */
 	public static $settings = 'jkit-settings';
 
 	/**
-	 * Slug for accessing JKit Templates
+	 * Slug for accessing Jeg Kit Templates
 	 *
 	 * @var string
 	 */
 	public static $templates = 'jkit-manage-template';
 
 	/**
-	 * Slug for accessing JKit Dashboard
+	 * Slug for accessing Jeg Kit Dashboard
 	 *
 	 * @var string
 	 */
 	public static $user_data = 'jkit-user-data';
 
 	/**
-	 * Slug for accessing JKit Header Post Type
+	 * Slug for accessing Jeg Kit Header Post Type
 	 *
 	 * @var string
 	 */
 	public static $jkit_header = 'jkit-header';
 
 	/**
-	 * Slug for accessing JKit Footer Post Type
+	 * Slug for accessing Jeg Kit Footer Post Type
 	 *
 	 * @var string
 	 */
 	public static $jkit_footer = 'jkit-footer';
 
 	/**
-	 * JKit Template Post Type
+	 * Jeg Kit Template Post Type
 	 *
 	 * @var string
 	 */
@@ -211,13 +211,13 @@ class Dashboard {
 	public static function post_type_list() {
 		return array(
 			self::$jkit_header   => array(
-				'label' => esc_html__( 'JKIT - Header ', 'jeg-elementor-kit' ),
+				'label' => esc_html__( 'Jeg Kit - Header ', 'jeg-elementor-kit' ),
 			),
 			self::$jkit_footer   => array(
-				'label' => esc_html__( 'JKIT - Footer ', 'jeg-elementor-kit' ),
+				'label' => esc_html__( 'Jeg Kit - Footer ', 'jeg-elementor-kit' ),
 			),
 			self::$jkit_template => array(
-				'label' => esc_html__( 'JKIT - Template ', 'jeg-elementor-kit' ),
+				'label' => esc_html__( 'Jeg Kit - Template ', 'jeg-elementor-kit' ),
 			),
 		);
 	}
@@ -340,8 +340,8 @@ class Dashboard {
 	 */
 	public function parent_menu() {
 		$args = array(
-			'page_title' => esc_html__( 'Jeg Elementor Kit', 'jeg-elementor-kit' ),
-			'menu_title' => esc_html__( 'Jeg Elementor Kit', 'jeg-elementor-kit' ),
+			'page_title' => esc_html__( 'Jeg Kit', 'jeg-elementor-kit' ),
+			'menu_title' => esc_html__( 'Jeg Kit', 'jeg-elementor-kit' ),
 			'capability' => 'edit_theme_options',
 			'menu_slug'  => self::$slug_default,
 			'function'   => null,
@@ -644,7 +644,7 @@ class Dashboard {
 	}
 
 	/**
-	 * Thank You for using Jeg Elementor Kit
+	 * Thank You for using Jeg Kit
 	 *
 	 * @param string $text Thank You say.
 	 *
@@ -660,9 +660,9 @@ class Dashboard {
 				 * %1$s: User Display Name
 				 * %2$s: https://wordpress.org/plugins/jeg-elementor-kit/
 				 * %3$s: https://wordpress.org/support/plugin/jeg-elementor-kit/reviews/#new-post
-				 * %4$s: Jeg Elementor Kit versions
+				 * %4$s: Jeg Kit versions
 				*/
-				__( 'Hello <b>%1$s</b>, thank you for using <a href="%2$s" target="_blank">Jeg Elementor Kit</a> v%4$s. Please take a second to <a href="%3$s" target="_blank"> leave us a <span>★★★★★</span> rating</a>. We\'d really appreciate your support!', 'jeg-elementor-kit' ),
+				__( 'Hello <b>%1$s</b>, thank you for using <a href="%2$s" target="_blank">Jeg Kit</a> v%4$s. Please take a second to <a href="%3$s" target="_blank"> leave us a <span>★★★★★</span> rating</a>. We\'d really appreciate your support!', 'jeg-elementor-kit' ),
 				wp_get_current_user()->display_name,
 				'https://wordpress.org/plugins/jeg-elementor-kit/',
 				'https://wordpress.org/support/plugin/jeg-elementor-kit/reviews/#new-post',
