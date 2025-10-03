@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Facebook for WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Facebook for WooCommerce 3.5.8\n"
+"Project-Id-Version: Facebook for WooCommerce 3.5.9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/facebook-for-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-09-25T13:13:43+00:00\n"
+"POT-Creation-Date: 2025-10-02T15:39:32+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: facebook-for-woocommerce\n"
@@ -123,11 +123,6 @@ msgstr ""
 #: facebook-commerce.php:2849
 #: includes/Admin/Settings_Screens/Product_Attributes.php:985
 msgid "Dismiss this notice."
-msgstr ""
-
-#. translators: Placeholders %1$s - original error message from Facebook API
-#: facebook-commerce.php:3143
-msgid "There was an issue connecting to the Facebook API: %s"
 msgstr ""
 
 #: includes/Admin.php:159
@@ -1555,31 +1550,31 @@ msgstr ""
 msgid "WhatsApp Utility Messages Iframe Splash Url Fetched."
 msgstr ""
 
-#: includes/Handlers/WhatsAppExtension.php:86
+#: includes/Handlers/WhatsAppExtension.php:87
 msgid "WhatsApp Utility Messages Iframe Management Url failed to fetch due to failed WhatsApp connection"
 msgstr ""
 
 #. translators: %s $wa_installation_id %s $error_message
-#: includes/Handlers/WhatsAppExtension.php:117
+#: includes/Handlers/WhatsAppExtension.php:118
 msgid "Failed to fetch iframe Management URI. wa_installation_id: %1$s, error message: %2$s"
 msgstr ""
 
-#: includes/Handlers/WhatsAppExtension.php:126
+#: includes/Handlers/WhatsAppExtension.php:127
 msgid "WhatsApp Utility Messages Iframe Management Url successfully fetched"
 msgstr ""
 
 #. translators: %s $order_id
-#: includes/Handlers/WhatsAppExtension.php:166
+#: includes/Handlers/WhatsAppExtension.php:167
 msgid "Customer Events Post API call for Order id %1$s Failed due to failed connection "
 msgstr ""
 
 #. translators: %s $order_id %s $error_message
-#: includes/Handlers/WhatsAppExtension.php:213
+#: includes/Handlers/WhatsAppExtension.php:214
 msgid "Customer Events Post API call for Order id %1$s Failed %2$s "
 msgstr ""
 
 #. translators: %s $order_id
-#: includes/Handlers/WhatsAppExtension.php:222
+#: includes/Handlers/WhatsAppExtension.php:223
 msgid "Customer Events Post API call for Order id %1$s Succeeded."
 msgstr ""
 

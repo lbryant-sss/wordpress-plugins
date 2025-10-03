@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Give - Donation Plugin plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Give - Donation Plugin 4.10.0\n"
+"Project-Id-Version: Give - Donation Plugin 4.10.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/givewp\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-10-01T11:29:11+00:00\n"
+"POT-Creation-Date: 2025-10-02T17:48:47+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: give\n"
@@ -16055,7 +16055,11 @@ msgstr ""
 msgid "The amount of revenue received on the given date."
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:308
+#: src/API/REST/V3/Routes/Campaigns/Permissions/CampaignPermissions.php:75
+msgid "You do not have permission to view private, draft, or archived campaigns."
+msgstr ""
+
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:313
 #: src/API/REST/V3/Routes/Donations/DonationController.php:951
 #: src/API/REST/V3/Routes/Subscriptions/Actions/GetSubscriptionItemSchema.php:201
 #: build/assets/dist/js/give-admin-donation-forms.js:4
@@ -16063,76 +16067,76 @@ msgstr ""
 msgid "Campaign ID"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:312
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:317
 msgid "Campaign title"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:315
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:320
 msgid "Campaign title is required"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:319
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:324
 msgid "Campaign status"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:323
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:328
 #: src/Campaigns/Factories/CampaignFactory.php:30
 msgid "Campaign short description"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:328
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:333
 msgid "Primary color for the campaign"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:332
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:337
 msgid "Secondary color for the campaign"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:336
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:341
 msgid "Campaign goal"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:337
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:342
 msgid "Must be a number"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:341
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:346
 msgid "Campaign goal progress"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:352
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:357
 msgid "Campaign goal type"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:356
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:361
 msgid "Default campaign form ID"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:360
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:365
 msgid "Campaign page ID"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:382
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:387
 msgid "Goal amount must be greater than 0"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:404
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:409
 msgid "Number of donations must be greater than 0"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:426
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:431
 msgid "Number of donors must be greater than 0"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:448
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:453
 msgid "Goal recurring amount must be greater than 0"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:470
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:475
 msgid "Number of recurring donations must be greater than 0"
 msgstr ""
 
-#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:492
+#: src/API/REST/V3/Routes/Campaigns/RegisterCampaignRoutes.php:497
 msgid "Number of recurring donors must be greater than 0"
 msgstr ""
 
@@ -16949,13 +16953,17 @@ msgid "Campaigns"
 msgstr ""
 
 #: src/Campaigns/CampaignsAdminPage.php:39
-#: src/Campaigns/Controllers/CampaignRequestController.php:39
-#: src/Campaigns/Controllers/CampaignRequestController.php:145
-#: src/Campaigns/Controllers/CampaignRequestController.php:206
+#: src/Campaigns/Controllers/CampaignRequestController.php:41
+#: src/Campaigns/Controllers/CampaignRequestController.php:155
+#: src/Campaigns/Controllers/CampaignRequestController.php:216
 msgid "Campaign not found"
 msgstr ""
 
-#: src/Campaigns/Controllers/CampaignRequestController.php:277
+#: src/Campaigns/Controllers/CampaignRequestController.php:47
+msgid "You do not have permission to view this campaign."
+msgstr ""
+
+#: src/Campaigns/Controllers/CampaignRequestController.php:287
 #, php-format
 msgid "%s (copy)"
 msgstr ""
@@ -17091,8 +17099,12 @@ msgstr ""
 msgid "[%s] This payment gateway does not support recurring payments, please try selecting another payment gateway."
 msgstr ""
 
-#: src/DonationForms/Controllers/DonationFormsRequestController.php:27
+#: src/DonationForms/Controllers/DonationFormsRequestController.php:31
 msgid "Form not found"
+msgstr ""
+
+#: src/DonationForms/Controllers/DonationFormsRequestController.php:37
+msgid "You do not have permission to view this donation form."
 msgstr ""
 
 #: src/DonationForms/DataTransferObjects/DonationFormGoalData.php:236
@@ -17147,6 +17159,14 @@ msgstr ""
 
 #: src/DonationForms/Routes/AuthenticationRoute.php:49
 msgid "The login/password does not match or is incorrect."
+msgstr ""
+
+#: src/DonationForms/Routes/Permissions/DonationFormPermissions.php:75
+msgid "You do not have permission to view private, draft, or trashed donation forms."
+msgstr ""
+
+#: src/DonationForms/Routes/Permissions/DonationFormPermissions.php:113
+msgid "You do not have permission to associate forms with campaigns."
 msgstr ""
 
 #: src/DonationForms/Rules/ArrayRule.php:43

@@ -1,27 +1,32 @@
-=== Skyboot Custom Icons for Elementor - Elementor Icons library - 14300+ Icons  ===
+=== Skyboot Custom Icons for Elementor  ===
 Contributors: skybootstrap
 Tags: elementor, custom icons, elementor icons, icons, icon fonts
-Author URI:  https://skybootstrap.com
-Plugin URI:  https://skybootstrap.com/custom-icons-for-elementor
+Author URI:  https://skybootstrap.com/
+Plugin URI:  https://skybootstrap.com/custom-icons-for-elementor/
 Donate Link: https://buymeacoffee.com/skybootstrap
 Requires at least: 5.9
 Requires PHP: 7.0
 Tested up to: 6.8
 Stable tag: 1.1.0
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License: GPLv3
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Skyboot Custom Icons for Elementor expands your Elementor icons library with custom icons, perfect for website owners who use the Elementor plugin.
+Skyboot Custom Icons for Elementor expands your Elementor icon library with 14,300+ icons from 15 packs, fully customizable in Elementor's editor.
 
 == Description ==
-Skyboot custom icons for Elementor is a fantastic custom Elementor icons plugin for the Elementor page builder. If you're looking to add custom icons to your site this is the perfect Elementor custom icons plugin for the website owners. Beautiful icons that can create a unique look for a website, the SkyBoot custom icons Elementor plugin is definitely worth the download. Increase Elementor icons library using the plugin. it's a perfect Elementor custom icons plugin for Elementor based website owners.
 
-This plugin offers a large number of icons ( more than 14300+ ) that will delightfully change the look of your website. Increase your Builtin Elementor icons library with the plugin. you can use icons anywhere on your website for fully free. We just extended the original Elementor icon library which is why it's so easy to use. You can change the size, and color of the icon from the edit screen.
+Skyboot Custom Icons for Elementor is a powerful custom icons plugin designed for the Elementor page builder. If you're looking to add custom icons to your site, this Elementor's custom icons plugin makes it simple and effective. With thousands of beautiful icons, you can create a unique look and feel for your website.
 
-👉 Click for [Live Demo](https://skybootstrap.com/custom-icons-for-elementor)
-👉 Our Website: [https://skybootstrap.com](https://skybootstrap.com)
-👉 Our Blog: [Click Here](https://skybootstrap.com/learning/)
-👉 Our SaaS Product: 🔥 [TLinky](https://tlinky.com/) - The #1 Link Management Platform. TLinky's Core Solutions: URL Shortener, QR Code Generator, & Link In Bio Builder.
+The Skyboot custom icons plugin expands the default Elementor icon library, giving website owners access to more variety and flexibility. Whether you're building landing pages, portfolios, or blogs, the icon plugin ensures your designs stand out with style.
+
+By using Skyboot Custom Icons for Elementor, you can increase the Elementor icons library and instantly customize colors, sizes, and styles directly inside the editor—no coding required. It's a reliable and easy-to-use custom icons plugin for Elementor that every Elementor-based website owner will find valuable.
+
+This plugin adds more than 14,300 icons to expand your built-in Elementor icon library, giving you greater choice and flexibility. You can use these icons anywhere on your website, completely free. Since it extends the original Elementor icon library, it's easy to use without any extra setup. From the editor screen, you can quickly adjust icon size, color, and style to match your design.
+
+👉 Click for [Live Demo](https://skybootstrap.com/custom-icons-for-elementor/)
+👉 Our Website: [https://skybootstrap.com](https://skybootstrap.com/)
+👉 Our Blog: [Click Here](https://skybootstrap.com/blog/)
+👉 Our SaaS Product: 🔥 [TLinky](https://tlinky.com/) - All in One Link Management Platform. TLinky's Core Solutions: URL Shortener, QR Code Generator, & Link In Bio Builder.
 👉 Subscribe Our YouTube Channel: [Subscribe Now](https://skybootstrap.com/go/skybootstrap-youtube-channel)
 👉 Like Facebbok Page: [Like Now](https://www.facebook.com/Skybootstrap)
 
@@ -47,85 +52,87 @@ Most of the popular brand icons are available in every icon package like Google 
 ✅ Themify Icon (351)
 ✅ Open Iconic (22)
 
-= Features of custom Elementor icons plugin: =
+= Features of custom icons for Elementor  plugin: =
 
 ✅ 14,300+ Custom Elementor Icons.
 ✅ Individual ON/OFF switch.
 ✅ 15 icon font packs included.
 ✅ Easy to use.
 ✅ Use icons anywhere on your website.
-✅ Extend Elementor icon library.
+✅ Extend default Elementor icon library.
 ✅ Fast loading.
 
 = How do I use custom icons with Elementor? =
 
-After installing the plugin you will get the option to manage individual icon packs separately so you will get the ON/OFF switch from the settings panel for each icon pack. 
-Just follow these 4 easy steps: 
-1. Download the plugin and install it.
-2. Activate the plugin and go to the plugin settings.
-3. Choose the icon packs you want to enable or disable from the settings panel.
-4. Go to Elementor default Icon option. 
+After installing the plugin, you'll get the option to manage individual icon packs with an ON/OFF switch in the settings panel.
+
+Follow these 4 simple steps:
+1. Download and install the plugin.
+2. Activate the plugin, then go to the plugin settings page.
+3. Enable or disable the icon packs you want using the ON/OFF switches.
+4. Open Elementor and select icons directly from the default icon picker.
 
 == How to install the Elementor custom icons plugin using FTP? ==
+👉 Download the plugin from WordPress.org (or your source).
+👉 Unzip the downloaded .zip file.
+👉 Log in to your FTP account using FileZilla or another FTP client.
+👉 Browse to the /wp-content/plugins/ directory on your server.
+👉 Upload the unzipped plugin folder into the /plugins/ directory.
+👉 Go to your WordPress dashboard → Plugins → Installed Plugins, and activate the plugin.
+👉 Once activated, a new admin menu will appear for the settings panel.
+👉 You can now access all icons directly in Elementor's built-in icon library.
 
-👉 First Download the plugin.
-👉 Unzip the Downloaded zip file.
-👉 Login FTP account using Filezilla or an alternative application.
-👉 Browse the folder "/wp-content/plugins/"
-👉 Upload the unzip plugin folder.
-👉 Go go plugin menu from your dashboard and activate the plugin.
-👉 Now you will see a new admin menu for the setting panel.
-👉 You will get all icons in Elementor's built-in icon library
 
 == How do i use custom Elementor icons? ==
 
 [youtube https://youtu.be/zh46PmvLGr0]
 
-== The benefit of using the Elementor icons list plugin? ==
+== What are the benefits of using the custom icons plugin? ==
 
-The Skyboot custom icons for the Elementor plugin are easy to use with any Elementor supported theme and plugin in the market. Custom icons are a great way to make your site stand out. If you already use the Elementor page builder, you can use the Skyboot custom Elementor icon plugin. It is an essential Elementor plugin for any Elementor site builder. 
+Skyboot Custom Icons for Elementor is simple to use with any theme or plugin that supports Elementor. Adding custom icons is a great way to make your site stand out and give it a unique look.
 
-The Skyboot custom icon can help to give your site a unique look. The plugin development team is constantly making improvements, and these improvements are free for all Elementor users.
+If you already use Elementor, this plugin expands your default icon library with thousands of additional icons. It's especially helpful for designers, developers, and site owners who want more flexibility and variety.
+
+The plugin is actively maintained and improved by the Skybootstrap team, and all updates are available for free to Elementor users.
 
 == What is Elementor? ==
 
-Elementor is a WordPress visual page builder plugin. It allows users to build pages in a drag-and-drop interface. It's one of the most popular WordPress page builder plugin on the market, with over 5 million active installs. One of the downsides to Elementor is the limited number of icons it comes with. Elementor comes with only font awesome icons. In order to grow your Elementor icons library, you can use this plugin to use a large numbers of icons to make your website more beautiful, it will improve your website's visually attractively.
+Elementor is a popular WordPress page builder plugin with over 10 million active installations. It allows users to design pages visually using a drag-and-drop interface, without needing to code.
+
+By default, Elementor only includes Font Awesome icons, which can feel limited for many site builders. Skyboot Custom Icons for Elementor solves this by adding more than 14,300 icons across 15 packs. This gives you a wider selection to make your website more visually appealing and consistent with your design needs.
 
 == How to use custom icons in Elementor? ==
 
-In order to increase your Elementor icons library, you can use this plugin called Skyboot custom icons for Elementor to add more than 14300+ icons to your Elementor based website. Before you use Skyboot, you'll need to download the plugin and install it. The plugin is compatible with the latest version of Elementor. After you have downloaded and installed the plugin, you'll be able to access the Elementor icon list. 
+To expand your Elementor icons library, install and activate the Skyboot Custom Icons for Elementor plugin. This adds more than 14,300 icons from 15 packs directly into Elementor's icon picker.
 
-The library is filled with thousands of icons that you can use to customize your website. This plugin can help you increase your Elementor icon library by adding many new icons to your website.
-This gives you a bigger icon library for Elementor. Icon libraries are an essential part of any website design. There are many ways to go about building a library of icons, but one of the most popular is to use Elementor. 
+The plugin is fully compatible with the latest version of Elementor and works with any Elementor-supported theme. After activation, simply open the Elementor editor, go to the icon selection panel, and you'll see the new icons available alongside the default set.
 
-== Are any social icons are available in this plugin? ==
+You can easily customize icon size, color, and style inside Elementor's interface—just like the built-in icons. This makes it simple to design visually consistent and attractive websites without needing extra coding or third-party tools.
 
-Yes, Because social media icons for any website are a great way to drive traffic to your social media page from your website. that's why you need to use beautiful social media icons on your website to attract your website visitors. If you are looking to quickly display social icons for your website, try this Elementor social icons plugin. This plugin has 14 different icons package, so you can use it to show social media icons in just a few seconds.
+== Are social icons available in this plugin? ==
 
-Skyboot is incredibly simple to use with the Elementor interface, and it's compatible with any theme and plugin. We have added more than 14300+ custom icons for the Elementor website builder in one plugin, including Facebook icons, Instagram icon, Twitter icon, LinkedIn icon, Pinterest icon, YouTube icon, gallery icon,discord icons, email icons,custom icons, google map icons and many more. Every icone comes on many different veriation. All font icons free to use.
+Skyboot is incredibly simple to use with the Elementor interface, and it's compatible with any theme and plugin. In this one plugin, including Facebook icons, Instagram icon, Twitter icon, LinkedIn icon, Pinterest icon, YouTube icon, gallery icon,discord icons, email icons,custom icons, google map icons and many more. Every icone comes on many different veriation. All font icons free to use.
 
-= Why would I need to increase the Elementor Icons List? =
+= Why should I expand the Elementor Icons List? =
+Expanding the Elementor Icons list gives you access to a much larger variety of icons, helping you design more flexible and visually engaging layouts. A broader icon library makes it easier to meet specific design needs, represent different industries or features, and stay aligned with modern design trends and user expectations.
 
-Increasing the Elementor Icons List provides you with a wider range of design options, allows for specific icon requirements, and helps you stay current with evolving design trends and user preferences.
-
-= Can I customize the appearance of the icons in the Elementor Icon Set? = 
-Yes, you can customize the appearance of the icons in the Elementor Icon Set. Elementor provides various customization options, allowing you to modify the size, color, style, and other visual aspects of the icons to align them with your website's design and branding.
+= Can I customize the icons in the Elementor Icon Set? = 
+Yes. All icons in the Elementor Icon Set can be fully customized directly inside Elementor. You can adjust the size, color, and alignment, and apply styling options to match your site's branding and design. This flexibility ensures that icons blend seamlessly with your website's overall look and feel.
 
 
 📢 If you are an Icon author feel free to contact us help.ukthemes [at] gmail.com. We will add your icon pack to this plugin.
 
 ☂️ Please note: This plugin requires any version of the Elementor Page Builder to be installed and active. [Install Elementor Plugin](https://wordpress.org/plugins/elementor)
 
-== 👉 Liked Skyboot Custom Icons for Elementor - Elementor Icons library? ==
+== 👉 Liked Skyboot Custom Icons for Elementor? ==
 
 ❤️ Rate us on [WordPress](https://wordpress.org/plugins/skyboot-custom-icons-for-elementor/)
 
 
-🧡 == Elementor Image Gallery Plugin ( Masonry Gallery, Elementor Gallery With Captions, Elementor Portfolio Gallery Widget, Filterable Gallery ) ==
-The Elementor gallery plugins are powerful widgets for showcasing your images. These gallery plugins are packed with powerful features, such as image filters, captions, featured and random options, and much more.
-This Elementor plugin lets you create galleries with a gallery widget and a portfolio gallery widget. You can also add captions to images with different styles.
+🧡 == Our Other Plugin ==
+Looking to showcase your work in style? Try Skyboot Portfolio Gallery for Elementor — a flexible gallery and portfolio plugin with filterable layouts, lightbox, and customization options. Perfect for designers, photographers, and agencies.
 
-👉 [Elementor Image Gallery Plugin](https://wordpress.org/plugins/skyboot-portfolio-gallery/)
+👉 [Explore Skyboot Portfolio Gallery for Elementor](https://wordpress.org/plugins/skyboot-portfolio-gallery/)
 
 == Frequently Asked Questions ==
 

@@ -1,6 +1,6 @@
 === Font Awesome ===
 Contributors: fontawesome, mlwilkerson, robmadole, frrrances, deathnfudge
-Stable tag: 5.1.2
+Stable tag: 5.1.3
 Tags: FontAwesome, icon, svg icon, iconfont, webfont
 Requires at least: 5.8
 Tested up to: 6.8
@@ -190,6 +190,10 @@ If you're using the Icon Chooser, you'll need to use a Pro Kit. (The CDN can onl
 
 
 == Changelog ==
+= 5.1.3 =
+
+* Resolve a compatibility conflict with Toolset Types in the classic editor.
+
 = 5.1.2 =
 
 * Fix a bug where clicking "Style" on a rich text icon (inside a paragraph block, for example), would

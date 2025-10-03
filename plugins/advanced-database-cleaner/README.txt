@@ -141,6 +141,7 @@ This section describes how to install the plugin. In general, there are 3 ways t
 == Changelog ==
 
 = 3.1.6 - 24/03/2025 =
+- Tested with the latest WordPress version (October 2, 2025)
 - Fix: names containing HTML were not displayed correctly.
 - Fix: certain transients, options, tables, and cron jobs could not be deleted.
 - Fix: function _load_textdomain_just_in_time was called incorrectly.

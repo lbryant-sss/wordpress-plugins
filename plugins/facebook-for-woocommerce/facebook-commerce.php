@@ -2895,37 +2895,6 @@ class WC_Facebookcommerce_Integration extends WC_Integration {
 	}
 
 	/**
-	 * @deprecated
-	 * Delete product item by id.
-	 *
-	 * @param int $wp_id
-	 *
-	 * @return void
-	 */
-	public function delete_product_item( int $wp_id ): void {
-		$fb_product_item_id = $this->get_product_fbid(
-			self::FB_PRODUCT_ITEM_ID,
-			$wp_id
-		);
-		if ( $fb_product_item_id ) {
-			try {
-				$this->facebook_for_woocommerce->get_api()->delete_product_item( $fb_product_item_id );
-			} catch ( ApiException $e ) {
-				$message = sprintf( 'There was an error trying to delete a product set item: %s', $e->getMessage() );
-				Logger::log(
-					$message,
-					[],
-					array(
-						'should_send_log_to_meta'        => false,
-						'should_save_log_in_woocommerce' => true,
-						'woocommerce_log_level'          => \WC_Log_Levels::ERROR,
-					)
-				);
-			}
-		}
-	}
-
-	/**
 	 * Filter function for woocommerce_duplicate_product_exclude_meta filter.
 	 *
 	 * @param array $to_delete
@@ -3083,70 +3052,6 @@ class WC_Facebookcommerce_Integration extends WC_Integration {
 			$final_products_to_updte            = array_merge( $unique_in_bulk_prouduct_edit_ids, $unique_in_bulk_prouduct_to_exclude );
 			$this->facebook_for_woocommerce->get_products_sync_handler()->create_or_update_all_products_for_bulk_edit( $final_products_to_updte );
 		}
-	}
-
-	/**
-	 * Gets Facebook product ID from meta or from Facebook API.
-	 *
-	 * @param string                   $fbid_type ID type (group or item)
-	 * @param int                      $wp_id post ID
-	 * @param WC_Facebook_Product|null $woo_product product
-	 *
-	 * @return string facebook product id or an empty string
-	 */
-	public function get_product_fbid( string $fbid_type, int $wp_id, $woo_product = null ) {
-		$fb_id = WC_Facebookcommerce_Utils::get_fbid_post_meta( $wp_id, $fbid_type );
-		if ( $fb_id ) {
-			return $fb_id;
-		}
-		if ( ! $woo_product ) {
-			$woo_product = new WC_Facebook_Product( $wp_id );
-		}
-		$products = WC_Facebookcommerce_Utils::get_product_array( $woo_product );
-		// if the product with ID equal to $wp_id is variable, $woo_product will be the first child
-		$woo_product = new WC_Facebook_Product( current( $products ) );
-
-		$fb_retailer_id = WC_Facebookcommerce_Utils::get_fb_retailer_id( $woo_product );
-
-		try {
-			$response = $this->facebook_for_woocommerce->get_api()->get_product_facebook_ids(
-				$this->get_product_catalog_id(),
-				$fb_retailer_id
-			);
-
-			if ( $response->data && $response->data[0] && $response->data[0]['id'] ) {
-				$fb_id = self::FB_PRODUCT_GROUP_ID === $fbid_type
-					? $response->data[0]['product_group']['id']
-					: $response->data[0]['id'];
-				update_post_meta( $wp_id, $fbid_type, $fb_id );
-				return $fb_id;
-			} elseif ( $response->id ) {
-				$fb_id = self::FB_PRODUCT_GROUP_ID === $fbid_type
-					? $response->get_facebook_product_group_id()
-					: $response->id;
-				update_post_meta( $wp_id, $fbid_type, $fb_id );
-				return $fb_id;
-			}
-		} catch ( Exception $e ) {
-			Logger::log(
-				'There was an issue connecting to the Facebook API:' . $e->getMessage(),
-				[],
-				array(
-					'should_send_log_to_meta'        => false,
-					'should_save_log_in_woocommerce' => true,
-					'woocommerce_log_level'          => \WC_Log_Levels::ERROR,
-				)
-			);
-			$this->display_error_message(
-				sprintf(
-				/* translators: Placeholders %1$s - original error message from Facebook API */
-					esc_html__( 'There was an issue connecting to the Facebook API: %s', 'facebook-for-woocommerce' ),
-					$e->getMessage()
-				)
-			);
-		}
-
-		return null;
 	}
 
 	/**

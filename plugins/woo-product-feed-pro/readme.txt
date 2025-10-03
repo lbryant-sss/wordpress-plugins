@@ -5,7 +5,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Tags: Google Shopping Feed, Meta feed, Facebook catalog feed, WooCommerce Product Feed, Product Feed
 Requires at least: 5.4
 Tested up to: 6.8
-Stable tag: 13.4.6
+Stable tag: 13.4.7
 
 Most popular WooCommerce product feed plugin supporting Google shopping feed, meta/facebook feed, bing product feed & more.
 
@@ -388,6 +388,24 @@ Questions left or unanswered? Please do not hesitate to contact us at support@ad
 8. Feed actions & scheduling – From the feed list you can copy/open the feed URL, trigger a manual refresh, and control refresh frequency for each feed.
 
 === Changelog ===
+
+= 13.4.7 (2025-09-25) =
+* Bug Fix: Exclude filter migration changes operator from OR to AND
+* Bug Fix: Issue with comma separator in rule THEN action (Multiply/Divide/Plus/Minus)
+* Bug Fix: Pinterest RSS Board feed generate many errors in the XML validator
+* Bug Fix: Remove `Refresh only when products changed` option due to causing the feed never being regenerated
+* Bug Fix: Static value for price is returning no value/attribute on XML file
+* Bug Fix: Store code mappable field no output if static value ss only numbers
+* Bug Fix: Unable to change country for all channel feeds
+* Feature: Feature to export product feed setup
+* Feature: Implement cleanup tool on uninstall
+* Improvement: Add `g:free_shipping_threshold` attribute for google shopping feed
+* Improvement: Add filter on retrieving post id for facebook fixel feature
+* Improvement: Group search results for attributes in Rules And Filter
+* Improvement: Prevent feed settings from being updated while feed generation is in progress
+* Improvement: Refactor `generate()` function parameter & skip registering feed action scheduler if refresh interval is set to `custom`
+* Improvement: Refactor the plugin settings page
+* Improvement: Save/Toast notification for settings
 
 = 13.4.6 (2025-08-14) =
 * Bug Fix: Duplicating a feed doesn't transfer the filters and rules from the original feed to the duplicate

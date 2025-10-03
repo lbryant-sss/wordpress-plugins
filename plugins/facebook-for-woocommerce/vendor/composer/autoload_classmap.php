@@ -293,6 +293,7 @@ return array(
     'WooCommerce\\Facebook\\Handlers\\WhatsAppUtilityConnection' => $baseDir . '/includes/Handlers/WhatsAppUtilityConnection.php',
     'WooCommerce\\Facebook\\Handlers\\Whatsapp_Webhook' => $baseDir . '/includes/Handlers/Whatsapp_Webhook.php',
     'WooCommerce\\Facebook\\Integrations\\Bookings' => $baseDir . '/includes/Integrations/Bookings.php',
+    'WooCommerce\\Facebook\\Integrations\\IntegrationRegistry' => $baseDir . '/includes/Integrations/IntegrationRegistry.php',
     'WooCommerce\\Facebook\\Jobs\\AbstractChainedJob' => $baseDir . '/includes/Jobs/AbstractChainedJob.php',
     'WooCommerce\\Facebook\\Jobs\\GenerateProductFeed' => $baseDir . '/includes/Jobs/GenerateProductFeed.php',
     'WooCommerce\\Facebook\\Jobs\\JobManager' => $baseDir . '/includes/Jobs/JobManager.php',

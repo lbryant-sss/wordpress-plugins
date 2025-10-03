@@ -1,13 +1,13 @@
 <?php
 /**
- * Plugin Name: Skyboot Custom Icons for Elementor - Elementor Icons library
- * Description: Skyboot custom icons for Elementor is a fantastic custom Elementor icons plugin for the Elementor page builder. Increase Elementor icons library using the plugin. it's a perfect Elementor custom icons plugin for website owners. 
- * Plugin URI:  https://skybootstrap.com/custom-icons-for-elementor
+ * Plugin Name: Skyboot Custom Icons for Elementor
+ * Description: Skyboot Custom Icons for Elementor expands your Elementor icon library with 14,300+ icons from 15 packs, fully customizable in Elementor's editor. 
+ * Plugin URI:  https://skybootstrap.com/custom-icons-for-elementor/
  * Version:     1.1.0
  * Author:      Skybootstrap
- * Author URI:  https://skybootstrap.com
- * License:     GPL2
- * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
+ * Author URI:  https://skybootstrap.com/
+ * License: GPLv3
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain: skb_cife
  * Domain Path: /languages
 **/

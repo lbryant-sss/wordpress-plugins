@@ -346,6 +346,7 @@ class ComposerStaticInit4e80c194ac3fde3776fb76150346aee6
         'WooCommerce\\Facebook\\Handlers\\WhatsAppUtilityConnection' => __DIR__ . '/../..' . '/includes/Handlers/WhatsAppUtilityConnection.php',
         'WooCommerce\\Facebook\\Handlers\\Whatsapp_Webhook' => __DIR__ . '/../..' . '/includes/Handlers/Whatsapp_Webhook.php',
         'WooCommerce\\Facebook\\Integrations\\Bookings' => __DIR__ . '/../..' . '/includes/Integrations/Bookings.php',
+        'WooCommerce\\Facebook\\Integrations\\IntegrationRegistry' => __DIR__ . '/../..' . '/includes/Integrations/IntegrationRegistry.php',
         'WooCommerce\\Facebook\\Jobs\\AbstractChainedJob' => __DIR__ . '/../..' . '/includes/Jobs/AbstractChainedJob.php',
         'WooCommerce\\Facebook\\Jobs\\GenerateProductFeed' => __DIR__ . '/../..' . '/includes/Jobs/GenerateProductFeed.php',
         'WooCommerce\\Facebook\\Jobs\\JobManager' => __DIR__ . '/../..' . '/includes/Jobs/JobManager.php',
