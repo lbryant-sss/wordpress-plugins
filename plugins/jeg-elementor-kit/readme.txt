@@ -1,4 +1,4 @@
-=== Jeg Kit for Elementor ===
+=== Jeg Kit for Elementor – Powerful Elementor Addons, Widgets & Templates for WordPress ===
 Contributors: Jegtheme
 Tags: elementor, elements, addons, widgets, templates
 Requires at least: 5.0

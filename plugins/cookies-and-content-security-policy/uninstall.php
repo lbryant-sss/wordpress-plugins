@@ -59,6 +59,7 @@ $cacsp_options = array(
 	'cacsp_option_forms', 
 	'cacsp_option_worker', 
 	'cacsp_option_blob', 
+	'cacsp_option_data', 
 	'cacsp_option_meta',
 	'cacsp_option_debug',
 	'cacsp_option_no_x_csp', 

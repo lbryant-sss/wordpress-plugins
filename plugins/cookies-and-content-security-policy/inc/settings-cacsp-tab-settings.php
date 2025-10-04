@@ -23,6 +23,7 @@ $cacsp_option_settings_save_consent = get_cacsp_options( 'cacsp_option_settings_
 $cacsp_option_forms = get_cacsp_options( 'cacsp_option_forms', false, '', true );
 $cacsp_option_worker = get_cacsp_options( 'cacsp_option_worker', false, '', true );
 $cacsp_option_blob = get_cacsp_options( 'cacsp_option_blob', false, '', true );
+$cacsp_option_data = get_cacsp_options( 'cacsp_option_data', false, '', true );
 $cacsp_option_disable_unsafe_inline = get_cacsp_options( 'cacsp_option_disable_unsafe_inline', false, '', true );
 $cacsp_option_disable_unsafe_eval = get_cacsp_options( 'cacsp_option_disable_unsafe_eval', false, '', true );
 $cacsp_option_disable_content_not_allowed_message = get_cacsp_options( 'cacsp_option_disable_content_not_allowed_message', false, '', true );
@@ -200,6 +201,18 @@ $cacsp_option_bypass_ips = get_cacsp_options( 'cacsp_option_bypass_ips', false, 
 						<?php esc_html_e( 'Allow blob.', 'cookies-and-content-security-policy' ); ?>
 						<br>
 						<small><?php esc_html_e( 'Example: Some javascript libraries uses blob for images. Divi uses this for scripts in edit mode.', 'cookies-and-content-security-policy' ); ?></small>
+				</label>
+				<br>
+				<label for="cacsp_option_data">
+					<?php if ( $cacsp_option_data ) {
+						$checked = ' checked';
+					} else {
+						$checked = '';
+					} ?>
+					<input type="checkbox" name="cacsp_option_data" id="cacsp_option_data" value="1"<?php echo $checked; ?>> 
+						<?php esc_html_e( 'Allow data.', 'cookies-and-content-security-policy' ); ?>
+						<br>
+						<small><?php esc_html_e( 'Example: Sometimes data is used for loading images and scripts.', 'cookies-and-content-security-policy' ); ?></small>
 				</label>
 				<br>
 				<label for="cacsp_option_disable_unsafe_inline">

@@ -14,6 +14,7 @@ function set_content_security_policy() {
 	$cacsp_option_forms = get_cacsp_options( 'cacsp_option_forms' );
 	$cacsp_option_worker = get_cacsp_options( 'cacsp_option_worker' );
 	$cacsp_option_blob = get_cacsp_options( 'cacsp_option_blob' );
+	$cacsp_option_data = get_cacsp_options( 'cacsp_option_data' );
 	$cacsp_option_disable_unsafe_inline = get_cacsp_options( 'cacsp_option_disable_unsafe_inline' );
 	$cacsp_option_disable_unsafe_eval = get_cacsp_options( 'cacsp_option_disable_unsafe_eval' );
 	$cacsp_option_wpengine_compatibility_mode = get_cacsp_options( 'cacsp_option_wpengine_compatibility_mode' );
@@ -114,8 +115,12 @@ function set_content_security_policy() {
 		}
 	}
 	$contentSecurityPolicyBlob = "";
+	$contentSecurityPolicyData = "";
 	if ( $cacsp_option_blob ) {
-		$contentSecurityPolicyBlob = "blob: ";
+		$contentSecurityPolicyBlob = " blob:";
+	}
+	if ( $cacsp_option_data ) {
+		$contentSecurityPolicyData = " data:";
 	}
 	$contentSecurityPolicyUnsafe = "";
 	if ( !$cacsp_option_disable_unsafe_inline ) {
@@ -124,16 +129,16 @@ function set_content_security_policy() {
 	if ( !$cacsp_option_disable_unsafe_eval ) {
 		$contentSecurityPolicyUnsafe .= " 'unsafe-eval'";
 	}
-	$contentSecurityPolicyScript = "script-src 'self'" . $contentSecurityPolicyUnsafe . " " . $contentSecurityPolicyBlob . cacsp_single_space( get_cacsp_options( 'cacsp_option_always_scripts', true ) . $contentSecurityPolicyScript ) . '; ';
-	$contentSecurityPolicyImg = "img-src 'self' data: " . $contentSecurityPolicyBlob . cacsp_single_space( get_cacsp_options( 'cacsp_option_always_images', true ) . $contentSecurityPolicyImg ) . '; ';
+	$contentSecurityPolicyScript = "script-src 'self'" . $contentSecurityPolicyData . $contentSecurityPolicyBlob . $contentSecurityPolicyUnsafe . ' ' . cacsp_single_space( get_cacsp_options( 'cacsp_option_always_scripts', true ) . $contentSecurityPolicyScript ) . '; ';
+	$contentSecurityPolicyImg = "img-src 'self'" . $contentSecurityPolicyData . $contentSecurityPolicyBlob .  ' ' . cacsp_single_space( get_cacsp_options( 'cacsp_option_always_images', true ) . $contentSecurityPolicyImg ) . '; ';
 	$cacsp_option_frames_js = cacsp_single_space( get_cacsp_options( 'cacsp_option_always_frames', true ) . $contentSecurityPolicyFrame );
-	$contentSecurityPolicyObject = "object-src 'self' data: " . $contentSecurityPolicyBlob . cacsp_single_space( get_cacsp_options( 'cacsp_option_always_frames', true ) . $contentSecurityPolicyFrame ) . '; ';
-	$contentSecurityPolicyFrame = "frame-src 'self' data: " . $contentSecurityPolicyBlob . cacsp_single_space( get_cacsp_options( 'cacsp_option_always_frames', true ) . $contentSecurityPolicyFrame ) . '; ';
+	$contentSecurityPolicyObject = "object-src 'self'" . $contentSecurityPolicyData . $contentSecurityPolicyBlob . ' ' . cacsp_single_space( get_cacsp_options( 'cacsp_option_always_frames', true ) . $contentSecurityPolicyFrame ) . '; ';
+	$contentSecurityPolicyFrame = "frame-src 'self'" . $contentSecurityPolicyData . $contentSecurityPolicyBlob . ' ' . cacsp_single_space( get_cacsp_options( 'cacsp_option_always_frames', true ) . $contentSecurityPolicyFrame ) . '; ';
 	if ( $cacsp_option_forms ) {
-		$contentSecurityPolicyForm = "form-action 'self' data: " . $contentSecurityPolicyBlob . cacsp_single_space( get_cacsp_options( 'cacsp_option_always_forms', true ) . $contentSecurityPolicyForm ) . '; ';
+		$contentSecurityPolicyForm = "form-action 'self'" . $contentSecurityPolicyData . $contentSecurityPolicyBlob . ' ' . cacsp_single_space( get_cacsp_options( 'cacsp_option_always_forms', true ) . $contentSecurityPolicyForm ) . '; ';
 	}
 	if ( $cacsp_option_worker ) {
-		$contentSecurityPolicyWorker = "worker-src 'self' data:" . $contentSecurityPolicyUnsafe . " " . $contentSecurityPolicyBlob . cacsp_single_space( get_cacsp_options( 'cacsp_option_always_worker', true ) . $contentSecurityPolicyWorker ) . '; ';
+		$contentSecurityPolicyWorker = "worker-src 'self'" . $contentSecurityPolicyData . $contentSecurityPolicyUnsafe . ' ' . $contentSecurityPolicyBlob . cacsp_single_space( get_cacsp_options( 'cacsp_option_always_worker', true ) . $contentSecurityPolicyWorker ) . '; ';
 	}
 	$contentSecurityPolicy = $contentSecurityPolicyScript . $contentSecurityPolicyImg . $contentSecurityPolicyObject . $contentSecurityPolicyFrame . $contentSecurityPolicyForm . $contentSecurityPolicyWorker;
 	if ( get_cacsp_options( 'cacsp_option_settings_policy_link' ) ) {

@@ -636,6 +636,7 @@ elseif ( isset( $_POST['save_cacsp_settings_quickstart'] ) && $can_change_all ) 
 	update_option( 'cacsp_option_forms', intval( isset( $_POST['cacsp_option_forms'] ) ) );
 	update_option( 'cacsp_option_worker', intval( isset( $_POST['cacsp_option_worker'] ) ) );
 	update_option( 'cacsp_option_blob', intval( isset( $_POST['cacsp_option_blob'] ) ) );
+	update_option( 'cacsp_option_data', intval( isset( $_POST['cacsp_option_data'] ) ) );
 	update_option( 'cacsp_option_disable_unsafe_inline', intval( isset( $_POST['cacsp_option_disable_unsafe_inline'] ) ) );
 	update_option( 'cacsp_option_disable_unsafe_eval', intval( isset( $_POST['cacsp_option_disable_unsafe_eval'] ) ) );
 	update_option( 'cacsp_option_disable_content_not_allowed_message', intval( isset( $_POST['cacsp_option_disable_content_not_allowed_message'] ) ) );

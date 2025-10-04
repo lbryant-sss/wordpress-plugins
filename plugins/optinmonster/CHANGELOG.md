@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to the OptinMonster plugin will be documented in this file.
 
+### 2.16.21 - 2025-10-03
+* Maintenance updates.
+* Preparation for ShareASale to AWIN migration.
+
 ### 2.16.20 - 2025-07-24
 * Maintenance updates.
 

@@ -177,6 +177,13 @@ class PostsTerms {
 			], 400 );
 		}
 
+		if ( ! current_user_can( 'read_post', $args['postId'] ) ) {
+			return new \WP_REST_Response( [
+				'success' => false,
+				'message' => 'Unauthorized.'
+			], 401 );
+		}
+
 		// Disable the cache.
 		aioseo()->social->image->useCache = false;
 
@@ -223,6 +230,13 @@ class PostsTerms {
 				'success' => false,
 				'message' => 'Post ID is missing.'
 			], 400 );
+		}
+
+		if ( ! aioseo()->access->hasCapability( 'aioseo_page_general_settings' ) || ! current_user_can( 'edit_post', $postId ) ) {
+			return new \WP_REST_Response( [
+				'success' => false,
+				'message' => 'You are not allowed to update the post settings.'
+			], 403 );
 		}
 
 		$body['id']                  = $postId;
@@ -272,6 +286,17 @@ class PostsTerms {
 
 		$posts = [];
 		foreach ( $ids as $postId ) {
+			if ( ! current_user_can( 'read_post', $postId ) || post_password_required( $postId ) ) {
+				$posts[] = [
+					'id'                => $postId,
+					'titleParsed'       => '',
+					'descriptionParsed' => '',
+					'headlineScore'     => null
+				];
+
+				continue;
+			}
+
 			$postTitle      = get_the_title( $postId );
 			$headline       = ! empty( $postTitle ) ? sanitize_text_field( $postTitle ) : ''; // We need this to achieve consistency for the score when using special characters in titles
 			$headlineResult = aioseo()->standalone->headlineAnalyzer->getResult( $headline );
@@ -308,6 +333,13 @@ class PostsTerms {
 				'success' => false,
 				'message' => 'Post ID is missing.'
 			], 400 );
+		}
+
+		if ( ! aioseo()->access->hasCapability( 'aioseo_page_general_settings' ) || ! current_user_can( 'edit_post', $postId ) ) {
+			return new \WP_REST_Response( [
+				'success' => false,
+				'message' => 'You are not allowed to update the post settings.'
+			], 403 );
 		}
 
 		$aioseoPost = Models\Post::getPost( $postId );
@@ -365,6 +397,13 @@ class PostsTerms {
 			], 400 );
 		}
 
+		if ( ! aioseo()->access->hasCapability( 'aioseo_page_general_settings' ) || ! current_user_can( 'edit_post', $postId ) ) {
+			return new \WP_REST_Response( [
+				'success' => false,
+				'message' => 'You are not allowed to update the post settings.'
+			], 403 );
+		}
+
 		$thePost = Models\Post::getPost( $postId );
 
 		$thePost->post_id = $postId;
@@ -412,6 +451,13 @@ class PostsTerms {
 			], 400 );
 		}
 
+		if ( ! current_user_can( 'edit_post', $args['postId'] ) ) {
+			return new \WP_REST_Response( [
+				'success' => false,
+				'message' => 'Unauthorized.'
+			], 401 );
+		}
+
 		$thePost = Models\Post::getPost( $args['postId'] );
 		$thePost->options->primaryTerm->productEducationDismissed = true;
 		$thePost->save();
@@ -437,6 +483,13 @@ class PostsTerms {
 				'success' => false,
 				'message' => 'No post ID was provided.'
 			], 400 );
+		}
+
+		if ( ! current_user_can( 'edit_post', $args['postId'] ) ) {
+			return new \WP_REST_Response( [
+				'success' => false,
+				'message' => 'Unauthorized.'
+			], 401 );
 		}
 
 		$thePost = Models\Post::getPost( $args['postId'] );
@@ -468,6 +521,13 @@ class PostsTerms {
 			], 400 );
 		}
 
+		if ( ! current_user_can( 'edit_post', $args['postId'] ) ) {
+			return new \WP_REST_Response( [
+				'success' => false,
+				'message' => 'Unauthorized.'
+			], 401 );
+		}
+
 		$thePost = Models\Post::getPost( $args['postId'] );
 		$thePost->options->linkFormat->internalLinkCount = $count;
 		$thePost->save();
@@ -494,6 +554,13 @@ class PostsTerms {
 				'success' => false,
 				'message' => 'No post ID was provided.'
 			], 400 );
+		}
+
+		if ( ! current_user_can( 'read_post', $args['postId'] ) || post_password_required( $args['postId'] ) ) {
+			return new \WP_REST_Response( [
+				'success' => false,
+				'message' => 'Unauthorized.'
+			], 401 );
 		}
 
 		// Check if we can process it using a page builder integration.

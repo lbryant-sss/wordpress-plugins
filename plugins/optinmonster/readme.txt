@@ -1,10 +1,10 @@
 === Popup Builder & Popup Maker for WordPress – OptinMonster Email Marketing and Lead Generation ===
 Contributors: optinmonster, griffinjt, smub
 Tags: marketing, popup, popups, optin, ecommerce
-Requires at least: 4.7.0
+Requires at least: 5.0.0
 Tested up to: 6.8
-Requires PHP: 5.3
-Stable tag: 2.16.20
+Requires PHP: 7.2
+Stable tag: 2.16.21
 License: GNU General Public License v2.0 or later
 
 🤩 Make popups & optin forms to get more email newsletter subscribers, leads, and sales - #1 most popular popup builder plugin! 🚀
@@ -328,6 +328,10 @@ We also recommend <a href="http://www.wpbeginner.com/">WPBeginner</a> for the be
 
 **Most Recent Changes:**
 
+= Popup Builder 2.16.21 =
+* Maintenance updates.
+* Preparation for ShareASale to AWIN migration.
+
 = Popup Builder 2.16.20 =
 * Maintenance updates.
 
@@ -379,35 +383,5 @@ We also recommend <a href="http://www.wpbeginner.com/">WPBeginner</a> for the be
 * Updates to onboarding flow.
 * Improved text when template search returns no results.
 * Various npm package updates used for generating our JavaScript code.
-
-= Popup Builder 2.16.5 =
-* Support for improved campaign publishing from within the campaign builder.
-* Improved frontend output when no campaigns are assigned to the site.
-* Various npm package updates used for generating our JavaScript code.
-
-= Popup Builder 2.16.4 =
-* Fixed an issue where "Never load on..." output settings were hidden.
-
-= Popup Builder 2.16.3 =
-* Improved template filtering.
-* Added custom field support to our MailPoet integration.
-* Improved the campaign creation modal.
-* Security and performance improvements.
-* Various npm package updates used for generating our JavaScript code.
-
-= Popup Builder 2.16.2 =
-* Improved browser coverage.
-
-= Popup Builder 2.16.1 =
-* Improved About Us page.
-* Updates and improvements to our Gutenberg block.
-* Various npm package updates used for generating our JavaScript code.
-
-= Popup Builder 2.16.0 =
-* Added integration with Uncanny Automator.
-* Improved University page.
-* Improved security check for dismiss pointer.
-* Update dependencies for security and performance improvements.
-* Added additional language support for AI popups.
 
 **[View entire popup builder changelog](https://plugins.svn.wordpress.org/optinmonster/trunk/CHANGELOG.md)**

@@ -34,7 +34,6 @@ return array(
     'AIOSEO\\Plugin\\Common\\Api\\EmailSummary' => $baseDir . '/app/Common/Api/EmailSummary.php',
     'AIOSEO\\Plugin\\Common\\Api\\Integrations\\Semrush' => $baseDir . '/app/Common/Api/Integrations/Semrush.php',
     'AIOSEO\\Plugin\\Common\\Api\\Integrations\\WpCode' => $baseDir . '/app/Common/Api/Integrations/WpCode.php',
-    'AIOSEO\\Plugin\\Common\\Api\\Migration' => $baseDir . '/app/Common/Api/Migration.php',
     'AIOSEO\\Plugin\\Common\\Api\\Network' => $baseDir . '/app/Common/Api/Network.php',
     'AIOSEO\\Plugin\\Common\\Api\\Notifications' => $baseDir . '/app/Common/Api/Notifications.php',
     'AIOSEO\\Plugin\\Common\\Api\\Ping' => $baseDir . '/app/Common/Api/Ping.php',
