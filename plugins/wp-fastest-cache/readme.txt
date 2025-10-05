@@ -69,7 +69,7 @@ The free version is enough to speed up your site but in the premium version ther
 7. Defer Javascript - Eliminate render-blocking JavaScript resources. Consider delivering critical JS inline and deferring all non-critical JS
 8. Optimize Images - Optimized images load faster and consume less cellular data
 9. Convert WebP - Serve images in next-gen formats. Image formats like JPEG 2000, JPEG XR, and WebP often provide better compression than PNG or JPEG, which means faster downloads and less data consumption
-10. Database Cleanup - The Database Cleanup feature clears out all of the garbage datas such as post revisions, trashed posts & pages, comments from trash & spam, trackbacks and pingbacks, transient options etc.
+10. Database Cleanup - The Database Cleanup feature clears out all of the garbage datas such as post revisions, trashed posts & pages, comments from trash & spam, trackbacks and pingbacks, transient options, orphaned post meta, comment meta, user meta, term meta, and term relationship etc.
 11. Google Fonts Async
 12. Lazy Load - Defer offscreen images. Consider lazy-loading offscreen and hidden images after all critical resources have finished loading to lower time to interactive
 12. Delay JS - The Delay JavaScript feature helps reduce the 'Reduce unused JavaScript' warning in the Google PageSpeed Insights tool

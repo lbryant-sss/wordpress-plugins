@@ -36,6 +36,12 @@ class HMWP_Controllers_Firewall extends HMWP_Classes_FrontController {
 
 		// If firewall is activated
 		if ( HMWP_Classes_Tools::getOption( 'hmwp_sqlinjection' ) ) {
+
+			if ( isset($_GET['download_file'], $_GET['order'], $_GET['uid'], $_GET['key']) ) {
+				// This is a WooCommerce secure download link, skip Firewall rules
+				return;
+			}
+
 			if ( (int) HMWP_Classes_Tools::getOption( 'hmwp_sqlinjection_level' ) == 1 ) {
 
 				if ( isset( $_SERVER['QUERY_STRING'] ) && $_SERVER['QUERY_STRING'] <> '' ) {
@@ -140,7 +146,7 @@ class HMWP_Controllers_Firewall extends HMWP_Classes_FrontController {
 				if ( isset( $_SERVER['QUERY_STRING'] ) && $_SERVER['QUERY_STRING'] <> '' ) {
 					if ( preg_match( '/([a-z0-9]{2000,})/i', $_SERVER['QUERY_STRING'] ) ||
 					     preg_match( '/(\/|%2f)(:|%3a)(\/|%2f)/i', $_SERVER['QUERY_STRING'] ) ||
-					     preg_match( '/(order(\s|%20)by(\s|%20)1--)/i', $_SERVER['QUERY_STRING'] ) ||
+					     preg_match( '/order(\s|%20)+by(\s|%20)*[0-9]+(--)?/i', $_SERVER['QUERY_STRING'] ) ||
 					     preg_match( '/(\/|%2f)(\*|%2a)(\*|%2a)(\/|%2f)/i', $_SERVER['QUERY_STRING'] ) ||
 					     preg_match( '/(ckfinder|fckeditor|fullclick)/i', $_SERVER['QUERY_STRING'] ) ||
 					     preg_match( '/(`|<|>|\^|\|\\|0x00|%00|%0d%0a)/i', $_SERVER['QUERY_STRING'] ) ||
@@ -236,7 +242,7 @@ class HMWP_Controllers_Firewall extends HMWP_Classes_FrontController {
 					     preg_match( '/([a-z0-9]{4000,})/i', $_SERVER['QUERY_STRING'] ) ||
 					     preg_match( '/(\/|%2f)(:|%3a)(\/|%2f)/i', $_SERVER['QUERY_STRING'] ) ||
 					     preg_match( '/(etc\/(hosts|motd|shadow))/i', $_SERVER['QUERY_STRING'] ) ||
-					     preg_match( '/(order(\s|%20)by(\s|%20)1--)/i', $_SERVER['QUERY_STRING'] ) ||
+					     preg_match( '/order(\s|%20)+by(\s|%20)*[0-9]+(--)?/i', $_SERVER['QUERY_STRING'] ) ||
 					     preg_match( '/(\/|%2f)(\*|%2a)(\*|%2a)(\/|%2f)/i', $_SERVER['QUERY_STRING'] ) ||
 					     preg_match( '/(`|<|>|\^|\|\\|0x00|%00|%0d%0a)/i', $_SERVER['QUERY_STRING'] ) ||
 					     preg_match( '/(f?ckfinder|f?ckeditor|fullclick)/i', $_SERVER['QUERY_STRING'] ) ||
