@@ -124,6 +124,9 @@ There are several ways to install TI WooCommerce Wishlist:
 + After the installation is complete, click the "Activate" link (Plugins > Installed Plugins).
 
 == Frequently Asked Questions ==
+= Where do I report security bugs found in this plugin? =
+
+Please report security bugs found in the source code of the TI WooCommerce Wishlist plugin through the [Patchstack Vulnerability Disclosure  Program](https://patchstack.com/database/vdp/093f0b5c-b04d-4943-8308-f249da70ddad). The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin.
 
 = Where can I find documentation? =
 
