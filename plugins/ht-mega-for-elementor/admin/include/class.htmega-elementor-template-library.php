@@ -72,6 +72,7 @@ class Elementor_Library_Manage{
                     if( time() > $stror_time + 86400 ){
                         update_option( 'htmega_api_last_req', time() );
                         delete_transient('htmega_template_info');
+                        delete_transient('htmega_api_backoff');
                         delete_transient('htmega_template_request_pending');
                         delete_transient('htmega_severdown_request_pending');
                     }
@@ -79,6 +80,7 @@ class Elementor_Library_Manage{
                 } else {
                     update_option( 'htmega_api_last_req', time() );
                     delete_transient('htmega_template_info');
+                    delete_transient('htmega_api_backoff');
                     delete_transient('htmega_template_request_pending');
                     delete_transient('htmega_severdown_request_pending');       
                 }

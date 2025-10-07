@@ -535,7 +535,6 @@
 			var scrollers = $('.fl-nanoscroller', window.parent.document).nanoScroller({
 				documentContext: window.parent.document,
 				alwaysVisible: false,
-				preventPageScrolling: true,
 				paneClass: 'fl-nanoscroller-pane',
 				sliderClass: 'fl-nanoscroller-slider',
 				contentClass: 'fl-nanoscroller-content'
@@ -9457,7 +9456,14 @@
 				}
 
 				font.val( value.family );
-				font.trigger( 'change' );
+
+				if ( 'Default' === value.family ) {
+					// Don't trigger change event when set to Default
+					// to prevent overwriting theme font.
+					FLBuilder._getFontWeights( font );
+				} else {
+					font.trigger( 'change' );
+				}
 
 				if ( weight.find( 'option[value=' + value.weight + ']' ).length ) {
 					weight.val( value.weight );

@@ -901,6 +901,9 @@
 					{
 						if( typeof items[ i ].after_show != 'undefined' ) items[ i ].after_show();
 					}
+
+					// Event after reloading the items.
+					$(document).trigger('reloadedItems', [items]);
 				}
 
 				ffunct.saveData("form_structure");
@@ -1720,9 +1723,18 @@
                 $(".helpfbuilder").off('click');
 				$(".helpfbuilder").on('click', function(evt)
 					{
-						evt.preventDefault();
-						evt.stopPropagation();
-						alert($(this).attr("text"));
+						let t = $(this).attr("text");
+						if (t || $(this).hasClass('video')) {
+							evt.preventDefault();
+							evt.stopPropagation();
+							if(t) alert($(this).attr("text"));
+							else {
+								const popupWidth = Math.min(window.screen.width, 800);
+								const popupHeight = Math.min(window.screen.height, 600);
+								window.open( $(this).attr('href'), 'helpPopup', `width=${popupWidth},height=${popupHeight},scrollbars=yes,resizable=yes`);
+							}
+							return false;
+						}
 					});
 				$("#sDeveloperNotes").on("keyup", {obj: this}, function(e)
 					{

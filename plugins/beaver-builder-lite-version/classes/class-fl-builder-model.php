@@ -195,9 +195,18 @@ final class FLBuilderModel {
 		add_filter( 'heartbeat_received', __CLASS__ . '::lock_post', 10, 2 );
 		add_filter( 'fl_builder_register_settings_form', __CLASS__ . '::filter_row_settings_for_resize', 10, 2 );
 		add_filter( 'wp_revisions_to_keep', __CLASS__ . '::limit_revisions', 10, 2 );
+		add_action( 'fl_builder_after_render_row', array( __CLASS__, 'animation_opacity' ), 10, 2 );
+		add_action( 'fl_builder_after_render_module', array( __CLASS__, 'animation_opacity' ), 10, 2 );
+		add_action( 'fl_builder_after_render_col', array( __CLASS__, 'animation_opacity' ), 10, 2 );
 
 		/* Core Templates */
 		self::register_core_templates();
+	}
+
+	public static function animation_opacity( $node, $extra = false ) {
+		if ( ! self::is_builder_active() && isset( $node->settings->animation ) && is_array( $node->settings->animation ) && ! empty( $node->settings->animation['style'] ) ) {
+			printf( '<style>.fl-node-%s.fl-animation:not(.fl-animated){opacity:0}</style>', $node->node );
+		}
 	}
 
 	/**

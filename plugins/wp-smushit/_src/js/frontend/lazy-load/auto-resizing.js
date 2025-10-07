@@ -323,7 +323,7 @@ export class AutoResizing {
 			return srcset;
 		}
 
-		const retinaWidth = Math.floor( resizeWidth * scale );
+		const retinaWidth = Math.ceil( resizeWidth * scale );
 		const hasRetinaSource = this.findSimilarSource( sources, scale, SRCSET_DENSITY_DESCRIPTOR ) ||
 								this.findSimilarSource( sources, retinaWidth, SRCSET_WIDTH_DESCRIPTOR );
 

@@ -96,7 +96,7 @@ if ( ! class_exists( 'AIO_Login\Admin\Admin' ) ) {
 						'icon'     => 'security',
 						'sub-tabs' => array(
 							'grecaptcha'         => array(
-								'title' => __( 'Google reCAPTCHA', 'change-wp-admin-login' ),
+								'title' => __( 'CAPTCHA', 'change-wp-admin-login' ),
 								'slug'  => 'grecaptcha',
 							),
 							'2fa'                => array(
@@ -120,6 +120,13 @@ if ( ! class_exists( 'AIO_Login\Admin\Admin' ) ) {
 						'is-pro' => true,
 						'plan'   => 'business',
 					),
+					'social-login'     => array(
+						'title'  => __( 'Social Login', 'change-wp-admin-login' ),
+						'slug'   => 'social-login',
+						'icon'   => 'social-login',
+						'is-pro' => true,
+						'plan'   => 'business',
+					),
 					'customization'    => array(
 						'title'    => __( 'Customize', 'change-wp-admin-login' ),
 						'slug'     => 'customization',
@@ -140,12 +147,6 @@ if ( ! class_exists( 'AIO_Login\Admin\Admin' ) ) {
 							'templates'  => array(
 								'title'  => __( 'Templates', 'change-wp-admin-login' ),
 								'slug'   => 'templates',
-								'is-pro' => true,
-								'plan'   => 'business',
-							),
-							'social-login'  => array(
-								'title'  => __( 'Social Login', 'change-wp-admin-login' ),
-								'slug'   => 'social-login',
 								'is-pro' => true,
 								'plan'   => 'business',
 							),

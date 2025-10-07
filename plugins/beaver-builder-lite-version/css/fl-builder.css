@@ -2773,6 +2773,9 @@ button.fl-builder-button.fl-builder-bar-title-caret:focus {
 	right: 0px;
 	top: 0;
 }
+.fl-block-overlay-active .fl-block-label {
+	font-size: 20px;
+}
 .fl-block-label {
 	z-index: -1;
 }

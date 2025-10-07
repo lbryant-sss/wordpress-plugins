@@ -1,7 +1,7 @@
 <?php
 
 if(isset(AHSC_CONSTANT['ARUBA_HISPEED_CACHE_OPTIONS']['ahsc_dns_preconnect'])
-   && AHSC_CONSTANT['ARUBA_HISPEED_CACHE_OPTIONS']['ahsc_dns_preconnect']!=="false") {
+   && AHSC_CONSTANT['ARUBA_HISPEED_CACHE_OPTIONS']['ahsc_dns_preconnect']!=false) {
 
 	function dns_prefetch_to_preconnect( $urls, $relation_type ) {
 		global $wp_scripts, $wp_styles;

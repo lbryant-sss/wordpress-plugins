@@ -1,13 +1,13 @@
 === Smush Image Optimization – Optimize Images | Compress & Lazy Load Images | Convert WebP & AVIF | Image CDN ===
 Plugin Name: Smush Image Optimization – Optimize Images | Compress & Lazy Load Images & Videos | Convert WebP & AVIF | Image CDN
-Version: 3.21.1
+Version: 3.22.1
 Author: WPMU DEV
 Author URI: https://wpmudev.com/
 Contributors: WPMUDEV, alexdunae
 Tags: optimize images, convert webp, webp, image optimization, compress images
 Requires at least: 6.4
 Tested up to: 6.8
-Stable tag: 3.21.1
+Stable tag: 3.22.1
 Requires PHP: 7.4
 License: GPL v2 - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
@@ -241,6 +241,17 @@ We take plugin security incredibly seriously; if you have a bug or vulnerability
 5. Make your page load faster with lazy loading.
 
 == Changelog ==
+
+= 3.22.1 ( 2025-10-06 ) =
+- Fix: Memory issues caused by Elementor integration
+
+= 3.22.0 ( 2025-10-06 ) =
+- Improvement: More accurate use of fetchpriority=high based on LCP data
+- Improvement: General UI enhancements
+- Fix: LCP image not lazy-loaded after disabling preload
+- Fix: Incorrect Preload Critical Images status shown in summary box
+- Fix: Wrong retina image size applied by the auto-resize module
+- Fix: Incorrect LCP image detected on mobile in certain cases
 
 = 3.21.1 ( 2025-09-03 ) =
 - Fix: Auto-resize module using incorrect aspect ratio for cropped images

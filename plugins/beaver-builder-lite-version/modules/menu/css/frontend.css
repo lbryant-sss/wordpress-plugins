@@ -169,7 +169,7 @@ ul.fl-menu-horizontal li.mega-menu > ul.sub-menu ul.sub-menu {
 }
 
 /* Mobile menu - below row clone */
-:where(.fl-col-group-medium-reversed, .fl-col-group-responsive-reversed) > .fl-menu-mobile-clone {
+:where(.fl-col-group-medium-reversed, .fl-col-group-responsive-reversed, .fl-col-group-equal-height.fl-col-group-custom-width) > .fl-menu-mobile-clone {
 	flex: 1 1 100%;
 }
 .fl-menu-mobile-clone {

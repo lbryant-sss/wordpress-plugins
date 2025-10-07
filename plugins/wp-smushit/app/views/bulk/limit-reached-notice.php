@@ -2,16 +2,17 @@
 /**
  * Limit reached notice metabox on bulk smush page.
  *
- * @var bool $with_resume_button   With resume button or not.
+ * @var bool $smush_type Whether the notice is for directory smush or bulk smush.
  */
+$smush_type = $smush_type ?? 'bulk-smush';
 ?>
-<div id="smush-limit-reached-notice" class="sui-notice sui-notice-warning sui-hidden smush-limit-reached-notice">
+<div id="<?php echo esc_attr( $smush_type ); ?>-limit-reached-notice" class="sui-notice sui-notice-warning sui-hidden smush-limit-reached-notice">
 	<div class="sui-notice-content">
 		<div class="sui-notice-message">
 			<i class="sui-notice-icon sui-icon-info sui-md" aria-hidden="true"></i>
 			<p>
 				<?php
-				$is_directory_smush = 'smush-directory' === $this->get_slug();
+				$is_directory_smush = 'directory-smush' === $smush_type;
 				$upgrade_url        = $this->get_utm_link(
 					array(
 						'utm_campaign' => $is_directory_smush ? 'smush_directory_smush_paused_50_limit' : 'smush_bulk_smush_paused_50_limit',

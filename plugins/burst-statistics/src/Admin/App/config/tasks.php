@@ -10,18 +10,6 @@ defined( 'ABSPATH' ) || die();
  */
 return [
 	[
-		'id'          => 'ajax_fallback',
-		'condition'   => [
-			'type'     => 'serverside',
-			'function' => 'wp_option_burst_ajax_fallback_active',
-		],
-		'msg'         => __( 'Please check if your REST API is loading correctly. Your site currently is using the slower Ajax fallback method to load the settings.', 'burst-statistics' ),
-		'icon'        => 'warning',
-		'url'         => 'instructions/rest-api-error/',
-		'dismissible' => true,
-		'plusone'     => false,
-	],
-	[
 		'id'          => 'tracking-error',
 		'condition'   => [
 			'type'     => 'serverside',
@@ -35,29 +23,31 @@ return [
 		'dismissible' => false,
 	],
 	[
-		'id'          => 'bf_notice2024',
-		'condition'   => [
+		'id'                  => 'bf_notice',
+		'condition'           => [
 			'type'     => 'serverside',
 			'function' => 'Burst\Admin\Admin::is_bf()',
 
 		],
-		'msg'         => __( 'Black Friday', 'burst-statistics' ) . ': ' . __( 'Get 40% Off Burst Pro!', 'burst-statistics' ) . ' — ' . __( 'Limited time offer!', 'burst-statistics' ),
-		'icon'        => 'sale',
-		'url'         => 'pricing/',
-		'dismissible' => true,
-		'plusone'     => true,
+		'msg'                 => __( 'Black Friday', 'burst-statistics' ) . ': ' . __( 'Get 40% Off Burst Pro!', 'burst-statistics' ) . ' — ' . __( 'Limited time offer!', 'burst-statistics' ),
+		'icon'                => 'sale',
+		'url'                 => 'pricing/',
+		'dismissible'         => true,
+		'plusone'             => true,
+		'dismiss_permanently' => true,
 	],
 	[
-		'id'          => 'cm_notice2024',
-		'condition'   => [
+		'id'                  => 'cm_notice',
+		'condition'           => [
 			'type'     => 'serverside',
 			'function' => 'Burst\Admin\Admin::is_cm()',
 		],
-		'msg'         => __( 'Cyber Monday', 'burst-statistics' ) . ': ' . __( 'Get 40% Off Burst Pro!', 'burst-statistics' ) . ' — ' . __( 'Last chance!', 'burst-statistics' ),
-		'icon'        => 'sale',
-		'url'         => 'pricing/',
-		'dismissible' => true,
-		'plusone'     => true,
+		'msg'                 => __( 'Cyber Monday', 'burst-statistics' ) . ': ' . __( 'Get 40% Off Burst Pro!', 'burst-statistics' ) . ' — ' . __( 'Last chance!', 'burst-statistics' ),
+		'icon'                => 'sale',
+		'url'                 => 'pricing/',
+		'dismissible'         => true,
+		'plusone'             => true,
+		'dismiss_permanently' => true,
 	],
 	[
 		'id'          => 'leave-feedback',
@@ -94,7 +84,7 @@ return [
 		'dismissible' => true,
 	],
 	[
-		'id'          => 'malicous_data_removal',
+		'id'          => 'malicious_data_removal',
 		'condition'   => [
 			'type'     => 'serverside',
 			'function' => 'wp_option_burst_cleanup_uid_visits',

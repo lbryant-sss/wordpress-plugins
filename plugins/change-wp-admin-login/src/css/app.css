@@ -1,0 +1,116 @@
+@import "figtree.css";
+
+@import "datatables.css";
+
+#aio-login__app * {
+    font-family: Figtree;
+}
+
+#aio-login__app .float-left {
+    float: left;
+}
+
+#aio-login__app .float-right {
+    float: right;
+}
+
+#aio-login__app .text-center {
+    text-align: center;
+}
+
+#aio-login__app .text-left {
+    text-align: left;
+}
+
+#aio-login__app .text-right {
+    text-align: right;
+}
+
+#aio-login__app .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+#aio-login__app .container {
+    padding: 0 25px;
+}
+
+#aio-login__app .mb-25 {
+    margin-bottom: 25px;
+}
+
+#aio-login__app .mt-25 {
+    margin-top: 25px;
+}
+
+#aio-login__app .m-5 {
+    margin: 5px;
+}
+
+#wpcontent {
+    padding-left: 0 !important;
+}
+
+
+.dt-layout-cell.dt-layout-start {
+    float: left;
+}
+.dt-layout-cell.dt-layout-end {
+    float: right;
+}
+
+.dt-layout-row::after {
+    clear: both;
+    content: '';
+    display: table;
+}
+
+.dt-layout-row {
+    background: #FBF5FF;
+    padding: 15px ;
+}
+
+.dt-layout-row.dt-layout-table {
+    background: #fff;
+    padding: 0;
+}
+
+#DataTables_Table_0 thead th,
+#DataTables_Table_0 tfoot th {
+    background: #e8e5e8;
+}
+
+.dt-paging-button {
+    background: #e8e5e8;
+    border: 1px solid #e8e5e8;
+    color: #000;
+    padding: 15px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.dt-paging-button.disabled {
+    background: #f5f5f5;
+    border: 1px solid #f5f5f5;
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+select.dt-input {
+    width: 60px !important;
+}
+
+
+div.dt-container div.dt-layout-row {
+    margin: 0 !important;
+}
+
+.mt-40 {
+    margin-top: 40px;
+}
+
+#aio-login__app a:focus,
+#aio-login__app a:active {
+    box-shadow: none;
+}

@@ -1701,13 +1701,22 @@ fl-compound-field, .fl-compound-field {
 .fl-link-field-options-wrap input[type=checkbox]:after {
   content: "✓";
   font-weight: 700;
-  line-height: 12px;
+  line-height: 14px;
   text-align: center;
   color: transparent;
   display: inline-block;
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   border: 1px solid #aab1ba;
+  border-radius: 2px;
+}
+
+.fl-link-field-options-wrap input[type=checkbox]:checked::before {
+  content: none;
+}
+
+.fl-link-field-options-wrap input[type=checkbox] {
+  border: none;
   border-radius: 2px;
 }
 
@@ -1715,10 +1724,6 @@ fl-compound-field, .fl-compound-field {
   color: #fff;
   background-color: #0086b0;
   border-color: #0086b0;
-}
-
-.fl-link-field-options-wrap input[type=checkbox]:focus {
-  outline: none;
 }
 
 .fl-link-field-search {

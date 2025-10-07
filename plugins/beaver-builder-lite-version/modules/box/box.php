@@ -642,7 +642,7 @@ FLBuilder::register_module( 'FLBuilderBoxModule', [
 				'collapsed'   => true,
 				'fields'      => [
 
-					'aspect_ratio' => [
+					'aspect_ratio'  => [
 						'label'      => __( 'Aspect Ratio', 'fl-builder' ),
 						'type'       => 'select',
 						'options'    => FLBuilderBoxModule::get_aspect_ratio_options(),
@@ -654,7 +654,7 @@ FLBuilder::register_module( 'FLBuilderBoxModule', [
 							'auto'     => true,
 						],
 					],
-					'flex'         => [
+					'flex'          => [
 						'label'      => __( 'Flex', 'fl-builder' ),
 						'type'       => 'flex',
 						'responsive' => true,
@@ -695,7 +695,7 @@ FLBuilder::register_module( 'FLBuilderBoxModule', [
 							],
 						],
 					],
-					'grid_col'     => [
+					'grid_col'      => [
 						'label'      => __( 'Grid Column', 'fl-builder' ),
 						'type'       => 'grid-area',
 						'responsive' => true,
@@ -707,7 +707,7 @@ FLBuilder::register_module( 'FLBuilderBoxModule', [
 							'important' => true,
 						],
 					],
-					'grid_row'     => [
+					'grid_row'      => [
 						'label'      => __( 'Grid Row', 'fl-builder' ),
 						'type'       => 'grid-area',
 						'responsive' => true,
@@ -719,7 +719,7 @@ FLBuilder::register_module( 'FLBuilderBoxModule', [
 							'important' => true,
 						],
 					],
-					'size'         => [
+					'size'          => [
 						'label'      => __( 'Width & Height', 'fl-builder' ),
 						'type'       => 'size',
 						'responsive' => true,
@@ -772,7 +772,7 @@ FLBuilder::register_module( 'FLBuilderBoxModule', [
 							],
 						],
 					],
-					'margin_inline'        => [
+					'margin_inline' => [
 						'label'      => __( 'Alignment', 'fl-builder' ),
 						'type'       => 'button-group',
 						'default'    => '',
@@ -780,17 +780,17 @@ FLBuilder::register_module( 'FLBuilderBoxModule', [
 						'fill_space' => true,
 						'options'    => [
 							'0 auto' => __( 'Left', 'fl-builder' ),
-							'auto' => __( 'Center', 'fl-builder' ),
+							'auto'   => __( 'Center', 'fl-builder' ),
 							'auto 0' => __( 'Right', 'fl-builder' ),
 						],
 						'preview'    => [
-							'type'  => 'css',
-							'auto'  => true,
-							'property' => 'margin-inline',
+							'type'         => 'css',
+							'auto'         => true,
+							'property'     => 'margin-inline',
 							'format_value' => '%s !important', // Prevent regular margins from overriding
 						],
 					],
-					'order' => [
+					'order'         => [
 						'label'      => __( 'Order', 'fl-builder' ),
 						'help'       => __( 'Affects the order of this box when placed in a flex or grid parent.', 'fl-builder' ),
 						'type'       => 'unit',

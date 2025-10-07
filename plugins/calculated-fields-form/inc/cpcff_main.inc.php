@@ -766,7 +766,7 @@ if ( ! class_exists( 'CPCFF_MAIN' ) ) {
 						window.addEventListener("load", function() {
 							let el = document.getElementById("' . $iframe_id . '");
 							if(el && el.hasAttribute("data-cff-src")) el.setAttribute("src", el.getAttribute("data-cff-src"));
-						});</script><iframe ' . ' id="' . $iframe_id . '"';
+						});</script><iframe ' . ' id="' . $iframe_id . '" title="Calculated Fields Form ' . self::$iframe_counter . '"';
 
 					if ( ! empty( $this->_current_form ) ) {
 						$iframe_tag = $this->_current_form->get_height( '#' . $iframe_id ) . $iframe_tag;

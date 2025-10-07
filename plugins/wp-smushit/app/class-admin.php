@@ -326,10 +326,6 @@ class Admin {
 				$this->pages['bulk'] = new Pages\Bulk( 'smush-bulk', __( 'Bulk Smush', 'wp-smushit' ), 'smush' );
 			}
 
-			if ( Abstract_Page::should_render( 'directory' ) ) {
-				$this->pages['directory'] = new Pages\Directory( 'smush-directory', __( 'Directory Smush', 'wp-smushit' ), 'smush' );
-			}
-
 			if ( Abstract_Page::should_render( Settings::LAZY_PRELOAD_MODULE_NAME ) ) {
 				$pro_feature_ripple_effect   = Abstract_Page::should_show_new_feature_hotspot() ? '<span class="smush-new-feature-dot"></span>' : '';
 				$this->pages['lazy-preload'] = new Pages\Lazy_Preload( 'smush-lazy-preload', __( 'Lazy Load & Preload', 'wp-smushit' ) . $pro_feature_ripple_effect, 'smush' );

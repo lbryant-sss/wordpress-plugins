@@ -312,21 +312,21 @@ describe( 'AutoResizing', () => {
 			`<img data-src="https://smushcdn.com/img.jpg"
 				data-srcset="https://smushcdn.com/img-300x300.jpg 300w"
 				data-original-sizes="(max-width: 1024px) 100vw, 1024px" >`,
-			'https://smushcdn.com/img-300x300.jpg 300w, https://smushcdn.com/img.jpg?size=600x0 600w, https://smushcdn.com/img.jpg?size=1200x0 1200w'
+			'https://smushcdn.com/img-300x300.jpg 300w, https://smushcdn.com/img.jpg?size=315x0 315w, https://smushcdn.com/img.jpg?size=552x0 552w'
 		],
 		[
 			'Appends new CDN srcset entry for requested width, preserving existing retina source',
 			`<img data-src="https://smushcdn.com/img.jpg"
-				data-srcset="https://smushcdn.com/img-300x300.jpg 300w, https://smushcdn.com/img.jpg?size=1202x0 1202w"
+				data-srcset="https://smushcdn.com/img-300x300.jpg 300w, https://smushcdn.com/img.jpg?size=552x0 552w"
 				data-original-sizes="(max-width: 1024px) 100vw, 1024px" >`,
-			'https://smushcdn.com/img-300x300.jpg 300w, https://smushcdn.com/img.jpg?size=1202x0 1202w, https://smushcdn.com/img.jpg?size=600x0 600w'
+			'https://smushcdn.com/img-300x300.jpg 300w, https://smushcdn.com/img.jpg?size=552x0 552w, https://smushcdn.com/img.jpg?size=315x0 315w'
 		],
 		[
 			'Adds both standard and retina srcset entries when original sizes match requested width',
 			`<img data-src="https://smushcdn.com/img.jpg"
 				data-srcset="https://smushcdn.com/img-300x300.jpg 300w"
-				data-original-sizes="(max-width: 600px) 100vw, 600px" >`,
-			'https://smushcdn.com/img-300x300.jpg 300w, https://smushcdn.com/img.jpg?size=600x0 600w, https://smushcdn.com/img.jpg?size=1200x0 1200w'
+				data-original-sizes="(max-width: 315px) 100vw, 315px" >`,
+			'https://smushcdn.com/img-300x300.jpg 300w, https://smushcdn.com/img.jpg?size=315x0 315w, https://smushcdn.com/img.jpg?size=552x0 552w'
 		],
 	];
 
@@ -334,14 +334,14 @@ describe( 'AutoResizing', () => {
 		autoResizedImagesWithRetina
 	)( 'test resizeImageWithCDN with retina: %s', ( description, imageMarkup, expectedSrcset ) => {
 		const originalDevicePixelRatio = window.devicePixelRatio;
-		window.devicePixelRatio = 2; // Simulate retina display
+		window.devicePixelRatio = 1.75; // Simulate retina display
 
 		const container = document.createElement( 'div' );
 		container.innerHTML = imageMarkup;
 		const img = container.firstElementChild;
 
 		const event = {
-			detail: { width: 600, instance: {}, dataAttr: true },
+			detail: { width: 315, instance: {}, dataAttr: true },
 			target: img,
 			preventDefault: jest.fn(),
 		};

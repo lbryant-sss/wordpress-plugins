@@ -359,8 +359,7 @@ class Core extends Stats {
 				) : '',
 			// URLs.
 			'smush_url'                   => network_admin_url( 'admin.php?page=smush' ),
-			'bulk_smush_url'              => network_admin_url( 'admin.php?page=smush-bulk' ),
-			'directory_url'               => network_admin_url( 'admin.php?page=smush-directory' ),
+			'bulk_smush_url'              => Helper::get_page_url( 'smush-bulk' ),
 			'nextGenURL'                  => network_admin_url( 'admin.php?page=smush-next-gen' ),
 			'edit_link'                   => Helper::get_image_media_link( '{{id}}', null, true ),
 			'debug_mode'                  => defined( 'WP_DEBUG' ) && WP_DEBUG,

@@ -20,10 +20,10 @@ for ( $i = 0; $i < count( $settings->items ); $i++ ) :
 
 					<?php if ( 'html' == $settings->items[ $i ]->lightbox_content_type ) : ?>
 					type: 'inline',
-					items: {
-						src: $this.find('.fl-button-lightbox-content')[0]
-					},
 					callbacks: {
+						elementParse: function(item) {
+							item.src = $( item.el ).closest('.fl-button-wrap').find('.fl-button-lightbox-content');
+						},
 						open: function() {
 							var divWrap = $( $(this.content)[0] ).find('> div');
 							divWrap.css('display', 'block');

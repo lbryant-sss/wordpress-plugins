@@ -97,11 +97,17 @@ Absolutely! Both free and premium plugin can be managed with composer. Read the 
 We value your feedback. You can [submit a support request on the WordPress forums](https://wordpress.org/support/plugin/burst-statistics/), and we will respond promptly.
 
 == Change log ==
+= 2.2.8 =
+* New: improved library for cookieless tracking.
+* New: entry/exit pages filter
+* Improvement: added fallback database upgrade mechanism in case the normal upgrade didn't fire.
+* Improvement: dismissal of PHP notice.
+
 = 2.2.7 =
 * New: Detailed live visitors tab
 * Improvement: responsiveness on mobile, restored 1280px breakpoint
 * Improvement: suspicious data (over 1000 visits from 1 user) is now only detected and the admin notified, not automatically removed.
-* Fix: on multisite with Burst network activated, the endpoint incorrectly did not detect Burst as active, which prevents tracking from occurring.
+* Fix: on multisite with Burst network activated, the endpoint incorrectly did not detect Burst as active, which prevents tracking from occuring.
 
 = 2.2.6.1 =
 * Fix: remove false positive notice about missing tables.

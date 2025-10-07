@@ -4,7 +4,7 @@ Tags: login url, login, wp admin, wp login, custom login
 Requires at least: 4.6
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 2.0.9
+Stable tag: 2.0.10
 License: GPLv2 or later
 
 Do you want to secure and customize the WordPress login page? Download the All in One Login plugin for login page security and customization.
@@ -260,8 +260,12 @@ Please report security bugs found in the source code of the Change wp-admin logi
 
 
 == Changelog ==
+= 2.0.10 –  Oct 06, 2025 =
+* Tweak – Separated Social Login in navigation and added Pro banner.
+* Improvement – Revamped Google reCAPTCHA and restructured it into a multi-step format.
+
 = 2.0.9 - Aug 26, 2025 =
-Security – Enhanced login protection to better defend against repeated failed login attempts and brute-force attacks.
+* Security – Enhanced login protection to better defend against repeated failed login attempts and brute-force attacks.
 
 = 2.0.8 May 21, 2025 =
 * Updated feedback SDK to latest version.

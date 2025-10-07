@@ -4,7 +4,7 @@ Donate link: http://cff.dwbooster.com
 Tags: form,quote form,contact form,form builder,calculator form
 Requires at least: 3.0.5
 Tested up to: 6.8
-Stable tag: 5.3.99
+Stable tag: 5.4.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -456,6 +456,15 @@ A: There are multiple alternatives, by using the [PDF generator add-on](https://
 
 == Changelog ==
 
+= 5.4.0.1 =
+
+* This update resolves some compatibility issues that were introduced in the previous plugin update.
+* Revamps the JSON schema utilized by the AI form generator to improve the descriptions of controls and incorporate the Date/Timeslots one.
+* Updates the settings for Checkbox, Radio Button, Dropdown, and Calculated Fields to include comprehensive details regarding dependency configurations.
+* Refines container fields, such as Div, Fieldset, and Popup, to provide enhanced information about the fields distribution into columns.
+* Adjusts iframe attributes for forms loaded within iframes, aiming to enhance the overall accessibility score.
+* Initiates new JavaScript events to extend functionality and interactivity.
+
 = 5.3.99 =
 
 * Allows you to use url.param_name and var.variable_name as predefined field values to fill in fields with URL parameters and global JavaScript variables, respectively.
@@ -471,9 +480,3 @@ A: There are multiple alternatives, by using the [PDF generator add-on](https://
 * Improves AI form generation.
 * Fixes a minor issue with displaying field labels in the request cost attribute.
 * Supports the Revolut payment gateway (Platinum plugin distribution).
-
-= 5.3.96 =
-
-* Modifies the form builder to improve access to the basic and advanced settings of the fields.
-* It modifies the advanced settings in the container fields (div, fieldset, and popup) to provide more control over field designs.
-* It includes additional attributes in the script tags to ensure that the 'Complianz | GDPR/CCPA Cookie Consent' plugin does not block them.

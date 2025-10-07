@@ -3,7 +3,6 @@
 namespace Smush\Core\Resize;
 
 use Smush\Core\Keyword_Exclusions;
-use Smush\Core\Lazy_Load\Lazy_Load_Helper;
 use Smush\Core\Lazy_Load\Lazy_Load_Transform;
 use Smush\Core\Parser\Composite_Element;
 use Smush\Core\Parser\Element;
@@ -30,11 +29,6 @@ class Auto_Resizing_Transform implements Transform {
 	private $url_utils;
 
 	/**
-	 * @var Lazy_Load_Helper
-	 */
-	private $lazy_load_helper;
-
-	/**
 	 * Keyword Exclusions.
 	 *
 	 * @var Keyword_Exclusions
@@ -45,7 +39,6 @@ class Auto_Resizing_Transform implements Transform {
 		$this->settings      = Settings::get_instance();
 		$this->srcset_helper = Srcset_Helper::get_instance();
 		$this->url_utils     = new Url_Utils();
-		$this->lazy_load_helper = Lazy_Load_Helper::get_instance();
 	}
 
 	public function should_transform() {

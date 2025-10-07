@@ -647,6 +647,10 @@ class Apply
                 --color-primary-rgb: <?php echo esc_attr(wpdm_hex2rgb($primary)); ?>;
                 --color-primary-hover: <?php echo esc_attr( isset($uicolors['primary'])?$uicolors['primary_hover']:'#4a8eff' ); ?>;
                 --color-primary-active: <?php echo esc_attr( isset($uicolors['primary'])?$uicolors['primary_active']:'#4a8eff' ); ?>;
+                --clr-sec: <?php echo $secondary; ?>;
+                --clr-sec-rgb: <?php echo wpdm_hex2rgb($secondary); ?>;
+                --clr-sec-hover: <?php echo isset($uicolors['secondary'])?$uicolors['secondary_hover']:'#4a8eff'; ?>;
+                --clr-sec-active: <?php echo isset($uicolors['secondary'])?$uicolors['secondary_active']:'#4a8eff'; ?>;
                 --color-secondary: <?php echo esc_attr( $secondary ); ?>;
                 --color-secondary-rgb: <?php echo esc_attr(wpdm_hex2rgb($secondary)); ?>;
                 --color-secondary-hover: <?php echo esc_attr( isset($uicolors['secondary'])?$uicolors['secondary_hover']:'#4a8eff' ); ?>;

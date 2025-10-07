@@ -22,7 +22,6 @@
 
 			choices:[],
 			choicesVal:[],
-			choicesDep:[],
 			choiceSelected:"",
 
 			showDep:false,
@@ -249,6 +248,6 @@
 							str += '<div class="choicesEditDep"><span>If selected show:</span> <select class="dependencies" i="'+i+'" j="'+j+'" dname="'+this.name+'" dvalue="" aria-label="Dependent field"></select><div class="choice-ctrls"><a class="choice_addDep ui-icon ui-icon-circle-plus" i="'+i+'" j="'+j+'" title="Add another dependency."></a><a class="choice_removeDep ui-icon ui-icon-circle-minus" i="'+i+'" j="'+j+'" title="Delete this dependency."></a></div></div>';
 						}
 					}
-					return '<div class="choicesSet '+((this.showDep)?"show":"hide")+'"><label>Choices <a class="helpfbuilder dep" text="Dependencies are used to show/hide other fields depending of the option selected in this field.">help?</a> <a href="" class="showHideDependencies">'+((this.showDep)?"Hide":"Show")+' Dependencies</a></label><div><div class="t">Text</div><div class="t">Value</div><div class="clearer"></div></div>'+str+this.attributeToSubmit()+this.allowUntick()+'</div>';
+					return '<div class="choicesSet '+((this.showDep)?"show":"hide")+'"><label>Choices <a class="helpfbuilder dep video" href="https://youtu.be/s4FM59LC-H4?list=PLY-AOoHciOKgZQsqWfkQlHJ21sm3qPF9X" target="_blank">&#9654; help?</a> <a href="" class="showHideDependencies">'+((this.showDep)?"Hide":"Show")+' Dependencies</a></label><div><div class="t">Text</div><div class="t">Value</div><div class="clearer"></div></div>'+str+this.attributeToSubmit()+this.allowUntick()+'</div>';
 				}
 	});

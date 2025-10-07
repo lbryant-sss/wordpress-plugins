@@ -55,7 +55,7 @@ class Installer {
 		}
 
 		$version = get_site_option( 'wp-smush-version' );
-		self::maybe_mark_as_pre_3_12_6_site( $version );
+		self::maybe_mark_as_pre_3_22_site( $version );
 
 		// Cache activated date time.
 		$event_name = ! empty( $version ) ? 'plugin_activated' : 'plugin_installed';
@@ -66,7 +66,6 @@ class Installer {
 		}
 
 		Settings::get_instance()->initial_default_site_settings();
-		$settings = Settings::get_instance()->get();
 
 		// If the version is not saved or if the version is not same as the current version,.
 		if ( ! $version || WP_SMUSH_VERSION !== $version ) {
@@ -79,7 +78,7 @@ class Installer {
 				)
 			); // db call ok; no-cache ok.
 
-			if ( $results || ( isset( $settings['auto'] ) && false !== $settings['auto'] ) ) {
+			if ( $results || $version ) {
 				update_site_option( 'wp-smush-install-type', 'existing' );
 			}
 
@@ -111,7 +110,7 @@ class Installer {
 		if ( false === $version ) {
 			self::smush_activated();
 		} else {
-			self::maybe_mark_as_pre_3_12_6_site( $version );
+			self::maybe_mark_as_pre_3_22_site( $version );
 		}
 
 		if ( false !== $version && WP_SMUSH_VERSION !== $version ) {
@@ -319,14 +318,14 @@ class Installer {
 		}
 	}
 
-	private static function maybe_mark_as_pre_3_12_6_site( $version ) {
-		if ( ! $version || version_compare( $version, '3.12.0', '<' ) || false !== get_site_option( 'wp_smush_pre_3_12_6_site' ) ) {
+	private static function maybe_mark_as_pre_3_22_site( $version ) {
+		if ( ! $version || false !== get_site_option( 'wp_smush_pre_3_22_site' ) ) {
 			return;
 		}
-		if ( version_compare( $version, '3.12.5', '>' ) ) {
+		if ( version_compare( $version, '3.21.1', '>' ) ) {
 			$version = 0;
 		}
-		update_site_option( 'wp_smush_pre_3_12_6_site', $version );
+		update_site_option( 'wp_smush_pre_3_22_site', $version );
 	}
 
 	private static function regenerate_preset_configs_before_3_16_0() {

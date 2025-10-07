@@ -1,5 +1,14 @@
 == Changelog ==
 
+= 5.4.0.1 =
+
+* This update resolves some compatibility issues that were introduced in the previous plugin update.
+* Revamps the JSON schema utilized by the AI form generator to improve the descriptions of controls and incorporate the Date/Timeslots one.
+* Updates the settings for Checkbox, Radio Button, Dropdown, and Calculated Fields to include comprehensive details regarding dependency configurations.
+* Refines container fields, such as Div, Fieldset, and Popup, to provide enhanced information about the fields distribution into columns.
+* Adjusts iframe attributes for forms loaded within iframes, aiming to enhance the overall accessibility score.
+* Initiates new JavaScript events to extend functionality and interactivity.
+
 = 5.3.99 =
 
 * Allows you to use url.param_name and var.variable_name as predefined field values to fill in fields with URL parameters and global JavaScript variables, respectively.
@@ -961,63 +970,3 @@
 * Modifies the module that parses the form.
 * Fixes a minor issue with the fields list in the submissions data source settings (Developer and Platinum plugin versions).
 * Modifies the PayPal Checkout integration (Platinum plugin version).
-
-= 5.1.59 =
-
-* Modifies the PDFPAGESNUMBER to use PDF-JS API.
-* Improves JS modules.
-* Fixes a minor issue in the Captcha module.
-* Improves the WooCommerce add-on (Developer and Platinum plugin versions).
-* Modifies the SagePay integration (Platinum plugin version).
-
-= 5.1.58 =
-
-* Prevent conflicts with other distributions of the plugin.
-
-= 1.2.57 =
-
-* Minor changes in the controls' appearance.
-* Implements the resize popup feature.
-* Fixes an issue in Select2 dropdown fields with long choices' texts.
-* Improves the plugin security by sanitizing and escaping the cp_ref_page parameter (Professional, Developer, and Platinum versions). Thanks to Adam Goodlin, Wordfence Customer Support Engineer.
-
-= 1.2.56 =
-
-* Removes deprecated JS code.
-* Resolved a dependency issue that occurs when there are more than ten forms inserted on a single page.
-* Fixes a warning in the notification emails module (Professional, Developer, and Platinum versions)
-* Modifies the MailPoet add-on (Platinum version)
-
-= 1.2.55 =
-
-* Improves the plugin security. Special thanks to security researcher Rafie Muhammad (Patchstack)
-
-= 1.2.54 =
-
-* Improves the HTML and CSS editors in the "HTML Content" fields and the "Customize Form Design" attribute, respectively.
-* Modifies the "Upload File" control to allow asking for the number of selected files. Ex. fieldname1|r.length
-* Modifies the Popup control to allow dragging the popup window to a different position.
-* Implements the COPYHTML and COPYTEXT operations.
-* Fixes an issue in the module that assigns the default fields' values when the form has active the delay evaluation of the equations.
-
-= 1.2.53 =
-
-* Improves the plugin security. Special thanks to Tiffany Tyson, Customer Support Engineer at WordFence. Pay attention to users who pass additional attributes through the form shortcode. In previous plugin versions, the attributes were converted as Javascript variables with global scope. For example, in shortcodes like [CP_CALCULATED_FIELDS id="1" custom_attr="234"], the plugin created the custom_attr variable with value 234, and you could use it directly in the equations as custom_attr*fieldname1. However, this feature hides a serious problem. You could overwrite global variables like window or document. The current plugin update generates the variable as a property of the cff_var object, and you should use it as cff_var['custom_attr'] or cff_var.custom_attr
-
-The previous code example must be overwritten as cff_var['custom_attr']*fieldname1
-* Modifies the RESETFORM operation.
-* The build button supports Ctrl+click to open forms builder on another tab or window.
-* Implements the Developer Notes attribute in the forms controls to display notes in the forms builder only and help the development of complex forms.
-* Fixes an issue in the Popup control.
-* Modifies the processing of the parameters in the SERVER-SIDE equations (Developer and Platinum plugin versions).
-
-= 1.2.52 =
-= 1.2.51 =
-
-* Replaces jQuery deprecated functions and events.
-* Modifies the equations processing.
-* Fixes an issue with DS controls and SERVER-SIDE equations (Developer and Platinum plugin versions).
-
-= 1.2.50 =
-
-* Fixes an issue with the Readonly attribute in Checkbox, Radio Button, Checkbox DS, and Radion Button DS controls.

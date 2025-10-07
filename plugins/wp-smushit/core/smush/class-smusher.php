@@ -650,10 +650,11 @@ class Smusher {
 	 * @return void
 	 */
 	private function add_error( $size_key, $code, $message, $data = array() ) {
+		$size_key_format = empty( $size_key ) ? '' : "[$size_key] ";
 		// Log the error
-		$this->logger->error( "[$size_key] $message" );
+		$this->logger->error( $size_key_format . $message );
 		// Add the error
-		$this->errors->add( $code, "[$size_key] $message" );
+		$this->errors->add( $code, $size_key_format . $message );
 
 		if ( ! empty( $data ) ) {
 			$this->errors->add_data( $data, $code );

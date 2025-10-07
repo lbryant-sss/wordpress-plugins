@@ -200,7 +200,7 @@ $pro_features        = array(
 		<# if ( data.last ) { #>
 			<# if ( 'pro_upsell' === data.slide ) { #>
 				<div class="smush-onboarding-buttons">
-					<div class="smush-onboarding-buttons-inner">
+					<div class="smush-onboarding-buttons-group">
 						<a class="sui-button sui-button-blue smush-btn-pro-upsell" target="_blank" href="<?php echo esc_url( $upsell_url ); ?>">
 							<?php
 							/* translators: %s: plugin discount */
@@ -208,14 +208,34 @@ $pro_features        = array(
 							?>
 						</a>
 						<button type="submit" class="sui-button sui-button-grey sui-button-icon-left" data-modal-close="">
-							<?php esc_html_e( 'Complete Setup', 'wp-smushit' ); ?>
+							<span class="sui-button-text-default">
+								<?php esc_html_e( 'Complete Setup', 'wp-smushit' ); ?>
+							</span>
+
+							<span class="sui-button-text-onload">
+								<span
+									class="sui-icon-loader sui-loading"
+									aria-hidden="true"
+								></span>
+								<?php esc_html_e( 'Complete Setup', 'wp-smushit' ); ?>
+							</span>
 						</button>
 					</div>
 				</div>
 			<# } else { #>
 				<button type="submit" class="sui-button sui-button-blue sui-button-icon-left" data-modal-close="">
+					<span class="sui-button-text-default">
 					<i class="sui-icon-check" aria-hidden="true"> </i>
-					<?php esc_html_e( 'Finish setup wizard', 'wp-smushit' ); ?>
+						<?php esc_html_e( 'Finish setup wizard', 'wp-smushit' ); ?>
+					</span>
+
+					<span class="sui-button-text-onload">
+						<span
+							class="sui-icon-loader sui-loading"
+							aria-hidden="true"
+						></span>
+						<?php esc_html_e( 'Finish setup wizard', 'wp-smushit' ); ?>
+					</span>
 				</button>
 			<# } #>
 		<# } else if ( data.first_slide !== data.slide && ! data.last ) { #>

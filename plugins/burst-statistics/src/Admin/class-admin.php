@@ -59,6 +59,8 @@ class Admin {
 		add_action( 'burst_after_saved_fields', [ $this, 'create_js_file' ], 10, 1 );
 		add_action( 'burst_daily', [ $this, 'create_js_file' ] );
 		add_action( 'burst_daily', [ $this, 'detect_malicious_data' ] );
+		add_action( 'burst_dismiss_task', [ $this, 'dismiss_malicious_data_notice' ], 10, 1 );
+		add_action( 'burst_dismiss_task', [ $this, 'dismiss_php_error_notice' ], 10, 1 );
 		add_action( 'wp_initialize_site', [ $this, 'create_js_file' ], 10, 1 );
 		add_action( 'admin_init', [ $this, 'activation' ] );
 		add_action( 'burst_run_database_upgrade_single_event', [ $this, 'run_table_init_hook' ], 10, 1 );
@@ -68,6 +70,7 @@ class Admin {
 		add_action( 'upgrader_process_complete', [ $this, 'after_plugin_upgrade' ], 10, 2 );
 		add_action( 'wp_initialize_site', [ $this, 'run_table_init_hook' ], 10, 1 );
 		add_action( 'burst_upgrade_before', [ $this, 'run_table_init_hook' ], 10, 1 );
+		add_action( 'burst_cron_table_upgrade', [ $this, 'run_table_init_hook' ], 10, 1 );
 		add_action( 'burst_daily', [ $this, 'validate_tasks' ] );
 		add_action( 'burst_validate_tasks', [ $this, 'validate_tasks' ] );
 		add_action( 'plugins_loaded', [ $this, 'init_wpcli' ] );
@@ -75,6 +78,7 @@ class Admin {
 		add_action( 'burst_daily', [ $this, 'test_database_tables' ] );
 		add_action( 'burst_attempt_database_fix', [ $this, 'test_database_tables' ] );
 		add_action( 'burst_weekly', [ $this, 'long_term_user_deal' ] );
+		add_action( 'burst_weekly', [ $this, 'cleanup_bf_dismissed_tasks' ] );
 		add_action( 'burst_daily', [ $this, 'cleanup_php_error_notices' ] );
 
 		$upgrade = new Upgrade();
@@ -113,6 +117,16 @@ class Admin {
 		if ( defined( 'BURST_BLUEPRINT' ) && ! get_option( 'burst_demo_data_installed' ) ) {
 			add_action( 'init', [ $this, 'install_demo_data' ] );
 			update_option( 'burst_demo_data_installed', true, false );
+		}
+	}
+
+	/**
+	 * Remove CM and BF tasks from the permanently dismissed array if it is february.
+	 */
+	public function cleanup_bf_dismissed_tasks(): void {
+		if ( (int) gmdate( 'n' ) === 2 ) {
+			\Burst\burst_loader()->admin->tasks->undismiss_task( 'bf_notice' );
+			\Burst\burst_loader()->admin->tasks->undismiss_task( 'cm_notice' );
 		}
 	}
 
@@ -223,6 +237,18 @@ class Admin {
 				delete_option( 'burst_cleanup_uid' );
 				delete_option( 'burst_cleanup_uid_visits' );
 			}
+		}
+	}
+
+	/**
+	 * Clean up the notification data when the task has been dismissed instead of fixed.
+	 */
+	public function dismiss_malicious_data_notice( string $task_id ): void {
+		if ( $task_id === 'malicious_data_removal' ) {
+			delete_option( 'burst_cleanup_data_detected_time' );
+			delete_option( 'burst_clean_data' );
+			delete_option( 'burst_cleanup_uid' );
+			delete_option( 'burst_cleanup_uid_visits' );
 		}
 	}
 
@@ -368,6 +394,17 @@ class Admin {
 
 		$x_days_ago = time() - 7 * DAY_IN_SECONDS;
 		if ( $last_detected < $x_days_ago ) {
+			delete_option( 'burst_php_error_time' );
+			delete_option( 'burst_php_error_detected' );
+			delete_option( 'burst_php_error_count' );
+		}
+	}
+
+	/**
+	 * Clean up the notification data when the task has been dismissed instead of fixed.
+	 */
+	public function dismiss_php_error_notice( string $task_id ): void {
+		if ( $task_id === 'php_error_detected' ) {
 			delete_option( 'burst_php_error_time' );
 			delete_option( 'burst_php_error_detected' );
 			delete_option( 'burst_php_error_count' );
@@ -590,7 +627,6 @@ class Admin {
 		if ( ! isset( $upgrader_object->new_plugin_data ) || $upgrader_object->new_plugin_data['TextDomain'] !== 'burst-statistics' ) {
 			return;
 		}
-
 		$this->run_table_init_hook();
 		$this->create_js_file();
 	}
@@ -613,7 +649,6 @@ class Admin {
 		if ( defined( 'BURST_UNINSTALLING' ) ) {
 			return;
 		}
-
 		set_transient( 'burst_running_upgrade_process', true, 30 );
 		do_action( 'burst_install_tables' );
 		// we need to run table creation across subsites as well.
@@ -764,43 +799,48 @@ class Admin {
 	}
 
 	/**
-	 * Check if the current day falls within the required date range (November 25, 00:00 to December 2, 23:59) based on GMT.
+	 * Check if the current day falls within the Black Friday week.
 	 */
 	public static function is_bf(): bool {
-		// Get current date and time in GMT as timestamp.
-		$current_date = strtotime( gmdate( 'Y-m-d H:i:s' ) );
+		// Use current GMT timestamp.
+		$now = time();
+		// Get current year.
+		$year = gmdate( 'Y' );
 
-		// Define the start and end dates for the range in GMT (including specific times).
-		$start_date = strtotime( 'November 24 2024 00:00:00 GMT' );
-		$end_date   = strtotime( 'December 1 2024 23:59:59 GMT' );
+		// Calculate Thanksgiving.
+		$thanksgiving = strtotime( "fourth thursday of november $year" );
+		// Black Friday is the day after Thanksgiving.
+		$black_friday = strtotime( '+1 day', $thanksgiving );
 
-		// Check if the current date and time falls within the date range.
-		if ( $current_date >= $start_date && $current_date <= $end_date ) {
-			return true;
-		}
+		// Monday before Black Friday.
+		$start = strtotime( '-4 days', $black_friday );
+		// Saturday after Black Friday, end of day.
+		$end = strtotime( '+1 day 23:59:59', $black_friday );
 
-		return false;
+		return ( $now >= $start && $now <= $end );
 	}
 
 	/**
-	 * If is Cyber Monday
+	 * Check if this is the Cyber Monday period.
 	 */
 	public static function is_cm(): bool {
-		// Get current date and time in GMT as timestamp.
-		$current_date = strtotime( gmdate( 'Y-m-d H:i:s' ) );
+		// Use current GMT timestamp.
+		$now = time();
+		// Get current year.
+		$year = gmdate( 'Y' );
 
-		// Define the start and end dates for the range in GMT (including specific times).
-		$start_date = strtotime( 'November 30 00:00:00 GMT' );
-		$end_date   = strtotime( 'December 2 23:59:59 GMT' );
+		// Calculate Thanksgiving.
+		$thanksgiving = strtotime( "fourth thursday of november $year" );
+		// Black Friday is the day after Thanksgiving.
+		$black_friday = strtotime( '+1 day', $thanksgiving );
 
-		// Check if the current date and time falls within the date range.
-		if ( $current_date >= $start_date && $current_date <= $end_date ) {
-			return true;
-		}
+		// Sunday after Black Friday.
+		$start = strtotime( '+2 days', $black_friday );
+		// Tuesday after Cyber Monday, end of day.
+		$end = strtotime( '+4 days 23:59:59', $black_friday );
 
-		return false;
+		return ( $now >= $start && $now <= $end );
 	}
-
 
 	/**
 	 * Add a button and thickbox to deactivate the plugin

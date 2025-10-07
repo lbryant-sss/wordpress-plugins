@@ -7,7 +7,7 @@ Author URI:        http://profiles.wordpress.org/flippercode/
 Author:            flippercode
 Requires at least: 3.4
 Tested up to: 6.8.1
-Stable tag: 4.8.4
+Stable tag: 4.8.5
 Requires PHP: 5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -231,6 +231,11 @@ Contact us at [Support](https://weplugins.com/support/).
 
 
 == Changelog ==
+
+= 4.8.5 =
+* Add : Fix Autosuggest selected address displays the formatted address.
+* Add : Fix the frontend Font Awesome console error.
+* Add : Fix the category parameter handling in the shortcode.
 
 = 4.8.4 =
 * Add : API Key missing message display if opensource provider selected fixed.

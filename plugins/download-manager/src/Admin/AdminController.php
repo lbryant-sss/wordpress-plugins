@@ -95,7 +95,10 @@ class AdminController {
 
             wp_enqueue_script('wpdm-admin-js' );
 
-            wp_enqueue_script('wpdm-vue', WPDM_BASE_URL.'assets/js/vue.js');
+			if(wpdm_query_var('page') == 'wpdm-settings' || wpdm_query_var('tab') == 'wpdm-asset-manager') {
+				wp_enqueue_script('wpdm-vue', WPDM_BASE_URL.'assets/js/vue.js');
+		    }
+
             wp_enqueue_script('wpdm-admin', WPDM_BASE_URL.'assets/js/wpdm-admin.js', array('jquery'));
 
 

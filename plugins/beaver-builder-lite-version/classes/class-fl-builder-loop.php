@@ -83,6 +83,17 @@ final class FLBuilderLoop {
 		add_filter( 'pre_handle_404', __CLASS__ . '::pre_404_pagination', 1, 2 );
 		add_filter( 'paginate_links', __CLASS__ . '::filter_paginate_links', 1 );
 		// add_filter( 'rewrite_rules_array', __CLASS__ . '::rewrite_rules_array' );
+
+		/**
+		 * Add Sort By Price to sort options if Woo is active.
+		 * @since 2.9
+		 */
+		add_filter( 'fl_builder_render_settings_field', function ( $field, $name, $settings ) {
+			if ( 'order_by' === $name && class_exists( 'woocommerce' ) ) {
+				$field['options']['woo_price'] = __( 'Sort By Price (Woo)', 'fl-builder' );
+			}
+			return $field;
+		}, 10, 3 );
 	}
 
 	/**
@@ -222,6 +233,10 @@ final class FLBuilderLoop {
 			'settings'            => $settings,
 		);
 
+		if ( 'woo_price' === $args['orderby'] ) {
+			$args['orderby']  = 'meta_value_num';
+			$args['meta_key'] = '_price';
+		}
 		// Set query keywords if specified in the settings.
 		if ( isset( $settings->keyword ) && ! empty( $settings->keyword ) ) {
 			$args['s'] = $settings->keyword;

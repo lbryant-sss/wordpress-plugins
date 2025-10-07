@@ -124,6 +124,11 @@
     "fallback": "sans-serif"
   }
 }, {
+  "Alan Sans": {
+    "variants": ["300", "regular", "500", "600", "700", "800", "900"],
+    "fallback": "sans-serif"
+  }
+}, {
   "Alata": {
     "variants": ["regular"],
     "fallback": "sans-serif"
@@ -577,6 +582,11 @@
   "Asar": {
     "variants": ["regular"],
     "fallback": "serif"
+  }
+}, {
+  "Asimovian": {
+    "variants": ["regular"],
+    "fallback": "sans-serif"
   }
 }, {
   "Asset": {
@@ -1044,7 +1054,22 @@
     "fallback": "sans-serif"
   }
 }, {
+  "Bitcount Grid Double Ink": {
+    "variants": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"],
+    "fallback": "sans-serif"
+  }
+}, {
   "Bitcount Grid Single": {
+    "variants": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"],
+    "fallback": "sans-serif"
+  }
+}, {
+  "Bitcount Grid Single Ink": {
+    "variants": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"],
+    "fallback": "sans-serif"
+  }
+}, {
+  "Bitcount Ink": {
     "variants": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"],
     "fallback": "sans-serif"
   }
@@ -1054,12 +1079,27 @@
     "fallback": "sans-serif"
   }
 }, {
+  "Bitcount Prop Double Ink": {
+    "variants": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"],
+    "fallback": "sans-serif"
+  }
+}, {
   "Bitcount Prop Single": {
     "variants": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"],
     "fallback": "sans-serif"
   }
 }, {
+  "Bitcount Prop Single Ink": {
+    "variants": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"],
+    "fallback": "sans-serif"
+  }
+}, {
   "Bitcount Single": {
+    "variants": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"],
+    "fallback": "sans-serif"
+  }
+}, {
+  "Bitcount Single Ink": {
     "variants": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"],
     "fallback": "sans-serif"
   }
@@ -1554,6 +1594,11 @@
     "fallback": "cursive"
   }
 }, {
+  "Chiron GoRound TC": {
+    "variants": ["200", "300", "regular", "500", "600", "700", "800", "900"],
+    "fallback": "sans-serif"
+  }
+}, {
   "Chiron Hei HK": {
     "variants": ["200", "300", "regular", "500", "600", "700", "800", "900", "200italic", "300italic", "italic", "500italic", "600italic", "700italic", "800italic", "900italic"],
     "fallback": "sans-serif"
@@ -1747,6 +1792,16 @@
   "Cormorant Upright": {
     "variants": ["300", "regular", "500", "600", "700"],
     "fallback": "serif"
+  }
+}, {
+  "Cossette Texte": {
+    "variants": ["regular", "700"],
+    "fallback": "sans-serif"
+  }
+}, {
+  "Cossette Titre": {
+    "variants": ["regular", "700"],
+    "fallback": "sans-serif"
   }
 }, {
   "Courgette": {
@@ -2232,6 +2287,16 @@
   "Epilogue": {
     "variants": ["100", "200", "300", "regular", "500", "600", "700", "800", "900", "100italic", "200italic", "300italic", "italic", "500italic", "600italic", "700italic", "800italic", "900italic"],
     "fallback": "sans-serif"
+  }
+}, {
+  "Epunda Sans": {
+    "variants": ["300", "regular", "500", "600", "700", "800", "900", "300italic", "italic", "500italic", "600italic", "700italic", "800italic", "900italic"],
+    "fallback": "sans-serif"
+  }
+}, {
+  "Epunda Slab": {
+    "variants": ["300", "regular", "500", "600", "700", "800", "900", "300italic", "italic", "500italic", "600italic", "700italic", "800italic", "900italic"],
+    "fallback": "serif"
   }
 }, {
   "Erica One": {
@@ -3979,6 +4044,11 @@
     "fallback": "sans-serif"
   }
 }, {
+  "Libertinus Keyboard": {
+    "variants": ["regular"],
+    "fallback": "sans-serif"
+  }
+}, {
   "Libertinus Math": {
     "variants": ["regular"],
     "fallback": "sans-serif"
@@ -3997,6 +4067,11 @@
   "Libertinus Serif": {
     "variants": ["regular", "italic", "600", "600italic", "700", "700italic"],
     "fallback": "serif"
+  }
+}, {
+  "Libertinus Serif Display": {
+    "variants": ["regular"],
+    "fallback": "sans-serif"
   }
 }, {
   "Libre Barcode 128": {
@@ -7815,7 +7890,12 @@
   }
 }, {
   "SUSE": {
-    "variants": ["100", "200", "300", "regular", "500", "600", "700", "800"],
+    "variants": ["100", "200", "300", "regular", "500", "600", "700", "800", "900", "100italic", "200italic", "300italic", "italic", "500italic", "600italic", "700italic", "800italic", "900italic"],
+    "fallback": "sans-serif"
+  }
+}, {
+  "SUSE Mono": {
+    "variants": ["100", "200", "300", "regular", "500", "600", "700", "800", "100italic", "200italic", "300italic", "italic", "500italic", "600italic", "700italic", "800italic"],
     "fallback": "sans-serif"
   }
 }, {
@@ -8149,6 +8229,11 @@
     "fallback": "sans-serif"
   }
 }, {
+  "Sirivennela": {
+    "variants": ["regular"],
+    "fallback": "sans-serif"
+  }
+}, {
   "Six Caps": {
     "variants": ["regular"],
     "fallback": "sans-serif"
@@ -8454,6 +8539,11 @@
     "fallback": "serif"
   }
 }, {
+  "Story Script": {
+    "variants": ["regular"],
+    "fallback": "sans-serif"
+  }
+}, {
   "Strait": {
     "variants": ["regular"],
     "fallback": "sans-serif"
@@ -8546,6 +8636,16 @@
 }, {
   "Syne Tactile": {
     "variants": ["regular"],
+    "fallback": "sans-serif"
+  }
+}, {
+  "TASA Explorer": {
+    "variants": ["regular", "500", "600", "700", "800"],
+    "fallback": "sans-serif"
+  }
+}, {
+  "TASA Orbiter": {
+    "variants": ["regular", "500", "600", "700", "800"],
     "fallback": "sans-serif"
   }
 }, {
@@ -8732,6 +8832,11 @@
   "Tiro Telugu": {
     "variants": ["regular", "italic"],
     "fallback": "serif"
+  }
+}, {
+  "Tirra": {
+    "variants": ["regular", "500", "600", "700", "800", "900"],
+    "fallback": "sans-serif"
   }
 }, {
   "Titan One": {
@@ -8951,6 +9056,11 @@
 }, {
   "Vazirmatn": {
     "variants": ["100", "200", "300", "regular", "500", "600", "700", "800", "900"],
+    "fallback": "sans-serif"
+  }
+}, {
+  "Vend Sans": {
+    "variants": ["300", "regular", "500", "600", "700", "300italic", "italic", "500italic", "600italic", "700italic"],
     "fallback": "sans-serif"
   }
 }, {
@@ -9281,6 +9391,21 @@
 }, {
   "Zain": {
     "variants": ["200", "300", "300italic", "regular", "italic", "700", "800", "900"],
+    "fallback": "sans-serif"
+  }
+}, {
+  "Zalando Sans": {
+    "variants": ["200", "300", "regular", "500", "600", "700", "800", "900", "200italic", "300italic", "italic", "500italic", "600italic", "700italic", "800italic", "900italic"],
+    "fallback": "sans-serif"
+  }
+}, {
+  "Zalando Sans Expanded": {
+    "variants": ["200", "300", "regular", "500", "600", "700", "800", "900", "200italic", "300italic", "italic", "500italic", "600italic", "700italic", "800italic", "900italic"],
+    "fallback": "sans-serif"
+  }
+}, {
+  "Zalando Sans SemiExpanded": {
+    "variants": ["200", "300", "regular", "500", "600", "700", "800", "900", "200italic", "300italic", "italic", "500italic", "600italic", "700italic", "800italic", "900italic"],
     "fallback": "sans-serif"
   }
 }, {

@@ -93,7 +93,7 @@ class CDN_Settings_Ui_Controller extends Controller {
 					printf(
 						/* translators: %1$s - Open the link <a>, %2$s - closing link tag */
 						esc_html__( 'For any non-media library uploads, you can still use the %1$sDirectory Smush%2$s feature to compress them, they just won’t be served from the CDN.', 'wp-smushit' ),
-						'<a href="' . esc_url( network_admin_url( 'admin.php?page=smush-directory' ) ) . '">',
+						'<a href="' . esc_url( network_admin_url( 'admin.php?page=smush-bulk#directory_smush-settings-row' ) ) . '">',
 						'</a>'
 					);
 					break;

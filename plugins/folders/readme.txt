@@ -7,7 +7,7 @@ Stable tag: 3.1.3
 Plugin URI: https://premio.io/downloads/folders/
 License: GPLv3
 
-🔥 With the Folders WordPress plugin create unlimited folders, organize & manage your Media Library files, Pages & Posts in folders 📁
+Create unlimited folders with the Folders WordPress plugin, organize & manage your Media Library files, Pages & Posts in folders 📁
 
 == Description ==
 

@@ -20,6 +20,9 @@ class HTMegaWrapperLink_Elementor {
 		add_action( 'elementor/element/container/section_layout/after_section_end', array( $this, 'register_controls' ), 1 );
 		add_action( 'elementor/element/common/_section_style/after_section_end', array( $this, 'register_controls' ), 1 );
 		add_action( 'elementor/frontend/before_render' ,array( $this, 'before_render' ), 1 );
+
+		// Add this line to enqueue scripts properly
+		add_action( 'elementor/frontend/after_enqueue_styles', array( $this, 'enqueue_scripts' ) );
     }
 	/**
 	 * Enqueue scripts.
@@ -29,10 +32,16 @@ class HTMegaWrapperLink_Elementor {
 	 * @since 2.0.2
 	 * @access public
 	 */
-	public static function enqueue_scripts() {
-        // JS File
-        wp_enqueue_script( 'htmega-wrapper-link', HTMEGA_ADDONS_PL_URL . 'extensions/wrapper-link/assets/js/htmega-wrapper-link.js', array('jquery'),HTMEGA_VERSION );
+	public function enqueue_scripts() {
+		// Only load on pages with Elementor content
 
+			wp_enqueue_script( 
+				'htmega-wrapper-link', 
+				HTMEGA_ADDONS_PL_URL . 'extensions/wrapper-link/assets/js/htmega-wrapper-link.js', 
+				array('jquery'), 
+				HTMEGA_VERSION,
+				true 
+			);
 	}
 
 	/**
@@ -83,9 +92,8 @@ class HTMegaWrapperLink_Elementor {
 	 */
 	public function before_render( $element ) {
 		$htmega_wrapper_link = $element->get_settings_for_display( 'htmega_element_link' );
-
 		if ( $htmega_wrapper_link && ! empty( $htmega_wrapper_link['url'] ) ) {
-			$htmega_wrapper_link['url'] =  esc_url( $htmega_wrapper_link['url'] );
+			$htmega_wrapper_link['url'] = esc_url( $htmega_wrapper_link['url'] );
 			$element->add_render_attribute(
 				'_wrapper',
 				[
@@ -94,8 +102,6 @@ class HTMegaWrapperLink_Elementor {
 					'class' => 'htmega-element-link'
 				]
 			);
-
-			$this->enqueue_scripts();
 		}
 	}
 }

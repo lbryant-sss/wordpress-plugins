@@ -6,7 +6,7 @@ Tested up to: 6.8
 Stable tag: 2.8.3
 License: GPLv3
 
-🔔 Create a welcome notification bar for your website. Also, My Sticky Bar plugin can make your menu or header sticky to the top when scrolled 📌
+Create a welcome notification bar for your website. Also, My Sticky Bar plugin can make your menu or header sticky to the top when scrolled 📌
 
 == Description ==
 

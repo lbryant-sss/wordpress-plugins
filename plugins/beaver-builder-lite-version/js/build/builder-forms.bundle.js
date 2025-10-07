@@ -532,15 +532,16 @@ var initSection = function initSection() {
   var wrap = jQuery(this);
   var form = wrap.closest('form.fl-builder-settings');
   var tab = wrap.closest('.fl-builder-settings-tab');
+  var tabId = tab.attr('id').replace('fl-builder-settings-tab-', '');
   var button = wrap.find('.fl-builder-settings-section-header');
-  var key = wrap.attr('id').replace('fl-builder-settings-section-', '');
+  var sectionId = wrap.attr('id').replace('fl-builder-settings-section-', '');
   var formGroup = form.attr('data-form-group');
   var formId = form.attr('data-form-id');
   if ('fl-builder-settings-tab-advanced' === tab.attr('id')) {
     formGroup = 'general';
     formId = 'advanced';
   }
-  var collapsed = getSectionToggleCache(formGroup, formId, key);
+  var collapsed = getSectionToggleCache(formGroup, formId, tabId, sectionId);
   if (null !== collapsed) {
     if (collapsed) {
       wrap.addClass('fl-builder-settings-section-collapsed');
@@ -551,35 +552,38 @@ var initSection = function initSection() {
   button.on('click', function () {
     if (wrap.hasClass('fl-builder-settings-section-collapsed')) {
       wrap.removeClass('fl-builder-settings-section-collapsed');
-      setSectionToggleCache(formGroup, formId, key, false);
+      setSectionToggleCache(formGroup, formId, tabId, sectionId, false);
     } else {
       wrap.addClass('fl-builder-settings-section-collapsed');
-      setSectionToggleCache(formGroup, formId, key, true);
+      setSectionToggleCache(formGroup, formId, tabId, sectionId, true);
     }
   });
 };
-var getSectionToggleCache = function getSectionToggleCache(formGroup, formId, key) {
+var getSectionToggleCache = function getSectionToggleCache(formGroup, formId, tabId, sectionId) {
+  var _cache;
   var cache = localStorage.getItem('fl-builder-settings-sections');
   if (!cache) {
     return null;
   } else {
     cache = JSON.parse(cache);
   }
-  if (cache[formGroup] && cache[formGroup][formId] && cache[formGroup][formId][key] !== undefined) {
-    return cache[formGroup][formId][key];
+  if (((_cache = cache) === null || _cache === void 0 || (_cache = _cache[formGroup]) === null || _cache === void 0 || (_cache = _cache[formId]) === null || _cache === void 0 || (_cache = _cache[tabId]) === null || _cache === void 0 ? void 0 : _cache[sectionId]) !== undefined) {
+    return cache[formGroup][formId][tabId][sectionId];
   }
   return null;
 };
-var setSectionToggleCache = function setSectionToggleCache(formGroup, formId, key, value) {
+var setSectionToggleCache = function setSectionToggleCache(formGroup, formId, tabId, sectionId, value) {
+  var _cache2, _cache2$formGroup, _cache$formGroup, _cache$formGroup$form, _cache$formGroup$form2, _cache$formGroup$form3;
   var cache = localStorage.getItem('fl-builder-settings-sections');
   if (!cache) {
     cache = {};
   } else {
     cache = JSON.parse(cache);
   }
-  cache[formGroup] = cache[formGroup] || {};
-  cache[formGroup][formId] = cache[formGroup][formId] || {};
-  cache[formGroup][formId][key] = value;
+  (_cache2$formGroup = (_cache2 = cache)[formGroup]) !== null && _cache2$formGroup !== void 0 ? _cache2$formGroup : _cache2[formGroup] = {};
+  (_cache$formGroup$form = (_cache$formGroup = cache[formGroup])[formId]) !== null && _cache$formGroup$form !== void 0 ? _cache$formGroup$form : _cache$formGroup[formId] = {};
+  (_cache$formGroup$form3 = (_cache$formGroup$form2 = cache[formGroup][formId])[tabId]) !== null && _cache$formGroup$form3 !== void 0 ? _cache$formGroup$form3 : _cache$formGroup$form2[tabId] = {};
+  cache[formGroup][formId][tabId][sectionId] = value;
   localStorage.setItem('fl-builder-settings-sections', JSON.stringify(cache));
 };
 
