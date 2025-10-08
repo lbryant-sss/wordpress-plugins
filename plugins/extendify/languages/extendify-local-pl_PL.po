@@ -65,14 +65,14 @@ msgstr "Wstaw wzorzec"
 msgid "Extendify Library User Settings"
 msgstr "Ustawienia użytkownika biblioteki Extendify"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Draft/components/ConsentSidebar.jsx:23
 #: src/HelpCenter/pages/AIChat.jsx:174
 msgid "Accept"
 msgstr "Zaakceptuj"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: public/build/extendify-launch-0316c4d49fb231515d63.js:8
 #: src/Draft/components/ConsentSidebar.jsx:12
@@ -96,8 +96,8 @@ msgstr "Wybraliśmy już najpopularniejsze strony odpowiednie dla Twojego typu s
 msgid "Pick the pages to add to your website"
 msgstr "Wybierz strony, które chcesz dodać do swojej strony internetowej"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-launch-0316c4d49fb231515d63.js:8
 #: src/Agent/components/redirects/RedirectFontsVariations.jsx:12
 #: src/Agent/components/redirects/RedirectThemeVariations.jsx:17
@@ -156,48 +156,48 @@ msgstr "Personalizowanie Twojego doświadczenia"
 msgid "Populating data"
 msgstr "Wypełnianie danymi"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/api/Data.js:50
 #: src/Draft/api/Data.js:88
 msgid "Service temporarily unavailable"
 msgstr "Usługa tymczasowo niedostępna"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/InsertMenu.jsx:250
 msgid "Discard"
 msgstr "Odrzuć"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/InsertMenu.jsx:242
 msgid "Try again"
 msgstr "Spróbuj ponownie"
 
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:8
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Assist/tasks/images/AiWritingAssistantMarkup.jsx:196
 #: src/Draft/app.js:23
 #: src/Draft/app.js:28
 msgid "AI Tools"
 msgstr "Narzędzia AI"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/InsertMenu.jsx:194
 msgid "Replace selected block text"
 msgstr "Zastąp tekst wybranego bloku"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/Input.jsx:49
 msgid "Ask AI to generate text"
 msgstr "Poproś AI o wygenerowanie tekstu"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/Input.jsx:46
 msgid "AI is writing..."
 msgstr "AI pisze..."
 
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:8
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Assist/tasks/images/AiWritingAssistantMarkup.jsx:150
 #: src/Assist/tasks/images/AiWritingAssistantMarkup.jsx:246
 #: src/Draft/components/EditMenu.jsx:52
@@ -206,8 +206,8 @@ msgid "Simplify language"
 msgstr "Uprość język"
 
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:8
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Assist/tasks/images/AiWritingAssistantMarkup.jsx:158
 #: src/Assist/tasks/images/AiWritingAssistantMarkup.jsx:254
 #: src/Draft/components/EditMenu.jsx:62
@@ -216,8 +216,8 @@ msgid "Make longer"
 msgstr "Wydłuż"
 
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:8
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Assist/tasks/images/AiWritingAssistantMarkup.jsx:154
 #: src/Assist/tasks/images/AiWritingAssistantMarkup.jsx:250
 #: src/Draft/components/EditMenu.jsx:57
@@ -225,16 +225,16 @@ msgstr "Wydłuż"
 msgid "Make shorter"
 msgstr "Skróć"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/EditMenu.jsx:47
 #: src/Draft/components/ToolbarMenu.jsx:110
 msgid "Fix spelling & grammar"
 msgstr "Popraw pisownię i gramatykę"
 
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:8
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Assist/tasks/images/AiWritingAssistantMarkup.jsx:142
 #: src/Assist/tasks/images/AiWritingAssistantMarkup.jsx:238
 #: src/Draft/components/EditMenu.jsx:41
@@ -242,7 +242,7 @@ msgstr "Popraw pisownię i gramatykę"
 msgid "Improve writing"
 msgstr "Ulepsz swoje pisanie"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/DraftMenu.jsx:18
 msgid "Write a blog post about"
 msgstr "Napisz wpis na blogu na temat"
@@ -272,21 +272,21 @@ msgstr "Średnio zaawansowany"
 msgid "Beginner"
 msgstr "Początkujący"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:3
+#: public/build/extendify-agent-c6d61592dafe950df654.js:3
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:1
 #: src/Agent/components/Rating.jsx:48
 #: src/HelpCenter/components/ai-chat/Rating.jsx:47
 msgid "Rate that this answer was not helpful"
 msgstr "Oceń, że ta odpowiedź nie była pomocna"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:3
+#: public/build/extendify-agent-c6d61592dafe950df654.js:3
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:1
 #: src/Agent/components/Rating.jsx:28
 #: src/HelpCenter/components/ai-chat/Rating.jsx:27
 msgid "Rate that this answer was helpful"
 msgstr "Oceń odpowiedź jako pomocną"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:3
+#: public/build/extendify-agent-c6d61592dafe950df654.js:3
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:1
 #: src/Agent/components/Rating.jsx:27
 #: src/Agent/components/Rating.jsx:47
@@ -346,56 +346,56 @@ msgstr "Zwiń menu"
 msgid "Search for articles"
 msgstr "Szukaj artykułów"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/library-tour.js:100
 #: src/HelpCenter/tours/library-tour.js:100
 msgid "The selected pattern has been inserted into the page."
 msgstr "Wybrany wzorzec został wstawiony na stronę."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/library-tour.js:99
 #: src/HelpCenter/tours/library-tour.js:99
 msgid "View the Inserted Pattern"
 msgstr "Zobacz wstawiony wzorzec"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/library-tour.js:80
 #: src/HelpCenter/tours/library-tour.js:80
 msgid "Simply select any pattern you wish to insert into a page by clicking on it."
 msgstr "Wybierz dowolny wzorzec, który chcesz wstawić na stronę, klikając na niego."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/library-tour.js:79
 #: src/HelpCenter/tours/library-tour.js:79
 msgid "Select a Pattern"
 msgstr "Wybierz wzorzec"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/library-tour.js:54
 #: src/HelpCenter/tours/library-tour.js:54
 msgid "Click on any pattern category to refine the selection."
 msgstr "Kliknij dowolną kategorię wzorca, aby zawęzić wybór."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/library-tour.js:53
 #: src/HelpCenter/tours/library-tour.js:53
 msgid "Filter Patterns"
 msgstr "Wzorce filtrów"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/library-tour.js:32
 #: src/HelpCenter/tours/library-tour.js:32
 msgid "The Extendify pattern library can be opened by clicking the button to the left."
 msgstr "Bibliotekę wzorców Extendify można otworzyć, klikając przycisk znajdujący się po lewej stronie."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/library-tour.js:31
 #: src/HelpCenter/tours/library-tour.js:31
@@ -511,21 +511,21 @@ msgstr "Domyślny kokpit WordPress będzie wyposażony w pewne ogólne metryki s
 msgid "Access the Site Assistant at any time."
 msgstr "Uzyskaj dostęp do Asystenta strony w dowolnym momencie."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/site-assistant.js:107
 #: src/HelpCenter/tours/site-assistant.js:127
 msgid "Come back to the Site Assistant any time by clicking the menu item."
 msgstr "Wróć do Asystenta strony w dowolnym momencie, klikając element menu."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/site-assistant.js:59
 #: src/HelpCenter/tours/site-assistant.js:58
 msgid "See our personalized recommendations for you that will help you accomplish your goals."
 msgstr "Zobacz przygotowane dla Ciebie, spersonalizowane rekomendacje, które pomogą Ci osiągnąć Twoje cele."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/site-assistant.js:37
 #: src/HelpCenter/tours/site-assistant.js:36
@@ -539,7 +539,7 @@ msgstr "Z łatwością uzyskaj dostęp do wybranych, najczęściej używanych el
 msgid "Knowledge Base"
 msgstr "Baza wiedzy"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/site-assistant.js:16
 #: src/HelpCenter/tours/site-assistant.js:15
@@ -564,7 +564,7 @@ msgstr "Stwórz superszybką, piękną i w pełni spersonalizowaną stronę w ki
 
 #. translators: This string represents the title of an "Home" page on a website. Please translate it in a way that fits the standard phrasing for a "Home" page in the target language, considering the common usage in websites for that language.
 #: public/build/extendify-common-659bd241faa47e112e9f.js:39
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/pages/Home.jsx:54
 msgid "Home"
 msgstr "Strona główna"
@@ -593,56 +593,56 @@ msgstr "Prezentacje"
 msgid "Help Center"
 msgstr "Centrum pomocy"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/users-screen.js:122
 #: src/HelpCenter/tours/users-screen.js:121
 msgid "Click the Add New button to add a new user to your site."
 msgstr "Kliknij przycisk Dodaj nowy, aby dodać nowego użytkownika do swojej strony."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/users-screen.js:121
 #: src/HelpCenter/tours/users-screen.js:120
 msgid "Add a new user"
 msgstr "Dodaj nowego użytkownika"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/users-screen.js:96
 #: src/HelpCenter/tours/users-screen.js:95
 msgid "Use the search bar to find a particular user."
 msgstr "Użyj paska wyszukiwania, aby znaleźć konkretnego użytkownika."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/users-screen.js:95
 #: src/HelpCenter/tours/users-screen.js:94
 msgid "Search for users"
 msgstr "Wyszukaj użytkowników"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/users-screen.js:65
 #: src/HelpCenter/tours/users-screen.js:64
 msgid "Click the edit button to change the user's role, manage their account, or change their profile information."
 msgstr "Kliknij przycisk edycji, aby zmienić rolę użytkownika, zarządzać jego kontem lub zmienić informacje o jego profilu."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/users-screen.js:64
 #: src/HelpCenter/tours/users-screen.js:63
 msgid "Edit user information"
 msgstr "Edytuj informacje o użytkowniku"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/users-screen.js:45
 #: src/HelpCenter/tours/users-screen.js:44
 msgid "See all of your users, including admin users in this table."
 msgstr "Zobacz wszystkich swoich użytkowników, w tym administratorów w tej tabeli."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/users-screen.js:44
 #: src/Agent/tours/welcome.js:251
@@ -651,231 +651,231 @@ msgstr "Zobacz wszystkich swoich użytkowników, w tym administratorów w tej ta
 msgid "Users"
 msgstr "Użytkownicy"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/users-screen.js:19
 #: src/HelpCenter/tours/users-screen.js:18
 msgid "Click here to view and manage the users on your site."
 msgstr "Kliknij tutaj, aby zobaczyć i zarządzać użytkownikami w swojej stronie."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/users-screen.js:18
 #: src/HelpCenter/tours/users-screen.js:17
 msgid "All Users menu"
 msgstr "Menu zarządzania użytkownikami"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-management.js:106
 #: src/HelpCenter/tours/plugin-management.js:105
 msgid "Click here to add another plugin to your site."
 msgstr "Kliknij tutaj, aby dodać kolejną wtyczkę do swojej strony."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-management.js:105
 #: src/HelpCenter/tours/plugin-management.js:104
 msgid "Add another"
 msgstr "Dodaj kolejny"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-management.js:65
 #: src/HelpCenter/tours/plugin-management.js:64
 msgid "Under each plugin you can activate or deactivate it."
 msgstr "Pod każdą wtyczką możesz ją włączyć lub wyłączyć."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-management.js:64
 #: src/HelpCenter/tours/plugin-management.js:63
 msgid "Deactivate/activate option"
 msgstr "Wyłącz/Włącz opcję"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-management.js:45
 #: src/HelpCenter/tours/plugin-management.js:44
 msgid "See all plugins installed on your site. This includes plugins that are active and deactivated."
 msgstr "Zobacz wszystkie wtyczki zainstalowane w Twojej stronie. Dotyczy to zarówno wtyczek włączonych, jak i wyłączonych."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-management.js:44
 #: src/HelpCenter/tours/plugin-management.js:43
 msgid "Installed plugins"
 msgstr "Zainstalowane wtyczki"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-management.js:19
 #: src/HelpCenter/tours/plugin-management.js:18
 msgid "Click this menu to see and manage the plugins you have installed."
 msgstr "Kliknij to menu, aby zobaczyć zainstalowane wtyczki i zarządzać nimi."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-management.js:18
 #: src/HelpCenter/tours/plugin-management.js:17
 msgid "Installed Plugins menu"
 msgstr "Menu zainstalowanych wtyczek"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-install.js:114
 #: src/HelpCenter/tours/plugin-install.js:113
 msgid "If you have a plugin from an external source, you can upload it directly here."
 msgstr "Jeśli masz wtyczkę z zewnętrznego źródła, możesz załadować ją bezpośrednio tutaj."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-install.js:113
 #: src/HelpCenter/tours/plugin-install.js:112
 msgid "Upload Plugin"
 msgstr "Załaduj wtyczkę"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-install.js:88
 #: src/HelpCenter/tours/plugin-install.js:87
 msgid "Install the plugin. Then, press this button again to activate the plugin."
 msgstr "Zainstaluj wtyczkę. Następnie naciśnij ten przycisk ponownie, aby ją włączyć."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-install.js:87
 #: src/HelpCenter/tours/plugin-install.js:86
 msgid "Install now"
 msgstr "Zainstaluj teraz"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-install.js:68
 #: src/HelpCenter/tours/plugin-install.js:67
 msgid "See important information about each plugin."
 msgstr "Wyświetl istotne informacje o każdej wtyczce."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-install.js:67
 #: src/HelpCenter/tours/plugin-install.js:66
 msgid "Plugin details"
 msgstr "Szczegóły wtyczki"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-install.js:42
 #: src/HelpCenter/tours/plugin-install.js:41
 msgid "Search for a plugin by name or functionality."
 msgstr "Wyszukaj wtyczkę według nazwy lub funkcjonalności."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-install.js:19
 #: src/HelpCenter/tours/plugin-install.js:18
 msgid "Click here to access the Add Plugins page."
 msgstr "Kliknij tutaj, aby uzyskać dostęp do strony Dodawania Wtyczek."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-install.js:18
 #: src/HelpCenter/tours/plugin-install.js:17
 msgid "Add New plugin menu"
 msgstr "Menu dodawania nowych wtyczek"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-editor.js:251
 #: src/HelpCenter/tours/page-editor.js:254
 msgid "Publish or Save"
 msgstr "Opublikuj lub Zapisz"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-editor.js:231
 #: src/HelpCenter/tours/page-editor.js:234
 msgid "Click preview to view how your changes look on the front end of your site."
 msgstr "Kliknij Podgląd, aby zobaczyć, jak Twoje zmiany wyglądają w stronie."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-editor.js:230
 #: src/HelpCenter/tours/page-editor.js:233
 msgid "Preview"
 msgstr "Podgląd"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-editor.js:188
 #: src/HelpCenter/tours/page-editor.js:191
 msgid "Select either page or block to change the settings for the entire page or the block that is selected."
 msgstr "Wybierz stronę lub blok, aby zmienić ustawienia dla całej strony lub dla wybranego bloku."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-editor.js:187
 #: src/HelpCenter/tours/page-editor.js:190
 msgid "Page and Block Settings"
 msgstr "Ustawienia strony i bloków"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-editor.js:172
 #: src/HelpCenter/tours/page-editor.js:175
 msgid "This is a sample paragraph block. It can be several sentences long and will span multiple rows. You can add as many blocks as you'd like to the page."
 msgstr "To jest przykładowy blok akapitu. Może mieć długość kilku zdań i obejmować wiele wierszy. Możesz dodać do strony dowolną ilość bloków."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-editor.js:131
 #: src/HelpCenter/tours/page-editor.js:134
 msgid "Each block will show up on the page and can be edited by clicking on it."
 msgstr "Każdy blok pojawi się na stronie i będzie można go edytować, klikając na niego."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-editor.js:130
 #: src/HelpCenter/tours/page-editor.js:133
 msgid "Blocks"
 msgstr "Bloki"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-editor.js:91
 #: src/HelpCenter/tours/page-editor.js:94
 msgid "Edit the page title by clicking it. Note: The title may or may not show up on the published page, depending on the page template used."
 msgstr "Edytuj tytuł strony, klikając go. Uwaga: Tytuł może, ale nie musi pojawić się na opublikowanej stronie, w zależności od użytego szablonu strony."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-editor.js:90
 #: src/HelpCenter/tours/page-editor.js:93
 msgid "Page Title"
 msgstr "Tytuł strony"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-editor.js:50
 #: src/HelpCenter/tours/page-editor.js:50
 msgid "Add a block by clicking or dragging it onto the page."
 msgstr "Dodaj blok, klikając lub przeciągając go na stronę."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-editor.js:49
 #: src/HelpCenter/tours/page-editor.js:49
 msgid "Block Inserter"
 msgstr "Wybierak bloków"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-editor.js:29
 #: src/HelpCenter/tours/page-editor.js:29
 msgid "Click the plus to open the block inserter."
 msgstr "Kliknij plus, aby otworzyć wybierak do wstawiania bloków."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-editor.js:28
 #: src/HelpCenter/tours/page-editor.js:28
@@ -906,14 +906,14 @@ msgstr "Przejdź do Assist"
 msgid "Dashboard"
 msgstr "Kokpit"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/site-assistant.js:15
 #: src/HelpCenter/tours/site-assistant.js:14
 msgid "Tasks"
 msgstr "Zadania"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:3
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/site-assistant.js:36
@@ -934,7 +934,7 @@ msgstr "W każdej chwili możesz obejrzeć swoją stronę (z perspektywy odwiedz
 msgid "Use the pages menu to add, delete, or edit the pages on your site."
 msgstr "Użyj menu stron, aby dodać, usunąć lub edytować strony w swojej stronie."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:1
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:7
 #: src/Agent/components/GuidedTour.jsx:478
@@ -943,14 +943,14 @@ msgstr "Użyj menu stron, aby dodać, usunąć lub edytować strony w swojej str
 msgid "Done"
 msgstr "Gotowe"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:6
+#: public/build/extendify-agent-c6d61592dafe950df654.js:6
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/components/GuidedTour.jsx:431
 #: src/HelpCenter/components/tours/GuidedTour.jsx:434
 msgid "Tour Steps"
 msgstr "Kroki prezentacji"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:6
+#: public/build/extendify-agent-c6d61592dafe950df654.js:6
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/components/GuidedTour.jsx:310
 #: src/HelpCenter/components/tours/GuidedTour.jsx:311
@@ -979,9 +979,9 @@ msgstr "Przełącz %s na nowych stronach"
 msgid "We encountered a server error we cannot recover from. Please reload the page and try again."
 msgstr "Napotkaliśmy błąd serwera, którego nie możemy naprawić. Wczytaj ponownie stronę i spróbuj ponownie."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:12
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:12
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:1
 #: src/Agent/workflows/block-selector/components/UpdateBlockConfirm.jsx:95
 #: src/Agent/workflows/content/components/UpdatePostConfirm.jsx:46
@@ -996,7 +996,7 @@ msgstr "Zapisz"
 msgid "Enter a site description..."
 msgstr "Wpisz opis strony…"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:1
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-creator.js:83
@@ -1017,7 +1017,7 @@ msgstr "Załaduj logo strony"
 
 #: app/AdminPageRouter.php:41
 #: app/AdminPageRouter.php:65
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:8
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/site-assistant.js:5
@@ -1083,7 +1083,7 @@ msgstr "Zastąp obraz"
 msgid "Edit or update the image"
 msgstr "Edytuj lub zaktualizuj obraz"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:6
+#: public/build/extendify-agent-c6d61592dafe950df654.js:6
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:1
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/components/GuidedTour.jsx:306
@@ -1141,7 +1141,7 @@ msgstr "Konfiguracja Twojego Asystenta Strony"
 msgid "Starting off with a full website"
 msgstr "Rozpoczynanie z kompletną stroną internetową"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:6
+#: public/build/extendify-agent-c6d61592dafe950df654.js:6
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: public/build/extendify-launch-0316c4d49fb231515d63.js:8
 #: src/Agent/components/GuidedTour.jsx:421
@@ -1155,7 +1155,7 @@ msgstr "Wstecz"
 msgid "Site Industry"
 msgstr "Branża strony"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: public/build/extendify-launch-0316c4d49fb231515d63.js:14
 #: src/Agent/components/messages/AgentMessage.jsx:19
 #: src/Launch/pages/NeedsTheme.jsx:22
@@ -1184,7 +1184,7 @@ msgstr "Wtyczki"
 msgid "View Site"
 msgstr "Widok strony"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:7
 #: public/build/extendify-launch-0316c4d49fb231515d63.js:8
 #: src/Agent/components/GuidedTour.jsx:467
@@ -1206,7 +1206,7 @@ msgstr "Strony"
 msgid "You can personalize this later."
 msgstr "Możesz spersonalizować później."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:12
+#: public/build/extendify-agent-c6d61592dafe950df654.js:12
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:1
 #: public/build/extendify-launch-0316c4d49fb231515d63.js:8
 #: public/build/extendify-launch-0316c4d49fb231515d63.js:11
@@ -1231,7 +1231,7 @@ msgstr "Naciśnij, aby wybrać"
 msgid "Just a moment, this is taking longer than expected."
 msgstr "Prosimy o chwilę cierpliwości, proces trwa dłużej niż przewidywano."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:8
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: public/build/extendify-library-fd7fb204d6857a101eaf.js:1
@@ -1256,7 +1256,7 @@ msgstr "Projekt"
 msgid "Close"
 msgstr "Zamknij"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/Input.jsx:73
 msgid "Submit"
 msgstr "Wyślij"
@@ -1267,7 +1267,7 @@ msgstr "Wyślij"
 msgid "Settings"
 msgstr "Ustawienia"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-install.js:41
 #: src/HelpCenter/tours/plugin-install.js:40
@@ -1290,7 +1290,7 @@ msgid "Extendify"
 msgstr "Extendify"
 
 #. translators: %1$s is the current step, %2$s is the total number of steps
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:7
 #: src/Agent/components/GuidedTour.jsx:438
 #: src/HelpCenter/components/tours/GuidedTour.jsx:441
@@ -1379,7 +1379,7 @@ msgid "Continue"
 msgstr "Kontynuuj"
 
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:8
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Assist/tasks/images/AiImageGeneratorMarkup.jsx:130
 #: src/Assist/tasks/images/AiWritingAssistantMarkup.jsx:136
@@ -1390,264 +1390,264 @@ msgstr "Kontynuuj"
 msgid "Ask AI"
 msgstr "Zapytaj AI"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/InsertMenu.jsx:209
 msgid "Insert at top"
 msgstr "Wstaw na początku"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/InsertMenu.jsx:222
 msgid "Insert after the selected text"
 msgstr "Wstaw po zaznaczonym tekście"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/InsertMenu.jsx:233
 msgid "Insert at bottom"
 msgstr "Wstaw na dole"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/DraftMenu.jsx:13
 msgid "A paragraph …"
 msgstr "Akapit…"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/DraftMenu.jsx:14
 msgid "Write a paragraph about"
 msgstr "Napisz akapit na temat"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/DraftMenu.jsx:17
 msgid "Blog post …"
 msgstr "Wpis na blogu…"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/DraftMenu.jsx:21
 msgid "An informative article …"
 msgstr "Artykuł informacyjny …"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/DraftMenu.jsx:22
 msgid "Write an informative article about"
 msgstr "Napisz artykuł informacyjny na temat"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/DraftMenu.jsx:25
 msgid "Headline …"
 msgstr "Nagłówek …"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/DraftMenu.jsx:26
 msgid "Write a headline for"
 msgstr "Napisz nagłówek dla"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/DraftMenu.jsx:29
 msgid "List …"
 msgstr "Lista ..."
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/DraftMenu.jsx:30
 msgid "Write a list of"
 msgstr "Napisz listę"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:29
 msgid "Catalan"
 msgstr "kataloński"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:39
 msgid "Danish"
 msgstr "duński"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:44
 msgid "Dutch"
 msgstr "holenderski"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:49
 msgid "Dutch (Belgium)"
 msgstr "holenderski (Belgia)"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:54
 msgid "English"
 msgstr "angielski"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:64
 msgid "Estonian"
 msgstr "estoński"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:69
 msgid "Finnish"
 msgstr "fiński"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:74
 msgid "French (Belgium)"
 msgstr "francuski (Belgia)"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:84
 msgid "French (France)"
 msgstr "francuski (Francja)"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:89
 msgid "German"
 msgstr "niemiecki"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:94
 msgid "German (Switzerland)"
 msgstr "niemiecki (Szwajcaria)"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:119
 msgid "Indonesian"
 msgstr "indonezyjski"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:124
 msgid "Italian"
 msgstr "włoski"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:129
 msgid "Japanese"
 msgstr "japoński"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:144
 msgid "Polish"
 msgstr "polski"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:149
 msgid "Portuguese (Brazil)"
 msgstr "portugalski (Brazylia)"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:154
 msgid "Portuguese (Portugal)"
 msgstr "portugalski (Portugalia)"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:174
 msgid "Spanish (Spain)"
 msgstr "hiszpański (Hiszpania)"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:189
 msgid "Swedish"
 msgstr "szwedzki"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:199
 msgid "Ukrainian"
 msgstr "ukraiński"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:204
 msgid "Vietnamese"
 msgstr "wietnamski"
 
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:8
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Assist/tasks/images/AiWritingAssistantMarkup.jsx:163
 #: src/Draft/components/TranslationDropdown.jsx:224
 msgid "Translate"
 msgstr "Przetłumacz"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:239
 msgid "Translate to..."
 msgstr "Przetłumacz na..."
 
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:8
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Assist/tasks/images/AiWritingAssistantMarkup.jsx:228
 #: src/Draft/components/Input.jsx:48
 msgid "Ask AI to edit"
 msgstr "Poproś AI o edycję"
 
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:8
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Assist/tasks/images/AiWritingAssistantMarkup.jsx:220
 #: src/Draft/components/SelectedText.jsx:53
 msgid "Remove selection"
 msgstr "Usuń wybór"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/Draft.jsx:148
 msgid "Suggested prompts"
 msgstr "Sugerowane komunikaty"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/ToolbarMenu.jsx:162
 msgid "Custom prompt"
 msgstr "Własny komunikat"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:7
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:7
 #: src/Draft/components/image-generation/CreditCounter.jsx:37
 msgid "You can still explore and find great images on Unsplash until your credits reset."
 msgstr "Możesz nadal przeglądać i znajdować świetne obrazki na Unsplash, aż Twoje kredyty zostaną zresetowane."
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:7
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:7
 #: src/Draft/components/image-generation/CreditCounter.jsx:47
 msgid "Search on Unsplash"
 msgstr "Szukaj na Unsplash"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:7
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:7
 #: src/Draft/components/image-generation/GenerateForm.jsx:38
 msgid "Tell AI about the image you would like to create"
 msgstr "Opowiedz AI, jaki obrazek chcesz stworzyć"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:7
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:7
 #: src/Draft/components/image-generation/GenerateForm.jsx:42
 msgid "Image Prompt"
 msgstr "Monit obrazka"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:7
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:7
 #: src/Draft/components/image-generation/GenerateForm.jsx:88
 msgid "Generating image..."
 msgstr "Generowanie obrazka..."
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:7
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:7
 #: src/Draft/components/image-generation/GenerateForm.jsx:89
 msgid "Generate image"
 msgstr "Wygeneruj obrazek"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:7
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:7
 #: src/Draft/components/image-generation/ImagePreview.jsx:72
 msgid "Generating your image: "
 msgstr "Generowanie twojego obrazka:"
 
 #. translators: "Importing image" means the image is being added to the WordPress post editor
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/image-generation/ImagePreview.jsx:85
 msgid "Importing image..."
 msgstr "Importowanie obrazka..."
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/image-generation/ImagePreview.jsx:86
 msgid "Use this image"
 msgstr "Użyj tego obrazka"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/image-generation/ImagePreview.jsx:92
 msgid "Delete image"
 msgstr "Usuń obrazek"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/pages/GenerateImage.jsx:98
 msgid "Image Description"
 msgstr "Opis obrazka"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/api/Data.js:80
 msgid "Your request was rejected as a result of our safety system. Your prompt may contain text that is not allowed by our safety system."
 msgstr "Twoje żądanie zostało odrzucone przez nasz system bezpieczeństwa. Wpis może zawierać tekst niedozwolony przez nasz system bezpieczeństwa."
@@ -1710,7 +1710,7 @@ msgstr "Edytuj stopkę"
 msgid "Reset site"
 msgstr "Zresetuj stronę"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:4
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/site-assistant.js:58
@@ -1969,7 +1969,7 @@ msgstr "Wyniki wyszukiwania"
 msgid "Search the knowledge base"
 msgstr "Przeszukaj bazę wiedzy"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:8
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-editor.js:13
@@ -1979,14 +1979,14 @@ msgstr "Przeszukaj bazę wiedzy"
 msgid "Page editor"
 msgstr "Edytor stron"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-editor.js:252
 #: src/HelpCenter/tours/page-editor.js:255
 msgid "Click publish or update to save the changes you have made to the page and make them live on the site."
 msgstr "Kliknij \"Publikuj\" lub \"Aktualizuj\", aby zapisać dokonane zmiany na stronie i opublikować je na stronie."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:8
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-install.js:5
@@ -1996,7 +1996,7 @@ msgstr "Kliknij \"Publikuj\" lub \"Aktualizuj\", aby zapisać dokonane zmiany na
 msgid "Installing a plugin"
 msgstr "Instalacja wtyczki"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:8
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-management.js:5
@@ -2011,21 +2011,21 @@ msgstr "Zarządzanie wtyczkami"
 msgid "You can always access the help center by clicking this button."
 msgstr "Zawsze możesz uzyskać dostęp do centrum pomocy, klikając ten przycisk."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/site-assistant.js:80
 #: src/HelpCenter/tours/site-assistant.js:100
 msgid "Visit your site"
 msgstr "Odwiedź swoją stronę"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/site-assistant.js:81
 #: src/HelpCenter/tours/site-assistant.js:101
 msgid "You can always visit your site by clicking this button."
 msgstr "Możesz zawsze odwiedzić swoją stronę, klikając ten przycisk."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:8
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/users-screen.js:5
@@ -2097,8 +2097,8 @@ msgid "Service offline. Check back later."
 msgstr "Usługa jest niedostępna. Spróbuj ponownie później."
 
 #. translators: %1$s is the number of used credits, %2$s is the total credits
-#: public/build/extendify-draft-c25a4375489dbe128705.js:4
-#: public/build/extendify-draft-c25a4375489dbe128705.js:7
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:4
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:7
 #: src/Draft/components/image-generation/CreditCounter.jsx:13
 #: src/Draft/components/image-generation/CreditCounter.jsx:31
 #, js-format
@@ -2106,23 +2106,23 @@ msgid "%1$s of %2$s daily image credits used"
 msgstr "Wykorzystano %1$s z %2$s dziennych kredytów na obrazy"
 
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:8
-#: public/build/extendify-draft-c25a4375489dbe128705.js:7
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:7
 #: src/Assist/tasks/images/AiImageGeneratorMarkup.jsx:171
 #: src/Draft/components/image-generation/GenerateForm.jsx:51
 msgid "Aspect Ratio"
 msgstr "Format obrazu"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:7
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:7
 #: src/Draft/components/image-generation/GenerateForm.jsx:58
 msgid "Square: 1:1"
 msgstr "Kwadrat: 1:1"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:7
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:7
 #: src/Draft/components/image-generation/GenerateForm.jsx:65
 msgid "Landscape: 4:3"
 msgstr "Krajobraz: 4:3"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:7
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:7
 #: src/Draft/components/image-generation/GenerateForm.jsx:72
 msgid "Portrait: 3:4"
 msgstr "Portret: 3:4"
@@ -2194,66 +2194,66 @@ msgstr "Instalowanie..."
 msgid "Install Now"
 msgstr "Zainstaluj teraz"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/pages/GenerateImage.jsx:124
 msgid "AI Image"
 msgstr "Obrazek AI"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/pages/GenerateImage.jsx:90
 #: src/Draft/pages/Unsplash.jsx:66
 msgid "Go Back"
 msgstr "Wróć"
 
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:8
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Assist/tasks/ai-image-editor.js:7
 #: src/Draft/pages/GenerateImage.jsx:94
 #: src/Draft/pages/Home.jsx:17
 msgid "AI Image Generator"
 msgstr "Generator obrazków AI"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/pages/Home.jsx:18
 msgid "Use AI to generate custom images based on your description."
 msgstr "Użyj AI, aby wygenerować własne obrazy na podstawie twojego opisu."
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/pages/Home.jsx:28
 msgid "Generate an image"
 msgstr "Wygeneruj obrazek"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/pages/Home.jsx:35
 msgid "Discover Stock Photos"
 msgstr "Odkryj zdjęcia stockowe"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/pages/Home.jsx:36
 msgid "Search and add free stock photos from Unsplash.com"
 msgstr "Wyszukaj i dodaj darmowe zdjęcia stockowe z Unsplash.com"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/pages/Home.jsx:44
 msgid "Search Unsplash"
 msgstr "Szukaj w Unsplash"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/stock-images/UnsplashImages.jsx:13
 msgid "No images found."
 msgstr "Nie znaleziono obrazów."
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/pages/Unsplash.jsx:103
 msgid "Unsplash"
 msgstr "Unsplash"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/pages/Unsplash.jsx:70
 msgid "Photos from Unsplash"
 msgstr "Zdjęcia z Unsplash"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/GenerateImageButtons.jsx:59
 #: src/Draft/components/GenerateImageButtons.jsx:97
 msgid "Get Personalized Image"
@@ -3130,87 +3130,87 @@ msgstr "Opinie klientów"
 msgid "testimonials"
 msgstr "opinie-klientow"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:14
 msgid "Arabic"
 msgstr "arabski"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:19
 msgid "Arabic (Morocco)"
 msgstr "arabski (Maroko)"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:24
 msgid "Bulgarian"
 msgstr "bułgarski"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:34
 msgid "Czech"
 msgstr "czeski"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:59
 msgid "English (UK)"
 msgstr "angielski (UK)"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:79
 msgid "French (Canada)"
 msgstr "francuski (Kanada)"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:99
 msgid "Greek"
 msgstr "grecki"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:109
 msgid "Hindi"
 msgstr "hindi"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:114
 msgid "Hungarian"
 msgstr "węgierski"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:134
 msgid "Lithuanian"
 msgstr "litewski"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:139
 msgid "Norwegian"
 msgstr "norweski"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:159
 msgid "Romanian"
 msgstr "rumuński"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:164
 msgid "Russian"
 msgstr "rosyjski"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:169
 msgid "Slovak"
 msgstr "słowacki"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:179
 msgid "Spanish (Colombia)"
 msgstr "hiszpański (Kolumbia)"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:184
 msgid "Spanish (Mexico)"
 msgstr "hiszpański (Meksyk)"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:194
 msgid "Turkish"
 msgstr "turecki"
@@ -3333,7 +3333,7 @@ msgstr "Usuń istniejącą treść"
 msgid "Create a new page"
 msgstr "Utwórz nową stronę"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: public/build/extendify-page-creator-9a0a4eee57516a61a2cd.js:1
 #: src/Agent/tours/page-creator.js:6
@@ -3536,49 +3536,49 @@ msgstr "Opowiedz nam o swojej witrynie"
 msgid "Share your vision, and we'll craft a landing page that's perfectly tailored to your needs, ready to launch in no time. Let's begin by learning more about what you're building."
 msgstr "Podziel się swoją wizją, a stworzymy stronę docelową idealnie dopasowaną do twoich potrzeb, gotową do uruchomienia w krótkim czasie. Zacznijmy od poznania tego, co tworzysz."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-creator.js:32
 #: src/HelpCenter/tours/page-creator.js:32
 msgid "Press here to get started with your AI Page Generator."
 msgstr "Naciśnij tutaj, aby rozpocząć korzystanie z generatora stron AI."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-creator.js:55
 #: src/HelpCenter/tours/page-creator.js:55
 msgid "Page description"
 msgstr "Opis strony"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-creator.js:56
 #: src/HelpCenter/tours/page-creator.js:56
 msgid "Write a description of the page you want to create. Be as detailed as you like. We will create a page based on this description."
 msgstr "Napisz opis strony, którą chcesz utworzyć. Bądź tak szczegółowy, jak chcesz. Utworzymy stronę na podstawie tego opisu."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-creator.js:84
 #: src/HelpCenter/tours/page-creator.js:84
 msgid "If needed, update your site description here. We use this to add additional context about your website."
 msgstr "W razie potrzeby zaktualizuj tutaj opis witryny. Używamy go, aby dodać dodatkowy kontekst o twojej witrynie internetowej."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-creator.js:107
 #: src/HelpCenter/tours/page-creator.js:107
 msgid "Generate your page"
 msgstr "Wygeneruj swoją stronę"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-creator.js:108
 #: src/HelpCenter/tours/page-creator.js:108
 msgid "When ready, press here to generate your page."
 msgstr "Gdy będziesz gotowy, naciśnij tutaj, aby wygenerować stronę."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-shared-8d49300600182f94ffe4.js:1
 #: src/Agent/components/tooltip/ToolTip.jsx:101
 #: src/Shared/components/ToolTip.jsx:63
@@ -3644,7 +3644,7 @@ msgstr "Zalecane rozwiązania dla: %s"
 msgid "Show more questions"
 msgstr "Pokaż więcej pytań"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:104
 msgid "Hebrew"
 msgstr "hebrajski"
@@ -3705,44 +3705,44 @@ msgstr "Jak mogę zmienić slogan mojej witryny?"
 msgid "How can I change my site language?"
 msgstr "Jak mogę zmienić język mojej witryny?"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: src/Agent/hooks/useThemeVariations.js:17
 msgid "Failed to fetch theme variations."
 msgstr "Nie udało się pobrać wariantów motywu."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: src/Agent/components/redirects/RedirectThemeVariations.jsx:8
 msgid "Hey there! It looks like you are trying to change your theme colors, but you are not on a page where we can do that."
 msgstr "Cześć! Wygląda na to, że próbujesz zmienić kolory motywu, ale nie jesteś na stronie, gdzie można to zrobić."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: src/Agent/components/redirects/RedirectFontsVariations.jsx:10
 #: src/Agent/components/redirects/RedirectThemeVariations.jsx:15
 #: src/Agent/workflows/theme/components/RedirectFontsVariations.jsx:10
 msgid "Suggestion:"
 msgstr "Sugestia:"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: src/Agent/workflows/theme/components/SelectThemeVariation.jsx:34
 msgid "Loading variations..."
 msgstr "Wczytywanie wariantów…"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: src/Agent/workflows/theme/components/SelectThemeVariation.jsx:42
 msgid "No variations found"
 msgstr "Nie znaleziono wariantów"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: src/Agent/workflows/theme/components/SelectThemeFontsVariation.jsx:46
 #: src/Agent/workflows/theme/components/SelectThemeVariation.jsx:45
 msgid "We were unable to find any variations for your theme."
 msgstr "Nie znaleźliśmy żadnych wariantów dla twojego motywu."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:12
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:12
 #: src/Agent/workflows/block-selector/components/UpdateBlockConfirm.jsx:89
 #: src/Agent/workflows/content/components/UpdatePostConfirm.jsx:40
 #: src/Agent/workflows/settings/components/UpdateSettingConfirm.jsx:30
@@ -3751,132 +3751,132 @@ msgstr "Nie znaleźliśmy żadnych wariantów dla twojego motywu."
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:12
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:12
 #: src/Agent/workflows/block-selector/components/UpdateBlockConfirm.jsx:78
 #: src/Agent/workflows/content/components/UpdatePostConfirm.jsx:28
 msgid "The agent has made the changes in the browser. Please review and confirm."
 msgstr "Agent wprowadził zmiany w przeglądarce. Proszę przejrzeć i potwierdzić."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: src/Agent/tours/library-tour.js:7
 msgid "Tour the design library"
 msgstr "Przejrzyj bibliotekę wyglądów"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: src/Agent/tours/page-creator.js:7
 msgid "Learn about the AI Page Generator"
 msgstr "Dowiedz się więcej o generatorze stron AI"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: src/Agent/tours/page-editor.js:14
 msgid "Tour the page editor"
 msgstr "Prezentacja edytora strony"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: src/Agent/tours/plugin-install.js:6
 msgid "See how to install a plugin"
 msgstr "Zobacz, jak zainstalować wtyczkę"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: src/Agent/tours/plugin-management.js:6
 msgid "Learn how to manage plugins"
 msgstr "Dowiedz się, jak zarządzać wtyczkami"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: src/Agent/tours/site-assistant.js:6
 msgid "Tour the Site Assistant"
 msgstr "Prezentacja Site Asystenta"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: src/Agent/tours/users-screen.js:6
 msgid "Tour the Users screen"
 msgstr "Prezentacja ekranu użytkowników"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/ChatInput.jsx:165
 msgid "Ask anything"
 msgstr "Zapytaj o wszystko"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/ChatInput.jsx:186
 msgid "Send message"
 msgstr "Wyślij wiadomość"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/ScrollDownButton.jsx:21
 msgid "Scroll down"
 msgstr "Przewiń w dół"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/messages/AgentMessage.jsx:52
 msgid "Agent"
 msgstr "Agent"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/messages/StatusMessage.jsx:10
 msgid "Working on it..."
 msgstr "Pracuję nad tym..."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/messages/StatusMessage.jsx:11
 msgid "Gathering data..."
 msgstr "Zbieranie danych..."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/messages/StatusMessage.jsx:12
 msgid "Analyzing..."
 msgstr "Analizowanie..."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/messages/StatusMessage.jsx:13
 #: src/Agent/components/messages/StatusMessage.jsx:14
 #: src/Agent/components/messages/StatusMessage.jsx:15
 msgid "Canceled"
 msgstr "Anulowano"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/messages/StatusMessage.jsx:16
 msgid "Usage limit reached"
 msgstr "Osiągnięto limit użycia"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/messages/StatusMessage.jsx:17
 msgid "Usage limit restored"
 msgstr "Przywrócono limit użycia"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/messages/StatusMessage.jsx:30
 msgid "Something went wrong"
 msgstr "Coś poszło nie tak"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/messages/StatusMessage.jsx:33
 msgid "An unexpected error occurred while processing your request."
 msgstr "Wystąpił nieoczekiwany błąd podczas przetwarzania żądania."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/messages/StatusMessage.jsx:83
 msgid "Workflow completed successfully"
 msgstr "Przepływ pracy zakończony pomyślnie"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/messages/WorkflowComponent.jsx:17
 msgid "Component not available"
 msgstr "Komponent niedostępny"
 
 #. translators: This is for when a component doesn't exist
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/messages/WorkflowComponent.jsx:20
 msgid "It may have been removed or is not available for your account."
 msgstr "Możliwe, że został usunięty lub nie jest dostępny dla twojego konta."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:3
+#: public/build/extendify-agent-c6d61592dafe950df654.js:3
 #: src/Agent/components/messages/WorkflowMessage.jsx:15
 msgid "What's next? Would you like to do something else?"
 msgstr "Co dalej? Chcesz zrobić coś jeszcze?"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/layouts/DragResizeLayout.jsx:117
 #: src/Agent/components/layouts/DragResizeLayout.jsx:128
 #: src/Agent/components/layouts/MobileLayout.jsx:50
@@ -3884,48 +3884,48 @@ msgstr "Co dalej? Chcesz zrobić coś jeszcze?"
 msgid "Close window"
 msgstr "Zamknij okno"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/layouts/DragResizeLayout.jsx:168
 msgid "Drag to move"
 msgstr "Przeciągnij, aby przenieść"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:3
+#: public/build/extendify-agent-c6d61592dafe950df654.js:3
 #: src/Agent/components/WelcomeScreen.jsx:22
 msgid "Site is live!"
 msgstr "Witryna jest aktywna!"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:3
+#: public/build/extendify-agent-c6d61592dafe950df654.js:3
 #: src/Agent/components/WelcomeScreen.jsx:26
 msgid "Your expert AI team is here"
 msgstr "Twój zespół ekspertów AI jest tutaj"
 
 #. translators: %s is a human-readable time difference, e.g. "2 hours from now"
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:6
+#: public/build/extendify-agent-c6d61592dafe950df654.js:6
 #: src/Agent/components/messages/UsageMessage.jsx:30
 #, js-format
 msgid "You have reached your daily messages limit. Your limit will reset in %s."
 msgstr "Osiągnąłeś dzienny limit wiadomości. Limit zostanie zresetowany za %s."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:6
+#: public/build/extendify-agent-c6d61592dafe950df654.js:6
 #: src/Agent/components/buttons/AdminBar.jsx:50
 #: src/Agent/components/buttons/Mobile.jsx:36
 #: src/Agent/components/buttons/PostEditor.jsx:47
 msgid "Open Agent"
 msgstr "Otwórz agenta"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:6
+#: public/build/extendify-agent-c6d61592dafe950df654.js:6
 #: src/Agent/components/buttons/AdminBar.jsx:63
 #: src/Agent/components/buttons/Mobile.jsx:43
 #: src/Agent/components/buttons/PostEditor.jsx:52
 msgid "AI Agent"
 msgstr "Agent AI"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: src/Agent/components/tooltip/ReOpenToolTip.jsx:8
 msgid "Tooltip pointing to the agent button"
 msgstr "Etykieta wskazująca na przycisk agenta"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: src/Agent/components/tooltip/ReOpenToolTip.jsx:14
 msgid "Need help again?"
 msgstr "Potrzebujesz znowu pomocy?"
@@ -4031,7 +4031,7 @@ msgstr "Stąd możesz dostosować wymiary, dopełnienie i marginesy używane w u
 msgid "Take the welcome tour"
 msgstr "Weź udział w prezentacji powitalnej"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:6
+#: public/build/extendify-agent-c6d61592dafe950df654.js:6
 #: src/Agent/components/buttons/Mobile.jsx:46
 msgid "How can we help you today?"
 msgstr "Jak możemy Ci dzisiaj pomóc?"
@@ -4056,12 +4056,12 @@ msgstr "Nawigacja w stopce"
 msgid "Adding imprint page"
 msgstr "Dodawanie strony z informacjami prawnymi"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: src/Agent/components/tooltip/ReOpenToolTip.jsx:17
 msgid "You can always access your AI Agent if you need help with anything on your site."
 msgstr "Zawsze możesz skorzystać z AI Agenta, jeśli potrzebujesz pomocy na swojej witrynie."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:3
+#: public/build/extendify-agent-c6d61592dafe950df654.js:3
 #: src/Agent/components/WelcomeScreen.jsx:29
 msgid "Your team of site experts — designers, developers, and marketers — ready to help from content to layouts. Tell us what you need or pick a task to start."
 msgstr "Twój zespół ekspertów od witryny — projektanci, deweloperzy i marketerzy — gotowi do pomocy od treści po układy. Powiedz, czego potrzebujesz lub wybierz zadanie, aby zacząć."
@@ -4076,19 +4076,19 @@ msgstr "Etykieta wskazująca przycisk edycji strony"
 msgid "Welcome to your new site! When you're ready, press here to edit this page."
 msgstr "Witamy na twojej nowej witrynie! Gdy będziesz gotowy, naciśnij tutaj, aby edytować tę stronę."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:3
+#: public/build/extendify-agent-c6d61592dafe950df654.js:3
 #: src/Agent/components/PageDocument.jsx:15
 #: src/Agent/components/PageDocument.jsx:26
 msgid "Remove"
 msgstr "Usuń"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/DOMHighlighter.jsx:201
 #: src/Agent/components/DOMHighlighter.jsx:220
 msgid "Remove highlight"
 msgstr "Usuń podświetlenie"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:6
+#: public/build/extendify-agent-c6d61592dafe950df654.js:6
 #: src/Agent/Agent.jsx:488
 msgid "AI Agent can make mistakes. Check changes before saving."
 msgstr "Agent AI może popełniać błędy. Sprawdź zmiany przed zapisaniem."
@@ -4097,19 +4097,19 @@ msgstr "Agent AI może popełniać błędy. Sprawdź zmiany przed zapisaniem."
 msgid "I want to change my site title"
 msgstr "Chcę zmienić tytuł mojej witryny"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:12
+#: public/build/extendify-agent-c6d61592dafe950df654.js:12
 #: src/Agent/workflows/settings/components/UpdateSettingConfirm.jsx:36
 msgid "Confirm"
 msgstr "Potwierdź"
 
 #. translators: 1: setting name, 2: new setting value
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:12
+#: public/build/extendify-agent-c6d61592dafe950df654.js:12
 #: src/Agent/workflows/settings/components/UpdateSettingConfirm.jsx:15
 #, js-format
 msgid "The AI Agent wants to change the setting \"%1$s\" to \"%2$s\". Please confirm."
 msgstr "Agent AI chce zmienić ustawienie „%1$s” na „%2$s”. Proszę potwierdzić."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/messages/StatusMessage.jsx:9
 msgid "Thinking..."
 msgstr "Myślenie..."
@@ -4123,44 +4123,49 @@ msgstr "Kokpit WP Admin"
 msgid "I want to change my theme fonts"
 msgstr "Chcę zmienić kroje pisma w moim motywie"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 msgid "Failed to fetch theme font variations."
 msgstr "Nie udało się pobrać wariantów krojów pisma motywu."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/workflows/theme/change-theme-fonts-variation.js:12
 msgid "Hey there! It looks like you are trying to change your theme fonts, but you are not on a page where we can do that."
 msgstr "Cześć! Wygląda na to, że próbujesz zmienić czcionki motywu, ale nie jesteś na stronie, na której możemy to zrobić."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/workflows/theme/components/SelectThemeFontsVariation.jsx:34
 msgid "Loading font variations..."
 msgstr "Ładowanie wariantów kroju pisma..."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/workflows/theme/components/SelectThemeFontsVariation.jsx:43
 msgid "No font variations found"
 msgstr "Nie znaleziono wariantów krojów pisma"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/ChatTools.jsx:24
 msgid "Exit select mode"
 msgstr "Wyjdź z trybu zaznaczania"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/ChatTools.jsx:25
 msgid "Select Area to Edit"
 msgstr "Wybierz obszar do edycji"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/ChatTools.jsx:40
 msgid "Select"
 msgstr "Wybierz"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/ChatInput.jsx:161
 msgid "What do you want to change in the selected content?"
 msgstr "Co chcesz zmienić w wybranej treści?"
+
+#: public/build/extendify-agent-c6d61592dafe950df654.js:3
+#: src/Agent/components/PageDocument.jsx:13
+msgid "Selected content"
+msgstr "Wybrana treść"
 
 #. translators: %s is a name
 #: public/build/extendify-recommendations-b646230433527220e538.js:4
@@ -4188,7 +4193,7 @@ msgctxt "Plugin activation status"
 msgid "Activated"
 msgstr "Włączony"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/layouts/DragResizeLayout.jsx:110
 #: src/Agent/components/layouts/MobileLayout.jsx:46
 msgctxt "Feature in beta status"

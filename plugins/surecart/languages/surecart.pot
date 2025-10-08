@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-10-03T20:18:23+00:00\n"
+"POT-Creation-Date: 2025-10-07T18:30:41+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 
@@ -1910,7 +1910,7 @@ msgstr ""
 
 #: src/Controllers/Admin/Products/ProductsListTable.php:152
 #: products/modules/Media/MediaDisplay.js:44
-#: products/modules/Media/WordPressMedia.js:223
+#: products/modules/Media/WordPressMedia.js:225
 #: products/modules/Publishing.js:61
 msgid "Featured"
 msgstr ""
@@ -2375,7 +2375,7 @@ msgstr ""
 #: Controllers/DownloadController.php:122
 #: Controllers/DownloadController.php:135
 #: sc-dashboard-downloads-list.js:114
-#: sc-downloads-list.js:96
+#: sc-downloads-list.js:185
 #: sc-order.js:184
 msgid "Downloads"
 msgstr ""
@@ -4539,13 +4539,13 @@ msgid "Unknown"
 msgstr ""
 
 #. translators: %s is the image title.
-#: src/Models/GalleryItemImageAttachment.php:88
+#: src/Models/GalleryItemImageAttachment.php:97
 #: src/Models/GalleryItemProductMedia.php:95
 #: src/Models/GalleryItemVideoAttachment.php:97
 msgid "Viewing image: %s."
 msgstr ""
 
-#: src/Models/GalleryItemImageAttachment.php:109
+#: src/Models/GalleryItemImageAttachment.php:118
 #: src/Models/GalleryItemProductMedia.php:116
 #: src/Models/GalleryItemVideoAttachment.php:118
 #: media/image.php:32
@@ -9578,7 +9578,8 @@ msgstr ""
 #: sc-dashboard-customer-details.js:55
 #: sc-dashboard-downloads-list.js:64
 #: sc-dashboard-downloads-list.js:80
-#: sc-downloads-list.js:73
+#: sc-downloads-list.js:80
+#: sc-downloads-list.js:137
 #: sc-fulfillments.js:48
 #: sc-invoices-list.js:60
 #: sc-invoices-list.js:73
@@ -10712,7 +10713,7 @@ msgstr ""
 #: product-collections/modules/Image.js:176
 #: product-groups/modules/Product.js:77
 #: products/components/price/parts/SwapPriceDisplay.js:91
-#: products/modules/Media/WordPressMedia.js:71
+#: products/modules/Media/WordPressMedia.js:73
 #: products/modules/SingleDownload.js:322
 #: settings/brand/Logo.js:81
 #: settings/shipping/profile/Products.js:311
@@ -11265,7 +11266,7 @@ msgstr ""
 
 #: components/MediaLibrary/DownloadMedia.js:23
 #: products/modules/SingleDownload.js:128
-#: sc-downloads-list.js:66
+#: sc-downloads-list.js:130
 msgid "Could not download the file."
 msgstr ""
 
@@ -11384,7 +11385,7 @@ msgstr ""
 #: store/add-entities.js:103
 #: Controllers/DownloadController.php:125
 #: Blocks/InvoiceReceiptDownload/edit.js:29
-#: sc-downloads-list.js:103
+#: sc-downloads-list.js:174
 #: sc-line-item-invoice-receipt-download2.js:30
 msgid "Download"
 msgstr ""
@@ -14430,11 +14431,11 @@ msgstr ""
 msgid "The poster thumbnail of the video."
 msgstr ""
 
-#: products/modules/Media/WordPressMedia.js:78
+#: products/modules/Media/WordPressMedia.js:80
 msgid "This media has been deleted or is unavailable."
 msgstr ""
 
-#: products/modules/Media/WordPressMedia.js:238
+#: products/modules/Media/WordPressMedia.js:240
 #: products/modules/Template.js:140
 msgid "New"
 msgstr ""
@@ -18509,7 +18510,7 @@ msgstr ""
 msgid "Update Billing Details"
 msgstr ""
 
-#: Controllers/DownloadController.php:157
+#: Controllers/DownloadController.php:150
 #: sc-licenses-list.js:140
 msgid "License Keys"
 msgstr ""
@@ -25332,6 +25333,11 @@ msgstr ""
 msgid "You won't receive further emails from us."
 msgstr ""
 
+#: sc-downloads-list.js:181
+#: sc-purchase-downloads-list2.js:35
+msgid "You don't have any downloads."
+msgstr ""
+
 #: sc-feature-demo-banner.js:16
 msgid "This is a feature demo. In order to use it, you must upgrade your plan."
 msgstr ""
@@ -25954,10 +25960,6 @@ msgstr ""
 
 #: sc-provisional-banner.js:18
 msgid "Complete your store setup to go live."
-msgstr ""
-
-#: sc-purchase-downloads-list2.js:35
-msgid "You don't have any downloads."
 msgstr ""
 
 #: sc-recurring-price-choice-container2.js:45

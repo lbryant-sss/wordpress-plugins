@@ -468,10 +468,10 @@ class Admin {
                 'wpm_plugin_options_page',
                 $section_ids['settings_name']
             );
-            // add the field for the Twitter pixel
+            // add the field for the X (Twitter) pixel
             add_settings_field(
                 'wpm_plugin_twitter_pixel_id',
-                esc_html__( 'Twitter pixel ID', 'woocommerce-google-adwords-conversion-tracking-tag' ),
+                esc_html__( 'X (Twitter) pixel ID', 'woocommerce-google-adwords-conversion-tracking-tag' ),
                 [__CLASS__, 'option_html_twitter_pixel_id'],
                 'wpm_plugin_options_page',
                 $section_ids['settings_name']
@@ -1137,7 +1137,7 @@ class Admin {
     public static function add_section_advanced_subsection_twitter( $section_ids ) {
         // configuration for the Twitter section
         $sub_section_ids = [
-            'title' => 'Twitter',
+            'title' => 'X (Twitter)',
             'slug'  => 'twitter',
         ];
         self::add_subsection_div( $section_ids, $sub_section_ids );
@@ -3108,7 +3108,7 @@ class Admin {
         self::output_advanced_section_cog_html( 'twitter' );
         self::html_pro_feature();
         echo '<br><br>';
-        esc_html_e( 'The Twitter pixel ID looks similar to this:', 'woocommerce-google-adwords-conversion-tracking-tag' );
+        esc_html_e( 'The X (Twitter) pixel ID looks similar to this:', 'woocommerce-google-adwords-conversion-tracking-tag' );
         echo '&nbsp;<code>a1cde</code>';
     }
 
@@ -5731,7 +5731,7 @@ class Admin {
     }
 
     public static function plugin_setting_google_tag_id() {
-        $tag_id = Google_Helpers::get_google_tag_id();
+        $tag_id = Google_Helpers::get_google_tag_id_information()['active'];
         ?>
 		<input class="pmw mono readonly"
 			   type="text"

@@ -13,11 +13,11 @@ if (!defined('ABSPATH')) {
 				<div class="ier-premium-upgrade wt-ierpro-sidebar">
 					<div class="wt-ierpro-header" style="width:95%">
 						<div class="wt-ierpro-name">
-							<div style="float: left"><img src="<?php echo WT_O_IEW_PLUGIN_URL; ?>assets/images/gopro/order-ie.svg" alt="featured img" width="36" height="36"></div>
+							<div style="float: left"><img src="<?php echo esc_url(WT_O_IEW_PLUGIN_URL); ?>assets/images/gopro/order-ie.svg" alt="featured img" width="36" height="36"></div>
 							<div style="float: right;width: calc(100% - 47px);">
-								<h4 class="wt-ier-product-name"><?php _e('Order, Coupon, Subscription Import Export for WooCommerce'); ?></h4>
+								<h4 class="wt-ier-product-name"><?php esc_html_e('Order, Coupon, Subscription Import Export for WooCommerce', 'order-import-export-for-woocommerce'); ?></h4>
 							</div>
-							<div class="wt-crown-image" style="position: absolute;top: -21px;right: -24px;z-index: 1000;"><img src="<?php echo WT_O_IEW_PLUGIN_URL; ?>assets/images/gopro/crown.svg" alt="featured img" width="36" height="36"></div>
+							<div class="wt-crown-image" style="position: absolute;top: -21px;right: -24px;z-index: 1000;"><img src="<?php echo esc_url(WT_O_IEW_PLUGIN_URL); ?>assets/images/gopro/crown.svg" alt="featured img" width="36" height="36"></div>
 							<?php
 							/**
 							 * @since 2.5.8
@@ -40,12 +40,12 @@ if (!defined('ABSPATH')) {
 							<div class="wt-ier-suite-main-points">
 								<div class="wt-ier-suite-sub-points-left" style="float:left;margin-top: 15px;">
 									<ul class="ticked-list wt-ierpro-allfeat">
-										<li><?php _e('Export and import subscriptions'); ?></li>
-										<li><?php _e('Import via FTP/SFTP and URL'); ?></li>
-										<li><?php _e('Import & export in Excel, XML, CSV, and TSV formats'); ?></li>
-										<li><?php _e('Schedule automated import & export'); ?></li>
-										<li><?php _e('Advanced filters and customizations for better control'); ?></li>
-										<li><?php _e('Export and Import custom fields and third - party plugins fields'); ?></li>
+										<li><?php esc_html_e('Export and import subscriptions', 'order-import-export-for-woocommerce'); ?></li>
+										<li><?php esc_html_e('Import via FTP/SFTP and URL', 'order-import-export-for-woocommerce'); ?></li>
+										<li><?php esc_html_e('Import & export in Excel, XML, CSV, and TSV formats', 'order-import-export-for-woocommerce'); ?></li>
+										<li><?php esc_html_e('Schedule automated import & export', 'order-import-export-for-woocommerce'); ?></li>
+										<li><?php esc_html_e('Advanced filters and customizations for better control', 'order-import-export-for-woocommerce'); ?></li>
+										<li><?php esc_html_e('Export and Import custom fields and third - party plugins fields', 'order-import-export-for-woocommerce'); ?></li>
 									</ul>
 								</div>
 							</div>
@@ -53,7 +53,7 @@ if (!defined('ABSPATH')) {
 
 						<div class="wt-ierpro-mainfeatures">
 							<div class="wt-ierpro-btn-wrapper" style="margin-right: -17px">
-								<a href="<?php echo esc_url("https://www.webtoffee.com/product/order-import-export-plugin-for-woocommerce/?utm_source=free_plugin_revamp&utm_medium=basic_revamp&utm_campaign=Order_Import_Export&utm_content=" . WT_O_IEW_VERSION); ?>" class="wt-ierpro-blue-btn-suite" target="_blank"><?php esc_html_e('Check out plugin'); ?> <span style="font-size: 18px;" class="dashicons dashicons-arrow-right-alt"></span></a>
+								<a href="<?php echo esc_url("https://www.webtoffee.com/product/order-import-export-plugin-for-woocommerce/?utm_source=free_plugin_revamp&utm_medium=basic_revamp&utm_campaign=Order_Import_Export&utm_content=" . WT_O_IEW_VERSION); ?>" class="wt-ierpro-blue-btn-suite" target="_blank"><?php esc_html_e('Check out plugin', 'order-import-export-for-woocommerce'); ?> <span style="font-size: 18px;" class="dashicons dashicons-arrow-right-alt"></span></a>
 							</div>
 						</div>
 
@@ -66,13 +66,13 @@ if (!defined('ABSPATH')) {
 				<div class="ier-premium-upgrade wt-ierpro-sidebar">
 					<div class="wt-ierpro-header" style="width:95%">
 						<div class="wt-ierpro-name">
-							<div style="float: left"><img src="<?php echo WT_O_IEW_PLUGIN_URL; ?>assets/images/gopro/product-ie.svg" alt="featured img" width="36" height="36"></div>
+							<div style="float: left"><img src="<?php echo esc_url(WT_O_IEW_PLUGIN_URL); ?>assets/images/gopro/product-ie.svg" alt="featured img" width="36" height="36"></div>
 
 							<div style="float: right;width: calc(100% - 52px);">
-								<h4 class="wt-ier-product-name" ><?php _e('Product Import Export Plugin'); ?></h4>
-								<h4 class="wt-ier-product-name" style="line-height: 10px;"><?php _e('for WooCommerce'); ?></h4>
+								<h4 class="wt-ier-product-name" ><?php esc_html_e('Product Import Export Plugin', 'order-import-export-for-woocommerce'); ?></h4>
+								<h4 class="wt-ier-product-name" style="line-height: 10px;"><?php esc_html_e('for WooCommerce', 'order-import-export-for-woocommerce'); ?></h4>
 							</div>
-							<div class="wt-crown-image" style="position: absolute;top: -21px;right: -24px;z-index: 1000;"><img src="<?php echo WT_O_IEW_PLUGIN_URL; ?>assets/images/gopro/crown.svg" alt="featured img" width="36" height="36"></div>
+							<div class="wt-crown-image" style="position: absolute;top: -21px;right: -24px;z-index: 1000;"><img src="<?php echo esc_url( WT_O_IEW_PLUGIN_URL ); ?>assets/images/gopro/crown.svg" alt="featured img" width="36" height="36"></div>
 							<?php
 							/**
 							 * @since 2.5.8
@@ -95,12 +95,12 @@ if (!defined('ABSPATH')) {
 							<div class="wt-ier-suite-main-points">
 								<div class="wt-ier-suite-sub-points-left" style="float:left;margin-top: 12px;">
 									<ul class="ticked-list wt-ierpro-allfeat">
-										<li><?php _e('Export and import variable, subscription and custom product types'); ?></li>
-										<li><?php _e('Import via FTP/SFTP and URL'); ?></li>
-										<li><?php _e('Import & export in Excel, XML, CSV, and TSV formats'); ?></li>
-										<li><?php _e('Schedule automated import & export'); ?></li>
-										<li><?php _e('Advanced filters and customizations for better control'); ?></li>
-										<li><?php _e('Export and Import custom fields and third - party plugins fields'); ?></li>
+										<li><?php esc_html_e('Export and import variable, subscription and custom product types', 'order-import-export-for-woocommerce'); ?></li>
+										<li><?php esc_html_e('Import via FTP/SFTP and URL', 'order-import-export-for-woocommerce'); ?></li>
+										<li><?php esc_html_e('Import & export in Excel, XML, CSV, and TSV formats', 'order-import-export-for-woocommerce'); ?></li>
+										<li><?php esc_html_e('Schedule automated import & export', 'order-import-export-for-woocommerce'); ?></li>
+										<li><?php esc_html_e('Advanced filters and customizations for better control', 'order-import-export-for-woocommerce'); ?></li>
+										<li><?php esc_html_e('Export and Import custom fields and third - party plugins fields', 'order-import-export-for-woocommerce'); ?></li>
 									</ul>
 								</div>
 							</div>
@@ -108,7 +108,7 @@ if (!defined('ABSPATH')) {
 
 						<div class="wt-ierpro-mainfeatures">
 							<div class="wt-ierpro-btn-wrapper" style="margin-right: -17px">
-								<a href="<?php echo esc_url("https://www.webtoffee.com/product/product-import-export-woocommerce/?utm_source=free_plugin_file_upload&utm_medium=basic_revamp&utm_campaign=Product_Import_Export" . WT_O_IEW_VERSION); ?>" class="wt-ierpro-blue-btn-suite" target="_blank"><?php _e('Check out plugin'); ?> <span style="font-size: 18px;" class="dashicons dashicons-arrow-right-alt"></span></a>
+								<a href="<?php echo esc_url("https://www.webtoffee.com/product/product-import-export-woocommerce/?utm_source=free_plugin_file_upload&utm_medium=basic_revamp&utm_campaign=Product_Import_Export" . WT_O_IEW_VERSION); ?>" class="wt-ierpro-blue-btn-suite" target="_blank"><?php esc_html_e('Check out plugin', 'order-import-export-for-woocommerce'); ?> <span style="font-size: 18px;" class="dashicons dashicons-arrow-right-alt"></span></a>
 							</div>
 						</div>
 
@@ -120,14 +120,14 @@ if (!defined('ABSPATH')) {
 				<div class="ier-premium-upgrade wt-ierpro-sidebar">
 					<div class="wt-ierpro-header" style="width:95%;">
 						<div class="wt-ierpro-name">
-							<div style="float: left"><img src="<?php echo WT_O_IEW_PLUGIN_URL; ?>assets/images/gopro/user-ie.svg" alt="featured img" width="36" height="36"></div>
+							<div style="float: left"><img src="<?php echo esc_url( WT_O_IEW_PLUGIN_URL ); ?>assets/images/gopro/user-ie.svg" alt="featured img" width="36" height="36"></div>
 							<div style="float: right;width: calc(100% - 52px);">
-								<h4 class="wt-ier-product-name"><?php _e('WordPress Users &'); ?></h4>
-								<h4 class="wt-ier-product-name"style="line-height: 0px;"><?php _e('WooCommerce Customers'); ?></h4>
-								<h4 class="wt-ier-product-name" style="line-height: 20px;"><?php _e('Import Export'); ?></h4>
+								<h4 class="wt-ier-product-name"><?php esc_html_e('WordPress Users &', 'order-import-export-for-woocommerce'); ?></h4>
+								<h4 class="wt-ier-product-name"style="line-height: 0px;"><?php esc_html_e('WooCommerce Customers', 'order-import-export-for-woocommerce'); ?></h4>
+								<h4 class="wt-ier-product-name" style="line-height: 20px;"><?php esc_html_e('Import Export', 'order-import-export-for-woocommerce'); ?></h4>
 
 							</div>
-							<div class="wt-crown-image" style="position: absolute;top: -21px;right: -24px;z-index: 1000;"><img src="<?php echo WT_O_IEW_PLUGIN_URL; ?>assets/images/gopro/crown.svg" alt="featured img" width="36" height="36"></div>
+							<div class="wt-crown-image" style="position: absolute;top: -21px;right: -24px;z-index: 1000;"><img src="<?php echo esc_url( WT_O_IEW_PLUGIN_URL ); ?>assets/images/gopro/crown.svg" alt="featured img" width="36" height="36"></div>
 							<?php
 							/**
 							 * @since 2.5.8
@@ -150,12 +150,12 @@ if (!defined('ABSPATH')) {
 							<div class="wt-ier-suite-main-points">
 								<div class="wt-ier-suite-sub-points-left" style="float:left; margin-top: 10px">
 									<ul class="ticked-list wt-ierpro-allfeat">
-										<li><?php _e('Import via FTP/SFTP and URL'); ?></li>
-										<li><?php _e('Import & export in Excel, XML, CSV, and TSV formats'); ?></li>
-										<li><?php _e('Customize and send emails to new users on import'); ?></li>
-										<li><?php _e('Schedule automated import & export'); ?></li>
-										<li><?php _e('Advanced filters and customizations for better control'); ?></li>
-										<li><?php _e('Export and Import custom fields and third - party plugins fields'); ?></li>
+										<li><?php esc_html_e('Import via FTP/SFTP and URL', 'order-import-export-for-woocommerce'); ?></li>
+										<li><?php esc_html_e('Import & export in Excel, XML, CSV, and TSV formats', 'order-import-export-for-woocommerce'); ?></li>
+										<li><?php esc_html_e('Customize and send emails to new users on import', 'order-import-export-for-woocommerce'); ?></li>
+										<li><?php esc_html_e('Schedule automated import & export', 'order-import-export-for-woocommerce'); ?></li>
+										<li><?php esc_html_e('Advanced filters and customizations for better control', 'order-import-export-for-woocommerce'); ?></li>
+										<li><?php esc_html_e('Export and Import custom fields and third - party plugins fields', 'order-import-export-for-woocommerce'); ?></li>
 									</ul>
 								</div>
 							</div>
@@ -163,7 +163,7 @@ if (!defined('ABSPATH')) {
 
 						<div class="wt-ierpro-mainfeatures">
 							<div class="wt-ierpro-btn-wrapper" style="margin-right: -17px;">
-								<a href="<?php echo esc_url("https://www.webtoffee.com/product/wordpress-users-woocommerce-customers-import-export/?utm_source=free_plugin_revamp&utm_medium=basic_revamp&utm_campaign=User_Import_Export&utm_content=" . WT_O_IEW_VERSION); ?>" class="wt-ierpro-blue-btn-suite" target="_blank"><?php _e('Check out plugin'); ?> <span style="font-size: 18px;" class="dashicons dashicons-arrow-right-alt"></span></a>
+								<a href="<?php echo esc_url("https://www.webtoffee.com/product/wordpress-users-woocommerce-customers-import-export/?utm_source=free_plugin_revamp&utm_medium=basic_revamp&utm_campaign=User_Import_Export&utm_content=" . WT_O_IEW_VERSION); ?>" class="wt-ierpro-blue-btn-suite" target="_blank"><?php esc_html_e('Check out plugin', 'order-import-export-for-woocommerce'); ?> <span style="font-size: 18px;" class="dashicons dashicons-arrow-right-alt"></span></a>
 							</div>
 						</div>
 
@@ -173,14 +173,14 @@ if (!defined('ABSPATH')) {
 		</div>
 
 
-		<p style="font-size:14px;font-weight:500;margin-top: 53px;padding:2px 4px;"><?php _e('You may also Like'); ?></p>
+		<p style="font-size:14px;font-weight:500;margin-top: 53px;padding:2px 4px;"><?php esc_html_e('You may also Like', 'order-import-export-for-woocommerce'); ?></p>
 		<div class="wt-ierpro-header">
 			<div class="wt-ierpro-name-suite">
-				<div style="float: left"><img src="<?php echo WT_O_IEW_PLUGIN_URL; ?>assets/images/gopro/suite.svg" alt="featured img" width="36" height="36"></div>
+				<div style="float: left"><img src="<?php echo esc_url(WT_O_IEW_PLUGIN_URL); ?>assets/images/gopro/suite.svg" alt="featured img" width="36" height="36"></div>
 				<div style="float: right;width: calc(100% - 52px);">
-					<h4 class="wt-ier-product-name"><?php _e('Import Export Suite for WooCommerce'); ?></h4>
+					<h4 class="wt-ier-product-name"><?php esc_html_e('Import Export Suite for WooCommerce', 'order-import-export-for-woocommerce'); ?></h4>
 				</div>
-				<div class="wt-crown-image" style="position: absolute;top: -28px;right: -24px;z-index: 1000;"><img src="<?php echo WT_O_IEW_PLUGIN_URL; ?>assets/images/gopro/crown.svg" alt="featured img" width="36" height="36"></div>
+				<div class="wt-crown-image" style="position: absolute;top: -28px;right: -24px;z-index: 1000;"><img src="<?php echo esc_url(WT_O_IEW_PLUGIN_URL); ?>assets/images/gopro/crown.svg" alt="featured img" width="36" height="36"></div>
 				<?php
 				/**
 				 * @since 2.5.8
@@ -200,30 +200,27 @@ if (!defined('ABSPATH')) {
 
 			</div>
 			<div class="wt-ier-all-in-one-text">
-				<p class="wt-ier-all-in-one-text-sp"><?php esc_html_e('An All-In-One Plugin Bundle for Importing and Exporting All Your WooCommerce Store Data'); ?></p>
+				<p class="wt-ier-all-in-one-text-sp"><?php esc_html_e('An All-In-One Plugin Bundle for Importing and Exporting All Your WooCommerce Store Data', 'order-import-export-for-woocommerce'); ?></p>
 			</div>
 
 			<div class="wt-ierpro-mainfeatures">
 				<div class="wt-ierpro-btn-wrapper">
-					<a href="<?php echo esc_url("https://www.webtoffee.com/product/woocommerce-import-export-suite/?utm_source=free_plugin_revamp&utm_medium=basic_revamp&utm_campaign=Import_Export_Suite&utm_content=" . WT_O_IEW_VERSION); ?>" class="wt-ierpro-blue-btn-suite" target="_blank"><?php _e('Check out plugin'); ?> <span style="font-size: 18px;" class="dashicons dashicons-arrow-right-alt"></span></a>
+					<a href="<?php echo esc_url("https://www.webtoffee.com/product/woocommerce-import-export-suite/?utm_source=free_plugin_revamp&utm_medium=basic_revamp&utm_campaign=Import_Export_Suite&utm_content=" . WT_O_IEW_VERSION); ?>" class="wt-ierpro-blue-btn-suite" target="_blank"><?php esc_html_e('Check out plugin', 'order-import-export-for-woocommerce'); ?> <span style="font-size: 18px;" class="dashicons dashicons-arrow-right-alt"></span></a>
 				</div>
 			</div>
-			<p style="font-size:14px;font-weight:600; margin-left:10px;margin-top: auto;padding:2px 4px;"><?php _e('Try with Confidence'); ?></p>
+			<p style="font-size:14px;font-weight:600; margin-left:10px;margin-top: auto;padding:2px 4px;"><?php esc_html_e('Try with Confidence', 'order-import-export-for-woocommerce'); ?></p>
 
 			<div class="wt-cs-rating-money-back">
 				<div class="wt-money-back">
-					<img src="<?php echo WT_O_IEW_PLUGIN_URL; ?>assets/images/upgrade/wt-money-back.svg" alt="alt" />
-					<p><?php esc_html_e('100% No Risk Money Back Guarantee'); ?></p>
+					<img src="<?php echo esc_url(WT_O_IEW_PLUGIN_URL); ?>assets/images/upgrade/wt-money-back.svg" alt="alt" />
+					<p><?php esc_html_e('100% No Risk Money Back Guarantee', 'order-import-export-for-woocommerce'); ?></p>
 				</div>
 				<div class="wt-cs-rating">
-					<img src="<?php echo WT_O_IEW_PLUGIN_URL; ?>assets/images/upgrade/wt-satisfaction-rating.svg" alt=" alt" />
-					<p><?php esc_html_e('Fast and Priority Support with 99% Satisfaction Rating'); ?></p>
+					<img src="<?php echo esc_url(WT_O_IEW_PLUGIN_URL); ?>assets/images/upgrade/wt-satisfaction-rating.svg" alt=" alt" />
+					<p><?php esc_html_e('Fast and Priority Support with 99% Satisfaction Rating', 'order-import-export-for-woocommerce'); ?></p>
 				</div>
 			</div>
 
 		</div>
-
-
-
 	</div>
 </div>

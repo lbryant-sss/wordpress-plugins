@@ -9,23 +9,26 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Bulk_Export {
 	public static function do_export($post_type = 'shop_coupon', $coupon_ids = array()) {
 		global $wpdb;
 
-		$delimiter = !empty($_POST['delimiter']) ? $_POST['delimiter'] : ','; // WPCS: CSRF ok, input var ok.
-
+		// phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce verification already done in the wt_process_order_bulk_actions(), process_coupons_bulk_actions() method
+		$delimiter = !empty($_POST['delimiter']) ? sanitize_text_field(wp_unslash($_POST['delimiter'])) : ','; 
 		$csv_columns = include_once( __DIR__ . '/../data/data-coupon-post-columns.php' );
 		$csv_columns = array_combine(array_keys($csv_columns), array_keys($csv_columns));
-		$user_columns_name = !empty($_POST['columns_name']) ? wc_clean($_POST['columns_name']) : $csv_columns;
-		$export_columns = !empty($_POST['columns']) ? wc_clean($_POST['columns']) : '';
+		$user_columns_name = !empty($_POST['columns_name']) ? array_map('sanitize_text_field', wp_unslash($_POST['columns_name'])) : $csv_columns;
+		$export_columns = !empty($_POST['columns']) ? array_map('sanitize_text_field', wp_unslash($_POST['columns'])) : '';
 		$include_hidden_meta = true;
+		// phpcs:enable
 
 		$wpdb->hide_errors();
+		// phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged
 		@set_time_limit(0);
 		if (function_exists('apache_setenv'))
 			@apache_setenv('no-gzip', 1);
+		// phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged
 		@ini_set('zlib.output_compression', 0);
 		@ob_end_clean();
 
 		header('Content-Type: text/csv; charset=UTF-8');
-		header('Content-Disposition: attachment; filename=coupon_export_' . date('Y_m_d_H_i_s', current_time('timestamp')) . '.csv');
+		header('Content-Disposition: attachment; filename=coupon_export_' . gmdate('Y_m_d_H_i_s', current_time('timestamp')) . '.csv');
 		header('Pragma: no-cache');
 		header('Expires: 0');
 
@@ -41,6 +44,7 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Bulk_Export {
 		$row = apply_filters('wt_ier_alter_coupon_csv_header', $row); //Alter Coupon CSV Header
 
 		$row = array_map('Wt_Import_Export_For_Woo_Basic_Coupon_Bulk_Export::wrap_column', $row);
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fwrite
 		fwrite($fp, implode($delimiter, $row) . "\n");
 		unset($row);
 
@@ -88,7 +92,7 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Bulk_Export {
 						unset($exsku);
 					} elseif ($column === 'expiry_date') {
 						$exp_date = get_post_meta($coupon->ID, 'date_expires');
-						$row[] = !empty($exp_date[0]) ? date("Y-m-d", $exp_date[0]) : '';
+						$row[] = !empty($exp_date[0]) ? gmdate("Y-m-d", $exp_date[0]) : '';
 					} else {
 						$row[] = '';
 					}
@@ -97,10 +101,12 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Bulk_Export {
 
 			$row = apply_filters('wt_ier_alter_coupon_csv_data', $row); // Alter Coupon CSV data if needed
 			$row = array_map('Wt_Import_Export_For_Woo_Basic_Coupon_Bulk_Export::wrap_column', $row);
+			// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fwrite
 			fwrite($fp, implode($delimiter, $row) . "\n");
 			unset($row);
 		}
 
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose
 		fclose($fp);
 		exit;
 	}
@@ -148,6 +154,7 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Bulk_Export {
 	public static function get_all_metakeys($post_type = 'shop_coupon') {
 		global $wpdb;
 
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Its necessary to use direct database query.
 		$meta = $wpdb->get_col($wpdb->prepare(
 						"SELECT DISTINCT pm.meta_key
             FROM {$wpdb->postmeta} AS pm
@@ -155,7 +162,7 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Bulk_Export {
             WHERE p.post_type = %s
             AND p.post_status IN ( 'publish', 'pending', 'private', 'draft' )", $post_type
 		));
-
+		// phpcs:enable
 		sort($meta);
 
 		return $meta;

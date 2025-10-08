@@ -68,7 +68,7 @@ if (is_plugin_active('product-import-export-for-woo/product-import-export-for-wo
 
 <div class="wbtf_order_top_header">
 	<div class="wbtf_top_header_content_wrapper">
-		<p class="wbtf_top_header_text"><?php echo esc_html__("You're using our free version. To unlock more features,", "product-import-export-for-woo"); ?> <a href="<?php echo esc_url($plugin_pro_url); ?>" id="wbtf_top_header_pro_link" target="_blank"><?php echo esc_html__('upgrade to pro ', 'product-import-export-for-woo'); ?> →</a> </p>
+		<p class="wbtf_top_header_text"><?php echo esc_html__("You're using our free version. To unlock more features,", "order-import-export-for-woocommerce"); ?> <a href="<?php echo esc_url($plugin_pro_url); ?>" id="wbtf_top_header_pro_link" target="_blank"><?php echo esc_html__('upgrade to pro ', 'order-import-export-for-woocommerce'); ?> →</a> </p>
 	</div>
 	<button class="wbtf_close_btn" onclick="wt_oiew_closeTopHeader()">×</button>
 

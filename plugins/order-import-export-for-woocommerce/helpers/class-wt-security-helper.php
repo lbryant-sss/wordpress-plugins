@@ -173,17 +173,12 @@ if(!class_exists('Wt_Iew_Sh'))
 		*/
 		public static function verify_nonce($plugin_id, $nonce_id = '')
 		{
-			$nonce = (isset($_REQUEST['_wpnonce']) ? sanitize_text_field($_REQUEST['_wpnonce']) : '');
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce is verifying in the function.
+			$nonce = (isset($_REQUEST['_wpnonce']) ? sanitize_text_field(wp_unslash($_REQUEST['_wpnonce'])) : '');
     		$nonce = (is_array($nonce) ? $nonce[0] : $nonce); //in some cases multiple nonces are declared
     		$nonce_id = ($nonce_id == "" ? $plugin_id : $nonce_id); //if nonce id not provided then uses plugin id as nonce id
     		
-    		if(!(wp_verify_nonce($nonce, $nonce_id))) //verifying nonce
-		    {
-		    	return false;
-		    }else
-		    {
-		    	return true;
-		    }
+    		return wp_verify_nonce($nonce, $nonce_id);
 		}
 
 

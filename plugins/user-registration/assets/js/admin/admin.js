@@ -44,6 +44,7 @@ jQuery(function ($) {
 		} else {
 			$(".ur-fields-not-found").show();
 		}
+		$(this).closest(".ur-tab-contents").scrollTop(0);
 	});
 
 	//Bind UI Actions for locked fields
@@ -1180,7 +1181,8 @@ jQuery(function ($) {
 
 	var check_email_confirmation_disabled = function () {
 		var email_confirmation_disabled =
-			user_registration_form_builder_data.email_confirmation_disabled;
+			(typeof ur_login_form_params !== 'undefined' && ur_login_form_params.email_confirmation_disabled) ||
+			(typeof user_registration_form_builder_data !== 'undefined' && user_registration_form_builder_data.email_confirmation_disabled);
 		if (email_confirmation_disabled === "yes") {
 			var login_options = $(
 				"#user_registration_form_setting_login_options"
@@ -2111,4 +2113,7 @@ jQuery(function ($) {
 	$(".ur-admin-page-topnav").on("click", ".ur-nav-link", function () {
 		setTimeout(updateActive, 0);
 	});
+	$('li.toplevel_page_user-registration > a').attr('href', 'admin.php?page=user-registration');
+
 });
+

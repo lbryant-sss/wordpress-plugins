@@ -34,7 +34,7 @@ use EssentialBlocks\Utils\LiquidGlassRenderer;
 final class Plugin
 {
     use HasSingletone;
-                                public $version = '5.7.0';
+                                        public $version = '5.7.1';
 
     public $admin;
     /**
@@ -233,7 +233,7 @@ final class Plugin
         //Those flags needs to update if notice
         $this->define( 'EB_PROMOTION_FLAG', 13 );
         $this->define( 'EB_ADMIN_MENU_FLAG', 13 );
-        $this->define( 'EB_SHOW_WHATS_NEW_NOTICE', 1 );
+        $this->define( 'EB_SHOW_WHATS_NEW_NOTICE', 0 );
 
         //Table Name constants
         global $wpdb;

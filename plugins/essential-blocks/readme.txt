@@ -4,7 +4,7 @@ Tags: Gutenberg, Block Editor, Gutenberg Templates, Gutenberg WooCommerce, Gener
 Requires at least: 5.8
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 5.7.0
+Stable tag: 5.7.1
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -263,6 +263,19 @@ If you found the recent version of Essential Blocks isn’t working or conflicti
 
 
 == Changelog ==
+= 5.7.1 - 07/10/2025 =
+- Improved: Loop Builder | Added support for more blocks
+- Improved: Slider | Added more image styling options and images clickable option
+- Improved: Post Grid | Added additional styling options for Title and Taxonomy
+- Fixed: Custom Fonts | Fonts were not loading properly
+- Fixed: Post Grid | Certain strings were not translatable
+- Fixed: Filterable Gallery | 'Add More Images' cleared URLs of existing items
+- Fixed: Advanced Navigation | Menu items geting extra spacing in dropdowns
+- Fixed: Advanced Image | Custom height resetting issue
+- Fixed: Advanced Image | Site logo not displaying properly
+- Fixed: Animation conflict with Twentig plugin
+- Few minor bug fixes and improvements
+
 = 5.7.0 - 21/09/2025 =
 - Added: Liquid Glass Effect
 - Added: Block Patterns | 70+ block patterns

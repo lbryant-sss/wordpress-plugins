@@ -779,11 +779,15 @@ function Edit(props) {
 
                                         updatedImages.map((image) => {
                                             let item = {};
-                                            item.url = image.url;
-                                            item.caption = image.caption;
-                                            item.content = image.content;
+                                            item.url = image.url ? image.url : "";
+                                            item.caption = image.caption ? image.caption : "";
+                                            item.content = image.content ? image.content : "";
                                             item.id = image.id;
-                                            item.alt = image.alt;
+                                            item.alt = image.alt ? image.alt : "";
+                                            item.customLink = image.customLink ? image.customLink : "";
+                                            item.openNewTab = image.openNewTab ? image.openNewTab : false;
+                                            item.isValidUrl = image.isValidUrl ? image.isValidUrl : true;
+                                            item.sizes = image.sizes ? image.sizes : null;
 
                                             sources.length > 0 &&
                                                 sources.map((source) => {
@@ -829,7 +833,6 @@ function Edit(props) {
                                                         </defs>
                                                     </svg>
                                                 </span>
-
                                                 Add More Images
                                             </Button>
                                         )

@@ -27,7 +27,7 @@
 			},
 			show:function()
 				{
-					this.choicesVal = ((typeof(this.choicesVal) != "undefined" && this.choicesVal !== null)?this.choicesVal:this.choices);
+					this.choicesVal = ((typeof(this.choicesVal) != "undefined" && this.choicesVal !== null && this.choicesVal.length)?this.choicesVal:this.choices);
 					var str = "",
                         classDep,
 						n 	= this.name.match(/fieldname\d+/)[0];

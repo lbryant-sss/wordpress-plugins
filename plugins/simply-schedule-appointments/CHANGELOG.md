@@ -1,5 +1,11 @@
 # Changelog
 
+## SSA-VERSION-PREFIX.6.8.63 - 2025-09-30
+
+### Fixes
+
+- Fix day selector in dark mode for samsung internet
+
 ## SSA-VERSION-PREFIX.6.8.61 - 2025-09-24
 
 ### Fixes

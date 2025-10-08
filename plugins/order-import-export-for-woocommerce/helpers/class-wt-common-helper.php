@@ -32,13 +32,15 @@ class Wt_Import_Export_For_Woo_Basic_Common_Helper
 
    public static function wt_get_product_id_by_sku($sku){
        global $wpdb;
+       // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Its necessary to use direct database query.
        $post_exists_sku = $wpdb->get_var($wpdb->prepare("
                    SELECT $wpdb->posts.ID
                    FROM $wpdb->posts
                    LEFT JOIN $wpdb->postmeta ON ( $wpdb->posts.ID = $wpdb->postmeta.post_id )
                    WHERE $wpdb->posts.post_status IN ( 'publish', 'private', 'draft', 'pending', 'future' )
-                   AND $wpdb->postmeta.meta_key = '_sku' AND $wpdb->postmeta.meta_value = '%s'
-                   ", $sku));   
+                   AND $wpdb->postmeta.meta_key = '_sku' AND $wpdb->postmeta.meta_value = %s
+                   ", $sku)); 
+       // phpcs:enable
        if ($post_exists_sku) {
            return $post_exists_sku;
        }
@@ -69,7 +71,8 @@ class Wt_Import_Export_For_Woo_Basic_Common_Helper
         $warn_icon='<span class="dashicons dashicons-warning"></span>&nbsp;';
         if(!version_compare(WT_O_IEW_VERSION, $min_version, '>=')) /* not matching the min version */
         {
-            self::$min_version_msg.=$warn_icon.sprintf(__("The %s requires a minimum version of %s %s. Please upgrade the %s accordingly."), "<b>$post_type_title</b>", "<b>".WT_O_IEW_PLUGIN_NAME."</b>", "<b>v$min_version</b>", "<b>".WT_O_IEW_PLUGIN_NAME."</b>").'<br />';
+            // translators: 1: post type title, 2: plugin name, 3: minimum version, 4: plugin name
+            self::$min_version_msg.=$warn_icon.sprintf(__( 'The %1$s requires a minimum version of %2$s %3$s. Please upgrade the %4$s accordingly.', 'order-import-export-for-woocommerce' ), "<b>$post_type_title</b>", "<b>".WT_O_IEW_PLUGIN_NAME."</b>", "<b>v$min_version</b>", "<b>".WT_O_IEW_PLUGIN_NAME."</b>").'<br />';
             add_action('admin_notices', array(__CLASS__, 'no_minimum_base_version') );
             return false;
         }
@@ -86,7 +89,7 @@ class Wt_Import_Export_For_Woo_Basic_Common_Helper
         <div class="notice notice-warning">
             <p>
                 <?php 
-                echo self::$min_version_msg;
+                echo wp_kses_post(self::$min_version_msg);
                 ?>
             </p>
         </div>
@@ -343,10 +346,9 @@ class Wt_Import_Export_For_Woo_Basic_Common_Helper
 
     }
     public static function wt_get_current_page(){        
-        if (isset($_GET['page'])) {
-            return $_GET['page'];
-        }
-        return '';
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Nonce verification not required.
+        return isset($_GET['page']) ? sanitize_text_field(wp_unslash($_GET['page'])) : '';
+        // phpcs:enable
     }
     
     public static function wt_is_screen_allowed(){
@@ -367,7 +369,9 @@ class Wt_Import_Export_For_Woo_Basic_Common_Helper
         $table_name = $wpdb->prefix . 'posts';
         if ( class_exists( 'Automattic\WooCommerce\Utilities\OrderUtil' )  ) {
                 $table_name = $wpdb->prefix . 'wc_orders';
-                $table_exists = $wpdb->get_var("SHOW TABLES LIKE '$table_name'");
+                // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Its necessary to use direct database query.
+                $table_exists = $wpdb->get_var($wpdb->prepare("SHOW TABLES LIKE %s", $table_name));
+                // phpcs:enable
                 if ($table_exists === $table_name) {
                     $sync = OrderUtil::is_custom_order_tables_in_sync();
                 	$table_name = OrderUtil::custom_orders_table_usage_is_enabled() ? $wpdb->prefix . 'wc_orders' : $wpdb->prefix . 'posts';
@@ -509,11 +513,11 @@ function wt_wp_star_rating( $args = array() ) {
 
 	if ( $parsed_args['number'] ) {
 		/* translators: 1: The rating, 2: The number of ratings. */
-		$format = _n( '%1$s rating based on %2$s rating', '%1$s rating based on %2$s ratings', $parsed_args['number'] );
+		$format = _n( '%1$s rating based on %2$s rating', '%1$s rating based on %2$s ratings', $parsed_args['number'], 'order-import-export-for-woocommerce' );
 		$title  = sprintf( $format, number_format_i18n( $rating, 1 ), number_format_i18n( $parsed_args['number'] ) );
 	} else {
 		/* translators: %s: The rating. */
-		$title = sprintf( __( '%s rating' ), number_format_i18n( $rating, 1 ) );
+		$title = sprintf( __( '%s rating', 'order-import-export-for-woocommerce' ), number_format_i18n( $rating, 1 ) );
 	}
 
 	$output  = '<div class="wt-star-rating">';
@@ -524,7 +528,7 @@ function wt_wp_star_rating( $args = array() ) {
 	$output .= '</div>';
 
 	if ( $parsed_args['echo'] ) {
-		echo $output;
+		echo wp_kses_post($output);
 	}
 
 	return $output;
@@ -542,5 +546,33 @@ if(!function_exists('wt_format_decimal') ){
         }
         return $number;
         
+    }
+}
+
+if ( ! function_exists('wt_iew_utf8ize_basic') ) {
+    function wt_iew_utf8ize_basic( $data ) {
+        if ( is_array( $data ) ) {
+            foreach ( $data as $key => $value ) {
+                $data[$key] = wt_iew_utf8ize_basic( $value) ;
+            }
+        } else if (is_string($data)) {
+            // Use mbstring if available
+            if (extension_loaded('mbstring')) {
+                $encoding = mb_detect_encoding($data, array('UTF-8', 'ISO-8859-1', 'Windows-1252'), true);
+                if ($encoding !== 'UTF-8') {
+                    return mb_convert_encoding($data, 'UTF-8', $encoding ? $encoding : 'ISO-8859-1');
+                }
+                return $data; // Already UTF-8
+            } else {
+                // Fallback: utf8_encode (assumes ISO-8859-1)
+                if (function_exists('utf8_encode')) { 
+                    return utf8_encode($data);
+                } else {
+                    return $data;
+                }
+            }
+        }
+        
+        return $data;
     }
 }

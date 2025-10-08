@@ -39,7 +39,7 @@ msgstr "https://extendify.com/?utm_source=wp-plugins&utm_campaign=author-uri&utm
 
 #: app/AdminPageRouter.php:41
 #: app/AdminPageRouter.php:65
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:8
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/site-assistant.js:5
@@ -95,7 +95,7 @@ msgstr "Tema"
 msgid "Message"
 msgstr "Pranešimas"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:6
+#: public/build/extendify-agent-c6d61592dafe950df654.js:6
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:1
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/components/GuidedTour.jsx:306
@@ -197,7 +197,7 @@ msgstr "Pakeisti paveikslėlį"
 msgid "Remove image"
 msgstr "Ištrinti paveikslėlį"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:1
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:7
 #: src/Agent/components/GuidedTour.jsx:478
@@ -226,7 +226,7 @@ msgstr "Nustatyti svetainės logotipą"
 msgid "Add site description"
 msgstr "Pridėti svetainės aprašymą"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:12
+#: public/build/extendify-agent-c6d61592dafe950df654.js:12
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:1
 #: public/build/extendify-launch-0316c4d49fb231515d63.js:8
 #: public/build/extendify-launch-0316c4d49fb231515d63.js:11
@@ -237,7 +237,7 @@ msgstr "Pridėti svetainės aprašymą"
 msgid "Loading..."
 msgstr "Kraunama..."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:1
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-creator.js:83
@@ -251,9 +251,9 @@ msgstr "Svetainės aprašymas"
 msgid "Enter a site description..."
 msgstr "Įveskite svetainės aprašymą..."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:12
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:12
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:1
 #: src/Agent/workflows/block-selector/components/UpdateBlockConfirm.jsx:95
 #: src/Agent/workflows/content/components/UpdatePostConfirm.jsx:46
@@ -514,7 +514,7 @@ msgstr "Redaguoti svetainės navigaciją"
 msgid "Reset site"
 msgstr "Sukurti naują svetainę"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:3
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/site-assistant.js:36
@@ -561,7 +561,7 @@ msgstr "Diegiama..."
 msgid "Install Now"
 msgstr "Įdiegti dabar"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:4
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/site-assistant.js:58
@@ -648,7 +648,7 @@ msgid "A Glimpse into the Arctic"
 msgstr "Žvilgsnis į Antarktidą"
 
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:8
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Assist/tasks/images/AiImageGeneratorMarkup.jsx:130
 #: src/Assist/tasks/images/AiWritingAssistantMarkup.jsx:136
@@ -687,7 +687,7 @@ msgid "An image of a group of penguins on an icy Arctic landscape, surrounded by
 msgstr "Vaizdas kuriame matoma grupelė pingvinų, lediniame Antarktidos peizaže, apsuptame ledkalnių ir sniego, po giedru mėlynu dangumi."
 
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:8
-#: public/build/extendify-draft-c25a4375489dbe128705.js:7
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:7
 #: src/Assist/tasks/images/AiImageGeneratorMarkup.jsx:171
 #: src/Draft/components/image-generation/GenerateForm.jsx:51
 msgid "Aspect Ratio"
@@ -704,7 +704,7 @@ msgid "0 of 10 daily image credits used"
 msgstr "Panaudota 0 iš 10 dienos kreditų paveikslėliams kurti"
 
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:8
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Assist/tasks/ai-image-editor.js:7
 #: src/Draft/pages/GenerateImage.jsx:94
 #: src/Draft/pages/Home.jsx:17
@@ -752,8 +752,8 @@ msgid "Whispers of Silicon"
 msgstr "Technologijos, kurios keičia kasdienybę"
 
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:8
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Assist/tasks/images/AiWritingAssistantMarkup.jsx:142
 #: src/Assist/tasks/images/AiWritingAssistantMarkup.jsx:238
 #: src/Draft/components/EditMenu.jsx:41
@@ -768,8 +768,8 @@ msgid "Fix spelling & grammar "
 msgstr "Ištaisyti rašybą ir gramatiką "
 
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:8
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Assist/tasks/images/AiWritingAssistantMarkup.jsx:150
 #: src/Assist/tasks/images/AiWritingAssistantMarkup.jsx:246
 #: src/Draft/components/EditMenu.jsx:52
@@ -778,8 +778,8 @@ msgid "Simplify language"
 msgstr "Performuluoti tekstą"
 
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:8
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Assist/tasks/images/AiWritingAssistantMarkup.jsx:154
 #: src/Assist/tasks/images/AiWritingAssistantMarkup.jsx:250
 #: src/Draft/components/EditMenu.jsx:57
@@ -788,8 +788,8 @@ msgid "Make shorter"
 msgstr "Sutrumpinti"
 
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:8
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Assist/tasks/images/AiWritingAssistantMarkup.jsx:158
 #: src/Assist/tasks/images/AiWritingAssistantMarkup.jsx:254
 #: src/Draft/components/EditMenu.jsx:62
@@ -798,7 +798,7 @@ msgid "Make longer"
 msgstr "Pailginti"
 
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:8
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Assist/tasks/images/AiWritingAssistantMarkup.jsx:163
 #: src/Draft/components/TranslationDropdown.jsx:224
 msgid "Translate"
@@ -815,7 +815,7 @@ msgid "In the echo of the machine, a new consciousness takes flight, A boundless
 msgstr "Tai jau ne ateitis - tai dabartis, kuri keičia kasdienybę!"
 
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:8
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Assist/tasks/images/AiWritingAssistantMarkup.jsx:196
 #: src/Draft/app.js:23
 #: src/Draft/app.js:28
@@ -828,14 +828,14 @@ msgid "With every pulse of current, a thought is born anew, A quest for....a com
 msgstr "Su kiekvienu srovės impulsu gimsta nauja mintis, Ieškojimas... skaičiavimo meno."
 
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:8
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Assist/tasks/images/AiWritingAssistantMarkup.jsx:220
 #: src/Draft/components/SelectedText.jsx:53
 msgid "Remove selection"
 msgstr "Ištrinti pasirinkimą"
 
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:8
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Assist/tasks/images/AiWritingAssistantMarkup.jsx:228
 #: src/Draft/components/Input.jsx:48
 msgid "Ask AI to edit"
@@ -997,7 +997,7 @@ msgstr "Turite klausimų? Klauskite mūsų DI pokalbių asistento"
 msgid "Getting started with WordPress"
 msgstr "Pradžia su WordPress"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:8
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-install.js:5
@@ -1007,7 +1007,7 @@ msgstr "Pradžia su WordPress"
 msgid "Installing a plugin"
 msgstr "Įskiepio diegimas"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:8
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-management.js:5
@@ -1017,7 +1017,7 @@ msgstr "Įskiepio diegimas"
 msgid "Plugin management"
 msgstr "Įskiepių valdymas"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:8
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-editor.js:13
@@ -1027,7 +1027,7 @@ msgstr "Įskiepių valdymas"
 msgid "Page editor"
 msgstr "Puslapio redaktorius"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:8
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: public/build/extendify-library-fd7fb204d6857a101eaf.js:1
@@ -1040,7 +1040,7 @@ msgstr "Puslapio redaktorius"
 msgid "Design Library"
 msgstr "Dizainų kolekcija"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-assist-page-499306fef01b7d2b9f0b.js:8
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/users-screen.js:5
@@ -1585,7 +1585,7 @@ msgstr "galerija"
 
 #. translators: This string represents the title of an "Home" page on a website. Please translate it in a way that fits the standard phrasing for a "Home" page in the target language, considering the common usage in websites for that language.
 #: public/build/extendify-common-659bd241faa47e112e9f.js:39
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/pages/Home.jsx:54
 msgid "Home"
 msgstr "Pagrindinis puslapis"
@@ -1700,251 +1700,251 @@ msgstr "Atsiliepimai"
 msgid "testimonials"
 msgstr "atsiliepimai"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/DraftMenu.jsx:13
 msgid "A paragraph …"
 msgstr "Pastraipa …"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/DraftMenu.jsx:14
 msgid "Write a paragraph about"
 msgstr "Parašykite paragrafą apie"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/DraftMenu.jsx:17
 msgid "Blog post …"
 msgstr "Tinklaraščio įrašas …"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/DraftMenu.jsx:18
 msgid "Write a blog post about"
 msgstr "Parašykite tinklaraščio įrašą apie"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/DraftMenu.jsx:21
 msgid "An informative article …"
 msgstr "Informacinis straipsnis …"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/DraftMenu.jsx:22
 msgid "Write an informative article about"
 msgstr "Parašykite informatyvų straipsnį apie"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/DraftMenu.jsx:25
 msgid "Headline …"
 msgstr "Antraštė …"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/DraftMenu.jsx:26
 msgid "Write a headline for"
 msgstr "Parašykite antraštę"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/DraftMenu.jsx:29
 msgid "List …"
 msgstr "Sąrašas …"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/DraftMenu.jsx:30
 msgid "Write a list of"
 msgstr "Parašykite sąrašą"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/EditMenu.jsx:47
 #: src/Draft/components/ToolbarMenu.jsx:110
 msgid "Fix spelling & grammar"
 msgstr "Ištaisyti rašybą ir gramatiką"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/Input.jsx:46
 msgid "AI is writing..."
 msgstr "DI rašo..."
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/Input.jsx:49
 msgid "Ask AI to generate text"
 msgstr "Paprašykite DI sugeneruoti tekstą"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/Input.jsx:73
 msgid "Submit"
 msgstr "Pateikti"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/InsertMenu.jsx:194
 msgid "Replace selected block text"
 msgstr "Pakeisti pasirinkto bloko tekstą"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/InsertMenu.jsx:209
 msgid "Insert at top"
 msgstr "Įterpti viršuje"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/InsertMenu.jsx:222
 msgid "Insert after the selected text"
 msgstr "Įterpti po pažymėtu tekstu"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/InsertMenu.jsx:233
 msgid "Insert at bottom"
 msgstr "Įterpti apačioje"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/InsertMenu.jsx:242
 msgid "Try again"
 msgstr "Bandykite dar kartą"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: src/Draft/components/InsertMenu.jsx:250
 msgid "Discard"
 msgstr "Atmesti"
 
 #. translators: %1$s is the number of used credits, %2$s is the total credits
-#: public/build/extendify-draft-c25a4375489dbe128705.js:4
-#: public/build/extendify-draft-c25a4375489dbe128705.js:7
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:4
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:7
 #: src/Draft/components/image-generation/CreditCounter.jsx:13
 #: src/Draft/components/image-generation/CreditCounter.jsx:31
 #, js-format
 msgid "%1$s of %2$s daily image credits used"
 msgstr "Panaudota %1$s iš %2$s dienos kreditų paveikslėliams kurti"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:7
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:7
 #: src/Draft/components/image-generation/CreditCounter.jsx:37
 msgid "You can still explore and find great images on Unsplash until your credits reset."
 msgstr "Galite toliau naršyti ir rasti puikių paveikslėlių Unsplash, kol jūsų kreditai bus atnaujinti."
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:7
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:7
 #: src/Draft/components/image-generation/CreditCounter.jsx:47
 msgid "Search on Unsplash"
 msgstr "Ieškoti Unsplash"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:7
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:7
 #: src/Draft/components/image-generation/GenerateForm.jsx:38
 msgid "Tell AI about the image you would like to create"
 msgstr "Parašykite DI, kokį paveikslėlį norėtumėte sukurti"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:7
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:7
 #: src/Draft/components/image-generation/GenerateForm.jsx:42
 msgid "Image Prompt"
 msgstr "Paveikslėlio raginimas"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:7
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:7
 #: src/Draft/components/image-generation/GenerateForm.jsx:58
 msgid "Square: 1:1"
 msgstr "Kvadratas: 1:1"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:7
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:7
 #: src/Draft/components/image-generation/GenerateForm.jsx:65
 msgid "Landscape: 4:3"
 msgstr "Gulsčias: 4:3"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:7
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:7
 #: src/Draft/components/image-generation/GenerateForm.jsx:72
 msgid "Portrait: 3:4"
 msgstr "Stačias: 3:4"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:7
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:7
 #: src/Draft/components/image-generation/GenerateForm.jsx:88
 msgid "Generating image..."
 msgstr "Generuojamas paveikslėlis..."
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:7
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:7
 #: src/Draft/components/image-generation/GenerateForm.jsx:89
 msgid "Generate image"
 msgstr "Sugeneruoti paveikslėlį"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:7
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:7
 #: src/Draft/components/image-generation/ImagePreview.jsx:72
 msgid "Generating your image: "
 msgstr "Generuojamas jūsų paveikslėlis: "
 
 #. translators: "Importing image" means the image is being added to the WordPress post editor
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/image-generation/ImagePreview.jsx:85
 msgid "Importing image..."
 msgstr "Importuojamas paveikslėlis..."
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/image-generation/ImagePreview.jsx:86
 msgid "Use this image"
 msgstr "Naudoti šį paveikslėlį"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/image-generation/ImagePreview.jsx:92
 msgid "Delete image"
 msgstr "Ištrinti paveikslėlį"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/pages/GenerateImage.jsx:124
 msgid "AI Image"
 msgstr "Dirbtinio intelekto paveikslėlis"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/pages/GenerateImage.jsx:90
 #: src/Draft/pages/Unsplash.jsx:66
 msgid "Go Back"
 msgstr "Grįžti atgal"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/pages/GenerateImage.jsx:98
 msgid "Image Description"
 msgstr "Paveikslėlio aprašymas"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/api/Data.js:80
 msgid "Your request was rejected as a result of our safety system. Your prompt may contain text that is not allowed by our safety system."
 msgstr "Jūsų užklausa buvo atmesta dėl mūsų saugos sistemos. Jūsų užklausoje gali būti tekstas, kurio mūsų saugos sistema neleidžia."
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/api/Data.js:50
 #: src/Draft/api/Data.js:88
 msgid "Service temporarily unavailable"
 msgstr "Paslauga laikinai nepasiekiama"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/pages/Home.jsx:18
 msgid "Use AI to generate custom images based on your description."
 msgstr "Naudokite DI, kad sukurtumėte unikalius paveikslėlius pagal savo aprašymą."
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/pages/Home.jsx:28
 msgid "Generate an image"
 msgstr "Generuoti paveikslėlį"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/pages/Home.jsx:35
 msgid "Discover Stock Photos"
 msgstr "Atraskite susijusias nuotraukas"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/pages/Home.jsx:36
 msgid "Search and add free stock photos from Unsplash.com"
 msgstr "Naršykite ir pridėkite nemokamas nuotraukas iš Unsplash.com"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/pages/Home.jsx:44
 msgid "Search Unsplash"
 msgstr "Naršyti Unsplash"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/stock-images/UnsplashImages.jsx:13
 msgid "No images found."
 msgstr "Paveikslėlių nerasta."
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/pages/Unsplash.jsx:103
 msgid "Unsplash"
 msgstr "Unsplash"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/pages/Unsplash.jsx:70
 msgid "Photos from Unsplash"
 msgstr "Nuotraukos iš Unsplash"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: public/build/extendify-launch-0316c4d49fb231515d63.js:8
 #: src/Draft/components/ConsentSidebar.jsx:12
@@ -1953,215 +1953,215 @@ msgstr "Nuotraukos iš Unsplash"
 msgid "Terms of Use"
 msgstr "Naudojimo sąlygos"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:1
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:1
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Draft/components/ConsentSidebar.jsx:23
 #: src/HelpCenter/pages/AIChat.jsx:174
 msgid "Accept"
 msgstr "Priimti"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/Draft.jsx:148
 msgid "Suggested prompts"
 msgstr "Siūlomos užklausos"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/GenerateImageButtons.jsx:59
 #: src/Draft/components/GenerateImageButtons.jsx:97
 msgid "Get Personalized Image"
 msgstr "Gauti personalizuotą paveikslėlį"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:14
 msgid "Arabic"
 msgstr "Arabų"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:19
 msgid "Arabic (Morocco)"
 msgstr "Maroko arabų"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:24
 msgid "Bulgarian"
 msgstr "Bulgarų kalba"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:29
 msgid "Catalan"
 msgstr "Katalonų kalba"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:34
 msgid "Czech"
 msgstr "Čekų"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:39
 msgid "Danish"
 msgstr "Danų"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:44
 msgid "Dutch"
 msgstr "Olandų"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:49
 msgid "Dutch (Belgium)"
 msgstr "Belgijos olandų"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:54
 msgid "English"
 msgstr "Anglų kalba"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:59
 msgid "English (UK)"
 msgstr "Anglų (JK)"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:64
 msgid "Estonian"
 msgstr "Estų kalba"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:69
 msgid "Finnish"
 msgstr "Suomių"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:74
 msgid "French (Belgium)"
 msgstr "Belgijos prancūzų"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:79
 msgid "French (Canada)"
 msgstr "Kanados prancūzų"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:84
 msgid "French (France)"
 msgstr "Prancūzų (Prancūzija)"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:89
 msgid "German"
 msgstr "Vokiečių kalba"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:94
 msgid "German (Switzerland)"
 msgstr "Šveicarų vokiečių"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:99
 msgid "Greek"
 msgstr "Graikų"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:109
 msgid "Hindi"
 msgstr "Hindi"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:114
 msgid "Hungarian"
 msgstr "Vengrų"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:119
 msgid "Indonesian"
 msgstr "Indoneziečių kalba"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:124
 msgid "Italian"
 msgstr "Italų"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:129
 msgid "Japanese"
 msgstr "Japonų kalba"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:139
 msgid "Norwegian"
 msgstr "Norvegų"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:144
 msgid "Polish"
 msgstr "Lenkų kalba"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:149
 msgid "Portuguese (Brazil)"
 msgstr "Portugalų (Brazilija)"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:154
 msgid "Portuguese (Portugal)"
 msgstr "Portugalų (Portugalija)"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:159
 msgid "Romanian"
 msgstr "Rumunų kalba"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:164
 msgid "Russian"
 msgstr "Rusų"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:169
 msgid "Slovak"
 msgstr "Slovakų"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:174
 msgid "Spanish (Spain)"
 msgstr "Ispanų (Ispanija)"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:179
 msgid "Spanish (Colombia)"
 msgstr "Kolumbijos ispanų"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:184
 msgid "Spanish (Mexico)"
 msgstr "Meksikos ispanų"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:189
 msgid "Swedish"
 msgstr "Švediškai"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:194
 msgid "Turkish"
 msgstr "Turkų"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:199
 msgid "Ukrainian"
 msgstr "Ukrainiečių"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:204
 msgid "Vietnamese"
 msgstr "Vietnamiečių"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:239
 msgid "Translate to..."
 msgstr "Versti į..."
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/ToolbarMenu.jsx:162
 msgid "Custom prompt"
 msgstr "Pasirinktas raginimas"
@@ -2171,7 +2171,7 @@ msgstr "Pasirinktas raginimas"
 msgid "Please try again."
 msgstr "Pabandykite dar kartą."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:3
+#: public/build/extendify-agent-c6d61592dafe950df654.js:3
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:1
 #: src/Agent/components/Rating.jsx:27
 #: src/Agent/components/Rating.jsx:47
@@ -2180,14 +2180,14 @@ msgstr "Pabandykite dar kartą."
 msgid "Remove rating"
 msgstr "Pašalinti vertinimą"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:3
+#: public/build/extendify-agent-c6d61592dafe950df654.js:3
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:1
 #: src/Agent/components/Rating.jsx:28
 #: src/HelpCenter/components/ai-chat/Rating.jsx:27
 msgid "Rate that this answer was helpful"
 msgstr "Įvertinkite, ar šis atsakymas buvo naudingas"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:3
+#: public/build/extendify-agent-c6d61592dafe950df654.js:3
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:1
 #: src/Agent/components/Rating.jsx:48
 #: src/HelpCenter/components/ai-chat/Rating.jsx:47
@@ -2273,7 +2273,7 @@ msgstr "Straipsnių paieška"
 msgid "Knowledge Base"
 msgstr "Naudingi dokumentai"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:134
 msgid "Lithuanian"
 msgstr "Lietuvių"
@@ -2293,315 +2293,315 @@ msgstr "Paieškos rezultatai"
 msgid "Search the knowledge base"
 msgstr "Ieškoti žinių bazėje"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/library-tour.js:31
 #: src/HelpCenter/tours/library-tour.js:31
 msgid "Open the Pattern Library"
 msgstr "Atidaryti modelių saugyklą"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/library-tour.js:32
 #: src/HelpCenter/tours/library-tour.js:32
 msgid "The Extendify pattern library can be opened by clicking the button to the left."
 msgstr "Extendify modelių biblioteką galima atidaryti paspaudus mygtuką kairėje."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/library-tour.js:53
 #: src/HelpCenter/tours/library-tour.js:53
 msgid "Filter Patterns"
 msgstr "Filtruoti modelius"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/library-tour.js:54
 #: src/HelpCenter/tours/library-tour.js:54
 msgid "Click on any pattern category to refine the selection."
 msgstr "Spustelėkite bet kurią šablonų kategoriją, kad patikslintumėte pasirinkimą."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/library-tour.js:79
 #: src/HelpCenter/tours/library-tour.js:79
 msgid "Select a Pattern"
 msgstr "Pasirinkite modelį"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/library-tour.js:80
 #: src/HelpCenter/tours/library-tour.js:80
 msgid "Simply select any pattern you wish to insert into a page by clicking on it."
 msgstr "Tiesiog spustelėkite bet kurį modelį, kurį norite įterpti į puslapį."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/library-tour.js:99
 #: src/HelpCenter/tours/library-tour.js:99
 msgid "View the Inserted Pattern"
 msgstr "Peržiūrėti įterptą modelį"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/library-tour.js:100
 #: src/HelpCenter/tours/library-tour.js:100
 msgid "The selected pattern has been inserted into the page."
 msgstr "Pasirinktas modelis buvo įterptas į puslapį."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-editor.js:28
 #: src/HelpCenter/tours/page-editor.js:28
 msgid "Add a Block"
 msgstr "Pridėti bloką"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-editor.js:29
 #: src/HelpCenter/tours/page-editor.js:29
 msgid "Click the plus to open the block inserter."
 msgstr "Spustelėkite pliusą, kad atidarytumėte blokų įkėlimą."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-editor.js:49
 #: src/HelpCenter/tours/page-editor.js:49
 msgid "Block Inserter"
 msgstr "Blokų įterptuvas"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-editor.js:50
 #: src/HelpCenter/tours/page-editor.js:50
 msgid "Add a block by clicking or dragging it onto the page."
 msgstr "Pridėkite bloką spustelėdami arba vilkdami jį į puslapį."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-editor.js:90
 #: src/HelpCenter/tours/page-editor.js:93
 msgid "Page Title"
 msgstr "Puslapio antraštė"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-editor.js:91
 #: src/HelpCenter/tours/page-editor.js:94
 msgid "Edit the page title by clicking it. Note: The title may or may not show up on the published page, depending on the page template used."
 msgstr "Redaguokite puslapio pavadinimą jį spustelėdami. Pastaba: Pavadinimas gali būti rodomas arba nerodomas paskelbtame puslapyje, priklausomai nuo naudojamo puslapio šablono."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-editor.js:130
 #: src/HelpCenter/tours/page-editor.js:133
 msgid "Blocks"
 msgstr "Blokai"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-editor.js:131
 #: src/HelpCenter/tours/page-editor.js:134
 msgid "Each block will show up on the page and can be edited by clicking on it."
 msgstr "Kiekvienas blokas bus rodomas puslapyje ir gali būti redaguojamas spustelėjus jį."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-editor.js:172
 #: src/HelpCenter/tours/page-editor.js:175
 msgid "This is a sample paragraph block. It can be several sentences long and will span multiple rows. You can add as many blocks as you'd like to the page."
 msgstr "Tai yra pavyzdinis pastraipos blokas. Jis gali būti kelių sakinių ilgio ir užimti kelias eilutes. Galite pridėti tiek blokų, kiek norite."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-editor.js:187
 #: src/HelpCenter/tours/page-editor.js:190
 msgid "Page and Block Settings"
 msgstr "Puslapio ir bloko nustatymai"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-editor.js:188
 #: src/HelpCenter/tours/page-editor.js:191
 msgid "Select either page or block to change the settings for the entire page or the block that is selected."
 msgstr "Pasirinkite puslapį arba bloką, kad pakeistumėte nustatymus visam puslapiui arba pasirinktai blokui."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-editor.js:230
 #: src/HelpCenter/tours/page-editor.js:233
 msgid "Preview"
 msgstr "Peržiūra"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-editor.js:231
 #: src/HelpCenter/tours/page-editor.js:234
 msgid "Click preview to view how your changes look on the front end of your site."
 msgstr "Spustelėkite peržiūrą, kad pamatytumėte, kaip jūsų pakeitimai atrodo svetainės priekinėje dalyje."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-editor.js:251
 #: src/HelpCenter/tours/page-editor.js:254
 msgid "Publish or Save"
 msgstr "Paskelbti arba išsaugoti"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-editor.js:252
 #: src/HelpCenter/tours/page-editor.js:255
 msgid "Click publish or update to save the changes you have made to the page and make them live on the site."
 msgstr "Spustelėkite „Paskelbti“ arba „Atnaujinti“, kad išsaugotumėte pakeitimus ir jie būtų matomi svetainėje."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-install.js:18
 #: src/HelpCenter/tours/plugin-install.js:17
 msgid "Add New plugin menu"
 msgstr "Pridėti naują įskiepio meniu"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-install.js:19
 #: src/HelpCenter/tours/plugin-install.js:18
 msgid "Click here to access the Add Plugins page."
 msgstr "Spustelėkite čia, kad pasiektumėte įskiepių pridėjimo puslapį."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-install.js:41
 #: src/HelpCenter/tours/plugin-install.js:40
 msgid "Search"
 msgstr "Ieškoti"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-install.js:42
 #: src/HelpCenter/tours/plugin-install.js:41
 msgid "Search for a plugin by name or functionality."
 msgstr "Ieškokite įskiepio pagal pavadinimą arba funkcionalumą."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-install.js:67
 #: src/HelpCenter/tours/plugin-install.js:66
 msgid "Plugin details"
 msgstr "Įskiepio informacija"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-install.js:68
 #: src/HelpCenter/tours/plugin-install.js:67
 msgid "See important information about each plugin."
 msgstr "Peržiūrėkite svarbią informaciją apie kiekvieną įskiepį."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-install.js:87
 #: src/HelpCenter/tours/plugin-install.js:86
 msgid "Install now"
 msgstr "Įdiegti dabar"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-install.js:88
 #: src/HelpCenter/tours/plugin-install.js:87
 msgid "Install the plugin. Then, press this button again to activate the plugin."
 msgstr "Įdiekite įskiepį. Tada dar kartą paspauskite šį mygtuką, kad įjungtumėte įskiepį."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-install.js:113
 #: src/HelpCenter/tours/plugin-install.js:112
 msgid "Upload Plugin"
 msgstr "Įkelti įskiepį"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-install.js:114
 #: src/HelpCenter/tours/plugin-install.js:113
 msgid "If you have a plugin from an external source, you can upload it directly here."
 msgstr "Jei turite įskiepį iš išorinio šaltinio, galite jį įkelti tiesiogiai čia."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-management.js:18
 #: src/HelpCenter/tours/plugin-management.js:17
 msgid "Installed Plugins menu"
 msgstr "Įdiegtų įskiepių meniu"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-management.js:19
 #: src/HelpCenter/tours/plugin-management.js:18
 msgid "Click this menu to see and manage the plugins you have installed."
 msgstr "Spustelėkite šį meniu, kad peržiūrėtumėte ir tvarkytumėte įdiegtus įskiepius."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-management.js:44
 #: src/HelpCenter/tours/plugin-management.js:43
 msgid "Installed plugins"
 msgstr "Įdiegti įskiepiai"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-management.js:45
 #: src/HelpCenter/tours/plugin-management.js:44
 msgid "See all plugins installed on your site. This includes plugins that are active and deactivated."
 msgstr "Peržiūrėkite visus jūsų svetainėje įdiegtus įskiepius. Tai apima tiek aktyvius, tiek išjungtus įskiepius."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-management.js:64
 #: src/HelpCenter/tours/plugin-management.js:63
 msgid "Deactivate/activate option"
 msgstr "Išjungti/įjungti nustatymą"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-management.js:65
 #: src/HelpCenter/tours/plugin-management.js:64
 msgid "Under each plugin you can activate or deactivate it."
 msgstr "Po kiekvienu įskiepiu galite jį įjungti arba išjungti."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-management.js:105
 #: src/HelpCenter/tours/plugin-management.js:104
 msgid "Add another"
 msgstr "Pridėti kitą"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/plugin-management.js:106
 #: src/HelpCenter/tours/plugin-management.js:105
 msgid "Click here to add another plugin to your site."
 msgstr "Spustelėkite čia, kad pridėtumėte kitą įskiepį į savo svetainę."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/site-assistant.js:15
 #: src/HelpCenter/tours/site-assistant.js:14
 msgid "Tasks"
 msgstr "Užduotys"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/site-assistant.js:16
 #: src/HelpCenter/tours/site-assistant.js:15
 msgid "Now that you've created your starter site, make it your own with these follow up tasks."
 msgstr "Dabar, kai sukūrėte svetainę, pritaikykite ją sau atlikdami šias užduotis."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/site-assistant.js:37
 #: src/HelpCenter/tours/site-assistant.js:36
 msgid "Easily access some of the most common items in WordPress with these quick links."
 msgstr "Lengvai pasiekite dažniausiai naudojamus WordPress elementus naudodami šias greitas nuorodas."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/site-assistant.js:59
 #: src/HelpCenter/tours/site-assistant.js:58
@@ -2613,42 +2613,42 @@ msgstr "Peržiūrėkite mūsų asmenines rekomendacijas, kurios padės pasiekti 
 msgid "You can always access the help center by clicking this button."
 msgstr "Visada galite pasiekti pagalbos centrą paspaudę šį mygtuką."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/site-assistant.js:80
 #: src/HelpCenter/tours/site-assistant.js:100
 msgid "Visit your site"
 msgstr "Aplankyti savo svetainę"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/site-assistant.js:81
 #: src/HelpCenter/tours/site-assistant.js:101
 msgid "You can always visit your site by clicking this button."
 msgstr "Visada galite apsilankyti savo svetainėje spustelėję šį mygtuką."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/site-assistant.js:107
 #: src/HelpCenter/tours/site-assistant.js:127
 msgid "Come back to the Site Assistant any time by clicking the menu item."
 msgstr "Bet kada grįžkite į svetainės vedlį spustelėdami meniu punktą."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/users-screen.js:18
 #: src/HelpCenter/tours/users-screen.js:17
 msgid "All Users menu"
 msgstr "Visų vartotojų meniu"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/users-screen.js:19
 #: src/HelpCenter/tours/users-screen.js:18
 msgid "Click here to view and manage the users on your site."
 msgstr "Spustelėkite čia, kad peržiūrėtumėte ir tvarkytumėte savo svetainės vartotojus."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/users-screen.js:44
 #: src/Agent/tours/welcome.js:251
@@ -2657,49 +2657,49 @@ msgstr "Spustelėkite čia, kad peržiūrėtumėte ir tvarkytumėte savo svetain
 msgid "Users"
 msgstr "Vartotojai"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/users-screen.js:45
 #: src/HelpCenter/tours/users-screen.js:44
 msgid "See all of your users, including admin users in this table."
 msgstr "Peržiūrėkite visus savo vartotojus, įskaitant administratoriaus vartotojus, šioje lentelėje."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/users-screen.js:64
 #: src/HelpCenter/tours/users-screen.js:63
 msgid "Edit user information"
 msgstr "Redaguoti vartotojo informaciją"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/users-screen.js:65
 #: src/HelpCenter/tours/users-screen.js:64
 msgid "Click the edit button to change the user's role, manage their account, or change their profile information."
 msgstr "Paspauskite redagavimo mygtuką, kad pakeistumėte vartotojo vaidmenį, tvarkytumėte jo paskyrą arba pakeistumėte profilio informaciją."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/users-screen.js:95
 #: src/HelpCenter/tours/users-screen.js:94
 msgid "Search for users"
 msgstr "Ieškoti vartotojų"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/users-screen.js:96
 #: src/HelpCenter/tours/users-screen.js:95
 msgid "Use the search bar to find a particular user."
 msgstr "Naudokite paieškos juostą, kad rastumėte konkretų vartotoją."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/users-screen.js:121
 #: src/HelpCenter/tours/users-screen.js:120
 msgid "Add a new user"
 msgstr "Pridėti naują vartotoją"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/users-screen.js:122
 #: src/HelpCenter/tours/users-screen.js:121
@@ -2882,14 +2882,14 @@ msgstr "Grįžti atgal"
 msgid "Extendify Help Center"
 msgstr "Extendify pagalbos centras"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:6
+#: public/build/extendify-agent-c6d61592dafe950df654.js:6
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/components/GuidedTour.jsx:310
 #: src/HelpCenter/components/tours/GuidedTour.jsx:311
 msgid "Tour"
 msgstr "Ekskursija"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:6
+#: public/build/extendify-agent-c6d61592dafe950df654.js:6
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: public/build/extendify-launch-0316c4d49fb231515d63.js:8
 #: src/Agent/components/GuidedTour.jsx:421
@@ -2898,7 +2898,7 @@ msgstr "Ekskursija"
 msgid "Back"
 msgstr "Atgal"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:6
+#: public/build/extendify-agent-c6d61592dafe950df654.js:6
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/components/GuidedTour.jsx:431
 #: src/HelpCenter/components/tours/GuidedTour.jsx:434
@@ -2906,7 +2906,7 @@ msgid "Tour Steps"
 msgstr "Turo žingsniai"
 
 #. translators: %1$s is the current step, %2$s is the total number of steps
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:7
 #: src/Agent/components/GuidedTour.jsx:438
 #: src/HelpCenter/components/tours/GuidedTour.jsx:441
@@ -2914,7 +2914,7 @@ msgstr "Turo žingsniai"
 msgid "%1$s of %2$s"
 msgstr "%1$s iš %2$s"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:7
 #: public/build/extendify-launch-0316c4d49fb231515d63.js:8
 #: src/Agent/components/GuidedTour.jsx:467
@@ -2972,8 +2972,8 @@ msgstr "Tęsti"
 msgid "Just a moment, this is taking longer than expected."
 msgstr "Palaukite, tai užtrunka ilgiau nei tikėtasi."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-launch-0316c4d49fb231515d63.js:8
 #: src/Agent/components/redirects/RedirectFontsVariations.jsx:12
 #: src/Agent/components/redirects/RedirectThemeVariations.jsx:17
@@ -3206,7 +3206,7 @@ msgstr "Dar vienas dalykas prieš pradedant."
 msgid "Hey there, Launch is powered by Extendable and is required to proceed. You can install it from the link below and start over once activated."
 msgstr "Sveiki, Launch veikia su Extendable ir yra būtinas norint tęsti. Galite jį įdiegti iš žemiau esančios nuorodos ir pradėti iš naujo, kai bus aktyvuotas."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: public/build/extendify-launch-0316c4d49fb231515d63.js:14
 #: src/Agent/components/messages/AgentMessage.jsx:19
 #: src/Launch/pages/NeedsTheme.jsx:22
@@ -3332,7 +3332,7 @@ msgstr "Ištrinti esamą turinį"
 msgid "Create a new page"
 msgstr "Sukurti naują puslapį"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: public/build/extendify-page-creator-9a0a4eee57516a61a2cd.js:1
 #: src/Agent/tours/page-creator.js:6
@@ -3535,49 +3535,49 @@ msgstr "Papasakokite apie savo interneto svetainę"
 msgid "Share your vision, and we'll craft a landing page that's perfectly tailored to your needs, ready to launch in no time. Let's begin by learning more about what you're building."
 msgstr "Pasidalinkite savo vizija, ir mes sukursime jūsų poreikiams pritaikytą nukreipimo puslapį, paruoštą greitam paleidimui. Pradėkime sužinodami daugiau apie tai, ką kuriate."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-creator.js:32
 #: src/HelpCenter/tours/page-creator.js:32
 msgid "Press here to get started with your AI Page Generator."
 msgstr "Paspauskite čia, kad pradėtumėte naudoti savo AI puslapių generatorių."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-creator.js:55
 #: src/HelpCenter/tours/page-creator.js:55
 msgid "Page description"
 msgstr "Puslapio aprašymas"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-creator.js:56
 #: src/HelpCenter/tours/page-creator.js:56
 msgid "Write a description of the page you want to create. Be as detailed as you like. We will create a page based on this description."
 msgstr "Parašykite kuriamo puslapio aprašymą. Būkite kiek įmanoma išsamūs. Puslapį sukursime pagal šį aprašymą."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-creator.js:84
 #: src/HelpCenter/tours/page-creator.js:84
 msgid "If needed, update your site description here. We use this to add additional context about your website."
 msgstr "Jei reikia, atnaujinkite savo svetainės aprašymą čia. Naudojame tai papildomam kontekstui apie jūsų svetainę pridėti."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-creator.js:107
 #: src/HelpCenter/tours/page-creator.js:107
 msgid "Generate your page"
 msgstr "Sugeneruokite savo puslapį"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-help-center-a4cb10d4721701ba5d97.js:4
 #: src/Agent/tours/page-creator.js:108
 #: src/HelpCenter/tours/page-creator.js:108
 msgid "When ready, press here to generate your page."
 msgstr "Kai būsite pasiruošę, spustelėkite čia, kad sukurtumėte puslapį."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: public/build/extendify-shared-8d49300600182f94ffe4.js:1
 #: src/Agent/components/tooltip/ToolTip.jsx:101
 #: src/Shared/components/ToolTip.jsx:63
@@ -3643,7 +3643,7 @@ msgstr "Rekomenduojami sprendimai: %s"
 msgid "Show more questions"
 msgstr "Rodyti daugiau klausimų"
 
-#: public/build/extendify-draft-c25a4375489dbe128705.js:10
+#: public/build/extendify-draft-d4e39eb9397c734dc544.js:10
 #: src/Draft/components/TranslationDropdown.jsx:104
 msgid "Hebrew"
 msgstr "Hebrajų"
@@ -3704,44 +3704,44 @@ msgstr "Kaip pakeisti tinklalapio šūkį?"
 msgid "How can I change my site language?"
 msgstr "Kaip pakeisti tinklalapio kalbą?"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: src/Agent/hooks/useThemeVariations.js:17
 msgid "Failed to fetch theme variations."
 msgstr "Nepavyko gauti temos variantų."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: src/Agent/components/redirects/RedirectThemeVariations.jsx:8
 msgid "Hey there! It looks like you are trying to change your theme colors, but you are not on a page where we can do that."
 msgstr "Sveiki! Panašu, kad bandote keisti temos spalvas, tačiau nesate puslapyje, kuriame tai galima padaryti."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: src/Agent/components/redirects/RedirectFontsVariations.jsx:10
 #: src/Agent/components/redirects/RedirectThemeVariations.jsx:15
 #: src/Agent/workflows/theme/components/RedirectFontsVariations.jsx:10
 msgid "Suggestion:"
 msgstr "Pasiūlymas:"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: src/Agent/workflows/theme/components/SelectThemeVariation.jsx:34
 msgid "Loading variations..."
 msgstr "Kraunamos variacijos..."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: src/Agent/workflows/theme/components/SelectThemeVariation.jsx:42
 msgid "No variations found"
 msgstr "Variacijų nerasta"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: src/Agent/workflows/theme/components/SelectThemeFontsVariation.jsx:46
 #: src/Agent/workflows/theme/components/SelectThemeVariation.jsx:45
 msgid "We were unable to find any variations for your theme."
 msgstr "Nepavyko rasti jokių jūsų temos variantų."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:12
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:12
 #: src/Agent/workflows/block-selector/components/UpdateBlockConfirm.jsx:89
 #: src/Agent/workflows/content/components/UpdatePostConfirm.jsx:40
 #: src/Agent/workflows/settings/components/UpdateSettingConfirm.jsx:30
@@ -3750,132 +3750,132 @@ msgstr "Nepavyko rasti jokių jūsų temos variantų."
 msgid "Cancel"
 msgstr "Atšaukti"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:12
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:12
 #: src/Agent/workflows/block-selector/components/UpdateBlockConfirm.jsx:78
 #: src/Agent/workflows/content/components/UpdatePostConfirm.jsx:28
 msgid "The agent has made the changes in the browser. Please review and confirm."
 msgstr "Agentas atliko pakeitimus naršyklėje. Prašome peržiūrėti ir patvirtinti."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: src/Agent/tours/library-tour.js:7
 msgid "Tour the design library"
 msgstr "Apžiūrėti dizaino biblioteką"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: src/Agent/tours/page-creator.js:7
 msgid "Learn about the AI Page Generator"
 msgstr "Sužinokite apie AI puslapių generatorių"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: src/Agent/tours/page-editor.js:14
 msgid "Tour the page editor"
 msgstr "Apžiūrėti puslapio redaktorių"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: src/Agent/tours/plugin-install.js:6
 msgid "See how to install a plugin"
 msgstr "Sužinokite, kaip įdiegti įskiepį"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: src/Agent/tours/plugin-management.js:6
 msgid "Learn how to manage plugins"
 msgstr "Sužinokite, kaip tvarkyti įskiepius"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: src/Agent/tours/site-assistant.js:6
 msgid "Tour the Site Assistant"
 msgstr "Apžiūrėti tinklalapio asistentą"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: src/Agent/tours/users-screen.js:6
 msgid "Tour the Users screen"
 msgstr "Apžiūrėti vartotojų ekraną"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/ChatInput.jsx:165
 msgid "Ask anything"
 msgstr "Klauskite bet ko"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/ChatInput.jsx:186
 msgid "Send message"
 msgstr "Siųsti žinutę"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/ScrollDownButton.jsx:21
 msgid "Scroll down"
 msgstr "Slinkti žemyn"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/messages/AgentMessage.jsx:52
 msgid "Agent"
 msgstr "Agentas"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/messages/StatusMessage.jsx:10
 msgid "Working on it..."
 msgstr "Dirbama..."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/messages/StatusMessage.jsx:11
 msgid "Gathering data..."
 msgstr "Renkami duomenys..."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/messages/StatusMessage.jsx:12
 msgid "Analyzing..."
 msgstr "Analizuojama..."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/messages/StatusMessage.jsx:13
 #: src/Agent/components/messages/StatusMessage.jsx:14
 #: src/Agent/components/messages/StatusMessage.jsx:15
 msgid "Canceled"
 msgstr "Atšaukta"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/messages/StatusMessage.jsx:16
 msgid "Usage limit reached"
 msgstr "Pasiektas naudojimo limitas"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/messages/StatusMessage.jsx:17
 msgid "Usage limit restored"
 msgstr "Naudojimo limitas atkurtas"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/messages/StatusMessage.jsx:30
 msgid "Something went wrong"
 msgstr "Kažkas nepavyko"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/messages/StatusMessage.jsx:33
 msgid "An unexpected error occurred while processing your request."
 msgstr "Apdorojant jūsų užklausą įvyko netikėta klaida."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/messages/StatusMessage.jsx:83
 msgid "Workflow completed successfully"
 msgstr "Darbų eiga sėkmingai užbaigta"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/messages/WorkflowComponent.jsx:17
 msgid "Component not available"
 msgstr "Komponentas neprieinamas"
 
 #. translators: This is for when a component doesn't exist
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/messages/WorkflowComponent.jsx:20
 msgid "It may have been removed or is not available for your account."
 msgstr "Jis galėjo būti pašalintas arba nėra prieinamas jūsų paskyrai."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:3
+#: public/build/extendify-agent-c6d61592dafe950df654.js:3
 #: src/Agent/components/messages/WorkflowMessage.jsx:15
 msgid "What's next? Would you like to do something else?"
 msgstr "Kas toliau? Ar norėtumėte dar ką nors padaryti?"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/layouts/DragResizeLayout.jsx:117
 #: src/Agent/components/layouts/DragResizeLayout.jsx:128
 #: src/Agent/components/layouts/MobileLayout.jsx:50
@@ -3883,48 +3883,48 @@ msgstr "Kas toliau? Ar norėtumėte dar ką nors padaryti?"
 msgid "Close window"
 msgstr "Uždaryti langą"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/layouts/DragResizeLayout.jsx:168
 msgid "Drag to move"
 msgstr "Patraukite norėdami perkelti"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:3
+#: public/build/extendify-agent-c6d61592dafe950df654.js:3
 #: src/Agent/components/WelcomeScreen.jsx:22
 msgid "Site is live!"
 msgstr "Tinklalapis paskelbtas!"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:3
+#: public/build/extendify-agent-c6d61592dafe950df654.js:3
 #: src/Agent/components/WelcomeScreen.jsx:26
 msgid "Your expert AI team is here"
 msgstr "Jūsų ekspertų AI komanda yra čia"
 
 #. translators: %s is a human-readable time difference, e.g. "2 hours from now"
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:6
+#: public/build/extendify-agent-c6d61592dafe950df654.js:6
 #: src/Agent/components/messages/UsageMessage.jsx:30
 #, js-format
 msgid "You have reached your daily messages limit. Your limit will reset in %s."
 msgstr "Pasiekėte savo dienos žinučių limitą. Jūsų limitas bus atstatytas po %s."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:6
+#: public/build/extendify-agent-c6d61592dafe950df654.js:6
 #: src/Agent/components/buttons/AdminBar.jsx:50
 #: src/Agent/components/buttons/Mobile.jsx:36
 #: src/Agent/components/buttons/PostEditor.jsx:47
 msgid "Open Agent"
 msgstr "Atidaryti agentą"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:6
+#: public/build/extendify-agent-c6d61592dafe950df654.js:6
 #: src/Agent/components/buttons/AdminBar.jsx:63
 #: src/Agent/components/buttons/Mobile.jsx:43
 #: src/Agent/components/buttons/PostEditor.jsx:52
 msgid "AI Agent"
 msgstr "Dirbtinio intelekto agentas"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: src/Agent/components/tooltip/ReOpenToolTip.jsx:8
 msgid "Tooltip pointing to the agent button"
 msgstr "Įrankio patarimas, nukreiptas į agento mygtuką"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: src/Agent/components/tooltip/ReOpenToolTip.jsx:14
 msgid "Need help again?"
 msgstr "Reikia pagalbos vėl?"
@@ -4030,7 +4030,7 @@ msgstr "Čia galite keisti savo tinklalapio išdėstymo matmenis, užpildymus ir
 msgid "Take the welcome tour"
 msgstr "Pradėkite susipažinimo turą"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:6
+#: public/build/extendify-agent-c6d61592dafe950df654.js:6
 #: src/Agent/components/buttons/Mobile.jsx:46
 msgid "How can we help you today?"
 msgstr "Kaip galime jums padėti šiandien?"
@@ -4055,12 +4055,12 @@ msgstr "Poraštės navigacija"
 msgid "Adding imprint page"
 msgstr "Pridedamas atspaudo puslapis"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:9
+#: public/build/extendify-agent-c6d61592dafe950df654.js:9
 #: src/Agent/components/tooltip/ReOpenToolTip.jsx:17
 msgid "You can always access your AI Agent if you need help with anything on your site."
 msgstr "Visada galite pasiekti savo AI agentą, jei reikia pagalbos su tinklalapiu."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:3
+#: public/build/extendify-agent-c6d61592dafe950df654.js:3
 #: src/Agent/components/WelcomeScreen.jsx:29
 msgid "Your team of site experts — designers, developers, and marketers — ready to help from content to layouts. Tell us what you need or pick a task to start."
 msgstr "Jūsų tinklalapio ekspertų komanda – dizaineriai, kūrėjai ir rinkodaros specialistai – pasiruošę padėti nuo turinio iki išdėstymo. Pasakykite, ko jums reikia, arba pasirinkite užduotį pradžiai."
@@ -4075,19 +4075,19 @@ msgstr "Patarimas, rodantis į puslapio redagavimo mygtuką"
 msgid "Welcome to your new site! When you're ready, press here to edit this page."
 msgstr "Sveiki atvykę į savo naują tinklalapį! Kai būsite pasiruošę, paspauskite čia, kad redaguotumėte šį puslapį."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:3
+#: public/build/extendify-agent-c6d61592dafe950df654.js:3
 #: src/Agent/components/PageDocument.jsx:15
 #: src/Agent/components/PageDocument.jsx:26
 msgid "Remove"
 msgstr "Pašalinti"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/DOMHighlighter.jsx:201
 #: src/Agent/components/DOMHighlighter.jsx:220
 msgid "Remove highlight"
 msgstr "Pašalinti paryškinimą"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:6
+#: public/build/extendify-agent-c6d61592dafe950df654.js:6
 #: src/Agent/Agent.jsx:488
 msgid "AI Agent can make mistakes. Check changes before saving."
 msgstr "DI agentas gali suklysti. Patikrinkite pakeitimus prieš išsaugant."
@@ -4096,19 +4096,19 @@ msgstr "DI agentas gali suklysti. Patikrinkite pakeitimus prieš išsaugant."
 msgid "I want to change my site title"
 msgstr "Noriu pakeisti savo tinklalapio pavadinimą"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:12
+#: public/build/extendify-agent-c6d61592dafe950df654.js:12
 #: src/Agent/workflows/settings/components/UpdateSettingConfirm.jsx:36
 msgid "Confirm"
 msgstr "Patvirtinti"
 
 #. translators: 1: setting name, 2: new setting value
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:12
+#: public/build/extendify-agent-c6d61592dafe950df654.js:12
 #: src/Agent/workflows/settings/components/UpdateSettingConfirm.jsx:15
 #, js-format
 msgid "The AI Agent wants to change the setting \"%1$s\" to \"%2$s\". Please confirm."
 msgstr "Dirbtinio intelekto agentas nori pakeisti nustatymą „%1$s“ į „%2$s“. Prašome patvirtinti"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/messages/StatusMessage.jsx:9
 msgid "Thinking..."
 msgstr "Mąstoma..."
@@ -4122,44 +4122,49 @@ msgstr "WP Admin-skyrius"
 msgid "I want to change my theme fonts"
 msgstr "Noriu pakeisti savo temos šriftus"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 msgid "Failed to fetch theme font variations."
 msgstr "Nepavyko gauti temos šrifto variacijų."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/workflows/theme/change-theme-fonts-variation.js:12
 msgid "Hey there! It looks like you are trying to change your theme fonts, but you are not on a page where we can do that."
 msgstr "Sveiki! Panašu, kad bandote keisti temos šriftus, tačiau nesate puslapyje, kuriame tai galima padaryti."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/workflows/theme/components/SelectThemeFontsVariation.jsx:34
 msgid "Loading font variations..."
 msgstr "Užkraunamos šrifto variacijos..."
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/workflows/theme/components/SelectThemeFontsVariation.jsx:43
 msgid "No font variations found"
 msgstr "Šrifto variantų nerasta"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/ChatTools.jsx:24
 msgid "Exit select mode"
 msgstr "Išeiti iš pasirinkimo režimo"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/ChatTools.jsx:25
 msgid "Select Area to Edit"
 msgstr "Pasirinkite sritį redagavimui"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/ChatTools.jsx:40
 msgid "Select"
 msgstr "Pasirinkti"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/ChatInput.jsx:161
 msgid "What do you want to change in the selected content?"
 msgstr "Ką norite pakeisti pasirinktame turinyje?"
+
+#: public/build/extendify-agent-c6d61592dafe950df654.js:3
+#: src/Agent/components/PageDocument.jsx:13
+msgid "Selected content"
+msgstr "Pasirinktas turinys"
 
 #. translators: %s is a name
 #: public/build/extendify-recommendations-b646230433527220e538.js:4
@@ -4187,7 +4192,7 @@ msgctxt "Plugin activation status"
 msgid "Activated"
 msgstr "Įjungta"
 
-#: public/build/extendify-agent-baef04d01bc5d3f1b78b.js:1
+#: public/build/extendify-agent-c6d61592dafe950df654.js:1
 #: src/Agent/components/layouts/DragResizeLayout.jsx:110
 #: src/Agent/components/layouts/MobileLayout.jsx:46
 msgctxt "Feature in beta status"

@@ -3,7 +3,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 ?>
-<table class="wt-iew-mapping-tb wt-iew-exporter-meta-mapping-tb" data-field-type="<?php echo $meta_mapping_screen_field_key; ?>">
+<table class="wt-iew-mapping-tb wt-iew-exporter-meta-mapping-tb" data-field-type="<?php echo esc_attr($meta_mapping_screen_field_key); ?>">
 	<thead>
 		<tr>
     		<th>
@@ -11,10 +11,10 @@ if (!defined('ABSPATH')) {
     			$is_checked=(isset($meta_mapping_screen_field_val['checked']) && $meta_mapping_screen_field_val['checked']==1 ? 1 : 0);
     			$checked_attr=($is_checked==1 ? ' checked="checked"' : '');
     			?>
-    			<input type="checkbox" name="" class="wt_iew_mapping_checkbox_main" <?php echo $checked_attr; ?>>
+    			<input type="checkbox" name="" class="wt_iew_mapping_checkbox_main" <?php echo esc_attr($checked_attr); ?>>
     		</th>
-    		<th width="35%"><?php _e('Column');?></th>
-    		<th><?php _e('Column name');?></th>
+    		<th width="35%"><?php esc_html_e('Column', 'order-import-export-for-woocommerce');?></th>
+    		<th><?php esc_html_e('Column name', 'order-import-export-for-woocommerce');?></th>
     	</tr>
 	</thead>
 	<tbody>
@@ -46,7 +46,7 @@ if (!defined('ABSPATH')) {
 			?>
 			<tr>
 				<td colspan="3" style="text-align:center;">
-					<?php _e('No fields found.'); ?>
+					<?php esc_html_e('No fields found.', 'order-import-export-for-woocommerce'); ?>
 				</td>
 			</tr>
 			<?php

@@ -59,16 +59,16 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Import {
                    if($this->is_coupon_exist){
                         $msg = 'Coupon updated successfully.';
                     }
-                    $this->import_results[$row] = array('row'=>$row, 'message'=>$msg, 'status'=>true, 'status_msg' => __( 'Success' ), 'post_id'=>$result['id'], 'post_link' => Wt_Import_Export_For_Woo_Basic_Coupon::get_item_link_by_id($result['id'])); 
+                    $this->import_results[$row] = array('row'=>$row, 'message'=>$msg, 'status'=>true, 'status_msg' => __( 'Success', 'order-import-export-for-woocommerce' ), 'post_id'=>$result['id'], 'post_link' => Wt_Import_Export_For_Woo_Basic_Coupon::get_item_link_by_id($result['id'])); 
                     Wt_Import_Export_For_Woo_Basic_Logwriter::write_log($this->parent_module->module_base, 'import', "Row :$row - ".$msg); 
                     $success++;                  
                 }else{
-                   $this->import_results[$row] = array('row'=>$row, 'message'=>$result->get_error_message(), 'status'=>false, 'status_msg' => __( 'Failed/Skipped' ), 'post_id'=>'', 'post_link' => array( 'title' => __( 'Untitled' ), 'edit_url' => false ) );
+                   $this->import_results[$row] = array('row'=>$row, 'message'=>$result->get_error_message(), 'status'=>false, 'status_msg' => __( 'Failed/Skipped', 'order-import-export-for-woocommerce' ), 'post_id'=>'', 'post_link' => array( 'title' => __( 'Untitled', 'order-import-export-for-woocommerce' ), 'edit_url' => false ) );
                    Wt_Import_Export_For_Woo_Basic_Logwriter::write_log($this->parent_module->module_base, 'import', "Row :$row - Processing failed. Reason: ".$result->get_error_message());
                    $failed++;
                 }                
             }else{
-               $this->import_results[$row] = array('row'=>$row, 'message'=>$parsed_data->get_error_message(), 'status'=>false, 'status_msg' => __( 'Failed/Skipped' ), 'post_id'=>'', 'post_link' => array( 'title' => __( 'Untitled' ), 'edit_url' => false ) );
+               $this->import_results[$row] = array('row'=>$row, 'message'=>$parsed_data->get_error_message(), 'status'=>false, 'status_msg' => __( 'Failed/Skipped', 'order-import-export-for-woocommerce' ), 'post_id'=>'', 'post_link' => array( 'title' => __( 'Untitled', 'order-import-export-for-woocommerce' ), 'edit_url' => false ) );
                Wt_Import_Export_For_Woo_Basic_Logwriter::write_log($this->parent_module->module_base, 'import', "Row :$row - Parsing failed. Reason: ".$parsed_data->get_error_message());
                $failed++;                
             }            
@@ -91,7 +91,9 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Import {
     
     public function clean_after_import() {
         global $wpdb;
-        $posts = $wpdb->get_col($wpdb->prepare("SELECT ID FROM {$wpdb->posts} WHERE post_status = '%s' AND post_type = '%s' ", 'importing' ,$this->post_type)); 
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.NotPrepared -- Its necessary to use direct database query.
+        $posts = $wpdb->get_col($wpdb->prepare("SELECT ID FROM {$wpdb->posts} WHERE post_status = %s AND post_type = %s ", 'importing' ,$this->post_type)); 
+        // phpcs:enable
         if($posts){
             array_map('wp_delete_post',$posts);
         }
@@ -104,6 +106,7 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Import {
             'fields' => 'ids',
             'posts_per_page' => -1,
             'post_status' => array('publish', 'private', 'draft', 'pending', 'future'),
+            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Its necessary to use meta query.
             'meta_query' => [
                 [
                     'key' => '_wt_delete_existing',
@@ -122,6 +125,7 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Import {
             'fields' => 'ids',
             'posts_per_page' => -1,
             'post_status' => array('publish', 'private', 'draft', 'pending', 'future'),
+            // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Its necessary to use meta query.
             'meta_query' => [
                 [
                     'key' => '_wt_delete_existing',
@@ -314,7 +318,7 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Import {
                 $discount_type = 'percent'; // Backwards compatibility.
         }
         if ( ! in_array( $discount_type, array_keys( wc_get_coupon_types() ), true ) ) {                
-                throw new Exception(sprintf('Invalid discount type. Type: %s',$discount_type ));
+                throw new Exception(esc_html(sprintf('Invalid discount type. Type: %s',$discount_type )));
         }
 
         return $discount_type;
@@ -376,8 +380,10 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Import {
         
         $id = isset($data['ID']) && !empty($data['ID']) ? absint($data['ID']) : 0;         
         $id_found_with_id = '';
-        if($id && 'id' == $this->merge_with ){                    
+        if($id && 'id' == $this->merge_with ){ 
+            // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Its necessary to use direct database query.
             $id_found_with_id = $wpdb->get_var($wpdb->prepare("SELECT ID FROM {$wpdb->posts} WHERE post_status IN ( 'publish', 'private', 'draft', 'pending', 'future' ) AND ID = %d;", $id)); // WPCS: db call ok, cache ok.
+            // phpcs:enable
             if($id_found_with_id){
                if($this->post_type == get_post_type($id_found_with_id)){
                    $this->is_coupon_exist = true;
@@ -390,25 +396,25 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Import {
         $id_found_with_code = '';
         if(!empty($code && 'code' == $this->merge_with)){            
             $post_db_type = $this->post_type;
-            $post_pass_type = '"'.$post_db_type.'"';
-            $db_query = $wpdb->prepare("
-                            SELECT $wpdb->posts.ID
-                            FROM $wpdb->posts
-                            WHERE $wpdb->posts.post_type = $post_pass_type
-                            AND $wpdb->posts.post_status IN ( 'publish', 'private', 'draft', 'pending', 'future' )
-                            AND $wpdb->posts.post_title = '%s'
-                         ", $code);
-            $id_found_with_code = $wpdb->get_var($db_query); 
-            $this->is_coupon_exist = true;
+            // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Its necessary to use direct database query.
+            $id_found_with_code = $wpdb->get_var($wpdb->prepare("
+                SELECT $wpdb->posts.ID
+                FROM $wpdb->posts
+                WHERE $wpdb->posts.post_type = %s
+                AND $wpdb->posts.post_status IN ( 'publish', 'private', 'draft', 'pending', 'future' )
+                AND $wpdb->posts.post_title = %s
+            ", $post_db_type, $code)); 
+            // phpcs:enable
+            $this->is_coupon_exist = ( $id_found_with_code > 0 );
             $coupon_id = $id_found_with_code;
         }
         
         if($this->is_coupon_exist){
             if('skip' == $this->found_action){
                 if($id && $id_found_with_id ){
-                    throw new Exception(sprintf('Coupon with same ID already exists. ID: %d',$id ));
+                    throw new Exception(esc_html(sprintf('Coupon with same ID already exists. ID: %d',$id )));
                 }elseif($code && $id_found_with_code ){
-                    throw new Exception(sprintf('%s with same Code already exists. Code: %s',ucfirst($this->parent_module->module_base),$code ));
+                    throw new Exception(esc_html(sprintf('%s with same Code already exists. Code: %s',ucfirst($this->parent_module->module_base),$code )));
                 }else{
                     throw new Exception('Coupon already exists.');
                 }                 
@@ -423,11 +429,11 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Import {
         } 
         
         if($id && $id_found_with_id && !$this->is_coupon_exist && 'skip' == $this->id_conflict){
-            throw new Exception(sprintf('Importing Coupon(ID) conflicts with an existing post. ID: %d',$id ));
+            throw new Exception(esc_html(sprintf('Importing Coupon(ID) conflicts with an existing post. ID: %d',$id )));
         }
         
         if(empty($code)){
-            throw new Exception(sprintf('Cannot insert without %s Code', ucfirst($this->parent_module->module_base)) );
+            throw new Exception(esc_html(sprintf('Cannot insert without %s Code', ucfirst($this->parent_module->module_base)) ));
         }
                             
         $postdata = array( // if not specifiying id (id is empty) or if not found by given id or coupon 
@@ -443,7 +449,7 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Import {
             Wt_Import_Export_For_Woo_Basic_Logwriter::write_log($this->parent_module->module_base, 'import', sprintf('Importing as new '. ($this->parent_module->module_base).' ID:%d',$post_id ));
             return $post_id;
         }else{
-            throw new Exception($post_id->get_error_message());
+            throw new Exception(wp_kses_post($post_id->get_error_message()));
         }
 
     }    
@@ -453,8 +459,10 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Import {
         
         $id = isset($data['ID']) && !empty($data['ID']) ? absint($data['ID']) : 0;         
         $id_found_with_id = '';
-        if($id){                    
+        if($id){  
+            // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Its necessary to use direct database query.
             $id_found_with_id = $wpdb->get_var($wpdb->prepare("SELECT ID FROM {$wpdb->posts} WHERE post_status IN ( 'publish', 'private', 'draft', 'pending', 'future' ) AND ID = %d;", $id)); // WPCS: db call ok, cache ok.
+            // phpcs:enable
             if($id_found_with_id){
                if($this->post_type == get_post_type($id_found_with_id)){
                    $this->is_coupon_exist = true;
@@ -466,31 +474,31 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Import {
         $id_found_with_code = '';
         if(!empty($code)){            
             $post_db_type = $this->post_type;
-            $post_pass_type = '"'.$post_db_type.'"';
-            $db_query = $wpdb->prepare("
-                            SELECT $wpdb->posts.ID
-                            FROM $wpdb->posts
-                            WHERE $wpdb->posts.post_type = $post_pass_type
-                            AND $wpdb->posts.post_status IN ( 'publish', 'private', 'draft', 'pending', 'future' )
-                            AND $wpdb->posts.post_title = '%s'
-                         ", $code);
-            $id_found_with_code = $wpdb->get_var($db_query);                        
+            // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Its necessary to use direct database query.
+            $id_found_with_code = $wpdb->get_var($wpdb->prepare("
+                SELECT $wpdb->posts.ID
+                FROM $wpdb->posts
+                WHERE $wpdb->posts.post_type = %s
+                AND $wpdb->posts.post_status IN ( 'publish', 'private', 'draft', 'pending', 'future' )
+                AND $wpdb->posts.post_title = %s
+            ", $post_db_type, $code)); 
+            // phpcs:enable
         }
 
         if( !$this->merge ){
             
             if(empty($code)){
-                throw new Exception(sprintf('Cannot insert without %s Code', ucfirst($this->parent_module->module_base)) );
+                throw new Exception(esc_html(sprintf('Cannot insert without %s Code', ucfirst($this->parent_module->module_base)) ));
             }
             
             if('skip' == $this->found_action){ // skip if found
                 
                 if($id && $id_found_with_id && $this->is_coupon_exist){
-                    throw new Exception(sprintf('Coupon with same ID already exists. ID: %d',$id ));
+                    throw new Exception(esc_html(sprintf('Coupon with same ID already exists. ID: %d',$id )));
                 }elseif($id && $id_found_with_id && !$this->is_coupon_exist){
-                    throw new Exception(sprintf('Importing %s(ID) conflicts with an existing post. ID: %d',ucfirst($this->parent_module->module_base),$id ));
+                    throw new Exception(esc_html(sprintf('Importing %s(ID) conflicts with an existing post. ID: %d',ucfirst($this->parent_module->module_base),$id )));
                 }elseif($code && $id_found_with_code){
-                    throw new Exception(sprintf('%s with same Code already exists. Code: %s',ucfirst($this->parent_module->module_base),$code ));
+                    throw new Exception(esc_html(sprintf('%s with same Code already exists. Code: %s',ucfirst($this->parent_module->module_base),$code )));
                 } 
                                 
                 
@@ -507,7 +515,7 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Import {
                     $post = get_post($post_id);                    
                     return $post_id;
                 }else{
-                    throw new Exception($post_id->get_error_message());
+                    throw new Exception(wp_kses_post($post_id->get_error_message()));
                 }
   
                 throw new Exception('fasil !merge, found_action skip');
@@ -515,11 +523,11 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Import {
             }elseif('import' == $this->found_action){ // import if not found
                 
                 if($id && $id_found_with_id && $this->is_coupon_exist){
-                    throw new Exception(sprintf('%s with same ID already exists. ID: %d',ucfirst($this->parent_module->module_base),$id ));
+                    throw new Exception(esc_html(sprintf('%s with same ID already exists. ID: %d',ucfirst($this->parent_module->module_base),$id )));
                 }elseif($id && $id_found_with_id && !$this->is_coupon_exist && $this->use_same_id ){
-                    throw new Exception(sprintf('Importing %s(ID) conflicts with an existing post. ID: %d',ucfirst($this->parent_module->module_base),$id ));
+                    throw new Exception(esc_html(sprintf('Importing %s(ID) conflicts with an existing post. ID: %d',ucfirst($this->parent_module->module_base),$id )));
                 }elseif($code && $id_found_with_code){
-                    throw new Exception(sprintf('%s with same Code already exists. Code: %s',ucfirst($this->parent_module->module_base),$code ));
+                    throw new Exception(esc_html(sprintf('%s with same Code already exists. Code: %s',ucfirst($this->parent_module->module_base),$code )));
                 }
                 
                 
@@ -535,7 +543,7 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Import {
                 if($post_id && !is_wp_error($post_id)){
                     return $post_id;
                 }else{
-                    throw new Exception($post_id->get_error_message());
+                    throw new Exception(wp_kses_post($post_id->get_error_message()));
                 }                            
             }
             
@@ -543,7 +551,7 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Import {
         }elseif($this->merge){
             
             if(empty($id) && empty($code)){
-                throw new Exception(sprintf('Cannot update/insert without ID and %s Code',ucfirst($this->parent_module->module_base)) );
+                throw new Exception(esc_html(sprintf('Cannot update/insert without ID and %s Code',ucfirst($this->parent_module->module_base)) ));
             }  
             
             if('id' == $this->merge_with){
@@ -553,15 +561,15 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Import {
                     if($id && $id_found_with_id && $this->is_coupon_exist){ //found coupon by id 
                         return $id; // update
                     }elseif($id && $id_found_with_id && !$this->is_coupon_exist){ // found an item by id ,but not a coupon
-                        throw new Exception(sprintf('Importing %s(ID) conflicts with an existing post. ID: %d',ucfirst($this->parent_module->module_base),$id ));
+                        throw new Exception(esc_html(sprintf('Importing %s(ID) conflicts with an existing post. ID: %d',ucfirst($this->parent_module->module_base),$id )));
                     }elseif(($id && !$id_found_with_id) || !$id){
-                        throw new Exception(sprintf('Cannot find %s with given ID %d',ucfirst($this->parent_module->module_base),$id ));      
+                        throw new Exception(esc_html(sprintf('Cannot find %s with given ID %d',ucfirst($this->parent_module->module_base),$id )));      
                     }elseif($code && $id_found_with_code){
-                        throw new Exception(sprintf('%s with same Code already exists. Code: %s',ucfirst($this->parent_module->module_base),$code ));
+                        throw new Exception(esc_html(sprintf('%s with same Code already exists. Code: %s',ucfirst($this->parent_module->module_base),$code )));
                     }
                                         
                     if(empty($code)){
-                        throw new Exception(sprintf('Cannot insert without %s Code',ucfirst($this->parent_module->module_base)) );
+                        throw new Exception(esc_html(sprintf('Cannot insert without %s Code',ucfirst($this->parent_module->module_base)) ));
                     }
                     if($this->skip_new){
                         throw new Exception('Skipping new item' );
@@ -578,7 +586,7 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Import {
                     if($post_id && !is_wp_error($post_id)){
                         return $post_id;
                     }else{
-                        throw new Exception($post_id->get_error_message());
+                        throw new Exception(wp_kses_post($post_id->get_error_message()));
                     } 
 
 
@@ -586,13 +594,13 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Import {
                     if($id && $id_found_with_id && $this->is_coupon_exist){  //found coupon by id 
                         return $id; // update
                     }elseif($id && $id_found_with_id && !$this->is_coupon_exist && $this->use_same_id ){ // found an item by id ,but not a coupon, but should use the same id
-                        throw new Exception(sprintf('Importing %s(ID) conflicts with an existing post. ID: %d',ucfirst($this->parent_module->module_base),$id ));
+                        throw new Exception(esc_html(sprintf('Importing %s(ID) conflicts with an existing post. ID: %d',ucfirst($this->parent_module->module_base),$id )));
                     }elseif($code && $id_found_with_code){
-                        throw new Exception(sprintf('%s with same Code already exists. Code: %s',ucfirst($this->parent_module->module_base),$code ));
+                        throw new Exception(esc_html(sprintf('%s with same Code already exists. Code: %s',ucfirst($this->parent_module->module_base),$code )));
                     }
                     
                     if(empty($code)){
-                        throw new Exception(sprintf('Cannot insert without %s Code',ucfirst($this->parent_module->module_base)) );
+                        throw new Exception(esc_html(sprintf('Cannot insert without %s Code',ucfirst($this->parent_module->module_base)) ));
                     } 
                     if($this->skip_new){
                         throw new Exception('Skipping new item' );
@@ -609,13 +617,13 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Import {
                     if($post_id && !is_wp_error($post_id)){
                         return $post_id;
                     }else{
-                        throw new Exception($post_id->get_error_message());
+                        throw new Exception(wp_kses_post($post_id->get_error_message()));
                     }
                 }
 
             }elseif('coupon_code' == $this->merge_with){
                 if(empty($code)){
-                    throw new Exception(sprintf('Cannot update/insert without %s Code',ucfirst($this->parent_module->module_base)) );
+                    throw new Exception(esc_html(sprintf('Cannot update/insert without %s Code',ucfirst($this->parent_module->module_base)) ));
                 }
                 
                 if('skip' == $this->found_action){ // skip if not found
@@ -623,17 +631,17 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Import {
                     if($code && $id_found_with_code ){ //  found coupon by Code
                         return $id_found_with_code; // update
                     }elseif($code && !$id_found_with_code ){ // found an item by id ,but not a coupon
-                        throw new Exception(sprintf('Cannot find %s with given Coupon Code %s',ucfirst($this->parent_module->module_base),$code ));
+                        throw new Exception(esc_html(sprintf('Cannot find %s with given Coupon Code %s',ucfirst($this->parent_module->module_base),$code )));
                     }                                        
-                    throw new Exception('fasil, merge, merge_with coupon_code, found_action skip');
+                    throw new Exception('merge, merge_with coupon_code, found_action skip');
 
                 }elseif('import' == $this->found_action){ // import as new if not found                                       
                     if($code && $id_found_with_code ){ //  found coupon by Code
                         return $id_found_with_code; // update
                     }elseif($id && $id_found_with_id && !$this->is_coupon_exist && $this->use_same_id ){ // the given id is already used by other post
-                        throw new Exception(sprintf('Importing %s(ID) conflicts with an existing post. ID: %d',ucfirst($this->parent_module->module_base),$id ));
+                        throw new Exception(esc_html(sprintf('Importing %s(ID) conflicts with an existing post. ID: %d',ucfirst($this->parent_module->module_base),$id )));
                     }elseif($id && $id_found_with_id && $this->is_coupon_exist && $this->use_same_id ){ // the given id is already used by othere coupon
-                        throw new Exception(sprintf('%s with same ID already exists. ID: %d',ucfirst($this->parent_module->module_base),$id ));
+                        throw new Exception(esc_html(sprintf('%s with same ID already exists. ID: %d',ucfirst($this->parent_module->module_base),$id )));
                     }
                     
                     if($this->skip_new){
@@ -651,7 +659,7 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Import {
                     if($post_id && !is_wp_error($post_id)){
                         return $post_id;
                     }else{
-                        throw new Exception($post_id->get_error_message());
+                        throw new Exception(wp_kses_post($post_id->get_error_message()));
                     }  
                 }                                                
             }
@@ -892,7 +900,7 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Import {
             );
             return $result;
         } catch (Exception $e) {
-            return new WP_Error('woocommerce_product_importer_error', $e->getMessage(), array('status' => $e->getCode()));
+            return new WP_Error('woocommerce_product_importer_error', wp_kses_post($e->getMessage()), array('status' => $e->getCode()));
         }
     }
     function get_object($data) {
@@ -904,7 +912,7 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Import {
             $types[] = 'variation';
 
             if (!in_array($data['type'], $types, true)) {
-                return new WP_Error('woocommerce_product_importer_invalid_type', __('Invalid product type.', 'woocommerce'), array('status' => 401));
+                return new WP_Error('woocommerce_product_importer_invalid_type', __('Invalid product type.', 'order-import-export-for-woocommerce'), array('status' => 401));
             }
 
             try {
@@ -927,11 +935,12 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Import {
 
             if (!$product) {
                 return new WP_Error(
-                        'woocommerce_product_csv_importer_invalid_id',
-                        /* translators: %d: product ID */ sprintf(__('Invalid product ID %d.', 'woocommerce'), $id), array(
-                    'id' => $id,
-                    'status' => 401,
-                        )
+                    'woocommerce_product_csv_importer_invalid_id',
+                    /* translators: %d: product ID */ 
+                    esc_html(sprintf(__('Invalid product ID %d.', 'order-import-export-for-woocommerce'), $id)), array(
+                        'id' => $id,
+                        'status' => 401,
+                    )
                 );
             }
         } else {

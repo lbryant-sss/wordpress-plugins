@@ -51,7 +51,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 		
 		/* allowed file types */
 		$this->allowed_import_file_type=array(
-			'csv'=>__('CSV'),
+			'csv'=> __('CSV', 'order-import-export-for-woocommerce'),
 		);
 		$this->allowed_import_file_type_mime=array(
 			'csv'=>'text/csv',
@@ -64,27 +64,27 @@ class Wt_Import_Export_For_Woo_Basic_Import
 		/* default step list */
 		$this->steps=array(
 			'post_type'=>array(
-				'title'=>__('Select a post type'),
-				'description'=>__( 'Use a CSV file to import data. As a first step, select the post type.' ),
+				'title'=>__('Select a post type', 'order-import-export-for-woocommerce'),
+				'description'=>__( 'Use a CSV file to import data. As a first step, select the post type.', 'order-import-export-for-woocommerce' ),
 			),
 			'method_import'=>array(
-				'title'=>__('Select import method'),
-				'description'=>__('Choose from the options below to continue with your import: quick import, based on a pre-saved template or a new import with advanced options.'),
+				'title'=>__('Select import method', 'order-import-export-for-woocommerce'),
+				'description'=>__('Choose from the options below to continue with your import: quick import, based on a pre-saved template or a new import with advanced options.', 'order-import-export-for-woocommerce'),
 			), 
 			'mapping'=>array(
-				'title'=>__('Map import columns'),
-				'description'=>__('Map the standard columns with your CSV column names.'),
+				'title'=>__('Map import columns', 'order-import-export-for-woocommerce'),
+				'description'=>__('Map the standard columns with your CSV column names.', 'order-import-export-for-woocommerce'),
 			),
 			'advanced'=>array(
-				'title'=>__('Advanced options/Batch import'),
-				'description'=>__('Use advanced options from below to decide on the delimiter options, updates to existing products, batch import count or schedule an import. You can also save the template file for future imports.'),
+				'title'=>__('Advanced options/Batch import', 'order-import-export-for-woocommerce'),
+				'description'=>__('Use advanced options from below to decide on the delimiter options, updates to existing products, batch import count or schedule an import. You can also save the template file for future imports.', 'order-import-export-for-woocommerce'),
 			),
 		);
 
 		$this->import_methods=array(
-			'quick'=>array('title'=>__('Quick import'), 'description'=> __('Use this option primarily if you exported the input file using the same plugin.')),
-			'template'=>array('title'=>__('Pre-saved template'), 'description'=> __('Retains the filter parameters and column specifications as per the chosen template and imports data accordingly.')),
-			'new'=>array('title'=>__('Advanced Import'), 'description'=> __('Imports data after a detailed process of filtration, column selection and advanced options. The configured settings can be saved as a template for future imports.')),
+			'quick'=>array('title'=>__('Quick import', 'order-import-export-for-woocommerce'), 'description'=> __('Use this option primarily if you exported the input file using the same plugin.', 'order-import-export-for-woocommerce')),
+			'template'=>array('title'=>__('Pre-saved template', 'order-import-export-for-woocommerce'), 'description'=> __('Retains the filter parameters and column specifications as per the chosen template and imports data accordingly.', 'order-import-export-for-woocommerce')),
+			'new'=>array('title'=>__('Advanced Import', 'order-import-export-for-woocommerce'), 'description'=> __('Imports data after a detailed process of filtration, column selection and advanced options. The configured settings can be saved as a template for future imports.', 'order-import-export-for-woocommerce')),
 		);
 		
 		$this->step_need_validation_filter=array('method_import', 'mapping', 'advanced');
@@ -116,42 +116,43 @@ class Wt_Import_Export_For_Woo_Basic_Import
 	public function advanced_setting_fields($fields)
 	{
 		
-                $fields['maximum_execution_time'] = array(
-                        'label' => __("Maximum execution time"),
-                        'type' => 'number',
-                        'value' => ini_get('max_execution_time'), /* Default max_execution_time settings value */
-                        'field_name' => 'maximum_execution_time',
-                        'field_group' => 'advanced_field',
-                        'help_text' => __('The maximum execution time, in seconds(eg:- 300, 600, 1800, 3600). If set to zero, no time limit is imposed. Increasing this will reduce the chance of export/import timeouts.'),
-                        'validation_rule' => array('type' => 'int'),
-                );            
-                $fields['enable_import_log'] = array(
-				'label' => __("Generate Import log"),
-				'type' => 'checkbox',
-				'checkbox_fields' => array( 1 => __( 'Enable' ) ),
-				'value' => 1,
-				'field_name' => 'enable_import_log',
-				'field_group' => 'advanced_field',
-				'help_text' => __("You can view the logs in the <a href=" . admin_url('admin.php?page=wt_import_export_for_woo_basic_history_log') . "><b>Import Logs</b></a> section or in History > View logs."),
-				'validation_rule' => array('type' => 'absint'),
-			);	
+	    $fields['maximum_execution_time'] = array(
+            'label' => __("Maximum execution time", 'order-import-export-for-woocommerce'),
+            'type' => 'number',
+            'value' => ini_get('max_execution_time'), /* Default max_execution_time settings value */
+            'field_name' => 'maximum_execution_time',
+            'field_group' => 'advanced_field',
+            'help_text' => __('The maximum execution time, in seconds(eg:- 300, 600, 1800, 3600). If set to zero, no time limit is imposed. Increasing this will reduce the chance of export/import timeouts.', 'order-import-export-for-woocommerce'),
+            'validation_rule' => array('type' => 'int'),
+        );            
+	    $fields['enable_import_log'] = array(
+			'label' => __("Generate Import log", 'order-import-export-for-woocommerce'),
+			'type' => 'checkbox',
+			'checkbox_fields' => array( 1 => __( 'Enable', 'order-import-export-for-woocommerce' ) ),
+			'value' => 1,
+			'field_name' => 'enable_import_log',
+			'field_group' => 'advanced_field',
+			// translators: 1: a tag open, 2: a tag close
+			'help_text' => sprintf( __( 'You can view the logs in the %1$sImport Logs%2$s section or in History > View logs.', 'order-import-export-for-woocommerce' ), '<a href="' . esc_url( admin_url('admin.php?page=wt_import_export_for_woo_basic_history_log' ) ) . '"><b>', '</b></a>' ),
+			'validation_rule' => array('type' => 'absint'),
+		);	
 				
-			$import_methods=array_map(function($vl){ return $vl['title']; }, $this->import_methods);
+		$import_methods=array_map(function($vl){ return $vl['title']; }, $this->import_methods);
 		$fields['default_import_method']=array(
-			'label'=>__("Default Import method"),
+			'label'=>__("Default Import method", 'order-import-export-for-woocommerce'),
 			'type'=>'select',
 			'sele_vals'=>$import_methods,
                         'value' =>'new',
 			'field_name'=>'default_import_method',
 			'field_group'=>'advanced_field',			
-			'help_text'=>__('Select the default method of import.'),
+			'help_text'=>__('Select the default method of import.', 'order-import-export-for-woocommerce'),
 		);
 		$fields['default_import_batch']=array(
-			'label'=>__("Default Import batch count"),
+			'label'=>__("Default Import batch count", 'order-import-export-for-woocommerce'),
 			'type'=>'number',
             'value' =>10, /* If altering then please also change batch count field help text section */
 			'field_name'=>'default_import_batch',
-			'help_text'=>__('Provide the default count for the records to be imported in a batch.'),
+			'help_text'=>__('Provide the default count for the records to be imported in a batch.', 'order-import-export-for-woocommerce'),
 			'validation_rule'=>array('type'=>'absint'),
 			'attr' => array('min' => 1, 'max' => 50),
 		);
@@ -167,11 +168,12 @@ class Wt_Import_Export_For_Woo_Basic_Import
 		$advanced_screen_fields=array(
 			
 			'batch_count'=>array(
-				'label'=>__("Import in batches of"),
+				'label'=>__("Import in batches of", 'order-import-export-for-woocommerce'),
 				'type'=>'text',
 				'value'=>$this->default_batch_count,
 				'field_name'=>'batch_count',
-				'help_text'=>sprintf(__('The number of records that the server will process for every iteration within the configured timeout interval. If the import fails you can lower this number accordingly and try again. Defaulted to %d records.'), 10),
+				// translators: %d: number of records
+				'help_text'=>sprintf(__('The number of records that the server will process for every iteration within the configured timeout interval. If the import fails you can lower this number accordingly and try again. Defaulted to %d records.', 'order-import-export-for-woocommerce'), 10),
 				'validation_rule'=>array('type'=>'absint'),
 			)
 		);
@@ -187,7 +189,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 	public function get_method_import_screen_fields($method_import_form_data)
 	{
 		$file_from_arr=array(
-			'local'=>__('Local'),
+			'local'=>__('Local', 'order-import-export-for-woocommerce'),
 		);
 
 		/* taking available remote adapters */
@@ -203,7 +205,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 
 		//prepare file from field type based on remote type adapters
 		$file_from_field_arr=array(
-			'label'=>__("Choose file for Import").' [<a href"#" target="_blank" id="sample-csv-file">'. __('Sample CSV').'</a>]',
+			'label'=>__("Choose file for Import", 'order-import-export-for-woocommerce').' [<a href"#" target="_blank" id="sample-csv-file">'. __('Sample CSV', 'order-import-export-for-woocommerce').'</a>]',
 			'type'=>'select',
 			'tr_class'=>'wt-iew-import-method-options wt-iew-import-method-options-quick wt-iew-import-method-options-new wt-iew-import-method-options-template',
 			'sele_vals'=>$file_from_arr,
@@ -219,7 +221,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 		$method_import_screen_fields=array(
 			'file_from'=>$file_from_field_arr,
 			'local_file'=>array(
-				'label'=>__("Select a file"),
+				'label'=>__("Select a file", 'order-import-export-for-woocommerce'),
 				'type'=>'dropzone',
 				'merge_left'=>true,
 				'merge_right'=>true,
@@ -241,7 +243,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 
 
 		$method_import_screen_fields['delimiter']=array(
-			'label'=>__("Delimiter"),
+			'label'=>__("Delimiter", 'order-import-export-for-woocommerce'),
 			'type'=>'select',
 			'value'=>",",
 			'css_class'=>"wt_iew_delimiter_preset",
@@ -249,7 +251,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 			'tr_class'=>$file_from_field_arr['tr_class'], //add tr class from parent.Because we need to toggle the tr when parent tr toggles.
 			'field_name'=>'delimiter_preset',
 			'sele_vals'=>Wt_Iew_IE_Basic_Helper::_get_csv_delimiters(),
-			'help_text'=>__('The character used to separate columns in the CSV file. Takes comma (,) by default.'),
+			'help_text'=>__('The character used to separate columns in the CSV file. Takes comma (,) by default.', 'order-import-export-for-woocommerce'),
 			'validation_rule'=>array('type'=>'skip'),
 			'after_form_field'=>'<input type="text" class="wt_iew_custom_delimiter" name="wt_iew_delimiter" value="," />',
 		);
@@ -271,8 +273,8 @@ class Wt_Import_Export_For_Woo_Basic_Import
 			$this->module_base=>array(
 				'submenu',
 				WT_IEW_PLUGIN_ID_BASIC,
-				__('Import'),
-				__('Import'),
+				__('Import', 'order-import-export-for-woocommerce'),
+				__('Import', 'order-import-export-for-woocommerce'),
 				apply_filters('wt_import_export_allowed_capability', 'import'),
 				$this->module_id,
 				array($this, 'admin_settings_page')
@@ -291,7 +293,8 @@ class Wt_Import_Export_For_Woo_Basic_Import
 		/**
 		*	Check it is a rerun call
 		*/
-		$requested_rerun_id=(isset($_GET['wt_iew_rerun']) ? absint($_GET['wt_iew_rerun']) : 0);
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce verification not required.
+		$requested_rerun_id=(isset($_GET['wt_iew_rerun']) ? absint(wp_unslash($_GET['wt_iew_rerun'])) : 0);
 		$this->_process_rerun($requested_rerun_id);
 		
 		if($this->rerun_id>0) /* this is a rerun request. Then validate the file */
@@ -370,102 +373,104 @@ class Wt_Import_Export_For_Woo_Basic_Import
 
 	protected function enqueue_assets()
 	{
-            if(Wt_Import_Export_For_Woo_Basic_Common_Helper::wt_is_screen_allowed()){
-		/* adding dropzone JS */
-		wp_enqueue_script(WT_IEW_PLUGIN_ID_BASIC.'-dropzone', WT_O_IEW_PLUGIN_URL.'admin/js/dropzone.min.js', array('jquery'), WT_O_IEW_VERSION);
+        if(Wt_Import_Export_For_Woo_Basic_Common_Helper::wt_is_screen_allowed()){
+			/* adding dropzone JS */
+			wp_enqueue_script(WT_IEW_PLUGIN_ID_BASIC.'-dropzone', WT_O_IEW_PLUGIN_URL.'admin/js/dropzone.min.js', array('jquery'), WT_O_IEW_VERSION, true);
 
-		wp_enqueue_script($this->module_id, plugin_dir_url(__FILE__).'assets/js/main.js', array('jquery', 'jquery-ui-sortable', 'jquery-ui-datepicker'), WT_O_IEW_VERSION);
-		wp_enqueue_style('jquery-ui-datepicker');
-		//wp_enqueue_media();
+			wp_enqueue_script($this->module_id, plugin_dir_url(__FILE__).'assets/js/main.js', array('jquery', 'jquery-ui-sortable', 'jquery-ui-datepicker'), WT_O_IEW_VERSION, true);
+			wp_enqueue_style('jquery-ui-datepicker');
+			//wp_enqueue_media();
 
-		wp_enqueue_style(WT_IEW_PLUGIN_ID_BASIC.'-jquery-ui', WT_O_IEW_PLUGIN_URL.'admin/css/jquery-ui.css', array(), WT_O_IEW_VERSION, 'all');
+			wp_enqueue_style(WT_IEW_PLUGIN_ID_BASIC.'-jquery-ui', WT_O_IEW_PLUGIN_URL.'admin/css/jquery-ui.css', array(), WT_O_IEW_VERSION, 'all');
 		
-                /* check the history module is available */
-                $history_module_obj=Wt_Import_Export_For_Woo_Basic::load_modules('history');
-                if(!is_null($history_module_obj))
-                {
-                    wp_enqueue_script(Wt_Import_Export_For_Woo_Basic::get_module_id('history'),WT_O_IEW_PLUGIN_URL.'admin/modules/history/assets/js/main.js', array('jquery'), WT_O_IEW_VERSION, false);
-                }
+			/* check the history module is available */
+			$history_module_obj=Wt_Import_Export_For_Woo_Basic::load_modules('history');
+			if(!is_null($history_module_obj))
+			{
+				wp_enqueue_script(Wt_Import_Export_For_Woo_Basic::get_module_id('history'),WT_O_IEW_PLUGIN_URL.'admin/modules/history/assets/js/main.js', array('jquery'), WT_O_IEW_VERSION, false);
+			}
                 
-		$file_extensions=array_keys($this->allowed_import_file_type_mime);
-		$file_extensions=array_map(function($vl){
-			return '.'.$vl;
-		}, $file_extensions);
-       
-		if ( version_compare( WC()->version, '6.7.0', '<' ) ) {
-            $review_url = admin_url('edit-comments.php');
-        } else {
-            $review_url= admin_url('edit.php?post_type=product&page=product-reviews');
-        }
-		$params=array(
-			'item_type'=>'',
-			'steps'=>$this->steps,
-			'rerun_id'=>$this->rerun_id,
-			'to_import'=>$this->to_import,
-			'import_method'=>$this->import_method,
-			'temp_import_file'=>$this->temp_import_file,
-			'allowed_import_file_type_mime'=>$file_extensions,
-			'max_import_file_size'=>$this->max_import_file_size,
-			'msgs'=>array(
-				'choosed_template'=>__('Choosed template: '),
-				'choose_import_method'=>__('Please select an import method.'),
-				'choose_template'=>__('Please select an import template.'),
-				'step'=>__('Step'),
-				'choose_ftp_profile'=>__('Please select an FTP profile.'),
-				'choose_import_from'=>__('Please choose import from.'),
-				'choose_a_file'=>__('Please choose an import file.'),
-				'select_an_import_template'=>__('Please select an import template.'),
-				'validating_file'=>__('Creating temp file and validating.'),
-				'processing_file'=>__('Processing input file...'), 
-				'column_not_in_the_list'=>__('This column is not present in the import list. Please tick the checkbox to include.'),
-				'uploading'=>__('Uploading...'),
-				'outdated'=>__('You are using an outdated browser. Please upgarde your browser.'),
-				'server_error'=>__('An error occured.'),
-				'invalid_file'=>sprintf(__('Invalid file type. Only %s are allowed'), implode(", ", array_values($this->allowed_import_file_type))),
-				'drop_upload'=>__('Drop files here or click to upload'),
-				'upload_done'=>sprintf(__('%s Done.'), '<span class="dashicons dashicons-yes-alt" style="color:#3fa847;"></span>'),
-				'remove'=>__('Remove'),
-				'no_columns_mapped'=>__('No columns have been mapped. Please map the required fields to proceed with the import.'),
-			),
-			'addons' => array(
-				'product' => array(
-					'text' => __( 'View Products' ),
-					'page_link' => admin_url('edit.php?post_type=product')
+			$file_extensions=array_keys($this->allowed_import_file_type_mime);
+			$file_extensions=array_map(function($vl){
+				return '.'.$vl;
+			}, $file_extensions);
+		
+			if ( version_compare( WC()->version, '6.7.0', '<' ) ) {
+				$review_url = admin_url('edit-comments.php');
+			} else {
+				$review_url= admin_url('edit.php?post_type=product&page=product-reviews');
+			}
+			$params=array(
+				'item_type'=>'',
+				'steps'=>$this->steps,
+				'rerun_id'=>$this->rerun_id,
+				'to_import'=>$this->to_import,
+				'import_method'=>$this->import_method,
+				'temp_import_file'=>$this->temp_import_file,
+				'allowed_import_file_type_mime'=>$file_extensions,
+				'max_import_file_size'=>$this->max_import_file_size,
+				'msgs'=>array(
+					'choosed_template'=>__('Choosed template: ', 'order-import-export-for-woocommerce'),
+					'choose_import_method'=>__('Please select an import method.', 'order-import-export-for-woocommerce'),
+					'choose_template'=>__('Please select an import template.', 'order-import-export-for-woocommerce'),
+					'step'=>__('Step', 'order-import-export-for-woocommerce'),
+					'choose_ftp_profile'=>__('Please select an FTP profile.', 'order-import-export-for-woocommerce'),
+					'choose_import_from'=>__('Please choose import from.', 'order-import-export-for-woocommerce'),
+					'choose_a_file'=>__('Please choose an import file.', 'order-import-export-for-woocommerce'),
+					'select_an_import_template'=>__('Please select an import template.', 'order-import-export-for-woocommerce'),
+					'validating_file'=>__('Creating temp file and validating.', 'order-import-export-for-woocommerce'),
+					'processing_file'=>__('Processing input file...', 'order-import-export-for-woocommerce'), 
+					'column_not_in_the_list'=>__('This column is not present in the import list. Please tick the checkbox to include.', 'order-import-export-for-woocommerce'),
+					'uploading'=>__('Uploading...', 'order-import-export-for-woocommerce'),
+					'outdated'=>__('You are using an outdated browser. Please upgarde your browser.', 'order-import-export-for-woocommerce'),
+					'server_error'=>__('An error occured.', 'order-import-export-for-woocommerce'),
+					// translators: %s: allowed file types
+					'invalid_file'=>sprintf(__('Invalid file type. Only %s are allowed', 'order-import-export-for-woocommerce'), implode(", ", array_values($this->allowed_import_file_type))),
+					'drop_upload'=>__('Drop files here or click to upload', 'order-import-export-for-woocommerce'),
+					// translators: %s: dashicons yes-alt icon to show done status.
+					'upload_done'=>sprintf(__('%s Done.', 'order-import-export-for-woocommerce'), '<span class="dashicons dashicons-yes-alt" style="color:#3fa847;"></span>'),
+					'remove'=>__('Remove', 'order-import-export-for-woocommerce'),
+					'no_columns_mapped'=>__('No columns have been mapped. Please map the required fields to proceed with the import.', 'order-import-export-for-woocommerce'),
 				),
-				'product_categories' => array(
-					'text' => __( 'View Product categories' ),
-					'page_link' => admin_url('edit-tags.php?taxonomy=product_cat&post_type=product')
-				),
-				'product_tags' => array(
-					'text' => __( 'View Product tags' ),
-					'page_link' => admin_url('edit-tags.php?taxonomy=product_tag&post_type=product')
-				),
-				'product_review' => array(
-					'text' => __( 'View Product reviews' ),
-					'page_link' => $review_url
-				),
-				'order' => array(
-					'text' => __( 'View Orders' ),
-					'page_link' => admin_url('edit.php?post_type=shop_order')
-				),
-				'coupon' => array(					
-					'text' => __( 'View Coupons' ),
-					'page_link' => admin_url('edit.php?post_type=shop_coupon')
-				),
-				'user' => array(
-					'text' => __( 'View Users' ),
-					'page_link' => admin_url('users.php')
-				),
-				'subscription' => array(
-					'text' => __( 'View Subscriptions' ),
-					'page_link' => admin_url('edit.php?post_type=shop_subscription')
-				)				
-			)
-		);
-		wp_localize_script($this->module_id, 'wt_iew_import_basic_params', $params);
+				'addons' => array(
+					'product' => array(
+						'text' => __( 'View Products', 'order-import-export-for-woocommerce' ),
+						'page_link' => admin_url('edit.php?post_type=product')
+					),
+					'product_categories' => array(
+						'text' => __( 'View Product categories', 'order-import-export-for-woocommerce' ),
+						'page_link' => admin_url('edit-tags.php?taxonomy=product_cat&post_type=product')
+					),
+					'product_tags' => array(
+						'text' => __( 'View Product tags', 'order-import-export-for-woocommerce' ),
+						'page_link' => admin_url('edit-tags.php?taxonomy=product_tag&post_type=product')
+					),
+					'product_review' => array(
+						'text' => __( 'View Product reviews', 'order-import-export-for-woocommerce' ),
+						'page_link' => $review_url
+					),
+					'order' => array(
+						'text' => __( 'View Orders', 'order-import-export-for-woocommerce' ),
+						'page_link' => admin_url('edit.php?post_type=shop_order')
+					),
+					'coupon' => array(					
+						'text' => __( 'View Coupons', 'order-import-export-for-woocommerce' ),
+						'page_link' => admin_url('edit.php?post_type=shop_coupon')
+					),
+					'user' => array(
+						'text' => __( 'View Users', 'order-import-export-for-woocommerce' ),
+						'page_link' => admin_url('users.php')
+					),
+					'subscription' => array(
+						'text' => __( 'View Subscriptions', 'order-import-export-for-woocommerce' ),
+						'page_link' => admin_url('edit.php?post_type=shop_subscription')
+					)				
+				)
+			);
+			wp_localize_script($this->module_id, 'wt_iew_import_basic_params', $params);
 
-		$this->add_select2_lib(); //adding select2 JS, It checks the availibility of woocommerce
-            }
+			$this->add_select2_lib(); //adding select2 JS, It checks the availibility of woocommerce
+        }
 	}
 
 	/**
@@ -482,7 +487,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 		if(is_plugin_active('woocommerce/woocommerce.php'))
 		{ 
 			wp_enqueue_script('wc-enhanced-select');
-			wp_enqueue_style('woocommerce_admin_styles', WC()->plugin_url().'/assets/css/admin.css');
+			wp_enqueue_style('woocommerce_admin_styles', WC()->plugin_url().'/assets/css/admin.css', array(), WC()->version);
 		}else
 		{
 			wp_enqueue_style(WT_IEW_PLUGIN_ID_BASIC.'-select2', WT_O_IEW_PLUGIN_URL. 'admin/css/select2.css', array(), WT_O_IEW_VERSION, 'all' );
@@ -563,7 +568,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 									'msg' => '',
 								);
 							} else {
-								$out['msg'] = __('Unable to create temp file.');
+								$out['msg'] = __('Unable to create temp file.', 'order-import-export-for-woocommerce');
 							}
 						} else {
 							$file_data = $this->remote_get($file_url);
@@ -578,20 +583,20 @@ class Wt_Import_Export_For_Woo_Basic_Import
 										'msg' => '',
 									);
 								}else {
-									$out['msg'] = __('Unable to create temp file.');
+									$out['msg'] = __('Unable to create temp file.', 'order-import-export-for-woocommerce');
 								}
 							} else {
-								$out['msg'] = __('Unable to fetch file data.');
+								$out['msg'] = __('Unable to fetch file data.', 'order-import-export-for-woocommerce');
 							}
 						}						
 					} else {
-						$out['msg'] = __('Unable to create temp directory.');
+						$out['msg'] = __('Unable to create temp directory.', 'order-import-export-for-woocommerce');
 					}				
 				} else {
-					$out['msg'] = __('File type not allowed.');
+					$out['msg'] = __('File type not allowed.', 'order-import-export-for-woocommerce');
 				}
 			} else {
-				$out['msg'] = __('File not found.');
+				$out['msg'] = __('File not found.', 'order-import-export-for-woocommerce');
 			}		
 		} else {
 			$out['response'] = true;
@@ -602,9 +607,8 @@ class Wt_Import_Export_For_Woo_Basic_Import
 				$remote_adapter = Wt_Import_Export_For_Woo_Basic::get_remote_adapters('import', $file_from);
 				
 				if(is_null($remote_adapter)) { /* adapter object not found */
-				
-					$msg = sprintf('Unable to initailize %s', $file_from);
-					$out['msg'] = __($msg);
+					// translators: %s: remote adapter name
+					$out['msg'] = sprintf( __('Unable to initailize %s', 'order-import-export-for-woocommerce'), $file_from );
 					$out['response'] = false;
 				} else {
 					/* download the file */
@@ -625,7 +629,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 				*/
 				$out['file_name']=apply_filters('wt_iew_alter_import_file_basic', $out['file_name'], $file_path);
 			} else {
-				$out['msg'] = __('Invalid file path');
+				$out['msg'] = __('Invalid file path', 'order-import-export-for-woocommerce');
 				$out['response'] = false;
 				return $out;
 			}
@@ -720,29 +724,37 @@ class Wt_Import_Export_For_Woo_Basic_Import
 	*/
 	public static function get_file_path($file_name="")
 	{
-		if(!is_dir(self::$import_dir))
-        {
-            if(!mkdir(self::$import_dir, 0700))
-            {
-            	return false;
-            }else
-            {
-            	$files_to_create=array('.htaccess' => 'deny from all', 'index.php'=>'<?php // Silence is golden');
-		        foreach($files_to_create as $file=>$file_content)
-		        {
-		        	if(!file_exists(self::$import_dir.'/'.$file))
-			        {
-			            $fh=@fopen(self::$import_dir.'/'.$file, "w");
-			            if(is_resource($fh))
-			            {
-			                fwrite($fh, $file_content);
-			                fclose($fh);
-			            }
-			        }
-		        } 
-            }
-        }
-        return self::$import_dir.'/'.$file_name;
+		global $wp_filesystem;
+		
+		if (!function_exists('WP_Filesystem')) {
+			require_once(ABSPATH . 'wp-admin/includes/file.php');
+		}
+		
+		WP_Filesystem();
+		
+		if(!$wp_filesystem->is_dir(self::$import_dir))
+		{
+			if(!$wp_filesystem->mkdir(self::$import_dir, 0700))
+			{
+				return false;
+			}else
+			{
+				$files_to_create = array(
+					'.htaccess' => 'deny from all',
+					'index.php' => '<?php // Silence is golden'
+				);
+				
+				foreach($files_to_create as $file => $file_content)
+				{
+					$file_path = self::$import_dir . '/' . $file;
+					if(!$wp_filesystem->exists($file_path))
+					{
+						$wp_filesystem->put_contents($file_path, $file_content, 0700);
+					}
+				}
+			}
+		}
+		return self::$import_dir.'/'.$file_name;
 	}
 
 	/**
@@ -780,9 +792,9 @@ class Wt_Import_Export_For_Woo_Basic_Import
 					$this->temp_import_file=$file_name;
 				}else
 				{
-					$msg='Error occurred while processing the file';
+					$msg=__('Error occurred while processing the file', 'order-import-export-for-woocommerce');
 					Wt_Import_Export_For_Woo_Basic_History::record_failure($import_id, $msg);
-		            $out['msg']=__($msg);
+		            $out['msg']=$msg;
 					return $out;
 				}
 			}
@@ -804,7 +816,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 						}
 					}else
 					{
-						$out['msg']=__('Temp file missing.');
+						$out['msg']=__('Temp file missing.', 'order-import-export-for-woocommerce');
 						return $out;
 					}
 				}else /* in scheduled import need to prepare the temp file */
@@ -877,7 +889,8 @@ class Wt_Import_Export_For_Woo_Basic_Import
 			'history_id'=>$import_id, //same as that of import id
 			'total_records'=>$total_records,
 			'temp_import_file'=>$this->temp_import_file,
-			'msg'=>sprintf(__('Importing...(%d processed)'), 0),
+			// translators: %d: number of processed records
+			'msg'=>sprintf(__('Importing...(%d processed)', 'order-import-export-for-woocommerce'), 0),
 		);
 	}
 
@@ -934,18 +947,18 @@ class Wt_Import_Export_For_Woo_Basic_Import
 		{
 			if(!file_exists($file_path))
 			{
-				$msg='Temp file missing';					
+				$msg=__('Temp file missing', 'order-import-export-for-woocommerce');					
 				//no need to add translation function in message
 				Wt_Import_Export_For_Woo_Basic_History::record_failure($import_id, $msg);
-	            $out['msg']=__($msg);
+	            $out['msg']= $msg;
 	            return $out;
         	}
 		}else
 		{
-			$msg='Temp file missing';					
+			$msg=__('Temp file missing', 'order-import-export-for-woocommerce');					
 			//no need to add translation function in message
 			Wt_Import_Export_For_Woo_Basic_History::record_failure($import_id, $msg);
-            $out['msg']=__($msg);
+            $out['msg']= $msg;
             return $out;
 		} 
 
@@ -979,16 +992,16 @@ class Wt_Import_Export_For_Woo_Basic_Import
 		$input_data=$reader->get_data_as_batch($file_path, $offset, $batch_count, $this, $form_data);
 		
 		if(empty($input_data['data_arr'])){			
-			$out['msg']=__('CSV is empty');
+			$out['msg']=__('CSV is empty', 'order-import-export-for-woocommerce');
             return $out;
 		}
 				
 		if(!$input_data || !is_array($input_data))
 		{
-			$msg='Unable to process the file';					
+			$msg=__('Unable to process the file', 'order-import-export-for-woocommerce');					
 			//no need to add translation function in message
 			Wt_Import_Export_For_Woo_Basic_History::record_failure($import_id, $msg);
-            $out['msg']=__($msg);
+            $out['msg']= $msg;
             return $out;
 		}
 
@@ -1005,13 +1018,14 @@ class Wt_Import_Export_For_Woo_Basic_Import
 		* 	In case of non schedule import. Offset row count. 
 		*	The real internal offset is in bytes, This offset is total row processed.
 		*/
-		$offset_count=(isset($_POST['offset_count']) ? absint($_POST['offset_count']) : 0);
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verification done in the ajax_main() method.
+		$offset_count=(isset($_POST['offset_count']) ? absint(wp_unslash($_POST['offset_count'])) : 0);
 
 		/* giving full data */
 		$form_data=apply_filters('wt_iew_import_full_form_data_basic', $form_data, $to_process, $step, $this->selected_template_data);
 		
 		/* in scheduled import. The import method will not available so we need to take it from formdata */
-		$formdata_import_method=(isset($formdata['method_import_form_data']) && isset($formdata['method_import_form_data']['method_import']) ?  $formdata['method_import_form_data']['method_import'] : 'quick');
+		$formdata_import_method=(isset($formdata['method_import_form_data']) && isset($formdata['method_import_form_data']['method_import']) ?  $formdata['method_import_form_data']['method_import'] : __('quick', 'order-import-export-for-woocommerce'));
 		$this->import_method=($this->import_method=="" ? $formdata_import_method : $this->import_method);
 
 		/**
@@ -1057,9 +1071,11 @@ class Wt_Import_Export_For_Woo_Basic_Import
 		$out['response']=true;
 		
 		/* In case of non schedule import. total success, totla failed count */
-		$total_success=(isset($_POST['total_success']) ? absint($_POST['total_success']) : 0);
-		$total_failed=(isset($_POST['total_failed']) ? absint($_POST['total_failed']) : 0);
-
+		// phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce verification done in the ajax_main() method.
+		$total_success=(isset($_POST['total_success']) ? absint(wp_unslash($_POST['total_success'])) : 0);
+		$total_failed=(isset($_POST['total_failed']) ? absint(wp_unslash($_POST['total_failed'])) : 0);
+		// phpcs:enable
+		
 		$out['total_success']=(isset($import_response['total_success']) ? $import_response['total_success'] : 0)+$total_success;
 		$out['total_failed']=(isset($import_response['total_failed']) ? $import_response['total_failed'] : 0)+$total_failed;
 
@@ -1085,7 +1101,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 			/* updating finished status */
 			$update_data=array(
 				'status'=>Wt_Import_Export_For_Woo_Basic_History::$status_arr['finished'],
-				'status_text'=>'Finished' //translation function not needed
+				'status_text'=>__('Finished', 'order-import-export-for-woocommerce') //translation function not needed
 			);
 			$update_data_type=array(
 				'%d',
@@ -1112,19 +1128,20 @@ class Wt_Import_Export_For_Woo_Basic_Import
 	{
 		if($is_last_offset)
 		{
-			$msg='<span class="wt_iew_info_box_title">'.__('Finished').'</span>';
-                        $msg.='<span class="wt_iew_popup_close" style="line-height:10px;width:auto" onclick="wt_iew_basic_import.hide_import_info_box();">X</span>';
+			$msg='<span class="wt_iew_info_box_title">'.__('Finished', 'order-import-export-for-woocommerce').'</span>';
+            $msg.='<span class="wt_iew_popup_close" style="line-height:10px;width:auto" onclick="wt_iew_basic_import.hide_import_info_box();">X</span>';
 		}else
 		{
-			$msg='<span class="wt_iew_info_box_title">'.sprintf(__('Importing...(%d processed)'), $data['offset_count']).'</span>';
+			// translators: %d: number of processed records.
+			$msg='<span class="wt_iew_info_box_title">'.sprintf(__('Importing...(%d processed)', 'order-import-export-for-woocommerce'), $data['offset_count']).'</span>';
 		}
-		$msg.='<br />'.__('Total success: ').$data['total_success'].'<br />'.__('Total failed: ').$data['total_failed'];
+		$msg.='<br />'.__('Total success: ', 'order-import-export-for-woocommerce').$data['total_success'].'<br />'.__('Total failed: ', 'order-import-export-for-woocommerce').$data['total_failed'];
 		if($is_last_offset)
 		{
 			$msg.='<span class="wt_iew_info_box_finished_text" style="display:block">';
 			if(Wt_Import_Export_For_Woo_Admin_Basic::module_exists('history'))
 			{
-				$msg.='<a class="button button-secondary wt_iew_view_log_btn" style="margin-top:10px;" data-history-id="'. $data['history_id'] .'" onclick="wt_iew_basic_import.hide_import_info_box();">'.__('View Details').'</a></span>';
+				$msg.='<a class="button button-secondary wt_iew_view_log_btn" style="margin-top:10px;" data-history-id="'. $data['history_id'] .'" onclick="wt_iew_basic_import.hide_import_info_box();">'.__('View Details', 'order-import-export-for-woocommerce').'</a></span>';
 			}
 		}
 		return $msg;
@@ -1141,25 +1158,26 @@ class Wt_Import_Export_For_Woo_Basic_Import
 			/**
 			*	Check it is a rerun call
 			*/
+			// phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce verification done in the Wt_Iew_Sh::check_write_access() method above.
 			if(!$this->_process_rerun((isset($_POST['rerun_id']) ? absint($_POST['rerun_id']) : 0)))
 			{
-				$this->import_method=(isset($_POST['import_method']) ? Wt_Iew_Sh::sanitize_item($_POST['import_method'], 'text') : '');
-				$this->to_import=(isset($_POST['to_import']) ? Wt_Iew_Sh::sanitize_item($_POST['to_import'], 'text') : '');
-				$this->selected_template=(isset($_POST['selected_template']) ? Wt_Iew_Sh::sanitize_item($_POST['selected_template'], 'int') : 0);
+				$this->import_method=(isset($_POST['import_method']) ? sanitize_text_field(wp_unslash($_POST['import_method'])) : '');
+				$this->to_import=(isset($_POST['to_import']) ? sanitize_text_field(wp_unslash($_POST['to_import'])) : '');
+				$this->selected_template=(isset($_POST['selected_template']) ? absint(wp_unslash($_POST['selected_template'])) : 0);
 			}
 			
 			$this->get_steps();
 
 			$ajax_obj=new Wt_Import_Export_For_Woo_Basic_Import_Ajax($this, $this->to_import, $this->steps, $this->import_method, $this->selected_template, $this->rerun_id);
 			
-			$import_action=Wt_Iew_Sh::sanitize_item($_POST['import_action'], 'text');
-			$data_type=Wt_Iew_Sh::sanitize_item($_POST['data_type'], 'text');
+			$import_action=isset($_POST['import_action']) ? sanitize_text_field(wp_unslash($_POST['import_action'])) : '';
+			$data_type=isset($_POST['data_type']) ? sanitize_text_field(wp_unslash($_POST['data_type'])) : '';
 			
 			$allowed_ajax_actions=array('get_steps', 'validate_file', 'get_meta_mapping_fields', 'save_template', 'save_template_as', 'update_template', 'download', 'import', 'upload_import_file', 'delete_import_file');
 
 			$out=array(
 				'status'=>0,
-				'msg'=>__('Error'),
+				'msg'=>esc_html__('Error', 'order-import-export-for-woocommerce'),
 			);
 
 			if(method_exists($ajax_obj, $import_action) && in_array($import_action, $allowed_ajax_actions))
@@ -1169,8 +1187,9 @@ class Wt_Import_Export_For_Woo_Basic_Import
 
 			if($data_type=='json')
 			{
-				echo json_encode($out);
+				echo wp_json_encode($out);
 			}
+			// phpcs:enable
 		}
 		exit();
 	}
@@ -1254,6 +1273,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 					$synatx=$this->validate_syntax($value[1]);
 					if($synatx)
 					{
+						// phpcs:ignore Generic.PHP.ForbiddenFunctions.Found -- Sanitized the value before using eval.
 						$replace[]=eval('return '.$synatx.';');
 					}else
 					{
@@ -1296,6 +1316,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 	}
 	protected function add_input_file_data($key, $str, $data_row, $mapping_fields, $input_date_format,$skip_from_evaluation=false)
 	{
+		// phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged -- set_time_limit is used to set the time limit for the script.
 		@set_time_limit(0);
 		$re = '/\{([^}]+)\}/m';
 		$matches=array();
@@ -1334,7 +1355,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 				if(isset($data_row[$data_key]))
 				{
 //					$output_val=sanitize_text_field($data_row[$data_key]);   sanitize_text_field stripping html content
-                                        $output_val=($data_row[$data_key]);   
+                    $output_val=($data_row[$data_key]);   
 				}
 
 				/**
@@ -1351,7 +1372,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 						}
 					}else
 					{
-						$output_val=date("Y-m-d H:i:s", strtotime(trim(str_replace('/', '-', str_replace('-', '', $output_val)))));
+						$output_val=gmdate("Y-m-d H:i:s", strtotime(trim(str_replace('/', '-', str_replace('-', '', $output_val)))));
 					}
 				}
 
@@ -1359,8 +1380,8 @@ class Wt_Import_Export_For_Woo_Basic_Import
                 if($skip_from_evaluation){   /* check whether skip or not */  
 
 					if (strpos($value[1], 'line_item_') !== false) {   /* line item content gets trimmed when ';' occurred in serialized data */
-					$value[1] = 'line_item_';//substr($value[1], 10,10);                                       
-										}
+						$value[1] = 'line_item_';//substr($value[1], 10,10);                                       
+					}
 										
 					if(!in_array($value[1], $this->skip_from_evaluation_array)){      /*  current item dont skip */                                   
 						$is_need_to_replace = true;

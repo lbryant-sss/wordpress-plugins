@@ -64,20 +64,11 @@ if ( ! class_exists('WT_P_IEW_CTA_Banner_Default_Page') ) {
                 $main_text = __( 'Export only the products you need. Filter by type, category, tags, stock status, and more using advanced filters to keep your store organized with the Product Export plugin.', 'order-import-export-for-woocommerce' );
                 $target_selector = '.woocommerce-exporter';
             }
-
-            // Escape output for security
-            $link_escaped = esc_url( $link );
-            $text_escaped = esc_html( $text );
-            $did_you_know_escaped = esc_html( $did_you_know );
-            $main_text_escaped = esc_html( $main_text );
-            $get_text_escaped = esc_html( $get_text );
-            $target_selector_escaped = esc_js( $target_selector );
-
             ?>
             <script>
             jQuery( document ).ready( function( $ ) {
                 // Wait for the form to be ready
-                var $target = $( '<?php echo $target_selector_escaped; ?>' );
+                var $target = $( '<?php echo esc_js( $target_selector ); ?>' );
                 if ( $target.length > 0 ) {
                     // Create banner
                     var banner = `
@@ -136,9 +127,9 @@ if ( ! class_exists('WT_P_IEW_CTA_Banner_Default_Page') ) {
                                         font-size: 13px;
                                         font-weight: 700;
                                         color: #7927AF;
-                                    "><?php echo $did_you_know_escaped; ?></span> 
-                                    <?php echo $main_text_escaped; ?>
-                                    <br> <?php echo $get_text_escaped; ?> <a href="<?php echo $link_escaped; ?>" target="_blank" style="text-decoration: underline;"><?php echo $text_escaped; ?></a>
+                                    "><?php echo esc_html( $did_you_know ); ?></span> 
+                                    <?php echo esc_html( $main_text ); ?>
+                                    <br> <?php echo esc_html( $get_text ); ?> <a href="<?php echo esc_url( $link ); ?>" target="_blank" style="text-decoration: underline;"><?php echo esc_html( $text ); ?></a>
                                 </div>
                             </div>
                         </div>
@@ -162,7 +153,7 @@ if ( ! class_exists('WT_P_IEW_CTA_Banner_Default_Page') ) {
                             type: 'POST',
                             data: {
                                 action: 'wt_p_iew_dismiss_cta_banner_default_page',
-                                nonce: '<?php echo wp_create_nonce( 'wt_p_iew_dismiss_cta_banner_default_page' ); ?>'
+                                nonce: '<?php echo esc_js( wp_create_nonce( 'wt_p_iew_dismiss_cta_banner_default_page' ) ); ?>'
                             },
                             success: function(response) {
                                 // Banner dismissed successfully
@@ -180,26 +171,21 @@ if ( ! class_exists('WT_P_IEW_CTA_Banner_Default_Page') ) {
          */
         public function dismiss_product_cta_banner()
         {
-            // Check if this is a POST request
-            if (!isset($_POST['nonce'])) {
-                wp_die(__('Missing nonce', 'order-import-export-for-woocommerce'));
-            }
-
             // Verify nonce
-            if (!wp_verify_nonce(sanitize_text_field($_POST['nonce']), 'wt_p_iew_dismiss_cta_banner_default_page')) {
-                wp_die(__('Security check failed', 'order-import-export-for-woocommerce'));
+            if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'wt_p_iew_dismiss_cta_banner_default_page' ) ) {
+                wp_die( esc_html__( 'Security check failed', 'order-import-export-for-woocommerce' ) );
             }
 
             // Check if user has permission
-            if (!current_user_can('manage_options')) {
-                wp_die(__('Insufficient permissions', 'order-import-export-for-woocommerce'));
+            if ( ! current_user_can( 'manage_options' ) ) {
+                wp_die( esc_html__( 'Insufficient permissions', 'order-import-export-for-woocommerce' ) );
             }
 
             // Update the dismissal option
             update_option('wt_p_iew_product_cta_banner_default_page_dismissed', true);
             
             // Send success response
-            wp_send_json_success(__('Banner dismissed successfully', 'order-import-export-for-woocommerce'));
+            wp_send_json_success( esc_html__( 'Banner dismissed successfully', 'order-import-export-for-woocommerce' ) );
         }
     }
     // Initialize the class

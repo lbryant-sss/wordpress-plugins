@@ -5,7 +5,9 @@ if (!defined('WPINC')) {
 
 global $wpdb;
 $tb = $wpdb->prefix . Wt_Import_Export_For_Woo_Basic::$template_tb;
-$val = $wpdb->get_results("SELECT * FROM $tb ORDER BY id DESC", ARRAY_A);
+// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Its necessary to use direct database query.
+$val = $wpdb->get_results("SELECT * FROM {$tb} ORDER BY id DESC", ARRAY_A);
+// phpcs:enable
 $pre_saved_templates = ($val ? $val : array());
 if (!empty($pre_saved_templates)):
     ?>
@@ -35,16 +37,16 @@ if (!empty($pre_saved_templates)):
         }
     </style>
     <div class="wt-ier-import-export-templates">
-        <h3><?php _e('Import export pre-saved templates'); ?></h3>
+        <h3><?php esc_html_e('Import export pre-saved templates', 'order-import-export-for-woocommerce'); ?></h3>
         <div class="wt_ier_template_list_table_data">
         <table class="wt_ier_template_list_table">
             <thead>
                 <tr>
                     <th style="width:50px;">#</th>
-                    <th><?php _e('Name'); ?></th>
-                    <th><?php _e('Item'); ?></th>
-                    <th><?php _e('Type'); ?></th>
-                    <th><?php _e('Action'); ?></th>                                
+                    <th><?php esc_html_e('Name', 'order-import-export-for-woocommerce'); ?></th>
+                    <th><?php esc_html_e('Item', 'order-import-export-for-woocommerce'); ?></th>
+                    <th><?php esc_html_e('Type', 'order-import-export-for-woocommerce'); ?></th>
+                    <th><?php esc_html_e('Action', 'order-import-export-for-woocommerce'); ?></th>                                
                 </tr>
             </thead>
             <tbody>
@@ -52,12 +54,12 @@ if (!empty($pre_saved_templates)):
                 $num = 1;
                 foreach ($pre_saved_templates as $key => $value):
                     ?>
-                    <tr data-row-id="<?php echo absint($value['id']); ?>">
-                        <td><?php echo $num; ?></td>                                    
-                        <td><?php echo $value['name']; ?></td>
-                        <td><?php echo $value['item_type']; ?></td>
-                        <td><?php echo $value['template_type']; ?></td>
-                        <td><button data-id="<?php echo absint($value['id']); ?>" title="<?php _e('Delete'); ?>" class="button button-secondary wt_ier_delete_template"><span><?php _e('Delete'); ?></span></button></td>
+                    <tr data-row-id="<?php echo esc_attr(absint($value['id'])); ?>">
+                        <td><?php echo esc_html($num); ?></td>                                    
+                        <td><?php echo esc_html($value['name']); ?></td>
+                        <td><?php echo esc_html($value['item_type']); ?></td>
+                        <td><?php echo esc_html($value['template_type']); ?></td>
+                        <td><button data-id="<?php echo esc_attr(absint($value['id'])); ?>" title="<?php esc_attr_e('Delete', 'order-import-export-for-woocommerce'); ?>" class="button button-secondary wt_ier_delete_template"><span><?php esc_html_e('Delete', 'order-import-export-for-woocommerce'); ?></span></button></td>
                     </tr>           
                     <?php
                     $num++;

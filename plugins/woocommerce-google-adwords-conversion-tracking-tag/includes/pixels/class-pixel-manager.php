@@ -6,7 +6,6 @@ use SweetCode\Pixel_Manager\Admin\Environment;
 use SweetCode\Pixel_Manager\Admin\LTV;
 use SweetCode\Pixel_Manager\Admin\Validations;
 use SweetCode\Pixel_Manager\Data\GA4_Data_API;
-use SweetCode\Pixel_Manager\Database;
 use SweetCode\Pixel_Manager\Pixels\Facebook\Facebook_CAPI;
 use SweetCode\Pixel_Manager\Pixels\Google\Google_MP_GA4;
 use SweetCode\Pixel_Manager\Pixels\Google\Google_Helpers;
@@ -811,7 +810,8 @@ class Pixel_Manager {
                 'id_type' => Google_Helpers::get_ga_id_type(),
             ];
         }
-        $data['tag_id'] = Google_Helpers::get_google_tag_id();
+        $data['tag_id'] = Google_Helpers::get_google_tag_id_information()['active'];
+        $data['tag_id_suppressed'] = Google_Helpers::get_google_tag_id_information()['suppressed'];
         $data['tag_gateway']['measurement_path'] = Options::get_google_tag_gateway_measurement_path();
         $data['tcf_support'] = Options::is_google_tcf_support_active();
         $data['consent_mode'] = [
@@ -1036,28 +1036,30 @@ class Pixel_Manager {
         $data = [];
         if ( $order ) {
             $data['order'] = [
-                'id'               => (int) $order->get_id(),
-                'number'           => (string) $order->get_order_number(),
-                'key'              => (string) $order->get_order_key(),
-                'affiliation'      => (string) get_bloginfo( 'name' ),
-                'currency'         => (string) Shop::get_order_currency( $order ),
-                'value'            => [
+                'id'                 => (int) $order->get_id(),
+                'number'             => (string) $order->get_order_number(),
+                'key'                => (string) $order->get_order_key(),
+                'affiliation'        => (string) get_bloginfo( 'name' ),
+                'currency'           => (string) Shop::get_order_currency( $order ),
+                'value'              => [
                     'marketing' => Shop::get_order_value_total_marketing( $order, true ),
                     'total'     => Shop::get_order_value_total_statistics( $order ),
                     'subtotal'  => Shop::get_order_value_subtotal_statistics( $order ),
                 ],
-                'discount'         => (float) $order->get_total_discount(),
-                'tax'              => (float) $order->get_total_tax(),
-                'shipping'         => (float) $order->get_shipping_total(),
-                'coupon'           => implode( ',', $order->get_coupon_codes() ),
-                'aw_merchant_id'   => ( Options::get_google_ads_merchant_id() ? Options::get_google_ads_merchant_id() : '' ),
-                'aw_feed_country'  => (string) Geolocation::get_visitor_country(),
-                'aw_feed_language' => Google_Helpers::get_gmc_language(),
-                'new_customer'     => Shop::is_new_customer( $order ),
-                'quantity'         => (int) count( Product::pmw_get_order_items( $order ) ),
-                'items'            => Product::get_front_end_order_items( $order ),
-                'customer_id'      => $order->get_customer_id(),
-                'user_id'          => $order->get_user_id(),
+                'discount'           => (float) $order->get_total_discount(),
+                'tax'                => (float) $order->get_total_tax(),
+                'shipping'           => (float) $order->get_shipping_total(),
+                'coupon'             => implode( ',', $order->get_coupon_codes() ),
+                'aw_merchant_id'     => ( Options::get_google_ads_merchant_id() ? Options::get_google_ads_merchant_id() : '' ),
+                'aw_feed_country'    => (string) Geolocation::get_visitor_country(),
+                'aw_feed_language'   => Google_Helpers::get_gmc_language(),
+                'new_customer'       => Shop::is_new_customer( $order ),
+                'quantity'           => (int) count( Product::pmw_get_order_items( $order ) ),
+                'items'              => Product::get_front_end_order_items( $order ),
+                'customer_id'        => $order->get_customer_id(),
+                'user_id'            => $order->get_user_id(),
+                'payment_type'       => (string) $order->get_payment_method(),
+                'payment_type_title' => (string) $order->get_payment_method_title(),
             ];
             // Filter to add custom order parameters
             $custom_parameters = Shop::get_custom_order_parameters( $order );

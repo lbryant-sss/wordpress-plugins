@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
 }
 ?>
 <div class="wt_iew_export_main">
-	<p><?php echo $step_info['description']; ?></p>
+	<p><?php echo wp_kses_post($step_info['description']); ?></p>
 	<form class="wt_iew_export_advanced_form">
 		<table class="form-table wt-iew-form-table wt-iew-export-filter-table">
 			<?php
@@ -16,8 +16,8 @@ if (!defined('ABSPATH')) {
 <div class="wt_iew_suite_banner">
 	<div class="wt_iew_suite_banner_border"></div>
 	<p style="font-size: 13px; font-weight: 400; margin-top: -61px;margin-left: 13px; padding: 10px 10px;">
-		<strong><?php _e('💡 Did You Know?'); ?></strong> <?php _e('Get advanced features like FTP/SFTP export, and support for XLSX, XLS, XML, and TXT files with our premium version.'); ?>
-		<a href="<?php echo esc_url($link . WT_O_IEW_VERSION); ?>" style="color: blue;" target="_blank"><?php _e($text); ?></a>
+		<strong><?php esc_html_e('💡 Did You Know?', 'order-import-export-for-woocommerce'); ?></strong> <?php esc_html_e('Get advanced features like FTP/SFTP export, and support for XLSX, XLS, XML, and TXT files with our premium version.', 'order-import-export-for-woocommerce'); ?>
+		<a href="<?php echo esc_url($link . WT_O_IEW_VERSION); ?>" style="color: blue;" target="_blank"><?php echo wp_kses_post($text); ?></a>
 	</p>
 </div>
 <?php

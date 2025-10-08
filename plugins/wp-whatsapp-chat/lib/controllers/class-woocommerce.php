@@ -18,16 +18,19 @@ class WooCommerce {
 	}
 
 	public function woocommerce_init() {
-		if ( class_exists( 'WooCommerce' ) ) {
-			$woocommerce       = Models_WooCommerce::instance()->get();
-			$position          = (string) $woocommerce['position'];
-			$position_priority = (int) $woocommerce['position_priority'];
-
-			// Add Product Button.
-			if ( is_product() && 'none' !== $position ) {
-				add_action( $position, array( $this, 'product_button' ), $position_priority );
-			}
+		if ( ! class_exists( 'WooCommerce' ) ) {
+			return;
 		}
+
+		$woocommerce       = Models_WooCommerce::instance()->get();
+		$position          = (string) $woocommerce['position'];
+		$position_priority = (int) $woocommerce['position_priority'];
+
+		if ( ! is_product() || 'none' === $position ) {
+			return;
+		}
+
+		add_action( $position, array( $this, 'product_button' ), $position_priority );
 	}
 
 	public function product_button( $product ) {

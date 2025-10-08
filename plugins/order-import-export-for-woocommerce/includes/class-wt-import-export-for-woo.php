@@ -83,7 +83,7 @@ if (!class_exists('Wt_Import_Export_For_Woo_Basic')) {
 			if (defined('WT_O_IEW_VERSION')) {
 				$this->version = WT_O_IEW_VERSION;
 			} else {
-				$this->version = '2.6.4';
+				$this->version = '2.6.5';
 			}
 			$this->plugin_name = 'wt-import-export-for-woo-basic';
 
@@ -187,7 +187,10 @@ if (!class_exists('Wt_Import_Export_For_Woo_Basic')) {
 			require_once WT_O_IEW_PLUGIN_PATH . 'admin/classes/class-log.php';
 			require_once WT_O_IEW_PLUGIN_PATH . 'admin/classes/class-logwriter.php';
 
-
+			/**
+			 * 	Add a notice for non-apache servers for securing folder.
+			 */
+			require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-wt-non-apache-info.php';
 
 			$this->loader = new Wt_Import_Export_For_Woo_Loader_Basic();
 			$this->plugin_admin = new Wt_Import_Export_For_Woo_Admin_Basic($this->get_plugin_name(), $this->get_version());
@@ -239,6 +242,9 @@ if (!class_exists('Wt_Import_Export_For_Woo_Basic')) {
 			$this->loader->add_action('admin_enqueue_scripts', $this->plugin_admin, 'enqueue_scripts');
 
 			$this->loader->add_action('export_filters', $this->plugin_admin, 'tools_wtexport_text');
+
+			/* Initiate non apache info message */
+			$this->loader->add_action('init', $this->plugin_admin, 'init_non_apache_info', 11);
 		}
 
 		/**
@@ -334,9 +340,9 @@ if (!class_exists('Wt_Import_Export_For_Woo_Basic')) {
 				if (is_array($v)) {
 					$v = (isset($v[2]) ? $v[2] : '') . $v[0] . ' ' . (isset($v[1]) ? $v[1] : '');
 				}
-?>
-				<a class="nav-tab" href="#<?php echo $k; ?>"><?php echo $v; ?></a>
-<?php
+				?>
+				<a class="nav-tab" href="#<?php echo esc_attr( $k ); ?>"><?php echo wp_kses_post( $v ); ?></a>
+				<?php
 			}
 		}
 

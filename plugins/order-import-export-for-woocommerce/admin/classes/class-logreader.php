@@ -23,13 +23,17 @@ class Wt_Import_Export_For_Woo_Basic_Logreader
 	{
 		$this->file_path=$file_path;
 		$this->mode=$mode;
-		$this->file_pointer=@fopen($file_path, 'r');
+		// phpcs:disable WordPress.WP.AlternativeFunctions.file_system_operations_fopen
+		$this->file_pointer=@fopen($file_path, $mode);
+		// phpcs:enable WordPress.WP.AlternativeFunctions.file_system_operations_fopen
 	}
 	public function close_file_pointer()
 	{
 		if($this->file_pointer!=null)
 		{
+			// phpcs:disable WordPress.WP.AlternativeFunctions.file_system_operations_fclose
 			fclose($this->file_pointer);
+			// phpcs:enable WordPress.WP.AlternativeFunctions.file_system_operations_fclose
 		}
 	}
 
@@ -44,7 +48,9 @@ class Wt_Import_Export_For_Woo_Basic_Logreader
 		{
 			return $out;
 		}
+		// phpcs:disable WordPress.WP.AlternativeFunctions.file_system_operations_fread
 		$data=fread($this->file_pointer, filesize($file_path));
+		// phpcs:enable WordPress.WP.AlternativeFunctions.file_system_operations_fread
 
 		$this->close_file_pointer();
 
@@ -83,7 +89,12 @@ class Wt_Import_Export_For_Woo_Basic_Logreader
 		$data_arr=array();
 		while(($data=fgets($this->file_pointer))!==false)
 		{
-			$data=maybe_unserialize($data);
+			$form_data_raw = wp_unslash($data);
+			$data = is_array($form_data_raw) ? 
+				array_map(function($item) {
+					return is_string($item) ? json_decode($item, true) : $item;
+				}, $form_data_raw) : 
+				json_decode($form_data_raw, true);
 			if(is_array($data))
 			{
 				$data_arr[]=$data;

@@ -4,11 +4,11 @@ if (!defined('ABSPATH')) {
 }
 ?>
 <div class="wt_iew_export_main">
-	<p><?php echo $step_info['description']; ?></p>
+	<p><?php echo wp_kses_post($step_info['description']); ?></p>
 	<div class="meta_mapping_box">
 		<div class="meta_mapping_box_hd_nil wt_iew_noselect">
-			<?php _e('Default fields');?>
-			<span class="meta_mapping_box_selected_count_box"><span class="meta_mapping_box_selected_count_box_num">0</span> <?php _e(' columns(s) selected'); ?></span>
+			<?php esc_html_e('Default fields', 'order-import-export-for-woocommerce');?>
+			<span class="meta_mapping_box_selected_count_box"><span class="meta_mapping_box_selected_count_box_num">0</span> <?php esc_html_e(' columns(s) selected', 'order-import-export-for-woocommerce'); ?></span>
 		</div>
 		<div style="clear:both;"></div>
 		<div class="meta_mapping_box_con" data-sortable="0" data-loaded="1" data-field-validated="0" data-key="" style="display:inline-block;">
@@ -18,13 +18,13 @@ if (!defined('ABSPATH')) {
 			    		<th>
 			    			<input type="checkbox" name="" class="wt_iew_mapping_checkbox_main">
 			    		</th>
-			    		<th width="35%"><?php _e('Column');?></th>
-			    		<th><?php _e('Column name');?></th>
+			    		<th width="35%"><?php esc_html_e('Column', 'order-import-export-for-woocommerce');?></th>
+			    		<th><?php esc_html_e('Column name', 'order-import-export-for-woocommerce');?></th>
 			    	</tr>
 				</thead>
 				<tbody>
 				<?php
-				$draggable_tooltip=__("Drag to rearrange the columns");
+				$draggable_tooltip=__("Drag to rearrange the columns", 'order-import-export-for-woocommerce');
 				$tr_count=0;
 				foreach($form_data_mapping_fields as $key=>$val)
 				{
@@ -56,7 +56,7 @@ if (!defined('ABSPATH')) {
 					?>
 					<tr>
 						<td colspan="3" style="text-align:center;">
-							<?php _e('No fields found.'); ?>
+							<?php esc_html_e('No fields found.', 'order-import-export-for-woocommerce'); ?>
 						</td>
 					</tr>
 					<?php
@@ -95,14 +95,14 @@ if (!defined('ABSPATH')) {
 			<div class="meta_mapping_box">
 				<div class="meta_mapping_box_hd wt_iew_noselect">
 					<span class="dashicons dashicons-arrow-right"></span>
-					<?php echo $mapping_enabled_field[0];?>
+					<?php echo esc_html($mapping_enabled_field[0]);?>
 					<?php if( 'Hidden meta' == trim( $mapping_enabled_field[0] ) ): ?>
-					<span class="premium-badge" style="padding:2px 4px;width: 77px;height: 20px;top: 180px;left: 380px;border-radius: 10px;border: 0.5px solid #F2E971;background-color:#FFF29B;font-family: Inter;font-weight: 500;font-size: 11px;line-height: 100%;letter-spacing: 0%;text-align: center;"> <?php _e('Premium 💎', 'order-import-export-for-woocommerce'); ?> </span>
+					<span class="premium-badge" style="padding:2px 4px;width: 77px;height: 20px;top: 180px;left: 380px;border-radius: 10px;border: 0.5px solid #F2E971;background-color:#FFF29B;font-family: Inter;font-weight: 500;font-size: 11px;line-height: 100%;letter-spacing: 0%;text-align: center;"> <?php esc_html_e('Premium 💎', 'order-import-export-for-woocommerce'); ?> </span>
 					<?php endif; ?>
-					<span class="meta_mapping_box_selected_count_box"><span class="meta_mapping_box_selected_count_box_num">0</span> <?php _e(' columns(s) selected'); ?></span>
+					<span class="meta_mapping_box_selected_count_box"><span class="meta_mapping_box_selected_count_box_num">0</span> <?php esc_html_e(' columns(s) selected', 'order-import-export-for-woocommerce'	); ?></span>
 				</div>
 				<div style="clear:both;"></div>
-				<div class="meta_mapping_box_con" data-sortable="0" data-loaded="<?php echo esc_attr($data_loaded); ?>" data-field-validated="0" data-key="<?php echo $mapping_enabled_field_key;?>">
+				<div class="meta_mapping_box_con" data-sortable="0" data-loaded="<?php echo esc_attr($data_loaded); ?>" data-field-validated="0" data-key="<?php echo esc_attr($mapping_enabled_field_key);?>">
 					<?php 
 					if ( ! empty( $banner_html ) ) {
 						echo wp_kses_post($banner_html);

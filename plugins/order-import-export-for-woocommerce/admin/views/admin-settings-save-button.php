@@ -3,7 +3,7 @@
 if ( ! defined( 'WPINC' ) ) {
     die;
 }
-$settings_button_title=isset($settings_button_title) ? $settings_button_title : 'Update Settings';
+$settings_button_title=isset($settings_button_title) ? $settings_button_title : __('Update Settings', 'order-import-export-for-woocommerce');
 $before_button_text=isset($before_button_text) ? $before_button_text : '';
 $after_button_text=isset($after_button_text) ? $after_button_text : '';
 ?>
@@ -12,9 +12,9 @@ $after_button_text=isset($after_button_text) ? $after_button_text : '';
     <div class="left">
     </div>
     <div class="right">
-    	<?php echo $before_button_text; ?>
-        <input type="submit" name="wt_iew_update_admin_settings_form" value="<?php _e($settings_button_title); ?>" class="button button-primary" style="float:right;"/>
-        <?php echo $after_button_text; ?>
+    	<?php echo wp_kses_post( $before_button_text ); ?>
+        <input type="submit" name="wt_iew_update_admin_settings_form" value="<?php echo esc_attr($settings_button_title); ?>" class="button button-primary" style="float:right;"/>
+        <?php echo wp_kses_post( $after_button_text ); ?>
         <span class="spinner" style="margin-top:11px"></span>
     </div>
 </div>

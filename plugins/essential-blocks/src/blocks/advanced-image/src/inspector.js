@@ -195,6 +195,11 @@ function Inspector(props) {
 
     // image size change
     useEffect(() => {
+        // Only run this effect when imageSize actually changes, not on initial render
+        if (prevImageSize.current === imageSize) {
+            return;
+        }
+
         // custom
         if (imgSource === "custom") {
             if (image.sizes && imageSize && imageSize.length > 0) {
@@ -232,6 +237,7 @@ function Inspector(props) {
                             attributes["widthUnit"]
                             ? attributes["widthUnit"]
                             : "px",
+
                     heightRange:
                         prevImageSize.current === imageSize && heightRange
                             ? heightRange
@@ -281,20 +287,10 @@ function Inspector(props) {
                 setAttributes({
                     image,
                     widthRange: newWidth ? newWidth : "",
-                    // widthUnit: "px",
-                    widthUnit: attributes["widthUnit"]
-                        ? attributes["widthUnit"]
-                        : "px",
-                    heightRange:
-                        !autoHeight && heightRange > 0
-                            ? heightRange
-                            : newHeight
-                                ? newHeight
-                                : "",
-                    // heightUnit: "px",
-                    heightUnit: attributes["heightUnit"]
-                        ? attributes["heightUnit"]
-                        : "px",
+                    widthUnit: attributes["widthUnit"] ? attributes["widthUnit"] : "px",
+                    // Only update heightRange if autoHeight is false and we don't have a custom value
+                    heightRange: !autoHeight && !heightRange ? (newHeight ? newHeight : "") : heightRange,
+                    heightUnit: attributes["heightUnit"] ? attributes["heightUnit"] : "px",
                 });
             }
         }
@@ -310,15 +306,10 @@ function Inspector(props) {
 
             setAttributes({
                 widthRange: featuredImgWidth ? featuredImgWidth : "",
-                // widthUnit: "px",
-                widthUnit: attributes["widthUnit"]
-                    ? attributes["widthUnit"]
-                    : "px",
-                heightRange: featuredImgHeight ? featuredImgHeight : "",
-                // heightUnit: "px",
-                heightUnit: attributes["heightUnit"]
-                    ? attributes["heightUnit"]
-                    : "px",
+                widthUnit: attributes["widthUnit"] ? attributes["widthUnit"] : "px",
+                // Only update heightRange if autoHeight is false and we don't have a custom value
+                heightRange: !autoHeight && !heightRange ? (featuredImgHeight ? featuredImgHeight : "") : heightRange,
+                heightUnit: attributes["heightUnit"] ? attributes["heightUnit"] : "px",
             });
         }
 

@@ -984,13 +984,15 @@ class Environment {
 	}
 
 	/**
-	 * Load the third party plugin tweaks during the plugins_loaded action
+	 * Third party plugin tweaks
+	 *
+	 * !!
+	 * Don't load these on plugins_loaded,
+	 * because our filter won't be applied.
 	 *
 	 * @return void
-	 *
-	 * @since 1.48.0
 	 */
-	public static function third_party_plugin_tweaks_on_plugins_loaded() {
+	public static function third_party_plugin_tweaks_on_init() {
 
 		/**
 		 * Google Listing and Ads
@@ -1002,14 +1004,6 @@ class Environment {
 		if (Options::is_google_ads_active()) {
 			add_filter('woocommerce_gla_disable_gtag_tracking', '__return_true');
 		}
-	}
-
-	/**
-	 * Third party plugin tweaks
-	 *
-	 * @return void
-	 */
-	public static function third_party_plugin_tweaks_on_init() {
 
 		/**
 		 * WP Consent API compatibility declaration

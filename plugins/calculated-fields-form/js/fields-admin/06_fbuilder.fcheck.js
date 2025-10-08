@@ -49,7 +49,7 @@
 			display:function( css_class )
 				{
 					css_class = css_class || '';
-					this.choicesVal = ((typeof(this.choicesVal) != "undefined" && this.choicesVal !== null)?this.choicesVal:this.choices.slice(0));
+					this.choicesVal = ((typeof(this.choicesVal) != "undefined" && this.choicesVal !== null && this.choicesVal.length)?this.choicesVal:this.choices.slice(0));
 					var str = "";
 					for (var i=0;i<this.choices.length;i++)
 					{
@@ -258,7 +258,7 @@
 				},
 			showChoiceIntance: function()
 				{
-					this.choicesVal = ((typeof(this.choicesVal) != "undefined" && this.choicesVal !== null)?this.choicesVal:this.choices.slice(0));
+					this.choicesVal = ((typeof(this.choicesVal) != "undefined" && this.choicesVal !== null && this.choicesVal.length)?this.choicesVal:this.choices.slice(0));
 					var l = this.choices,
 						lv = this.choicesVal,
 						v = this.choiceSelected,

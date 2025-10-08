@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
 }
 ?>
 <div class="wt_iew_export_main">
-	<p><?php echo $this->step_description; ?></p>
+	<p><?php echo wp_kses_post($this->step_description); ?></p>
 	<div class="wt_iew_post-type-cards">
 		<?php
 		foreach ($post_types as $key => $value) {
@@ -15,18 +15,18 @@ if (!defined('ABSPATH')) {
 			$postImageLink = WT_O_IEW_PLUGIN_URL . 'assets/images/post_types/' . strtolower($key) . '.svg';
 			$postImageLinkactive = WT_O_IEW_PLUGIN_URL . 'assets/images/post_types/' . strtolower($key) . 'active.svg';
 		?>
-			<div class="wt_iew_post-type-card <?php echo ($item_type == $key) ? 'selected' : ''; ?>" data-post-type="<?php echo esc_attr($key); ?>">
+			<div class="wt_iew_post-type-card <?php echo esc_attr(($item_type == $key) ? 'selected' : ''); ?>" data-post-type="<?php echo esc_attr($key); ?>">
 				<div class="wt_iew_post-type-card2">
-					<div class="wt_iew_image <?php echo 'wt_iew_image_' . esc_html($key); ?>" style="display : <?php echo ($item_type == $key) ? 'none' : 'block'; ?>">
+					<div class="wt_iew_image <?php echo esc_attr('wt_iew_image_' . $key); ?>" style="display : <?php echo esc_attr(($item_type == $key) ? 'none' : 'block'); ?>">
 						<img src="<?php echo esc_url($postImageLink); ?>" />
 					</div>
-					<div class="<?php echo 'wt_iew_active_image_' . esc_html($key); ?>" style="display : <?php echo ($item_type == $key) ? 'block' : 'none'; ?>">
+					<div class="<?php echo esc_attr('wt_iew_active_image_' . $key); ?>" style="display : <?php echo esc_attr(($item_type == $key) ? 'block' : 'none'); ?>">
 						<img src="<?php echo esc_url($postImageLinkactive); ?>" />
 					</div>
 
 				</div>
 				<h3 class="wt_iew_post-type-card-hd"><?php echo esc_html($value); ?></h3>
-				<div class="wt_iew_free_addon_warn <?php echo 'wt_iew_type_' . esc_html($key); ?>" style="display:block;">
+				<div class="wt_iew_free_addon_warn <?php echo esc_attr('wt_iew_type_' . $key); ?>" style="display:block;">
 					<?php
 					$btn_href   = '';
 					$btn_text   = '';
@@ -116,8 +116,8 @@ if (!defined('ABSPATH')) {
 	<div class="wt_iew_suite_banner">
 		<div class="wt_iew_suite_banner_border"></div>
 		<p style="font-size: 13px; font-weight: 400; margin-top: -61px;margin-left: 13px; padding: 10px 10px;">
-			<strong><?php _e('💡 Did You Know?'); ?></strong> <?php _e('You can now get an all-in-one bundled solution to import and export WooCommerce products, orders, users, and more with premium exclusive features. Get'); ?>
-			<a href="<?php echo esc_url("https://www.webtoffee.com/product/woocommerce-import-export-suite/?utm_source=free_plugin_data_type&utm_medium=basic_revamp&utm_campaign=Import_Export_Suite" . WT_O_IEW_VERSION); ?>" style="color: blue;" target="_blank"><?php _e('Import Export Suite for WooCommerce.'); ?></a>
+			<strong><?php esc_html_e('💡 Did You Know?', 'order-import-export-for-woocommerce'); ?></strong> <?php esc_html_e('You can now get an all-in-one bundled solution to import and export WooCommerce products, orders, users, and more with premium exclusive features. Get', 'order-import-export-for-woocommerce'); ?>
+			<a href="<?php echo esc_url("https://www.webtoffee.com/product/woocommerce-import-export-suite/?utm_source=free_plugin_data_type&utm_medium=basic_revamp&utm_campaign=Import_Export_Suite" . WT_O_IEW_VERSION); ?>" style="color: blue;" target="_blank"><?php esc_html_e('Import Export Suite for WooCommerce.', 'order-import-export-for-woocommerce'); ?></a>
 		</p>
 	</div>
 </div>

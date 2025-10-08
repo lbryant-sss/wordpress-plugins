@@ -1,5 +1,6 @@
 == Changelog ==
 
+= 5.4.0.2 =
 = 5.4.0.1 =
 
 * This update resolves some compatibility issues that were introduced in the previous plugin update.

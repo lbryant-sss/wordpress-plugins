@@ -819,13 +819,38 @@ $pro_blocks = [
         'demo'       => ESSENTIAL_BLOCKS_SITE_URL . 'demo/mega-menu',
         'doc'        => ESSENTIAL_BLOCKS_SITE_URL . 'docs/eb-mega-menu',
         'icon'       => ESSENTIAL_BLOCKS_ADMIN_URL . 'assets/images/blocks-icon/mega-menu.svg'
-     ]
+    ],
+    'form_datetime_picker'      => [
+        'label'      => __( 'Date Time Picker', 'essential-blocks' ),
+        'value'      => 'form_datetime_picker',
+        'visibility' => 'true',
+        'is_pro'     => true,
+        'show_in_admin' => false,
+        'category'   => 'form',
+        'name'       => 'pro-form-datetime-picker',
+        'demo'       => ESSENTIAL_BLOCKS_SITE_URL . 'demo/form-block/',
+        'doc'        => ESSENTIAL_BLOCKS_SITE_URL . 'docs/eb-form-block',
+        'icon'       => ESSENTIAL_BLOCKS_ADMIN_URL . 'assets/images/blocks-icon/form-datetime-picker.svg'
+    ],
+    'form_recaptcha'            => [
+        'label'      => __( 'Google reCaptcha', 'essential-blocks' ),
+        'value'      => 'form_recaptcha',
+        'visibility' => 'true',
+        'is_pro'     => true,
+        'show_in_admin' => false,
+        'category'   => 'form',
+        'name'       => 'pro-form-recaptcha',
+        'demo'       => ESSENTIAL_BLOCKS_SITE_URL . 'demo/form-block/',
+        'doc'        => ESSENTIAL_BLOCKS_SITE_URL . 'docs/eb-form-block',
+        'icon'       => ESSENTIAL_BLOCKS_ADMIN_URL . 'assets/images/blocks-icon/form-recaptcha.svg'
+    ],
     // 'country_field'             => [
     //     'label'      => __( 'Country Field', 'essential-blocks' ),
     //     'value'      => 'country_field',
     //     'visibility' => 'true',
     //     'category'   => 'form',
     //     'is_pro'     => true,
+    //     'show_in_admin' => false,
     //     'name'       => 'pro-country-field',
     //     'demo'       => ESSENTIAL_BLOCKS_SITE_URL . 'demo/country-field/',
     //     'doc'        => ESSENTIAL_BLOCKS_SITE_URL . 'docs/eb-country-field/',
@@ -837,6 +862,7 @@ $pro_blocks = [
     //     'visibility' => 'true',
     //     'category'   => 'form',
     //     'is_pro'     => true,
+    //     'show_in_admin' => false,
     //     'name'       => 'pro-phone-field',
     //     'demo'       => ESSENTIAL_BLOCKS_SITE_URL . 'demo/phone-field/',
     //     'doc'        => ESSENTIAL_BLOCKS_SITE_URL . 'docs/eb-phone-field/',

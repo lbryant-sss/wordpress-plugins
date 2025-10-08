@@ -69,12 +69,15 @@ if(class_exists('HF_Subscription')){
 } else {
     $post_type = 'shop_subscription';
 }
+
+// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Its necessary to use direct database query.
 $meta_keys = $wpdb->get_col($wpdb->prepare("SELECT DISTINCT pm.meta_key
             FROM {$wpdb->postmeta} AS pm
             LEFT JOIN {$wpdb->posts} AS p ON p.ID = pm.post_id
             WHERE p.post_type = %s
             AND pm.meta_key NOT IN ('_schedule_next_payment','_schedule_start','_schedule_end','_schedule_trial_end','_download_permissions_granted','_subscription_renewal_order_ids_cache','_subscription_resubscribe_order_ids_cache','_subscription_switch_order_ids_cache','_created_via','_customer_user')
             ORDER BY pm.meta_key",$post_type));
+// phpcs:enable
 foreach ($meta_keys as $meta_key) {
     if (empty($columns[$meta_key])) {
         if($meta_key[0] == '_'  && empty($columns[substr($meta_key, 1)])){

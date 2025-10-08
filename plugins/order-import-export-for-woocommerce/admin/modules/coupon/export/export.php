@@ -68,6 +68,7 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Export {
                     );
 
             if (!empty($cpn_categories)) {
+                // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Its necessary to use meta query.
                 $coupon_args['meta_query'] = array(
                     array(
                         'key' => 'discount_type',
@@ -76,6 +77,7 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Export {
                 ));
             }
             if ($coupon_amount_from != 0 && $coupon_amount_to == 0) {
+                // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Its necessary to use meta query.
                 $coupon_args['meta_query'] = array(
                     array(
                         'key' => 'coupon_amount',
@@ -85,6 +87,7 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Export {
                 ));
             }
             if ($coupon_amount_to != 0 && $coupon_amount_from == 0) {
+                // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Its necessary to use meta query.
                 $coupon_args['meta_query'] = array(
                     array(
                         'key' => 'coupon_amount',
@@ -94,6 +97,7 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Export {
                 ));
             }
             if ($coupon_amount_to != 0 && $coupon_amount_from != 0) {
+                // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Its necessary to use meta query.
                 $coupon_args['meta_query'] = array(
                     array(
                         'key' => 'coupon_amount',
@@ -103,6 +107,7 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Export {
                 ));
             }
             if ($coupon_exp_date_from != '0000-00-00' && $coupon_exp_date_to == '0000-00-00') {
+                // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Its necessary to use meta query.
                 $coupon_args['meta_query'] = array(
                     array(
                         'key' => 'date_expires',
@@ -111,6 +116,7 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Export {
                 ));
             }
             if ($coupon_exp_date_to != '0000-00-00' && $coupon_exp_date_from == '0000-00-00') {
+                // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Its necessary to use meta query.
                 $coupon_args['meta_query'] = array(
                     array(
                         'key' => 'date_expires',
@@ -119,6 +125,7 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Export {
                 ));
             }
             if ($coupon_exp_date_to != '0000-00-00' && $coupon_exp_date_from != '0000-00-00') {
+                // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Its necessary to use meta query.
                 $coupon_args['meta_query'] = array(
                     array(
                         'key' => 'date_expires',
@@ -128,6 +135,7 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Export {
             }
             
             if (!empty($selected_coupon_ids)) {
+                // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Its necessary to use meta query.
                 $coupon_args['meta_query'] = array();
                 $coupon_args['post__in'] = $selected_coupon_ids;
             }            
@@ -202,7 +210,7 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Export {
                 }
                 
                 if('date_expires' == $column && !empty($coupon->$column)){
-                    $row[$column] = date('Y-m-d',$coupon->$column);
+                    $row[$column] = wp_date('Y-m-d',$coupon->$column);
                     continue;
                 }
 

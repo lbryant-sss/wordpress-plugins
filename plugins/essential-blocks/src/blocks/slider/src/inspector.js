@@ -48,6 +48,7 @@ import {
     TEXT_ALIGN,
     VERTICAL_ALIGN,
     TAGS_TYPE,
+    SLIDER_BORDER_SHADOW,
 } from "./constants/constants";
 
 
@@ -117,7 +118,7 @@ function Inspector(props) {
         titleTag,
         contentTag,
         showLightbox,
-        version
+        version,
     } = attributes;
 
     // Add this function to get the settings components for each slide
@@ -342,6 +343,68 @@ function Inspector(props) {
                                             }
                                         />
 
+                                    </>
+                                )}
+                            </>
+                        )}
+
+                        {sliderContentType === "content-1" && (
+                            <>
+                                <ToggleControl
+                                    label={__("Enable Content Link", "essential-blocks")}
+                                    checked={each.enableContentLink}
+                                    onChange={() =>
+                                        handleImageData(
+                                            'enableContentLink',
+                                            !each.enableContentLink,
+                                            each.id,
+                                            images,
+                                            setAttributes
+                                        )
+                                    }
+                                />
+
+                                {each.enableContentLink && (
+                                    <>
+                                        <EBTextControl
+                                            label={__("Content Link", "essential-blocks")}
+                                            fieldType="url"
+                                            value={each.contentLink}
+                                            onChange={(value) =>
+                                                handleImageData(
+                                                    'contentLink',
+                                                    value,
+                                                    each.id,
+                                                    images,
+                                                    setAttributes
+                                                )
+                                            }
+                                            placeholder="https://example.com"
+                                            help={__(
+                                                "Enter a valid URL.",
+                                                "essential-blocks"
+                                            )}
+                                            showValidation={true}
+                                            enableSecurity={true}
+                                        />
+
+                                        {each.contentLink && each.contentLink.length > 0 && !each.isContentUrlValid && (
+                                            <span className="error">{__("URL is not valid", "essential-blocks")}</span>
+                                        )}
+
+                                        <ToggleControl
+                                            label={__("Open in New Tab", "essential-blocks")}
+                                            checked={each.contentOpenNewTab}
+                                            onChange={() =>
+                                                handleImageData(
+                                                    'contentOpenNewTab',
+                                                    !each.contentOpenNewTab,
+                                                    each.id,
+                                                    images,
+                                                    setAttributes
+                                                )
+                                            }
+                                        />
                                     </>
                                 )}
                             </>
@@ -712,6 +775,15 @@ function Inspector(props) {
                                 )}
                             </>
                         )}
+
+                        <Divider />
+
+                        <PanelRow>Slider Border</PanelRow>
+                        <BorderShadowControl
+                            controlName={SLIDER_BORDER_SHADOW}
+                            noBdrHover
+                            noShadow
+                        />
                     </InspectorPanel.PanelBody>
 
                     {sliderType === "content" && (

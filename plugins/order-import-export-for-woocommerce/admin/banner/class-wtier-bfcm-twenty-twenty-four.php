@@ -71,7 +71,7 @@ if (!class_exists('\\Wtierorder\\Banners\\Wtier_Bfcm_Twenty_Twenty_Four')) {
                 if ('webtoffee-import-export-basic_page_wt_iew_scheduled_job' === $screen_id) {
                     $extra_class = 'wtier-bfcm-banner-2024-scheduled-job'; // Add this class for additional styling
                 }
-?>
+                ?>
                 <div class="wtier-bfcm-banner-2024 notice is-dismissible <?php echo esc_attr($extra_class); ?>">
                     <div class="wtier-bfcm-banner-body">
                         <div class="wtier-bfcm-banner-body-img-section">
@@ -88,16 +88,18 @@ if (!class_exists('\\Wtierorder\\Banners\\Wtier_Bfcm_Twenty_Twenty_Four')) {
                                     // Check if the screen ID matches 'webtoffee-import-export-basic_page_wt_iew_scheduled_job'
                                     if ('webtoffee-import-export-basic_page_wt_iew_scheduled_job' === $screen_id) {
                                         // Add a line break for this specific screen
-                                        echo sprintf(
-                                            __('Your Last Chance to Avail %1$s on<br>WebToffee Plugins. Grab the deal before it`s gone!', 'order-import-export-for-woocommerce'),
-                                            '<span>30% ' . __("OFF", "order-import-export-for-woocommerce") . '</span>'
-                                        );
+                                        echo wp_kses_post(sprintf(
+                                            // translators: 1: span open tag, 2: span close tag, 3: Line break tag
+                                            __('Your Last Chance to Avail %1$s30% OFF%2$s on%3$sWebToffee Plugins. Grab the deal before it`s gone!', 'order-import-export-for-woocommerce'),
+                                            '<span>', '</span>', '<br>'
+                                        ));
                                     } else {
                                         // Regular display for other screens
-                                        echo sprintf(
-                                            __('Your Last Chance to Avail %1$s on WebToffee Plugins. Grab the deal before it`s gone!', 'order-import-export-for-woocommerce'),
-                                            '<span>30% ' . __("OFF", "order-import-export-for-woocommerce") . '</span>'
-                                        );
+                                        echo wp_kses_post(sprintf(
+                                            // translators: 1: span open tag, 2: span close tag
+                                            __('Your Last Chance to Avail %1$s30% OFF%2$s on WebToffee Plugins. Grab the deal before it`s gone!', 'order-import-export-for-woocommerce'),
+                                            '<span> ', '</span>'
+                                        ));
                                     }
                                     ?>
                                 </p>
@@ -108,7 +110,7 @@ if (!class_exists('\\Wtierorder\\Banners\\Wtier_Bfcm_Twenty_Twenty_Four')) {
                         </div>
                     </div>
                 </div>
-<?php
+            <?php
             }
         }
 
@@ -178,7 +180,7 @@ if (!class_exists('\\Wtierorder\\Banners\\Wtier_Bfcm_Twenty_Twenty_Four')) {
             check_ajax_referer('wtier_bfcm_twenty_twenty_four_banner_nonce');
             if (isset($_POST['wtier_bfcm_twenty_twenty_four_banner_action_type'])) {
 
-                $action_type = absint(sanitize_text_field($_POST['wtier_bfcm_twenty_twenty_four_banner_action_type']));
+                $action_type = absint(wp_unslash($_POST['wtier_bfcm_twenty_twenty_four_banner_action_type']));
                 // Current action is allowed?
                 if (in_array($action_type, array(2, 3))) {
                     update_option(self::$banner_state_option_name, $action_type);

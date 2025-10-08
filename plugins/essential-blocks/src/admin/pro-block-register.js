@@ -190,7 +190,7 @@ export const registerProBlocks = () => {
         const all_blocks = EssentialBlocksLocalize?.all_blocks_default || {};
         const proBlocks = [];
         for (const [key, block] of Object.entries(all_blocks)) {
-            if (block?.is_pro && block?.name) {
+            if (block?.is_pro && block?.show_in_admin !== false && block?.name) {
                 proBlocks.push({
                     key: key,
                     name: `essential-blocks/${block.name}`,

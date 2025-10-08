@@ -42,32 +42,32 @@ class Wt_Import_Export_For_Woo_Basic_Export
 
 		/* allowed file types */
 		$this->allowed_export_file_type=array(
-			'csv'=>__('CSV'),
-			'xml'=>__('XML')
+			'csv'=>__('CSV', 'order-import-export-for-woocommerce'),
+			'xml'=>__('XML', 'order-import-export-for-woocommerce')
 		);
 
 		/* default step list */
 		$this->steps=array
 		(
 			'post_type'=>array(
-				'title'=>__('Select a post type'),
-				'description'=>__( 'Export and download the data for the respective post type into a CSV file. As per the selected post type, we can use this exported CSV file to import data to your site.' ),
+				'title'=>__('Select a post type', 'order-import-export-for-woocommerce'),
+				'description'=>__( 'Export and download the data for the respective post type into a CSV file. As per the selected post type, we can use this exported CSV file to import data to your site.', 'order-import-export-for-woocommerce' ),
 			),
 			'method_export'=>array(
-				'title'=>__('Select an export method'),
-				'description'=>__('Choose from the options below to continue with your export: quick export from DB, based on a pre-saved template or a new export with advanced options.'),
+				'title'=>__('Select an export method', 'order-import-export-for-woocommerce'),
+				'description'=>__('Choose from the options below to continue with your export: quick export from DB, based on a pre-saved template or a new export with advanced options.', 'order-import-export-for-woocommerce'),
 			),
 			'filter'=>array(
-				'title'=>__('Filter data'),
-				'description'=>__('Filter data that needs to be exported as per the below criteria.'),
+				'title'=>__('Filter data', 'order-import-export-for-woocommerce'),
+				'description'=>__('Filter data that needs to be exported as per the below criteria.', 'order-import-export-for-woocommerce'),
 			), 
 			'mapping'=>array(
-				'title'=>__( 'Map and reorder export columns' ),
-				'description'=>__( 'You can edit the default export column names. Drag and reorder the columns if needed. If you are exporting via the pre-saved template method, column names and values that were saved most recently will appear on the screen.' ),
+				'title'=>__( 'Map and reorder export columns', 'order-import-export-for-woocommerce' ),
+				'description'=>__( 'You can edit the default export column names. Drag and reorder the columns if needed. If you are exporting via the pre-saved template method, column names and values that were saved most recently will appear on the screen.', 'order-import-export-for-woocommerce' ),
 			),
 			'advanced'=>array(
-				'title'=>__('Advanced options/Batch export'),
-				'description'=>__('You can save the template file for future exports or proceed with the export.'),
+				'title'=>__('Advanced options/Batch export', 'order-import-export-for-woocommerce'),
+				'description'=>__('You can save the template file for future exports or proceed with the export.', 'order-import-export-for-woocommerce'),
 			),
 		);
 
@@ -83,9 +83,9 @@ class Wt_Import_Export_For_Woo_Basic_Export
 
 
 		$this->export_methods=array(
-			'quick'=>array( 'title'=>__( 'Quick export' ), 'description'=> __( 'Exports all the basic fields.' ) ),
-			'template'=>array( 'title'=>__( 'Pre-saved template' ), 'description'=> __( 'Exports data as per the specifications(filters, selective column,mapping etc) of the template saved during the previous Advanced exports. To change the settings, move to filter data.' ) ),
-			'new'=>array( 'title'=>__( 'Advanced export' ), 'description'=> __( 'Exports data after a detailed process of filtration, column selection and advanced options. The configured settings can be saved as a template for future exports.' ) ),
+			'quick'=>array( 'title'=>__( 'Quick export', 'order-import-export-for-woocommerce' ), 'description'=> __( 'Exports all the basic fields.', 'order-import-export-for-woocommerce' ) ),
+			'template'=>array( 'title'=>__( 'Pre-saved template', 'order-import-export-for-woocommerce' ), 'description'=> __( 'Exports data as per the specifications(filters, selective column,mapping etc) of the template saved during the previous Advanced exports. To change the settings, move to filter data.', 'order-import-export-for-woocommerce' ) ),
+			'new'=>array( 'title'=>__( 'Advanced export', 'order-import-export-for-woocommerce' ), 'description'=> __( 'Exports data after a detailed process of filtration, column selection and advanced options. The configured settings can be saved as a template for future exports.', 'order-import-export-for-woocommerce' ) ),
 		);
 
 		/* advanced plugin settings */
@@ -135,61 +135,62 @@ class Wt_Import_Export_For_Woo_Basic_Export
 	{
 		$export_methods=array_map(function($vl){ return $vl['title']; }, $this->export_methods);
 		$fields['default_export_method']=array(
-			'label'=>__("Default Export method"),
+			'label'=>__("Default Export method", 'order-import-export-for-woocommerce'),
 			'type'=>'select',
 			'sele_vals'=>$export_methods,
             'value' =>'new',
 			'field_name'=>'default_export_method',
 			'field_group'=>'advanced_field',
-			'help_text'=>__('Select the default method of export.'),
+			'help_text'=>__('Select the default method of export.', 'order-import-export-for-woocommerce'),
 		);
 		
 		$fields['include_bom'] = array(
-			'label'=>__( "Include BOM in export file" ),
+			'label'=>__( "Include BOM in export file", 'order-import-export-for-woocommerce' ),
 			'value'=>1,
-			'checkbox_fields' => array( 1 => __( 'Enable' ) ),
+			'checkbox_fields' => array( 1 => __( 'Enable', 'order-import-export-for-woocommerce' ) ),
 			'type'=>'checkbox',
 			'field_name'=>'include_bom',
 			'field_group'=>'advanced_field',
-			'help_text'=>__( "The BOM will help some programs like Microsoft Excel read your export file if it includes non-English characters." ),
+			'help_text'=>__( "The BOM will help some programs like Microsoft Excel read your export file if it includes non-English characters.", 'order-import-export-for-woocommerce' ),
 		);
 		
 		$fields['default_export_batch']=array(
-			'label'=>__("Default Export batch count"),
+			'label'=>__("Default Export batch count", 'order-import-export-for-woocommerce'),
 			'type'=>'number',
                         'value' =>30,
 			'field_name'=>'default_export_batch',
-			'help_text'=>__('Provide the default count for the records to be exported in a batch.'),
+			'help_text'=>__('Provide the default count for the records to be exported in a batch.', 'order-import-export-for-woocommerce'),
 			'validation_rule'=>array('type'=>'absint'),
 			'attr' => array('min' => 1, 'max' => 200),
 		);
                 if(is_plugin_active('product-import-export-for-woo/product-import-export-for-woo.php')){
                     $fields['enable_chatgpt'] = array(
-			'label'=>__( "Enable ChatGPT" ),
+			'label'=>__( "Enable ChatGPT", 'order-import-export-for-woocommerce' ),
 			'value'=>0,
-			'checkbox_fields' => array( 1 => __( 'Enable' ) ),
+			'checkbox_fields' => array( 1 => __( 'Enable', 'order-import-export-for-woocommerce' ) ),
 			'type'=>'checkbox',
 			'field_name'=>'enable_chatgpt',
 			'field_group'=>'advanced_field',
-			'help_text'=>__( 'Automatically generate product descriptions from product titles using ChatGPT API for products without descriptions in the importing CSV.' ),
+			'help_text'=>__( 'Automatically generate product descriptions from product titles using ChatGPT API for products without descriptions in the importing CSV.', 'order-import-export-for-woocommerce' ),
                     	'form_toggler'=>array(
 				'type'=>'parent',
 				'target'=>'wt_iew_enable_chatgpt',
 			),
                     );  
                     $fields['chatgpt_api_key'] = array(
-                            'label' => __("Chat GPT API key"),
+                            'label' => __("Chat GPT API key", 'order-import-export-for-woocommerce'),
                             'type' => 'text',
                             'value' => '',
                             'field_name' => 'chatgpt_api_key',
                             'field_group' => 'advanced_field',
-                            'help_text' => sprintf(__('Input the ChatGPT API key to enable the automatic generation of product descriptions. %s Where do I get my API Keys? %s '), '<a href="https://help.openai.com/en/articles/4936850-where-do-i-find-my-secret-api-key" target="_blank">', '</a>'),
+							// translators: 1: a tag open, 2: a tag close
+                            'help_text' => sprintf(__('Input the ChatGPT API key to enable the automatic generation of product descriptions. %1$s Where do I get my API Keys? %2$s ', 'order-import-export-for-woocommerce'), '<a href="https://help.openai.com/en/articles/4936850-where-do-i-find-my-secret-api-key" target="_blank">', '</a>'),
                             'validation_rule' => array('type' => 'text'),
                             'form_toggler'=>array(
-				'type'=>'child',
-				'id'=>'wt_iew_enable_chatgpt',
-				'val'=>1,
-				'chk'=>'true'
+								'type'=>'child',
+								'id'=>'wt_iew_enable_chatgpt',
+								'val'=>1,
+								'chk'=>'true'
                             ),
                     );
                 }
@@ -204,8 +205,8 @@ class Wt_Import_Export_For_Woo_Basic_Export
 		$menu_temp=array(
 			$this->module_base=>array(
 				'menu',
-				__('Export'),
-				__('WebToffee Import Export (Basic)'),
+				__('Export', 'order-import-export-for-woocommerce'),
+				__('WebToffee Import Export (Basic)', 'order-import-export-for-woocommerce'),
 				apply_filters('wt_import_export_allowed_capability', 'import'),
 				$this->module_id,
 				array($this,'admin_settings_page'),
@@ -215,8 +216,8 @@ class Wt_Import_Export_For_Woo_Basic_Export
 			$this->module_base.'-sub'=>array(
 				'submenu',
 				$this->module_id,
-				__('Export'),
-				__('Export'), 
+				__('Export', 'order-import-export-for-woocommerce'),
+				__('Export', 'order-import-export-for-woocommerce'), 
 				apply_filters('wt_import_export_allowed_capability', 'import'),
 				$this->module_id,
 				array($this, 'admin_settings_page')
@@ -235,7 +236,8 @@ class Wt_Import_Export_For_Woo_Basic_Export
 		/**
 		*	Check it is a rerun call
 		*/
-		$requested_rerun_id=(isset($_GET['wt_iew_rerun']) ? absint($_GET['wt_iew_rerun']) : 0);
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce verification not required.
+		$requested_rerun_id=(isset($_GET['wt_iew_rerun']) ? absint(wp_unslash($_GET['wt_iew_rerun'])) : 0);
 		$this->_process_rerun($requested_rerun_id);
 
 		$this->enqueue_assets();
@@ -247,32 +249,33 @@ class Wt_Import_Export_For_Woo_Basic_Export
 	*/
 	public function ajax_main()
 	{       
-
 		include_once plugin_dir_path(__FILE__).'classes/class-export-ajax.php';
 		if(Wt_Iew_Sh::check_write_access(WT_IEW_PLUGIN_ID_BASIC))
 		{
 			/**
 			*	Check it is a rerun call
 			*/
+			// phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce verification done using the Wt_Iew_Sh::check_write_access() method above.
 			if(!$this->_process_rerun((isset($_POST['rerun_id']) ? absint($_POST['rerun_id']) : 0)))
 			{	
-				$this->export_method=(isset($_POST['export_method']) ? Wt_Iew_Sh::sanitize_item($_POST['export_method'], 'text') : '');
-				$this->to_export=(isset($_POST['to_export']) ? Wt_Iew_Sh::sanitize_item($_POST['to_export'], 'text') : '');
-				$this->selected_template=(isset($_POST['selected_template']) ? Wt_Iew_Sh::sanitize_item($_POST['selected_template'], 'int') : 0);
+				$this->export_method=(isset($_POST['export_method']) ? sanitize_text_field(wp_unslash($_POST['export_method'])) : '');
+				$this->to_export=(isset($_POST['to_export']) ? sanitize_text_field(wp_unslash($_POST['to_export'])) : '');
+				$this->selected_template=(isset($_POST['selected_template']) ? absint(wp_unslash($_POST['selected_template'])) : 0);
 			}		
 			
 			$this->get_steps();
 
 			$ajax_obj=new Wt_Import_Export_For_Woo_Basic_Export_Ajax($this, $this->to_export, $this->steps, $this->export_method, $this->selected_template, $this->rerun_id);
 			
-			$export_action=Wt_Iew_Sh::sanitize_item($_POST['export_action'], 'text');
-			$data_type=Wt_Iew_Sh::sanitize_item($_POST['data_type'], 'text');
+			$export_action=isset($_POST['export_action']) ? sanitize_text_field(wp_unslash($_POST['export_action'])) : '';
+			$data_type=isset($_POST['data_type']) ? sanitize_text_field(wp_unslash($_POST['data_type'])) : '';
+			// phpcs:enable
 			
 			$allowed_ajax_actions=array('get_steps', 'get_meta_mapping_fields', 'save_template', 'save_template_as', 'update_template', 'upload', 'export', 'export_image');
 
 			$out=array(
 				'status'=>0,
-				'msg'=>__('Error'),
+				'msg'=>esc_html__('Error', 'order-import-export-for-woocommerce'),
 			);
 
 			if(method_exists($ajax_obj, $export_action) && in_array($export_action, $allowed_ajax_actions))
@@ -282,7 +285,7 @@ class Wt_Import_Export_For_Woo_Basic_Export
 
 			if($data_type=='json')
 			{
-				echo json_encode($out);
+				echo wp_json_encode($out);
 			}
 		}
 		exit();
@@ -291,21 +294,21 @@ class Wt_Import_Export_For_Woo_Basic_Export
 	public function get_filter_screen_fields($filter_form_data) {
             $filter_screen_fields = array(
 				'limit' => array(
-                    'label' => __("Limit"),
+                    'label' => __("Limit", 'order-import-export-for-woocommerce'),
                     'value' => '',
                     'type' => 'number',
                     'field_name' => 'limit',
                     'placeholder' => 'Unlimited',
-                    'help_text' => __('The actual number of records you want to export. e.g. A limit of 500 with an offset 10 will export records from 11th to 510th position.'),
+                    'help_text' => __('The actual number of records you want to export. e.g. A limit of 500 with an offset 10 will export records from 11th to 510th position.', 'order-import-export-for-woocommerce'),
                     'attr' => array('step' => 1, 'min' => 0),
                     'validation_rule' => array('type' => 'absint')
                 ),
                 'offset' => array(
-                    'label' => __("Offset"),
+                    'label' => __("Offset", 'order-import-export-for-woocommerce'),
                     'value' => '',
                     'field_name' => 'offset',
-                    'placeholder' => __('0'),
-                    'help_text' => __('Specify the number of records that should be skipped from the beginning of the database. e.g. An offset of 10 skips the first 10 records.'),
+                    'placeholder' => '0',
+                    'help_text' => __('Specify the number of records that should be skipped from the beginning of the database. e.g. An offset of 10 skips the first 10 records.', 'order-import-export-for-woocommerce'),
                     'type' => 'number',
                     'attr' => array('step' => 1, 'min' => 0),
                     'validation_rule' => array('type' => 'absint')
@@ -317,7 +320,7 @@ class Wt_Import_Export_For_Woo_Basic_Export
 
         public function get_advanced_screen_fields($advanced_form_data)
 	{
-		$file_into_arr=array('local'=>__('Local'));
+		$file_into_arr=array('local'=>__('Local', 'order-import-export-for-woocommerce'));
 
 		/* taking available remote adapters */
 		$remote_adapter_names=array();
@@ -336,7 +339,7 @@ class Wt_Import_Export_For_Woo_Basic_Export
 				'label'=>__("Export file name", 'order-import-export-for-woocommerce'),
 				'type'=>'text',
 				'field_name'=>'file_name',
-				'help_text'=>__('Specify a filename for the exported file. If left blank, the system generates the name automatically.', 'wt-import-export-for-woo'),
+				'help_text'=>__('Specify a filename for the exported file. If left blank, the system generates the name automatically.', 'order-import-export-for-woocommerce'),
 				'after_form_field_html'=>'<div class="wt_iew_file_ext_info_basic">.csv</div>',
 				'td_class3'=>'wt_iew_file_ext_info_td',
 				'validation_rule'=>array('type'=>'file_name'),
@@ -347,7 +350,8 @@ class Wt_Import_Export_For_Woo_Basic_Export
                                 'merge_right'=>true,
 				'value'=>$this->default_batch_count,
 				'field_name'=>'batch_count',
-				'help_text'=>sprintf(__('The number of records that the server will process for every iteration within the configured timeout interval. If the export fails due to timeout you can lower this number accordingly and try again. Defaulted to %d records.'), 30),
+				// translators: %d: number of records
+				'help_text'=>sprintf(__('The number of records that the server will process for every iteration within the configured timeout interval. If the export fails due to timeout you can lower this number accordingly and try again. Defaulted to %d records.', 'order-import-export-for-woocommerce'), 30),
 				'validation_rule'=>array('type'=>'absint'),
 			),
 			'delimiter'=>array(
@@ -358,7 +362,7 @@ class Wt_Import_Export_For_Woo_Basic_Export
 				'tr_id'=>'delimiter_tr',
 				'field_name'=>'delimiter_preset',
 				'sele_vals'=>Wt_Iew_IE_Basic_Helper::_get_csv_delimiters(),
-				'help_text'=>__( 'Separator for differentiating the columns in the CSV file. Assumes ‘,’ by default.' ),
+				'help_text'=>__( 'Separator for differentiating the columns in the CSV file. Assumes ‘,’ by default.', 'order-import-export-for-woocommerce' ),
 				'validation_rule'=>array('type'=>'skip'),
 				'after_form_field'=>'<input type="text" class="wt_iew_custom_delimiter" name="wt_iew_delimiter" value="'.$delimiter_default.'" maxlength = "1" />',
 			)
@@ -433,31 +437,32 @@ class Wt_Import_Export_For_Woo_Basic_Export
 
 	protected function enqueue_assets()
 	{
-            if(Wt_Import_Export_For_Woo_Basic_Common_Helper::wt_is_screen_allowed()){
-		wp_enqueue_script($this->module_id, plugin_dir_url(__FILE__).'assets/js/main.js', array('jquery', 'jquery-ui-sortable', 'jquery-ui-datepicker'), WT_O_IEW_VERSION);
-		wp_enqueue_style('jquery-ui-datepicker');
-		wp_enqueue_style(WT_IEW_PLUGIN_ID_BASIC.'-jquery-ui', WT_O_IEW_PLUGIN_URL.'admin/css/jquery-ui.css', array(), WT_O_IEW_VERSION, 'all');
-		$params=array(
-			'item_type'=>'',
-			'steps'=>$this->steps,
-			'rerun_id'=>$this->rerun_id,
-			'to_export'=> isset( $_GET['wt_to_export'] ) ? sanitize_text_field( $_GET['wt_to_export'] ) : $this->to_export,
-			'export_method'=>$this->export_method,
-			'msgs'=>array(
-				'choosed_template'=>__('Choosed template: '),
-				'choose_export_method'=>__('Please select an export method.'),
-				'choose_template'=>__('Please select an export template.'),
-				'step'=>__('Step'),
-				'choose_ftp_profile'=>__('Please select an FTP profile.'),
-				//localized strings for filename validation
-				'filename_title' => __('Only letters, numbers and hyphens are allowed', 'order-import-export-for-woocommerce'),
-				'filename_placeholder' => __('Enter file name (letters, numbers, hyphens only)', 'order-import-export-for-woocommerce'),
-			),
-		);
-		wp_localize_script($this->module_id, 'wt_iew_export_basic_params', $params);
+        if(Wt_Import_Export_For_Woo_Basic_Common_Helper::wt_is_screen_allowed()){
+			wp_enqueue_script($this->module_id, plugin_dir_url(__FILE__).'assets/js/main.js', array('jquery', 'jquery-ui-sortable', 'jquery-ui-datepicker'), WT_O_IEW_VERSION, true);
+			wp_enqueue_style('jquery-ui-datepicker');
+			wp_enqueue_style(WT_IEW_PLUGIN_ID_BASIC.'-jquery-ui', WT_O_IEW_PLUGIN_URL.'admin/css/jquery-ui.css', array(), WT_O_IEW_VERSION, 'all');
+			$params=array(
+				'item_type'=>'',
+				'steps'=>$this->steps,
+				'rerun_id'=>$this->rerun_id,
+				// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce verification not required.
+				'to_export'=> isset( $_GET['wt_to_export'] ) ? sanitize_text_field( wp_unslash( $_GET['wt_to_export'] ) ) : $this->to_export,
+				'export_method'=>$this->export_method,
+				'msgs'=>array(
+					'choosed_template'=>__('Choosed template: ', 'order-import-export-for-woocommerce'),
+					'choose_export_method'=>__('Please select an export method.', 'order-import-export-for-woocommerce'),
+					'choose_template'=>__('Please select an export template.', 'order-import-export-for-woocommerce'),
+					'step'=>__('Step', 'order-import-export-for-woocommerce'),
+					'choose_ftp_profile'=>__('Please select an FTP profile.', 'order-import-export-for-woocommerce'),
+					//localized strings for filename validation
+					'filename_title' => __('Only letters, numbers and hyphens are allowed', 'order-import-export-for-woocommerce'),
+					'filename_placeholder' => __('Enter file name (letters, numbers, hyphens only)', 'order-import-export-for-woocommerce'),
+				),
+			);
+			wp_localize_script($this->module_id, 'wt_iew_export_basic_params', $params);
 
-		$this->add_select2_lib(); //adding select2 JS, It checks the availibility of woocommerce
-            }
+			$this->add_select2_lib(); //adding select2 JS, It checks the availibility of woocommerce
+        }
 	}
 
 	/**
@@ -474,7 +479,7 @@ class Wt_Import_Export_For_Woo_Basic_Export
 		if(is_plugin_active('woocommerce/woocommerce.php'))
 		{ 
 			wp_enqueue_script('wc-enhanced-select');
-			wp_enqueue_style('woocommerce_admin_styles', WC()->plugin_url().'/assets/css/admin.css');
+			wp_enqueue_style('woocommerce_admin_styles', WC()->plugin_url().'/assets/css/admin.css', array(), WC()->version);
 		}else
 		{
 			wp_enqueue_style(WT_IEW_PLUGIN_ID_BASIC.'-select2', WT_O_IEW_PLUGIN_URL. 'admin/css/select2.css', array(), WT_O_IEW_VERSION, 'all' );
@@ -555,9 +560,10 @@ class Wt_Import_Export_For_Woo_Basic_Export
 			$remote_adapter=Wt_Import_Export_For_Woo_Basic::get_remote_adapters('export', $file_into);
 			if(is_null($remote_adapter)) /* adapter object not found */
 			{
-				$msg=sprintf('Unable to initailize %s', $file_into);
+				// translators: %s: Remote adapter name to export the file.
+				$msg=sprintf(__('Unable to initailize %s', 'order-import-export-for-woocommerce'), $file_into);
 				Wt_Import_Export_For_Woo_Basic_History::record_failure($export_id, $msg);
-				$out['msg']=__($msg);
+				$out['msg']=$msg;
 				return $out;
 			}
 
@@ -568,7 +574,7 @@ class Wt_Import_Export_For_Woo_Basic_Export
 
 			$upload_data = $remote_adapter->upload($file_path, $file_name, $advanced_form_data, $upload_out_format);
 			$out['response'] = (isset($upload_data['response']) ? $upload_data['response'] : false);
-			$out['msg'] = (isset($upload_data['msg']) ? $upload_data['msg'] : __('Error'));
+			$out['msg'] = (isset($upload_data['msg']) ? $upload_data['msg'] : __('Error', 'order-import-export-for-woocommerce'));
 
 			//unlink the local file
 			@unlink($file_path);
@@ -581,7 +587,7 @@ class Wt_Import_Export_For_Woo_Basic_Export
 		$out['finished']=1;  //if any error then also its finished, but with errors
 		if($out['response'] === true) //success
 		{
-			$out['msg']=__('Finished');
+			$out['msg']=__('Finished', 'order-import-export-for-woocommerce');
 			
 			/* updating finished status */
 			$update_data=array(
@@ -653,7 +659,7 @@ class Wt_Import_Export_For_Woo_Basic_Export
 		$file_as=(isset($this->allowed_export_file_type[$file_as]) ? $file_as : 'csv');
 
 		
-		$generated_file_name=$this->to_export.'_export_'.date('Y-m-d-h-i-s').'.'.$file_as;
+		$generated_file_name=$this->to_export.'_export_'.gmdate('Y-m-d-h-i-s').'.'.$file_as;
 
 		if($export_id==0) //first batch then create a history entry
 		{
@@ -674,12 +680,12 @@ class Wt_Import_Export_For_Woo_Basic_Export
 		$file_path=$this->get_file_path($file_name);
 		if($file_path===false)
 		{
-			$msg='Unable to create backup directory. Please grant write permission for `wp-content` folder.';		
+			$msg=__('Unable to create backup directory. Please grant write permission for `wp-content` folder.', 'order-import-export-for-woocommerce');		
 			
 			//no need to add translation function in message
 			Wt_Import_Export_For_Woo_Basic_History::record_failure($export_id, $msg);
 
-            $out['msg']=__($msg);
+            $out['msg']=$msg;
             return $out;
 		}
 
@@ -760,24 +766,24 @@ class Wt_Import_Export_For_Woo_Basic_Export
 			if('local' != $file_into) /* file not save to local. Initiate the choosed remote profile */
 			{
 				$out['finished']=2; //file created, next upload it
-
-				$out['msg']=sprintf(__('Uploading to %s'), $file_into);
+				// translators: %s: Remote adapter name to export the file.
+				$out['msg']=sprintf(__('Uploading to %s', 'order-import-export-for-woocommerce'), $file_into);
 			}else
 			{
 				$out['file_url']=html_entity_decode($this->get_file_url($file_name));
 				$out['finished']=1; //finished
 
-				$msg = __('Export file processing completed');
+				$msg = __('Export file processing completed', 'order-import-export-for-woocommerce');
 				$msg.='<span class="wt_iew_popup_close" style="line-height:10px;width:auto" onclick="wt_iew_basic_export.hide_export_info_box();">X</span>';                                
 				$msg.='<span class="wt_iew_info_box_finished_text" style="font-size: 10px; display:block">';
 				if(Wt_Import_Export_For_Woo_Admin_Basic::module_exists('history'))
 				{
 						$history_module_id= Wt_Import_Export_For_Woo_Basic::get_module_id('history');
 						$history_page_url=admin_url('admin.php?page='.$history_module_id);
-						$msg.=__('You can manage exports from History section.');
+						$msg.=__('You can manage exports from History section.', 'order-import-export-for-woocommerce');
 				}
 
-				$msg.='<a class="button button-secondary" style="margin-top:10px;" onclick="wt_iew_basic_export.hide_export_info_box();" target="_blank" href="'.$out['file_url'].'" >'.__('Download file').'</a></span>';
+				$msg.='<a class="button button-secondary" style="margin-top:10px;" onclick="wt_iew_basic_export.hide_export_info_box();" target="_blank" href="'.$out['file_url'].'" >'.__('Download file', 'order-import-export-for-woocommerce').'</a></span>';
 
 				if( 0 == $total_records && isset( $export_data['no_post'] ) ){
 					
@@ -803,7 +809,8 @@ class Wt_Import_Export_For_Woo_Basic_Export
 		}else
 		{
 			$out['new_offset']=$new_offset;
-			$out['msg']=sprintf(__('Exporting...(%d out of %d)'), $new_offset, $total_records);
+			// translators: 1: new offset, 2: total records
+			$out['msg']=sprintf(__('Exporting...(%1$d out of %2$d)', 'order-import-export-for-woocommerce'), $new_offset, $total_records);
 		}
 		return $out;
 	}
@@ -811,29 +818,37 @@ class Wt_Import_Export_For_Woo_Basic_Export
 
 	public static function get_file_path($file_name)
 	{
-		if(!is_dir(self::$export_dir))
-        {
-            if(!mkdir(self::$export_dir, 0700))
-            {
-            	return false;
-            }else
-            {
-            	$files_to_create=array('.htaccess' => 'deny from all', 'index.php'=>'<?php // Silence is golden');
-		        foreach($files_to_create as $file=>$file_content)
-		        {
-		        	if(!file_exists(self::$export_dir.'/'.$file))
-			        {
-			            $fh=@fopen(self::$export_dir.'/'.$file, "w");
-			            if(is_resource($fh))
-			            {
-			                fwrite($fh, $file_content);
-			                fclose($fh);
-			            }
-			        }
-		        } 
-            }
-        }
-        return self::$export_dir.'/'.$file_name;
+		global $wp_filesystem;
+		
+		if (!function_exists('WP_Filesystem')) {
+			require_once(ABSPATH . 'wp-admin/includes/file.php');
+		}
+		
+		WP_Filesystem();
+		
+		if(!$wp_filesystem->is_dir(self::$export_dir))
+		{
+			if(!$wp_filesystem->mkdir(self::$export_dir, 0700))
+			{
+				return false;
+			}else
+			{
+				$files_to_create = array(
+					'.htaccess' => 'deny from all',
+					'index.php' => '<?php // Silence is golden'
+				);
+				
+				foreach($files_to_create as $file => $file_content)
+				{
+					$file_path = self::$export_dir . '/' . $file;
+					if(!$wp_filesystem->exists($file_path))
+					{
+						$wp_filesystem->put_contents($file_path, $file_content, 0700);
+					}
+				}
+			}
+		}
+		return self::$export_dir.'/'.$file_name;
 	}
 
 	/**
@@ -841,6 +856,7 @@ class Wt_Import_Export_For_Woo_Basic_Export
 	*/
 	public function download_file()
 	{
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Nonce verification done using the Wt_Iew_Sh::check_write_access() method below.
 		if(isset($_GET['wt_iew_export_download'])) { 
 
 			if(Wt_Iew_Sh::check_write_access(WT_IEW_PLUGIN_ID_BASIC)) { /* check nonce and role */
@@ -874,14 +890,18 @@ class Wt_Import_Export_For_Woo_Basic_Export
 						    //header('Content-Length: '.filesize($file_path));
 
 						    $chunk_size = 1024 * 1024;
+							// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen
 						    $handle=@fopen($file_path, 'rb');
 						    while(!feof($handle))
 						    {
+								// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fread
 						        $buffer = fread($handle, $chunk_size);
-						        echo $buffer;
+								// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Its necessary to echo the buffer.
+						        echo $buffer; // @codingStandardsIgnoreLine
 						        ob_flush();
 						        flush();
 						    }
+							// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose
 						    fclose($handle);
 						    exit();
 						}
@@ -889,6 +909,7 @@ class Wt_Import_Export_For_Woo_Basic_Export
 				}	
 			}
 		}
+		// phpcs:enable
 	}
 
 	private function _update_history_after_export($export_id, $offset, $total_records, $export_data)

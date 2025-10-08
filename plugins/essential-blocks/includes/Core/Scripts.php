@@ -290,7 +290,6 @@ class Scripts
         wpdev_essential_blocks()->assets->register( 'gsap', 'js/gsap/gsap.min.js' );
         wpdev_essential_blocks()->assets->register( 'gsap-scrolltrigger', 'js/gsap/ScrollTrigger.min.js', [ 'essential-blocks-gsap' ] );
         wpdev_essential_blocks()->assets->register( 'splittype', 'js/gsap/splittype.min.js', [ 'essential-blocks-gsap' ] );
-
     }
 
     public function global_styles()

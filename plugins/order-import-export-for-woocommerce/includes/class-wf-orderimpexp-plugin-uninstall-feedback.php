@@ -58,7 +58,7 @@ if (!class_exists('WF_OrderImpExp_Uninstall_Feedback')) :
                     'id' => 'looking-for-other',
                     'text' => __('It\'s not what I was looking for', 'order-import-export-for-woocommerce'),
                     'type' => 'textarea',
-                    'placeholder' => 'Could you tell us a bit more?'
+                    'placeholder' => __('Could you tell us a bit more?', 'order-import-export-for-woocommerce')
                 ),
                 array(
                     'id' => 'did-not-work-as-expected',
@@ -88,42 +88,42 @@ if (!class_exists('WF_OrderImpExp_Uninstall_Feedback')) :
             <div class="wforderimpexp-modal" id="wforderimpexp-wforderimpexp-modal">
                 <div class="wforderimpexp-modal-wrap">
                     <div class="wforderimpexp-modal-header">
-                        <h3><?php _e('If you have a moment, please let us know why you are deactivating:', 'order-import-export-for-woocommerce'); ?></h3>
+                        <h3><?php esc_html_e('If you have a moment, please let us know why you are deactivating:', 'order-import-export-for-woocommerce'); ?></h3>
                     </div>
                     <div class="wforderimpexp-modal-body">
                         <ul class="reasons">
                             <?php foreach ($reasons as $reason) { ?>
                                 <li data-type="<?php echo esc_attr($reason['type']); ?>" data-placeholder="<?php echo esc_attr($reason['placeholder']); ?>">
-                                    <label><input type="radio" name="selected-reason" value="<?php echo $reason['id']; ?>"> <?php echo $reason['text']; ?></label>
+                                    <label><input type="radio" name="selected-reason" value="<?php echo esc_attr( $reason['id'] ); ?>"> <?php echo wp_kses_post($reason['text']); ?></label>
                                 </li>
                             <?php } ?>
                         </ul>
                         <div class="wt-uninstall-feedback-privacy-policy">
-                            <?php _e('We do not collect any personal data when you submit this form. It\'s your feedback that we value.', 'order-import-export-for-woocommerce'); ?>
-                            <a href="https://www.webtoffee.com/privacy-policy/" target="_blank"><?php _e('Privacy Policy', 'order-import-export-for-woocommerce'); ?></a>
+                            <?php esc_html_e('We do not collect any personal data when you submit this form. It\'s your feedback that we value.', 'order-import-export-for-woocommerce'); ?>
+                            <a href="https://www.webtoffee.com/privacy-policy/" target="_blank"><?php esc_html_e('Privacy Policy', 'order-import-export-for-woocommerce'); ?></a>
                         </div>
 
                         <br>
                         <label>
                         <input type="checkbox" id="wt_wforderimpexp_contact_me_checkbox" name="wt_wforderimpexp_contact_me_checkbox" value="1">
-                        <?php _e("Webtoffee can contact me about this feedback.", "print-invoices-packing-slip-labels-for-woocommerce"); ?>
+                        <?php esc_html_e("Webtoffee can contact me about this feedback.", "order-import-export-for-woocommerce"); ?>
                         </label>
                         <div id="wt_wforderimpexp_email_field_wrap" style="display:none; margin-top:10px;">
-                            <label for="wt_wforderimpexp_contact_email" style="font-weight:bold;"><?php _e("Enter your email address.", "print-invoices-packing-slip-labels-for-woocommerce"); ?></label>
+                            <label for="wt_wforderimpexp_contact_email" style="font-weight:bold;"><?php esc_html_e("Enter your email address.", "order-import-export-for-woocommerce"); ?></label>
                             <br>
-                            <input type="email" id="wt_wforderimpexp_contact_email" name="wt_wforderimpexp_contact_email" class="input-text" style="width:75%; height: 40px; padding:2px; margin-top:10px; border-radius:5px; border:2px solid #2874ba;" placeholder="<?php esc_attr_e("Enter email address", "print-invoices-packing-slip-labels-for-woocommerce"); ?>">
+                            <input type="email" id="wt_wforderimpexp_contact_email" name="wt_wforderimpexp_contact_email" class="input-text" style="width:75%; height: 40px; padding:2px; margin-top:10px; border-radius:5px; border:2px solid #2874ba;" placeholder="<?php esc_attr_e("Enter email address", "order-import-export-for-woocommerce"); ?>">
                             <div id="wt_wforderimpexp_email_error" style="color:red; display:none; font-size:12px; margin-top:5px;"></div>
                         </div>
                         <br><br>
 
                     </div>
                     <div class="wforderimpexp-modal-footer">
-                        <a href="#" class="dont-bother-me"><?php _e('I rather wouldn\'t say', 'order-import-export-for-woocommerce'); ?></a>
+                        <a href="#" class="dont-bother-me"><?php esc_html_e('I rather wouldn\'t say', 'order-import-export-for-woocommerce'); ?></a>
                         <a class="button-primary" href="https://wordpress.org/support/plugin/order-import-export-for-woocommerce/" target="_blank">
                         <span class="dashicons dashicons-external" style="margin-top:3px;"></span>
-                        <?php _e('Get support', 'order-import-export-for-woocommerce'); ?></a>
-                        <button class="button-primary wforderimpexp-model-submit"><?php _e('Submit & Deactivate', 'order-import-export-for-woocommerce'); ?></button>
-                        <button class="button-secondary wforderimpexp-model-cancel"><?php _e('Cancel', 'order-import-export-for-woocommerce'); ?></button>
+                        <?php esc_html_e('Get support', 'order-import-export-for-woocommerce'); ?></a>
+                        <button class="button-primary wforderimpexp-model-submit"><?php esc_html_e('Submit & Deactivate', 'order-import-export-for-woocommerce'); ?></button>
+                        <button class="button-secondary wforderimpexp-model-cancel"><?php esc_html_e('Cancel', 'order-import-export-for-woocommerce'); ?></button>
                     </div>
                 </div>
             </div>
@@ -219,11 +219,11 @@ if (!class_exists('WF_OrderImpExp_Uninstall_Feedback')) :
                                 var reasonInputHtml = '';    
                                 if ('reviewhtml' === inputType) {
                                     if($('.reviewlink').length == 0){
-                                        reasonInputHtml = '<div class="reviewlink"><a href="#" target="_blank" class="review-and-deactivate"><?php _e('Deactivate and leave a review', 'order-import-export-for-woocommerce'); ?> <span class="xa-ocsie-rating-link"> &#9733;&#9733;&#9733;&#9733;&#9733; </span></a></div>';
+                                        reasonInputHtml = '<div class="reviewlink"><a href="#" target="_blank" class="review-and-deactivate"><?php esc_html_e('Deactivate and leave a review', 'order-import-export-for-woocommerce'); ?> <span class="xa-ocsie-rating-link"> &#9733;&#9733;&#9733;&#9733;&#9733; </span></a></div>';
                                     }
                                 }else if('supportlink' === inputType){
 									if($('.supportlink').length == 0){
-										reasonInputHtml = '<div class="supportlink"><?php _e('Please go through the', 'order-import-export-for-woocommerce'); ?><a href="#" target="_blank" class="doc-and-support-doc"> <?php _e('documentation', 'order-import-export-for-woocommerce'); ?></a> <?php _e('or contact us via', 'order-import-export-for-woocommerce'); ?><a href="#" target="_blank" class="doc-and-support-forum"> <?php _e('support', 'order-import-export-for-woocommerce'); ?></a></div>';
+										reasonInputHtml = '<div class="supportlink"><?php esc_html_e('Please go through the', 'order-import-export-for-woocommerce'); ?><a href="#" target="_blank" class="doc-and-support-doc"> <?php esc_html_e('documentation', 'order-import-export-for-woocommerce'); ?></a> <?php esc_html_e('or contact us via', 'order-import-export-for-woocommerce'); ?><a href="#" target="_blank" class="doc-and-support-forum"> <?php esc_html_e('support', 'order-import-export-for-woocommerce'); ?></a></div>';
 									}
 								} else {
                                     if($('.reviewlink').length){
@@ -268,7 +268,7 @@ if (!class_exists('WF_OrderImpExp_Uninstall_Feedback')) :
                                 var emailVal = emailField.val();
                                 var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                                 if (!emailVal || !emailPattern.test(emailVal)) {
-                                    emailError.text('<?php echo esc_js(__('Please enter a valid email address.', 'print-invoices-packing-slip-labels-for-woocommerce')); ?>').show();
+                                    emailError.text('<?php echo esc_js(__('Please enter a valid email address.', 'order-import-export-for-woocommerce')); ?>').show();
                                     emailField.focus();
                                     return;
                                 }
@@ -281,11 +281,12 @@ if (!class_exists('WF_OrderImpExp_Uninstall_Feedback')) :
                                     action: 'wforderimpexp_submit_uninstall_reason',
                                     reason_id: (0 === $radio.length) ? 'none' : $radio.val(),
                                     reason_info: (0 !== $input.length) ? $input.val().trim() : '',
-                                    user_email: $('#wt_wforderimpexp_contact_me_checkbox').is(':checked') ? $('#wt_wforderimpexp_contact_email').val() : ''
+                                    user_email: $('#wt_wforderimpexp_contact_me_checkbox').is(':checked') ? $('#wt_wforderimpexp_contact_email').val() : '',
+                                    _wpnonce: '<?php echo esc_js(wp_create_nonce('wforderimpexp_submit_uninstall_reason')); ?>'
                                 },
                                 beforeSend: function () {
                                     button.addClass('disabled');
-                                    button.text('Processing...');
+                                    button.text('<?php echo esc_js(__('Processing...', 'order-import-export-for-woocommerce')); ?>');
                                 },
                                 complete: function () {
                                     window.location.href = deactivateLink;
@@ -302,19 +303,23 @@ if (!class_exists('WF_OrderImpExp_Uninstall_Feedback')) :
 
             global $wpdb;
 
+            if ( ! empty($_POST['_wpnonce']) && ! wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['_wpnonce'])), 'wforderimpexp_submit_uninstall_reason')) {
+                wp_send_json_error();
+            }
+
             if (!isset($_POST['reason_id'])) {
                 wp_send_json_error();
             }
 
             $data = array(
-                'reason_id' => sanitize_text_field($_POST['reason_id']),
+                'reason_id' => sanitize_text_field(wp_unslash($_POST['reason_id'])),
                 'plugin' => $this->plugin_id,
                 'auth' => $this->auth_key,
                 'date' => gmdate("M d, Y h:i:s A"),
                 'url' => '',
-                'user_email' => isset($_POST['user_email']) ? sanitize_email($_POST['user_email']) : '',
-                'reason_info' => isset($_REQUEST['reason_info']) ? trim(stripslashes($_REQUEST['reason_info'])) : '',
-                'software' => $_SERVER['SERVER_SOFTWARE'],
+                'user_email' => isset($_POST['user_email']) ? sanitize_email(wp_unslash($_POST['user_email'])) : '',
+                'reason_info' => isset($_REQUEST['reason_info']) ? sanitize_text_field(wp_unslash($_REQUEST['reason_info'])) : '',
+                'software' => isset($_SERVER['SERVER_SOFTWARE']) ? sanitize_text_field(wp_unslash($_SERVER['SERVER_SOFTWARE'])) : '',
                 'php_version' => phpversion(),
                 'mysql_version' => $wpdb->db_version(),
                 'wp_version' => get_bloginfo('version'),

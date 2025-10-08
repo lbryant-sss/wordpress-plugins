@@ -110,13 +110,22 @@ class ES_Custom_Fields_Controller {
 	 * @since 5.7.0
 	 */
 	public static function get_custom_fields() {
+		if ( ! ES()->is_pro() ) {
+			return array(
+				'success' => true,
+				'data'    => array(),
+				'message' => __( 'Custom fields are available in the PRO version only.', 'email-subscribers' ),
+			);
+		}
+
 		$custom_fields = ES()->custom_fields_db->get_custom_fields();
 
-		// Decode meta for each field.
+		error_log( __FILE__ . " " . __LINE__ . ' $custom_fields:' . print_r( $custom_fields, true ) );
+
 		if ( ! empty( $custom_fields ) ) {
 			foreach ( $custom_fields as &$field ) {
 				if ( ! empty( $field['meta'] ) ) {
-					$field['meta'] = json_decode( $field['meta'], true );
+					$field['meta'] = ig_es_maybe_unserialize( $field['meta'] );
 				}
 			}
 		}

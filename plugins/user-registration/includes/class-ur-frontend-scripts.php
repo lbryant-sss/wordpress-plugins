@@ -250,7 +250,7 @@ class UR_Frontend_Scripts {
 			'ur-jquery-validate'         => array(
 				'src'     => self::get_asset_url( 'assets/js/frontend/jquery.validate' . $suffix . '.js' ),
 				'deps'    => array( 'jquery' ),
-				'version' => '1.19.5',
+				'version' => '1.20.0',
 			),
 			'user-registration'          => array(
 				'src'     => self::get_asset_url( 'assets/js/frontend/user-registration' . $suffix . '.js' ),
@@ -278,7 +278,7 @@ class UR_Frontend_Scripts {
 				'version' => UR_VERSION,
 			),
 			'ur-google-recaptcha'        => array(
-				'src'     => 'https://www.google.com/recaptcha/api.js?onload=onloadURCallback&render=explicit',
+				'src'     => 'https://www.google.com/recaptcha/api.js?onload=onloadURRecaptchaCallback&render=explicit',
 				'deps'    => array(),
 				'version' => '2.0.0',
 			),
@@ -288,12 +288,12 @@ class UR_Frontend_Scripts {
 				'version' => '3.0.0',
 			),
 			'ur-recaptcha-hcaptcha'      => array(
-				'src'     => 'https://hcaptcha.com/1/api.js?onload=onloadURCallback&render=explicit',
+				'src'     => 'https://hcaptcha.com/1/api.js?onload=onloadURHcaptchaCallback&render=explicit',
 				'deps'    => array(),
 				'version' => UR_VERSION,
 			),
 			'ur-recaptcha-cloudflare'    => array(
-				'src'     => 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onloadURCallback',
+				'src'     => 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onloadURTurnstileCallback',
 				'deps'    => array(),
 				'version' => '',
 			),

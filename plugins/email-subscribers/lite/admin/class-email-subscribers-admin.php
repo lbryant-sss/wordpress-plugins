@@ -381,7 +381,7 @@ class Email_Subscribers_Admin {
 		}
 
 		if ( 'es_dashboard' === $page  || 'es_pricing' === $page ) {
-			wp_register_script( 'es-shadcn-dashboard', plugin_dir_url( __FILE__ ) . 'shadcn-frontend/dist/index.js', array(), $this->version, true );
+			wp_register_script( 'es-shadcn-dashboard', plugin_dir_url( __FILE__ ) . 'shadcn-frontend/dist/index.js', array('wp-element'), $this->version, true );
 			$current_user = wp_get_current_user();
 			wp_localize_script( 'es-shadcn-dashboard', 'icegramExpressAdminData', array(
 				'apiUrl' => admin_url( 'admin-ajax.php' ),
@@ -441,9 +441,7 @@ class Email_Subscribers_Admin {
 
 		if ( in_array( 'audience', $accessible_sub_menus ) ) {
 			// Add Contacts Submenu
-			$hook = add_submenu_page( 'es_dashboard', __( 'Audience', 'email-subscribers' ), __( 'Audience', 'email-subscribers' ), 'edit_posts', 'es_subscribers', array( $this, 'render_contacts' ) );
-			add_action( "load-$hook", array( 'ES_Contacts_Table', 'screen_options' ) );
-
+			add_submenu_page( 'es_dashboard', __( 'Audience', 'email-subscribers' ), __( 'Audience', 'email-subscribers' ), 'edit_posts', $main_menu_url . '#audience', null );
 			// Add Lists Submenu
 			$hook = add_submenu_page( 'es_dashboard', __( 'Lists', 'email-subscribers' ), '<span id="ig-es-lists">' . __( 'Lists', 'email-subscribers' ) . '</span>', 'edit_posts', 'es_lists', array( $this, 'render_lists' ) );
 			add_action( "load-$hook", array( 'ES_Lists_Table', 'screen_options' ) );

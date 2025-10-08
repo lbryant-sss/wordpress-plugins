@@ -81,7 +81,7 @@ class Wt_Import_Export_For_Woo_Basic_Coupon {
             ?>
             <script type="text/javascript">
                 jQuery(document).ready(function ($) {
-                    var $downloadToCSV = $('<option>').val('wt_ier_download_coupons').text('<?php _e('Export to CSV') ?>');
+                    var $downloadToCSV = $('<option>').val('wt_ier_download_coupons').text('<?php esc_html_e('Export to CSV', 'order-import-export-for-woocommerce') ?>');
                     $('select[name^="action"]').append($downloadToCSV);
                 });
             </script>
@@ -106,6 +106,7 @@ class Wt_Import_Export_For_Woo_Basic_Coupon {
             if (empty($coupon_ids)) {
                 return;
             }
+            // phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged
             @set_time_limit(0);
 
             if ($action == 'wt_ier_download_coupons') {
@@ -121,7 +122,7 @@ class Wt_Import_Export_For_Woo_Basic_Coupon {
     {
         if($this->module_base==$base)
         {
-            $steps['advanced']['description']=__('Use advanced options from below to decide updates to existing coupons, batch import count. You can also save the template file for future imports.');
+            $steps['advanced']['description']=__('Use advanced options from below to decide updates to existing coupons, batch import count. You can also save the template file for future imports.', 'order-import-export-for-woocommerce');
         }
         return $steps;
     }
@@ -134,7 +135,7 @@ class Wt_Import_Export_For_Woo_Basic_Coupon {
         if(0 == $batch_offset){                        
             $memory = size_format(wt_let_to_num_basic(ini_get('memory_limit')));
             $wp_memory = size_format(wt_let_to_num_basic(WP_MEMORY_LIMIT));                      
-            Wt_Import_Export_For_Woo_Basic_Logwriter::write_log($this->module_base, 'import', '---[ New import started at '.date('Y-m-d H:i:s').' ] PHP Memory: ' . $memory . ', WP Memory: ' . $wp_memory);
+            Wt_Import_Export_For_Woo_Basic_Logwriter::write_log($this->module_base, 'import', '---[ New import started at '.gmdate('Y-m-d H:i:s').' ] PHP Memory: ' . $memory . ', WP Memory: ' . $wp_memory);
         }
         
         include plugin_dir_path(__FILE__) . 'import/import.php';
@@ -143,7 +144,7 @@ class Wt_Import_Export_For_Woo_Basic_Coupon {
         $response = $import->prepare_data_to_import($import_data,$form_data,$batch_offset,$is_last_batch);
         
         if($is_last_batch){
-            Wt_Import_Export_For_Woo_Basic_Logwriter::write_log($this->module_base, 'import', '---[ Import ended at '.date('Y-m-d H:i:s').']---');
+            Wt_Import_Export_For_Woo_Basic_Logwriter::write_log($this->module_base, 'import', '---[ Import ended at '.gmdate('Y-m-d H:i:s').']---');
         }
                 
         return $response;
@@ -250,7 +251,7 @@ class Wt_Import_Export_For_Woo_Basic_Coupon {
         if ($base == $this->module_base) {
             $mapping_enabled_fields = array();
 
-            $mapping_enabled_fields['hidden_meta'] = array(__('Hidden meta'), 0);
+            $mapping_enabled_fields['hidden_meta'] = array(__('Hidden meta', 'order-import-export-for-woocommerce'), 0);
 
             if ( ! function_exists( 'is_plugin_active' ) ) {
                 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
@@ -373,16 +374,17 @@ class Wt_Import_Export_For_Woo_Basic_Coupon {
     public function wt_get_found_hidden_meta() {
         global $wpdb;
     
-        $query = "
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Its necessary to use direct database query.
+        $result = $wpdb->get_var("
             SELECT 1
             FROM {$wpdb->postmeta} pm
             JOIN {$wpdb->posts} p ON p.ID = pm.post_id
             WHERE pm.meta_key LIKE '_%'
             AND p.post_type = 'shop_coupon'
             LIMIT 1
-        ";
-    
-        return $wpdb->get_var($query) !== null;
+        ");
+        // phpcs:enable
+        return $result !== null;
     }
 
 
@@ -402,6 +404,7 @@ class Wt_Import_Export_For_Woo_Basic_Coupon {
     public static function get_all_metakeys($post_type = 'shop_coupon') {
         global $wpdb;
 
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Its necessary to use direct database query.
         $meta = $wpdb->get_col($wpdb->prepare(
                         "SELECT DISTINCT pm.meta_key
             FROM {$wpdb->postmeta} AS pm
@@ -409,7 +412,7 @@ class Wt_Import_Export_For_Woo_Basic_Coupon {
             WHERE p.post_type = %s
             AND p.post_status IN ( 'publish', 'pending', 'private', 'draft' )", $post_type
                 ));
-
+        // phpcs:enable
         sort($meta);
 
         return $meta;
@@ -450,23 +453,23 @@ class Wt_Import_Export_For_Woo_Basic_Coupon {
         }
         $out = array();         
         $out['found_action_merge'] = array(
-            'label' => __("If the coupon exists in the store"),
+            'label' => __("If the coupon exists in the store", 'order-import-export-for-woocommerce'),
             'type' => 'radio',
             'radio_fields' => array(
-                'skip' => __('Skip'),
-                'update' => __('Update'),                
+                'skip' => __('Skip', 'order-import-export-for-woocommerce'),
+                'update' => __('Update', 'order-import-export-for-woocommerce'),                
             ),
             'value' => 'skip',
             'field_name' => 'found_action',
             'help_text_conditional'=>array(
                 array(
-                    'help_text'=> __('This option will not update the existing coupons and keeps the coupons as is.'),
+                    'help_text'=> __('This option will not update the existing coupons and keeps the coupons as is.', 'order-import-export-for-woocommerce'),
                     'condition'=>array(
                         array('field'=>'wt_iew_found_action', 'value'=>'skip')
                     )
                 ),
                 array(
-                    'help_text'=> __('This option will update the existing coupons as per the data from the input file.'),
+                    'help_text'=> __('This option will update the existing coupons as per the data from the input file.', 'order-import-export-for-woocommerce'),
                     'condition'=>array(
                         array('field'=>'wt_iew_found_action', 'value'=>'update')
                     )
@@ -493,27 +496,27 @@ class Wt_Import_Export_For_Woo_Basic_Coupon {
         if ($base == $this->module_base)
         {
             /* altering help text of default fields */
-            $fields['limit']['label']=__('Total number of coupons to export'); 
-            $fields['limit']['help_text']=__('Provide the number of coupons you want to export. e.g. Entering 500 with a skip count of 10 will export coupons from 11th to 510th position.');
-            $fields['offset']['label']=__('Skip first <i>n</i> coupons');
-            $fields['offset']['help_text']=__('Skips specified number of coupons from the beginning of the database. e.g. Enter 10 to skip first 10 coupons from export.');
+            $fields['limit']['label']=__('Total number of coupons to export', 'order-import-export-for-woocommerce'); 
+            $fields['limit']['help_text']=__('Provide the number of coupons you want to export. e.g. Entering 500 with a skip count of 10 will export coupons from 11th to 510th position.', 'order-import-export-for-woocommerce');
+            $fields['offset']['label']=__('Skip first <i>n</i> coupons', 'order-import-export-for-woocommerce');
+            $fields['offset']['help_text']=__('Skips specified number of coupons from the beginning of the database. e.g. Enter 10 to skip first 10 coupons from export.', 'order-import-export-for-woocommerce');
 
             $fields['statuses'] = array(
-                'label' => __('Coupon status'),
-                'placeholder' => __('Any status'),
+                'label' => __('Coupon status', 'order-import-export-for-woocommerce'),
+                'placeholder' => __('Any status', 'order-import-export-for-woocommerce'),
                 'field_name' => 'statuses',
                 'sele_vals' => self::get_coupon_statuses(),
-                'help_text' => __('Filter coupons on the basis of status. Multiple statuses can be selected.'),
+                'help_text' => __('Filter coupons on the basis of status. Multiple statuses can be selected.', 'order-import-export-for-woocommerce'),
                 'type' => 'multi_select',
                 'css_class' => 'wc-enhanced-select',
                 'validation_rule' => array('type'=>'text_arr')
             );
             $fields['types'] = array(
-                'label' => __('Coupon type'),
-                'placeholder' => __('Any type'),
+                'label' => __('Coupon type', 'order-import-export-for-woocommerce'),
+                'placeholder' => __('Any type', 'order-import-export-for-woocommerce'),
                 'field_name' => 'types',
                 'sele_vals' => self::get_coupon_types(),
-                'help_text' => __('Filter coupons on the basis of type. Multiple types can be selected.'),
+                'help_text' => __('Filter coupons on the basis of type. Multiple types can be selected.', 'order-import-export-for-woocommerce'),
                 'type' => 'multi_select',
                 'css_class' => 'wc-enhanced-select',
                 'validation_rule' => array('type'=>'text_arr')
@@ -521,30 +524,30 @@ class Wt_Import_Export_For_Woo_Basic_Coupon {
 
             
             $fields['coupon_amount_from'] = array(
-                'label'=>__("Coupon amount: from"),
-                'placeholder' => __('From amount'),
+                'label'=>__("Coupon amount: from", 'order-import-export-for-woocommerce'),
+                'placeholder' => __('From amount', 'order-import-export-for-woocommerce'),
                 'type'=>'number',
                 'value' =>'',
                 'attr' =>array(
                         'min'=>0,
                     ),
                 'field_name'=>'coupon_amount_from',
-                'help_text'=>__('Minimum Coupon amount : Exports coupons of amount equal to or greater than specified amount.'),
+                'help_text'=>__('Minimum Coupon amount : Exports coupons of amount equal to or greater than specified amount.', 'order-import-export-for-woocommerce'),
                 'validation_rule'=>array('type'=>'floatval'),
             
             );
             
             
             $fields['coupon_amount_to'] = array(
-                'label'=>__("Coupon amount: to"),
-                'placeholder' => __('To amount'),
+                'label'=>__("Coupon amount: to", 'order-import-export-for-woocommerce'),
+                'placeholder' => __('To amount', 'order-import-export-for-woocommerce'),
                 'type'=>'number',
                 'value' =>'',
                 'attr' =>array(
                         'min'=>0,
                     ),
                 'field_name'=>'coupon_amount_to',
-                'help_text'=>__('Maximum Coupon amount: Exports coupons of amount up to the specified amount.'),
+                'help_text'=>__('Maximum Coupon amount: Exports coupons of amount up to the specified amount.', 'order-import-export-for-woocommerce'),
                 'validation_rule'=>array('type'=>'floatval'),
             
             );
@@ -552,42 +555,42 @@ class Wt_Import_Export_For_Woo_Basic_Coupon {
             
             
             $fields['coupon_exp_date_from'] = array(
-                'label' => __('Coupon expiry date: from'),
-                'placeholder' => __('From date'),
+                'label' => __('Coupon expiry date: from', 'order-import-export-for-woocommerce'),
+                'placeholder' => __('From date', 'order-import-export-for-woocommerce'),
                 'field_name' => 'coupon_exp_date_from',
                 'sele_vals' => '',
-                'help_text' => __('Exports coupons that will expire on or after the specified date.'),
+                'help_text' => __('Exports coupons that will expire on or after the specified date.', 'order-import-export-for-woocommerce'),
                 'type' => 'text',
                 'css_class' => 'wt_iew_datepicker',                
             );
             
             $fields['coupon_exp_date_to'] = array(
-                'label' => __('Coupon expiry date: to'),
-                'placeholder' => __('To date'),
+                'label' => __('Coupon expiry date: to', 'order-import-export-for-woocommerce'),
+                'placeholder' => __('To date', 'order-import-export-for-woocommerce'),
                 'field_name' => 'coupon_exp_date_to',
                 'sele_vals' => '',
-                'help_text' => __('Exports coupons that will expire on the specified date.'),
+                'help_text' => __('Exports coupons that will expire on the specified date.', 'order-import-export-for-woocommerce'),
                 'type' => 'text',
                 'css_class' => 'wt_iew_datepicker',                
             );
 
             $fields['sort_columns'] = array(
-                'label' => __('Sort columns'),
-                'placeholder' => __('ID'),
+                'label' => __('Sort columns', 'order-import-export-for-woocommerce'),
+                'placeholder' => __('ID', 'order-import-export-for-woocommerce'),
                 'field_name' => 'sort_columns',
                 'sele_vals' => self::get_coupon_sort_columns(),
-                'help_text' => __('Select the columns on the basis of which you want to sort the exported data in the order specified.'),
+                'help_text' => __('Select the columns on the basis of which you want to sort the exported data in the order specified.', 'order-import-export-for-woocommerce'),
                 'type' => 'multi_select',
                 'css_class' => 'wc-enhanced-select',
                 'validation_rule' => array('type'=>'text_arr')
             );
 
             $fields['order_by'] = array(
-                'label' => __('Sort by'),
-                'placeholder' => __('ASC'),
+                'label' => __('Sort by', 'order-import-export-for-woocommerce'),
+                'placeholder' => __('ASC', 'order-import-export-for-woocommerce'),
                 'field_name' => 'order_by',
-                'sele_vals' => array('ASC' => 'Ascending', 'DESC' => 'Descending'),
-                'help_text' => __('Sort the exported data based on the above selected columns. Defaulted to ascending order.'),
+                'sele_vals' => array('ASC' => __('Ascending', 'order-import-export-for-woocommerce'), 'DESC' => __('Descending', 'order-import-export-for-woocommerce')),
+                'help_text' => __('Sort the exported data based on the above selected columns. Defaulted to ascending order.', 'order-import-export-for-woocommerce'),
                 'type' => 'select',
             );
         }

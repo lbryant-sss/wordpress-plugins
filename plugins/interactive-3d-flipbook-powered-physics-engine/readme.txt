@@ -5,7 +5,7 @@ Tags: flipbook, flip book, pdf viewer, pdf flipbook, pdf to flip book
 Requires at least: 4.3
 Tested up to: 6.8
 Requires PHP: 5.3
-Stable tag: 1.16.16
+Stable tag: 1.16.17
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -224,6 +224,13 @@ This will open your PDF Flipbook or Image Flipbook at page 10 when it starts.
 17. Tilted unrolling flipping pages & flexible corners
 
 == Changelog ==
+
+<h4>1.16.17</h4>
+<ul>
+  <li>
+    Show only published books for users less than editor
+  </li>
+</ul>
 
 <h4>1.16.16</h4>
 <ul>

@@ -4,7 +4,7 @@ Tags: woocommerce, google analytics, google ads, facebook pixel, conversion trac
 Requires at least: 3.7
 Tested up to: 6.8
 Requires PHP: 7.3
-Stable tag: 1.49.1
+Stable tag: 1.49.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -68,7 +68,7 @@ Unique tools like the [Payment Gateway Accuracy Report](https://sweetcode.com/do
 * Snapchat Ads Pixel (Pro)
 * Taboola Ads Pixel (Pro)
 * TikTok Ads Pixel (Pro)
-* Twitter Ads Pixel (Pro)
+* X (Twitter) Ads Pixel (Pro)
 
 <strong>Highlights</strong>
 
@@ -113,7 +113,7 @@ Have a look at the full feature list over [here](https://sweetcode.com/docs/wpm/
 * Snapchat Ads
 * Taboola Ads
 * TikTok Ads
-* Twitter Ads
+* X (Twitter) Ads
 * VWO (Visual Website Optimizer) AB-testing tool
 
 <strong>Premium Features</strong>
@@ -291,9 +291,9 @@ Therefore, we recommend admins of the shop to exclude their own shop from the bl
 Please post your problem in the Pixel Manager for WooCommerce Support forum: [Link](http://wordpress.org/support/plugin/woocommerce-google-adwords-conversion-tracking-tag)
 You can send the link to the front page of your shop too if you think it would be of help.
 
-= I found a security vulnerability. How do I report it? =
+= How can I report security bugs? =
 
-We are committed to ensuring the security of our customers and their data. If you believe you have found a security vulnerability in the Pixel Manager for WooCommerce, we encourage you to report it through Patchstack our security partner. Patchstack runs a managed Vulnerability Disclosure Program (mVDP) that helps us receive, triage, and respond to reported vulnerabilities. Patchstack also provides a reward for the responsible disclosure of security vulnerabilities. [Report a vulnerability](https://patchstack.com/database/vdp/woocommerce-google-adwords-conversion-tracking-tag)
+You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team helps validate, triage and handle any security vulnerabilities. [Report a security vulnerability.]( https://patchstack.com/database/vdp/9e5fb86a-6813-46f6-90e8-79d46b61cf46 )
 
 == Screenshots ==
 
@@ -301,11 +301,23 @@ We are committed to ensuring the security of our customers and their data. If yo
 
 == Changelog ==
 
+= 1.49.2  =
+*Release date - 07.10.2025*
+
+* Tweak: Expanded consent mode regions by adding entries for 11 additional U.S. states.
+* Tweak: Updated the `add-to-cart` URL parameter handling to include an optional `quantity` parameter.
+* Tweak: Added payment type details to Google Analytics events.
+* Tweak: Refactored order item price handling for Google Ads cart items to always exclude tax.
+* Tweak: Automatically detect disabled Google tags after combining Google tags and prevent running a config command for them.
+* Tweak: Updated vendor packages.
+* Tweak: Refactored gateway analysis calculations for improved clarity and accuracy.
+* Tweak: Bumped up WC version compatibility to 10.2
+* Fix: Moved the GLA activation filter to the init hook. It prevented other Pixel Manager filters from being applied.
+
 = 1.49.1  =
 *Release date - 18.06.2025*
 
 * Tweak: Updated plugin URI to SweetCode site.
-* Tweak: Removed the deprecated Facebook Microdata output.
 * Tweak: Automatic options backup on plugin upgrades.
 * Fix: Fixed edge-case XSS vulnerabilities related to unquoted product ID injection in post-editing scenarios. Exploitation required specific conditions and permissions.
 * Fix: Fixed the "Show recent log file" link in the logs tab.

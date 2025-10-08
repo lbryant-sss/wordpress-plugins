@@ -51,12 +51,12 @@ class Wt_Import_Export_For_Woo_Basic_Order_Bulk_Export {
         $csv_columns = include_once( __DIR__ . '/../data/data-order-post-columns.php' );
 		$csv_columns = array_combine(array_keys($csv_columns), array_keys($csv_columns));
 
+        // phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce verification already done in the wt_process_order_bulk_actions(), process_coupons_bulk_actions() method
         $exclude_hidden_meta_columns = array();
-        $user_columns_name = !empty($_POST['columns_name']) ? wc_clean($_POST['columns_name']) : $csv_columns;
-        $export_columns = !empty($_POST['columns']) ? wc_clean($_POST['columns']) : array();
-
-        
-        $delimiter = !empty($_POST['delimiter']) ? $_POST['delimiter'] : ','; // WPCS: CSRF ok, input var ok. 
+        $user_columns_name = !empty($_POST['columns_name']) ? array_map('sanitize_text_field', wp_unslash($_POST['columns_name'])) : $csv_columns;
+        $export_columns = !empty($_POST['columns']) ? array_map('sanitize_text_field', wp_unslash($_POST['columns'])) : array();    
+        $delimiter = !empty($_POST['delimiter']) ? sanitize_text_field(wp_unslash($_POST['delimiter'])) : ','; 
+        // phpcs:enable
         $exclude_already_exported =  false;
         $export_to_separate_columns = false;
         self::$include_hidden_meta = false;
@@ -71,13 +71,14 @@ class Wt_Import_Export_For_Woo_Basic_Order_Bulk_Export {
 
         if (function_exists('apache_setenv'))
             @apache_setenv('no-gzip', 1);
+        // phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged -- Its necessary to set zlib.output_compression.
         @ini_set('zlib.output_compression', 0);
         @ob_end_clean();
 
         $order_ids = $order_IDS;
 
 
-        $file_name = apply_filters('wt_iew_product_bulk_export_order_filename', 'order_export_' . date('Y-m-d-h-i-s') . '.csv');
+        $file_name = apply_filters('wt_iew_product_bulk_export_order_filename', 'order_export_' . gmdate('Y-m-d-h-i-s') . '.csv');
         
         header('Content-Type: text/csv; charset=UTF-8');
         header('Content-Disposition: attachment; filename=' . $file_name);
@@ -151,6 +152,7 @@ class Wt_Import_Export_For_Woo_Basic_Order_Bulk_Export {
 
         if (!empty($row)) {
             $row = array_map('Wt_Import_Export_For_Woo_Basic_Order_Bulk_Export::wrap_column', $row);
+            // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fwrite
             fwrite($fp, implode($delimiter, $row) . "\n");
         }
         $filter_args['header_row'] = $row;
@@ -164,6 +166,7 @@ class Wt_Import_Export_For_Woo_Basic_Order_Bulk_Export {
             $data = apply_filters('wt_iew_product_bulk_export_order_csv_data', $data, $filter_args); //Alter CSV Data
             if (!empty($data)) {
                 $row = array_map('Wt_Import_Export_For_Woo_Basic_Order_Bulk_Export::wrap_column', $data);
+                // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fwrite
                 fwrite($fp, implode($delimiter, $row) . "\n");
             }
             unset($row);
@@ -172,7 +175,7 @@ class Wt_Import_Export_For_Woo_Basic_Order_Bulk_Export {
             update_post_meta($order_id, 'wf_order_exported_status', TRUE);
         }
 
-
+        // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose
         fclose($fp);
         exit;
     }
@@ -397,13 +400,13 @@ class Wt_Import_Export_For_Woo_Basic_Order_Bulk_Export {
                 $refund_items[] = implode('|', array(
                     'amount:' . $refunded_items->get_refund_amount(),
                     'reason:' . $refunded_items->reason,
-                    'date:' . date('Y-m-d H:i:s', strtotime($refunded_items->date_created)),
+                    'date:' . gmdate('Y-m-d H:i:s', strtotime($refunded_items->date_created)),
                 ));
             } else {
                 $refund_items[] = implode('|', array(
                     'amount:' . $refunded_items->get_amount(),
                     'reason:' . $refunded_items->get_reason(),
-                    'date:' . date('Y-m-d H:i:s', strtotime($refunded_items->get_date_created())),
+                    'date:' . gmdate('Y-m-d H:i:s', strtotime($refunded_items->get_date_created())),
                 ));
             }
         }
@@ -412,7 +415,7 @@ class Wt_Import_Export_For_Woo_Basic_Order_Bulk_Export {
             $order_data = array(
                 'order_id' => $order->get_id(),
                 'order_number' => $order->get_order_number(),
-                'order_date' => date('Y-m-d H:i:s', strtotime(get_post($order->get_id())->post_date)),
+                'order_date' => gmdate('Y-m-d H:i:s', strtotime(get_post($order->get_id())->post_date)),
                 'paid_date' => $order->get_date_paid(),
                 'status' => $order->get_status(),
                 'shipping_total' => $order->get_total_shipping(),
@@ -543,7 +546,8 @@ class Wt_Import_Export_For_Woo_Basic_Order_Bulk_Export {
         for ($i = 1; $i <= $max_line_items; $i++) {
             $order_data["line_item_{$i}"] = !empty($order_data["line_item_{$i}"]) ? self::format_data($order_data["line_item_{$i}"]) : '';
         }
-        $export_to_separate_columns = !empty($_POST['export_to_separate_columns']) ? true : false;
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verification already done in the wt_process_order_bulk_actions(), process_coupons_bulk_actions() method
+        $export_to_separate_columns = ! empty( $_POST['export_to_separate_columns'] );
         if ($export_to_separate_columns) {
             $line_item_values = self::get_all_metakeys_and_values($order);
             for ($i = 1; $i <= $max_line_items; $i++) {
@@ -611,6 +615,7 @@ class Wt_Import_Export_For_Woo_Basic_Order_Bulk_Export {
 
     public static function get_all_metakeys($post_type = 'shop_order') {
         global $wpdb;
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Its necessary to use direct database query.
         $meta = $wpdb->get_col($wpdb->prepare(
                         "SELECT DISTINCT pm.meta_key
             FROM {$wpdb->postmeta} AS pm
@@ -618,36 +623,42 @@ class Wt_Import_Export_For_Woo_Basic_Order_Bulk_Export {
             WHERE p.post_type = %s
             AND p.post_status IN ( 'wc-pending', 'wc-processing', 'wc-on-hold', 'wc-completed', 'wc-cancelled', 'wc-refunded', 'wc-failed' ) ORDER BY pm.meta_key", $post_type
         ));
-        //sort($meta);
+        // phpcs:enable
         return $meta;
     }
 
     public static function get_all_line_item_metakeys() {
         global $wpdb;
         $filter_meta = apply_filters('wt_order_export_select_line_item_meta', array());
-        $filter_meta = !empty($filter_meta) ? implode("','", $filter_meta) : '';
+        $placeholder_values = array();
         $query = "SELECT DISTINCT om.meta_key
             FROM {$wpdb->prefix}woocommerce_order_itemmeta AS om 
             INNER JOIN {$wpdb->prefix}woocommerce_order_items AS oi ON om.order_item_id = oi.order_item_id
             WHERE oi.order_item_type = 'line_item'";
         if (!empty($filter_meta)) {
-            $query .= " AND om.meta_key IN ('" . $filter_meta . "')";
+            $query .= " AND om.meta_key IN (" . implode( ', ', array_fill( 0, count( $filter_meta ), '%s' ) ) . ")";
+            $placeholder_values = array_merge( $placeholder_values, $filter_meta );
         }
-        $meta_keys = $wpdb->get_col($query);
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching,WordPress.DB.PreparedSQL.NotPrepared -- Its necessary to use direct database query.
+        $meta_keys = $wpdb->get_col($wpdb->prepare($query, $placeholder_values));
+        // phpcs:enable
         return $meta_keys;
     }
 
     public static function get_order_line_item_meta($item_id) {
         global $wpdb;
         $filtered_meta = apply_filters('wt_order_export_select_line_item_meta', array());
-        $filtered_meta = !empty($filtered_meta) ? implode("','", $filtered_meta) : '';
+        $placeholder_values = array();
         $query = "SELECT meta_key,meta_value
-            FROM {$wpdb->prefix}woocommerce_order_itemmeta WHERE order_item_id = '$item_id'";
+            FROM {$wpdb->prefix}woocommerce_order_itemmeta WHERE order_item_id = %d";
         if (!empty($filtered_meta)) {
-            $query .= " AND meta_key IN ('" . $filtered_meta . "')";
+            $query .= " AND meta_key IN (" . implode( ', ', array_fill( 0, count( $filtered_meta ), '%s' ) ) . ")";
+            $placeholder_values = array_merge( $placeholder_values, $filtered_meta );
         }
-        $meta_keys = $wpdb->get_results($query, OBJECT_K);
-        return $meta_keys;
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.NotPrepared -- Its necessary to use direct database query.
+        $meta_values = $wpdb->get_results($wpdb->prepare($query, $placeholder_values), OBJECT_K);
+        // phpcs:enable
+        return $meta_values;
     }
 
 

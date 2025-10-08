@@ -60,9 +60,14 @@ class Wt_Import_Export_For_Woo_Basic_Import_Ajax
 	*/
 	public function get_steps($out)
 	{
-		//sleep(3);
-		$steps=(is_array($_POST['steps']) ? $_POST['steps'] : array($_POST['steps']));
-		$steps=Wt_Iew_Sh::sanitize_item($steps, 'text_arr');
+		// phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce verification done in the ajax_main() method.
+		$steps = array();
+		if (isset($_POST['steps'])) {
+			$steps = is_array($_POST['steps']) ? 
+				array_map('sanitize_text_field', wp_unslash($_POST['steps'])) : 
+				array(sanitize_text_field(wp_unslash($_POST['steps'])));
+		}
+		// phpcs:enable
 		$page_html=array();
 
 		if($this->selected_template>0) /* taking selected tamplate formdata */
@@ -98,8 +103,10 @@ class Wt_Import_Export_For_Woo_Basic_Import_Ajax
 	*/
 	public function delete_import_file($out)
 	{
-		$file_url=(isset($_POST['file_url']) ? esc_url_raw($_POST['file_url']) : '');
-                $mapping_profile=(isset($_POST['mapping_profile']) ? ($_POST['mapping_profile']) : '');
+		// phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce verification done in the ajax_main() method.
+		$file_url=(isset($_POST['file_url']) ? esc_url_raw(wp_unslash($_POST['file_url'])) : '');
+		$mapping_profile=(isset($_POST['mapping_profile']) ? sanitize_text_field(wp_unslash($_POST['mapping_profile'])) : '');
+		// phpcs:enable
 		$out['file_url']=$file_url;
 		if($file_url!="" )
 		{
@@ -118,11 +125,11 @@ class Wt_Import_Export_For_Woo_Basic_Import_Ajax
 	*/
 	public function upload_import_file($out)
 	{
+		// phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce verification done in the ajax_main() method.
 		if(isset($_FILES['wt_iew_import_file']))
 		{
-
 			$is_file_type_allowed=false;
-			$ext=pathinfo($_FILES['wt_iew_import_file']['name'], PATHINFO_EXTENSION);
+			$ext=isset($_FILES['wt_iew_import_file']['name']) ? pathinfo(sanitize_file_name(wp_unslash($_FILES['wt_iew_import_file']['name'])), PATHINFO_EXTENSION) : '';
 			if(isset($this->import_obj->allowed_import_file_type_mime[$ext])) /* extension exists. */
 			{
 				$is_file_type_allowed=true;
@@ -130,16 +137,17 @@ class Wt_Import_Export_For_Woo_Basic_Import_Ajax
 
 			if($is_file_type_allowed) /* Allowed file type */
 			{
-
+				// phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged -- set_time_limit is used to set the time limit for the script.
 				@set_time_limit(3600); // 1 hour 
 
 				$max_bytes=($this->import_obj->max_import_file_size*1000000); //convert to bytes
-				if($max_bytes>=$_FILES['wt_iew_import_file']['size'])
+				if(isset($_FILES['wt_iew_import_file']['size']) && $max_bytes>=$_FILES['wt_iew_import_file']['size'])
 				{
-					$file_name='local_file_'.time().'_'.sanitize_file_name($_FILES['wt_iew_import_file']['name']); //sanitize the file name, add a timestamp prefix to avoid conflict
+					$file_name='local_file_'.time().'_'.sanitize_file_name(wp_unslash($_FILES['wt_iew_import_file']['name'])); //sanitize the file name, add a timestamp prefix to avoid conflict
 					$file_path=$this->import_obj->get_file_path($file_name);
-                                        // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
-					if(@move_uploaded_file($_FILES['wt_iew_import_file']['tmp_name'], $file_path))
+
+          // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged, Generic.PHP.ForbiddenFunctions.Found
+					if(isset($_FILES['wt_iew_import_file']['tmp_name']) && @move_uploaded_file(sanitize_text_field(wp_unslash($_FILES['wt_iew_import_file']['tmp_name'])), $file_path))
 					{
 						$out['msg']='';
 						$out['status']=1;
@@ -148,26 +156,29 @@ class Wt_Import_Export_For_Woo_Basic_Import_Ajax
 						/**
 						*	Check old file exists, and delete it
 						*/
-						$file_url=(isset($_POST['file_url']) ? esc_url_raw($_POST['file_url']) : '');
-                                                $map_profile_id=(isset($_POST['map_profile_id']) ? ($_POST['map_profile_id']) : '');
+						$file_url=(isset($_POST['file_url']) ? esc_url_raw(wp_unslash($_POST['file_url'])) : '');
+						$map_profile_id=(isset($_POST['map_profile_id']) ? sanitize_text_field(wp_unslash($_POST['map_profile_id'])) : '');
+						
 						if($file_url!="" && !$map_profile_id)
 						{
 							$this->import_obj->delete_import_file($file_url);
 						}
 					}else
 					{
-						$out['msg']=__('Unable to upload file. Please check write permission of your `wp-content` folder.');
+						$out['msg']=__('Unable to upload file. Please check write permission of your `wp-content` folder.', 'order-import-export-for-woocommerce');
 					}
 				}else
 				{
-					$out['msg']=sprintf(__('File size exceeds the limit. %dMB max'), $this->import_obj->max_import_file_size);
+					// translators: %d: max file size in MB
+					$out['msg']=sprintf(__('File size exceeds the limit. %dMB max', 'order-import-export-for-woocommerce'), $this->import_obj->max_import_file_size);
 				}
 			}else
 			{
-				$out['msg']=sprintf(__('Invalid file type. Only %s is allowed.'), implode(", ", array_values($this->import_obj->allowed_import_file_type)));
+				// translators: %s: allowed file types
+				$out['msg']=sprintf(__('Invalid file type. Only %s is allowed.', 'order-import-export-for-woocommerce'), implode(", ", array_values($this->import_obj->allowed_import_file_type)));
 			}
 		}
-
+		// phpcs:enable
 		return $out;
 	}
 
@@ -177,9 +188,9 @@ class Wt_Import_Export_For_Woo_Basic_Import_Ajax
 	public function validate_file($out)
 	{
 		/* process form data */
-		
-		// PHPCS:ignore WordPress.Security.NonceVerification.Recommended -- Nonce handled in check_write_access().
-		$form_data_raw = wp_unslash($_POST['form_data']);
+		// phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce handled in check_write_access().	
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized using Wt_Iew_Sh::sanitize_item().
+		$form_data_raw = isset($_POST['form_data']) ? Wt_Iew_Sh::sanitize_item(wp_unslash($_POST['form_data']), 'text_arr') : array();
 		$unserialized_data = is_array($form_data_raw) ? 
 				array_map(function($item) {
 					return is_string($item) ? json_decode($item, true) : $item;
@@ -201,7 +212,7 @@ class Wt_Import_Export_For_Woo_Basic_Import_Ajax
 				$real_file_path = realpath($file_path);
 				$real_allowed_dir = realpath($allowed_dir);
 				if (!$real_file_path || !$real_allowed_dir || strpos($real_file_path, $real_allowed_dir) !== 0) {
-					wp_die(__('Invalid file path'));
+					wp_die(esc_html__('Invalid file path', 'order-import-export-for-woocommerce'));
 				}
 				@unlink($file_path);
 			}
@@ -230,16 +241,16 @@ class Wt_Import_Export_For_Woo_Basic_Import_Ajax
 		
 		$delimit = isset( $this->selected_template_form_data['method_import_form_data']['wt_iew_delimiter'] ) ? $this->selected_template_form_data['method_import_form_data']['wt_iew_delimiter'] : ',';
 		/* This is the sample data from input file */
-		$file_heading_meta_fields=(isset($_POST['file_head_meta']) ? json_decode(stripslashes($_POST['file_head_meta']), true) : array());	
+		$file_heading_meta_fields=(isset($_POST['file_head_meta']) ? json_decode(sanitize_textarea_field(wp_unslash($_POST['file_head_meta'])), true) : array());	
 		
 		$sample_data = array();
 		include_once WT_O_IEW_PLUGIN_PATH . 'admin/classes/class-csvreader.php';
-		$delimiter = (isset($_POST['delimiter']) ? ($_POST['delimiter']) : $delimit); //no sanitization 
+		$delimiter = (isset($_POST['delimiter']) ? sanitize_text_field(wp_unslash($_POST['delimiter'])) : $delimit);
 
 		$reader = new Wt_Import_Export_For_Woo_Basic_Csvreader($delimiter);
 
 		/* take first two rows in csv and in xml takes column keys and a sample data */
-		$temp_import_file = (isset($_POST['temp_import_file']) ? sanitize_file_name($_POST['temp_import_file']) : '');
+		$temp_import_file = (isset($_POST['temp_import_file']) ? sanitize_file_name(wp_unslash($_POST['temp_import_file'])) : '');
 		if ($temp_import_file != "") {
 			$file_path = $this->import_obj->get_file_path($temp_import_file);
 			$sample_data = $reader->get_sample_data($file_path, true);
@@ -254,7 +265,7 @@ class Wt_Import_Export_For_Woo_Basic_Import_Ajax
 
 		$meta_mapping_screen_fields=$this->_get_meta_mapping_screen_fields($form_data_meta_mapping_fields);
 		
-		$draggable_tooltip=__("Drag to rearrange the columns");
+		$draggable_tooltip=__('Drag to rearrange the columns', 'order-import-export-for-woocommerce');
 		$module_url=plugin_dir_url(dirname(__FILE__));
 
 
@@ -395,16 +406,18 @@ class Wt_Import_Export_For_Woo_Basic_Import_Ajax
 	*/
 	public function download($out)
 	{
-		$this->import_obj->temp_import_file=(isset($_POST['temp_import_file']) ? sanitize_file_name($_POST['temp_import_file']) : '');
+		// phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce handled in ajax_main().	
+		$this->import_obj->temp_import_file=(isset($_POST['temp_import_file']) ? sanitize_file_name(wp_unslash($_POST['temp_import_file'])) : '');
 
-		$offset=(isset($_POST['offset']) ? floatval($_POST['offset']) : 0);
-		$import_id=(isset($_POST['import_id']) ? intval($_POST['import_id']) : 0);
-		$import_method=(isset($_POST['import_method']) ? sanitize_text_field($_POST['import_method']) : $this->import_obj->default_import_method);
+		$offset=(isset($_POST['offset']) ? floatval(wp_unslash($_POST['offset'])) : 0);
+		$import_id=(isset($_POST['import_id']) ? intval(wp_unslash($_POST['import_id'])) : 0);
+		$import_method=(isset($_POST['import_method']) ? sanitize_text_field(wp_unslash($_POST['import_method'])) : $this->import_obj->default_import_method);
 
 		if($offset==0)
 		{
 			/* process form data */
-			$form_data_raw = wp_unslash($_POST['form_data']);
+			// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized using Wt_Iew_Sh::sanitize_item().
+			$form_data_raw = isset($_POST['form_data']) ? Wt_Iew_Sh::sanitize_item(wp_unslash($_POST['form_data']), 'text_arr') : array();
 			$unserialized_data = is_array($form_data_raw) ? 
 					array_map(function($item) {
 						return is_string($item) ? json_decode($item, true) : $item;
@@ -419,6 +432,7 @@ class Wt_Import_Export_For_Woo_Basic_Import_Ajax
 			/* no need to process the formdata steps other than first */ 
 			$form_data=array();
 		}
+		// phpcs:enable
 
 		$out=$this->import_obj->process_download($form_data, 'download', $this->to_import, $import_id, $offset);
 		if($out['response']===true)
@@ -450,8 +464,10 @@ class Wt_Import_Export_For_Woo_Basic_Import_Ajax
 	*/
 	public function import($out)
 	{
-		$offset=(isset($_POST['offset']) ? floatval($_POST['offset']) : 0);
-		$import_id=(isset($_POST['import_id']) ? intval($_POST['import_id']) : 0);
+		// phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce handled in ajax_main().	
+		$offset=(isset($_POST['offset']) ? floatval(wp_unslash($_POST['offset'])) : 0);
+		$import_id=(isset($_POST['import_id']) ? intval(wp_unslash($_POST['import_id'])) : 0);
+		// phpcs:enable
 
 		/* no need to send formdata. It will take from history table by `process_action` method */
 		$form_data=array();
@@ -478,7 +494,8 @@ class Wt_Import_Export_For_Woo_Basic_Import_Ajax
 		$is_update=($step=='update' ? true : false);
 
 		/* take template name from post data, if not then create from time stamp */
-		$template_name = (isset($_POST['template_name']) ? sanitize_text_field(wp_unslash($_POST['template_name'])) : date('d-M-Y h:i:s A'));
+		// phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce verification done in the ajax_main() method.
+		$template_name = (isset($_POST['template_name']) ? sanitize_text_field(wp_unslash($_POST['template_name'])) : gmdate('d-M-Y h:i:s A'));
 		
 		$template_name = stripslashes($template_name);
 		$out['name']= $template_name;
@@ -516,10 +533,10 @@ class Wt_Import_Export_For_Woo_Basic_Import_Ajax
 					$out['status']=0;
 					if($step=='save_as')
 					{
-						$out['msg']=__('Please enter a different name');
+						$out['msg']=__('Please enter a different name', 'order-import-export-for-woocommerce');
 					}else
 					{
-						$out['msg']=__('Template with same name already exists');	
+						$out['msg']=__('Template with same name already exists', 'order-import-export-for-woocommerce');	
 					}
 					return $out;
 				}		
@@ -528,7 +545,8 @@ class Wt_Import_Export_For_Woo_Basic_Import_Ajax
 			$tb=$wpdb->prefix.Wt_Import_Export_For_Woo_Basic::$template_tb;
 			
 			/* process form data */
-			$form_data_raw = wp_unslash($_POST['form_data']);
+			// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized using Wt_Iew_Sh::sanitize_item().
+			$form_data_raw = isset($_POST['form_data']) ? Wt_Iew_Sh::sanitize_item(wp_unslash($_POST['form_data']), 'text_arr') : array();
 			$unserialized_data = is_array($form_data_raw) ? 
 					array_map(function($item) {
 						return is_string($item) ? json_decode($item, true) : $item;
@@ -558,13 +576,15 @@ class Wt_Import_Export_For_Woo_Basic_Import_Ajax
 				$update_where_type=array(
 					'%d'
 				);
+				// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Its necessary to use direct database query.
 				if($wpdb->update($tb, $update_data, $update_where, $update_data_type, $update_where_type)!==false)
 				{
 					$out['id']=$this->selected_template;
-					$out['msg']=__('Template updated successfully');
+					$out['msg']=esc_html__('Template updated successfully', 'order-import-export-for-woocommerce');
 					$out['name']=$template_name;
 					return $out;
 				}
+				// phpcs:enable
 			}else
 			{
 				$insert_data=array(
@@ -576,15 +596,18 @@ class Wt_Import_Export_For_Woo_Basic_Import_Ajax
 				$insert_data_type=array(
 					'%s','%s','%s','%s'
 				);
+				// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Its necessary to use direct database query.
 				if($wpdb->insert($tb, $insert_data, $insert_data_type)) //success
 				{
 					$out['id']=$wpdb->insert_id;
-					$out['msg']=__('Template saved successfully');
+					$out['msg']=esc_html__('Template saved successfully', 'order-import-export-for-woocommerce');
 					return $out;
 				}
+				// phpcs:enable
 			}
 		}
 		$out['status']=0;
+		// phpcs:enable WordPress.Security.NonceVerification.Missing
 		return $out;
 	}
 
@@ -712,7 +735,7 @@ class Wt_Import_Export_For_Woo_Basic_Import_Ajax
 			$this->prepare_step_summary();
 			$this->prepare_footer_button_list();
 
-			
+			// phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce handled in ajax_main().	
 			$temp_import_file=(isset($_POST['temp_import_file']) ? sanitize_file_name(wp_unslash($_POST['temp_import_file'])) : '');
 			$file_path=$this->import_obj->get_file_path($temp_import_file);
 			if($temp_import_file!="" && file_exists($file_path))
@@ -725,7 +748,7 @@ class Wt_Import_Export_For_Woo_Basic_Import_Ajax
 					$delimit = isset( $this->selected_template_form_data['method_import_form_data']['wt_iew_delimiter'] ) ? $this->selected_template_form_data['method_import_form_data']['wt_iew_delimiter'] : ',';
 
 					include_once WT_O_IEW_PLUGIN_PATH.'admin/classes/class-csvreader.php';
-					$delimiter= isset( $_POST['delimiter'] ) ? $_POST['delimiter'] : $delimit; //no sanitization 
+					$delimiter= isset( $_POST['delimiter'] ) ? sanitize_text_field(wp_unslash($_POST['delimiter'])) : $delimit;
 					$reader=new Wt_Import_Export_For_Woo_Basic_Csvreader($delimiter);
     
 					/* take first two rows in csv and in xml takes column keys and a sample data */
@@ -756,6 +779,7 @@ class Wt_Import_Export_For_Woo_Basic_Import_Ajax
 					$form_data_mapping_enabled_fields=(isset($mapping_form_data['mapping_enabled_fields']) ? $mapping_form_data['mapping_enabled_fields'] : array());				
 				}
 			}
+			// phpcs:enable WordPress.Security.NonceVerification.Missing
 
 			ob_start();			
 			$this->prepare_step_header_html();
@@ -809,37 +833,37 @@ class Wt_Import_Export_For_Woo_Basic_Import_Ajax
 			$column=trim(str_replace('tax:', '', $key));
 			if(substr($column, 0, 3)!== 'pa_')
 			{
-				$out=__('Product taxonomies');
+				$out=__('Product taxonomies', 'order-import-export-for-woocommerce');
 			}else
 			{
-				$out=__('New taxonomy: ').$column;
+				$out=__('New taxonomy: ', 'order-import-export-for-woocommerce').$column;
 			}
 		}
 		elseif(strpos($key, 'meta:')!==false)  /* meta */
 		{
 			$column=trim(str_replace('meta:', '', $key));
-			$out=__('Custom Field: ').$column;
+			$out=__('Custom Field: ', 'order-import-export-for-woocommerce').$column;
 		}
 		elseif(strpos($key, 'attribute:')!==false)  /* attribute */
 		{
 			$column=trim(str_replace('attribute:', '', $key));
 			if(substr($column, 0, 3)== 'pa_')
 			{
-				$out=__('Taxonomy attributes');
+				$out=__('Taxonomy attributes', 'order-import-export-for-woocommerce');
 			}else
 			{
-				$out=__('New attribute: ').$column;
+				$out=__('New attribute: ', 'order-import-export-for-woocommerce').$column;
 			}
 		}
 		elseif(strpos($key, 'attribute_data:')!==false)  /* attribute data */
 		{
 			$column=trim(str_replace('attribute_data:', '', $key));
-			$out=__('Attribute data: ').$column;
+			$out=__('Attribute data: ', 'order-import-export-for-woocommerce').$column;
 		}
 		elseif(strpos($key, 'attribute_default:')!==false)  /* attribute default */
 		{
 			$column=trim(str_replace('attribute_default:', '', $key));
-			$out=__('Attribute default value: ').$column;
+			$out=__('Attribute default value: ', 'order-import-export-for-woocommerce').$column;
 		}
 		return $out;
 	}
@@ -885,8 +909,9 @@ class Wt_Import_Export_For_Woo_Basic_Import_Ajax
 	{
 		global $wpdb;
 		$tb=$wpdb->prefix.Wt_Import_Export_For_Woo_Basic::$template_tb;
-		$qry=$wpdb->prepare("SELECT * FROM $tb WHERE template_type=%s AND item_type=%s AND name=%s",array('import', $this->to_import, $name));
-		return $wpdb->get_row($qry, ARRAY_A);
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Its necessary to use direct database query.
+		return $wpdb->get_row($wpdb->prepare("SELECT * FROM {$tb} WHERE template_type=%s AND item_type=%s AND name=%s",array('import', $this->to_import, $name)), ARRAY_A);
+		// phpcs:enable
 	}
 
 
@@ -897,8 +922,9 @@ class Wt_Import_Export_For_Woo_Basic_Import_Ajax
 	{
 		global $wpdb;
 		$tb=$wpdb->prefix.Wt_Import_Export_For_Woo_Basic::$template_tb;
-		$qry=$wpdb->prepare("SELECT * FROM $tb WHERE template_type=%s AND item_type=%s AND id=%d",array('import', $this->to_import, $id));
-		return $wpdb->get_row($qry, ARRAY_A);
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Its necessary to use direct database query.
+		return $wpdb->get_row($wpdb->prepare("SELECT * FROM {$tb} WHERE template_type=%s AND item_type=%s AND id=%d",array('import', $this->to_import, $id)), ARRAY_A);
+		// phpcs:enable
 	}
 
 	/**
@@ -912,8 +938,9 @@ class Wt_Import_Export_For_Woo_Basic_Import_Ajax
 		}		
 		global $wpdb;
 		$tb=$wpdb->prefix.Wt_Import_Export_For_Woo_Basic::$template_tb;
-		$val=$wpdb->get_results("SELECT * FROM $tb WHERE template_type='import' AND item_type='".$this->to_import."' ORDER BY id DESC", ARRAY_A);	
-
+		// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Its necessary to use direct database query.
+		$val=$wpdb->get_results($wpdb->prepare("SELECT * FROM {$tb} WHERE template_type='import' AND item_type=%s ORDER BY id DESC", $this->to_import), ARRAY_A);	
+		// phpcs:enable
 		//add a filter here for modules to alter the data
 		$this->mapping_templates=($val ? $val : array());
 	}
@@ -941,7 +968,8 @@ class Wt_Import_Export_For_Woo_Basic_Import_Ajax
 		$this->current_step_number=$this->current_step_index+1;
 		$this->last_page=(!isset($this->step_keys[$this->current_step_index+1]) ? true : false);
 		$this->total_steps=count($this->step_keys);
-		$this->step_summary=__(sprintf("Step %d of %d", $this->current_step_number, $this->total_steps));
+		// translators: 1: current step number, 2: total steps.
+		$this->step_summary=sprintf(__('Step %1$d of %2$d', 'order-import-export-for-woocommerce'), $this->current_step_number, $this->total_steps);
 		$this->step_description=$step_info['description'];
 	}
 
@@ -969,7 +997,7 @@ class Wt_Import_Export_For_Woo_Basic_Import_Ajax
 					'type'=>'button',
 					'action_type'=>'step',
 					'key'=>$step_keys[$current_index-1],
-					'text'=>'<span class="dashicons dashicons-arrow-left-alt2" style="line-height:27px;"></span> '.__('Back'),
+					'text'=>'<span class="dashicons dashicons-arrow-left-alt2" style="line-height:27px;"></span> '.__('Back', 'order-import-export-for-woocommerce'),
 				);
 			}
 			
@@ -982,14 +1010,14 @@ class Wt_Import_Export_For_Woo_Basic_Import_Ajax
 					'type'=>'button',
 					'action_type'=>'step',
 					'key'=>$next_key,
-					'text'=>__('Step').' '.$next_number.': '.$next_title.' <span class="dashicons dashicons-arrow-right-alt2" style="line-height:27px;"></span>',
+					'text'=>__('Step', 'order-import-export-for-woocommerce').' '.$next_number.': '.$next_title.' <span class="dashicons dashicons-arrow-right-alt2" style="line-height:27px;"></span>',
 				);
 
 				if($this->import_method=='quick' || $this->import_method=='template') //Quick Or Template method
 				{
 					$out['or']=array(
 						'type'=>'text',
-						'text'=>__('Or'),
+						'text'=>__('Or', 'order-import-export-for-woocommerce'),
 					);
 				}
 
@@ -1008,15 +1036,15 @@ class Wt_Import_Export_For_Woo_Basic_Import_Ajax
 							'key'=>'save',
 							'icon'=>'',
 							'type'=>'dropdown_button',
-							'text'=>__('Save template'), 
+							'text'=>__('Save template', 'order-import-export-for-woocommerce'), 
 							'items'=>array(
 								'update'=>array(
 									'key'=>'update_template',
-									'text'=>__('Save'),  //no prompt
+									'text'=>__('Save', 'order-import-export-for-woocommerce'),  //no prompt
 								),
 								'save'=>array(
 									'key'=>'save_template_as',
-									'text'=>__('Save As'), //prompt for name
+									'text'=>__('Save As', 'order-import-export-for-woocommerce'), //prompt for name
 								)
 							)
 						);
@@ -1026,7 +1054,7 @@ class Wt_Import_Export_For_Woo_Basic_Import_Ajax
 							'key'=>'save_template',
 							'icon'=>'',
 							'type'=>'button',
-							'text'=>__('Save template'), //prompt for name
+							'text'=>__('Save template', 'order-import-export-for-woocommerce'), //prompt for name
 						);
 					}
 				}
@@ -1035,7 +1063,7 @@ class Wt_Import_Export_For_Woo_Basic_Import_Ajax
 					'class'=>'iew_import_btn',
 					'icon'=>'',
 					'type'=>'button',
-					'text'=>__('Import'),
+					'text'=>__('Import', 'order-import-export-for-woocommerce'),
 				);
 			}
 		}		
@@ -1092,7 +1120,7 @@ class Wt_Import_Export_For_Woo_Basic_Import_Ajax
 		$mapping_fields=array();
 		$mapping_fields=apply_filters('wt_iew_importer_alter_mapping_fields_basic', $mapping_fields, $this->to_import, array());
 
-                $array_keys_file_heading_default_fields = array_keys($file_heading_default_fields);
+        $array_keys_file_heading_default_fields = array_keys($file_heading_default_fields);
 		$mapping_form_data=array('mapping_fields'=>array(), 'mapping_selected_fields'=>array());
 		$allowed_field_types=array('start_with', 'end_with', 'contain');
 
@@ -1102,11 +1130,11 @@ class Wt_Import_Export_For_Woo_Basic_Import_Ajax
 			$checked=0; /* import this column? */
 			$type=(isset($val_arr['type']) ? $val_arr['type'] : '');
 //			if(isset($file_heading_default_fields[$key]))
-                        if($case_key = preg_grep("/^$key$/i", $array_keys_file_heading_default_fields))   //preg_grep used escape from case sensitive check.    
+            if($case_key = preg_grep("/^$key$/i", $array_keys_file_heading_default_fields))   //preg_grep used escape from case sensitive check.    
 			{
 				$checked=1; /* import this column? */
 //				$val='{'.$key.'}';
-                                $val='{'.array_shift($case_key).'}';  //  preg_grep give an array with actual index and value
+                $val='{'.array_shift($case_key).'}';  //  preg_grep give an array with actual index and value
 				unset($file_heading_default_fields[$key]); //remove the field from file heading list
 			}
 			elseif(isset($file_heading_meta_fields[$key])) /* some meta items will show inside default field list, Eg: yoast */

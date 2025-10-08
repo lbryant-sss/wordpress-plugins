@@ -624,7 +624,7 @@ abstract class ES_DB {
 		if ( ! empty( $where ) ) {
 			$query .= " WHERE $where";
 		}
-
+		
 		if ( true === $use_cache ) {
 
 			$cache_key = $this->generate_cache_key( $query );

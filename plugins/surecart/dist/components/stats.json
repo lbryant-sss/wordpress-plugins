@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-10-03T20:14:15",
+  "timestamp": "2025-10-07T18:26:41",
   "compiler": {
     "name": "node",
     "version": "16.20.2"
@@ -9,7 +9,7 @@
     "fsNamespace": "surecart",
     "components": 230,
     "entries": 230,
-    "bundles": 4152,
+    "bundles": 4144,
     "outputs": [
       {
         "name": "dist-collection",
@@ -2368,7 +2368,7 @@
       },
       {
         "name": "dist-lazy",
-        "files": 1806,
+        "files": 1798,
         "generatedFiles": [
           "./dist/cjs/MockProcessor-48b83649.js",
           "./dist/cjs/MockProcessor-48b83649.js.map",
@@ -2554,8 +2554,8 @@
           "./dist/cjs/sc-downloads-list.cjs.entry.js.map",
           "./dist/cjs/sc-dropdown_3.cjs.entry.js",
           "./dist/cjs/sc-dropdown_3.cjs.entry.js.map",
-          "./dist/cjs/sc-empty.cjs.entry.js",
-          "./dist/cjs/sc-empty.cjs.entry.js.map",
+          "./dist/cjs/sc-empty_3.cjs.entry.js",
+          "./dist/cjs/sc-empty_3.cjs.entry.js.map",
           "./dist/cjs/sc-express-payment.cjs.entry.js",
           "./dist/cjs/sc-express-payment.cjs.entry.js.map",
           "./dist/cjs/sc-feature-demo-banner.cjs.entry.js",
@@ -2722,8 +2722,6 @@
           "./dist/cjs/sc-skeleton.cjs.entry.js.map",
           "./dist/cjs/sc-spacing.cjs.entry.js",
           "./dist/cjs/sc-spacing.cjs.entry.js.map",
-          "./dist/cjs/sc-stacked-list_2.cjs.entry.js",
-          "./dist/cjs/sc-stacked-list_2.cjs.entry.js.map",
           "./dist/cjs/sc-stripe-add-method.cjs.entry.js",
           "./dist/cjs/sc-stripe-add-method.cjs.entry.js.map",
           "./dist/cjs/sc-stripe-element.cjs.entry.js",
@@ -3006,8 +3004,8 @@
           "./dist/esm/sc-downloads-list.entry.js.map",
           "./dist/esm/sc-dropdown_3.entry.js",
           "./dist/esm/sc-dropdown_3.entry.js.map",
-          "./dist/esm/sc-empty.entry.js",
-          "./dist/esm/sc-empty.entry.js.map",
+          "./dist/esm/sc-empty_3.entry.js",
+          "./dist/esm/sc-empty_3.entry.js.map",
           "./dist/esm/sc-express-payment.entry.js",
           "./dist/esm/sc-express-payment.entry.js.map",
           "./dist/esm/sc-feature-demo-banner.entry.js",
@@ -3174,8 +3172,6 @@
           "./dist/esm/sc-skeleton.entry.js.map",
           "./dist/esm/sc-spacing.entry.js",
           "./dist/esm/sc-spacing.entry.js.map",
-          "./dist/esm/sc-stacked-list_2.entry.js",
-          "./dist/esm/sc-stacked-list_2.entry.js.map",
           "./dist/esm/sc-stripe-add-method.entry.js",
           "./dist/esm/sc-stripe-add-method.entry.js.map",
           "./dist/esm/sc-stripe-element.entry.js",
@@ -3454,6 +3450,8 @@
           "./dist/surecart/p-5c1a03e5.js.map",
           "./dist/surecart/p-5c357ef0.entry.js",
           "./dist/surecart/p-5c357ef0.entry.js.map",
+          "./dist/surecart/p-5ca9af67.entry.js",
+          "./dist/surecart/p-5ca9af67.entry.js.map",
           "./dist/surecart/p-5d386e28.entry.js",
           "./dist/surecart/p-5d386e28.entry.js.map",
           "./dist/surecart/p-5e4f1fcb.entry.js",
@@ -3496,8 +3494,6 @@
           "./dist/surecart/p-75555783.entry.js.map",
           "./dist/surecart/p-77407f32.entry.js",
           "./dist/surecart/p-77407f32.entry.js.map",
-          "./dist/surecart/p-794825eb.entry.js",
-          "./dist/surecart/p-794825eb.entry.js.map",
           "./dist/surecart/p-7a66912e.entry.js",
           "./dist/surecart/p-7a66912e.entry.js.map",
           "./dist/surecart/p-7f01a36e.js",
@@ -3548,6 +3544,8 @@
           "./dist/surecart/p-97b09709.entry.js.map",
           "./dist/surecart/p-991ed613.entry.js",
           "./dist/surecart/p-991ed613.entry.js.map",
+          "./dist/surecart/p-9b9e6bb0.entry.js",
+          "./dist/surecart/p-9b9e6bb0.entry.js.map",
           "./dist/surecart/p-9cca7200.entry.js",
           "./dist/surecart/p-9cca7200.entry.js.map",
           "./dist/surecart/p-9cdae3e3.entry.js",
@@ -3592,8 +3590,6 @@
           "./dist/surecart/p-b0d8cd6e.js.map",
           "./dist/surecart/p-b12b08e4.entry.js",
           "./dist/surecart/p-b12b08e4.entry.js.map",
-          "./dist/surecart/p-b1902eb4.entry.js",
-          "./dist/surecart/p-b1902eb4.entry.js.map",
           "./dist/surecart/p-b1c77aa5.entry.js",
           "./dist/surecart/p-b1c77aa5.entry.js.map",
           "./dist/surecart/p-b3a91f8a.entry.js",
@@ -3720,8 +3716,6 @@
           "./dist/surecart/p-fbb7c2c0.entry.js.map",
           "./dist/surecart/p-fd1598d9.js",
           "./dist/surecart/p-fd1598d9.js.map",
-          "./dist/surecart/p-fe582bac.entry.js",
-          "./dist/surecart/p-fe582bac.entry.js.map",
           "./dist/surecart/p-ff10bfbf.js",
           "./dist/surecart/p-ff10bfbf.js.map",
           "./dist/surecart/surecart.esm.js",
@@ -3904,6 +3898,8 @@
           "./www/build/p-5c1a03e5.js.map",
           "./www/build/p-5c357ef0.entry.js",
           "./www/build/p-5c357ef0.entry.js.map",
+          "./www/build/p-5ca9af67.entry.js",
+          "./www/build/p-5ca9af67.entry.js.map",
           "./www/build/p-5d386e28.entry.js",
           "./www/build/p-5d386e28.entry.js.map",
           "./www/build/p-5e4f1fcb.entry.js",
@@ -3946,8 +3942,6 @@
           "./www/build/p-75555783.entry.js.map",
           "./www/build/p-77407f32.entry.js",
           "./www/build/p-77407f32.entry.js.map",
-          "./www/build/p-794825eb.entry.js",
-          "./www/build/p-794825eb.entry.js.map",
           "./www/build/p-7a66912e.entry.js",
           "./www/build/p-7a66912e.entry.js.map",
           "./www/build/p-7f01a36e.js",
@@ -3998,6 +3992,8 @@
           "./www/build/p-97b09709.entry.js.map",
           "./www/build/p-991ed613.entry.js",
           "./www/build/p-991ed613.entry.js.map",
+          "./www/build/p-9b9e6bb0.entry.js",
+          "./www/build/p-9b9e6bb0.entry.js.map",
           "./www/build/p-9cca7200.entry.js",
           "./www/build/p-9cca7200.entry.js.map",
           "./www/build/p-9cdae3e3.entry.js",
@@ -4042,8 +4038,6 @@
           "./www/build/p-b0d8cd6e.js.map",
           "./www/build/p-b12b08e4.entry.js",
           "./www/build/p-b12b08e4.entry.js.map",
-          "./www/build/p-b1902eb4.entry.js",
-          "./www/build/p-b1902eb4.entry.js.map",
           "./www/build/p-b1c77aa5.entry.js",
           "./www/build/p-b1c77aa5.entry.js.map",
           "./www/build/p-b3a91f8a.entry.js",
@@ -4170,8 +4164,6 @@
           "./www/build/p-fbb7c2c0.entry.js.map",
           "./www/build/p-fd1598d9.js",
           "./www/build/p-fd1598d9.js.map",
-          "./www/build/p-fe582bac.entry.js",
-          "./www/build/p-fe582bac.entry.js.map",
           "./www/build/p-ff10bfbf.js",
           "./www/build/p-ff10bfbf.js.map",
           "./www/build/surecart.esm.js",
@@ -4768,15 +4760,16 @@
         "components": [
           "sc-downloads-list"
         ],
-        "bundleId": "p-794825eb",
-        "fileName": "p-794825eb.entry.js",
+        "bundleId": "p-5ca9af67",
+        "fileName": "p-5ca9af67.entry.js",
         "imports": [
           "p-e97fde0a.js",
           "p-dd3464cd.js",
+          "p-b719a497.js",
           "p-401e165e.js",
           "p-d3366af3.js"
         ],
-        "originalByteSize": 6354
+        "originalByteSize": 9669
       },
       {
         "key": "sc-express-payment.entry",
@@ -6949,18 +6942,6 @@
         "originalByteSize": 12035
       },
       {
-        "key": "sc-pagination.entry",
-        "components": [
-          "sc-pagination"
-        ],
-        "bundleId": "p-c9d96372",
-        "fileName": "p-c9d96372.entry.js",
-        "imports": [
-          "p-e97fde0a.js"
-        ],
-        "originalByteSize": 2518
-      },
-      {
         "key": "sc-menu-label.sc-select.entry",
         "components": [
           "sc-menu-label",
@@ -6987,6 +6968,18 @@
           "p-e97fde0a.js"
         ],
         "originalByteSize": 5125
+      },
+      {
+        "key": "sc-pagination.entry",
+        "components": [
+          "sc-pagination"
+        ],
+        "bundleId": "p-c9d96372",
+        "fileName": "p-c9d96372.entry.js",
+        "imports": [
+          "p-e97fde0a.js"
+        ],
+        "originalByteSize": 2518
       },
       {
         "key": "sc-choice.entry",
@@ -7031,18 +7024,6 @@
         "originalByteSize": 53688
       },
       {
-        "key": "sc-empty.entry",
-        "components": [
-          "sc-empty"
-        ],
-        "bundleId": "p-b1902eb4",
-        "fileName": "p-b1902eb4.entry.js",
-        "imports": [
-          "p-e97fde0a.js"
-        ],
-        "originalByteSize": 961
-      },
-      {
         "key": "sc-dialog.entry",
         "components": [
           "sc-dialog"
@@ -7054,6 +7035,21 @@
           "p-94f536d6.js"
         ],
         "originalByteSize": 10410
+      },
+      {
+        "key": "sc-empty.sc-stacked-list.sc-stacked-list-row.entry",
+        "components": [
+          "sc-empty",
+          "sc-stacked-list",
+          "sc-stacked-list-row"
+        ],
+        "bundleId": "p-9b9e6bb0",
+        "fileName": "p-9b9e6bb0.entry.js",
+        "imports": [
+          "p-e97fde0a.js",
+          "p-b0d8cd6e.js"
+        ],
+        "originalByteSize": 5226
       },
       {
         "key": "sc-text.entry",
@@ -7080,20 +7076,6 @@
           "p-3f6362a4.js"
         ],
         "originalByteSize": 2104
-      },
-      {
-        "key": "sc-stacked-list.sc-stacked-list-row.entry",
-        "components": [
-          "sc-stacked-list",
-          "sc-stacked-list-row"
-        ],
-        "bundleId": "p-fe582bac",
-        "fileName": "p-fe582bac.entry.js",
-        "imports": [
-          "p-e97fde0a.js",
-          "p-b0d8cd6e.js"
-        ],
-        "originalByteSize": 4337
       },
       {
         "key": "sc-form.entry",
@@ -7818,10 +7800,11 @@
         "imports": [
           "index-745b6bec.js",
           "fetch-bc141774.js",
+          "lazy-deb42890.js",
           "add-query-args-0e2a8393.js",
           "remove-query-args-938c53ea.js"
         ],
-        "originalByteSize": 6391
+        "originalByteSize": 9709
       },
       {
         "key": "sc-express-payment.entry",
@@ -9994,18 +9977,6 @@
         "originalByteSize": 12056
       },
       {
-        "key": "sc-pagination.entry",
-        "components": [
-          "sc-pagination"
-        ],
-        "bundleId": "sc-pagination",
-        "fileName": "sc-pagination.entry.js",
-        "imports": [
-          "index-745b6bec.js"
-        ],
-        "originalByteSize": 2522
-      },
-      {
         "key": "sc-menu-label.sc-select.entry",
         "components": [
           "sc-menu-label",
@@ -10032,6 +10003,18 @@
           "index-745b6bec.js"
         ],
         "originalByteSize": 5129
+      },
+      {
+        "key": "sc-pagination.entry",
+        "components": [
+          "sc-pagination"
+        ],
+        "bundleId": "sc-pagination",
+        "fileName": "sc-pagination.entry.js",
+        "imports": [
+          "index-745b6bec.js"
+        ],
+        "originalByteSize": 2522
       },
       {
         "key": "sc-choice.entry",
@@ -10076,18 +10059,6 @@
         "originalByteSize": 53705
       },
       {
-        "key": "sc-empty.entry",
-        "components": [
-          "sc-empty"
-        ],
-        "bundleId": "sc-empty",
-        "fileName": "sc-empty.entry.js",
-        "imports": [
-          "index-745b6bec.js"
-        ],
-        "originalByteSize": 965
-      },
-      {
         "key": "sc-dialog.entry",
         "components": [
           "sc-dialog"
@@ -10099,6 +10070,21 @@
           "animation-registry-adf65203.js"
         ],
         "originalByteSize": 10431
+      },
+      {
+        "key": "sc-empty.sc-stacked-list.sc-stacked-list-row.entry",
+        "components": [
+          "sc-empty",
+          "sc-stacked-list",
+          "sc-stacked-list-row"
+        ],
+        "bundleId": "sc-empty_3",
+        "fileName": "sc-empty_3.entry.js",
+        "imports": [
+          "index-745b6bec.js",
+          "page-align-0cdacf32.js"
+        ],
+        "originalByteSize": 5239
       },
       {
         "key": "sc-text.entry",
@@ -10125,20 +10111,6 @@
           "currency-a0c9bff4.js"
         ],
         "originalByteSize": 2115
-      },
-      {
-        "key": "sc-stacked-list.sc-stacked-list-row.entry",
-        "components": [
-          "sc-stacked-list",
-          "sc-stacked-list-row"
-        ],
-        "bundleId": "sc-stacked-list_2",
-        "fileName": "sc-stacked-list_2.entry.js",
-        "imports": [
-          "index-745b6bec.js",
-          "page-align-0cdacf32.js"
-        ],
-        "originalByteSize": 4350
       },
       {
         "key": "sc-form.entry",
@@ -10865,10 +10837,11 @@
         "imports": [
           "index-8acc3c89.js",
           "fetch-d374a251.js",
+          "lazy-2b509fa7.js",
           "add-query-args-49dcb630.js",
           "remove-query-args-b57e8cd3.js"
         ],
-        "originalByteSize": 6560
+        "originalByteSize": 9949
       },
       {
         "key": "sc-express-payment.entry",
@@ -13041,18 +13014,6 @@
         "originalByteSize": 12219
       },
       {
-        "key": "sc-pagination.entry",
-        "components": [
-          "sc-pagination"
-        ],
-        "bundleId": "sc-pagination.cjs",
-        "fileName": "sc-pagination.cjs.entry.js",
-        "imports": [
-          "index-8acc3c89.js"
-        ],
-        "originalByteSize": 2645
-      },
-      {
         "key": "sc-menu-label.sc-select.entry",
         "components": [
           "sc-menu-label",
@@ -13079,6 +13040,18 @@
           "index-8acc3c89.js"
         ],
         "originalByteSize": 5236
+      },
+      {
+        "key": "sc-pagination.entry",
+        "components": [
+          "sc-pagination"
+        ],
+        "bundleId": "sc-pagination.cjs",
+        "fileName": "sc-pagination.cjs.entry.js",
+        "imports": [
+          "index-8acc3c89.js"
+        ],
+        "originalByteSize": 2645
       },
       {
         "key": "sc-choice.entry",
@@ -13123,18 +13096,6 @@
         "originalByteSize": 53935
       },
       {
-        "key": "sc-empty.entry",
-        "components": [
-          "sc-empty"
-        ],
-        "bundleId": "sc-empty.cjs",
-        "fileName": "sc-empty.cjs.entry.js",
-        "imports": [
-          "index-8acc3c89.js"
-        ],
-        "originalByteSize": 1046
-      },
-      {
         "key": "sc-dialog.entry",
         "components": [
           "sc-dialog"
@@ -13146,6 +13107,21 @@
           "animation-registry-f7f1a08b.js"
         ],
         "originalByteSize": 10853
+      },
+      {
+        "key": "sc-empty.sc-stacked-list.sc-stacked-list-row.entry",
+        "components": [
+          "sc-empty",
+          "sc-stacked-list",
+          "sc-stacked-list-row"
+        ],
+        "bundleId": "sc-empty_3.cjs",
+        "fileName": "sc-empty_3.cjs.entry.js",
+        "imports": [
+          "index-8acc3c89.js",
+          "page-align-5a2ab493.js"
+        ],
+        "originalByteSize": 5387
       },
       {
         "key": "sc-text.entry",
@@ -13172,20 +13148,6 @@
           "currency-71fce0f0.js"
         ],
         "originalByteSize": 2176
-      },
-      {
-        "key": "sc-stacked-list.sc-stacked-list-row.entry",
-        "components": [
-          "sc-stacked-list",
-          "sc-stacked-list-row"
-        ],
-        "bundleId": "sc-stacked-list_2.cjs",
-        "fileName": "sc-stacked-list_2.cjs.entry.js",
-        "imports": [
-          "index-8acc3c89.js",
-          "page-align-5a2ab493.js"
-        ],
-        "originalByteSize": 4467
       },
       {
         "key": "sc-form.entry",
@@ -14449,6 +14411,7 @@
         "sc-customer-edit",
         "sc-dashboard-downloads-list",
         "sc-donation-choices",
+        "sc-downloads-list",
         "sc-express-payment",
         "sc-form-components-validator",
         "sc-form-state-provider",
@@ -14497,6 +14460,7 @@
         "sc-custom-order-price-input",
         "sc-customer-edit",
         "sc-donation-choices",
+        "sc-downloads-list",
         "sc-express-payment",
         "sc-form-state-provider",
         "sc-invoices-list",
@@ -24579,6 +24543,7 @@
         "sc-customer-details",
         "sc-dashboard-customer-details",
         "sc-dashboard-downloads-list",
+        "sc-downloads-list",
         "sc-express-payment",
         "sc-form-components-validator",
         "sc-invoices-list",
@@ -24606,6 +24571,7 @@
       "directDependencies": [],
       "directDependents": [
         "sc-customer-details",
+        "sc-downloads-list",
         "sc-express-payment",
         "sc-form-components-validator",
         "sc-invoices-list",
@@ -24981,33 +24947,44 @@
       "tag": "sc-downloads-list",
       "path": "./src/components/controllers/dashboard/sc-downloads-list/sc-downloads-list.js",
       "source": "./src/components/controllers/dashboard/sc-downloads-list/sc-downloads-list.tsx",
-      "elementRef": null,
+      "elementRef": "el",
       "componentClassName": "ScDownloadsList",
       "assetsDirs": [],
       "dependencies": [
         "sc-alert",
+        "sc-block-ui",
         "sc-button",
         "sc-card",
         "sc-dashboard-module",
+        "sc-divider",
+        "sc-empty",
         "sc-flex",
         "sc-format-bytes",
         "sc-icon",
+        "sc-pagination",
+        "sc-skeleton",
         "sc-spinner",
         "sc-stacked-list",
         "sc-stacked-list-row",
-        "sc-tag"
+        "sc-tag",
+        "sc-visually-hidden"
       ],
       "dependents": [],
       "directDependencies": [
         "sc-icon",
-        "sc-dashboard-module",
         "sc-card",
         "sc-stacked-list",
         "sc-stacked-list-row",
         "sc-flex",
         "sc-format-bytes",
         "sc-tag",
-        "sc-button"
+        "sc-button",
+        "sc-skeleton",
+        "sc-divider",
+        "sc-empty",
+        "sc-dashboard-module",
+        "sc-pagination",
+        "sc-block-ui"
       ],
       "directDependents": [],
       "docs": {
@@ -25022,33 +24999,33 @@
       "methods": [],
       "potentialCmpRefs": [
         "sc-icon",
-        "sc-dashboard-module",
         "sc-card",
         "sc-stacked-list",
         "sc-stacked-list-row",
         "sc-flex",
         "sc-format-bytes",
         "sc-tag",
-        "sc-button"
+        "sc-button",
+        "sc-skeleton",
+        "sc-divider",
+        "sc-empty",
+        "sc-dashboard-module",
+        "sc-pagination",
+        "sc-block-ui"
       ],
       "properties": [
         {
-          "name": "downloads",
-          "type": "unknown",
+          "name": "customerId",
+          "type": "string",
+          "attribute": "customer-id",
           "reflect": false,
           "mutable": false,
           "required": false,
           "optional": false,
           "complexType": {
-            "original": "Download[]",
-            "resolved": "Download[]",
-            "references": {
-              "Download": {
-                "location": "import",
-                "path": "../../../../types",
-                "id": "src/types.ts::Download"
-              }
-            }
+            "original": "string",
+            "resolved": "string",
+            "references": {}
           },
           "docs": {
             "tags": [],
@@ -25057,9 +25034,9 @@
           "internal": false
         },
         {
-          "name": "customerId",
+          "name": "productId",
           "type": "string",
-          "attribute": "customer-id",
+          "attribute": "product-id",
           "reflect": false,
           "mutable": false,
           "required": false,
@@ -25093,15 +25070,44 @@
             "text": ""
           },
           "internal": false
+        },
+        {
+          "name": "query",
+          "type": "any",
+          "attribute": "query",
+          "reflect": false,
+          "mutable": true,
+          "required": false,
+          "optional": false,
+          "defaultValue": "{\n    page: 1,\n    per_page: 20,\n  }",
+          "complexType": {
+            "original": "any",
+            "resolved": "any",
+            "references": {}
+          },
+          "docs": {
+            "tags": [],
+            "text": ""
+          },
+          "internal": false
         }
       ],
       "shadowDelegatesFocus": false,
       "states": [
         {
+          "name": "downloads"
+        },
+        {
+          "name": "downloading"
+        },
+        {
           "name": "busy"
         },
         {
           "name": "error"
+        },
+        {
+          "name": "pagination"
         }
       ]
     },
@@ -25714,6 +25720,7 @@
         "sc-customer-details",
         "sc-dashboard-customer-details",
         "sc-dashboard-downloads-list",
+        "sc-downloads-list",
         "sc-invoices-list",
         "sc-license",
         "sc-licenses-list",
@@ -25732,6 +25739,7 @@
       ],
       "directDependents": [
         "sc-customer-details",
+        "sc-downloads-list",
         "sc-invoices-list",
         "sc-license",
         "sc-licenses-list",
@@ -35623,6 +35631,7 @@
       "dependents": [
         "sc-charges-list",
         "sc-dashboard-downloads-list",
+        "sc-downloads-list",
         "sc-invoices-list",
         "sc-license",
         "sc-licenses-list",
@@ -35639,6 +35648,7 @@
       "directDependents": [
         "sc-charges-list",
         "sc-dashboard-downloads-list",
+        "sc-downloads-list",
         "sc-invoices-list",
         "sc-license",
         "sc-licenses-list",
@@ -46124,6 +46134,7 @@
         "sc-dashboard-customer-details",
         "sc-dashboard-downloads-list",
         "sc-donation-choices",
+        "sc-downloads-list",
         "sc-form-components-validator",
         "sc-fulfillments",
         "sc-invoice-memo",
@@ -46178,6 +46189,7 @@
         "sc-custom-order-price-input",
         "sc-customer-details",
         "sc-donation-choices",
+        "sc-downloads-list",
         "sc-fulfillments",
         "sc-invoice-memo",
         "sc-invoices-list",
@@ -53347,6 +53359,7 @@
         "sc-customer-phone",
         "sc-dashboard-downloads-list",
         "sc-donation-choices",
+        "sc-downloads-list",
         "sc-form-components-validator",
         "sc-form-control",
         "sc-image-slider",
@@ -63607,27 +63620,22 @@
           "excludeFromCollection": false,
           "isCollectionDependency": false,
           "componentClassName": "ScDownloadsList",
-          "elementRef": null,
+          "elementRef": "el",
           "encapsulation": "shadow",
           "shadowDelegatesFocus": false,
           "properties": [
             {
-              "name": "downloads",
-              "type": "unknown",
+              "name": "customerId",
+              "type": "string",
+              "attribute": "customer-id",
               "reflect": false,
               "mutable": false,
               "required": false,
               "optional": false,
               "complexType": {
-                "original": "Download[]",
-                "resolved": "Download[]",
-                "references": {
-                  "Download": {
-                    "location": "import",
-                    "path": "../../../../types",
-                    "id": "src/types.ts::Download"
-                  }
-                }
+                "original": "string",
+                "resolved": "string",
+                "references": {}
               },
               "docs": {
                 "tags": [],
@@ -63636,9 +63644,9 @@
               "internal": false
             },
             {
-              "name": "customerId",
+              "name": "productId",
               "type": "string",
-              "attribute": "customer-id",
+              "attribute": "product-id",
               "reflect": false,
               "mutable": false,
               "required": false,
@@ -63672,15 +63680,44 @@
                 "text": ""
               },
               "internal": false
+            },
+            {
+              "name": "query",
+              "type": "any",
+              "attribute": "query",
+              "reflect": false,
+              "mutable": true,
+              "required": false,
+              "optional": false,
+              "defaultValue": "{\n    page: 1,\n    per_page: 20,\n  }",
+              "complexType": {
+                "original": "any",
+                "resolved": "any",
+                "references": {}
+              },
+              "docs": {
+                "tags": [],
+                "text": ""
+              },
+              "internal": false
             }
           ],
           "virtualProperties": [],
           "states": [
             {
+              "name": "downloads"
+            },
+            {
+              "name": "downloading"
+            },
+            {
               "name": "busy"
             },
             {
               "name": "error"
+            },
+            {
+              "name": "pagination"
             }
           ],
           "methods": [],
@@ -63713,7 +63750,7 @@
           "sourceFilePath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/controllers/dashboard/sc-downloads-list/sc-downloads-list.tsx",
           "sourceMapPath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/controllers/dashboard/sc-downloads-list/sc-downloads-list.js.map",
           "hasAttributeChangedCallbackFn": false,
-          "hasComponentWillLoadFn": false,
+          "hasComponentWillLoadFn": true,
           "hasComponentDidLoadFn": false,
           "hasComponentShouldUpdateFn": false,
           "hasComponentWillUpdateFn": false,
@@ -63725,7 +63762,7 @@
           "hasDisconnectedCallbackFn": false,
           "hasElement": false,
           "hasEvent": false,
-          "hasLifecycle": false,
+          "hasLifecycle": true,
           "hasListener": false,
           "hasListenerTarget": false,
           "hasListenerTargetWindow": false,
@@ -63740,7 +63777,7 @@
           "hasPropNumber": false,
           "hasPropBoolean": false,
           "hasPropString": true,
-          "hasPropMutable": false,
+          "hasPropMutable": true,
           "hasReflect": false,
           "hasRenderFn": true,
           "hasState": true,
@@ -63760,28 +63797,34 @@
           "isPlain": false,
           "htmlAttrNames": [
             "name",
-            "key",
-            "class",
-            "part",
-            "heading",
-            "slot",
             "no-padding",
             "style",
+            "class",
             "justifyContent",
             "alignItems",
             "value",
             "type",
             "size",
+            "slot",
             "onClick",
             "busy",
-            "disabled"
+            "disabled",
+            "mobile-size",
+            "icon",
+            "key",
+            "part",
+            "heading",
+            "page",
+            "perPage",
+            "total",
+            "totalPages",
+            "totalShowing",
+            "onScNextPage",
+            "onScPrevPage"
           ],
           "htmlTagNames": [
             "sc-icon",
             "a",
-            "sc-dashboard-module",
-            "span",
-            "slot",
             "sc-card",
             "sc-stacked-list",
             "sc-stacked-list-row",
@@ -63790,7 +63833,15 @@
             "strong",
             "sc-format-bytes",
             "sc-tag",
-            "sc-button"
+            "sc-button",
+            "sc-skeleton",
+            "sc-divider",
+            "slot",
+            "sc-empty",
+            "sc-dashboard-module",
+            "span",
+            "sc-pagination",
+            "sc-block-ui"
           ],
           "htmlParts": [
             "base"
@@ -63798,40 +63849,56 @@
           "isUpdateable": true,
           "potentialCmpRefs": [
             "sc-icon",
-            "sc-dashboard-module",
             "sc-card",
             "sc-stacked-list",
             "sc-stacked-list-row",
             "sc-flex",
             "sc-format-bytes",
             "sc-tag",
-            "sc-button"
+            "sc-button",
+            "sc-skeleton",
+            "sc-divider",
+            "sc-empty",
+            "sc-dashboard-module",
+            "sc-pagination",
+            "sc-block-ui"
           ],
           "dependents": [],
           "dependencies": [
             "sc-alert",
+            "sc-block-ui",
             "sc-button",
             "sc-card",
             "sc-dashboard-module",
+            "sc-divider",
+            "sc-empty",
             "sc-flex",
             "sc-format-bytes",
             "sc-icon",
+            "sc-pagination",
+            "sc-skeleton",
             "sc-spinner",
             "sc-stacked-list",
             "sc-stacked-list-row",
-            "sc-tag"
+            "sc-tag",
+            "sc-visually-hidden"
           ],
           "directDependents": [],
           "directDependencies": [
             "sc-icon",
-            "sc-dashboard-module",
             "sc-card",
             "sc-stacked-list",
             "sc-stacked-list-row",
             "sc-flex",
             "sc-format-bytes",
             "sc-tag",
-            "sc-button"
+            "sc-button",
+            "sc-skeleton",
+            "sc-divider",
+            "sc-empty",
+            "sc-dashboard-module",
+            "sc-pagination",
+            "sc-block-ui"
           ]
         }
       ],
@@ -105838,328 +105905,6 @@
         {
           "attachInternalsMemberName": null,
           "formAssociated": false,
-          "tagName": "sc-pagination",
-          "excludeFromCollection": false,
-          "isCollectionDependency": false,
-          "componentClassName": "ScPagination",
-          "elementRef": null,
-          "encapsulation": "shadow",
-          "shadowDelegatesFocus": false,
-          "properties": [
-            {
-              "name": "page",
-              "type": "number",
-              "attribute": "page",
-              "reflect": false,
-              "mutable": false,
-              "required": false,
-              "optional": false,
-              "defaultValue": "1",
-              "complexType": {
-                "original": "number",
-                "resolved": "number",
-                "references": {}
-              },
-              "docs": {
-                "tags": [],
-                "text": ""
-              },
-              "internal": false
-            },
-            {
-              "name": "perPage",
-              "type": "number",
-              "attribute": "per-page",
-              "reflect": false,
-              "mutable": false,
-              "required": false,
-              "optional": false,
-              "defaultValue": "0",
-              "complexType": {
-                "original": "number",
-                "resolved": "number",
-                "references": {}
-              },
-              "docs": {
-                "tags": [],
-                "text": ""
-              },
-              "internal": false
-            },
-            {
-              "name": "total",
-              "type": "number",
-              "attribute": "total",
-              "reflect": false,
-              "mutable": false,
-              "required": false,
-              "optional": false,
-              "defaultValue": "0",
-              "complexType": {
-                "original": "number",
-                "resolved": "number",
-                "references": {}
-              },
-              "docs": {
-                "tags": [],
-                "text": ""
-              },
-              "internal": false
-            },
-            {
-              "name": "totalShowing",
-              "type": "number",
-              "attribute": "total-showing",
-              "reflect": false,
-              "mutable": false,
-              "required": false,
-              "optional": false,
-              "defaultValue": "0",
-              "complexType": {
-                "original": "number",
-                "resolved": "number",
-                "references": {}
-              },
-              "docs": {
-                "tags": [],
-                "text": ""
-              },
-              "internal": false
-            },
-            {
-              "name": "totalPages",
-              "type": "number",
-              "attribute": "total-pages",
-              "reflect": false,
-              "mutable": false,
-              "required": false,
-              "optional": false,
-              "defaultValue": "0",
-              "complexType": {
-                "original": "number",
-                "resolved": "number",
-                "references": {}
-              },
-              "docs": {
-                "tags": [],
-                "text": ""
-              },
-              "internal": false
-            }
-          ],
-          "virtualProperties": [],
-          "states": [
-            {
-              "name": "hasNextPage"
-            },
-            {
-              "name": "hasPreviousPage"
-            },
-            {
-              "name": "from"
-            },
-            {
-              "name": "to"
-            }
-          ],
-          "methods": [],
-          "listeners": [],
-          "events": [
-            {
-              "name": "scPrevPage",
-              "method": "scPrevPage",
-              "bubbles": true,
-              "cancelable": true,
-              "composed": true,
-              "docs": {
-                "tags": [],
-                "text": ""
-              },
-              "complexType": {
-                "original": "void",
-                "resolved": "void",
-                "references": {}
-              },
-              "internal": false
-            },
-            {
-              "name": "scNextPage",
-              "method": "scNextPage",
-              "bubbles": true,
-              "cancelable": true,
-              "composed": true,
-              "docs": {
-                "tags": [],
-                "text": ""
-              },
-              "complexType": {
-                "original": "void",
-                "resolved": "void",
-                "references": {}
-              },
-              "internal": false
-            }
-          ],
-          "watchers": [
-            {
-              "propName": "total",
-              "methodName": "handlePaginationChange"
-            },
-            {
-              "propName": "totalPages",
-              "methodName": "handlePaginationChange"
-            },
-            {
-              "propName": "page",
-              "methodName": "handlePaginationChange"
-            },
-            {
-              "propName": "perPage",
-              "methodName": "handlePaginationChange"
-            },
-            {
-              "propName": "totalShowing",
-              "methodName": "handlePaginationChange"
-            }
-          ],
-          "styles": [
-            {
-              "modeName": "$",
-              "styleId": "SC-PAGINATION",
-              "styleStr": null,
-              "styleIdentifier": "ScPaginationStyle",
-              "externalStyles": [
-                {
-                  "absolutePath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/pagination/sc-pagination.scss",
-                  "relativePath": "sc-pagination.scss",
-                  "originalComponentPath": "sc-pagination.scss"
-                }
-              ]
-            }
-          ],
-          "internal": false,
-          "assetsDirs": [],
-          "styleDocs": [],
-          "docs": {
-            "tags": [],
-            "text": ""
-          },
-          "jsFilePath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/pagination/sc-pagination.js",
-          "sourceFilePath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/pagination/sc-pagination.tsx",
-          "sourceMapPath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/pagination/sc-pagination.js.map",
-          "hasAttributeChangedCallbackFn": false,
-          "hasComponentWillLoadFn": true,
-          "hasComponentDidLoadFn": false,
-          "hasComponentShouldUpdateFn": false,
-          "hasComponentWillUpdateFn": false,
-          "hasComponentDidUpdateFn": false,
-          "hasComponentWillRenderFn": false,
-          "hasComponentDidRenderFn": false,
-          "hasComponentDidUnloadFn": false,
-          "hasConnectedCallbackFn": false,
-          "hasDisconnectedCallbackFn": false,
-          "hasElement": false,
-          "hasEvent": true,
-          "hasLifecycle": true,
-          "hasListener": false,
-          "hasListenerTarget": false,
-          "hasListenerTargetWindow": false,
-          "hasListenerTargetDocument": false,
-          "hasListenerTargetBody": false,
-          "hasListenerTargetParent": false,
-          "hasMember": true,
-          "hasMethod": false,
-          "hasMode": false,
-          "hasAttribute": true,
-          "hasProp": true,
-          "hasPropNumber": true,
-          "hasPropBoolean": false,
-          "hasPropString": false,
-          "hasPropMutable": false,
-          "hasReflect": false,
-          "hasRenderFn": true,
-          "hasState": true,
-          "hasStyle": true,
-          "hasVdomAttribute": true,
-          "hasVdomXlink": false,
-          "hasVdomClass": true,
-          "hasVdomFunctional": false,
-          "hasVdomKey": false,
-          "hasVdomListener": true,
-          "hasVdomPropOrAttr": true,
-          "hasVdomRef": false,
-          "hasVdomRender": true,
-          "hasVdomStyle": false,
-          "hasVdomText": true,
-          "hasWatchCallback": true,
-          "isPlain": false,
-          "htmlAttrNames": [
-            "class",
-            "onClick",
-            "type",
-            "disabled",
-            "aria-hidden",
-            "name",
-            "slot"
-          ],
-          "htmlTagNames": [
-            "sc-flex",
-            "div",
-            "sc-button",
-            "sc-visually-hidden",
-            "span",
-            "sc-icon"
-          ],
-          "htmlParts": [],
-          "isUpdateable": true,
-          "potentialCmpRefs": [
-            "sc-flex",
-            "sc-button",
-            "sc-visually-hidden",
-            "sc-icon"
-          ],
-          "dependents": [
-            "sc-charges-list",
-            "sc-dashboard-downloads-list",
-            "sc-invoices-list",
-            "sc-license",
-            "sc-licenses-list",
-            "sc-orders-list",
-            "sc-product-item-list",
-            "sc-subscriptions-list"
-          ],
-          "dependencies": [
-            "sc-button",
-            "sc-flex",
-            "sc-icon",
-            "sc-spinner",
-            "sc-visually-hidden"
-          ],
-          "directDependents": [
-            "sc-charges-list",
-            "sc-dashboard-downloads-list",
-            "sc-invoices-list",
-            "sc-license",
-            "sc-licenses-list",
-            "sc-orders-list",
-            "sc-product-item-list",
-            "sc-subscriptions-list"
-          ],
-          "directDependencies": [
-            "sc-flex",
-            "sc-button",
-            "sc-visually-hidden",
-            "sc-icon"
-          ]
-        }
-      ],
-      "entryKey": "sc-pagination.entry"
-    },
-    {
-      "cmps": [
-        {
-          "attachInternalsMemberName": null,
-          "formAssociated": false,
           "tagName": "sc-menu-label",
           "excludeFromCollection": false,
           "isCollectionDependency": false,
@@ -107692,6 +107437,330 @@
         }
       ],
       "entryKey": "sc-cc-logo.sc-tooltip.entry"
+    },
+    {
+      "cmps": [
+        {
+          "attachInternalsMemberName": null,
+          "formAssociated": false,
+          "tagName": "sc-pagination",
+          "excludeFromCollection": false,
+          "isCollectionDependency": false,
+          "componentClassName": "ScPagination",
+          "elementRef": null,
+          "encapsulation": "shadow",
+          "shadowDelegatesFocus": false,
+          "properties": [
+            {
+              "name": "page",
+              "type": "number",
+              "attribute": "page",
+              "reflect": false,
+              "mutable": false,
+              "required": false,
+              "optional": false,
+              "defaultValue": "1",
+              "complexType": {
+                "original": "number",
+                "resolved": "number",
+                "references": {}
+              },
+              "docs": {
+                "tags": [],
+                "text": ""
+              },
+              "internal": false
+            },
+            {
+              "name": "perPage",
+              "type": "number",
+              "attribute": "per-page",
+              "reflect": false,
+              "mutable": false,
+              "required": false,
+              "optional": false,
+              "defaultValue": "0",
+              "complexType": {
+                "original": "number",
+                "resolved": "number",
+                "references": {}
+              },
+              "docs": {
+                "tags": [],
+                "text": ""
+              },
+              "internal": false
+            },
+            {
+              "name": "total",
+              "type": "number",
+              "attribute": "total",
+              "reflect": false,
+              "mutable": false,
+              "required": false,
+              "optional": false,
+              "defaultValue": "0",
+              "complexType": {
+                "original": "number",
+                "resolved": "number",
+                "references": {}
+              },
+              "docs": {
+                "tags": [],
+                "text": ""
+              },
+              "internal": false
+            },
+            {
+              "name": "totalShowing",
+              "type": "number",
+              "attribute": "total-showing",
+              "reflect": false,
+              "mutable": false,
+              "required": false,
+              "optional": false,
+              "defaultValue": "0",
+              "complexType": {
+                "original": "number",
+                "resolved": "number",
+                "references": {}
+              },
+              "docs": {
+                "tags": [],
+                "text": ""
+              },
+              "internal": false
+            },
+            {
+              "name": "totalPages",
+              "type": "number",
+              "attribute": "total-pages",
+              "reflect": false,
+              "mutable": false,
+              "required": false,
+              "optional": false,
+              "defaultValue": "0",
+              "complexType": {
+                "original": "number",
+                "resolved": "number",
+                "references": {}
+              },
+              "docs": {
+                "tags": [],
+                "text": ""
+              },
+              "internal": false
+            }
+          ],
+          "virtualProperties": [],
+          "states": [
+            {
+              "name": "hasNextPage"
+            },
+            {
+              "name": "hasPreviousPage"
+            },
+            {
+              "name": "from"
+            },
+            {
+              "name": "to"
+            }
+          ],
+          "methods": [],
+          "listeners": [],
+          "events": [
+            {
+              "name": "scPrevPage",
+              "method": "scPrevPage",
+              "bubbles": true,
+              "cancelable": true,
+              "composed": true,
+              "docs": {
+                "tags": [],
+                "text": ""
+              },
+              "complexType": {
+                "original": "void",
+                "resolved": "void",
+                "references": {}
+              },
+              "internal": false
+            },
+            {
+              "name": "scNextPage",
+              "method": "scNextPage",
+              "bubbles": true,
+              "cancelable": true,
+              "composed": true,
+              "docs": {
+                "tags": [],
+                "text": ""
+              },
+              "complexType": {
+                "original": "void",
+                "resolved": "void",
+                "references": {}
+              },
+              "internal": false
+            }
+          ],
+          "watchers": [
+            {
+              "propName": "total",
+              "methodName": "handlePaginationChange"
+            },
+            {
+              "propName": "totalPages",
+              "methodName": "handlePaginationChange"
+            },
+            {
+              "propName": "page",
+              "methodName": "handlePaginationChange"
+            },
+            {
+              "propName": "perPage",
+              "methodName": "handlePaginationChange"
+            },
+            {
+              "propName": "totalShowing",
+              "methodName": "handlePaginationChange"
+            }
+          ],
+          "styles": [
+            {
+              "modeName": "$",
+              "styleId": "SC-PAGINATION",
+              "styleStr": null,
+              "styleIdentifier": "ScPaginationStyle",
+              "externalStyles": [
+                {
+                  "absolutePath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/pagination/sc-pagination.scss",
+                  "relativePath": "sc-pagination.scss",
+                  "originalComponentPath": "sc-pagination.scss"
+                }
+              ]
+            }
+          ],
+          "internal": false,
+          "assetsDirs": [],
+          "styleDocs": [],
+          "docs": {
+            "tags": [],
+            "text": ""
+          },
+          "jsFilePath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/pagination/sc-pagination.js",
+          "sourceFilePath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/pagination/sc-pagination.tsx",
+          "sourceMapPath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/pagination/sc-pagination.js.map",
+          "hasAttributeChangedCallbackFn": false,
+          "hasComponentWillLoadFn": true,
+          "hasComponentDidLoadFn": false,
+          "hasComponentShouldUpdateFn": false,
+          "hasComponentWillUpdateFn": false,
+          "hasComponentDidUpdateFn": false,
+          "hasComponentWillRenderFn": false,
+          "hasComponentDidRenderFn": false,
+          "hasComponentDidUnloadFn": false,
+          "hasConnectedCallbackFn": false,
+          "hasDisconnectedCallbackFn": false,
+          "hasElement": false,
+          "hasEvent": true,
+          "hasLifecycle": true,
+          "hasListener": false,
+          "hasListenerTarget": false,
+          "hasListenerTargetWindow": false,
+          "hasListenerTargetDocument": false,
+          "hasListenerTargetBody": false,
+          "hasListenerTargetParent": false,
+          "hasMember": true,
+          "hasMethod": false,
+          "hasMode": false,
+          "hasAttribute": true,
+          "hasProp": true,
+          "hasPropNumber": true,
+          "hasPropBoolean": false,
+          "hasPropString": false,
+          "hasPropMutable": false,
+          "hasReflect": false,
+          "hasRenderFn": true,
+          "hasState": true,
+          "hasStyle": true,
+          "hasVdomAttribute": true,
+          "hasVdomXlink": false,
+          "hasVdomClass": true,
+          "hasVdomFunctional": false,
+          "hasVdomKey": false,
+          "hasVdomListener": true,
+          "hasVdomPropOrAttr": true,
+          "hasVdomRef": false,
+          "hasVdomRender": true,
+          "hasVdomStyle": false,
+          "hasVdomText": true,
+          "hasWatchCallback": true,
+          "isPlain": false,
+          "htmlAttrNames": [
+            "class",
+            "onClick",
+            "type",
+            "disabled",
+            "aria-hidden",
+            "name",
+            "slot"
+          ],
+          "htmlTagNames": [
+            "sc-flex",
+            "div",
+            "sc-button",
+            "sc-visually-hidden",
+            "span",
+            "sc-icon"
+          ],
+          "htmlParts": [],
+          "isUpdateable": true,
+          "potentialCmpRefs": [
+            "sc-flex",
+            "sc-button",
+            "sc-visually-hidden",
+            "sc-icon"
+          ],
+          "dependents": [
+            "sc-charges-list",
+            "sc-dashboard-downloads-list",
+            "sc-downloads-list",
+            "sc-invoices-list",
+            "sc-license",
+            "sc-licenses-list",
+            "sc-orders-list",
+            "sc-product-item-list",
+            "sc-subscriptions-list"
+          ],
+          "dependencies": [
+            "sc-button",
+            "sc-flex",
+            "sc-icon",
+            "sc-spinner",
+            "sc-visually-hidden"
+          ],
+          "directDependents": [
+            "sc-charges-list",
+            "sc-dashboard-downloads-list",
+            "sc-downloads-list",
+            "sc-invoices-list",
+            "sc-license",
+            "sc-licenses-list",
+            "sc-orders-list",
+            "sc-product-item-list",
+            "sc-subscriptions-list"
+          ],
+          "directDependencies": [
+            "sc-flex",
+            "sc-button",
+            "sc-visually-hidden",
+            "sc-icon"
+          ]
+        }
+      ],
+      "entryKey": "sc-pagination.entry"
     },
     {
       "cmps": [
@@ -109544,185 +109613,6 @@
         {
           "attachInternalsMemberName": null,
           "formAssociated": false,
-          "tagName": "sc-empty",
-          "excludeFromCollection": false,
-          "isCollectionDependency": false,
-          "componentClassName": "ScEmpty",
-          "elementRef": null,
-          "encapsulation": "shadow",
-          "shadowDelegatesFocus": false,
-          "properties": [
-            {
-              "name": "icon",
-              "type": "string",
-              "attribute": "icon",
-              "reflect": false,
-              "mutable": false,
-              "required": false,
-              "optional": false,
-              "complexType": {
-                "original": "string",
-                "resolved": "string",
-                "references": {}
-              },
-              "docs": {
-                "tags": [],
-                "text": ""
-              },
-              "internal": false
-            }
-          ],
-          "virtualProperties": [],
-          "states": [],
-          "methods": [],
-          "listeners": [],
-          "events": [],
-          "watchers": [],
-          "styles": [
-            {
-              "modeName": "$",
-              "styleId": "SC-EMPTY",
-              "styleStr": null,
-              "styleIdentifier": "ScEmptyStyle",
-              "externalStyles": [
-                {
-                  "absolutePath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/empty/sc-empty.scss",
-                  "relativePath": "sc-empty.scss",
-                  "originalComponentPath": "sc-empty.scss"
-                }
-              ]
-            }
-          ],
-          "internal": false,
-          "assetsDirs": [],
-          "styleDocs": [],
-          "docs": {
-            "tags": [
-              {
-                "name": "part",
-                "text": "base - The elements base wrapper."
-              },
-              {
-                "name": "part",
-                "text": "icon - The icon."
-              }
-            ],
-            "text": ""
-          },
-          "jsFilePath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/empty/sc-empty.js",
-          "sourceFilePath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/empty/sc-empty.tsx",
-          "sourceMapPath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/empty/sc-empty.js.map",
-          "hasAttributeChangedCallbackFn": false,
-          "hasComponentWillLoadFn": false,
-          "hasComponentDidLoadFn": false,
-          "hasComponentShouldUpdateFn": false,
-          "hasComponentWillUpdateFn": false,
-          "hasComponentDidUpdateFn": false,
-          "hasComponentWillRenderFn": false,
-          "hasComponentDidRenderFn": false,
-          "hasComponentDidUnloadFn": false,
-          "hasConnectedCallbackFn": false,
-          "hasDisconnectedCallbackFn": false,
-          "hasElement": false,
-          "hasEvent": false,
-          "hasLifecycle": false,
-          "hasListener": false,
-          "hasListenerTarget": false,
-          "hasListenerTargetWindow": false,
-          "hasListenerTargetDocument": false,
-          "hasListenerTargetBody": false,
-          "hasListenerTargetParent": false,
-          "hasMember": true,
-          "hasMethod": false,
-          "hasMode": false,
-          "hasAttribute": true,
-          "hasProp": true,
-          "hasPropNumber": false,
-          "hasPropBoolean": false,
-          "hasPropString": true,
-          "hasPropMutable": false,
-          "hasReflect": false,
-          "hasRenderFn": true,
-          "hasState": false,
-          "hasStyle": true,
-          "hasVdomAttribute": true,
-          "hasVdomXlink": false,
-          "hasVdomClass": true,
-          "hasVdomFunctional": false,
-          "hasVdomKey": true,
-          "hasVdomListener": false,
-          "hasVdomPropOrAttr": true,
-          "hasVdomRef": false,
-          "hasVdomRender": true,
-          "hasVdomStyle": false,
-          "hasVdomText": true,
-          "hasWatchCallback": false,
-          "isPlain": false,
-          "htmlAttrNames": [
-            "key",
-            "part",
-            "class",
-            "exportparts",
-            "name"
-          ],
-          "htmlTagNames": [
-            "div",
-            "sc-icon",
-            "slot"
-          ],
-          "htmlParts": [
-            "base"
-          ],
-          "isUpdateable": true,
-          "potentialCmpRefs": [
-            "sc-icon"
-          ],
-          "dependents": [
-            "sc-customer-details",
-            "sc-dashboard-customer-details",
-            "sc-dashboard-downloads-list",
-            "sc-invoices-list",
-            "sc-license",
-            "sc-licenses-list",
-            "sc-order",
-            "sc-order-confirmation-customer",
-            "sc-orders-list",
-            "sc-payment-methods-list",
-            "sc-product-item-list",
-            "sc-purchase-downloads-list",
-            "sc-subscription-payment",
-            "sc-subscription-payment-method",
-            "sc-subscriptions-list"
-          ],
-          "dependencies": [
-            "sc-icon"
-          ],
-          "directDependents": [
-            "sc-customer-details",
-            "sc-invoices-list",
-            "sc-license",
-            "sc-licenses-list",
-            "sc-order",
-            "sc-orders-list",
-            "sc-payment-methods-list",
-            "sc-product-item-list",
-            "sc-purchase-downloads-list",
-            "sc-subscription-payment",
-            "sc-subscription-payment-method",
-            "sc-subscriptions-list"
-          ],
-          "directDependencies": [
-            "sc-icon"
-          ]
-        }
-      ],
-      "entryKey": "sc-empty.entry"
-    },
-    {
-      "cmps": [
-        {
-          "attachInternalsMemberName": null,
-          "formAssociated": false,
           "tagName": "sc-dialog",
           "excludeFromCollection": false,
           "isCollectionDependency": false,
@@ -110069,6 +109959,545 @@
         }
       ],
       "entryKey": "sc-dialog.entry"
+    },
+    {
+      "cmps": [
+        {
+          "attachInternalsMemberName": null,
+          "formAssociated": false,
+          "tagName": "sc-empty",
+          "excludeFromCollection": false,
+          "isCollectionDependency": false,
+          "componentClassName": "ScEmpty",
+          "elementRef": null,
+          "encapsulation": "shadow",
+          "shadowDelegatesFocus": false,
+          "properties": [
+            {
+              "name": "icon",
+              "type": "string",
+              "attribute": "icon",
+              "reflect": false,
+              "mutable": false,
+              "required": false,
+              "optional": false,
+              "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+              },
+              "docs": {
+                "tags": [],
+                "text": ""
+              },
+              "internal": false
+            }
+          ],
+          "virtualProperties": [],
+          "states": [],
+          "methods": [],
+          "listeners": [],
+          "events": [],
+          "watchers": [],
+          "styles": [
+            {
+              "modeName": "$",
+              "styleId": "SC-EMPTY",
+              "styleStr": null,
+              "styleIdentifier": "ScEmptyStyle",
+              "externalStyles": [
+                {
+                  "absolutePath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/empty/sc-empty.scss",
+                  "relativePath": "sc-empty.scss",
+                  "originalComponentPath": "sc-empty.scss"
+                }
+              ]
+            }
+          ],
+          "internal": false,
+          "assetsDirs": [],
+          "styleDocs": [],
+          "docs": {
+            "tags": [
+              {
+                "name": "part",
+                "text": "base - The elements base wrapper."
+              },
+              {
+                "name": "part",
+                "text": "icon - The icon."
+              }
+            ],
+            "text": ""
+          },
+          "jsFilePath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/empty/sc-empty.js",
+          "sourceFilePath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/empty/sc-empty.tsx",
+          "sourceMapPath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/empty/sc-empty.js.map",
+          "hasAttributeChangedCallbackFn": false,
+          "hasComponentWillLoadFn": false,
+          "hasComponentDidLoadFn": false,
+          "hasComponentShouldUpdateFn": false,
+          "hasComponentWillUpdateFn": false,
+          "hasComponentDidUpdateFn": false,
+          "hasComponentWillRenderFn": false,
+          "hasComponentDidRenderFn": false,
+          "hasComponentDidUnloadFn": false,
+          "hasConnectedCallbackFn": false,
+          "hasDisconnectedCallbackFn": false,
+          "hasElement": false,
+          "hasEvent": false,
+          "hasLifecycle": false,
+          "hasListener": false,
+          "hasListenerTarget": false,
+          "hasListenerTargetWindow": false,
+          "hasListenerTargetDocument": false,
+          "hasListenerTargetBody": false,
+          "hasListenerTargetParent": false,
+          "hasMember": true,
+          "hasMethod": false,
+          "hasMode": false,
+          "hasAttribute": true,
+          "hasProp": true,
+          "hasPropNumber": false,
+          "hasPropBoolean": false,
+          "hasPropString": true,
+          "hasPropMutable": false,
+          "hasReflect": false,
+          "hasRenderFn": true,
+          "hasState": false,
+          "hasStyle": true,
+          "hasVdomAttribute": true,
+          "hasVdomXlink": false,
+          "hasVdomClass": true,
+          "hasVdomFunctional": false,
+          "hasVdomKey": true,
+          "hasVdomListener": false,
+          "hasVdomPropOrAttr": true,
+          "hasVdomRef": false,
+          "hasVdomRender": true,
+          "hasVdomStyle": false,
+          "hasVdomText": true,
+          "hasWatchCallback": false,
+          "isPlain": false,
+          "htmlAttrNames": [
+            "key",
+            "part",
+            "class",
+            "exportparts",
+            "name"
+          ],
+          "htmlTagNames": [
+            "div",
+            "sc-icon",
+            "slot"
+          ],
+          "htmlParts": [
+            "base"
+          ],
+          "isUpdateable": true,
+          "potentialCmpRefs": [
+            "sc-icon"
+          ],
+          "dependents": [
+            "sc-customer-details",
+            "sc-dashboard-customer-details",
+            "sc-dashboard-downloads-list",
+            "sc-downloads-list",
+            "sc-invoices-list",
+            "sc-license",
+            "sc-licenses-list",
+            "sc-order",
+            "sc-order-confirmation-customer",
+            "sc-orders-list",
+            "sc-payment-methods-list",
+            "sc-product-item-list",
+            "sc-purchase-downloads-list",
+            "sc-subscription-payment",
+            "sc-subscription-payment-method",
+            "sc-subscriptions-list"
+          ],
+          "dependencies": [
+            "sc-icon"
+          ],
+          "directDependents": [
+            "sc-customer-details",
+            "sc-downloads-list",
+            "sc-invoices-list",
+            "sc-license",
+            "sc-licenses-list",
+            "sc-order",
+            "sc-orders-list",
+            "sc-payment-methods-list",
+            "sc-product-item-list",
+            "sc-purchase-downloads-list",
+            "sc-subscription-payment",
+            "sc-subscription-payment-method",
+            "sc-subscriptions-list"
+          ],
+          "directDependencies": [
+            "sc-icon"
+          ]
+        },
+        {
+          "attachInternalsMemberName": null,
+          "formAssociated": false,
+          "tagName": "sc-stacked-list",
+          "excludeFromCollection": false,
+          "isCollectionDependency": false,
+          "componentClassName": "ScStackedList",
+          "elementRef": null,
+          "encapsulation": "shadow",
+          "shadowDelegatesFocus": false,
+          "properties": [],
+          "virtualProperties": [],
+          "states": [],
+          "methods": [],
+          "listeners": [],
+          "events": [],
+          "watchers": [],
+          "styles": [
+            {
+              "modeName": "$",
+              "styleId": "SC-STACKED-LIST",
+              "styleStr": null,
+              "styleIdentifier": "ScStackedListStyle",
+              "externalStyles": [
+                {
+                  "absolutePath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/stacked-list/sc-stacked-list.scss",
+                  "relativePath": "sc-stacked-list.scss",
+                  "originalComponentPath": "sc-stacked-list.scss"
+                }
+              ]
+            }
+          ],
+          "internal": false,
+          "assetsDirs": [],
+          "styleDocs": [],
+          "docs": {
+            "tags": [],
+            "text": ""
+          },
+          "jsFilePath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/stacked-list/sc-stacked-list.js",
+          "sourceFilePath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/stacked-list/sc-stacked-list.tsx",
+          "sourceMapPath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/stacked-list/sc-stacked-list.js.map",
+          "hasAttributeChangedCallbackFn": false,
+          "hasComponentWillLoadFn": false,
+          "hasComponentDidLoadFn": false,
+          "hasComponentShouldUpdateFn": false,
+          "hasComponentWillUpdateFn": false,
+          "hasComponentDidUpdateFn": false,
+          "hasComponentWillRenderFn": false,
+          "hasComponentDidRenderFn": false,
+          "hasComponentDidUnloadFn": false,
+          "hasConnectedCallbackFn": false,
+          "hasDisconnectedCallbackFn": false,
+          "hasElement": false,
+          "hasEvent": false,
+          "hasLifecycle": false,
+          "hasListener": false,
+          "hasListenerTarget": false,
+          "hasListenerTargetWindow": false,
+          "hasListenerTargetDocument": false,
+          "hasListenerTargetBody": false,
+          "hasListenerTargetParent": false,
+          "hasMember": false,
+          "hasMethod": false,
+          "hasMode": false,
+          "hasAttribute": false,
+          "hasProp": false,
+          "hasPropNumber": false,
+          "hasPropBoolean": false,
+          "hasPropString": false,
+          "hasPropMutable": false,
+          "hasReflect": false,
+          "hasRenderFn": true,
+          "hasState": false,
+          "hasStyle": true,
+          "hasVdomAttribute": true,
+          "hasVdomXlink": false,
+          "hasVdomClass": false,
+          "hasVdomFunctional": false,
+          "hasVdomKey": true,
+          "hasVdomListener": false,
+          "hasVdomPropOrAttr": false,
+          "hasVdomRef": false,
+          "hasVdomRender": true,
+          "hasVdomStyle": false,
+          "hasVdomText": false,
+          "hasWatchCallback": false,
+          "isPlain": false,
+          "htmlAttrNames": [
+            "key"
+          ],
+          "htmlTagNames": [
+            "slot"
+          ],
+          "htmlParts": [],
+          "isUpdateable": false,
+          "potentialCmpRefs": [],
+          "dependents": [
+            "sc-charges-list",
+            "sc-customer-details",
+            "sc-dashboard-customer-details",
+            "sc-dashboard-downloads-list",
+            "sc-downloads-list",
+            "sc-fulfillments",
+            "sc-invoices-list",
+            "sc-license",
+            "sc-licenses-list",
+            "sc-order",
+            "sc-order-confirmation-customer",
+            "sc-orders-list",
+            "sc-payment-methods-list",
+            "sc-purchase-downloads-list",
+            "sc-subscription",
+            "sc-subscription-details",
+            "sc-subscription-next-payment",
+            "sc-subscription-payment-method",
+            "sc-subscriptions-list",
+            "sc-wordpress-user"
+          ],
+          "dependencies": [],
+          "directDependents": [
+            "sc-charges-list",
+            "sc-customer-details",
+            "sc-downloads-list",
+            "sc-fulfillments",
+            "sc-invoices-list",
+            "sc-license",
+            "sc-licenses-list",
+            "sc-order",
+            "sc-orders-list",
+            "sc-payment-methods-list",
+            "sc-purchase-downloads-list",
+            "sc-subscription-details",
+            "sc-subscription-payment-method",
+            "sc-subscriptions-list",
+            "sc-wordpress-user"
+          ],
+          "directDependencies": []
+        },
+        {
+          "attachInternalsMemberName": null,
+          "formAssociated": false,
+          "tagName": "sc-stacked-list-row",
+          "excludeFromCollection": false,
+          "isCollectionDependency": false,
+          "componentClassName": "ScStackedListRow",
+          "elementRef": "el",
+          "encapsulation": "shadow",
+          "shadowDelegatesFocus": false,
+          "properties": [
+            {
+              "name": "href",
+              "type": "string",
+              "attribute": "href",
+              "reflect": false,
+              "mutable": false,
+              "required": false,
+              "optional": false,
+              "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+              },
+              "docs": {
+                "tags": [],
+                "text": ""
+              },
+              "internal": false
+            },
+            {
+              "name": "target",
+              "type": "string",
+              "attribute": "target",
+              "reflect": false,
+              "mutable": false,
+              "required": false,
+              "optional": false,
+              "defaultValue": "'_self'",
+              "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+              },
+              "docs": {
+                "tags": [],
+                "text": ""
+              },
+              "internal": false
+            },
+            {
+              "name": "mobileSize",
+              "type": "number",
+              "attribute": "mobile-size",
+              "reflect": false,
+              "mutable": false,
+              "required": false,
+              "optional": false,
+              "defaultValue": "600",
+              "complexType": {
+                "original": "number",
+                "resolved": "number",
+                "references": {}
+              },
+              "docs": {
+                "tags": [],
+                "text": ""
+              },
+              "internal": false
+            }
+          ],
+          "virtualProperties": [],
+          "states": [
+            {
+              "name": "width"
+            },
+            {
+              "name": "hasPrefix"
+            },
+            {
+              "name": "hasSuffix"
+            }
+          ],
+          "methods": [],
+          "listeners": [],
+          "events": [],
+          "watchers": [],
+          "styles": [
+            {
+              "modeName": "$",
+              "styleId": "SC-STACKED-LIST-ROW",
+              "styleStr": null,
+              "styleIdentifier": "ScStackedListRowStyle",
+              "externalStyles": [
+                {
+                  "absolutePath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/stacked-list-row/sc-stacked-list-row.scss",
+                  "relativePath": "sc-stacked-list-row.scss",
+                  "originalComponentPath": "sc-stacked-list-row.scss"
+                }
+              ]
+            }
+          ],
+          "internal": false,
+          "assetsDirs": [],
+          "styleDocs": [],
+          "docs": {
+            "tags": [],
+            "text": ""
+          },
+          "jsFilePath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/stacked-list-row/sc-stacked-list-row.js",
+          "sourceFilePath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/stacked-list-row/sc-stacked-list-row.tsx",
+          "sourceMapPath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/stacked-list-row/sc-stacked-list-row.js.map",
+          "hasAttributeChangedCallbackFn": false,
+          "hasComponentWillLoadFn": false,
+          "hasComponentDidLoadFn": true,
+          "hasComponentShouldUpdateFn": false,
+          "hasComponentWillUpdateFn": false,
+          "hasComponentDidUpdateFn": false,
+          "hasComponentWillRenderFn": false,
+          "hasComponentDidRenderFn": false,
+          "hasComponentDidUnloadFn": false,
+          "hasConnectedCallbackFn": false,
+          "hasDisconnectedCallbackFn": false,
+          "hasElement": false,
+          "hasEvent": false,
+          "hasLifecycle": true,
+          "hasListener": false,
+          "hasListenerTarget": false,
+          "hasListenerTargetWindow": false,
+          "hasListenerTargetDocument": false,
+          "hasListenerTargetBody": false,
+          "hasListenerTargetParent": false,
+          "hasMember": true,
+          "hasMethod": false,
+          "hasMode": false,
+          "hasAttribute": true,
+          "hasProp": true,
+          "hasPropNumber": true,
+          "hasPropBoolean": false,
+          "hasPropString": true,
+          "hasPropMutable": false,
+          "hasReflect": false,
+          "hasRenderFn": true,
+          "hasState": true,
+          "hasStyle": true,
+          "hasVdomAttribute": true,
+          "hasVdomXlink": false,
+          "hasVdomClass": true,
+          "hasVdomFunctional": true,
+          "hasVdomKey": true,
+          "hasVdomListener": true,
+          "hasVdomPropOrAttr": true,
+          "hasVdomRef": false,
+          "hasVdomRender": true,
+          "hasVdomStyle": false,
+          "hasVdomText": false,
+          "hasWatchCallback": false,
+          "isPlain": false,
+          "htmlAttrNames": [
+            "key",
+            "href",
+            "target",
+            "part",
+            "class",
+            "name",
+            "onSlotchange"
+          ],
+          "htmlTagNames": [
+            "span",
+            "slot"
+          ],
+          "htmlParts": [
+            "base"
+          ],
+          "isUpdateable": true,
+          "potentialCmpRefs": [],
+          "dependents": [
+            "sc-charges-list",
+            "sc-customer-details",
+            "sc-dashboard-customer-details",
+            "sc-dashboard-downloads-list",
+            "sc-downloads-list",
+            "sc-fulfillments",
+            "sc-invoices-list",
+            "sc-license",
+            "sc-licenses-list",
+            "sc-order",
+            "sc-order-confirmation-customer",
+            "sc-orders-list",
+            "sc-payment-methods-list",
+            "sc-purchase-downloads-list",
+            "sc-subscription",
+            "sc-subscription-details",
+            "sc-subscription-next-payment",
+            "sc-subscription-payment-method",
+            "sc-subscriptions-list",
+            "sc-wordpress-user"
+          ],
+          "dependencies": [],
+          "directDependents": [
+            "sc-charges-list",
+            "sc-customer-details",
+            "sc-downloads-list",
+            "sc-fulfillments",
+            "sc-invoices-list",
+            "sc-license",
+            "sc-licenses-list",
+            "sc-order",
+            "sc-orders-list",
+            "sc-payment-methods-list",
+            "sc-purchase-downloads-list",
+            "sc-subscription",
+            "sc-subscription-details",
+            "sc-subscription-payment-method",
+            "sc-subscriptions-list",
+            "sc-wordpress-user"
+          ],
+          "directDependencies": []
+        }
+      ],
+      "entryKey": "sc-empty.sc-stacked-list.sc-stacked-list-row.entry"
     },
     {
       "cmps": [
@@ -110622,369 +111051,6 @@
         }
       ],
       "entryKey": "sc-format-number.entry"
-    },
-    {
-      "cmps": [
-        {
-          "attachInternalsMemberName": null,
-          "formAssociated": false,
-          "tagName": "sc-stacked-list",
-          "excludeFromCollection": false,
-          "isCollectionDependency": false,
-          "componentClassName": "ScStackedList",
-          "elementRef": null,
-          "encapsulation": "shadow",
-          "shadowDelegatesFocus": false,
-          "properties": [],
-          "virtualProperties": [],
-          "states": [],
-          "methods": [],
-          "listeners": [],
-          "events": [],
-          "watchers": [],
-          "styles": [
-            {
-              "modeName": "$",
-              "styleId": "SC-STACKED-LIST",
-              "styleStr": null,
-              "styleIdentifier": "ScStackedListStyle",
-              "externalStyles": [
-                {
-                  "absolutePath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/stacked-list/sc-stacked-list.scss",
-                  "relativePath": "sc-stacked-list.scss",
-                  "originalComponentPath": "sc-stacked-list.scss"
-                }
-              ]
-            }
-          ],
-          "internal": false,
-          "assetsDirs": [],
-          "styleDocs": [],
-          "docs": {
-            "tags": [],
-            "text": ""
-          },
-          "jsFilePath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/stacked-list/sc-stacked-list.js",
-          "sourceFilePath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/stacked-list/sc-stacked-list.tsx",
-          "sourceMapPath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/stacked-list/sc-stacked-list.js.map",
-          "hasAttributeChangedCallbackFn": false,
-          "hasComponentWillLoadFn": false,
-          "hasComponentDidLoadFn": false,
-          "hasComponentShouldUpdateFn": false,
-          "hasComponentWillUpdateFn": false,
-          "hasComponentDidUpdateFn": false,
-          "hasComponentWillRenderFn": false,
-          "hasComponentDidRenderFn": false,
-          "hasComponentDidUnloadFn": false,
-          "hasConnectedCallbackFn": false,
-          "hasDisconnectedCallbackFn": false,
-          "hasElement": false,
-          "hasEvent": false,
-          "hasLifecycle": false,
-          "hasListener": false,
-          "hasListenerTarget": false,
-          "hasListenerTargetWindow": false,
-          "hasListenerTargetDocument": false,
-          "hasListenerTargetBody": false,
-          "hasListenerTargetParent": false,
-          "hasMember": false,
-          "hasMethod": false,
-          "hasMode": false,
-          "hasAttribute": false,
-          "hasProp": false,
-          "hasPropNumber": false,
-          "hasPropBoolean": false,
-          "hasPropString": false,
-          "hasPropMutable": false,
-          "hasReflect": false,
-          "hasRenderFn": true,
-          "hasState": false,
-          "hasStyle": true,
-          "hasVdomAttribute": true,
-          "hasVdomXlink": false,
-          "hasVdomClass": false,
-          "hasVdomFunctional": false,
-          "hasVdomKey": true,
-          "hasVdomListener": false,
-          "hasVdomPropOrAttr": false,
-          "hasVdomRef": false,
-          "hasVdomRender": true,
-          "hasVdomStyle": false,
-          "hasVdomText": false,
-          "hasWatchCallback": false,
-          "isPlain": false,
-          "htmlAttrNames": [
-            "key"
-          ],
-          "htmlTagNames": [
-            "slot"
-          ],
-          "htmlParts": [],
-          "isUpdateable": false,
-          "potentialCmpRefs": [],
-          "dependents": [
-            "sc-charges-list",
-            "sc-customer-details",
-            "sc-dashboard-customer-details",
-            "sc-dashboard-downloads-list",
-            "sc-downloads-list",
-            "sc-fulfillments",
-            "sc-invoices-list",
-            "sc-license",
-            "sc-licenses-list",
-            "sc-order",
-            "sc-order-confirmation-customer",
-            "sc-orders-list",
-            "sc-payment-methods-list",
-            "sc-purchase-downloads-list",
-            "sc-subscription",
-            "sc-subscription-details",
-            "sc-subscription-next-payment",
-            "sc-subscription-payment-method",
-            "sc-subscriptions-list",
-            "sc-wordpress-user"
-          ],
-          "dependencies": [],
-          "directDependents": [
-            "sc-charges-list",
-            "sc-customer-details",
-            "sc-downloads-list",
-            "sc-fulfillments",
-            "sc-invoices-list",
-            "sc-license",
-            "sc-licenses-list",
-            "sc-order",
-            "sc-orders-list",
-            "sc-payment-methods-list",
-            "sc-purchase-downloads-list",
-            "sc-subscription-details",
-            "sc-subscription-payment-method",
-            "sc-subscriptions-list",
-            "sc-wordpress-user"
-          ],
-          "directDependencies": []
-        },
-        {
-          "attachInternalsMemberName": null,
-          "formAssociated": false,
-          "tagName": "sc-stacked-list-row",
-          "excludeFromCollection": false,
-          "isCollectionDependency": false,
-          "componentClassName": "ScStackedListRow",
-          "elementRef": "el",
-          "encapsulation": "shadow",
-          "shadowDelegatesFocus": false,
-          "properties": [
-            {
-              "name": "href",
-              "type": "string",
-              "attribute": "href",
-              "reflect": false,
-              "mutable": false,
-              "required": false,
-              "optional": false,
-              "complexType": {
-                "original": "string",
-                "resolved": "string",
-                "references": {}
-              },
-              "docs": {
-                "tags": [],
-                "text": ""
-              },
-              "internal": false
-            },
-            {
-              "name": "target",
-              "type": "string",
-              "attribute": "target",
-              "reflect": false,
-              "mutable": false,
-              "required": false,
-              "optional": false,
-              "defaultValue": "'_self'",
-              "complexType": {
-                "original": "string",
-                "resolved": "string",
-                "references": {}
-              },
-              "docs": {
-                "tags": [],
-                "text": ""
-              },
-              "internal": false
-            },
-            {
-              "name": "mobileSize",
-              "type": "number",
-              "attribute": "mobile-size",
-              "reflect": false,
-              "mutable": false,
-              "required": false,
-              "optional": false,
-              "defaultValue": "600",
-              "complexType": {
-                "original": "number",
-                "resolved": "number",
-                "references": {}
-              },
-              "docs": {
-                "tags": [],
-                "text": ""
-              },
-              "internal": false
-            }
-          ],
-          "virtualProperties": [],
-          "states": [
-            {
-              "name": "width"
-            },
-            {
-              "name": "hasPrefix"
-            },
-            {
-              "name": "hasSuffix"
-            }
-          ],
-          "methods": [],
-          "listeners": [],
-          "events": [],
-          "watchers": [],
-          "styles": [
-            {
-              "modeName": "$",
-              "styleId": "SC-STACKED-LIST-ROW",
-              "styleStr": null,
-              "styleIdentifier": "ScStackedListRowStyle",
-              "externalStyles": [
-                {
-                  "absolutePath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/stacked-list-row/sc-stacked-list-row.scss",
-                  "relativePath": "sc-stacked-list-row.scss",
-                  "originalComponentPath": "sc-stacked-list-row.scss"
-                }
-              ]
-            }
-          ],
-          "internal": false,
-          "assetsDirs": [],
-          "styleDocs": [],
-          "docs": {
-            "tags": [],
-            "text": ""
-          },
-          "jsFilePath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/stacked-list-row/sc-stacked-list-row.js",
-          "sourceFilePath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/stacked-list-row/sc-stacked-list-row.tsx",
-          "sourceMapPath": "/home/runner/work/surecart-wp/surecart-wp/packages/components/src/components/ui/stacked-list-row/sc-stacked-list-row.js.map",
-          "hasAttributeChangedCallbackFn": false,
-          "hasComponentWillLoadFn": false,
-          "hasComponentDidLoadFn": true,
-          "hasComponentShouldUpdateFn": false,
-          "hasComponentWillUpdateFn": false,
-          "hasComponentDidUpdateFn": false,
-          "hasComponentWillRenderFn": false,
-          "hasComponentDidRenderFn": false,
-          "hasComponentDidUnloadFn": false,
-          "hasConnectedCallbackFn": false,
-          "hasDisconnectedCallbackFn": false,
-          "hasElement": false,
-          "hasEvent": false,
-          "hasLifecycle": true,
-          "hasListener": false,
-          "hasListenerTarget": false,
-          "hasListenerTargetWindow": false,
-          "hasListenerTargetDocument": false,
-          "hasListenerTargetBody": false,
-          "hasListenerTargetParent": false,
-          "hasMember": true,
-          "hasMethod": false,
-          "hasMode": false,
-          "hasAttribute": true,
-          "hasProp": true,
-          "hasPropNumber": true,
-          "hasPropBoolean": false,
-          "hasPropString": true,
-          "hasPropMutable": false,
-          "hasReflect": false,
-          "hasRenderFn": true,
-          "hasState": true,
-          "hasStyle": true,
-          "hasVdomAttribute": true,
-          "hasVdomXlink": false,
-          "hasVdomClass": true,
-          "hasVdomFunctional": true,
-          "hasVdomKey": true,
-          "hasVdomListener": true,
-          "hasVdomPropOrAttr": true,
-          "hasVdomRef": false,
-          "hasVdomRender": true,
-          "hasVdomStyle": false,
-          "hasVdomText": false,
-          "hasWatchCallback": false,
-          "isPlain": false,
-          "htmlAttrNames": [
-            "key",
-            "href",
-            "target",
-            "part",
-            "class",
-            "name",
-            "onSlotchange"
-          ],
-          "htmlTagNames": [
-            "span",
-            "slot"
-          ],
-          "htmlParts": [
-            "base"
-          ],
-          "isUpdateable": true,
-          "potentialCmpRefs": [],
-          "dependents": [
-            "sc-charges-list",
-            "sc-customer-details",
-            "sc-dashboard-customer-details",
-            "sc-dashboard-downloads-list",
-            "sc-downloads-list",
-            "sc-fulfillments",
-            "sc-invoices-list",
-            "sc-license",
-            "sc-licenses-list",
-            "sc-order",
-            "sc-order-confirmation-customer",
-            "sc-orders-list",
-            "sc-payment-methods-list",
-            "sc-purchase-downloads-list",
-            "sc-subscription",
-            "sc-subscription-details",
-            "sc-subscription-next-payment",
-            "sc-subscription-payment-method",
-            "sc-subscriptions-list",
-            "sc-wordpress-user"
-          ],
-          "dependencies": [],
-          "directDependents": [
-            "sc-charges-list",
-            "sc-customer-details",
-            "sc-downloads-list",
-            "sc-fulfillments",
-            "sc-invoices-list",
-            "sc-license",
-            "sc-licenses-list",
-            "sc-order",
-            "sc-orders-list",
-            "sc-payment-methods-list",
-            "sc-purchase-downloads-list",
-            "sc-subscription",
-            "sc-subscription-details",
-            "sc-subscription-payment-method",
-            "sc-subscriptions-list",
-            "sc-wordpress-user"
-          ],
-          "directDependencies": []
-        }
-      ],
-      "entryKey": "sc-stacked-list.sc-stacked-list-row.entry"
     },
     {
       "cmps": [
@@ -111738,6 +111804,7 @@
             "sc-customer-details",
             "sc-dashboard-customer-details",
             "sc-dashboard-downloads-list",
+            "sc-downloads-list",
             "sc-express-payment",
             "sc-form-components-validator",
             "sc-invoices-list",
@@ -111765,6 +111832,7 @@
           "dependencies": [],
           "directDependents": [
             "sc-customer-details",
+            "sc-downloads-list",
             "sc-express-payment",
             "sc-form-components-validator",
             "sc-invoices-list",
@@ -114674,6 +114742,7 @@
             "sc-customer-edit",
             "sc-dashboard-downloads-list",
             "sc-donation-choices",
+            "sc-downloads-list",
             "sc-express-payment",
             "sc-form-components-validator",
             "sc-form-state-provider",
@@ -114722,6 +114791,7 @@
             "sc-custom-order-price-input",
             "sc-customer-edit",
             "sc-donation-choices",
+            "sc-downloads-list",
             "sc-express-payment",
             "sc-form-state-provider",
             "sc-invoices-list",
@@ -115121,6 +115191,7 @@
             "sc-dashboard-customer-details",
             "sc-dashboard-downloads-list",
             "sc-donation-choices",
+            "sc-downloads-list",
             "sc-form-components-validator",
             "sc-fulfillments",
             "sc-invoice-memo",
@@ -115175,6 +115246,7 @@
             "sc-custom-order-price-input",
             "sc-customer-details",
             "sc-donation-choices",
+            "sc-downloads-list",
             "sc-fulfillments",
             "sc-invoice-memo",
             "sc-invoices-list",
@@ -116512,6 +116584,7 @@
             "sc-customer-phone",
             "sc-dashboard-downloads-list",
             "sc-donation-choices",
+            "sc-downloads-list",
             "sc-form-components-validator",
             "sc-form-control",
             "sc-image-slider",
@@ -117170,6 +117243,7 @@
     "sc-sc-downloads-list": [
       "p-e97fde0a.js",
       "p-dd3464cd.js",
+      "p-b719a497.js",
       "p-401e165e.js",
       "p-d3366af3.js"
     ],
@@ -117198,7 +117272,8 @@
       "p-b0d8cd6e.js"
     ],
     "sc-sc-empty": [
-      "p-e97fde0a.js"
+      "p-e97fde0a.js",
+      "p-b0d8cd6e.js"
     ],
     "sc-sc-error": [
       "p-e97fde0a.js",
@@ -119185,7 +119260,8 @@
       "./src/functions/fetch"
     ],
     "./src/components/controllers/dashboard/sc-downloads-list/sc-downloads-list.tsx": [
-      "./src/functions/fetch"
+      "./src/functions/fetch",
+      "./src/functions/lazy"
     ],
     "./src/components/controllers/dashboard/sc-downloads-list/test/sc-downloads-list.e2e.ts": [],
     "./src/components/controllers/dashboard/sc-downloads-list/test/sc-downloads-list.spec.tsx": [

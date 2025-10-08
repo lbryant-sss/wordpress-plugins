@@ -40,52 +40,132 @@ if ( ! class_exists( 'ES_Lists_Controller' ) ) {
 		 * @return array
 		 */
 		public static function get_lists( $args = array() ) {
-			// Default arguments
-			$defaults = array(
-				'per_page'    => -1,
-				'page_number' => 1,
-				'order_by'    => 'created_at',
-				'order'       => 'DESC',
-				'search'      => '',
-				'status'      => 'active'
-			);
 
-			$args = wp_parse_args( $args, $defaults );
+			if ( is_string( $args ) ) {
+                $decoded = json_decode( $args, true );
+                if ( $decoded ) {
+                    $args = $decoded;
+                }									
+            }
 
-			// Use the lists database to get lists
-			$lists_db = ES()->lists_db;
+            $order_by     = isset( $args['order_by'] ) ? $args['order_by'] : 'created_at';
+            $order        = isset( $args['order'] ) ? strtoupper( $args['order'] ) : 'DESC';
+            $search       = isset( $args['search'] ) ? $args['search'] : '';
+            $per_page     = isset( $args['per_page'] ) ? (int) $args['per_page'] : 20;
+            $page_number  = isset( $args['page_number'] ) ? (int) $args['page_number'] : 1;
+            $do_count_only = ! empty( $args['do_count_only'] );
+
+            $lists_db = ES()->lists_db;
+            $lists_contacts_db = ES()->lists_contacts_db;
+
+            $order = ! empty( $order ) ? strtolower( $order ) : 'desc';
+            $expected_order_values = array( 'asc', 'desc' );
+            if ( ! in_array( $order, $expected_order_values ) ) {
+                $order = 'desc';
+            }
+
+            $expected_order_by_values = array( 'name', 'created_at', 'updated_at' );
+            if ( ! in_array( $order_by, $expected_order_by_values ) ) {
+                $order_by = 'created_at';
+            }
+
+            if ( $do_count_only ) {
+                if ( ! empty( $search ) && 'none' !== $search ) {
+                    $where_condition = "name LIKE '%" . esc_sql( $search ) . "%'";
+                    $total_count = $lists_db->count( $where_condition );
+                } else {
+                    $total_count = $lists_db->count();
+                }
+                return $total_count;
+            }
+
+            $es_args = array(
+                'order_by'    => $order_by,
+                'order'       => strtoupper( $order ),
+                'per_page'    => $per_page,
+                'page_number' => $page_number,
+            );
+
+            if ( ! empty( $search ) && 'none' !== $search ) {
+
+				if ( method_exists( $lists_db, 'get_lists_by_conditions' ) ) {
+					$lists = $lists_db->get_lists_by_conditions( array(
+						'conditions' => array(
+							array(
+								'key'     => 'name',
+								'value'   => '%' . $search . '%',
+								'compare' => 'LIKE'
+							)
+						),
+						'order_by'    => $order_by,
+						'order'       => strtoupper( $order ),
+						'per_page'    => $per_page,
+						'page_number' => $page_number,
+					) );
+				}
+				else if ( method_exists( $lists_db, 'get_lists_by_name_like' ) ) {
+					$lists = $lists_db->get_lists_by_name_like( $search, array(
+						'order_by'    => $order_by,
+						'order'       => strtoupper( $order ),
+						'per_page'    => $per_page,
+						'page_number' => $page_number,
+					) );
+				}
+				else {
+					$all_lists_args = array(
+						'order_by'    => $order_by,
+						'order'       => strtoupper( $order ),
+						'per_page'    => -1,  
+						'page_number' => 1,
+					);
+					$all_lists = $lists_db->get_lists( $all_lists_args );
+					
+					$filtered_lists = array();
+					if ( ! empty( $all_lists ) ) {
+						foreach ( $all_lists as $list ) {
+							if ( stripos( $list['name'], $search ) !== false ) {
+								$filtered_lists[] = $list;
+							}
+						}
+					}
+					
+					$offset = ( $page_number - 1 ) * $per_page;
+					$lists = array_slice( $filtered_lists, $offset, $per_page );
+				}
+				
+            } else {
+                $lists = $lists_db->get_lists( $es_args );
+            }
+
+            if ( ! empty( $lists ) ) {
+                $formatted_lists = array();
+
+                foreach ( $lists as $list ) {
+                    $no_of_contacts = $lists_contacts_db->get_total_contacts( 'list_id = ' . intval( $list['id'] ) );
+                    $subscribed_count = $lists_contacts_db->get_total_contacts( 'list_id = ' . intval( $list['id'] ) . ' AND status = "subscribed"' );
+                    $unsubscribed_count = $lists_contacts_db->get_total_contacts( 'list_id = ' . intval( $list['id'] ) . ' AND status = "unsubscribed"' );
+                    $unconfirmed_count = $lists_contacts_db->get_total_contacts( 'list_id = ' . intval( $list['id'] ) . ' AND status = "unconfirmed"' );
+
+                    $formatted_lists[] = array(
+                        'id'                 => (int) $list['id'],
+                        'name'               => $list['name'],
+                        'description'        => ! empty( $list['desc'] ) ? $list['desc'] : '',
+                        'status'             => 'active',  
+                        'created_at'         => $list['created_at'],
+                        'updated_at'         => $list['updated_at'],
+                        'subscriber_count'   => ! empty( $list['total_contacts'] ) ? (int) $list['total_contacts'] : 0,
+                        'no_of_contacts'     => ! empty( $no_of_contacts ) ? (int) $no_of_contacts : 0,
+                        'subscribed_count'   => ! empty( $subscribed_count ) ? (int) $subscribed_count : 0,
+                        'unsubscribed_count' => ! empty( $unsubscribed_count ) ? (int) $unsubscribed_count : 0,
+                        'unconfirmed_count'  => ! empty( $unconfirmed_count ) ? (int) $unconfirmed_count : 0,
+                    );
+                }
+
+                return $formatted_lists;
+            }
+
+            return array();
 			
-			// Get all lists since we don't have status filtering in the basic method
-			$all_lists = $lists_db->get_lists();
-			
-			// Filter by search if provided
-			if ( ! empty( $args['search'] ) && 'none' !== $args['search'] ) {
-				$all_lists = array_filter( $all_lists, function( $list ) use ( $args ) {
-					return stripos( $list['name'], $args['search'] ) !== false;
-				});
-			}
-
-			// Convert to the expected format
-			$formatted_lists = array();
-			foreach ( $all_lists as $list ) {
-				$formatted_lists[] = array(
-					'id'              => (int) $list['id'],
-					'name'            => $list['name'],
-					'description'     => ! empty( $list['desc'] ) ? $list['desc'] : '',
-					'status'          => 'active', // Default status
-					'created_at'      => $list['created_at'],
-					'updated_at'      => $list['updated_at'],
-					'subscriber_count' => ! empty( $list['total_contacts'] ) ? (int) $list['total_contacts'] : 0,
-				);
-			}
-
-			// Apply pagination if not getting all
-			if ( $args['per_page'] > 0 ) {
-				$offset = ( $args['page_number'] - 1 ) * $args['per_page'];
-				$formatted_lists = array_slice( $formatted_lists, $offset, $args['per_page'] );
-			}
-
-			return $formatted_lists;
 		}
 
 		/**
@@ -128,6 +208,13 @@ if ( ! class_exists( 'ES_Lists_Controller' ) ) {
 		public static function create_list( $args = array() ) {
 			$response = array( 'status' => 'error', 'message' => '' );
 
+			if ( is_string( $args ) ) {
+				$decoded = json_decode( $args, true );
+				if ( $decoded ) {
+					$args = $decoded;
+				}
+			}
+
 			if ( empty( $args['name'] ) ) {
 				$response['message'] = __( 'List name is required.', 'email-subscribers' );
 				return $response;
@@ -136,8 +223,7 @@ if ( ! class_exists( 'ES_Lists_Controller' ) ) {
 			$name = sanitize_text_field( $args['name'] );
 			$desc = ! empty( $args['description'] ) ? sanitize_text_field( $args['description'] ) : '';
 
-			// Check if list already exists
-			if ( ES()->lists_db->is_list_exists( $name ) ) {
+ 			if ( ES()->lists_db->is_list_exists( $name ) ) {
 				$response['message'] = __( 'List already exists. Please choose a different name.', 'email-subscribers' );
 				return $response;
 			}
@@ -184,8 +270,7 @@ if ( ! class_exists( 'ES_Lists_Controller' ) ) {
 			$name = sanitize_text_field( $args['name'] );
 			$desc = ! empty( $args['description'] ) ? sanitize_text_field( $args['description'] ) : '';
 
-			// Check if another list with the same name exists
-			$existing_list = ES()->lists_db->get_list_by_name( $name );
+ 			$existing_list = ES()->lists_db->get_list_by_name( $name );
 			if ( $existing_list && $existing_list['id'] != $list_id ) {
 				$response['message'] = __( 'List already exists. Please choose a different name.', 'email-subscribers' );
 				return $response;
@@ -234,6 +319,168 @@ if ( ! class_exists( 'ES_Lists_Controller' ) ) {
 			}
 
 			return $response;
+		}
+
+		/**
+		 * Get country statistics for contacts (legacy method)
+		 *
+		 * @param array $args Arguments containing optional filters
+		 * @return array
+		 */
+		public static function get_legacy_country_stats( $args = array() ) {
+
+			if ( is_string( $args ) ) {
+				$decoded = json_decode( $args, true );
+				if ( $decoded ) {
+					$args = $decoded;
+				}
+			}
+
+			$args['countries_count'] = 5;
+
+			$top_countries = ES()->contacts_db->get_top_countries_by_days_and_list( $args );
+
+			$countries = ES_Geolocation::get_countries();
+
+			$country_data_array = array();
+
+			$max_count = max( $top_countries );
+
+			$max_width = 500;
+ 
+			foreach ( $top_countries as $country_code => $total_subscribers ) {
+
+				if ( 'others' === $country_code ) {
+					$country_name = __('Others', 'email-subscribers');
+				} else {
+					$country_name = ! empty( $countries[ $country_code ] ) ? $countries[ $country_code ] : '';
+				}
+
+				$calculated_width = 0;
+				if ( $max_count > 0 ) {
+					$calculated_width = intval( ( $total_subscribers / $max_count ) * $max_width );
+				}
+				
+				$country_data_array[] = array(
+					'country_code'      => $country_code,
+					'country_name'      => $country_name,
+					'total_subscribers' => (int) $total_subscribers,
+					'width'				=> 'w-[' . $calculated_width . 'px]'
+				);	
+			}
+
+			return $country_data_array; 
+		}
+
+		/**
+		 * Get country statistics for audience insights
+		 *
+		 * @param array $args Arguments containing list_id and days
+		 * @return array
+		 */
+		public static function get_country_stats( $args = array() ) {
+
+			if ( is_string( $args ) ) {
+				$decoded = json_decode( $args, true );
+				if ( $decoded ) {
+					$args = $decoded;
+				}
+			}
+
+			$list_id = isset( $args['list_id'] ) ? $args['list_id'] : 'all';
+			$days = isset( $args['days'] ) ? intval( $args['days'] ) : 7;
+			
+			$db_args = array(
+				'list_id' => $list_id,
+				'days' => $days,
+				'countries_count' => 5  
+			);
+			
+			try {
+				$top_countries = ES_DB_Contacts::get_top_countries_by_days_and_list( $db_args );
+				
+				if ( empty( $top_countries ) ) {
+					return array();
+				}
+				
+				$countries_data = array();
+				$country_names = ES_Geolocation::get_countries();
+
+				$max_count = max( $top_countries );
+
+				$max_width = 500;
+				
+				foreach ( $top_countries as $country_code => $total_subscribers ) {
+					$country_code = strtoupper( $country_code );
+					
+					$country_name = isset( $country_names[ $country_code ] ) ? $country_names[ $country_code ] : $country_code;
+
+					$calculated_width = 0;
+					if ( $max_count > 0 ) {
+						$calculated_width = intval( ( $total_subscribers / $max_count ) * $max_width );
+					}
+					
+					$countries_data[] = array(
+						'country_name'       => $country_name,
+						'country_code'       => $country_code,
+						'total_subscribers'  => intval( $total_subscribers ),
+						'width'              => 'w-[' . $calculated_width . 'px]'
+					);
+				}
+				
+				return $countries_data;
+				
+			} catch ( Exception $e ) {
+				return array();
+			}
+		}
+
+		public static function verify_emails() {
+
+			$cleaner = ES_List_Cleanup::get_instance();
+			$plan = ES()->get_plan();
+
+			if ( 'pro' === strtolower( $plan ) ) {
+ 				
+				$cleaner->clean_emails();
+
+				return array(
+					'status'  => 'success',
+					'message' => __( 'List cleanup completed', 'email-subscribers' ),
+				);
+			}
+
+			if( $cleaner->can_do_list_cleanup() ) {
+
+				$cleaner->clean_emails();  
+
+				return array( 'status' => 'success', 'message' => __( 'List cleanup completed!', 'email-subscribers' ) );
+			}
+
+			return array( 'status' => 'error', 'message' => __( 'List cleanup is available only one time.', 'email-subscribers' ) );
+		}
+
+		public static function check_list_cleanup_used() {
+ 
+			$used = get_option('ig_list_cleanup_used', false);
+  
+			$plan = ES()->get_plan();
+
+			if ( $plan && 'pro' === $plan ) {
+				return array(
+					'status'   => 'success',
+					'has_used' => false,
+					'message'  => __( 'Pro plan: unlimited list cleanup access.', 'email-subscribers' ),
+				);
+			}
+
+ 
+			if( $used ) {
+
+				return array( 'status' => 'success', 'has_used' => true, 'message' => __( 'List cleanup already used.', 'email-subscribers' ) );
+			} 
+			
+			return array( 'status' => 'error', 'has_used' => false, 'message' => __( 'List cleanup not used yet. ', 'email-subscribers' ) );	
 		}
 	}
 }
