@@ -1997,7 +1997,7 @@ jQuery(document).ready(function ($) {
      * Display page limit action on top
      */
 
-    $(document).on('click', '#awdr_limit', function(e) {
+    $(document).on('change', '#awdr_limit', function(e) {
         e.preventDefault();
         redirectParams({limit: $(this).val()});
     });

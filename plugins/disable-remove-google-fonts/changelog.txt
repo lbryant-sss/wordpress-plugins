@@ -1,3 +1,7 @@
+= 1.7.1 =
+
+* Tested with WP6.8
+
 = 1.7.0 =
 
 * Tested with Blocksy and Neve themes

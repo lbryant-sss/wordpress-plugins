@@ -3120,6 +3120,128 @@ class ManageDiscount extends Base
 			return Woocommerce::changeCustomTaxonomyLabel($custom_taxonomies);
 		}
 		return $custom_taxonomies;
+	}
 
+
+	/**
+	 * Add coupon meta data to validate the coupon restrictions
+	 *
+	 * @param $item
+	 * @param $code
+	 * @param $coupon
+	 * @param $order
+	 */
+	public static function addCouponMeta($item, $code, $coupon, $order ){
+		if ( is_a( $coupon, 'WC_Coupon' ) ) {
+			!empty($coupon->get_product_ids()) ? $item->add_meta_data( 'wdr_apply_coupon_product_ids', $coupon->get_product_ids(), true ) : '';
+				!empty($coupon->get_excluded_product_ids()) ? $item->add_meta_data( 'wdr_exclude_product_ids', $coupon->get_excluded_product_ids(), true ): '';
+				!empty($coupon->get_product_categories()) ? $item->add_meta_data( 'wdr_product_categories', $coupon->get_product_categories(), true ): '';
+				!empty($coupon->get_excluded_product_categories()) ? $item->add_meta_data( 'wdr_exclude_product_categories', $coupon->get_excluded_product_categories(), true ): '';
+				!empty($coupon->get_exclude_sale_items()) ? $item->add_meta_data( 'wdr_exclude_sale_items', $coupon->get_exclude_sale_items(), true ): '';
+				!empty($coupon->get_minimum_amount()) ? $item->add_meta_data( 'wdr_minimum_amount', $coupon->get_minimum_amount(), true ): '';
+				!empty($coupon->get_maximum_amount()) ?	$item->add_meta_data( 'wdr_maximum_amount', $coupon->get_maximum_amount(), true ): '';
+				!empty($coupon->get_email_restrictions()) ? $item->add_meta_data( 'wdr_customer_emails', $coupon->get_email_restrictions(), true ): '';
+				!empty($coupon->get_usage_limit()) ? $item->add_meta_data( 'wdr_usage_limit', $coupon->get_usage_limit(), true ): '';
+				!empty($coupon->get_usage_limit_per_user()) ? $item->add_meta_data( 'wdr_usage_limit_per_user', $coupon->get_usage_limit_per_user(), true ): '';
+		}
+	}
+
+	/**
+	 * validate the coupon restrictions based on product, category, sale items
+	 *
+	 * @param $valid
+	 * @param $product
+	 * @param $coupon
+	 * @param $order_item
+	 *
+	 * @return false
+	 */
+
+	public static function validateCoupon( $valid, $product, $coupon, $order_item ) {
+		if ( ! $order_item  || !is_admin()) {
+			return $valid; // Already invalid, no need to check further
+		}
+
+		// Ensure we have a valid order
+		$order_id = $order_item ? $order_item->get_order_id() : 0;
+		if ( ! $order_id ) {
+			return $valid;
+		}
+
+		$order = wc_get_order( $order_id );
+		if ( ! $order ) {
+			return $valid;
+		}
+
+		$coupon_code = $coupon->get_code();
+		$matched_coupon_item = null;
+
+		// Find matching coupon line item in the order
+		foreach ( $order->get_items( 'coupon' ) as $order_coupon ) {
+			if ( strtolower( $order_coupon->get_code() ) === strtolower( $coupon_code ) ) {
+				$matched_coupon_item = $order_coupon;
+				break;
+			}
+		}
+
+		if ( ! $matched_coupon_item ) {
+			return $valid;
+		}
+
+		$product_id     = $product->get_id();
+		$product_cats   = $product->get_category_ids();
+		$product_on_sale = $product->is_on_sale();
+
+		// Get product IDs stored in coupon meta
+		$coupon_product_ids = $matched_coupon_item->get_meta( 'wdr_apply_coupon_product_ids', true );
+		if ( ! empty( $coupon_product_ids )  && is_array( $coupon_product_ids ) ) {
+			// Validate product ID
+			$product_id = $product->get_id();
+			if($product->is_type( 'variation' ) ) {
+				$parent_product_id = $product->get_parent_id();
+				if(in_array($parent_product_id,$coupon_product_ids)){
+					$parent_product    = wc_get_product( $parent_product_id );
+					$variable_product_ids = $parent_product->get_children();
+					if(is_array($variable_product_ids) && !empty($variable_product_ids)){
+						$coupon_product_ids = array_merge($coupon_product_ids,$variable_product_ids);
+					}
+				}
+			}
+			if ( ! in_array( $product_id, $coupon_product_ids, true ) ) {
+				return false;
+			}
+		}
+
+		// Excluded products
+		$exclude_product_ids = (array) $matched_coupon_item->get_meta( 'wdr_exclude_product_ids', true );
+		if ( ! empty( $exclude_product_ids ) && in_array( $product_id, $exclude_product_ids, true ) ) {
+			 return false;
+		}
+
+		// Category restrictions
+		$allowed_cats = (array) $matched_coupon_item->get_meta( 'wdr_product_categories', true );
+		foreach ( (array) $product->get_category_ids() as $cat_id ) {
+			if ( in_array( $cat_id, (array) $allowed_cats, true ) ) {
+				return false;
+			}
+		}
+
+		// Excluded categories
+		$excluded_cats = (array) $matched_coupon_item->get_meta( 'wdr_exclude_product_categories', true );
+		if ( ! empty( $excluded_cats ) ) {
+			foreach ( (array) $product_cats as $cat_id ) {
+				if ( in_array( $cat_id, $excluded_cats, true ) ) {
+					return false; // product is in excluded category
+				}
+			}
+		}
+
+		// Exclude sale items
+		$exclude_sale_items = (bool) $matched_coupon_item->get_meta( 'wdr_exclude_sale_items', true );
+		if ( $exclude_sale_items && $product_on_sale ) {
+			return false; // product is on sale and coupon excludes sale items
+		}
+
+		return $valid;
 	}
 }

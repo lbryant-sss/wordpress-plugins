@@ -1025,6 +1025,7 @@ class ComposerStaticInitde6168bc7e17873548173e515fd8b9ef
         'SureCart\\Permissions\\Models\\ChargePermissionsController' => __DIR__ . '/../..' . '/app/src/Permissions/Models/ChargePermissionsController.php',
         'SureCart\\Permissions\\Models\\CheckoutPermissionsController' => __DIR__ . '/../..' . '/app/src/Permissions/Models/CheckoutPermissionsController.php',
         'SureCart\\Permissions\\Models\\CustomerPermissionsController' => __DIR__ . '/../..' . '/app/src/Permissions/Models/CustomerPermissionsController.php',
+        'SureCart\\Permissions\\Models\\DownloadPermissionsController' => __DIR__ . '/../..' . '/app/src/Permissions/Models/DownloadPermissionsController.php',
         'SureCart\\Permissions\\Models\\InvoicePermissionsController' => __DIR__ . '/../..' . '/app/src/Permissions/Models/InvoicePermissionsController.php',
         'SureCart\\Permissions\\Models\\LicensePermissionsController' => __DIR__ . '/../..' . '/app/src/Permissions/Models/LicensePermissionsController.php',
         'SureCart\\Permissions\\Models\\MediaPermissionsController' => __DIR__ . '/../..' . '/app/src/Permissions/Models/MediaPermissionsController.php',

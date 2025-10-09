@@ -935,6 +935,7 @@ return array(
     'SureCart\\Permissions\\Models\\ChargePermissionsController' => $baseDir . '/app/src/Permissions/Models/ChargePermissionsController.php',
     'SureCart\\Permissions\\Models\\CheckoutPermissionsController' => $baseDir . '/app/src/Permissions/Models/CheckoutPermissionsController.php',
     'SureCart\\Permissions\\Models\\CustomerPermissionsController' => $baseDir . '/app/src/Permissions/Models/CustomerPermissionsController.php',
+    'SureCart\\Permissions\\Models\\DownloadPermissionsController' => $baseDir . '/app/src/Permissions/Models/DownloadPermissionsController.php',
     'SureCart\\Permissions\\Models\\InvoicePermissionsController' => $baseDir . '/app/src/Permissions/Models/InvoicePermissionsController.php',
     'SureCart\\Permissions\\Models\\LicensePermissionsController' => $baseDir . '/app/src/Permissions/Models/LicensePermissionsController.php',
     'SureCart\\Permissions\\Models\\MediaPermissionsController' => $baseDir . '/app/src/Permissions/Models/MediaPermissionsController.php',

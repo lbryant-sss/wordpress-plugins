@@ -40,7 +40,7 @@ remove_action( 'wp_head', 'botiga_preconnect_google_fonts' );
 /**
  * Dequeue Google Fonts based on URL.
  */
-function drgf_dequeueu_fonts() {
+function drgf_dequeue_fonts() {
 	// Remove fonts added by the Divi Extra theme.
 	remove_action( 'wp_footer', 'et_builder_print_font' );
 
@@ -108,8 +108,8 @@ function drgf_dequeueu_fonts() {
 	remove_action( 'wp_head', 'aca_pre_load_fonts' );
 }
 
-add_action( 'wp_enqueue_scripts', 'drgf_dequeueu_fonts', PHP_INT_MAX );
-add_action( 'wp_print_styles', 'drgf_dequeueu_fonts', PHP_INT_MAX );
+add_action( 'wp_enqueue_scripts', 'drgf_dequeue_fonts', PHP_INT_MAX );
+add_action( 'wp_print_styles', 'drgf_dequeue_fonts', PHP_INT_MAX );
 
 /**
  * Dequeue Google Fonts loaded by Elementor.
@@ -201,19 +201,21 @@ add_action( 'init', 'drgf_remove_divi_preconnect' );
 /**
  * Dequeue Google Fonts loaded by Avada theme.
  */
-$fusion_options = get_option( 'fusion_options', false );
-if (
-		$fusion_options
-		&& isset( $fusion_options['gfonts_load_method'] )
-		&& $fusion_options['gfonts_load_method'] === 'cdn'
-	) {
-	add_filter(
-		'fusion_google_fonts',
-		function ( $fonts ) {
-			return array();
-		},
-		99999
-	);
+if ( class_exists( 'Avada' ) || function_exists( 'fusion_reset_all_caches' ) ) {
+	$fusion_options = get_option( 'fusion_options', false );
+	if (
+			$fusion_options
+			&& isset( $fusion_options['gfonts_load_method'] )
+			&& $fusion_options['gfonts_load_method'] === 'cdn'
+		) {
+		add_filter(
+			'fusion_google_fonts',
+			function ( $fonts ) {
+				return array();
+			},
+			99999
+		);
+	}
 }
 
 /**
@@ -276,7 +278,6 @@ add_filter( 'cs_load_google_fonts', '__return_false' );
  * @return bool True if any needle is found, false otherwise.
  */
 function drgf_strposa( $haystack, $needles, $offset = 0 ) {
-	$chr = array();
 	foreach ( $needles as $needle ) {
 		$res = strpos( $haystack, $needle, $offset );
 		if ( $res !== false ) {
@@ -340,12 +341,12 @@ add_action(
 	}
 );
 
-add_action( 'plugins_loaded', 'dgrf_after_plugins_loaded', 9999 );
+add_action( 'plugins_loaded', 'drgf_after_plugins_loaded', 9999 );
 
 /**
  * Run this code after all plugins have been loaded.
  */
-function dgrf_after_plugins_loaded() {
+function drgf_after_plugins_loaded() {
 	/**
 	 * Dequeue Google Fonts loaded by the GroovyMenu plugin.
 	 */

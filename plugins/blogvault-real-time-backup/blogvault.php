@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name: WordPress Backup & Security Plugin - BlogVault
+Plugin Name: BlogVault Backup & Staging 
 Plugin URI: https://blogvault.net
 Description: Easiest way to backup & secure your WordPress site
-Author: Backup by BlogVault
+Author: akshatc
 Author URI: https://blogvault.net
 Version: 6.02
 Network: True

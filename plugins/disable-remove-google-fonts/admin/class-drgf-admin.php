@@ -29,10 +29,15 @@ class DRGF_Admin {
 	 * Redirect to the Google Fonts Welcome page.
 	 */
 	function admin_redirect() {
+		// Check user capabilities.
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
 		if ( get_option( 'drgf_do_activation_redirect', false ) ) {
 			delete_option( 'drgf_do_activation_redirect' );
 			if ( ! isset( $_GET['activate-multi'] ) && ! is_network_admin() ) {
-				wp_redirect( admin_url('themes.php?page=drgf') );
+				wp_safe_redirect( admin_url( 'themes.php?page=drgf' ) );
 				exit;
 			}
 		}
@@ -87,15 +92,15 @@ class DRGF_Admin {
 						<h3>How This Plugin Works</h3>
 						<p>This plugin completely removes all references to Google Fonts from your website. That means that your website will no longer render  Google Fonts and will instead revert to a <a target="_blank" href="https://fontsplugin.com/web-safe-system-fonts/">fallback font</a>.</p>
 						<p>However, some services load Google Fonts within an embedded iFrame. These include YouTube, Google Maps and ReCaptcha. It's not possible for this plugin to remove those services for the reasons <a target="_blank" href="https://fontsplugin.com/remove-disable-google-fonts/#youtube">outlined here</a>.</p>
-						<?php if ( function_exists( 'ogf_initiate' ) ) : ?>
-							<h3>⭐️ Fonts Plugin Pro</h3>
-							<p>Instead of removing the fonts completely, <a target="_blank" href="https://fontsplugin.com/drgf-upgrade">Fonts Plugin Pro</a> enables you to host the fonts from your <strong>own domain</strong> (<?php echo $url; ?>)  with the click of a button. Locally hosted fonts are more efficient, quicker to load and don't connect to any third-parties (GDPR & DSGVO-friendly).</p>
-							<a class="drgf-admin__button button" href="https://fontsplugin.com/drgf-upgrade" target="_blank">Learn More</a>
-						<?php else : ?>
-							<h3>⭐️ Host Google Fonts Locally</h3>
-							<p>Instead of removing the fonts completely, our <a href="https://fontsplugin.com/drgf-upgrade" target="_blank">Pro upgrade</a> enables you to host the fonts from your <strong>own domain</strong> (<?php echo $url; ?>)  with the click of a button. Locally hosted fonts are more efficient, quicker to load and don't connect to any third-parties (GDPR & DSGVO-friendly).</p>
-							<a class="drgf-admin__button button" href="https://fontsplugin.com/drgf-upgrade" target="_blank">Get Started</a>
-						<?php endif; ?>
+					<?php if ( function_exists( 'ogf_initiate' ) ) : ?>
+						<h3>⭐️ Fonts Plugin Pro</h3>
+						<p>Instead of removing the fonts completely, <a target="_blank" href="https://fontsplugin.com/drgf-upgrade">Fonts Plugin Pro</a> enables you to host the fonts from your <strong>own domain</strong> (<?php echo esc_html( $url ); ?>)  with the click of a button. Locally hosted fonts are more efficient, quicker to load and don't connect to any third-parties (GDPR & DSGVO-friendly).</p>
+						<a class="drgf-admin__button button" href="https://fontsplugin.com/drgf-upgrade" target="_blank">Learn More</a>
+					<?php else : ?>
+						<h3>⭐️ Host Google Fonts Locally</h3>
+						<p>Instead of removing the fonts completely, our <a href="https://fontsplugin.com/drgf-upgrade" target="_blank">Pro upgrade</a> enables you to host the fonts from your <strong>own domain</strong> (<?php echo esc_html( $url ); ?>)  with the click of a button. Locally hosted fonts are more efficient, quicker to load and don't connect to any third-parties (GDPR & DSGVO-friendly).</p>
+						<a class="drgf-admin__button button" href="https://fontsplugin.com/drgf-upgrade" target="_blank">Get Started</a>
+					<?php endif; ?>
 					</div>
 				</div>
 			</div>

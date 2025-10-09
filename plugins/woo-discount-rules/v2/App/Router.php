@@ -87,7 +87,12 @@ class Router
         add_filter('advanced_woo_discount_rules_get_order_discount_details', array(self::$manage_discount, 'getDiscountDetailsFromOrder'), 10, 2);
         add_filter('advanced_woo_discount_rules_get_order_saved_amount', array(self::$manage_discount, 'getSavedAmountFromOrder'), 10, 2);
 
-        //Showing you saved text
+
+		//backend order coupon validation
+	    add_filter('woocommerce_checkout_create_order_coupon_item',  array(self::$manage_discount, 'addCouponMeta'), 10, 4);
+	    add_filter('woocommerce_coupon_is_valid_for_product',  array(self::$manage_discount, 'validateCoupon'), 10, 4);
+
+	    //Showing you saved text
         $display_saving_text = $manage_discount_class::$config->getConfig('display_saving_text', 'disabled');
         add_action('woocommerce_checkout_create_order_line_item', array(self::$manage_discount, 'onCreateWoocommerceOrderLineItem'), 10, 4);
         if ($display_saving_text != "disabled") {

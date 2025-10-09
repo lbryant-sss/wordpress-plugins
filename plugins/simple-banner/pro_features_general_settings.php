@@ -70,7 +70,7 @@ $is_pro_enabled = get_option('pro_version_enabled');
         </table>
         
         <!-- Hidden fields to preserve values -->
-        <?php if ($is_pro_enabled && in_array('administrator', (array) wp_get_current_user()->roles)): ?>
+        <?php if ($is_pro_enabled): ?>
             <input type="hidden" id="permissions_array" name="permissions_array" 
                    value="<?php echo esc_attr(get_option('permissions_array')); ?>" />
         <?php endif; ?>

@@ -1,4 +1,4 @@
-/* global ajaxurl */
+/* global ajaxurl, drgfNotice */
 jQuery( document ).ready( function() {
 
 	// Hook into the "notice-dismiss-welcome" class we added to the notice, so
@@ -19,6 +19,7 @@ jQuery( document ).ready( function() {
 					data: {
 						action: 'drgf_dismiss_notice',
 						type: type,
+						nonce: drgfNotice.nonce,
 					},
 				}
 			);

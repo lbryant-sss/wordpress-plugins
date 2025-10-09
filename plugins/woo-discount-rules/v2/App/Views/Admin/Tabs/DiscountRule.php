@@ -429,7 +429,7 @@ $is_pro = \Wdr\App\Helpers\Helper::hasPro();
         </form>
         <br class="clear">
     </div>
-	<?php  if($total_count > 1) : ?>
+	<?php  if($page_limit != 'all' && $total_count > 1) : ?>
     </div>
     </div>
 	<?php endif;?>
