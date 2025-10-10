@@ -5301,6 +5301,7 @@
 }
 .w3eden .show {
     display: block !important;
+    opacity: 1 !important;
 }
 .w3eden .invisible {
     visibility: hidden;

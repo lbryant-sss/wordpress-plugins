@@ -878,7 +878,7 @@ class CFF_Source {
 	 */
 	public static function update_single_source( $connected_account ) {
 		$cff_page_slugs = get_option( 'cff_page_slugs', array() );
-		$access_token = str_replace("02Sb981f26534g75h091287a46p5l63","", $connected_account['accesstoken'] );
+		$access_token = $connected_account['accesstoken'];
 		$id = str_replace( ' ', '', $connected_account['id'] );
 		$header_details = \CustomFacebookFeed\CFF_Utils::fetch_header_data( $id, $connected_account['pagetype'] === 'group', $access_token, 0, false, '' );
 

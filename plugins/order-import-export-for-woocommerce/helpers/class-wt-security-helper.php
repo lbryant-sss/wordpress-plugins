@@ -122,7 +122,8 @@ if(!class_exists('Wt_Iew_Sh'))
 						$out[$k] = self::sanitize_arr($arrv, $type);
 					}else
 					{
-						$out[$k] = self::sanitize_item($arrv, $type);
+						$final_type = ( false !== strpos( $k, 'delimiter') ? 'post_content' : $type ); 
+						$out[$k] = self::sanitize_item( $arrv, $final_type );
 					}
 				}
 				return $out;

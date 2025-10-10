@@ -245,7 +245,7 @@ class Wt_Import_Export_For_Woo_Basic_Import_Ajax
 		
 		$sample_data = array();
 		include_once WT_O_IEW_PLUGIN_PATH . 'admin/classes/class-csvreader.php';
-		$delimiter = (isset($_POST['delimiter']) ? sanitize_text_field(wp_unslash($_POST['delimiter'])) : $delimit);
+		$delimiter = (isset($_POST['delimiter']) ? wp_kses_post(wp_unslash($_POST['delimiter'])) : $delimit);
 
 		$reader = new Wt_Import_Export_For_Woo_Basic_Csvreader($delimiter);
 
@@ -748,7 +748,7 @@ class Wt_Import_Export_For_Woo_Basic_Import_Ajax
 					$delimit = isset( $this->selected_template_form_data['method_import_form_data']['wt_iew_delimiter'] ) ? $this->selected_template_form_data['method_import_form_data']['wt_iew_delimiter'] : ',';
 
 					include_once WT_O_IEW_PLUGIN_PATH.'admin/classes/class-csvreader.php';
-					$delimiter= isset( $_POST['delimiter'] ) ? sanitize_text_field(wp_unslash($_POST['delimiter'])) : $delimit;
+					$delimiter= isset( $_POST['delimiter'] ) ? wp_kses_post(wp_unslash($_POST['delimiter'])) : $delimit;
 					$reader=new Wt_Import_Export_For_Woo_Basic_Csvreader($delimiter);
     
 					/* take first two rows in csv and in xml takes column keys and a sample data */

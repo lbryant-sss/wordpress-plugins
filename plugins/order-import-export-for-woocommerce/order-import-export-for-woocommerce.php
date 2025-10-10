@@ -6,7 +6,7 @@ Plugin URI: https://wordpress.org/plugins/order-import-export-for-woocommerce/
 Description: Export and Import Order detail including line items, From and To your WooCommerce Store.
 Author: WebToffee
 Author URI: https://www.webtoffee.com/product/woocommerce-order-coupon-subscription-export-import/
-Version: 2.6.5
+Version: 2.6.6
 Text Domain: order-import-export-for-woocommerce
 Domain Path: /languages
 Requires at least: 3.0
@@ -54,7 +54,7 @@ if ( ! defined( 'WBTE_OIEW_CROSS_PROMO_BANNER_VERSION' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'WT_O_IEW_VERSION', '2.6.5' );
+define( 'WT_O_IEW_VERSION', '2.6.6' );
 
 /**
  * The code that runs during plugin activation.

@@ -3158,52 +3158,59 @@ class ManageDiscount extends Base
 	 */
 
 	public static function validateCoupon( $valid, $product, $coupon, $order_item ) {
-		if ( ! $order_item  || !is_admin()) {
-			return $valid; // Already invalid, no need to check further
+		// Only proceed if we are in admin and wc_get_order() exists
+		if ( ! $order_item || ! is_admin() || ! function_exists( 'wc_get_order' ) ) {
+			return $valid;
 		}
-
-		// Ensure we have a valid order
-		$order_id = $order_item ? $order_item->get_order_id() : 0;
+		//Safely get order ID (works for both array and object)
+		$order_id = 0;
+		if ( is_object( $order_item ) && method_exists( $order_item, 'get_order_id' ) ) {
+			$order_id = $order_item->get_order_id();
+		} elseif ( is_array( $order_item ) && ! empty( $order_item['order_id'] ) ) {
+			$order_id = absint( $order_item['order_id'] );
+		}
 		if ( ! $order_id ) {
 			return $valid;
 		}
-
+		// Check if function wc_get_order exists before calling
+		if ( ! function_exists( 'wc_get_order' ) ) {
+			return $valid;
+		}
 		$order = wc_get_order( $order_id );
 		if ( ! $order ) {
 			return $valid;
 		}
-
 		$coupon_code = $coupon->get_code();
 		$matched_coupon_item = null;
-
-		// Find matching coupon line item in the order
+		// Loop through coupon items
 		foreach ( $order->get_items( 'coupon' ) as $order_coupon ) {
 			if ( strtolower( $order_coupon->get_code() ) === strtolower( $coupon_code ) ) {
 				$matched_coupon_item = $order_coupon;
 				break;
 			}
 		}
-
 		if ( ! $matched_coupon_item ) {
 			return $valid;
 		}
-
-		$product_id     = $product->get_id();
-		$product_cats   = $product->get_category_ids();
-		$product_on_sale = $product->is_on_sale();
-
-		// Get product IDs stored in coupon meta
-		$coupon_product_ids = $matched_coupon_item->get_meta( 'wdr_apply_coupon_product_ids', true );
-		if ( ! empty( $coupon_product_ids )  && is_array( $coupon_product_ids ) ) {
-			// Validate product ID
-			$product_id = $product->get_id();
-			if($product->is_type( 'variation' ) ) {
+		// Safely get product data
+		if ( ! is_object( $product ) || ! method_exists( $product, 'get_id' ) ) {
+			return $valid;
+		}
+		$product_id       = $product->get_id();
+		$product_cats     = method_exists( $product, 'get_category_ids' ) ? $product->get_category_ids() : [];
+		$product_on_sale  = method_exists( $product, 'is_on_sale' ) ? $product->is_on_sale() : false;
+		// Coupon restrictions
+		$coupon_product_ids = array_filter((array) $matched_coupon_item->get_meta( 'wdr_apply_coupon_product_ids', true ));
+		if ( ! empty( $coupon_product_ids ) ) {
+			if ( method_exists( $product, 'is_type' ) && $product->is_type( 'variation' ) ) {
 				$parent_product_id = $product->get_parent_id();
-				if(in_array($parent_product_id,$coupon_product_ids)){
-					$parent_product    = wc_get_product( $parent_product_id );
-					$variable_product_ids = $parent_product->get_children();
-					if(is_array($variable_product_ids) && !empty($variable_product_ids)){
-						$coupon_product_ids = array_merge($coupon_product_ids,$variable_product_ids);
+				if ( in_array( $parent_product_id, $coupon_product_ids, true ) ) {
+					$parent_product = wc_get_product( $parent_product_id );
+					if ( is_object( $parent_product ) && method_exists( $parent_product, 'get_children' ) ) {
+						$variable_product_ids = $parent_product->get_children();
+						if ( is_array( $variable_product_ids ) && ! empty( $variable_product_ids ) ) {
+							$coupon_product_ids = array_merge( $coupon_product_ids, $variable_product_ids );
+						}
 					}
 				}
 			}
@@ -3211,37 +3218,39 @@ class ManageDiscount extends Base
 				return false;
 			}
 		}
-
 		// Excluded products
-		$exclude_product_ids = (array) $matched_coupon_item->get_meta( 'wdr_exclude_product_ids', true );
-		if ( ! empty( $exclude_product_ids ) && in_array( $product_id, $exclude_product_ids, true ) ) {
-			 return false;
+		$exclude_product_ids =  array_filter((array) $matched_coupon_item->get_meta( 'wdr_exclude_product_ids', true ));
+		if ( ! empty($exclude_product_ids ) && in_array( $product_id, $exclude_product_ids, true ) ) {
+			return false;
 		}
-
-		// Category restrictions
-		$allowed_cats = (array) $matched_coupon_item->get_meta( 'wdr_product_categories', true );
-		foreach ( (array) $product->get_category_ids() as $cat_id ) {
-			if ( in_array( $cat_id, (array) $allowed_cats, true ) ) {
+		// Allowed categories (your logic was reversed)
+		$allowed_cats = array_filter( (array)$matched_coupon_item->get_meta( 'wdr_product_categories', true ));
+		if ( ! empty( $allowed_cats ) ) {
+			$found_allowed_cat = false;
+			foreach ( $product_cats as $cat_id ) {
+				if ( in_array( $cat_id, $allowed_cats, true ) ) {
+					$found_allowed_cat = true;
+					break;
+				}
+			}
+			if ( ! $found_allowed_cat ) {
 				return false;
 			}
 		}
-
 		// Excluded categories
-		$excluded_cats = (array) $matched_coupon_item->get_meta( 'wdr_exclude_product_categories', true );
-		if ( ! empty( $excluded_cats ) ) {
-			foreach ( (array) $product_cats as $cat_id ) {
+		$excluded_cats = array_filter((array) $matched_coupon_item->get_meta( 'wdr_exclude_product_categories', true ));
+		if ( ! empty( $excluded_cats) ) {
+			foreach ( $product_cats as $cat_id ) {
 				if ( in_array( $cat_id, $excluded_cats, true ) ) {
-					return false; // product is in excluded category
+					return false;
 				}
 			}
 		}
-
 		// Exclude sale items
 		$exclude_sale_items = (bool) $matched_coupon_item->get_meta( 'wdr_exclude_sale_items', true );
 		if ( $exclude_sale_items && $product_on_sale ) {
-			return false; // product is on sale and coupon excludes sale items
+			return false;
 		}
-
 		return $valid;
 	}
 }

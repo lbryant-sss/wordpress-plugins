@@ -158,11 +158,11 @@ function omnisend_show_sync() {
 					</tr>
 				</table>
 			</div>
-			<?php
-			omnisend_display_sync_loader();
-			omnisend_display_sync_actions( $all_sync_stats );
-			omnisend_display_resync_all_contacts();
-			?>
+		<?php
+		omnisend_display_sync_loader();
+		omnisend_display_sync_actions( $all_sync_stats );
+		omnisend_display_resync_all_contacts();
+		?>
 		</div>
 	</div>
 	<?php

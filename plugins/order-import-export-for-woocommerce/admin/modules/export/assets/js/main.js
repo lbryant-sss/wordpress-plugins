@@ -16,7 +16,7 @@ var wt_iew_basic_export=(function( $ ) {
 		only_enabled_data:false,
 		on_rerun:false,
 		rerun_id:0,
-                export_finished:false,
+        export_finished:false,
 		Set:function()
 		{
 			this.step_keys=Object.keys(wt_iew_export_basic_params.steps);

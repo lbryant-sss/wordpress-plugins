@@ -55,7 +55,7 @@ class Wt_Import_Export_For_Woo_Basic_Order_Bulk_Export {
         $exclude_hidden_meta_columns = array();
         $user_columns_name = !empty($_POST['columns_name']) ? array_map('sanitize_text_field', wp_unslash($_POST['columns_name'])) : $csv_columns;
         $export_columns = !empty($_POST['columns']) ? array_map('sanitize_text_field', wp_unslash($_POST['columns'])) : array();    
-        $delimiter = !empty($_POST['delimiter']) ? sanitize_text_field(wp_unslash($_POST['delimiter'])) : ','; 
+        $delimiter = !empty($_POST['delimiter']) ? wp_kses_post(wp_unslash($_POST['delimiter'])) : ','; 
         // phpcs:enable
         $exclude_already_exported =  false;
         $export_to_separate_columns = false;

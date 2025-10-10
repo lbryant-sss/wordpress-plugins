@@ -1,4 +1,4 @@
-=== Widget Options – The #1 WordPress Widget & Block Control Plugin ===
+=== Widget Options – Widget & Block Visibility Controls ===
 Contributors: marketingfire
 Tags: widgets control, blocks, blocks control, gutenberg widgets, classic widgets
 Requires at least: 5.6
@@ -7,7 +7,7 @@ Requires PHP: 7.4
 Stable tag: 4.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-0ddcemmihs4a843ekhaoofzosrunf4bl
+
 
 Widget Options lets you control sidebar widgets and Gutenberg blocks on pages, posts, and custom post types with ease.
 
@@ -21,7 +21,7 @@ Widget Options gives you super powers to control your site’s sidebar widgets a
 
 Widget Options expands Widget & Gutenberg block settings with feature-packed options so you can completely manage and control their visibility, appearance, and behavior. Show or hide content depending on user roles, devices, dates, URL…and more!
 
-<strong> ✨ INSIDER TIP: ✨ Purchase our <a href="https://widget-options.com/">Pro Version of the Widget Options plugin</a> for even more control – and get the world’s most powerful widget management plugin today! </strong>
+<strong> ✨ INSIDER TIP: ✨ Get the <a href="https://widget-options.com/">Pro Version of the Widget Options plugin</a> for even more control over your widgets today!</strong>
 
 [youtube https://www.youtube.com/watch?v=6ey1rDrlm_A]
 
@@ -77,7 +77,7 @@ This plugin is customizer-ready for easier modification. View your changes live 
 
 <h3>Compatible with Most Major Page Builders</h3>
 
-Not all widget plugins are designed to work with page builders. If your websites use Gutenberg, SiteOrigin, Elementor, or Beaver, you can make the most of Widget Options. This is another reason why we call it the most flexible widget area manager!
+Some widget plugins may not work well with page builders. Widget Options supports Gutenberg, SiteOrigin, Elementor, and Beaver, helping you manage widget visibility and placement with ease.
 
 <h4>🛠️ GUTENBERG BLOCK EDITOR BY WORDPRESS</h4>
 Widget Options gives you full control over the visibility of Gutenberg Blocks, which are the building blocks for many themes and sites today. Simply select the content block you want to edit and you will see all of the Widget Options abilities on the right side settings panel. 

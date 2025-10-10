@@ -19,7 +19,8 @@ class Omnisend_Manager {
 	 * @return bool
 	 */
 	public static function is_setup() {
-		if ( empty( get_option( 'omnisend_api_key', null ) ) ) {
+		$api_key = get_option( 'omnisend_api_key', null );
+		if ( empty( $api_key ) ) {
 			return false;
 		}
 
@@ -123,7 +124,8 @@ class Omnisend_Manager {
 	}
 
 	public static function delete_category_from_omnisend( $id ) {
-		if ( ! empty( get_option( 'omnisend_api_key', null ) ) ) {
+		$api_key = get_option( 'omnisend_api_key', null );
+		if ( ! empty( $api_key ) ) {
 			$link        = OMNISEND_API_URL . '/v3/categories/' . $id;
 			$curl_result = Omnisend_Helper::omnisend_api( $link, 'DELETE', array() );
 			if ( $curl_result['code'] >= 400 ) {
@@ -135,7 +137,8 @@ class Omnisend_Manager {
 
 	public static function push_product_to_omnisend( $product_id = '', $put = 0, $iter = 0 ) {
 		global $omnisend_product;
-		if ( ! empty( get_option( 'omnisend_api_key', null ) ) ) {
+		$api_key = get_option( 'omnisend_api_key', null );
+		if ( ! empty( $api_key ) ) {
 			$prepared_product = Omnisend_Product::create( $product_id );
 			// If all required fields are set, push product to Omnisend.
 			if ( $prepared_product ) {
@@ -273,7 +276,8 @@ class Omnisend_Manager {
 	}
 
 	public static function delete_product_from_omnisend( $id ) {
-		if ( ! empty( get_option( 'omnisend_api_key', null ) ) ) {
+		$api_key = get_option( 'omnisend_api_key', null );
+		if ( ! empty( $api_key ) ) {
 			$link        = OMNISEND_API_URL . '/v3/products/' . $id;
 			$curl_result = Omnisend_Helper::omnisend_api( $link, 'DELETE', array() );
 
@@ -282,11 +286,13 @@ class Omnisend_Manager {
 	}
 
 	public static function update_account_info( $data = '' ) {
-		if ( ! empty( get_option( 'omnisend_api_key', null ) ) ) {
+		$api_key = get_option( 'omnisend_api_key', null );
+		if ( ! empty( $api_key ) ) {
 			if ( $data == '' ) {
 				$data = Omnisend_Helper::get_account_info();
 			}
-			$link        = OMNISEND_API_URL . '/v3/accounts/' . get_option( 'omnisend_account_id', null );
+			$account_id  = get_option( 'omnisend_account_id', null );
+			$link        = OMNISEND_API_URL . '/v3/accounts/' . $account_id;
 			$curl_result = Omnisend_Helper::omnisend_api( $link, 'POST', $data );
 			if ( $curl_result['code'] >= 200 && $curl_result['code'] < 300 ) {
 				Omnisend_Logger::log( 'info', 'account', $link, 'Account information has been updated.' );
@@ -301,7 +307,8 @@ class Omnisend_Manager {
 	}
 
 	public static function get_brand_info() {
-		if ( empty( get_option( 'omnisend_api_key', null ) ) ) {
+		$api_key = get_option( 'omnisend_api_key', null );
+		if ( empty( $api_key ) ) {
 			return array();
 		}
 

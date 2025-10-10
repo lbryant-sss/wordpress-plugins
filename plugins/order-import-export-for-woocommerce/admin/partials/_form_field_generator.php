@@ -391,10 +391,12 @@ foreach($form_fields as $key=>$value)
 						</div>
 						<?php
 					}
-					echo wp_kses_post($after_form_field);
+					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Known HTML
+					echo $after_form_field;
 				}else
 				{
-					echo wp_kses_post($field_html);
+					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Known HTML
+					echo $field_html;
 				}
 				// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped -- Already escaped in the $conditional_help_html
 				echo $conditional_help_html;  // @codingStandardsIgnoreLine

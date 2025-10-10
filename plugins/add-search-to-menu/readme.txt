@@ -5,7 +5,7 @@ Tags: search, woocommerce search, image search, ajax search, file search
 Requires at least: 3.9
 Tested up to: 6.8
 Requires PHP: 5.2.4
-Stable tag: 5.5.11
+Stable tag: 5.5.12
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -196,6 +196,10 @@ Yes we do. We try our best to help free users with customisation requests and we
 8. Plugin Settings
 
 == Changelog ==
+
+= 5.5.12 =
+* Updated - Freemius SDK 2.12.2
+* Fixed - Legacy JavaScript issue by updating simplebar version to 6.3.2
 
 = 5.5.11 =
 * Fixed - Uncaught Error: Call to a member function is_index_search() on null 

@@ -4,7 +4,7 @@ Tags: woocommerce export orders, woocommerce import orders, advanced order expor
 Requires at least: 3.0
 Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 2.6.5
+Stable tag: 2.6.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -207,17 +207,13 @@ Yes.
 
 == Changelog ==
 
-= 2.6.5 2025-10-07 =
-* [Compatibility] – Tested OK with WooCommerce 10.2.2
-* [Compatibility] – Tested OK with WordPress 6.8.3
-* [Update] – Plugin Check Plugin fixes.
+= 2.6.6 2025-10-09 =
+* [Fix] Invalid delimiter sanitization caused issues during import/export.
 
 [See changelog for all versions](https://plugins.svn.wordpress.org/order-import-export-for-woocommerce/trunk/changelog.txt)
 
 == Upgrade Notice ==
 
-= 2.6.5 =
-* [Compatibility] – Tested OK with WooCommerce 10.2.2
-* [Compatibility] – Tested OK with WordPress 6.8.3
-* [Update] – Plugin Check Plugin fixes.
+= 2.6.6 =
+* [Fix] Invalid delimiter sanitization caused issues during import/export.
 

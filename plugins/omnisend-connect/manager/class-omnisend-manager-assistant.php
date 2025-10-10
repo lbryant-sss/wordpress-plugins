@@ -125,7 +125,11 @@ class Omnisend_Manager_Assistant {
 		}
 
 		// Update inProgress batches.
-		update_option( 'omnisend_batches_inProgress', array_diff( $batches, $remove_batches ) );
+		if ( is_multisite() ) {
+			update_site_option( 'omnisend_batches_inProgress', array_diff( $batches, $remove_batches ) );
+		} else {
+			update_option( 'omnisend_batches_inProgress', array_diff( $batches, $remove_batches ) );
+		}
 
 		// Reschedule sync cron jobs.
 		if ( $renew_contacts == 1 ) {
@@ -148,7 +152,8 @@ class Omnisend_Manager_Assistant {
 			return;
 		}
 
-		if ( empty( get_option( 'omnisend_api_key', null ) ) ) {
+		$api_key = get_option( 'omnisend_api_key', null );
+		if ( empty( $api_key ) ) {
 			Omnisend_Sync_Manager::stop_contacts( 'no API key' );
 			return;
 		}
@@ -203,7 +208,11 @@ class Omnisend_Manager_Assistant {
 				}
 				if ( ! in_array( $batch_id, $batches_in_progress ) ) {
 					$batches_in_progress[] = $batch_id;
-					update_option( 'omnisend_batches_inProgress', $batches_in_progress );
+					if ( is_multisite() ) {
+						update_site_option( 'omnisend_batches_inProgress', $batches_in_progress );
+					} else {
+						update_option( 'omnisend_batches_inProgress', $batches_in_progress );
+					}
 				}
 				Omnisend_Logger::log( 'info', 'batches', $link, 'Batch sync: contacts were successfully pushed to Omnisend' );
 			} else {
@@ -229,7 +238,8 @@ class Omnisend_Manager_Assistant {
 			return;
 		}
 
-		if ( empty( get_option( 'omnisend_api_key', null ) ) ) {
+		$api_key = get_option( 'omnisend_api_key', null );
+		if ( empty( $api_key ) ) {
 			Omnisend_Sync_Manager::stop_orders( 'no API key' );
 			return;
 		}
@@ -273,7 +283,11 @@ class Omnisend_Manager_Assistant {
 					}
 					if ( ! in_array( $batch_id, $batches_in_progress ) ) {
 						$batches_in_progress[] = $batch_id;
-						update_option( 'omnisend_batches_inProgress', $batches_in_progress );
+						if ( is_multisite() ) {
+							update_site_option( 'omnisend_batches_inProgress', $batches_in_progress );
+						} else {
+							update_option( 'omnisend_batches_inProgress', $batches_in_progress );
+						}
 					}
 					Omnisend_Logger::log( 'info', 'batches', $link, 'Batch sync: orders were successfully pushed to Omnisend' );
 					Omnisend_Sync_Stats_Repository::count_item( 'orders', $r['totalCount'] );
@@ -350,7 +364,8 @@ class Omnisend_Manager_Assistant {
 			return;
 		}
 
-		if ( empty( get_option( 'omnisend_api_key', null ) ) ) {
+		$api_key = get_option( 'omnisend_api_key', null );
+		if ( empty( $api_key ) ) {
 			Omnisend_Sync_Manager::stop_products( 'no API key' );
 			return;
 		}
@@ -404,7 +419,11 @@ class Omnisend_Manager_Assistant {
 				}
 				if ( ! in_array( $batch_id, $batches_in_progress ) ) {
 					$batches_in_progress[] = $batch_id;
-					update_option( 'omnisend_batches_inProgress', $batches_in_progress );
+					if ( is_multisite() ) {
+						update_site_option( 'omnisend_batches_inProgress', $batches_in_progress );
+					} else {
+						update_option( 'omnisend_batches_inProgress', $batches_in_progress );
+					}
 				}
 				Omnisend_Logger::log( 'info', 'batches', $link, 'Batch sync: products were successfully pushed to Omnisend' );
 				Omnisend_Sync_Stats_Repository::count_item( 'products', $r['totalCount'] );

@@ -726,3 +726,48 @@ a.omnisend-primary-button {
 .omnisend-preselect-container {
 	margin-bottom: 15px;
 }
+
+/* Disconnect button styles */
+.connected-actions {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+}
+
+.connected-disconnect-section {
+	margin-top: 20px;
+	padding: 20px 0;
+	border-top: 1px solid #e0e0e0;
+	text-align: left;
+}
+
+.omnisend-disconnect-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 8px;
+	color: #dc3232;
+	height: 40px;
+	border: 1px solid #dc3232;
+	padding: 8px 16px;
+	cursor: pointer;
+	gap: 8px;
+	font-family: 'Roboto';
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 24px;
+	background: transparent;
+	transition: all 0.2s ease;
+}
+
+.omnisend-disconnect-button:hover {
+	background: #dc3232;
+	color: white;
+}
+
+.omnisend-disconnect-button:disabled {
+	background: #f0f0f0;
+	color: #ccc;
+	border-color: #ccc;
+	cursor: not-allowed;
+}

@@ -125,11 +125,10 @@ class Wt_Import_Export_For_Woo_Basic_Csvreader
 	*/
 	public function get_data_as_batch($file, $offset, $batch_count, $module_obj, $form_data)
 	{
-                $use_mb = function_exists('mb_detect_encoding');
-                // Set locale
-                $enc = ($use_mb) ? mb_detect_encoding( $file, 'UTF-8, ISO-8859-1', true ) : false;
-		if($enc)
-		{
+        $use_mb = function_exists('mb_detect_encoding');
+        // Set locale
+        $enc = ($use_mb) ? mb_detect_encoding( $file, 'UTF-8, ISO-8859-1', true ) : false;
+		if ( $enc ) {
 			setlocale( LC_ALL, 'en_US.' . $enc );
 		}
 		// phpcs:disable Squiz.PHP.DiscouragedFunctions.Discouraged 
@@ -175,12 +174,12 @@ class Wt_Import_Export_For_Woo_Basic_Csvreader
 	    		}else
 	    		{
 	    			/* removing BOM like non characters */
-                            $wt_remove_bom = apply_filters('wt_import_csv_parser_keep_bom', true);
-                            if ($wt_remove_bom) {
-                                $head_arr[$head_key]=preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $head_val);
-                            } else {
-                                $head_arr[$head_key]= wt_removeBomUtf8_basic($head_val); 
-                            }   
+                    $wt_remove_bom = apply_filters('wt_import_csv_parser_keep_bom', true);
+                    if ($wt_remove_bom) {
+                        $head_arr[$head_key]=preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $head_val);
+                    } else {
+                        $head_arr[$head_key]= wt_removeBomUtf8_basic($head_val); 
+                    }   
 	    		}
 	    	}
 

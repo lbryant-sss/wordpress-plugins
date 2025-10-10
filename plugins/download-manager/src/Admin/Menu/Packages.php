@@ -408,6 +408,7 @@ class Packages {
                         <div class="modal-content">
 
                             <div class="modal-header">
+                                <div class="pull-right"><a href="#" data-dismiss="modal" style="margin-top: 4px;margin-right: -6px"><i class="fa fa-times-circle text-danger" style="font-size: 20px;"></i></a></div>
                                 <h4 class="modal-title"><i
                                             class="far fa-arrow-alt-circle-down color-purple"></i> <?php _e( "Generate Download Link", "download-manager" ); ?>
                                 </h4>

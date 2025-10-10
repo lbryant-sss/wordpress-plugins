@@ -340,7 +340,7 @@ class Wt_Import_Export_For_Woo_Basic_Export
 				'type'=>'text',
 				'field_name'=>'file_name',
 				'help_text'=>__('Specify a filename for the exported file. If left blank, the system generates the name automatically.', 'order-import-export-for-woocommerce'),
-				'after_form_field_html'=>'<div class="wt_iew_file_ext_info_basic">.csv</div>',
+				'after_form_field_html'=>'<div class="wt_iew_file_ext_info_basic">.csv</div>', // Always pass safe data.
 				'td_class3'=>'wt_iew_file_ext_info_td',
 				'validation_rule'=>array('type'=>'file_name'),
 			),
@@ -364,7 +364,7 @@ class Wt_Import_Export_For_Woo_Basic_Export
 				'sele_vals'=>Wt_Iew_IE_Basic_Helper::_get_csv_delimiters(),
 				'help_text'=>__( 'Separator for differentiating the columns in the CSV file. Assumes ‘,’ by default.', 'order-import-export-for-woocommerce' ),
 				'validation_rule'=>array('type'=>'skip'),
-				'after_form_field'=>'<input type="text" class="wt_iew_custom_delimiter" name="wt_iew_delimiter" value="'.$delimiter_default.'" maxlength = "1" />',
+				'after_form_field'=>'<input type="text" class="wt_iew_custom_delimiter" name="wt_iew_delimiter" value="' . esc_attr( $delimiter_default ) . '" maxlength = "1" />', // Always pass safe data.
 			)
 		);
 		

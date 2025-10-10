@@ -1,6 +1,9 @@
 
 == Changelog ==
 
+= 2.6.6 2025-10-09 =
+* [Fix] Invalid delimiter sanitization caused issues during import/export.
+
 = 2.6.5 2025-10-07 =
 * [Compatibility] – Tested OK with WooCommerce 10.2.2
 * [Compatibility] – Tested OK with WordPress 6.8.3

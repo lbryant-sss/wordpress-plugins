@@ -85,7 +85,7 @@ jQuery(function($) {
         e.preventDefault();
         $($(this).attr('href')).slideToggle();
     });
-    $body.on('click', '.w3eden [data-toggle="modal"]', function(e) {
+    $body.on('click', '.w3eden [data-toggle="modal"], .w3eden[data-toggle="modal"]', function(e) {
         e.preventDefault();
         $($(this).data('target')).modal('show');
     });

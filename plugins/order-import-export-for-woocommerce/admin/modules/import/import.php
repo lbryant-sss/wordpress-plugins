@@ -253,7 +253,7 @@ class Wt_Import_Export_For_Woo_Basic_Import
 			'sele_vals'=>Wt_Iew_IE_Basic_Helper::_get_csv_delimiters(),
 			'help_text'=>__('The character used to separate columns in the CSV file. Takes comma (,) by default.', 'order-import-export-for-woocommerce'),
 			'validation_rule'=>array('type'=>'skip'),
-			'after_form_field'=>'<input type="text" class="wt_iew_custom_delimiter" name="wt_iew_delimiter" value="," />',
+			'after_form_field'=>'<input type="text" class="wt_iew_custom_delimiter" name="wt_iew_delimiter" value="," />', // Always pass safe data.
 		);
 
 
@@ -978,19 +978,18 @@ class Wt_Import_Export_For_Woo_Basic_Import
 		}
 		if(isset($form_data['method_import_form_data']) && $file_type=='csv')
 		{
-			$csv_delimiter=(isset($form_data['method_import_form_data']['wt_iew_delimiter']) ? $form_data['method_import_form_data']['wt_iew_delimiter'] : $csv_delimiter);
-			$csv_delimiter=($csv_delimiter=="" ? ',' : $csv_delimiter);
+			$csv_delimiter = (isset($form_data['method_import_form_data']['wt_iew_delimiter']) ? $form_data['method_import_form_data']['wt_iew_delimiter'] : $csv_delimiter);
+			$csv_delimiter = ( "" === $csv_delimiter ? ',' : $csv_delimiter );
+			$csv_delimiter = ( "t" === $csv_delimiter ? "\t" : $csv_delimiter );
 		}		
 		
 		
+		include_once WT_O_IEW_PLUGIN_PATH.'admin/classes/class-csvreader.php';
+		$reader=new Wt_Import_Export_For_Woo_Basic_Csvreader($csv_delimiter);
 
-			include_once WT_O_IEW_PLUGIN_PATH.'admin/classes/class-csvreader.php';
-			$reader=new Wt_Import_Export_For_Woo_Basic_Csvreader($csv_delimiter);
+		/* important: prepare default mapping formdata for quick import */
+		$input_data=$reader->get_data_as_batch($file_path, $offset, $batch_count, $this, $form_data);  
 
-
-		/* important: prepare deafult mapping formdata for quick import */
-		$input_data=$reader->get_data_as_batch($file_path, $offset, $batch_count, $this, $form_data);
-		
 		if(empty($input_data['data_arr'])){			
 			$out['msg']=__('CSV is empty', 'order-import-export-for-woocommerce');
             return $out;

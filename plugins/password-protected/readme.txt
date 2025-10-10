@@ -4,7 +4,7 @@ Tags: password protection, maintenance mode, password protect page, password pro
 Requires at least: 4.6
 Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 2.7.11
+Stable tag: 2.7.12
 License: GPLv2 or later
 
 Protect your WordPress site, pages, posts, WooCommerce products, and categories with single or multiple passwords.
@@ -327,6 +327,10 @@ If you want to translate this plugin you can easily contribute to the [Translati
 
 
 == Changelog ==
+
+= 2.7.12 =
+- Fixed - Fix the Vulnerability issued by WordFence.
+- Fixed - Translation issue.
 
 = 2.7.11 =
 - Fixed: Translation issue

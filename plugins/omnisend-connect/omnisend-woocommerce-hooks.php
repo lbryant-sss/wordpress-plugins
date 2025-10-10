@@ -466,7 +466,8 @@ function omnisend_setup_omnisend_settings() {
 }
 
 function omnisend_update_plugin_information() {
-	if ( ! empty( get_option( 'omnisend_api_key', null ) ) ) {
+	$api_key = get_option( 'omnisend_api_key', null );
+	if ( ! empty( $api_key ) ) {
 		Omnisend_Manager::update_account_info();
 	}
 }

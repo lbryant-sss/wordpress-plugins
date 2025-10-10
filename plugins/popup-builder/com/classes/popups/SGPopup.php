@@ -1350,7 +1350,7 @@ abstract class SGPopup
 		unset($args['wrap']);
 		unset($args['event']);
 		unset($args['id']);
-		$attr = AdminHelper::createAttrs($args);
+		$attr = AdminHelper::createAttrs($args, ['event','id']);
 		$allowed_html = AdminHelper::allowed_html_tags();
 		$allowed_wrap_html_tags = AdminHelper::allowed_wrap_html_tags();	
 		if( !in_array( $wrap, $allowed_wrap_html_tags ) )
@@ -1365,7 +1365,7 @@ abstract class SGPopup
 		class="sgpb-show-popup <?php echo esc_attr('sgpb-popup-id-'.$popupId); ?>"
 		data-sgpbpopupid="<?php echo esc_attr($popupId); ?>"
 		data-popup-event="<?php echo esc_attr($event); ?>"
-		<?php echo esc_attr($attr); ?>>
+		<?php echo $attr; ?>>
 		<?php echo wp_kses($content, $allowed_html); ?>
 		</<?php echo esc_attr($wrap); ?>>
 		<?php

@@ -10,7 +10,7 @@ class Wt_Import_Export_For_Woo_Basic_Coupon_Bulk_Export {
 		global $wpdb;
 
 		// phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce verification already done in the wt_process_order_bulk_actions(), process_coupons_bulk_actions() method
-		$delimiter = !empty($_POST['delimiter']) ? sanitize_text_field(wp_unslash($_POST['delimiter'])) : ','; 
+		$delimiter = !empty($_POST['delimiter']) ? wp_kses_post(wp_unslash($_POST['delimiter'])) : ','; 
 		$csv_columns = include_once( __DIR__ . '/../data/data-coupon-post-columns.php' );
 		$csv_columns = array_combine(array_keys($csv_columns), array_keys($csv_columns));
 		$user_columns_name = !empty($_POST['columns_name']) ? array_map('sanitize_text_field', wp_unslash($_POST['columns_name'])) : $csv_columns;

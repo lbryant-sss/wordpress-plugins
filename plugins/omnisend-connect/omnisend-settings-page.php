@@ -59,7 +59,6 @@ function display_settings() {
 		omnisend_display_account_information();
 		omnisend_display_checkout_opt_in_checkbox_settings();
 		omnisend_display_tag_settings();
-		display_plugin_version();
 		?>
 	</div>
 	<?php

@@ -32,6 +32,21 @@ function omnisend_display_tag_settings() {
 				</div>
 			</div>
 		</div>
+		<?php
+		// Add disconnect button inside the settings section (only for multisite).
+		if ( is_multisite() ) {
+			?>
+			<div class="connected-disconnect-section">
+				<button class="omnisend-disconnect-button" onclick="disconnectCurrentSite()">
+					Reset Plugin Connection
+				</button>
+				<div class="omnisend-content-body" style="margin-top: 10px; font-size: 12px;">
+					<strong>Note:</strong> To disconnect from your Omnisend brand completely, please contact support.
+				</div>
+			</div>
+			<?php
+		}
+		?>
 	</div>
 	<script type="text/javascript">
 		(function() {
@@ -55,4 +70,6 @@ function omnisend_display_tag_settings() {
 		})()
 	</script>
 	<?php
+	// Add plugin version after disconnect button.
+	display_plugin_version();
 }

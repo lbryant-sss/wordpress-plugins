@@ -77,6 +77,21 @@ function omnisend_update_plugin_setting() {
 	exit;
 }
 
+add_action( 'wp_ajax_omnisend_disconnect_current_site', 'omnisend_disconnect_current_site' );
+
+function omnisend_disconnect_current_site() {
+	check_ajax_referer( 'omnisend-settings-script-nonce' );
+
+	Omnisend_Logger::hook();
+	$result = Omnisend_Disconnect_Service::disconnect_current_site();
+
+	if ( $result['success'] ) {
+		wp_send_json_success( $result['message'] );
+	} else {
+		wp_send_json_error( $result['message'] );
+	}
+}
+
 class Omnisend_Ajax {
 	/**
 	 * @return Omnisend_Operation_Status

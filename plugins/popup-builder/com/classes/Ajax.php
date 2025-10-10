@@ -1037,9 +1037,10 @@ class Ajax
 	{
 		$args = array(
 			's'              => $search,
+			'search_columns' => array( 'post_title' ),
 			'post__in'       => !empty($_REQUEST['include']) ? array_map('intval', $_REQUEST['include']) : null,
 			'page'           => !empty($_REQUEST['page']) ? absint($_REQUEST['page']) : null,
-			'posts_per_page' => 100,
+			'posts_per_page' => 30,
 			'post_type'      => $postTypeName
 		);
 		$searchResults = SGPBConfigDataHelper::getPostTypeData($args);

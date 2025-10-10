@@ -165,14 +165,6 @@ class CFF_Shortcode extends CFF_Shortcode_Display{
 
 	    //If an access token is set in the shortcode then set "use own access token" to be enabled
 	    if( isset($feed_options['accesstoken']) ){
-	        //Add an encryption string to protect token
-	        if ( strpos($feed_options['accesstoken'], ',') !== false ) {
-	            //If there are multiple tokens then just add the string after the colon to avoid having to de/reconstruct the array
-	            $feed_options['accesstoken'] = str_replace(":", ":02Sb981f26534g75h091287a46p5l63", $feed_options['accesstoken']);
-	        } else {
-	            //Add an encryption string to protect token
-	            $feed_options['accesstoken'] = substr_replace($feed_options['accesstoken'], '02Sb981f26534g75h091287a46p5l63', 25, 0);
-	        }
 	        $feed_options['ownaccesstoken'] = 'on';
 	    }
 
@@ -252,17 +244,10 @@ class CFF_Shortcode extends CFF_Shortcode_Display{
 
 				}
 
-	            //Replace the encryption string in the Access Token
-				if (strpos($feed_options['accesstoken'], '02Sb981f26534g75h091287a46p5l63') !== false) {
-					$feed_options['accesstoken'] = str_replace("02Sb981f26534g75h091287a46p5l63","",$feed_options['accesstoken']);
-				}
 			}
 		}
 
-	    //Replace the encryption string in the Access Token
-		if (strpos($feed_options['accesstoken'], '02Sb981f26534g75h091287a46p5l63') !== false) {
-			$feed_options['accesstoken'] = str_replace("02Sb981f26534g75h091287a46p5l63","",$feed_options['accesstoken']);
-		}
+
 		$cff_connected_accounts = get_option('cff_connected_accounts');
 		if(!empty($cff_connected_accounts)){
 			$connected_accounts = (array)json_decode(stripcslashes($cff_connected_accounts));

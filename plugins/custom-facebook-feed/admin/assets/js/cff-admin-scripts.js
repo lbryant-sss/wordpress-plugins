@@ -977,6 +977,7 @@ jQuery(document).ready(function($) {
 			data : {
 				action : 'cff_usage_opt_in_or_out',
 				opted_in: choice,
+				cff_nonce: cffA.cff_nonce
 			},
 			success : function(data) {
 				$('.cff-no-usage-opt-out').closest('.cff-usage-tracking-notice').fadeOut();

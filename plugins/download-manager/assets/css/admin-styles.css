@@ -122,8 +122,14 @@ a:focus, a:active {
 }
 
 .w3eden .modal-backdrop {
-    position: absolute;
-    z-index: -9999999 !important;
+    position: fixed;
+    z-index: 9998 !important;
+    display: none;
+    background: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
 
 }
 

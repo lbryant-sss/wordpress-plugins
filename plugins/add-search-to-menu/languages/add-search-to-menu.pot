@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Ivory Search\n"
-"POT-Creation-Date: 2025-05-19 17:47+0530\n"
+"POT-Creation-Date: 2025-10-09 13:28+0530\n"
 "PO-Revision-Date: 2020-03-17 21:05+0530\n"
 "Last-Translator: \n"
 "Language-Team: Ivory Search <admin@ivorysearch.com>\n"
@@ -2095,6 +2095,10 @@ msgstr ""
 msgid "Create New Search Form"
 msgstr ""
 
+#: ../includes/freemius/assets/js/pricing/freemius-pricing.js:2
+msgid "display"
+msgstr ""
+
 #: ../public/class-is-ajax.php:73
 msgid "More results"
 msgstr ""
@@ -2141,14 +2145,6 @@ msgstr ""
 
 #: ../public/class-is-public.php:208 ../public/class-is-public.php:258
 msgid "Search Icon Link"
-msgstr ""
-
-#: ../public/js/ivory-ajax-search.min.js:1
-msgid "div"
-msgstr ""
-
-#: ../public/js/ivory-ajax-search.min.js:1
-msgid "iframe"
 msgstr ""
 
 #: ../public/partials/is-ajax-results.php:17

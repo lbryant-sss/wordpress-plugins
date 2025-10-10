@@ -326,4 +326,45 @@ class Omnisend_Settings {
 	private static function is_status( $status ) {
 		return in_array( $status, self::$statuses );
 	}
+
+	/**
+	 * Get option value with multisite support
+	 *
+	 * @param string $option_name Option name.
+	 * @param mixed  $default Default value.
+	 * @return mixed
+	 */
+	public static function get_option_multisite( $option_name, $default_value = null ) {
+		if ( is_multisite() ) {
+			return get_site_option( $option_name, $default_value );
+		}
+		return get_option( $option_name, $default_value );
+	}
+
+	/**
+	 * Update option value with multisite support
+	 *
+	 * @param string $option_name Option name.
+	 * @param mixed  $value Option value.
+	 * @return bool
+	 */
+	public static function update_option_multisite( $option_name, $value ) {
+		if ( is_multisite() ) {
+			return update_site_option( $option_name, $value );
+		}
+		return update_option( $option_name, $value );
+	}
+
+	/**
+	 * Delete option value with multisite support
+	 *
+	 * @param string $option_name Option name.
+	 * @return bool
+	 */
+	public static function delete_option_multisite( $option_name ) {
+		if ( is_multisite() ) {
+			return delete_site_option( $option_name );
+		}
+		return delete_option( $option_name );
+	}
 }
