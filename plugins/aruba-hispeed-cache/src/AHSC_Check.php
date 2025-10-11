@@ -204,7 +204,7 @@ function AHSC_get_headers() {
 
 	if ( \is_array( $response ) && ! \is_wp_error( $response ) ) {
 		$headers     = $response['headers']->getAll();
-		//var_dump($headers); 
+		//var_dump($headers);
 		$check_status_code = $response['response']['code'];
 
 		return $headers;

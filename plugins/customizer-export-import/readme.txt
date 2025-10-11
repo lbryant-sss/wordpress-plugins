@@ -2,7 +2,7 @@
 Contributors: justinbusa, pross
 Tags: customizer, customizer export, customizer import, export, import, settings, customizer settings, theme settings, theme options
 Requires at least: 3.6
-Tested up to: 6.7
+Tested up to: 6.8
 Stable tag: 0.9.8
 License: GPL2+
 License URI: http://www.gnu.org/licenses/gpl-2.0.html

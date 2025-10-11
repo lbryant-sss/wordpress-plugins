@@ -5,7 +5,7 @@ Tags: events, calendar, tickets, bookings, appointments
 Text Domain: events-manager
 Requires at least: 6.1
 Tested up to: 6.8
-Stable tag: 7.2.2
+Stable tag: 7.2.2.1
 Requires PHP: 7.0
 License: GPLv2
 
@@ -172,6 +172,9 @@ See our [FAQ](http://wp-events-plugin.com/documentation/faq/) page for helps wit
 18. Grid view for displaying your upcoming events at a glance
 
 == Changelog ==
+= 7.2.2.1 =
+* Fixed blank admin pages for some server setups (possibly PHP version)
+
 = 7.2.2 =
 * Fixed PHP notice in booking actions
 * Fixed critical PHP error in rare cases when booking table settings are saved incorrectly

@@ -13,7 +13,7 @@
  *
  * @wordpress-plugin
  * Plugin Name:       Aruba HiSpeed Cache
- * Version:           3.0.1
+ * Version:           3.0.2
  * Plugin URI:        https://hosting.aruba.it/wordpress.aspx
  *
  * @phpcs:ignore Generic.Files.LineLength.TooLong
@@ -23,7 +23,7 @@
  * Text Domain:       aruba-hispeed-cache
  * Domain Path:       /languages
  * License:           GPL v3
- * Tested up to:      6.8
+ * Tested up to:      6.7
  * Requires PHP:      5.6
  * Requires at least: 5.4
  * This program is free software: you can redistribute it and/or modify
@@ -114,19 +114,19 @@ $options = AHSC_CONSTANT['ARUBA_HISPEED_CACHE_OPTIONS'];
 
 
 /** check WordPress and php version */
-//AHSC_check_requirement();
+AHSC_check_requirement();
 
 /**
  * Adding methods to "activate" hooks
  */
-//register_activation_hook(__FILE__,	'AHSC_activation' );
+register_activation_hook(__FILE__,	'AHSC_activation' );
 
 /**
  * Adding methods to "deactivate" hooks
  */
 register_deactivation_hook(__FILE__,'AHSC_deactivation');
 
-//\add_action( 'activated_plugin',  'check_hispeed_cache_services' , 20, 1 );
+\add_action( 'activated_plugin',  'check_hispeed_cache_services' , 20, 1 );
 /**
  * Adding methods for link in plugins page
  */

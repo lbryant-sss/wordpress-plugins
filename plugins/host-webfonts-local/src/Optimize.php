@@ -333,7 +333,7 @@ class Optimize {
 	private function convert_to_fonts_object( $stylesheet ) {
 		OMGF::debug( __( 'Stylesheet fetched. Parsing for font-families...', 'host-webfonts-local' ) );
 
-		preg_match_all( '/font-family:\s\'(.*?)\';/', $stylesheet, $font_families );
+		preg_match_all( '/font-family:[\s\n]*[\'\"]?(.*?)[\'\"]?;/', $stylesheet, $font_families );
 
 		if ( empty( $font_families[ 1 ] ) ) {
 			return []; // @codeCoverageIgnore
@@ -431,14 +431,14 @@ class Optimize {
 			}
 
 			/**
-			 * If $subset is empty, assume it's a logographic (Chinese, Japanese, etc.) character set.
+			 * If $subset is numeric, assume it's a logographic (Chinese, Japanese, etc.) character set.
 			 */
 			if ( is_numeric( $subset ) ) {
 				$subset = 'logogram-' . $subset;
 			}
 
 			$font_weight_id                  = str_replace( ' ', '-', $font_weight );
-			$key                             = $subset . '-' . $font_weight_id . ( $font_style === 'normal' ? '' : '-' . $font_style );
+			$key                             = ( $subset ? $subset . '-' : '' ) . $font_weight_id . ( $font_style === 'normal' ? '' : '-' . $font_style );
 			$font_object[ $key ]             = new \stdClass();
 			$font_object[ $key ]->id         = $font_weight_id . ( $font_style === 'normal' ? '' : $font_style );
 			$font_object[ $key ]->fontFamily = $font_family;
@@ -485,7 +485,7 @@ class Optimize {
 	private function parse_subsets( $stylesheet, $font_family ) {
 		OMGF::debug( __( 'Parsing subsets.', 'host-webfonts-local' ) );
 
-		preg_match_all( '/\/\*\s([a-z\-]+?)\s\*\//', $stylesheet, $subsets );
+		preg_match_all( '/(?<=\/\*)\s*([\s\S]*?)\s*(?=\*\/\n{0,1}[ \t]*@font-face)/', $stylesheet, $subsets );
 
 		if ( empty( $subsets[ 1 ] ) ) {
 			return []; // @codeCoverageIgnore

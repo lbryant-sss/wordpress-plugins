@@ -1,5 +1,10 @@
 == Changelog ==
 
+= 5.4.0.3 =
+
+* Resolves an issue with the properties tabs when the HTML content attribute and CSS editor are in full-screen mode.
+* Improves the appearance of the form builder on mobile devices.
+
 = 5.4.0.2 =
 = 5.4.0.1 =
 

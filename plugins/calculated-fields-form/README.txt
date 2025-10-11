@@ -4,7 +4,7 @@ Donate link: http://cff.dwbooster.com
 Tags: form,quote form,contact form,form builder,calculator form
 Requires at least: 3.0.5
 Tested up to: 6.8
-Stable tag: 5.4.0.2
+Stable tag: 5.4.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -456,6 +456,11 @@ A: There are multiple alternatives, by using the [PDF generator add-on](https://
 
 == Changelog ==
 
+= 5.4.0.3 =
+
+* Resolves an issue with the properties tabs when the HTML content attribute and CSS editor are in full-screen mode.
+* Improves the appearance of the form builder on mobile devices.
+
 = 5.4.0.2 =
 = 5.4.0.1 =
 
@@ -474,10 +479,3 @@ A: There are multiple alternatives, by using the [PDF generator add-on](https://
 
 * Improves Date/Time and Date/Time slot controls.
 * Adds a new feature to the WooCommerce add-on that adds form-collected information to WooCommerce webhooks data (developer and platinum plugin distributions).
-
-= 5.3.97 =
-
-* Adds a new set of form templates.
-* Improves AI form generation.
-* Fixes a minor issue with displaying field labels in the request cost attribute.
-* Supports the Revolut payment gateway (Platinum plugin distribution).

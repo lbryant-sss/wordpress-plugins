@@ -33,6 +33,7 @@
 			<h2 class="nav-tab-wrapper ahsc-settings-nav">
 				<a class="nav-tab nav-tab-active" data-tab="#general"><?php esc_html_e( 'Cache', 'aruba-hispeed-cache' ); ?></a>
                 <a class="nav-tab " data-tab="#performance"><?php esc_html_e( 'Performance', 'aruba-hispeed-cache' ); ?></a>
+                <a class="nav-tab " data-tab="#cdn"><?php esc_html_e( 'CDN', 'aruba-hispeed-cache' ); ?></a>
 				<?php if (WP_DEBUG  && is_dir(AHSC_CONSTANT['ARUBA_HISPEED_CACHE_BASEPATH']."/Debug")) : ?>
 					<a class="nav-tab" data-tab="#debug"><?php esc_html_e( 'Debug', 'aruba-hispeed-cache' ); ?></a>
 				<?php
@@ -60,6 +61,14 @@
             </div>
         </div>
 
+        <div id="cdn" class="ahsc-tab hidden ahsc-options-wrapper">
+            <div style="padding-top:30px;padding-bottom:30px;">
+	            <?php
+	            require AHSC_CONSTANT['ARUBA_HISPEED_CACHE_BASEPATH'] . 'admin' . DIRECTORY_SEPARATOR .'pages'.DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR  . 'partials' . DIRECTORY_SEPARATOR . 'admin-tab-cdn.php';
+                ?>
+
+            </div>
+        </div>
 		<?php if ( WP_DEBUG && is_dir(AHSC_CONSTANT['ARUBA_HISPEED_CACHE_BASEPATH']."/Debug") ) : ?>
 
 			<div id="debug" class="ahsc-tab hidden">
