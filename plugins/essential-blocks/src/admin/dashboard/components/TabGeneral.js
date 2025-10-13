@@ -277,84 +277,29 @@ export default function TabGeneral() {
                         >
                             <div className="changelog-wrapper">
                                 <div className="changelog-title">
-                                    {__("Version: 5.7.1", "essential-blocks")}
+                                    {__("Version: 5.7.2", "essential-blocks")}
                                     <span className="changelog-date">
-                                        {__("07/10/2025", "essential-blocks")}
+                                        {__("12/10/2025", "essential-blocks")}
                                     </span>
                                 </div>
                                 <ul className="changelog-content">
                                     <li>
                                         {__(
-                                            "Improved: Loop Builder | Added support for more blocks",
+                                            "Fixed: Editor not working with the last update",
                                             "essential-blocks"
                                         )}
 
                                     </li>
                                     <li>
                                         {__(
-                                            "Improved: Slider | Added more image styling options and images clickable option",
+                                            "Improved: Security enhancements",
                                             "essential-blocks"
                                         )}
 
                                     </li>
                                     <li>
                                         {__(
-                                            "Improved: Post Grid | Added additional styling options for Title and Taxonomy",
-                                            "essential-blocks"
-                                        )}
-
-                                    </li>
-                                    <li>
-                                        {__(
-                                            "Fixed: Custom Fonts | Fonts were not loading properly",
-                                            "essential-blocks"
-                                        )}
-
-                                    </li>
-                                    <li>
-                                        {__(
-                                            "Fixed: Post Grid | Certain strings were not translatable",
-                                            "essential-blocks"
-                                        )}
-
-                                    </li>
-                                    <li>
-                                        {__(
-                                            "Fixed: Filterable Gallery | 'Add More Images' cleared URLs of existing items",
-                                            "essential-blocks"
-                                        )}
-
-                                    </li>
-                                    <li>
-                                        {__(
-                                            "Fixed: Advanced Navigation | Menu items geting extra spacing in dropdowns",
-                                            "essential-blocks"
-                                        )}
-
-                                    </li>
-                                    <li>
-                                        {__(
-                                            "Fixed: Advanced Image | Custom height resetting issue",
-                                            "essential-blocks"
-                                        )}
-
-                                    </li>
-                                    <li>
-                                        {__(
-                                            "Fixed: Advanced Image | Site logo not displaying properly",
-                                            "essential-blocks"
-                                        )}
-
-                                    </li>
-                                    <li>
-                                        {__(
-                                            "Fixed: Animation conflict with Twentig plugin",
-                                            "essential-blocks"
-                                        )}
-                                    </li>
-                                    <li>
-                                        {__(
-                                            "Few minor bug fixes and improvements",
+                                            "Few minor bug fixes & improvements",
                                             "essential-blocks"
                                         )}
 

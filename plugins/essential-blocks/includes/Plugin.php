@@ -34,7 +34,7 @@ use EssentialBlocks\Utils\LiquidGlassRenderer;
 final class Plugin
 {
     use HasSingletone;
-                                        public $version = '5.7.1';
+                                                    public $version = '5.7.2';
 
     public $admin;
     /**

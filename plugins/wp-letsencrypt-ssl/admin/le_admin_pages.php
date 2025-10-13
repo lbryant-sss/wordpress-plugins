@@ -171,29 +171,21 @@ class WPLE_SubAdmin extends WPLE_Admin_Page {
             'wp_encryption_reset',
             [$this, 'wple_tools_block']
         );
-        add_submenu_page(
-            'wp_encryption',
-            'Upgrade to Premium',
-            __( 'Upgrade to Premium', 'wp-letsencrypt-ssl' ),
-            'manage_options',
-            'wp_encryption_upgrade',
-            [$this, 'wple_upgrade_page']
-        );
-        global $submenu;
-        if ( is_array( $submenu ) ) {
-            foreach ( $submenu['wp_encryption'] as $key => $val ) {
-                if ( in_array( 'wp_encryption_upgrade', $val ) ) {
-                    $submenu['wp_encryption'][$key][0] = '<span style="color:#adff2f">' . esc_html( $submenu['wp_encryption'][$key][0] ) . '</span>';
-                    $submenu['wp_encryption'][$key][2] = 'https://wpencryption.com/pricing/?utm_source=wordpress&utm_medium=upgradepro&utm_campaign=wpencryption';
-                    //medium=admin in june
-                    ///$submenu['wp_encryption'][$key][2] = admin_url('/admin.php?page=wp_encryption-pricing&checkout=true&plan_id=8210&plan_name=pro&billing_cycle=lifetime&pricing_id=7965&currency=usd&billing_cycle_selector=responsive_list');
-                } else {
-                    if ( in_array( 'wp_encryption', $val ) ) {
-                        $submenu['wp_encryption'][$key][0] = 'Install SSL';
-                    }
-                }
-            }
-        }
+        // if (!wple_fs()->is__premium_only()) {
+        //     add_submenu_page('wp_encryption', 'Upgrade to Premium', __('Upgrade to Premium', 'wp-letsencrypt-ssl'), 'manage_options', 'wp_encryption_upgrade', [$this, 'wple_upgrade_page']);
+        // }
+        // global $submenu;
+        // if (is_array($submenu) && array_key_exists('wp_encryption', $submenu)) {
+        //     foreach ($submenu['wp_encryption'] as $key => $val) {
+        //         if (in_array('wp_encryption_upgrade', $val)) {
+        //             $submenu['wp_encryption'][$key][0] = '<span style="color:#adff2f">' . esc_html($submenu['wp_encryption'][$key][0]) . '</span>';
+        //             $submenu['wp_encryption'][$key][2] = 'https://wpencryption.com/pricing/?utm_source=wordpress&utm_medium=upgradepro&utm_campaign=wpencryption'; //medium=admin in june
+        //             ///$submenu['wp_encryption'][$key][2] = admin_url('/admin.php?page=wp_encryption-pricing&checkout=true&plan_id=8210&plan_name=pro&billing_cycle=lifetime&pricing_id=7965&currency=usd&billing_cycle_selector=responsive_list');
+        //         } else if (in_array('wp_encryption', $val)) {
+        //             $submenu['wp_encryption'][$key][0] = 'Install SSL';
+        //         }
+        //     }
+        // }
     }
 
     /**
@@ -1437,7 +1429,7 @@ class WPLE_SubAdmin extends WPLE_Admin_Page {
       <span class="wple-premium-actions">
       <span>
       <p>Monitor important actions required to safeguard your site with WP Encryption Pro.</p>
-      <a href="https://wpencryption.com/?utm_source=wordpress&utm_medium=security&utm_campaign=wpencryption#pricing">Go Pro</a>
+      <a href="' . admin_url( 'admin.php?page=wp_encryption-pricing' ) . '">Go Pro</a>
       </span>
       </span>';
         }

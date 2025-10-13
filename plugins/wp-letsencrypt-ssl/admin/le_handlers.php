@@ -6,6 +6,7 @@ if ( !defined( 'ABSPATH' ) ) {
 // Exit if accessed directly
 require_once WPLE_DIR . 'classes/le-core.php';
 require_once WPLE_DIR . 'classes/le-mscan.php';
+require_once WPLE_DIR . 'classes/le-trait.php';
 /**
  * Todo:
  * A file to disable force https completely when site lockout
@@ -360,6 +361,12 @@ class WPLE_Handler {
             ] );
             exit;
         }
+        WPLE_Trait::wple_logger(
+            "Wizard: Generating SSL\n",
+            'success',
+            'a',
+            false
+        );
         // SSL generation logic here
         $leopts = array(
             'email'           => get_option( 'admin_email' ),

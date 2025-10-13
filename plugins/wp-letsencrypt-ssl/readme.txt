@@ -5,9 +5,9 @@ Requires at least: 5.4
 License: GPL3
 Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: 7.8.5.0
+Stable tag: 7.8.5.1
 
-Lifetime SSL solution - Install free SSL certificate & enable HTTPS redirect, HTTPS mail, fix SSL errors, SSL score, Advanced Security & SSL monitoring.
+Lifetime SSL solution – Install free SSL certificate & enable HTTPS redirect, Advanced security, Unlock every premium feature other plugins charge for — Free.
 
 == Description ==
 
@@ -38,6 +38,7 @@ https://youtu.be/jrkFwFH7r6o
 https://youtu.be/aKvvVlAlZ14
 
 == FREE SSL PLUGIN FEATURES ==
+* Unlock every premium feature other plugins charge for — absolutely Free.
 * Verify domain ownership and generate free SSL certificate
 * Secure webmail and email with HTTPS
 * Download generated SSL certificate, key and Intermediate certificate files
@@ -170,6 +171,9 @@ Security is an important subject regarding SSL/TLS certificates, of course. It i
 7. Mixed Content Scanner to identify insecure contents on HTTPS site
 
 == Changelog ==
+
+= 7.8.5.1 =
+* freemius hooks & custom css
 
 = 7.8.5.0 =
 * React compatibility fix

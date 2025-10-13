@@ -88,8 +88,6 @@ class WPLE_Admin {
         add_action( 'wple_show_reviewrequest', array($this, 'wple_set_review_flag') );
         add_action( 'wple_show_mxalert', array($this, 'wple_set_mxerror_flag') );
         add_action( 'wple_ssl_reminder_notice', [$this, 'wple_start_show_reminder'] );
-        //hide default pricing page for non-premium
-        add_action( 'admin_head', [$this, 'wple_hide_default_pricing'] );
         add_filter( 'fs_uninstall_reasons_wp-letsencrypt-ssl', [$this, 'wple_oneyearprom'], 1 );
         add_action( 'wple_init_ssllabs', [$this, 'wple_initialize_ssllabs'] );
         add_action( 'wple_ssl_expiry_update', [$this, 'wple_update_expiry_ssllabs'] );
@@ -199,7 +197,7 @@ class WPLE_Admin {
             delete_option( 'wple_plan_choose' );
             update_option( 'wple_version', WPLE_PLUGIN_VER );
         } else {
-            if ( version_compare( get_option( 'wple_version' ), '7.8.3', '<=' ) ) {
+            if ( version_compare( get_option( 'wple_version' ), '7.8.4', '<=' ) ) {
                 delete_option( 'wple_plan_choose' );
                 update_option( 'wple_version', WPLE_PLUGIN_VER );
             }
@@ -574,8 +572,9 @@ class WPLE_Admin {
      * @return void
      */
     public function wple_upgrade_block( &$html ) {
-        $upgradeurl = 'https://wpencryption.com/?utm_source=wordpress&utm_medium=upgrade&utm_campaign=wpencryption';
+        ///$upgradeurl = 'https://wpencryption.com/?utm_source=wordpress&utm_medium=upgrade&utm_campaign=wpencryption';
         ///$upgradeurl = admin_url('/admin.php?page=wp_encryption-pricing&checkout=true&plan_id=8210&plan_name=pro&billing_cycle=lifetime&pricing_id=7965&currency=usd&billing_cycle_selector=responsive_list');
+        $upgradeurl = admin_url( '/admin.php?page=wp_encryption-pricing' );
         ///$nopricing = get_option('wple_no_pricing'); //always false now
         $nopricing = false;
         $cp = get_option( 'wple_have_cpanel' );

@@ -1,0 +1,516 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: wp-letsencrypt-ssl\n"
+"POT-Creation-Date: 2025-10-11 20:12+0530\n"
+"PO-Revision-Date: 2025-10-11 20:26+0530\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.7\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: freemius\n"
+"X-Poedit-SearchPathExcluded-1: vendor\n"
+"X-Poedit-SearchPathExcluded-2: node_modules\n"
+"X-Poedit-SearchPathExcluded-3: admin/app/node_modules\n"
+"X-Poedit-SearchPathExcluded-4: admin/wizard/node_modules\n"
+"X-Poedit-SearchPathExcluded-5: admin/app\n"
+"X-Poedit-SearchPathExcluded-6: admin/wizard\n"
+
+#: admin/le_admin.php:521
+#, php-format
+msgid ""
+"<strong>NOTE:</strong> Since you are willing to install SSL certificate for sub-directory site, SSL "
+"certificate will be generated for your primary domain <strong>%s</strong> which will cover your primary "
+"domain + All sub-directory sites."
+msgstr ""
+"<strong>NOTA:</strong> Como desea instalar un certificado SSL para un sitio en un subdirectorio, el "
+"certificado SSL se generará para su dominio principal <strong>%s</strong>, lo que cubrirá su dominio "
+"principal y todos los sitios en subdirectorios."
+
+#: admin/le_admin.php:549
+msgid ""
+"Upgrade to <strong>PRO</strong> version to avail Wildcard SSL support for multisite and ability to "
+"install SSL for mapped domains (different domain names)."
+msgstr ""
+"Actualice a la versión <strong>PRO</strong> para obtener soporte de SSL comodín (Wildcard) para "
+"multisitio y la capacidad de instalar SSL para dominios mapeados (nombres de dominio diferentes)."
+
+#: admin/le_admin.php:635 admin/le_admin.php:719
+#, php-format
+msgid "I agree to %sLet's Encrypt%s %sTerms of service%s"
+msgstr "Acepto %sLet's Encrypt%s y sus %sTérminos de servicio%s"
+
+#: admin/le_admin.php:648 admin/le_admin.php:732
+#, php-format
+msgid "I agree to <b>WP Encryption</b> %sTerms of service%s"
+msgstr "Acepto a <b>WP Encryption</b> %sTérminos de servicio%s"
+
+#: admin/le_admin.php:827
+msgid ""
+"SSL certificate generated successfully!. <b>WP Encryption</b> just saved you several $$$ by generating "
+"free SSL certificate in record time!. Could you please do us a BIG favor & rate us with 5 star review "
+"to support further development of this plugin."
+msgstr ""
+"¡Certificado SSL generado con éxito! <b>WP Encryption</b> le ahorró varios $$$ generando un certificado "
+"SSL gratuito en tiempo récord. ¿Podría hacernos un GRAN favor y valorarnos con 5 estrellas para apoyar "
+"el desarrollo futuro de este complemento."
+
+#: admin/le_admin.php:1056
+msgid "<b>Congrats! SSL Certificate have been successfully generated.</b>"
+msgstr "<b>¡Felicidades! El certificado SSL se ha generado correctamente.</b>"
+
+#: admin/le_admin.php:1057
+msgid ""
+"We just completed major task of generating SSL certificate! Now we have ONE final step to complete."
+msgstr ""
+"¡Acabamos de completar la tarea principal de generar el certificado SSL! Ahora tenemos UN último paso "
+"por completar."
+
+#: admin/le_admin.php:1073
+#, php-format
+msgid "%sClick here%s to login into your cPanel."
+msgstr "%sHaga clic aquí%s para iniciar sesión en su cPanel."
+
+#: admin/le_admin.php:1074
+#, php-format
+msgid "Open %sSSL/TLS%s option on your cPanel"
+msgstr "Abra la opción %sSSL/TLS%s en su cPanel"
+
+#: admin/le_admin.php:1075
+#, php-format
+msgid "Click on %sManage SSL Sites%s option"
+msgstr "Haga clic en la opción %sAdministrar sitios SSL%s"
+
+#: admin/le_admin.php:1076
+#, php-format
+msgid ""
+"Copy the contents of %sCertificate.crt%s, %sPrivate.pem%s, %sCABundle.crt%s files from below & paste "
+"them into its appropriate fields on cPanel"
+msgstr ""
+"Copie el contenido de los archivos %sCertificate.crt%s, %sPrivate.pem%s, %sCABundle.crt%s de abajo y "
+"péguelos en sus campos correspondientes en cPanel"
+
+#: admin/le_admin.php:1082
+#, php-format
+msgid ""
+"If you have root SSH access, edit your server config file and point your SSL paths to "
+"%scertificate.crt%s & %sprivate.pem%s files located in %s folder. If you don't have either cPanel or "
+"root SSH access, Upgrade to %sPRO%s version for automatic SSL installation and automatic SSL renewal."
+msgstr ""
+"Si tiene acceso SSH root, edite el archivo de configuración del servidor y apunte sus rutas SSL a los "
+"archivos %scertificate.crt%s y %sprivate.pem%s ubicados en la carpeta %s. Si no tiene ni cPanel ni "
+"acceso SSH root, actualice a la versión %sPRO%s para instalación automática de SSL y renovación "
+"automática del certificado."
+
+#: admin/le_admin.php:1088
+#, php-format
+msgid ""
+"If you have root SSH access, download certificate.crt & private.pem files from above and upload them "
+"onto a secure folder on your server. Then edit your server config file and point the SSL paths to "
+"uploaded %scertificate.crt%s & %sprivate.pem%s files. If you don't have either cPanel or root SSH "
+"access, Upgrade to %sPRO%s version for automatic SSL installation and automatic SSL renewal."
+msgstr ""
+"Si tiene acceso SSH root, descargue los archivos certificate.crt y private.pem desde arriba y súbalos a "
+"una carpeta segura en su servidor. Luego edite el archivo de configuración del servidor y apunte las "
+"rutas SSL a los archivos subidos %scertificate.crt%s y %sprivate.pem%s. Si no dispone de cPanel ni de "
+"acceso SSH root, actualice a la versión %sPRO%s para instalación automática de SSL y renovación "
+"automática."
+
+#: admin/le_admin.php:1094
+#, php-format
+msgid "Click on %sInstall certificate%s"
+msgstr "Haga clic en %sInstalar certificado%s"
+
+#: admin/le_admin.php:1095
+#, php-format
+msgid "Please wait few minutes and click on %sEnable HTTPS Now%s button"
+msgstr "Espere unos minutos y haga clic en el botón %sHabilitar HTTPS ahora%s"
+
+#: admin/le_admin.php:1104
+#, php-format
+msgid ""
+"You can also upgrade to our %sCDN%s plan to avail fully automatic SSL + Fastest CDN + Firewall Security."
+msgstr ""
+"También puede actualizar a nuestro plan %sCDN%s para obtener SSL totalmente automático + CDN más rápido "
+"+ seguridad de cortafuegos."
+
+#: admin/le_admin.php:1124
+msgid ""
+"<b>Note:</b> Use below \"Enable HTTPS\" button ONLY after SSL certificate is successfully installed on "
+"your cPanel"
+msgstr ""
+"<b>Nota:</b> Use el botón \"Habilitar HTTPS\" a continuación SOLO después de que el certificado SSL "
+"esté instalado correctamente en su cPanel"
+
+#: admin/le_admin.php:1130
+msgid ""
+"<b>Congratulations!</b> SSL Certificate have been successfully installed for your site. You don't need "
+"to run the installation process again. Please go ahead and enable HTTPS using the below button."
+msgstr ""
+"<b>¡Felicidades!</b> El certificado SSL se ha instalado correctamente en su sitio. No necesita ejecutar "
+"el proceso de instalación nuevamente. Continúe y habilite HTTPS usando el botón de abajo."
+
+#: admin/le_admin.php:1199
+msgid ""
+"You already seem to have certificate generated and stored. Please try downloading certs from "
+"<strong>Download SSL Certificates</strong> page and open in a text editor like notepad to check if "
+"certificate is not empty."
+msgstr ""
+"Parece que ya tiene un certificado generado y almacenado. Por favor, intente descargar los certificados "
+"desde la página <strong>Descargar certificados SSL</strong> y ábralos en un editor de texto como el "
+"Bloc de notas para comprobar que el certificado no esté vacío."
+
+#: admin/le_admin.php:1408
+#, php-format
+msgid ""
+"Your SSL Certificate is expiring soon!. Please make sure to re-generate new SSL Certificate using %sWP "
+"Encryption%s and install it on your hosting server to avoid site showing insecure warning with expired "
+"certificate."
+msgstr ""
+"¡Su certificado SSL vencerá pronto! Asegúrese de volver a generar un nuevo certificado SSL usando %sWP "
+"Encryption%s e instálelo en su servidor de hosting para evitar que el sitio muestre una advertencia de "
+"seguridad por certificado caducado."
+
+#: admin/le_admin.php:1426
+#, php-format
+msgid ""
+"Unfortunately SSL renewal have failed due to some reasons after multiple tries (Check debug log for "
+"further details). Please update PRO plugin to latest release, then login to your %sWP Encryption%s "
+"page, use RESET option once and run the SSL install form of WP Encryption once to renew SSL now."
+msgstr ""
+"Desafortunadamente, la renovación del SSL ha fallado por algunas razones después de múltiples intentos "
+"(consulte el registro de depuración para más detalles). Por favor, actualice el complemento PRO a la "
+"última versión, luego inicie sesión en su página %sWP Encryption%s, utilice la opción RESET una vez y "
+"ejecute el formulario de instalación de SSL de WP Encryption para renovar el certificado ahora."
+
+#: admin/le_admin.php:1441
+msgid ""
+"The installed active SSL certificate on your site is expiring in next 10 days!. Please check Debug Log "
+"of WP Encryption for any issues during auto renewal process."
+msgstr ""
+"El certificado SSL activo instalado en su sitio vencerá en los próximos 10 días. Por favor, revise el "
+"Registro de depuración de WP Encryption por si hubo problemas durante el proceso de renovación "
+"automática."
+
+#: admin/le_admin.php:1457
+msgid ""
+"Renew your SSL certificate today to avoid your site from showing as insecure. Please support our "
+"contribution by upgrading to <strong>Pro</strong> and avail automatic SSL renewal with automatic SSL "
+"installation."
+msgstr ""
+"Renueve su certificado SSL hoy para evitar que su sitio aparezca como inseguro. Apoye nuestra "
+"contribución actualizando a <strong>Pro</strong> y obtenga renovación automática de SSL con instalación "
+"automática del certificado."
+
+#: admin/le_admin.php:1784
+#, php-format
+msgid "Can you please do us a BIG favor by leaving a %s%s%s%s%s rating on WordPress.org"
+msgstr "¿Podría hacernos un GRAN favor dejando una valoración de %s%s%s%s%s en WordPress.org"
+
+#: admin/le_admin.php:1784
+#, php-format
+msgid "or spread the word on %s %s %s %s"
+msgstr "o comparta la noticia en %s %s %s %s"
+
+#: admin/le_admin.php:1804
+msgid ""
+"Let's Encrypt® SSL Certificate expires in 90 days by default. You can easily re-generate new SSL "
+"certificate using <strong>RENEW SSL CERTIFICATE</strong> option found on left or by clicking on "
+"<strong>STEP 1</strong> in progress bar."
+msgstr ""
+"El certificado SSL de Let's Encrypt® vence por defecto a los 90 días. Puede volver a generar fácilmente "
+"un nuevo certificado SSL usando la opción <strong>RENOVAR CERTIFICADO SSL</strong> que se encuentra a "
+"la izquierda o haciendo clic en <strong>PASO 1</strong> en la barra de progreso."
+
+#: admin/le_admin.php:1804
+msgid ""
+"Major browsers like Chrome will start showing insecure site warning IF you fail to renew / re-generate "
+"certs before this expiry date. Please clear your browser cache once."
+msgstr ""
+"Los principales navegadores como Chrome empezarán a mostrar una advertencia de sitio inseguro SI no "
+"renueva/regenere los certificados antes de la fecha de vencimiento. Por favor, borre la caché de su "
+"navegador una vez."
+
+#: admin/le_admin.php:1900
+msgid ""
+"Mixed content issues cause browser padlock to show as insecure even if you have installed SSL "
+"certificate perfectly. Upgrade to PRO for automatic mixed content fixing."
+msgstr ""
+"Los problemas de contenido mixto hacen que el candado del navegador aparezca como inseguro incluso si "
+"ha instalado el certificado SSL correctamente. Actualice a PRO para la corrección automática de "
+"contenido mixto."
+
+#: admin/le_admin.php:1905
+msgid ""
+"Mixed content issues cause browser padlock to show as insecure even if you have installed SSL "
+"certificate perfectly. Hire an SSL Expert today to get rid of all SSL issues once and for all."
+msgstr ""
+"Los problemas de contenido mixto provocan que el candado del navegador se muestre como inseguro incluso "
+"si el certificado SSL está instalado correctamente. Contrate a un experto en SSL hoy para solucionar "
+"todos los problemas de SSL de una vez por todas."
+
+#: admin/le_admin.php:1936
+msgid ""
+"Unfortunately SSL renewal have failed due to some issues. Please check DEBUG LOG of WP Encryption for "
+"more details. We recommend updating PRO plugin to latest version, use RESET option once and re-run the "
+"SSL install form of WP Encryption once manually to renew SSL certificate."
+msgstr ""
+"Desafortunadamente, la renovación del SSL ha fallado debido a algunos problemas. Por favor, consulte el "
+"REGISTRO DE DEPURACIÓN (DEBUG LOG) de WP Encryption para más detalles. Recomendamos actualizar el "
+"plugin PRO a la versión más reciente, usar la opción RESET una vez y volver a ejecutar manualmente el "
+"formulario de instalación de SSL de WP Encryption para renovar el certificado."
+
+#: admin/le_admin_pages.php:74
+msgid "SSL Health and Headers"
+msgstr "Estado y encabezados SSL"
+
+#: admin/le_admin_pages.php:76
+msgid "Advanced Security and Scanner"
+msgstr "Seguridad avanzada y escáner"
+
+#: admin/le_admin_pages.php:78
+msgid "Download SSL Certificates"
+msgstr "Descargar certificados SSL"
+
+#: admin/le_admin_pages.php:80 admin/le_admin_pages.php:161
+msgid "Force HTTPS"
+msgstr "Forzar HTTPS"
+
+#: admin/le_admin_pages.php:83
+msgid "Mixed Content Scanner"
+msgstr "Escáner de contenido mixto"
+
+#: admin/le_admin_pages.php:87
+msgid "Setup Wizard"
+msgstr "Asistente de configuración"
+
+#: admin/le_admin_pages.php:89
+msgid "Debug log"
+msgstr "Registro de depuración"
+
+#: admin/le_admin_pages.php:91
+msgid "Malware & Integrity Report"
+msgstr "Informe de malware e integridad"
+
+#: admin/le_admin_pages.php:109 admin/le_admin_pages.php:401
+msgid "How-To Videos"
+msgstr "Videos tutoriales"
+
+#: admin/le_admin_pages.php:110
+msgid "FAQ"
+msgstr "Preguntas frecuentes"
+
+#: admin/le_admin_pages.php:116
+msgid "RESET"
+msgstr "REINICIAR"
+
+#: admin/le_admin_pages.php:176
+msgid ""
+"If you already have valid SSL certificate installed on site, you can easily enable the below option to "
+"force HTTPS redirection throughout the site."
+msgstr ""
+"Si ya tiene un certificado SSL válido instalado en el sitio, puede habilitar fácilmente la opción a "
+"continuación para forzar la redirección HTTPS en todo el sitio."
+
+#: admin/le_admin_pages.php:176
+#, php-format
+msgid ""
+"If you still notice mixed content issues or issues with browser padlock not showing on your site, "
+"please use %sMixed Content Scanner%s to scan and identify exact issues causing browser padlock to not "
+"show!."
+msgstr ""
+"Si aún nota problemas de contenido mixto o que el candado del navegador no se muestra en su sitio, "
+"utilice %sEscáner de contenido mixto%s para analizar e identificar los problemas exactos que impiden "
+"que se muestre el candado."
+
+#: admin/le_admin_pages.php:348
+msgid ""
+"First of all, Please make sure you can access your site with and without www. Otherwise you will be not "
+"able to complete domain verification for both www & non-www together. If both of your www and non-www "
+"domains are publicly accessible, A new option named <strong>\"Generate SSL for both www & non-www\"</"
+"strong> will be automatically shown on WP Encryption SSL install form. You can also force enable this "
+"checkbox by adding <strong>includewww=1</strong> to page url i.e., <strong>/wp-admin/admin.php?"
+"page=wp_encryption&includewww=1</strong>"
+msgstr ""
+"Primero, asegúrese de poder acceder a su sitio con y sin www. De lo contrario no podrá completar la "
+"verificación de dominio para www y sin-www juntos. Si ambos dominios (www y sin-www) son accesibles "
+"públicamente, se mostrará automáticamente una nueva opción llamada <strong>\"Generar SSL para www y sin-"
+"www\"</strong> en el formulario de instalación de SSL de WP Encryption. También puede forzar la "
+"activación de esta casilla agregando <strong>includewww=1</strong> a la URL de la página, por ejemplo: "
+"<strong>/wp-admin/admin.php?page=wp_encryption&includewww=1</strong>"
+
+#: admin/le_admin_pages.php:351
+#, php-format
+msgid ""
+"Starting from WP Encryption v5.4.8, you can now secure your webmail & incoming/outgoing email server "
+"%sfollowing this guide%s"
+msgstr ""
+"A partir de WP Encryption v5.4.8, ahora puede asegurar su webmail y los servidores de correo entrante/"
+"saliente %ssiguiendo esta guía%s"
+
+#: admin/le_admin_pages.php:358
+msgid ""
+"Your SSL certificate will be auto renewed if you have <b>WP Encryption PRO</b> plugin purchased (SSL "
+"certs will be auto renewed in background just before the expiry date). If you have free version of "
+"plugin installed, You can click on STEP 1 in WP Encryption main page & use the same process of "
+"\"Generate SSL Certificate\" to get new certs."
+msgstr ""
+"Su certificado SSL se renovará automáticamente si ha adquirido el plugin <b>WP Encryption PRO</b> (los "
+"certificados SSL se renovarán en segundo plano poco antes de la fecha de vencimiento). Si tiene "
+"instalada la versión gratuita del plugin, puede hacer clic en PASO 1 en la página principal de WP "
+"Encryption y usar el mismo proceso de \"Generar certificado SSL\" para obtener nuevos certificados."
+
+#: admin/le_admin_pages.php:361
+msgid ""
+"If you have purchased the <b>WP Encryption PRO</b> version, You can notice Single domain vs Wildcard "
+"SSL switch on WP Encryption page."
+msgstr ""
+"Si ha comprado la versión <b>WP Encryption PRO</b>, podrá ver el interruptor entre dominio único y SSL "
+"comodín en la página de WP Encryption."
+
+#: admin/le_admin_pages.php:365
+#, php-format
+msgid ""
+"You can run a SSL test by entering your website url in <a href=\"%s\" rel=\"%s\">SSL Labs</a> site."
+msgstr ""
+"Puede ejecutar una prueba SSL introduciendo la URL de su sitio web en el sitio <a href=\"%s\" "
+"rel=\"%s\">SSL Labs</a>."
+
+#: admin/le_admin_pages.php:375
+#, php-format
+msgid ""
+"Please use our <a href=\"%s\" target=\"%s\">Plugin support forum</a>. <b>PRO</b> users can register "
+"free account & use priority support at support.wpencryption.com. More info - https://wpencryption.com"
+msgstr ""
+"Por favor utilice nuestro <a href=\"%s\" target=\"%s\">foro de soporte del plugin</a>. Los usuarios "
+"<b>PRO</b> pueden registrarse con una cuenta gratuita y usar soporte prioritario en "
+"support.wpencryption.com. Más información - https://wpencryption.com"
+
+#: admin/le_admin_pages.php:469
+#, php-format
+msgid ""
+"You don't have any SSL certificates generated yet! Please %sgenerate your single/wildcard SSL "
+"certificate%s first before you can download it here."
+msgstr ""
+"¡Aún no tiene certificados SSL generados! Por favor %sgenerar su certificado SSL de dominio único/"
+"comodín%s primero antes de poder descargarlo aquí."
+
+#: admin/le_admin_pages.php:631
+msgid ""
+"Scan your entire site (public posts + pages) for mixed/insecure content issues that are causing secure "
+"browser padlock to not show even if SSL certificate is installed correctly. SOURCE column shows you "
+"where the insecure url is coming from, you can easily find the mixed content url and update it to "
+"https:// to resolve the issue. Issues arising from Widgets or Inline are global issues which could be "
+"breaking HTTPS padlock on several of your webpages. Resolve the issues, reload and re-scan to confirm "
+"everything is resolved."
+msgstr ""
+"Analice todo su sitio (entradas públicas + páginas) en busca de problemas de contenido mixto/inseguro "
+"que impidan que el candado seguro del navegador se muestre, incluso si el certificado SSL está "
+"instalado correctamente. La columna SOURCE muestra de dónde proviene la URL insegura; puede encontrar "
+"fácilmente la URL de contenido mixto y cambiarla a https:// para resolver el problema. Los problemas "
+"que provienen de widgets o contenido inline son problemas globales que pueden romper el candado HTTPS "
+"en varias de sus páginas. Resuelva los problemas, recargue y vuelva a escanear para confirmar que todo "
+"esté resuelto."
+
+#: admin/le_admin_pages.php:862
+#, php-format
+msgid "We have detected the %s plugin on your website."
+msgstr "Hemos detectado el plugin %s en su sitio web."
+
+#: admin/le_admin_pages.php:862
+msgid ""
+"As WP Encryption handles all the functionality this plugin provides, we recommend disabling this plugin "
+"to prevent unexpected behaviour."
+msgstr ""
+"Dado que WP Encryption maneja toda la funcionalidad que proporciona este plugin, recomendamos "
+"desactivar este plugin para evitar comportamientos inesperados."
+
+#: admin/le_admin_pages.php:866
+#, php-format
+msgid ""
+"You will manually need to %sfollow our nginx tutorial%s to restrict access to private key file on your "
+"Nginx server."
+msgstr ""
+"Deberá %sseguir nuestro tutorial de nginx%s manualmente para restringir el acceso al archivo de clave "
+"privada en su servidor Nginx."
+
+#: admin/le_admin_pages.php:987
+msgid "You must have a valid SSL certificate installed on your site before enabling this feature"
+msgstr "Debe tener un certificado SSL válido instalado en su sitio antes de habilitar esta función"
+
+#: admin/le_admin_pages.php:1172
+msgid "SSL Health"
+msgstr "Estado SSL"
+
+#: classes/le-core.php:1125
+msgid "<b>WP Encryption PRO</b> trying to automate DNS verification process via cPanel\n"
+msgstr "<b>WP Encryption PRO</b> intentando automatizar el proceso de verificación DNS vía cPanel\n"
+
+#: classes/le-core.php:1251
+msgid "<b>WP Encryption PRO</b> trying to automate DNS verification process via cPanel UAPI\n"
+msgstr "<b>WP Encryption PRO</b> intentando automatizar el proceso de verificación DNS vía cPanel UAPI\n"
+
+#: classes/le-core.php:1341
+msgid ""
+"Unfortunately, CPAPI2 is not enabled so WP Encryption PRO cannot automate DNS verification process. You "
+"will have to manually add below DNS records or contact your hosting support to allow access to <b>.well-"
+"known</b> folder for domain verification to succeed.\n"
+msgstr ""
+"Desafortunadamente, CPAPI2 no está habilitado, por lo que WP Encryption PRO no puede automatizar el "
+"proceso de verificación DNS. Deberá agregar manualmente los registros DNS que se indican a continuación "
+"o contactar al soporte de su hosting para permitir el acceso a la carpeta <b>.well-known</b> para que "
+"la verificación del dominio tenga éxito.\n"
+
+#: classes/le-core.php:1434
+#, php-format
+msgid "SSL certificates for %s successfully renewed! Please restart your server once"
+msgstr "¡Los certificados SSL para %s se renovaron correctamente! Por favor, reinicie su servidor una vez"
+
+#: classes/le-core.php:1691
+msgid ""
+"With free version, You can download and send these SSL certificates to your hosting support asking them "
+"to install these SSL certificates."
+msgstr ""
+"Con la versión gratuita, puede descargar y enviar estos certificados SSL al soporte de su hosting "
+"solicitándoles que instalen estos certificados SSL."
+
+#: classes/le-security.php:169
+#, php-format
+msgid "%sError:%s Incorrect login credentials"
+msgstr "%sError:%s Credenciales de acceso incorrectas"
+
+#: classes/le-subdir-challenge.php:44
+msgid "Please verify your domain ownership by completing <strong>one</strong> of the below challenges"
+msgstr "Verifique la propiedad de su dominio completando <strong>uno</strong> de los retos siguientes"
+
+#: classes/le-subdir-challenge.php:143
+#, php-format
+msgid ""
+"Navigate to your %sdomain%s / %ssub-domain%s folder. Create %s.well-known%s folder and create %sacme-"
+"challenge%s folder inside .well-known folder if not already created."
+msgstr ""
+"Navegue a la carpeta %sdomain%s / %ssub-domain%s. Cree la carpeta %s.well-known%s y dentro de ella cree "
+"la carpeta %sacme-challenge%s si aún no existe."
+
+#: classes/le-subdir-challenge.php:209
+#, php-format
+msgid "%sLowest%s possible value"
+msgstr "%sValor%s posible más bajo"
+
+#: wp-letsencrypt.php:471
+msgid ""
+"Due to security nature of this plugin, We <b>HIGHLY</b> recommend you opt-in to our security & feature "
+"updates notifications, and <a href=\"https://freemius.com/wordpress/usage-tracking/5090/wp-letsencrypt-"
+"ssl/\" target=\"_blank\">non-sensitive diagnostic tracking</a> to get BEST support. If you skip this, "
+"that's okay! <b>WP Encryption</b> will still work just fine."
+msgstr ""
+"Debido a la naturaleza de seguridad de este plugin, recomendamos <b>ENCARECIDAMENTE</b> que active las "
+"notificaciones de actualizaciones de seguridad y funciones, y el <a href=\"https://freemius.com/"
+"wordpress/usage-tracking/5090/wp-letsencrypt-ssl/\" target=\"_blank\">seguimiento de diagnóstico no "
+"sensible</a> para obtener el MEJOR soporte. Si lo omite, ¡está bien! <b>WP Encryption</b> seguirá "
+"funcionando correctamente."

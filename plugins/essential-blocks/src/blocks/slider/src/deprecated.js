@@ -5,7 +5,8 @@ import { useBlockProps, RichText } from "@wordpress/block-editor";
 import { omit } from "lodash";
 import {
     sanitizeURL,
-    BlockProps
+    BlockProps,
+    sanitizeIconValue
 } from "@essential-blocks/controls";
 import attributes from "./attributes";
 
