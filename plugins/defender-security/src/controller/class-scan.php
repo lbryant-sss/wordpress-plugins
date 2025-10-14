@@ -14,7 +14,6 @@ use Valitron\Validator;
 use Calotes\Component\Request;
 use Calotes\Component\Response;
 use WP_Defender\Controller\Quarantine;
-use WP_Defender\Component\Rate;
 use WP_Defender\Traits\Formats;
 use WP_Defender\Traits\Scan_Upsell;
 use WP_Defender\Model\Scan_Item;
@@ -28,6 +27,7 @@ use WP_Defender\Component\Config\Config_Hub_Helper;
 use WP_Defender\Helper\Analytics\Scan as Scan_Analytics;
 use WP_Defender\Model\Notification\Malware_Notification;
 use WP_Defender\Component\Quarantine as Quarantine_Component;
+use WP_Defender\Behavior\Scan\Plugin_Integrity;
 
 /**
  * Contains methods for handling scans.
@@ -80,10 +80,7 @@ class Scan extends Event {
 		$this->register_page(
 			$this->get_title(),
 			$this->slug,
-			array(
-				$this,
-				'main_view',
-			),
+			array( $this, 'main_view' ),
 			$this->parent_slug
 		);
 
@@ -126,7 +123,6 @@ class Scan extends Event {
 			'action_scheduler_completed_action',
 			array( $this, 'scan_completed_analytics' )
 		);
-		add_action( 'admin_init', array( $this, 'mark_page_visited' ) );
 	}
 
 	/**
@@ -135,13 +131,7 @@ class Scan extends Event {
 	 * @return string The title of the page.
 	 */
 	public function get_title(): string {
-		$default = esc_html__( 'Malware Scanning', 'defender-security' );
-		// Check if the user has already visited the feature page.
-		if ( wd_di()->get( Breadcrumbs::class )->get_meta_key() ) {
-			return $default;
-		}
-
-		return $default . '<span class=wd-new-feature-dot></span>';
+		return esc_html__( 'Malware Scanning', 'defender-security' );
 	}
 
 	/**
@@ -164,6 +154,7 @@ class Scan extends Event {
 		$model = Model_Scan::create();
 		if ( is_object( $model ) && ! is_wp_error( $model ) ) {
 			$this->log( 'Initial ping self', self::SCAN_LOG );
+			$this->service->gather_actioned_plugin_details();
 
 			$this->do_async_scan( 'scan' );
 
@@ -590,7 +581,7 @@ class Scan extends Event {
 			$report_change     = true;
 			$report->frequency = $data['frequency'];
 			$report->day       = $data['day'];
-			$report->day_n     = $data['day_n'];
+			$report->day_n     = (int) $data['day_n'];
 			$report->time      = $data['time'];
 			// Disable 'Scheduled Scanning'.
 		} elseif ( true === $this->model->scheduled_scanning && false === $data['scheduled_scanning'] ) {
@@ -691,45 +682,6 @@ class Scan extends Event {
 				'count'   => $issues['count'],
 			)
 		);
-	}
-
-	/**
-	 * Handle notice.
-	 * Send the notice to the admin dashboard of the site.
-	 *
-	 * @return Response Response object.
-	 * @defender_route
-	 */
-	public function handle_notice(): Response {
-		update_site_option( Rate::SLUG_FOR_BUTTON_RATE, true );
-
-		return new Response( true, array() );
-	}
-
-	/**
-	 * Handle postponed notice.
-	 * Reset counters for postponed notice.
-	 *
-	 * @return Response Response object.
-	 * @defender_route
-	 */
-	public function postpone_notice(): Response {
-		Rate::reset_counters();
-
-		return new Response( true, array() );
-	}
-
-	/**
-	 * Handle refuse notice.
-	 * Send the refuse notice to the admin dashboard of the site.
-	 *
-	 * @return Response Response object.
-	 * @defender_route
-	 */
-	public function refuse_notice(): Response {
-		update_site_option( Rate::SLUG_FOR_BUTTON_THANKS, true );
-
-		return new Response( true, array() );
 	}
 
 	/**
@@ -834,7 +786,8 @@ class Scan extends Event {
 	public function remove_data(): void {
 		delete_site_option( Model_Scan::IGNORE_INDEXER );
 		delete_site_option( Core_Integrity::ISSUE_CHECKSUMS );
-		wd_di()->get( Breadcrumbs::class )->delete_meta_key();
+		delete_site_transient( Plugin_Integrity::$org_slugs );
+		delete_site_transient( Plugin_Integrity::$org_responses );
 	}
 
 	/**
@@ -863,33 +816,20 @@ class Scan extends Event {
 				$settings->frequency
 			);
 		}
-		// Prepare additional data.
-		if ( defender_is_wp_org_version() ) {
-			$scan_array = Rate::what_scan_notice_display();
-			$misc       = array(
-				'rating_is_displayed' => ! Rate::was_rate_request() && ! empty( $scan_array['text'] ),
-				'rating_text'         => $scan_array['text'],
-				'rating_type'         => $scan_array['slug'],
-			);
-		} else {
-			$misc = array(
-				'days_of_week'        => $this->get_days_of_week(),
-				'times_of_day'        => $this->get_times(),
-				'timezone_text'       => sprintf(
-				/* translators: %s - timezone, %s - time */
-					esc_html__( 'Your timezone is set to %1$s, so your current time is %2$s.', 'defender-security' ),
-					'<strong>' . wp_timezone_string() . '</strong>',
-					'<strong>' . wp_date( 'H:i' ) . '</strong>'
-				),
-				'show_notice'         => ! $settings->scheduled_scanning
-										&& 'scheduled_scanning' === defender_get_data_from_request( 'enable', 'g' ),
-				'rating_is_displayed' => false,
-				'rating_text'         => '',
-				'rating_type'         => '',
-			);
-		}
+
 		$misc['outdated_period'] = \WP_Defender\Behavior\Scan\Abandoned_Plugin::get_outdated_period();
 		$misc['labels']          = $settings->labels();
+		$misc['days_of_week']    = $this->get_days_of_week();
+		$misc['times_of_day']    = $this->get_times();
+		$misc['timezone_text']   = sprintf(
+			/* translators: 1. Timezone. 2. Time. */
+			esc_html__(
+				'Your timezone is set to %1$s, so your current time is %2$s.',
+				'defender-security'
+			),
+			'<strong>' . wp_timezone_string() . '</strong>',
+			'<strong>' . wp_date( 'H:i', time() ) . '</strong>'
+		);
 
 		// Todo: add logic for deactivated scan settings. Maybe display some notice.
 		$data = array(
@@ -928,7 +868,7 @@ class Scan extends Event {
 		if ( empty( $data ) ) {
 			$model->scheduled_scanning = false;
 			$model->frequency          = 'weekly';
-			$model->day_n              = '1';
+			$model->day_n              = 1;
 			$model->day                = 'sunday';
 			$model->time               = '4:00';
 			$model->save();
@@ -1008,7 +948,7 @@ class Scan extends Event {
 	 */
 	public function config_strings( array $config, bool $is_pro ): array {
 		$strings   = array();
-		$strings[] = $this->service->is_any_scan_active( $config, $is_pro )
+		$strings[] = $this->service->is_any_scan_active( $config )
 			? esc_html__( 'Active', 'defender-security' )
 			: esc_html__( 'Inactive', 'defender-security' );
 
@@ -1111,17 +1051,5 @@ class Scan extends Event {
 				$analytics_data['data']
 			);
 		}
-	}
-
-	/**
-	 * Marks the feature page as visited.
-	 *
-	 * @return void
-	 */
-	public function mark_page_visited(): void {
-		if ( 'wdf-scan' !== defender_get_current_page() ) {
-			return;
-		}
-		wd_di()->get( Breadcrumbs::class )->update_meta_key();
 	}
 }

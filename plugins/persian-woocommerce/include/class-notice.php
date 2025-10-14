@@ -94,13 +94,24 @@ class Persian_Woocommerce_Notice {
 		$page = sanitize_text_field( $_GET['page'] ?? null );
 		$tab  = sanitize_text_field( $_GET['tab'] ?? null );
 
-		$has_shipping    = wc_shipping_enabled() && is_plugin_inactive( 'persian-woocommerce-shipping/woocommerce-shipping.php' );
+		if ( wc_shipping_enabled() ) {
+			$has_shipping = is_plugin_active( 'persian-woocommerce-shipping/woocommerce-shipping.php' );
+		} else {
+			$has_shipping = 1;
+		}
+
 		$pws_install_url = admin_url( 'plugin-install.php?tab=plugin-information&plugin=persian-woocommerce-shipping' );
 
-		$has_gateland         = is_plugin_inactive( 'gateland/gateland.php' );
-		$gateland_install_url = admin_url( 'plugin-install.php?tab=plugin-information&plugin=gateland' );
+		$gateland_install_url = self::get_plugin_action_url( 'gateland/gateland.php' );
 
 		$notices = [
+			[
+				'id'        => 'gateland',
+				'content'   => sprintf( '<b>افزونه درگاه پرداخت هوشمند گیت لند: </b> ۳۷ درگاه مستقیم و غیرمستقیم + درگاه‌های اعتباری، فقط در یک افزونه. <a href="%s" target="_blank"><input type="button" class="button button-primary" value="نصب سریع و رایگان از مخزن وردپرس"></a>',
+					$gateland_install_url ),
+				'condition' => $gateland_install_url,
+				'dismiss'   => 6 * MONTH_IN_SECONDS,
+			],
 			[
 				'id'        => 'tapin-orders',
 				'content'   => '<b>فرایند ارسال سفارشات را هوشمند کنید! با یک کلیک سایت فروشگاه خود را به چندین شرکت حمل‌ متصل کنید و امور پستی خود را در همین صفحه انجام دهید.</b>
@@ -111,7 +122,7 @@ class Persian_Woocommerce_Notice {
 <a href="' . $pws_install_url . '" target="_blank">
 <input type="button" class="button button-primary" value="نصب افزونه">
 </a>',
-				'condition' => $page == 'wc-orders' && $has_shipping,
+				'condition' => $page == 'wc-orders' && ! $has_shipping,
 				'dismiss'   => 6 * MONTH_IN_SECONDS,
 			],
 			[
@@ -126,7 +137,7 @@ class Persian_Woocommerce_Notice {
 <a href="' . $pws_install_url . '" target="_blank">
 <input type="button" class="button button-primary" value="ارسال حرفه‌ای">
 </a>',
-				'condition' => $page == 'wc-settings' && $tab == 'shipping' && $has_shipping,
+				'condition' => $page == 'wc-settings' && $tab == 'shipping' && ! $has_shipping,
 				'dismiss'   => 6 * MONTH_IN_SECONDS,
 			],
 			[
@@ -135,7 +146,7 @@ class Persian_Woocommerce_Notice {
 			<a href="https://yun.ir/pwtt" target="_blank">
 				<img src="' . PW()->plugin_url( 'assets/images/tapin.png' ) . '" style="width: 100%" alt="تاپین">
 			</a>',
-				'condition' => $page == 'persian-wc-tools' && $has_shipping,
+				'condition' => $page == 'persian-wc-tools' && ! $has_shipping,
 				'dismiss'   => 6 * MONTH_IN_SECONDS,
 			],
 			[
@@ -150,26 +161,26 @@ class Persian_Woocommerce_Notice {
 <a href="' . $pws_install_url . '" target="_blank">
 <input type="button" class="button button-primary" value="شروع">
 </a>',
-				'condition' => $pagenow == 'index.php' && $has_shipping,
+				'condition' => $pagenow == 'index.php' && ! $has_shipping,
 				'dismiss'   => 6 * MONTH_IN_SECONDS,
 			],
 			[
 				'id'        => 'persian-date',
 				'content'   => sprintf( 'بنظر میرسه هنوز ووکامرس خودتو شمسی نکردی، از <a href="%s" target="_blank">اینجا</a> و فقط با یک کلیک وردپرس و ووکامرس‌تو شمسی کن :)', admin_url( 'admin.php?page=persian-wc-tools' ) ),
-				'condition' => PW()->get_options( 'enable_jalali_datepicker', 'no' ) !== 'yes',
+				'condition' => PW()->get_options( 'enable_jalali_datepicker', 'yes' ) !== 'yes',
 				'dismiss'   => 6 * MONTH_IN_SECONDS,
 			],
 			[
 				'id'        => 'pws',
 				'content'   => sprintf( 'بنظر میرسه هنوز حمل و نقل (پست پیشتاز، تیپاکس، پیک موتوری و...) فروشگاه رو پیکربندی نکردید؟ <a href="%s" target="_blank">نصب افزونه حمل و نقل فارسی ووکامرس و پیکربندی.</a>', $pws_install_url ),
-				'condition' => $has_shipping,
+				'condition' => ! $has_shipping,
 				'dismiss'   => 6 * MONTH_IN_SECONDS,
 			],
 			[
 				'id'        => 'pw_shipping_plugin',
 				'content'   => sprintf( '<b>افزونه رایگان حمل و نقل ووکامرس: </b> به راحتی روش‌های حمل و نقل پست پیشتاز، تیپاکس و پیک موتوری را اضافه کنید و هزینه‌های ارسال را به صورت خودکار محاسبه کنید. <a href="%s" target="_blank">دانلود و نصب رایگان</a>.',
 					$pws_install_url ),
-				'condition' => $has_shipping && $page == 'wc-settings' && $tab == 'shipping',
+				'condition' => ! $has_shipping && $page == 'wc-settings' && $tab == 'shipping',
 				'dismiss'   => 6 * MONTH_IN_SECONDS,
 			],
 		];
@@ -383,6 +394,34 @@ class Persian_Woocommerce_Notice {
 
 	public function is_dismiss( $notice_id ): bool {
 		return intval( get_option( 'pw_dismiss_notice_' . $notice_id ) ) >= time();
+	}
+
+	public static function get_plugin_action_url( $plugin ): ?string {
+
+		if ( is_plugin_active( $plugin ) ) {
+			return null;
+		}
+
+		if ( ! isset( get_plugins()[ $plugin ] ) ) {
+
+			$plugin = strtok( $plugin, '/' );
+
+			return wp_nonce_url(
+				add_query_arg(
+					[
+						'action' => 'install-plugin',
+						'plugin' => $plugin,
+					],
+					admin_url( 'update.php' )
+				),
+				'install-plugin_' . $plugin
+			);
+		}
+
+		return wp_nonce_url(
+			admin_url( 'plugins.php?action=activate&plugin=' . $plugin ),
+			'activate-plugin_' . $plugin
+		);
 	}
 
 }

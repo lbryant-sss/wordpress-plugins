@@ -5,7 +5,7 @@ Tags: search, better search, live search, product search, woocommerce search
 Requires at least: 3.5
 Requires PHP: 7.4
 Tested up to: 6.8
-Stable tag: 4.13.3
+Stable tag: 4.13.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -137,6 +137,10 @@ notify the developers of this plugin.
 2. Administrator area – nice and smooth
 
 == Changelog ==
+= 4.13.4 =
+* Added an option to limit the result title length (default 999 characters)
+* Fixed a potential security issue, see [CVE-2025-48094](https://www.cve.org/CVERecord?id=CVE-2025-48094)
+
 = 4.13.3 =
 * Fixed a type coercion issue which caused the auto complete to be enabled at all times even when it was turned off
 * Fixed an issue with WooCommerce related advanced fields, where it would cause an error when WooCommerce is not enabled but a product post type is used

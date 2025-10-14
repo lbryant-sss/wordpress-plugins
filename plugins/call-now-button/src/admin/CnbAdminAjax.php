@@ -132,7 +132,9 @@ class CnbAdminAjax {
 
         $custom_email = trim( filter_input( INPUT_POST, 'admin_email', @FILTER_SANITIZE_STRING ) );
         if ( is_email( $custom_email ) ) {
-            $data = $cnb_remote->create_email_activation( $custom_email, $admin_url );
+			$wpnonce = wp_create_nonce('cnb_email_activation');
+	        update_option('cnb_email_activation_wp_nonce', $wpnonce);
+            $data = $cnb_remote->create_email_activation( $custom_email, $wpnonce, $admin_url );
         } else {
             $data = new WP_Error( 'CNB_EMAIL_INVALID', __( 'Please enter a valid e-mail address.' ) );
             if ( empty( $custom_email ) ) {

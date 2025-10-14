@@ -1000,3 +1000,7 @@ html:not([dir="rtl"]) .premium-promotion-pro-btn {
 .elementor-control-pa_pro_promotion_notice a {
 	color: #2463eb !important;
 }
+
+.elementor-panel .elementor-control-global_cursor_notice .elementor-panel-alert {
+	font-style: normal;
+}

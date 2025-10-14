@@ -3,7 +3,7 @@
 /**
  * Class NF_MergeTags_Fields
  */
-final class NF_MergeTags_Fields extends NF_Abstracts_MergeTags
+class NF_MergeTags_Fields extends NF_Abstracts_MergeTags
 {
     protected $id = 'fields';
     protected $form_id;
@@ -484,8 +484,9 @@ final class NF_MergeTags_Fields extends NF_Abstracts_MergeTags
     {
         $type = $this->determineFieldType($id);
 
+        $outgoing = $incoming; // Initialize with incoming value to prevent undefined variable warning
+
         if('repeater'===$type) {
-            $outgoing = $incoming;
             // Iterate each repeater value
             foreach($incoming as $fieldsetFieldId=>$fieldsetFieldSubmissionValue ){
                 
@@ -530,7 +531,7 @@ final class NF_MergeTags_Fields extends NF_Abstracts_MergeTags
                 $outgoing = strip_shortcodes($incoming);
             }
         }
-       
+
         return $outgoing;
     }
 
@@ -579,7 +580,7 @@ final class NF_MergeTags_Fields extends NF_Abstracts_MergeTags
                 $outgoing = strip_tags($incoming);
             }
         }
-       
+
         return $outgoing;
     }
 

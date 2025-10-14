@@ -16,7 +16,7 @@ use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Box_Shadow;
-use PremiumAddons\Includes\Controls\Premium_Background;
+use Elementor\Group_Control_Background;
 
 // PremiumAddons Classes.
 use PremiumAddons\Admin\Includes\Admin_Helper;
@@ -895,23 +895,23 @@ class Premium_Image_Button extends Widget_Base {
 		$this->add_control(
 			'premium_image_button_icon_position',
 			array(
-				'label'       => __( 'Icon Position', 'premium-addons-for-elementor' ),
-				'type'        => Controls_Manager::SELECT,
-				'default'     => 'before',
-				'options'     => array(
+				'label'                => __( 'Icon Position', 'premium-addons-for-elementor' ),
+				'type'                 => Controls_Manager::SELECT,
+				'default'              => 'before',
+				'options'              => array(
 					'before' => __( 'Before', 'premium-addons-for-elementor' ),
 					'after'  => __( 'After', 'premium-addons-for-elementor' ),
 				),
-				'label_block' => true,
-				'condition'   => array(
+				'label_block'          => true,
+				'condition'            => array(
 					'premium_image_button_icon_switcher' => 'yes',
 					'premium_image_button_hover_effect!' => 'style4',
 				),
 				'selectors_dictionary' => array(
-					'before'  => 'row',
-					'after' => 'row-reverse',
+					'before' => 'row',
+					'after'  => 'row-reverse',
 				),
-				'selectors'   => array(
+				'selectors'            => array(
 					'{{WRAPPER}} .premium-image-button-text-icon-wrapper' => 'flex-direction: {{VALUE}}',
 				),
 			)
@@ -1205,7 +1205,7 @@ class Premium_Image_Button extends Widget_Base {
 		}
 
 		$this->add_group_control(
-			Premium_Background::get_type(),
+			Group_Control_Background::get_type(),
 			array(
 				'name'           => 'premium_image_button_background',
 				'types'          => array( 'classic', 'gradient' ),
@@ -1477,7 +1477,7 @@ class Premium_Image_Button extends Widget_Base {
 		);
 
 		$this->add_group_control(
-			Premium_Background::get_type(),
+			Group_Control_Background::get_type(),
 			array(
 				'name'           => 'premium_image_button_background_hover',
 				'types'          => array( 'classic', 'gradient' ),

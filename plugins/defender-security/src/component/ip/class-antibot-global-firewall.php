@@ -90,6 +90,7 @@ class Antibot_Global_Firewall extends Component {
 		$this->antibot_client = $antibot_client;
 
 		add_action( 'wpdef_confirm_antibot_toggle_on_hosting', array( $this, 'confirm_toggle_on_hosting' ) );
+		add_action( 'wp_loaded', array( $this, 'clear_antibot_on_disconnection' ) );
 	}
 
 	/**
@@ -145,6 +146,16 @@ class Antibot_Global_Firewall extends Component {
 	 */
 	public function is_active_via_plugin(): bool {
 		return 'plugin' === $this->get_managed_by() && $this->is_enabled() && $this->is_site_connected_to_hub_via_hcm_or_dash();
+	}
+
+	/**
+	 * Check if the AntiBot Global Firewall is active via hosting.
+	 *
+	 * @since 5.6.0
+	 * @return bool True if the AntiBot Global Firewall is active via hosting, false otherwise.
+	 */
+	public function is_active_via_hosting(): bool {
+		return 'hosting' === $this->get_managed_by() && $this->hosting_is_enabled();
 	}
 
 	/**
@@ -706,5 +717,23 @@ class Antibot_Global_Firewall extends Component {
 		}
 
 		return $this->frontend_mode();
+	}
+
+	/**
+	 * Clear antibot table when site is disconnected from HUB.
+	 *
+	 * @return void
+	 */
+	public function clear_antibot_on_disconnection(): void {
+		if ( $this->is_site_connected_to_hub_via_hcm_or_dash() ) {
+			return;
+		}
+		if ( $this->get_cached_blocklisted_ips() <= 0 ) {
+			return;
+		}
+		$this->delete_blocklist();
+		delete_site_transient( self::BLOCKLIST_STATS_KEY . '_' . $this->get_mode() );
+		delete_site_transient( self::BLOCKLIST_STATS_KEY . '_' . $this->get_hosting_mode() );
+		$this->log( 'Antibot table cleared due to site disconnection.', self::LOG_FILE_NAME );
 	}
 }

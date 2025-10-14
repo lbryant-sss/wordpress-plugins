@@ -1310,28 +1310,28 @@ class Premium_Icon_List extends Widget_Base {
 		$this->add_responsive_control(
 			'text_align',
 			array(
-				'label'     => __( 'Text Alignment', 'premium-addons-for-elementor' ),
-				'type'      => Controls_Manager::CHOOSE,
+				'label'       => __( 'Text Alignment', 'premium-addons-for-elementor' ),
+				'type'        => Controls_Manager::CHOOSE,
 				'description' => __( 'Aligns the <b>title and description</b> inside each list item.', 'premium-addons-for-elementor' ),
-				'options'   => array(
-					'start' => array(
+				'options'     => array(
+					'start'  => array(
 						'title' => __( 'Left', 'premium-addons-for-elementor' ),
 						'icon'  => 'eicon-text-align-left',
 					),
-					'center'     => array(
+					'center' => array(
 						'title' => __( 'Center', 'premium-addons-for-elementor' ),
 						'icon'  => 'eicon-text-align-center',
 					),
-					'end'   => array(
+					'end'    => array(
 						'title' => __( 'Right', 'premium-addons-for-elementor' ),
 						'icon'  => 'eicon-text-align-right',
 					),
 				),
-				'selectors' => array(
+				'selectors'   => array(
 					'{{WRAPPER}} .premium-bullet-list-content .premium-bullet-list-text-wrapper > span' => 'align-self: {{VALUE}}; text-align: {{VALUE}};',
 				),
-				'toggle'    => false,
-				'default'   => 'start',
+				'toggle'      => false,
+				'default'     => 'start',
 			)
 		);
 

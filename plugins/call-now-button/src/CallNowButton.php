@@ -16,12 +16,12 @@ use cnb\admin\apikey\OttController;
 use cnb\admin\button\CnbButtonController;
 use cnb\admin\button\CnbButtonRouter;
 use cnb\admin\chat\CnbChatController;
-use cnb\admin\chat\CnbChatMarketingView;
 use cnb\admin\chat\CnbChatRouter;
 use cnb\admin\chat\CnbChatAjaxHandler;
 use cnb\admin\CnbAdminAjax;
 use cnb\admin\condition\CnbConditionController;
 use cnb\admin\condition\CnbConditionRouter;
+use cnb\admin\dashboard\CnbDashboardWidget;
 use cnb\admin\deactivation\Activation;
 use cnb\admin\domain\CnbDomainCache;
 use cnb\admin\domain\CnbDomainController;
@@ -37,6 +37,7 @@ use cnb\admin\profile\CnbProfileController;
 use cnb\admin\profile\CnbProfileRouter;
 use cnb\admin\settings\CnbSettingsController;
 use cnb\admin\settings\CnbSettingsRouter;
+use cnb\cache\CacheHandler;
 use cnb\cron\Cron;
 use cnb\notices\CnbAdminNotices;
 use cnb\utils\Cnb_Sentry;
@@ -315,9 +316,16 @@ class CallNowButton {
 
     /**
      * Only used by tests
+     *
+     * These are subject to the same user/capability level as the CallNowButton plugin pages.
+     *
      * @return void
      */
     public function unregister_options() {
+	    if (!current_user_can('manage_options')) {
+		    return;
+	    }
+
         unregister_setting( 'cnb_options', 'cnb' );
     }
 
@@ -561,7 +569,18 @@ class CallNowButton {
 		    true );
     }
 
+	/**
+	 * Various utility actions
+	 *
+	 * These are subject to the same user/capability level as the CallNowButton plugin pages.
+	 *
+	 * @return void
+	 */
     public function register_global_actions() {
+	    if (!current_user_can('manage_options')) {
+		    return;
+	    }
+
         add_action( 'admin_menu', array( $this, 'register_admin_pages' ) );
         add_action( 'admin_menu', array( $this, 'register_welcome_page' ) );
         add_action( 'admin_head', array( $this, 'hide_welcome_page' ) );
@@ -598,10 +617,20 @@ class CallNowButton {
 
 	    $admin_functions = new CnbAdminFunctions();
 	    add_filter( 'cnb_get_condition_types', array( $admin_functions, 'filter_condition_types' ) );
-
     }
 
+	/**
+	 * Generic header and footer actions used throughout the various plugin pages
+	 *
+	 * These are subject to the same user/capability level as the CallNowButton plugin pages.
+	 *
+	 * @return void
+	 */
     public function register_header_and_footer() {
+	    if (!current_user_can('manage_options')) {
+		    return;
+	    }
+
         // Generic header/footer
         $header = new CnbHeader();
         add_action( 'cnb_header', array( $header, 'render' ) );
@@ -609,11 +638,18 @@ class CallNowButton {
         add_action( 'cnb_footer', array( $footer, 'render' ) );
     }
 
-    /**
-     * Page specific actions
-     * @return void
-     */
+	/**
+	 * Page specific "admin_post" actions to handle basic CRUD actions
+	 *
+	 * These are subject to the same user/capability level as the CallNowButton plugin pages.
+	 *
+	 * @return void
+	 */
     public function register_admin_post_actions() {
+	    if (!current_user_can('manage_options')) {
+		    return;
+	    }
+
         $button_controller = new CnbButtonController();
 	    add_action( 'admin_post_cnb_create_button', array( $button_controller, 'create' ) );
 
@@ -667,7 +703,18 @@ class CallNowButton {
         }
     }
 
+	/**
+	 * Register the various AJAX calls that help manage the UI state.
+	 *
+	 * These are subject to the same user/capability level as the CallNowButton plugin pages.
+	 *
+	 * @return void
+	 */
     public function register_ajax_actions() {
+	    if (!current_user_can('manage_options')) {
+		    return;
+	    }
+
         $ajax_controller = new CnbAdminAjax();
         add_action( 'wp_ajax_cnb_time_format', array( $ajax_controller, 'time_format' ) );
         add_action( 'wp_ajax_cnb_settings_profile_save', array( $ajax_controller, 'settings_profile_save' ) );
@@ -707,7 +754,43 @@ class CallNowButton {
     }
 
 	/**
+	 * Register the NowButtons dashboard widget
+	 *
+	 * This is only relevant to users that can actually manage the CallNowButtons plugin.
+	 *
+	 * @return void
+	 */
+	public function register_dashboard_widget() {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
+		// Add dashboard widget
+		$dashboard_widget = new CnbDashboardWidget();
+		$dashboard_widget->register_dashboard();
+	}
+
+	/**
+	 * Exclude the CallNowButtons actions from caching plugins
+	 *
+	 * This is only relevant to users that can actually manage the CallNowButtons plugin.
+	 *
+	 * @return void
+	 */
+	public function exclude_from_caching_plugins() {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
+		// Ensure we are excluded from certain Caching plugins
+		$cache_handler = new CacheHandler();
+		$cache_handler->register_exclude_actions();
+	}
+
+	/**
 	 * Register the CallNowButton Cron jobs, which run regularly to update the internal state.
+	 *
+	 * This call can be done at any user/capability level.
 	 *
 	 * @return void
 	 */

@@ -7,7 +7,7 @@ Tags: ووکامرس,woocommerce,ووکامرس فارسی,persian woocommerce,s
 Requires at least: 6.0.0
 Tested up to: 6.7.1
 Requires PHP: 7.4
-Stable tag: 9.3.1
+Stable tag: 9.3.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -79,6 +79,16 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 میتوانید راهنما و مستندات را از طریق سایت [WooSupport.ir](https://www.woosupport.ir) بدست بیاورید
 
 == Changelog ==
+= 9.3.2 =
+* معرفی افزونه درگاه پرداخت هوشمند «گیت‌لند»
+* فعالسازی تاریخ شمسی به صورت پیشفرض
+* افزایش زمان تایم اوت درگاه زیبال
+* بهبود الگوریتم بررسی صحت شماره موبایل
+* بهبود نمایش تاریخ در صفحه ویرایش سفارش
+* تبدیل اعداد فارسی و عربی به انگلیسی در تسویه حساب
+* بهبود فونت پیکربندی ووکامرس
+* حذف موقت شمسی‌سازی تجزیه و تحلیل
+* حل مشکل فونت پیشفرض پنل مدیریت
 = 9.3.1 =
 * بازنگری و بهبود ترجمه فارسی
 * افزودن تاریخ شمسی برای فرم ساز Forminator

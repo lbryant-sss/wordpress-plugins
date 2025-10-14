@@ -13,6 +13,7 @@ use WPMUDEV\Hub\Connector\Data;
 use WP_Defender\Component\Config\Config_Hub_Helper;
 
 trait Defender_Dashboard_Client {
+	use \WP_Defender\Traits\Plugin;
 
 	/**
 	 * Get membership status.
@@ -66,7 +67,7 @@ trait Defender_Dashboard_Client {
 		} else {
 			// Check if it's Pro but user logged the WPMU DEV Dashboard out.
 			require_once ABSPATH . 'wp-admin/includes/plugin.php';
-			$menu_title = file_exists( WP_PLUGIN_DIR . DIRECTORY_SEPARATOR . WP_DEFENDER_PRO_PATH )
+			$menu_title = file_exists( $this->get_abs_plugin_path_by_slug( WP_DEFENDER_PRO_PATH ) )
 							&& is_plugin_active( WP_DEFENDER_PRO_PATH )
 				? esc_html__( 'Defender Pro', 'defender-security' )
 				: esc_html__( 'Defender', 'defender-security' );

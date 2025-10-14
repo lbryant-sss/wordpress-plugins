@@ -24,6 +24,7 @@ return array(
     'PopupMaker\\Controllers\\CallToActions' => $baseDir . '/classes/Controllers/CallToActions.php',
     'PopupMaker\\Controllers\\Compatibility' => $baseDir . '/classes/Controllers/Compatibility.php',
     'PopupMaker\\Controllers\\Compatibility\\Backcompat\\Filters' => $baseDir . '/classes/Controllers/Compatibility/Backcompat/Filters.php',
+    'PopupMaker\\Controllers\\Compatibility\\Builder\\Divi' => $baseDir . '/classes/Controllers/Compatibility/Builder/Divi.php',
     'PopupMaker\\Controllers\\Compatibility\\SEO\\Yoast' => $baseDir . '/classes/Controllers/Compatibility/SEO/Yoast.php',
     'PopupMaker\\Controllers\\Debug' => $baseDir . '/classes/Controllers/Debug.php',
     'PopupMaker\\Controllers\\Frontend' => $baseDir . '/classes/Controllers/Frontend.php',

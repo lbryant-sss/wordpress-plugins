@@ -29,7 +29,7 @@ if ( ! class_exists( 'PW_Tools_Price' ) ) :
 				add_action( 'woocommerce_before_cart', [ $this, 'wc_minimum_order_amount' ] );
 			}
 
-			if ( PW()->get_options( 'variable_price', 'range' ) != 'range' ) {
+			if ( PW()->get_options( 'variable_price', 'min_sale' ) != 'range' ) {
 				add_action( 'woocommerce_variable_sale_price_html', [ $this, 'get_variation_price_format' ], 10, 2 );
 				add_action( 'woocommerce_variable_price_html', [ $this, 'get_variation_price_format' ], 10, 2 );
 				add_action( 'woocommerce_dropdown_variation_attribute_options_args', [
@@ -90,7 +90,7 @@ if ( ! class_exists( 'PW_Tools_Price' ) ) :
 
 		public function get_variation_price_format( string $price, WC_Product $product ): string {
 
-			[ $min_or_max, $type ] = explode( '_', PW()->get_options( 'variable_price' ) );
+			[ $min_or_max, $type ] = explode( '_', PW()->get_options( 'variable_price', 'min_sale' ) );
 
 			// Validation
 			$min_or_max = $min_or_max == 'min' ? 'min' : 'max';

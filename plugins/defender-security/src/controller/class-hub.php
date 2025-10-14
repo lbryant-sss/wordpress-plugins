@@ -215,7 +215,7 @@ class HUB extends Event {
 			}
 			$settings->save();
 			$feature = '404 Detection';
-		} elseif ( 'ua-lockout' === $type ) {
+		} elseif ( User_Agent_Lockout::get_module_slug() === $type ) {
 			$settings = new User_Agent_Lockout();
 			if ( $settings->enabled ) {
 				$settings->enabled = false;

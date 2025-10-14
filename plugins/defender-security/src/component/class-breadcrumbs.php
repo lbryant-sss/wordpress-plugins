@@ -26,7 +26,7 @@ class Breadcrumbs extends Component {
 	 */
 	private function get_feature_slug(): string {
 		return self::BREADCRUMBS_PREFIX_KEY
-			. \WP_Defender\Model\Scan_Item::TYPE_PLUGIN_OUTDATED . self::BREADCRUMBS_SUFFIX_KEY;
+			. \WP_Defender\Component\Fake_Bot_Detection::SCENARIO_FAKE_BOT . self::BREADCRUMBS_SUFFIX_KEY;
 	}
 
 	/**
@@ -36,7 +36,7 @@ class Breadcrumbs extends Component {
 	 */
 	private function get_previous_feature_slug(): string {
 		return self::BREADCRUMBS_PREFIX_KEY
-		. \WP_Defender\Model\Setting\Session_Protection::get_module_slug() . self::BREADCRUMBS_SUFFIX_KEY;
+		. \WP_Defender\Model\Scan_Item::TYPE_PLUGIN_OUTDATED . self::BREADCRUMBS_SUFFIX_KEY;
 	}
 
 	/**

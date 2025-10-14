@@ -25,10 +25,11 @@ class Lockout_Log extends DB {
 	public const AUTH_LOCK = 'auth_lock';
 	public const IP_UNLOCK = 'ip_unlock';
 
-	public const ERROR_404        = '404_error';
-	public const LOCKOUT_404      = '404_lockout';
-	public const ERROR_404_IGNORE = '404_error_ignore';
-	public const LOCKOUT_BOT_TRAP = 'bot_trap';
+	public const ERROR_404             = '404_error';
+	public const LOCKOUT_404           = '404_lockout';
+	public const ERROR_404_IGNORE      = '404_error_ignore';
+	public const LOCKOUT_MALICIOUS_BOT = 'malicious_bot';
+	public const LOCKOUT_FAKE_BOT      = 'fake_bot';
 
 	public const LOCKOUT_UA = 'ua_lockout';
 	// Different IP Lockout types.
@@ -143,25 +144,21 @@ class Lockout_Log extends DB {
 				)
 			);
 
-		if ( isset( $filters['ip'] ) && ! empty( $filters['ip'] ) ) {
+		if ( isset( $filters['ip'] ) && '' !== $filters['ip'] ) {
 			$orm->where( 'ip', 'like', '%' . $filters['ip'] . '%' );
 		}
-		if ( isset( $filters['type'] ) && ! empty( $filters['type'] ) ) {
+		if ( isset( $filters['type'] ) && '' !== $filters['type'] ) {
 			$orm->where( 'type', $filters['type'] );
 		}
 
-		if ( ! empty( $filters['ban_status'] ) ) {
-			$ban_status_where = self::ban_status_where( $filters['ban_status'] );
-
-			if ( 3 === count( $ban_status_where ) ) {
-				$orm->where( ...$ban_status_where );
-			}
+		if ( isset( $filters['ban_status'] ) && '' !== $filters['ban_status'] ) {
+			self::apply_ban_status_filter( $orm, $filters );
 		}
 
-		if ( ! empty( $order_by ) && ! empty( $order ) ) {
+		if ( '' !== $order_by && '' !== $order ) {
 			$orm->order_by( $order_by, $order );
 		}
-		if ( false !== $page_size && -1 !== (int) $page_size ) {
+		if ( $page_size > 0 ) {
 			$offset = ( $paged - 1 ) * $page_size;
 			$orm->limit( $page_size, $offset );
 		}
@@ -180,7 +177,7 @@ class Lockout_Log extends DB {
 	 *                          The following filters are supported:
 	 *                          - ban_status: The ban status to filter by.
 	 *
-	 * @return int|null The number of records matching the provided filters, or null if an error occurred.
+	 * @return string|null The number of records matching the provided filters, or null if an error occurred.
 	 */
 	public static function count( $date_from, $date_to, $type, $ip = '', $filters = array() ): ?string {
 		$orm = self::get_orm();
@@ -194,19 +191,17 @@ class Lockout_Log extends DB {
 				)
 			);
 
-		if ( ! empty( $type ) ) {
-			if ( is_array( $type ) ) {
-				$orm->where( 'type', 'in', $type );
-			} else {
-				$orm->where( 'type', $type );
-			}
+		if ( is_array( $type ) && array() !== $type ) {
+			$orm->where( 'type', 'in', $type );
+		} elseif ( is_string( $type ) && '' !== trim( $type ) ) {
+			$orm->where( 'type', $type );
 		}
 
-		if ( ! empty( $ip ) ) {
+		if ( is_string( $ip ) && '' !== trim( $ip ) ) {
 			$orm->where( 'ip', 'like', "%$ip%" );
 		}
 
-		if ( ! empty( $filters['ban_status'] ) ) {
+		if ( isset( $filters['ban_status'] ) && '' !== trim( $filters['ban_status'] ) ) {
 			$ban_status_where = self::ban_status_where( $filters['ban_status'] );
 
 			if ( 3 === count( $ban_status_where ) ) {
@@ -417,7 +412,7 @@ class Lockout_Log extends DB {
 	/**
 	 * Returns the log tag based on the given type.
 	 *
-	 * @param  int $type  The type of the log.
+	 * @param  string $type  The type of the log.
 	 *
 	 * @return string The log tag.
 	 */
@@ -439,7 +434,8 @@ class Lockout_Log extends DB {
 				$tag = 'Unlock';
 				break;
 			case self::LOCKOUT_UA:
-			case self::LOCKOUT_BOT_TRAP:
+			case self::LOCKOUT_MALICIOUS_BOT:
+			case self::LOCKOUT_FAKE_BOT:
 			default:
 				$tag = 'bots';
 				break;
@@ -460,7 +456,8 @@ class Lockout_Log extends DB {
 			case self::AUTH_LOCK:
 			case self::LOCKOUT_404:
 			case self::LOCKOUT_UA:
-			case self::LOCKOUT_BOT_TRAP:
+			case self::LOCKOUT_MALICIOUS_BOT:
+			case self::LOCKOUT_FAKE_BOT:
 				$class = 'sui-error';
 				break;
 			case self::AUTH_FAIL:
@@ -532,6 +529,35 @@ class Lockout_Log extends DB {
 	}
 
 	/**
+	 * Apply ban status filtering based on lockout type.
+	 *
+	 * @param object $orm The ORM query builder.
+	 * @param array  $filters The filters array.
+	 */
+	private static function apply_ban_status_filter( $orm, $filters ) {
+		$ban_status = $filters['ban_status'];
+		$type       = $filters['type'] ?? 'all';
+
+		// Define lockout type categories.
+		$ua_types = array( self::get_ua_lockout_types() );
+
+		if ( 'all' === $type || '' === $type ) {
+			// For 'all' type, only show UA types with ban_status filtering.
+			$ban_status_where = self::ban_status_where( $ban_status );
+			if ( 3 === count( $ban_status_where ) ) {
+				$orm->where( 'type', 'in', $ua_types );
+				$orm->where( ...$ban_status_where );
+			}
+		} elseif ( in_array( $type, $ua_types, true ) ) {
+			// For UA-specific types, apply UA filtering.
+			$ban_status_where = self::ban_status_where( $ban_status );
+			if ( 3 === count( $ban_status_where ) ) {
+				$orm->where( ...$ban_status_where );
+			}
+		}
+	}
+
+	/**
 	 * Prepare user-agent where condition based on the ban status variant.
 	 *
 	 * @param  string $ban_status_type  Ban status type.
@@ -540,28 +566,29 @@ class Lockout_Log extends DB {
 	 */
 	private static function ban_status_where( $ban_status_type ): array {
 		$table_lockout = wd_di()->get( Table_Lockout::class );
+		$ua_model      = wd_di()->get( User_Agent_Lockout::class );
 
 		if ( $table_lockout::STATUS_NOT_BAN === $ban_status_type ) {
-			$ua_model = wd_di()->get( User_Agent_Lockout::class );
-
-			$blocklist = $ua_model->get_lockout_list( 'blocklist' );
-			$allowlist = $ua_model->get_lockout_list( 'allowlist' );
-
-			$all = array_merge( $blocklist, $allowlist );
-
-			return array( 'user_agent', 'not regexp', implode( '|', $all ) );
+			$blocklist = $ua_model->get_all_selected_blocklist_ua();
+			if ( array() === $blocklist ) {
+				return array();
+			}
+			$escaped = array_map( 'preg_quote', $blocklist, array_fill( 0, count( $blocklist ), '' ) );
+			return array( 'user_agent', 'not regexp', '(?i)' . implode( '|', $escaped ) );
 		} elseif ( $table_lockout::STATUS_BAN === $ban_status_type ) {
-			$ua_model = wd_di()->get( User_Agent_Lockout::class );
-
-			$blocklist = $ua_model->get_lockout_list( 'blocklist' );
-
-			return array( 'user_agent', 'regexp', implode( '|', $blocklist ) );
+			$blocklist = $ua_model->get_all_selected_blocklist_ua();
+			if ( array() === $blocklist ) {
+				return array();
+			}
+			$escaped = array_map( 'preg_quote', $blocklist, array_fill( 0, count( $blocklist ), '' ) );
+			return array( 'user_agent', 'regexp', '(?i)' . implode( '|', $escaped ) );
 		} elseif ( $table_lockout::STATUS_ALLOWLIST === $ban_status_type ) {
-			$ua_model = wd_di()->get( User_Agent_Lockout::class );
-
 			$allowlist = $ua_model->get_lockout_list( 'allowlist' );
-
-			return array( 'user_agent', 'regexp', implode( '|', $allowlist ) );
+			if ( array() === $allowlist ) {
+				return array();
+			}
+			$escaped = array_map( 'preg_quote', $allowlist, array_fill( 0, count( $allowlist ), '' ) );
+			return array( 'user_agent', 'regexp', '(?i)' . implode( '|', $escaped ) );
 		}
 
 		return array();
@@ -627,14 +654,21 @@ class Lockout_Log extends DB {
 				$log['type_value']  = str_replace( '_', ' ', $item->type );
 				$arr_statuses       = $arr_ip_statuses;
 
-				if ( 'bot_trap' === $item->type ) {
+				if ( 'malicious_bot' === $item->type ) {
 					$log['access_status_ua'] = $ua_model->get_access_status( $item->user_agent );
 				}
 			}
 			// There may be several statuses.
-			$log['access_status']      = $arr_statuses;
-			$log['access_status_text'] = $ip_model->get_access_status_text( $arr_statuses[0] );
-			$data[]                    = $log;
+			$log['access_status'] = $arr_statuses;
+
+			// For UA lockout types, show UA status; for others show IP status.
+			if ( in_array( $item->type, array( self::get_ua_lockout_types() ), true ) ) {
+				$ua_statuses               = $ua_model->get_access_status( $item->user_agent );
+				$log['access_status_text'] = $ip_model->get_access_status_text( $ua_statuses[0] ?? 'na' );
+			} else {
+				$log['access_status_text'] = $ip_model->get_access_status_text( $arr_statuses[0] );
+			}
+			$data[] = $log;
 		}
 
 		return $data;
@@ -647,7 +681,7 @@ class Lockout_Log extends DB {
 	 */
 	public function has_recent_ip_log(): bool {
 		// Ensure IP is set before proceeding.
-		if ( empty( $this->ip ) ) {
+		if ( ! is_string( $this->ip ) || '' === trim( $this->ip ) ) {
 			return false;
 		}
 
@@ -659,7 +693,7 @@ class Lockout_Log extends DB {
 					->order_by( 'date', 'desc' )
 					->first();
 
-		if ( $latest_log ) {
+		if ( null !== $latest_log ) {
 			// Return true if the log is within the 5-minute timeframe.
 			return ( time() - $latest_log->date ) <= 300;
 		}
@@ -675,7 +709,8 @@ class Lockout_Log extends DB {
 	public static function get_ua_lockout_types(): array {
 		return array(
 			self::LOCKOUT_UA,
-			self::LOCKOUT_BOT_TRAP,
+			self::LOCKOUT_MALICIOUS_BOT,
+			self::LOCKOUT_FAKE_BOT,
 		);
 	}
 }

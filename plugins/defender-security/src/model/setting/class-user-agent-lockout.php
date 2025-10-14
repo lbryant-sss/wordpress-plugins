@@ -19,8 +19,8 @@ use WP_Defender\Component\User_Agent as User_Agent_Service;
  * 'Custom User Agents' is associated with the property $blacklist.
  */
 class User_Agent_Lockout extends Setting {
-	const BOT_TRAP_LOCKOUT_TYPE_ALLOWED          = array( 'temporary', 'permanent' );
-	const BOT_TRAP_LOCKOUT_DURATION_UNIT_ALLOWED = array( 'seconds', 'minutes', 'hours' );
+	const BOT_LOCKOUT_TYPE_ALLOWED          = array( 'temporary', 'permanent' );
+	const BOT_LOCKOUT_DURATION_UNIT_ALLOWED = array( 'seconds', 'minutes', 'hours' );
 
 	/**
 	 * Option name.
@@ -103,6 +103,95 @@ class User_Agent_Lockout extends Setting {
 	public $script_preset_values = array();
 
 	/**
+	 * Is malicious bot enabled?
+	 *
+	 * @var bool
+	 * @defender_property
+	 */
+	public $malicious_bot_enabled = false;
+
+	/**
+	 * How the lock is going to be, if we choose permanent, then their IP will be blacklisted.
+	 *
+	 * @var string
+	 * @defender_property
+	 * @rule in[temporary,permanent]
+	 */
+	public $malicious_bot_lockout_type = 'temporary';
+
+	/**
+	 * Duration for the lockout.
+	 *
+	 * @var int
+	 * @defender_property
+	 * @rule required|integer
+	 */
+	public $malicious_bot_lockout_duration = 300;
+
+	/**
+	 * Duration unit.
+	 *
+	 * @var string
+	 * @defender_property
+	 * @rule in[seconds,minutes,hours]
+	 */
+	public $malicious_bot_lockout_duration_unit = 'seconds';
+
+	/**
+	 * The message to show on frontend when a malicious bot is triggered.
+	 *
+	 * @var string
+	 * @defender_property
+	 * @sanitize sanitize_textarea_field
+	 */
+	public $malicious_bot_message = '';
+
+	/**
+	 * Is fake bots enabled?
+	 *
+	 * @var bool
+	 * @defender_property
+	 */
+	public $fake_bots_enabled = false;
+
+	/**
+	 * How the lock is going to be, if we choose permanent, then their IP will be blacklisted.
+	 *
+	 * @var string
+	 * @defender_property
+	 * @rule in[temporary,permanent]
+	 */
+	public $fake_bots_lockout_type = 'temporary';
+
+	/**
+	 * Duration for the lockout.
+	 *
+	 * @var int
+	 * @defender_property
+	 * @rule required|integer
+	 */
+	public $fake_bots_lockout_duration = 300;
+
+	/**
+	 * Duration unit.
+	 *
+	 * @var string
+	 * @defender_property
+	 * @rule in[seconds,minutes,hours]
+	 */
+	public $fake_bots_lockout_duration_unit = 'seconds';
+
+	/**
+	 * The message to show on frontend when a fake bot is triggered.
+	 *
+	 * @var string
+	 * @defender_property
+	 * @sanitize sanitize_textarea_field
+	 */
+	public $fake_bots_message = '';
+
+	/**
+	 * Old properties of the Bot Trap option for backward compatibility. We can remove them in future versions.
 	 * Is bot trap enabled?
 	 *
 	 * @var bool
@@ -138,23 +227,16 @@ class User_Agent_Lockout extends Setting {
 	public $bot_trap_lockout_duration_unit = 'seconds';
 
 	/**
-	 * The message to show on frontend when a bot trap is triggered.
-	 *
-	 * @var string
-	 * @defender_property
-	 * @sanitize sanitize_textarea_field
-	 */
-	public $bot_trap_message = '';
-
-	/**
 	 * Rules for validation.
 	 *
 	 * @var array
 	 */
 	protected $rules = array(
 		array( array( 'enabled', 'empty_headers', 'blocklist_presets', 'script_presets' ), 'boolean' ),
-		array( array( 'bot_trap_lockout_type' ), 'in', self::BOT_TRAP_LOCKOUT_TYPE_ALLOWED ),
-		array( array( 'bot_trap_lockout_duration_unit' ), 'in', self::BOT_TRAP_LOCKOUT_DURATION_UNIT_ALLOWED ),
+		array( array( 'malicious_bot_lockout_type' ), 'in', self::BOT_LOCKOUT_TYPE_ALLOWED ),
+		array( array( 'malicious_bot_lockout_duration_unit' ), 'in', self::BOT_LOCKOUT_DURATION_UNIT_ALLOWED ),
+		array( array( 'fake_bots_lockout_type' ), 'in', self::BOT_LOCKOUT_TYPE_ALLOWED ),
+		array( array( 'fake_bots_lockout_duration_unit' ), 'in', self::BOT_LOCKOUT_DURATION_UNIT_ALLOWED ),
 	);
 
 	/**
@@ -173,7 +255,8 @@ class User_Agent_Lockout extends Setting {
 
 		return array(
 			'message'                 => $message,
-			'bot_trap_message'        => $message,
+			'malicious_bot_message'   => $message,
+			'fake_bots_message'       => $message,
 			'whitelist'               => $whitelist,
 			// Blocked User Agents.
 			'blacklist'               => '',
@@ -200,7 +283,8 @@ class User_Agent_Lockout extends Setting {
 		$this->blocklist_preset_values = $default_values['blocklist_preset_values'];
 		$this->script_presets          = $default_values['script_presets'];
 		$this->script_preset_values    = $default_values['script_preset_values'];
-		$this->bot_trap_message        = $default_values['bot_trap_message'];
+		$this->malicious_bot_message   = $default_values['malicious_bot_message'];
+		$this->fake_bots_message       = $default_values['fake_bots_message'];
 	}
 
 	/**
@@ -456,5 +540,14 @@ class User_Agent_Lockout extends Setting {
 		$script_presets    = $this->script_presets ? $this->script_preset_values : array();
 
 		return array_merge( $blocklist_custom, $blocklist_presets, $script_presets );
+	}
+
+	/**
+	 * Return the module slug.
+	 *
+	 * @return string
+	 */
+	public static function get_module_slug(): string {
+		return 'ua-lockout';
 	}
 }

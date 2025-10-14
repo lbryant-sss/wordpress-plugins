@@ -60,7 +60,6 @@ class Admin {
 		add_filter( 'plugin_row_meta', array( $this, 'plugin_row_meta' ), 10, 3 );
 		// Only for plugin pages and actions are only for wp.org members.
 		if ( $this->is_wp_org_version ) {
-			wd_di()->get( Rate::class )->init();
 			add_action( 'admin_init', array( $this, 'register_free_modules' ), 20 );
 			/**
 			 * Action hook that fires after a scan issue is fixed.
@@ -318,7 +317,7 @@ class Admin {
 			$row_meta['rate']    = '<a href="' . esc_url( $this->get_link( 'rate' ) ) . '" aria-label="' . esc_attr__(
 				'Rate Defender',
 				'defender-security'
-			) . '" target="_blank">' . esc_html__( 'Rate Defender', 'defender-security' ) . '</a>';
+			) . '" target="_blank">' . Rate::get_rate_button_title() . '</a>';
 			$row_meta['support'] = '<a href="' . esc_url( $this->get_link( 'support' ) ) . '" aria-label="' . esc_attr__(
 				'Support',
 				'defender-security'

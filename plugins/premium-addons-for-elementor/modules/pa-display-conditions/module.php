@@ -57,8 +57,7 @@ class Module {
 
 		add_action( 'elementor/frontend/before_render', array( $this, 'check_script_enqueue' ) );
 
-        add_action( 'elementor/element/container/section_layout/after_section_end', array( $this, 'register_controls' ), 10 );
-
+		add_action( 'elementor/element/container/section_layout/after_section_end', array( $this, 'register_controls' ), 10 );
 	}
 
 	/**
@@ -89,6 +88,18 @@ class Module {
 			array(
 				'label' => sprintf( '<i class="pa-extension-icon pa-dash-icon"></i> %s', __( 'Display Conditions', 'premium-addons-for-elementor' ) ),
 				'tab'   => Controls_Manager::TAB_ADVANCED,
+			)
+		);
+
+		$element->add_control(
+			'pa_dc_cache_notice',
+			array(
+				'type'            => Controls_Manager::RAW_HTML,
+				'raw'             => __( 'Please note that you need to <b>deactivate</b> the <a href="https://elementor.com/help/element-caching-help/" style="color: var(--e-a-color-warning);" target="_blank">Element Caching</a> feature to avoid any conflicts', 'premium-addons-for-elementor' ),
+				'content_classes' => 'elementor-panel-alert elementor-panel-alert-warning',
+				'condition'       => array(
+					'pa_display_conditions_switcher' => 'yes',
+				),
 			)
 		);
 
@@ -373,9 +384,9 @@ class Module {
 			return;
 		}
 
-        $settings = $element->get_active_settings();
+		$settings = $element->get_active_settings();
 
-		if ( ! empty( $settings[ 'pa_display_conditions_switcher' ] ) ) {
+		if ( ! empty( $settings['pa_display_conditions_switcher'] ) ) {
 
 			$this->enqueue_scripts();
 

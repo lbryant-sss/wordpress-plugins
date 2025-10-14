@@ -142,7 +142,7 @@ class Premium_Title extends Widget_Base {
 			}
 		}
 
-        $scripts[] = 'premium-addons';
+		$scripts[] = 'premium-addons';
 
 		return $scripts;
 	}

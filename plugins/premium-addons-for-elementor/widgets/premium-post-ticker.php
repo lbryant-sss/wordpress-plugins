@@ -171,7 +171,7 @@ class Premium_Post_Ticker extends Widget_Base {
 
 		if ( $is_edit ) {
 
-            $draw_scripts = $this->check_icon_draw() ? array( 'pa-tweenmax', 'pa-motionpath' ) : array();
+			$draw_scripts = $this->check_icon_draw() ? array( 'pa-tweenmax', 'pa-motionpath' ) : array();
 
 			$scripts = array_merge( $draw_scripts, array( 'pa-glass', 'lottie-js' ) );
 
@@ -179,7 +179,7 @@ class Premium_Post_Ticker extends Widget_Base {
 
 			$settings = $this->get_settings();
 
-			$draw_js = false;
+			$draw_js   = false;
 			$lottie_js = false;
 
 			if ( 'yes' === $settings['draw_svg'] ) {
@@ -205,8 +205,6 @@ class Premium_Post_Ticker extends Widget_Base {
 						$scripts[] = 'lottie-js';
 						$lottie_js = true;
 					}
-
-
 				}
 			}
 

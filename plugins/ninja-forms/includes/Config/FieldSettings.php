@@ -937,6 +937,19 @@ return apply_filters( 'ninja_forms_field_settings', array(
     ),
 
     /*
+     * Custom Autocomplete Value
+     */
+
+    'custom_autocomplete' => array(
+        'name' => 'custom_autocomplete',
+        'type' => 'textbox',
+        'label' => esc_html__( 'Custom Autocomplete Value', 'ninja-forms' ),
+        'width' => 'full',
+        'group' => 'advanced',
+        'help' => esc_html__( 'Set a custom autocomplete value (e.g., tel, email, given-name).', 'ninja-forms' ),
+    ),
+
+    /*
      * Disable input
      */
 

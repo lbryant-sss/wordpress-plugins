@@ -18,9 +18,9 @@ use WP_Defender\Traits\Country;
 use WP_Defender\Behavior\WPMUDEV;
 use WP_Defender\Model\Lockout_Ip;
 use WP_Defender\Traits\Continent;
-use WP_Defender\Controller\Firewall;
 use WP_Defender\Component\Blacklist_Lockout;
 use MaxMind\Db\Reader\InvalidDatabaseException;
+use WP_Defender\Component\Network_Cron_Manager;
 use WP_Defender\Integrations\MaxMind_Geolocation;
 use WP_Defender\Component\Config\Config_Hub_Helper;
 use WP_Defender\Model\Setting\Blacklist_Lockout as Model_Blacklist_Lockout;
@@ -66,14 +66,22 @@ class Blacklist extends Controller {
 		add_action( 'wd_blacklist_this_ip', array( $this, 'blacklist_an_ip' ) );
 		// Update MaxMind's DB.
 		if ( ! empty( $this->model->maxmind_license_key ) ) {
-			if ( ! wp_next_scheduled( 'wpdef_update_geoip' ) ) {
-				wp_schedule_event( strtotime( 'next Thursday' ), 'weekly', 'wpdef_update_geoip' );
-			}
 			// @since 2.8.0 Allows update or remove the database of MaxMind automatic and periodically (MaxMind's TOS).
 			$bind_updater = (bool) apply_filters( 'wd_update_maxmind_database', true );
-			// Bind to the scheduled updater action.
+
 			if ( $bind_updater ) {
-				add_action( 'wpdef_update_geoip', array( $this, 'update_database' ) );
+				/**
+				 * Network Cron Manager
+				 *
+				 * @var Network_Cron_Manager $network_cron_manager
+				 */
+				$network_cron_manager = wd_di()->get( Network_Cron_Manager::class );
+				$network_cron_manager->register_callback(
+					'wpdef_update_geoip',
+					array( $this, 'update_database' ),
+					WEEK_IN_SECONDS,
+					'next Thursday'
+				);
 			}
 		}
 	}
@@ -87,6 +95,9 @@ class Blacklist extends Controller {
 	 */
 	public function blacklist_an_ip( string $ip ): void {
 		$this->model->add_to_list( $ip, 'blocklist' );
+		if ( defender_is_wp_org_version() ) {
+			\WP_Defender\Component\Rate::run_counter_of_ip_lockouts();
+		}
 	}
 
 	/**
@@ -135,20 +146,22 @@ class Blacklist extends Controller {
 			$current_country[] = $this->get_current_country( $ip );
 		}
 
+		$misc = array(
+			'user_ip'                        => implode( ',', $user_ip ),
+			'is_geodb_downloaded'            => $exist_geodb,
+			'blacklist_countries'            => $blacklist_countries,
+			'whitelist_countries'            => $whitelist_countries,
+			'current_country'                => $current_country,
+			'no_ips'                         => '' === $arr_model['ip_blacklist'] && '' === $arr_model['ip_whitelist'],
+			'countries_with_continents_list' => $countries_with_continents_list,
+			'geodb_license_key'              => $this->mask_license_key( $this->model->maxmind_license_key ),
+			'module_name'                    => Model_Blacklist_Lockout::get_module_name(),
+		);
+
 		return array_merge(
 			array(
 				'model' => $arr_model,
-				'misc'  => array(
-					'user_ip'                        => implode( ',', $user_ip ),
-					'is_geodb_downloaded'            => $exist_geodb,
-					'blacklist_countries'            => $blacklist_countries,
-					'whitelist_countries'            => $whitelist_countries,
-					'current_country'                => $current_country,
-					'no_ips'                         => '' === $arr_model['ip_blacklist'] && '' === $arr_model['ip_whitelist'],
-					'countries_with_continents_list' => $countries_with_continents_list,
-					'geodb_license_key'              => $this->mask_license_key( $this->model->maxmind_license_key ),
-					'module_name'                    => Model_Blacklist_Lockout::get_module_name(),
-				),
+				'misc'  => $misc,
 			),
 			$this->dump_routes_and_nonces()
 		);

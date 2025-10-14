@@ -90,12 +90,6 @@ class Persian_Woocommerce_Core {
 				'slug'       => esc_url( admin_url( 'admin.php?page=persian-wc-tools&tab=super_admin' ) ),
 				'callback'   => '',
 			],
-			30 => [
-				'title'      => 'افزونه ها',
-				'capability' => 'manage_woocommerce',
-				'slug'       => 'persian-wc-plugins',
-				'callback'   => [ $this, 'plugins_page', ],
-			],
 			45 => [
 				'title'      => 'ملی پیامک',
 				'capability' => 'manage_woocommerce',

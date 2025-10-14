@@ -17,6 +17,7 @@ use Calotes\Component\Behavior;
 use WP_Defender\Model\Scan_Item;
 use WP_Defender\Traits\File_Operations;
 use WP_Defender\Component\Quarantine as Quarantine_Component;
+use WP_Filesystem_Base;
 
 /**
  * Class Plugin_Integrity
@@ -91,7 +92,7 @@ class Plugin_Integrity extends Behavior {
 	public function resolve() {
 		global $wp_filesystem;
 		// Initialize the WP filesystem, no more using 'file-put-contents' function.
-		if ( empty( $wp_filesystem ) ) {
+		if ( ! $wp_filesystem instanceof WP_Filesystem_Base ) {
 			require_once ABSPATH . '/wp-admin/includes/file.php';
 			WP_Filesystem();
 		}
@@ -185,7 +186,7 @@ class Plugin_Integrity extends Behavior {
 	public function pull_src(): array {
 		global $wp_filesystem;
 		// Initialize the WP filesystem, no more using 'file-put-contents' function.
-		if ( empty( $wp_filesystem ) ) {
+		if ( ! $wp_filesystem instanceof WP_Filesystem_Base ) {
 			require_once ABSPATH . '/wp-admin/includes/file.php';
 			WP_Filesystem();
 		}

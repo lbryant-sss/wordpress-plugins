@@ -228,7 +228,7 @@ class Two_Factor extends Event {
 			return;
 		}
 		// Is TOTP saved with a passcode?
-		if ( ! empty( $this->service->get_available_providers_for_user( $user ) ) ) {
+		if ( array() !== $this->service->get_available_providers_for_user( $user ) ) {
 			return;
 		}
 		$screen = get_current_screen();
@@ -283,7 +283,7 @@ class Two_Factor extends Event {
 		}
 
 		$post = defender_get_data_from_request( null, 'p' );
-		if ( empty( $post['_wpnonce'] ) || ! wp_verify_nonce( $post['_wpnonce'], 'verify_otp' ) ) {
+		if ( '' === $post['_wpnonce'] || ! wp_verify_nonce( $post['_wpnonce'], 'verify_otp' ) ) {
 			wp_die( esc_html__( 'Nonce verification failed.', 'defender-security' ) );
 		}
 
@@ -291,7 +291,7 @@ class Two_Factor extends Event {
 		$user_id     = (int) HTTP::post( 'requested_user', 0 );
 		$auth_method = HTTP::post( 'auth_method' );
 		$password    = HTTP::post( 'password' );
-		if ( empty( $token ) || empty( $user_id ) || empty( $auth_method ) || empty( $password ) ) {
+		if ( '' === $token || 0 === $user_id || '' === $auth_method || '' === $password ) {
 			wp_die( esc_html__( 'Missing parameter(s)', 'defender-security' ) );
 		}
 

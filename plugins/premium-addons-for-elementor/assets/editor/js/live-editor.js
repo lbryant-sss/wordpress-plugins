@@ -42,7 +42,7 @@
                 settingsToChange = {};
 
             // multiscroll has two temps in each repeater item => both temps will have the same id so we need to distinguish one of them.
-            if ('right_side_template' === tempSelectorId) {
+            if ('right_side_template' === tempSelectorId || 'premium_content_toggle_second_content_templates' === tempSelectorId) {
                 widgetId += '2';
             }
 
@@ -64,7 +64,7 @@
                     type: tempType
                 },
                 success: function (res) {
-
+                    console.log(res);
                     paIframe.attr("src", res.data.url);
                     paIframe.attr("data-premium-temp-id", res.data.id);
 

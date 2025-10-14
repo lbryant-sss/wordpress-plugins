@@ -110,7 +110,7 @@ class Abandoned_Result extends Behavior {
 			);
 		}
 
-		$abs_path = wp_normalize_path( WP_PLUGIN_DIR ) . DIRECTORY_SEPARATOR . $data['slug'];
+		$abs_path = $this->get_abs_plugin_path_by_slug( $data['slug'] );
 		if ( file_exists( $abs_path ) && ! $this->maybe_remove( $abs_path ) ) {
 			return array(
 				'type_notice' => 'error',

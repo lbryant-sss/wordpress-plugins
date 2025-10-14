@@ -120,7 +120,6 @@ class Premium_Contactform extends Widget_Base {
 			if ( 'none' !== $settings['fields_lq_effect'] || 'none' !== $settings['submit_lq_effect'] ) {
 				$scripts[] = 'pa-glass';
 			}
-
 		}
 
 		$scripts[] = 'premium-addons';

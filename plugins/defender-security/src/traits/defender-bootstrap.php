@@ -44,6 +44,8 @@ use WP_Defender\Component\Firewall as Firewall_Component;
 use WP_Defender\Controller\Firewall as Firewall_Controller;
 use WP_Defender\Controller\Hub_Connector as Hub_Connector_Controller;
 use WP_Defender\Model\Onboard as Onboard_Model;
+use WP_Defender\Controller\Rate as Rate_Controller;
+use WP_Defender\Component\Rate as Rate_Component;
 
 trait Defender_Bootstrap {
 	/**
@@ -154,7 +156,7 @@ trait Defender_Bootstrap {
 		$this->on_activation();
 		// Create a file with a random key if it doesn't exist.
 		( new Crypt() )->create_key_file();
-		// If this is a plugin reactivatin, then track it. No need the check by 'wd_nofresh_install' key because the option is disabled by default.
+		// If this is a plugin reactivating, then track it. No need the check by 'wd_nofresh_install' key because the option is disabled by default.
 		$settings = wd_di()->get( Main_Setting::class );
 		$settings->set_intention( 'Reactivation' );
 		$settings->track_opt( true );
@@ -189,7 +191,7 @@ trait Defender_Bootstrap {
 		wp_clear_scheduled_hook( 'wpdef_smart_ip_detection_ping' );
 		wp_clear_scheduled_hook( 'wpdef_confirm_antibot_toggle_on_hosting' );
 		wp_clear_scheduled_hook( 'wpdef_firewall_whitelist_server_public_ip' );
-		wp_clear_scheduled_hook( 'wpdef_rotate_bot_trap_secret_hash' );
+		wp_clear_scheduled_hook( 'wpdef_rotate_malicious_bot_secret_hash' );
 
 		// Remove old legacy cron jobs if they exist.
 		wp_clear_scheduled_hook( 'lockoutReportCron' );
@@ -372,13 +374,11 @@ SQL;
 	}
 
 	/**
-	 * Initializes the common modules of the application.
+	 * Check if this is onboarding.
 	 *
-	 * @return void
+	 * @return bool
 	 */
-	private function init_modules_common(): void {
-		// Init main ORM.
-		Array_Cache::set( 'orm', new Mapper() );
+	private function is_onboarding(): bool {
 		/**
 		 * Display Onboarding if:
 		 * it's a fresh install and there were no requests from the Hub before,
@@ -388,7 +388,20 @@ SQL;
 		 */
 		$hub_class = wd_di()->get( HUB::class );
 		$hub_class->set_onboarding_status( Onboard_Model::maybe_show_onboarding() );
-		if ( $hub_class->get_onboarding_status() && ! defender_is_wp_cli() ) {
+
+		return $hub_class->get_onboarding_status() && ! defender_is_wp_cli();
+	}
+
+	/**
+	 * Initialize the common modules of the application.
+	 *
+	 * @return void
+	 */
+	private function init_modules_common(): void {
+		// Init main ORM.
+		Array_Cache::set( 'orm', new Mapper() );
+
+		if ( $this->is_onboarding() ) {
 			// If it's cli we should start this normally.
 			Array_Cache::set( 'onboard', wd_di()->get( Onboard::class ) );
 		} else {
@@ -420,6 +433,9 @@ SQL;
 			wd_di()->get( Quarantine::class );
 		}
 		wd_di()->get( Data_Tracking::class );
+		if ( defender_is_wp_org_version() ) {
+			wd_di()->get( Rate_Controller::class );
+		}
 
 		if ( is_multisite() ) {
 			wd_di()->get( Network_Cron_Manager::class );
@@ -556,6 +572,20 @@ SQL;
 			$misc = $data_tracking->get_tracking_modal();
 		}
 		$misc['high_contrast'] = defender_high_contrast();
+
+		if ( defender_is_wp_org_version() ) {
+			$misc['rating'] = array();
+			$rate_service   = Rate_Component::is_achievement_displayed();
+			if ( $rate_service['is_displayed'] ) {
+				$misc['rating']         = wd_di()->get( Rate_Controller::class )->data_frontend();
+				$misc['rating']['text'] = Rate_Component::get_notice_by_slug( $rate_service['slug'] );
+			}
+
+			$misc['rating']['is_displayed'] = $rate_service['is_displayed'];
+			$misc['rating']['type']         = $rate_service['slug'];
+		} else {
+			$misc['rating']['is_displayed'] = false;
+		}
 
 		wp_localize_script(
 			'def-vue',

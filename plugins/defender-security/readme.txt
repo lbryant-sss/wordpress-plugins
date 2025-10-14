@@ -1,13 +1,13 @@
 === Defender Security - Malware Scanner, Login Security & Firewall ===
 Plugin Name: Defender Security - Malware Scanner, Login Security & Firewall
-Version: 5.5.1
+Version: 5.6.0
 Author: WPMU DEV
 Author URI: https://wpmudev.com/
 Contributors: WPMUDEV
 Tags: security, malware, firewall, malware scanner, login security
 Requires at least: 6.4
-Tested up to: 6.8.2
-Stable tag: 5.5.1
+Tested up to: 6.8.3
+Stable tag: 5.6.0
 Requires PHP: 7.4
 License: GPL v2 - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
@@ -33,31 +33,38 @@ Defender's one-click security hardening recommendations instantly adds layers of
 
 ### Enhance Security and Block Hackers At Every Level:
 
-* Malware scanner - scan WordPress core files for modifications and unexpected changes which may be caused by malware. Scan for malware and tighten up the security of your files
-* AntiBot Global Firewall - Connect for free to WPMU DEV to block harmful IPs with data from over 500,000 sites
-* WordPress Security Firewall - block or allowlist IPs, implement IP blocking, and Geo IP blocking, user agent banning and protect against brute force attacks
-* Two-factor authentication (2FA) - Easily set up better security with 2FA to prevent most login attacks such as brute force, App verification, backup codes, lost device email, WooCommerce 2FA, and Web Authentication
-* Login masking - change the location of WordPress's default login area to improve login security
-* Login lockout - failed login attempts lockout for even more security assurance
-* User Agent Banning - Fortify security by blocking bad bots and user agents from accessing your site
-* Security Headers - Add an extra layer of defense security and protect against common attacks like: XSS, code injection, and more
-* 404 Detection security - automated block of bot IPs
-* Security Configs - Create your ideal Defender security plugin settings and export / import saved configs to any other site
-* Geolocation IP lockout security - block users based on location and country (IP blocking)
-* Disable trackbacks and pingbacks - disable these notifications to enhance spam protection and site security.
-* Core and server update security recommendations - stay on top of your system security
-* Antivirus scan - scan for active security threats, viruses, and other malware
-* Disable file editor - if they get in, they won't get far
-* Hide error reporting - hide code errors on the frontend so hackers can’t exploit site security
-* Update security keys - update old WordPress security keys to be more encrypted and provide better security
-* Prevent information disclosure - improve server security and protect sensitive files by locking down specific file types
-* Prevent PHP execution - Defender bolsters security by automatically preventing any PHP code from being executed
-* Resolve security recommendations and issues in bulk
-* Google reCAPTCHA security - easy to add, stop fraud and abuse - including BuddyPress and WooCommerce
-* Pwned Password Check - Increase security by protecting against compromised passwords
-* Force Password Reset - Force users with selected roles to reset passwords
-* Force Strong Passwords – Ensure users create secure credentials by enforcing robust password requirements
-* User Agent Blocklist Presets – Easily block unwanted bots and scripts using curated user agent presets.
+* **Malware Scanner** - Scan WordPress core files for modifications and unexpected changes which may be caused by malware. Scan for malware and tighten up the security of your files.
+* **Outdated & Removed Plugins** – Scans for plugins removed from WordPress.org or not updated in 2+ years.
+* **AntiBot Global Firewall** - Connect for free to WPMU DEV to block harmful IPs with data from over 500,000 sites.
+* **WordPress Security Firewall** - Block or allowlist IPs, implement IP blocking, and Geo IP blocking, user agent banning and protect against brute force attacks.
+* **Two-Factor Authentication (2FA)** - Easily set up better security with 2FA to prevent most login attacks such as brute force, App verification, backup codes, lost device email, WooCommerce 2FA, and Web Authentication.
+* **Login Masking** - Change the location of WordPress's default login area to improve login security.
+* **Login Lockout** - Failed login attempts lockout for even more security assurance.
+* **User Agent Banning** - Fortify security by blocking bad bots and user agents from accessing your site.
+* **Security Headers** - Add an extra layer of defense security and protect against common attacks like: XSS, code injection, and more.
+* **404 Detection Security** - Automated block of bot IPs.
+* **Security Configs** - Create your ideal Defender security plugin settings and export / import saved configs to any other site.
+* **Geolocation IP Lockout Security** - Block users based on location and country (IP blocking).
+* **Disable Trackbacks And Pingbacks** - Disable these notifications to enhance spam protection and site security.
+* **Core And Server Update Security Recommendations** - Stay on top of your system security.
+* **Antivirus Scan** - Scan for active security threats, viruses, and other malware.
+* **Disable File Editor** - If they get in, they won't get far.
+* **Hide Error Reporting** - Hide code errors on the frontend so hackers can’t exploit site security.
+* **Update Security Keys** - Update old WordPress security keys to be more encrypted and provide better security.
+* **Prevent Information Disclosure** - Improve server security and protect sensitive files by locking down specific file types.
+* **Prevent PHP Execution** - Defender bolsters security by automatically preventing any PHP code from being executed.
+* **Bulk Apply Security Recommendations** – Apply multiple recommended security improvements at once for quicker site hardening.
+* **Google reCAPTCHA Security** - Easy to add, stop fraud and abuse - including BuddyPress and WooCommerce.
+* **Pwned Password Check** - Increase security by protecting against compromised passwords.
+* **Force Password Reset** - Force users with selected roles to reset passwords.
+* **Force Strong Passwords** – Ensure users create secure credentials by enforcing robust password requirements.
+* **User Agent Blocklist Presets** – Easily block unwanted bots and scripts using curated user agent presets.
+* **Known Vulnerability & Suspicious Code Scan (Pro Only)** – Scan WordPress core, themes, and plugins for vulnerabilities and harmful code.
+* **Malicious Bot Detector (Pro Only)** – Block malicious bots with layered defenses, including traps for bots that ignore robots.txt and checks for fake crawlers posing as search engines.
+* **Google Blocklist Monitoring (Pro Only)** – Get instant alerts if your site is flagged by Google.
+* **Session Protection (Pro Only)** – Stop session hijacking and prevent unauthorized account access.
+* **Safe Repair For Suspicious Files (Pro Only)** – Restore or replace compromised files safely with a single click.
+* **Automated Reports (Pro Only)** – Receive scheduled security reports straight to your inbox.
 
 ### Learn The Ropes With These Hands-On Defender Security Plugin Tutorials
 
@@ -254,6 +261,27 @@ Please open a new thread in Defender's [support forum](https://wordpress.org/sup
 
 == Changelog ==
 
+= 5.6.0 ( 2025-10-07 ) =
+
+- New: Malicious Bot Detector
+- New: WooCommerce integration with Defender > Strong Password
+- Enhance: Migrate Audit multisite events to the centralized Cron Manager system
+- Enhance: Migrate Firewall multisite events to the centralized Cron Manager system
+- Enhance: Improve plugin detection logic to exclude plugins not from wp.org
+- Enhance: Remove AntiBot IP list after site disconnection
+- Enhance: Add rel="nofollow" to Bot Trap URL
+- Enhance: Hide Blocklist Checker and AntiBot Stats button when Whitelabel is enabled
+- Enhance: Sync with the Custom IP Block/Allow list across different hosting memberships
+- Enhance: Add parameter to WP-CLI Scan command for outdated and closed plugins
+- Enhance: Add audit logging event to detect Hub SSO login
+- Enhance: Improve plugin code style using PHPStan and ESLint rules
+- Fix: Web Authentication improvements
+- Fix: Security Recommendations > Security key value not saved
+- Fix: Defender not adding noindex tag to secret link of Bot Trap
+- Fix: Notification hints not displaying properly
+- Fix: Issue on Firewall Logs page when logging in with an expired session using the default WordPress login modal
+- Fix: Defender country blocklist not working for EU region and UK
+
 = 5.5.1 ( 2025-09-04 ) =
 
 - Enhance: Change Outdated Plugin threshold to 2 Years
@@ -327,14 +355,6 @@ Please open a new thread in Defender's [support forum](https://wordpress.org/sup
 - Fix: Scan can't detect modifications in the Debug Log Manager plugin
 - Fix: Warning in PHP 8.4
 - Fix: File existence and readability checks in Malware_Result and Plugin_Integrity classes
-
-= 5.2.2 ( 2025-04-23 ) =
-
-- Fix: Plugin_Cross_Sell class error
-
-= 5.2.1 ( 2025-04-23 ) =
-
-- Enhance: Add a new menu item to help you discover other free plugins by WPMU DEV and more
 
 [Changelog for previous versions](https://wpmudev.com/project/wp-defender/#view-changelog).
 

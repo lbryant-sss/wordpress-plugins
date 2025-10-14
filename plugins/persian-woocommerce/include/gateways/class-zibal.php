@@ -283,6 +283,7 @@ class Persian_Woocommerce_Zibal extends WC_Payment_Gateway {
 				'headers' => [
 					'Content-Type' => 'application/json',
 				],
+				'timeout' => 10
 			] );
 
 			if ( is_wp_error( $response ) ) {

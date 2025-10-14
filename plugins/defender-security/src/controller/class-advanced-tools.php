@@ -10,6 +10,7 @@ namespace WP_Defender\Controller;
 use WP_Defender\Event;
 use WP_Defender\Integrations\MaxMind_Geolocation;
 use WP_Defender\Model\Setting\Session_Protection as Model_Session_Protection;
+use WP_Filesystem_Base;
 
 /**
  * Since advanced tools will have many submodules, this just using for render.
@@ -91,7 +92,7 @@ class Advanced_Tools extends Event {
 
 		global $wp_filesystem;
 		// Initialize the WP filesystem, no more using 'file-put-contents' function.
-		if ( empty( $wp_filesystem ) ) {
+		if ( ! $wp_filesystem instanceof WP_Filesystem_Base ) {
 			require_once ABSPATH . '/wp-admin/includes/file.php';
 			WP_Filesystem();
 		}
@@ -172,7 +173,7 @@ class Advanced_Tools extends Event {
 		global $wp_filesystem;
 
 		// Initialize the WP filesystem, no more using 'file-put-contents' function.
-		if ( empty( $wp_filesystem ) ) {
+		if ( ! $wp_filesystem instanceof WP_Filesystem_Base ) {
 			require_once ABSPATH . '/wp-admin/includes/file.php';
 			WP_Filesystem();
 		}

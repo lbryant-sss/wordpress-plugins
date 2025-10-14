@@ -209,14 +209,14 @@ class Premium_Carousel extends Widget_Base {
 		$this->add_control(
 			'full_width_img',
 			array(
-				'label'     => __( 'Full Width', 'premium-addons-for-elementor' ),
-				'type'      => Controls_Manager::SWITCHER,
-				'default'   => 'yes',
+				'label'       => __( 'Full Width', 'premium-addons-for-elementor' ),
+				'type'        => Controls_Manager::SWITCHER,
+				'default'     => 'yes',
 				'description' => __( 'Make images take full width of the slide', 'premium-addons-for-elementor' ),
-				'selectors' => array(
+				'selectors'   => array(
 					'{{WRAPPER}} .premium-carousel-template img' => 'width: 100%',
 				),
-				'condition' => array(
+				'condition'   => array(
 					'source' => 'gallery',
 				),
 			)

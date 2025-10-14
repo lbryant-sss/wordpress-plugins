@@ -105,7 +105,7 @@ class Premium_Nav_Menu extends Widget_Base {
 		} else {
 			$settings = $this->get_settings();
 
-			if( 'wordpress_menu' === $settings['menu_type'] ) {
+			if ( 'wordpress_menu' === $settings['menu_type'] ) {
 				$scripts[] = 'lottie-js';
 			} elseif ( ! empty( $settings['menu_items'] ) ) {
 
@@ -115,7 +115,6 @@ class Premium_Nav_Menu extends Widget_Base {
 						$scripts[] = 'lottie-js';
 						break;
 					}
-
 				}
 			}
 

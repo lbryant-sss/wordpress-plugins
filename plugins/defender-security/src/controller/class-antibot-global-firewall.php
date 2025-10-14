@@ -9,6 +9,7 @@ namespace WP_Defender\Controller;
 
 use Calotes\Component\Request;
 use Calotes\Component\Response;
+use WP_Defender\Component\Network_Cron_Manager;
 use WP_Defender\Component\Config\Config_Hub_Helper;
 use WP_Defender\Event;
 use WP_Defender\Traits\Setting;
@@ -77,13 +78,21 @@ class Antibot_Global_Firewall extends Event {
 		 * Download and store Blocklist from the API.
 		 */
 		if ( $this->service->is_active_via_plugin() ) {
-			if ( ! wp_next_scheduled( 'wpdef_antibot_global_firewall_fetch_blocklist' ) ) {
-				wp_schedule_event( time() + 15, Antibot_Global_Firewall_Component::DOWNLOAD_SYNC_SCHEDULE, 'wpdef_antibot_global_firewall_fetch_blocklist' );
-			}
+			/**
+			 * Network Cron Manager
+			 *
+			 * @var Network_Cron_Manager $network_cron_manager
+			 */
+			$network_cron_manager = wd_di()->get( Network_Cron_Manager::class );
+			$network_cron_manager->register_callback(
+				'wpdef_antibot_global_firewall_fetch_blocklist',
+				array( $this, 'handle_download_and_store_blocklist' ),
+				12 * HOUR_IN_SECONDS,
+				time() + 15
+			);
 		} elseif ( wp_next_scheduled( 'wpdef_antibot_global_firewall_fetch_blocklist' ) ) {
 			wp_clear_scheduled_hook( 'wpdef_antibot_global_firewall_fetch_blocklist' );
 		}
-		add_action( 'wpdef_antibot_global_firewall_fetch_blocklist', array( $this, 'handle_download_and_store_blocklist' ) );
 
 		if ( $this->wpmudev->is_wpmu_hosting() ) {
 			add_action( 'init', array( $this, 'sync_state' ) );
@@ -252,6 +261,10 @@ class Antibot_Global_Firewall extends Event {
 					'frontend_is_enabled'   => $this->service->frontend_is_enabled(),
 					'frontend_mode'         => $this->service->frontend_mode(),
 					'is_active'             => $this->service->is_active(),
+					'show_stats_button'     => ! $this->wpmudev->is_whitelabel_enabled(),
+					'show_checker'          => ! $this->wpmudev->is_wpmu_hosting()
+						|| $this->wpmudev->is_wpmu_dev_admin()
+						|| ! ( $this->service->is_active_via_hosting() && $this->wpmudev->is_whitelabel_enabled() ),
 					'active_tooltip_text'   => __( 'List of exploit attempts detected and blocked across all connected sites by AntiBot Firewall.', 'defender-security' ),
 					'inactive_tooltip_text' => sprintf(
 						/* translators: %s: Module name. */

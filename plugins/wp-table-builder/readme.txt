@@ -3,7 +3,7 @@ Contributors: dotcamp, wptb, imtiazrayhan, istiakrayhan, permafrost06, erdembirc
 Tags: table, table builder, drag and drop
 Requires at least: 4.9
 Tested up to: 6.8
-Stable tag: 2.0.17
+Stable tag: 2.0.18
 Requires PHP: 7.4
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
@@ -79,18 +79,27 @@ That's it. You're done!
 
 == Screenshots ==
 
-1. Creating new table in WP Table Builder.
-2. First Table In WP Table Builder.
-3. Text In WP Table Builder.
-4. Images In WP Table Builder.
-5. Text 2 In WP Table Builder.
-6. List Options In WP Table Builder.
-7. Button In WP Table Builder.
-8. Shortcode in WP Table Builder.
+1. New Table.
+2. Table Interface
+3. Images in the Table.
+4. Lists in the Table.
+5. Star Ratings in the Table.
+6. Buttons in the Table.
+7. Customize the Table.
+8. Responsive Tables.
 
 == Changelog ==
 
-= 2.0.17 -
+= 2.0.18 =
+* FIX: Sticky first column not persisting
+* FIX: Table spacing not working properly for large tables
+* FIX: Incorrect versions are shown in the rollback option
+* FIX: Error when saving shortcode element
+* FIX: Device detection logic for responsiveness
+* IMPROVE: Hard limit highlight scaling between 100-105%
+* IMPROVE: Make the default items per head = 1 for mobile
+
+= 2.0.17 =
 * FIX: Scrollable in mobile devices when responsive is enabled
 * PRO: FIX: Search & Sort feature not working properly
 

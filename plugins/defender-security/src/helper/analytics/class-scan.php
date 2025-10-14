@@ -51,12 +51,16 @@ class Scan extends Event {
 
 	/**
 	 * Removes settings for all submodules.
+	 *
+	 * @return mixed
 	 */
 	public function remove_settings() {
 	}
 
 	/**
 	 * Delete all the data & the cache.
+	 *
+	 * @return mixed
 	 */
 	public function remove_data() {
 	}
@@ -76,10 +80,10 @@ class Scan extends Event {
 	 *
 	 * @param  Scan_Model $scan_model  Scan model object.
 	 *
-	 * @return array[
+	 * @return array{
 	 *   'event' => string,
 	 *   'data' => array
-	 * ]
+	 * }
 	 */
 	public function scan_completed( Scan_Model $scan_model ): array {
 		$last_scan = $scan_model::get_last();

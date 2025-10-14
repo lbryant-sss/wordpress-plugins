@@ -4,7 +4,7 @@ Donate link: https://www.wpdesk.net/flexible-checkout-fields-woocommerce/
 Tags: woocommerce checkout fields, woocommerce checkout manager, woocommerce checkout, custom fields, checkout field customizer
 Requires at least: 5.2
 Tested up to: 6.8
-Stable tag: 4.1.27
+Stable tag: 4.1.28
 Requires PHP: 7.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -587,6 +587,10 @@ Yes 😊.
 * [**Custom Price**](https://wordpress.org/plugins/custom-price-for-woocommerce/) - let customers name the WooCommerce product prices. Receive donations and sell products at custom prices.
 * [**Flexible Refund**](https://wordpress.org/plugins/flexible-refund-and-return-order-for-woocommerce/) - manage refunds, returns, and warranty requests in WooCommerce.
 
+= Where do I report security bugs found in this plugin? =
+
+Please report security bugs found in the source code of the Flexible Checkout Fields for WooCommerce plugin through the [Patchstack Vulnerability Disclosure Program](https://patchstack.com/database/vdp/9e5fb568-083a-4144-8e48-044ecfd10b28). The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin.
+
 == Screenshots ==
 
 1. Flexible Checkout Fields for WooCommerce - edit existing fields and add custom ones
@@ -689,6 +693,10 @@ Yes 😊.
 If you are upgrading from the old WooCommerce Checkout Fields version (1.1, woocommerce-checkout-fields) make sure to completely delete the old version first. Your settings will be kept. If you install the new version without deleting the old one you may break your WordPress installation.
 
 == Changelog ==
+
+= 4.1.28 - 2025-10-13 =
+* Added support for WooCommerce 10.3
+* Added Patchstack Vulnerability Disclosure Program
 
 = 4.1.27 - 2025-09-07 =
 * Added support for WooCommerce 10.2

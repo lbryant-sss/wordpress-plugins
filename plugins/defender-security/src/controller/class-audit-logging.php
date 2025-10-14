@@ -20,6 +20,7 @@ use WP_Defender\Traits\Formats;
 use WP_Defender\Component\Audit;
 use WP_Defender\Model\Audit_Log;
 use WP_Defender\Behavior\WPMUDEV;
+use WP_Defender\Component\Network_Cron_Manager;
 use WP_Defender\Model\Notification\Audit_Report;
 use WP_Defender\Component\Config\Config_Hub_Helper;
 use WP_Defender\Model\Setting\Audit_Logging as Model_Audit_Logging;
@@ -70,40 +71,25 @@ class Audit_Logging extends Event {
 		if ( $this->model->is_active() ) {
 			$this->service->enqueue_event_listener();
 			add_action( 'shutdown', array( $this, 'cache_audit_logs' ) );
-			/**
-			 * We will schedule the time for flush data into cloud.
-			 */
-			if ( ! wp_next_scheduled( 'audit_sync_events' ) ) {
-				wp_schedule_event( time() + 15, 'hourly', 'audit_sync_events' );
-			}
-			add_action( 'audit_sync_events', array( $this, 'sync_events' ) );
 
 			/**
-			 * We will schedule the time to clean up old logs.
+			 * Network Cron Manager
+			 *
+			 * @var Network_Cron_Manager $network_cron_manager
 			 */
-			if ( is_multisite() ) {
-				$network_cron_manager = wd_di()->get( \WP_Defender\Component\Network_Cron_Manager::class );
-				$network_cron_manager->register_callback(
-					'audit_clean_up_logs',
-					array( $this->service, 'audit_clean_up_logs' ),
-					HOUR_IN_SECONDS
-				);
-			} else {
-				if ( ! wp_next_scheduled( 'audit_clean_up_logs' ) ) {
-					wp_schedule_event( time(), 'hourly', 'audit_clean_up_logs' );
-				}
-				add_action( 'audit_clean_up_logs', array( $this->service, 'audit_clean_up_logs' ) );
-			}
+			$network_cron_manager = wd_di()->get( Network_Cron_Manager::class );
+			$network_cron_manager->register_callback(
+				'audit_clean_up_logs',
+				array( $this->service, 'audit_clean_up_logs' ),
+				HOUR_IN_SECONDS
+			);
+			$network_cron_manager->register_callback(
+				'audit_sync_events',
+				array( $this->service, 'flush' ),
+				HOUR_IN_SECONDS,
+				time() + 15
+			);
 		}
-	}
-
-	/**
-	 * Sync all the events into cloud, this will happen per hourly basis.
-	 *
-	 * @return void
-	 */
-	public function sync_events(): void {
-		$this->service->flush();
 	}
 
 	/**

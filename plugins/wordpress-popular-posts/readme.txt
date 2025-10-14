@@ -5,7 +5,7 @@ Tags: popular, posts, widget, popularity, top
 Requires at least: 6.2
 Tested up to: 6.8.3
 Requires PHP: 7.3
-Stable tag: 7.3.4
+Stable tag: 7.3.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -111,6 +111,15 @@ The FAQ section has been moved [here](https://github.com/cabrerahector/wordpress
 5. Statistics panel.
 
 == Changelog ==
+
+= 7.3.5 =
+
+- Fixes Elementor widget stuck in infinite loading animation.
+- Fixes broken database query in get_views() (props to raphaelw!)
+- Fixes an issue where config.json files from theme overrides would be ignored (thanks alexg904!)
+- Minor styling enhancements.
+
+[Release notes](https://cabrerahector.com/wordpress/wordpress-popular-posts-7-3-experimental-elementor-support/#7.3.5)
 
 = 7.3.4 =
 

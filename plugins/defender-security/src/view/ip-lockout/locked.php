@@ -17,6 +17,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<?php echo $discourage_crawlers ? '<meta name="robots" content="noindex, nofollow">' : ''; ?>
 	<title>
 		<?php
 		$devman_img  = defender_asset_url( '/assets/img/def-stand.svg' );

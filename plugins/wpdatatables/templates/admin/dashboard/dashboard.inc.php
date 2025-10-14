@@ -337,12 +337,13 @@ $tableChartsCount = (int)WDTTools::getTablesCount('chart');
                                  </span>
                         </p>
                         <p class="wpdt-text wpdt-font m-b-18">
-                            New minor update:
+                            New update:
                         </p>
                         <div class="alert alert-info m-b-0" role="alert">
                             <i class="wpdt-icon-info-circle-full"></i>
                             <ul>
-                                <li>Minor CSS fixes.</li>
+                                <li>Added a new hook wpdatatables_after_save_table triggered upon saving Simple tables.</li>
+                                <li>Compatibility with WordPress version 6.8.3 approved.</li>
                                 <li>Other small bug fixes and stability improvements.</li>
                             </ul>
                         </div>

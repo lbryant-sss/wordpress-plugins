@@ -5,7 +5,7 @@ Donate Link: https://premiumaddons.com/?utm_source=wp-repo&utm_medium=link&utm_c
 Requires at least: 5.0
 Tested Up To: 6.8.3
 Requires PHP: 7.4
-Stable Tag: 4.11.41
+Stable Tag: 4.11.42
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -243,33 +243,38 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 == Changelog ==
 
-= 4.11.41 =
+= 4.11.42 - 13/10/2025 =
+
+- Fixed: Security issue in TikTok Feed widget handler.
+- Fixed: Page Publish button not detecting Premium Templates insert.
+
+= 4.11.41 - 05/10/2025 =
 
 - New: Added Order controls in Pricing Table to allow content reordering.
 - Tweak: Improve Button and Image Buttons widget performance by removing duplicate Icon Spacing control.
 - Tweak: Added Media Info option for videos in Advanced Carousel widget.
 - Fixed: Link not working in Animated Text widget.
 
-= 4.11.40 =
+= 4.11.40 - 28/09/2025 =
 
 - New: Gallery option in Carousel widget to create image carousel much easier.
 - Tweak: Code improvements for better performance.
 - Fixed: SVG Draw not working when draw option is disabled.
 - Fixed: Link not working in Animated Text widget.
 
-= 4.11.39 =
+= 4.11.39  - 24/09/2025 =
 
 - Tweak: Load JS libraries only when needed for Contact Form, Dual Heading, Lottie Animation, Media Grid, News Ticker, Mega Menu and SVG Draw widgets.
 - Fixed: Close Icon not showing in Recent Posts Notification widget.
 - Fixed: Bullet List alignment issue.
 
-= 4.11.38 =
+= 4.11.38 - 22/09/2025 =
 
 - New: Load JS libraries only when needed to improve loading speed.
 - Fixed: Returning Visitor Display Condition not working correctly.
 - Fixed: View Cart string not being translated in Woo Mini Products Listing widget.
 
-= 4.11.37 =
+= 4.11.37 - 17/09/2025 =
 
 - New: Added Slide Bullet and Translate Bullet effects in Bullet List widget.
 - Tweak: Added Sort By select in Premium Templates.
@@ -277,71 +282,71 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 - Fixed: Accessibility issue in Advanced Carousel widget.
 - Fixed: Gradient Effect not working in Bullet List widget.
 
-= 4.11.36 =
+= 4.11.36 - 15/09/2025 =
 
 - Tweak: Improved compatibility between Dynamic Assets feature and LiteSpeed caching plugin.
 - Tweak: Compatibility with Elementor v3.32.
 
-= 4.11.35 =
+= 4.11.35 - 11/09/2025 =
 
 - Tweak: Code improvements in Tooltips addon, Advanced Carousel and Textual Showcase widgets for better performance and faster loading speed.
 - Tweak: Make arrows in Carousel widget accessible via keyboard.
 - Fixed: Thin Circle navigation dot icon not working in Carousel widget.
 
-= 4.11.34 =
+= 4.11.34 - 08/09/2025 =
 
 - Tweak: Code improvements in all widgets for better performance and faster loading speed.
 
-= 4.11.33 =
+= 4.11.33 - 08/09/2025 =
 
 - Tweak: Code improvements in Dynamic Assets feature for better performance and faster loading speed.
 - Tweak: Loading speed improvements in Video Box and News Ticker widgets.
 
-= 4.11.32 =
+= 4.11.32 - 03/09/2025 =
 
 - Tweak: Code improvements in Animated Shape Divider addon for better performance and faster loading speed.
 
-= 4.11.31 =
+= 4.11.31 - 02/09/2025 =
 
 - Tweak: Added CSS ID option in Mobile Menu widget.
 - Tweak: Improved RTL compatibility of Woo Mini Cart widget.
 
-= 4.11.30 =
+= 4.11.30 - 26/08/2025 =
 
 - Tweak: Code improvements for better performance.
 
-= 4.11.29 =
+= 4.11.29 - 19/08/2025 =
 
 - Tweak: Improved RTL compatibility of Woo Products, Woo Categories, Blog widgets.
 - Tweak: Improved compatibility between Woo CTA and WPML translation plugin.
 
-= 4.11.28 =
+= 4.11.28 - 14/08/2025 =
 
 - Tweak: Improved compatibility between News Ticker and WPML translation plugin.
 - Fixed: Carousel widget not showing templates in some cases.
 - Fixed: Info window for Google Maps widget marker not positioned correctly on Chrome.
 
-= 4.11.27 =
+= 4.11.27 - 07/08/2025 =
 
 - Tweak: Improved RTL compatibility of Recent Posts Notification, News Ticker and Image Scroll widgets.
 - Fixed: Appearance option not working on touch devices in Carousel widget.
 
-= 4.11.26 =
+= 4.11.26  - 06/08/2025 =
 
 - Tweak: Compatibility with Elementor v3.31.
 - Tweak: Styling improved for Pre-made Templates button.
 
-= 4.11.25 =
+= 4.11.25 - 05/08/2025 =
 
 - Tweak: Added button to filter pre-made blocks by widget.
 - Fixed: Mini Cart strings not showing in Loco translation plugin.
 
-= 4.11.24 =
+= 4.11.24 - 30/07/2025 =
 
 - Tweak: Premium Templates performance improvements.
 - Fixed: PHP warnings when image has not alt attribute in Media Grid widget.
 
-= 4.11.23 =
+= 4.11.23 - 29/07/2025 =
 
 - Tweak: Equal Height in Woo Products widget.
 - Tweak: Improved RTL compatibility of Weather Forecast widget.
@@ -349,22 +354,20 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 - Fixed: Carousel arrows conflict in Weather Forecast widget.
 - Fixed: PHP warning when running setup wizard for first time.
 
-= 4.11.22 =
+= 4.11.22 - 24/07/2025 =
 
-- Tweak: Added Overflow Slides option in Carousel widget.
 - Tweak: Improved RTL compatibility of World Clock widget.
-- Fixed: WooCommerce widgets not working after v4.11.21
 
-= 4.11.21 =
+= 4.11.21 - 21/07/2025 =
 
 - Tweak: Dashboard pages loading speed improved by unloading unnecessary PHP files.
 
-= 4.11.20 =
+= 4.11.20 - 15/07/2025 =
 
 - Tweak: Editor loading speed improved by removing some JS files.
 - Tweak: Added two more shadow presets in Liquid Glass addon.
 
-= 4.11.19 =
+= 4.11.19 - 14/07/2025 =
 
 - Tweak: Added Coupon Remove button in Mini Cart widget.
 - Tweak: Added Tax Label option in Mini Cart widget.
@@ -372,22 +375,22 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 - Tweak: Added option to search using Title or Description in AJAX Search widget.
 - Fixed: Fatal error in Media Grid widget when `mb_` PHP extension is not installed.
 
-= 4.11.18 =
+= 4.11.18 - 09/07/2025 =
 
 - Fixed: Google Maps markers not showing after v4.11.17
 - Fixed: PHP warning when SVG Draw widget is used while Dynamic Assets feature is enabled.
 
-= 4.11.17 =
+= 4.11.17 - 03/07/2025 =
 
 - Fixed: Display Conditions showing code after v4.11.16.
 
-= 4.11.16 =
+= 4.11.16 - 03/07/2025 =
 
 - Tweak: Added "DC" icon when Display Condition is enabled.
 - Tweak: Setup Wizard improved for better user experience.
 - Fixed: Returning Visitor Display Condition causes unnecessary cookies to be stored.
 
-= 4.11.15 =
+= 4.11.15 - 24/06/2025 =
 
 - Tweak: Improved compatibility with RTL sites.
 - Tweak: Plugin size decreased by improving Dynamic CSS generating.
@@ -395,44 +398,44 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 - Fixed: Style #3 not working on RTL in Team Members widget.
 - Fixed: Horizontal Direction not working on RTL in Image Scroll widget.
 
-= 4.11.14 =
+= 4.11.14 - 18/06/2025 =
 
 - New: Introducing Elementor Liquid Glass Addon - [here](https://premiumaddons.com/elementor-liquid-glass-addon/).
 - Tweak: Added Arrows Position option for carousel arrows in Testimonials widget.
 - Fixed: Free shipping progress bar not working on Chrome in Woo Mini Cart widget.
 
-= 4.11.13 =
+= 4.11.13 - 04/06/2025 =
 
 - Tweak: Improved Countdown widget JS code.
 - Tweak: Hide Google Maps until the API JS is loaded.
 
-= 4.11.12 =
+= 4.11.12 - 03/06/2025 =
 
 - Tweak: Added Align Submenu to Top option in Mega Menu widget.
 - Tweak: Markers Clustering controls improved in Google Maps widget.
 - Fixed: Fatal error when plugin is installed before Elementor.
 
-= 4.11.11 =
+= 4.11.11 - 25/05/2025 =
 
 - Fixed: Fatal error after v4.11.11.
 
-= 4.11.10 =
+= 4.11.10 - 25/05/2025 =
 
 - Fixed: Icons issue in Mega Menu widget since v4.11.9.
 
-= 4.11.9 =
+= 4.11.9 - 02/06/2025 =
 
 - Tweak: Added Slide Menu direction option in Mega Menu widget.
 - Tweak: Submenu Trigger option in Mega Menu widget.
 - Fixed: Error while saving Elementor templates after Elementor v3.29.
 - Fixed: Icons from custom icons are not showing in some widgets.
-- Fixed: Security issue in Countdown widget.
+- Fixed: Security issue in Coutdown widget.
 
-= 4.11.8 =
+= 4.11.8 - 17/05/2025 =
 
 - Fixed: Fatal error with 'Page' display condition after v4.11.7.
 
-= 4.11.7 =
+= 4.11.7 - 15/05/2025 =
 
 - Tweak: New layouts added to Woo Mini Cart widget.
 - Tweak: Cross-sells carousel option added to Woo Mini Cart widget.
@@ -441,49 +444,49 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 - Fixed: Layout broken in Woo Mini Cart widget in some cases.
 - Fixed: Display conditions 'Page' doesn't detect the shop page ID.
 
-= 4.11.6 =
+= 4.11.6 - 30/04/2025 =
 
 - Fixed: Prevent plugin rating banner from showing on each update.
 - Fixed: Plugin causes slow dashboard loading in some cases.
 
-= 4.11.5 =
+= 4.11.5 - 24/04/2025 =
 
 - Fixed: All global features are disabled when setup wizard is completed.
 - Fixed: Pro global feature name is not showing in setup wizard.
 
-= 4.11.4 =
+= 4.11.4 - 23/04/2025 =
 
 - New: Introducing Setup Wizard for easier plugin settings customization.
 - Tweak: Compatibility between Woo Products widget and BeRocket filtering plugin.
 - Fixed: Console error in Mobile Menu widget.
 - Fixed: Layout broken with Style 7 in Heading widget.
 
-= 4.11.3 =
+= 4.11.3 - 16/04/2025 =
 
 - Tweak: Added Fill Color Speed option in SVG Draw widget.
 - Fixed: Fatal error in Pinterest Feed widget when Board ID option is empty.
 - Fixed: HTML markup issue in Heading widget.
 - Fixed: Tooltips addon not working when Position control value has spaces in it.
 
-= 4.11.2 =
+= 4.11.2 - 08/04/2025 =
 
 - Tweak: Translate date based on site's current language in Pinterest and TikTok Feed widgets.
 
-= 4.11.1 =
+= 4.11.1 - 07/04/2025 =
 
 - Tweak: Premium Blog HTML markup improved for better accessibility.
 - Fixed: Templates not showing in Mega Menu when Hide Mobile Menu option is enabled.
 - Fixed: Carousel arrows not showing in AJAX Search widget.
 
-= 4.11.0 =
+= 4.11.0 - 30/03/2025 =
 
 - Tweak: Added Delay control in Lottie animation widget.
 - Tweak: Vertical Scroll widget behavior on Elementor editor.
 - Tweak: Removed `nofollow` link attribute for links in Google Maps widget markers.
-- Tweak: Removed Front page option from Static Page in Display Conditions addon.
+- Tweak: Removed Frontpage option from Static Page in Display Conditions addon.
 - Tweak: Action control changed to show when Query is set to Posts in AJAX Search widget.
 
-= 4.10.90 =
+= 4.10.90 - 25/03/2025 =
 
 - Tweak: Compatibility with Google Maps AdvancedMarkers API in Google Maps widget.
 - Tweak: Code improvements for better performance.
@@ -492,18 +495,18 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 - Fixed: Stock message in Woo Mini Cart widget can't be translated.
 - Fixed: Styling issue in Progress Bar widget on small screens.
 
-= 4.10.89 =
+= 4.10.89 - 17/03/2025 =
 
 - Tweak: Code improvements for better performance.
 - Fixed: Dynamic Assets Generate not working in some cases.
 
-= 4.10.88 =
+= 4.10.88 - 10/03/2025 =
 
 - Tweak: Code improvements for better performance.
 - Fixed: Image/Content Display option is not responsive in Woo Products Listing widget.
 - Fixed: Fatal error caused by Dynamic Assets Generate.
 
-= 4.10.87 =
+= 4.10.87 - 27/02/2025 =
 
 - Tweak: Added option to use SVG icons in Mega Menu widget.
 - Tweak: Improved compatibility between Woo CTA button widget and Woocommerce Subscriptions plugin.
@@ -511,95 +514,95 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 - Fixed: Elementor Templates not working on editor in Global Tooltips addon.
 - Fixed: Security issue in Lottie JavaScript file.
 
-= 4.10.86 =
+= 4.10.86 - 20/02/2025 =
 
 - Tweak: Show message when PHP memory/time limit are low to improve usability.
 - Fixed: Restart option in Countdown Timer widget not working correctly.
 
-= 4.10.85 =
+= 4.10.85 - 16/02/2025 =
 
 - Tweak: Added notice in Mega Menu Settings popup for better UX and prevent conflicts.
 
-= 4.10.84 =
+= 4.10.84 - 16/02/2025 =
 
 - Tweak: Added Show Parent Terms Only option in Tags Cloud.
 - Tweak: Improved Tags Cloud to count posts in child terms.
 - Fixed: Layout breaks in some cases when Dynamic Assets feature is enabled.
 
-= 4.10.83 =
+= 4.10.83 - 12/02/2025 =
 
 - Tweak: Added option to control if mobile menu should be rendered in Mega Menu widget.
 - Fixed: PHP warning in Woo CTA widget.
 - Fixed: Floating Effects not updating correctly.
 - Fixed: PHP warning when rendering SVG icons.
 
-= 4.10.82 =
+= 4.10.82 - 03/02/2025 =
 
 - Tweak: Aspect Ratio option in Video Box widget.
 - Tweak: Code formatting for better security.
 - Fixed: Submenus overlapping issue in Mega Menu widget.
 
-= 4.10.81 =
+= 4.10.81 - 30/01/2025 =
 
 - Fixed: Fatal error in Button widget after v4.10.80
 
-= 4.10.80 =
+= 4.10.80 - 29/01/2025 =
 
 - Tweak: Core improved to run editor faster.
 - Tweak: Added Dismissible option in Modal Box widget.
 - Fixed: PHP warning in Timezone option in Display Conditions addon.
 - Fixed: PHP warning in Heading widget.
 
-= 4.10.79 =
+= 4.10.79 - 22/01/2025 =
 
 - Tweak: Load some CSS files only when needed to improve performance.
 - Fixed: PHP warning in Location display condition.
-- Fixed: Broken CSS links showing in broken link checker.
+- Fixed: Brokens CSS links showing in broken link checker.
 
-= 4.10.78 =
+= 4.10.78 - 15/01/2025 =
 
 - Tweak: Removed unnecessary PHP files to minimize plugin size.
 - Fixed: Navigation arrows not showing when lightbox is set to Elementor in Media Grid widget.
 
-= 4.10.77 =
+= 4.10.77 - 13/01/2025 =
 
 - Tweak: Change active menu item on scroll in Mega Menu widget.
 - Tweak: Show a notice when inserting a template fails.
 - Tweak: Woo Products Listing widget improved on RTL sites.
 - Fixed: Get videos from Playlist in Video Box widget not working with YouTube Reels.
 
-= 4.10.76 =
+= 4.10.76 - 06/01/2025 =
 
 - Tweak: Added the ability to activate filters in Blog widget from other pages.
 - Fixed: SVG Draw widget causes scroll to top on iOS devices.
 
-= 4.10.75 =
+= 4.10.75 - 31/12/2024 =
 
 - Fixed: PHP warning in Shape Divider container addon.
 
-= 4.10.74 =
+= 4.10.74 - 30/12/2024 =
 
 - Fixed: Wrapper Link global addon not working in some cases.
 - Fixed: Issues in AJAX Search widget.
 
-= 4.10.73 =
+= 4.10.73 - 26/12/2024 =
 
 - Tweak: Loading speed improved when Dynamic Assets feature is enabled.
 - Fixed: Compatibility issues with WP-Optimize plugin.
 - Fixed: Go to Search option not working in AJAX Search widget.
 - Fixed: Carousel option not working in Team Members widget.
 
-= 4.10.72 =
+= 4.10.72 - 24/12/2024 =
 
 - Tweak: Improved loading speed of widgets contain Draw Icon option.
 - Fixed: Cross Domain Copy/Paste All Content not working.
 
-= 4.10.71 =
+= 4.10.71 - 22/12/2024 =
 
 - Fixed: Elementor Transform effects not working for some widgets.
 - Fixed: Controls for global controls not being added in correct tabs.
 
-= 4.10.70 =
+= 4.10.70 - 19/12/2024 =
 
 - Tweak: Improved compatibility with Optimize Markup Elementor feature.
 - Tweak: SVG Draw Icon option improved for better loading speed.
@@ -607,40 +610,40 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 - Fixed: PHP warnings in Animated Text widget.
 - Fixed: Security issue in Mobile Menu widget.
 
-= 4.10.69 =
+= 4.10.69 - 15/12/2024 =
 
 - Tweak: SVG Draw Icon option improved in some widgets.
 
-= 4.10.68 =
+= 4.10.68 - 12/12/2024 =
 
 - Tweak: Added Usage Type option in plugin's dashboard settings page.
 - Tweak: Added VW size unit for some controls.
 - Fixed: Lightbox icon is showing even when option is disabled in Advanced Carousel widget.
 - Fixed: Issues in Dynamic Assets.
 
-= 4.10.67 =
+= 4.10.67 - 11/12/2024 =
 
 - Tweak: Premium Templates loading speed improved.
 
-= 4.10.66 =
+= 4.10.66 - 03/12/2024 =
 
 - Tweak: Added options to control Author Image size, border and border radius in Blog widget.
 - Tweak: Added Wave Effect in Dual Heading widget.
 - Tweak: Added On Page Exit Intent trigger in Modal Box widget.
 
-= 4.10.65 =
+= 4.10.65 - 25/11/2024 =
 
 - Tweak: Added Full Width Custom CSS Selector option in Mega Menu widget.
 - Fixed: Alignment issue in animation #7 in Banner widget.
 
-= 4.10.64 =
+= 4.10.64 - 24/11/2024 =
 
 - Tweak: Improved Reveal effect in Animated Text widget.
 - Fixed: Wrapper Link feature not working with anchor links.
 - Fixed: PHP Warning due to white labeling options.
 - Fixed: Huge spacing after animation end in vertical direction in Advanced Carousel widget.
 
-= 4.10.63 =
+= 4.10.63 - 13/11/2024 =
 
 - Tweak: Added List Padding control in Bullet List widget.
 - Tweak: Added option to load boards dynamically in Pinterest Feed widget.
@@ -648,13 +651,13 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 - Fixed: Console JS error showing on the editor page.
 - Fixed: Alignment option not working correctly on responsive devices in Bullet List widget.
 
-= 4.10.62 =
+= 4.10.62 - 30/10/2024 =
 
 - Tweak: Load JS code for Wrapper Link only when its used on page.
 - Fixed: Icon Size not working on SVG code icon in News Ticker widget.
 - Fixed: Admin notices appear again after they are dismissed.
 
-= 4.10.61 =
+= 4.10.61 - 27/10/2024 =
 
 - Tweak: Premium Templates loading speed improved.
 - Tweak: Added Item Name option in Advanced Carousel widget.
@@ -662,24 +665,24 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 - Fixed: Typing effect not working in Animated Text widget when used multiple times on page.
 - Fixed: Media Grid widget shows the first image only in the lightbox.
 
-= 4.10.60 =
+= 4.10.60 - 22/10/2024 =
 
 - Fixed: PHP warning in Recent Posts Notification widget.
 
-= 4.10.59 =
+= 4.10.59 - 17/10/2024 =
 
 - Fixed: PHP warning Undefined variable $search.
 
-= 4.10.58 =
+= 4.10.58 - 17/10/2024 =
 
 - Tweak: Added Text Content Position in News Ticker widget.
 - Fixed: Conflict between Global Tooltips addon and Premium Image Hotspots widget.
 - Fixed: Blog widget not working correctly after 4.10.57.
 
-= 4.10.57 =
+= 4.10.57 - 15/10/2024 =
 
 - Deprecated: Enable Full Section Scroll on Touch Devices control in Vertical Scroll widget.
-- Tweak: Global addons code refactored to minimize memory usage.
+- Tweak: Global addons code refactored to minimize mmemory usage.
 - Tweak: Animated Shape Divider addon code refactored to improve editor loading speed.
 - Tweak: Premium Templates code refactored to improve site's frontend loading speed.
 - Fixed: Security issue in Display Conditions addon and Mega Menu widget.
@@ -688,22 +691,22 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 - Fixed: Media Grid lightbox always show the first image since v4.10.55.
 - Fixed: TikTok Feed widget throws PHP warning.
 
-= 4.10.56 =
+= 4.10.56 - 09/10/2024 =
 
 - Tweak: Dashboard settings tab loading speed improved.
 - Tweak: Improve layout rendering in Mini Cart widget for better loading speed.
 - Fixed: Compatibility issues with WPML translation plugin.
 
-= 4.10.55 =
+= 4.10.55 - 01/10/2024 =
 
 - Fixed: Issues with Slide-in WooCommerce cart and Mini Cart layout after v4.10.54.
 
-= 4.10.54 =
+= 4.10.54 - 30/09/2024 =
 
 - Tweak: Plugin performance and loading speed improved.
 - Fixed: WooCommerce mini-cart template broken after v4.10.53.
 
-= 4.10.53 =
+= 4.10.53 - 26/09/2024 =
 
 - New: Added WooCommerce Mini Cart widget - [here](https://premiumaddons.com/elementor-woocommerce-mini-cart-widget/).
 - Tweak: Compatibility with Elementor Elements Caching feature.
@@ -711,7 +714,7 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 - Fixed: Carousel arrows not showing in Mobile Menu widget.
 - Fixed: Layout break when Load More Products button clicked in Woo Products Listing widget.
 
-= 4.10.52 =
+= 4.10.52 - 24/09/2024 =
 
 - Tweak: Added Highlighted Text Color control in AJAX Search widget.
 - Tweak: Remove any unwanted generated files after plugin deactivation.
@@ -719,14 +722,14 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 - Fixed: Skin #4 not working on RTL sites in Testimonials widget.
 - Fixed: Social icons not showing in Team Members widget.
 
-= 4.10.51 =
+= 4.10.51 - 12/09/2024 =
 
 - Tweak: Added Play Inline option in Video Box widget.
 - Tweak: Added Cluster Icon size control in Google Maps widget.
 - Fixed: Conflict in Dynamic Assets Generate feature.
 - Fixed: Items links not working in Advanced Carousel widget.
 
-= 4.10.50 =
+= 4.10.50 - 04/09/2024 =
 
 - Tweak: Added control to apply Excerpt Length option on posts with defined excerpt.
 - Fixed: PHP warning for Display condition in Display Conditions feature.
@@ -734,7 +737,7 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 - Fixed: Layout broken in some cases with Dynamic Assets feature.
 - Fixed: PHP warning in Global Tooltip addon.
 
-= 4.10.49 =
+= 4.10.49 - 27/08/2024 =
 
 - Tweak: Added option to control typography, border and background for quantity field in Woo CTA widget.
 - Tweak: Added option to automatically redirect to cart page after product is added to cart in Woo CTA widget.

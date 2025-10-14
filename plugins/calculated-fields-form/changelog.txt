@@ -1,5 +1,11 @@
 == Changelog ==
 
+= 5.4.0.4 =
+
+* Includes Google Calendar integration support.
+* Modifies controls such as checkboxes, radio buttons, dropdowns and containers.
+* Improves the form creation module on mobile devices.
+
 = 5.4.0.3 =
 
 * Resolves an issue with the properties tabs when the HTML content attribute and CSS editor are in full-screen mode.

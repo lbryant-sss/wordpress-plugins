@@ -21,7 +21,7 @@ class Persian_Woocommerce_Date {
 
 	public function __construct() {
 
-		if ( PW()->get_options( 'enable_jalali_datepicker', 'no' ) != 'yes' ) {
+		if ( PW()->get_options( 'enable_jalali_datepicker', 'yes' ) != 'yes' ) {
 			return false;
 		}
 

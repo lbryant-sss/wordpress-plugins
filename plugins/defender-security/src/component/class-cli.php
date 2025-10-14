@@ -14,7 +14,9 @@ use Countable;
 use Throwable;
 use Faker\Factory;
 use WP_CLI\ExitException;
+use WP_Defender\Traits\IO;
 use WP_Defender\Traits\Theme;
+use WP_Defender\Traits\Plugin;
 use WP_Defender\Traits\Formats;
 use WP_Defender\Model\Audit_Log;
 use WP_Defender\Model\Scan_Item;
@@ -34,6 +36,7 @@ use WP_Defender\Model\Setting\Notfound_Lockout;
 use WP_Defender\Model\Setting\Security_Headers;
 use WP_Defender\Model\Setting\User_Agent_Lockout;
 use WP_Defender\Component\Logger\Rotation_Logger;
+use WP_Filesystem_Base;
 use function WP_CLI\Utils\format_items;
 
 if ( ! defined( 'WPINC' ) ) {
@@ -58,7 +61,9 @@ class Cli {
 		persistent_hub_datetime_format as protected;
 		time_since as protected;
 	}
+	use IO;
 	use Theme;
+	use Plugin;
 
 	/**
 	 * This is a helper for scan module.
@@ -68,7 +73,7 @@ class Cli {
 	 * or (un)ignore|delete|resolve to do the relevant task,
 	 * or clear_logs to remove completed schedule logs.
 	 * [--type=<type>]
-	 * : Default, without values, is for all items, or core_integrity|plugin_integrity|vulnerability|suspicious_code.
+	 * : Default, without values, is for all items, or core_integrity|plugin_integrity|vulnerability|suspicious_code|plugin_outdated|plugin_closed.
 	 *
 	 * @param  mixed $args  Command arguments.
 	 * @param  mixed $options  Command options.
@@ -110,12 +115,66 @@ class Cli {
 	}
 
 	/**
+	 * Split scan issue into file and dir.
+	 *
+	 * @param  string|null $type      Scan type.
+	 * @param  array       $raw_data  Array of raw scan data.
+	 *
+	 * @return array
+	 */
+	private function split_scan_issue_into_file_and_dir( $type, $raw_data ): array {
+		// General case without type-param.
+		if ( null === $type ) {
+			if ( isset( $raw_data['file'] ) ) {
+				return array(
+					'type' => 'file',
+					'path' => $raw_data['file'],
+				);
+			} elseif ( isset( $raw_data['base_slug'] ) ) {
+				return array(
+					'type' => 'folder',
+					'path' => $this->get_abs_plugin_path_by_slug( $raw_data['base_slug'] ),
+				);
+			} elseif ( isset( $raw_data['slug'] ) ) {
+				return array(
+					'type' => 'folder',
+					'path' => $this->get_abs_plugin_path_by_slug( $raw_data['slug'] ),
+				);
+			}
+		}
+		// Specific case with type-param.
+		if ( in_array(
+			$type,
+			array(
+				Scan_Item::TYPE_PLUGIN_OUTDATED,
+				Scan_Item::TYPE_PLUGIN_CLOSED,
+			),
+			true
+		) ) {
+			return array(
+				'type' => 'folder',
+				'path' => $this->get_abs_plugin_path_by_slug( $raw_data['slug'] ),
+			);
+		} elseif ( Scan_Item::TYPE_VULNERABILITY === $type ) {
+			return array(
+				'type' => 'folder',
+				'path' => $this->get_abs_plugin_path_by_slug( $raw_data['base_slug'] ),
+			);
+		} else {
+			return array(
+				'type' => 'file',
+				'path' => $raw_data['file'],
+			);
+		}
+	}
+
+	/**
 	 * Executes tasks based on the type of scan.
 	 *
-	 * @param  mixed $task  The task to perform.
-	 * @param  mixed $options  Command options.
+	 * @param  string $command  The task to perform.
+	 * @param  mixed  $options  Command options.
 	 */
-	private function scan_task( $task, $options ) {
+	private function scan_task( $command, $options ) {
 		$type = $options['type'] ?? null;
 		switch ( $type ) {
 			case null:
@@ -134,7 +193,12 @@ class Cli {
 			case 'suspicious_code':
 				$type = Scan_Item::TYPE_SUSPICIOUS;
 				break;
-			// Todo: add Abandoned type.
+			case 'plugin_outdated':
+				$type = Scan_Item::TYPE_PLUGIN_OUTDATED;
+				break;
+			case 'plugin_closed':
+				$type = Scan_Item::TYPE_PLUGIN_CLOSED;
+				break;
 			default:
 				WP_CLI::error( sprintf( 'Unknown scan type %s', $type ) );
 				break;
@@ -147,20 +211,22 @@ class Cli {
 		if ( ! is_object( $model ) ) {
 			return;
 		}
-		switch ( $task ) {
+		switch ( $command ) {
 			case 'ignore':
 				$issues = $model->get_issues( $type, Scan_Item::STATUS_ACTIVE );
 				foreach ( $issues as $issue ) {
+					$issue_data = $this->split_scan_issue_into_file_and_dir( $type, $issue->raw_data );
 					$model->ignore_issue( $issue->id );
-					WP_CLI::log( sprintf( 'Ignoring file: %s', $issue->raw_data['file'] ) );
+					WP_CLI::log( sprintf( 'Ignoring %s: %s', $issue_data['type'], $issue_data['path'] ) );
 				}
 				WP_CLI::log( sprintf( 'Ignored %s items', count( $issues ) ) );
 				break;
 			case 'unignore':
 				$issues = $model->get_issues( $type, Scan_Item::STATUS_IGNORE );
 				foreach ( $issues as $issue ) {
+					$issue_data = $this->split_scan_issue_into_file_and_dir( $type, $issue->raw_data );
 					$model->unignore_issue( $issue->id );
-					WP_CLI::log( sprintf( 'Unignoring file: %s', $issue->raw_data['file'] ) );
+					WP_CLI::log( sprintf( 'Unignoring %s: %s', $issue_data['type'], $issue_data['path'] ) );
 				}
 				WP_CLI::log( sprintf( 'Unignored %s items', count( $issues ) ) );
 				break;
@@ -213,6 +279,7 @@ class Cli {
 							return WP_CLI::error( sprintf( "Can't delete file %s", $path ) );
 						}
 					}
+					// No result for Vulnerability, Outdated or Closed plugin types.
 				}
 				WP_CLI::log( sprintf( 'Resolved %s items', count( $resolved ) ) );
 				break;
@@ -220,13 +287,42 @@ class Cli {
 				$items   = $model->get_issues( $type, Scan_Item::STATUS_ACTIVE );
 				$deleted = array();
 				foreach ( $items as $item ) {
-					$path = $item->raw_data['file'];
-					if ( wp_delete_file( $path ) ) {
-						WP_CLI::log( sprintf( 'Delete file %s', $path ) );
-						$model->remove_issue( $item->id );
-						$deleted[] = $item;
-					} else {
-						return WP_CLI::error( sprintf( "Can't delete file %s", $path ) );
+					$issue_data = $this->split_scan_issue_into_file_and_dir( $type, $item->raw_data );
+					$path       = $issue_data['path'];
+					$issue_type = $issue_data['type'];
+					if ( ! file_exists( $path ) ) {
+						continue;
+					}
+					// Work with plugin dir or single file, e.g. for Vulnerability, Outdated or Closed plugin types.
+					if ( 'folder' === $issue_type ) {
+						if ( $this->is_active_plugin( $path ) ) {
+							WP_CLI::warning( sprintf( 'This plugin %s cannot be removed because it is active.', $path ) );
+							continue;
+						}
+
+						if ( is_dir( $path ) ) {
+							if ( $this->delete_dir( $path ) ) {
+								WP_CLI::log( sprintf( 'Delete %s: %s', $issue_type, $path ) );
+								$model->remove_issue( $item->id );
+								$deleted[] = $item;
+							}
+						} elseif ( wp_delete_file( $path ) ) {
+							WP_CLI::log( sprintf( 'Delete %s: %s', $issue_type, $path ) );
+							$model->remove_issue( $item->id );
+							$deleted[] = $item;
+						} else {
+
+							return WP_CLI::error( sprintf( "Can't delete %s: %s", $issue_type, $path ) );
+						}
+					} elseif ( 'file' === $issue_type ) {
+						// Work with core_integrity, plugin_integrity or suspicious_code types.
+						if ( wp_delete_file( $path ) ) {
+							WP_CLI::log( sprintf( 'Delete %s: %s', $issue_type, $path ) );
+							$model->remove_issue( $item->id );
+							$deleted[] = $item;
+						} else {
+							return WP_CLI::error( sprintf( "Can't delete %s: %s", $issue_type, $path ) );
+						}
 					}
 				}
 				WP_CLI::log( sprintf( 'Deleted %s items', count( $deleted ) ) );
@@ -245,7 +341,7 @@ class Cli {
 	public function seed( $args ) {
 		global $wp_filesystem;
 		// Initialize the WP filesystem, no more using 'file-put-contents' function.
-		if ( empty( $wp_filesystem ) ) {
+		if ( ! $wp_filesystem instanceof WP_Filesystem_Base ) {
 			require_once ABSPATH . '/wp-admin/includes/file.php';
 			WP_Filesystem();
 		}
@@ -369,7 +465,7 @@ class Cli {
 	public function unseed( $args ) {
 		global $wp_filesystem;
 		// Initialize the WP filesystem, no more using 'file-put-contents' function.
-		if ( empty( $wp_filesystem ) ) {
+		if ( ! $wp_filesystem instanceof WP_Filesystem_Base ) {
 			require_once ABSPATH . '/wp-admin/includes/file.php';
 			WP_Filesystem();
 		}

@@ -21,6 +21,7 @@ use WP_Defender\Model\Lockout_Log;
 use WP_Defender\Component\User_Agent;
 use WP_Defender\Component\IP\Global_IP;
 use WP_Defender\Component\Table_Lockout;
+use WP_Defender\Component\Network_Cron_Manager;
 use WP_Defender\Integrations\Antibot_Global_Firewall_Client;
 use WP_Defender\Model\Setting\Blacklist_Lockout;
 use WP_Defender\Model\Setting\User_Agent_Lockout;
@@ -78,11 +79,16 @@ class Firewall_Logs extends Controller {
 
 		/**
 		 * Send Firewall logs to AntiBot Global Firewall API.
+		 *
+		 * @var Network_Cron_Manager $network_cron_manager
 		 */
-		if ( ! wp_next_scheduled( 'wpdef_firewall_send_compact_logs_to_api' ) ) {
-			wp_schedule_event( time() + 15, 'twicedaily', 'wpdef_firewall_send_compact_logs_to_api' );
-		}
-		add_action( 'wpdef_firewall_send_compact_logs_to_api', array( $this, 'send_compact_logs_to_api' ) );
+		$network_cron_manager = wd_di()->get( Network_Cron_Manager::class );
+		$network_cron_manager->register_callback(
+			'wpdef_firewall_send_compact_logs_to_api',
+			array( $this, 'send_compact_logs_to_api' ),
+			12 * HOUR_IN_SECONDS,
+			time() + 15
+		);
 		if ( class_exists( 'Akismet' ) ) {
 			add_filter( 'http_response', array( $this, 'akismet_http_response' ), 10, 3 );
 		}
@@ -708,6 +714,7 @@ class Firewall_Logs extends Controller {
 	 * Delete all the data & the cache.
 	 */
 	public function remove_data() {
+		delete_site_transient( self::AKISMET_BLOCKED_IPS );
 	}
 
 	/**

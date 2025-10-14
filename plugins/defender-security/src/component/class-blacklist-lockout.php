@@ -12,12 +12,13 @@ use WP_Defender\Component;
 use WP_Defender\Traits\IP;
 use Calotes\Helper\Array_Cache;
 use WP_Defender\Traits\Country;
+use WP_Defender\Traits\Continent;
 use WP_Defender\Model\Lockout_Log;
 use MaxMind\Db\Reader\InvalidDatabaseException;
 use WP_Defender\Integrations\MaxMind_Geolocation;
 use WP_Defender\Model\Setting\Blacklist_Lockout as Model_Blacklist_Lockout;
-use WP_Defender\Component\Firewall;
 use WP_Defender\Integrations\Main_Wp;
+use WP_Filesystem_Base;
 
 /**
  * Handles operations related to IP and country-based blacklisting and whitelisting.
@@ -26,9 +27,38 @@ class Blacklist_Lockout extends Component {
 
 	use Country;
 	use IP;
+	use Continent;
 
 	// Define the transient key.
 	const IP_LIST_KEY = 'wpmu_dev_ip_list';
+
+	/**
+	 * Check if a country code belongs to a continent.
+	 *
+	 * @param string $country_iso The country ISO code to check.
+	 * @param string $continent_code The continent code (EU, AS, AF, AM, OC).
+	 * @return bool True if the country belongs to the continent, false otherwise.
+	 */
+	private function is_country_in_continent( $country_iso, $continent_code ): bool {
+		$countries_with_continents = $this->get_countries_with_continents();
+
+		if ( ! isset( $countries_with_continents[ $continent_code ] ) ) {
+			return false;
+		}
+
+		$continent = $countries_with_continents[ $continent_code ];
+		if ( ! isset( $continent['area'] ) ) {
+			return false;
+		}
+
+		foreach ( $continent['area'] as $area ) {
+			if ( isset( $area['countries'][ $country_iso ] ) ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
 
 	/**
 	 * Checks if a given IP is whitelisted based on the country.
@@ -49,8 +79,21 @@ class Blacklist_Lockout extends Component {
 		if ( empty( $whitelist ) ) {
 			return false;
 		}
-		if ( ! empty( $country['iso'] ) && in_array( strtoupper( $country['iso'] ), $whitelist, true ) ) {
-			return true;
+
+		if ( ! empty( $country['iso'] ) ) {
+			$country_iso = strtoupper( $country['iso'] );
+
+			// Check if the specific country is in the whitelist.
+			if ( in_array( $country_iso, $whitelist, true ) ) {
+				return true;
+			}
+
+			// Check if any continent containing this country is in the whitelist.
+			foreach ( $whitelist as $allowed_code ) {
+				if ( $this->is_country_in_continent( $country_iso, $allowed_code ) ) {
+					return true;
+				}
+			}
 		}
 
 		return false;
@@ -180,8 +223,21 @@ class Blacklist_Lockout extends Component {
 		if ( in_array( 'all', $blacklisted, true ) ) {
 			return true;
 		}
-		if ( ! empty( $country['iso'] ) && in_array( strtoupper( $country['iso'] ), $blacklisted, true ) ) {
-			return true;
+
+		if ( ! empty( $country['iso'] ) ) {
+			$country_iso = strtoupper( $country['iso'] );
+
+			// Check if the specific country is in the blacklist.
+			if ( in_array( $country_iso, $blacklisted, true ) ) {
+				return true;
+			}
+
+			// Check if any continent containing this country is in the blacklist.
+			foreach ( $blacklisted as $blocked_code ) {
+				if ( $this->is_country_in_continent( $country_iso, $blocked_code ) ) {
+					return true;
+				}
+			}
 		}
 
 		return false;
@@ -197,7 +253,7 @@ class Blacklist_Lockout extends Component {
 	public function verify_import_file( $file ) {
 		global $wp_filesystem;
 		// Initialize the WP filesystem, no more using 'file-put-contents' function.
-		if ( empty( $wp_filesystem ) ) {
+		if ( ! $wp_filesystem instanceof WP_Filesystem_Base ) {
 			require_once ABSPATH . '/wp-admin/includes/file.php';
 			WP_Filesystem();
 		}
@@ -324,7 +380,7 @@ class Blacklist_Lockout extends Component {
 
 			if ( $this->validate_geodb_file( $model->geodb_path ) ) {
 				global $wp_filesystem;
-				if ( empty( $wp_filesystem ) ) {
+				if ( ! $wp_filesystem instanceof WP_Filesystem_Base ) {
 					require_once ABSPATH . '/wp-admin/includes/file.php';
 					WP_Filesystem();
 				}

@@ -198,7 +198,7 @@ class Premium_Image_Separator extends Widget_Base {
 		);
 
 		$demo = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/image-separator-widget-elementor-page-builder/', 'image-separator', 'wp-editor', 'demo' );
-    	Helper_Functions::add_templates_controls( $this, 'image-separator', $demo );
+		Helper_Functions::add_templates_controls( $this, 'image-separator', $demo );
 
 		$this->add_control(
 			'separator_type',

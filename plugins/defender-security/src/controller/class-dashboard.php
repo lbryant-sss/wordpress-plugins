@@ -109,10 +109,7 @@ class Dashboard extends Event {
 		$this->register_page(
 			$this->get_menu_title(),
 			$this->parent_slug,
-			array(
-				&$this,
-				'main_view',
-			),
+			array( $this, 'main_view' ),
 			null,
 			$this->get_menu_icon()
 		);

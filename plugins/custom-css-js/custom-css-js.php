@@ -3,7 +3,7 @@
  * Plugin Name: Simple Custom CSS and JS
  * Plugin URI:  https://wordpress.org/plugins/custom-css-js/
  * Description: Easily add Custom CSS or JS to your website with an awesome editor.
- * Version:     3.51
+ * Version:     3.51.1
  * Author:      SilkyPress.com
  * Author URI:  https://www.silkypress.com
  * License:     GPL2
@@ -235,14 +235,11 @@ if ( ! class_exists( 'CustomCSSandJS' ) ) :
 		public static function enqueue_block_assets() {
 
 			$search_tree = get_option( 'custom-css-js-tree', array() );
-			if ( ! isset( $search_tree ) || ! is_array( $search_tree ) || count( $search_tree ) === 0 ) return;
 
 			$js_dependency = ( isset( $search_tree['jquery'] ) && true === $search_tree['jquery'] ) ? ['jquery'] : [];
 
 			foreach ( $search_tree as $_where => $_files ) {
-				if ( strpos( $_where, 'html' ) !== false ) continue;
-				if ( strpos( $_where, 'block' ) === false ) continue;
-				if ( strpos( $_where, 'external' ) === false ) continue;
+				if ( strpos( $_where, 'html' ) !== false || strpos( $_where, 'block' ) === false || strpos( $_where, 'external' ) === false ) continue;
 				if ( ! is_array( $_files ) || count( $_files ) === 0 ) continue;
 
 
@@ -285,7 +282,7 @@ if ( ! class_exists( 'CustomCSSandJS' ) ) :
 		public function set_constants() {
 			$dir       = wp_upload_dir();
 			$constants = array(
-				'CCJ_VERSION'     => '3.51',
+				'CCJ_VERSION'     => '3.51.1',
 				'CCJ_UPLOAD_DIR'  => $dir['basedir'] . '/custom-css-js',
 				'CCJ_UPLOAD_URL'  => $dir['baseurl'] . '/custom-css-js',
 				'CCJ_PLUGIN_FILE' => __FILE__,

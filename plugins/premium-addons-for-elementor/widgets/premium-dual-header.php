@@ -87,7 +87,6 @@ class Premium_Dual_Header extends Widget_Base {
 			if ( 'none' !== $settings['first_lq_effect'] || 'none' !== $settings['second_lq_effect'] ) {
 				$scripts[] = 'pa-glass';
 			}
-
 		}
 
 		$scripts[] = 'premium-addons';

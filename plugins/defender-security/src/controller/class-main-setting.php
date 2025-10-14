@@ -16,6 +16,7 @@ use WP_Defender\Component\Backup_Settings;
 use WP_Defender\Component\Config\Config_Adapter;
 use WP_Defender\Component\Config\Config_Hub_Helper;
 use WP_Defender\Model\Setting\Main_Setting as Model_Main_Setting;
+use WP_Filesystem_Base;
 
 /**
  * Methods for handling main settings.
@@ -65,10 +66,7 @@ class Main_Setting extends Event {
 		$this->register_page(
 			esc_html__( 'Settings', 'defender-security' ),
 			$this->slug,
-			array(
-				&$this,
-				'main_view',
-			),
+			array( $this, 'main_view' ),
 			$this->parent_slug
 		);
 
@@ -346,7 +344,7 @@ class Main_Setting extends Event {
 	public function import_config(): Response {
 		global $wp_filesystem;
 		// Initialize the WP filesystem, no more using 'file-put-contents' function.
-		if ( empty( $wp_filesystem ) ) {
+		if ( ! $wp_filesystem instanceof WP_Filesystem_Base ) {
 			require_once ABSPATH . '/wp-admin/includes/file.php';
 			WP_Filesystem();
 		}
@@ -866,7 +864,7 @@ class Main_Setting extends Event {
 	public function clear_logs_from_files( int $time_limit = MONTH_IN_SECONDS ) {
 		global $wp_filesystem;
 		// Initialize the WP filesystem, no more using 'file-put-contents' function.
-		if ( empty( $wp_filesystem ) ) {
+		if ( ! $wp_filesystem instanceof WP_Filesystem_Base ) {
 			require_once ABSPATH . '/wp-admin/includes/file.php';
 			WP_Filesystem();
 		}

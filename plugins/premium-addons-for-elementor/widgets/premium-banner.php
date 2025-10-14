@@ -517,9 +517,9 @@ class Premium_Banner extends Widget_Base {
 		$this->add_control(
 			'premium_banner_responsive_switcher',
 			array(
-				'label'       => __( 'Responsive', 'premium-addons-for-elementor' ),
-				'type'        => Controls_Manager::SWITCHER,
-				'description' => __( 'If the description text is not suiting well on mobile devices, you can enable this option to hide it.', 'premium-addons-for-elementor' ),
+				'label'        => __( 'Responsive', 'premium-addons-for-elementor' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'description'  => __( 'If the description text is not suiting well on mobile devices, you can enable this option to hide it.', 'premium-addons-for-elementor' ),
 				'prefix_class' => 'premium-banner-responsive-',
 			)
 		);

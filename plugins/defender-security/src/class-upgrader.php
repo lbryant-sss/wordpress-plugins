@@ -424,6 +424,9 @@ class Upgrader {
 		if ( version_compare( $db_version, '5.5.0', '<' ) ) {
 			$this->upgrade_5_5_0();
 		}
+		if ( version_compare( $db_version, '5.6.0', '<' ) ) {
+			$this->upgrade_5_6_0();
+		}
 		// This is not a new installation. Make a mark.
 		defender_no_fresh_install();
 		// Don't run any function below this line.
@@ -833,7 +836,7 @@ Your temporary password is {{passcode}}. To finish logging in, copy and paste th
 		$scan_settings->scheduled_scanning = Notification::STATUS_ACTIVE === $malware_report->status;
 		$scan_settings->frequency          = $malware_report->frequency;
 		$scan_settings->day                = $malware_report->day;
-		$scan_settings->day_n              = $malware_report->day_n;
+		$scan_settings->day_n              = (int) $malware_report->day_n;
 		$scan_settings->time               = $malware_report->time;
 		$scan_settings->save();
 
@@ -1860,7 +1863,49 @@ To complete your login, copy and paste the temporary password into the Password 
 	 */
 	private function upgrade_5_5_0(): void {
 		update_site_option( Feature_Modal::FEATURE_SLUG, true );
+	}
+
+	/**
+	 * Change lockout log mentions from fake_bot to malicious_bot. Also move BotTrap settings.
+	 *
+	 * @return void
+	 */
+	private function change_to_malicious_bot(): void {
+		global $wpdb;
+
+		$table_name = $wpdb->base_prefix . 'defender_lockout_log';
+
+		$wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+			$wpdb->prepare(
+				"UPDATE $table_name SET type = %s, log = %s WHERE type = %s", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+				'malicious_bot',
+				'Lockout occurred: Bot ignored robots.txt rules.',
+				'bot_trap'
+			)
+		);
+		// Clear schedule as the name has changed to 'wpdef_rotate_malicious_bot_secret_hash'.
+		wp_clear_scheduled_hook( 'wpdef_rotate_bot_trap_secret_hash' );
+		// Move the BotTrap settings to new Malicious Bot settings.
+		$settings = wd_di()->get( User_Agent_Lockout::class );
+		if ( isset( $settings->bot_trap_enabled ) ) {
+			$settings->malicious_bot_enabled               = $settings->bot_trap_enabled;
+			$settings->malicious_bot_lockout_type          = $settings->bot_trap_lockout_type;
+			$settings->malicious_bot_lockout_duration      = $settings->bot_trap_lockout_duration;
+			$settings->malicious_bot_lockout_duration_unit = $settings->bot_trap_lockout_duration_unit;
+			$settings->save();
+		}
+	}
+
+	/**
+	 * Upgrade to 5.6.0.
+	 *
+	 * @return void
+	 */
+	private function upgrade_5_6_0(): void {
+		$this->change_to_malicious_bot();
 		// Remove the prev Breadcrumbs.
 		wd_di()->get( \WP_Defender\Component\Breadcrumbs::class )->delete_previous_meta();
+		// Add the "What's new" modal.
+		update_site_option( Feature_Modal::FEATURE_SLUG, true );
 	}
 }

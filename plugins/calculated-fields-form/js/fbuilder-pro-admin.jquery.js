@@ -1729,9 +1729,15 @@
 							evt.stopPropagation();
 							if(t) alert($(this).attr("text"));
 							else {
-								const popupWidth = Math.min(window.screen.width, 800);
-								const popupHeight = Math.min(window.screen.height, 600);
-								window.open( $(this).attr('href'), 'helpPopup', `width=${popupWidth},height=${popupHeight},scrollbars=yes,resizable=yes`);
+								let video_container = $("#cff-video-tutorial-modal");
+								if ( video_container.length ) {
+									video_container.find('iframe').attr('src', $(this).attr('href'));
+									video_container.css({'opacity':0,'display':'block'}).animate({'opacity':1}, 'fast');
+								} else {
+									const popupWidth = Math.min(window.screen.width, 800);
+									const popupHeight = Math.min(window.screen.height, 600);
+									window.open( $(this).attr('href'), 'helpPopup', `width=${popupWidth},height=${popupHeight},scrollbars=yes,resizable=yes`);
+								}
 							}
 							return false;
 						}
@@ -1998,7 +2004,7 @@
 	} );
 
 	// Redirect to the admin list sections
-	$(window).on('load', function(){
+	function cff_jump_to_section() {
 		if ( /cp_calculated_fields_form_sub_addons/i.test(document.location.search) ) {
 			$('#metabox_addons_area')[0].scrollIntoView();
 		} else if ( /cp_calculated_fields_form_sub_troubleshoots_settings/i.test(document.location.search) ) {
@@ -2006,13 +2012,22 @@
 		} else if ( /cp_calculated_fields_form_sub_import_export/i.test(document.location.search) ) {
 			$('#metabox_import_export_area')[0].scrollIntoView();
 		} else if ( /cp_calculated_fields_form_sub_new/i.test(document.location.search) ) {
-			cff_openLibraryDialog( true );
+			if ( typeof cff_openLibraryDialog == 'undefined') {
+				setTimeout(function() { if( 'cff_openLibraryDialog' in window ) cff_openLibraryDialog( true ); }, 1000);
+			} else {
+				cff_openLibraryDialog( true );
+			}
 		}
-
 		$( '#cff-ai-assistant-container' ).draggable({ handle: ".cff-ai-assistan-title", containment: "window",  drag: function(evt, ui) {
 			ui.position.top = Math.max(35, ui.position.top);
 		}});
-	});
+	};
+
+	if (document.readyState === 'complete') {
+		cff_jump_to_section();
+	} else {
+		window.addEventListener('load', function(){cff_jump_to_section();});
+	}
 
 	$(document).on('keypress', '.cff_form_builder input[type="text"],.cff_form_builder input[type="number"]', function( evt ) {
 		var keycode = (evt.keyCode ? evt.keyCode : evt.which);

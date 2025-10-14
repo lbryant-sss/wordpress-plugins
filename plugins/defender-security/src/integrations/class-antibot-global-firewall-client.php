@@ -12,7 +12,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use WP_Error;
-use WP_Defender\Behavior\WPMUDEV;
 use WP_Defender\Traits\Defender_Dashboard_Client;
 
 /**
@@ -29,22 +28,6 @@ class Antibot_Global_Firewall_Client {
 	 * @var string
 	 */
 	private $base_url = 'https://api.blocklist-service.com';
-
-	/**
-	 * The WPMUDEV instance.
-	 *
-	 * @var WPMUDEV
-	 */
-	private $wpmudev;
-
-	/**
-	 * Constructor for the Antibot_Global_Firewall_Client class.
-	 *
-	 * @param  WPMUDEV $wpmudev  The WPMUDEV object.
-	 */
-	public function __construct( WPMUDEV $wpmudev ) {
-		$this->wpmudev = $wpmudev;
-	}
 
 	/**
 	 * Get the base URL of the AntiBot Global Firewall API service.
@@ -95,7 +78,7 @@ class Antibot_Global_Firewall_Client {
 			return $response;
 		}
 
-		return ! empty( $response['data'] ) ? $response['data'] : array();
+		return isset( $response['data'] ) && is_array( $response['data'] ) ? $response['data'] : array();
 	}
 
 	/**
@@ -110,7 +93,7 @@ class Antibot_Global_Firewall_Client {
 	private function make_request( $method, $endpoint, $data = array() ) {
 		$apikey = $this->get_api_key();
 
-		if ( ! $apikey ) {
+		if ( '' === $apikey ) {
 			return new WP_Error( 'no_api_key', 'No API key provided' );
 		}
 

@@ -446,7 +446,7 @@ class Backup_Settings extends Component {
 				'always_send'                   => false,
 				'report_subscribers'            => $default_recipients,
 				'day'                           => 'sunday',
-				'day_n'                         => '1',
+				'day_n'                         => 1,
 				'time'                          => '4:00',
 				'frequency'                     => 'weekly',
 				// @since 2.7.0 We can remove it in the next version.
@@ -503,7 +503,7 @@ class Backup_Settings extends Component {
 				'report_subscribers'                     => $default_recipients,
 				'report_frequency'                       => 'weekly',
 				'day'                                    => 'sunday',
-				'day_n'                                  => '1',
+				'day_n'                                  => 1,
 				'report_time'                            => '4:00',
 				// @since 2.7.0 We can remove it in the next version.
 				'dry_run'                                => false,
@@ -590,7 +590,7 @@ class Backup_Settings extends Component {
 				'subscribers'  => $default_recipients,
 				'frequency'    => 'weekly',
 				'day'          => 'sunday',
-				'day_n'        => '1',
+				'day_n'        => 1,
 				'time'         => '4:00',
 				// @since 2.7.0 We can remove it in the next version.
 				'dry_run'      => false,
@@ -814,8 +814,8 @@ class Backup_Settings extends Component {
 							$scan_report->day   = $module_data['day'];
 						}
 						if ( isset( $module_data['day_n'] ) ) {
-							$scan_settings->day_n = $module_data['day_n'];
-							$scan_report->day_n   = $module_data['day_n'];
+							$scan_settings->day_n = (int) $module_data['day_n'];
+							$scan_report->day_n   = (int) $module_data['day_n'];
 						}
 						if ( isset( $module_data['time'] ) ) {
 							$scan_settings->time = $module_data['time'];
@@ -886,7 +886,7 @@ class Backup_Settings extends Component {
 								$lockout_report->frequency = $module_data['report_frequency'];
 							}
 							if ( isset( $module_data['day_n'] ) ) {
-								$lockout_report->day_n = $module_data['day_n'];
+								$lockout_report->day_n = (int) $module_data['day_n'];
 							}
 							if ( isset( $module_data['report_time'] ) ) {
 								$lockout_report->time = $module_data['report_time'];
@@ -925,7 +925,7 @@ class Backup_Settings extends Component {
 						// @since 2.7.0 We can remove it in the next version.
 						$lockout_report->dry_run   = false;
 						$lockout_report->frequency = 'weekly';
-						$lockout_report->day_n     = '1';
+						$lockout_report->day_n     = 1;
 						$lockout_report->day       = 'sunday';
 						$lockout_report->time      = '4:00';
 						$lockout_report->save();
@@ -947,7 +947,7 @@ class Backup_Settings extends Component {
 							$audit_report->frequency = $module_data['frequency'];
 						}
 						if ( isset( $module_data['day_n'] ) ) {
-							$audit_report->day_n = $module_data['day_n'];
+							$audit_report->day_n = (int) $module_data['day_n'];
 						}
 						if ( isset( $module_data['day'] ) ) {
 							$audit_report->day = $module_data['day'];
@@ -973,7 +973,7 @@ class Backup_Settings extends Component {
 						// @since 2.7.0 We can remove it in the next version.
 						$audit_report->dry_run   = false;
 						$audit_report->frequency = 'weekly';
-						$audit_report->day_n     = '1';
+						$audit_report->day_n     = 1;
 						$audit_report->day       = 'sunday';
 						$audit_report->time      = '4:00';
 					}

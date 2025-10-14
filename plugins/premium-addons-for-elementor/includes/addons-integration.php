@@ -1312,7 +1312,7 @@ class Addons_Integration {
 			$api_url,
 			array(
 				'timeout'   => 15,
-				'sslverify' => false,
+				'sslverify' => true,
 			)
 		);
 

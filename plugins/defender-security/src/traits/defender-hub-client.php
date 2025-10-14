@@ -249,7 +249,7 @@ trait Defender_Hub_Client {
 	 * @throws Exception If the WPMU DEV Dashboard plugin is missing.
 	 */
 	public function can_wpmu_free_request() {
-		return in_array( $this->get_membership_type(), array( 'free', 'full' ), true );
+		return in_array( $this->get_membership_type(), array( 'free', 'full', 'unit' ), true );
 	}
 
 	/**

@@ -424,6 +424,10 @@ Details [changelog here](https://feedback.bdthemes.com/announcements?category=ca
 
 - Yes, Prime Slider supports both http:// and https:// protocols.
 
+### How can I report security bugs? 
+
+- You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team helps validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/9e5fb813-d8f7-41ad-ad27-748af1395dfb)
+
 
 == Screenshots ==
 

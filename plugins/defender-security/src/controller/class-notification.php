@@ -372,7 +372,7 @@ class Notification extends Event {
 			// since 2.7.0.
 			if ( Malware_Report::SLUG !== $slug ) {
 				$import['frequency'] = $data['frequency'];
-				$import['day_n']     = $data['day_n'];
+				$import['day_n']     = (int) $data['day_n'];
 				$import['day']       = $data['day'];
 				$import['time']      = $data['time'];
 			}

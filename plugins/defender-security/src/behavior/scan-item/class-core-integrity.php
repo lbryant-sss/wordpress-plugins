@@ -16,6 +16,7 @@ use WP_Defender\Traits\Formats;
 use WP_Defender\Model\Scan_Item;
 use WP_Defender\Traits\File_Operations;
 use WP_Defender\Controller\Scan as Scan_Controller;
+use WP_Filesystem_Base;
 
 /**
  * This class represents a behavior related to core integrity in the WP_Defender plugin.
@@ -58,7 +59,7 @@ class Core_Integrity extends Behavior {
 	private function get_origin_code() {
 		global $wp_filesystem;
 		// Initialize the WP filesystem, no more using 'file-put-contents' function.
-		if ( empty( $wp_filesystem ) ) {
+		if ( ! $wp_filesystem instanceof WP_Filesystem_Base ) {
 			require_once ABSPATH . '/wp-admin/includes/file.php';
 			WP_Filesystem();
 		}

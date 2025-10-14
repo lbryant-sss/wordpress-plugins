@@ -13,6 +13,7 @@ use WP_Defender\Model\Lockout_Ip;
 use WP_Defender\Model\Lockout_Log;
 use WP_Defender\Model\Setting\User_Agent_Lockout;
 use WP_Defender\Model\Notification\Firewall_Notification;
+use WP_Filesystem_Base;
 
 /**
  * Handles User-Agent based operations including lockouts and logging for security purposes.
@@ -165,6 +166,9 @@ class User_Agent extends Component {
 		$this->log_event( $ip, $user_agent, $reason );
 		do_action( 'wd_user_agent_lockout', $this->model, self::SCENARIO_USER_AGENT_LOCKOUT );
 		// Shouldn't block IP via hook 'wd_blacklist_this_ip', block only when the button 'Ban IP' is clicked.
+		if ( defender_is_wp_org_version() ) {
+			Rate::run_counter_of_ua_lockouts();
+		}
 	}
 
 	/**
@@ -222,7 +226,7 @@ class User_Agent extends Component {
 	public function verify_import_file( $file ) {
 		global $wp_filesystem;
 		// Initialize the WP filesystem, no more using 'file-put-contents' function.
-		if ( empty( $wp_filesystem ) ) {
+		if ( ! $wp_filesystem instanceof WP_Filesystem_Base ) {
 			require_once ABSPATH . '/wp-admin/includes/file.php';
 			WP_Filesystem();
 		}

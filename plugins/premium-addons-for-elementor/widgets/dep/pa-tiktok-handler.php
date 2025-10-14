@@ -285,19 +285,16 @@ function get_video_content( $url, $geturl = false ) {
 
 	$options = array(
 		CURLOPT_URL            => $url,
-		CURLOPT_RETURNTRANSFER => true,
-		CURLOPT_HEADER         => false,
-		CURLOPT_FOLLOWLOCATION => true,
-		CURLOPT_USERAGENT      => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
-		CURLOPT_ENCODING       => 'utf-8',
-		CURLOPT_AUTOREFERER    => false,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_HEADER         => false,
+        CURLOPT_FOLLOWLOCATION => false, // Disable redirects
+        CURLOPT_USERAGENT      => 'okhttp',
 		CURLOPT_COOKIEJAR      => 'cookie.txt',
 		CURLOPT_COOKIEFILE     => 'cookie.txt',
 		CURLOPT_REFERER        => 'https://www.tiktok.com/',
-		CURLOPT_CONNECTTIMEOUT => 30,
-		CURLOPT_SSL_VERIFYHOST => false,
-		CURLOPT_SSL_VERIFYPEER => false,
-		CURLOPT_TIMEOUT        => 30,
+        CURLOPT_SSL_VERIFYHOST => 2, // Enable SSL verification
+        CURLOPT_SSL_VERIFYPEER => true, // Enable SSL verification
+        CURLOPT_TIMEOUT        => 30,
 		CURLOPT_MAXREDIRS      => 10,
 	);
 
@@ -322,59 +319,94 @@ function get_video_content( $url, $geturl = false ) {
 
 function download_tiktok_video( $video_url, $video_id, $geturl = false ) {
 
-	$tiktok_dir = set_url_scheme( wp_upload_dir()['basedir'] . '/tiktok-videos' );
+    // Validate video ID
+    $video_id = validate_video_id( $video_id );
+    if ( ! $video_id ) {
+        return new WP_Error( 'invalid_video_id', 'Invalid video ID provided' );
+    }
 
-	if ( ! file_exists( $tiktok_dir ) ) {
-		wp_mkdir_p( set_url_scheme( wp_upload_dir()['basedir'] . '/tiktok-videos' ) );
+    // Validate URL
+    if ( ! filter_var( $video_url, FILTER_VALIDATE_URL ) ) {
+        return new WP_Error( 'invalid_url', 'Invalid video URL' );
+    }
+
+
+    // Only allow TikTok domains
+    $parsed_url = parse_url( $video_url );
+
+	if ( empty( $parsed_url['host'] ) ) {
+        return false;
+    }
+
+	// return;
+	if ( strpos( $parsed_url['host'], 'tiktok' ) === false ) {
+		return new WP_Error( 'unauthorized_host', 'Unauthorized video host' );
 	}
 
-	$ch      = curl_init();
-	$headers = array(
-		'Range: bytes=0-',
-	);
+    $tiktok_dir = set_url_scheme( wp_upload_dir()['basedir'] . '/tiktok-videos' );
 
-	$options = array(
-		CURLOPT_URL            => $video_url,
-		CURLOPT_RETURNTRANSFER => true,
-		CURLOPT_HEADER         => false,
-		CURLOPT_HTTPHEADER     => $headers,
-		CURLOPT_FOLLOWLOCATION => true,
-		CURLINFO_HEADER_OUT    => true,
-		CURLOPT_USERAGENT      => 'okhttp',
-		CURLOPT_ENCODING       => 'utf-8',
-		CURLOPT_AUTOREFERER    => true,
+    if ( ! file_exists( $tiktok_dir ) ) {
+        wp_mkdir_p( $tiktok_dir );
+    }
+
+    $ch = curl_init();
+    $options = array(
+        CURLOPT_URL            => $video_url,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_HEADER         => false,
+        CURLOPT_FOLLOWLOCATION => false, // Disable redirects
+        CURLOPT_USERAGENT      => 'okhttp',
 		CURLOPT_COOKIEJAR      => 'cookie.txt',
 		CURLOPT_COOKIEFILE     => 'cookie.txt',
 		CURLOPT_REFERER        => 'https://www.tiktok.com/',
-		CURLOPT_CONNECTTIMEOUT => 30,
-		CURLOPT_SSL_VERIFYHOST => false,
-		CURLOPT_SSL_VERIFYPEER => false,
-		CURLOPT_TIMEOUT        => 30,
-		CURLOPT_MAXREDIRS      => 10,
-	);
+        CURLOPT_SSL_VERIFYHOST => 2, // Enable SSL verification
+        CURLOPT_SSL_VERIFYPEER => true, // Enable SSL verification
+        CURLOPT_TIMEOUT        => 30,
+        CURLOPT_MAXFILESIZE    => 10 * 1024 * 1024, // 10MB limit
+    );
 
-	curl_setopt_array( $ch, $options );
-	if ( defined( 'CURLOPT_IPRESOLVE' ) && defined( 'CURL_IPRESOLVE_V4' ) ) {
-		curl_setopt( $ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4 );
-	}
+    curl_setopt_array( $ch, $options );
 
-	$data = curl_exec( $ch );
+    $data = curl_exec( $ch );
+    $httpcode = curl_getinfo( $ch, CURLINFO_HTTP_CODE );
 
-	$httpcode = curl_getinfo( $ch, CURLINFO_HTTP_CODE );
+    // if ( $httpcode !== 200 ) {
+    //     curl_close( $ch );
+    //     return new WP_Error( 'download_failed', 'Failed to download video' );
+    // }
 
-	if ( $geturl === true ) {
-		return curl_getinfo( $ch, CURLINFO_EFFECTIVE_URL );
-	}
+    curl_close( $ch );
 
-	curl_close( $ch );
+    // Secure filename generation
+    $filename = $tiktok_dir . '/' . basename( $video_id ) . '.mp4';
 
-	$filename = $tiktok_dir . '/' . $video_id . '.mp4';
+    // Use WordPress filesystem API
+    global $wp_filesystem;
+    if ( ! $wp_filesystem ) {
+        require_once ABSPATH . 'wp-admin/includes/file.php';
+        WP_Filesystem();
+    }
 
-	$d = fopen( $filename, 'w' );
+    $result = $wp_filesystem->put_contents( $filename, $data, FS_CHMOD_FILE );
 
-	fwrite( $d, $data );
+    if ( ! $result ) {
+        return new WP_Error( 'file_write_failed', 'Failed to save video file' );
+    }
 
-	fclose( $d );
+    return $filename;
+}
 
-	return $filename;
+function validate_video_id( $video_id ) {
+
+    // Only allow alphanumeric characters and hyphens
+    if ( ! preg_match( '/^[a-zA-Z0-9_-]+$/', $video_id ) ) {
+        return false;
+    }
+
+    // Limit length
+    if ( strlen( $video_id ) > 50 ) {
+        return false;
+    }
+
+    return sanitize_text_field( $video_id );
 }

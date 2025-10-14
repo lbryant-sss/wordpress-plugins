@@ -62,7 +62,7 @@ class Password_Protection extends Component {
 	 */
 	public function get_submitted_password() {
 		$password = '';
-		foreach ( array( 'pwd', 'pass1', 'password', 'edd_user_pass' ) as $key ) {
+		foreach ( array( 'pwd', 'pass1', 'password', 'edd_user_pass', 'password_1', 'account_password' ) as $key ) {
 			$submitted_pass = HTTP::post( $key );
 			if ( ! empty( $submitted_pass ) ) {
 				$password = $submitted_pass;
