@@ -164,11 +164,7 @@ class NewsletterProfile extends NewsletterModule {
             $data['profiles'][] = ['name' => $profile->name, 'value' => $user->$field];
         }
 
-//        $extra = apply_filters('newsletter_profile_export_extra', []);
-//
-//        $data = array_merge($extra, $data);
-
-        return json_encode($data, JSON_PRETTY_PRINT);
+        return wp_json_encode($data, JSON_PRETTY_PRINT);
     }
 
     /**

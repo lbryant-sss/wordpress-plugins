@@ -282,7 +282,7 @@ class AdminMenu {
 					'admin.php?page=' . $this->menu_slug . '&path=automations'
 				);
 
-				if ( 'active' !== $this->get_plugin_status( 'modern-cart-woo/modern-cart-woo.php' ) ) {
+				if ( 'active' !== $this->get_plugin_status( 'modern-cart/modern-cart.php' ) ) {
 					add_submenu_page(
 						$parent_slug,
 						__( 'Modern Cart', 'cartflows' ),
@@ -297,7 +297,7 @@ class AdminMenu {
 					$parent_slug,
 					__( 'Add-ons', 'cartflows' ),
 					__( 'Add-ons', 'cartflows' ),
-					$capability,
+					! wcf_file_mod_disabled() ? $capability : 'do_not_allow',
 					'admin.php?page=' . $this->menu_slug . '&path=addons'
 				);
 
@@ -318,7 +318,7 @@ class AdminMenu {
 						__( 'Get CartFlows Pro', 'cartflows' ),
 						__( 'Get CartFlows Pro', 'cartflows' ),
 						$capability,
-						'admin.php?page=' . $this->menu_slug . '&path=free-vs-pro'
+						\Cartflows_Helper::get_upgrade_to_pro_link()
 					);
 				}
 			}
@@ -516,6 +516,7 @@ class AdminMenu {
 				'is_rtl'                            => is_rtl(),
 				'home_slug'                         => $this->menu_slug,
 				'is_pro'                            => _is_cartflows_pro(),
+				'is_file_mod_disabled'              => function_exists( 'wcf_file_mod_disabled' ) ? wcf_file_mod_disabled() : false, // Keep false by default if function not exists.
 				'page_builder'                      => $page_builder,
 				'page_builder_name'                 => $page_builder_name,
 				'global_checkout'                   => \Cartflows_Helper::get_common_setting( 'global_checkout' ),
@@ -555,7 +556,7 @@ class AdminMenu {
 				'woopayments_status'                => $this->get_plugin_status( 'woocommerce-payments/woocommerce-payments.php' ),
 				'ca_status'                         => $this->get_plugin_status( 'woo-cart-abandonment-recovery/woo-cart-abandonment-recovery.php' ),
 				'suretriggers_status'               => $this->get_plugin_status( 'suretriggers/suretriggers.php' ),
-				'moderncart_status'                 => $this->get_plugin_status( 'modern-cart-woo/modern-cart-woo.php' ),
+				'moderncart_status'                 => $this->get_plugin_status( 'modern-cart/modern-cart.php' ),
 				'cpsw_connection_status'            => 'success' === get_option( 'cpsw_test_con_status', false ) || 'success' === get_option( 'cpsw_con_status', false ),
 				'current_user_can_manage_cartflows' => current_user_can( 'cartflows_manage_settings' ),
 				'is_set_report_email_ids'           => get_option( 'cartflows_stats_report_email_ids', false ),
@@ -569,6 +570,7 @@ class AdminMenu {
 				'cartflows_current_version'         => CARTFLOWS_VER,
 				'cartflows_previous_versions'       => \Cartflows_Helper::get_rollback_versions_options(),
 				'rollback_url'                      => esc_url( add_query_arg( 'version', 'VERSION', wp_nonce_url( admin_url( 'admin-post.php?action=cartflows_rollback' ), 'cartflows_rollback' ) ) ),
+				'utm_param_pro_plans'               => 'utm_source=carflows-dashboard&utm_medium=free-cartflows&utm_campaign=go-pro',
 			)
 		);
 
@@ -998,18 +1000,6 @@ class AdminMenu {
 				'cartflows_admin_integrated_plugins',
 				array(
 					array(
-						'title'       => __( 'WooPayments: Integrated WooCommerce Payments', 'cartflows' ),
-						'subtitle'    => __( 'Payments made simple, with no monthly fees – designed exclusively for WooCommerce stores.', 'cartflows' ),
-						'isPro'       => false,
-						'status'      => $this->get_plugin_status( 'woocommerce-payments/woocommerce-payments.php' ),
-						'redirection' => admin_url( 'admin.php?page=wc-admin&path=/payments/connect' ),
-						'slug'        => 'woocommerce-payments',
-						'path'        => 'woocommerce-payments/woocommerce-payments.php',
-						'logoPath'    => array(
-							'icon_path' => CARTFLOWS_ADMIN_CORE_URL . 'assets/images/plugins/woocommere-payments.png',
-						),
-					),
-					array(
 						'title'       => __( 'WooCommerce', 'cartflows' ),
 						'subtitle'    => __( 'WooCommerce is a customizable, open-source ecommerce platform built on WordPress.', 'cartflows' ),
 						'isPro'       => false,
@@ -1019,6 +1009,57 @@ class AdminMenu {
 						'redirection' => admin_url( 'admin.php?page=wc-admin' ),
 						'logoPath'    => array(
 							'icon_path' => CARTFLOWS_ADMIN_CORE_URL . 'assets/images/plugins/woo.svg',
+						),
+					),
+					array(
+						'title'       => __( 'Modern Cart for WooCommerce', 'cartflows' ),
+						'subtitle'    => __( 'A fast, customizable cart built to boost conversions, maximise profits, and elevate the shopping experience.', 'cartflows' ),
+						'isPro'       => false,
+						'status'      => $this->get_plugin_status( 'modern-cart/modern-cart.php' ),
+						'slug'        => 'modern-cart',
+						'path'        => 'modern-cart/modern-cart.php',
+						'redirection' => admin_url( 'admin.php?page=moderncart_settings' ),
+						'logoPath'    => array(
+							'icon_path' => CARTFLOWS_ADMIN_CORE_URL . 'assets/images/plugins/modern-cart-for-woocommerce.svg',
+						),
+						'hot_badge'   => true,
+					),
+					array(
+						'title'       => __( 'Cart Abandonment Recovery', 'cartflows' ),
+						'subtitle'    => __( 'Recover abandonded carts with ease in less than 10 minutes.', 'cartflows' ),
+						'isPro'       => false,
+						'status'      => $this->get_plugin_status( 'woo-cart-abandonment-recovery/woo-cart-abandonment-recovery.php' ),
+						'slug'        => 'woo-cart-abandonment-recovery',
+						'path'        => 'woo-cart-abandonment-recovery/woo-cart-abandonment-recovery.php',
+						'redirection' => admin_url( 'admin.php?page=woo-cart-abandonment-recovery' ),
+						'logoPath'    => array(
+							'icon_path' => CARTFLOWS_ADMIN_CORE_URL . 'assets/images/plugins/wcar.svg',
+						),
+						'hot_badge'   => true,
+					),
+					array(
+						'title'       => __( 'Variation Swatches for WooCommerce', 'cartflows' ),
+						'subtitle'    => __( 'Convert dropdown boxes into highly engaging variation swatches.', 'cartflows' ),
+						'isPro'       => false,
+						'status'      => $this->get_plugin_status( 'variation-swatches-woo/variation-swatches-woo.php' ),
+						'slug'        => 'variation-swatches-woo',
+						'path'        => 'variation-swatches-woo/variation-swatches-woo.php',
+						'redirection' => admin_url( 'admin.php?page=variation-swatches-woo' ),
+						'logoPath'    => array(
+							'icon_path' => CARTFLOWS_ADMIN_CORE_URL . 'assets/images/plugins/variation-swatches-woo.svg',
+						),
+						'hot_badge'   => true,
+					),
+					array(
+						'title'       => __( 'WooPayments: Integrated WooCommerce Payments', 'cartflows' ),
+						'subtitle'    => __( 'Payments made simple, with no monthly fees – designed exclusively for WooCommerce stores.', 'cartflows' ),
+						'isPro'       => false,
+						'status'      => $this->get_plugin_status( 'woocommerce-payments/woocommerce-payments.php' ),
+						'redirection' => admin_url( 'admin.php?page=wc-admin&path=/payments/connect' ),
+						'slug'        => 'woocommerce-payments',
+						'path'        => 'woocommerce-payments/woocommerce-payments.php',
+						'logoPath'    => array(
+							'icon_path' => CARTFLOWS_ADMIN_CORE_URL . 'assets/images/plugins/woocommere-payments.png',
 						),
 					),
 					array(
@@ -1035,28 +1076,15 @@ class AdminMenu {
 						),
 					),
 					array(
-						'title'       => __( 'SureMembers', 'cartflows' ),
-						'subtitle'    => __( 'A simple yet powerful way to add content restriction to your website.', 'cartflows' ),
-						'isPro'       => true,
-						'status'      => $this->get_plugin_status( 'suremembers/suremembers.php' ),
-						'slug'        => 'suremembers',
-						'path'        => 'suremembers/suremembers.php',
-						'link'        => 'https://suremembers.com/pricing/',
-						'redirection' => admin_url( 'edit.php?post_type=wsm_access_group' ),
-						'logoPath'    => array(
-							'icon_path' => CARTFLOWS_ADMIN_CORE_URL . 'assets/images/plugins/suremembers.svg',
-						),
-					),
-					array(
-						'title'       => __( 'SureForms', 'cartflows' ),
-						'subtitle'    => __( 'Transform your WordPress form-building experience with stunning designs, ai integration, and no-code flexibility.', 'cartflows' ),
+						'title'       => __( 'Ultimate addons for Elementor', 'cartflows' ),
+						'subtitle'    => __( 'Powerful Elementor addon with InfoCard, Fancy Heading, Before/After Slider, Price Box, FAQ Schema, WooCommerce widgets & Header-Footer builder.', 'cartflows' ),
 						'isPro'       => false,
-						'status'      => $this->get_plugin_status( 'sureforms/sureforms.php' ),
-						'slug'        => 'sureforms',
-						'path'        => 'sureforms/sureforms.php',
-						'redirection' => admin_url( 'admin.php?page=sureforms_menu' ),
+						'status'      => $this->get_plugin_status( 'header-footer-elementor/header-footer-elementor.php' ),
+						'slug'        => 'header-footer-elementor',
+						'path'        => 'header-footer-elementor/header-footer-elementor.php',
+						'redirection' => admin_url( 'admin.php?page=hfe#dashboard' ),
 						'logoPath'    => array(
-							'icon_path' => CARTFLOWS_ADMIN_CORE_URL . 'assets/images/plugins/sureforms.svg',
+							'icon_path' => CARTFLOWS_ADMIN_CORE_URL . 'assets/images/plugins/uael.png',
 						),
 					),
 					array(
@@ -1072,47 +1100,28 @@ class AdminMenu {
 						),
 					),
 					array(
-						'title'       => __( 'Modern Cart for WooCommerce', 'cartflows' ),
-						'subtitle'    => __( 'Modern Cart for WooCommerce that helps every shop owner improve their user experience, increase conversions & maximize profits.', 'cartflows' ),
+						'title'       => __( 'SureForms', 'cartflows' ),
+						'subtitle'    => __( 'Transform your WordPress form-building experience with stunning designs, ai integration, and no-code flexibility.', 'cartflows' ),
+						'isPro'       => false,
+						'status'      => $this->get_plugin_status( 'sureforms/sureforms.php' ),
+						'slug'        => 'sureforms',
+						'path'        => 'sureforms/sureforms.php',
+						'redirection' => admin_url( 'admin.php?page=sureforms_menu' ),
+						'logoPath'    => array(
+							'icon_path' => CARTFLOWS_ADMIN_CORE_URL . 'assets/images/plugins/sureforms.svg',
+						),
+					),
+					array(
+						'title'       => __( 'SureMembers', 'cartflows' ),
+						'subtitle'    => __( 'A simple yet powerful way to add content restriction to your website.', 'cartflows' ),
 						'isPro'       => true,
-						'status'      => $this->get_plugin_status( 'modern-cart-woo/modern-cart-woo.php' ),
-						'slug'        => 'modern-cart-woo',
-						'path'        => 'modern-cart-woo/modern-cart-woo.php',
-						'link'        => add_query_arg(
-							array(
-								'utm_source'   => 'cartflows-dashboard',
-								'utm_medium'   => 'addons',
-								'utm_campaign' => 'moderncart-promo',
-							),
-							'https://cartflows.com/modern-cart-for-woocommerce/#pricing-section'
-						),
-						'redirection' => admin_url( 'admin.php?page=moderncart_settings' ),
+						'status'      => $this->get_plugin_status( 'suremembers/suremembers.php' ),
+						'slug'        => 'suremembers',
+						'path'        => 'suremembers/suremembers.php',
+						'link'        => 'https://suremembers.com/pricing/',
+						'redirection' => admin_url( 'edit.php?post_type=wsm_access_group' ),
 						'logoPath'    => array(
-							'icon_path' => CARTFLOWS_ADMIN_CORE_URL . 'assets/images/plugins/modern-cart-for-woocommerce.svg',
-						),
-					),
-					array(
-						'title'       => __( 'Cart Abandonment', 'cartflows' ),
-						'subtitle'    => __( 'Recover abandonded carts with ease in less than 10 minutes.', 'cartflows' ),
-						'isPro'       => false,
-						'status'      => $this->get_plugin_status( 'woo-cart-abandonment-recovery/woo-cart-abandonment-recovery.php' ),
-						'slug'        => 'woo-cart-abandonment-recovery',
-						'path'        => 'woo-cart-abandonment-recovery/woo-cart-abandonment-recovery.php',
-						'redirection' => admin_url( 'admin.php?page=woo-cart-abandonment-recovery' ),
-						'logoPath'    => array(
-							'icon_path' => CARTFLOWS_ADMIN_CORE_URL . 'assets/images/plugins/wcar.svg',
-						),
-					),
-					array(
-						'title'       => __( 'Variation Swatches for WooCommerce', 'cartflows' ),
-						'subtitle'    => __( 'Convert dropdown boxes into highly engaging variation swatches.', 'cartflows' ),
-						'isPro'       => false,
-						'status'      => $this->get_plugin_status( 'variation-swatches-woo/variation-swatches-woo.php' ),
-						'slug'        => 'variation-swatches-woo',
-						'path'        => 'variation-swatches-woo/variation-swatches-woo.php',
-						'redirection' => admin_url( 'admin.php?page=variation-swatches-woo' ),
-						'logoPath'    => array(
-							'icon_path' => CARTFLOWS_ADMIN_CORE_URL . 'assets/images/plugins/variation-swatches-woo.svg',
+							'icon_path' => CARTFLOWS_ADMIN_CORE_URL . 'assets/images/plugins/suremembers.svg',
 						),
 					),
 				)

@@ -1,7 +1,7 @@
 === Newsletter - Send awesome emails from WordPress ===
 Tags: newsletter, subscription, email marketing, welcome email, signup forms
-Tested up to: 6.8.2
-Stable tag: 8.9.9
+Tested up to: 6.8.3
+Stable tag: 9.0.1
 Contributors: satollo,webagile
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -125,9 +125,29 @@ Thank you, The Newsletter Team
 
 1. The responsive email Drag and Drop composer
 2. The plugin dashboard
-3. The Reports extension
+3. The Reports addon
 
 == Changelog ==
+
+= 9.0.1 =
+
+* Fixed test message
+
+= 9.0.0 =
+
+* Extended the constant NEWSLETTER_MEDIA_RESIZE to all images
+* Added the constant NEWSLETTER_MEDIA_USE_FULL_SIZE to use always full size images
+* Improved the delivery error management
+* Fixed link on Sending diagnostic panel for automated newsletters
+* Improved test sending to use the track, sender name and sender email
+* Added new test button to the HTML editor
+* New top menu on newsletter settings targeting
+* New logs page for each newsletter
+* New newsletter versioning with restore
+* Improved editor performances and controls
+* Sending engine optimization and logging
+* General performance optimization
+* New test procedure on raw HTML newsletter editor
 
 = 8.9.9 =
 

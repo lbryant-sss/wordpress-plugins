@@ -58,7 +58,7 @@ class Post_Views_Counter_Dashboard {
 	 */
 	public function wp_dashboard_setup() {
 		// add dashboard widget
-		wp_add_dashboard_widget( 'pvc_dashboard', __( 'Post Views Counter', 'post-views-counter' ), [ $this, 'dashboard_widget' ] );
+		wp_add_dashboard_widget( 'pvc_dashboard', __( 'Post Views', 'post-views-counter' ), [ $this, 'dashboard_widget' ] );
 	}
 
 	/**
@@ -129,6 +129,11 @@ class Post_Views_Counter_Dashboard {
 		$this->widget_items = $items;
 	}
 
+	public function get_widget_items() {
+		// return widget items
+		return $this->widget_items;	
+	}
+
 	/**
 	 * Calculate canvas height based on number of legend items.
 	 *
@@ -187,7 +192,7 @@ class Post_Views_Counter_Dashboard {
 	 *
 	 * @param array $item
 	 * @param array $menu_items
-	 * @param string $dates_html
+	 *
 	 * @return string
 	 */
 	public function generate_dashboard_widget_item( $item, $menu_items ) {
@@ -197,7 +202,6 @@ class Post_Views_Counter_Dashboard {
 			'id' => [],
 			'height' => []
 		];
-
 
 		ob_start(); ?>
 
@@ -658,5 +662,4 @@ class Post_Views_Counter_Dashboard {
 	public function period2timestamp( $period ) {
 		return pvc_period2timestamp( $period );
 	}
-
 }

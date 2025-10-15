@@ -1,8 +1,8 @@
 <?php
 /*
 Plugin Name: Post Views Counter
-Description: Post Views Counter allows you to display how many times a post, page or custom post type had been viewed in a simple, fast and reliable way.
-Version: 1.5.5
+Description: Know What Content Drives Your Audience. Collect and display how many times a post, page or custom post type had been viewed in a simple, fast and reliable way.
+Version: 1.5.6
 Author: dFactory
 Author URI: https://dfactory.co/
 Plugin URI: https://postviewscounter.com/
@@ -30,7 +30,7 @@ if ( ! class_exists( 'Post_Views_Counter' ) ) {
 	 * Post Views Counter final class.
 	 *
 	 * @class Post_Views_Counter
-	 * @version	1.5.5
+	 * @version	1.5.6
 	 */
 	final class Post_Views_Counter {
 
@@ -102,7 +102,7 @@ if ( ! class_exists( 'Post_Views_Counter' ) ) {
 				'deactivation_delete'	=> false,
 				'license'				=> ''
 			],
-			'version'	=> '1.5.5'
+			'version'	=> '1.5.6'
 		];
 
 		// instances
@@ -266,6 +266,7 @@ if ( ! class_exists( 'Post_Views_Counter' ) ) {
 				$this->options['general']['restrict_edit_views'] = $this->options['display']['restrict_edit_views'];
 
 			// actions
+			add_action( 'plugins_loaded', [ $this, 'extend_caching_plugins' ], -1 );
 			add_action( 'admin_enqueue_scripts', [ $this, 'admin_enqueue_scripts' ] );
 			add_action( 'wp_loaded', [ $this, 'load_pluggable_functions' ] );
 			add_action( 'init', [ $this, 'register_blocks' ] );
@@ -275,6 +276,17 @@ if ( ! class_exists( 'Post_Views_Counter' ) ) {
 
 			// filters
 			add_filter( 'plugin_action_links_' . POST_VIEWS_COUNTER_BASENAME, [ $this, 'plugin_settings_link' ] );
+		}
+
+		/**
+		 * Extend list of caching plugins.
+		 *
+		 * @return void
+		 */
+		public function extend_caching_plugins() {
+			// add new caching plugins
+			add_filter( 'pvc_active_caching_plugins', [ $this->settings, 'extend_active_caching_plugins' ] );
+			add_filter( 'pvc_is_plugin_active', [ $this->settings, 'extend_is_plugin_active' ], 10, 2 );
 		}
 
 		/**

@@ -1,3 +1,8 @@
+Version 2.1.16 - Tuesday, 14th October 2025
+- Fix: Resolved the duplicate image issue while importing a ready-made template.
+- Fix: Improved the code performance by fixing the Rollback feature transient cache mismatch.
+- Fix: Improved UI/UX and mobile responsiveness on the CartFlows Dashboard and Conditional Order Bump panel.
+
 Version 2.1.15 - Tuesday, 22nd July 2025
 - Fix: Addressed a conflict with LearnDash and the Classic Editor plugin.
 - Fix: Resolved issues in the onboarding flow for a smoother setup experience.

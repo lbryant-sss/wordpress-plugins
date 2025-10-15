@@ -3,7 +3,7 @@ Contributors: sujaypawar, wpcrafter
 Tags: woocommerce, funnel builder, sales funnels, custom checkout, WooCommerce checkout
 Requires at least: 5.8
 Tested up to: 6.8
-Stable tag: 2.1.15
+Stable tag: 2.1.16
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -394,6 +394,11 @@ You can report the issue through our [Bug Bounty Program](https://brainstormforc
 4. Quickly re-arrange the steps.
 
 == Changelog ==
+
+= Version 2.1.16 - Tuesday, 14th October 2025 =
+* Fix: Resolved the duplicate image issue while importing a ready-made template.
+* Fix: Improved the code performance by fixing the Rollback feature transient cache mismatch.
+* Fix: Improved UI/UX and mobile responsiveness on the CartFlows Dashboard and Conditional Order Bump panel.
 
 = Version 2.1.15 - Tuesday, 22nd July 2025 =
 * Fix: Addressed a conflict with LearnDash and the Classic Editor plugin.

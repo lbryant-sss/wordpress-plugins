@@ -431,7 +431,7 @@ if ($mailer->get_name() === 'default') {
                                         labels: <?php echo wp_json_encode(range(1, count($stats->means))) ?>,
                                         datasets: [
                                             {
-                                                label: "Seconds to complete a batch",
+                                                label: "Mean time to send an email per batch",
                                                 data: <?php echo wp_json_encode($stats->means) ?>,
                                                 borderColor: '#2980b9',
                                                 fill: false
@@ -544,7 +544,12 @@ if ($mailer->get_name() === 'default') {
                                             </td>
                                             <td style="text-align: right; width: 3rem">
                                                 <?php
-                                                $controls->button_icon_edit('?page=newsletter_emails_edit&id=' . ((int) $email->id), ['tertiary' => true]);
+                                                if (strpos($email->type, 'automated_') === 0) {
+                                                    list($prefix, $channel_id) = explode('_', $email->type);
+                                                    $controls->button_icon_edit('?page=newsletter_automated_newsletters&id=' . ((int) $channel_id), ['tertiary' => true]);
+                                                } else {
+                                                    $controls->button_icon_edit('?page=newsletter_emails_edit&id=' . ((int) $email->id), ['tertiary' => true]);
+                                                }
                                                 ?>
 
                                             </td>
@@ -583,7 +588,12 @@ if ($mailer->get_name() === 'default') {
                                             </td>
                                             <td style="text-align: right; width: 3rem">
                                                 <?php
-                                                $controls->button_icon_edit('?page=newsletter_emails_edit&id=' . ((int) $email->id), ['tertiary' => true]);
+                                                if (strpos($email->type, 'automated_') === 0) {
+                                                    list($prefix, $channel_id) = explode('_', $email->type);
+                                                    $controls->button_icon_edit('?page=newsletter_automated_newsletters&id=' . ((int) $channel_id), ['tertiary' => true]);
+                                                } else {
+                                                    $controls->button_icon_edit('?page=newsletter_emails_edit&id=' . ((int) $email->id), ['tertiary' => true]);
+                                                }
                                                 ?>
 
                                             </td>
@@ -622,7 +632,12 @@ if ($mailer->get_name() === 'default') {
                                             </td>
                                             <td style="text-align: right; width: 3rem">
                                                 <?php
-                                                $controls->button_icon_edit('?page=newsletter_emails_edit&id=' . ((int) $email->id), ['tertiary' => true]);
+                                                if (strpos($email->type, 'automated_') === 0) {
+                                                    list($prefix, $channel_id) = explode('_', $email->type);
+                                                    $controls->button_icon_edit('?page=newsletter_automated_newsletters&id=' . ((int) $channel_id), ['tertiary' => true]);
+                                                } else {
+                                                    $controls->button_icon_edit('?page=newsletter_emails_edit&id=' . ((int) $email->id), ['tertiary' => true]);
+                                                }
                                                 ?>
 
                                             </td>

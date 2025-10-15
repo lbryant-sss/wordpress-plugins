@@ -170,7 +170,8 @@ class UserFeedback_AM_Deactivation_Survey {
 				$(function() {
 					var $deactivateLink = $('#the-list').find('[data-slug="<?php echo $this->plugin; ?>"] span.deactivate a'),
 						$overlay		= $('#am-deactivate-survey-<?php echo $this->plugin; ?>'),
-						$form		   = $overlay.find('form'),
+						$form		    = $overlay.find('form'),
+						$closeButton	= $overlay.find('#am-deactivate-survey-close'),
 						formOpen		= false;
 
 					/* For backwards compatibility, we'll need to check to see if
@@ -190,6 +191,13 @@ class UserFeedback_AM_Deactivation_Survey {
 						formOpen = true;
 						$form.find('.am-deactivate-survey-option:first-of-type input[type=radio]').focus();
 					});
+					// Close deactivation modal
+					$closeButton.on('click', function(event) {
+						event.preventDefault();
+						$overlay.hide();
+						formOpen = false;
+						$deactivateLink.focus();
+					});
 					// Survey radio option selected.
 					$form.on('change', 'input[type=radio]', function(event) {
 						event.preventDefault();
@@ -206,9 +214,21 @@ class UserFeedback_AM_Deactivation_Survey {
 					$form.submit(function(event) {
 						event.preventDefault();
 						if (! $form.find('input[type=radio]:checked').val()) {
+							// Clear any existing error messages before adding new one
+							$form.find('.am-deactivate-survey-footer .error').remove();
 							$form.find('.am-deactivate-survey-footer').prepend('<span class="error"><?php echo esc_js( __( 'Please select an option', 'AWESOMEMOTIVE_GENERIC_TEXTDOMAIN' ) ); ?></span>');
 							return;
 						}
+
+						var $submitButton = $form.find('.am-deactivate-survey-submit');
+						
+						// Disable the submit button to prevent multiple clicks
+						if ($submitButton.prop('disabled')) {
+							return;
+						}
+						
+						$submitButton.prop('disabled', true);
+						$submitButton.css('opacity', '0.6');
 
 						var data = {
 							code: $form.find('.selected input[type=radio]').val(),
@@ -275,6 +295,13 @@ class UserFeedback_AM_Deactivation_Survey {
 				margin: 0 auto;
 				padding: 30px;
 				text-align: left;
+				position: relative;
+			}
+			#am-deactivate-survey-close {
+				position: absolute;
+				top: 15px;
+				right: 15px;
+				cursor: pointer;
 			}
 			.am-deactivate-survey .error {
 				display: block;
@@ -345,6 +372,7 @@ class UserFeedback_AM_Deactivation_Survey {
 			),
 			3 => array(
 				'title' => esc_html__( 'I couldn\'t get the plugin to work', 'AWESOMEMOTIVE_GENERIC_TEXTDOMAIN' ),
+				'details' => esc_html__( 'We\'re sorry to hear. Can you let us know what didn\'t work?', 'AWESOMEMOTIVE_GENERIC_TEXTDOMAIN' ),
 			),
 			4 => array(
 				'title' => esc_html__( 'It\'s a temporary deactivation', 'AWESOMEMOTIVE_GENERIC_TEXTDOMAIN' ),
@@ -358,6 +386,12 @@ class UserFeedback_AM_Deactivation_Survey {
 		<div class="am-deactivate-survey-modal" id="am-deactivate-survey-<?php echo $this->plugin; ?>">
 			<div class="am-deactivate-survey-wrap">
 				<form class="am-deactivate-survey" method="post">
+					<span id="am-deactivate-survey-close">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M18 6L6 18" stroke="#C4C4C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+							<path d="M6 6L18 18" stroke="#C4C4C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+					</span>
 					<span class="am-deactivate-survey-title"><span class="dashicons dashicons-testimonial"></span><?php echo ' ' . esc_html__( 'Quick Feedback', 'AWESOMEMOTIVE_GENERIC_TEXTDOMAIN' ); ?></span>
 					<span class="am-deactivate-survey-desc"><?php printf( esc_html__( 'If you have a moment, please share why you are deactivating %s:', 'AWESOMEMOTIVE_GENERIC_TEXTDOMAIN' ), $this->name ); ?></span>
 					<div class="am-deactivate-survey-options">

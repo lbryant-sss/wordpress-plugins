@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Google Analytics Dashboard for WP (GADWP) plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Google Analytics Dashboard for WP (GADWP) 8.8.0\n"
+"Project-Id-Version: Google Analytics Dashboard for WP (GADWP) 8.9.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/google-analytics-dashboard-for-wp-working-dir\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-09-09T15:30:29+00:00\n"
+"POT-Creation-Date: 2025-10-14T15:18:51+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.13.0-alpha\n"
 "X-Domain: google-analytics-dashboard-for-wp\n"
@@ -414,7 +414,7 @@ msgstr ""
 msgid "Activate and Install the Plugin with just one click!"
 msgstr ""
 
-msgid "Activate Now"
+msgid "Activate Easy Digital Downloads"
 msgstr ""
 
 msgid "Activate Pretty Links"
@@ -430,6 +430,9 @@ msgid "Activating Addon"
 msgstr ""
 
 msgid "Activating AIOSEO..."
+msgstr ""
+
+msgid "Activating Easy Digital Downloads"
 msgstr ""
 
 msgid "Activating Pretty Links..."
@@ -531,6 +534,9 @@ msgstr ""
 msgid "Advanced Coupons"
 msgstr ""
 
+msgid "Advanced Custom Dimensions"
+msgstr ""
+
 msgid "Advanced Dashboard Widget"
 msgstr ""
 
@@ -567,6 +573,9 @@ msgstr ""
 msgid "AGENCY"
 msgstr ""
 
+msgid "Agency Subscription Activated"
+msgstr ""
+
 msgid "AI Insights"
 msgstr ""
 
@@ -586,6 +595,9 @@ msgid "AI Traffic Report"
 msgstr ""
 
 msgid "AI-Powered Insights"
+msgstr ""
+
+msgid "AIOSEO is the #1 SEO WordPress Plugin. Try it free"
 msgstr ""
 
 msgid "AIOSEO is the DIY Solution for Managing your SEO"
@@ -616,9 +628,6 @@ msgid "All in One SEO (AIOSEO)"
 msgstr ""
 
 msgid "All in One SEO gives you all the tools you need to improve your local SEO and rank higher on Google Maps."
-msgstr ""
-
-msgid "All In One SEO is the most popular and best WordPress plugin to help you easily increase organic search traffic. Install it for free."
 msgstr ""
 
 msgid "All In One SEO Toolkit"
@@ -691,6 +700,9 @@ msgid "AND"
 msgstr ""
 
 msgid "And more!"
+msgstr ""
+
+msgid "and much much more..."
 msgstr ""
 
 msgid "Anonymize IP Addresses"
@@ -824,7 +836,16 @@ msgstr ""
 msgid "Average Age"
 msgstr ""
 
+msgid "Average CTR"
+msgstr ""
+
 msgid "Average Order Value"
+msgstr ""
+
+msgid "Average Position"
+msgstr ""
+
+msgid "Average position of your website in search results"
 msgstr ""
 
 msgid "Average Results Position"
@@ -836,7 +857,9 @@ msgstr ""
 msgid "Average revenue per user"
 msgstr ""
 
-#: includes/gutenberg/site-insights/templates/graph/class-graph-scrolldepth.php:35
+#: includes/gutenberg/site-insights/templates/graph/class-graph-scrolldepth.php:41
+#: includes/gutenberg/site-insights/templates/graph/class-graph-scrolldepth.php:49
+#: includes/gutenberg/site-insights/templates/graph/class-graph-scrolldepth.php:66
 #: includes/gutenberg/site-insights/templates/scorecard/class-scorecard-scrolldepth.php:27
 msgid "Average Scroll Depth"
 msgstr ""
@@ -866,6 +889,9 @@ msgid "Avg. Session Duration"
 msgstr ""
 
 msgid "Avg. Watch Time"
+msgstr ""
+
+msgid "Awesome Support"
 msgstr ""
 
 msgid "Awesome! Could you please do me a BIG favor and give it a 5-star rating on WordPress to help us spread the word and boost our motivation?"
@@ -1220,6 +1246,9 @@ msgstr ""
 msgid "Click to manually wipe the cache right now."
 msgstr ""
 
+msgid "Click-through rate: the percentage of impressions that resulted in a click."
+msgstr ""
+
 msgid "Click-through Ratio"
 msgstr ""
 
@@ -1569,6 +1598,9 @@ msgstr ""
 msgid "Date Range"
 msgstr ""
 
+msgid "Date Ranges & Selections"
+msgstr ""
+
 msgid "Day-by-day Breakdowns"
 msgstr ""
 
@@ -1642,6 +1674,7 @@ msgid "Details about social traffic to your website."
 msgstr ""
 
 #: includes/gutenberg/site-insights/templates/graph/class-graph-device.php:41
+#: includes/gutenberg/site-insights/templates/graph/class-graph-device.php:81
 #: includes/gutenberg/site-insights/templates/scorecard/class-scorecard-device.php:33
 msgid "Device Breakdown"
 msgstr ""
@@ -1810,6 +1843,9 @@ msgid "Easy Affiliate"
 msgstr ""
 
 msgid "Easy Digital Downloads"
+msgstr ""
+
+msgid "Easy Digital Downloads lets you easily sell digital products directly from your WordPress site. You can use your existing traffic to generate revenue from eBooks, courses, software, templates, and more."
 msgstr ""
 
 msgid "Easy Filtering"
@@ -2266,6 +2302,9 @@ msgstr ""
 msgid "Forms Report"
 msgstr ""
 
+msgid "Forms Reporting"
+msgstr ""
+
 msgid "Forms Tracking"
 msgstr ""
 
@@ -2675,6 +2714,9 @@ msgstr ""
 msgid "Install"
 msgstr ""
 
+msgid "Install & Activate Easy Digital Downloads"
+msgstr ""
+
 msgid "Install & Activate Stripe Payment Gateway"
 msgstr ""
 
@@ -2684,6 +2726,9 @@ msgstr ""
 msgid "Install & Activate WPConsent"
 msgstr ""
 
+msgid "Install AIOSEO"
+msgstr ""
+
 msgid "Install AIOSEO for more organic traffic"
 msgstr ""
 
@@ -2691,6 +2736,12 @@ msgid "Install All-in-One SEO"
 msgstr ""
 
 msgid "Install All-in-One-SEO"
+msgstr ""
+
+msgid "Install Easy Digital Downloads"
+msgstr ""
+
+msgid "Install Easy Digital Downloads by clicking the button below to start monetizing your website traffic."
 msgstr ""
 
 msgid "Install ExactMetrics"
@@ -2734,6 +2785,9 @@ msgstr ""
 msgid "Install WPConsent by clicking the button below."
 msgstr ""
 
+msgid "Install WPConsent to help make your website privacy compliant"
+msgstr ""
+
 msgid "Installation Failed. Please refresh and try again."
 msgstr ""
 
@@ -2747,6 +2801,9 @@ msgid "Installing Addon"
 msgstr ""
 
 msgid "Installing AIOSEO..."
+msgstr ""
+
+msgid "Installing Easy Digital Downloads"
 msgstr ""
 
 msgid "Installing PPC Tracking Addon"
@@ -2816,6 +2873,9 @@ msgid "Is"
 msgstr ""
 
 msgid "Is Not"
+msgstr ""
+
+msgid "It looks like you are collecting donations. Raise more money for your cause with the most powerful WordPress donation and fundraising plugin, Charitable. Works automatically with ExactMetrics."
 msgstr ""
 
 msgid "It takes time and effort to improve INP, but the reward is a better user experience. That's why we recommend to learn more about"
@@ -2915,6 +2975,8 @@ msgstr ""
 msgid "Last 30 Days Analytics for "
 msgstr ""
 
+#: includes/gutenberg/site-insights/templates/graph/class-graph-pageviews.php:71
+#: includes/gutenberg/site-insights/templates/graph/class-graph-sessions.php:142
 msgid "Last 7 days"
 msgstr ""
 
@@ -3032,6 +3094,9 @@ msgid "Let's get you set up."
 msgstr ""
 
 msgid "Level-up Your eCommerce store with %1$sExactMetrics"
+msgstr ""
+
+msgid "Leverage your analytics data - identify high-traffic pages, popular downloads, and engaged visitors to create targeted digital products"
 msgstr ""
 
 msgid "License Expired"
@@ -3162,6 +3227,9 @@ msgstr ""
 msgid "Media Tracking"
 msgstr ""
 
+msgid "Media Tracking Addon"
+msgstr ""
+
 msgid "Medium & Source Filtering"
 msgstr ""
 
@@ -3196,6 +3264,9 @@ msgid "Mobile Visitors"
 msgstr ""
 
 msgid "Mon"
+msgstr ""
+
+msgid "Monetize your most popular content - see which blog posts get the most traffic and turn them into paid digital products or courses"
 msgstr ""
 
 msgid "ExactMetrics connects Google Analytics to WordPress and shows you stats that matter."
@@ -3318,7 +3389,8 @@ msgstr ""
 msgid "New Users"
 msgstr ""
 
-#: includes/gutenberg/site-insights/templates/graph/class-graph-newvsreturning.php:58
+#: includes/gutenberg/site-insights/templates/graph/class-graph-newvsreturning.php:50
+#: includes/gutenberg/site-insights/templates/graph/class-graph-newvsreturning.php:105
 #: includes/gutenberg/site-insights/templates/scorecard/class-scorecard-newvsreturning.php:89
 msgid "New Visitors"
 msgstr ""
@@ -3501,6 +3573,9 @@ msgstr ""
 msgid "Number of Clicks"
 msgstr ""
 
+msgid "Number of clicks from search results to your website"
+msgstr ""
+
 msgid "Number of Comments"
 msgstr ""
 
@@ -3509,6 +3584,9 @@ msgid "Number of Pages"
 msgstr ""
 
 msgid "Number of Posts"
+msgstr ""
+
+msgid "Number of times your website appeared in search results"
 msgstr ""
 
 msgid "Number of Transactions"
@@ -3769,6 +3847,7 @@ msgstr ""
 msgid "Pageview Count"
 msgstr ""
 
+#: includes/gutenberg/site-insights/templates/graph/class-graph-pageviews.php:59
 #: includes/gutenberg/site-insights/templates/scorecard/class-scorecard-sessions.php:36
 msgid "Pageviews"
 msgstr ""
@@ -3878,6 +3957,9 @@ msgstr ""
 msgid "Plugin Updates"
 msgstr ""
 
+msgid "Plus Subscription Activated"
+msgstr ""
+
 msgid "Popular"
 msgstr ""
 
@@ -3971,6 +4053,9 @@ msgid "PRO"
 msgstr ""
 
 msgid "Pro Plan"
+msgstr ""
+
+msgid "Pro Subscription Activated"
 msgstr ""
 
 msgid "Pro Tip:"
@@ -4232,6 +4317,7 @@ msgid "Returning"
 msgstr ""
 
 #: includes/gutenberg/site-insights/templates/graph/class-graph-newvsreturning.php:59
+#: includes/gutenberg/site-insights/templates/graph/class-graph-newvsreturning.php:106
 #: includes/gutenberg/site-insights/templates/scorecard/class-scorecard-newvsreturning.php:90
 msgid "Returning Visitors"
 msgstr ""
@@ -4276,6 +4362,9 @@ msgid "Rules"
 msgstr ""
 
 msgid "Run Audit"
+msgstr ""
+
+msgid "Run the Easy Digital Downloads wizard to start selling your digital products."
 msgstr ""
 
 msgid "Run the UserFeedback setup wizard to launch your first UserFeedback survey."
@@ -4346,6 +4435,12 @@ msgid "Search Console"
 msgstr ""
 
 msgid "Search Console Report"
+msgstr ""
+
+msgid "Search Impressions"
+msgstr ""
+
+msgid "Search Keywords Reports"
 msgstr ""
 
 msgid "Searching Journeys"
@@ -4529,6 +4624,9 @@ msgstr ""
 msgid "Select up to 7 metrics"
 msgstr ""
 
+msgid "Sell digital products with zero transaction fees - keep 100% of your revenue with secure file delivery, customer management, and detailed sales reports"
+msgstr ""
+
 msgid "SEMRUSH"
 msgstr ""
 
@@ -4584,7 +4682,8 @@ msgstr ""
 msgid "Session Duration"
 msgstr ""
 
-#: includes/gutenberg/site-insights/templates/graph/class-graph-sessions.php:36
+#: includes/gutenberg/site-insights/templates/graph/class-graph-sessions.php:41
+#: includes/gutenberg/site-insights/templates/graph/class-graph-sessions.php:130
 #: includes/gutenberg/site-insights/templates/scorecard/class-scorecard-age.php:60
 #: includes/gutenberg/site-insights/templates/scorecard/class-scorecard-gender.php:60
 #: includes/gutenberg/site-insights/templates/scorecard/class-scorecard-sessions.php:27
@@ -4625,6 +4724,9 @@ msgstr ""
 msgid "Set up Custom Dimensions"
 msgstr ""
 
+msgid "Set Up Easy Digital Downloads"
+msgstr ""
+
 msgid "Set Up Stripe Payment Gateway"
 msgstr ""
 
@@ -4653,6 +4755,9 @@ msgstr ""
 
 #: includes/admin/admin.php:58
 msgid "Setup Checklist"
+msgstr ""
+
+msgid "Setup EDD"
 msgstr ""
 
 msgid "Setup Wizard"
@@ -4831,11 +4936,14 @@ msgstr ""
 msgid "Start a conversation with %s"
 msgstr ""
 
-#: includes/admin/routes.php:770
+#: includes/admin/routes.php:771
 msgid "Start accepting one-time and recurring payments on your WordPress site without setting up a shopping cart. No code required."
 msgstr ""
 
 msgid "Start Indexing"
+msgstr ""
+
+msgid "Start selling immediately with built-in payment processing, automatic file delivery, customer accounts, and purchase receipts"
 msgstr ""
 
 msgid "Start Setup"
@@ -4967,6 +5075,9 @@ msgstr ""
 msgid "Thank you for using ExactMetrics!"
 msgstr ""
 
+msgid "Thanks For Upgrading"
+msgstr ""
+
 msgid "Thanks for your feedback!"
 msgstr ""
 
@@ -4983,6 +5094,9 @@ msgid "The addon could not be installed."
 msgstr ""
 
 msgid "The average amount spent on each order made on your website."
+msgstr ""
+
+msgid "The average ranking position of your website in Google search results."
 msgstr ""
 
 msgid "The best WordPress SEO plugin that works automatically with ExactMetrics."
@@ -5078,6 +5192,12 @@ msgid "The score you get is based on a comparison of your page's interaction to 
 msgstr ""
 
 msgid "The total amount of revenue you made from all your orders."
+msgstr ""
+
+msgid "The total number of clicks from Google search results to your website."
+msgstr ""
+
+msgid "The total number of times users saw your site in Google search results."
 msgstr ""
 
 msgid "The URL builder helps you add parameters to your URLs you use in custom web or email ad campaigns."
@@ -5340,6 +5460,8 @@ msgstr ""
 msgid "Top Conversion Sources"
 msgstr ""
 
+#: includes/gutenberg/site-insights/templates/graph/class-graph-top10countries.php:115
+#: includes/gutenberg/site-insights/templates/graph/class-graph-top10countries.php:144
 msgid "Top Countries"
 msgstr ""
 
@@ -5433,6 +5555,9 @@ msgstr ""
 msgid "Track and measure by the Author, Post Type, Category, Tag, SEO Score, Focus Keyword, Logged-in User, User ID and Published Time of each post and page"
 msgstr ""
 
+msgid "Track complete sales funnels - from traffic source to purchase, see exactly what converts your visitors into paying customers"
+msgstr ""
+
 msgid "Track every step - from add to cart, to checkout, to completed order - so you can spot where shoppers drop off and fix friction points. No setup needed."
 msgstr ""
 
@@ -5512,6 +5637,9 @@ msgid "Tue"
 msgstr ""
 
 msgid "Turn on Popular Posts to increase your site's engagement"
+msgstr ""
+
+msgid "Turn Your Website Traffic Into Digital Product Revenue!"
 msgstr ""
 
 msgid "Tweak advanced Google Analytics settings for popular and busy websites to ensure you don’t go over processing limits."
@@ -5729,6 +5857,9 @@ msgstr ""
 msgid "User Journey Report"
 msgstr ""
 
+msgid "User Journeys"
+msgstr ""
+
 #: includes/admin/admin.php:135
 msgid "UserFeedback"
 msgstr ""
@@ -5764,6 +5895,9 @@ msgid "Using the Gutenberg Block"
 msgstr ""
 
 msgid "Using the Shortcode"
+msgstr ""
+
+msgid "UTM & Campaign Reporting"
 msgstr ""
 
 msgid "Value has to be a round number"
@@ -5951,7 +6085,10 @@ msgstr ""
 msgid "Visually see how customers move through your eCommerce website to make a purchase."
 msgstr ""
 
-msgid "Want to increase your search traffic?"
+msgid "Want Deeper Insights?"
+msgstr ""
+
+msgid "Want to easily sell digital products? ExactMetrics recommends %1$sEasy Digital Downloads%2$s."
 msgstr ""
 
 msgid "Want to see page-specific stats?"
@@ -6249,6 +6386,9 @@ msgstr ""
 msgid "You need to %1$sconnect ExactMetrics%2$s first"
 msgstr ""
 
+msgid "You now have access to these features:"
+msgstr ""
+
 msgid "You should be aiming for 0.1 or less."
 msgstr ""
 
@@ -6345,6 +6485,9 @@ msgstr ""
 msgid "Your website profile has been set at the network level of your WordPress Multisite."
 msgstr ""
 
+msgid "Zero Code PPC Tracking"
+msgstr ""
+
 #. Plugin Name of the plugin
 #: gadwp.php
 msgid "Google Analytics Dashboard for WP (GADWP)"
@@ -6383,13 +6526,13 @@ msgstr ""
 msgid "https://exactmetrics.com/lite/?utm_source=liteplugin&utm_medium=pluginheader&utm_campaign=authoruri&utm_content=7%2E0%2E0"
 msgstr ""
 
-#: gadwp.php:257
-#: gadwp.php:271
+#: gadwp.php:265
+#: gadwp.php:279
 msgid "Cheatin&#8217; huh?"
 msgstr ""
 
 #. Translators: Adds a link to the plugins page.
-#: gadwp.php:382
+#: gadwp.php:390
 #, php-format
 msgid "Please %1$suninstall%2$s the ExactMetrics Lite Plugin. Your Pro version of ExactMetrics may not work as expected until the Lite version is uninstalled."
 msgstr ""
@@ -7366,198 +7509,198 @@ msgstr ""
 msgid "Hey - we noticed you've been using %1$s for a while - that's great! Could you do us a BIG favor and give it a 5-star review on WordPress to help us spread the word and boost our motivation?"
 msgstr ""
 
-#: includes/admin/routes.php:358
+#: includes/admin/routes.php:359
 msgid "The best WordPress eCommerce plugin for selling digital downloads. Start selling eBooks, software, music, digital art, and more within minutes. Accept payments, manage subscriptions, advanced access control, and more."
 msgstr ""
 
-#: includes/admin/routes.php:392
-#: includes/admin/routes.php:737
+#: includes/admin/routes.php:393
+#: includes/admin/routes.php:738
 msgid "Top-rated WordPress donation and fundraising plugin. Over 10,000+ non-profit organizations and website owners use Charitable to create fundraising campaigns and raise more money online."
 msgstr ""
 
-#: includes/admin/routes.php:404
-#: includes/admin/routes.php:748
+#: includes/admin/routes.php:405
+#: includes/admin/routes.php:749
 msgid "Future proof your WordPress customizations with the most popular code snippet management plugin for WordPress. Trusted by over 1,500,000+ websites for easily adding code to WordPress right from the admin area."
 msgstr ""
 
-#: includes/admin/routes.php:427
-#: includes/admin/routes.php:759
+#: includes/admin/routes.php:428
+#: includes/admin/routes.php:760
 msgid "Leading WordPress backup & site migration plugin. Over 1,500,000+ smart website owners use Duplicator to make reliable and secure WordPress backups to protect their websites. It also makes website migration really easy."
 msgstr ""
 
-#: includes/admin/routes.php:476
+#: includes/admin/routes.php:477
 msgid "The #1 affiliate management plugin for WordPress. Easily create an affiliate program for your eCommerce store or membership site within minutes and start growing your sales with the power of referral marketing."
 msgstr ""
 
-#: includes/admin/routes.php:489
+#: includes/admin/routes.php:490
 msgid "The #1 Stripe payments plugin for WordPress. Start accepting one-time and recurring payments on your WordPress site without setting up a shopping cart. No code required."
 msgstr ""
 
-#: includes/admin/routes.php:501
-#: includes/admin/routes.php:726
+#: includes/admin/routes.php:502
+#: includes/admin/routes.php:727
 msgid "A simple & powerful event calendar plugin for WordPress that comes with all the event management features including payments, scheduling, timezones, ticketing, recurring events, and more."
 msgstr ""
 
-#: includes/admin/routes.php:513
+#: includes/admin/routes.php:514
 msgid "The best drag & drop WordPress form builder. Easily create beautiful contact forms, surveys, payment forms, and more with our 1000+ form templates. Trusted by over 6 million websites as the best forms plugin."
 msgstr ""
 
-#: includes/admin/routes.php:525
+#: includes/admin/routes.php:526
 msgid "Ask visitors questions about how they use your website or what features can make you more money."
 msgstr ""
 
-#: includes/admin/routes.php:537
+#: includes/admin/routes.php:538
 msgid "The original WordPress SEO plugin and toolkit that improves your website’s search rankings. Comes with all the SEO features like Local SEO, WooCommerce SEO, sitemaps, SEO optimizer, schema, and more."
 msgstr ""
 
-#: includes/admin/routes.php:549
+#: includes/admin/routes.php:550
 msgid "Stripe Payment Gateway for WooCommerce is an integrated solution that lets you accept payments on your online store for web and mobile."
 msgstr ""
 
-#: includes/admin/routes.php:564
+#: includes/admin/routes.php:565
 msgid "Improve your WordPress email deliverability and make sure that your website emails reach user’s inbox with the #1 SMTP plugin for WordPress. Over 3 million websites use it to fix WordPress email issues."
 msgstr ""
 
-#: includes/admin/routes.php:574
+#: includes/admin/routes.php:575
 msgid "The fastest drag & drop landing page builder for WordPress. Create custom landing pages without writing code, connect them with your CRM, collect subscribers, and grow your audience. Trusted by 1 million sites."
 msgstr ""
 
-#: includes/admin/routes.php:585
+#: includes/admin/routes.php:586
 msgid "Turn your website visitors into brand ambassadors! Easily grow your email list, website traffic, and social media followers with the most powerful giveaways & contests plugin for WordPress."
 msgstr ""
 
-#: includes/admin/routes.php:596
+#: includes/admin/routes.php:597
 msgid "Boost your sales and conversions by up to 15% with real-time social proof notifications. TrustPulse helps you show live user activity and purchases to help convince other users to purchase."
 msgstr ""
 
-#: includes/admin/routes.php:609
-#: includes/admin/routes.php:715
+#: includes/admin/routes.php:610
+#: includes/admin/routes.php:716
 msgid "The most advanced WordPress search plugin. Customize your WordPress search algorithm, reorder search results, track search metrics, and everything you need to leverage search to grow your business."
 msgstr ""
 
-#: includes/admin/routes.php:621
+#: includes/admin/routes.php:622
 msgid "Easily display Instagram content on your WordPress site without writing any code. Comes with multiple templates, ability to show content from multiple accounts, hashtags, and more. Trusted by 1 million websites."
 msgstr ""
 
-#: includes/admin/routes.php:635
+#: includes/admin/routes.php:636
 msgid "Easily display Facebook content on your WordPress site without writing any code. Comes with multiple templates, ability to embed albums, group content, reviews, live videos, comments, and reactions."
 msgstr ""
 
-#: includes/admin/routes.php:649
+#: includes/admin/routes.php:650
 msgid "Easily display YouTube videos on your WordPress site without writing any code. Comes with multiple layouts, ability to embed live streams, video filtering, ability to combine multiple channel videos, and more."
 msgstr ""
 
-#: includes/admin/routes.php:664
+#: includes/admin/routes.php:665
 msgid "Easily display Twitter content in WordPress without writing any code. Comes with multiple layouts, ability to combine multiple Twitter feeds, Twitter card support, tweet moderation, and more."
 msgstr ""
 
-#: includes/admin/routes.php:679
+#: includes/admin/routes.php:680
 msgid "Connect with your visitors after they leave your website with the leading web push notification software. Over 10,000+ businesses worldwide use PushEngage to send 15 billion notifications each month."
 msgstr ""
 
-#: includes/admin/routes.php:690
+#: includes/admin/routes.php:691
 msgid "Automate everything with the #1 no-code Automation tool for WordPress."
 msgstr ""
 
-#: includes/admin/routes.php:704
+#: includes/admin/routes.php:705
 msgid "Pretty Links helps you shrink, beautify, track, manage and share any URL on or off of your WordPress website. Create links that look how you want using your own domain name!"
 msgstr ""
 
-#: includes/admin/routes.php:782
+#: includes/admin/routes.php:783
 msgid "Advanced Coupons for WooCommerce (Free Version) gives WooCommerce store owners extra coupon features so they can market their stores better."
 msgstr ""
 
-#: includes/admin/routes.php:795
+#: includes/admin/routes.php:796
 msgid "See what your analytics software isn’t telling you with powerful UserFeedback surveys."
 msgstr ""
 
-#: includes/admin/routes.php:916
+#: includes/admin/routes.php:917
 #, php-format
 msgid "Oops! Please enter a valid Google Analytics 4 Measurement ID. %1$sLearn how to find your Measurement ID%2$s."
 msgstr ""
 
-#: includes/admin/routes.php:991
+#: includes/admin/routes.php:992
 msgid "Please upload a valid .json file"
 msgstr ""
 
-#: includes/admin/routes.php:999
+#: includes/admin/routes.php:1000
 msgid "Please select a valid file to upload."
 msgstr ""
 
-#: includes/admin/routes.php:1049
+#: includes/admin/routes.php:1050
 #, php-format
 msgid "Oops! You don not have permissions to view ExactMetrics reporting. Please check with your site administrator that your role is included in the ExactMetrics permissions settings. %1$sClick here for more information%2$s."
 msgstr ""
 
-#: includes/admin/routes.php:1068
+#: includes/admin/routes.php:1069
 #, php-format
 msgid "Oops! You cannot view ExactMetrics reports because you are not licensed. Please try again in a few minutes. If the issue continues, please %1$scontact our support%2$s team."
 msgstr ""
 
-#: includes/admin/routes.php:1074
-#: includes/admin/routes.php:1488
+#: includes/admin/routes.php:1075
+#: includes/admin/routes.php:1489
 msgid "Add your license"
 msgstr ""
 
-#: includes/admin/routes.php:1083
+#: includes/admin/routes.php:1084
 #, php-format
 msgid "Oops! We had a problem due to a license key error. Please try again in a few minutes. If the problem persists, please %1$scontact our support%2$s team."
 msgstr ""
 
-#: includes/admin/routes.php:1103
+#: includes/admin/routes.php:1104
 #, php-format
 msgid "You need to authenticate into ExactMetrics before viewing reports. Please run our %1$ssetup wizard%2$s."
 msgstr ""
 
-#: includes/admin/routes.php:1115
+#: includes/admin/routes.php:1116
 #, php-format
 msgid "Oops! We ran into a problem displaying this report. Please %1$scontact our support%2$s team if this issue persists."
 msgstr ""
 
-#: includes/admin/routes.php:1180
-#: includes/admin/routes.php:1529
-#: includes/admin/routes.php:1583
+#: includes/admin/routes.php:1181
+#: includes/admin/routes.php:1530
+#: includes/admin/routes.php:1584
 #, php-format
 msgid "Oops! We encountered an error while generating your reports. Please wait a few minutes and try again. If the issue persists, please %1$scontact our support%2$s team."
 msgstr ""
 
-#: includes/admin/routes.php:1195
+#: includes/admin/routes.php:1196
 msgid "Oops! You are not allowed to install plugins. Please contact your website administrator for further assistance."
 msgstr ""
 
-#: includes/admin/routes.php:1203
+#: includes/admin/routes.php:1204
 msgid "Missing plugin name."
 msgstr ""
 
-#: includes/admin/routes.php:1209
+#: includes/admin/routes.php:1210
 msgid "Plugin already installed."
 msgstr ""
 
-#: includes/admin/routes.php:1369
+#: includes/admin/routes.php:1370
 msgid "Homepage"
 msgstr ""
 
-#: includes/admin/routes.php:1459
+#: includes/admin/routes.php:1460
 #, php-format
 msgid "Oops! You don not have permissions to view or access Popular Posts. Please check with your site administrator that your role is included in the ExactMetrics permissions settings. %1$sClick here for more information%2$s."
 msgstr ""
 
-#: includes/admin/routes.php:1482
+#: includes/admin/routes.php:1483
 #, php-format
 msgid "Oops! We could not find a valid license key for ExactMetrics. Please %1$senter a valid license key%2$s to view this report."
 msgstr ""
 
-#: includes/admin/routes.php:1497
+#: includes/admin/routes.php:1498
 #, php-format
 msgid "Oops! We could not find a valid license key. Please enter a valid license key to view this report. You can find your license by logging into your %1$sExactMetrics account%2$s."
 msgstr ""
 
-#: includes/admin/routes.php:1517
+#: includes/admin/routes.php:1518
 #, php-format
 msgid "You need to authenticate into ExactMetrics before viewing reports. Please complete the setup by going through our %1$ssetup wizard%2$s."
 msgstr ""
 
-#: includes/admin/setup-checklist.php:325
+#: includes/admin/setup-checklist.php:330
 msgid "You don't have permission to perform this action."
 msgstr ""
 
@@ -7646,7 +7789,7 @@ msgstr ""
 msgid "Note not found"
 msgstr ""
 
-#: includes/admin/tracking.php:269
+#: includes/admin/tracking.php:281
 msgid "Once Weekly"
 msgstr ""
 
@@ -7783,12 +7926,12 @@ msgstr ""
 msgid "Sent from %s"
 msgstr ""
 
-#: includes/frontend/frontend.php:260
+#: includes/frontend/frontend.php:300
 msgid "Tracking is Disabled for Administrators"
 msgstr ""
 
 #. Translators: %s is the link to the article where more details about tracking are listed.
-#: includes/frontend/frontend.php:273
+#: includes/frontend/frontend.php:313
 #, php-format
 msgid "To keep stats accurate, we do not load Google Analytics scripts for admin users. %1$sLearn More &raquo;%2$s"
 msgstr ""
@@ -10232,28 +10375,44 @@ msgstr ""
 msgid "something"
 msgstr ""
 
-#: includes/gutenberg/site-insights/templates/graph/class-graph-age.php:36
+#: includes/gutenberg/site-insights/templates/graph/class-graph-age.php:41
+#: includes/gutenberg/site-insights/templates/graph/class-graph-age.php:78
 msgid "Age Breakdown"
 msgstr ""
 
-#: includes/gutenberg/site-insights/templates/graph/class-graph-gender.php:33
+#: includes/gutenberg/site-insights/templates/graph/class-graph-gender.php:41
+#: includes/gutenberg/site-insights/templates/graph/class-graph-gender.php:74
 msgid "Gender Breakdown"
 msgstr ""
 
-#: includes/gutenberg/site-insights/templates/graph/class-graph-newvsreturning.php:36
+#: includes/gutenberg/site-insights/templates/graph/class-graph-newvsreturning.php:45
+#: includes/gutenberg/site-insights/templates/graph/class-graph-newvsreturning.php:83
 #: includes/gutenberg/site-insights/templates/scorecard/class-scorecard-newvsreturning.php:33
 msgid "New vs Returning"
 msgstr ""
 
-#: includes/gutenberg/site-insights/templates/graph/class-graph-pageviews.php:36
+#: includes/gutenberg/site-insights/templates/graph/class-graph-pageviews.php:99
+msgid "No pageviews data available"
+msgstr ""
+
+#: includes/gutenberg/site-insights/templates/graph/class-graph-pageviews.php:114
 msgid "Page views"
 msgstr ""
 
-#: includes/gutenberg/site-insights/templates/graph/class-graph-top10countries.php:36
+#: includes/gutenberg/site-insights/templates/graph/class-graph-sessions.php:170
+msgid "No sessions data available"
+msgstr ""
+
+#: includes/gutenberg/site-insights/templates/graph/class-graph-top10countries.php:41
 msgid "Top 10 countries"
 msgstr ""
 
-#: includes/gutenberg/site-insights/templates/graph/class-graph-topinterests.php:36
+#: includes/gutenberg/site-insights/templates/graph/class-graph-top10countries.php:146
+msgid "No country data available"
+msgstr ""
+
+#: includes/gutenberg/site-insights/templates/graph/class-graph-topinterests.php:41
+#: includes/gutenberg/site-insights/templates/graph/class-graph-topinterests.php:78
 msgid "Top Interests"
 msgstr ""
 

@@ -2,11 +2,14 @@
 
 class UserFeedback_Survey_Template_Content_Engagement extends UserFeedback_Survey_Template {
 
-
 	/**
 	 * @inheritdoc
 	 */
 	protected $template_key = 'content-engagement';
+
+	protected $categories = array(
+		'engagement'
+	);
 
 	/**
 	 * @inheritdoc
@@ -24,7 +27,9 @@ class UserFeedback_Survey_Template_Content_Engagement extends UserFeedback_Surve
 	 * @inheritdoc
 	 */
 	public function get_description() {
-		return __( 'Measure what content is engaging, and what content to create.', 'userfeedback-lite' );
+		return array(
+			'title' => __( 'Measure what content is engaging, and what content to create.', 'userfeedback-lite' )
+		);
 	}
 
 	/**

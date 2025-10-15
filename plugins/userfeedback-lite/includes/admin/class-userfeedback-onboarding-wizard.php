@@ -39,21 +39,23 @@ class UserFeedback_Onboarding_Wizard {
 	 * Checks if the Wizard should be loaded in current context.
 	 */
 	public function maybe_load_onboarding_wizard() {
-
-		// Check for wizard-specific parameter
-		// Allow plugins to disable the onboarding wizard
-		// Check if current user is allowed to save settings.
-		if ( ! (
-			isset( $_GET['page'] ) ||
-			'userfeedback_onboarding' !== $_GET['page'] ||
-			apply_filters( 'userfeedback_enable_onboarding_wizard', true ) ||
-			! current_user_can( 'userfeedback_save_settings' )
-		) ) {
+		// 1. Don't load the interface if doing an Ajax call.
+		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 			return;
 		}
-
-		// Don't load the interface if doing an ajax call.
-		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+		
+		// 2. Don't load the interface if the page is not the onboarding wizard.
+		if ( ! isset( $_GET['page'] ) || 'userfeedback_onboarding' !== $_GET['page'] ) {
+			return;
+		}
+		
+		// 3. Don't load the interface if the user doesn't have the required capability.
+		if ( ! current_user_can( 'userfeedback_save_settings' ) ) {
+			return;
+		}
+		
+		// 4. Don't load the interface if the onboarding wizard is not enabled via a filter.
+		if ( ! apply_filters( 'userfeedback_enable_onboarding_wizard', true )  ) {
 			return;
 		}
 

@@ -7,68 +7,62 @@
     "file": "css/ContentIconList.css",
     "src": "ContentIconList.css"
   },
-  "_AboutTestimonialsSlider-a497a870.min.js": {
+  "_AboutTestimonialsSlider-d7f03651.min.js": {
     "css": [
       "css/AboutTestimonialsSlider.css"
     ],
-    "file": "js/chunks/AboutTestimonialsSlider-a497a870.min.js",
+    "file": "js/chunks/AboutTestimonialsSlider-d7f03651.min.js",
     "imports": [
-      "_vendor-b9834729.min.js",
-      "_SettingsInfoTooltip-facc1a56.min.js",
-      "_ContentIconList-bbe6e6ed.min.js"
+      "_vendor-c9947851.min.js",
+      "_SettingsInfoTooltip-4146a64e.min.js",
+      "_ContentIconList-9bc7f2a5.min.js"
     ]
   },
-  "_ContentIconList-bbe6e6ed.min.js": {
+  "_ContentIconList-9bc7f2a5.min.js": {
     "css": [
       "css/ContentIconList.css"
     ],
-    "file": "js/chunks/ContentIconList-bbe6e6ed.min.js",
+    "file": "js/chunks/ContentIconList-9bc7f2a5.min.js",
     "imports": [
-      "_vendor-b9834729.min.js"
+      "_vendor-c9947851.min.js"
     ]
   },
-  "_LaunchWizardButton-f581f36d.min.js": {
-    "file": "js/chunks/LaunchWizardButton-f581f36d.min.js",
+  "_LaunchWizardButton-f1a3ec20.min.js": {
+    "file": "js/chunks/LaunchWizardButton-f1a3ec20.min.js",
     "imports": [
-      "_vendor-b9834729.min.js"
+      "_vendor-c9947851.min.js"
     ]
   },
-  "_SettingsInfoTooltip-facc1a56.min.js": {
-    "file": "js/chunks/SettingsInfoTooltip-facc1a56.min.js",
+  "_SettingsInfoTooltip-4146a64e.min.js": {
+    "file": "js/chunks/SettingsInfoTooltip-4146a64e.min.js",
     "imports": [
-      "_vendor-b9834729.min.js"
+      "_vendor-c9947851.min.js"
     ]
   },
-  "_WidgetReportError-1a54c6a5.min.js": {
-    "file": "js/chunks/WidgetReportError-1a54c6a5.min.js",
+  "_WidgetReportError-6f8f932a.min.js": {
+    "file": "js/chunks/WidgetReportError-6f8f932a.min.js",
     "imports": [
-      "_vendor-b9834729.min.js"
+      "_vendor-c9947851.min.js"
     ]
   },
-  "_date-intervals-8636ef17.min.js": {
-    "file": "js/chunks/date-intervals-8636ef17.min.js",
+  "_date-intervals-bc3a4cfe.min.js": {
+    "file": "js/chunks/date-intervals-bc3a4cfe.min.js",
     "imports": [
-      "_vendor-b9834729.min.js",
-      "_index-076ae19a.min.js"
+      "_vendor-c9947851.min.js",
+      "_index-ce5c3741.min.js"
     ]
   },
-  "_exactmetrics-icons-f933244e.min.js": {
-    "file": "js/chunks/exactmetrics-icons-f933244e.min.js"
+  "_exactmetrics-icons-497ded17.min.js": {
+    "file": "js/chunks/exactmetrics-icons-497ded17.min.js"
   },
-  "_html2canvas-c6e0047e.min.js": {
-    "file": "js/chunks/html2canvas-c6e0047e.min.js",
+  "_html2canvas-66d2d57d.min.js": {
+    "file": "js/chunks/html2canvas-66d2d57d.min.js",
     "imports": [
-      "_vendor-b9834729.min.js"
+      "_vendor-c9947851.min.js"
     ],
     "isDynamicEntry": true
   },
-  "_index-076ae19a.min.js": {
-    "file": "js/chunks/index-076ae19a.min.js",
-    "imports": [
-      "_vendor-b9834729.min.js"
-    ]
-  },
-  "_index-31ac34c3.min.js": {
+  "_index-661bdf2b.min.js": {
     "assets": [
       "img/logo-ExactMetrics.png",
       "img/logo-ExactMetrics@2x2.png",
@@ -96,23 +90,29 @@
     "css": [
       "css/index.css"
     ],
-    "file": "js/chunks/index-31ac34c3.min.js",
+    "file": "js/chunks/index-661bdf2b.min.js",
     "imports": [
-      "_vendor-b9834729.min.js",
-      "_ContentIconList-bbe6e6ed.min.js",
-      "_index-076ae19a.min.js"
+      "_vendor-c9947851.min.js",
+      "_ContentIconList-9bc7f2a5.min.js",
+      "_index-ce5c3741.min.js"
     ]
   },
-  "_report-table-helper-604ecd03.min.js": {
-    "file": "js/chunks/report-table-helper-604ecd03.min.js",
+  "_index-ce5c3741.min.js": {
+    "file": "js/chunks/index-ce5c3741.min.js",
     "imports": [
-      "_vendor-b9834729.min.js",
-      "_SettingsInfoTooltip-facc1a56.min.js",
-      "_date-intervals-8636ef17.min.js",
-      "_exactmetrics-icons-f933244e.min.js"
+      "_vendor-c9947851.min.js"
     ]
   },
-  "_vendor-b9834729.min.js": {
+  "_report-table-helper-e438d40d.min.js": {
+    "file": "js/chunks/report-table-helper-e438d40d.min.js",
+    "imports": [
+      "_vendor-c9947851.min.js",
+      "_SettingsInfoTooltip-4146a64e.min.js",
+      "_date-intervals-bc3a4cfe.min.js",
+      "_exactmetrics-icons-497ded17.min.js"
+    ]
+  },
+  "_vendor-c9947851.min.js": {
     "assets": [
       "img/sucker.png"
     ],
@@ -120,11 +120,11 @@
       "css/vendor.css"
     ],
     "dynamicImports": [
-      "_html2canvas-c6e0047e.min.js",
+      "_html2canvas-66d2d57d.min.js",
       "node_modules/dompurify/dist/purify.es.js",
       "node_modules/canvg/lib/index.es.js"
     ],
-    "file": "js/chunks/vendor-b9834729.min.js"
+    "file": "js/chunks/vendor-c9947851.min.js"
   },
   "index.css": {
     "file": "css/index.css",
@@ -135,9 +135,9 @@
     "src": "node_modules/@caohenghu/vue-colorpicker/src/img/sucker.png"
   },
   "node_modules/canvg/lib/index.es.js": {
-    "file": "js/chunks/index.es-1793971a.min.js",
+    "file": "js/chunks/index.es-c15bae1a.min.js",
     "imports": [
-      "_vendor-b9834729.min.js"
+      "_vendor-c9947851.min.js"
     ],
     "isDynamicEntry": true,
     "src": "node_modules/canvg/lib/index.es.js"
@@ -302,6 +302,10 @@
   "src/assets/img/easy-digital-downloads.png": {
     "file": "img/easy-digital-downloads.png",
     "src": "src/assets/img/easy-digital-downloads.png"
+  },
+  "src/assets/img/edd-xsell-banner.svg": {
+    "file": "img/edd-xsell-banner.svg",
+    "src": "src/assets/img/edd-xsell-banner.svg"
   },
   "src/assets/img/em-ai-insights.svg": {
     "file": "img/em-ai-insights.svg",
@@ -967,9 +971,9 @@
     "file": "img/woo-insights-ecommerce-report-image.png",
     "src": "src/assets/img/woo-insights-ecommerce-report-image.png"
   },
-  "src/assets/img/woo-insights-hero-image.png": {
-    "file": "img/woo-insights-hero-image.png",
-    "src": "src/assets/img/woo-insights-hero-image.png"
+  "src/assets/img/woo-insights-hero-image-exactmetrics.png": {
+    "file": "img/woo-insights-hero-image-exactmetrics.png",
+    "src": "src/assets/img/woo-insights-hero-image-exactmetrics.png"
   },
   "src/assets/img/woo-insights-save-60-badge.svg": {
     "file": "img/woo-insights-save-60-badge.svg",
@@ -1131,11 +1135,11 @@
     ],
     "file": "js/frontend.min.js",
     "imports": [
-      "_vendor-b9834729.min.js",
-      "_date-intervals-8636ef17.min.js",
-      "_WidgetReportError-1a54c6a5.min.js",
-      "_LaunchWizardButton-f581f36d.min.js",
-      "_index-076ae19a.min.js"
+      "_vendor-c9947851.min.js",
+      "_date-intervals-bc3a4cfe.min.js",
+      "_WidgetReportError-6f8f932a.min.js",
+      "_LaunchWizardButton-f1a3ec20.min.js",
+      "_index-ce5c3741.min.js"
     ],
     "isEntry": true,
     "src": "src/modules/frontend/frontend.js"
@@ -1239,15 +1243,15 @@
     ],
     "file": "js/reports.min.js",
     "imports": [
-      "_vendor-b9834729.min.js",
-      "_date-intervals-8636ef17.min.js",
-      "_report-table-helper-604ecd03.min.js",
-      "_SettingsInfoTooltip-facc1a56.min.js",
-      "_index-31ac34c3.min.js",
-      "_index-076ae19a.min.js",
-      "_ContentIconList-bbe6e6ed.min.js",
-      "_LaunchWizardButton-f581f36d.min.js",
-      "_exactmetrics-icons-f933244e.min.js"
+      "_vendor-c9947851.min.js",
+      "_date-intervals-bc3a4cfe.min.js",
+      "_report-table-helper-e438d40d.min.js",
+      "_SettingsInfoTooltip-4146a64e.min.js",
+      "_index-661bdf2b.min.js",
+      "_index-ce5c3741.min.js",
+      "_ContentIconList-9bc7f2a5.min.js",
+      "_LaunchWizardButton-f1a3ec20.min.js",
+      "_exactmetrics-icons-497ded17.min.js"
     ],
     "isEntry": true,
     "src": "src/modules/reports/reports.js"
@@ -1263,6 +1267,7 @@
       "img/woo-insights-sessions-revenue.png",
       "img/wpconsent-page-feature-image.png",
       "img/google-ads-welcome.png",
+      "img/edd-xsell-banner.svg",
       "img/em-logo-lg.png",
       "img/icon-download.png",
       "img/pretty-links-logo-white.svg",
@@ -1336,7 +1341,7 @@
       "img/aioseo-screen-1.svg",
       "img/aioseo-screen-2.svg",
       "img/exactmetrics-aioseo.jpg",
-      "img/woo-insights-hero-image.png",
+      "img/woo-insights-hero-image-exactmetrics.png",
       "img/underline.png",
       "img/underline-small.png",
       "img/icon-site-notes.svg",
@@ -1435,14 +1440,14 @@
     ],
     "file": "js/settings.min.js",
     "imports": [
-      "_vendor-b9834729.min.js",
-      "_index-076ae19a.min.js",
-      "_ContentIconList-bbe6e6ed.min.js",
-      "_AboutTestimonialsSlider-a497a870.min.js",
-      "_index-31ac34c3.min.js",
-      "_LaunchWizardButton-f581f36d.min.js",
-      "_SettingsInfoTooltip-facc1a56.min.js",
-      "_exactmetrics-icons-f933244e.min.js"
+      "_vendor-c9947851.min.js",
+      "_index-ce5c3741.min.js",
+      "_ContentIconList-9bc7f2a5.min.js",
+      "_AboutTestimonialsSlider-d7f03651.min.js",
+      "_index-661bdf2b.min.js",
+      "_LaunchWizardButton-f1a3ec20.min.js",
+      "_SettingsInfoTooltip-4146a64e.min.js",
+      "_exactmetrics-icons-497ded17.min.js"
     ],
     "isEntry": true,
     "src": "src/modules/settings/settings.js"
@@ -1545,13 +1550,13 @@
     ],
     "file": "js/widget.min.js",
     "imports": [
-      "_vendor-b9834729.min.js",
-      "_date-intervals-8636ef17.min.js",
-      "_report-table-helper-604ecd03.min.js",
-      "_SettingsInfoTooltip-facc1a56.min.js",
-      "_WidgetReportError-1a54c6a5.min.js",
-      "_index-076ae19a.min.js",
-      "_exactmetrics-icons-f933244e.min.js"
+      "_vendor-c9947851.min.js",
+      "_date-intervals-bc3a4cfe.min.js",
+      "_report-table-helper-e438d40d.min.js",
+      "_SettingsInfoTooltip-4146a64e.min.js",
+      "_WidgetReportError-6f8f932a.min.js",
+      "_index-ce5c3741.min.js",
+      "_exactmetrics-icons-497ded17.min.js"
     ],
     "isEntry": true,
     "src": "src/modules/widget/widget.js"
@@ -1629,12 +1634,12 @@
     ],
     "file": "js/wizard.min.js",
     "imports": [
-      "_vendor-b9834729.min.js",
-      "_AboutTestimonialsSlider-a497a870.min.js",
-      "_SettingsInfoTooltip-facc1a56.min.js",
-      "_index-076ae19a.min.js",
-      "_ContentIconList-bbe6e6ed.min.js",
-      "_LaunchWizardButton-f581f36d.min.js"
+      "_vendor-c9947851.min.js",
+      "_AboutTestimonialsSlider-d7f03651.min.js",
+      "_SettingsInfoTooltip-4146a64e.min.js",
+      "_index-ce5c3741.min.js",
+      "_ContentIconList-9bc7f2a5.min.js",
+      "_LaunchWizardButton-f1a3ec20.min.js"
     ],
     "isEntry": true,
     "src": "src/modules/wizard-onboarding/wizard.js"

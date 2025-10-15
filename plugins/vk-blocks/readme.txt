@@ -4,7 +4,7 @@ Donate link:
 Tags: Gutenberg,FAQ,alert
 Requires at least: 6.5
 Tested up to: 6.8
-Stable tag: 1.112.0.1
+Stable tag: 1.113.0.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -107,6 +107,13 @@ e.g.
 1. VK Blocks examples.
 
 == Changelog ==
+
+= 1.113.0 =
+[ Add function ][ Core column ] Added a Layout Extensions toggle that limits the block width to half of the content width by applying the is-vk-content-width-half class.
+[ Specification Change ][ Fixed Display (Pro) ] When the html tag has the has-modal-open class, the fixed display block will disappear.
+
+= 1.112.1 =
+[ Bug fix ][ Tab (Pro) ] Fixed tab item duplication issue where copied tab items had duplicate anchor links.
 
 = 1.112.0 =
 [ Add function ][ Slider / Post List Slider (Pro) ] Added slide direction setting.

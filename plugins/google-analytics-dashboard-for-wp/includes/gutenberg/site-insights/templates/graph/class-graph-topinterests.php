@@ -11,6 +11,11 @@ class ExactMetrics_SiteInsights_Template_Graph_Topinterests extends ExactMetrics
 	protected $type = 'graph';
 
 	public function output(){
+		// If we're in AMP, return AMP-compatible output
+		if ( $this->is_amp() ) {
+			return $this->get_amp_output();
+		}
+
 		$json_data = $this->get_json_data();
 
 		if (empty($json_data)) {
@@ -20,6 +25,43 @@ class ExactMetrics_SiteInsights_Template_Graph_Topinterests extends ExactMetrics
 		return "<div class='exactmetrics-graph-item exactmetrics-graph-{$this->metric}'>
 			<script type='application/json'>{$json_data}</script>
 		</div>";
+	}
+
+	/**
+	 * Get AMP-compatible output for top interests
+	 *
+	 * @return string
+	 */
+	protected function get_amp_output() {
+		if (empty($this->data['interest'])) {
+			return false;
+		}
+
+		$data = $this->data['interest'];
+		$title = __( 'Top Interests', 'google-analytics-dashboard-for-wp' );
+
+		$html = "<div class='exactmetrics-amp-graph-item exactmetrics-amp-interests-chart exactmetrics-amp-graph-{$this->metric}'>";
+		$html .= "<div class='exactmetrics-amp-chart-title'>{$title}</div>";
+		$html .= "<div class='exactmetrics-amp-interests-container'>";
+		
+		foreach ($data as $interest) {
+			$interest_name = $interest['interest'];
+			$sessions = $interest['sessions'];
+			$percent = $interest['percent'];
+			
+			$html .= "<div class='exactmetrics-amp-interest-item'>";
+			$html .= "<div class='exactmetrics-amp-interest-label'>{$interest_name}</div>";
+			$html .= "<div class='exactmetrics-amp-interest-bar'>";
+			$html .= "<div class='exactmetrics-amp-interest-fill' style='width: {$percent}%;'></div>";
+			$html .= "</div>";
+			$html .= "<div class='exactmetrics-amp-interest-value'>{$sessions} ({$percent}%)</div>";
+			$html .= "</div>";
+		}
+		
+		$html .= "</div>"; // Close interests-container
+		$html .= "</div>"; // Close graph-item
+
+		return $html;
 	}
 
 	protected function get_options() {

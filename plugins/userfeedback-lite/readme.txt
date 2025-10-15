@@ -3,8 +3,8 @@ Contributors: chriscct7, smub
 Donate link: http://www.wpbeginner.com/wpbeginner-needs-your-help/
 Tags: analytics,feedback,surveys,user feedback, website feedback,heatmaps
 Requires at least: 5.9.0
-Tested Up To: 6.8.1
-Stable tag: 1.8.0
+Tested Up To: 6.8.3
+Stable tag: 1.9.0
 Requires PHP: 5.6
 License: GPL v3
 
@@ -119,6 +119,10 @@ For documentation, tutorials, FAQ and videos check out: [UserFeedback Documentat
 4. Want more features? <a href=href="https://www.userFeedback.com/?utm_source=wprepo&utm_medium=link&utm_campaign=lite" rel="friend" title="UserFeedback">Purchase UserFeedback Pro</a>!
 
 == Changelog ==
+= 1.9.0: October 14, 2025 =
+- New: Easily send survey notifications and results to Slack (or any webhook)!
+- Fixed: Various bug fixes and enhancements
+
 = 1.8.0: September 2, 2025 =
 - New: Google Spreadsheets integration! Automatically store your Survey replies in a Google Spreadsheet
 - Fixed: Minor updates and bug fixes

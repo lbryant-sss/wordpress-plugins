@@ -5,7 +5,7 @@
  * Plugin URI: https://exactmetrics.com
  * Description: Displays Google Analytics Reports and Real-Time Statistics in your Dashboard. Automatically inserts the tracking code in every page of your website.
  * Author: ExactMetrics
- * Version: 8.8.0
+ * Version: 8.9.0
  * Requires at least: 5.6.0
  * Requires PHP: 7.2
  * Author URI: https://exactmetrics.com/lite/?utm_source=liteplugin&utm_medium=pluginheader&utm_campaign=authoruri&utm_content=7%2E0%2E0
@@ -16,6 +16,14 @@
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
+
+// Load AMP compatibility very early if we're in AMP context
+if ( ( isset( $_GET['amp'] ) && $_GET['amp'] === '1' ) || 
+	 ( function_exists( 'is_amp_endpoint' ) && is_amp_endpoint() ) ||
+	 ( function_exists( 'amp_is_request' ) && amp_is_request() ) ||
+	 ( isset( $_SERVER['REQUEST_URI'] ) && false !== strpos( $_SERVER['REQUEST_URI'], '/amp/' ) ) ) {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/frontend/class-amp-compatibility-early.php';
 }
 
 /**
@@ -47,7 +55,7 @@ final class ExactMetrics_Lite {
 	 * @var string $version Plugin version.
 	 */
 
-	public $version = '8.8.0';
+	public $version = '8.9.0';
 
 	/**
 	 * Plugin file.
@@ -779,6 +787,7 @@ if ( ! function_exists( 'ExactMetrics' ) ) {
 function exactmetrics_lite_deactivation_hook() {
 	wp_clear_scheduled_hook( 'exactmetrics_usage_tracking_cron' );
 	wp_clear_scheduled_hook( 'exactmetrics_email_summaries_cron' );
+	wp_clear_scheduled_hook( 'exactmetrics_charitable_notice_cron' );
 }
 
 register_deactivation_hook( __FILE__, 'exactmetrics_lite_deactivation_hook' );

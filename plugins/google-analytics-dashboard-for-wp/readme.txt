@@ -3,8 +3,8 @@ Contributors: chriscct7, smub
 Donate link: http://www.wpbeginner.com/wpbeginner-needs-your-help/
 Tags: analytics,google analytics,google analytics dashboard,google analytics plugin,website stats
 Requires at least: 5.6.0
-Tested up to: 6.8.1
-Stable tag: 8.8.0
+Tested up to: 6.8.3
+Stable tag: 8.9.0
 Requires PHP: 7.2
 License: GPL v3
 
@@ -131,21 +131,26 @@ You can translate Google Analytics Dashboard for WP by ExactMetrics on [translat
 4. Want more features? <a href="https://www.exactmetrics.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion">Purchase ExactMetrics Pro</a>!
 
 == Changelog ==
-8.8.0: September 9, 2025
+= 8.9.0: October 14, 2025 =
+- New: Unlock new organic traffic insights with our completely updated Google Search Console report
+- New: Automatically track eCommerce sales with LinkedIn and SnapChat PPC campaigns-
+- Updated: Various bug fixes and updates
+
+= 8.8.0: September 9, 2025 =
 - New: Google Ads Integration! Set up Google Ads campaigns directly from the ExactMetrics dashboard.
 - New: AI Traffic Report - see what LLMs are sending traffic to your website
 - Fixed: Minor updates and bug fixes
 
-8.7.4: August 7, 2025
+= 8.7.4: August 7, 2025 =
 - Fixed: Minor updates and bug fixes
 
-8.7.3: August 6, 2025
+= 8.7.3: August 6, 2025 =
 - Fixed: Minor updates and bug fixes
 
-8.7.1: July 22, 2025
+= 8.7.1: July 22, 2025 =
 - Fixed: Minor updates and bug fixes
 
-8.7.0: July 22, 2025
+= 8.7.0: July 22, 2025 =
 - Updates: Misc bug fixes and updates
 
 = 8.6.2: June 26, 2025 =

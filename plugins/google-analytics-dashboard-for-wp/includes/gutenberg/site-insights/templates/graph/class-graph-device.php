@@ -11,6 +11,11 @@ class ExactMetrics_SiteInsights_Template_Graph_Device extends ExactMetrics_SiteI
 	protected $type = 'graph';
 
 	public function output(){
+		// If we're in AMP, return AMP-compatible output
+		if ( $this->is_amp() ) {
+			return $this->get_amp_output();
+		}
+
 		$json_data = $this->get_json_data();
 
 		if (empty($json_data)) {
@@ -20,6 +25,41 @@ class ExactMetrics_SiteInsights_Template_Graph_Device extends ExactMetrics_SiteI
 		return "<div class='exactmetrics-graph-item exactmetrics-donut-chart exactmetrics-graph-{$this->metric}'>
 			<script type='application/json'>{$json_data}</script>
 		</div>";
+	}
+
+	/**
+	 * Get AMP-compatible output for device breakdown
+	 *
+	 * @return string
+	 */
+	protected function get_amp_output() {
+		if (empty($this->data['devices'])) {
+			return false;
+		}
+
+		$data = $this->data['devices'];
+		$title = __( 'Device Breakdown', 'google-analytics-dashboard-for-wp' );
+
+		$html = "<div class='exactmetrics-amp-graph-item exactmetrics-amp-device-chart exactmetrics-amp-graph-{$this->metric}'>";
+		$html .= "<div class='exactmetrics-amp-chart-title'>{$title}</div>";
+		$html .= "<div class='exactmetrics-amp-device-container'>";
+		
+		foreach ($data as $device => $percentage) {
+			$device_name = ucfirst($device);
+			
+			$html .= "<div class='exactmetrics-amp-device-item'>";
+			$html .= "<div class='exactmetrics-amp-device-label'>{$device_name}</div>";
+			$html .= "<div class='exactmetrics-amp-device-bar'>";
+			$html .= "<div class='exactmetrics-amp-device-fill' style='width: {$percentage}%;'></div>";
+			$html .= "</div>";
+			$html .= "<div class='exactmetrics-amp-device-value'>{$percentage}%</div>";
+			$html .= "</div>";
+		}
+		
+		$html .= "</div>"; // Close device-container
+		$html .= "</div>"; // Close graph-item
+
+		return $html;
 	}
 
 	protected function get_options() {

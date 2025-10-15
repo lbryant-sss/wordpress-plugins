@@ -24,7 +24,7 @@ class NewsletterMailer {
         $this->name = $name;
         $this->options = $options;
         if (!empty($this->options['speed'])) {
-            $this->speed = max(0, (int) $this->options['speed']);
+            $this->speed = max(12, (int) $this->options['speed']);
         }
         if (!empty($this->options['turbo'])) {
             $this->batch_size = max(1, (int) $this->options['turbo']);
@@ -98,7 +98,8 @@ class NewsletterMailer {
     }
 
     /**
-     * Sends a batch of messages.
+     * Sends a batch of messages. It is optimised if the count of messages match the
+     * "batch_size" of the mailer.
      *
      * @param TNP_Mailer_Message[] $messages
      * @return bool|WP_Error

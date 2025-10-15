@@ -352,6 +352,7 @@ if ($email['status'] != 'sent') {
         <?php $controls->title_help('/newsletter-targeting'); ?>
 
         <h2><?php echo esc_html($email['subject']); ?></h2>
+        <?php include __DIR__ . '/edit-nav.php'; ?>
 
     </div>
 
@@ -371,7 +372,7 @@ if ($email['status'] != 'sent') {
                         <?php } ?>
                     <?php } else { ?>
 
-                        <?php $controls->btn_link($this->get_editor_url($email_id, $editor_type), __('Edit', 'newsletter'), ['icon' => 'fa-edit', 'secondary' => true]); ?>
+                        <?php //$controls->btn_link($this->get_editor_url($email_id, $editor_type), __('Edit', 'newsletter'), ['icon' => 'fa-edit', 'secondary' => true]); ?>
 
                     <?php } ?>
 
@@ -394,7 +395,7 @@ if ($email['status'] != 'sent') {
 
                 <div class="tnp-emails-status">
 
-                    <div style="display: flex; justify-content: space-between">
+                    <div style="display: flex; justify-content: space-between; align-items: center">
                         <div style="flex-grow: 1">
                             <?php $this->show_email_status_label($email) ?>
                         </div>
@@ -407,10 +408,9 @@ if ($email['status'] != 'sent') {
                                 $this->show_email_progress_bar($email);
                             }
                             ?>
-
                         </div>
 
-                        <div style="flex-grow: 1; text-align: right">
+                        <div style="flex-grow: 1; text-align: right; white-space: nowrap">
                             <?php if ($email['status'] == 'new') { ?>
                                 <i class="fas fa-users"></i> <?php echo $subscriber_count ?>
                             <?php } else { ?>

@@ -3,7 +3,7 @@
 /* @var $controls NewsletterControls */
 
 defined('ABSPATH') || exit;
-$extensions = Newsletter::instance()->getTnpExtensions();
+$extensions = Newsletter\Addons::get_addons();
 
 if ($controls->is_action('activate')) {
     $result = activate_plugin('newsletter-extensions/extensions.php');

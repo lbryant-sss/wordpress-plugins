@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/xootix
 Tags: floating cart, cart popup, woocommerce, slider, rewards
 Requires at least: 3.0.1
 Tested up to: 6.8
-Stable tag: 2.7.1
+Stable tag: 2.7.2
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -133,6 +133,11 @@ You can use any third party plugin such as Loco Translate for hassle free transl
 8. Change Shipping Pro
 
 == Changelog ==
+
+= 2.7.2 =
+* New - add basket to multiple menus
+* new - styling options 
+
 
 = 2.7.1 =
 * New - Product savings & Total savings when on sale

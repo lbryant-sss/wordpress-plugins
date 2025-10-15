@@ -3,8 +3,8 @@ Contributors:      croixhaug, nataliemac, simplyscheduleappointments
 Donate link:       https://simplyscheduleappointments.com
 Tags:              booking system, appointments, booking, scheduling, appointment booking
 Requires at least: 5.1
-Tested up to:      6.8
-Stable tag:        1.6.8.63
+Tested up to:      6.9
+Stable tag:        1.6.9.0
 Requires PHP:      7.4
 License:           GPLv2
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
@@ -237,6 +237,12 @@ See our guide on [how to get started](https://simplyscheduleappointments.com/gui
 
 === Changelog ===
 
+== 1.6.8.65 - 2025-10-07 ==
+
+= Fixes =
+
+- Update button styles for selectable days in monthly view
+
 == 1.6.8.63 - 2025-09-30 ==
 
 = Fixes =
@@ -299,12 +305,6 @@ See our guide on [how to get started](https://simplyscheduleappointments.com/gui
 
 - Add missing z-index variable for dialog in foxy-material styles
 - Add isOkToReturn method to validate availability for returning slots
-- Error loading block: Invalid block
-- Bug: Phone field
-
-= Features and Improvements =
-
-- Improve Vue Telephone Field Component
 
 
 For older changelog entries, please see the [additional CHANGELOG.md file](https://plugins.svn.wordpress.org/simply-schedule-appointments/trunk/CHANGELOG.md) delivered with the plugin.

@@ -263,6 +263,31 @@ class NewsletterEmails extends NewsletterModule {
                 die();
                 break;
 
+            case 'emails-version-preview':
+                global $wpdb;
+
+                require_once NEWSLETTER_DIR . '/admin.php';
+                if (!$this->is_allowed()) {
+                    die('Not enough privileges');
+                }
+
+                if (!check_admin_referer('preview')) {
+                    die();
+                }
+
+                $log = $wpdb->get_row($wpdb->prepare("select * from {$wpdb->prefix}newsletter_logs where id=%d limit 1", (int)$_GET['id']));
+
+                if (!str_starts_with($log->source, 'newsletter-version-')) {
+                    die('Invalid version ID');
+                }
+               
+                header('Content-Type: text/html;charset=UTF-8');
+
+                echo $log->data;
+
+                die();
+                break;
+
             case 'emails-preview-text':
                 header('Content-Type: text/plain;charset=UTF-8');
                 if (!$this->is_allowed()) {

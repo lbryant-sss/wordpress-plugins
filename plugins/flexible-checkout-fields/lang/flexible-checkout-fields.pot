@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the Flexible Checkout Fields plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Flexible Checkout Fields 4.1.28\n"
+"Project-Id-Version: Flexible Checkout Fields 4.1.29\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/flexible-checkout-fields\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-10-13T12:52:18+00:00\n"
+"POT-Creation-Date: 2025-10-14T16:29:58+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: flexible-checkout-fields\n"
@@ -27,7 +27,7 @@ msgstr ""
 
 #. Plugin URI of the plugin
 #: flexible-checkout-fields.php
-msgid "https://www.wpdesk.net/products/flexible-checkout-fields-pro-woocommerce/"
+msgid "https://www.wpdesk.net/sk/flexible-checkout-fields-plugin/"
 msgstr ""
 
 #. Description of the plugin
@@ -42,7 +42,7 @@ msgstr ""
 
 #. Author URI of the plugin
 #: flexible-checkout-fields.php
-msgid "https://www.wpdesk.net/"
+msgid "https://www.wpdesk.net/sk/flexible-checkout-fields-author/"
 msgstr ""
 
 #: classes/display-options.php:103

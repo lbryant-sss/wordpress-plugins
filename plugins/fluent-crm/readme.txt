@@ -4,7 +4,7 @@ Tags: email marketing, newsletter, crm, email newsletter, subscribers
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 7.3
-Stable tag: 2.9.65
+Stable tag: 2.9.80
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -259,8 +259,26 @@ You can report any security bugs found in the source code of FluentCRM plugins t
 
 == Changelog ==
 
-= 2.9.65 (Date: August 07, 2025) =
+= 2.9.80 (Date: October 14, 2025) =
+New: Fluent Cart Order & Subscription Triggers
+New: Fluent Cart Purchase History in Contact Profile
+New: Fluent Cart Import Customers
+New: Export/Import List
+New: Tag or List wise contact growth report
+Improvement: 'Prefix' Column Added To Subscribers Table
+Improvement: Enhanced ‘Add Existing Company’ In Contact Company Search With Initial Suggestions
+Improvement: Contact’s Current Status Column Added In Individual Report Section Inside Funnel Report
+Improvement: Group name of contact's custom fields is now editable
+Improvement: Include recipient name in mailer send data
+Improvement: Open Rate And Click Rate Columns In Email Campaigns Table Are Now Sortable
+Fixed: Currency Issue Fix In Funnel Report Chart
+Fixed: Individual Email Display Issue For Custom Email Address In Funnel Report
+Fixed: Monthly Subscriber Growth Chart Issue Solve To Disambiguate Months By Year
+Fixed: Custom Reply To Name, Reply To Email Issue Solved In Email Header For Custom Email Within A Contact’s Profile Section
+Fixed: 'includes all of' condition issue in automation condition
+Fixed: Ab Cart price format issue in email
 
+= 2.9.65 (Date: August 07, 2025) =
 New: Tag export and import functionality
 New: Custom fields in email preference forms
 New: One-click reset of filters for contacts

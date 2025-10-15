@@ -11,6 +11,11 @@ class ExactMetrics_SiteInsights_Template_Graph_Gender extends ExactMetrics_SiteI
 	protected $type = 'graph';
 
 	public function output(){
+		// If we're in AMP, return AMP-compatible output
+		if ( $this->is_amp() ) {
+			return $this->get_amp_output();
+		}
+
 		$json_data = $this->get_json_data();
 
 		if (empty($json_data)) {
@@ -20,6 +25,42 @@ class ExactMetrics_SiteInsights_Template_Graph_Gender extends ExactMetrics_SiteI
 		return "<div class='exactmetrics-graph-item exactmetrics-donut-chart exactmetrics-graph-{$this->metric}'>
 			<script type='application/json'>{$json_data}</script>
 		</div>";
+	}
+
+	/**
+	 * Get AMP-compatible output for gender breakdown
+	 *
+	 * @return string
+	 */
+	protected function get_amp_output() {
+		if (empty($this->data['gender'])) {
+			return false;
+		}
+
+		$data = $this->data['gender'];
+		$title = __( 'Gender Breakdown', 'google-analytics-dashboard-for-wp' );
+
+		$html = "<div class='exactmetrics-amp-graph-item exactmetrics-amp-gender-chart exactmetrics-amp-graph-{$this->metric}'>";
+		$html .= "<div class='exactmetrics-amp-chart-title'>{$title}</div>";
+		$html .= "<div class='exactmetrics-amp-gender-container'>";
+		
+		foreach ($data as $gender_data) {
+			$gender = $gender_data['gender'];
+			$percent = $gender_data['percent'];
+			
+			$html .= "<div class='exactmetrics-amp-gender-item'>";
+			$html .= "<div class='exactmetrics-amp-gender-label'>{$gender}</div>";
+			$html .= "<div class='exactmetrics-amp-gender-bar'>";
+			$html .= "<div class='exactmetrics-amp-gender-fill' style='width: {$percent}%;'></div>";
+			$html .= "</div>";
+			$html .= "<div class='exactmetrics-amp-gender-value'>{$percent}%</div>";
+			$html .= "</div>";
+		}
+		
+		$html .= "</div>"; // Close gender-container
+		$html .= "</div>"; // Close graph-item
+
+		return $html;
 	}
 
 	protected function get_options() {

@@ -1042,6 +1042,13 @@ class NewsletterControls {
         echo '<input name="options[', esc_attr($name), ']" id="options-', esc_attr($name), '" type="hidden" value="', esc_attr($value), '">';
     }
 
+    function hidden_encoded($name) {
+        $value = $this->get_value($name);
+        $value = base64_encode(rawurlencode($value));
+        echo '<input name="options[', esc_attr($name), ']" id="options-', esc_attr($name), '" type="hidden" value="', esc_attr($value), '">';
+        echo '<input type="hidden" name="tnp_fields[', esc_attr($name), ']" value="encoded">';
+    }
+
     /**
      * General button. Attributes:
      * - id: the element HTML id
@@ -1195,6 +1202,7 @@ class NewsletterControls {
     function button_icon_copy($data = '') {
         $this->btn('copy', '', ['secondary' => true, 'data' => $data, 'icon' => 'fa-copy', 'confirm' => true, 'title' => __('Duplicate', 'newsletter')]);
     }
+   
 
     /**
      * Creates a button with "delete" action.

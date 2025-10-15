@@ -929,6 +929,10 @@ class NewsletterComposer extends NewsletterModule {
             $controls->data['message'] = self::extract_body($email);
             $controls->data['subject'] = $email->subject;
             $controls->data['updated'] = $email->updated;
+
+            // Extra data used when testing
+            $controls->data['track'] = $email->track;
+
         }
 
         if (!empty($email->options['sender_email'])) {
@@ -949,6 +953,8 @@ class NewsletterComposer extends NewsletterModule {
     /**
      * Update an email using the data captured by the NewsletterControl object
      * processing the composer fields.
+     *
+     * Updates only the options, message and subject.
      *
      * @param TNP_Email $email
      * @param NewsletterControls $controls

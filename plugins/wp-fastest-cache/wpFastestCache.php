@@ -537,18 +537,27 @@ GNU General Public License for more details.
 		}
 
 		public function wpfc_db_fix_callback(){
-			if($this->isPluginActive("wp-fastest-cache-premium/wpFastestCachePremium.php")){
-				include_once $this->get_premium_path("db.php");
-
-				if(class_exists("WpFastestCacheDatabaseCleanup")){
-					WpFastestCacheDatabaseCleanup::clean($_GET["type"]);
-				}else{
-					die(json_encode(array("success" => false, "showupdatewarning" => true, "message" => "Only available in Premium version")));
-				}
-
-			}else{
-				die(json_encode(array("success" => false, "message" => "Only available in Premium version")));
+			if(!wp_verify_nonce($_REQUEST["nonce"], 'wpfc')){
+				die( 'Security check' );
 			}
+
+			if(current_user_can('manage_options')){
+				if($this->isPluginActive("wp-fastest-cache-premium/wpFastestCachePremium.php")){
+					include_once $this->get_premium_path("db.php");
+
+					if(class_exists("WpFastestCacheDatabaseCleanup")){
+						WpFastestCacheDatabaseCleanup::clean($_GET["type"]);
+					}else{
+						die(json_encode(array("success" => false, "showupdatewarning" => true, "message" => "Only available in Premium version")));
+					}
+
+				}else{
+					die(json_encode(array("success" => false, "message" => "Only available in Premium version")));
+				}
+			}else{
+				wp_die("Must be admin");
+			}
+
 		}
 
 		public function wpfc_db_statics_callback(){

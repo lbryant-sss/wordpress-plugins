@@ -144,12 +144,12 @@ class ExactMetrics_Admin_Assets {
 
 		// Get current screen.
 		$screen = get_current_screen();
-		
+
 		// Bail if we're not on a ExactMetrics screen.
 		if ( empty( $screen->id ) || strpos( $screen->id, 'exactmetrics' ) === false ) {
 			return;
 		}
-		
+
 		$version_path = exactmetrics_is_pro_version() ? 'pro' : 'lite';
 		$text_domain  = exactmetrics_is_pro_version() ? 'exactmetrics-premium' : 'google-analytics-dashboard-for-wp';
 
@@ -308,6 +308,7 @@ class ExactMetrics_Admin_Assets {
 						'ai_insights' => is_plugin_active( 'exactmetrics-ai-insights/exactmetrics-ai-insights.php' ),
 					),
 					'license'             => $license_info,
+					'charitablewp_notice' => $this->show_charitablewp_notice(),
 				)
 			);
 
@@ -319,7 +320,7 @@ class ExactMetrics_Admin_Assets {
 
 			return;
 		}
-		
+
 		// ublock notice
 		add_action( 'admin_print_footer_scripts', array( $this, 'exactmetrics_settings_ublock_error_js' ), 9999999 );
 	}
@@ -503,6 +504,24 @@ class ExactMetrics_Admin_Assets {
 		return sanitize_text_field( $value );
 	}
 
+	/**
+	 * Check if the CharitableWP notice should be shown.
+	 */
+	private function show_charitablewp_notice() {
+		// Check if user has permission to show the notice.
+		if ( ! current_user_can( 'exactmetrics_save_settings' ) ) {
+			return false;
+		}
+
+		$installed_plugins = get_plugins();
+		$plugin_path = 'charitable/charitable.php';
+
+		if ( isset( $installed_plugins[$plugin_path] ) ) {
+			return false;
+		}
+
+		return exactmetrics_get_option( 'show_charitable_notice', false );
+	}
 }
 
 new ExactMetrics_Admin_Assets();

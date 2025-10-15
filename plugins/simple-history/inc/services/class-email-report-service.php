@@ -5,7 +5,7 @@ namespace Simple_History\Services;
 use Simple_History\Simple_History;
 use Simple_History\Helpers;
 use Simple_History\Events_Stats;
-use Simple_History\Constants;
+use Simple_History\Date_Helper;
 
 /**
  * Service that handles email reports.
@@ -119,11 +119,29 @@ class Email_Report_Service extends Service {
 			'site_name' => get_bloginfo( 'name' ),
 			'site_url' => get_bloginfo( 'url' ),
 			'site_url_domain' => parse_url( get_bloginfo( 'url' ), PHP_URL_HOST ),
+			// Date range as string, as it's displayed in the email.
 			'date_range' => sprintf(
-				/* translators: 1: start date, 2: end date */
-				__( '%1$s – %2$s', 'simple-history' ),
-				date_i18n( get_option( 'date_format' ), $date_from ),
-				date_i18n( get_option( 'date_format' ), $date_to )
+				/* translators: 1: start date with day name, 2: end date with day name, 3: year */
+				__( '%1$s – %2$s, %3$s', 'simple-history' ),
+				wp_date(
+					sprintf(
+						/* translators: %s is the site's date format setting without year */
+						__( 'D %s', 'simple-history' ),
+						// Remove year from date format.
+						trim( preg_replace( '/[,\s]*[YyoL][,\s]*/', '', get_option( 'date_format' ) ), ', ' )
+					),
+					$date_from
+				),
+				wp_date(
+					sprintf(
+						/* translators: %s is the site's date format setting without year */
+						__( 'D %s', 'simple-history' ),
+						// Remove year from date format.
+						trim( preg_replace( '/[,\s]*[YyoL][,\s]*/', '', get_option( 'date_format' ) ), ', ' )
+					),
+					$date_to
+				),
+				wp_date( 'Y', $date_to )
 			),
 			'email_subject' => $this->get_email_subject( $is_preview ),
 		];
@@ -131,19 +149,26 @@ class Email_Report_Service extends Service {
 		// Get total events for this week.
 		$stats['total_events_this_week'] = $events_stats->get_total_events( $date_from, $date_to );
 
-		// Get most active days and format them for the template.
+		// Get all days with event counts for the template.
+		// Don't limit or sort - template will use all days in chronological order.
 		$peak_days = $events_stats->get_peak_days( $date_from, $date_to );
+
+		// Convert to array format for template (handle both empty and populated results).
+		$all_days = [];
 		if ( $peak_days && is_array( $peak_days ) ) {
-			// Sort by count descending to get the most active days first.
-			usort(
-				$peak_days,
-				function ( $a, $b ) {
-					return $b->count - $a->count;
-				}
-			);
+			foreach ( $peak_days as $day ) {
+				$all_days[] = [
+					'name' => $day->day_name,
+					'count' => $day->count,
+				];
+			}
 		}
 
-		$stats['most_active_days'] = $this->prepare_top_items( $peak_days, 3, 'day_name', 'count' );
+		$stats['most_active_days'] = $all_days;
+
+		// Pass date range timestamps for chronological day ordering in template.
+		$stats['date_from_timestamp'] = $date_from;
+		$stats['date_to_timestamp'] = $date_to;
 
 		// Get most active users and format them for the template.
 		$top_users = $events_stats->get_top_users( $date_from, $date_to, 3 );
@@ -166,6 +191,9 @@ class Email_Report_Service extends Service {
 
 		// Add history admin URL.
 		$stats['history_admin_url'] = \Simple_History\Helpers::get_history_admin_url();
+
+		// Add settings URL for unsubscribe link.
+		$stats['settings_url'] = admin_url( 'admin.php?page=simple_history_settings_page&selected-tab=general_settings_subtab_general&selected-sub-tab=general_settings_subtab_settings_general' );
 
 		return $stats;
 	}
@@ -195,8 +223,11 @@ class Email_Report_Service extends Service {
 	 */
 	public function rest_preview_email() {
 		$current_user = wp_get_current_user();
-		$date_from = strtotime( sprintf( '-%d days', Constants::DAYS_PER_WEEK ) );
-		$date_to = time();
+
+		// Preview shows last 7 days including today, matching sidebar "7 days" stat.
+		$date_range = Date_Helper::get_last_n_days_range( Date_Helper::DAYS_PER_WEEK );
+		$date_from = $date_range['from'];
+		$date_to = $date_range['to'];
 
 		ob_start();
 		load_template(
@@ -241,8 +272,10 @@ class Email_Report_Service extends Service {
 	 * REST API endpoint for getting HTML preview.
 	 */
 	public function rest_preview_html() {
-		$date_from = strtotime( sprintf( '-%d days', Constants::DAYS_PER_WEEK ) );
-		$date_to = time();
+		// Preview shows last 7 days including today, matching sidebar "7 days" stat.
+		$date_range = Date_Helper::get_last_n_days_range( Date_Helper::DAYS_PER_WEEK );
+		$date_from = $date_range['from'];
+		$date_to = $date_range['to'];
 
 		// Set content type to HTML.
 		header( 'Content-Type: text/html; charset=UTF-8' );
@@ -329,7 +362,7 @@ class Email_Report_Service extends Service {
 	 * Output for the email report settings section.
 	 */
 	public function settings_section_output() {
-		echo '<p>' . esc_html__( 'Configure automatic email reports with website statistics. Reports are sent every Monday morning.', 'simple-history' ) . '</p>';
+		echo '<p>' . esc_html__( 'Reports are sent Monday mornings and include statistics from the previous week (Monday-Sunday).', 'simple-history' ) . '</p>';
 	}
 
 	/**
@@ -477,9 +510,9 @@ class Email_Report_Service extends Service {
 	 */
 	public function schedule_email_report() {
 		if ( ! wp_next_scheduled( 'simple_history/email_report' ) ) {
-			// Schedule for next Monday at 8:00 AM.
-			$next_monday = strtotime( 'next monday 8:00:00' );
-			wp_schedule_event( $next_monday, 'weekly', 'simple_history/email_report' );
+			// Schedule for next Monday at 8:00 AM in WordPress timezone.
+			$next_monday = new \DateTimeImmutable( 'next monday 8:00:00', wp_timezone() );
+			wp_schedule_event( $next_monday->getTimestamp(), 'weekly', 'simple_history/email_report' );
 		}
 	}
 
@@ -500,9 +533,11 @@ class Email_Report_Service extends Service {
 		// Convert from newline string to array.
 		$recipients = explode( "\n", $recipients );
 
-		// Get stats for the last 7 days.
-		$date_from = strtotime( sprintf( '-%d days', Constants::DAYS_PER_WEEK ) );
-		$date_to = time();
+		// Get stats for last complete week (Monday-Sunday).
+		// Sent on Mondays, shows previous Mon-Sun, excludes current Monday.
+		$date_range = Date_Helper::get_last_complete_week_range();
+		$date_from = $date_range['from'];
+		$date_to = $date_range['to'];
 
 		ob_start();
 		load_template(

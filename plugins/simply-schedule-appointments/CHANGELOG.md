@@ -1,5 +1,11 @@
 # Changelog
 
+## SSA-VERSION-PREFIX.6.8.65 - 2025-10-07
+
+### Fixes
+
+- Update button styles for selectable days in monthly view
+
 ## SSA-VERSION-PREFIX.6.8.63 - 2025-09-30
 
 ### Fixes

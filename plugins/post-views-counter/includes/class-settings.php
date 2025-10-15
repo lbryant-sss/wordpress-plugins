@@ -295,10 +295,10 @@ class Post_Views_Counter_Settings {
 					'type'			=> 'radio',
 					'class'			=> 'pvc-pro',
 					'skip_saving'	=> true,
-					'description'	=> __( "Whether to store the views using GMT timezone or adjust it to the GMT offset of the site.", 'post-views-counter' ),
+					'description'	=> __( 'Whether to store the views using GMT timezone or adjust it to the GMT offset of the site.', 'post-views-counter' ),
 					'options'		=> [
 						'gmt'		=> __( 'GMT Time', 'post-views-counter' ),
-						'local'	=> __( 'Local Time', 'post-views-counter' )
+						'local'		=> __( 'Local Time', 'post-views-counter' )
 					],
 					'disabled'		=> [ 'gmt', 'local' ],
 					'value'			=> 'gmt'
@@ -863,7 +863,7 @@ class Post_Views_Counter_Settings {
 			$empty_active_caching_plugins = false;
 			$active_plugins_html = [];
 
-			$caching_compatibility_desc .= esc_html__( 'Currently detected active caching plugins', 'cookie-notice' ) . ': ';
+			$caching_compatibility_desc .= esc_html__( 'Currently detected active caching plugins', 'post-views-counter' ) . ': ';
 
 			foreach ( $active_plugins as $plugin ) {
 				$active_plugins_html[] = '<code>' . esc_html( $plugin ) . '</code>';
@@ -873,10 +873,41 @@ class Post_Views_Counter_Settings {
 		} else {
 			$empty_active_caching_plugins = true;
 
-			$caching_compatibility_desc .= esc_html__( 'No compatible caching plugins found.', 'cookie-notice' );
+			$caching_compatibility_desc .= esc_html__( 'No compatible caching plugins found.', 'post-views-counter' );
 		}
 
 		return $caching_compatibility_desc . '<br />' . __( 'Current status', 'post-views-counter' ) . ': <span class="' . ( ! $empty_active_caching_plugins ? '' : 'un' ) . 'available">' . ( ! $empty_active_caching_plugins ? __( 'available', 'post-views-counter' ) : __( 'unavailable', 'post-views-counter' ) ) . '</span>.';
+	}
+
+	/**
+	 * Extend active caching plugins.
+	 *
+	 * @param string $plugins
+	 *
+	 * @return array
+	 */
+	public function extend_active_caching_plugins( $plugins ) {
+		// breeze
+		if ( $this->is_plugin_active( 'breeze' ) )
+			$plugins[] = 'Breeze';
+
+		return $plugins;
+	}
+
+	/**
+	 * Check whether specified plugin is active.
+	 *
+	 * @param bool $is_plugin_active
+	 * @param string $plugin
+	 *
+	 * @return bool
+	 */
+	public function extend_is_plugin_active( $is_plugin_active, $plugin ) {
+		// breeze
+		if ( $plugin === 'breeze' && class_exists( 'Breeze_PurgeCache' ) && class_exists( 'Breeze_Options_Reader' ) && function_exists( 'breeze_get_option' ) && function_exists( 'breeze_update_option' ) && defined( 'BREEZE_VERSION' ) && version_compare( BREEZE_VERSION, '2.0.30', '>=' ) )
+			$is_plugin_active = true;
+
+		return $is_plugin_active;
 	}
 
 	/**
@@ -890,10 +921,6 @@ class Post_Views_Counter_Settings {
 		// autoptimize
 		if ( $this->is_plugin_active( 'autoptimize' ) )
 			$active_plugins[] = 'Autoptimize';
-
-		// breeze
-		// if ( $this->is_plugin_active( 'breeze' ) )
-			// $active_plugins[] = 'Breeze';
 
 		// hummingbird
 		if ( $this->is_plugin_active( 'hummingbird' ) )
@@ -950,12 +977,6 @@ class Post_Views_Counter_Settings {
 				if ( function_exists( 'autoptimize' ) && defined( 'AUTOPTIMIZE_PLUGIN_VERSION' ) && version_compare( AUTOPTIMIZE_PLUGIN_VERSION, '2.4', '>=' ) )
 					$is_plugin_active = true;
 				break;
-
-			// breeze
-			// case 'breeze':
-				// if ( class_exists( 'Breeze_PurgeCache' ) && class_exists( 'Breeze_Options_Reader' ) && function_exists( 'breeze_get_option' ) && function_exists( 'breeze_update_option' ) && defined( 'BREEZE_VERSION' ) && version_compare( BREEZE_VERSION, '1.1.0', '>=' ) )
-					// $is_plugin_active = true;
-				// break;
 
 			// hummingbird
 			case 'hummingbird':

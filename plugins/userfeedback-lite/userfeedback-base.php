@@ -20,7 +20,7 @@ if (!class_exists('UserFeedback_Base')) {
 		 * @access public
 		 * @var string $version Plugin version
 		 */
-		public $version = '1.8.0';
+		public $version = '1.9.0';
 
 		/**
 		 * Plugin file.
@@ -620,7 +620,6 @@ if (!function_exists('userfeedback_maybe_redirect_to_onboarding')) {
 	}
 }
 add_action('admin_init', 'userfeedback_maybe_redirect_to_onboarding', 9999);
-
 
 if (!function_exists('userfeedback_load_action_scheduler')) {
 	function userfeedback_load_action_scheduler() {

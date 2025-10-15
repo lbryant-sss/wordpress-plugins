@@ -2,11 +2,14 @@
 
 class UserFeedback_Survey_Template_Web_Experience extends UserFeedback_Survey_Template {
 
-
 	/**
 	 * @inheritdoc
 	 */
 	protected $template_key = 'web-experience';
+
+	protected $categories = array(
+		'ui-ux'
+	);
 
 	/**
 	 * @inheritdoc
@@ -24,7 +27,9 @@ class UserFeedback_Survey_Template_Web_Experience extends UserFeedback_Survey_Te
 	 * @inheritdoc
 	 */
 	public function get_description() {
-		return __( 'Learn how customers currently rate your website experience.', 'userfeedback-lite' );
+		return array(
+			'title' => __( 'Learn how customers currently rate your website experience.', 'userfeedback-lite' )
+		);
 	}
 
 	/**

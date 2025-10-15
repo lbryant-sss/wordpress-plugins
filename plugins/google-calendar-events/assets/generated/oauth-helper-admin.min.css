@@ -1,4 +1,4 @@
-/*! Simple Calendar - 3.5.6
+/*! Simple Calendar - 3.5.7
  * https://simplecalendar.io
  * Copyright (c) Xtendify Technologies 2025
  * Licensed GPLv2+ */

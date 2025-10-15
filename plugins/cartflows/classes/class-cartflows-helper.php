@@ -1819,7 +1819,7 @@ class Cartflows_Helper {
 
 			$rollback_versions = array_slice( $rollback_versions, 0, $max_versions, true );
 
-			set_transient( 'cartflows_' . CARTFLOWS_VER, $rollback_versions, WEEK_IN_SECONDS );
+			set_transient( 'cartflows_rollback_versions_' . CARTFLOWS_VER, $rollback_versions, WEEK_IN_SECONDS );
 		}
 
 		return (array) $rollback_versions;

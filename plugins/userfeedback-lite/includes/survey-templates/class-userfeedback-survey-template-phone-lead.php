@@ -2,11 +2,14 @@
 
 class UserFeedback_Survey_Template_Phone_Lead extends UserFeedback_Survey_Template {
 
-
 	/**
 	 * @inheritdoc
 	 */
 	protected $template_key = 'phone-lead';
+
+	protected $categories = array(
+		'ecommerce'
+	);
 
 	/**
 	 * @inheritdoc
@@ -24,7 +27,9 @@ class UserFeedback_Survey_Template_Phone_Lead extends UserFeedback_Survey_Templa
 	 * @inheritdoc
 	 */
 	public function get_description() {
-		return __( 'Ask your customers for a phone number to receive a call back.', 'userfeedback-lite' );
+		return array(
+			'title' => __( 'Ask your customers for a phone number to receive a call back.', 'userfeedback-lite' )
+		);
 	}
 
 	/**

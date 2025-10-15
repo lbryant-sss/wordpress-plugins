@@ -33,6 +33,9 @@ class ExactMetrics_Site_Insights_Block {
 		// Load Popular Posts styles.
 		wp_register_style( 'exactmetrics-editor-frontend-style', $style_url, array(), exactmetrics_get_asset_version() );
 
+		// Register AMP-compatible styles
+		wp_register_style( 'exactmetrics-amp-style', plugins_url( 'assets/css/frontend/amp-style.css', EXACTMETRICS_PLUGIN_FILE ), array(), exactmetrics_get_asset_version() );
+
 		$use_async = apply_filters( 'exactmetrics_frontend_gtag_script_async', true );
 
 		if ( $use_async ) {

@@ -37,6 +37,7 @@ class Post_Views_Counter_Frontend {
 	 * Post views shortcode function.
 	 *
 	 * @param array $args
+	 *
 	 * @return string
 	 */
 	public function post_views_shortcode( $args ) {
@@ -47,34 +48,14 @@ class Post_Views_Counter_Frontend {
 			'type'	=> 'post'
 		];
 
-		// main item?
-		if ( ! in_the_loop() ) {
-			// get current object
-			$object = get_queried_object();
-
-			// post?
-			if ( is_a( $object, 'WP_Post' ) ) {
-				$defaults['id'] = $object->ID;
-				$defaults['type'] = 'post';
-			// term?
-			} elseif ( is_a( $object, 'WP_Term' ) ) {
-				$defaults['id'] = $object->term_id;
-				$defaults['type'] = 'term';
-			// user?
-			} elseif ( is_a( $object, 'WP_User' ) ) {
-				$defaults['id'] = $object->ID;
-				$defaults['type'] = 'user';
-			}
-		}
-
 		// combine attributes
-		$args = shortcode_atts( $defaults, $args );
+		$atts = apply_filters( 'pvc_post_views_shortcode_atts', shortcode_atts( $defaults, $args ) );
 
 		// default type?
-		if ( $args['type'] === 'post' )
-			$views = pvc_post_views( $args['id'], false );
+		if ( $atts['type'] === 'post' )
+			$views = function_exists( 'pvc_post_views' ) ? pvc_post_views( $atts['id'], false ) : 0;
 
-		return apply_filters( 'pvc_post_views_shortcode', $views, $args );
+		return apply_filters( 'pvc_post_views_shortcode', $views, $atts );
 	}
 
 	/**

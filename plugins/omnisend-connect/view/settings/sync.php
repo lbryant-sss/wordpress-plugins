@@ -20,149 +20,156 @@ function omnisend_show_sync() {
 		omnisend_display_omnisend_connected();
 		omnisend_display_tabs( 'Sync' );
 		?>
-		<div class="settings-section">
-			<h3 class="omnisend-content-lead strong setting-title">Sync</h3>
-			<p class="omnisend-content-body">Your store data, like contacts and orders, are automatically synced with Omnisend. The
-				chart below displays the current sync status.</p>
-			<div class="sync-stats">
-				<table class="wp-list-table widefat fixed striped posts">
-					<thead>
-					<tr>
-						<td>Data type</td>
-						<td class="fixed_date">Successfully synced</td>
-						<td>Total</td>
-						<td>Pending</td>
+		<div class="settings-main-wrapper single-column sync-page">
+			<div class="settings-main-content">
+				<div class="omnisend-settings-card">
+				<h3>Sync Status</h3>
+				<div class="omnisend-content-body">
+					Your store data, like contacts and orders, are automatically synced with Omnisend. The chart below displays the current sync status.
+				</div>
+				<div class="sync-stats">
+					<table class="wp-list-table widefat fixed striped posts">
+				<thead>
+				<tr>
+					<td>Data type</td>
+					<td class="fixed_date">Successfully synced</td>
+					<td>Total</td>
+					<td>Pending</td>
+					<?php
+					if ( $show_error ) {
+						echo '<td>Error</td>';
+					}
+					?>
+					<?php
+					if ( $show_skipped ) {
+						echo '<td>Skipped</td>';
+					}
+					?>
+				</tr>
+				</thead>
+				<tr>
+					<td>Contacts</td>
+					<td id="contact-sync-success-count"><?php echo esc_html( $all_sync_stats->contacts->synced ); ?></td>
+					<td id="contact-sync-total-count">
 						<?php
-						if ( $show_error ) {
-							echo '<td>Error</td>';
-						}
-						?>
-						<?php
-						if ( $show_skipped ) {
-							echo '<td>Skipped</td>';
-						}
-						?>
-					</tr>
-					</thead>
-					<tr>
-						<td>Contacts</td>
-						<td id="contact-sync-success-count"><?php echo esc_html( $all_sync_stats->contacts->synced ); ?></td>
-						<td id="contact-sync-total-count">
-							<?php
-							if ( $all_sync_stats->contacts->unique && $all_sync_stats->contacts->unique != $all_sync_stats->contacts->total ) {
-								echo esc_html( $all_sync_stats->contacts->total ) . ' (Unique - ' . esc_html( $all_sync_stats->contacts->unique ) . ')';
-							} else {
-								echo esc_html( $all_sync_stats->contacts->total );
-							}
-							?>
-						</td>
-						<?php
-						if ( $all_sync_stats->contacts->not_synced > 0 ) {
-							echo '<td id="contact-sync-pending-count" class="omnisend-warn">' . esc_html( $all_sync_stats->contacts->not_synced ) . '</td>';
+						if ( $all_sync_stats->contacts->unique && $all_sync_stats->contacts->unique != $all_sync_stats->contacts->total ) {
+							echo esc_html( $all_sync_stats->contacts->total ) . ' (Unique - ' . esc_html( $all_sync_stats->contacts->unique ) . ')';
 						} else {
-							echo '<td id="contact-sync-pending-count">' . esc_html( $all_sync_stats->contacts->not_synced ) . '</td>';
+							echo esc_html( $all_sync_stats->contacts->total );
 						}
 						?>
-						<?php
-						if ( $show_error ) {
-							if ( $all_sync_stats->contacts->error > 0 ) {
-								echo '<td id="contact-sync-error-count" class="omnisend-warn">' . esc_html( $all_sync_stats->contacts->error ) . '</td>';
-							} else {
-								echo '<td id="contact-sync-error-count">' . esc_html( $all_sync_stats->contacts->error ) . '</td>';
-							}
-						}
-						?>
-						<?php
-						if ( $show_skipped ) {
-							echo '<td id="contact-sync-skipped-count">' . esc_html( $all_sync_stats->contacts->skipped ) . '</td>';
-						}
-						?>
-					</tr>
-					<tr>
-						<td>Orders</td>
-						<td id="order-sync-success-count"><?php echo esc_html( $all_sync_stats->orders->synced ); ?></td>
-						<td id="order-sync-total-count"><?php echo esc_html( $all_sync_stats->orders->total ); ?></td>
-						<?php
-						if ( $all_sync_stats->orders->not_synced > 0 ) {
-							echo '<td id="order-sync-pending-count" class="omnisend-warn">' . esc_html( $all_sync_stats->orders->not_synced ) . '</td>';
+					</td>
+					<?php
+					if ( $all_sync_stats->contacts->not_synced > 0 ) {
+						echo '<td id="contact-sync-pending-count" class="omnisend-warn">' . esc_html( $all_sync_stats->contacts->not_synced ) . '</td>';
+					} else {
+						echo '<td id="contact-sync-pending-count">' . esc_html( $all_sync_stats->contacts->not_synced ) . '</td>';
+					}
+					?>
+					<?php
+					if ( $show_error ) {
+						if ( $all_sync_stats->contacts->error > 0 ) {
+							echo '<td id="contact-sync-error-count" class="omnisend-warn">' . esc_html( $all_sync_stats->contacts->error ) . '</td>';
 						} else {
-							echo '<td id="order-sync-pending-count">' . esc_html( $all_sync_stats->orders->not_synced ) . '</td>';
+							echo '<td id="contact-sync-error-count">' . esc_html( $all_sync_stats->contacts->error ) . '</td>';
 						}
-						?>
-						<?php
-						if ( $show_error ) {
-							if ( $all_sync_stats->orders->error > 0 ) {
-								echo '<td id="order-sync-error-count" class="omnisend-warn">' . esc_html( $all_sync_stats->orders->error ) . '</td>';
-							} else {
-								echo '<td id="order-sync-error-count">' . esc_html( $all_sync_stats->orders->error ) . '</td>';
-							}
-						}
-						?>
-						<?php
-						if ( $show_skipped ) {
-							echo '<td id="order-sync-skipped-count">' . esc_html( $all_sync_stats->orders->skipped ) . '</td>';
-						}
-						?>
-					</tr>
-					<tr>
-						<td>Products</td>
-						<td id="product-sync-success-count"><?php echo esc_html( $all_sync_stats->products->synced ); ?></td>
-						<td id="product-sync-total-count"><?php echo esc_html( $all_sync_stats->products->total ); ?></td>
-						<?php
-						if ( $all_sync_stats->products->not_synced > 0 ) {
-							echo '<td id="product-sync-pending-count" class="omnisend-warn">' . esc_html( $all_sync_stats->products->not_synced ) . '</td>';
+					}
+					?>
+					<?php
+					if ( $show_skipped ) {
+						echo '<td id="contact-sync-skipped-count">' . esc_html( $all_sync_stats->contacts->skipped ) . '</td>';
+					}
+					?>
+				</tr>
+				<tr>
+					<td>Orders</td>
+					<td id="order-sync-success-count"><?php echo esc_html( $all_sync_stats->orders->synced ); ?></td>
+					<td id="order-sync-total-count"><?php echo esc_html( $all_sync_stats->orders->total ); ?></td>
+					<?php
+					if ( $all_sync_stats->orders->not_synced > 0 ) {
+						echo '<td id="order-sync-pending-count" class="omnisend-warn">' . esc_html( $all_sync_stats->orders->not_synced ) . '</td>';
+					} else {
+						echo '<td id="order-sync-pending-count">' . esc_html( $all_sync_stats->orders->not_synced ) . '</td>';
+					}
+					?>
+					<?php
+					if ( $show_error ) {
+						if ( $all_sync_stats->orders->error > 0 ) {
+							echo '<td id="order-sync-error-count" class="omnisend-warn">' . esc_html( $all_sync_stats->orders->error ) . '</td>';
 						} else {
-							echo '<td id="product-sync-pending-count">' . esc_html( $all_sync_stats->products->not_synced ) . '</td>';
+							echo '<td id="order-sync-error-count">' . esc_html( $all_sync_stats->orders->error ) . '</td>';
 						}
-						?>
-						<?php
-						if ( $show_error ) {
-							if ( $all_sync_stats->products->error > 0 ) {
-								echo '<td id="product-sync-error-count" class="omnisend-warn">' . esc_html( $all_sync_stats->products->error ) . '</td>';
-							} else {
-								echo '<td id="product-sync-error-count">' . esc_html( $all_sync_stats->products->error ) . '</td>';
-							}
-						}
-						?>
-						<?php
-						if ( $show_skipped ) {
-							echo '<td id="product-sync-skipped-count">' . esc_html( $all_sync_stats->products->skipped ) . '</td>';
-						}
-						?>
-					</tr>
-					<tr>
-						<td>Categories</td>
-						<td id="category-sync-success-count"><?php echo esc_html( $all_sync_stats->categories->synced ); ?></td>
-						<td id="category-sync-total-count"><?php echo esc_html( $all_sync_stats->categories->total ); ?></td>
-						<?php
-						if ( $all_sync_stats->categories->not_synced > 0 ) {
-							echo '<td id="category-sync-pending-count" class="omnisend-warn">' . esc_html( $all_sync_stats->categories->not_synced ) . '</td>';
+					}
+					?>
+					<?php
+					if ( $show_skipped ) {
+						echo '<td id="order-sync-skipped-count">' . esc_html( $all_sync_stats->orders->skipped ) . '</td>';
+					}
+					?>
+				</tr>
+				<tr>
+					<td>Products</td>
+					<td id="product-sync-success-count"><?php echo esc_html( $all_sync_stats->products->synced ); ?></td>
+					<td id="product-sync-total-count"><?php echo esc_html( $all_sync_stats->products->total ); ?></td>
+					<?php
+					if ( $all_sync_stats->products->not_synced > 0 ) {
+						echo '<td id="product-sync-pending-count" class="omnisend-warn">' . esc_html( $all_sync_stats->products->not_synced ) . '</td>';
+					} else {
+						echo '<td id="product-sync-pending-count">' . esc_html( $all_sync_stats->products->not_synced ) . '</td>';
+					}
+					?>
+					<?php
+					if ( $show_error ) {
+						if ( $all_sync_stats->products->error > 0 ) {
+							echo '<td id="product-sync-error-count" class="omnisend-warn">' . esc_html( $all_sync_stats->products->error ) . '</td>';
 						} else {
-							echo '<td id="category-sync-pending-count">' . esc_html( $all_sync_stats->categories->not_synced ) . '</td>';
+							echo '<td id="product-sync-error-count">' . esc_html( $all_sync_stats->products->error ) . '</td>';
 						}
-						?>
-						<?php
-						if ( $show_error ) {
-							if ( $all_sync_stats->categories->error > 0 ) {
-								echo '<td id="category-sync-error-count" class="omnisend-warn">' . esc_html( $all_sync_stats->categories->error ) . '</td>';
-							} else {
-								echo '<td id="category-sync-error-count">' . esc_html( $all_sync_stats->categories->error ) . '</td>';
-							}
+					}
+					?>
+					<?php
+					if ( $show_skipped ) {
+						echo '<td id="product-sync-skipped-count">' . esc_html( $all_sync_stats->products->skipped ) . '</td>';
+					}
+					?>
+				</tr>
+				<tr>
+					<td>Categories</td>
+					<td id="category-sync-success-count"><?php echo esc_html( $all_sync_stats->categories->synced ); ?></td>
+					<td id="category-sync-total-count"><?php echo esc_html( $all_sync_stats->categories->total ); ?></td>
+					<?php
+					if ( $all_sync_stats->categories->not_synced > 0 ) {
+						echo '<td id="category-sync-pending-count" class="omnisend-warn">' . esc_html( $all_sync_stats->categories->not_synced ) . '</td>';
+					} else {
+						echo '<td id="category-sync-pending-count">' . esc_html( $all_sync_stats->categories->not_synced ) . '</td>';
+					}
+					?>
+					<?php
+					if ( $show_error ) {
+						if ( $all_sync_stats->categories->error > 0 ) {
+							echo '<td id="category-sync-error-count" class="omnisend-warn">' . esc_html( $all_sync_stats->categories->error ) . '</td>';
+						} else {
+							echo '<td id="category-sync-error-count">' . esc_html( $all_sync_stats->categories->error ) . '</td>';
 						}
-						?>
-						<?php
-						if ( $show_skipped ) {
-							echo '<td id="category-sync-skipped-count">' . esc_html( $all_sync_stats->categories->skipped ) . '</td>';
-						}
-						?>
-					</tr>
-				</table>
+					}
+					?>
+					<?php
+					if ( $show_skipped ) {
+						echo '<td id="category-sync-skipped-count">' . esc_html( $all_sync_stats->categories->skipped ) . '</td>';
+					}
+					?>
+				</tr>
+					</table>
+				</div>
+				<?php
+				omnisend_display_sync_loader();
+				omnisend_display_sync_actions( $all_sync_stats );
+				?>
 			</div>
-		<?php
-		omnisend_display_sync_loader();
-		omnisend_display_sync_actions( $all_sync_stats );
-		omnisend_display_resync_all_contacts();
-		?>
+				<?php
+				omnisend_display_resync_all_contacts();
+				?>
+			</div>
 		</div>
 	</div>
 	<?php
@@ -257,9 +264,11 @@ function omnisend_display_sync_actions( $all_sync_stats ) {
 		return;
 	}
 	?>
-	<div class="sync-actions">
-		<p>Resync store data from Pending, Error or Skipped columns.</p>
-		<div>
+	<div class="omnisend-sync-actions">
+		<div class="omnisend-content-body">
+			Resync store data from Pending, Error or Skipped columns.
+		</div>
+		<div class="omnisend-sync-actions-content">
 			<form method="post">
 				<?php wp_nonce_field( 'omnisend-sync-action' ); ?>
 				<input type="hidden" name="action" value="omnisend_init_resync"/>
@@ -275,12 +284,11 @@ function omnisend_display_resync_all_contacts() {
 		return;
 	}
 	?>
-	<div class="resync-contacts">
-		<h3 class="omnisend-content-lead strong setting-title">Resync all contacts</h3>
-		<p class="omnisend-content-body">
-			Resync all of your contacts with Omnisend.
-			The resync time depends on how many contacts you have.
-		</p>
+	<div class="omnisend-settings-card">
+		<h3>Resync all contacts</h3>
+		<div class="omnisend-content-body">
+			Resync all of your contacts with Omnisend. The resync time depends on how many contacts you have.
+		</div>
 		<form method="post">
 			<?php wp_nonce_field( 'omnisend-sync-action' ); ?>
 			<input type="hidden" name="action" value="omnisend_resync_all_contacts">

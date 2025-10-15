@@ -61,8 +61,8 @@ function userfeedback_admin_menu() {
 	// Post Ratings
 	add_submenu_page(
 		$menu_slug,
-		__( 'Post Ratings', 'userfeedback' ),
-		__( 'Post Ratings', 'userfeedback' ) . $new_indicator,
+		__( 'Post Ratings', 'userfeedback-lite' ),
+		__( 'Post Ratings', 'userfeedback-lite' ) . $new_indicator,
 		'manage_options',
 		'userfeedback_post_ratings',
 		'userfeedback_post_ratings_page'

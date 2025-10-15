@@ -2,11 +2,14 @@
 
 class UserFeedback_Survey_Template_Restaurant_Menu extends UserFeedback_Survey_Template {
 
-
 	/**
 	 * @inheritdoc
 	 */
 	protected $template_key = 'restaurant-menu';
+
+	protected $categories = array(
+		'ecommerce'
+	);
 
 	/**
 	 * @inheritdoc
@@ -24,7 +27,9 @@ class UserFeedback_Survey_Template_Restaurant_Menu extends UserFeedback_Survey_T
 	 * @inheritdoc
 	 */
 	public function get_description() {
-		return __( 'See which items to add to your menu.', 'userfeedback-lite' );
+		return array(
+			'title' => __( 'See which items to add to your menu.', 'userfeedback-lite' )
+		);
 	}
 
 	/**

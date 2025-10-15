@@ -447,6 +447,7 @@ class ExternalPages
         Mailer::send([
             'to'      => [
                 'email' => $subscriber->email,
+                'name'  => $subscriber->full_name
             ],
             'subject' => $emailSubject,
             'body'    => $emailBody
@@ -496,6 +497,7 @@ class ExternalPages
         Mailer::send([
             'to'      => [
                 'email' => $subscriber->email,
+                'name'  => $subscriber->full_name
             ],
             'subject' => $emailSubject,
             'body'    => $emailBody

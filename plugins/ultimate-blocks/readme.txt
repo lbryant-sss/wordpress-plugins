@@ -3,7 +3,7 @@ Contributors: dotcamp, ultimateblocks, imtiazrayhan, istiakrayhan, erdembircan, 
 Tags: blocks, gutenberg blocks, gutenberg, block editor, free
 Requires at least: 5.8
 Tested up to: 6.8
-Stable tag: 3.4.2
+Stable tag: 3.4.3
 Requires PHP: 7.2
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
@@ -149,6 +149,14 @@ That's it. You're done!
 3. Tabbed Content Block.
 
 == Changelog ==
+
+= 3.4.3 =
+
+* NEW: Add Item per view option for Mobile and Tablet in the Horizontal view in timeline block.
+* NEW: Core details block can be converted into content toggle block.
+* NEW: Image block can be converted from core image block.
+* IMPROVE: Icon paste style now can paste it on multiple icon blocks.
+* FIX: Hide font family option if font families not found.
 
 = 3.4.2 =
 

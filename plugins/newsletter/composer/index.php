@@ -55,9 +55,12 @@ $rev_dir = is_rtl() ? 'ltr' : 'rlt';
 
 <div id="tnp-builder" dir="ltr">
 
-    <?php $this->hidden('message'); ?>
+    <?php $this->hidden_encoded('message'); ?>
     <?php $this->hidden('updated'); ?>
-    <input type="hidden" name="tnp_fields[message]" value="encoded">
+
+    <?php $this->hidden('sender_email'); ?>
+    <?php $this->hidden('sender_name'); ?>
+    <?php $this->hidden('track'); ?>
 
     <div id="tnpb-main">
 
