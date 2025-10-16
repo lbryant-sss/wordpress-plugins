@@ -2,7 +2,7 @@
 /**
  * GOTMLS Plugin Global Variables and Functions
  * @package GOTMLS
- * @since 4.23.81
+ * @since 4.23.83
 */
 
 define("GOTMLS_plugin_path", dirname(dirname(__FILE__))."/");
@@ -38,7 +38,7 @@ $GLOBALS["GOTMLS"] = array(
 		"mt" => ((isset($_REQUEST["mt"])&&GOTMLS_strlen($_REQUEST["mt"])==32)?$_REQUEST["mt"]:md5(microtime(true))), 
 		"threat_files" => array("htaccess"=>".htaccess","timthumb"=>"thumb.php"), 
 		"apache" => array(),
-		"skip_ext"=>array("png", "jpg", "jpeg", "gif", "bmp", "tif", "tiff", "psd", "svg", "webp", "doc", "docx", "otf", "ttf", "fla", "flv", "mov", "mp3", "pdf", "css", "pot", "po", "mo", "so", "exe", "zip", "7z", "gz", "rar"),
+		"skip_ext"=>array("png", "jpg", "jpeg", "gif", "bmp", "tif", "tiff", "psd", "svg", "webp", "doc", "docx", "otf", "ttf", "fla", "flv", "mov", "mp3", "mp4", "pptx", "ppsx", "pdf", "css", "pot", "po", "mo", "so", "exe", "zip", "7z", "gz", "rar"),
 		"execution_time" => 60,
 		"default" => array("msg_position" => array("80px", "40px", "400px", "600px")),
 		"Definition" => array("Default" => "CCIGG"),
@@ -72,9 +72,9 @@ else
 GOTMLS_define("GOTMLS_script_URI", preg_replace('/\&(last_)?mt=[0-9\.a-f]+/i', '', str_replace('&amp;', '&', GOTMLS_htmlspecialchars($_SERVER["REQUEST_URI"], ENT_QUOTES))).'&mt='.$GLOBALS["GOTMLS"]["tmp"]["mt"]);
 GOTMLS_define("GOTMLS_plugin_home", "https://gotmls.net/");
 if (function_exists("plugins_url"))
-	GOTMLS_define("GOTMLS_images_path", plugins_url('/', __FILE__));
+	GOTMLS_define("GOTMLS_images_path", GOTMLS_fix_url(plugins_url('/', __FILE__)));
 elseif (function_exists("plugin_dir_url"))
-	GOTMLS_define("GOTMLS_images_path", plugin_dir_url(__FILE__));
+	GOTMLS_define("GOTMLS_images_path", GOTMLS_fix_url(plugin_dir_url(__FILE__)));
 elseif (isset($_SERVER["DOCUMENT_ROOT"]) && ($_SERVER["DOCUMENT_ROOT"]) && GOTMLS_strlen($_SERVER["DOCUMENT_ROOT"]) < __FILE__ && substr(__FILE__, 0, GOTMLS_strlen($_SERVER["DOCUMENT_ROOT"])) == $_SERVER["DOCUMENT_ROOT"])
 	GOTMLS_define("GOTMLS_images_path", substr(dirname(__FILE__), GOTMLS_strlen($_SERVER["DOCUMENT_ROOT"])).'/');
 elseif (isset($_SERVER["SCRIPT_FILENAME"]) && isset($_SERVER["DOCUMENT_ROOT"]) && ($_SERVER["DOCUMENT_ROOT"]) && GOTMLS_strlen($_SERVER["DOCUMENT_ROOT"]) < GOTMLS_strlen($_SERVER["SCRIPT_FILENAME"]) && substr($_SERVER["SCRIPT_FILENAME"], 0, GOTMLS_strlen($_SERVER["DOCUMENT_ROOT"])) == $_SERVER["DOCUMENT_ROOT"])
@@ -126,6 +126,13 @@ function GOTMLS_get_corefile_URL($path, $hash) {
 
 function GOTMLS_Invalid_Nonce($pre = "//Error: ") {
 	return sprintf(__("%s Invalid or expired Nonce Token! %s Refresh and try again?",'gotmls'), $pre, (isset($_REQUEST["GOTMLS_mt"])?(" (".GOTMLS_htmlspecialchars($_REQUEST["GOTMLS_mt"]).((GOTMLS_strlen($_REQUEST["GOTMLS_mt"]) == 32)?(isset($GLOBALS["GOTMLS"]["tmp"]["nonce"][$_REQUEST["GOTMLS_mt"]]["hour"])&&isset($GLOBALS["GOTMLS"]["tmp"]["nonce"][$_REQUEST["GOTMLS_mt"]]["user"])?(substr($pre, 0, 7)=="//DEBUG"?GOTMLS_htmlspecialchars(", U:".$GLOBALS["GOTMLS"]["tmp"]["nonce"][$_REQUEST["GOTMLS_mt"]]["user"].", H:".$GLOBALS["GOTMLS"]["tmp"]["nonce"][$_REQUEST["GOTMLS_mt"]]["hour"]."!) "):" !UH!) "):" !found!) "):" !len[".GOTMLS_strlen($_REQUEST["GOTMLS_mt"])."]!) ")):" (GOTMLS_mt !set!) "));
+}
+
+function GOTMLS_kill_invalid_user($pre = "\n//Permission Error: ") {
+	if ($return = GOTMLS_user_can())
+		return $return;
+	else
+		die(sprintf(__("%s Invalid User Authentication!",'gotmls'), $pre));
 }
 
 function GOTMLS_set_nonce($context = "NULL", $uid = 0) {
@@ -221,12 +228,16 @@ function GOTMLS_esc_url($url) {
 	return $url;
 }
 
+function GOTMLS_fix_url($url) {
+	return preg_replace('/^https?:\/\//i', '//', "$url");
+}
+
 function GOTMLS_admin_url($action, $url = '') {
 	$return = admin_url("admin-ajax.php?action=$action");
 	foreach (array('eli', 'oversize', 'GOTMLS_debug') as $pass_on)
 		if (isset($_GET["$pass_on"]))
 			$return .= "&$pass_on=".GOTMLS_esc_url($_GET["$pass_on"]);
-	return ("$return&$url");
+	return GOTMLS_fix_url("$return&$url");
 }
 
 function GOTMLS_dashicon_button($title, $dashicon = "editor-help", $style = 'text-decoration: none;', $contents = "", $href = "javascript:void(0);") {

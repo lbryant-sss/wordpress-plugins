@@ -1,6 +1,7 @@
 <?php
 
 use KokoAnalytics\Endpoint_Installer;
+use KokoAnalytics\Router;
 
  defined('ABSPATH') or exit;
 /**
@@ -13,7 +14,7 @@ use KokoAnalytics\Endpoint_Installer;
  * @var array $date_presets
  */
 $tab          = 'settings';
-$public_dashboard_url = add_query_arg(['koko-analytics-dashboard' => 1], home_url());
+$public_dashboard_url = Router::url('dashboard-standalone');
 ?>
 <div class="wrap koko-analytics" id="koko-analytics-admin">
     <div class="ka-dashboard-nav">
@@ -237,6 +238,7 @@ $public_dashboard_url = add_query_arg(['koko-analytics-dashboard' => 1], home_ur
 
                 <ul class="ul-square">
                     <li><a href="<?php echo esc_attr(add_query_arg(['tab' => 'jetpack_importer'])); ?>"><?php esc_html_e('Import from Jetpack Stats', 'koko-analytics'); ?></a></li>
+                    <li><a href="<?php echo esc_attr(add_query_arg(['tab' => 'plausible_importer'])); ?>"><?php esc_html_e('Import from Plausible', 'koko-analytics'); ?></a></li>
                 </ul>
             </div>
 
@@ -261,10 +263,10 @@ $public_dashboard_url = add_query_arg(['koko-analytics-dashboard' => 1], home_ur
                     $posts = json_decode($body) ?? [];
                 } else {
                     // store empty array to prevent doing an HTTP request on every page load
-                    // we'll try again in 8 hours
+                    // we'll try again in 24 hours
                     $posts = [];
                 }
-                set_transient('koko_analytics_remote_posts', $posts, HOUR_IN_SECONDS * 8);
+                set_transient('koko_analytics_remote_posts', $posts, HOUR_IN_SECONDS * 24);
             }
 
             if (count($posts) > 0) { ?>
@@ -282,5 +284,5 @@ $public_dashboard_url = add_query_arg(['koko-analytics-dashboard' => 1], home_ur
 </div>
 
 <?php if (isset($_GET['notice'])) { ?>
-<script>history.replaceState({}, null, '<?= admin_url('index.php?page=koko-analytics&tab=settings'); ?>');</script>
+<script>history.replaceState({}, null, "<?= Router::url('settings-page'); ?>");</script>
 <?php } ?>

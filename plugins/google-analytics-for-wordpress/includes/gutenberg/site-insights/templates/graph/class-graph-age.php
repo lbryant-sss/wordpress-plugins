@@ -11,6 +11,11 @@ class MonsterInsights_SiteInsights_Template_Graph_Age extends MonsterInsights_Si
 	protected $type = 'graph';
 
 	public function output(){
+		// If we're in AMP, return AMP-compatible output
+		if ( $this->is_amp() ) {
+			return $this->get_amp_output();
+		}
+
 		$json_data = $this->get_json_data();
 
 		if (empty($json_data)) {
@@ -20,6 +25,43 @@ class MonsterInsights_SiteInsights_Template_Graph_Age extends MonsterInsights_Si
 		return "<div class='monsterinsights-graph-item monsterinsights-graph-{$this->metric}'>
 			<script type='application/json'>{$json_data}</script>
 		</div>";
+	}
+
+	/**
+	 * Get AMP-compatible output for age breakdown
+	 *
+	 * @return string
+	 */
+	protected function get_amp_output() {
+		if (empty($this->data['age'])) {
+			return false;
+		}
+
+		$data = $this->data['age'];
+		$title = __( 'Age Breakdown', 'google-analytics-for-wordpress' );
+
+		$html = "<div class='monsterinsights-amp-graph-item monsterinsights-amp-age-chart monsterinsights-amp-graph-{$this->metric}'>";
+		$html .= "<div class='monsterinsights-amp-chart-title'>{$title}</div>";
+		$html .= "<div class='monsterinsights-amp-age-container'>";
+		
+		foreach ($data as $age_data) {
+			$age = $age_data['age'];
+			$sessions = $age_data['sessions'];
+			$percent = $age_data['percent'];
+			
+			$html .= "<div class='monsterinsights-amp-age-item'>";
+			$html .= "<div class='monsterinsights-amp-age-label'>{$age}</div>";
+			$html .= "<div class='monsterinsights-amp-age-bar'>";
+			$html .= "<div class='monsterinsights-amp-age-fill' style='width: {$percent}%;'></div>";
+			$html .= "</div>";
+			$html .= "<div class='monsterinsights-amp-age-value'>{$sessions} ({$percent}%)</div>";
+			$html .= "</div>";
+		}
+		
+		$html .= "</div>"; // Close age-container
+		$html .= "</div>"; // Close graph-item
+
+		return $html;
 	}
 
 	protected function get_options() {

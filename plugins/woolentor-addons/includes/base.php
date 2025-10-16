@@ -478,6 +478,9 @@ final class Base {
             require_once( WOOLENTOR_ADDONS_PL_PATH.'classes/class.third_party.php' );
         }
 
+        // Product Query Manager
+        require_once( WOOLENTOR_ADDONS_PL_PATH . 'classes/class.woocommerce_query_manager.php' );
+
         // Page Action
         require_once( WOOLENTOR_ADDONS_PL_PATH. 'classes/class.page_action.php' );
 

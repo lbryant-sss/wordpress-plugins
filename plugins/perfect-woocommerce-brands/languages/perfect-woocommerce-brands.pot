@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Perfect Brands WooCommerce 3.6.2\n"
+"Project-Id-Version: Perfect Brands WooCommerce 3.6.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/perfect-woocommerce-brands\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-09-24T15:24:01+00:00\n"
+"POT-Creation-Date: 2025-10-15T15:10:30+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: perfect-woocommerce-brands\n"
@@ -53,8 +53,8 @@ msgstr ""
 #: lib/admin/class-admin-tab.php:308
 #: lib/admin/class-admin-tab.php:451
 #: lib/admin/class-edit-brands-page.php:153
-#: lib/class-woocommerce.php:761
-#: lib/class-woocommerce.php:763
+#: lib/class-woocommerce.php:777
+#: lib/class-woocommerce.php:779
 #: lib/widgets/class-brands-dropdown.php:20
 #: lib/widgets/class-brands-list.php:20
 #: lib/widgets/class-filter-by-brand.php:22
@@ -65,7 +65,7 @@ msgstr ""
 
 #: lib/admin/class-admin-tab.php:29
 #: lib/admin/class-admin-tab.php:255
-#: lib/class-woocommerce.php:387
+#: lib/class-woocommerce.php:403
 msgid "Products"
 msgstr ""
 
@@ -401,9 +401,9 @@ msgid "Your brands URLs will look like \"%s\""
 msgstr ""
 
 #: lib/admin/class-admin-tab.php:407
-#: lib/class-woocommerce.php:475
-#: lib/class-woocommerce.php:503
-#: lib/class-woocommerce.php:596
+#: lib/class-woocommerce.php:491
+#: lib/class-woocommerce.php:519
+#: lib/class-woocommerce.php:612
 msgid "Brand logo size"
 msgstr ""
 
@@ -543,9 +543,9 @@ msgstr ""
 #: lib/admin/class-importer-support.php:33
 #: lib/class-product.php:23
 #: lib/class-product.php:46
-#: lib/class-woocommerce.php:379
-#: lib/class-woocommerce.php:622
-#: lib/class-woocommerce.php:762
+#: lib/class-woocommerce.php:395
+#: lib/class-woocommerce.php:638
+#: lib/class-woocommerce.php:778
 msgid "Brand"
 msgid_plural "Brands"
 msgstr[0] ""
@@ -571,242 +571,242 @@ msgstr ""
 msgid "Only WP_Term objects are allowed"
 msgstr ""
 
-#: lib/class-woocommerce.php:370
+#: lib/class-woocommerce.php:386
 msgid "PWB Product carousel"
 msgstr ""
 
-#: lib/class-woocommerce.php:371
+#: lib/class-woocommerce.php:387
 msgid "Product carousel by brand or by category"
 msgstr ""
 
-#: lib/class-woocommerce.php:390
+#: lib/class-woocommerce.php:406
 msgid "Number of products to load"
 msgstr ""
 
-#: lib/class-woocommerce.php:395
+#: lib/class-woocommerce.php:411
 msgid "Products to show"
 msgstr ""
 
-#: lib/class-woocommerce.php:398
+#: lib/class-woocommerce.php:414
 msgid "Number of products to show"
 msgstr ""
 
-#: lib/class-woocommerce.php:403
+#: lib/class-woocommerce.php:419
 msgid "Products to scroll"
 msgstr ""
 
-#: lib/class-woocommerce.php:406
+#: lib/class-woocommerce.php:422
 msgid "Number of products to scroll"
 msgstr ""
 
-#: lib/class-woocommerce.php:411
-#: lib/class-woocommerce.php:462
+#: lib/class-woocommerce.php:427
+#: lib/class-woocommerce.php:478
 msgid "Autoplay"
 msgstr ""
 
-#: lib/class-woocommerce.php:413
-#: lib/class-woocommerce.php:464
+#: lib/class-woocommerce.php:429
+#: lib/class-woocommerce.php:480
 msgid "Autoplay carousel"
 msgstr ""
 
-#: lib/class-woocommerce.php:418
-#: lib/class-woocommerce.php:469
+#: lib/class-woocommerce.php:434
+#: lib/class-woocommerce.php:485
 msgid "Arrows"
 msgstr ""
 
-#: lib/class-woocommerce.php:420
-#: lib/class-woocommerce.php:471
+#: lib/class-woocommerce.php:436
+#: lib/class-woocommerce.php:487
 msgid "Display prev and next arrows"
 msgstr ""
 
-#: lib/class-woocommerce.php:428
+#: lib/class-woocommerce.php:444
 msgid "PWB Brands carousel"
 msgstr ""
 
-#: lib/class-woocommerce.php:429
+#: lib/class-woocommerce.php:445
 msgid "Brands carousel"
 msgstr ""
 
-#: lib/class-woocommerce.php:438
+#: lib/class-woocommerce.php:454
 msgid "Items"
 msgstr ""
 
-#: lib/class-woocommerce.php:441
+#: lib/class-woocommerce.php:457
 msgid "Number of items to load (or 'featured')"
 msgstr ""
 
-#: lib/class-woocommerce.php:446
+#: lib/class-woocommerce.php:462
 msgid "Items to show"
 msgstr ""
 
-#: lib/class-woocommerce.php:449
+#: lib/class-woocommerce.php:465
 msgid "Number of items to show"
 msgstr ""
 
-#: lib/class-woocommerce.php:454
+#: lib/class-woocommerce.php:470
 msgid "Items to scroll"
 msgstr ""
 
-#: lib/class-woocommerce.php:457
+#: lib/class-woocommerce.php:473
 msgid "Number of items to scroll"
 msgstr ""
 
-#: lib/class-woocommerce.php:486
+#: lib/class-woocommerce.php:502
 msgid "PWB All brands"
 msgstr ""
 
-#: lib/class-woocommerce.php:487
+#: lib/class-woocommerce.php:503
 msgid "Show all brands"
 msgstr ""
 
-#: lib/class-woocommerce.php:496
+#: lib/class-woocommerce.php:512
 msgid "Brands per page"
 msgstr ""
 
-#: lib/class-woocommerce.php:499
+#: lib/class-woocommerce.php:515
 msgid "Show x brands per page"
 msgstr ""
 
-#: lib/class-woocommerce.php:510
+#: lib/class-woocommerce.php:526
 msgid "Order by"
 msgstr ""
 
-#: lib/class-woocommerce.php:524
+#: lib/class-woocommerce.php:540
 msgid "Order"
 msgstr ""
 
-#: lib/class-woocommerce.php:534
+#: lib/class-woocommerce.php:550
 msgid "Title position"
 msgstr ""
 
-#: lib/class-woocommerce.php:538
+#: lib/class-woocommerce.php:554
 msgid "Before image"
 msgstr ""
 
-#: lib/class-woocommerce.php:539
+#: lib/class-woocommerce.php:555
 msgid "After image"
 msgstr ""
 
-#: lib/class-woocommerce.php:540
+#: lib/class-woocommerce.php:556
 msgid "Hide"
 msgstr ""
 
-#: lib/class-woocommerce.php:546
+#: lib/class-woocommerce.php:562
 #: lib/widgets/class-brands-dropdown.php:49
 #: lib/widgets/class-brands-list.php:78
 msgid "Hide empty"
 msgstr ""
 
-#: lib/class-woocommerce.php:548
+#: lib/class-woocommerce.php:564
 msgid "Hide brands that have not been assigned to any product"
 msgstr ""
 
-#: lib/class-woocommerce.php:556
+#: lib/class-woocommerce.php:572
 msgid "PWB AZ Listing"
 msgstr ""
 
-#: lib/class-woocommerce.php:557
+#: lib/class-woocommerce.php:573
 msgid "AZ Listing for brands"
 msgstr ""
 
-#: lib/class-woocommerce.php:565
+#: lib/class-woocommerce.php:581
 msgid "Only parent brands"
 msgstr ""
 
-#: lib/class-woocommerce.php:579
+#: lib/class-woocommerce.php:595
 msgid "PWB brand"
 msgstr ""
 
-#: lib/class-woocommerce.php:580
+#: lib/class-woocommerce.php:596
 msgid "Show brand for a specific product"
 msgstr ""
 
-#: lib/class-woocommerce.php:589
+#: lib/class-woocommerce.php:605
 msgid "Product id"
 msgstr ""
 
-#: lib/class-woocommerce.php:592
+#: lib/class-woocommerce.php:608
 msgid "Product id (post id)"
 msgstr ""
 
-#: lib/class-woocommerce.php:649
+#: lib/class-woocommerce.php:665
 #: templates/shortcodes/brand.php:18
 msgid "View brand"
 msgstr ""
 
-#: lib/class-woocommerce.php:740
+#: lib/class-woocommerce.php:756
 msgid "¿Start migration?"
 msgstr ""
 
-#: lib/class-woocommerce.php:741
+#: lib/class-woocommerce.php:757
 msgid "We are migrating the product brands. ¡Don´t close this window until the process is finished!"
 msgstr ""
 
-#: lib/class-woocommerce.php:742
+#: lib/class-woocommerce.php:758
 msgid "¿Start loading dummy data?"
 msgstr ""
 
-#: lib/class-woocommerce.php:743
+#: lib/class-woocommerce.php:759
 msgid "We are importing the dummy data. ¡Don´t close this window until the process is finished!"
 msgstr ""
 
-#: lib/class-woocommerce.php:764
+#: lib/class-woocommerce.php:780
 msgid "All Brands"
 msgstr ""
 
-#: lib/class-woocommerce.php:765
+#: lib/class-woocommerce.php:781
 msgid "Edit Brand"
 msgstr ""
 
-#: lib/class-woocommerce.php:766
+#: lib/class-woocommerce.php:782
 msgid "View Brand"
 msgstr ""
 
-#: lib/class-woocommerce.php:767
+#: lib/class-woocommerce.php:783
 msgid "Update Brand"
 msgstr ""
 
-#: lib/class-woocommerce.php:768
+#: lib/class-woocommerce.php:784
 msgid "Add New Brand"
 msgstr ""
 
-#: lib/class-woocommerce.php:769
+#: lib/class-woocommerce.php:785
 msgid "New Brand Name"
 msgstr ""
 
-#: lib/class-woocommerce.php:770
+#: lib/class-woocommerce.php:786
 msgid "Parent Brand"
 msgstr ""
 
-#: lib/class-woocommerce.php:771
+#: lib/class-woocommerce.php:787
 msgid "Parent Brand:"
 msgstr ""
 
-#: lib/class-woocommerce.php:772
+#: lib/class-woocommerce.php:788
 msgid "Search Brands"
 msgstr ""
 
-#: lib/class-woocommerce.php:773
+#: lib/class-woocommerce.php:789
 msgid "Popular Brands"
 msgstr ""
 
-#: lib/class-woocommerce.php:774
+#: lib/class-woocommerce.php:790
 msgid "Separate brands with commas"
 msgstr ""
 
-#: lib/class-woocommerce.php:775
+#: lib/class-woocommerce.php:791
 msgid "Add or remove brands"
 msgstr ""
 
-#: lib/class-woocommerce.php:776
+#: lib/class-woocommerce.php:792
 msgid "Choose from the most used brands"
 msgstr ""
 
-#: lib/class-woocommerce.php:777
+#: lib/class-woocommerce.php:793
 msgid "No brands found"
 msgstr ""
 
-#: lib/class-woocommerce.php:866
+#: lib/class-woocommerce.php:882
 msgid "All"
 msgstr ""
 

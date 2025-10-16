@@ -51,12 +51,17 @@ class Element {
 	 * Setup Hooks
 	 */
 	private function setup_hook() {
+		add_action( 'elementor/init', array( $this, 'register_pro_options' ) );
 		add_filter( 'jeg_register_elements', array( $this, 'register_element' ) );
+		add_filter( 'elementor/widgets/register', array( $this, 'register_element_pro' ), 99 );
 		add_action( 'elementor/element/common/_section_style/after_section_end', array( $this, 'add_widget_options' ), 10 );
 		add_action( 'elementor/element/column/section_advanced/after_section_end', array( $this, 'add_column_options' ), 10, 2 );
 		add_action( 'elementor/element/section/section_advanced/after_section_end', array( $this, 'add_section_options' ), 10, 2 );
 		add_action( 'elementor/element/container/section_layout/after_section_end', array( $this, 'add_container_options' ), 10, 2 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 99 );
+		add_action( 'elementor/elements/categories_registered', array( $this, 'register_categories' ), 99 );
+		add_filter( 'elementor/editor/localize_settings', array( $this, 'scripts_localize_settings' ) );
+		add_action( 'elementor/editor/templates/panel/category', array( $this, 'pro_promotion_link' ), 99 );
 	}
 
 	/**
@@ -96,6 +101,151 @@ class Element {
 		}
 
 		return $elements;
+	}
+
+	/**
+	 * Register all pro elements
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param \Elementor\Widgets_Manager $manager Elementor widgets manager.
+	 */
+	public function register_element_pro( $manager ) {
+		foreach ( $this->list_pro_elements() as $item => $data ) {
+			$item_key = 'jkit_pro_' . strtolower( $item );
+
+			$manager->register(
+				new Element_Pro(
+					array(),
+					array(
+						'widget_name'  => $item_key,
+						'widget_title' => $data['title'],
+						// 'widget_category' => array( 'jkit-pro-elements' ),
+					)
+				)
+			);
+		}
+	}
+
+	/**
+	 * Register Pro Options
+	 *
+	 * @since 3.0.0
+	 */
+	public function register_pro_options() {
+		foreach ( $this->list_pro_options() as $item => $data ) {
+			$item_key = 'jkit_pro_' . strtolower( $item );
+			foreach ( $data['hooks'] as $hook ) {
+				add_action(
+					$hook,
+					/**
+					 * Register control
+					 *
+					 * @param $element \Elementor\Widget_Common|\Elementor\Element_Column|\Elementor\Element_Section Elementor element.
+					 * @param $args array Arguments.
+					 */
+					function ( $element, $args ) use ( $item_key, $data ) {
+						$current_class = get_class( $element );
+
+						if ( isset( $data['show_locations'] ) ) {
+							$show_location = $data['show_locations'];
+							$current_class = str_replace( 'Elementor\\', '', $current_class );
+
+							if ( ! in_array( $current_class, $show_location, true ) ) {
+								return;
+							}
+						}
+
+						foreach ( $data['segment'] as $id => $segment ) {
+							$section = array(
+								'label'     => $segment['name'],
+								'tab'       => Controls_Manager::TAB_ADVANCED,
+								'condition' => isset( $segment['dependency'] ) ? $this->parse_dependency_option( $segment['dependency'] ) : '',
+							);
+							$element->start_controls_section( $item_key . '_segment', $section );
+							$element->add_control(
+								$item_key . 'pro_banner',
+								array(
+									'type' => Controls_Manager::RAW_HTML,
+									'raw'  => pro_banner_template(),
+								)
+							);
+							$element->end_controls_section();
+						}
+					},
+					10,
+					2
+				);
+			}
+		}
+	}
+
+	/**
+	 * Register categories for pro elements
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param \Elementor\Elements_Manager $elements_manager Elementor elements manager.
+	 */
+	public function register_categories( $elements_manager ) {
+		$elements_manager->add_category(
+			'jeg-elementor-kit',
+			array(
+				'title' => esc_html__( 'Jeg Kit', 'jeg-elementor-kit' ),
+				'icon'  => 'jkit-icon-pro',
+			)
+		);
+		$elements_manager->add_category(
+			'jkit-pro-elements',
+			array(
+				'title'     => esc_html__( 'Jeg Kit Pro', 'jeg-elementor-kit' ),
+				'icon'      => 'jkit-icon-pro',
+				'active'    => false,
+				'promotion' => array(
+					'url' => esc_url( JEG_ELEMENT_SERVER_URL ),
+				),
+			)
+		);
+		$elements_manager->add_category(
+			'jeg-elementor-kit-single-post',
+			array(
+				'title' => esc_html__( 'Jeg Kit - Single Post', 'jeg-elementor-kit' ),
+				'icon'  => 'jkit-icon-pro',
+			)
+		);
+		$elements_manager->add_category(
+			'jkit-pro-archive-elements',
+			array(
+				'title'     => esc_html__( 'Jeg Kit Pro - Archive', 'jeg-elementor-kit' ),
+				'icon'      => 'jkit-icon-pro',
+				'active'    => false,
+				'promotion' => array(
+					'url' => esc_url( JEG_ELEMENT_SERVER_URL ),
+				),
+			)
+		);
+		$elements_manager->add_category(
+			'jkit-pro-woocommerce-elements',
+			array(
+				'title'     => esc_html__( 'Jeg Kit Pro - WooCommerce', 'jeg-elementor-kit' ),
+				'icon'      => 'jkit-icon-pro',
+				'active'    => false,
+				'promotion' => array(
+					'url' => esc_url( JEG_ELEMENT_SERVER_URL ),
+				),
+			)
+		);
+		$elements_manager->add_category(
+			'jkit-pro-woocommerce-single-product-elements',
+			array(
+				'title'     => esc_html__( 'Jeg Kit Pro - Single Product', 'jeg-elementor-kit' ),
+				'icon'      => 'jkit-icon-pro',
+				'active'    => false,
+				'promotion' => array(
+					'url' => esc_url( JEG_ELEMENT_SERVER_URL ),
+				),
+			)
+		);
 	}
 
 	/**
@@ -158,6 +308,335 @@ class Element {
 	}
 
 	/**
+	 * List of Pro Elements
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+	public function list_pro_elements() {
+		$default = array(
+			'Hotspot',
+			'Timeline',
+			'Back_To_Top',
+			'Text_Background',
+			'Text_Marquee',
+			'Horizontal_Accordion',
+			'Charts',
+		);
+
+		$archive_elements = array(
+			'Archive_Title',
+			'Archive_Description',
+		);
+
+		foreach ( $default as $key => $value ) {
+			$name              = strtolower( $value );
+			$default[ $value ] = array(
+				'name'       => strtolower( $value ),
+				'title'      => str_replace( '_', ' ', $value ),
+				'icon'       => 'jkit_pro_' . $name,
+				'categories' => json_encode( array( 'jkit-pro-elements' ) ),
+			);
+
+			unset( $default[ $key ] );
+		}
+
+		foreach ( $archive_elements as $key => $value ) {
+			$name              = strtolower( $value );
+			$default[ $value ] = array(
+				'name'       => strtolower( $value ),
+				'title'      => str_replace( '_', ' ', $value ),
+				'icon'       => 'jkit_pro_' . $name,
+				'categories' => json_encode( array( 'jkit-pro-archive-elements' ) ),
+			);
+		}
+
+		if ( class_exists( 'WooCommerce' ) ) {
+			$woo_elements = array(
+				'Product_Custom_Add_To_Cart',
+				'Woocommerce_Cart_Page',
+				'Woocommerce_Checkout_Page',
+				'Woocommerce_Account_Page',
+				'Woocommerce_Menu_Cart',
+			);
+
+			$woo_single_elements = array(
+				'Product_Single_Title',
+				'Product_Single_Breadcrumb',
+				'Product_Single_Images',
+				'Product_Single_Price',
+				'Product_Single_Rating',
+				'Product_Single_Description',
+				'Product_Single_Content',
+				'Product_Single_Related',
+				'Product_Single_Add_To_Cart',
+				'Product_Single_Stock',
+				'Product_Single_Additional_Information',
+				'Product_Single_Meta',
+				'Product_Single_Data_Tabs',
+			);
+
+			foreach ( $woo_elements as $key => $value ) {
+				$name                   = strtolower( $value );
+				$woo_elements[ $value ] = array(
+					'name'       => $name,
+					'title'      => str_replace( '_', ' ', $value ),
+					'icon'       => 'jkit_pro_' . $name,
+					'categories' => json_encode( array( 'jkit-pro-woocommerce-elements' ) ),
+				);
+
+				unset( $woo_elements[ $key ] );
+			}
+
+			foreach ( $woo_single_elements as $key => $value ) {
+				$name                          = strtolower( $value );
+				$woo_single_elements[ $value ] = array(
+					'name'       => $name,
+					'title'      => str_replace( '_', ' ', $value ),
+					'icon'       => 'jkit_pro_' . $name,
+					'categories' => json_encode( array( 'jkit-pro-woocommerce-elements' ) ),
+				);
+
+				unset( $woo_single_elements[ $key ] );
+			}
+
+			$another_woo_elements = array(
+				'Product_Archive' => array(
+					'name'       => 'product_archive',
+					'title'      => 'Product Archive',
+					'icon'       => 'jkit_pro_product_archive',
+					'categories' => json_encode( array( 'jkit-pro-archive-elements' ) ),
+				)
+			);
+
+			$default = array_merge( $default, $woo_elements, $woo_single_elements, $another_woo_elements );
+		}
+
+		return apply_filters( 'jkit_list_pro_elements', $default );
+	}
+
+	/**
+	 * List of Pro Options
+	 *
+	 * @since 3.0.0
+	 *
+	 * @return array
+	 */
+	public function list_pro_options() {
+		$default = array(
+			'Custom_Cursor'             => array(
+				'hooks'          => array(
+					'elementor/element/container/section_layout/after_section_end',
+					'elementor/element/section/section_advanced/after_section_end',
+					'elementor/element/column/section_advanced/after_section_end',
+					'elementor/element/common/_section_style/after_section_end',
+					'elementor/element/wp-page/document_settings/after_section_end',
+				),
+				'show_locations' => array(
+					'Includes\Elements\Container',
+					'Element_Section',
+					'Element_Column',
+					'Widget_Common',
+					'Core\DocumentTypes\Page',
+				),
+				'segment'        => array(
+					'segment' => array(
+						'name'     => '<i class="jkit-pro-option-additional"></i> ' . esc_html__( 'Custom Cursor', 'jeg-elementor-kit' ),
+						'priority' => 10,
+					),
+				),
+			),
+			'Blend_Mode'                => array(
+				'hooks'          => array(
+					'elementor/element/container/section_layout/after_section_end',
+					'elementor/element/section/section_advanced/after_section_end',
+					'elementor/element/column/section_advanced/after_section_end',
+					'elementor/element/common/_section_style/after_section_end',
+				),
+				'show_locations' => array(
+					'Includes\Elements\Container',
+					'Element_Section',
+					'Element_Column',
+					'Widget_Common',
+				),
+				'segment'        => array(
+					'segment' => array(
+						'name'     => '<i class="jkit-pro-option-additional"></i> ' . esc_html__( 'Blend Mode', 'jeg-elementor-kit' ),
+						'priority' => 10,
+					),
+				),
+			),
+			'Smooth_Scroll'             => array(
+				'hooks'          => array(
+					'elementor/element/wp-page/document_settings/after_section_end',
+				),
+				'show_locations' => array(
+					'Core\DocumentTypes\Page',
+				),
+				'segment'        => array(
+					'segment' => array(
+						'name'     => '<i class="jkit-pro-option-additional"></i> ' . esc_html__( 'Smooth Scroll', 'jeg-elementor-kit' ),
+						'priority' => 10,
+					),
+				),
+			),
+			'Parallax_Effects'          => array(
+				'hooks'          => array(
+					'elementor/element/container/section_layout/after_section_end',
+					'elementor/element/section/section_advanced/after_section_end',
+					'elementor/element/column/section_advanced/after_section_end',
+					'elementor/element/common/_section_style/after_section_end',
+				),
+				'show_locations' => array(
+					'Includes\Elements\Container',
+					'Element_Section',
+					'Element_Column',
+					'Widget_Common',
+				),
+				'segment'        => array(
+					'segment' => array(
+						'name'     => '<i class="jkit-pro-option-additional"></i> ' . esc_html__( 'Parallax/Scrolling Effects', 'jeg-elementor-kit' ),
+						'priority' => 10,
+					),
+				),
+			),
+			'Mouse_Effects'             => array(
+				'hooks'          => array(
+					'elementor/element/container/section_layout/after_section_end',
+					'elementor/element/section/section_advanced/after_section_end',
+					'elementor/element/column/section_advanced/after_section_end',
+					'elementor/element/common/_section_style/after_section_end',
+				),
+				'show_locations' => array(
+					'Includes\Elements\Container',
+					'Element_Section',
+					'Element_Column',
+					'Widget_Common',
+				),
+				'segment'        => array(
+					'segment' => array(
+						'name'     => '<i class="jkit-pro-option-additional"></i> ' . esc_html__( 'Mouse Effects', 'jeg-elementor-kit' ),
+						'priority' => 10,
+					),
+				),
+			),
+			'Background_Motion_Effects' => array(
+				'hooks'          => array(
+					'elementor/element/container/section_layout/after_section_end',
+					'elementor/element/section/section_advanced/after_section_end',
+					'elementor/element/column/section_advanced/after_section_end',
+				),
+				'show_locations' => array(
+					'Includes\Elements\Container',
+					'Element_Section',
+					'Element_Column',
+				),
+				'segment'        => array(
+					'segment' => array(
+						'name'     => '<i class="jkit-pro-option-additional"></i> ' . esc_html__( 'Background Motion Effects', 'jeg-elementor-kit' ),
+						'priority' => 10,
+					),
+				),
+			),
+			'Background_Parallax'       => array(
+				'hooks'          => array(
+					'elementor/element/container/section_layout/after_section_end',
+					'elementor/element/section/section_advanced/after_section_end',
+					'elementor/element/column/section_advanced/after_section_end',
+				),
+				'show_locations' => array(
+					'Includes\Elements\Container',
+					'Element_Section',
+					'Element_Column',
+				),
+				'segment'        => array(
+					'segment' => array(
+						'name'     => '<i class="jkit-pro-option-additional"></i> ' . esc_html__( 'Parallax/Scrolling Effects', 'jeg-elementor-kit' ),
+						'priority' => 10,
+					)
+				),
+			),
+			'Background_Mouse_Effects'  => array(
+				'hooks'          => array(
+					'elementor/element/container/section_layout/after_section_end',
+					'elementor/element/section/section_advanced/after_section_end',
+					'elementor/element/column/section_advanced/after_section_end',
+				),
+				'show_locations' => array(
+					'Includes\Elements\Container',
+					'Element_Section',
+					'Element_Column',
+				),
+				'segment'        => array(
+					'segment' => array(
+						'name'     => '<i class="jkit-pro-option-additional"></i> ' . esc_html__( 'Background Mouse Effects', 'jeg-elementor-kit' ),
+						'priority' => 10,
+					)
+				),
+			),
+		);
+
+		return apply_filters( 'jkit_list_pro_options', $default );
+	}
+
+	/**
+	 * Localize editor settings.
+	 *
+	 * Filters the editor localized settings.
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param array $client_env  Editor configuration.
+	 * @param int   $post_id The ID of the current post being edited.
+	 */
+	public function scripts_localize_settings( $client_env ) {
+		if ( ! isset( $client_env['promotionWidgets'] ) ) {
+			$client_env['promotionWidgets'] = array();
+		}
+
+		// $client_env['jkit_elements'] = $this->list_elements();
+		$client_env['promotionWidgets'] = array_merge( $client_env['promotionWidgets'], $this->list_pro_elements() );
+
+		return $client_env;
+	}
+
+	/**
+	 * Pro Promotion Link
+	 */
+	public function pro_promotion_link() {
+		?>
+		<# if ( 'undefined' !==typeof name && name && name.includes('jkit-pro-') ) { #>
+			<span class="elementor-panel-heading-promotion jkit-pro-promotion">
+				<a href="{{{ promotion.url }}}" target="_blank">
+					<i class="eicon-upgrade-crown"></i><?php echo esc_html__( 'Upgrade', 'elementor' ); ?>
+				</a>
+			</span>
+			<# } #>
+				<?php
+	}
+
+	/**
+	 * Make dependency fit with elementor
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param  array $dependency Dependency.
+	 *
+	 * @return array
+	 */
+	public function parse_dependency_option( $dependency ) {
+		$dependencies = array();
+
+		foreach ( $dependency as $depend ) {
+			$value                            = true === $depend['value'] ? 'yes' : $depend['value'];
+			$dependencies[ $depend['field'] ] = $value;
+		}
+
+		return $dependencies;
+	}
+
+	/**
 	 * Add custom option to elementor widgets
 	 *
 	 * @param \Elementor\Element_Base $element The edited element.
@@ -188,7 +667,7 @@ class Element {
 				),
 				'selectors'   => array(
 					'{{WRAPPER}}:not(.e-transform)' . jkit_optimized_markup_class() => '-moz-transform: rotate({{SIZE}}deg); -webkit-transform: rotate({{SIZE}}deg); -o-transform: rotate({{SIZE}}deg); -ms-transform: rotate({{SIZE}}deg); transform: rotate({{SIZE}}deg);',
-					'{{WRAPPER}}.e-transform' . jkit_optimized_markup_class()       => '--e-transform-rotateZ: {{SIZE}}deg;',
+					'{{WRAPPER}}.e-transform' . jkit_optimized_markup_class() => '--e-transform-rotateZ: {{SIZE}}deg;',
 				),
 				'condition'   => array(
 					'_transform_rotate_popover!' => 'transform',
@@ -366,8 +845,8 @@ class Element {
 					'unit' => 'px',
 				),
 				'selectors'          => array(
-					'{{WRAPPER}}.elementor-column.jkit-sticky-element--enabled.sticky-pinned.jkit-sticky-element-on--down' => 'top: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}}.elementor-column.jkit-sticky-element--enabled.sticky-pinned.jkit-sticky-element-on--both' => 'top: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}.elementor-column.jkit-sticky-element--enabled.sticky-pinned.jkit-sticky-element-on--down'                                                                                                                                     => 'top: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}.elementor-column.jkit-sticky-element--enabled.sticky-pinned.jkit-sticky-element-on--both'                                                                                                                                     => 'top: {{SIZE}}{{UNIT}};',
 					'#wpadminbar ~ {{WRAPPER}}.elementor-column.jkit-sticky-element--enabled.sticky-pinned.jkit-sticky-element-on--down, #wpadminbar ~ * {{WRAPPER}}.elementor-column.jkit-sticky-element--enabled.sticky-pinned.jkit-sticky-element-on--down' => 'top: calc({{SIZE}}{{UNIT}} + var(--wpadminbar-height, 0px));',
 					'#wpadminbar ~ {{WRAPPER}}.elementor-column.jkit-sticky-element--enabled.sticky-pinned.jkit-sticky-element-on--both, #wpadminbar ~ * {{WRAPPER}}.elementor-column.jkit-sticky-element--enabled.sticky-pinned.jkit-sticky-element-on--both' => 'top: calc({{SIZE}}{{UNIT}} + var(--wpadminbar-height, 0px));',
 				),
@@ -400,7 +879,7 @@ class Element {
 					'unit' => 'px',
 				),
 				'selectors'          => array(
-					'{{WRAPPER}}.elementor-column.jkit-sticky-element--enabled.sticky-pinned.jkit-sticky-element-on--up' => 'bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}.elementor-column.jkit-sticky-element--enabled.sticky-pinned.jkit-sticky-element-on--up'   => 'bottom: {{SIZE}}{{UNIT}};',
 					'{{WRAPPER}}.elementor-column.jkit-sticky-element--enabled.sticky-pinned.jkit-sticky-element-on--both' => 'bottom: {{SIZE}}{{UNIT}};',
 				),
 				'condition'          => array(
@@ -540,7 +1019,7 @@ class Element {
 				),
 				'selectors'  => array(
 					'{{WRAPPER}}.elementor-column.jkit-sticky-element--enabled.sticky-pinned' => 'transition: margin {{SIZE}}s, padding {{SIZE}}s, background {{SIZE}}s, box-shadow {{SIZE}}s, transform {{SIZE}}s, opacity {{SIZE}}s;',
-					'{{WRAPPER}}.elementor-column.jkit-sticky-element--enabled' => 'transition: margin {{SIZE}}s, padding {{SIZE}}s, background {{SIZE}}s, box-shadow {{SIZE}}s, transform {{SIZE}}s, opacity {{SIZE}}s;',
+					'{{WRAPPER}}.elementor-column.jkit-sticky-element--enabled'               => 'transition: margin {{SIZE}}s, padding {{SIZE}}s, background {{SIZE}}s, box-shadow {{SIZE}}s, transform {{SIZE}}s, opacity {{SIZE}}s;',
 				),
 				'conditions' => array(
 					'relation' => 'and',
@@ -735,8 +1214,8 @@ class Element {
 					'unit' => 'px',
 				),
 				'selectors'          => array(
-					'{{WRAPPER}}.elementor-section.jkit-sticky-element--enabled.sticky-pinned.jkit-sticky-element-on--down' => 'top: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}}.elementor-section.jkit-sticky-element--enabled.sticky-pinned.jkit-sticky-element-on--both' => 'top: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}.elementor-section.jkit-sticky-element--enabled.sticky-pinned.jkit-sticky-element-on--down'                                                                                                                                      => 'top: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}.elementor-section.jkit-sticky-element--enabled.sticky-pinned.jkit-sticky-element-on--both'                                                                                                                                      => 'top: {{SIZE}}{{UNIT}};',
 					'#wpadminbar ~ {{WRAPPER}}.elementor-section.jkit-sticky-element--enabled.sticky-pinned.jkit-sticky-element-on--down, #wpadminbar ~ * {{WRAPPER}}.elementor-section.jkit-sticky-element--enabled.sticky-pinned.jkit-sticky-element-on--down' => 'top: calc({{SIZE}}{{UNIT}} + var(--wpadminbar-height, 0px));',
 					'#wpadminbar ~ {{WRAPPER}}.elementor-section.jkit-sticky-element--enabled.sticky-pinned.jkit-sticky-element-on--both, #wpadminbar ~ * {{WRAPPER}}.elementor-section.jkit-sticky-element--enabled.sticky-pinned.jkit-sticky-element-on--both' => 'top: calc({{SIZE}}{{UNIT}} + var(--wpadminbar-height, 0px));',
 				),
@@ -769,7 +1248,7 @@ class Element {
 					'unit' => 'px',
 				),
 				'selectors'          => array(
-					'{{WRAPPER}}.elementor-section.jkit-sticky-element--enabled.sticky-pinned.jkit-sticky-element-on--up' => 'bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}.elementor-section.jkit-sticky-element--enabled.sticky-pinned.jkit-sticky-element-on--up'   => 'bottom: {{SIZE}}{{UNIT}};',
 					'{{WRAPPER}}.elementor-section.jkit-sticky-element--enabled.sticky-pinned.jkit-sticky-element-on--both' => 'bottom: {{SIZE}}{{UNIT}};',
 				),
 				'condition'          => array(
@@ -909,7 +1388,7 @@ class Element {
 				),
 				'selectors'  => array(
 					'{{WRAPPER}}.elementor-section.jkit-sticky-element--enabled.sticky-pinned' => 'transition: margin {{SIZE}}s, padding {{SIZE}}s, background {{SIZE}}s, box-shadow {{SIZE}}s, transform {{SIZE}}s, opacity {{SIZE}}s;',
-					'{{WRAPPER}}.elementor-section.jkit-sticky-element--enabled' => 'transition: margin {{SIZE}}s, padding {{SIZE}}s, background {{SIZE}}s, box-shadow {{SIZE}}s, transform {{SIZE}}s, opacity {{SIZE}}s;',
+					'{{WRAPPER}}.elementor-section.jkit-sticky-element--enabled'               => 'transition: margin {{SIZE}}s, padding {{SIZE}}s, background {{SIZE}}s, box-shadow {{SIZE}}s, transform {{SIZE}}s, opacity {{SIZE}}s;',
 				),
 				'conditions' => array(
 					'relation' => 'and',
@@ -1104,8 +1583,8 @@ class Element {
 					'unit' => 'px',
 				),
 				'selectors'          => array(
-					'{{WRAPPER}}.elementor-element.e-flex.jkit-sticky-element--enabled.sticky-pinned.jkit-sticky-element-on--down' => 'top: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}}.elementor-element.e-flex.jkit-sticky-element--enabled.sticky-pinned.jkit-sticky-element-on--both' => 'top: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}.elementor-element.e-flex.jkit-sticky-element--enabled.sticky-pinned.jkit-sticky-element-on--down'                                                                                                                                             => 'top: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}.elementor-element.e-flex.jkit-sticky-element--enabled.sticky-pinned.jkit-sticky-element-on--both'                                                                                                                                             => 'top: {{SIZE}}{{UNIT}};',
 					'#wpadminbar ~ {{WRAPPER}}.elementor-element.e-flex.jkit-sticky-element--enabled.sticky-pinned.jkit-sticky-element-on--down, #wpadminbar ~ * {{WRAPPER}}.elementor-element.e-flex.jkit-sticky-element--enabled.sticky-pinned.jkit-sticky-element-on--down' => 'top: calc({{SIZE}}{{UNIT}} + var(--wpadminbar-height, 0px));',
 					'#wpadminbar ~ {{WRAPPER}}.elementor-element.e-flex.jkit-sticky-element--enabled.sticky-pinned.jkit-sticky-element-on--both, #wpadminbar ~ * {{WRAPPER}}.elementor-element.e-flex.jkit-sticky-element--enabled.sticky-pinned.jkit-sticky-element-on--both' => 'top: calc({{SIZE}}{{UNIT}} + var(--wpadminbar-height, 0px));',
 				),
@@ -1138,7 +1617,7 @@ class Element {
 					'unit' => 'px',
 				),
 				'selectors'          => array(
-					'{{WRAPPER}}.elementor-element.e-flex.jkit-sticky-element--enabled.sticky-pinned.jkit-sticky-element-on--up' => 'bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}.elementor-element.e-flex.jkit-sticky-element--enabled.sticky-pinned.jkit-sticky-element-on--up'   => 'bottom: {{SIZE}}{{UNIT}};',
 					'{{WRAPPER}}.elementor-element.e-flex.jkit-sticky-element--enabled.sticky-pinned.jkit-sticky-element-on--both' => 'bottom: {{SIZE}}{{UNIT}};',
 				),
 				'condition'          => array(
@@ -1278,7 +1757,7 @@ class Element {
 				),
 				'selectors'  => array(
 					'{{WRAPPER}}.elementor-element.e-flex.jkit-sticky-element--enabled.sticky-pinned' => 'transition: margin {{SIZE}}s, padding {{SIZE}}s, background {{SIZE}}s, box-shadow {{SIZE}}s, transform {{SIZE}}s, opacity {{SIZE}}s;',
-					'{{WRAPPER}}.elementor-element.e-flex.jkit-sticky-element--enabled' => 'transition: margin {{SIZE}}s, padding {{SIZE}}s, background {{SIZE}}s, box-shadow {{SIZE}}s, transform {{SIZE}}s, opacity {{SIZE}}s;',
+					'{{WRAPPER}}.elementor-element.e-flex.jkit-sticky-element--enabled'               => 'transition: margin {{SIZE}}s, padding {{SIZE}}s, background {{SIZE}}s, box-shadow {{SIZE}}s, transform {{SIZE}}s, opacity {{SIZE}}s;',
 				),
 				'conditions' => array(
 					'relation' => 'and',

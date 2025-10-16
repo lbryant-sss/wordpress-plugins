@@ -1959,9 +1959,6 @@ class ATSS_WXRImporter extends WP_Importer {
 	protected function fetch_remote_file( $url, $post ) {
 		// Wrap entire download in try-catch to prevent crashes
 		try {
-			// Increment attachment counter for AJAX splitting
-			$this->attachment_count++;
-			
 			// extract the file name and extension from the url
 			$file_name = basename( $url );
 
@@ -1975,8 +1972,13 @@ class ATSS_WXRImporter extends WP_Importer {
 					'file' => $exists_file,
 					'url'  => $exists_url,
 				);
+				// Don't increment counter when file already exists
 				return $upload;
 			}
+
+			// Increment attachment counter ONLY for actual downloads
+			// This prevents false positives when files are already cached
+			$this->attachment_count++;
 
 			// get placeholder file in the upload dir with a unique, sanitized filename
 			$upload = wp_upload_bits( $file_name, 0, '', $post['upload_date'] );
@@ -2661,5 +2663,14 @@ class ATSS_WXRImporter extends WP_Importer {
 	 */
 	public function get_attachment_count() {
 		return $this->attachment_count;
+	}
+
+	/**
+	 * Reset attachment count (called when starting a new AJAX request)
+	 *
+	 * @return void
+	 */
+	public function reset_attachment_count() {
+		$this->attachment_count = 0;
 	}
 }

@@ -3,7 +3,7 @@ Contributors: hasthemes, htplugins, devitemsllc, zenaulislam, aslamhasib
 Tags: Elementor, WooCommerce, WooCommerce Elementor, WooCommerce Builder, WooCommerce Product, Woo Builder, Variation Swatches, woocommerce blocks, Product Slider, Product Compare, Wishlist, Product Filter
 Requires at least: 4.7
 Tested up to: 6.8
-Stable tag: 3.2.2
+Stable tag: 3.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -171,13 +171,17 @@ You can even control the number of products that are displayed. So, whether you'
 
 Other noteworthy features of this Elementor WooCommerce widget include controlling the WooCommerce product layout, the number of WooCommerce products to show, the WooCommerce category list, the customization of WooCommerce product ordering, etc.
 
-<strong>[Product Grid](https://woolentor.com/demo/product-grid)</strong> – Display your WooCommerce products within a WooCommerce responsive grid layout with the WooCommerce product grid widget. This Elementor WooCommerce builder widget (Woo builder) offers 5 different WooCommerce grid layouts to showcase your WooCommerce products in a responsive grid for WooCommerce store with its WooCommerce widget responsive settings. Meaning the WooCommerce product grid widget will adjust to fit any screen size.
+<strong>[Product Grid](https://woolentor.com/demo/product-grid)</strong> – Display your WooCommerce products within a WooCommerce responsive grid layout with the WooCommerce product grid widget. This Elementor WooCommerce builder widget (Woo builder) offers multiple WooCommerce grid layouts including the new Modern Grid & List style to showcase your WooCommerce products in a responsive grid for WooCommerce store with its WooCommerce widget responsive settings. Meaning the WooCommerce product grid widget will adjust to fit any screen size.
+
+The new Product Grid - Modern widget introduces advanced features including Grid View, List View, and Grid/List Toggle layouts. The List View displays products with detailed descriptions, product features/attributes, stock status indicators with low stock warnings, and a quantity selector with +/- buttons for easy quantity adjustment before adding to cart. This enhanced product display helps improve the shopping experience and boost conversions.
 
 A key feature of this Elementor WooCommerce widget is its WooCommerce responsive grid, which displays your WooCommerce products in a WooCommerce grid layout or responsive grid for WooCommerce while ensuring that your WooCommerce website adapts to the screen size of the customer's device. You can rest assured that with the WooCommerce responsive grid system, your WooCommerce products are always displayed in an optimal way, regardless of what device your customers use. The WooCommerce responsive grid or responsive grid for WooCommerce is a significant selling point for WooCommerce, as it helps businesses reach a wider audience. You can even use this WooCommerce widget to control how many columns you want to display on each device.
 
 By using a responsive grid for WooCommerce, you can ensure that your customers will be able to see your WooCommerce products no matter what device they're using. The WooCommerce product grid or Elementor grid widget can be of tremendous help if you want to showcase your WooCommerce products in a WooCommerce grid layout or responsive grid for WooCommerce. With this Elementor WooCommerce widget, you can enjoy the flexibility to exhibit your WooCommerce products in a grid view or WooCommerce grid layout.
 
 Furthermore, the Elementor grid widget allows you to control the number of columns, gutter width, and breakpoints. A grid view is a type of WooCommerce product display that arranges items in a WooCommerce grid layout or a responsive grid for WooCommerce instead of displaying them in a single column. The grid view products or grid products make it easy for visitors to scroll through the WooCommerce products and find their desired ones.
+
+The Product Grid widget now supports advanced options including Load More button and Infinite Scroll. The Load More button allows customers to load additional products without page refresh, while Infinite Scroll automatically loads more products when customers scroll near the end of the product grid. These features create a seamless browsing experience similar to modern eCommerce platforms.
 
 Apart from choosing and configuring a WooCommerce product layout, you can control which WooCommerce products to display and how to display them in a WooCommerce product grid or WooCommerce grid layout based on multiple query settings such as product type, product categories, product order, number of products, and so on. Meaning that you can also leverage this Elementor WooCommerce product grid widget like a WooCommerce category product widget to display products based on categories. This WooCommerce category product widget is handy when it comes to getting the ability to control which category based products to display.
 
@@ -1118,6 +1122,12 @@ Feel free to [Contact us](https://hasthemes.com/contact-us/)
 Elementor Pro is not required. But you can use ShopLentor with Elementor free & Pro.
 
 == Changelog ==
+
+= Version: 3.2.3 - Date: 15-10-2025 =
+* Added: Product Grid - Modern Widget
+* Solved: Wishlist table data fetching issue with block theme.
+* Solved: Compare table render issue in footer.
+* Compatibility : Latest WordPress and WooCommerce version.
 
 = Version: 3.2.2 - Date: 23-09-2025 =
 * Solved: Sample demo image loading issue.

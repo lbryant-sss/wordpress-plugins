@@ -347,6 +347,8 @@ class Blocker
             'ut_get_portfolio_post_content',
             // [Plugin Comp] https://core.pixfort.com/
             'pix_get_popup_content',
+            // [Plugin Comp] Formidable Forms
+            'frm_entries_create',
         ]);
         return $doingAjax && isset($_REQUEST['action']) && \in_array($_REQUEST['action'], $actions, \true);
     }

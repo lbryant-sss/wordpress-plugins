@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the WooCommerce Stripe Gateway plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce Stripe Gateway 10.0.0\n"
+"Project-Id-Version: WooCommerce Stripe Gateway 10.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce-gateway-stripe\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-10-14T10:17:39+00:00\n"
+"POT-Creation-Date: 2025-10-15T14:47:09+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: woocommerce-gateway-stripe\n"
@@ -474,75 +474,65 @@ msgstr ""
 msgid "Credentials used for the Stripe gateway have been changed. This might cause errors for existing customers and saved payment methods. %1$sClick here to learn more%2$s."
 msgstr ""
 
-#: includes/admin/class-wc-stripe-admin-notices.php:435
-msgid "Please reconnect to continue using Stripe and avoid disruptions on your store."
-msgstr ""
-
-#: build/upe-settings.js:1
-#: includes/admin/class-wc-stripe-admin-notices.php:439
-#: client/settings/payment-settings/account-details-section.js:161
-msgid "Reconnect to Stripe"
-msgstr ""
-
 #. translators: %1$s Payment method, %2$s List of supported currencies
 #. translators: 1) Payment method, 2) List of supported currencies
-#: includes/admin/class-wc-stripe-admin-notices.php:473
-#: includes/admin/class-wc-stripe-admin-notices.php:491
+#: includes/admin/class-wc-stripe-admin-notices.php:450
+#: includes/admin/class-wc-stripe-admin-notices.php:468
 msgid "%1$s is enabled - it requires store currency to be set to %2$s<br>"
 msgstr ""
 
 #. translators: this is a text for a link pointing to the customer's payment method page
-#: includes/admin/class-wc-stripe-admin-notices.php:537
+#: includes/admin/class-wc-stripe-admin-notices.php:514
 #: includes/compat/class-wc-stripe-subscriptions-helper.php:281
 msgid "Payment method page &rarr;"
 msgstr ""
 
 #. translators: this is a text for a link pointing to the customer's page on Stripe
-#: includes/admin/class-wc-stripe-admin-notices.php:545
+#: includes/admin/class-wc-stripe-admin-notices.php:522
 #: includes/compat/class-wc-stripe-subscriptions-helper.php:289
 msgid "Stripe customer page &rarr;"
 msgstr ""
 
-#: includes/admin/class-wc-stripe-admin-notices.php:549
+#: includes/admin/class-wc-stripe-admin-notices.php:526
 msgid "The payment method for this subscription has been detached, <strong>preventing renewals</strong>. "
 msgstr ""
 
-#: includes/admin/class-wc-stripe-admin-notices.php:550
+#: includes/admin/class-wc-stripe-admin-notices.php:527
 msgid "To fix this, either: <br />"
 msgstr ""
 
-#: includes/admin/class-wc-stripe-admin-notices.php:551
+#: includes/admin/class-wc-stripe-admin-notices.php:528
 msgid "1) Share the payment method page link with the customer to update it: "
 msgstr ""
 
-#: includes/admin/class-wc-stripe-admin-notices.php:552
+#: includes/admin/class-wc-stripe-admin-notices.php:529
 msgid " or <br />"
 msgstr ""
 
-#: includes/admin/class-wc-stripe-admin-notices.php:553
+#: includes/admin/class-wc-stripe-admin-notices.php:530
 msgid "2) Manually update the payment method in the subscription's billing details using a valid payment method from the customer's Stripe account: "
 msgstr ""
 
 #. translators: 1) HTML anchor open tag 2) HTML anchor closing tag 3) The already-translated title of the tool
-#: includes/admin/class-wc-stripe-admin-notices.php:556
+#: includes/admin/class-wc-stripe-admin-notices.php:533
 msgid "To list all your current subscriptions with payment methods detached, go to WooCommerce -> Status -> %1$sTools%2$s -> <strong>%3$s</strong>."
 msgstr ""
 
-#: includes/admin/class-wc-stripe-admin-notices.php:559
+#: includes/admin/class-wc-stripe-admin-notices.php:536
 #: includes/class-wc-stripe-status.php:242
 msgid "List Stripe subscriptions with detached payment method"
 msgstr ""
 
-#: includes/admin/class-wc-stripe-admin-notices.php:572
+#: includes/admin/class-wc-stripe-admin-notices.php:549
 #: includes/class-wc-stripe-status.php:285
 msgid "No detached subscriptions found."
 msgstr ""
 
-#: includes/admin/class-wc-stripe-admin-notices.php:635
+#: includes/admin/class-wc-stripe-admin-notices.php:612
 msgid "Action failed. Please refresh the page and retry."
 msgstr ""
 
-#: includes/admin/class-wc-stripe-admin-notices.php:639
+#: includes/admin/class-wc-stripe-admin-notices.php:616
 msgid "Cheatin&#8217; huh?"
 msgstr ""
 
@@ -2167,9 +2157,9 @@ msgstr ""
 
 #: build/upe-settings.js:1
 #: includes/class-wc-stripe-status.php:179
-#: client/settings/account-details/index.js:65
-#: client/settings/account-details/index.js:80
-#: client/settings/account-details/index.js:117
+#: client/settings/account-details/index.js:64
+#: client/settings/account-details/index.js:79
+#: client/settings/account-details/index.js:116
 #: client/settings/stripe-auth-account/account-status-panel.js:198
 #: client/settings/stripe-auth-account/account-status-panel.js:216
 msgid "Disabled"
@@ -2178,9 +2168,9 @@ msgstr ""
 #: build/upe-settings.js:1
 #: includes/class-wc-stripe-status.php:193
 #: includes/payment-methods/class-wc-stripe-upe-payment-gateway.php:2118
-#: client/settings/account-details/index.js:64
-#: client/settings/account-details/index.js:79
-#: client/settings/account-details/index.js:116
+#: client/settings/account-details/index.js:63
+#: client/settings/account-details/index.js:78
+#: client/settings/account-details/index.js:115
 #: client/settings/stripe-auth-account/account-status-panel.js:194
 #: client/settings/stripe-auth-account/account-status-panel.js:215
 msgid "Enabled"
@@ -4176,39 +4166,34 @@ msgid "Australia BECS Direct Debit enables your store to accept payments from cu
 msgstr ""
 
 #: build/upe-settings.js:1
-#: client/settings/account-details/index.js:61
+#: client/settings/account-details/index.js:60
 msgid "Payment"
 msgstr ""
 
 #: build/upe-settings.js:1
-#: client/settings/account-details/index.js:76
+#: client/settings/account-details/index.js:75
 msgid "Payout"
 msgstr ""
 
 #: build/upe-settings.js:1
 #. translators: <a> - dashboard login URL
-#: client/settings/account-details/index.js:85
+#: client/settings/account-details/index.js:84
 msgid "Payments/payouts may be disabled for this account until missing business information is updated. <a>Update now</a>"
 msgstr ""
 
 #: build/upe-settings.js:1
-#: client/settings/account-details/index.js:113
+#: client/settings/account-details/index.js:112
 msgid "Webhook"
 msgstr ""
 
 #: build/upe-settings.js:1
-#: client/settings/account-details/index.js:139
+#: client/settings/account-details/index.js:135
 msgid "We couldn't connect to your account, it seems like the test API keys we've saved for you are no longer valid. Please use the <strong>Configure connection</strong> button below to reconnect."
 msgstr ""
 
 #: build/upe-settings.js:1
-#: client/settings/account-details/index.js:143
+#: client/settings/account-details/index.js:139
 msgid "We couldn't connect to your account, it seems like the live API keys we've saved for you are no longer valid. Please use the <strong>Configure connection</strong> button below to reconnect."
-msgstr ""
-
-#: build/upe-settings.js:1
-#: client/settings/account-details/reconnect-notice.js:29
-msgid "Reconnect your Stripe account using the new authentication flow to avoid disruptions on your store."
 msgstr ""
 
 #: build/upe-settings.js:1
@@ -4596,7 +4581,7 @@ msgstr ""
 
 #: build/upe-settings.js:1
 #: client/settings/payment-settings/account-details-section.js:65
-#: client/settings/payment-settings/account-details-section.js:157
+#: client/settings/payment-settings/account-details-section.js:153
 msgid "Configure connection"
 msgstr ""
 
@@ -4612,12 +4597,12 @@ msgid "Disconnect"
 msgstr ""
 
 #: build/upe-settings.js:1
-#: client/settings/payment-settings/account-details-section.js:125
+#: client/settings/payment-settings/account-details-section.js:122
 msgid "Account status"
 msgstr ""
 
 #: build/upe-settings.js:1
-#: client/settings/payment-settings/account-details-section.js:133
+#: client/settings/payment-settings/account-details-section.js:130
 msgid "Test Mode"
 msgstr ""
 

@@ -201,7 +201,8 @@ All of the MLA source code has been annotated with "DocBlocks", a special type o
 
 = 3.30 =
 * New: For PDF documents, metadata embedded in compressed object streams is now extracted, processed and made available as "pdf:" data sources.
-* Fix: IMPORTANT: The "Transfer by Item Name" feature has been redesigned to mitigate an Insecure Direct Object Reference security issue. This fix also requires you to manually update the "MLA Item Transfer Pretty Links" example plugin if your site uses it.
+* Fix: IMPORTANT: For the `[mla_gallery]` shortcode, the "mla_viewer" feature has been redesigned to mitigate an Unauthenticated Local File Read security issue. The feature now uses WordPress AJAX processing when PDF thumbnail images are not available, which is less efficient but secure.
+* Fix: IMPORTANT: For the `[mla_gallery]` shortcode, the "Transfer by Item Name" feature has been redesigned to mitigate an Insecure Direct Object Reference security issue. This fix also requires you to manually update the "MLA Item Transfer Pretty Links" example plugin if your site uses it.
 * Fix: IMPORTANT: The "MLA Item Transfer Pretty Links" example plugin has been updated to use the new "Transfer by Item Name" method. **You must manually update the example plugin** if your site uses it.
 
 = 3.29 =

@@ -1,10 +1,10 @@
-=== MonsterInsights - Google Analytics Dashboard for WordPress (Website Stats Made Easy) ===
+﻿=== MonsterInsights - Google Analytics Dashboard for WordPress (Website Stats Made Easy) ===
 Contributors: chriscct7, smub
 Donate link: http://www.wpbeginner.com/wpbeginner-needs-your-help/
 Tags: WordPress analytics, google analytics, analytics, google analytics dashboard, Website Analytics
 Requires at least: 5.6.0
-Tested up to: 6.8.1
-Stable tag: 9.8.0
+Tested up to: 6.8.3
+Stable tag: 9.9.0
 Requires PHP: 7.2
 License: GPL v3
 
@@ -121,6 +121,11 @@ MonsterInsights&reg; is a registered trademark of MonsterInsights LLC. When writ
 4. Want more features? <a href="https://www.monsterinsights.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion">Purchase MonsterInsights Pro</a>!
 
 == Changelog ==
+= 9.9.0: October 15, 2025 =
+- New: Unlock new organic traffic insights with our completely updated Google Search Console report
+- New: Automatically track eCommerce sales with LinkedIn and SnapChat PPC campaigns-
+- Updated: Various bug fixes and updates
+
 = 9.8.0: September 10, 2025 =
 - New: Google Ads Integration! Set up Google Ads campaigns directly from the MonsterInsights dashboard.
 - New: AI Traffic Report - see what LLMs are sending traffic to your website

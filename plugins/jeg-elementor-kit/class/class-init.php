@@ -9,12 +9,14 @@
 
 namespace Jeg\Elementor_Kit;
 
+use Jeg\Elementor_Kit\Admin\Api;
 use Jeg\Elementor_Kit\Ajax\Ajax;
 use Jeg\Elementor_Kit\Dashboard\Dashboard;
 use Jeg\Elementor_Kit\Assets\Asset;
 use Jeg\Elementor_Kit\Elements\Element;
 use Jeg\Elementor_Kit\Templates\Template;
 use Jeg\Elementor_Kit\Banner\Banner;
+use Jeg\Elementor_Kit\Wizard\Wizard;
 
 /**
  * Class Init
@@ -44,9 +46,11 @@ class Init {
 		Element::instance();
 		Asset::instance();
 		Ajax::instance();
+		Api::instance();
 		Dashboard::instance();
 		Template::instance();
 		Banner::instance();
+		Wizard::instance();
 	}
 
 	/**

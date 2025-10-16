@@ -7,8 +7,9 @@
 * @var array $posts
 * @var array $referrers
 * @var stdClass $totals
-* @var \DateTimeInterface $dateStart
-* @var \DateTimeInterface $dateEnd
+* @var \DateTimeInterface $today
+* @var \DateTimeInterface $date_start
+* @var \DateTimeInterface $date_end
 */
 
 use KokoAnalytics\Chart_View;
@@ -30,8 +31,8 @@ use KokoAnalytics\Fmt;
         <h3 class="mb-3">
            <?php esc_html_e('Showing site visits over last 14 days', 'koko-analytics'); ?>
         </h3>
-        <div class="">
-        <?php new Chart_View($chart_data, $dateStart, $dateEnd, 200, false); ?>
+        <div>
+        <?php new Chart_View($chart_data, $date_start, $date_end, 200, false); ?>
         </div>
     </div>
 

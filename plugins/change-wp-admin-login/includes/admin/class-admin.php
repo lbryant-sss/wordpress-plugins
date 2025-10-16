@@ -88,6 +88,12 @@ if ( ! class_exists( 'AIO_Login\Admin\Admin' ) ) {
 								'title' => __( 'Failed Logins', 'change-wp-admin-login' ),
 								'slug'  => 'failed-logins',
 							),
+							'enumeration-protection-logs' => array(
+								'title'  => __( 'Enumeration Protection Logs', 'change-wp-admin-login' ),
+								'slug'   => 'enumeration-protection-logs',
+								'is-pro' => true,
+								'plan'   => 'professional',
+							),
 						),
 					),
 					'security'         => array(
@@ -110,6 +116,10 @@ if ( ! class_exists( 'AIO_Login\Admin\Admin' ) ) {
 								'slug'   => 'block-ip-addresses',
 								'is-pro' => true,
 								'plan'   => 'basic',
+							),
+							'user-enumeration-protection' => array(
+								'title' => __( 'User Enumeration Protection', 'change-wp-admin-login' ),
+								'slug'  => 'user-enumeration-protection',
 							),
 						),
 					),
@@ -366,6 +376,48 @@ if ( ! class_exists( 'AIO_Login\Admin\Admin' ) ) {
 					'permission_callback' => array( Helper::class, 'get_api_permission' ),
 				)
 			);
+
+			// User Enumeration Protection endpoints
+			register_rest_route(
+				'aio-login/dashboard',
+				'/user-enumeration-settings',
+				array(
+					'methods'  => 'GET',
+					'callback' => array( $this, 'get_user_enumeration_settings' ),
+					'permission_callback' => array( Helper::class, 'get_api_permission' ),
+				)
+			);
+
+			register_rest_route(
+				'aio-login/dashboard/update',
+				'/user-enumeration-settings',
+				array(
+					'methods'  => 'POST',
+					'callback' => array( $this, 'update_user_enumeration_settings' ),
+					'permission_callback' => array( Helper::class, 'get_api_permission' ),
+				)
+			);
+
+			// Activity Log Settings endpoints
+			register_rest_route(
+				'aio-login/dashboard',
+				'/activity-log-settings',
+				array(
+					'methods'  => 'GET',
+					'callback' => array( $this, 'get_activity_log_settings' ),
+					'permission_callback' => array( Helper::class, 'get_api_permission' ),
+				)
+			);
+
+			register_rest_route(
+				'aio-login/dashboard/update',
+				'/activity-log-settings',
+				array(
+					'methods'  => 'POST',
+					'callback' => array( $this, 'update_activity_log_settings' ),
+					'permission_callback' => array( Helper::class, 'get_api_permission' ),
+				)
+			);
 		}
 
 		public function get_settings() {
@@ -491,7 +543,7 @@ if ( ! class_exists( 'AIO_Login\Admin\Admin' ) ) {
 				return rest_ensure_response(
 					array(
 						'status' => 'success',
-						'message' => __( 'Block ip address updated successfully', 'change-wp-admin-login' ),
+						'message' => __( 'Block IP address updated successfully', 'change-wp-admin-login' ),
 					)
 				);
 			}
@@ -501,6 +553,117 @@ if ( ! class_exists( 'AIO_Login\Admin\Admin' ) ) {
 				__( 'Invalid value', 'change-wp-admin-login' ),
 				array( 'status' => 400 )
 			);
+		}
+
+		/**
+		 * Get user enumeration protection settings
+		 */
+		public function get_user_enumeration_settings() {
+			// Direct check for pro plugin
+			$has_pro = false;
+			
+			// Check if pro plugin is active
+			if ( function_exists( 'is_plugin_active' ) ) {
+				$has_pro = is_plugin_active( 'aio-login-pro/aio-login-pro.php' );
+			}
+			
+			// If not found via is_plugin_active, check if class exists
+			if ( ! $has_pro && class_exists( 'AIO_Login_Pro\\AIO_Login_Pro' ) ) {
+				$has_pro = true;
+			}
+			
+			// Also check the filter
+			if ( ! $has_pro ) {
+				$has_pro = apply_filters( 'aio_login_has_pro', false );
+			}
+			
+			$log_duration = get_option( 'aio_login_user_enumeration_duration', 30 );
+			error_log( 'AIO Login: get_user_enumeration_settings - log_duration from DB: ' . $log_duration );
+			
+			$settings = array(
+				'enable_protection' => get_option( 'aio_login_user_enumeration_enable', 'off' ),
+				'stop_oembed_calls' => get_option( 'aio_login_user_enumeration_oembed', 'off' ),
+				'disable_author_sitemaps' => get_option( 'aio_login_user_enumeration_sitemaps', 'off' ),
+				'remove_comment_numbers' => get_option( 'aio_login_user_enumeration_comments', 'off' ),
+				'protect_rest_api' => get_option( 'aio_login_user_enumeration_rest_api', 'off' ),
+				'login_registration_errors' => get_option( 'aio_login_user_enumeration_login_registration', 'off' ),
+				'log_attempts' => get_option( 'aio_login_user_enumeration_log', 'off' ),
+				'log_duration' => $log_duration,
+				'has_pro' => $has_pro ? 'true' : 'false',
+			);
+
+			return rest_ensure_response( array( 'success' => true, 'data' => $settings ) );
+		}
+
+		/**
+		 * Update user enumeration protection settings
+		 */
+		public function update_user_enumeration_settings( $request ) {
+			$params = $request->get_params();
+			$settings = isset( $params['settings'] ) ? $params['settings'] : array();
+
+			// Update settings
+			$enable_protection = isset( $settings['enable_protection'] ) && ( $settings['enable_protection'] === true || $settings['enable_protection'] === 'on' ) ? 'on' : 'off';
+			$stop_oembed_calls = isset( $settings['stop_oembed_calls'] ) && ( $settings['stop_oembed_calls'] === true || $settings['stop_oembed_calls'] === 'on' ) ? 'on' : 'off';
+			$disable_author_sitemaps = isset( $settings['disable_author_sitemaps'] ) && ( $settings['disable_author_sitemaps'] === true || $settings['disable_author_sitemaps'] === 'on' ) ? 'on' : 'off';
+			$remove_comment_numbers = isset( $settings['remove_comment_numbers'] ) && ( $settings['remove_comment_numbers'] === true || $settings['remove_comment_numbers'] === 'on' ) ? 'on' : 'off';
+			$protect_rest_api = isset( $settings['protect_rest_api'] ) && ( $settings['protect_rest_api'] === true || $settings['protect_rest_api'] === 'on' ) ? 'on' : 'off';
+			$login_registration_errors = isset( $settings['login_registration_errors'] ) && ( $settings['login_registration_errors'] === true || $settings['login_registration_errors'] === 'on' ) ? 'on' : 'off';
+			// Only update log settings if they are provided, otherwise preserve existing values
+			$log_attempts = isset( $settings['log_attempts'] ) ? 
+				( ( $settings['log_attempts'] === true || $settings['log_attempts'] === 'on' ) ? 'on' : 'off' ) : 
+				get_option( 'aio_login_user_enumeration_log', 'off' );
+			$log_duration = isset( $settings['log_duration'] ) ? 
+				intval( $settings['log_duration'] ) : 
+				get_option( 'aio_login_user_enumeration_duration', 30 );
+			error_log( 'AIO Login: update_user_enumeration_settings - log_duration to save: ' . $log_duration );
+
+			update_option( 'aio_login_user_enumeration_enable', $enable_protection );
+			update_option( 'aio_login_user_enumeration_oembed', $stop_oembed_calls );
+			update_option( 'aio_login_user_enumeration_sitemaps', $disable_author_sitemaps );
+			update_option( 'aio_login_user_enumeration_comments', $remove_comment_numbers );
+			update_option( 'aio_login_user_enumeration_rest_api', $protect_rest_api );
+			update_option( 'aio_login_user_enumeration_login_registration', $login_registration_errors );
+			update_option( 'aio_login_user_enumeration_log', $log_attempts );
+			update_option( 'aio_login_user_enumeration_duration', $log_duration );
+			error_log( 'AIO Login: update_user_enumeration_settings - log_duration saved to DB' );
+
+			return rest_ensure_response( array( 'success' => true ) );
+		}
+
+		/**
+		 * Get activity log settings
+		 */
+		public function get_activity_log_settings() {
+			$settings = array(
+				'log_enumeration_attempts' => get_option( 'aio_login_user_enumeration_log', 'off' ),
+				'log_enumeration_duration' => get_option( 'aio_login_user_enumeration_duration', 30 ),
+			);
+
+			$response = array(
+				'success' => true,
+				'data' => $settings,
+				'nonce' => wp_create_nonce( 'aio_login_activity_log_settings' ),
+			);
+
+			return rest_ensure_response( $response );
+		}
+
+		/**
+		 * Update activity log settings
+		 */
+		public function update_activity_log_settings( $request ) {
+			$params = $request->get_params();
+			$settings = isset( $params['settings'] ) ? $params['settings'] : array();
+
+			// Update settings
+			$log_enumeration_attempts = isset( $settings['log_enumeration_attempts'] ) && ( $settings['log_enumeration_attempts'] === true || $settings['log_enumeration_attempts'] === 'on' ) ? 'on' : 'off';
+			$log_enumeration_duration = isset( $settings['log_enumeration_duration'] ) ? intval( $settings['log_enumeration_duration'] ) : 30;
+
+			update_option( 'aio_login_user_enumeration_log', $log_enumeration_attempts );
+			update_option( 'aio_login_user_enumeration_duration', $log_enumeration_duration );
+
+			return rest_ensure_response( array( 'success' => true ) );
 		}
 
 		/**

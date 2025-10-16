@@ -4,7 +4,7 @@
  *
  * @author Jegtheme
  * @since 2.4.1
- * @package jeg-element-kit
+ * @package jeg-kit
  */
 
 ?>

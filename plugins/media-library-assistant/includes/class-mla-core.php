@@ -30,7 +30,7 @@ class MLACore {
 	 *
 	 * @var	string
 	 */
-	const MLA_DEVELOPMENT_VERSION = '20251011';
+	const MLA_DEVELOPMENT_VERSION = '20251014';
 
 	/**
 	 * Slug for registering and enqueueing plugin style sheets (moved from class-mla-main.php)
@@ -1107,7 +1107,7 @@ class MLACore {
 	}
 
 	/**
-	 * Encrypts a named transfer item
+	 * Encrypts a named transfer or stream image item
  	 *
 	 * @since 3.30
 	 *
@@ -1115,7 +1115,7 @@ class MLACore {
 	 *
 	 * @return	string encrypted item name
 	 */
-	public static function mla_encrypt_named_transfer_item( $mla_item ) {
+	public static function mla_encrypt_item( $mla_item ) {
 		if ( function_exists( 'openssl_encrypt' ) ) {
 			$key = self::_get_named_transfer_encryption_key();
 			$ivLength = openssl_cipher_iv_length('AES-256-CBC');
@@ -1130,7 +1130,7 @@ class MLACore {
 	}
 
 	/**
-	 * Decrypts a named transfer item
+	 * Decrypts a named transfer or stream image item
  	 *
 	 * @since 3.30
 	 *
@@ -1138,7 +1138,7 @@ class MLACore {
 	 *
 	 * @return	string decrypted item name
 	 */
-	public static function mla_decrypt_named_transfer_item( $mla_item ) {
+	public static function mla_decrypt_item( $mla_item ) {
 		if ( function_exists( 'openssl_encrypt' ) ) {
 			$key = self::_get_named_transfer_encryption_key();
 	        $data = base64_decode( $mla_item );

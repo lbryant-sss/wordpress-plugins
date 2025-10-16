@@ -33,6 +33,9 @@ class MonsterInsights_Site_Insights_Block {
 		// Load Popular Posts styles.
 		wp_register_style( 'monsterinsights-editor-frontend-style', $style_url, array(), monsterinsights_get_asset_version() );
 
+		// Register AMP-compatible styles
+		wp_register_style( 'monsterinsights-amp-style', plugins_url( 'assets/css/frontend/amp-style.css', MONSTERINSIGHTS_PLUGIN_FILE ), array(), monsterinsights_get_asset_version() );
+
 		$use_async = apply_filters( 'monsterinsights_frontend_gtag_script_async', true );
 
 		if ( $use_async ) {

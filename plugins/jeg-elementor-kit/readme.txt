@@ -4,90 +4,210 @@ Tags: elementor, elements, addons, widgets, templates
 Requires at least: 5.0
 Tested up to: 6.8.3
 Requires PHP: 7.4
-Stable tag: 2.7.0
+Stable tag: 3.0.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Jeg Kit for Elementor (formerly Jeg Elementor Kit) is additional widgets for Elementor page builder. It has 40 highly customizable widgets.
+Extend Elementor with 68+ widgets, 114 prebuilt demos, Mega Menu Builder, Theme Builder, and advanced interactive effects.
 
 == Description ==
 
-Jeg Kit for Elementor (formerly Jeg Elementor Kit) is additional widgets for Elementor page builder. It has 40 highly customizable widgets.
+**Jeg Kit for Elementor** (formerly *Jeg Elementor Kit*) is an all-in-one addon that extends Elementor with **68+ creative widgets**, **114 ready-to-import demo templates**, and a full **Theme Builder system** — giving you the freedom to design professional websites faster than ever.
 
-== Essential Widgets ==
-We include widgets that you can customize to your as you want.
+Visit **[https://jegkit.com/](https://jegkit.com/)** to explore demo templates, documentation, and feature showcase.
 
-- **Accordion**. Add collapsable content. Suitable for FAQ content.
-- **Icon Box**. A box that includes icon, title, and description.
-- **Testimonial Slider**. Add testimonials on your site. Useful to increase users belief in your products or services.
-- **Image Gallery**. Display images as grid and masonry gallery. Add additional filterable feature.
-- **Progress Bar**. Progress bar element with escalating animation.
-- **Fun Fact**. A box that include icon and number content.
-- **Form - WP Form widget**. Styling WP Form element.
-- **Client Logo Slider**. A logo image slider.
-- **Navigation Menu**. Create dropdown navigation menu. Allow your users navigate to another page.
-- **Post Block**. Display list of your posts on page.
-- **Team**. Show your team members with name, position, bio, picture, and social media links.
-- **Pie Chart**. Create data pie charts and show it on your page. You can change styles, content, and percentage.
-- **Portfolio Gallery**. Add portfolio gallery with hover effect.
-- **Image Box**. A box that includes image, title, and description with hover scale animation.
-- **Animated Text**. Text widget that using rotating, highlight, and gradient animation.
-- **Countdown**. Countdown to show your contents of future events.
-- **Button**. Add button with customizable style.
-- **Video Button**. Add button with YouTube or Vimeo video pop up on click.
-- **Post List**. Select some posts to show it on a list.
-- **Category List**. Select some categories to show it on a list.
-- **Mailchimp**. Provide sign up form to your users. You can manage mailing list, automated mailing, newsletter, and many other options with mailchimp.
-- **Heading**. Highlight your headlines with custom styles.
-- **Post Title**. Show the title of the post.
-- **Post Featured Image**. Post featured image with style and hover animation.
-- **Post Comment**. Include comment to the post using default theme style.
-- **Post Terms**. A list that show the taxonomies assigned to the post. You can choose one of the following options: category, post tag, or post format
-- **Post Excerpt**. Show the excerpt of the post.
-- **Post Date**. Post publish or modified date with default, relative, or custom format.
-- **Post Author**. Show post author information.
-- **Social Share**. Add social button and share your post to social media when the button is clicked.
-- **Off Canvas**. Add off canvas content to the page. Choose the content from saved templates. You can choose to slide off canvas from left, right, top, or bottom.
-- **Tabs**. Divide your contents into several tabs with the title in vertical or horizontal style. Show content by click the title.
-- **Dual Button**. Add two buttons side by side. Also you can add middle text.
-- **Search**. Add search functionality with popup form. Let your visitors find what they are searching on your site.
-- **Feature List**. Add feature lists with icons.
-- **Post Content**. Show the content of single post.
+Whether you’re creating a business site, portfolio, online shop, or blog — Jeg Kit provides everything you need to build modern, high-performing WordPress websites.
 
-== New Widgets ==
-- **Product Grid**. Display products in a grid.
-- **Product Carousel**. Display products with a carousel.
-- **Product Categories**. Displays the product category that you created.
-- **Banner**. You can promote your products with banners.
+== 🎨 Key Features ==
 
-== Elements ==
-- **Sticky Element**. Create Sticky element for Section and Column.
+- **40+ Free Widgets** — content, media, layout, and WooCommerce widgets.  
+- **28+ Pro Widgets** — unlock advanced elements for product pages, archives, and creative layouts.  
+- **114 Prebuilt Demos** — 10 Free + 104 Pro ready for one-click import into your website 
+- **Theme Builder Templates** — Header, Footer, 404 (Free) + Single, Archive, Popup (Pro).  
+- **Mega Menu Builder (Pro)** — visually design and assign Elementor templates from WordPress menus.  
+- **8 Advanced Visual Effects (Pro)** — including Custom Cursor, Blend Mode, Smooth Scroll, and Parallax.  
+- **Lightweight & Optimized** — built to run fast and clean on any Elementor-powered website.
 
-== Feature ==
-- **Global Style options**. Choose your Global Style Template Kit for your site.
-- **Header and Footer Template**. Create Header or Footer template for the entire site or with specific conditions.
-- **404 Template**. Choose your 404 Template for your site.
+---
+
+== 🧱 Free Widgets ==
+
+Jeg Kit includes **40 free widgets** that you can customize directly inside Elementor.
+
+- **Accordion**. Add collapsible FAQ content for better user experience.  
+- **Icon Box**. Display icons with title and description in styled boxes.  
+- **Testimonials**. Showcase customer reviews with rating and layout options.  
+- **Image Gallery**. Display multiple images in grid or masonry style with filters.  
+- **Progress Bar**. Show animated progress bars for skills or milestones.  
+- **Fun Fact**. Display animated counters with icons and short descriptions.  
+- **Client Logo Slider**. Show client or partner logos in a responsive slider.  
+- **Navigation Menu**. Add custom navigation with dropdown and styling options.  
+- **Post Block**. Display blog posts in grid layouts with filters and pagination.  
+- **Team**. Showcase team members with photo, name, role, and social links.  
+- **Pie Chart**. Create animated circular data charts.  
+- **Portfolio Gallery**. Display portfolio items with interactive hover effects.  
+- **Image Box**. Combine image, title, and description in one visual element.  
+- **Animated Text**. Create text with typing, rotating, or highlight animation.  
+- **Countdown**. Add countdown timers for launches or events.  
+- **Button**. Add fully customizable buttons with hover effects.  
+- **Dual Button**. Create two buttons side by side with optional middle text.  
+- **Video Button**. Open YouTube or Vimeo videos in a popup lightbox.  
+- **Search**. Add on-page search popup for better navigation.  
+- **Tabs**. Organize long content into multiple tabs.  
+- **Category List**. Display post categories as a clean list or grid.  
+- **Feature List**. Present key features with icons and text.  
+- **Contact Form 7**. Style and integrate Contact Form 7 directly in Elementor.  
+- **Mailchimp**. Add newsletter subscription forms connected to Mailchimp.  
+- **Heading**. Create headings with typography and highlight effects.  
+- **Post Title**. Display post title dynamically with styling control.  
+- **Post Featured Image**. Show post featured image with hover animations.  
+- **Post Comment**. Embed WordPress comments visually inside Elementor.  
+- **Post Terms**. Display assigned categories, tags, or formats.  
+- **Post Excerpt**. Display post summary text with styling options.  
+- **Post Date**. Show post publish or update date with custom format.  
+- **Post Author**. Display author name, avatar, and bio section.  
+- **Post Content**. Display dynamic post content within Elementor.  
+- **Social Share**. Add share buttons for social media platforms.  
+- **Off Canvas**. Add sliding panels or sidebars for hidden content.  
+- **Banner**. Display promotional or hero banners with background control.  
+- **Product Grid**. Showcase WooCommerce products in a grid layout.  
+- **Product Carousel**. Display WooCommerce products in a rotating slider.  
+- **Product Categories**. Display WooCommerce product categories dynamically.  
+
+---
+
+== 💎 Pro Widgets ==
+
+Upgrade to **Jeg Kit Pro** to unlock advanced widgets for WooCommerce, Archive, and interactive layouts.
+
+- **Hotspot**. Create interactive image hotspots with tooltips.  
+- **Timeline**. Display vertical or horizontal timelines for process or history.  
+- **Back To Top**. Add scroll-to-top button with animation and styling options.  
+- **Text Background**. Add creative background styling behind text elements.  
+- **Text Marquee**. Display scrolling text for announcements or highlights.  
+- **Horizontal Accordion**. Present collapsible panels horizontally.  
+- **Charts**. Create visual data presentations with bar, line, or pie charts.  
+- **Archive Title**. Display archive page titles dynamically.  
+- **Archive Description**. Show description text for categories or tags.  
+- **Product Custom Add To Cart**. Add customizable Add To Cart buttons.  
+- **WooCommerce Cart Page**. Design your WooCommerce Cart page layout visually.  
+- **WooCommerce Checkout Page**. Build a modern, styled checkout page.  
+- **WooCommerce Account Page**. Style the WooCommerce My Account dashboard.  
+- **WooCommerce Menu Cart**. Add cart icon with live product count in navigation.  
+- **Product Single Title**. Display the WooCommerce product title dynamically.  
+- **Product Single Breadcrumb**. Add breadcrumb navigation for products.  
+- **Product Single Images**. Show featured and gallery images for each product.  
+- **Product Single Price**. Display product pricing with styling control.  
+- **Product Single Rating**. Show product rating stars and review count.  
+- **Product Single Description**. Display short or full product description.  
+- **Product Single Content**. Display full product content area dynamically.  
+- **Product Single Related**. Show related products based on category or tag.  
+- **Product Single Add To Cart**. Add a styled Add To Cart button.  
+- **Product Single Stock**. Display stock availability for each product.  
+- **Product Single Additional Information**. Show specifications and attributes.  
+- **Product Single Meta**. Display SKU, tags, and product metadata.  
+- **Product Single Data Tabs**. Display product information using styled tabs.  
+- **Product Archive**. Build archive layouts for WooCommerce product listings.  
+
+---
+
+== ⚙️ Advanced Effects (Pro) ==
+
+Enhance your site with **8 advanced visual and interactive effects** available under the Elementor *Advanced* tab.
+
+- **Custom Cursor**. Replace the default cursor with animated effects.  
+- **Blend Mode**. Add creative color blending to sections and elements.  
+- **Smooth Scroll**. Enable smooth scrolling for better user experience.  
+- **Parallax Effects**. Add depth and animation when scrolling.  
+- **Mouse Effects**. Move and animate elements with cursor movement.  
+- **Background Motion Effects**. Add smooth motion to background layers.  
+- **Background Parallax**. Create parallax scrolling effects for images.  
+- **Background Mouse Effects**. Animate backgrounds based on mouse movement.  
+
+---
+
+== 🧭 Mega Menu Builder (Pro) ==
+
+Build advanced multi-column menus directly in Elementor.  
+Assign saved Elementor templates to menu items and design responsive mega menus — perfect for eCommerce and corporate websites.
+
+Learn more and see examples at **[https://jegkit.com/features/mega-menu/](https://jegkit.com/)**.
+
+---
+
+== 🌐 Theme Builder ==
+
+Create and manage your entire website visually using Elementor templates.
+
+**Free Templates**
+- **Header Template**. Design and assign custom headers site-wide.  
+- **Footer Template**. Build footers with global or conditional display.  
+- **404 Template**. Create a custom 404 error page design.  
+
+**Pro Templates**
+- **Single Post Template**. Design custom post layouts with Elementor.  
+- **Archive Template**. Build archive and category pages dynamically.  
+- **Popup Template**. Create animated popups for marketing or forms.  
+
+---
+
+== 🚀 One Click Demo Importer ==
+
+Access **114 ready-to-import demo templates** directly from your dashboard (10 Free + 104 Pro).  
+Each demo includes full Elementor layouts for business, portfolio, blog, and eCommerce sites.
+
+> Import any demo with one click and start customizing instantly.  
+> View the complete demo showcase at **[https://jegkit.com/demos/](https://jegkit.com/demos/)**.
+
+---
+
+== 🧩 Global Features ==
+
+- **Global Style**. Switch between template kits and color palettes globally.  
+- **System Status Checker**. Monitor site performance and Elementor settings.  
+- **Element Manager**. Enable or disable specific widgets for better performance.  
+
+---
 
 == Frequently Asked Questions ==
 
-**Is this plugin require any plugin to be installed?**
+**Do I need Elementor to use Jeg Kit?**  
+Yes. Elementor (free) is required to use Jeg Kit.
 
-Yes. Since this plugin extend widget from Elementor. Elementor is required. Also if you want to use WP Form element, you need to install WP Form.
+**Does it work with any theme?**  
+Yes. Jeg Kit works with any theme compatible with Elementor.
 
-**Can I use this plugin with any themes?**
+**My Elementor editor isn't loading, what should I do?**  
+Ensure your **WP Memory Limit** is at least **128 MB**.  
+Check via *Elementor → System Info*.  
+Try *Elementor → Tools → Regenerate CSS* or disable unused widgets from *Jeg Kit → Elements*.
 
-Yes, you can. This plugin works with any themes as long you use Elementor and the theme compatible with Elementor.
+**Can I import demos without Pro?**  
+Yes, 10 demos are free to import. Additional 104 demos are available in Jeg Kit Pro.
 
-**After the update, some styles have changed and looks weird. What can I do to fix it?**
+---
 
-Please try to regenerate CSS via Elementor > Tools > Regenerate CSS option on admin dashboard.
+**Build visually. Import instantly. Design freely — with Jeg Kit for Elementor.**  
+Visit **[https://jegkit.com/](https://jegkit.com/)** for live demos, tutorials, and Pro features.
 
-**My Elementor editor isn't loading. What should I do?**
+== Upgrade Notice ==
 
-Please make sure the WP Memory Limit on your site has set to 128 MB or greater. You can check your site status on Elementor > System Info. Please read this article for further reading
-https://elementor.com/help/requirements/ Also you can disable some widgets that you don't need from Jeg Kit > Elements dashboard to reduce memory usage.
+= 3.0.0 =
+This major release introduces Mega Menu Builder, 114 demo templates, and a redesigned dashboard. Update now to explore new features and improved performance.
 
 == Changelog ==
+
+= 3.0.0 - 15-10-2025 =
+* New Feature: Added 114 demo templates (10 free + 104 pro) with one-click importer.
+* New Feature: Added Mega Menu Builder (Pro) for creating advanced navigation menus.
+* New Feature: Added Theme Builder templates for Single, Archive, and Popup (Pro).
+* New Feature: Added 8 new advanced visual and interactive effects (Pro).
+* Improvement: Expanded total widgets to 68 (40 free + 28 pro).
+* Improvement: Optimized system performance, loading speed, and dashboard UI/UX.
+* Improvement: Enhanced Elements and Demo Importer dashboard layout.
+* Fix: Compatibility adjustments with Elementor latest version.
+* Fix: PHP warning on Pie Chart widget
+* Fix: Social Icon issue on Team widget when use Inline Font Icons feature from Elementor
 
 = 2.7.0 - 01-10-2025 =
 * Improvement: Security issues

@@ -9,6 +9,8 @@ if ( ! class_exists( 'WC_Payment_Gateway_Stripe_Local_Payment' ) ) {
 /**
  * Class WC_Payment_Gateway_Stripe_Klarna
  *
+ * @package PaymentPlugins\Gateways
+ *
  */
 class WC_Payment_Gateway_Stripe_Klarna extends WC_Payment_Gateway_Stripe_Local_Payment {
 

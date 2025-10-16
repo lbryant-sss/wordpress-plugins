@@ -169,7 +169,7 @@ msgid "DNS Prefetch and Preconnect for external domain resources"
 msgstr ""
 
 #: admin/pages/AHSC_Settings.php:252
-msgid "DNS Prefetch and Preconnect:"
+msgid "DNS Prefetch and Preconnect"
 msgstr ""
 
 #: admin/pages/AHSC_Settings.php:41

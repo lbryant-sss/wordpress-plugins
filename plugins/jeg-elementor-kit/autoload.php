@@ -26,7 +26,6 @@ spl_autoload_register(
 		$class_name = 'class-' . $relative_class . '.php';
 		$class_name = str_replace( '_', '-', $class_name );
 		$file       = rtrim( $base_dir, '/' ) . '/' . $class_path . '/' . strtolower( $class_name );
-
 		if ( is_link( $file ) ) {
 			$file = readlink( $file );
 		}

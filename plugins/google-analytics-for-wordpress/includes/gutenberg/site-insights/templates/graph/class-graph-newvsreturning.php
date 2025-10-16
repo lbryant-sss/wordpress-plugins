@@ -11,6 +11,11 @@ class MonsterInsights_SiteInsights_Template_Graph_Newvsreturning extends Monster
 	protected $type = 'graph';
 
 	public function output(){
+		// If we're in AMP, return AMP-compatible output
+		if ( $this->is_amp() ) {
+			return $this->get_amp_output();
+		}
+
 		$json_data = $this->get_json_data();
 
 		if (empty($json_data)) {
@@ -20,6 +25,48 @@ class MonsterInsights_SiteInsights_Template_Graph_Newvsreturning extends Monster
 		return "<div class='monsterinsights-graph-item monsterinsights-donut-chart monsterinsights-graph-{$this->metric}'>
 			<script type='application/json'>{$json_data}</script>
 		</div>";
+	}
+
+	/**
+	 * Get AMP-compatible output for new vs returning visitors
+	 *
+	 * @return string
+	 */
+	protected function get_amp_output() {
+		if (empty($this->data['newvsreturn'])) {
+			return false;
+		}
+
+		$data = $this->data['newvsreturn'];
+		$new_percentage = $data['new'];
+		$returning_percentage = $data['returning'];
+
+		$html = "<div class='monsterinsights-amp-graph-item monsterinsights-amp-donut-chart monsterinsights-amp-graph-{$this->metric}'>";
+		$html .= "<div class='monsterinsights-amp-chart-title'>" . __( 'New vs Returning', 'google-analytics-for-wordpress' ) . "</div>";
+		$html .= "<div class='monsterinsights-amp-donut-container'>";
+		
+		// New visitors section
+		$html .= "<div class='monsterinsights-amp-donut-section new-visitors'>";
+		$html .= "<div class='monsterinsights-amp-donut-label'>" . __( 'New Visitors', 'google-analytics-for-wordpress' ) . "</div>";
+		$html .= "<div class='monsterinsights-amp-donut-value'>{$new_percentage}%</div>";
+		$html .= "<div class='monsterinsights-amp-donut-bar'>";
+		$html .= "<div class='monsterinsights-amp-donut-fill' style='width: {$new_percentage}%; background-color: #4CABFF;'></div>";
+		$html .= "</div>";
+		$html .= "</div>";
+		
+		// Returning visitors section
+		$html .= "<div class='monsterinsights-amp-donut-section returning-visitors'>";
+		$html .= "<div class='monsterinsights-amp-donut-label'>" . __( 'Returning Visitors', 'google-analytics-for-wordpress' ) . "</div>";
+		$html .= "<div class='monsterinsights-amp-donut-value'>{$returning_percentage}%</div>";
+		$html .= "<div class='monsterinsights-amp-donut-bar'>";
+		$html .= "<div class='monsterinsights-amp-donut-fill' style='width: {$returning_percentage}%; background-color: #FF6B6B;'></div>";
+		$html .= "</div>";
+		$html .= "</div>";
+		
+		$html .= "</div>"; // Close donut-container
+		$html .= "</div>"; // Close graph-item
+
+		return $html;
 	}
 
 	protected function get_options() {

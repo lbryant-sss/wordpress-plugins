@@ -11,6 +11,11 @@ class MonsterInsights_SiteInsights_Template_Graph_Topinterests extends MonsterIn
 	protected $type = 'graph';
 
 	public function output(){
+		// If we're in AMP, return AMP-compatible output
+		if ( $this->is_amp() ) {
+			return $this->get_amp_output();
+		}
+
 		$json_data = $this->get_json_data();
 
 		if (empty($json_data)) {
@@ -20,6 +25,43 @@ class MonsterInsights_SiteInsights_Template_Graph_Topinterests extends MonsterIn
 		return "<div class='monsterinsights-graph-item monsterinsights-graph-{$this->metric}'>
 			<script type='application/json'>{$json_data}</script>
 		</div>";
+	}
+
+	/**
+	 * Get AMP-compatible output for top interests
+	 *
+	 * @return string
+	 */
+	protected function get_amp_output() {
+		if (empty($this->data['interest'])) {
+			return false;
+		}
+
+		$data = $this->data['interest'];
+		$title = __( 'Top Interests', 'google-analytics-for-wordpress' );
+
+		$html = "<div class='monsterinsights-amp-graph-item monsterinsights-amp-interests-chart monsterinsights-amp-graph-{$this->metric}'>";
+		$html .= "<div class='monsterinsights-amp-chart-title'>{$title}</div>";
+		$html .= "<div class='monsterinsights-amp-interests-container'>";
+		
+		foreach ($data as $interest) {
+			$interest_name = $interest['interest'];
+			$sessions = $interest['sessions'];
+			$percent = $interest['percent'];
+			
+			$html .= "<div class='monsterinsights-amp-interest-item'>";
+			$html .= "<div class='monsterinsights-amp-interest-label'>{$interest_name}</div>";
+			$html .= "<div class='monsterinsights-amp-interest-bar'>";
+			$html .= "<div class='monsterinsights-amp-interest-fill' style='width: {$percent}%;'></div>";
+			$html .= "</div>";
+			$html .= "<div class='monsterinsights-amp-interest-value'>{$sessions} ({$percent}%)</div>";
+			$html .= "</div>";
+		}
+		
+		$html .= "</div>"; // Close interests-container
+		$html .= "</div>"; // Close graph-item
+
+		return $html;
 	}
 
 	protected function get_options() {

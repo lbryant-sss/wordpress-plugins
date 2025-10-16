@@ -7,7 +7,7 @@
  * Author:              MonsterInsights
  * Author URI:          https://www.monsterinsights.com/lite/?utm_source=liteplugin&utm_medium=pluginheader&utm_campaign=authoruri&utm_content=7%2E0%2E0
  *
- * Version:             9.8.0
+ * Version:             9.9.0
  * Requires at least:   5.6.0
  * Requires PHP:        7.2
  *
@@ -43,6 +43,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// Load AMP compatibility very early if we're in AMP context
+if ( ( isset( $_GET['amp'] ) && 1 === $_GET['amp'] ) || 
+	 ( function_exists( 'is_amp_endpoint' ) && is_amp_endpoint() ) ||
+	 ( function_exists( 'amp_is_request' ) && amp_is_request() ) ||
+	 ( isset( $_SERVER['REQUEST_URI'] ) && false !== strpos( $_SERVER['REQUEST_URI'], '/amp/' ) ) ) {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/frontend/class-amp-compatibility-early.php';
+}
+
 /**
  * Main plugin class.
  *
@@ -71,7 +79,7 @@ final class MonsterInsights_Lite {
 	 * @access public
 	 * @var string $version Plugin version.
 	 */
-	public $version = '9.8.0';
+	public $version = '9.9.0';
 	/**
 	 * Plugin file.
 	 *
@@ -536,6 +544,7 @@ final class MonsterInsights_Lite {
 		}
 
 		require_once MONSTERINSIGHTS_PLUGIN_DIR . 'includes/frontend/frontend.php';
+		require_once MONSTERINSIGHTS_PLUGIN_DIR . 'includes/frontend/class-amp-compatibility.php';
 		require_once MONSTERINSIGHTS_PLUGIN_DIR . 'includes/frontend/seedprod.php';
 		require_once MONSTERINSIGHTS_PLUGIN_DIR . 'includes/measurement-protocol-v4.php';
 		require_once MONSTERINSIGHTS_PLUGIN_DIR . 'includes/admin/feature-feedback/class-monsterInsights-feature-feedback.php';
@@ -825,6 +834,7 @@ if ( ! function_exists( 'MonsterInsights' ) ) {
 function monsterinsights_lite_deactivation_hook() {
 	wp_clear_scheduled_hook( 'monsterinsights_usage_tracking_cron' );
 	wp_clear_scheduled_hook( 'monsterinsights_email_summaries_cron' );
+	wp_clear_scheduled_hook( 'monsterinsights_charitable_notice_cron' );
 
 	// Hook to trigger on deactivation.
 	do_action( 'monsterinsights_plugin_deactivated' );

@@ -86,6 +86,33 @@ function woolentor_build_page_content( $page_id ){
 }
 
 /**
+ * Elementor Widget Upgrade Pro notice manager
+ *
+ * @param [type] $widget
+ * @param [type] $controls_manager
+ * @param [type] $widget_name
+ * @param [type] $option
+ * @param array $condition
+ * @return void
+ */
+function woolentor_upgrade_pro_notice_elementor( $widget, $controls_manager, $widget_name, $option, $condition = [] ) {
+
+    $url = 'https://woolentor.com/pricing/?utm_source=elementor-widget-panel&utm_medium='. $widget_name;
+
+    $widget->add_control(
+        $option .'_pro_notice',
+        [
+            'raw' => 'This option is available<br> in the <strong><a href="'. esc_url($url) .'" target="_blank" style="color: #93003c;">Pro version</a></strong>.',
+            'type' => $controls_manager,
+            'condition' => [
+                $option => $condition,
+            ],
+			'content_classes' => 'woolentor-pro-notice elementor-panel-alert elementor-panel-alert-info'
+        ]
+    );
+}
+
+/**
  * Get template content by id
  * @since 2.6.6
  * @param [type] $template_id
@@ -1455,6 +1482,31 @@ if( class_exists('WooCommerce') ){
             'min' => (int)$value_min,
             'max' => (int)$value_max,
         ];
+    }
+
+     /**
+     * Product Hover Image For Universal all addon and any addon if need.
+     *
+     * @return void
+     */
+    function woolentor_product_secondary_image($gallery_images_ids, $image_size) {
+
+		$hover_image_id = '';
+        if( !empty( $gallery_images_ids[0] ) ){
+            $hover_image_id = $gallery_images_ids[0];
+        }
+
+        if ( $hover_image_id != '' ) {
+            $img = wp_get_attachment_image( $hover_image_id, $image_size );
+            ?>
+                <div class="woolentor-product-secondary-img">
+                    <a href="<?php echo esc_url( get_permalink() ); ?>">
+                        <?php echo wp_kses_post($img); ?>
+                    </a>
+                </div>
+            <?php
+        }
+
     }
 
 }

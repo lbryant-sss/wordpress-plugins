@@ -11,6 +11,11 @@ class MonsterInsights_SiteInsights_Template_Graph_Top10countries extends Monster
 	protected $type = 'graph';
 
 	public function output(){
+		// If we're in AMP, return AMP-compatible output
+		if ( $this->is_amp() ) {
+			return $this->get_amp_output();
+		}
+
 		$json_data = $this->get_json_data();
 
 		if (empty($json_data)) {
@@ -86,5 +91,59 @@ class MonsterInsights_SiteInsights_Template_Graph_Top10countries extends Monster
 		);
 
 		return $options;
+	}
+
+	/**
+	 * Get AMP-compatible output for top10countries graph.
+	 *
+	 * @return string
+	 */
+	protected function get_amp_output() {
+		if ( empty( $this->data['countries'] ) ) {
+			return $this->get_amp_placeholder();
+		}
+
+		$data = $this->data['countries'];
+		$primaryColor = $this->attributes['primaryColor'];
+		$textColor = $this->attributes['textColor'];
+
+		// Get top 5 countries for AMP display
+		$top_countries = array_slice( $data, 0, 5 );
+		
+		$output = "<div class='monsterinsights-amp-countries-block'>";
+		$output .= "<div class='monsterinsights-amp-header'>";
+		$output .= "<h3>" . __( 'Top Countries', 'google-analytics-for-wordpress' ) . "</h3>";
+		$output .= "</div>";
+		
+		$output .= "<div class='monsterinsights-amp-countries-list'>";
+		foreach ( $top_countries as $index => $country ) {
+			$percentage = ( $country['sessions'] / array_sum( array_column( $data, 'sessions' ) ) ) * 100;
+			$output .= "<div class='monsterinsights-amp-country-item'>";
+			$output .= "<div class='monsterinsights-amp-country-name'>" . esc_html( $country['name'] ) . "</div>";
+			$output .= "<div class='monsterinsights-amp-country-bar'>";
+			$output .= "<div class='monsterinsights-amp-country-bar-fill' style='width: " . round( $percentage ) . "%; background-color: " . esc_attr( $primaryColor ) . ";'></div>";
+			$output .= "</div>";
+			$output .= "<div class='monsterinsights-amp-country-sessions'>" . number_format( $country['sessions'] ) . "</div>";
+			$output .= "</div>";
+		}
+		$output .= "</div>";
+		
+		$output .= "</div>";
+		
+		return $output;
+	}
+
+	/**
+	 * Get AMP placeholder when no data is available.
+	 *
+	 * @return string
+	 */
+	protected function get_amp_placeholder() {
+		return "<div class='monsterinsights-amp-countries-block'>";
+		$output .= "<div class='monsterinsights-amp-header'>";
+		$output .= "<h3>" . __( 'Top Countries', 'google-analytics-for-wordpress' ) . "</h3>";
+		$output .= "</div>";
+		$output .= "<div class='monsterinsights-amp-no-data'>" . __( 'No country data available', 'google-analytics-for-wordpress' ) . "</div>";
+		$output .= "</div>";
 	}
 }

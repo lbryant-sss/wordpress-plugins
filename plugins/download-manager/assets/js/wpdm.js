@@ -92,8 +92,13 @@ jQuery(function($) {
     $body.on('click', '.w3eden [data-toggle="tab"]', function(e) {
         e.preventDefault();
         const $tabs = $(this).parents('.nav-tabs');
+        const $pills = $(this).parents('.nav-pills');
         console.log($tabs);
         $tabs.find('a[data-toggle="tab"]').each(function() {
+            $(this).removeClass('active');
+            $($(this).attr('href')).removeClass('active');
+        });
+        $pills.find('a[data-toggle="tab"]').each(function() {
             $(this).removeClass('active');
             $($(this).attr('href')).removeClass('active');
         });

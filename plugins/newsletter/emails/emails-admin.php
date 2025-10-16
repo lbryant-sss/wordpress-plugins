@@ -111,12 +111,12 @@ class NewsletterEmailsAdmin extends NewsletterModuleAdmin {
             wp_send_json_error('Not allowed', 403);
         }
 
-        if (!class_exists('NewsletterControls')) {
-            include NEWSLETTER_INCLUDES_DIR . '/controls.php';
-        }
+            require_once NEWSLETTER_INCLUDES_DIR . '/controls.php';
 
         $controls = new NewsletterControls();
-        $email = new TNP_Email();
+
+        $email = $this->get_email($controls->data['id']);
+        $email->id = 0; // To unlink from the database object
 
         if ($this->is_html_allowed()) {
             $email->message = $controls->data['message'];

@@ -57,6 +57,7 @@ class MonsterInsights_Rest_Routes {
 		) );
 		add_action( 'wp_ajax_monsterinsights_vue_update_included_metrics', array( $this, 'update_included_metrics' ) );
 		add_action( 'wp_ajax_monsterinsights_vue_get_user_included_metrics', array( $this, 'get_user_included_metrics' ) );
+		add_action( 'wp_ajax_monsterinsights_vue_capture_last_used_report', array( $this, 'capture_last_used_report' ) );
 	}
 
 	/**
@@ -1713,5 +1714,22 @@ class MonsterInsights_Rest_Routes {
 			$included_metrics = str_replace( ',,', ',', $included_metrics ); // Clear the extra commas to avoid an empty iteration.
 		}
 		return $included_metrics;
+	}
+
+	/**
+	 * Captures the last visited report by the user.
+	 */
+	public function capture_last_used_report() {
+		check_ajax_referer( 'mi-admin-nonce', 'nonce' );
+
+		if ( ! current_user_can( 'monsterinsights_save_settings' ) || empty( $_POST['report'] ) ) {
+			return;
+		}
+
+		$report = sanitize_text_field( wp_unslash( $_POST['report'] ) );
+		update_option( 'monsterinsights_last_visited_report_name', $report );
+		update_option( 'monsterinsights_last_visited_report_date', time() );
+
+		wp_send_json_success();
 	}
 }

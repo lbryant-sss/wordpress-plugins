@@ -8,6 +8,8 @@
 
 namespace KokoAnalytics;
 
+use DateTimeImmutable;
+
 class Dashboard_Widget
 {
     public static function register_dashboard_widget(): void
@@ -26,20 +28,22 @@ class Dashboard_Widget
         do_action('koko_analytics_aggregate_stats');
 
         $number_of_top_items = (int) apply_filters('koko_analytics_dashboard_widget_number_of_top_items', 5);
+        $timezone = wp_timezone();
         $stats = new Stats();
-        $dateToday = create_local_datetime('today, midnight')->format('Y-m-d');
-        $totals = $stats->get_totals($dateToday, $dateToday);
+        $today = (new DateTimeImmutable('today, midnight', $timezone))->format('Y-m-d');
+        $totals = $stats->get_totals($today, $today);
 
         // get realtime pageviews, but limit it to number of total pageviews today in case viewing shortly after midnight
         $realtime = min($totals->pageviews, get_realtime_pageview_count('-1 hour'));
 
-        $dateStart = create_local_datetime('-14 days');
-        $dateEnd = create_local_datetime('now');
-        $chart_data = $stats->get_stats($dateStart->format('Y-m-d'), $dateEnd->format('Y-m-d'), 'day');
+        // get chart data
+        $date_start = new DateTimeImmutable('-14 days', $timezone);
+        $date_end = new DateTimeImmutable('now', $timezone);
+        $chart_data = $stats->get_stats($date_start->format('Y-m-d'), $date_end->format('Y-m-d'), 'day');
 
         if ($number_of_top_items > 0) {
-            $posts = $stats->get_posts($dateToday, $dateToday, 0, $number_of_top_items);
-            $referrers = $stats->get_referrers($dateToday, $dateToday, 0, $number_of_top_items);
+            $posts = $stats->get_posts($today, $today, 0, $number_of_top_items);
+            $referrers = $stats->get_referrers($today, $today, 0, $number_of_top_items);
         }
 
         require KOKO_ANALYTICS_PLUGIN_DIR . '/src/Resources/views/dashboard-widget.php';

@@ -10,7 +10,7 @@ Donate link: https://gotmls.net/donate/
 Description: This Anti-Virus/Anti-Malware plugin searches for Malware and other Virus like threats and vulnerabilities on your server and helps you remove them. It's always growing and changing to adapt to new threats so let me know if it's not working for you.
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html#license-text
-Version: 4.23.81
+Version: 4.23.83
 Requires PHP: 5.6
 Requires CP: 1.1.1
 */
@@ -411,13 +411,14 @@ function GOTMLS_get_whitelists() {
 
 function GOTMLS_Quarantine_Trash() {
 	global $wpdb;
-	$Q_Page = '<div id="empty_trash_link" style="float: right;"><form method="post" onsubmit="if (curDiv = document.getElementById(\'empty_trash_link\')) curDiv.style.display = \'none\';" target="GOTMLS_statusFrame" action="'.GOTMLS_admin_url('GOTMLS_empty_trash', GOTMLS_set_nonce(__FUNCTION__."346")).'">';
+	$Q_Page = '<div id="empty_trash_link" style="float: right;"><form method="post" onsubmit="if (curDiv = document.getElementById(\'empty_trash_link\')) curDiv.style.display = \'none\';" target="GOTMLS_statusFrame" action="'.GOTMLS_admin_url('GOTMLS_empty_trash', GOTMLS_set_nonce("empty_trash")).'">';
 	if (($trashed = $wpdb->get_var("SELECT COUNT(*) FROM $wpdb->posts WHERE `post_type` = 'GOTMLS_quarantine' AND `post_status` = 'trash'")) > 1)
 		$Q_Page .= '<input class="primary" style="float: right;" type="submit" value="RESTORE" name="alter"><input class="primary" style="color: red; float: right;" type="submit" value="DELETE" name="alter"><span style="float: right; margin: 3px;">'.sprintf(__("%d Quarantine Records in the Trash",'gotmls'), (INT) $trashed)."</span>";
 	return "$Q_Page</form></div>\n";
 }
 
 function GOTMLS_ajax_View_Quarantine() {
+	GOTMLS_kill_invalid_user();
 	GOTMLS_ajax_load_update();
 	die(GOTMLS_html_tags(array("html" => array("body" => GOTMLS_get_header().GOTMLS_box(GOTMLS_Quarantine_Trash().__("View Quarantine",'gotmls'), GOTMLS_get_quarantine())))));
 }
@@ -621,7 +622,7 @@ function GOTMLS_get_registrant($you) {
 function GOTMLS_ajax_load_update() {
 	global $wpdb;
 	$GOTMLS_nonce_found = GOTMLS_get_nonce();
-	$YES_user_can = GOTMLS_user_can();
+	$YES_user_can = GOTMLS_kill_invalid_user();
 	$GOTMLS_definitions_versions = array();
 	$user_info = array();
 	$saved = false;
@@ -1241,9 +1242,8 @@ function GOTMLS_print_login_form($ops = array()) {
 		$ops = array();
 	echo GOTMLS_login_form($ops);
 }
-if (defined("GOTMLS_SESSION_TIME") && is_numeric(GOTMLS_SESSION_TIME)) {
+if (defined("GOTMLS_SESSION_TIME") && is_numeric(GOTMLS_SESSION_TIME))
 	add_action("login_form", "GOTMLS_print_login_form");
-}
 
 function GOTMLS_login_form($ops = array(), $form_id = "", $shortcode = "") {
 	$gt = ">"; // This local variable never changes
@@ -1614,9 +1614,10 @@ function GOTMLS_validate_position($vector, $position) {
 
 function GOTMLS_ajax_empty_trash() {
 	global $wpdb;
+	GOTMLS_kill_invalid_user();
 	$gl = '><';
 	$action = array("RESTORE" => "UPDATE $wpdb->posts SET `post_status` = 'private'", "DELETE" => "DELETE FROM $wpdb->posts");
-	if (GOTMLS_get_nonce() && isset($_REQUEST["alter"]) && isset($action[$_REQUEST["alter"]])) {
+	if (GOTMLS_get_nonce("empty_trash") && isset($_REQUEST["alter"]) && isset($action[$_REQUEST["alter"]])) {
 		if ($trashed = $wpdb->query($action[$_REQUEST["alter"]]." WHERE `post_type` = 'GOTMLS_quarantine' AND `post_status` = 'trash'")) {
 			$wpdb->query("REPAIR TABLE $wpdb->posts");
 			$trashmsg = sprintf(__("%s %d item from the quarantine trash.",'gotmls'), strtoupper(GOTMLS_sanitize($_REQUEST["alter"])."d"), (INT) $trashed);
@@ -1630,6 +1631,7 @@ function GOTMLS_ajax_empty_trash() {
 
 function GOTMLS_ajax_whitelist() {
 	global $wpdb;
+	GOTMLS_kill_invalid_user();
 	$body = "Whitelist Error: No file or checksum!";
 	$script = "window.parent.showhide('GOTMLS_iFrame', true);";
 	if (GOTMLS_get_nonce("GOTMLS_whitelist")) {
@@ -1669,6 +1671,7 @@ function GOTMLS_ajax_whitelist() {
 
 function GOTMLS_ajax_fix() {
 	global $wpdb;
+	GOTMLS_kill_invalid_user();
 	$gt = ">"; // This local variable never changes
 	$lt = "<"; // This local variable never changes
 	if (GOTMLS_get_nonce()) {
@@ -1785,6 +1788,7 @@ function GOTMLS_ajax_fix() {
 function GOTMLS_ajax_scan() {
 	$gt = ">"; // This local variable never changes
 	$lt = "<"; // This local variable never changes
+	GOTMLS_kill_invalid_user();
 	if (GOTMLS_get_nonce()) {
 		@error_reporting(0);
 		if (isset($_GET["GOTMLS_scan"])) {

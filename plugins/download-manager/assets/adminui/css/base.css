@@ -2942,9 +2942,9 @@
 .w3eden .nav-pills > li + li {
     margin-left: 2px;
 }
-.w3eden .nav-pills > li.active > a,
-.w3eden .nav-pills > li.active > a:focus,
-.w3eden .nav-pills > li.active > a:hover {
+.w3eden .nav-pills > li > a.active,
+.w3eden .nav-pills > li > a.active:focus,
+.w3eden .nav-pills > li > a:hover {
     color: #fff;
     background-color: var(--color-primary);
 }
@@ -4622,8 +4622,8 @@
     min-height: 20px;
     padding: 19px;
     margin-bottom: 20px;
-    background-color: rgba(0, 0, 0, 0.02);
-    border: 1px solid rgba(0, 0, 0, 0.09);
+    background-color: rgba(0, 0, 0, 0.01);
+    border: 1px solid var(--border-color);
     border-radius: 4px;
 }
 .w3eden .well blockquote {
@@ -4663,6 +4663,13 @@
     background: 0 0;
     border: 0;
 }
+.w3eden .modal-backdrop.wpdm-mbd.show {
+    position: fixed;
+    opacity: 0.7 !important;
+    z-index: 99999 !important;
+    left: 0;
+    top: 0;
+}
 .w3eden .modal-open {
     overflow: hidden;
 }
@@ -4672,7 +4679,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 1050;
+    z-index: 999999 !important;
     display: none;
     overflow: hidden;
     -webkit-overflow-scrolling: touch;
@@ -4682,10 +4689,6 @@
     -webkit-transition: -webkit-transform 0.3s ease-out;
     -o-transition: -o-transform 0.3s ease-out;
     transition: transform 0.3s ease-out;
-    -webkit-transform: translate(0, -25%);
-    -ms-transform: translate(0, -25%);
-    -o-transform: translate(0, -25%);
-    transform: translate(0, -25%);
 }
 .w3eden .modal.in .modal-dialog {
     -webkit-transform: translate(0, 0);

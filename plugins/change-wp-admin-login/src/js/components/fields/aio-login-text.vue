@@ -4,9 +4,10 @@
 			class="regular-text"
 			:id="id"
 			:name="name"
-			:value="value"
+			:value="modelValue"
 			:type="type"
-			@input="$emit( 'update:modelValue', $event.target.value )"
+			:disabled="disabled"
+			@input="$emit( 'update:modelValue', $event.target.value ); $emit( 'input', $event.target.value )"
 		>
 
 		<textarea
@@ -14,7 +15,8 @@
 			class="regular-text"
 			:id="id"
 			:name="name"
-		>{{ value }}</textarea>
+			:disabled="disabled"
+		>{{ modelValue }}</textarea>
 </template>
 
 <script>
@@ -34,9 +36,13 @@ export default {
 			type: String,
 			required: true,
 		},
-		value: {
-			type: String,
+		modelValue: {
+			type: [String, Number],
 			default: '',
+		},
+		disabled: {
+			type: Boolean,
+			default: false,
 		},
 	},
 }

@@ -75,6 +75,9 @@ $section_nav_bar = '<div class="cff-navigation-sections-menu">
 	}
 	?>
 	</h1>
+	<?php
+	if ( file_exists( dirname(__FILE__) . '/__countdown.php' ) ) include dirname(__FILE__) . '/__countdown.php';
+	?>
 	<form method="post" action="<?php echo esc_attr( $admin_url ); ?>" id="cpformconf" name="cpformconf" class="cff_form_builder">
 		<input type="hidden" name="_cpcff_nonce" value="<?php echo esc_attr( $_cpcff_form_settings_nonce ); ?>" />
 		<input name="cp_calculatedfieldsf_post_options" type="hidden" value="1" />

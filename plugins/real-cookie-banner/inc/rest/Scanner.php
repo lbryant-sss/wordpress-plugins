@@ -214,6 +214,16 @@ class Scanner
         if ($job === null || !$job->data->isLoopback) {
             return new WP_Error('rest_not_found', 'Job not found');
         }
+        // Validate that the URL belongs to the jobs' domain to prevent SSRF attacks
+        $jobDataUrl = $job->data->url;
+        $parsed_url = \wp_parse_url($url);
+        if (!$parsed_url || !isset($parsed_url['host'])) {
+            return new WP_Error('rest_invalid_url', 'Invalid URL provided');
+        }
+        $current_domain = \wp_parse_url($jobDataUrl, \PHP_URL_HOST);
+        if ($parsed_url['host'] !== $current_domain) {
+            return new WP_Error('rest_invalid_domain', 'URL must belong to the jobs\' domain');
+        }
         $checker = new SavingConsentViaRestApiEndpointChecker();
         // See https://github.com/WordPress/WordPress/blob/8fbd2fc6f40ea1f2ad746758b7111a66ab134e19/wp-admin/includes/class-wp-site-health.php#L2136-L2137
         $checker->setRequestArgument('sslverify', \apply_filters('https_local_ssl_verify', \false));

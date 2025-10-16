@@ -295,6 +295,13 @@ class Widgets_Control{
                 'wl_testimonial' => [
                     'title'    => esc_html__('Testimonial','woolentor'),
                     'is_pro'   => $is_pro,
+                ],
+
+                // Product Grid Style Widgets
+                'product_grid_modern' => [
+                    'title'    => esc_html__('Product Grid - Modern','woolentor'),
+                    'is_pro'   => false,
+                    'location' => ($is_pro ? WOOLENTOR_ADDONS_PL_PATH_PRO : WOOLENTOR_ADDONS_PL_PATH) . 'includes/addons/product-grid/',
                 ]
 
             ],

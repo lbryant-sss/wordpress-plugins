@@ -1280,3 +1280,27 @@ function sydney_atss_color_scheme_tooltips() {
 	return $tooltips;
 }
 add_filter( 'atss_register_customize_tooltips', 'sydney_atss_color_scheme_tooltips' );
+
+/**
+ * Allow Sydney and Sydney Pro to share customizer files
+ * This ensures cross-compatibility between Sydney (free) and Sydney Pro themes
+ */
+function sydney_atss_customizer_import_theme_match( $theme_matches, $import_template, $current_template, $current_stylesheet ) {
+	// If already matched, return true
+	if ( $theme_matches ) {
+		return true;
+	}
+
+	$sydney_themes = array( 'sydney', 'sydney-pro', 'sydney-pro-ii' );
+	
+	if ( in_array( $import_template, $sydney_themes, true ) && in_array( $current_template, $sydney_themes, true ) ) {
+		return true;
+	}
+	
+	if ( in_array( $import_template, $sydney_themes, true ) && in_array( $current_stylesheet, $sydney_themes, true ) ) {
+		return true;
+	}
+	
+	return $theme_matches;
+}
+add_filter( 'atss_customizer_import_theme_match', 'sydney_atss_customizer_import_theme_match', 10, 4 );

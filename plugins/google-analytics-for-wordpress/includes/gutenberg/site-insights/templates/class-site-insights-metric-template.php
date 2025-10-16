@@ -89,4 +89,38 @@ abstract class MonsterInsights_SiteInsights_Metric_Template {
 
 		return $color_value;
 	}
+
+	/**
+	 * Check if we are in an AMP context
+	 *
+	 * @return bool
+	 */
+	protected function is_amp() {
+		// Check for AMP plugin
+		if ( function_exists( 'is_amp_endpoint' ) && is_amp_endpoint() ) {
+			return true;
+		}
+		
+		// Check for AMP theme
+		if ( function_exists( 'amp_is_request' ) && amp_is_request() ) {
+			return true;
+		}
+		
+		// Check for AMP query parameter
+		if ( isset( $_GET['amp'] ) && $_GET['amp'] === '1' ) {
+			return true;
+		}
+		
+		// Check for AMP in URL path
+		if ( isset( $_SERVER['REQUEST_URI'] ) && false !== strpos( $_SERVER['REQUEST_URI'], '/amp/' ) ) {
+			return true;
+		}
+		
+		// Check for AMP in theme
+		if ( function_exists( 'amp_is_canonical' ) && amp_is_canonical() ) {
+			return true;
+		}
+		
+		return false;
+	}
 }

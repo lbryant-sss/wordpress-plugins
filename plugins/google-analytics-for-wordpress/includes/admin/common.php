@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 function monsterinsights_is_settings_page() {
 	$current_screen = function_exists( 'get_current_screen' ) ? get_current_screen() : false;
- 
+
 	global $admin_page_hooks;
 
 	if ( ! is_object( $current_screen ) || empty( $current_screen->id ) || empty( $admin_page_hooks ) ) {
@@ -40,7 +40,7 @@ function monsterinsights_is_settings_page() {
 	if ( strpos( $current_screen->id, 'monsterinsights_settings' ) !== false ) {
 		$settings_page = true;
 	}
-	
+
 	if ( strpos( $current_screen->id, 'monsterinsights_google_ads' ) !== false ) {
 		$settings_page = true;
 	}
@@ -795,3 +795,8 @@ function monsterinsights_get_sitei() {
  * Inlcude admin assets files.
  */
 require_once __DIR__ . '/admin-assets.php';
+
+/**
+ * Inlcude admin Charitable notice files.
+ */
+require_once __DIR__ . '/class-monsterinsights-charitable-notice.php';

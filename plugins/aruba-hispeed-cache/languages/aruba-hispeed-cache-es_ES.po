@@ -200,8 +200,8 @@ msgid "DNS Prefetch and Preconnect for external domain resources"
 msgstr "DNS Prefetch and Preconnect para recursos de dominio externo"
 
 #: admin/pages/AHSC_Settings.php:252
-msgid "DNS Prefetch and Preconnect:"
-msgstr "DNS Prefetch and Preconnect:"
+msgid "DNS Prefetch and Preconnect"
+msgstr "DNS Prefetch and Preconnect"
 
 #: admin/pages/AHSC_Settings.php:41
 msgid "Enable automatic purge of the cache"

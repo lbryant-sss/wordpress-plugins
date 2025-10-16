@@ -128,6 +128,9 @@ if (!$this->is_html_allowed()) {
 
         <form action="" method="post" style="margin-top: 2rem" id="tnp-raw-html-editor">
             <?php $controls->init() ?>
+
+            <?php $controls->hidden('id'); // Used during tests ?>
+
             <div style="margin-bottom: 1.5rem">
                 <?php $controls->button_confirm('reset', __('Back to last save', 'newsletter'), 'Are you sure?'); ?>
                 <a class="button-primary tnpc-button" href="#tnp-test-modal" rel="modal:open"><?php esc_html_e('Test', 'newsletter'); ?></a>

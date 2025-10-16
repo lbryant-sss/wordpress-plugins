@@ -1694,7 +1694,7 @@ class MLAShortcode_Support {
 			if ( ! ( ( $match_count === false ) || ( $match_count === 0 ) ) ) {
 				$args = array(
 					'action' => 'mla_named_transfer',
-					'mla_item' => urlencode( MLACore::mla_encrypt_named_transfer_item( sanitize_title( $attachment->post_name ) .  ',' . $attachment->ID . ',' . $attachment->post_date ) ),
+					'mla_item' => urlencode( MLACore::mla_encrypt_item( sanitize_title( $attachment->post_name ) .  ',' . $attachment->ID . ',' . $attachment->post_date ) ),
 					'mla_disposition' => ( 'download' === $arguments['link'] ) ? 'attachment' : 'inline',
 				);
 
@@ -1841,9 +1841,12 @@ class MLAShortcode_Support {
 					if ( in_array( $extension, $arguments['mla_viewer_extensions'] ) ) {
 						// Default to an icon if thumbnail generation is not available
 						$icon_url = wp_mime_type_icon( $attachment->ID );
-						$upload_dir = wp_upload_dir();
+
+//						$upload_dir = wp_upload_dir();
 						$args = array(
-							'mla_stream_file' => urlencode( 'file://' . $upload_dir['basedir'] . '/' . $item_values['base_file'] ),
+//							'mla_stream_file' => urlencode( 'file://' . $upload_dir['basedir'] . '/' . $item_values['base_file'] ),
+							'action' => 'mla_stream_file',
+							'mla_stream_file' => urlencode( MLACore::mla_encrypt_item( sanitize_title( $attachment->post_name ) .  ',' . $attachment->ID . ',' . $attachment->post_date ) ),
 						);
 
 						if ( 'log' == $arguments['mla_debug'] ) {
@@ -1908,7 +1911,8 @@ class MLAShortcode_Support {
 								}
 
 								// For efficiency, image streaming is done outside WordPress
-								$icon_url = add_query_arg( $args, MLA_PLUGIN_URL . 'includes/mla-stream-image.php' );
+//								$icon_url = add_query_arg( $args, MLA_PLUGIN_URL . 'includes/mla-stream-image.php' );
+								$icon_url = add_query_arg( $args, admin_url( 'admin-ajax.php' ) );
 							}
 						}
 

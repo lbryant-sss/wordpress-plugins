@@ -120,6 +120,14 @@
 			if ( 'social-login' === route.my_slug ) {
 				window.aio_login__object.routes[i].component = require( './pages/social-login.vue' ).default;
 			}
+
+			if ( 'user-enumeration-protection' === route.my_slug ) {
+				window.aio_login__object.routes[i].component = require( './pages/user-enumeration-protection.vue' ).default;
+			}
+
+			if ( 'enumeration-protection-logs' === route.my_slug ) {
+				window.aio_login__object.routes[i].component = require( './pages/enumeration-protection-logs.vue' ).default;
+			}
 		} );
 	}
 

@@ -49,7 +49,7 @@ class License {
         $download_message = 'You can download all addons from www.thenewsletterplugin.com if your license is valid.';
 
         if (wp_remote_retrieve_response_code($response) != '200') {
-            $data = new WP_Error(wp_remote_retrieve_response_code($response),
+            $data = new \WP_Error(wp_remote_retrieve_response_code($response),
                     '[' . esc_html(wp_remote_retrieve_response_code($response)) . '] '
                     . esc_html(wp_remote_retrieve_response_message($response))
                     . '<br>' . $download_message);
@@ -62,13 +62,13 @@ class License {
         $data = json_decode($json);
 
         if (!is_object($data)) {
-            $data = new WP_Error(1, 'License validation service error. <br>' . $download_message);
+            $data = new \WP_Error(1, 'License validation service error. <br>' . $download_message);
             set_transient('newsletter_license_data', $data, DAY_IN_SECONDS);
             return $data;
         }
 
         if (isset($data->message)) {
-            $data = new WP_Error(1, 'License check: ' . $data->message);
+            $data = new \WP_Error(1, 'License check: ' . $data->message);
             set_transient('newsletter_license_data', $data, DAY_IN_SECONDS);
             return $data;
         }

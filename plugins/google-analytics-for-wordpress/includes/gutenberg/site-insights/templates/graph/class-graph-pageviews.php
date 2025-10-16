@@ -11,6 +11,11 @@ class MonsterInsights_SiteInsights_Template_Graph_Pageviews extends MonsterInsig
 	protected $type = 'graph';
 
 	public function output(){
+		// If we're in AMP, return AMP-compatible output
+		if ( $this->is_amp() ) {
+			return $this->get_amp_output();
+		}
+
 		$json_data = $this->get_json_data();
 
 		if (empty($json_data)) {
@@ -20,6 +25,79 @@ class MonsterInsights_SiteInsights_Template_Graph_Pageviews extends MonsterInsig
 		return "<div class='monsterinsights-graph-item monsterinsights-graph-{$this->metric}'>
 			<script type='application/json'>{$json_data}</script>
 		</div>";
+	}
+
+	/**
+	 * Get AMP-compatible output for pageviews graph.
+	 *
+	 * @return string
+	 */
+	protected function get_amp_output() {
+		if ( empty( $this->data['overviewgraph'] ) ) {
+			return $this->get_amp_placeholder();
+		}
+
+		$data = $this->data['overviewgraph'];
+		$pageviews_data = $data['pageviews']['datapoints'];
+		$labels = $data['labels'];
+
+		// Get the latest pageviews count
+		$latest_pageviews = end( $pageviews_data );
+		$previous_pageviews = prev( $pageviews_data );
+
+		// Calculate change percentage
+		$change_percentage = 0;
+		if ( $previous_pageviews > 0 ) {
+			$change_percentage = ( ( $latest_pageviews - $previous_pageviews ) / $previous_pageviews ) * 100;
+		}
+
+		$change_class = $change_percentage >= 0 ? 'positive' : 'negative';
+		$change_icon = $change_percentage >= 0 ? '↗' : '↘';
+
+		$output = '<div class="monsterinsights-amp-pageviews-block">';
+		$output .= '<div class="monsterinsights-amp-header">';
+		$output .= '<h3>' . esc_html__( 'Pageviews', 'google-analytics-for-wordpress' ) . '</h3>';
+		$output .= '<div class="monsterinsights-amp-metric">';
+		$output .= '<span class="monsterinsights-amp-value">' . number_format( $latest_pageviews ) . '</span>';
+		$output .= '<span class="monsterinsights-amp-change ' . esc_attr( $change_class ) . '">';
+		$output .= '<span class="monsterinsights-amp-icon">' . $change_icon . '</span>';
+		$output .= '<span class="monsterinsights-amp-percentage">' . number_format( abs( $change_percentage ), 1 ) . '%</span>';
+		$output .= '</span>';
+		$output .= '</div>';
+		$output .= '</div>';
+
+		// Show last 7 data points as a simple list
+		$output .= '<div class="monsterinsights-amp-data-points">';
+		$output .= '<h4>' . esc_html__( 'Last 7 days', 'google-analytics-for-wordpress' ) . '</h4>';
+		$output .= '<ul>';
+		
+		$recent_data = array_slice( array_combine( $labels, $pageviews_data ), -7 );
+		foreach ( $recent_data as $label => $value ) {
+			$output .= '<li>';
+			$output .= '<span class="monsterinsights-amp-date">' . esc_html( $label ) . '</span>';
+			$output .= '<span class="monsterinsights-amp-pageviews">' . number_format( $value ) . '</span>';
+			$output .= '</li>';
+		}
+		
+		$output .= '</ul>';
+		$output .= '</div>';
+		$output .= '</div>';
+
+		return $output;
+	}
+
+	/**
+	 * Get AMP placeholder when no data is available.
+	 *
+	 * @return string
+	 */
+	private function get_amp_placeholder() {
+		return sprintf(
+			'<div class="monsterinsights-amp-placeholder monsterinsights-pageviews-block">
+				<p>%s</p>
+			</div>',
+			esc_html__( 'No pageviews data available', 'google-analytics-for-wordpress' )
+		);
 	}
 
 	protected function get_options() {

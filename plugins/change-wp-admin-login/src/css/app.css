@@ -114,3 +114,152 @@ div.dt-container div.dt-layout-row {
 #aio-login__app a:active {
     box-shadow: none;
 }
+
+/* Ensure disabled inputs are properly styled */
+.aio-login-pro-overlay input:disabled,
+.aio-login-pro-overlay select:disabled,
+.aio-login-pro-overlay textarea:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+/* Pro Feature Overlay */
+.aio-login-pro-feature {
+	position: relative;
+}
+
+.aio-login-pro-overlay {
+	position: relative;
+	cursor: pointer;
+	filter: blur(1px);
+	transition: all 0.3s ease;
+}
+
+.aio-login-pro-overlay::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 10;
+	pointer-events: auto;
+	cursor: pointer;
+}
+
+.aio-login-pro-label {
+	color: #667eea !important;
+	font-weight: 600;
+}
+
+.aio-login-pro-desc {
+	color: #667eea !important;
+	opacity: 0.8;
+}
+
+.aio-login-pro-overlay input:disabled,
+.aio-login-pro-overlay select:disabled,
+.aio-login-pro-overlay button:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+/* Prevent table interactions */
+.aio-login-pro-overlay table,
+.aio-login-pro-overlay .dataTables_wrapper,
+.aio-login-pro-overlay .dataTables_filter,
+.aio-login-pro-overlay .dataTables_length,
+.aio-login-pro-overlay .dataTables_paginate {
+	pointer-events: none;
+}
+
+/* Prevent form interactions in pro overlay */
+.aio-login-pro-overlay .aio-login-toggle,
+.aio-login-pro-overlay .aio-login-text,
+.aio-login-pro-overlay input,
+.aio-login-pro-overlay select,
+.aio-login-pro-overlay button {
+	pointer-events: none;
+}
+
+/* Action Buttons with Theme Colors */
+.action-btn {
+	display: inline-block;
+	padding: 6px 12px;
+	border: none;
+	border-radius: 4px;
+	font-size: 12px;
+	font-weight: 500;
+	cursor: pointer;
+	margin-right: 8px;
+	text-decoration: none;
+	color: white;
+	transition: all 0.2s ease;
+	background: #9416de;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+
+.action-btn.unblock {
+	background: #9416de;
+}
+
+.action-btn.unblock:hover {
+	background: #9516df;
+}
+
+.action-btn.block {
+	background: #9416de;
+}
+
+.action-btn.block:hover {
+	background: #9516df;
+}
+
+.action-btn.delete {
+	background: #dc3545;
+}
+
+.action-btn.delete:hover {
+	background: #c82333;
+}
+
+.action-btn:last-child {
+	margin-right: 0;
+}
+
+/* Ensure buttons stay inline */
+.action-btn:not(:last-child)::after {
+	content: '';
+	margin: 0;
+}
+
+/* Force inline display for action buttons container */
+td:last-child {
+	white-space: nowrap;
+}
+
+/* Note Section Styling */
+.aio-login__note-section {
+	margin-top: 30px;
+}
+
+.aio-login__note {
+	background: #fff;
+	border-left: 4px solid #9416de;
+	padding: 15px 20px;
+	border-radius: 4px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.aio-login__note p {
+	margin: 0;
+	color: #333;
+	font-size: 14px;
+	line-height: 1.5;
+}
+
+.aio-login__note strong {
+	color: #9416de;
+	font-weight: 600;
+}

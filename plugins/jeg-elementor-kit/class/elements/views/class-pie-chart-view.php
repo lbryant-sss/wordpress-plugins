@@ -87,7 +87,7 @@ class Pie_Chart_View extends View_Abstract {
 		$content_type = esc_attr( $this->attribute['sg_content_chart'] );
 
 		if ( 'yes' === $this->attribute['st_chart_size_responsive_enable'] ) {
-			$size = esc_attr( $this->attribute['st_chart_size_enable_responsive']['size'] );
+			$size = esc_attr( isset( $this->attribute['st_chart_size_enable_responsive']['size'] ) ? $this->attribute['st_chart_size_enable_responsive']['size'] : $this->attribute['st_chart_size_enable'] );
 		}
 
 		if ( 'percentage' === $content_type ) {

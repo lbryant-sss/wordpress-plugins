@@ -14,6 +14,41 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Check if we are in an AMP context
+ *
+ * @return bool
+ * @since 8.0.0
+ */
+function monsterinsights_is_amp() {
+	// Check for AMP plugin
+	if ( function_exists( 'is_amp_endpoint' ) && is_amp_endpoint() ) {
+		return true;
+	}
+	
+	// Check for AMP theme
+	if ( function_exists( 'amp_is_request' ) && amp_is_request() ) {
+		return true;
+	}
+	
+	// Check for AMP query parameter
+	if ( isset( $_GET['amp'] ) && '1' === $_GET['amp'] ) {
+		return true;
+	}
+	
+	// Check for AMP in URL path
+	if ( isset( $_SERVER['REQUEST_URI'] ) && false !== strpos( $_SERVER['REQUEST_URI'], '/amp/' ) ) {
+		return true;
+	}
+	
+	// Check for AMP in theme
+	if ( function_exists( 'amp_is_canonical' ) && amp_is_canonical() ) {
+		return true;
+	}
+	
+	return false;
+}
+
+/**
  * Print Monsterinsights frontend tracking script.
  *
  * @return void
@@ -21,6 +56,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @access public
  */
 function monsterinsights_tracking_script() {
+	// Check if we're in AMP context - if so, don't output any scripts
+	if ( monsterinsights_is_amp() ) {
+		return;
+	}
+
 	if ( monsterinsights_skip_tracking() ) {
 		return;
 	}

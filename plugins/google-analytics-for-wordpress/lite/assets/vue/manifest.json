@@ -7,66 +7,66 @@
     "file": "css/WelcomeOverlay.css",
     "src": "WelcomeOverlay.css"
   },
-  "_LaunchWizardButton-0eeb5248.min.js": {
-    "file": "js/chunks/LaunchWizardButton-0eeb5248.min.js",
+  "_LaunchWizardButton-71308ffc.min.js": {
+    "file": "js/chunks/LaunchWizardButton-71308ffc.min.js",
     "imports": [
-      "_vendor-0853f02f.min.js"
+      "_vendor-d4221a22.min.js"
     ]
   },
-  "_SettingsInfoTooltip-4f19e286.min.js": {
-    "file": "js/chunks/SettingsInfoTooltip-4f19e286.min.js",
+  "_SettingsInfoTooltip-a59ee549.min.js": {
+    "file": "js/chunks/SettingsInfoTooltip-a59ee549.min.js",
     "imports": [
-      "_vendor-0853f02f.min.js"
+      "_vendor-d4221a22.min.js"
     ]
   },
-  "_SlideDownUp-22dab176.min.js": {
+  "_SlideDownUp-f067df8c.min.js": {
     "css": [
       "css/SlideDownUp.css"
     ],
-    "file": "js/chunks/SlideDownUp-22dab176.min.js",
+    "file": "js/chunks/SlideDownUp-f067df8c.min.js",
     "imports": [
-      "_vendor-0853f02f.min.js"
+      "_vendor-d4221a22.min.js"
     ]
   },
-  "_WelcomeOverlay-35410814.min.js": {
+  "_WelcomeOverlay-835cad54.min.js": {
     "css": [
       "css/WelcomeOverlay.css"
     ],
-    "file": "js/chunks/WelcomeOverlay-35410814.min.js",
+    "file": "js/chunks/WelcomeOverlay-835cad54.min.js",
     "imports": [
-      "_vendor-0853f02f.min.js",
-      "_index-eccfa762.min.js",
-      "_SettingsInfoTooltip-4f19e286.min.js",
-      "_SlideDownUp-22dab176.min.js"
+      "_vendor-d4221a22.min.js",
+      "_index-2ecc880d.min.js",
+      "_SettingsInfoTooltip-a59ee549.min.js",
+      "_SlideDownUp-f067df8c.min.js"
     ]
   },
-  "_WidgetReportError-b3fe6132.min.js": {
-    "file": "js/chunks/WidgetReportError-b3fe6132.min.js",
+  "_WidgetReportError-93c27f3c.min.js": {
+    "file": "js/chunks/WidgetReportError-93c27f3c.min.js",
     "imports": [
-      "_vendor-0853f02f.min.js"
+      "_vendor-d4221a22.min.js"
     ]
   },
-  "_date-intervals-9e769ed2.min.js": {
-    "file": "js/chunks/date-intervals-9e769ed2.min.js",
+  "_date-intervals-cb5f563c.min.js": {
+    "file": "js/chunks/date-intervals-cb5f563c.min.js",
     "imports": [
-      "_vendor-0853f02f.min.js",
-      "_index-eccfa762.min.js"
+      "_vendor-d4221a22.min.js",
+      "_index-2ecc880d.min.js"
     ]
   },
-  "_html2canvas-09a676fb.min.js": {
-    "file": "js/chunks/html2canvas-09a676fb.min.js",
+  "_html2canvas-6b47a9df.min.js": {
+    "file": "js/chunks/html2canvas-6b47a9df.min.js",
     "imports": [
-      "_vendor-0853f02f.min.js"
+      "_vendor-d4221a22.min.js"
     ],
     "isDynamicEntry": true
   },
-  "_index-eccfa762.min.js": {
-    "file": "js/chunks/index-eccfa762.min.js",
+  "_index-2ecc880d.min.js": {
+    "file": "js/chunks/index-2ecc880d.min.js",
     "imports": [
-      "_vendor-0853f02f.min.js"
+      "_vendor-d4221a22.min.js"
     ]
   },
-  "_index-fa2d70c1.min.js": {
+  "_index-4a0b7e92.min.js": {
     "assets": [
       "img/logo-MonsterInsights.png",
       "img/logo-MonsterInsights@2x.png",
@@ -94,21 +94,21 @@
     "css": [
       "css/index.css"
     ],
-    "file": "js/chunks/index-fa2d70c1.min.js",
+    "file": "js/chunks/index-4a0b7e92.min.js",
     "imports": [
-      "_vendor-0853f02f.min.js",
-      "_index-eccfa762.min.js",
-      "_SlideDownUp-22dab176.min.js"
+      "_vendor-d4221a22.min.js",
+      "_index-2ecc880d.min.js",
+      "_SlideDownUp-f067df8c.min.js"
     ]
   },
-  "_report-table-helper-39dc7ff9.min.js": {
-    "file": "js/chunks/report-table-helper-39dc7ff9.min.js",
+  "_report-table-helper-d4fbf606.min.js": {
+    "file": "js/chunks/report-table-helper-d4fbf606.min.js",
     "imports": [
-      "_vendor-0853f02f.min.js",
-      "_SettingsInfoTooltip-4f19e286.min.js"
+      "_vendor-d4221a22.min.js",
+      "_SettingsInfoTooltip-a59ee549.min.js"
     ]
   },
-  "_vendor-0853f02f.min.js": {
+  "_vendor-d4221a22.min.js": {
     "assets": [
       "img/sucker.png"
     ],
@@ -116,11 +116,11 @@
       "css/vendor.css"
     ],
     "dynamicImports": [
-      "_html2canvas-09a676fb.min.js",
+      "_html2canvas-6b47a9df.min.js",
       "node_modules/dompurify/dist/purify.es.js",
       "node_modules/canvg/lib/index.es.js"
     ],
-    "file": "js/chunks/vendor-0853f02f.min.js"
+    "file": "js/chunks/vendor-d4221a22.min.js"
   },
   "index.css": {
     "file": "css/index.css",
@@ -131,9 +131,9 @@
     "src": "node_modules/@caohenghu/vue-colorpicker/src/img/sucker.png"
   },
   "node_modules/canvg/lib/index.es.js": {
-    "file": "js/chunks/index.es-ee2d6526.min.js",
+    "file": "js/chunks/index.es-c72463eb.min.js",
     "imports": [
-      "_vendor-0853f02f.min.js"
+      "_vendor-d4221a22.min.js"
     ],
     "isDynamicEntry": true,
     "src": "node_modules/canvg/lib/index.es.js"
@@ -318,6 +318,10 @@
   "src/assets/img/easy-digital-downloads.png": {
     "file": "img/easy-digital-downloads.png",
     "src": "src/assets/img/easy-digital-downloads.png"
+  },
+  "src/assets/img/edd-xsell-banner.svg": {
+    "file": "img/edd-xsell-banner.svg",
+    "src": "src/assets/img/edd-xsell-banner.svg"
   },
   "src/assets/img/em-ai-insights.svg": {
     "file": "img/em-ai-insights.svg",
@@ -867,9 +871,9 @@
     "file": "img/woo-insights-ecommerce-report-image.png",
     "src": "src/assets/img/woo-insights-ecommerce-report-image.png"
   },
-  "src/assets/img/woo-insights-hero-image.png": {
-    "file": "img/woo-insights-hero-image.png",
-    "src": "src/assets/img/woo-insights-hero-image.png"
+  "src/assets/img/woo-insights-hero-image-monsterinsights.png": {
+    "file": "img/woo-insights-hero-image-monsterinsights.png",
+    "src": "src/assets/img/woo-insights-hero-image-monsterinsights.png"
   },
   "src/assets/img/woo-insights-save-60-badge.svg": {
     "file": "img/woo-insights-save-60-badge.svg",
@@ -1040,11 +1044,11 @@
     ],
     "file": "js/frontend.min.js",
     "imports": [
-      "_vendor-0853f02f.min.js",
-      "_date-intervals-9e769ed2.min.js",
-      "_WidgetReportError-b3fe6132.min.js",
-      "_LaunchWizardButton-0eeb5248.min.js",
-      "_index-eccfa762.min.js"
+      "_vendor-d4221a22.min.js",
+      "_date-intervals-cb5f563c.min.js",
+      "_WidgetReportError-93c27f3c.min.js",
+      "_LaunchWizardButton-71308ffc.min.js",
+      "_index-2ecc880d.min.js"
     ],
     "isEntry": true,
     "src": "src/modules/frontend/frontend.js"
@@ -1146,14 +1150,14 @@
     ],
     "file": "js/reports.min.js",
     "imports": [
-      "_vendor-0853f02f.min.js",
-      "_date-intervals-9e769ed2.min.js",
-      "_SettingsInfoTooltip-4f19e286.min.js",
-      "_report-table-helper-39dc7ff9.min.js",
-      "_index-fa2d70c1.min.js",
-      "_index-eccfa762.min.js",
-      "_LaunchWizardButton-0eeb5248.min.js",
-      "_SlideDownUp-22dab176.min.js"
+      "_vendor-d4221a22.min.js",
+      "_date-intervals-cb5f563c.min.js",
+      "_SettingsInfoTooltip-a59ee549.min.js",
+      "_report-table-helper-d4fbf606.min.js",
+      "_index-4a0b7e92.min.js",
+      "_index-2ecc880d.min.js",
+      "_LaunchWizardButton-71308ffc.min.js",
+      "_SlideDownUp-f067df8c.min.js"
     ],
     "isEntry": true,
     "src": "src/modules/reports/reports.js"
@@ -1169,6 +1173,7 @@
       "img/woo-insights-sessions-revenue.png",
       "img/wpconsent-page-feature-image.png",
       "img/google-ads-welcome.png",
+      "img/edd-xsell-banner.svg",
       "img/monsterinsights-addons-upsell-logo.svg",
       "img/prettylinks-ad-bg.png",
       "img/icon-download.png",
@@ -1240,7 +1245,7 @@
       "img/aioseo-screen-1.svg",
       "img/aioseo-screen-2.svg",
       "img/monsterinsights-aioseo.jpg",
-      "img/woo-insights-hero-image.png",
+      "img/woo-insights-hero-image-monsterinsights.png",
       "img/underline.png",
       "img/underline-small.png",
       "img/star.svg",
@@ -1305,13 +1310,13 @@
     ],
     "file": "js/settings.min.js",
     "imports": [
-      "_vendor-0853f02f.min.js",
-      "_index-eccfa762.min.js",
-      "_SlideDownUp-22dab176.min.js",
-      "_WelcomeOverlay-35410814.min.js",
-      "_LaunchWizardButton-0eeb5248.min.js",
-      "_SettingsInfoTooltip-4f19e286.min.js",
-      "_index-fa2d70c1.min.js"
+      "_vendor-d4221a22.min.js",
+      "_index-2ecc880d.min.js",
+      "_SlideDownUp-f067df8c.min.js",
+      "_WelcomeOverlay-835cad54.min.js",
+      "_LaunchWizardButton-71308ffc.min.js",
+      "_SettingsInfoTooltip-a59ee549.min.js",
+      "_index-4a0b7e92.min.js"
     ],
     "isEntry": true,
     "src": "src/modules/settings/settings.js"
@@ -1410,12 +1415,12 @@
     ],
     "file": "js/widget.min.js",
     "imports": [
-      "_vendor-0853f02f.min.js",
-      "_date-intervals-9e769ed2.min.js",
-      "_report-table-helper-39dc7ff9.min.js",
-      "_SettingsInfoTooltip-4f19e286.min.js",
-      "_WidgetReportError-b3fe6132.min.js",
-      "_index-eccfa762.min.js"
+      "_vendor-d4221a22.min.js",
+      "_date-intervals-cb5f563c.min.js",
+      "_report-table-helper-d4fbf606.min.js",
+      "_SettingsInfoTooltip-a59ee549.min.js",
+      "_WidgetReportError-93c27f3c.min.js",
+      "_index-2ecc880d.min.js"
     ],
     "isEntry": true,
     "src": "src/modules/widget/widget.js"
@@ -1463,12 +1468,12 @@
     ],
     "file": "js/wizard.min.js",
     "imports": [
-      "_vendor-0853f02f.min.js",
-      "_WelcomeOverlay-35410814.min.js",
-      "_SettingsInfoTooltip-4f19e286.min.js",
-      "_index-eccfa762.min.js",
-      "_LaunchWizardButton-0eeb5248.min.js",
-      "_SlideDownUp-22dab176.min.js"
+      "_vendor-d4221a22.min.js",
+      "_WelcomeOverlay-835cad54.min.js",
+      "_SettingsInfoTooltip-a59ee549.min.js",
+      "_index-2ecc880d.min.js",
+      "_LaunchWizardButton-71308ffc.min.js",
+      "_SlideDownUp-f067df8c.min.js"
     ],
     "isEntry": true,
     "src": "src/modules/wizard-onboarding/wizard.js"

@@ -1404,7 +1404,7 @@ class Team_Option extends Option_Abstract {
 			'selectors'  => array(
 				'custom' => array(
 					'{{WRAPPER}} .jeg-elementor-kit.jkit-team .social-list .social-icon a'     => 'font-size: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .jeg-elementor-kit.jkit-team .social-list .social-icon a svg' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .jeg-elementor-kit.jkit-team .social-list .social-icon a svg' => 'width: {{SIZE}}{{UNIT}}; max-height: {{SIZE}}{{UNIT}}; ',
 				),
 			),
 		);

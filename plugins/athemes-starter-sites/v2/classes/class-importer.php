@@ -689,20 +689,29 @@ class Athemes_Starter_Sites_Importer {
 
 		$time = microtime( true ) - $this->microtime;
 
-		// Check attachment count for splitting (Option 2: split every X attachments)
-		$split_after_attachments = apply_filters( 'atss_split_after_attachments', 10 );
+		// Check attachment count for splitting - only split if significant time has also passed
+		// This prevents infinite split loops and ensures we only split when actually needed
+		$split_after_attachments = apply_filters( 'atss_split_after_attachments', 10 ); // Increased from 10 to 20
 		$should_split_by_count = false;
 		
 		if ( $this->importer && method_exists( $this->importer, 'get_attachment_count' ) ) {
 			$attachment_count = $this->importer->get_attachment_count();
-			if ( $attachment_count >= $split_after_attachments ) {
+			// Only split if we've processed enough attachments AND some time has passed (at least 15 seconds)
+			// This prevents splits when all files already exist (instant processing)
+			if ( $attachment_count >= $split_after_attachments && $time > 15 ) {
 				$should_split_by_count = true;
 			}
 		}
 
 		// We should make a new ajax call, if the time is right OR attachment count is reached.
-		$time_limit = apply_filters( 'atss_time_for_one_ajax_call', 300 );
+		// Reduced from 300 to 120 to align better with JS timeout of 120 seconds
+		$time_limit = apply_filters( 'atss_time_for_one_ajax_call', 120 );
 		if ( $time > $time_limit || $should_split_by_count ) {
+
+			// Reset the attachment counter for the next AJAX call
+			if ( $this->importer && method_exists( $this->importer, 'reset_attachment_count' ) ) {
+				$this->importer->reset_attachment_count();
+			}
 
 			$response = array(
 				'success' => true,
@@ -1196,12 +1205,38 @@ class Athemes_Starter_Sites_Importer {
 		/**
 		 * Process customizer.json.
 		 */
-		// Get JSON data from customizer.json.
-		$raw = wp_remote_get( wp_unslash( $file_url ) );
+		// Increase time limit for customizer import to prevent timeout
+		if ( ! ini_get( 'safe_mode' ) ) {
+			@set_time_limit( 120 ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
+		}
+
+		// Get JSON data from customizer.json with extended timeout.
+		$raw = wp_remote_get( 
+			wp_unslash( $file_url ),
+			array(
+				'timeout' => 30, // Extended timeout for larger customizer files
+				'sslverify' => false,
+			)
+		);
+
+		// Check if fetch failed.
+		if ( is_wp_error( $raw ) ) {
+			wp_send_json_error( 
+				sprintf(
+					esc_html__( 'Failed to fetch customizer file: %s', 'athemes-starter-sites' ),
+					$raw->get_error_message()
+				)
+			);
+		}
 
 		// Abort if customizer.json response code is not successful.
 		if ( 200 != wp_remote_retrieve_response_code( $raw ) ) {
-			wp_send_json_error( esc_html__( 'Failed to load customizer demo file.', 'athemes-starter-sites' ) );
+			wp_send_json_error( 
+				sprintf(
+					esc_html__( 'Failed to load customizer demo file. HTTP %d', 'athemes-starter-sites' ),
+					wp_remote_retrieve_response_code( $raw )
+				)
+			);
 		}
 
 		// Clean customizer settings.
@@ -1210,13 +1245,23 @@ class Athemes_Starter_Sites_Importer {
 		// Decode raw JSON string to associative array.
 		$data = maybe_unserialize( wp_remote_retrieve_body( $raw ), true );
 
+		// Check if data was properly unserialized
+		if ( empty( $data ) || ! is_array( $data ) ) {
+			wp_send_json_error( esc_html__( 'Failed to parse customizer data. File may be corrupted.', 'athemes-starter-sites' ) );
+		}
+
 		$customizer = new ATSS_Customizer_Importer();
 
 		// Import.
 		$results = $customizer->import( $data );
 
 		if ( is_wp_error( $results ) ) {
-			wp_send_json_error( esc_html__( 'An error occurred while importing customizer.', 'athemes-starter-sites' ) );
+			wp_send_json_error( 
+				sprintf(
+					esc_html__( 'Customizer import error: %s', 'athemes-starter-sites' ),
+					$results->get_error_message()
+				)
+			);
 		}
 
 		/**

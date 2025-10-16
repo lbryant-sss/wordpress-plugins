@@ -254,7 +254,7 @@ class AHSC_Settings extends \AHSC\Pages\AHSC_Page {
 
 
 		$this->fields['sections']['general']['dns_preconnect']['settings_tittle'] = array(
-			'title' => wp_kses( __( 'DNS Prefetch and Preconnect:', 'aruba-hispeed-cache' ), array( 'strong' => array() ) ) ,
+			'title' => wp_kses( __( 'DNS Prefetch and Preconnect', 'aruba-hispeed-cache' ), array( 'strong' => array() ) ) ,
 			'type'  => 'title',
 			'class' =>( $is_hidden ) ? 'hidden' : '',
 		);

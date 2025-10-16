@@ -136,13 +136,18 @@ export default {
 				redirect_url: this.form_data.redirect_url,
 			} )
 				.then( response => {
-
-					this.snackbar.message = response.data.message;
-					this.snackbar.show = true;
-
+					if (response.data.success) {
+						this.snackbar.message = response.data.message;
+						this.snackbar.show = true;
+					} else {
+						this.snackbar.message = 'Error saving settings. Please try again.';
+						this.snackbar.show = true;
+					}
 				} )
 				.catch( error => {
-
+					console.error('Error saving settings:', error);
+					this.snackbar.message = 'Error saving settings. Please try again.';
+					this.snackbar.show = true;
 				} );
 		},
 
@@ -156,15 +161,21 @@ export default {
 
 		axios.get( this.namespace + '/get-settings' )
 			.then( response => {
-				var data = response.data;
+				if (response.data.success) {
+					var data = response.data.data;
 
-				this.form_data.enabled      = data.enabled;
-				this.form_data.login_url    = data.login_url;
-				this.form_data.redirect_url = data.redirect_url;
-				this.page_loaded            = true;
-				this.nonce                  = data.nonce;
+					this.form_data.enabled      = data.enabled;
+					this.form_data.login_url    = data.login_url;
+					this.form_data.redirect_url = data.redirect_url;
+					this.page_loaded            = true;
+					this.nonce                  = data.nonce;
+				} else {
+					console.error('Error loading settings:', response.data);
+					this.page_loaded = true;
+				}
 			} )
 			.catch( error => {
+				console.error('Error loading settings:', error);
 				this.page_loaded = true;
 			} );
 	}

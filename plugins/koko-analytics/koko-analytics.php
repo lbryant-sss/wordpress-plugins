@@ -3,7 +3,7 @@
 /*
 Plugin Name: Koko Analytics
 Plugin URI: https://www.kokoanalytics.com/#utm_source=wp-plugin&utm_medium=koko-analytics&utm_campaign=plugins-page
-Version: 2.0.18
+Version: 2.0.19
 Description: Privacy-friendly and efficient statistics for your WordPress site.
 Author: ibericode
 Author URI: https://www.ibericode.com/
@@ -38,7 +38,7 @@ use KokoAnalytics\Shortcodes\Shortcode_Most_Viewed_Posts;
 use KokoAnalytics\Shortcodes\Shortcode_Site_Counter;
 use KokoAnalytics\Widgets\Most_Viewed_Posts_Widget;
 
-\define('KOKO_ANALYTICS_VERSION', '2.0.18');
+\define('KOKO_ANALYTICS_VERSION', '2.0.19');
 \define('KOKO_ANALYTICS_PLUGIN_FILE', __FILE__);
 \define('KOKO_ANALYTICS_PLUGIN_DIR', __DIR__);
 
@@ -71,7 +71,8 @@ add_action('koko_analytics_aggregate_stats', [Aggregator::class, 'run'], 10, 0);
 add_action('init', 'KokoAnalytics\maybe_collect_request', 0, 0);
 
 // script loader
-add_action('wp_enqueue_scripts', [Script_Loader::class, 'maybe_enqueue_script'], 10, 0);
+add_action('wp_head', [ Script_Loader::class , 'print_js_object' ], 1, 0);
+add_action('wp_footer', [Script_Loader::class, 'maybe_print_script'], 10, 0);
 add_action('amp_print_analytics', [Script_Loader::class, 'print_amp_analytics_tag'], 10, 0);
 add_action('admin_bar_menu', [Admin\Bar::class, 'register'], 40, 1);
 
@@ -107,7 +108,7 @@ add_action('wp_loaded', [Actions::class, 'run'], 20, 0);
 
 // maybe show standalone dashboard
 add_action('wp', function () {
-    if (!isset($_GET['koko-analytics-dashboard'])) {
+    if (!Router::is('dashboard-standalone')) {
         return;
     }
 
@@ -121,7 +122,8 @@ add_action('wp', function () {
         return;
     }
 
-    (new Dashboard())->show_standalone_dashboard_page();
+    (new Dashboard_Standalone())->show();
+    exit;
 }, 10, 0);
 
 // register most viewed posts widget
@@ -133,12 +135,10 @@ if (\is_admin()) {
     add_action('wp_dashboard_setup', [Dashboard_Widget::class, 'register_dashboard_widget'], 10, 0);
 }
 
-// on plugin update (but using old code)
-// this breaks in 2.x because of the new file structure
-// TODO: Reactivate once 2.x stabilises
-// add_filter('upgrader_process_complete', function () {
-//     do_action('koko_analytics_aggregate_stats');
-// });
+// on plugin update (but using old code that's already in memory)
+add_filter('upgrader_process_complete', function () {
+    do_action('koko_analytics_aggregate_stats');
+});
 
 // on plugin activation
 register_activation_hook(__FILE__, function () {

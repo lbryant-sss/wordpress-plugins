@@ -27,7 +27,7 @@ class Stats
      */
     public function get_totals(string $start_date, string $end_date, $page = 0, $unused = null): object
     {
-        /** @var wpdb $wpdb */
+        /** @var \wpdb $wpdb */
         global $wpdb;
 
         $from = "{$wpdb->prefix}koko_analytics_site_stats s";
@@ -77,7 +77,7 @@ class Stats
      */
     public function get_stats(string $start_date, string $end_date, string $group = 'day', $page = ''): array
     {
-        /** @var wpdb $wpdb */
+        /** @var \wpdb $wpdb */
         global $wpdb;
 
         $week_starts_on = (int) get_option('start_of_week', 0);
@@ -120,14 +120,14 @@ class Stats
 
     public function get_posts(string $start_date, string $end_date, int $offset = 0, int $limit = 10): array
     {
-        /** @var wpdb $wpdb */
+        /** @var \wpdb $wpdb */
         global $wpdb;
 
         $results = $wpdb->get_results($wpdb->prepare(
             "SELECT p.path, s.post_id, IFNULL(NULLIF(wp.post_title, ''), p.path) AS label, SUM(visitors) AS visitors, SUM(pageviews) AS pageviews
                 FROM {$wpdb->prefix}koko_analytics_post_stats s
                 JOIN {$wpdb->prefix}koko_analytics_paths p ON p.id = s.path_id
-                LEFT JOIN {$wpdb->prefix}posts wp ON s.post_id = wp.ID
+                LEFT JOIN {$wpdb->prefix}posts wp ON wp.ID = s.post_id
                 WHERE s.date >= %s AND s.date <= %s
                 GROUP BY p.path, s.post_id
                 ORDER BY pageviews DESC, visitors DESC, s.path_id ASC
@@ -137,7 +137,7 @@ class Stats
 
         return array_map(function ($row) {
             $row->pageviews = (int) $row->pageviews;
-            $row->visitors = (int) $row->visitors;
+            $row->visitors = max(1, (int) $row->visitors);
 
             // for backwards compatibility with versions before 2.0
             // set post_title and post_permalink property
@@ -150,7 +150,7 @@ class Stats
 
     public function count_posts(string $start_date, string $end_date): int
     {
-        /** @var wpdb $wpdb */
+        /** @var \wpdb $wpdb */
         global $wpdb;
         return (int) $wpdb->get_var($wpdb->prepare(
             "
@@ -168,9 +168,14 @@ class Stats
 
     public function get_referrers(string $start_date, string $end_date, int $offset = 0, int $limit = 10): array
     {
-        /** @var wpdb $wpdb */
+        /** @var \wpdb $wpdb */
         global $wpdb;
-        return $wpdb->get_results($wpdb->prepare(
+
+        return array_map(function ($row) {
+            $row->pageviews = (int) $row->pageviews;
+            $row->visitors = max(1, (int) $row->visitors);
+            return $row;
+        }, $wpdb->get_results($wpdb->prepare(
             "SELECT s.id, url, SUM(visitors) As visitors, SUM(pageviews) AS pageviews
                 FROM {$wpdb->prefix}koko_analytics_referrer_stats s
                 JOIN {$wpdb->prefix}koko_analytics_referrer_urls r ON r.id = s.id
@@ -179,12 +184,12 @@ class Stats
                 ORDER BY pageviews DESC, r.id ASC
                 LIMIT %d, %d",
             [$start_date, $end_date, $offset, $limit]
-        ));
+        )));
     }
 
     public function count_referrers(string $start_date, string $end_date): int
     {
-        /** @var wpdb $wpdb */
+        /** @var \wpdb $wpdb */
         global $wpdb;
         return (int) $wpdb->get_var($wpdb->prepare(
             "SELECT COUNT(DISTINCT(s.id))

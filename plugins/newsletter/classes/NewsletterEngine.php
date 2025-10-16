@@ -289,12 +289,8 @@ class NewsletterEngine {
 
         $message->headers = apply_filters('newsletter_message_headers', $message->headers, $email, $user);
 
-//        $message->body = preg_replace('/data-json=".*?"/is', '', $email->message);
-//        $message->body = preg_replace('/  +/s', ' ', $message->body);
         $message->body = Newsletter::instance()->replace_for_email($email->message, $user, $email);
         $message->body = do_shortcode($message->body);
-
-//        $message->body = apply_filters('newsletter_message_html', $message->body, $email, $user);
 
         $message->body_text = Newsletter::instance()->replace($email->message_text, $user, $email);
         $message->body_text = apply_filters('newsletter_message_text', $message->body_text, $email, $user);
@@ -308,8 +304,6 @@ class NewsletterEngine {
         } else {
             $message->subject = Newsletter::instance()->replace($email->subject, $user, $email);
         }
-
-//        $message->subject = apply_filters('newsletter_message_subject', $message->subject, $email, $user);
 
         if (!empty($email->options['sender_email'])) {
             $message->from = $email->options['sender_email'];

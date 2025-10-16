@@ -1020,6 +1020,14 @@ class Options_Field {
                     'label_off' => __( 'OFF', 'woolentor' ),
                 ),
                 array(
+                    'id'    => 'product_grid_modern',
+                    'name' => esc_html__( 'Product Grid - Modern', 'woolentor' ),
+                    'type'    => 'element',
+                    'default' => 'on',
+                    'label_on' => __( 'ON', 'woolentor' ),
+                    'label_off' => __( 'OFF', 'woolentor' ),
+                ),
+                array(
                     'id'    => 'universal_product',
                     'name' => wp_kses_post( 'Universal Product (<a href="'.esc_url(admin_url( 'admin.php?page=woolentor#/style' )).'">Style Settings</a>)' ),
                     'type'    => 'element',

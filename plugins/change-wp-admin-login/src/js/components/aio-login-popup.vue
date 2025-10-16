@@ -109,7 +109,7 @@ export default {
 }
 
 .aio-login__popup-content {
-	height: 400px;
+	/* height: 400px; */
 }
 
 .aio-login__popup-footer {

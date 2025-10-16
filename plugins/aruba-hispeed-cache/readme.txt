@@ -68,6 +68,10 @@ wordpress_no_cache, comment_author, wordpress_logged_in_, yith_wcwl_products, wp
 
 == Changelog ==
 
+= 3.0.2 =
+* CDN Support.
+* Various minor bug fixes.
+
 = 3.0.1 =
 * Various minor bug fixes.
 
@@ -222,5 +226,6 @@ wordpress_no_cache, comment_author, wordpress_logged_in_, yith_wcwl_products, wp
 
 == Upgrade Notice ==
 
-= 3.0.1 =
+= 3.0.2 =
+* CDN Support.
 * Various minor bug fixes.

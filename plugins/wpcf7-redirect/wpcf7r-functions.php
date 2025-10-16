@@ -570,7 +570,7 @@ function wpcf7r_qs_date( $atts ) {
 		'wpcf7-redirect'
 	);
 
-	return gmdate( $atts['format'], time() );
+	return esc_html( gmdate( sanitize_text_field( $atts['format'] ), time() ) );
 }
 
 /**

@@ -27,6 +27,223 @@ if ( ! function_exists( 'jkit_get_menu_option' ) ) {
 	}
 }
 
+if ( ! function_exists( 'essential_is_wp_debug' ) ) {
+	/**
+	 * Check if wp_debug mode is enable
+	 *
+	 * @return boolean
+	 */
+	function essential_is_wp_debug() {
+		return defined( 'WP_DEBUG' ) && true === WP_DEBUG;
+	}
+}
+
+if ( ! function_exists( 'essential_get_license' ) ) {
+	/**
+	 * Get license data
+	 *
+	 * @return string
+	 */
+	function essential_get_license() {
+		return get_option( essential_get_license_optionname(), array() );
+	}
+}
+
+if ( ! function_exists( 'essential_get_license_optionname' ) ) {
+	/**
+	 * Get license option name
+	 *
+	 * @return string
+	 */
+	function essential_get_license_optionname() {
+		return 'essential_license';
+	}
+}
+
+if ( ! function_exists( 'essential_imported_demo_key' ) ) {
+	/**
+	 * Imported demo option name
+	 *
+	 * @return string
+	 */
+	function essential_imported_demo_key() {
+		return ESSENTIAL_FRAMEWORK . '_option_imported_demo';
+	}
+}
+
+if ( ! function_exists( 'essential_create_import_backup' ) ) {
+	/**
+	 * Create import backup once
+	 */
+	function essential_create_import_backup() {
+		$args         = array();
+		$option_name  = essential_import_backup_key();
+		$option_value = get_option( $option_name );
+		$active_kit   = get_option( 'elementor_active_kit' );
+
+		if ( $active_kit ) {
+			$args['style'] = $active_kit;
+		}
+
+		if ( ! $option_value && ! empty( $args ) ) {
+			update_option( $option_name, $args );
+		}
+	}
+}
+
+if ( ! function_exists( 'essential_favorited_demo_key' ) ) {
+	/**
+	 * Favorited demo option name
+	 *
+	 * @return string
+	 */
+	function essential_favorited_demo_key() {
+		return ESSENTIAL_FRAMEWORK . '_option_favorited_demo';
+	}
+}
+
+if ( ! function_exists( 'essential_import_backup_key' ) ) {
+	/**
+	 * Backup import option name
+	 *
+	 * @return string
+	 */
+	function essential_import_backup_key() {
+		return ESSENTIAL_FRAMEWORK . '_option_import_backup';
+	}
+}
+
+if ( ! function_exists( 'essential_get_theme_filter_key' ) ) {
+	/**
+	 * Get Theme Filter Key
+	 *
+	 * @return string
+	 */
+	function essential_get_theme_filter_key() {
+		$default = 'jkit';
+
+		return apply_filters( 'essential_get_theme_filter_key', $default );
+	}
+}
+
+if ( ! function_exists( 'essential_import_menu' ) ) {
+	/**
+	 * Import menu
+	 *
+	 * @param string $menu_title .
+	 * @param array  $menu_items .
+	 * @param string $demo .
+	 *
+	 * @return int
+	 */
+	function essential_import_menu( $menu_title, $menu_items, $demo ) {
+		$menu_exists = wp_create_nav_menu( $menu_title . ' ' . ucwords( $demo ) );
+		$menu_temp   = array();
+		$import_data = get_option( essential_import_demo_key( $demo ), array() );
+
+		foreach ( $menu_items as $menu_item ) {
+			switch ( $menu_item['object'] ) {
+				case 'page':
+				case 'post':
+				case 'product':
+					if ( isset( $import_data['page'] ) ) {
+						$id = array_search( $menu_item['slug'], $import_data['page'] );
+
+						if ( $id ) {
+							$menu_item_data = array(
+								'menu-item-object-id' => $id,
+								'menu-item-object'    => $menu_item['object'],
+								'menu-item-type'      => $menu_item['type'],
+								'menu-item-title'     => $menu_item['title'],
+								'menu-item-status'    => 'publish',
+								'menu-item-parent-id' => isset( $menu_item['parent'] ) && isset( $menu_temp[ $menu_item['parent'] ] ) ? $menu_temp[ $menu_item['parent'] ] : '',
+							);
+
+							$new_menu = wp_update_nav_menu_item( $menu_exists, 0, $menu_item_data );
+
+							if ( $new_menu ) {
+								$menu_temp[ $menu_item['slug'] ] = $new_menu;
+							}
+						}
+					}
+					break;
+
+				case 'category':
+					$category = get_term_by( 'slug', $menu_item['slug'], $menu_item['object'] );
+
+					if ( $category ) {
+						$menu_item_data = array(
+							'menu-item-object-id' => $category->term_id,
+							'menu-item-object'    => $menu_item['object'],
+							'menu-item-type'      => $menu_item['type'],
+							'menu-item-title'     => $menu_item['title'],
+							'menu-item-status'    => 'publish',
+							'menu-item-parent-id' => isset( $menu_item['parent'] ) && isset( $menu_temp[ $menu_item['parent'] ] ) ? $menu_temp[ $menu_item['parent'] ] : '',
+						);
+
+						$new_menu = wp_update_nav_menu_item( $menu_exists, 0, $menu_item_data );
+
+						if ( $new_menu ) {
+							$menu_temp[ $menu_item['slug'] ] = $new_menu;
+						}
+					}
+					break;
+
+				case 'custom':
+					if ( strpos( $menu_item['url'], '/shop' ) !== false ) {
+						$menu_item['url'] = home_url() . '/shop';
+					}
+
+					$menu_item_data = array(
+						'menu-item-object-id' => '',
+						'menu-item-object'    => $menu_item['object'],
+						'menu-item-type'      => $menu_item['type'],
+						'menu-item-title'     => $menu_item['title'],
+						'menu-item-url'       => $menu_item['url'],
+						'menu-item-status'    => 'publish',
+						'menu-item-parent-id' => isset( $menu_item['parent'] ) && isset( $menu_temp[ $menu_item['parent'] ] ) ? $menu_temp[ $menu_item['parent'] ] : '',
+					);
+
+					$new_menu = wp_update_nav_menu_item( $menu_exists, 0, $menu_item_data );
+
+					if ( $new_menu ) {
+						$menu_temp[ $menu_item['slug'] ] = $new_menu;
+					}
+					break;
+			}
+
+			if (isset($menu_item['mega'])) {
+				$query = new WP_Query(
+					array(
+						'name' => $menu_item['mega'],
+						'post_type'   => 'elementor_library',
+						'post_status' => 'publish',
+						'posts_per_page' => 1
+					)
+				);
+				
+				if ( $query->have_posts() ) {
+					update_post_meta( $new_menu, 'menu_item_jkit_mega_menu', array( 'jkit_mega_menu' => $query->posts[0]->ID ) );
+				}
+			}
+		}
+
+		return $menu_exists;
+	}
+}
+
+if ( ! function_exists( 'essential_import_demo_key' ) ) {
+	/**
+	 * Import demo option name
+	 *
+	 * @param array $demo .
+	 * @return string
+	 */
+	function essential_import_demo_key( $demo ) {
+		return ESSENTIAL_FRAMEWORK . '_option_import_' . $demo;
+	}
+}
+
 
 if ( ! function_exists( 'jkit_edit_post' ) ) {
 	/**
@@ -236,14 +453,14 @@ if ( ! function_exists( 'jkit_get_taxonomies' ) ) {
 	function jkit_get_taxonomies( $label = true ) {
 		$taxonomies = get_taxonomies(
 			array(
-				'public'  => true,
+				'public' => true,
 				'show_ui' => true,
 			)
 		);
 
 		if ( $label ) {
 			foreach ( $taxonomies as $taxonomy ) {
-				$object                  = get_taxonomy( $taxonomy );
+				$object = get_taxonomy( $taxonomy );
 				$taxonomies[ $taxonomy ] = $object->labels->name;
 			}
 		} else {
@@ -263,7 +480,7 @@ if ( ! function_exists( 'jkit_get_public_post_type' ) ) {
 	function jkit_get_public_post_type() {
 		$types = get_post_types(
 			array(
-				'public'  => true,
+				'public' => true,
 				'show_ui' => true,
 			)
 		);
@@ -274,7 +491,7 @@ if ( ! function_exists( 'jkit_get_public_post_type' ) ) {
 			if ( in_array( $type, $exclude ) ) {
 				unset( $types[ $type ] );
 			} else {
-				$object         = get_post_type_object( $type );
+				$object = get_post_type_object( $type );
 				$types[ $type ] = $object->labels->singular_name;
 			}
 		}
@@ -292,7 +509,7 @@ if ( ! function_exists( 'jkit_get_public_post_type_array' ) ) {
 	function jkit_get_public_post_type_array() {
 		$types = get_post_types(
 			array(
-				'public'  => true,
+				'public' => true,
 				'show_ui' => true,
 			)
 		);
@@ -318,7 +535,7 @@ if ( ! function_exists( 'jkit_get_element_data' ) ) {
 	function jkit_get_element_data( $type, $meta = null ) {
 		return array(
 			'publish' => jkit_get_element( 'publish', $type, $meta ),
-			'draft'   => jkit_get_element( 'draft', $type, $meta ),
+			'draft' => jkit_get_element( 'draft', $type, $meta ),
 		);
 	}
 }
@@ -335,10 +552,11 @@ if ( ! function_exists( 'jkit_get_element' ) ) {
 	 */
 	function jkit_get_element( $status, $type, $meta = null ) {
 		$args = array(
-			'post_type'   => $type,
-			'orderby'     => 'menu_order',
-			'order'       => 'ASC',
+			'post_type' => $type,
+			'orderby' => 'menu_order',
+			'order' => 'ASC',
 			'post_status' => $status,
+			'numberposts' => '-1',
 		);
 
 		if ( jkit_is_multilanguage() ) {
@@ -348,21 +566,21 @@ if ( ! function_exists( 'jkit_get_element' ) ) {
 		if ( $meta ) {
 			$args['meta_query'] = array(
 				array(
-					'key'   => 'jkit-template-type',
+					'key' => 'jkit-template-type',
 					'value' => $meta,
 				),
 			);
 		}
 
-		$query  = get_posts( $args );
+		$query = get_posts( $args );
 		$result = array();
 
 		if ( $query ) {
 			foreach ( $query as $post ) {
 				$result[] = array(
-					'id'    => $post->ID,
+					'id' => $post->ID,
 					'title' => $post->post_title,
-					'url'   => \Jeg\Elementor_Kit\Dashboard\Dashboard::editor_url( $post->ID ),
+					'url' => \Jeg\Elementor_Kit\Dashboard\Dashboard::editor_url( $post->ID ),
 				);
 			}
 		}
@@ -382,7 +600,7 @@ if ( ! function_exists( 'get_jkit_template_classes' ) ) {
 	 */
 	function get_jkit_template_classes( $template = 'header' ) {
 		$html_classes = '';
-		$classes      = array();
+		$classes = array();
 
 		if ( 'header' === $template ) {
 			$classes = apply_filters( 'jkit_header_template_classes', array() );
@@ -452,11 +670,11 @@ if ( ! function_exists( 'jkit_get_elementor_saved_template_option' ) ) {
 		$options = array();
 
 		$default_args = array(
-			'post_type'      => 'elementor_library',
+			'post_type' => 'elementor_library',
 			'posts_per_page' => -1,
 		);
 
-		$args           = array_replace( $default_args, $args );
+		$args = array_replace( $default_args, $args );
 		$page_templates = get_posts( $args );
 
 		if ( ! empty( $page_templates ) && ! is_wp_error( $page_templates ) ) {
@@ -504,7 +722,7 @@ if ( ! function_exists( 'jkit_get_responsive_breakpoints' ) ) {
 			array_push(
 				$breakpoints,
 				array(
-					'key'   => $key,
+					'key' => $key,
 					'value' => $breakpoint->get_value(),
 					'label' => $breakpoint->get_label(),
 				)
@@ -513,7 +731,7 @@ if ( ! function_exists( 'jkit_get_responsive_breakpoints' ) ) {
 
 		usort(
 			$breakpoints,
-			function ( $a, $b ) {
+			function ($a, $b) {
 				return $b['value'] - $a['value'];
 			}
 		);
@@ -546,7 +764,7 @@ if ( ! function_exists( 'jkit_remove_form_control' ) ) {
 	 */
 	function jkit_remove_form_control() {
 		$conditions = false;
-		$page       = isset( $_GET['page'] ) ? sanitize_text_field( $_GET['page'] ) : '';
+		$page = isset( $_GET['page'] ) ? sanitize_text_field( $_GET['page'] ) : '';
 
 		if ( $page ) {
 			$lists = array( 'gf_', 'formidable', 'bookly-', 'vik', 'wpdatatables-' );
@@ -579,24 +797,24 @@ if ( ! function_exists( 'jkit_render_guteverse_banner' ) ) {
 		wp_enqueue_style( 'gutenverse-banner', $banner_assets . 'style.css', array(), JEG_ELEMENTOR_KIT_VERSION );
 		?>
 		<div class="gutenverse-banner <?php echo ( isset( $data->url ) && isset( $data->banner ) ) ? 'fetch' : ''; ?>">
-			<?php if ( isset( $data->url ) && isset( $data->banner ) ) : ?>	
+			<?php if ( isset( $data->url ) && isset( $data->banner ) ) : ?>
 				<a href="<?php echo esc_url( $data->url ); ?>" target="_blank">
-					<img src="<?php echo esc_url( $data->banner ); ?>" width="300px" height="300px" loading="lazy" alt="Logo"/>
+					<img src="<?php echo esc_url( $data->banner ); ?>" width="300px" height="300px" loading="lazy" alt="Logo" />
 				</a>
 			<?php else : ?>
-			<div class="banner-content">
-				<div class="logo-wrapper"><img class="logo" src="<?php echo esc_url( $banner_assets ); ?>gutenverse-logo.svg" loading="lazy" alt="Logo" /></div>
-				<div class="main-content">
-					Advanced Addons for Gutenberg Or Fullsite Editing (FSE)
-				</div>
-				<div class="buttons">
-					<div class="plugin-link">
-						<a href="<?php echo esc_url( network_admin_url( 'plugin-install.php?s=gutenverse&tab=search&type=term' ) ); ?>" target="_blank" rel="noreferrer">
-							Try Gutenverse
-						</a>
+				<div class="banner-content">
+					<div class="logo-wrapper"><img class="logo" src="<?php echo esc_url( $banner_assets ); ?>gutenverse-logo.svg" loading="lazy" alt="Logo" /></div>
+					<div class="main-content">
+						Advanced Addons for Gutenberg Or Fullsite Editing (FSE)
+					</div>
+					<div class="buttons">
+						<div class="plugin-link">
+							<a href="<?php echo esc_url( network_admin_url( 'plugin-install.php?s=gutenverse&tab=search&type=term' ) ); ?>" target="_blank" rel="noreferrer">
+								Try Gutenverse
+							</a>
+						</div>
 					</div>
 				</div>
-			</div>
 			<?php endif; ?>
 		</div>
 		<?php
@@ -632,19 +850,19 @@ if ( ! function_exists( 'jkit_allowed_html' ) ) {
 		$allowedtags['img'] = array_merge(
 			isset( $allowedtags['img'] ) ? $allowedtags['img'] : array(),
 			array(
-				'loading'  => true,
-				'id'       => true,
+				'loading' => true,
+				'id' => true,
 				'decoding' => true,
-				'sizes'    => true,
+				'sizes' => true,
 			)
 		);
 
 		$allowedtags['a'] = array_merge(
 			isset( $allowedtags['a'] ) ? $allowedtags['a'] : array(),
 			array(
-				'aria-label'    => true,
-				'rel'           => true,
-				'data-*'        => true,
+				'aria-label' => true,
+				'rel' => true,
+				'data-*' => true,
 				'aria-expanded' => true,
 				'aria-controls' => true,
 			)
@@ -654,14 +872,14 @@ if ( ! function_exists( 'jkit_allowed_html' ) ) {
 			isset( $allowedtags['i'] ) ? $allowedtags['i'] : array(),
 			array(
 				'aria-hidden' => true,
-				'class'       => true,
+				'class' => true,
 			)
 		);
 
 		$allowedtags['link'] = array_merge(
 			isset( $allowedtags['link'] ) ? $allowedtags['link'] : array(),
 			array(
-				'rel'  => true,
+				'rel' => true,
 				'href' => true,
 			)
 		);
@@ -669,7 +887,7 @@ if ( ! function_exists( 'jkit_allowed_html' ) ) {
 		$allowedtags['legend'] = array_merge(
 			isset( $allowedtags['legend'] ) ? $allowedtags['legend'] : array(),
 			array(
-				'id'    => true,
+				'id' => true,
 				'class' => true,
 			)
 		);
@@ -677,12 +895,12 @@ if ( ! function_exists( 'jkit_allowed_html' ) ) {
 		$allowedtags['form'] = array_merge(
 			isset( $allowedtags['form'] ) ? $allowedtags['form'] : array(),
 			array(
-				'method'       => true,
-				'id'           => true,
-				'class'        => true,
-				'role'         => true,
-				'action'       => true,
-				'data-*'       => true,
+				'method' => true,
+				'id' => true,
+				'class' => true,
+				'role' => true,
+				'action' => true,
+				'data-*' => true,
 				'autocomplete' => true,
 			)
 		);
@@ -690,7 +908,7 @@ if ( ! function_exists( 'jkit_allowed_html' ) ) {
 		$allowedtags['fieldset'] = array_merge(
 			isset( $allowedtags['fieldset'] ) ? $allowedtags['fieldset'] : array(),
 			array(
-				'id'    => true,
+				'id' => true,
 				'class' => true,
 			)
 		);
@@ -698,19 +916,19 @@ if ( ! function_exists( 'jkit_allowed_html' ) ) {
 		$allowedtags['input'] = array_merge(
 			isset( $allowedtags['input'] ) ? $allowedtags['input'] : array(),
 			array(
-				'type'         => true,
-				'name'         => true,
-				'id'           => true,
-				'class'        => true,
-				'placeholder'  => true,
-				'required'     => true,
-				'value'        => true,
-				'step'         => true,
-				'min'          => true,
-				'max'          => true,
-				'title'        => true,
-				'size'         => true,
-				'inputmode'    => true,
+				'type' => true,
+				'name' => true,
+				'id' => true,
+				'class' => true,
+				'placeholder' => true,
+				'required' => true,
+				'value' => true,
+				'step' => true,
+				'min' => true,
+				'max' => true,
+				'title' => true,
+				'size' => true,
+				'inputmode' => true,
 				'autocomplete' => true,
 			)
 		);
@@ -718,9 +936,9 @@ if ( ! function_exists( 'jkit_allowed_html' ) ) {
 		$allowedtags['label'] = array_merge(
 			isset( $allowedtags['label'] ) ? $allowedtags['label'] : array(),
 			array(
-				'id'    => true,
+				'id' => true,
 				'class' => true,
-				'for'   => true,
+				'for' => true,
 			)
 		);
 
@@ -728,17 +946,17 @@ if ( ! function_exists( 'jkit_allowed_html' ) ) {
 			isset( $allowedtags['canvas'] ) ? $allowedtags['canvas'] : array(),
 			array(
 				'height' => true,
-				'width'  => true,
-				'id'     => true,
-				'class'  => true,
+				'width' => true,
+				'id' => true,
+				'class' => true,
 			)
 		);
 
 		$allowedtags['div'] = array_merge(
 			isset( $allowedtags['div'] ) ? $allowedtags['div'] : array(),
 			array(
-				'style'    => true,
-				'data-*'   => true,
+				'style' => true,
+				'data-*' => true,
 				'tabindex' => true,
 			)
 		);
@@ -746,17 +964,17 @@ if ( ! function_exists( 'jkit_allowed_html' ) ) {
 		$allowedtags['linearGradient'] = array_merge(
 			isset( $allowedtags['linearGradient'] ) ? $allowedtags['linearGradient'] : array(),
 			array(
-				'gradientUnits'     => true,
+				'gradientUnits' => true,
 				'gradientTransform' => true,
-				'href'              => true,
-				'spreadMethod'      => true,
-				'x1'                => true,
-				'x2'                => true,
-				'y1'                => true,
-				'y2'                => true,
-				'id'                => true,
-				'class'             => true,
-				'style'             => true,
+				'href' => true,
+				'spreadMethod' => true,
+				'x1' => true,
+				'x2' => true,
+				'y1' => true,
+				'y2' => true,
+				'id' => true,
+				'class' => true,
+				'style' => true,
 			)
 		);
 
@@ -770,9 +988,9 @@ if ( ! function_exists( 'jkit_allowed_html' ) ) {
 		$allowedtags['svg'] = array_merge(
 			isset( $allowedtags['svg'] ) ? $allowedtags['svg'] : array(),
 			array(
-				'id'                  => true,
-				'xmlns'               => true,
-				'viewbox'             => true,
+				'id' => true,
+				'xmlns' => true,
+				'viewbox' => true,
 				'preserveaspectratio' => true,
 			)
 		);
@@ -780,50 +998,50 @@ if ( ! function_exists( 'jkit_allowed_html' ) ) {
 		$allowedtags['path'] = array_merge(
 			isset( $allowedtags['path'] ) ? $allowedtags['path'] : array(),
 			array(
-				'd'                   => true,
-				'pathLength'          => true,
-				'id'                  => true,
-				'tabindex'            => true,
-				'class'               => true,
-				'style'               => true,
-				'requiredExtensions'  => true,
-				'systemLanguage'      => true,
-				'clip-path'           => true,
-				'clip-rule'           => true,
-				'color'               => true,
+				'd' => true,
+				'pathLength' => true,
+				'id' => true,
+				'tabindex' => true,
+				'class' => true,
+				'style' => true,
+				'requiredExtensions' => true,
+				'systemLanguage' => true,
+				'clip-path' => true,
+				'clip-rule' => true,
+				'color' => true,
 				'color-interpolation' => true,
-				'color-rendering'     => true,
-				'cursor'              => true,
-				'display'             => true,
-				'fill'                => true,
-				'fill-opacity'        => true,
-				'fill-rule'           => true,
-				'filter'              => true,
-				'mask'                => true,
-				'opacity'             => true,
-				'pointer-events'      => true,
-				' shape-rendering'    => true,
-				'stroke'              => true,
-				'stroke-dasharray'    => true,
-				'stroke-dashoffset'   => true,
-				'stroke-linecap'      => true,
-				'stroke-linejoin'     => true,
-				'stroke-miterlimit'   => true,
-				'stroke-opacity'      => true,
-				'stroke-width'        => true,
-				'transform'           => true,
-				'vector-effect'       => true,
-				'visibility'          => true,
+				'color-rendering' => true,
+				'cursor' => true,
+				'display' => true,
+				'fill' => true,
+				'fill-opacity' => true,
+				'fill-rule' => true,
+				'filter' => true,
+				'mask' => true,
+				'opacity' => true,
+				'pointer-events' => true,
+				' shape-rendering' => true,
+				'stroke' => true,
+				'stroke-dasharray' => true,
+				'stroke-dashoffset' => true,
+				'stroke-linecap' => true,
+				'stroke-linejoin' => true,
+				'stroke-miterlimit' => true,
+				'stroke-opacity' => true,
+				'stroke-width' => true,
+				'transform' => true,
+				'vector-effect' => true,
+				'visibility' => true,
 			)
 		);
 
 		$allowedtags['select'] = array_merge(
 			isset( $allowedtags['select'] ) ? $allowedtags['select'] : array(),
 			array(
-				'id'     => true,
-				'class'  => true,
-				'name'   => true,
-				'value'  => true,
+				'id' => true,
+				'class' => true,
+				'name' => true,
+				'value' => true,
 				'data-*' => true,
 			)
 		);
@@ -831,7 +1049,7 @@ if ( ! function_exists( 'jkit_allowed_html' ) ) {
 		$allowedtags['option'] = array_merge(
 			isset( $allowedtags['option'] ) ? $allowedtags['option'] : array(),
 			array(
-				'id'    => true,
+				'id' => true,
 				'class' => true,
 				'value' => true,
 			)
@@ -840,7 +1058,7 @@ if ( ! function_exists( 'jkit_allowed_html' ) ) {
 		$allowedtags['template'] = array_merge(
 			isset( $allowedtags['template'] ) ? $allowedtags['template'] : array(),
 			array(
-				'id'    => true,
+				'id' => true,
 				'class' => true,
 			)
 		);
@@ -848,7 +1066,7 @@ if ( ! function_exists( 'jkit_allowed_html' ) ) {
 		$allowedtags['p'] = array_merge(
 			isset( $allowedtags['p'] ) ? $allowedtags['p'] : array(),
 			array(
-				'id'    => true,
+				'id' => true,
 				'class' => true,
 			)
 		);
@@ -856,18 +1074,18 @@ if ( ! function_exists( 'jkit_allowed_html' ) ) {
 		$allowedtags['table'] = array_merge(
 			isset( $allowedtags['table'] ) ? $allowedtags['table'] : array(),
 			array(
-				'id'          => true,
-				'class'       => true,
+				'id' => true,
+				'class' => true,
 				'cellspacing' => true,
-				'data-*'      => true,
+				'data-*' => true,
 			)
 		);
 
 		$allowedtags['thead'] = array_merge(
 			isset( $allowedtags['thead'] ) ? $allowedtags['thead'] : array(),
 			array(
-				'id'     => true,
-				'class'  => true,
+				'id' => true,
+				'class' => true,
 				'data-*' => true,
 			)
 		);
@@ -875,9 +1093,9 @@ if ( ! function_exists( 'jkit_allowed_html' ) ) {
 		$allowedtags['th'] = array_merge(
 			isset( $allowedtags['th'] ) ? $allowedtags['th'] : array(),
 			array(
-				'id'      => true,
-				'class'   => true,
-				'data-*'  => true,
+				'id' => true,
+				'class' => true,
+				'data-*' => true,
 				'colspan' => true,
 			)
 		);
@@ -885,8 +1103,8 @@ if ( ! function_exists( 'jkit_allowed_html' ) ) {
 		$allowedtags['tbody'] = array_merge(
 			isset( $allowedtags['tbody'] ) ? $allowedtags['tbody'] : array(),
 			array(
-				'id'     => true,
-				'class'  => true,
+				'id' => true,
+				'class' => true,
 				'data-*' => true,
 			)
 		);
@@ -894,8 +1112,8 @@ if ( ! function_exists( 'jkit_allowed_html' ) ) {
 		$allowedtags['tr'] = array_merge(
 			isset( $allowedtags['tr'] ) ? $allowedtags['tr'] : array(),
 			array(
-				'id'     => true,
-				'class'  => true,
+				'id' => true,
+				'class' => true,
 				'data-*' => true,
 			)
 		);
@@ -903,9 +1121,9 @@ if ( ! function_exists( 'jkit_allowed_html' ) ) {
 		$allowedtags['td'] = array_merge(
 			isset( $allowedtags['td'] ) ? $allowedtags['td'] : array(),
 			array(
-				'id'      => true,
-				'class'   => true,
-				'data-*'  => true,
+				'id' => true,
+				'class' => true,
+				'data-*' => true,
 				'colspan' => true,
 			)
 		);
@@ -913,10 +1131,10 @@ if ( ! function_exists( 'jkit_allowed_html' ) ) {
 		$allowedtags['button'] = array_merge(
 			isset( $allowedtags['button'] ) ? $allowedtags['button'] : array(),
 			array(
-				'id'    => true,
+				'id' => true,
 				'class' => true,
-				'type'  => true,
-				'name'  => true,
+				'type' => true,
+				'name' => true,
 				'value' => true,
 			)
 		);
@@ -924,7 +1142,7 @@ if ( ! function_exists( 'jkit_allowed_html' ) ) {
 		$allowedtags['header'] = array_merge(
 			isset( $allowedtags['header'] ) ? $allowedtags['header'] : array(),
 			array(
-				'id'    => true,
+				'id' => true,
 				'class' => true,
 			)
 		);
@@ -932,7 +1150,7 @@ if ( ! function_exists( 'jkit_allowed_html' ) ) {
 		$allowedtags['address'] = array_merge(
 			isset( $allowedtags['address'] ) ? $allowedtags['address'] : array(),
 			array(
-				'id'    => true,
+				'id' => true,
 				'class' => true,
 			)
 		);
@@ -940,7 +1158,7 @@ if ( ! function_exists( 'jkit_allowed_html' ) ) {
 		$allowedtags['nav'] = array_merge(
 			isset( $allowedtags['nav'] ) ? $allowedtags['nav'] : array(),
 			array(
-				'id'    => true,
+				'id' => true,
 				'class' => true,
 			)
 		);
@@ -948,7 +1166,7 @@ if ( ! function_exists( 'jkit_allowed_html' ) ) {
 		$allowedtags['ul'] = array_merge(
 			isset( $allowedtags['ul'] ) ? $allowedtags['ul'] : array(),
 			array(
-				'id'    => true,
+				'id' => true,
 				'class' => true,
 			)
 		);
@@ -956,7 +1174,7 @@ if ( ! function_exists( 'jkit_allowed_html' ) ) {
 		$allowedtags['li'] = array_merge(
 			isset( $allowedtags['li'] ) ? $allowedtags['li'] : array(),
 			array(
-				'id'    => true,
+				'id' => true,
 				'class' => true,
 			)
 		);
@@ -964,7 +1182,7 @@ if ( ! function_exists( 'jkit_allowed_html' ) ) {
 		$allowedtags['h1'] = array_merge(
 			isset( $allowedtags['h1'] ) ? $allowedtags['h1'] : array(),
 			array(
-				'id'    => true,
+				'id' => true,
 				'class' => true,
 			)
 		);
@@ -972,7 +1190,7 @@ if ( ! function_exists( 'jkit_allowed_html' ) ) {
 		$allowedtags['h2'] = array_merge(
 			isset( $allowedtags['h2'] ) ? $allowedtags['h2'] : array(),
 			array(
-				'id'    => true,
+				'id' => true,
 				'class' => true,
 			)
 		);
@@ -980,7 +1198,7 @@ if ( ! function_exists( 'jkit_allowed_html' ) ) {
 		$allowedtags['h3'] = array_merge(
 			isset( $allowedtags['h3'] ) ? $allowedtags['h3'] : array(),
 			array(
-				'id'    => true,
+				'id' => true,
 				'class' => true,
 			)
 		);
@@ -988,7 +1206,7 @@ if ( ! function_exists( 'jkit_allowed_html' ) ) {
 		$allowedtags['h4'] = array_merge(
 			isset( $allowedtags['h4'] ) ? $allowedtags['h4'] : array(),
 			array(
-				'id'    => true,
+				'id' => true,
 				'class' => true,
 			)
 		);
@@ -996,7 +1214,7 @@ if ( ! function_exists( 'jkit_allowed_html' ) ) {
 		$allowedtags['h5'] = array_merge(
 			isset( $allowedtags['h5'] ) ? $allowedtags['h5'] : array(),
 			array(
-				'id'    => true,
+				'id' => true,
 				'class' => true,
 			)
 		);
@@ -1004,7 +1222,7 @@ if ( ! function_exists( 'jkit_allowed_html' ) ) {
 		$allowedtags['h6'] = array_merge(
 			isset( $allowedtags['h6'] ) ? $allowedtags['h6'] : array(),
 			array(
-				'id'    => true,
+				'id' => true,
 				'class' => true,
 			)
 		);
@@ -1016,9 +1234,9 @@ if ( ! function_exists( 'jkit_allowed_html' ) ) {
 			)
 		);
 
-		$allowedtags['ins']   = array_merge( isset( $allowedtags['ins'] ) ? $allowedtags['ins'] : array(), array() );
+		$allowedtags['ins'] = array_merge( isset( $allowedtags['ins'] ) ? $allowedtags['ins'] : array(), array() );
 		$allowedtags['style'] = array_merge( isset( $allowedtags['style'] ) ? $allowedtags['style'] : array(), array() );
-		$allowedtags['bdi']   = array_merge( isset( $allowedtags['bdi'] ) ? $allowedtags['bdi'] : array(), array() );
+		$allowedtags['bdi'] = array_merge( isset( $allowedtags['bdi'] ) ? $allowedtags['bdi'] : array(), array() );
 
 		return $allowedtags;
 	}
@@ -1192,18 +1410,18 @@ if ( ! function_exists( 'jkit_render_faq_schema_seo' ) ) {
 
 		if ( ! empty( $data ) ) {
 			$schema = array(
-				'@context'   => 'https://schema.org',
-				'@type'      => 'FAQPage',
+				'@context' => 'https://schema.org',
+				'@type' => 'FAQPage',
 				'mainEntity' => array(),
 			);
 
 			foreach ( $data as $item ) {
 				$schema['mainEntity'][] = array(
-					'@type'          => 'Question',
-					'name'           => $item['question'],
+					'@type' => 'Question',
+					'name' => $item['question'],
 					'acceptedAnswer' => array(
 						'@type' => 'Answer',
-						'text'  => $item['answer'],
+						'text' => $item['answer'],
 					),
 				);
 			}
@@ -1213,4 +1431,234 @@ if ( ! function_exists( 'jkit_render_faq_schema_seo' ) ) {
 	}
 
 	add_action( 'wp_footer', 'jkit_render_faq_schema_seo' );
+}
+
+if ( ! function_exists( 'jkit_permission_check_admin' ) ) {
+	/**
+	 * Check admin permissions.
+	 *
+	 * @return bool|WP_Error
+	 */
+	function jkit_permission_check_admin() {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return new WP_Error(
+				'forbidden_permission',
+				esc_html__( 'Forbidden Access', 'jeg-elementor-kit' ),
+				array( 'status' => 403 )
+			);
+		}
+
+		return true;
+	}
+}
+
+
+if ( ! function_exists( 'jkit_get_elementor_responsive_breakpoints' ) ) {
+	/**
+	 * Get Elementor responsive breakpoints
+	 *
+	 * @return array
+	 */
+	function jkit_get_elementor_responsive_breakpoints() {
+		$breakpoints = array();
+
+		if ( defined( 'ELEMENTOR_VERSION' ) ) {
+			if ( version_compare( ELEMENTOR_VERSION, '3.2.0', '>=' ) && isset( \Elementor\Plugin::$instance->breakpoints ) ) {
+				$elementor = \Elementor\Plugin::$instance->breakpoints->get_active_breakpoints();
+
+				foreach ( $elementor as $key => $breakpoint ) {
+					array_push(
+						$breakpoints,
+						array(
+							'key'   => $key,
+							'value' => $breakpoint->get_value(),
+						)
+					);
+				}
+			} elseif ( version_compare( ELEMENTOR_VERSION, '3.2.0', '<=' ) ) {
+				$elementor = \Elementor\Core\Responsive\Responsive::get_editable_breakpoints();
+
+				array_push(
+					$breakpoints,
+					array(
+						'key'   => 'tablet',
+						'value' => isset( $elementor['lg'] ) ? strval( $elementor['lg'] - 1 ) : 1024,
+					)
+				);
+
+				array_push(
+					$breakpoints,
+					array(
+						'key'   => 'mobile',
+						'value' => isset( $elementor['md'] ) ? strval( $elementor['md'] - 1 ) : 767,
+					)
+				);
+			}
+		}
+
+		usort(
+			$breakpoints,
+			function ( $a, $b ) {
+				return $b['value'] - $a['value'];
+			}
+		);
+
+		$breakpoints = apply_filters( 'jkit_get_elementor_responsive_breakpoints', $breakpoints );
+
+		return $breakpoints;
+	}
+}
+
+
+if ( ! function_exists( 'pro_banner_template' ) ) {
+	/**
+	 * Pro Banner Template
+	 */
+	function pro_banner_template() {
+		ob_start();
+		?>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
+		<style>
+			.pro-banner {
+				position: relative;
+				width: 278px;
+				max-width: 100%;
+				padding: 32px 14px;
+				background: #000E25;
+				border-radius: 7.86px;
+				text-align: center;
+				overflow: hidden;
+			}
+
+			.pro-banner * {
+				position: relative;
+			}
+
+			.pro-banner .image .features {
+				width: 232px;
+				height: auto;
+			}
+
+			.pro-banner .title,
+			.pro-banner .description {
+				margin: unset;
+			}
+
+			.pro-banner .title {
+				margin-top: 9px;
+				font-family: 'Sora', sans-serif;
+				font-size: 23px;
+				font-weight: bold;
+				text-align: center;
+				line-height: 120%;
+				background: linear-gradient(to right, #FFFFFF, #F1DEFF);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+
+			.pro-banner .title .gradient {
+				background: linear-gradient(to right, #D15DF7, #3B98FF);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+
+			.pro-banner .description {
+				margin-top: 8px;
+				font-family: 'Sora', sans-serif;
+				font-size: 12px;
+				text-align: center;
+				color: #999999;
+				line-height: 150%;
+			}
+
+			.pro-banner .upgrade {
+				margin-top: 15px;
+				padding: 14px 20px;
+				display: inline-flex;
+				gap: 12px;
+				align-items: center;
+				background: radial-gradient(circle at center -70px, #BA70FF 50%, #2F47FF);
+				border-radius: 10px;
+				font-family: 'Sora', sans-serif;
+				font-weight: 500;
+				color: #FFFFFF;
+				text-decoration: none;
+				transition-duration: 0.4s;
+			}
+
+			.pro-banner .upgrade:hover {
+				color: white;
+				transform: scale(1.1);
+			}
+
+			.pro-banner .upgrade svg {
+				width: 15px;
+			}
+
+			.pro-banner .background,
+			.pro-banner .background>div {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				pointer-events: none;
+			}
+
+			.pro-banner .background .gradient {
+				width: 380px;
+				height: 380px;
+				background: linear-gradient(#3C008B, #D8AAFF 38%, #9F2FFF 61%, #3C008B);
+				transform: translate(calc(-25%/2), -40%)rotate(135deg);
+				filter: opacity(0.80) blur(100px);
+			}
+
+			.pro-banner .background .pattern img {
+				height: 150%;
+				top: -40%;
+			}
+		</style>
+		<div class="pro-banner">
+			<div class="background">
+				<div class="gradient"></div>
+				<div class="pattern">
+					<img src="<?php echo esc_url( JEG_ELEMENTOR_KIT_URL . '/assets/banner/jkit-pro/background-pattern.svg' ) ?>" width="100%" height="100%" />
+				</div>
+			</div>
+			<div class="image">
+				<img src="<?php echo esc_url( JEG_ELEMENTOR_KIT_URL . '/assets/banner/jkit-pro/features.png' ) ?>" class="features" />
+			</div>
+			<h2 class="title">Unlock More <br />With <span class="gradient">JEGKIT PRO</span></h2>
+			<p class="description">Elevate your website with our <br />all-in-one widget collection.</p>
+			<a href="<?php echo esc_url(JEG_ELEMENT_SERVER_URL) . '/pricing' ; ?>" target="_blank" class="upgrade"><?php echo esc_html__('Upgrade To PRO', 'jeg-elementor-kit') ?> <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M2.34752 9.50065L0.874512 1.3991L4.92529 5.08163L7.50305 0.662598L10.0808 5.08163L14.1316 1.3991L12.6586 9.50065H2.34752ZM12.6586 11.7102C12.6586 12.1521 12.364 12.4467 11.9221 12.4467H3.08403C2.64212 12.4467 2.34752 12.1521 2.34752 11.7102V10.9737H12.6586V11.7102Z" fill="white" />
+				</svg>
+			</a>
+		</div>
+		<?php
+		return ob_get_clean();
+	}
+}
+
+if ( ! function_exists( 'pro_banner_popup_template' ) ) {
+	/**
+	 * Pro Banner Popup Template
+	 */
+	function pro_banner_popup_template() {
+		ob_start();
+		?>
+		<div class="jkit-pro-banner">
+			<div class="header">
+				<h3></h3>
+				<i class="eicon-close close"></i>
+			</div>
+			<div class="content">
+				<?php echo wp_kses_post( pro_banner_template() ); ?>
+			</div>
+		</div>
+		<?php
+		return ob_get_clean();
+	}
 }
