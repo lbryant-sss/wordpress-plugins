@@ -277,13 +277,13 @@ if ( !class_exists( 'WPLE_Security' ) ) {
                 'daily_malware_scan'       => 20,
             );
             $scoredefinitions = array(
-                'https_enforced'           => 'Valid SSL certificate installed and HTTPS enforced',
-                'critical_issues'          => 'Make sure no critical issues exists in <a href="' . admin_url( '/site-health.php' ) . '">site health</a>',
-                'disable_register'         => 'Disable "anyone can register"',
-                'disable_directory'        => 'Disable directory listing',
-                'latest_vulnerability'     => 'Latest vulnerability scan was performed within last 7 days',
-                'daily_vulnerability_scan' => 'Enable daily vulnerability scanning (<a href="https://wpencryption.com/?utm_source=wordpress&utm_medium=security&utm_campaign=wpencryption#pricing">Premium</a>)',
-                'daily_malware_scan'       => 'Enable daily malware scanning (<a href="https://wpencryption.com/?utm_source=wordpress&utm_medium=security&utm_campaign=wpencryption#pricing">Premium</a>)',
+                'https_enforced'           => __( 'Valid SSL certificate installed and HTTPS enforced', 'wp-letsencrypt-ssl' ),
+                'critical_issues'          => sprintf( __( 'Make sure no critical issues exists in %ssite health%s', 'wp-letsencrypt-ssl' ), '<a href="' . admin_url( '/site-health.php' ) . '">', '</a>' ),
+                'disable_register'         => __( 'Disable "anyone can register"', 'wp-letsencrypt-ssl' ),
+                'disable_directory'        => __( 'Disable directory listing', 'wp-letsencrypt-ssl' ),
+                'latest_vulnerability'     => __( 'Latest vulnerability scan was performed within last 7 days', 'wp-letsencrypt-ssl' ),
+                'daily_vulnerability_scan' => sprintf( __( 'Enable daily vulnerability scanning %sPremium%s)', 'wp-letsencrypt-ssl' ), '(<a href="https://wpencryption.com/?utm_source=wordpress&utm_medium=security&utm_campaign=wpencryption#pricing">', '</a>)' ),
+                'daily_malware_scan'       => sprintf( __( 'Enable daily malware scanning %sPremium%s)', 'wp-letsencrypt-ssl' ), '(<a href="https://wpencryption.com/?utm_source=wordpress&utm_medium=security&utm_campaign=wpencryption#pricing">', '</a>)' ),
             );
             $score = 0;
             $featurelist = '<ul>';
@@ -347,11 +347,11 @@ if ( !class_exists( 'WPLE_Security' ) ) {
             $featurelist .= '</ul>';
             $scorecolor = ( $score >= 30 && $score <= 70 ? 'e2d754' : (( $score > 70 ? '67d467' : 'ff5252' )) );
             $output = '<div class="wple-ssl-score">
-            <h2 style="color:#444">Security Score</h2>';
+            <h2 style="color:#444">' . esc_html__( 'Security Score', 'wp-letsencrypt-ssl' ) . '</h2>';
             $output .= '<div class="wple-score">' . (int) $score . '</div>
             <div class="wple-scorebar"><span data-width="' . (int) $score . '" style="width:' . (int) $score . '%;background:#' . esc_attr( $scorecolor ) . '"></span></div>';
             if ( $score == 70 ) {
-                $output .= '<h3 class="score-prom" style="margin-bottom:30px">You still have major task pending!</h3>';
+                $output .= '<h3 class="score-prom" style="margin-bottom:30px">' . esc_html__( 'You still have major task pending!', 'wp-letsencrypt-ssl' ) . '</h3>';
             }
             $output .= $featurelist;
             ///$output .= WPLE_Trait::wple_other_plugins(true);

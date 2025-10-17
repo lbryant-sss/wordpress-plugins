@@ -822,13 +822,18 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 			}
 
 			if(!empty($intro)){
+				
 				$introFull = $intro;
-
+				
 				//$intro = wp_strip_all_tags($intro, true);
 				//may make some errors
 				
 				$intro = UniteFunctionsUC::truncateString($intro, 100);
 			}
+			
+			//strip tags but not cut
+			$introFull = UniteFunctionsUC::normalizeContentForText($introFull);
+			
 			
 			$arrData["excerpt"] = $exceprt;
 			$arrData["intro"] = $intro;
@@ -1573,7 +1578,7 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 
 			switch($excludeBy){
 				case "out_of_stock_variation":
-
+		
 					$excludeOutofStockVariation = true;
 
 				break;
@@ -2373,7 +2378,7 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 
 		}
 
-
+		
 
 		//merge current tax query
 		if(!empty($currentTaxQuery))
@@ -2395,10 +2400,11 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 		//---- disable other hooks:
 		
 		$disableOtherHooks = UniteFunctionsUC::getVal($value, "{$name}_disable_other_hooks");
-		
+				
 		//disable by url
 		if(GlobalsUC::$showQueryDebugByUrl == true && HelperUC::hasPermissionsFromQuery("uctestquery_clear"))
 			$disableOtherHooks = "yes";
+		
 		
 		if($disableOtherHooks === "yes" && GlobalsProviderUC::$isUnderAjax == true){
 			
@@ -2422,7 +2428,7 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 		$objFiltersProcess = new UniteCreatorFiltersProcess();
 		
 		$args = $objFiltersProcess->processRequestFilters($args, $isFilterable);
-		
+				
 		$args = $this->getPostListData_getCustomQueryFilters($args, $value, $name, $data);
 		
 		HelperUC::addDebug("Posts Query", $args);
@@ -2533,7 +2539,7 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 		
 			dmp("<strong>The Final Query Vars:</strong>");
 			dmp($originalQueryVars);
-
+					
 			$this->showPostsDebugCallbacks($isForWoo);
 			
 		}
@@ -2600,8 +2606,10 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 				$arrPosts = UniteFunctionsWPUC::orderPostsByIDs($arrPosts, $arrStickyPosts);
 		}
 
+		$numPosts = count($arrPosts);
+		
 		//save last query and page
-		$this->saveLastQueryAndPage($query,GlobalsProviderUC::QUERY_TYPE_CUSTOM, $offset);
+		$this->saveLastQueryAndPage($query,GlobalsProviderUC::QUERY_TYPE_CUSTOM, $offset, $numPosts);
 
 		$this->arrCurrentPostIDs = array();
 
@@ -2619,7 +2627,7 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 
 		}
 
-		HelperUC::addDebug("posts found: ".count($arrPosts));
+		HelperUC::addDebug("posts found: $numPosts");
 
 		if($showDebugQuery == true){
 			
@@ -2635,8 +2643,13 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 
 		$arrPostsFromFilter = UniteProviderFunctionsUC::applyFilters("uc_filter_posts_list", $arrPosts, $value, $filters);
 		
-		if(!empty($arrPostsFromFilter))
+		if(!empty($arrPostsFromFilter)){
+			
 			$arrPosts = $arrPostsFromFilter;
+			
+			GlobalsProviderUC::$lastNumPosts = count($arrPosts);
+			
+		}
 		
 		if($showDebugQuery == true){
 			
@@ -2706,7 +2719,7 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 	/**
 	 * save last query and page - for pagination widget
 	 */
-	private function saveLastQueryAndPage($query, $type, $initialOffset = null){
+	private function saveLastQueryAndPage($query, $type, $initialOffset, $numPosts){
 		
 		$isDebug = HelperUC::hasPermissionsFromQuery("ucpaginationdebug");
 				
@@ -2750,7 +2763,8 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 		GlobalsProviderUC::$lastPostQuery = $query;
 		GlobalsProviderUC::$lastPostQuery_page = 1;
 		GlobalsProviderUC::$lastPostQuery_type = $type;
-
+		GlobalsProviderUC::$lastNumPosts = $numPosts;
+		
 		//set type for pagination, stay on current if exists
 		if(GlobalsProviderUC::$lastPostQuery_paginationType != GlobalsProviderUC::QUERY_TYPE_CURRENT)
 			GlobalsProviderUC::$lastPostQuery_paginationType = $type;
@@ -2960,8 +2974,6 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 
 		HelperUC::addDebug("Query Vars", $currentQueryVars);
 	
-		//save last query
-		$this->saveLastQueryAndPage($query, GlobalsProviderUC::QUERY_TYPE_CURRENT);
 		
 		$arrPosts = $query->posts;
 
@@ -2969,10 +2981,13 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 			$arrPosts = array();
 
 		$numPosts = $query->found_posts;
-
+		
+		//save last query
+		$this->saveLastQueryAndPage($query, GlobalsProviderUC::QUERY_TYPE_CURRENT, null, $numPosts);
+		
 		if(!empty($arrPosts) && $numPosts == 0)
 			$arrPosts = array();
-
+		
 		if($showDebugQuery == true && $debugType == "show_query"){
 
 			$originalQueryVars = $query->query_vars;
@@ -3168,12 +3183,15 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 			$arrPosts = UniteFunctionsWPUC::orderPostsByIDs($arrPosts, $postIDs);
 
 		//save last query
-		$this->saveLastQueryAndPage($query,GlobalsProviderUC::QUERY_TYPE_MANUAL);
+		
+		$numPosts = count($arrPosts);
+		
+		$this->saveLastQueryAndPage($query, GlobalsProviderUC::QUERY_TYPE_MANUAL, null, $numPosts);
 		
 		HelperUC::addDebug("posts found: ".count($arrPosts));
 
 		if($showDebugQuery == true){
-			dmp("Found Posts: ".count($arrPosts));
+			dmp("Found Posts: ".$numPosts);
 		}
 
 		//handle avoid duplicates - save post ids
@@ -3300,7 +3318,6 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 
 		$arrPosts = array();
 		
-		
 		switch($source){
 			case "ue_templates":
 
@@ -3375,11 +3392,12 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 
 		$objFilters = new UniteCreatorFiltersProcess();
 
+		$numPosts = count($arrPosts);
 
 		if($useForListing == true){
 
 			//add filterable variables - dynamic
-			$data = $objFilters->addWidgetFilterableVarsFromData($data, $value, $nameListing, $this->arrCurrentPostIDs);
+			$data = $objFilters->addWidgetFilterableVarsFromData($data, $value, $nameListing, $this->arrCurrentPostIDs, $numPosts);
 
 			//add the settings
 
@@ -3391,8 +3409,8 @@ class UniteCreatorParamsProcessor extends UniteCreatorParamsProcessorWork{
 		}else{
 
 			//filters additions - regular
-
-			$data = $objFilters->addWidgetFilterableVariables($data, $this->addon, $this->arrCurrentPostIDs);
+						
+			$data = $objFilters->addWidgetFilterableVariables($data, $this->addon, $this->arrCurrentPostIDs, $numPosts);
 		}
 		
 		

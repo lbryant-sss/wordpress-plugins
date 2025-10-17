@@ -756,7 +756,7 @@ class UniteCreatorPluginIntegrations{
 		$this->initLanguagesIntegration();
 
 		$this->initProcessStickyPosts();
-			
+		
 		//if(function_exists("trp_enable_translatepress"))
 			//$this->initTranslatePressIntegration();
 			

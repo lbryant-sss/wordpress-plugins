@@ -291,11 +291,11 @@ class TNP_Composer {
             $content = wpautop($content);
         }
 
-        if (true || $options['enable shortcodes']) {
-            remove_shortcode('gallery');
-            add_shortcode('gallery', 'tnp_gallery_shortcode');
-            $content = do_shortcode($content);
-        }
+
+        remove_shortcode('gallery');
+        add_shortcode('gallery', 'tnp_gallery_shortcode');
+        $content = do_shortcode($content);
+
         $content = str_replace('<p>', '<p inline-class="p">', $content);
         $content = str_replace('<li>', '<li inline-class="li">', $content);
 
@@ -813,36 +813,3 @@ class TNP_Composer_Grid_Cell {
     }
 }
 
-class TNP_Composer_Component_Factory {
-
-    private $options;
-
-    /**
-     * TNP_Composer_Component_Factory constructor.
-     *
-     * @param Controller$controller
-     */
-    public function __construct($controller) {
-
-    }
-
-    function heading() {
-
-    }
-
-    function paragraph() {
-
-    }
-
-    function link() {
-
-    }
-
-    function button() {
-
-    }
-
-    function image() {
-
-    }
-}

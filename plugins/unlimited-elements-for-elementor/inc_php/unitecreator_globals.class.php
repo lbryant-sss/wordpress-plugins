@@ -332,6 +332,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 			if($showQueryDebugByUrl == true)
 				self::$showQueryDebugByUrl = true;
 			
+							
 			//test free version
 			
 			$isTestFree = HelperUC::hasPermissionsFromQuery("testfreeversion");

@@ -1,4 +1,6 @@
 <?php
+/** @var bool $captcha */
+
 header('Content-Type: text/html;charset=UTF-8');
 header('X-Robots-Tag: noindex,nofollow,noarchive');
 header('Cache-Control: no-cache,no-store,private');

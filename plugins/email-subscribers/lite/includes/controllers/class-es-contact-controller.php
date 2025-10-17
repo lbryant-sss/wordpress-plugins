@@ -229,7 +229,10 @@ if ( ! class_exists( 'ES_Contact_Controller' ) ) {
 			} 
 
 			usort( $prepare_activity, function ( $a, $b ) {
-				return strtotime( $b['time_formatted'] ) <=> strtotime( $a['time_formatted'] );
+				$timeA = strtotime( $a['time_formatted'] );
+				$timeB = strtotime( $b['time_formatted'] );
+
+				return ( $timeA < $timeB ) ? 1 : ( ( $timeA > $timeB ) ? -1 : 0 ); 
 			});
 
 			return $prepare_activity;

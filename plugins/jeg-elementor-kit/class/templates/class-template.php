@@ -436,6 +436,11 @@ class Template {
 					}
 				}
 				break;
+
+			case 'all_archive':
+			default:
+				$flag = is_archive();
+				break;
 		}
 
 		$taxonomies = jkit_get_taxonomies( false );

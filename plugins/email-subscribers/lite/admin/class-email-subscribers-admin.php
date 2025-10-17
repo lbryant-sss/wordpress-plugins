@@ -120,7 +120,11 @@ class Email_Subscribers_Admin {
 		//Quick help widget
 		add_filter( 'ig_active_plugins_for_quick_help', array( $this, 'get_active_quick_help_plugins' ), 10, 2 );
 		add_action( 'init', array( $this, 'register_gutenberg_editor' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'ig_es_enqueue_gutenberg_editor_scripts' ) );
+		
+		// Fix campaigns menu visibility issues
+		add_action( 'admin_head', array( $this, 'fix_campaigns_menu_visibility' ) );
 	}
 
 	/**
@@ -201,6 +205,10 @@ class Email_Subscribers_Admin {
 		$page = ig_es_get_request_data( 'page' );
 
 		wp_enqueue_script( $this->email_subscribers, plugin_dir_url( __FILE__ ) . 'js/email-subscribers-admin.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-tabs' ), $this->version, false );
+
+		if ( in_array( $page, array( 'es_dashboard', 'es_forms' ) ) ) {
+			wp_enqueue_media();
+		}
 
 		$ig_es_js_data = array(
 			'security'   => wp_create_nonce( 'ig-es-admin-ajax-nonce' ),
@@ -386,6 +394,8 @@ class Email_Subscribers_Admin {
 			wp_localize_script( 'es-shadcn-dashboard', 'icegramExpressAdminData', array(
 				'apiUrl' => admin_url( 'admin-ajax.php' ),
 				'baseUrl' => ES_PLUGIN_URL . 'lite/admin/shadcn-frontend/dist/',
+				'siteUrl' => home_url(),
+				'adminUrl' => admin_url(),
 				'onboardingdata' => get_option('ig_es_onboarding_complete', 'no'),
 				'security'    => wp_create_nonce( 'ig-es-admin-ajax-nonce' ),
 				'plan' => ES()->get_plan(),
@@ -450,14 +460,19 @@ class Email_Subscribers_Admin {
 		if ( in_array( 'forms', $accessible_sub_menus ) ) {
 			// Add Forms Submenu
 			add_submenu_page( 'es_dashboard', __( 'Forms', 'email-subscribers' ), __( 'Forms', 'email-subscribers' ), 'edit_posts', $main_menu_url . '#forms', null );
-			// TODO: Remove old form page screen after all forms created using DnD or classic editor are migrated to new UI 
-			$hook = add_submenu_page( 'es_dashboard', null, null, 'edit_posts', 'es_forms', array( $this, 'render_forms' ) );
+
+			$hook = add_submenu_page( 'es_dashboard', __( 'Forms', 'email-subscribers' ), __( 'Forms', 'email-subscribers' ), 'edit_posts', 'es_forms', array( $this, 'render_forms' ) );
+
 			add_action( "load-$hook", array( 'ES_Forms_Table', 'screen_options' ) );
+			
 		}
 
 		if ( in_array( 'campaigns', $accessible_sub_menus ) ) {
 			// Add Campaigns Submenu
+			add_submenu_page( 'es_dashboard', __( 'Campaigns', 'email-subscribers' ), __( 'Campaigns', 'email-subscribers' ), 'edit_posts', $main_menu_url . '#campaigns', null );
+
 			$hook = add_submenu_page( 'es_dashboard', __( 'Campaigns', 'email-subscribers' ), __( 'Campaigns', 'email-subscribers' ), 'edit_posts', 'es_campaigns', array( $this, 'render_campaigns' ) );
+
 			add_action( "load-$hook", array( 'ES_Campaigns_Table', 'screen_options' ) );
 
 			// Start-IG-Code.
@@ -2131,6 +2146,20 @@ class Email_Subscribers_Admin {
 		$active_plugins['ig_sku'] = 'icegram-express';
 	
 		return $active_plugins;
+	}
+
+	/**
+	 * Fix campaigns menu visibility issues
+	 *
+	 * @since 4.2.1
+	 */
+	public function fix_campaigns_menu_visibility() {
+		echo '<style>
+			ul#adminmenu li#toplevel_page_es_dashboard ul li:nth-child(8),
+			ul#adminmenu li#toplevel_page_es_dashboard ul li:nth-child(6){
+				display: none !important;
+			}
+		</style>';
 	}
 	
 }

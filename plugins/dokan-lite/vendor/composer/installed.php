@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'wedevs/dokan',
-        'pretty_version' => 'v4.1.1',
-        'version' => '4.1.1.0',
-        'reference' => 'ecdc8f805fc9f4ef87a4425d72caad4ba699603b',
+        'pretty_version' => 'v4.1.2',
+        'version' => '4.1.2.0',
+        'reference' => '23e1b8241a1a2cdbc689d3d56b14419da2d7374e',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -38,9 +38,9 @@
             'dev_requirement' => false,
         ),
         'wedevs/dokan' => array(
-            'pretty_version' => 'v4.1.1',
-            'version' => '4.1.1.0',
-            'reference' => 'ecdc8f805fc9f4ef87a4425d72caad4ba699603b',
+            'pretty_version' => 'v4.1.2',
+            'version' => '4.1.2.0',
+            'reference' => '23e1b8241a1a2cdbc689d3d56b14419da2d7374e',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

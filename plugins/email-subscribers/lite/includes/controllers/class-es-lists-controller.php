@@ -322,6 +322,31 @@ if ( ! class_exists( 'ES_Lists_Controller' ) ) {
 		}
 
 		/**
+		 * Delete a list
+		 *
+		 * @param array $args Arguments containing list_id
+		 *
+		 * @return array
+		 */
+		public static function delete_lists( $args = array() ) {
+			$response = array( 'status' => 'error', 'message' => '' );
+
+			if ( is_string( $args ) ) {
+				$args = json_decode( $args, true );
+			}
+			if ( ! is_array( $args ) ) {
+				$args = array();
+			}
+			
+			$list_ids = $args['list_ids'];
+			if ( ! empty( $list_ids ) ) {
+				ES()->lists_db->delete_lists( $list_ids );
+				return true;
+			}
+			return false;
+		}
+
+		/**
 		 * Get country statistics for contacts (legacy method)
 		 *
 		 * @param array $args Arguments containing optional filters

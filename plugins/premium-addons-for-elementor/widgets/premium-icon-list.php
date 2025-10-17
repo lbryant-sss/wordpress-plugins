@@ -917,6 +917,24 @@ class Premium_Icon_List extends Widget_Base {
 		}
 
 		$repeater_list->add_control(
+			'icon_bg',
+			array(
+				'label'     => __( 'Icon Background', 'premium-addons-for-elementor' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} {{CURRENT_ITEM}} .premium-bullet-list-wrapper i ,
+					 {{WRAPPER}} {{CURRENT_ITEM}} .premium-bullet-list-wrapper svg,
+					  {{WRAPPER}} {{CURRENT_ITEM}} .premium-bullet-list-wrapper img ,
+					   {{WRAPPER}} {{CURRENT_ITEM}} .premium-bullet-list-icon-text p' => 'background-color: {{VALUE}}',
+				),
+				'condition' => array(
+					'show_icon'         => 'yes',
+					'show_global_style' => 'yes',
+				),
+			)
+		);
+
+		$repeater_list->add_control(
 			'text_icon_color',
 			array(
 				'label'     => __( 'Icon/Text Color', 'premium-addons-for-elementor' ),

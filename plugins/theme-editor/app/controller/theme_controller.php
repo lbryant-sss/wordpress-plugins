@@ -83,18 +83,7 @@ class theme_editor_theme_controller {
 			$current_theme_root = $themes[ $theme ]['Theme Root'] . '/' . dirname( $file ) . '/';
 		}
 		$real_file = $current_theme_root . basename( $file );
-				
-		if ( isset( $_POST['new-content'] ) && file_exists( $real_file ) && is_writable( $real_file ) ) {
-			$new_content = stripslashes( $_POST['new-content'] );
-			if ( file_get_contents( $real_file ) === $new_content ) {
-			}
-			else {
-				$f = fopen( $real_file, 'w+' );
-				fwrite( $f, $new_content );
-				fclose( $f );
-			}
-		}
-		
+						
 		$content = file_get_contents( $real_file );
 
 		$content = esc_textarea( $content );

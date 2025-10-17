@@ -134,10 +134,9 @@ class NewsletterEmails extends NewsletterModule {
 
     /**
      *
-     * @param type $action
-     * @param type $user
-     * @param type $email
-     * @return type
+     * @param string $action
+     * @param object $user
+     * @param object $email
      * @global wpdb $wpdb
      */
     function hook_newsletter_action($action, $user, $email) {
@@ -196,9 +195,9 @@ class NewsletterEmails extends NewsletterModule {
                     header("HTTP/1.0 403 Not Found");
                     die('Not allowed');
                 }
-                $email = $this->get_email((int)$_GET['id']);
+                $email = $this->get_email((int) $_GET['id']);
 
-                if (empty($email)) {
+                if (!$email) {
                     header("HTTP/1.0 404 Not Found");
                     die('Email not found');
                 }
@@ -275,12 +274,12 @@ class NewsletterEmails extends NewsletterModule {
                     die();
                 }
 
-                $log = $wpdb->get_row($wpdb->prepare("select * from {$wpdb->prefix}newsletter_logs where id=%d limit 1", (int)$_GET['id']));
+                $log = $wpdb->get_row($wpdb->prepare("select * from {$wpdb->prefix}newsletter_logs where id=%d limit 1", (int) $_GET['id']));
 
                 if (!str_starts_with($log->source, 'newsletter-version-')) {
                     die('Invalid version ID');
                 }
-               
+
                 header('Content-Type: text/html;charset=UTF-8');
 
                 echo $log->data;
@@ -351,7 +350,7 @@ class NewsletterEmails extends NewsletterModule {
                 include $theme['dir'] . '/theme.php';
                 $email['message'] = ob_get_clean();
 
-                if (!empty($theme_subject)) {
+                if ($theme_subject) {
                     $email['subject'] = $theme_subject;
                 }
 

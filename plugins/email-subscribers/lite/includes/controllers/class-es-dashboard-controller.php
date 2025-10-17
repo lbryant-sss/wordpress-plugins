@@ -78,7 +78,9 @@ if ( ! class_exists( 'ES_Dashboard_Controller' ) ) {
 		$reports_data = ES_Reports_Data::get_dashboard_reports_data( $page, $override_cache, $reports_args );
 		
 		return array_merge( $reports_data, $enhanced_data );
-	}		public static function get_dashboard_data( $args ) {
+	}		
+	
+	public static function get_dashboard_data( $args ) {
 			$dashboard_kpi = ES_Reports_Data::get_dashboard_reports_data( 'es_dashboard', true, $args );
 			
 			$campaign_args = array(

@@ -125,7 +125,7 @@ class NewsletterMailer {
         }
 
         // We should not get here, since it is not optimized
-        $chunks = array_chunk($message, $this->batch_size);
+        $chunks = array_chunk($messages, $this->batch_size);
         $last_result = true;
         foreach ($chunks as $chunk) {
             $r = $this->send_chunk($chunk);
@@ -176,8 +176,8 @@ class NewsletterMailer {
      * @param array $message
      * @param array $headers
      * @param bool $enqueue
-     * @param type $from Actually ignored
-     * @return type
+     * @param string|bool $from Actually ignored
+     * @return bool
      */
     public function mail($to, $subject, $message, $headers = null, $enqueue = false, $from = false) {
         $mailer_message = new TNP_Mailer_Message();
@@ -188,23 +188,5 @@ class NewsletterMailer {
         $mailer_message->body_text = $message['text'];
 
         return !is_wp_error($this->send($mailer_message));
-    }
-
-    /**
-     * Used by bounce detection.
-     *
-     * @param int $time
-     */
-    function save_last_run($time) {
-        update_option($this->prefix . '_last_run', $time);
-    }
-
-    /**
-     * Used by bounce detection.
-     *
-     * @param int $time
-     */
-    function get_last_run() {
-        return (int) get_option($this->prefix . '_last_run', 0);
     }
 }

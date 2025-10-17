@@ -61,12 +61,13 @@
 					<div class="title"><?php esc_html_e( 'Dribbble', 'envira-gallery-lite' ); ?></div>
 				</a>
 			</li>
-				<li id="envira-gallery-type-tiktok">
-				<a href="javascript:void(0);" title="<?php esc_attr_e( 'Build Galleries from Tiktok videos.', 'envira-gallery-lite' ); ?>"  class="link-envira-tiktok-tab upsell">
-					<div class="icon"></div>
-					<div class="title"><?php esc_html_e( 'Tiktok', 'envira-gallery-lite' ); ?></div>
-				</a>
-			</li>
+<!--			TODO: restore this after tiktok addon release -->
+<!--				<li id="envira-gallery-type-tiktok">-->
+<!--				<a href="javascript:void(0);" title="--><?php //esc_attr_e( 'Build Galleries from Tiktok videos.', 'envira-gallery-lite' ); ?><!--"  class="link-envira-tiktok-tab upsell">-->
+<!--					<div class="icon"></div>-->
+<!--					<div class="title">--><?php //esc_html_e( 'Tiktok', 'envira-gallery-lite' ); ?><!--</div>-->
+<!--				</a>-->
+<!--			</li>-->
 		</ul>
 	</div>
 

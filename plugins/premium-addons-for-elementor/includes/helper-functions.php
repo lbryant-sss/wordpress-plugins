@@ -1615,7 +1615,7 @@ class Helper_Functions {
 
 		if ( ! self::check_papro_version() ) {
 
-			$pro_link = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/pro/', $keyword, 'wp-editor', 'get-pro' );
+			$pro_link = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/pro/#get-pa-pro', $keyword, 'wp-editor', 'get-pro' );
 
 			$element->start_controls_section(
 				'section_pro_features_field',
@@ -1630,7 +1630,7 @@ class Helper_Functions {
 					'type'        => Controls_Manager::NOTICE,
 					'notice_type' => 'info',
 					'dismissible' => false,
-					'content'     => __( '<b>Build smarter and faster</b> with premium widgets, 580+ container blocks, and advanced customization controls — all available in the <a href="'. esc_url( $pro_link ) .'" target="_blank">PA Pro</a>. Use the code <b>SUMMER10</b> to get 10% OFF on Lifetime license.', 'premium-addons-for-elementor' ),
+					'content'     => __( '<b>Build smarter and faster</b> with premium widgets, 580+ container blocks, and advanced customization controls — all available in the <a href="'. esc_url( $pro_link ) .'" target="_blank">PA Pro</a>. <b>Save up to 25%!</b>.', 'premium-addons-for-elementor' ),
 				)
 			);
 

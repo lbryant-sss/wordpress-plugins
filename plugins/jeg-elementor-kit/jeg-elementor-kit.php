@@ -4,7 +4,7 @@
  * Plugin URI: https://jegkit.com/?utm_source=wp-plugins&utm_campaign=plugin-uri&utm_medium=wp-dash
  * Description: Jeg Kit for Elementor (formerly Jeg Elementor Kit) extends Elementor with powerful, customizable widgets and templates — helping you build modern, responsive WordPress websites faster.
  * Requires Plugins: elementor
- * Version: 3.0.0
+ * Version: 3.0.1
  * Author: Jegtheme
  * Author URI: https://jegkit.com/?utm_source=wp-plugins&utm_campaign=plugin-uri&utm_medium=wp-dash
  * License: GPLv3
@@ -26,7 +26,7 @@ add_action(
 	function () {
 		defined( 'JEG_ELEMENTOR_KIT' ) || define( 'JEG_ELEMENTOR_KIT', 'jeg-elementor-kit' );
 		defined( 'JEG_ELEMENTOR_KIT_NAME' ) || define( 'JEG_ELEMENTOR_KIT_NAME', 'Jeg Kit' );
-		defined( 'JEG_ELEMENTOR_KIT_VERSION' ) || define( 'JEG_ELEMENTOR_KIT_VERSION', '3.0.0' );
+		defined( 'JEG_ELEMENTOR_KIT_VERSION' ) || define( 'JEG_ELEMENTOR_KIT_VERSION', '3.0.1' );
 		defined( 'JEG_ELEMENTOR_KIT_URL' ) || define( 'JEG_ELEMENTOR_KIT_URL', plugins_url( JEG_ELEMENTOR_KIT ) );
 		defined( 'JEG_ELEMENTOR_KIT_FILE' ) || define( 'JEG_ELEMENTOR_KIT_FILE', __FILE__ );
 		defined( 'JEG_ELEMENTOR_KIT_BASE' ) || define( 'JEG_ELEMENTOR_KIT_BASE', plugin_basename( __FILE__ ) );

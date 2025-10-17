@@ -22,7 +22,7 @@ class NewsletterSystemAdmin extends NewsletterModuleAdmin {
     }
 
     function __construct() {
-        parent::__construct('system', '1.1.0');
+        parent::__construct('system');
     }
 
     function admin_menu() {
@@ -148,7 +148,7 @@ class NewsletterSystemAdmin extends NewsletterModuleAdmin {
         $send_total_time = 0;
         $send_total_emails = 0;
         $send_completed = 0;
-        $stats = new TNP_Send_stats();
+        $stats = new TNP_Send_Stats();
 
         // Batches
         for ($i = 0; $i < count($send_calls); $i++) {

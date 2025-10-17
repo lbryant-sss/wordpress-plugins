@@ -193,24 +193,27 @@ if ( ! class_exists( 'ES_Contacts_Controller' ) ) {
 				}
 				 
 			}  
- 
-			// Get contacts using ES contacts DB class
+  
 			if ( $do_count_only ) { 
 				$result = $contacts_db->get_filtered_contacts_count( $query_args );
 			} else { 
  
 				$result = $contacts_db->get_filtered_contacts( $query_args );
-   
-				// Add list statuses for each contact
+    
 				if ( ! empty( $result ) ) {
 					foreach ( $result as &$contact ) {
-						// Get list statuses for this contact using lists_contacts DB
 						$list_statuses = $lists_contacts_db->get_list_statuses_by_contact_id( $contact['id'] );
 						
 						if ( ! empty( $list_statuses ) ) {
 							$contact['list_statuses'] = $list_statuses;
-							// Also create lists array for backward compatibility
-							$contact['lists'] = array_column( $list_statuses, 'list_name' );
+							$contact['lists'] = array_map(
+								function ( $item ) {
+									return isset( $item['list_name'] ) ? $item['list_name'] : null;
+								},
+								$list_statuses
+							);
+
+ 							$contact['lists'] = array_filter( $contact['lists'] );
 						} else {
 							$contact['list_statuses'] = array();
 							$contact['lists'] = array();
@@ -245,7 +248,7 @@ if ( ! class_exists( 'ES_Contacts_Controller' ) ) {
 				return $response;
 			}
 
-			$contact_ids = [];
+			$contact_ids = array();
 
  			if ( is_numeric( $args['id'] ) ) {
 				$contact_ids[] = intval( $args['id'] ); 
@@ -308,7 +311,7 @@ if ( ! class_exists( 'ES_Contacts_Controller' ) ) {
 			$contact_data['id'] = $contact_id;
 			unset($args['lists']);
 
-			$converted = [];
+			$converted = array();
 			if( isset($args['list_statuses']) && is_array($args['list_statuses']) ) {
 				foreach ($args['list_statuses'] as $item) {
 					$converted[$item['id']] = $item['status'];
@@ -343,7 +346,7 @@ if ( ! class_exists( 'ES_Contacts_Controller' ) ) {
 				}
 			}
 			
-			$contact_ids = $args['contact_ids'] ?? array();
+			$contact_ids = isset( $args['contact_ids'] ) ? $args['contact_ids'] : array();
 
 			if ( empty( $contact_ids ) || ! is_array( $contact_ids ) ) {
 				$response['message'] = __( 'Contact ID is required.', 'email-subscribers' );
@@ -372,8 +375,9 @@ if ( ! class_exists( 'ES_Contacts_Controller' ) ) {
 				}
 			}
 
-			$contact_ids = $args['contact_ids'] ?? array();
-			$new_status = $args['status'] ?? '';
+			$contact_ids = isset( $args['contact_ids'] ) ? $args['contact_ids'] : array();
+
+			$new_status = isset( $args['status'] ) ? $args['status'] : '';
 
 			if ( empty( $contact_ids ) || ! is_array( $contact_ids ) ) {
 				$response['message'] = __( 'Contact IDs are required', 'email-subscribers' );
@@ -413,8 +417,8 @@ if ( ! class_exists( 'ES_Contacts_Controller' ) ) {
 				}
 			}
 
-			$contact_ids = $args['contact_ids'] ?? array();
-			$list_names = $args['list_names'] ?? array();
+			$contact_ids = isset( $args['contact_ids'] ) ? $args['contact_ids'] : array();
+			$list_names  = isset( $args['list_names'] ) ? $args['list_names'] : array();
 
 			if ( empty( $contact_ids ) || ! is_array( $contact_ids ) ) {
 				$response['message'] = __( 'Contact IDs are required', 'email-subscribers' );

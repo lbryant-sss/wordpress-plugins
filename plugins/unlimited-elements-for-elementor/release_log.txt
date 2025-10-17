@@ -1,6 +1,21 @@
 
 
 
+version 1.5.151:
+
+* Fix: fixed some font awesome double include bugs
+* Fix: fixed some init filters issue
+* Fix: fixed file upload issues
+* Feature: Set google reviews in original language and added option to choose review langauge
+* Feature: added support for acf option pages
+* Fix: added some doubly plugin compatability functions
+* Fix: fixed some filters and pagination issues or non showing correct numbers
+* Fix: Fixed current langauge setup in wpml
+* Feature: added Full Post Intro to multisource fields. Moved truncate text to top side
+* Fix: fixed js background output with object cache enabled
+
+
+
 version 1.5.150:
 
 * Update: updated freemius sdk to newest version

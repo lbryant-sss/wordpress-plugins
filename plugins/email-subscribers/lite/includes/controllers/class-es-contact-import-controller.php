@@ -74,7 +74,6 @@ if ( ! class_exists( 'ES_Contact_Import_Controller' ) ) {
 			if ( ! is_array( $args ) ) {
 				$args = array();
 			}
-	
 			@set_time_limit( 0 );
 			if ( (int) @ini_get( 'max_execution_time' ) < 300 ) {
 				@set_time_limit( 300 );
@@ -86,9 +85,36 @@ if ( ! class_exists( 'ES_Contact_Import_Controller' ) ) {
 			}
 	
 			$importing_from = isset( $args['importing_from'] ) ? $args['importing_from'] : '';
+			
+			$raw_data = '';
+			$seperator = ',';
+			$data_contain_headers = false;
+			$headers = array();
 	
 			if ( 'csv' === $importing_from && ! empty( $args['file'] ) ) {
-				$tmp_file  = $args['file'] ;
+				$tmp_file = $args['file'];
+				
+				if ( ! file_exists( $tmp_file ) ) {
+					return array( 'error' => __( 'Uploaded file not found.', 'email-subscribers' ) );
+				}
+				
+				$original_filename = '';
+				if ( isset( $_FILES['async-upload']['name'] ) ) {
+					$original_filename = sanitize_text_field( $_FILES['async-upload']['name'] );
+				}
+				
+				if ( ! empty( $original_filename ) ) {
+					$file_extension = strtolower( pathinfo( $original_filename, PATHINFO_EXTENSION ) );
+					if ( 'csv' !== $file_extension ) {
+						return array( 'error' => __( 'Only CSV files are allowed.', 'email-subscribers' ) );
+					}
+				}
+				
+				$file_size = filesize( $tmp_file );
+				$max_size = 2 * 1024 * 1024;
+				if ( $file_size > $max_size ) {
+					return array( 'error' => __( 'File size must be less than 2MB.', 'email-subscribers' ) );
+				}
 				$raw_data  = file_get_contents( $tmp_file );
 				$seperator = self::get_delimiter( $tmp_file );
 	
@@ -1111,7 +1137,7 @@ if ( ! class_exists( 'ES_Contact_Import_Controller' ) ) {
 				'last_name'  => $last_name,
 				'email'      => $email,
 				'source'     => 'manual',
-				'status'     => $status,
+				'status'     => 'verified',
 				'hash'       => ES_Common::generate_guid(),
 				'created_at' => ig_get_current_date_time(),
 				'updated_at' => ig_get_current_date_time(),
@@ -1153,6 +1179,26 @@ if ( ! class_exists( 'ES_Contact_Import_Controller' ) ) {
 
 				if ( 'yes' === $send_optin_emails && 'subscribed' === $status ) {
 					do_action( 'ig_es_contact_subscribe', $contact_id, $list_ids );
+					
+					$subscriber_options = array();
+					$subscriber_options[ $contact_id ]['type'] = 'optin_welcome_email';
+					
+					$timestamp = time();
+					ES()->queue->bulk_add(
+						0,
+						array( $contact_id ),
+						$timestamp,
+						20,
+						false,
+						1,
+						false,
+						$subscriber_options
+					);
+
+					$request_args = array(
+						'action' => 'ig_es_process_queue',
+					);
+					IG_ES_Background_Process_Helper::send_async_ajax_request( $request_args, true );
 				}
 
 				return array(
@@ -1187,7 +1233,6 @@ if ( ! class_exists( 'ES_Contact_Import_Controller' ) ) {
 				);
 			}
 
-			// Basic API key format validation
 			if ( ! preg_match( '/^[a-f0-9]{32}-[a-z]{2,4}\d*$/', $api_key ) ) {
 				return array(
 					'success' => false,
@@ -1195,11 +1240,9 @@ if ( ! class_exists( 'ES_Contact_Import_Controller' ) ) {
 				);
 			}
 
-			// Extract datacenter and construct URL for testing
 			$dc = preg_replace( '/^([a-f0-9]+)-([a-z0-9]+)$/', '$2', $api_key );
 			$ping_url = 'https://' . $dc . '.api.mailchimp.com/3.0/ping';
 			
-			// Test direct API call to provide better error messages
 			$response = wp_remote_request(
 				$ping_url,
 				array(
@@ -1238,7 +1281,6 @@ if ( ! class_exists( 'ES_Contact_Import_Controller' ) ) {
 					);
 				}
 			} else {
-				// Parse error response
 				$error_data = json_decode( $body );
 				$error_message = __( 'Invalid API key or unable to connect to MailChimp.', 'email-subscribers' );
 				
@@ -1282,12 +1324,10 @@ if ( ! class_exists( 'ES_Contact_Import_Controller' ) ) {
 				);
 			}
 
-			// Create API instance with the provided key
 			$api_instance = new ES_Mailchimp_API( $api_key );
 			
 			$lists = $api_instance->lists();
 			
-			// Handle WP_Error from API call
 			if ( is_wp_error( $lists ) ) {
 				return array( 
 					'success' => false, 
@@ -1295,7 +1335,6 @@ if ( ! class_exists( 'ES_Contact_Import_Controller' ) ) {
 				);
 			}
 			
-			// Format lists for frontend - extract only needed fields
 			$formatted_lists = array();
 			if ( is_array( $lists ) ) {
 				foreach ( $lists as $list ) {
@@ -1335,10 +1374,8 @@ if ( ! class_exists( 'ES_Contact_Import_Controller' ) ) {
 			}
 
 			try {
-				// Create API instance
 				$api_instance = new ES_Mailchimp_API( $api_key );
 				
-				// Get members from the list
 				$members_response = $api_instance->members( $list_id );
 				
 				if ( ! is_array( $members_response ) ) {
@@ -1347,38 +1384,20 @@ if ( ! class_exists( 'ES_Contact_Import_Controller' ) ) {
 						'message' => __( 'Failed to retrieve members from MailChimp list.', 'email-subscribers' )
 					);
 				}
-				
-				$imported_count = 0;
-				$duplicate_count = 0;
-				$error_count = 0;
-				
-				// Get main list ID once before processing (optimization)
-				$lists = ES()->lists_db->get_lists();
-				$main_list_id = 0;
-				if ( ! empty( $lists ) ) {
-					$main_list_id = $lists[0]['id'];
-				}
+
+				$csv_data = array();
+				$headers = array( 'Email', 'First Name', 'Last Name', 'Status' );
 				
 				foreach ( $members_response as $member ) {
 					if ( ! isset( $member->email_address ) || empty( $member->email_address ) ) {
-						$error_count++;
 						continue;
 					}
 					
 					$email = sanitize_email( $member->email_address );
 					if ( ! is_email( $email ) ) {
-						$error_count++;
 						continue;
 					}
 					
-					// Check if contact already exists
-					$existing_contact_id = ES()->contacts_db->get_contact_id_by_email( $email );
-					if ( $existing_contact_id ) {
-						$duplicate_count++;
-						continue;
-					}
-					
-					// Prepare contact data
 					$first_name = '';
 					$last_name = '';
 					if ( isset( $member->merge_fields ) ) {
@@ -1386,55 +1405,47 @@ if ( ! class_exists( 'ES_Contact_Import_Controller' ) ) {
 						$last_name = isset( $member->merge_fields->LNAME ) ? sanitize_text_field( $member->merge_fields->LNAME ) : '';
 					}
 					
-					$contact_data = array(
-						'email'      => $email,
-						'first_name' => $first_name,
-						'last_name'  => $last_name,
-						'status'     => 'subscribed',
-						'source'     => 'mailchimp',
-						'hash'       => ES_Common::generate_guid(),
-						'created_at' => ig_get_current_date_time(),
-						'updated_at' => ig_get_current_date_time(),
-					);
+					$status = isset( $member->status ) ? sanitize_text_field( $member->status ) : 'subscribed';
 					
-					// Add contact to database
-					$contact_id = ES()->contacts_db->insert( $contact_data );
-					if ( $contact_id > 0 ) {
-						$imported_count++;
-						
-						// Add to main list if available
-						if ( $main_list_id > 0 ) {
-							$list_contact_data = array(
-								'list_id'       => $main_list_id,
-								'contact_id'    => $contact_id,
-								'status'        => 'subscribed',
-								'subscribed_at' => ig_get_current_date_time(),
-								'optin_type'    => 1, 
-							);
-							ES()->lists_contacts_db->insert( $list_contact_data );
-						}
-					} else {
-						$error_count++;
-					}
+					// Add to CSV data array
+					$csv_data[] = array( $email, $first_name, $last_name, $status );
 				}
 				
-				$total_processed = $imported_count + $duplicate_count + $error_count;
-				$message = sprintf( 
-					__( 'MailChimp import completed: %d imported, %d duplicates, %d errors from %d total contacts.', 'email-subscribers' ), 
-					$imported_count, 
-					$duplicate_count, 
-					$error_count,
-					$total_processed
+				if ( empty( $csv_data ) ) {
+					return array(
+						'success' => false,
+						'message' => __( 'No valid contacts found in the MailChimp list.', 'email-subscribers' )
+					);
+				}
+				
+				$csv_content = implode( ',', $headers ) . "\n";
+				foreach ( $csv_data as $row ) {
+					$csv_content .= implode( ',', array_map( function( $field ) {
+						$field = str_replace( '"', '""', $field );
+						if ( strpos( $field, ',' ) !== false || strpos( $field, '"' ) !== false || strpos( $field, "\n" ) !== false ) {
+							return '"' . $field . '"';
+						}
+						return $field;
+					}, $row ) ) . "\n";
+				}
+				
+				$response = self::insert_into_temp_table( 
+					$csv_content, 
+					',', 
+					true, 
+					$headers, 
+					'', 
+					'mailchimp' 
 				);
 				
-				return array(
-					'success' => true,
-					'message' => $message,
-					'imported_count' => $imported_count,
-					'duplicate_count' => $duplicate_count,
-					'error_count' => $error_count,
-					'total_processed' => $total_processed
-				);
+				if ( $response['success'] ) {
+					$response['message'] = sprintf( 
+						__( 'MailChimp data prepared for mapping. %d contacts loaded from list.', 'email-subscribers' ), 
+						count( $csv_data )
+					);
+				}
+				
+				return $response;
 				
 			} catch ( Exception $e ) {
 				return array( 

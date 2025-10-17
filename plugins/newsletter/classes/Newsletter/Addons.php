@@ -23,14 +23,14 @@ class Addons {
         }
 
         if (wp_remote_retrieve_response_code($response) !== 200) {
-            return new WP_Error(wp_remote_retrieve_response_code($response), 'HTTP Error');
+            return new \WP_Error(wp_remote_retrieve_response_code($response), 'HTTP Error');
         }
 
         $addons = json_decode(wp_remote_retrieve_body($response));
 
         // Not clear cases
         if (!$addons || !is_array($addons)) {
-            return new WP_Error('invalid', 'Invalid JSON');
+            return new \WP_Error('invalid', 'Invalid JSON');
         }
         update_option('newsletter_addons', $addons, false);
         return true;
@@ -93,6 +93,7 @@ class Addons {
             return $value;
         }
 
+        // @phpstan-ignore-next-line
         include_once(ABSPATH . 'wp-admin/includes/plugin.php');
 
         // Ok, that is really bad (should we remove it? is there a minimum WP version?)

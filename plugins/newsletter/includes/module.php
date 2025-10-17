@@ -427,6 +427,7 @@ class NewsletterModule extends NewsletterModuleBase {
 
         $id = 0;
         $user = null;
+        $token = '';
 
         if (isset($_REQUEST['nk'])) {
             list($id, $token) = explode('-', wp_unslash($_REQUEST['nk']), 2);
@@ -619,7 +620,7 @@ class NewsletterModule extends NewsletterModuleBase {
      * @return TNP_List
      */
     function get_list($id, $language = '') {
-        $lists = $this->get_lists($language);
+        $lists = $this->get_lists();
         if (!isset($lists['' . $id])) {
             return null;
         }
@@ -734,7 +735,7 @@ class NewsletterModule extends NewsletterModuleBase {
 
 
 
-        return self::add_qs($url, $params, false);
+        return self::add_qs($url, $params);
     }
 
     function get_subscribe_url() {
@@ -1226,14 +1227,6 @@ class NewsletterModule extends NewsletterModuleBase {
         }
         $key = NewsletterStatistics::instance()->options['key'];
         return md5($text . $key) === $signature;
-    }
-
-    static function get_home_url() {
-        static $url = false;
-        if (!$url) {
-            $url = home_url('/');
-        }
-        return $url;
     }
 
     static function clean_eol($text) {

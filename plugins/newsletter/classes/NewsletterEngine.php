@@ -324,10 +324,7 @@ class NewsletterEngine {
     }
 
     /**
-     *
      * @param TNP_Mailer_Message $message
-     * @param int $status
-     * @param string $error
      */
     function save_sent_message($message) {
         global $wpdb;
@@ -362,7 +359,7 @@ class NewsletterEngine {
         $edited_email->options = $email->options;
         $edited_email->options['error_message'] = $message;
 
-        $this->save_email($edited_email);
+        Newsletter::instance()->save_email($edited_email);
 
         Newsletter\Logs::add('newsletter-' . $email->id, 'Error: ' . $message);
     }
@@ -374,7 +371,7 @@ class NewsletterEngine {
      * not working.
      *
      * @param TNP_Email $email
-     * @param type $error
+     * @param string $error
      */
     function notify_fatal_error($email, $error) {
         $to = get_option('admin_email');
@@ -414,6 +411,7 @@ class NewsletterEngine {
             $this->logger->debug('Skip: ' . ($skip ? 'true' : 'false'));
         }
 
+        // Used by the speed control obsolete addon
         return (bool) apply_filters('newsletter_send_skip', $skip, $email);
     }
 

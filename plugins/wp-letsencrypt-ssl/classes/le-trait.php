@@ -581,14 +581,14 @@ class WPLE_Trait {
         }
         if ( $grade == 'T' || $grade == 'M' ) {
             $html = '<div class="wple-active-ssl">
-      <p>Details of <b>ACTIVE</b> SSL certificate installed & running on your site.</p>
+      <p>' . sprintf( __( 'Details of %sACTIVE%s SSL certificate installed & running on your site.', 'wp-letsencrypt-ssl' ), '<b>', '</b>' ) . '</p>
       <div class="wple-sslgrade">
         <span class="wple-grade-' . esc_attr( $grade ) . '">' . esc_html( $grade ) . '<small>GRADE</small></span>
       </div>
       <p class="wple-ssl-invalid">Your site do not have a valid SSL certificate installed!.</p><br>';
             $html .= '<a href="https://www.ssllabs.com/ssltest/analyze.html?d=' . esc_attr( SELF::get_root_domain() ) . '" target="_blank" class="ssllabslink" rel="nofollow noopener">Full details&gt;&gt;</a><br>';
             $html .= '</div>';
-            $html .= '<a href="' . wp_nonce_url( admin_url( 'admin.php?page=wp_encryption_ssl_health' ), 'wple_ssl', 'wple_ssl_check' ) . '" class="wple-sslcheck"><span class="dashicons dashicons-image-rotate"></span> Start Fresh Scan</a>';
+            $html .= '<a href="' . wp_nonce_url( admin_url( 'admin.php?page=wp_encryption_ssl_health' ), 'wple_ssl', 'wple_ssl_check' ) . '" class="wple-sslcheck"><span class="dashicons dashicons-image-rotate"></span> ' . esc_html__( 'Start Fresh Scan', 'wp-letsencrypt-ssl' ) . '</a>';
             return $html;
         }
         $validTo = $myssl['certs'][0]['notAfter'];
@@ -859,7 +859,7 @@ class WPLE_Trait {
                     //in progress
                     return [
                         'status' => 'inprogress',
-                        'info'   => $res['endpoints'][0]['statusDetailsMessage'],
+                        'info'   => ( array_key_exists( 'endpoints', $res ) ? ( isset( $res['endpoints'][0]['statusDetailsMessage'] ) ? $res['endpoints'][0]['statusDetailsMessage'] : '' ) : '' ),
                     ];
                 }
             }

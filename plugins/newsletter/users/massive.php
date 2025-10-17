@@ -1,7 +1,9 @@
 <?php
-/* @var $wpdb wpdb */
-/* @var $this NewsletterUsersAdmin */
-/* @var $controls NewsletterControls */
+
+/** @var NewsletterUsersAdmin $this */
+/** @var NewsletterControls $controls */
+/** @var NewsletterLogger $logger */
+/** @var wpdb $wpdb */
 
 defined('ABSPATH') || exit;
 
@@ -322,7 +324,5 @@ if ($controls->is_action('change_status')) {
 
         </form>
     </div>
-
-    <?php include NEWSLETTER_ADMIN_FOOTER; ?>
 
 </div>

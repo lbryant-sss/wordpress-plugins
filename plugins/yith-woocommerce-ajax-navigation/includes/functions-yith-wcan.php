@@ -199,7 +199,7 @@ if ( ! function_exists( 'yit_reorder_terms_by_parent' ) ) {
 				$term_parent = $term->parent;
 				while ( true ) {
 					$temp_parent_term = get_term_by( 'id', $term_parent, $taxonomy );
-					if ( $temp_parent_term->parent ) {
+					if ( $temp_parent_term && $temp_parent_term->parent ) {
 						$term_parent = $temp_parent_term->parent;
 					} else {
 						break;

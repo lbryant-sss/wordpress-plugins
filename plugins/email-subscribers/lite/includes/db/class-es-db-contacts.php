@@ -1477,4 +1477,36 @@ class ES_DB_Contacts extends ES_DB {
 		
 		return $results ? array_map( 'intval', $results ) : array();
 	}
+	
+	public function get_all_total_contacts_with_filters( $args = array() ) {
+		global $wpdb;
+		
+		$list_id = ! empty( $args['list_id'] ) ? intval( $args['list_id'] ) : 0;
+		$days    = ! empty( $args['days'] ) ? intval( $args['days'] ) : 0;
+		
+		$query = "SELECT COUNT(DISTINCT lc.contact_id) 
+				  FROM {$wpdb->prefix}ig_lists_contacts lc 
+				  INNER JOIN {$wpdb->prefix}ig_contacts c ON lc.contact_id = c.id 
+				  WHERE 1 = 1";
+		
+		$query_args = array();
+		
+		if ( $list_id > 0 ) {
+			$query .= " AND lc.list_id = %d";
+			$query_args[] = $list_id;
+		}
+		
+		if ( $days > 0 ) {
+			$query .= " AND lc.subscribed_at >= DATE_SUB(NOW(), INTERVAL %d DAY)";
+			$query_args[] = $days;
+		}
+		
+		if ( ! empty( $query_args ) ) {
+			$query = $wpdb->prepare( $query, $query_args );
+		}
+		
+		$result = $wpdb->get_var( $query );
+		return $result ? intval( $result ) : 0;
+	}
+
 }

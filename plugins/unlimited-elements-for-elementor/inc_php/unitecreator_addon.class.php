@@ -497,7 +497,7 @@ class UniteCreatorAddonWork extends UniteElementsBaseUC{
 	 * get special items type accordign the params
 	 */
 	protected function getItemsSpecialType(){
-
+		
 		foreach($this->params as $param){
 			$type = UniteFunctionsUC::getVal($param, "type");
 
@@ -514,7 +514,7 @@ class UniteCreatorAddonWork extends UniteElementsBaseUC{
 				case UniteCreatorDialogParam::PARAM_LISTING:
 
 					$useFor = UniteFunctionsUC::getVal($param, "use_for");
-
+			
 					if($useFor == "remote")
 						continue(2);
 
@@ -1221,7 +1221,7 @@ class UniteCreatorAddonWork extends UniteElementsBaseUC{
 	 * check if has remote
 	 */
 	public function hasMultisource(){
-
+		
 		$arrTypes = $this->getListingTypes();
 
 		return (in_array("items", $arrTypes));
@@ -1610,6 +1610,8 @@ class UniteCreatorAddonWork extends UniteElementsBaseUC{
 		return (false);
 	}
 
+	private function a_______GET_PARAM_________(){}
+	
 	/**
 	 * get some param by type
 	 */
@@ -1651,6 +1653,29 @@ class UniteCreatorAddonWork extends UniteElementsBaseUC{
 	}
 
 	/**
+	 * get multisource param
+	 */
+	public function getMultisourceParam(){
+		
+		$arrParams = $this->params;
+
+		foreach($arrParams as $param){
+			
+			$type = UniteFunctionsUC::getVal($param, "type");
+			if($type != UniteCreatorDialogParam::PARAM_LISTING)
+				continue;
+				
+			$useFor = UniteFunctionsUC::getVal($param, "use_for");
+			
+			if($useFor == "items")
+				return($param);
+			
+		}
+		
+		return(null);
+	}
+	
+	/**
 	 * get param by name
 	 */
 	public function getParamByName($name){
@@ -1672,7 +1697,7 @@ class UniteCreatorAddonWork extends UniteElementsBaseUC{
 	public function getParamsTypes($isItems = false){
 
 		$this->validateInited();
-
+		
 		if($isItems == false)
 			$params = $this->params;
 		else
@@ -1839,7 +1864,7 @@ class UniteCreatorAddonWork extends UniteElementsBaseUC{
 		foreach($arrParams as $param){
 
 			$type = UniteFunctionsUC::getVal($param, "type");
-
+			
 			if($type != UniteCreatorDialogParam::PARAM_LISTING)
 				continue;
 

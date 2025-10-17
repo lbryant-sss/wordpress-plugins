@@ -1497,9 +1497,6 @@ abstract class WooLentor_Product_Grid_Base_Widget extends Widget_Base {
         $css_handle = 'woolentor-product-grid-' . $style;
         $css_path = WOOLENTOR_ADDONS_PL_URL . 'assets/css/product-grid/' . $style . '.css';
         wp_enqueue_style( $css_handle, $css_path, [], WOOLENTOR_VERSION );
-
-        // Always enqueue common CSS
-        wp_enqueue_style( 'woolentor-product-grid-common', WOOLENTOR_ADDONS_PL_URL . 'assets/css/product-grid/common.css', [], WOOLENTOR_VERSION );
     }
 
     /**

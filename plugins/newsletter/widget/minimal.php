@@ -13,15 +13,15 @@ class NewsletterWidgetMinimal extends WP_Widget {
 
         extract($args);
 
-        echo $before_widget;
+        echo $args['before_widget'] ?? '';
 
         if (!is_array($instance)) {
-            $instance = array();
+            $instance = [];
         }
         // Filters are used for WPML
         if (!empty($instance['title'])) {
             $title = apply_filters('widget_title', $instance['title'], $instance, $this->id_base);
-            echo $before_title . esc_html($title) . $after_title;
+            echo $args['before_title'] . esc_html($title) . $args['after_title'];
         }
 
         $options_profile = Newsletter::instance()->get_options('form');
@@ -47,13 +47,16 @@ class NewsletterWidgetMinimal extends WP_Widget {
         $form .= '</form></div>';
 
         echo $form;
-        echo $after_widget;
+        echo $args['after_widget'] ?? '';
     }
 
     function update($new_instance, $old_instance) {
         return wp_kses_post_deep($new_instance);
     }
 
+    /**
+     * @param array $instance
+     */
     function form($instance) {
         if (!is_array($instance)) {
             $instance = [];
@@ -94,6 +97,7 @@ class NewsletterWidgetMinimal extends WP_Widget {
         </p>
 
         <?php
+        return '';
     }
 }
 

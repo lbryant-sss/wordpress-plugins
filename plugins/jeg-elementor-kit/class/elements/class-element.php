@@ -608,7 +608,7 @@ class Element {
 		?>
 		<# if ( 'undefined' !==typeof name && name && name.includes('jkit-pro-') ) { #>
 			<span class="elementor-panel-heading-promotion jkit-pro-promotion">
-				<a href="{{{ promotion.url }}}" target="_blank">
+				<a href="<?php echo esc_url(JEG_ELEMENT_SERVER_URL . 'pricing?utm_source=jeg-elementor-kit&utm_medium=elementor-panel') ?>" target="_blank">
 					<i class="eicon-upgrade-crown"></i><?php echo esc_html__( 'Upgrade', 'elementor' ); ?>
 				</a>
 			</span>

@@ -3,7 +3,7 @@
 /** @var NewsletterControls $controls */
 $email = $this->get_email($_GET['id']);
 
-if (empty($email)) {
+if (!$email) {
     die('Newsletter not found');
 }
 ?>

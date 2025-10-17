@@ -50,7 +50,6 @@ class NewsletterProfile extends NewsletterModule {
         return $b;
     }
 
-
     function shortcode_newsletter_profile_button($attrs, $content = '') {
         $user = $this->get_current_user();
 
@@ -200,8 +199,8 @@ class NewsletterProfile extends NewsletterModule {
 
     /**
      *
-     * @param type $text
-     * @param type $key
+     * @param string $text
+     * @param string $key
      * @param TNP_User $user
      * @return string
      */
@@ -420,6 +419,13 @@ class NewsletterProfile extends NewsletterModule {
         return $buffer;
     }
 
+    function build_field_admin_notice($message) {
+        if (!current_user_can('administrator')) {
+            return '';
+        }
+        return '<p style="background-color: #eee; color: #000; padding: 10px; margin: 10px 0">' . $message . ' <strong>This notice is shown only to administrators to help with configuration.</strong></p>';
+    }
+
     function shortcode_newsletter_profile($attrs, $content = '') {
         $user = $this->get_current_user();
 
@@ -449,7 +455,7 @@ class NewsletterProfile extends NewsletterModule {
             $buffer .= '<input class="tnp-submit" type="submit" value="' . esc_attr($this->get_text('save_label')) . '">';
             $buffer .= "</div>\n";
             $buffer .= "</form>\n</div>\n";
-            $this->restore_language($user->language);
+            $this->restore_language();
 
             return $buffer;
         }
@@ -732,6 +738,7 @@ class NewsletterProfile extends NewsletterModule {
 
         // Send the activation again only if we use double opt-in, otherwise it has no meaning
         if ($email_changed && $subscription_module->is_double_optin()) {
+            // @phpstan-ignore-next-line
             $user->email = $email;
             $subscription_module->send_activation_email($user);
             return $this->get_text('email_changed');

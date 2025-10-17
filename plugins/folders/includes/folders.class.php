@@ -4979,7 +4979,7 @@ class WCP_Folders
                         AND ELPM.meta_key = '_elementor_is_screenshot') ";
         }
         if(defined("W3TC")) {
-            $join .= "LEFT JOIN ".$wpdb->postmeta." AS WTCPM
+            $join .= " LEFT JOIN ".$wpdb->postmeta." AS WTCPM
                 ON ( P.ID = WTCPM.post_id
                 AND WTCPM.meta_key = 'w3tc_imageservice_file' )";
         }

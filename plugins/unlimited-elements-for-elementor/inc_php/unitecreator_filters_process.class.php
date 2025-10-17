@@ -594,7 +594,7 @@ class UniteCreatorFiltersProcess{
 		$request = $this->getArrRequest();
 		
 		$strTerms = UniteFunctionsUC::getVal($request, "ucterms");
-				
+		
 		$arrOutput = array();
 
 		//parse filters
@@ -605,7 +605,8 @@ class UniteCreatorFiltersProcess{
 
 			$arrOutput = $this->parseStrTerms($strTerms);
 		}
-
+		
+		
 		//page
 
 		$page = UniteFunctionsUC::getVal($request, "ucpage");
@@ -662,7 +663,7 @@ class UniteCreatorFiltersProcess{
 		//orderby
 
 		$arrOutput = $this->getArrInputFilters_getOrderby($arrOutput, $request);
-
+		
 		//orderdir
 
 		$orderDir = UniteFunctionsUC::getVal($request, "ucorderdir");
@@ -694,7 +695,8 @@ class UniteCreatorFiltersProcess{
 		}
 		
 		self::$arrInputFiltersCache = $arrOutput;
-			
+		
+		
 		return($arrOutput);
 	}
 
@@ -920,7 +922,7 @@ class UniteCreatorFiltersProcess{
 		
 		if(empty($arrTaxQuery) && self::$isModeReplace == false)
 			return($args);
-
+				
 		$existingTaxQuery = UniteFunctionsUC::getVal($args, "tax_query");
 				
 		//if replace terms mode - just delete the existing tax query
@@ -968,9 +970,9 @@ class UniteCreatorFiltersProcess{
 		
 		if($isFilterable == false)
 			return($args);
-
+					
 		$arrFilters = $this->getRequestFilters();
-				
+		
 		$arrMetaQuery = array();
 	
 		//---- set offset and count ----
@@ -1055,21 +1057,24 @@ class UniteCreatorFiltersProcess{
 		if(!empty($orderdir) && $orderdir != "default"){
 			$args["order"] = strtoupper($orderdir);
 		}
-
-
+		
 		$arrTerms = UniteFunctionsUC::getVal($arrFilters, "terms");
 		
-		//if mode init - the filters should be set by "all" the posts set, not by the selected ones.
-				
-		if(self::$isModeInit == false){	
-						
+		//if mode init - the filters should be set by "all". unless there are selected terms
+		//the posts set, not by the selected ones.
+
+		$strSelectedTermIDs = UniteFunctionsUC::getPostGetVariable("ucinitselectedterms","",UniteFunctionsUC::SANITIZE_TEXT_FIELD);
+		
+		if(self::$isModeInit == false || 
+		   self::$isModeInit == true && !empty($strSelectedTermIDs) ){	
+			
 			//combine the tax queries
 			$arrTaxQuery = $this->getTaxQuery($arrTerms);
 			
 			$args = $this->setArgsTaxQuery($args, $arrTaxQuery);
-			
 		}
-
+		
+		
 		//exclude
 		if(!empty($exclude)){
 
@@ -1865,9 +1870,9 @@ class UniteCreatorFiltersProcess{
 	 * get widget ajax data
 	 */
 	private function putWidgetGridFrontAjaxData(){
-
+		
 		//validate by response code
-
+		
 		$responseCode = http_response_code();
 
 		if($responseCode != 200){
@@ -1904,7 +1909,7 @@ class UniteCreatorFiltersProcess{
 		//replace terms mode
 		$isModeReplace = UniteFunctionsUC::getPostGetVariable("ucreplace","",UniteFunctionsUC::SANITIZE_TEXT_FIELD);
 		$isModeReplace = UniteFunctionsUC::strToBool($isModeReplace);
-
+		
 		GlobalsProviderUC::$isUnderAjax = true;
 		
 		self::$isModeReplace = $isModeReplace;
@@ -2070,9 +2075,9 @@ class UniteCreatorFiltersProcess{
 			$outputData["html_widgets_debug"] = $this->contentWidgetsDebug;
 
 		//add query data
-
+		
 		$arrQueryData = HelperUC::$operations->getLastQueryData();
-
+		
 		$strQueryPostIDs = HelperUC::$operations->getLastQueryPostIDs();
 
 		$outputData["query_data"] = $arrQueryData;
@@ -2124,7 +2129,9 @@ class UniteCreatorFiltersProcess{
 			http_response_code(200);
 
 		define("UE_AJAX_SEARCH_ACTIVE", true);
-
+		
+		GlobalsProviderUC::$isUnderAjax = true;
+		
 		$layoutID = UniteFunctionsUC::getPostGetVariable("layoutid","",UniteFunctionsUC::SANITIZE_KEY);
 		$elementID = UniteFunctionsUC::getPostGetVariable("elid","",UniteFunctionsUC::SANITIZE_KEY);
 
@@ -2276,8 +2283,11 @@ class UniteCreatorFiltersProcess{
 	 * add values to settings from data
 	 * postIDs - exists only if avoid duplicates option set
 	 */
-	public function addWidgetFilterableVarsFromData($data, $dataPosts, $postListName, $arrPostIDs = null){
-
+	public function addWidgetFilterableVarsFromData($data, $dataPosts, $postListName, $arrPostIDs, $numPosts){
+		
+		if(empty($arrPostIDs))
+			$arrPostIDs = null;
+		
 		//check if ajax related
 		$isAjax = UniteFunctionsUC::getVal($dataPosts, $postListName."_isajax");
 		$isAjax = UniteFunctionsUC::strToBool($isAjax);
@@ -2325,19 +2335,20 @@ class UniteCreatorFiltersProcess{
 			$strAttributes .= " data-filtergroup='$filterGroup' ";
 		}
 
-
 		//add last query
+		
 		$arrQueryData = HelperUC::$operations->getLastQueryData();
-
+		
+		
 		$jsonQueryData = UniteFunctionsUC::jsonEncodeForHtmlData($arrQueryData);
-
+		
 		$strAttributes .= " querydata='$jsonQueryData'";
 
 		$this->includeClientSideScripts();
 
 		$data["uc_filtering_attributes"] = $strAttributes;
 		$data["uc_filtering_addclass"] = $addClass;
-
+		
 		return($data);
 	}
 
@@ -2345,8 +2356,11 @@ class UniteCreatorFiltersProcess{
 	 * add widget variables
 	 * uc_listing_addclass, uc_listing_attributes
 	 */
-	public function addWidgetFilterableVariables($data, $addon, $arrPostIDs = array()){
-
+	public function addWidgetFilterableVariables($data, $addon, $arrPostIDs, $numPosts){
+		
+		if(empty($arrPostIDs))
+			$arrPostIDs = array();
+		
 		$param = $addon->getParamByType(UniteCreatorDialogParam::PARAM_POSTS_LIST);
 
 		if(empty($param))
@@ -2356,8 +2370,8 @@ class UniteCreatorFiltersProcess{
 
 		$dataPosts = UniteFunctionsUC::getVal($data, $postListName);
 
-		$data = $this->addWidgetFilterableVarsFromData($data, $dataPosts, $postListName, $arrPostIDs);
-
+		$data = $this->addWidgetFilterableVarsFromData($data, $dataPosts, $postListName, $arrPostIDs, $numPosts);
+		
 		return($data);
 	}
 
@@ -2496,7 +2510,7 @@ class UniteCreatorFiltersProcess{
 		
 		//if mode init - get selected id's from request
 		if(self::$isModeInit == true){
-
+			
 			$strSelectedTermIDs = UniteFunctionsUC::getPostGetVariable("ucinitselectedterms","",UniteFunctionsUC::SANITIZE_TEXT_FIELD);
 			
 			if(empty($strSelectedTermIDs))
@@ -2549,7 +2563,7 @@ class UniteCreatorFiltersProcess{
 			return($arrTerms);
 
 		$this->hasSelectedByRequest = true;
-
+		
 		//modify the selected
 
 		foreach($arrTerms as $index => $term){
@@ -2967,7 +2981,6 @@ class UniteCreatorFiltersProcess{
 	 */
 	public function addEditorFilterArguments($data, $typeArg){
 		
-		
 		$filterType = self::TYPE_TABS;
 		
 		switch($typeArg){
@@ -3019,9 +3032,9 @@ class UniteCreatorFiltersProcess{
 
 		if($isUnderAjax == true)
 			$isFirstLoad = false;
-
+		
 		if($isInitAfter == true){
-
+			
 			$attributes = " data-initafter=\"true\"";
 
 			if($isUnderAjax == false && $isInsideEditor == false){
@@ -3081,7 +3094,7 @@ class UniteCreatorFiltersProcess{
 					$arrTerms = $this->modifyOutputTerms_tabs_modifyLimitGrayed($arrTerms, $limitGrayedItems);
 
 				$isFilterHidden = $this->modifyOutputTerms_isFilterHidden($data, $arrTerms, $isUnderAjax);
-
+		
 			break;
 			case self::TYPE_SELECT:
 

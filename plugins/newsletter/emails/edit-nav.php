@@ -1,8 +1,9 @@
 <?php
+/** @var NewsletterEmailsAdmin $this */
 $p = $_GET['page'];
 $id = (int) $_GET['id'];
 $nav_email = $this->get_email($id);
-if (empty($nav_email)) {
+if (!$nav_email) {
     die('Newsletter not found');
 }
 $can_edit = $nav_email->status == TNP_Email::STATUS_DRAFT || $nav_email->status == TNP_Email::STATUS_PAUSED;

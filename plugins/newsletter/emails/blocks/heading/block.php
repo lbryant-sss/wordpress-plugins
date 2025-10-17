@@ -5,6 +5,10 @@
  * Description: Section title
  */
 
+/** @var array $options */
+/** @var array $composer */
+/** @var string $dir */
+
 $defaults = array(
     'text' => 'An Awesome Title',
     'align' => 'center',

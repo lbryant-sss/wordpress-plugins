@@ -565,9 +565,9 @@ class Admin_Helper {
 
 		if ( ! $is_papro_active ) {
 
-			$link = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/pro', 'plugins-page', 'wp-dash', 'get-pro' );
+			$link = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/pro/#get-pa-pro', 'plugins-page', 'wp-dash', 'get-pro' );
 
-			$pro_link = sprintf( '<a href="%s" target="_blank" style="color: #FF6000; font-weight: bold;">%s</a>', $link, __( 'Go Pro (10% OFF)', 'premium-addons-for-elementor' ) );
+			$pro_link = sprintf( '<a href="%s" target="_blank" style="color: #FF6000; font-weight: bold;">%s</a>', $link, __( 'Go Pro (25% OFF)', 'premium-addons-for-elementor' ) );
 			array_push( $new_links, $pro_link );
 		}
 
@@ -748,10 +748,10 @@ class Admin_Helper {
 			call_user_func(
 				'add_submenu_page',
 				self::$page_slug,
-				'<span style="color: #FF6000;" class="pa_pro_upgrade">Upgrade To Pro!</span>',
-				'<span style="color: #FF6000;" class="pa_pro_upgrade">Upgrade To Pro!</span>',
+				'<span style="color: #FF6000;" class="pa_pro_upgrade">Get Pro (25% OFF)</span>',
+				'<span style="color: #FF6000;" class="pa_pro_upgrade">Get Pro (25% OFF)</span>',
 				'manage_options',
-				'https://premiumaddons.com/pro/',
+				'https://premiumaddons.com/pro/#get-pa-pro',
 				''
 			);
 		}
@@ -855,7 +855,7 @@ class Admin_Helper {
 							</h4>
 							<p>
 								<?php echo esc_html( $banner_content['desc'] ); ?>
-								<span class="papro-sale-notice"><?php echo wp_kses_post( __( 'save 10% on Lifetime!', 'premium-addons-for-elementor' ) ); ?></span>
+								<span class="papro-sale-notice"><?php echo wp_kses_post( __( 'save up to 25%!', 'premium-addons-for-elementor' ) ); ?></span>
 							</p>
 						</div>
 						<div class="papro-admin-notice-cta">

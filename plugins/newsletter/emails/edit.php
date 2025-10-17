@@ -1,6 +1,9 @@
 <?php
 /** @var NewsletterEmailsAdmin $this */
-/* @var $controls NewsletterControls */
+/** @var NewsletterControls $controls */
+/** @var NewsletterLogger $logger */
+/** @var wpdb $wpdb */
+
 defined('ABSPATH') || exit;
 
 global $wpdb;
@@ -18,7 +21,7 @@ $email_id = (int)$_GET['id'];
 // Always required
 $email = $this->get_email($email_id, ARRAY_A);
 
-if (empty($email)) {
+if (!$email) {
     echo 'Newsletter not found';
     return;
 }
@@ -237,7 +240,7 @@ if ($controls->is_action('test') || $controls->is_action('save') || $controls->i
             }
         }
 
-        if (!empty($profile_clause)) {
+        if ($profile_clause) {
             $query .= ' and (' . implode(' and ', $profile_clause) . ')';
         }
 
@@ -309,11 +312,12 @@ if (empty($controls->errors) && ($controls->is_action('send') || $controls->is_a
 
         // Immadiate first batch sending since people has no patience
 
-        if ($controls->is_action('send') && $email['total'] < 20 && !Newsletter::instance()->skip_this_run()) {
+        if ($controls->is_action('send') && $email['total'] < 20) {
+
             // Avoid the first batch if there are other newsletters delivering otherwise we can get over the per hour quota
-            $sending_count = $wpdb->get_results("select count(*) from " . NEWSLETTER_EMAILS_TABLE . " where status='sending' and send_on<" . time());
+            $sending_count = $wpdb->get_var("select count(*) from " . NEWSLETTER_EMAILS_TABLE . " where status='sending' and send_on<=" . time());
             if ($sending_count <= 1) { // This newsletter is counted as well
-                Newsletter::instance()->hook_newsletter();
+                NewsletterEngine::instance()->run();
             }
         }
 
@@ -332,7 +336,6 @@ if (isset($email['options']['status']) && $email['options']['status'] === 'S') {
 if (TNP_Email::STATUS_ERROR === $email['status'] && isset($email['options']['error_message'])) {
     $controls->errors .= sprintf(__('Stopped by fatal error: %s', 'newsletter'), esc_html($email['options']['error_message']));
 }
-
 
 if ($email['status'] != 'sent') {
     $subscriber_count = $wpdb->get_var(str_replace('*', 'count(*)', $email['query']));

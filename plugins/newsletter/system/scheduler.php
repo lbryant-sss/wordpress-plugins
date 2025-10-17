@@ -1,7 +1,7 @@
 <?php
-/* @var $wpdb wpdb */
-/* @var $this NewsletterSystemAdmin */
-/* @var $controls NewsletterControls */
+/** @var NewsletterSystemAdmin $this */
+/** @var NewsletterControls $controls */
+/** @var wpfb $wpdb */
 
 use Newsletter\License;
 

@@ -208,7 +208,7 @@ class NewsletterAddon {
         if ($this->options) {
             return;
         }
-        $this->options = $this->get_option_array('newsletter_' . $this->name, []);
+        $this->options = $this->get_option_array('newsletter_' . $this->name);
     }
 
     /**
@@ -254,7 +254,7 @@ class NewsletterAddon {
     }
 
     function merge_defaults($defaults) {
-        $options = $this->get_option_array('newsletter_' . $this->name, []);
+        $options = $this->get_option_array('newsletter_' . $this->name);
         $options = array_merge($defaults, $options);
         $this->save_options($options);
     }

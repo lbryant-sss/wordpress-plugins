@@ -8,7 +8,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class UniteCreatorOutputWork extends HtmlOutputBaseUC{
-
+	
 	private static $serial = 0;
 
 	const SELECTOR_VALUE_PLACEHOLDER = "{{value}}";
@@ -108,13 +108,33 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 	 * clear includes cache, avoid double render bug
 	 */
 	public static function clearIncludesCache(){
-
-		self::$arrHandleCacheCss = array();
-		self::$arrHandleCacheJs = array();
-
-		self::$arrUrlCacheCss = array();
-		self::$arrUrlCacheJs = array();
-
+		
+		// define handles we want to keep
+	    $preserveHandles = array(
+	        "font-awesome",
+	        "font-awesome-4-shim"
+	    );
+	
+	    $keepHandles = array();
+	
+	    // save flags before clearing
+	    foreach ($preserveHandles as $handle) {
+	        if (isset(self::$arrHandleCacheCss[$handle])) {
+	            $keepHandles[$handle] = true;
+	        }
+	    }
+	
+	    // reset caches
+	    self::$arrHandleCacheCss = array();
+	    self::$arrHandleCacheJs  = array();
+	    self::$arrUrlCacheCss    = array();
+	    self::$arrUrlCacheJs     = array();
+	
+	    // restore preserved handles
+	    foreach ($keepHandles as $handle => $val) {
+	        self::$arrHandleCacheCss[$handle] = $val;
+	    }
+        
 	}
 
 
@@ -142,7 +162,7 @@ class UniteCreatorOutputWork extends HtmlOutputBaseUC{
 	 * check that the include located in cache
 	 */
 	private function isIncludeInCache($url, $handle, $type){
-
+		
 		if(empty($url) || empty($handle))
 			return(false);
 
@@ -2824,7 +2844,7 @@ $css
 	 * init by addon
 	 */
 	public function initByAddon(UniteCreatorAddon $addon){
-
+		
 		if(empty($addon))
 			UniteFunctionsUC::throwError("Wrong addon given");
 

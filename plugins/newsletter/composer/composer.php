@@ -427,7 +427,7 @@ class NewsletterComposer extends NewsletterModule {
      *
      * The returned email is not saved into the database!
      *
-     * @param string $dir Folder containing the template (at minimim the template.json file)
+     * @param string $id Template identifier
      * @return \WP_Error|\TNP_Email
      */
     function build_email_from_template($id) {
@@ -982,8 +982,8 @@ class NewsletterComposer extends NewsletterModule {
      * Sources:
      * - https://webdesign.tutsplus.com/tutorials/creating-a-future-proof-responsive-email-without-media-queries--cms-23919
      *
-     * @param type $email
-     * @return type
+     * @param TNP_Email $email
+     * @return string
      */
     static function get_html_open($email) {
 

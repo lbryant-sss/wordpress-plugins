@@ -1005,12 +1005,12 @@ class UniteCreatorWooIntegrate{
                 ON p.ID = pm_stock.post_id 
                 AND pm_stock.meta_key = '_stock_status' 
                 AND pm_stock.meta_value = 'instock'";
-
+			
 			$clauses['join'] .= "\n" . implode("\n", $variationJoinConditions);
 		}
 		
 		remove_filter('posts_clauses', array($this, 'excludeOutOfStockVariationProducts'), 10, 2);
-
+		
 		return $clauses;
 	}
 

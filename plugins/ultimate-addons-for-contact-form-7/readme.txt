@@ -4,7 +4,7 @@ Tags: contact form, contact form 7, forms, custom form, form builder
 Requires at least: 4.2
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 3.5.30
+Stable tag: 3.5.31
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -480,6 +480,11 @@ Just install our plugin, and you'll get access to a variety of free templates!
 53. Range Slider Pro (Form Example)
 
 == Changelog ==
+
+= 3.5.31 - 16/10/2025 =
+
+- Compatibility: Fully compatible with Contact Form 7 (v6.1.2).
+- Update: Readme.txt information updated.
 
 = 3.5.30 - 05/10/2025 =
 

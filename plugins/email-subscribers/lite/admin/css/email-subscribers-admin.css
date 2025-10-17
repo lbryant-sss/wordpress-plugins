@@ -3396,12 +3396,6 @@ body.icegram-express_page_es_forms #wpcontent {
 	overflow-y: hidden;
 }
 
-
-ul#adminmenu li#toplevel_page_es_dashboard ul li:nth-child(6){
-   display:none;
-}
-
-
 @keyframes fadeIn {
     0% {
       opacity: 0;

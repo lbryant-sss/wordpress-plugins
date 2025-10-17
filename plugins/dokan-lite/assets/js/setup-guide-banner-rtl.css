@@ -530,8 +530,6 @@ video:where(.dokan-layout,.dokan-layout *) {
 }.dokan-layout textarea:focus,.dokan-layout input[type=text]:focus,.dokan-layout input[type=number]:focus{outline-offset:0}.dokan-layout .dokan-date-range-picker .woocommerce-calendar__react-dates .CalendarDay__selected_span{background:var(--dokan-button-background-color, #7047EB) !important;border:1px solid #ccc}.dokan-layout .dokan-date-range-picker .woocommerce-calendar__react-dates .CalendarDay__selected_span:hover{background:var(--dokan-button-hover-background-color, #502BBF) !important;border:1px solid #f0f0f0}.dokan-layout .dokan-date-range-picker .woocommerce-calendar__react-dates .CalendarDay__selected{background:var(--dokan-button-background-color, #7047EB) !important;border:1px solid #ccc}.dokan-layout .dokan-date-range-picker .woocommerce-calendar__react-dates .CalendarDay__selected:hover{background:var(--dokan-button-hover-background-color, #502BBF) !important;border:1px solid #f0f0f0}.dokan-layout .dokan-date-range-picker .woocommerce-calendar__react-dates .CalendarDay__hovered_span{background:var(--dokan-button-hover-background-color, #502BBF) !important;border:1px solid #f0f0f0;color:#fff}button[data-headlessui-state=checked]:hover,button[data-headlessui-state=checked]:focus{background-color:var(--dokan-button-background-color, #7047EB) !important}div[data-radix-popper-content-wrapper],div[data-headlessui-state=open][role=dialog]{z-index:999 !important}.dokan-layout .my-4{
   margin-top: 1rem;
   margin-bottom: 1rem;
-}.dokan-layout .mr-\[10px\]{
-  margin-left: 10px;
 }.dokan-layout .flex{
   display: flex;
 }.dokan-layout .h-16{
@@ -593,6 +591,8 @@ video:where(.dokan-layout,.dokan-layout *) {
 }.dokan-layout .py-2{
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+}.dokan-layout .pr-\[10px\]{
+  padding-left: 10px;
 }.dokan-layout .text-base{
   font-size: 1rem;
   line-height: 1.5rem;
@@ -621,7 +621,7 @@ video:where(.dokan-layout,.dokan-layout *) {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }.dokan-layout .filter{
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}@media (min-width: 768px){.dokan-layout .md\:mr-\[20px\]{
-    margin-left: 20px;
+}@media (min-width: 1024px){.dokan-layout .lg\:pr-5{
+    padding-left: 1.25rem;
   }
 }

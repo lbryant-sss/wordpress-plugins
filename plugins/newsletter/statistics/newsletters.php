@@ -1,7 +1,8 @@
 <?php
-/* @var $this NewsletterStatistics */
-/* @var $controls NewsletterControls */
-/* @var $wpdb wpdb */
+
+/** @var NewsletterStatisticsAdmin $this */
+/** @var NewsletterControls $controls */
+/** @var NewsletterLogger $logger */
 
 global $wpdb;
 

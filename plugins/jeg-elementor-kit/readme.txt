@@ -4,7 +4,7 @@ Tags: elementor, elements, addons, widgets, templates
 Requires at least: 5.0
 Tested up to: 6.8.3
 Requires PHP: 7.4
-Stable tag: 3.0.0
+Stable tag: 3.0.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -111,18 +111,24 @@ Upgrade to **Jeg Kit Pro** to unlock advanced widgets for WooCommerce, Archive, 
 
 ---
 
-== ⚙️ Advanced Effects (Pro) ==
+== ⚙️ Advanced Effects & Options ==
 
-Enhance your site with **8 advanced visual and interactive effects** available under the Elementor *Advanced* tab.
+Enhance your Elementor designs with **extra visual and interactive options** under the *Advanced* tab — giving you greater control over how elements behave and appear across your layouts.
 
+**Free Options**  
+- **Sticky Element**. Make any **section, column, or container** stay visible while scrolling — ideal for persistent sidebars, headers, or call-to-action sections.  
+- **Transform (Rotate)**. Adjust **element rotation and transform properties** to achieve unique static angles and perspectives — perfect for creative layouts.  
+- **Glass Blur Effect (Blur)**. Add a **frosted glass-style blur** background effect for a sleek, modern design aesthetic.  
+
+**Pro Effects**  
 - **Custom Cursor**. Replace the default cursor with animated effects.  
 - **Blend Mode**. Add creative color blending to sections and elements.  
 - **Smooth Scroll**. Enable smooth scrolling for better user experience.  
-- **Parallax Effects**. Add depth and animation when scrolling.  
-- **Mouse Effects**. Move and animate elements with cursor movement.  
-- **Background Motion Effects**. Add smooth motion to background layers.  
-- **Background Parallax**. Create parallax scrolling effects for images.  
-- **Background Mouse Effects**. Animate backgrounds based on mouse movement.  
+- **Parallax Effects**. Add depth and motion to elements while scrolling.  
+- **Mouse Effects**. Move and animate elements interactively with the cursor.  
+- **Background Motion Effects**. Create smooth animations on background layers.  
+- **Background Parallax**. Add depth through parallax scrolling on background images.  
+- **Background Mouse Effects**. Animate background movement based on cursor interaction.  
 
 ---
 
@@ -196,6 +202,10 @@ Visit **[https://jegkit.com/](https://jegkit.com/)** for live demos, tutorials, 
 This major release introduces Mega Menu Builder, 114 demo templates, and a redesigned dashboard. Update now to explore new features and improved performance.
 
 == Changelog ==
+
+= 3.0.1 - 16-10-2025 =
+* Fix: Missing widget list in Elementor panel when Elementor Pro is active
+* Fix: All Archive condition issue in Header and Footer Templates
 
 = 3.0.0 - 15-10-2025 =
 * New Feature: Added 114 demo templates (10 free + 104 pro) with one-click importer.

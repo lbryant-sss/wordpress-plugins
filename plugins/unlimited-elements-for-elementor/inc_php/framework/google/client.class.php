@@ -114,16 +114,24 @@ abstract class UEGoogleAPIClient{
 
 			unset($params[self::PARAM_QUERY]);
 		}
-
+		
 		$query = array_merge($query, $this->getAuthParams());
 
+		$headers = array();
+		
 		$request = UEHttp::make();
+		
+		if(!empty($headers))
+			$request->withHeaders($headers);
+				
 		$request->asJson();
 		$request->acceptJson();
+		
 		$request->cacheTime($this->cacheTime);
 		$request->withQuery($query);
 		$request->withBody($body);
-
+		
+		
 		$request->validateResponse(function($response){
 
 			$data = $response->json();

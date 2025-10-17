@@ -55,6 +55,7 @@ class UniteCreatorAPIIntegrations{
 	const GOOGLE_REVIEWS_FIELD_EMPTY_API_KEY = "google_reviews_empty_api_key";
 	const GOOGLE_REVIEWS_FIELD_PLACE_ID = "google_reviews_place_id";
 	const GOOGLE_REVIEWS_FIELD_CACHE_TIME = "google_reviews_cache_time";
+	const GOOGLE_REVIEWS_FIELD_LANG = "google_reviews_lang";
 	const GOOGLE_REVIEWS_DEFAULT_CACHE_TIME = 10;
 
 	const GOOGLE_SHEETS_FIELD_EMPTY_CREDENTIALS = "google_sheets_empty_credentials";
@@ -328,6 +329,7 @@ class UniteCreatorAPIIntegrations{
 
 			"google_reviews:place_id" => self::GOOGLE_REVIEWS_FIELD_PLACE_ID,
 			"google_reviews:cache_time" => self::GOOGLE_REVIEWS_FIELD_CACHE_TIME,
+			"google_reviews:lang" => self::GOOGLE_REVIEWS_FIELD_LANG,
 
 			"google_sheets:id" => self::GOOGLE_SHEETS_FIELD_ID,
 			"google_sheets:sheet_id" => self::GOOGLE_SHEETS_FIELD_SHEET_ID,
@@ -606,6 +608,13 @@ class UniteCreatorAPIIntegrations{
 				"desc" => sprintf(__("Optional. You can specify the cache time of results in minutes. The default value is %d minutes.", "unlimited-elements-for-elementor"), self::GOOGLE_REVIEWS_DEFAULT_CACHE_TIME),
 				"default" => self::GOOGLE_REVIEWS_DEFAULT_CACHE_TIME,
 			),
+			array(
+				"id" => self::GOOGLE_REVIEWS_FIELD_LANG,
+				"type" => UniteCreatorDialogParam::PARAM_TEXTFIELD,
+				"text" => __("Language Code", "unlimited-elements-for-elementor"),
+				"desc" => sprintf(__("Optional. Specify a language code. Example: de and google will translate the review.", "unlimited-elements-for-elementor"), self::GOOGLE_REVIEWS_DEFAULT_CACHE_TIME),
+				"default" => "",
+			)
 		));
 
 		return $fields;
@@ -874,13 +883,19 @@ class UniteCreatorAPIIntegrations{
 		$placesService->setCacheTime($cacheTime);
 
 		$this->authorizeGoogleServiceWithApiKey($placesService);
-
-		$place = $placesService->getDetails($placeId, array(
+		
+		$reviewsLanguage = $this->getParam(self::GOOGLE_REVIEWS_FIELD_LANG);
+		
+		$placeParams = array(
 			"fields" => "reviews",
 			"reviews_sort" => "newest",
-		));
+			"lang" => $reviewsLanguage,
+		);
+		
+		$place = $placesService->getDetails($placeId, $placeParams);
 
 		foreach($place->getReviews() as $review){
+			
 			$data[] = array(
 				"id" => $review->getId(),
 				"date" => $review->getDate(self::FORMAT_DATETIME),

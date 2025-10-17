@@ -359,12 +359,27 @@ class CallNowButton {
             array( 'wp-color-picker' ),
             CNB_VERSION,
             true );
-        wp_register_script(
+	    wp_localize_script(
+		    CNB_SLUG . '-call-now-button',
+		    'cnb_get_plans_data',
+		    array(
+			    'nonce' => wp_create_nonce( 'cnb_get_plans' ),
+		    )
+	    );
+
+	    wp_register_script(
             CNB_SLUG . '-dismiss',
             plugins_url('resources/js/dismiss.js', CNB_PLUGINS_URL_BASE ),
             array( 'jquery', CNB_SLUG . '-call-now-button' ),
             CNB_VERSION,
             true );
+	    wp_localize_script(
+		    CNB_SLUG . '-dismiss',
+		    'cnb_hide_notice_data',
+		    array(
+			    'nonce' => wp_create_nonce( 'cnb_hide_notice' ),
+		    )
+	    );
         wp_register_script(
             CNB_SLUG . '-timezone-picker-fix',
             plugins_url('resources/js/timezone-picker-fix.js', CNB_PLUGINS_URL_BASE ),
@@ -396,24 +411,69 @@ class CallNowButton {
             array( 'jquery', CNB_SLUG . '-call-now-button' ),
             CNB_VERSION,
             true );
+	    wp_localize_script(
+		    CNB_SLUG . '-domain-upgrade',
+		    'cnb_get_checkout_data',
+		    array(
+			    'nonce' => wp_create_nonce( 'cnb_get_checkout' ),
+		    )
+	    );
+	    wp_localize_script(
+		    CNB_SLUG . '-domain-upgrade',
+		    'cnb_get_agency_checkout_data',
+		    array(
+			    'nonce' => wp_create_nonce( 'cnb_get_agency_checkout' ),
+		    )
+	    );
         wp_register_script(
             CNB_SLUG . '-settings',
             plugins_url('resources/js/settings.js', CNB_PLUGINS_URL_BASE ),
             array( CNB_SLUG . '-call-now-button' ),
             CNB_VERSION,
             true );
+	    wp_localize_script(
+		    CNB_SLUG . '-settings',
+		    'cnb_upgrade_to_yearly_data',
+		    array(
+			    'nonce' => wp_create_nonce( 'cnb_upgrade_to_yearly' ),
+		    )
+	    );
+	    wp_localize_script(
+		    CNB_SLUG . '-settings',
+		    'cnb_set_user_storage_solution_data',
+		    array(
+			    'nonce' => wp_create_nonce( 'cnb_set_user_storage_solution' ),
+		    )
+	    );
 	    wp_register_script(
 		    CNB_SLUG . '-billing-portal',
 		    plugins_url('resources/js/billing-portal.js', CNB_PLUGINS_URL_BASE ),
 		    array( 'jquery' ),
 		    CNB_VERSION,
 		    true );
-        wp_register_script(
+	    wp_localize_script(
+		    CNB_SLUG . '-billing-portal',
+		    'cnb_billing_portal',
+		    array(
+			    'cnb_get_billing_portal_nonce' => wp_create_nonce( 'cnb_get_billing_portal' ),
+			    'cnb_request_billing_portal_nonce' => wp_create_nonce( 'cnb_request_billing_portal' ),
+		    )
+	    );
+
+	    wp_register_script(
             CNB_SLUG . '-premium-activation',
             plugins_url('resources/js/premium-activation.js', CNB_PLUGINS_URL_BASE ),
             array( CNB_SLUG . '-call-now-button' ),
             CNB_VERSION,
             true );
+	    wp_localize_script(
+		    CNB_SLUG . '-premium-activation',
+		    'cnb_email_activation_data',
+		    array(
+			    'nonce' => wp_create_nonce( 'cnb_email_activation' ),
+		    )
+	    );
+
 	    wp_register_script(
 		    CNB_SLUG . '-button-overview',
 		    plugins_url('resources/js/button-overview.js', CNB_PLUGINS_URL_BASE ),
@@ -426,13 +486,32 @@ class CallNowButton {
             array( 'jquery' ),
             CNB_VERSION,
             true );
+	    // Localize the script with the nonce and chat page URL
+	    wp_localize_script(
+		    CNB_SLUG . '-chat-marketing',
+		    'cnb_chat_marketing_data',
+		    array(
+			    'enable_chat_nonce' => wp_create_nonce('cnb_enable_chat'),
+			    'disable_chat_nonce' => wp_create_nonce('cnb_disable_chat'),
+			    'chat_url' => admin_url('admin.php?page=call-now-button-chat'),
+		    )
+	    );
+
         wp_register_script(
             CNB_SLUG . '-action-edit-scheduler',
             plugins_url('resources/js/action-edit-scheduler.js', CNB_PLUGINS_URL_BASE ),
             array( CNB_SLUG . '-call-now-button' ),
             CNB_VERSION,
             true );
-        wp_register_script(
+	    wp_localize_script(
+		    CNB_SLUG . '-action-edit-scheduler',
+		    'cnb_time_format_data',
+		    array(
+			    'nonce' => wp_create_nonce( 'cnb_time_format' ),
+		    )
+	    );
+
+	    wp_register_script(
             CNB_SLUG . '-action-edit-fields',
             plugins_url('resources/js/action-edit-fields.js', CNB_PLUGINS_URL_BASE ),
             array( CNB_SLUG . '-call-now-button' ),
@@ -567,6 +646,14 @@ class CallNowButton {
 		    array(),
 		    CNB_VERSION,
 		    true );
+	    wp_localize_script(
+		    CNB_SLUG . '-chat',
+		    'cnb_create_chat_token_data',
+		    array(
+			    'nonce' => wp_create_nonce( 'cnb_create_chat_token' ),
+		    )
+	    );
+
     }
 
 	/**
@@ -717,14 +804,12 @@ class CallNowButton {
 
         $ajax_controller = new CnbAdminAjax();
         add_action( 'wp_ajax_cnb_time_format', array( $ajax_controller, 'time_format' ) );
-        add_action( 'wp_ajax_cnb_settings_profile_save', array( $ajax_controller, 'settings_profile_save' ) );
         add_action( 'wp_ajax_cnb_get_checkout', array( $ajax_controller, 'domain_upgrade_get_checkout' ) );
         add_action( 'wp_ajax_cnb_get_agency_checkout', array( $ajax_controller, 'agency_upgrade_get_checkout' ) );
         add_action( 'wp_ajax_cnb_email_activation', array( $ajax_controller, 'cnb_email_activation' ) );
         add_action( 'wp_ajax_cnb_get_plans', array( $ajax_controller, 'get_plans' ) );
         add_action( 'wp_ajax_cnb_get_billing_portal', array( $ajax_controller, 'get_billing_portal' ) );
         add_action( 'wp_ajax_cnb_request_billing_portal', array( $ajax_controller, 'request_billing_portal' ) );
-	    add_action( 'wp_ajax_cnb_get_domain_status', array( $ajax_controller, 'get_domain_status' ) );
         add_action( 'wp_ajax_cnb_upgrade_to_yearly', array( $ajax_controller, 'upgrade_to_yearly' ) );
 
         $action_controller = new CnbActionController();

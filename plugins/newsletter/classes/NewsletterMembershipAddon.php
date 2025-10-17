@@ -49,7 +49,7 @@ abstract class NewsletterMembershipAddon extends NewsletterAddon {
 
     function _process_wp_user($wp_user_id) {
         $logger = $this->get_logger();
-        $logger->debug('User changed: ' . $user_id);
+        $logger->debug('User changed: ' . $wp_user_id);
         $wp_user = get_user_by('id', $wp_user_id);
         if (!$wp_user) {
             $logger->debug('User ' . $wp_user_id . ' not found');
@@ -191,6 +191,7 @@ abstract class NewsletterMembershipAddon extends NewsletterAddon {
     function subscribe($subscription) {
         $user = NewsletterSubscription::instance()->subscribe2($subscription);
         if (is_wp_error($user)) {
+            $logger = $this->get_logger();
             $logger->fatal('Unable to create the subscription ');
             $logger->fatal($user);
             $this->log('Failed subscription for user ' . $subscription->data->wp_user_id . ': ' . $user->get_error_message());

@@ -6,7 +6,7 @@ Tags: email subscribers, newsletter, subscription form, post notifications, wooc
 Requires at least: 3.9
 Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: 5.9.5
+Stable tag: 5.9.6
 License: GPLv3
 
 License URI: http://www.gnu.org/licenses
@@ -341,12 +341,27 @@ Option 2:
 
 == Upgrade Notice ==
 
-= 5.9.5 =
+= 5.9.6 =
 
-* New: Revamped Audience Dashboard UI for clearer insights
-* Fix: Dashboard not loading due to "MonsterInsights – Google Analytics" plugin conflict
+* New: Revamped Campaign Dashboard UI for a more modern and intuitive experience
+* Improvements: Audience dashboard now loads faster
+* Fix: Pagination issue fixed on the Audience page
+* Fix: Emails were not sent correctly to manually added contacts
+* Fix: Fixed bug where clicking the "Subscribe" button unintentionally created a new form
+* Fix: Fixed GDPR and Captcha field configuration problems
+* Fix: Subscribers now added only to selected lists when subscribing
 
 == Changelog ==
+
+**5.9.6 (16.10.2025)**
+
+* New: Revamped Campaign Dashboard UI for a more modern and intuitive experience
+* Improvements: Audience dashboard now loads faster
+* Fix: Pagination issue fixed on the Audience page
+* Fix: Emails were not sent correctly to manually added contacts
+* Fix: Fixed bug where clicking the "Subscribe" button unintentionally created a new form
+* Fix: Fixed GDPR and Captcha field configuration problems
+* Fix: Subscribers now added only to selected lists when subscribing
 
 **5.9.5 (07.10.2025)**
 

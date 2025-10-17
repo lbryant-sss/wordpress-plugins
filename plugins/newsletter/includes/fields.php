@@ -702,7 +702,7 @@ class NewsletterFields {
         } else {
             $name = 'tax_' . $taxonomy;
         }
-        if (empty($label)) {
+        if (!$label) {
             $label = __('Terms', 'newsletter');
         }
         $attrs = $this->_merge_attrs($attrs);

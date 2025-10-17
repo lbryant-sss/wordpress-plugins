@@ -31,6 +31,8 @@ class GlobalsProviderUC{
 	
 	public static $activeAddonForSettings = null;
 	public static $lastPostQuery = null;
+	public static $lastNumPosts = null;
+	
 	public static $lastPostQuery_page = null;
 	public static $lastPostQuery_offset = null;
 	public static $lastPostQuery_type = null;

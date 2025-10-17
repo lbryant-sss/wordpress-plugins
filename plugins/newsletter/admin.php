@@ -89,7 +89,6 @@ class NewsletterAdmin extends NewsletterModuleAdmin {
      *
      * @global wpdb $wpdb
      * @param WP_Admin_Bar $admin_bar
-     * @return type
      *
      * https://developer.wordpress.org/reference/hooks/admin_bar_menu/
      */

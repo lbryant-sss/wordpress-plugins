@@ -236,7 +236,7 @@ class Cloud extends Base {
 		$ref = $this->_get_ref_url();
 
 		// WPAPI REST echo dryrun
-		$echobox = self::post( self::API_REST_ECHO );
+		$echobox = self::post( self::API_REST_ECHO, false, 60 );
 		if ( false === $echobox ) {
 			self::debugErr( 'REST Echo Failed!' );
 			$msg = __( "QUIC.cloud's access to your WP REST API seems to be blocked.", 'litespeed-cache' );
@@ -321,7 +321,7 @@ class Cloud extends Base {
 		}
 
 		// WPAPI REST echo dryrun
-		$echobox = self::post( self::API_REST_ECHO );
+		$echobox = self::post( self::API_REST_ECHO, false, 60 );
 		if ( false === $echobox ) {
 			self::debugErr( 'REST Echo Failed!' );
 			$msg = __( "QUIC.cloud's access to your WP REST API seems to be blocked.", 'litespeed-cache' );
@@ -1594,7 +1594,7 @@ class Cloud extends Base {
 			$url,
 			[
 				'body'    => $param,
-				'timeout' => $time_out ?? 15,
+				'timeout' => $time_out ? $time_out : 30,
 				'headers' => [
 					'Accept' => 'application/json',
 					'Expect' => '',

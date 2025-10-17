@@ -463,7 +463,7 @@ class UCOperations extends UniteElementsBaseUC{
 	 * put debug of post custom fields
 	 */
 	public function putPostCustomFieldsDebug($postID, $showCustomFields = false){
-
+		
 		if($postID == "current"){
 			$post = get_post();
 			$postID = $post->ID;
@@ -649,7 +649,6 @@ class UCOperations extends UniteElementsBaseUC{
 			$this->putPostTermsDebug($postID);
 			
 		}
-		
 		
 	}
 	
@@ -1043,7 +1042,7 @@ class UCOperations extends UniteElementsBaseUC{
 	 * get last query data
 	 */
 	public function getLastQueryData(){
-
+		
 		$query = GlobalsProviderUC::$lastPostQuery;
 
 		if(empty($query)){
@@ -1067,7 +1066,7 @@ class UCOperations extends UniteElementsBaseUC{
 			$totalPosts = $query->found_posts;
 
 		$arrQuery = $query->query;
-
+		
 		$postType = UniteFunctionsUC::getVal($arrQuery, "post_type");
 
 		$orderBy = UniteFunctionsUC::getVal($arrQuery, "orderby");
@@ -1083,13 +1082,19 @@ class UCOperations extends UniteElementsBaseUC{
 
 		if($orderBy == "id")
 			$orderBy = "ID";
-
+		
+		//fix by actual num posts
+		if(GlobalsProviderUC::$lastNumPosts > $numPosts){
+			$totalPosts += (GlobalsProviderUC::$lastNumPosts - $numPosts);
+			$numPosts = GlobalsProviderUC::$lastNumPosts;
+		}
+			
 		$output = array();
 		$output["count_posts"] = $numPosts;
 		$output["total_posts"] = $totalPosts;
 		$output["page"] = UniteFunctionsUC::getVal($data, "current");
 		$output["num_pages"] = $totalPages;
-
+		
 		if(!empty($orderBy)){
 
 			if($orderBy == "meta_value"){

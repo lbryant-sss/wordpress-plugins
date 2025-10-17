@@ -221,8 +221,6 @@ class NewsletterUnsubscription extends NewsletterModule {
     /**
      * Reactivate the subscriber extracted from the request setting his status
      * to confirmed and logging. No email are sent. Dies on subscriber extraction failure.
-     *
-     * @return TNP_User
      */
     function reactivate($user = null) {
         $this->set_user_status($user, TNP_User::STATUS_CONFIRMED);

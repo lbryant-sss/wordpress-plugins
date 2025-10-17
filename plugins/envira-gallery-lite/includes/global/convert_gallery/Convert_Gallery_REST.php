@@ -220,6 +220,10 @@ class Convert_Gallery_REST extends Convert_Gallery_Common {
 			return new WP_REST_Response( [ 'error' => __( 'Post not found.', 'envira-gallery-lite' ) ], 400 );
 		}
 
+		if ( ! $this->can_edit_post( $post_id ) ) {
+			return new WP_REST_Response( [ 'error' => __( 'You do not have permission to edit this post.', 'envira-gallery-lite' ) ], 403 );
+		}
+
 		$updated_content = $post->post_content; // Start with the current content.
 		$needs_update    = false;
 
@@ -251,5 +255,15 @@ class Convert_Gallery_REST extends Convert_Gallery_Common {
 				400
 			);
 		}
+	}
+
+	/**
+	 * Check if the current user can edit the post or has edit_posts capability.
+	 *
+	 * @param int $post_id Post ID.
+	 * @return bool
+	 */
+	public function can_edit_post( $post_id ) {
+		return current_user_can( 'edit_post', $post_id );
 	}
 }

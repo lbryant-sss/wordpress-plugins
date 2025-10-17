@@ -300,7 +300,7 @@ if ( ! class_exists( 'ES_Reports_Data' ) ) {
 			 */
 			$cache_key    = 'dashboard_reports_data';
 			$args['days'] = ! empty( $args['days'] ) ? $args['days'] : 7;
-
+			
 			if ( ! $override_cache ) {
 
 				$cached_data = ES_Cache::get_transient( $cache_key );
@@ -753,22 +753,28 @@ if ( ! class_exists( 'ES_Reports_Data' ) ) {
 			$days = isset( $args['days'] ) ? intval( $args['days'] ) : 7;
 			
 			try {
+  
 				// Get total subscribed contacts for the list - WITHOUT date filtering for total count
 				$total_subscribed_args = array(
 					'list_id' => $args['list_id'],
-					'days' => 0
+					'days' => $days
 				);
+				
+				$total_contacts = self::get_all_total_contacts($total_subscribed_args);
+
 				$total_subscribed = self::get_total_subscribed_contacts( $total_subscribed_args );
 				
 			
-			$total_unsubscribed = self::get_total_unsubscribed_contacts( $args );
+				$total_unsubscribed = self::get_total_unsubscribed_contacts( $args );
 				$current_period_signups = 0;
 				$average_daily_signups = 0;
 				if ( $days > 0 ) {
+
 					$current_signups_args = array(
 						'list_id' => $args['list_id'],
 						'days' => $days
 					);
+
 					$current_period_signups = self::get_total_subscribed_contacts( $current_signups_args );
 					$average_daily_signups = round( $current_period_signups / $days, 1 );
 				}
@@ -796,6 +802,7 @@ if ( ! class_exists( 'ES_Reports_Data' ) ) {
 				}
 				
 				$audience_insights_data = array(
+					'total_contacts'         => $total_contacts,
 					'total_subscribed'       => $total_subscribed,
 					'engagement_rate'        => 0, 
 					'inactive_contacts'      => 0, 
@@ -813,12 +820,13 @@ if ( ! class_exists( 'ES_Reports_Data' ) ) {
 					// Additional debug info
 					'current_period_signups' => $current_period_signups,
 					'previous_period_signups' => $previous_period_signups
-			);
+				);
 			
 			$audience_insights_data = apply_filters( 'ig_es_audience_insights_data', $audience_insights_data, $args );				return $audience_insights_data;
 				
 			} catch ( Exception $e ) {
 				return array(
+					'total_contacts'         => 0,
 					'total_subscribed'       => 0,
 					'engagement_rate'        => 0,
 					'inactive_contacts'      => 0,
@@ -836,6 +844,10 @@ if ( ! class_exists( 'ES_Reports_Data' ) ) {
 					'previous_period_signups' => 0
 				);
 			}
+		}
+
+		public static function get_all_total_contacts( $args = array() ) {
+			return ES()->contacts_db->get_all_total_contacts_with_filters( $args );
 		}
 	}
 

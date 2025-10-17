@@ -3,7 +3,7 @@
 Plugin Name: WPC Smart Quick View for WooCommerce
 Plugin URI: https://wpclever.net/
 Description: WPC Smart Quick View allows users to get a quick look at products without opening the product page.
-Version: 4.2.5
+Version: 4.2.6
 Author: WPClever
 Author URI: https://wpclever.net
 Text Domain: woo-smart-quick-view
@@ -19,7 +19,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 defined( 'ABSPATH' ) || exit;
 
-! defined( 'WOOSQ_VERSION' ) && define( 'WOOSQ_VERSION', '4.2.5' );
+! defined( 'WOOSQ_VERSION' ) && define( 'WOOSQ_VERSION', '4.2.6' );
 ! defined( 'WOOSQ_LITE' ) && define( 'WOOSQ_LITE', __FILE__ );
 ! defined( 'WOOSQ_FILE' ) && define( 'WOOSQ_FILE', __FILE__ );
 ! defined( 'WOOSQ_URI' ) && define( 'WOOSQ_URI', plugin_dir_url( __FILE__ ) );
@@ -247,13 +247,13 @@ if ( ! function_exists( 'woosq_init' ) ) {
 
                     $product_id = absint( apply_filters( 'woosq_product_id', sanitize_key( $_REQUEST['product_id'] ?? 0 ), sanitize_key( $_REQUEST['context'] ?? 'default' ) ) );
 
-                    if ( ! current_user_can( 'read_product', $product_id ) ) {
-                        die( 'Permissions check failed!' );
-                    }
-
                     global $post, $product;
 
                     if ( $product = wc_get_product( $product_id ) ) {
+                        if ( ! current_user_can( 'read_product', $product_id ) && ( $product->get_status() !== 'publish' ) ) {
+                            die( 'Permissions check failed!' );
+                        }
+
                         $post = get_post( $product_id );
                         setup_postdata( $post );
                         $thumb_ids = [];

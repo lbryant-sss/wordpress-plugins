@@ -42,7 +42,7 @@ if ( ! class_exists( 'ES_Router' ) ) {
 		 */
 		public function handle_ajax_request() {
 
-			check_ajax_referer( 'ig-es-admin-ajax-nonce', 'security' ); //For testing we need to comment
+			check_ajax_referer( 'ig-es-admin-ajax-nonce', 'security' );
 		
 			$can_access_audience  = ES_Common::ig_es_can_access( 'audience' );
 			$can_access_campaign  = ES_Common::ig_es_can_access( 'campaigns' );
@@ -91,7 +91,6 @@ if ( ! class_exists( 'ES_Router' ) ) {
 			
 			$result = call_user_func( array( $handler_class, $method ), $data );
 
-			// Check if result contains an error
 			if ( is_array( $result ) && isset( $result['error'] ) ) {
 				$response['success'] = false;
 				$response['message'] = $result['error'];

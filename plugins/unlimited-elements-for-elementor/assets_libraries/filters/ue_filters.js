@@ -73,12 +73,12 @@ function UEDynamicFilters(){
 		trashold_handle:null,
 		class_widget_wrapper:"elementor-widget",
 		current_postid:null,
-		ucpage_url:null,
+		ucpage_url:null
 	};
 
 	var g_options = {
 		is_cache_enabled:true,
-		urlkey_taxsap:"~",
+		urlkey_taxsap:"~"
 	};
 	
 	/**
@@ -458,17 +458,17 @@ function UEDynamicFilters(){
 
 		//add init after filters
 		var isInitAfter = objFilter.data("initafter");
-		
+				
 		if(!isInitAfter)
 			isInitAfter = isSpecialFilterInitAfter(objFilter, objGrid);
-		
+				
 		if(g_showDebug){
 			trace("init after: "+isInitAfter);
 		}
-		
-		
-		if(isInitAfter === true)
+				
+		if(isInitAfter === true){
 			addFilterToInitAfter(objFilter, objGrid);
+		}
 		
 		objGrid.data("filters", arrFilters);
 		
@@ -3050,7 +3050,7 @@ function UEDynamicFilters(){
 			isPaginationClicked = true;
 
 		var child_auto, childAutoTaxonomy, childAutoSlug, childAutoString = "";
-		
+				
 		//get ajax options
 		jQuery.each(objFilters, function(index, objFilter){
 			
@@ -3147,20 +3147,26 @@ function UEDynamicFilters(){
 
 					//if not init mode - take first item
 					var objTerm = getTermsListSelectedTerm(objFilter);
-				
+					
 					if(objTerm){
 						
 						if(isFiltersInitMode == false){
-
+							
 							arrTerms.push(objTerm);
 						}
 						else{
-
+							
 							//INIT MODE
+							
+							//add terms if the filter is not initing itself
+							var isInit = objFilter.data("initafter");
 							
 							//add terms, if only children mode and the filter not child
 							if(initModeChildrens == true && filterRole != "child")
 								arrTerms.push(objTerm);
+							else
+								if(isInit != true)
+									arrTerms.push(objTerm);
 							
 							//set selected terms string
 
@@ -3341,7 +3347,7 @@ function UEDynamicFilters(){
 			//handle filters init mode
 			
 			if(isFiltersInitMode == true){
-				
+								
 				var isInit = objFilter.data("initafter");
 				
 				if(isInit != true){
@@ -3356,8 +3362,10 @@ function UEDynamicFilters(){
 				if(initModeChildrens == true && filterRole != "child")
 					isNoRefresh = true;
 				
-				if(isNoRefresh == false)
-					arrFiltersForInit.push(objFilter);
+				if(isNoRefresh == false){
+					arrFiltersForInit.push(objFilter);					
+				}
+								
 			}
 			
 			
@@ -3438,7 +3446,7 @@ function UEDynamicFilters(){
 
 				if(urlAddition_filtersTest)
 					urlAddition_filtersTest += "&";
-
+				
 				urlAddition_filtersTest += "modeinit=true";
 			}
 		}
@@ -3529,10 +3537,12 @@ function UEDynamicFilters(){
 			urlAjax += "&uccount="+numItems;
 	
 		if(arrTerms.length){
+			
 			var strTerms = buildTermsQuery(arrTerms);
 		
 			if(strTerms)
 				urlAjax += "&ucterms="+strTerms;
+			
 			//set the url params as well
 			
 			urlReplace = addUrlParam(urlReplace, "ucterms="+strTerms);
@@ -3567,10 +3577,10 @@ function UEDynamicFilters(){
 			urlReplace = addUrlParam(urlReplace, "ucorderdir="+orderdir);
 		}
 		
-		
 		if(isFiltersInitMode && strSelectedTerms)
 			urlAjax += "&ucinitselectedterms="+strSelectedTerms;
-
+		
+		
 		//add refresh ids
 		if(strRefreshIDs)
 			urlAjax += "&addelids="+strRefreshIDs;
@@ -3718,7 +3728,113 @@ function UEDynamicFilters(){
 		return(strIDs);
 	}
 
+	function ________INIT_AFTER_______________(){}
 
+	/**
+	 * add filter to grid init after array
+	 */
+	function addFilterToInitAfter(objFilter, objGrid){
+				
+		var role = objFilter.data("role");
+		
+		var key = "filters_init_after";
+
+		if(role == "child")
+			key = "filters_init_after_children";
+
+		objFilter.data("initafter",true);
+
+		var arrFiltersInitAfter = objGrid.data(key);
+
+		if(!arrFiltersInitAfter)
+			arrFiltersInitAfter = [];
+
+		arrFiltersInitAfter.push(objFilter);
+
+		if(g_showDebug == true)
+			trace("Add init after: "+key+" | "+objFilter.attr("id") );
+		
+		objGrid.data(key, arrFiltersInitAfter);
+
+	}
+
+	/**
+	 * check filters init after
+	 */
+	function isSpecialFilterInitAfter(objFilter, objGrid){
+
+		var type = getFilterType(objFilter);
+
+		if(type != g_types.PAGINATION)
+			return(false);
+
+		var offsetPagination = objFilter.offset();
+		var offsetGrid = objGrid.offset();
+
+		if(offsetPagination.top < offsetGrid.top){
+
+			if(g_showDebug == true)
+				trace("Set pagination to ajax init");
+
+			return(true);
+		}
+
+		return(false);
+	}
+
+	/**
+	 * check if there is a need to refresh child filters
+	 * grid related, other filters are set in the settings
+	 */
+	function initGrid_setInitFiltersAfterLoad(objGrid){
+		
+		//get all grid filters
+		var objFilters = objGrid.data("filters");
+		
+		if(!objFilters)
+			return(false);
+
+		if(objFilters.length == 0)
+			return(false);
+				
+		//check if there are filters with selected
+		
+		var arrSelectedFilters = getSelectedFilters(objFilters);
+		
+		if(arrSelectedFilters.length == 0)
+			return(false);
+
+		//add to refresh all not selected filters
+		
+		jQuery.each(objFilters, function(index, filter){
+						
+			var objFilter = jQuery(filter);
+			var type = getFilterType(objFilter);
+			
+			//skip not related to filter types
+			switch(type){
+				case g_types.PAGINATION:
+				case g_types.LOADMORE:
+					return(true);
+				break;
+			}
+			
+			var isSelected = objFilter.hasClass("uc-has-selected");
+			
+			if(isSelected == true)
+				return(true);
+			
+			//add to grid and option to refresh
+			
+			var objGrid = objFilter.data("grid");
+			
+			addFilterToInitAfter(objFilter, objGrid);
+
+		});
+
+	}
+	
+	
 	function ________INIT_______________(){}
 
 
@@ -3917,102 +4033,6 @@ function UEDynamicFilters(){
 	}
 
 
-	/**
-	 * check if there is a need to refresh child filters
-	 * grid related, other filters are set in the settings
-	 */
-	function initGrid_setInitFiltersAfterLoad(objGrid){
-
-		//get all grid filters
-		var objFilters = objGrid.data("filters");
-		
-		if(!objFilters)
-			return(false);
-
-		if(objFilters.length == 0)
-			return(false);
-				
-		//check if there are mains with selected
-
-		var arrSelectedMain = getSelectedFilters(objFilters, "main");
-
-		if(arrSelectedMain.length == 0)
-			return(false);
-
-		//add to refresh child filters
-
-		jQuery.each(objFilters, function(index, filter){
-
-			var objFilter = jQuery(filter);
-			var isSelected = objFilter.hasClass("uc-has-selected");
-
-			var role = objFilter.data("role");
-
-			if(role != "child")
-				return(true);
-
-			//add to grid and option to refresh
-
-			var objGrid = objFilter.data("grid");
-
-			addFilterToInitAfter(objFilter, objGrid);
-
-		});
-
-	}
-
-
-	/**
-	 * add filter to grid init after array
-	 */
-	function addFilterToInitAfter(objFilter, objGrid){
-
-		var role = objFilter.data("role");
-		
-		var key = "filters_init_after";
-
-		if(role == "child")
-			key = "filters_init_after_children";
-
-		objFilter.data("initafter",true);
-
-		var arrFiltersInitAfter = objGrid.data(key);
-
-		if(!arrFiltersInitAfter)
-			arrFiltersInitAfter = [];
-
-		arrFiltersInitAfter.push(objFilter);
-
-		if(g_showDebug == true)
-			trace("Add init after: "+key+" | "+objFilter.attr("id") );
-		
-		objGrid.data(key, arrFiltersInitAfter);
-
-	}
-
-	/**
-	 * check filters init after
-	 */
-	function isSpecialFilterInitAfter(objFilter, objGrid){
-
-		var type = getFilterType(objFilter);
-
-		if(type != g_types.PAGINATION)
-			return(false);
-
-		var offsetPagination = objFilter.offset();
-		var offsetGrid = objGrid.offset();
-
-		if(offsetPagination.top < offsetGrid.top){
-
-			if(g_showDebug == true)
-				trace("Set pagination to ajax init");
-
-			return(true);
-		}
-
-		return(false);
-	}
 
 
 	/**
@@ -4122,15 +4142,16 @@ function UEDynamicFilters(){
 		// Create a new array for filtered items
 		var filteredTerms = [];
 		
-		for (let term of arrTerms) {
-				// Skip if the term is an object with slug "__or__", "__and__", or "__ucor__"
+		jQuery.each(arrTerms, function(index, term) {
+			
+			// Skip if the term is an object with slug "__or__", "__and__", or "__ucor__"
 				if (term.slug === "__ucand__" || term.slug === "__ucor__") {
-						continue;
+					return(true);
 				}
-
+				
 				// Add the term to the filtered array
 				filteredTerms.push(term);
-		}
+		});
 
 		// Assign the filtered array back to arrTerms
 		arrTerms = filteredTerms;
@@ -4371,7 +4392,6 @@ function UEDynamicFilters(){
 
 		//get the filters
 		var objFilters = jQuery(".uc-grid-filter, .uc-filter-pagination").not("." + g_vars.CLASS_FILTER_INITED);
-		
 		
 		//wait for load...
 

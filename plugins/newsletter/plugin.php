@@ -4,7 +4,7 @@
   Plugin Name: Newsletter
   Plugin URI: https://www.thenewsletterplugin.com
   Description: Newsletter is a cool plugin to create your own subscriber list, to send newsletters, to build your business. <strong>Before update give a look to <a href="https://www.thenewsletterplugin.com/category/release">this page</a> to know what's changed.</strong>
-  Version: 9.0.2
+  Version: 9.0.4
   Author: Stefano Lissa & The Newsletter Team
   Author URI: https://www.thenewsletterplugin.com
   Disclaimer: Use at your own risk. No warranty expressed or implied is provided.
@@ -30,7 +30,7 @@
 
  */
 
-define('NEWSLETTER_VERSION', '9.0.2');
+define('NEWSLETTER_VERSION', '9.0.4');
 
 global $wpdb, $newsletter;
 
@@ -319,7 +319,6 @@ class Newsletter extends NewsletterModule {
     }
 
     function first_install() {
-        parent::first_install();
         update_option('newsletter_show_welcome', '1', false);
     }
 
@@ -330,8 +329,6 @@ class Newsletter extends NewsletterModule {
     /**
      * Sets the internal language used by admin panels to extract the language-related
      * values.
-     *
-     * @return string
      */
     function setup_language() {
 
@@ -590,7 +587,7 @@ class Newsletter extends NewsletterModule {
      */
     function mail($to, $subject, $message, $headers = array(), $enqueue = false, $from = false) {
 
-        if (empty($subject)) {
+        if (!$subject) {
             $this->logger->error('mail> Subject empty, skipped');
             return true;
         }
@@ -601,7 +598,7 @@ class Newsletter extends NewsletterModule {
         $mailer_message->from = $this->get_option('sender_email');
         $mailer_message->from_name = $this->get_option('sender_name');
 
-        if (!empty($headers)) {
+        if (!$headers) {
             $mailer_message->headers = $headers;
         }
         $mailer_message->headers['X-Auto-Response-Suppress'] = 'OOF, AutoReply';
@@ -719,7 +716,7 @@ class Newsletter extends NewsletterModule {
      * @return string
      */
     function get_newsletter_page_url($language = '') {
-        $page = $this->get_newsletter_page($language);
+        $page = $this->get_newsletter_page();
 
         if (!$page || $page->post_status !== 'publish') {
 //            if (current_user_can('administrator')) {

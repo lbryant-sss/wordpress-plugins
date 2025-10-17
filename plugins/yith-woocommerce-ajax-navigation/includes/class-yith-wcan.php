@@ -129,7 +129,7 @@ if ( ! class_exists( 'YITH_WCAN' ) ) {
 
 			// basic cli support.
 			if ( defined( 'WP_CLI' ) && WP_CLI && file_exists( YITH_WCAN_DIR . 'tools/wp-cli/class-yith-wcan-cli-test-commands.php' ) ) {
-				 require_once YITH_WCAN_DIR . 'tools/wp-cli/class-yith-wcan-cli-test-commands.php';
+				require_once YITH_WCAN_DIR . 'tools/wp-cli/class-yith-wcan-cli-test-commands.php';
 			}
 		}
 
@@ -243,7 +243,7 @@ if ( ! class_exists( 'YITH_WCAN' ) ) {
 			$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
 			wp_register_style( 'yith-wcan-shortcodes', YITH_WCAN_URL . 'assets/css/shortcodes.css', array(), YITH_WCAN_VERSION );
-			wp_register_script( 'yith-wcan-shortcodes', YITH_WCAN_URL . 'assets/js/yith-wcan-shortcodes' . $suffix . '.js', array( 'jquery', 'accounting', 'selectWoo' ), YITH_WCAN_VERSION, true );
+			wp_register_script( 'yith-wcan-shortcodes', YITH_WCAN_URL . 'assets/js/yith-wcan-shortcodes' . $suffix . '.js', array( 'jquery', \YIT_Assets::wc_script_handle( 'wc-accounting' ), 'selectWoo' ), YITH_WCAN_VERSION, true );
 
 			if ( is_admin() ) {
 				wp_localize_script( 'yith-wcan-shortcodes', 'yith_wcan_shortcodes', array() );
@@ -339,7 +339,7 @@ if ( ! function_exists( 'YITH_WCAN' ) ) {
 	 * @return YITH_WCAN
 	 * @since 4.0.0
 	 */
-	function YITH_WCAN() { // phpcs:ignore WordPress.NamingConventions.ValidFunctionName.FunctionNameInvalid
+	function YITH_WCAN() { // phpcs:ignore WordPress.NamingConventions.ValidFunctionName.FunctionNameInvalid, Universal.Files.SeparateFunctionsFromOO
 		return YITH_WCAN::instance();
 	}
 }

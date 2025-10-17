@@ -120,8 +120,6 @@ class ES_Custom_Fields_Controller {
 
 		$custom_fields = ES()->custom_fields_db->get_custom_fields();
 
-		error_log( __FILE__ . " " . __LINE__ . ' $custom_fields:' . print_r( $custom_fields, true ) );
-
 		if ( ! empty( $custom_fields ) ) {
 			foreach ( $custom_fields as &$field ) {
 				if ( ! empty( $field['meta'] ) ) {

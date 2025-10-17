@@ -44,7 +44,7 @@ jQuery.fn.add_block_edit = function () {
                 url: ajaxurl,
                 method: 'POST',
                 data: data,
-                async: false,
+                //async: false,
                 success: function (response) {
                     jQuery("#tnpc-block-options-form").html(response.form);
                     jQuery("#tnpc-block-options-title").html(response.title);
@@ -150,7 +150,7 @@ const NewsletterComposer = {
         jQuery.ajax({
             type: "POST",
             url: ajaxurl,
-            async: false,
+            //async: false,
             data: {
                 action: "tnpc_get_preset",
                 id: id

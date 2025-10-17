@@ -181,6 +181,9 @@
 .-bottom-1 {
     bottom: -0.25rem;
 }
+.-right-2\.5 {
+    right: -0.625rem;
+}
 .-start-6 {
     inset-inline-start: -1.5rem;
 }
@@ -438,6 +441,9 @@
 .ml-2 {
     margin-left: 0.5rem;
 }
+.ml-2\.5 {
+    margin-left: 0.625rem;
+}
 .ml-5 {
     margin-left: 1.25rem;
 }
@@ -456,6 +462,9 @@
 .mr-2 {
     margin-right: 0.5rem;
 }
+.mr-2\.5 {
+    margin-right: 0.625rem;
+}
 .mr-20 {
     margin-right: 5rem;
 }
@@ -467,9 +476,6 @@
 }
 .mr-5 {
     margin-right: 1.25rem;
-}
-.mr-\[10px\] {
-    margin-right: 10px;
 }
 .mr-\[20px\] {
     margin-right: 20px;
@@ -530,6 +536,9 @@
 }
 .mt-\[-25px\] {
     margin-top: -25px;
+}
+.mt-\[13px\] {
+    margin-top: 13px;
 }
 .mt-\[20px\] {
     margin-top: 20px;
@@ -688,11 +697,17 @@
 .h-\[2px\] {
     height: 2px;
 }
+.h-\[30px\] {
+    height: 30px;
+}
 .h-\[32px\] {
     height: 32px;
 }
 .h-\[35px\] {
     height: 35px;
+}
+.h-\[38px\] {
+    height: 38px;
 }
 .h-\[3rem\] {
     height: 3rem;
@@ -893,6 +908,12 @@
 .w-\[30\%\] {
     width: 30%;
 }
+.w-\[30px\] {
+    width: 30px;
+}
+.w-\[38px\] {
+    width: 38px;
+}
 .w-\[500px\] {
     width: 500px;
 }
@@ -926,6 +947,9 @@
 }
 .min-w-0 {
     min-width: 0px;
+}
+.min-w-64 {
+    min-width: 16rem;
 }
 .min-w-72 {
     min-width: 18rem;
@@ -1472,6 +1496,9 @@
 .border-r {
     border-right-width: 1px;
 }
+.border-r-0 {
+    border-right-width: 0px;
+}
 .border-r-\[0\.957434px\] {
     border-right-width: 0.957434px;
 }
@@ -1530,6 +1557,10 @@
 .border-\[\#e9e9ea\] {
     --tw-border-opacity: 1;
     border-color: rgb(233 233 234 / var(--tw-border-opacity, 1));
+}
+.border-\[\#fff\] {
+    --tw-border-opacity: 1;
+    border-color: rgb(255 255 255 / var(--tw-border-opacity, 1));
 }
 .border-gray-100 {
     --tw-border-opacity: 1;
@@ -1968,6 +1999,10 @@
     padding-top: 2rem;
     padding-bottom: 2rem;
 }
+.py-\[3px\] {
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
 .\!pb-0 {
     padding-bottom: 0px !important;
 }
@@ -2043,6 +2078,9 @@
 .pr-5 {
     padding-right: 1.25rem;
 }
+.pr-\[10px\] {
+    padding-right: 10px;
+}
 .pt-0 {
     padding-top: 0px;
 }
@@ -2090,6 +2128,9 @@
 }
 .text-\[12px\] {
     font-size: 12px;
+}
+.text-\[13px\] {
+    font-size: 13px;
 }
 .text-\[14px\] {
     font-size: 14px;
@@ -2195,6 +2236,10 @@
 }
 .tracking-wide {
     letter-spacing: 0.025em;
+}
+.\!text-\[\#7047EB\] {
+    --tw-text-opacity: 1 !important;
+    color: rgb(112 71 235 / var(--tw-text-opacity, 1)) !important;
 }
 .\!text-black {
     --tw-text-opacity: 1 !important;
@@ -2422,6 +2467,9 @@
 .placeholder-\[\#828282\]::placeholder {
     --tw-placeholder-opacity: 1;
     color: rgb(130 130 130 / var(--tw-placeholder-opacity, 1));
+}
+.opacity-0 {
+    opacity: 0;
 }
 .opacity-100 {
     opacity: 1;
@@ -2718,6 +2766,11 @@ table.wp-list-table.widefat.fixed {
     border-color: rgb(209 213 219 / var(--tw-border-opacity, 1));
 }
 
+.hover\:bg-\[\#0C5F9A\]:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(12 95 154 / var(--tw-bg-opacity, 1));
+}
+
 .hover\:bg-\[\#5d39c4\]:hover {
     --tw-bg-opacity: 1;
     background-color: rgb(93 57 196 / var(--tw-bg-opacity, 1));
@@ -2780,6 +2833,11 @@ table.wp-list-table.widefat.fixed {
 .hover\:\!text-\[\#7047EB\]:hover {
     --tw-text-opacity: 1 !important;
     color: rgb(112 71 235 / var(--tw-text-opacity, 1)) !important;
+}
+
+.hover\:\!text-white:hover {
+    --tw-text-opacity: 1 !important;
+    color: rgb(255 255 255 / var(--tw-text-opacity, 1)) !important;
 }
 
 .hover\:text-\[\#502BBF\]:hover {
@@ -2858,6 +2916,11 @@ table.wp-list-table.widefat.fixed {
 .focus\:bg-gray-100:focus {
     --tw-bg-opacity: 1;
     background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
+}
+
+.focus\:\!text-white:focus {
+    --tw-text-opacity: 1 !important;
+    color: rgb(255 255 255 / var(--tw-text-opacity, 1)) !important;
 }
 
 .focus\:\!shadow-none:focus {
@@ -2958,6 +3021,11 @@ table.wp-list-table.widefat.fixed {
 .group:hover .group-hover\:bg-\[\#502BBF\] {
     --tw-bg-opacity: 1;
     background-color: rgb(80 43 191 / var(--tw-bg-opacity, 1));
+}
+
+.group:hover .group-hover\:bg-\[\#EFEAFF\] {
+    --tw-bg-opacity: 1;
+    background-color: rgb(239 234 255 / var(--tw-bg-opacity, 1));
 }
 
 .group:hover .group-hover\:fill-\[\#7047EB\] {
@@ -3368,9 +3436,6 @@ table.wp-list-table.widefat.fixed {
     .md\:mr-0 {
         margin-right: 0px;
     }
-    .md\:mr-\[20px\] {
-        margin-right: 20px;
-    }
     .md\:mt-0 {
         margin-top: 0px;
     }
@@ -3774,6 +3839,10 @@ table.wp-list-table.widefat.fixed {
         padding-left: 0px;
         padding-right: 0px;
     }
+    .lg\:px-6 {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
     .lg\:px-8 {
         padding-left: 2rem;
         padding-right: 2rem;
@@ -3785,6 +3854,9 @@ table.wp-list-table.widefat.fixed {
     .lg\:py-5 {
         padding-top: 1.25rem;
         padding-bottom: 1.25rem;
+    }
+    .lg\:pr-5 {
+        padding-right: 1.25rem;
     }
     .lg\:\!text-left {
         text-align: left !important;

@@ -14,12 +14,21 @@ class UEGoogleAPIPlacesService extends UEGoogleAPIClient{
 	 * @return UEGoogleAPIPlace
 	 */
 	public function getDetails($placeId, $params = array()){
-
+		
 		$params["place_id"] = $placeId;
-
+		
+		$lang = UniteFunctionsUC::getVal($params, "lang");
+		
+		if(!empty($lang))
+			$params["language"] = $lang;
+		else
+			$params["reviews_no_translations"] = true;
+		
 		$response = $this->get("/details/json", $params);
+		
+		
 		$response = UEGoogleAPIPlace::transform($response["result"]);
-
+		
 		return $response;
 	}
 

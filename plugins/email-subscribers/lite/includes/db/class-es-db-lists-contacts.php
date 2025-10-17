@@ -1076,12 +1076,14 @@ class ES_DB_Lists_Contacts extends ES_DB {
 			$sql .= ' WHERE 1=1 ' . $where_clause;
 		}
 		
-		if ( ! empty( $query_params ) ) {
-			$sql = $wpdb->prepare( $sql, $query_params );
+		if ( ! empty( $query_params ) ) { 
+			$params = array_merge( array( $sql ), $query_params );
+        	$sql = call_user_func_array( array( $wpdb, 'prepare' ), $params );
 		}
- 
-		$results = $wpdb->get_results( $sql, 'ARRAY_A' );
-		
-		return array_column( $results, 'contact_id' );
+
+		$ids = $wpdb->get_col( $sql );
+
+		return array_values( array_map( 'intval', array_filter( (array) $ids, 'is_numeric' ) ) );
+  
 	}
 }

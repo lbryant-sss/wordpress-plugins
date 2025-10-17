@@ -118,6 +118,8 @@ class UniteProviderFrontUC{
 		if(empty($showMetaFields))
 			return(false);
 		
+		HelperProviderUC::showCurrentPostObjectDebug();
+			
 		HelperProviderUC::showCurrentPostMetaDebug();
 		
 		HelperProviderUC::showCurrentPostTermsDebug();

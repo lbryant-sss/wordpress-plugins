@@ -68,13 +68,15 @@ class UniteCreatorWpmlIntegrate{
 		
 		$this->arrShortPrefix["__none__"] = __("Not Selected","unlimited-elements-for-elementor");
 
+		$this->activeLanguage = $sitepress->get_current_language();
 		
 		//set active and short
 		foreach($this->arrLanguages as $language){
 			
 			$code = UniteFunctionsUC::getVal($language, "code");
 			$isActive = UniteFunctionsUC::getVal($language, "active");
-			if($isActive == true){
+			
+			if($isActive == true && empty($this->activeLanguage)){
 				$this->activeLanguage = $code;
 			}
 			
@@ -314,7 +316,7 @@ class UniteCreatorWpmlIntegrate{
 		
 		$defaultLang    = $this->getDefaultSiteLanguage();
 		$activeLang     = $this->getActiveLanguage();
-
+		
 		if ($stickyPostDefaultLangOption == true && $activeLang != $defaultLang){
 			do_action('wpml_switch_language', $defaultLang);
 			add_action("ue_after_custom_posts_query", array($this, "setActiveLanguageAfterGetStickyPostsBasedOnDefaultLanguage"));

@@ -10,12 +10,12 @@ use Elementor\Modules\DynamicTags\Module as TagsModule;
 use Elementor\Plugin;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
-use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
-use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 
 // PHP Classes.
 use Datetime;
@@ -23,6 +23,7 @@ use DateTimeZone;
 
 // PremiumAddons Classes.
 use PremiumAddons\Includes\Helper_Functions;
+use PremiumAddons\Includes\Controls\Premium_Background;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -1013,16 +1014,35 @@ class Premium_Countdown extends Widget_Base {
 			)
 		);
 
-		$this->add_control(
-			'premium_countdown_timer_digit_bg_color',
+		// $this->add_control(
+		// 	'premium_countdown_timer_digit_bg_color',
+		// 	array(
+		// 		'label'     => __( 'Background Color', 'premium-addons-for-elementor' ),
+		// 		'type'      => Controls_Manager::COLOR,
+		// 		'global'    => array(
+		// 			'default' => Global_Colors::COLOR_PRIMARY,
+		// 		),
+		// 		'selectors' => array(
+		// 			'{{WRAPPER}} .countdown-amount, {{WRAPPER}} .inn' => 'background-color: {{VALUE}};',
+		// 		),
+		// 	)
+		// );
+
+		$this->add_group_control(
+			Premium_Background::get_type(),
 			array(
-				'label'     => __( 'Background Color', 'premium-addons-for-elementor' ),
-				'type'      => Controls_Manager::COLOR,
-				'global'    => array(
-					'default' => Global_Colors::COLOR_PRIMARY,
-				),
-				'selectors' => array(
-					'{{WRAPPER}} .countdown-amount, {{WRAPPER}} .inn' => 'background-color: {{VALUE}};',
+				'name'     => 'premium_countdown_timer_digit_bg',
+				'types'    => array( 'classic', 'gradient' ),
+				'selector' => '{{WRAPPER}} .countdown-amount, {{WRAPPER}} .inn',
+				'fields_options' => array(
+					'background' => array(
+						'default' => 'classic',
+					),
+					'color'      => array(
+						'global' => array(
+							'default' => Global_Colors::COLOR_PRIMARY,
+						),
+					),
 				),
 			)
 		);

@@ -88,7 +88,6 @@ class WPLE_Admin {
         add_action( 'wple_show_reviewrequest', array($this, 'wple_set_review_flag') );
         add_action( 'wple_show_mxalert', array($this, 'wple_set_mxerror_flag') );
         add_action( 'wple_ssl_reminder_notice', [$this, 'wple_start_show_reminder'] );
-        add_filter( 'fs_uninstall_reasons_wp-letsencrypt-ssl', [$this, 'wple_oneyearprom'], 1 );
         add_action( 'wple_init_ssllabs', [$this, 'wple_initialize_ssllabs'] );
         add_action( 'wple_ssl_expiry_update', [$this, 'wple_update_expiry_ssllabs'] );
         //daily once cron
@@ -135,6 +134,10 @@ class WPLE_Admin {
             WPLE_PLUGIN_VER,
             true
         );
+        wp_localize_script( WPLE_NAME, 'SCAN', array(
+            'adminajax' => admin_url( '/admin-ajax.php' ),
+            'base'      => site_url( '/', 'https' ),
+        ) );
         wp_enqueue_script(
             WPLE_NAME . '-fs',
             'https://checkout.freemius.com/checkout.min.js',
@@ -142,30 +145,6 @@ class WPLE_Admin {
             WPLE_PLUGIN_VER,
             false
         );
-        ///if (isset($_GET['wp_encryption_setup_wizard'])) {
-        wp_enqueue_script(
-            WPLE_NAME . '-wizard',
-            WPLE_URL . 'admin/wizard/dist/bundle.js',
-            array(
-                'react',
-                'react-dom',
-                'wp-element',
-                'wp-i18n'
-            ),
-            WPLE_PLUGIN_VER,
-            false
-        );
-        wp_localize_script( WPLE_NAME . '-wizard', 'WPLEWIZARD', [
-            'site'       => site_url(),
-            'baredomain' => WPLE_Trait::get_root_domain( true ),
-            'ajax'       => admin_url( 'admin-ajax.php' ),
-            'nc'         => wp_create_nonce( 'wple-wizard' ),
-        ] );
-        ////}
-        wp_localize_script( WPLE_NAME, 'SCAN', array(
-            'adminajax' => admin_url( '/admin-ajax.php' ),
-            'base'      => site_url( '/', 'https' ),
-        ) );
     }
 
     /**
@@ -220,11 +199,11 @@ class WPLE_Admin {
         $pluginmode = 'FREE';
         $errorclass = '';
         if ( !wple_fs()->is__premium_only() && wple_fs()->can_use_premium_code() ) {
-            $pluginmode = 'FREE plugin with PRO License <span class="dashicons dashicons-editor-help wple-tooltip" data-tippy="Please upload and activate PRO plugin file via PLUGINS page"></span>';
+            $pluginmode = __( 'FREE plugin with PRO License', 'wp-letsencrypt-ssl' ) . ' <span class="dashicons dashicons-editor-help wple-tooltip" data-tippy="' . __( 'Please upload and activate PRO plugin file via PLUGINS page', 'wp-letsencrypt-ssl' ) . '"></span>';
             $errorclass = ' notproerror';
         }
         if ( wple_fs()->is__premium_only() && !wple_fs()->can_use_premium_code() ) {
-            $pluginmode = 'PRO plugin with FREE License <span class="dashicons dashicons-editor-help wple-tooltip" data-tippy="Please activate PRO license key via Account page or Activate License option under the plugin on PLUGINS page"></span>';
+            $pluginmode = __( 'PRO plugin with FREE License', 'wp-letsencrypt-ssl' ) . ' <span class="dashicons dashicons-editor-help wple-tooltip" data-tippy="' . __( 'Please activate PRO license key via Account page or Activate License option under the plugin on PLUGINS page', 'wp-letsencrypt-ssl' ) . '"></span>';
             $errorclass = ' notproerror';
         }
         $html = '
@@ -294,7 +273,7 @@ class WPLE_Admin {
             ), admin_url( 'update.php' ) ), $action . '_' . $slug );
             $html .= '
       <div class="le-powered">
-      <span style="display: flex;align-items: center;"><strong>Recommended:-</strong> Before enforcing HTTPS, We highly recommend taking a backup of your site using some good backup plugin like <img src="' . WPLE_URL . 'admin/assets/backup-bolt.png" style="max-width:120px"> - <a href="' . $pluginstallURL . '" target="_blank">Install & Activate Backup Bolt</a> | <a href="#" class="wple-backup-skip">Ignore</a></span>    
+      <span style="display: flex;align-items: center;"><strong>' . esc_html__( 'Recommended', 'wp-letsencrypt-ssl' ) . ':-</strong> ' . esc_html__( 'Before enforcing HTTPS, We highly recommend taking a backup of your site using some good backup plugin like', 'wp-letsencrypt-ssl' ) . ' <img src="' . WPLE_URL . 'admin/assets/backup-bolt.png" style="max-width:120px"> - <a href="' . $pluginstallURL . '" target="_blank">Install & Activate Backup Bolt</a> | <a href="#" class="wple-backup-skip">Ignore</a></span>    
       </div>';
         }
         $mappeddomain = '';
@@ -326,7 +305,7 @@ class WPLE_Admin {
         }
         $html .= '<div id="wple-sslgen">
     <h2>' . $formheader . '</h2>
-    <div style="text-align: center; margin-top: -30px; font-size: 16px; display: block; width: 100%; margin-bottom: 40px;"><a style="text-decoration-style:dashed;text-decoration-thickness: from-font;" href="' . admin_url( 'admin.php?page=wp_encryption_faq#howitworks' ) . '">How it works?</a></div>';
+    <div style="text-align: center; margin-top: -30px; font-size: 16px; display: block; width: 100%; margin-bottom: 40px;"><a style="text-decoration-style:dashed;text-decoration-thickness: from-font;" href="' . admin_url( 'admin.php?page=wp_encryption_faq#howitworks' ) . '">' . esc_html__( 'How it works?', 'wp-letsencrypt-ssl' ) . '</a></div>';
         if ( is_multisite() && !wple_fs()->can_use_premium_code__premium_only() ) {
             $html .= '<p class="wple-multisite">' . WPLE_Trait::wple_kses( __( 'Upgrade to <strong>PRO</strong> version to avail Wildcard SSL support for multisite and ability to install SSL for mapped domains (different domain names).', 'wp-letsencrypt-ssl' ) ) . '</p>';
         }
@@ -393,7 +372,7 @@ class WPLE_Admin {
             __( "I agree to %sLet's Encrypt%s %sTerms of service%s", "wp-letsencrypt-ssl" ),
             '<b>',
             '<sup style="font-size: 10px; padding: 3px">TM</sup></b>',
-            '<a href="' . esc_attr__( 'https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf', 'wp-letsencrypt-ssl' ) . '" rel="nofollow" target="_blank" style="margin-left:5px">',
+            '<a href="https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf" rel="nofollow" target="_blank" style="margin-left:5px">',
             '</a>'
         ), 'a' ) . '
     </span> 
@@ -592,7 +571,7 @@ class WPLE_Admin {
         $html .= ' 
       <div id="wple-upgradepro">';
         if ( FALSE !== $cp && $cp ) {
-            $html .= '<strong style="display: block; text-align: center; color: #666;">Woot Woot! You have <b>CPANEL</b>! Why struggle with manual SSL renewal every 90 days? - Enjoy 100% automation with PRO version.</strong>';
+            $html .= '<strong style="display: block; text-align: center; color: #666;">' . __( "Woot Woot! You have <b>CPANEL</b>! Why struggle with manual SSL renewal every 90 days? - Enjoy 100% automation with PRO version.", 'wp-letsencrypt-ssl' ) . '</strong>';
             ///$upgradeurl = admin_url('/admin.php?page=wp_encryption-pricing&checkout=true&plan_id=8210&plan_name=pro&billing_cycle=lifetime&pricing_id=7965&currency=usd');
         } else {
             $html .= '<strong style="display: block; text-align: center; color: #666;">Woot Woot! Your site is on <b>' . esc_html( $_SERVER['SERVER_SOFTWARE'] ) . '</b> server! Why struggle with manual SSL renewal every 90 days? - Enjoy 100% automation with PRO version.</strong>';
@@ -665,6 +644,10 @@ class WPLE_Admin {
           </div>';
         }
         ///$html .= '<div style="text-align:center"><img src="' . WPLE_URL . '/admin/assets/new-year.png"></div>';
+        $scrn = get_option( 'wple_ssl_screen' );
+        if ( $scrn && $scrn == 'complete' ) {
+            $html .= '<div style="text-align:center"><img src="' . WPLE_URL . '/admin/assets/limited-offer.png" style="max-width:450px"></div>';
+        }
         $html .= '<div class="wple-upgrade-pro">
               <a href="' . $compareurl . '" target="_blank" class="wplecompare">' . esc_html__( 'COMPARE FREE & PRO VERSION', 'wp-letsencrypt-ssl' ) . '  <span class="dashicons dashicons-external"></span></a>';
         // if (isset($_GET['success']) && FALSE == $nopricing) {
@@ -724,7 +707,7 @@ class WPLE_Admin {
             '</strong>',
             '<strong>',
             '</strong>'
-        ) . '. ' . esc_html( "You can also download the cert files to your local computer, right click > open with notepad to view/copy", "wp-letsencrypt-ssl" ) . '</li>
+        ) . '. ' . esc_html__( "You can also download the cert files to your local computer, right click > open with notepad to view/copy", "wp-letsencrypt-ssl" ) . '</li>
           <li>';
         WPLE_Trait::wple_copy_and_download( $html );
         $nonroot_instruction = sprintf(
@@ -1246,7 +1229,7 @@ class WPLE_Admin {
           <div class="wple-circle-expires">  
           <strong>' . $current_ssl . ': <br><b>' . esc_html( $activecertexpiry ) . '</b></strong>
           <p>' . WPLE_Trait::wple_kses( __( "Let's Encrypt® SSL Certificate expires in 90 days by default. You can easily re-generate new SSL certificate using <strong>RENEW SSL CERTIFICATE</strong> option found on left or by clicking on <strong>STEP 1</strong> in progress bar.", "wp-letsencrypt-ssl" ) ) . '<br /><br />' . WPLE_Trait::wple_kses( __( 'Major browsers like Chrome will start showing insecure site warning IF you fail to renew / re-generate certs before this expiry date. Please clear your browser cache once.', 'wp-letsencrypt-ssl' ) ) . '</p> 
-          <div class="pro-renewal-note"><strong>PLEASE NOTE:</strong> If you are using PRO version - Ignore the above expiry date as your SSL certificates will be auto renewed in background 30 days prior to expiry date.</span>          
+          <div class="pro-renewal-note">' . sprintf( __( "%sPLEASE NOTE:%s If you are using PRO version - Ignore the above expiry date as your SSL certificates will be auto renewed in background 30 days prior to expiry date.", "wp-letsencrypt-ssl" ), "<strong>", "</strong>" ) . '</span>          
           </div>
         </div>';
         }

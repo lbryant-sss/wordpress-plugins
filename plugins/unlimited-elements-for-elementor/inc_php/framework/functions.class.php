@@ -1136,6 +1136,15 @@ class UniteFunctionsUC{
 				
 	}
 	
+	/**
+	 * strip all tags, leave only needed for the text
+	 */
+	public static function normalizeContentForText($content){
+		
+		$content = wp_strip_all_tags($content, "<br><em><b><strong>");
+		
+		return($content);
+	}
 	
 	/**
 	 * truncate string
@@ -1148,7 +1157,7 @@ class UniteFunctionsUC{
 			$length = 100;
 					
 		$originalValue = $value;
-				
+		
 		$value = wp_strip_all_tags($value,"<br><em><b><strong>");
 		
 		$stringLen = mb_strlen($value, $charset);

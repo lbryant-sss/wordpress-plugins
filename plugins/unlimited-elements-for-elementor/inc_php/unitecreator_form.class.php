@@ -19,7 +19,7 @@ class UniteCreatorForm{
 
 	const FOLDER_NAME = "unlimited_elements_form";
 	const HOOK_NAMESPACE = "ue_form";
-
+	
 	const ERROR_CODE_VALIDATION = -1;
 	const ERROR_CODE_SPAM = -2;
 
@@ -50,6 +50,8 @@ class UniteCreatorForm{
 	private $formMeta;
 	private $lastSpamError;
 	private $recaptchaDebug = null;
+	private $debugMessages = array();
+	
 	
 	/**
 	 * add conditions elementor control
@@ -594,7 +596,11 @@ class UniteCreatorForm{
 	 * upload form files
 	 */
 	private function uploadFormFiles(){
-
+		
+		if ( ! function_exists( 'WP_Filesystem' ) ) {
+	    	require_once( ABSPATH . 'wp-admin/includes/file.php' );
+		}	
+		
 		// Create upload folder
 		$folderName = self::FOLDER_NAME . "/"
 			. uelm_date("Y") . "/"
@@ -613,6 +619,7 @@ class UniteCreatorForm{
 		$errors = array();
 		
 		foreach($this->formFields as &$field){
+			
 			if($field["type"] !== self::TYPE_FILES)
 				continue;
 
@@ -650,12 +657,15 @@ class UniteCreatorForm{
 					if ( isset($file['tmp_name']) && is_uploaded_file($file['tmp_name']) ) {
 						$moved = move_uploaded_file($file['tmp_name'], $filePath);
 					}
-					
-					if($moved == false)
+										
+					if($moved == false){
 						$errors[] = "Direct upload failed: Unable to move " . $file['tmp_name'] . " to " . $filePath;
 						
-					continue;
+						continue;
+					}
+					
 				}
+				
 				
 				$uploadedFile = UniteFunctionsUC::getVal($uploaded_file, "file");
 				
@@ -677,8 +687,13 @@ class UniteCreatorForm{
 
 					continue;
 				}
-
-				$urls[] = GlobalsUC::$url_images . $folderName . $fileName;
+				
+				$urlFile = GlobalsUC::$url_images . $folderName . $fileName;
+				
+				
+				$this->addDebugMessage("File Attachment Uploaded: $fileName");
+				
+				$urls[] = $urlFile;
 			}
 
 			$field["value"] = $this->encodeFilesFieldValue($urls);
@@ -1178,6 +1193,14 @@ class UniteCreatorForm{
 		$this->doSubmitActions($formSettings, $formFields);
 	}
 	
+	/**
+	 * add debug message
+	 */
+	private function addDebugMessage($message){
+		
+		$this->debugMessages[] = $message;
+	}
+	
 	
 	/**
 	 * do submit actions
@@ -1190,12 +1213,11 @@ class UniteCreatorForm{
 		$data = array();
 		$errors = array();
 		$debugData = array();
-		$debugMessages = array();
 		
-		
+			
 		try{
-			$debugMessages[] = "Form has been received.";
-	
+			$this->addDebugMessage(__("Form has been received.","unlimited-elements-for-elementor"));
+			
 			// Validate form settings
 			$formErrors = $this->validateFormSettings($this->formSettings);
 
@@ -1237,13 +1259,13 @@ class UniteCreatorForm{
 
 			// Upload form files
 			$filesErrors = $this->uploadFormFiles();
-
+			
 			if(empty($filesErrors) === false){
 				$errors = array_merge($errors, $filesErrors);
 
 				UniteFunctionsUC::throwError("Form upload failed.");
 			}
-
+			
 			// Process form actions
 			$formActions = UniteFunctionsUC::getVal($this->formSettings, "form_actions");
 			$actionsErrors = array();
@@ -1256,7 +1278,7 @@ class UniteCreatorForm{
 						case self::ACTION_SAVE:
 							$this->createFormEntry();
 
-							$debugMessages[] = "Form entry has been successfully created.";
+							$this->addDebugMessage(__("Form entry has been successfully created.","unlimited-elements-for-elementor"));
 						break;
 
 						case self::ACTION_EMAIL:
@@ -1269,8 +1291,8 @@ class UniteCreatorForm{
 							$this->sendEmail($emailFields);
 
 							$emails = implode(", ", $emailFields["to"]);
-
-							$debugMessages[] = "Email has been successfully sent to $emails.";
+							
+							$this->addDebugMessage(__("Email has been successfully sent to .","unlimited-elements-for-elementor").$emails);
 						break;
 
 						case self::ACTION_WEBHOOK:
@@ -1280,8 +1302,9 @@ class UniteCreatorForm{
 							$debugData[$action] = $webhookFields;
 
 							$this->sendWebhook($webhookFields);
-
-							$debugMessages[] = "Webhook has been successfully sent to {$webhookFields["url"]}.";
+					
+							$this->addDebugMessage("Webhook has been successfully sent to {$webhookFields["url"]}.");
+							
 						break;
 
 						case self::ACTION_REDIRECT:
@@ -1289,8 +1312,9 @@ class UniteCreatorForm{
 
 							$data["redirect"] = $redirectFields["url"];
 							$debugData[$action] = $redirectFields["url"];
-
-							$debugMessages[] = "Redirecting to {$redirectFields["url"]}.";
+							
+							$this->addDebugMessage("Redirecting to {$redirectFields["url"]}.");
+							
 						break;
 
 						case self::ACTION_GOOGLE_SHEETS:
@@ -1300,7 +1324,7 @@ class UniteCreatorForm{
 
 							$this->sendToGoogleSheets($spreadsheetFields);
 
-							$debugMessages[] = "Data has been successfully sent to Google Sheets.";
+							$this->addDebugMessage("Data has been successfully sent to Google Sheets.");							
 						break;
 
 						case self::ACTION_HOOK:
@@ -1312,16 +1336,16 @@ class UniteCreatorForm{
 							$customActionName = $hookFields["name"];
 							
 							$this->executeCustomAction($customActionName);
-
-							$debugMessages[] = "Hook: $customActionName has been successfully executed.";
+							
+							$this->addDebugMessage("Hook: $customActionName has been successfully executed.");							
 						break;
 
 						case self::ACTION_MAILPOET:
 
 							$mailPoetMessage = $this->mailPoetService();
-
-							$debugMessages[] = $mailPoetMessage;
-
+							
+							$this->addDebugMessage($mailPoetMessage);
+							
 							break;
 
 						default:
@@ -1366,16 +1390,16 @@ class UniteCreatorForm{
 			
 			$errors[] = $exception->getMessage();
 				
-			$debugMessages[] = $exception->getMessage();
+			$this->addDebugMessage($exception->getMessage());
 		}
 
-		$this->createFormLog($debugMessages);
+		$this->createFormLog($this->debugMessages);
 
 		$isDebug = UniteFunctionsUC::getVal($this->formSettings, "debug_mode");
 		$isDebug = UniteFunctionsUC::strToBool($isDebug);
 
 		if($isDebug === true){
-			$debugMessage = implode(" ", $debugMessages);
+			$debugMessage = implode(" ", $this->debugMessages);
 			$debugType = UniteFunctionsUC::getVal($this->formSettings, "debug_type");
 
 			$data["debug"] = "<p><b>DEBUG:</b> $debugMessage</p>";

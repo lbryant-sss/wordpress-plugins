@@ -37,7 +37,7 @@ class PAPRO_Promotion {
 	public function promote_template( $texts ) {
 
 		$upgrade_link = Helper_Functions::get_campaign_link(
-			'https://premiumaddons.com/pro/',
+			'https://premiumaddons.com/pro/#get-pa-pro',
 			'panel-' . $texts['addon'],
 			'wp-editor',
 			'get-pro'

@@ -5,7 +5,7 @@ Requires at least: 5.4
 License: GPL3
 Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: 7.8.5.1
+Stable tag: 7.8.5.2
 
 Lifetime SSL solution – Install free SSL certificate & enable HTTPS redirect, Advanced security, Unlock every premium feature other plugins charge for — Free.
 
@@ -171,6 +171,9 @@ Security is an important subject regarding SSL/TLS certificates, of course. It i
 7. Mixed Content Scanner to identify insecure contents on HTTPS site
 
 == Changelog ==
+
+= 7.8.5.2 =
+* translation improvements
 
 = 7.8.5.1 =
 * freemius hooks & custom css
