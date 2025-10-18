@@ -1,5 +1,5 @@
 === MalCare WordPress Security Plugin - Malware Scanner, Cleaner, Security Firewall ===
-Contributors: malcare security, akshatc
+Contributors: malcare, akshatc
 Tags: wordpress security, firewall, malware scanner, malware removal, vulnerabilities
 Plugin URI: https://www.malcare.com
 Donate link: https://www.malcare.com
@@ -20,6 +20,9 @@ Security Plugin For WordPress Websites
 ★★★★★
 
 A WordPress security plugin ensures that your website remains completely safe and secure, always. We created [MalCare Security Plugin](https://www.malcare.com/) to help website owners worry less about their site security, achieve peace of mind and focus all their energies on growing their business or website.
+
+**Why you need MalCare Security?**
+[youtube https://www.youtube.com/watch?v=j3h0JF0we4o]
 
 **Difference Between MalCare Free vs Premium**
 

@@ -267,6 +267,152 @@ class GlobalSearchController {
 	}
 
 	/**
+	 * Search sureemails data.
+	 *
+	 * @param array $data data.
+	 * @return array
+	 */
+	public function search_pluggables_course_completed( $data ) {
+		$context = [];
+		$args    = [
+			'order'   => 'DESC',
+			'number'  => 1,
+			'orderby' => 'ID',
+		];
+
+		if ( isset( $data['filter']['suredash_course']['value'] ) ) {
+			$course_id = $data['filter']['suredash_course']['value'];
+		}
+
+		$users = get_users( $args );
+
+		if ( ! empty( $users ) ) {
+			$user         = $users[0];
+			$course_title = 'Sample Course';
+			if ( isset( $course_id ) ) {
+				$course = get_post( $course_id );
+				if ( $course ) {
+					$course_title = $course->post_title;
+				}
+			}
+
+			$first_name = get_user_meta( $user->ID, 'first_name', true );
+			$last_name  = get_user_meta( $user->ID, 'last_name', true );
+			
+			$pluggable_data            = [
+				'wp_user_id'      => $user->ID,
+				'user_login'      => $user->user_login,
+				'display_name'    => $user->display_name,
+				'user_firstname'  => $first_name ? $first_name : '--',
+				'user_lastname'   => $last_name ? $last_name : '--',
+				'user_email'      => $user->user_email,
+				'user_registered' => $user->user_registered,
+				'user_role'       => $user->roles,
+				'suredash_course' => isset( $course_id ) ? $course_id : 102,
+				'course_title'    => $course_title,
+			];
+			$context['pluggable_data'] = $pluggable_data;
+			$context['response_type']  = 'live';
+		} else {
+			$context['pluggable_data'] = [
+				'wp_user_id'      => 1,
+				'user_login'      => 'testuser',
+				'display_name'    => 'Test User',
+				'user_firstname'  => '--',
+				'user_lastname'   => '--',
+				'user_email'      => 'testuser@gmail.com',
+				'user_registered' => '2024-06-18 09:47:58',
+				'user_role'       => [ 'subscriber' ],
+				'suredash_course' => isset( $course_id ) ? $course_id : 102,
+				'course_title'    => 'Sample Course',
+			];
+			$context['response_type']  = 'sample';
+		}
+		return $context;
+	}
+
+	/**
+	 * Search Course.
+	 *
+	 * @param array $data quesry params.
+	 *
+	 * @return array
+	 * @since 1.0.0
+	 */
+	public function search_suredash_course( $data ) {
+		if ( ! defined( 'SUREDASHBOARD_POST_TYPE' ) ) {
+			return [
+				'options' => [],
+				'hasMore' => false,
+			];
+		}
+		
+		$courses = get_posts(
+			[
+				'post_type'   => SUREDASHBOARD_POST_TYPE,
+				'post_status' => 'publish',
+				'meta_query'  => [
+					[
+						'key'   => 'integration',
+						'value' => 'course',
+					],
+				],
+				'numberposts' => -1,
+			] 
+		);
+		
+		$options = [];
+		foreach ( $courses as $course ) {
+			$options[] = [
+				'label' => $course->post_title,
+				'value' => $course->ID,
+			];
+		}
+		
+		return [
+			'options' => $options,
+			'hasMore' => false,
+		];
+	}
+
+	/**
+	 * Search SureDash Posts.
+	 *
+	 * @param array $data quesry params.
+	 *
+	 * @return array
+	 * @since 1.0.0
+	 */
+	public function search_suredash_post( $data ) {
+		if ( ! defined( 'SUREDASHBOARD_FEED_POST_TYPE' ) ) {
+			return [
+				'options' => [],
+				'hasMore' => false,
+			];
+		}
+		
+		$posts   = get_posts(
+			[
+				'post_type'   => SUREDASHBOARD_FEED_POST_TYPE,
+				'post_status' => 'publish',
+				'numberposts' => -1,
+			] 
+		);
+		$options = [];
+		foreach ( $posts as $post ) {
+			$options[] = [
+				'label' => $post->post_title,
+				'value' => $post->ID,
+			];
+		}
+		
+		return [
+			'options' => $options,
+			'hasMore' => false,
+		];
+	}
+	
+	/**
 	 * Search Course.
 	 *
 	 * @param array $data quesry params.
@@ -429,6 +575,71 @@ class GlobalSearchController {
 
 		return RestController::success_message( $response );
 	}
+
+	/**
+	 * Search pluggables post liked data.
+	 *
+	 * @param array $data data.
+	 * @return array
+	 */
+	public function search_pluggables_post_liked( $data ) {
+		$context = [];
+		$args    = [
+			'order'   => 'DESC',
+			'number'  => 1,
+			'orderby' => 'ID',
+		];
+
+		if ( isset( $data['filter']['suredash_post']['value'] ) ) {
+			$post_id = $data['filter']['suredash_post']['value'];
+		}
+
+		$users = get_users( $args );
+
+		if ( ! empty( $users ) ) {
+			$user       = $users[0];
+			$post_title = 'Sample Post';
+			if ( isset( $post_id ) ) {
+				$post = get_post( $post_id );
+				if ( $post ) {
+					$post_title = $post->post_title;
+				}
+			}
+			
+			$pluggable_data            = [
+				'wp_user_id'      => $user->ID,
+				'user_login'      => $user->user_login,
+				'display_name'    => $user->display_name,
+				'user_firstname'  => get_user_meta( $user->ID, 'first_name', true ) ? get_user_meta( $user->ID, 'first_name', true ) : '--',
+				'user_lastname'   => get_user_meta( $user->ID, 'last_name', true ) ? get_user_meta( $user->ID, 'last_name', true ) : '--',
+				'user_email'      => $user->user_email,
+				'user_registered' => $user->user_registered,
+				'user_role'       => $user->roles,
+				'post_id'         => isset( $post_id ) ? $post_id : 123,
+				'post_title'      => $post_title,
+				'post_author'     => isset( $post_id ) ? get_post_field( 'post_author', $post_id ) : 1,
+			];
+			$context['pluggable_data'] = $pluggable_data;
+			$context['response_type']  = 'live';
+		} else {
+			$context['pluggable_data'] = [
+				'wp_user_id'      => 1,
+				'user_login'      => 'testuser',
+				'display_name'    => 'Test User',
+				'user_firstname'  => '--',
+				'user_lastname'   => '--',
+				'user_email'      => 'testuser@gmail.com',
+				'user_registered' => '2024-06-18 09:47:58',
+				'user_role'       => [ 'subscriber' ],
+				'post_id'         => isset( $post_id ) ? $post_id : 123,
+				'post_title'      => 'Sample Post',
+				'post_author'     => 1,
+			];
+			$context['response_type']  = 'sample';
+		}
+		return $context;
+	}
+
 
 	/**
 	 * Search Taxonomy Terms.
@@ -19315,11 +19526,106 @@ Cc:johnDoe@xyz.com Bcc:johnDoe@xyz.com',
 		global $wpdb;
 		$context = [];
 		$term    = $data['search_term'];
-		if ( ! class_exists( 'Voxel\Stripe' ) ) {
-			return [];
+		
+		if ( ! class_exists( 'Voxel\User' ) ) {
+			// Return sample data when Voxel class is not available.
+			if ( 'plan_canceled' === $term ) {
+				$context['pluggable_data']            = WordPress::get_sample_user_context();
+				$context['pluggable_data']['details'] = [
+					'plan'          => 'premium-plus',
+					'type'          => 'order',
+					'order_id'      => 14,
+					'order_item_id' => 17,
+					'billing'       => [
+						'price_key'      => 'premium-plus_pz3xfk7z',
+						'amount'         => 20,
+						'currency'       => 'USD',
+						'interval'       => 'month',
+						'frequency'      => 1,
+						'current_period' => [
+							'start' => '2025-10-15 09:01:47',
+							'end'   => '2025-11-15 09:01:47',
+						],
+						'is_active'      => 0,
+						'is_canceled'    => 1,
+					],
+				];
+				$context['response_type']             = 'sample';
+			} elseif ( 'plan_activated' === $term ) {
+				$context['pluggable_data']            = WordPress::get_sample_user_context();
+				$context['pluggable_data']['details'] = [
+					'plan'          => 'premium-plus',
+					'type'          => 'order',
+					'order_id'      => 14,
+					'order_item_id' => 17,
+					'billing'       => [
+						'price_key'      => 'premium-plus_pz3xfk7z',
+						'amount'         => 20,
+						'currency'       => 'USD',
+						'interval'       => 'month',
+						'frequency'      => 1,
+						'current_period' => [
+							'start' => '2025-10-15 09:01:47',
+							'end'   => '2025-11-15 09:01:47',
+						],
+						'is_active'      => 1,
+						'is_canceled'    => '',
+					],
+				];
+				$context['response_type']             = 'sample';
+			} elseif ( 'plan_updated' === $term ) {
+				$context['pluggable_data']            = WordPress::get_sample_user_context();
+				$context['pluggable_data']['details'] = [
+					'plan'     => 'premium-plus',
+					'type'     => 'subscription',
+					'price_id' => 'premium-plus_pz3xfk7z',
+					'status'   => 'active',
+					'metadata' => [
+						'voxel:payment_for' => 'membership',
+						'voxel:plan'        => 'premium-plus',
+					],
+				];
+				$context['response_type']             = 'sample';
+			} elseif ( 'user_registered' === $term ) {
+				$context['pluggable_data'] = WordPress::get_sample_user_context();
+				$context['response_type']  = 'sample';
+			}
+			return $context;
 		}
-		if ( 'plan_activated' === $term || 'plan_canceled' === $term ) {
-			$meta_key = \Voxel\Stripe::is_test_mode() ? 'voxel:test_plan' : 'voxel:plan';
+		if ( 'plan_activated' === $term ) {
+			$meta_key = ( function_exists( '\Voxel\is_test_mode' ) && \Voxel\is_test_mode() ) ? 'voxel:test_plan' : 'voxel:plan';
+			$sql      = "SELECT
+				m.user_id AS id,
+				u.user_login AS title,
+				u.user_email AS email,
+				m.meta_value AS details,
+				JSON_UNQUOTE( JSON_EXTRACT( m.meta_value, '$.plan' ) ) AS plan,
+				CAST( JSON_UNQUOTE( JSON_EXTRACT( m.meta_value, '$.amount' ) ) AS SIGNED ) AS amount,
+				JSON_UNQUOTE( JSON_EXTRACT( m.meta_value, '$.status' ) ) AS status,
+				CAST( JSON_UNQUOTE( JSON_EXTRACT( m.meta_value, '$.created' ) ) AS DATETIME ) AS created
+			FROM {$wpdb->prefix}usermeta as m
+			LEFT JOIN {$wpdb->prefix}users AS u ON m.user_id = u.ID
+			WHERE m.meta_key = %s  AND JSON_UNQUOTE( JSON_EXTRACT( m.meta_value, '$.plan' ) ) != 'default'
+			ORDER BY m.user_id DESC
+			LIMIT 25 OFFSET 0";
+			$results      = $wpdb->get_results( $wpdb->prepare( $sql, $meta_key ), ARRAY_A );// @phpcs:ignore
+		} elseif ( 'plan_canceled' === $term ) {
+			// Simple approach: Get the most recent user with membership plan and modify data to show as cancelled.
+			$meta_key = ( function_exists( '\Voxel\is_test_mode' ) && \Voxel\is_test_mode() ) ? 'voxel:test_plan' : 'voxel:plan';
+			$sql      = "SELECT
+				m.user_id AS id,
+				u.user_login AS title,
+				u.user_email AS email,
+				m.meta_value AS details,
+				JSON_UNQUOTE( JSON_EXTRACT( m.meta_value, '$.plan' ) ) AS plan
+			FROM {$wpdb->prefix}usermeta as m
+			LEFT JOIN {$wpdb->prefix}users AS u ON m.user_id = u.ID
+			WHERE m.meta_key = %s  AND JSON_UNQUOTE( JSON_EXTRACT( m.meta_value, '$.plan' ) ) != 'default'
+			ORDER BY m.user_id DESC
+			LIMIT 1";
+			$results      = $wpdb->get_results( $wpdb->prepare( $sql, $meta_key ), ARRAY_A );// @phpcs:ignore
+		} elseif ( 'plan_updated' === $term ) {
+			$meta_key = ( function_exists( '\Voxel\is_test_mode' ) && \Voxel\is_test_mode() ) ? 'voxel:test_plan' : 'voxel:plan';
 			$sql      = "SELECT
 				m.user_id AS id,
 				u.user_login AS title,
@@ -19345,23 +19651,133 @@ Cc:johnDoe@xyz.com Bcc:johnDoe@xyz.com',
 
 		if ( 'plan_canceled' === $term ) {
 			if ( ! empty( $results ) ) {
-				if ( 'cancelled' == $results[0]['status'] ) {
-					$context['pluggable_data']            = WordPress::get_user_context( $results[0]['id'] );
-					$context['pluggable_data']['details'] = json_decode( $results[0]['details'], true );
-					$context['response_type']             = 'live';
+				$context['pluggable_data'] = WordPress::get_user_context( $results[0]['id'] );
+				$membership_details        = json_decode( $results[0]['details'], true );
+				$membership_details        = is_array( $membership_details ) ? $membership_details : [];
+				
+				if ( ! isset( $membership_details['billing'] ) && isset( $membership_details['type'] ) ) {
+					$membership_details = [
+						'plan'          => isset( $membership_details['plan'] ) ? $membership_details['plan'] : 'premium-plus',
+						'type'          => 'order',
+						'order_id'      => isset( $membership_details['order_id'] ) ? $membership_details['order_id'] : 14,
+						'order_item_id' => isset( $membership_details['order_item_id'] ) ? $membership_details['order_item_id'] : 17,
+						'billing'       => [
+							'price_key'      => isset( $membership_details['price_id'] ) ? $membership_details['price_id'] : 'premium-plus_pz3xfk7z',
+							'amount'         => isset( $membership_details['amount'] ) ? $membership_details['amount'] : 20,
+							'currency'       => isset( $membership_details['currency'] ) ? $membership_details['currency'] : 'USD',
+							'interval'       => isset( $membership_details['interval'] ) ? $membership_details['interval'] : 'month',
+							'frequency'      => isset( $membership_details['interval_count'] ) ? $membership_details['interval_count'] : 1,
+							'current_period' => [
+								'start' => gmdate( 'Y-m-d H:i:s' ),
+								'end'   => gmdate( 'Y-m-d H:i:s', strtotime( '+1 month' ) ),
+							],
+							'is_active'      => 0,
+							'is_canceled'    => 1,
+						],
+					];
 				} else {
-					$context = json_decode( '{"pluggable_data":{"wp_user_id": 101,"user_login": "benni","display_name": "John D","user_firstname": "johnd","user_lastname": "D","user_email": "johnd@gmail.com","user_role": ["subscriber"],"details": {"plan": "learningmembership","type": "subscription","subscription_id": "sub_1OwOMySHDFghoeM1sInxPrG7","price_id": "price_1OwOLJSHDFghoeM177Vf8kgt","status": "cancelled","trial_end": null,"current_period_end": 1711542948,"cancel_at_period_end": true,"amount": 800,"currency": "usd","interval": "week","interval_count": 1,"created": "2024-03-20 12:35:48","metadata": {"voxel:payment_for": "membership","voxel:plan": "learningmembership"}}},"response_type":"sample"}', true );// @phpcs:ignore
+					if ( isset( $membership_details['billing'] ) ) {
+						$membership_details['billing']['is_active']   = 0;
+						$membership_details['billing']['is_canceled'] = 1;
+					}
 				}
+				
+				$context['pluggable_data']['details'] = $membership_details;
+				$context['response_type']             = 'live';
 			} else {
-				$context = json_decode( '{"pluggable_data":{"wp_user_id": 101,"user_login": "benni","display_name": "John D","user_firstname": "johnd","user_lastname": "D","user_email": "johnd@gmail.com","user_role": ["subscriber"],"details": {"plan": "learningmembership","type": "subscription","subscription_id": "sub_1OwOMySHDFghoeM1sInxPrG7","price_id": "price_1OwOLJSHDFghoeM177Vf8kgt","status": "cancelled","trial_end": null,"current_period_end": 1711542948,"cancel_at_period_end": true,"amount": 800,"currency": "usd","interval": "week","interval_count": 1,"created": "2024-03-20 12:35:48","metadata": {"voxel:payment_for": "membership","voxel:plan": "learningmembership"}}},"response_type":"sample"}', true );// @phpcs:ignore
+				$context['pluggable_data']            = WordPress::get_sample_user_context();
+				$context['pluggable_data']['details'] = [
+					'plan'          => 'premium-plus',
+					'type'          => 'order',
+					'order_id'      => 14,
+					'order_item_id' => 17,
+					'billing'       => [
+						'price_key'      => 'premium-plus_pz3xfk7z',
+						'amount'         => 20,
+						'currency'       => 'USD',
+						'interval'       => 'month',
+						'frequency'      => 1,
+						'current_period' => [
+							'start' => '2025-10-15 09:01:47',
+							'end'   => '2025-11-15 09:01:47',
+						],
+						'is_active'      => 0,
+						'is_canceled'    => 1,
+					],
+				];
+				$context['response_type']             = 'sample';
 			}
 		} elseif ( 'plan_activated' === $term ) {
+			if ( ! empty( $results ) ) {
+				$context['pluggable_data'] = WordPress::get_user_context( $results[0]['id'] );
+				$membership_details        = json_decode( $results[0]['details'], true );
+				$membership_details        = is_array( $membership_details ) ? $membership_details : [];
+				
+				if ( ! isset( $membership_details['billing'] ) && isset( $membership_details['type'] ) ) {
+					$membership_details = [
+						'plan'          => isset( $membership_details['plan'] ) ? $membership_details['plan'] : 'premium-plus',
+						'type'          => 'order',
+						'order_id'      => isset( $membership_details['order_id'] ) ? $membership_details['order_id'] : 14,
+						'order_item_id' => isset( $membership_details['order_item_id'] ) ? $membership_details['order_item_id'] : 17,
+						'billing'       => [
+							'price_key'      => isset( $membership_details['price_id'] ) ? $membership_details['price_id'] : 'premium-plus_pz3xfk7z',
+							'amount'         => isset( $membership_details['amount'] ) ? $membership_details['amount'] : 20,
+							'currency'       => isset( $membership_details['currency'] ) ? $membership_details['currency'] : 'USD',
+							'interval'       => isset( $membership_details['interval'] ) ? $membership_details['interval'] : 'month',
+							'frequency'      => isset( $membership_details['interval_count'] ) ? $membership_details['interval_count'] : 1,
+							'current_period' => [
+								'start' => gmdate( 'Y-m-d H:i:s' ),
+								'end'   => gmdate( 'Y-m-d H:i:s', strtotime( '+1 month' ) ),
+							],
+							'is_active'      => 1,
+							'is_canceled'    => '',
+						],
+					];
+				}
+				
+				$context['pluggable_data']['details'] = $membership_details;
+				$context['response_type']             = 'live';
+			} else {
+				$context['pluggable_data']            = WordPress::get_sample_user_context();
+				$context['pluggable_data']['details'] = [
+					'plan'          => 'premium-plus',
+					'type'          => 'order',
+					'order_id'      => 14,
+					'order_item_id' => 17,
+					'billing'       => [
+						'price_key'      => 'premium-plus_pz3xfk7z',
+						'amount'         => 20,
+						'currency'       => 'USD',
+						'interval'       => 'month',
+						'frequency'      => 1,
+						'current_period' => [
+							'start' => '2025-10-15 09:01:47',
+							'end'   => '2025-11-15 09:01:47',
+						],
+						'is_active'      => 1,
+						'is_canceled'    => '',
+					],
+				];
+				$context['response_type']             = 'sample';
+			}
+		} elseif ( 'plan_updated' === $term ) {
 			if ( ! empty( $results ) ) {
 				$context['pluggable_data']            = WordPress::get_user_context( $results[0]['id'] );
 				$context['pluggable_data']['details'] = json_decode( $results[0]['details'], true );
 				$context['response_type']             = 'live';
 			} else {
-				$context = json_decode( '{"pluggable_data":{"wp_user_id": 101,"user_login": "benni","display_name": "John D","user_firstname": "johnd","user_lastname": "D","user_email": "johnd@gmail.com","user_role": ["subscriber"],"details": {"plan": "learningmembership","type": "subscription","subscription_id": "sub_1OwOMySHDFghoeM1sInxPrG7","price_id": "price_1OwOLJSHDFghoeM177Vf8kgt","status": "active","trial_end": null,"current_period_end": 1711542948,"cancel_at_period_end": true,"amount": 800,"currency": "usd","interval": "week","interval_count": 1,"created": "2024-03-20 12:35:48","metadata": {"voxel:payment_for": "membership","voxel:plan": "learningmembership"}}},"response_type":"sample"}', true );// @phpcs:ignore
+				$context['pluggable_data']            = WordPress::get_sample_user_context();
+				$context['pluggable_data']['details'] = [
+					'plan'     => 'premium-plus',
+					'type'     => 'subscription',
+					'price_id' => 'premium-plus_pz3xfk7z',
+					'status'   => 'active',
+					'metadata' => [
+						'voxel:payment_for' => 'membership',
+						'voxel:plan'        => 'premium-plus',
+					],
+				];
+				$context['response_type']             = 'sample';
 			}
 		} elseif ( 'user_registered' === $term ) {
 			if ( ! empty( $results ) ) {
@@ -22525,6 +22941,113 @@ Cc:johnDoe@xyz.com Bcc:johnDoe@xyz.com',
 	}
 
 	/**
+	 * Get Pretty Links Last Data
+	 *
+	 * @param array $data data.
+	 *
+	 * @return array
+	 */
+	public function search_pretty_links_triggers_last_data( $data ) {
+		global $wpdb;
+
+		$term    = isset( $data['search_term'] ) ? $data['search_term'] : '';
+		$context = [];
+
+		// Check if Pretty Links plugin is active.
+		if ( ! defined( 'PRLI_VERSION' ) ) {
+			return $context;
+		}
+
+		// Get latest pretty link.
+		$latest_link = $wpdb->get_row( "SELECT * FROM {$wpdb->prefix}prli_links ORDER BY id DESC LIMIT 1", ARRAY_A );
+
+		// Get latest click if available.
+		$latest_click = $wpdb->get_row( "SELECT * FROM {$wpdb->prefix}prli_clicks ORDER BY id DESC LIMIT 1", ARRAY_A );
+
+		$get_user_data = function( $user_id ) {
+			if ( class_exists( '\SureTriggers\Integrations\WordPress\WordPress' ) ) {
+				return WordPress::get_user_context( $user_id );
+			}
+			return [
+				'user_id'        => 0,
+				'user_login'     => 'guest',
+				'display_name'   => 'Guest User',
+				'user_firstname' => '',
+				'user_lastname'  => '',
+				'user_email'     => 'guest@example.com',
+				'user_role'      => [],
+			];
+		};
+		$format_link   = function( $link_data ) {
+			return [
+				'id'            => isset( $link_data['id'] ) ? $link_data['id'] : 17,
+				'name'          => isset( $link_data['name'] ) ? $link_data['name'] : 'Sample Pretty Link',
+				'url'           => isset( $link_data['url'] ) ? $link_data['url'] : 'https://example.com',
+				'slug'          => isset( $link_data['slug'] ) ? $link_data['slug'] : 'sample-link',
+				'pretty_url'    => home_url( '/' . ( isset( $link_data['slug'] ) ? $link_data['slug'] : 'sample-link' ) ),
+				'description'   => isset( $link_data['description'] ) ? $link_data['description'] : 'Sample description',
+				'redirect_type' => isset( $link_data['redirect_type'] ) ? $link_data['redirect_type'] : '307',
+				'clicks'        => isset( $link_data['clicks'] ) ? $link_data['clicks'] : '5',
+				'created_at'    => isset( $link_data['created_at'] ) ? $link_data['created_at'] : current_time( 'mysql' ),
+			];
+		};
+
+		$format_click = function( $click_data ) {
+			return [
+				'click_id'     => isset( $click_data['id'] ) ? $click_data['id'] : 42,
+				'url'          => isset( $click_data['url'] ) ? $click_data['url'] : 'https://example.com',
+				'timestamp'    => isset( $click_data['created_at'] ) ? $click_data['created_at'] : current_time( 'mysql' ),
+				'is_logged_in' => true,
+			];
+		};
+
+		switch ( $term ) {
+			case 'link_clicked':
+				$link_data  = ! empty( $latest_link ) ? $format_link( $latest_link ) : $format_link( [] );
+				$click_data = ! empty( $latest_click ) ? $format_click( $latest_click ) : $format_click( [] );
+				
+				// Get user context from latest click or sample data.
+				$user_id = 0;
+				if ( ! empty( $latest_click ) ) {
+					if ( isset( $latest_click['user'] ) && $latest_click['user'] > 0 ) {
+						$user_id = $latest_click['user'];
+					} elseif ( isset( $latest_click['user_id'] ) && $latest_click['user_id'] > 0 ) {
+						$user_id = $latest_click['user_id'];
+					} elseif ( isset( $latest_click['visitor'] ) && is_numeric( $latest_click['visitor'] ) && $latest_click['visitor'] > 0 ) {
+						$user_id = $latest_click['visitor'];
+					}
+				}
+				
+				if ( $user_id > 0 ) {
+					$user_data = $get_user_data( $user_id );
+				} else {
+					$user_data = [
+						'wp_user_id'      => 1,
+						'user_login'      => 'sampleuser',
+						'display_name'    => 'Sample User',
+						'user_firstname'  => 'John',
+						'user_lastname'   => 'Doe',
+						'user_email'      => 'sampleuser@example.com',
+						'user_registered' => current_time( 'mysql' ),
+						'user_role'       => [ 'subscriber' ],
+					];
+				}
+
+				$context['pluggable_data'] = array_merge(
+					$user_data,
+					[
+						'link'  => $link_data,
+						'click' => $click_data,
+					]
+				);
+				$context['response_type']  = ! empty( $latest_link ) ? 'live' : 'sample';
+				break;
+		}
+
+		return (array) $context;
+	}
+
+	/**
 	 * Get ProfilePress Payment Methods.
 	 *
 	 * @param array $data data.
@@ -22691,6 +23214,800 @@ Cc:johnDoe@xyz.com Bcc:johnDoe@xyz.com',
 				$context['response_type']  = 'error';
 				break;
 
+		}
+
+		return $context;
+	}
+
+	/**
+	 * Search FluentCRM Company Data.
+	 *
+	 * @param array $data data.
+	 * @return array
+	 */
+	public function search_pluggables_fluentcrm_company_created( $data ) {
+		global $wpdb;
+
+		$context        = [];
+		$pluggable_data = [];
+		$term           = ! empty( $data['search_term'] ) ? $data['search_term'] : '';
+
+		if ( ! class_exists( 'FluentCrm\App\Models\Company' ) ) {
+			return [];
+		}
+
+		$result = null;
+
+		// Fetch last record based on term.
+		switch ( $term ) {
+			case 'contact_deleted':
+				$result = $wpdb->get_row( "SELECT id FROM {$wpdb->prefix}fc_subscribers ORDER BY id DESC LIMIT 1", ARRAY_A );
+				break;
+
+			case 'campaign_sent':
+				$result = $wpdb->get_row( "SELECT * FROM {$wpdb->prefix}fc_campaigns WHERE status = 'archived' ORDER BY updated_at DESC LIMIT 1", ARRAY_A );
+				break;
+
+			case 'company_updated':
+				$result = $wpdb->get_row( "SELECT * FROM {$wpdb->prefix}fc_companies ORDER BY updated_at DESC LIMIT 1", ARRAY_A );
+				break;
+
+			case 'company_deleted':
+			case 'company_assigned':
+			case 'company_unassigned':
+				$result = $wpdb->get_row( "SELECT * FROM {$wpdb->prefix}fc_companies ORDER BY id DESC LIMIT 1", ARRAY_A );
+				break;
+
+			default:
+				// Default to company_created.
+				$result = $wpdb->get_row( "SELECT * FROM {$wpdb->prefix}fc_companies ORDER BY created_at DESC LIMIT 1", ARRAY_A );
+				break;
+		}
+
+		if ( $result ) {
+			switch ( $term ) {
+				case 'contact_deleted':
+					$pluggable_data = [
+						'contact_id' => $result['id'],
+						'deleted_at' => current_time( 'mysql' ),
+					];
+					break;
+
+				case 'campaign_sent':
+					$campaign_data = $result;
+
+					if ( ! empty( $campaign_data['settings'] ) ) {
+						$settings = maybe_unserialize( $campaign_data['settings'] );
+						if ( is_array( $settings ) ) {
+							$campaign_data['settings'] = $settings;
+						}
+					}
+
+					$pluggable_data = [
+						'campaign'    => $campaign_data,
+						'status'      => 'archived',
+						'archived_at' => current_time( 'mysql' ),
+					];
+
+					if ( ! empty( $result['id'] ) ) {
+						$total_emails  = (int) $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM {$wpdb->prefix}fc_campaign_emails WHERE campaign_id = %d", $result['id'] ) );
+						$sent_count    = (int) $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM {$wpdb->prefix}fc_campaign_emails WHERE campaign_id = %d AND status = 'sent'", $result['id'] ) );
+						$opened_count  = (int) $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM {$wpdb->prefix}fc_campaign_emails WHERE campaign_id = %d AND is_open > 0", $result['id'] ) );
+						$clicked_count = (int) $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM {$wpdb->prefix}fc_campaign_emails WHERE campaign_id = %d AND click_counter > 0", $result['id'] ) );
+
+						$pluggable_data['total_emails_sent'] = $total_emails;
+						$pluggable_data['sent_count']        = $sent_count;
+						$pluggable_data['opened_count']      = $opened_count;
+						$pluggable_data['clicked_count']     = $clicked_count;
+						$pluggable_data['open_rate']         = $sent_count > 0 ? round( ( $opened_count / $sent_count ) * 100, 2 ) : 0;
+						$pluggable_data['click_rate']        = $sent_count > 0 ? round( ( $clicked_count / $sent_count ) * 100, 2 ) : 0;
+					}
+					break;
+
+				case 'company_deleted':
+					$pluggable_data = [
+						'company_id' => $result['id'],
+						'deleted_at' => current_time( 'mysql' ),
+					];
+					break;
+
+				case 'company_assigned':
+				case 'company_unassigned':
+					$contact_result = $wpdb->get_row( "SELECT * FROM {$wpdb->prefix}fc_subscribers ORDER BY id DESC LIMIT 1", ARRAY_A );
+					if ( $contact_result ) {
+						$pluggable_data['contact']   = [
+							'details' => $contact_result,
+							'custom'  => [],
+						];
+						$pluggable_data['companies'] = [ $result ];
+
+						if ( 'company_assigned' === $term ) {
+							$pluggable_data['assigned_company_ids'] = [ $result['id'] ];
+							$pluggable_data['assigned_at']          = current_time( 'mysql' );
+						} else {
+							$pluggable_data['unassigned_company_ids'] = [ $result['id'] ];
+							$pluggable_data['unassigned_at']          = current_time( 'mysql' );
+						}
+					}
+					break;
+
+				default:
+					$meta_data      = ! empty( $result['meta'] ) ? maybe_unserialize( $result['meta'] ) : [];
+					$company_result = array_intersect_key(
+						$result,
+						array_flip(
+							[
+								'id',
+								'hash',
+								'name',
+								'email',
+								'description',
+								'address_line_1',
+								'address_line_2',
+								'city',
+								'state',
+								'postal_code',
+								'country',
+								'phone',
+								'type',
+								'owner_id',
+								'employees_number',
+								'industry',
+								'website',
+								'linkedin_url',
+								'facebook_url',
+								'twitter_url',
+								'logo',
+								'timezone',
+								'date_of_start',
+								'created_at',
+								'updated_at',
+							] 
+						)
+					);
+
+					if ( is_array( $meta_data ) && isset( $meta_data['custom_values'] ) ) {
+						$company_result['custom_fields'] = $meta_data['custom_values'];
+					}
+
+					$pluggable_data['company'] = $company_result;
+					break;
+			}
+			$context['response_type'] = 'live';
+		} else {
+			// Sample data for different terms.
+			switch ( $term ) {
+				case 'contact_deleted':
+					$pluggable_data = [
+						'contact_id' => 1,
+						'deleted_at' => current_time( 'mysql' ),
+					];
+					break;
+
+				case 'campaign_sent':
+					$pluggable_data = [
+						'campaign'          => [
+							'id'            => 1,
+							'type'          => 'campaign',
+							'title'         => 'Sample Email Campaign',
+							'status'        => 'archived',
+							'template_id'   => 1,
+							'email_subject' => 'Welcome to Our Newsletter!',
+							'email_body'    => 'Sample campaign email content...',
+							'utm_status'    => 1,
+							'utm_source'    => 'fluentcrm',
+							'utm_medium'    => 'email',
+							'utm_campaign'  => 'sample-campaign',
+							'created_by'    => 1,
+							'created_at'    => current_time( 'mysql' ),
+							'updated_at'    => current_time( 'mysql' ),
+							'scheduled_at'  => current_time( 'mysql' ),
+						],
+						'status'            => 'archived',
+						'archived_at'       => current_time( 'mysql' ),
+						'total_emails_sent' => 1500,
+						'sent_count'        => 1450,
+						'opened_count'      => 725,
+						'clicked_count'     => 145,
+						'open_rate'         => 50.0,
+						'click_rate'        => 10.0,
+					];
+					break;
+
+				case 'company_deleted':
+					$pluggable_data = [
+						'company_id' => 1,
+						'deleted_at' => current_time( 'mysql' ),
+					];
+					break;
+
+				case 'company_assigned':
+				case 'company_unassigned':
+					$pluggable_data['contact']['details'] = [
+						'id'              => 1,
+						'user_id'         => 1,
+						'hash'            => 'sample_hash',
+						'contact_owner'   => 0,
+						'company_id'      => 0,
+						'prefix'          => 'Mr.',
+						'first_name'      => 'John',
+						'last_name'       => 'Doe',
+						'email'           => 'john@example.com',
+						'timezone'        => 'America/New_York',
+						'address_line_1'  => '123 Main Street',
+						'address_line_2'  => 'Apt 4B',
+						'postal_code'     => '10001',
+						'city'            => 'New York',
+						'state'           => 'NY',
+						'country'         => 'USA',
+						'phone'           => '+1-555-123-4567',
+						'status'          => 'subscribed',
+						'contact_type'    => 'customer',
+						'source'          => 'manual',
+						'lifecycle_stage' => 'customer',
+						'created_at'      => current_time( 'mysql' ),
+						'updated_at'      => current_time( 'mysql' ),
+					];
+					$pluggable_data['contact']['custom']  = [];
+					$pluggable_data['companies']          = [
+						[
+							'id'             => 1,
+							'hash'           => 'sample_hash',
+							'name'           => 'Sample Company Inc.',
+							'email'          => 'contact@samplecompany.com',
+							'description'    => 'This is a sample company',
+							'address_line_1' => '123 Business Street',
+							'address_line_2' => 'Suite 100',
+							'city'           => 'Business City',
+							'state'          => 'California',
+							'postal_code'    => '90210',
+							'country'        => 'USA',
+							'phone'          => '+1-555-123-4567',
+							'type'           => 'client',
+							'created_at'     => current_time( 'mysql' ),
+							'updated_at'     => current_time( 'mysql' ),
+						],
+					];
+					if ( 'company_assigned' === $term ) {
+						$pluggable_data['assigned_company_ids'] = [ 1 ];
+						$pluggable_data['assigned_at']          = current_time( 'mysql' );
+					} else {
+						$pluggable_data['unassigned_company_ids'] = [ 1 ];
+						$pluggable_data['unassigned_at']          = current_time( 'mysql' );
+					}
+					break;
+
+				case 'company_created':
+				case 'company_updated':
+				default:
+					$pluggable_data['company'] = [
+						'id'               => 1,
+						'hash'             => 'sample_hash',
+						'name'             => 'Sample Company Inc.',
+						'email'            => 'contact@samplecompany.com',
+						'description'      => 'This is a sample company',
+						'address_line_1'   => '123 Business Street',
+						'address_line_2'   => 'Suite 100',
+						'city'             => 'Business City',
+						'state'            => 'California',
+						'postal_code'      => '90210',
+						'country'          => 'USA',
+						'phone'            => '+1-555-123-4567',
+						'type'             => 'client',
+						'owner_id'         => 1,
+						'employees_number' => 50,
+						'industry'         => 'Technology',
+						'website'          => 'https://samplecompany.com',
+						'linkedin_url'     => 'https://linkedin.com/company/samplecompany',
+						'facebook_url'     => 'https://facebook.com/samplecompany',
+						'twitter_url'      => 'https://twitter.com/samplecompany',
+						'logo'             => '',
+						'timezone'         => 'America/Los_Angeles',
+						'date_of_start'    => '2024-01-01',
+						'created_at'       => '2024-01-01 10:00:00',
+						'updated_at'       => '2024-01-01 10:00:00',
+						'custom_fields'    => [
+							'annual_revenue'  => '$1,000,000',
+							'primary_contact' => 'John Doe',
+						],
+					];
+					break;
+			}
+
+			$context['response_type'] = 'sample';
+		}
+
+		$context['pluggable_data'] = $pluggable_data;
+		return $context;
+	}
+
+	/**
+	 * Get FluentCRM email trigger details.
+	 *
+	 * @param array $data data.
+	 *
+	 * @return array
+	 */
+	public function search_pluggables_fluentcrm_email_triggers( $data ) {
+		$context        = [];
+		$pluggable_data = [];
+		global $wpdb;
+		$term = $data['search_term'] ? $data['search_term'] : '';
+
+		// Helper function to build email data structure.
+		$build_email_data = function( $email_result, $subscriber_result = null, $subscriber_status = null ) {
+			$email_data = [
+				'id'            => $email_result['id'],
+				'status'        => $email_result['status'],
+				'is_open'       => $email_result['is_open'],
+				'is_parsed'     => $email_result['is_parsed'],
+				'created_at'    => $email_result['created_at'],
+				'updated_at'    => isset( $email_result['updated_at'] ) ? $email_result['updated_at'] : $email_result['created_at'],
+				'campaign_id'   => isset( $email_result['campaign_id'] ) ? $email_result['campaign_id'] : null,
+				'scheduled_at'  => isset( $email_result['scheduled_at'] ) ? $email_result['scheduled_at'] : $email_result['created_at'],
+				'email_address' => isset( $email_result['email_address'] ) ? $email_result['email_address'] : ( isset( $subscriber_result['email'] ) ? $subscriber_result['email'] : '' ),
+				'email_headers' => isset( $email_result['email_headers'] ) ? $email_result['email_headers'] : '',
+				'email_subject' => isset( $email_result['email_subject'] ) ? $email_result['email_subject'] : '',
+				'email_body'    => $email_result['email_body'],
+				'email_hash'    => $email_result['email_hash'],
+				'email_type'    => $email_result['email_type'],
+				'subscriber_id' => $email_result['subscriber_id'],
+			];
+
+			if ( $subscriber_result ) {
+				$subscriber_fields = [
+					'hash',
+					'email',
+					'phone',
+					'photo',
+					'prefix',
+					'status',
+					'full_name',
+					'last_name',
+					'created_at',
+					'first_name',
+					'updated_at',
+				];
+				foreach ( $subscriber_fields as $field ) {
+					$email_data[ 'subscriber_' . $field ] = $subscriber_result[ $field ];
+				}
+				if ( $subscriber_status ) {
+					$email_data['subscriber_status'] = $subscriber_status;
+				}
+			}
+
+			return $email_data;
+		};
+
+		// Helper function to get sample email data.
+		$get_sample_email_data = function( $status = 'subscribed' ) {
+			return [
+				'id'                    => 1,
+				'status'                => 'sent',
+				'is_open'               => 0,
+				'is_parsed'             => 1,
+				'created_at'            => current_time( 'mysql' ),
+				'updated_at'            => current_time( 'mysql' ),
+				'campaign_id'           => 83,
+				'scheduled_at'          => current_time( 'mysql' ),
+				'email_address'         => 'john@example.com',
+				'email_headers'         => 'From: noreply@example.com',
+				'email_subject'         => 'Sample Email Subject',
+				'email_body'            => 'Sample email content here...',
+				'email_hash'            => 'sample-email-hash-123',
+				'email_type'            => 'campaign',
+				'subscriber_id'         => 1,
+				'subscriber_hash'       => 'sample_hash',
+				'subscriber_email'      => 'john@example.com',
+				'subscriber_phone'      => '9876654423',
+				'subscriber_photo'      => 'http://example.com/avatar.png',
+				'subscriber_prefix'     => 'Mr.',
+				'subscriber_status'     => $status,
+				'subscriber_full_name'  => 'John Doe',
+				'subscriber_last_name'  => 'Doe',
+				'subscriber_created_at' => current_time( 'mysql' ),
+				'subscriber_first_name' => 'John',
+				'subscriber_updated_at' => current_time( 'mysql' ),
+			];
+		};
+
+		// Get result based on term.
+		$result = null;
+		if ( 'email_opened' === $term ) {
+			$result = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}fc_campaign_emails ORDER BY id DESC LIMIT %d", 1 ), ARRAY_A );
+		} elseif ( 'email_clicked' === $term ) {
+			$result = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}fc_campaign_emails WHERE click_counter > %d ORDER BY id DESC LIMIT %d", 0, 1 ), ARRAY_A );
+		} elseif ( 'email_unsubscribed' === $term ) {
+			$result = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}fc_subscribers WHERE status = 'unsubscribed' ORDER BY updated_at DESC LIMIT %d", 1 ), ARRAY_A );
+		} elseif ( 'email_bounced' === $term ) {
+			$result = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}fc_subscribers WHERE status = 'bounced' ORDER BY updated_at DESC LIMIT %d", 1 ), ARRAY_A );
+		}
+
+		if ( $result ) {
+			if ( 'email_opened' === $term || 'email_clicked' === $term ) {
+				// Get subscriber details.
+				$subscriber_result = null;
+				if ( ! empty( $result['subscriber_id'] ) ) {
+					$subscriber_result = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}fc_subscribers WHERE id = %d", $result['subscriber_id'] ), ARRAY_A );
+				}
+
+				$pluggable_data['email'] = $build_email_data( $result, $subscriber_result );
+				$pluggable_data[ 'email_opened' === $term ? 'opened_at' : 'clicked_at' ] = current_time( 'mysql' );
+
+			} elseif ( 'email_unsubscribed' === $term ) {
+				// Get email data for subscriber.
+				$email_result = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}fc_campaign_emails WHERE subscriber_id = %d ORDER BY id DESC LIMIT %d", $result['id'], 1 ), ARRAY_A );
+				
+				if ( $email_result ) {
+					$pluggable_data['email'] = $build_email_data( $email_result, $result );
+				}
+
+				$pluggable_data['source']          = 'from_header';
+				$pluggable_data['unsubscribed_at'] = current_time( 'mysql' );
+			} elseif ( 'email_bounced' === $term ) {
+				// For bounced emails, we only need subscriber object and bounce-specific fields.
+				$subscriber_data   = [];
+				$subscriber_fields = [
+					'id',
+					'hash',
+					'email',
+					'phone',
+					'photo',
+					'prefix',
+					'status',
+					'full_name',
+					'last_name',
+					'created_at',
+					'first_name',
+					'updated_at',
+					'contact_type',
+					'total_points',
+					'last_activity',
+					'life_time_value',
+					'ip',
+				];
+				
+				foreach ( $subscriber_fields as $field ) {
+					if ( isset( $result[ $field ] ) ) {
+						$subscriber_data[ $field ] = $result[ $field ];
+					}
+				}
+				
+				$pluggable_data['subscriber'] = $subscriber_data;
+				
+				// Add bounce-specific data.
+				$pluggable_data['old_status'] = 'subscribed';
+				$pluggable_data['new_status'] = 'bounced';
+				$pluggable_data['bounced_at'] = $result['updated_at'];
+			}
+			$context['response_type'] = 'live';
+		} else {
+			// Sample data for different email terms.
+			if ( 'email_opened' === $term || 'email_clicked' === $term ) {
+				$pluggable_data['email'] = $get_sample_email_data();
+				
+				if ( 'email_opened' === $term ) {
+					$pluggable_data['opened_at'] = current_time( 'mysql' );
+				} else {
+					$pluggable_data['url']        = [
+						'id'         => 1,
+						'url'        => 'https://example.com/sample-link',
+						'short_url'  => 'https://example.com/r/abc123',
+						'title'      => 'Sample Link',
+						'created_at' => current_time( 'mysql' ),
+					];
+					$pluggable_data['clicked_at'] = current_time( 'mysql' );
+				}
+			} elseif ( 'email_unsubscribed' === $term ) {
+				$pluggable_data['email']           = $get_sample_email_data( 'unsubscribed' );
+				$pluggable_data['source']          = 'from_header';
+				$pluggable_data['unsubscribed_at'] = current_time( 'mysql' );
+			} elseif ( 'email_bounced' === $term ) {
+				// Sample subscriber object for bounced email (no email object).
+				$pluggable_data['subscriber'] = [
+					'id'              => 8,
+					'ip'              => '::1',
+					'hash'            => '6b2c0a83138a7e42ef12e6f87e8c58aa',
+					'email'           => 'mrunalis@bsf.io',
+					'phone'           => '9876654423',
+					'photo'           => 'http://ottokit.local/wp-content/plugins/fluent-crm/assets/images/avatar.png',
+					'prefix'          => 'Ms',
+					'status'          => 'bounced',
+					'full_name'       => 'Mrunali Salunke',
+					'last_name'       => 'Salunke',
+					'created_at'      => '2025-09-18 04:51:26',
+					'first_name'      => 'Mrunali',
+					'updated_at'      => current_time( 'mysql' ),
+					'contact_type'    => 'lead',
+					'total_points'    => 0,
+					'last_activity'   => '2025-09-25 05:47:45',
+					'life_time_value' => 0,
+				];
+				$pluggable_data['old_status'] = 'subscribed';
+				$pluggable_data['new_status'] = 'bounced';
+				$pluggable_data['bounced_at'] = current_time( 'mysql' );
+			}
+			$context['response_type'] = 'sample';
+		}
+
+		$context['pluggable_data'] = $pluggable_data;
+		return $context;
+	}
+
+	/**
+	 * Get WooCommerce Subscription triggers last data.
+	 *
+	 * @param array $data data.
+	 *
+	 * @return array
+	 */
+	public function search_woocommerce_subscription_triggers_last_data( $data ) {
+		$context = [];
+		$term    = isset( $data['search_term'] ) ? $data['search_term'] : '';
+
+		if ( ! class_exists( 'WC_Subscription' ) || ! function_exists( 'wcs_get_subscription' ) ) {
+			return $context;
+		}
+
+		$needs_subscription = in_array(
+			$term,
+			[
+				'wc_subscription_updated',
+				'wc_cancels_subscription_product',
+				'wc_subscribes_product',
+				'wc_purchases_variable_subscription',
+				'wc_renews_subscription_product',
+				'wc_subscription_product_expires',
+			],
+			true
+		);
+
+		if ( ! $needs_subscription ) {
+			return $context;
+		}
+
+		global $wpdb;
+
+		$subscription = $wpdb->get_row(
+			"SELECT * FROM {$wpdb->prefix}posts WHERE post_type = 'shop_subscription' ORDER BY post_modified DESC LIMIT 1"
+		);
+
+		if ( $subscription ) {
+			$subscription_obj = wcs_get_subscription( $subscription->ID );
+			$user_id          = $subscription_obj->get_user_id();
+			$items            = $subscription_obj->get_items();
+			$product_id       = 0;
+			$variation_id     = 0;
+			$product_name     = '';
+			$variation_name   = '';
+
+			foreach ( $items as $item ) {
+				$product_id     = $item->get_product_id();
+				$variation_id   = $item->get_variation_id();
+				$product_name   = $item->get_name();
+				$variation_name = $item->get_name();
+				break;
+			}
+
+			$user_billing_data = [
+				'billing_first_name' => $subscription_obj->get_billing_first_name(),
+				'billing_last_name'  => $subscription_obj->get_billing_last_name(),
+				'billing_country'    => $subscription_obj->get_billing_country(),
+				'billing_address_1'  => $subscription_obj->get_billing_address_1(),
+				'billing_address_2'  => $subscription_obj->get_billing_address_2(),
+				'billing_city'       => $subscription_obj->get_billing_city(),
+				'billing_state'      => $subscription_obj->get_billing_state(),
+				'billing_postcode'   => $subscription_obj->get_billing_postcode(),
+				'billing_phone'      => $subscription_obj->get_billing_phone(),
+				'billing_email'      => $subscription_obj->get_billing_email(),
+			];
+
+			if ( 'wc_subscription_updated' === $term ) {
+				$subscription_data = [
+					'start_date'        => $subscription_obj->get_date_created(),
+					'next_payment_date' => $subscription_obj->get_date( 'next_payment' ) ? $subscription_obj->get_date( 'next_payment' )->format( 'Y-m-d H:i:s' ) : 0,
+				];
+
+				$context['variation_id']      = $variation_id;
+				$context['product_id']        = $product_id;
+				$context['subscription']      = $product_id;
+				$context['variation_name']    = $variation_name;
+				$context['product_name']      = $product_name;
+				$context['subscription_data'] = $subscription_data;
+				$context['subscription_id']   = $subscription->ID;
+				$context['user']              = WordPress::get_user_context( $user_id );
+				$context['user_billing_data'] = $user_billing_data;
+				$context['new_status']        = $subscription_obj->get_status();
+				$context['old_status']        = 'pending-cancel';
+				$context['status']            = 'wc-' . $subscription_obj->get_status();
+			} elseif ( 'wc_cancels_subscription_product' === $term ) {
+				$subscription_data = [
+					'status'     => $subscription_obj->get_status(),
+					'start_date' => $subscription_obj->get_date_created(),
+				];
+
+				$context['subscription_data'] = $subscription_data;
+				$context['user']              = WordPress::get_user_context( $user_id );
+				$context['user_billing_data'] = $user_billing_data;
+				$context['subscription_id']   = $subscription->ID;
+			} elseif ( 'wc_subscribes_product' === $term ) {
+				$subscription_data = [
+					'status'            => $subscription_obj->get_status(),
+					'start_date'        => $subscription_obj->get_date_created(),
+					'next_payment_date' => $subscription_obj->get_date( 'next_payment' ) ? $subscription_obj->get_date( 'next_payment' )->format( 'Y-m-d H:i:s' ) : 0,
+				];
+
+				$context['subscription_data'] = $subscription_data;
+				$context['subscription_id']   = $subscription->ID;
+				$context['user']              = WordPress::get_user_context( $user_id );
+				$context['user_billing_data'] = $user_billing_data;
+				$context['subscription']      = $subscription->ID;
+				$context['subscription_name'] = get_the_title( $product_id );
+			} elseif ( 'wc_purchases_variable_subscription' === $term ) {
+				$subscription_data = [
+					'status'            => $subscription_obj->get_status(),
+					'start_date'        => $subscription_obj->get_date_created(),
+					'next_payment_date' => $subscription_obj->get_date( 'next_payment' ) ? $subscription_obj->get_date( 'next_payment' )->format( 'Y-m-d H:i:s' ) : 0,
+				];
+
+				$context['subscription_data']            = $subscription_data;
+				$context['user']                         = WordPress::get_user_context( $user_id );
+				$context['user_billing_data']            = $user_billing_data;
+				$context['variable_subscription_option'] = $variation_id;
+				$context['variable_subscription']        = $product_id;
+				$context['subscription_name']            = $variation_name;
+				$context['subscription_id']              = $subscription->ID;
+			} elseif ( 'wc_renews_subscription_product' === $term ) {
+				$subscription_data = [
+					'status'            => $subscription_obj->get_status(),
+					'start_date'        => $subscription_obj->get_date_created(),
+					'next_payment_date' => $subscription_obj->get_date( 'next_payment' ) ? $subscription_obj->get_date( 'next_payment' )->format( 'Y-m-d H:i:s' ) : 0,
+				];
+
+				$context['subscription']      = $product_id;
+				$context['subscription_name'] = get_the_title( $product_id );
+				$context['last_order']        = $subscription_obj->get_last_order();
+				$context['subscription_data'] = $subscription_data;
+				$context['subscription_id']   = $subscription->ID;
+				$context['user']              = WordPress::get_user_context( $user_id );
+				$context['user_billing_data'] = $user_billing_data;
+			} elseif ( 'wc_subscription_product_expires' === $term ) {
+				$subscription_data = [
+					'status'            => $subscription_obj->get_status(),
+					'start_date'        => $subscription_obj->get_date_created(),
+					'next_payment_date' => $subscription_obj->get_date( 'next_payment' ) ? $subscription_obj->get_date( 'next_payment' )->format( 'Y-m-d H:i:s' ) : 0,
+				];
+
+				$context['subscription_data'] = $subscription_data;
+				$context['subscription_id']   = $subscription->ID;
+				$context['user']              = WordPress::get_user_context( $user_id );
+				$context['user_billing_data'] = $user_billing_data;
+				$context['subscription']      = $product_id;
+				$context['subscription_name'] = get_the_title( $product_id );
+			}
+
+			$context['pluggable_data'] = $context;
+			$context['response_type']  = 'live';
+		} else {
+			$sample_user = [
+				'wp_user_id'      => 1,
+				'user_login'      => 'johndoe',
+				'display_name'    => 'John Doe',
+				'user_firstname'  => 'John',
+				'user_lastname'   => 'Doe',
+				'user_email'      => 'john.doe@example.com',
+				'user_registered' => '2024-01-15 10:30:25',
+				'user_role'       => [
+					'customer',
+					'subscriber',
+				],
+			];
+
+			$sample_billing_data = [
+				'billing_first_name' => 'John',
+				'billing_last_name'  => 'Doe',
+				'billing_country'    => 'US',
+				'billing_address_1'  => '123 Main Street',
+				'billing_address_2'  => 'Apt 4B',
+				'billing_city'       => 'New York',
+				'billing_state'      => 'NY',
+				'billing_postcode'   => '10001',
+				'billing_phone'      => '+1-555-123-4567',
+				'billing_email'      => 'john.doe@example.com',
+			];
+
+			$sample_start_date = [
+				'utc_offset'    => 0,
+				'date'          => '2024-01-15 08:30:25.000000',
+				'timezone_type' => 1,
+				'timezone'      => '+00:00',
+			];
+
+			if ( 'wc_subscription_updated' === $term ) {
+				$context = [
+					'variation_id'      => 0,
+					'product_id'        => 73,
+					'subscription'      => 73,
+					'variation_name'    => 'Hi-Fi Headphones',
+					'product_name'      => 'Hi-Fi Headphones',
+					'subscription_data' => [
+						'start_date'        => $sample_start_date,
+						'next_payment_date' => '2024-12-15 08:30:25',
+					],
+					'subscription_id'   => 1234,
+					'user'              => $sample_user,
+					'user_billing_data' => $sample_billing_data,
+					'new_status'        => 'active',
+					'old_status'        => 'pending-cancel',
+					'status'            => 'wc-active',
+				];
+			} elseif ( 'wc_cancels_subscription_product' === $term ) {
+				$context = [
+					'subscription_data' => [
+						'status'     => 'cancelled',
+						'start_date' => $sample_start_date,
+					],
+					'user'              => $sample_user,
+					'user_billing_data' => $sample_billing_data,
+					'subscription_id'   => 1567,
+				];
+			} elseif ( 'wc_subscribes_product' === $term ) {
+				$context = [
+					'subscription_data' => [
+						'status'            => 'active',
+						'start_date'        => $sample_start_date,
+						'next_payment_date' => '2025-10-07 08:38:53',
+					],
+					'subscription_id'   => 1798,
+					'user'              => $sample_user,
+					'user_billing_data' => $sample_billing_data,
+					'subscription'      => 1795,
+					'subscription_name' => 'Subscription Product',
+				];
+			} elseif ( 'wc_purchases_variable_subscription' === $term ) {
+				$context = [
+					'subscription_data'            => [
+						'status'            => 'active',
+						'start_date'        => $sample_start_date,
+						'next_payment_date' => '2025-11-06 05:25:01',
+					],
+					'user'                         => $sample_user,
+					'user_billing_data'            => $sample_billing_data,
+					'variable_subscription_option' => 1803,
+					'variable_subscription'        => 1802,
+					'subscription_name'            => 'Variation test product – 1200, 10',
+					'subscription_id'              => 1836,
+				];
+			} elseif ( 'wc_renews_subscription_product' === $term ) {
+				$context = [
+					'subscription'      => 1234,
+					'subscription_name' => 'Monthly Subscription Product',
+					'last_order'        => 5678,
+					'subscription_data' => [
+						'status'            => 'active',
+						'start_date'        => $sample_start_date,
+						'next_payment_date' => '2025-11-06 08:30:25',
+					],
+					'subscription_id'   => 1567,
+					'user'              => $sample_user,
+					'user_billing_data' => $sample_billing_data,
+				];
+			} elseif ( 'wc_subscription_product_expires' === $term ) {
+				$context = [
+					'subscription_data' => [
+						'status'            => 'expired',
+						'start_date'        => $sample_start_date,
+						'next_payment_date' => '2025-01-15 08:30:25',
+					],
+					'subscription_id'   => 1890,
+					'user'              => $sample_user,
+					'user_billing_data' => $sample_billing_data,
+					'subscription'      => 1567,
+					'subscription_name' => 'Premium Subscription Product',
+				];
+			}
+			$context['pluggable_data'] = $context;
+			$context['response_type']  = 'sample';
 		}
 
 		return $context;

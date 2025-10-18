@@ -8,19 +8,19 @@ use RocketLazyLoadPlugin\Dependencies\LaunchpadOptions\Interfaces\Actions\SetInt
 
 interface SettingsInterface extends DeleteInterface, FetchInterface, SetInterface {
 
-    /**
-     * Import multiple values at once.
-     *
-     * @param array<string,mixed> $values Values to import.
-     *
-     * @return void
-     */
-    public function import(array $values);
+	/**
+	 * Import multiple values at once.
+	 *
+	 * @param array<string,mixed> $values Values to import.
+	 *
+	 * @return void
+	 */
+	public function import( array $values );
 
-    /**
-     * Export settings values.
-     *
-     * @return array<string,mixed>
-     */
-    public function dumps(): array;
+	/**
+	 * Export settings values.
+	 *
+	 * @return array<string,mixed>
+	 */
+	public function dumps(): array;
 }

@@ -5,7 +5,7 @@ Requires at least: 5.4
 License: GPL3
 Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: 7.8.5.2
+Stable tag: 7.8.5.3
 
 Lifetime SSL solution – Install free SSL certificate & enable HTTPS redirect, Advanced security, Unlock every premium feature other plugins charge for — Free.
 
@@ -27,6 +27,7 @@ https://youtu.be/jrkFwFH7r6o
 * Advanced security headers & SSL monitoring
 * Top notch one to one priority support - Live Chat, Email, Premium Support Forum
 * SSL installation help for non-cPanel sites
+* Login security via passkeys (powered by WebAuthn) - No passwords. No brute force. Log in with passkeys protected by your browser or password manager — fast, secure, and frictionless.
 * Automated daily vulnerability scanning & reporting.
 * Automated daily malware & integrity scan
 * Instant notification for threats & security issues
@@ -171,6 +172,9 @@ Security is an important subject regarding SSL/TLS certificates, of course. It i
 7. Mixed Content Scanner to identify insecure contents on HTTPS site
 
 == Changelog ==
+
+= 7.8.5.3 =
+* Setting to disable X-Powered-By header
 
 = 7.8.5.2 =
 * translation improvements

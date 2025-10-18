@@ -532,7 +532,6 @@ class Cartflows_Ca_Email_Schedule {
 				'coupon_amount'       => $amount,
 				'individual_use'      => $individual_use,
 				'product_ids'         => '',
-				'exclude_product_ids' => '',
 				'usage_limit'         => '1',
 				'usage_count'         => '0',
 				'date_expires'        => $expiry,

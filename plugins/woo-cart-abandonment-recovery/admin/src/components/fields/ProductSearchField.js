@@ -238,4 +238,3 @@ const ProductSearchField = ( {
 };
 
 export default ProductSearchField;
-

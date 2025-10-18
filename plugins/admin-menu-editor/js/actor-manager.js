@@ -31,6 +31,9 @@ class AmeBaseActor {
         }
         return null;
     }
+    getOwnCapabilities() {
+        return this.capabilities;
+    }
     static getActorSpecificity(actorId) {
         let actorType = actorId.substring(0, actorId.indexOf(':')), specificity;
         switch (actorType) {
@@ -75,6 +78,9 @@ class AmeRole extends AmeBaseActor {
         }
         return super.hasOwnCap(capability);
     }
+    getRoleName() {
+        return this.name;
+    }
 }
 class AmeUser extends AmeBaseActor {
     constructor(userLogin, displayName, capabilities, roles, isSuperAdmin = false, userId, metaCapabilities = {}) {
@@ -114,6 +120,11 @@ class AmeSuperAdmin extends AmeBaseActor {
     hasOwnCap(capability) {
         //The Super Admin has all possible capabilities except the special "do_not_allow" flag.
         return (capability !== 'do_not_allow');
+    }
+    getOwnCapabilities() {
+        //It's not meaningful to list all capabilities of the Super Admin, because they behave as if
+        //they have all capabilities including non-existent ones.
+        return null;
     }
 }
 AmeSuperAdmin.permanentActorId = 'special:super_admin';
@@ -572,8 +583,33 @@ class AmeActorManager {
     createUserFromProperties(properties) {
         return AmeUser.createFromProperties(properties);
     }
+    compareRolesForSorting(a, b) {
+        const defaultRoleOrder = AmeActorManager.defaultRoleOrder;
+        const aId = a.getId();
+        const bId = b.getId();
+        if (defaultRoleOrder.hasOwnProperty(aId) && defaultRoleOrder.hasOwnProperty(bId)) {
+            return defaultRoleOrder[aId] - defaultRoleOrder[bId];
+        }
+        else if (defaultRoleOrder.hasOwnProperty(aId)) {
+            return -1;
+        }
+        else if (defaultRoleOrder.hasOwnProperty(bId)) {
+            return 1;
+        }
+        else {
+            return a.getDisplayName().localeCompare(b.getDisplayName());
+        }
+    }
 }
 AmeActorManager._ = wsAmeLodash;
+//Sort the default roles in a fixed order, the rest alphabetically.
+AmeActorManager.defaultRoleOrder = {
+    'role:administrator': 1,
+    'role:editor': 2,
+    'role:author': 3,
+    'role:contributor': 4,
+    'role:subscriber': 5
+};
 class AmeObservableActorFeatureMap {
     constructor(initialData) {
         this.items = {};

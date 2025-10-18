@@ -486,6 +486,28 @@ class WPLE_Trait {
     }
 
     /**
+     * Disable X-Powered-By header
+     * 
+     * @since 7.8.5.3
+     */
+    public static function disable_xpoweredby_header() {
+        $rule = "Header always unset X-Powered-By" . "\n";
+        $finalrule = preg_replace( "/\n+/", "\n", $rule );
+        return $finalrule;
+    }
+
+    public static function wple_remove_xpoweredby() {
+        if ( is_writable( ABSPATH . '.htaccess' ) ) {
+            $htaccess = file_get_contents( ABSPATH . '.htaccess' );
+            $group = "/#\\s?BEGIN\\s?WP_Encryption_Disable_XPoweredBy.*?#\\s?END\\s?WP_Encryption_Disable_XPoweredBy/s";
+            if ( preg_match( $group, $htaccess ) ) {
+                $modhtaccess = preg_replace( $group, "", $htaccess );
+                file_put_contents( ABSPATH . '.htaccess', $modhtaccess );
+            }
+        }
+    }
+
+    /**
      * cPanel existence check
      * mx header support check
      *   

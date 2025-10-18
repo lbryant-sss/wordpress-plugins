@@ -37,6 +37,7 @@ const EmailTemplatesDrawer = ( { open, setOpen, template, onSave } ) => {
 		individual_use_only: false,
 		enable_email_rule_engine: false,
 		email_rule_engine: [],
+		exclude_product_ids: [],
 	} );
 
 	const [ isSubmitting, setIsSubmitting ] = useState( false );
@@ -76,6 +77,7 @@ const EmailTemplatesDrawer = ( { open, setOpen, template, onSave } ) => {
 				individual_use_only: false,
 				enable_email_rule_engine: false,
 				email_rule_engine: [],
+				exclude_product_ids: [],
 			} );
 		}
 		setErrors( {} );
@@ -210,6 +212,10 @@ const EmailTemplatesDrawer = ( { open, setOpen, template, onSave } ) => {
 		formData.append(
 			'wcf_coupon_expiry_unit',
 			formState.coupon_expiry_unit
+		);
+		formData.append(
+			'wcf_exclude_product_ids',
+			formState.exclude_product_ids
 		);
 		formData.append(
 			'wcf_use_woo_email_style',

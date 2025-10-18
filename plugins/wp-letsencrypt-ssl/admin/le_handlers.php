@@ -159,11 +159,13 @@ class WPLE_Handler {
     public function wple_intro_pricing_handler() {
         $goplan = '';
         if ( isset( $_GET['gofree'] ) ) {
+            set_transient( 'wple_plan_chosen', true, 7 * DAY_IN_SECONDS );
             update_option( 'wple_plan_choose', 1 );
             wp_redirect( admin_url( '/admin.php?page=wp_encryption' ), 302 );
             exit;
         } else {
             if ( isset( $_GET['gopro'] ) ) {
+                set_transient( 'wple_plan_chosen', true, 7 * DAY_IN_SECONDS );
                 update_option( 'wple_plan_choose', 1 );
                 if ( $_GET['gopro'] == 2 ) {
                     //unlimited
@@ -180,12 +182,14 @@ class WPLE_Handler {
                 exit;
             } else {
                 if ( isset( $_GET['gofirewall'] ) ) {
+                    set_transient( 'wple_plan_chosen', true, 7 * DAY_IN_SECONDS );
                     update_option( 'wple_plan_choose', 1 );
                     ///wp_redirect(admin_url('/admin.php?page=wp_encryption-pricing&checkout=true&plan_id=11394&plan_name=pro&billing_cycle=annual&pricing_id=11717&currency=usd'), 302);
                     wp_redirect( admin_url( '/admin.php?page=wp_encryption-pricing&checkout=true&billing_cycle_selector=responsive_list&plan_id=8210&plan_name=pro&billing_cycle=annual&pricing_id=7965&currency=usd' ), 302 );
                     exit;
                 } else {
                     if ( isset( $_GET['gositelock'] ) ) {
+                        set_transient( 'wple_plan_chosen', true, 7 * DAY_IN_SECONDS );
                         update_option( 'wple_plan_choose', 1 );
                         ///wp_redirect(admin_url('/admin.php?page=wp_encryption-pricing&checkout=true&plan_id=11394&plan_name=pro&billing_cycle=annual&pricing_id=11717&currency=usd'), 302);
                         wp_redirect( admin_url( '/admin.php?page=wp_encryption-pricing&checkout=true&billing_cycle_selector=responsive_list&plan_id=20784&plan_name=sitelock&billing_cycle=annual&currency=usd' ), 302 );

@@ -12,12 +12,12 @@
 			</div>
 			<legend style="display:inline-block">
 				<?php
-				echo wp_kses( __( 'This process improves data retrieval speed, making your site faster and more responsive for both visitors and you in the admin area. Enter the optimization date and it can be relaunched.', 'aruba-hispeed-cache' ), array( 'strong' => array(), 'br' => array() ) )
+				echo wp_kses( __( 'This process improves data retrieval speed, making your site faster and more responsive for both visitors and you in the admin area.', 'aruba-hispeed-cache' ), array( 'strong' => array(), 'br' => array() ) )
 				?>
 			</legend>
 			<fieldset >
 				<legend class="screen-reader-text">
-					<span><?php echo wp_kses( __( 'This process improves data retrieval speed, making your site faster and more responsive for both visitors and you in the admin area. Enter the optimization date and it can be relaunched.', 'aruba-hispeed-cache' ), array( 'strong' => array(), 'br' => array() ) )?></span>
+					<span><?php echo wp_kses( __( 'This process improves data retrieval speed, making your site faster and more responsive for both visitors and you in the admin area.', 'aruba-hispeed-cache' ), array( 'strong' => array(), 'br' => array() ) )?></span>
 				</legend>
 
 				<label style="display: inline-block;position:relative;cursor: default !important;" >

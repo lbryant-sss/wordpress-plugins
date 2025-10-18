@@ -80,6 +80,14 @@ class WPLE_SubAdmin extends WPLE_Admin_Page {
         );
         add_submenu_page(
             'wp_encryption',
+            'Login Security - Passkeys(PRO)',
+            __( 'Login Security - Passkeys (PRO)', 'wp-letsencrypt-ssl' ),
+            'manage_options',
+            'wp_encryption_login_security',
+            [$this, 'wple_login_security']
+        );
+        add_submenu_page(
+            'wp_encryption',
             'Download SSL Certificates',
             __( 'Download SSL Certificates', 'wp-letsencrypt-ssl' ),
             'manage_options',
@@ -164,6 +172,15 @@ class WPLE_SubAdmin extends WPLE_Admin_Page {
         // if (!wple_fs()->is__premium_only()) {
         //     add_submenu_page('wp_encryption', 'Upgrade to Premium', __('Upgrade to Premium', 'wp-letsencrypt-ssl'), 'manage_options', 'wp_encryption_upgrade', [$this, 'wple_upgrade_page']);
         // }
+        global $submenu;
+        if ( is_array( $submenu ) && array_key_exists( 'wp_encryption', $submenu ) ) {
+            foreach ( $submenu['wp_encryption'] as $key => $val ) {
+                if ( in_array( 'wp_encryption_login_security', $val ) ) {
+                    //$submenu['wp_encryption'][$key][0] = '<span style="color:#adff2f">' . esc_html($submenu['wp_encryption'][$key][0]) . '</span>';
+                    $submenu['wp_encryption'][$key][2] = 'https://wpencryption.com/pricing/?utm_source=wordpress&utm_medium=loginsecurity&utm_campaign=wpencryption';
+                }
+            }
+        }
         // global $submenu;
         // if (is_array($submenu) && array_key_exists('wp_encryption', $submenu)) {
         //     foreach ($submenu['wp_encryption'] as $key => $val) {
@@ -1288,24 +1305,19 @@ class WPLE_SubAdmin extends WPLE_Admin_Page {
     <small>' . sprintf( __( 'Scans your WordPress installation including core, themes, plugins for known vulnerabilities. By enabling this option, you grant access to list of installed plugins, themes to scan for known vulnerabilities using %sWPVulnerability API%s', 'wp-letsencrypt-ssl' ), '<a href="https://vulnerability.wpsysadmin.com/" target="_blank" rel="noreferrer nofollow">', '</a>' ) . '</small>
     <ul>';
         $vuln_headers = array(
-            __( 'Enable Vulnerability Scanner', 'wp-letsencrypt-ssl' )                    => [
+            __( 'Enable Vulnerability Scanner', 'wp-letsencrypt-ssl' )          => [
                 'key'     => 'vulnerability_scan',
                 'desc'    => __( 'Scans installed versions of your WordPress core, plugins, themes for known vulnerabilities.', 'wp-letsencrypt-ssl' ),
                 'premium' => 0,
             ],
-            __( 'Enable Daily Scan (Premium)', 'wp-letsencrypt-ssl' )                     => [
+            __( 'Enable Daily Scan (Premium)', 'wp-letsencrypt-ssl' )           => [
                 'key'     => 'daily_vulnerability_scan',
                 'desc'    => __( 'Automatically Scans installed versions of your WordPress core, plugins, themes for known vulnerabilities everyday.', 'wp-letsencrypt-ssl' ),
                 'premium' => 1,
             ],
-            __( 'Enable Instant Notification (Premium)', 'wp-letsencrypt-ssl' )           => [
+            __( 'Enable Instant Notification (Premium)', 'wp-letsencrypt-ssl' ) => [
                 'key'     => 'notify_vulnerability_scan',
                 'desc'    => __( 'Immediately notifies you via email / admin notice when a medium+ vulnerability is found.', 'wp-letsencrypt-ssl' ),
-                'premium' => 1,
-            ],
-            __( 'Enable Automatic Vulnerability Fixing (Premium)', 'wp-letsencrypt-ssl' ) => [
-                'key'     => 'autofix_vulnerability_scan',
-                'desc'    => __( 'Automatically update vulnerable plugin, theme, core as soon as updated patch is found', 'wp-letsencrypt-ssl' ),
                 'premium' => 1,
             ],
         );
@@ -1406,7 +1418,49 @@ class WPLE_SubAdmin extends WPLE_Admin_Page {
     <h2>' . esc_html__( 'Security', 'wp-letsencrypt-ssl' ) . '</h2>
     ' . $this->wple_security_settings() . '
     </div>';
-        $security_actions = array(array('Rename default database prefix of wp_', 'WordPress database tables use wp_ prefix by default. Rename it to random prefix to further enhance database security.', 'rename_db_prefix'), array('User with username "admin" exists on site', 'Having "admin" user on site is first target for attackers to perform bruteforce / password guessing attacks. Rename username to something else.', 'rename_admin'), array('One of the administrator have same username & display name', 'While having username as display name, Attackers already know your login username and can perform bruteforce / password guessing attacks. Edit profile to change display name different than login username.', 'rename_displayname'));
+        $security_actions = array('a');
+        $actions_ul = '';
+        if ( empty( $security_actions ) ) {
+            $actions_ul = '<h3>' . esc_html__( 'All good!. No actions required at this moment.', 'wp-letsencrypt-ssl' ) . '</h3>';
+        } else {
+            $actions_ul .= '<ul><li>
+                <span>
+                <h4>Act before attackers do. Automatically patch vulnerable WordPress core, plugins, and themes based on severity — the moment a threat is detected.</h4>
+                </span>
+                <button class="wple-actions">Enable</button>
+                </li>
+                <li>
+                <span>
+                <h4>Choose the minimum severity to auto-update</h4>
+                </span>
+                <span class="wple-actions"><select><option value="">High-risk</option><option value="">Medium-risk</option><option value="">Low-risk</option></select></span>
+                </li>
+                <li>
+                <span>
+                <h4>Notify via email when no patch/update is available even after a day of vulnerability detection</h4>
+                </span>
+                <button class="wple-actions">Enable</button>
+                </li></ul>
+            <span class="wple-premium-actions">
+            <span>
+            <p>' . esc_html__( 'Stay ahead of threats. Set automated updates by severity to instantly secure WordPress core, plugins, and themes when vulnerabilities emerge.', 'wp-letsencrypt-ssl' ) . '</p>
+            <a href="https://wpencryption.com/?utm_source=wordpress&utm_medium=vulnmeasures&utm_campaign=wpencryption">' . esc_html__( 'Go Pro', 'wp-letsencrypt-ssl' ) . '</a>
+            </span>
+            </span>';
+        }
+        $html .= '<div class="wple-ssl-settings wple-actions wple-measures" data-update="' . wp_create_nonce( 'wplesettingsupdate' ) . '">
+      <h2>' . esc_html__( 'Vulnerability Measures', 'wp-letsencrypt-ssl' ) . '</h2>
+      <div id="wple-sec-actions">
+      ' . $actions_ul . '    
+      </div>
+    </div>
+    ';
+        $security_actions = array(
+            array('Change location of debug.log file', "The debug.log file records PHP errors, warnings, and notices generated by WordPress core, plugins, or themes. It's part of WordPress's built-in debugging system.", 'debug_log_location'),
+            array('Rename default database prefix of wp_', 'WordPress database tables use wp_ prefix by default. Rename it to random prefix to further enhance database security.', 'rename_db_prefix'),
+            array('User with username "admin" exists on site', 'Having "admin" user on site is first target for attackers to perform bruteforce / password guessing attacks. Rename username to something else.', 'rename_admin'),
+            array('One of the administrator have same username & display name', 'While having username as display name, Attackers already know your login username and can perform bruteforce / password guessing attacks. Edit profile to change display name different than login username.', 'rename_displayname')
+        );
         $actions_ul = '';
         if ( empty( $security_actions ) ) {
             $actions_ul = '<h3>' . esc_html__( 'All good!. No actions required at this moment.', 'wp-letsencrypt-ssl' ) . '</h3>';
@@ -1424,13 +1478,13 @@ class WPLE_SubAdmin extends WPLE_Admin_Page {
             $actions_ul .= '</ul>
       <span class="wple-premium-actions">
       <span>
-      <p>' . esc_html__( 'Monitor important actions required to safeguard your site with WP Encryption Pro.', 'wp-letsencrypt-ssl' ) . '</p>
-      <a href="' . admin_url( 'admin.php?page=wp_encryption-pricing' ) . '">' . esc_html__( 'Go Pro', 'wp-letsencrypt-ssl' ) . '</a>
+      <p>' . esc_html__( 'Fortify your site with enterprise-grade security features that inspire trust and repel threats.', 'wp-letsencrypt-ssl' ) . '</p>
+      <a href="https://wpencryption.com/?utm_source=wordpress&utm_medium=advancedsecurity&utm_campaign=wpencryption">' . esc_html__( 'Go Pro', 'wp-letsencrypt-ssl' ) . '</a>
       </span>
       </span>';
         }
-        $html .= '<div class="wple-ssl-settings wple-actions" data-update="' . wp_create_nonce( 'wplesettingsupdate' ) . '">
-      <h2>' . esc_html__( 'Actions Needed', 'wp-letsencrypt-ssl' ) . '</h2>
+        $html .= '<div class="wple-ssl-settings wple-actions wple-advancedsecurity" data-update="' . wp_create_nonce( 'wplesettingsupdate' ) . '">
+      <h2>' . esc_html__( 'Advanced Security', 'wp-letsencrypt-ssl' ) . '</h2>
       <div id="wple-sec-actions">
       ' . $actions_ul . '    
       </div>
@@ -1479,6 +1533,10 @@ class WPLE_SubAdmin extends WPLE_Admin_Page {
             'deny_php_uploads'          => [
                 'label' => __( 'Deny php execution in uploads directory', 'wp-letsencrypt-ssl' ),
                 'desc'  => __( 'Deny execution of any php files inside wp-content/uploads/ directory which is meant for images & files.', 'wp-letsencrypt-ssl' ),
+            ],
+            'disable_poweredby'         => [
+                'label' => __( 'Disable X-Powered-By header', 'wp-letsencrypt-ssl' ),
+                'desc'  => __( 'Remove the X-Powered-By header from HTTP responses to prevent information disclosure.', 'wp-letsencrypt-ssl' ),
             ],
         );
         $output = '<form id="wple-security-settings" data-update="' . wp_create_nonce( 'wple_security' ) . '">
@@ -1539,6 +1597,10 @@ class WPLE_SubAdmin extends WPLE_Admin_Page {
                     } else {
                         if ( $key == 'disable_directory_listing' ) {
                             $security_class->wple_disable_directory_listing( true );
+                        } else {
+                            if ( $key == 'disable_poweredby' ) {
+                                $security_class->wple_disable_x_poweredby_header( true );
+                            }
                         }
                     }
                 }
@@ -1557,6 +1619,9 @@ class WPLE_SubAdmin extends WPLE_Admin_Page {
         }
         if ( in_array( 'disable_directory_listing', $prevopts ) && !in_array( 'disable_directory_listing', $save ) ) {
             $security_class->wple_disable_directory_listing( false );
+        }
+        if ( in_array( 'disable_poweredby', $prevopts ) && !in_array( 'disable_poweredby', $save ) ) {
+            $security_class->wple_disable_x_poweredby_header( false );
         }
         update_option( 'wple_security_settings', $save );
         echo 1;

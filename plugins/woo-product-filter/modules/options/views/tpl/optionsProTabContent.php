@@ -2,14 +2,12 @@
 /**
  * Product Filter by WBW - Options Pro Tab Content
  *
- * @version 2.9.7
+ * @version 3.0.0
  *
  * @author  woobewoo
  */
 
 defined( 'ABSPATH' ) || exit;
-
-$urlPath = 'https://woobewoo.com/product/woocommerce-filter';
 
 ?>
 <section class="wpf-gopro wpf-gopro-wrapper">
@@ -43,7 +41,7 @@ $urlPath = 'https://woobewoo.com/product/woocommerce-filter';
 						<?php esc_html_e('1 Year of Support', 'woo-product-filter'); ?>
 					</div>
 					<div class="wpf-gopro-desc wpf-gopro-buy">
-						<a class="wpf-gopro-button button" target="_blank" href="https://woobewoo.com/product/woocommerce-filter/?attribute_pa_licence-type=unlimited&variation_id=2622&add-to-cart=417" target="_blank">
+						<a class="wpf-gopro-button button" target="_blank" href="https://woobewoo.com/?variation_id=2622&add-to-cart=417" target="_blank">
 							<?php esc_html_e('Buy Now', 'woo-product-filter'); ?>
 						</a>
 					</div>
@@ -68,7 +66,7 @@ $urlPath = 'https://woobewoo.com/product/woocommerce-filter';
 						<?php esc_html_e('1 Year of Support', 'woo-product-filter'); ?>
 					</div>
 					<div class="wpf-gopro-desc wpf-gopro-buy">
-						<a class="wpf-gopro-button button" target="_blank" href="https://woobewoo.com/product/woocommerce-filter/?attribute_pa_licence-type=up-to-five-sites&variation_id=2621&add-to-cart=417" target="_blank">
+						<a class="wpf-gopro-button button" target="_blank" href="https://woobewoo.com/?variation_id=2621&add-to-cart=417" target="_blank">
 							<?php esc_html_e('Buy Now', 'woo-product-filter'); ?>
 						</a>
 					</div>
@@ -93,7 +91,7 @@ $urlPath = 'https://woobewoo.com/product/woocommerce-filter';
 						<?php esc_html_e('1 Year of Support', 'woo-product-filter'); ?>
 					</div>
 					<div class="wpf-gopro-desc wpf-gopro-buy">
-						<a class="wpf-gopro-button button" target="_blank" href="https://woobewoo.com/product/woocommerce-filter/?attribute_pa_licence-type=one-site&variation_id=2620&add-to-cart=417" target="_blank">
+						<a class="wpf-gopro-button button" target="_blank" href="https://woobewoo.com/?variation_id=2620&add-to-cart=417" target="_blank">
 							<?php esc_html_e('Buy Now', 'woo-product-filter'); ?>
 						</a>
 					</div>
@@ -119,7 +117,7 @@ $urlPath = 'https://woobewoo.com/product/woocommerce-filter';
 						<?php esc_html_e('Lifetime Support', 'woo-product-filter'); ?>
 					</div>
 					<div class="wpf-gopro-desc wpf-gopro-buy">
-						<a class="wpf-gopro-button button" target="_blank" href="https://woobewoo.com/product/woocommerce-filter/?attribute_pa_licence-type=unlimited-lifetime&variation_id=9296&add-to-cart=417" target="_blank">
+						<a class="wpf-gopro-button button" target="_blank" href="https://woobewoo.com/?variation_id=9296&add-to-cart=417" target="_blank">
 							<?php esc_html_e('Buy Now', 'woo-product-filter'); ?>
 						</a>
 					</div>
@@ -143,7 +141,7 @@ $urlPath = 'https://woobewoo.com/product/woocommerce-filter';
 						<?php esc_html_e('Lifetime Support', 'woo-product-filter'); ?>
 					</div>
 					<div class="wpf-gopro-desc wpf-gopro-buy">
-						<a class="wpf-gopro-button button" target="_blank" href="https://woobewoo.com/product/woocommerce-filter/?attribute_pa_licence-type=up-to-five-sites-lifetime&variation_id=9406&add-to-cart=417" target="_blank">
+						<a class="wpf-gopro-button button" target="_blank" href="https://woobewoo.com/?variation_id=9406&add-to-cart=417" target="_blank">
 							<?php esc_html_e('Buy Now', 'woo-product-filter'); ?>
 						</a>
 					</div>
@@ -167,7 +165,7 @@ $urlPath = 'https://woobewoo.com/product/woocommerce-filter';
 						<?php esc_html_e('Lifetime Support', 'woo-product-filter'); ?>
 					</div>
 					<div class="wpf-gopro-desc wpf-gopro-buy">
-						<a class="wpf-gopro-button button" target="_blank" href="https://woobewoo.com/product/woocommerce-filter/?attribute_pa_licence-type=one-site-lifetime&variation_id=9950&add-to-cart=417" target="_blank">
+						<a class="wpf-gopro-button button" target="_blank" href="https://woobewoo.com/?variation_id=9950&add-to-cart=417" target="_blank">
 							<?php esc_html_e('Buy Now', 'woo-product-filter'); ?>
 						</a>
 					</div>
@@ -213,7 +211,7 @@ $urlPath = 'https://woobewoo.com/product/woocommerce-filter';
 						<?php esc_html_e('1 Year of Support', 'woo-product-filter'); ?>
 					</div>
 					<div class="wpf-gopro-desc wpf-gopro-buy">
-						<a class="wpf-gopro-button button" target="_blank" href="https://woobewoo.com/product/woocommerce-filter/?add-to-cart=6535" target="_blank">
+						<a class="wpf-gopro-button button" target="_blank" href="https://woobewoo.com/?add-to-cart=6535" target="_blank">
 							<?php esc_html_e('Buy Now', 'woo-product-filter'); ?>
 						</a>
 					</div>
@@ -241,7 +239,7 @@ $urlPath = 'https://woobewoo.com/product/woocommerce-filter';
 						<?php esc_html_e('1 Year of Support', 'woo-product-filter'); ?>
 					</div>
 					<div class="wpf-gopro-desc wpf-gopro-buy">
-						<a class="wpf-gopro-button button" target="_blank" href="https://woobewoo.com/product/woocommerce-filter/?add-to-cart=6534" target="_blank">
+						<a class="wpf-gopro-button button" target="_blank" href="https://woobewoo.com/?add-to-cart=6534" target="_blank">
 							<?php esc_html_e('Buy Now', 'woo-product-filter'); ?>
 						</a>
 					</div>
@@ -269,7 +267,7 @@ $urlPath = 'https://woobewoo.com/product/woocommerce-filter';
 						<?php esc_html_e('1 Year of Support', 'woo-product-filter'); ?>
 					</div>
 					<div class="wpf-gopro-desc wpf-gopro-buy">
-						<a class="wpf-gopro-button button" target="_blank" href="https://woobewoo.com/product/woocommerce-filter/?add-to-cart=6533" target="_blank">
+						<a class="wpf-gopro-button button" target="_blank" href="https://woobewoo.com/?add-to-cart=6533" target="_blank">
 							<?php esc_html_e('Buy Now', 'woo-product-filter'); ?>
 						</a>
 					</div>
@@ -298,7 +296,7 @@ $urlPath = 'https://woobewoo.com/product/woocommerce-filter';
 						<?php esc_html_e('Lifetime Support', 'woo-product-filter'); ?>
 					</div>
 					<div class="wpf-gopro-desc wpf-gopro-buy">
-						<a class="wpf-gopro-button button" target="_blank" href="https://woobewoo.com/product/woocommerce-filter/?add-to-cart=9947" target="_blank">
+						<a class="wpf-gopro-button button" target="_blank" href="https://woobewoo.com/?add-to-cart=9947" target="_blank">
 							<?php esc_html_e('Buy Now', 'woo-product-filter'); ?>
 						</a>
 					</div>
@@ -325,7 +323,7 @@ $urlPath = 'https://woobewoo.com/product/woocommerce-filter';
 						<?php esc_html_e('Lifetime Support', 'woo-product-filter'); ?>
 					</div>
 					<div class="wpf-gopro-desc wpf-gopro-buy">
-						<a class="wpf-gopro-button button" target="_blank" href="https://woobewoo.com/product/woocommerce-filter/?add-to-cart=9948" target="_blank">
+						<a class="wpf-gopro-button button" target="_blank" href="https://woobewoo.com/?add-to-cart=9948" target="_blank">
 							<?php esc_html_e('Buy Now', 'woo-product-filter'); ?>
 						</a>
 					</div>
@@ -352,7 +350,7 @@ $urlPath = 'https://woobewoo.com/product/woocommerce-filter';
 						<?php esc_html_e('Lifetime Support', 'woo-product-filter'); ?>
 					</div>
 					<div class="wpf-gopro-desc wpf-gopro-buy">
-						<a class="wpf-gopro-button button" target="_blank" href="https://woobewoo.com/product/woocommerce-filter/?add-to-cart=9949" target="_blank">
+						<a class="wpf-gopro-button button" target="_blank" href="https://woobewoo.com/?add-to-cart=9949" target="_blank">
 							<?php esc_html_e('Buy Now', 'woo-product-filter'); ?>
 						</a>
 					</div>

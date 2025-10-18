@@ -592,7 +592,7 @@ class Cloud extends Base {
 		self::debug( 'Parsing echo', $_POST );
 
 		// phpcs:ignore WordPress.Security.NonceVerification.Missing
-		$ts = !empty( $_POST['wpapi_ts'] ) ? (int) sanitize_text_field( wp_unslash( $_POST['wpapi_ts'] ) ) : 0;
+		$ts = !empty( $_POST['wpapi_ts'] ) ? sanitize_text_field( wp_unslash( $_POST['wpapi_ts'] ) ) : '';
 		// phpcs:ignore WordPress.Security.NonceVerification.Missing
 		$sig = !empty( $_POST['wpapi_signature_b64'] ) ? sanitize_text_field( wp_unslash( $_POST['wpapi_signature_b64'] ) ) : '';
 
@@ -634,7 +634,7 @@ class Cloud extends Base {
 				return false;
 			}
 			$signature = base64_decode( $signature_b64 ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_decode
-			$is_valid  = sodium_crypto_sign_verify_detached( $signature, $data, $cloud_pk );
+			$is_valid  = sodium_crypto_sign_verify_detached( $signature, (string) $data, $cloud_pk );
 		} catch ( \SodiumException $e ) {
 			self::debugErr( 'Decryption failed: ' . esc_html( $e->getMessage() ) );
 			return false;
@@ -2079,7 +2079,6 @@ class Cloud extends Base {
 	 * @since  3.0
 	 */
 	public function is_from_cloud() {
-		// return true;
 		$check_point = time() - 86400 * self::TTL_IPS;
 		if ( empty( $this->_summary['ips'] ) || empty( $this->_summary['ips_ts'] ) || $this->_summary['ips_ts'] < $check_point ) {
 			self::debug( 'Force updating ip as ips_ts is older than ' . self::TTL_IPS . ' days' );

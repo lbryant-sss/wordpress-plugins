@@ -11,4 +11,13 @@ use RocketLazyLoadPlugin\Dependencies\LaunchpadOptions\Interfaces\Actions\SetInt
 /**
  * Define mandatory methods to implement when using this package
  */
-interface OptionsInterface extends  FetchPrefixInterface, DeleteInterface, FetchInterface, SetInterface {}
+interface OptionsInterface extends FetchPrefixInterface, DeleteInterface, FetchInterface, SetInterface {
+	/**
+	 * Gets the option name used to store the option in the WordPress database.
+	 *
+	 * @param string $name Unprefixed name of the option.
+	 * @deprecated Only for WP Rocket backward compatibility.
+	 * @return string
+	 */
+	public function get_option_name( string $name ): string;
+}

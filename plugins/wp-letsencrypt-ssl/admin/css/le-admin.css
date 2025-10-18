@@ -3366,6 +3366,18 @@ div#wple-setup-wizard {
   margin-bottom: 100px;
 }
 
+.wple-measures span.wple-premium-actions {
+  padding-top: 60px;
+}
+
+#wple-ssl-health .wple-ssl-settings.wple-actions.wple-advancedsecurity {
+  width: calc(100% - 100px) !important;
+}
+
+form#wple-security-settings li .dashicons {
+  margin-top: 5px;
+}
+
 @media (max-width: 991px) {
   div#wple-ssl-health > div {
     width: auto !important;

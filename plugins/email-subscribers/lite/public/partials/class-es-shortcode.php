@@ -394,23 +394,7 @@ class ES_Shortcode {
 			$enable_ajax_form_submission = get_option( 'ig_es_enable_ajax_form_submission', 'yes' );
 			$extra_form_class            = ( 'yes' == $enable_ajax_form_submission ) ? ' es_ajax_subscription_form' : '';
 
-			$form_style = '';
-			$styles = ! empty( $data['styles'] ) ? $data['styles'] : array();
-			if ( ! empty( $styles ) && is_array( $styles ) ) {
-				if ( ! empty( $styles['form_bg_color'] ) ) {
-					$form_style .= 'background: transparent !important;';
-				}
-			}
-
-			if ( ! empty( $styles['custom_css'] ) ) {
-				$form_header_html .= '<style>' . esc_html( wp_strip_all_tags( $styles['custom_css'] ) ) . '</style>';
-			}
-
-			$form_header_html .= '<form action="' . $form_action_url . '#es_form_' . self::$form_identifier . '" method="post" class="es_subscription_form es_shortcode_form ' . esc_attr( $extra_form_class ) . '" id="es_subscription_form_' . $unique_id . '" data-source="ig-es" data-form-id="' . $form_id . '"';
-			if ( $form_style ) {
-				$form_header_html .= ' style="' . esc_attr( $form_style ) . '"';
-			}
-			$form_header_html .= '>';
+			$form_header_html .= '<form action="' . $form_action_url . '#es_form_' . self::$form_identifier . '" method="post" class="es_subscription_form es_shortcode_form ' . esc_attr( $extra_form_class ) . '" id="es_subscription_form_' . $unique_id . '" data-source="ig-es" data-form-id="' . $form_id . '">';
 				
 			if ( '' != $desc ) {
 				$form_header_html .= '<div class="es_caption">' . $desc . '</div>';
@@ -486,29 +470,8 @@ class ES_Shortcode {
 		
 		$form_data_html .= '<span class="es_subscription_message ' . $message_class . '" id="es_subscription_message_' . $unique_id . '" role="alert" aria-live="assertive">' . $message_text . '</span>';
 
-		// Apply wrapper styles for classic forms
-		$classic_wrapper_style = '';
-		$styles = ! empty( $data['styles'] ) ? $data['styles'] : array();
-		$settings = ! empty( $data['settings'] ) ? $data['settings'] : array();
-		if ( ! empty( $styles ) && is_array( $styles ) ) {
-			// Only apply custom background color for basic styles like 'inherit' or 'theme-styling'
-			$form_style_setting = ! empty( $settings['form_style'] ) ? $settings['form_style'] : 'inherit';
-			$should_apply_custom_bg = in_array( $form_style_setting, array( 'inherit', 'theme-styling' ), true );
-			
-			if ( ! empty( $styles['form_bg_color'] ) && $should_apply_custom_bg ) {
-				$classic_wrapper_style .= 'background-color: ' . esc_attr( $styles['form_bg_color'] ) . ' !important;';
-			}
-			if ( ! empty( $styles['form_width'] ) ) {
-				$classic_wrapper_style .= 'max-width: ' . esc_attr( $styles['form_width'] ) . 'px;';
-			}
-		}
-
 		// Wrap form html inside a container.
-		$form_data_html = '<div class="emaillist" id="es_form_' . self::$form_identifier . '"';
-		if ( $classic_wrapper_style ) {
-			$form_data_html .= ' style="' . esc_attr( $classic_wrapper_style ) . '"';
-		}
-		$form_data_html .= '>' . $form_data_html . '</div>';
+		$form_data_html = '<div class="emaillist" id="es_form_' . self::$form_identifier . '">' . $form_data_html . '</div>';
 		$form_data_html = ES_Common::strip_js_code($form_data_html);
 		$form = str_replace(['`', '´','&#096;'], '', $form_data_html);
 

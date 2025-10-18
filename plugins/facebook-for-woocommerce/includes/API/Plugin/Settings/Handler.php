@@ -264,11 +264,6 @@ class Handler extends AbstractRESTEndpoint {
 		foreach ( $options as $option ) {
 			delete_option( $option );
 		}
-
-		// Clear facebook_config option to stop pixel tracking and prevent stale data
-		if ( class_exists( 'WC_Facebookcommerce_Pixel' ) ) {
-			delete_option( \WC_Facebookcommerce_Pixel::SETTINGS_KEY );
-		}
 	}
 
 	/**

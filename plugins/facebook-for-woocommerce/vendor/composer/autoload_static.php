@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitb893d11fc146c4af223557f99ee67187
+class ComposerStaticInit4e80c194ac3fde3776fb76150346aee6
 {
     public static $prefixLengthsPsr4 = array (
         'W' => 
@@ -15,7 +15,6 @@ class ComposerStaticInitb893d11fc146c4af223557f99ee67187
         'F' => 
         array (
             'Firebase\\JWT\\' => 13,
-            'FacebookAds\\' => 12,
         ),
         'C' => 
         array (
@@ -44,10 +43,6 @@ class ComposerStaticInitb893d11fc146c4af223557f99ee67187
         'Firebase\\JWT\\' => 
         array (
             0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
-        ),
-        'FacebookAds\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/facebook/capi-param-builder-php/php/capi-param-builder/src',
         ),
         'Composer\\Installers\\' => 
         array (
@@ -180,8 +175,6 @@ class ComposerStaticInitb893d11fc146c4af223557f99ee67187
         'Composer\\Installers\\YawikInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/YawikInstaller.php',
         'Composer\\Installers\\ZendInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/ZendInstaller.php',
         'Composer\\Installers\\ZikulaInstaller' => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers/ZikulaInstaller.php',
-        'FacebookAds\\ETLDPlus1Resolver' => __DIR__ . '/..' . '/facebook/capi-param-builder-php/php/capi-param-builder/src/ETLDPlus1Resolver.php',
-        'FacebookAds\\ParamBuilder' => __DIR__ . '/..' . '/facebook/capi-param-builder-php/php/capi-param-builder/src/ParamBuilder.php',
         'Firebase\\JWT\\BeforeValidException' => __DIR__ . '/..' . '/firebase/php-jwt/src/BeforeValidException.php',
         'Firebase\\JWT\\CachedKeySet' => __DIR__ . '/..' . '/firebase/php-jwt/src/CachedKeySet.php',
         'Firebase\\JWT\\ExpiredException' => __DIR__ . '/..' . '/firebase/php-jwt/src/ExpiredException.php',
@@ -391,9 +384,9 @@ class ComposerStaticInitb893d11fc146c4af223557f99ee67187
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitb893d11fc146c4af223557f99ee67187::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitb893d11fc146c4af223557f99ee67187::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitb893d11fc146c4af223557f99ee67187::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit4e80c194ac3fde3776fb76150346aee6::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit4e80c194ac3fde3776fb76150346aee6::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit4e80c194ac3fde3776fb76150346aee6::$classMap;
 
         }, null, ClassLoader::class);
     }

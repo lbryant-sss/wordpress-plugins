@@ -134,4 +134,3 @@ const ProductReport = ( { dashboardData, isDashboardLoading } ) => {
 };
 
 export default ProductReport;
-

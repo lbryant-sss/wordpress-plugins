@@ -1,4 +1,4 @@
-=== Elementor Addon Elements ===
+=== Addon Elements for Elementor (formerly Elementor Addon Elements) ===
 Contributors: wpvibes, hardiksharma, webtechpooja, priyanshii5
 Tags: elementor, addons, elements, elementor addon, elementor widget, page-builder, WordPress page builder, elementor extensions, elementor page builder
 Requires at least: 5.0
@@ -8,7 +8,7 @@ Stable tag: 1.14.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Elementor Addon Elements comes with 40+ widgets and extensions to extend the power of Elementor Page Builder.
+Addon Elements for Elementor (formerly Elementor Addon Elements) comes with 40+ widgets and extensions to extend the power of Elementor Page Builder.
 
 == Description ==
 

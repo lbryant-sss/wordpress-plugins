@@ -3,7 +3,7 @@ Contributors: sujaypawar, wpcrafter
 Tags: woocommerce, cart abandonment, cart recovery
 Requires at least: 5.4
 Tested up to: 6.8
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -163,6 +163,13 @@ You can report the issue through our [Bug Bounty Program](https://brainstormforc
 4. General settings for Email, Webhook (Coupon Code), GDPR
 
 == Changelog ==
+
+= Version 2.0.2 - Friday, 17th October 2025 =
+- Fix: Users with the Shop Manager role were unable to delete records from Follow-up Reports.
+- Fix: UI toggle for switching to the older version was not functioning as expected.
+- Fix: Resolved a fatal error caused by a call to an undefined utils function when enabling webhook settings in certain cases.
+- Fix: Improved toggle field logic to ensure correct display and saving of values when enabling or disabling settings.
+- Fix: Resolved an issue where the GDPR opt-out link below the email field was unclickable.
 
 = Version 2.0.1 - Tuesday, 30th September 2025 =
 - Improvement: Added future compatibility support for the Pro plugin.

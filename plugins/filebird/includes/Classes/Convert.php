@@ -102,6 +102,13 @@ class Convert {
 
 	public function ajaxWipeOldData() {
 		global $wpdb;
+		if( !current_user_can( 'manage_options' ) ) {
+			wp_send_json_error(
+				array(
+					'mess' => __( 'You are not authorized to clear all data.', 'filebird' ),
+				)
+			);
+		}
 		$queries = array(
 			'DELETE FROM ' . $wpdb->prefix . 'termmeta WHERE `term_id` IN (SELECT `term_id` FROM ' . $wpdb->prefix . 'term_taxonomy WHERE `taxonomy` = %s)',
 			'DELETE FROM ' . $wpdb->prefix . 'term_relationships WHERE `term_taxonomy_id` IN (SELECT `term_taxonomy_id` FROM ' . $wpdb->prefix . 'term_taxonomy WHERE `taxonomy` = %s)',
@@ -120,6 +127,13 @@ class Convert {
 	}
 	public function ajaxClearAllData() {
 		global $wpdb;
+		if( !current_user_can( 'manage_options' ) ) {
+			wp_send_json_error(
+				array(
+					'mess' => __( 'You are not authorized to clear all data.', 'filebird' ),
+				)
+			);
+		}
 		$table_name = $wpdb->prefix . 'fbv';
 		if ( $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $wpdb->esc_like( $table_name ) ) ) == $table_name ) {
 			FolderModel::deleteAll();

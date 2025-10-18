@@ -53,11 +53,11 @@ Please create a topic in the "Support" section with any ideas or suggestions for
 == Installation ==
 
 = Automatic Installation =
-Go to WordPress dashboard, click  Plugins / Add New  , type 'order export lite' and hit Enter.
+Go to WordPress dashboard, click  Plugins / Add New  , type 'Advanced Order Export For WooCommerce' and hit Enter.
 Install and activate plugin, visit WooCommerce > Export Orders.
 
 = Manual Installation =
-[Please, visit the link and follow the instructions](http://codex.wordpress.org/Managing_Plugins#Manual_Plugin_Installation)
+[Please, visit the link and follow the instructions](https://wordpress.org/documentation/article/manage-plugins/#manual-plugin-installation-1)
 
 == Frequently Asked Questions ==
 

@@ -49,4 +49,3 @@ const EmailTemplatesDrawerBody = ( { formState, handleChange, errors } ) => {
 };
 
 export default EmailTemplatesDrawerBody;
-

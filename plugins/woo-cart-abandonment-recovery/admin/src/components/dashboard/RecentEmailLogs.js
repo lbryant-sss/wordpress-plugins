@@ -131,4 +131,3 @@ const RecentEmailLogs = ( { dashboardData, isDashboardLoading } ) => {
 };
 
 export default RecentEmailLogs;
-

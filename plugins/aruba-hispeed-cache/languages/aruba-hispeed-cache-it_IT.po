@@ -138,8 +138,8 @@ msgstr " Stato:"
 
 #: admin/pages/views/partials/sections/section-ahsc-db-optimizations.php:15
 #: admin/pages/views/partials/sections/section-ahsc-db-optimizations.php:20
-msgid "This process improves data retrieval speed, making your site faster and more responsive for both visitors and you in the admin area. Enter the optimization date and it can be relaunched."
-msgstr "Questo processo migliora la velocità di recupero dei dati, rendendo il tuo sito più veloce e reattivo sia per i visitatori che per te nell'area di amministrazione. Inserisci la data di ottimizzazione e il sito potrà essere rilanciato."
+msgid "This process improves data retrieval speed, making your site faster and more responsive for both visitors and you in the admin area."
+msgstr "Questo processo migliora la velocità di recupero dei dati, rendendo il tuo sito più veloce e reattivo sia per i visitatori che per te nell'area di amministrazione."
 
 #: admin/pages/views/partials/sections/section-ahsc-db-optimizations.php:11
 msgid "Database table optimization"

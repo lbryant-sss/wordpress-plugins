@@ -23,4 +23,3 @@ const ProUpgradeSettingsMsg = ( { description, buttonText, buttonAction } ) => {
 };
 
 export default ProUpgradeSettingsMsg;
-

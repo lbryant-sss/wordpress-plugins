@@ -218,7 +218,7 @@ if ( ! class_exists( 'Cartflows_Ca_Bsf_Analytics' ) ) :
 		 * @return bool True if weekly report emails are enabled.
 		 */
 		public function get_weekly_report_email_status() {
-			$email_admin_on_recovery = wcf_ca()->utils->wcar_get_option( 'wcf_ca_send_recovery_report_emails_to_admin', 'on' );
+			$email_admin_on_recovery = get_option( 'wcf_ca_send_recovery_report_emails_to_admin', 'on' );
 
 			return 'on' === $email_admin_on_recovery;
 		}
@@ -252,8 +252,8 @@ if ( ! class_exists( 'Cartflows_Ca_Bsf_Analytics' ) ) :
 		 * @return bool True if webhook is enabled.
 		 */
 		public function get_webhook_enabled_status() {
-			$zapier_status = wcf_ca()->utils->wcar_get_option( 'wcf_ca_zapier_tracking_status' );
-			$webhook_url   = wcf_ca()->utils->wcar_get_option( 'wcf_ca_zapier_cart_abandoned_webhook' );
+			$zapier_status = get_option( 'wcf_ca_zapier_tracking_status' );
+			$webhook_url   = get_option( 'wcf_ca_zapier_cart_abandoned_webhook' );
 
 			return 'on' === $zapier_status && ! empty( $webhook_url );
 		}

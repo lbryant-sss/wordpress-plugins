@@ -23,6 +23,8 @@ interface IAmeActor {
 	isUser(): this is IAmeUser;
 
 	hasOwnCap(capability: string): boolean | null;
+
+	getOwnCapabilities(): CapabilityMap | null;
 }
 
 interface IAmeUser extends IAmeActor {
@@ -35,6 +37,10 @@ interface IAmeUser extends IAmeActor {
 	 * Note that this returns role IDs, not role objects or actor IDs.
 	 */
 	getRoleIds(): string[];
+}
+
+interface IAmeRole extends IAmeActor {
+	getRoleName(): string;
 }
 
 abstract class AmeBaseActor implements IAmeActor {
@@ -76,6 +82,10 @@ abstract class AmeBaseActor implements IAmeActor {
 		return null;
 	}
 
+	getOwnCapabilities(): CapabilityMap | null {
+		return this.capabilities;
+	}
+
 	static getActorSpecificity(actorId: string) {
 		let actorType = actorId.substring(0, actorId.indexOf(':')),
 			specificity;
@@ -112,7 +122,7 @@ abstract class AmeBaseActor implements IAmeActor {
 	}
 }
 
-class AmeRole extends AmeBaseActor {
+class AmeRole extends AmeBaseActor implements IAmeRole {
 	name: string;
 
 	constructor(
@@ -133,6 +143,10 @@ class AmeRole extends AmeBaseActor {
 			return true;
 		}
 		return super.hasOwnCap(capability);
+	}
+
+	getRoleName(): string {
+		return this.name;
 	}
 }
 
@@ -215,6 +229,12 @@ class AmeSuperAdmin extends AmeBaseActor {
 	hasOwnCap(capability: string): boolean {
 		//The Super Admin has all possible capabilities except the special "do_not_allow" flag.
 		return (capability !== 'do_not_allow');
+	}
+
+	getOwnCapabilities(): CapabilityMap | null {
+		//It's not meaningful to list all capabilities of the Super Admin, because they behave as if
+		//they have all capabilities including non-existent ones.
+		return null;
 	}
 }
 
@@ -811,6 +831,31 @@ class AmeActorManager implements AmeActorManagerInterface {
 	createUserFromProperties(properties: AmeUserPropertyMap): IAmeUser {
 		return AmeUser.createFromProperties(properties);
 	}
+
+	//Sort the default roles in a fixed order, the rest alphabetically.
+	private static defaultRoleOrder: Record<string, number> = {
+		'role:administrator': 1,
+		'role:editor': 2,
+		'role:author': 3,
+		'role:contributor': 4,
+		'role:subscriber': 5
+	};
+
+	compareRolesForSorting(a: IAmeActor, b: IAmeActor) {
+		const defaultRoleOrder = AmeActorManager.defaultRoleOrder;
+
+		const aId = a.getId();
+		const bId = b.getId();
+		if (defaultRoleOrder.hasOwnProperty(aId) && defaultRoleOrder.hasOwnProperty(bId)) {
+			return defaultRoleOrder[aId] - defaultRoleOrder[bId];
+		} else if (defaultRoleOrder.hasOwnProperty(aId)) {
+			return -1;
+		} else if (defaultRoleOrder.hasOwnProperty(bId)) {
+			return 1;
+		} else {
+			return a.getDisplayName().localeCompare(b.getDisplayName());
+		}
+	}
 }
 
 interface AmeActorManagerInterface {
@@ -829,6 +874,8 @@ interface AmeActorManagerInterface {
 	getActor(actorId: string): IAmeActor | null;
 
 	actorExists(actorId: string): boolean;
+
+	compareRolesForSorting(a: IAmeActor, b: IAmeActor): number;
 }
 
 type AmeActorFeatureMapData = { [actorId: string]: boolean };

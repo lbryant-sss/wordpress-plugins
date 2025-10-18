@@ -4,8 +4,12 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit7d34084ad823de124118731064df1041
+class ComposerStaticInit766784b0e4264e7bc6782831e39b7c98
 {
+    public static $files = array (
+        '6c592737b91137905268e9a0eb968869' => __DIR__ . '/..' . '/wp-media/apply-filters-typed/functions.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
         'R' => 
         array (
@@ -73,10 +77,14 @@ class ComposerStaticInit7d34084ad823de124118731064df1041
         'RocketLazyLoadPlugin\\Dependencies\\LaunchpadOptions\\Interfaces\\Actions\\FetchPrefixInterface' => __DIR__ . '/../..' . '/src/Dependencies/LaunchpadOptions/Interfaces/Actions/FetchPrefixInterface.php',
         'RocketLazyLoadPlugin\\Dependencies\\LaunchpadOptions\\Interfaces\\Actions\\SetInterface' => __DIR__ . '/../..' . '/src/Dependencies/LaunchpadOptions/Interfaces/Actions/SetInterface.php',
         'RocketLazyLoadPlugin\\Dependencies\\LaunchpadOptions\\Interfaces\\OptionsInterface' => __DIR__ . '/../..' . '/src/Dependencies/LaunchpadOptions/Interfaces/OptionsInterface.php',
+        'RocketLazyLoadPlugin\\Dependencies\\LaunchpadOptions\\Interfaces\\SetInterface' => __DIR__ . '/../..' . '/src/Dependencies/LaunchpadOptions/Interfaces/SetInterface.php',
         'RocketLazyLoadPlugin\\Dependencies\\LaunchpadOptions\\Interfaces\\SettingsInterface' => __DIR__ . '/../..' . '/src/Dependencies/LaunchpadOptions/Interfaces/SettingsInterface.php',
+        'RocketLazyLoadPlugin\\Dependencies\\LaunchpadOptions\\Interfaces\\SiteOptionsInterface' => __DIR__ . '/../..' . '/src/Dependencies/LaunchpadOptions/Interfaces/SiteOptionsInterface.php',
         'RocketLazyLoadPlugin\\Dependencies\\LaunchpadOptions\\Interfaces\\TransientsInterface' => __DIR__ . '/../..' . '/src/Dependencies/LaunchpadOptions/Interfaces/TransientsInterface.php',
         'RocketLazyLoadPlugin\\Dependencies\\LaunchpadOptions\\Options' => __DIR__ . '/../..' . '/src/Dependencies/LaunchpadOptions/Options.php',
+        'RocketLazyLoadPlugin\\Dependencies\\LaunchpadOptions\\Set' => __DIR__ . '/../..' . '/src/Dependencies/LaunchpadOptions/Set.php',
         'RocketLazyLoadPlugin\\Dependencies\\LaunchpadOptions\\Settings' => __DIR__ . '/../..' . '/src/Dependencies/LaunchpadOptions/Settings.php',
+        'RocketLazyLoadPlugin\\Dependencies\\LaunchpadOptions\\SiteOptions' => __DIR__ . '/../..' . '/src/Dependencies/LaunchpadOptions/SiteOptions.php',
         'RocketLazyLoadPlugin\\Dependencies\\LaunchpadOptions\\Traits\\PrefixedKeyTrait' => __DIR__ . '/../..' . '/src/Dependencies/LaunchpadOptions/Traits/PrefixedKeyTrait.php',
         'RocketLazyLoadPlugin\\Dependencies\\LaunchpadOptions\\Transients' => __DIR__ . '/../..' . '/src/Dependencies/LaunchpadOptions/Transients.php',
         'RocketLazyLoadPlugin\\Dependencies\\League\\Container\\Argument\\ArgumentResolverInterface' => __DIR__ . '/../..' . '/src/Dependencies/League/Container/Argument/ArgumentResolverInterface.php',
@@ -124,9 +132,9 @@ class ComposerStaticInit7d34084ad823de124118731064df1041
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit7d34084ad823de124118731064df1041::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit7d34084ad823de124118731064df1041::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit7d34084ad823de124118731064df1041::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit766784b0e4264e7bc6782831e39b7c98::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit766784b0e4264e7bc6782831e39b7c98::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit766784b0e4264e7bc6782831e39b7c98::$classMap;
 
         }, null, ClassLoader::class);
     }

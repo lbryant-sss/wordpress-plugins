@@ -34,6 +34,8 @@ class LanguageVisibility {
 		add_filter( 'elementor/frontend/container/should_render', $visibility_check, 10, 2 );
 		add_filter( 'elementor/frontend/widget/should_render', $visibility_check, 10, 2 );
 
+		add_filter( 'elementor/element/is_dynamic_content', array( $this, 'filter_element_caching_is_dynamic_content' ), 10, 3 );
+
 	}
 
 	/**
@@ -139,6 +141,24 @@ class LanguageVisibility {
 		}
 
 		return in_array( pll_current_language(), $languages, true ) ? $show : ! $show;
+
+	}
+
+	/**
+	 * Mark element as dynamic content if language visibility is enabled
+	 *
+	 * @param  bool         $is_dynamic_content
+	 * @param  array        $element_rqw_data
+	 * @param  Element_Base $element_instance
+	 * @return bool
+	 */
+	public function filter_element_caching_is_dynamic_content( $is_dynamic_content, $element_rqw_data, $element_instance ) {
+
+		if ( isset( $element_rqw_data['settings']['cpel_lv_enabled'] ) && 'yes' === $element_rqw_data['settings']['cpel_lv_enabled'] ) {
+			$is_dynamic_content = true;
+		}
+
+		return $is_dynamic_content;
 
 	}
 

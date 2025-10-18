@@ -3,7 +3,7 @@ Contributors: sujaypawar, wpcrafter
 Tags: automation, google sheets, webhooks, schedule, SureCart
 Requires at least: 5.4
 Tested up to: 6.8
-Stable tag: 1.1.8
+Stable tag: 1.1.9
 Requires PHP: 5.6
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -334,6 +334,13 @@ You can report the issue through our [Bug Bounty Program](https://brainstormforc
 8. Workspace Notification Settings.
 
 == Changelog ==
+= Version 1.1.9 - Friday, 17th October 2025 =
+* New: Added "Pretty Links" Integration
+* New: Added "SureDash" Integration
+* Improvement: "FluentCRM" - Added new Triggers and Actions
+* Improvement: "WooCommerce Subscription" - Added sample responses for Triggers
+* Improvement: "Voxel" - Updated some Actions and Triggers to make them compatible with the latest Voxel version
+
 = Version 1.1.8 - Friday, 3rd October 2025 =
 * Improvement: "Fluent Booking" – Added new "Create Booking (Pro)" Action
 * Improvement: "Voxel" - Added new Trigger and Actions

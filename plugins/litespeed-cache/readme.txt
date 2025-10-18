@@ -4,7 +4,7 @@ Tags: caching, optimize, performance, pagespeed, seo, image optimize, object cac
 Requires at least: 5.3
 Requires PHP: 7.2
 Tested up to: 6.8
-Stable tag: 7.6.1
+Stable tag: 7.6.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -256,6 +256,12 @@ The vast majority of plugins and themes are compatible with LiteSpeed Cache. The
 You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/litespeed-cache)
 
 == Changelog ==
+
+= 7.6.2 - Oct 17 2025 =
+* 🐞**Cloud** Fixed the PHP 8+ typecast issue in QUIC.cloud signature verification which caused activation failures.
+* **Purge** Restored a delay purge hook while calling purge by CLI. (asafm7)
+* **REST** Dropped legacy code that had been used for development purposes.
+* **GUI** Use a stricter selector for dark mode to prevent side effects.
 
 = 7.6.1 - Oct 15 2025 =
 * **Cloud** Increased POST connection timeout to prevent potential failures.

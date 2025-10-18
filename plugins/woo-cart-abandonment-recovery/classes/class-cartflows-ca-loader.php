@@ -93,7 +93,7 @@ if ( ! class_exists( 'CARTFLOWS_CA_Loader' ) ) {
 			define( 'CARTFLOWS_CA_BASE', plugin_basename( CARTFLOWS_CA_FILE ) );
 			define( 'CARTFLOWS_CA_DIR', plugin_dir_path( CARTFLOWS_CA_FILE ) );
 			define( 'CARTFLOWS_CA_URL', plugins_url( '/', CARTFLOWS_CA_FILE ) );
-			define( 'CARTFLOWS_CA_VER', '2.0.1' );
+			define( 'CARTFLOWS_CA_VER', '2.0.2' );
 			define( 'CARTFLOWS_CA_REQ_PRO_VER', '1.0.0' );
 
 			define( 'CARTFLOWS_CA_SLUG', 'cartflows_ca' );
@@ -478,11 +478,13 @@ if ( ! class_exists( 'CARTFLOWS_CA_Loader' ) ) {
 		 */
 		public function should_use_new_ui(): bool {
 			$saved_version = get_option( 'wcf_ca_version', false );
-			$user_opted_in = get_option( 'cartflows_ca_use_new_ui', false );
+			$user_opted_in = get_option( 'cartflows_ca_use_new_ui', null );
 
 			// If user has explicitly opted into new UI, use it.
-			if ( $user_opted_in ) {
+			if ( 'on' === $user_opted_in ) {
 				return true;
+			} elseif ( empty( $user_opted_in ) ) {
+				return false;
 			}
 
 			// For versions above 2.0.0, use new UI by default.

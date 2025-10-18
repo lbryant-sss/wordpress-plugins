@@ -189,6 +189,28 @@ if ( !class_exists( 'WPLE_Security' ) ) {
         }
 
         /**
+         * Disable X-Powered-By header
+         */
+        public function wple_disable_x_poweredby_header( $enable = true ) {
+            if ( !is_writable( ABSPATH . '.htaccess' ) ) {
+                echo 0;
+                //alert Could not update setting! Please try again.
+                exit;
+            }
+            if ( $enable ) {
+                //add request
+                if ( is_writable( ABSPATH . '.htaccess' ) ) {
+                    WPLE_Trait::wple_remove_xpoweredby();
+                    $getrules = WPLE_Trait::disable_xpoweredby_header();
+                    insert_with_markers( ABSPATH . '.htaccess', 'WP_Encryption_Disable_XPoweredBy', $getrules );
+                }
+            } else {
+                //remove request
+                WPLE_Trait::wple_remove_xpoweredby();
+            }
+        }
+
+        /**
          * Remove RSS & Atom feeds
          */
         public function wple_remove_feeds() {

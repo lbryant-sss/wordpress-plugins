@@ -63,7 +63,7 @@ abstract class Ajax_Base {
 	 * @return void
 	 */
 	public function localize_ajax_action_nonce( $action ): void {
-		if ( current_user_can( 'manage_options' ) ) {
+		if ( current_user_can( 'manage_woocommerce' ) ) {
 			$prefix = $this->prefix;
 			add_filter(
 				'cart_abandonment_admin_vars',

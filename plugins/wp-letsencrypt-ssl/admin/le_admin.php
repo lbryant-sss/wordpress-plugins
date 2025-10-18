@@ -216,7 +216,7 @@ class WPLE_Admin {
         if ( isset( $_GET['error'] ) ) {
             $this->wple_error_block( $html );
         }
-        if ( FALSE === get_option( 'wple_plan_choose' ) || isset( $_GET['comparison'] ) ) {
+        if ( FALSE === get_option( 'wple_plan_choose' ) || isset( $_GET['comparison'] ) || !get_transient( 'wple_plan_chosen' ) ) {
             $this->wple_initial_quick_pricing( $html );
             return;
         }
