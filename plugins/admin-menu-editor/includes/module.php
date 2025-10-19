@@ -32,6 +32,7 @@ abstract class ameModule {
 		}
 
 		add_action('admin_menu_editor-register_scripts', array($this, 'registerScripts'));
+		add_filter('admin_menu_editor-base_scripts', array($this, 'addBaseScripts'));
 
 		//Register the module tab.
 		if ( ($this->tabSlug !== '') && is_string($this->tabSlug) ) {
@@ -132,6 +133,16 @@ abstract class ameModule {
 
 	public function enqueueTabStyles() {
 		//Override this method to add stylesheets to the $this->tabSlug tab.
+	}
+
+	/**
+	 * Add script dependencies that can be used in other parts of the plugin, not just this module.
+	 *
+	 * @param ScriptDependency[] $deps
+	 * @return ScriptDependency[]
+	 */
+	public function addBaseScripts(array $deps): array {
+		return $deps;
 	}
 
 	/**
