@@ -605,12 +605,12 @@ if(is_admin()){
             <div id="ldn" style="float:right;font-size: 9pt;margin-top: 10px;display: none" class="text-danger"><i class="fa fa-sun fa-spin"></i> <?php echo  esc_attr__( 'Loading', "download-manager" ); ?>...</div>
             <div v-if="total_pages > 1" id="__asset_pages" style="margin: 0;float: right;font-weight: 400;font-family: 'Overpass Mono', sans-serif !important;white-space: nowrap">
                 <div style="float:left;">
-                    <div class="c-pointer d-inline-block" v-on:click="assetPages.prevPage()"><i v-if="current_page > 1" class="fa fa-arrow-alt-circle-left"></i></div> <span class="text-muted">On Page</span> <strong>{{current_page}}</strong> <span class="text-muted">of total</span> <strong>{{total_pages}}</strong> <div class="c-pointer d-inline-block" v-if="current_page < total_pages" v-on:click="assetPages.nextPage()"><i class="fa fa-arrow-alt-circle-right"></i></div>
+                    <div class="c-pointer d-inline-block" v-on:click="prevPage()"><i v-if="current_page > 1" class="fa fa-arrow-alt-circle-left"></i></div> <span class="text-muted">On Page</span> <strong>{{current_page}}</strong> <span class="text-muted">of total</span> <strong>{{total_pages}}</strong> <div class="c-pointer d-inline-block" v-if="current_page < total_pages" v-on:click="nextPage()"><i class="fa fa-arrow-alt-circle-right"></i></div>
                 </div>
                 <div style="display: inline-block;margin-left: 10px">
                     <div class="input-group input-group-xs" style="width: 90px;">
                         <input type="number" @input="event => goto_page = event.target.value" :value="current_page" :max="total_pages" min="1" placeholder="Page" class="form-control" style="min-height: 16px; line-height: 20px; height: 20px; padding: 0px; font-size: 10px;text-align: center;font-family: 'Overpass Mono', monospace;">
-                        <div class="input-group-btn"><button type="button" v-on:click="assetPages.gotoPage()" class="btn btn-secondary btn-xs">GO</button></div>
+                        <div class="input-group-btn"><button type="button" v-on:click="gotoPage()" class="btn btn-secondary btn-xs">GO</button></div>
                     </div>
                 </div>
             </div>
