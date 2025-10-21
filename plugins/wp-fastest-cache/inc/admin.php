@@ -422,6 +422,16 @@
 			            );
 			        }
 			    }
+
+
+			    $elementor_css_print_method_option = get_option("elementor_css_print_method");
+
+			    if($elementor_css_print_method_option && $elementor_css_print_method_option != "internal"){
+			    	return array(
+		                "You have to set the <u><a target='_blank' href='https://www.wpfastestcache.com/tutorial/elementor-plugin-settings/'>CSS Print Method</a></u> option of the Elementor plugin to Internal Embedding",
+		                "error"
+		            );
+			    }
 			}
 
 

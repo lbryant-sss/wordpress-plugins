@@ -141,7 +141,7 @@ class NewsletterEngine {
         $mailer = Newsletter::instance()->get_mailer();
 
         $batch_size = $mailer->get_batch_size();
-        if (NEWSLETTER_DEBUG) $batch_size = 2;
+        //if (NEWSLETTER_DEBUG) $batch_size = 2;
 
         $this->logger->debug('Batch size ' . $batch_size);
 
@@ -159,9 +159,7 @@ class NewsletterEngine {
 
         $this->logger->debug(count($chunks) . ' chunks to process');
 
-
         foreach ($chunks as $index=>$chunk) {
-
 
             $this->logger->debug('Processing chunk #' . $index);
 
@@ -219,11 +217,11 @@ class NewsletterEngine {
             }
 
             if ($delay) {
-                usleep($delay * 1000);
+                usleep($delay * 1000 * count($messages));
             }
 
             unset($messages);
-            gc_collect_cycles();
+            //gc_collect_cycles();
         }
 
         $end_time = microtime(true);

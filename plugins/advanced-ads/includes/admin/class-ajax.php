@@ -297,9 +297,16 @@ class AJAX implements Integration_Interface {
 	 */
 	private function select_one( $request ) {
 		$method = (string) $request['ad_method'] ?? null;
-
 		if ( 'id' === $method ) {
 			$method = 'ad';
+		}
+
+		// Early bail!!
+		if ( ! Conditional::is_entity_allowed( $method ) ) {
+			return [
+				'status'  => 'error',
+				'message' => __( 'The method is not allowed to render.', 'advanced-ads' ),
+			];
 		}
 
 		$function  = "get_the_$method";

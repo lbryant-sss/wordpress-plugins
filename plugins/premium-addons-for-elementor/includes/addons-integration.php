@@ -213,7 +213,7 @@ class Addons_Integration {
 
 		check_ajax_referer( 'pa-live-editor', 'security' );
 
-		if ( ! isset( $_POST['key'] ) ) {
+		if ( ! isset( $_POST['key'] ) ) { // Widget ID ( + Control ID in case of repeater items ).
 			wp_send_json_error();
 		}
 
@@ -410,6 +410,11 @@ class Addons_Integration {
 				}
                 .premium-promotion-dialog .premium-promotion-btn {
                     background-color: #202124 !important
+                }
+				.premium-promote-ctas .elementor-button.premium-promote-demo {
+                    color: #BFC3C7 !important;
+					background-color: #373C41 !important;
+					border: 1px solid rgba(154, 157, 160, 0.5) !important;
                 }'
 			);
 

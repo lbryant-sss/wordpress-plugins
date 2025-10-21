@@ -68,6 +68,7 @@ class Admin_Notices {
 
 		self::$notices = array(
 			'pa-review',
+			'halloween25-not'
 		);
 
 		if ( Helper_Functions::check_hide_notifications() ) {
@@ -131,6 +132,8 @@ class Admin_Notices {
 		if ( Helper_Functions::check_hide_notifications() ) {
 			return;
 		}
+
+		$this->get_halloween_notice();
 
 	}
 
@@ -250,6 +253,92 @@ class Admin_Notices {
 		</div>
 
 		<?php
+	}
+
+	public function get_halloween_notice() {
+
+        $time     = time();
+
+        if ( $time > 1762819200 || '1' === get_option( 'halloween25-not' ) ) {
+			return;
+		}
+
+        $papro_path = 'premium-addons-pro/premium-addons-pro-for-elementor.php';
+
+		$is_papro_installed = Helper_Functions::is_plugin_installed( $papro_path );
+
+		$license_key = get_option( 'papro_license_key' );
+
+		$link = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/halloween-sale/#halloween-deals', 'wp-dash', 'halloween25-notification', 'halloween25' );
+
+		$promotion_type = 'new';
+
+        if ( $is_papro_installed ) {
+
+			$license_data = get_transient( 'pa_license_info' );
+
+            if( isset( $license_data['status'] ) && 'valid' === $license_data['status'] ) {
+
+				if( isset( $license_data['id'] ) && '4' === $license_data['id'] ) {
+					return;
+				} else {
+
+					$promotion_type = 'upgrade';
+
+					$link = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/docs/upgrade-premium-addons-license/', 'wp-dash', 'halloween25-notification', 'halloween25' );
+				}
+
+            }
+
+		}
+
+		$message = $this->get_promotion_message( $promotion_type );
+
+		?>
+
+		<div class="error pa-notice-wrap pa-new-feature-notice pa-review-notice">
+			<div class="pa-img-wrap">
+				<img src="<?php echo PREMIUM_ADDONS_URL . 'admin/images/pa-logo-symbol.png'; ?>">
+			</div>
+			<div class="pa-text-wrap">
+				<p>
+					<?php echo wp_kses_post( $message['message'] ); ?>
+					<a class="button pa-cta-btn button-primary" href="<?php echo esc_url( $link ); ?>" target="_blank">
+						<span><?php echo wp_kses_post( $message['cta'] ); ?></span>
+					</a>
+				</p>
+			</div>
+			<div class="pa-notice-close" data-notice="halloween25-not">
+				<span class="dashicons dashicons-dismiss"></span>
+			</div>
+		</div>
+
+		<?php
+	}
+
+	/**
+	 * Get Promotion Message
+	 *
+	 * @since 4.11.43
+	 * @access private
+	 *
+	 * @param string $type promotion type.
+	 * @return array
+	 */
+	private function get_promotion_message( $type = 'new' ) {
+
+		if ( 'upgrade' === $type ) {
+			return array(
+				'message' => __( 'Get a <b>FLAT 25% OFF</b> when you upgrade to <b>Premium Addons Pro Lifetime</b>. Use code <b>HalloweenUL2025</b> at checkout – <b>expires soon!</b>', 'premium-addons-for-elementor' ),
+				'cta'    => __( 'Upgrade Now', 'premium-addons-for-elementor' ),
+			);
+
+		}
+
+		return array(
+			'message' => __( '<b>Halloween Sale Live Now – Save Up To 25% on Premium Addons Pro</b>.', 'premium-addons-for-elementor' ),
+			'cta'    => __( 'Catch The Deal', 'premium-addons-for-elementor' ),
+		);
 	}
 
 	/**
@@ -548,7 +637,7 @@ class Admin_Notices {
 							<div class="pa-story-img-container">
 								<img src="<?php echo esc_url( $banner['image'] ); ?>" alt="<?php echo esc_attr( $banner['description'] ); ?>">
 							</div>
-							<a href="<?php echo esc_url( Helper_Functions::get_campaign_link( $banner['link'], 'dash-widget', 'wp-dash', 'liquid-glass-dash' ) ); ?>" target="_blank" title="<?php echo esc_attr( $banner['description'] ); ?>"></a>
+							<a href="<?php echo esc_url( Helper_Functions::get_campaign_link( $banner['link'], 'wp-dash', 'dash-widget', 'halloween25' ) ); ?>" target="_blank" title="<?php echo esc_attr( $banner['description'] ); ?>"></a>
 						</div>
 
 					<?php endif; ?>

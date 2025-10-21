@@ -141,7 +141,7 @@ class WINP_WarningNotices {
 		$notice .= '<br><br><a href="' . $create_notice_url . '" class="button button-default">' . __( 'Create new php snippet', 'insert-php' ) . '</a> ';
 		$notice .= '<a href="https://downloads.wordpress.org/plugin/insert-php.1.3.zip" class="button button-default">' . __( 'Download old version', 'insert-php' ) . '</a>';
 		$notice .= '<br><br>' . sprintf( __( 'If you still want to use the old shortcodes [insert_php] and you don’t have time to upgrade to the new version, you can enable support for old shortcodes in the plugin <a href="%s">settings</a>.', 'insert-php' ), WINP_Plugin::app()->getPluginPageUrl( 'settings' ) );
-		$notice .= '<br>' . sprintf( __( 'If you have issues with the plugin new version or any suggestions, please contact us on <a href="%s" target="_blank">our forum</a>.', 'insert-php' ), 'http://forum.webcraftic.com' );
+		$notice .= '<br>' . sprintf( __( 'If you have issues with the plugin new version or any suggestions, please contact us on <a href="%s" target="_blank">our forum</a>.', 'insert-php' ), 'https://wordpress.org/support/plugin/insert-php/' );
 
 		return $notice;
 	}

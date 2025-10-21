@@ -487,7 +487,7 @@ class PageBase extends \WBCR\Factory_Templates_134\Impressive {
 	{
 		$widget_settings = $this->plugin->getPluginInfoAttr('subscribe_settings');
 		$group_id = isset($widget_settings['group_id']) ? $widget_settings['group_id'] : 0;
-		$terms = "https://cm-wp.com/?bizpanda=privacy-policy";
+		$terms = "https://themeisle.com/privacy-policy/";
 		?>
 		<div id="wbcr-clr-subscribe-widget" class="wbcr-factory-sidebar-widget wbcr-factory-subscribe-widget">
 			<p><strong><?php _e('Subscribe to plugin’s newsletter', 'wbcr_factory_templates_134'); ?></strong></p>
@@ -506,7 +506,7 @@ class PageBase extends \WBCR\Factory_Templates_134\Impressive {
 					<input id="wbcr-factory-subscribe-widget__email" class="wbcr-factory-subscribe-widget__field" type="email" name="email" placeholder="<?php _e('Enter your email address', 'wbcr_factory_templates_134'); ?>" required>
 					<label class="wbcr-factory-subscribe-widget__checkbox-label">
 						<input class="wbcr-factory-subscribe-widget__checkbox" type="checkbox" name="agree_terms" required>
-						<?php echo sprintf(__("I confirm to subscribe to the CreativeMotion newsletter to receive the latest news. You can find how we use your information on our %s Privacy Policy %s", 'wbcr_factory_templates_134'), '<a href="' . $terms . '" target="_blank">', '</a>'); ?>
+						<?php echo sprintf(__("I confirm to subscribe to the Themeisle newsletter to receive the latest news. You can find how we use your information on our %s Privacy Policy %s", 'wbcr_factory_templates_134'), '<a href="' . $terms . '" target="_blank">', '</a>'); ?>
 					</label>
 					<input type="hidden" id="wbcr-factory-subscribe-widget__group-id" value="<?php echo esc_attr($group_id); ?>">
 					<input type="hidden" id="wbcr-factory-subscribe-widget__plugin-name" value="<?php echo esc_attr($this->plugin->getPluginName()); ?>">

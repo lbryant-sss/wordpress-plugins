@@ -45,8 +45,35 @@ if ( ! class_exists( 'WINP_Plugin' ) ) {
 
 				$this->load_backend();
 			}
+			add_action( 'init', function () {
+				if(WINP_Plugin::app()->premium->is_active()){
+					update_option( 'insert_php_logger_flag', 'yes' );
+				}
+			} );
+			add_filter( 'themeisle_sdk_products', [ __CLASS__, 'register_sdk' ] );
+			add_filter( 'themeisle_sdk_ran_promos', [ __CLASS__, 'sdk_hide_promo_notice' ] );
 		}
 
+		/**
+		 * Hide SDK promo notice for pro uses.
+		 *
+		 * @access public
+		 */
+		public static function sdk_hide_promo_notice( $should_show ) {
+			return WINP_Plugin::app()->premium->is_active();
+		}
+		/**
+		 * Register product into SDK.
+		 *
+		 * @param array $products All products.
+		 *
+		 * @return array Registered product.
+		 */
+		public static function register_sdk( $products ) {
+			$products[] = WINP_PLUGIN_FILE;
+
+			return $products;
+		}
 		/**
 		 * @return WINP_Plugin
 		 */

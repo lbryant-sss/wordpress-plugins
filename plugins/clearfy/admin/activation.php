@@ -77,7 +77,7 @@ class WCL_Activation extends Wbcr_Factory480_Activator {
 
 		if( !get_option($this->plugin->getOptionName('plugin_activated'), false) ) {
 			//WCL_Plugin::app()->updatePopulateOption('start_first_google_page_speed_audit', 1);
-			update_option($this->plugin->getOptionName('setup_wizard'), 1);
+			//update_option($this->plugin->getOptionName('setup_wizard'), 1);
 		}
 
 		/*if( !wp_next_scheduled('wclearfy/google_page_speed_audit') ) {

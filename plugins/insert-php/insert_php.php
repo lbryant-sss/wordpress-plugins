@@ -3,11 +3,13 @@
  * Plugin Name: Woody code snippets (PHP snippets | Insert PHP)
  * Plugin URI: https://woodysnippet.com/
  * Description: Executes PHP code, uses conditional logic to insert ads, text, media content and external service’s code. Ensures no content duplication.
- * Author: Creative Motion, Will Bontrager Software, LLC <will@willmaster.com>
- * Version: 2.5.1
+ * Author: Themeisle
+ * Version: 2.6.0
+ * WordPress Available:  yes
+ * Requires License:    no
  * Text Domain: insert-php
  * Domain Path: /languages/
- * Author URI: https://cm-wp.com
+ * Author URI: https://themeisle.com
  */
 
 /**
@@ -144,7 +146,6 @@ $plugin_info = [
 		[ 'libs/factory/shortcodes', 'factory_shortcodes_335', 'all' ],
 		[ 'libs/factory/freemius', 'factory_freemius_165', 'all' ],
 		[ 'libs/factory/adverts', 'factory_adverts_153', 'admin' ],
-		[ 'libs/factory/feedback', 'factory_feedback_128', 'admin' ],
 	],
 ];
 
@@ -175,6 +176,8 @@ define( 'WINP_PLUGIN_VERSION', $wbcr_compatibility->get_plugin_version() );
 
 // Root directory of the plugin
 define( 'WINP_PLUGIN_DIR', dirname( __FILE__ ) );
+
+define( 'WINP_PLUGIN_FILE', __FILE__ );
 
 // Absolute url of the root directory of the plugin
 define( 'WINP_PLUGIN_URL', plugins_url( '', __FILE__ ) );
@@ -212,6 +215,7 @@ global $winp_snippets_locations;
 $winp_snippets_locations = new WINP_Insertion_Locations();
 
 try {
+	require_once WINP_PLUGIN_DIR . '/vendor/autoload.php';
 	new WINP_Plugin( __FILE__, array_merge( $plugin_info, [
 		'plugin_version'     => WINP_PLUGIN_VERSION,
 		'plugin_text_domain' => $wbcr_compatibility->get_text_domain(),

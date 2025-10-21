@@ -748,8 +748,8 @@ class Admin_Helper {
 			call_user_func(
 				'add_submenu_page',
 				self::$page_slug,
-				'<span style="color: #FF6000;" class="pa_pro_upgrade">Get Pro (25% OFF)</span>',
-				'<span style="color: #FF6000;" class="pa_pro_upgrade">Get Pro (25% OFF)</span>',
+				'<span style="color: #FF6000;" class="pa_pro_upgrade">Get PRO (25% OFF)</span>',
+				'<span style="color: #FF6000;" class="pa_pro_upgrade">Get PRO (25% OFF)</span>',
 				'manage_options',
 				'https://premiumaddons.com/pro/#get-pa-pro',
 				''
@@ -883,7 +883,7 @@ class Admin_Helper {
 				'title' => __( 'Get Premium Addons PRO', 'premium-addons-for-elementor' ),
 				'desc'  => __( 'Supercharge your Elementor with PRO Widgets & Addons that you won\'t find anywhere else.', 'premium-addons-for-elementor' ),
 				'btn'   => __( 'Get Pro', 'premium-addons-for-elementor' ),
-				'cta'   => 'https://premiumaddons.com/get/papro',
+				'cta'   => 'https://premiumaddons.com/get/papro/#get-pa-pro',
 			);
 		}
 
@@ -898,7 +898,7 @@ class Admin_Helper {
 			return array(
 				'title' => __( 'You\'re Missing Out on the Official Pro Version!', 'premium-addons-for-elementor' ),
 				'desc'  => __( 'It looks like you\'re using Premium Addons Pro, but it was not purchased from our official website. Get official version to receive updates, support and use Premium Templates!', 'premium-addons-for-elementor' ),
-				'btn'   => __( 'Get Pro', 'premium-addons-for-elementor' ),
+				'btn'   => __( 'Get PRO', 'premium-addons-for-elementor' ),
 				'cta'   => 'https://premiumaddons.com/validate/papro',
 			);
 

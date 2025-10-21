@@ -210,7 +210,7 @@
 
 						setTimeout(function () {
 							isHidden = false;
-						}, 550);
+						}, settings.closeDelay ?? 500);
 					}
 				}
 			}
@@ -513,7 +513,7 @@
 				setTimeout(function () {
 					isHidden = true;
 					$scope.find('.pa-woo-mc__content-wrapper-' + id).css('display', 'none');
-				}, 500);
+				}, settings.closeDelay ?? 500);
 
 			});
 

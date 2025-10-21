@@ -5,37 +5,67 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.11.0] - 2025-10-20
+### Added
+- Forms: Add Hostinger Reach integration. [#45271]
+- Forms: Add programmatic initialization support via `window.jetpackFormsInit()`. [#45531]
+- Forms: Add unread/read filter to the dashboard. [#45514]
+
+### Changed
+- Add new useConfigValue hook and start using it on the dashboard. [#45472]
+- De-clutter InboxView component and move data processing to hook. [#45489]
+- Make dashboard initialization idempotent for SPA environments by using data attribute to track state. [#45539]
+- Move view actions to modal header on mobile. [#45410]
+- Remove logo from dashboard and align header styles with CIAB. [#45535]
+- Remove old file and add tests for hook. [#45497]
+- Remove unused `hasAI` from config. [#45522]
+- Split components and hooks into their own files. [#45494]
+- Trim empty options and display custom placeholder. [#45528]
+- Update "Action after submit" sidebar section. [#45502]
+- UX improvements for Image Select field. [#45516]
+
+### Deprecated
+- Remove Creative Mail promotion. [#45524]
+
+### Fixed
+- Improve handling of custom submission message formatting. [#45487]
+- Send emails to the author of the form only if they are able to edit it. [#45515]
+- Fix PHP warning for when a site doesn't have the JWT token yet. [#45501]
+- Fix plugin activation state. [#45471]
+- Prevent required text from being removed from required fields when creating a form from a pattern. [#45495]
+- Store the feedback source info with more context. [#45231]
+- Strip period from Terms submission label on the post-submission page. [#45509]
+
 ## [6.10.0] - 2025-10-13
 ### Added
-- Add integrations store. [#45372]
+- Add integrations store. [#45372] [#45432]
 - Add notification settings panel. [#45396]
 - Add read and unread state. [#45350]
 
 ### Changed
 - Add optimistic count updates to Forms inbox for immediate UI feedback when moving items between inbox, spam, and trash. [#45424]
-- Avoid typohraphic orphans in Forms panels in editor. [#45455]
+- Avoid typographic orphans in Forms panels in editor. [#45455]
 - Change how phone field interactivity API is initialized with more atomic registration of the elements. [#45290]
 - Fix preload middleware registration to properly cache API requests and support both path formats. [#45454]
 - Fix preload parameters to match actual feedback endpoint requests and avoid duplicate HTTP requests. [#45453]
 - Hide Google export card if disabled. [#45375]
 - Improve loading state to show spinner immediately when data hasn't loaded. [#45379]
-- Inbox - remove view action for desktop. [#45444]
-- More elaborate empty states. [#45421]
-- Preload initial inbox data and essential endpoints for faster page load. [#45378]
-- Reorganise settings to a single panel for rating, slider and phone fields. [#45196]
+- Inbox: Remove view action for desktop. [#45444]
+- Inbox: Update empty state notices. [#45421]
+- Inbox: Preload initial data and essential endpoints for faster page load. [#45378]
+- Reorganize settings to a single panel for rating, slider and phone fields. [#45196]
 - Reverse copy of 'go back' toggle. [#45446]
 - Update read/unread counts optimistically in the sidebar. [#45425]
-- Use store for integrations modal. [#45432]
-- Replace 3 separate count REST API requests with 1 optimized database query using CASE statements to improve inbox performance. [#45427]
+- Replace separate count REST API requests with one optimized database query using CASE statements to improve inbox performance. [#45427]
 - Update package dependencies. [#45428] [#45429] [#45430]
 
 ### Fixed
 - Fix missing tooltip on unread/read quick action button. [#45433]
 - Fix multistep dropdown showing "Unlabeled" instead of default step titles like "Step 1", "Step 2", etc. [#45463]
-- Fix sending data that is not needed in the endpoint to prevent exposing data. [#45439]
+- Limit the amount of data sent by the endpoint to prevent exposing data. [#45439]
 - Fix sticky loading state for trash view action. [#45411]
 - Improve cross plugin compatibility. [#45315]
-- Optimize has_feedback() query to improve dashboard load performance by limiting query to fetch only 1 ID instead of loading all feedback posts. [#45361]
+- Optimize `has_feedback()` query to improve dashboard load performance by limiting query to fetch only one ID instead of loading all feedback posts. [#45361]
 
 ## [6.9.0] - 2025-10-08
 ### Added
@@ -1683,6 +1713,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added a new jetpack/forms package [#28409]
 - Added a public load_contact_form method for initializing the contact form module. [#28416]
 
+[6.11.0]: https://github.com/automattic/jetpack-forms/compare/v6.10.0...v6.11.0
 [6.10.0]: https://github.com/automattic/jetpack-forms/compare/v6.9.0...v6.10.0
 [6.9.0]: https://github.com/automattic/jetpack-forms/compare/v6.8.0...v6.9.0
 [6.8.0]: https://github.com/automattic/jetpack-forms/compare/v6.7.0...v6.8.0

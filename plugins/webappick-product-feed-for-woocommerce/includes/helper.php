@@ -352,7 +352,7 @@ if ( ! function_exists( 'woo_feed_halloween_notice' ) ) {
 	 */
 	function woo_feed_halloween_notice() {
 		$user_id = get_current_user_id();
-		if ( ! get_user_meta( $user_id, 'woo_feed_halloween_notice_2024_dismissed' ) ) {
+		if ( ! get_user_meta( $user_id, 'woo_feed_halloween_notice_2025_dismissed' ) ) {
 			ob_start();
 			?>
 			<script type="text/javascript">
@@ -373,9 +373,9 @@ if ( ! function_exists( 'woo_feed_halloween_notice' ) ) {
 					});
 				})(jQuery)
 			</script>
-			<a target="_blank" href="https://webappick.com/plugin/woocommerce-product-feed-pro/?utm_source=CTX+Feed&utm_medium=HW_Banner&utm_campaign=HW_24&utm_id=2024"
+			<a target="_blank" href="https://webappick.com/discount-deal/?utm_source=halloween_25&utm_medium=wp_free&utm_campaign=halloween_25"
 			   class="notice woo-feed-ctx-halloween-notice is-dismissible"
-			   style="background: url(<?php echo esc_url(WOO_FEED_PLUGIN_URL) . 'admin/images/woo_feed_halloween_notice.png'; ?>) no-repeat top center;">
+			   style="background: url(<?php echo esc_url(WOO_FEED_PLUGIN_URL) . 'admin/images/woo_feed_halloween_notice.gif'; ?>) no-repeat top center;">
 				<input type="hidden" id="woo_feed_to_ctx_feed_halloween_nonce"
 					   value="<?php echo esc_attr(wp_create_nonce( 'woo-feed-to-ctx-feed-halloween-nonce' )); ?>">
 			</a>
@@ -3643,7 +3643,7 @@ if ( ! function_exists( 'woo_feed_save_halloween_notice' ) ) {
 		if ( isset( $_REQUEST['_wp_ajax_nonce'] ) && wp_verify_nonce( wp_unslash( $_REQUEST['_wp_ajax_nonce'] ), 'woo-feed-to-ctx-feed-halloween-nonce' ) ) { //phpcs:ignore
 			$user_id = get_current_user_id();
 			if ( isset( $_REQUEST['clicked'] ) ) {
-				$updated_user_meta = add_user_meta( $user_id, 'woo_feed_halloween_notice_2024_dismissed', 'true', true );
+				$updated_user_meta = add_user_meta( $user_id, 'woo_feed_halloween_notice_2025_dismissed', 'true', true );
 
 				if ( $updated_user_meta ) {
 					wp_send_json_success( esc_html__( 'User meta updated successfully.', 'woo-feed' ) );

@@ -3,13 +3,15 @@
  * Plugin Name: Robin image optimizer
  * Plugin URI: https://robinoptimizer.com
  * Description: Optimize images without losing quality, speed up your website load, improve SEO and save money on server and CDN bandwidth.
- * Author: Creative Motion <info@cm-wp.com>
- * Version: 1.8.4
+ * Author: Themeisle <contact@themeisle.com>
+ * Version: 1.9.0
  * Text Domain: robin-image-optimizer
  * Domain Path: /languages/
- * Author URI: https://cm-wp.com
+ * Author URI: https://themeisle.com
  * Framework Version: FACTORY_480_VERSION
  * Requires at least: 5.6
+ * WordPress Available:  yes
+ * Requires License:    no
  * Requires PHP: 7.4
  */
 
@@ -142,8 +144,7 @@ define( 'WRIO_PLUGIN_BASE', plugin_basename( __FILE__ ) );
 // Ссылка к директории плагина
 define( 'WRIO_PLUGIN_URL', plugins_url( '', __FILE__ ) );
 
-
-
+define( 'WRIO_PLUGIN_FILE', __FILE__ );
 /**
  * -----------------------------------------------------------------------------
  * PLUGIN INIT
@@ -152,8 +153,9 @@ define( 'WRIO_PLUGIN_URL', plugins_url( '', __FILE__ ) );
 
 require_once WRIO_PLUGIN_DIR . '/libs/factory/core/boot.php';
 require_once WRIO_PLUGIN_DIR . '/includes/class-rio-plugin.php';
-
 try {
+
+	require_once WRIO_PLUGIN_DIR . '/vendor/autoload.php';
 	new WRIO_Plugin( __FILE__, array_merge( $plugin_info, [
 		'plugin_version'     => WRIO_PLUGIN_VERSION,
 		'plugin_text_domain' => $wrio_compatibility->get_text_domain(),

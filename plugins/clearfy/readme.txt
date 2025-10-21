@@ -1,17 +1,20 @@
 ﻿=== Clearfy Cache – WordPress optimization plugin, Minify HTML, CSS & JS, Defer ===
 Contributors: themeisle
-Donate link: https://clearfy.pro/pricing/?utm_source=wordpress.org&utm_campaign=wbcr_clearfy&utm_content=repo
 Tags: cache, minify, optimize, performance, pagespeed, minify css, minify js, remove querystrings, disable rest api, bicycles by falbar, remove rss feeds, remove meta generator, yoast seo remove comments, yoast seo, yoast seo breadcrumbs, disable embeds,remove embeds, remove rsd link, dns-prefetch, remove dns-prefetch, meta generator, rsd link, wlw manifest link, remove wlw manifest link, canonical link, remove canonical link, shortlink link, remove shortlink link, emoji, attachment pages, remove attachment pages, rss feeds, disable rss feeds, rest api, disable rest api, remove rest api, clearfy, archives date, post pagination, archives author, hide login errors, recent comments, tag, rpc, xml, xml rpc, xmlrpc, admin bar, remove querystrings, reduce HTTP requests, disable heartbeat, disable revision, heartbeat, revision, clean, optimize, remove rest-api, remove rest-api, remove jquery migrate, html minify, robots.txt editor, plugin updates, disable plugin updates, disable core updates, core updates, enable automatic updates, disable widgets, disable default widgets, remove html comments
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 2.3.3
+Stable tag: 2.4.0
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Optimize and tweak WordPress by disable unused features. Improve performance, SEO and security using Clearfy — super easy, fast and zero code.
 
 == Description ==
+
+**Clearfy Cache is no longer under active development. We recommend using [Super Page Cache](https://wordpress.org/plugins/wp-cloudflare-page-cache/) as it provides a more powerful and modern caching solution for WordPress.**
+
+In October 2025, Clearfy Cache was acquired by Super Page Cache. We’re retiring Clearfy Cache in favor of Super Page Cache to ensure users have access to the best performance optimization features, improved compatibility, and a superior user experience.
 
 Thousands of users already optimized their WordPress sites with **Clearfy plugin**. It’s multipurpose and free tool with tons of settings. Combine it with other plugins and you’ll get better optimized and secure WordPress website.
 
@@ -253,6 +256,14 @@ Of course! To do this, email us your wishes with address, which you will find in
 5. Assets manager
 
 == Changelog ==
+
+####   Version 2.4.0 (2025-10-20)
+
+- Clearfy was acquired by [Super Page Cache](https://wordpress.org/plugins/wp-cloudflare-page-cache/)
+- We’re retiring Clearfy in favor in favor of the more powerful Super Page Cache plugin, so ensure users have access to the best performance optimization features, improved compatibility, and a superior user experience.
+
+
+
 = 2.3.3 (08.04.2025) =
 * Fixed: Bugs in the setup wizard
 * Fixed: Security issue

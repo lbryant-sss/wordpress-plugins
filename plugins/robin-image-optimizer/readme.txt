@@ -2,18 +2,14 @@
 Tags: image, optimizer, image optimization, resmush.it, smush, jpg, png, gif, optimization, compression, Compress, Images, Pictures, Reduce Image Size
 Contributors: themeisle
 Requires at least: 5.6
-Tested up to: 6.7
+Tested up to: 6.8
 Requires PHP: 7.3
-Stable tag: trunk
+Stable tag: 1.9.0
 License: GPLv2
 
 Automatic image optimization without any quality loss. No limitations. The best Wordpress image optimization plugin allows optimizing any amount of images for free!
 
 == Description ==
-
-### Need professional support? ###
-[Get starting FREE support](http://forum.webcraftic.com/forums/robin-image-optimizer.18/ "Get starting free support")
-[Get starting PREMIUM support](https://webcraftic.com/premium-support/ "Get starting premium support")
 
 Make your website faster by reducing the weight of images. Our Wordpress image optimizer plugin can cease image weights on 80% without any loss of quality.
 
@@ -46,16 +42,6 @@ The lighter the weight of the image – the faster your page loads. With the con
 * custom-folders
 * nextgen
 
-#### RECOMMENDED SEPARATE MODULES ####
-We invite you to check out a few other related free plugins that our team has also produced that you may find especially useful:
-
-* [Clearfy – WordPress optimization plugin](https://wordpress.org/plugins/clearfy/)
-* [Disable updates, Disable automatic updates, Updates manager](https://wordpress.org/plugins/webcraftic-updates-manager/)
-* [Cyrlitera – transliteration of links and file names](https://wordpress.org/plugins/cyrlitera/)
-* [Cyr-to-lat reloaded – transliteration of links and file names](https://wordpress.org/plugins/cyr-and-lat/ "Cyr-to-lat reloaded")
-* [Disable admin notices individually](https://wordpress.org/plugins/disable-admin-notices/ "Disable admin notices individually")
-* [WordPress Assets manager, dequeue scripts, dequeue styles](https://wordpress.org/plugins/gonzales/  "WordPress Assets manager, dequeue scripts, dequeue styles")
-* [Hide login page](https://wordpress.org/plugins/hide-login-page/ "Hide login page")
 
 #### Thanks the authors of plugins ####
 We used some useful functions from plugins **Imagify Image Optimizer**, **Smush Image Compression and Optimization**, **EWWW Image Optimizer**, **reSmush.it Image Optimizer**, **ShortPixel Image Optimizer**.
@@ -112,6 +98,16 @@ Robin image optimizer PRO has full integration with NextGen Gallery, which helps
 4. Media library
 
 == Changelog ==
+
+####   Version 1.9.0 (2025-10-20)
+
+Robin Image Optimizer has been acquired by Themeisle 🎉
+We’re happy to announce that Themeisle is now the new owner of Robin Image Optimizer. This acquisition will help ensure the plugin’s continued development, better support, and exciting new updates in the future.
+
+Your existing setup and optimizations will continue to work as usual — no action is required on your part.
+
+
+
 = 1.8.4 (11.01.2025) =
 Set handle 413 server error as upload size limit exceeded 10MB for free server.
 Fixed: 429 server error caused by exceeding server request limits for free server.

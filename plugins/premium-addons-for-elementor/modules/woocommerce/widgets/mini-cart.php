@@ -1053,12 +1053,42 @@ class Mini_Cart extends Widget_Base {
 		);
 
 		$this->add_control(
+			'close_delay',
+			array(
+				'label'      => __( 'Close Delay (ms)', 'premium-addons-for-elementor' ),
+				'type'       => Controls_Manager::NUMBER,
+				'default'    => 500,
+				'separator'  => 'before',
+				'conditions' => array(
+					'relation' => 'or',
+					'terms'    => array(
+						array(
+							'name'  => 'cart_type',
+							'value' => 'slide',
+						),
+						array(
+							'terms' => array(
+								array(
+									'name'  => 'cart_type',
+									'value' => 'menu',
+								),
+								array(
+									'name'  => 'trigger',
+									'value' => 'click',
+								),
+							),
+						),
+					),
+				),
+			)
+		);
+
+		$this->add_control(
 			'close_on_outside',
 			array(
 				'label'      => esc_html__( 'Close On Click Outside Content', 'premium-addons-pro' ),
 				'type'       => Controls_Manager::SWITCHER,
 				'default'    => 'yes',
-				'separator'  => 'before',
 				'conditions' => array(
 					'relation' => 'or',
 					'terms'    => array(
@@ -5296,6 +5326,7 @@ class Mini_Cart extends Widget_Base {
 				// 'style'        => 'slide' === $cart_type ? $settings['slide_effects'] : '',
 				'style'        => 'overlay',
 				'clickOutside' => 'yes' === $settings['close_on_outside'],
+				'closeDelay'   => $settings['close_delay'],
 				'removeTxt'    => 'yes' === $settings['remove_icon'] && 'text' === $settings['remove_type'] ? $settings['remove_txt'] : false,
 				'coupon'       => 'yes' === $settings['coupon'],
 			);

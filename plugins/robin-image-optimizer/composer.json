@@ -1,0 +1,11 @@
+{
+    "name": "codeinwp/robin-image-optimizer",
+    "autoload": {
+      "files": [
+        "vendor/codeinwp/themeisle-sdk/load.php"
+      ]
+    },
+  "require": {
+        "codeinwp/themeisle-sdk": "^3.3"
+    }
+}

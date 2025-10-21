@@ -58,8 +58,35 @@ class WAPT_Plugin extends Wbcr_Factory480_Plugin {
 		}
 
 		$this->global_scripts();
+		add_action( 'init', function () {
+			if(WAPT_Plugin::app()->premium->is_active()){
+				update_option( 'auto_post_thumbnail_logger_flag', 'yes' );
+			}
+		} );
+		add_filter( 'themeisle_sdk_products', [ __CLASS__, 'register_sdk' ] );
+		add_filter( 'themeisle_sdk_ran_promos', [ __CLASS__, 'sdk_hide_promo_notice' ] );
 	}
 
+	/**
+	 * Hide SDK promo notice for pro uses.
+	 *
+	 * @access public
+	 */
+	public static function sdk_hide_promo_notice( $should_show ) {
+		return WAPT_Plugin::app()->premium->is_active();
+	}
+	/**
+	 * Register product into SDK.
+	 *
+	 * @param array $products All products.
+	 *
+	 * @return array Registered product.
+	 */
+	public static function register_sdk( $products ) {
+		$products[] = WAPT_PLUGIN_FILE;
+
+		return $products;
+	}
 	/**
 	 * Статический метод для быстрого доступа к интерфейсу плагина.
 	 *
@@ -303,6 +330,7 @@ class WAPT_Plugin extends Wbcr_Factory480_Plugin {
 	 * @return array
 	 */
 	public function show_about_notice( $notices, $plugin_name ) {
+		return $notices;
 		// Если экшен вызывал не этот плагин, то не выводим это уведомления
 		if ( $plugin_name !== $this->getPluginName() ) {
 			return $notices;

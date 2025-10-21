@@ -253,3 +253,22 @@ add_action('wp_dashboard_setup', function () {
 add_action('wbcr/clearfy/page_assets', function ($id, $scripts, $styles) {
 	$scripts->add(WCL_PLUGIN_URL . '/admin/assets/js/widgets.js', array('jquery'));
 }, 10, 3);
+
+/**
+ * Initialize Clearfy Farewell notice system
+ */
+add_action('admin_init', function() {
+	if ( ! class_exists('WCL_Farewell') ) {
+		require_once WCL_PLUGIN_DIR . '/admin/includes/classes/class.farewell.php';
+	}
+	new WCL_Farewell();
+});
+
+/**
+ * Load farewell notice styles on dashboard
+ */
+add_action('admin_enqueue_scripts', function($hook) {
+	if ( 'index.php' === $hook || 'settings_page_quick_start-wbcr_clearfy' === $hook ) {
+		wp_enqueue_style('clearfy-farewell-notice', WCL_PLUGIN_URL . '/admin/assets/css/farewell-notice.css', [], WCL_Plugin::app()->getPluginVersion());
+	}
+});

@@ -4,7 +4,7 @@ Donate link: http://davidlingren.com/#donate
 Tags: categories, images, media, media library, tags
 Requires at least: 4.7
 Tested up to: 6.8.3
-Stable tag: 3.29
+Stable tag: 3.30
 Requires PHP: 5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -380,8 +380,8 @@ All of the MLA source code has been annotated with "DocBlocks", a special type o
 
 == Upgrade Notice ==
 
-= 3.29 =
-IMPORTANT: Security mitigation in all four shortcodes. Media Manager Modal (popup) and Media/Assistant submenu table fixes. Four fixes in all.
+= 3.30 =
+IMPORTANT: Security mitigations in [mla_gallery] shortcode. PDF metadata extraction from documents with compressed object streams. One enhancement, three fixes in all.
 
 == Acknowledgements ==
 

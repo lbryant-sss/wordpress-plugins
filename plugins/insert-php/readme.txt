@@ -3,19 +3,15 @@ Contributors: themeisle
 Donate link: https://woodysnippet.com
 Tags: code snippets, woocommerce, shortcode, adsense, header
 Requires at least: 5.6
-Tested up to: 6.5
+Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: trunk
+Stable tag: 2.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Insert Headers and Footers, executes PHP code, uses conditional logic to insert ads, text, media content and external service’s code.
 
 == Description ==
-
-### Need professional support? ###
-[Get starting FREE support](http://forum.webcraftic.com/forums/problems-and-solutions.3/ "Get starting free support")
-[Get starting PREMIUM support](https://webcraftic.com/premium-support/ "Get starting premium support")
 
 - Stop re-using the same content over and over again!
 - Stop inserting PHP code to function.php!
@@ -261,6 +257,16 @@ We will definitely add multisite support in the future. You can speed up this pr
 7. Custom shortcode name
 
 == Changelog ==
+
+####   Version 2.6.0 (2025-10-20)
+
+Woody Snippets plugin has been acquired by Themeisle 🎉
+We’re happy to announce that Themeisle is now the new owner of Woody Snippets. This acquisition will help ensure the plugin’s continued development, better support, and exciting new updates in the future.
+
+Your existing setup will continue to work as usual — no action is required on your part.
+
+
+
 = 2.5.1 =
 * Fixed: [insert_php] shortcodes are no longer supported due to the security risk to your site.
 * Fixed: Compatibility with Wordpress 6.5

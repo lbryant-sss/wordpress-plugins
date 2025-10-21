@@ -4,7 +4,7 @@
   Plugin Name: Newsletter
   Plugin URI: https://www.thenewsletterplugin.com
   Description: Newsletter is a cool plugin to create your own subscriber list, to send newsletters, to build your business. <strong>Before update give a look to <a href="https://www.thenewsletterplugin.com/category/release">this page</a> to know what's changed.</strong>
-  Version: 9.0.4
+  Version: 9.0.5
   Author: Stefano Lissa & The Newsletter Team
   Author URI: https://www.thenewsletterplugin.com
   Disclaimer: Use at your own risk. No warranty expressed or implied is provided.
@@ -30,7 +30,7 @@
 
  */
 
-define('NEWSLETTER_VERSION', '9.0.4');
+define('NEWSLETTER_VERSION', '9.0.5');
 
 global $wpdb, $newsletter;
 
@@ -135,14 +135,9 @@ class Newsletter extends NewsletterModule {
 
     function __construct() {
 
-        // Grab it before a plugin decides to remove it.
+        // Do not weait plugins_loaded, since there are plugins removing parameters...
         if (!is_admin()) {
-            if (isset($_GET['na'])) {
-                $this->action = sanitize_key($_GET['na']);
-            }
-            if (isset($_POST['na'])) {
-                $this->action = sanitize_key($_POST['na']);
-            }
+            $this->action = sanitize_key($_POST['na'] ?? $_GET['na'] ?? '');
         }
 
         $this->time_start = time();
@@ -183,12 +178,10 @@ class Newsletter extends NewsletterModule {
      * Action request via AJAX.
      */
     function ajax_action() {
-        if (isset($_REQUEST['na'])) {
-            $this->action = sanitize_key($_REQUEST['na']);
-            $this->do_action();
-        } else {
-            die('No action specified');
-        }
+
+        $this->action = sanitize_key($_REQUEST['na'] ?? '');
+        $this->do_action();
+
         die();
     }
 
@@ -283,7 +276,7 @@ class Newsletter extends NewsletterModule {
     function do_action() {
 
         if (empty($this->action)) {
-            return;
+            return false;
         }
 
         if ($this->action === 'test') {
@@ -297,9 +290,9 @@ class Newsletter extends NewsletterModule {
         }
 
         $user = $this->get_current_user();
+        $email = $this->get_email_from_request();
 
         if ($user && isset($user->_dummy) && $user->_dummy) {
-            $email = $this->get_email_from_request();
             $this->switch_language($user->language);
             do_action('newsletter_action_dummy', $this->action, $user, $email);
             return;
@@ -309,7 +302,6 @@ class Newsletter extends NewsletterModule {
             $this->switch_language($user->language);
         }
 
-        $email = $this->get_email_from_request();
         do_action('newsletter_action', $this->action, $user, $email);
     }
 

@@ -2125,10 +2125,10 @@ class ElementsKit_Widget_Pricing extends Widget_Base {
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .elementskit-single-pricing .elementskit-pricing-btn i' => 'font-size: {{SIZE}}{{UNIT}};',
-                    '{{WRAPPER}} .elementskit-single-pricing .elementskit-pricing-btn svg path' => 'max-width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .elementskit-single-pricing .elementskit-pricing-btn svg' => 'font-size: {{SIZE}}{{UNIT}};',
                 ],
             ]
-		);
+		); 
 
 		$this->add_responsive_control(
 			'pricing_btn_width',

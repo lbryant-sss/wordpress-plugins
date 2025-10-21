@@ -68,6 +68,8 @@ abstract class NewsletterMembershipAddon extends NewsletterAddon {
      * @return object
      */
     function get_subscriber($wp_user, $autocreate = null) {
+        global $wpdb;
+
         $logger = $this->get_logger();
 
         $newsletter = Newsletter::instance();

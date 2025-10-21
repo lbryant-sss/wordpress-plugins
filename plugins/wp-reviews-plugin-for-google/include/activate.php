@@ -40,12 +40,13 @@ return trim($ti_db_schema[ $tableName ]);
 }, $notCreatedTables);
 $preStyle = 'background: #eee; padding: 10px 20px; word-wrap: break-word; white-space: pre-wrap';
 wp_die(wp_kses_post(
-'<strong>' . __('Plugin activation is failed because the required database tables could not created!', 'trustindex-plugin') . '</strong><br /><br />' .
-sprintf(__('We got the following error from %s:', 'trustindex-plugin'), __('database', 'trustindex-plugin')) .
+'<strong>' . __('Plugin activation is failed because the required database tables could not created!', 'wp-reviews-plugin-for-google') . '</strong><br /><br />' .
+/* translators: %s: database */
+sprintf(__('We got the following error from %s:', 'wp-reviews-plugin-for-google'), __('database', 'wp-reviews-plugin-for-google')) .
 '<pre style="'. $preStyle .'">'. $mysqlError .'</pre>' .
-'<strong>' . __('Run the following SQL codes in your database administration interface (e.g. PhpMyAdmin) to create the tables or contact your system administrator:', 'trustindex-plugin') . '</strong>' .
+'<strong>' . __('Run the following SQL codes in your database administration interface (e.g. PhpMyAdmin) to create the tables or contact your system administrator:', 'wp-reviews-plugin-for-google') . '</strong>' .
 '<pre style="'. $preStyle .'">' . implode('</pre><pre style="'. $preStyle .'">', $sqlsToRun) . '</pre>' .
-'<strong>' . __('Then try activate the plugin again.', 'trustindex-plugin') . '</strong>'
+'<strong>' . __('Then try activate the plugin again.', 'wp-reviews-plugin-for-google') . '</strong>'
 ));
 }
 update_option($this->get_option_name('active'), '1');

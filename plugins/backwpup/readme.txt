@@ -5,7 +5,7 @@ Tags: backup, restore, cloud backup, database backup, wordpress backup
 Requires at least: 4.9
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 5.5.0
+Stable tag: 5.5.1
 License: GPLv2+
 
 Create a complete WordPress backup easily. Schedule automatic backups, store securely, and restore effortlessly with the best WordPress backup plugin! 
@@ -193,10 +193,21 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
 
 == Changelog ==
-5.5 Release date: September 16, 2025 
+= 5.5.1 =
+Release date: October 20, 2025
 
-*New Feature: Archive format per backup 
-*New Feature: Archive name per backup 
+* Security Fix: Missing Authorization to Sensitive Information Exposure
+* Fix: HiDrive backup download partially not working.
+* Fix: HiDrive backup not working properly due to major storage issue.
+* Fix: Compatibility issue with .donotbackup file and open_basedir environments.
+* Fix: Minor UX issues when including files in backups.
+* Fix: OneDrive allow users to reauthenticate.
+
+= 5.5.0 =
+Release date: September 16, 2025
+
+* New Feature: Archive format per backup
+* New Feature: Archive name per backup 
 
 5.4.1 Release date: September 2, 2025
 

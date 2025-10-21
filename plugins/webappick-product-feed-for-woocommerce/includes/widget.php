@@ -70,7 +70,10 @@ if ( ! function_exists('webappick_dashboard_widget_render') ) {
         <?php //}
 
         if( !\CTXFeed\V5\Common\Helper::is_pro() ) { ?>
-            <a target="_blank" href="https://discoplugin.com/?utm_source=CTX&utm_medium=Feed-dSboard&utm_campaign=Banner&utm_id=1">
+            <!--a target="_blank" href="https://discoplugin.com/?utm_source=CTX&utm_medium=Feed-dSboard&utm_campaign=Banner&utm_id=1">
+                <div class="woo-feed-widget-banner-disco-free"> </div>
+            </a-->
+            <a target="_blank" href="https://webappick.com/discount-deal/?utm_source=halloween_25&utm_medium=wp_free&utm_campaign=halloween_25">
                 <div class="woo-feed-widget-banner-disco-free"> </div>
             </a>
             <hr>

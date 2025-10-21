@@ -21,7 +21,7 @@ class MLACore {
 	 *
 	 * @var	string
 	 */
-	const CURRENT_MLA_VERSION = '3.29';
+	const CURRENT_MLA_VERSION = '3.30';
 
 	/**
 	 * Current date for Development Versions, empty for production versions
@@ -30,7 +30,7 @@ class MLACore {
 	 *
 	 * @var	string
 	 */
-	const MLA_DEVELOPMENT_VERSION = '20251014';
+	const MLA_DEVELOPMENT_VERSION = '';
 
 	/**
 	 * Slug for registering and enqueueing plugin style sheets (moved from class-mla-main.php)

@@ -4,7 +4,7 @@ Donate link: https://profiles.wordpress.org/emrevona/
 Tags: cache, Optimize, performance, PageSpeed, core web vitals
 Requires at least: 5.3
 Tested up to: 6.8
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -117,6 +117,11 @@ Chinese Simplified (China), Chinese Traditional (Taiwan), Czech, Dutch (Belgium)
 18. Database Cleanup
 
 == Changelog ==
+
+= 1.4.1 =
+* Added display of orphaned post meta, comment meta, user meta, term meta, and term relationship counts 
+* Added nonce verification and capability checks to the wpfc_db_fix AJAX action to prevent unauthorized database cleanup requests
+* Added a validation to ensure Elementor’s CSS Print Method is set to “Internal Embedding,” displaying an error with a help link if misconfigured [<a target="_blank" href="https://www.wpfastestcache.com/tutorial/elementor-plugin-settings/">Details</a>]
 
 = 1.4.0 =
 * Fixed: support both old (elementor_experiment-e_element_cache) and new (elementor_element_cache_ttl) Elementor cache options for compatibility

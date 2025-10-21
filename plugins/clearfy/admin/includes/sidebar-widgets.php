@@ -13,6 +13,7 @@
  * @return string
  */
 function wbcr_clearfy_get_sidebar_premium_widget() {
+    return;
 
 	$buy_premium_url = WCL_Plugin::app()->get_support()->get_pricing_url( true, 'license_page' );
 

@@ -217,7 +217,7 @@ class WCL_Plugin extends Wbcr_Factory480_Plugin {
 			}
 
 			if ( ! WCL_Plugin::app()->getPopulateOption( 'whitelabel_hide_license_page' ) ) {
-				$this->registerPage( 'WCL_LicensePage', WCL_PLUGIN_DIR . '/admin/pages/class-pages-license.php' );
+			//	$this->registerPage( 'WCL_LicensePage', WCL_PLUGIN_DIR . '/admin/pages/class-pages-license.php' );
 			}
 
 			if ( $this->isActivateComponent( 'widget_tools' ) ) {

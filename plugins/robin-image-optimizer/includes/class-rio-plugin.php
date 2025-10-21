@@ -83,12 +83,39 @@ class WRIO_Plugin extends Wbcr_Factory480_Plugin {
 
 			add_action( 'init', function () {
 				$this->registerPages();
+				if(WRIO_Plugin::app()->premium->is_active()){
+					update_option( 'robin_image_optimizer_logger_flag', 'yes' );
+				}
 			} );
 		}
 
 		add_action( 'plugins_loaded', [ $this, 'pluginsLoaded' ] );
+
+		add_filter( 'themeisle_sdk_products', [ __CLASS__, 'register_sdk' ] );
+		add_filter( 'themeisle_sdk_ran_promos', [ __CLASS__, 'sdk_hide_promo_notice' ] );
 	}
 
+
+	/**
+	 * Hide SDK promo notice for pro uses.
+	 *
+	 * @access public
+	 */
+	public static function sdk_hide_promo_notice( $should_show ) {
+		return WRIO_Plugin::app()->premium->is_active();
+	}
+	/**
+	 * Register product into SDK.
+	 *
+	 * @param array $products All products.
+	 *
+	 * @return array Registered product.
+	 */
+	public static function register_sdk( $products ) {
+		$products[] = WRIO_PLUGIN_FILE;
+
+		return $products;
+	}
 	/**
 	 * Статический метод для быстрого доступа к интерфейсу плагина.
 	 *

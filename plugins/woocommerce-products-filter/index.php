@@ -7,14 +7,15 @@
   Tested up to: WP 6.8
   Author: realmag777
   Author URI: https://pluginus.net/
-  Version: 1.3.7.1
+  Version: 1.3.7.2
   Requires PHP: 7.4
   Tags: filter,search,woocommerce,woocommerce filter,woocommerce product filter,woocommerce products filter,products filter,product filter,filter of products,filter for products,filter for woocommerce
   Text Domain: woocommerce-products-filter
   Domain Path: /languages
   Forum URI: https://pluginus.net/support/forum/woof-woocommerce-products-filter/
   WC requires at least: 6.0
-  WC tested up to: 10.1
+  WC tested up to: 10.2
+  Requires Plugins: woocommerce
  */
 
 //update_option('woof_settings', []);//dev: nearly absolute reset of the plugin settings
@@ -56,7 +57,7 @@ define('WOOF_PATH', plugin_dir_path(__FILE__));
 define('WOOF_LINK', plugin_dir_url(__FILE__));
 define('WOOF_PLUGIN_NAME', plugin_basename(__FILE__));
 define('WOOF_EXT_PATH', WOOF_PATH . 'ext/');
-define('WOOF_VERSION', '1.3.7.1');
+define('WOOF_VERSION', '1.3.7.2');
 //define('WOOF_VERSION', uniqid('woof-')); //for dev only to avoid js/css cache
 define('WOOF_MIN_WOOCOMMERCE_VERSION', '6.0');
 //classes
@@ -74,7 +75,7 @@ include WOOF_PATH . 'lib/alert/index.php';
 //***
 include WOOF_PATH . 'installer/first_settings.php';
 
-//13-06-2025
+//19-10-2025
 final class WOOF {
 
     public $settings = array();
@@ -955,6 +956,8 @@ final class WOOF {
             woof_really_curr_tax = {term_id:<?php echo intval($curr_tax->term_id) ?>, taxonomy: "<?php echo esc_html($curr_tax->taxonomy) ?>"};
             <?php
         }
+        
+        $clear_all_text = esc_html__('Clear All', 'woocommerce-products-filter');
         ?>
 
         var woof_ajaxurl = "<?php echo esc_url(admin_url('admin-ajax.php')) ?>";
@@ -969,7 +972,7 @@ final class WOOF {
         'rating': "<?php esc_html_e('rating', 'woocommerce-products-filter') ?>",
         'price': "<?php esc_html_e('price low to high', 'woocommerce-products-filter') ?>",
         'price-desc': "<?php esc_html_e('price high to low', 'woocommerce-products-filter') ?>",
-        'clear_all': "<?php esc_html_e(apply_filters('woof_clear_all_text', esc_html__('Clear All', 'woocommerce-products-filter'))) ?>",
+        'clear_all': "<?php echo apply_filters('woof_clear_all_text', $clear_all_text) ?>",
         'list_opener': "<?php esc_html_e('Сhild list opener', 'woocommerce-products-filter') ?>",
         };
 

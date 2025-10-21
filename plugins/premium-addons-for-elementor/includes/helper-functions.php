@@ -1594,7 +1594,7 @@ class Helper_Functions {
 							__( 'Widget Demo', 'premium-addons-for-elementor' ) .
 						'</a>
 						<a class="premium-promote-upgrade premium-widget-blocks elementor-button elementor-button-default" href="#" data-keyword="' . esc_attr( $keyword ) . '">' .
-							__( 'Premade Templates', 'premium-addons-for-elementor' ) .
+							__( 'Templates', 'premium-addons-for-elementor' ) .
 						'</a>
 					</div>
 				</div>',

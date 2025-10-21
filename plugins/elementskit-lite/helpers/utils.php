@@ -408,13 +408,15 @@ class Utils {
 	* @param string $post_type Post type. Default 'page'.
 	* @return WP_Post|null     WP_Post object if found, null otherwise.
 	*/
-	public static function get_page_by_title( string $slug, string $post_type = 'page' ): ?\WP_Post {
+	public static function get_page_by_title( $slug, $post_type = 'page' ) {
 		$query = new \WP_Query(
 			[
 				'post_type'      => $post_type,
 				'name'           => $slug,
 				'posts_per_page' => 1,
 				'post_status'    => 'publish',
+				'ignore_sticky_posts' => true,
+				'no_found_rows'  => true, // performance boost
 			]
 		);
 
