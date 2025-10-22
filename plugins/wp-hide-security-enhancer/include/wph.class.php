@@ -380,9 +380,9 @@
             
             function admin_print_styles()
                 {
-                    wp_enqueue_style( 'tipsy.css', WPH_URL . '/assets/css/tipsy.css', array(), WPH_CORE_VERSION );
+                    wp_enqueue_style( 'tipsy.css', WPH_URL . '/assets/css/tipsy.css', array(), WPH_CORE_VERSION, false );
                     
-                    wp_register_style('WPHStyle', WPH_URL . '/assets/css/wph.css', array(), WPH_CORE_VERSION );
+                    wp_register_style('WPHStyle', WPH_URL . '/assets/css/wph.css', array(), WPH_CORE_VERSION, false );
                     wp_enqueue_style( 'WPHStyle'); 
                 
                 }
@@ -390,7 +390,7 @@
                 
             function admin_print_styles_general()
                 {
-                    wp_register_style('WPH-Styles-general', WPH_URL . '/assets/css/wph-general.css', array(), WPH_CORE_VERSION );
+                    wp_register_style('WPH-Styles-general', WPH_URL . '/assets/css/wph-general.css', array(), WPH_CORE_VERSION, false );
                     wp_enqueue_style( 'WPH-Styles-general'); 
                 }
                 
@@ -398,9 +398,9 @@
             function admin_print_scripts()
                 {
                     wp_enqueue_script( 'jquery');
-                    wp_register_script('wph', WPH_URL . '/assets/js/wph.js', array(), WPH_CORE_VERSION );
+                    wp_register_script('wph', WPH_URL . '/assets/js/wph.js', array(), WPH_CORE_VERSION, false );
                     
-                    wp_enqueue_script('jquery.tipsy.js', WPH_URL . '/assets/js/jquery.tipsy.js', array(), WPH_CORE_VERSION  ); 
+                    wp_enqueue_script('jquery.tipsy.js', WPH_URL . '/assets/js/jquery.tipsy.js', array(), WPH_CORE_VERSION, false  ); 
                     
                     // Localize the script with new data
                     $translation_array = array(

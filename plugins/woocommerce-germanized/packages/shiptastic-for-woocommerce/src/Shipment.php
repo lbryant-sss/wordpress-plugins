@@ -156,7 +156,10 @@ abstract class Shipment extends WC_Data {
 		'country'                         => '',
 		'address'                         => array(),
 		'tracking_id'                     => '',
+		'tracking_url'                    => '',
+		'tracking_instruction'            => '',
 		'shipping_provider'               => '',
+		'shipping_provider_title'         => '',
 		'shipping_method'                 => '',
 		'pickup_location_code'            => '',
 		'pickup_location_customer_number' => '',
@@ -1053,27 +1056,31 @@ abstract class Shipment extends WC_Data {
 	 *
 	 * @return string
 	 */
-	public function get_tracking_url() {
-		$tracking_url = '';
+	public function get_tracking_url( $context = 'view' ) {
+		$tracking_url = $this->get_prop( 'tracking_url', $context );
 
-		if ( $provider = $this->get_shipping_provider_instance() ) {
-			$tracking_url = $provider->get_tracking_url( $this );
+		if ( 'view' === $context && empty( $tracking_url ) ) {
+			if ( $provider = $this->get_shipping_provider_instance() ) {
+				$tracking_url = $provider->get_tracking_url( $this );
+			}
+
+			/**
+			 * Filter to adjust a Shipment's tracking URL.
+			 *
+			 * The dynamic portion of this hook, `$this->get_hook_prefix()` is used to construct a
+			 * unique hook for a shipment type.
+			 *
+			 * Example hook name: woocommerce_shiptastic_shipment_get_tracking_url
+			 *
+			 * @param string   $tracking_url The tracking URL.
+			 * @param Shipment $shipment The shipment object.
+			 *
+			 * @package Vendidero/Shiptastic
+			 */
+			$tracking_url = apply_filters( "{$this->get_hook_prefix()}tracking_url", $tracking_url, $this );
 		}
 
-		/**
-		 * Filter to adjust a Shipment's tracking URL.
-		 *
-		 * The dynamic portion of this hook, `$this->get_hook_prefix()` is used to construct a
-		 * unique hook for a shipment type.
-		 *
-		 * Example hook name: woocommerce_shiptastic_shipment_get_tracking_url
-		 *
-		 * @param string   $tracking_url The tracking URL.
-		 * @param Shipment $shipment The shipment object.
-		 *
-		 * @package Vendidero/Shiptastic
-		 */
-		return apply_filters( "{$this->get_hook_prefix()}tracking_url", $tracking_url, $this );
+		return $tracking_url;
 	}
 
 	/**
@@ -1081,27 +1088,37 @@ abstract class Shipment extends WC_Data {
 	 *
 	 * @return string
 	 */
-	public function get_tracking_instruction( $plain = false ) {
-		$instruction = '';
+	public function get_tracking_instruction( $context = 'view' ) {
+		$instruction = $this->get_prop( 'tracking_instruction', $context );
 
-		if ( $provider = $this->get_shipping_provider_instance() ) {
-			$instruction = $provider->get_tracking_desc( $this, $plain );
+		if ( is_bool( $context ) ) {
+			$context = true === $context ? 'plain' : 'view';
 		}
 
-		/**
-		 * Filter to adjust a Shipment's tracking instruction.
-		 *
-		 * The dynamic portion of this hook, `$this->get_hook_prefix()` is used to construct a
-		 * unique hook for a shipment type.
-		 *
-		 * Example hook name: woocommerce_shiptastic_shipment_get_tracking_instruction
-		 *
-		 * @param string                                   $instruction The tracking instruction.
-		 * @param Shipment $this The shipment object.
-		 *
-		 * @package Vendidero/Shiptastic
-		 */
-		return apply_filters( "{$this->get_hook_prefix()}tracking_instruction", $instruction, $this );
+		if ( in_array( $context, array( 'view', 'plain' ), true ) && empty( $instruction ) ) {
+			if ( $provider = $this->get_shipping_provider_instance() ) {
+				$instruction = $provider->get_tracking_desc( $this, 'plain' === $context );
+			} elseif ( $provider_title = $this->get_shipping_provider_title() ) {
+				$instruction = sprintf( _x( 'Shipping via %s.', 'shipments-tracking-instruction', 'woocommerce-germanized' ), $provider_title );
+			}
+
+			/**
+			 * Filter to adjust a Shipment's tracking instruction.
+			 *
+			 * The dynamic portion of this hook, `$this->get_hook_prefix()` is used to construct a
+			 * unique hook for a shipment type.
+			 *
+			 * Example hook name: woocommerce_shiptastic_shipment_get_tracking_instruction
+			 *
+			 * @param string                                   $instruction The tracking instruction.
+			 * @param Shipment $this The shipment object.
+			 *
+			 * @package Vendidero/Shiptastic
+			 */
+			$instruction = apply_filters( "{$this->get_hook_prefix()}tracking_instruction", $instruction, $this );
+		}
+
+		return $instruction;
 	}
 
 	/**
@@ -1110,7 +1127,7 @@ abstract class Shipment extends WC_Data {
 	 * @return boolean
 	 */
 	public function has_tracking_instruction() {
-		$instruction = $this->get_tracking_instruction( true );
+		$instruction = $this->get_tracking_instruction( 'plain' );
 
 		return ( ! empty( $instruction ) ) ? true : false;
 	}
@@ -1125,12 +1142,16 @@ abstract class Shipment extends WC_Data {
 		return $this->get_prop( 'shipping_provider', $context );
 	}
 
-	public function get_shipping_provider_title() {
-		if ( $provider = $this->get_shipping_provider_instance() ) {
-			return $provider->get_title();
+	public function get_shipping_provider_title( $context = 'view' ) {
+		$title = $this->get_prop( 'shipping_provider_title', $context );
+
+		if ( 'view' === $context && empty( $title ) ) {
+			if ( $provider = $this->get_shipping_provider_instance() ) {
+				$title = $provider->get_title();
+			}
 		}
 
-		return '';
+		return $title;
 	}
 
 	public function get_shipping_provider_instance() {
@@ -2166,6 +2187,34 @@ abstract class Shipment extends WC_Data {
 	}
 
 	/**
+	 * Set shipment tracking url.
+	 *
+	 * @param string $tracking_url The tracking url.
+	 */
+	public function set_tracking_url( $tracking_url ) {
+		$this->set_prop( 'tracking_url', $tracking_url );
+	}
+
+	/**
+	 * Set shipment tracking instruction.
+	 *
+	 * @param string $tracking_instruction The tracking instruction.
+	 */
+	public function set_tracking_instruction( $tracking_instruction ) {
+		$this->set_prop( 'tracking_instruction', $tracking_instruction );
+	}
+
+	public function remove_tracking() {
+		$this->set_tracking_id( '' );
+		$this->set_tracking_url( '' );
+		$this->set_tracking_instruction( '' );
+
+		if ( $this->supports_label() && ( $label = $this->get_label() ) ) {
+			$label->delete( true );
+		}
+	}
+
+	/**
 	 * Set shipment tracking secret.
 	 *
 	 * @param string $secret The tracking secret.
@@ -2200,6 +2249,15 @@ abstract class Shipment extends WC_Data {
 	 */
 	public function set_shipping_provider( $provider ) {
 		$this->set_prop( 'shipping_provider', wc_stc_get_shipping_provider_slug( $provider ) );
+	}
+
+	/**
+	 * Set shipment shipping provider title.
+	 *
+	 * @param string $provider_title The shipping provider title.
+	 */
+	public function set_shipping_provider_title( $provider_title ) {
+		$this->set_prop( 'shipping_provider_title', $provider_title );
 	}
 
 	/**
@@ -2937,15 +2995,16 @@ abstract class Shipment extends WC_Data {
 	}
 
 	public function delete_label( $force = false ) {
-		if ( $this->supports_label() && ( $label = $this->get_label() ) ) {
-			$label->delete( $force );
-			$this->set_tracking_id( '' );
-			$this->save();
+		$result = false;
 
-			return true;
+		if ( $this->supports_label() && $this->get_label() ) {
+			$result = true;
 		}
 
-		return false;
+		$this->remove_tracking();
+		$this->save();
+
+		return $result;
 	}
 
 	/**
@@ -3107,6 +3166,27 @@ abstract class Shipment extends WC_Data {
 
 			if ( array_key_exists( 'packaging_id', $this->get_changes() ) || $this->is_editable() ) {
 				$this->update_packaging();
+			}
+
+			/**
+			 * Reset tracking information and delete (old) label when changing provider.
+			 */
+			if ( array_key_exists( 'shipping_provider', $this->get_changes() ) ) {
+				foreach ( array( 'tracking_id', 'tracking_url', 'tracking_instruction' ) as $tracking_field ) {
+					if ( ! array_key_exists( $tracking_field, $this->get_changes() ) ) {
+						$this->{"set_{$tracking_field}"}( '' );
+
+						if ( 'tracking_id' === $tracking_field ) {
+							$old_provider_name = $this->data['shipping_provider'];
+
+							if ( ! empty( $old_provider_name ) && ( $provider_instance = wc_stc_get_shipping_provider( $old_provider_name ) ) ) {
+								if ( $label = $provider_instance->get_label( $this ) ) {
+									$label->delete( true );
+								}
+							}
+						}
+					}
+				}
 			}
 
 			if ( $this->data_store ) {

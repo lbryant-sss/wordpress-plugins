@@ -1407,17 +1407,17 @@
         },
         {
             "name": "automattic/jetpack-forms",
-            "version": "v6.11.0",
-            "version_normalized": "6.11.0.0",
+            "version": "v6.12.0",
+            "version_normalized": "6.12.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Automattic/jetpack-forms.git",
-                "reference": "343d72f2529956801581f4f1727e0d964b6ec1c1"
+                "reference": "b940c075ae37d9de64f7b5f46bbcddfc766fce2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Automattic/jetpack-forms/zipball/343d72f2529956801581f4f1727e0d964b6ec1c1",
-                "reference": "343d72f2529956801581f4f1727e0d964b6ec1c1",
+                "url": "https://api.github.com/repos/Automattic/jetpack-forms/zipball/b940c075ae37d9de64f7b5f46bbcddfc766fce2e",
+                "reference": "b940c075ae37d9de64f7b5f46bbcddfc766fce2e",
                 "shasum": ""
             },
             "require": {
@@ -1443,14 +1443,14 @@
             "suggest": {
                 "automattic/jetpack-autoloader": "Allow for better interoperability with other plugins that use this package."
             },
-            "time": "2025-10-20T14:05:54+00:00",
+            "time": "2025-10-21T12:59:55+00:00",
             "type": "jetpack-library",
             "extra": {
                 "autotagger": true,
                 "textdomain": "jetpack-forms",
                 "mirror-repo": "Automattic/jetpack-forms",
                 "branch-alias": {
-                    "dev-trunk": "6.11.x-dev"
+                    "dev-trunk": "6.12.x-dev"
                 },
                 "changelogger": {
                     "link-template": "https://github.com/automattic/jetpack-forms/compare/v${old}...v${new}"
@@ -1471,7 +1471,7 @@
             ],
             "description": "Jetpack Forms",
             "support": {
-                "source": "https://github.com/Automattic/jetpack-forms/tree/v6.11.0"
+                "source": "https://github.com/Automattic/jetpack-forms/tree/v6.12.0"
             },
             "install-path": "../../jetpack_vendor/automattic/jetpack-forms"
         },
@@ -1963,17 +1963,17 @@
         },
         {
             "name": "automattic/jetpack-my-jetpack",
-            "version": "v5.27.7",
-            "version_normalized": "5.27.7.0",
+            "version": "v5.27.8",
+            "version_normalized": "5.27.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Automattic/jetpack-my-jetpack.git",
-                "reference": "304928d8effa82b5275dfbe76c41e165015cf3a4"
+                "reference": "8da335a7deb33fdce37a1adddabf4c97b4f41f8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Automattic/jetpack-my-jetpack/zipball/304928d8effa82b5275dfbe76c41e165015cf3a4",
-                "reference": "304928d8effa82b5275dfbe76c41e165015cf3a4",
+                "url": "https://api.github.com/repos/Automattic/jetpack-my-jetpack/zipball/8da335a7deb33fdce37a1adddabf4c97b4f41f8e",
+                "reference": "8da335a7deb33fdce37a1adddabf4c97b4f41f8e",
                 "shasum": ""
             },
             "require": {
@@ -2002,7 +2002,7 @@
             "suggest": {
                 "automattic/jetpack-autoloader": "Allow for better interoperability with other plugins that use this package."
             },
-            "time": "2025-10-20T14:05:47+00:00",
+            "time": "2025-10-21T12:59:50+00:00",
             "type": "jetpack-library",
             "extra": {
                 "autotagger": true,
@@ -2037,7 +2037,7 @@
             ],
             "description": "WP Admin page with information and configuration shared among all Jetpack stand-alone plugins",
             "support": {
-                "source": "https://github.com/Automattic/jetpack-my-jetpack/tree/v5.27.7"
+                "source": "https://github.com/Automattic/jetpack-my-jetpack/tree/v5.27.8"
             },
             "install-path": "../../jetpack_vendor/automattic/jetpack-my-jetpack"
         },
@@ -2640,17 +2640,17 @@
         },
         {
             "name": "automattic/jetpack-search",
-            "version": "v0.52.23",
-            "version_normalized": "0.52.23.0",
+            "version": "v0.52.24",
+            "version_normalized": "0.52.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Automattic/jetpack-search.git",
-                "reference": "2266d77f089c438d15d2e33d2107d897ecfdc5ac"
+                "reference": "73960e1293bf7beb917d73244b1688d6e557ff60"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Automattic/jetpack-search/zipball/2266d77f089c438d15d2e33d2107d897ecfdc5ac",
-                "reference": "2266d77f089c438d15d2e33d2107d897ecfdc5ac",
+                "url": "https://api.github.com/repos/Automattic/jetpack-search/zipball/73960e1293bf7beb917d73244b1688d6e557ff60",
+                "reference": "73960e1293bf7beb917d73244b1688d6e557ff60",
                 "shasum": ""
             },
             "require": {
@@ -2658,7 +2658,7 @@
                 "automattic/jetpack-config": "^3.1.1",
                 "automattic/jetpack-connection": "^6.19.0",
                 "automattic/jetpack-constants": "^3.0.8",
-                "automattic/jetpack-my-jetpack": "^5.27.7",
+                "automattic/jetpack-my-jetpack": "^5.27.8",
                 "automattic/jetpack-status": "^6.1.0",
                 "automattic/jetpack-sync": "^4.22.1",
                 "php": ">=7.2"
@@ -2672,7 +2672,7 @@
             "suggest": {
                 "automattic/jetpack-autoloader": "Allow for better interoperability with other plugins that use this package."
             },
-            "time": "2025-10-20T14:05:56+00:00",
+            "time": "2025-10-21T12:59:57+00:00",
             "type": "jetpack-library",
             "extra": {
                 "autotagger": true,
@@ -2700,7 +2700,7 @@
             ],
             "description": "Tools to assist with enabling cloud search for Jetpack sites.",
             "support": {
-                "source": "https://github.com/Automattic/jetpack-search/tree/v0.52.23"
+                "source": "https://github.com/Automattic/jetpack-search/tree/v0.52.24"
             },
             "install-path": "../../jetpack_vendor/automattic/jetpack-search"
         },

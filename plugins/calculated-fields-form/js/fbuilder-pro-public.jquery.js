@@ -1,9 +1,41 @@
-	$.fbuilder['version'] = '5.4.0.5';
+	$.fbuilder['version'] = '5.4.0.6';
 	$.fbuilder['controls'] = $.fbuilder['controls'] || {};
 	$.fbuilder['forms'] = $.fbuilder['forms'] || {};
 	$.fbuilder['css'] = $.fbuilder['css'] || {};
 	$.fbuilder['isMobile'] = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 	$.fbuilder['isIOS'] = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+	$.fbuilder['eval'] = function(toEval, context)
+	{
+		if ( toEval === '' ) return toEval;
+		try {
+			context = context || {};
+			const unique = 'cff_code_'+Math.random().toString(36).replace(/[^a-z]+/g, '').slice(0, 6);
+			const unique_error = unique+'_error';
+			let str = '<script id="'+unique+'">try{';
+			for (let key in context) {
+				if (context.hasOwnProperty(key)) {
+					str += 'let '+key+'='+JSON.stringify(context[key])+';';
+				}
+			}
+			str += unique+'='+toEval+'}catch(err){'+unique_error+'=err;}</script>';
+			$('body').append(str);
+			$('[id="'+unique+'"]').remove();
+
+			if ( unique_error in window ) {
+				let tmp = window[unique_error];
+				delete window[unique_error];
+				delete window[unique];
+				throw tmp;
+			} else  {
+				let tmp = window[unique];
+				delete window[unique];
+				return tmp;
+			}
+		} catch ( err ) {
+			throw err;
+		}
+	};
 
 	$.fbuilder['isNumeric'] = function(n){return !isNaN(parseFloat(n)) && isFinite(n);};
 

@@ -4,7 +4,7 @@
  * Plugin URI: https://woodysnippet.com/
  * Description: Executes PHP code, uses conditional logic to insert ads, text, media content and external service’s code. Ensures no content duplication.
  * Author: Themeisle
- * Version: 2.6.0
+ * Version: 2.6.1
  * WordPress Available:  yes
  * Requires License:    no
  * Text Domain: insert-php

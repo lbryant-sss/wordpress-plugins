@@ -20,8 +20,13 @@
                     
                     add_action( 'show_user_profile',            array( $this, 'profile_2fa_options' ) );
                     add_action( 'edit_user_profile',            array( $this, 'profile_2fa_options' ) );
+                    
+                    add_action( 'woocommerce_edit_account_form', array( $this, 'profile_2fa_options' ) );
+                    
                     add_action( 'personal_options_update',      array( $this, 'profile_2fa_options_update' ) );
                     add_action( 'edit_user_profile_update',     array( $this, 'profile_2fa_options_update' ) );
+                    
+                    add_action( 'woocommerce_save_account_details', array( $this, 'profile_2fa_options_update' ) );
                     
                     add_action( 'wp_login',                     array( $this, 'wp_login' ),                     10, 2 );
                     
@@ -104,10 +109,13 @@
                     if ( ! $user instanceof WP_User )
                         return FALSE;
                     
-                    if ( ! is_array ( $_2fa_enable_for_roles )  ||  ! is_array ( $user->roles ) )
+                    if ( ! is_array ( $_2fa_enable_for_roles ) )
                         return FALSE;
                     
                     $user_roles =   $user->roles;
+                    
+                    if ( empty ( $user_roles ) )
+                        $user_roles[]   =   'no-role';
                     
                     foreach ( $user_roles   as  $user_role )     
                         {
@@ -150,7 +158,8 @@
                     if ( ! $login_nonce )
                         wp_die( esc_html__( 'Unable to create a login nonce.', 'wp-hide-security-enhancer' ) );
 
-                    $redirect_to = isset( $_REQUEST['redirect_to'] ) ? $_REQUEST['redirect_to'] : admin_url();
+                    //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+                    $redirect_to = isset( $_REQUEST['redirect_to'] ) ? wp_unslash ( $_REQUEST['redirect_to'] ) : admin_url();
 
                     $this->HTML( $user, $login_nonce['key'], $redirect_to );    
                 }
@@ -181,7 +190,7 @@
                     $use_2fa_option =   $this->active_2fa_options[ $use_2fa_id ];
 
                     $additional_2fa_options    = array_diff_key( $this->active_2fa_options, array( $use_2fa_id => false ) );
-                    $rememberme = ! empty( $_POST['rememberme'] );
+                    $rememberme = isset( $_POST['rememberme'] ) && '' !== wp_unslash( $_POST['rememberme'] );
 
                     if ( ! function_exists( 'login_header' ) )
                         require_once WPH_PATH . 'modules/components/login_2fa_template_login_header.php';
@@ -341,16 +350,16 @@
                     if ( ! $this->is_using_2fa() )
                         return;
                     
-                    $_2fa_user_id       = ! empty( $_REQUEST['2fa_user_id'] )   ? preg_replace( '/[^0-9a-zA-Z]/' , "",       $_REQUEST['2fa_user_id'] )          : 0;
-                    $_2fa_nonce         = ! empty( $_REQUEST['2fa_nonce'] )     ? preg_replace( '/[^0-9a-zA-Z]/' , "", $_REQUEST['2fa_nonce'] )            : '';
-                    $_2fa_id            = ! empty( $_REQUEST['2fa_id'] )        ? preg_replace( '/[^0-9a-zA-Z_]/' , "", $_REQUEST['2fa_id'] )              : '';
+                    $_2fa_user_id       = ! empty( $_REQUEST['2fa_user_id'] )   ? preg_replace( '/[^0-9a-zA-Z]/' , "",       wp_unslash( $_REQUEST['2fa_user_id'] ) )          : 0;
+                    $_2fa_nonce         = ! empty( $_REQUEST['2fa_nonce'] )     ? preg_replace( '/[^0-9a-zA-Z]/' , "",      wp_unslash( $_REQUEST['2fa_nonce'] ) )            : '';
+                    $_2fa_id            = ! empty( $_REQUEST['2fa_id'] )        ? preg_replace( '/[^0-9a-zA-Z_]/' , "",     wp_unslash( $_REQUEST['2fa_id'] ) )              : '';
                     $redirect_to        = ! empty( $_REQUEST['redirect_to'] )   ? wp_unslash( $_REQUEST['redirect_to'] )                                : '';
-                    $is_post_request    = ( 'POST' === strtoupper( $_SERVER['REQUEST_METHOD'] ) );
+                    $is_post_request    = ( 'POST' === strtoupper( wp_unslash ( $_SERVER['REQUEST_METHOD'] ) ) );
                     $user               = get_user_by( 'id', $_2fa_user_id );
-                    $submit             = ! empty( $_REQUEST['submit'] )   ? preg_replace( '/[^0-9a-zA-Z]/' , "",       $_REQUEST['submit'] )      : '';  
+                    $submit             = ! empty( $_REQUEST['submit'] )   ? preg_replace( '/[^0-9a-zA-Z]/' , "",      wp_unslash( $_REQUEST['submit'] ) )     : '';  
                     
                     $rememberme = false;
-                    if ( isset( $_REQUEST['rememberme'] ) && $_REQUEST['rememberme'] )
+                    if ( isset( $_REQUEST['rememberme'] ) && wp_unslash ( $_REQUEST['rememberme'] ) )
                         $rememberme = true;
 
                     if ( ! $_2fa_user_id || ! $_2fa_nonce ||    !   $_2fa_id    || ! $user )
@@ -696,6 +705,14 @@
             */
             function profile_2fa_options( $user ) 
                 {
+                    
+                    if ( ! is_object ( $user ) )
+                        {
+                            global $userdata;
+                            
+                            $user   =   $userdata;
+                        }
+                    
                     wp_enqueue_style( '2fa-dashboard', WPH_URL . '/assets/css/wph-2fa-dashboard.css');
                     wp_enqueue_script( '2fa-dashboard', WPH_URL . '/assets/js/wph-2fa-dashboard.js', array('jquery'), null, true );
 

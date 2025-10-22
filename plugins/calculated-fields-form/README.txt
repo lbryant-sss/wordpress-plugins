@@ -4,7 +4,7 @@ Donate link: http://cff.dwbooster.com
 Tags: form,quote form,contact form,form builder,calculator form
 Requires at least: 3.0.5
 Tested up to: 6.8
-Stable tag: 5.4.0.5
+Stable tag: 5.4.0.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -456,6 +456,11 @@ A: There are multiple alternatives, by using the [PDF generator add-on](https://
 
 == Changelog ==
 
+= 5.4.0.6 =
+
+* Modifies the equation evaluation module.
+* Includes new options in the media control to align the media controls and figure captions.
+
 = 5.4.0.5 =
 
 * Halloween promotion.
@@ -480,7 +485,3 @@ A: There are multiple alternatives, by using the [PDF generator add-on](https://
 * Refines container fields, such as Div, Fieldset, and Popup, to provide enhanced information about the fields distribution into columns.
 * Adjusts iframe attributes for forms loaded within iframes, aiming to enhance the overall accessibility score.
 * Initiates new JavaScript events to extend functionality and interactivity.
-
-= 5.3.99 =
-
-* Allows you to use url.param_name and var.variable_name as predefined field values to fill in fields with URL parameters and global JavaScript variables, respectively.

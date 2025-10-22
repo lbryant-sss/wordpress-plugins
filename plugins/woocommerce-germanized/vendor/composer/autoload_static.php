@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitce8f037d8d935a14639677b7b25d1832
+class ComposerStaticInit415fe2bbd1382932775d9d575f1029e3
 {
     public static $files = array (
         '241d2bc730dc592f76425fee315639b6' => __DIR__ . '/..' . '/globalcitizen/php-iban/oophp-iban.php',
@@ -444,6 +444,7 @@ class ComposerStaticInitce8f037d8d935a14639677b7b25d1832
         'Vendidero\\Shiptastic\\Caches\\ShipmentOrderCache' => __DIR__ . '/../..' . '/packages/shiptastic-for-woocommerce/src/Caches/ShipmentOrderCache.php',
         'Vendidero\\Shiptastic\\Caches\\ShippingProviderCache' => __DIR__ . '/../..' . '/packages/shiptastic-for-woocommerce/src/Caches/ShippingProviderCache.php',
         'Vendidero\\Shiptastic\\Compatibility\\Bundles' => __DIR__ . '/../..' . '/packages/shiptastic-for-woocommerce/src/Compatibility/Bundles.php',
+        'Vendidero\\Shiptastic\\Compatibility\\Sendcloud' => __DIR__ . '/../..' . '/packages/shiptastic-for-woocommerce/src/Compatibility/Sendcloud.php',
         'Vendidero\\Shiptastic\\Compatibility\\ShipmentTracking' => __DIR__ . '/../..' . '/packages/shiptastic-for-woocommerce/src/Compatibility/ShipmentTracking.php',
         'Vendidero\\Shiptastic\\Compatibility\\TranslatePress' => __DIR__ . '/../..' . '/packages/shiptastic-for-woocommerce/src/Compatibility/TranslatePress.php',
         'Vendidero\\Shiptastic\\Compatibility\\WPML' => __DIR__ . '/../..' . '/packages/shiptastic-for-woocommerce/src/Compatibility/WPML.php',
@@ -507,7 +508,9 @@ class ComposerStaticInitce8f037d8d935a14639677b7b25d1832
         'Vendidero\\Shiptastic\\DataStores\\Shipment' => __DIR__ . '/../..' . '/packages/shiptastic-for-woocommerce/src/DataStores/Shipment.php',
         'Vendidero\\Shiptastic\\DataStores\\ShipmentItem' => __DIR__ . '/../..' . '/packages/shiptastic-for-woocommerce/src/DataStores/ShipmentItem.php',
         'Vendidero\\Shiptastic\\DataStores\\ShippingProvider' => __DIR__ . '/../..' . '/packages/shiptastic-for-woocommerce/src/DataStores/ShippingProvider.php',
+        'Vendidero\\Shiptastic\\EmailLocale' => __DIR__ . '/../..' . '/packages/shiptastic-for-woocommerce/src/EmailLocale.php',
         'Vendidero\\Shiptastic\\Emails' => __DIR__ . '/../..' . '/packages/shiptastic-for-woocommerce/src/Emails.php',
+        'Vendidero\\Shiptastic\\Encoding' => __DIR__ . '/../..' . '/packages/shiptastic-for-woocommerce/src/Encoding.php',
         'Vendidero\\Shiptastic\\Extensions' => __DIR__ . '/../..' . '/packages/shiptastic-for-woocommerce/src/Extensions.php',
         'Vendidero\\Shiptastic\\FormHandler' => __DIR__ . '/../..' . '/packages/shiptastic-for-woocommerce/src/FormHandler.php',
         'Vendidero\\Shiptastic\\ImageToPDF' => __DIR__ . '/../..' . '/packages/shiptastic-for-woocommerce/src/ImageToPDF.php',
@@ -646,9 +649,9 @@ class ComposerStaticInitce8f037d8d935a14639677b7b25d1832
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitce8f037d8d935a14639677b7b25d1832::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitce8f037d8d935a14639677b7b25d1832::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitce8f037d8d935a14639677b7b25d1832::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit415fe2bbd1382932775d9d575f1029e3::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit415fe2bbd1382932775d9d575f1029e3::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit415fe2bbd1382932775d9d575f1029e3::$classMap;
 
         }, null, ClassLoader::class);
     }

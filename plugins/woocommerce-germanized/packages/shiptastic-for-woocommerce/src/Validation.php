@@ -25,24 +25,45 @@ class Validation {
 				if ( $order->get_id() > 0 ) {
 					$old_shipping_status = '';
 					$new_shipping_status = '';
+					$old_return_status   = '';
+					$new_return_status   = '';
 
 					if ( $order_shipments = wc_stc_get_shipment_order( $order ) ) {
-						$new_shipping_status = $order_shipments->get_shipping_status( 'edit' );
+						$new_shipping_status     = $order_shipments->get_shipping_status( 'edit' );
+						$current_shipping_status = $order_shipments->get_current_shipping_status();
+						$new_return_status       = $order_shipments->get_return_status( 'edit' );
+						$current_return_status   = $order_shipments->get_current_return_status();
+
+						/**
+						 * New shipping status detected - update order meta data.
+						 */
+						if ( $current_shipping_status !== $new_shipping_status ) {
+							$order->update_meta_data( '_shipping_status', $current_shipping_status );
+							$new_shipping_status = $current_shipping_status;
+						}
+
+						/**
+						 * New return status detected - update order meta data.
+						 */
+						if ( $current_return_status !== $new_return_status ) {
+							$order->update_meta_data( '_return_status', $current_return_status );
+							$new_return_status = $current_return_status;
+						}
 					}
 
 					if ( $old_order = wc_get_order( $order->get_id() ) ) {
 						/**
-						 * Need to use a tweak here to force a fresh read of old metadata
-						 * due to caching.
+						 * Need to use a tweak here to force a fresh read of old metadata due to caching.
 						 */
 						$old_order->read_meta_data( true );
 						$old_shipping_status = $old_order->get_meta( '_shipping_status', true, 'edit' );
+						$old_return_status   = $old_order->get_meta( '_return_status', true, 'edit' );
 					}
 
-					if ( $old_shipping_status !== $new_shipping_status ) {
+					if ( $old_shipping_status !== $new_shipping_status || $old_return_status !== $new_return_status ) {
 						add_action(
 							'woocommerce_update_order',
-							function ( $order_id ) use ( $order, $old_shipping_status, $new_shipping_status ) {
+							function ( $order_id ) use ( $order, $old_shipping_status, $new_shipping_status, $old_return_status, $new_return_status ) {
 								if ( $order_id === $order->get_id() ) {
 									/**
 									 * Before triggering any custom actions, make sure to remove self to prevent infinite loops
@@ -50,22 +71,42 @@ class Validation {
 									 */
 									remove_all_actions( 'woocommerce_update_order', 9998 );
 
-									do_action( 'woocommerce_shiptastic_order_shipping_status_' . $new_shipping_status, $order->get_id(), $order );
+									if ( $old_shipping_status !== $new_shipping_status ) {
+										do_action( 'woocommerce_shiptastic_order_shipping_status_' . $new_shipping_status, $order->get_id(), $order );
 
-									if ( 'shipped' === $new_shipping_status ) {
-										/**
-										 * Action that fires as soon as an order has been shipped completely.
-										 * That is the case when the order contains all relevant shipments and all the shipments are marked as shipped.
-										 *
-										 * @param string  $order_id The order id.
-										 *
-										 * @package Vendidero/Shiptastic
-										 */
-										do_action( 'woocommerce_shiptastic_order_shipped', $order_id );
+										if ( 'shipped' === $new_shipping_status || ( 'delivered' === $new_shipping_status && in_array( $old_shipping_status, array( 'not-shipped', 'ready-for-shipping' ), true ) ) ) {
+											/**
+											 * Action that fires as soon as an order has been shipped completely.
+											 * That is the case when the order contains all relevant shipments and all the shipments are marked as shipped.
+											 *
+											 * @param string  $order_id The order id.
+											 *
+											 * @package Vendidero/Shiptastic
+											 */
+											do_action( 'woocommerce_shiptastic_order_shipped', $order_id );
+										}
+
+										do_action( 'woocommerce_shiptastic_order_shipping_status_' . $old_shipping_status . '_to_' . $new_shipping_status, $order->get_id(), $order );
+										do_action( 'woocommerce_shiptastic_order_shipping_status_changed', $order->get_id(), $old_shipping_status, $new_shipping_status, $order );
 									}
 
-									do_action( 'woocommerce_shiptastic_order_shipping_status_' . $old_shipping_status . '_to_' . $new_shipping_status, $order->get_id(), $order );
-									do_action( 'woocommerce_shiptastic_order_shipping_status_changed', $order->get_id(), $old_shipping_status, $new_shipping_status, $order );
+									if ( $old_return_status !== $new_return_status ) {
+										do_action( 'woocommerce_shiptastic_order_return_status_' . $new_return_status, $order->get_id(), $order );
+
+										if ( 'returned' === $new_return_status ) {
+											/**
+											 * Action that fires as soon as an order has been returned completely.
+											 *
+											 * @param string  $order_id The order id.
+											 *
+											 * @package Vendidero/Shiptastic
+											 */
+											do_action( 'woocommerce_shiptastic_order_returned', $order_id );
+										}
+
+										do_action( 'woocommerce_shiptastic_order_return_status_' . $old_return_status . '_to_' . $new_return_status, $order->get_id(), $order );
+										do_action( 'woocommerce_shiptastic_order_return_status_changed', $order->get_id(), $old_return_status, $new_return_status, $order );
+									}
 								}
 							},
 							9998,
@@ -85,29 +126,29 @@ class Validation {
 				$skip_validation       = false;
 
 				/**
-				 * Try to detect a edit-lock only save request and skip validation
+				 * Try to detect edit-lock only save request and skip validation
 				 */
 				if ( $is_edit_order_request && ( empty( $changes ) || ( 1 === count( $changes ) && array_key_exists( 'date_modified', $changes ) ) ) ) {
 					$skip_validation = true;
 				}
 
-				/**
-				 * Prevent additional validation from happening while saving order items.
-				 */
-				add_action(
-					'woocommerce_update_order_item',
-					function ( $order_item_id, $order_item ) use ( $order ) {
-						if ( is_a( $order_item, 'WC_Order_Item' ) ) {
-							if ( $order_item->get_order_id() === $order->get_id() ) {
-								remove_action( 'woocommerce_update_order_item', array( __CLASS__, 'update_order_item' ), 10 );
-							}
-						}
-					},
-					5,
-					2
-				);
-
 				if ( ! $skip_validation ) {
+					/**
+					 * Prevent additional validation from happening while saving order items.
+					 */
+					add_action(
+						'woocommerce_update_order_item',
+						function ( $order_item_id, $order_item ) use ( $order ) {
+							if ( is_a( $order_item, 'WC_Order_Item' ) ) {
+								if ( $order_item->get_order_id() === $order->get_id() ) {
+									remove_action( 'woocommerce_update_order_item', array( __CLASS__, 'update_order_item' ), 10 );
+								}
+							}
+						},
+						5,
+						2
+					);
+
 					add_action(
 						'woocommerce_update_order',
 						function ( $order_id ) use ( $order ) {
@@ -151,15 +192,21 @@ class Validation {
 		add_action( 'woocommerce_shiptastic_deleted_refund_order', array( __CLASS__, 'delete_refund_order' ), 10, 2 );
 		add_action( 'woocommerce_order_refund_object_updated_props', array( __CLASS__, 'refresh_refund_order' ), 10, 1 );
 
-		/**
-		 * In case a refund is created - make sure our invoices/cancellations are adjusted accordingly.
-		 * Use a lower priority to allow creating cancellations before the refund notification has been triggered.
-		 */
 		add_action( 'woocommerce_order_partially_refunded', array( __CLASS__, 'on_refund_order' ), 5, 2 );
 		add_action( 'woocommerce_order_fully_refunded', array( __CLASS__, 'on_refund_order' ), 5, 2 );
 
 		// Check for order shipping status changes
-		add_action( 'woocommerce_shiptastic_shipment_before_status_change', array( __CLASS__, 'maybe_update_order_shipping_status' ), 5, 2 );
+		add_action(
+			'woocommerce_shiptastic_shipment_before_status_change',
+			function ( $shipment_id, $shipment ) {
+				if ( $order = $shipment->get_order() ) {
+					self::maybe_update_order_shipping_status( $order );
+				}
+			},
+			5,
+			2
+		);
+		add_action( 'woocommerce_order_refunded', array( __CLASS__, 'maybe_update_order_shipping_status' ), 10 );
 		add_action( 'woocommerce_shiptastic_shipping_provider_deactivated', array( __CLASS__, 'maybe_disable_default_shipping_provider' ), 10 );
 	}
 
@@ -178,15 +225,18 @@ class Validation {
 	}
 
 	/**
-	 * @param integer $shipment_id
-	 * @param Shipment $shipment
+	 * @param WC_Order|Order $order
 	 */
-	public static function maybe_update_order_shipping_status( $shipment_id, $shipment ) {
-		if ( 'simple' === $shipment->get_type() && ( $order = $shipment->get_order() ) ) {
-			if ( $shipment_order = wc_stc_get_shipment_order( $order ) ) {
-				$shipping_status = $shipment_order->get_current_shipping_status();
+	public static function maybe_update_order_shipping_status( $order ) {
+		if ( $shipment_order = wc_stc_get_shipment_order( $order ) ) {
+			$shipping_status = $shipment_order->get_current_shipping_status();
+			$return_status   = $shipment_order->get_current_return_status();
 
-				$shipment_order->update_shipping_status( $shipping_status );
+			$has_updated_shipping_status = $shipment_order->update_shipping_status( $shipping_status, false );
+			$has_updated_return_status   = $shipment_order->update_return_status( $return_status, false );
+
+			if ( $has_updated_return_status || $has_updated_shipping_status ) {
+				$shipment_order->get_order()->save();
 			}
 		}
 	}
@@ -260,6 +310,8 @@ class Validation {
 		if ( $order_shipment = wc_stc_get_shipment_order( $refund->get_parent_id() ) ) {
 			$order_shipment->validate_shipments();
 			$order_shipment->sync_returns_with_refunds();
+
+			self::maybe_update_order_shipping_status( $order_shipment );
 		}
 	}
 

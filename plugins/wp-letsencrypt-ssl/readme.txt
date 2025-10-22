@@ -5,7 +5,7 @@ Requires at least: 5.4
 License: GPL3
 Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: 7.8.5.3
+Stable tag: 7.8.3
 
 Lifetime SSL solution – Install free SSL certificate & enable HTTPS redirect, Advanced security, Unlock every premium feature other plugins charge for — Free.
 

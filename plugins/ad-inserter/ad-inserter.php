@@ -18,7 +18,7 @@ License: GPLv3
 
 Change Log
 
-Ad Inserter 2.8.8 - 2025-10-15
+Ad Inserter 2.8.8 - 2025-10-20
 - Security fix for potential cross site scripting
 - Few minor bug fixes, cosmetic changes and code improvements
 
@@ -9584,11 +9584,13 @@ function ai_process_shortcode (&$block, $atts) {
         return $ai_wp_data [AI_CUSTOM_FIELDS][$custom_field_name];
       }
 
-      $post_meta = sanitize_text_field (get_post_meta (get_the_ID (), $parameters ['custom-field']));
+      $post_meta = get_post_meta (get_the_ID (), $parameters ['custom-field']);
 
       if (is_array ($post_meta)) {
         $post_meta = implode (', ', $post_meta);
       }
+
+      $post_meta = sanitize_text_field ($post_meta);
 
       return empty ($post_meta) && $default_value !== null ? $default_value : $post_meta;
     }

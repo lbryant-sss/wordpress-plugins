@@ -324,12 +324,6 @@
 						return false;
 					};
 
-				// Private function, the variable names in the equations are replaced by its values, return the equation result or false if error
-				_eval = function(eq)
-					{
-						return eval(eq); // Evaluate the final equation
-					};
-
 				_calculate = function(eq, suffix, __ME__)
 					{
 						var e = $.fbuilder['forms'][suffix].getItem(__ME__),
@@ -366,12 +360,19 @@
 						}
 						try
 						{
-							var r = _eval(eq.replace(/^\(/, '').replace(/\)$/, '').replace(/\b__ME__\b/g, __ME__)); // Evaluate the final equation
+							eq = eq.replace(/^\(/, '').replace(/\)$/, '').replace(/\b__ME__\b/g, __ME__);
+							var r;
+							try {
+								r = eval(eq);
+							} catch (err) {
+								if ( err instanceof EvalError ) r = $.fbuilder['eval'].call(this, eq);
+								else throw err;
+							}
 							return (typeof r != 'undefined' && _validate_result(r)) ? r : false;
 						}
-						catch(e)
+						catch( err2 )
 						{
-							if(typeof console != 'undefined'){console.log(eq); console.log(e.message);}
+							console.log(eq, 'Error:', err2.message);
 							return false;
 						}
 					};
@@ -492,11 +493,18 @@
 									try
 									{
 										// Get the rule and evaluate
-										var rule = eval(dependencies[i].rule.replace(/value\s*&lt;/gi, 'value<')
+										var rule,
+											rule_src = dependencies[i].rule.replace(/value\s*&lt;/gi, 'value<')
 																			.replace(/value\s*&gt;/gi, 'value>')
 																			.replace(/value\|r/gi, values.raw)
-																			.replace(/value/gi, values.value)
-										);
+																			.replace(/value/gi, values.value);
+										try {
+											rule = eval(rule_src);
+										} catch (err) {
+											if ( err instanceof EvalError ) rule = $.fbuilder['eval'].call(this, rule_src);
+											else throw err;
+										}
+
 										$.each(dependencies[i].fields, function(j, e)
 											{
 												if(e != '')
@@ -519,9 +527,9 @@
 											});
 
 									}
-									catch(e)
+									catch(err2)
 									{
-										if(typeof console != 'undefined') console.log(e.message);
+										console.log(err2.message);
 										continue;
 									}
 								}

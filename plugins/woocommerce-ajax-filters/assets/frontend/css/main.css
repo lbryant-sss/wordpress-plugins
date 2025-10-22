@@ -1238,6 +1238,10 @@ body .berocket_ajax_filters_sidebar_back.brapf_sidefl_linegrey {
 .bapf_sfilter .brapf_disabled_checkbox input, .bapf_sfilter .brapf_disabled_checkbox label {
     cursor: default!important;
 }
+.bapf_sfilter .bapf_body .bapf_slidr_main .ui-slider-handle {
+    border-style: solid;
+}
+
 .bapf_sfilter.bapf_button_berocket .bapf_button {
     font-size: 20px;
     padding: 8px 30px;

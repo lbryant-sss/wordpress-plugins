@@ -4,13 +4,12 @@ Tags: commerce, ecommerce, woocommerce, multilingual, multicurrency
 License: GPLv2
 Requires at least: 6.0
 Tested up to: 6.8
-Stable tag: 5.5.1.1
+Stable tag: 5.5.2.2
 Requires PHP: 7.2
 
 Make your store multilingual and enable multiple currencies.
 
 == Description ==
-
 WPML Multilingual & Multicurrency for WooCommerce includes everything you need to start selling internationally. You can easily set up and manage products in multiple currencies, no matter the size of your store. Or, translate your entire store to reach new customers all over the world by purchasing WPML.
 
 https://www.youtube.com/watch?v=-xi2STSsd1s

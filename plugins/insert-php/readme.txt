@@ -1,11 +1,10 @@
 === Woody code snippets - Insert Header Footer Code, AdSense Ads ===
 Contributors: themeisle
-Donate link: https://woodysnippet.com
 Tags: code snippets, woocommerce, shortcode, adsense, header
 Requires at least: 5.6
 Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: 2.6.0
+Stable tag: 2.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -257,6 +256,13 @@ We will definitely add multisite support in the future. You can speed up this pr
 7. Custom shortcode name
 
 == Changelog ==
+
+#####   Version 2.6.1 (2025-10-21)
+
+- fix error with missing asset files
+
+
+
 
 ####   Version 2.6.0 (2025-10-20)
 

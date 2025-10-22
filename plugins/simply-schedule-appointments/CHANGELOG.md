@@ -1,5 +1,11 @@
 # Changelog
 
+## SSA-VERSION-PREFIX.6.9.2 - 2025-10-14
+
+### Features and Improvements
+
+- Feature Improvement: Upsize emojis in notification message field
+
 ## SSA-VERSION-PREFIX.6.8.65 - 2025-10-07
 
 ### Fixes

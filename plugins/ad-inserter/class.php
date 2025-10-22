@@ -9477,12 +9477,6 @@ echo '</body>
         $urls_listed [$index] = trim ($url_listed);
     }
 
-//    print_r ($urls_listed);
-//    echo "<br />\n";
-//    echo ' page url: ' . $page_url, "<br />\n";
-//    echo ' listed urls: ' . $urls, "\n";
-//    echo "<br />\n";
-
     foreach ($urls_listed as $url_listed) {
       if ($url_listed == '*') return $return;
 

@@ -4,7 +4,7 @@ Donate link: https://www.nsp-code.com/
 Tags: hide, security, headers, login, 2fa
 Requires at least: 2.8
 Tested up to: 6.8.2
-Stable tag: 2.7.4
+Stable tag: 2.7.6
 License: GPLv2 or later
 
 Protect your website by concealing vulnerable WordPress traces, plugins, themes, login/admin url. 2FA, Captcha, Firewall, Security Headers etc.
@@ -54,6 +54,7 @@ Once configured, you need to **clear server cache data and/or any cache plugins*
 * 2FA - Two-factor Authentication - Authenticator App
 * 2FA - Two-factor Authentication - Recovery Codes
 * 2FA - Two-factor Authentication - Shortcode for front-side user settings interface
+* 2FA - Two-factor Authentication - My Account > Account Details - area for 2FA user settings interface
 * Google Captcha 
 * Blocks default wp-login.php
 * Blocks default wp-signup.php
@@ -464,7 +465,13 @@ We’re continuously improving WP Hide! If there’s a feature you need—whethe
 
 == Changelog == 
 
-= 3.7.4 =
+= 2.7.6 =
+* Add escape output for all texts through esc_html_e, esc_html__, esc_html, esc_attr, esc_url.
+* Add nonces to urls.
+* Check if a specific superglobal property exists before using it. 
+* Fix wp_kses() stripping out certain html tags. Add to allowed list. 
+
+= 2.7.4 =
 * Code improvements, revisions and cleanup.
 * Add escapes to different texts. 
 * Fix textdomain typos.

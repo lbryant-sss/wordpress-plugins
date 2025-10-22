@@ -1,3 +1,7 @@
+#####   Version 2.6.1 (2025-10-21)
+
+- fix error with missing asset files
+
 ####   Version 2.6.0 (2025-10-20)
 
 Woody Snippets plugin has been acquired by Themeisle 🎉

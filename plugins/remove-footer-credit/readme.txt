@@ -30,6 +30,11 @@ This plugin has very minimal options to keep things simple and easier to use. Yo
 
 1. Remove footer credit
 
+== Frequently Asked Questions ==
+= Where do I report security bugs found in this plugin? =
+
+Please report security bugs found in the source code of the Remove Footer Credit plugin through the [Patchstack Vulnerability Disclosure  Program](https://patchstack.com/database/vdp/9e5fb6b6-b072-459e-9418-5cbd18660aa2). The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin."
+
 == Changelog ==
 
 = 1.0.15 - 17.04.2025 =

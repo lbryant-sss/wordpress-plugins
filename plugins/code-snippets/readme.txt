@@ -1,10 +1,10 @@
 === Code Snippets ===
-Contributors: bungeshea, ver3, lightbulbman, 0aksmith, johnpixle
+Contributors: bungeshea, ver3, lightbulbman, 0aksmith, johnpixle, louiswol94, carolinaop
 Donate link: https://codesnippets.pro
 Tags: code, snippets, multisite, php, css
 License: GPL-2.0-or-later
 License URI: license.txt
-Stable tag: 3.7.0
+Stable tag: 3.7.1-beta.1
 Tested up to: 6.8.2
 
 An easy, clean and simple way to enhance your site with code snippets.
@@ -103,6 +103,29 @@ You can report security bugs found in the source code of this plugin through the
 4. Importing snippets from an export file
 
 == Changelog ==
+
+= 3.7.1-beta.1 (2025-10-16) =
+
+__Added__
+
+* Added @CarolinaOP and @louiswol94 as plugin contributors
+* File-based execution mode for snippets (Optional in Plugin Settings)
+
+__Changed__
+
+* Minor UI/UX tweaks to the editor form and sidebar
+* Improved editor preview behavior.
+
+__Fixed__
+
+* Improved reliability of snippet evaluation and front-end integration.
+* Prefixed Composer packages to reduce collisions with other plugins, especially those using Guzzle.
+* Functions conditions were loading before loop setup, resulting in some conditions not working. (PRO)
+* JavaScript and CSS snippets loading twice due to a conditions bug. (PRO)
+
+__Removed__
+
+* Removed CSS linting within the editor until a modern replacement can be implemented.
 
 = 3.7.0 (2025-08-29) =
 

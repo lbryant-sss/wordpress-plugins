@@ -333,7 +333,7 @@
                             if ( ! isset ( $_POST[ $setting_name ] ) )
                                 continue;
                                 
-                            $value  =   preg_replace( '/[^a-zA-Z0-9-_]/m' , '', $_POST[ $setting_name ] );
+                            $value  =   isset ( $_POST[ $setting_name ] )   ?   preg_replace( '/[^a-zA-Z0-9-_]/m' , '', wp_unslash ( $_POST[ $setting_name ] ) )   :   '';
                             if ( empty ( $value ) )
                                 continue;
                                 
@@ -348,7 +348,7 @@
                                     if ( ! isset ( $_POST[ $option_key ] ) )
                                         continue;
                                         
-                                    $value  =   preg_replace( '/[^a-zA-Z0-9-_\.]/m' , '', $_POST[ $option_key ] );
+                                    $value  =   isset ( $_POST[ $option_key ] ) ?   preg_replace( '/[^a-zA-Z0-9-_\.]/m' , '', wp_unslash ( $_POST[ $option_key ] ) )   :   '';
                                     if ( empty ( $value ) )
                                         continue;
                                     

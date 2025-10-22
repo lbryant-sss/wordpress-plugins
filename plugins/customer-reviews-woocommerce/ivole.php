@@ -3,7 +3,7 @@
 Plugin Name: Customer Reviews for WooCommerce
 Description: Customer Reviews for WooCommerce plugin helps you get more customer reviews for your shop by sending automated reminders and coupons.
 Plugin URI: https://wordpress.org/plugins/customer-reviews-woocommerce/
-Version: 5.85.0
+Version: 5.86.0
 Author: CusRev
 Author URI: https://www.cusrev.com/business/
 Text Domain: customer-reviews-woocommerce
@@ -74,10 +74,6 @@ if (
 
 	function cr_plugins_loaded() {
 		$cr_qtranslate = new CR_QTranslate();
-		if( is_admin() || wp_doing_cron() ) {
-			CR_Reviews_Importer::init_background_importer();
-			CR_Reviews_Exporter::init_background_exporter();
-		}
 	}
 
 	function cr_woocommerce_init() {

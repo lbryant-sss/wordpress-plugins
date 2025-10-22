@@ -1,5 +1,10 @@
 == Changelog ==
 
+= 5.4.0.6 =
+
+* Modifies the equation evaluation module.
+* Includes new options in the media control to align the media controls and figure captions.
+
 = 5.4.0.5 =
 
 * Halloween promotion.
