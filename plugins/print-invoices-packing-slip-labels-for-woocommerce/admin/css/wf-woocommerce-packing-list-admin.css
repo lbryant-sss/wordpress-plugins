@@ -597,7 +597,7 @@ a.button.wc-action-button.wc-action-button-wf_pklist_print_document_packinglist_
   box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
   top: 50px;
   border: 1px solid #ccc;
-  z-index: 9999;
+  z-index: 100000003;
 }
 
 .wf_popover:after,
@@ -807,6 +807,11 @@ a.button.wc-action-button.wc-action-button-wf_pklist_print_document_packinglist_
   margin-bottom: 10px;
 }
 
+.wt_pklist_product_meta_custom_field_form_notice {
+  font-style: italic;
+  color: #666;
+  margin-bottom: 10px;
+}
 .wt_pklist_custom_field_tab_content.active_tab {
   display: block;
 }

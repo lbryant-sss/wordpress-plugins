@@ -6,11 +6,13 @@ use DateTime;
 use IAWP\Date_Range\Date_Range;
 use IAWP\Date_Range\Exact_Date_Range;
 use IAWP\Date_Range\Relative_Date_Range;
+use IAWP\Rows\Filter;
 use IAWP\Statistics\Intervals\Interval;
 use IAWP\Statistics\Intervals\Intervals;
 use IAWP\Utils\Request;
 use IAWP\Utils\Singleton;
 use IAWP\Utils\Timezone;
+use IAWPSCOPED\Illuminate\Support\Collection;
 use Throwable;
 /**
  * Dashboards support various options via the search query string portion of the URL.
@@ -87,7 +89,20 @@ class Dashboard_Options
         $table_class = \IAWP\Env::get_table($this->report->type);
         $table = new $table_class($this->report->group_name ?? null);
         $filters = \json_decode($this->report->filters, \true);
-        return \is_null($filters) ? [] : $table->sanitize_filters($filters);
+        if ($filters === null) {
+            return [];
+        }
+        return $table->sanitize_filters($filters);
+    }
+    public function raw_filters() : array
+    {
+        return Collection::make($this->filters())->map(function (Filter $filter) {
+            return $filter->as_associative_array();
+        })->all();
+    }
+    public function filter_logic() : string
+    {
+        return $this->report->filter_logic ?? 'and';
     }
     public function sort_column() : ?string
     {

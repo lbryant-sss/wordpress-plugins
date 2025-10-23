@@ -59,6 +59,7 @@ class ComposerStaticInitc322fb32f6db8844392d9f78341fcefb
         'Code_Snippets\\Plugin' => __DIR__ . '/../..' . '/php/class-plugin.php',
         'Code_Snippets\\REST_API\\Snippets_REST_Controller' => __DIR__ . '/../..' . '/php/rest-api/class-snippets-rest-controller.php',
         'Code_Snippets\\Settings\\Setting_Field' => __DIR__ . '/../..' . '/php/settings/class-setting-field.php',
+        'Code_Snippets\\Settings\\Version_Switch' => __DIR__ . '/../..' . '/php/settings/class-version-switch.php',
         'Code_Snippets\\Settings_Menu' => __DIR__ . '/../..' . '/php/admin-menus/class-settings-menu.php',
         'Code_Snippets\\Snippet' => __DIR__ . '/../..' . '/php/class-snippet.php',
         'Code_Snippets\\Snippet_Config_Repository' => __DIR__ . '/../..' . '/php/flat-files/classes/class-config-repository.php',

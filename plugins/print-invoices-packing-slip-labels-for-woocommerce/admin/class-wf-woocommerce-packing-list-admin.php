@@ -104,6 +104,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 		$this->bulk_actions=apply_filters('wt_print_bulk_actions',$this->bulk_actions);
 
 		$order_meta_autocomplete = self::order_meta_dropdown_list();
+		$product_meta_autocomplete = self::product_meta_dropdown_list();
 		$wf_admin_img_path=WF_PKLIST_PLUGIN_URL . 'admin/images/uploader_sample_img.png';
 		$is_rtl = is_rtl() ? 'rtl' : 'ltr';
 		$user_id = get_current_user_id();
@@ -124,6 +125,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 			'bulk_actions'=>array_keys($this->bulk_actions),
 			'print_action_url'=>admin_url('?print_packinglist=true'),
 			'order_meta_autocomplete' => json_encode($order_meta_autocomplete),
+			'product_meta_autocomplete' => json_encode($product_meta_autocomplete),
 			'is_rtl' => $is_rtl,
 			'wt_plugin_data' => $wt_pklist_plugin_data,
 			'show_document_preview' => Wf_Woocommerce_Packing_List::get_option( 'woocommerce_wf_packinglist_preview' ),
@@ -1823,6 +1825,31 @@ class Wf_Woocommerce_Packing_List_Admin {
 						$the_options[$key] 	= 0;
 					}
 
+					if( "wf_invoice_product_meta" === $key ) {
+						if ( !empty($_POST[$key]) ) {
+							$the_options['wf_invoice_product_meta_fields'] = $_POST[$key];
+						}
+					}
+
+					if( "wt_invoice_dropbox_app_secret" === $key || "wt_invoice_dropbox_access_code" === $key ) {
+						// Only process if value exists and is not empty
+						if ( !empty($the_options[$key]) ) {
+							// Check if the value is already encoded by trying to decode and re-encode
+							try {
+								$decoded = Wf_Woocommerce_Packing_List::wf_decode($the_options[$key]);
+								$re_encoded = Wf_Woocommerce_Packing_List::wf_encode($decoded);
+								
+								// If re-encoding gives different result, it was not encoded
+								if ( $re_encoded !== $the_options[$key] ) {
+									$the_options[$key] = Wf_Woocommerce_Packing_List::wf_encode($the_options[$key]);
+								}
+							} catch (Exception $e) {
+								// If decoding fails, assume it's not encoded and encode it
+								$the_options[$key] = Wf_Woocommerce_Packing_List::wf_encode($the_options[$key]);
+							}
+						}
+					}
+
 	            	if ( isset( $multi_checkbox_fields[$key] ) ) {
 	            		$the_options[$key] 	= apply_filters( 'wf_module_save_multi_checkbox_fields', $the_options[$key], $key, $multi_checkbox_fields, $base_id );
 	            	}
@@ -2401,7 +2428,7 @@ class Wf_Woocommerce_Packing_List_Admin {
 		        	if("" !== trim($_POST['wt_pklist_new_custom_field_title']) && "" !== trim($_POST['wt_pklist_new_custom_field_key'])) // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		        	{
 		        		$custom_field_type=sanitize_text_field(wp_unslash($_POST['wt_pklist_custom_field_type'])); // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-		        		if("order_meta" === $custom_field_type)
+		        		if("order_meta" === $custom_field_type || "product_meta" === $custom_field_type)
 		        		{
 		        			$module_base = (isset($_POST['wt_pklist_settings_base']) ? sanitize_text_field(wp_unslash($_POST['wt_pklist_settings_base'])) : 'main'); // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 							$module_id = ("main" === $module_base ? '' : Wf_Woocommerce_Packing_List::get_module_id($module_base));
@@ -2411,71 +2438,76 @@ class Wf_Woocommerce_Packing_List_Admin {
 		        					'list'=>'wf_additional_data_fields',
 		        					'selected'=>'wf_'.$module_base.'_contactno_email',
 		        				),
+
+								'product_meta'=>array(
+		        					'list'=>'wf_product_meta_fields',
+		        					'selected'=>'wf_'.$module_base.'_product_meta_fields',
+		        				),
 		        			);
 
 		        			/* form input */
-		        			$new_meta_key=sanitize_text_field(wp_unslash($_POST['wt_pklist_new_custom_field_key'])); // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-        					$new_meta_vl=sanitize_text_field(wp_unslash($_POST['wt_pklist_new_custom_field_title'])); // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+                            $new_meta_key=sanitize_text_field(wp_unslash($_POST['wt_pklist_new_custom_field_key'])); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+                            $new_meta_vl=sanitize_text_field(wp_unslash($_POST['wt_pklist_new_custom_field_title'])); // phpcs:ignore WordPress.Security.NonceVerification.Missing
 
-        					/* option key names for full list, selected list */
-        					$list_field=$field_config[$custom_field_type]['list'];
-        					$val_field=$field_config[$custom_field_type]['selected'];
-        					
-        					/* list of user created items */
-        					$user_created=Wf_Woocommerce_Packing_List::get_option($list_field); //this is plugin main setting so no need to specify module base
+                            /* option key names for full list, selected list */
+                            $list_field=$field_config[$custom_field_type]['list'];
+                            $val_field=$field_config[$custom_field_type]['selected'];
+                            
+                            /* list of user created items */
+                            $user_created=Wf_Woocommerce_Packing_List::get_option($list_field); //this is plugin main setting so no need to specify module base
 
-        					/* updating new item to user created list */
-        					$old_meta_key = "";
-        					$old_meta_key_label = "";
-        					if(!empty($user_created) && is_array($user_created)){
-        						$old_meta_key = function_exists('array_key_first') ? array_key_first($user_created): key( array_slice( $user_created, 0, 1, true ) );
-								if (null === $old_meta_key) {
-								    $old_meta_key = ""; // An error should be handled here
-								} else {
-								    $old_meta_key_label = $user_created[$old_meta_key];
-								}
-        					}
+                            /* updating new item to user created list */
+                            $old_meta_key = "";
+                            $old_meta_key_label = "";
+                            if(!empty($user_created) && is_array($user_created)){
+                                $old_meta_key = function_exists('array_key_first') ? array_key_first($user_created): key( array_slice( $user_created, 0, 1, true ) );
+                                if (null === $old_meta_key) {
+                                    $old_meta_key = ""; // An error should be handled here
+                                } else {
+                                    $old_meta_key_label = $user_created[$old_meta_key];
+                                }
+                            }
 
-        					$user_created = array();
-        					$action=(isset($user_created[$new_meta_key]) ? 'edit' : 'add');
-				            
-				            $can_add_item=true;
-        					if("edit" === $action && $add_only)
-        					{
-        						$can_add_item=false;
-        					}
+                            $user_created = array();
+                            $action=(isset($user_created[$new_meta_key]) ? 'edit' : 'add');
+                            
+                            $can_add_item=true;
+                            if("edit" === $action && $add_only)
+                            {
+                                $can_add_item=false;
+                            }
 
-        					if($can_add_item)
-        					{	
+                            if($can_add_item)
+                            {   
 
-				            	$user_created[$new_meta_key] = $new_meta_vl;
-				            	Wf_Woocommerce_Packing_List::update_option($list_field, $user_created);
-				            }
+                                $user_created[$new_meta_key] = $new_meta_vl;
+                                Wf_Woocommerce_Packing_List::update_option($list_field, $user_created);
+                            }
 
-				            if(!$add_only)
-				            {
-					            $vl=Wf_Woocommerce_Packing_List::get_option($val_field, $module_id);
-					            $user_selected_arr =("" !== $vl && is_array($vl) ? $vl : array());			            
+                            if(!$add_only)
+                            {
+                                $vl=Wf_Woocommerce_Packing_List::get_option($val_field, $module_id);
+                                $user_selected_arr =("" !== $vl && is_array($vl) ? $vl : array());                        
 
-					            if(!in_array($new_meta_key, $user_selected_arr)) 
-					            {
-					                $user_selected_arr[] = $new_meta_key;
-					                Wf_Woocommerce_Packing_List::update_option($val_field, $user_selected_arr, $module_id);			                
-					            }
-					        }
+                                if(!in_array($new_meta_key, $user_selected_arr)) 
+                                {
+                                    $user_selected_arr[] = $new_meta_key;
+                                    Wf_Woocommerce_Packing_List::update_option($val_field, $user_selected_arr, $module_id);                         
+                                }
+                            }
 
-					        if($can_add_item)
-					        {
-					            $new_meta_key_display=Wf_Woocommerce_Packing_List::get_display_key($new_meta_key);
+                            if($can_add_item)
+                            {
+                                $new_meta_key_display=Wf_Woocommerce_Packing_List::get_display_key($new_meta_key);
 
-					            $dc_slug=self::sanitize_css_class_name($new_meta_key_display); /* This is for Dynamic customizer */
+                                $dc_slug=Wf_Woocommerce_Packing_List_Admin::sanitize_css_class_name($new_meta_key_display); /* This is for Dynamic customizer */
 
-					            $out=array('key'=>$new_meta_key, 'val'=>$new_meta_vl.$new_meta_key_display, 'dc_slug'=>$dc_slug, 'success'=>true, 'action'=>$action, 'old_meta_key' => $old_meta_key, 'old_meta_key_label' => $old_meta_key_label, 'new_meta_label' => $new_meta_vl);
-					        }else
-					        {
-					        	$out['msg']=__('Item with same meta key already exists', 'print-invoices-packing-slip-labels-for-woocommerce');
-					        }
-		        		}
+                                $out=array('key'=>$new_meta_key, 'val'=>$new_meta_vl.$new_meta_key_display, 'dc_slug'=>$dc_slug, 'success'=>true, 'action'=>$action, 'old_meta_key' => $old_meta_key, 'old_meta_key_label' => $old_meta_key_label, 'new_meta_label' => $new_meta_vl);
+                            }else
+                            {
+                                $out['msg']=__('Item with same meta key already exists', 'print-invoices-packing-slip-labels-for-woocommerce');
+                            }
+		        		} 
 
 		        	}else
 		        	{
@@ -2509,6 +2541,22 @@ class Wf_Woocommerce_Packing_List_Admin {
     	}
         return $order_meta_query;
     }
+	public static function product_meta_dropdown_list(){
+		$product_meta_query = array();
+		if(isset($_GET['page'])){ // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			if("wf_woocommerce_packing_list_invoice" === $_GET['page']){ // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+				global $wpdb;
+				$product_meta_selected_list = Wf_Woocommerce_Packing_List::get_option('wf_product_meta_fields');
+				$first_meta_key = function_exists('array_key_first') ? array_key_first($product_meta_selected_list): key( array_slice( $product_meta_selected_list, 0, 1, true ) );
+				$user_added_arr = array();
+				if (null !== $first_meta_key) {
+					$user_added_arr[] = array('label' => $first_meta_key);
+				}
+				// $product_meta_query = $user_added_arr;
+			}
+		}
+		return $product_meta_query;
+	}
 
     /**
      * @since 3.0.2

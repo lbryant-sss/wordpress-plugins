@@ -874,7 +874,6 @@ msgid "Upgrade Now"
 msgstr "Actualizar ahora"
 
 #: core/js/dist/admin.js:21
-#: core/js/dist/admin.js:37
 #: core/js/dist/admin.js:107
 msgid "Upgrade to Pro"
 msgstr "Actualizar a Pro"
@@ -1427,16 +1426,8 @@ msgid "Add new filter"
 msgstr "Añadir nuevo filtro"
 
 #: core/js/dist/admin.js:37
-msgid "Unlock display filtering"
-msgstr "Desbloquear filtrado de visualización"
-
-#: core/js/dist/admin.js:37
 msgid "Filtering allows you to tailor the content in each display to your visitors' interests, ensuring they find exactly what they're searching for in each section of your website."
 msgstr "El filtrado te permite adaptar el contenido de cada visualización a los intereses de tus visitantes, asegurando que encuentren exactamente lo que buscan en cada sección de tu sitio web."
-
-#: core/js/dist/admin.js:37
-msgid "Get Filtering with Pro"
-msgstr "Obtén filtrado con Pro"
 
 #: core/js/dist/admin.js:37
 msgid "Set up display filters"
@@ -1724,26 +1715,15 @@ msgid "Create Display"
 msgstr "Crear visualización"
 
 #: core/js/dist/admin.js:37
-msgid "Get access to Folders with Pro"
-msgstr "Obtén acceso a Carpetas con Pro"
-
-#: core/js/dist/admin.js:37
-msgid "Streamline your workflow by grouping sources into Folders"
-msgstr "Optimiza tu flujo de trabajo agrupando fuentes en Carpetas"
-
-#: core/js/dist/admin.js:37
 msgid "Welcome to a more organized way of managing your sources"
 msgstr "Bienvenido a una forma más organizada de gestionar tus fuentes"
-
-#: core/js/dist/admin.js:37
-msgid "Organize your feed sources with ease by creating custom folders. Simplify your management process and ensure your site’s sources are always tidy, easily accessible, and impeccably structured. Upgrade today!"
-msgstr "Organiza tus fuentes de feeds con facilidad creando carpetas personalizadas. Simplifica tu proceso de gestión y asegúrate de que las fuentes de tu sitio estén siempre ordenadas, fácilmente accesibles e impecablemente estructuradas. ¡Actualiza hoy!"
 
 #: core/js/dist/admin.js:37
 msgid "Create your first folder to easily manage and access your sources."
 msgstr "Crea tu primera carpeta para gestionar y acceder fácilmente a tus fuentes."
 
-#: core/js/dist/admin.js:37
+#: core/modules/admin.php:122
+#: core/js/dist/admin.js:21
 #: core/js/dist/admin.js:113
 msgid "Upgrade"
 msgstr "Actualizar"
@@ -2825,18 +2805,6 @@ msgstr "Las automatizaciones optimizan tu flujo de trabajo aplicando reglas de f
 #: core/js/dist/admin.js:37
 msgid "Add new automation"
 msgstr "Añadir nueva automatización"
-
-#: core/js/dist/admin.js:37
-msgid "Unlock the power of automations!"
-msgstr "¡Desbloquea el poder de las automatizaciones!"
-
-#: core/js/dist/admin.js:37
-msgid "Automations optimize your workflow by applying intelligent filtering rules, ensuring you curate the most valuable and relevant content for your visitors."
-msgstr "Las automatizaciones optimizan tu flujo de trabajo aplicando reglas de filtrado inteligentes, asegurando que cures el contenido más valioso y relevante para tus visitantes."
-
-#: core/js/dist/admin.js:37
-msgid "Get Automations with Pro"
-msgstr "Obtén automatizaciones con Pro"
 
 #: core/js/dist/admin.js:37
 msgid "With Automations you can:"
@@ -4955,3 +4923,79 @@ msgstr "Ocurrió un error desconocido."
 #: core/js/dist/admin.js:21
 msgid "<strong>Plugin Version Mismatch.</strong> Your free and premium Aggregator plugins are running different versions, so Premium features are temporarily paused. <updateLink>Please update</updateLink> both plugins to the same version to restore full compatibility. <learnMoreLink>Learn more</learnMoreLink>"
 msgstr "<strong>Incompatibilidad de versión del plugin.</strong> Tus plugins gratuito y premium de Aggregator están ejecutando versiones diferentes, por lo que las funciones Premium se han pausado temporalmente. <updateLink>Por favor, actualiza</updateLink> ambos plugins a la misma versión para restaurar la compatibilidad completa. <learnMoreLink>Más información</learnMoreLink>"
+
+#: core/js/dist/admin.js:37
+msgid "Watch demo"
+msgstr ""
+
+#: core/js/dist/admin.js:37
+msgid "Fine-tune your displays"
+msgstr ""
+
+#: core/js/dist/admin.js:37
+msgid "Filter what appears in your displays by keyword, phrase, or tag - so your visitors see only the most relevant posts."
+msgstr ""
+
+#: core/js/dist/admin.js:37
+msgid "Upgrade for Display Filters"
+msgstr ""
+
+#: core/js/dist/admin.js:37
+msgid "Unlock more layouts"
+msgstr ""
+
+#: core/js/dist/admin.js:37
+msgid "Layouts that fit your style"
+msgstr ""
+
+#: core/js/dist/admin.js:37
+msgid "Upgrade to Basic to unlock additional layouts that showcase your content beautifully and match your site’s design."
+msgstr ""
+
+#: core/js/dist/admin.js:37
+msgid "Simplify your workflow"
+msgstr ""
+
+#: core/js/dist/admin.js:37
+msgid "Organize with Folders"
+msgstr ""
+
+#: core/js/dist/admin.js:37
+msgid "Group and manage your sources with folders for faster curation and a cleaner workspace."
+msgstr ""
+
+#: core/js/dist/admin.js:37
+msgid "*Curate feed items before they go live*"
+msgstr ""
+
+#: core/js/dist/admin.js:37
+msgid "Aggregator Pro lets you preview and approve items so only the right content makes it to your site. Stay fully in control of what gets published."
+msgstr ""
+
+#: core/js/dist/admin.js:37
+msgid "Unlock Curation"
+msgstr ""
+
+#: core/js/dist/admin.js:37
+msgid "Cut the clutter from your feeds"
+msgstr ""
+
+#: core/js/dist/admin.js:37
+msgid "Block unwanted posts or import only those that match your keywords, phrases, or tags."
+msgstr ""
+
+#: core/js/dist/admin.js:37
+msgid "Filter Your Feeds Now"
+msgstr ""
+
+#: core/js/dist/admin.js:107
+msgid "Turn feed items into posts"
+msgstr ""
+
+#: core/js/dist/admin.js:107
+msgid "Unlock Publishing Tools"
+msgstr ""
+
+#: core/js/dist/admin.js:107
+msgid "Go beyond displaying feed items — import and curate full content and publish it as SEO-optimized WordPress posts."
+msgstr ""

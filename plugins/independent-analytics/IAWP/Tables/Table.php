@@ -350,27 +350,16 @@ abstract class Table
         if (\strlen($operand) === 0) {
             return null;
         }
-        if ($column->database_column() === 'cached_url' && $filter['operator'] === 'exact') {
+        if ($column->id() === 'url' && $filter['operator'] === 'exact') {
             $url = new URL($filter['operand']);
             if (!$url->is_valid_url()) {
                 $filter['operand'] = \site_url($filter['operand']);
             }
         }
-        // Link rules can be archived and then deleted by the user. That means that there's a very
-        // reasonable chance that a report is filtering by an id for a rule that's since been
-        // removed. We need to check and make sure that filters link rules still exist.
-        if ($column->id() === 'link_name') {
-            $match = \false;
-            foreach ($column->options() as $option) {
-                if ((int) $option[0] === (int) $filter['operand']) {
-                    $match = \true;
-                }
-            }
-            if (!$match) {
-                return null;
-            }
+        if ($column->options() && !$column->options()->contains($filter['operand'])) {
+            return null;
         }
-        return new Filter(['inclusion' => Security::string($filter['inclusion']), 'column' => $column->id(), 'operator' => Security::string($filter['operator']), 'operand' => Security::string($filter['operand']), 'database_column' => $column->database_column()]);
+        return new Filter(['inclusion' => Security::string($filter['inclusion']), 'operator' => Security::string($filter['operator']), 'operand' => Security::string($filter['operand']), 'column' => $column]);
     }
     public function get_column(string $id) : ?Column
     {
@@ -385,14 +374,14 @@ abstract class Table
     }
     public function sanitize_sort_parameters(?string $sort_column = null, ?string $sort_direction = 'desc') : Sort_Configuration
     {
-        if (\is_null($sort_column)) {
-            return new Sort_Configuration($this->default_sorting_column);
+        if ($sort_column === null) {
+            $sort_column = $this->default_sorting_column;
         }
         $column = $this->get_column($sort_column);
-        if (\is_null($column) || !$column->is_enabled_for_group($this->group)) {
-            return new Sort_Configuration($this->default_sorting_column);
+        if ($column === null || !$column->is_enabled_for_group($this->group)) {
+            $column = $this->get_column($this->default_sorting_column);
         }
-        return new Sort_Configuration($sort_column, $sort_direction, $column->is_nullable());
+        return new Sort_Configuration($column, $sort_direction);
     }
     public function get_rendered_template(array $rows, bool $just_rows, string $sort_column, string $sort_direction)
     {

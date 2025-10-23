@@ -500,10 +500,10 @@ class Wf_Woocommerce_Packing_List_Customizer
 	private function convert_translation_string_for_design_view($match)
 	{
 		$ipc_td = 'wt_woocommerce_invoice_addon';
-		$sdd_td = 'wt_woocommerce_shippinglabel_addon';
-		$pi_td 	= 'wt_woocommerce_proforma_addon';
-		$pl_td	= 'wt_woocommerce_picklist_addon';
-		$al_td 	= 'wt_woocommerce_addresslabel_addon';
+		$sdd_td = 'wt-woocommerce-shippinglabel-addon';
+		$pi_td 	= 'wt-woocommerce-proforma-addon';
+		$pl_td	= 'wt-woocommerce-picklist-addon';
+		$al_td 	= 'wt-woocommerce-addresslabel-addon';
 		$adc_td = 'wt-advanced-customizer-addon';
 		$bs_td  = 'print-invoices-packing-slip-labels-for-woocommerce';
 
@@ -538,10 +538,10 @@ class Wf_Woocommerce_Packing_List_Customizer
 	private function convert_translation_strings($match)
 	{
 		$ipc_td = 'wt_woocommerce_invoice_addon';
-		$sdd_td = 'wt_woocommerce_shippinglabel_addon';
-		$pi_td 	= 'wt_woocommerce_proforma_addon';
-		$pl_td	= 'wt_woocommerce_picklist_addon';
-		$al_td 	= 'wt_woocommerce_addresslabel_addon';
+		$sdd_td = 'wt-woocommerce-shippinglabel-addon';
+		$pi_td 	= 'wt-woocommerce-proforma-addon';
+		$pl_td	= 'wt-woocommerce-picklist-addon';
+		$al_td 	= 'wt-woocommerce-addresslabel-addon';
 		$adc_td = 'wt-advanced-customizer-addon';
 		$bs_td  = 'print-invoices-packing-slip-labels-for-woocommerce';
 		$custom_td = 'custom_wt_pdf_inovice';
@@ -1612,8 +1612,16 @@ class Wf_Woocommerce_Packing_List_Customizer
 							$meta_data[] = $meta_value;
 							$meta_key_arr[] = $meta->key;
 						} else {
-							$meta_data[$display_key] = $meta_value;
-							$meta_key_arr[$display_key] = $meta->key;
+							// Handle duplicate keys by creating separate entries using meta ID as unique identifier
+							if (isset($meta_data[$display_key])) {
+								// If key already exists, use meta ID to create unique key
+								$unique_key = $display_key . '_' . $meta->id;
+								$meta_data[$unique_key] = $meta_value;
+								$meta_key_arr[$unique_key] = $meta->key;
+							} else {
+								$meta_data[$display_key] = $meta_value;
+								$meta_key_arr[$display_key] = $meta->key;
+							}
 						}
 					}
 				}
@@ -1633,7 +1641,12 @@ class Wf_Woocommerce_Packing_List_Customizer
 					}
 				} else {
 					if ('wt_give_away_product' !== $value) {
-						$current_item = '<label>' . wp_kses_post(rawurldecode($id)) . '</label> : ' . wp_kses_post(rawurldecode($value)) . ' ';
+						// Remove meta ID suffix from display key if it exists
+						$display_label = $id;
+						if (preg_match('/^(.+)_\d+$/', $id, $matches)) {
+							$display_label = $matches[1];
+						}
+						$current_item = '<label>' . wp_kses_post(rawurldecode($display_label)) . '</label> : ' . wp_kses_post(rawurldecode($value)) . ' ';
 					}
 				}
 
@@ -1654,6 +1667,7 @@ class Wf_Woocommerce_Packing_List_Customizer
 
 			return $variation;
 		}
+
 
 		/**
 		 * To save the default templates through the action scheduler

@@ -94,8 +94,8 @@ class Plugin_Conflict_Detector
                 }
             }
         }
-        if (\is_plugin_active('wpo-tweaks/wordpress-wpo-tweaks.php')) {
-            return ['plugin' => 'wordpress-wpo-tweaks', 'error' => \__('The "WPO Tweaks & Optimizations" plugin needs to be deactivated because it is disabling the REST API, which Independent Analytics uses to record visits.', 'independent-analytics')];
+        if (\is_plugin_active('wpo-tweaks/wpo-tweaks.php')) {
+            return ['plugin' => 'wpo-tweaks', 'error' => \__('The "WPO Tweaks & Optimizations" plugin needs to be deactivated because it is disabling the REST API, which Independent Analytics uses to record visits.', 'independent-analytics')];
         }
         if (\is_plugin_active('all-in-one-intranet/basic_all_in_one_intranet.php')) {
             return ['plugin' => 'basic_all_in_one_intranet', 'error' => \__('The "All-In-One Intranet" plugin needs to be deactivated because it is disabling the REST API, which Independent Analytics uses to record visits. You may want to try the "My Private Site" plugin instead.', 'independent-analytics')];

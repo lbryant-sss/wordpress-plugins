@@ -4,6 +4,7 @@ namespace IAWPSCOPED;
 
 use IAWP\Click_Tracking\Click_Processing_Job;
 use IAWP\Click_Tracking\Config_File_Manager;
+use IAWP\Cron\Unscheduler;
 use IAWP\Custom_WordPress_Columns\Views_Column;
 use IAWP\Dashboard_Options;
 use IAWP\Data_Pruning\Pruning_Scheduler;
@@ -12,7 +13,7 @@ use IAWP\Date_Range\Exact_Date_Range;
 use IAWP\Ecommerce\SureCart_Event_Sync_Job;
 use IAWP\Ecommerce\SureCart_Store;
 use IAWP\Env;
-use IAWP\Geo_Database_Background_Job;
+use IAWP\Geo_Database_Health_Check_Job;
 use IAWP\Geo_Database_Manager;
 use IAWP\Independent_Analytics;
 use IAWP\Interrupt;
@@ -30,8 +31,8 @@ use IAWP\Utils\BladeOne;
 use IAWP\WP_Option_Cache_Bust;
 \define( 'IAWP_DIRECTORY', \rtrim( \plugin_dir_path( __FILE__ ), \DIRECTORY_SEPARATOR ) );
 \define( 'IAWP_URL', \rtrim( \plugin_dir_url( __FILE__ ), '/' ) );
-\define( 'IAWP_VERSION', '2.12.2' );
-\define( 'IAWP_DATABASE_VERSION', '43' );
+\define( 'IAWP_VERSION', '2.13.1' );
+\define( 'IAWP_DATABASE_VERSION', '50' );
 \define( 'IAWP_LANGUAGES_DIRECTORY', \dirname( \plugin_basename( __FILE__ ) ) . '/languages' );
 \define( 'IAWP_PLUGIN_FILE', __DIR__ . '/iawp.php' );
 if ( \file_exists( \IAWPSCOPED\iawp_path_to( 'vendor/scoper-autoload.php' ) ) ) {
@@ -234,6 +235,7 @@ function iawp_singular_analytics(  $singular_id, \DateTime $from, \DateTime $to 
  *
  * @param array{
  *     post_type: string,          // Default: 'post'
+ *     category: ?int,             // Default: null
  *     limit: int,                 // Default: 10
  *     from: \DateTimeInterface,   // Default: 30 days ago
  *     to: \DateTimeInterface,     // Default: today
@@ -320,7 +322,7 @@ function iawp() {
         // If there is a database, run migration in a background process
         Migrations\Migration_Job::maybe_dispatch();
     }
-    ( new Geo_Database_Manager() )->check_database_situation();
+    ( new Geo_Database_Manager() )->health_check();
     \update_option( 'iawp_need_clear_cache', \true, \true );
     if ( \get_option( 'iawp_show_gsg' ) == '' ) {
         \update_option( 'iawp_show_gsg', '1', \true );
@@ -337,15 +339,8 @@ function iawp() {
     }
 } );
 \register_deactivation_hook( \IAWP_PLUGIN_FILE, function () {
-    \IAWPSCOPED\iawp()->cron_manager->unschedule_daily_salt_refresh();
-    ( new Pruning_Scheduler() )->unschedule();
-    if ( \IAWPSCOPED\iawp_is_pro() ) {
-        \IAWPSCOPED\iawp()->email_reports->unschedule();
-        ( new Click_Processing_Job() )->unschedule();
-        ( new Module_Refresh_Job() )->unschedule();
-        ( new SureCart_Event_Sync_Job() )->unschedule();
-        ( new Migration_Fixer_Job() )->unschedule();
-    }
+    Unscheduler::unschedule_all_events();
+    ( new Geo_Database_Manager() )->delete_database();
     \wp_delete_file( \trailingslashit( \WPMU_PLUGIN_DIR ) . 'iawp-performance-boost.php' );
     \delete_option( 'iawp_must_use_directory_not_writable' );
 } );
@@ -360,6 +355,7 @@ function iawp() {
         ( new Click_Processing_Job() )->schedule();
         ( new Module_Refresh_Job() )->schedule();
         ( new Migration_Fixer_Job() )->schedule();
+        ( new Geo_Database_Health_Check_Job() )->schedule();
     }
     if ( \IAWPSCOPED\iawp()->is_surecart_support_enabled() ) {
         ( new SureCart_Event_Sync_Job() )->schedule();
@@ -372,6 +368,7 @@ function iawp() {
     Migrations\Migrations::handle_migration_18_error();
     Migrations\Migrations::handle_migration_22_error();
     Migrations\Migrations::handle_migration_29_error();
+    Migrations\Migrations::handle_migration_46_error();
     Patch::patch_2_6_2_incorrect_email_report_schedule();
     Patch::patch_2_8_7_potential_duplicates();
     Config_File_Manager::ensure();
@@ -385,13 +382,11 @@ function iawp() {
         // If there is a database, run migration in a background process
         Migrations\Migration_Job::maybe_dispatch();
     }
-    ( new Geo_Database_Manager() )->check_database_situation();
     if ( \get_option( 'iawp_should_refresh_modules', '0' ) === '1' ) {
         \update_option( 'iawp_should_refresh_modules', '0', \true );
         Module::queue_full_module_refresh();
     }
 } );
 new Sync_Module_Background_Job();
-new Geo_Database_Background_Job();
 Views_Column::initialize();
 MainWP::initialize();

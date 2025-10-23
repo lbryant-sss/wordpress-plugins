@@ -7,7 +7,6 @@ use IAWP\Illuminate_Builder;
 use IAWP\Models\Device;
 use IAWP\Query;
 use IAWP\Query_Taps;
-use IAWP\Tables;
 use IAWPSCOPED\Illuminate\Database\Query\Builder;
 use IAWPSCOPED\Illuminate\Database\Query\JoinClause;
 /** @internal */
@@ -25,6 +24,10 @@ class Device_OSS extends \IAWP\Rows\Rows
         return \array_map(function ($row) {
             return new Device($row);
         }, $rows);
+    }
+    protected function sort_tie_breaker_column() : string
+    {
+        return 'os';
     }
     private function query(?bool $skip_pagination = \false) : Builder
     {
@@ -46,14 +49,7 @@ class Device_OSS extends \IAWP\Rows\Rows
             $join->on('views.id', '=', 'orders.initial_view_id')->where('orders.is_included_in_analytics', '=', \true);
         })->leftJoin("{$this->tables::clicks()} AS clicks", function (JoinClause $join) {
             $join->on('views.id', '=', 'clicks.view_id');
-        })->tap(Query_Taps::tap_authored_content_check())->when($this->examiner_config, function (Builder $query) {
-            if ($this->examiner_config->group() !== 'link_pattern') {
-                return;
-            }
-            $query->leftJoin(Tables::clicked_links() . ' AS clicked_links', function (JoinClause $join) {
-                $join->on('clicked_links.click_id', '=', 'clicks.click_id');
-            });
-        })->tap(Query_Taps::tap_related_to_examined_record($this->examiner_config))->when(!$this->appears_to_be_for_real_time_analytics(), function (Builder $query) {
+        })->tap(Query_Taps::tap_authored_content_check())->tap(Query_Taps::tap_related_to_examined_record($this->examiner_config))->when(!$this->appears_to_be_for_real_time_analytics(), function (Builder $query) {
             $query->whereBetween('sessions.created_at', $this->get_current_period_iso_range());
         })->whereBetween('views.viewed_at', $this->get_current_period_iso_range())->leftJoinSub($this->get_form_submissions_query(), 'form_submissions', function (JoinClause $join) {
             $join->on('form_submissions.view_id', '=', 'views.id');
@@ -67,20 +63,10 @@ class Device_OSS extends \IAWP\Rows\Rows
             $join->on('sessions.device_os_id', '=', 'device_oss.device_os_id');
         })->when(!$this->appears_to_be_for_real_time_analytics(), function (Builder $query) {
             $query->whereBetween('sessions.created_at', $this->get_current_period_iso_range());
-        })->when(\count($this->filters) > 0, function (Builder $query) {
-            foreach ($this->filters as $filter) {
-                if (!$this->is_a_calculated_column($filter->column())) {
-                    $filter->apply_to_query($query);
-                }
-            }
         })->when(\is_int($this->solo_record_id), function (Builder $query) {
             $query->where('device_oss.device_os_id', '=', $this->solo_record_id);
-        })->groupBy('device_oss.device_os_id')->having('views', '>', 0)->when(!$this->is_using_a_calculated_column(), function (Builder $query) {
-            $query->when($this->sort_configuration->is_column_nullable(), function (Builder $query) {
-                $query->orderByRaw("CASE WHEN {$this->sort_configuration->column()} IS NULL THEN 1 ELSE 0 END");
-            })->orderBy($this->sort_configuration->column(), $this->sort_configuration->direction())->orderBy('os')->when(\is_int($this->number_of_rows), function (Builder $query) {
-                $query->limit($this->number_of_rows);
-            });
+        })->groupBy('device_oss.device_os_id')->having('views', '>', 0)->tap(fn(Builder $query) => $this->apply_record_filters($query))->when($this->can_order_and_limit_at_record_level(), function (Builder $query) {
+            $query->tap(fn(Builder $query) => $this->apply_order_and_limit($query, $this->sort_configuration->column()));
         });
         $previous_period_query = Illuminate_Builder::new();
         $previous_period_query->select(['sessions.device_os_id'])->selectRaw('SUM(sessions.total_views) AS previous_period_views')->selectRaw('COUNT(DISTINCT sessions.visitor_id) AS previous_period_visitors')->from($sessions_table, 'sessions')->whereBetween('sessions.created_at', $this->get_previous_period_iso_range())->groupBy('sessions.device_os_id');
@@ -89,19 +75,13 @@ class Device_OSS extends \IAWP\Rows\Rows
             foreach (Form::get_forms() as $form) {
                 $query->selectRaw("IF(visitors = 0, 0, ({$form->submissions_column()} / visitors) * 100) AS {$form->conversion_rate_column()}");
             }
-        })->when(\count($this->filters) > 0, function (Builder $query) {
-            foreach ($this->filters as $filter) {
-                if ($this->is_a_calculated_column($filter->column())) {
-                    $filter->apply_to_query($query);
-                }
-            }
-        })->fromSub($device_oss_query, 'device_oss')->leftJoinSub($previous_period_query, 'previous_period_stats', 'device_oss.device_os_id', '=', 'previous_period_stats.device_os_id')->when($this->is_using_a_calculated_column(), function (Builder $query) {
-            $query->when($this->sort_configuration->is_column_nullable(), function (Builder $query) {
-                $query->orderByRaw("CASE WHEN {$this->sort_configuration->column()} IS NULL THEN 1 ELSE 0 END");
-            })->orderBy($this->sort_configuration->column(), $this->sort_configuration->direction())->orderBy('os')->when(\is_int($this->number_of_rows), function (Builder $query) {
-                $query->limit($this->number_of_rows);
-            });
+        })->fromSub($device_oss_query, 'device_oss')->leftJoinSub($previous_period_query, 'previous_period_stats', 'device_oss.device_os_id', '=', 'previous_period_stats.device_os_id')->tap(fn(Builder $query) => $this->apply_aggregate_filters($query))->when(!$this->can_order_and_limit_at_record_level() && !($this->using_logical_or_operator() && $this->filtering_by_mixed_columns()), function (Builder $query) {
+            $query->tap(fn(Builder $query) => $this->apply_order_and_limit($query, $this->sort_configuration->column()));
         });
+        if ($this->using_logical_or_operator() && $this->filtering_by_mixed_columns()) {
+            $og_outer_query = $outer_query;
+            $outer_query = Illuminate_Builder::new()->select('*')->fromSub($og_outer_query, 'records')->tap(fn(Builder $query) => $this->apply_or_filters($query))->tap(fn(Builder $query) => $this->apply_order_and_limit($query, $this->sort_configuration->column()));
+        }
         return $outer_query;
     }
 }

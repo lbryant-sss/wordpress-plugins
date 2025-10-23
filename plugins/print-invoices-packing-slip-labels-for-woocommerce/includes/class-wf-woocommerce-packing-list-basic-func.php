@@ -45,6 +45,7 @@ class Wf_Woocommerce_Packing_List_Basic_Common_Func {
         wp_enqueue_script( $this->plugin_name.'-basic-common', plugin_dir_url( __FILE__ ) . 'js/wf-woocommerce-packing-list-admin-basic-common.js', array( 'jquery','wp-color-picker','jquery-tiptip'), $this->version, false );
 
         $order_meta_autocomplete = Wf_Woocommerce_Packing_List_Admin::order_meta_dropdown_list();
+        $product_meta_autocomplete = Wf_Woocommerce_Packing_List_Admin::product_meta_dropdown_list();
         $wf_admin_img_path=WF_PKLIST_PLUGIN_URL . 'admin/images/uploader_sample_img.png';
         $is_rtl = is_rtl() ? 'rtl' : 'ltr';
         $params=array(
@@ -55,6 +56,7 @@ class Wf_Woocommerce_Packing_List_Basic_Common_Func {
             'no_image'=>$wf_admin_img_path,
             'print_action_url'=>admin_url('?print_packinglist=true'),
             'order_meta_autocomplete' => json_encode($order_meta_autocomplete),
+            'product_meta_autocomplete' => json_encode($product_meta_autocomplete),
             'is_rtl' => $is_rtl,
             'msgs'=>array(
                 'settings_success'=>__('Settings updated.','print-invoices-packing-slip-labels-for-woocommerce'),
@@ -96,7 +98,7 @@ class Wf_Woocommerce_Packing_List_Basic_Common_Func {
                     if("" !== trim($_POST['wt_pklist_new_custom_field_title']) && "" !== trim($_POST['wt_pklist_new_custom_field_key'])) // phpcs:ignore WordPress.Security.NonceVerification.Missing,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
                     {
                         $custom_field_type = sanitize_text_field(wp_unslash($_POST['wt_pklist_custom_field_type'])); // phpcs:ignore WordPress.Security.NonceVerification.Missing
-                        if("order_meta" === $custom_field_type)
+                        if("order_meta" === $custom_field_type || "product_meta" === $custom_field_type)
                         {
                             $module_base=(isset($_POST['wt_pklist_settings_base']) ? sanitize_text_field(wp_unslash($_POST['wt_pklist_settings_base'])) : 'main'); // phpcs:ignore WordPress.Security.NonceVerification.Missing
                             $module_id=("main" === $module_base ? '' : Wf_Woocommerce_Packing_List::get_module_id($module_base));
@@ -105,6 +107,11 @@ class Wf_Woocommerce_Packing_List_Basic_Common_Func {
                                 'order_meta'=>array(
                                     'list'=>'wf_additional_data_fields',
                                     'selected'=>'wf_'.$module_base.'_contactno_email',
+                                ),
+
+                                'product_meta'=>array(
+                                    'list'=>'wf_product_meta_fields',
+                                    'selected'=>'wf_'.$module_base.'_product_meta_fields',
                                 ),
                             );
 

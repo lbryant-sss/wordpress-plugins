@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-10-08T16:04:29+00:00\n"
+"POT-Creation-Date: 2025-10-22T18:54:56+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 
@@ -376,7 +376,7 @@ msgstr ""
 #: dashboard/components/overview/charts/ChartSummary.js:144
 #: invoices/modules/Payment.js:47
 #: invoices/modules/Prices.js:61
-#: orders/modules/LineItems/index.js:156
+#: orders/modules/LineItems/index.js:148
 #: subscriptions/edit/modules/Modals/UpdateRecentPrice.js:286
 #: subscriptions/edit/modules/Price.js:125
 #: subscriptions/show/modules/CurrentPlan.js:102
@@ -485,7 +485,7 @@ msgstr ""
 #: admin/affiliation-clicks/index.php:6
 #: affiliations/modules/Clicks.js:54
 #: components/data-tables/affiliates/ClicksDataTable.js:36
-#: store/add-entities.js:372
+#: store/add-entities.js:373
 msgid "Clicks"
 msgstr ""
 
@@ -1143,8 +1143,8 @@ msgstr ""
 #: src/Controllers/Admin/Upsells/UpsellsListTable.php:192
 #: products/components/price/parts/PaymentType.js:138
 #: products/modules/Prices/Price/Header.js:83
-#: store/add-entities.js:442
-#: store/add-entities.js:449
+#: store/add-entities.js:443
+#: store/add-entities.js:450
 #: subscriptions/edit/EditSubscription.js:239
 #: sc-subscription-details2.js:80
 #: sc-subscription.js:154
@@ -1469,7 +1469,7 @@ msgstr ""
 #: components/data-tables/charges-data-table/index.js:58
 #: invoices/modules/Payment.js:90
 #: orders/modules/LineItems/index.js:32
-#: orders/modules/LineItems/index.js:203
+#: orders/modules/LineItems/index.js:195
 #: util.js:98
 #: Blocks/Dashboard/CustomerInvoices/edit.js:60
 #: Blocks/Dashboard/CustomerOrders/edit.js:78
@@ -1648,7 +1648,7 @@ msgstr ""
 #: invoices/modules/SelectShipping.js:43
 #: invoices/modules/SelectShipping.js:59
 #: invoices/modules/SelectShipping.js:79
-#: orders/modules/LineItems/index.js:320
+#: orders/modules/LineItems/index.js:301
 #: products/modules/Shipping.js:25
 #: settings/shipping/ShippingSettings.js:120
 #: subscriptions/edit/modules/Modals/UpdateRecentPrice.js:257
@@ -7858,12 +7858,12 @@ msgstr ""
 #: src/WordPress/Admin/Menus/AdminMenuPageService.php:363
 #: affiliations/modules/Payouts.js:54
 #: components/data-tables/affiliates/PayoutsDataTable.js:29
-#: store/add-entities.js:393
+#: store/add-entities.js:394
 msgid "Payouts"
 msgstr ""
 
 #: src/WordPress/Admin/Menus/AdminMenuPageService.php:364
-#: store/add-entities.js:400
+#: store/add-entities.js:401
 msgid "Payout Groups"
 msgstr ""
 
@@ -8482,7 +8482,7 @@ msgstr ""
 #: src/WordPress/PostTypes/ProductPostTypeService.php:341
 #: products/modules/Prices/Price/BuyLink.js:30
 #: products/modules/Variations/Variants.js:116
-#: store/add-entities.js:470
+#: store/add-entities.js:471
 msgid "Variant"
 msgstr ""
 
@@ -9370,7 +9370,7 @@ msgstr ""
 #: abandoned-checkouts/modules/LineItems/index.js:67
 #: checkouts/modules/Payment.js:90
 #: invoices/modules/Payment.js:126
-#: orders/modules/LineItems/index.js:277
+#: orders/modules/LineItems/index.js:258
 #: subscriptions/edit/modules/Modals/UpdateRecentPrice.js:215
 #: subscriptions/show/modules/LineItems/index.js:61
 #: Blocks/Subtotal/edit.js:19
@@ -9753,7 +9753,7 @@ msgstr ""
 
 #: abandoned-checkouts/modules/LineItems/index.js:74
 #: invoices/modules/Payment.js:55
-#: orders/modules/LineItems/index.js:164
+#: orders/modules/LineItems/index.js:156
 #: subscriptions/edit/modules/Modals/UpdateRecentPrice.js:222
 #: subscriptions/show/modules/LineItems/index.js:68
 #: sc-order-confirmation-totals2.js:53
@@ -9763,7 +9763,7 @@ msgstr ""
 
 #: abandoned-checkouts/modules/LineItems/index.js:82
 #: invoices/modules/Payment.js:64
-#: orders/modules/LineItems/index.js:173
+#: orders/modules/LineItems/index.js:165
 #: subscriptions/edit/modules/Modals/UpdateRecentPrice.js:230
 #: subscriptions/show/modules/LineItems/index.js:76
 #: sc-order-confirmation-totals2.js:56
@@ -9774,7 +9774,7 @@ msgid "Applied Balance"
 msgstr ""
 
 #: abandoned-checkouts/modules/LineItems/index.js:92
-#: orders/modules/LineItems/index.js:296
+#: orders/modules/LineItems/index.js:277
 #: subscriptions/edit/modules/Modals/UpdateRecentPrice.js:249
 #: subscriptions/show/modules/LineItems/index.js:92
 #: sc-order-confirmation-totals2.js:40
@@ -9784,7 +9784,7 @@ msgid "Discounts"
 msgstr ""
 
 #: abandoned-checkouts/modules/LineItems/index.js:97
-#: orders/modules/LineItems/index.js:301
+#: orders/modules/LineItems/index.js:282
 #: sc-order-confirmation-totals2.js:43
 #: sc-order.js:147
 msgid "Coupon:"
@@ -10647,7 +10647,7 @@ msgstr ""
 
 #: checkouts/modules/Payment.js:169
 #: invoices/modules/Payment.js:135
-#: orders/modules/LineItems/index.js:286
+#: orders/modules/LineItems/index.js:267
 #: products/components/price/parts/Trial.js:23
 #: products/modules/Prices/Price/Header.js:42
 #: subscriptions/edit/modules/Modals/UpdateRecentPrice.js:241
@@ -10670,7 +10670,7 @@ msgstr ""
 
 #: checkouts/modules/Payment.js:186
 #: invoices/modules/Payment.js:82
-#: orders/modules/LineItems/index.js:191
+#: orders/modules/LineItems/index.js:183
 #: subscriptions/show/modules/LineItems/index.js:124
 #: Blocks/Total/deprecated.js:142
 #: Blocks/Total/edit.js:54
@@ -11062,7 +11062,7 @@ msgid "View Coupon"
 msgstr ""
 
 #: components/data-tables/affiliates/ReferralItemsDataTable.js:29
-#: store/add-entities.js:386
+#: store/add-entities.js:387
 msgid "Referral Items"
 msgstr ""
 
@@ -11111,7 +11111,7 @@ msgid "Disputed Amount"
 msgstr ""
 
 #: components/data-tables/charges-data-table/index.js:72
-#: orders/modules/LineItems/index.js:216
+#: orders/modules/LineItems/index.js:208
 #: orders/modules/Refund/CreateRefund.js:453
 #: orders/Order.js:242
 #: settings/customer/CustomerSettings.js:450
@@ -12440,28 +12440,28 @@ msgid "Are you sure you wish to mark the invoice as paid? This cannot be undone.
 msgstr ""
 
 #: invoices/modules/Payment.js:73
-#: orders/modules/LineItems/index.js:182
+#: orders/modules/LineItems/index.js:174
 #: sc-order-confirmation-totals2.js:59
 #: sc-order.js:163
 msgid "Credited Balance"
 msgstr ""
 
 #: invoices/modules/Payment.js:105
-#: orders/modules/LineItems/index.js:220
+#: orders/modules/LineItems/index.js:212
 #: sc-order-confirmation-totals2.js:74
 #: sc-order.js:178
 msgid "Net Payment"
 msgstr ""
 
 #: invoices/modules/Payment.js:114
-#: orders/modules/LineItems/index.js:242
+#: orders/modules/LineItems/index.js:223
 #: sc-order-confirmation-totals2.js:74
 #: sc-order.js:178
 msgid "*Tax to be paid on reverse charge basis"
 msgstr ""
 
 #: invoices/modules/Payment.js:179
-#: orders/modules/LineItems/index.js:365
+#: orders/modules/LineItems/index.js:346
 #: sc-line-item-tax2.js:31
 #: sc-order-confirmation-totals2.js:50
 #: sc-order.js:154
@@ -12892,6 +12892,11 @@ msgstr ""
 msgid "Dispute Details"
 msgstr ""
 
+#: orders/modules/Dispute/DisputeLineItems.js:28
+#: store/add-entities.js:295
+msgid "Dispute"
+msgstr ""
+
 #: orders/modules/Fulfillment/components/AddTracking.js:76
 msgid "Edit Tracking"
 msgstr ""
@@ -13013,13 +13018,8 @@ msgstr ""
 msgid "Payment Failed"
 msgstr ""
 
-#: orders/modules/LineItems/index.js:140
+#: orders/modules/LineItems/index.js:132
 msgid "Download Receipt / Invoice"
-msgstr ""
-
-#: orders/modules/LineItems/index.js:234
-#: store/add-entities.js:295
-msgid "Dispute"
 msgstr ""
 
 #: orders/modules/MetaData.js:21
@@ -13225,7 +13225,7 @@ msgid "Returned on"
 msgstr ""
 
 #: orders/modules/ReturnRequest/ReturnReasonsSelector.js:14
-#: store/add-entities.js:484
+#: store/add-entities.js:485
 msgid "Return Reason"
 msgstr ""
 
@@ -16616,7 +16616,7 @@ msgid "Maximum weight"
 msgstr ""
 
 #: settings/shipping/rate/ShippingRateForm.js:336
-#: store/add-entities.js:428
+#: store/add-entities.js:429
 msgid "Shipping Method"
 msgstr ""
 
@@ -17584,43 +17584,43 @@ msgstr ""
 msgid "Affiliations"
 msgstr ""
 
-#: store/add-entities.js:364
+#: store/add-entities.js:365
 msgid "Affiliation Product"
 msgstr ""
 
-#: store/add-entities.js:379
+#: store/add-entities.js:380
 msgid "Referral"
 msgstr ""
 
-#: store/add-entities.js:407
+#: store/add-entities.js:408
 msgid "Shipping Profile"
 msgstr ""
 
-#: store/add-entities.js:414
+#: store/add-entities.js:415
 msgid "Shipping Zone"
 msgstr ""
 
-#: store/add-entities.js:421
+#: store/add-entities.js:422
 msgid "Shipping Rate"
 msgstr ""
 
-#: store/add-entities.js:435
+#: store/add-entities.js:436
 msgid "Statistic"
 msgstr ""
 
-#: store/add-entities.js:456
+#: store/add-entities.js:457
 msgid "Incoming Webhook"
 msgstr ""
 
-#: store/add-entities.js:463
+#: store/add-entities.js:464
 msgid "Variant Option"
 msgstr ""
 
-#: store/add-entities.js:477
+#: store/add-entities.js:478
 msgid "Return Request"
 msgstr ""
 
-#: store/add-entities.js:490
+#: store/add-entities.js:491
 msgid "Swap"
 msgstr ""
 

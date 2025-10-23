@@ -45,6 +45,16 @@ class Query_Taps
             if (!$column) {
                 return;
             }
+            if ($config->group() === 'referrer_type') {
+                $query->leftJoin(\IAWP\Tables::referrers() . ' AS referrers', 'sessions.referrer_id', '=', 'referrers.id');
+            }
+            $campaign_groups = ['landing_page', 'utm_source', 'utm_medium', 'utm_campaign'];
+            if (\in_array($config->group(), $campaign_groups)) {
+                $query->leftJoin(\IAWP\Tables::campaigns() . ' AS campaigns', 'sessions.campaign_id', '=', 'campaigns.campaign_id');
+            }
+            if ($config->group() === 'link_pattern') {
+                $query->leftJoin(\IAWP\Tables::clicked_links() . ' AS clicked_links', 'clicked_links.click_id', '=', 'clicks.click_id');
+            }
             $query->where($column, '=', $config->id());
         };
     }
@@ -55,6 +65,8 @@ class Query_Taps
                 return 'views.resource_id';
             case 'referrer':
                 return 'sessions.referrer_id';
+            case 'referrer_type':
+                return 'referrers.referrer_type_id';
             case 'country':
                 return 'sessions.country_id';
             case 'city':
@@ -67,6 +79,14 @@ class Query_Taps
                 return 'sessions.device_browser_id';
             case 'campaign':
                 return 'sessions.campaign_id';
+            case 'landing_page':
+                return 'campaigns.landing_page_id';
+            case 'utm_source':
+                return 'campaigns.utm_source_id';
+            case 'utm_medium':
+                return 'campaigns.utm_medium_id';
+            case 'utm_campaign':
+                return 'campaigns.utm_campaign_id';
             case 'link':
                 return 'clicks.click_target_id';
             case 'link_pattern':

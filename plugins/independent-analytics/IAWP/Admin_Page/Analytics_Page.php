@@ -52,7 +52,7 @@ class Analytics_Page extends \IAWP\Admin_Page\Admin_Page
         $examiner_model = null;
         if ($options->is_examiner()) {
             $rows_class = $table->group()->rows_class();
-            $rows = new $rows_class($options->get_date_range(), null, null, $sort_configuration);
+            $rows = new $rows_class($options->get_date_range(), $sort_configuration);
             $id = Request::query_int('examiner');
             $rows->limit_to($id);
             $examiner_model = $rows->rows()[0];
@@ -64,7 +64,7 @@ class Analytics_Page extends \IAWP\Admin_Page\Admin_Page
         // Never show the map when loading the geo examiner. It'll only ever show a single country anyway.
         if ($tab === 'geo' && !$options->is_examiner()) {
             $table_data_class = $table->group()->rows_class();
-            $geo_data = new $table_data_class($date_rage);
+            $geo_data = new $table_data_class($date_rage, $table->sanitize_sort_parameters());
             $map_data = new Map_Data($geo_data->rows());
             $chart = new Map($map_data->get_country_data(), null, $is_showing_skeleton_ui);
         } else {
@@ -117,7 +117,10 @@ class Analytics_Page extends \IAWP\Admin_Page\Admin_Page
         echo Security::attr($table->group()->id());
         ?>"
              data-report-filters-value="<?php 
-        echo \esc_attr(Security::json_encode($options->filters()));
+        echo \esc_attr(Security::json_encode($options->raw_filters()));
+        ?>"
+             data-report-filter-logic-value="<?php 
+        echo Security::attr($options->filter_logic());
         ?>"
              data-report-chart-interval-value="<?php 
         echo Security::attr($options->chart_interval()->id());

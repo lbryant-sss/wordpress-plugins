@@ -52,6 +52,8 @@ class Fake_Bot_Detection extends Controller {
 	public function remove_data() {
 		delete_site_transient( Fake_Bot_Detection_Component::CACHE_KEY );
 		wd_di()->get( Breadcrumbs::class )->delete_meta_key();
+
+		$this->service->clear_fb_transients();
 	}
 
 	/**

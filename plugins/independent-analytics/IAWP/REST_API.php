@@ -9,6 +9,8 @@ use IAWP\Utils\Request;
 use IAWP\Utils\Salt;
 use IAWP\Utils\Security;
 use IAWP\Utils\URL;
+use IAWP\Views\CampaignParameters;
+use IAWP\Views\View;
 use IAWPSCOPED\Illuminate\Support\Str;
 /** @internal */
 class REST_API
@@ -32,6 +34,7 @@ class REST_API
         \IAWP\Migrations\Migrations::handle_migration_18_error();
         \IAWP\Migrations\Migrations::handle_migration_22_error();
         \IAWP\Migrations\Migrations::handle_migration_29_error();
+        \IAWP\Migrations\Migrations::handle_migration_46_error();
         \IAWP\Migrations\Migrations::create_or_migrate();
         if (\IAWP\Migrations\Migrations::is_migrating()) {
             return;
@@ -102,8 +105,16 @@ class REST_API
                     }
 
                     const url = new URL(href)
+                    const host = url.host
+                    const hostsToMatch = [host]
 
-                    return linkRule.value === url.host
+                    if(host.startsWith('www.')) {
+                        hostsToMatch.push(host.substring(4))
+                    } else {
+                        hostsToMatch.push('www.' + host)
+                    }
+
+                    return hostsToMatch.includes(linkRule.value)
                 }
                 const isMatchingExtension = (linkRule, href, classes, ids) => {
                     if(!URL.canParse(href)) {
@@ -409,6 +420,7 @@ class REST_API
         \IAWP\Migrations\Migrations::handle_migration_18_error();
         \IAWP\Migrations\Migrations::handle_migration_22_error();
         \IAWP\Migrations\Migrations::handle_migration_29_error();
+        \IAWP\Migrations\Migrations::handle_migration_46_error();
         \IAWP\Migrations\Migrations::create_or_migrate();
         if (\IAWP\Migrations\Migrations::is_migrating()) {
             return;
@@ -416,18 +428,17 @@ class REST_API
         if (Request::is_ip_address_blocked()) {
             return;
         }
-        $visitor = Visitor::fetch_current_visitor();
-        $signature = \md5(Salt::request_payload_salt() . \json_encode($request['payload']));
-        $campaign = [];
-        if (\IAWPSCOPED\iawp_is_pro()) {
-            $campaign = ['utm_source' => $this->decode_or_nullify($request['utm_source']), 'utm_medium' => $this->decode_or_nullify($request['utm_medium']), 'utm_campaign' => $this->decode_or_nullify($request['utm_campaign']), 'utm_term' => $this->decode_or_nullify($request['utm_term']), 'utm_content' => $this->decode_or_nullify($request['utm_content'])];
-        }
-        if ($signature == $request['signature']) {
-            new \IAWP\View($request['payload'], $this->calculate_referrer_url($request), $visitor, $campaign);
-            return new \WP_REST_Response(['success' => \true], 200, ['X-IAWP' => 'iawp']);
-        } else {
+        $correct_signature = \md5(Salt::request_payload_salt() . \json_encode($request['payload']));
+        if ($request['signature'] !== $correct_signature) {
             return new \WP_REST_Response(['success' => \false], 200, ['X-IAWP' => 'iawp']);
         }
+        $visitor = Visitor::fetch_current_visitor();
+        $campaign_parameters = CampaignParameters::make($this->decode_or_nullify($request['utm_source']), $this->decode_or_nullify($request['utm_medium']), $this->decode_or_nullify($request['utm_campaign']), $this->decode_or_nullify($request['utm_term']), $this->decode_or_nullify($request['utm_content']));
+        if (\IAWPSCOPED\iawp_is_free()) {
+            $campaign_parameters = null;
+        }
+        new View($request['payload'], $this->calculate_referrer_url($request), $visitor, $campaign_parameters);
+        return new \WP_REST_Response(['success' => \true], 200, ['X-IAWP' => 'iawp']);
     }
     private function calculate_referrer_url($request) : ?string
     {

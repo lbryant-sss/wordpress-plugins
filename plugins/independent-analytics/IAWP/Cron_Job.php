@@ -19,10 +19,7 @@ abstract class Cron_Job
     }
     public function unschedule()
     {
-        $scheduled_at_timestamp = \wp_next_scheduled($this->name);
-        if (\is_int($scheduled_at_timestamp)) {
-            \wp_unschedule_event($scheduled_at_timestamp, $this->name);
-        }
+        \wp_unschedule_hook($this->name);
     }
     public function schedule()
     {

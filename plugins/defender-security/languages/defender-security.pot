@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License (Version 2 - GPLv2).
 msgid ""
 msgstr ""
-"Project-Id-Version: Defender Pro 5.6.0\n"
+"Project-Id-Version: Defender Pro 5.6.1\n"
 "Report-Msgid-Bugs-To: https://wpmudev.com\n"
-"POT-Creation-Date: 2025-10-06 13:14:00+00:00\n"
+"POT-Creation-Date: 2025-10-20 09:45:09+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -6863,7 +6863,7 @@ msgstr ""
 msgid "The Defender file with the random key is incorrect."
 msgstr ""
 
-#: src/component/class-fake-bot-detection.php:285
+#: src/component/class-fake-bot-detection.php:319
 #. translators: %s: The name of the bot being impersonated.
 msgid "Lockout occurred: Fake bot impersonated %s."
 msgstr ""

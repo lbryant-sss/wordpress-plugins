@@ -4,7 +4,7 @@ Donate link: https://woobewoo.com/product/woocommerce-filter/
 Tags: product filter, WooCommerce product filter, shop filter, e-commerce filter, WooCommerce filter
 Requires at least: 3.4.0
 Tested up to: 6.8
-Stable tag: 3.0.0
+Stable tag: 3.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -151,6 +151,11 @@ You may help us translate the plugin into your language and get the PRO version 
 
 == Changelog ==
 
+= 3.0.1 - 22/10/2025 =
+* Fix - Security - "Missing Authorization to Unauthenticated Settings Update" vulnerability fixed.
+* Fix - Text typo fixed.
+* Dev - Coding standards improved.
+
 = 3.0.0 - 17/10/2025 =
 * Fix - Go PRO tab - Product links fixed.
 
@@ -158,7 +163,7 @@ You may help us translate the plugin into your language and get the PRO version 
 * Dev - Added new option "Discourage search engines from indexing".
 
 = 2.9.8 - 30/09/2025 =
-* Fix - Security - Unauthenticated SQL Injection vulnerability fixed.
+* Fix - Security - "Unauthenticated SQL Injection" vulnerability fixed.
 * WC tested up to: 10.2.
 
 = 2.9.7 - 06/09/2025 =

@@ -303,6 +303,8 @@ class Wf_Woocommerce_Packing_List_Sequential_Number
 	public static function add_sequential_padding($wf_invoice_number,$module_id) 
 	{
         $padded_invoice_number = '';
+        // Handle null or empty invoice number
+        $wf_invoice_number = $wf_invoice_number ?? '';
         $padding_count =(int) Wf_Woocommerce_Packing_List::get_option('woocommerce_wf_invoice_padding_number',$module_id)- strlen($wf_invoice_number);
         if ($padding_count > 0) {
             for ($i = 0; $i < $padding_count; $i++)

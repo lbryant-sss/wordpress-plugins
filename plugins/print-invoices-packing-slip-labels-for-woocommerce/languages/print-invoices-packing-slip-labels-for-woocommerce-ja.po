@@ -1,16 +1,16 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce PDF Invoices, Packing Slips, Delivery Notes "
-"and Shipping Labels\n"
-"POT-Creation-Date: 2025-06-30 14:25+0530\n"
-"PO-Revision-Date: 2025-06-30 14:25+0530\n"
+"Project-Id-Version: WebToffee WooCommerce PDF Invoices, Packing Slips, "
+"Delivery Notes and Shipping Labels\n"
+"POT-Creation-Date: 2025-10-16 12:15+0530\n"
+"PO-Revision-Date: 2025-10-16 12:15+0530\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.7\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: print-invoices-packing-slip-labels-for-woocommerce.php\n"
@@ -21,88 +21,92 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 "X-Poedit-SearchPathExcluded-1: includes/vendor\n"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:132
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:60
+#: admin/class-wf-woocommerce-packing-list-admin.php:135
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:62
 msgid "Settings updated."
 msgstr "設定を更新しました。"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:133
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:61
+#: admin/class-wf-woocommerce-packing-list-admin.php:136
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:63
 msgid "All fields are mandatory"
 msgstr "すべてのフィールドは必須です"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:134
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:62
-#, php-format
+#. translators: 1$s: HTML line break, 2$s: HTML link opening tag, 3$s: HTML link closing tag
+#: admin/class-wf-woocommerce-packing-list-admin.php:138
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:65
+#, fuzzy, php-format
+#| msgid ""
+#| "Unable to update settings due to an internal error. %s To troubleshoot "
+#| "please click %s here. %s"
 msgid ""
-"Unable to update settings due to an internal error. %s To troubleshoot "
-"please click %s here. %s"
+"Unable to update settings due to an internal error. %1$s To troubleshoot "
+"please click %2$s here. %3$s"
 msgstr ""
 "内部エラーのため設定を更新できません。%s トラブルシューティングするには、こ"
 "こ %s をクリックしてください。%s"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:135
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:63
+#: admin/class-wf-woocommerce-packing-list-admin.php:139
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:66
 msgid "You have to select order(s) first!"
 msgstr "まず注文を選択する必要があります。"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:136
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:64
+#: admin/class-wf-woocommerce-packing-list-admin.php:140
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:67
 msgid "One or more order do not have invoice generated. Generate manually?"
 msgstr "1 つ以上の注文で請求書が生成されていません。手動で生成しますか?"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:137
-#: admin/class-wf-woocommerce-packing-list-admin.php:1605
-#: admin/class-wf-woocommerce-packing-list-admin.php:2222
-#: admin/class-wf-woocommerce-packing-list-admin.php:4513
-#: admin/class-wf-woocommerce-packing-list-admin.php:4628
-#: admin/class-wf-woocommerce-packing-list-admin.php:4819
+#: admin/class-wf-woocommerce-packing-list-admin.php:141
+#: admin/class-wf-woocommerce-packing-list-admin.php:1751
+#: admin/class-wf-woocommerce-packing-list-admin.php:2393
+#: admin/class-wf-woocommerce-packing-list-admin.php:4707
+#: admin/class-wf-woocommerce-packing-list-admin.php:4825
+#: admin/class-wf-woocommerce-packing-list-admin.php:5016
 #: admin/modules/customizer/customizer.php:59
-#: admin/modules/customizer/customizer.php:258
+#: admin/modules/customizer/customizer.php:260
 #: admin/modules/wt-pdf-request-feature/class-wt-pdf-request-feature.php:132
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:65
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:85
-#: public/modules/invoice/invoice.php:192
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:68
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:88
+#: public/modules/invoice/invoice.php:201
 #: public/modules/shippinglabel/shippinglabel.php:267
 msgid "Error"
 msgstr "エラー"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:138
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:66
+#: admin/class-wf-woocommerce-packing-list-admin.php:142
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:69
 msgid "Please wait"
 msgstr "お待ちください"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:139
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:67
+#: admin/class-wf-woocommerce-packing-list-admin.php:143
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:70
 msgid "is required"
 msgstr "必須です"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:140
-#: admin/class-wf-woocommerce-packing-list-admin.php:4449
+#: admin/class-wf-woocommerce-packing-list-admin.php:144
+#: admin/class-wf-woocommerce-packing-list-admin.php:4643
 #: admin/views/documents.php:18 admin/views/freevspro.php:6
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:68
-#: public/class-wf-woocommerce-packing-list-public.php:144
-#: public/modules/invoice/invoice.php:140
-#: public/modules/invoice/invoice.php:154
-#: public/modules/invoice/invoice.php:155
-#: public/modules/invoice/invoice.php:1112
-#: public/modules/invoice/invoice.php:1140
-#: public/modules/invoice/invoice.php:1442
-#: public/modules/invoice/invoice.php:1938
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:71
+#: public/class-wf-woocommerce-packing-list-public.php:149
+#: public/modules/invoice/invoice.php:149
+#: public/modules/invoice/invoice.php:163
+#: public/modules/invoice/invoice.php:164
+#: public/modules/invoice/invoice.php:1189
+#: public/modules/invoice/invoice.php:1217
+#: public/modules/invoice/invoice.php:1521
+#: public/modules/invoice/invoice.php:2029
 #: public/modules/invoice/views/invoice-admin-settings.php:44
 msgid "Invoice"
 msgstr "請求書"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:141
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:69
-#: public/class-wf-woocommerce-packing-list-public.php:145
+#: admin/class-wf-woocommerce-packing-list-admin.php:145
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:72
+#: public/class-wf-woocommerce-packing-list-public.php:150
 msgid ""
 "number has not been generated yet. Do you want to manually generate one ?"
 msgstr "番号はまだ生成されていません。手動で生成しますか?"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:142
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:70
-#: public/class-wf-woocommerce-packing-list-public.php:141
+#: admin/class-wf-woocommerce-packing-list-admin.php:146
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:73
+#: public/class-wf-woocommerce-packing-list-public.php:146
 msgid ""
 "‘Generate invoice for free orders’ is disabled in Invoice settings > "
 "Advanced. You are attempting to generate invoice for this free order. "
@@ -111,106 +115,137 @@ msgstr ""
 "「無料注文の請求書を生成する」は、請求書設定 > 詳細設定で無効になっています。"
 "この無料注文の請求書を生成しようとしています。続行しますか?"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:143
-#: public/class-wf-woocommerce-packing-list-public.php:142
+#: admin/class-wf-woocommerce-packing-list-admin.php:147
+#: public/class-wf-woocommerce-packing-list-public.php:147
 msgid ""
 "Refund in this order seems not having credit number yet. Do you want to "
 "manually generate one ?"
 msgstr ""
 "この注文の払い戻しにはまだクレジット番号がないようです。手動で生成しますか?"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:144
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:71
-#: public/class-wf-woocommerce-packing-list-public.php:143
+#: admin/class-wf-woocommerce-packing-list-admin.php:148
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:74
+#: public/class-wf-woocommerce-packing-list-public.php:148
 msgid "Please fill the `from address` in the plugin's general settings."
 msgstr "プラグインの一般設定で「送信元アドレス」を入力してください。"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:145
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:72
+#: admin/class-wf-woocommerce-packing-list-admin.php:149
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:75
 msgid "Code Copied"
 msgstr "コードをコピーしました"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:146
-#: admin/partials/form_wizard/form_wizard.php:573
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:73
+#: admin/class-wf-woocommerce-packing-list-admin.php:150
+#: admin/partials/form_wizard/form_wizard.php:686
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:76
 msgid "Close"
 msgstr "閉じる"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:147
-#: admin/modules/customizer/views/customize.php:537
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:74
+#: admin/class-wf-woocommerce-packing-list-admin.php:151
+#: admin/modules/customizer/views/customize.php:618
+#: admin/views/admin-settings-debug.php:108
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:77
 msgid "Save"
 msgstr "保存"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:148
-#: admin/class-wf-woocommerce-packing-list-admin.php:2223
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:75
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:86
+#: admin/class-wf-woocommerce-packing-list-admin.php:152
+#: admin/class-wf-woocommerce-packing-list-admin.php:2394
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:78
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:89
 msgid "Please enter mandatory fields"
 msgstr "必須項目を入力してください"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:149
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:76
+#: admin/class-wf-woocommerce-packing-list-admin.php:153
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:79
 msgid "You can add more than 1 order meta in"
 msgstr "複数の注文メタを追加できます"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:150
+#: admin/class-wf-woocommerce-packing-list-admin.php:154
 #: admin/views/_custom_field_editor_form.php:19
 #: admin/views/_custom_field_editor_form.php:24
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:77
+#: admin/views/_custom_field_editor_form_product.php:23
+#: admin/views/_custom_field_editor_form_product.php:28
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:80
 msgid "Edit"
 msgstr "編集"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:151
+#: admin/class-wf-woocommerce-packing-list-admin.php:155
 #: admin/views/_custom_field_editor_form.php:42
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:78
+#: admin/views/_custom_field_editor_form_product.php:46
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:81
 msgid "You can edit an existing item by using its key."
 msgstr "キーを使用して既存のアイテムを編集できます。"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:153
+#: admin/class-wf-woocommerce-packing-list-admin.php:157
 msgid "Add"
 msgstr "追加"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:154
-#: public/class-wf-woocommerce-packing-list-public.php:147
+#: admin/class-wf-woocommerce-packing-list-admin.php:158
+#: public/class-wf-woocommerce-packing-list-public.php:152
 msgid "Request error."
 msgstr "リクエストエラー。"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:155
-#: public/class-wf-woocommerce-packing-list-public.php:148
+#: admin/class-wf-woocommerce-packing-list-admin.php:159
+#: public/class-wf-woocommerce-packing-list-public.php:153
 msgid "Error loading data."
 msgstr "データの読み込み中にエラーが発生しました。"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:156
-#: public/class-wf-woocommerce-packing-list-public.php:149
+#: admin/class-wf-woocommerce-packing-list-admin.php:160
+#: public/class-wf-woocommerce-packing-list-public.php:154
 msgid "minimum value should be"
 msgstr "最小値は"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:157
-#: public/class-wf-woocommerce-packing-list-public.php:150
+#: admin/class-wf-woocommerce-packing-list-admin.php:161
+#: public/class-wf-woocommerce-packing-list-public.php:155
 msgid "Generating document..."
 msgstr "ドキュメントを生成しています..."
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:158
-#: public/class-wf-woocommerce-packing-list-public.php:151
+#: admin/class-wf-woocommerce-packing-list-admin.php:162
+#: public/class-wf-woocommerce-packing-list-public.php:156
 msgid "Failed to open new tab. Please check your browser settings."
 msgstr "新しいタブを開けませんでした。ブラウザの設定を確認してください。"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:256
+#. translators: %1$s: HTML link opening tag, %2$s: HTML link closing tag
+#: admin/class-wf-woocommerce-packing-list-admin.php:333
+#, fuzzy, php-format
+#| msgid "For better RTL integration in PDF documents, please use our"
+msgid ""
+"For better RTL integration in PDF documents, click the link to install the "
+"%1$smPDF add-on%2$s by WebToffee (free)."
+msgstr "PDF文書でのRTL統合を改善するには、"
+
+#. translators: %1$s: HTML link opening tag, %2$s: HTML link closing tag
+#: admin/class-wf-woocommerce-packing-list-admin.php:337
+#, fuzzy, php-format
+#| msgid "For better RTL integration in PDF documents, please use our"
+msgid ""
+"For better RTL integration in PDF documents, click the link to update the "
+"%1$smPDF add-on%2$s by WebToffee (free)."
+msgstr "PDF文書でのRTL統合を改善するには、"
+
+#. translators: %1$s: HTML link opening tag, %2$s: HTML link closing tag
+#: admin/class-wf-woocommerce-packing-list-admin.php:341
+#, fuzzy, php-format
+#| msgid "For better RTL integration in PDF documents, please use our"
+msgid ""
+"For better RTL integration in PDF documents, click the link to activate the "
+"%1$smPDF add-on%2$s by WebToffee (free)."
+msgstr "PDF文書でのRTL統合を改善するには、"
+
+#: admin/class-wf-woocommerce-packing-list-admin.php:384
 msgctxt "placeholder"
 msgid "Enter "
 msgstr "確定"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:428
-#: admin/class-wf-woocommerce-packing-list-admin.php:734
+#: admin/class-wf-woocommerce-packing-list-admin.php:557
+#: admin/class-wf-woocommerce-packing-list-admin.php:875
 msgid "Invoice/Packing"
 msgstr "請求書/梱包"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:430
+#: admin/class-wf-woocommerce-packing-list-admin.php:559
 msgid "WT PDF Invoice Debug"
 msgstr "WT PDF請求書デバッグ"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:441
+#: admin/class-wf-woocommerce-packing-list-admin.php:570
 #: admin/partials/admin-settings.php:40
 #: public/modules/deliverynote/views/admin-settings.php:37
 #: public/modules/dispatchlabel/views/admin-settings.php:36
@@ -220,148 +255,150 @@ msgstr "WT PDF請求書デバッグ"
 msgid "Settings"
 msgstr "設定"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:442
+#: admin/class-wf-woocommerce-packing-list-admin.php:571
 msgid "Support"
 msgstr "サポート"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:443
+#: admin/class-wf-woocommerce-packing-list-admin.php:572
 msgid "Review"
 msgstr "レビュー"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:444
+#: admin/class-wf-woocommerce-packing-list-admin.php:573
 #: admin/views/help.php:46 admin/views/help.php:49
 msgid "Documentation"
 msgstr "ドキュメント"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:450
+#: admin/class-wf-woocommerce-packing-list-admin.php:579
 msgid "PDF Invoices"
 msgstr "PDF INVOICE"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:454
+#: admin/class-wf-woocommerce-packing-list-admin.php:583
 msgid "Shipping labels"
 msgstr "配送ラベル"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:458
+#: admin/class-wf-woocommerce-packing-list-admin.php:587
 msgid "Pick lists"
 msgstr "選択リスト"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:462
+#: admin/class-wf-woocommerce-packing-list-admin.php:591
 msgid "Proforma invoices"
 msgstr "プロフォーマ請求書"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:466
+#: admin/class-wf-woocommerce-packing-list-admin.php:595
 #: admin/views/documents.php:74
 msgid "Address labels"
 msgstr "住所ラベル"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:469
+#: admin/class-wf-woocommerce-packing-list-admin.php:598
 msgid "Premium Extensions"
 msgstr "プレミアムエクステンションをご確認ください"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:507
+#: admin/class-wf-woocommerce-packing-list-admin.php:636
 msgid "Document details"
 msgstr "文書の詳細"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:529
+#: admin/class-wf-woocommerce-packing-list-admin.php:658
 msgid "Print/Download"
 msgstr "印刷/ダウンロード"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:733
-#: admin/class-wf-woocommerce-packing-list-admin.php:761
+#: admin/class-wf-woocommerce-packing-list-admin.php:874
+#: admin/class-wf-woocommerce-packing-list-admin.php:902
 msgid "General Settings"
 msgstr "一般設定"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:749
-#: admin/class-wf-woocommerce-packing-list-admin.php:750
+#: admin/class-wf-woocommerce-packing-list-admin.php:890
+#: admin/class-wf-woocommerce-packing-list-admin.php:891
 msgid "Extensions"
 msgstr "拡張機能"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:847
-#: admin/class-wf-woocommerce-packing-list-admin.php:857
+#: admin/class-wf-woocommerce-packing-list-admin.php:990
+#: admin/class-wf-woocommerce-packing-list-admin.php:1000
 msgid "You are not allowed to access this page"
 msgstr "このページへのアクセスは許可されていません"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:875
 #: admin/class-wf-woocommerce-packing-list-admin.php:1018
+#: admin/class-wf-woocommerce-packing-list-admin.php:1160
 msgid "You are not allowed to view this page."
 msgstr "このページを表示することはできません"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:876
+#: admin/class-wf-woocommerce-packing-list-admin.php:1019
 msgid "Access denied !!!."
 msgstr "アクセスが拒否されました ！！！。"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:894
-#: admin/class-wf-woocommerce-packing-list-admin.php:944
 #: admin/class-wf-woocommerce-packing-list-admin.php:1037
-#: admin/class-wf-woocommerce-packing-list-admin.php:2592
-#: admin/class-wf-woocommerce-packing-list-admin.php:4076
-#: admin/class-wf-woocommerce-packing-list-admin.php:4189
-#: admin/class-wf-woocommerce-packing-list-admin.php:4241
-#: admin/class-wf-woocommerce-packing-list-admin.php:4361
+#: admin/class-wf-woocommerce-packing-list-admin.php:1087
+#: admin/class-wf-woocommerce-packing-list-admin.php:1179
+#: admin/class-wf-woocommerce-packing-list-admin.php:2785
+#: admin/class-wf-woocommerce-packing-list-admin.php:4271
+#: admin/class-wf-woocommerce-packing-list-admin.php:4384
+#: admin/class-wf-woocommerce-packing-list-admin.php:4435
+#: admin/class-wf-woocommerce-packing-list-admin.php:4555
 msgid "You are not allowed to do this action"
 msgstr "この操作は許可されていません"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:902
 #: admin/class-wf-woocommerce-packing-list-admin.php:1045
+#: admin/class-wf-woocommerce-packing-list-admin.php:1187
 msgid "There is no order with this id"
 msgstr "このIDの注文はありません"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:922
 #: admin/class-wf-woocommerce-packing-list-admin.php:1065
+#: admin/class-wf-woocommerce-packing-list-admin.php:1207
 msgid "It seems this order is not yours"
 msgstr "この注文はあなたのものではないようです"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:937
 #: admin/class-wf-woocommerce-packing-list-admin.php:1080
+#: admin/class-wf-woocommerce-packing-list-admin.php:1222
 msgid ""
 "It seems the products in this order were removed, we cannot proceed this "
 "actoin now."
 msgstr ""
 "この注文の製品は削除されたようです。現在この操作を続行することはできません。"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:941
 #: admin/class-wf-woocommerce-packing-list-admin.php:1084
+#: admin/class-wf-woocommerce-packing-list-admin.php:1226
 msgid "There is no items in this order."
 msgstr "この注文には商品がありません。"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:1004
+#: admin/class-wf-woocommerce-packing-list-admin.php:1146
 msgid "Invalid order id"
 msgstr "注文IDが無効です"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:1009
+#: admin/class-wf-woocommerce-packing-list-admin.php:1151
 msgid "Invalid access key and mail id"
 msgstr "アクセスキーとメールIDが無効です"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:1017
+#: admin/class-wf-woocommerce-packing-list-admin.php:1159
 msgid "Empty order"
 msgstr "空の注文"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:1027
+#: admin/class-wf-woocommerce-packing-list-admin.php:1169
 msgid "It seems this order is not yours."
 msgstr "この注文はあなたのものではないようです。"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:1710
-#: admin/class-wf-woocommerce-packing-list-admin.php:4879
+#: admin/class-wf-woocommerce-packing-list-admin.php:1857
+#: admin/class-wf-woocommerce-packing-list-admin.php:5076
 msgid "Settings Updated"
 msgstr "設定を更新"
 
 #. translators: %s: method
-#: admin/class-wf-woocommerce-packing-list-admin.php:2150
-#: public/modules/invoice/invoice.php:1024
+#. translators: %s: Shipping method name
+#: admin/class-wf-woocommerce-packing-list-admin.php:2321
+#: public/modules/invoice/invoice.php:1101
 #, php-format
 msgid "via %s"
 msgstr "%s"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:2155
+#: admin/class-wf-woocommerce-packing-list-admin.php:2326
 msgid "Free!"
 msgstr "無料"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:2307
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:170
+#: admin/class-wf-woocommerce-packing-list-admin.php:2483
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:178
 msgid "Item with same meta key already exists"
 msgstr "同じメタキーを持つアイテムがすでに存在します"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:2365
+#. translators: 1$s: Tool description text, 2$s: Note label, 3$s: Article link opening tag, 4$s: Article link closing tag
+#: admin/class-wf-woocommerce-packing-list-admin.php:2558
 msgid ""
 "This will remove all invoice numbers created by WooCommerce PDF Invoices, "
 "Packing Slips, Delivery Notes & Shipping Labels by WebToffee."
@@ -369,11 +406,11 @@ msgstr ""
 "これにより、WebToffee の WooCommerce PDF 請求書、梱包明細書、納品書、出荷ラベ"
 "ルによって作成されたすべての請求書番号が削除されます。"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:2365
+#: admin/class-wf-woocommerce-packing-list-admin.php:2558
 msgid "Note:"
 msgstr "メモ："
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:2365
+#: admin/class-wf-woocommerce-packing-list-admin.php:2558
 #, php-format
 msgid ""
 "Before using this tool, please make sure you followed the steps described in "
@@ -382,162 +419,162 @@ msgstr ""
 "このツールを使用する前に、この記事「%1$s既存の請求書番号をリセット/削除する方"
 "法%2$s」に記載されている手順に従っていることを確認してください。"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:2368
+#: admin/class-wf-woocommerce-packing-list-admin.php:2561
 msgid "Delete all generated invoice numbers"
 msgstr "生成された請求書番号をすべて削除する"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:2369
-#: admin/modules/customizer/views/customize.php:606
+#: admin/class-wf-woocommerce-packing-list-admin.php:2562
+#: admin/modules/customizer/views/customize.php:803
 msgid "Delete"
 msgstr "削除"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:2607
+#: admin/class-wf-woocommerce-packing-list-admin.php:2800
 msgid "Updated"
 msgstr "更新しました"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:2614
+#: admin/class-wf-woocommerce-packing-list-admin.php:2807
 msgid "No modules"
 msgstr "モジュールなし"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:3999
-#: admin/class-wf-woocommerce-packing-list-admin.php:4029
+#: admin/class-wf-woocommerce-packing-list-admin.php:4192
+#: admin/class-wf-woocommerce-packing-list-admin.php:4223
 msgid "Do not show again"
 msgstr "再び表示しない"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4005
-#: admin/class-wf-woocommerce-packing-list-admin.php:4018
-#: admin/class-wf-woocommerce-packing-list-admin.php:4035
-#: admin/modules/customizer/views/customize.php:588
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:178
+#: admin/class-wf-woocommerce-packing-list-admin.php:4198
+#: admin/class-wf-woocommerce-packing-list-admin.php:4211
+#: admin/class-wf-woocommerce-packing-list-admin.php:4229
+#: admin/modules/customizer/views/customize.php:785
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:182
 #: admin/modules/wt-pdf-request-feature/class-wt-pdf-request-feature.php:113
-#: admin/views/admin-settings-debug.php:180
-#: admin/views/admin-settings-debug.php:233
+#: admin/views/admin-settings-debug.php:184
+#: admin/views/admin-settings-debug.php:240
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4008
-#: admin/class-wf-woocommerce-packing-list-admin.php:4038
+#: admin/class-wf-woocommerce-packing-list-admin.php:4201
+#: admin/class-wf-woocommerce-packing-list-admin.php:4232
 msgid "Generate"
 msgstr "生成"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4015
+#: admin/class-wf-woocommerce-packing-list-admin.php:4208
 msgid "Generating the document..."
 msgstr "ドキュメントを生成しています..."
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4093
-#: admin/modules/customizer/customizer.php:259
+#: admin/class-wf-woocommerce-packing-list-admin.php:4288
+#: admin/modules/customizer/customizer.php:261
 #: admin/modules/wt-pdf-request-feature/class-wt-pdf-request-feature.php:176
 msgid "Success"
 msgstr "成功"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4095
+#: admin/class-wf-woocommerce-packing-list-admin.php:4290
 msgid "Cannot close this banner"
 msgstr "このバナーを閉じることができません"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4267
+#: admin/class-wf-woocommerce-packing-list-admin.php:4461
 msgid "Settings are empty"
 msgstr "設定が空です"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4307
+#: admin/class-wf-woocommerce-packing-list-admin.php:4501
 msgid "Imported successfully"
 msgstr "インポートに成功しました"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4311
+#: admin/class-wf-woocommerce-packing-list-admin.php:4505
 msgid "Incorrect file"
 msgstr "不正なファイル"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4315
+#: admin/class-wf-woocommerce-packing-list-admin.php:4509
 msgid "Error: Empty JSON file"
 msgstr "エラー: 空の JSON ファイル"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4319
+#: admin/class-wf-woocommerce-packing-list-admin.php:4513
 msgid "Error: Invalid JSON data"
 msgstr "エラー: 無効な JSON データ"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4323
+#: admin/class-wf-woocommerce-packing-list-admin.php:4517
 msgid "Error uploading the file"
 msgstr "ファイルのアップロード中にエラーが発生しました"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4394
+#: admin/class-wf-woocommerce-packing-list-admin.php:4588
 msgid "Error:"
 msgstr "エラー:"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4394
+#: admin/class-wf-woocommerce-packing-list-admin.php:4588
 msgid "Truncation did not complete as expected."
 msgstr "切り捨てが期待どおりに完了しませんでした。"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4448
-#: admin/views/general.php:333
+#: admin/class-wf-woocommerce-packing-list-admin.php:4642
+#: admin/views/general.php:345
 msgid "Total files"
 msgstr "ファイルの総数"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4450
+#: admin/class-wf-woocommerce-packing-list-admin.php:4644
 #: admin/views/documents.php:22 admin/views/freevspro.php:7
 #: public/modules/packinglist/packinglist.php:62
 #: public/modules/packinglist/packinglist.php:85
 #: public/modules/packinglist/packinglist.php:86
 #: public/modules/packinglist/packinglist.php:239
-#: public/modules/packinglist/packinglist.php:384
+#: public/modules/packinglist/packinglist.php:385
 #: public/modules/packinglist/views/admin-settings.php:39
 msgid "Packing slip"
 msgstr "梱包明細書"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4451
+#: admin/class-wf-woocommerce-packing-list-admin.php:4645
 #: admin/views/documents.php:39 admin/views/freevspro.php:9
 #: public/modules/shippinglabel/shippinglabel.php:67
 #: public/modules/shippinglabel/shippinglabel.php:238
 #: public/modules/shippinglabel/shippinglabel.php:239
-#: public/modules/shippinglabel/shippinglabel.php:567
+#: public/modules/shippinglabel/shippinglabel.php:568
 #: public/modules/shippinglabel/views/admin-settings.php:30
 msgid "Shipping label"
 msgstr "配送ラベル"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4452
+#: admin/class-wf-woocommerce-packing-list-admin.php:4646
 #: admin/views/documents.php:47 admin/views/freevspro.php:11
 #: public/modules/deliverynote/deliverynote.php:59
 #: public/modules/deliverynote/deliverynote.php:82
 #: public/modules/deliverynote/deliverynote.php:83
 #: public/modules/deliverynote/deliverynote.php:229
-#: public/modules/deliverynote/deliverynote.php:355
+#: public/modules/deliverynote/deliverynote.php:356
 #: public/modules/deliverynote/views/admin-settings.php:37
 msgid "Delivery note"
 msgstr "配達メモ"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4453
+#: admin/class-wf-woocommerce-packing-list-admin.php:4647
 #: admin/views/documents.php:43 admin/views/freevspro.php:10
 #: public/modules/dispatchlabel/dispatchlabel.php:57
 #: public/modules/dispatchlabel/dispatchlabel.php:80
 #: public/modules/dispatchlabel/dispatchlabel.php:81
-#: public/modules/dispatchlabel/dispatchlabel.php:325
+#: public/modules/dispatchlabel/dispatchlabel.php:326
 #: public/modules/dispatchlabel/views/admin-settings.php:36
 msgid "Dispatch label"
 msgstr "発送ラベル"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4454
+#: admin/class-wf-woocommerce-packing-list-admin.php:4648
 #: admin/views/documents.php:61
 msgid "Picklist"
 msgstr "ピックリスト"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4455
+#: admin/class-wf-woocommerce-packing-list-admin.php:4649
 #: admin/views/documents.php:87 admin/views/freevspro.php:12
 msgid "Proforma invoice"
 msgstr "見積請求書"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4456
+#: admin/class-wf-woocommerce-packing-list-admin.php:4650
 #: admin/views/documents.php:26 admin/views/freevspro.php:8
 msgid "Credit note"
 msgstr "クレジットノート"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4649
-#: admin/views/_form_field_generator_new.php:619
+#: admin/class-wf-woocommerce-packing-list-admin.php:4846
+#: admin/views/_form_field_generator_new.php:675
 msgid "No temporary file found"
 msgstr "一時ファイルが見つかりません"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4654
+#: admin/class-wf-woocommerce-packing-list-admin.php:4851
 msgid "Successfully cleared all temp files."
 msgstr "すべての一時ファイルを正常にクリアしました。"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4655
+#: admin/class-wf-woocommerce-packing-list-admin.php:4852
 msgid "No files found."
 msgstr "ファイルが見つかりません。"
 
@@ -545,7 +582,7 @@ msgstr "ファイルが見つかりません。"
 msgid "Order Details"
 msgstr "ご注文の詳細"
 
-#: admin/data/data.filters-help.php:4 public/modules/invoice/invoice.php:1204
+#: admin/data/data.filters-help.php:4 public/modules/invoice/invoice.php:1281
 msgid "Product Table"
 msgstr "商品一覧"
 
@@ -554,7 +591,7 @@ msgid "Summary Table"
 msgstr "概要表"
 
 #: admin/data/data.filters-help.php:6
-#: public/modules/invoice/views/general.php:188
+#: public/modules/invoice/views/general.php:267
 msgid "Others"
 msgstr "その他"
 
@@ -838,7 +875,8 @@ msgstr "PDF生成に使用するデフォルトのライブラリ"
 msgid "Never Miss This Deal"
 msgstr "このセールを見逃すな"
 
-#: admin/modules/banner/class-wt-bfcm-twenty-twenty-four.php:72
+#. translators: 1$s: Discount percentage with HTML span tags
+#: admin/modules/banner/class-wt-bfcm-twenty-twenty-four.php:73
 #, php-format
 msgid ""
 "Your Last Chance to Avail %1$s on WebToffee Plugins. Grab the deal before "
@@ -847,13 +885,42 @@ msgstr ""
 "WebToffeeプラグインを%1$sで手に入れる最後のチャンス。なくなる前にこのチャンス"
 "をゲットしましょう！"
 
-#: admin/modules/banner/class-wt-bfcm-twenty-twenty-four.php:73
+#: admin/modules/banner/class-wt-bfcm-twenty-twenty-four.php:74
 msgid "OFF"
 msgstr "オフ"
 
-#: admin/modules/banner/class-wt-bfcm-twenty-twenty-four.php:78
+#: admin/modules/banner/class-wt-bfcm-twenty-twenty-four.php:79
 msgid "View plugins"
 msgstr "プラグインを表示"
+
+#: admin/modules/banner/class-wt-gdpr-cta-banner.php:116
+msgid ""
+"<b>Important Update:</b> Starting October 31, 2025, Microsoft requires "
+"websites to use Clarity Consent V2 to continue collecting analytical data. "
+"Ensure compliance by upgrading to the GDPR Cookie Consent Plugin, now fully "
+"compatible with <b>Clarity Consent V2</b> and <b>Google Consent Mode</b>."
+msgstr ""
+
+#: admin/modules/banner/class-wt-gdpr-cta-banner.php:119
+msgid ""
+"Stay compliant with GDPR and US Privacy Laws using our Google-certified CMP "
+"plugin—now with <b>Microsoft Clarity Consent V2</b>, <b>UET Consent Mode</b> "
+"and <b>Google Consent Mode</b> support."
+msgstr ""
+
+#: admin/modules/banner/class-wt-gdpr-cta-banner.php:259
+msgid "Ensure Cookie Compliance for Your WordPress Website"
+msgstr ""
+
+#: admin/modules/banner/class-wt-gdpr-cta-banner.php:271
+#, fuzzy
+#| msgid "Get Plugin"
+msgid "Get plugin now"
+msgstr "プラグインを取得"
+
+#: admin/modules/banner/class-wt-gdpr-cta-banner.php:275
+msgid "Certified Partner"
+msgstr ""
 
 #: admin/modules/banner/class-wt-mpdf-language-banner.php:37
 msgid "Language Detection Notice"
@@ -877,20 +944,20 @@ msgstr "ここをクリックすると、無料の mPDF アドオンをインス
 msgid "Dismiss this notice"
 msgstr "この通知を却下する"
 
-#: admin/modules/banner/class-wt-p-iew-cta-banner.php:104
+#: admin/modules/banner/class-wt-p-iew-cta-banner.php:105
 #: admin/modules/banner/class-wt-pklist-cta-banner.php:94
 msgid "Product Import Export"
 msgstr "製品の輸入輸出"
 
-#: admin/modules/banner/class-wt-p-iew-cta-banner.php:105
+#: admin/modules/banner/class-wt-p-iew-cta-banner.php:106
 msgid "Product Import Export for WooCommerce"
 msgstr "WooCommerce の商品インポート/エクスポート"
 
-#: admin/modules/banner/class-wt-p-iew-cta-banner.php:109
+#: admin/modules/banner/class-wt-p-iew-cta-banner.php:110
 msgid "Import, export, or update WooCommerce products"
 msgstr "WooCommerce 製品をインポート、エクスポート、または更新する"
 
-#: admin/modules/banner/class-wt-p-iew-cta-banner.php:110
+#: admin/modules/banner/class-wt-p-iew-cta-banner.php:111
 msgid ""
 "Supports all types of products (Simple, variable, subscription grouped, and "
 "external)"
@@ -898,55 +965,55 @@ msgstr ""
 "すべてのタイプの製品（シンプル、可変、サブスクリプショングループ化、外部）を"
 "サポートします"
 
-#: admin/modules/banner/class-wt-p-iew-cta-banner.php:111
+#: admin/modules/banner/class-wt-p-iew-cta-banner.php:112
 msgid "Multiple file formats - CSV, XML, Excel, and TSV"
 msgstr "複数のファイル形式 - CSV、XML、Excel、TSV"
 
-#: admin/modules/banner/class-wt-p-iew-cta-banner.php:112
+#: admin/modules/banner/class-wt-p-iew-cta-banner.php:113
 msgid "Advanced filters and customizations for better control"
 msgstr "より優れた制御のための高度なフィルターとカスタマイズ"
 
-#: admin/modules/banner/class-wt-p-iew-cta-banner.php:113
+#: admin/modules/banner/class-wt-p-iew-cta-banner.php:114
 msgid "Bulk update WooCommerce product data"
 msgstr "WooCommerce製品データを一括更新"
 
-#: admin/modules/banner/class-wt-p-iew-cta-banner.php:114
+#: admin/modules/banner/class-wt-p-iew-cta-banner.php:115
 msgid "Import via FTP/SFTP and URL"
 msgstr "FTP/SFTPおよびURL経由でインポート"
 
-#: admin/modules/banner/class-wt-p-iew-cta-banner.php:115
+#: admin/modules/banner/class-wt-p-iew-cta-banner.php:116
 #: admin/views/premium_extension_listing.php:186
 #: admin/views/premium_extension_listing.php:221
 msgid "Schedule automated import & export"
 msgstr "自動インポートとエクスポートのスケジュール"
 
-#: admin/modules/banner/class-wt-p-iew-cta-banner.php:116
+#: admin/modules/banner/class-wt-p-iew-cta-banner.php:117
 msgid "Export and Import custom fields and third-party plugin fields"
 msgstr ""
 "カスタムフィールドとサードパーティプラグインフィールドのエクスポートとイン"
 "ポート"
 
-#: admin/modules/banner/class-wt-p-iew-cta-banner.php:121
+#: admin/modules/banner/class-wt-p-iew-cta-banner.php:122
 #: admin/modules/banner/class-wt-pklist-cta-banner.php:111
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:117
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:116
 msgid "View all premium features"
 msgstr "すべてのプレミアム機能を見る"
 
-#: admin/modules/banner/class-wt-p-iew-cta-banner.php:121
+#: admin/modules/banner/class-wt-p-iew-cta-banner.php:122
 #: admin/modules/banner/class-wt-pklist-cta-banner.php:111
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:117
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:116
 msgid "Show less"
 msgstr "少なく表示"
 
-#: admin/modules/banner/class-wt-p-iew-cta-banner.php:122
+#: admin/modules/banner/class-wt-p-iew-cta-banner.php:123
 #: admin/modules/banner/class-wt-pklist-cta-banner.php:112
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:118
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:117
 msgid "Get the plugin"
 msgstr "プラグインを入手する"
 
-#: admin/modules/banner/class-wt-p-iew-cta-banner.php:124
+#: admin/modules/banner/class-wt-p-iew-cta-banner.php:125
 #: admin/modules/banner/class-wt-pklist-cta-banner.php:114
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:120
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:119
 msgid "Dismiss"
 msgstr "非表示"
 
@@ -986,68 +1053,68 @@ msgstr "請求書に「今すぐ支払う」リンクを追加する"
 msgid "Add custom fields to any order document with ease"
 msgstr "あらゆる注文書にカスタムフィールドを簡単に追加できます"
 
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:91
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:96
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:90
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:95
 msgid "Smart Coupons for WooCommerce Pro"
 msgstr "WooCommerce Proのスマートクーポン"
 
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:92
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:91
 msgid ""
 "Create better coupon campaigns with advanced WooCommerce coupon features"
 msgstr ""
 "高度なWooCommerceクーポン機能でより良いクーポンキャンペーンを作成しましょう"
 
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:100
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:99
 msgid "Auto-apply coupons"
 msgstr "クーポンを自動適用する"
 
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:101
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:100
 msgid "Create attractive Buy X Get Y (BOGO) offers"
 msgstr "魅力的な「Xを買うとYがもらえる（BOGO）」オファーを作成する"
 
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:102
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:101
 msgid "Create product quantity/subtotal based discounts"
 msgstr "商品の数量/小計に基づいた割引を作成する"
 
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:103
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:102
 msgid "Offer store credits and gift cards"
 msgstr "ストアクレジットやギフトカードを提供する"
 
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:104
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:103
 msgid "Set up smart giveaway campaigns"
 msgstr "スマートなプレゼントキャンペーンを設定する"
 
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:105
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:104
 msgid "Set advanced coupon rules and conditions"
 msgstr "高度なクーポンのルールと条件を設定する"
 
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:106
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:105
 #: admin/views/premium_extension_listing.php:330
 msgid "Bulk generate coupons"
 msgstr "クーポンを一括生成"
 
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:107
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:106
 msgid "Shipping, purchase history, and payment method-based coupons"
 msgstr "配送、購入履歴、支払い方法に基づくクーポン"
 
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:108
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:107
 msgid "Sign up coupons"
 msgstr "サインアップクーポン"
 
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:109
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:108
 #: admin/views/premium_extension_listing.php:328
 msgid "Cart abandonment coupons"
 msgstr "カート放棄クーポン"
 
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:110
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:109
 msgid "Create day-specific deals"
 msgstr "曜日限定のセールを作成する"
 
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:111
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:110
 msgid "Display coupon banners and widgets"
 msgstr "クーポンバナーとウィジェットを表示する"
 
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:112
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:111
 msgid "Import coupons"
 msgstr "クーポンをインポートする"
 
@@ -1064,7 +1131,7 @@ msgstr "税込"
 msgid "n/a"
 msgstr "該当なし"
 
-#: admin/modules/customizer/classes/class-customizer.php:1955
+#: admin/modules/customizer/classes/class-customizer.php:1958
 msgid ""
 "Mauris dignissim neque ut sapien vulputate, eu semper tellus porttitor. Cras "
 "porta lectus id augue interdum egestas."
@@ -1072,7 +1139,7 @@ msgstr ""
 "モーリスの尊厳は賢く、常に優美である。扉を開けると、そこにはエジェスタスの姿"
 "がありました。"
 
-#: admin/modules/customizer/classes/class-customizer.php:1973
+#: admin/modules/customizer/classes/class-customizer.php:1976
 msgid ""
 "Mauris dignissim neque ut sapien vulputate, eu semper tellus porttitor. Cras "
 "porta lectus id augue interdum egestas. Suspendisse potenti. Phasellus "
@@ -1083,7 +1150,7 @@ msgstr ""
 "がありました。潜在能力を疑う。 Phasellus mollis は、フリンギラに生息していま"
 "す。ヌラと舌状突起、舌状突起のベル"
 
-#: admin/modules/customizer/classes/class-customizer.php:1978
+#: admin/modules/customizer/classes/class-customizer.php:1981
 msgid ""
 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec vehicula "
 "purus. Mauris tempor nec ipsum ac tempus. Aenean vehicula porttitor tortor, "
@@ -1094,41 +1161,41 @@ msgstr ""
 "porttitor tortor、et interdum tellus fermentum at。フスケ ペレンテスク ジュス"
 "ト ロンカス"
 
-#: admin/modules/customizer/customizer.php:88
+#: admin/modules/customizer/customizer.php:89
 msgid "Unable to generate PDF."
 msgstr "PDF を生成できません。"
 
-#: admin/modules/customizer/customizer.php:93
+#: admin/modules/customizer/customizer.php:94
 msgid "There is no order with this given id"
 msgstr "このIDの注文はありません"
 
-#: admin/modules/customizer/customizer.php:201
-#: admin/modules/customizer/customizer.php:206
+#: admin/modules/customizer/customizer.php:203
+#: admin/modules/customizer/customizer.php:208
 #: public/modules/packinglist/views/admin-settings.php:51
 msgid "Customize"
 msgstr "カスタマイズ"
 
-#: admin/modules/customizer/customizer.php:260
+#: admin/modules/customizer/customizer.php:262
 msgid "You can't undo this action. Are you sure?"
 msgstr "この操作を元に戻すことはできません。よろしいですか?"
 
-#: admin/modules/customizer/customizer.php:261
+#: admin/modules/customizer/customizer.php:263
 msgid "Click here to add Company logo"
 msgstr "会社のロゴを追加するにはここをクリックしてください"
 
-#: admin/modules/customizer/customizer.php:262
+#: admin/modules/customizer/customizer.php:264
 msgid "Click here to add Company name"
 msgstr "会社名を追加するにはここをクリックしてください"
 
-#: admin/modules/customizer/customizer.php:263
+#: admin/modules/customizer/customizer.php:265
 msgid "Click here to add From address"
 msgstr "差出人アドレスを追加するにはここをクリック"
 
-#: admin/modules/customizer/customizer.php:264
+#: admin/modules/customizer/customizer.php:266
 msgid "Click here to add Signature"
 msgstr "署名を追加するにはここをクリック"
 
-#: admin/modules/customizer/customizer.php:265
+#: admin/modules/customizer/customizer.php:267
 msgid ""
 "Please save all data before leaving this page. All unsaved data will be "
 "lost. Are you sure?"
@@ -1136,36 +1203,36 @@ msgstr ""
 "このページを離れる前にすべてのデータを保存してください。保存されていないデー"
 "タはすべて失われます。よろしいですか?"
 
-#: admin/modules/customizer/customizer.php:266
-#: admin/modules/customizer/views/customize.php:583
+#: admin/modules/customizer/customizer.php:268
+#: admin/modules/customizer/views/customize.php:780
 msgid "Change template"
 msgstr "テンプレートを変更"
 
-#: admin/modules/customizer/customizer.php:267
+#: admin/modules/customizer/customizer.php:269
 msgid "Change layout"
 msgstr "レイアウトを変更"
 
-#: admin/modules/customizer/customizer.php:268
+#: admin/modules/customizer/customizer.php:270
 msgid "Saving"
 msgstr "保存中"
 
-#: admin/modules/customizer/customizer.php:269
-#: public/modules/invoice/invoice.php:190
+#: admin/modules/customizer/customizer.php:271
+#: public/modules/invoice/invoice.php:199
 #: public/modules/shippinglabel/shippinglabel.php:265
 msgid "Please enter order number"
 msgstr "注文番号を入力してください"
 
-#: admin/modules/customizer/customizer.php:270
-#: public/modules/invoice/invoice.php:191
+#: admin/modules/customizer/customizer.php:272
+#: public/modules/invoice/invoice.php:200
 #: public/modules/shippinglabel/shippinglabel.php:266
 msgid "Generating"
 msgstr "生成する"
 
-#: admin/modules/customizer/customizer.php:271
+#: admin/modules/customizer/customizer.php:273
 msgid "This is premium template which is not compatible with the basic plugin"
 msgstr "これは基本プラグインと互換性のないプレミアムテンプレートです"
 
-#: admin/modules/customizer/customizer.php:272
+#: admin/modules/customizer/customizer.php:274
 msgid ""
 "This is basic template. In order to use premium feature, you need to switch "
 "and activate the premium template"
@@ -1173,117 +1240,117 @@ msgstr ""
 "これは基本テンプレートです。プレミアム機能を使用するには、プレミアムテンプ"
 "レートに切り替えてアクティブ化する必要があります。"
 
-#: admin/modules/customizer/customizer.php:273
+#: admin/modules/customizer/customizer.php:275
 msgid "Template Name Required"
 msgstr "テンプレート名必須"
 
-#: admin/modules/customizer/customizer.php:320
-#: admin/modules/customizer/customizer.php:677
+#: admin/modules/customizer/customizer.php:322
+#: admin/modules/customizer/customizer.php:682
 msgid "Active"
 msgstr "有効"
 
-#: admin/modules/customizer/customizer.php:653
+#: admin/modules/customizer/customizer.php:658
 msgid "Error."
 msgstr "エラー。"
 
-#: admin/modules/customizer/customizer.php:679
-#: admin/modules/customizer/views/customize.php:605
+#: admin/modules/customizer/customizer.php:684
+#: admin/modules/customizer/views/customize.php:802
 msgid "Activate"
 msgstr "有効化"
 
-#: admin/modules/customizer/customizer.php:705
+#: admin/modules/customizer/customizer.php:710
 msgid "No template found."
 msgstr "テンプレートが見つかりません。"
 
-#: admin/modules/customizer/customizer.php:722
+#: admin/modules/customizer/customizer.php:727
 msgid "Unable to save theme."
 msgstr "テーマを保存できません。"
 
-#: admin/modules/customizer/customizer.php:741
+#: admin/modules/customizer/customizer.php:746
 msgid "Template with same name already exists."
 msgstr "同じ名前のテンプレートがすでに存在します。"
 
-#: admin/modules/customizer/customizer.php:783
+#: admin/modules/customizer/customizer.php:788
 msgid "Template created."
 msgstr "テンプレートが作成されました。"
 
-#: admin/modules/customizer/customizer.php:789
+#: admin/modules/customizer/customizer.php:794
 msgid "Template created and activated."
 msgstr "テンプレートが作成され、アクティブ化されました。"
 
-#: admin/modules/customizer/customizer.php:844
+#: admin/modules/customizer/customizer.php:849
 msgid "Template updated."
 msgstr "テンプレートを更新しました。"
 
-#: admin/modules/customizer/customizer.php:847
+#: admin/modules/customizer/customizer.php:852
 msgid "Template updated and activated."
 msgstr "テンプレートが更新され、アクティブ化されました。"
 
-#: admin/modules/customizer/customizer.php:895
+#: admin/modules/customizer/customizer.php:900
 msgid "Unable to switch view."
 msgstr "ビューを切り替えることができません。"
 
-#: admin/modules/customizer/customizer.php:1290
+#: admin/modules/customizer/customizer.php:1295
 msgid "Unable to load template."
 msgstr "テンプレートを読み込めません。"
 
-#: admin/modules/customizer/customizer.php:1341
+#: admin/modules/customizer/customizer.php:1346
 msgid "Untitled template"
 msgstr "無題のテンプレート"
 
-#: admin/modules/customizer/customizer.php:1487
+#: admin/modules/customizer/customizer.php:1492
 msgid "Lighter"
 msgstr "細い"
 
-#: admin/modules/customizer/customizer.php:1488
+#: admin/modules/customizer/customizer.php:1493
 msgid "Normal"
 msgstr "ノーマル"
 
-#: admin/modules/customizer/customizer.php:1489
+#: admin/modules/customizer/customizer.php:1494
 msgid "Bold"
 msgstr "太字"
 
-#: admin/modules/customizer/customizer.php:1490
+#: admin/modules/customizer/customizer.php:1495
 msgid "Bolder"
 msgstr "ボールド"
 
-#: admin/modules/customizer/customizer.php:1502
+#: admin/modules/customizer/customizer.php:1507
 msgid "Select One"
 msgstr "1つ選択"
 
-#: admin/modules/customizer/customizer.php:1520
+#: admin/modules/customizer/customizer.php:1525
 msgid "Left"
 msgstr "左"
 
-#: admin/modules/customizer/customizer.php:1521
+#: admin/modules/customizer/customizer.php:1526
 msgid "Right"
 msgstr "右"
 
-#: admin/modules/customizer/customizer.php:1522
+#: admin/modules/customizer/customizer.php:1527
 msgid "Center"
 msgstr "中央"
 
-#: admin/modules/customizer/customizer.php:1523
+#: admin/modules/customizer/customizer.php:1528
 msgid "Start"
 msgstr "開始"
 
-#: admin/modules/customizer/customizer.php:1524
+#: admin/modules/customizer/customizer.php:1529
 msgid "End"
 msgstr "終了"
 
-#: admin/modules/customizer/customizer.php:1531
+#: admin/modules/customizer/customizer.php:1536
 msgid "None"
 msgstr "なし"
 
-#: admin/modules/customizer/customizer.php:1543
+#: admin/modules/customizer/customizer.php:1548
 msgid "Solid"
 msgstr "直線"
 
-#: admin/modules/customizer/customizer.php:1544
+#: admin/modules/customizer/customizer.php:1549
 msgid "Dotted"
 msgstr "点線"
 
-#: admin/modules/customizer/customizer.php:1545
+#: admin/modules/customizer/customizer.php:1550
 msgid "Dashed"
 msgstr "破線"
 
@@ -1373,39 +1440,39 @@ msgstr "合計金額"
 #: admin/modules/customizer/data/data.translation_strings.php:16
 #: admin/modules/customizer/views/_customize_properties.php:636
 #: admin/views/wt_ipc_free_pro.php:752 admin/views/wt_ipc_free_pro.php:794
-#: public/modules/invoice/invoice.php:1231
+#: public/modules/invoice/invoice.php:1308
 msgid "Subtotal"
 msgstr "小計"
 
 #: admin/modules/customizer/data/data.translation_strings.php:17
 #: admin/modules/customizer/views/_customize_properties.php:642
 #: admin/views/wt_ipc_free_pro.php:756 admin/views/wt_ipc_free_pro.php:798
-#: public/modules/invoice/invoice.php:1232
+#: public/modules/invoice/invoice.php:1309
 msgid "Shipping"
 msgstr "配送"
 
 #: admin/modules/customizer/data/data.translation_strings.php:18
 #: admin/modules/customizer/views/_customize_properties.php:649
-#: public/modules/invoice/invoice.php:1233
+#: public/modules/invoice/invoice.php:1310
 msgid "Cart Discount"
 msgstr "固定されたカートの割引"
 
 #: admin/modules/customizer/data/data.translation_strings.php:19
 #: admin/modules/customizer/views/_customize_properties.php:655
-#: public/modules/invoice/invoice.php:1234
+#: public/modules/invoice/invoice.php:1311
 msgid "Order Discount"
 msgstr "値引き"
 
 #: admin/modules/customizer/data/data.translation_strings.php:20
 #: admin/modules/customizer/views/_customize_properties.php:662
-#: public/modules/invoice/invoice.php:1235
+#: public/modules/invoice/invoice.php:1312
 msgid "Total Tax"
 msgstr "税合計"
 
 #: admin/modules/customizer/data/data.translation_strings.php:21
 #: admin/modules/customizer/views/_customize_properties.php:668
 #: admin/views/wt_ipc_free_pro.php:768 admin/views/wt_ipc_free_pro.php:810
-#: public/modules/invoice/invoice.php:1236
+#: public/modules/invoice/invoice.php:1313
 msgid "Fee"
 msgstr "手数料"
 
@@ -1416,8 +1483,8 @@ msgstr "クーポン使用"
 #: admin/modules/customizer/data/data.translation_strings.php:23
 #: admin/modules/customizer/views/_customize_properties.php:681
 #: admin/views/wt_ipc_free_pro.php:780 admin/views/wt_ipc_free_pro.php:822
-#: public/modules/invoice/invoice.php:1239
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:73
+#: public/modules/invoice/invoice.php:1316
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:68
 msgid "Total"
 msgstr "合計"
 
@@ -1468,7 +1535,7 @@ msgstr "支払方法："
 
 #: admin/modules/customizer/data/data.translation_strings.php:35
 #: admin/modules/customizer/views/_customize_properties.php:675
-#: public/modules/invoice/invoice.php:1238
+#: public/modules/invoice/invoice.php:1315
 msgid "Payment Method"
 msgstr "支払い方法"
 
@@ -1569,7 +1636,7 @@ msgid "Customer note:"
 msgstr "顧客メモ:"
 
 #: admin/modules/customizer/data/data.translation_strings.php:61
-#: public/modules/invoice/invoice.php:1210
+#: public/modules/invoice/invoice.php:1287
 #: public/modules/shippinglabel/shippinglabel.php:177
 msgid "Customer note"
 msgstr "ご意見、ご要望"
@@ -1622,7 +1689,7 @@ msgstr "タイトル"
 #: admin/modules/customizer/views/_customize_properties.php:320
 #: admin/modules/customizer/views/_customize_properties.php:336
 #: admin/modules/customizer/views/_customize_properties.php:600
-#: public/modules/invoice/invoice.php:366
+#: public/modules/invoice/invoice.php:379
 msgid "Font size"
 msgstr "フォントサイズ"
 
@@ -1674,7 +1741,7 @@ msgstr "ヘッダーカラー"
 
 #: admin/modules/customizer/views/_customize_properties.php:207
 #: admin/modules/customizer/views/_customize_properties.php:241
-#: public/modules/invoice/invoice.php:360
+#: public/modules/invoice/invoice.php:373
 msgid "Text"
 msgstr "テキスト"
 
@@ -1691,7 +1758,7 @@ msgid "Text color"
 msgstr "テキストの色"
 
 #: admin/modules/customizer/views/_customize_properties.php:246
-#: public/modules/invoice/views/general.php:296
+#: public/modules/invoice/views/general.php:375
 msgid "Format"
 msgstr "フォーマット"
 
@@ -1864,109 +1931,129 @@ msgstr "注文"
 
 #: admin/modules/customizer/views/_pdf_preview.php:34
 #: admin/modules/customizer/views/_pdf_preview.php:35
-#: admin/partials/form_wizard/form_wizard.php:391
-#: admin/views/_form_field_generator_new.php:804
+#: admin/partials/form_wizard/form_wizard.php:503
+#: admin/views/_form_field_generator_new.php:860
 #: public/modules/invoice/views/qrcode_promote.php:37
 msgid "Order number"
 msgstr "注文番号"
 
-#: admin/modules/customizer/views/customize.php:510
-#: admin/views/admin-settings-debug.php:158
+#: admin/modules/customizer/views/customize.php:591
+#: admin/views/admin-settings-debug.php:159
 msgid "Templates"
 msgstr "テンプレート"
 
-#: admin/modules/customizer/views/customize.php:515
+#: admin/modules/customizer/views/customize.php:596
 msgid "Type template name to search"
 msgstr "検索するテンプレート名を入力してください"
 
-#: admin/modules/customizer/views/customize.php:527
+#: admin/modules/customizer/views/customize.php:608
 msgid "Choose a layout."
 msgstr "レイアウトを選択します。"
 
-#: admin/modules/customizer/views/customize.php:533
+#: admin/modules/customizer/views/customize.php:614
 msgid "All unsaved changes will be lost upon switching to a new layout."
 msgstr ""
 "新しいレイアウトに切り替えると、保存されていない変更はすべて失われます。"
 
-#: admin/modules/customizer/views/customize.php:535
+#: admin/modules/customizer/views/customize.php:616
 msgid "Save before you proceed."
 msgstr "続行する前に保存してください。"
 
-#: admin/modules/customizer/views/customize.php:536
+#: admin/modules/customizer/views/customize.php:617
 msgid "Saving..."
 msgstr "保存中…"
 
-#: admin/modules/customizer/views/customize.php:590
+#: admin/modules/customizer/views/customize.php:660
+#, fuzzy
+#| msgid "Generate custom-sized shipping labels"
+msgid "Get access to more shipping label templates."
+msgstr "カスタムサイズの配送ラベルを生成する"
+
+#: admin/modules/customizer/views/customize.php:661
+msgid "Get access to more invoice templates."
+msgstr ""
+
+#: admin/modules/customizer/views/customize.php:673
+#, fuzzy
+#| msgid "Upgrade to premium"
+msgid "Upgrade to Pro"
+msgstr "Premium にアップグレード"
+
+#: admin/modules/customizer/views/customize.php:787
 msgid "Update template"
 msgstr "テンプレート更新"
 
-#: admin/modules/customizer/views/customize.php:593
+#: admin/modules/customizer/views/customize.php:790
 msgid "Save template"
 msgstr "テンプレートを保存"
 
-#: admin/modules/customizer/views/customize.php:596
+#: admin/modules/customizer/views/customize.php:793
 msgid "Save and activate"
 msgstr "保存して有効化"
 
-#: admin/modules/customizer/views/customize.php:607
+#: admin/modules/customizer/views/customize.php:804
 msgid "Create new"
 msgstr "新規作成"
 
-#: admin/modules/customizer/views/customize.php:608
+#: admin/modules/customizer/views/customize.php:805
 msgid "My templates"
 msgstr "私のテンプレート"
 
-#: admin/modules/customizer/views/customize.php:617
+#: admin/modules/customizer/views/customize.php:814
 msgid "This template is not comaptible with QR Code addon plugin"
 msgstr "このテンプレートはQRコードアドオンプラグインと互換性がありません"
 
-#: admin/modules/customizer/views/customize.php:652
-msgid ""
-"Unlock limitless possibilities of invoice customization with the addon -"
+#. translators: %s: Template display name (invoice, packing list, etc.)
+#: admin/modules/customizer/views/customize.php:843
+#, fuzzy, php-format
+#| msgid ""
+#| "Unlock limitless possibilities of invoice customization with the addon -"
+msgid "Unlock limitless possibilities of %s customization with the addon -"
 msgstr "アドオンで請求書のカスタマイズの無限の可能性を解き放ちます -"
 
-#: admin/modules/customizer/views/customize.php:653
+#: admin/modules/customizer/views/customize.php:844
 msgid "Customizer for WooCommerce PDF Invoices Plugin"
 msgstr "WooCommerce PDF 請求書プラグインのカスタマイザー"
 
-#: admin/modules/customizer/views/customize.php:660
-#: admin/modules/customizer/views/customize.php:671
+#: admin/modules/customizer/views/customize.php:851
+#: admin/modules/customizer/views/customize.php:862
 msgid "Visual"
 msgstr "ビジュアル"
 
-#: admin/modules/customizer/views/customize.php:661
-#: admin/modules/customizer/views/customize.php:674
+#: admin/modules/customizer/views/customize.php:852
+#: admin/modules/customizer/views/customize.php:865
 msgid "Code"
 msgstr "コード"
 
-#: admin/modules/customizer/views/customize.php:674
-#: public/modules/invoice/invoice.php:1192
+#: admin/modules/customizer/views/customize.php:865
+#: public/modules/invoice/invoice.php:1269
 #: public/modules/shippinglabel/shippinglabel.php:163
 msgid "Pro version"
 msgstr "Pro 版"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:38
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:41
 msgid "I couldn't understand how to make it work"
 msgstr "どのように使えばいいかわからない"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:40
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:43
 msgid "Would you like us to assist you?"
 msgstr "お手伝いしますか?"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:44
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:47
 msgid "Language support issues"
 msgstr "言語サポートの問題"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:49
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:52
 msgid "Plugin settings not available in my language"
 msgstr "プラグイン設定は私の言語では利用できません"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:51
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:57
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:54
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:61
 msgid "Which language?"
 msgstr "どの言語？"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:55
+#. translators: 1$s: HTML link opening tag, 2$s: HTML link closing tag
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:59
 msgid ""
 "Missing RTL/Unicode language(e.g Chinese, Arabic etc) support for PDF "
 "document."
@@ -1974,18 +2061,24 @@ msgstr ""
 "PDF ドキュメントの RTL/Unicode 言語 (中国語、アラビア語など) のサポートがあり"
 "ません。"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:55
-#, php-format
-msgid "Already tried the free %s WebToffee mPDF addon %s."
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:59
+#, fuzzy, php-format
+#| msgid "Already tried the free %s WebToffee mPDF addon %s."
+msgid "Already tried the free %1$s WebToffee mPDF addon %2$s."
 msgstr "無料の %s WebToffee mPDF アドオン %s をすでに試しました。"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:63
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:59
+msgid ""
+" Click the link to activate the plugin and try printing the document again."
+msgstr ""
+
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:67
 msgid ""
 "I am unable to add customer VAT(or GSTIN or ABN or any other tax id etc)"
 msgstr ""
 "顧客の VAT (または GSTIN、ABN、その他の納税者番号など) を追加できません"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:68
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:72
 msgid ""
 "Unable to add from third party plugin that collects customer VAT(or GSTIN or "
 "ABN etc)"
@@ -1993,70 +2086,72 @@ msgstr ""
 "顧客の VAT (または GSTIN や ABN など) を収集するサードパーティのプラグインか"
 "ら追加できません"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:70
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:74
 msgid "Mention the name of the plugin or meta key if any"
 msgstr "プラグイン名またはメタキーがある場合はその名前を記載してください"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:74
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:78
 msgid "Need a field to add the tax id on checkout page"
 msgstr "チェックアウトページに納税者番号を追加するためのフィールドが必要です"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:82
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:86
 msgid "I found a better plugin"
 msgstr "よりよいプラグインを見つけました"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:84
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:88
 msgid "Which plugin?"
 msgstr "どのプラグインですか?"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:88
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:92
 msgid "The plugin is great, but I need specific feature that you don't support"
 msgstr ""
 "このプラグインは素晴らしいですが、サポートされていない特定の機能が必要です"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:90
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:94
 msgid "Could you tell us more about that feature?"
 msgstr "その機能についてもっと教えていただけますか?"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:94
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:98
 msgid "The plugin didn't work as expected"
 msgstr "プラグインが期待どおりに動作しなかった"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:96
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:100
 msgid "What did you expect?"
 msgstr "何を期待していましたか?"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:100
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:104
 msgid "Other"
 msgstr "その他"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:102
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:106
 msgid "Could you tell us a bit more?"
 msgstr "より詳しくご説明いただけますか ?"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:121
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:125
 msgid "If you have a moment, please let us know why you are deactivating:"
 msgstr "よろしければ、解除する理由を教えてください。"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:159
-msgid "Webtoffee can contact me about this feedback."
-msgstr ""
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:163
+#, fuzzy
+#| msgid "Webtoffee can contact me about this feedback"
+msgid "WebToffee can contact me about this feedback."
+msgstr "Webtoffeeはこのフィードバックについて私に連絡することができます"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:162
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:166
 #: admin/modules/wt-pdf-request-feature/class-wt-pdf-request-feature.php:106
 msgid "Enter your email address."
 msgstr "メール アドレスを入力してください。"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:164
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:168
 #: admin/modules/wt-pdf-request-feature/class-wt-pdf-request-feature.php:107
 msgid "Enter email address"
 msgstr "メールアドレス　入力"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:167
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:171
 msgid "Delete all the settings made by this plugin"
 msgstr "このプラグインによって行われたすべての設定を削除します"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:169
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:173
 msgid ""
 "We do not collect any personal data when you submit this form. It's your "
 "feedback that we value."
@@ -2064,23 +2159,23 @@ msgstr ""
 "このフォームを送信する際に個人情報を収集することはありません。みなさんの"
 "フィードバックを得ることを重要視しています。"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:170
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:174
 msgid "Privacy Policy"
 msgstr "プライバシーポリシー"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:176
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:180
 msgid "Go to support"
 msgstr "サポートにアクセス"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:177
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:181
 msgid "Submit & Deactivate"
 msgstr "送信＆無効化"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:179
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:183
 msgid "I rather wouldn't say"
 msgstr "遠慮します"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:305
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:309
 msgid "Please enter a valid email address."
 msgstr "有効なメールアドレスを入力してください"
 
@@ -2134,7 +2229,9 @@ msgid "I would like..."
 msgstr "をお願いします..."
 
 #: admin/modules/wt-pdf-request-feature/class-wt-pdf-request-feature.php:102
-msgid "Webtoffee can contact me about this feedback"
+#, fuzzy
+#| msgid "Webtoffee can contact me about this feedback"
+msgid "WebToffee can contact me about this feedback"
 msgstr "Webtoffeeはこのフィードバックについて私に連絡することができます"
 
 #: admin/modules/wt-pdf-request-feature/class-wt-pdf-request-feature.php:112
@@ -2152,7 +2249,7 @@ msgstr "ドキュメント"
 #: admin/partials/admin-settings.php:20
 #: public/modules/deliverynote/views/admin-settings.php:7
 #: public/modules/dispatchlabel/views/admin-settings.php:6
-#: public/modules/invoice/views/general.php:57
+#: public/modules/invoice/views/general.php:127
 #: public/modules/invoice/views/invoice-admin-settings.php:7
 #: public/modules/packinglist/views/admin-settings.php:7
 #: public/modules/shippinglabel/views/admin-settings.php:6
@@ -2168,174 +2265,190 @@ msgstr "ヘルプガイド"
 msgid "Free vs Premium"
 msgstr "無料 vs プレミアム"
 
-#. Plugin Name of the plugin/theme
 #: admin/partials/admin-settings.php:41
 msgid ""
 "WooCommerce PDF Invoices, Packing Slips, Delivery Notes and Shipping Labels"
 msgstr "WooCommerce PDF 請求書、梱包明細書、納品書、配送ラベル"
 
 #: admin/partials/form_wizard/form_wizard.php:36
-#: admin/views/_form_field_generator_new.php:678
-#: public/modules/invoice/views/general.php:25
+#: admin/views/_form_field_generator_new.php:734
+#: public/modules/invoice/views/general.php:95
 #: public/modules/invoice/views/invoice_number_preview.php:23
 msgid "Click to append with existing data"
 msgstr "クリックすると既存のデータが追加されます"
 
-#: admin/partials/form_wizard/form_wizard.php:265
+#: admin/partials/form_wizard/form_wizard.php:377
 msgid "Hello there! Let’s begin with the basics"
 msgstr "こんにちは！まずは基本から始めましょう"
 
-#: admin/partials/form_wizard/form_wizard.php:270
+#: admin/partials/form_wizard/form_wizard.php:382
 msgid "Step 1"
 msgstr "ステップ 1"
 
-#: admin/partials/form_wizard/form_wizard.php:271
+#: admin/partials/form_wizard/form_wizard.php:383
 msgid "Step 2"
 msgstr "ステップ 2"
 
-#: admin/partials/form_wizard/form_wizard.php:272
+#: admin/partials/form_wizard/form_wizard.php:384
 msgid "Step 3"
 msgstr "ステップ 3"
 
-#: admin/partials/form_wizard/form_wizard.php:276
+#: admin/partials/form_wizard/form_wizard.php:388
 msgid "Add shop details"
 msgstr "ショップの詳細を追加"
 
-#: admin/partials/form_wizard/form_wizard.php:279
+#: admin/partials/form_wizard/form_wizard.php:391
 msgid "Shop name"
 msgstr "店舗名"
 
-#: admin/partials/form_wizard/form_wizard.php:285 admin/views/general.php:106
+#: admin/partials/form_wizard/form_wizard.php:397 admin/views/general.php:110
 msgid "Address line 1"
 msgstr "丁目、番地、号など"
 
-#: admin/partials/form_wizard/form_wizard.php:289 admin/views/general.php:114
+#: admin/partials/form_wizard/form_wizard.php:401 admin/views/general.php:118
 msgid "Address line 2"
 msgstr "建物名、部屋番号など"
 
-#: admin/partials/form_wizard/form_wizard.php:296 admin/views/general.php:122
-#: public/modules/ubl/invoice/views/settings.php:164
+#: admin/partials/form_wizard/form_wizard.php:408 admin/views/general.php:126
+#: public/modules/ubl/invoice/views/settings.php:165
 msgid "City"
 msgstr "市区町村"
 
-#: admin/partials/form_wizard/form_wizard.php:300 admin/views/general.php:130
+#: admin/partials/form_wizard/form_wizard.php:412 admin/views/general.php:134
 msgid "Country/State"
 msgstr "国/州"
 
-#: admin/partials/form_wizard/form_wizard.php:302
-#: admin/views/_form_field_generator_new.php:563
+#: admin/partials/form_wizard/form_wizard.php:414
+#: admin/views/_form_field_generator_new.php:619
 msgid "Select country"
 msgstr "国を選択"
 
-#: admin/partials/form_wizard/form_wizard.php:318 admin/views/general.php:138
+#: admin/partials/form_wizard/form_wizard.php:430 admin/views/general.php:142
 msgid "Postal code"
 msgstr "郵便番号"
 
-#: admin/partials/form_wizard/form_wizard.php:322
+#: admin/partials/form_wizard/form_wizard.php:434
 msgid "Phone number"
 msgstr "電話番号"
 
-#: admin/partials/form_wizard/form_wizard.php:328
+#: admin/partials/form_wizard/form_wizard.php:440
 msgid "Tax ID"
 msgstr "納税者番号"
 
-#: admin/partials/form_wizard/form_wizard.php:334
+#: admin/partials/form_wizard/form_wizard.php:446
 msgid "Upload logo"
 msgstr "ロゴをアップロード"
 
-#: admin/partials/form_wizard/form_wizard.php:341
-#: admin/views/_form_field_generator_new.php:500
+#: admin/partials/form_wizard/form_wizard.php:453
+#: admin/views/_form_field_generator_new.php:556
 msgid "Recommended size is 150x50px."
 msgstr "推奨サイズは150x50ピクセルです。"
 
-#: admin/partials/form_wizard/form_wizard.php:348
-#: admin/partials/form_wizard/form_wizard.php:369
+#: admin/partials/form_wizard/form_wizard.php:460
+#: admin/partials/form_wizard/form_wizard.php:481
 msgid "Next"
 msgstr "次へ"
 
-#: admin/partials/form_wizard/form_wizard.php:349
+#: admin/partials/form_wizard/form_wizard.php:461
 msgid "Skip invoice setup"
 msgstr "請求書の設定をスキップ"
 
-#: admin/partials/form_wizard/form_wizard.php:353
+#: admin/partials/form_wizard/form_wizard.php:465
 msgid "Choose emails for invoice attachment"
 msgstr "請求書の添付用メールを選択する"
 
-#: admin/partials/form_wizard/form_wizard.php:354
+#: admin/partials/form_wizard/form_wizard.php:466
 msgid ""
 "Choose the order emails to which you'd like to attach invoices for your "
 "customers"
 msgstr "顧客向けの請求書を添付する注文メールを選択してください"
 
-#: admin/partials/form_wizard/form_wizard.php:370
-#: admin/partials/form_wizard/form_wizard.php:553
+#: admin/partials/form_wizard/form_wizard.php:482
+#: admin/partials/form_wizard/form_wizard.php:666
 msgid "Back"
 msgstr "戻る"
 
-#: admin/partials/form_wizard/form_wizard.php:374
+#: admin/partials/form_wizard/form_wizard.php:486
 msgid "Create your unique invoice numbering system"
 msgstr "独自の請求書番号システムを作成する"
 
-#: admin/partials/form_wizard/form_wizard.php:377
+#: admin/partials/form_wizard/form_wizard.php:489
 msgid "Complete the invoice number format to suit your requirements"
 msgstr "要件に合わせて請求書番号の形式を完成させます"
 
-#: admin/partials/form_wizard/form_wizard.php:392
-#: admin/views/_form_field_generator_new.php:808
+#: admin/partials/form_wizard/form_wizard.php:504
+#: admin/views/_form_field_generator_new.php:864
 msgid "Custom number"
 msgstr "カスタム番号"
 
-#: admin/partials/form_wizard/form_wizard.php:404
-#: admin/views/_form_field_generator_new.php:682
+#: admin/partials/form_wizard/form_wizard.php:516
+#: admin/views/_form_field_generator_new.php:738
 msgid "Type in prefix/ suffix / date format if required"
 msgstr "必要に応じて接頭辞/接尾辞/日付形式を入力してください"
 
-#: admin/partials/form_wizard/form_wizard.php:417
-#: admin/views/_form_field_generator_new.php:718
+#: admin/partials/form_wizard/form_wizard.php:529
+#: admin/views/_form_field_generator_new.php:774
 msgid "Supported shortcodes for date"
 msgstr "日付にサポートされているショートコード"
 
-#: admin/partials/form_wizard/form_wizard.php:479
+#: admin/partials/form_wizard/form_wizard.php:591
 msgid "What should be the starting number for your invoices?"
 msgstr "請求書の開始番号は何にすべきでしょうか?"
 
-#: admin/partials/form_wizard/form_wizard.php:489
+#: admin/partials/form_wizard/form_wizard.php:601
 msgid "What length would you prefer for your invoice number"
 msgstr "請求書番号の長さはどのくらいがご希望ですか"
 
-#: admin/partials/form_wizard/form_wizard.php:523
-#: admin/views/_form_field_generator_new.php:864
+#: admin/partials/form_wizard/form_wizard.php:633
+#: admin/views/_form_field_generator_new.php:920
 #: public/modules/invoice/views/invoice_number_preview.php:30
 msgid "PREVIEW"
 msgstr "プレビュー"
 
-#: admin/partials/form_wizard/form_wizard.php:529
-#: admin/views/_form_field_generator_new.php:870
+#: admin/partials/form_wizard/form_wizard.php:639
+#: admin/views/_form_field_generator_new.php:926
 #: public/modules/invoice/views/invoice_number_preview.php:33
 msgid "If the order number is"
 msgstr "注文番号が"
 
-#: admin/partials/form_wizard/form_wizard.php:533
-#: admin/views/_form_field_generator_new.php:874
-#: public/modules/invoice/views/invoice_number_preview.php:35
+#. translators: %s: Document type (invoice, packing list, etc.)
+#: admin/partials/form_wizard/form_wizard.php:644
+#: admin/views/_form_field_generator_new.php:931
+#: public/modules/invoice/views/invoice_number_preview.php:37
 #, php-format
 msgid "the %s number would be"
 msgstr "%sの数字は"
 
-#: admin/partials/form_wizard/form_wizard.php:539
-#: admin/views/_form_field_generator_new.php:880
-#: public/modules/invoice/views/invoice_number_preview.php:38
+#. translators: %s: Document type (invoice, packing list, etc.)
+#: admin/partials/form_wizard/form_wizard.php:652
+#: admin/views/_form_field_generator_new.php:939
+#: public/modules/invoice/views/invoice_number_preview.php:42
 #, php-format
 msgid "Your next %s number would be"
 msgstr "次の%sの番号は"
 
-#: admin/partials/form_wizard/form_wizard.php:552
+#: admin/partials/form_wizard/form_wizard.php:665
+#: admin/partials/form_wizard/form_wizard.php:709
 msgid "Finish setup"
 msgstr "仕上がり設定"
 
-#: admin/partials/form_wizard/form_wizard.php:570
+#: admin/partials/form_wizard/form_wizard.php:683
 msgid "Invoice setup successfully"
 msgstr "請求書の設定が完了しました"
+
+#: admin/partials/form_wizard/form_wizard.php:695
+#, fuzzy
+#| msgid "Skip invoice setup"
+msgid "Skip setup?"
+msgstr "請求書の設定をスキップ"
+
+#: admin/partials/form_wizard/form_wizard.php:700
+msgid "We recommend completing the setup to ensure the plugin works properly."
+msgstr ""
+
+#: admin/partials/form_wizard/form_wizard.php:706
+msgid "Skip anyway"
+msgstr ""
 
 #: admin/partials/marketing-cta/marketing-cta.php:36
 #: admin/partials/marketing-cta/marketing-cta.php:63
@@ -2401,6 +2514,9 @@ msgstr "請求書バンドル"
 #: admin/views/_custom_field_editor_form.php:19
 #: admin/views/_custom_field_editor_form.php:22
 #: admin/views/_custom_field_editor_form.php:31
+#: admin/views/_custom_field_editor_form_product.php:23
+#: admin/views/_custom_field_editor_form_product.php:26
+#: admin/views/_custom_field_editor_form_product.php:35
 msgid "Add new"
 msgstr "新規追加"
 
@@ -2409,10 +2525,12 @@ msgid "You can add custom/predefined order meta using its key"
 msgstr "キーを使用してカスタム/定義済みの注文メタを追加できます"
 
 #: admin/views/_custom_field_editor_form.php:47
+#: admin/views/_custom_field_editor_form_product.php:51
 msgid "Field Name"
 msgstr "フィールド名"
 
 #: admin/views/_custom_field_editor_form.php:48
+#: admin/views/_custom_field_editor_form_product.php:52
 msgid "Meta Key"
 msgstr "メタキー"
 
@@ -2421,8 +2539,17 @@ msgid "To add more than one custom order meta,"
 msgstr "複数のカスタムオーダーメタを追加するには、"
 
 #: admin/views/_custom_field_editor_form.php:53
+#: admin/views/_custom_field_editor_form_product.php:57
 msgid "upgrade to premium version"
 msgstr "プレミアムバージョンにアップグレード"
+
+#: admin/views/_custom_field_editor_form_product.php:44
+msgid "You can add custom/predefined product meta using its key"
+msgstr "キーを使用してカスタム/定義済みの製品メタを追加できます"
+
+#: admin/views/_custom_field_editor_form_product.php:57
+msgid "To add more than one custom product meta,"
+msgstr "複数のカスタム製品メタを追加するには、"
 
 #: admin/views/_form_field_generator_new.php:468
 msgid "Order Meta"
@@ -2432,101 +2559,109 @@ msgstr "注文メタ"
 msgid "Add/Edit Order Meta Field"
 msgstr "注文メタフィールドの追加/編集"
 
-#: admin/views/_form_field_generator_new.php:499
+#: admin/views/_form_field_generator_new.php:521
+msgid "Product Meta"
+msgstr "商品詳細"
+
+#: admin/views/_form_field_generator_new.php:523
+msgid "Add/Edit Product Meta Field"
+msgstr "製品メタフィールドの追加/編集"
+
+#: admin/views/_form_field_generator_new.php:555
 msgid "Upload your image"
 msgstr "画像をアップロード"
 
-#: admin/views/_form_field_generator_new.php:538
-#: admin/views/admin-settings-debug.php:196
-#: admin/views/admin-settings-debug.php:236
+#: admin/views/_form_field_generator_new.php:594
+#: admin/views/admin-settings-debug.php:200
+#: admin/views/admin-settings-debug.php:243
 msgid "Reset"
 msgstr "リセット"
 
-#: admin/views/_form_field_generator_new.php:611
+#: admin/views/_form_field_generator_new.php:667
 msgid "Document"
 msgstr "ドキュメント"
 
-#: admin/views/_form_field_generator_new.php:612
+#: admin/views/_form_field_generator_new.php:668
 msgid "PDF"
 msgstr "PDF"
 
-#: admin/views/_form_field_generator_new.php:613
+#: admin/views/_form_field_generator_new.php:669
 msgid "HTML"
 msgstr "HTML"
 
-#: admin/views/_form_field_generator_new.php:614
+#: admin/views/_form_field_generator_new.php:670
 msgid "Action"
 msgstr "アクション"
 
-#: admin/views/_form_field_generator_new.php:680
+#: admin/views/_form_field_generator_new.php:736
 msgid "Add date to invoice number"
 msgstr "請求書番号に日付を追加する"
 
-#: admin/views/_form_field_generator_new.php:681
+#: admin/views/_form_field_generator_new.php:737
 msgid "Invoice number format"
 msgstr "請求書番号の接頭詞形式"
 
-#: admin/views/_form_field_generator_new.php:683
+#: admin/views/_form_field_generator_new.php:739
 msgid "Invoice starting number"
 msgstr "請求書開始番号"
 
-#: admin/views/_form_field_generator_new.php:684
+#: admin/views/_form_field_generator_new.php:740
 msgid "Invoice number length"
 msgstr "請求書番号の長さ"
 
-#: admin/views/_form_field_generator_new.php:688
-#: admin/views/_form_field_generator_new.php:701
+#: admin/views/_form_field_generator_new.php:744
+#: admin/views/_form_field_generator_new.php:757
 msgid "Use order date as input instead."
 msgstr "代わりに注文日を入力として使用します。"
 
-#: admin/views/_form_field_generator_new.php:693
+#: admin/views/_form_field_generator_new.php:749
 msgid "Add date to credit note number"
 msgstr "クレジットノート番号に日付を追加する"
 
-#: admin/views/_form_field_generator_new.php:694
+#: admin/views/_form_field_generator_new.php:750
 msgid "Creditnote number format"
 msgstr "クレジット番号の形式"
 
-#: admin/views/_form_field_generator_new.php:695
+#: admin/views/_form_field_generator_new.php:751
 msgid "What should be the starting number for your credit notes?"
 msgstr "クレジットノートの開始番号は何にすべきでしょうか?"
 
-#: admin/views/_form_field_generator_new.php:696
+#: admin/views/_form_field_generator_new.php:752
 msgid "What length would you prefer for your credit note"
 msgstr "クレジットノートの長さはどのくらいがお好みですか"
 
-#: admin/views/_form_field_generator_new.php:704
+#: admin/views/_form_field_generator_new.php:760
 msgid "Add date to proforma invoice number"
 msgstr "プロフォーマ請求書番号に日付を追加する"
 
-#: admin/views/_form_field_generator_new.php:705
+#: admin/views/_form_field_generator_new.php:761
 msgid "Proforma invoice number format"
 msgstr "プロフォーマ請求書番号の形式"
 
-#: admin/views/_form_field_generator_new.php:706
+#: admin/views/_form_field_generator_new.php:762
 msgid "What should be the starting number for your proforma invoices?"
 msgstr "プロフォーマ請求書の開始番号は何にすべきでしょうか?"
 
-#: admin/views/_form_field_generator_new.php:707
+#: admin/views/_form_field_generator_new.php:763
 msgid "What length would you prefer for your proforma invoice"
 msgstr "プロフォーマ請求書の長さはどのくらいがご希望ですか"
 
-#: admin/views/_form_field_generator_new.php:795
+#: admin/views/_form_field_generator_new.php:851
 msgid ""
 "Removing year [Y] from the prefix will disable the annual reset functionality"
 msgstr ""
 "プレフィックスから年[Y]を削除すると、年次リセット機能が無効になります。"
 
-#: admin/views/_form_field_generator_new.php:802
+#: admin/views/_form_field_generator_new.php:858
 msgid "Switching to order number will disable the annual reset functionality"
 msgstr "注文番号に切り替えると、年間リセット機能が無効になります"
 
-#: admin/views/_form_field_generator_new.php:818
+#: admin/views/_form_field_generator_new.php:874
 msgid ""
 "Removing year [Y] from the suffix will disable the annual reset functionality"
 msgstr "サフィックスから年[Y]を削除すると、年次リセット機能が無効になります。"
 
-#: admin/views/_form_field_generator_new.php:846
+#: admin/views/_form_field_generator_new.php:902
 msgid "The latest specified starting number will be used after reset"
 msgstr "リセット後は最後に指定された開始番号が使用されます"
 
@@ -2534,44 +2669,44 @@ msgstr "リセット後は最後に指定された開始番号が使用されま
 msgid "Developed by"
 msgstr "開発元"
 
-#: admin/views/admin-settings-debug.php:39
+#: admin/views/admin-settings-debug.php:40
 msgid "Reset successfully"
 msgstr "リセットに成功しました"
 
-#: admin/views/admin-settings-debug.php:48
+#: admin/views/admin-settings-debug.php:49
 msgid "Debug"
 msgstr "デバッグ"
 
-#: admin/views/admin-settings-debug.php:49
+#: admin/views/admin-settings-debug.php:50
 msgid "Caution: Settings here are only for advanced users."
 msgstr "注意: ここでの設定は上級ユーザー専用です。"
 
-#: admin/views/admin-settings-debug.php:118
+#: admin/views/admin-settings-debug.php:119
 msgid "Export settings (JSON)"
 msgstr "エクスポート設定 (JSON)"
 
-#: admin/views/admin-settings-debug.php:120
+#: admin/views/admin-settings-debug.php:121
 msgid "Export"
 msgstr "エクスポート"
 
-#: admin/views/admin-settings-debug.php:130
+#: admin/views/admin-settings-debug.php:131
 msgid "Import settings (JSON)"
 msgstr "インポート設定 (JSON)"
 
-#: admin/views/admin-settings-debug.php:134
-#: admin/views/admin-settings-debug.php:183
+#: admin/views/admin-settings-debug.php:135
+#: admin/views/admin-settings-debug.php:187
 msgid "Import"
 msgstr "インポート"
 
-#: admin/views/admin-settings-debug.php:134
+#: admin/views/admin-settings-debug.php:135
 msgid "Please select json file"
 msgstr "jsonファイルを選択してください"
 
-#: admin/views/admin-settings-debug.php:139
+#: admin/views/admin-settings-debug.php:140
 msgid "Last imported on:"
 msgstr "最終インポート日:"
 
-#: admin/views/admin-settings-debug.php:151
+#: admin/views/admin-settings-debug.php:152
 msgid ""
 "Importing the file will delete all the settings and replace with data from "
 "chosen file"
@@ -2579,28 +2714,29 @@ msgstr ""
 "ファイルをインポートすると、すべての設定が削除され、選択したファイルのデータ"
 "に置き換えられます。"
 
-#: admin/views/admin-settings-debug.php:163
+#: admin/views/admin-settings-debug.php:164
 msgid "Combine with the existing templates"
 msgstr "既存のテンプレートと組み合わせる"
 
-#: admin/views/admin-settings-debug.php:168
+#: admin/views/admin-settings-debug.php:169
 msgid "Replace the existing templates"
 msgstr "既存のテンプレートを置き換える"
 
-#: admin/views/admin-settings-debug.php:173
+#. translators: %s: Confirmation text
+#: admin/views/admin-settings-debug.php:176
 #, php-format
 msgid "To proceed with the import, please type %1$s in the field below"
 msgstr "インポートを続行するには、下のフィールドに「%1$s」と入力してください"
 
-#: admin/views/admin-settings-debug.php:194
+#: admin/views/admin-settings-debug.php:198
 msgid "Reset all settings to default"
 msgstr "すべての設定をデフォルトにリセット"
 
-#: admin/views/admin-settings-debug.php:202
+#: admin/views/admin-settings-debug.php:206
 msgid "Last updated on:"
 msgstr "最終更新日:"
 
-#: admin/views/admin-settings-debug.php:214
+#: admin/views/admin-settings-debug.php:218
 msgid ""
 "Reset will delete all the settings, saved templates and reset to the default "
 "settings"
@@ -2608,11 +2744,12 @@ msgstr ""
 "リセットすると、すべての設定と保存されたテンプレートが削除され、デフォルト設"
 "定にリセットされます。"
 
-#: admin/views/admin-settings-debug.php:221
+#: admin/views/admin-settings-debug.php:225
 msgid "Do not reset the templates"
 msgstr "テンプレートをリセットしないでください"
 
-#: admin/views/admin-settings-debug.php:225
+#. translators: %s: Confirmation text
+#: admin/views/admin-settings-debug.php:231
 #, php-format
 msgid "To proceed with the reset, please type %1$s in the field below"
 msgstr "リセットを続行するには、下のフィールドに%1$sと入力してください"
@@ -2834,18 +2971,19 @@ msgstr "無料版"
 msgid "Premium version"
 msgstr "プレミアムバージョン"
 
-#: admin/views/documents.php:150
+#. translators: 1$s: Document module title, 2$s: HTML link opening tag, 3$s: HTML link closing tag
+#: admin/views/documents.php:152
 #, php-format
 msgid "You are using free version of %1$s. %2$s Checkout premium here %3$s."
 msgstr ""
 "%1$s の無料バージョンを使用しています。%2$s プレミアム版は %3$s からご購入く"
 "ださい。"
 
-#: admin/views/documents.php:185
+#: admin/views/documents.php:187
 msgid "Get Add-on"
 msgstr "アドオンの取得"
 
-#: admin/views/documents.php:210
+#: admin/views/documents.php:212
 msgid "30% OFF"
 msgstr "30% オフ"
 
@@ -2857,15 +2995,15 @@ msgstr "選択リスト"
 msgid "Address label"
 msgstr "住所ラベル"
 
-#: admin/views/freevspro.php:15 public/modules/invoice/views/general.php:117
+#: admin/views/freevspro.php:15 public/modules/invoice/views/general.php:187
 msgid "My account - Order lists page"
 msgstr "マイアカウント - 注文リストページ"
 
-#: admin/views/freevspro.php:16 public/modules/invoice/views/general.php:118
+#: admin/views/freevspro.php:16 public/modules/invoice/views/general.php:188
 msgid "My account - Order details page"
 msgstr "マイアカウント - 注文詳細ページ"
 
-#: admin/views/freevspro.php:17 public/modules/invoice/views/general.php:119
+#: admin/views/freevspro.php:17 public/modules/invoice/views/general.php:189
 msgid "Order email"
 msgstr "注文メール"
 
@@ -2874,7 +3012,7 @@ msgid "Features"
 msgstr "特徴"
 
 #: admin/views/freevspro.php:88
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:50
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:45
 msgid "Free"
 msgstr "無料"
 
@@ -2902,35 +3040,35 @@ msgstr ""
 msgid "Load from WooCommerce"
 msgstr "WooCommerceから読み込む"
 
-#: admin/views/general.php:36
+#: admin/views/general.php:40
 msgid "Company details"
 msgstr "会社概要"
 
-#: admin/views/general.php:41
+#: admin/views/general.php:45
 msgid "Name"
 msgstr "名前"
 
-#: admin/views/general.php:46
+#: admin/views/general.php:50
 msgid "To include the keyed in name to the Invoice, ensure to select"
 msgstr "入力した名前を請求書に含めるには、必ず選択してください。"
 
-#: admin/views/general.php:47
+#: admin/views/general.php:51
 msgid "Company name"
 msgstr "会社名"
 
-#: admin/views/general.php:48
+#: admin/views/general.php:52
 msgid "from"
 msgstr "から"
 
-#: admin/views/general.php:49 admin/views/general.php:59
+#: admin/views/general.php:53 admin/views/general.php:63
 msgid "Invoice > Customize > Company Logo / Name"
 msgstr "請求書 > カスタマイズ > 会社ロゴ/名前"
 
-#: admin/views/general.php:54
+#: admin/views/general.php:58
 msgid "Logo"
 msgstr "ロゴ"
 
-#: admin/views/general.php:58
+#: admin/views/general.php:62
 msgid ""
 "To include the uploaded image as logo to the invoice, ensure to select "
 "Company logo from"
@@ -2938,15 +3076,15 @@ msgstr ""
 "アップロードした画像を請求書のロゴとして含めるには、必ず会社ロゴを選択してく"
 "ださい。"
 
-#: admin/views/general.php:60
+#: admin/views/general.php:64
 msgid "Recommended size is 150×50px"
 msgstr "推奨サイズは150×50ピクセルです"
 
-#: admin/views/general.php:67
+#: admin/views/general.php:71
 msgid "Company Tax ID"
 msgstr "会社納税者番号"
 
-#: admin/views/general.php:71
+#: admin/views/general.php:75
 msgid ""
 "Specify your company tax ID. For e.g., you may enter as VAT: GB123456789, "
 "GSTIN:0948745 or ABN:51 824 753 556"
@@ -2954,136 +3092,128 @@ msgstr ""
 "会社の納税者番号を指定します。たとえば、VAT: GB123456789、GSTIN:0948745、"
 "ABN:51 824 753 556 のように入力できます。"
 
-#: admin/views/general.php:75 public/modules/invoice/invoice.php:1221
-#: public/modules/invoice/invoice.php:1225
+#: admin/views/general.php:79 public/modules/invoice/invoice.php:1298
+#: public/modules/invoice/invoice.php:1302
 #: public/modules/shippinglabel/shippinglabel.php:178
 msgid "Footer"
 msgstr "フッター"
 
-#: admin/views/general.php:90
+#: admin/views/general.php:94
 msgid "Address details"
 msgstr "住所 詳細"
 
-#: admin/views/general.php:98
+#: admin/views/general.php:102
 msgid "Department/Business unit/Sender name"
 msgstr "部門/事業部/送信者名"
 
-#: admin/views/general.php:132
+#: admin/views/general.php:136
 msgid "Choose a country&hellip;"
 msgstr "国を選ぶ...。"
 
-#: admin/views/general.php:147
+#: admin/views/general.php:151
 msgid "Contact number"
 msgstr "連絡先"
 
-#: admin/views/general.php:162
+#: admin/views/general.php:166
 msgid "Advanced options"
 msgstr "高度なオプション"
 
-#: admin/views/general.php:169
+#: admin/views/general.php:173
 msgid "Display state name"
 msgstr "状態名を表示"
 
-#: admin/views/general.php:173
+#: admin/views/general.php:177
 msgid "Enable to show state name in addresses"
 msgstr "住所に州名を表示できるようにする"
 
-#: admin/views/general.php:181
+#: admin/views/general.php:185
 msgid "Display currency code"
 msgstr "通貨コードを表示"
 
-#: admin/views/general.php:185
+#: admin/views/general.php:189
 msgid "Enable to show currency code instead of currency symbol"
 msgstr "通貨記号の代わりに通貨コードを表示するようにする"
 
-#: admin/views/general.php:193
+#: admin/views/general.php:197
 msgid "Preview before printing"
 msgstr "印刷前にプレビュー"
 
-#: admin/views/general.php:197
+#: admin/views/general.php:201
 msgid "Preview documents before printing"
 msgstr "印刷前にドキュメントをプレビューする"
 
-#: admin/views/general.php:205
+#: admin/views/general.php:209
 msgid "Enable RTL support"
 msgstr "RTLサポートを有効にする"
 
-#: admin/views/general.php:209
+#: admin/views/general.php:213
 msgid "RTL support for documents"
 msgstr "ドキュメントのRTLサポート"
 
-#: admin/views/general.php:213
-msgid "For better RTL integration in PDF documents, please use our"
-msgstr "PDF文書でのRTL統合を改善するには、"
-
-#: admin/views/general.php:214
-msgid "mPDF add-on"
-msgstr "mPDFアドオン"
-
-#: admin/views/general.php:226
+#: admin/views/general.php:238
 msgid "PDF library"
 msgstr "PDFライブラリ"
 
-#: admin/views/general.php:239 admin/views/general.php:259
+#: admin/views/general.php:251 admin/views/general.php:271
 msgid "Enable additional currency font support"
 msgstr "追加の通貨フォントのサポートを有効にする"
 
-#: admin/views/general.php:244 admin/views/general.php:264
+#: admin/views/general.php:256 admin/views/general.php:276
 msgid ""
 "Enable to use additional font library to support the currency symbol in pdf"
 msgstr ""
 "PDF 内の通貨記号をサポートするために追加のフォント ライブラリを使用できるよう"
 "にします"
 
-#: admin/views/general.php:275
+#: admin/views/general.php:287
 msgid "Enable a common print button for"
 msgstr "共通の印刷ボタンを有効にする"
 
-#: admin/views/general.php:276 admin/views/general.php:291
+#: admin/views/general.php:288 admin/views/general.php:303
 msgid "orders listing page"
 msgstr "注文一覧ページ"
 
-#: admin/views/general.php:281
+#: admin/views/general.php:293
 msgid "All document types"
 msgstr "すべてのドキュメントタイプ"
 
-#: admin/views/general.php:290
+#: admin/views/general.php:302
 msgid "Enable dedicated print buttons for"
 msgstr "専用の印刷ボタンを有効にする"
 
-#: admin/views/general.php:305
+#: admin/views/general.php:317
 msgid "Print button access for"
 msgstr "印刷ボタンへのアクセス"
 
-#: admin/views/general.php:312
+#: admin/views/general.php:324
 msgid "Logged in users"
 msgstr "ログインユーザ"
 
-#: admin/views/general.php:313
+#: admin/views/general.php:325
 msgid "Users will be redirected to login page if not logged in"
 msgstr "ログインしていない場合はログインページにリダイレクトされます"
 
-#: admin/views/general.php:314
+#: admin/views/general.php:326
 msgid "Secure"
 msgstr "セキュア"
 
-#: admin/views/general.php:318
+#: admin/views/general.php:330
 msgid "All users"
 msgstr "すべてのユーザー"
 
-#: admin/views/general.php:319
+#: admin/views/general.php:331
 msgid "Users who haven`t logged will also be allowed to print"
 msgstr "ログインしていないユーザーも印刷できます"
 
-#: admin/views/general.php:329
+#: admin/views/general.php:341
 msgid "File path"
 msgstr "ファイルパス"
 
-#: admin/views/general.php:337
+#: admin/views/general.php:349
 msgid "Automatic cleanup"
 msgstr "自動クリーンアップ"
 
-#: admin/views/general.php:342 public/modules/deliverynote/views/general.php:29
+#: admin/views/general.php:354 public/modules/deliverynote/views/general.php:29
 #: public/modules/deliverynote/views/general.php:44
 #: public/modules/deliverynote/views/general.php:59
 #: public/modules/dispatchlabel/views/general.php:30
@@ -3094,7 +3224,7 @@ msgstr "自動クリーンアップ"
 msgid "Yes"
 msgstr "はい"
 
-#: admin/views/general.php:343 public/modules/deliverynote/views/general.php:30
+#: admin/views/general.php:355 public/modules/deliverynote/views/general.php:30
 #: public/modules/deliverynote/views/general.php:45
 #: public/modules/deliverynote/views/general.php:60
 #: public/modules/dispatchlabel/views/general.php:31
@@ -3105,11 +3235,11 @@ msgstr "はい"
 msgid "No"
 msgstr "いいえ"
 
-#: admin/views/general.php:352
+#: admin/views/general.php:364
 msgid "Interval"
 msgstr "インターバル"
 
-#: admin/views/general.php:362
+#: admin/views/general.php:374
 msgid "In minutes. Eg: 1440 for 1 day. Minimum value is 1440"
 msgstr "分単位。例: 1 日の場合は 1440。最小値は 1440 です。"
 
@@ -3900,142 +4030,10 @@ msgid "Create QR code coupons"
 msgstr "QRコードクーポンを作成する"
 
 #: admin/views/premium_extension_listing.php:351
-msgid "Payment & subscription"
-msgstr "お支払いとサブスクリプション"
-
-#: admin/views/premium_extension_listing.php:352
-msgid ""
-"The most popular payment gateways and subscription solutions to scale your "
-"business"
-msgstr ""
-"ビジネスを拡大するための最も人気のある決済ゲートウェイとサブスクリプションソ"
-"リューション"
-
-#: admin/views/premium_extension_listing.php:357
-msgid "WooCommerce Stripe Payment Gateway"
-msgstr "WooCommerce ストライプ決済ゲートウェイ"
-
-#: admin/views/premium_extension_listing.php:361
-msgid "Add 20+ payment methods"
-msgstr "20以上の支払い方法を追加"
-
-#: admin/views/premium_extension_listing.php:362
-msgid "Activates Stripe checkout"
-msgstr "Stripeチェックアウトを有効にする"
-
-#: admin/views/premium_extension_listing.php:363
-msgid "Secured payments with SCA and 3D secure"
-msgstr "SCAと3Dセキュアによる安全な支払い"
-
-#: admin/views/premium_extension_listing.php:364
-msgid "Supports recurring payments"
-msgstr "定期支払いをサポート"
-
-#: admin/views/premium_extension_listing.php:365
-msgid "Compatible with WPML"
-msgstr "WPMLと互換性あり"
-
-#: admin/views/premium_extension_listing.php:366
-msgid "Log all Stripe transactions"
-msgstr "すべてのStripe取引を記録する"
-
-#: admin/views/premium_extension_listing.php:367
-msgid "Monitor payments using Stripe dashboard"
-msgstr "Stripeダッシュボードを使用して支払いを監視する"
-
-#: admin/views/premium_extension_listing.php:372
-msgid "PayPal Express Checkout Payment Gateway for WooCommerce"
-msgstr "WooCommerce 向け PayPal Express Checkout 決済ゲートウェイ"
-
-#: admin/views/premium_extension_listing.php:376
-msgid "Adds PayPal Smart Button Checkout option"
-msgstr "PayPal スマートボタンチェックアウトオプションを追加"
-
-#: admin/views/premium_extension_listing.php:377
-msgid "Accepts payment using multiple Alternative Payment Methods (APM)"
-msgstr "複数の代替支払方法 (APM) を使用した支払いを受け入れます"
-
-#: admin/views/premium_extension_listing.php:378
-msgid ""
-"Adds Express PayPal Checkout Option on the product page and Mini-cart for "
-"faster checkout"
-msgstr ""
-"製品ページにエクスプレスPayPalチェックアウトオプションとミニカートを追加し"
-"て、チェックアウトを迅速化します。"
-
-#: admin/views/premium_extension_listing.php:379
-msgid "Capture the authorized payment later"
-msgstr "承認された支払いを後でキャプチャする"
-
-#: admin/views/premium_extension_listing.php:380
-msgid "Partial and Full Refund of the order amount"
-msgstr "注文金額の一部または全額の返金"
-
-#: admin/views/premium_extension_listing.php:381
-msgid "Lots of customization options like button style, position, etc"
-msgstr "ボタンのスタイル、位置など、カスタマイズオプションが豊富"
-
-#: admin/views/premium_extension_listing.php:382
-msgid "Option to enable in-context checkout"
-msgstr "コンテキスト内チェックアウトを有効にするオプション"
-
-#: admin/views/premium_extension_listing.php:383
-msgid "Supports WooCommerce Subscriptions for Express buttons"
-msgstr "WooCommerceサブスクリプションのExpressボタンをサポート"
-
-#: admin/views/premium_extension_listing.php:384
-msgid "Allows guest checkout"
-msgstr "ゲストチェックアウトを許可"
-
-#: admin/views/premium_extension_listing.php:385
-msgid "Option to set up a specific PayPal locale"
-msgstr "特定のPayPalロケールを設定するオプション"
-
-#: admin/views/premium_extension_listing.php:386
-msgid "Shortcode support for the Paypal Express button"
-msgstr "Paypal Express ボタンのショートコード サポート"
-
-#: admin/views/premium_extension_listing.php:387
-msgid "Timely compatibility updates and bug fixes"
-msgstr "タイムリーな互換性アップデートとバグ修正"
-
-#: admin/views/premium_extension_listing.php:392
-msgid "Subscriptions for WooCommerce"
-msgstr "WooCommerceのサブスクリプション"
-
-#: admin/views/premium_extension_listing.php:396
-msgid "Create simple & variable subscriptions"
-msgstr "シンプルおよび可変のサブスクリプションを作成する"
-
-#: admin/views/premium_extension_listing.php:397
-msgid "Synchronize subscription renewal"
-msgstr "サブスクリプションの更新を同期する"
-
-#: admin/views/premium_extension_listing.php:398
-msgid "Pro-rate charges till first renewal"
-msgstr "最初の更新までの日割り料金"
-
-#: admin/views/premium_extension_listing.php:399
-msgid "Set free trial and sign-up fee"
-msgstr "無料トライアルと登録料を設定する"
-
-#: admin/views/premium_extension_listing.php:400
-msgid "Send automated emails notifications"
-msgstr "自動メール通知を送信する"
-
-#: admin/views/premium_extension_listing.php:401
-msgid "Supports recurring discounts"
-msgstr "定期的な割引をサポート"
-
-#: admin/views/premium_extension_listing.php:402
-msgid "Renewal interval & expiry customizations"
-msgstr "更新間隔と有効期限のカスタマイズ"
-
-#: admin/views/premium_extension_listing.php:408
 msgid "Privacy compliance"
 msgstr "プライバシーコンプライアンス"
 
-#: admin/views/premium_extension_listing.php:409
+#: admin/views/premium_extension_listing.php:352
 msgid ""
 "Get Help with Ensuring Compliance to Major Privacy Laws for Your WordPress "
 "Website - GDPR, CCPA, LGPD, CNIL, and More."
@@ -4043,47 +4041,47 @@ msgstr ""
 "WordPress ウェブサイトが GDPR、CCPA、LGPD、CNIL などの主要なプライバシー法に"
 "準拠できるように支援します。"
 
-#: admin/views/premium_extension_listing.php:415
+#: admin/views/premium_extension_listing.php:358
 msgid "GDPR Cookie Consent Plugin (CCPA Ready)"
 msgstr "GDPR Cookie 同意プラグイン (CCPA 対応)"
 
-#: admin/views/premium_extension_listing.php:418
+#: admin/views/premium_extension_listing.php:361
 msgid "Assits in GDPR (RGPD, DSVGO), LGPD, CNIL, POPIA, and CCPA"
 msgstr "GDPR（RGPD、DSVGO）、LGPD、CNIL、POPIA、CCPAの支援"
 
-#: admin/views/premium_extension_listing.php:419
+#: admin/views/premium_extension_listing.php:362
 msgid "Create a cookie consent banner"
 msgstr "クッキー同意バナーを作成する"
 
-#: admin/views/premium_extension_listing.php:420
+#: admin/views/premium_extension_listing.php:363
 msgid "Scan and list cookies"
 msgstr "クッキーをスキャンして一覧表示する"
 
-#: admin/views/premium_extension_listing.php:421
+#: admin/views/premium_extension_listing.php:364
 msgid "Automatically block cookies/script"
 msgstr "クッキー/スクリプトを自動的にブロックする"
 
-#: admin/views/premium_extension_listing.php:422
+#: admin/views/premium_extension_listing.php:365
 msgid "Customize cookie banner"
 msgstr "クッキーバナーをカスタマイズする"
 
-#: admin/views/premium_extension_listing.php:423
+#: admin/views/premium_extension_listing.php:366
 msgid "Create cookie policy"
 msgstr "クッキーポリシーを作成する"
 
-#: admin/views/premium_extension_listing.php:424
+#: admin/views/premium_extension_listing.php:367
 msgid "User consent logging"
 msgstr "ユーザーの同意ログ"
 
-#: admin/views/premium_extension_listing.php:425
+#: admin/views/premium_extension_listing.php:368
 msgid "Explicit/Implicit consent"
 msgstr "明示的/暗黙的な同意"
 
-#: admin/views/premium_extension_listing.php:426
+#: admin/views/premium_extension_listing.php:369
 msgid "Location based exclusion for banner"
 msgstr "バナーの位置に基づく除外"
 
-#: admin/views/premium_extension_listing.php:427
+#: admin/views/premium_extension_listing.php:370
 msgid "Granular consent based on cookie categories"
 msgstr "クッキーのカテゴリーに基づいたきめ細かな同意"
 
@@ -4153,7 +4151,7 @@ msgid "Generate invoices for old orders"
 msgstr "古い注文の請求書を生成する"
 
 #: admin/views/wt_ipc_free_pro.php:352
-#: public/modules/invoice/views/general.php:206
+#: public/modules/invoice/views/general.php:285
 msgid "Generate invoices for free orders"
 msgstr "無料注文の請求書を生成する"
 
@@ -4221,7 +4219,7 @@ msgid "Add product attributes"
 msgstr "製品属性を追加する"
 
 #: admin/views/wt_ipc_free_pro.php:598
-#: public/modules/invoice/views/general.php:171
+#: public/modules/invoice/views/general.php:250
 msgid "Custom logo for invoice"
 msgstr "請求書のカスタムロゴ"
 
@@ -4275,7 +4273,7 @@ msgid "Order discount"
 msgstr "注文割引"
 
 #: admin/views/wt_ipc_free_pro.php:772 admin/views/wt_ipc_free_pro.php:814
-#: public/modules/invoice/invoice.php:1237
+#: public/modules/invoice/invoice.php:1314
 msgid "Coupon info"
 msgstr "クーポン情報"
 
@@ -4297,7 +4295,7 @@ msgid "Attach invoice PDF to order emails"
 msgstr "注文メールに請求書PDFを添付する"
 
 #: admin/views/wt_pi_free_pro.php:38
-#: public/modules/invoice/views/general.php:111
+#: public/modules/invoice/views/general.php:181
 msgid "Show print invoice button for customers"
 msgstr "顧客に請求書印刷ボタンを表示する"
 
@@ -4509,33 +4507,33 @@ msgstr ""
 "発送ラベルの複数の税金オプションに対応するために、製品テーブルに個別の税金列"
 "を追加"
 
-#: common/class-wt-pklist-common.php:660
+#: common/class-wt-pklist-common.php:663
 #, fuzzy
 #| msgid "Order email"
 msgid "Admin email"
 msgstr "注文メール"
 
-#: common/class-wt-pklist-common.php:663
+#: common/class-wt-pklist-common.php:666
 msgid "Manual email"
 msgstr ""
 
-#: common/class-wt-pklist-common.php:675
+#: common/class-wt-pklist-common.php:678
 msgid "Admin email (Renewal order)"
 msgstr ""
 
-#: common/class-wt-pklist-common.php:676
+#: common/class-wt-pklist-common.php:679
 msgid "Manual email (Renewal order)"
 msgstr ""
 
-#: common/class-wt-pklist-common.php:677
+#: common/class-wt-pklist-common.php:680
 msgid "Order on-hold (Renewal order)"
 msgstr ""
 
-#: common/class-wt-pklist-common.php:678
+#: common/class-wt-pklist-common.php:681
 msgid "Order processing (Renewal order)"
 msgstr ""
 
-#: common/class-wt-pklist-common.php:679
+#: common/class-wt-pklist-common.php:682
 msgid "Order completed (Renewal order)"
 msgstr ""
 
@@ -4555,7 +4553,8 @@ msgstr ""
 msgid "View progress"
 msgstr "進捗状況を表示"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:61
+#. translators: 1$s: HTML bold opening tag, 2$s: HTML bold closing tag, 3$s: HTML bold opening tag, 4$s: Plugin title, 5$s: HTML bold closing tag, 6$s: HTML line break
+#: includes/class-wf-woocommerce-packing-list-review_request.php:62
 #, php-format
 msgid ""
 "Hey, we at %1$s WebToffee %2$s would like to thank you for using %3$s %4$s "
@@ -4568,7 +4567,8 @@ msgstr ""
 "を続けていくモチベーションになります。ぜひ、短いレビューを投稿して、私たちが"
 "これからも活動を続けていくモチベーションにしていただければ幸いです。"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:62
+#. translators: 1$s: Star emoji, 2$s: HTML span opening tag, 3$s: HTML span closing tag, 4$s: HTML span opening tag, 5$s: HTML span closing tag
+#: includes/class-wf-woocommerce-packing-list-review_request.php:64
 #, php-format
 msgid ""
 "%1$s  %2$s  Loving %3$s  WooCommerce PDF Invoices, Packing Slips, Delivery "
@@ -4577,68 +4577,80 @@ msgstr ""
 "%1$s %2$s WooCommerce PDF 請求書、梱包明細書、納品書、配送ラベル プラグイン "
 "%3$s を気に入っていただけましたか? %4$s フィードバックをお寄せください! %5$s"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:65
+#: includes/class-wf-woocommerce-packing-list-review_request.php:67
 msgid "Remind me later"
 msgstr "後で思い出させる"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:66
+#: includes/class-wf-woocommerce-packing-list-review_request.php:68
 msgid "Not interested"
 msgstr "関心がない"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:67
+#: includes/class-wf-woocommerce-packing-list-review_request.php:69
 msgid "Review now"
 msgstr "レビュー中"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:68
+#: includes/class-wf-woocommerce-packing-list-review_request.php:70
 msgid "You deserve it"
 msgstr "あなたはそれに値する"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:69
+#: includes/class-wf-woocommerce-packing-list-review_request.php:71
 msgid "Nope, maybe later"
 msgstr "たぶん後で"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:70
+#: includes/class-wf-woocommerce-packing-list-review_request.php:72
 msgid "I already did"
 msgstr "私はすでにやった"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:77
+#: includes/class-wf-woocommerce-packing-list-review_request.php:80
 msgid "Knock, Knock!"
 msgstr "コンコン！"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:78
+#: includes/class-wf-woocommerce-packing-list-review_request.php:81
 msgid "You`ve just created"
 msgstr "作成したばかりです"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:80
+#: includes/class-wf-woocommerce-packing-list-review_request.php:83
 msgid "commercial documents using"
 msgstr "商業文書の使用"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:81
+#: includes/class-wf-woocommerce-packing-list-review_request.php:84
 msgid ""
 "Woocommerce PDF invoices, packing slips, delivery notes, and shipping labels"
 msgstr "Woocommerce PDF 請求書、梱包明細書、納品書、配送ラベル"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:82
+#: includes/class-wf-woocommerce-packing-list-review_request.php:85
+#, fuzzy
+#| msgid ""
+#| "That’s awesome! We’d love it if you take a moment to share what you think "
+#| "and help spread the word."
 msgid ""
-"That’s awesome! We’d love it if you take a moment to share what you think "
+"That's awesome! We'd love it if you take a moment to share what you think "
 "and help spread the word."
 msgstr ""
 "それは素晴らしいですね！少し時間を取ってあなたの考えを共有し、広めていただけ"
 "れば幸いです。"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:84
+#: includes/class-wf-woocommerce-packing-list-review_request.php:87
 msgid "Rate us now"
 msgstr "今すぐ評価してください"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:187
+#: includes/class-wf-woocommerce-packing-list-review_request.php:190
 msgid "there"
 msgstr "そこに"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:188
-#, php-format
+#. translators: 1$s: User name in bold HTML, 2$s: HTML line break, 3$s: HTML bold opening tag, 4$s: HTML bold closing tag, 5$s: HTML bold opening tag, 6$s: HTML bold closing tag, 7$s: Double HTML line break, 8$s: HTML bold opening tag, 9$s: HTML bold closing tag, 10$s: Double HTML line break, 11$s: HTML line break with bold opening tag, 12$s: HTML bold closing tag
+#: includes/class-wf-woocommerce-packing-list-review_request.php:192
+#, fuzzy, php-format
+#| msgid ""
+#| "Hi  %1$s, %2$s We’re thrilled to see you making great use of our "
+#| "WooCommerce PDF Invoices, Packing Slips, Delivery Notes and Shipping "
+#| "Labels plugin! It’s our mission to make %3$s invoicing as seamless %4$s "
+#| "and %5$s efficient %6$s as possible for you. %7$s If you found the plugin "
+#| "helpful, please leave us a quick %8$s 5-star review. %9$s It would mean "
+#| "the world to us. %10$s Warm regards, %11$s Team WebToffee %12$s"
 msgid ""
-"Hi  %1$s, %2$s We’re thrilled to see you making great use of our WooCommerce "
-"PDF Invoices, Packing Slips, Delivery Notes and Shipping Labels plugin! It’s "
+"Hi  %1$s, %2$s We're thrilled to see you making great use of our WooCommerce "
+"PDF Invoices, Packing Slips, Delivery Notes and Shipping Labels plugin! It's "
 "our mission to make %3$s invoicing as seamless %4$s and %5$s efficient %6$s "
 "as possible for you. %7$s If you found the plugin helpful, please leave us a "
 "quick %8$s 5-star review. %9$s It would mean the world to us. %10$s Warm "
@@ -4651,13 +4663,13 @@ msgstr ""
 "星のレビューをお願いいたします。%9$s 大変励みになります。%10$s 敬具、%11$s "
 "WebToffee チーム %12$s"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:424
+#: includes/class-wf-woocommerce-packing-list-review_request.php:428
 msgid "Did you know?"
 msgstr ""
 "管理者列 Pro は %s の統合アドオンご存知ですか。適切な管理者列 Pro のライセン"
 "スを %s からダウンロードできます!"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:425
+#: includes/class-wf-woocommerce-packing-list-review_request.php:429
 msgid ""
 "You can now bulk export PDF invoices, packing slips, and credit notes of "
 "WooCommerce orders with custom filters."
@@ -4665,28 +4677,36 @@ msgstr ""
 "カスタム フィルターを使用して、WooCommerce 注文の PDF 請求書、梱包明細書、ク"
 "レジット ノートを一括エクスポートできるようになりました。"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:429
+#: includes/class-wf-woocommerce-packing-list-review_request.php:433
 msgid "Checkout"
 msgstr "チェックアウト"
 
-#: print-invoices-packing-slip-labels-for-woocommerce.php:48
-#, php-format
+#. translators: 1$s: Active plugin name, 2$s: Current plugin name
+#: print-invoices-packing-slip-labels-for-woocommerce.php:51
+#, fuzzy, php-format
+#| msgid ""
+#| "The plugins %s and %s cannot be active in your store at the same time. "
+#| "Kindly deactivate one of these prior to activating the other."
 msgid ""
-"The plugins %s and %s cannot be active in your store at the same time. "
+"The plugins %1$s and %2$s cannot be active in your store at the same time. "
 "Kindly deactivate one of these prior to activating the other."
 msgstr ""
 "プラグイン %s と %s はストアで同時にアクティブにできません。どちらか一方を非"
 "アクティブにしてから、もう一方をアクティブにしてください。"
 
-#: print-invoices-packing-slip-labels-for-woocommerce.php:48
+#: print-invoices-packing-slip-labels-for-woocommerce.php:51
 msgid "Go to plugins page"
 msgstr "プラグインのページへ移動"
 
-#: print-invoices-packing-slip-labels-for-woocommerce.php:202
-#, php-format
+#. translators: 1$s: Plugin name, 2$s: Plugin name, 3$s: WooCommerce link opening tag, 4$s: WooCommerce link closing tag
+#: print-invoices-packing-slip-labels-for-woocommerce.php:208
+#, fuzzy, php-format
+#| msgid ""
+#| "%s WooCommerce PDF Invoices, Packing Slips, Delivery Notes & Shipping "
+#| "Labels (Basic) %s is enabled but not effective. It requires %s "
+#| "WooCommerce %s in order to work."
 msgid ""
-"%s WooCommerce PDF Invoices, Packing Slips, Delivery Notes & Shipping Labels "
-"(Basic) %s is enabled but not effective. It requires %s WooCommerce %s in "
+"%1$s %2$s is enabled but not effective. It requires %3$s WooCommerce %4$s in "
 "order to work."
 msgstr ""
 "%s WooCommerce PDF 請求書、梱包明細書、納品書、出荷ラベル (基本) %s は有効に"
@@ -4722,21 +4742,21 @@ msgid "Print/Download Delivery note"
 msgstr "配送書の印刷/ダウンロード"
 
 #: public/modules/deliverynote/deliverynote.php:235
-#: public/modules/deliverynote/deliverynote.php:388
+#: public/modules/deliverynote/deliverynote.php:389
 #: public/modules/dispatchlabel/dispatchlabel.php:227
-#: public/modules/dispatchlabel/dispatchlabel.php:367
-#: public/modules/invoice/invoice.php:1429
-#: public/modules/invoice/invoice.php:1972
+#: public/modules/dispatchlabel/dispatchlabel.php:368
+#: public/modules/invoice/invoice.php:1508
+#: public/modules/invoice/invoice.php:2063
 #: public/modules/packinglist/packinglist.php:245
-#: public/modules/packinglist/packinglist.php:417
+#: public/modules/packinglist/packinglist.php:418
 #: public/modules/shippinglabel/shippinglabel.php:380
-#: public/modules/shippinglabel/shippinglabel.php:598
-#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:351
-#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:427
+#: public/modules/shippinglabel/shippinglabel.php:599
+#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:360
+#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:436
 msgid "Print"
 msgstr "印刷"
 
-#: public/modules/deliverynote/deliverynote.php:318
+#: public/modules/deliverynote/deliverynote.php:319
 msgid "Unable to print Delivery note. Please check the items in the order."
 msgstr "納品書を印刷できません。注文内容を確認してください。"
 
@@ -4888,233 +4908,265 @@ msgstr ""
 msgid "Allows customers to print the invoice from the specified pages."
 msgstr "顧客が指定されたページから請求書を印刷できるようにします。"
 
-#: public/modules/invoice/invoice.php:141
+#: public/modules/invoice/invoice.php:150
 msgid "Print invoice"
 msgstr "請求書を印刷する"
 
-#: public/modules/invoice/invoice.php:142
+#: public/modules/invoice/invoice.php:151
 msgid "Download invoice"
 msgstr "請求書をダウンロード"
 
-#: public/modules/invoice/invoice.php:323
-#, php-format
+#. translators: 1$s: HTML link opening tag, 2$s: HTML link closing tag
+#: public/modules/invoice/invoice.php:336
+#, fuzzy, php-format
+#| msgid ""
+#| "You can control the visibility of the seal according to order status via "
+#| "filters. See filter documentation %s here. %s"
 msgid ""
 "You can control the visibility of the seal according to order status via "
-"filters. See filter documentation %s here. %s"
+"filters. See filter documentation %1$s here. %2$s"
 msgstr ""
 "フィルターを使用して、注文ステータスに応じてシールの表示を制御できます。フィ"
 "ルターのドキュメントは、こちら %s を参照してください。%s"
 
-#: public/modules/invoice/invoice.php:325
+#: public/modules/invoice/invoice.php:338
 msgid "This feature might not work in mPDF."
 msgstr "この機能は mPDF では動作しない可能性があります。"
 
-#: public/modules/invoice/invoice.php:343
+#: public/modules/invoice/invoice.php:356
 msgid "Width"
 msgstr "幅"
 
-#: public/modules/invoice/invoice.php:351
+#: public/modules/invoice/invoice.php:364
 msgid "Height"
 msgstr "高さ"
 
-#: public/modules/invoice/invoice.php:375
+#: public/modules/invoice/invoice.php:388
 msgid "Border width"
 msgstr "ボーダーの横幅"
 
-#: public/modules/invoice/invoice.php:383
+#: public/modules/invoice/invoice.php:396
 msgid "Line height"
 msgstr "行の高さ"
 
-#: public/modules/invoice/invoice.php:391
+#: public/modules/invoice/invoice.php:404
 msgid "Opacity"
 msgstr "不透明度"
 
-#: public/modules/invoice/invoice.php:412
+#: public/modules/invoice/invoice.php:425
 msgid "Border radius"
 msgstr "ボーダーの半径"
 
-#: public/modules/invoice/invoice.php:420
+#: public/modules/invoice/invoice.php:433
 msgid "From left"
 msgstr "左から"
 
-#: public/modules/invoice/invoice.php:428
+#: public/modules/invoice/invoice.php:441
 msgid "From top"
 msgstr "上から"
 
-#: public/modules/invoice/invoice.php:436
+#: public/modules/invoice/invoice.php:449
 msgid "Angle"
 msgstr "角度"
 
-#: public/modules/invoice/invoice.php:443
+#: public/modules/invoice/invoice.php:456
 msgid "Color"
 msgstr "色"
 
-#: public/modules/invoice/invoice.php:1193
+#: public/modules/invoice/invoice.php:1270
 msgid "Pro Add-on"
 msgstr "Pro 版アドオン"
 
-#: public/modules/invoice/invoice.php:1197
+#: public/modules/invoice/invoice.php:1274
 msgid "Document title"
 msgstr "稟議書のタイトル"
 
-#: public/modules/invoice/invoice.php:1198
+#: public/modules/invoice/invoice.php:1275
 msgid "Company Logo / Name"
 msgstr "会社ロゴ / 名称"
 
-#: public/modules/invoice/invoice.php:1200
-#: public/modules/invoice/invoice.php:1467
+#: public/modules/invoice/invoice.php:1277
+#: public/modules/invoice/invoice.php:1546
 msgid "Invoice Number"
 msgstr "請求書番号"
 
-#: public/modules/invoice/invoice.php:1201
+#: public/modules/invoice/invoice.php:1278
 #: public/modules/shippinglabel/shippinglabel.php:169
 msgid "Order Number"
 msgstr "注文番号"
 
-#: public/modules/invoice/invoice.php:1202
+#: public/modules/invoice/invoice.php:1279
 msgid "Invoice Date"
 msgstr "請求書日付"
 
-#: public/modules/invoice/invoice.php:1203
+#: public/modules/invoice/invoice.php:1280
 #: public/modules/shippinglabel/shippinglabel.php:170
 msgid "Order Date"
 msgstr "注文日"
 
-#: public/modules/invoice/invoice.php:1205
+#: public/modules/invoice/invoice.php:1282
 #: public/modules/shippinglabel/shippinglabel.php:167
 msgid "From Address"
 msgstr "送信元アドレス"
 
-#: public/modules/invoice/invoice.php:1206
+#: public/modules/invoice/invoice.php:1283
 msgid "Billing Address"
 msgstr "請求先住所"
 
-#: public/modules/invoice/invoice.php:1207
+#: public/modules/invoice/invoice.php:1284
 msgid "Shipping Address"
 msgstr "配送先住所"
 
-#: public/modules/invoice/invoice.php:1208
+#: public/modules/invoice/invoice.php:1285
 #: public/modules/shippinglabel/shippinglabel.php:173
 msgid "Email Field"
 msgstr "メールフィールド"
 
-#: public/modules/invoice/invoice.php:1209
+#: public/modules/invoice/invoice.php:1286
 #: public/modules/shippinglabel/shippinglabel.php:174
 msgid "Tel Field"
 msgstr "電話フィールド"
 
-#: public/modules/invoice/invoice.php:1211
+#: public/modules/invoice/invoice.php:1288
 #: public/modules/shippinglabel/shippinglabel.php:176
 msgid "SSN number"
 msgstr "社会保障番号"
 
-#: public/modules/invoice/invoice.php:1212
+#: public/modules/invoice/invoice.php:1289
 #: public/modules/shippinglabel/shippinglabel.php:175
 msgid "VAT number"
 msgstr "VAT番号"
 
-#: public/modules/invoice/invoice.php:1214
+#: public/modules/invoice/invoice.php:1291
 msgid "Payment received stamp"
 msgstr "支払い受領印"
 
-#: public/modules/invoice/invoice.php:1219
+#: public/modules/invoice/invoice.php:1296
 #: public/modules/shippinglabel/shippinglabel.php:179
 msgid "Barcode"
 msgstr "バーコード"
 
-#: public/modules/invoice/invoice.php:1222
+#: public/modules/invoice/invoice.php:1299
 msgid "QR code"
 msgstr "QRコード"
 
-#: public/modules/invoice/invoice.php:1224
+#: public/modules/invoice/invoice.php:1301
 msgid "QR Code"
 msgstr "QR コード"
 
-#: public/modules/invoice/invoice.php:1230
+#: public/modules/invoice/invoice.php:1307
 #: public/modules/shippinglabel/shippinglabel.php:180
 msgid "Tracking Number"
 msgstr "追跡番号"
 
-#: public/modules/invoice/invoice.php:1375
+#: public/modules/invoice/invoice.php:1454
 msgid "Print Invoices"
 msgstr "請求書を印刷"
 
-#: public/modules/invoice/invoice.php:1376
+#: public/modules/invoice/invoice.php:1455
 msgid "Download Invoices"
 msgstr "請求書をダウンロード"
 
-#: public/modules/invoice/invoice.php:1415
-#: public/modules/invoice/invoice.php:1452
+#: public/modules/invoice/invoice.php:1494
+#: public/modules/invoice/invoice.php:1531
 msgid "Print Invoice"
 msgstr "請求書を印刷"
 
-#: public/modules/invoice/invoice.php:1423
-#: public/modules/invoice/invoice.php:1453
+#: public/modules/invoice/invoice.php:1502
+#: public/modules/invoice/invoice.php:1532
 msgid "Download Invoice"
 msgstr "請求書をダウンロード"
 
-#: public/modules/invoice/invoice.php:1430
+#: public/modules/invoice/invoice.php:1509
 #: public/modules/packinglist/packinglist.php:252
-#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:359
+#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:368
 msgid "Download"
 msgstr "ダウンロード"
 
-#: public/modules/invoice/invoice.php:1443
+#: public/modules/invoice/invoice.php:1522
 msgid "Print/Download Invoice"
 msgstr "請求書の印刷/ダウンロード"
 
-#: public/modules/invoice/invoice.php:1710
+#: public/modules/invoice/invoice.php:1793
 msgid "Customizer module is not active."
 msgstr "カスタマイザー モジュールがアクティブではありません。"
 
-#: public/modules/invoice/views/general.php:18
+#: public/modules/invoice/views/general.php:41
+msgid "Subscribe to our newsletter for exclusive offers & updates"
+msgstr ""
+
+#: public/modules/invoice/views/general.php:48
+#: public/modules/invoice/views/general.php:71
+msgid "Subscribe"
+msgstr ""
+
+#: public/modules/invoice/views/general.php:49
+#, fuzzy
+#| msgid "is required"
+msgid "indicates required"
+msgstr "必須です"
+
+#: public/modules/invoice/views/general.php:50
+#, fuzzy
+#| msgid "Enter your email address."
+msgid "Enter your email address"
+msgstr "メール アドレスを入力してください。"
+
+#: public/modules/invoice/views/general.php:57
+#, php-format
+msgid ""
+"I consent to receive newsletters and exclusive offers from WebToffee and "
+"agree to the %1$sPrivacy Policy%2$s."
+msgstr ""
+
+#: public/modules/invoice/views/general.php:88
 msgid "Configure the general settings required for the invoice."
 msgstr "請求書に必要な一般設定を構成します。"
 
-#: public/modules/invoice/views/general.php:39
+#: public/modules/invoice/views/general.php:109
 msgid "Enable to print, download, and mail invoices."
 msgstr "請求書の印刷、ダウンロード、郵送を有効にします。"
 
-#: public/modules/invoice/views/general.php:41
+#: public/modules/invoice/views/general.php:111
 msgid "Enable Invoice"
 msgstr "請求書を有効にする"
 
-#: public/modules/invoice/views/general.php:64
+#: public/modules/invoice/views/general.php:134
 #: public/modules/invoice/views/qrcode_promote.php:38
 msgid "Invoice date"
 msgstr "請求書の日付"
 
-#: public/modules/invoice/views/general.php:70
+#: public/modules/invoice/views/general.php:140
 #: public/modules/invoice/views/qrcode_promote.php:39
 msgid "Order date"
 msgstr "注文日"
 
-#: public/modules/invoice/views/general.php:71
+#: public/modules/invoice/views/general.php:141
 msgid "Invoiced date"
 msgstr "請求日"
 
-#: public/modules/invoice/views/general.php:81
+#: public/modules/invoice/views/general.php:151
 msgid "Automate invoice creation"
 msgstr "請求書作成の自動化"
 
-#: public/modules/invoice/views/general.php:88
+#: public/modules/invoice/views/general.php:158
 #: public/modules/ubl/invoice/views/settings.php:98
 msgid "Choose order status"
 msgstr "注文ステータスを選択"
 
-#: public/modules/invoice/views/general.php:89
+#: public/modules/invoice/views/general.php:159
 msgid "Automatically creates invoices for selected order statuses."
 msgstr "選択した注文ステータスの請求書を自動的に作成します。"
 
-#: public/modules/invoice/views/general.php:96
+#: public/modules/invoice/views/general.php:166
 msgid "Attach invoice PDF to selected WooCommerce emails."
 msgstr "選択した WooCommerce メールに請求書 PDF を添付します。"
 
-#: public/modules/invoice/views/general.php:103
+#: public/modules/invoice/views/general.php:173
 msgid "Choose email classes"
 msgstr "メールクラスを選択"
 
-#: public/modules/invoice/views/general.php:104
+#: public/modules/invoice/views/general.php:174
 msgid ""
 "Select email types corresponding to the order statuses under Automate "
 "invoice creation option. If none are selected, invoices must be generated "
@@ -5124,27 +5176,37 @@ msgstr ""
 "してください。何も選択されていない場合は、メールに添付する請求書を手動で作成"
 "する必要があります。"
 
-#: public/modules/invoice/views/general.php:136
+#: public/modules/invoice/views/general.php:206
 #: public/modules/invoice/views/qrcode_promote.php:32
 #: public/modules/invoice/views/qrcode_promote.php:36
 msgid "Invoice number"
 msgstr "請求書番号"
 
-#: public/modules/invoice/views/general.php:155
+#: public/modules/invoice/views/general.php:225
 msgid "Invoice details"
 msgstr "請求の詳細"
 
-#: public/modules/invoice/views/general.php:162
+#: public/modules/invoice/views/general.php:232
 msgid "Order meta fields"
 msgstr "メタフィールドの順序"
 
-#: public/modules/invoice/views/general.php:166
+#: public/modules/invoice/views/general.php:236
 msgid ""
 "Select/add order meta to display additional information related to the order "
 "on the invoice."
 msgstr "注文メタを選択/追加して、請求書の注文に関連する追加情報を表示します。"
 
-#: public/modules/invoice/views/general.php:174
+#: public/modules/invoice/views/general.php:241
+msgid "Product metadata"
+msgstr "製品メタデータ"
+
+#: public/modules/invoice/views/general.php:245
+msgid ""
+"Select/add product meta to display additional information related to the "
+"product on the invoice."
+msgstr "製品メタを選択/追加して、請求書の製品に関連する追加情報を表示します。"
+
+#: public/modules/invoice/views/general.php:253
 msgid ""
 "If left blank, default to the logo from General settings. Ensure to select "
 "company logo from ‘Invoice > Customize > Company Logo’ to reflect on the "
@@ -5154,54 +5216,54 @@ msgstr ""
 "は、「請求書 > カスタマイズ > 会社のロゴ」から会社のロゴを選択してください。"
 "推奨サイズは 150×50 ピクセルです。"
 
-#: public/modules/invoice/views/general.php:195
+#: public/modules/invoice/views/general.php:274
 msgid "Generate invoices for existing orders"
 msgstr "既存の注文の請求書を生成する"
 
-#: public/modules/invoice/views/general.php:199
+#: public/modules/invoice/views/general.php:278
 msgid ""
 "Enable to create invoice for orders generated before plugin installation"
 msgstr ""
 "プラグインのインストール前に生成された注文の請求書を作成できるようにする"
 
-#: public/modules/invoice/views/general.php:210
+#: public/modules/invoice/views/general.php:289
 msgid "Enable to create invoices for free orders"
 msgstr "無料注文の請求書を作成できるようにする"
 
-#: public/modules/invoice/views/general.php:217
+#: public/modules/invoice/views/general.php:296
 msgid "Display free line items in the invoice"
 msgstr "請求書に空き項目を表示する"
 
-#: public/modules/invoice/views/general.php:221
+#: public/modules/invoice/views/general.php:300
 msgid "Include free(priced as 0) line items in the invoice"
 msgstr "請求書に無料（価格 0）の項目を含める"
 
-#: public/modules/invoice/views/general.php:224
+#: public/modules/invoice/views/general.php:303
 msgid "Enable to create invoices for free orders."
 msgstr "無料注文の請求書を作成できるようにします。"
 
-#: public/modules/invoice/views/general.php:230
+#: public/modules/invoice/views/general.php:309
 msgid "PDF name format"
 msgstr "PDF の名前の形式"
 
-#: public/modules/invoice/views/general.php:235
+#: public/modules/invoice/views/general.php:314
 msgid "[prefix][order_no]"
 msgstr "[プレフィックス][注文番号]"
 
-#: public/modules/invoice/views/general.php:236
+#: public/modules/invoice/views/general.php:315
 msgid "[prefix][invoice_no]"
 msgstr "[プレフィックス][請求書番号]"
 
-#: public/modules/invoice/views/general.php:240
+#: public/modules/invoice/views/general.php:319
 msgid ""
 "Select a name format for PDF invoice that includes invoice/order number."
 msgstr "請求書/注文番号を含む PDF 請求書の名前形式を選択します。"
 
-#: public/modules/invoice/views/general.php:246
+#: public/modules/invoice/views/general.php:325
 msgid "Custom PDF name prefix"
 msgstr "カスタム PDF 名プレフィックス"
 
-#: public/modules/invoice/views/general.php:248
+#: public/modules/invoice/views/general.php:327
 msgid ""
 "Input a custom prefix for ‘PDF name format’ that will appear at the "
 "beginning of the name. Defaulted to ‘Invoice_’."
@@ -5209,11 +5271,11 @@ msgstr ""
 "名前の先頭に表示される「PDF 名形式」のカスタム プレフィックスを入力します。デ"
 "フォルトは「Invoice_」です。"
 
-#: public/modules/invoice/views/general.php:254
+#: public/modules/invoice/views/general.php:333
 msgid "Use latest settings for invoice"
 msgstr "請求書に最新の設定を使用する"
 
-#: public/modules/invoice/views/general.php:261
+#: public/modules/invoice/views/general.php:340
 msgid ""
 "Enable to apply the most recent settings to previous order invoices. This "
 "will match the previous invoices with the upcoming invoices.Changing the "
@@ -5225,11 +5287,11 @@ msgstr ""
 "変更すると、以前に作成された請求書が最新の情報で上書きされる可能性がありま"
 "す。"
 
-#: public/modules/invoice/views/general.php:289
+#: public/modules/invoice/views/general.php:368
 msgid "Date formats"
 msgstr "日付形式"
 
-#: public/modules/invoice/views/general.php:296
+#: public/modules/invoice/views/general.php:375
 msgid "Output"
 msgstr "出力"
 
@@ -5345,7 +5407,7 @@ msgstr "梱包明細書の印刷/ダウンロード"
 msgid "Download Packing slip"
 msgstr "梱包明細書をダウンロード"
 
-#: public/modules/packinglist/packinglist.php:347
+#: public/modules/packinglist/packinglist.php:348
 msgid "Unable to print packling slip. Please check the items in the order."
 msgstr "梱包明細書を印刷できません。注文内容をご確認ください。"
 
@@ -5445,7 +5507,7 @@ msgstr "出荷ラベルの印刷"
 msgid "Shipping Label"
 msgstr "出荷ラベル"
 
-#: public/modules/shippinglabel/shippinglabel.php:523
+#: public/modules/shippinglabel/shippinglabel.php:524
 msgid "Unable to print shipping label. Please check the items in the order."
 msgstr "配送ラベルを印刷できません。注文内容をご確認ください。"
 
@@ -5499,25 +5561,25 @@ msgid ""
 msgstr "配送ラベルのサイズをフルページまたはカスタム サイズに設定します。"
 
 #: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:80
-#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:367
-#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:390
+#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:376
+#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:399
 msgid "UBL Invoice"
 msgstr "UBL請求書"
 
-#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:152
+#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:161
 msgid "UBL (Beta)"
 msgstr "UBL（ベータ版）"
 
-#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:184
-#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:202
+#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:193
+#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:211
 msgid "Default"
 msgstr "デフォルト"
 
-#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:348
+#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:357
 msgid "Print UBL Invoice"
 msgstr "UBL請求書を印刷する"
 
-#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:356
+#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:365
 msgid "Download UBL Invoice"
 msgstr "UBL請求書をダウンロード"
 
@@ -5588,294 +5650,304 @@ msgid ""
 msgstr ""
 "WooCommerce の税クラスを適切な UBL 税カテゴリとスキームにマッピングします"
 
-#: public/modules/ubl/invoice/views/settings.php:161
+#: public/modules/ubl/invoice/views/settings.php:162
 msgid "Country&nbsp;code"
 msgstr "国コード"
 
-#: public/modules/ubl/invoice/views/settings.php:162
+#: public/modules/ubl/invoice/views/settings.php:163
 msgid "State code"
 msgstr "都道府県/州コード"
 
-#: public/modules/ubl/invoice/views/settings.php:163
+#: public/modules/ubl/invoice/views/settings.php:164
 msgid "Postcode / ZIP"
 msgstr "郵便番号"
 
-#: public/modules/ubl/invoice/views/settings.php:165
+#: public/modules/ubl/invoice/views/settings.php:166
 msgid "Rate&nbsp;%"
 msgstr "レート ％"
 
-#: public/modules/ubl/invoice/views/settings.php:168
+#: public/modules/ubl/invoice/views/settings.php:169
 msgid "Tax Scheme"
 msgstr "税制"
 
-#: public/modules/ubl/invoice/views/settings.php:170
-#: public/modules/ubl/invoice/views/settings.php:178
+#: public/modules/ubl/invoice/views/settings.php:171
+#: public/modules/ubl/invoice/views/settings.php:179
 msgid "Learn more"
 msgstr "詳細はこちら"
 
-#: public/modules/ubl/invoice/views/settings.php:176
+#: public/modules/ubl/invoice/views/settings.php:177
 msgid "Tax Category"
 msgstr "税金のカテゴリ"
 
-#: public/modules/ubl/invoice/views/settings.php:224
+#: public/modules/ubl/invoice/views/settings.php:228
 msgid "No taxes found for this class."
 msgstr "このクラスには税金が見つかりません。"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:25
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:19
 msgid "Standard rate"
 msgstr "標準料金"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:26
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:20
 msgid "Lower rate"
 msgstr "低いレート"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:27
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:21
 msgid "Zero rated goods"
 msgstr "ゼロ課税品"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:28
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:22
 msgid "Mixed tax rate"
 msgstr "混合税率"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:29
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:23
 msgid "Exempt for resale"
 msgstr "転売免除"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:30
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:24
 msgid "Value Added Tax (VAT) not now due for payment"
 msgstr "付加価値税（VAT）は現在支払い期限ではありません"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:31
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:25
 msgid "Value Added Tax (VAT) due from a previous invoice"
 msgstr "前回の請求書から発生する付加価値税（VAT）"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:32
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:26
 msgid "Transferred (VAT)"
 msgstr "振込（VAT）"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:33
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:27
 msgid "Duty paid by supplier"
 msgstr "サプライヤーが支払う関税"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:34
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:28
 msgid "Exempt from tax"
 msgstr "税金免除"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:35
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:29
 msgid "Free export item, tax not charged"
 msgstr "輸出無料品目、税金はかかりません"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:36
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:30
 msgid "Higher rate"
 msgstr "より高いレート"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:37
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:31
 msgid "Services outside scope of tax"
 msgstr "課税対象外のサービス"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:24
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:19
 msgid "Value added tax (VAT)"
 msgstr "付加価値税（VAT）"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:25
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:20
 msgid "Goods and services tax (GST)"
 msgstr "物品サービス税（GST）"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:26
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:21
 msgid "Petroleum tax"
 msgstr "石油税"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:27
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:22
 msgid "Provisional countervailing duty cash"
 msgstr "暫定相殺関税現金"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:28
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:23
 msgid "Provisional countervailing duty bond"
 msgstr "暫定相殺関税保証金"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:29
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:24
 msgid "Tobacco tax"
 msgstr "タバコ税"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:30
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:25
 msgid "Energy fee"
 msgstr "エネルギー料金"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:31
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:26
 msgid "Coffee tax"
 msgstr "コーヒー税"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:32
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:27
 msgid "Harmonised sales tax, Canadian"
 msgstr "統一売上税、カナダ"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:33
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:28
 msgid "Quebec sales tax"
 msgstr "ケベック州の売上税"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:34
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:29
 msgid "Canadian provincial sales tax"
 msgstr "カナダの州売上税"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:35
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:30
 msgid "Tax on replacement part"
 msgstr "交換部品に対する税金"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:36
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:31
 msgid "Mineral oil tax"
 msgstr "鉱油税"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:37
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:32
 msgid "Special tax"
 msgstr "特別税"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:38
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:33
 msgid "Anti-dumping duty"
 msgstr "反ダンピング関税"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:39
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:34
 msgid "Stamp duty (Imposta di Bollo)"
 msgstr "印紙税（Imposta di Bollo）"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:40
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:35
 msgid "Agricultural levy"
 msgstr "農業税"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:41
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:36
 msgid "Car tax"
 msgstr "自動車税"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:42
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:37
 msgid "Paper consortium tax (Italy)"
 msgstr "紙コンソーシアム税（イタリア）"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:43
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:38
 msgid "Commodity specific tax"
 msgstr "商品別税"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:44
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:39
 msgid "Customs duty"
 msgstr "関税"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:45
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:40
 msgid "Countervailing duty"
 msgstr "相殺関税"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:46
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:41
 msgid "Environmental tax"
 msgstr "環境税"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:47
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:42
 msgid "Excise duty"
 msgstr "物品税"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:48
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:43
 msgid "Agricultural export rebate"
 msgstr "農産物輸出還付"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:49
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:44
 msgid "Federal excise tax"
 msgstr "連邦物品税"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:51
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:46
 msgid "General construction tax"
 msgstr "一般建設税"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:52
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:47
 msgid "Illuminants tax"
 msgstr "照明税"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:53
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:48
 msgid "Import tax"
 msgstr "輸入税"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:54
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:49
 msgid "Individual tax"
 msgstr "個人税"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:55
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:50
 msgid "Business license fee"
 msgstr "営業許可料"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:56
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:51
 msgid "Local construction tax"
 msgstr "地方建設税"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:57
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:52
 msgid "Light dues payable"
 msgstr "支払うべき灯火器"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:58
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:53
 msgid "Local sales tax"
 msgstr "地方消費税"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:59
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:54
 msgid "Lust tax"
 msgstr "欲望税"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:60
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:55
 msgid "Monetary compensatory amount"
 msgstr "金銭補償額"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:61
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:56
 msgid "Miscellaneous cash deposit"
 msgstr "雑現金預金"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:62
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:57
 msgid "Other taxes"
 msgstr "その他の税金"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:63
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:58
 msgid "Provisional duty bond"
 msgstr "暫定税関保証金"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:64
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:59
 msgid "Provisional duty cash"
 msgstr "暫定関税現金"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:65
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:60
 msgid "Preference duty"
 msgstr "特恵関税"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:66
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:61
 msgid "Special construction tax"
 msgstr "特別建設税"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:67
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:62
 msgid "Shifted social securities"
 msgstr "社会保障の移行"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:68
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:63
 msgid "State/provincial sales tax"
 msgstr "州/地方消費税"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:69
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:64
 msgid "Suspended duty"
 msgstr "職務停止"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:70
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:65
 msgid "Surtax"
 msgstr "付加税"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:71
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:66
 msgid "Shifted wage tax"
 msgstr "移転賃金税"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:72
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:67
 msgid "Alcohol mark tax"
 msgstr "酒税"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:74
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:69
 msgid "Turnover tax"
 msgstr "売上税"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:75
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:70
 msgid "Tonnage taxes"
 msgstr "トン税"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:76
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:71
 msgid "Valuation deposit"
 msgstr "評価預かり金"
+
+#. Plugin Name of the plugin/theme
+#, fuzzy
+#| msgid ""
+#| "WooCommerce PDF Invoices, Packing Slips, Delivery Notes and Shipping "
+#| "Labels"
+msgid ""
+"WebToffee WooCommerce PDF Invoices, Packing Slips, Delivery Notes and "
+"Shipping Labels"
+msgstr "WooCommerce PDF 請求書、梱包明細書、納品書、配送ラベル"
 
 #. Plugin URI of the plugin/theme
 msgid ""
@@ -5894,6 +5966,110 @@ msgstr "ウェブトフィー"
 #. Author URI of the plugin/theme
 msgid "https://www.webtoffee.com/"
 msgstr "https://www.webtoffee.com/"
+
+#~ msgid "mPDF add-on"
+#~ msgstr "mPDFアドオン"
+
+#~ msgid "Payment & subscription"
+#~ msgstr "お支払いとサブスクリプション"
+
+#~ msgid ""
+#~ "The most popular payment gateways and subscription solutions to scale "
+#~ "your business"
+#~ msgstr ""
+#~ "ビジネスを拡大するための最も人気のある決済ゲートウェイとサブスクリプション"
+#~ "ソリューション"
+
+#~ msgid "WooCommerce Stripe Payment Gateway"
+#~ msgstr "WooCommerce ストライプ決済ゲートウェイ"
+
+#~ msgid "Add 20+ payment methods"
+#~ msgstr "20以上の支払い方法を追加"
+
+#~ msgid "Activates Stripe checkout"
+#~ msgstr "Stripeチェックアウトを有効にする"
+
+#~ msgid "Secured payments with SCA and 3D secure"
+#~ msgstr "SCAと3Dセキュアによる安全な支払い"
+
+#~ msgid "Supports recurring payments"
+#~ msgstr "定期支払いをサポート"
+
+#~ msgid "Compatible with WPML"
+#~ msgstr "WPMLと互換性あり"
+
+#~ msgid "Log all Stripe transactions"
+#~ msgstr "すべてのStripe取引を記録する"
+
+#~ msgid "Monitor payments using Stripe dashboard"
+#~ msgstr "Stripeダッシュボードを使用して支払いを監視する"
+
+#~ msgid "PayPal Express Checkout Payment Gateway for WooCommerce"
+#~ msgstr "WooCommerce 向け PayPal Express Checkout 決済ゲートウェイ"
+
+#~ msgid "Adds PayPal Smart Button Checkout option"
+#~ msgstr "PayPal スマートボタンチェックアウトオプションを追加"
+
+#~ msgid "Accepts payment using multiple Alternative Payment Methods (APM)"
+#~ msgstr "複数の代替支払方法 (APM) を使用した支払いを受け入れます"
+
+#~ msgid ""
+#~ "Adds Express PayPal Checkout Option on the product page and Mini-cart for "
+#~ "faster checkout"
+#~ msgstr ""
+#~ "製品ページにエクスプレスPayPalチェックアウトオプションとミニカートを追加し"
+#~ "て、チェックアウトを迅速化します。"
+
+#~ msgid "Capture the authorized payment later"
+#~ msgstr "承認された支払いを後でキャプチャする"
+
+#~ msgid "Partial and Full Refund of the order amount"
+#~ msgstr "注文金額の一部または全額の返金"
+
+#~ msgid "Lots of customization options like button style, position, etc"
+#~ msgstr "ボタンのスタイル、位置など、カスタマイズオプションが豊富"
+
+#~ msgid "Option to enable in-context checkout"
+#~ msgstr "コンテキスト内チェックアウトを有効にするオプション"
+
+#~ msgid "Supports WooCommerce Subscriptions for Express buttons"
+#~ msgstr "WooCommerceサブスクリプションのExpressボタンをサポート"
+
+#~ msgid "Allows guest checkout"
+#~ msgstr "ゲストチェックアウトを許可"
+
+#~ msgid "Option to set up a specific PayPal locale"
+#~ msgstr "特定のPayPalロケールを設定するオプション"
+
+#~ msgid "Shortcode support for the Paypal Express button"
+#~ msgstr "Paypal Express ボタンのショートコード サポート"
+
+#~ msgid "Timely compatibility updates and bug fixes"
+#~ msgstr "タイムリーな互換性アップデートとバグ修正"
+
+#~ msgid "Subscriptions for WooCommerce"
+#~ msgstr "WooCommerceのサブスクリプション"
+
+#~ msgid "Create simple & variable subscriptions"
+#~ msgstr "シンプルおよび可変のサブスクリプションを作成する"
+
+#~ msgid "Synchronize subscription renewal"
+#~ msgstr "サブスクリプションの更新を同期する"
+
+#~ msgid "Pro-rate charges till first renewal"
+#~ msgstr "最初の更新までの日割り料金"
+
+#~ msgid "Set free trial and sign-up fee"
+#~ msgstr "無料トライアルと登録料を設定する"
+
+#~ msgid "Send automated emails notifications"
+#~ msgstr "自動メール通知を送信する"
+
+#~ msgid "Supports recurring discounts"
+#~ msgstr "定期的な割引をサポート"
+
+#~ msgid "Renewal interval & expiry customizations"
+#~ msgstr "更新間隔と有効期限のカスタマイズ"
 
 #~ msgid "Add additional information"
 #~ msgstr "追加情報を追加する"

@@ -246,6 +246,7 @@ class Wf_Woocommerce_Packing_List_Invoice
 				'woocommerce_wf_generate_for_orderstatus' => array('type' => 'text_arr'),
 				'woocommerce_wf_attach_' . $this->module_base => array('type' => 'text_arr'),
 				'wf_' . $this->module_base . '_contactno_email' => array('type' => 'text_arr'),
+				'wf_' . $this->module_base . '_product_meta' => array('type' => 'text_arr'),
 				'wf_woocommerce_invoice_show_print_button' => array('type' => 'text_arr'),
 				'woocommerce_wf_Current_Invoice_number' => array('type' => 'int'),
 				'woocommerce_wf_invoice_start_number' => array('type' => 'int'),
@@ -269,6 +270,7 @@ class Wf_Woocommerce_Packing_List_Invoice
 		if ($base_id === $this->module_id) {
 			$arr = array(
 				'wf_' . $this->module_base . '_contactno_email' => array(),
+				'wf_' . $this->module_base . '_product_meta' => array(),
 				'woocommerce_wf_generate_for_orderstatus' => array(),
 				'woocommerce_wf_attach_' . $this->module_base => array(),
 				'wf_woocommerce_invoice_show_print_button' => array(),
@@ -604,6 +606,76 @@ class Wf_Woocommerce_Packing_List_Invoice
 		return $find_replace;
 	}
 
+	/**
+	 * Add product meta to invoice
+	 * 
+	 * @since 4.0.0
+	 * @param string $addional_product_meta
+	 * @param string $template_type
+	 * @param WC_Product $_product
+	 * @param WC_Order_Item $order_item
+	 * @return string
+	 */
+	public function add_product_meta_to_invoice($addional_product_meta, $template_type, $_product, $order_item)
+	{
+		if ($template_type !== $this->module_base) {
+			return $addional_product_meta;
+		}
+
+		$module_id = Wf_Woocommerce_Packing_List::get_module_id($template_type);
+		$selected_product_meta = Wf_Woocommerce_Packing_List::get_option('wf_' . $template_type . '_product_meta', $module_id);
+		
+		if (empty($selected_product_meta) || !is_array($selected_product_meta)) {
+			return $addional_product_meta;
+		}
+
+		$product_meta_fields = Wf_Woocommerce_Packing_List::get_option('wf_product_meta_fields');
+		$product_meta_html = array();
+
+        foreach ($selected_product_meta as $meta_key) {
+			if (isset($product_meta_fields[$meta_key])) {
+				$meta_value = '';
+				
+                // Prefer direct post meta for internal keys (keys starting with "_") to avoid WC_Data::is_internal_meta_key notices
+                if ($_product) {
+					$product_id = $_product->get_id();
+				
+					// Internal keys (starting with "_") should always use get_post_meta
+					if (0 === strpos($meta_key, '_')) {
+						$meta_value = get_post_meta($product_id, $meta_key, true);
+					} else {
+						// For known getters (like sku, price, etc.), call methods directly to avoid notices
+						$getter = 'get_' . ltrim($meta_key, '_');
+						if (method_exists($_product, $getter)) {
+							$meta_value = $_product->$getter();
+						} elseif (method_exists($_product, 'get_meta')) {
+							// Otherwise use generic getter
+							$meta_value = $_product->get_meta($meta_key, true);
+						} else {
+							$meta_value = get_post_meta($product_id, $meta_key, true);
+						}
+					}
+				}
+
+				// Handle array values
+				if (is_array($meta_value)) {
+					$meta_value = implode(', ', $meta_value);
+				}
+
+				// Only add if we have a value
+				if (!empty($meta_value)) {
+					$product_meta_html[] = '<small><span class="wt_pklist_product_meta_item" data-meta-id="' . esc_attr($meta_key) . '"><label>' . esc_html($product_meta_fields[$meta_key]) . '</label>: ' . esc_html($meta_value) . '</span></small>';
+				}
+			}
+		}
+
+		if (!empty($product_meta_html)) {
+			$addional_product_meta .= '<br>' . implode('<br>', $product_meta_html);
+		}
+
+		return $addional_product_meta;
+	}
+
 	public function run_necessary()
 	{
 		$this->wf_filter_email_attach_invoice_for_status();
@@ -617,6 +689,7 @@ class Wf_Woocommerce_Packing_List_Invoice
 	public function set_other_data($find_replace, $template_type, $html, $order)
 	{
 		add_filter('wf_pklist_alter_item_quantiy', array($this, 'alter_quantity_column'), 1, 5);
+		add_filter('wf_pklist_add_product_meta', array($this, 'add_product_meta_to_invoice'), 10, 4);
 		add_filter('wf_pklist_alter_item_total_formated', array($this, 'alter_total_price_column'), 1, 7);
 		add_filter('wf_pklist_alter_item_tax_formated', array($this, 'alter_total_total_tax_column'), 1, 6);
 		add_filter('wf_pklist_alter_subtotal_formated', array($this, 'alter_sub_total_row'), 1, 5);
@@ -1317,6 +1390,7 @@ class Wf_Woocommerce_Packing_List_Invoice
 				'woocommerce_wf_add_customer_note_in_invoice' => "No", //Add customer note
 				'woocommerce_wf_packinglist_variation_data' => 'Yes', //Add product variation data
 				'wf_' . $this->module_base . '_contactno_email' => array('contact_number', 'email', 'vat'),
+				'wf_' . $this->module_base . '_product_meta' => array(),
 				'woocommerce_wf_orderdate_as_invoicedate' => "Yes",
 				'woocommerce_wf_custom_pdf_name' => '[prefix][order_no]',/* Since 2.8.0 */
 				'woocommerce_wf_custom_pdf_name_prefix' => 'Invoice_',/* Since 2.8.0 */
@@ -1368,6 +1442,7 @@ class Wf_Woocommerce_Packing_List_Invoice
 		if ($base_id === $this->module_id) {
 			$settings['wt_invoice_general'] = array(
 				'wf_' . $this->module_base . '_contactno_email'		=> array(),
+				'wf_' . $this->module_base . '_product_meta'		=> array(),
 				'wf_woocommerce_invoice_show_print_button'		=> array(),
 				'woocommerce_wf_generate_for_orderstatus' 		=> array(),
 				'wt_pdf_invoice_attachment_wc_email_classes' 	=> array(),

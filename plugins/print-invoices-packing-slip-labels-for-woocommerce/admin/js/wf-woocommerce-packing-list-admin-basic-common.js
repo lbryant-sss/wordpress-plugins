@@ -138,6 +138,17 @@ var wf_popover={
 						jQuery(document).find('.wf_popover-content').find('.wt_add_new_pro_tab').show();
 						jQuery(document).find('.wt_pklist_custom_field_form').find('.wt_pklist_custom_field_form_notice').text(wf_pklist_params.msgs.buy_pro_prompt_edit_order_meta_desc);
 						jQuery(document).find('.wf_popover-content').find('.wt_pklist_custom_field_form_notice').text(wf_pklist_params.msgs.buy_pro_prompt_edit_order_meta_desc);
+
+
+						jQuery(document).find('.wt_pklist_product_meta_custom_field_form').find('[name="wt_pklist_new_custom_field_title"]').attr('value',data.new_meta_label);
+						jQuery(document).find('.wt_pklist_product_meta_custom_field_form').find('[name="wt_pklist_new_custom_field_key"]').attr('value',data.key);
+						jQuery(document).find('.wt_pklist_product_meta_custom_field_form').find('.wfte_custom_field_tab_head_title').text(wf_pklist_params_basic.msgs.buy_pro_prompt_edit_order_meta);
+						jQuery(document).find('.wt_pklist_product_meta_custom_field_form').find('.wt_add_new_pro_tab').show();
+						jQuery(document).find('.wf_popover-content').find('.wfte_custom_field_tab_head_title').text(wf_pklist_params_basic.msgs.buy_pro_prompt_edit_order_meta);
+						jQuery(document).find('.wf_popover-content').find('.wt_add_new_pro_tab').show();
+						jQuery(document).find('.wt_pklist_product_meta_custom_field_form').find('.wt_pklist_custom_field_form_notice').text(wf_pklist_params_basic.msgs.buy_pro_prompt_edit_order_meta_desc);
+						jQuery(document).find('.wf_popover-content').find('.wt_pklist_custom_field_form_notice').text(wf_pklist_params_basic.msgs.buy_pro_prompt_edit_order_meta_desc);
+
 					}else
 					{
 						alert(data.msg);

@@ -145,6 +145,10 @@ function do_purchase_form( $block_attributes ) {
 			<div id="edd_purchase_form_wrap"></div>
 			<?php
 		}
+		if ( \EDD\Captcha\Utility::can_do_captcha() ) {
+			require_once EDD_BLOCKS_DIR . 'includes/forms/recaptcha.php';
+			\EDD\Blocks\Recaptcha\initialize();
+		}
 		?>
 	</form>
 	<?php

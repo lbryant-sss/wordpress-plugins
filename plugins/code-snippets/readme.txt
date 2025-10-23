@@ -4,7 +4,7 @@ Donate link: https://codesnippets.pro
 Tags: code, snippets, multisite, php, css
 License: GPL-2.0-or-later
 License URI: license.txt
-Stable tag: 3.7.1-beta.1
+Stable tag: 3.7.0
 Tested up to: 6.8.2
 
 An easy, clean and simple way to enhance your site with code snippets.
@@ -103,6 +103,21 @@ You can report security bugs found in the source code of this plugin through the
 4. Importing snippets from an export file
 
 == Changelog ==
+
+
+
+= 3.7.1-beta.3 (2025-10-22) =
+
+__Added__
+
+* Snippets REST API now supports pagination via page and per_page query parameters.
+
+
+= 3.7.1-beta.2 (2025-10-22) =
+
+__Added__
+
+* Implemented version switching with a new 'Version Switch' section in Settings
 
 = 3.7.1-beta.1 (2025-10-16) =
 

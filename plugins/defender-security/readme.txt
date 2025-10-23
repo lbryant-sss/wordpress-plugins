@@ -1,13 +1,13 @@
 === Defender Security - Malware Scanner, Login Security & Firewall ===
 Plugin Name: Defender Security - Malware Scanner, Login Security & Firewall
-Version: 5.6.0
+Version: 5.6.1
 Author: WPMU DEV
 Author URI: https://wpmudev.com/
 Contributors: WPMUDEV
 Tags: security, malware, firewall, malware scanner, login security
 Requires at least: 6.4
 Tested up to: 6.8.3
-Stable tag: 5.6.0
+Stable tag: 5.6.1
 Requires PHP: 7.4
 License: GPL v2 - http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 
@@ -261,6 +261,10 @@ Please open a new thread in Defender's [support forum](https://wordpress.org/sup
 
 == Changelog ==
 
+= 5.6.1 ( 2025-10-21 ) =
+
+- Fix: Malicious Bot Detector blocking Facebook Sharing Debugger bot
+
 = 5.6.0 ( 2025-10-07 ) =
 
 - New: Malicious Bot Detector
@@ -335,26 +339,6 @@ Please open a new thread in Defender's [support forum](https://wordpress.org/sup
 = 5.3.1 ( 2025-06-12 ) =
 
 - Fix: Sync malicious IP count displayed in Defender and the Hub
-
-= 5.3.0 ( 2025-06-11 ) =
-
-- New: AntiBot Mode
-- Enhance: Improve Session Protection when loading an image
-- Enhance: Add session widget on the Dashboard page
-- Enhance: Rename slug for Expert Services
-- Enhance: Update wp.org screenshots
-- Enhance: Update Session Protection Tracking event
-- Enhance: Change "Central IP List" label to "Custom IP List"
-- Enhance: Change OTP page styling to match the default WordPress login
-- Enhance: Generate strong passwords that meet all verification requirements
-- Enhance: Update malware signatures to detect additional infected files
-- Enhance: Log custom IP Block events
-- Enhance: Log Unblocking event from Unlock Me option
-- Fix: MaxMind key field appears empty on the Local Blocklist page if the MaxMind key is removed from the database
-- Fix: No session logs appear when the Interim login screen is shown
-- Fix: Scan can't detect modifications in the Debug Log Manager plugin
-- Fix: Warning in PHP 8.4
-- Fix: File existence and readability checks in Malware_Result and Plugin_Integrity classes
 
 [Changelog for previous versions](https://wpmudev.com/project/wp-defender/#view-changelog).
 

@@ -5,7 +5,7 @@ Donate link: https://independentwp.com
 Requires at least: 5.9
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 2.12.2
+Stable tag: 2.13.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -179,6 +179,21 @@ We use best practice techniques to filter out bot visits as efficiently as possi
 13. Check your post view counts in the Posts menu
 
 == Changelog ==
+
+= 2.13.1 - October 21st, 2025 =
+
+* **Fix:** Migration bug fix for 2.13.0
+
+= 2.13.0 - October 21st, 2025 =
+
+- **Feature:** Added option to group referrers by Referrer Type. Easily compare your Search vs. Social vs. AI traffic.
+- **Feature:** You can now filter by ANY or ALL of the selected filter conditions.
+- **Enhancement:** Added new “AI” referrer type to categorize sites like ChatGPT.com.
+- **Enhancement:** Switched to new geographic map created with the svgMap library.
+- **Enhancement:** Post categories in the filters are now sorted based on the category hierarchy, making them much easier to browse.
+- **Enhancement:** The iawp_top_posts() function now supports categories, so you can get your most popular posts from a particular category.
+- **Fix:** Resolved PHP error that could occur due to the visitor ID returning a string instead of an integer.
+- **Fix:** Only verify IP to geolocation database file once per day to reduce performance overhead.
 
 = 2.12.2 - August 29th, 2025 =
 
@@ -627,61 +642,5 @@ We use best practice techniques to filter out bot visits as efficiently as possi
 = 2.1.1 - January 18th, 2024 =
 
 * **Fix:** migration bug fix for 2.1.0
-
-= 2.1.0 - January 17th, 2024 =
-
-* **Feature:** Implemented a developer API for accessing analytics data on other pages
-* **Feature:** Included new option to regenerate the visitor salt token every day for improved GDPR compliance
-* **Update:** Made major optimizations to the database queries to speed up the analytics dashboard and fix crashes for high-traffic websites
-* **Update:** Implemented performance optimization to speed up the REST API request on the front end
-* **Update:** Traffic from Google Ads is now tracked separately from organic Google traffic in the Referrers menu, and Google Display Network domain is recognized
-* **Update:** Added new update notification in the sidebar making it easy to keep up with changes to the plugin
-* **Update:** Support added for the Aelia Currency Switcher plugin
-* **Update:** Showing current IP address in the Block IP Address setting to make it easier to block your own IP
-* **Update:** Added more tutorial links to the Settings menu
-* **Update:** Updated Danish translation
-* **Update:** Added Brazilian translation
-* **Update:** Implemented REST API warnings for the WP Cerber and Shield Security plugins
-* **Update:** Added a new PHP hook allowing devs to relocate the caching files created by IA (designed for Pantheon users in particular)
-* **Fix:** There was an issue with the Views Per Session metric that sometimes caused minor miscalculations
-* **Fix:** The date picker is now scrollable if it doesn’t fit in the vertical height of the window
-* **Fix:** PHP notices on the update process page are resolved
-* **Fix:** Comments column included all comments, not just approved comments
-* **Fix:** Publication date picker in the filters was broken for many date formats
-* **Fix:** Stylesheet was mistakenly affecting the WP admin background color on other pages
-* **Fix:** URLs in the Pages report were broken for Arabic and other languages
-
-= 2.0.1 - November 16th, 2023 =
-
-* **Fix:** migration bug fix for 2.0.0
-
-= 2.0.0 - November 15th, 2023 =
-
-* **Feature:** Saved Reports + New UI! Create a suite of custom reports to help you monitor the most important metrics for your website. Revisit your favorite reports without needing to select filters and other settings repeatedly.
-* **Feature:** Choose a default report to navigate to when visiting the analytics dashboard
-* **Feature:** Export and import your custom reports to replicate them quickly on multiple websites
-* **Feature:** Added new option to hide the Dashboard Widget from the main WP admin page
-* **Update:** Data table now uses horizontal scrolling when space is limited
-* **Update:** Added option to reset analytics to zero without disrupting other settings
-* **Fix:** Moved contents of /iawp/ folder from /uploads/ into the plugin
-* **Fix:** Added an option to delete + deactivate the plugin, so it can be removed without leaving DB tables behind
-
-= 1.30.1 - September 26th, 2023 =
-
-* **Fix:** incorrect WooCommerce stats in the data table
-
-= 1.30 - September 18th, 2023 =
-
-* **Feature:** find your top landing pages with the new Entrances, Exits, and Exit Rate columns
-* **Feature:** new CSV export button lets you export data from any report
-* **Fix:** devices that aren’t identified caused lots of warnings in the error log
-* **Fix:** various dark mode style fixes
-
-= 1.29 - September 5th, 2023 =
-
-* **Feature:** added Device report! It includes the device types, browsers, and OSes your visitors are using.
-* **Fix:** view counter was missing number formatting
-* **Fix:** various mobile style enhancements
-* **Fix:** added error message for sites missing PDO extension and prevents crashing
 
 **Changelog truncated here due to 50,000 character limit.**

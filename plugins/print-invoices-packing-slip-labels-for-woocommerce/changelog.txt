@@ -1,13 +1,19 @@
 == Changelog ==
 
+= 4.8.4 2025-09-24 =
+* [Add] - Compatibility with WPML Multilingual & Multicurrency for WooCommerce.
+* [Add]: Show popup to notify users when skipping the setup wizard.
+* [Fix] - Invoice PDF rendering issue when using Mpdf.
+* [Tweak]: Prevent loading assets on the frontend when the print invoice button is disabled.
+
 = 4.8.3 2025-09-04 =
-* [Fix]: Print invoice button not working in order listing and order email.
+* [Fix] - Print invoice button not working in order listing and order email.
 
 = 4.8.2 2025-08-29 =
-* [Fix]: Fixed error message “Invalid access key and mail ID” when attempting to print or download documents.
+* [Fix] - Fixed error message “Invalid access key and mail ID” when attempting to print or download documents.
 
 = 4.8.1 2025-08-28 =
-* [Add]: Automatically installs and activates the Mpdf plugin when the user clicks on the Mpdf plugin link.
+* [Add] - Automatically installs and activates the Mpdf plugin when the user clicks on the Mpdf plugin link.
 * [Compatibility] – PCP check
 * [Compatibility] – Tested OK with WooCommerce 10.1.2
 

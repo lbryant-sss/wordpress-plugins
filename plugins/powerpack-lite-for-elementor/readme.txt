@@ -4,7 +4,7 @@ Tags: elementor, elementor addon, elementor addons, elementor widgets, elementor
 Requires at least: 6.3
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 2.9.6
+Stable tag: 2.9.7
 
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -239,6 +239,9 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 
 == Changelog ==
+
+= 2.9.7 - October 22, 2025 =
+* 	Fix: Issue with dismiss notice function
 
 = 2.9.6 - September 10, 2025 =
 * 	Enhancement: Flip Box - Added Text Stroke option for title

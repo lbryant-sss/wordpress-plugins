@@ -5,6 +5,8 @@ namespace IAWP\Form_Submissions;
 use IAWP\Illuminate_Builder;
 use IAWP\Query;
 use IAWP\Utils\Plugin;
+use IAWPSCOPED\Illuminate\Support\Arr;
+use IAWPSCOPED\Illuminate\Support\Str;
 /**
  * Form tracking requires dynamic columns. If you have 2 forms, there will be 6 new columns. 2 for
  * a summary and 2 per form. This class makes it easy to get all the forms a given site has, while
@@ -70,7 +72,11 @@ class Form
     }
     public static function find_form_by_column_name(string $column_name) : ?\IAWP\Form_Submissions\Form
     {
-        $id = \intval(\preg_match('/(\\d+)\\z/', $column_name));
+        $id = Str::match('/\\d+\\z/', $column_name);
+        if (!\ctype_digit($id)) {
+            return null;
+        }
+        $id = \intval($id);
         $forms = self::get_forms();
         foreach ($forms as $form) {
             if ($id === $form->id()) {

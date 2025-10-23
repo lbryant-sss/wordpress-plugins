@@ -66,8 +66,8 @@ wpra()->addModule(
 
 wpra()->addModule(
 	'admin.shell',
-	array( 'admin.frame', 'importer' ),
-	function ( string $frame ) {
+	array( 'admin.frame', 'licensing' ),
+	function ( string $frame, $licensing ) {
 		$wpra = wpra();
 
 		$slug = 'wprss-aggregator';
@@ -92,7 +92,7 @@ wpra()->addModule(
 
 		add_action(
 			'admin_menu',
-			function () use ( $wpra, $frame, $slug, $url ) {
+			function () use ( $wpra, $frame, $slug, $url, $licensing ) {
 				$subUrl = $url . '&subPage=';
 				$cap = Capabilities::SEE_AGGREGATOR;
 				$svg = file_get_contents( $wpra->path . '/core/icons/admin-menu-icon.svg' );
@@ -119,7 +119,7 @@ wpra()->addModule(
 						AdminSubMenu::forUrl( $subUrl . 'settings', __( 'Settings', 'wp-rss-aggregator' ), $cap ),
 						AdminSubMenu::forUrl( $subUrl . 'help', __( 'Help', 'wp-rss-aggregator' ), $cap ),
 						AdminSubMenu::forUrl( $subUrl . 'tutorials', __( 'Tutorials', 'wp-rss-aggregator' ), $cap ),
-						AdminSubMenu::forUrl( $subUrl . 'upgrade', __( 'Manage Plan', 'wp-rss-aggregator' ), $cap ),
+						AdminSubMenu::forUrl( $subUrl . 'upgrade', $licensing->getTier() === Tier::Free ? __( 'Upgrade', 'wp-rss-aggregator' ) : __( 'Manage Plan', 'wp-rss-aggregator' ), $cap ),
 					);
 
 					if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {

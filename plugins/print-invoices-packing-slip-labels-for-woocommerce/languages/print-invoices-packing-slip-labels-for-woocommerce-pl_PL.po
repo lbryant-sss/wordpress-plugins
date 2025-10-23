@@ -1,16 +1,16 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce PDF Invoices, Packing Slips, Delivery Notes "
-"and Shipping Labels\n"
-"POT-Creation-Date: 2025-06-30 14:24+0530\n"
-"PO-Revision-Date: 2025-06-30 14:24+0530\n"
+"Project-Id-Version: WebToffee WooCommerce PDF Invoices, Packing Slips, "
+"Delivery Notes and Shipping Labels\n"
+"POT-Creation-Date: 2025-10-16 12:21+0530\n"
+"PO-Revision-Date: 2025-10-16 12:21+0530\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pl_PL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.7\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: print-invoices-packing-slip-labels-for-woocommerce.php\n"
@@ -21,90 +21,94 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 "X-Poedit-SearchPathExcluded-1: includes/vendor\n"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:132
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:60
+#: admin/class-wf-woocommerce-packing-list-admin.php:135
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:62
 msgid "Settings updated."
 msgstr "Zaktualizowano ustawienia."
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:133
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:61
+#: admin/class-wf-woocommerce-packing-list-admin.php:136
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:63
 msgid "All fields are mandatory"
 msgstr "Wszystkie pola są obowiązkowe"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:134
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:62
-#, php-format
+#. translators: 1$s: HTML line break, 2$s: HTML link opening tag, 3$s: HTML link closing tag
+#: admin/class-wf-woocommerce-packing-list-admin.php:138
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:65
+#, fuzzy, php-format
+#| msgid ""
+#| "Unable to update settings due to an internal error. %s To troubleshoot "
+#| "please click %s here. %s"
 msgid ""
-"Unable to update settings due to an internal error. %s To troubleshoot "
-"please click %s here. %s"
+"Unable to update settings due to an internal error. %1$s To troubleshoot "
+"please click %2$s here. %3$s"
 msgstr ""
 "Nie można zaktualizować ustawień z powodu błędu wewnętrznego. %s Aby "
 "rozwiązać problem, kliknij %s tutaj. %s"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:135
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:63
+#: admin/class-wf-woocommerce-packing-list-admin.php:139
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:66
 msgid "You have to select order(s) first!"
 msgstr "Najpierw musisz wybrać zamówienie(a)!"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:136
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:64
+#: admin/class-wf-woocommerce-packing-list-admin.php:140
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:67
 msgid "One or more order do not have invoice generated. Generate manually?"
 msgstr ""
 "Jedno lub więcej zamówień nie ma wygenerowanej faktury. Wygenerować ręcznie?"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:137
-#: admin/class-wf-woocommerce-packing-list-admin.php:1605
-#: admin/class-wf-woocommerce-packing-list-admin.php:2222
-#: admin/class-wf-woocommerce-packing-list-admin.php:4513
-#: admin/class-wf-woocommerce-packing-list-admin.php:4628
-#: admin/class-wf-woocommerce-packing-list-admin.php:4819
+#: admin/class-wf-woocommerce-packing-list-admin.php:141
+#: admin/class-wf-woocommerce-packing-list-admin.php:1751
+#: admin/class-wf-woocommerce-packing-list-admin.php:2393
+#: admin/class-wf-woocommerce-packing-list-admin.php:4707
+#: admin/class-wf-woocommerce-packing-list-admin.php:4825
+#: admin/class-wf-woocommerce-packing-list-admin.php:5016
 #: admin/modules/customizer/customizer.php:59
-#: admin/modules/customizer/customizer.php:258
+#: admin/modules/customizer/customizer.php:260
 #: admin/modules/wt-pdf-request-feature/class-wt-pdf-request-feature.php:132
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:65
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:85
-#: public/modules/invoice/invoice.php:192
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:68
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:88
+#: public/modules/invoice/invoice.php:201
 #: public/modules/shippinglabel/shippinglabel.php:267
 msgid "Error"
 msgstr "Błąd"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:138
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:66
+#: admin/class-wf-woocommerce-packing-list-admin.php:142
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:69
 msgid "Please wait"
 msgstr "Czekaj"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:139
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:67
+#: admin/class-wf-woocommerce-packing-list-admin.php:143
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:70
 msgid "is required"
 msgstr "jest wymagane"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:140
-#: admin/class-wf-woocommerce-packing-list-admin.php:4449
+#: admin/class-wf-woocommerce-packing-list-admin.php:144
+#: admin/class-wf-woocommerce-packing-list-admin.php:4643
 #: admin/views/documents.php:18 admin/views/freevspro.php:6
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:68
-#: public/class-wf-woocommerce-packing-list-public.php:144
-#: public/modules/invoice/invoice.php:140
-#: public/modules/invoice/invoice.php:154
-#: public/modules/invoice/invoice.php:155
-#: public/modules/invoice/invoice.php:1112
-#: public/modules/invoice/invoice.php:1140
-#: public/modules/invoice/invoice.php:1442
-#: public/modules/invoice/invoice.php:1938
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:71
+#: public/class-wf-woocommerce-packing-list-public.php:149
+#: public/modules/invoice/invoice.php:149
+#: public/modules/invoice/invoice.php:163
+#: public/modules/invoice/invoice.php:164
+#: public/modules/invoice/invoice.php:1189
+#: public/modules/invoice/invoice.php:1217
+#: public/modules/invoice/invoice.php:1521
+#: public/modules/invoice/invoice.php:2029
 #: public/modules/invoice/views/invoice-admin-settings.php:44
 msgid "Invoice"
 msgstr "Faktura"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:141
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:69
-#: public/class-wf-woocommerce-packing-list-public.php:145
+#: admin/class-wf-woocommerce-packing-list-admin.php:145
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:72
+#: public/class-wf-woocommerce-packing-list-public.php:150
 msgid ""
 "number has not been generated yet. Do you want to manually generate one ?"
 msgstr ""
 "numer nie został jeszcze wygenerowany. Czy chcesz ręcznie wygenerować jeden?"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:142
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:70
-#: public/class-wf-woocommerce-packing-list-public.php:141
+#: admin/class-wf-woocommerce-packing-list-admin.php:146
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:73
+#: public/class-wf-woocommerce-packing-list-public.php:146
 msgid ""
 "‘Generate invoice for free orders’ is disabled in Invoice settings > "
 "Advanced. You are attempting to generate invoice for this free order. "
@@ -114,8 +118,8 @@ msgstr ""
 "Ustawieniach faktury > Zaawansowane. Próbujesz wygenerować fakturę dla tego "
 "bezpłatnego zamówienia. Kontynuować?"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:143
-#: public/class-wf-woocommerce-packing-list-public.php:142
+#: admin/class-wf-woocommerce-packing-list-admin.php:147
+#: public/class-wf-woocommerce-packing-list-public.php:147
 msgid ""
 "Refund in this order seems not having credit number yet. Do you want to "
 "manually generate one ?"
@@ -123,98 +127,132 @@ msgstr ""
 "Zwrot w tym zamówieniu wydaje się nie mieć jeszcze numeru kredytowego. Czy "
 "chcesz ręcznie wygenerować jeden?"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:144
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:71
-#: public/class-wf-woocommerce-packing-list-public.php:143
+#: admin/class-wf-woocommerce-packing-list-admin.php:148
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:74
+#: public/class-wf-woocommerce-packing-list-public.php:148
 msgid "Please fill the `from address` in the plugin's general settings."
 msgstr "Proszę wypełnić pole „adres nadawcy” w ustawieniach ogólnych wtyczki."
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:145
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:72
+#: admin/class-wf-woocommerce-packing-list-admin.php:149
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:75
 msgid "Code Copied"
 msgstr "Kod skopiowany"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:146
-#: admin/partials/form_wizard/form_wizard.php:573
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:73
+#: admin/class-wf-woocommerce-packing-list-admin.php:150
+#: admin/partials/form_wizard/form_wizard.php:686
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:76
 msgid "Close"
 msgstr "Zamknij"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:147
-#: admin/modules/customizer/views/customize.php:537
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:74
+#: admin/class-wf-woocommerce-packing-list-admin.php:151
+#: admin/modules/customizer/views/customize.php:618
+#: admin/views/admin-settings-debug.php:108
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:77
 msgid "Save"
 msgstr "Zapisz"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:148
-#: admin/class-wf-woocommerce-packing-list-admin.php:2223
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:75
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:86
+#: admin/class-wf-woocommerce-packing-list-admin.php:152
+#: admin/class-wf-woocommerce-packing-list-admin.php:2394
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:78
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:89
 msgid "Please enter mandatory fields"
 msgstr "Proszę wypełnić pola obowiązkowe"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:149
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:76
+#: admin/class-wf-woocommerce-packing-list-admin.php:153
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:79
 msgid "You can add more than 1 order meta in"
 msgstr "Możesz dodać więcej niż 1 meta zamówienia"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:150
+#: admin/class-wf-woocommerce-packing-list-admin.php:154
 #: admin/views/_custom_field_editor_form.php:19
 #: admin/views/_custom_field_editor_form.php:24
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:77
+#: admin/views/_custom_field_editor_form_product.php:23
+#: admin/views/_custom_field_editor_form_product.php:28
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:80
 msgid "Edit"
 msgstr "Edytuj"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:151
+#: admin/class-wf-woocommerce-packing-list-admin.php:155
 #: admin/views/_custom_field_editor_form.php:42
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:78
+#: admin/views/_custom_field_editor_form_product.php:46
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:81
 msgid "You can edit an existing item by using its key."
 msgstr "Możesz edytować istniejący element za pomocą jego klucza."
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:153
+#: admin/class-wf-woocommerce-packing-list-admin.php:157
 msgid "Add"
 msgstr "Dodaj"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:154
-#: public/class-wf-woocommerce-packing-list-public.php:147
+#: admin/class-wf-woocommerce-packing-list-admin.php:158
+#: public/class-wf-woocommerce-packing-list-public.php:152
 msgid "Request error."
 msgstr "Błąd żądania."
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:155
-#: public/class-wf-woocommerce-packing-list-public.php:148
+#: admin/class-wf-woocommerce-packing-list-admin.php:159
+#: public/class-wf-woocommerce-packing-list-public.php:153
 msgid "Error loading data."
 msgstr "Błąd podczas ładowania danych."
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:156
-#: public/class-wf-woocommerce-packing-list-public.php:149
+#: admin/class-wf-woocommerce-packing-list-admin.php:160
+#: public/class-wf-woocommerce-packing-list-public.php:154
 msgid "minimum value should be"
 msgstr "minimalna wartość powinna wynosić"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:157
-#: public/class-wf-woocommerce-packing-list-public.php:150
+#: admin/class-wf-woocommerce-packing-list-admin.php:161
+#: public/class-wf-woocommerce-packing-list-public.php:155
 msgid "Generating document..."
 msgstr "Generowanie dokumentu..."
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:158
-#: public/class-wf-woocommerce-packing-list-public.php:151
+#: admin/class-wf-woocommerce-packing-list-admin.php:162
+#: public/class-wf-woocommerce-packing-list-public.php:156
 msgid "Failed to open new tab. Please check your browser settings."
 msgstr "Nie udało się otworzyć nowej karty. Sprawdź ustawienia przeglądarki."
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:256
+#. translators: %1$s: HTML link opening tag, %2$s: HTML link closing tag
+#: admin/class-wf-woocommerce-packing-list-admin.php:333
+#, fuzzy, php-format
+#| msgid "For better RTL integration in PDF documents, please use our"
+msgid ""
+"For better RTL integration in PDF documents, click the link to install the "
+"%1$smPDF add-on%2$s by WebToffee (free)."
+msgstr ""
+"Aby uzyskać lepszą integrację RTL z dokumentami PDF, skorzystaj z naszego"
+
+#. translators: %1$s: HTML link opening tag, %2$s: HTML link closing tag
+#: admin/class-wf-woocommerce-packing-list-admin.php:337
+#, fuzzy, php-format
+#| msgid "For better RTL integration in PDF documents, please use our"
+msgid ""
+"For better RTL integration in PDF documents, click the link to update the "
+"%1$smPDF add-on%2$s by WebToffee (free)."
+msgstr ""
+"Aby uzyskać lepszą integrację RTL z dokumentami PDF, skorzystaj z naszego"
+
+#. translators: %1$s: HTML link opening tag, %2$s: HTML link closing tag
+#: admin/class-wf-woocommerce-packing-list-admin.php:341
+#, fuzzy, php-format
+#| msgid "For better RTL integration in PDF documents, please use our"
+msgid ""
+"For better RTL integration in PDF documents, click the link to activate the "
+"%1$smPDF add-on%2$s by WebToffee (free)."
+msgstr ""
+"Aby uzyskać lepszą integrację RTL z dokumentami PDF, skorzystaj z naszego"
+
+#: admin/class-wf-woocommerce-packing-list-admin.php:384
 msgctxt "placeholder"
 msgid "Enter "
 msgstr "Wprowadź "
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:428
-#: admin/class-wf-woocommerce-packing-list-admin.php:734
+#: admin/class-wf-woocommerce-packing-list-admin.php:557
+#: admin/class-wf-woocommerce-packing-list-admin.php:875
 msgid "Invoice/Packing"
 msgstr "Faktura/Pakowanie"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:430
+#: admin/class-wf-woocommerce-packing-list-admin.php:559
 msgid "WT PDF Invoice Debug"
 msgstr "Debugowanie faktury PDF WT"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:441
+#: admin/class-wf-woocommerce-packing-list-admin.php:570
 #: admin/partials/admin-settings.php:40
 #: public/modules/deliverynote/views/admin-settings.php:37
 #: public/modules/dispatchlabel/views/admin-settings.php:36
@@ -224,99 +262,99 @@ msgstr "Debugowanie faktury PDF WT"
 msgid "Settings"
 msgstr "Ustawienia"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:442
+#: admin/class-wf-woocommerce-packing-list-admin.php:571
 msgid "Support"
 msgstr "Wsparcie"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:443
+#: admin/class-wf-woocommerce-packing-list-admin.php:572
 msgid "Review"
 msgstr "Opinia"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:444
+#: admin/class-wf-woocommerce-packing-list-admin.php:573
 #: admin/views/help.php:46 admin/views/help.php:49
 msgid "Documentation"
 msgstr "Dokumentacja"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:450
+#: admin/class-wf-woocommerce-packing-list-admin.php:579
 msgid "PDF Invoices"
 msgstr "Rezerwacje PDF"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:454
+#: admin/class-wf-woocommerce-packing-list-admin.php:583
 msgid "Shipping labels"
 msgstr "Etykiety wysyłkowe"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:458
+#: admin/class-wf-woocommerce-packing-list-admin.php:587
 msgid "Pick lists"
 msgstr "Listy wyboru"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:462
+#: admin/class-wf-woocommerce-packing-list-admin.php:591
 msgid "Proforma invoices"
 msgstr "Faktury proforma"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:466
+#: admin/class-wf-woocommerce-packing-list-admin.php:595
 #: admin/views/documents.php:74
 msgid "Address labels"
 msgstr "Naklejka Adresu"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:469
+#: admin/class-wf-woocommerce-packing-list-admin.php:598
 msgid "Premium Extensions"
 msgstr "Rozszerzenia Premium"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:507
+#: admin/class-wf-woocommerce-packing-list-admin.php:636
 msgid "Document details"
 msgstr "Szczegóły dokumentu"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:529
+#: admin/class-wf-woocommerce-packing-list-admin.php:658
 msgid "Print/Download"
 msgstr "Wydrukuj/Pobierz"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:733
-#: admin/class-wf-woocommerce-packing-list-admin.php:761
+#: admin/class-wf-woocommerce-packing-list-admin.php:874
+#: admin/class-wf-woocommerce-packing-list-admin.php:902
 msgid "General Settings"
 msgstr "Ustawienia główne"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:749
-#: admin/class-wf-woocommerce-packing-list-admin.php:750
+#: admin/class-wf-woocommerce-packing-list-admin.php:890
+#: admin/class-wf-woocommerce-packing-list-admin.php:891
 msgid "Extensions"
 msgstr "Rozszerzenia"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:847
-#: admin/class-wf-woocommerce-packing-list-admin.php:857
+#: admin/class-wf-woocommerce-packing-list-admin.php:990
+#: admin/class-wf-woocommerce-packing-list-admin.php:1000
 msgid "You are not allowed to access this page"
 msgstr "Nie masz dostępu do tej strony"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:875
 #: admin/class-wf-woocommerce-packing-list-admin.php:1018
+#: admin/class-wf-woocommerce-packing-list-admin.php:1160
 msgid "You are not allowed to view this page."
 msgstr "Nie masz uprawnień do przeglądania tej strony."
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:876
+#: admin/class-wf-woocommerce-packing-list-admin.php:1019
 msgid "Access denied !!!."
 msgstr "Odmowa dostępu !!!."
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:894
-#: admin/class-wf-woocommerce-packing-list-admin.php:944
 #: admin/class-wf-woocommerce-packing-list-admin.php:1037
-#: admin/class-wf-woocommerce-packing-list-admin.php:2592
-#: admin/class-wf-woocommerce-packing-list-admin.php:4076
-#: admin/class-wf-woocommerce-packing-list-admin.php:4189
-#: admin/class-wf-woocommerce-packing-list-admin.php:4241
-#: admin/class-wf-woocommerce-packing-list-admin.php:4361
+#: admin/class-wf-woocommerce-packing-list-admin.php:1087
+#: admin/class-wf-woocommerce-packing-list-admin.php:1179
+#: admin/class-wf-woocommerce-packing-list-admin.php:2785
+#: admin/class-wf-woocommerce-packing-list-admin.php:4271
+#: admin/class-wf-woocommerce-packing-list-admin.php:4384
+#: admin/class-wf-woocommerce-packing-list-admin.php:4435
+#: admin/class-wf-woocommerce-packing-list-admin.php:4555
 msgid "You are not allowed to do this action"
 msgstr "Nie masz uprawnień do wykonania tej akcji"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:902
 #: admin/class-wf-woocommerce-packing-list-admin.php:1045
+#: admin/class-wf-woocommerce-packing-list-admin.php:1187
 msgid "There is no order with this id"
 msgstr "Nie ma zamówienia o tym identyfikatorze"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:922
 #: admin/class-wf-woocommerce-packing-list-admin.php:1065
+#: admin/class-wf-woocommerce-packing-list-admin.php:1207
 msgid "It seems this order is not yours"
 msgstr "Wygląda na to, że to zamówienie nie jest twoje"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:937
 #: admin/class-wf-woocommerce-packing-list-admin.php:1080
+#: admin/class-wf-woocommerce-packing-list-admin.php:1222
 msgid ""
 "It seems the products in this order were removed, we cannot proceed this "
 "actoin now."
@@ -324,49 +362,51 @@ msgstr ""
 "Wygląda na to, że produkty w tej kolejności zostały usunięte. Nie możemy "
 "teraz kontynuować tej czynności."
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:941
 #: admin/class-wf-woocommerce-packing-list-admin.php:1084
+#: admin/class-wf-woocommerce-packing-list-admin.php:1226
 msgid "There is no items in this order."
 msgstr "Brak elementów w tym zamówieniu."
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:1004
+#: admin/class-wf-woocommerce-packing-list-admin.php:1146
 msgid "Invalid order id"
 msgstr "Nieprawidłowy identyfikator zamówienia"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:1009
+#: admin/class-wf-woocommerce-packing-list-admin.php:1151
 msgid "Invalid access key and mail id"
 msgstr "Nieprawidłowy klucz dostępu i identyfikator e-mail"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:1017
+#: admin/class-wf-woocommerce-packing-list-admin.php:1159
 msgid "Empty order"
 msgstr "Puste zamówienie"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:1027
+#: admin/class-wf-woocommerce-packing-list-admin.php:1169
 msgid "It seems this order is not yours."
 msgstr "Wygląda na to, że to nie jest twoje zamówienie."
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:1710
-#: admin/class-wf-woocommerce-packing-list-admin.php:4879
+#: admin/class-wf-woocommerce-packing-list-admin.php:1857
+#: admin/class-wf-woocommerce-packing-list-admin.php:5076
 msgid "Settings Updated"
 msgstr "Zaktualizowano ustawienia"
 
 #. translators: %s: method
-#: admin/class-wf-woocommerce-packing-list-admin.php:2150
-#: public/modules/invoice/invoice.php:1024
+#. translators: %s: Shipping method name
+#: admin/class-wf-woocommerce-packing-list-admin.php:2321
+#: public/modules/invoice/invoice.php:1101
 #, php-format
 msgid "via %s"
 msgstr "przez %s"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:2155
+#: admin/class-wf-woocommerce-packing-list-admin.php:2326
 msgid "Free!"
 msgstr "Bezpłatny!"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:2307
-#: includes/class-wf-woocommerce-packing-list-basic-func.php:170
+#: admin/class-wf-woocommerce-packing-list-admin.php:2483
+#: includes/class-wf-woocommerce-packing-list-basic-func.php:178
 msgid "Item with same meta key already exists"
 msgstr "Element z tym samym kluczem meta już istnieje"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:2365
+#. translators: 1$s: Tool description text, 2$s: Note label, 3$s: Article link opening tag, 4$s: Article link closing tag
+#: admin/class-wf-woocommerce-packing-list-admin.php:2558
 msgid ""
 "This will remove all invoice numbers created by WooCommerce PDF Invoices, "
 "Packing Slips, Delivery Notes & Shipping Labels by WebToffee."
@@ -375,11 +415,11 @@ msgstr ""
 "WooCommerce PDF Invoices, Packing Lists, Delivery Notes & Shipping Labels by "
 "WebToffee."
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:2365
+#: admin/class-wf-woocommerce-packing-list-admin.php:2558
 msgid "Note:"
 msgstr "Uwaga:"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:2365
+#: admin/class-wf-woocommerce-packing-list-admin.php:2558
 #, php-format
 msgid ""
 "Before using this tool, please make sure you followed the steps described in "
@@ -388,162 +428,162 @@ msgstr ""
 "Przed użyciem tego narzędzia upewnij się, że wykonałeś kroki opisane w tym "
 "artykule %1$sJak resetować/usuwać istniejące numery faktur%2$s."
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:2368
+#: admin/class-wf-woocommerce-packing-list-admin.php:2561
 msgid "Delete all generated invoice numbers"
 msgstr "Usuń wszystkie wygenerowane numery faktur"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:2369
-#: admin/modules/customizer/views/customize.php:606
+#: admin/class-wf-woocommerce-packing-list-admin.php:2562
+#: admin/modules/customizer/views/customize.php:803
 msgid "Delete"
 msgstr "Usuń"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:2607
+#: admin/class-wf-woocommerce-packing-list-admin.php:2800
 msgid "Updated"
 msgstr "Zaktualizowano"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:2614
+#: admin/class-wf-woocommerce-packing-list-admin.php:2807
 msgid "No modules"
 msgstr "Brak modułów"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:3999
-#: admin/class-wf-woocommerce-packing-list-admin.php:4029
+#: admin/class-wf-woocommerce-packing-list-admin.php:4192
+#: admin/class-wf-woocommerce-packing-list-admin.php:4223
 msgid "Do not show again"
 msgstr "Nie pokazuj ponownie"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4005
-#: admin/class-wf-woocommerce-packing-list-admin.php:4018
-#: admin/class-wf-woocommerce-packing-list-admin.php:4035
-#: admin/modules/customizer/views/customize.php:588
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:178
+#: admin/class-wf-woocommerce-packing-list-admin.php:4198
+#: admin/class-wf-woocommerce-packing-list-admin.php:4211
+#: admin/class-wf-woocommerce-packing-list-admin.php:4229
+#: admin/modules/customizer/views/customize.php:785
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:182
 #: admin/modules/wt-pdf-request-feature/class-wt-pdf-request-feature.php:113
-#: admin/views/admin-settings-debug.php:180
-#: admin/views/admin-settings-debug.php:233
+#: admin/views/admin-settings-debug.php:184
+#: admin/views/admin-settings-debug.php:240
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4008
-#: admin/class-wf-woocommerce-packing-list-admin.php:4038
+#: admin/class-wf-woocommerce-packing-list-admin.php:4201
+#: admin/class-wf-woocommerce-packing-list-admin.php:4232
 msgid "Generate"
 msgstr "Generuj"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4015
+#: admin/class-wf-woocommerce-packing-list-admin.php:4208
 msgid "Generating the document..."
 msgstr "Generowanie dokumentu..."
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4093
-#: admin/modules/customizer/customizer.php:259
+#: admin/class-wf-woocommerce-packing-list-admin.php:4288
+#: admin/modules/customizer/customizer.php:261
 #: admin/modules/wt-pdf-request-feature/class-wt-pdf-request-feature.php:176
 msgid "Success"
 msgstr "Sukces"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4095
+#: admin/class-wf-woocommerce-packing-list-admin.php:4290
 msgid "Cannot close this banner"
 msgstr "Nie można zamknąć tego baneru"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4267
+#: admin/class-wf-woocommerce-packing-list-admin.php:4461
 msgid "Settings are empty"
 msgstr "Ustawienia są puste"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4307
+#: admin/class-wf-woocommerce-packing-list-admin.php:4501
 msgid "Imported successfully"
 msgstr "Zaimportowano pomyślnie"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4311
+#: admin/class-wf-woocommerce-packing-list-admin.php:4505
 msgid "Incorrect file"
 msgstr "Nieprawidłowy plik"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4315
+#: admin/class-wf-woocommerce-packing-list-admin.php:4509
 msgid "Error: Empty JSON file"
 msgstr "Błąd: pusty plik JSON"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4319
+#: admin/class-wf-woocommerce-packing-list-admin.php:4513
 msgid "Error: Invalid JSON data"
 msgstr "Błąd: Nieprawidłowe dane JSON"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4323
+#: admin/class-wf-woocommerce-packing-list-admin.php:4517
 msgid "Error uploading the file"
 msgstr "Wystąpił błąd podczas przesyłania pliku"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4394
+#: admin/class-wf-woocommerce-packing-list-admin.php:4588
 msgid "Error:"
 msgstr "Błąd:"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4394
+#: admin/class-wf-woocommerce-packing-list-admin.php:4588
 msgid "Truncation did not complete as expected."
 msgstr "Obcinanie nie zostało ukończone zgodnie z oczekiwaniami."
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4448
-#: admin/views/general.php:333
+#: admin/class-wf-woocommerce-packing-list-admin.php:4642
+#: admin/views/general.php:345
 msgid "Total files"
 msgstr "Łączna liczba plików"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4450
+#: admin/class-wf-woocommerce-packing-list-admin.php:4644
 #: admin/views/documents.php:22 admin/views/freevspro.php:7
 #: public/modules/packinglist/packinglist.php:62
 #: public/modules/packinglist/packinglist.php:85
 #: public/modules/packinglist/packinglist.php:86
 #: public/modules/packinglist/packinglist.php:239
-#: public/modules/packinglist/packinglist.php:384
+#: public/modules/packinglist/packinglist.php:385
 #: public/modules/packinglist/views/admin-settings.php:39
 msgid "Packing slip"
 msgstr "List przewozowy"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4451
+#: admin/class-wf-woocommerce-packing-list-admin.php:4645
 #: admin/views/documents.php:39 admin/views/freevspro.php:9
 #: public/modules/shippinglabel/shippinglabel.php:67
 #: public/modules/shippinglabel/shippinglabel.php:238
 #: public/modules/shippinglabel/shippinglabel.php:239
-#: public/modules/shippinglabel/shippinglabel.php:567
+#: public/modules/shippinglabel/shippinglabel.php:568
 #: public/modules/shippinglabel/views/admin-settings.php:30
 msgid "Shipping label"
 msgstr "Etykieta wysyłkowa"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4452
+#: admin/class-wf-woocommerce-packing-list-admin.php:4646
 #: admin/views/documents.php:47 admin/views/freevspro.php:11
 #: public/modules/deliverynote/deliverynote.php:59
 #: public/modules/deliverynote/deliverynote.php:82
 #: public/modules/deliverynote/deliverynote.php:83
 #: public/modules/deliverynote/deliverynote.php:229
-#: public/modules/deliverynote/deliverynote.php:355
+#: public/modules/deliverynote/deliverynote.php:356
 #: public/modules/deliverynote/views/admin-settings.php:37
 msgid "Delivery note"
 msgstr "List przewozowy"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4453
+#: admin/class-wf-woocommerce-packing-list-admin.php:4647
 #: admin/views/documents.php:43 admin/views/freevspro.php:10
 #: public/modules/dispatchlabel/dispatchlabel.php:57
 #: public/modules/dispatchlabel/dispatchlabel.php:80
 #: public/modules/dispatchlabel/dispatchlabel.php:81
-#: public/modules/dispatchlabel/dispatchlabel.php:325
+#: public/modules/dispatchlabel/dispatchlabel.php:326
 #: public/modules/dispatchlabel/views/admin-settings.php:36
 msgid "Dispatch label"
 msgstr "Etykieta wysyłkowa"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4454
+#: admin/class-wf-woocommerce-packing-list-admin.php:4648
 #: admin/views/documents.php:61
 msgid "Picklist"
 msgstr "Lista wyboru"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4455
+#: admin/class-wf-woocommerce-packing-list-admin.php:4649
 #: admin/views/documents.php:87 admin/views/freevspro.php:12
 msgid "Proforma invoice"
 msgstr "Faktura zaliczkowa"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4456
+#: admin/class-wf-woocommerce-packing-list-admin.php:4650
 #: admin/views/documents.php:26 admin/views/freevspro.php:8
 msgid "Credit note"
 msgstr "Nota kredytowa"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4649
-#: admin/views/_form_field_generator_new.php:619
+#: admin/class-wf-woocommerce-packing-list-admin.php:4846
+#: admin/views/_form_field_generator_new.php:675
 msgid "No temporary file found"
 msgstr "Nie znaleziono pliku tymczasowego"
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4654
+#: admin/class-wf-woocommerce-packing-list-admin.php:4851
 msgid "Successfully cleared all temp files."
 msgstr "Pomyślnie wyczyszczono wszystkie pliki tymczasowe."
 
-#: admin/class-wf-woocommerce-packing-list-admin.php:4655
+#: admin/class-wf-woocommerce-packing-list-admin.php:4852
 msgid "No files found."
 msgstr "Nie znaleziono plików."
 
@@ -551,7 +591,7 @@ msgstr "Nie znaleziono plików."
 msgid "Order Details"
 msgstr "Szczegóły zamówienia"
 
-#: admin/data/data.filters-help.php:4 public/modules/invoice/invoice.php:1204
+#: admin/data/data.filters-help.php:4 public/modules/invoice/invoice.php:1281
 msgid "Product Table"
 msgstr "Tabela produktów"
 
@@ -560,7 +600,7 @@ msgid "Summary Table"
 msgstr "Tabela podsumowująca"
 
 #: admin/data/data.filters-help.php:6
-#: public/modules/invoice/views/general.php:188
+#: public/modules/invoice/views/general.php:267
 msgid "Others"
 msgstr "Inne"
 
@@ -849,7 +889,8 @@ msgstr "Domyślna biblioteka używana do generowania plików PDF"
 msgid "Never Miss This Deal"
 msgstr "Nigdy nie przegap tej oferty"
 
-#: admin/modules/banner/class-wt-bfcm-twenty-twenty-four.php:72
+#. translators: 1$s: Discount percentage with HTML span tags
+#: admin/modules/banner/class-wt-bfcm-twenty-twenty-four.php:73
 #, php-format
 msgid ""
 "Your Last Chance to Avail %1$s on WebToffee Plugins. Grab the deal before "
@@ -858,13 +899,42 @@ msgstr ""
 "Ostatnia szansa na skorzystanie z %1$s wtyczek WebToffee. Skorzystaj z "
 "okazji, zanim zniknie!"
 
-#: admin/modules/banner/class-wt-bfcm-twenty-twenty-four.php:73
+#: admin/modules/banner/class-wt-bfcm-twenty-twenty-four.php:74
 msgid "OFF"
 msgstr "WYŁ"
 
-#: admin/modules/banner/class-wt-bfcm-twenty-twenty-four.php:78
+#: admin/modules/banner/class-wt-bfcm-twenty-twenty-four.php:79
 msgid "View plugins"
 msgstr "Wyświetl wtyczki"
+
+#: admin/modules/banner/class-wt-gdpr-cta-banner.php:116
+msgid ""
+"<b>Important Update:</b> Starting October 31, 2025, Microsoft requires "
+"websites to use Clarity Consent V2 to continue collecting analytical data. "
+"Ensure compliance by upgrading to the GDPR Cookie Consent Plugin, now fully "
+"compatible with <b>Clarity Consent V2</b> and <b>Google Consent Mode</b>."
+msgstr ""
+
+#: admin/modules/banner/class-wt-gdpr-cta-banner.php:119
+msgid ""
+"Stay compliant with GDPR and US Privacy Laws using our Google-certified CMP "
+"plugin—now with <b>Microsoft Clarity Consent V2</b>, <b>UET Consent Mode</b> "
+"and <b>Google Consent Mode</b> support."
+msgstr ""
+
+#: admin/modules/banner/class-wt-gdpr-cta-banner.php:259
+msgid "Ensure Cookie Compliance for Your WordPress Website"
+msgstr ""
+
+#: admin/modules/banner/class-wt-gdpr-cta-banner.php:271
+#, fuzzy
+#| msgid "Get Plugin"
+msgid "Get plugin now"
+msgstr "Pobierz wtyczkę"
+
+#: admin/modules/banner/class-wt-gdpr-cta-banner.php:275
+msgid "Certified Partner"
+msgstr ""
 
 #: admin/modules/banner/class-wt-mpdf-language-banner.php:37
 msgid "Language Detection Notice"
@@ -886,20 +956,20 @@ msgstr ""
 msgid "Dismiss this notice"
 msgstr ""
 
-#: admin/modules/banner/class-wt-p-iew-cta-banner.php:104
+#: admin/modules/banner/class-wt-p-iew-cta-banner.php:105
 #: admin/modules/banner/class-wt-pklist-cta-banner.php:94
 msgid "Product Import Export"
 msgstr "Import i eksport produktów"
 
-#: admin/modules/banner/class-wt-p-iew-cta-banner.php:105
+#: admin/modules/banner/class-wt-p-iew-cta-banner.php:106
 msgid "Product Import Export for WooCommerce"
 msgstr "Import i eksport produktów dla WooCommerce"
 
-#: admin/modules/banner/class-wt-p-iew-cta-banner.php:109
+#: admin/modules/banner/class-wt-p-iew-cta-banner.php:110
 msgid "Import, export, or update WooCommerce products"
 msgstr "Importuj, eksportuj lub aktualizuj produkty WooCommerce"
 
-#: admin/modules/banner/class-wt-p-iew-cta-banner.php:110
+#: admin/modules/banner/class-wt-p-iew-cta-banner.php:111
 msgid ""
 "Supports all types of products (Simple, variable, subscription grouped, and "
 "external)"
@@ -907,53 +977,53 @@ msgstr ""
 "Obsługuje wszystkie typy produktów (proste, zmienne, grupowane w ramach "
 "subskrypcji i zewnętrzne)"
 
-#: admin/modules/banner/class-wt-p-iew-cta-banner.php:111
+#: admin/modules/banner/class-wt-p-iew-cta-banner.php:112
 msgid "Multiple file formats - CSV, XML, Excel, and TSV"
 msgstr "Wiele formatów plików – CSV, XML, Excel i TSV"
 
-#: admin/modules/banner/class-wt-p-iew-cta-banner.php:112
+#: admin/modules/banner/class-wt-p-iew-cta-banner.php:113
 msgid "Advanced filters and customizations for better control"
 msgstr "Zaawansowane filtry i dostosowania zapewniające lepszą kontrolę"
 
-#: admin/modules/banner/class-wt-p-iew-cta-banner.php:113
+#: admin/modules/banner/class-wt-p-iew-cta-banner.php:114
 msgid "Bulk update WooCommerce product data"
 msgstr "Masowa aktualizacja danych produktów WooCommerce"
 
-#: admin/modules/banner/class-wt-p-iew-cta-banner.php:114
+#: admin/modules/banner/class-wt-p-iew-cta-banner.php:115
 msgid "Import via FTP/SFTP and URL"
 msgstr "Importuj przez FTP/SFTP i URL"
 
-#: admin/modules/banner/class-wt-p-iew-cta-banner.php:115
+#: admin/modules/banner/class-wt-p-iew-cta-banner.php:116
 #: admin/views/premium_extension_listing.php:186
 #: admin/views/premium_extension_listing.php:221
 msgid "Schedule automated import & export"
 msgstr "Zaplanuj automatyczny import i eksport"
 
-#: admin/modules/banner/class-wt-p-iew-cta-banner.php:116
+#: admin/modules/banner/class-wt-p-iew-cta-banner.php:117
 msgid "Export and Import custom fields and third-party plugin fields"
 msgstr "Eksportuj i importuj pola niestandardowe i pola wtyczek innych firm"
 
-#: admin/modules/banner/class-wt-p-iew-cta-banner.php:121
+#: admin/modules/banner/class-wt-p-iew-cta-banner.php:122
 #: admin/modules/banner/class-wt-pklist-cta-banner.php:111
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:117
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:116
 msgid "View all premium features"
 msgstr "Zobacz wszystkie funkcje premium"
 
-#: admin/modules/banner/class-wt-p-iew-cta-banner.php:121
+#: admin/modules/banner/class-wt-p-iew-cta-banner.php:122
 #: admin/modules/banner/class-wt-pklist-cta-banner.php:111
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:117
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:116
 msgid "Show less"
 msgstr "Pokaż mniej"
 
-#: admin/modules/banner/class-wt-p-iew-cta-banner.php:122
+#: admin/modules/banner/class-wt-p-iew-cta-banner.php:123
 #: admin/modules/banner/class-wt-pklist-cta-banner.php:112
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:118
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:117
 msgid "Get the plugin"
 msgstr "Pobierz wtyczkę"
 
-#: admin/modules/banner/class-wt-p-iew-cta-banner.php:124
+#: admin/modules/banner/class-wt-p-iew-cta-banner.php:125
 #: admin/modules/banner/class-wt-pklist-cta-banner.php:114
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:120
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:119
 msgid "Dismiss"
 msgstr "Odrzuć"
 
@@ -999,69 +1069,69 @@ msgstr "Dodaj link „Zapłać teraz” na fakturach"
 msgid "Add custom fields to any order document with ease"
 msgstr "Łatwo dodawaj pola niestandardowe do dowolnego dokumentu zamówienia"
 
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:91
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:96
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:90
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:95
 msgid "Smart Coupons for WooCommerce Pro"
 msgstr "Inteligentne kupony dla WooCommerce Pro"
 
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:92
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:91
 msgid ""
 "Create better coupon campaigns with advanced WooCommerce coupon features"
 msgstr ""
 "Twórz lepsze kampanie kuponowe dzięki zaawansowanym funkcjom kuponów "
 "WooCommerce"
 
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:100
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:99
 msgid "Auto-apply coupons"
 msgstr "Automatyczne stosowanie kuponów"
 
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:101
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:100
 msgid "Create attractive Buy X Get Y (BOGO) offers"
 msgstr "Utwórz atrakcyjne oferty Kup X, a otrzymasz Y (BOGO)"
 
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:102
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:101
 msgid "Create product quantity/subtotal based discounts"
 msgstr "Utwórz rabaty na podstawie ilości/suma częściowa produktu"
 
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:103
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:102
 msgid "Offer store credits and gift cards"
 msgstr "Oferuj bony sklepowe i karty podarunkowe"
 
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:104
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:103
 msgid "Set up smart giveaway campaigns"
 msgstr "Skonfiguruj inteligentne kampanie z nagrodami"
 
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:105
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:104
 msgid "Set advanced coupon rules and conditions"
 msgstr "Ustaw zaawansowane zasady i warunki kuponów"
 
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:106
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:105
 #: admin/views/premium_extension_listing.php:330
 msgid "Bulk generate coupons"
 msgstr "Zbiorcze generowanie kuponów"
 
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:107
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:106
 msgid "Shipping, purchase history, and payment method-based coupons"
 msgstr "Kupony zależne od wysyłki, historii zakupów i metody płatności"
 
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:108
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:107
 msgid "Sign up coupons"
 msgstr "Kupony rejestracyjne"
 
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:109
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:108
 #: admin/views/premium_extension_listing.php:328
 msgid "Cart abandonment coupons"
 msgstr "Kupony za porzucone koszyki"
 
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:110
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:109
 msgid "Create day-specific deals"
 msgstr "Twórz oferty na konkretny dzień"
 
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:111
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:110
 msgid "Display coupon banners and widgets"
 msgstr "Wyświetlaj banery i widżety kuponów"
 
-#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:112
+#: admin/modules/banner/class-wt-smart-coupon-cta-banner.php:111
 msgid "Import coupons"
 msgstr "Kupony importowe"
 
@@ -1078,7 +1148,7 @@ msgstr "w tym VAT "
 msgid "n/a"
 msgstr "n/d"
 
-#: admin/modules/customizer/classes/class-customizer.php:1955
+#: admin/modules/customizer/classes/class-customizer.php:1958
 msgid ""
 "Mauris dignissim neque ut sapien vulputate, eu semper tellus porttitor. Cras "
 "porta lectus id augue interdum egestas."
@@ -1086,7 +1156,7 @@ msgstr ""
 "Mauris dignissim neque ut sapien vulputate, eu semper tellus porttitor. Cras "
 "porta lectus id augue interdum egestas."
 
-#: admin/modules/customizer/classes/class-customizer.php:1973
+#: admin/modules/customizer/classes/class-customizer.php:1976
 msgid ""
 "Mauris dignissim neque ut sapien vulputate, eu semper tellus porttitor. Cras "
 "porta lectus id augue interdum egestas. Suspendisse potenti. Phasellus "
@@ -1098,7 +1168,7 @@ msgstr ""
 "mollis porttitor enim sit amet fringilla. Nulla sed ligula venenatis, rutrum "
 "lectus vel"
 
-#: admin/modules/customizer/classes/class-customizer.php:1978
+#: admin/modules/customizer/classes/class-customizer.php:1981
 msgid ""
 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec vehicula "
 "purus. Mauris tempor nec ipsum ac tempus. Aenean vehicula porttitor tortor, "
@@ -1108,41 +1178,41 @@ msgstr ""
 "purus. Mauris tempor nec ipsum ac tempus. Aenean vehicula porttitor tortor, "
 "et interdum tellus fermentum at. Fusce pellentesque justo rhoncus"
 
-#: admin/modules/customizer/customizer.php:88
+#: admin/modules/customizer/customizer.php:89
 msgid "Unable to generate PDF."
 msgstr "Nie można wygenerować pliku PDF."
 
-#: admin/modules/customizer/customizer.php:93
+#: admin/modules/customizer/customizer.php:94
 msgid "There is no order with this given id"
 msgstr "Nie ma zamówienia o podanym identyfikatorze"
 
-#: admin/modules/customizer/customizer.php:201
-#: admin/modules/customizer/customizer.php:206
+#: admin/modules/customizer/customizer.php:203
+#: admin/modules/customizer/customizer.php:208
 #: public/modules/packinglist/views/admin-settings.php:51
 msgid "Customize"
 msgstr "Dostosuj"
 
-#: admin/modules/customizer/customizer.php:260
+#: admin/modules/customizer/customizer.php:262
 msgid "You can't undo this action. Are you sure?"
 msgstr "Nie możesz cofnąć tej akcji. Czy jesteś pewien?"
 
-#: admin/modules/customizer/customizer.php:261
+#: admin/modules/customizer/customizer.php:263
 msgid "Click here to add Company logo"
 msgstr "Kliknij tutaj, aby dodać logo firmy"
 
-#: admin/modules/customizer/customizer.php:262
+#: admin/modules/customizer/customizer.php:264
 msgid "Click here to add Company name"
 msgstr "Kliknij tutaj, aby dodać nazwę firmy"
 
-#: admin/modules/customizer/customizer.php:263
+#: admin/modules/customizer/customizer.php:265
 msgid "Click here to add From address"
 msgstr "Kliknij tutaj, aby dodać adres nadawcy"
 
-#: admin/modules/customizer/customizer.php:264
+#: admin/modules/customizer/customizer.php:266
 msgid "Click here to add Signature"
 msgstr "Kliknij tutaj, aby dodać podpis"
 
-#: admin/modules/customizer/customizer.php:265
+#: admin/modules/customizer/customizer.php:267
 msgid ""
 "Please save all data before leaving this page. All unsaved data will be "
 "lost. Are you sure?"
@@ -1150,37 +1220,37 @@ msgstr ""
 "Proszę zapisać wszystkie dane przed opuszczeniem tej strony. Wszystkie "
 "niezapisane dane zostaną utracone. Czy jesteś pewien?"
 
-#: admin/modules/customizer/customizer.php:266
-#: admin/modules/customizer/views/customize.php:583
+#: admin/modules/customizer/customizer.php:268
+#: admin/modules/customizer/views/customize.php:780
 msgid "Change template"
 msgstr "Zmień szablon"
 
-#: admin/modules/customizer/customizer.php:267
+#: admin/modules/customizer/customizer.php:269
 msgid "Change layout"
 msgstr "Zmień szablon"
 
-#: admin/modules/customizer/customizer.php:268
+#: admin/modules/customizer/customizer.php:270
 msgid "Saving"
 msgstr "Zapisywanie"
 
-#: admin/modules/customizer/customizer.php:269
-#: public/modules/invoice/invoice.php:190
+#: admin/modules/customizer/customizer.php:271
+#: public/modules/invoice/invoice.php:199
 #: public/modules/shippinglabel/shippinglabel.php:265
 msgid "Please enter order number"
 msgstr "Proszę wpisać numer zamówienia"
 
-#: admin/modules/customizer/customizer.php:270
-#: public/modules/invoice/invoice.php:191
+#: admin/modules/customizer/customizer.php:272
+#: public/modules/invoice/invoice.php:200
 #: public/modules/shippinglabel/shippinglabel.php:266
 msgid "Generating"
 msgstr "Generowanie"
 
-#: admin/modules/customizer/customizer.php:271
+#: admin/modules/customizer/customizer.php:273
 msgid "This is premium template which is not compatible with the basic plugin"
 msgstr ""
 "To jest szablon premium, który nie jest kompatybilny z podstawową wtyczką"
 
-#: admin/modules/customizer/customizer.php:272
+#: admin/modules/customizer/customizer.php:274
 msgid ""
 "This is basic template. In order to use premium feature, you need to switch "
 "and activate the premium template"
@@ -1188,117 +1258,117 @@ msgstr ""
 "To jest podstawowy szablon. Aby korzystać z funkcji premium, musisz "
 "przełączyć i aktywować szablon premium"
 
-#: admin/modules/customizer/customizer.php:273
+#: admin/modules/customizer/customizer.php:275
 msgid "Template Name Required"
 msgstr "Nazwa szablonu jest wymagana"
 
-#: admin/modules/customizer/customizer.php:320
-#: admin/modules/customizer/customizer.php:677
+#: admin/modules/customizer/customizer.php:322
+#: admin/modules/customizer/customizer.php:682
 msgid "Active"
 msgstr "Aktywny"
 
-#: admin/modules/customizer/customizer.php:653
+#: admin/modules/customizer/customizer.php:658
 msgid "Error."
 msgstr "Błąd."
 
-#: admin/modules/customizer/customizer.php:679
-#: admin/modules/customizer/views/customize.php:605
+#: admin/modules/customizer/customizer.php:684
+#: admin/modules/customizer/views/customize.php:802
 msgid "Activate"
 msgstr "Aktywuj"
 
-#: admin/modules/customizer/customizer.php:705
+#: admin/modules/customizer/customizer.php:710
 msgid "No template found."
 msgstr "Nie znaleziono szablonu."
 
-#: admin/modules/customizer/customizer.php:722
+#: admin/modules/customizer/customizer.php:727
 msgid "Unable to save theme."
 msgstr "Nie można zapisać motywu."
 
-#: admin/modules/customizer/customizer.php:741
+#: admin/modules/customizer/customizer.php:746
 msgid "Template with same name already exists."
 msgstr "Szablon o tej nazwie już istnieje."
 
-#: admin/modules/customizer/customizer.php:783
+#: admin/modules/customizer/customizer.php:788
 msgid "Template created."
 msgstr "Szablon został utworzony."
 
-#: admin/modules/customizer/customizer.php:789
+#: admin/modules/customizer/customizer.php:794
 msgid "Template created and activated."
 msgstr "Szablon został utworzony i aktywowany."
 
-#: admin/modules/customizer/customizer.php:844
+#: admin/modules/customizer/customizer.php:849
 msgid "Template updated."
 msgstr "Zaktualizowano szablon."
 
-#: admin/modules/customizer/customizer.php:847
+#: admin/modules/customizer/customizer.php:852
 msgid "Template updated and activated."
 msgstr "Szablon zaktualizowany i aktywowany."
 
-#: admin/modules/customizer/customizer.php:895
+#: admin/modules/customizer/customizer.php:900
 msgid "Unable to switch view."
 msgstr "Nie można zmienić widoku."
 
-#: admin/modules/customizer/customizer.php:1290
+#: admin/modules/customizer/customizer.php:1295
 msgid "Unable to load template."
 msgstr "Nie można załadować szablonu."
 
-#: admin/modules/customizer/customizer.php:1341
+#: admin/modules/customizer/customizer.php:1346
 msgid "Untitled template"
 msgstr "Szablon bez tytułu"
 
-#: admin/modules/customizer/customizer.php:1487
+#: admin/modules/customizer/customizer.php:1492
 msgid "Lighter"
 msgstr "Lżejsze"
 
-#: admin/modules/customizer/customizer.php:1488
+#: admin/modules/customizer/customizer.php:1493
 msgid "Normal"
 msgstr "Normalny"
 
-#: admin/modules/customizer/customizer.php:1489
+#: admin/modules/customizer/customizer.php:1494
 msgid "Bold"
 msgstr "Pogrubiona"
 
-#: admin/modules/customizer/customizer.php:1490
+#: admin/modules/customizer/customizer.php:1495
 msgid "Bolder"
 msgstr "Wyraźniejsze"
 
-#: admin/modules/customizer/customizer.php:1502
+#: admin/modules/customizer/customizer.php:1507
 msgid "Select One"
 msgstr "Wybierz jeden"
 
-#: admin/modules/customizer/customizer.php:1520
+#: admin/modules/customizer/customizer.php:1525
 msgid "Left"
 msgstr "Lewo"
 
-#: admin/modules/customizer/customizer.php:1521
+#: admin/modules/customizer/customizer.php:1526
 msgid "Right"
 msgstr "Prawo"
 
-#: admin/modules/customizer/customizer.php:1522
+#: admin/modules/customizer/customizer.php:1527
 msgid "Center"
 msgstr "Środek"
 
-#: admin/modules/customizer/customizer.php:1523
+#: admin/modules/customizer/customizer.php:1528
 msgid "Start"
 msgstr "Start"
 
-#: admin/modules/customizer/customizer.php:1524
+#: admin/modules/customizer/customizer.php:1529
 msgid "End"
 msgstr "Koniec"
 
-#: admin/modules/customizer/customizer.php:1531
+#: admin/modules/customizer/customizer.php:1536
 msgid "None"
 msgstr "Brak"
 
-#: admin/modules/customizer/customizer.php:1543
+#: admin/modules/customizer/customizer.php:1548
 msgid "Solid"
 msgstr "Ciągła"
 
-#: admin/modules/customizer/customizer.php:1544
+#: admin/modules/customizer/customizer.php:1549
 msgid "Dotted"
 msgstr "Linia kropkowana"
 
-#: admin/modules/customizer/customizer.php:1545
+#: admin/modules/customizer/customizer.php:1550
 msgid "Dashed"
 msgstr "Kreskowa"
 
@@ -1388,39 +1458,39 @@ msgstr "Cena całkowita"
 #: admin/modules/customizer/data/data.translation_strings.php:16
 #: admin/modules/customizer/views/_customize_properties.php:636
 #: admin/views/wt_ipc_free_pro.php:752 admin/views/wt_ipc_free_pro.php:794
-#: public/modules/invoice/invoice.php:1231
+#: public/modules/invoice/invoice.php:1308
 msgid "Subtotal"
 msgstr "Razem"
 
 #: admin/modules/customizer/data/data.translation_strings.php:17
 #: admin/modules/customizer/views/_customize_properties.php:642
 #: admin/views/wt_ipc_free_pro.php:756 admin/views/wt_ipc_free_pro.php:798
-#: public/modules/invoice/invoice.php:1232
+#: public/modules/invoice/invoice.php:1309
 msgid "Shipping"
 msgstr "Wysyłka"
 
 #: admin/modules/customizer/data/data.translation_strings.php:18
 #: admin/modules/customizer/views/_customize_properties.php:649
-#: public/modules/invoice/invoice.php:1233
+#: public/modules/invoice/invoice.php:1310
 msgid "Cart Discount"
 msgstr "Rabat na koszyk"
 
 #: admin/modules/customizer/data/data.translation_strings.php:19
 #: admin/modules/customizer/views/_customize_properties.php:655
-#: public/modules/invoice/invoice.php:1234
+#: public/modules/invoice/invoice.php:1311
 msgid "Order Discount"
 msgstr "Zamów zniżkę"
 
 #: admin/modules/customizer/data/data.translation_strings.php:20
 #: admin/modules/customizer/views/_customize_properties.php:662
-#: public/modules/invoice/invoice.php:1235
+#: public/modules/invoice/invoice.php:1312
 msgid "Total Tax"
 msgstr "Podatek"
 
 #: admin/modules/customizer/data/data.translation_strings.php:21
 #: admin/modules/customizer/views/_customize_properties.php:668
 #: admin/views/wt_ipc_free_pro.php:768 admin/views/wt_ipc_free_pro.php:810
-#: public/modules/invoice/invoice.php:1236
+#: public/modules/invoice/invoice.php:1313
 msgid "Fee"
 msgstr "Opłata"
 
@@ -1431,8 +1501,8 @@ msgstr "Użyty kupon"
 #: admin/modules/customizer/data/data.translation_strings.php:23
 #: admin/modules/customizer/views/_customize_properties.php:681
 #: admin/views/wt_ipc_free_pro.php:780 admin/views/wt_ipc_free_pro.php:822
-#: public/modules/invoice/invoice.php:1239
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:73
+#: public/modules/invoice/invoice.php:1316
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:68
 msgid "Total"
 msgstr "Razem"
 
@@ -1483,7 +1553,7 @@ msgstr "Metoda płatności:"
 
 #: admin/modules/customizer/data/data.translation_strings.php:35
 #: admin/modules/customizer/views/_customize_properties.php:675
-#: public/modules/invoice/invoice.php:1238
+#: public/modules/invoice/invoice.php:1315
 msgid "Payment Method"
 msgstr "Metoda płatności"
 
@@ -1584,7 +1654,7 @@ msgid "Customer note:"
 msgstr "Uwaga klienta:"
 
 #: admin/modules/customizer/data/data.translation_strings.php:61
-#: public/modules/invoice/invoice.php:1210
+#: public/modules/invoice/invoice.php:1287
 #: public/modules/shippinglabel/shippinglabel.php:177
 msgid "Customer note"
 msgstr "Uwaga klienta"
@@ -1637,7 +1707,7 @@ msgstr "Tytuł"
 #: admin/modules/customizer/views/_customize_properties.php:320
 #: admin/modules/customizer/views/_customize_properties.php:336
 #: admin/modules/customizer/views/_customize_properties.php:600
-#: public/modules/invoice/invoice.php:366
+#: public/modules/invoice/invoice.php:379
 msgid "Font size"
 msgstr "Rozmiar czcionki"
 
@@ -1689,7 +1759,7 @@ msgstr "Kolor nagłówka"
 
 #: admin/modules/customizer/views/_customize_properties.php:207
 #: admin/modules/customizer/views/_customize_properties.php:241
-#: public/modules/invoice/invoice.php:360
+#: public/modules/invoice/invoice.php:373
 msgid "Text"
 msgstr "Tekst"
 
@@ -1706,7 +1776,7 @@ msgid "Text color"
 msgstr "Kolor tekstu"
 
 #: admin/modules/customizer/views/_customize_properties.php:246
-#: public/modules/invoice/views/general.php:296
+#: public/modules/invoice/views/general.php:375
 msgid "Format"
 msgstr "Format"
 
@@ -1879,111 +1949,131 @@ msgstr "Zamówienie"
 
 #: admin/modules/customizer/views/_pdf_preview.php:34
 #: admin/modules/customizer/views/_pdf_preview.php:35
-#: admin/partials/form_wizard/form_wizard.php:391
-#: admin/views/_form_field_generator_new.php:804
+#: admin/partials/form_wizard/form_wizard.php:503
+#: admin/views/_form_field_generator_new.php:860
 #: public/modules/invoice/views/qrcode_promote.php:37
 msgid "Order number"
 msgstr "Numer zamówienia"
 
-#: admin/modules/customizer/views/customize.php:510
-#: admin/views/admin-settings-debug.php:158
+#: admin/modules/customizer/views/customize.php:591
+#: admin/views/admin-settings-debug.php:159
 msgid "Templates"
 msgstr "Szablony"
 
-#: admin/modules/customizer/views/customize.php:515
+#: admin/modules/customizer/views/customize.php:596
 msgid "Type template name to search"
 msgstr "Wpisz nazwę szablonu, aby wyszukać"
 
-#: admin/modules/customizer/views/customize.php:527
+#: admin/modules/customizer/views/customize.php:608
 msgid "Choose a layout."
 msgstr "Wybierz układ."
 
-#: admin/modules/customizer/views/customize.php:533
+#: admin/modules/customizer/views/customize.php:614
 msgid "All unsaved changes will be lost upon switching to a new layout."
 msgstr ""
 "Wszystkie niezapisane zmiany zostaną utracone po przełączeniu się na nowy "
 "układ."
 
-#: admin/modules/customizer/views/customize.php:535
+#: admin/modules/customizer/views/customize.php:616
 msgid "Save before you proceed."
 msgstr "Zapisz zanim przejdziesz dalej."
 
-#: admin/modules/customizer/views/customize.php:536
+#: admin/modules/customizer/views/customize.php:617
 msgid "Saving..."
 msgstr "Zapisuję..."
 
-#: admin/modules/customizer/views/customize.php:590
+#: admin/modules/customizer/views/customize.php:660
+#, fuzzy
+#| msgid "Generate custom-sized shipping labels"
+msgid "Get access to more shipping label templates."
+msgstr "Generuj etykiety wysyłkowe o niestandardowych rozmiarach"
+
+#: admin/modules/customizer/views/customize.php:661
+msgid "Get access to more invoice templates."
+msgstr ""
+
+#: admin/modules/customizer/views/customize.php:673
+#, fuzzy
+#| msgid "Upgrade to premium"
+msgid "Upgrade to Pro"
+msgstr "Uaktualnij do wersji premium"
+
+#: admin/modules/customizer/views/customize.php:787
 msgid "Update template"
 msgstr "Aktualizuj szablon"
 
-#: admin/modules/customizer/views/customize.php:593
+#: admin/modules/customizer/views/customize.php:790
 msgid "Save template"
 msgstr "Zapisz szablon"
 
-#: admin/modules/customizer/views/customize.php:596
+#: admin/modules/customizer/views/customize.php:793
 msgid "Save and activate"
 msgstr "Zapisz i aktywuj"
 
-#: admin/modules/customizer/views/customize.php:607
+#: admin/modules/customizer/views/customize.php:804
 msgid "Create new"
 msgstr "Utwórz nowy"
 
-#: admin/modules/customizer/views/customize.php:608
+#: admin/modules/customizer/views/customize.php:805
 msgid "My templates"
 msgstr "Moje szablony"
 
-#: admin/modules/customizer/views/customize.php:617
+#: admin/modules/customizer/views/customize.php:814
 msgid "This template is not comaptible with QR Code addon plugin"
 msgstr "Ten szablon nie jest zgodny z wtyczką dodatku QR Code"
 
-#: admin/modules/customizer/views/customize.php:652
-msgid ""
-"Unlock limitless possibilities of invoice customization with the addon -"
+#. translators: %s: Template display name (invoice, packing list, etc.)
+#: admin/modules/customizer/views/customize.php:843
+#, fuzzy, php-format
+#| msgid ""
+#| "Unlock limitless possibilities of invoice customization with the addon -"
+msgid "Unlock limitless possibilities of %s customization with the addon -"
 msgstr ""
 "Odblokuj nieograniczone możliwości personalizacji faktur dzięki dodatkowi -"
 
-#: admin/modules/customizer/views/customize.php:653
+#: admin/modules/customizer/views/customize.php:844
 msgid "Customizer for WooCommerce PDF Invoices Plugin"
 msgstr "Wtyczka Customizer for WooCommerce PDF Invoices"
 
-#: admin/modules/customizer/views/customize.php:660
-#: admin/modules/customizer/views/customize.php:671
+#: admin/modules/customizer/views/customize.php:851
+#: admin/modules/customizer/views/customize.php:862
 msgid "Visual"
 msgstr "Wizualny"
 
-#: admin/modules/customizer/views/customize.php:661
-#: admin/modules/customizer/views/customize.php:674
+#: admin/modules/customizer/views/customize.php:852
+#: admin/modules/customizer/views/customize.php:865
 msgid "Code"
 msgstr "Kod"
 
-#: admin/modules/customizer/views/customize.php:674
-#: public/modules/invoice/invoice.php:1192
+#: admin/modules/customizer/views/customize.php:865
+#: public/modules/invoice/invoice.php:1269
 #: public/modules/shippinglabel/shippinglabel.php:163
 msgid "Pro version"
 msgstr "Wersja Pro"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:38
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:41
 msgid "I couldn't understand how to make it work"
 msgstr "Nie mogłem zrozumieć, jak to działa"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:40
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:43
 msgid "Would you like us to assist you?"
 msgstr "Czy chcesz, abyśmy Ci pomogli?"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:44
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:47
 msgid "Language support issues"
 msgstr "Problemy z obsługą języka"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:49
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:52
 msgid "Plugin settings not available in my language"
 msgstr "Ustawienia wtyczki nie są dostępne w moim języku"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:51
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:57
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:54
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:61
 msgid "Which language?"
 msgstr "Jaki język?"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:55
+#. translators: 1$s: HTML link opening tag, 2$s: HTML link closing tag
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:59
 msgid ""
 "Missing RTL/Unicode language(e.g Chinese, Arabic etc) support for PDF "
 "document."
@@ -1991,19 +2081,25 @@ msgstr ""
 "Brak obsługi języków RTL/Unicode (np. chińskiego, arabskiego itp.) w "
 "dokumentach PDF."
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:55
-#, php-format
-msgid "Already tried the free %s WebToffee mPDF addon %s."
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:59
+#, fuzzy, php-format
+#| msgid "Already tried the free %s WebToffee mPDF addon %s."
+msgid "Already tried the free %1$s WebToffee mPDF addon %2$s."
 msgstr "Wypróbowano już darmowy dodatek %s WebToffee mPDF %s."
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:63
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:59
+msgid ""
+" Click the link to activate the plugin and try printing the document again."
+msgstr ""
+
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:67
 msgid ""
 "I am unable to add customer VAT(or GSTIN or ABN or any other tax id etc)"
 msgstr ""
 "Nie mogę dodać numeru VAT klienta (lub numeru GSTIN, ABN lub innego "
 "identyfikatora podatkowego itp.)"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:68
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:72
 msgid ""
 "Unable to add from third party plugin that collects customer VAT(or GSTIN or "
 "ABN etc)"
@@ -2011,73 +2107,75 @@ msgstr ""
 "Nie można dodać wtyczki innej firmy, która pobiera od klienta podatek VAT "
 "(lub numer GSTIN lub ABN itp.)"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:70
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:74
 msgid "Mention the name of the plugin or meta key if any"
 msgstr "Podaj nazwę wtyczki lub klucz meta, jeśli takowy istnieje"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:74
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:78
 msgid "Need a field to add the tax id on checkout page"
 msgstr ""
 "Potrzebne jest pole do dodania identyfikatora podatkowego na stronie "
 "płatności"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:82
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:86
 msgid "I found a better plugin"
 msgstr "Znalazłem lepszą wtyczkę"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:84
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:88
 msgid "Which plugin?"
 msgstr "Która wtyczka?"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:88
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:92
 msgid "The plugin is great, but I need specific feature that you don't support"
 msgstr ""
 "Wtyczka jest świetna, ale potrzebuję konkretnej funkcji, której nie "
 "obsługujesz"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:90
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:94
 msgid "Could you tell us more about that feature?"
 msgstr "Czy mógłbyś nam powiedzieć coś więcej o tej funkcji?"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:94
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:98
 msgid "The plugin didn't work as expected"
 msgstr "Wtyczka nie działała zgodnie z oczekiwaniami"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:96
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:100
 msgid "What did you expect?"
 msgstr "Czego się spodziewałeś?"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:100
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:104
 msgid "Other"
 msgstr "Inne"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:102
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:106
 msgid "Could you tell us a bit more?"
 msgstr "Czy mógłbyś nam powiedzieć coś więcej?"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:121
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:125
 msgid "If you have a moment, please let us know why you are deactivating:"
 msgstr "Jeśli masz chwilę, daj nam znać, dlaczego się dezaktywujesz:"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:159
-msgid "Webtoffee can contact me about this feedback."
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:163
+#, fuzzy
+#| msgid "Webtoffee can contact me about this feedback."
+msgid "WebToffee can contact me about this feedback."
 msgstr "Webtoffee może się ze mną skontaktować w sprawie tej opinii."
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:162
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:166
 #: admin/modules/wt-pdf-request-feature/class-wt-pdf-request-feature.php:106
 msgid "Enter your email address."
 msgstr "Podaj swój adres e-mail."
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:164
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:168
 #: admin/modules/wt-pdf-request-feature/class-wt-pdf-request-feature.php:107
 msgid "Enter email address"
 msgstr "Podaj adres email"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:167
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:171
 msgid "Delete all the settings made by this plugin"
 msgstr "Usuń wszystkie ustawienia dokonane przez tę wtyczkę"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:169
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:173
 msgid ""
 "We do not collect any personal data when you submit this form. It's your "
 "feedback that we value."
@@ -2085,23 +2183,23 @@ msgstr ""
 "Nie zbieramy żadnych danych osobowych, gdy przesyłasz ten formularz. To "
 "Twoja opinia jest dla nas cenna."
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:170
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:174
 msgid "Privacy Policy"
 msgstr "Polityka prywatności"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:176
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:180
 msgid "Go to support"
 msgstr "Kontakt"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:177
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:181
 msgid "Submit & Deactivate"
 msgstr "Wyślij i dezaktywuj"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:179
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:183
 msgid "I rather wouldn't say"
 msgstr "Raczej bym nie powiedział"
 
-#: admin/modules/uninstall-feedback/uninstall-feedback.php:305
+#: admin/modules/uninstall-feedback/uninstall-feedback.php:309
 msgid "Please enter a valid email address."
 msgstr "Wprowadź poprawny adres email."
 
@@ -2155,7 +2253,9 @@ msgid "I would like..."
 msgstr "Chciałbym..."
 
 #: admin/modules/wt-pdf-request-feature/class-wt-pdf-request-feature.php:102
-msgid "Webtoffee can contact me about this feedback"
+#, fuzzy
+#| msgid "Webtoffee can contact me about this feedback"
+msgid "WebToffee can contact me about this feedback"
 msgstr "Webtoffee może się ze mną skontaktować w sprawie tej opinii"
 
 #: admin/modules/wt-pdf-request-feature/class-wt-pdf-request-feature.php:112
@@ -2173,7 +2273,7 @@ msgstr "Dokumenty"
 #: admin/partials/admin-settings.php:20
 #: public/modules/deliverynote/views/admin-settings.php:7
 #: public/modules/dispatchlabel/views/admin-settings.php:6
-#: public/modules/invoice/views/general.php:57
+#: public/modules/invoice/views/general.php:127
 #: public/modules/invoice/views/invoice-admin-settings.php:7
 #: public/modules/packinglist/views/admin-settings.php:7
 #: public/modules/shippinglabel/views/admin-settings.php:6
@@ -2189,7 +2289,6 @@ msgstr "Przewodnik pomocniczy"
 msgid "Free vs Premium"
 msgstr "Porównaj wersję Darmową i Premium"
 
-#. Plugin Name of the plugin/theme
 #: admin/partials/admin-settings.php:41
 msgid ""
 "WooCommerce PDF Invoices, Packing Slips, Delivery Notes and Shipping Labels"
@@ -2198,93 +2297,93 @@ msgstr ""
 "wysyłkowe"
 
 #: admin/partials/form_wizard/form_wizard.php:36
-#: admin/views/_form_field_generator_new.php:678
-#: public/modules/invoice/views/general.php:25
+#: admin/views/_form_field_generator_new.php:734
+#: public/modules/invoice/views/general.php:95
 #: public/modules/invoice/views/invoice_number_preview.php:23
 msgid "Click to append with existing data"
 msgstr "Kliknij, aby dołączyć istniejące dane"
 
-#: admin/partials/form_wizard/form_wizard.php:265
+#: admin/partials/form_wizard/form_wizard.php:377
 msgid "Hello there! Let’s begin with the basics"
 msgstr "Cześć! Zacznijmy od podstaw"
 
-#: admin/partials/form_wizard/form_wizard.php:270
+#: admin/partials/form_wizard/form_wizard.php:382
 msgid "Step 1"
 msgstr "Krok 1"
 
-#: admin/partials/form_wizard/form_wizard.php:271
+#: admin/partials/form_wizard/form_wizard.php:383
 msgid "Step 2"
 msgstr "Krok 2"
 
-#: admin/partials/form_wizard/form_wizard.php:272
+#: admin/partials/form_wizard/form_wizard.php:384
 msgid "Step 3"
 msgstr "Krok 3"
 
-#: admin/partials/form_wizard/form_wizard.php:276
+#: admin/partials/form_wizard/form_wizard.php:388
 msgid "Add shop details"
 msgstr "Dodaj szczegóły sklepu"
 
-#: admin/partials/form_wizard/form_wizard.php:279
+#: admin/partials/form_wizard/form_wizard.php:391
 msgid "Shop name"
 msgstr "Nazwa sklepu"
 
-#: admin/partials/form_wizard/form_wizard.php:285 admin/views/general.php:106
+#: admin/partials/form_wizard/form_wizard.php:397 admin/views/general.php:110
 msgid "Address line 1"
 msgstr "Adres linia 1"
 
-#: admin/partials/form_wizard/form_wizard.php:289 admin/views/general.php:114
+#: admin/partials/form_wizard/form_wizard.php:401 admin/views/general.php:118
 msgid "Address line 2"
 msgstr "Adres linia 2"
 
-#: admin/partials/form_wizard/form_wizard.php:296 admin/views/general.php:122
-#: public/modules/ubl/invoice/views/settings.php:164
+#: admin/partials/form_wizard/form_wizard.php:408 admin/views/general.php:126
+#: public/modules/ubl/invoice/views/settings.php:165
 msgid "City"
 msgstr "Miasto"
 
-#: admin/partials/form_wizard/form_wizard.php:300 admin/views/general.php:130
+#: admin/partials/form_wizard/form_wizard.php:412 admin/views/general.php:134
 msgid "Country/State"
 msgstr "Kraj/Stan"
 
-#: admin/partials/form_wizard/form_wizard.php:302
-#: admin/views/_form_field_generator_new.php:563
+#: admin/partials/form_wizard/form_wizard.php:414
+#: admin/views/_form_field_generator_new.php:619
 msgid "Select country"
 msgstr "Wybierz kraj"
 
-#: admin/partials/form_wizard/form_wizard.php:318 admin/views/general.php:138
+#: admin/partials/form_wizard/form_wizard.php:430 admin/views/general.php:142
 msgid "Postal code"
 msgstr "Kod pocztowy"
 
-#: admin/partials/form_wizard/form_wizard.php:322
+#: admin/partials/form_wizard/form_wizard.php:434
 msgid "Phone number"
 msgstr "Numer telefonu"
 
-#: admin/partials/form_wizard/form_wizard.php:328
+#: admin/partials/form_wizard/form_wizard.php:440
 msgid "Tax ID"
 msgstr "NIP"
 
-#: admin/partials/form_wizard/form_wizard.php:334
+#: admin/partials/form_wizard/form_wizard.php:446
 msgid "Upload logo"
 msgstr "Prześlij logo"
 
-#: admin/partials/form_wizard/form_wizard.php:341
-#: admin/views/_form_field_generator_new.php:500
+#: admin/partials/form_wizard/form_wizard.php:453
+#: admin/views/_form_field_generator_new.php:556
 msgid "Recommended size is 150x50px."
 msgstr "Zalecany rozmiar to 150x50px."
 
-#: admin/partials/form_wizard/form_wizard.php:348
-#: admin/partials/form_wizard/form_wizard.php:369
+#: admin/partials/form_wizard/form_wizard.php:460
+#: admin/partials/form_wizard/form_wizard.php:481
 msgid "Next"
 msgstr "Następny"
 
-#: admin/partials/form_wizard/form_wizard.php:349
+#: admin/partials/form_wizard/form_wizard.php:461
 msgid "Skip invoice setup"
 msgstr "Pomiń konfigurację faktury"
 
-#: admin/partials/form_wizard/form_wizard.php:353
+#: admin/partials/form_wizard/form_wizard.php:465
 msgid "Choose emails for invoice attachment"
 msgstr "Wybierz wiadomości e-mail do załączenia faktury"
 
-#: admin/partials/form_wizard/form_wizard.php:354
+#: admin/partials/form_wizard/form_wizard.php:466
 msgid ""
 "Choose the order emails to which you'd like to attach invoices for your "
 "customers"
@@ -2292,75 +2391,92 @@ msgstr ""
 "Wybierz e-maile z zamówieniami, do których chcesz dołączyć faktury dla "
 "swoich klientów"
 
-#: admin/partials/form_wizard/form_wizard.php:370
-#: admin/partials/form_wizard/form_wizard.php:553
+#: admin/partials/form_wizard/form_wizard.php:482
+#: admin/partials/form_wizard/form_wizard.php:666
 msgid "Back"
 msgstr "Wstecz"
 
-#: admin/partials/form_wizard/form_wizard.php:374
+#: admin/partials/form_wizard/form_wizard.php:486
 msgid "Create your unique invoice numbering system"
 msgstr "Utwórz swój unikalny system numeracji faktur"
 
-#: admin/partials/form_wizard/form_wizard.php:377
+#: admin/partials/form_wizard/form_wizard.php:489
 msgid "Complete the invoice number format to suit your requirements"
 msgstr "Wypełnij format numeru faktury zgodnie ze swoimi wymaganiami"
 
-#: admin/partials/form_wizard/form_wizard.php:392
-#: admin/views/_form_field_generator_new.php:808
+#: admin/partials/form_wizard/form_wizard.php:504
+#: admin/views/_form_field_generator_new.php:864
 msgid "Custom number"
 msgstr "Numer niestandardowy"
 
-#: admin/partials/form_wizard/form_wizard.php:404
-#: admin/views/_form_field_generator_new.php:682
+#: admin/partials/form_wizard/form_wizard.php:516
+#: admin/views/_form_field_generator_new.php:738
 msgid "Type in prefix/ suffix / date format if required"
 msgstr "Wpisz prefiks/sufiks/format daty, jeśli jest wymagany"
 
-#: admin/partials/form_wizard/form_wizard.php:417
-#: admin/views/_form_field_generator_new.php:718
+#: admin/partials/form_wizard/form_wizard.php:529
+#: admin/views/_form_field_generator_new.php:774
 msgid "Supported shortcodes for date"
 msgstr "Obsługiwane krótkie kody dla daty"
 
-#: admin/partials/form_wizard/form_wizard.php:479
+#: admin/partials/form_wizard/form_wizard.php:591
 msgid "What should be the starting number for your invoices?"
 msgstr "Jaki powinien być numer początkowy Twoich faktur?"
 
-#: admin/partials/form_wizard/form_wizard.php:489
+#: admin/partials/form_wizard/form_wizard.php:601
 msgid "What length would you prefer for your invoice number"
 msgstr "Jaką długość numeru faktury preferujesz?"
 
-#: admin/partials/form_wizard/form_wizard.php:523
-#: admin/views/_form_field_generator_new.php:864
+#: admin/partials/form_wizard/form_wizard.php:633
+#: admin/views/_form_field_generator_new.php:920
 #: public/modules/invoice/views/invoice_number_preview.php:30
 msgid "PREVIEW"
 msgstr "PODGLĄD"
 
-#: admin/partials/form_wizard/form_wizard.php:529
-#: admin/views/_form_field_generator_new.php:870
+#: admin/partials/form_wizard/form_wizard.php:639
+#: admin/views/_form_field_generator_new.php:926
 #: public/modules/invoice/views/invoice_number_preview.php:33
 msgid "If the order number is"
 msgstr "Jeśli numer zamówienia to"
 
-#: admin/partials/form_wizard/form_wizard.php:533
-#: admin/views/_form_field_generator_new.php:874
-#: public/modules/invoice/views/invoice_number_preview.php:35
+#. translators: %s: Document type (invoice, packing list, etc.)
+#: admin/partials/form_wizard/form_wizard.php:644
+#: admin/views/_form_field_generator_new.php:931
+#: public/modules/invoice/views/invoice_number_preview.php:37
 #, php-format
 msgid "the %s number would be"
 msgstr "liczba %s byłaby"
 
-#: admin/partials/form_wizard/form_wizard.php:539
-#: admin/views/_form_field_generator_new.php:880
-#: public/modules/invoice/views/invoice_number_preview.php:38
+#. translators: %s: Document type (invoice, packing list, etc.)
+#: admin/partials/form_wizard/form_wizard.php:652
+#: admin/views/_form_field_generator_new.php:939
+#: public/modules/invoice/views/invoice_number_preview.php:42
 #, php-format
 msgid "Your next %s number would be"
 msgstr "Twoja następna liczba %s będzie wynosić"
 
-#: admin/partials/form_wizard/form_wizard.php:552
+#: admin/partials/form_wizard/form_wizard.php:665
+#: admin/partials/form_wizard/form_wizard.php:709
 msgid "Finish setup"
 msgstr "Zakończ konfigurację"
 
-#: admin/partials/form_wizard/form_wizard.php:570
+#: admin/partials/form_wizard/form_wizard.php:683
 msgid "Invoice setup successfully"
 msgstr "Konfiguracja faktury zakończona powodzeniem"
+
+#: admin/partials/form_wizard/form_wizard.php:695
+#, fuzzy
+#| msgid "Skip invoice setup"
+msgid "Skip setup?"
+msgstr "Pomiń konfigurację faktury"
+
+#: admin/partials/form_wizard/form_wizard.php:700
+msgid "We recommend completing the setup to ensure the plugin works properly."
+msgstr ""
+
+#: admin/partials/form_wizard/form_wizard.php:706
+msgid "Skip anyway"
+msgstr ""
 
 #: admin/partials/marketing-cta/marketing-cta.php:36
 #: admin/partials/marketing-cta/marketing-cta.php:63
@@ -2427,6 +2543,9 @@ msgstr "Pakiet faktur"
 #: admin/views/_custom_field_editor_form.php:19
 #: admin/views/_custom_field_editor_form.php:22
 #: admin/views/_custom_field_editor_form.php:31
+#: admin/views/_custom_field_editor_form_product.php:23
+#: admin/views/_custom_field_editor_form_product.php:26
+#: admin/views/_custom_field_editor_form_product.php:35
 msgid "Add new"
 msgstr "Dodaj nowy"
 
@@ -2437,10 +2556,12 @@ msgstr ""
 "używając jego klucza"
 
 #: admin/views/_custom_field_editor_form.php:47
+#: admin/views/_custom_field_editor_form_product.php:51
 msgid "Field Name"
 msgstr "Nazwa pola"
 
 #: admin/views/_custom_field_editor_form.php:48
+#: admin/views/_custom_field_editor_form_product.php:52
 msgid "Meta Key"
 msgstr "Klucz meta"
 
@@ -2449,8 +2570,19 @@ msgid "To add more than one custom order meta,"
 msgstr "Aby dodać więcej niż jedną niestandardową metadaną zamówienia,"
 
 #: admin/views/_custom_field_editor_form.php:53
+#: admin/views/_custom_field_editor_form_product.php:57
 msgid "upgrade to premium version"
 msgstr "uaktualnij do wersji premium"
+
+#: admin/views/_custom_field_editor_form_product.php:44
+msgid "You can add custom/predefined product meta using its key"
+msgstr ""
+"Możesz dodać niestandardowe/wstępnie zdefiniowane metadane produktu, "
+"używając jego klucza"
+
+#: admin/views/_custom_field_editor_form_product.php:57
+msgid "To add more than one custom product meta,"
+msgstr "Aby dodać więcej niż jedną niestandardową metadaną produktu,"
 
 #: admin/views/_form_field_generator_new.php:468
 msgid "Order Meta"
@@ -2460,105 +2592,113 @@ msgstr "Pokaż meta zamówienia"
 msgid "Add/Edit Order Meta Field"
 msgstr "Dodaj/Edytuj Pole Meta Zamówienia"
 
-#: admin/views/_form_field_generator_new.php:499
+#: admin/views/_form_field_generator_new.php:521
+msgid "Product Meta"
+msgstr "Meta produktu"
+
+#: admin/views/_form_field_generator_new.php:523
+msgid "Add/Edit Product Meta Field"
+msgstr "Dodaj/edytuj pole meta produktu"
+
+#: admin/views/_form_field_generator_new.php:555
 msgid "Upload your image"
 msgstr "Prześlij swój obraz"
 
-#: admin/views/_form_field_generator_new.php:538
-#: admin/views/admin-settings-debug.php:196
-#: admin/views/admin-settings-debug.php:236
+#: admin/views/_form_field_generator_new.php:594
+#: admin/views/admin-settings-debug.php:200
+#: admin/views/admin-settings-debug.php:243
 msgid "Reset"
 msgstr "Resetuj"
 
-#: admin/views/_form_field_generator_new.php:611
+#: admin/views/_form_field_generator_new.php:667
 msgid "Document"
 msgstr "Dokument"
 
-#: admin/views/_form_field_generator_new.php:612
+#: admin/views/_form_field_generator_new.php:668
 msgid "PDF"
 msgstr "PDF"
 
-#: admin/views/_form_field_generator_new.php:613
+#: admin/views/_form_field_generator_new.php:669
 msgid "HTML"
 msgstr "HTML"
 
-#: admin/views/_form_field_generator_new.php:614
+#: admin/views/_form_field_generator_new.php:670
 msgid "Action"
 msgstr "Akcja"
 
-#: admin/views/_form_field_generator_new.php:680
+#: admin/views/_form_field_generator_new.php:736
 msgid "Add date to invoice number"
 msgstr "Dodaj datę do numeru faktury"
 
-#: admin/views/_form_field_generator_new.php:681
+#: admin/views/_form_field_generator_new.php:737
 msgid "Invoice number format"
 msgstr "Format numeru faktury"
 
-#: admin/views/_form_field_generator_new.php:683
+#: admin/views/_form_field_generator_new.php:739
 msgid "Invoice starting number"
 msgstr "Numer początkowy faktury"
 
-#: admin/views/_form_field_generator_new.php:684
+#: admin/views/_form_field_generator_new.php:740
 msgid "Invoice number length"
 msgstr "Długość numeru faktury"
 
-#: admin/views/_form_field_generator_new.php:688
-#: admin/views/_form_field_generator_new.php:701
+#: admin/views/_form_field_generator_new.php:744
+#: admin/views/_form_field_generator_new.php:757
 msgid "Use order date as input instead."
 msgstr "Zamiast tego użyj daty zamówienia jako danych wejściowych."
 
-#: admin/views/_form_field_generator_new.php:693
+#: admin/views/_form_field_generator_new.php:749
 msgid "Add date to credit note number"
 msgstr "Dodaj datę do numeru noty kredytowej"
 
-#: admin/views/_form_field_generator_new.php:694
+#: admin/views/_form_field_generator_new.php:750
 msgid "Creditnote number format"
 msgstr "Format numeru noty kredytowej"
 
-#: admin/views/_form_field_generator_new.php:695
+#: admin/views/_form_field_generator_new.php:751
 msgid "What should be the starting number for your credit notes?"
 msgstr "Jaki powinien być numer początkowy Twoich not kredytowych?"
 
-#: admin/views/_form_field_generator_new.php:696
+#: admin/views/_form_field_generator_new.php:752
 msgid "What length would you prefer for your credit note"
 msgstr "Jaką długość wolałbyś dla swojej noty kredytowej?"
 
-#: admin/views/_form_field_generator_new.php:704
+#: admin/views/_form_field_generator_new.php:760
 msgid "Add date to proforma invoice number"
 msgstr "Dodaj datę do numeru faktury proforma"
 
-#: admin/views/_form_field_generator_new.php:705
+#: admin/views/_form_field_generator_new.php:761
 msgid "Proforma invoice number format"
 msgstr "Format numeru faktury proforma"
 
-#: admin/views/_form_field_generator_new.php:706
+#: admin/views/_form_field_generator_new.php:762
 msgid "What should be the starting number for your proforma invoices?"
 msgstr "Jaki powinien być numer początkowy faktur proforma?"
 
-#: admin/views/_form_field_generator_new.php:707
+#: admin/views/_form_field_generator_new.php:763
 msgid "What length would you prefer for your proforma invoice"
 msgstr "Jaką długość faktury proforma preferujesz?"
 
-#: admin/views/_form_field_generator_new.php:795
+#: admin/views/_form_field_generator_new.php:851
 msgid ""
 "Removing year [Y] from the prefix will disable the annual reset functionality"
 msgstr ""
 "Usunięcie roku [Y] z prefiksu spowoduje wyłączenie funkcji corocznego "
 "resetowania"
 
-#: admin/views/_form_field_generator_new.php:802
+#: admin/views/_form_field_generator_new.php:858
 msgid "Switching to order number will disable the annual reset functionality"
 msgstr ""
 "Zmiana numeru zamówienia spowoduje wyłączenie funkcji corocznego resetowania"
 
-#: admin/views/_form_field_generator_new.php:818
+#: admin/views/_form_field_generator_new.php:874
 msgid ""
 "Removing year [Y] from the suffix will disable the annual reset functionality"
 msgstr ""
 "Usunięcie roku [Y] z sufiksu spowoduje wyłączenie funkcji corocznego "
 "resetowania"
 
-#: admin/views/_form_field_generator_new.php:846
+#: admin/views/_form_field_generator_new.php:902
 msgid "The latest specified starting number will be used after reset"
 msgstr "Po zresetowaniu zostanie użyty ostatni określony numer początkowy"
 
@@ -2566,46 +2706,46 @@ msgstr "Po zresetowaniu zostanie użyty ostatni określony numer początkowy"
 msgid "Developed by"
 msgstr "Opracowany przez"
 
-#: admin/views/admin-settings-debug.php:39
+#: admin/views/admin-settings-debug.php:40
 msgid "Reset successfully"
 msgstr "Zresetowano pomyślnie"
 
-#: admin/views/admin-settings-debug.php:48
+#: admin/views/admin-settings-debug.php:49
 msgid "Debug"
 msgstr "Debugowanie"
 
-#: admin/views/admin-settings-debug.php:49
+#: admin/views/admin-settings-debug.php:50
 msgid "Caution: Settings here are only for advanced users."
 msgstr ""
 "Uwaga: Ustawienia tutaj przeznaczone są jedynie dla zaawansowanych "
 "użytkowników."
 
-#: admin/views/admin-settings-debug.php:118
+#: admin/views/admin-settings-debug.php:119
 msgid "Export settings (JSON)"
 msgstr "Ustawienia eksportu (JSON)"
 
-#: admin/views/admin-settings-debug.php:120
+#: admin/views/admin-settings-debug.php:121
 msgid "Export"
 msgstr "Eksport"
 
-#: admin/views/admin-settings-debug.php:130
+#: admin/views/admin-settings-debug.php:131
 msgid "Import settings (JSON)"
 msgstr "Ustawienia importu (JSON)"
 
-#: admin/views/admin-settings-debug.php:134
-#: admin/views/admin-settings-debug.php:183
+#: admin/views/admin-settings-debug.php:135
+#: admin/views/admin-settings-debug.php:187
 msgid "Import"
 msgstr "Importuj"
 
-#: admin/views/admin-settings-debug.php:134
+#: admin/views/admin-settings-debug.php:135
 msgid "Please select json file"
 msgstr "Proszę wybrać plik json"
 
-#: admin/views/admin-settings-debug.php:139
+#: admin/views/admin-settings-debug.php:140
 msgid "Last imported on:"
 msgstr "Ostatni import:"
 
-#: admin/views/admin-settings-debug.php:151
+#: admin/views/admin-settings-debug.php:152
 msgid ""
 "Importing the file will delete all the settings and replace with data from "
 "chosen file"
@@ -2613,28 +2753,29 @@ msgstr ""
 "Importowanie pliku spowoduje usunięcie wszystkich ustawień i zastąpienie ich "
 "danymi z wybranego pliku"
 
-#: admin/views/admin-settings-debug.php:163
+#: admin/views/admin-settings-debug.php:164
 msgid "Combine with the existing templates"
 msgstr "Połącz z istniejącymi szablonami"
 
-#: admin/views/admin-settings-debug.php:168
+#: admin/views/admin-settings-debug.php:169
 msgid "Replace the existing templates"
 msgstr "Zastąp istniejące szablony"
 
-#: admin/views/admin-settings-debug.php:173
+#. translators: %s: Confirmation text
+#: admin/views/admin-settings-debug.php:176
 #, php-format
 msgid "To proceed with the import, please type %1$s in the field below"
 msgstr "Aby kontynuować importowanie, wpisz %1$s w polu poniżej"
 
-#: admin/views/admin-settings-debug.php:194
+#: admin/views/admin-settings-debug.php:198
 msgid "Reset all settings to default"
 msgstr "Zresetuj wszystkie ustawienia do domyślnych"
 
-#: admin/views/admin-settings-debug.php:202
+#: admin/views/admin-settings-debug.php:206
 msgid "Last updated on:"
 msgstr "Aktualizacja:"
 
-#: admin/views/admin-settings-debug.php:214
+#: admin/views/admin-settings-debug.php:218
 msgid ""
 "Reset will delete all the settings, saved templates and reset to the default "
 "settings"
@@ -2642,11 +2783,12 @@ msgstr ""
 "Resetowanie spowoduje usunięcie wszystkich ustawień, zapisanych szablonów i "
 "przywrócenie ustawień domyślnych"
 
-#: admin/views/admin-settings-debug.php:221
+#: admin/views/admin-settings-debug.php:225
 msgid "Do not reset the templates"
 msgstr "Nie resetuj szablonów"
 
-#: admin/views/admin-settings-debug.php:225
+#. translators: %s: Confirmation text
+#: admin/views/admin-settings-debug.php:231
 #, php-format
 msgid "To proceed with the reset, please type %1$s in the field below"
 msgstr "Aby kontynuować resetowanie, wpisz %1$s w polu poniżej"
@@ -2874,17 +3016,18 @@ msgstr "Wersja bezpłatna"
 msgid "Premium version"
 msgstr "Wersja Premium"
 
-#: admin/views/documents.php:150
+#. translators: 1$s: Document module title, 2$s: HTML link opening tag, 3$s: HTML link closing tag
+#: admin/views/documents.php:152
 #, php-format
 msgid "You are using free version of %1$s. %2$s Checkout premium here %3$s."
 msgstr ""
 "Używasz bezpłatnej wersji %1$s. %2$s Sprawdź wersję premium tutaj %3$s."
 
-#: admin/views/documents.php:185
+#: admin/views/documents.php:187
 msgid "Get Add-on"
 msgstr "Pobierz dodatek"
 
-#: admin/views/documents.php:210
+#: admin/views/documents.php:212
 msgid "30% OFF"
 msgstr "30% taniej"
 
@@ -2896,15 +3039,15 @@ msgstr "Wybierz listę"
 msgid "Address label"
 msgstr "Etykieta adresowa"
 
-#: admin/views/freevspro.php:15 public/modules/invoice/views/general.php:117
+#: admin/views/freevspro.php:15 public/modules/invoice/views/general.php:187
 msgid "My account - Order lists page"
 msgstr "Moje konto - strona z listami zamówień"
 
-#: admin/views/freevspro.php:16 public/modules/invoice/views/general.php:118
+#: admin/views/freevspro.php:16 public/modules/invoice/views/general.php:188
 msgid "My account - Order details page"
 msgstr "Moje konto - strona ze szczegółami zamówienia"
 
-#: admin/views/freevspro.php:17 public/modules/invoice/views/general.php:119
+#: admin/views/freevspro.php:17 public/modules/invoice/views/general.php:189
 msgid "Order email"
 msgstr "Zamów e-mail"
 
@@ -2913,7 +3056,7 @@ msgid "Features"
 msgstr "Funkcje"
 
 #: admin/views/freevspro.php:88
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:50
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:45
 msgid "Free"
 msgstr "Darmowe"
 
@@ -2941,35 +3084,35 @@ msgstr ""
 msgid "Load from WooCommerce"
 msgstr "Załaduj z WooCommerce"
 
-#: admin/views/general.php:36
+#: admin/views/general.php:40
 msgid "Company details"
 msgstr "Szczegóły firmy"
 
-#: admin/views/general.php:41
+#: admin/views/general.php:45
 msgid "Name"
 msgstr "Nazwa"
 
-#: admin/views/general.php:46
+#: admin/views/general.php:50
 msgid "To include the keyed in name to the Invoice, ensure to select"
 msgstr "Aby uwzględnić wprowadzoną nazwę na fakturze, należy zaznaczyć opcję"
 
-#: admin/views/general.php:47
+#: admin/views/general.php:51
 msgid "Company name"
 msgstr "Nazwa firmy"
 
-#: admin/views/general.php:48
+#: admin/views/general.php:52
 msgid "from"
 msgstr "od"
 
-#: admin/views/general.php:49 admin/views/general.php:59
+#: admin/views/general.php:53 admin/views/general.php:63
 msgid "Invoice > Customize > Company Logo / Name"
 msgstr "Faktura > Dostosuj > Logo/Nazwa firmy"
 
-#: admin/views/general.php:54
+#: admin/views/general.php:58
 msgid "Logo"
 msgstr "Logo"
 
-#: admin/views/general.php:58
+#: admin/views/general.php:62
 msgid ""
 "To include the uploaded image as logo to the invoice, ensure to select "
 "Company logo from"
@@ -2977,15 +3120,15 @@ msgstr ""
 "Aby dołączyć przesłany obraz jako logo do faktury, należy wybrać opcję Logo "
 "firmy z"
 
-#: admin/views/general.php:60
+#: admin/views/general.php:64
 msgid "Recommended size is 150×50px"
 msgstr "Zalecany rozmiar to 150×50px"
 
-#: admin/views/general.php:67
+#: admin/views/general.php:71
 msgid "Company Tax ID"
 msgstr "Numer identyfikacji podatkowej firmy"
 
-#: admin/views/general.php:71
+#: admin/views/general.php:75
 msgid ""
 "Specify your company tax ID. For e.g., you may enter as VAT: GB123456789, "
 "GSTIN:0948745 or ABN:51 824 753 556"
@@ -2993,139 +3136,130 @@ msgstr ""
 "Podaj swój identyfikator podatkowy firmy. Na przykład możesz wpisać jako "
 "VAT: GB123456789, GSTIN:0948745 lub ABN:51 824 753 556"
 
-#: admin/views/general.php:75 public/modules/invoice/invoice.php:1221
-#: public/modules/invoice/invoice.php:1225
+#: admin/views/general.php:79 public/modules/invoice/invoice.php:1298
+#: public/modules/invoice/invoice.php:1302
 #: public/modules/shippinglabel/shippinglabel.php:178
 msgid "Footer"
 msgstr "Stopka"
 
-#: admin/views/general.php:90
+#: admin/views/general.php:94
 msgid "Address details"
 msgstr "Dane adresowe"
 
-#: admin/views/general.php:98
+#: admin/views/general.php:102
 msgid "Department/Business unit/Sender name"
 msgstr "Dział/Jednostka biznesowa/Nazwa nadawcy"
 
-#: admin/views/general.php:132
+#: admin/views/general.php:136
 msgid "Choose a country&hellip;"
 msgstr "Wybierz kraj &hellip;"
 
-#: admin/views/general.php:147
+#: admin/views/general.php:151
 msgid "Contact number"
 msgstr "Numer Kontaktowy"
 
-#: admin/views/general.php:162
+#: admin/views/general.php:166
 msgid "Advanced options"
 msgstr "Opcje zaawansowane"
 
-#: admin/views/general.php:169
+#: admin/views/general.php:173
 msgid "Display state name"
 msgstr "Wyświetl nazwę stanu"
 
-#: admin/views/general.php:173
+#: admin/views/general.php:177
 msgid "Enable to show state name in addresses"
 msgstr "Włącz wyświetlanie nazwy stanu w adresach"
 
-#: admin/views/general.php:181
+#: admin/views/general.php:185
 msgid "Display currency code"
 msgstr "Wyświetl kod waluty"
 
-#: admin/views/general.php:185
+#: admin/views/general.php:189
 msgid "Enable to show currency code instead of currency symbol"
 msgstr "Włącz wyświetlanie kodu waluty zamiast symbolu waluty"
 
-#: admin/views/general.php:193
+#: admin/views/general.php:197
 msgid "Preview before printing"
 msgstr "Podgląd przed drukowaniem"
 
-#: admin/views/general.php:197
+#: admin/views/general.php:201
 msgid "Preview documents before printing"
 msgstr "Podgląd dokumentów przed drukowaniem"
 
-#: admin/views/general.php:205
+#: admin/views/general.php:209
 msgid "Enable RTL support"
 msgstr "Włącz obsługę RTL"
 
-#: admin/views/general.php:209
+#: admin/views/general.php:213
 msgid "RTL support for documents"
 msgstr "Obsługa RTL dla dokumentów"
 
-#: admin/views/general.php:213
-msgid "For better RTL integration in PDF documents, please use our"
-msgstr ""
-"Aby uzyskać lepszą integrację RTL z dokumentami PDF, skorzystaj z naszego"
-
-#: admin/views/general.php:214
-msgid "mPDF add-on"
-msgstr "Dodatek mPDF"
-
-#: admin/views/general.php:226
+#: admin/views/general.php:238
 msgid "PDF library"
 msgstr "Biblioteka PDF"
 
-#: admin/views/general.php:239 admin/views/general.php:259
+#: admin/views/general.php:251 admin/views/general.php:271
 msgid "Enable additional currency font support"
 msgstr "Włącz obsługę dodatkowych czcionek walutowych"
 
-#: admin/views/general.php:244 admin/views/general.php:264
+#: admin/views/general.php:256 admin/views/general.php:276
 msgid ""
 "Enable to use additional font library to support the currency symbol in pdf"
 msgstr ""
 "Włącz możliwość korzystania z dodatkowej biblioteki czcionek w celu obsługi "
 "symbolu waluty w pliku PDF"
 
-#: admin/views/general.php:275
+#: admin/views/general.php:287
 msgid "Enable a common print button for"
 msgstr "Włącz wspólny przycisk drukowania dla"
 
-#: admin/views/general.php:276 admin/views/general.php:291
+#: admin/views/general.php:288 admin/views/general.php:303
 msgid "orders listing page"
 msgstr "strona z listą zamówień"
 
-#: admin/views/general.php:281
+#: admin/views/general.php:293
 msgid "All document types"
 msgstr "Wszystkie typy dokumentów"
 
-#: admin/views/general.php:290
+#: admin/views/general.php:302
 msgid "Enable dedicated print buttons for"
 msgstr "Włącz dedykowane przyciski drukowania dla"
 
-#: admin/views/general.php:305
+#: admin/views/general.php:317
 msgid "Print button access for"
 msgstr "Dostęp do przycisku drukowania"
 
-#: admin/views/general.php:312
+#: admin/views/general.php:324
 msgid "Logged in users"
 msgstr "Użytkownicy zalogowani"
 
-#: admin/views/general.php:313
+#: admin/views/general.php:325
 msgid "Users will be redirected to login page if not logged in"
 msgstr ""
 "Użytkownicy zostaną przekierowani na stronę logowania, jeśli nie są "
 "zalogowani"
 
-#: admin/views/general.php:314
+#: admin/views/general.php:326
 msgid "Secure"
 msgstr "Bezpieczny"
 
-#: admin/views/general.php:318
+#: admin/views/general.php:330
 msgid "All users"
 msgstr "Wszyscy użytkownicy"
 
-#: admin/views/general.php:319
+#: admin/views/general.php:331
 msgid "Users who haven`t logged will also be allowed to print"
 msgstr "Użytkownicy, którzy się nie zalogowali, również będą mogli drukować"
 
-#: admin/views/general.php:329
+#: admin/views/general.php:341
 msgid "File path"
 msgstr "Ścieżka pliku"
 
-#: admin/views/general.php:337
+#: admin/views/general.php:349
 msgid "Automatic cleanup"
 msgstr "Automatyczne czyszczenie"
 
-#: admin/views/general.php:342 public/modules/deliverynote/views/general.php:29
+#: admin/views/general.php:354 public/modules/deliverynote/views/general.php:29
 #: public/modules/deliverynote/views/general.php:44
 #: public/modules/deliverynote/views/general.php:59
 #: public/modules/dispatchlabel/views/general.php:30
@@ -3136,7 +3270,7 @@ msgstr "Automatyczne czyszczenie"
 msgid "Yes"
 msgstr "Tak"
 
-#: admin/views/general.php:343 public/modules/deliverynote/views/general.php:30
+#: admin/views/general.php:355 public/modules/deliverynote/views/general.php:30
 #: public/modules/deliverynote/views/general.php:45
 #: public/modules/deliverynote/views/general.php:60
 #: public/modules/dispatchlabel/views/general.php:31
@@ -3147,11 +3281,11 @@ msgstr "Tak"
 msgid "No"
 msgstr "Nie"
 
-#: admin/views/general.php:352
+#: admin/views/general.php:364
 msgid "Interval"
 msgstr "Okres"
 
-#: admin/views/general.php:362
+#: admin/views/general.php:374
 msgid "In minutes. Eg: 1440 for 1 day. Minimum value is 1440"
 msgstr "W minutach. Np.: 1440 na 1 dzień. Minimalna wartość to 1440"
 
@@ -3951,144 +4085,10 @@ msgid "Create QR code coupons"
 msgstr "Utwórz kupony z kodem QR"
 
 #: admin/views/premium_extension_listing.php:351
-msgid "Payment & subscription"
-msgstr "Płatność i subskrypcja"
-
-#: admin/views/premium_extension_listing.php:352
-msgid ""
-"The most popular payment gateways and subscription solutions to scale your "
-"business"
-msgstr ""
-"Najpopularniejsze bramki płatnicze i rozwiązania subskrypcyjne, które pomogą "
-"Ci rozwinąć Twój biznes"
-
-#: admin/views/premium_extension_listing.php:357
-msgid "WooCommerce Stripe Payment Gateway"
-msgstr "Bramka płatności WooCommerce Stripe"
-
-#: admin/views/premium_extension_listing.php:361
-msgid "Add 20+ payment methods"
-msgstr "Dodaj ponad 20 metod płatności"
-
-#: admin/views/premium_extension_listing.php:362
-msgid "Activates Stripe checkout"
-msgstr "Aktywuje płatność Stripe"
-
-#: admin/views/premium_extension_listing.php:363
-msgid "Secured payments with SCA and 3D secure"
-msgstr "Bezpieczne płatności z SCA i 3D Secure"
-
-#: admin/views/premium_extension_listing.php:364
-msgid "Supports recurring payments"
-msgstr "Obsługuje płatności cykliczne"
-
-#: admin/views/premium_extension_listing.php:365
-msgid "Compatible with WPML"
-msgstr "Zgodny z WPML"
-
-#: admin/views/premium_extension_listing.php:366
-msgid "Log all Stripe transactions"
-msgstr "Rejestruj wszystkie transakcje Stripe"
-
-#: admin/views/premium_extension_listing.php:367
-msgid "Monitor payments using Stripe dashboard"
-msgstr "Monitoruj płatności za pomocą pulpitu Stripe"
-
-#: admin/views/premium_extension_listing.php:372
-msgid "PayPal Express Checkout Payment Gateway for WooCommerce"
-msgstr "Bramka płatności PayPal Express Checkout dla WooCommerce"
-
-#: admin/views/premium_extension_listing.php:376
-msgid "Adds PayPal Smart Button Checkout option"
-msgstr "Dodaje opcję płatności PayPal Smart Button"
-
-#: admin/views/premium_extension_listing.php:377
-msgid "Accepts payment using multiple Alternative Payment Methods (APM)"
-msgstr ""
-"Akceptuje płatności za pomocą wielu alternatywnych metod płatności (APM)"
-
-#: admin/views/premium_extension_listing.php:378
-msgid ""
-"Adds Express PayPal Checkout Option on the product page and Mini-cart for "
-"faster checkout"
-msgstr ""
-"Dodaje opcję ekspresowej płatności PayPal na stronie produktu i mini-koszyk "
-"w celu szybszej realizacji płatności"
-
-#: admin/views/premium_extension_listing.php:379
-msgid "Capture the authorized payment later"
-msgstr "Odbierz autoryzowaną płatność później"
-
-#: admin/views/premium_extension_listing.php:380
-msgid "Partial and Full Refund of the order amount"
-msgstr "Częściowy i całkowity zwrot kwoty zamówienia"
-
-#: admin/views/premium_extension_listing.php:381
-msgid "Lots of customization options like button style, position, etc"
-msgstr ""
-"Mnóstwo opcji dostosowywania, takich jak styl przycisku, jego położenie itp."
-
-#: admin/views/premium_extension_listing.php:382
-msgid "Option to enable in-context checkout"
-msgstr "Opcja umożliwiająca realizację transakcji w kontekście"
-
-#: admin/views/premium_extension_listing.php:383
-msgid "Supports WooCommerce Subscriptions for Express buttons"
-msgstr "Obsługuje subskrypcje WooCommerce dla przycisków Express"
-
-#: admin/views/premium_extension_listing.php:384
-msgid "Allows guest checkout"
-msgstr "Umożliwia wymeldowanie gościa"
-
-#: admin/views/premium_extension_listing.php:385
-msgid "Option to set up a specific PayPal locale"
-msgstr "Możliwość ustawienia konkretnej lokalizacji PayPal"
-
-#: admin/views/premium_extension_listing.php:386
-msgid "Shortcode support for the Paypal Express button"
-msgstr "Obsługa shortcode'u dla przycisku Paypal Express"
-
-#: admin/views/premium_extension_listing.php:387
-msgid "Timely compatibility updates and bug fixes"
-msgstr "Terminowe aktualizacje zgodności i poprawki błędów"
-
-#: admin/views/premium_extension_listing.php:392
-msgid "Subscriptions for WooCommerce"
-msgstr "Subskrypcje dla WooCommerce"
-
-#: admin/views/premium_extension_listing.php:396
-msgid "Create simple & variable subscriptions"
-msgstr "Twórz proste i zmienne subskrypcje"
-
-#: admin/views/premium_extension_listing.php:397
-msgid "Synchronize subscription renewal"
-msgstr "Synchronizuj odnawianie subskrypcji"
-
-#: admin/views/premium_extension_listing.php:398
-msgid "Pro-rate charges till first renewal"
-msgstr "Opłaty proporcjonalne do pierwszego odnowienia"
-
-#: admin/views/premium_extension_listing.php:399
-msgid "Set free trial and sign-up fee"
-msgstr "Ustaw bezpłatny okres próbny i opłatę rejestracyjną"
-
-#: admin/views/premium_extension_listing.php:400
-msgid "Send automated emails notifications"
-msgstr "Wysyłaj automatyczne powiadomienia e-mail"
-
-#: admin/views/premium_extension_listing.php:401
-msgid "Supports recurring discounts"
-msgstr "Obsługuje rabaty cykliczne"
-
-#: admin/views/premium_extension_listing.php:402
-msgid "Renewal interval & expiry customizations"
-msgstr "Dostosowywanie interwału odnawiania i daty wygaśnięcia"
-
-#: admin/views/premium_extension_listing.php:408
 msgid "Privacy compliance"
 msgstr "Zgodność z zasadami prywatności"
 
-#: admin/views/premium_extension_listing.php:409
+#: admin/views/premium_extension_listing.php:352
 msgid ""
 "Get Help with Ensuring Compliance to Major Privacy Laws for Your WordPress "
 "Website - GDPR, CCPA, LGPD, CNIL, and More."
@@ -4097,47 +4097,47 @@ msgstr ""
 "najważniejszymi przepisami dotyczącymi prywatności — GDPR, CCPA, LGPD, CNIL "
 "i innymi."
 
-#: admin/views/premium_extension_listing.php:415
+#: admin/views/premium_extension_listing.php:358
 msgid "GDPR Cookie Consent Plugin (CCPA Ready)"
 msgstr "Wtyczka zgody na pliki cookie GDPR (zgodna z CCPA)"
 
-#: admin/views/premium_extension_listing.php:418
+#: admin/views/premium_extension_listing.php:361
 msgid "Assits in GDPR (RGPD, DSVGO), LGPD, CNIL, POPIA, and CCPA"
 msgstr "Pomaga w RODO (RGPD, DSVGO), LGPD, CNIL, POPIA i CCPA"
 
-#: admin/views/premium_extension_listing.php:419
+#: admin/views/premium_extension_listing.php:362
 msgid "Create a cookie consent banner"
 msgstr "Utwórz baner zgody na pliki cookie"
 
-#: admin/views/premium_extension_listing.php:420
+#: admin/views/premium_extension_listing.php:363
 msgid "Scan and list cookies"
 msgstr "Skanuj i wyświetlaj pliki cookie"
 
-#: admin/views/premium_extension_listing.php:421
+#: admin/views/premium_extension_listing.php:364
 msgid "Automatically block cookies/script"
 msgstr "Automatycznie blokuj pliki cookie/skrypty"
 
-#: admin/views/premium_extension_listing.php:422
+#: admin/views/premium_extension_listing.php:365
 msgid "Customize cookie banner"
 msgstr "Dostosuj baner plików cookie"
 
-#: admin/views/premium_extension_listing.php:423
+#: admin/views/premium_extension_listing.php:366
 msgid "Create cookie policy"
 msgstr "Utwórz politykę plików cookie"
 
-#: admin/views/premium_extension_listing.php:424
+#: admin/views/premium_extension_listing.php:367
 msgid "User consent logging"
 msgstr "Rejestrowanie zgody użytkownika"
 
-#: admin/views/premium_extension_listing.php:425
+#: admin/views/premium_extension_listing.php:368
 msgid "Explicit/Implicit consent"
 msgstr "Wyraźna/domniemana zgoda"
 
-#: admin/views/premium_extension_listing.php:426
+#: admin/views/premium_extension_listing.php:369
 msgid "Location based exclusion for banner"
 msgstr "Wykluczenie oparte na lokalizacji dla banera"
 
-#: admin/views/premium_extension_listing.php:427
+#: admin/views/premium_extension_listing.php:370
 msgid "Granular consent based on cookie categories"
 msgstr "Szczegółowe zgody na podstawie kategorii plików cookie"
 
@@ -4207,7 +4207,7 @@ msgid "Generate invoices for old orders"
 msgstr "Generuj faktury dla starych zamówień"
 
 #: admin/views/wt_ipc_free_pro.php:352
-#: public/modules/invoice/views/general.php:206
+#: public/modules/invoice/views/general.php:285
 msgid "Generate invoices for free orders"
 msgstr "Generuj faktury za bezpłatne zamówienia"
 
@@ -4277,7 +4277,7 @@ msgid "Add product attributes"
 msgstr "Dodaj atrybuty produktu"
 
 #: admin/views/wt_ipc_free_pro.php:598
-#: public/modules/invoice/views/general.php:171
+#: public/modules/invoice/views/general.php:250
 msgid "Custom logo for invoice"
 msgstr "Spersonalizowane logo na fakturę"
 
@@ -4331,7 +4331,7 @@ msgid "Order discount"
 msgstr "Rabat na zamówienie"
 
 #: admin/views/wt_ipc_free_pro.php:772 admin/views/wt_ipc_free_pro.php:814
-#: public/modules/invoice/invoice.php:1237
+#: public/modules/invoice/invoice.php:1314
 msgid "Coupon info"
 msgstr "Informacje o kuponie"
 
@@ -4353,7 +4353,7 @@ msgid "Attach invoice PDF to order emails"
 msgstr "Dołącz fakturę PDF do zamówień e-mailem"
 
 #: admin/views/wt_pi_free_pro.php:38
-#: public/modules/invoice/views/general.php:111
+#: public/modules/invoice/views/general.php:181
 msgid "Show print invoice button for customers"
 msgstr "Pokaż klientom przycisk drukowania faktury"
 
@@ -4568,33 +4568,33 @@ msgstr ""
 "Oddzielna kolumna podatku w tabeli produktów dla wielu opcji podatkowych na "
 "etykietach wysyłkowych"
 
-#: common/class-wt-pklist-common.php:660
+#: common/class-wt-pklist-common.php:663
 msgid "Admin email"
 msgstr ""
 "Który e-mail chcesz, aby kontakty były wysyłane, jeśli puste wiadomości e-"
 "mail zostaną wysłane do adresu e-mail administratora: \"%s\""
 
-#: common/class-wt-pklist-common.php:663
+#: common/class-wt-pklist-common.php:666
 msgid "Manual email"
 msgstr "Ręczny e-mail"
 
-#: common/class-wt-pklist-common.php:675
+#: common/class-wt-pklist-common.php:678
 msgid "Admin email (Renewal order)"
 msgstr "E-mail administratora (Zamówienie odnowienia)"
 
-#: common/class-wt-pklist-common.php:676
+#: common/class-wt-pklist-common.php:679
 msgid "Manual email (Renewal order)"
 msgstr "E-mail ręczny (Zamówienie odnowienia)"
 
-#: common/class-wt-pklist-common.php:677
+#: common/class-wt-pklist-common.php:680
 msgid "Order on-hold (Renewal order)"
 msgstr "Zamówienie wstrzymane (Zamówienie odnowione)"
 
-#: common/class-wt-pklist-common.php:678
+#: common/class-wt-pklist-common.php:681
 msgid "Order processing (Renewal order)"
 msgstr "Przetwarzanie zamówienia (Zamówienie odnowione)"
 
-#: common/class-wt-pklist-common.php:679
+#: common/class-wt-pklist-common.php:682
 msgid "Order completed (Renewal order)"
 msgstr "Zamówienie zrealizowane (Zamówienie odnowione)"
 
@@ -4614,7 +4614,8 @@ msgstr ""
 msgid "View progress"
 msgstr "Wyświetl postęp"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:61
+#. translators: 1$s: HTML bold opening tag, 2$s: HTML bold closing tag, 3$s: HTML bold opening tag, 4$s: Plugin title, 5$s: HTML bold closing tag, 6$s: HTML line break
+#: includes/class-wf-woocommerce-packing-list-review_request.php:62
 #, php-format
 msgid ""
 "Hey, we at %1$s WebToffee %2$s would like to thank you for using %3$s %4$s "
@@ -4627,7 +4628,8 @@ msgstr ""
 "kontynuowania tego, co robimy. Bylibyśmy naprawdę wdzięczni, gdybyś "
 "poświęcił chwilę na krótką recenzję, która zmotywuje nas do kontynuowania."
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:62
+#. translators: 1$s: Star emoji, 2$s: HTML span opening tag, 3$s: HTML span closing tag, 4$s: HTML span opening tag, 5$s: HTML span closing tag
+#: includes/class-wf-woocommerce-packing-list-review_request.php:64
 #, php-format
 msgid ""
 "%1$s  %2$s  Loving %3$s  WooCommerce PDF Invoices, Packing Slips, Delivery "
@@ -4636,70 +4638,82 @@ msgstr ""
 "%1$s %2$s Podoba Ci się %3$s wtyczka WooCommerce PDF Invoices, Packing "
 "Slips, Delivery Notes i Shipping Labels? %4$s Podziel się swoją opinią! %5$s"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:65
+#: includes/class-wf-woocommerce-packing-list-review_request.php:67
 msgid "Remind me later"
 msgstr "Przypomnij mi później"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:66
+#: includes/class-wf-woocommerce-packing-list-review_request.php:68
 msgid "Not interested"
 msgstr "Nie zainteresowany"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:67
+#: includes/class-wf-woocommerce-packing-list-review_request.php:69
 msgid "Review now"
 msgstr "Przejrzyj teraz"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:68
+#: includes/class-wf-woocommerce-packing-list-review_request.php:70
 msgid "You deserve it"
 msgstr "Zasługujesz na to"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:69
+#: includes/class-wf-woocommerce-packing-list-review_request.php:71
 msgid "Nope, maybe later"
 msgstr "Nie, może później"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:70
+#: includes/class-wf-woocommerce-packing-list-review_request.php:72
 msgid "I already did"
 msgstr "Już to zrobiłem"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:77
+#: includes/class-wf-woocommerce-packing-list-review_request.php:80
 msgid "Knock, Knock!"
 msgstr "Puk, puk!"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:78
+#: includes/class-wf-woocommerce-packing-list-review_request.php:81
 msgid "You`ve just created"
 msgstr "Właśnie utworzyłeś"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:80
+#: includes/class-wf-woocommerce-packing-list-review_request.php:83
 msgid "commercial documents using"
 msgstr "dokumenty handlowe z wykorzystaniem"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:81
+#: includes/class-wf-woocommerce-packing-list-review_request.php:84
 msgid ""
 "Woocommerce PDF invoices, packing slips, delivery notes, and shipping labels"
 msgstr ""
 "Faktury PDF, listy przewozowe, listy przewozowe i etykiety wysyłkowe "
 "Woocommerce"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:82
+#: includes/class-wf-woocommerce-packing-list-review_request.php:85
+#, fuzzy
+#| msgid ""
+#| "That’s awesome! We’d love it if you take a moment to share what you think "
+#| "and help spread the word."
 msgid ""
-"That’s awesome! We’d love it if you take a moment to share what you think "
+"That's awesome! We'd love it if you take a moment to share what you think "
 "and help spread the word."
 msgstr ""
 "To niesamowite! Bylibyśmy zachwyceni, gdybyś poświęcił chwilę, aby podzielić "
 "się swoją opinią i pomóc rozprzestrzenić wiadomość."
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:84
+#: includes/class-wf-woocommerce-packing-list-review_request.php:87
 msgid "Rate us now"
 msgstr "Oceń nas"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:187
+#: includes/class-wf-woocommerce-packing-list-review_request.php:190
 msgid "there"
 msgstr "Tam"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:188
-#, php-format
+#. translators: 1$s: User name in bold HTML, 2$s: HTML line break, 3$s: HTML bold opening tag, 4$s: HTML bold closing tag, 5$s: HTML bold opening tag, 6$s: HTML bold closing tag, 7$s: Double HTML line break, 8$s: HTML bold opening tag, 9$s: HTML bold closing tag, 10$s: Double HTML line break, 11$s: HTML line break with bold opening tag, 12$s: HTML bold closing tag
+#: includes/class-wf-woocommerce-packing-list-review_request.php:192
+#, fuzzy, php-format
+#| msgid ""
+#| "Hi  %1$s, %2$s We’re thrilled to see you making great use of our "
+#| "WooCommerce PDF Invoices, Packing Slips, Delivery Notes and Shipping "
+#| "Labels plugin! It’s our mission to make %3$s invoicing as seamless %4$s "
+#| "and %5$s efficient %6$s as possible for you. %7$s If you found the plugin "
+#| "helpful, please leave us a quick %8$s 5-star review. %9$s It would mean "
+#| "the world to us. %10$s Warm regards, %11$s Team WebToffee %12$s"
 msgid ""
-"Hi  %1$s, %2$s We’re thrilled to see you making great use of our WooCommerce "
-"PDF Invoices, Packing Slips, Delivery Notes and Shipping Labels plugin! It’s "
+"Hi  %1$s, %2$s We're thrilled to see you making great use of our WooCommerce "
+"PDF Invoices, Packing Slips, Delivery Notes and Shipping Labels plugin! It's "
 "our mission to make %3$s invoicing as seamless %4$s and %5$s efficient %6$s "
 "as possible for you. %7$s If you found the plugin helpful, please leave us a "
 "quick %8$s 5-star review. %9$s It would mean the world to us. %10$s Warm "
@@ -4712,11 +4726,11 @@ msgstr ""
 "pomocna, zostaw nam krótką %8$s 5-gwiazdkową recenzję. %9$s To dla nas wiele "
 "znaczy. %10$s Serdecznie pozdrawiamy, %11$s Zespół WebToffee %12$s"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:424
+#: includes/class-wf-woocommerce-packing-list-review_request.php:428
 msgid "Did you know?"
 msgstr "Czy wiesz?"
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:425
+#: includes/class-wf-woocommerce-packing-list-review_request.php:429
 msgid ""
 "You can now bulk export PDF invoices, packing slips, and credit notes of "
 "WooCommerce orders with custom filters."
@@ -4724,28 +4738,36 @@ msgstr ""
 "Teraz możesz masowo eksportować faktury PDF, listy przewozowe i noty "
 "kredytowe zamówień WooCommerce z niestandardowymi filtrami."
 
-#: includes/class-wf-woocommerce-packing-list-review_request.php:429
+#: includes/class-wf-woocommerce-packing-list-review_request.php:433
 msgid "Checkout"
 msgstr "Zamówienie"
 
-#: print-invoices-packing-slip-labels-for-woocommerce.php:48
-#, php-format
+#. translators: 1$s: Active plugin name, 2$s: Current plugin name
+#: print-invoices-packing-slip-labels-for-woocommerce.php:51
+#, fuzzy, php-format
+#| msgid ""
+#| "The plugins %s and %s cannot be active in your store at the same time. "
+#| "Kindly deactivate one of these prior to activating the other."
 msgid ""
-"The plugins %s and %s cannot be active in your store at the same time. "
+"The plugins %1$s and %2$s cannot be active in your store at the same time. "
 "Kindly deactivate one of these prior to activating the other."
 msgstr ""
 "Wtyczki %s i %s nie mogą być aktywne w Twoim sklepie w tym samym czasie. "
 "Prosimy o wyłączenie jednej z nich przed aktywacją drugiej."
 
-#: print-invoices-packing-slip-labels-for-woocommerce.php:48
+#: print-invoices-packing-slip-labels-for-woocommerce.php:51
 msgid "Go to plugins page"
 msgstr "Idź do strony wtyczki"
 
-#: print-invoices-packing-slip-labels-for-woocommerce.php:202
-#, php-format
+#. translators: 1$s: Plugin name, 2$s: Plugin name, 3$s: WooCommerce link opening tag, 4$s: WooCommerce link closing tag
+#: print-invoices-packing-slip-labels-for-woocommerce.php:208
+#, fuzzy, php-format
+#| msgid ""
+#| "%s WooCommerce PDF Invoices, Packing Slips, Delivery Notes & Shipping "
+#| "Labels (Basic) %s is enabled but not effective. It requires %s "
+#| "WooCommerce %s in order to work."
 msgid ""
-"%s WooCommerce PDF Invoices, Packing Slips, Delivery Notes & Shipping Labels "
-"(Basic) %s is enabled but not effective. It requires %s WooCommerce %s in "
+"%1$s %2$s is enabled but not effective. It requires %3$s WooCommerce %4$s in "
 "order to work."
 msgstr ""
 "%s WooCommerce PDF Invoices, Packing Slips, Delivery Notes & Shipping Labels "
@@ -4781,21 +4803,21 @@ msgid "Print/Download Delivery note"
 msgstr "Wydrukuj/pobierz notę o dostawie"
 
 #: public/modules/deliverynote/deliverynote.php:235
-#: public/modules/deliverynote/deliverynote.php:388
+#: public/modules/deliverynote/deliverynote.php:389
 #: public/modules/dispatchlabel/dispatchlabel.php:227
-#: public/modules/dispatchlabel/dispatchlabel.php:367
-#: public/modules/invoice/invoice.php:1429
-#: public/modules/invoice/invoice.php:1972
+#: public/modules/dispatchlabel/dispatchlabel.php:368
+#: public/modules/invoice/invoice.php:1508
+#: public/modules/invoice/invoice.php:2063
 #: public/modules/packinglist/packinglist.php:245
-#: public/modules/packinglist/packinglist.php:417
+#: public/modules/packinglist/packinglist.php:418
 #: public/modules/shippinglabel/shippinglabel.php:380
-#: public/modules/shippinglabel/shippinglabel.php:598
-#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:351
-#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:427
+#: public/modules/shippinglabel/shippinglabel.php:599
+#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:360
+#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:436
 msgid "Print"
 msgstr "Drukuj"
 
-#: public/modules/deliverynote/deliverynote.php:318
+#: public/modules/deliverynote/deliverynote.php:319
 msgid "Unable to print Delivery note. Please check the items in the order."
 msgstr "Nie można wydrukować listu przewozowego. Sprawdź pozycje w zamówieniu."
 
@@ -4950,234 +4972,266 @@ msgstr ""
 msgid "Allows customers to print the invoice from the specified pages."
 msgstr "Umożliwia klientom drukowanie faktury z określonych stron."
 
-#: public/modules/invoice/invoice.php:141
+#: public/modules/invoice/invoice.php:150
 msgid "Print invoice"
 msgstr "Drukuj fakturę"
 
-#: public/modules/invoice/invoice.php:142
+#: public/modules/invoice/invoice.php:151
 msgid "Download invoice"
 msgstr "Pobierz fakturę"
 
-#: public/modules/invoice/invoice.php:323
-#, php-format
+#. translators: 1$s: HTML link opening tag, 2$s: HTML link closing tag
+#: public/modules/invoice/invoice.php:336
+#, fuzzy, php-format
+#| msgid ""
+#| "You can control the visibility of the seal according to order status via "
+#| "filters. See filter documentation %s here. %s"
 msgid ""
 "You can control the visibility of the seal according to order status via "
-"filters. See filter documentation %s here. %s"
+"filters. See filter documentation %1$s here. %2$s"
 msgstr ""
 "Możesz kontrolować widoczność pieczęci według statusu zamówienia za pomocą "
 "filtrów. Zobacz dokumentację filtrów %s tutaj. %s"
 
-#: public/modules/invoice/invoice.php:325
+#: public/modules/invoice/invoice.php:338
 msgid "This feature might not work in mPDF."
 msgstr "Ta funkcja może nie działać w formacie mPDF."
 
-#: public/modules/invoice/invoice.php:343
+#: public/modules/invoice/invoice.php:356
 msgid "Width"
 msgstr "Szerokość"
 
-#: public/modules/invoice/invoice.php:351
+#: public/modules/invoice/invoice.php:364
 msgid "Height"
 msgstr "Wysokość"
 
-#: public/modules/invoice/invoice.php:375
+#: public/modules/invoice/invoice.php:388
 msgid "Border width"
 msgstr "Szerokośc obrzeża"
 
-#: public/modules/invoice/invoice.php:383
+#: public/modules/invoice/invoice.php:396
 msgid "Line height"
 msgstr "Wysokość linii"
 
-#: public/modules/invoice/invoice.php:391
+#: public/modules/invoice/invoice.php:404
 msgid "Opacity"
 msgstr "Przeźroczystość"
 
-#: public/modules/invoice/invoice.php:412
+#: public/modules/invoice/invoice.php:425
 msgid "Border radius"
 msgstr "Zaokrąglenie rogów obramowania"
 
-#: public/modules/invoice/invoice.php:420
+#: public/modules/invoice/invoice.php:433
 msgid "From left"
 msgstr "Od lewej"
 
-#: public/modules/invoice/invoice.php:428
+#: public/modules/invoice/invoice.php:441
 msgid "From top"
 msgstr "Od góry"
 
-#: public/modules/invoice/invoice.php:436
+#: public/modules/invoice/invoice.php:449
 msgid "Angle"
 msgstr "Kąt"
 
-#: public/modules/invoice/invoice.php:443
+#: public/modules/invoice/invoice.php:456
 msgid "Color"
 msgstr "Kolor"
 
-#: public/modules/invoice/invoice.php:1193
+#: public/modules/invoice/invoice.php:1270
 msgid "Pro Add-on"
 msgstr "Dodatek Pro"
 
-#: public/modules/invoice/invoice.php:1197
+#: public/modules/invoice/invoice.php:1274
 msgid "Document title"
 msgstr "Tytuł Dokumentu"
 
-#: public/modules/invoice/invoice.php:1198
+#: public/modules/invoice/invoice.php:1275
 msgid "Company Logo / Name"
 msgstr "Logo firmy / nazwa"
 
-#: public/modules/invoice/invoice.php:1200
-#: public/modules/invoice/invoice.php:1467
+#: public/modules/invoice/invoice.php:1277
+#: public/modules/invoice/invoice.php:1546
 msgid "Invoice Number"
 msgstr "Numer faktury"
 
-#: public/modules/invoice/invoice.php:1201
+#: public/modules/invoice/invoice.php:1278
 #: public/modules/shippinglabel/shippinglabel.php:169
 msgid "Order Number"
 msgstr "Numer zamówienia"
 
-#: public/modules/invoice/invoice.php:1202
+#: public/modules/invoice/invoice.php:1279
 msgid "Invoice Date"
 msgstr "Data faktury"
 
-#: public/modules/invoice/invoice.php:1203
+#: public/modules/invoice/invoice.php:1280
 #: public/modules/shippinglabel/shippinglabel.php:170
 msgid "Order Date"
 msgstr "Data zamówienia"
 
-#: public/modules/invoice/invoice.php:1205
+#: public/modules/invoice/invoice.php:1282
 #: public/modules/shippinglabel/shippinglabel.php:167
 msgid "From Address"
 msgstr "Od (e-mail)"
 
-#: public/modules/invoice/invoice.php:1206
+#: public/modules/invoice/invoice.php:1283
 msgid "Billing Address"
 msgstr "Adres rozliczeniowy"
 
-#: public/modules/invoice/invoice.php:1207
+#: public/modules/invoice/invoice.php:1284
 msgid "Shipping Address"
 msgstr "Adres wysyłki"
 
-#: public/modules/invoice/invoice.php:1208
+#: public/modules/invoice/invoice.php:1285
 #: public/modules/shippinglabel/shippinglabel.php:173
 msgid "Email Field"
 msgstr "Pole e-mail"
 
-#: public/modules/invoice/invoice.php:1209
+#: public/modules/invoice/invoice.php:1286
 #: public/modules/shippinglabel/shippinglabel.php:174
 msgid "Tel Field"
 msgstr "Pole Tel."
 
-#: public/modules/invoice/invoice.php:1211
+#: public/modules/invoice/invoice.php:1288
 #: public/modules/shippinglabel/shippinglabel.php:176
 msgid "SSN number"
 msgstr "Numer SSN"
 
-#: public/modules/invoice/invoice.php:1212
+#: public/modules/invoice/invoice.php:1289
 #: public/modules/shippinglabel/shippinglabel.php:175
 msgid "VAT number"
 msgstr "Numer NIP"
 
-#: public/modules/invoice/invoice.php:1214
+#: public/modules/invoice/invoice.php:1291
 msgid "Payment received stamp"
 msgstr "Pieczątka potwierdzająca otrzymanie płatności"
 
-#: public/modules/invoice/invoice.php:1219
+#: public/modules/invoice/invoice.php:1296
 #: public/modules/shippinglabel/shippinglabel.php:179
 msgid "Barcode"
 msgstr "Kod kreskowy"
 
-#: public/modules/invoice/invoice.php:1222
+#: public/modules/invoice/invoice.php:1299
 msgid "QR code"
 msgstr "Kod QR"
 
-#: public/modules/invoice/invoice.php:1224
+#: public/modules/invoice/invoice.php:1301
 msgid "QR Code"
 msgstr "Kod QR"
 
-#: public/modules/invoice/invoice.php:1230
+#: public/modules/invoice/invoice.php:1307
 #: public/modules/shippinglabel/shippinglabel.php:180
 msgid "Tracking Number"
 msgstr "Numer przesyłki"
 
-#: public/modules/invoice/invoice.php:1375
+#: public/modules/invoice/invoice.php:1454
 msgid "Print Invoices"
 msgstr "Drukuj faktury"
 
-#: public/modules/invoice/invoice.php:1376
+#: public/modules/invoice/invoice.php:1455
 msgid "Download Invoices"
 msgstr "Pobierz Faktury"
 
-#: public/modules/invoice/invoice.php:1415
-#: public/modules/invoice/invoice.php:1452
+#: public/modules/invoice/invoice.php:1494
+#: public/modules/invoice/invoice.php:1531
 msgid "Print Invoice"
 msgstr "Drukuj fakturę"
 
-#: public/modules/invoice/invoice.php:1423
-#: public/modules/invoice/invoice.php:1453
+#: public/modules/invoice/invoice.php:1502
+#: public/modules/invoice/invoice.php:1532
 msgid "Download Invoice"
 msgstr "Pobierz Fakturę"
 
-#: public/modules/invoice/invoice.php:1430
+#: public/modules/invoice/invoice.php:1509
 #: public/modules/packinglist/packinglist.php:252
-#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:359
+#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:368
 msgid "Download"
 msgstr "Pobierz"
 
-#: public/modules/invoice/invoice.php:1443
+#: public/modules/invoice/invoice.php:1522
 msgid "Print/Download Invoice"
 msgstr "Wydrukuj/Pobierz fakturę"
 
-#: public/modules/invoice/invoice.php:1710
+#: public/modules/invoice/invoice.php:1793
 msgid "Customizer module is not active."
 msgstr "Moduł dostosowywania jest nieaktywny."
 
-#: public/modules/invoice/views/general.php:18
+#: public/modules/invoice/views/general.php:41
+msgid "Subscribe to our newsletter for exclusive offers & updates"
+msgstr ""
+
+#: public/modules/invoice/views/general.php:48
+#: public/modules/invoice/views/general.php:71
+msgid "Subscribe"
+msgstr ""
+
+#: public/modules/invoice/views/general.php:49
+#, fuzzy
+#| msgid "is required"
+msgid "indicates required"
+msgstr "jest wymagane"
+
+#: public/modules/invoice/views/general.php:50
+#, fuzzy
+#| msgid "Enter your email address."
+msgid "Enter your email address"
+msgstr "Podaj swój adres e-mail."
+
+#: public/modules/invoice/views/general.php:57
+#, php-format
+msgid ""
+"I consent to receive newsletters and exclusive offers from WebToffee and "
+"agree to the %1$sPrivacy Policy%2$s."
+msgstr ""
+
+#: public/modules/invoice/views/general.php:88
 msgid "Configure the general settings required for the invoice."
 msgstr "Skonfiguruj ogólne ustawienia wymagane dla faktury."
 
-#: public/modules/invoice/views/general.php:39
+#: public/modules/invoice/views/general.php:109
 msgid "Enable to print, download, and mail invoices."
 msgstr "Umożliwia drukowanie, pobieranie i wysyłanie faktur pocztą."
 
-#: public/modules/invoice/views/general.php:41
+#: public/modules/invoice/views/general.php:111
 msgid "Enable Invoice"
 msgstr "Włącz fakturę"
 
-#: public/modules/invoice/views/general.php:64
+#: public/modules/invoice/views/general.php:134
 #: public/modules/invoice/views/qrcode_promote.php:38
 msgid "Invoice date"
 msgstr "Data faktury"
 
-#: public/modules/invoice/views/general.php:70
+#: public/modules/invoice/views/general.php:140
 #: public/modules/invoice/views/qrcode_promote.php:39
 msgid "Order date"
 msgstr "Data zamówienia"
 
-#: public/modules/invoice/views/general.php:71
+#: public/modules/invoice/views/general.php:141
 msgid "Invoiced date"
 msgstr "Data wystawienia faktury"
 
-#: public/modules/invoice/views/general.php:81
+#: public/modules/invoice/views/general.php:151
 msgid "Automate invoice creation"
 msgstr "Zautomatyzuj tworzenie faktur"
 
-#: public/modules/invoice/views/general.php:88
+#: public/modules/invoice/views/general.php:158
 #: public/modules/ubl/invoice/views/settings.php:98
 msgid "Choose order status"
 msgstr "Wybierz status zamówienia"
 
-#: public/modules/invoice/views/general.php:89
+#: public/modules/invoice/views/general.php:159
 msgid "Automatically creates invoices for selected order statuses."
 msgstr "Automatycznie tworzy faktury dla wybranych statusów zamówień."
 
-#: public/modules/invoice/views/general.php:96
+#: public/modules/invoice/views/general.php:166
 msgid "Attach invoice PDF to selected WooCommerce emails."
 msgstr ""
 "Dołącz fakturę PDF do wybranych wiadomości e-mail w usłudze WooCommerce."
 
-#: public/modules/invoice/views/general.php:103
+#: public/modules/invoice/views/general.php:173
 msgid "Choose email classes"
 msgstr "Wybierz klasy e-mailowe"
 
-#: public/modules/invoice/views/general.php:104
+#: public/modules/invoice/views/general.php:174
 msgid ""
 "Select email types corresponding to the order statuses under Automate "
 "invoice creation option. If none are selected, invoices must be generated "
@@ -5187,21 +5241,21 @@ msgstr ""
 "Automatyzacja tworzenia faktur. Jeśli nie wybrano żadnej, faktury muszą być "
 "generowane ręcznie, aby można je było dołączać do wiadomości e-mail."
 
-#: public/modules/invoice/views/general.php:136
+#: public/modules/invoice/views/general.php:206
 #: public/modules/invoice/views/qrcode_promote.php:32
 #: public/modules/invoice/views/qrcode_promote.php:36
 msgid "Invoice number"
 msgstr "NR FAKTURY"
 
-#: public/modules/invoice/views/general.php:155
+#: public/modules/invoice/views/general.php:225
 msgid "Invoice details"
 msgstr "Dane do faktury"
 
-#: public/modules/invoice/views/general.php:162
+#: public/modules/invoice/views/general.php:232
 msgid "Order meta fields"
 msgstr "Zamów pola meta"
 
-#: public/modules/invoice/views/general.php:166
+#: public/modules/invoice/views/general.php:236
 msgid ""
 "Select/add order meta to display additional information related to the order "
 "on the invoice."
@@ -5209,7 +5263,19 @@ msgstr ""
 "Wybierz/dodaj metadane zamówienia, aby wyświetlić na fakturze dodatkowe "
 "informacje dotyczące zamówienia."
 
-#: public/modules/invoice/views/general.php:174
+#: public/modules/invoice/views/general.php:241
+msgid "Product metadata"
+msgstr "Metadane produktu"
+
+#: public/modules/invoice/views/general.php:245
+msgid ""
+"Select/add product meta to display additional information related to the "
+"product on the invoice."
+msgstr ""
+"Wybierz/dodaj metadane produktu, aby wyświetlić dodatkowe informacje "
+"dotyczące produktu na fakturze."
+
+#: public/modules/invoice/views/general.php:253
 msgid ""
 "If left blank, default to the logo from General settings. Ensure to select "
 "company logo from ‘Invoice > Customize > Company Logo’ to reflect on the "
@@ -5219,55 +5285,55 @@ msgstr ""
 "że wybrałeś logo firmy z „Faktura > Dostosuj > Logo firmy”, aby znalazło się "
 "na fakturze. Zalecany rozmiar to 150×50px."
 
-#: public/modules/invoice/views/general.php:195
+#: public/modules/invoice/views/general.php:274
 msgid "Generate invoices for existing orders"
 msgstr "Generuj faktury dla istniejących zamówień"
 
-#: public/modules/invoice/views/general.php:199
+#: public/modules/invoice/views/general.php:278
 msgid ""
 "Enable to create invoice for orders generated before plugin installation"
 msgstr ""
 "Włącz możliwość tworzenia faktur dla zamówień wygenerowanych przed "
 "instalacją wtyczki"
 
-#: public/modules/invoice/views/general.php:210
+#: public/modules/invoice/views/general.php:289
 msgid "Enable to create invoices for free orders"
 msgstr "Włącz możliwość tworzenia faktur dla bezpłatnych zamówień"
 
-#: public/modules/invoice/views/general.php:217
+#: public/modules/invoice/views/general.php:296
 msgid "Display free line items in the invoice"
 msgstr "Wyświetlaj bezpłatne pozycje na fakturze"
 
-#: public/modules/invoice/views/general.php:221
+#: public/modules/invoice/views/general.php:300
 msgid "Include free(priced as 0) line items in the invoice"
 msgstr "Uwzględnij bezpłatne (wycenione jako 0) pozycje na fakturze"
 
-#: public/modules/invoice/views/general.php:224
+#: public/modules/invoice/views/general.php:303
 msgid "Enable to create invoices for free orders."
 msgstr "Włącz możliwość tworzenia faktur dla bezpłatnych zamówień."
 
-#: public/modules/invoice/views/general.php:230
+#: public/modules/invoice/views/general.php:309
 msgid "PDF name format"
 msgstr "Format nazwy PDF"
 
-#: public/modules/invoice/views/general.php:235
+#: public/modules/invoice/views/general.php:314
 msgid "[prefix][order_no]"
 msgstr "[prefiks][numer_zamówienia]"
 
-#: public/modules/invoice/views/general.php:236
+#: public/modules/invoice/views/general.php:315
 msgid "[prefix][invoice_no]"
 msgstr "[prefiks][nr_faktury]"
 
-#: public/modules/invoice/views/general.php:240
+#: public/modules/invoice/views/general.php:319
 msgid ""
 "Select a name format for PDF invoice that includes invoice/order number."
 msgstr "Wybierz format nazwy faktury PDF zawierający numer faktury/zamówienia."
 
-#: public/modules/invoice/views/general.php:246
+#: public/modules/invoice/views/general.php:325
 msgid "Custom PDF name prefix"
 msgstr "Niestandardowy prefiks nazwy pliku PDF"
 
-#: public/modules/invoice/views/general.php:248
+#: public/modules/invoice/views/general.php:327
 msgid ""
 "Input a custom prefix for ‘PDF name format’ that will appear at the "
 "beginning of the name. Defaulted to ‘Invoice_’."
@@ -5275,11 +5341,11 @@ msgstr ""
 "Wprowadź niestandardowy prefiks dla „Formatu nazwy PDF”, który pojawi się na "
 "początku nazwy. Domyślnie „Invoice_”."
 
-#: public/modules/invoice/views/general.php:254
+#: public/modules/invoice/views/general.php:333
 msgid "Use latest settings for invoice"
 msgstr "Użyj najnowszych ustawień dla faktury"
 
-#: public/modules/invoice/views/general.php:261
+#: public/modules/invoice/views/general.php:340
 msgid ""
 "Enable to apply the most recent settings to previous order invoices. This "
 "will match the previous invoices with the upcoming invoices.Changing the "
@@ -5291,11 +5357,11 @@ msgstr ""
 "adresu firmy, nazwy lub innych ustawień w przyszłości może nadpisać "
 "wcześniej utworzone faktury najnowszymi informacjami."
 
-#: public/modules/invoice/views/general.php:289
+#: public/modules/invoice/views/general.php:368
 msgid "Date formats"
 msgstr "Formaty dat"
 
-#: public/modules/invoice/views/general.php:296
+#: public/modules/invoice/views/general.php:375
 msgid "Output"
 msgstr "Wyjście"
 
@@ -5417,7 +5483,7 @@ msgstr "Wydrukuj/Pobierz list przewozowy"
 msgid "Download Packing slip"
 msgstr "Pobierz list przewozowy"
 
-#: public/modules/packinglist/packinglist.php:347
+#: public/modules/packinglist/packinglist.php:348
 msgid "Unable to print packling slip. Please check the items in the order."
 msgstr ""
 "Nie można wydrukować specyfikacji pakowania. Sprawdź pozycje w zamówieniu."
@@ -5518,7 +5584,7 @@ msgstr "Wydrukuj etykietę wysyłkową"
 msgid "Shipping Label"
 msgstr "Etykieta wysyłkowa"
 
-#: public/modules/shippinglabel/shippinglabel.php:523
+#: public/modules/shippinglabel/shippinglabel.php:524
 msgid "Unable to print shipping label. Please check the items in the order."
 msgstr ""
 "Nie można wydrukować etykiety wysyłkowej. Sprawdź elementy w zamówieniu."
@@ -5574,25 +5640,25 @@ msgstr ""
 "Ustaw rozmiar etykiety wysyłkowej na całą stronę lub rozmiar niestandardowy."
 
 #: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:80
-#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:367
-#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:390
+#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:376
+#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:399
 msgid "UBL Invoice"
 msgstr "Faktura UBL"
 
-#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:152
+#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:161
 msgid "UBL (Beta)"
 msgstr "UBL (wersja beta)"
 
-#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:184
-#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:202
+#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:193
+#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:211
 msgid "Default"
 msgstr "Domyślny"
 
-#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:348
+#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:357
 msgid "Print UBL Invoice"
 msgstr "Wydrukuj fakturę UBL"
 
-#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:356
+#: public/modules/ubl/invoice/class-wt-pklist-pdf-ubl-invoice.php:365
 msgid "Download UBL Invoice"
 msgstr "Pobierz fakturę UBL"
 
@@ -5665,294 +5731,306 @@ msgstr ""
 "Przypisz swoje klasy podatkowe WooCommerce do odpowiednich kategorii i "
 "schematów podatkowych UBL"
 
-#: public/modules/ubl/invoice/views/settings.php:161
+#: public/modules/ubl/invoice/views/settings.php:162
 msgid "Country&nbsp;code"
 msgstr "Kod kraju"
 
-#: public/modules/ubl/invoice/views/settings.php:162
+#: public/modules/ubl/invoice/views/settings.php:163
 msgid "State code"
 msgstr "Kod stanu"
 
-#: public/modules/ubl/invoice/views/settings.php:163
+#: public/modules/ubl/invoice/views/settings.php:164
 msgid "Postcode / ZIP"
 msgstr "Kod pocztowy"
 
-#: public/modules/ubl/invoice/views/settings.php:165
+#: public/modules/ubl/invoice/views/settings.php:166
 msgid "Rate&nbsp;%"
 msgstr "Wskaźnik %"
 
-#: public/modules/ubl/invoice/views/settings.php:168
+#: public/modules/ubl/invoice/views/settings.php:169
 msgid "Tax Scheme"
 msgstr "Schemat podatkowy"
 
-#: public/modules/ubl/invoice/views/settings.php:170
-#: public/modules/ubl/invoice/views/settings.php:178
+#: public/modules/ubl/invoice/views/settings.php:171
+#: public/modules/ubl/invoice/views/settings.php:179
 msgid "Learn more"
 msgstr "Dowiedz się więcej"
 
-#: public/modules/ubl/invoice/views/settings.php:176
+#: public/modules/ubl/invoice/views/settings.php:177
 msgid "Tax Category"
 msgstr "Kategoria podatku"
 
-#: public/modules/ubl/invoice/views/settings.php:224
+#: public/modules/ubl/invoice/views/settings.php:228
 msgid "No taxes found for this class."
 msgstr "Nie znaleziono podatków dla tej klasy."
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:25
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:19
 msgid "Standard rate"
 msgstr "Stawka standardowa"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:26
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:20
 msgid "Lower rate"
 msgstr "Niższa stawka"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:27
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:21
 msgid "Zero rated goods"
 msgstr "Towary o stawce zerowej"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:28
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:22
 msgid "Mixed tax rate"
 msgstr "Stawka podatku mieszanego"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:29
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:23
 msgid "Exempt for resale"
 msgstr "Zwolnione z podatku od odsprzedaży"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:30
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:24
 msgid "Value Added Tax (VAT) not now due for payment"
 msgstr "Podatek od wartości dodanej (VAT) nie jest obecnie wymagalny"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:31
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:25
 msgid "Value Added Tax (VAT) due from a previous invoice"
 msgstr "Podatek od wartości dodanej (VAT) należny z poprzedniej faktury"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:32
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:26
 msgid "Transferred (VAT)"
 msgstr "Przeniesiony (VAT)"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:33
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:27
 msgid "Duty paid by supplier"
 msgstr "Cło zapłacone przez dostawcę"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:34
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:28
 msgid "Exempt from tax"
 msgstr "Zwolniony z podatku"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:35
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:29
 msgid "Free export item, tax not charged"
 msgstr "Bezpłatny przedmiot eksportowy, bez podatku"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:36
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:30
 msgid "Higher rate"
 msgstr "Wyższa stawka"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:37
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-category.php:31
 msgid "Services outside scope of tax"
 msgstr "Usługi poza zakresem podatkowym"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:24
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:19
 msgid "Value added tax (VAT)"
 msgstr "Podatek od wartości dodanej (VAT)"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:25
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:20
 msgid "Goods and services tax (GST)"
 msgstr "Podatek od towarów i usług (GST)"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:26
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:21
 msgid "Petroleum tax"
 msgstr "Podatek od ropy naftowej"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:27
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:22
 msgid "Provisional countervailing duty cash"
 msgstr "Tymczasowe cło wyrównawcze gotówkowe"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:28
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:23
 msgid "Provisional countervailing duty bond"
 msgstr "Tymczasowe cło wyrównawcze"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:29
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:24
 msgid "Tobacco tax"
 msgstr "Podatek od tytoniu"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:30
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:25
 msgid "Energy fee"
 msgstr "Opłata za energię"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:31
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:26
 msgid "Coffee tax"
 msgstr "Podatek od kawy"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:32
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:27
 msgid "Harmonised sales tax, Canadian"
 msgstr "Zharmonizowany podatek od sprzedaży, kanadyjski"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:33
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:28
 msgid "Quebec sales tax"
 msgstr "Podatek od sprzedaży w Quebecu"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:34
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:29
 msgid "Canadian provincial sales tax"
 msgstr "Kanadyjski podatek od sprzedaży prowincjonalnej"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:35
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:30
 msgid "Tax on replacement part"
 msgstr "Podatek od części zamiennych"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:36
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:31
 msgid "Mineral oil tax"
 msgstr "Podatek od oleju mineralnego"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:37
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:32
 msgid "Special tax"
 msgstr "Podatek specjalny"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:38
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:33
 msgid "Anti-dumping duty"
 msgstr "Cło antydumpingowe"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:39
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:34
 msgid "Stamp duty (Imposta di Bollo)"
 msgstr "Opłata skarbowa (Imposta di Bollo)"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:40
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:35
 msgid "Agricultural levy"
 msgstr "Podatek rolny"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:41
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:36
 msgid "Car tax"
 msgstr "Podatek samochodowy"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:42
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:37
 msgid "Paper consortium tax (Italy)"
 msgstr "Podatek konsorcjum papierowego (Włochy)"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:43
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:38
 msgid "Commodity specific tax"
 msgstr "Podatek od towarów"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:44
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:39
 msgid "Customs duty"
 msgstr "Cło"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:45
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:40
 msgid "Countervailing duty"
 msgstr "Cło wyrównawcze"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:46
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:41
 msgid "Environmental tax"
 msgstr "Podatek środowiskowy"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:47
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:42
 msgid "Excise duty"
 msgstr "Podatek akcyzowy"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:48
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:43
 msgid "Agricultural export rebate"
 msgstr "Zwrot za eksport produktów rolnych"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:49
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:44
 msgid "Federal excise tax"
 msgstr "Podatek akcyzowy federalny"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:51
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:46
 msgid "General construction tax"
 msgstr "Ogólny podatek budowlany"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:52
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:47
 msgid "Illuminants tax"
 msgstr "Podatek od oświetlenia"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:53
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:48
 msgid "Import tax"
 msgstr "Podatek importowy"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:54
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:49
 msgid "Individual tax"
 msgstr "Podatek indywidualny"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:55
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:50
 msgid "Business license fee"
 msgstr "Opłata za licencję biznesową"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:56
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:51
 msgid "Local construction tax"
 msgstr "Lokalny podatek budowlany"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:57
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:52
 msgid "Light dues payable"
 msgstr "Opłaty za światło płatne"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:58
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:53
 msgid "Local sales tax"
 msgstr "Lokalny podatek od sprzedaży"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:59
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:54
 msgid "Lust tax"
 msgstr "Podatek od pożądania"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:60
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:55
 msgid "Monetary compensatory amount"
 msgstr "Kwota rekompensaty pieniężnej"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:61
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:56
 msgid "Miscellaneous cash deposit"
 msgstr "Różne depozyty gotówkowe"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:62
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:57
 msgid "Other taxes"
 msgstr "Inne podatki"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:63
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:58
 msgid "Provisional duty bond"
 msgstr "Tymczasowa kaucja celna"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:64
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:59
 msgid "Provisional duty cash"
 msgstr "Tymczasowe cło gotówkowe"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:65
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:60
 msgid "Preference duty"
 msgstr "Cło preferencyjne"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:66
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:61
 msgid "Special construction tax"
 msgstr "Specjalny podatek budowlany"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:67
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:62
 msgid "Shifted social securities"
 msgstr "Przesunięte zabezpieczenia społeczne"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:68
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:63
 msgid "State/provincial sales tax"
 msgstr "Podatek od sprzedaży stanowy/prowincjonalny"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:69
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:64
 msgid "Suspended duty"
 msgstr "Zawieszenie obowiązku"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:70
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:65
 msgid "Surtax"
 msgstr "Domiar"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:71
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:66
 msgid "Shifted wage tax"
 msgstr "Przesunięty podatek od wynagrodzeń"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:72
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:67
 msgid "Alcohol mark tax"
 msgstr "Podatek od znaków towarowych alkoholu"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:74
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:69
 msgid "Turnover tax"
 msgstr "Podatek obrotowy"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:75
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:70
 msgid "Tonnage taxes"
 msgstr "Podatki tonażowe"
 
-#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:76
+#: public/modules/ubl/lib/class-wt-pklist-pdf-ubl-tax-schema.php:71
 msgid "Valuation deposit"
 msgstr "Depozyt wyceny"
+
+#. Plugin Name of the plugin/theme
+#, fuzzy
+#| msgid ""
+#| "WooCommerce PDF Invoices, Packing Slips, Delivery Notes and Shipping "
+#| "Labels"
+msgid ""
+"WebToffee WooCommerce PDF Invoices, Packing Slips, Delivery Notes and "
+"Shipping Labels"
+msgstr ""
+"Faktury PDF WooCommerce, listy przewozowe, noty dostawcze i etykiety "
+"wysyłkowe"
 
 #. Plugin URI of the plugin/theme
 msgid ""
@@ -5972,3 +6050,110 @@ msgstr "WebToffee"
 #. Author URI of the plugin/theme
 msgid "https://www.webtoffee.com/"
 msgstr "https://www.webtoffee.com/"
+
+#~ msgid "mPDF add-on"
+#~ msgstr "Dodatek mPDF"
+
+#~ msgid "Payment & subscription"
+#~ msgstr "Płatność i subskrypcja"
+
+#~ msgid ""
+#~ "The most popular payment gateways and subscription solutions to scale "
+#~ "your business"
+#~ msgstr ""
+#~ "Najpopularniejsze bramki płatnicze i rozwiązania subskrypcyjne, które "
+#~ "pomogą Ci rozwinąć Twój biznes"
+
+#~ msgid "WooCommerce Stripe Payment Gateway"
+#~ msgstr "Bramka płatności WooCommerce Stripe"
+
+#~ msgid "Add 20+ payment methods"
+#~ msgstr "Dodaj ponad 20 metod płatności"
+
+#~ msgid "Activates Stripe checkout"
+#~ msgstr "Aktywuje płatność Stripe"
+
+#~ msgid "Secured payments with SCA and 3D secure"
+#~ msgstr "Bezpieczne płatności z SCA i 3D Secure"
+
+#~ msgid "Supports recurring payments"
+#~ msgstr "Obsługuje płatności cykliczne"
+
+#~ msgid "Compatible with WPML"
+#~ msgstr "Zgodny z WPML"
+
+#~ msgid "Log all Stripe transactions"
+#~ msgstr "Rejestruj wszystkie transakcje Stripe"
+
+#~ msgid "Monitor payments using Stripe dashboard"
+#~ msgstr "Monitoruj płatności za pomocą pulpitu Stripe"
+
+#~ msgid "PayPal Express Checkout Payment Gateway for WooCommerce"
+#~ msgstr "Bramka płatności PayPal Express Checkout dla WooCommerce"
+
+#~ msgid "Adds PayPal Smart Button Checkout option"
+#~ msgstr "Dodaje opcję płatności PayPal Smart Button"
+
+#~ msgid "Accepts payment using multiple Alternative Payment Methods (APM)"
+#~ msgstr ""
+#~ "Akceptuje płatności za pomocą wielu alternatywnych metod płatności (APM)"
+
+#~ msgid ""
+#~ "Adds Express PayPal Checkout Option on the product page and Mini-cart for "
+#~ "faster checkout"
+#~ msgstr ""
+#~ "Dodaje opcję ekspresowej płatności PayPal na stronie produktu i mini-"
+#~ "koszyk w celu szybszej realizacji płatności"
+
+#~ msgid "Capture the authorized payment later"
+#~ msgstr "Odbierz autoryzowaną płatność później"
+
+#~ msgid "Partial and Full Refund of the order amount"
+#~ msgstr "Częściowy i całkowity zwrot kwoty zamówienia"
+
+#~ msgid "Lots of customization options like button style, position, etc"
+#~ msgstr ""
+#~ "Mnóstwo opcji dostosowywania, takich jak styl przycisku, jego położenie "
+#~ "itp."
+
+#~ msgid "Option to enable in-context checkout"
+#~ msgstr "Opcja umożliwiająca realizację transakcji w kontekście"
+
+#~ msgid "Supports WooCommerce Subscriptions for Express buttons"
+#~ msgstr "Obsługuje subskrypcje WooCommerce dla przycisków Express"
+
+#~ msgid "Allows guest checkout"
+#~ msgstr "Umożliwia wymeldowanie gościa"
+
+#~ msgid "Option to set up a specific PayPal locale"
+#~ msgstr "Możliwość ustawienia konkretnej lokalizacji PayPal"
+
+#~ msgid "Shortcode support for the Paypal Express button"
+#~ msgstr "Obsługa shortcode'u dla przycisku Paypal Express"
+
+#~ msgid "Timely compatibility updates and bug fixes"
+#~ msgstr "Terminowe aktualizacje zgodności i poprawki błędów"
+
+#~ msgid "Subscriptions for WooCommerce"
+#~ msgstr "Subskrypcje dla WooCommerce"
+
+#~ msgid "Create simple & variable subscriptions"
+#~ msgstr "Twórz proste i zmienne subskrypcje"
+
+#~ msgid "Synchronize subscription renewal"
+#~ msgstr "Synchronizuj odnawianie subskrypcji"
+
+#~ msgid "Pro-rate charges till first renewal"
+#~ msgstr "Opłaty proporcjonalne do pierwszego odnowienia"
+
+#~ msgid "Set free trial and sign-up fee"
+#~ msgstr "Ustaw bezpłatny okres próbny i opłatę rejestracyjną"
+
+#~ msgid "Send automated emails notifications"
+#~ msgstr "Wysyłaj automatyczne powiadomienia e-mail"
+
+#~ msgid "Supports recurring discounts"
+#~ msgstr "Obsługuje rabaty cykliczne"
+
+#~ msgid "Renewal interval & expiry customizations"
+#~ msgstr "Dostosowywanie interwału odnawiania i daty wygaśnięcia"

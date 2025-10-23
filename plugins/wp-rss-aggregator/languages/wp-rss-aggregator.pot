@@ -2,14 +2,14 @@
 # This file is distributed under the GPL-3.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: WP RSS Aggregator 5.0.4\n"
+"Project-Id-Version: WP RSS Aggregator 5.0.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-rss-aggregator\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-09-30T08:09:10+00:00\n"
+"POT-Creation-Date: 2025-10-22T08:50:44+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: wp-rss-aggregator\n"
@@ -90,6 +90,12 @@ msgstr ""
 #: core/modules/admin.php:121
 #: core/js/dist/admin.js:107
 msgid "Tutorials"
+msgstr ""
+
+#: core/modules/admin.php:122
+#: core/js/dist/admin.js:21
+#: core/js/dist/admin.js:113
+msgid "Upgrade"
 msgstr ""
 
 #: core/modules/admin.php:122
@@ -874,7 +880,6 @@ msgid "Upgrade Now"
 msgstr ""
 
 #: core/js/dist/admin.js:21
-#: core/js/dist/admin.js:37
 #: core/js/dist/admin.js:107
 msgid "Upgrade to Pro"
 msgstr ""
@@ -1435,6 +1440,10 @@ msgid "Filter %d"
 msgstr ""
 
 #: core/js/dist/admin.js:37
+msgid "Watch demo"
+msgstr ""
+
+#: core/js/dist/admin.js:37
 msgid "Apply filters to display only the content you want from the selected sources."
 msgstr ""
 
@@ -1443,15 +1452,15 @@ msgid "Add new filter"
 msgstr ""
 
 #: core/js/dist/admin.js:37
-msgid "Unlock display filtering"
+msgid "Fine-tune your displays"
 msgstr ""
 
 #: core/js/dist/admin.js:37
-msgid "Filtering allows you to tailor the content in each display to your visitors' interests, ensuring they find exactly what they're searching for in each section of your website."
+msgid "Filter what appears in your displays by keyword, phrase, or tag - so your visitors see only the most relevant posts."
 msgstr ""
 
 #: core/js/dist/admin.js:37
-msgid "Get Filtering with Pro"
+msgid "Upgrade for Display Filters"
 msgstr ""
 
 #: core/js/dist/admin.js:37
@@ -1459,7 +1468,23 @@ msgid "Set up display filters"
 msgstr ""
 
 #: core/js/dist/admin.js:37
+msgid "Filtering allows you to tailor the content in each display to your visitors' interests, ensuring they find exactly what they're searching for in each section of your website."
+msgstr ""
+
+#: core/js/dist/admin.js:37
+msgid "Unlock more layouts"
+msgstr ""
+
+#: core/js/dist/admin.js:37
 msgid "Select your layout"
+msgstr ""
+
+#: core/js/dist/admin.js:37
+msgid "Layouts that fit your style"
+msgstr ""
+
+#: core/js/dist/admin.js:37
+msgid "Upgrade to Basic to unlock additional layouts that showcase your content beautifully and match your site’s design."
 msgstr ""
 
 #: core/js/dist/admin.js:37
@@ -1733,11 +1758,15 @@ msgid "Create Display"
 msgstr ""
 
 #: core/js/dist/admin.js:37
-msgid "Get access to Folders with Pro"
+msgid "Simplify your workflow"
 msgstr ""
 
 #: core/js/dist/admin.js:37
-msgid "Streamline your workflow by grouping sources into Folders"
+msgid "Organize with Folders"
+msgstr ""
+
+#: core/js/dist/admin.js:37
+msgid "Group and manage your sources with folders for faster curation and a cleaner workspace."
 msgstr ""
 
 #: core/js/dist/admin.js:37
@@ -1745,16 +1774,7 @@ msgid "Welcome to a more organized way of managing your sources"
 msgstr ""
 
 #: core/js/dist/admin.js:37
-msgid "Organize your feed sources with ease by creating custom folders. Simplify your management process and ensure your site’s sources are always tidy, easily accessible, and impeccably structured. Upgrade today!"
-msgstr ""
-
-#: core/js/dist/admin.js:37
 msgid "Create your first folder to easily manage and access your sources."
-msgstr ""
-
-#: core/js/dist/admin.js:37
-#: core/js/dist/admin.js:113
-msgid "Upgrade"
 msgstr ""
 
 #: core/js/dist/admin.js:37
@@ -2225,11 +2245,23 @@ msgid "Congrats, you've curated all your items! Time to take a breather."
 msgstr ""
 
 #: core/js/dist/admin.js:37
+msgid "*Curate feed items before they go live*"
+msgstr ""
+
+#: core/js/dist/admin.js:37
 msgid "*Curate the content* to spotlight what truly matters"
 msgstr ""
 
 #: core/js/dist/admin.js:37
+msgid "Aggregator Pro lets you preview and approve items so only the right content makes it to your site. Stay fully in control of what gets published."
+msgstr ""
+
+#: core/js/dist/admin.js:37
 msgid "*Oversee your site’s content quality* by reviewing items before they’re published. Manually approve or reject content that truly matters to your visitors."
+msgstr ""
+
+#: core/js/dist/admin.js:37
+msgid "Unlock Curation"
 msgstr ""
 
 #: core/js/dist/admin.js:37
@@ -2848,15 +2880,15 @@ msgid "Add new automation"
 msgstr ""
 
 #: core/js/dist/admin.js:37
-msgid "Unlock the power of automations!"
+msgid "Cut the clutter from your feeds"
 msgstr ""
 
 #: core/js/dist/admin.js:37
-msgid "Automations optimize your workflow by applying intelligent filtering rules, ensuring you curate the most valuable and relevant content for your visitors."
+msgid "Block unwanted posts or import only those that match your keywords, phrases, or tags."
 msgstr ""
 
 #: core/js/dist/admin.js:37
-msgid "Get Automations with Pro"
+msgid "Filter Your Feeds Now"
 msgstr ""
 
 #: core/js/dist/admin.js:37
@@ -3953,6 +3985,18 @@ msgstr ""
 
 #: core/js/dist/admin.js:107
 msgid "Post to site"
+msgstr ""
+
+#: core/js/dist/admin.js:107
+msgid "Turn feed items into posts"
+msgstr ""
+
+#: core/js/dist/admin.js:107
+msgid "Unlock Publishing Tools"
+msgstr ""
+
+#: core/js/dist/admin.js:107
+msgid "Go beyond displaying feed items — import and curate full content and publish it as SEO-optimized WordPress posts."
 msgstr ""
 
 #: core/js/dist/admin.js:107

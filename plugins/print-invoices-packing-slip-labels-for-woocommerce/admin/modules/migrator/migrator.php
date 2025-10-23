@@ -97,6 +97,7 @@ class Wf_Woocommerce_Packing_List_Migrator
 			'woocommerce_wf_enable_invoice'=>"Yes",
 			'woocommerce_wf_add_customer_note_in_invoice'=>"No", //Add customer note
 			'wf_invoice_contactno_email'=>array('contact_number','email'),
+			'wf_invoice_product_meta_fields'=>array('_global_unique_id' => 'GTIN, UPC, EAN'),
 			'wf_woocommerce_invoice_show_print_button' => array('order_listing','order_details','order_email'),
 			'woocommerce_wf_add_invoice_in_customer_mail' => array(),
 			'woocommerce_wf_add_invoice_in_admin_mail' => "No",

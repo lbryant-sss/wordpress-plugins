@@ -236,6 +236,15 @@ if (!$newsletter_banner_hidden) :
                             'help_text' => __("Select/add order meta to display additional information related to the order on the invoice.","print-invoices-packing-slip-labels-for-woocommerce"),
                         ),
 
+                        'wf_invoice_product_meta_fields' => array(
+                            'type'=>"wt_product_meta_fields",
+                            'label'=>__("Product metadata", 'print-invoices-packing-slip-labels-for-woocommerce'),
+                            'name'=>'wf_'.$this->module_base.'_product_meta',
+                            'module_base' => $this->module_base,
+                            'ref_id' => 'wt_product_meta_fields_invoice',
+                            'help_text' => __("Select/add product meta to display additional information related to the product on the invoice.","print-invoices-packing-slip-labels-for-woocommerce"),
+                        ),
+
                         'woocommerce_wf_packinglist_logo' => array(
                             'type'=>"wt_uploader",
                             'label'=>__("Custom logo for invoice",'print-invoices-packing-slip-labels-for-woocommerce'),

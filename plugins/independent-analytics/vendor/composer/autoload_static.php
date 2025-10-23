@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitf677a81a53b5af64f9a5d44891fba130
+class ComposerStaticInitdfeae848aa2481edc10e87777b00ef6c
 {
     public static $files = array (
         'iawp-0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -19,6 +19,7 @@ class ComposerStaticInitf677a81a53b5af64f9a5d44891fba130
         'iawp-b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         'iawp-72579e7bd17821bb1321b87411366eae' => __DIR__ . '/..' . '/illuminate/support/helpers.php',
         'iawp-04c6c5c2f7095ccf6c481d3e53e1776f' => __DIR__ . '/..' . '/mustangostang/spyc/Spyc.php',
+        'iawp-9e4824c5afbdc1482b6025ce3d4dfde8' => __DIR__ . '/..' . '/league/csv/src/functions_include.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -48,6 +49,7 @@ class ComposerStaticInitf677a81a53b5af64f9a5d44891fba130
             'IAWPSCOPED\\Proper\\' => 18,
             'IAWPSCOPED\\MaxMind\\Db\\' => 22,
             'IAWPSCOPED\\League\\Uri\\' => 22,
+            'IAWPSCOPED\\League\\Csv\\' => 22,
             'IAWPSCOPED\\Illuminate\\Support\\' => 30,
             'IAWPSCOPED\\Illuminate\\Database\\' => 31,
             'IAWPSCOPED\\Illuminate\\Contracts\\' => 32,
@@ -147,6 +149,10 @@ class ComposerStaticInitf677a81a53b5af64f9a5d44891fba130
             0 => __DIR__ . '/..' . '/league/uri/src',
             1 => __DIR__ . '/..' . '/league/uri-interfaces/src',
         ),
+        'IAWPSCOPED\\League\\Csv\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/csv/src',
+        ),
         'IAWPSCOPED\\Illuminate\\Support\\' => 
         array (
             0 => __DIR__ . '/..' . '/illuminate/support',
@@ -201,9 +207,9 @@ class ComposerStaticInitf677a81a53b5af64f9a5d44891fba130
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitf677a81a53b5af64f9a5d44891fba130::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitf677a81a53b5af64f9a5d44891fba130::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitf677a81a53b5af64f9a5d44891fba130::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitdfeae848aa2481edc10e87777b00ef6c::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitdfeae848aa2481edc10e87777b00ef6c::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitdfeae848aa2481edc10e87777b00ef6c::$classMap;
 
         }, null, ClassLoader::class);
     }

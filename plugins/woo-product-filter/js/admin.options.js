@@ -1,3 +1,9 @@
+/**
+ * Product Filter by WBW - Admin Options JS
+ *
+ * @author  woobewoo
+ */
+
 "use strict";
 var wpfAdminFormChanged = [];
 window.onbeforeunload = function(){
@@ -14,7 +20,7 @@ jQuery(document).ready(function(){
 			}
 		});
 	}
-	
+
 	// Timeout - is to count only user changes, because some changes can be done auto when form is loaded
 	setTimeout(function() {
 		// If some changes was made in those forms and they were not saved - show message for confirnation before page reload
@@ -48,7 +54,7 @@ jQuery(document).ready(function(){
 		}).trigger('change');
 	}
 	wpfInitStickyItem();
-	
+
 	jQuery('.wpfFieldsetToggled').each(function(){
 		var self = this;
 		jQuery(self).find('.wpfFieldsetContent').hide();
@@ -106,8 +112,8 @@ jQuery(document).ready(function(){
 			jQuery('input.wpfCopyTextCode').each(function(){
 				cloneWidthElement.html( str_replace(jQuery(this).val(), '<', 'P') );
 				var parentSelector = jQuery(this).data('parent-selector')
-				,	parentWidth = (parentSelector && parentSelector != '' 
-						? jQuery(this).parents(parentSelector+ ':first') 
+				,	parentWidth = (parentSelector && parentSelector != ''
+						? jQuery(this).parents(parentSelector+ ':first')
 						: jQuery(this).parent()
 					).width()
 				,	txtWidth = cloneWidthElement.width();
@@ -332,11 +338,11 @@ function wpfCheckUpdateArea(selector) {
 	jQuery(selector).find('input[type=checkbox]').iCheck('update');
 }
 function wpfGetTxtEditorVal(id) {
-	if(typeof(tinyMCE) !== 'undefined' 
-		&& tinyMCE.get( id ) 
-		&& !jQuery('#'+ id).is(':visible') 
-		&& tinyMCE.get( id ).getDoc 
-		&& typeof(tinyMCE.get( id ).getDoc) == 'function' 
+	if(typeof(tinyMCE) !== 'undefined'
+		&& tinyMCE.get( id )
+		&& !jQuery('#'+ id).is(':visible')
+		&& tinyMCE.get( id ).getDoc
+		&& typeof(tinyMCE.get( id ).getDoc) == 'function'
 		&& tinyMCE.get( id ).getDoc()
 	)
 		return tinyMCE.get( id ).getContent();
@@ -344,12 +350,12 @@ function wpfGetTxtEditorVal(id) {
 		return jQuery('#'+ id).val();
 }
 function wpfSetTxtEditorVal(id, content) {
-	if(typeof(tinyMCE) !== 'undefined' 
-		&& tinyMCE 
-		&& tinyMCE.get( id ) 
+	if(typeof(tinyMCE) !== 'undefined'
+		&& tinyMCE
+		&& tinyMCE.get( id )
 		&& !jQuery('#'+ id).is(':visible')
-		&& tinyMCE.get( id ).getDoc 
-		&& typeof(tinyMCE.get( id ).getDoc) == 'function' 
+		&& tinyMCE.get( id ).getDoc
+		&& typeof(tinyMCE.get( id ).getDoc) == 'function'
 		&& tinyMCE.get( id ).getDoc()
 	)
 		tinyMCE.get( id ).setContent(content);

@@ -74,6 +74,30 @@ class Fake_Bot_Detection extends Component {
 	protected $model;
 
 	/**
+	 * API endpoints to query for IP info.
+	 *
+	 * @var string[]
+	 */
+	public const IP_INFO_SERVICES = array(
+		'https://ipinfo.io/%s/json',
+		'https://ipwho.is/%s',
+		'http://ip-api.com/json/%s',
+	);
+
+	/**
+	 * Prefix for site transient cache keys.
+	 *
+	 * @var string
+	 */
+	public const FB_CACHE_KEY_PREFIX = 'wpdef_ip_is_fb_';
+
+	/**
+	 * Cache lifetimes.
+	 */
+	public const FB_CACHE_TTL_CONFIRMED   = WEEK_IN_SECONDS;
+	public const FB_CACHE_TTL_UNCONFIRMED = HOUR_IN_SECONDS;
+
+	/**
 	 * Fake_Bot_Detection constructor.
 	 *
 	 * @param User_Agent_Lockout $model The model instance for fake bot detection functionality.
@@ -128,6 +152,16 @@ class Fake_Bot_Detection extends Component {
 				);
 
 				if ( array() !== $allowed_ips && $this->is_ip_in_format( $ip, $allowed_ips ) ) {
+					return;
+				}
+
+				// Facebook specific IP verification.
+				if ( 'facebook' === strtolower( $name ) ) {
+					if ( $this->is_facebook_ip( $ip ) ) {
+						return; // Confirmed legit Facebook bot.
+					}
+
+					$this->block_ip( $ip, $agent, $name );
 					return;
 				}
 
@@ -301,5 +335,97 @@ class Fake_Bot_Detection extends Component {
 		$model->lockout_message = $message;
 		$model->release_time    = $time;
 		$model->save();
+	}
+
+	/**
+	 * Check via external APIs if the given IP belongs to Facebook.
+	 *
+	 * @param string $ip IPv4 or IPv6 address.
+	 * @return bool True if owned by Facebook, false otherwise.
+	 */
+	public function is_facebook_ip( string $ip ): bool {
+		if ( ! filter_var( $ip, FILTER_VALIDATE_IP ) ) {
+			return false;
+		}
+
+		$cache_key = self::FB_CACHE_KEY_PREFIX . md5( $ip );
+
+		$cached = get_site_transient( $cache_key );
+		if ( false !== $cached ) {
+			return (bool) $cached;
+		}
+
+		$is_fb = false;
+
+		// Fetch from APIs.
+		foreach ( self::IP_INFO_SERVICES as $endpoint ) {
+			$url = sprintf( $endpoint, $ip );
+
+			$response = wp_remote_get(
+				$url,
+				array(
+					'timeout' => 3,
+					'headers' => array( 'Accept' => 'application/json' ),
+				)
+			);
+
+			if ( is_wp_error( $response ) ) {
+				continue;
+			}
+
+			$body = wp_remote_retrieve_body( $response );
+			$data = json_decode( $body, true );
+
+			if ( ! is_array( $data ) ) {
+				continue;
+			}
+
+			$org = $data['org'] ?? $data['connection']['org'] ?? null;
+			$isp = $data['isp'] ?? $data['connection']['isp'] ?? null;
+
+			if (
+				preg_match( '/facebook|meta/i', $org ?? '' ) ||
+				preg_match( '/facebook|meta/i', $isp ?? '' )
+			) {
+				$is_fb = true;
+				break;
+			}
+		}
+
+		set_site_transient(
+			$cache_key,
+			$is_fb ? 1 : 0,
+			$is_fb ? self::FB_CACHE_TTL_CONFIRMED : self::FB_CACHE_TTL_UNCONFIRMED
+		);
+
+		return $is_fb;
+	}
+
+	/**
+	 * Clear all Facebook IP check transients.
+	 */
+	public function clear_fb_transients(): void {
+		global $wpdb;
+
+		$cache_key       = self::FB_CACHE_KEY_PREFIX;
+		$like_pattern    = "_site_transient_{$cache_key}_%";
+		$timeout_pattern = "_site_transient_timeout_{$cache_key}_%";
+
+		if ( is_multisite() ) {
+			$table      = $wpdb->sitemeta;
+			$key_column = 'meta_key';
+		} else {
+			$table      = $wpdb->options;
+			$key_column = 'option_name';
+		}
+
+		// Delete Facebook IP check transients.
+		$wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+			$wpdb->prepare(
+				"DELETE FROM {$table} WHERE {$key_column} LIKE %s OR {$key_column} LIKE %s", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+				$like_pattern,
+				$timeout_pattern
+			)
+		);
 	}
 }

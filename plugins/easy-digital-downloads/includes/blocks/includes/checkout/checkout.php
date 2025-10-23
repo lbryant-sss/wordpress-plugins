@@ -374,3 +374,15 @@ function get_customer_address( $customer ) {
 	 */
 	return array_map( 'sanitize_text_field', apply_filters( 'edd_checkout_billing_details_address', $address, $customer ) );
 }
+
+/**
+ * Disables the Checkout Fields Manager captcha if reCAPTCHA is enabled.
+ *
+ * @since 3.5.3
+ * @param bool $has_captcha Whether the checkout has a captcha.
+ * @return bool
+ */
+function disable_cfm_captcha( $has_captcha ) {
+	return \EDD\Captcha\Utility::can_do_captcha() ? false : $has_captcha;
+}
+add_filter( 'edd_cfm_checkout_has_captcha', __NAMESPACE__ . '\disable_cfm_captcha' );

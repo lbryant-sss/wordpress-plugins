@@ -94,6 +94,12 @@ class Core {
 
     public function ajax_first_folder_notice() {
 		check_ajax_referer( 'fbv_nonce', 'nonce', true );
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error(
+				array( 'mess' => __( 'You do not have permission to perform this action.', 'filebird' ) ),
+				403
+			);
+		}
 		update_option( 'fbv_first_folder_notice', time() + 30 * 60 * 60 * 24 ); //After 3 months show
 		wp_send_json_success();
 	}

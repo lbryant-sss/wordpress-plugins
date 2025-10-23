@@ -53,6 +53,10 @@ class Tables
     {
         return self::prefix('countries');
     }
+    public static function cities() : string
+    {
+        return self::prefix('cities');
+    }
     public static function device_browsers() : string
     {
         return self::prefix('device_browsers');
@@ -60,6 +64,38 @@ class Tables
     public static function device_types() : string
     {
         return self::prefix('device_types');
+    }
+    public static function device_oss() : string
+    {
+        return self::prefix('device_oss');
+    }
+    public static function campaigns() : string
+    {
+        return self::prefix('campaigns');
+    }
+    public static function landing_pages() : string
+    {
+        return self::prefix('landing_pages');
+    }
+    public static function utm_sources() : string
+    {
+        return self::prefix('utm_sources');
+    }
+    public static function utm_mediums() : string
+    {
+        return self::prefix('utm_mediums');
+    }
+    public static function utm_campaigns() : string
+    {
+        return self::prefix('utm_campaigns');
+    }
+    public static function referrers() : string
+    {
+        return self::prefix('referrers');
+    }
+    public static function referrer_types() : string
+    {
+        return self::prefix('referrer_types');
     }
     private static function prefix(string $name)
     {

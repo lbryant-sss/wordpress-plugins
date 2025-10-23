@@ -45,6 +45,7 @@ class Filter extends \IAWP\AJAX\AJAX
         $table_type = $this->get_field('table_type');
         $is_geo_table = $table_type === 'geo';
         $table_class = Env::get_table();
+        $filter_logic = $this->get_filter_logic();
         $examiner_config = Examiner_Config::make(['type' => $this->get_field('examiner_type'), 'group' => $this->get_field('examiner_group'), 'id' => $this->get_int_field('examiner_id')]);
         /** @var Table $table */
         $table = new $table_class($group, $is_new_group);
@@ -52,28 +53,18 @@ class Filter extends \IAWP\AJAX\AJAX
         $sort_configuration = $table->sanitize_sort_parameters($sort_column, $sort_direction);
         $rows_class = $table->group()->rows_class();
         $statistics_class = $table->group()->statistics_class();
-        if ($as_csv) {
-            /** @var Rows $rows_query */
-            $rows_query = new $rows_class($date_range, null, $filters, $sort_configuration);
-            if ($examiner_config) {
-                $rows_query->for_examiner($examiner_config);
-            }
-            $rows = $rows_query->rows();
-            $csv = $table->csv($rows, \true);
-            echo $csv->to_string();
-            return;
-        }
-        if ($is_geo_table) {
-            /** @var Rows $rows_query */
-            $rows_query = new $rows_class($date_range, null, $filters, $sort_configuration);
-        } else {
-            /** @var Rows $rows_query */
-            $rows_query = new $rows_class($date_range, $number_of_rows, $filters, $sort_configuration);
-        }
+        $get_all_rows = $as_csv || $is_geo_table;
+        /** @var Rows $rows_query */
+        $rows_query = new $rows_class($date_range, $sort_configuration, $get_all_rows ? null : $number_of_rows, $filters, $filter_logic);
         if ($examiner_config) {
             $rows_query->for_examiner($examiner_config);
         }
         $rows = $rows_query->rows();
+        if ($as_csv) {
+            $csv = $table->csv($rows, \true);
+            echo $csv->to_string();
+            return;
+        }
         if (empty($filters)) {
             /** @var Statistics $statistics */
             $statistics = new $statistics_class($date_range, null, $chart_interval);
@@ -92,10 +83,11 @@ class Filter extends \IAWP\AJAX\AJAX
             $examiner_rows_class = $examiner_table->group()->rows_class();
             $examiner_statistics_class = $examiner_table->group()->statistics_class();
             /** @var Rows $rows_query */
-            $rows_query = new $examiner_rows_class($date_range, null, null, $examiner_table->sanitize_sort_parameters());
+            $rows_query = new $examiner_rows_class($date_range, $examiner_table->sanitize_sort_parameters());
             $rows_query->limit_to($examiner_config->id());
             $quick_stat_statistics = new $examiner_statistics_class($date_range, $rows_query, $chart_interval);
             $hide_unfiltered_statistics = \true;
+            $table->set_statistics($quick_stat_statistics);
         }
         if ($is_geo_table) {
             $map_data = new Map_Data($rows);
@@ -105,7 +97,10 @@ class Filter extends \IAWP\AJAX\AJAX
             $chart = new Chart($quick_stat_statistics);
         }
         $quick_stats = new Quick_Stats($quick_stat_statistics, \false, \false, $hide_unfiltered_statistics);
-        \wp_send_json_success(['rows' => $table->get_rendered_template($rows, \true, $sort_configuration->column(), $sort_configuration->direction()), 'table' => $table->get_rendered_template($rows, \false, $sort_configuration->column(), $sort_configuration->direction()), 'table_toolbar' => $table->get_table_toolbar_markup(), 'totalNumberOfRows' => $total_number_of_rows, 'chart' => $chart->get_html(), 'stats' => $quick_stats->get_html(), 'label' => $date_range->label(), 'isLastPage' => \count($rows) < \IAWPSCOPED\iawp()->pagination_page_size() * $page, 'columns' => $table->visible_column_ids(), 'columnsHTML' => $table->column_picker_html(), 'groupId' => $table->group()->id(), 'filters' => $filters, 'filtersTemplateHTML' => $table->filters_template_html(), 'filtersButtonsHTML' => $table->filters_condition_buttons_html($filters), 'chartInterval' => $chart_interval->id()]);
+        $raw_filters = \array_map(function (\IAWP\Rows\Filter $filter) {
+            return $filter->as_associative_array();
+        }, $filters);
+        \wp_send_json_success(['rows' => $table->get_rendered_template($rows, \true, $sort_configuration->column(), $sort_configuration->direction()), 'table' => $table->get_rendered_template($rows, \false, $sort_configuration->column(), $sort_configuration->direction()), 'table_toolbar' => $table->get_table_toolbar_markup(), 'totalNumberOfRows' => $total_number_of_rows, 'chart' => $chart->get_html(), 'stats' => $quick_stats->get_html(), 'label' => $date_range->label(), 'isLastPage' => \count($rows) < \IAWPSCOPED\iawp()->pagination_page_size() * $page, 'columns' => $table->visible_column_ids(), 'columnsHTML' => $table->column_picker_html(), 'groupId' => $table->group()->id(), 'filters' => $raw_filters, 'filtersTemplateHTML' => $table->filters_template_html(), 'filtersButtonsHTML' => $table->filters_condition_buttons_html($filters), 'chartInterval' => $chart_interval->id()]);
     }
     /**
      * Get the date range for the filter request
@@ -133,5 +128,13 @@ class Filter extends \IAWP\AJAX\AJAX
             }
         }
         return new Relative_Date_Range($relative_range_id);
+    }
+    private function get_filter_logic() : string
+    {
+        $value = $this->get_field('filter_logic');
+        if (!\in_array($value, ['and', 'or'])) {
+            return 'and';
+        }
+        return $value;
     }
 }

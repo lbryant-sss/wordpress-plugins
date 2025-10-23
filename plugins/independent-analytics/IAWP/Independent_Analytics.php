@@ -19,7 +19,6 @@ use IAWP\Ecommerce\SureCart_Event_Sync_Job;
 use IAWP\Ecommerce\SureCart_Order;
 use IAWP\Ecommerce\SureCart_Store;
 use IAWP\Ecommerce\WooCommerce_Order;
-use IAWP\Ecommerce\WooCommerce_Referrer_Meta_Box;
 use IAWP\Email_Reports\Email_Reports;
 use IAWP\Form_Submissions\Form;
 use IAWP\Form_Submissions\Submission_Listener;
@@ -30,6 +29,7 @@ use IAWP\Utils\Plugin;
 use IAWP\Utils\Request;
 use IAWP\Utils\Singleton;
 use IAWP\Utils\Timezone;
+use IAWP\WooCommerceOrderMetaBox\WooCommerceOrderMetaBox;
 use IAWPSCOPED\Illuminate\Support\Carbon;
 use IAWPSCOPED\Illuminate\Support\Str;
 /** @internal */
@@ -69,10 +69,11 @@ class Independent_Analytics
         (new Click_Processing_Job())->register_handler();
         (new Module_Refresh_Job())->register_handler();
         (new \IAWP\Migration_Fixer_Job())->register_handler();
+        (new \IAWP\Geo_Database_Health_Check_Job())->register_handler();
         if (\IAWPSCOPED\iawp_is_pro()) {
             $this->email_reports = new Email_Reports();
             new \IAWP\Campaign_Builder();
-            new WooCommerce_Referrer_Meta_Box();
+            WooCommerceOrderMetaBox::register();
         }
         \add_action('admin_enqueue_scripts', [$this, 'enqueue_scripts_and_styles'], 110);
         // Called at 110 to dequeue other scripts
@@ -283,6 +284,7 @@ class Independent_Analytics
         \wp_register_style('iawp-dashboard-widget-styles', \IAWPSCOPED\iawp_url_to('dist/styles/dashboard_widget.css'), [], \IAWP_VERSION);
         \wp_register_style('iawp-freemius-notice-styles', \IAWPSCOPED\iawp_url_to('dist/styles/freemius_notice_styles.css'), [], \IAWP_VERSION);
         \wp_register_style('iawp-posts-menu-styles', \IAWPSCOPED\iawp_url_to('dist/styles/posts_menu.css'), [], \IAWP_VERSION);
+        \wp_register_style('iawp-wc-order-box-styles', \IAWPSCOPED\iawp_url_to('dist/styles/wc_order_box.css'), [], \IAWP_VERSION);
         \wp_register_script('iawp-javascript', \IAWPSCOPED\iawp_url_to('dist/js/index.js'), ['wp-i18n'], \IAWP_VERSION);
         \wp_set_script_translations('iawp-javascript', 'independent-analytics');
         \wp_register_script('iawp-dashboard-widget-javascript', \IAWPSCOPED\iawp_url_to('dist/js/dashboard_widget.js'), ['wp-i18n'], \IAWP_VERSION);
@@ -333,6 +335,8 @@ class Independent_Analytics
             \wp_enqueue_style('iawp-dashboard-widget-styles');
         } elseif ($hook === 'edit.php') {
             \wp_enqueue_style('iawp-posts-menu-styles');
+        } elseif (\IAWPSCOPED\iawp_is_pro() && $this->is_woocommerce_support_enabled() && $hook == 'woocommerce_page_wc-orders') {
+            \wp_enqueue_style('iawp-wc-order-box-styles');
         }
         if (Menu_Bar_Stats::is_option_enabled()) {
             \wp_enqueue_style('iawp-front-end-styles');

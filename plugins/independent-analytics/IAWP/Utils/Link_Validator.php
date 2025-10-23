@@ -3,6 +3,7 @@
 namespace IAWP\Utils;
 
 use IAWP\Click_Tracking;
+use IAWPSCOPED\Illuminate\Support\Str;
 use IAWPSCOPED\League\Uri\Uri;
 /** @internal */
 class Link_Validator
@@ -73,7 +74,11 @@ class Link_Validator
     {
         $domain = \strpos($domain, 'http') !== 0 ? "http://{$domain}" : $domain;
         $components = Uri::createFromString($domain);
-        return $components->getHost();
+        $host = $components->getHost();
+        if (Str::startsWith($host, 'www.')) {
+            $host = Str::after($host, 'www.');
+        }
+        return $host;
     }
     public static function sanitize_subdirectory($subdirectory)
     {

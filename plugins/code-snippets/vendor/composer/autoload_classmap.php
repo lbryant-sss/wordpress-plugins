@@ -31,6 +31,7 @@ return array(
     'Code_Snippets\\Plugin' => $baseDir . '/php/class-plugin.php',
     'Code_Snippets\\REST_API\\Snippets_REST_Controller' => $baseDir . '/php/rest-api/class-snippets-rest-controller.php',
     'Code_Snippets\\Settings\\Setting_Field' => $baseDir . '/php/settings/class-setting-field.php',
+    'Code_Snippets\\Settings\\Version_Switch' => $baseDir . '/php/settings/class-version-switch.php',
     'Code_Snippets\\Settings_Menu' => $baseDir . '/php/admin-menus/class-settings-menu.php',
     'Code_Snippets\\Snippet' => $baseDir . '/php/class-snippet.php',
     'Code_Snippets\\Snippet_Config_Repository' => $baseDir . '/php/flat-files/classes/class-config-repository.php',

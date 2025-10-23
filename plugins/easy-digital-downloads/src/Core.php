@@ -36,6 +36,12 @@ class Core extends EventManagement\Subscribers {
 			new Integrations\Registry(),
 			new Checkout\Loader(),
 
+			// Users.
+			new Users\Verification(),
+
+			// Utils.
+			new Utils\Modal(),
+
 			// Gateways.
 			new Gateways\Stripe\Webhooks\Listener(),
 			new Gateways\Square\Webhooks\Listener(),
@@ -54,6 +60,9 @@ class Core extends EventManagement\Subscribers {
 
 			// Discounts.
 			new Discounts\Search(),
+
+			// Captcha.
+			new Captcha\Validate(),
 		);
 	}
 

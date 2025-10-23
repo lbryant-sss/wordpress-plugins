@@ -392,7 +392,6 @@ class WT_Form_Field_Builder
 
 	public function wt_additional_fields($args, $base_id)
 	{
-		include WF_PKLIST_PLUGIN_PATH . "admin/views/_custom_field_editor_form.php";
 		extract($this->verify_the_fields($args));
 		$fields = array();
 
@@ -471,6 +470,62 @@ class WT_Form_Field_Builder
 			__("Add/Edit Order Meta Field", "print-invoices-packing-slip-labels-for-woocommerce"),
 			$this->wt_add_help_text($help_text, $conditional_help_html, $after_form_field)
 		);
+		
+		include WF_PKLIST_PLUGIN_PATH . "admin/views/_custom_field_editor_form.php";
+		
+		return $html;
+	}
+
+	/**
+	 * @since 4.0.0
+	 * Function to display the product meta field using form builder
+	 */
+	public function wt_product_meta_fields($args, $base_id)
+	{
+		extract($this->verify_the_fields($args));
+		$add_data_flds = array();
+
+		$user_created = Wf_Woocommerce_Packing_List::get_option('wf_product_meta_fields');
+		$result = Wf_Woocommerce_Packing_List::get_option($name, $base_id);
+		$result = is_string($result) ? stripslashes($result) : $result;
+
+		if (is_array($user_created))  //user created
+		{
+			$fields = array_merge($add_data_flds, $user_created);
+		} else {
+			$fields = $add_data_flds; //default
+		}
+
+		$user_selected_arr = $result && is_array($result) ? $result : array();
+
+		$html = sprintf('<td>
+    		<div class="wf_select_multi">
+    		<input type="hidden" name="wf_%1$s_product_meta_hidden" value="1" />
+    		<select class="wc-enhanced-select" name="wf_%1$s_product_meta[]" multiple="multiple">', $module_base);
+		foreach ($fields as $wt_fields_key => $wt_field_name) {
+			$meta_key_display = Wf_Woocommerce_Packing_List::get_display_key($wt_fields_key);
+			$selected = in_array($wt_fields_key, $user_selected_arr) ? 'selected' : '';
+			$html .= sprintf(
+				'<option value="%1$s" %2$s>%3$s</option>',
+				$wt_fields_key,
+				$selected,
+				$wt_field_name . $meta_key_display
+			);
+		}
+		$html .= sprintf(
+			'</select>
+	            	<br>
+	            	<button type="button" class="button button-secondary" data-wf_popover="1" data-title="%1$s" data-module-base="%2$s" data-content-container=".wt_pklist_product_meta_custom_field_form" data-field-type="product_meta" style="margin-top:5px; margin-left:5px; float: right;">%3$s</button>
+	            	</div>%4$s</td>
+	            	<td></td>',
+			__("Product Meta", "print-invoices-packing-slip-labels-for-woocommerce"),
+			esc_attr($module_base),
+			__("Add/Edit Product Meta Field", "print-invoices-packing-slip-labels-for-woocommerce"),
+			$this->wt_add_help_text($help_text, $conditional_help_html, $after_form_field)
+		);
+		
+		include WF_PKLIST_PLUGIN_PATH . "admin/views/_custom_field_editor_form_product.php";
+		
 		return $html;
 	}
 

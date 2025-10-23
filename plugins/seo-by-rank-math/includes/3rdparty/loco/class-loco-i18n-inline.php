@@ -27,7 +27,7 @@ class Loco_I18n_Inline {
 	 * Class constructor.
 	 */
 	public function __construct() {
-		$this->action( 'rank_math/admin/after_settings_scripts', 'inject_settings_locale' );
+		$this->action( 'rank-math/admin_enqueue_scripts', 'inject_settings_locale' );
 	}
 
 	/**
@@ -45,9 +45,7 @@ class Loco_I18n_Inline {
 			$json
 		);
 
-		foreach ( [ 'rank-math-options', 'rank-math-settings-chunk' ] as $handle ) {
-			wp_add_inline_script( $handle, $inline, 'before' );
-		}
+		wp_add_inline_script( 'common', $inline, 'before' );
 	}
 
 	/**

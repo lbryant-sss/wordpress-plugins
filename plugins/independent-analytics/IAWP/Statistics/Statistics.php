@@ -69,12 +69,12 @@ abstract class Statistics
      */
     public function get_statistics() : array
     {
-        return $this->statistic_instances;
+        return Collection::make($this->statistic_instances)->filter(fn(\IAWP\Statistics\Statistic $statistic) => !$statistic->is_invisible())->values()->all();
     }
     public function get_grouped_statistics()
     {
         // This whole thing is a bit of a mess...
-        return Collection::make($this->statistic_instances)->groupBy(function (\IAWP\Statistics\Statistic $item, int $key) {
+        return Collection::make($this->statistic_instances)->filter(fn(\IAWP\Statistics\Statistic $statistic) => !$statistic->is_invisible())->groupBy(function (\IAWP\Statistics\Statistic $item, int $key) {
             return Plugin_Group::get_plugin_group($item->plugin_group())->name();
         })->map(function (Collection $group, $plugin_group) {
             $items = $group->map(function (\IAWP\Statistics\Statistic $item) {
@@ -134,9 +134,15 @@ abstract class Statistics
     {
         $sessions_table = Query::get_table_name(Query::SESSIONS);
         $views_table = Query::get_table_name(Query::VIEWS);
+        $referrers_table = Query::get_table_name(Query::REFERRERS);
+        $campaigns_table = Query::get_table_name(Query::CAMPAIGNS);
         $column = $this->total_table_rows_column() ?? $this->required_column();
         $query = Illuminate_Builder::new()->selectRaw("COUNT(DISTINCT {$column}) AS total_table_rows")->from("{$sessions_table} AS sessions")->join("{$views_table} AS views", function (JoinClause $join) {
             $join->on('sessions.session_id', '=', 'views.session_id');
+        })->leftJoin("{$referrers_table} AS referrers", function (JoinClause $join) {
+            $join->on('sessions.referrer_id', '=', 'referrers.id');
+        })->leftJoin("{$campaigns_table} AS campaigns", function (JoinClause $join) {
+            $join->on('sessions.campaign_id', '=', 'campaigns.campaign_id');
         })->tap(Query_Taps::tap_authored_content_check(\true))->when(!\is_null($this->rows), function (Builder $query) {
             $this->rows->attach_filters($query);
         })->whereBetween('sessions.created_at', [$this->date_range->iso_start(), $this->date_range->iso_end()])->whereBetween('views.viewed_at', [$this->date_range->iso_start(), $this->date_range->iso_end()]);
@@ -239,6 +245,8 @@ abstract class Statistics
         $sessions_table = Query::get_table_name(Query::SESSIONS);
         $views_table = Query::get_table_name(Query::VIEWS);
         $orders_table = Query::get_table_name(Query::ORDERS);
+        $referrers_table = Query::get_table_name(Query::REFERRERS);
+        $campaigns_table = Query::get_table_name(Query::CAMPAIGNS);
         $form_submissions_table = Query::get_table_name(Query::FORM_SUBMISSIONS);
         $form_submissions_query = Illuminate_Builder::new()->select(['form_id', 'session_id'])->selectRaw('COUNT(*) AS form_submissions')->from($form_submissions_table, 'form_submissions')->whereBetween('created_at', [$range->iso_start(), $range->iso_end()])->groupBy(['form_id', 'session_id']);
         $session_statistics = Illuminate_Builder::new();
@@ -248,6 +256,10 @@ abstract class Statistics
             $join->on('views.id', '=', 'orders.initial_view_id')->where('orders.is_included_in_analytics', '=', \true);
         })->leftJoin("{$this->tables::clicks()} AS clicks", function (JoinClause $join) {
             $join->on('views.id', '=', 'clicks.view_id');
+        })->leftJoin("{$referrers_table} AS referrers", function (JoinClause $join) {
+            $join->on('sessions.referrer_id', '=', 'referrers.id');
+        })->leftJoin("{$campaigns_table} AS campaigns", function (JoinClause $join) {
+            $join->on('sessions.campaign_id', '=', 'campaigns.campaign_id');
         })->tap(Query_Taps::tap_authored_content_check(\true))->when(!\is_null($rows), function (Builder $query) use($rows) {
             $rows->attach_filters($query);
         })->whereBetween('sessions.created_at', [$range->iso_start(), $range->iso_end()])->whereBetween('views.viewed_at', [$range->iso_start(), $range->iso_end()])->groupBy('sessions.session_id')->when(!\is_null($this->required_column()), function (Builder $query) {

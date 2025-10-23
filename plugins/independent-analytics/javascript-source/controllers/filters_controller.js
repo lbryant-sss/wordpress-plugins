@@ -3,7 +3,8 @@ import * as easepick from "@easepick/bundle";
 
 export default class extends Controller {
     static values = {
-        filters: Array
+        filters: Array,
+        filterLogic: String
     }
     static targets = [
         'modal',
@@ -236,6 +237,7 @@ export default class extends Controller {
             new CustomEvent('iawp:changeFilters', {
                 detail: {
                     filters,
+                    filterLogic: this.filterLogicValue,
                     showLoadingOverlay
                 }
             })
@@ -294,6 +296,10 @@ export default class extends Controller {
             const matchingColumn = operand.dataset.column === column
             operand.classList.toggle('show', matchingColumn)
         })
+    }
+
+    changeFilterLogic(event) {
+        this.filterLogicValue = event.target.value
     }
 
     operandChange(e) {

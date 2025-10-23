@@ -20,13 +20,13 @@ class Click_Statistics extends \IAWP\Statistics\Statistics
     }
     protected function make_statistic_instances() : array
     {
-        return [$this->make_statistic(['id' => 'clicks', 'name' => \__('Clicks', 'independent-analytics'), 'plugin_group' => 'general'])];
+        return [$this->make_statistic(['id' => 'clicks', 'name' => \__('Clicks', 'independent-analytics'), 'plugin_group' => 'general']), $this->make_statistic(['id' => 'visitors', 'name' => \__('Visitors', 'independent-analytics'), 'plugin_group' => 'general', 'is_invisible' => \true]), $this->make_statistic(['id' => 'views', 'name' => \__('Views', 'independent-analytics'), 'plugin_group' => 'general', 'is_invisible' => \true]), $this->make_statistic(['id' => 'sessions', 'name' => \__('Sessions', 'independent-analytics'), 'plugin_group' => 'general', 'is_invisible' => \true])];
     }
     protected function query(Date_Range $range, ?Rows $rows = null, bool $is_grouped_by_date_interval = \false)
     {
         $utc_offset = Timezone::utc_offset();
         $site_offset = Timezone::site_offset();
-        $query = Illuminate_Builder::new()->selectRaw('COUNT(DISTINCT clicks.click_id) AS clicks')->from($this->tables::link_rules(), 'link_rules')->leftJoin($this->tables::clicked_links() . ' AS clicked_links', 'clicked_links.link_rule_id', '=', 'link_rules.link_rule_id')->leftJoin($this->tables::clicks() . ' AS clicks', 'clicks.click_id', '=', 'clicked_links.click_id')->leftJoin($this->tables::click_targets() . ' AS click_targets', 'click_targets.click_target_id', '=', 'clicks.click_target_id')->when(!\is_null($rows), function (Builder $query) use($rows) {
+        $query = Illuminate_Builder::new()->selectRaw('COUNT(DISTINCT clicks.click_id) AS clicks')->selectRaw('COUNT(DISTINCT views.id) AS views')->selectRaw('COUNT(DISTINCT sessions.session_id) AS sessions')->selectRaw('COUNT(DISTINCT sessions.visitor_id) AS visitors')->from($this->tables::link_rules(), 'link_rules')->leftJoin($this->tables::clicked_links() . ' AS clicked_links', 'clicked_links.link_rule_id', '=', 'link_rules.link_rule_id')->leftJoin($this->tables::clicks() . ' AS clicks', 'clicks.click_id', '=', 'clicked_links.click_id')->leftJoin($this->tables::click_targets() . ' AS click_targets', 'click_targets.click_target_id', '=', 'clicks.click_target_id')->leftJoin($this->tables::views() . ' AS views', 'views.id', '=', 'clicks.view_id')->leftJoin($this->tables::sessions() . ' AS sessions', 'sessions.session_id', '=', 'views.session_id')->when(!\is_null($rows), function (Builder $query) use($rows) {
             $rows->attach_filters($query);
         })->tap(Query_Taps::tap_authored_content_for_clicks())->whereBetween('clicks.created_at', [$range->iso_start(), $range->iso_end()])->when($is_grouped_by_date_interval, function (Builder $query) use($utc_offset, $site_offset) {
             if ($this->chart_interval->id() === 'daily') {

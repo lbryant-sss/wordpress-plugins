@@ -1,6 +1,0 @@
-{
-    "redefinable-internals": [
-      "filter_has_var",
-      "filter_input"
-    ]
-}

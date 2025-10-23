@@ -5,7 +5,7 @@ Tags: WooCommerce, Product Feed, Google Shopping, Facebook Catalog, Google listi
 Requires at least: 4.4
 Tested Up To: 6.8
 Requires PHP: 5.6
-Stable tag: 6.5.88
+Stable tag: 6.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -371,6 +371,9 @@ Using pro version:
 4. Category Mapping
 
 == Changelog ==
+
+= 6.6.0 (2025-10-22) =
+* Added : ChatGPT(OpenAI) Product Feed Template
 
 = 6.5.88 (2025-10-20) =
 * Added : Halloween Discount Banner
