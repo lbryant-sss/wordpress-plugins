@@ -1,5 +1,10 @@
 == Changelog ==
 
+= 5.4.0.7 =
+
+* Fixes a typo in the date/time and date/timeslots controls.
+* Prevents a malfunction caused by the Cachebuster plugin.
+
 = 5.4.0.6 =
 
 * Modifies the equation evaluation module.

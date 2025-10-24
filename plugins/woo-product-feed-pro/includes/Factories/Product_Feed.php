@@ -625,7 +625,7 @@ class Product_Feed {
      */
     public function generate( $context = 'schedule' ) {
         // Log when feed generation starts.
-        $logging = get_option( 'add_woosea_logging', 'no' );
+        $logging = get_option( 'adt_enable_logging', 'no' );
         if ( 'yes' === $logging ) {
             $start_info  = array(
                 'feed_id'        => $this->id,
@@ -709,7 +709,7 @@ class Product_Feed {
 
             if ( 'ready' === $this->status ) {
                 // Log when feed generation ends.
-                $logging = get_option( 'add_woosea_logging', 'no' );
+                $logging = get_option( 'adt_enable_logging', 'no' );
                 if ( 'yes' === $logging ) {
                     $end_info    = array(
                         'feed_id'         => $this->id,
@@ -773,7 +773,7 @@ class Product_Feed {
         } catch ( \Throwable $e ) {
 
             // Log the error for debugging.
-            $logging = get_option( 'add_woosea_logging', 'no' );
+            $logging = get_option( 'adt_enable_logging', 'no' );
             if ( 'yes' === $logging ) {
                 // Build comprehensive error information.
                 $error_info  = array(
@@ -932,7 +932,7 @@ class Product_Feed {
      * @access public
      */
     public function save_legacy_options() {
-        $cron_projects = get_option( 'cron_projects', array() );
+        $cron_projects = get_option( 'adt_cron_projects', array() );
         $feed_data     = array();
         $data          = array();
 
@@ -1012,7 +1012,7 @@ class Product_Feed {
             );
         }
 
-        update_option( 'cron_projects', $cron_projects, false );
+        update_option( 'adt_cron_projects', $cron_projects, false );
     }
 
     /**
@@ -1035,7 +1035,7 @@ class Product_Feed {
      * @access public
      */
     public function delete_legacy_options() {
-        $feed_data = get_option( 'cron_projects', array() );
+        $feed_data = get_option( 'adt_cron_projects', array() );
 
         if ( ! empty( $feed_data ) ) {
             $feed_data = array_filter(
@@ -1045,7 +1045,7 @@ class Product_Feed {
                 }
             );
 
-            update_option( 'cron_projects', $feed_data );
+            update_option( 'adt_cron_projects', $feed_data );
         }
 
         // Delete the 'batch_project_' option.

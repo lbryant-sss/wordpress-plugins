@@ -181,7 +181,7 @@ class WooSEA_Get_Products {
                 'utm_source'   => $feed->utm_source,
                 'utm_campaign' => $feed->utm_campaign,
                 'utm_medium'   => $feed->utm_medium,
-                'utm_term'     => 'adtribes',
+                'utm_term'     => 'adtribes', // Always use hardcoded value, ignore any legacy utm_term values
                 'utm_content'  => $feed->utm_content,
             );
             $utm = array_filter( $utm ); // Filter out empty or NULL values from UTM array.
@@ -201,12 +201,7 @@ class WooSEA_Get_Products {
 
             foreach ( $utm as $key => $value ) {
                 $value = str_replace( ' ', '%20', $value );
-
-                if ( $channel_field == 'google_drm' ) {
-                    $utm_part .= "&$key=$value";
-                } else {
-                    $utm_part .= "&$key=$value";
-                }
+                $utm_part .= "&$key=$value";
             }
 
             if ( preg_match( '/\?/i', $link ) ) {
@@ -2274,13 +2269,19 @@ class WooSEA_Get_Products {
             $product_data['visibility']            = $catalog_visibility;
 
             // Get product creation date
-            if ( ! empty( $product->get_date_created() ) ) {
-                $datetime_created                      = $product->get_date_created(); // Get product created datetime
-                $timestamp_created                     = $datetime_created->getTimestamp(); // product created timestamp
-                $datetime_now                          = new WC_DateTime(); // Get now datetime (from Woocommerce datetime object)
-                $timestamp_now                         = $datetime_now->getTimestamp(); // Get now timestamp
-                $time_delta                            = $timestamp_now - $timestamp_created; // Difference in seconds
-                $product_data['days_back_created']     = round( $time_delta / 86400 );
+            // For variations, use the parent's creation date to maintain consistency with variable product creation date changes
+            $creation_date_source = $product;
+            if ( $product->get_type() === 'variation' && $parent_id > 0 && is_object( $parent_product ) ) {
+                $creation_date_source = $parent_product;
+            }
+
+            if ( ! empty( $creation_date_source->get_date_created() ) ) {
+                $datetime_created = $creation_date_source->get_date_created();
+                $timestamp_created = $datetime_created->getTimestamp();
+                $timestamp_now = ( new WC_DateTime() )->getTimestamp();
+                $time_delta = $timestamp_now - $timestamp_created;
+
+                $product_data['days_back_created'] = round( $time_delta / 86400 );
                 $product_data['product_creation_date'] = $datetime_created;
             }
 
@@ -2288,7 +2289,13 @@ class WooSEA_Get_Products {
             $product_data['exclude_from_catalog'] = 'no';
             $product_data['exclude_from_search']  = 'no';
             $product_data['exclude_from_all']     = 'no';
-            $product_data['featured']             = $product->is_featured() ? 'yes' : 'no';
+            
+            // For product variations, check the parent product's featured status
+            if ( $parent_id > 0 && is_object( $parent_product ) ) {
+                $product_data['featured'] = $parent_product->is_featured() ? 'yes' : 'no';
+            } else {
+                $product_data['featured'] = $product->is_featured() ? 'yes' : 'no';
+            }
 
             switch ( $catalog_visibility ) {
                 case 'catalog':
@@ -2410,10 +2417,10 @@ class WooSEA_Get_Products {
             asort( $categories );
 
             foreach ( $categories as $key => $value ) {
-                $product_cat = get_term( $value, 'product_cat' );
+                $product_cat = get_term( (int) $value, 'product_cat' );
 
-                // Check if there are mother categories
-                if ( ! empty( $product_cat ) ) {
+                if ( $product_cat && ! is_wp_error( $product_cat ) ) {
+                    // Check if there are mother categories
                     $category_path = $this->woosea_get_term_parents( $product_cat->term_id, 'product_cat', $link = false, $project_taxonomy = $feed_channel['taxonomy'], $nicename = false, $visited = array() );
 
                     if ( ! is_object( $category_path ) ) {
@@ -2424,15 +2431,22 @@ class WooSEA_Get_Products {
                         $product_data['category_path_skroutz'] = str_replace( '&amp;', '&', $product_data['category_path_skroutz'] );
                     }
 
-                    $parent_categories = get_ancestors( $product_cat->term_id, 'product_cat' );
-                    foreach ( $parent_categories as $category_id ) {
-                        $parent      = get_term_by( 'id', $category_id, 'product_cat' );
-                        $parent_name = $parent->name;
+                    $parent_categories = get_ancestors( (int) $product_cat->term_id, 'product_cat' );
+                    if ( is_array( $parent_categories ) && ! empty( $parent_categories ) ) {
+                        foreach ( $parent_categories as $category_id ) {
+                            $parent = get_term_by( 'id', (int) $category_id, 'product_cat' );
+                            if ( $parent && ! is_wp_error( $parent ) ) {
+                                $parent_name = $parent->name;
+                            }
+                        }
                     }
 
                     if ( isset( $product_cat->name ) ) {
                         $catname[] = $product_cat->name;
-                        $catlink[] = get_term_link( $value, 'product_cat' );
+                        $term_link = get_term_link( (int) $value, 'product_cat' );
+                        if ( ! is_wp_error( $term_link ) ) {
+                            $catlink[] = $term_link;
+                        }
                     }
                 }
             }
@@ -2556,7 +2570,12 @@ class WooSEA_Get_Products {
                 $product_data['link_no_tracking'] = $vlink_piece[0];
             }
 
-            $product_data['purchase_note'] = get_post_meta( $product_data['id'], '_purchase_note' );
+             // For product variations, check the parent product's purchase note
+             if ( $parent_id > 0 && is_object( $parent_product ) ) {
+                $product_data['purchase_note'] = $parent_product->get_purchase_note();
+            } else {
+                $product_data['purchase_note'] = $product->get_purchase_note();
+            }
 
             // Product condition is default to 'new' if not set.
             if ( empty( $product_data['condition'] ) || $product_data['condition'] == 'Array' ) {
@@ -3189,8 +3208,8 @@ class WooSEA_Get_Products {
             // Featured Image
             if ( has_post_thumbnail( $product_data['id'] ) ) {
                 // Check if user would like to use the mother main image for all variation products
-                $add_mother_image = get_option( 'add_mother_image' );
-                $product_image_id = 'yes' == $add_mother_image && $product_data['item_group_id'] > 0 ? $product_data['item_group_id'] : $product_data['id'];
+                $use_parent_variable_product_image = get_option( 'adt_use_parent_variable_product_image' );
+                $product_image_id = 'yes' == $use_parent_variable_product_image && $product_data['item_group_id'] > 0 ? $product_data['item_group_id'] : $product_data['id'];
                 $image = wp_get_attachment_image_src( get_post_thumbnail_id( $product_image_id ), 'single-post-thumbnail' );
                 if ( ! empty( $image[0] ) ) {
                     $product_data['feature_image'] = $this->get_image_url( $image[0] );
@@ -3394,8 +3413,8 @@ class WooSEA_Get_Products {
             }
 
             // Check if user would like to use the mother main image for all variation products
-            $add_mother_image = get_option( 'add_mother_image' );
-            if ( ( $add_mother_image == 'yes' ) && ( $product_data['item_group_id'] > 0 ) ) {
+            $use_parent_variable_product_image = get_option( 'adt_use_parent_variable_product_image' );
+            if ( ( $use_parent_variable_product_image == 'yes' ) && ( $product_data['item_group_id'] > 0 ) ) {
                 $mother_image = wp_get_attachment_image_src( get_post_thumbnail_id( $product_data['item_group_id'] ), 'full' );
                 if ( isset( $mother_image[0] ) ) {
                     $product_data['image'] = $mother_image[0];

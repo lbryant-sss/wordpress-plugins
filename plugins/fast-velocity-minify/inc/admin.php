@@ -6,41 +6,49 @@ if (!defined('ABSPATH')){ exit(); }
 # check for minimum requirements and prevent activation or disable if not fully compatible
 function fvm_check_minimum_requirements() {
 	if(current_user_can('manage_options')) {
-		
+
 		# defaults
 		$error = '';
+		$warning = '';
 
 		# php version requirements
-		if (version_compare( PHP_VERSION, '5.6', '<' )) { 
-			$error = __( 'FVM requires PHP 5.6 or higher. You’re still on', 'fast-velocity-minify' ) .' '. PHP_VERSION; 
+		if (version_compare( PHP_VERSION, '5.6', '<' )) {
+			$error = __( 'FVM requires PHP 5.6 or higher. You\'re still on', 'fast-velocity-minify' ) .' '. PHP_VERSION;
 		}
 
-		# php extension requirements	
-		if (!extension_loaded('mbstring')) { 
-			$error = __( 'FVM requires the PHP mbstring module to be installed on the server.', 'fast-velocity-minify' ); 
+		# php extension requirements
+		if (!extension_loaded('mbstring')) {
+			$error = __( 'FVM requires the PHP mbstring module to be installed on the server.', 'fast-velocity-minify' );
 		}
-		
+
 		# wp version requirements
 		if ( version_compare( $GLOBALS['wp_version'], '4.9', '<' ) ) {
-			$error = __( 'FVM requires WP 4.9 or higher. You’re still on', 'fast-velocity-minify' ) .' '. $GLOBALS['wp_version']; 
+			$error = __( 'FVM requires WP 4.9 or higher. You\'re still on', 'fast-velocity-minify' ) .' '. $GLOBALS['wp_version'];
 		}
-		
-		# check cache directory
+
+		# check cache directory (soft check - don't deactivate, just warn)
 		$ch_info = fvm_get_cache_location();
 		if(isset($ch_info['ch_url'])  && !empty($ch_info['ch_url']) && isset($ch_info['ch_dir']) && !empty($ch_info['ch_dir'])) {
-			if(is_dir($ch_info['ch_dir']) && !is_writable($ch_info['ch_dir'])) {
-				$error = __( 'FVM needs writing permissions on ', 'fast-velocity-minify' ). ' ['.$ch_info['ch_dir'].']';
+			if(!is_dir($ch_info['ch_dir'])) {
+				$warning = __( 'FVM cache directory does not exist yet. It will be created automatically when cache files are written: ', 'fast-velocity-minify' ). ' ['.$ch_info['ch_dir'].']';
+			} elseif(!is_writable($ch_info['ch_dir'])) {
+				$warning = __( 'FVM cache directory is currently not writable. Please ensure write permissions when ready: ', 'fast-velocity-minify' ). ' ['.$ch_info['ch_dir'].']';
 			}
-		}		
-		
-		# deactivate plugin forcefully
-		global $fvm_var_basename;
-		if ((is_plugin_active($fvm_var_basename) && !empty($error)) || !empty($error)) { 
-		if (isset($_GET['activate'])) { unset($_GET['activate']); }
-			deactivate_plugins($fvm_var_basename); 
-			add_settings_error( 'fvm_admin_notice', 'fvm_admin_notice', $error, 'success' );
 		}
-		
+
+		# deactivate plugin forcefully only for critical errors (not cache directory issues)
+		global $fvm_var_basename;
+		if ((is_plugin_active($fvm_var_basename) && !empty($error)) || !empty($error)) {
+			if (isset($_GET['activate'])) { unset($_GET['activate']); }
+			deactivate_plugins($fvm_var_basename);
+			add_settings_error( 'fvm_admin_notice', 'fvm_admin_notice', $error, 'error' );
+		}
+
+		# show warning for cache directory issues (non-critical)
+		if(!empty($warning)) {
+			add_settings_error( 'fvm_admin_notice', 'fvm_admin_cache_warning', $warning, 'warning' );
+		}
+
 	}
 }
 
@@ -86,15 +94,14 @@ function fvm_check_misconfiguration() {
 		
 		# check if our tables exist, and do maintenance once a day
 		$fvm_table_checker = get_transient('fvm_table_checker');
-		$fvm_table_checker = false;
 		if ($fvm_table_checker === false) {
 			
 			# test if at least one table exists
 			global $wpdb;
 			if(!is_null($wpdb)) {
 				$sqla_table_name = $wpdb->prefix . 'fvm_cache';
-				if (!$wpdb->get_var($wpdb->prepare("SHOW TABLES LIKE %s", $sqla_table_name)) === $sqla_table_name) {
-					fvm_plugin_activate();								
+				if ($wpdb->get_var($wpdb->prepare("SHOW TABLES LIKE %s", $sqla_table_name)) !== $sqla_table_name) {
+					fvm_plugin_activate();
 				}
 			}
 			
@@ -122,8 +129,10 @@ function fvm_check_misconfiguration() {
 			} catch (Exception $e) {
 				error_log('Error: '.$e->getMessage(), 0);
 			}
-			
-			
+
+			# set transient to prevent running maintenance again for 24 hours
+			set_transient('fvm_table_checker', true, DAY_IN_SECONDS);
+
 		}
 		
 
@@ -167,9 +176,16 @@ function fvm_save_settings() {
 							# sanitize text area content
 							if(is_string($v)) { $_POST['fvm_settings'][$group][$k] = strip_tags($v); }
 							
-							# clean cdn url
-							if($group == 'cdn' && $k == 'url') { 
-								$_POST['fvm_settings'][$group][$k] = trim(trim(str_replace(array('http://', 'https://'), '', $v), '/'));
+							# clean cdn url with strict validation to prevent XSS
+							if($group == 'cdn' && $k == 'domain') {
+								$domain = trim(str_replace(array('http://', 'https://'), '', $v), '/');
+								// Only allow valid hostnames (alphanumeric, hyphens, dots)
+								if (!empty($domain) && !preg_match('/^[a-zA-Z0-9\-\.]+$/', $domain)) {
+									$_POST['fvm_settings'][$group][$k] = '';
+									add_settings_error('fvm_admin_notice', 'fvm_admin_notice', __('Invalid CDN domain format. Only alphanumeric characters, hyphens and dots allowed.', 'fast-velocity-minify'), 'error');
+								} else {
+									$_POST['fvm_settings'][$group][$k] = sanitize_text_field($domain);
+								}
 							}
 		
 						}
@@ -231,6 +247,11 @@ function fvm_add_admin_jscss($hook) {
 		
 		# js
 		wp_enqueue_script('fvm', $fvm_var_url_path . 'assets/fvm.js', array('jquery'), filemtime($fvm_var_dir_path.'assets'. DIRECTORY_SEPARATOR .'fvm.js'));
+
+		# localize nonce for AJAX security
+		wp_localize_script('fvm', 'fvm_ajax_object', array(
+			'ajax_nonce' => wp_create_nonce('fvm_logs_nonce')
+		));
 		
 		# css
 		wp_enqueue_style('fvm', $fvm_var_url_path . 'assets/fvm.css', array(), filemtime($fvm_var_dir_path.'assets'. DIRECTORY_SEPARATOR .'fvm.css'));
@@ -297,10 +318,13 @@ function fvm_add_settings_admin() {
 
 # function to list all cache files on the status page (js ajax code)
 function fvm_get_logs_callback() {
-		
+
+	# Verify nonce for CSRF protection
+	check_ajax_referer('fvm_logs_nonce', 'nonce');
+
 	# must be able to cleanup cache
 	if (!current_user_can('manage_options')) {
-		wp_die( __('You do not have sufficient permissions to access this page.'), __('Error:'), array('response'=>200)); 
+		wp_die( __('You do not have sufficient permissions to access this page.'), __('Error:'), array('response'=>200));
 	}
 	
 	# must have
@@ -390,8 +414,8 @@ function fvm_plugin_activate() {
 	dbDelta( $sqlb );
 	
 	# test if at least one table exists
-	if (!$wpdb->get_var($wpdb->prepare("SHOW TABLES LIKE %s", $sqla_table_name)) === $sqla_table_name) {
-		
+	if ($wpdb->get_var($wpdb->prepare("SHOW TABLES LIKE %s", $sqla_table_name)) !== $sqla_table_name) {
+
 		# log
 		$err = 'An error occurred when trying to create the database tables';
 		error_log($err);

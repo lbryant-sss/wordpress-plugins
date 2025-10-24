@@ -2,6 +2,7 @@
 
 namespace Templately\Core\Importer\Runners;
 
+use Templately\Core\Importer\Utils\FluentImport;
 use Templately\Core\Importer\Utils\Utils;
 use Templately\Core\Importer\WPImport;
 use Templately\Utils\Helper;
@@ -119,6 +120,13 @@ class WPContent extends BaseRunner {
 				$args['posts'][ $archive_settings['old_id'] ] = $archive_settings['page_id'];
 				$args['posts'][ $archive_settings['archive_id'] ] = $archive_settings['page_id'];
 			}
+		}
+
+		if($type == 'fluent-products'){
+			$file = $path . $type . '/' . 'products.json';
+			$fluent_import = new FluentImport( $file );
+			$result = $fluent_import->import();
+			return $result;
 		}
 
 		$file = $path . $type . '/' . $type . '.xml';

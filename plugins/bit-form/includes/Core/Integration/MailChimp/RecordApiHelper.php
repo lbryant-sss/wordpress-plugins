@@ -45,10 +45,11 @@ class RecordApiHelper
     return HttpHelper::post($insertRecordEndpoint, $data, $this->_defaultHeader);
   }
 
-  public function updateRecord($listId, $contactId, $data)
+  public function updateRecord($listId, $subscriberHash, $jsonData)
   {
-    $updateRecordEndpoint = $this->_apiEndPoint() . "/lists/{$listId}/members/{$contactId}";
-    return HttpHelper::request($updateRecordEndpoint, 'put', $data, $this->_defaultHeader);
+    $updateRecordEndpoint = $this->_apiEndPoint() . "/lists/{$listId}/members/{$subscriberHash}";
+    $response = HttpHelper::request($updateRecordEndpoint, 'PUT', $jsonData, $this->_defaultHeader);
+    return $response;
   }
 
   public function existContact($listId, $queryParam)
@@ -67,6 +68,8 @@ class RecordApiHelper
           $fieldData['email_address'] = $fieldValues[$fieldPair->formField];
         } elseif ('custom' === $fieldPair->formField && isset($fieldPair->customValue)) {
           $mergeFields[$fieldPair->mailChimpField] = $fieldPair->customValue;
+        } elseif ('BIRTHDAY' === $fieldPair->mailChimpField) {
+          $mergeFields[$fieldPair->mailChimpField] = !empty($fieldValues[$fieldPair->formField]) ? date('m/d', strtotime($fieldValues[$fieldPair->formField])) : '';
         } else {
           $mergeFields[$fieldPair->mailChimpField] = $fieldValues[$fieldPair->formField];
         }
@@ -80,6 +83,9 @@ class RecordApiHelper
     $fieldData['tags'] = !empty($tags) ? $tags : [];
     $fieldData['status'] = $doubleOptIn ? 'pending' : 'subscribed';
     $fieldData['double_optin'] = $doubleOptIn;
+
+    $contactEmail = $fieldData['email_address'];
+    $subscriberHash = md5(strtolower($contactEmail));
 
     $model = new FormEntryLogModel();
 
@@ -101,12 +107,11 @@ class RecordApiHelper
 
         $recordApiResponse = $this->insertRecord($listId, wp_json_encode($fieldData));
         $type = 'insert';
+
         if (!empty($actions->update) && !empty($recordApiResponse->title) && 'Member Exists' === $recordApiResponse->title) {
-          $contactEmail = $fieldData['email_address'];
           $foundContact = $this->existContact($listId, $contactEmail);
           if (count($foundContact->exact_matches->members)) {
-            $contactId = $foundContact->exact_matches->members[0]->id;
-            $recordApiResponse = $this->updateRecord($listId, $contactId, wp_json_encode($fieldData));
+            $recordApiResponse = $this->updateRecord($listId, $subscriberHash, wp_json_encode($fieldData));
             $type = 'update';
           }
         }
@@ -122,8 +127,7 @@ class RecordApiHelper
           }
           $fieldData['merge_fields']->ADDRESS = (object) $fvalue;
         }
-        $contactId = json_decode($result[0]->response_obj);
-        $recordApiResponse = $this->updateRecord($listId, $contactId, wp_json_encode($fieldData));
+        $recordApiResponse = $this->updateRecord($listId, $subscriberHash, wp_json_encode($fieldData));
         $type = 'update';
       }
 

@@ -43,6 +43,11 @@ final class FormDuplicateHelper
         $formSettings['integrations'] = json_decode(\preg_replace('/(\"formField\"\s*\:\s*\"bf?)(\d+)([- \d]+)/', '${1}' . $newFormId . '$3', $integrations));
       }
 
+      if (isset($formSettings['formAbandonment'])) {
+        $formAbandonment = !is_string($formSettings['formAbandonment']) ? wp_json_encode($formSettings['formAbandonment']) : $formSettings['formAbandonment'];
+        $formSettings['formAbandonment'] = json_decode(\preg_replace('/(\${bf?)(\d+)([- \d]+\})/', '${1}' . $newFormId . '$3', $formAbandonment));
+      }
+
       if (isset($formSettings['mailTem'])) {
         $mailTem = !is_string($formSettings['mailTem']) ? wp_json_encode($formSettings['mailTem']) : $formSettings['mailTem'];
         $formSettings['mailTem'] = json_decode(\preg_replace('/(\${bf?)(\d+)([- \d]+\})/', '${1}' . $newFormId . '$3', $mailTem));

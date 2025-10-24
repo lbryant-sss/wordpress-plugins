@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce 10.3.0\n"
+"Project-Id-Version: WooCommerce 10.3.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-10-22T16:39:47+00:00\n"
+"POT-Creation-Date: 2025-10-23T18:17:21+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: woocommerce\n"
@@ -9312,7 +9312,7 @@ msgstr ""
 #: includes/admin/meta-boxes/class-wc-meta-box-order-data.php:214
 #: includes/admin/reports/class-wc-report-downloads.php:87
 #: includes/admin/reports/class-wc-report-downloads.php:221
-#: includes/gateways/paypal/includes/class-wc-gateway-paypal-request.php:955
+#: includes/gateways/paypal/includes/class-wc-gateway-paypal-request.php:959
 #: includes/wc-account-functions.php:222
 #: src/Internal/Admin/Orders/Edit.php:154
 #: src/Internal/Admin/Orders/ListTable.php:1017
@@ -15563,7 +15563,7 @@ msgstr ""
 #. translators: %s: Item name.
 #: includes/admin/meta-boxes/views/html-order-items.php:44
 #: includes/class-wc-form-handler.php:662
-#: includes/gateways/paypal/includes/class-wc-gateway-paypal-request.php:1140
+#: includes/gateways/paypal/includes/class-wc-gateway-paypal-request.php:1144
 #: assets/client/admin/components/index.js:2
 msgid "Item"
 msgstr ""
@@ -18216,7 +18216,7 @@ msgid "Revert to legacy template"
 msgstr ""
 
 #: includes/admin/settings/class-wc-settings-general.php:53
-msgid "Suggest full addresses for customer as they type."
+msgid "Suggest full addresses to customers as they type."
 msgstr ""
 
 #. translators: %s: WooPayments URL.
@@ -25729,30 +25729,30 @@ msgid "Refunded %1$s - Refund ID: %2$s"
 msgstr ""
 
 #. translators: %s: Paypal gateway error message
-#: includes/gateways/paypal/class-wc-gateway-paypal.php:722
+#: includes/gateways/paypal/class-wc-gateway-paypal.php:727
 #, php-format
 msgid "Payment could not be captured: %s"
 msgstr ""
 
 #. translators: 1: Amount, 2: Authorization ID, 3: Transaction ID
-#: includes/gateways/paypal/class-wc-gateway-paypal.php:733
+#: includes/gateways/paypal/class-wc-gateway-paypal.php:738
 #, php-format
 msgid "Payment of %1$s was captured - Auth ID: %2$s, Transaction ID: %3$s"
 msgstr ""
 
 #. translators: 1: Authorization ID, 2: Payment status
-#: includes/gateways/paypal/class-wc-gateway-paypal.php:740
+#: includes/gateways/paypal/class-wc-gateway-paypal.php:745
 #, php-format
 msgid "Payment could not be captured - Auth ID: %1$s, Status: %2$s"
 msgstr ""
 
-#: includes/gateways/paypal/class-wc-gateway-paypal.php:803
+#: includes/gateways/paypal/class-wc-gateway-paypal.php:808
 #: assets/client/blocks/278.js:1
 #: client/blocks/assets/js/extensions/payment-methods/paypal/buttons.js:239
 msgid "An unknown error occurred"
 msgstr ""
 
-#: includes/gateways/paypal/class-wc-gateway-paypal.php:847
+#: includes/gateways/paypal/class-wc-gateway-paypal.php:852
 msgid "Thank you for your payment. Your transaction has been completed, and a receipt for your purchase has been emailed to you. Log into your PayPal account to view transaction details."
 msgstr ""
 
@@ -25899,7 +25899,7 @@ msgid "PayPal capture authorized payment failed"
 msgstr ""
 
 #. translators: %s: Order shipping method
-#: includes/gateways/paypal/includes/class-wc-gateway-paypal-request.php:939
+#: includes/gateways/paypal/includes/class-wc-gateway-paypal-request.php:943
 #, php-format
 msgid "Shipping via %s"
 msgstr ""

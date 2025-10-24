@@ -482,6 +482,7 @@ class Fns {
 			'show_event_date'              => $data['show_event_date'] ?? '',
 			'start_date_label'             => $data['start_date_label'] ?? '',
 			'end_date_label'               => $data['end_date_label'] ?? '',
+			'event_title'                  => $data['event_title'] ?? '',
 			'event_date_format'            => $data['event_date_format'] ?? '',
 			'custom_event_date_format'     => $data['custom_event_date_format'] ?? '',
 		];
@@ -552,20 +553,6 @@ class Fns {
 		) {
 			return;
 		}
-		/* before divi
-		 if ( ! in_array(
-				'show',
-				[
-					$data['show_taxonomy_filter'],
-					$data['show_author_filter'],
-					$data['show_order_by'],
-					$data['show_sort_order'],
-					$data['show_search'],
-				]
-			)
-		) {
-			return;
-		}*/
 
 		$html             = null;
 		$wrapperContainer = $wrapperClass = $itemClass = $filter_btn_item_per_page = '';
@@ -4664,6 +4651,8 @@ class Fns {
 				break;
 		}
 
+		$args['ignore_sticky_posts'] = 1;
+
 		return $args;
 	}
 
@@ -5423,17 +5412,14 @@ class Fns {
 	}
 
 	public static function event_key( $key ) {
-		$settings = get_option( rtTPG()->options['settings'] );
+		$settings = get_option( rtTPG()->options['settings'], [] );
 
-		$default_keys = [
-			'start' => 'tpg_event_start_time',
-			'end'   => 'tpg_event_end_time',
+		$event_keys = [
+			'start' => ! empty( $settings['event_start_time'] ) ? sanitize_key( $settings['event_start_time'] ) : 'tpg_event_start_time',
+			'end'   => ! empty( $settings['event_end_time'] ) ? sanitize_key( $settings['event_end_time'] ) : 'tpg_event_end_time',
 		];
 
-		$event_start_key = ! empty( $settings['event_start_time'] ) ? sanitize_key( $settings['event_start_time'] ) : $default_keys['start'];
-		$event_end_key   = ! empty( $settings['event_end_time'] ) ? sanitize_key( $settings['event_end_time'] ) : $default_keys['end'];
-
-		return ( 'end' === $key ) ? $event_end_key : $event_start_key;
+		return $event_keys[ $key ] ?? $event_keys['start'];
 	}
 
 	public static function event_information( $settings ) {
@@ -5441,8 +5427,9 @@ class Fns {
 			return;
 		}
 
-		$event_start_key = Fns::event_key( 'start' );
-		$event_end_key   = Fns::event_key( 'end' );
+		$event_start_key    = self::event_key( 'start' );
+		$event_end_key      = self::event_key( 'end' );
+		$event_location_key = 'tpg_event_location';
 
 		$date_format = ( 'custom' === $settings['event_date_format'] && ! empty( $settings['custom_event_date_format'] ) )
 			? $settings['custom_event_date_format']
@@ -5450,41 +5437,46 @@ class Fns {
 
 		$event_start_time = get_post_meta( get_the_ID(), $event_start_key, true );
 		$event_end_time   = get_post_meta( get_the_ID(), $event_end_key, true );
+		$event_location   = get_post_meta( get_the_ID(), $event_location_key, true );
 
-		$event_start_display = '';
-		if ( $event_start_time ) {
-			$dt = \DateTime::createFromFormat( 'Y-m-d H:i:s', $event_start_time );
-			if ( $dt ) {
-				$event_start_display = $dt->format( $date_format );
-			}
-		}
-
-		$event_end_display = '';
-		if ( $event_end_time ) {
-			$dt = \DateTime::createFromFormat( 'Y-m-d H:i:s', $event_end_time );
-			if ( $dt ) {
-				$event_end_display = $dt->format( $date_format );
-			}
-		}
+		$event_start_display = $event_start_time ? date( $date_format, strtotime( $event_start_time ) ) : '';
+		$event_end_display   = $event_end_time ? date( $date_format, strtotime( $event_end_time ) ) : '';
 
 		if ( ! $event_start_display && ! $event_end_display ) {
 			return;
 		}
-
+		$event_title = $settings['event_title'] ?? '';
 		?>
 
         <div class="tpg-event-date">
-			<?php if ( ! empty( $event_start_display ) ) : ?>
+
+			<?php if ( $event_title ) : ?>
+                <h4><?php echo esc_html( $event_title ); ?></h4>
+			<?php endif; ?>
+
+			<?php if ( ! empty( $event_start_display ) ) :
+
+				$start_label = ! empty( $settings['start_date_label'] ) ? $settings['start_date_label'] : __( 'Date & Time:', 'the-post-grid' )
+				?>
                 <div class="event-start-date">
-                    <strong class="label"><?php echo esc_html( $settings['start_date_label'] ?? __( 'Start Date:', 'the-post-grid' ) ); ?></strong>
+                    <strong class="label"><?php echo esc_html( $start_label ); ?></strong>
                     <span class="date"><?php echo esc_html( $event_start_display ); ?></span>
                 </div>
 			<?php endif; ?>
 
-			<?php if ( ! empty( $event_end_display ) ) : ?>
+			<?php if ( ! empty( $event_end_display ) ) :
+				$end_label = ! empty( $settings['end_date_label'] ) ? $settings['end_date_label'] : __( 'End Time:', 'the-post-grid' )
+				?>
                 <div class="event-end-date">
-                    <strong class="label"><?php echo esc_html( $settings['end_date_label'] ?? __( 'End Date:', 'the-post-grid' ) ); ?></strong>
+                    <strong class="label"><?php echo esc_html( $end_label ); ?></strong>
                     <span class="date"><?php echo esc_html( $event_end_display ); ?></span>
+                </div>
+			<?php endif; ?>
+
+			<?php if ( ! empty( $event_location ) ) : ?>
+                <div class="event-location">
+                    <strong class="label"><?php echo esc_html( $settings['event_location'] ?? __( 'Location: ', 'the-post-grid' ) ); ?></strong>
+                    <span class="date"><?php echo esc_html( $event_location ); ?></span>
                 </div>
 			<?php endif; ?>
         </div>

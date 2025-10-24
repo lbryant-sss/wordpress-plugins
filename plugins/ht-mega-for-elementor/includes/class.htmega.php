@@ -154,6 +154,7 @@ final class HTMega_Addons_Elementor {
             }
             // Admin Notices
             add_action( 'admin_head', [ $this, 'admin_rating_notice' ] );
+            add_action( 'admin_head', [ $this, 'admin_halloween_notice' ] );
             if ( is_plugin_active('htmega-pro/htmega_pro.php' ) ) {
                 add_action( 'admin_head', [ $this, 'admin_htmega_pro_version_compatibily' ] );
             }
@@ -309,7 +310,35 @@ final class HTMega_Addons_Elementor {
         );
     }
 
+    /**
+     * Halloween Notice
+     *
+     * @return void
+     */
+    public function admin_halloween_notice(){
+        $plugins = get_plugins();
 
+        if ( is_plugin_active('htmega-pro/htmega_pro.php' ) ) {
+            return;
+        }
+        $url = 'https://wphtmega.com/pricing/?utm_source=admin&utm_medium=dashboard&utm_campaign=halloween';
+        $image = HTMEGA_ADDONS_PL_URL . 'admin/assets/images/htmega-halloween.png';
+
+    
+        \HasTech_Notices::set_notice(
+            [
+                'id'          => 'htmega-halloween-notice',
+                'type'        => 'notice',
+                'dismissible' => true,
+                'message_type' => 'banner',
+                'banner' => [
+                    'url' => esc_url_raw($url),
+                    'image' => '<img src="'.esc_url($image).'" alt="'. esc_html("HT Mega",'htmega-addons') . '" style="max-width:100%"/>'
+                ],
+                'close_by'    => 'transient'
+            ]
+        );
+    }
 
     /**
      * HT Mega Pro version compatibility Notice

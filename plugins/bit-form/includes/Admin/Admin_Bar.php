@@ -279,6 +279,10 @@ class Admin_Bar
         $type = $integration->integration_type;
         if (!is_null($type)) {
           $integrationDetails = json_decode($integration->integration_details);
+
+          if (!is_object($integrationDetails) || is_null($integrationDetails)) {
+            $integrationDetails = new \stdClass();
+          }
           $integrationDetails->id = $integration->id;
           if ($integCount[$type] > 1) {
             if (!isset($allFormSettings[$type])) {

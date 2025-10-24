@@ -2,6 +2,8 @@
 
 namespace BitCode\BitForm;
 
+use BitCode\BitForm\Core\Util\Log;
+
 if (!\defined('ABSPATH')) {
   exit;
 }
@@ -31,5 +33,69 @@ class GlobalHelper
       $forms[0] = __('Select a Bitform', 'bit-form');
     }
     return $forms;
+  }
+
+  /**
+   * Request data formatting.
+   *
+   * Receives raw data from ajax request and formats it into an object.
+   * @param mixed $data
+   * @return object
+   */
+  public static function formatRequestData($data): object
+  {
+    if (null === $data) {
+      throw new \InvalidArgumentException('The "data" parameter is required.');
+    }
+
+    // Unslash input
+    $userData = wp_unslash($data);
+    return json_decode($userData);
+
+    // // Normalize to array
+    // if (is_string($userData)) {
+    //   $decoded = json_decode($userData, true);
+    //   if (JSON_ERROR_NONE !== json_last_error()) {
+    //     throw new \InvalidArgumentException('Invalid JSON provided in data.');
+    //   }
+    //   $userData = $decoded ?? [];
+    // } elseif (is_object($userData)) {
+    //   $userData = (array) $userData;
+    // }
+
+    // if (!is_array($userData)) {
+    //   // You may want to throw here instead of returning empty object
+    //   return new \stdClass();
+    // }
+
+    // // Recursive sanitizer — always returns objects
+    // $sanitizeRecursive = function ($value) use (&$sanitizeRecursive) {
+    //   if (is_array($value)) {
+    //     $clean = new \stdClass();
+    //     foreach ($value as $k => $v) {
+    //       $clean->$k = $sanitizeRecursive($v);
+    //     }
+    //     return $clean;
+    //   } elseif (is_object($value)) {
+    //     $clean = new \stdClass();
+    //     foreach ($value as $k => $v) {
+    //       $clean->$k = $sanitizeRecursive($v);
+    //     }
+    //     return $clean;
+    //   } else {
+    //     return sanitize_text_field($value);
+    //   }
+    // };
+
+    // return $sanitizeRecursive($userData); // already an object
+  }
+
+  public static function requirePostMethod(): void
+  {
+    if ('POST' !== $_SERVER['REQUEST_METHOD']) {
+      Log::debug_log('Invalid request method. POST required.');
+      wp_send_json_error(__('Invalid request method. POST required.', 'bit-form'), 405);
+      return;
+    }
   }
 }

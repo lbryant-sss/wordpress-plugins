@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, ref, nextTick } from 'vue';
 import { useRulesStore } from '../../stores/rulesStore';
 import { useValidation } from '../../composables/useValidation';
 import { getValidationClasses, getContainerValidationClasses, hasValidationErrors } from '../../helpers/validation';
@@ -95,14 +95,79 @@ const removeAction = (actionId: string) => {
 const addAction = () => {
   store.addRuleAction(props.rule.id);
 };
+
+// Rule name editing state
+const isEditingRuleName = ref(false);
+const editingRuleName = ref('');
+const ruleNameInput = ref<HTMLInputElement>();
+
+const editRuleName = async () => {
+  isEditingRuleName.value = true;
+  editingRuleName.value = props.rule.name || `${props.ruleIndex + 1}`;
+  await nextTick();
+  ruleNameInput.value?.focus();
+  ruleNameInput.value?.select();
+};
+
+const saveRuleName = () => {
+  store.updateRule(props.rule.id, { name: editingRuleName.value });
+  isEditingRuleName.value = false;
+};
+
+const cancelEditRuleName = () => {
+  isEditingRuleName.value = false;
+  editingRuleName.value = '';
+};
 </script>
 
 <template>
   <div class="adt-rule-section-wrapper adt-tw-border-2 adt-tw-border-dashed adt-tw-border-pink-300 adt-tw-rounded-lg adt-tw-p-3">
     <div class="adt-tw-flex adt-tw-items-center adt-tw-justify-between adt-tw-mb-2">
       <div>
-        <h2 class="adt-tw-text-base adt-tw-font-semibold adt-tw-text-gray-800 adt-tw-capitalize">
-          Rule {{ props.ruleIndex + 1 }}
+        <h2 class="adt-tw-text-base adt-tw-font-semibold adt-tw-text-gray-800 adt-tw-flex adt-tw-items-center adt-tw-gap-2">
+          <!-- Display Mode -->
+          <template v-if="!isEditingRuleName">
+            Rule - 
+            <div class="adt-tw-flex adt-tw-items-center adt-tw-gap-2">
+              <template v-if="props.rule.name">
+                {{ props.rule.name }}
+              </template>
+              <template v-else>
+                {{ props.ruleIndex + 1 }}
+              </template>
+            </div>
+            <span
+              class="adt-tw-icon-[lucide--pencil] adt-tw-size-3 adt-tw-text-gray-400 adt-tw-transition-colors hover:adt-tw-text-blue-500 adt-tw-cursor-pointer"
+              @click="editRuleName"
+              title="Edit rule name"
+            ></span>
+          </template>
+
+          <!-- Editing Mode -->
+          <template v-else>
+            <div class="adt-tw-flex adt-tw-items-center adt-tw-gap-2">
+              <span class="adt-tw-text-gray-600">Rule -</span>
+              <input
+                v-model="editingRuleName"
+                type="text"
+                class="adt-tw-px-2 adt-tw-py-1 adt-tw-border adt-tw-border-blue-300 adt-tw-rounded adt-tw-text-sm adt-tw-focus-ring-2 adt-tw-focus-ring-blue-500 adt-tw-focus-border-blue-500 adt-tw-focus-outline-none adt-tw-min-w-0 adt-tw-w-32"
+                @keyup.enter="saveRuleName"
+                @keyup.escape="cancelEditRuleName"
+                @blur="saveRuleName"
+                ref="ruleNameInput"
+              />
+              <span
+                class="adt-tw-icon-[lucide--check] adt-tw-size-4 adt-tw-text-green-500 adt-tw-transition-colors hover:adt-tw-text-green-600 adt-tw-cursor-pointer"
+                @click="saveRuleName"
+                title="Save rule name"
+              ></span>
+              <span
+                class="adt-tw-icon-[lucide--x] adt-tw-size-4 adt-tw-text-gray-400 adt-tw-transition-colors hover:adt-tw-text-red-500 adt-tw-cursor-pointer"
+                @click="cancelEditRuleName"
+                title="Cancel editing"
+              ></span>
+            </div>
+          </template>
         </h2>
       </div>
       <button 

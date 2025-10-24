@@ -2,12 +2,12 @@ import { isInTheFuture } from '@wordpress/date';
 import { create } from 'zustand';
 import { persist, devtools } from 'zustand/middleware';
 
-const DEFAULT_HEIGHT = 510;
+const DEFAULT_HEIGHT = 600;
 
 const startingPosition = {
-	x: 100,
+	x: window.innerWidth - 410 - 20,
 	y: window.innerHeight - DEFAULT_HEIGHT,
-	width: 390,
+	width: 410,
 	height: DEFAULT_HEIGHT,
 };
 
@@ -17,6 +17,7 @@ export const useGlobalStore = create()(
 			(set, get) => ({
 				retryAfter: undefined,
 				open: true,
+				minimized: false,
 				seenToolTips: [],
 				showSuggestions: true,
 				// e.g. floating, docked-left, docked-right ?
@@ -36,6 +37,10 @@ export const useGlobalStore = create()(
 						);
 					}
 					set({ open });
+				},
+				setMinimized: (minimized) => {
+					if (get().minimized === minimized) return;
+					set({ minimized });
 				},
 				setShowSuggestions: (show) => set({ showSuggestions: show }),
 				toggleOpen: () =>

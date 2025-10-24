@@ -66,7 +66,7 @@ class Finalizer extends BaseRunner {
 			return;
 		}
 		foreach ( $templates as $id => $template ) {
-			if ( ! isset( $template['data'] ) && !isset( $template['__attachments']) && !isset($template['has_logo']) && !$this->is_ai_content($id) ) {
+			if ( ! isset( $template['data'] ) && !isset( $template['__attachments']) && !isset($template['has_logo']) && !$this->is_ai_content($id) && !isset($template["page_settings"]["fluent_cart_store_settings"]) ) {
 				continue;
 			}
 
@@ -200,6 +200,7 @@ class Finalizer extends BaseRunner {
 	public function post_log($id, $size_dimension = null){
 		$this->log(-1, "Imported attachment: $id" . ( $size_dimension ? " - $size_dimension" : ''), 'eventLog');
 	}
+
 
 
 

@@ -10,6 +10,7 @@ namespace BitCode\BitForm\Core\Integration\GoogleSheet;
 use BitCode\BitForm\Core\Integration\IntegrationHandler;
 use BitCode\BitForm\Core\Util\HttpHelper;
 use BitCode\BitForm\Core\Util\IpTool;
+use BitCode\BitForm\GlobalHelper;
 use WP_Error;
 
 /**
@@ -48,8 +49,16 @@ class GoogleSheetHandler
   {
     if (isset($_REQUEST['_ajax_nonce']) && wp_verify_nonce($_REQUEST['_ajax_nonce'], 'bitforms_save')) {
       $authorizationHeader = null;
-      $inputJSON = file_get_contents('php://input');
-      $requestsParams = json_decode($inputJSON);
+      // $inputJSON = file_get_contents('php://input');
+      // $requestsParams = json_decode($inputJSON);
+      GlobalHelper::requirePostMethod();
+
+      try {
+        $requestsParams = GlobalHelper::formatRequestData($_POST['data'] ?? []);
+      } catch (\InvalidArgumentException $e) {
+        wp_send_json_error($e->getMessage(), 400);
+      }
+
       if (
         empty($requestsParams->clientId)
         || empty($requestsParams->clientSecret)
@@ -104,8 +113,16 @@ class GoogleSheetHandler
   {
     if (isset($_REQUEST['_ajax_nonce']) && wp_verify_nonce($_REQUEST['_ajax_nonce'], 'bitforms_save')) {
       $authorizationHeader = null;
-      $inputJSON = file_get_contents('php://input');
-      $queryParams = json_decode($inputJSON);
+      // $inputJSON = file_get_contents('php://input');
+      // $queryParams = json_decode($inputJSON);
+
+      GlobalHelper::requirePostMethod();
+      try {
+        $queryParams = GlobalHelper::formatRequestData($_POST['data'] ?? []);
+      } catch (\InvalidArgumentException $e) {
+        wp_send_json_error($e->getMessage(), 400);
+      }
+
       if (
         empty($queryParams->tokenDetails)
         || empty($queryParams->clientId)
@@ -171,8 +188,16 @@ class GoogleSheetHandler
   {
     if (isset($_REQUEST['_ajax_nonce']) && wp_verify_nonce($_REQUEST['_ajax_nonce'], 'bitforms_save')) {
       $authorizationHeader = null;
-      $inputJSON = file_get_contents('php://input');
-      $queryParams = json_decode($inputJSON);
+      // $inputJSON = file_get_contents('php://input');
+      // $queryParams = json_decode($inputJSON);
+
+      GlobalHelper::requirePostMethod();
+
+      try {
+        $queryParams = GlobalHelper::formatRequestData($_POST['data'] ?? []);
+      } catch (\InvalidArgumentException $e) {
+        wp_send_json_error($e->getMessage(), 400);
+      }
 
       if (
         empty($queryParams->clientId)
@@ -231,8 +256,15 @@ class GoogleSheetHandler
   {
     if (isset($_REQUEST['_ajax_nonce']) && wp_verify_nonce($_REQUEST['_ajax_nonce'], 'bitforms_save')) {
       $authorizationHeader = null;
-      $inputJSON = file_get_contents('php://input');
-      $queryParams = json_decode($inputJSON);
+      // $inputJSON = file_get_contents('php://input');
+      // $queryParams = json_decode($inputJSON);
+
+      GlobalHelper::requirePostMethod();
+      try {
+        $queryParams = GlobalHelper::formatRequestData($_POST['data'] ?? []);
+      } catch (\InvalidArgumentException $e) {
+        wp_send_json_error($e->getMessage(), 400);
+      }
 
       if (
         empty($queryParams->worksheetName)

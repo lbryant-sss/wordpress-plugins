@@ -101,7 +101,7 @@ abstract class Context_Weglot {
 			'\WeglotWP\Actions\Front\Search_Weglot',
 			'\WeglotWP\Actions\Front\Redirect_Comment',
 			'\WeglotWP\Actions\Admin\Ajax_User_Info',
-			'\WeglotWP\Actions\Front\Clean_Options',
+			'\WeglotWP\Actions\Rest\Cache_Purge_Rest_Weglot',
 
 			'\WeglotWP\Third\Amp\Amp_Enqueue_Weglot',
 			'\WeglotWP\Third\Calderaforms\Caldera_I18n_Inline',

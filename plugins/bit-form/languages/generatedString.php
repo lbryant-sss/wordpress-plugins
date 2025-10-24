@@ -347,6 +347,8 @@ $i18n_strings = array(
 
     'Autonami Fields' => __('Autonami Fields', 'bit-form'),
 
+    'Loaded integration:' => __('Loaded integration:', 'bit-form'),
+
     'Integration Info' => __('Integration Info', 'bit-form'),
 
     'Add New' => __('Add New', 'bit-form'),

@@ -1182,6 +1182,7 @@ class ComposerStaticInitde6168bc7e17873548173e515fd8b9ef
         'SureCart\\WordPress\\ActionsService' => __DIR__ . '/../..' . '/app/src/WordPress/ActionsService.php',
         'SureCart\\WordPress\\Admin\\Menus\\AdminMenuPageService' => __DIR__ . '/../..' . '/app/src/WordPress/Admin/Menus/AdminMenuPageService.php',
         'SureCart\\WordPress\\Admin\\Menus\\AdminMenuPageServiceProvider' => __DIR__ . '/../..' . '/app/src/WordPress/Admin/Menus/AdminMenuPageServiceProvider.php',
+        'SureCart\\WordPress\\Admin\\Menus\\AdminToolbarService' => __DIR__ . '/../..' . '/app/src/WordPress/Admin/Menus/AdminToolbarService.php',
         'SureCart\\WordPress\\Admin\\Menus\\ProductCollectionsMenuService' => __DIR__ . '/../..' . '/app/src/WordPress/Admin/Menus/ProductCollectionsMenuService.php',
         'SureCart\\WordPress\\Admin\\Notices\\AdminNoticesService' => __DIR__ . '/../..' . '/app/src/WordPress/Admin/Notices/AdminNoticesService.php',
         'SureCart\\WordPress\\Admin\\Notices\\AdminNoticesServiceProvider' => __DIR__ . '/../..' . '/app/src/WordPress/Admin/Notices/AdminNoticesServiceProvider.php',

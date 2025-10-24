@@ -222,8 +222,8 @@ class Product_Feed_Helper {
         /**
          * User set his own batch size
          */
-        $batch_option      = get_option( 'add_batch', 'no' );
-        $batch_size_option = get_option( 'woosea_batch_size', '' );
+        $batch_option      = get_option( 'adt_enable_batch', 'no' );
+        $batch_size_option = get_option( 'adt_batch_size', '' );
         if ( 'yes' === $batch_option && ! empty( $batch_size_option ) && is_numeric( $batch_size_option ) ) {
             $batch_size = intval( $batch_size_option );
         }
@@ -608,10 +608,11 @@ class Product_Feed_Helper {
     public static function find_tax_rates( $args, $feed = null, $product = null ) {
         if ( 'base' === get_option( 'woocommerce_tax_based_on' ) ) {
             $args = array(
-                'country'  => WC()->countries->get_base_country(),
-                'state'    => WC()->countries->get_base_state(),
-                'postcode' => WC()->countries->get_base_postcode(),
-                'city'     => WC()->countries->get_base_city(),
+                'country'   => WC()->countries->get_base_country(),
+                'state'     => WC()->countries->get_base_state(),
+                'postcode'  => WC()->countries->get_base_postcode(),
+                'city'      => WC()->countries->get_base_city(),
+                'tax_class' => $args['tax_class'] ?? '',
             );
         }
 

@@ -7,6 +7,7 @@ use BitCode\BitForm\Core\Integration\OneDrive\RecordApiHelper as OneDriveRecordA
 use BitCode\BitForm\Core\Util\ApiResponse;
 use BitCode\BitForm\Core\Util\HttpHelper;
 use BitCode\BitForm\Core\Util\IpTool;
+use BitCode\BitForm\GlobalHelper;
 
 class OneDriveHandler
 {
@@ -32,8 +33,16 @@ class OneDriveHandler
       wp_send_json_error(__('Token expired', 'bit-form'), 401);
     }
 
-    $inputJSON = file_get_contents('php://input');
-    $queryParams = json_decode($inputJSON);
+    // $inputJSON = file_get_contents('php://input');
+    // $queryParams = json_decode($inputJSON);
+
+    GlobalHelper::requirePostMethod();
+
+    try {
+      $queryParams = GlobalHelper::formatRequestData($_POST['data'] ?? []);
+    } catch (\InvalidArgumentException $e) {
+      wp_send_json_error($e->getMessage(), 400);
+    }
 
     if (empty($queryParams->clientId) || empty($queryParams->clientSecret) || empty($queryParams->code) || empty($queryParams->redirectURI)) {
       wp_send_json_error(__('Requested parameter is empty', 'bit-form'), 400);
@@ -63,8 +72,16 @@ class OneDriveHandler
       wp_send_json_error(__('Token expired', 'bit-form'), 401);
     }
 
-    $inputJSON = file_get_contents('php://input');
-    $queryParams = json_decode($inputJSON);
+    // $inputJSON = file_get_contents('php://input');
+    // $queryParams = json_decode($inputJSON);
+
+    GlobalHelper::requirePostMethod();
+
+    try {
+      $queryParams = GlobalHelper::formatRequestData($_POST['data'] ?? []);
+    } catch (\InvalidArgumentException $e) {
+      wp_send_json_error($e->getMessage(), 400);
+    }
     if (empty($queryParams->tokenDetails) || empty($queryParams->clientId) || empty($queryParams->clientSecret)) {
       wp_send_json_error(__('Requested parameter is empty', 'bit-form'), 400);
     }
@@ -111,8 +128,16 @@ class OneDriveHandler
       wp_send_json_error(__('Token expired', 'bit-form'), 401);
     }
 
-    $inputJSON = file_get_contents('php://input');
-    $queryParams = json_decode($inputJSON);
+    // $inputJSON = file_get_contents('php://input');
+    // $queryParams = json_decode($inputJSON);
+
+    GlobalHelper::requirePostMethod();
+
+    try {
+      $queryParams = GlobalHelper::formatRequestData($_POST['data'] ?? []);
+    } catch (\InvalidArgumentException $e) {
+      wp_send_json_error($e->getMessage(), 400);
+    }
 
     if (empty($queryParams->tokenDetails) || empty($queryParams->clientId) || empty($queryParams->clientSecret)) {
       wp_send_json_error(__('Requested parameter is empty', 'bit-form'), 400);

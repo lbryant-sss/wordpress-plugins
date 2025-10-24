@@ -213,7 +213,7 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
 
     if (isset($post->layoutChanged) && $post->layoutChanged) {
       $sheetName = 'bitform-layout-' . $post->form_id . '.css';
-      $rowHeight = (int)$post->rowHeight;
+      $rowHeight = (int) $post->rowHeight;
       $this->saveLayoutStyleSheet($post->layout, $sheetName, $rowHeight);
     }
 
@@ -348,8 +348,8 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
         ];
         $update_status = static::$formModel->update(
           [
-            'builder_helper_state'   => \wp_json_encode($builder_helper_state),
-            'atomic_class_map'       => $atomic_class_map,
+            'builder_helper_state' => \wp_json_encode($builder_helper_state),
+            'atomic_class_map'     => $atomic_class_map,
           ],
           [
             'id' => $formID,
@@ -422,6 +422,14 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
             $integartionIDForWorkflow[$integrationType][$integIdx] = $savedID;
           }
         }
+      }
+      if (isset($formSettings->formAbandonment)) {
+        $formAbandonment = $formSettings->formAbandonment;
+
+        $integrationName = 'formAbandonment';
+        $integrationType = 'formAbandonment';
+        $abandonmentIntegDetails = wp_json_encode($formAbandonment);
+        $integrationHandler->saveIntegration($integrationName, $integrationType, $abandonmentIntegDetails, 'formAbandonment');
       }
       if (!empty($integrations)) {
         foreach ($integrations as $singleIntegrationKey => $singleIntegrationDetail) {
@@ -524,7 +532,7 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
       $builder_helper_state->builderSettings = $post->builderSettings;
     }
     if (property_exists($post, 'atomicClassMap')) {
-      $atomic_class_map = \wp_json_encode((object)$post->atomicClassMap);
+      $atomic_class_map = \wp_json_encode((object) $post->atomicClassMap);
     }
 
     if (property_exists($post, 'fields') && null !== $post->fields && property_exists($post, 'layout') && $post->layout) {
@@ -812,7 +820,7 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
       'form_content'              => $form_content,
       'user_id'                   => $user_details['id'],
       'user_ip'                   => $user_details['ip'],
-      'builder_helper_state'      => \wp_json_encode((object)$builder_helper_state),
+      'builder_helper_state'      => \wp_json_encode((object) $builder_helper_state),
       'generated_script_page_ids' => \wp_json_encode((object) []),
       'user_device'               => $user_details['device'],
       'updated_at'                => $user_details['time'],
@@ -1093,6 +1101,20 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
           }
         }
       }
+
+      // get form abandonment integration if exist
+      $formAbandonmentInteg = $integrationHandler->getAllIntegration('formAbandonment', 'formAbandonment');
+      if (!is_wp_error($formAbandonmentInteg) && !empty($formAbandonmentInteg)) {
+        $formAbandonmentInteg = $formAbandonmentInteg[0];
+        if (!empty($formAbandonmentInteg->integration_details)) {
+          $formAbandonment = json_decode($formAbandonmentInteg->integration_details);
+        } else {
+          $formAbandonment = (object) [];
+        }
+      } else {
+        $formAbandonment = (object) [];
+      }
+
       $settingsContent = [
         'formName'        => $formManager->getFormName(),
         'theme'           => isset($form_content->theme) ? $form_content->theme : 'default',
@@ -1154,6 +1176,22 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
           $settingsContent,
           [
             'pdfTem' => [],
+          ]
+        );
+      }
+
+      if (!empty($formAbandonment)) {
+        $settingsContent = array_merge(
+          $settingsContent,
+          [
+            'formAbandonment' => $formAbandonment,
+          ]
+        );
+      } else {
+        $settingsContent = array_merge(
+          $settingsContent,
+          [
+            'formAbandonment' => (object) [],
           ]
         );
       }
@@ -1271,30 +1309,30 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
         'report_id'     => isset($form_content->report_id) ? $form_content->report_id : null
       ];
       $successMessageHandler
-          = new SuccessMessageHandler($formID);
+        = new SuccessMessageHandler($formID);
       $successMessages = $successMessageHandler->getAllMessage();
       if (!is_wp_error($successMessages)) {
         foreach ($successMessages as $sucessMessagekey => $sucessMessagevalue) {
           $allConfirmation['type']['successMsg'][$sucessMessagekey] =
-              [
-                'id'    => $sucessMessagevalue->id,
-                'title' => $sucessMessagevalue->message_title,
-                'msg'   => $sucessMessagevalue->message_content,
-              ];
+            [
+              'id'    => $sucessMessagevalue->id,
+              'title' => $sucessMessagevalue->message_title,
+              'msg'   => $sucessMessagevalue->message_content,
+            ];
         }
       }
       $emailTemplateHandler
-          = new EmailTemplateHandler($formID);
+        = new EmailTemplateHandler($formID);
       $emailTemplates = $emailTemplateHandler->getAllTemplate();
       if (!is_wp_error($emailTemplates)) {
         foreach ($emailTemplates as $emailTemplatekey => $emailTemplatevalue) {
           $mailTem[] =
-              [
-                'id'    => $emailTemplatevalue->id,
-                'title' => $emailTemplatevalue->title,
-                'sub'   => $emailTemplatevalue->sub,
-                'body'  => $emailTemplatevalue->body,
-              ];
+            [
+              'id'    => $emailTemplatevalue->id,
+              'title' => $emailTemplatevalue->title,
+              'sub'   => $emailTemplatevalue->sub,
+              'body'  => $emailTemplatevalue->body,
+            ];
         }
       }
       $integrationHandler = new IntegrationHandler($formID);
@@ -1317,7 +1355,7 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
               $integrationData = array_merge($integrationData, $integration_details);
             }
             $allConfirmation['type'][$integrationValue->integration_type][]
-                = $integrationData;
+              = $integrationData;
           } else {
             $integrationData = [
               'id'   => $integrationValue->id,
@@ -1327,8 +1365,8 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
             $integrations[] = array_merge(
               $integrationData,
               is_string($integrationValue->integration_details) ?
-                  (array) json_decode($integrationValue->integration_details) :
-                  $integrationValue->integration_details
+              (array) json_decode($integrationValue->integration_details) :
+              $integrationValue->integration_details
             );
           }
         }
@@ -1618,6 +1656,10 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
       );
     }
 
+    // delete entry log and details
+    $sql = 'DELETE em, e FROM wp_bitforms_form_log_details AS em JOIN wp_bitforms_form_entry_log AS e ON em.log_id = e.id WHERE form_id = %d';
+    $wpdb->prepare($sql, $formID);
+
     $fileHandler = new FileHandler();
     foreach ($formID as $fId) {
       if (file_exists(BITFORMS_UPLOAD_DIR . DIRECTORY_SEPARATOR . $fId)) {
@@ -1693,13 +1735,13 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
     if (!$oldFormId || empty($post->formDetail->fields) || empty($post->formDetail->layout)) {
       return new WP_Error('invalid_form', __('Please import a valid json.', 'bit-form'));
     }
-    $importtedForm = (array)$post->formDetail;
+    $importtedForm = (array) $post->formDetail;
     $importtedForm['form_content']['fields'] = $importtedForm['fields'];
     $importtedForm['form_content']['layout'] = $importtedForm['layout'];
     $importtedForm['form_content']['nestedLayout'] = $importtedForm['nestedLayouts'];
     $importtedForm['form_content']['formInfo'] = $importtedForm['formInfo'];
     unset($importtedForm['fields'], $importtedForm['layout'], $importtedForm['nestedLayout'], $importtedForm['formInfo']);
-    $formData = FormDuplicateHelper::createReplica((array)$importtedForm, $oldFormId, $newFormId);
+    $formData = FormDuplicateHelper::createReplica((array) $importtedForm, $oldFormId, $newFormId);
 
     if (!empty($importtedForm['rowHeight'])) {
       $formData->rowHeight = $importtedForm['rowHeight'];
@@ -1788,7 +1830,7 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
     }
 
     $newFormId = $oldFormId;
-    $duplicatedForm = $this->getAForm($Request, (object)['id' => $oldFormId]);
+    $duplicatedForm = $this->getAForm($Request, (object) ['id' => $oldFormId]);
     $formData = FormDuplicateHelper::createReplica($duplicatedForm, $oldFormId, $newFormId);
     // for custom css
     $customCssPath = 'form-styles/bitform-custom-' . $newFormId . '.css';
@@ -2049,7 +2091,7 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
     }
     $entryMeta = new FormEntryMetaModel();
     $filter = [];
-    $formEntries = $entryMeta->getExportEntry($formFields, $entries, $formId, $fieldLabels, $limit, $sortBy, $sortByField);
+    $formEntries = $entryMeta->getExportEntry($formFields, $entries, $formId, $fieldLabels, $limit, $sortBy, $sortByField, $offset);
     return $formEntries;
   }
 
@@ -2718,8 +2760,8 @@ grid-template-columns: repeat( 6 , minmax( 30px , 1fr ));
     }
 
     $data = [
-      'enabled_events[]'  => 'payment_intent.succeeded',
-      'url'               => $webhook_url,
+      'enabled_events[]' => 'payment_intent.succeeded',
+      'url'              => $webhook_url,
     ];
 
     if (!$webhook_already_exist) {

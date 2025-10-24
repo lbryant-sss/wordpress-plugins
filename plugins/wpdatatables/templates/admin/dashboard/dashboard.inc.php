@@ -134,6 +134,7 @@ $tableChartsCount = (int)WDTTools::getTablesCount('chart');
                         $lastTableData = WDTTools::getLastTableData('table');
                         $tableType = WDTTools::getConvertedTableType($lastTableData->table_type);
                         $simpleType = $lastTableData->table_type == 'simple' ? '&simple': '';
+                        $ivyType = $lastTableData->table_type == 'ivyforms' ? '=ivyforms': '';
 
                         ?>
                         <div class="card-body wpdt-flex card-padding">
@@ -142,7 +143,7 @@ $tableChartsCount = (int)WDTTools::getTablesCount('chart');
                                 <p><?php esc_html_e('Created', 'wpdatatables'); ?></p>
                             </div>
                             <div class="wdt-table-last-created">
-                                <a href="admin.php?page=wpdatatables-constructor&source<?php echo $simpleType ?>&table_id=<?php echo (int)$lastTableData->id; ?>"
+                                <a href="admin.php?page=wpdatatables-constructor&source<?php echo $simpleType . $ivyType ?>&table_id=<?php echo (int)$lastTableData->id; ?>"
                                    class="wdt-table-link">
                                     <?php echo esc_html($lastTableData->title) ?>
                                 </a>
@@ -337,13 +338,13 @@ $tableChartsCount = (int)WDTTools::getTablesCount('chart');
                                  </span>
                         </p>
                         <p class="wpdt-text wpdt-font m-b-18">
-                            New update:
+                            New update with some exciting news:
                         </p>
                         <div class="alert alert-info m-b-0" role="alert">
                             <i class="wpdt-icon-info-circle-full"></i>
                             <ul>
-                                <li>Added a new hook wpdatatables_after_save_table triggered upon saving Simple tables.</li>
-                                <li>Compatibility with WordPress version 6.8.3 approved.</li>
+                                <li><strong>Integration with IvyForms plugin</strong> for creating tables from form submissions.</li>
+                                <li>Upgraded PHPSpreadsheet library to a security-checked version.</li>
                                 <li>Other small bug fixes and stability improvements.</li>
                             </ul>
                         </div>

@@ -52,10 +52,10 @@ class Shipping_Data extends Abstract_Class {
 
         // Get shipping options.
         $options = array(
-            'add_all_shipping'               => get_option( 'add_all_shipping', 'no' ),
-            'only_free_shipping'             => get_option( 'free_shipping', 'no' ), // Only include free shipping if free shipping is met.
-            'remove_free_shipping'           => get_option( 'remove_free_shipping', 'no' ),  // Remove free shipping method.
-            'remove_local_pickup_shipping'   => get_option( 'local_pickup_shipping', 'no' ), // Remove local pickup shipping method.
+            'add_all_shipping'               => get_option( 'adt_add_all_shipping', 'no' ),
+            'only_free_shipping'             => get_option( 'adt_remove_other_shipping_classes_on_free_shipping', 'no' ), // Only include free shipping if free shipping is met.
+            'remove_free_shipping'           => get_option( 'adt_remove_free_shipping', 'no' ),  // Remove free shipping method.
+            'remove_local_pickup_shipping'   => get_option( 'adt_remove_local_pickup_shipping', 'no' ), // Remove local pickup shipping method.
             'include_all_shipping_countries' => ( true === $feed->include_all_shipping_countries || 'yes' === $feed->include_all_shipping_countries ) ? 'yes' : 'no',
         );
 

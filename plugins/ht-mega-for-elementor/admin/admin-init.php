@@ -69,9 +69,9 @@ class HTMega_Admin_Setting{
          ( htmega_get_option( 'megamenubuilder', 'htmega_advance_element_tabs', 'off' ) === 'on' && empty ( htmega_get_module_option( 'htmega_megamenu_module_settings') ) ) ) {
             require_once( HTMEGA_ADDONS_PL_PATH.'extensions/ht-menu/admin/setting.php' );
         }
-        if ( get_option( 'htmega_onboarding_completed' ) ) {
-            require_once( 'include/class-trail.php' ); // trial notice file
-        }
+        // if ( get_option( 'htmega_onboarding_completed' ) ) {
+        //     require_once( 'include/class-trail.php' ); // trial notice file
+        // }
 
     }
 

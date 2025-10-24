@@ -1,7 +1,7 @@
-=== Bit Form - Custom Contact Form, Multi Step, Conversational, Payment & Quiz Form builder ===
-Plugin Name: Bit Form - Custom Contact Form, Multi Step, Conversational, Payment & Quiz Form builder
-Version: 2.20.6
-Stable tag: 2.20.6
+=== Bit Form - Custom Contact Form, Multi Step, Conversational Form & Payment Form builder ===
+Plugin Name: Bit Form - Custom Contact Form, Multi Step, Conversational Form & Payment Form builder
+Version: 2.21.0
+Stable tag: 2.21.0
 Author: Contact form builder by Bit form
 Author URI: https://www.bitapps.pro/
 Contributors: bitpressadmin, arif25897, mdrhmaruf, mdabbasuddin, akaioum 
@@ -501,6 +501,26 @@ Yes, Bit Form has built-in spam protection better than any other Contact Form Bu
 6. Response table to view form entries
 
 == Changelog ==
+= 2.21.0 =
+*Release Date: 23 October, 2025*
+*New:
+    1. Razorpay: Added webhook support for Razorpay payments after form submission.
+    2. Stripe: Added MB Way payment method.
+
+*Improvements:
+    1. Routing: Optimized AJAX routing for improved performance.
+    2. MailChimp Integration: Enhanced birthdate field mapping for better compatibility.
+    3. Payment Information: Refined payment details display within the entry details section.
+    4. Smart Tags: Improved Smart Tag handling in integration field mappings.
+
+*Fixes:
+    1. Fixed issue Repeated field math calculations.
+    2. Fixed an issue where Razorpay and Mollie workflows were triggered after successful payment.
+    3. Fixed an issue that caused form entries to be deleted when deleting a form.
+    4. Fixed an issue with empty values in dropdown field group options.
+    5. Fixed an issue preventing Mailchimp contact updates from working correctly.
+    6. Fixed the PDF attachment download link not working in entry details.
+
 = 2.20.6 =
 *Release Date: 15 September, 2025*
 *New:

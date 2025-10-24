@@ -163,7 +163,11 @@ class Utils extends Base {
 		}
 		if ( ! empty( $settings['page_settings'] ) ) {
 			foreach ( $settings['page_settings'] as $option_name => $val ) {
-				self::update_option( $option_name, $id );
+				$__val = $id;
+				if($option_name === 'fluent_cart_store_settings'){
+					$__val = $val;
+				}
+				self::update_option( $option_name, $__val );
 				if ( array_key_exists( $option_name, $extra_settings ) ) {
 					foreach ( $extra_settings[ $option_name ] as $name => $value ) {
 						self::update_option( $name, $value );

@@ -15,6 +15,8 @@ use Extendify\Config;
 use Extendify\Shared\Services\Escaper;
 use Extendify\Agent\TagBlocks;
 use Extendify\Agent\TagTemplateParts;
+use Extendify\Agent\Controllers\SiteNavigationController;
+use Extendify\Shared\DataProvider\ProductsData;
 
 /**
  * This class handles any file loading for the admin area.
@@ -36,6 +38,9 @@ class Admin
         // Tag blocks so we can identify them later
         TagBlocks::init();
         TagTemplateParts::init();
+
+        // Add the site navigation ids to the navigation blocks
+        SiteNavigationController::init();
     }
 
     /**
@@ -73,6 +78,7 @@ class Admin
             'postTitle' => \esc_attr(\get_the_title($this->getCurrentPostId())),
             'postType' => \esc_attr(\get_post_type($this->getCurrentPostId())),
             'isFrontPage' => (bool) \is_front_page(),
+            'postStatus' => \esc_attr(\get_post_status((int) $this->getCurrentPostId())),
             'isBlogPage' => (bool) \is_home(),
             'themeSlug' => \esc_attr(\wp_get_theme()->get_stylesheet()),
             'hasThemeVariations' => (bool) $this->hasThemeVariations(),
@@ -83,8 +89,20 @@ class Admin
                 false,
             'activePlugins' => array_values(\get_option('active_plugins', [])),
         ];
+        $recommendations = ProductsData::get() ?? [];
+        $pluginRecommendations = array_filter($recommendations, function ($item) {
+            return in_array('ai-agent', $item['slots'] ?? [], true) && $item['ctaType'] === 'plugin';
+        });
+        $mappedPluginRecommendations = array_values(array_map(function ($item) {
+            return [
+                'title' => $item['title'] ?? '',
+                'slug'  => $item['slug'] ?? '',
+                'description' => $item['aiDescription'] ?? $item['description'] ?? '',
+            ];
+        }, $pluginRecommendations));
         $agentContext = [
             'availableAdminPages' => get_option('_transient_extendify_admin_pages_menu', []),
+            'pluginRecommendations' => $mappedPluginRecommendations,
         ];
         $abilities = [
             'canEditPost' => (bool) \current_user_can('edit_post', \get_queried_object_id()),
@@ -93,7 +111,8 @@ class Admin
             // include a step that fetches the page they want to edit
             'canEditPosts' => (bool) \current_user_can('edit_posts'),
             'canEditThemes' => (bool) \current_user_can('edit_theme_options'),
-            'canEditPlugins' => (bool) \current_user_can('activate_plugins'),
+            'canActivatePlugins' => (bool) \current_user_can('activate_plugins'),
+            'canInstallPlugins' => (bool) \current_user_can('install_plugins'),
             'canEditUsers' => (bool) \current_user_can('edit_users'),
             'canEditSettings' => (bool) \current_user_can('manage_options'),
             'canUploadMedia' => (bool) \current_user_can('upload_files'),
@@ -205,6 +224,15 @@ class Admin
             ]
         ];
 
+        if ($context['postStatus']) {
+            $suggestions [] = [
+                'icon' => ($context['postStatus'] === 'draft') ? 'published' : 'drafts',
+                'message' => ($context['postStatus'] === 'draft')
+                    ? __('Publish this page', 'extendify-local')
+                    : __('Unpublish this page', 'extendify-local') ,
+            ];
+        }
+
         if ($abilities['canEditSettings']) {
             $suggestions[] = [
                 'icon' => 'edit',
@@ -247,7 +275,7 @@ class Admin
             ];
         }
 
-        if ($abilities['canEditPlugins']) {
+        if ($abilities['canActivatePlugins']) {
             $suggestions[] = [
                 'icon' => 'help',
                 'message' => __('How can I install a plugin?', 'extendify-local'),

@@ -5,8 +5,8 @@ License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.html
 Tags: activity log, event log, user tracking, logger, history 
 Requires at least: 5.5
-Tested up to: 6.8.2
-Stable tag: 5.5.2
+Tested up to: 6.8.3
+Stable tag: 5.5.3
 Requires PHP: 7.4
 
 The #1 user-rated activity log plugin for event logging, activity monitoring and change tracking.
@@ -235,33 +235,9 @@ These capabilities make WP Activity Log a **comprehensive solution for site secu
 13. Use the Premium edition to also export any activity log data to an HTML report or CSV file. CSV files are the most widely supported format and can easily be read, parsed, and imported into third-party systems.
 == Changelog ==
 
-= 5.5.2 (2025-10-22) =
+= 5.5.3 (2025-10-23) =
 
- * **New activity Log event IDs for Paid Membership Pro**
-	 * ID 9501 - A membership level was created
-	 * ID 9502 - A membership level was permanently deleted.
-	 * ID 9504 - A membership level was assigned to a user.
-	 * ID 9505 - A membership level was removed from a user.
-	 * We also added a number of event IDs for Paid Membership Pro that are only available in Premium. Refer to the [list of WordPress activity log event IDs](https://melapress.com/support/kb/wp-activity-log-list-event-ids/?utm_source=wp+repo&utm_medium=repo+link&utm_campaign=wordpress_org&utm_content=wsal) for the complete list.
-
- * **New New activity Log event IDs for WordPress**
-	 * ID 5032 - A plugin update available
-	 * ID 5033 - A theme update available
-	 * ID 6079 - WordPress core update available.
-	 * ID 2134 - User accessed a password protected post.
-	 * ID 2135 - Failed attempt to access a password protected post.
-
- * **New features**
-	 * New buttons in the activity log viewer to copy event details to the clipboard.
-	 * Added a Members Activity panel area inside the Members details page in Paid Memberships PRO that allows the admin to view the activity of each user. (PREMIUM)
-
- * **Plugin & functiontionality improvements**
-	 * Updated the translations build process so that .po files are now merged with new strings without removing existing translations.
-	 * Organized the Report sections settings in alphabetical order.
-
- * **Bug fixes**
-	 * Fixed a conflict with User Switch plugin which was breaking the process of switching back and forth through users.
-	 * Fixed a number of spelling mistakes in the wizard.
-	 * Fixed an issue where certain Yoast SEO plugin event IDs would not remain enabled after a user enables them and saves the settings.
+  * **Bug fix**
+	 * Fixed an edge case fatal error that could occur on the plugins page due to a null value being passed to strpos() in the plugin and theme activity log sensor, for event ID 5032 - Plugin update available.
 
 Refer to the complete [plugin changelog](https://melapress.com/support/kb/wp-activity-log-plugin-changelog/?utm_source=wp+repo&utm_medium=repo+link&utm_campaign=wordpress_org&utm_content=wsal) for more detailed information about what was new, improved and fixed in previous version updates of WP Activity Log.

@@ -400,10 +400,10 @@ final class FieldValueHandler
         return $fieldNewData;
       }
 
-      // for hidden or empty fields, we can skip the processing
-
+      // Skip processing for hidden or empty fields only when $isOnlyValues is true
       if ($isOnlyValues) {
-        if (empty($formData[$key]) || '' === $formData[$key]) {
+        // Check if the value is strictly an empty string or null, but allow 0
+        if (!isset($formData[$key]) || '' === $formData[$key] || null === $formData[$key]) {
           return $fieldNewData;
         }
 

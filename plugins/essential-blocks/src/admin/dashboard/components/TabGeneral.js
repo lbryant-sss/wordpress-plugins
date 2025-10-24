@@ -277,15 +277,29 @@ export default function TabGeneral() {
                         >
                             <div className="changelog-wrapper">
                                 <div className="changelog-title">
-                                    {__("Version: 5.7.2", "essential-blocks")}
+                                    {__("Version: 5.7.3", "essential-blocks")}
                                     <span className="changelog-date">
-                                        {__("12/10/2025", "essential-blocks")}
+                                        {__("23/10/2025", "essential-blocks")}
                                     </span>
                                 </div>
                                 <ul className="changelog-content">
                                     <li>
                                         {__(
-                                            "Fixed: Editor not working with the last update",
+                                            "Fixed: Advanced Video | Video ratio issue",
+                                            "essential-blocks"
+                                        )}
+
+                                    </li>
+                                    <li>
+                                        {__(
+                                            "Fixed: Post Grid | Pagination conflict with Filter",
+                                            "essential-blocks"
+                                        )}
+
+                                    </li>
+                                    <li>
+                                        {__(
+                                            "Fixed: Slider | JQuery dependency issue",
                                             "essential-blocks"
                                         )}
 

@@ -494,7 +494,7 @@ class WP_Admin extends Abstract_Class {
         }
 
         // Reset backward compatibility options.
-        delete_option( 'cron_projects' );
+        delete_option( 'adt_cron_projects' );
 
         // If the file name or legacy project hash is empty that means the feed is duplicated, delete the post.
         $args  = array(

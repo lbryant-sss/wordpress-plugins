@@ -71,8 +71,8 @@ abstract class BaseTemplate {
 		return [];
 	}
 
-	final public static function get_property( $key ) {
-		$properties = static::get_properties();
+	final public static function get_property( $key, $import_settings = [] ) {
+		$properties = static::get_properties($import_settings);
 
 		return $properties[ $key ] ?? null;
 	}
@@ -179,8 +179,8 @@ abstract class BaseTemplate {
 			] );
 		}
 
-		if ( $this->get_property( 'condition' ) ) {
-			$this->update_conditions( [ $this->get_property( 'condition' ) ] );
+		if ( $this->get_property( 'condition', $data["import_settings"] ) ) {
+			$this->update_conditions( [ $this->get_property( 'condition', $data["import_settings"] ) ] );
 		}
 	}
 

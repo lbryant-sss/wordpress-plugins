@@ -4,8 +4,8 @@ Donate link: https://ko-fi.com/cabrerahector
 Tags: popular, posts, widget, popularity, top
 Requires at least: 6.2
 Tested up to: 6.8.3
-Requires PHP: 7.3
-Stable tag: 7.3.5
+Requires PHP: 7.4
+Stable tag: 7.3.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -111,6 +111,17 @@ The FAQ section has been moved [here](https://github.com/cabrerahector/wordpress
 5. Statistics panel.
 
 == Changelog ==
+
+**If you're updating from a previous version please clear your popular posts thumbnails cache via WP Dashboard > Settings > WP Popular Posts > Tools > Thumbnails > Empty image cache button.**
+
+= 7.3.6 =
+
+- Improves security around thumbnail generation (props to smile9381!)
+- Removes deprecated /v1/popular-posts POST endpoint.
+- Minimum required PHP version is now 7.4.
+- Minor code improvements.
+
+[Release notes](https://cabrerahector.com/wordpress/wordpress-popular-posts-7-3-experimental-elementor-support/#7.3.6)
 
 = 7.3.5 =
 

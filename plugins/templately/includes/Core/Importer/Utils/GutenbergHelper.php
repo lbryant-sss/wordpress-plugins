@@ -53,6 +53,9 @@ class GutenbergHelper extends ImportHelper {
 				return strlen( $b ) - strlen( $a );
 			} );
 		}
+		if(!empty($template_settings["page_settings"]["fluent_cart_store_settings"])){
+			$this->replace_fluent_cart_store_settings($template_settings["page_settings"]["fluent_cart_store_settings"]);
+		}
 		$this->replace( $parsed_blocks, $request_params );
 		$this->content = wp_slash( serialize_blocks( $parsed_blocks ) );
 
@@ -131,6 +134,33 @@ class GutenbergHelper extends ImportHelper {
 				$this->sse_log('prepare', 'Updated Site Logo', 1, 'eventLog');
 			}
 		}
+	}
+
+	private function replace_fluent_cart_store_settings($settings) {
+		$map_post_ids = $this->map_post_ids;
+		$saved_options = $settings;
+		$mapped_keys = [
+			'checkout_page_id',
+			'custom_payment_page_id',
+			'registration_page_id',
+			'login_page_id',
+			'cart_page_id',
+			'receipt_page_id',
+			'shop_page_id',
+			'customer_profile_page_id',
+		];
+
+		foreach ($mapped_keys as $key) {
+			$old_id = $saved_options[$key] ?? null;
+			if (!empty($old_id) && isset($map_post_ids[$old_id])) {
+				$saved_options[$key] = $map_post_ids[$old_id];
+			}
+			else if(isset($saved_options[$key])){
+				$saved_options[$key] = 0;
+			}
+		}
+
+		update_option('fluent_cart_store_settings', $saved_options);
 	}
 
 	private function replace_archive_id( $menu_id ) {

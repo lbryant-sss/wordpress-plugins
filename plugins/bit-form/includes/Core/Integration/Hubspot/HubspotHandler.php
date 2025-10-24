@@ -4,6 +4,7 @@ namespace BitCode\BitForm\Core\Integration\Hubspot;
 
 use BitCode\BitForm\Core\Integration\IntegrationHandler;
 use BitCode\BitForm\Core\Util\HttpHelper;
+use BitCode\BitForm\GlobalHelper;
 use WP_Error;
 
 final class HubspotHandler
@@ -34,8 +35,15 @@ final class HubspotHandler
   {
     if (isset($_REQUEST['_ajax_nonce']) && wp_verify_nonce($_REQUEST['_ajax_nonce'], 'bitforms_save')) {
       $authorizationHeader = null;
-      $inputJSON = file_get_contents('php://input');
-      $requestsParams = json_decode($inputJSON);
+      // $inputJSON = file_get_contents('php://input');
+      // $requestsParams = json_decode($inputJSON);
+
+      GlobalHelper::requirePostMethod();
+      try {
+        $requestsParams = GlobalHelper::formatRequestData($_POST['data'] ?? []);
+      } catch (\InvalidArgumentException $e) {
+        wp_send_json_error($e->getMessage(), 400);
+      }
 
       if (empty($requestsParams->api_key)) {
         wp_send_json_error(
@@ -67,8 +75,15 @@ final class HubspotHandler
   {
     if (isset($_REQUEST['_ajax_nonce']) && wp_verify_nonce($_REQUEST['_ajax_nonce'], 'bitforms_save')) {
       $authorizationHeader = null;
-      $inputJSON = file_get_contents('php://input');
-      $requestsParams = json_decode($inputJSON);
+      // $inputJSON = file_get_contents('php://input');
+      // $requestsParams = json_decode($inputJSON);
+      GlobalHelper::requirePostMethod();
+
+      try {
+        $requestsParams = GlobalHelper::formatRequestData($_POST['data'] ?? []);
+      } catch (\InvalidArgumentException $e) {
+        wp_send_json_error($e->getMessage(), 400);
+      }
 
       if (empty($requestsParams->apiKey)) {
         wp_send_json_error(
@@ -118,8 +133,16 @@ final class HubspotHandler
   {
     if (isset($_REQUEST['_ajax_nonce']) && wp_verify_nonce($_REQUEST['_ajax_nonce'], 'bitforms_save')) {
       $authorizationHeader = null;
-      $inputJSON = file_get_contents('php://input');
-      $requestsParams = json_decode($inputJSON);
+      // $inputJSON = file_get_contents('php://input');
+      // $requestsParams = json_decode($inputJSON);
+
+      GlobalHelper::requirePostMethod();
+
+      try {
+        $requestsParams = GlobalHelper::formatRequestData($_POST['data'] ?? []);
+      } catch (\InvalidArgumentException $e) {
+        wp_send_json_error($e->getMessage(), 400);
+      }
 
       if (empty($requestsParams->apiKey)) {
         wp_send_json_error(
@@ -159,46 +182,49 @@ final class HubspotHandler
   {
     if (isset($_REQUEST['_ajax_nonce']) && wp_verify_nonce($_REQUEST['_ajax_nonce'], 'bitforms_save')) {
       $authorizationHeader = null;
-      $inputJSON = file_get_contents('php://input');
-      $requestsParams = json_decode($inputJSON);
+      // $inputJSON = file_get_contents('php://input');
+      // $requestsParams = json_decode($inputJSON);
 
-      if (isset($_REQUEST['_ajax_nonce']) && wp_verify_nonce($_REQUEST['_ajax_nonce'], 'bitforms_save')) {
-        $inputJSON = file_get_contents('php://input');
-        $requestsParams = json_decode($inputJSON);
+      GlobalHelper::requirePostMethod();
 
-        if (empty($requestsParams->apiKey)) {
-          wp_send_json_error(
-            __(
-              'Requested parameter is empty',
-              'bit-form'
-            ),
-            400
-          );
-        }
-        $apiKey = $requestsParams->apiKey;
-        $apiEndpoint = 'https://api.hubapi.com/crm/v3/objects/contacts';
-        $authorizationHeader['Accept'] = 'application/json';
-        $authorizationHeader['authorization'] = "Bearer {$apiKey}";
-
-        $apiResponse = HttpHelper::get($apiEndpoint, null, $authorizationHeader);
-        if (is_wp_error($apiResponse) || 'error' === $apiResponse->status) {
-          wp_send_json_error(
-            empty($apiResponse->code) ? 'Unknown' : $apiResponse->message,
-            400
-          );
-        }
-        $response = [];
-        $contacts = $apiResponse->results;
-
-        foreach ($contacts as $contact) {
-          $name = $contact->properties->firstname;
-          $response[] = (object) [
-            'contactId'   => $contact->id,
-            'contactName' => $name,
-          ];
-        }
-        wp_send_json_success($response, 200);
+      try {
+        $requestsParams = GlobalHelper::formatRequestData($_POST['data'] ?? []);
+      } catch (\InvalidArgumentException $e) {
+        wp_send_json_error($e->getMessage(), 400);
       }
+
+      if (empty($requestsParams->apiKey)) {
+        wp_send_json_error(
+          __(
+            'Requested parameter is empty',
+            'bit-form'
+          ),
+          400
+        );
+      }
+      $apiKey = $requestsParams->apiKey;
+      $apiEndpoint = 'https://api.hubapi.com/crm/v3/objects/contacts';
+      $authorizationHeader['Accept'] = 'application/json';
+      $authorizationHeader['authorization'] = "Bearer {$apiKey}";
+
+      $apiResponse = HttpHelper::get($apiEndpoint, null, $authorizationHeader);
+      if (is_wp_error($apiResponse) || 'error' === $apiResponse->status) {
+        wp_send_json_error(
+          empty($apiResponse->code) ? 'Unknown' : $apiResponse->message,
+          400
+        );
+      }
+      $response = [];
+      $contacts = $apiResponse->results;
+
+      foreach ($contacts as $contact) {
+        $name = $contact->properties->firstname;
+        $response[] = (object) [
+          'contactId'   => $contact->id,
+          'contactName' => $name,
+        ];
+      }
+      wp_send_json_success($response, 200);
     }
   }
 
@@ -206,8 +232,16 @@ final class HubspotHandler
   {
     if (isset($_REQUEST['_ajax_nonce']) && wp_verify_nonce($_REQUEST['_ajax_nonce'], 'bitforms_save')) {
       $authorizationHeader = null;
-      $inputJSON = file_get_contents('php://input');
-      $requestsParams = json_decode($inputJSON);
+      // $inputJSON = file_get_contents('php://input');
+      // $requestsParams = json_decode($inputJSON);
+
+      GlobalHelper::requirePostMethod();
+
+      try {
+        $requestsParams = GlobalHelper::formatRequestData($_POST['data'] ?? []);
+      } catch (\InvalidArgumentException $e) {
+        wp_send_json_error($e->getMessage(), 400);
+      }
       if (empty($requestsParams->apiKey)) {
         wp_send_json_error(
           __(

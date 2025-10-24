@@ -11,6 +11,7 @@ use BitCode\BitForm\Core\Integration\IntegrationHandler;
 use BitCode\BitForm\Core\Util\ApiResponse as UtilApiResponse;
 use BitCode\BitForm\Core\Util\HttpHelper;
 use BitCode\BitForm\Core\Util\IpTool;
+use BitCode\BitForm\GlobalHelper;
 use WP_Error;
 
 /**
@@ -53,8 +54,17 @@ class ZohoBiginHandler
   public static function generateTokens()
   {
     if (isset($_REQUEST['_ajax_nonce']) && wp_verify_nonce($_REQUEST['_ajax_nonce'], 'bitforms_save')) {
-      $inputJSON = file_get_contents('php://input');
-      $requestsParams = json_decode($inputJSON);
+      // $inputJSON = file_get_contents('php://input');
+      // $requestsParams = json_decode($inputJSON);
+
+      GlobalHelper::requirePostMethod();
+
+      try {
+        $requestsParams = GlobalHelper::formatRequestData($_POST['data'] ?? []);
+      } catch (\InvalidArgumentException $e) {
+        wp_send_json_error($e->getMessage(), 400);
+      }
+
       if (
         empty($requestsParams->{'accounts-server'})
         || empty($requestsParams->dataCenter)
@@ -110,8 +120,17 @@ class ZohoBiginHandler
   {
     if (isset($_REQUEST['_ajax_nonce']) && wp_verify_nonce($_REQUEST['_ajax_nonce'], 'bitforms_save')) {
       $authorizationHeader = null;
-      $inputJSON = file_get_contents('php://input');
-      $queryParams = json_decode($inputJSON);
+      // $inputJSON = file_get_contents('php://input');
+      // $queryParams = json_decode($inputJSON);
+
+      GlobalHelper::requirePostMethod();
+
+      try {
+        $queryParams = GlobalHelper::formatRequestData($_POST['data'] ?? []);
+      } catch (\InvalidArgumentException $e) {
+        wp_send_json_error($e->getMessage(), 400);
+      }
+
       if (
         empty($queryParams->tokenDetails)
         || empty($queryParams->dataCenter)
@@ -176,8 +195,17 @@ class ZohoBiginHandler
   public static function refreshRelatedModulesAjaxHelper()
   {
     if (isset($_REQUEST['_ajax_nonce']) && wp_verify_nonce($_REQUEST['_ajax_nonce'], 'bitforms_save')) {
-      $inputJSON = file_get_contents('php://input');
-      $queryParams = json_decode($inputJSON);
+      // $inputJSON = file_get_contents('php://input');
+      // $queryParams = json_decode($inputJSON);
+
+      GlobalHelper::requirePostMethod();
+
+      try {
+        $queryParams = GlobalHelper::formatRequestData($_POST['data'] ?? []);
+      } catch (\InvalidArgumentException $e) {
+        wp_send_json_error($e->getMessage(), 400);
+      }
+
       if (
         empty($queryParams->tokenDetails)
         || empty($queryParams->dataCenter)
@@ -251,8 +279,16 @@ class ZohoBiginHandler
     $authorizationHeader = null;
     $requiredParams = null;
     if (isset($_REQUEST['_ajax_nonce']) && wp_verify_nonce($_REQUEST['_ajax_nonce'], 'bitforms_save')) {
-      $inputJSON = file_get_contents('php://input');
-      $queryParams = json_decode($inputJSON);
+      // $inputJSON = file_get_contents('php://input');
+      // $queryParams = json_decode($inputJSON);
+      GlobalHelper::requirePostMethod();
+
+      try {
+        $queryParams = GlobalHelper::formatRequestData($_POST['data'] ?? []);
+      } catch (\InvalidArgumentException $e) {
+        wp_send_json_error($e->getMessage(), 400);
+      }
+
       if (
         empty($queryParams->module)
         || empty($queryParams->tokenDetails)
@@ -343,8 +379,16 @@ class ZohoBiginHandler
   {
     if (isset($_REQUEST['_ajax_nonce']) && wp_verify_nonce($_REQUEST['_ajax_nonce'], 'bitforms_save')) {
       $authorizationHeader = null;
-      $inputJSON = file_get_contents('php://input');
-      $queryParams = json_decode($inputJSON);
+      // $inputJSON = file_get_contents('php://input');
+      // $queryParams = json_decode($inputJSON);
+
+      GlobalHelper::requirePostMethod();
+
+      try {
+        $queryParams = GlobalHelper::formatRequestData($_POST['data'] ?? []);
+      } catch (\InvalidArgumentException $e) {
+        wp_send_json_error($e->getMessage(), 400);
+      }
       if (
         empty($queryParams->tokenDetails)
         || empty($queryParams->dataCenter)
@@ -409,8 +453,17 @@ class ZohoBiginHandler
   {
     if (isset($_REQUEST['_ajax_nonce']) && wp_verify_nonce($_REQUEST['_ajax_nonce'], 'bitforms_save')) {
       $authorizationHeader = null;
-      $inputJSON = file_get_contents('php://input');
-      $queryParams = json_decode($inputJSON);
+      // $inputJSON = file_get_contents('php://input');
+      // $queryParams = json_decode($inputJSON);
+
+      GlobalHelper::requirePostMethod();
+
+      try {
+        $queryParams = GlobalHelper::formatRequestData($_POST['data'] ?? []);
+      } catch (\InvalidArgumentException $e) {
+        wp_send_json_error($e->getMessage(), 400);
+      }
+
       if (
         empty($queryParams->tokenDetails)
         || empty($queryParams->dataCenter)

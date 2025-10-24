@@ -60,6 +60,9 @@ class Templates extends BaseRunner {
 						];
 					}
 				}
+				else if($template_settings['type'] === 'fluent_product_single'){
+					$this->create_page_template();
+				}
 
 			} else {
 				$results['templates']['failed'][ $id ] = $import;

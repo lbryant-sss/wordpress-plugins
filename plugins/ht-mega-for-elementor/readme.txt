@@ -3,7 +3,7 @@ Contributors: hasthemes, htplugins, devitemsllc, tarekht, zenaulislam, aslamhasi
 Tags: elementor, elementor addons, elementor widgets, page builder, elementor templates, mega menu, addons for elementor, post grid, elements, header footer builder
 Requires at least: 5.0
 Tested up to: 6.8
-Stable tag: 2.9.7
+Stable tag: 2.9.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -236,6 +236,11 @@ SaaS, Medical, Construction, Law Firm, Real Estate, Agency, Education, Corporate
 
 
 == Changelog ==
+
+= Version 2.9.8 - Date: 2025-10-23 =
+* Added: [Portfolio Home Light (Modern) Template Kit](https://library.wphtmega.com/portfolio-home-light-modern/).
+* Fixed: Issue with Template library template filtering.
+* Fixed: A few minor issues.
 
 = Version 2.9.7 - Date: 2025-10-06 =
 * Fixed: Issue with Wrapper Link not working in some cases.

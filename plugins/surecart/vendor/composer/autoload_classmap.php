@@ -1092,6 +1092,7 @@ return array(
     'SureCart\\WordPress\\ActionsService' => $baseDir . '/app/src/WordPress/ActionsService.php',
     'SureCart\\WordPress\\Admin\\Menus\\AdminMenuPageService' => $baseDir . '/app/src/WordPress/Admin/Menus/AdminMenuPageService.php',
     'SureCart\\WordPress\\Admin\\Menus\\AdminMenuPageServiceProvider' => $baseDir . '/app/src/WordPress/Admin/Menus/AdminMenuPageServiceProvider.php',
+    'SureCart\\WordPress\\Admin\\Menus\\AdminToolbarService' => $baseDir . '/app/src/WordPress/Admin/Menus/AdminToolbarService.php',
     'SureCart\\WordPress\\Admin\\Menus\\ProductCollectionsMenuService' => $baseDir . '/app/src/WordPress/Admin/Menus/ProductCollectionsMenuService.php',
     'SureCart\\WordPress\\Admin\\Notices\\AdminNoticesService' => $baseDir . '/app/src/WordPress/Admin/Notices/AdminNoticesService.php',
     'SureCart\\WordPress\\Admin\\Notices\\AdminNoticesServiceProvider' => $baseDir . '/app/src/WordPress/Admin/Notices/AdminNoticesServiceProvider.php',

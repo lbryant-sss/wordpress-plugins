@@ -70,18 +70,25 @@ const state = (set, get) => ({
 			},
 		};
 	},
-	addWorkflowResult: async (data) => {
-		set((state) => {
-			const max = Math.max(0, state.workflowHistory.length - 10);
-			return {
-				workflowHistory: [data, ...state.workflowHistory.toSpliced(0, max)],
-			};
-		});
+	addWorkflowResult: (data) => {
+		if (data.status === 'completed') {
+			set((state) => {
+				const max = Math.max(0, state.workflowHistory.length - 10);
+				return {
+					workflowHistory: [data, ...state.workflowHistory.toSpliced(0, max)],
+				};
+			});
+		}
 		const workflowId = get().workflow?.id;
 		if (!workflowId) return;
 		// Persist it to the server
 		const path = '/extendify/v1/agent/workflows';
-		await apiFetch({ method: 'POST', path, data: { workflowId, ...data } });
+		apiFetch({
+			method: 'POST',
+			keepalive: true,
+			path,
+			data: { workflowId, ...data },
+		});
 	},
 	mergeWorkflowData: (data) => {
 		set((state) => {
@@ -108,7 +115,7 @@ export const useWorkflowStore = create()(
 		name: `extendify-agent-workflows-${window.extSharedData.siteId}`,
 		partialize: (state) => {
 			// eslint-disable-next-line
-			const { block, ...rest } = state;
+			const { block, workflowHistory, ...rest } = state;
 			return { ...rest };
 		},
 	}),

@@ -8,6 +8,7 @@ namespace BitCode\BitForm\Core\Integration\SendFox;
 
 use BitCode\BitForm\Core\Integration\IntegrationHandler;
 use BitCode\BitForm\Core\Util\HttpHelper;
+use BitCode\BitForm\GlobalHelper;
 use WP_Error;
 
 class SendFoxHandler
@@ -35,8 +36,16 @@ class SendFoxHandler
       wp_send_json_error(__('Token expired', 'bit-form'), 401);
     }
 
-    $inputJSON = file_get_contents('php://input');
-    $requestParams = json_decode($inputJSON);
+    // $inputJSON = file_get_contents('php://input');
+    // $requestParams = json_decode($inputJSON);
+
+    GlobalHelper::requirePostMethod();
+
+    try {
+      $requestParams = GlobalHelper::formatRequestData($_POST['data'] ?? []);
+    } catch (\InvalidArgumentException $e) {
+      wp_send_json_error($e->getMessage(), 400);
+    }
     if (empty($requestParams->access_token)) {
       wp_send_json_error(
         __(
@@ -69,8 +78,16 @@ class SendFoxHandler
       wp_send_json_error(__('Token expired', 'bit-form'), 401);
     }
 
-    $inputJSON = file_get_contents('php://input');
-    $requestParams = json_decode($inputJSON);
+    // $inputJSON = file_get_contents('php://input');
+    // $requestParams = json_decode($inputJSON);
+
+    GlobalHelper::requirePostMethod();
+
+    try {
+      $requestParams = GlobalHelper::formatRequestData($_POST['data'] ?? []);
+    } catch (\InvalidArgumentException $e) {
+      wp_send_json_error($e->getMessage(), 400);
+    }
 
     if (empty($requestParams->access_token)) {
       wp_send_json_error(

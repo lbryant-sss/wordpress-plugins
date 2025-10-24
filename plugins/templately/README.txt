@@ -5,7 +5,7 @@ Tags: templates, elementor template, Gutenberg template, landing page, WoCommerc
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 7.2
-Stable tag: 3.4.1
+Stable tag: 3.4.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -17,7 +17,7 @@ Ultimate Free Templates Cloud for WordPress 5000+ Free & Premium Designs for Ele
 
 Take your favorite Page Builders to a whole new level & manage all your designs in one place with [Templately](https://templately.com)
 
-https://www.youtube.com/watch?v=coLxfjnrm3I
+https://www.youtube.com/watch?v=ZhzHWqMD1Zk
 
 ## 🔥 THE FUTURE OF PAGE BUILDING WITH CLOUD  ##
 
@@ -139,6 +139,11 @@ Every month we are adding new Elementor templates, along with Gutenberg template
 
 
 == Changelog ==
+= 3.4.2 - 23-10-2025 =
+Added: FluentCart Template import support.
+Fixed: Design broken issue for single Doc page while importing.
+Few minor bug fixes & improvements.
+
 = 3.4.1 - 29-09-2025 =
 Fixed: Pages and blocks were not saving in MyCloud.
 Fixed: UI issues in Pack details page.

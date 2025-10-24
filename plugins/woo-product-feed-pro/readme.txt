@@ -5,7 +5,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Tags: Google Shopping Feed, Meta feed, Facebook catalog feed, WooCommerce Product Feed, Product Feed
 Requires at least: 5.4
 Tested up to: 6.8
-Stable tag: 13.4.7
+Stable tag: 13.4.8
 
 Most popular WooCommerce product feed plugin supporting Google shopping feed, meta/facebook feed, bing product feed & more.
 
@@ -388,6 +388,17 @@ Questions left or unanswered? Please do not hesitate to contact us at support@ad
 8. Feed actions & scheduling – From the feed list you can copy/open the feed URL, trigger a manual refresh, and control refresh frequency for each feed.
 
 === Changelog ===
+
+= 13.4.8 (2025-10-17) =
+* Bug Fix: Category mapping fails to load Google taxonomy when .txt files are blocked by server security rules
+* Bug Fix: The custom batch size setting was no longer working
+* Bug Fix: The UTM term was not being hidden in the Google & Analytics section
+* Bug Fix: Multiple PHP error warnings were logged while creating a feed
+* Bug Fix: The parent variable image was not being used for variations when the setting was enabled
+* Bug Fix: The price had the wrong value due to a custom tax class
+* Bug Fix: Variable product creation date mapping was not updating after date changes
+* Improvement: Added the ability to name a rule in the Rules Builder
+* Improvement: Refactored unprefixed options
 
 = 13.4.7 (2025-09-25) =
 * Bug Fix: Exclude filter migration changes operator from OR to AND

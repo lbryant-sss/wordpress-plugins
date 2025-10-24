@@ -3588,6 +3588,14 @@ class rtTPGElementorHelper {
 			]
 		);
 		$ref->add_control(
+			'event_title',
+			[
+				'label'   => esc_html__( 'Event Title', 'the-post-grid' ),
+				'type'    => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'Event Information:', 'the-post-grid' ),
+			]
+		);
+		$ref->add_control(
 			'start_date_label',
 			[
 				'label'   => esc_html__( 'Start Date Label', 'the-post-grid' ),
@@ -6061,7 +6069,7 @@ class rtTPGElementorHelper {
 		$ref->add_responsive_control(
 			'event_spacing',
 			[
-				'label'              => esc_html__( 'Button Spacing', 'the-post-grid' ),
+				'label'              => esc_html__( 'Spacing', 'the-post-grid' ),
 				'type'               => Controls_Manager::DIMENSIONS,
 				'size_units'         => [ 'px' ],
 				'allowed_dimensions' => 'all',
@@ -6081,7 +6089,7 @@ class rtTPGElementorHelper {
 		$ref->add_responsive_control(
 			'event_padding',
 			[
-				'label'      => esc_html__( 'Button Padding', 'the-post-grid' ),
+				'label'      => esc_html__( 'Padding', 'the-post-grid' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px' ],
 				'selectors'  => [

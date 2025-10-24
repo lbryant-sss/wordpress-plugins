@@ -72,6 +72,10 @@ class SettingsTabController {
 				'default' => 'show',
 			],
 
+			'event_title' => [
+				'type'    => 'string',
+				'default' => 'Event information:',
+			],
 			'show_event_date' => [
 				'type'    => 'string',
 				'default' => '',
@@ -94,7 +98,7 @@ class SettingsTabController {
 
 			'custom_event_date_format' => [
 				'type'    => 'string',
-				'default' => '',
+				'default' => 'Y-m-d g:i a',
 			],
 
 			'show_social_share' => [

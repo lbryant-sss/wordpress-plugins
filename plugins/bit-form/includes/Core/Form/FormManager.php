@@ -831,6 +831,9 @@ class FormManager
           }
         }
       }
+      if (is_object($updatedValue)) {
+        $updatedValue = (array) $updatedValue;
+      }
       foreach ($file_fields as $field_key) {
         $repeaterFldKey = $this->isRepeatedField($field_key);
         if (isset($updatedValue[$field_key . '_old'])) {
@@ -924,7 +927,12 @@ class FormManager
       $this->addNewFilePathToFiles($formID, $entryID, $file_fields);
     }
 
-    unset($updatedValue['_ajax_nonce'], $_REQUEST['g-recaptcha-response']);
+    if (is_object($updatedValue)) {
+      $updatedValue = (array) $updatedValue;
+    }
+    if (isset($updatedValue['_ajax_nonce']) && $_REQUEST['g-recaptcha-response']) {
+      unset($updatedValue['_ajax_nonce'], $_REQUEST['g-recaptcha-response']);
+    }
 
     $toUpdateValues = [];
     foreach ($form_fields as $field) {

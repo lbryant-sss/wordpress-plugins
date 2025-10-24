@@ -441,7 +441,7 @@ class Product_Feed_Attributes extends Abstract_Class {
      */
     protected function get_products_meta_keys_for_custom_attributes() {
         global $wpdb;
-        $show_only_basis_attributes = get_option( 'add_woosea_basic', 'no' );
+        $show_only_basis_attributes = get_option( 'adt_show_only_basis_attributes', 'no' );
         $limit_clause               = 'yes' === $show_only_basis_attributes ? 'LIMIT 1' : '';
 
         $query = "SELECT DISTINCT pm.meta_key
@@ -478,7 +478,7 @@ class Product_Feed_Attributes extends Abstract_Class {
     protected function get_product_variations_attributes_for_custom_attributes() {
         global $wpdb;
         $product_variations_attributes = array();
-        $show_only_basis_attributes    = get_option( 'add_woosea_basic', 'no' );
+        $show_only_basis_attributes    = get_option( 'adt_show_only_basis_attributes', 'no' );
         $limit_clause                  = 'yes' === $show_only_basis_attributes ? 'LIMIT 1' : '';
 
         $query = "SELECT DISTINCT pm.meta_value

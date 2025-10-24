@@ -43,6 +43,7 @@ export interface RuleAction {
 
 export interface Rule {
   id: string;
+  name?: string;
   if: RuleConditionItem[];
   then: RuleAction[];
 }
@@ -148,6 +149,7 @@ export const useRulesStore = defineStore('rules', () => {
       rulesData.forEach((rule: any, ruleIndex: number) => {
         const normalizedRule: Rule = {
           id: rule.id || `rule-${Date.now()}-${ruleIndex}`,
+          name: rule.name || '',
           if: [],
           then: [],
         };
@@ -284,6 +286,7 @@ export const useRulesStore = defineStore('rules', () => {
     const timestamp = Date.now();
     const newRule: Rule = {
       id: `rule-${timestamp}`,
+      name: '',
       if: [],
       then: [],
     };
@@ -338,6 +341,17 @@ export const useRulesStore = defineStore('rules', () => {
     if (showValidation.value) {
       clearValidationErrors();
     }
+  };
+
+  /**
+   * Update a rule's properties (e.g., name)
+   */
+  const updateRule = (ruleId: string, updates: Partial<Rule>) => {
+    const rule = getRuleById.value(ruleId);
+    if (!rule) return;
+
+    // Update the rule properties
+    Object.assign(rule, updates);
   };
 
   /**
@@ -942,6 +956,7 @@ export const useRulesStore = defineStore('rules', () => {
     loadRules,
     addRule,
     removeRule,
+    updateRule,
     addRuleGroup,
     removeRuleGroup,
     addRuleField,

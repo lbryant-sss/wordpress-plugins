@@ -322,6 +322,7 @@ export const Agent = () => {
 					followup: !!agentResponse.tool,
 					pageSuggestion: agentResponse.pageSuggestion,
 					agent: workflow.agent,
+					sessionId: workflow?.sessionId,
 				});
 			}
 			// This is at the end of the workflow
@@ -448,14 +449,15 @@ export const Agent = () => {
 
 	return (
 		<Chat busy={busy}>
-			<div className="relative z-50 flex h-full flex-col overflow-auto border-t border-solid border-gray-300">
+			<div className="relative z-50 flex h-full flex-col justify-between overflow-auto border-t border-solid border-gray-300">
 				{showWelcomeScreen ? (
 					<div
-						className="h-full"
+						className="relative flex flex-grow flex-col overflow-y-auto overflow-x-hidden"
 						style={{
 							backgroundImage:
 								'linear-gradient( to bottom, #f0f0f0 0%, #fff 60%,  #fff 100%)',
 						}}>
+						<div className="flex-grow" />
 						<WelcomeScreen />
 					</div>
 				) : (

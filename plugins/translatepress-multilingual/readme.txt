@@ -137,8 +137,9 @@ For more information please check out our [documentation](https://translatepress
 4. Translating WooCommerce Products for your multilingual store
 5. Translate Images and Image Sliders
 6. Settings Page
-7. Floating Language Switcher
-8. Menu Language Switcher
+7. Language Switcher Customizer
+8. Floating Language Switcher
+9. Menu Language Switcher
 
 
 == Changelog ==

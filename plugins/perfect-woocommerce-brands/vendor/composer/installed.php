@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'quadlayers/perfect-woocommerce-brands',
-        'pretty_version' => 'v3.6.3',
-        'version' => '3.6.3.0',
-        'reference' => '8319e0c0e6c693d6f48922f882ae6ddf5e6fe655',
+        'pretty_version' => 'v6.3.4',
+        'version' => '6.3.4.0',
+        'reference' => '570250b2848cb38e55829c36e70d000298a0e2c5',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -56,9 +56,9 @@
             'dev_requirement' => false,
         ),
         'quadlayers/perfect-woocommerce-brands' => array(
-            'pretty_version' => 'v3.6.3',
-            'version' => '3.6.3.0',
-            'reference' => '8319e0c0e6c693d6f48922f882ae6ddf5e6fe655',
+            'pretty_version' => 'v6.3.4',
+            'version' => '6.3.4.0',
+            'reference' => '570250b2848cb38e55829c36e70d000298a0e2c5',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

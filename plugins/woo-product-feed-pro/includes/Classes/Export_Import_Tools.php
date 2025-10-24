@@ -277,7 +277,6 @@ class Export_Import_Tools extends Abstract_Class {
             'utm_source',
             'utm_medium',
             'utm_campaign',
-            'utm_term',
             'utm_content',
             'utm_total_product_orders_lookback',
             'attributes',

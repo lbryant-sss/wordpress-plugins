@@ -415,6 +415,10 @@ if ( ! class_exists( 'CPCFF_MAIN' ) ) {
 					in_array( $_GET['page'], array( 'cp_calculated_fields_form', 'cp_calculated_fields_form_sub_new', 'cp_calculated_fields_form_sub_troubleshoots_settings' ) )
 				) {
 
+					// Fix a Cachebuster plugin conflict.
+					remove_filter('style_loader_src',  'cabu_src');
+					remove_filter('script_loader_src', 'cabu_src');
+
 					wp_deregister_script( 'tribe-events-bootstrap-datepicker' );
 					wp_register_script( 'tribe-events-bootstrap-datepicker', plugins_url( '/js/nope.js', CP_CALCULATEDFIELDSF_MAIN_FILE_PATH ), array(), CP_CALCULATEDFIELDSF_VERSION );
 

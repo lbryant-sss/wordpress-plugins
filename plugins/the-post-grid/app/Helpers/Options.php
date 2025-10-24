@@ -484,17 +484,28 @@ class Options {
 	}
 
 	public static function rtTPGEventSettings() {
-		$settings = get_option( rtTPG()->options['settings'] );
-
+		$settings       = get_option( rtTPG()->options['settings'] );
 		$other_settings = [
-			'show_event_meta' => [
-				'type'  => 'switch',
-				'name'  => 'show_event_meta',
+			'show_event_meta'        => [
+				'type'        => 'switch',
+				'name'        => 'show_event_meta',
 				'holderClass' => 'pro-field',
-				'label' => esc_html__( 'Show Event Meta on Posts?', 'the-post-grid' ),
-				'value' => isset( $settings['show_event_meta'] ) ? $settings['show_event_meta'] : false,
+				'label'       => esc_html__( 'Enable Event Meta box on posts edit page', 'the-post-grid' ),
+				'value'       => isset( $settings['show_event_meta'] ) ? $settings['show_event_meta'] : false,
 			],
-			'event_start_time' => [
+			'allows_post_type_event' => [
+				'type'        => 'checkbox',
+				'name'        => 'allows_post_type_event',
+				'label'       => esc_html__( 'Choose Post Types', 'the-post-grid' ),
+				'description' => esc_html__( 'Select the post types where you want to display the event post meta.', 'the-post-grid' ),
+				'id'          => 'allows_post_type_event',
+				'holderClass' => 'pro-field',
+				'alignment'   => 'vertical',
+				'multiple'    => true,
+				'options'     => Fns::get_post_types(),
+				'value'       => isset( $settings['allows_post_type_event'] ) ? $settings['allows_post_type_event'] : [ 'post' ],
+			],
+			'event_start_time'       => [
 				'type'        => 'text',
 				'name'        => 'event_start_time',
 				'label'       => esc_html__( 'Event Start Date Meta Key', 'the-post-grid' ),

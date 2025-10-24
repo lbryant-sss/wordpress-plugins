@@ -9,6 +9,7 @@ namespace BitCode\BitForm\Core\Integration\WooCommerce;
 
 use BitCode\BitForm\Core\Integration\IntegrationHandler;
 use BitCode\BitForm\Core\Util\ApiResponse as UtilApiResponse;
+use BitCode\BitForm\GlobalHelper;
 use WC_Data_Store;
 use WP_Error;
 
@@ -119,8 +120,17 @@ class WooCommerceHandler
   {
     $required = null;
     if (isset($_REQUEST['_ajax_nonce']) && wp_verify_nonce($_REQUEST['_ajax_nonce'], 'bitforms_save')) {
-      $inputJSON = file_get_contents('php://input');
-      $queryParams = json_decode($inputJSON);
+      // $inputJSON = file_get_contents('php://input');
+      // $queryParams = json_decode($inputJSON);
+
+      GlobalHelper::requirePostMethod();
+
+      try {
+        $queryParams = GlobalHelper::formatRequestData($_POST['data'] ?? []);
+      } catch (\InvalidArgumentException $e) {
+        wp_send_json_error($e->getMessage(), 400);
+      }
+
       $uploadFields = [];
 
       if (
@@ -465,8 +475,15 @@ class WooCommerceHandler
   public function searchProjectsAjaxHelper()
   {
     if (isset($_REQUEST['_ajax_nonce']) && wp_verify_nonce($_REQUEST['_ajax_nonce'], 'bitforms_save')) {
-      $inputJSON = file_get_contents('php://input');
-      $queryParams = json_decode($inputJSON);
+      // $inputJSON = file_get_contents('php://input');
+      // $queryParams = json_decode($inputJSON);
+      GlobalHelper::requirePostMethod();
+
+      try {
+        $queryParams = GlobalHelper::formatRequestData($_POST['data'] ?? []);
+      } catch (\InvalidArgumentException $e) {
+        wp_send_json_error($e->getMessage(), 400);
+      }
 
       include_once dirname(WC_PLUGIN_FILE) . '/includes/class-wc-product-functions.php';
       $data_store = WC_Data_Store::load('product');

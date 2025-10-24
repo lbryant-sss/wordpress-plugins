@@ -10,6 +10,7 @@ namespace BitCode\BitForm\Core\Integration\WebHooks;
 use BitCode\BitForm\Core\Integration\IntegrationHandler;
 use BitCode\BitForm\Core\Util\ApiResponse as UtilApiResponse;
 use BitCode\BitForm\Core\Util\HttpHelper;
+use BitCode\BitForm\GlobalHelper;
 
 /**
  * Provide functionality for webhooks
@@ -41,14 +42,24 @@ class WebHooksHandler
   public static function testWebhook()
   {
     if (isset($_REQUEST['_ajax_nonce']) && wp_verify_nonce(sanitize_text_field($_REQUEST['_ajax_nonce']), 'bitforms_save')) {
-      $inputJSON = file_get_contents('php://input');
-      $webhookDetails = json_decode($inputJSON);
+      // $inputJSON = file_get_contents('php://input');
+      // $webhookDetails = json_decode($inputJSON);
+
+      GlobalHelper::requirePostMethod();
+
+      try {
+        $webhookDetails = GlobalHelper::formatRequestData($_POST['data'] ?? []);
+      } catch (\InvalidArgumentException $e) {
+        wp_send_json_error($e->getMessage(), 400);
+      }
+
       $details = is_string($webhookDetails) ? json_decode($webhookDetails)->hookDetails : $webhookDetails->hookDetails;
       $method = isset($details->method) ? $details->method : 'get';
       $data = isset($details->url) ? WebHooksHandler::urlParserWrapper($details->url) : false;
       $response = null;
       if ($data) {
-        $url = $data['url'];
+        // $url = $data['url'];
+        $url = $details->url;
         $params = $data['params'];
         $params['entry_id'] = 'test';
         switch (strtoupper($method)) {
@@ -99,7 +110,8 @@ class WebHooksHandler
     ];
 
     if ($data) {
-      $url = $data['url'];
+      // $url = $data['url'];
+      $url = $details->url;
       $params = $data['params'];
       $params = IntegrationHandler::replaceFieldWithValue($params, $fieldValues);
       $params['entry_id'] = $entryID;

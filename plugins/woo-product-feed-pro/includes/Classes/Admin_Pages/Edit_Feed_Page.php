@@ -586,6 +586,8 @@ class Edit_Feed_Page extends Admin_Page {
 
             $cleaned_rule = array();
 
+            $cleaned_rule['name'] = $rule['name'] ?? '';
+
             // Process IF conditions.
             $cleaned_rule['if'] = $this->clean_rule_conditions( $rule['if'], $valid_conditions );
 
@@ -1155,7 +1157,6 @@ class Edit_Feed_Page extends Admin_Page {
             'utm_source'   => isset( $_POST['utm_source'] ) ? sanitize_text_field( wp_unslash( $_POST['utm_source'] ) ) : '',
             'utm_medium'   => isset( $_POST['utm_medium'] ) ? sanitize_text_field( wp_unslash( $_POST['utm_medium'] ) ) : '',
             'utm_campaign' => isset( $_POST['utm_campaign'] ) ? sanitize_text_field( wp_unslash( $_POST['utm_campaign'] ) ) : '',
-            'utm_term'     => isset( $_POST['utm_term'] ) ? sanitize_text_field( wp_unslash( $_POST['utm_term'] ) ) : '',
             'utm_content'  => isset( $_POST['utm_content'] ) ? sanitize_text_field( wp_unslash( $_POST['utm_content'] ) ) : '',
         );
 
@@ -1252,7 +1253,6 @@ class Edit_Feed_Page extends Admin_Page {
                     'utm_source'                        => $feed_data['utm_source'] ?? '',
                     'utm_medium'                        => $feed_data['utm_medium'] ?? '',
                     'utm_campaign'                      => $feed_data['utm_campaign'] ?? '',
-                    'utm_term'                          => $feed_data['utm_term'] ?? '',
                     'utm_content'                       => $feed_data['utm_content'] ?? '',
                     'utm_total_product_orders_lookback' => $feed_data['total_product_orders_lookback'] ?? '',
                     'legacy_project_hash'               => $feed_data['project_hash'] ?? '',

@@ -172,7 +172,7 @@
 				},
 			showSpecialDataInstance: function()
 				{
-					return '<label><input type="checkbox" name="sDisableKeyboardOnMobile" id="sDisableKeyboardOnMobile" '+( ( this.disableKeyboardOnMobile ) ? 'CHECKED' : '' )+' > Disable keboard on mobiles</label>'+
+					return '<label><input type="checkbox" name="sDisableKeyboardOnMobile" id="sDisableKeyboardOnMobile" '+( ( this.disableKeyboardOnMobile ) ? 'CHECKED' : '' )+' > Disable keyboard on mobiles</label>'+
 
                     '<label><input type="checkbox" name="sMondayFirstDay" id="sMondayFirstDay" '+( ( this.mondayFirstDay ) ? 'CHECKED' : '' )+' > Make Monday the first day of the week</label>'+
 

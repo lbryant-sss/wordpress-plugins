@@ -217,11 +217,11 @@ final class IntegrationHandler
     $fieldPattern = '/\${\w[^ ${}]*}/';
     preg_match_all($fieldPattern, $stringToReplaceField, $matchedField);
     $uniqueFieldsInStr = array_unique($matchedField[0]);
-    foreach ($uniqueFieldsInStr as $key => $value) {
+
+    foreach ($uniqueFieldsInStr as $value) {
       $fieldName = substr($value, 2, strlen($value) - 3);
 
       $repeaterArr = explode('.', $fieldName);
-
       if (isset($fieldValues[$fieldName])) {
         $stringToReplaceField = is_string($fieldValues[$fieldName])
         ? str_replace($value, $fieldValues[$fieldName], $stringToReplaceField)
@@ -229,7 +229,6 @@ final class IntegrationHandler
       } elseif (2 === count($repeaterArr) && isset($fieldValues[$repeaterArr[0]])) {
         $repeaterValues = [];
         $repeaterFieldValues = $fieldValues[$repeaterArr[0]];
-
         foreach ($repeaterFieldValues as $value) {
           if (isset($value[$repeaterArr[1]])) {
             $repeaterValues[] = $value[$repeaterArr[1]];
@@ -237,6 +236,8 @@ final class IntegrationHandler
         }
 
         $stringToReplaceField = $repeaterValues;
+      } else {
+        $stringToReplaceField = FieldValueHandler::replaceSmartTagWithValue($value);
       }
     }
     return $stringToReplaceField;
@@ -298,8 +299,10 @@ final class IntegrationHandler
 
     $trnasientData = get_transient("bitform_trigger_transient_{$entryId}");
     $trnasientData = is_string($trnasientData) ? json_decode($trnasientData) : $trnasientData;
+
     if (!empty($trnasientData['fields'])) {
-      $workFlowReturnedData['fields'] = array_merge($workFlowReturnedData['fields'], $trnasientData['fields']);
+      $fieldData = isset($workFlowReturnedData['fields']) ? $workFlowReturnedData['fields'] : $workFlowReturnedData['updatedData'];
+      $workFlowReturnedData['fields'] = array_merge($fieldData, $trnasientData['fields']);
     }
 
     if (function_exists('fastcgi_finish_request') || !wp_doing_ajax()) {
@@ -394,6 +397,7 @@ final class IntegrationHandler
         $triggerData['dbl_opt_dflt_template'] = $workFlowReturnedData['dflt_template'];
         $triggerData['integrationRun'] = $workFlowReturnedData['integrationRun'];
       }
+
       set_transient("bitform_trigger_transient_{$entryID}", $triggerData, HOUR_IN_SECONDS);
       $entryLog = new FormEntryLogModel();
       $queueuEntry = $entryLog->log_history_insert(

@@ -5,6 +5,8 @@ import {
 	help,
 	chevronRight,
 	video,
+	drafts,
+	published,
 	typography,
 } from '@wordpress/icons';
 import { sparkle } from '@agent/icons';
@@ -29,6 +31,8 @@ const icons = {
 	help,
 	video,
 	sparkle,
+	drafts,
+	published,
 	typography,
 };
 
