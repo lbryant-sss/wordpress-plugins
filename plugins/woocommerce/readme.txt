@@ -4,7 +4,7 @@ Tags: online store, ecommerce, shop, shopping cart, sell online
 Requires at least: 6.7
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 10.3.0
+Stable tag: 10.3.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -170,12 +170,11 @@ WooCommerce comes with some sample data you can use to see how products look; im
 
 == Changelog ==
 
-= 10.3.2 2025-10-23 =
+= 10.3.3 2025-10-24 =
 
 **WooCommerce**
 
-* Fix - Race condition where orders may be deleted from the database [#61582](https://github.com/woocommerce/woocommerce/pull/61582)
-* Fix - Resolve PayPal order creation failures caused by a mismatch between the total and breakdown amounts. [#61586](https://github.com/woocommerce/woocommerce/pull/61586)
-* Tweak - Fixes a typo copy on Autocomplete setting tooltip [#61577](https://github.com/woocommerce/woocommerce/pull/61577)
+* Dev - Add in deprecated script warnings and backwards compatibility for 3PDs [#61599](https://github.com/woocommerce/woocommerce/pull/61599)
+
 
 [See changelog for all versions](https://raw.githubusercontent.com/woocommerce/woocommerce/trunk/changelog.txt).

@@ -252,6 +252,11 @@ function pagelayer_render_shortcode($atts, $content = '', $tag = '', $inner_bloc
 					$el['atts'][$prop] = $el['oAtts'][$prop] = !empty($el['atts']['comment_atts'][$prop]) ? $el['atts']['comment_atts'][$prop] : $el['atts'][$prop];
 				}
 				
+				// Any image are skipped
+				if( pagelayer_is_comment_mode() && $param['type'] == 'image' && isset($el['atts']['comment_atts'][$prop])){
+					$el['atts'][$prop.'_ai'] = $el['oAtts'][$prop.'_ai'] = $el['atts']['comment_atts'][$prop];
+				}
+				
 				if(in_array($param['type'], ['image', 'video', 'audio', 'media'])){
 					
 					$attachment = ($param['type'] == 'image') ? pagelayer_image(@$el['atts'][$prop]) : pagelayer_attachment(@$el['atts'][$prop]);

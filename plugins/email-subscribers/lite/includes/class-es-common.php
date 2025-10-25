@@ -68,6 +68,24 @@ class ES_Common {
 	}
 
 	/**
+	 * Decode arguments from JSON string or array to array
+	 *
+	 * @param mixed $args Arguments that could be JSON string or array
+	 * @return array Decoded array
+	 *
+	 * @since 4.0.0
+	 */
+	public static function decode_args( $args ) {
+		if ( is_string( $args ) ) {
+			$args = json_decode( $args, true );
+		}
+		if ( ! is_array( $args ) ) {
+			$args = array();
+		}
+		return $args;
+	}
+
+	/**
 	 * Process the email template and get variable fallbacks
 	 *
 	 * @param $template

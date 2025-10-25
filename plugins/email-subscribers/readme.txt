@@ -6,7 +6,7 @@ Tags: email subscribers, newsletter, subscription form, post notifications, wooc
 Requires at least: 3.9
 Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: 5.9.7
+Stable tag: 5.9.8
 License: GPLv3
 
 License URI: http://www.gnu.org/licenses
@@ -341,11 +341,15 @@ Option 2:
 
 == Upgrade Notice ==
 
-= 5.9.7 =
+= 5.9.8 =
 
-* Fix: HTML tags showing instead of subscription form
+* Fix: Resolved an issue with campaign sorting
 
 == Changelog ==
+
+**5.9.8 (23.10.2025)**
+
+* Fix: Resolved an issue with campaign sorting
 
 **5.9.7 (17.10.2025)**
 

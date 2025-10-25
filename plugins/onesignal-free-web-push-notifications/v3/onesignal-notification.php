@@ -36,9 +36,11 @@ function onesignal_create_notification($post, $notification_options = array())
 
     $url = get_permalink($post->ID);
     if (!empty($config_utm_additional_url_params)) {
-      // validate and encode the URL parameters
-      $params = urlencode($config_utm_additional_url_params);
-      $url = $url . (strpos($url, '?') === false ? '?' : '&') . $params;
+      $utm_params = onesignal_parse_utm_parameters($config_utm_additional_url_params);
+      if (!empty($utm_params)) {
+        $separator = (strpos($url, '?') === false) ? '?' : '&';
+        $url = $url . $separator . $utm_params;
+      }
     }
 
     $apiKeyType = onesignal_get_api_key_type();
@@ -101,6 +103,10 @@ function onesignal_create_notification($post, $notification_options = array())
         $fields['firefox_icon'] =  $thumbnail_size_url;
         $fields['chrome_web_icon'] =  $thumbnail_size_url;
         $fields['chrome_web_image'] = $large_size_url;
+        $fields['big_picture'] = $large_size_url;
+        $fields['ios_attachments'] = [
+            'id' => $large_size_url
+        ];
     }
 
     // Include any fields from onesignal_send_notification filter

@@ -15,7 +15,7 @@ class Image {
 	/**
 	 * The hook name for generating image metadata.
 	 *
-	 * @since 4.8.8-2025-10-08-13:34
+	 * @since 4.8.8
 	 *
 	 * @var string
 	 */
@@ -24,10 +24,30 @@ class Image {
 	/**
 	 * Class constructor.
 	 *
-	 * @since 4.8.8-2025-10-08-13:34
+	 * @since 4.8.8
 	 */
 	public function __construct() {
 		add_action( $this->generateImageMetadataHook, [ $this, 'generateImageMetadata' ], 10, 2 );
+	}
+
+	/**
+	 * Returns the data for Vue.
+	 *
+	 * @since 4.8.9
+	 *
+	 * @param  int|null $objectId The object ID.
+	 * @return array              The data.
+	 */
+	public function getVueDataEdit( $objectId = null ) {
+		$objectId = $objectId ?: absint( get_the_ID() );
+
+		return [
+			'extend' => [
+				'imageBlockToolbar'     => apply_filters( 'aioseo_ai_image_generator_extend_image_block_toolbar', true, $objectId ),
+				'imageBlockPlaceholder' => apply_filters( 'aioseo_ai_image_generator_extend_image_block_placeholder', true, $objectId ),
+				'featuredImageButton'   => apply_filters( 'aioseo_ai_image_generator_extend_featured_image_button', true, $objectId ),
+			]
+		];
 	}
 
 	/**
@@ -206,7 +226,7 @@ class Image {
 	 * Generates attachment metadata (thumbnails) for AI-generated images.
 	 * This is called asynchronously via Action Scheduler to avoid blocking the REST API response.
 	 *
-	 * @since 4.8.8-2025-10-08-13:34
+	 * @since 4.8.8
 	 *
 	 * @param  int    $attachmentId The attachment ID.
 	 * @param  string $file         Path to the image file.
