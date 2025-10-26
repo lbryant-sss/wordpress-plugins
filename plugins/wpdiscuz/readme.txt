@@ -3,7 +3,7 @@ Contributors: gVectors Team
 Tags: comment, comments, ajax comments, comment form, comment fields
 Requires at least: 5.0
 Tested up to: 6.8
-Stable tag: 7.6.34
+Stable tag: 7.6.35
 Requires PHP: 5.6
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -51,7 +51,6 @@ wpDiscuz version 7 is a revolutionary perspective on the commenting world! This 
 * Multiple line-breaks (limited by Wordpress comment filter)
 * Comment author notification options with special checkboxes on comment form
 * Subscription activation via additional "Confirm Subscription" email
-* Integration with Postmatic for subscriptions and commenting by email
 * Ability to add comment system on attachment pages if it's allowed by Wordpress
 * Fast and easy comment form with ajax validation and data submitting
 * Fully integrated and compatible with Wordpress
@@ -59,7 +58,6 @@ wpDiscuz version 7 is a revolutionary perspective on the commenting world! This 
 * Secure and Anti-Spam features will not allow spammers to comment
 * Comment voting with positive and negative result
 * Smart voting system with tracking by logged-in user and cookies
-* Post sharing options: Facebook, Twitter and Google+
 * Quick Tags on comment form textarea
 * Custom Comment Forms with custom fields
 * Rating shortcode for posts via comment custom field [wpdrating] with a lot of attributes
@@ -188,6 +186,13 @@ Nothing will be lost!  **Comments - wpDiscuz** will show all old comments.
 **IMPORTANT!**
 
 Please don't forget delete all caches and purge CDN after the update.
+
+= Comments - wpDiscuz v7.6.35 - 25.10.2025 =
+
+* Updated: Vk Login to Vk ID login
+* Removed: mail.ru and ok.ru social login
+* Removed: Zerospam and postmatic support
+* Removed: Anonymous comment author name and email auto generation
 
 = Comments - wpDiscuz v7.6.34 - 19.09.2025 =
 

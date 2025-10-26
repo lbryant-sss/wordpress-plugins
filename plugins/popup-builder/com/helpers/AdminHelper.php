@@ -444,10 +444,19 @@ class AdminHelper
 					continue;
 				}
 			}
+			//ensure attribute names contain only valid characters (letters, digits, hyphens, underscores)
+			$attrKey = preg_replace('/[^a-zA-Z0-9_-]/', '', $attrKey);
+
+			// Alternatively, enforce stricter rules like not starting with a digit or hyphen
+			if (!preg_match('/^[a-zA-Z_][a-zA-Z0-9_-]*$/', $attrKey)) {
+			    // skip invalid attribute names
+			    continue; 
+			}
+
 			$attrStr .= sprintf('%s="%s" ',
-	            esc_attr($attrKey),
-	            esc_attr($attrValue)
-        	);
+			    $attrKey, // safe because we sanitized above
+			    esc_attr($attrValue)
+			);			
 		}
 
 		return trim($attrStr);

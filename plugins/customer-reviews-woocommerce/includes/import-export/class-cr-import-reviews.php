@@ -860,16 +860,16 @@ class CR_Import_Reviews {
 								}
 								$fileDesc = sprintf( __( 'Review of %s by %s', 'customer-reviews-woocommerce' ), $reviewedItem, $customerName );
 								$customerUserId = $line_obj->user_id ? $line_obj->user_id : 0;
-								$reviewId = sprintf( __( 'Review ID: %s', 'customer-reviews-woocommerce' ), $review_id );
-								$mediaId = media_handle_sideload( $file_array, $line_obj->comment_post_ID, $fileDesc, array( 'post_author' => $customerUserId, 'post_date' => $review_obj->comment_date, 'post_content' => $reviewId ) );
+								$reviewId = sprintf( __( 'Review ID: %s', 'customer-reviews-woocommerce' ), $line_id );
+								$mediaId = media_handle_sideload( $file_array, $line_obj->comment_post_ID, $fileDesc, array( 'post_author' => $customerUserId, 'post_date' => $line_obj->comment_date, 'post_content' => $reviewId ) );
 								if ( is_wp_error( $mediaId ) ) {
 									$results['errors']++;
 									$results['error_list'][] = __( 'Line %1$d >> An error occurred while downloading a media file.', 'customer-reviews-woocommerce' );
 								} else {
 									if ( wp_attachment_is( 'image', $mediaId ) ) {
-										add_comment_meta( $review_id, CR_Reviews::REVIEWS_META_LCL_IMG, $mediaId, false );
+										add_comment_meta( $line_id, CR_Reviews::REVIEWS_META_LCL_IMG, $mediaId, false );
 									} else if( wp_attachment_is( 'video', $mediaId ) ) {
-										add_comment_meta( $review_id, CR_Reviews::REVIEWS_META_LCL_VID, $mediaId, false );
+										add_comment_meta( $line_id, CR_Reviews::REVIEWS_META_LCL_VID, $mediaId, false );
 									} else {
 										$results['errors']++;
 										$results['error_list'][] = __( 'Line %1$d >> A media file could not be imported due to its type.', 'customer-reviews-woocommerce' );

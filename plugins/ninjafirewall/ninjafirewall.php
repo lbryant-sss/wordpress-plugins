@@ -3,7 +3,7 @@
 Plugin Name: NinjaFirewall (WP Edition)
 Plugin URI: https://nintechnet.com/
 Description: A true Web Application Firewall to protect and secure WordPress.
-Version: 4.8
+Version: 4.8.1
 Author: The Ninja Technologies Network
 Author URI: https://nintechnet.com/
 License: GPLv3 or later
@@ -11,7 +11,7 @@ Network: true
 Text Domain: ninjafirewall
 Domain Path: /languages
 */
-define('NFW_ENGINE_VERSION', '4.8');
+define('NFW_ENGINE_VERSION', '4.8.1');
 /*
  +=====================================================================+
  |    _   _ _        _       _____ _                        _ _        |
@@ -59,15 +59,11 @@ if (! empty( $_SERVER['DOCUMENT_ROOT'] ) && $_SERVER['DOCUMENT_ROOT'] != '/') {
 /* ------------------------------------------------------------------ */
 
 /**
- * 2025-09-03: We temporarily force NinjaFirewall session on all new installs.
+ * Select whether we want to use PHP or NF (default since v4.8.1) sessions.
  */
-if ( is_file( NFW_LOG_DIR .'/nfwlog/ninjasession') && ! defined('NFWSESSION') ) {
-	define('NFWSESSION', true );
-}
-/**
- * Select whether we want to use PHP or NF session.
- */
-if ( defined('NFWSESSION') ) {
+if ( is_file( NFW_LOG_DIR .'/nfwlog/phpsession') ) {
+	require_once __DIR__ .'/lib/class-php-session.php';
+} else {
 	if (! defined('NFWSESSION_DIR') ) {
 		/**
 		 * NFWSESSION_DIR can be defined in the .htninja.
@@ -75,8 +71,6 @@ if ( defined('NFWSESSION') ) {
 		define('NFWSESSION_DIR', NFW_LOG_DIR .'/session');
 	}
 	require_once __DIR__ .'/lib/class-nfw-session.php';
-} else {
-	require_once __DIR__ .'/lib/class-php-session.php';
 }
 
 /**

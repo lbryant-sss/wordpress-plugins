@@ -293,33 +293,17 @@ if (! empty( $_POST['delete-error-log'] ) ){
 						/**
 						 * Don't display info about the session if we're using the NinjaFirewall's built-in session.
 						 */
-						if (! is_file( NFW_LOG_DIR .'/nfwlog/ninjasession') ) {
+						if ( is_file( NFW_LOG_DIR .'/nfwlog/phpsession') ) {
 							?>
 							<tr>
 								<th scope="row" class="row-med"><?php esc_html_e('User session', 'ninjafirewall') ?></th>
-								<?php
-								if ( defined('NFWSESSION') ) {
-									?>
-									<td><?php
-										printf(
-											/* Translators: <a> and </a> anchor tags */
-											esc_html__('You are using NinjaFirewall sessions. If you want to switch to PHP sessions, please %sconsult our blog%s.', 'ninjafirewall'),
-											'<a href="https://blog.nintechnet.com/ninjafirewall-wp-edition-the-htninja-configuration-file/#user_session" target="_blank" rel="noreferrer noopener">', '</a>'
-										); ?>
-									</td>
-									<?php
-								} else {
-									?>
-									<td><?php
-										printf(
-											/* Translators: <a> and </a> anchor tags */
-											esc_html__('You are using PHP sessions. If you want to switch to NinjaFirewall sessions, please %sconsult our blog%s.', 'ninjafirewall'),
-											'<a href="https://blog.nintechnet.com/ninjafirewall-wp-edition-the-htninja-configuration-file/#user_session" target="_blank" rel="noreferrer noopener">', '</a>'
-										); ?>
-									</td>
-									<?php
-								}
-							?>
+								<td><?php
+									printf(
+							/* Translators: path to the file */
+							esc_html__('You are using PHP sessions. If you want to switch to NinjaFirewall sessions, please delete the following file: %s.', 'nfwplus'),
+								'<code>'. esc_html( NFW_LOG_DIR .'/nfwlog/phpsession') .'</code>'
+						); ?>
+								</td>
 							</tr>
 						<?php
 						}
@@ -551,6 +535,13 @@ function nfw_is_inireadable( $ini ) {
 	// in the backend because the server returned a 403 error, we don't use
 	// the WordPress's API
 	@file_get_contents( $url, false, $context );
+	/**
+	 * $http_response_header is deprecated in PHP 8.5, hence we use the
+	 * http_get_last_response_headers() function instead (PHP >= 8.4).
+	 */
+	if ( function_exists('http_get_last_response_headers') ) {
+		$http_response_header = http_get_last_response_headers();
+	}
 	if ( empty( $http_response_header ) ) {
 		return false;
 	}

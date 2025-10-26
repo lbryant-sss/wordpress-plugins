@@ -71,7 +71,7 @@ class NinjaFirewall_coupon {
 		 * We run on the main site only.
 		 */
 		if (! is_main_site() ) {
-			return ['error' => 'child site'];;
+			return ['error' => 'child site'];
 		}
 
 		/**
@@ -99,7 +99,10 @@ class NinjaFirewall_coupon {
 				'user-agent'	=> 'Mozilla/5.0 (compatible; NinjaFirewall/'.
 										NFW_ENGINE_VERSION ."; WordPress/$wp_version)",
 				'sslverify'		=> true,
-				'ntn-plugin'	=> 'nf'
+				'headers' => [
+					'ntn-plugin'	=> 'nf',
+					'ntn-cache'		=>	md5( network_site_url() )
+				]
 			]
 		);
 		if (! is_wp_error( $res ) && $res['response']['code'] == 200 ) {

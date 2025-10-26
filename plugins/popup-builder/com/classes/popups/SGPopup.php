@@ -1365,7 +1365,7 @@ abstract class SGPopup
 		class="sgpb-show-popup <?php echo esc_attr('sgpb-popup-id-'.$popupId); ?>"
 		data-sgpbpopupid="<?php echo esc_attr($popupId); ?>"
 		data-popup-event="<?php echo esc_attr($event); ?>"
-		<?php echo $attr; ?>>
+		<?php echo esc_attr($attr); ?>>
 		<?php echo wp_kses($content, $allowed_html); ?>
 		</<?php echo esc_attr($wrap); ?>>
 		<?php

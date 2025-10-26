@@ -77,15 +77,11 @@ if (! is_dir($nfw_['log_dir']) ) {
 }
 
 /**
- * 2025-09-03: We temporarily force NinjaFirewall session on all new installs.
+ * Select whether we want to use PHP or NF (default since v4.8.1) sessions.
  */
-if ( is_file( "{$nfw_['log_dir']}/ninjasession" ) && ! defined('NFWSESSION') ) {
-	define('NFWSESSION', true );
-}
-/**
- * Select whether we want to use PHP or NinjaFirewall session.
- */
-if ( defined('NFWSESSION') ) {
+if ( is_file( "{$nfw_['log_dir']}/phpsession" ) ) {
+	require_once __DIR__ .'/class-php-session.php';
+} else {
 	if (! defined('NFWSESSION_DIR') ) {
 		/**
 		 * NFWSESSION_DIR can be defined in the .htninja.
@@ -93,8 +89,6 @@ if ( defined('NFWSESSION') ) {
 		define('NFWSESSION_DIR', "{$nfw_['log_dir']}/session" );
 	}
 	require_once __DIR__ .'/class-nfw-session.php';
-} else {
-	require_once __DIR__ .'/class-php-session.php';
 }
 
 // Get/set PID
@@ -1895,7 +1889,6 @@ function nfw_get_captcha() {
 	imagepng( $image );
 	$img_content = ob_get_contents();
 	ob_end_clean();
-	imagedestroy( $image );
 
 	$res = '<img src="data:image/png;base64,'. base64_encode( $img_content ) .'" />';
 
@@ -1904,7 +1897,7 @@ function nfw_get_captcha() {
 	return $res;
 }
 
-// ===================================================================== 2023-05-16
+// =====================================================================
 // From WP db_connect()
 
 function nfw_check_dbhost() {
