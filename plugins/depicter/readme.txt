@@ -3,9 +3,9 @@
 Contributors: averta, averta_support, depicter1slider1support, depicter1carousel1popup1support
 Tags: slider, carousel slider, popup, post slider, slideshow
 Requires at least: 5.3.0
-Tested up to: WordPress 6.8.1
+Tested up to: WordPress 6.8.2
 Requires PHP: 7.4.0
-Stable tag: 4.0.4
+Stable tag: 4.0.5
 License: GPL-2.0-only
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Build Stunning Slider and Popup. Exit intent Popup, Image slider carousel, video slider carousel, post slider carousel, product slider, promote popup
@@ -93,6 +93,11 @@ You can create converting **Popup and Notification Bar**, like **Email subscript
 15. Popup display rules – set smart conditions to show popups or notification bars based on user behavior and targeting.
 
 == Changelog ==
+
+###4.0.5
+- *Released: 2025-10-26*
+- **Fixed**
+- Fixed a vulnerability issue.
 
 ###4.0.4
 - *Released: 2025-06-16*

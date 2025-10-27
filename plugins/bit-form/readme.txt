@@ -1,7 +1,7 @@
 === Bit Form - Custom Contact Form, Multi Step, Conversational Form & Payment Form builder ===
 Plugin Name: Bit Form - Custom Contact Form, Multi Step, Conversational Form & Payment Form builder
-Version: 2.21.0
-Stable tag: 2.21.0
+Version: 2.21.1
+Stable tag: 2.21.1
 Author: Contact form builder by Bit form
 Author URI: https://www.bitapps.pro/
 Contributors: bitpressadmin, arif25897, mdrhmaruf, mdabbasuddin, akaioum 
@@ -501,6 +501,11 @@ Yes, Bit Form has built-in spam protection better than any other Contact Form Bu
 6. Response table to view form entries
 
 == Changelog ==
+= 2.21.1 =
+*Release Date: 18 November, 2025*
+*Fixes:
+    1. Fixed an issue where Razorpay webhook was not working properly for some users.
+
 = 2.21.0 =
 *Release Date: 23 October, 2025*
 *New:

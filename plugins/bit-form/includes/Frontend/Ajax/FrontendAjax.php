@@ -13,7 +13,6 @@ use BitCode\BitForm\Core\Util\Log;
 use BitCode\BitForm\Core\Util\MailNotifier;
 use BitCode\BitForm\Core\WorkFlow\WorkFlow;
 use BitCode\BitForm\Frontend\Form\FrontendFormManager;
-use BitCode\BitForm\GlobalHelper;
 use WP_Error;
 
 final class FrontendAjax
@@ -136,7 +135,9 @@ final class FrontendAjax
   public function triggerWorkFlow()
   {
     \ignore_user_abort(true);
-    $inputJSON = GlobalHelper::formatRequestData($_POST['data'] ?? []);
+
+    $inputJSON = file_get_contents('php://input');
+
     if ($inputJSON) {
       $request = is_string($inputJSON) ? \json_decode($inputJSON) : $inputJSON;
       $submitted_fields = [];
