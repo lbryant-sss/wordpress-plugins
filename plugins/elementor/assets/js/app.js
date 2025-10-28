@@ -5439,6 +5439,7 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports.useExportKit = void 0;
 var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ "../node_modules/@babel/runtime/regenerator/index.js"));
+var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ "../node_modules/@babel/runtime/helpers/typeof.js"));
 var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ "../node_modules/@babel/runtime/helpers/asyncToGenerator.js"));
 var _slicedToArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "../node_modules/@babel/runtime/helpers/slicedToArray.js"));
 var _react = __webpack_require__(/*! react */ "react");
@@ -5590,7 +5591,7 @@ var useExportKit = exports.useExportKit = function useExportKit(_ref) {
     }, _callee3, null, [[1, 3]]);
   })), [exportedData, processMedia, dispatch, navigate]);
   var exportKit = (0, _react.useCallback)(/*#__PURE__*/(0, _asyncToGenerator2.default)(/*#__PURE__*/_regenerator.default.mark(function _callee4() {
-    var _kitInfo$title, _kitInfo$description, _window$wpApiSettings2, exportData, isCloudExport, screenshot, baseUrl, exportUrl, response, result, _result$data, _result$data2, _result$data3, errorMessage, errorCode, isExportLocal, isExportToCloud, kitExportData, mediaUrls, _t3;
+    var _kitInfo$title, _kitInfo$description, _window$wpApiSettings2, exportData, isCloudExport, screenshot, baseUrl, exportUrl, response, result, _result$data, _result$data2, _result$data3, rawMessage, errorMessage, errorCode, isExportLocal, isExportToCloud, kitExportData, mediaUrls, _t3;
     return _regenerator.default.wrap(function (_context4) {
       while (1) switch (_context4.prev = _context4.next) {
         case 0:
@@ -5638,7 +5639,8 @@ var useExportKit = exports.useExportKit = function useExportKit(_ref) {
             _context4.next = 5;
             break;
           }
-          errorMessage = (result === null || result === void 0 || (_result$data = result.data) === null || _result$data === void 0 ? void 0 : _result$data.message) || "HTTP error! with the following code: ".concat(result === null || result === void 0 || (_result$data2 = result.data) === null || _result$data2 === void 0 ? void 0 : _result$data2.code);
+          rawMessage = result === null || result === void 0 || (_result$data = result.data) === null || _result$data === void 0 ? void 0 : _result$data.message;
+          errorMessage = 'object' === (0, _typeof2.default)(rawMessage) ? rawMessage : rawMessage || "HTTP error! with the following code: ".concat(result === null || result === void 0 || (_result$data2 = result.data) === null || _result$data2 === void 0 ? void 0 : _result$data2.code);
           errorCode = 408 === (response === null || response === void 0 ? void 0 : response.status) ? 'timeout' : result === null || result === void 0 || (_result$data3 = result.data) === null || _result$data3 === void 0 ? void 0 : _result$data3.code;
           throw new _importExportError.ImportExportError(errorMessage, errorCode);
         case 5:
@@ -5654,35 +5656,6 @@ var useExportKit = exports.useExportKit = function useExportKit(_ref) {
             // This is base64 encoded file data
             manifest: result.data.manifest
           };
-          _context4.next = 8;
-          break;
-        case 6:
-          if (!isExportToCloud) {
-            _context4.next = 7;
-            break;
-          }
-          kitExportData = {
-            kit: result.data.kit,
-            manifest: result.data.manifest
-          };
-          _context4.next = 8;
-          break;
-        case 7:
-          throw new _importExportError.ImportExportError('Invalid response format from server');
-        case 8:
-          setExportedData({
-            exportedData: kitExportData,
-            mediaUrls: result.data.media_urls,
-            kit: result.data.kit
-          });
-          mediaUrls = result.data.media_urls;
-          if (!(mediaUrls && mediaUrls.length > 0)) {
-            _context4.next = 9;
-            break;
-          }
-          _context4.next = 9;
-          return processMedia(kitExportData, mediaUrls, result.data.kit);
-        case 9:
           dispatch({
             type: 'SET_EXPORTED_DATA',
             payload: kitExportData
@@ -5692,6 +5665,44 @@ var useExportKit = exports.useExportKit = function useExportKit(_ref) {
             payload: _exportContext.EXPORT_STATUS.COMPLETED
           });
           navigate('/export-customization/complete');
+          _context4.next = 9;
+          break;
+        case 6:
+          if (!isExportToCloud) {
+            _context4.next = 8;
+            break;
+          }
+          kitExportData = {
+            kit: result.data.kit,
+            manifest: result.data.manifest
+          };
+          setExportedData({
+            exportedData: kitExportData,
+            mediaUrls: result.data.media_urls,
+            kit: result.data.kit
+          });
+          mediaUrls = result.data.media_urls;
+          if (!(mediaUrls && mediaUrls.length > 0)) {
+            _context4.next = 7;
+            break;
+          }
+          _context4.next = 7;
+          return processMedia(kitExportData, mediaUrls, result.data.kit);
+        case 7:
+          dispatch({
+            type: 'SET_EXPORTED_DATA',
+            payload: kitExportData
+          });
+          dispatch({
+            type: 'SET_EXPORT_STATUS',
+            payload: _exportContext.EXPORT_STATUS.COMPLETED
+          });
+          navigate('/export-customization/complete');
+          _context4.next = 9;
+          break;
+        case 8:
+          throw new _importExportError.ImportExportError('Invalid response format from server');
+        case 9:
           _context4.next = 11;
           break;
         case 10:
@@ -6248,6 +6259,16 @@ function ExportProcess() {
       deleteKit(exportedData.kit.id);
     }
   };
+  var handleExportAsZip = function handleExportAsZip() {
+    dispatch({
+      type: 'SET_KIT_SAVE_SOURCE',
+      payload: 'file'
+    });
+    dispatch({
+      type: 'SET_EXPORT_STATUS',
+      payload: _exportContext.EXPORT_STATUS.EXPORTING
+    });
+  };
   return /*#__PURE__*/_react.default.createElement(_components.BaseLayout, {
     topBar: /*#__PURE__*/_react.default.createElement(_components.TopBar, null, headerContent)
   }, /*#__PURE__*/_react.default.createElement(_components.CenteredContent, null, /*#__PURE__*/_react.default.createElement(_ui.Stack, {
@@ -6258,7 +6279,8 @@ function ExportProcess() {
   }), status === STATUS_ERROR && /*#__PURE__*/_react.default.createElement(_processingErrorDialog.ProcessingErrorDialog, {
     error: error,
     handleClose: handleCloseError,
-    handleTryAgain: handleTryAgain
+    handleTryAgain: handleTryAgain,
+    handleExportAsZip: handleExportAsZip
   }))));
 }
 
@@ -8687,18 +8709,19 @@ DownloadLink.propTypes = {
 
 
 var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ "../node_modules/@babel/runtime/helpers/interopRequireDefault.js");
-var _typeof = __webpack_require__(/*! @babel/runtime/helpers/typeof */ "../node_modules/@babel/runtime/helpers/typeof.js");
+var _typeof3 = __webpack_require__(/*! @babel/runtime/helpers/typeof */ "../node_modules/@babel/runtime/helpers/typeof.js");
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.ProcessingErrorDialog = ProcessingErrorDialog;
 exports.messagesContent = void 0;
 var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "react"));
+var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ "../node_modules/@babel/runtime/helpers/typeof.js"));
 var _slicedToArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "../node_modules/@babel/runtime/helpers/slicedToArray.js"));
 var _ui = __webpack_require__(/*! @elementor/ui */ "@elementor/ui");
 var _i18n = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "../node_modules/prop-types/index.js"));
-function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
+function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, default: e }; if (null === e || "object" != _typeof3(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
 function Link(_ref) {
   var href = _ref.href,
     children = _ref.children;
@@ -8797,26 +8820,53 @@ var messagesContent = exports.messagesContent = {
     }, (0, _i18n.__)('Learn more', 'elementor')))
   },
   'insufficient-storage-quota': {
-    title: (0, _i18n.__)('Couldn’t Export the Website Template', 'elementor'),
-    text: /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, (0, _i18n.__)('The export failed because it will pass the maximum Website Templates storage you have available. ', 'elementor'), /*#__PURE__*/_react.default.createElement(Link, {
-      href: "https://go.elementor.com/go-pro-cloud-website-templates-library-advanced/"
-    }, (0, _i18n.__)('Upgrade now', 'elementor')))
+    title: (0, _i18n.__)('Your library is full', 'elementor'),
+    text: function text() {
+      var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+        _ref2$filename = _ref2.filename,
+        filename = _ref2$filename === void 0 ? (0, _i18n.__)('This file', 'elementor') : _ref2$filename,
+        _ref2$maxSize = _ref2.maxSize,
+        maxSize = _ref2$maxSize === void 0 ? 0 : _ref2$maxSize;
+      return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+        variant: "h6",
+        sx: {
+          mb: 2
+        }
+      }, (0, _i18n.sprintf)(/* Translators: %s: File name */
+      (0, _i18n.__)('%s exceeds the library size limit', 'elementor'), filename)), /*#__PURE__*/_react.default.createElement(_ui.Typography, {
+        variant: "body2"
+      }, (0, _i18n.sprintf)(/* Translators: %s: Quota threshold in GB */
+      (0, _i18n.__)('The maximum website template library size is %s GB. To save this file, you can either export it locally as a .zip file or get more storage by ', 'elementor'), maxSize), /*#__PURE__*/_react.default.createElement(Link, {
+        href: "https://go.elementor.com/go-pro-cloud-website-templates-library-advanced/"
+      }, (0, _i18n.__)('Upgrade now', 'elementor')), "."));
+    }
   }
 };
-function ProcessingErrorDialog(_ref2) {
-  var error = _ref2.error,
-    handleClose = _ref2.handleClose,
-    handleTryAgain = _ref2.handleTryAgain;
+function ProcessingErrorDialog(_ref3) {
+  var error = _ref3.error,
+    handleClose = _ref3.handleClose,
+    handleTryAgain = _ref3.handleTryAgain,
+    handleExportAsZip = _ref3.handleExportAsZip;
   var _useState = (0, _react.useState)(Boolean(error)),
     _useState2 = (0, _slicedToArray2.default)(_useState, 2),
     open = _useState2[0],
     setOpen = _useState2[1];
   var errorType = (error === null || error === void 0 ? void 0 : error.code) || 'general';
   var errorMessageContent = messagesContent[errorType];
+  var resolveText = function resolveText() {
+    var details = (error === null || error === void 0 ? void 0 : error.details) || (error === null || error === void 0 ? void 0 : error.message);
+    var replacements = details && 'object' === (0, _typeof2.default)(details) ? details.replacements : null;
+    var text = errorMessageContent.text;
+    if ('function' === typeof text) {
+      return text(replacements);
+    }
+    return text;
+  };
   var shouldRenderTryAgainButton = function shouldRenderTryAgainButton() {
     return ['general', 'timeout', 'cloud-upload-failed', 'third-party-error', 'invalid-zip-file', 'zip-archive-module-missing', 'no-write-permissions', 'plugin-installation-permissions-error', 'failed-to-fetch-quota', 'insufficient-quota', 'error-loading-resource', 'media-processing-error'].includes(errorType);
   };
   var renderButtons = function renderButtons() {
+    var isQuotaError = 'insufficient-storage-quota' === errorType;
     return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_ui.Button, {
       onClick: function onClick() {
         if (handleClose) {
@@ -8825,7 +8875,14 @@ function ProcessingErrorDialog(_ref2) {
         setOpen(false);
       },
       color: "secondary"
-    }, (0, _i18n.__)('Cancel', 'elementor')), shouldRenderTryAgainButton(errorType) && /*#__PURE__*/_react.default.createElement(_ui.Button, {
+    }, (0, _i18n.__)('Cancel', 'elementor')), isQuotaError && handleExportAsZip && /*#__PURE__*/_react.default.createElement(_ui.Button, {
+      onClick: function onClick() {
+        handleExportAsZip();
+        setOpen(false);
+      },
+      variant: "contained",
+      color: "primary"
+    }, (0, _i18n.__)('Export as .zip', 'elementor')), shouldRenderTryAgainButton(errorType) && !isQuotaError && /*#__PURE__*/_react.default.createElement(_ui.Button, {
       "data-testid": "try-again-button",
       onClick: function onClick() {
         if (handleTryAgain) {
@@ -8859,12 +8916,13 @@ function ProcessingErrorDialog(_ref2) {
     sx: {
       p: 3
     }
-  }, errorMessageContent.text), /*#__PURE__*/_react.default.createElement(_ui.DialogActions, null, renderButtons()));
+  }, resolveText()), /*#__PURE__*/_react.default.createElement(_ui.DialogActions, null, renderButtons()));
 }
 ProcessingErrorDialog.propTypes = {
   error: _propTypes.default.any,
   handleClose: _propTypes.default.func,
-  handleTryAgain: _propTypes.default.func
+  handleTryAgain: _propTypes.default.func,
+  handleExportAsZip: _propTypes.default.func
 };
 
 /***/ }),
@@ -10671,8 +10729,9 @@ var ImportExportError = exports.ImportExportError = /*#__PURE__*/function (_Erro
   function ImportExportError(errorMessage, errorCode) {
     var _this;
     (0, _classCallCheck2.default)(this, ImportExportError);
-    _this = _callSuper(this, ImportExportError, [errorMessage]);
+    _this = _callSuper(this, ImportExportError, ['string' === typeof errorMessage ? errorMessage : '']);
     _this.code = errorCode || 'general';
+    _this.details = errorMessage;
     return _this;
   }
   (0, _inherits2.default)(ImportExportError, _Error);
@@ -28920,7 +28979,7 @@ module.exports = ReactDOM;
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
 /******/ 			if (chunkId === "vendors-node_modules_react-query_devtools_index_js") return "bb8b6cce5ae5b36077e0.bundle.js";
-/******/ 			if (chunkId === "kit-library") return "" + chunkId + ".05df47b2bfd0697f3805.bundle.js";
+/******/ 			if (chunkId === "kit-library") return "" + chunkId + ".854d9c77e4f63676ffda.bundle.js";
 /******/ 			if (chunkId === "app_modules_onboarding_assets_js_utils_modules_post-onboarding-tracker_js") return "476658b095f7fe3d4745.bundle.js";
 /******/ 			if (chunkId === "onboarding") return "" + chunkId + ".a7a34522c0205e4ea1ea.bundle.js";
 /******/ 			// return url for filenames based on template

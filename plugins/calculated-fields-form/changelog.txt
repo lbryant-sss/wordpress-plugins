@@ -1,5 +1,11 @@
 == Changelog ==
 
+= 5.4.0.8 =
+
+* Enhances forms templates 09, 12 and 14.
+* Improves handling of controls in the public form.
+* Modifies the integration with payment gateways to allow users to return directly to the page containing the form when payments fail.
+
 = 5.4.0.7 =
 
 * Fixes a typo in the date/time and date/timeslots controls.

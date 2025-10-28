@@ -12,7 +12,7 @@ Translate your website and manage translations effortlessly to go multilingual o
 
 == Description ==
 
-### The easy way to translate your website. Designed to be used by anyone.
+### Translate your website and manage translations effortlessly to go multilingual on WordPress. Designed to be user-friendly.
 
 Weglot Translate is an all-in-one [WordPress translation plugin](https://www.weglot.com/integrations/wordpress-translation-plugin), trusted by 70,000+ users worldwide. Translate your WordPress website into 110+ languages and go multilingual within minutes, no coding required.
 

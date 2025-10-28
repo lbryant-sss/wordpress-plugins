@@ -5,7 +5,7 @@ Tags: download manager, document management, file manager, digital store, ecomme
 Requires at least: 5.3
 Tested up to: 6.8
 License: GPLv3
-Stable tag: 3.3.29
+Stable tag: 3.3.30
 
 
 This File Management & Digital Store plugin will help you to control file downloads & sell digital products from your WP site.
@@ -34,6 +34,7 @@ Need to sell digital products? You may use WordPress Download Manager as a compl
 *   Download speed control
 *	Password protection
 *	CAPTCHA protection
+*   Ad blocker detection
 *   IP block option to prevent bot downloads or downloads from unwanted IP addresses
 *   Download logs to check who is downloading which file from where and when
 *   Terms protection - Agree with Terms & Conditions before download
@@ -42,7 +43,7 @@ Need to sell digital products? You may use WordPress Download Manager as a compl
 *	File type icon support
 *   Full Featured User Dashboard ( use short-code [wpdm_user_dashboard] )
 *   Custom front-end login / signup form short-code
-*   Custom oEmbed t emplate
+*   Custom oEmbed template
 *	Responsive DataTable support ( use short-code [wpdm_all_packages jstable=1 items_per_page=20] )
 *	Searching and Sorting Option
 *	Custom link label
@@ -201,6 +202,10 @@ By using this plugin, you acknowledge and agree to the terms and policies of the
 19. More features
 
 == Changelog ==
+
+= 3.3.30 - 2025.10.28 =
+* Fixed an issue with the cron job functions ( Reported by Wordfence )
+* Added a new option to display custom messages and disable download link when ad-blocking extensions are detected.
 
 = 3.3.29 - 2025.10.20 =
 * Fixed an issue with the asset manager pagination

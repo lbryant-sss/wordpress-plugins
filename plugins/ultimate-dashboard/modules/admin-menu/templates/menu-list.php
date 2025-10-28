@@ -35,12 +35,12 @@ ob_start();
 			<ul class="udb-menu-builder--tab-menu">
 				<li class="udb-menu-builder--tab-menu-item is-active" data-udb-tab-content="udb-menu-builder--settings-tab--{role}">
 					<button type="button">
-						<?php _e( 'Settings', 'ultimate-dashboard' ); ?>
+						<?php esc_html_e( 'Settings', 'ultimate-dashboard' ); ?>
 					</button>
 				</li>
 				<li class="udb-menu-builder--tab-menu-item" data-udb-tab-content="udb-menu-builder--submenu-tab--{role}">
 					<button type="button">
-						<?php _e( 'Submenu', 'ultimate-dashboard' ); ?>
+						<?php esc_html_e( 'Submenu', 'ultimate-dashboard' ); ?>
 					</button>
 				</li>
 			</ul><!-- .udb-menu-builder--tab-menu -->
@@ -50,7 +50,7 @@ ob_start();
 					<div class="udb-menu-builder--fields">
 						<div class="field">
 							<label for="menu_title_{role}_{default_menu_id}" class="label udb-menu-builder--label">
-								<?php _e( 'Menu Title' ); ?>
+								<?php esc_html_e( 'Menu Title', 'ultimate-dashboard' ); ?>
 							</label>
 							<div class="control">
 								<input 
@@ -66,7 +66,7 @@ ob_start();
 						</div>
 						<div class="field">
 							<label for="menu_url_{role}_{default_menu_id}" class="label udb-menu-builder--label">
-								<?php _e( 'Menu URL' ); ?>
+								<?php esc_html_e( 'Menu URL', 'ultimate-dashboard' ); ?>
 							</label>
 							<div class="control">
 								<input 
@@ -83,7 +83,7 @@ ob_start();
 						<div class="is-nested">
 							<div class="field">
 								<label for="menu_icon_{role}_{default_menu_id}" class="label udb-menu-builder--label">
-									<?php _e( 'Menu Icon', 'ultimate-dashboard' ); ?>
+									<?php esc_html_e( 'Menu Icon', 'ultimate-dashboard' ); ?>
 								</label>
 							</div>
 							<div class="udb-menu-builder--tabs udb-menu-builder--icon-switcher">
@@ -106,15 +106,18 @@ ob_start();
 									<div id="udb-menu-builder--icon-svg-tab--{role}" class="udb-menu-builder--tab-content-item {icon_svg_tab_is_active}">
 										<textarea name="menu_icon_svg_{role}_{default_menu_id}" id="menu_icon_svg_{role}_{default_menu_id}" class="udb-menu-builder--textarea-field udb-menu-builder--icon-field" placeholder="{default_menu_icon_svg}" data-name="icon_svg">{menu_icon_svg}</textarea>
 										<p class="description">
-											<?php
-											printf(
+										<?php
+										echo wp_kses_post(
+											sprintf(
+												/* translators: 1: data URI, 2: code example, 3: tool URL */
 												__( 'Paste a base64-encoded SVG using a %1$s, which will be colored to match the color scheme. This should begin with %2$s. Or you can use this tool to generate it: %3$s', 'ultimate-dashboard' ),
 												'<strong>data URI</strong>',
 												'<code>data:image/svg+xml;base64,</code>',
 												'<a href="https://iotools.cloud/tool/svg-to-base64-encode/" target="_blank">https://iotools.cloud/tool/svg-to-base64-encode/</a>'
-											);
-											?>
-										</p>
+											)
+										);
+										?>
+									</p>
 									</div>
 								</div>
 							</div>

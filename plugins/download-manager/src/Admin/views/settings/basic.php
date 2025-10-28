@@ -232,6 +232,17 @@
         </div>
         <hr/>
 
+        <div class="form-group">
+            <input type="hidden" name="__wpdm_adblocked_off" value="0">
+            <label><input onclick="if(jQuery(this).is(':checked')) jQuery('#abmsg').slideDown(); else jQuery('#abmsg').slideUp();" type="checkbox" <?php checked(get_option('__wpdm_adblocked_off', 0), 1); ?> name="__wpdm_adblocked_off" value="1"> <?php _e("Ad-blocker must be disabled to download", "download-manager"); ?></label>
+            <div><em><?php _e("Users/Visitors must disable ad-blockers to download", "download-manager"); ?></em></div>
+            <div id="abmsg" style="margin-top: 10px;border: 1px solid #eee;border-radius: 4px;background: #fcfcfc;padding: 10px 15px;display:<?php echo !(int)get_option('__wpdm_adblocked_off', 0) ? 'none' : 'block'; ?>;">
+                <label><?php _e("Message to show when ad blocker is active", "download-manager"); ?>:</label><br/>
+                <input class="form-control" type="text" name="__wpdm_adblocked_msg" value="<?php echo esc_attr(get_option('__wpdm_adblocked_msg', 'We noticed an ad blocker. Consider whitelisting us to support the site ❤️')); ?>" />
+            </div>
+        </div>
+        <hr/>
+
 
         <div class="form-group">
             <label><?php echo __("Download Speed:", "download-manager"); ?></label>

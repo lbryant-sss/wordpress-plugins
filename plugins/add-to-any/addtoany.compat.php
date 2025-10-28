@@ -154,11 +154,11 @@ add_filter( "wp_consent_api_registered_{$plugin}", '__return_true' );
 
 function addtoany_check_3p_consent() {
 	global $A2A_3p_consent;
-    if ( function_exists( 'wp_has_consent' ) ) {
+	if ( function_exists( 'wp_has_consent' ) ) {
 		$A2A_3p_consent = wp_has_consent( 'marketing' );
 	} elseif ( function_exists( 'cmplz_has_consent' ) ) {
 		$A2A_3p_consent = cmplz_has_consent( 'marketing' );
 	}
 }
 
-add_action( 'plugins_loaded', 'addtoany_check_3p_consent' );
+add_action( 'init', 'addtoany_check_3p_consent' );

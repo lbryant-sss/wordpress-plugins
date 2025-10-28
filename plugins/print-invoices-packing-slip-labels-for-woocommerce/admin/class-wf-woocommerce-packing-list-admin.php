@@ -98,8 +98,11 @@ class Wf_Woocommerce_Packing_List_Admin {
 	 */
 	public function enqueue_scripts() 
 	{
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wf-woocommerce-packing-list-admin.js', array( 'jquery','jquery-ui-autocomplete','wp-color-picker','jquery-tiptip'), $this->version, false );
-		wp_enqueue_script( $this->plugin_name.'-form-wizard', plugin_dir_url( __FILE__ ) . 'js/wf-woocommerce-packing-list-admin-form-wizard.js', array( 'jquery','jquery-ui-autocomplete','wp-color-picker','jquery-tiptip'), $this->version, false );
+		// Use correct tiptip handle based on WooCommerce version
+		$tiptip_handle = version_compare( WC()->version, '10.3.0', '>=' ) ? 'wc-jquery-tiptip' : 'jquery-tiptip';
+		
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wf-woocommerce-packing-list-admin.js', array( 'jquery','jquery-ui-autocomplete','wp-color-picker',$tiptip_handle), $this->version, false );
+		wp_enqueue_script( $this->plugin_name.'-form-wizard', plugin_dir_url( __FILE__ ) . 'js/wf-woocommerce-packing-list-admin-form-wizard.js', array( 'jquery','jquery-ui-autocomplete','wp-color-picker',$tiptip_handle), $this->version, false );
 		//order list page bulk action filter
 		$this->bulk_actions=apply_filters('wt_print_bulk_actions',$this->bulk_actions);
 
@@ -330,15 +333,15 @@ class Wf_Woocommerce_Packing_List_Admin {
             			if ( ! $is_mpdf_active && ! $is_mpdf_exists ) {
 				$placeholder_arr = esc_attr(wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=' . $mpdf_slug ), 'install-plugin_' . $mpdf_slug ));
 				/* translators: %1$s: HTML link opening tag, %2$s: HTML link closing tag */
-				$enable_mpdf_msg    = sprintf( __( 'For better RTL integration in PDF documents, click the link to install the %1$smPDF add-on%2$s by WebToffee (free).', 'print-invoices-packing-slip-labels-for-woocommerce' ), '<a href="' . $placeholder_arr . '">', '</a>' );
+				$enable_mpdf_msg    = sprintf( __( 'For better RTL integration in PDF documents, click the link to install the %1$smPDF add-on%2$s by WebToffee (free).', 'print-invoices-packing-slip-labels-for-woocommerce' ), '<a href="' . $placeholder_arr . '" target="_blank">', '</a>' );
 			} elseif ( $is_mpdf_active && ! $is_required_mpdf_version_installed ) {
 				$placeholder_arr = esc_attr( wp_nonce_url( self_admin_url( 'update.php?action=upgrade-plugin&plugin=' . $mpdf_slug ), 'upgrade-plugin_' . $mpdf_slug ) );
 				/* translators: %1$s: HTML link opening tag, %2$s: HTML link closing tag */
-				$enable_mpdf_msg    = sprintf( __( 'For better RTL integration in PDF documents, click the link to update the %1$smPDF add-on%2$s by WebToffee (free).', 'print-invoices-packing-slip-labels-for-woocommerce' ), '<a href="' . $placeholder_arr . '">', '</a>' );
+				$enable_mpdf_msg    = sprintf( __( 'For better RTL integration in PDF documents, click the link to update the %1$smPDF add-on%2$s by WebToffee (free).', 'print-invoices-packing-slip-labels-for-woocommerce' ), '<a href="' . $placeholder_arr . '" target="_blank">', '</a>' );
 			} elseif ( ! $is_mpdf_active && $is_mpdf_exists ) {
 				$placeholder_arr = esc_attr( wp_nonce_url( self_admin_url( 'plugins.php?action=activate&plugin=' . urlencode( $mpdf_path ) . '&plugin_status=all&paged=1&s' ), 'activate-plugin_' . $mpdf_path ) );
 				/* translators: %1$s: HTML link opening tag, %2$s: HTML link closing tag */
-				$enable_mpdf_msg    = sprintf( __( 'For better RTL integration in PDF documents, click the link to activate the %1$smPDF add-on%2$s by WebToffee (free).', 'print-invoices-packing-slip-labels-for-woocommerce' ), '<a href="' . $placeholder_arr . '">', '</a>' );
+				$enable_mpdf_msg    = sprintf( __( 'For better RTL integration in PDF documents, click the link to activate the %1$smPDF add-on%2$s by WebToffee (free).', 'print-invoices-packing-slip-labels-for-woocommerce' ), '<a href="' . $placeholder_arr . '" target="_blank">', '</a>' );
 			} else {
 				$enable_mpdf_msg = '';
 				$placeholder_arr = esc_url('https://wordpress.org/plugins/mpdf-addon-for-pdf-invoices/');
@@ -1826,8 +1829,8 @@ class Wf_Woocommerce_Packing_List_Admin {
 					}
 
 					if( "wf_invoice_product_meta" === $key ) {
-						if ( !empty($_POST[$key]) ) {
-							$the_options['wf_invoice_product_meta_fields'] = $_POST[$key];
+						if ( !empty($_POST[$key]) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verified via check_write_access() at line 1757
+							$the_options['wf_invoice_product_meta_fields'] = is_array( $_POST[$key] ) ? array_map( 'sanitize_text_field', wp_unslash( $_POST[$key] ) ) : sanitize_text_field( wp_unslash( $_POST[$key] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verified via check_write_access() at line 1757
 						}
 					}
 

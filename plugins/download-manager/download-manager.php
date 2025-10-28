@@ -5,7 +5,7 @@ Plugin URI: https://www.wpdownloadmanager.com/purchases/
 Description: Manage, Protect and Track file downloads, and sell digital products from your WordPress site. A complete digital asset management solution.
 Author: W3 Eden, Inc.
 Author URI: https://www.wpdownloadmanager.com/
-Version: 3.3.29
+Version: 3.3.30
 Text Domain: download-manager
 Domain Path: /languages
 */
@@ -13,6 +13,7 @@ Domain Path: /languages
 namespace WPDM;
 
 use WPDM\__\Apply;
+use WPDM\__\CronJob;
 use WPDM\__\Crypt;
 use WPDM\__\DownloadStats;
 use WPDM\__\Email;
@@ -39,7 +40,7 @@ use WPDM\Widgets\WidgetController;
 
 global $WPDM;
 
-define('WPDM_VERSION','3.3.29');
+define('WPDM_VERSION','3.3.30');
 
 define('WPDM_TEXT_DOMAIN','download-manager');
 
@@ -112,9 +113,6 @@ if(!defined('WPDM_PUB_NONCE'))
 if(!defined('WPDM_PRI_NONCE'))
     define('WPDM_PRI_NONCE',        '.r&`|]S1GEAdm^hTA^XmE8vU3F^=K+)419alVN=EbDQ Z-pfl/nd-12^I&oRfDC]');
 
-if(!defined('WPDM_CRON_KEY'))
-	define('WPDM_CRON_KEY',        'mKNVRCdbJr1DiedHE18N');
-
 @ini_set('upload_tmp_dir',WPDM_CACHE_DIR);
 
 
@@ -142,6 +140,8 @@ final class WordPressDownloadManager{
     public $message;
 	public $updater;
     public $ui;
+    public $cronJob;
+    public $cronJobs;
     public $wpdm_urls;
 
     private static $wpdm_instance = null;
@@ -202,8 +202,8 @@ final class WordPressDownloadManager{
         $this->updater          = new Updater();
         $this->ui               = new UI();
         $this->email            = new Email();
-
-        CronJobs::getInstance();
+        $this->cronJob          = CronJob::getInstance();
+        $this->cronJobs          = CronJobs::getInstance();
         WidgetController::instance();
 
         if (!defined('WPDM_ASSET_MANAGER') || WPDM_ASSET_MANAGER === true) {
@@ -442,6 +442,9 @@ final class WordPressDownloadManager{
 
         wp_register_script('wpdm-frontjs', plugins_url('/assets/js/front.min.js', __FILE__), array('jquery'), WPDM_VERSION);
 
+        if((int)get_option('__wpdm_adblocked_off', 0) === 1)
+            wp_enqueue_script('wpdm-ad', plugins_url('/download-manager/assets/js/blocker.js'));
+
         $wpdm_js = array(
             'spinner' => '<i class="wpdm-icon wpdm-sun wpdm-spin"></i>',
             'client_id' => Session::$deviceID
@@ -490,6 +493,8 @@ final class WordPressDownloadManager{
                 echo $this->user->login->modalForm();
             ?>
             <script>
+                const abmsg = "<?php echo esc_attr(get_option('__wpdm_adblocked_msg', 'We noticed an ad blocker. Consider whitelisting us to support the site ❤️')) ?>";
+
                 jQuery(function($){
 
                     <?php if(is_singular('wpdmpro') && $view_count){ ?>

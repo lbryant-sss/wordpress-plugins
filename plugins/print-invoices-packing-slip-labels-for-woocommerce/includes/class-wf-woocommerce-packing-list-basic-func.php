@@ -42,7 +42,10 @@ class Wf_Woocommerce_Packing_List_Basic_Common_Func {
 
     public function enqueue_scripts() 
     {
-        wp_enqueue_script( $this->plugin_name.'-basic-common', plugin_dir_url( __FILE__ ) . 'js/wf-woocommerce-packing-list-admin-basic-common.js', array( 'jquery','wp-color-picker','jquery-tiptip'), $this->version, false );
+        // Use correct tiptip handle based on WooCommerce version
+        $tiptip_handle = version_compare( WC()->version, '10.3.0', '>=' ) ? 'wc-jquery-tiptip' : 'jquery-tiptip';
+        
+        wp_enqueue_script( $this->plugin_name.'-basic-common', plugin_dir_url( __FILE__ ) . 'js/wf-woocommerce-packing-list-admin-basic-common.js', array( 'jquery','wp-color-picker',$tiptip_handle), $this->version, false );
 
         $order_meta_autocomplete = Wf_Woocommerce_Packing_List_Admin::order_meta_dropdown_list();
         $product_meta_autocomplete = Wf_Woocommerce_Packing_List_Admin::product_meta_dropdown_list();

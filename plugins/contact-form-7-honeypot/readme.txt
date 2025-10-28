@@ -2,7 +2,7 @@
 Tags: anti-spam, spam protection, captcha, honeypot, cf7 database
 Requires at least: 4.8
 Tested up to: 6.8
-Stable tag: 3.1.1
+Stable tag: 3.2.0
 Requires PHP: 5.6
 Contributors: wpexpertsio
 License: GPLv2 or later
@@ -26,6 +26,7 @@ Right out of the box, CF7 Apps includes:
 ✅ **Honeypot App**
 ✅ **hCaptcha App**
 ✅ **Database Entries App**
+✅ **Redirection App**
 💡 **[Suggest a Feature](https://cf7apps.com/submit-idea/?utm_source=wp_org&utm_medium=readme&utm_campaign=suggest_a_feature)**
 
 And that’s just the beginning.
@@ -141,6 +142,13 @@ CF7 Apps is a third-party plugin and is not officially associated with or endors
 5. CF7 Apps Tags.
 
 == Changelog ==
+
+= 3.2.0 – Octuber 27, 2025 =
+* NEW: Introduced the Redirection App.
+* IMPROVEMENT: Added a highlighter for CF7 Apps tags within the Contact Form 7 editor.
+* IMPROVEMENT: Added an informational banner in the Entries App settings for better user guidance.
+* FIX: Resolved an issue where the entries’ form name always appeared as “untitled.”
+* FIX: Added spam count display in the Honeypot settings
 
 = 3.1.1 - September 29, 2025 =
 * IMPROVEMENT – Added Collapse Icon On CF7 Apps All Apps Menu

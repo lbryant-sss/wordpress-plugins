@@ -113,7 +113,9 @@ body{
 .cp_cff_box #fbuilder input[type=number],
 .cp_cff_box #fbuilder input[type=email],
 .cp_cff_box #fbuilder input[type=password],
+.cp_cff_box #fbuilder select,
 .cp_cff_box #fbuilder textarea{	border:0;outline:none;}
+.cp_cff_box #fbuilder select{min-width:40px;}
 .cp_cff_box #fbuilder .ui-slider-handle{background:#6B9FFF;border:0;}
 .cp_cff_box #fbuilder  .dfield.slider-container{padding-left: 20px !important; padding-right: 20px !important;}
 .cp_cff_box #fbuilder .fields.section_breaks{

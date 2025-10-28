@@ -1051,6 +1051,11 @@ input[type="checkbox"]:focus,
   margin-bottom: 0.25rem;
 }
 
+.ctx-my-1\.5 {
+  margin-top: 0.375rem;
+  margin-bottom: 0.375rem;
+}
+
 .ctx-my-2 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
@@ -1978,6 +1983,10 @@ input[type="checkbox"]:focus,
   gap: 14px;
 }
 
+.ctx-gap-\[18px\] {
+  gap: 18px;
+}
+
 .ctx-gap-x-1 {
   -webkit-column-gap: 0.25rem;
      -moz-column-gap: 0.25rem;
@@ -2379,6 +2388,11 @@ input[type="checkbox"]:focus,
 .ctx-bg-\[\#FEC129\] {
   --tw-bg-opacity: 1;
   background-color: rgb(254 193 41 / var(--tw-bg-opacity));
+}
+
+.ctx-bg-\[\#FFC107\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 193 7 / var(--tw-bg-opacity));
 }
 
 .ctx-bg-\[\#FFDE59\] {
@@ -3042,6 +3056,10 @@ input[type="checkbox"]:focus,
   font-size: 22px;
 }
 
+.ctx-text-\[27px\] {
+  font-size: 27px;
+}
+
 .ctx-text-\[32px\] {
   font-size: 32px;
 }
@@ -3123,6 +3141,10 @@ input[type="checkbox"]:focus,
   line-height: 1.5rem;
 }
 
+.ctx-leading-\[38px\] {
+  line-height: 38px;
+}
+
 .ctx-leading-none {
   line-height: 1;
 }
@@ -3192,6 +3214,11 @@ input[type="checkbox"]:focus,
 .ctx-text-\[\#F1D259\] {
   --tw-text-opacity: 1;
   color: rgb(241 210 89 / var(--tw-text-opacity));
+}
+
+.ctx-text-\[\#FFC107\] {
+  --tw-text-opacity: 1;
+  color: rgb(255 193 7 / var(--tw-text-opacity));
 }
 
 .ctx-text-\[\#ef657b\] {
@@ -3374,6 +3401,12 @@ input[type="checkbox"]:focus,
 
 .ctx-shadow-\[0_3\.907px_3\.907px_0_rgba\(0\,0\,0\,0\.05\)\,1\.953px_1\.953px_0_0\.977px_\#DAB900\] {
   --tw-shadow: 0 3.907px 3.907px 0 rgba(0,0,0,0.05),1.953px 1.953px 0 0.977px #DAB900;
+  --tw-shadow-colored: 0 3.907px 3.907px 0 var(--tw-shadow-color), 1.953px 1.953px 0 0.977px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.ctx-shadow-\[0_3\.907px_3\.907px_0_rgba\(0\,0\,0\,0\.05\)\,1\.953px_1\.953px_0_0\.977px_\#FFD0E6\] {
+  --tw-shadow: 0 3.907px 3.907px 0 rgba(0,0,0,0.05),1.953px 1.953px 0 0.977px #FFD0E6;
   --tw-shadow-colored: 0 3.907px 3.907px 0 var(--tw-shadow-color), 1.953px 1.953px 0 0.977px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
@@ -3684,6 +3717,11 @@ img {
 .hover\:ctx-bg-\[\#3DB2FF\]:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(61 178 255 / var(--tw-bg-opacity));
+}
+
+.hover\:ctx-bg-\[\#FF4BA0\]:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 75 160 / var(--tw-bg-opacity));
 }
 
 .hover\:ctx-bg-\[\#FF54A7\]:hover {

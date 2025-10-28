@@ -244,6 +244,10 @@ A file was {event} by {username} on {date_time}. The file name is {file_name} wi
         if ( ! class_exists( 'AFMP\\Modules\\GitHub' ) ) {
             add_submenu_page( 'file_manager_advanced_ui', 'GitHub Settings', 'GitHub', 'manage_options', 'afmp-github', array( $this, 'github_menu'  ) );
         }
+        
+        if ( ! class_exists( 'AFMP\\Modules\\GoogleCloud' ) ) {
+            add_submenu_page( 'file_manager_advanced_ui', 'Google Cloud Settings', 'Google Cloud', 'manage_options', 'afmp-googlecloud', array( $this, 'googlecloud_menu'  ) );
+        }
 	}
 
     /**
@@ -759,7 +763,7 @@ A file was {event} by {username} on {date_time}. The file name is {file_name} wi
                 
                 <tr>
                     <th>
-                        <label for="afm__app_key">App Key</label>
+                        <label for="afm__app_key">App Key <span style="color: red;">*</span></label>
                     </th>
                     <td>
                         <input type="text" id="afm__app_key" class="regular-text">
@@ -771,7 +775,7 @@ A file was {event} by {username} on {date_time}. The file name is {file_name} wi
                 
                 <tr>
                     <th>
-                        <label for="afm__app_secret">App Secret</label>
+                        <label for="afm__app_secret">App Secret <span style="color: red;">*</span></label>
                     </th>
                     <td>
                         <input type="text" id="afm__app_secret" class="regular-text">
@@ -783,7 +787,7 @@ A file was {event} by {username} on {date_time}. The file name is {file_name} wi
                 
                 <tr>
                     <th>
-                        <label for="afm__region">Region</label>
+                        <label for="afm__region">Region <span style="color: red;">*</span></label>
                     </th>
                     <td>
                         <input type="text" id="afm__region" class="regular-text">
@@ -797,7 +801,7 @@ A file was {event} by {username} on {date_time}. The file name is {file_name} wi
                 </tr>
                 <tr>
                     <th>
-                        <label for="afm__bucket">Bucket</label>
+                        <label for="afm__bucket">Bucket <span style="color: red;">*</span></label>
                     </th>
                     <td>
                         <input type="text" id="afm__bucket" class="regular-text">
@@ -840,6 +844,140 @@ A file was {event} by {username} on {date_time}. The file name is {file_name} wi
                             <strong>
                                 Enter a folder name to restrict access to that folder only. Leave blank to use the root directory (e.g. awsfolder) 
                             </strong>
+                        </p>
+                    </td>
+                </tr>
+            </table>';
+
+        submit_button();
+
+        echo '</div>';
+    }
+
+	/**
+	 * Google Cloud menu
+	 * @since 5.3.8
+	 */
+    public function googlecloud_menu() {
+
+        echo '<style type="text/css">
+            .googlecloud__heading {
+                color: #000;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+            }
+            
+            .googlecloud__heading-pro-tag {
+                display: inline-block;
+                padding: 2px 8px;
+                background: linear-gradient(270deg, #011D33 0%, #3F6972 100%);
+                border-radius: 4px;
+                color: #fff;
+                font-size: 12px;
+                margin-left: 25px;
+            }
+            
+            .googlecloud__wrap {
+                opacity: 0.5;
+                position:relative;
+            }
+            
+            .googlecloud__wrap::before {
+                content: "";
+                display: block;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 1;
+                background: transparent;
+            }
+        </style>
+        <h2 class="googlecloud__heading">Google Cloud Settings <span class="googlecloud__heading-pro-tag">PRO</span></h2>
+
+        <div class="googlecloud__wrap">
+            <table class="form-table">
+                <tr>
+                    <th>
+                        <lable for="fma__enable">Enable</lable>
+                    </th>
+                    <td>
+                        <input type="checkbox" id="fma__enable">
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="afm__alias">Alias</label>
+                    </th>
+                    <td>
+                        <input type="text" id="afm__alias" class="regular-text">
+                        <p class="desc">
+                            <strong>Enter a title which will be displayed on File Manager</strong>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="afm__auth_key">Authentication Key File <span style="color: red;">*</span></label>
+                    </th>
+                    <td>
+                        <input type="file" id="afm__auth_key" class="regular-text" accept=".json">
+                        <p class="desc">
+                            <strong>Upload your Google Cloud service account key file (.json format)</strong>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="afm__bucket">Bucket <span style="color: red;">*</span></label>
+                    </th>
+                    <td>
+                        <input type="text" id="afm__bucket" class="regular-text">
+                        
+                        <p class="desc">
+                            <strong>
+                                Enter the name of your Google Cloud Storage bucket
+                            </strong>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="afm__user_role_access">User Role Access</label>
+                    </th>
+                    <td>
+                        <input type="checkbox" id="editor_role" value class="regular-text">
+                        <label for="editor_role">Editor</label><br>
+                        <input type="checkbox" id="editor_role" value class="regular-text">
+                        <label for="editor_role">Author</label><br>
+                        <input type="checkbox" id="editor_role" value class="regular-text">
+                        <label for="editor_role">Contributor</label><br>
+                        <input type="checkbox" id="editor_role" value class="regular-text">
+                        <label for="editor_role">Subscriber</label><br>
+                        <p class="desc">
+                            <strong>
+                                Select the user roles allowed to access the Google Cloud file manager
+                            </strong>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="afm__private_folder_access">Private Folder Access</label>
+                    </th>
+                    <td>
+                        <input type="text" id="afm__private_folder_access" class="regular-text">
+                        
+                        <p class="desc">
+                            <strong>
+                                Enter a subfolder path within your bucket. Leave blank to use the root directory 
+                            </strong>
+                        </p>
+                        <p class="note" style="color: red;">
+                            <strong>Note: </strong>Folder paths and user role values are case-sensitive
                         </p>
                     </td>
                 </tr>

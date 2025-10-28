@@ -5,13 +5,14 @@ import {
 	getContext,
 	store,
 	getConfig,
+	getElement,
 	withSyncEvent as originalWithSyncEvent,
 } from '@wordpress/interactivity';
 /*
  * Internal dependencies
  */
 import { validateField, isEmptyValue } from '../../contact-form/js/validate-helper';
-import { focusNextInput, dispatchSubmitEvent, submitForm } from './shared';
+import { focusNextInput, submitForm } from './shared';
 
 const withSyncEvent =
 	originalWithSyncEvent ||
@@ -497,19 +498,6 @@ const { state, actions } = store( NAMESPACE, {
 			}
 		} ),
 
-		onKeyDownTextarea: withSyncEvent( event => {
-			if ( ! ( event.key === 'Enter' && event.shiftKey ) ) {
-				return;
-			}
-			// Prevent the default behavior of adding a new line.
-			event.preventDefault();
-			event.stopPropagation();
-
-			const context = getContext();
-
-			dispatchSubmitEvent( context.formHash );
-		} ),
-
 		scrollIntoView: withSyncEvent( event => {
 			const context = getContext();
 
@@ -581,19 +569,36 @@ const { state, actions } = store( NAMESPACE, {
 		},
 
 		setImageOptionCheckColor() {
-			const context = getContext();
+			const { ref } = getElement();
 
-			const { inputId } = context;
-			const input = document.getElementById( inputId );
-
-			if ( ! input ) {
+			if ( ! ref ) {
 				return;
 			}
 
-			const color = window.getComputedStyle( input ).color;
+			const color = window.getComputedStyle( ref ).color;
 			const inverseColor = window.jetpackForms.getInverseReadableColor( color );
+			const style = ref.getAttribute( 'style' ) ?? '';
 
-			input.setAttribute( 'style', `--jetpack-input-image-option--check-color: ${ inverseColor }` );
+			ref.setAttribute(
+				'style',
+				style + `--jetpack-input-image-option--check-color: ${ inverseColor }`
+			);
+		},
+
+		setImageOptionOutlineColor() {
+			const { ref } = getElement();
+
+			if ( ! ref ) {
+				return;
+			}
+
+			const { borderColor } = window.getComputedStyle( ref );
+			const style = ref.getAttribute( 'style' ) ?? '';
+
+			ref.setAttribute(
+				'style',
+				style + `--jetpack-input-image-option--outline-color: ${ borderColor }`
+			);
 		},
 	},
 } );

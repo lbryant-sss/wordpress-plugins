@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FluentCRM - Marketing Automation For WordPress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-14 11:17+0000\n"
+"POT-Creation-Date: 2025-10-27 11:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -125,7 +125,7 @@ msgid ""
 "mismatch settings may not deliver emails as expected)"
 msgstr ""
 
-#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:224
+#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:230
 msgid "(Product)"
 msgstr ""
 
@@ -188,14 +188,14 @@ msgstr ""
 msgid "A"
 msgstr ""
 
-#: app/Hooks/Handlers/ExternalPages.php:1217
+#: app/Hooks/Handlers/ExternalPages.php:1219
 #, php-format
 msgid ""
 "A confirmation email has been sent to %s. Please confirm your email address "
 "to resubscribe"
 msgstr ""
 
-#: app/Hooks/Handlers/ExternalPages.php:1196
+#: app/Hooks/Handlers/ExternalPages.php:1198
 #, php-format
 msgid ""
 "A confirmation email has been sent to %s. Please confirm your email address "
@@ -262,7 +262,8 @@ msgstr ""
 
 #: app/Services/TransStrings.php:31 app/Hooks/Handlers/PurchaseHistory.php:193
 #: app/Hooks/Handlers/PurchaseHistory.php:442
-#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:151
+#: app/Hooks/Handlers/PurchaseHistory.php:790
+#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:157
 msgid "Actions"
 msgstr ""
 
@@ -280,7 +281,7 @@ msgstr ""
 msgid "Activate Fluent Forms Integration"
 msgstr ""
 
-#: app/Services/TransStrings.php:32 app/Services/Helper.php:1728
+#: app/Services/TransStrings.php:32 app/Services/Helper.php:1735
 msgid "Active"
 msgstr ""
 
@@ -632,7 +633,7 @@ msgstr ""
 
 #: app/Models/Company.php:60 app/Models/Subscriber.php:738
 #: app/Services/TransStrings.php:101 app/Services/Helper.php:232
-#: app/Services/Helper.php:1311 app/Hooks/Handlers/PrefFormHandler.php:76
+#: app/Services/Helper.php:1318 app/Hooks/Handlers/PrefFormHandler.php:76
 #: app/Hooks/Handlers/PrefFormHandler.php:541
 #: app/Services/CrmMigrator/BaseMigrator.php:36
 #: app/Services/Funnel/FunnelHelper.php:152
@@ -641,7 +642,7 @@ msgstr ""
 
 #: app/Models/Company.php:61 app/Models/Subscriber.php:739
 #: app/Services/TransStrings.php:102 app/Services/Helper.php:233
-#: app/Services/Helper.php:1316 app/Hooks/Handlers/PrefFormHandler.php:77
+#: app/Services/Helper.php:1323 app/Hooks/Handlers/PrefFormHandler.php:77
 #: app/Hooks/Handlers/PrefFormHandler.php:552
 #: app/Services/CrmMigrator/BaseMigrator.php:37
 #: app/Services/Funnel/FunnelHelper.php:156
@@ -694,7 +695,7 @@ msgstr ""
 msgid "Advanced Typography"
 msgstr ""
 
-#: app/Services/Helper.php:1713
+#: app/Services/Helper.php:1720
 msgid "Affiliate ID (Pro Required)"
 msgstr ""
 
@@ -1291,7 +1292,7 @@ msgstr ""
 msgid "Automatically Sync your WP User Data and Fluent CRM Contact Data"
 msgstr ""
 
-#: app/Services/Helper.php:1478
+#: app/Services/Helper.php:1485
 msgid "Automation Activity -"
 msgstr ""
 
@@ -1471,7 +1472,7 @@ msgstr ""
 msgid "Bhutan"
 msgstr ""
 
-#: app/Services/Helper.php:689
+#: app/Services/Helper.php:696
 msgid "Black"
 msgstr ""
 
@@ -1696,7 +1697,7 @@ msgstr ""
 msgid "Campaign Details"
 msgstr ""
 
-#: app/Services/Helper.php:1460
+#: app/Services/Helper.php:1467
 msgid "Campaign Email -"
 msgstr ""
 
@@ -1965,7 +1966,7 @@ msgstr ""
 
 #: app/Models/Company.php:63 app/Models/Subscriber.php:740
 #: app/Services/TransStrings.php:291 app/Services/Helper.php:234
-#: app/Services/Helper.php:1321 app/Hooks/Handlers/PrefFormHandler.php:78
+#: app/Services/Helper.php:1328 app/Hooks/Handlers/PrefFormHandler.php:78
 #: app/Hooks/Handlers/PrefFormHandler.php:563
 #: app/Services/CrmMigrator/BaseMigrator.php:39
 #: app/Services/Funnel/FunnelHelper.php:164
@@ -2102,15 +2103,15 @@ msgstr ""
 msgid "companies selected"
 msgstr ""
 
-#: app/Services/TransStrings.php:308 app/Services/Helper.php:1518
+#: app/Services/TransStrings.php:308 app/Services/Helper.php:1525
 msgid "Company"
 msgstr ""
 
-#: app/Services/Helper.php:1528
+#: app/Services/Helper.php:1535
 msgid "Company - Industry"
 msgstr ""
 
-#: app/Services/Helper.php:1538
+#: app/Services/Helper.php:1545
 msgid "Company - Type"
 msgstr ""
 
@@ -2392,11 +2393,11 @@ msgid "Connect with your CRM"
 msgstr ""
 
 #: app/Services/TransStrings.php:352 app/Services/Helper.php:197
-#: app/Services/Helper.php:1289
+#: app/Services/Helper.php:1296
 msgid "Contact"
 msgstr ""
 
-#: app/Services/Helper.php:1440
+#: app/Services/Helper.php:1447
 msgid "Contact Activities"
 msgstr ""
 
@@ -2499,7 +2500,7 @@ msgstr ""
 msgid "contact removed from any of the selected Lists"
 msgstr ""
 
-#: app/Services/Helper.php:1390 app/Hooks/Handlers/EventTrackingHandler.php:256
+#: app/Services/Helper.php:1397 app/Hooks/Handlers/EventTrackingHandler.php:256
 msgid "Contact Segment"
 msgstr ""
 
@@ -2552,7 +2553,7 @@ msgstr ""
 msgid "Contact's Next Date of Birth"
 msgstr ""
 
-#: app/Services/TransStrings.php:367 app/Services/Helper.php:2259
+#: app/Services/TransStrings.php:367 app/Services/Helper.php:2266
 #: app/Hooks/Handlers/AdminMenu.php:85 app/Hooks/Handlers/AdminMenu.php:86
 #: app/Hooks/Handlers/AdminMenu.php:307 app/Hooks/Handlers/AdminMenu.php:1409
 #: app/Hooks/Handlers/AdminMenu.php:1410
@@ -2718,16 +2719,10 @@ msgstr ""
 msgid "Costa Rica"
 msgstr ""
 
-#: app/Services/ExternalIntegrations/FluentCart/CartHelper.php:270
-msgid "Count how many times a specific product was purchased by this contact"
-msgstr ""
-
 #: app/Models/Company.php:65 app/Models/Subscriber.php:743
 #: app/Services/TransStrings.php:379 app/Services/Helper.php:237
-#: app/Services/Helper.php:1336 app/Hooks/Handlers/PrefFormHandler.php:81
+#: app/Services/Helper.php:1343 app/Hooks/Handlers/PrefFormHandler.php:81
 #: app/Services/CrmMigrator/BaseMigrator.php:41
-#: app/Services/ExternalIntegrations/FluentCart/CartHelper.php:197
-#: app/Services/ExternalIntegrations/FluentCart/CartHelper.php:337
 msgid "Country"
 msgstr ""
 
@@ -2947,7 +2942,7 @@ msgstr ""
 msgid "Created"
 msgstr ""
 
-#: app/Services/TransStrings.php:420 app/Services/Helper.php:1377
+#: app/Services/TransStrings.php:420 app/Services/Helper.php:1384
 msgid "Created At"
 msgstr ""
 
@@ -3088,7 +3083,7 @@ msgid "Custom Field Slug"
 msgstr ""
 
 #: app/Services/TransStrings.php:433 app/Services/Helper.php:261
-#: app/Services/Helper.php:1593 app/Hooks/Handlers/PrefFormHandler.php:85
+#: app/Services/Helper.php:1600 app/Hooks/Handlers/PrefFormHandler.php:85
 msgid "Custom Fields"
 msgstr ""
 
@@ -3124,11 +3119,11 @@ msgstr ""
 
 #: app/Services/TransStrings.php:438 app/Hooks/Handlers/PurchaseHistory.php:63
 #: app/Hooks/Handlers/PurchaseHistory.php:96
-#: app/Hooks/Handlers/PurchaseHistory.php:521
+#: app/Hooks/Handlers/PurchaseHistory.php:523
 msgid "Customer Summary"
 msgstr ""
 
-#: app/Services/Helper.php:694
+#: app/Services/Helper.php:701
 msgid "Cyan bluish gray"
 msgstr ""
 
@@ -3172,7 +3167,8 @@ msgstr ""
 #: app/Http/Controllers/CampaignAnalyticsController.php:183
 #: app/Hooks/Handlers/PurchaseHistory.php:178
 #: app/Hooks/Handlers/PurchaseHistory.php:426
-#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:146
+#: app/Hooks/Handlers/PurchaseHistory.php:770
+#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:152
 msgid "Date"
 msgstr ""
 
@@ -3193,7 +3189,7 @@ msgid "Date and Time"
 msgstr ""
 
 #: app/Services/TransStrings.php:451 app/Services/Helper.php:240
-#: app/Services/Helper.php:1367 app/Services/Helper.php:1382
+#: app/Services/Helper.php:1374 app/Services/Helper.php:1389
 #: app/Hooks/Handlers/PrefFormHandler.php:75
 #: app/Hooks/Handlers/PrefFormHandler.php:494
 msgid "Date of Birth"
@@ -3203,7 +3199,7 @@ msgstr ""
 msgid "Date of Birth (Y-m-d Format only)"
 msgstr ""
 
-#: app/Services/Helper.php:2323
+#: app/Services/Helper.php:2330
 msgid "Date Time"
 msgstr ""
 
@@ -3384,7 +3380,7 @@ msgstr ""
 msgid "Denmark"
 msgstr ""
 
-#: app/Services/TransStrings.php:494 app/Services/Helper.php:2338
+#: app/Services/TransStrings.php:494 app/Services/Helper.php:2345
 msgid "Description"
 msgstr ""
 
@@ -3618,7 +3614,7 @@ msgstr ""
 msgid "Dynamic Segments"
 msgstr ""
 
-#: app/Services/Helper.php:1736
+#: app/Services/Helper.php:1743
 msgid "Earnings (Pro Required)"
 msgstr ""
 
@@ -3634,7 +3630,7 @@ msgstr ""
 msgid "Ecuador"
 msgstr ""
 
-#: app/Services/Helper.php:1657
+#: app/Services/Helper.php:1664
 msgid "EDD"
 msgstr ""
 
@@ -3775,7 +3771,7 @@ msgid "Elementor Pro Form Integration"
 msgstr ""
 
 #: app/Models/Subscriber.php:736 app/Functions/helpers.php:650
-#: app/Services/TransStrings.php:551 app/Services/Helper.php:1307
+#: app/Services/TransStrings.php:551 app/Services/Helper.php:1314
 #: app/Hooks/Handlers/PrefFormHandler.php:73
 #: app/Hooks/Handlers/PrefFormHandler.php:460
 #: app/Services/Funnel/FunnelHelper.php:138
@@ -3894,7 +3890,7 @@ msgstr ""
 msgid "Email History Logs"
 msgstr ""
 
-#: app/Hooks/Handlers/ExternalPages.php:1169
+#: app/Hooks/Handlers/ExternalPages.php:1171
 msgid "Email is not valid. Please provide a valid email"
 msgstr ""
 
@@ -3988,7 +3984,7 @@ msgstr ""
 msgid "Email Sent From Funnel: "
 msgstr ""
 
-#: app/Services/Helper.php:1496
+#: app/Services/Helper.php:1503
 msgid "Email Sequence Activity -"
 msgstr ""
 
@@ -4244,23 +4240,23 @@ msgstr ""
 msgid "ends with"
 msgstr ""
 
-#: app/Services/Helper.php:1799 app/Services/Helper.php:1855
+#: app/Services/Helper.php:1806 app/Services/Helper.php:1862
 msgid "Enrollment Categories (Pro Required)"
 msgstr ""
 
-#: app/Services/Helper.php:1781 app/Services/Helper.php:1838
+#: app/Services/Helper.php:1788 app/Services/Helper.php:1845
 msgid "Enrollment Courses (Pro Required)"
 msgstr ""
 
-#: app/Services/Helper.php:1789
+#: app/Services/Helper.php:1796
 msgid "Enrollment Groups (Pro Required)"
 msgstr ""
 
-#: app/Services/Helper.php:1846
+#: app/Services/Helper.php:1853
 msgid "Enrollment Memberships (Pro Required)"
 msgstr ""
 
-#: app/Services/Helper.php:1808 app/Services/Helper.php:1864
+#: app/Services/Helper.php:1815 app/Services/Helper.php:1871
 msgid "Enrollment Tags (Pro Required)"
 msgstr ""
 
@@ -4582,12 +4578,12 @@ msgstr ""
 msgid "Finland"
 msgstr ""
 
-#: app/Services/Helper.php:1775 app/Services/Helper.php:1832
+#: app/Services/Helper.php:1782 app/Services/Helper.php:1839
 msgid "First Enrollment Date (Pro Required)"
 msgstr ""
 
 #: app/Models/Subscriber.php:733 app/Services/TransStrings.php:662
-#: app/Services/Helper.php:227 app/Services/Helper.php:1297
+#: app/Services/Helper.php:227 app/Services/Helper.php:1304
 #: app/Hooks/Handlers/PrefFormHandler.php:70
 #: app/Hooks/Handlers/PrefFormHandler.php:419
 #: app/views/external/manage_subscription_form.php:14
@@ -4598,15 +4594,11 @@ msgstr ""
 msgid "First Name"
 msgstr ""
 
-#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:241
+#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:247
 msgid "First Order"
 msgstr ""
 
-#: app/Services/ExternalIntegrations/FluentCart/CartHelper.php:218
-msgid "First Order Date"
-msgstr ""
-
-#: app/Services/Helper.php:1626 app/Services/Helper.php:1680
+#: app/Services/Helper.php:1633 app/Services/Helper.php:1687
 msgid "First Order Date (Pro Required)"
 msgstr ""
 
@@ -4686,6 +4678,7 @@ msgid "Fluent Support plugin has been installed and activated successfully"
 msgstr ""
 
 #: app/Services/Helper.php:645 app/Http/Controllers/ImporterController.php:65
+#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:426
 #: app/Services/ExternalIntegrations/FluentCart/Triggers/SubscriptionEndOfTermTrigger.php:25
 #: app/Services/ExternalIntegrations/FluentCart/Triggers/OrderCanceledTrigger.php:24
 #: app/Services/ExternalIntegrations/FluentCart/Triggers/OrderRefundedTrigger.php:24
@@ -4698,14 +4691,6 @@ msgstr ""
 #: app/Services/ExternalIntegrations/FluentCart/Triggers/SubscriptionRenewedTrigger.php:24
 #: app/Services/ExternalIntegrations/FluentCart/Triggers/OrderPaidTrigger.php:24
 msgid "FluentCart"
-msgstr ""
-
-#: app/Services/ExternalIntegrations/FluentCart/CartHelper.php:373
-msgid "FluentCart Current Order"
-msgstr ""
-
-#: app/Services/ExternalIntegrations/FluentCart/CartHelper.php:296
-msgid "FluentCart Customer"
 msgstr ""
 
 #: app/Services/ExternalIntegrations/FluentCart/Triggers/OrderStatusChangedTrigger.php:42
@@ -5045,6 +5030,10 @@ msgstr ""
 msgid "Gambia"
 msgstr ""
 
+#: app/Hooks/Handlers/PurchaseHistory.php:785
+msgid "Gateway"
+msgstr ""
+
 #: app/Services/TransStrings.php:1852
 msgid "GDPR Consent"
 msgstr ""
@@ -5057,7 +5046,7 @@ msgstr ""
 msgid "General"
 msgstr ""
 
-#: app/Services/Helper.php:1293
+#: app/Services/Helper.php:1300
 msgid "General Properties"
 msgstr ""
 
@@ -5676,7 +5665,7 @@ msgstr ""
 msgid "INACTIVE"
 msgstr ""
 
-#: app/Services/Helper.php:1729
+#: app/Services/Helper.php:1736
 msgid "Inactive"
 msgstr ""
 
@@ -5888,11 +5877,11 @@ msgstr ""
 msgid "Invalid selection of lists and tags in subscribers included."
 msgstr ""
 
-#: app/Hooks/Handlers/ExternalPages.php:902
+#: app/Hooks/Handlers/ExternalPages.php:904
 msgid "Invalid Webhook Hash"
 msgstr ""
 
-#: app/Hooks/Handlers/ExternalPages.php:893
+#: app/Hooks/Handlers/ExternalPages.php:895
 msgid "Invalid Webhook URL"
 msgstr ""
 
@@ -5933,16 +5922,8 @@ msgstr ""
 msgid "is"
 msgstr ""
 
-#: app/Services/ExternalIntegrations/FluentCart/CartHelper.php:282
-msgid "Is a customer?"
-msgstr ""
-
-#: app/Services/Helper.php:1703
+#: app/Services/Helper.php:1710
 msgid "Is Affiliate (Pro Required)"
-msgstr ""
-
-#: app/Services/ExternalIntegrations/FluentCart/CartHelper.php:207
-msgid "Is guest?"
 msgstr ""
 
 #: app/Hooks/Handlers/CountryNames.php:448
@@ -6003,7 +5984,7 @@ msgstr ""
 msgid "Kazakhstan"
 msgstr ""
 
-#: app/Services/TransStrings.php:1599 app/Services/Helper.php:2326
+#: app/Services/TransStrings.php:1599 app/Services/Helper.php:2333
 msgid "keep blank for current time"
 msgstr ""
 
@@ -6109,11 +6090,11 @@ msgstr ""
 msgid "Laos"
 msgstr ""
 
-#: app/Services/Helper.php:759 app/Hooks/Handlers/AdminMenu.php:941
+#: app/Services/Helper.php:766 app/Hooks/Handlers/AdminMenu.php:941
 msgid "Large"
 msgstr ""
 
-#: app/Services/Helper.php:765
+#: app/Services/Helper.php:772
 msgid "Larger"
 msgstr ""
 
@@ -6121,7 +6102,7 @@ msgstr ""
 msgid "Last 3 months"
 msgstr ""
 
-#: app/Services/TransStrings.php:793 app/Services/Helper.php:1372
+#: app/Services/TransStrings.php:793 app/Services/Helper.php:1379
 msgid "Last Activity"
 msgstr ""
 
@@ -6133,19 +6114,19 @@ msgstr ""
 msgid "Last Changed"
 msgstr ""
 
-#: app/Services/Helper.php:1455
+#: app/Services/Helper.php:1462
 msgid "Last Email Clicked"
 msgstr ""
 
-#: app/Services/Helper.php:1449
+#: app/Services/Helper.php:1456
 msgid "Last Email Open"
 msgstr ""
 
-#: app/Services/Helper.php:1444
+#: app/Services/Helper.php:1451
 msgid "Last Email Sent"
 msgstr ""
 
-#: app/Services/Helper.php:1769 app/Services/Helper.php:1826
+#: app/Services/Helper.php:1776 app/Services/Helper.php:1833
 msgid "Last Enrollment Date (Pro Required)"
 msgstr ""
 
@@ -6158,7 +6139,7 @@ msgid "Last month"
 msgstr ""
 
 #: app/Models/Subscriber.php:734 app/Services/TransStrings.php:797
-#: app/Services/Helper.php:228 app/Services/Helper.php:1302
+#: app/Services/Helper.php:228 app/Services/Helper.php:1309
 #: app/Hooks/Handlers/PrefFormHandler.php:71
 #: app/Hooks/Handlers/PrefFormHandler.php:434
 #: app/views/external/manage_subscription_form.php:20
@@ -6169,7 +6150,7 @@ msgstr ""
 msgid "Last Name"
 msgstr ""
 
-#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:244
+#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:250
 msgid "Last Order"
 msgstr ""
 
@@ -6178,15 +6159,14 @@ msgid "Last order"
 msgstr ""
 
 #: app/Services/TransStrings.php:798
-#: app/Services/ExternalIntegrations/FluentCart/CartHelper.php:225
 msgid "Last Order Date"
 msgstr ""
 
-#: app/Services/Helper.php:1620 app/Services/Helper.php:1674
+#: app/Services/Helper.php:1627 app/Services/Helper.php:1681
 msgid "Last Order Date (Pro Required)"
 msgstr ""
 
-#: app/Services/Helper.php:1754
+#: app/Services/Helper.php:1761
 msgid "Last Payout Date (Pro Required)"
 msgstr ""
 
@@ -6234,7 +6214,7 @@ msgstr ""
 msgid "Learn more about FluentSMTP Plugin."
 msgstr ""
 
-#: app/Services/Helper.php:1764 app/Http/Controllers/ImporterController.php:309
+#: app/Services/Helper.php:1771 app/Http/Controllers/ImporterController.php:309
 msgid "LearnDash"
 msgstr ""
 
@@ -6298,7 +6278,7 @@ msgstr ""
 msgid "Lifetime Value"
 msgstr ""
 
-#: app/Services/Helper.php:1821 app/Http/Controllers/ImporterController.php:300
+#: app/Services/Helper.php:1828 app/Http/Controllers/ImporterController.php:300
 msgid "LifterLMS"
 msgstr ""
 
@@ -6306,7 +6286,7 @@ msgstr ""
 msgid "LifterLMS:"
 msgstr ""
 
-#: app/Services/Helper.php:719
+#: app/Services/Helper.php:726
 msgid "Light green cyan"
 msgstr ""
 
@@ -6377,7 +6357,7 @@ msgstr ""
 msgid "List the campaigns if the title match the provided keyword"
 msgstr ""
 
-#: app/Services/TransStrings.php:827 app/Services/Helper.php:1420
+#: app/Services/TransStrings.php:827 app/Services/Helper.php:1427
 #: app/Hooks/CLI/Commands.php:158 app/Hooks/CLI/Commands.php:372
 #: app/Hooks/CLI/Commands.php:580 app/Hooks/Handlers/AdminMenu.php:106
 #: app/Hooks/Handlers/AdminMenu.php:107 app/Hooks/Handlers/AdminMenu.php:333
@@ -6542,11 +6522,11 @@ msgstr ""
 msgid "Love this Plugin?"
 msgstr ""
 
-#: app/Services/Helper.php:714
+#: app/Services/Helper.php:721
 msgid "Luminous vivid amber"
 msgstr ""
 
-#: app/Services/Helper.php:709
+#: app/Services/Helper.php:716
 msgid "Luminous vivid orange"
 msgstr ""
 
@@ -6765,7 +6745,7 @@ msgstr ""
 msgid "Mayotte"
 msgstr ""
 
-#: app/Services/Helper.php:753 app/Hooks/Handlers/AdminMenu.php:940
+#: app/Services/Helper.php:760 app/Hooks/Handlers/AdminMenu.php:940
 msgid "Medium"
 msgstr ""
 
@@ -6779,6 +6759,10 @@ msgstr ""
 
 #: app/Services/TransStrings.php:838
 msgid "MEMBERSHIP INTEGRATION:"
+msgstr ""
+
+#: app/Hooks/Handlers/PurchaseHistory.php:766
+msgid "Membership Level"
 msgstr ""
 
 #: app/Hooks/Handlers/CountryNames.php:592
@@ -6904,7 +6888,7 @@ msgstr ""
 msgid "Name Prefix"
 msgstr ""
 
-#: app/Services/Helper.php:1355
+#: app/Services/Helper.php:1362
 msgid "Name Prefix (Title)"
 msgstr ""
 
@@ -7042,13 +7026,11 @@ msgstr ""
 msgid "Niue"
 msgstr ""
 
-#: app/Services/TransStrings.php:890 app/Services/Helper.php:1707
-#: app/Services/ExternalIntegrations/FluentCart/CartHelper.php:211
-#: app/Services/ExternalIntegrations/FluentCart/CartHelper.php:289
+#: app/Services/TransStrings.php:890 app/Services/Helper.php:1714
 msgid "No"
 msgstr ""
 
-#: app/Hooks/Handlers/ExternalPages.php:1320
+#: app/Hooks/Handlers/ExternalPages.php:1322
 msgid "No Action found"
 msgstr ""
 
@@ -7150,11 +7132,11 @@ msgstr ""
 msgid "No order found to re-sync"
 msgstr ""
 
-#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:257
+#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:263
 msgid "No purchased products found."
 msgstr ""
 
-#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:202
+#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:208
 msgid "No purchases found for this contact in FluentCart."
 msgstr ""
 
@@ -7328,7 +7310,7 @@ msgid "Notes"
 msgstr ""
 
 #: app/Services/TransStrings.php:920 app/Services/Helper.php:163
-#: app/Services/Helper.php:2264
+#: app/Services/Helper.php:2271
 msgid "Notes & Activities"
 msgstr ""
 
@@ -7472,7 +7454,7 @@ msgstr ""
 
 #: app/Hooks/Handlers/PurchaseHistory.php:172
 #: app/Hooks/Handlers/PurchaseHistory.php:420
-#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:145
+#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:151
 msgid "Order"
 msgstr ""
 
@@ -7483,6 +7465,10 @@ msgstr ""
 #: app/Services/ExternalIntegrations/FluentCart/Triggers/OrderCanceledTrigger.php:25
 #: app/Services/ExternalIntegrations/FluentCart/Triggers/OrderCanceledTrigger.php:41
 msgid "Order Canceled"
+msgstr ""
+
+#: app/Hooks/Handlers/PurchaseHistory.php:760
+msgid "Order Code"
 msgstr ""
 
 #: app/Services/TransStrings.php:1726
@@ -7514,7 +7500,6 @@ msgid "Order Shipped"
 msgstr ""
 
 #: app/Services/TransStrings.php:1760
-#: app/Services/ExternalIntegrations/FluentCart/CartHelper.php:361
 msgid "Order Status"
 msgstr ""
 
@@ -7522,7 +7507,7 @@ msgstr ""
 msgid "Order Status Changed"
 msgstr ""
 
-#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:236
+#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:242
 msgid "Order Summary"
 msgstr ""
 
@@ -7562,7 +7547,7 @@ msgstr ""
 msgid "Page Builder INTEGRATIONS:"
 msgstr ""
 
-#: app/Http/Controllers/ImporterController.php:327
+#: app/Services/Helper.php:673 app/Http/Controllers/ImporterController.php:327
 msgid "Paid Membership Pro"
 msgstr ""
 
@@ -7570,15 +7555,19 @@ msgstr ""
 msgid "Paid Membership Pro integration."
 msgstr ""
 
+#: app/Services/Helper.php:672
+msgid "Paid Membership Pro Purchase History"
+msgstr ""
+
 #: app/Hooks/Handlers/CountryNames.php:692
 msgid "Pakistan"
 msgstr ""
 
-#: app/Services/Helper.php:729
+#: app/Services/Helper.php:736
 msgid "Pale cyan blue"
 msgstr ""
 
-#: app/Services/Helper.php:704
+#: app/Services/Helper.php:711
 msgid "Pale pink"
 msgstr ""
 
@@ -7624,13 +7613,9 @@ msgstr ""
 msgid "Paymattic Purchase History"
 msgstr ""
 
-#: app/Services/ExternalIntegrations/FluentCart/CartHelper.php:352
-msgid "Payment Gateway"
-msgstr ""
-
 #: app/Functions/helpers.php:508 app/Functions/helpers.php:559
 #: app/Services/TransStrings.php:943 app/Services/TransStrings.php:1618
-#: app/Services/Helper.php:1730
+#: app/Services/Helper.php:1737
 #: app/Services/Funnel/Triggers/FluentFormSubscriptionCancelledTrigger.php:58
 msgid "Pending"
 msgstr ""
@@ -7668,7 +7653,7 @@ msgid "Philippines"
 msgstr ""
 
 #: app/Models/Subscriber.php:745 app/Services/TransStrings.php:945
-#: app/Services/Helper.php:1345 app/Hooks/Handlers/PrefFormHandler.php:475
+#: app/Services/Helper.php:1352 app/Hooks/Handlers/PrefFormHandler.php:475
 #: app/Services/CrmMigrator/BaseMigrator.php:28
 #: app/Services/Funnel/FunnelHelper.php:176
 msgid "Phone"
@@ -8126,7 +8111,7 @@ msgstr ""
 
 #: app/Models/Company.php:62 app/Models/Subscriber.php:742
 #: app/Services/TransStrings.php:984 app/Services/Helper.php:236
-#: app/Services/Helper.php:1331 app/Services/CrmMigrator/BaseMigrator.php:38
+#: app/Services/Helper.php:1338 app/Services/CrmMigrator/BaseMigrator.php:38
 #: app/Services/Funnel/FunnelHelper.php:160
 msgid "Postal Code"
 msgstr ""
@@ -8289,8 +8274,8 @@ msgid ""
 "be in the cart in order for the \"Fixed cart discount\" to be applied."
 msgstr ""
 
-#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:190
-#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:201
+#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:196
+#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:207
 msgid "Product History"
 msgstr ""
 
@@ -8300,10 +8285,6 @@ msgstr ""
 
 #: app/Services/TransStrings.php:1819
 msgid "Products"
-msgstr ""
-
-#: app/Services/ExternalIntegrations/FluentCart/CartHelper.php:310
-msgid "Products in Order"
 msgstr ""
 
 #: app/Services/TransStrings.php:1820
@@ -8397,25 +8378,13 @@ msgstr ""
 msgid "Purchase one here"
 msgstr ""
 
-#: app/Services/ExternalIntegrations/FluentCart/CartHelper.php:277
-msgid "Purchase Times"
-msgstr ""
-
-#: app/Services/ExternalIntegrations/FluentCart/CartHelper.php:319
-msgid "Purchased From Categories"
-msgstr ""
-
-#: app/Hooks/Handlers/PurchaseHistory.php:532
-#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:248
+#: app/Hooks/Handlers/PurchaseHistory.php:534
+#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:254
 msgid "Purchased Products"
 msgstr ""
 
-#: app/Services/Helper.php:1632 app/Services/Helper.php:1686
+#: app/Services/Helper.php:1639 app/Services/Helper.php:1693
 msgid "Purchased Products (Pro Required)"
-msgstr ""
-
-#: app/Services/ExternalIntegrations/FluentCart/CartHelper.php:259
-msgid "Purchased Tags"
 msgstr ""
 
 #: app/Services/TransStrings.php:1030
@@ -8556,7 +8525,7 @@ msgstr ""
 msgid "Refresh Email Preview"
 msgstr ""
 
-#: app/Services/Helper.php:1748
+#: app/Services/Helper.php:1755
 msgid "Registration Date (Pro Required)"
 msgstr ""
 
@@ -9406,10 +9375,6 @@ msgstr ""
 msgid "Select options"
 msgstr ""
 
-#: app/Services/ExternalIntegrations/FluentCart/CartHelper.php:276
-msgid "Select Product"
-msgstr ""
-
 #: app/Services/TransStrings.php:1858
 #: app/Services/Funnel/Triggers/UserRegistrationTrigger.php:84
 msgid "Select Roles"
@@ -9587,12 +9552,6 @@ msgstr ""
 #: app/Services/Funnel/Actions/ApplyCompanyAction.php:35
 #: app/Services/Funnel/Actions/ApplyListAction.php:35
 msgid "Select which list will be added to the contact"
-msgstr ""
-
-#: app/Services/ExternalIntegrations/FluentCart/CartHelper.php:278
-msgid ""
-"Select which product you want to match first then how many times it was "
-"purchased separately"
 msgstr ""
 
 #: app/Services/Funnel/Triggers/UserRegistrationTrigger.php:83
@@ -10042,10 +10001,6 @@ msgstr ""
 msgid "Shipping"
 msgstr ""
 
-#: app/Services/ExternalIntegrations/FluentCart/CartHelper.php:346
-msgid "Shipping Method"
-msgstr ""
-
 #: app/Services/TransStrings.php:1250
 msgid "Shortcode"
 msgstr ""
@@ -10184,7 +10139,7 @@ msgstr ""
 msgid "Slug (Optional)"
 msgstr ""
 
-#: app/Services/Helper.php:747
+#: app/Services/Helper.php:754
 msgid "Small"
 msgstr ""
 
@@ -10300,7 +10255,7 @@ msgstr ""
 msgid "Sorry! No docs found"
 msgstr ""
 
-#: app/Hooks/Handlers/ExternalPages.php:1144
+#: app/Hooks/Handlers/ExternalPages.php:1146
 msgid "Sorry! No subscriber found in the database"
 msgstr ""
 
@@ -10324,7 +10279,7 @@ msgstr ""
 msgid "Sorry! you do not have permission to install plugin"
 msgstr ""
 
-#: app/Hooks/Handlers/ExternalPages.php:739
+#: app/Hooks/Handlers/ExternalPages.php:741
 msgid "Sorry! Your confirmation url is not valid"
 msgstr ""
 
@@ -10379,7 +10334,7 @@ msgid "Sorry, You do not have permission to do this action"
 msgstr ""
 
 #: app/Models/Subscriber.php:746 app/Services/TransStrings.php:1288
-#: app/Services/Helper.php:1363
+#: app/Services/Helper.php:1370
 msgid "Source"
 msgstr ""
 
@@ -10413,10 +10368,6 @@ msgstr ""
 
 #: app/Http/Controllers/SettingsController.php:388
 msgid "SparkPost Bounce Handler Webhook URL"
-msgstr ""
-
-#: app/Services/ExternalIntegrations/FluentCart/CartHelper.php:269
-msgid "Specific Product Purchase Times"
 msgstr ""
 
 #: app/Services/Funnel/Actions/WaitTimeAction.php:132
@@ -10471,7 +10422,7 @@ msgstr ""
 
 #: app/Models/Company.php:64 app/Models/Subscriber.php:741
 #: app/Services/TransStrings.php:1298 app/Services/Helper.php:235
-#: app/Services/Helper.php:1326 app/Hooks/Handlers/PrefFormHandler.php:79
+#: app/Services/Helper.php:1333 app/Hooks/Handlers/PrefFormHandler.php:79
 #: app/Hooks/Handlers/PrefFormHandler.php:574
 #: app/Services/CrmMigrator/BaseMigrator.php:40
 #: app/Services/Funnel/FunnelHelper.php:168
@@ -10483,15 +10434,16 @@ msgid "Stats"
 msgstr ""
 
 #: app/Services/TransStrings.php:1300 app/Services/Helper.php:239
-#: app/Services/Helper.php:1394
+#: app/Services/Helper.php:1401
 #: app/Http/Controllers/CampaignAnalyticsController.php:113
 #: app/Http/Controllers/CampaignAnalyticsController.php:164
 #: app/Http/Controllers/CampaignAnalyticsController.php:182
 #: app/Hooks/CLI/Commands.php:162 app/Hooks/CLI/Commands.php:376
 #: app/Hooks/CLI/Commands.php:584 app/Hooks/Handlers/PurchaseHistory.php:183
 #: app/Hooks/Handlers/PurchaseHistory.php:431
+#: app/Hooks/Handlers/PurchaseHistory.php:775
 #: app/Services/ExternalIntegrations/FluentForm/Bootstrap.php:263
-#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:148
+#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:154
 msgid "Status"
 msgstr ""
 
@@ -10499,7 +10451,7 @@ msgstr ""
 msgid "status"
 msgstr ""
 
-#: app/Services/Helper.php:1725
+#: app/Services/Helper.php:1732
 msgid "Status (Pro Required)"
 msgstr ""
 
@@ -10604,11 +10556,11 @@ msgstr ""
 msgid "Subscriber Clicks"
 msgstr ""
 
-#: app/Hooks/Handlers/ExternalPages.php:764
+#: app/Hooks/Handlers/ExternalPages.php:766
 msgid "Subscriber confirmed double opt-in from IP Address:"
 msgstr ""
 
-#: app/Hooks/Handlers/ExternalPages.php:763
+#: app/Hooks/Handlers/ExternalPages.php:765
 msgid "Subscriber double opt-in confirmed"
 msgstr ""
 
@@ -10926,7 +10878,7 @@ msgid "Tag Removed From Contact"
 msgstr ""
 
 #: app/Services/Stats.php:39 app/Services/TransStrings.php:1329
-#: app/Services/Helper.php:1412 app/Hooks/CLI/Commands.php:154
+#: app/Services/Helper.php:1419 app/Hooks/CLI/Commands.php:154
 #: app/Hooks/CLI/Commands.php:368 app/Hooks/CLI/Commands.php:576
 #: app/Hooks/Handlers/AdminMenu.php:115 app/Hooks/Handlers/AdminMenu.php:116
 #: app/Hooks/Handlers/AdminMenu.php:339
@@ -11124,7 +11076,7 @@ msgid ""
 "product discounts. Leave blank to apply to all qualifying items in cart."
 msgstr ""
 
-#: app/Hooks/Handlers/ExternalPages.php:1177
+#: app/Hooks/Handlers/ExternalPages.php:1179
 msgid ""
 "The new email has been used to another account. Please use a new email "
 "address"
@@ -11250,10 +11202,6 @@ msgstr ""
 msgid ""
 "This field allows you to set the minimum spend (subtotal) allowed to use the "
 "coupon."
-msgstr ""
-
-#: app/Services/ExternalIntegrations/FluentCart/CartHelper.php:286
-msgid "This filter will check if a contact has at least one shop order or not"
 msgstr ""
 
 #: app/Services/TransStrings.php:1507
@@ -11464,7 +11412,7 @@ msgstr ""
 msgid "Tips"
 msgstr ""
 
-#: app/Services/TransStrings.php:1350 app/Services/Helper.php:2331
+#: app/Services/TransStrings.php:1350 app/Services/Helper.php:2338
 #: app/Http/Controllers/CampaignAnalyticsController.php:112
 #: app/Hooks/Handlers/PrefFormHandler.php:72
 msgid "Title"
@@ -11556,7 +11504,8 @@ msgstr ""
 #: app/Http/Controllers/CampaignAnalyticsController.php:184
 #: app/Hooks/Handlers/PurchaseHistory.php:187
 #: app/Hooks/Handlers/PurchaseHistory.php:436
-#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:150
+#: app/Hooks/Handlers/PurchaseHistory.php:779
+#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:156
 msgid "Total"
 msgstr ""
 
@@ -11585,28 +11534,22 @@ msgid "Total Inserted:"
 msgstr ""
 
 #: app/Services/TransStrings.php:1363
-#: app/Services/ExternalIntegrations/FluentCart/CartHelper.php:181
 msgid "Total Order Count"
 msgstr ""
 
-#: app/Services/Helper.php:1608 app/Services/Helper.php:1662
+#: app/Services/Helper.php:1615 app/Services/Helper.php:1669
 msgid "Total Order Count (Pro Required)"
 msgstr ""
 
-#: app/Services/ExternalIntegrations/FluentCart/CartHelper.php:189
-#: app/Services/ExternalIntegrations/FluentCart/CartHelper.php:304
-msgid "Total Order Value"
-msgstr ""
-
-#: app/Services/Helper.php:1668
+#: app/Services/Helper.php:1675
 msgid "Total Order Value (Pro Required)"
 msgstr ""
 
-#: app/Services/Helper.php:1614
+#: app/Services/Helper.php:1621
 msgid "Total Order value (Pro Required)"
 msgstr ""
 
-#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:238
+#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:244
 msgid "Total Orders"
 msgstr ""
 
@@ -11614,7 +11557,7 @@ msgstr ""
 msgid "Total Recipients"
 msgstr ""
 
-#: app/Services/Helper.php:1719
+#: app/Services/Helper.php:1726
 msgid "Total Referrals (Pro Required)"
 msgstr ""
 
@@ -11626,7 +11569,7 @@ msgstr ""
 msgid "Total Skipped (Including Invalid):"
 msgstr ""
 
-#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:239
+#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:245
 msgid "Total Spent"
 msgstr ""
 
@@ -11750,7 +11693,7 @@ msgid "Twitter Url"
 msgstr ""
 
 #: app/Models/Company.php:57 app/Services/TransStrings.php:1376
-#: app/Services/Helper.php:1403 app/Services/Helper.php:2314
+#: app/Services/Helper.php:1410 app/Services/Helper.php:2321
 #: app/Hooks/Handlers/EventTrackingHandler.php:260
 msgid "Type"
 msgstr ""
@@ -11832,7 +11775,7 @@ msgstr ""
 msgid "Unlimited Usage"
 msgstr ""
 
-#: app/Services/Helper.php:1742
+#: app/Services/Helper.php:1749
 msgid "Unpaid Earnings (Pro Required)"
 msgstr ""
 
@@ -12090,7 +12033,7 @@ msgstr ""
 msgid "Valid"
 msgstr ""
 
-#: app/Hooks/Handlers/ExternalPages.php:937
+#: app/Hooks/Handlers/ExternalPages.php:939
 msgid "Validation failed."
 msgstr ""
 
@@ -12189,7 +12132,7 @@ msgstr ""
 #: app/Hooks/Handlers/PurchaseHistory.php:142
 #: app/Hooks/Handlers/PurchaseHistory.php:338
 #: app/Hooks/Handlers/PurchaseHistory.php:371
-#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:162
+#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:168
 msgid "View Order"
 msgstr ""
 
@@ -12225,7 +12168,7 @@ msgstr ""
 msgid "View Subscribers"
 msgstr ""
 
-#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:191
+#: app/Services/ExternalIntegrations/FluentCart/FluentCart.php:197
 msgid "View your purchase history from FluentCart."
 msgstr ""
 
@@ -12251,15 +12194,15 @@ msgstr ""
 msgid "Visually design your email with Drag & Drop Builder"
 msgstr ""
 
-#: app/Services/Helper.php:734
+#: app/Services/Helper.php:741
 msgid "Vivid cyan blue"
 msgstr ""
 
-#: app/Services/Helper.php:724
+#: app/Services/Helper.php:731
 msgid "Vivid green cyan"
 msgstr ""
 
-#: app/Services/Helper.php:739
+#: app/Services/Helper.php:746
 msgid "Vivid purple"
 msgstr ""
 
@@ -12355,7 +12298,7 @@ msgstr ""
 msgid "Webhook Info"
 msgstr ""
 
-#: app/Hooks/Handlers/ExternalPages.php:880
+#: app/Hooks/Handlers/ExternalPages.php:882
 msgid "Webhook must need to be as POST Method"
 msgstr ""
 
@@ -12407,7 +12350,7 @@ msgstr ""
 msgid "Which time you would like to schedule"
 msgstr ""
 
-#: app/Services/Helper.php:699
+#: app/Services/Helper.php:706
 msgid "White"
 msgstr ""
 
@@ -12457,14 +12400,6 @@ msgstr ""
 msgid "Will be stored from your last saved email contents"
 msgstr ""
 
-#: app/Services/ExternalIntegrations/FluentCart/CartHelper.php:185
-#: app/Services/ExternalIntegrations/FluentCart/CartHelper.php:193
-#: app/Services/ExternalIntegrations/FluentCart/CartHelper.php:221
-#: app/Services/ExternalIntegrations/FluentCart/CartHelper.php:228
-#: app/Services/ExternalIntegrations/FluentCart/CartHelper.php:265
-msgid "Will filter the contacts who have at least one order"
-msgstr ""
-
 #: app/Http/Controllers/ImporterController.php:336
 msgid "Wishlist member"
 msgstr ""
@@ -12494,7 +12429,7 @@ msgstr ""
 msgid "within days"
 msgstr ""
 
-#: app/Services/Helper.php:652 app/Services/Helper.php:1603
+#: app/Services/Helper.php:652 app/Services/Helper.php:1610
 msgid "WooCommerce"
 msgstr ""
 
@@ -12537,11 +12472,11 @@ msgstr ""
 msgid "WP Email Newsletter Team - FluentCRM"
 msgstr ""
 
-#: app/Services/Helper.php:1350
+#: app/Services/Helper.php:1357
 msgid "WP User ID"
 msgstr ""
 
-#: app/Services/Helper.php:1428
+#: app/Services/Helper.php:1435
 msgid "WP User Role"
 msgstr ""
 
@@ -12573,9 +12508,7 @@ msgstr ""
 msgid "Yemen"
 msgstr ""
 
-#: app/Services/TransStrings.php:1477 app/Services/Helper.php:1706
-#: app/Services/ExternalIntegrations/FluentCart/CartHelper.php:210
-#: app/Services/ExternalIntegrations/FluentCart/CartHelper.php:288
+#: app/Services/TransStrings.php:1477 app/Services/Helper.php:1713
 msgid "Yes"
 msgstr ""
 
@@ -12844,7 +12777,7 @@ msgstr ""
 msgid "Your link title so you do not forget it"
 msgstr ""
 
-#: app/Services/TransStrings.php:1490 app/Services/Helper.php:2333
+#: app/Services/TransStrings.php:1490 app/Services/Helper.php:2340
 msgid "Your Note Title"
 msgstr ""
 
@@ -12852,7 +12785,7 @@ msgstr ""
 msgid "Your provided API key is valid"
 msgstr ""
 
-#: app/Hooks/Handlers/ExternalPages.php:1222
+#: app/Hooks/Handlers/ExternalPages.php:1224
 msgid "Your provided information has been successfully updated"
 msgstr ""
 

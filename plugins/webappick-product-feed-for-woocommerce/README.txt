@@ -5,7 +5,7 @@ Tags: WooCommerce, Product Feed, Google Shopping, Facebook Catalog, Google listi
 Requires at least: 4.4
 Tested Up To: 6.8
 Requires PHP: 5.6
-Stable tag: 6.6.0
+Stable tag: 6.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,6 +16,8 @@ Advanced WooCommerce Feed Plugin to Generate Optimized, Error-Free Product Feeds
 🏆 **Reach millions of customers and sell faster with the optimized & error-free  Product Feed Plugin for Google Shopping, Facebook, Instagram & 130+ marketplaces—trusted by 70,000+ stores.**
 
 Get your products listed across Google Shopping, Facebook, Pinterest, Instagram, TikTok, Snapchat, eBay, Bing, PriceRunner, Rakuten, PriceSpy, Kelko, and 100+ more channels with optimized, error-free product feeds—directly from your WooCommerce store.
+
+**<a target="_blank" href="https://webappick.com/discount-deal/?utm_source=ORG_promo_text&utm_medium=org_free&utm_campaign=haloween-text"> 🎃 No tricks, just treats: 30% OFF CTX Feed Pro All Plans— Ends October 31, 2025. </a>**
 
 With CTX Feed – the Best  WooCommerce Product Feed Manager Plugin – you can connect with over 100+ recognized marketplaces, search engines, affiliate sites, and price comparison platforms to maximize your product reach.
 
@@ -371,6 +373,10 @@ Using pro version:
 4. Category Mapping
 
 == Changelog ==
+
+= 6.6.1 (2025-10-27) =
+* Updated : Manage Feed Page Sidebar
+* Updated : Make Feed Page Sidebar
 
 = 6.6.0 (2025-10-22) =
 * Added : ChatGPT(OpenAI) Product Feed Template

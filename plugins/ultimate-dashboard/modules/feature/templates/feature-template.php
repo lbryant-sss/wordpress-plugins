@@ -65,9 +65,9 @@ return function () {
 					<div>
 						<span class="title">
 							<?php echo esc_html( get_admin_page_title() ); ?>
-							<span class="version"><?php echo ULTIMATE_DASHBOARD_PLUGIN_VERSION; ?></span>
+							<span class="version"><?php echo esc_html( ULTIMATE_DASHBOARD_PLUGIN_VERSION ); ?></span>
 						</span>
-						<p class="subtitle"><?php _e( 'Enable/disable Ultimate Dashboard features.', 'ultimate-dashboard' ); ?></p>
+						<p class="subtitle"><?php esc_html_e( 'Enable/disable Ultimate Dashboard features.', 'ultimate-dashboard' ); ?></p>
 					</div>
 
 					<div>
@@ -105,10 +105,10 @@ return function () {
 
 							<div class="feature-status">
 								<div class="status">
-									<span><?php _e( 'Status: ', 'ultimate-dashboard' ); ?></span>
-									<span class="status-code" data-active-text="<?php _e( 'Active', 'ultimate-dashboard' ); ?>" data-inactive-text="<?php _e( 'Inactive', 'ultimate-dashboard' ); ?>">
-										<?php echo empty( $saved_modules ) || 'true' === $saved_modules[ $feature['feature'] ] ? '<span class="active">' . __( 'Active', 'ultimate-dashboard' ) . '</span>' : '<span class="inactive">' . __( 'Inactive', 'ultimate-dashboard' ) . '</span>'; ?>
-									</span>
+									<span><?php esc_html_e( 'Status: ', 'ultimate-dashboard' ); ?></span>
+									<span class="status-code" data-active-text="<?php esc_attr_e( 'Active', 'ultimate-dashboard' ); ?>" data-inactive-text="<?php esc_attr_e( 'Inactive', 'ultimate-dashboard' ); ?>">
+									<?php echo empty( $saved_modules ) || 'true' === $saved_modules[ $feature['feature'] ] ? '<span class="active">' . esc_html__( 'Active', 'ultimate-dashboard' ) . '</span>' : '<span class="inactive">' . esc_html__( 'Inactive', 'ultimate-dashboard' ) . '</span>'; ?>
+								</span>
 								</div>
 								<div class="status-switch">
 									<label for="udb_is_active_<?php echo esc_attr( $feature['feature'] ); ?>" class="toggle-switch">

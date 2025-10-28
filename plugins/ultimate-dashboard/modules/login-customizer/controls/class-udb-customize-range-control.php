@@ -78,7 +78,7 @@ class Udb_Customize_Range_Control extends \WP_Customize_Control {
 					<?php echo wp_kses_post( $this->description ); ?>
 				</span>
 			<?php endif; ?>
-			<span class="dashicons dashicons-image-rotate udb-customize-control-reset" title="<?php _e( 'Reset Value', 'ultimate-dashboard' ); ?>" data-reset-value="<?php echo esc_attr( $this->value() ); ?>"></span>
+			<span class="dashicons dashicons-image-rotate udb-customize-control-reset" title="<?php esc_attr_e( 'Reset Value', 'ultimate-dashboard' ); ?>" data-reset-value="<?php echo esc_attr( $this->value() ); ?>"></span>
 		</header>
 		<div class="udb-customize-control--cols">
 			<div class="udb-customize-control--left-col">
@@ -104,7 +104,7 @@ class Udb_Customize_Range_Control extends \WP_Customize_Control {
 						value="<?php echo esc_attr( $this->value() ); ?>"
 					<?php endif; ?>
 					<?php $this->link(); ?>
-					<?php echo $describedby_attr; ?>
+					<?php echo wp_kses_post( $describedby_attr ); ?>
 				>
 			</div>
 		</div>

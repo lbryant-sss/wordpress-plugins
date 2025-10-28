@@ -2,10 +2,11 @@
 
 namespace FluentCrm\App\Services\ExternalIntegrations\FluentCart;
 
-use Automattic\WooCommerce\Blocks\BlockTypes\Cart;
+use FluentCart\Api\ModuleSettings;
 use FluentCart\App\Helpers\Helper;
 use FluentCart\App\Models\Customer;
 use FluentCart\App\Models\Order;
+use FluentCrm\App\Models\Subscriber;
 
 use FluentCrm\App\Services\ExternalIntegrations\FluentCart\SmartCode\SmartCodeParser;
 use FluentCrm\App\Services\ExternalIntegrations\FluentCart\SmartCode\SmartCodeRegister;
@@ -77,6 +78,11 @@ class FluentCart
         add_filter('fluent_crm/smartcode_group_callback_cart_customer', [SmartCodeParser::class, 'parseCartCustomer'], 10, 4);
 //        add_filter('fluent_crm/smartcode_group_callback_cart_transaction', [SmartCodeParser::class, 'parseCartTransaction'], 10, 4);
         add_filter('fluent_crm/smartcode_group_callback_cart_receipt', [SmartCodeParser::class, 'parseCartReceipt'], 10, 4);
+
+
+        add_filter('fluentcrm_automation_condition_groups', array($this, 'addAutomationConditions'), 10, 2);
+        add_filter('fluentcrm_automation_conditions_assess_fluent_cart', array($this, 'assessAutomationConditions'), 10, 3);
+        // add_filter('fluentcrm_automation_conditions_assess_woo_order', array($this, 'assessAutomationOrderConditions'), 10, 5);
     }
 
     public function getProducts($items, $search, $ids)
@@ -261,6 +267,228 @@ class FluentCart
         $html .= '</div>';
 
         return $html;
+    }
+
+
+     public function addAutomationConditions($groups)
+    {
+        $conditionItems = [
+            [
+                'value'             => 'commerce_exist',
+                'label'             => __('Is a customer?', 'fluent-cart'),
+                'type'              => 'selections',
+                'is_multiple'       => false,
+                'disable_values'    => true,
+                'value_description' => __('This filter will check if a contact has at least one shop order or not', 'fluent-cart'),
+                'custom_operators'  => [
+                    'exist'     => __('Yes', 'fluent-cart'),
+                    'not_exist' => __('No', 'fluent-cart'),
+                ]
+            ],
+            [
+                'value' => 'ltv',
+                'label' => __('Lifetime Value', 'fluent-cart'),
+                'type'  => 'numeric'
+            ],
+            [
+                'value' => 'aov',
+                'label' => __('Average Order Value', 'fluent-cart'),
+                'type'  => 'numeric',
+            ],
+            [
+                'value' => 'first_purchase_date',
+                'label' => __('First Order Date', 'fluent-cart'),
+                'type'  => 'dates'
+            ],
+            [
+                'value' => 'last_purchase_date',
+                'label' => __('Last Order Date', 'fluent-cart'),
+                'type'  => 'dates'
+            ],
+            [
+                'value'            => 'purchased_items',
+                'label'            => __('Products', 'fluent-cart'),
+                'type'             => 'selections',
+                'component'        => 'product_selector',
+                'is_multiple'      => true,
+                'custom_operators' => [
+                    'exist'     => __('purchased', 'fluent-cart'),
+                    'not_exist' => __('not purchased', 'fluent-cart'),
+                ],
+                'help'             => __('Will filter the contacts who have at least one order', 'fluent-cart')
+            ],
+            [
+                'value'             => 'variation_purchased',
+                'label'             => __('Product Variations', 'fluent-cart'),
+                'type'              => 'cascade_selections',
+                'provider'          => 'fct_variations',
+                'is_multiple'       => true,
+                'value_description' => __('This filter will check if a contact has purchased at least one specific product variation or not', 'fluent-cart'),
+                'custom_operators'  => [
+                    'exist'     => __('purchased', 'fluent-cart'),
+                    'not_exist' => __('not purchased', 'fluent-cart'),
+                ]
+            ],
+            [
+                'value'            => 'purchased_categories',
+                'label'            => __('Product Categories', 'fluent-cart'),
+                'type'             => 'selections',
+                'component'        => 'tax_selector',
+                'taxonomy'         => 'product-categories',
+                'is_multiple'      => true,
+                'disabled'         => true,
+                'help'             => __('Will filter the contacts who have at least one order', 'fluent-cart'),
+                'custom_operators' => [
+                    'exist'     => __('purchased', 'fluent-cart'),
+                    'not_exist' => __('not purchased', 'fluent-cart'),
+                ]
+            ],
+            [
+                'value'            => 'commerce_coupons',
+                'label'            => __('Used Coupons', 'fluent-cart'),
+                'type'             => 'selections',
+                'component'        => 'ajax_selector',
+                'option_key'       => 'fct_coupons',
+                'is_multiple'      => true,
+                'disabled'         => true,
+                'custom_operators' => [
+                    'exist'     => __('in', 'fluent-cart'),
+                    'not_exist' => __('not in', 'fluent-cart'),
+                ],
+                'help'             => __('Will filter the contacts who have at least one order', 'fluent-cart')
+            ]
+        ];
+
+        if (ModuleSettings::isActive('license')) {
+            $conditionItems[] = [
+                'value'            => 'active_licenses',
+                'label'            => __('Active Licenses', 'fluent-cart'),
+                'type'             => 'selections',
+                'component'        => 'product_selector',
+                'is_multiple'      => true,
+                'custom_operators' => [
+                    'exist'     => __('have', 'fluent-cart'),
+                    'not_exist' => __('do not have', 'fluent-cart'),
+                ],
+                'help'             => __('Will filter the contacts who have at least one active licenses or not', 'fluent-cart')
+            ];
+            $conditionItems[] = [
+                'value'             => 'active_variation_licenses',
+                'label'             => __('Active Variation Licenses', 'fluent-cart'),
+                'type'              => 'cascade_selections',
+                'provider'          => 'fct_variations',
+                'is_multiple'       => true,
+                'value_description' => __('This filter will check if a contact has at least one specific variation license or not', 'fluent-cart'),
+                'custom_operators'  => [
+                    'exist'     => __('have', 'fluent-cart'),
+                    'not_exist' => __('do not have', 'fluent-cart'),
+                ]
+            ];
+            $conditionItems[] = [
+                'value'            => 'expired_licenses',
+                'label'            => __('Expired Licenses', 'fluent-cart'),
+                'type'             => 'selections',
+                'component'        => 'product_selector',
+                'is_multiple'      => true,
+                'custom_operators' => [
+                    'exist'     => __('have', 'fluent-cart'),
+                    'not_exist' => __('do not have', 'fluent-cart'),
+                ],
+                'help'             => __('Will filter the contacts who have at least one expired licenses or not', 'fluent-cart')
+            ];
+            $conditionItems[] = [
+                'value'             => 'expired_variation_licenses',
+                'label'             => __('Expired Variation Licenses', 'fluent-cart'),
+                'type'              => 'cascade_selections',
+                'provider'          => 'fct_variations',
+                'is_multiple'       => true,
+                'value_description' => __('This filter will check if a contact has at least one specific variation expired license or not', 'fluent-cart'),
+                'custom_operators'  => [
+                    'exist'     => __('have', 'fluent-cart'),
+                    'not_exist' => __('do not have', 'fluent-cart'),
+                ]
+            ];
+            $conditionItems[] = [
+                'value'             => 'license_exist',
+                'label'             => __('Has any active license?', 'fluent-cart'),
+                'type'              => 'selections',
+                'is_multiple'       => false,
+                'disable_values'    => true,
+                'value_description' => __('Check if contacts has any active license from any products', 'fluent-cart'),
+                'custom_operators'  => [
+                    'exist'     => __('Yes', 'fluent-cart'),
+                    'not_exist' => __('No', 'fluent-cart'),
+                ]
+            ];
+        }
+
+        $groups['fluent_cart'] = [
+            'label'    => __('FluentCart', 'fluent-crm'),
+            'value'    => 'fluent_cart',
+            'children' => $conditionItems
+        ];
+
+        return $groups;
+    }
+
+    public function assessAutomationConditions($result, $conditions, $subscriber)
+    {
+        $legacyConditions = [];
+        // if (Commerce::isEnabled('woo')) {
+            $formattedConditions = [];
+
+            $commerceProps = [
+                'commerce_exist',
+                'ltv', // lifetime value
+                'aov', // average order value
+                'first_purchase_date',
+                'last_purchase_date',
+                'purchased_items', // products purchased
+                'variation_purchased', // product variations purchased
+                'purchased_categories', // product categories 
+                'commerce_coupons', // used coupons
+            ];
+
+            foreach ($conditions as $condition) {
+                $prop = $condition['data_key'];
+                $operator = $condition['operator'];
+                if (in_array($prop, $commerceProps)) {
+                    $formattedConditions[] = [
+                        'operator' => $operator,
+                        'value'    => $condition['data_value'],
+                        'property' => $prop,
+                    ];
+                } else {
+                    $legacyConditions[] = $condition;
+                }
+            }
+
+            if ($formattedConditions) {
+                $hasSubscriber = Subscriber::where('id', $subscriber->id)->where(function ($q) use ($formattedConditions) {
+                    do_action_ref_array('fluentcrm_contacts_filter_fluent_cart', [&$q, $formattedConditions]);
+                })->first();
+                if (!$hasSubscriber) {
+                    return false;
+                }
+            }
+        // } else {
+        //     $legacyConditions = $conditions;
+        // }
+
+        if ($legacyConditions) {
+            $cartCustomer = Customer::query()
+                ->where('email', $subscriber->email)
+                ->when($subscriber->user_id, function ($q) use ($subscriber) {
+                    return $q->orWhere('user_id', $subscriber->user_id);
+                })
+                ->first();
+
+            if (!$cartCustomer) {
+                return false;
+            }
+        }
+
+        return $result;
     }
 
 }

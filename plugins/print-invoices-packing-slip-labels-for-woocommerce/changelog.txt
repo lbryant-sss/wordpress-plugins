@@ -1,5 +1,11 @@
 == Changelog ==
 
+= 4.8.5 2025-10-22 =
+* [Add] – Compatibility with Woo Product Add-Ons by WooCommerce.
+* [Add] – Option to include product metadata in invoice settings.
+* [Fix] – Extra product options not displaying correctly.
+* [Compatibility] – Tested OK with WooCommerce 10.2.2
+
 = 4.8.4 2025-09-24 =
 * [Add] - Compatibility with WPML Multilingual & Multicurrency for WooCommerce.
 * [Add]: Show popup to notify users when skipping the setup wizard.

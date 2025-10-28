@@ -1,4 +1,4 @@
-	$.fbuilder['version'] = '5.4.0.7';
+	$.fbuilder['version'] = '5.4.0.8';
 	$.fbuilder['controls'] = $.fbuilder['controls'] || {};
 	$.fbuilder['forms'] = $.fbuilder['forms'] || {};
 	$.fbuilder['css'] = $.fbuilder['css'] || {};
@@ -609,6 +609,7 @@
 
 					for(i; i<items.length; i++)
 					{
+						if ( ! ( i in items ) ) continue;
 						items[i].index = i;
 						if (items[i].ftype=="fPageBreak")
 						{
@@ -779,6 +780,7 @@
                     theForm.after_show( opt.identifier );
 					for (var i=0;i<items.length;i++)
 					{
+						if ( ! ( i in items ) ) continue;
 						items[i].after_show();
                         if('csslayout' in items[i] && /\bignorefield\b/i.test(items[i]['csslayout']))
                             IGNOREFIELD(items[i].name, items[i].form_identifier);
@@ -1034,6 +1036,10 @@
 							   items = [];
 							   for (var i=0;i<d[0].length;i++)
 							   {
+								   if ( ! ( d[0][i].ftype in $.fbuilder.controls ) ) {
+									   console.log( d[0][i].ftype +' NOT AVAILABLE' );
+									   continue;
+								   }
 								   var obj = new $.fbuilder.controls[d[0][i].ftype]();
 								   obj = $.extend(true, {}, obj, d[0][i]);
 								   obj.name = obj.name+opt.identifier;

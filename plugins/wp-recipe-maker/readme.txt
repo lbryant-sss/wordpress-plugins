@@ -127,6 +127,9 @@ WP Ultimate Recipe is still in active development and will be maintained alongsi
 
 Yes! We pride ourselves on offering awesome support and almost always answer support questions within 24 hours. Send us an email at [support@bootstrapped.ventures](mailto:support@bootstrapped.ventures) whenever you have a question or suggestion!
 
+= Where do I report security bugs found in this plugin? =
+Please report security bugs found in the source code of the WP Recipe Maker plugin through the [Patchstack Vulnerability Disclosure Program](https://patchstack.com/database/vdp/2aa3f3f5-8afc-4851-922c-1c181283227b). The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin.
+
 == Screenshots ==
 
 1. Example recipe using the default Meadow template.

@@ -338,13 +338,12 @@ $tableChartsCount = (int)WDTTools::getTablesCount('chart');
                                  </span>
                         </p>
                         <p class="wpdt-text wpdt-font m-b-18">
-                            New update with some exciting news:
+                            New update:
                         </p>
                         <div class="alert alert-info m-b-0" role="alert">
                             <i class="wpdt-icon-info-circle-full"></i>
                             <ul>
-                                <li><strong>Integration with IvyForms plugin</strong> for creating tables from form submissions.</li>
-                                <li>Upgraded PHPSpreadsheet library to a security-checked version.</li>
+                                <li>Minor CSS fixes.</li>
                                 <li>Other small bug fixes and stability improvements.</li>
                             </ul>
                         </div>

@@ -20,6 +20,10 @@ class CronJob
         return self::$instance;
     }
 
+	function cronKey() {
+		return get_option('__wpdm_cron_key', md5($_SERVER['HTTP_HOST']));
+	}
+
 	static function create($type, $data, $execute_at, $repeat_execution = 1, $interval = 0) {
 		global $wpdb;
 		$code = md5($type.$execute_at.json_encode($data));

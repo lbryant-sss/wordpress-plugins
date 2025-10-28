@@ -2882,8 +2882,8 @@ h6,
 .e-kit-library__kit-item-lock-icon {
   font-size: 14px;
   margin-inline-end: 8px;
-  color: var(--e-a-color-txt-accent);
-  opacity: 0.7;
+  color: var(--card-headline-color);
+  cursor: pointer;
 }
 .e-kit-library__kit-item-actions-menu i {
   font-size: 16px;
@@ -2947,6 +2947,7 @@ h6,
 .e-kit-library__kit-item-cloud-overlay i.eicon-lock {
   font-size: 48px;
   color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
 }
 .e-kit-library__kit-item--locked {
   opacity: 0.6;
@@ -4217,7 +4218,7 @@ h6,
   align-items: center;
 }
 .e-kit-library__quota-bar__label {
-  color: #0C0D0E;
+  color: var(--body-color);
   font-weight: 400;
   white-space: nowrap;
   font-size: 12px;
@@ -4272,9 +4273,13 @@ h6,
   opacity: 0.8;
 }
 .e-kit-library__quota-bar__count {
-  color: #69727D;
+  color: var(--body-color);
   white-space: nowrap;
   font-size: 12px;
+}
+
+:root {
+  --text-secondary: #3F444B;
 }
 
 .e-kit-library__quota-notification {
@@ -4316,13 +4321,14 @@ h6,
   font-size: 13px;
 }
 .e-kit-library__quota-notification__message span {
+  color: var(--text-secondary);
   font-size: 13px;
 }
 .e-kit-library__quota-notification__action-link {
   color: inherit;
   text-decoration: underline;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 400;
 }
 .e-kit-library__quota-notification__action-link:hover {
   opacity: 0.8;

@@ -667,6 +667,13 @@ class Helper
             ];
         }
 
+        if (defined('PMPRO_VERSION') && defined('FLUENTCAMPAIGN')) {
+            $validProviders['pmpro'] = [
+                'title' => __('Paid Membership Pro Purchase History', 'fluent-crm'),
+                'name'  => __('Paid Membership Pro', 'fluent-crm')
+            ];
+        }
+
         /**
          * Filter the list of valid purchase history providers.
          *
