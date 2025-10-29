@@ -11,6 +11,7 @@ $actionLabel  = '';
 if ( $state['installed'] ) {
 	$link         = \Mesmerize\Companion_Plugin::get_activate_link( $slug );
 	$messageTitle = sprintf(
+    // phpcs:ignore WordPress.WP.I18n.MissingArgDomain, WordPress.WP.I18n.MissingTranslatorsComment
 		__( 'To import the demo content please activate the %s plugin', 'mesmerize-companion' ),
 		'<strong>One Click Demo Install</strong>'
 	);
@@ -18,6 +19,7 @@ if ( $state['installed'] ) {
 } else {
 	$link         = \Mesmerize\Companion_Plugin::get_install_link( $slug );
 	$messageTitle = sprintf(
+    // phpcs:ignore WordPress.WP.I18n.MissingArgDomain, WordPress.WP.I18n.MissingTranslatorsComment
 		__( 'To import the demo content please install and activate the %s plugin', 'mesmerize-companion' ),
 		'<strong>One Click Demo Install</strong>'
 	);
@@ -98,7 +100,7 @@ wp_localize_script(
 				$sanitized_categories = array_map( 'sanitize_key', $categories );
 				$img_src              = isset( $import_file['import_preview_image_url'] ) ? $import_file['import_preview_image_url'] : '';
 				?>
-				<div class="ocdi__gl-item js-ocdi-gl-item" data-categories="<?php echo implode( ' , ', $sanitized_categories ); ?>">
+				<div class="ocdi__gl-item js-ocdi-gl-item" data-categories="<?php echo implode( ' , ', $sanitized_categories ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction ?>">
 					<?php if ( DemoImportIntegration::isProOnly( $index ) ) : ?>
 						<div class="pro-icon"></div>
 					<?php endif; ?>

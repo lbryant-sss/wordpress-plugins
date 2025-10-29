@@ -305,15 +305,22 @@
 				e.stopPropagation();
 
 				var $input = $(this).parent().find('.pa-woo-mc__input')[0],
+					allowBackorders = $scope.hasClass('pa-allow-bkorders-yes'),
 					itemStock = parseInt($($input).attr('max')),
 					currentVal = parseInt($($input).val());
 
 				if ($(this).hasClass('plus')) {
-					if (currentVal >= itemStock) {
-						$(this).parents('.pa-woo-mc__item-wrapper').find('.pa-woo-mc__item-notice').text(PAWooMCartSettings.stock_msg + itemStock);
-					} else {
+					// backorders allowed || current value less than max stock.
+					if (allowBackorders || currentVal < itemStock) {
+
+						if (allowBackorders) {
+							$($input).removeAttr('max');
+						}
+
 						$input.stepUp();
 						$($input).trigger('change');
+					} else {
+						$(this).parents('.pa-woo-mc__item-wrapper').find('.pa-woo-mc__item-notice').text(PAWooMCartSettings.stock_msg + itemStock);
 					}
 
 				} else {

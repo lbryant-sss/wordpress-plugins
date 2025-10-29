@@ -68,6 +68,7 @@ class Companion {
 		$theme                   = false;
 		$is_customize_admin_page = ( is_admin() && 'customize.php' === $pagenow );
 		$keys                    = array( 'customize_theme', 'theme' );
+        //phpcs:ignore WordPress.Security.NonceVerification.Recommended, 	WordPress.Security.ValidatedSanitizedInput.InputNotValidated, 	WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.NonceVerification.Missing
 		$input_vars              = array_merge( wp_array_slice_assoc( $_GET, $keys ), wp_array_slice_assoc( $_POST, $keys ) );
 
 		if ( $is_customize_admin_page && isset( $input_vars['theme'] ) ) {
@@ -207,6 +208,7 @@ class Companion {
 	}
 
 	public function isCustomizePreview() {
+        //phpcs:ignore WordPress.Security.NonceVerification.Recommended, 	WordPress.Security.ValidatedSanitizedInput.InputNotValidated, 	WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.NonceVerification.Missing
 		$has_query_args = isset( $_REQUEST['customize_changeset_uuid'] );
 		global $pagenow;
 		$is_customize_admin_page = ( is_admin() && 'customize.php' === $pagenow );
@@ -270,6 +272,7 @@ class Companion {
 
 		if ( $currentMemoryLimit ) {
 			if ( self::letToNum( $currentMemoryLimit ) && self::letToNum( $desiredMemory ) ) {
+                //phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged
 				@ini_set( 'memory_limit', $desiredMemory );
 			}
 		}
@@ -297,6 +300,7 @@ class Companion {
 	}
 
 	public static function echoMod( $mod, $default = false ) {
+        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo self::getThemeMod( $mod, $default );
 	}
 
@@ -433,21 +437,6 @@ class Companion {
 	}
 
 	public static function translateArgs( $data ) {
-		if ( isset( $data['title'] ) ) {
-			$data['title'] = __( $data['title'], 'cloudpress-companion' );
-		}
-
-		if ( isset( $data['label'] ) ) {
-			$data['label'] = __( $data['label'], 'cloudpress-companion' );
-		}
-
-		if ( isset( $data['choices'] ) ) {
-			foreach ( $data['choices'] as $key => $value ) {
-				if ( strpos( $value, '#' ) === false && is_string( $key ) ) {
-					$data['choices'][ $key ] = __( $value, 'cloudpress-companion' );
-				}
-			}
-		}
 
 		return $data;
 	}
@@ -483,6 +472,7 @@ class Companion {
 		}
 
 		if ( $status == 'draft' && $pages_content ) {
+            //phpcs:ignore WordPress.Security.NonceVerification.Recommended, 	WordPress.Security.ValidatedSanitizedInput.InputNotValidated, 	WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.NonceVerification.Missing
 			$page_id       = isset( $_POST['customize_post_id'] ) ? intval( $_POST['customize_post_id'] ) : -1;
 			$encode        = false;
 			$pages_content = $pages_content['value'];
@@ -654,7 +644,7 @@ class Companion {
 		<?php
 
 		$script = str_replace( "\n\t\t", "\n", ob_get_clean() );
-
+        //phpcs:ignore WordPress.WP.AlternativeFunctions.strip_tags_strip_tags
 		wp_add_inline_script( 'wp-block-editor', strip_tags( $script ), 'after' );
 	}
 
@@ -795,7 +785,7 @@ class Companion {
 		}
 
 		if ( $this->isMaintainable( $post_id ) ) {
-
+            //phpcs:ignore WordPress.Security.NonceVerification.Recommended, 	WordPress.Security.ValidatedSanitizedInput.InputNotValidated, 	WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.NonceVerification.Missing
 			if ( isset( $_REQUEST['cp_default_editor'] ) ) {
 				return true;
 			}
@@ -835,6 +825,7 @@ class Companion {
 		if ( function_exists( 'pll_get_post' ) && function_exists( 'pll_default_language' ) ) {
 			$slug      = pll_default_language( 'slug' );
 			$defaultID = pll_get_post( $post_id, $slug );
+            //phpcs:ignore WordPress.Security.NonceVerification.Recommended, 	WordPress.Security.ValidatedSanitizedInput.InputNotValidated, 	WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.NonceVerification.Missing
 			$sourceID  = isset( $_REQUEST['from_post'] ) ? absint( $_REQUEST['from_post'] ) : null;
 			$defaultID = $defaultID ? $defaultID : $sourceID;
 
@@ -847,10 +838,11 @@ class Companion {
 		if ( $sitepress ) {
 			$defaultLanguage = $sitepress->get_default_language();
 			global $wpdb;
-
+            //phpcs:ignore WordPress.Security.NonceVerification.Recommended, 	WordPress.Security.ValidatedSanitizedInput.InputNotValidated, 	WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.NonceVerification.Missing
 			$sourceTRID = isset( $_REQUEST['trid'] ) ? absint( $_REQUEST['trid'] ) : null;
 			$trid       = $sitepress->get_element_trid( $post_id );
 			$trid       = $trid ? $trid : $sourceTRID;
+            //phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, 	WordPress.DB.DirectDatabaseQuery.NoCaching
 			$defaultID  = $wpdb->get_var( $wpdb->prepare( "SELECT element_id FROM {$wpdb->prefix}icl_translations WHERE trid=%d AND language_code=%s", $trid, $defaultLanguage ) );
 
 			if ( $defaultID && ( $defaultID !== $post_id ) ) {
@@ -1021,6 +1013,9 @@ class Companion {
 	}
 
 	public function loadData() {
+        if ( ! is_user_logged_in() || ! current_user_can( 'edit_theme_options' ) ) {
+            die();
+        }
 		$filter      = filter_input( INPUT_GET, 'filter', FILTER_SANITIZE_STRING );
 		$filter      = trim( $filter );
 		$filterParts = explode( '.', $filter );
@@ -1066,6 +1061,7 @@ class Companion {
 	}
 
 	public function createFrontPage() {
+        //phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,	WordPress.Security.ValidatedSanitizedInput.InputNotValidated, 	WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.NonceVerification.Missing
 		 $nonce = isset( $_POST['create_home_page_nounce'] ) ? $_POST['create_home_page_nounce'] : '';
 		if ( ! wp_verify_nonce( $nonce, 'create_home_page_nounce' ) ) {
 			die();
@@ -1259,6 +1255,7 @@ class Companion {
 				network_admin_url( 'customize.php' )
 			);
 
+            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo '<a href="' . esc_attr( $url ) . '" class="button button-primary">' . mesmerize_get_edit_in_mesmerize_label() . ' </a > ';
 		}
 	}
@@ -1317,7 +1314,7 @@ class Companion {
 
 		if ( $this->isMultipage() ) {
 
-			$title_placeholder = apply_filters( 'enter_title_here', __( 'Enter title here', 'mesmerize' ), $post );
+			$title_placeholder = apply_filters( 'enter_title_here', __( 'Enter title here', 'mesmerize-companion' ), $post );
 
 			?>
 			<style>
@@ -1352,9 +1349,9 @@ class Companion {
 				}
 			</style>
 			<div style="display: none;" id="open_page_in_customizer_set_name">
-				<h1 class="cp-open-in-custmizer"><?php _e( 'Set a name for the new page', 'cloudpress - companion' ); ?></h1>
+				<h1 class="cp-open-in-custmizer"><?php _e( 'Set a name for the new page', 'mesmerize-companion' );  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction?></h1>
 				<input placeholder="<?php echo esc_attr( $title_placeholder ); ?>" class="" name="new-page-name-val" />
-				<button class="button button-primary" name="new-page-name-save"> <?php _e( 'Set Page Name', 'cloudpress - companion' ); ?></button>
+				<button class="button button-primary" name="new-page-name-save"> <?php _e( 'Set Page Name', 'mesmerize-companion' );  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction?></button>
 			</div>
 			<script>
 				function cp_open_page_in_customizer(page) {
@@ -1364,7 +1361,8 @@ class Companion {
 					function doAjaxCall(pageName) {
 						var data = {
 							action: 'cp_open_in_customizer',
-							page: page
+							page: page,
+                            _wpnonce: '<?php echo wp_create_nonce( 'cp_open_in_customizer_nonce' );  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>'
 						};
 
 						if (pageName) {
@@ -1379,7 +1377,7 @@ class Companion {
 
 					if (isAutodraft) {
 
-						alert("<?php echo __( 'Page needs to be published before editing it in customizer', 'cloudpress-companion' ); ?>");
+						alert("<?php echo __( 'Page needs to be published before editing it in customizer', 'mesmerize-companion' );  // phpcs:ignore  	WordPress.Security.EscapeOutput.OutputNotEscaped ?>");
 						return;
 
 						var title = jQuery('[name = "post_title"]').val();
@@ -1420,6 +1418,11 @@ class Companion {
 	}
 
 	public function openPageInCustomizer() {
+        check_ajax_referer('cp_open_in_customizer_nonce');
+        if ( ! is_user_logged_in() || ! current_user_can( 'edit_theme_options' ) ) {
+            die();
+        }
+        //phpcs:ignore WordPress.Security.NonceVerification.Recommended, 	WordPress.Security.ValidatedSanitizedInput.InputNotValidated, 	WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.NonceVerification.Missing
 		$post_id = intval( $_REQUEST['page'] );
 		$toMark  = isset( $_REQUEST['mark_as_editable'] );
 
@@ -1446,7 +1449,7 @@ class Companion {
 		$url = $this->get_page_link( $post_id );
 
 		?>
-		<?php echo admin_url( 'customize.php' ); ?>?url=<?php echo urlencode( $url ); ?>
+		<?php echo admin_url( 'customize.php' );// phpcs:ignore  	WordPress.Security.EscapeOutput.OutputNotEscaped ?>?url=<?php echo urlencode( $url ); ?>
 		<?php
 
 		exit;
@@ -1496,6 +1499,11 @@ class Companion {
 	}
 
 	public function openPageInDefaultEditor() {
+        check_ajax_referer('cp_open_in_default_editor_nonce');
+        if ( ! is_user_logged_in() || ! current_user_can( 'edit_theme_options' ) ) {
+            die();
+        }
+        //phpcs:ignore WordPress.Security.NonceVerification.Recommended, 	WordPress.Security.ValidatedSanitizedInput.InputNotValidated, 	WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.NonceVerification.Missing
 		 $post_id = intval( $_REQUEST['page'] );
 
 		$post = get_post( $post_id );
@@ -1557,11 +1565,13 @@ class Companion {
 
 		add_filter( 'mesmerize_is_shortcode_refresh', '__return_true' );
 
-		$shortcode = isset( $_REQUEST['shortcode'] ) ? wp_kses_post( base64_decode( $_REQUEST['shortcode'] ) ) : false;
+        //phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,	WordPress.Security.ValidatedSanitizedInput.InputNotValidated, 	WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.NonceVerification.Missing
+        $shortcode = isset( $_REQUEST['shortcode'] ) ? wp_kses_post( base64_decode( $_REQUEST['shortcode'] ) ) : false;
 		if ( ! $shortcode ) {
 			die();
 		}
 
+        //phpcs:ignore WordPress.Security.NonceVerification.Recommended, 	WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, 	WordPress.Security.ValidatedSanitizedInput.InputNotValidated, 	WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.NonceVerification.Missing
 		$query   = isset( $_REQUEST['context']['query'] ) ? $this->sanitizeShortcodeQuery( $_REQUEST['context']['query'] ) : array();
 		$content = '';
 
@@ -1569,12 +1579,13 @@ class Companion {
 		$content = apply_filters( 'cloudpress\customizer\before_render_shortcode_content', $content, $shortcode );
 
 		if ( count( $query ) ) {
+            //phpcs:ignore 	WordPress.WP.DiscouragedFunctions.query_posts_query_posts
 			query_posts( $query );
 			while ( have_posts() ) {
 				the_post();
 				$content .= do_shortcode( $shortcode );
 			}
-
+            //phpcs:ignore 	WordPress.WP.DiscouragedFunctions.wp_reset_query_wp_reset_query
 			wp_reset_query();
 		} else {
 			$content .= do_shortcode( $shortcode );
@@ -1582,7 +1593,7 @@ class Companion {
 
 		do_action( 'cloudpress\customizer\after_render_shortcode', $shortcode );
 		$content = apply_filters( 'cloudpress\customizer\after_render_shortcode_content', $content, $shortcode );
-
+        // phpcs:ignore  	WordPress.Security.EscapeOutput.OutputNotEscaped
 		die( $content );
 	}
 }

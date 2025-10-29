@@ -4,7 +4,7 @@ Donate link:       https://simplyscheduleappointments.com
 Tags:              booking system, appointments, booking, scheduling, appointment booking
 Requires at least: 5.1
 Tested up to:      6.9
-Stable tag:        1.6.9.2
+Stable tag:        1.6.9.4
 Requires PHP:      7.4
 License:           GPLv2
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
@@ -237,6 +237,17 @@ See our guide on [how to get started](https://simplyscheduleappointments.com/gui
 
 === Changelog ===
 
+== 1.6.9.4 - 2025-10-21 ==
+
+= Fixes =
+
+- Enhance opt-in notification handling by populating default values
+
+= Features and Improvements =
+
+- Enhance customer information handling in notifications templates
+- Feature Improvement: Ability to disable "Pay Via Card" option for Stripe Payments
+
 == 1.6.9.2 - 2025-10-14 ==
 
 = Features and Improvements =
@@ -294,16 +305,6 @@ See our guide on [how to get started](https://simplyscheduleappointments.com/gui
 - ❗Ticket: Only available view is not working with Advance settings
 
 == 1.6.8.49 - 2025-08-19 ==
-
-= Fixes =
-
-- Ticket: Contact Support backend button not working on the client site
-
-== 1.6.8.47 - 2025-08-05 ==
-
-= Fixes =
-
-- Prevent the iframe from being cut off - force min height
 
 
 For older changelog entries, please see the [additional CHANGELOG.md file](https://plugins.svn.wordpress.org/simply-schedule-appointments/trunk/CHANGELOG.md) delivered with the plugin.

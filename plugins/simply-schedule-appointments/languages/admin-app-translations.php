@@ -835,6 +835,8 @@
             'regexValidator' => __( 'Please enter a valid test webhook secret', 'simply-schedule-appointments' ),
           ),
         ),
+        'noPaymentMethodsError' => __( 'Please select at least one payment method', 'simply-schedule-appointments' ),
+        'noCardPaymentMethodWarning' => __( 'Payments may not work if card is disabled and other payment methods are not configured properly', 'simply-schedule-appointments' ),
         'publishableKey' => __( 'Publishable key', 'simply-schedule-appointments' ),
         'publishableKeyHelp' => __( 'Get your API keys from your Stripe account.', 'simply-schedule-appointments' ),
         'secretKey' => __( 'Secret key', 'simply-schedule-appointments' ),

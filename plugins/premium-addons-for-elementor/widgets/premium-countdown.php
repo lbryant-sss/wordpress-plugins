@@ -1878,9 +1878,9 @@ class Premium_Countdown extends Widget_Base {
 
 			if ( 'featured' === $settings['style'] ) {
 				$countdown_settings['featuredUnit'] = $settings['featured_unit'];
+			} elseif ( 'circle' === $settings['style'] ) {
+				$this->add_render_attribute( 'inner_counter', 'class', 'premium-addons__v-hidden' );
 			}
-
-			$this->add_render_attribute( 'inner_counter', 'class', 'premium-addons__v-hidden' );
 
 		} else {
 

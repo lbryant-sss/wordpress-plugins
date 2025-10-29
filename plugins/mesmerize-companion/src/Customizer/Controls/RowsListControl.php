@@ -8,7 +8,6 @@ class RowsListControl extends \Mesmerize\Customizer\BaseControl {
 
 	public function init() {
 		$this->cpData['insertText'] = isset( $this->cpData['insertText'] ) ? $this->cpData['insertText'] : 'Click to insert';
-		$this->cpData['insertText'] = __( $this->cpData['insertText'], 'cloudpress-companion' );
 		$this->cpData['type']       = isset( $this->cpData['type'] ) ? $this->cpData['type'] : 'mod_changer';
 	}
 
@@ -27,6 +26,7 @@ class RowsListControl extends \Mesmerize\Customizer\BaseControl {
 
 	public function dataAttrs() {
 		$data = 'data-name="' . $this->id . '"';
+        //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo $data;
 	}
 
@@ -36,7 +36,7 @@ class RowsListControl extends \Mesmerize\Customizer\BaseControl {
 		if ( isset( $this->cpData['selection'] ) ) {
 			$data = 'data-selection="' . esc_attr( $this->cpData['selection'] ) . '"';
 		}
-
+//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo $data;
 	}
 
@@ -86,13 +86,13 @@ class RowsListControl extends \Mesmerize\Customizer\BaseControl {
 		$options_var = uniqid( 'cp_preset_changer_' );
 		?>
 		<script>
-			var <?php echo $options_var; ?> = {};
+			var <?php echo $options_var; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> = {};
 		</script>
 		<ul <?php $this->dataAttrs(); ?> class="list rows-list">
 			<?php foreach ( $items as $item ) : ?>
 				<script>
 					<?php $settingsData = \Mesmerize\Customizer\BaseSetting::filterArrayDefaults( $item['settings'] ); ?>
-					<?php echo $options_var; ?>[<?php echo wp_json_encode( $item['id'] ); ?>] = <?php echo json_encode( $settingsData ); ?>;
+					<?php echo $options_var; ?>[<?php echo wp_json_encode( $item['id'] ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped?>] = <?php echo json_encode( $settingsData ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>;
 				</script>
 
 				<li class="item available-item" data-varname="<?php echo esc_attr( $options_var ); ?>" data-id="<?php echo esc_attr( $item['id'] ); ?>">

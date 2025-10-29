@@ -4,7 +4,15 @@ document.addEventListener("DOMContentLoaded", function () {
   var timer = [];
   var initialValue = [];
   var timeUnits = ["week", "day", "hour", "minute", "second"];
+
+  // Check if instance has pro features enabled
+  var hasProFeatures = function hasProFeatures(instance) {
+    var redirectUrl = instance.dataset.ubProRedirect || "";
+    var patternContent = instance.dataset.ubProHasExpiryContent || "";
+    return !!(redirectUrl || patternContent);
+  };
   Array.prototype.slice.call(document.getElementsByClassName("ub-countdown")).forEach(function (instance, i) {
+    var isProEnabled = hasProFeatures(instance);
     timer[i] = setInterval(function () {
       var timeLeft = parseInt(instance.getAttribute("data-enddate")) - Math.floor(Date.now() / 1000);
       var largestUnit = instance.getAttribute("data-largestunit");
@@ -197,7 +205,6 @@ document.addEventListener("DOMContentLoaded", function () {
                   var targetLength = (curVal ? Math.floor(Math.log10(curVal)) : 0) + 1;
 
                   //eliminate element containing extra zero
-
                   odometerSlot[j].slice(0, initialValue[i][j].length - targetLength).forEach(function (o) {
                     o.parentNode.removeChild(o);
                   });
@@ -228,6 +235,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   } else {
                     odometerSlot[j][k].style.transform = "translateY(0px)";
                   }
+
                   //event listener for end of animation
                   odometerSlot[j][k].addEventListener("transitionend", function () {
                     //switch to pre-animation style
@@ -281,7 +289,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       } else {
         clearInterval(timer[i]);
-        if (!isNaN(timeLeft)) {
+        // Only show free version expiry message if pro features are NOT enabled
+        if (!isNaN(timeLeft) && !isProEnabled) {
           instance.innerText = instance.getAttribute("data-expirymessage");
         }
       }

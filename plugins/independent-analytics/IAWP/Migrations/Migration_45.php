@@ -2,6 +2,7 @@
 
 namespace IAWP\Migrations;
 
+use IAWP\Database;
 /** @internal */
 class Migration_45 extends \IAWP\Migrations\Step_Migration
 {
@@ -33,7 +34,10 @@ class Migration_45 extends \IAWP\Migrations\Step_Migration
     }
     private function populate_referrer_type_id_column() : string
     {
-        return "\n            UPDATE\n              {$this->tables::referrers()} AS referrers\n              JOIN {$this->tables::referrer_types()} AS referrer_types ON referrers.type = referrer_types.referrer_type\n            SET\n              referrers.referrer_type_id = referrer_types.id\n        ";
+        $old_collation = Database::column_collation_for($this->tables::referrers(), 'type');
+        $current_collation = $this->collation();
+        $collation_statement = $this->get_collation_statement($current_collation, $old_collation);
+        return "\n            UPDATE\n              {$this->tables::referrers()} AS referrers\n              JOIN {$this->tables::referrer_types()} AS referrer_types ON referrers.type = referrer_types.referrer_type {$collation_statement}\n            SET\n              referrers.referrer_type_id = referrer_types.id\n        ";
     }
     private function modify_referrer_type_id_column() : string
     {

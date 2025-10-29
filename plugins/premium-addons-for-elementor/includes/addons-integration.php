@@ -88,12 +88,13 @@ class Addons_Integration {
 		add_action( 'wp_ajax_update_template_title', array( $this, 'update_template_title' ) );
 		add_action( 'wp_ajax_get_elementor_template_content', array( $this, 'get_template_content' ) );
 
+		add_action( 'wp_ajax_pa_get_editor_template', array( $this, 'pa_get_editor_template' ) );
+
 		add_action( 'wp_ajax_insert_cf_form', array( $this, 'insert_cf_form' ) );
 
 		add_action( 'wp_ajax_get_pinterest_token', array( $this, 'get_pinterest_token' ) );
 		add_action( 'wp_ajax_get_pinterest_boards', array( $this, 'get_pinterest_boards' ) );
 		add_action( 'wp_ajax_get_tiktok_token', array( $this, 'get_tiktok_token' ) );
-
 
 		add_action( 'elementor/frontend/after_register_styles', array( $this, 'register_frontend_styles' ) );
 		add_action( 'elementor/frontend/after_register_scripts', array( $this, 'register_frontend_scripts' ) );
@@ -282,6 +283,61 @@ class Addons_Integration {
 	}
 
 	/**
+	 * Get Editor Template.
+	 *
+	 * Handles AJAX request to retrieve the Elementor editor URL for a given template title.
+	 *
+	 * @access public
+	 * @since 4.8.10
+	 *
+	 * @return void Outputs JSON response with editor URL, template ID, and title.
+	 */
+	public function pa_get_editor_template() {
+
+		check_ajax_referer( 'pa-live-editor', 'security' );
+
+		if ( ! isset( $_POST['tempTitle'] ) ) { // template title.
+			wp_send_json_error( 'Template title not found', 404 );
+		}
+
+		$temp_title = sanitize_text_field( wp_unslash( $_POST['tempTitle'] ) );
+		$temp_type  = isset( $_POST['type'] ) ? sanitize_text_field( wp_unslash( $_POST['type'] ) ) : false;
+
+		$decoded_title = html_entity_decode( $temp_title );
+
+		$args = array(
+			'post_type'        => 'elementor_library',
+			'post_status'      => 'publish',
+			'posts_per_page'   => 1,
+			'title'            => $decoded_title,
+			'suppress_filters' => true,
+		);
+
+		$query = new \WP_Query( $args );
+
+		$post_id = '';
+
+		if ( $query->have_posts() ) {
+			$post_id = $query->post->ID;
+
+			$edit_url = get_admin_url() . '/post.php?post=' . $post_id . '&action=elementor';
+
+			$result = array(
+				'url'         => $edit_url,
+				'id'          => $post_id,
+				'title'       => $temp_title,
+				'newFunction' => 'hello',
+			);
+
+			wp_send_json_success( $result );
+
+			wp_reset_postdata();
+		} else {
+			wp_send_json_error( 'Template not found.....' . $decoded_title, 404 );
+		}
+	}
+
+	/**
 	 * Load Live Editor Modal.
 	 * Puts live editor popup html into the editor.
 	 *
@@ -316,8 +372,9 @@ class Addons_Integration {
 		);
 
 		$live_editor_data = array(
-			'ajaxurl' => esc_url( admin_url( 'admin-ajax.php' ) ),
-			'nonce'   => wp_create_nonce( 'pa-live-editor' ),
+			'ajaxurl'  => esc_url( admin_url( 'admin-ajax.php' ) ),
+			'nonce'    => wp_create_nonce( 'pa-live-editor' ),
+			'adminUrl' => esc_url( get_admin_url() ),
 		);
 
 		wp_localize_script( 'live-editor', 'liveEditor', $live_editor_data );
@@ -336,7 +393,7 @@ class Addons_Integration {
 			array(
 				'ajaxurl'      => esc_url( admin_url( 'admin-ajax.php' ) ),
 				'nonce'        => wp_create_nonce( 'pa-blog-widget-nonce' ),
-				'upgrade_link' => Helper_Functions::get_campaign_link( 'https://premiumaddons.com/pro/', '', 'wp-editor', 'get-pro' )
+				'upgrade_link' => Helper_Functions::get_campaign_link( 'https://premiumaddons.com/pro/', '', 'wp-editor', 'get-pro' ),
 				// 'unused_nonce' => wp_create_nonce( 'pa-disable-unused' ),
 			)
 		);
@@ -411,10 +468,17 @@ class Addons_Integration {
                 .premium-promotion-dialog .premium-promotion-btn {
                     background-color: #202124 !important
                 }
+				.premium-promote-ctas .elementor-button.premium-promote-upgrade:hover {
+					background-color: #999C9E !important;
+				}
 				.premium-promote-ctas .elementor-button.premium-promote-demo {
                     color: #BFC3C7 !important;
 					background-color: #373C41 !important;
 					border: 1px solid rgba(154, 157, 160, 0.5) !important;
+                }
+
+				.premium-promote-ctas .elementor-button.premium-promote-demo:hover {
+					background-color: #2B2E32 !important;
                 }'
 			);
 
@@ -1577,15 +1641,15 @@ class Addons_Integration {
 	public function get_template_content() {
 
 		$template = isset( $_GET['templateID'] ) ? sanitize_text_field( wp_unslash( $_GET['templateID'] ) ) : '';
-		$is_ID = isset( $_GET['is_id'] ) ? filter_var( $_GET['is_id'], FILTER_VALIDATE_BOOLEAN ) : false;
+		$is_ID    = isset( $_GET['is_id'] ) ? filter_var( $_GET['is_id'], FILTER_VALIDATE_BOOLEAN ) : false;
 
 		if ( empty( $template ) ) {
 			wp_send_json_error( 'Empty Template ID' );
 		}
 
-// 		if ( ! current_user_can( 'edit_posts' ) ) {
-// 			wp_send_json_error( 'Insufficient user permission' );
-// 		}
+		// if ( ! current_user_can( 'edit_posts' ) ) {
+		// wp_send_json_error( 'Insufficient user permission' );
+		// }
 
 		$template_content = Helper_Functions::render_elementor_template( $template, $is_ID );
 
@@ -1759,7 +1823,7 @@ class Addons_Integration {
 		if ( defined( 'ELEMENTOR_PRO_VERSION' ) ) {
 			$config['promotion']['elements']['action_button'] = array(
 				'text' => 'Connect & Activate',
-				'url' => 'https://go.elementor.com/'
+				'url'  => 'https://go.elementor.com/',
 			);
 		}
 

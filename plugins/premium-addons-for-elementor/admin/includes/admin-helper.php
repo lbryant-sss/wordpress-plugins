@@ -638,7 +638,7 @@ class Admin_Helper {
 				'href'     => '#tab=elements',
 				'template' => PREMIUM_ADDONS_PATH . 'admin/includes/templates/modules-settings',
 			),
-			'addons'        => array(
+			'addons'          => array(
 				'id'       => 'addons',
 				'slug'     => $slug . '#tab=addons',
 				'title'    => __( 'Global Addons', 'premium-addons-for-elementor' ),
@@ -675,7 +675,7 @@ class Admin_Helper {
 			),
 		);
 
-		if( ! Helper_Functions::check_papro_version() ) {
+		if ( ! Helper_Functions::check_papro_version() ) {
 
 			self::$tabs['license'] = array(
 				'id'       => 'license',
@@ -836,10 +836,18 @@ class Admin_Helper {
 		<div class="papro-admin-notice">
 			<?php if ( ! $show_logo ) : ?>
 				<div class="papro-admin-notice-left">
-					<div class="papro-admin-notice-logo">
-						<img class="pa-notice-logo" src="<?php echo esc_attr( PREMIUM_ADDONS_URL . 'admin/images/papro-notice-logo.png' ); ?>">
-					</div>
-					<a href="https://premiumaddons.com" target="_blank"></a>
+
+					<?php if( ! Helper_Functions::check_papro_version() ) : ?>
+						<img class="pa-notice-logo" src="https://premiumaddons.com/wp-content/uploads/2025/10/halloween-25-sale-banner.png">
+
+						<a href="<?php echo esc_url( Helper_Functions::get_campaign_link( 'https://premiumaddons.com/halloween-sale/#halloween-deals', 'wp-dash', 'dashboard-cta', 'halloween25' ) ) ?>" target="_blank"></a>
+					<?php else : ?>
+						<div class="papro-admin-notice-logo">
+							<img class="pa-notice-logo" src="<?php echo esc_attr( PREMIUM_ADDONS_URL . 'admin/images/papro-notice-logo.png' ); ?>">
+						</div>
+
+						<a href="https://premiumaddons.com/" target="_blank"></a>
+					<?php endif; ?>
 				</div>
 			<?php endif; ?>
 
@@ -955,7 +963,7 @@ class Admin_Helper {
 			'premium-cross-domain',
 			'premium-duplicator',
 			'premium-wrapper-link',
-			'premium-assets-generator'
+			'premium-assets-generator',
 		);
 
 		$features = array();

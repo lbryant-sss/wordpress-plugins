@@ -13,7 +13,7 @@ wp_enqueue_script( 'updates' );
 
 ?>
 <div class="tab-cols">
-	<h2 class="mesmerize-import-demo-sites"><?php _e( 'Import Demo sites with one click', 'mesmerize-companion' ); ?></h2>
+	<h2 class="mesmerize-import-demo-sites"><?php _e( 'Import Demo sites with one click', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction ?></h2>
 
 	<div class="ocdi  wrap  about-wrap">
 		<?php

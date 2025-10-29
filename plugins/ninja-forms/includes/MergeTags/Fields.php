@@ -380,7 +380,14 @@ class NF_MergeTags_Fields extends NF_Abstracts_MergeTags
                         $submissionValueArray['value'] = implode(', ', $submissionValueArray['value']);
                     }
                 }
-                $outgoingValue .= '<tr><td valign="top">' . apply_filters('ninja_forms_merge_label', $submissionValueArray['label'], $field, $this->form_id) . ':</td><td>' . $submissionValueArray['value'] . '</td></tr>';
+                
+                // Apply field-type specific filters for proper display (e.g., signature fields)
+                $fieldValue = $submissionValueArray['value'];
+                if ( isset( $submissionValueArray['type'] ) ) {
+                    $fieldValue = apply_filters( 'ninja_forms_merge_tag_value_' . $submissionValueArray['type'], $fieldValue, $submissionValueArray );
+                }
+                
+                $outgoingValue .= '<tr><td valign="top">' . apply_filters('ninja_forms_merge_label', $submissionValueArray['label'], $field, $this->form_id) . ':</td><td>' . $fieldValue . '</td></tr>';
             }
         }
 

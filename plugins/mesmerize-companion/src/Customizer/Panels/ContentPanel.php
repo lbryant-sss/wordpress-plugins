@@ -97,8 +97,8 @@ class ContentPanel extends \Mesmerize\Customizer\BasePanel {
 			</ul>
 			<div id="cp-items-footer">
 
-				<button type="button" class="button button-large" id="cp-item-cancel"><?php _e( 'Cancel', 'mesmerize-companion' ); ?></button>
-				<button type="button" class="button button-large button-primary" id="cp-item-ok"><?php _e( 'Apply Changes', 'mesmerize-companion' ); ?></button>
+				<button type="button" class="button button-large" id="cp-item-cancel"><?php _e( 'Cancel', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction?></button>
+				<button type="button" class="button button-large button-primary" id="cp-item-ok"><?php _e( 'Apply Changes', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction ?></button>
 			</div>
 		</div>
 
@@ -174,12 +174,12 @@ class ContentPanel extends \Mesmerize\Customizer\BasePanel {
 					</div>
 					<# if (value.target ) { #>
 					<div class="target-option">
-						<span class="customize-control-title"><?php _e( 'Target', 'mesmerize-companion' ); ?></span>
+						<span class="customize-control-title"><?php _e( 'Target', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction?></span>
 						<select type="text" id="{{  id  }}__target">
-							<option value="_self"> <?php _e( 'Same tab', 'mesmerize-companion' ); ?></option>
-							<option value="_blank"><?php _e( 'New tab', 'mesmerize-companion' ); ?></option>
+							<option value="_self"> <?php _e( 'Same tab', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction?></option>
+							<option value="_blank"><?php _e( 'New tab', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction?></option>
 							<# if(CP_Customizer.IS_PRO) { #>
-							<option style="display:{{   (CP_Customizer.IS_PRO?'':'none')  }}" value="lightbox"><?php _e( 'Lightbox', 'mesmerize-companion' ); ?></option>
+							<option style="display:{{   (CP_Customizer.IS_PRO?'':'none')  }}" value="lightbox"><?php _e( 'Lightbox', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction?></option>
 							<# } #>
 						</select>
 						<inline-script>
@@ -199,12 +199,12 @@ class ContentPanel extends \Mesmerize\Customizer\BasePanel {
 						<div class="handle reorder-handler"></div>
 						<input class="item-editor" type="text" value="{{{  item.value  }}}">
 						<div class="item-actions">
-							<span class="item-remove" title="<?php _e( 'Delete section from page', 'mesmerize-companion' ); ?>" onClick='jQuery(this).parents(".section-list-item").remove()'></span>
+							<span class="item-remove" title="<?php _e( 'Delete section from page', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction ?>" onClick='jQuery(this).parents(".section-list-item").remove()'></span>
 						</div>
 					</div>
 					<# }); #>
 				</div>
-				<a class="add-item button-primary" id="add_{{  id  }}"><?php _e( 'Add Item', 'mesmerize-companion' ); ?></a>
+				<a class="add-item button-primary" id="add_{{  id  }}"><?php _e( 'Add Item', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction ?></a>
 				<inline-script>
 					jQuery("#{{ id }}").sortable({"axis" : "y"});
 					jQuery("#add_{{ id }}").click(function(){
@@ -225,7 +225,7 @@ class ContentPanel extends \Mesmerize\Customizer\BasePanel {
 					</div>
 					<div class="image-controls">
 						<input type="text" value="{{{  value  }}}" id="{{{  id  }}}">
-						<button type="button" onClick='CP_Customizer.openMediaBrowser("{{{  mediaType  }}}", jQuery("#{{  id  }}"), {{  JSON.stringify(mediaData)  }})' class="button upload-button cp-image-select" data-cp-src="{{{  id  }}}"> <?php _e( 'Browse Image', 'mesmerize-companion' ); ?>  </button>
+						<button type="button" onClick='CP_Customizer.openMediaBrowser("{{{  mediaType  }}}", jQuery("#{{  id  }}"), {{  JSON.stringify(mediaData)  }})' class="button upload-button cp-image-select" data-cp-src="{{{  id  }}}"> <?php _e( 'Browse Image', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction ?>  </button>
 					</div>
 					<inline-script>
 						jQuery("#{{ id }}").change(function(){ jQuery("#preview-{{ id }}").attr("src",this.value)})
@@ -243,35 +243,35 @@ class ContentPanel extends \Mesmerize\Customizer\BasePanel {
 						<# if (canHide) { #>
 						<label for="{{  id  }}__visible">
 							<input id="{{  id  }}__visible" type="checkbox" {{ (value.visible?"checked='true'":"") }}>
-							<?php _e( 'Visible', 'mesmerize-companion' ); ?>
+							<?php _e( 'Visible', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction ?>
 						</label>
 						<# } #>
 					</div>
 					<div class="image-controls">
 						<button type="button" style="margin-bottom: 0.5rem;" onClick='CP_Customizer.openMediaBrowser("{{{  mediaType }}}",
 								jQuery("#{{  id  }}__icon"), {{  JSON.stringify(mediaData)  }})'
-								class="button upload-button cp-fa-select" data-cp-src="{{  id  }}__icon"><?php _e( 'Browse Icon', 'mesmerize-companion' ); ?>
+								class="button upload-button cp-fa-select" data-cp-src="{{  id  }}__icon"><?php _e( 'Browse Icon', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction ?>
 						</button>
 						<div style="float:none"></div>
 						<div style="float: left;width: calc( 100% - 110px);box-sizing: border-box;">
-							<span class="customize-control-title" style="margin:0.5rem 0"> <?php _e( 'Link', 'mesmerize-companion' ); ?> </span>
+							<span class="customize-control-title" style="margin:0.5rem 0"> <?php _e( 'Link', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction ?> </span>
 							<input type="text" value="{{{  value.link  }}}" id="{{  id  }}__link">
 						</div>
 
 						<div style="float: left;width: 110px;padding-left: 4px;box-sizing: border-box;<#  if (!value.target) {  #>display:none<#  }  #>">
-							<span class="customize-control-title" style="margin:0.5rem 0"><?php _e( 'Target', 'mesmerize-companion' ); ?> </span>
+							<span class="customize-control-title" style="margin:0.5rem 0"><?php _e( 'Target', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction?> </span>
 							<select type="text" id="{{  id  }}__target">
-								<option value="_self"><?php _e( 'Same tab', 'mesmerize-companion' ); ?> </option>
-								<option value="_blank"><?php _e( 'New tab', 'mesmerize-companion' ); ?> </option>
+								<option value="_self"><?php _e( 'Same tab', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction ?> </option>
+								<option value="_blank"><?php _e( 'New tab', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction?> </option>
 								<# if(CP_Customizer.IS_PRO) { #>
-								<option style="display:{{   (CP_Customizer.IS_PRO?'':'none')  }}" value="lightbox"><?php _e( 'Lightbox', 'mesmerize-companion' ); ?> </option>
+								<option style="display:{{   (CP_Customizer.IS_PRO?'':'none')  }}" value="lightbox"><?php _e( 'Lightbox', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction ?> </option>
 								<# } #>
 							</select>
 						</div>
 
 						<# if(typeof styles !== 'undefined') { #>
 						<div style="float: left;width: 50%;">
-							<span class="customize-control-title" style="margin:0.5rem 0"><?php _e( 'Icon Style', 'mesmerize-companion' ); ?></span>
+							<span class="customize-control-title" style="margin:0.5rem 0"><?php _e( 'Icon Style', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction ?></span>
 							<select type="text" id="{{  id  }}__style">
 								<# _.each(styles, function(item, index) { #>
 								<option value="{{{ item.value }}}">{{ item.label }}</option>
@@ -288,7 +288,7 @@ class ContentPanel extends \Mesmerize\Customizer\BasePanel {
 
 						<# if(typeof sizes !== 'undefined') { #>
 						<div style="float: left;margin-left: 10px;width: calc(50% - 10px);">
-							<span class="customize-control-title" style="margin:0.5rem 0"><?php _e( 'Icon Size', 'mesmerize-companion' ); ?></span>
+							<span class="customize-control-title" style="margin:0.5rem 0"><?php _e( 'Icon Size', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction?></span>
 							<select type="text" id="{{  id  }}__size">
 								<# _.each(sizes, function(item, index) { #>
 								<option value="{{{ item.value }}}">{{ item.label }}</option>
@@ -322,18 +322,18 @@ class ContentPanel extends \Mesmerize\Customizer\BasePanel {
 						<# if (canHide) { #>
 						<label for="{{  id  }}__visible">
 							<input id="{{  id  }}__visible" type="checkbox" {{ (value.visible?"checked='true'":"") }}>
-							<?php _e( 'Visible', 'mesmerize-companion' ); ?>
+							<?php _e( 'Visible', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction?>
 						</label>
 						<# } #>
 					</div>
 					<div class="image-controls">
 						<input type="hidden" value="{{{  value.icon  }}}" id="{{  id  }}__icon">
 						<button type="button" style="margin-bottom: 0.5rem;" onClick='CP_Customizer.openMediaBrowser("{{{  mediaType }}}",
-							jQuery("#{{  id  }}__icon"), {{  JSON.stringify(mediaData)  }})' class="button upload-button cp-fa-select" data-cp-src="{{  id  }}__icon"><?php _e( 'Browse Icon', 'mesmerize-companion' ); ?> </button>
+							jQuery("#{{  id  }}__icon"), {{  JSON.stringify(mediaData)  }})' class="button upload-button cp-fa-select" data-cp-src="{{  id  }}__icon"><?php _e( 'Browse Icon', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction?> </button>
 						<div>
 							<# if(typeof styles !== 'undefined') { #>
 							<div style="float: left;width: 180px;">
-								<span class="customize-control-title" style="margin:0.5rem 0"><?php _e( 'Icon Style', 'mesmerize-companion' ); ?></span>
+								<span class="customize-control-title" style="margin:0.5rem 0"><?php _e( 'Icon Style', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction?></span>
 								<select type="text" id="{{  id  }}__style">
 									<# _.each(styles, function(item, index) { #>
 									<option value="{{{ item.value }}}">{{ item.label }}</option>
@@ -350,7 +350,7 @@ class ContentPanel extends \Mesmerize\Customizer\BasePanel {
 
 							<# if(typeof sizes !== 'undefined') { #>
 							<div style="float: left;margin-left: 10px;width: 130px;">
-								<span class="customize-control-title" style="margin:0.5rem 0"><?php _e( 'Icon Size', 'mesmerize-companion' ); ?></span>
+								<span class="customize-control-title" style="margin:0.5rem 0"><?php _e( 'Icon Size', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction?></span>
 								<select type="text" id="{{  id  }}__size">
 									<# _.each(sizes, function(item, index) { #>
 									<option value="{{{ item.value }}}">{{ item.label }}</option>
@@ -384,18 +384,18 @@ class ContentPanel extends \Mesmerize\Customizer\BasePanel {
 			<h3 class="accordion-section-title no-chevron" tabindex="0">
 				{{ data.title }}
 
-				<span title="<?php _e( 'Add Section', 'mesmerize-companion' ); ?>" class="add-section-plus section-icon"></span>
-				<span title="<?php _e( 'Page Settings', 'mesmerize-companion' ); ?>" class="section-icon setting hidden"></span>
+				<span title="<?php _e( 'Add Section', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction ?>" class="add-section-plus section-icon"></span>
+				<span title="<?php _e( 'Page Settings', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction?>" class="section-icon setting hidden"></span>
 			</h3>
 
 
 			<div class="sections-list-reorder">
-				<span class="customize-control-title"><?php _e( 'Manage page sections', 'mesmerize-companion' ); ?></span>
+				<span class="customize-control-title"><?php _e( 'Manage page sections', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction?></span>
 				<ul id="page_full_rows" class="list list-order">
-					<li class="empty"><?php _e( 'No section added', 'mesmerize-companion' ); ?></li>
+					<li class="empty"><?php _e( 'No section added', 'mesmerize-companion' );//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction ?></li>
 				</ul>
 				<div class="add-section-container">
-					<a class="cp-add-section available-item-hover-button button-primary"><?php _e( 'Add Section', 'mesmerize-companion' ); ?></a>
+					<a class="cp-add-section available-item-hover-button button-primary"><?php _e( 'Add Section', 'mesmerize-companion' );  //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction?></a>
 				</div>
 			</div>
 		</li>

@@ -37,7 +37,7 @@ Chaty is the perfect chat plugin to display a call widget, WhatsApp button, emai
 * Click to call - show a phone call icon & let your visitors click to call you.
 * Show different chat channels on different pages  - show separate widgets for different products on your website,  show different buttons based on URL for WPML or multi-language sites, display different channels for your landing pages, and more (Pro feature).
 * Available days & hours (Pro feature).
-* Launch your favorite live chat app - use JavaScript channel to launch live chat products like Chatway, Tawk.to, Tidio, Chatra, Formilla, Zoho, Zendesk, LiveChat, Crisp, Intercom, JivoChat, Olark & more.
+* Launch your favorite live chat app - use JavaScript to launch live chat apps like Chatway, Tawk.to, Tidio, Chatra, Formilla, Zoho, Zendesk, LiveChat, Crisp, Intercom, JivoChat, Olark & more.
 
 = 👩‍💻 Looking for a Live Chat plugin? =
 If you're not looking for WhatsApp, Facebook Messenger, and other chat buttons, and prefer to use a live chat solution for your website, <a href="https://chatway.app/?utm_source=chatylisting" target="_blank" title="Chatway Live Chat">Chatway Live Chat</a> is the perfect solution for you. Implementing Chatway, a WordPress live chat solution, enhances your customer engagement.

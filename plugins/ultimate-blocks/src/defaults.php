@@ -2515,6 +2515,14 @@ $defaultValues = array(
             'fontSize' => array(
                 'type' => 'number',
                 'default' => 0
+            ),
+            'itemTextColor' => array(
+                'type' => 'string',
+                'default' => ''
+            ),
+            'itemBackgroundColor' => array(
+                'type' => 'string',
+                'default' => ''
             )
         )
     ),

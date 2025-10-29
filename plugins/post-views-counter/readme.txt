@@ -4,7 +4,7 @@ Tags: counter, postviews, statistics, analytics, pageviews
 Requires at least: 6.3.0
 Requires PHP: 7.4.0
 Tested up to: 6.8.3
-Stable tag: 1.5.6
+Stable tag: 1.5.7
 License: MIT License
 License URI: http://opensource.org/licenses/MIT
 
@@ -89,6 +89,14 @@ If you’ve purchased Post Views Counter Pro, your license includes one year of 
 2. screenshot-2.png
 
 == Changelog ==
+
+= 1.5.7 =
+* New: Count visits by referrer (Pro)
+* Prevent duplicate AJAX calls in REST API mode
+* Fix: Major improvements for FastAjax handling (Pro)
+* Fix: Major object cache support improvements (Pro)
+* Fix: Apply crawler/bot check filter for REST API endpoints
+* Tweak: Remove unused storage and mutator methods
 
 = 1.5.6 =
 * New: Count visits by device, browser and OS (Pro)
@@ -385,5 +393,5 @@ Initial release
 
 == Upgrade Notice ==
 
-= 1.5.6 =
-Count visits by device, browser, OS and browser language (Pro), DB query and UI improvements
+= 1.5.7 =
+Prevent duplicate AJAX calls in REST API mode, Count visits by referrer (Pro), major FastAjax and object cache support improvements (Pro)

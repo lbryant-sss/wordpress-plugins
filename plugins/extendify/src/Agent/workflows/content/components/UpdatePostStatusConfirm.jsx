@@ -3,6 +3,9 @@ import { __, sprintf } from '@wordpress/i18n';
 
 export const UpdatePostStatusConfirm = ({ inputs, onConfirm, onCancel }) => {
 	const handleConfirm = () => {
+		if (window && window.extAgentData && window.extAgentData.context) {
+			window.extAgentData.context.postStatus = inputs.updatedStatus;
+		}
 		onConfirm({ data: inputs });
 	};
 

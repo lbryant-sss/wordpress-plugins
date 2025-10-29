@@ -1,11 +1,11 @@
 === VK All in One Expansion Unit ===
-Contributors: vektor-inc,kurudrive,jim912,hideokamoto,nc30,SaoriMiyazaki,catherine8007,naoki0h,rickaddison7634,una9,kaorock72,kurishimak,chiakikouno,daikiweb23,doshimaf,shimotomoki,mtdkei
+Contributors: vektor-inc,kurudrive,jim912,hideokamoto,nc30,SaoriMiyazaki,catherine8007,naoki0h,rickaddison7634,una9,kaorock72,kurishimak,chiakikouno,daikiweb23,doshimaf,shimotomoki,mtdkei,mt8biz
 Donate link:
 Tags: Google Analytics, Related Posts, sitemap, Facebook Page Plugin, OG tags
-Requires at least: 6.4
+Requires at least: 6.5
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 9.112.0.1
+Stable tag: 9.112.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -80,6 +80,9 @@ e.g.
 2. This is an example of SNS cooperation setting screen.
 
 == Changelog ==
+
+= 9.112.1 =
+[ Bug Fix ][ Default Thumbnail ] Fix issue where default thumbnail appears in media library list view.
 
 = 9.112.0 =
 [ Add function ][ Title Tag ] Add taxonomy title tag setting functionality for archive pages of categories, tags, and custom taxonomies.

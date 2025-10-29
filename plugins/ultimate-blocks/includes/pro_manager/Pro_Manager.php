@@ -19,6 +19,7 @@ use Ultimate_Blocks\includes\pro_manager\extensions\Button_Extension;
 use Ultimate_Blocks\includes\pro_manager\extensions\Buttons_Extension;
 use Ultimate_Blocks\includes\pro_manager\extensions\Single_Button_Extension;
 use Ultimate_Blocks\includes\pro_manager\extensions\Content_Toggle_Extension;
+use Ultimate_Blocks\includes\pro_manager\extensions\Countdown_Extension;
 use Ultimate_Blocks\includes\pro_manager\extensions\Divider_Extension;
 use Ultimate_Blocks\includes\pro_manager\extensions\Expand_Extension;
 use Ultimate_Blocks\includes\pro_manager\extensions\Image_Slider_Extension;
@@ -297,6 +298,10 @@ class Pro_Manager {
 		$animation_upsell      = new Animation_Extension( 'ub-extension/animation' );
 		$animation_upsell_data = $animation_upsell->get_upsell_data();
 
+		// Countdown Extension
+		$countdown_upsell      = new Countdown_Extension( 'ub/countdown' );
+		$countdown_upsell_data = $countdown_upsell->get_upsell_data();
+
 		$final_upsell_extension_data = array_merge_recursive(
 			array(),
 			$tabbed_content_upsell_data,
@@ -312,7 +317,8 @@ class Pro_Manager {
 			$advanced_video_upsell_data,
 			$post_grid_upsell_data,
 			$visibility_control_upsell_data,
-			$animation_upsell_data
+			$animation_upsell_data,
+			$countdown_upsell_data
 		);
 
 		return array(

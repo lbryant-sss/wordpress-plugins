@@ -62,8 +62,10 @@ function mesmerize_prepare_pages_after_ocdi( $data ) {
 		$format       = implode( ', ', $placeholders );
 
 		global $wpdb;
+        //phpcs:ignore 	WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 		$query = $wpdb->prepare( "SELECT ID, guid FROM $wpdb->posts WHERE guid IN($format)", $guids );
 
+        //phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, 	WordPress.DB.DirectDatabaseQuery.NoCaching
 		$result = $wpdb->get_results( $query );
 
 		foreach ( (array) $result as $item ) {

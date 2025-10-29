@@ -200,6 +200,7 @@ class Template {
 		}
 
 		if ( $echo ) {
+            //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction
 			echo $content;
 		} else {
 			return $content;
@@ -282,7 +283,7 @@ class Template {
 					set_theme_mod( 'first_time_widget_' . $data['id'], false );
 
 					$widget_content = array(
-						'title'  => __( $data['title'], 'cloudpress-companion-companion' ),
+						'title'  => $data['title'],
 						'text'   => '<ul><li><a href="http://#">Documentation</a></li><li><a href="http://#">Forum</a></li><li><a href="http://#">FAQ</a></li><li><a href="http://#">Contact</a></li></ul>',
 						'filter' => false,
 					);

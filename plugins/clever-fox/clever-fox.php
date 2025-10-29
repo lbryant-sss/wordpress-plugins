@@ -2,7 +2,7 @@
 /**
 * Plugin Name: Clever Fox
 * Description: Clever Fox plugin to enhance the functionality for free themes made by Nayra Themes. More than 60000+ trusted websites with Nayra Themes. It provides intuitive features to your website. 45+ Themes compatible with Clever Fox. See below free themes listed here. Avril, Gradiant, Flavita, Fiona Blog, MetaSoft, Conceptly & ColorPress is one of highest installations themes in our collections. Visit our website and find theme as you need. https://www.nayrathemes.com/themes/
-* Version: 27.0
+* Version: 27.1
 * Author: nayrathemes
 * Author URI: https://nayrathemes.com
 * Requires:	4.6 or higher
@@ -643,7 +643,7 @@ if( 'NexCraft' == $theme->name || 'Nexcraft BPO' == $theme->name ){
 											$specia_btn_value= 'Install & Activate Now';
 										endif;
 										$theme_status = 'clever-fox-theme-' . $get_theme_staus;
-										echo sprintf(/* translators: 1: Theme Slug 3:Anchor Class 4: Text */ esc_html__( '<a href="#" class="%3$s xl-btn-active clever-fox-btn-outline xl-install-action clever-fox-btn" data-theme-slug="%1$s">%4$s</a>', 'clever-fox' ), esc_html($themes->name),esc_url( admin_url( 'themes.php?theme=%1$s' ) ), esc_html($theme_status), esc_html($specia_btn_value) );
+										echo wp_kses_post(sprintf(/* translators: 1: Theme Slug 3:Anchor Class 4: Text */ __( '<a href="#" class="%3$s xl-btn-active clever-fox-btn-outline xl-install-action clever-fox-btn" data-theme-slug="%1$s">%4$s</a>', 'clever-fox' ), esc_html($themes->name),esc_url( admin_url( 'themes.php?theme=%1$s' ) ), esc_html($theme_status), esc_html($specia_btn_value) ) );
 										//switch_theme( $themes->name );
 										?>
 									</div>

@@ -11,11 +11,7 @@ export const UpdateBlockConfirm = ({ inputs, onConfirm, onCancel }) => {
 	const detachedEl = useRef(null);
 
 	const handleConfirm = async () => {
-		await onConfirm({ data: inputs });
-		setTimeout(() => {
-			// Reload the page after a short delay to let the DOM update
-			window.location.reload();
-		}, 1500);
+		await onConfirm({ data: inputs, shouldRefreshPage: true });
 	};
 
 	const handleCancel = useCallback(() => {

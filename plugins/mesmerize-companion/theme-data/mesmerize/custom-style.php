@@ -69,7 +69,7 @@ function mesmerize_print_content_custom_style() {
 
 	?>
 	<style id="page-content-custom-styles">
-		<?php echo strip_tags( $style ); ?>
+		<?php echo strip_tags( $style ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, WordPress.WP.AlternativeFunctions.strip_tags_strip_tags,	WordPress.Security.EscapeOutput.UnsafePrintingFunction ?>
 	</style>
 	<?php
 }

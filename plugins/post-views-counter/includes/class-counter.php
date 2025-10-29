@@ -34,59 +34,6 @@ class Post_Views_Counter_Counter {
 	}
 
 	/**
-	 * Get storage data.
-	 *
-	 * @return array
-	 */
-	public function get_storage() {
-		return $this->storage;
-	}
-
-	/**
-	 * Get storage type.
-	 *
-	 * @return array
-	 */
-	public function get_storage_type() {
-		return $this->storage_type;
-	}
-
-	/**
-	 * Set storage type. Used only for Fast AJAX requests.
-	 *
-	 * @param string $storage_type
-	 * @param object $class
-	 *
-	 * @return bool
-	 */
-	public function set_storage_type( $storage_type, $class ) {
-		// allow only from pro counter class
-		if ( ! is_a( $class, 'Post_Views_Counter_Pro_Counter' ) )
-			return false;
-
-		// allow only fast ajax requests
-		if ( ! ( defined( 'SHORTINIT' ) && SHORTINIT ) )
-			return false;
-
-		// check post data
-		if ( ! isset( $_POST['action'], $_POST['content'], $_POST['type'], $_POST['subtype'], $_POST['storage_type'], $_POST['storage_data'], $_POST['pvcp_nonce'] ) )
-			return false;
-
-		// verify nonce
-		if ( ! wp_verify_nonce( $_POST['pvcp_nonce'], 'pvcp-check-post' ) )
-			return false;
-
-		// allow only valid storage type
-		if ( in_array( $storage_type, [ 'cookies', 'cookieless' ], true ) ) {
-			$this->storage_type = $storage_type;
-
-			return true;
-		}
-
-		return false;
-	}
-
-	/**
 	 * Add Post ID to queue.
 	 *
 	 * @param int $post_id
@@ -144,6 +91,13 @@ class Post_Views_Counter_Counter {
 	 * @return void
 	 */
 	public function print_queue_count() {
+		// get main instance
+		$pvc = Post_Views_Counter();
+
+		// only load manual counter for js mode, not for rest_api mode
+		if ( $pvc->options['general']['counter_mode'] !== 'js' )
+			return;
+
 		// any ids to "view"?
 		if ( ! empty( $this->queue ) ) {
 			echo "
@@ -549,6 +503,19 @@ class Post_Views_Counter_Counter {
 		// invalid storage type?
 		if ( ! in_array( $storage_type, [ 'cookies', 'cookieless' ], true ) )
 			return new WP_Error( 'pvc_invalid_storage_type', __( 'Invalid storage type.', 'post-views-counter' ), [ 'status' => 404 ] );
+
+		// apply crawler/bot check filter
+		$allowed = apply_filters( 'pvc_rest_api_count_post_check', true, $request, $post_id );
+
+		if ( ! $allowed ) {
+			return new WP_REST_Response( [
+				'post_id'	=> $post_id,
+				'counted'	=> false,
+				'reason'	=> 'filtered',
+				'storage'	=> [],
+				'type'		=> 'post'
+			], 200 );
+		}
 
 		// set storage type
 		$this->storage_type = $storage_type;

@@ -203,11 +203,11 @@ class Woo_Categories extends Widget_Base {
 			)
 		);
 
-        $this->add_group_control(
+		$this->add_group_control(
 			Group_Control_Image_Size::get_type(),
 			array(
-				'name'      => 'thumbnail_image',
-				'default'   => 'full',
+				'name'    => 'thumbnail_image',
+				'default' => 'full',
 			)
 		);
 
@@ -355,7 +355,7 @@ class Woo_Categories extends Widget_Base {
 				'options' => array(
 					'name'       => __( 'Name', 'premium-addons-for-elementor' ),
 					'slug'       => __( 'Slug', 'premium-addons-for-elementor' ),
-                    'date'       => __( 'Date', 'premium-addons-for-elementor' ),
+					'date'       => __( 'Date', 'premium-addons-for-elementor' ),
 					'desc'       => __( 'Description', 'premium-addons-for-elementor' ),
 					'count'      => __( 'Count', 'premium-addons-for-elementor' ),
 					'menu_order' => __( 'Menu Order', 'premium-addons-for-elementor' ),
@@ -1026,7 +1026,7 @@ class Woo_Categories extends Widget_Base {
 
 		$settings = $this->get_settings();
 
-        $papro_activated = apply_filters( 'papro_activated', false );
+		$papro_activated = apply_filters( 'papro_activated', false );
 
 		if ( ! $papro_activated || version_compare( PREMIUM_PRO_ADDONS_VERSION, '2.9.19', '<' ) ) {
 
@@ -1073,7 +1073,7 @@ class Woo_Categories extends Widget_Base {
 		$settings = $this->get_settings();
 
 		$args = array(
-            'taxonomy'  => 'product_cat',
+			'taxonomy'   => 'product_cat',
 			'hide_empty' => $settings['hide_empty'],
 			'orderby'    => $settings['orderby'],
 			'order'      => $settings['order'],
@@ -1125,11 +1125,11 @@ class Woo_Categories extends Widget_Base {
 
 		foreach ( $categories as $category ) {
 
-            $settings['thumbnail_image'] = array(
-                'id' => get_term_meta($category->term_id, 'thumbnail_id', true)
-            );
+			$settings['thumbnail_image'] = array(
+				'id' => get_term_meta( $category->term_id, 'thumbnail_id', true ),
+			);
 
-            $thumbnail_html = Group_Control_Image_Size::get_attachment_image_html( $settings, 'thumbnail_image' );
+			$thumbnail_html = Group_Control_Image_Size::get_attachment_image_html( $settings, 'thumbnail_image' );
 
 			include PREMIUM_ADDONS_PATH . 'modules/woocommerce/templates/product-category.php';
 
@@ -1208,7 +1208,7 @@ class Woo_Categories extends Widget_Base {
 
 		$this->add_render_attribute( 'content_wrap' . $index, 'class', 'premium-woo-cats__content-wrap' );
 
-		if( 'none' !== $settings['content_lq_effect'] ) {
+		if ( 'none' !== $settings['content_lq_effect'] ) {
 			$this->add_render_attribute( 'content_wrap' . $index, 'class', 'premium-con-lq__' . $settings['content_lq_effect'] );
 		}
 

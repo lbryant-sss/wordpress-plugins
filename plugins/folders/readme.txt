@@ -37,7 +37,7 @@ A live demo for the Folders plugin is available at <a href="https://folders-demo
 
 = 🛠️ So How Does the Folders plugin Work? =
 
-Upload text, images, videos, and audio. Then organize everything you upload into neat folders. For instance, create a media folder, content folder, and image folder, then have them all organized by date. It has a drag and drop interface, making it user-friendly for everyone. It’s like having your own media library at your own disposal. Create this media library for yourself or others.
+Upload pages, posts, images, videos, and audio. Then organize everything you upload into neat folders. For instance, create a media folder, content folder, and image folder, then have them all organized by date. It has a drag and drop interface, making it user-friendly for everyone. It’s like having your own media library at your own disposal. Create this media library for yourself or others.
 
 = 🔥 FOLDERS PLUGIN FEATURES =
 

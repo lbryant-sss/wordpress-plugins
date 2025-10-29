@@ -26,7 +26,7 @@ function extendthemes_remote_notifications_handle( $data ) {
 
 		<div class="left-container">
 			<div class="message">
-				<?php echo wpautop( trim( $data['message'] ) ); ?>
+				<?php echo wpautop( trim( $data['message'] ) ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction ?>
 			</div>
 		</div>
 
@@ -51,7 +51,7 @@ function extendthemes_remote_notifications_handle( $data ) {
 				font-size: 20px;
 			}
 
-			<?php echo str_replace( '#ID', "[data-cp-notification-name=\"extendthemes_remote_notification_mesmerize_{$data['notification_id']}\"]", $data['custom_css'] ); ?>
+			<?php echo str_replace( '#ID', "[data-cp-notification-name=\"extendthemes_remote_notification_mesmerize_{$data['notification_id']}\"]", $data['custom_css'] ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction?>
 		</style>
 	</div>
 	<?php

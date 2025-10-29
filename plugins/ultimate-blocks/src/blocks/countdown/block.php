@@ -129,47 +129,66 @@ function ub_render_countdown_block($attributes, $_, $block){
     else{
         $selectedFormat = $odometerFormat;
     }
-	$unit_color = isset($attributes['unitColor']) ? $attributes['unitColor'] : '';
-	$countdown_color = isset($attributes['countdownColor']) ? $attributes['countdownColor'] : '';
+    $unit_color = isset($attributes['unitColor']) ? $attributes['unitColor'] : '';
+    $countdown_color = isset($attributes['countdownColor']) ? $attributes['countdownColor'] : '';
 
-	$padding = Ultimate_Blocks\includes\get_spacing_css( isset($block_attrs['padding']) ? $block_attrs['padding'] : array() );
-	$margin = Ultimate_Blocks\includes\get_spacing_css( isset($block_attrs['margin']) ? $block_attrs['margin'] : array() );
+    $padding = Ultimate_Blocks\includes\get_spacing_css( isset($block_attrs['padding']) ? $block_attrs['padding'] : array() );
+    $margin = Ultimate_Blocks\includes\get_spacing_css( isset($block_attrs['margin']) ? $block_attrs['margin'] : array() );
 
     $styles = array(
         "--ub-countdown-unit-color" => $unit_color,
-		"--ub-countdown-digit-color" => $countdown_color,
-		'padding-top'        => isset($padding['top']) ? $padding['top'] : "",
-		'padding-left'       => isset($padding['left']) ? $padding['left'] : "",
-		'padding-right'      => isset($padding['right']) ? $padding['right'] : "",
-		'padding-bottom'     => isset($padding['bottom']) ? $padding['bottom'] : "",
-		'margin-top'         => !empty($margin['top']) ? $margin['top']  : "",
-		'margin-left'        => !empty($margin['left']) ? $margin['left']  : "",
-		'margin-right'       => !empty($margin['right']) ? $margin['right']  : "",
-		'margin-bottom'      => !empty($margin['bottom']) ? $margin['bottom']  : "",
-		'text-align' 		 => isset($attributes['messageAlign']) ? $attributes['messageAlign']  : '',
+        "--ub-countdown-digit-color" => $countdown_color,
+        'padding-top'        => isset($padding['top']) ? $padding['top'] : "",
+        'padding-left'       => isset($padding['left']) ? $padding['left'] : "",
+        'padding-right'      => isset($padding['right']) ? $padding['right'] : "",
+        'padding-bottom'     => isset($padding['bottom']) ? $padding['bottom'] : "",
+        'margin-top'         => !empty($margin['top']) ? $margin['top']  : "",
+        'margin-left'        => !empty($margin['left']) ? $margin['left']  : "",
+        'margin-right'       => !empty($margin['right']) ? $margin['right']  : "",
+        'margin-bottom'      => !empty($margin['bottom']) ? $margin['bottom']  : "",
+        'text-align' 		 => isset($attributes['messageAlign']) ? $attributes['messageAlign']  : '',
     );
 
+    $pro_data_attributes = apply_filters(
+        'ubpro_countdown_data_attributes',
+        array(),
+        $attributes,
+        $block
+    );
+    $pro_attribute_string = '';
+    if ( is_array( $pro_data_attributes ) && ! empty( $pro_data_attributes ) ) {
+        foreach ( $pro_data_attributes as $attr => $value ) {
+            if ( '' === $value || null === $value ) {
+                continue;
+            }
+
+            $pro_attribute_string .= sprintf( ' %1$s="%2$s"', esc_attr( $attr ), esc_attr( $value ) );
+        }
+    }
+
     if($timeLeft > 0){
-		return sprintf(
-			'<div style="%1$s" %2$s class="wp-block-ub-countdown ub-countdown ub-countdown-wrapper%3$s" data-expirymessage="%4$s" data-enddate="%5$s" data-largestUnit="%6$s" data-smallestunit="%7$s">%8$s</div>',
-			Ultimate_Blocks\includes\generate_css_string($styles),
-			($blockID === '' ? '' : 'id="ub_countdown_' . esc_attr($blockID) . '"'),
-			(isset($className) ? ' ' . esc_attr($className) : ''),
-			esc_attr($expiryMessage),
-			esc_attr($endDate),
-			esc_attr($largestUnit),
-			esc_attr($smallestUnit),
-			$selectedFormat
-		);
-		}
-	else {
-		return sprintf(
-			'<div class="wp-block-ub-countdown ub-countdown %1$s" %2$s>%3$s</div>',
-			(isset($className) ? ' ' . esc_attr($className) : ''),
-			($blockID === '' ? 'style="text-align:' . esc_attr($messageAlign) . ';"' : 'id="ub_countdown_' . esc_attr($blockID) . '"'),
-			wp_kses_post($expiryMessage)
-		);
-	}
+        return sprintf(
+            '<div style="%1$s" %2$s%9$s class="wp-block-ub-countdown ub-countdown ub-countdown-wrapper%3$s" data-expirymessage="%4$s" data-enddate="%5$s" data-largestUnit="%6$s" data-smallestunit="%7$s">%8$s</div>',
+            Ultimate_Blocks\includes\generate_css_string($styles),
+            ($blockID === '' ? '' : 'id="ub_countdown_' . esc_attr($blockID) . '"'),
+            (isset($className) ? ' ' . esc_attr($className) : ''),
+            esc_attr($expiryMessage),
+            esc_attr($endDate),
+            esc_attr($largestUnit),
+            esc_attr($smallestUnit),
+            $selectedFormat,
+            $pro_attribute_string
+        );
+        }
+    else {
+        return sprintf(
+            '<div class="wp-block-ub-countdown ub-countdown %1$s" %2$s%4$s>%3$s</div>',
+            (isset($className) ? ' ' . esc_attr($className) : ''),
+            ($blockID === '' ? 'style="text-align:' . esc_attr($messageAlign) . ';"' : 'id="ub_countdown_' . esc_attr($blockID) . '"'),
+            wp_kses_post($expiryMessage),
+            $pro_attribute_string
+        );
+    }
 }
 
 function ub_register_countdown_block() {

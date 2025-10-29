@@ -14,7 +14,7 @@
 		</div>
 		<div class="popup-footer">
 			<div class="footer-content">
-				<h2><?php echo esc_html( sprintf( __( 'This demo site is available only in %s', 'mesmerize-companion' ), apply_filters( 'mesmerize_demos_available_in_pro', 'Mesmerize PRO' ) ) ); ?></h2>
+				<h2><?php echo esc_html( sprintf( __( 'This demo site is available only in %s', 'mesmerize-companion' ), apply_filters( 'mesmerize_demos_available_in_pro', 'Mesmerize PRO' ) ) ); // phpcs:ignore WordPress.WP.I18n.MissingArgDomain, WordPress.WP.I18n.MissingTranslatorsComment ?></h2>
 				<a href='<?php echo esc_attr( mesmerize_get_upgrade_link() ); ?>' class='button button-hero button-primary upgrade-to-pro' target='_blank'><?php esc_html_e( 'Check all PRO features', 'mesmerize-companion' ); ?></a>
 			</div>
 		</div>

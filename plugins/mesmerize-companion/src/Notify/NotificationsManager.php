@@ -51,6 +51,7 @@ class NotificationsManager {
 			$query_string = '?' . $query_string;
 		}
 
+        //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction
 		return apply_filters( 'extendthemes_notifications_url', $base . $query_string, $base, $query );
 	}
 
@@ -80,6 +81,7 @@ class NotificationsManager {
 
 			if ( $data instanceof \WP_Error ) {
 				if ( NotificationsManager::isDevMode() ) {
+                    //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction
 					die( $data->get_error_message() );
 				}
 			} else {
@@ -170,7 +172,7 @@ class NotificationsManager {
 				?>
 			<script>
 				jQuery.post(
-					"<?php echo admin_url( '/admin-ajax.php' ); ?>", {
+					"<?php echo admin_url( '/admin-ajax.php' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction ?>", {
 						action: "extendthemes_get_remote_data_notifications"
 					}
 				)
@@ -196,6 +198,7 @@ class NotificationsManager {
 		}
 
 		// there is no need to sanitize the name field because it is checked against an array of possible values
+        //phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, 	WordPress.Security.ValidatedSanitizedInput.InputNotValidated, 	WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.NonceVerification.Missing
 		$name                = isset( $_REQUEST['notification'] ) ? $_REQUEST['notification'] : false;
 		$notifications_names = NotificationsManager::getCurrentNotificationsNames();
 

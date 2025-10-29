@@ -27,10 +27,10 @@ class ContentSectionsListControl extends RowsListControl {
 			$this->companion()->getThemeSlug() . '-row-list-control',
 			'mesmerize_content_list_control_l10n',
 			array(
-				'in_pro'   => esc_html__( 'Available in PRO', 'mesmerize' ),
+				'in_pro'   => esc_html__( 'Available in PRO', 'mesmerize-companion' ),
 				'insert'   => esc_html( $this->cpData['insertText'] ),
-				'in_page'  => esc_html__( 'Section is already in page', 'mesmerize' ),
-				'pro_only' => esc_html__( 'Pro Only', 'mesmerize' ),
+				'in_page'  => esc_html__( 'Section is already in page', 'mesmerize-companion' ),
+				'pro_only' => esc_html__( 'Pro Only', 'mesmerize-companion' ),
 			)
 		);
 	}
@@ -99,7 +99,7 @@ class ContentSectionsListControl extends RowsListControl {
 						
 						<?php if ( $proOnly ) : ?>
 							<span data-id="<?php echo esc_attr( $item['id'] ); ?>" data-pro-only="true" class="available-item-hover-button" <?php $this->getSettingAttr(); ?> >
-								<?php _e( 'Available in PRO', 'cloudpress-companion' ); ?>
+								<?php _e( 'Available in PRO', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.UnsafePrintingFunction ?>
 							</span>
 						<?php else : ?>
 							<span data-id="<?php echo esc_attr( $item['id'] ); ?>" class="available-item-hover-button" <?php $this->getSettingAttr(); ?> >

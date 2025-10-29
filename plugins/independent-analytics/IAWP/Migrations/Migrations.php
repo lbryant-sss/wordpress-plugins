@@ -3,9 +3,12 @@
 namespace IAWP\Migrations;
 
 use IAWP\Database;
+use IAWP\Illuminate_Builder;
 use IAWP\Query;
+use IAWP\Tables;
 use IAWP\Utils\Dir;
 use IAWP\Utils\Server;
+use IAWPSCOPED\Illuminate\Support\Str;
 /** @internal */
 class Migrations
 {
@@ -140,6 +143,48 @@ class Migrations
             \delete_option('iawp_migration_started_at');
         }
     }
+    public static function handle_migration_45_collation_error() : void
+    {
+        $db_version = \get_option('iawp_db_version', '0');
+        $is_migrating = \get_option('iawp_is_migrating', '0') === '1';
+        $has_error = \get_option('iawp_migration_error_query', null) !== null && \get_option('iawp_migration_error', null) !== null;
+        if ($db_version !== '44' || !$is_migrating || !$has_error) {
+            return;
+        }
+        $failed_query = \get_option('iawp_migration_error_query', '');
+        if (!\is_string($failed_query)) {
+            return;
+        }
+        $failed_query = \strtolower(\trim($failed_query));
+        if (!Str::startsWith($failed_query, 'update')) {
+            return;
+        }
+        try {
+            $updated_referrer = Illuminate_Builder::new()->from(Tables::referrers())->whereNotNull('referrer_type_id')->first();
+            if ($updated_referrer !== null) {
+                return;
+            }
+        } catch (\Throwable $e) {
+            return;
+        }
+        try {
+            Illuminate_Builder::new()->select('type')->from(Tables::referrers())->value('type');
+        } catch (\Throwable $e) {
+            return;
+        }
+        try {
+            $referrers_table = Tables::referrers();
+            Illuminate_Builder::get_connection()->statement("ALTER TABLE {$referrers_table} DROP COLUMN referrer_type_id");
+        } catch (\Throwable $e) {
+            return;
+        }
+        \delete_option('iawp_last_finished_migration_step');
+        \delete_option('iawp_migration_error');
+        \delete_option('iawp_migration_error_original_error_message');
+        \delete_option('iawp_migration_error_query');
+        \delete_option('iawp_migration_started_at');
+        \update_option('iawp_is_migrating', '0', \true);
+    }
     public static function handle_migration_46_error() : void
     {
         $db_version = \get_option('iawp_db_version', '0');
@@ -149,6 +194,7 @@ class Migrations
         if ($db_version === '45' && $is_migrating && $last_finished_step === '7' && $has_error) {
             \delete_option('iawp_last_finished_migration_step');
             \delete_option('iawp_migration_error');
+            \delete_option('iawp_migration_error_original_error_message');
             \delete_option('iawp_migration_error_query');
             \delete_option('iawp_migration_started_at');
             \update_option('iawp_is_migrating', '0', \true);

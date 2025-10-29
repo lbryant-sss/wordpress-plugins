@@ -164,6 +164,8 @@ class SQ_Controllers_SeoSettings extends SQ_Classes_FrontController {
 				//Refresh the checkin on login
 				delete_transient( 'sq_checkin' );
 				SQ_Classes_RemoteController::checkin();
+				SQ_Classes_ObjController::getClass( 'SQ_Classes_Helpers_Cache' )->invalidateCache();
+				SQ_Classes_Error::setMessage( esc_html__( "Success!", 'squirrly-seo' ) );
 
 				break;
 			case 'sq_seosettings_ga_save':
@@ -513,7 +515,7 @@ class SQ_Controllers_SeoSettings extends SQ_Classes_FrontController {
 					}
 				}
 				break;
-			/**************************** Ajax *******************************************************/ case 'sq_ajax_seosettings_save':
+				/**************************** Ajax *******************************************************/ case 'sq_ajax_seosettings_save':
 			SQ_Classes_Helpers_Tools::setHeader( 'json' );
 
 			$response = array();
@@ -629,6 +631,7 @@ class SQ_Controllers_SeoSettings extends SQ_Classes_FrontController {
 				SQ_Classes_Helpers_Tools::setHeader( 'json' );
 				echo wp_json_encode( array() );
 				exit();
+
 		}
 
 	}

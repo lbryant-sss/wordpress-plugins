@@ -1705,6 +1705,21 @@ class Mini_Cart extends Widget_Base {
 		);
 
 		$this->add_control(
+			'allow_backorders',
+			array(
+				'label' => __( 'Allow Backorders', 'premium-addons-for-elementor' ),
+				'type' => Controls_Manager::SWITCHER,
+				'prefix_class' => 'pa-allow-bkorders-',
+				'description' => __( 'Allow customers to order quantities beyond available stock.', 'premium-addons-for-elementor' ),
+				'condition'  => array(
+					'qty_controls'   => 'yes',
+					'content_layout' => array( 'layout-1', 'layout-2' ),
+				),
+			)
+		);
+
+
+		$this->add_control(
 			'separator',
 			array(
 				'label'        => __( 'Items Divider', 'premium-addons-for-elementor' ),

@@ -395,6 +395,7 @@ class Customizer {
 		add_action(
 			'customize_controls_print_scripts',
 			function () {
+                //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				if ( isset( $_REQUEST['cp__changeset__preview'] ) ) : ?>
 				<style>
 					#customize-controls {
@@ -479,19 +480,19 @@ class Customizer {
 						<div class="f_circleG" id="frotateG_07"></div>
 						<div class="f_circleG" id="frotateG_08"></div>
 					</div>
-					<p class="message-area"><?php _e( 'Please wait,<br/>this might take a little while', 'one-page-express-pro' ); ?></p>
+					<p class="message-area"><?php _e( 'Please wait,<br/>this might take a little while', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction?></p>
 				</div>
 			</div>
 
 				<?php $frontpage_cb = uniqid( 'cb_' ) . '_CreateFrontendPage'; ?>
 			<div class='reiki-needed-container' data-type="select">
 				<div class="description customize-section-description">
-					<span><?php _e( 'Editing inner pages inside the Customizer is available in the PRO version of the theme', 'cloudpress-companion' ); ?>.</span>
-					<a href="<?php echo mesmerize_get_upgrade_link(); ?>" target="_blank" style="text-decoration:none; display:block" class="button button-orange reiki-needed select available-item-hover-button"><?php _e( 'Upgrade to PRO', 'reiki-companion' ); ?></a>
+					<span><?php _e( 'Editing inner pages inside the Customizer is available in the PRO version of the theme', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction ?>.</span>
+					<a href="<?php echo mesmerize_get_upgrade_link(); ?>" target="_blank" style="text-decoration:none; display:block" class="button button-orange reiki-needed select available-item-hover-button"><?php _e( 'Upgrade to PRO', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction?></a>
 				</div>
 			</div>
 			<script>
-				<?php echo $frontpage_cb; ?> = function() {
+				<?php echo $frontpage_cb; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction ?> = function() {
 					jQuery.post(
 						parent.ajaxurl, {
 							action: 'create_home_page',
@@ -506,22 +507,48 @@ class Customizer {
 
 			<div class='reiki-needed-container' data-type="activate">
 				<div class="description customize-section-description">
-					<span><?php _e( 'This section only works when the ' . $self->companion()->getThemeName() . ' custom front page is activated', 'cloudpress-companion' ); ?>.</span>
-					<a onclick="<?php echo esc_attr( $frontpage_cb ); ?>()" class="reiki-needed activate available-item-hover-button"><?php _e( 'Activate ' . $self->companion()->getThemeName() . ' Front Page', 'cloudpress-companion' ); ?></a>
-				</div>
+				<span>
+                    <?php
+                    echo sprintf(
+                    // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
+                        esc_html__(
+                            'This section only works when the %s custom front page is activated',
+                            'mesmerize-companion'
+                        ),
+                        esc_html( $self->companion()->getThemeName() )
+                    );
+                    ?>
+                </span
+                    <a
+                            onclick="<?php echo esc_attr( $frontpage_cb ); ?>()"
+                            class="reiki-needed activate available-item-hover-button"
+                    >
+                        <?php
+                        echo sprintf(
+                        // phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
+                            esc_html__(
+                                'Activate %s Front Page',
+                                'mesmerize-companion'
+                            ),
+                            esc_html( $self->companion()->getThemeName() )
+                        );
+                        ?>
+                    </a>
+                </div>
 			</div>
 
 				<?php $make_maintainable_cb = uniqid( 'cb_' ) . '_MakePageMaintainable'; ?>
 
 			<script>
-				var <?php echo $make_maintainable_cb; ?> =
+				var <?php echo $make_maintainable_cb; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction?> =
 
 					function() {
 						var page = top.CP_Customizer.preview.data().pageID;
 						jQuery.post(ajaxurl, {
 							action: 'cp_open_in_customizer',
 							page: page,
-							mark_as_editable: true
+							mark_as_editable: true,
+                            _wpnonce: '<?php echo wp_create_nonce( 'cp_open_in_customizer_nonce' ) //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction;?>'
 						}).done(function(response) {
 							window.location = response.trim();
 						});
@@ -530,18 +557,18 @@ class Customizer {
 
 			<div class='reiki-needed-container' data-type="edit-this-page">
 				<div class="description customize-section-description">
-					<span><?php _e( 'This page is not marked as editable in Customizer', 'cloudpress-companion' ); ?>.</span>
-					<a onclick="<?php echo esc_attr( $make_maintainable_cb ); ?>()" class="reiki-needed edit-this-page available-item-hover-button"><?php _e( 'Make this page editable in customizer', 'cloudpress-companion' ); ?></a>
-					<span style="font-size: 11px; padding-top: 14px;line-height: 1.2;"><?php _e( 'A page revision will be created so you can go back if the button was pressed by mistake', 'cloudpress-companion' ); ?>.</span>
+					<span><?php _e( 'This page is not marked as editable in Customizer', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction ?>.</span>
+					<a onclick="<?php echo esc_attr( $make_maintainable_cb ); ?>()" class="reiki-needed edit-this-page available-item-hover-button"><?php _e( 'Make this page editable in customizer', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction ?></a>
+					<span style="font-size: 11px; padding-top: 14px;line-height: 1.2;"><?php _e( 'A page revision will be created so you can go back if the button was pressed by mistake', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction ?>.</span>
 				</div>
 			</div>
 
 
 			<div class='reiki-needed-container' data-type="edit-this-product">
 				<div class="description customize-section-description">
-					<span><?php _e( 'This product page is not marked as editable in Customizer', 'cloudpress-companion' ); ?>.</span>
-					<a onclick="<?php echo esc_attr( $make_maintainable_cb ); ?>()" class="reiki-needed edit-this-page available-item-hover-button"><?php _e( 'Make this product editable in customizer', 'cloudpress-companion' ); ?></a>
-					<span style="font-size: 11px; padding-top: 14px;line-height: 1.2;"><?php _e( 'A page revision will be created so you can go back if the button was pressed by mistake', 'cloudpress-companion' ); ?>.</span>
+					<span><?php _e( 'This product page is not marked as editable in Customizer', 'mesmerize-companion' );  //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction?>.</span>
+					<a onclick="<?php echo esc_attr( $make_maintainable_cb ); ?>()" class="reiki-needed edit-this-page available-item-hover-button"><?php _e( 'Make this product editable in customizer', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction ?></a>
+					<span style="font-size: 11px; padding-top: 14px;line-height: 1.2;"><?php _e( 'A page revision will be created so you can go back if the button was pressed by mistake', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction ?>.</span>
 				</div>
 			</div>
 

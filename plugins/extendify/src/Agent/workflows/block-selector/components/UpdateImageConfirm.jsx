@@ -13,8 +13,8 @@ export const UpdateImageConfirm = ({ inputs, onConfirm, onCancel }) => {
 				previousContent: inputs.previousContent,
 				newContent: walkAndUpdateImageDetails(inputs, image),
 			},
+			shouldRefreshPage: true,
 		});
-		setTimeout(() => window.location.reload(), 1000);
 	};
 
 	useEffect(() => {

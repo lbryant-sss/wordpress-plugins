@@ -4,7 +4,7 @@ Tags: Elementor addons, mega menu builder,  header footer builder, elementor add
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 3.7.4
+Stable tag: 3.7.5
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -332,46 +332,59 @@ ElementsKit is brought to you by Wpmet, a name **trusted by 10,00,000 satisfied 
 Visit  [wpmet](https://wpmet.com/?utm_source=org&utm_medium=readme)  for essential WordPress [Tutorials, Tips & Tricks](https://wpmet.com/blog)!
 
 == Changelog ==
-ElementsKit Elementor Addons Version: 3.7.4 (2025-10-20)
-Fixed: Deprecated Elementor swiper button styles
-Fixed: Width and height not working in pricing table widget
-Improved: Input styling controls for mailchimp widget
-Improved: Admin dashboard page design
 
-ElementsKit Elementor Addons Version: 3.7.3 (2025-09-24)
-Added: Elementor element manager compatibility
-Fixed: Social icon size not working for SVG in team widget
-Improved: Content retrieval using slugs for the mega menu and advanced widgets
-Improved: Query optimized for the content retrieval of advanced widgets content
-Improved: Slug-based page retrieval and CPT visibility for mega menu, advanced widgets
+= ElementsKit Elementor Addons Version: 3.7.5 (2025-10-28) =
 
-ElementsKit Elementor Addons Version: 3.7.2 (2025-09-03)
-Fixed: SVG icon compatibility issue in header search widget
-Fixed: Submenu icons not showing in mobile menu
+* Fixed: Mega menu hides after applying WooCommerce filter
+* Improved: Dashboard onboard UI
 
-ElementsKit Elementor Addons Version: 3.7.1 (2025-09-02)
-Fixed: Drop down icons are not showing in nav menu widget
+= ElementsKit Elementor Addons Version: 3.7.4 (2025-10-20) =
 
-ElementsKit Elementor Addons Version: 3.7.0 (2025-09-01)
-Added: Experimental SVG font icon support for ElementsKit icon pack
-Added: Inline video style for video widget
-Added: New glow animation for video widget
-Added: X (Twitter) and TikTok icons
-Fixed: Spinner icon not showing when ajax is enabled for megamenu
-Fixed: Autoplay not working in video widget
-Fixed: Mouse event box click not working in flipbox widget
-Improved: Removed SVG stroke in social icon widget
+* Fixed: Deprecated Elementor swiper button styles
+* Fixed: Width and height not working in pricing table widget
+* Improved: Input styling controls for mailchimp widget
+* Improved: Admin dashboard page design
 
-ElementsKit Elementor Addons Version: 3.6.1 (2025-08-13)
-Fixed: Image size not working in [Pricing Table Widget](https://wpmet.com/plugin/elementskit/pricing-table/) header
-Fixed: Limits of selective singular posts in [Header Footer Builder](https://wpmet.com/plugin/elementskit/header-footer-builder/) module
+= ElementsKit Elementor Addons Version: 3.7.3 (2025-09-24) =
 
-ElementsKit Elementor Addons Version: 3.6.0 (2025-08-05)
-Added: Accordion widget title and icon hover color controls
-Added: [Button Widget](https://wpmet.com/plugin/elementskit/button/) box shadow hover control
-Fixed: [Post List](https://wpmet.com/plugin/elementskit/post-list/) widget icon list CSS loading issue
-Fixed: [Advanced Tab](https://wpmet.com/plugin/elementskit/advanced-tab-one/) widget tablet responsiveness issue
-Fixed: Pricing table widget button hover border issue
+* Added: Elementor element manager compatibility
+* Fixed: Social icon size not working for SVG in team widget
+* Improved: Content retrieval using slugs for the mega menu and advanced widgets
+* Improved: Query optimized for the content retrieval of advanced widgets content
+* Improved: Slug-based page retrieval and CPT visibility for mega menu, advanced widgets
+
+= ElementsKit Elementor Addons Version: 3.7.2 (2025-09-03) =
+
+* Fixed: SVG icon compatibility issue in header search widget
+* Fixed: Submenu icons not showing in mobile menu
+
+= ElementsKit Elementor Addons Version: 3.7.1 (2025-09-02) =
+
+* Fixed: Drop down icons are not showing in nav menu widget
+
+= ElementsKit Elementor Addons Version: 3.7.0 (2025-09-01) =
+
+* Added: Experimental SVG font icon support for ElementsKit icon pack
+* Added: Inline video style for video widget
+* Added: New glow animation for video widget
+* Added: X (Twitter) and TikTok icons
+* Fixed: Spinner icon not showing when ajax is enabled for megamenu
+* Fixed: Autoplay not working in video widget
+* Fixed: Mouse event box click not working in flipbox widget
+* Improved: Removed SVG stroke in social icon widget
+
+= ElementsKit Elementor Addons Version: 3.6.1 (2025-08-13) =
+
+* Fixed: Image size not working in [Pricing Table Widget](https://wpmet.com/plugin/elementskit/pricing-table/) header
+* Fixed: Limits of selective singular posts in [Header Footer Builder](https://wpmet.com/plugin/elementskit/header-footer-builder/) module
+
+= ElementsKit Elementor Addons Version: 3.6.0 (2025-08-05) =
+
+* Added: Accordion widget title and icon hover color controls
+* Added: [Button Widget](https://wpmet.com/plugin/elementskit/button/) box shadow hover control
+* Fixed: [Post List](https://wpmet.com/plugin/elementskit/post-list/) widget icon list CSS loading issue
+* Fixed: [Advanced Tab](https://wpmet.com/plugin/elementskit/advanced-tab-one/) widget tablet responsiveness issue
+* Fixed: Pricing table widget button hover border issue
 
 ElementsKit Elementor Addons Version: 3.5.6 (2025-07-22)
 Improved: Some minor dashboard UI

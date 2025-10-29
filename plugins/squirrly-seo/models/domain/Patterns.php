@@ -414,7 +414,12 @@ class SQ_Models_Domain_Patterns extends SQ_Models_Abstract_Domain {
 
 	public function getPagetotal() {
 		global $wp_query;
-		if ( isset( $wp_query->max_num_pages ) ) {
+		if ( isset( $wp_query->found_posts ) ) {
+			$per_page    = $wp_query->get( 'posts_per_page' );
+			$total_found = $wp_query->found_posts;
+
+			return (int) ceil( $total_found / $per_page );
+		} elseif ( isset( $wp_query->max_num_pages ) ) {
 			return (int) $wp_query->max_num_pages;
 		}
 

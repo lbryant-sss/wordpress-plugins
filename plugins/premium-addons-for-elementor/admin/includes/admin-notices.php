@@ -442,8 +442,8 @@ class Admin_Notices {
 
 		if ( ! empty( $key ) && in_array( $key, self::$notices, true ) ) {
 
-			//Make sure new features notices will not appear again.
-			if( false != strpos( $key, 'not' ) ) {
+			// Make sure new features notices will not appear again.
+			if ( false != strpos( $key, 'not' ) ) {
 				update_option( $key, '1' );
 			} else {
 				set_transient( $key, true, 20 * DAY_IN_SECONDS );

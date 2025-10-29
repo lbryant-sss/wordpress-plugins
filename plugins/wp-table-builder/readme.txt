@@ -3,7 +3,7 @@ Contributors: dotcamp, wptb, imtiazrayhan, istiakrayhan, permafrost06, erdembirc
 Tags: table, table builder, drag and drop
 Requires at least: 4.9
 Tested up to: 6.8
-Stable tag: 2.0.18
+Stable tag: 2.0.19
 Requires PHP: 7.4
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
@@ -90,7 +90,11 @@ That's it. You're done!
 
 == Changelog ==
 
-= 2.0.18 =
+= 2.0.19 - October 28th, 2025 =
+* IMPROVE: Added support for media queries in custom styles
+* FIX: Some tables becoming small in mobile devices
+
+= 2.0.18 - October 13th, 2025 =
 * FIX: Sticky first column not persisting
 * FIX: Table spacing not working properly for large tables
 * FIX: Incorrect versions are shown in the rollback option
@@ -99,7 +103,7 @@ That's it. You're done!
 * IMPROVE: Hard limit highlight scaling between 100-105%
 * IMPROVE: Make the default items per head = 1 for mobile
 
-= 2.0.17 =
+= 2.0.17 - October 1st, 2025 =
 * FIX: Scrollable in mobile devices when responsive is enabled
 * PRO: FIX: Search & Sort feature not working properly
 

@@ -788,7 +788,7 @@ class Premium_Textual_Showcase extends Widget_Base {
 			array(
 				'label'      => __( 'Width', 'premium-addons-for-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px', 'em', '%' ),
+				'size_units' => array( 'px', 'em', '%', 'vw', 'custom' ),
 				'range'      => array(
 					'px' => array(
 						'min' => 1,
@@ -814,7 +814,7 @@ class Premium_Textual_Showcase extends Widget_Base {
 			array(
 				'label'      => __( 'Height', 'premium-addons-for-elementor' ),
 				'type'       => Controls_Manager::SLIDER,
-				'size_units' => array( 'px', 'em' ),
+				'size_units' => array( 'px', 'em', '%' ),
 				'range'      => array(
 					'px' => array(
 						'min' => 1,

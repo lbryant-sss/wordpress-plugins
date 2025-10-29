@@ -29,14 +29,14 @@ class CustomizerImporter {
 			Helpers::append_to_file(
 				$error_message,
 				$log_file_path,
-				esc_html__( 'Importing customizer settings', 'pt-ocdi' )
+				esc_html__( 'Importing customizer settings', 'mesmerize-companion' )
 			);
 		} else {
 			// Add this message to log file.
 			$log_added = Helpers::append_to_file(
-				esc_html__( 'Customizer settings import finished!', 'pt-ocdi' ),
+				esc_html__( 'Customizer settings import finished!', 'mesmerize-companion' ),
 				$log_file_path,
-				esc_html__( 'Importing customizer settings', 'pt-ocdi' )
+				esc_html__( 'Importing customizer settings', 'mesmerize-companion' )
 			);
 		}
 	}
@@ -53,7 +53,8 @@ class CustomizerImporter {
 			return new \WP_Error(
 				'missing_cutomizer_import_file',
 				sprintf(
-					esc_html__( 'Error: The customizer import file is missing! File path: %s', 'pt-ocdi' ),
+                     // phpcs:ignore WordPress.WP.I18n.MissingArgDomain, WordPress.WP.I18n.MissingTranslatorsComment
+					esc_html__( 'Error: The customizer import file is missing! File path: %s', 'mesmerize-companion' ),
 					$import_file_path
 				)
 			);
@@ -72,13 +73,13 @@ class CustomizerImporter {
 		if ( ! is_array( $data ) && ( ! isset( $data['template'] ) || ! isset( $data['mods'] ) ) ) {
 			return new \WP_Error(
 				'customizer_import_data_error',
-				esc_html__( 'Error: The customizer import file is not in a correct format. Please make sure to use the correct customizer import file.', 'pt-ocdi' )
+				esc_html__( 'Error: The customizer import file is not in a correct format. Please make sure to use the correct customizer import file.', 'mesmerize-companion' )
 			);
 		}
 		if ( ! in_array( $data['template'], $templates ) ) {
 			return new \WP_Error(
 				'customizer_import_wrong_theme',
-				esc_html__( 'Error: The customizer import file is not suitable for current theme. You can only import customizer settings for the same theme or a child theme.', 'pt-ocdi' )
+				esc_html__( 'Error: The customizer import file is not suitable for current theme. You can only import customizer settings for the same theme or a child theme.', 'mesmerize-companion' )
 			);
 		}
 
@@ -174,6 +175,7 @@ class CustomizerImporter {
 
 			// If error storing permanently, unlink.
 			if ( is_wp_error( $id ) ) {
+                //phpcs:ignore 	WordPress.WP.AlternativeFunctions.unlink_unlink
 				unlink( $file_array['tmp_name'] );
 
 				return $id;

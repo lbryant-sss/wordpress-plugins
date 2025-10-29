@@ -964,13 +964,15 @@ class Premium_Tcloud extends Widget_Base {
 				'class'      => array(
 					'premium-tcloud-container',
 					'premium-tcloud-' . $settings['words_order'],
-					'premium-tcloud-hidden',
 				),
 				'data-chart' => wp_json_encode( $chart_settings ),
 			)
 		);
 
 		if ( in_array( $settings['words_order'], array( 'shape', 'sphere' ), true ) ) {
+
+			$this->add_render_attribute( 'container', 'class', 'premium-tcloud-hidden' );
+
 			$this->add_render_attribute(
 				'canvas',
 				array(

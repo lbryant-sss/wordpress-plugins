@@ -38,7 +38,7 @@ msgstr "https://extendify.com/?utm_source=wp-plugins&utm_campaign=author-uri&utm
 
 #: app/AdminPageRouter.php:41
 #: app/AdminPageRouter.php:65
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-assist-page-c025243e4b633de7ace6.js:8
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/site-assistant.js:5
@@ -94,7 +94,7 @@ msgstr "Subiect"
 msgid "Message"
 msgstr "Mesaj"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:12
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:12
 #: public/build/extendify-assist-page-c025243e4b633de7ace6.js:1
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/components/GuidedTour.jsx:306
@@ -167,7 +167,7 @@ msgstr "Pagini"
 msgid "Select Site Pages"
 msgstr "Selectează paginile site-ului"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:1
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:1
 #: public/build/extendify-assist-page-c025243e4b633de7ace6.js:1
 #: src/Agent/workflows/content/components/GeneratePageResult.jsx:31
 #: src/Assist/components/dashboard/buttons/DismissButton.jsx:16
@@ -190,7 +190,7 @@ msgstr "Înlocuiește imaginea"
 msgid "Remove image"
 msgstr "Șterge imaginea"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:15
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:15
 #: public/build/extendify-assist-page-c025243e4b633de7ace6.js:1
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:7
 #: src/Agent/components/GuidedTour.jsx:478
@@ -219,18 +219,18 @@ msgstr "Setează logo-ul site-ului"
 msgid "Add site description"
 msgstr "Adaugă descrierea site-ului"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:21
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:21
 #: public/build/extendify-assist-page-c025243e4b633de7ace6.js:1
 #: public/build/extendify-launch-71b01d01eb21edb28964.js:8
 #: public/build/extendify-launch-71b01d01eb21edb28964.js:11
-#: src/Agent/workflows/block-selector/components/UpdateBlockConfirm.jsx:70
+#: src/Agent/workflows/block-selector/components/UpdateBlockConfirm.jsx:66
 #: src/Assist/components/tasks/UpdateSiteDescription.jsx:48
 #: src/Launch/components/LoadingIndicator.jsx:5
 #: src/Launch/pages/SiteQuestions.jsx:173
 msgid "Loading..."
 msgstr "Se încarcă..."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-assist-page-c025243e4b633de7ace6.js:1
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/page-creator.js:83
@@ -244,13 +244,13 @@ msgstr "Descriere site"
 msgid "Enter a site description..."
 msgstr "Introdu o descriere pentru site..."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:1
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:4
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:15
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:21
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:1
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:4
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:15
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:21
 #: public/build/extendify-assist-page-c025243e4b633de7ace6.js:1
-#: src/Agent/workflows/block-selector/components/UpdateBlockConfirm.jsx:95
+#: src/Agent/workflows/block-selector/components/UpdateBlockConfirm.jsx:91
 #: src/Agent/workflows/content/components/UpdatePostConfirm.jsx:46
 #: src/Agent/workflows/theme/components/SelectThemeFontsVariation.jsx:95
 #: src/Agent/workflows/theme/components/SelectThemeVariation.jsx:96
@@ -510,7 +510,7 @@ msgstr "Editează navigarea site-ului"
 msgid "Reset site"
 msgstr "Resetează site-ul"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-assist-page-c025243e4b633de7ace6.js:3
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/site-assistant.js:36
@@ -557,7 +557,7 @@ msgstr "Se instalează..."
 msgid "Install Now"
 msgstr "Instalează acum"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-assist-page-c025243e4b633de7ace6.js:4
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/site-assistant.js:58
@@ -689,7 +689,7 @@ msgstr "O imagine cu un grup de pinguini pe un peisaj arctic înghețat, înconj
 msgid "Aspect Ratio"
 msgstr "Raport de aspect"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:15
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:15
 #: public/build/extendify-assist-page-c025243e4b633de7ace6.js:8
 #: src/Agent/workflows/block-selector/components/GenerateImageConfirm.jsx:13
 #: src/Assist/tasks/images/AiImageGeneratorMarkup.jsx:188
@@ -988,7 +988,7 @@ msgstr "Ai întrebări? Întreabă chatbot-ul nostru AI"
 msgid "Getting started with WordPress"
 msgstr "Începe cu WordPress"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-assist-page-c025243e4b633de7ace6.js:8
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/plugin-install.js:5
@@ -998,7 +998,7 @@ msgstr "Începe cu WordPress"
 msgid "Installing a plugin"
 msgstr "Instalarea unui modul"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-assist-page-c025243e4b633de7ace6.js:8
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/plugin-management.js:5
@@ -1008,7 +1008,7 @@ msgstr "Instalarea unui modul"
 msgid "Plugin management"
 msgstr "Administrare module"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-assist-page-c025243e4b633de7ace6.js:8
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/page-editor.js:13
@@ -1018,7 +1018,7 @@ msgstr "Administrare module"
 msgid "Page editor"
 msgstr "Editor de pagini"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-assist-page-c025243e4b633de7ace6.js:8
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: public/build/extendify-library-d2e9d70f24420a92be8d.js:1
@@ -1031,7 +1031,7 @@ msgstr "Editor de pagini"
 msgid "Design Library"
 msgstr "Bibliotecă de design"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-assist-page-c025243e4b633de7ace6.js:8
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/users-screen.js:5
@@ -2133,7 +2133,7 @@ msgstr "Prompt personalizat"
 msgid "Please try again."
 msgstr "Încearcă din nou."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:9
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:9
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:1
 #: src/Agent/components/Rating.jsx:27
 #: src/Agent/components/Rating.jsx:47
@@ -2142,14 +2142,14 @@ msgstr "Încearcă din nou."
 msgid "Remove rating"
 msgstr "Înlătură evaluarea"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:9
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:9
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:1
 #: src/Agent/components/Rating.jsx:28
 #: src/HelpCenter/components/ai-chat/Rating.jsx:27
 msgid "Rate that this answer was helpful"
 msgstr "Evaluează dacă acest răspuns a fost util"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:9
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:9
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:1
 #: src/Agent/components/Rating.jsx:48
 #: src/HelpCenter/components/ai-chat/Rating.jsx:47
@@ -2257,315 +2257,315 @@ msgstr "Rezultatele căutării"
 msgid "Search the knowledge base"
 msgstr "Caută în baza de cunoștințe"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/library-tour.js:31
 #: src/HelpCenter/tours/library-tour.js:31
 msgid "Open the Pattern Library"
 msgstr "Deschide Biblioteca de Modele"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/library-tour.js:32
 #: src/HelpCenter/tours/library-tour.js:32
 msgid "The Extendify pattern library can be opened by clicking the button to the left."
 msgstr "Biblioteca de modele Extendify poate fi deschisă făcând clic pe butonul din stânga."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/library-tour.js:53
 #: src/HelpCenter/tours/library-tour.js:53
 msgid "Filter Patterns"
 msgstr "Filtrează modelele"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/library-tour.js:54
 #: src/HelpCenter/tours/library-tour.js:54
 msgid "Click on any pattern category to refine the selection."
 msgstr "Fă clic pe orice categorie de modele pentru a rafina selecția."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/library-tour.js:79
 #: src/HelpCenter/tours/library-tour.js:79
 msgid "Select a Pattern"
 msgstr "Selectează un model"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/library-tour.js:80
 #: src/HelpCenter/tours/library-tour.js:80
 msgid "Simply select any pattern you wish to insert into a page by clicking on it."
 msgstr "Selectează orice model pe care dorești să-l inserezi într-o pagină făcând clic pe el."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/library-tour.js:99
 #: src/HelpCenter/tours/library-tour.js:99
 msgid "View the Inserted Pattern"
 msgstr "Vezi modelul inserat"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/library-tour.js:100
 #: src/HelpCenter/tours/library-tour.js:100
 msgid "The selected pattern has been inserted into the page."
 msgstr "Modelul selectat a fost inserat în pagină."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/page-editor.js:28
 #: src/HelpCenter/tours/page-editor.js:28
 msgid "Add a Block"
 msgstr "Adaugă un Bloc"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/page-editor.js:29
 #: src/HelpCenter/tours/page-editor.js:29
 msgid "Click the plus to open the block inserter."
 msgstr "Dă clic pe plus pentru a deschide dispozitivul de inserare blocuri."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/page-editor.js:49
 #: src/HelpCenter/tours/page-editor.js:49
 msgid "Block Inserter"
 msgstr "Inserare blocuri"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/page-editor.js:50
 #: src/HelpCenter/tours/page-editor.js:50
 msgid "Add a block by clicking or dragging it onto the page."
 msgstr "Adaugă un bloc făcând clic sau trăgându-l pe pagină."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/page-editor.js:90
 #: src/HelpCenter/tours/page-editor.js:93
 msgid "Page Title"
 msgstr "Titlul paginii"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/page-editor.js:91
 #: src/HelpCenter/tours/page-editor.js:94
 msgid "Edit the page title by clicking it. Note: The title may or may not show up on the published page, depending on the page template used."
 msgstr "Editează titlul paginii dând clic pe el. Notă: Titlul poate apărea sau nu pe pagina publicată, în funcție de șablonul paginii folosit."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/page-editor.js:130
 #: src/HelpCenter/tours/page-editor.js:133
 msgid "Blocks"
 msgstr "Blocuri"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/page-editor.js:131
 #: src/HelpCenter/tours/page-editor.js:134
 msgid "Each block will show up on the page and can be edited by clicking on it."
 msgstr "Fiecare bloc va apărea pe pagină și poate fi editat făcând clic pe el."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/page-editor.js:172
 #: src/HelpCenter/tours/page-editor.js:175
 msgid "This is a sample paragraph block. It can be several sentences long and will span multiple rows. You can add as many blocks as you'd like to the page."
 msgstr "Acesta este un bloc de paragraf exemplu. Poate conține mai multe propoziții și se va întinde pe mai multe rânduri. Poți adăuga câte blocuri dorești pe pagină."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/page-editor.js:187
 #: src/HelpCenter/tours/page-editor.js:190
 msgid "Page and Block Settings"
 msgstr "Setări pagină și bloc"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/page-editor.js:188
 #: src/HelpCenter/tours/page-editor.js:191
 msgid "Select either page or block to change the settings for the entire page or the block that is selected."
 msgstr "Selectează fie pagina, fie blocul pentru a schimba setările pentru întreaga pagină sau pentru blocul selectat."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/page-editor.js:230
 #: src/HelpCenter/tours/page-editor.js:233
 msgid "Preview"
 msgstr "Previzualizare"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/page-editor.js:231
 #: src/HelpCenter/tours/page-editor.js:234
 msgid "Click preview to view how your changes look on the front end of your site."
 msgstr "Dă clic pe previzualizare pentru a vedea cum arată modificările tale pe front-end-ul site-ului."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/page-editor.js:251
 #: src/HelpCenter/tours/page-editor.js:254
 msgid "Publish or Save"
 msgstr "Publică sau salvează"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/page-editor.js:252
 #: src/HelpCenter/tours/page-editor.js:255
 msgid "Click publish or update to save the changes you have made to the page and make them live on the site."
 msgstr "Dă clic pe publică sau actualizează pentru a salva modificările făcute paginii și a le face vizibile pe site."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/plugin-install.js:18
 #: src/HelpCenter/tours/plugin-install.js:17
 msgid "Add New plugin menu"
 msgstr "Adaugă un meniu nou de module"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/plugin-install.js:19
 #: src/HelpCenter/tours/plugin-install.js:18
 msgid "Click here to access the Add Plugins page."
 msgstr "Dă clic aici pentru a accesa pagina Adaugă module."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/plugin-install.js:41
 #: src/HelpCenter/tours/plugin-install.js:40
 msgid "Search"
 msgstr "Căutare"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/plugin-install.js:42
 #: src/HelpCenter/tours/plugin-install.js:41
 msgid "Search for a plugin by name or functionality."
 msgstr "Caută un modul după nume sau funcționalitate."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/plugin-install.js:67
 #: src/HelpCenter/tours/plugin-install.js:66
 msgid "Plugin details"
 msgstr "Detalii modul"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/plugin-install.js:68
 #: src/HelpCenter/tours/plugin-install.js:67
 msgid "See important information about each plugin."
 msgstr "Vezi informații importante despre fiecare modul."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/plugin-install.js:87
 #: src/HelpCenter/tours/plugin-install.js:86
 msgid "Install now"
 msgstr "Instalează acum"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/plugin-install.js:88
 #: src/HelpCenter/tours/plugin-install.js:87
 msgid "Install the plugin. Then, press this button again to activate the plugin."
 msgstr "Instalează modulul. Apoi, apasă din nou acest buton pentru a activa modulul."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/plugin-install.js:113
 #: src/HelpCenter/tours/plugin-install.js:112
 msgid "Upload Plugin"
 msgstr "Încarcă plugin"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/plugin-install.js:114
 #: src/HelpCenter/tours/plugin-install.js:113
 msgid "If you have a plugin from an external source, you can upload it directly here."
 msgstr "Dacă ai un modul dintr-o sursă externă, îl poți încărca direct aici."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/plugin-management.js:18
 #: src/HelpCenter/tours/plugin-management.js:17
 msgid "Installed Plugins menu"
 msgstr "Meniu module instalate"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/plugin-management.js:19
 #: src/HelpCenter/tours/plugin-management.js:18
 msgid "Click this menu to see and manage the plugins you have installed."
 msgstr "Dă clic pe acest meniu pentru a vedea și administra modulele instalate."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/plugin-management.js:44
 #: src/HelpCenter/tours/plugin-management.js:43
 msgid "Installed plugins"
 msgstr "Module instalate"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/plugin-management.js:45
 #: src/HelpCenter/tours/plugin-management.js:44
 msgid "See all plugins installed on your site. This includes plugins that are active and deactivated."
 msgstr "Vezi toate modulele instalate pe site-ul tău. Acestea includ modulele active și dezactivate."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/plugin-management.js:64
 #: src/HelpCenter/tours/plugin-management.js:63
 msgid "Deactivate/activate option"
 msgstr "Dezactivează/activează opțiunea"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/plugin-management.js:65
 #: src/HelpCenter/tours/plugin-management.js:64
 msgid "Under each plugin you can activate or deactivate it."
 msgstr "Sub fiecare modul poți să-l activezi sau dezactivezi."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/plugin-management.js:105
 #: src/HelpCenter/tours/plugin-management.js:104
 msgid "Add another"
 msgstr "Adaugă altul"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/plugin-management.js:106
 #: src/HelpCenter/tours/plugin-management.js:105
 msgid "Click here to add another plugin to your site."
 msgstr "Dă clic aici pentru a adăuga un alt modul pe site-ul tău."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/site-assistant.js:15
 #: src/HelpCenter/tours/site-assistant.js:14
 msgid "Tasks"
 msgstr "Sarcini"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/site-assistant.js:16
 #: src/HelpCenter/tours/site-assistant.js:15
 msgid "Now that you've created your starter site, make it your own with these follow up tasks."
 msgstr "Acum că ai creat site-ul de început, personalizează-l cu aceste sarcini suplimentare."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/site-assistant.js:37
 #: src/HelpCenter/tours/site-assistant.js:36
 msgid "Easily access some of the most common items in WordPress with these quick links."
 msgstr "Accesează ușor unele dintre cele mai comune elemente din WordPress cu aceste legături rapide."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/site-assistant.js:59
 #: src/HelpCenter/tours/site-assistant.js:58
@@ -2577,42 +2577,42 @@ msgstr "Vezi recomandările noastre personalizate pentru tine care te vor ajuta 
 msgid "You can always access the help center by clicking this button."
 msgstr "Poți accesa oricând centrul de ajutor făcând clic pe acest buton."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/site-assistant.js:80
 #: src/HelpCenter/tours/site-assistant.js:100
 msgid "Visit your site"
 msgstr "Vizitează-ți site-ul"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/site-assistant.js:81
 #: src/HelpCenter/tours/site-assistant.js:101
 msgid "You can always visit your site by clicking this button."
 msgstr "Poți vizita oricând site-ul tău făcând clic pe acest buton."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/site-assistant.js:107
 #: src/HelpCenter/tours/site-assistant.js:127
 msgid "Come back to the Site Assistant any time by clicking the menu item."
 msgstr "Revino oricând la Asistentul de site dând clic pe elementul de meniu."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/users-screen.js:18
 #: src/HelpCenter/tours/users-screen.js:17
 msgid "All Users menu"
 msgstr "Meniul Toți Utilizatorii"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/users-screen.js:19
 #: src/HelpCenter/tours/users-screen.js:18
 msgid "Click here to view and manage the users on your site."
 msgstr "Dă clic aici pentru a vedea și gestiona utilizatorii de pe site-ul tău."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/users-screen.js:44
 #: src/Agent/tours/welcome.js:251
@@ -2621,49 +2621,49 @@ msgstr "Dă clic aici pentru a vedea și gestiona utilizatorii de pe site-ul tă
 msgid "Users"
 msgstr "Utilizatori"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/users-screen.js:45
 #: src/HelpCenter/tours/users-screen.js:44
 msgid "See all of your users, including admin users in this table."
 msgstr "Vezi toți utilizatorii tăi, inclusiv utilizatorii administratori, în acest tabel."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/users-screen.js:64
 #: src/HelpCenter/tours/users-screen.js:63
 msgid "Edit user information"
 msgstr "Editează informațiile utilizatorului"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/users-screen.js:65
 #: src/HelpCenter/tours/users-screen.js:64
 msgid "Click the edit button to change the user's role, manage their account, or change their profile information."
 msgstr "Dă clic pe butonul de editare pentru a schimba rolul utilizatorului, a gestiona contul sau a modifica informațiile profilului."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/users-screen.js:95
 #: src/HelpCenter/tours/users-screen.js:94
 msgid "Search for users"
 msgstr "Caută utilizatori"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/users-screen.js:96
 #: src/HelpCenter/tours/users-screen.js:95
 msgid "Use the search bar to find a particular user."
 msgstr "Folosește bara de căutare pentru a găsi un utilizator anume."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/users-screen.js:121
 #: src/HelpCenter/tours/users-screen.js:120
 msgid "Add a new user"
 msgstr "Adaugă un utilizator nou"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/users-screen.js:122
 #: src/HelpCenter/tours/users-screen.js:121
@@ -2846,14 +2846,14 @@ msgstr "Înapoi"
 msgid "Extendify Help Center"
 msgstr "Centrul de Ajutor Extendify"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:12
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:12
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/components/GuidedTour.jsx:310
 #: src/HelpCenter/components/tours/GuidedTour.jsx:311
 msgid "Tour"
 msgstr "Tur"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:12
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:12
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: public/build/extendify-launch-71b01d01eb21edb28964.js:8
 #: src/Agent/components/GuidedTour.jsx:421
@@ -2862,7 +2862,7 @@ msgstr "Tur"
 msgid "Back"
 msgstr "Înapoi"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:12
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:12
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/components/GuidedTour.jsx:431
 #: src/HelpCenter/components/tours/GuidedTour.jsx:434
@@ -2870,7 +2870,7 @@ msgid "Tour Steps"
 msgstr "Pași tur"
 
 #. translators: %1$s is the current step, %2$s is the total number of steps
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:15
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:15
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:7
 #: src/Agent/components/GuidedTour.jsx:438
 #: src/HelpCenter/components/tours/GuidedTour.jsx:441
@@ -2878,7 +2878,7 @@ msgstr "Pași tur"
 msgid "%1$s of %2$s"
 msgstr "%1$s din %2$s"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:15
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:15
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:7
 #: public/build/extendify-launch-71b01d01eb21edb28964.js:8
 #: src/Agent/components/GuidedTour.jsx:467
@@ -2964,8 +2964,8 @@ msgstr "Informativ"
 msgid "Persuasive"
 msgstr "Convingător"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:15
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:15
 #: public/build/extendify-launch-71b01d01eb21edb28964.js:8
 #: src/Agent/components/redirects/RedirectFontsVariations.jsx:12
 #: src/Agent/components/redirects/RedirectThemeVariations.jsx:17
@@ -3116,8 +3116,8 @@ msgstr "Încă un lucru înainte să începem"
 msgid "Hey there, Launch is powered by Extendable and is required to proceed. You can install it from the link below and start over once activated."
 msgstr "Salut, Launch este alimentat de Extendable și este necesar pentru a continua. Îl poți instala din legătura de mai jos și să reîncepi odată activat."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:1
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:1
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
 #: public/build/extendify-launch-71b01d01eb21edb28964.js:14
 #: src/Agent/components/messages/AgentMessage.jsx:20
 #: src/Agent/workflows/content/components/GeneratePageResult.jsx:37
@@ -3341,7 +3341,7 @@ msgstr "Șterge conținutul existent"
 msgid "Create a new page"
 msgstr "Creează o pagină nouă"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: public/build/extendify-page-creator-148f3558c49401e8e24e.js:1
 #: src/Agent/tours/page-creator.js:6
@@ -3539,49 +3539,49 @@ msgstr "Spune-ne despre site-ul tău"
 msgid "Share your vision, and we'll craft a landing page that's perfectly tailored to your needs, ready to launch in no time. Let's begin by learning more about what you're building."
 msgstr "Împărtășește-ți viziunea și vom crea o pagină de destinație perfect adaptată nevoilor tale, gata de lansare rapidă. Să începem prin a afla mai multe despre ce construiești."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/page-creator.js:32
 #: src/HelpCenter/tours/page-creator.js:32
 msgid "Press here to get started with your AI Page Generator."
 msgstr "Apasă aici pentru a începe cu Generatorul tău de Pagini AI."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/page-creator.js:55
 #: src/HelpCenter/tours/page-creator.js:55
 msgid "Page description"
 msgstr "Descriere pagină"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/page-creator.js:56
 #: src/HelpCenter/tours/page-creator.js:56
 msgid "Write a description of the page you want to create. Be as detailed as you like. We will create a page based on this description."
 msgstr "Scrie o descriere a paginii pe care vrei să o creezi. Fii cât de detaliat dorești. Vom crea o pagină pe baza acestei descrieri."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/page-creator.js:84
 #: src/HelpCenter/tours/page-creator.js:84
 msgid "If needed, update your site description here. We use this to add additional context about your website."
 msgstr "Dacă este necesar, actualizează descrierea site-ului aici. Folosim aceasta pentru a adăuga context suplimentar despre site-ul tău."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/page-creator.js:107
 #: src/HelpCenter/tours/page-creator.js:107
 msgid "Generate your page"
 msgstr "Generează pagina ta"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: public/build/extendify-help-center-e0aa1666edadef72cf44.js:4
 #: src/Agent/tours/page-creator.js:108
 #: src/HelpCenter/tours/page-creator.js:108
 msgid "When ready, press here to generate your page."
 msgstr "Când ești pregătit, apasă aici pentru a genera pagina."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:15
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:15
 #: public/build/extendify-shared-c0ba2f3db351851c50df.js:1
 #: src/Agent/components/tooltip/ToolTip.jsx:101
 #: src/Shared/components/ToolTip.jsx:63
@@ -3652,109 +3652,109 @@ msgstr "Arată mai multe întrebări"
 msgid "Hebrew"
 msgstr "Ebraică"
 
-#: app/Agent/Admin.php:223
+#: app/Agent/Admin.php:224
 msgid "What tours are available?"
 msgstr "Ce tururi sunt disponibile?"
 
-#: app/Agent/Admin.php:254
+#: app/Agent/Admin.php:255
 msgid "I want to change my theme styling"
 msgstr "Vreau să schimb stilul temei mele"
 
-#: app/Agent/Admin.php:262
+#: app/Agent/Admin.php:263
 msgid "Edit text on this page"
 msgstr "Editează textul de pe această pagină"
 
-#: app/Agent/Admin.php:270
+#: app/Agent/Admin.php:271
 msgid "How can I create a post?"
 msgstr "Cum pot crea un articol?"
 
-#: app/Agent/Admin.php:274
+#: app/Agent/Admin.php:275
 msgid "How can I create a page?"
 msgstr "Cum pot crea o pagină?"
 
-#: app/Agent/Admin.php:281
+#: app/Agent/Admin.php:282
 msgid "How can I install a plugin?"
 msgstr "Cum pot instala un modul?"
 
-#: app/Agent/Admin.php:288
+#: app/Agent/Admin.php:289
 msgid "How can I change my theme?"
 msgstr "Cum pot schimba tema?"
 
-#: app/Agent/Admin.php:292
+#: app/Agent/Admin.php:293
 msgid "How can I change the site footer?"
 msgstr "Cum pot modifica subsolul site-ului?"
 
-#: app/Agent/Admin.php:296
+#: app/Agent/Admin.php:297
 msgid "How can I change the site header?"
 msgstr "Cum pot modifica antetul site-ului?"
 
-#: app/Agent/Admin.php:303
+#: app/Agent/Admin.php:304
 msgid "How can I upload an image?"
 msgstr "Cum pot încărca o imagine?"
 
-#: app/Agent/Admin.php:307
+#: app/Agent/Admin.php:308
 msgid "How can I change the site icon?"
 msgstr "Cum pot schimba iconul site-ului?"
 
-#: app/Agent/Admin.php:314
+#: app/Agent/Admin.php:315
 msgid "How can I change my site title?"
 msgstr "Cum pot schimba titlul site-ului meu?"
 
-#: app/Agent/Admin.php:318
+#: app/Agent/Admin.php:319
 msgid "How can I change my site tagline?"
 msgstr "Cum pot schimba sloganul site-ului meu?"
 
-#: app/Agent/Admin.php:322
+#: app/Agent/Admin.php:323
 msgid "How can I change my site language?"
 msgstr "Cum pot schimba limba site-ului meu?"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:15
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:15
 #: src/Agent/hooks/useThemeVariations.js:17
 msgid "Failed to fetch theme variations."
 msgstr "Nu am reușit să preiau variațiile temei."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:15
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:15
 #: src/Agent/components/redirects/RedirectThemeVariations.jsx:8
 msgid "Hey there! It looks like you are trying to change your theme colors, but you are not on a page where we can do that."
 msgstr "Salut! Se pare că încerci să schimbi culorile temei, dar nu ești pe o pagină unde putem face asta."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:15
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:15
 #: src/Agent/components/redirects/RedirectFontsVariations.jsx:10
 #: src/Agent/components/redirects/RedirectThemeVariations.jsx:15
 #: src/Agent/workflows/theme/components/RedirectFontsVariations.jsx:10
 msgid "Suggestion:"
 msgstr "Sugestie:"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:15
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:15
 #: src/Agent/workflows/theme/components/SelectThemeVariation.jsx:34
 msgid "Loading variations..."
 msgstr "Încarc variațiile..."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:15
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:15
 #: src/Agent/workflows/theme/components/SelectThemeVariation.jsx:42
 msgid "No variations found"
 msgstr "Nu am găsit nicio variație"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:15
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:15
 #: src/Agent/workflows/theme/components/SelectThemeFontsVariation.jsx:46
 #: src/Agent/workflows/theme/components/SelectThemeVariation.jsx:45
 msgid "We were unable to find any variations for your theme."
 msgstr "Nu am reușit să găsim nicio variație pentru tema ta."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:1
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:4
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:15
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:21
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:1
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:4
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:15
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:21
 #: src/Agent/workflows/block-selector/components/GenerateImageConfirm.jsx:153
 #: src/Agent/workflows/block-selector/components/GenerateImageConfirm.jsx:195
-#: src/Agent/workflows/block-selector/components/UpdateBlockConfirm.jsx:89
+#: src/Agent/workflows/block-selector/components/UpdateBlockConfirm.jsx:85
 #: src/Agent/workflows/block-selector/components/UpdateImageConfirm.jsx:54
 #: src/Agent/workflows/content/components/UpdatePostConfirm.jsx:40
-#: src/Agent/workflows/content/components/UpdatePostStatusConfirm.jsx:36
-#: src/Agent/workflows/plugins/components/InstallPlugin.jsx:130
+#: src/Agent/workflows/content/components/UpdatePostStatusConfirm.jsx:39
+#: src/Agent/workflows/plugins/components/InstallPlugin.jsx:150
 #: src/Agent/workflows/settings/components/UpdateSettingConfirm.jsx:30
 #: src/Agent/workflows/theme/components/SelectThemeFontsVariation.jsx:88
 #: src/Agent/workflows/theme/components/SelectThemeVariation.jsx:89
@@ -3762,181 +3762,181 @@ msgstr "Nu am reușit să găsim nicio variație pentru tema ta."
 msgid "Cancel"
 msgstr "Anulează"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:1
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:4
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:21
-#: src/Agent/workflows/block-selector/components/UpdateBlockConfirm.jsx:78
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:1
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:4
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:21
+#: src/Agent/workflows/block-selector/components/UpdateBlockConfirm.jsx:74
 #: src/Agent/workflows/content/components/UpdatePostConfirm.jsx:28
 #: src/Agent/workflows/theme/components/UpdateMenuConfirm.jsx:55
 msgid "The agent has made the changes in the browser. Please review and confirm."
 msgstr "Agentul a făcut modificările în navigator. Te rog să revizuiești și să confirmi."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: src/Agent/tours/library-tour.js:7
 msgid "Tour the design library"
 msgstr "Explorează biblioteca de designuri"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: src/Agent/tours/page-creator.js:7
 msgid "Learn about the AI Page Generator"
 msgstr "Află despre Generatorul de Pagini AI"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: src/Agent/tours/page-editor.js:14
 msgid "Tour the page editor"
 msgstr "Turul editorului de pagini"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: src/Agent/tours/plugin-install.js:6
 msgid "See how to install a plugin"
 msgstr "Vezi cum să instalezi un modul"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: src/Agent/tours/plugin-management.js:6
 msgid "Learn how to manage plugins"
 msgstr "Învață cum să administrezi modulele"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: src/Agent/tours/site-assistant.js:6
 msgid "Tour the Site Assistant"
 msgstr "Tur ghidat al asistentului site-ului"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: src/Agent/tours/users-screen.js:6
 msgid "Tour the Users screen"
 msgstr "Tur al ecranului Utilizatori"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
 #: src/Agent/components/ChatInput.jsx:165
 msgid "Ask anything"
 msgstr "Întreabă orice"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
 #: src/Agent/components/ChatInput.jsx:186
 msgid "Send message"
 msgstr "Trimite mesajul"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
 #: src/Agent/components/ScrollDownButton.jsx:21
 msgid "Scroll down"
 msgstr "Derulează în jos"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
 #: src/Agent/components/messages/AgentMessage.jsx:59
 msgid "Agent"
 msgstr "Agent"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
 #: src/Agent/components/messages/StatusMessage.jsx:16
 msgid "Working on it..."
 msgstr "Lucrez la asta..."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
 #: src/Agent/components/messages/StatusMessage.jsx:21
 msgid "Gathering data..."
 msgstr "Colectez datele..."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
 #: src/Agent/components/messages/StatusMessage.jsx:22
 msgid "Analyzing..."
 msgstr "Analizez..."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
 #: src/Agent/components/messages/StatusMessage.jsx:23
 #: src/Agent/components/messages/StatusMessage.jsx:24
 #: src/Agent/components/messages/StatusMessage.jsx:25
 msgid "Canceled"
 msgstr "Anulat"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
 #: src/Agent/components/messages/StatusMessage.jsx:26
 msgid "Usage limit reached"
 msgstr "Limită de utilizare atinsă"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
 #: src/Agent/components/messages/StatusMessage.jsx:27
 msgid "Usage limit restored"
 msgstr "Limită de utilizare restaurată"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
 #: src/Agent/components/messages/StatusMessage.jsx:55
 msgid "Something went wrong"
 msgstr "Ceva nu a mers bine"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
 #: src/Agent/components/messages/StatusMessage.jsx:58
 msgid "An unexpected error occurred while processing your request."
 msgstr "A apărut o eroare neașteptată în timpul procesării cererii."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
 #: src/Agent/components/messages/StatusMessage.jsx:109
 msgid "Workflow completed successfully"
 msgstr "Flux finalizat cu succes"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
 #: src/Agent/components/messages/WorkflowComponent.jsx:17
 msgid "Component not available"
 msgstr "Componenta nu este disponibilă"
 
 #. translators: This is for when a component doesn't exist
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
 #: src/Agent/components/messages/WorkflowComponent.jsx:20
 msgid "It may have been removed or is not available for your account."
 msgstr "Poate a fost înlăturat sau nu este disponibil pentru contul tău."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:9
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:9
 #: src/Agent/components/messages/WorkflowMessage.jsx:15
 msgid "What's next? Would you like to do something else?"
 msgstr "Ce urmează? Doriți să faceți altceva?"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
 #: src/Agent/components/layouts/DragResizeLayout.jsx:117
 #: src/Agent/components/layouts/DragResizeLayout.jsx:128
 msgid "Close window"
 msgstr "Închide fereastra"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
 #: src/Agent/components/layouts/DragResizeLayout.jsx:168
 msgid "Drag to move"
 msgstr "Trage pentru a muta"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:9
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:9
 #: src/Agent/components/WelcomeScreen.jsx:20
 msgid "Site is live!"
 msgstr "Site-ul este live!"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:9
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:9
 #: src/Agent/components/WelcomeScreen.jsx:24
 msgid "Your expert AI team is here"
 msgstr "Echipa ta de experți AI este aici"
 
 #. translators: %s is a human-readable time difference, e.g. "2 hours from now"
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:12
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:12
 #: src/Agent/components/messages/UsageMessage.jsx:30
 #, js-format
 msgid "You have reached your daily messages limit. Your limit will reset in %s."
 msgstr "Ai atins limita zilnică de mesaje. Limita ta va fi resetată în %s."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:12
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:12
 #: src/Agent/components/buttons/AdminBar.jsx:50
 #: src/Agent/components/buttons/Mobile.jsx:38
 #: src/Agent/components/buttons/PostEditor.jsx:47
 msgid "Open Agent"
 msgstr "Deschide agentul"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:12
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:12
 #: src/Agent/components/buttons/AdminBar.jsx:63
 #: src/Agent/components/buttons/Mobile.jsx:45
 #: src/Agent/components/buttons/PostEditor.jsx:52
 msgid "AI Agent"
 msgstr "Agent AI"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:15
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:15
 #: src/Agent/components/tooltip/ReOpenToolTip.jsx:8
 msgid "Tooltip pointing to the agent button"
 msgstr "Tooltip indicând spre butonul agentului"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:15
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:15
 #: src/Agent/components/tooltip/ReOpenToolTip.jsx:14
 msgid "Need help again?"
 msgstr "Ai nevoie de ajutor din nou?"
@@ -4042,7 +4042,7 @@ msgstr "De aici poți personaliza dimensiunile, distanțarea și marginile folos
 msgid "Take the welcome tour"
 msgstr "Fă turul de bun venit"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:12
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:12
 #: src/Agent/components/buttons/Mobile.jsx:48
 msgid "How can we help you today?"
 msgstr "Cum te putem ajuta azi?"
@@ -4067,12 +4067,12 @@ msgstr "Navigare subsol"
 msgid "Adding imprint page"
 msgstr "Adăugarea paginii de amprentă"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:15
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:15
 #: src/Agent/components/tooltip/ReOpenToolTip.jsx:17
 msgid "You can always access your AI Agent if you need help with anything on your site."
 msgstr "Poți accesa oricând Agentul AI dacă ai nevoie de ajutor cu ceva pe site-ul tău."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:9
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:9
 #: src/Agent/components/WelcomeScreen.jsx:27
 msgid "Your team of site experts — designers, developers, and marketers — ready to help from content to layouts. Tell us what you need or pick a task to start."
 msgstr "Echipa ta de experți în site-uri — designeri, dezvoltatori și specialiști în marketing — gata să te ajute de la conținut la aranjamente. Spune-ne ce ai nevoie sau alege o sarcină pentru a începe."
@@ -4087,42 +4087,42 @@ msgstr "Tooltip indicând butonul de editare a paginii"
 msgid "Welcome to your new site! When you're ready, press here to edit this page."
 msgstr "Bine ai venit pe noul tău site! Când ești pregătit, apasă aici pentru a edita această pagină."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:9
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:9
 #: src/Agent/components/PageDocument.jsx:15
 #: src/Agent/components/PageDocument.jsx:26
 msgid "Remove"
 msgstr "Elimină"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
 #: src/Agent/components/DOMHighlighter.jsx:201
 #: src/Agent/components/DOMHighlighter.jsx:220
 msgid "Remove highlight"
 msgstr "Înlătură evidențierea"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:12
-#: src/Agent/Agent.jsx:490
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:12
+#: src/Agent/Agent.jsx:492
 msgid "AI Agent can make mistakes. Check changes before saving."
 msgstr "Agentul AI poate face greșeli. Verificați modificările înainte de a salva."
 
-#: app/Agent/Admin.php:239
+#: app/Agent/Admin.php:240
 msgid "I want to change my site title"
 msgstr "Vreau să schimb titlul site-ului meu"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:4
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:21
-#: src/Agent/workflows/content/components/UpdatePostStatusConfirm.jsx:42
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:4
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:21
+#: src/Agent/workflows/content/components/UpdatePostStatusConfirm.jsx:45
 #: src/Agent/workflows/settings/components/UpdateSettingConfirm.jsx:36
 msgid "Confirm"
 msgstr "Confirmă"
 
 #. translators: 1: setting name, 2: new setting value
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:21
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:21
 #: src/Agent/workflows/settings/components/UpdateSettingConfirm.jsx:15
 #, js-format
 msgid "The AI Agent wants to change the setting \"%1$s\" to \"%2$s\". Please confirm."
 msgstr "Agentul AI dorește să schimbe setarea „%1$s” la „%2$s”. Te rog confirmă."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
 #: src/Agent/components/messages/StatusMessage.jsx:14
 msgid "Thinking..."
 msgstr "Gândesc..."
@@ -4132,119 +4132,119 @@ msgstr "Gândesc..."
 msgid "WP Admin Dashboard"
 msgstr "Panou control administrare WP"
 
-#: app/Agent/Admin.php:245
+#: app/Agent/Admin.php:246
 msgid "I want to change my theme fonts"
 msgstr "Vreau să schimb fonturile temei mele"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:4
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:4
 msgid "Failed to fetch theme font variations."
 msgstr "Nu s-au putut prelua variațiile de font ale temei."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
 #: src/Agent/workflows/theme/change-theme-fonts-variation.js:12
 msgid "Hey there! It looks like you are trying to change your theme fonts, but you are not on a page where we can do that."
 msgstr "Salut! Se pare că încerci să schimbi fonturile temei, dar nu ești pe o pagină unde putem face asta."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
 #: src/Agent/workflows/theme/components/SelectThemeFontsVariation.jsx:34
 msgid "Loading font variations..."
 msgstr "Încarc variațiile fontului..."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
 #: src/Agent/workflows/theme/components/SelectThemeFontsVariation.jsx:43
 msgid "No font variations found"
 msgstr "Nu am găsit variații de fonturi"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
 #: src/Agent/components/ChatTools.jsx:24
 msgid "Exit select mode"
 msgstr "Ieși din modul de selectare"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
 #: src/Agent/components/ChatTools.jsx:25
 msgid "Select Area to Edit"
 msgstr "Selectează zona de editat"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
 #: src/Agent/components/ChatTools.jsx:40
 msgid "Select"
 msgstr "Selectează"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
 #: src/Agent/components/ChatInput.jsx:161
 msgid "What do you want to change in the selected content?"
 msgstr "Ce dorești să modifici în conținutul selectat?"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:9
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:9
 #: src/Agent/components/PageDocument.jsx:13
 msgid "Selected content"
 msgstr "Conținut selectat"
 
-#: app/Agent/Admin.php:231
+#: app/Agent/Admin.php:232
 msgid "Publish this page"
 msgstr "Publică această pagină"
 
-#: app/Agent/Admin.php:232
+#: app/Agent/Admin.php:233
 msgid "Unpublish this page"
 msgstr "Anulează publicarea acestei pagini"
 
 #. translators: %1$s is the post type,  %2$s the current page or post status, and %3$s is the updated page or post status.
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:4
-#: src/Agent/workflows/content/components/UpdatePostStatusConfirm.jsx:20
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:4
+#: src/Agent/workflows/content/components/UpdatePostStatusConfirm.jsx:23
 #, js-format
 msgid "We are going to change the status of the %1$s from \"%2$s\" to \"%3$s\". Please confirm."
 msgstr "Vom schimba starea %1$s de la „%2$s” la „%3$s”. Te rugăm să confirmi."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:4
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:4
 #: src/Agent/workflows/block-selector/components/UpdateImageConfirm.jsx:7
 msgid "Open Media Library"
 msgstr "Deschide biblioteca Media"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:4
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:4
 #: src/Agent/workflows/block-selector/components/UpdateImageConfirm.jsx:41
 #, js-format
 msgid "The agent has requested the media library. Press \"%s\" to upload or select an image."
 msgstr "Agentul a solicitat biblioteca Media. Apasă \"%s\" pentru a încărca sau selecta o imagine."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:4
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:4
 #: src/Agent/workflows/block-selector/components/UpdateImageConfirm.jsx:57
 msgid "Select or Upload Image"
 msgstr "Selectează sau încarcă imaginea"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:15
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:15
 #: src/Agent/workflows/block-selector/components/GenerateImageConfirm.jsx:53
 msgid "An unknown error occurred."
 msgstr "A apărut o eroare necunoscută."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:15
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:15
 #: src/Agent/workflows/block-selector/components/GenerateImageConfirm.jsx:105
 msgid "Error generating image"
 msgstr "Eroare la generarea imaginii"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:15
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:15
 #: src/Agent/workflows/block-selector/components/GenerateImageConfirm.jsx:137
 msgid "Image generated successfully!"
 msgstr "Imagine generată cu succes!"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:15
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:15
 #: src/Agent/workflows/block-selector/components/GenerateImageConfirm.jsx:162
 msgid "Insert Image"
 msgstr "Inserează imagine"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:15
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:15
 #: src/Agent/workflows/block-selector/components/GenerateImageConfirm.jsx:182
 #, js-format
 msgid "The agent has asked to generate an image. Press \"%s\" to continue."
 msgstr "Agentul a cerut generarea unei imagini. Apasă \"%s\" pentru a continua"
 
 #. translators: %1$s is the number of credits remaining, %2$s is the total credits
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:18
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:18
 #: src/Agent/workflows/block-selector/components/GenerateImageConfirm.jsx:210
 #, js-format
 msgid "You have %1$s of %2$s daily image credits remaining."
 msgstr "Mai ai %1$s din %2$s recunoștințe zilnice pentru imagini."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:1
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:1
 #: src/Agent/workflows/content/components/GeneratePageResult.jsx:19
 msgid "The agent has finished creating your page. Press take me there to visit your new page or dismiss to remove this notice."
 msgstr "Agentul a terminat de creat pagina ta. Apasă \"du-mă acolo\" pentru a vizita noua pagină sau \"respinge\" pentru a înlătura această notificare."
@@ -4254,80 +4254,80 @@ msgstr "Agentul a terminat de creat pagina ta. Apasă \"du-mă acolo\" pentru a 
 msgid "E.g., Create an \"About Us\" page highlighting our story, mission, values and team overview."
 msgstr "De exemplu, creează o pagină \"Despre noi\" care evidențiază povestea noastră, misiunea, valorile și o prezentare a echipei."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:15
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:15
 #: src/Agent/workflows/block-selector/components/GenerateImageConfirm.jsx:47
 msgid "No image returned"
 msgstr "Nicio imagine returnată"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
 #: src/Agent/components/messages/StatusMessage.jsx:18
 msgid "Formulating a response..."
 msgstr "Formulez un răspuns..."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
 #: src/Agent/components/messages/StatusMessage.jsx:19
 msgid "Reviewing logic..."
 msgstr "Revizuire logică..."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
 #: src/Agent/components/layouts/MobileLayout.jsx:54
 #: src/Agent/components/layouts/MobileLayout.jsx:65
 msgid "Minimize window"
 msgstr "Minimizează fereastra"
 
 #. translators: No value found message for when a WP setting has no value.
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
 msgid "No value found"
 msgstr "Nicio valoare găsită"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
 #: src/Agent/components/messages/StatusMessage.jsx:17
 msgid "Interpreting message..."
 msgstr "Interpretare mesaj..."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:15
-#: src/Agent/workflows/plugins/components/InstallPlugin.jsx:57
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:15
+#: src/Agent/workflows/plugins/components/InstallPlugin.jsx:77
 msgid "There was an error installing the plugin. You may try again"
 msgstr "A fost o eroare la instalarea modulului. Poți încerca din nou"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:15
-#: src/Agent/workflows/plugins/components/InstallPlugin.jsx:67
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:15
+#: src/Agent/workflows/plugins/components/InstallPlugin.jsx:87
 msgid "Try Again"
 msgstr "Încearcă din nou"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:15
-#: src/Agent/workflows/plugins/components/InstallPlugin.jsx:80
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:15
+#: src/Agent/workflows/plugins/components/InstallPlugin.jsx:100
 msgid "Installing plugin..."
 msgstr "Instalez modulul..."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:15
-#: src/Agent/workflows/plugins/components/InstallPlugin.jsx:81
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:15
+#: src/Agent/workflows/plugins/components/InstallPlugin.jsx:101
 msgid "Activating plugin..."
 msgstr "Activare modul..."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:15
-#: src/Agent/workflows/plugins/components/InstallPlugin.jsx:93
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:15
+#: src/Agent/workflows/plugins/components/InstallPlugin.jsx:113
 msgid "The agent is requesting to install and activate a plugin."
 msgstr "Agentul solicită instalarea și activarea unui modul."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:15
-#: src/Agent/workflows/plugins/components/InstallPlugin.jsx:118
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:15
+#: src/Agent/workflows/plugins/components/InstallPlugin.jsx:138
 msgid "Install Plugin"
 msgstr "Instalează modulul"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:15
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:15
 #: src/Agent/workflows/block-selector/components/GenerateImageConfirm.jsx:161
 msgid "Inserting Image..."
 msgstr "Se inserează imaginea..."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:15
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:15
 #: src/Agent/workflows/block-selector/components/GenerateImageConfirm.jsx:175
 #, js-format
 msgid "You've used all your image credits for today. Your credits will reset in %s."
 msgstr "Ai folosit toate creditele de imagine pentru azi. Creditele tale se vor reseta în %s."
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:15
-#: src/Agent/workflows/plugins/components/InstallPlugin.jsx:109
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:15
+#: src/Agent/workflows/plugins/components/InstallPlugin.jsx:129
 msgid "Plugin Details"
 msgstr "Detalii modul"
 
@@ -4357,7 +4357,7 @@ msgctxt "Plugin activation status"
 msgid "Activated"
 msgstr "Activat"
 
-#: public/build/extendify-agent-3c3a2bf3bdbf33eeac6a.js:7
+#: public/build/extendify-agent-963bf1b77efa2adeacaa.js:7
 #: src/Agent/components/layouts/DragResizeLayout.jsx:110
 #: src/Agent/components/layouts/MobileLayout.jsx:50
 msgctxt "Feature in beta status"

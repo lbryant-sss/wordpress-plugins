@@ -613,7 +613,7 @@ button.notice-dismiss {
 }
 
 a.clever-fox-btn, .clever-fox-btn {
-    color: #6d7682;
+    color: #ffffff;
     display: inline-block;
     border-radius: 2px;
     padding: 0px 10px;
@@ -622,6 +622,29 @@ a.clever-fox-btn, .clever-fox-btn {
     border: 1px solid rgba(0,0,0,.15);
     text-decoration: none;
     cursor: pointer;
+}
+.sp-demo-meta a.clever-fox-btn {
+    border: none;
+    background: linear-gradient(135deg, #492cdd, #ad38e2, #ef9bff, #ad38e2, #492cdd);
+    background-size: 250% 100%;
+    animation: gradientMove 5s linear infinite;
+}
+
+.sp-demo-meta a.clever-fox-btn:hover,
+.sp-demo-meta a.clever-fox-btn:focus {
+    animation: none;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 a.clever-fox-btn-fill, .clever-fox-btn-fill {
@@ -658,7 +681,7 @@ a.clever-fox-btn-fill-green, .clever-fox-btn-fill-green {
 
 .clever-fox-btn:not(.clever-fox-btn-fill):hover, .clever-fox-btn:not(.clever-fox-btn-fill):focus {
     border-color: var(--color-primary);
-    color: #23282d;
+    /* color: #23282d; */
     background-color: transparent;
 }
 
@@ -1073,9 +1096,13 @@ div.xl-tabs.xl-tabs-normal {
     position: relative;
     filter: blur(0);
     transition: filter 400ms linear;
-    min-height: 250px;
+    aspect-ratio: 1 / 0.8;
 }
-
+.specia-demo-image img {
+    width: 100%;
+    height: auto;
+    display: block; 
+}
 /*.specia-demo-screenshot .specia-demo-image.loading,
 .specia-demo-screenshot .specia-demo-image.loading {
     animation-duration: 2s;
@@ -1123,6 +1150,7 @@ div.xl-tabs.xl-tabs-normal {
     border: 0;
     width: 100%;
     top: auto;
+    padding: 0;
     justify-content: center;
     bottom: 25px;
 }
@@ -1130,6 +1158,9 @@ div.xl-tabs.xl-tabs-normal {
 .specia-demo-screenshot .specia-demo-actions .clever-fox-btn-outline {
     border-color: #ffffff;
     color: #ffffff;
+    padding: 0px 8px;
+    line-height: 2.4;
+    font-size: 12px;
 }
 
 .specia-demo-screenshot .specia-demo-actions .clever-fox-btn-outline:hover,
@@ -1612,19 +1643,24 @@ p.footer-ver {
     .clever-fox-sites-items {
         width: 48.5%;
     }
-    .clever-fox-sites-items:nth-child(odd) {
-        margin-right: 3%;
-    }
     .clever-fox-sites-items:nth-child(even) {
         margin-right: 0;
     }
 }
 @media only screen and (max-width: 1200px) and (min-width: 780px) {
-    .clever-fox-sites-items {
-        width: 33.33%;
-    }
     .clever-fox-sites-items:nth-child(odd) {
         margin-right: 0;
+    }
+    .sp-demo-meta {
+        padding: 5px 8px;
+    }
+    .specia-demo-screenshot::before {
+        font-size: 25px;
+    }
+}
+@media only screen and (max-width: 1200px) and (min-width: 768px) {
+    .clever-fox-sites-items {
+        width: 33.33% !important;
     }
 }
 
@@ -1653,6 +1689,12 @@ p.footer-ver {
         padding: 1.1%;
         margin: 0 0 1.3em 0em;
         box-shadow: none;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .clever-fox-sites-items {
+        margin: 0 3% 5% 0;
     }
 }
 
@@ -1808,6 +1850,7 @@ h3.xl-selected-demo {
 
 .filter-buttons {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   margin-bottom: 20px;
 }
@@ -1819,6 +1862,7 @@ h3.xl-selected-demo {
   color: #333;
   cursor: pointer;
   font-size: 16px;
+  margin-bottom: 5px !important;
   padding: 8px 22px !important;
   margin-right: 10px !important;
   transition: background-color 0.3s ease;

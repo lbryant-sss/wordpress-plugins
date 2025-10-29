@@ -409,18 +409,22 @@ class Utils {
 	* @return WP_Post|null     WP_Post object if found, null otherwise.
 	*/
 	public static function get_page_by_title( $slug, $post_type = 'page' ) {
-		$query = new \WP_Query(
+		$posts = get_posts(
 			[
-				'post_type'      => $post_type,
-				'name'           => $slug,
-				'posts_per_page' => 1,
-				'post_status'    => 'publish',
+				'name' => $slug,
+				'post_type' => $post_type,
+				'post_status' => 'publish',
+				'numberposts' => 1,
+				'no_found_rows' => true,
 				'ignore_sticky_posts' => true,
-				'no_found_rows'  => true, // performance boost
 			]
 		);
 
-		return $query->posts[0] ?? null;
+		if ( ! empty( $posts ) ) {
+			return $posts[0];
+		}
+
+		return null;
 	}
 
 	public static function remove_special_chars($string) {

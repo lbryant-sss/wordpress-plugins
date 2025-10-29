@@ -95,19 +95,21 @@ Refer to the [WP Activity Log plugin features and benefits page](https://melapre
 
 ### 🔌 WP Activity Log third-party plugin support
 
-All WP Activity Log editions include activity tracking for third-party plugins, including:
+All WP Activity Log editions include activity tracking for third-party plugins, including (in alphabetical order):
 
-- **WooCommerce** – Keep a log of changes to store settings, orders, products, coupons, and more
-- **Yoast SEO** – Track changes to Yoast SEO settings and on-page SEO in the Yoast SEO meta box
-- **RankMath** – Log changes to RankMath settings, SEO configurations, and on-page SEO edits
-- **WPForms** – Log changes to WPForms settings, forms, form files, and entries (leads)
+- **Advanced Custom Fields (ACF)** – Log changes to post types, taxonomies, and taxonomy terms
+- **bbPress** – Track changes to forums, topics, and bbPress settings
 - **Gravity Forms** – Track changes to Gravity Forms settings, forms, and entries (leads)
 - **MemberPress** – Log changes to plugin settings, memberships, payments, subscriptions, and other actions
-- **bbPress** – Track changes to forums, topics, and bbPress settings
-- **Advanced Custom Fields (ACF)** – Log changes to post types, taxonomies, and taxonomy terms
-- **Redirection** – Keep a log of changes to redirections and redirection groups
 - **Multisite & management tools** – Track changes across your network for **MainWP, ManageWP, Modular DS, Infinite WP, WP Umbrella, WP Remote**, and other multisite management plugins
+- **Paid Membership Pro** - Log changes to membership levels, user assignments, and more. Premium users can also track order and checkout activity, and access a Members Activity panel inside each member’s profile for instant visibility into recent actions.
+- **RankMath** – Log changes to RankMath settings, SEO configurations, and on-page SEO edits
+- **Redirection** – Keep a log of changes to redirections and redirection groups
 - **Termly** – Log changes to Termly settings and configurations
+- **WooCommerce** – Keep a log of changes to store settings, orders, products, coupons, and more
+- **WPForms** – Log changes to WPForms settings, forms, form files, and entries (leads)
+- **Yoast SEO** – Track changes to Yoast SEO settings and on-page SEO in the Yoast SEO meta box
+
 
 ### Extra Features for Enhanced Monitoring and Management
 Both free and premium editions of WP Activity Log include a number of non-logging specific features that make the plugin a complete WordPress monitoring solution. Here is what is included:

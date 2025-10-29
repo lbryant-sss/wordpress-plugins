@@ -17,9 +17,9 @@ class MultiImageControl extends \Mesmerize\Customizer\BaseControl {
 			'cp-multi-image-control',
 			'cpMultiImageTexts',
 			array(
-				'addImage'    => __( 'Add New Image', 'cloudpress-companion' ),
-				'deleteTitle' => __( 'Delete image from slideshow', 'cloudpress-companion' ),
-				'changeTitle' => __( 'changeImage', 'cloudpress-companion' ),
+				'addImage'    => __( 'Add New Image', 'mesmerize-companion' ),
+				'deleteTitle' => __( 'Delete image from slideshow', 'mesmerize-companion' ),
+				'changeTitle' => __( 'changeImage', 'mesmerize-companion' ),
 			)
 		);
 	}
@@ -30,7 +30,7 @@ class MultiImageControl extends \Mesmerize\Customizer\BaseControl {
 		$class   = 'list ';
 		$options = 'data-min="' . esc_attr( $this->cpData['min'] ) . '" data-max="' . esc_attr( $this->cpData['limit'] ) . '"'; ?>
 
-		<li data-type="cp-multi-image-manager" id="<?php echo esc_attr( $id ); ?>" <?php $this->link(); ?> <?php echo $options; ?> class="<?php echo esc_attr( $class ); ?>">
+		<li data-type="cp-multi-image-manager" id="<?php echo esc_attr( $id ); ?>" <?php $this->link(); ?> <?php echo $options; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> class="<?php echo esc_attr( $class ); ?>">
 			<?php if ( ! empty( $this->label ) ) : ?>
 				<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
 				<?php

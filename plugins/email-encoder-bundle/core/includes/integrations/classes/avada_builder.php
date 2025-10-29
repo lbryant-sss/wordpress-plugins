@@ -1,9 +1,9 @@
 <?php
 
 // Exit if accessed directly.
-if ( !defined( 'ABSPATH' ) ) exit;
+defined( 'ABSPATH' ) || exit;
 
-if( ! class_exists( 'Email_Encoder_Integration_Avada' ) ){
+if ( ! class_exists( 'Email_Encoder_Integration_Avada' ) ) {
 
     /**
      * Class Email_Encoder_Integration_Avada
@@ -20,14 +20,14 @@ if( ! class_exists( 'Email_Encoder_Integration_Avada' ) ){
         /**
          * Our Email_Encoder_Run constructor.
          */
-        function __construct(){
+        function __construct() {
             $this->add_hooks();
         }
 
         /**
          * Define all of our necessary hooks
          */
-        private function add_hooks(){
+        private function add_hooks() {
             add_filter( 'eeb/settings/fields', array( $this, 'deactivate_logic' ), 10 );
         }
 
@@ -40,23 +40,23 @@ if( ! class_exists( 'Email_Encoder_Integration_Avada' ) ){
          */
 
          /**
-          * Verify if Avada builder is active 
+          * Verify if Avada builder is active
           * in the first place
           *
           * @return array
           */
-        public function is_avada_active(){
+        public function is_avada_active() {
             return defined( 'FUSION_BUILDER_VERSION' );
         }
-        
-        public function deactivate_logic( $fields ){
 
-            if( $this->is_avada_active() ){
+        public function deactivate_logic( $fields ) {
 
-                if( isset( $_GET['fb-edit'] ) ){
-                    if( is_array( $fields ) ){
-                        if( isset( $fields[ 'protect' ] ) ){
-                            if( isset( $fields[ 'protect' ]['value'] ) ){
+            if ( $this->is_avada_active() ) {
+
+                if ( isset( $_GET['fb-edit'] ) ) {
+                    if ( is_array( $fields ) ) {
+                        if ( isset( $fields[ 'protect' ] ) ) {
+                            if ( isset( $fields[ 'protect' ]['value'] ) ) {
                                 $fields[ 'protect' ]['value'] = 3; //3 equals "Do Nothing"
                             }
                         }
@@ -66,9 +66,9 @@ if( ! class_exists( 'Email_Encoder_Integration_Avada' ) ){
             }
 
             return $fields;
-            
+
         }
-        
+
 
     }
 

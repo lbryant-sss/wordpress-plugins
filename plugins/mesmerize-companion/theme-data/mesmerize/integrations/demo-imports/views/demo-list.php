@@ -50,7 +50,7 @@ wp_localize_script(
 	)
 );
 
-
+//phpcs:ignore WordPress.Security.NonceVerification.Recommended, 	WordPress.Security.ValidatedSanitizedInput.InputNotValidated, 	WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.NonceVerification.Missing
 if ( ! empty( $extemdthemes_theme_importer->import_files ) && isset( $_GET['import-mode'] ) && 'manual' === $_GET['import-mode'] ) {
 	$predefined_themes = array();
 }
@@ -65,7 +65,11 @@ if ( ! empty( $extemdthemes_theme_importer->import_files ) && isset( $_GET['impo
 
 
 	<!-- OCDI grid layout -->
-	<?php if ( ! isset( $_GET['manual-upload'] ) ) : ?>
+
+	<?php
+//phpcs:ignore WordPress.Security.NonceVerification.Recommended, 	WordPress.Security.ValidatedSanitizedInput.InputNotValidated, 	WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.NonceVerification.Missing
+        if ( ! isset( $_GET['manual-upload'] ) ) :
+    ?>
 	<div class="ocdi__gl  js-ocdi-gl">
 		<?php
 		// Prepare navigation data.

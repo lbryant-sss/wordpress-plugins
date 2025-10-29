@@ -165,7 +165,7 @@ export const Agent = () => {
 		const handleConfirm = async ({ detail }) => {
 			if (toolWorking.current) return;
 			toolWorking.current = true;
-			const { data, whenFinishedToolProps } = detail ?? {};
+			const { data, whenFinishedToolProps, shouldRefreshPage } = detail ?? {};
 			const { summary, status, whenFinishedTool, answerId } =
 				whenFinishedToolProps.agentResponse;
 			const { id, labels } = whenFinishedTool || {};
@@ -204,6 +204,8 @@ export const Agent = () => {
 			});
 			setWorkflow(null);
 			cleanup();
+
+			if (shouldRefreshPage) window.location.reload();
 		};
 		const handleCancel = ({ detail }) => {
 			if (toolWorking.current) return;

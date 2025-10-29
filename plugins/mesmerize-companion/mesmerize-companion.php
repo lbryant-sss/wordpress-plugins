@@ -6,7 +6,7 @@
  *
  * License: GPLv3 or later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
- * Version: 1.6.158
+ * Version: 1.6.162
  * Text Domain: mesmerize-companion
  */
 
@@ -21,17 +21,17 @@ if ( ! defined( 'MESMERIZE_COMPANION_PHP_VERSION' ) ) {
 }
 
 if ( ! defined( 'MESMERIZE_COMPANION_VERSION' ) ) {
-	define( 'MESMERIZE_COMPANION_VERSION', '1.6.158' );
+	define( 'MESMERIZE_COMPANION_VERSION', '1.6.162' );
 }
 
 function mesmerize_companion_php_version_notice() {     ?>
 	<div class="notice notice-alt notice-error notice-large">
-		<h4><?php _e( 'Mesmerize Companion can not run!', 'mesmerize-companion' ); ?></h4>
+		<h4><?php _e( 'Mesmerize Companion can not run!', 'mesmerize-companion' );// phpcs:ignore  WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction ?></h4>
 		<p>
-			<?php _e( 'You need to update your PHP version to use the <strong>Mesmerize Companion</strong>.', 'mesmerize-companion' ); ?> <br />
-			<?php _e( 'Current php version is:', 'mesmerize-companion' ); ?> <strong>
-				<?php echo phpversion(); ?></strong>, <?php _e( 'and the minimum required version is ', 'mesmerize-companion' ); ?>
-			<strong><?php echo MESMERIZE_COMPANION_PHP_VERSION; ?></strong>
+			<?php _e( 'You need to update your PHP version to use the <strong>Mesmerize Companion</strong>.', 'mesmerize-companion' );// phpcs:ignore 	WordPress.Security.EscapeOutput.UnsafePrintingFunction ?> <br />
+			<?php _e( 'Current php version is:', 'mesmerize-companion' ); // phpcs:ignore  WordPress.Security.EscapeOutput.UnsafePrintingFunction ?> <strong>
+				<?php echo phpversion(); ?></strong>, <?php _e( 'and the minimum required version is ', 'mesmerize-companion' );// phpcs:ignore  WordPress.Security.EscapeOutput.UnsafePrintingFunction, WordPress.Security.EscapeOutput.OutputNotEscaped?>
+			<strong><?php echo MESMERIZE_COMPANION_PHP_VERSION; // phpcs:ignore  WordPress.Security.EscapeOutput.OutputNotEscaped ?></strong>
 		</p>
 	</div>
 	<?php
@@ -57,6 +57,7 @@ add_filter( 'mesmerize_is_companion_installed', '__return_true' );
 add_action( 'init', 'mesmerize_companion_load_text_domain' );
 
 function mesmerize_companion_load_text_domain() {
+    //phpcs:ignore 	PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound
 	load_plugin_textdomain( 'mesmerize-companion', false, basename( dirname( __FILE__ ) ) . '/languages' );
 }
 
@@ -73,5 +74,6 @@ function mesmerize_get_edit_in_mesmerize_label() {
 
 	$theme_name = str_replace( ' PRO', '', wp_get_theme( $theme )->get( 'Name' ) );
 
+    //phpcs:ignore WordPress.WP.I18n.MissingTranslatorsComment
 	return sprintf( __( 'Edit with %s', 'mesmerize-companion' ), $theme_name );
 }

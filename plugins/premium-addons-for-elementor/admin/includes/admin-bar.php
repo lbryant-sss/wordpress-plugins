@@ -33,7 +33,6 @@ class Admin_Bar {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_frontend_assets' ) );
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_assets' ) );
-
 	}
 
 	public function enqueue_assets() {
@@ -71,19 +70,19 @@ class Admin_Bar {
 		);
 	}
 
-    public function enqueue_frontend_assets() {
+	public function enqueue_frontend_assets() {
 
-		if( ! is_user_logged_in() ) {
+		if ( ! is_user_logged_in() ) {
 			return;
 		}
 
-        wp_enqueue_style(
-            'pa-admin-bar',
-            PREMIUM_ADDONS_URL . 'admin/assets/css/admin-bar.css',
-            array(),
-            PREMIUM_ADDONS_VERSION,
-            'all'
-        );
+		wp_enqueue_style(
+			'pa-admin-bar',
+			PREMIUM_ADDONS_URL . 'admin/assets/css/admin-bar.css',
+			array(),
+			PREMIUM_ADDONS_VERSION,
+			'all'
+		);
 
 		wp_enqueue_script(
 			'pa-admin-bar',
@@ -177,13 +176,12 @@ class Admin_Bar {
 	private function get_dashboard_widgets_link() {
 
 		return add_query_arg(
-            array(
-                'page' => 'premium-addons',
-                '#tab' => 'elements',
-            ),
-            esc_url( admin_url( 'admin.php' ) )
-        );
-
+			array(
+				'page' => 'premium-addons',
+				'#tab' => 'elements',
+			),
+			esc_url( admin_url( 'admin.php' ) )
+		);
 	}
 
 	/**

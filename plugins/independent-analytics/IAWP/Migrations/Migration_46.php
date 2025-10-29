@@ -2,6 +2,7 @@
 
 namespace IAWP\Migrations;
 
+use IAWP\Database;
 /** @internal */
 class Migration_46 extends \IAWP\Migrations\Step_Migration
 {
@@ -33,7 +34,10 @@ class Migration_46 extends \IAWP\Migrations\Step_Migration
     }
     private function populate_landing_page_id_column() : string
     {
-        return "\n            UPDATE\n              {$this->tables::campaigns()} AS campaigns\n              JOIN {$this->tables::landing_pages()} AS landing_pages ON  campaigns.landing_page_title = landing_pages.title\n            SET\n              campaigns.landing_page_id = landing_pages.id\n        ";
+        $old_collation = Database::column_collation_for($this->tables::campaigns(), 'landing_page_title');
+        $current_collation = $this->collation();
+        $collation_statement = $this->get_collation_statement($current_collation, $old_collation);
+        return "\n            UPDATE\n              {$this->tables::campaigns()} AS campaigns\n              JOIN {$this->tables::landing_pages()} AS landing_pages ON  campaigns.landing_page_title = landing_pages.title {$collation_statement}\n            SET\n              campaigns.landing_page_id = landing_pages.id\n        ";
     }
     private function modify_landing_page_id_column() : string
     {

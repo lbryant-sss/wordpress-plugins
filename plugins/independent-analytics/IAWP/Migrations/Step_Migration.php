@@ -5,6 +5,7 @@ namespace IAWP\Migrations;
 use IAWP\Database;
 use IAWP\Query;
 use IAWP\Tables;
+use IAWPSCOPED\Illuminate\Support\Str;
 /** @internal */
 abstract class Step_Migration
 {
@@ -43,6 +44,28 @@ abstract class Step_Migration
     protected function drop_table_if_exists(string $table_name) : string
     {
         return "\n            DROP TABLE IF EXISTS {$table_name};\n        ";
+    }
+    protected function get_collation_statement(?string $from, ?string $to) : string
+    {
+        if (!$from || !$to) {
+            return '';
+        }
+        if ($from === $to) {
+            return '';
+        }
+        $from_character_set = $this->extract_character_set($from);
+        $to_character_set = $this->extract_character_set($to);
+        if (!$from_character_set || !$to_character_set || $from_character_set !== $to_character_set) {
+            return '';
+        }
+        return " COLLATE {$from} ";
+    }
+    private function extract_character_set(string $collation) : ?string
+    {
+        if (!Str::of($collation)->test('/\\A[a-zA-Z0-9]+_/')) {
+            return null;
+        }
+        return Str::before($collation, '_');
     }
     private function run_queries() : bool
     {

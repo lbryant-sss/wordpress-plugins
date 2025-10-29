@@ -77,6 +77,7 @@ class Admin
             'postId' => (int) $this->getCurrentPostId(),
             'postTitle' => \esc_attr(\get_the_title($this->getCurrentPostId())),
             'postType' => \esc_attr(\get_post_type($this->getCurrentPostId())),
+            'postUrl' => \esc_url(\get_permalink($this->getCurrentPostId())),
             'isFrontPage' => (bool) \is_front_page(),
             'postStatus' => \esc_attr(\get_post_status((int) $this->getCurrentPostId())),
             'isBlogPage' => (bool) \is_home(),
@@ -96,7 +97,7 @@ class Admin
         $mappedPluginRecommendations = array_values(array_map(function ($item) {
             return [
                 'title' => $item['title'] ?? '',
-                'slug'  => $item['slug'] ?? '',
+                'slug'  => $item['ctaPluginSlug'] ?? $item['slug'] ?? '',
                 'description' => $item['aiDescription'] ?? $item['description'] ?? '',
             ];
         }, $pluginRecommendations));

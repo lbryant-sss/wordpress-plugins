@@ -5,7 +5,7 @@ Donate Link: https://premiumaddons.com/?utm_source=wp-repo&utm_medium=link&utm_c
 Requires at least: 5.0
 Tested Up To: 6.8.3
 Requires PHP: 7.4
-Stable Tag: 4.11.44
+Stable Tag: 4.11.45
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -242,6 +242,15 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 14. Premium Progress Bar Widget
 
 == Changelog ==
+
+= 4.11.45 - 28/10/2025 =
+
+- New: Added Discount Reveal Effect for price in Pricing Table widget.
+- New: Added Allow Backorders option in Woo Mini Cart widget.
+- Tweak: Improved Tags Cloud and Countdown widgets for better performance.
+- Tweak: Improved Templates Live Editor to be able to edit any select template.
+- Fixed: Product image is not showing in correct height in Woo Products Listing widget Quick View popup.
+- Fixed: Layout #2 issue in Get Videos from Channel/Playlist option in Video Box widget.
 
 = 4.11.44 - 20/10/2025 =
 

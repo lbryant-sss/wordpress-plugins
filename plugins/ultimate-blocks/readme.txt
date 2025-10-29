@@ -1,9 +1,9 @@
-=== Ultimate Blocks – 25+ Gutenberg Blocks for Block Editor ===
+=== Ultimate Blocks – All-in-one Gutenberg Blocks for Block Editor ===
 Contributors: dotcamp, ultimateblocks, imtiazrayhan, istiakrayhan, erdembircan, alexius08
 Tags: blocks, gutenberg blocks, gutenberg, block editor, free
 Requires at least: 5.8
 Tested up to: 6.8
-Stable tag: 3.4.3
+Stable tag: 3.4.4
 Requires PHP: 7.2
 License: GPL3+
 License URI: http://www.gnu.org/licenses/gpl-3.0.txt
@@ -150,7 +150,17 @@ That's it. You're done!
 
 == Changelog ==
 
-= 3.4.3 =
+= 3.4.4 - October 28th, 2025 =
+
+* PRO: NEW: Countdown Block - Add "Show Expiry Content" option to display custom blocks when timer expires.
+* PRO: NEW: Countdown Block - Add "Redirect on Expiry" option to redirect users to a custom URL when timer reaches zero.
+* PRO: FIX: Animation Extension - Fixed animation trigger to activate when element enters viewport (prevents animation from playing before element is visible).
+* PRO: FIX: Animation Extension - Fixed element blinking before animation starts.
+* NEW: Styled List Block - Add individual list item controls for text color, background color, and icon color.
+* NEW: Image Block - Add copy and paste style controls.
+* NEW: Divider Block - Add copy and paste style controls.
+
+= 3.4.3 - October 14th, 2025 =
 
 * NEW: Add Item per view option for Mobile and Tablet in the Horizontal view in timeline block.
 * NEW: Core details block can be converted into content toggle block.
@@ -158,7 +168,7 @@ That's it. You're done!
 * IMPROVE: Icon paste style now can paste it on multiple icon blocks.
 * FIX: Hide font family option if font families not found.
 
-= 3.4.2 =
+= 3.4.2 - October 1st, 2025 =
 
 * FIX: Disabling extension is not working.
 * FIX: Button automatically adds noopener noreferrer.

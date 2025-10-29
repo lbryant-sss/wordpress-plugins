@@ -130,7 +130,7 @@ function mesmerize_companion_latest_news( $attrs ) {
 						</h3>
 						<?php the_excerpt(); ?>
 						<a class="read-more link" href="<?php echo esc_url( $url ); ?>">
-							<?php echo mesmerize_wp_kses_post( \Mesmerize\Companion::getThemeMod( 'latest_news_read_more', 'Read more' ) ); ?>
+							<?php echo mesmerize_wp_kses_post( \Mesmerize\Companion::getThemeMod( 'latest_news_read_more', 'Read more' ) ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction ?>
 						</a>
 					</div>
 				</div>
@@ -185,6 +185,7 @@ function mesmerize_companion_contact_form( $attrs = array() ) {
 	if ( $contact_shortcode !== '' ) {
 		echo do_shortcode( $contact_shortcode );
 	} else {
+        //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction
 		echo '<p style="text-align:center;color:#ababab">' . __( 'Contact form will be displayed here. To activate it you have to set the "contact form shortcode" parameter in Customizer.', 'mesmerize-companion' ) . '</p>';
 	}
 
@@ -448,7 +449,7 @@ add_filter(
 				break;
 
 			default:
-				$label = __( $label, 'mesmerize-companion' );
+				$label = $label;
 				break;
 		}
 

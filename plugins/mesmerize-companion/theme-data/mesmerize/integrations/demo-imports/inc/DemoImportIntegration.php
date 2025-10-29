@@ -27,7 +27,7 @@ class DemoImportIntegration {
 	public static function addOCDIFilters() {
 
 		global $pagenow;
-
+        //phpcs:ignore WordPress.Security.NonceVerification.Recommended, 	WordPress.Security.ValidatedSanitizedInput.InputNotValidated, 	WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.NonceVerification.Missing
 		$is_page = ( $pagenow === 'themes.php' && isset( $_REQUEST['page'] ) );
 		$is_ajax = DemoImportIntegration::isOCDIAJAX();
 
@@ -89,11 +89,11 @@ class DemoImportIntegration {
 		if ( ! wp_doing_ajax() ) {
 			return false;
 		}
-
+        //phpcs:ignore WordPress.Security.NonceVerification.Recommended, 	WordPress.Security.ValidatedSanitizedInput.InputNotValidated, 	WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.NonceVerification.Missing
 		if ( ! isset( $_REQUEST['action'] ) ) {
 			return false;
 		}
-
+        //phpcs:ignore WordPress.Security.NonceVerification.Recommended, 	WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,	WordPress.Security.ValidatedSanitizedInput.InputNotValidated, 	WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.NonceVerification.Missing
 		return ( strpos( $_REQUEST['action'], 'ocdi_' ) !== false );
 	}
 
@@ -140,7 +140,7 @@ class DemoImportIntegration {
 			get_template() . '_demos_to_import'
 		);
 		$availableDemos = null;
-
+        //phpcs:ignore WordPress.Security.NonceVerification.Recommended, 	WordPress.Security.ValidatedSanitizedInput.InputNotValidated, 	WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.NonceVerification.Missing
 		if ( isset( $_REQUEST['force_update_demos_sites'] ) ) {
 			$availableDemos = null;
 		} else {
@@ -160,6 +160,7 @@ class DemoImportIntegration {
 			remove_filter( 'http_request_timeout', array( __CLASS__, 'demoDataRequestTimeout' ) );
 
 			if ( $availableDemosServiceResponse instanceof \WP_Error ) {
+                //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction
 				die( $availableDemosServiceResponse->get_error_message() );
 			} else {
 
@@ -299,6 +300,7 @@ class DemoImportIntegration {
 	}
 
 	public static function getPluginActivationURL() {
+        //phpcs:ignore WordPress.Security.NonceVerification.Recommended, 	WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,	WordPress.Security.ValidatedSanitizedInput.InputNotValidated, 	WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.NonceVerification.Missing
 		$plugin_file = isset( $_REQUEST['plugin_file'] ) ? $_REQUEST['plugin_file'] : false;
 
 		// check if the plugin_file exists and is actually a path to a plugin entry file
@@ -327,6 +329,7 @@ class DemoImportIntegration {
 	}
 
 	public static function isDevMode() {
+        //phpcs:ignore WordPress.Security.NonceVerification.Recommended, 	WordPress.Security.ValidatedSanitizedInput.InputNotValidated, 	WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.NonceVerification.Missing
 		return ( defined( 'EXTENDTHEMES_DEMO_IMPORT_DEV_MODE' ) && EXTENDTHEMES_DEMO_IMPORT_DEV_MODE ) || isset( $_REQUEST['dev_mode'] );
 	}
 

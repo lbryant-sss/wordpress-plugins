@@ -269,7 +269,6 @@ abstract class Skin_Style {
 				self::$query_args = $main_query->query_vars;
 
 			}
-
 		} elseif ( 'related' === $settings['query_type'] ) {
 
 			if ( is_product() ) {
@@ -808,16 +807,19 @@ abstract class Skin_Style {
 
 		$orderby = self::$query_args['orderby'];
 
-
 		if ( 'main' === $settings['query_type'] ) {
 
-			$args = apply_filters( 'pa_woo_main_query_args', array(
-				'post_type'   => 'product',
-				'product_cat' => $args['product_cat'],
-			), self::$query_args );
+			$args = apply_filters(
+				'pa_woo_main_query_args',
+				array(
+					'post_type'   => 'product',
+					'product_cat' => $args['product_cat'],
+				),
+				self::$query_args
+			);
 
 		} else {
-			$args	= self::$query_args;
+			$args = self::$query_args;
 
 		}
 

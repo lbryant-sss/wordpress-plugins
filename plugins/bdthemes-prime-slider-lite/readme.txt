@@ -5,11 +5,11 @@ Tags: layer slider, content slider, elementor addon, image slider, video slider
 Requires at least: 5.0.0
 Tested up to: 6.8.3
 Requires PHP: 7.4.0
-Stable tag: 3.18.7
+Stable tag: 4.0.0
 License: GPL3
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Elementor requires at least: 3.28
-Elementor tested up to: 3.32.4
+Elementor tested up to: 3.32.5
 
 Create responsive sliders using Elementor for hero sections, posts, logos, images, products, testimonials, and more.
 
@@ -164,6 +164,8 @@ More free widgets and extensions are coming soon...
 * [Woo HotSpot](https://primeslider.pro/demo/woohotspot/) - WooCommerce-focused slider designed to make product discovery easier for customers.
 * [Titanic](https://primeslider.pro/demo/titanic/) - Titanic slider offers stunning, large-scale content slides for impactful presentations.
 * [Pandora](https://primeslider.pro/demo/pandora/) - A sleek, dynamic slider with fluid transitions and a modern design.
+* [Turnar](https://primeslider.pro/demo/turnar/) - Dynamic slider with rotating elements and interactive transitions for captivating visual storytelling.
+* [Motion](https://primeslider.pro/demo/motion/) - Animated slider featuring smooth motion effects and kinetic elements for enhanced user engagement. 
 
 = Remote Control 👇 =
 
@@ -253,6 +255,19 @@ https://youtu.be/WhhdCWtPHvA?si=28X_56Pg2sD_vRKe
 
 
 == Changelog ==
+
+= 4.0.0 [28th October 2025] =
+
+* Added: Turnar widget added
+* Added: Motion widget added
+* Added: White Label feature added
+* Added: Custom CSS & JS feature added
+* Added: Setup wizard / onboarding feature added
+* Added: Rollback version feature added in admin dashboard
+* Added: Improved web accessibility for navigation arrows across multiple widgets
+* Fixed: Title show/hide issue fixed in pieces widget
+* Updated: Security Improved
+* Updated: Admin dashboard updated
 
 = 3.18.7 [6th October 2025] =
 

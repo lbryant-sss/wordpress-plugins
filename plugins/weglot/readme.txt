@@ -4,7 +4,7 @@ Tags: translate, translation, multilingual, AI translation, automatic translatio
 Requires at least: 4.5
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 5.1
+Stable tag: 5.2
 License: GPLv2 or later
 URI: http://www.gnu.org/licenses/gpl-3.0.html
 

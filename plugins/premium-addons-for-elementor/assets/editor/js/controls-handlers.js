@@ -207,13 +207,11 @@
 			var self = this,
 				type = self.model.get('source') || self.options.elementSettingsModel.attributes.post_type_filter;
 
-			// if ('post' !== type) {
 			var options = (0 === this.model.get('options').length);
 
 			if (options) {
 				self.fetchData(type);
 			}
-			// }
 
 			elementor.channels.editor.on('change', function (view) {
 				var changed = view.elementSettingsModel.changed;
@@ -221,6 +219,14 @@
 				if (undefined !== changed.post_type_filter && 'post' !== changed.post_type_filter && !self.isUpdated) {
 					self.isUpdated = true;
 					self.fetchData(changed.post_type_filter);
+				}
+
+				//ToDO: Test with repeater items controls
+				if (view.$el.hasClass('premium-live-temp-label')) {
+					// hide the title input if the control value isn't empty
+					if (undefined !== changed[view.model.get('name')] && '' !== changed[view.model.get('name')]) {
+						$('.premium-live-temp-title').addClass('control-hidden');
+					}
 				}
 			});
 		},

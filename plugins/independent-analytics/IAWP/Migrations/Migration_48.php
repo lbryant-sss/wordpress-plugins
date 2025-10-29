@@ -2,6 +2,7 @@
 
 namespace IAWP\Migrations;
 
+use IAWP\Database;
 /** @internal */
 class Migration_48 extends \IAWP\Migrations\Step_Migration
 {
@@ -33,7 +34,10 @@ class Migration_48 extends \IAWP\Migrations\Step_Migration
     }
     private function populate_utm_medium_id_column() : string
     {
-        return "\n            UPDATE\n              {$this->tables::campaigns()} AS campaigns\n              JOIN {$this->tables::utm_mediums()} AS mediums ON  campaigns.utm_medium = mediums.utm_medium\n            SET\n              campaigns.utm_medium_id = mediums.id\n        ";
+        $old_collation = Database::column_collation_for($this->tables::campaigns(), 'utm_medium');
+        $current_collation = $this->collation();
+        $collation_statement = $this->get_collation_statement($current_collation, $old_collation);
+        return "\n            UPDATE\n              {$this->tables::campaigns()} AS campaigns\n              JOIN {$this->tables::utm_mediums()} AS mediums ON  campaigns.utm_medium = mediums.utm_medium {$collation_statement}\n            SET\n              campaigns.utm_medium_id = mediums.id\n        ";
     }
     private function modify_utm_medium_id_column() : string
     {

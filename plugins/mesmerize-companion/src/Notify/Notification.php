@@ -51,6 +51,7 @@ class Notification {
 		if ( property_exists( $this, $name ) ) {
 			return $this->$name;
 		} else {
+            //phpcs:ignore 	WordPress.Security.EscapeOutput.ExceptionNotEscaped
 			throw new \Exception( "Property {$name} does not exists in class Notification", 1 );
 		}
 	}

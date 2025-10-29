@@ -42,6 +42,14 @@
 		"margin": {
 			"type": "object",
 			"default": {}
+		},
+		"itemTextColor": {
+			"type": "string",
+			"default": ""
+		},
+		"itemBackgroundColor": {
+			"type": "string",
+			"default": ""
 		}
 	},
 	"supports": {

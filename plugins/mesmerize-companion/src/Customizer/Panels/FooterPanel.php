@@ -49,7 +49,7 @@ class FooterPanel extends \Mesmerize\Customizer\BasePanel {
 		<li id="accordion-panel-{{ data.id }}" data-name="{{{ data.id }}}" class="accordion-section control-section control-panel control-panel-{{ data.type }}">
 		  <h3 class="accordion-section-title no-chevron" tabindex="0">
 			 {{ data.title }}
-			<span title="<?php _e( 'Change Footer', 'cloudpress-companion' ); ?>" data-name="change" class="open-right section-icon"></span>
+			<span title="<?php _e( 'Change Footer', 'mesmerize-companion' ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped, 	WordPress.Security.EscapeOutput.UnsafePrintingFunction ?>" data-name="change" class="open-right section-icon"></span>
 		  </h3>
 		  <ul class="accordion-sub-container control-panel-content"></ul>
 		</li>

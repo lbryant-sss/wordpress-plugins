@@ -2,6 +2,7 @@
 
 namespace IAWP\Migrations;
 
+use IAWP\Database;
 /** @internal */
 class Migration_47 extends \IAWP\Migrations\Step_Migration
 {
@@ -33,7 +34,10 @@ class Migration_47 extends \IAWP\Migrations\Step_Migration
     }
     private function populate_utm_source_id_column() : string
     {
-        return "\n            UPDATE\n              {$this->tables::campaigns()} AS campaigns\n              JOIN {$this->tables::utm_sources()} AS sources ON  campaigns.utm_source = sources.utm_source\n            SET\n              campaigns.utm_source_id = sources.id\n        ";
+        $old_collation = Database::column_collation_for($this->tables::campaigns(), 'utm_source');
+        $current_collation = $this->collation();
+        $collation_statement = $this->get_collation_statement($current_collation, $old_collation);
+        return "\n            UPDATE\n              {$this->tables::campaigns()} AS campaigns\n              JOIN {$this->tables::utm_sources()} AS sources ON  campaigns.utm_source = sources.utm_source {$collation_statement}\n            SET\n              campaigns.utm_source_id = sources.id\n        ";
     }
     private function modify_utm_source_id_column() : string
     {

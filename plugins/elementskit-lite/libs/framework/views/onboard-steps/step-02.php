@@ -14,7 +14,7 @@
 
 	<div class="ekit-onboard-pagination">
 		<a class="ekit-onboard-btn ekit-onboard-pagi-btn prev" href="#">
-			<i class="icon icon-arrow-left"></i><?php echo esc_html__( 'Back', 'elementskit-lite' ); ?>
+			<i class="icon icon-left-arrow"></i><?php echo esc_html__( 'Back', 'elementskit-lite' ); ?>
 		</a>
 		<a class="ekit-onboard-btn ekit-onboard-pagi-btn next" href="#">
 			<?php echo esc_html__( 'Next Step', 'elementskit-lite' ); ?>

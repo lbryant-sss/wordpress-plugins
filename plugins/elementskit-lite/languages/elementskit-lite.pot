@@ -2,9 +2,9 @@
 # This file is distributed under the GPLv3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: ElementsKit Lite 3.7.4\n"
+"Project-Id-Version: ElementsKit Lite 3.7.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/elementskit-lite\n"
-"POT-Creation-Date: 2025-10-20 10:01:35+00:00\n"
+"POT-Creation-Date: 2025-10-28 15:53:22+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -66,7 +66,7 @@ msgid "which is currently NOT RUNNING on this server."
 msgstr ""
 
 #: elementskit-lite.php:421 libs/forms/pages/template.php:396
-#: libs/framework/views/onboard-steps/step-05.php:9
+#: libs/framework/views/onboard-steps/step-05.php:25
 msgid "ElementsKit"
 msgstr ""
 
@@ -381,8 +381,9 @@ msgstr ""
 msgid "General info"
 msgstr ""
 
-#: libs/framework/views/init.php:11 modules/widget-builder/cpt.php:17
-#: modules/widget-builder/cpt.php:20
+#: libs/framework/views/init.php:11
+#: libs/framework/views/onboard-steps/step-05.php:65
+#: modules/widget-builder/cpt.php:17 modules/widget-builder/cpt.php:20
 msgid "Widgets"
 msgstr ""
 
@@ -392,6 +393,7 @@ msgstr ""
 
 #: libs/framework/views/init.php:16
 #: libs/framework/views/onboard-steps/step-01.php:46
+#: libs/framework/views/onboard-steps/step-05.php:69
 msgid "Modules"
 msgstr ""
 
@@ -507,9 +509,9 @@ msgstr ""
 
 #: libs/framework/views/onboard-steps/step-01.php:55
 #: libs/framework/views/onboard-steps/step-02.php:17
-#: libs/framework/views/onboard-steps/step-03.php:168
+#: libs/framework/views/onboard-steps/step-03.php:169
 #: libs/framework/views/onboard-steps/step-04.php:19
-#: libs/framework/views/onboard-steps/step-05.php:29
+#: libs/framework/views/onboard-steps/step-05.php:89
 msgid "Back"
 msgstr ""
 
@@ -583,11 +585,11 @@ msgid ""
 "Gutenberg."
 msgstr ""
 
-#: libs/framework/views/onboard-steps/step-03.php:171
+#: libs/framework/views/onboard-steps/step-03.php:172
 msgid "Continue"
 msgstr ""
 
-#: libs/framework/views/onboard-steps/step-03.php:178
+#: libs/framework/views/onboard-steps/step-03.php:179
 msgid "Unlock All & Continue"
 msgstr ""
 
@@ -603,51 +605,71 @@ msgid ""
 "<strong>20% Discount.</strong>"
 msgstr ""
 
-#: libs/framework/views/onboard-steps/step-05.php:9
-msgid "PRO"
-msgstr ""
-
-#: libs/framework/views/onboard-steps/step-05.php:12
-msgid "Header & Footer Builder"
-msgstr ""
-
-#: libs/framework/views/onboard-steps/step-05.php:13
-msgid "Megamenu Builder"
-msgstr ""
-
-#: libs/framework/views/onboard-steps/step-05.php:14
-msgid "Advanced Tab"
+#: libs/framework/views/onboard-steps/step-05.php:11
+msgid "Trusted by 2,000,000+ Websites"
 msgstr ""
 
 #: libs/framework/views/onboard-steps/step-05.php:15
-msgid "Parallax Effect"
+msgid "Rated 4.9 by 2,000 People"
 msgstr ""
 
-#: libs/framework/views/onboard-steps/step-05.php:16
-msgid "Social Feeds"
-msgstr ""
-
-#: libs/framework/views/onboard-steps/step-05.php:17
-msgid "More Addons & Modules"
-msgstr ""
-
-#: libs/framework/views/onboard-steps/step-05.php:20
-msgid "45+ Pre-designed Header & Footer Templates"
-msgstr ""
-
-#: libs/framework/views/onboard-steps/step-05.php:21
-msgid "35+ Ready Pages"
-msgstr ""
-
-#: libs/framework/views/onboard-steps/step-05.php:22
-msgid "500+ Ready Sections"
+#: libs/framework/views/onboard-steps/step-05.php:19
+msgid "24/7 Customer Support"
 msgstr ""
 
 #: libs/framework/views/onboard-steps/step-05.php:25
-msgid "Explore PRO"
+msgid "PRO"
 msgstr ""
 
 #: libs/framework/views/onboard-steps/step-05.php:30
+msgid "Advanced Header & Footer"
+msgstr ""
+
+#: libs/framework/views/onboard-steps/step-05.php:34
+msgid "Multi-level Mega Menu Builder"
+msgstr ""
+
+#: libs/framework/views/onboard-steps/step-05.php:38
+msgid "Advanced Tab & Accordion"
+msgstr ""
+
+#: libs/framework/views/onboard-steps/step-05.php:42
+msgid "Parallax & Particles Background"
+msgstr ""
+
+#: libs/framework/views/onboard-steps/step-05.php:46
+msgid "Advanced Carousel & Sliders"
+msgstr ""
+
+#: libs/framework/views/onboard-steps/step-05.php:50
+msgid "Sticky & Scrolling Effects"
+msgstr ""
+
+#: libs/framework/views/onboard-steps/step-05.php:54
+msgid "Cross Domain Copy Paste"
+msgstr ""
+
+#: libs/framework/views/onboard-steps/step-05.php:58
+msgid "Conditional & Protected Content"
+msgstr ""
+
+#: libs/framework/views/onboard-steps/step-05.php:73
+msgid "Block Sections"
+msgstr ""
+
+#: libs/framework/views/onboard-steps/step-05.php:77
+msgid "Header Footer Templates"
+msgstr ""
+
+#: libs/framework/views/onboard-steps/step-05.php:81
+msgid "Custom Icons"
+msgstr ""
+
+#: libs/framework/views/onboard-steps/step-05.php:95
+msgid "Explore PRO"
+msgstr ""
+
+#: libs/framework/views/onboard-steps/step-05.php:98
 msgid "Complete Setup"
 msgstr ""
 

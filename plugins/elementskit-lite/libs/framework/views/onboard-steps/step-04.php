@@ -9,14 +9,14 @@ Save 1 hour of your learning time.',
 	<div class="ekit-onboard-tutorial--btn">
 		<a class="ekit-onboard-tutorial--link" data-video_id="VhBl3dHT5SY" href="#"><i class="icon icon-play1"></i></a>
 	</div>
-	
+
 	<div class="ekti-admin-video-tutorial-popup">
 			<div class="ekti-admin-video-tutorial-iframe"></div>
 	</div>
 </div>
 
 <div class="ekit-onboard-pagination">
-	<a class="ekit-onboard-btn ekit-onboard-pagi-btn prev" href="#"><i class="icon icon-arrow-left"></i><?php echo esc_html__( 'Back', 'elementskit-lite' ); ?></a>
+	<a class="ekit-onboard-btn ekit-onboard-pagi-btn prev" href="#"><i class="icon icon-left-arrow"></i><?php echo esc_html__( 'Back', 'elementskit-lite' ); ?></a>
 	<a class="ekit-onboard-btn ekit-onboard-pagi-btn next" href="#"><?php echo esc_html__( 'Next Step', 'elementskit-lite' ); ?></a>
 </div>
 <div class="ekit-onboard-shapes">

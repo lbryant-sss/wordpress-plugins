@@ -57,6 +57,7 @@ class ContentHooks {
 
 		foreach ( $guidsToUpdate as $id => $guid ) {
 			$query = $wpdb->prepare( "UPDATE  {$wpdb->prefix}posts SET guid=%s WHERE ID=%d", $guid, $id );
+            //phpcs:ignore 	WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 			$wpdb->query( $query );
 		}
 	}

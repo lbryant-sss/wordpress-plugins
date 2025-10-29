@@ -18,7 +18,7 @@ By default, My Sticky Bar (formerly myStickymenu) should make your menu sticky r
 
 [youtube  https://www.youtube.com/watch?v=l9aRnPVuCVY]
 
-<strong>📢 Welcome Notification Bar:</strong> Use this powerful feature to create a beautiful floating sticky notification bar. No coding skill required, just turn it on, set up your announcement text and button, and voilà - your top notification bar is good to go! 
+<strong>📢 Welcome Notification Bar:</strong> Use this powerful feature to create a beautiful floating sticky notification bar. Just turn the notification bar on, set up your announcement text and button, and voilà, your top notification bar is ready! 
 
 = 💪 BENEFITS =
 * Improve user experience by letting your visitors access the navigation menu and navigate to the pages they want when they want to.

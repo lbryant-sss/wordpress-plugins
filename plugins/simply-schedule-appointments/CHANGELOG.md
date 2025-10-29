@@ -1,5 +1,16 @@
 # Changelog
 
+## SSA-VERSION-PREFIX.6.9.4 - 2025-10-21
+
+### Fixes
+
+- Enhance opt-in notification handling by populating default values
+
+### Features and Improvements
+
+- Enhance customer information handling in notifications templates
+- Feature Improvement: Ability to disable "Pay Via Card" option for Stripe Payments
+
 ## SSA-VERSION-PREFIX.6.9.2 - 2025-10-14
 
 ### Features and Improvements

@@ -19,34 +19,54 @@ export const InstallPlugin = ({ inputs, onConfirm, onCancel }) => {
 	}, [inputs, onCancel]);
 
 	useEffect(() => {
-		if (status === 'installing') {
-			installPlugin(inputs.pluginSlug)
-				.then(() => {
+		let cancelled = false;
+
+		const run = async () => {
+			if (status === 'installing') {
+				try {
+					await installPlugin(inputs.pluginSlug);
+					if (cancelled) return;
 					setStatus('activating');
-				})
-				.catch((error) => {
-					if (error.code === 'folder_exists') {
+				} catch (error) {
+					if (cancelled) return;
+					if (error?.code === 'folder_exists') {
 						setStatus('activating');
 						return;
 					}
 					setStatus('error');
-				});
-			return;
-		}
-		if (status === 'activating') {
-			activatePlugin(inputs.pluginSlug)
-				.then(async () => {
+				}
+				return;
+			}
+
+			if (status === 'activating') {
+				try {
+					await activatePlugin(inputs.pluginSlug);
+				} catch {
+					try {
+						await new Promise((r) => setTimeout(r, 500));
+						await activatePlugin(inputs.pluginSlug);
+					} catch {
+						if (!cancelled) setStatus('error');
+						return;
+					}
+				}
+				if (cancelled) return;
+
+				try {
 					await recordPluginActivity({
 						slug: inputs.pluginSlug,
 						source: 'ai-agent-recommendation',
 					});
-					onConfirm();
-				})
-				.catch(() => {
-					setStatus('error');
-				});
-			return;
-		}
+					if (!cancelled) onConfirm();
+				} catch {
+					if (!cancelled) setStatus('error');
+				}
+			}
+		};
+		run();
+		return () => {
+			cancelled = true;
+		};
 	}, [status, onConfirm, inputs]);
 
 	if (status === 'error') {

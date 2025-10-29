@@ -68,8 +68,8 @@ export const GenerateImageConfirm = ({ inputs, onConfirm, onCancel }) => {
 				previousContent: inputs.previousContent,
 				newContent: walkAndUpdateImageDetails(inputs, importedImage),
 			},
+			shouldRefreshPage: true,
 		});
-		setTimeout(() => window.location.reload(), 1000);
 	};
 
 	useEffect(() => {

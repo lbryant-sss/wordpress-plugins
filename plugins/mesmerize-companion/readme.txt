@@ -2,7 +2,7 @@
 
 Contributors: horearadu, extendthemes
 Tags: mesmerize companion, drag, drop, builder
-Stable tag: 1.6.158
+Stable tag: 1.6.162
 Requires at least: 5.5
 Tested up to: 6.8
 Requires PHP: 5.6
